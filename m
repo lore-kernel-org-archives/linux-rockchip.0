@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222D2D4335A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 12:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4967CD4335B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 13:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g2tsBncsNPcNeL0+UMO8p5s66ceDgbmW2Iw0tl841HE=; b=hWxBeEWJfdkODl
-	/0YNHmoYO4WSwHRqAoxFzOgLcVMnL78Naxo02iTCIpazWSUZ05lx5z0avlvqaTHXOsV1k/2vHcJwX
-	J4pcpfMpCkFApVb+jc68+GeaQT/yhiuVJnoaQ5Z/up0K5DZnkaoUlF96huttNXuNYxn1oQrBVlaqq
-	d/nSL/bFVbCVB0aTCFTiWBRUzVX7/EJJrfLxfoFx56fptWjS3t3T0Z4iTJlVCbKRRzU7T96nuvNLU
-	3h6Z+IvJ8cTiJPxFBT4dFGXrqTCxnpTjPmyFrfD0lrAdYBw+aV4chxBtN+lhotQbdc790gQdpGeT8
-	H/wuqApSxBZM6rPTdB9g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vqJM93QC2VB88LEnpRzKz3mcXG0cZ5Jj2seZGQQKGiY=; b=2HC+Owk3//5tIL
+	hPhPYgj4BmZEm7B4yK1r8AgddjrWK9MFMFSK8feVLfyLE1aj0KyZo4Mb+Tynqf2Zz6Zo4wlyxiba+
+	5yUl8O0b+LoazvixI4I6adSDFASz6jnt4KAWozwqf6DtQ7++zflOGZJnIXuWQ2S0uNGm/oaw9n/kv
+	Uyj41ChUKLEzoW9eRosfqLJl5TG2+KXkg2ObChMvtoZtEqrQgxzcVtbiWWUekINyV0UpSTED9SVmz
+	dB6d3oaKijuVhhCJFGtvIcmGJ/ONNhwKhW6vSAUI5TSKEq2MfthvNvFqaVEegsEO7PqF3OEJLq2VR
+	OkpUQQ34ApIzKpdG+2JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t91nN-00000006xRA-1tUn;
-	Thu, 07 Nov 2024 12:39:29 +0000
+	id 1t928B-000000071DB-2YAI;
+	Thu, 07 Nov 2024 13:00:59 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t91lb-00000006xC4-2SWc;
-	Thu, 07 Nov 2024 12:37:42 +0000
+	id 1t926O-000000070qF-4Aym;
+	Thu, 07 Nov 2024 12:59:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E23A25C584D;
-	Thu,  7 Nov 2024 12:36:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E8E2C4CED0;
-	Thu,  7 Nov 2024 12:37:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3DF015C1349;
+	Thu,  7 Nov 2024 12:58:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BC64C4CED0;
+	Thu,  7 Nov 2024 12:59:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730983058;
-	bh=JupmGb9015WA+7ZrISN7klsmE+UWxlE8YkOEg7MMi6M=;
-	h=From:To:Cc:Subject:Date:From;
-	b=q5mAMdjweSV2HmvxiK9NXGeGBBThNSvDW8ctyLZ0oTzxZ6oxRpHuSXC3lEOZQ7w7Y
-	 JyK4PNAszGEmAgEoVUrUtZNu35xiy38fzMUQ66bRPHwGCuwVHa3peo/uOWzIlhfsZY
-	 oRCv//SwDxlMSO+gXQAebuDOVH+bjnyUrx2kIlpTHFEQov85DWntmfmpBGTD7boXA6
-	 P2sgseHyVz6fiDwzdwrhhtyA/i8hLpR9otGhnDyUzVL6/2FwDLnDRvJp0bRnMJatna
-	 N8byM8Wi3wQEjrRi8h96i2KrnOP4krVaL869g+7wbCMHatH6Ck0L7TOAjoPANstUfa
-	 jKabW20MQIfsw==
-From: Niklas Cassel <cassel@kernel.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC
-Date: Thu,  7 Nov 2024 13:37:33 +0100
-Message-ID: <20241107123732.1160063-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.47.0
+	s=k20201202; t=1730984347;
+	bh=O2jEPTTUJi8YuBrD4uo+6+5CJE7GCRdzMd3WNJyIb5Y=;
+	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+	b=iD63z4HWcMWir7bHC1m9R+CT/cgDL1VVsJnEYKSEV2jU7HGI+2dVFuZypj0yOnSMM
+	 mn3gjCdYb+BdncyjpsM7aAENfKfDqDXnjHN+2pZzXcAtNKO7WmYhwE7RzeUBCUKw2h
+	 Nup1Iz0s1HgQ3Gb4OUa/iOOIVQiZ4CeVgWd2UBMnORr7GbcAdAEXM1MgcLuoSUbXms
+	 X6tG5gVUTPfyBUebk8mkJuHitQAqBK1utoJ6fBjCahU4wIHzJtNHElOGwm7LDcPfaW
+	 MRn8cczXOJQV1BRqGDf6dCM2YXKLjO2zUv3syEb+P+BmVoRQB7n7BShvU1hPmmuX3Q
+	 BivsrE6XS583g==
+Date: Thu, 7 Nov 2024 13:59:04 +0100 (CET)
+From: Jiri Kosina <jikos@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+cc: lee@kernel.org, jic23@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+    conor+dt@kernel.org, jdelvare@suse.com, linux@roeck-us.net, 
+    srinivas.pandruvada@linux.intel.com, bentiss@kernel.org, 
+    dmitry.torokhov@gmail.com, pavel@ucw.cz, ukleinek@debian.org, 
+    devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+    linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+    linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, 
+    linux-iio@vger.kernel.org, linux-leds@vger.kernel.org, 
+    stable@vger.kernel.org
+Subject: Re: [PATCH v9 1/9] HID: hid-sensor-hub: don't use stale platform-data
+ on remove
+In-Reply-To: <20241107114712.538976-2-heiko@sntech.de>
+Message-ID: <nycvar.YFH.7.76.2411071358210.20286@cbobk.fhfr.pm>
+References: <20241107114712.538976-1-heiko@sntech.de> <20241107114712.538976-2-heiko@sntech.de>
+User-Agent: Alpine 2.21 (LSU 202 2017-01-01)
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4968; i=cassel@kernel.org; h=from:subject; bh=JupmGb9015WA+7ZrISN7klsmE+UWxlE8YkOEg7MMi6M=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJ1tvT8YEyKFhQq+rCj9rrSzbZ3s9/9Z733vfzIWha7O TUyrapXOkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjARHxlGhik1b54Z3w0tUeu/ kcn96qe2e/pijwo2Tn+Pd3JnQg8J/WD4p9/1Mid2c3PmCvVZ3N8OLfaecLBaeP2Ft3ybo8VZziW u5AAA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_043739_765764_4A7E9ABB 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20241107_045909_101506_892F8258 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,121 +79,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit cd81d3a0695c ("arm64: dts: rockchip: add rk3588 pcie and php
-IOMMUs") added the rk3588 SoC's pcie IOMMU and php IOMMU as disabled.
+On Thu, 7 Nov 2024, Heiko Stuebner wrote:
 
-The mmu600_pcie is connected with the five PCIe controllers.
-See 8.2 Block Diagram, in rk3588 TRM (Technical Reference Manual).
+> The hid-sensor-hub creates the individual device structs and transfers them
+> to the created mfd platform-devices via the platform_data in the mfd_cell.
+> 
+> Before e651a1da442a ("HID: hid-sensor-hub: Allow parallel synchronous reads")
+> the sensor-hub was managing access centrally, with one "completion" in the
+> hub's data structure, which needed to be finished on removal at the latest.
+> 
+> The mentioned commit then moved this central management to each hid sensor
+> device, resulting on a completion in each struct hid_sensor_hub_device.
+> The remove procedure was adapted to go through all sensor devices and
+> finish any pending "completion".
+> 
+> What this didn't take into account was, platform_device_add_data() that is
+> used by mfd_add{_hotplug}_devices() does a kmemdup on the submitted
+> platform-data. So the data the platform-device gets is a copy of the
+> original data, meaning that the device worked on a different completion
+> than what sensor_hub_remove() currently wants to access.
+> 
+> To fix that, use device_for_each_child() to go through each child-device
+> similar to how mfd_remove_devices() unregisters the devices later and
+> with that get the live platform_data to finalize the correct completion.
+> 
+> Fixes: e651a1da442a ("HID: hid-sensor-hub: Allow parallel synchronous reads")
+> Cc: stable@vger.kernel.org
+> Acked-by: Benjamin Tissoires <bentiss@kernel.org>
+> Acked-by: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 
-The five PCIe controllers are:
-pcie3x4, pcie3x2, pcie2x1l0, pcie2x1l1, pcie2x1l2.
+Acked-by: Jiri Kosina <jkosina@suse.com>
 
-pcie3x4 can run in either Root Complex mode or Endpoint mode, the other
-four PCIe controllers can only run in Root Complex mode. To describe this
-we thus have six different device nodes in the device tree.
+Are you planning to merge this together with the rest of the set, or do 
+you want me to expedite it? I'll be happy to apply it separately as a 
+proper fix.
 
-A PCIe controller in Root Complex mode needs to specify an iommu-map, such
-that the device knows how to convert a Requester ID (PCI BDF) to an IOMMU
-master ID (stream ID). (A PCIe controller in Endpoint mode should use the
-iommus property, just like a regular device.)
+Thanks,
 
-If you look at the device tree bindings for msi-map and iommu-map, you can
-see that the conversion from Requester ID to MSI-specifier data is the same
-as the conversion from Requester ID to IOMMU specifier data. Thus it is
-sensible to define the iommu-map property value similar to the msi-map,
-such that the conversion will be identical.
-
-Add the proper iommu device tree properties for these six device nodes
-connected to the mmu600_pcie, so that we can enable the mmu600_pcie IOMMU.
-(The mmu600_php IOMMU is not touched, so it is still disabled.)
-
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
-Testing done:
--pcie2x1l2: Ethernet connected to the pcie2x1l2 works as expected.
--pcie3x4: A PCIe endpoint (running the PCI endpoint framework) connected to
- pcie3x4 can run pcitest.sh without any issues.
- Modifying the PCI endpoint to DMA to an invalid address gives IOMMU errors
- (as expected).
--pcie3x4_ep: A PCIe root complex (running Linux) connected to pcie3x4_ep can
- run pcitest.sh without any issues.
- Modifying the PCI endpoint's inbound address translation to point to a
- buffer that has not been mapped using the DMA API, results in IOMMU errors
- when the RC writes to the PCI BARs exposed by the endpoint (as expected).
--My board does not expose a convenient method to test the other PCIe
- controllers, but considering that the ones that I did test worked fine,
- I do not see any reason why the others should not do the same.
-
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi  | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++++
- 2 files changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index d97d84b888375..f96e607db2857 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -551,7 +551,6 @@ mmu600_pcie: iommu@fc900000 {
- 			     <GIC_SPI 367 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
- 		#iommu-cells = <1>;
--		status = "disabled";
- 	};
- 
- 	mmu600_php: iommu@fcb00000 {
-@@ -1641,6 +1640,7 @@ pcie2x1l1: pcie@fe180000 {
- 		linux,pci-domain = <3>;
- 		max-link-speed = <2>;
- 		msi-map = <0x3000 &its0 0x3000 0x1000>;
-+		iommu-map = <0x3000 &mmu600_pcie 0x3000 0x1000>;
- 		num-lanes = <1>;
- 		phys = <&combphy2_psu PHY_TYPE_PCIE>;
- 		phy-names = "pcie-phy";
-@@ -1692,6 +1692,7 @@ pcie2x1l2: pcie@fe190000 {
- 		linux,pci-domain = <4>;
- 		max-link-speed = <2>;
- 		msi-map = <0x4000 &its0 0x4000 0x1000>;
-+		iommu-map = <0x4000 &mmu600_pcie 0x4000 0x1000>;
- 		num-lanes = <1>;
- 		phys = <&combphy0_ps PHY_TYPE_PCIE>;
- 		phy-names = "pcie-phy";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 0ce0934ec6b79..4a950907ea6f5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -162,6 +162,7 @@ pcie3x4: pcie@fe150000 {
- 		linux,pci-domain = <0>;
- 		max-link-speed = <3>;
- 		msi-map = <0x0000 &its1 0x0000 0x1000>;
-+		iommu-map = <0x0000 &mmu600_pcie 0x0000 0x1000>;
- 		num-lanes = <4>;
- 		phys = <&pcie30phy>;
- 		phy-names = "pcie-phy";
-@@ -212,6 +213,7 @@ pcie3x4_ep: pcie-ep@fe150000 {
- 		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
- 				  "dma0", "dma1", "dma2", "dma3";
- 		max-link-speed = <3>;
-+		iommus = <&mmu600_pcie 0x0000>;
- 		num-lanes = <4>;
- 		phys = <&pcie30phy>;
- 		phy-names = "pcie-phy";
-@@ -248,6 +250,7 @@ pcie3x2: pcie@fe160000 {
- 		linux,pci-domain = <1>;
- 		max-link-speed = <3>;
- 		msi-map = <0x1000 &its1 0x1000 0x1000>;
-+		iommu-map = <0x1000 &mmu600_pcie 0x1000 0x1000>;
- 		num-lanes = <2>;
- 		phys = <&pcie30phy>;
- 		phy-names = "pcie-phy";
-@@ -297,6 +300,7 @@ pcie2x1l0: pcie@fe170000 {
- 		linux,pci-domain = <2>;
- 		max-link-speed = <2>;
- 		msi-map = <0x2000 &its0 0x2000 0x1000>;
-+		iommu-map = <0x2000 &mmu600_pcie 0x2000 0x1000>;
- 		num-lanes = <1>;
- 		phys = <&combphy1_ps PHY_TYPE_PCIE>;
- 		phy-names = "pcie-phy";
 -- 
-2.47.0
+Jiri Kosina
+SUSE Labs
 
 
 _______________________________________________
