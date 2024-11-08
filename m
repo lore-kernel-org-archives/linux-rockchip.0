@@ -4,40 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D355D5C0C8
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 14:22:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C62BD5C0C8
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 14:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FMgw/O/AlQxVQPjVJUDz/6SDOruApNSYAAifuGsk864=; b=GoIEAVgQCFERzX
-	wSbVdkd5lqWtkjAvgPK2pXE3kWRPJynSGXvBncPjKvjdekse7MZWpHP3bdia5WPQIx9ygqTQ182r/
-	RPK70OP5fbgM30/DMsMkiWX5TdY1K3XQCALmeD/i7RCA4iXxk/jJabTVSnx4Eda+oqTHWDdk97tCC
-	pZXX5GWuY+hC8bOJ88nCqhshyclyNT5zWdQcG5fuAiYyGODLQwbRAjLdlPOmfmkmgenUq7npU+jM6
-	wQ+crOOTuviee3luHr+VPfMMkovqHD8v+rxdVabf3LJZ2bPcpGvNhCHLO1tENKDCqKSDpL1bhAWJk
-	RLnQI+oSS8K2id5T4etQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qxje4XbflQYO+wG9rQLDdfXN8ydbfh7xxMvKK7bJYZ4=; b=YXkGLYcPT/260s
+	vXecWUP7t63LZ7sbuNAvEkKU1iJv+88hL8x6otpshgC9y+U9fxzQSBx+On7fKUkZj5djfV3S03TpM
+	pYQM2rQkCZZ5N5SNOqDgveZB1Y1AGT2Vm7aPgZlqMLL/T/DOncz8Jwwl0sUcln82ZWWqepZelWaK5
+	cg/uEKvHOz9Di6A66y6E6js9n8CFT+a3OQlxoN10WNK8+gr6bGrOmp4qyg0LDpCv02ra8WHQamRi6
+	DTimE8l636IMvMyZ9xxY20QgLW7+/bm6/8ehDv3+Esxi6EGbXeJ5gU32Qh/Uzi86Qi8yaMp9QnGLk
+	X58fxeKtfEBY8LIRZ2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Ps9-0000000ApmW-2VH3;
-	Fri, 08 Nov 2024 14:22:01 +0000
+	id 1t9PsK-0000000AppS-1lWk;
+	Fri, 08 Nov 2024 14:22:12 +0000
 Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9PR7-0000000AlcT-2bz1;
-	Fri, 08 Nov 2024 13:54:07 +0000
+	id 1t9PR8-0000000Alcz-020K;
+	Fri, 08 Nov 2024 13:54:08 +0000
 From: Dragan Simic <dsimic@manjaro.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1731074041;
+	t=1731074043;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=k3Zn2bpSYjx0KdspBHLAyKP2HSBrvqQHEj0Q/hMzoJk=;
-	b=bujVIQcH927mV5DqCLvbMvlG8Kcc1rhDUr244chfKffchmcgQJebhKtH6f5ajEukZ+1Z1X
-	YpwG/j3iMCdCP5SF+TRY6GnVUVrZZPDG0XknzDLPgcOmF4MJ4xj6Dd4paLXjonnUGZUz3q
-	ikmqsue3HJE8p5RnZSpuunABSwsn+gDnLmaxAeEJS/E131J3Q8eG8zuD3QQJLqecymiDPt
-	iQztHpdQlrTw46doO+npJDfzRCY4zDabzIaxtF2h0rUwfizhBOVWdzeJT1tC/K7yc1VZtn
-	KIGSHnN75JxuVtov0StSPDS18Pj+RW2+XxCaImwuoKNK6egIjMVVH+XljlXI5Q==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LuPtIml5wHuWo9YnYzUt6yEz+G9J8XSUCMyiea4JHFQ=;
+	b=E1NppOfdtjNHmWn3BSZdNiwXNrn2ZORyh+K6PJpNwqt1Q1g2OsvBkXF3mmqg03vq0I663L
+	pfRy9AzYmuKLIYmGcWMtYGAhS/onSQsEwoozQYaUs+lGce7JHPQ+XGEMrki1xfyJTa8sD9
+	Adb4jHONBc3/aa8IOpS+ky15AHiuoZF/dWkInNEyPZp3XwX458lFyutgWgub/0faxCciiF
+	Gebwlh+rJA6pdFCcStUGeBFNLnixRDiizHD+G0zAKqte0GMppPjKFlLQ445RARS5wOcm5p
+	CqLJYZKB9JjOD783nKdZupfeVATRNROze6YWBml2LOCfCbsuNZrsSprS6iZDqQ==
 To: linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org
 Cc: heiko@sntech.de,
@@ -49,17 +50,19 @@ Cc: heiko@sntech.de,
 	airlied@gmail.com,
 	simona@ffwll.ch,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] No longer produce error messages when dphy is deferred
-Date: Fri,  8 Nov 2024 14:53:56 +0100
-Message-Id: <cover.1731073565.git.dsimic@manjaro.org>
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH 2/2] drm/rockchip: dsi: Don't log errors on deferred dphy
+Date: Fri,  8 Nov 2024 14:53:58 +0100
+Message-Id: <559094275c3e41cae7c89e904341f89a1240a51a.1731073565.git.dsimic@manjaro.org>
+In-Reply-To: <cover.1731073565.git.dsimic@manjaro.org>
+References: <cover.1731073565.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_055405_835314_64A48F39 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241108_055406_226171_1F3E9B13 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,20 +79,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a small series that makes the deferred dphy no longer emit error
-messages to the kernel log, which may even be repeated multiple times, to
-avoid possible false impression of some issues.
+Deferred driver probing shouldn't result in errors or warnings being logged,
+because their presence in the kernel log provides no value and may actually
+cause false impression that some issues exist.  Thus, let's no longer produce
+error messages when getting the dphy results in deferred probing.
 
-This series also performs a few small, rather trivial code cleanups, to
-make the code a bit easier to read and a bit more consistent.
+This prevents misleading error messages like the following one, which was
+observed on a Pine64 PineTab2, from appearing in the kernel log.  To make
+matters worse, the following error message was observed appearing multiple
+times in the kernel log of a single PineTab2 boot:
 
-Dragan Simic (2):
-  drm/rockchip: dsi: Perform trivial code cleanups
-  drm/rockchip: dsi: Don't log errors on deferred dphy
+  dw-mipi-dsi-rockchip fe060000.dsi: [drm:dw_mipi_dsi_rockchip_probe \
+  [rockchipdrm]] *ERROR* failed to get mipi dphy: -517
 
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+At the same time, make the adjusted logged message a bit more consistent with
+the other logged messages by capitalizing its first word.
 
+Reported-by: Diederik de Haas <didi.debian@cknow.org>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index f451e70efbdd..ffa7f2bc640d 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -1387,7 +1387,8 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+ 	dsi->phy = devm_phy_optional_get(dev, "dphy");
+ 	if (IS_ERR(dsi->phy)) {
+ 		ret = PTR_ERR(dsi->phy);
+-		DRM_DEV_ERROR(dev, "failed to get mipi dphy: %d\n", ret);
++		if (ret != -EPROBE_DEFER)
++			DRM_DEV_ERROR(dev, "Failed to get mipi dphy: %d\n", ret);
+ 		return ret;
+ 	}
+ 
 
 _______________________________________________
 Linux-rockchip mailing list
