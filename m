@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C317D5E124
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 03:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F62D5E120
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 03:24:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T9bwOhftAOkbeX4kFJneBSpvRZ9RkLU9YmrQTgRnpQI=; b=vdzIeDUPKyQjib
-	Oq3Tydwax6xTuLVyAbCfrZ3Cn244tameD3Chwg+0VuvG6Rn/TTYhpCxfkgLmlxevcKgojaCJl3ceZ
-	qdaq6IL/34PnR32CPLDQsp4gF6RCm8Jygma5wZfVgT5nQWoV6aya3AXs+lMPqOL38949fn/WRpdpe
-	zkIEe8FhPXFR0XGjVKIoMKoDcwVUiSKTa6meDuHdkQMHbH+MgpFH6aC+eQCjkAhjnd6piqRfy/2+k
-	692Z17l2rhrd/QrjooKkK39zRH0W+jkNgzB7Vn2eZBZ7BBNapqaZQWXl7rePkMDE8YVbpeF8S+Ty4
-	l/fEwot3Hhv6bZTy7Pqg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iNrVe0u0VOp6dsrvaMS3ZSHi7DXvV7gyjE5ikwvVqA0=; b=ny8KthR+GotFX7
+	XULOLODBK+N8GlN+ji6ifAK4zdPuRcMe4b/RHQoTjIonZEy+TYPN7vziy2QrP+uAMub3Ds4+QYzie
+	7aL3f2HJBHafJ6e2Syns/9dT18JoRqYiViqT1fHOUSN/1On84DrtKsB8J2VFWWC8q3tl6LeXBv7pO
+	EtGeG5ZulG+Od6vLezGptfqwG/9idrok+BHwfF9NpQ3LkLrxYQmiUmpJnUvFNYpYttT3p+jQDHYW2
+	pVlpFs0rLAflw7KledS4Bx/Tj3YAWNFMC+SgWCZHYPwANI0lWps6+HU7EO8UdFG7kAxfTrpCkO/S4
+	/pQVVurmOpJ1UApWMgLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Fa4-000000097EC-197z;
-	Fri, 08 Nov 2024 03:22:40 +0000
+	id 1t9Fbn-000000097ST-0eSu;
+	Fri, 08 Nov 2024 03:24:27 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9FWa-000000096tE-2ZOc;
-	Fri, 08 Nov 2024 03:19:06 +0000
+	id 1t9FWa-000000096t9-1LTP;
+	Fri, 08 Nov 2024 03:19:07 +0000
 Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.160.23])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id E1E00788B1;
-	Fri,  8 Nov 2024 11:19:00 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn E1E00788B1
+	by classfun.cn (Postfix) with ESMTPSA id 97208787BC;
+	Fri,  8 Nov 2024 11:18:57 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 97208787BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1731035942;
-	bh=zalAWlbFESuTIXMiBlQXrsSWi3K93QpEzxzNNDSnYbY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Vp7z8HWv11IA81Sp45yTvcUtz70ceFPM/efTZlRk2+E1yEX51c2vPvA8dKYlecke5
-	 f8rPlTmBjy5U4gW/qpKGH2FzRUCJd4brHEUs/A7+xW+N7/p2OwEMrBGt0XpN/1tsQp
-	 sXioovVjnPaJDAg6ltGC0CG/tZIRXmJ+Eub7PIlA=
+	s=default; t=1731035940;
+	bh=LrwVAJl6tH5AFMtMAyT1pRa6j7wyBr19604m/pE2Xp8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TcIWlW5wv/H7dQbsAcRF4cGlEwe0l3Z1PnIOQUjlzgfiLd7MFKykTSeGPracXQCty
+	 BrUjirFI+dgmD79k0BlEFwHSc1eLfPjKnFxMVM0MTO77zetRXoQoXkK2PNTLWg0/W2
+	 wjMR6VvT19d7kyTTmMk+lGtZnTMG3kvYPWlVibuA=
 From: Junhao Xie <bigfoot@classfun.cn>
 To: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
@@ -51,19 +51,15 @@ Cc: Rob Herring <robh@kernel.org>,
 	FUKAUMI Naoki <naoki@radxa.com>,
 	Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 1/3] dt-bindings: vendor-prefixes: Add prefix for Ariaboard
-Date: Fri,  8 Nov 2024 11:18:45 +0800
-Message-ID: <20241108031847.700606-2-bigfoot@classfun.cn>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 0/3] Add support for Ariaboard Photonicat RK3568
+Date: Fri,  8 Nov 2024 11:18:44 +0800
+Message-ID: <20241108031847.700606-1-bigfoot@classfun.cn>
 X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241108031847.700606-1-bigfoot@classfun.cn>
-References: <20241108031847.700606-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_191904_853606_3BA0BB4E 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241107_191904_851590_50CC1AC4 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +76,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add an entry for Ariaboard from Shanghai Novotech
+Add dts for Ariaboard Photonicat RK3568.
 
-Ariaboard represents a product line from Shanghai Novotech Co., Ltd.
+This series bring support for:
+* Debug UART
+* SDIO QCA9377 WiFi and Bluetooth
+* M.2 E-Key PCIe WiFi and Bluetooth
+* M.2 B-Key USB Modem WWAN
+* Ethernet WAN Port
+* MicroSD Card slot
+* eMMC
+* HDMI Output
+* Mali GPU
+* USB Type-A
 
-Link: https://shanghainovotech.com/
-Link: https://ariaboard.com/
+Changed from v1:
+- move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
+- gmac1 change to phy-mode rgmii-id
+- corrected some regulator to be closer to schematics
+- rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
+https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
 
-Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Changed from v2:
+- remove unused headers
+- corrected some regulator to be closer to schematics
+- remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
+https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index b320a39de7fe..ddeb4ade4080 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -145,6 +145,8 @@ patternProperties:
-     description: Arctic Sand
-   "^arcx,.*":
-     description: arcx Inc. / Archronix Inc.
-+  "^ariaboard,.*":
-+    description: Shanghai Novotech Co., Ltd. (Ariaboard)
-   "^aries,.*":
-     description: Aries Embedded GmbH
-   "^arm,.*":
+Changed from v3:
+- corrected some regulator to be closer to schematics
+- changed to using clk32k_out1 in xin32k
+https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
+
+Changed from v4:
+- corrected some regulator to be closer to schematics
+- corrected some label to match node name
+- use resets props in phy node instead deprecated snps,reset-gpio
+https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
+
+Junhao Xie (3):
+  dt-bindings: vendor-prefixes: Add prefix for Ariaboard
+  dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
+  arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 600 ++++++++++++++++++
+ 4 files changed, 608 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+
 -- 
 2.47.0
 
