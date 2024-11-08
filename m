@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A10DCD5C0E7
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 15:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23FEDD5C0E6
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 15:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mn7kKEXd6kuY5roOh/O79X0AXF+WY5yjsUHSMaO2m80=; b=PGR+8VFCaBiece
-	9sBcQW+0iBmeU+Q1GsbBepeKgDUIrF0WHcIhfK1HFLTB+K//O3rY9JtBqfJhNho6JLgaDBIiHTquw
-	t5ez7byfYzlhRHAbsXdy0qGGM3LdYbkKt2nL6OR7elnKl1VByICE1yUZrXultwqj5yWRLauPhK1Ga
-	wHMcX2bh3Imn4282VsmQTkmBnimT9rncUCtNDrMurHCCZIxG/Az56BLMeQohk5EQlBUl9tb11gHar
-	kjeC7RWARM3ms6rdYgegjpybWApZtvp6+M9k2l1iWf5f++ZT8pFIRWn4Sa/lPCQISi91eE+iizd5V
-	hrjJzl2eWyA79xe7uWqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6hxTsIHd1YORjV0Mp+n/imOs1vpyerFWRcK4bU6O+2U=; b=Wacq7lTbJFNrh47F/FcroH5SGS
+	UP7gHrtoD2SL1xePvmaY/0joevt2QsPsv0GXT3K2mDuR3LokdoPyYnMHNQCvdoj1GimZAPgHinsV4
+	TN1nb8cZG5qAUcGK/marGFzxQLSCxAofsBXI58T/OvgvVGPAi4Bh6I/J7rZQ9N1+zNktY950yPE+c
+	u4j3l/TaLG8B6AjTTOVqty530B4pZbJ3NejRxzN6hroei5rz9stBM9Nh1jRmNgoDtvu9ddhJsRmuK
+	I80LAr5oKKNvMkzXaChEmBFbJ9VInIgizI2NU4S19hQDrC8GrYaxMm9lh5LjVoVAxNmM+pduYQNZH
+	oduhqbOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Qe6-0000000Az03-24IU;
-	Fri, 08 Nov 2024 15:11:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t9Qe5-0000000Ayzb-3F2D;
+	Fri, 08 Nov 2024 15:11:33 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9QE5-0000000AtVc-1I03
-	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Nov 2024 14:44:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Sq1qOtFF69mFoOsytrqshcI4Hj0x/QP2wi6DnImQLW0=; b=MvMdEwofqR70BiYpz8W5OuxiTU
-	IZl4ZZvbUwoKHNlHHa01BLTEi6HQuNVZwVPgq38ZoafCnWhP5u8tTLPH0EQHhf2+TRH6UmL/rqjRr
-	lvUR+tCJOMb509mHndLjI248FXt1NJkbWR73JLHcQPz1EhKogwCHbShLoqp+1YFQRI6yd351rbVyA
-	hjLeTGgLuEjxHPP4GbC46MQVD6x+zW6sL17Ez9NVOo0K/27bKgu4v5QbV6P4hBrWVhjmu9MBWh2qa
-	+yoypA7Fi65U1Ph7jvNG+G4t1AReyjTxozhbT00vhuw6UFIbGA5ejm5fqQgn3VkKig3/OEurwKnCy
-	DxRJOdHw==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t9QE1-0006ov-Mk; Fri, 08 Nov 2024 15:44:37 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Cc: dsimic@manjaro.org,
-	andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH] drm/rockchip: dsi: convert to dev_err_probe in probe function
-Date: Fri,  8 Nov 2024 15:44:24 +0100
-Message-ID: <20241108144425.1009916-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.45.2
+	id 1t9Q6W-0000000AsHn-0ANM;
+	Fri, 08 Nov 2024 14:36:53 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1731076609;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=hyP1F57LEd+5mTUT+FTnx82w2gEdUv9YO30BPIaE8VU=;
+	b=NrSNHOvH86y7hlWG6DuH+NoSXK7BlZNTXBQzYJWpo9NCd7ZHolaaFE4jUsHCWM+abUqeGZ
+	1u8lpgYqDyWfy9JyH2xIZ5BGOUgTbwjk7AC99yKH/dbXBUh9rqotapfXPZYdXb4NxRw/0x
+	6MoRpuqh29JwbADNCRqrDLU1KymGeqsN19gUhxWrKzO0QpeVmSOO+O9ogbqaa8SvRgqFLU
+	H4J2Daclot9SaBZhSCNfgLvE3YvgwgDUN+1JCv5SJ38DrZ1XmexpXrQaAs/lx+Pa7RV/oj
+	rnvqiQef7N4H0iqzYvURxiyQYpmrnsTGhytRzNgjGRPvGr/AVOwsbCjra2dgnQ==
+Date: Fri, 08 Nov 2024 15:36:49 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ hjc@rock-chips.com, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] drm/rockchip: dsi: Perform trivial code cleanups
+In-Reply-To: <c27ab238825451f1c3a4722f39a19531@manjaro.org>
+References: <cover.1731073565.git.dsimic@manjaro.org>
+ <10558711.nUPlyArG6x@diego> <047164cc6e88dcbc7701cb0e28d564db@manjaro.org>
+ <22484879.EfDdHjke4D@diego> <c27ab238825451f1c3a4722f39a19531@manjaro.org>
+Message-ID: <0d3723ecfe7889aa8e4b68b961cdffc5@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_064441_403259_5EEC9F4E 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20241108_063652_399267_ACDDCF51 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,167 +70,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
-
-DRM_DEV_ERROR is deprecated and using dev_err_probe saves quite a number
-of lines too, so convert the error prints for the dsi-driver.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 80 ++++++-------------
- 1 file changed, 26 insertions(+), 54 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 58a44af0e9ad..3224ab749352 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1356,17 +1356,15 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	const struct rockchip_dw_dsi_chip_data *cdata =
- 				of_device_get_match_data(dev);
--	int ret, i;
-+	int i;
- 
- 	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
- 	if (!dsi)
- 		return -ENOMEM;
- 
- 	dsi->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
--	if (IS_ERR(dsi->base)) {
--		DRM_DEV_ERROR(dev, "Unable to get dsi registers\n");
--		return PTR_ERR(dsi->base);
--	}
-+	if (IS_ERR(dsi->base))
-+		return dev_err_probe(dev, PTR_ERR(dsi->base), "Unable to get dsi registers\n");
- 
- 	i = 0;
- 	while (cdata[i].reg) {
-@@ -1378,67 +1376,47 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 		i++;
- 	}
- 
--	if (!dsi->cdata) {
--		DRM_DEV_ERROR(dev, "no dsi-config for %s node\n", np->name);
--		return -EINVAL;
--	}
-+	if (!dsi->cdata)
-+		return dev_err_probe(dev, -EINVAL, "No dsi-config for %s node\n", np->name);
- 
- 	/* try to get a possible external dphy */
- 	dsi->phy = devm_phy_optional_get(dev, "dphy");
--	if (IS_ERR(dsi->phy)) {
--		ret = PTR_ERR(dsi->phy);
--		DRM_DEV_ERROR(dev, "failed to get mipi dphy: %d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(dsi->phy))
-+		return dev_err_probe(dev, PTR_ERR(dsi->phy), "Failed to get mipi dphy\n");
- 
- 	dsi->pclk = devm_clk_get(dev, "pclk");
--	if (IS_ERR(dsi->pclk)) {
--		ret = PTR_ERR(dsi->pclk);
--		DRM_DEV_ERROR(dev, "Unable to get pclk: %d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(dsi->pclk))
-+		return dev_err_probe(dev, PTR_ERR(dsi->pclk), "Unable to get pclk\n");
- 
- 	dsi->pllref_clk = devm_clk_get(dev, "ref");
- 	if (IS_ERR(dsi->pllref_clk)) {
--		if (dsi->phy) {
-+		if (dsi->phy)
- 			/*
- 			 * if external phy is present, pll will be
- 			 * generated there.
- 			 */
- 			dsi->pllref_clk = NULL;
--		} else {
--			ret = PTR_ERR(dsi->pllref_clk);
--			DRM_DEV_ERROR(dev,
--				      "Unable to get pll reference clock: %d\n",
--				      ret);
--			return ret;
--		}
-+		else
-+			return dev_err_probe(dev, PTR_ERR(dsi->pllref_clk),
-+					     "Unable to get pll reference clock\n");
- 	}
- 
- 	if (dsi->cdata->flags & DW_MIPI_NEEDS_PHY_CFG_CLK) {
- 		dsi->phy_cfg_clk = devm_clk_get(dev, "phy_cfg");
--		if (IS_ERR(dsi->phy_cfg_clk)) {
--			ret = PTR_ERR(dsi->phy_cfg_clk);
--			DRM_DEV_ERROR(dev,
--				      "Unable to get phy_cfg_clk: %d\n", ret);
--			return ret;
--		}
-+		if (IS_ERR(dsi->phy_cfg_clk))
-+			return dev_err_probe(dev, PTR_ERR(dsi->phy_cfg_clk),
-+					     "Unable to get phy_cfg_clk\n");
- 	}
- 
- 	if (dsi->cdata->flags & DW_MIPI_NEEDS_GRF_CLK) {
- 		dsi->grf_clk = devm_clk_get(dev, "grf");
--		if (IS_ERR(dsi->grf_clk)) {
--			ret = PTR_ERR(dsi->grf_clk);
--			DRM_DEV_ERROR(dev, "Unable to get grf_clk: %d\n", ret);
--			return ret;
--		}
-+		if (IS_ERR(dsi->grf_clk))
-+			return dev_err_probe(dev, PTR_ERR(dsi->grf_clk), "Unable to get grf_clk\n");
- 	}
- 
- 	dsi->grf_regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
--	if (IS_ERR(dsi->grf_regmap)) {
--		DRM_DEV_ERROR(dev, "Unable to get rockchip,grf\n");
--		return PTR_ERR(dsi->grf_regmap);
--	}
-+	if (IS_ERR(dsi->grf_regmap))
-+		return dev_err_probe(dev, PTR_ERR(dsi->grf_regmap), "Unable to get rockchip,grf\n");
- 
- 	dsi->dev = dev;
- 	dsi->pdata.base = dsi->base;
-@@ -1451,24 +1429,18 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 	mutex_init(&dsi->usage_mutex);
- 
- 	dsi->dphy = devm_phy_create(dev, NULL, &dw_mipi_dsi_dphy_ops);
--	if (IS_ERR(dsi->dphy)) {
--		DRM_DEV_ERROR(&pdev->dev, "failed to create PHY\n");
--		return PTR_ERR(dsi->dphy);
--	}
-+	if (IS_ERR(dsi->dphy))
-+		return dev_err_probe(dev, PTR_ERR(dsi->dphy), "Failed to create PHY\n");
- 
- 	phy_set_drvdata(dsi->dphy, dsi);
- 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
- 	if (IS_ERR(phy_provider))
--		return PTR_ERR(phy_provider);
-+		return dev_err_probe(dev, PTR_ERR(phy_provider),
-+				     "Failed to register phy-provider\n");
- 
- 	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
--	if (IS_ERR(dsi->dmd)) {
--		ret = PTR_ERR(dsi->dmd);
--		if (ret != -EPROBE_DEFER)
--			DRM_DEV_ERROR(dev,
--				      "Failed to probe dw_mipi_dsi: %d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(dsi->dmd))
-+		return dev_err_probe(dev, PTR_ERR(dsi->dmd), "Failed to probe dw_mipi_dsi\n");
- 
- 	return 0;
- }
--- 
-2.45.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNC0xMS0wOCAxNTozMCwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IE9uIDIwMjQtMTEtMDgg
+MTU6MjIsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiBBbSBGcmVpdGFnLCA4LiBOb3ZlbWJlciAy
+MDI0LCAxNToxMzozMyBDRVQgc2NocmllYiBEcmFnYW4gU2ltaWM6Cj4+PiBPbiAyMDI0LTExLTA4
+IDE1OjA5LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4+ID4gQW0gRnJlaXRhZywgOC4gTm92ZW1i
+ZXIgMjAyNCwgMTU6MDU6MDIgQ0VUIHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+Pj4gPj4gT24gMjAy
+NC0xMS0wOCAxNDo1NiwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+PiA+PiA+IEFtIEZyZWl0YWcs
+IDguIE5vdmVtYmVyIDIwMjQsIDE0OjUzOjU3IENFVCBzY2hyaWViIERyYWdhbiBTaW1pYzoKPj4+
+ID4+ID4+IFBlcmZvcm0gYSBmZXcgdHJpdmlhbCBjb2RlIGNsZWFudXBzLCB0byBtYWtlIG9uZSBs
+b2dnZWQgbWVzc2FnZSBhIGJpdAo+Pj4gPj4gPj4gbW9yZQo+Pj4gPj4gPj4gY29uc2lzdGVudCB3
+aXRoIHRoZSBvdGhlciBsb2dnZWQgbWVzc2FnZXMgYnkgY2FwaXRhbGl6aW5nIGl0cyBmaXJzdAo+
+Pj4gPj4gPj4gd29yZCwgYW5kCj4+PiA+PiA+PiB0byBhdm9pZCBsaW5lIHdyYXBwaW5nIGJ5IHVz
+aW5nIHRoZSAxMDAtY29sdW1uIHdpZHRoIGJldHRlci4KPj4+ID4+ID4+Cj4+PiA+PiA+PiBObyBp
+bnRlbmRlZCBmdW5jdGlvbmFsIGNoYW5nZXMgYXJlIGludHJvZHVjZWQgYnkgdGhlc2UgY29kZSBj
+bGVhbnVwcy4KPj4+ID4+ID4+Cj4+PiA+PiA+PiBTaWduZWQtb2ZmLWJ5OiBEcmFnYW4gU2ltaWMg
+PGRzaW1pY0BtYW5qYXJvLm9yZz4KPj4+ID4+ID4+IC0tLQo+Pj4gPj4gPj4gIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jIHwgMTIgKysrKy0tLS0tLS0tCj4+
+PiA+PiA+PiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkK
+Pj4+ID4+ID4+Cj4+PiA+PiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2R3LW1pcGktZHNpLXJvY2tjaGlwLmMKPj4+ID4+ID4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLXJvY2tjaGlwLmMKPj4+ID4+ID4+IGluZGV4IDU4YTQ0YWYwZTlhZC4u
+ZjQ1MWU3MGVmYmRkIDEwMDY0NAo+Pj4gPj4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLXJvY2tjaGlwLmMKPj4+ID4+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCj4+PiA+PiA+PiBAQCAtMTM3OSw3ICsx
+Mzc5LDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9wcm9iZShzdHJ1Y3QKPj4+
+ID4+ID4+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+ID4+ID4+ICAJfQo+Pj4gPj4gPj4KPj4+
+ID4+ID4+ICAJaWYgKCFkc2ktPmNkYXRhKSB7Cj4+PiA+PiA+PiAtCQlEUk1fREVWX0VSUk9SKGRl
+diwgIm5vIGRzaS1jb25maWcgZm9yICVzIG5vZGVcbiIsIG5wLT5uYW1lKTsKPj4+ID4+ID4+ICsJ
+CURSTV9ERVZfRVJST1IoZGV2LCAiTm8gZHNpLWNvbmZpZyBmb3IgJXMgbm9kZVxuIiwgbnAtPm5h
+bWUpOwo+Pj4gPj4gPgo+Pj4gPj4gPiB0aGlzIGlzIGFsbCBwcm9iZS1yZWxhdGVkLCB3aHkgbm90
+IGNvbnZlcnQgdG8gZGV2X2Vycl9wcm9iZT8KPj4+ID4+ID4KPj4+ID4+ID4gQXMgdGhlIGRvYyBz
+dGF0ZXMgWzBdLCBEUk1fREVWX0VSUk9SIGlzIGRlcHJlY2F0ZWQgaW4gZmF2b3Igb2YgZGV2X2Vy
+ci4KPj4+ID4+ID4gU28gZGV2X2Vycl9wcm9iZSB3b3VsZCBiZSB0aGUgY29ycmVjdCB3YXkgdG8g
+Z28/Cj4+PiA+Pgo+Pj4gPj4gVGhhbmtzIGZvciB5b3VyIHF1aWNrIHJlc3BvbnNlISAgU2VlaW5n
+IHRoYXQgRFJNX0RFVl9FUlJPUigpIGlzIG5vdwo+Pj4gPj4gZGVwcmVjYXRlZCAod2hpY2ggSSBv
+cmlnaW5hbGx5IG1pc3NlZCwgaW4gYWxsIGhvbmVzdHkpIG1ha2VzIG1lIHZlcnkKPj4+ID4+IGhh
+cHB5LiA6KSAgSSd2ZSBuZXZlciBiZWVuIGEgaHVnZSBmYW4gb2YgdGhlIGZvcm1hdCBvZiB0aGUg
+bWVzc2FnZXMKPj4+ID4+IHRoYXQgRFJNX0RFVl9FUlJPUigpIHByb2R1Y2VzLgo+Pj4gPj4KPj4+
+ID4+IEhvd2V2ZXIsIHBlcmhhcHMgaXQgd291bGQgYmUgYmV0dGVyIHRvIGtlZXAgdGhlc2UgcGF0
+Y2hlcyBhcy1pcywgYXMKPj4+ID4+IHNvbWUga2luZCBvZiBhbiBpbnRlcm1lZGlhdGUsIGxpbWl0
+ZWQtc2NvcGUgY2xlYW51cCArIGJ1Z2ZpeCBjb21ibywKPj4+ID4+IGFuZCBsZWF2ZSB0aGUgY29t
+cGxldGUgRFJNX0RFVl9FUlJPUigpIC0tPiBkZXZfZXJyKCkvZGV2X2Vycl9wcm9iZSgpCj4+PiA+
+PiBjb252ZXJzaW9uIHRvIHNlcGFyYXRlIHBhdGNoZXMuICBJIHRoaW5rIGl0IHdvdWxkIGJlIGJl
+dHRlciB0byBhdm9pZAo+Pj4gPj4gYSBwYXJ0aWFsIGNvbnZlcnNpb24sIGFuZCBJJ2xsIGJlIG1v
+cmUgdGhhbiBoYXBweSB0byBwdXQgdGhlIGNvbXBsZXRlCj4+PiA+PiBjb252ZXJzaW9uIG9uIG15
+IFRPRE8gbGlzdC4gOikKPj4+ID4KPj4+ID4gQnV0IHlvdXIgcGF0Y2gtMiByZWFsbHkganVzdCBv
+cGVuLWNvZGVzLCB3aGF0IGRldl9lcnJfcHJvYmUgaXMgbWVhbnQKPj4+ID4gdG8gZml4LiBTbyB3
+aXRoIGdvaW5nIHRoaXMgd2F5LCB5b3UncmUgc29ydCBvZiBtYWtpbmcgdGhpbmdzIHdvcnNlCj4+
+PiA+IGZpcnN0LAo+Pj4gPiB1bnRpbCB0aGF0IHNlY29uZCBzdGVwIGhhcHBlbnMuCj4+PiA+Cj4+
+PiA+IFNpbWlsYXJseSwgcmVmbG93aW5nIGxpbmVzIGZvciB0aGluZ3MgdGhhdCBnZXQgcmVtb3Zl
+ZCBpbiBhIHdlZWsgZG8gbm90Cj4+PiA+IHNlcnZlIGEgcHVycG9zZSAtIHRob3NlIGxpbmUtYnJl
+YWtzIGhhdmUgYmVlbiB0aGF0IHdheSBmb3IgeWVhcnMKPj4+ID4gYWxyZWFkeS4KPj4+IAo+Pj4g
+SG1tLCBpdCBtYWtlcyBzZW5zZSB3aGVuIGRlc2NyaWJlZCB0aGF0IHdheS4gIEknbGwgc2VlIHRv
+IHBlcmZvcm0gdGhlCj4+PiBjb21wbGV0ZSBjb252ZXJzaW9uIGluIHRoZSBuZXh0IGZldyBkYXlz
+Lgo+PiAKPj4ganVzdCBhIG5vdGUsIGFzIHdyaXR0ZW4gb24gSVJDIGVhcmxpZXIsIEkgYW0gc2l0
+dGluZyBvbiBhIAo+PiBkZXZfZXJyX3Byb2JlCj4+IGNvbnZlcnNpb24gZm9yIGR3LWRzaS1yb2Nr
+Y2hpcC4KPj4gCj4+IEkgd2FzIHdhaXRpbmcgdG8gc2VlIGlmIG1vcmUgY2xlYW51cHMgdHVybmVk
+IHVwLCBzbyBkaWRuJ3Qgc2VudCB0aGF0IAo+PiB5ZXQuCj4+IAo+PiBEb24ndCB3YW50IHRvIHN0
+ZWFsIHlvdXIgc3BvdGxpZ2h0IHRob3VnaCwgc28gbm90IHN1cmUgaWYgSSBzaG91bGQgCj4+IHNl
+bmQKPj4gdGhhdCBvciB3YWl0IGZvciB5b3VyIGNvbnZlcnNpb24gOy0pCj4gCj4gSSBzZWUgbm8g
+cmVhc29ucyB3aHkgc2hvdWxkIHdlIGR1cGxpY2F0ZSBzb21lIGVmZm9ydC4gOikgIElmIHlvdSdy
+ZQo+IGFscmVhZHkgbmVhcmluZyB0aGUgZmlsZS1sZXZlbCBjb252ZXJzaW9uIHRvIGl0cyBjb21w
+bGV0aW9uLCBwbGVhc2UKPiBmZWVsIGZyZWUgdG8gc2VuZCBpdCwgYW5kIHdlIGNhbiBkcm9wIHRo
+aXMgc2VyaWVzLiA6KQoKU29ycnksIEkgd2Fzbid0IGNsZWFyIGVub3VnaC4gIFdoZW4gSSB3cm90
+ZSAid2UgY2FuIGRyb3AgdGhpcyBzZXJpZXMiLApJIGFjdHVhbGx5IHJlZmVycmVkIHRvIHdoYXQg
+dGhpcyBzZXJpZXMgbWlnaHQgaGF2ZSB0dXJuZWQgaW50bywgaS5lLgppbnRvIG15IGZpbGUtbGV2
+ZWwgY29udmVyc2lvbi4gOikKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
