@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0636D5C0CF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 14:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD8AD5C0CF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 14:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jVcLk87PrYgvSjujfim/oYojiX+4U7h/rVgPO2bbLIs=; b=Qw13+8V8vc1b9E
-	wokbzlU8DKR3btx7o1Vh88nhwKj94ZEQrqHIgdExttF7WioaGWUzwJtkljjaALZQb2ufbSQBeIzqv
-	5gUmfa2y4tw1872yi1QZwGxv3f10XuNJkHtm/TUL6NId7ghM1qgNtTBFBRJhgDQPjr0NFt+Q5cOBn
-	X8D0q+IWevoh/J+nQbBsQM0F9Fr2hc1ELYCDXtUYg+8vc5jigQOGXjznW9TQGtMzSjQjHt29CN+IR
-	iiRo2y+YoYHKSnxvG4pc5Uwbk143Tz/aV/grRsnXz7nVPL478Ic+aneyRSDNgv+xKN2TN0yK1xcbt
-	sjUQgUw3eS5gEZDmDi7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6lACdX0z4KAT6mlZ0Y9hu282SRHtw/zLP4HBffmTmSI=; b=u6pY9Svog07/w9f3gjR5uyAS66
+	XOdbdyDtYPe5s1ogMkN/1jA7pcKuN9xfY/6MFywNACPcYOijTS7gTDBlhfg9ASxvs+EU9YAnQFpfL
+	bD0MWp+N/P4Bu/qGdnZKq35kqHqdXdqVhk8kmV6lWpp1m2on6kO3ZoBsxjYcSNK8YABHSAywZtVEx
+	IBnFuHtOJ6trag88z9wZQqKZCbAyqC8uH5/cox90glfv3cGsevZQfgp12zkS/2h7zTKS1vq7vMPNk
+	dvBPLMESrBRaeVf0GOzUYlzx4LVmg8mufnfDG7F5jCUeUj1v4KRCda2R5hIxQqoIEx+gNcsVfRtdL
+	ZShz5K5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9PsL-0000000Appx-0sHn;
-	Fri, 08 Nov 2024 14:22:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t9Q1h-0000000ArRH-0M10;
+	Fri, 08 Nov 2024 14:31:53 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9PU0-0000000Am3e-3EyL;
-	Fri, 08 Nov 2024 13:57:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=78Y1JoVFkZuBkpLjUlEv4mMs5Q6hmXPT2whCgK1XDTI=; b=dNH0V0t0Ayw9j/OiJ5WjyYGdWj
-	mgfTW3GzzqcQswfje4C5TAasrSb+TvY2D33GEfMuGWYB1q8scJuDIM+NhmKdS2Yf0lMjnnUee/ciq
-	FPnaC0sBjtxxeIGnt8ZEDCldJVjR0n13xL5clhOpGd7MCnMFjCu0/BQ5DDXcCkwrS5on9J+s/I8lm
-	BgMwWBvkx+3GVj3MA4nl8gzCBm1ulNgT+jz0ShHueQFUF1ntkovIwwCyBsyQe8pLcktDz7WlDchDG
-	8VORumLcPYxc8deZHJY5qK7coYFae+JkFPxXS39Nsp74RSqh/VzuNWkVZYMFnkMJTWQjAbbAei0yK
-	A14m9Eag==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t9PTb-0006UM-JH; Fri, 08 Nov 2024 14:56:39 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Dragan Simic <dsimic@manjaro.org>
-Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
+	id 1t9Pbm-0000000An5I-12E9;
+	Fri, 08 Nov 2024 14:05:08 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1731074703;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=hPQvHE3q81KEG1KWpRY76/YYpzUKNWMXavpJD8Jdyj8=;
+	b=X6+JIDD8w/pV1TnT7U0Owy43XKZNWlYyZGxAGEXciKVjqCG2FkpMvi+HP+IlhfTOnTzZk9
+	8r56/KZNaLMB4D+VcUVPKibgBLC9G5ZY61C9/Liy15awpYRC3/r9kwyThxSlZMZazdqlHI
+	nDRU/88tU4JCAfavUYsWg3LUKl4IgBsmIemzeiFpd+CL99C/2cDZfxDK+I2SEy2mManDod
+	LHmWYccNCv+ek5zuXrZZUDtwiJdqKbOZZQzMlslS9UxsqkLdYRoOXl+K6L0qhscfIfXMDg
+	bCN7wzNvAnM3mJKpAIsZMvwCS+MaoRuM5W/uxj4EqpsjOuVjeNZ9Hy6KRXDOQA==
+Date: Fri, 08 Nov 2024 15:05:02 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ hjc@rock-chips.com, andy.yan@rock-chips.com,
  maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
  airlied@gmail.com, simona@ffwll.ch, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 1/2] drm/rockchip: dsi: Perform trivial code cleanups
-Date: Fri, 08 Nov 2024 14:56:38 +0100
-Message-ID: <13633881.uLZWGnKmhe@diego>
-In-Reply-To: <35555b58a7284450fb16281514e4e6a3eb9c7b82.1731073565.git.dsimic@manjaro.org>
+In-Reply-To: <13633881.uLZWGnKmhe@diego>
 References: <cover.1731073565.git.dsimic@manjaro.org>
  <35555b58a7284450fb16281514e4e6a3eb9c7b82.1731073565.git.dsimic@manjaro.org>
-MIME-Version: 1.0
+ <13633881.uLZWGnKmhe@diego>
+Message-ID: <3734f6a5424e3537d717c587a058fc85@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_055704_822619_61B3A79D 
-X-CRM114-Status: GOOD (  20.06  )
+X-CRM114-CacheID: sfid-20241108_060506_767113_FFAB6BE5 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,87 +70,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hey Dragan,
-
-Am Freitag, 8. November 2024, 14:53:57 CET schrieb Dragan Simic:
-> Perform a few trivial code cleanups, to make one logged message a bit more
-> consistent with the other logged messages by capitalizing its first word, and
-> to avoid line wrapping by using the 100-column width better.
-> 
-> No intended functional changes are introduced by these code cleanups.
-> 
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
->  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> index 58a44af0e9ad..f451e70efbdd 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> @@ -1379,7 +1379,7 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  	}
->  
->  	if (!dsi->cdata) {
-> -		DRM_DEV_ERROR(dev, "no dsi-config for %s node\n", np->name);
-> +		DRM_DEV_ERROR(dev, "No dsi-config for %s node\n", np->name);
-
-this is all probe-related, why not convert to dev_err_probe?
-
-As the doc states [0], DRM_DEV_ERROR is deprecated in favor of dev_err.
-So dev_err_probe would be the correct way to go?
-
-
-
-[0] https://elixir.bootlin.com/linux/v6.11.6/source/include/drm/drm_print.h#L431
-
->  		return -EINVAL;
->  	}
->  
-> @@ -1408,19 +1408,16 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  			dsi->pllref_clk = NULL;
->  		} else {
->  			ret = PTR_ERR(dsi->pllref_clk);
-> -			DRM_DEV_ERROR(dev,
-> -				      "Unable to get pll reference clock: %d\n",
-> -				      ret);
-> +			DRM_DEV_ERROR(dev, "Unable to get pll reference clock: %d\n", ret);
->  			return ret;
->  		}
->  	}
->  
->  	if (dsi->cdata->flags & DW_MIPI_NEEDS_PHY_CFG_CLK) {
->  		dsi->phy_cfg_clk = devm_clk_get(dev, "phy_cfg");
->  		if (IS_ERR(dsi->phy_cfg_clk)) {
->  			ret = PTR_ERR(dsi->phy_cfg_clk);
-> -			DRM_DEV_ERROR(dev,
-> -				      "Unable to get phy_cfg_clk: %d\n", ret);
-> +			DRM_DEV_ERROR(dev, "Unable to get phy_cfg_clk: %d\n", ret);
->  			return ret;
->  		}
->  	}
-> @@ -1465,8 +1462,7 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  	if (IS_ERR(dsi->dmd)) {
->  		ret = PTR_ERR(dsi->dmd);
->  		if (ret != -EPROBE_DEFER)
-> -			DRM_DEV_ERROR(dev,
-> -				      "Failed to probe dw_mipi_dsi: %d\n", ret);
-> +			DRM_DEV_ERROR(dev, "Failed to probe dw_mipi_dsi: %d\n", ret);
->  		return ret;
->  	}
->  
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSGVpa28sCgpPbiAyMDI0LTExLTA4IDE0OjU2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+PiBBbSBGcmVpdGFnLCA4LiBOb3ZlbWJlciAyMDI0LCAxNDo1Mzo1NyBDRVQgc2NocmllYiBEcmFn
+YW4gU2ltaWM6Cj4+IFBlcmZvcm0gYSBmZXcgdHJpdmlhbCBjb2RlIGNsZWFudXBzLCB0byBtYWtl
+IG9uZSBsb2dnZWQgbWVzc2FnZSBhIGJpdCAKPj4gbW9yZQo+PiBjb25zaXN0ZW50IHdpdGggdGhl
+IG90aGVyIGxvZ2dlZCBtZXNzYWdlcyBieSBjYXBpdGFsaXppbmcgaXRzIGZpcnN0IAo+PiB3b3Jk
+LCBhbmQKPj4gdG8gYXZvaWQgbGluZSB3cmFwcGluZyBieSB1c2luZyB0aGUgMTAwLWNvbHVtbiB3
+aWR0aCBiZXR0ZXIuCj4+IAo+PiBObyBpbnRlbmRlZCBmdW5jdGlvbmFsIGNoYW5nZXMgYXJlIGlu
+dHJvZHVjZWQgYnkgdGhlc2UgY29kZSBjbGVhbnVwcy4KPj4gCj4+IFNpZ25lZC1vZmYtYnk6IERy
+YWdhbiBTaW1pYyA8ZHNpbWljQG1hbmphcm8ub3JnPgo+PiAtLS0KPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jIHwgMTIgKysrKy0tLS0tLS0tCj4+ICAx
+IGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQo+PiAKPj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5j
+IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCj4+
+IGluZGV4IDU4YTQ0YWYwZTlhZC4uZjQ1MWU3MGVmYmRkIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwo+PiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwo+PiBAQCAtMTM3OSw3ICsx
+Mzc5LDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9wcm9iZShzdHJ1Y3QgCj4+
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gIAl9Cj4+IAo+PiAgCWlmICghZHNpLT5jZGF0YSkg
+ewo+PiAtCQlEUk1fREVWX0VSUk9SKGRldiwgIm5vIGRzaS1jb25maWcgZm9yICVzIG5vZGVcbiIs
+IG5wLT5uYW1lKTsKPj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJObyBkc2ktY29uZmlnIGZvciAl
+cyBub2RlXG4iLCBucC0+bmFtZSk7Cj4gCj4gdGhpcyBpcyBhbGwgcHJvYmUtcmVsYXRlZCwgd2h5
+IG5vdCBjb252ZXJ0IHRvIGRldl9lcnJfcHJvYmU/Cj4gCj4gQXMgdGhlIGRvYyBzdGF0ZXMgWzBd
+LCBEUk1fREVWX0VSUk9SIGlzIGRlcHJlY2F0ZWQgaW4gZmF2b3Igb2YgZGV2X2Vyci4KPiBTbyBk
+ZXZfZXJyX3Byb2JlIHdvdWxkIGJlIHRoZSBjb3JyZWN0IHdheSB0byBnbz8KClRoYW5rcyBmb3Ig
+eW91ciBxdWljayByZXNwb25zZSEgIFNlZWluZyB0aGF0IERSTV9ERVZfRVJST1IoKSBpcyBub3cK
+ZGVwcmVjYXRlZCAod2hpY2ggSSBvcmlnaW5hbGx5IG1pc3NlZCwgaW4gYWxsIGhvbmVzdHkpIG1h
+a2VzIG1lIHZlcnkKaGFwcHkuIDopICBJJ3ZlIG5ldmVyIGJlZW4gYSBodWdlIGZhbiBvZiB0aGUg
+Zm9ybWF0IG9mIHRoZSBtZXNzYWdlcwp0aGF0IERSTV9ERVZfRVJST1IoKSBwcm9kdWNlcy4KCkhv
+d2V2ZXIsIHBlcmhhcHMgaXQgd291bGQgYmUgYmV0dGVyIHRvIGtlZXAgdGhlc2UgcGF0Y2hlcyBh
+cy1pcywgYXMKc29tZSBraW5kIG9mIGFuIGludGVybWVkaWF0ZSwgbGltaXRlZC1zY29wZSBjbGVh
+bnVwICsgYnVnZml4IGNvbWJvLAphbmQgbGVhdmUgdGhlIGNvbXBsZXRlIERSTV9ERVZfRVJST1Io
+KSAtLT4gZGV2X2VycigpL2Rldl9lcnJfcHJvYmUoKQpjb252ZXJzaW9uIHRvIHNlcGFyYXRlIHBh
+dGNoZXMuICBJIHRoaW5rIGl0IHdvdWxkIGJlIGJldHRlciB0byBhdm9pZAphIHBhcnRpYWwgY29u
+dmVyc2lvbiwgYW5kIEknbGwgYmUgbW9yZSB0aGFuIGhhcHB5IHRvIHB1dCB0aGUgY29tcGxldGUK
+Y29udmVyc2lvbiBvbiBteSBUT0RPIGxpc3QuIDopCgo+IFswXSAKPiBodHRwczovL2VsaXhpci5i
+b290bGluLmNvbS9saW51eC92Ni4xMS42L3NvdXJjZS9pbmNsdWRlL2RybS9kcm1fcHJpbnQuaCNM
+NDMxCj4gCj4+ICAJCXJldHVybiAtRUlOVkFMOwo+PiAgCX0KPj4gCj4+IEBAIC0xNDA4LDE5ICsx
+NDA4LDE2IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfcHJvYmUoc3RydWN0IAo+
+PiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAJCQlkc2ktPnBsbHJlZl9jbGsgPSBOVUxMOwo+
+PiAgCQl9IGVsc2Ugewo+PiAgCQkJcmV0ID0gUFRSX0VSUihkc2ktPnBsbHJlZl9jbGspOwo+PiAt
+CQkJRFJNX0RFVl9FUlJPUihkZXYsCj4+IC0JCQkJICAgICAgIlVuYWJsZSB0byBnZXQgcGxsIHJl
+ZmVyZW5jZSBjbG9jazogJWRcbiIsCj4+IC0JCQkJICAgICAgcmV0KTsKPj4gKwkJCURSTV9ERVZf
+RVJST1IoZGV2LCAiVW5hYmxlIHRvIGdldCBwbGwgcmVmZXJlbmNlIGNsb2NrOiAlZFxuIiwgCj4+
+IHJldCk7Cj4+ICAJCQlyZXR1cm4gcmV0Owo+PiAgCQl9Cj4+ICAJfQo+PiAKPj4gIAlpZiAoZHNp
+LT5jZGF0YS0+ZmxhZ3MgJiBEV19NSVBJX05FRURTX1BIWV9DRkdfQ0xLKSB7Cj4+ICAJCWRzaS0+
+cGh5X2NmZ19jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAicGh5X2NmZyIpOwo+PiAgCQlpZiAoSVNf
+RVJSKGRzaS0+cGh5X2NmZ19jbGspKSB7Cj4+ICAJCQlyZXQgPSBQVFJfRVJSKGRzaS0+cGh5X2Nm
+Z19jbGspOwo+PiAtCQkJRFJNX0RFVl9FUlJPUihkZXYsCj4+IC0JCQkJICAgICAgIlVuYWJsZSB0
+byBnZXQgcGh5X2NmZ19jbGs6ICVkXG4iLCByZXQpOwo+PiArCQkJRFJNX0RFVl9FUlJPUihkZXYs
+ICJVbmFibGUgdG8gZ2V0IHBoeV9jZmdfY2xrOiAlZFxuIiwgcmV0KTsKPj4gIAkJCXJldHVybiBy
+ZXQ7Cj4+ICAJCX0KPj4gIAl9Cj4+IEBAIC0xNDY1LDggKzE0NjIsNyBAQCBzdGF0aWMgaW50IGR3
+X21pcGlfZHNpX3JvY2tjaGlwX3Byb2JlKHN0cnVjdCAKPj4gcGxhdGZvcm1fZGV2aWNlICpwZGV2
+KQo+PiAgCWlmIChJU19FUlIoZHNpLT5kbWQpKSB7Cj4+ICAJCXJldCA9IFBUUl9FUlIoZHNpLT5k
+bWQpOwo+PiAgCQlpZiAocmV0ICE9IC1FUFJPQkVfREVGRVIpCj4+IC0JCQlEUk1fREVWX0VSUk9S
+KGRldiwKPj4gLQkJCQkgICAgICAiRmFpbGVkIHRvIHByb2JlIGR3X21pcGlfZHNpOiAlZFxuIiwg
+cmV0KTsKPj4gKwkJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIHByb2JlIGR3X21pcGlf
+ZHNpOiAlZFxuIiwgcmV0KTsKPj4gIAkJcmV0dXJuIHJldDsKPj4gIAl9Cj4+IAo+PiAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
