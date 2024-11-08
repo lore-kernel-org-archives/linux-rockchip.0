@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F7C6D5E141
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 06:57:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00760D5E140
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 06:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=50g2cA2tduing92eYWy2OpMr/mtTfQzr8KB8VeW+Tnk=; b=qV1Etukftwcl5x
-	b5VJQY4M/Klrv5sGpr4buAjDZXeZFDajURNWFnkVqgNiPm2LRzaLJiift5nFY3fnHUuLMPoFSuiSE
-	PajGQ6J0QMcI/nkTlM4Z8ZQndVLPlH72Yxo70DKUvSSoSDB/iqGqAkALms1geTWqOvwsAR5yCWzMl
-	st2nTNA83a3qPbUiyieE9KyXuH3/7ogKNUmP0Aurf3y5NCvLFRaEoB+c9TrhBz839n5AP7Z0g35tK
-	MGTn7r9VT2Qc0LhSaiUvIlfqQJLvDdGtFrx5Q0vTiWYP+aP6SaQQjb/ilmXP8mraCFCVnrur5qlUM
-	2eDiAhgtR1SKryFz8sZw==;
+	List-Owner; bh=+9VxkLJUSkX/7LXMa9jXX2lhBLPD1J44tTdJ03Rbp7I=; b=LWFjplaXcHY5WK
+	4VK6SbYepk3+RT6Pa+i2BL33QqDBO25hoPE3++B0iyW9NCUm2PSae0md53aLHbcvaCmrT3jSgHyQJ
+	cWKQeISBR7QybiedGdepUhgB7CQOosI3i37lfQfIZecdkz0Xh03DNgcCHzGqgafakcSZRr7nH/8RJ
+	qRrwHCLbk7n7fTur4JjQZwjEgwkE3CVTs86JpxLD3ax+yf8e8IJY7Yd2bct4M4mkncpVq97gI/ulc
+	69gLX0Rf71WgEjQiK8yzO0u9kgaGI/U7LAyRg7cu4k0wl7ZxJ0Enom2CeUJHE1+B0aoMpjkErQOrQ
+	zSB9GtYzdVj05Hh7F3cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Ivp-00000009YsH-1xk9;
-	Fri, 08 Nov 2024 06:57:21 +0000
-Received: from mail-m118102.qiye.163.com ([115.236.118.102])
+	id 1t9Iw2-00000009Yxs-2a62;
+	Fri, 08 Nov 2024 06:57:34 +0000
+Received: from mail-m127211.xmail.ntesmail.com ([115.236.127.211])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Ivm-00000009YqP-4Axt
+	id 1t9Ivz-00000009Yw8-41ni
 	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Nov 2024 06:57:20 +0000
+	Fri, 08 Nov 2024 06:57:33 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 22d55bed;
-	Fri, 8 Nov 2024 14:57:14 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 22d55c35;
+	Fri, 8 Nov 2024 14:57:27 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
@@ -50,29 +50,28 @@ Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	devicetree@vger.kernel.org,
 	linux-pm@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 2/7] soc: rockchip: add header for suspend mode SIP interface
-Date: Fri,  8 Nov 2024 14:56:21 +0800
-Message-Id: <1731048987-229149-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v5 3/7] pmdomain: core: Introduce dev_pm_genpd_rpm_always_on()
+Date: Fri,  8 Nov 2024 14:56:22 +0800
+Message-Id: <1731048987-229149-4-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1731048987-229149-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1731048987-229149-1-git-send-email-shawn.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkseQlZCTk4dHk1NQk1NSh1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a930a90140009cckunm22d55bed
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkhMSlZLTEwZQk1JQxpPH0lWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a930a90463409cckunm22d55c35
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pio6GAw5FjIZMCoREC8uKy4u
-	OgkKChxVSlVKTEhKS09CS0hNT05LVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUJMTjcG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mj46DSo4OTIdPCohEC83KxkW
+	DjYKCg5VSlVKTEhKS09CS09CSEpMVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhMQkk3Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=EvX9HFbgHRds46heWcpaAQbr9uqJzx+7S0XO0IghFwtnEsDuyv6Eijkyn1YZki04D3RVMzt1qtBdciCIU+xxye+ZunJH8Q5C+1NpnGRijZnKprcGPqod64KvcCIvbt4w87c6v2TZxG/YSH62Tts4abGktyWb5OMBVh01dEdFZLs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=HExq89J04oe4XAe0XhWdyylqjS+SWwit6uhZCVLqyMI=;
+	b=B7wUVGp7e90MgA1gudqZ7jrjdoIhYluOXoBsB3uaNfDaPM6d/ZWAYxq5b8O153FHPUiKFtRNALinFiBQO4vvUL3l3SJyjNIC3/KqrpoHg481HQyvb67clH6A+nqGVeQDZHTAJc5+0JqY4Dx/QQiKQG4v8F4MBopWNUIEkFzlbvY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=GwuUG+2RBYma2ywALVDh2T0ahj3jU4sSez7ZNlwgjq0=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_225719_229247_8A73D0B6 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241107_225732_230968_8E84954C 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,10 +89,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add ROCKCHIP_SIP_SUSPEND_MODE to pass down parameters to Trusted Firmware
-in order to decide suspend mode. Currently only add ROCKCHIP_SLEEP_PD_CONFIG
-which teaches firmware to power down controllers or not.
+From: Ulf Hansson <ulf.hansson@linaro.org>
 
+For some usecases a consumer driver requires its device to remain power-on
+from the PM domain perspective during runtime. Using dev PM qos along with
+the genpd governors, doesn't work for this case as would potentially
+prevent the device from being runtime suspended too.
+
+To support these usecases, let's introduce dev_pm_genpd_rpm_always_on() to
+allow consumers drivers to dynamically control the behaviour in genpd for a
+device that is attached to it.
+
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
@@ -102,23 +109,94 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- include/soc/rockchip/rockchip_sip.h | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/pmdomain/core.c   | 34 ++++++++++++++++++++++++++++++++++
+ include/linux/pm_domain.h |  7 +++++++
+ 2 files changed, 41 insertions(+)
 
-diff --git a/include/soc/rockchip/rockchip_sip.h b/include/soc/rockchip/rockchip_sip.h
-index c46a9ae..501ad1f 100644
---- a/include/soc/rockchip/rockchip_sip.h
-+++ b/include/soc/rockchip/rockchip_sip.h
-@@ -6,6 +6,9 @@
- #ifndef __SOC_ROCKCHIP_SIP_H
- #define __SOC_ROCKCHIP_SIP_H
+diff --git a/drivers/pmdomain/core.c b/drivers/pmdomain/core.c
+index 5ede0f7..2ccfcb7 100644
+--- a/drivers/pmdomain/core.c
++++ b/drivers/pmdomain/core.c
+@@ -692,6 +692,36 @@ bool dev_pm_genpd_get_hwmode(struct device *dev)
+ }
+ EXPORT_SYMBOL_GPL(dev_pm_genpd_get_hwmode);
  
-+#define ROCKCHIP_SIP_SUSPEND_MODE		0x82000003
-+#define ROCKCHIP_SLEEP_PD_CONFIG		0xff
++/**
++ * dev_pm_genpd_rpm_always_on() - Control if the PM domain can be powered off.
++ *
++ * @dev: Device for which the PM domain may need to stay on for.
++ * @on: Value to set or unset for the condition.
++ *
++ * For some usecases a consumer driver requires its device to remain power-on
++ * from the PM domain perspective during runtime. This function allows the
++ * behaviour to be dynamically controlled for a device attached to a genpd.
++ *
++ * It is assumed that the users guarantee that the genpd wouldn't be detached
++ * while this routine is getting called.
++ *
++ * Return: Returns 0 on success and negative error values on failures.
++ */
++int dev_pm_genpd_rpm_always_on(struct device *dev, bool on)
++{
++	struct generic_pm_domain *genpd;
 +
- #define ROCKCHIP_SIP_DRAM_FREQ			0x82000008
- #define ROCKCHIP_SIP_CONFIG_DRAM_INIT		0x00
- #define ROCKCHIP_SIP_CONFIG_DRAM_SET_RATE	0x01
++	genpd = dev_to_genpd_safe(dev);
++	if (!genpd)
++		return -ENODEV;
++
++	genpd_lock(genpd);
++	dev_gpd_data(dev)->rpm_always_on = on;
++	genpd_unlock(genpd);
++
++	return 0;
++}
++
+ static int _genpd_power_on(struct generic_pm_domain *genpd, bool timed)
+ {
+ 	unsigned int state_idx = genpd->state_idx;
+@@ -863,6 +893,10 @@ static int genpd_power_off(struct generic_pm_domain *genpd, bool one_dev_on,
+ 		if (!pm_runtime_suspended(pdd->dev) ||
+ 			irq_safe_dev_in_sleep_domain(pdd->dev, genpd))
+ 			not_suspended++;
++
++		/* The device may need its PM domain to stay powered on. */
++		if (to_gpd_data(pdd)->rpm_always_on)
++			return -EBUSY;
+ 	}
+ 
+ 	if (not_suspended > 1 || (not_suspended == 1 && !one_dev_on))
+diff --git a/include/linux/pm_domain.h b/include/linux/pm_domain.h
+index b637ec1..30186ad 100644
+--- a/include/linux/pm_domain.h
++++ b/include/linux/pm_domain.h
+@@ -245,6 +245,7 @@ struct generic_pm_domain_data {
+ 	unsigned int default_pstate;
+ 	unsigned int rpm_pstate;
+ 	bool hw_mode;
++	bool rpm_always_on;
+ 	void *data;
+ };
+ 
+@@ -277,6 +278,7 @@ ktime_t dev_pm_genpd_get_next_hrtimer(struct device *dev);
+ void dev_pm_genpd_synced_poweroff(struct device *dev);
+ int dev_pm_genpd_set_hwmode(struct device *dev, bool enable);
+ bool dev_pm_genpd_get_hwmode(struct device *dev);
++int dev_pm_genpd_rpm_always_on(struct device *dev, bool on);
+ 
+ extern struct dev_power_governor simple_qos_governor;
+ extern struct dev_power_governor pm_domain_always_on_gov;
+@@ -360,6 +362,11 @@ static inline bool dev_pm_genpd_get_hwmode(struct device *dev)
+ 	return false;
+ }
+ 
++static inline int dev_pm_genpd_rpm_always_on(struct device *dev, bool on)
++{
++	return -EOPNOTSUPP;
++}
++
+ #define simple_qos_governor		(*(struct dev_power_governor *)(NULL))
+ #define pm_domain_always_on_gov		(*(struct dev_power_governor *)(NULL))
+ #endif
 -- 
 2.7.4
 
