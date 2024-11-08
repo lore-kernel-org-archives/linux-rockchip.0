@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E44A5D64074
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 17:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CADCD64072
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Nov 2024 18:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/C0GaTMbZstSY9HIjBejakOKaPz9WVvYZ007cJpQ5/0=; b=bhaDe2ronOtej0q8iHcXYjECPG
-	LPWkgk8hC9l9DWEfECTEdCCqNP0JpDYKRRsCiwGErVBJuogZVVc4o6xB1MTPrTw4c6M+u75U/iWt+
-	+6niyj14PJj0tZFXlsZRy49suAh3djFowIeO8ZpSgKQNtJq7dGdWY2Q0HjoBf6MxC+OSGH+iHEbLA
-	TxCvTH9YT615oaEWXgMJsgoOuzNuD9wV4bPoPwFuSPVGQbFsMNtXwsVcaoGlWwWdcBygvmqhFLYLJ
-	oZ2+4lsXseuuBmAVH3s/OlWGSoadhGqy2d+HiSX8lNeMRGCLXxfYtW8UiDBQgJ7ExtVQuXUPi+xQV
-	ki39q/4w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SipWtZpPQ50IN+T+j+kUhA9dZaAu/AQaHzE67fLbLgw=; b=Kvemt1p4zF3BGc
+	R1wpK8HpP/C1ZKcSbUEXHpAGoBiesf3pUc9L786dgvZ5GFKCwmSYxvHXfeqmX7quI/GZBXN1jBmVn
+	NTSFW7Yr2H59NpJ2FsPDgPRyX0dP+gYqe9oNXHvY046vUAYwzMXE2J+cgKtIuf9A8sS16KilGpSZD
+	IPqFvHDeVoFEAE/L+cvq5tJV2lMRidRl9VNr2QmDwU4u9bWMRjN5gPKceA1fMKhDwMiqLU0ehF7uT
+	1YXNKvj/ihjeagZykCognqVq2udI+nFj8GYzeeb1IWzaqzLaQH0wi+lGRhggwGvKUWPFP/QofBycY
+	w8NeQzhDynYfxuOiuTfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9T4S-0000000BTQI-3fQK;
-	Fri, 08 Nov 2024 17:46:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t9U7i-0000000BfJ5-3zoL;
+	Fri, 08 Nov 2024 18:54:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9R4l-0000000B3sf-3Iop;
-	Fri, 08 Nov 2024 15:39:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 285FC5C5C9B;
-	Fri,  8 Nov 2024 15:38:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3653CC4CECD;
-	Fri,  8 Nov 2024 15:39:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731080346;
-	bh=KT2dAWjXA9NMpRhfbfW5C2O9VQR+4LIDwzYJziTxKsE=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=R19ORny+GXiSW78nbHyYvvhMTMgiAabRb3pWyM4iE8Vf89/slkYk1Y8BUpojMURgC
-	 m4HAUuMkP2GljDJ1q3e9baivK6wVWADdP8BP1ZrOLbhIyghSoP4smcJRX7Iz88sq5j
-	 Ab0QHP1djW1Ml1b5aJPnmpyzwDXXKNGh/c4ADayc61UiTuW8jrG5nIm33BEirQlzn7
-	 ZKkpfvxr1eS/++nJqWf6VAZcvzH5geSxSda666Uz2p6YdA5h5RUHPv7FKjwDP7pk9P
-	 zdS7J51KpXlFXRfO90yq9f8h+sIMS2+AQuZFIPjtaWeIy3HtqMIUQdGoGxtIKCJUGE
-	 g7Kg7vca8GWfg==
-Date: Fri, 08 Nov 2024 09:39:04 -0600
+	id 1t9U5u-0000000BeUH-1vIN;
+	Fri, 08 Nov 2024 18:52:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1731091947;
+	bh=L9PZiEX333+Du0NXmYmoMzUp2gsXJVu8bc+StkfIx1E=;
+	h=From:To:Cc:Subject:Date:From;
+	b=e9yPG+j+tbA5rv4eGyOBc65gC2rIW8aGsxtTc9tEA/EDmnlJSTPeqedHOMGE/qtvE
+	 VFV5mJ3KU5wl1hez1BGe7Z24yN3t9gAIp2IE5zR9Du9rC4eTHovO2caopGpD6s2nFS
+	 voNFKk8l0a0umITXRWRn23jlyl7M+GjNcWDXRmYujFQBAuwYqDg7qvHVXomWG0vksF
+	 C+WDDA6e6t2wbaib40Xv+vqgT67Xhezt684ituQIMFvxRnMKb/tJhwM2Lc761Ba3L2
+	 YNugjQnn/5mlBwa58HLzbkYbQz47qwflIebsA1Vt5VlNvfQ4V+tueJEuJ47GHV7V17
+	 U3wtA5O+Ms4uw==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8903117E376A;
+	Fri,  8 Nov 2024 19:52:24 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stubner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH v3 0/3] drm: rockchip: vop2: Add VP clock resets support
+Date: Fri,  8 Nov 2024 13:50:38 -0500
+Message-ID: <20241108185212.198603-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: Dragan Simic <dsimic@manjaro.org>, Conor Dooley <conor+dt@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, 
- Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org, 
- Chukun Pan <amadeus@jmu.edu.cn>
-In-Reply-To: <20241108031847.700606-1-bigfoot@classfun.cn>
-References: <20241108031847.700606-1-bigfoot@classfun.cn>
-Message-Id: <173108022869.2219990.8289858768145189769.robh@kernel.org>
-Subject: Re: [PATCH v5 0/3] Add support for Ariaboard Photonicat RK3568
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_073907_938477_59A410EB 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20241108_105230_694072_222D93DB 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +92,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The clock reset must be used when the VOP is configured. Skipping it can
+put the VOP in an unknown state where the HDMI signal is either lost or
+not matching the selected mode.
 
-On Fri, 08 Nov 2024 11:18:44 +0800, Junhao Xie wrote:
-> Add dts for Ariaboard Photonicat RK3568.
-> 
-> This series bring support for:
-> * Debug UART
-> * SDIO QCA9377 WiFi and Bluetooth
-> * M.2 E-Key PCIe WiFi and Bluetooth
-> * M.2 B-Key USB Modem WWAN
-> * Ethernet WAN Port
-> * MicroSD Card slot
-> * eMMC
-> * HDMI Output
-> * Mali GPU
-> * USB Type-A
-> 
-> Changed from v1:
-> - move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
-> - gmac1 change to phy-mode rgmii-id
-> - corrected some regulator to be closer to schematics
-> - rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
-> https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
-> 
-> Changed from v2:
-> - remove unused headers
-> - corrected some regulator to be closer to schematics
-> - remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
-> https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
-> 
-> Changed from v3:
-> - corrected some regulator to be closer to schematics
-> - changed to using clk32k_out1 in xin32k
-> https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
-> 
-> Changed from v4:
-> - corrected some regulator to be closer to schematics
-> - corrected some label to match node name
-> - use resets props in phy node instead deprecated snps,reset-gpio
-> https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
-> 
-> Junhao Xie (3):
->   dt-bindings: vendor-prefixes: Add prefix for Ariaboard
->   dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
->   arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3568-photonicat.dts   | 600 ++++++++++++++++++
->  4 files changed, 608 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-> 
-> --
-> 2.47.0
-> 
-> 
-> 
+This adds support for rk3588(s) based SoCs.
 
+Changes since v2:
+- Rebase on latest master
+- Add details on how to reproduce the issue
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Changes since v1:
+- Add AXI and AHB clock resets
+- Set maxItems for !rk3588 in vop2 bindings
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Detlev Casanova (3):
+  vop2: Add clock resets support
+  arm64: dts: rockchip: Add VOP clock resets for rk3588s
+  dt-bindings: display: vop2: Add VP clock resets
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+ .../display/rockchip/rockchip-vop2.yaml       | 40 +++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 30 ++++++++++++++
+ 3 files changed, 82 insertions(+)
 
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3568-photonicat.dtb' for 20241108031847.700606-1-bigfoot@classfun.cn:
-
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: rfkill-modem: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
-
-
-
-
+-- 
+2.47.0
 
 
 _______________________________________________
