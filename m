@@ -4,115 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580DCD5E36C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Nov 2024 13:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A5BED5E37A
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Nov 2024 18:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZdOKCf4Xe/jmYiVx5yg//Bzfv3w6hfUTo23qCq8TvKM=; b=ElVtnVBQSiJtSi
-	NYRAZkbpCVL7QMKbn/FmtzBeQCAC80jK+MGZsNgeqoPFqGdAU69FgDBED0CcAvkIovAXR0N+N0N/A
-	y5osVHK7IaE/muEVTCw926wszm/c+OzJuDlJMjtjMqueNVhp1ndugMgod5k97YxQQIz5IkciIv+Xg
-	vjx0mMZ62Ve7UlXaPWBxhDSKjAppXTMFJAuxcTBELaZk0XquBFrjqIZWodRW6838YUmlhVTVTDwHd
-	43SXePX6yDbxqx+DNQxwOQIOd+BPsjb7pqBbC8KeY+NEZMgRUt55959WPNBcFf9KEMRKA1sl2JUL9
-	8D9rXG0QoOdGfA1Z2fAg==;
+	List-Owner; bh=WZBArUCA0GEOwomRkbJNXPyXtJPILA6qlqr9exIPZDU=; b=VdzLafEePmXt09
+	7UnrMjl/Ssg/T04HrxWjj1aekC9bEzYwkUkYljuqTqM3WqhiwOW4NkNf7egNsEhsmQV570AMo4h1l
+	AqsAPk59gZKT10/Pa2YMKgRR+SGKBAUVJhc5cBN/lP9VXWl/r0oAAqZrjCx/ycy+BeTVgLUhDvoEh
+	PcsloiFGWnSARbdJLMIq6JAhH5fZBVVjSgYDvUIFQ5vTTkpBtmdjBH9qNyacPG5uGF424RGq3ZdZx
+	ROg2s+BrzZQIaZqcerdzR4iJEAzMwnrTMxXYkj3YYBkCWNUSBt461Gx8AYCXHOq9CDcNYCDvONAfs
+	rN+L7RYSvTJWT6i7enng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9lFP-0000000DNxg-3XmQ;
-	Sat, 09 Nov 2024 13:11:27 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1t9q9f-0000000DnVw-360T;
+	Sat, 09 Nov 2024 18:25:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9ktW-0000000DLAB-0M3u
-	for linux-rockchip@lists.infradead.org;
-	Sat, 09 Nov 2024 12:48:55 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-539d9fffea1so3099850e87.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 09 Nov 2024 04:48:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731156528; x=1731761328; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0+2GniAkdmp4BwJcsCVeiFyEwNMIk2x1tb1O8W07KrE=;
-        b=EDlMCajvVNvuyYEi3NfiAE2aHoZBRnUEUUR+5JxIWqwcEF4O7+oSSHlqzUKah4IGzi
-         QN9Gxu6MOzA+HKgKex0DVeNL0lLfEfnVN2pRCskD14ldxYppGRCS33RcuSnYr9kijNO6
-         VG/JbI3Qf8NNT5FdZC0X1ecQ31PaoCHeTdJJ2y8HAyHr2D9KFoxu6rjITLrEUx2qpRXD
-         WW9LST9PLTx3KdEqCSYzkj2iMSq/oFK6xT3pZLhIMkc0Upx6/nmLYvqU5iHyltswW0AR
-         fVOUCmZeAFyPfSzeddK14Z3qPmxGJpBtJQxBcxV2Y/y8B6vZ840tqN0q6WzIfSLBJuIv
-         ggJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731156528; x=1731761328;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0+2GniAkdmp4BwJcsCVeiFyEwNMIk2x1tb1O8W07KrE=;
-        b=ittA/vTleLv08uBoc8uviTdCEzwfoVxYQMNQyQNjPwj3w79g57GOECgJfdoQin2Hvf
-         TwfJi8/+i1q/CWvC0uzZvcLIClfZgyyQLwfHL8cnExj2ogU0AEMsuxdaPArOPAzu77xK
-         9Gs5Y5cu9zMzrq0eHasU+6H6KE7QdQ3v5jPSjWLN5qTB6LfMudQ7tEDCgU4b5uIkq1yY
-         zHGqKJetH4ojKT9xGLgT6VlNnmW2dtQgMDkXLrkCZXt5woJF20ltNGgVzDi7SHLFizPL
-         Eo6o3DHSrP7+ZRgMYAgQpxTnlgeqQ3JG88v3GcM/ZSeBQsjMzjnNNtLffENIyNqgysDA
-         JO8A==
-X-Forwarded-Encrypted: i=1; AJvYcCWHoO0kD4zT3gwbOrhc6upxBx2Znylpckz4+zPPwNfrBOT4iQoltiFEUvkXpW+fyyOQlm6F1qVmIFg3J1idvg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz103HlVYU4Ed49qpzZZIzwOHJq28fJ9Y5J+EIaCLp3dkg0lVYv
-	e3+Njf5u9RGsveAyvQQqK0BiWweJ3wMPSmZXabhEHnqZyEudSozQ0tLdjWt0SWY=
-X-Google-Smtp-Source: AGHT+IHTXV5Cz5pjd5Ce3JQaNt839BiITtgrMF3UnvNUaVEgnkA8D0ncy/dtINK9kj+DtzeoWo9CeA==
-X-Received: by 2002:a05:6512:2254:b0:539:e776:71f7 with SMTP id 2adb3069b0e04-53d862ebe11mr3204121e87.37.1731156528375;
-        Sat, 09 Nov 2024 04:48:48 -0800 (PST)
-Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53d826a9b76sm929967e87.172.2024.11.09.04.48.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 Nov 2024 04:48:47 -0800 (PST)
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sat, 09 Nov 2024 14:48:33 +0200
-Subject: [PATCH v3 7/7] drm/bridge_connector: hook
- drm_atomic_helper_connector_hdmi_update_edid()
+	id 1t9q7t-0000000DnDv-2irT;
+	Sat, 09 Nov 2024 18:24:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=vvB5H31tgUpM4qG4v/0WcfNheT0JvDREJderLKJjrc4=; b=eN72TLBDCHOtblxBReVKBpU1df
+	LD5vtrb00VQtoi3tv/EemDP0CCvYvqCeTwW9+KGZbyyPJR0sAfNytjKr6o06y07xpPD9+64BgUp9K
+	lEQ3Uc+olS0xmYx0RhxK/T4yMSEdsjF3B2l2qiYexLeb80WUhIm6GOxxXx8/ap1tKHULRoMV9YhZT
+	0KIAF2lkqCDU9u0GVBLy7Fh4RlO6ubKGP5lFj/EOLBgIsrgya0V9ZhFb9SnXq8A+4h8BW27Hsr3pI
+	A0RhC295gEio6HVwed+1fiQo7h29z8Vbm54aLK7mXSmUVkzEDTsAYMuNpYIGf8be3VRgT6IHkT1Jc
+	z18jf8kg==;
+Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t9q7f-0007Jz-54; Sat, 09 Nov 2024 19:23:47 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Ondrej Jirman <megi@xff.cz>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Jimmy Hon <honyuenkwun@gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Orange Pi 5 Max board
+Date: Sat, 09 Nov 2024 19:23:46 +0100
+Message-ID: <23718124.6Emhk5qWAg@diego>
+In-Reply-To: <20241031031528.23428-4-honyuenkwun@gmail.com>
+References: <20241031031528.23428-2-honyuenkwun@gmail.com>
+ <20241031031528.23428-4-honyuenkwun@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20241109-drm-bridge-hdmi-connector-v3-7-c15afdca5884@linaro.org>
-References: <20241109-drm-bridge-hdmi-connector-v3-0-c15afdca5884@linaro.org>
-In-Reply-To: <20241109-drm-bridge-hdmi-connector-v3-0-c15afdca5884@linaro.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4107;
- i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=yRmYAaGG5FuJnzbiAwK+r8Wa4ofx1aRyHEGe3Ks/gxw=;
- b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ7p+lFxRuV8WF0di+7PrL76Ihi3eyqsmfkm3TtdLbPHfu
- Kv8e1o6GY1ZGBi5GGTFFFl8ClqmxmxKDvuwY2o9zCBWJpApDFycAjCR5AIOhoaNT+94f9VgurjW
- 63et8pWUF1u7C14yvWF1yLnWKWVrq5RnYdFxJvjIztNnN+cGJ5ZUF3E+WFWh8tP/xY+tPcoVGWs
- kdS+e688Szr0xvfpM6ob/a6791d7Z37ef8dXtPTG/hL9GbG6oftp7X/Omcre2U7DNu1tTz+yb/e
- ZnNafE9mo2Tr/wzjfaIWqvF5oELDBtWn/7/cxjNZJ1S5dJ62SacfxzlKmynMBtITLV1PnEcgkxl
- 2q3/TNdA9cIb3gkm9X8yCfJgvPclJ83tYq2LXreWfTycrXvDaXIZyer3WO6HteXZlycK5KVnTH7
- kbZP2QY92btBCVe5rItu/uB/IV9UJGS8bUqp2suFBlpiAA==
-X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
- fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241109_044850_391214_C0C7254F 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20241109_102401_744887_8AD7E18F 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,131 +75,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend drm_bridge_connector code to read the EDID and use it to update
-connector status if the bridge chain implements HDMI bridge. Performing
-it from the generic location minimizes individual bridge's code and
-enforces standard behaviour from all corresponding drivers.
+Hi Jimmy,
 
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
----
- drivers/gpu/drm/display/drm_bridge_connector.c | 67 ++++++++++++++++++++------
- 1 file changed, 53 insertions(+), 14 deletions(-)
+Am Donnerstag, 31. Oktober 2024, 04:14:51 CET schrieb Jimmy Hon:
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+> new file mode 100644
+> index 000000000000..d31b13f99fdc
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+> @@ -0,0 +1,887 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+> +#include "rk3588.dtsi"
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 12ab9f14cc8a8672478ae2804c9a68d766d88ea5..71ae3b2c9049016d1cc0d39a787f6461633efd53 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -17,6 +17,7 @@
- #include <drm/drm_edid.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_modeset_helper_vtables.h>
-+#include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/display/drm_hdmi_state_helper.h>
- 
-@@ -175,17 +176,55 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
-  * Bridge Connector Functions
-  */
- 
-+static const struct drm_edid *
-+drm_bridge_connector_read_edid(struct drm_connector *connector,
-+			       enum drm_connector_status status)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	const struct drm_edid *drm_edid;
-+	struct drm_bridge *bridge;
-+
-+	bridge = bridge_connector->bridge_edid;
-+	if (!bridge)
-+		return NULL;
-+
-+	if (status != connector_status_connected)
-+		return NULL;
-+
-+	drm_edid = drm_bridge_edid_read(bridge, connector);
-+	if (!drm_edid_valid(drm_edid)) {
-+		drm_edid_free(drm_edid);
-+		return NULL;
-+	}
-+
-+	return drm_edid;
-+}
-+
- static enum drm_connector_status
- drm_bridge_connector_detect(struct drm_connector *connector, bool force)
- {
- 	struct drm_bridge_connector *bridge_connector =
- 		to_drm_bridge_connector(connector);
- 	struct drm_bridge *detect = bridge_connector->bridge_detect;
-+	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
- 	enum drm_connector_status status;
- 
- 	if (detect) {
- 		status = detect->funcs->detect(detect);
- 
-+		if (hdmi) {
-+			const struct drm_edid *drm_edid;
-+			int ret;
-+
-+			drm_edid = drm_bridge_connector_read_edid(connector, status);
-+			ret = drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
-+			if (ret)
-+				drm_warn(connector->dev, "updating EDID failed with %d\n", ret);
-+
-+			drm_edid_free(drm_edid);
-+		}
-+
- 		drm_bridge_connector_hpd_notify(connector, status);
- 	} else {
- 		switch (connector->connector_type) {
-@@ -246,29 +285,29 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
- static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
- 					       struct drm_bridge *bridge)
- {
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
- 	enum drm_connector_status status;
- 	const struct drm_edid *drm_edid;
--	int n;
- 
- 	status = drm_bridge_connector_detect(connector, false);
- 	if (status != connector_status_connected)
--		goto no_edid;
-+		return 0;
- 
--	drm_edid = drm_bridge_edid_read(bridge, connector);
--	if (!drm_edid_valid(drm_edid)) {
-+	/* In HDMI setup the EDID has been read and handled as a part of .detect() */
-+	if (!hdmi) {
-+		drm_edid = drm_bridge_connector_read_edid(connector, status);
-+		if (!drm_edid) {
-+			drm_edid_connector_update(connector, NULL);
-+			return 0;
-+		}
-+
-+		drm_edid_connector_update(connector, drm_edid);
- 		drm_edid_free(drm_edid);
--		goto no_edid;
- 	}
- 
--	drm_edid_connector_update(connector, drm_edid);
--	n = drm_edid_connector_add_modes(connector);
--
--	drm_edid_free(drm_edid);
--	return n;
--
--no_edid:
--	drm_edid_connector_update(connector, NULL);
--	return 0;
-+	return drm_edid_connector_add_modes(connector);
- }
- 
- static int drm_bridge_connector_get_modes(struct drm_connector *connector)
+can you check how similar the rk3588-orangepi--5-max is to the
+already existing orangepi-5-plus please?
 
--- 
-2.39.5
+For rk3588s-orangepi-5 and orangepi-5b we already have this nicely
+shared dtsi for commit things, and somehow I assume this might be
+similar for 5-plus vs 5-max.
+
+> +
+> +/ {
+> +	model = "Xunlong Orange Pi 5 Max";
+> +	compatible = "xunlong,orangepi-5-max", "rockchip,rk3588";
+> +
+
+[...]
+
+> +	/* PMIC_EXT_EN */
+> +	vcc_1v1_nldo_s3: vcc-1v1-ndlo-s3-regulator {
+
+vcc_1v1_nldo_s3: regulator-vcc-1v1-ndlo-s3 {
+
+preferred pattern for fixed-regulator nodenames is regulator-......
+
+Same for the othe fixed regulators below.
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_1v1_nldo_s3";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <1100000>;
+> +		regulator-max-microvolt = <1100000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* pcie eth. not a real regulator. 33VAUX */
+> +	vcc_3v3_aux: vcc-3v3-aux-regulator {
+> +		compatible = "regulator-fixed";
+> +		/* Ethernet_power_en */
+> +		gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_LOW>;
+> +		regulator-name = "33vaux";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		startup-delay-us = <50000>;
+> +		vin-supply = <&vcc_3v3_s3>;
+> +	};
+> +
+> +	vcc3v3_pcie30: vcc3v3-pcie30-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		/* PCIE_PWREN_H */
+> +		gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
+> +		regulator-name = "vcc3v3_pcie30";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		startup-delay-us = <5000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* Regulator is enabled whenever vcc_1v8_s0 is on */
+> +	vcc_3v3_s0: vcc-3v3-s0-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_3v3_s0";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vcc_3v3_s3>;
+> +
+> +		regulator-state-mem {
+> +			regulator-off-in-suspend;
+> +		};
+> +	};
+> +
+> +	vcc5v0_sys: vcc5v0-sys-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +	};
+> +
+> +	/* Represents the vcc5v0_usb20 in the schematic */
+> +	/* Also represents the vcc5v0_usb30 in the schematic,
+> +	   both regulators share the same enable gpio */
+
+please make that one comment block and use appropriate formatting
+
+/*
+ * Represents the vcc5v0_usb20 and vcc5v0_usb30 in the schematic,
+ * both regulators share the same enable gpio
+ */
+
+
+> +	vcc5v0_host: vcc5v0-host-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		/* USB_HOST_PWREN */
+> +		gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb_host_pwren>;
+> +		regulator-name = "vcc5v0_host";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	vcc5v0_usb30_otg: vcc5v0-usb30-otg-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		/* USB_OTG_PWREN */
+> +		gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb_otg_pwren>;
+> +		regulator-name = "vcc5v0_usb30_otg";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +};
+
+
+> +	hym8563: rtc@51 {
+> +		compatible = "haoyu,hym8563";
+> +		reg = <0x51>;
+> +		/* RTC_INT_L */
+
+what does this comment try to explain? If that is the name of the pin,
+just name the pinctrl below accordingly (instead of hym8563_int
+if applicable) .
+
+> +		interrupt-parent = <&gpio0>;
+> +		interrupts = <RK_PC4 IRQ_TYPE_LEVEL_LOW>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "hym8563";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&hym8563_int>;
+> +		wakeup-source;
+> +	};
+> +};
+> +
+> +&pwm9 {
+> +	pinctrl-names = "active";
+
+this needs to be "default" to actually work
+
+> +	pinctrl-0 = <&pwm9m2_pins>;
+> +	status = "okay";
+> +};
+
+
+Thanks
+Heiko
+
 
 
 _______________________________________________
