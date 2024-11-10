@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1D9D12D4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 20:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDAD5D12D50
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 20:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sYCtn+kreuVrv0lQFbfu6YsNsUzKof047/Bl8b2DJ3k=; b=PPQCOW1T4rnd+8
-	T0hdBND+IYbcYLxO/6vwbAh2yBlhtObO2Tfg61zHhk3UN4dIS7rXJ3FVeYWp+YDD95xIvnvJxKkmy
-	u21JTPIUdpu6Z4FJwEKhLkrj/9VzPNu1oYyDO9mTe0zg5UDGzsc+/sR5bWqv21+q9PSawgaUWnACy
-	hOSCs4HESRxDNWkDqbAI/vLIT2itnpifUmNzUDSkqy6BSkocf2b/ZMeUCuns7Jl9SqnorET59gX9j
-	s8gvwKb81MjYzztHnzYqrhEeMD3SROMGKB1w8hYoqlhKewdx5ApAiwaQlenofIL8LpoLOYJfthbkF
-	kizkYjO+K2GFrXYjXqTg==;
+	List-Owner; bh=q3kZuFdAU+xXonRz9xptLNco467mx/bk902IVnINkvM=; b=sRCKPH4rlcolWh
+	qCVspXyaNX/tvVv6caCyJazeP3919K1CyioNqjk0f46YkqzpWvl6bgy02Rj+s2MegyPYPdv5XztCN
+	TCKQ2ZA8Ys+z6kdh+Kqm9tNpvQm2mGb5UyI571PldLAQtNEeo45mRnvTym2d09wZ+/VWD2BzrAbNN
+	Vf5Vjo0h20Ha5XplnUq2WdxPpeRGbb+vCTNHKUUxO6RVDyFz+M++L8uGRavhi6b8akfSu6+Ba/agB
+	qLu1Ta46McKp+H07mlGFo4RNDDdeOjW0dzneAJBbBZyu2HpBiIPW9M/TkUSNi4r3/W6Glv7KK1UpE
+	8qFDunGwtihEQYswRq8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAEEv-0000000FWE7-3SVm;
-	Sun, 10 Nov 2024 20:08:53 +0000
+	id 1tAELW-0000000FWme-3PEw;
+	Sun, 10 Nov 2024 20:15:42 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAEEt-0000000FWDS-1wsK;
-	Sun, 10 Nov 2024 20:08:52 +0000
+	id 1tAEK7-0000000FWfx-22aE
+	for linux-rockchip@lists.infradead.org;
+	Sun, 10 Nov 2024 20:14:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=+zZU04tEj4EEZbENw6dSSfYen4JgG0xgFFzxeJ1MLUw=; b=vCEufDANWeR1ag4PqdkTc97zxn
-	OBMNW+Ra3cWADI+YjxE50WeJ/hpCXFOAU1cdZJGI6rPpmc4skY6zBTn4mcRYVvJzOwQ4aji7RW/xs
-	0sDXTUPG99pGFNxWGsrbCxDQ+Ksv3L3uQaH7zWXRC8fgWkYPPHqfVMmT+Bt4boxmTblHYA3jU9ndY
-	VkbtNUQAVnklm53In+hz5Ikmfrrb0Fd9ePgNVkTebPboHrYA+mqUl3uSbYjZqPaSNaqSevGG5pN5D
-	msyoMVwMXMET9vYXNNNYuBkP4CGP8MAp5txbqkH/z7Mqln9cW3U3saHIyrM7LHjyt+eydjVoQLcC5
-	EDlLADGw==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
+	bh=DKLfZL7Lw//8nae5fm6x5bXe/N6woQGIMim2E2GSipA=; b=Y8RfFiE+0jxpI5NUTojx4Ss1m9
+	D7ZnPy+dIRiawnLd1U3juJqU5ux3hrTS8NBnSCYPIWaXC04evu/wRpglkbfe6cAzUd9sVAsQnZZuw
+	upBOn7xZmfd2PWtthgQYRxOE6Ohl6ldxyQ4/eLprSjd7knsHLtQ4dP0dj+ndTiPxGxBv2dqA8m0Cy
+	knr1xVJpYRRcExxfmEIpxHMMjEjHWLC1Vag7nClTN0BweRfXesh/YF0uh2T1SZnemGCnaV85QuE4w
+	C9VVdG/0o0mMtYdZF6F6cZ+sOwEBWaPG3uynsXiCOgFJypSWIlv1FRHbYAhap/CCJGOIJLVg2FXRb
+	8IPMDz5w==;
+Received: from i53875b28.versanet.de ([83.135.91.40] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tAEEp-0006cE-Rt; Sun, 10 Nov 2024 21:08:47 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, Dragan Simic <dsimic@manjaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdd_gpu voltage constraints on
- PinePhone Pro
-Date: Sun, 10 Nov 2024 21:08:47 +0100
-Message-ID: <4386271.ejJDZkT8p0@diego>
-In-Reply-To: <0718feb8e95344a0b615f61e6d909f6e105e3bf9.1731264205.git.dsimic@manjaro.org>
-References: <0718feb8e95344a0b615f61e6d909f6e105e3bf9.1731264205.git.dsimic@manjaro.org>
+	id 1tAEJh-0006eU-5w; Sun, 10 Nov 2024 21:13:49 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	jagan@edgeble.ai,
+	conor+dt@kernel.org,
+	jing@jing.rocks,
+	macromorgan@hotmail.com,
+	michael.riesch@wolfvision.net,
+	devicetree@vger.kernel.org,
+	krzk+dt@kernel.org,
+	jonas@kwiboo.se,
+	andyshrk@163.com,
+	cfsworks@gmail.com,
+	tim@feathertop.org,
+	kever.yang@rock-chips.com,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	dsimic@manjaro.org,
+	sebastian.reichel@collabora.com
+Subject: Re: [PATCH v2 RESEND 1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
+Date: Sun, 10 Nov 2024 21:13:42 +0100
+Message-ID: <173126942620.136493.15655197689835452655.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241021090548.1052-1-naoki@radxa.com>
+References: <20241021090548.1052-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_120851_563409_AB779A04 
-X-CRM114-Status: GOOD (  25.49  )
+X-CRM114-CacheID: sfid-20241110_121415_547360_8C543D31 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,63 +90,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 10. November 2024, 19:44:31 CET schrieb Dragan Simic:
-> The regulator-{min,max}-microvolt values for the vdd_gpu regulator in the
-> PinePhone Pro device dts file are too restrictive, which prevents the highest
-> GPU OPP from being used, slowing the GPU down unnecessarily.  Let's fix that
-> by making the regulator-{min,max}-microvolt values less strict, using the
-> voltage range that the Silergy SYR838 chip used for the vdd_gpu regulator is
-> actually capable of producing. [1][2]
+On Mon, 21 Oct 2024 09:05:46 +0000, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa ROCK 5C.
 > 
-> This also eliminates the following error messages from the kernel log:
+> Radxa ROCK 5C is a 8K computer for everything[1] using the Rockchip
+> RK3588S2 chip.
 > 
->   core: _opp_supported_by_regulators: OPP minuV: 1100000 maxuV: 1150000, not supported by regulator
->   panfrost ff9a0000.gpu: _opp_add: OPP not supported by regulators (800000000)
+> [1] https://radxa.com/products/rock5/5c
 > 
-> These changes to the regulator-{min,max}-microvolt values make the PinePhone
-> Pro device dts consistent with the dts files for other Rockchip RK3399-based
-> boards and devices.  It's possible to be more strict here, by specifying the
-> regulator-{min,max}-microvolt values that don't go outside of what the GPU
-> actually may use, as the consumer of the vdd_gpu regulator, but those changes
-> are left for a later directory-wide regulator cleanup.
+> [...]
 
-With the Pinephone Pro using some sort of special-rk3399, how much of
-"the soc variant cannot use the highest gpu opp" is in there, and just the
-original implementation is wrong?
+Applied, thanks!
 
-Did you run this on actual hardware?
+[1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
+      commit: 3920c37ea8ddc43e8f54083ed227f123acfa6ed2
+[2/3] arm64: dts: rockchip: add Radxa ROCK 5C
+      commit: 0173113ea6d7646fa0d7fd4d09b272d38a9ab9af
+[3/3] arm64: dts: rockchip: Enable HDMI0 on rock-5c
+      --> I've folded this patch into patch2, as the hdmi
+          controller on rk3588 was added earlier.
 
-
-Heiko
-
-
-> Fixes: 78a21c7d5952 ("arm64: dts: rockchip: Add initial support for Pine64 PinePhone Pro")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index 1a44582a49fb..956d64f5b271 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -410,8 +410,8 @@ vdd_gpu: regulator@41 {
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&vsel2_pin>;
->  		regulator-name = "vdd_gpu";
-> -		regulator-min-microvolt = <875000>;
-> -		regulator-max-microvolt = <975000>;
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1500000>;
->  		regulator-ramp-delay = <1000>;
->  		regulator-always-on;
->  		regulator-boot-on;
-> 
-
-
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
