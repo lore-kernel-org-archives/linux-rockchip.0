@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E837ED12D54
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 20:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A256D12D53
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 21:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UabiDfD1sHy1FQd7B2WYbjTxLzM4psaST3BJ+CWwVlE=; b=jSuVwTfmjAPJVWmxTx4tRRx3Xs
-	/H+gK0kMUZ+C87YINvWrZ3Nvi+BEuQGAEcnSdA5uU1G5/Zi6hHOGLCBBZ3cI/CO1fLSAVzwuDw9y8
-	wjj+n+SP1oSxNPj47Z3mV7RCQOy1fd4xsl5QVCsl+6Mp71yaE85mkYcCVido+KxdypB58bLXjQdrW
-	+ygLms/txVJvWK+Md4zu9BbM3efX+QZ3hH7VHeWlbZd7jy/JurXgVyORyWIs5XKmobeEK+LgXN1In
-	UbGMvs/yE3yTshE0m34HfvTKr0KQhPY+fWbrEbMjZ87kcOpRdSMZl4A+sgoKdAYsMKjNWB8sBBOCc
-	Gn045Bsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hNCqxdPJc9t7vyAu+MWai604ZK+LyT5ptvCMo8302OE=; b=lCzb8gxhm/T06e
+	iXq25fFrpgKQXXkdOeWTKb3cj20tTmFbE326tgZjzh1+4hvK/9WLvREngxRaYuOJfCXZcO1F0Uypk
+	yZEkdJO2Tqme7FhfMyEiY5dhGr1fqpSdy7UWjMl7Zxp196tiUGzHxE2T0QKDzX3XT+O2fgLcwVdDH
+	ixMrUzIpZDahm+XfEHdZehdRpVCDH0MdnsTTJTI1cGPh8G/yNuaiqJ5Gg+6vJGF5N5ObVKLnv4SG8
+	YvZsSygrmoZhDCm4bL4IjGEmYIQKVEELL5CHjgMJFXYPY+6js2M5uHxP0nKWCC1S5tMjHmeW+lbBH
+	mBARoZpGT51W4ZEQ1Y2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAErs-0000000FZ5X-2Il2;
-	Sun, 10 Nov 2024 20:49:08 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tAFIe-0000000Fc7p-1IOE;
+	Sun, 10 Nov 2024 21:16:48 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAEq6-0000000FYwD-1p0I;
-	Sun, 10 Nov 2024 20:47:20 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1731271635;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fE5VOA6KuTjnNYq44e0OK4y8UXNT3ZzXaRBBD23Kw9o=;
-	b=fzQRJyNl79XOFtkcXecX9QesKQ+w0dR5wqTkVeTCqmTSlhjQq2YgVauWWn0PmmCpEo53Dx
-	NYurR7lpapDRp4/2pTqqs0rvP7lJS4tcCpJuPInGhJCKhunal76raAuh52KK3+EvApvsgp
-	0OJCdUVAIYpO5uhjMxbpXMeNaduy7xSqemW6gaKwR/xjpeevX7MrpRlYCDgbPqqqmrCniz
-	J1mjfbyA0EK8x4jxEEjk4O6PhOKYEIZk+1+PMZ0UYIU9pc/y94DDInoJxJWQqet8UQSph3
-	qx04O0kgmXu2gcig+EUGKo6Of+ig/g5KG7hssiSIpYKDs23emvPB4BnYMCKQmA==
-Date: Sun, 10 Nov 2024 21:47:15 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, stable@vger.kernel.org
+	id 1tAFIa-0000000Fc6u-2SNL;
+	Sun, 10 Nov 2024 21:16:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=+rZ6R6+emkG1vIh+xndKO9B1+qYVh3QHCutdQutXlKE=; b=NnUPrlCTnmzmH/8JFVsLNY/gVt
+	Q+NZJrc6k+eaANoAusGXscEaxYD0IvNNWFYn46mTOkdwv9jPAoIVs9Db1NYV2k4KhUcrSpT5w4Mv7
+	/QwB+FzrhW7awQ8yFqx0SaNH4QOZNjNqMeuDvqjhL/9lp0NbNLrIqn+HfFruoQOvq0Yxm4F4e7+8F
+	sKRnQWeE50imeZcub+IfMd2f0sS9o1bJIWAaAWjlXRMVpsWwB+D6Io8pcS07uq9+0mmbJ6o8srZrr
+	BqGnPE7YXZ/GywRajtSpzxgMUr3vfgjWe0WRI5laYIagGllkyELSBO1/WgLIZQTMCXmjoFEyRop20
+	Db2Xlsig==;
+Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tAFIY-0006tu-Sn; Sun, 10 Nov 2024 22:16:42 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, stable@vger.kernel.org
 Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdd_gpu voltage constraints on
  PinePhone Pro
-In-Reply-To: <4386271.ejJDZkT8p0@diego>
+Date: Sun, 10 Nov 2024 22:16:42 +0100
+Message-ID: <865640012.0ifERbkFSE@diego>
+In-Reply-To: <fb3700f2d67c7f062c66cb8eb0f59b17@manjaro.org>
 References: <0718feb8e95344a0b615f61e6d909f6e105e3bf9.1731264205.git.dsimic@manjaro.org>
- <4386271.ejJDZkT8p0@diego>
-Message-ID: <fb3700f2d67c7f062c66cb8eb0f59b17@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ <4386271.ejJDZkT8p0@diego> <fb3700f2d67c7f062c66cb8eb0f59b17@manjaro.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_124718_945783_FE933AD0 
-X-CRM114-Status: GOOD (  24.64  )
+X-CRM114-CacheID: sfid-20241110_131644_673645_4B7C1883 
+X-CRM114-Status: GOOD (  30.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,84 +70,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSGVpa28sCgpPbiAyMDI0LTExLTEwIDIxOjA4LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
-PiBBbSBTb25udGFnLCAxMC4gTm92ZW1iZXIgMjAyNCwgMTk6NDQ6MzEgQ0VUIHNjaHJpZWIgRHJh
-Z2FuIFNpbWljOgo+PiBUaGUgcmVndWxhdG9yLXttaW4sbWF4fS1taWNyb3ZvbHQgdmFsdWVzIGZv
-ciB0aGUgdmRkX2dwdSByZWd1bGF0b3IgaW4gCj4+IHRoZQo+PiBQaW5lUGhvbmUgUHJvIGRldmlj
-ZSBkdHMgZmlsZSBhcmUgdG9vIHJlc3RyaWN0aXZlLCB3aGljaCBwcmV2ZW50cyB0aGUgCj4+IGhp
-Z2hlc3QKPj4gR1BVIE9QUCBmcm9tIGJlaW5nIHVzZWQsIHNsb3dpbmcgdGhlIEdQVSBkb3duIHVu
-bmVjZXNzYXJpbHkuICBMZXQncyAKPj4gZml4IHRoYXQKPj4gYnkgbWFraW5nIHRoZSByZWd1bGF0
-b3Ite21pbixtYXh9LW1pY3Jvdm9sdCB2YWx1ZXMgbGVzcyBzdHJpY3QsIHVzaW5nIAo+PiB0aGUK
-Pj4gdm9sdGFnZSByYW5nZSB0aGF0IHRoZSBTaWxlcmd5IFNZUjgzOCBjaGlwIHVzZWQgZm9yIHRo
-ZSB2ZGRfZ3B1IAo+PiByZWd1bGF0b3IgaXMKPj4gYWN0dWFsbHkgY2FwYWJsZSBvZiBwcm9kdWNp
-bmcuIFsxXVsyXQo+PiAKPj4gVGhpcyBhbHNvIGVsaW1pbmF0ZXMgdGhlIGZvbGxvd2luZyBlcnJv
-ciBtZXNzYWdlcyBmcm9tIHRoZSBrZXJuZWwgbG9nOgo+PiAKPj4gICBjb3JlOiBfb3BwX3N1cHBv
-cnRlZF9ieV9yZWd1bGF0b3JzOiBPUFAgbWludVY6IDExMDAwMDAgbWF4dVY6IAo+PiAxMTUwMDAw
-LCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcgo+PiAgIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTog
-X29wcF9hZGQ6IE9QUCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMgCj4+ICg4MDAwMDAwMDAp
-Cj4+IAo+PiBUaGVzZSBjaGFuZ2VzIHRvIHRoZSByZWd1bGF0b3Ite21pbixtYXh9LW1pY3Jvdm9s
-dCB2YWx1ZXMgbWFrZSB0aGUgCj4+IFBpbmVQaG9uZQo+PiBQcm8gZGV2aWNlIGR0cyBjb25zaXN0
-ZW50IHdpdGggdGhlIGR0cyBmaWxlcyBmb3Igb3RoZXIgUm9ja2NoaXAgCj4+IFJLMzM5OS1iYXNl
-ZAo+PiBib2FyZHMgYW5kIGRldmljZXMuICBJdCdzIHBvc3NpYmxlIHRvIGJlIG1vcmUgc3RyaWN0
-IGhlcmUsIGJ5IAo+PiBzcGVjaWZ5aW5nIHRoZQo+PiByZWd1bGF0b3Ite21pbixtYXh9LW1pY3Jv
-dm9sdCB2YWx1ZXMgdGhhdCBkb24ndCBnbyBvdXRzaWRlIG9mIHdoYXQgdGhlIAo+PiBHUFUKPj4g
-YWN0dWFsbHkgbWF5IHVzZSwgYXMgdGhlIGNvbnN1bWVyIG9mIHRoZSB2ZGRfZ3B1IHJlZ3VsYXRv
-ciwgYnV0IHRob3NlIAo+PiBjaGFuZ2VzCj4+IGFyZSBsZWZ0IGZvciBhIGxhdGVyIGRpcmVjdG9y
-eS13aWRlIHJlZ3VsYXRvciBjbGVhbnVwLgo+IAo+IFdpdGggdGhlIFBpbmVwaG9uZSBQcm8gdXNp
-bmcgc29tZSBzb3J0IG9mIHNwZWNpYWwtcmszMzk5LCBob3cgbXVjaCBvZgo+ICJ0aGUgc29jIHZh
-cmlhbnQgY2Fubm90IHVzZSB0aGUgaGlnaGVzdCBncHUgb3BwIiBpcyBpbiB0aGVyZSwgYW5kIGp1
-c3QgCj4gdGhlCj4gb3JpZ2luYWwgaW1wbGVtZW50YXRpb24gaXMgd3Jvbmc/CgpHb29kIHF1ZXN0
-aW9uLCBJIGFscmVhZHkgYXNrZWQgaXQgbXlzZWxmLiAgSSdtIHVuYXdhcmUgb2YgYW55IGtpbmQg
-b2YKR1BVLU9QUC1yZWxhdGVkIHJlc3RyaWN0aW9ucyB3aGVuIGl0IGNvbWVzIHRvIHRoZSBQaW5l
-UGhvbmUtUHJvLXNwZWNpZmljClJLMzM5OVMuICBGdXJ0aGVybW9yZSwgInRoZSB3b3JkIG9uIHRo
-ZSBzdHJlZXQiIGlzIHRoYXQgdGhlIFJLMzM5OVMgY2FuCndvcmsgcGVyZmVjdGx5IGZpbmUgZXZl
-biBhdCB0aGUgY291cGxlIG9mICJmdWxsLWZhdCIgUkszMzk5IENQVSBPUFBzCnRoYXQgYXJlIG5v
-dCBkZWZpbmVkIGZvciB0aGUgUkszMzk5UywgYW5kIHRoZSBvbmx5IHJlc3VsdCB3b3VsZCBiZSB0
-aGUKZXhwZWN0ZWQgaGlnaGVyIHBvd2VyIGNvbnN1bXB0aW9uIGFuZCBhIGJpdCBtb3JlIGhlYXQg
-Z2VuZXJhdGVkLgoKVGhpcyBqdXN0IHJlYWZmaXJtcyB0aGF0IG5vIGtub3duIEdQVSBPUFAgcmVz
-dHJpY3Rpb25zIGV4aXN0LiAgRXZlbgppZiB0aGV5IGV4aXN0ZWQsIGVuZm9yY2luZyB0aGVtIF9w
-cmltYXJpbHlfIHRocm91Z2ggdGhlIGNvbnN0cmFpbnRzIG9mCnRoZSBhc3NvY2lhdGVkIHZvbHRh
-Z2UgcmVndWxhdG9yIHdvdWxkIGJlIHRoZSB3cm9uZyBhcHByb2FjaC4gIEluc3RlYWQsCnRoZSBy
-ZXN0cmljdGlvbnMgc2hvdWxkIGJlIGRlZmluZWQgcHJpbWFyaWx5IHRocm91Z2ggdGhlIHBlci1T
-b0MtdmFyaWFudApHUFUgT1BQcywgd2hpY2ggYXJlLCB0byBteSBiZXN0IGtub3dsZWRnZSwgbm90
-IGtub3duIHRvIGJlIGV4aXN0aW5nIGZvcgp0aGUgUkszMzk5UyBTb0MgdmFyaWFudC4KCj4gRGlk
-IHlvdSBydW4gdGhpcyBvbiBhY3R1YWwgaGFyZHdhcmU/CgpJIHJ1c2hlZCBhIGJpdCB0byBzdWJt
-aXQgdGhlIHBhdGNoIGJlZm9yZSBiZWluZyBhYmxlIHRvIHRlc3QgaW4gb24gdGhlCmFjdHVhbCBo
-YXJkd2FyZSwgYnV0IHRoZXJlJ3MgYWxyZWFkeSBvbmUgcGVyc29uIHdpbGxpbmcgdG8gdGVzdCB0
-aGUgCnBhdGNoCm9uIHRoZWlyIFBpbmVQaG9uZSBQcm8gYW5kIHByb3ZpZGUgdGhlaXIgVGVzdGVk
-LUJ5LiAgSSBzZWUgbm8gcmVhc29ucyAKd2h5Cml0IHNob3VsZG4ndCB3b3JrIGFzIGV4cGVjdGVk
-LCBhcyBleHBsYWluZWQgYWJvdmUsIHdoaWNoIGlzIHdoeSBJIApkZWNpZGVkCml0J3Mgc2FmZSB0
-byBzdWJtaXQgdGhlIHBhdGNoIGJlZm9yZSBkZXRhaWxlZCB0ZXN0aW5nLgoKSSdtIHZlcnkgY2Fy
-ZWZ1bCB3aGVuIGl0IGNvbWVzIHRvIGNoYW5nZXMgbGlrZSB0aGlzIG9uZSwgYnV0IEknbSBxdWl0
-ZQpjb25maWRlbnQgdGhlcmUgc2hvdWxkIGJlIG5vIGlzc3VlcywganVzdCBhIG5pY2UgcGVyZm9y
-bWFuY2UgYm9vc3QuIDopCkkgYWxzbyBjaGVja2VkIGFuZCBjb21wYXJlZCB0aGUgc2NoZW1hdGlj
-cyBvZiB0aGUgUGluZVBob25lIFBybyBhbmQKYSBjb3VwbGUgb2Ygb3RoZXIgUGluZTY0IFJLMzM5
-OS1iYXNlZCBib2FyZHMgYW5kIGRldmljZXMsIHRvIG1ha2Ugc3VyZQp0aGVyZSBhcmUgbm8gZGlm
-ZmVyZW5jZXMgaW4gdGhlIEdQVSByZWd1bGF0b3JzIHRoYXQgd291bGQgbWFrZSB0aGUKUGluZVBo
-b25lIFBybyBhbiBleGNlcHRpb24uICBJIHNhdyBubyBzdWNoIGRpZmZlcmVuY2VzLgoKPj4gRml4
-ZXM6IDc4YTIxYzdkNTk1MiAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgaW5pdGlhbCBzdXBw
-b3J0IGZvciAKPj4gUGluZTY0IFBpbmVQaG9uZSBQcm8iKQo+PiBDYzogc3RhYmxlQHZnZXIua2Vy
-bmVsLm9yZwo+PiBTaWduZWQtb2ZmLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9y
-Zz4KPj4gLS0tCj4+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhv
-bmUtcHJvLmR0cyB8IDQgKystLQo+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwg
-MiBkZWxldGlvbnMoLSkKPj4gCj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0cyAKPj4gYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0cwo+PiBpbmRleCAxYTQ0NTgyYTQ5ZmIu
-Ljk1NmQ2NGY1YjI3MSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
-cC9yazMzOTktcGluZXBob25lLXByby5kdHMKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMKPj4gQEAgLTQxMCw4ICs0MTAsOCBAQCB2
-ZGRfZ3B1OiByZWd1bGF0b3JANDEgewo+PiAgCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+
-PiAgCQlwaW5jdHJsLTAgPSA8JnZzZWwyX3Bpbj47Cj4+ICAJCXJlZ3VsYXRvci1uYW1lID0gInZk
-ZF9ncHUiOwo+PiAtCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw4NzUwMDA+Owo+PiAtCQly
-ZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw5NzUwMDA+Owo+PiArCQlyZWd1bGF0b3ItbWluLW1p
-Y3Jvdm9sdCA9IDw3MTI1MDA+Owo+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxNTAw
-MDAwPjsKPj4gIAkJcmVndWxhdG9yLXJhbXAtZGVsYXkgPSA8MTAwMD47Cj4+ICAJCXJlZ3VsYXRv
-ci1hbHdheXMtb247Cj4+ICAJCXJlZ3VsYXRvci1ib290LW9uOwoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Sonntag, 10. November 2024, 21:47:15 CET schrieb Dragan Simic:
+> Hello Heiko,
+> =
+
+> On 2024-11-10 21:08, Heiko St=FCbner wrote:
+> > Am Sonntag, 10. November 2024, 19:44:31 CET schrieb Dragan Simic:
+> >> The regulator-{min,max}-microvolt values for the vdd_gpu regulator in =
+
+> >> the
+> >> PinePhone Pro device dts file are too restrictive, which prevents the =
+
+> >> highest
+> >> GPU OPP from being used, slowing the GPU down unnecessarily.  Let's =
+
+> >> fix that
+> >> by making the regulator-{min,max}-microvolt values less strict, using =
+
+> >> the
+> >> voltage range that the Silergy SYR838 chip used for the vdd_gpu =
+
+> >> regulator is
+> >> actually capable of producing. [1][2]
+> >> =
+
+> >> This also eliminates the following error messages from the kernel log:
+> >> =
+
+> >>   core: _opp_supported_by_regulators: OPP minuV: 1100000 maxuV: =
+
+> >> 1150000, not supported by regulator
+> >>   panfrost ff9a0000.gpu: _opp_add: OPP not supported by regulators =
+
+> >> (800000000)
+> >> =
+
+> >> These changes to the regulator-{min,max}-microvolt values make the =
+
+> >> PinePhone
+> >> Pro device dts consistent with the dts files for other Rockchip =
+
+> >> RK3399-based
+> >> boards and devices.  It's possible to be more strict here, by =
+
+> >> specifying the
+> >> regulator-{min,max}-microvolt values that don't go outside of what the =
+
+> >> GPU
+> >> actually may use, as the consumer of the vdd_gpu regulator, but those =
+
+> >> changes
+> >> are left for a later directory-wide regulator cleanup.
+> > =
+
+> > With the Pinephone Pro using some sort of special-rk3399, how much of
+> > "the soc variant cannot use the highest gpu opp" is in there, and just =
+
+> > the
+> > original implementation is wrong?
+> =
+
+> Good question, I already asked it myself.  I'm unaware of any kind of
+> GPU-OPP-related restrictions when it comes to the PinePhone-Pro-specific
+> RK3399S.  Furthermore, "the word on the street" is that the RK3399S can
+> work perfectly fine even at the couple of "full-fat" RK3399 CPU OPPs
+> that are not defined for the RK3399S, and the only result would be the
+> expected higher power consumption and a bit more heat generated.
+
+In the past we already had people submit higher cpu OPPs with the
+reasoning "the cpu runs fine with it", but which where outside of the
+officially specified frequencies and were essentially overclocking the
+CPU cores and thus possibly reducing its lifetime.
+
+So "it runs fine" is a bit of thin argument ;-) . I guess for the gpu it
+might not matter too much, compared to the cpu cores, but I still like
+the safe sides - especially for the mainline sources.
+
+I guess we'll wait for people to test the change and go from there ;-) .
+
+
+> This just reaffirms that no known GPU OPP restrictions exist.  Even
+> if they existed, enforcing them _primarily_ through the constraints of
+> the associated voltage regulator would be the wrong approach.  Instead,
+> the restrictions should be defined primarily through the per-SoC-variant
+> GPU OPPs, which are, to my best knowledge, not known to be existing for
+> the RK3399S SoC variant.
+
+Yes, that is what I was getting at, if that is a limiting implementation
+it is of course not done correctly, but I'd like to make sure.
+
+Of course Pine's development model doesn't help at all in that regard.
+There isn't even a "vendor" kernel source it seems. [0]
+
+
+Heiko
+
+
+[0] https://wiki.pine64.org/wiki/PinePhone_Pro_Development#Kernel
+states "There's no canonical location for Pinephone Pro Linux kernel develo=
+pment,"
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
