@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 714EBD12D5A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 23:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67612D12D59
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Nov 2024 23:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4gletDSCTiTUrpQwHsercb5SWEOfrpiA75ztQxrCry8=; b=N0s8NmPRgWbAVQ
-	NYBT2H1cyV/6i+l8nNVdlrCWr8n014vD1i25M/MGtdcVhap5YcrdVsbhEqffKrGpyf6+wHArhPLsZ
-	333KJhVeQ6cgnnKEPFay+r/mhOE0yYm+CbJsrhAj/rnqn5HhWKIaKW7OiDwaOvWDv7n8GR8YLesZu
-	0qnjspu26/jAdUyQDayw/dm3W1HLjRG6BoV/jAyoU1jAfLly/qH8y1UM9g2K7lA36ULo+HaBuIL03
-	mrE4UnrFf91f+3C4Pa27GF2LgPki70R6Ru95Kp0uiyO/mRwWSf1ukG0bK9gyuj9J5VsDBQx5wma89
-	jOTqcZNUZz5+Ync7j6dA==;
+	List-Owner; bh=3Y6uajJq4aN5bJ3PPlGTZHKkzUMQnM/uWMSu/l2bnIE=; b=uOGoLb5Gn1eU9/
+	67uzj90dnfKH4ViNp9H+mkOijO5jE7LtP6GQb959Zjfb0bGaSjJ7/N2r6eLJNuHjVH5ggT8xCp2IO
+	B/2K4MWsffcH2xEQeIrEr+gRL7JHMtMhA9AavdkgZaqNMUD9hCNGsOaDo63WtDQXYJOxXAOrpmwrV
+	SdJhIREsapzdgIBM+orbIqXPJyRiNgJoJo+JyPjqZJAX62jwLJUBtvDumhy94WrHPHVcjKc+Ap4vA
+	dJsiM5EMMg9boWsZn5gnzPfScHw15rx9hgwdKvHIwbZ7NmqzbUBzLoSnTvOibLdrJttfg4nKr87r6
+	OP1aLLYBw2o+KrzSUN1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAHeN-0000000Fu4E-2GmL;
-	Sun, 10 Nov 2024 23:47:23 +0000
-Received: from smtpbguseast1.qq.com ([54.204.34.129])
+	id 1tAHhJ-0000000FuCf-1n6U;
+	Sun, 10 Nov 2024 23:50:25 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAHeI-0000000Fu3P-1Bi6
+	id 1tAHhG-0000000FuC6-0ppH
 	for linux-rockchip@lists.infradead.org;
-	Sun, 10 Nov 2024 23:47:21 +0000
-X-QQ-mid: bizesmtpip4t1731282420t66hxqo
-X-QQ-Originating-IP: UkrhnqqxO+DlGzaaxkjTfdfQd+FeBXzRq2CUDdz8cLg=
+	Sun, 10 Nov 2024 23:50:24 +0000
+X-QQ-mid: bizesmtpip3t1731282543tgxeos8
+X-QQ-Originating-IP: PWS1YtnGh1qsLOHKhwPI0ruBFkkmhb83c2QVyKeTzos=
 Received: from [IPV6:240f:10b:7440:1:e6be:7b31 ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 11 Nov 2024 07:46:58 +0800 (CST)
+	id ; Mon, 11 Nov 2024 07:48:58 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3004910687799241414
-Message-ID: <C8F5ACD300CBAE77+cc81ffc1-cd1c-46dd-96b0-d9334a3a946b@radxa.com>
-Date: Mon, 11 Nov 2024 08:46:57 +0900
+X-BIZMAIL-ID: 14112910990418840839
+Message-ID: <EF2C2A37FE988DA0+32f2e055-1ffb-4dce-b7a9-c77b80d6ffbe@radxa.com>
+Date: Mon, 11 Nov 2024 08:48:58 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH v2 1/2] arm64: dts: rockchip: change pinctrl-0
- name in pcie3x1 for Radxa E25
+Subject: Re: [PATCH v2 RESEND 1/3] dt-bindings: arm: rockchip: add Radxa ROCK
+ 5C
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, amadeus@jmu.edu.cn
-References: <20240918073236.648-1-naoki@radxa.com>
- <173126942620.136493.12138212981184100161.b4-ty@sntech.de>
+Cc: jagan@edgeble.ai, conor+dt@kernel.org, jing@jing.rocks,
+ macromorgan@hotmail.com, michael.riesch@wolfvision.net,
+ devicetree@vger.kernel.org, krzk+dt@kernel.org, jonas@kwiboo.se,
+ andyshrk@163.com, cfsworks@gmail.com, tim@feathertop.org,
+ kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ robh@kernel.org, dsimic@manjaro.org, sebastian.reichel@collabora.com
+References: <20241021090548.1052-1-naoki@radxa.com>
+ <173126942620.136493.15655197689835452655.b4-ty@sntech.de>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <173126942620.136493.12138212981184100161.b4-ty@sntech.de>
+In-Reply-To: <173126942620.136493.15655197689835452655.b4-ty@sntech.de>
 X-QQ-SENDSIZE: 520
 Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: NEx2LjeIVIIIHanraDrGAfgkSAUV7mHsGeBXBqh1Ry7Fb0uLNaDCCMu2
-	aZIljRvaYE/3eNneP1y/PIhdSZ4CDhJrvMbtjfUB8EBSM1EHIoKDRjHUukTLwhYA3uVh9ma
-	U7rQxbfJ7wZpkd2FUvzHaGNiQldJlogvjYPnz0ytTmr9UwqCxPSzdFa9XikHoYEUi+OC5fF
-	yhty1WahiqfxhW3pWceTdscjmMmaKBh0+B887yTJKrG+23tQuywql4ayXb7r485TkZsPRSN
-	8G9LhfQVEmiW6bCN4vGm2JljtL0kcjKwTR3QrQ4KlH6U1ZDf1ak5z1WMLHmThY3MQITilXZ
-	LeoHB/ZePvxJ6nEi/lqnpZ2FzsEJ+edx8hRKj3dZ36eWIUBtvYMBLR6PPSJXh8D9TQeuoiv
-	MOonzuQyzBK1qE6BKFmhAuEpMXgtTExUQ3DgC7UxibK1MtRoNdcb9l4Ui3AhEFEipWIP/NP
-	lO4s9wOInOM1FzTERsqhFqRTxLP6vtMDg4mF+CvvsM35s67RYHt5yYnZIvj+bYsSCvocwOr
-	y8BMJERKMEDieNl9aDLKHowmcsomjXuIxLwWldInVDbMA0YHo+5qhNPMoNFyFfptREJaBnX
-	zfs+iq7+cHUQqzEOgAWSP2+GS75WecP0ZJi2MUUzQtZP1mPXl2GdUx70VN2Y/H1jyGkyAmI
-	bNVQYQj2KhoFc2WcqfYZBwF+dRyY1JrzTXBBCq07pSkuI4gJZSsPfZmtdysl3g/vUtbwOXC
-	MxOfp/hjyB0dnDKYigyQGZQdAAclFXaiozwvv04MHlld2pQZoW6+Lfif/txkR0kpAHQO8nf
-	wmPhhZiI3b+6KP2WgFx9MDnA3aBaNg43PdNFpJiGdBNE1ZQvLbYqcpP4/GbqJyYpcdTrwX7
-	qw1MNScXQX7eezPQ4ZQhzJ0UiofJ8xXgp+QPNhOPZAfGUAeM+qC4cg==
-X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-XMAILINFO: NU/xC8AZ/a7LWFrTl6LxPNqfgfWkiB6jExMv9FXc77IMeiw1pNVrXQij
+	ZEgKgXTxS9/4yY0i/nQwGFSaZOtE4HTS3etYch45ioQzkUHHKHyvHzyASorZ37uOd8Qcfju
+	thHrvwLy7xgLAHRvvblCbSalDS802e21TOAkKXI/stjSM7RvkRgZKhr3Ug1Esth4Itsv3mt
+	KizESZ66GVTtBuzJqScdj3jmPIckucYseIByoA1W/fEiv1+6M56if2wnNtLQh6YOgU6Ztrw
+	+D89eNctyI1Hratm+1Cfa27d643QZoznTN9H+NjczbwOWtEDWQrFxqxKMsGYN4YFlTVFs1P
+	0xVi5sdAxeh3kFCHTJTKHYNNY8WkG+n5mYMEZvoxd+xBTiOXaNKh0mvAtE2MWYxYNRj2ndv
+	Jp1sSkI3LE+/pGTK3r2y549cYJV3Fn8LvJfYa51+pgTM+IaVMykWJF/41LpftRAOLhjaByw
+	RfUyhaRNQvx+9+KjOF3JVbYAEYpBeYICewMYMqxrJmfEM3/WW98b9N1Qf+Zg2HN4wQ9V/2j
+	bJ5XtG7TVAlgQ3MyazF2yBJYmxEgFe9ZcGuDUacM2mN0GDtIrFXxGHKXhsr4lLiwzept8fP
+	DflvruSNrMPqDVQP0otsYiDNBOhF+nQzUIFOnH4kMvWnRaVKqVZVL09fWNPfZLJZjBux6gn
+	QCCPi5wxH3CqCJW86MyOMYsNfauZtrMKdRrMOi5blQeXoLlHqeIsv7K22muGtbTyPSY0Coc
+	gQl4UZ3s/yNoQzCYZNciFfL7gAGcjsPVMiKKXeo3NcH+4MqMEw2wjlbtcwwuo+HGuqMAocq
+	tdqSDghLxnylmC+VHPL8dVoobW1mjmqqf/X7u9InzxCIdc7gc/lxOLJjmSxqelpBCYXop5e
+	Nt94dRQeWOkMIXgj7efby7SgiyldUOGqwY7ANfPQmx4gb+jKkWa7Nhwy8mltE+yQc8U6GoX
+	uboHBOHYZoAK2Xw==
+X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_154718_946995_08047C42 
-X-CRM114-Status: UNSURE (   7.08  )
+X-CRM114-CacheID: sfid-20241110_155022_628472_9EB11DB9 
+X-CRM114-Status: UNSURE (   7.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,35 +94,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
+Thanks!
+
 On 11/11/24 05:13, Heiko Stuebner wrote:
-> On Wed, 18 Sep 2024 16:32:35 +0900, FUKAUMI Naoki wrote:
->> to avoid conflict with sdmmc_det, change pci3x1 pinctrl-0 name.
+> On Mon, 21 Oct 2024 09:05:46 +0000, FUKAUMI Naoki wrote:
+>> Add devicetree binding for the Radxa ROCK 5C.
 >>
+>> Radxa ROCK 5C is a 8K computer for everything[1] using the Rockchip
+>> RK3588S2 chip.
 >>
+>> [1] https://radxa.com/products/rock5/5c
+>>
+>> [...]
 > 
 > Applied, thanks!
 > 
-> [1/2] arm64: dts: rockchip: change pinctrl-0 name in pcie3x1 for Radxa E25
->        commit: be41da78a9738514d3b6c1acfaf156bbf380ce57
-> 
-> Didn't take patch2. As you know from the sdmmc runtime-pm thread you were
-> in too, that whole thing is still in flux, so using cd-gpios does provide
-> us with the safest and power efficient way for card-detect.
+> [1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
+>        commit: 3920c37ea8ddc43e8f54083ed227f123acfa6ed2
+> [2/3] arm64: dts: rockchip: add Radxa ROCK 5C
+>        commit: 0173113ea6d7646fa0d7fd4d09b272d38a9ab9af
 
-I think that was only for RK3588 series.
+I forgot to add cd-gpios in sdmmc ;)
+I'll make fix patch soon.
 
-on RK356x boards, CD is working without cd-gpios, but it may have power 
-efficient issue as like as RK3588, right?
-
-Best Regards,
+Best regards,
 
 --
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
-> 
+> [3/3] arm64: dts: rockchip: Enable HDMI0 on rock-5c
+>        --> I've folded this patch into patch2, as the hdmi
+>            controller on rk3588 was added earlier.
 > 
 > Best regards,
+
 
 
 _______________________________________________
