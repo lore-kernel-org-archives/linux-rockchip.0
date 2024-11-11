@@ -4,85 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF47CD3ABCE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 16:54:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AA8D3ABE7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 18:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RcMh3zBA0W4ZofPkbcM9GsES2tCsjVyybiR5e4cwDe0=; b=m4k41M2+IaFlOR
-	Y8J9qsWq/WUnaXJ9+zTe9ZBFZIcekRBM+vdQwPdX3UtL0FXJF1EVt76erAo6twOy8Mgkeg7+KYlBt
-	PbooV289bGA5AHPBMFEXgbWhCTLDrqliv7w+nyRZO4zkpgEz/Q0URxArzGidyuMRFtNUdmbVEi50Q
-	wkIUh8wG8rfqeX9T2jREQus1xYNB5TsxkgcZzm72emGs15ZAGE//78PUOx2nSbXYKq1k+zplojGNc
-	bhRZkHxZT1vv8KGXAbJXcfalEJzciORq/vkcwPMh49quvhvfaj7kJIOK4rdBUVb8Vx2LvS2paLwuM
-	heOPft88Zgwb163aiC+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bK6sYTgY6X/qfq84+YXCebf6A5p9mZzVoxOvfVPFNsU=; b=gfF+r3gPAw85Zb
+	0Z9CBz0vliSVQUsILEl5V7ahGnOzzl4g78VfLzfql8jy/MpOUO4yDXCzOpLrwUzZ0LyvwwcoBFryi
+	Fu2KkeUBpApzgADmAY3zsiaYxuQbytUAidTNwJYNucWxrVkqo3Cc3/WJk1JUXkZNtT2K1dn1hvUxB
+	RSiVisthXb4EoWGTFMHEhv2w1A2/CFWwH86pXpQKwvWEzLi5HX2yjPZUG/ZT2bUQ68aej9a0T/xE0
+	L7jfYNf8JFbxXBgvQ2MmsqMXGnXq8A9s1lC8xbkW4LDY9O1OHJlIUeACXhZpiZ8yRMiYk6sIHSHbO
+	CtvDk7kLNHWewdX10DgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAXgG-00000000dgj-3JKC;
-	Mon, 11 Nov 2024 16:54:24 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1tAZ1i-00000000tF5-0jO3;
+	Mon, 11 Nov 2024 18:20:38 +0000
+Received: from mail-ej1-f43.google.com ([209.85.218.43])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAXct-00000000dCQ-10bC;
-	Mon, 11 Nov 2024 16:50:56 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-71e67102283so98698b3a.1;
-        Mon, 11 Nov 2024 08:50:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731343849; x=1731948649; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gfIh7QFf8oEaQfYkdv6ZpaO6sL/ncFNHIot8BWk/VIc=;
-        b=cuGaDI8bpIB/jz5nasDFaG+06Z1XTYIDCz84CFqIol52HxgDtC4Cn4k1Qo2dCjG7Pl
-         DNg4aVhl28bmuipEs8Twly/jWAwvAJR6IDyqrhArjA5uqM5B7V+oHc9fHoPdbIuOT/jr
-         R+FYHWBC/uiuQh4lrhYPmy3XjJ3kuuD/EvoUzHn+ZE+bCqRXp6Em3aF07s0FsQWFc0vq
-         SZnlbKrV49wsKtwlZiBJJW9H4UjS68zWVRGRWDt4i4eD+ItxinIOii4Y6zlFPqD7ya+H
-         iJZx1chNIyY3walh4djeafq2AokUPAcVcu1kjq1MVjYdGrIdxbeU8HH9K6TtBL+zmTRb
-         2xzw==
+	id 1tAYzN-00000000spX-3My9;
+	Mon, 11 Nov 2024 18:18:15 +0000
+Received: by mail-ej1-f43.google.com with SMTP id a640c23a62f3a-a9ed49edd41so849855666b.0;
+        Mon, 11 Nov 2024 10:18:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731343849; x=1731948649;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gfIh7QFf8oEaQfYkdv6ZpaO6sL/ncFNHIot8BWk/VIc=;
-        b=t9b9uQZRm1q8uwPWKzFWI5BOZDGoqj0M2xYpi8bG18Nu3l82deZ36G2hHnGtEFMuc4
-         2Z+G77NfpSoNy2zEA2Ze4DDci9dUE4TaDt/UxYSP+g+B57wzS+LZ83beJ7Uht8cRaGX4
-         ja0NvNa5wsGABCj52nq8MZVfxvmYOIE23GAjsvqirD4KXWtzqNdHxT/XdWgqtdy8FTvf
-         BbIHXpx0/zWmSbrQIVPuL6zx+t2p9sAJW9OzABZQPssrlimgamfkbmWhaEiI5Z8cipok
-         vIs66xiflj4+L3z7V9X84ZfEs30FKfzj5W07K0ggATnJAhlHguWAx8/cth4F/Gt9zJ9+
-         8JvA==
-X-Forwarded-Encrypted: i=1; AJvYcCUAsdRaIAZ4uxnZhD7KyWvobtpAc6po+MVBRFlolmkla6hBsL6OpGaQhQ2CEZ+jYaBwNfcoWgxe6szkiWlsi7So@lists.infradead.org
-X-Gm-Message-State: AOJu0YxInzoYDqiVZSczTsknrkUCZrThJbXzmsKXofKq6QDIbb8eKcgy
-	Efs3O05nYuhas7fpiNh48wM6lTeZpfDN1a1ZKpv0mgDwOVxQWcCwsFk09zO2
-X-Google-Smtp-Source: AGHT+IHfynhJtyo2TYb9cgYePvmyNGNyO/FFedYkfCOY6PP3kqTXtwUZx7toT125k2vM6Ak06pC67g==
-X-Received: by 2002:a05:6a00:4614:b0:71e:5e9a:2db with SMTP id d2e1a72fcca58-7241338307amr7053453b3a.6.1731343849040;
-        Mon, 11 Nov 2024 08:50:49 -0800 (PST)
-Received: from rock-5b.. ([221.220.134.31])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72407a19dd8sm9401955b3a.157.2024.11.11.08.50.46
+        d=1e100.net; s=20230601; t=1731349091; x=1731953891;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uuZnyXBdk3QHcPbZuZ4wdiQBJmOvaPtia/X0YSXMhqk=;
+        b=AtBYAQ/8Cig93LDv9UBsBVlmgkY6XSTg1gM2W2cGIRRhu+GSUAC1zFjx+aQgQfHyBy
+         ApnPfMRwn31NiyNszqe41op8pQ4Wxcwl1+eTSRGdDOZwzgUhcMTy4BRaW1kMSTSef8Pu
+         f/NtCEJdAYhsu9XWNa/Dd8nWDeAQ33D/hQL6o1nUDNlvKzsmXLDU17jwpBatBibOEJB2
+         a+UtzqaLmzrulAXx0f9NvjxOmcRGZhDgMQ/jBqxjlJlDoXpS6HSt7iX3IeNZUNMdjwHQ
+         ovrH5dbTgULti+DdxRi2Zapvsxg0kRCnLqRn7qJPn1P2FOIijHu85YPf9ix15Yq5nx3u
+         xJyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUqoPnrm1OKaG+UJ1OmwrukDXzyNZOovy7/Ej2vaeGaQCvBXQ9UayRINj83SDudIegXnpFxS2y/oYDdZPXR5iUj@lists.infradead.org, AJvYcCUuQ2nX32fjCVVR7E2nkGmTFFzvB7W59wMRsvkgIj8Zq3wmrYW78tKQB2aZqBnXOvRSy/RyhafqNZbKdXeql6I=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2XDmBDgLKIgUR60hxsQ5BS2w1jowpAEpiDHUq30xaTyqXUSlJ
+	Sg5kyyfJQJbn5nSujFBJcWCVpCZxlE2cG/fwm/eZsEOcpUiaO/ID8h8Thyigbx8=
+X-Google-Smtp-Source: AGHT+IGFs+veCOYdFl4AbDVCq/r8ZyxcC4t3ag3b+QKAnXD58wwk8c8uG5tNU8vrFqoP3DjFTYY2kA==
+X-Received: by 2002:a17:907:368a:b0:a9e:8574:e154 with SMTP id a640c23a62f3a-a9ef00216fdmr1422727866b.59.1731349091087;
+        Mon, 11 Nov 2024 10:18:11 -0800 (PST)
+Received: from localhost.localdomain ([193.142.191.186])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9ee0a17b64sm617868466b.39.2024.11.11.10.18.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Nov 2024 08:50:48 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
+        Mon, 11 Nov 2024 10:18:10 -0800 (PST)
+From: =?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <tszucs@linux.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
+	=?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <tszucs@linux.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: Enable HDMI0 on armsom-w3
-Date: Tue, 12 Nov 2024 00:50:04 +0800
-Message-ID: <20241111165026.60805-3-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241111165026.60805-1-liujianfeng1994@gmail.com>
-References: <20241111165026.60805-1-liujianfeng1994@gmail.com>
+Subject: [PATCH 0/3] arm64: dts: rockchip: rock-3b TF + M2E updates
+Date: Mon, 11 Nov 2024 19:17:24 +0100
+Message-ID: <20241111181807.13211-1-tszucs@linux.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_085055_306616_EE61B72E 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20241111_101813_866609_C369FA66 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,101 +83,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary DT changes to enable HDMI0 on ArmSoM W3.
-
-Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-
----
-
- .../boot/dts/rockchip/rk3588-armsom-w3.dts    | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-index 779cd1b1798..5b5a18c8edf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-@@ -4,6 +4,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3588-armsom-lm7.dtsi"
- 
- / {
-@@ -32,6 +33,17 @@ analog-sound {
- 		pinctrl-0 = <&hp_detect>;
- 	};
- 
-+	hdmi0-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi0_con_in: endpoint {
-+				remote-endpoint = <&hdmi0_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -138,6 +150,26 @@ &combphy2_psu {
- 	status = "okay";
- };
- 
-+&hdmi0 {
-+	status = "okay";
-+};
-+
-+&hdmi0_in {
-+	hdmi0_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi0>;
-+	};
-+};
-+
-+&hdmi0_out {
-+	hdmi0_out_con: endpoint {
-+		remote-endpoint = <&hdmi0_con_in>;
-+	};
-+};
-+
-+&hdptxphy_hdmi0 {
-+	status = "okay";
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -406,3 +438,18 @@ &usb_host1_xhci {
- &usb_host2_xhci {
- 	status = "okay";
- };
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi0_in_vp0>;
-+	};
-+};
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpDaGFuZ2VzIGhhdmUgYmVlbiB0ZXN0ZWQgb24gYW4gUkszNTY4Siwgd2l0aCBhbiBlbXBo
+YXNpcyBvbiBERFI1MCBhbmQgU0RSMTA0IGF0IDIwMCBNSHouCgpLaW5kIHJlZ2FyZHMsClRhbWFz
+CgpUYW3DoXMgU3rFsWNzICgzKToKICBhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIHN1cHBvcnRl
+ZCBVSFMtSSByYXRlcyB0byBzZG1tYzAgb24gcm9jay0zYgogIGFybTY0OiBkdHM6IHJvY2tjaGlw
+OiBFbmFibGUgc2RtbWMyIG9uIHJvY2stM2IgYW5kIHNldCBpdCB1cCBmb3IgU0RJTwogICAgZGV2
+aWNlcwogIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBFbmFibGUgVUFSVDggb24gcm9jay0zYgoKIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzIHwgMTYgKysrKysr
+KysrKysrKystLQogMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25z
+KC0pCgotLSAKMi40NS4yCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
