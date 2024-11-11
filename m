@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC23D2E9D3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 10:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6964CD2E9D0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 10:03:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kXo8zy07aX4hpd/DnZCgPSAucGFu0PEpQ9BmTLQoE68=; b=2zXYkV8HQrDHfL
-	F4+U9nh5u6TYy0kHXV7GSXcHrAtR5iAXDclbC4Qxcd3cla864yZQnDZYlR4X6FNT1pANCO2L8c9Ny
-	tdKyxVNk5ddtiS8A9Sq768siQAHUUmvaRN08i4PulQ9srZNLLuRLC2559blo2eI7tFJtv1fbvRhHL
-	6SggmtaKiMq8KGIaF3pw0wGEtLut7iYHNvXcGvlA4yfHUXlHZ8rAG9wPN11rIJy6nHT1hDlQ+pRVK
-	eQDxRtigOXtEx+UnSxB/d7Qje1lZcL1dBsplAq2OxNEYlGQltpHy2ApJGBN8jDjcbER0Pw2YZF6hd
-	vJc1oPs4SoaFU9PkvyvA==;
+	List-Owner; bh=IX9N1XuT8MAqQnGrMb1ETDKf2iyhj0TxF4giXIS/Ph8=; b=nAyrtj88t52Yc/
+	c/vV6R8gQd+CR6Aw2Qc9WRrn/psj0cC8hVkXbAprU3jx0Xh5ty5RDnV2HGQfl1JYy1d9YufPazgRp
+	Zb2Rxk+0tgJO2ZfCAlVMrbbVAbtx/XJFRpOsCyhRLEsC6P8NZlbJi99exybrXDa21YrOJxDiyFJqT
+	ZpOGcCWyMmlK0xEYg0/x9xjTMyk1WRSW2gaCuMkIuchzdwJ66QH3dX6d9QoeAIkdz2FosDw4bzt07
+	yN6rFs47GUq3zCLJif2t3Z2TRlkXcDokZk8riukATvDSzQJKIWtNr/xbKaEO5/0OSRni24gBe3266
+	8g6l2eT+jAJrYfBWzGlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAREc-0000000HCjB-07n3;
-	Mon, 11 Nov 2024 10:01:26 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1tARGP-0000000HD81-0v2P;
+	Mon, 11 Nov 2024 10:03:17 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAR0d-0000000HALn-2TU0;
-	Mon, 11 Nov 2024 09:47:01 +0000
+	id 1tAR22-0000000HAhJ-1L3O;
+	Mon, 11 Nov 2024 09:48:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1731318419; x=1762854419;
+  t=1731318507; x=1762854507;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=tWMIM6L6n/2GE8nZCCMK37Kf4CStm+u//iiEsM6/VpU=;
-  b=ATd+d/KWsBjLihPo0haEdQLaYnFmKzEGWsNMJtA3orN8c3C5X6iLRs0C
-   xW1YAQsM9c+Km/SJ/3/c0z3sbguRDxSbPUBWcXjlD7Tq/o6PLGqxzHeqO
-   0Zn0jUIlV7tJMF5tGhQDQenmTGHmK593x0Dyam6qeeLw5JoJuTw5D5Egv
-   O0+ZKKTXxbOe/hix6tvy0BjBlaLF8VMnyhevCoJWd0yxSlilf2Px08oM7
-   eFuQmqGK0uBxHWD3XqdAFhuSHuwmnq+wB1ucuIYm1fIT6umvNPlm1yIi/
-   wbwmI4NAOnGvM7zrumqY+KB3D5vpRZJjfjzukFu0zq5mSBgL4uTMuU8Cn
-   Q==;
-X-CSE-ConnectionGUID: k894HhpPTleb4Ey/0maXEA==
-X-CSE-MsgGUID: SL9e1FIKRJuAh4vGT/+OhQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11252"; a="33980008"
+  bh=dnK1S3CmbMpjkJBTDuGbtVP12MBQ7Sg1Q3hSdde0Z1g=;
+  b=c74paN/maO/b+rMTBuONxNBM8ufCpah7Efidlc7fvRyTzAfiAUuYr4Oj
+   uMGX7viMej2WrI20MzAkGCY+lZrPVm8uMWMG7wmt4MJv2VtuDjyagNUMw
+   X0z6Zpc6qgQHsK3sIjXrvk1Z03GYzW2B/HrIJT1ipoXNPgca3E8HowQiq
+   S+598PQnoK7AMCaZOsXPTSXuqo9UZGz7l8mzVql/LlVKMApqoFL+XaXg3
+   n3zr0S8mhaxYjU98rKC4dOSeFnUURvyLuV2f3WWvJOcoisyWAchNP7onN
+   TBTQ2xeKQuE/m4HTg5tssPVItbdDpTgmCvhVFP2txKTLh4FJM9J8c8FhR
+   A==;
+X-CSE-ConnectionGUID: wB7+RNK3R3meVMppVILOqg==
+X-CSE-MsgGUID: mMcs9zDdTouWX27DBlKNOQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11252"; a="34906283"
 X-IronPort-AV: E=Sophos;i="6.12,144,1728975600"; 
-   d="scan'208";a="33980008"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Nov 2024 01:46:57 -0800
-X-CSE-ConnectionGUID: MNzfa4EfQpaCk0tgmnhcXQ==
-X-CSE-MsgGUID: nywjpN4iQPyfmRFzaRoFCA==
+   d="scan'208";a="34906283"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Nov 2024 01:48:25 -0800
+X-CSE-ConnectionGUID: 756tk182QPiWIKEOWj5bsA==
+X-CSE-MsgGUID: 3wm7aZiKT/CJRbT4dpICAA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.12,144,1728975600"; 
-   d="scan'208";a="86997425"
+   d="scan'208";a="110092576"
 Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Nov 2024 01:46:53 -0800
+  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Nov 2024 01:48:22 -0800
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1tAR0U-0000000DXzD-0Yvg;
-	Mon, 11 Nov 2024 11:46:50 +0200
-Date: Mon, 11 Nov 2024 11:46:49 +0200
+	id 1tAR1v-0000000DY1B-0fJq;
+	Mon, 11 Nov 2024 11:48:19 +0200
+Date: Mon, 11 Nov 2024 11:48:18 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>
 Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
@@ -66,19 +66,18 @@ Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
 	mika.westerberg@linux.intel.com, tao.huang@rock-chips.com,
 	finley.xiao@rock-chips.com, tim.chen@rock-chips.com,
 	elaine.zhang@rock-chips.com
-Subject: Re: [PATCH v4 1/4] gpio: rockchip: explan the format of the GPIO
- version ID
-Message-ID: <ZzHSiYyK9VjyzBBm@smile.fi.intel.com>
+Subject: Re: [PATCH v4 2/4] gpio: rockchip: change the GPIO version judgment
+ logic
+Message-ID: <ZzHS4uMpP8qF9F3e@smile.fi.intel.com>
 References: <20241111023412.3466161-1-ye.zhang@rock-chips.com>
- <20241111023412.3466161-2-ye.zhang@rock-chips.com>
+ <20241111023412.3466161-3-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241111023412.3466161-2-ye.zhang@rock-chips.com>
+In-Reply-To: <20241111023412.3466161-3-ye.zhang@rock-chips.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_014659_845127_C554E7A9 
-X-CRM114-Status: UNSURE (   7.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241111_014826_435878_E1E84DEB 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,11 +94,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 11, 2024 at 10:34:09AM +0800, Ye Zhang wrote:
-> Remove redundant comments and provide a detailed explanation of the
-> GPIO version ID.
+On Mon, Nov 11, 2024 at 10:34:10AM +0800, Ye Zhang wrote:
+> Have a list of valid IDs and default to -ENODEV.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+...
+
+> -	/* If not gpio v2, that is default to v1. */
+> -	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
+> +	switch (id) {
+> +	case GPIO_TYPE_V1:
+
+If you leave the V2 case first...
+
+> +		bank->gpio_regs = &gpio_regs_v1;
+> +		bank->gpio_type = GPIO_TYPE_V1;
+> +		break;
+> +	case GPIO_TYPE_V2:
+> +	case GPIO_TYPE_V2_1:
+
+...and the v1 case last, the whole diff will be much more understandable and
+reviewable.
+
+>  		bank->gpio_regs = &gpio_regs_v2;
+>  		bank->gpio_type = GPIO_TYPE_V2;
+>  		bank->db_clk = of_clk_get(bank->of_node, 1);
+> @@ -677,9 +682,10 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+>  			clk_disable_unprepare(bank->clk);
+>  			return -EINVAL;
+>  		}
+> -	} else {
+> -		bank->gpio_regs = &gpio_regs_v1;
+> -		bank->gpio_type = GPIO_TYPE_V1;
+> +		break;
+> +	default:
+> +		dev_err(bank->dev, "cannot get the version ID\n");
+> +		return -ENODEV;
+>  	}
 
 -- 
 With Best Regards,
