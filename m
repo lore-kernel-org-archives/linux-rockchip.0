@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1954FD3ABFA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 22:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D301D3ABCF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 23:03:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ekQqozne6qID3iBHAa/nWLld94DhqvEvCzkEW22Qdo8=; b=eBYlC73s9YdIivqe5NcShvchbt
-	Gy3IIN0Rk5OUiRZ0yoUi+FKo4F9p5eVAn4BHCdQNupoDxXLeZcimgFMTXiwF7c+mk7GFr6ebjFRPw
-	XsKedeDbqOJ4yw5wd7IfZPKEQ9/SY0fr/Y73gb7TQf/iB+l2TQMZTKjNpejlTIRXwvbRCC05peaYF
-	24B6+5PFuEMktBM9IM4/QL9lZzM1w/wijWT6ok45V2376McHzXCi4Y9yAeCtQrIESJA1XUhi1H3Ys
-	HVWEpaeRDyEkouGMPYwyZfuiEtERUuXxu9xrRp/UKbk675nErQg8SYNkGnshUdYw1vFWwzXV5b1Kt
-	ycW5PgRA==;
+	bh=Yyifgd6vXwKMT0AWZeJdrs66KUexU6OZBuDfsUKnrBk=; b=z7hZMJgnMwtKfiFehg75eZD28/
+	GgSU5baIPXRosTOMIurUX+PR2BZ3PN2ggVswsR1ClmK3kGqvnW2R9Yyp3vqzfsOCEDuZur3SSxqjS
+	bis7lC84+R2L+mjw8HLGgUH8Cnz/VCDw/0m1vYkYaU8mBWliTE/G0hncybR9Edr1uSGeK1ET7DS5h
+	e6TPTyDYDQtqG6hI8wgFxgMdQtnZNUgx2A8N3oxXOu6cfDm2o2iPlR6e3DGqANc5NNYvgGExOOBMx
+	yM/CWKxMo32nGNHH8VJ5XDe1gEky0Fn1T3anPgefJQuqhOLVqzoqDQw1jSb5kr4T+eWnWmcYQiJLf
+	SFqfbiVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAcs8-00000001VRb-18Ds;
-	Mon, 11 Nov 2024 22:27:00 +0000
+	id 1tAdRE-00000001aE0-0Dbj;
+	Mon, 11 Nov 2024 23:03:16 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAcqK-00000001VBj-0jHt;
-	Mon, 11 Nov 2024 22:25:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1731363901; cv=none; 
+	id 1tAdPQ-00000001a14-2Nl9;
+	Mon, 11 Nov 2024 23:01:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1731366080; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=g6Q6lEqRF3mAMWuHhrROQyDor9bc0B8R2f6QV2vno0hePCfS7IwZnDd2FbI/JAiMukYqqSV5Wv5sCxhkoBHLaNLOKBn01yz84fMYoG8ocMb9cioUIfmq4dmLLJW3VIqwLXCS5xkohadK0sm36HdkvCjMQi1NjF11pixcBtQOLLM=
+	b=FoCgNcyuie1bzKhq7HI08WkTvX+EiHUPFOghDIE5AnXJp3JV1LBOvNnO+vEhNtww3FsCogamHJn5bMuX1LlLTgemD05CFrtm7WSfYwMttQB+DV2ueVrpj4/dTKHdeNNg0gGAjpBfKLHm3qppNmfPocnL5xFY7rhKZxOvy5CIfd0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1731363901; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Y+TpjgBVGRmeOwgTGMmxF5i16Q5dwmhLR/v9pNyTtPQ=; 
-	b=DkKY/zJwjUhmMFxjHBc+OA/TAAAmfUwwy/tO91kD2to6aPMIn2A1UpTEcGQEFFezYQNKRYABgu3mFTYHR5otYGbgcLXkOzbAAj2EwxgXdDqAj7yxhOJlNFhLK4dI3a7aLFXkj1NLtHoIUQAbW8U9A+JiYU3t/rvI9fFX8T246xE=
+	t=1731366080; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=XwibdMHEaNPEnhXJ4z2p7lSAdzhETkfVe/42moEJ5Hc=; 
+	b=dKpV5Ou0+aMaUSquqQBNqIc3JTGKU8YdGb7HHoW+RjsfUs0oQNQlQpP+dWkKNJY3cdi3hKfHrhyoFhvyZQu9w/OBQ279o35asnLIKV5w6ez9sC3nPrKpUV5V8wA5qdj9nTbE8aM709g5A+M6D3s8LjFKTvl1uie347C8RgxqBdc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
 	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1731363901;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1731366080;
 	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
 	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=Y+TpjgBVGRmeOwgTGMmxF5i16Q5dwmhLR/v9pNyTtPQ=;
-	b=EmVmzz4IwInYhyy4PLojruni4yPVHzr5eE4qHwRTj1XALaecYb+morKRs0aJc8sS
-	GOkGG/p9WC0OrI4HXwVX5n6SLkkVBRaqlTKj9M7S0wmIja2wb4nuRSB/v+xbDbIV7pW
-	vGC7BAcTwvFYUkrTA/O9FPm6kYHiRLfDlf8vsitg=
-Received: by mx.zohomail.com with SMTPS id 1731363899386675.8494422225675;
-	Mon, 11 Nov 2024 14:24:59 -0800 (PST)
+	bh=XwibdMHEaNPEnhXJ4z2p7lSAdzhETkfVe/42moEJ5Hc=;
+	b=iUPSH4naSUPDk0PAiDoyoRDURAU/Gl1HA2oRs0aICdyXH/0Kn0qqiXaCyN34+2k9
+	Xng0A3Zk6NrTY8NcBue2wjDzJxu52igUPGnEp7taqsj4aJezwdjutT8vrEqswF9qLtf
+	eqPB3g8BPsL2LPgdX+vn/bBryVWf2ym/6y+7Ie1w=
+Received: by mx.zohomail.com with SMTPS id 1731366079198393.3828409779717;
+	Mon, 11 Nov 2024 15:01:19 -0800 (PST)
 Received: by mercury (Postfix, from userid 1000)
-	id 835E81060457; Mon, 11 Nov 2024 23:24:54 +0100 (CET)
-Date: Mon, 11 Nov 2024 23:24:54 +0100
+	id 5A51F1060457; Tue, 12 Nov 2024 00:01:14 +0100 (CET)
+Date: Tue, 12 Nov 2024 00:01:14 +0100
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>
 Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de, 
@@ -56,19 +56,19 @@ Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, mika.westerberg@linux.intel.com, 
 	andriy.shevchenko@linux.intel.com, tao.huang@rock-chips.com, finley.xiao@rock-chips.com, 
 	tim.chen@rock-chips.com, elaine.zhang@rock-chips.com
-Subject: Re: [PATCH v4 1/4] gpio: rockchip: explan the format of the GPIO
- version ID
-Message-ID: <pf3objqv5sh6me56iuvdm2rq2q5rpibgy2zjaj5aj3u4het5ua@37ztk34zrao6>
+Subject: Re: [PATCH v4 2/4] gpio: rockchip: change the GPIO version judgment
+ logic
+Message-ID: <grnpbrchvmhpl2uaoayrjcuit3ijk6pe4we3efmqltvzert7c4@mbmfgewf54zs>
 References: <20241111023412.3466161-1-ye.zhang@rock-chips.com>
- <20241111023412.3466161-2-ye.zhang@rock-chips.com>
+ <20241111023412.3466161-3-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20241111023412.3466161-2-ye.zhang@rock-chips.com>
+In-Reply-To: <20241111023412.3466161-3-ye.zhang@rock-chips.com>
 X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/231.294.59
+X-Zoho-AV-Stamp: zmail-av-1.3.1/231.261.35
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_142508_307768_C6B4F6FC 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20241111_150124_683371_CA12484A 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,92 +80,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8536434855256170757=="
+Content-Type: multipart/mixed; boundary="===============5982913721219644818=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8536434855256170757==
+--===============5982913721219644818==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b6656zhf2jq3tyeo"
+	protocol="application/pgp-signature"; boundary="yspvtplvzxeba3gh"
 Content-Disposition: inline
 
 
---b6656zhf2jq3tyeo
+--yspvtplvzxeba3gh
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 1/4] gpio: rockchip: explan the format of the GPIO
- version ID
+Subject: Re: [PATCH v4 2/4] gpio: rockchip: change the GPIO version judgment
+ logic
 MIME-Version: 1.0
 
 Hi,
 
-On Mon, Nov 11, 2024 at 10:34:09AM +0800, Ye Zhang wrote:
-> Remove redundant comments and provide a detailed explanation of the
-> GPIO version ID.
+On Mon, Nov 11, 2024 at 10:34:10AM +0800, Ye Zhang wrote:
+> Have a list of valid IDs and default to -ENODEV.
 >=20
 > Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
 > ---
+>  drivers/gpio/gpio-rockchip.c | 16 +++++++++++-----
+>  1 file changed, 11 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> index 71672d654491..f05b92e0e977 100644
+> --- a/drivers/gpio/gpio-rockchip.c
+> +++ b/drivers/gpio/gpio-rockchip.c
+> @@ -667,8 +667,13 @@ static int rockchip_get_bank_data(struct rockchip_pi=
+n_bank *bank)
+>  	clk_prepare_enable(bank->clk);
+>  	id =3D readl(bank->reg_base + gpio_regs_v2.version_id);
+> =20
+> -	/* If not gpio v2, that is default to v1. */
+> -	if (id =3D=3D GPIO_TYPE_V2 || id =3D=3D GPIO_TYPE_V2_1) {
+> +	switch (id) {
+> +	case GPIO_TYPE_V1:
+> +		bank->gpio_regs =3D &gpio_regs_v1;
+> +		bank->gpio_type =3D GPIO_TYPE_V1;
+> +		break;
+> +	case GPIO_TYPE_V2:
+> +	case GPIO_TYPE_V2_1:
+>  		bank->gpio_regs =3D &gpio_regs_v2;
+>  		bank->gpio_type =3D GPIO_TYPE_V2;
+>  		bank->db_clk =3D of_clk_get(bank->of_node, 1);
+> @@ -677,9 +682,10 @@ static int rockchip_get_bank_data(struct rockchip_pi=
+n_bank *bank)
+>  			clk_disable_unprepare(bank->clk);
+>  			return -EINVAL;
+>  		}
+> -	} else {
+> -		bank->gpio_regs =3D &gpio_regs_v1;
+> -		bank->gpio_type =3D GPIO_TYPE_V1;
+> +		break;
+> +	default:
+> +		dev_err(bank->dev, "cannot get the version ID\n");
+
+I think this would be a better error message:
+
+		dev_err(bank->dev, "unsupported version ID: 0x%08x\n", id);
+
+But it can be improved later on. Just like the next patch I think
+this should go into the 6.13 kernel as soon as possible to fix
+handling of the Rockchip RK3576, which currently initializes its
+GPIO controller using the v1 register layer instead of the v2
+register layout.
 
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 -- Sebastian
 
->  drivers/gpio/gpio-rockchip.c | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-> index 365ab947983c..71672d654491 100644
-> --- a/drivers/gpio/gpio-rockchip.c
-> +++ b/drivers/gpio/gpio-rockchip.c
-> @@ -26,9 +26,15 @@
->  #include "../pinctrl/core.h"
->  #include "../pinctrl/pinctrl-rockchip.h"
+> +		return -ENODEV;
+>  	}
 > =20
-> +/*
-> + * Version ID Register
-> + * Bits [31:24] - Major Version
-> + * Bits [23:16] - Minor Version
-> + * Bits [15:0]  - SVN Number
-> + */
->  #define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
-> -#define GPIO_TYPE_V2		(0x01000C2B)  /* GPIO Version ID 0x01000C2B */
-> -#define GPIO_TYPE_V2_1		(0x0101157C)  /* GPIO Version ID 0x0101157C */
-> +#define GPIO_TYPE_V2		(0x01000C2B)
-> +#define GPIO_TYPE_V2_1		(0x0101157C)
-> =20
->  static const struct rockchip_gpio_regs gpio_regs_v1 =3D {
->  	.port_dr =3D 0x00,
+>  	return 0;
 > --=20
 > 2.34.1
 >=20
 >=20
 
---b6656zhf2jq3tyeo
+--yspvtplvzxeba3gh
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmcyhC0ACgkQ2O7X88g7
-+po2UQ//SaaGn6KvUKLzfv6DxDAi3EtbLuUg0+4X9iyEI/lQ46DQQzLZ3dhoa6vp
-Pg5bjpTppFJq4ZAh9ANH6ngoXPmmE8GHq0lVca2cJFQHW7nPb5Dr5ffgtLiC720Q
-Y/ZJBMlFQ6cCy0jftIF989pUD9q+tuP6rC1bfFjpW23a/vD83bvraRKXf/shonuZ
-REM5GxHugB0nQrXWEFa+45zmE1IBEgikI+/g4rgc/JNsAlL1kgZHkfVCVqHqx0GF
-5f0l00IOPTQBT1nc2G9dk3yARdOGx7zLWidD5b7tS4uwY+pKBBE6VzwqEoPSHWI+
-aQkH7RZ2ljfcbjhzV9KpxgxTKKJzz/uaR5lsUJuHnHuk5bniTrp5xaVEQZaQRutW
-csnIMrSZJZekyFnMASLY7uG+Een/8/8qQfGTjkeDTtpKqBUJ7HfWv1u2R2CZWAvM
-Vw7U5wGuFlhRjuNQ3UdCVA43duIcVR8Aljd3a0LxqpgZzjEf7Jl0UmN6M42S3PKl
-tpDxcOKAKcHeA5FsHrS0pTqQjFz7oCrP17mCmmvmLsSUkhuxg+NOwDYrd/ZKH/8k
-Lo9b+bjWe7ajZoW6I9ndV2hOejdWsE6/5cGKI0VHdlEoURlooeL8iMEMiz+HjEub
-zP5zTfdXeop/eXdOCGNuBcnlbC42Ubf3uWnCyjj+QlY+vHagkno=
-=zlKr
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmcyjLcACgkQ2O7X88g7
++poVgA//bSvSuFLyAeqVfBQ2DfrVLZRaHXz9rjxJrwc5a0INYbb2+1ddDULXHeha
+CwkpcQ7rnUlne3VyIKeYF6hL01Oj1Ozai1eHa3jSjc3y2QejYMWIY5uuQGi7iMIz
+Gb1XnT7x6DV+3bg9RdJAjIaOnKvi6HYkfz1UVOj2KGQxpT/zqVMJ3xDkmqj/iULb
+uJKncHSMYOB9WHBPLtIMTX8OC1MiioilboRixGAgNtNxKVHCcCog8hu9mTPHc8Y9
+01VRxxKDLvC/ly/nfalwN3KGMGfP3tvLe9T8PFxKZbisD1oXWSlz6VHFXPIYCq9w
+g5xjnoaF9YCUDbFzLgtO+yLA1fdq+OXT6+0h2FxECuZi3opU+2xLGDU40SV3XrMH
+hinV4x4OCtdOTurhmyTiao1uM6mpw9iIlZZMfSlLjaZxoAHYfer18E0+rgTxiB3u
+xIp7OPmqLR3zidMnZFiYVc4TuJKxi+4+lFCMJ4Q/GDwlDNM0e4Pviv6uh854lmyQ
+45oUYy6QqxWB8y9pWx/itzYDlXIpg2g+Z8Rfyl41/Qcw4aUc5u/eYA84u843+T4V
+wQV7TtlQXU7UTXbaZhAFDwTc8FZDLaDV/c9qOpXhR0jMbW7ZWJtioh2JzsHts55W
+iVEWjmT9YQHLAuTIlDxnqQG5ToniCen6od7L9UAlo81MMG4ujAc=
+=bN7n
 -----END PGP SIGNATURE-----
 
---b6656zhf2jq3tyeo--
+--yspvtplvzxeba3gh--
 
 
---===============8536434855256170757==
+--===============5982913721219644818==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -176,5 +199,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8536434855256170757==--
+--===============5982913721219644818==--
 
