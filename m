@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926E6D12D60
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 02:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1CC5D12D72
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Nov 2024 04:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9g1PEIfQBGNr+64Cdow6/Zbjf3QA4thHCjYtmNdFQ1c=; b=fzmIcuabyl9wFO
-	j04YdXAyACazyAHGgctV0gDVbQPrcwbWrafO1YxFRXu32ecJo0DSzs/NwUOBmHwlnvKkccyewrqp7
-	o57fLTrp6DTXLw6VtxPbIUKKjjbKMwO2JnTT11OQAqNOOSn5BM9rAXyvEFMZL4qZ3usqk6Tv12AwS
-	/hQsvewjow+QNMqBpQ6Zlgogycnkg8f1QrFT4gi+AJdIZnZG3FwO/fhSGFjWgEqU+Do7SCsvHIuAv
-	7IJGHnbVuJ5XuYgyMpsGop+zSJIu401G8zuxVaqa/jq6WOFxm05QFJclr0YgIPwYloRj0usReS2WR
-	ZEZxYfA3ju0uJcJI40ww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=l9R34v+UYvNkoO+xYZSf+elkSBvUMmOhB6Vmj4oWwqo=; b=YxS5Doa7wRtkHA
+	rrXm/PyGoEqqd4bCfOh30d5uVZxQrkWVopQRagFvHKyLWIhRrrtrJ+KR1ZlrOcO2/OPfdoy/XRUex
+	OA/lZh9G0djRx5TNqbLvpIkjh9L7idTp3N7/SpJVjyS/DhT4nkP08F1DfmxEKbvKDWy6o7Ruja0Ge
+	B5snUsjuRCL6pqeqyJlkEd/fVGmi1WcN+jfPLvaLD99bAnlTKaehgBhUvSh5IbKWxvY53nhHFkXCD
+	Bvj5ONSh4Pj9Hgv+TX9UeLQDWu4QB9VjskcBMyDuIoknc71H4lak2fPb14tPu7KorzDNgJZpU/Klg
+	OBJ18m5QPx6EuoeHRLyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAKN7-0000000G9FC-32lM;
-	Mon, 11 Nov 2024 02:41:45 +0000
-Received: from mail-m243.xmail.ntesmail.com ([45.195.24.3])
+	id 1tAMTH-0000000GMDj-1xtQ;
+	Mon, 11 Nov 2024 04:56:15 +0000
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAKG6-0000000G8K2-46t1;
-	Mon, 11 Nov 2024 02:34:34 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 258a586a;
-	Mon, 11 Nov 2024 10:34:25 +0800 (GMT+08:00)
-From: Ye Zhang <ye.zhang@rock-chips.com>
-To: Ye Zhang <ye.zhang@rock-chips.com>,
-	linus.walleij@linaro.org,
-	brgl@bgdev.pl,
-	heiko@sntech.de,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	mika.westerberg@linux.intel.com,
-	andriy.shevchenko@linux.intel.com,
-	tao.huang@rock-chips.com,
-	finley.xiao@rock-chips.com,
-	tim.chen@rock-chips.com,
-	elaine.zhang@rock-chips.com
-Subject: [PATCH v4 4/4] gpio: rockchip: Set input direction when request irq
-Date: Mon, 11 Nov 2024 10:34:12 +0800
-Message-Id: <20241111023412.3466161-5-ye.zhang@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241111023412.3466161-1-ye.zhang@rock-chips.com>
-References: <20241111023412.3466161-1-ye.zhang@rock-chips.com>
+	id 1tAMRU-0000000GM1T-0IGZ;
+	Mon, 11 Nov 2024 04:54:25 +0000
+Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-7181caa08a3so2363775a34.0;
+        Sun, 10 Nov 2024 20:54:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731300862; x=1731905662; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=WfU+DCLSFXTTWqY/0GBuu5QNsIrraPKr9is8ul8Bwk4=;
+        b=SbcRG4cdcyG9FUKvauOBc+iULIB2b94Uxx2G42siA3dRuZ8hpoReqQ7OaGcNOluSTb
+         jh1/QoNWnJ3VMXkT+IBxoORnlbCAtsANkD5T6lXA0d1fYhgNpnYOEijZoixfg5Q+TUqa
+         GW3myQX6fq4VCCAdQYaJgEGZ9vz2arSt/3OtgrUf2H1aHe7OBX4CCDOCpAfkzSU7RdmW
+         eprH0khydoDIwWBQPN/bmcUKjxwUP+8486amiyf6vsdxHmUkKLabGAkF3tz4Bj6q34XG
+         /0CCs5UDVQ9Dhdd+BPgH5DD0123rhSKq5LPw7BmSYwsRVCxlTyBBPjZmYQgUU/13oqE7
+         LjMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731300862; x=1731905662;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WfU+DCLSFXTTWqY/0GBuu5QNsIrraPKr9is8ul8Bwk4=;
+        b=Awc7RF424yL3t8sCZkxV8EcRD3zM2UtBqUd5n1mQW+mL++0apMIursbrG1/ZZ3SXnv
+         nF0UZ/X/331mzR/+VlSTBJvk1nxR4WCU0A1xqg1C3fkgQGUg9kLYOyBfScrYEraYwsei
+         ETBGacWLgSg3Hcsvt75N5/lh0qJc7/XGuMneBOxAksgn5ow1Xk5snS3C2m4Lz2aA8a92
+         jEt4+ysTBXIYxwGNOqQcFnWob/zd8C6Ma5oq7HM4mAaXFP5k0UalefcZFWWk5UvfS3C8
+         34or53xAzAXr1Em2RXs7G52kpEcJ58xFHP3/eRj/7f5/I0JleiOM5kfHpCubMCV5Df+P
+         ccnQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUDyOZ78LoxxMjdAnw0IdOFd/Qy1M4TRVDN8vPosfAgVuLzayhNnucaM+aJHpi76FjAIi8YMJiGii5bXMA+3ofJ@lists.infradead.org, AJvYcCUHQi5f9M3r8rsmavGgczXkwy373ez+5hdGdUERw8f5jnNB5+VRBNEXFVJ/kCrbJzuNNd88izQXyz5hrLJ2igg=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTOyVBuyzvid0bosTrj5TxKquRx9uD0M8jb+PU2RhHyLeGWZZ8
+	Tb+7uC7q3btAxl3LNgz5t2OeLDfc+v4CnLtu/GYwag3bdgfpB9RCQDeZSr0S
+X-Google-Smtp-Source: AGHT+IGYEP2RVp/kn0F2tRfWbBkLhU/d5eH6DoN2VVDURkQxnJobNXAUOv5x8hfqX1Je54ugdEflHw==
+X-Received: by 2002:a05:6830:6481:b0:717:d48c:593 with SMTP id 46e09a7af769-71a1c1cd328mr9932310a34.10.1731300862171;
+        Sun, 10 Nov 2024 20:54:22 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:9ab7:85ff:fe20:5865])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-71a107ebd11sm2089439a34.10.2024.11.10.20.54.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 10 Nov 2024 20:54:21 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 0/3 v3] arm64: dts: rockchip: Add Orange Pi 5 Max board
+Date: Sun, 10 Nov 2024 22:53:21 -0600
+Message-ID: <20241111045408.1922-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ08fSVZIHUJMHU9JH0xLGUNWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9319128a6a09d8kunm258a586a
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODo6Exw4IzIfCiwBMw4xGDwN
-	LBRPCRlVSlVKTEhKSUJJT01MSUtKVTMWGhIXVQIeVQETGhUcOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBQkxJNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=S4nbMRNXQ3eIAPG7NtbSJ2jTJJEm67pkoMh0tQThPPA69ReLy4qvuPUjnOY8dTv+sNY4CgwNRfrSFeCtucZnG4AiAXrQi9aIIKakdR2IK1wbuG6HTjYpmljpsbNf5C1TfPrjKAvLCLlQ7Boe02/1kr/q8nEsO6PQotNNHFxn1qA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=wA6Lfw0pVK4KIHrVEahwSZAHmfqAeDyaeLLez6Fbs2s=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_183431_258622_9EC103B8 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20241110_205424_133752_DFEB70D6 
+X-CRM114-Status: UNSURE (   5.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,34 +95,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the GPIO can only generate interrupts when its direction is set to
-input, it is set to input before requesting the interrupt resources.
+Changes in v3:
+- Refactor to share common include with Orange Pi 5 Plus
 
-Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Changes in v2:
+- squashed commits together for initial board file
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index b7a43e492965..40c2476699aa 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -476,8 +476,11 @@ static int rockchip_irq_reqres(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
-+	irq_hw_number_t hwirq = irqd_to_hwirq(d);
- 
--	return gpiochip_reqres_irq(&bank->gpio_chip, d->hwirq);
-+	rockchip_gpio_direction_input(&bank->gpio_chip, hwirq);
-+
-+	return gpiochip_reqres_irq(&bank->gpio_chip, hwirq);
- }
- 
- static void rockchip_irq_relres(struct irq_data *d)
--- 
-2.34.1
-
+Link to v1: https://lore.kernel.org/linux-rockchip/20241026100310.52679-1-honyuenkwun@gmail.com/
 
 _______________________________________________
 Linux-rockchip mailing list
