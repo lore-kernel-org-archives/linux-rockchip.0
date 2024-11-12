@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A58D32D9E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Nov 2024 12:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434EFD32D9A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Nov 2024 12:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7WiLaqHQ78C8FGbcxLvZKSeXBg32DVu/+DcLgjim3Kk=; b=4fdB8m70QRrfjP0WBGOLHUJtBd
-	G2LqvYf2v8zQdJhxcdeN2K0AAeYbJODgWlczLmrHa9+dbD5QPr5f1Y+fl+DSxzfTHJfancgZIBq7p
-	67ZnEOEKBM09fMegKUvZ1g5AckuN1NfSQNU0KtzhpkcbqcVqjSCFdzU+yWAJ/7Bo56psF96CACawE
-	zTBuQwXSdOwrifThCph/HbGiLgFFIbuuYrSlrN7/1ZIWeZHAk7Eb35i2yBddAiRYvh6RH4K3ILpWc
-	TYWygLEAF5XcO83urKEqqjSf3yiYtCAtegVt5Gn/jmiNYScA5k3s0+caUAXhPV4/eD0ML2c9nCfr7
-	XyERs6uw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4jBjuKRrNGdtr3M2tNnJD5adF9yoclQd/GDPKk8f8Cc=; b=ekcadyqbxccqNh
+	DJ2zLZOdU+B83N078OVj6nuIjaquvRNtMmi0gabF+J2Cd1YBYtGRlASJpccZURnQHBiJJyfTwUxWN
+	EoNHxE3f9GA3kUMT8nze8cJRGMhPoF3/bayNpiV4CX3OJWPfKeUByEkGdnunt4EXGZAX4r65QSUHf
+	xZdcNdUlibxXeLn0H7k9hrU1kdVrVb0kjH5i8x8SsiD2CCcsLcPkylHgCv/opJNIcxD3ubWmm3Cuz
+	dqTL8T1FZt1n5Nu1t8kCN4x/cOywrg/YOZomyuOdsPpUJqUtJzxcG8xqXvkhUcqbA6Fygc66pVby5
+	TGuNfbaSPrHuknXsYhOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tApt9-00000003NKU-24lA;
-	Tue, 12 Nov 2024 12:20:55 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1tAqLz-00000003SCr-0Tzg;
+	Tue, 12 Nov 2024 12:50:43 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tApW2-00000003JPb-1dAa;
-	Tue, 12 Nov 2024 11:57:04 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-431695fa98bso43848205e9.3;
-        Tue, 12 Nov 2024 03:57:01 -0800 (PST)
+	id 1tAqLw-00000003SBR-0KNx
+	for linux-rockchip@lists.infradead.org;
+	Tue, 12 Nov 2024 12:50:41 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-539fe76e802so6262990e87.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 12 Nov 2024 04:50:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731412619; x=1732017419; darn=lists.infradead.org;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=gSu5VRx/T0r2Y1TQNYxUEQDwIAks1NmmDqtGiwK+coE=;
-        b=U6KSe48jnHxDt4TqTa4fNNyCf5VFU7SxOPZIxHhjaZ7liBIfOMSSUfCVW1TpOf02k7
-         JQdqkYNPcQp4Tax0qMMLeMeZKPhuckbOgEiNwQee8QH98AYXwFZBDPSyhDKZ9QWYI1Rp
-         33tiLifT8qA2sMHTumC0qNtnEegU0w6IHMz2O3kSeTjHHtzRg36jDakZwQePMQRE6876
-         WBVrcZEJJLcDvyMO8FJqtztReLF7w/C4jhcwKj7Zcr4oKaOQr9mY4y7i1WJWplus4oNT
-         4WNf4TT00FQppiUXXIBokdjkhTtC5efIPQKSPYOJIxWnG5kaSqYp55Q89uF+LGAYIOpA
-         uyWQ==
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1731415838; x=1732020638; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GeBVO2GdRfYXq00Svo2kHoFq/10dwtalChSI8IIjQwk=;
+        b=a9999fQGLbAYA1nKNWCHD0/lNwMgFZ0V6qzHHR97Y548drGGccMaCUL9+UQjs4fGpE
+         mES9sC5QPpwQ57Cg5/dR58+fgPgQhpIkTCRTiApaYMTJBF/48SBcsJhHDpDf+Pbl1GJy
+         JN/MbeZOqGSUExnrB8PAUyKh24JYmVjLwMyoO8dw99eLF3OA0JrgLx10/EMq0X2obTRz
+         014lG/PEBcAI/6WW0vzEu2AvCbwE8UsFg1bbWAoR1vO2bqKUFtTzWu8ImYR5m/CSUEDk
+         c9XglEzUS0OrxtxcUZOSms3Yr9y05hRXBHoaEMOJ3LUrvi+q3lRTdMPNoJoFuhRygENT
+         28CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731412619; x=1732017419;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gSu5VRx/T0r2Y1TQNYxUEQDwIAks1NmmDqtGiwK+coE=;
-        b=HjK8BvAh5d1DsFac4McgVkj0ES/dbuBbL8c6MdZUxBt2lFm+BLa5T5kZuhc3XOJGmD
-         kPfHQZ6Yo22rZy9UxWxYHlizkDyuwGVVY6mepJ8OhIZtGVW2mDkcWXiBI+CczkNs4lRm
-         gaDQbuq+O2KjBrYKb2RI99GaYiXT+u9fTcpitobrHnlEi1lKbNbRkDtU7sGi/pALoz78
-         W0D+pVBiDQJHwo0Sa3tFqwAXqVEVP3LvnmFeZOuXlyowrtroAUb5QWCDZQ0fmgb0hTJJ
-         qm16Lkwpr2ahOTi6Kj3URV+S6w/x7eQHz5fa4sNWOsiqQTugUVQnVUS2J4BnHZp7yrUQ
-         IUyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWtGLAklSr1XUgG6Q4ufYi0+tzOyFuOac2fEhBU1hTFJ7yP/VAUJEA4zndZ6N5sf+j/9Rx8n8NTz+S5HMLQn5nG@lists.infradead.org
-X-Gm-Message-State: AOJu0YwRKDZ4OhH434zXTBNd3nieQipfJ6ecGu2BFn7J1j4ogrdVyYBa
-	/ycZ5iV7ISHAFj43S8dcTE6xVyikSDJADuYRZ59kdMli1FanDpkJf6hmaw==
-X-Google-Smtp-Source: AGHT+IElsmspuC7y92QmrSRjeRp6WqdcehDOD3Uw/GDj15rvF4LUjZ5UI8+zxBjPZPJSfOK8ith9ow==
-X-Received: by 2002:a05:6000:1f8c:b0:37d:4a80:c395 with SMTP id ffacd0b85a97d-381f186b313mr12410123f8f.21.1731412619186;
-        Tue, 12 Nov 2024 03:56:59 -0800 (PST)
-Received: from adam-laptop-hp.localnet ([2a0a:ef40:d5b:4001:e118:be36:46b9:41b4])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381ed97cfefsm15121948f8f.26.2024.11.12.03.56.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Nov 2024 03:56:58 -0800 (PST)
-From: Adam Pigg <adam@piggz.co.uk>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, stable@vger.kernel.org,
- Dragan Simic <dsimic@manjaro.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdd_gpu voltage constraints on
- PinePhone Pro
-Date: Tue, 12 Nov 2024 11:56:52 +0000
-Message-ID: <2815923.lGaqSPkdTl@adam-laptop-hp>
-In-Reply-To: <0718feb8e95344a0b615f61e6d909f6e105e3bf9.1731264205.git.dsimic@manjaro.org>
-References: <0718feb8e95344a0b615f61e6d909f6e105e3bf9.1731264205.git.dsimic@manjaro.org>
+        d=1e100.net; s=20230601; t=1731415838; x=1732020638;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GeBVO2GdRfYXq00Svo2kHoFq/10dwtalChSI8IIjQwk=;
+        b=ZxNHRGZfU/9012P7uvWgCkkTx7xky6qsfAq93nrzHSnnPt/2JGLX7pGuYjfh6SpNMU
+         UtgHtcVEE61Bgvr9FEJj4Y+zpGw9uHrajQPSABA4wG5Yv0HbSOrbaJkwgheP437wmIgA
+         zwmYqhQsndF2HQhrkWXAgdV6do/BoT0fJ6WFCKWDwVRvgIEGgYYJEAmbOU/BOOZL7Qxk
+         vZBDRTdOALDE/EeMU2+tfFLjFy4gIDIr0Ownvjv+JmW3AGrl+OrCCLn4Ha4goCeLS4qG
+         0YUfYDIxIPJQ+qNamtuaTswZ/wkuX857emtCoqItt2fl0VJOdzM142DFPMuneg64Ver2
+         lB0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWdZyYY4qTMZWvlgBPSGv7een5TNTp88GOM/T2nu6EuUbGJkXxe1877tW7LrWqQ9BEENR2u858H/vX0S6Vjxw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+jcfGyNEYvQvJpkXqGSouy90xqfu7niBpvPOXVOYfrBb7fnC2
+	DtdaHXef11ig+xbXbKnlW5Qrv8vP44qELYUx55PmboJsxKNoMAGqdWNMNwQ6Xj9HpNDeupoltma
+	XUOxH6Kl8JQu6nm4bQysQhlA4MJTmgFXVopZq4A==
+X-Google-Smtp-Source: AGHT+IHO77pCoCjWkW3UGcaVkG+6FA9QyXrg8cZvhES5N7tCaKkkDgEAed2uIgWOEd1zU7CLBorSuTYdULgmPsy61b0=
+X-Received: by 2002:a05:651c:2109:b0:2fb:6110:c5cb with SMTP id
+ 38308e7fff4ca-2ff202ac51cmr71186881fa.34.1731415837857; Tue, 12 Nov 2024
+ 04:50:37 -0800 (PST)
 MIME-Version: 1.0
+References: <20241112015408.3139996-1-ye.zhang@rock-chips.com>
+ <20241112015408.3139996-5-ye.zhang@rock-chips.com> <CAMRc=MfTmpLSEUVTXSu8jf9tyTfQc=iG9NpovFem-qSDOCnagQ@mail.gmail.com>
+ <ZzMwh2GMP-bE7aLO@smile.fi.intel.com>
+In-Reply-To: <ZzMwh2GMP-bE7aLO@smile.fi.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 12 Nov 2024 13:50:26 +0100
+Message-ID: <CAMRc=MePqsQatxNy7p5c3sE4z8RepjjLeFgpppKgEctCU3jAUw@mail.gmail.com>
+Subject: Re: [PATCH v5 4/4] gpio: rockchip: Set input direction when request irq
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Ye Zhang <ye.zhang@rock-chips.com>, linus.walleij@linaro.org, heiko@sntech.de, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	mika.westerberg@linux.intel.com, tao.huang@rock-chips.com, 
+	finley.xiao@rock-chips.com, tim.chen@rock-chips.com, 
+	elaine.zhang@rock-chips.com, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241112_035702_468931_1D49940F 
-X-CRM114-Status: GOOD (  26.85  )
+X-CRM114-CacheID: sfid-20241112_045040_190042_07C56FF5 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,154 +92,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6693920351975167525=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6693920351975167525==
-Content-Type: multipart/signed; boundary="nextPart2630842.XAFRqVoOGU";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart2630842.XAFRqVoOGU
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Adam Pigg <adam@piggz.co.uk>
-To: linux-rockchip@lists.infradead.org
-Date: Tue, 12 Nov 2024 11:56:52 +0000
-Message-ID: <2815923.lGaqSPkdTl@adam-laptop-hp>
-MIME-Version: 1.0
-
-On Sunday 10 November 2024 18:44:31 Greenwich Mean Time Dragan Simic wrote:
-> The regulator-{min,max}-microvolt values for the vdd_gpu regulator in the
-> PinePhone Pro device dts file are too restrictive, which prevents the
-> highest GPU OPP from being used, slowing the GPU down unnecessarily.  Let's
-> fix that by making the regulator-{min,max}-microvolt values less strict,
-> using the voltage range that the Silergy SYR838 chip used for the vdd_gpu
-> regulator is actually capable of producing. [1][2]
-> 
-> This also eliminates the following error messages from the kernel log:
-> 
->   core: _opp_supported_by_regulators: OPP minuV: 1100000 maxuV: 1150000, not
-> supported by regulator panfrost ff9a0000.gpu: _opp_add: OPP not supported
-> by regulators (800000000)
-> 
-> These changes to the regulator-{min,max}-microvolt values make the PinePhone
-> Pro device dts consistent with the dts files for other Rockchip
-> RK3399-based boards and devices.  It's possible to be more strict here, by
-> specifying the regulator-{min,max}-microvolt values that don't go outside
-> of what the GPU actually may use, as the consumer of the vdd_gpu regulator,
-> but those changes are left for a later directory-wide regulator cleanup.
-> 
-Ive tested this on my PPP and can provide the following outputs.
-
-On a device without the patch:
-# cat /sys/class/devfreq/ff9a0000.gpu/trans_stat
-From  :   To
-: 200000000 297000000 400000000 500000000 600000000   time(ms)
-200000000:         0         0         0         0     12203   5387782
-297000000:      8208         0         0         0      2973   2337382
-400000000:       784      6283         0         0       439   1859857
-500000000:        67       287      1093         0       284    389599
-600000000:      3145      4611      6413      1730         0   1748889
-Total transition : 48520
-
-And with the patch:
-[root@PinePhonePro defaultuser]# cat /sys/class/devfreq/ff9a0000.gpu/trans_stat 
-     From  :   To
-           : 200000000 297000000 400000000 500000000 600000000 800000000   
-time(ms)
-  200000000:         0         0         0         0         0       364    
-188911
-  297000000:       120         0         0         0         0       234     
-31652
-  400000000:        77       182         0         0         0        82     
-32287
-  500000000:        10        57        56         0         0        57     
-13376
-  600000000:        21        14        35        31         0        22      
-9463
-  800000000:       137       101       250       148       123         0     
-97310
-Total transition : 2121
-[root@PinePhonePro defaultuser]# uptime
- 11:56:24 up  3:34,  1 users,  load average: 2.77, 2.24, 1.70
-
-I havnt noticed any issues, though I havnt done anything more in-depth than 
-run the compositor and play a youtube video in the browser
-
-> [1]
-> https://files.pine64.org/doc/PinePhonePro/PinephonePro-Schematic-V1.0-20211
-> 127.pdf [2]
-> https://www.t-firefly.com/download/Firefly-RK3399/docs/Chip%20Specification
-> s/DC-DC_SYR837_838.pdf
-> 
-> Fixes: 78a21c7d5952 ("arm64: dts: rockchip: Add initial support for Pine64
-> PinePhone Pro") Cc: stable@vger.kernel.org
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-Tested-By: Adam Pigg <adam@piggz.co.uk>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts index
-> 1a44582a49fb..956d64f5b271 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -410,8 +410,8 @@ vdd_gpu: regulator@41 {
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&vsel2_pin>;
->  		regulator-name = "vdd_gpu";
-> -		regulator-min-microvolt = <875000>;
-> -		regulator-max-microvolt = <975000>;
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1500000>;
->  		regulator-ramp-delay = <1000>;
->  		regulator-always-on;
->  		regulator-boot-on;
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
---nextPart2630842.XAFRqVoOGU
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEr1aGel3+a3VM67n3d+rfHu07OYAFAmczQoQACgkQd+rfHu07
-OYADkAf+LXSLL2XQi2NHVwvmnLvT1HH5gVHM/L+nTrbxrNJs6efCnE35HYlo4ye1
-kw9pN+BfWTGHuAOE3yRgIgXZXY9J/OEKcKpKpRNO6SYPiVnjm8F3ct8LAPXaPU53
-tQNF4VXtffgWoDgFDMbDd+kAWd6zPVyR3BuDFy9iMKYvFTKLka2JMHIz25wb+l94
-Vx6WDGlq0LTvslHsX1BTbIH82jzJrM07ohtQmeuZTsBPnV6jxpHDp3KaPAqtDoml
-6NtxipN/scNJXRAzq5lvyp1rHmTYTvjtvjJmuRrOnEYjyk6+Q2/ySxFVNw4+RhMG
-HheiovMko5kHxT1bvbFOJXjsKL23mA==
-=MG/w
------END PGP SIGNATURE-----
-
---nextPart2630842.XAFRqVoOGU--
-
-
-
-
-
---===============6693920351975167525==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6693920351975167525==--
-
-
-
-
+T24gVHVlLCBOb3YgMTIsIDIwMjQgYXQgMTE6NDDigK9BTSBBbmR5IFNoZXZjaGVua28KPGFuZHJp
+eS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNvbT4gd3JvdGU6Cj4KPiBPbiBUdWUsIE5vdiAxMiwg
+MjAyNCBhdCAwOTo0ODowNkFNICswMTAwLCBCYXJ0b3N6IEdvbGFzemV3c2tpIHdyb3RlOgo+ID4g
+T24gVHVlLCBOb3YgMTIsIDIwMjQgYXQgMjo1NOKAr0FNIFllIFpoYW5nIDx5ZS56aGFuZ0Byb2Nr
+LWNoaXBzLmNvbT4gd3JvdGU6Cj4gPiA+Cj4gPiA+IFNpbmNlIHRoZSBHUElPIGNhbiBvbmx5IGdl
+bmVyYXRlIGludGVycnVwdHMgd2hlbiBpdHMgZGlyZWN0aW9uIGlzIHNldCB0bwo+ID4gPiBpbnB1
+dCwgaXQgaXMgc2V0IHRvIGlucHV0IGJlZm9yZSByZXF1ZXN0aW5nIHRoZSBpbnRlcnJ1cHQgcmVz
+b3VyY2VzLgo+Cj4gLi4uCj4KPiA+IFRoaXMgbG9va3MgbGlrZSBhIGZpeCB0byBtZSwgZG8geW91
+IHdhbnQgaXQgc2VudCBmb3Igc3RhYmxlPyBJZiBzbywKPiA+IHBsZWFzZSBhZGQgdGhlIEZpeGVz
+IHRhZyBhbmQgcHV0IGl0IGZpcnN0IGluIHRoZSBzZXJpZXMuCj4KPiBJbmRlcGVuZGVudGx5IG9u
+IHRoZSByZXNvbHV0aW9uIG9uIHRoaXMsIGNhbiB0aGUgZmlyc3QgdGhyZWUgYmUgYXBwbGllZCB0
+bwo+IGZvci1uZXh0PyBJIHRoaW5rIHRoZXkgYXJlIHZhbHVhYmxlIGZyb20gdGhlIGRvY3VtZW50
+YXRpb24gcGVyc3BlY3RpdmUgYXMKPiBpdCBhZGRzIHRoZSBleHBsYW5hdGlvbiBvZiB0aGUgdmVy
+c2lvbiByZWdpc3RlciBiaXQgZmllbGRzLgo+Cj4gVGhlIGxhc3Qgb25lIHNlZW1zIHRvIG1lIGlu
+ZGVwZW5kZW50IChjb2RlIHdpc2UsIG1lYW5pbmcgbm8gcG90ZW50aWFsCj4gY29uZmxpY3RzKSB0
+byB0aGUgcmVzdCBhbmQgbWF5IGJlIGFwcGxpZWQgdG8gZm9yLWN1cnJlbnQgbGF0ZXIgb24uCj4K
+PiAtLQo+IFdpdGggQmVzdCBSZWdhcmRzLAo+IEFuZHkgU2hldmNoZW5rbwo+Cj4KClRoZXJlJ3Mg
+YW5vdGhlciBpc3N1ZSBJIHNlZSB3aXRoIHRoaXMgcGF0Y2guIEl0IGVmZmVjdGl2ZWx5IGNoYW5n
+ZXMKdGhlIHBpbidzIGRpcmVjdGlvbiBiZWhpbmQgdGhlIGJhY2sgb2YgdGhlIEdQSU9MSUIuIElm
+IGEgR1BJTyBpcwpyZXF1ZXN0ZWQsIGl0cyBkaXJlY3Rpb24gc2V0IHRvIG91dHB1dCBhbmQgYW5v
+dGhlciBvcnRob2dvbmFsIHVzZXIKcmVxdWVzdHMgdGhlIHNhbWUgcGluIGFzIGlucHV0LCB3ZSds
+bCBuZXZlciB1cGRhdGUgdGhlIEZMQUdfSVNfT1VUCnZhbHVlIGFuZCBJIGRvbid0IHRoaW5rIGFu
+eSBzdWJzZXF1ZW50IGJlaGF2aW9yIGNhbiBiZSBjb25zaWRlcmVkCmRlZmluZWQuCgpJIGFwcGxp
+ZWQgdGhlIGZpcnN0IDMgcGF0Y2hlcyBhcyB0aGV5IGxvb2sgYWxyaWdodC4KCkJhcnQKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
