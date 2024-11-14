@@ -4,65 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 982F7D637D5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Nov 2024 00:54:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4FCD637D8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Nov 2024 02:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CwM97G+SNss6nOMiQce460wb9uG9ROIVwPeh4bX3ROs=; b=o7A2NoN8g34D5V
-	AJd465j8TpX3T10Cjkioh9vSniqUu/ttILVZ68jrvZ4/zNUAGCfRalDxQxAKlTIvjYMYAHSZPDLEJ
-	acQAmMsHw5Qyi7gZ3anoiXPR4tP06TOI7I5RqC4a5scs+iD/ODrw3iveSoauHU4pJtuABBCMfodFb
-	eIDR7x9sjGxzZ0w+8uqC1ZQpbJeh8V6Vr+7bkC+/ps302sspVGmdZ7BM242DWMN7I0LDNUylUg+fi
-	KEvTq/dKQarvt10zviwiRO1qrjJH1thUmwlY+zdAbDyzZrOwbV1POJe6JtYXhL7Wj5JMEdeQadzif
-	13zPqkA1gWlPzEcWHO1Q==;
+	List-Owner; bh=eKhr6hVwDiqo/rThuClzNEZkoh7hHD7KLxvT2ULiI/E=; b=nHDXGdUg0hQM/I
+	58gg97nF82ssv+raxiBqlEBhaX1pRGu/eqoKM96uvVIloi92duJcORw2Ct/cA00vzaL6JsV0pwM1c
+	4pHMFpLlcz7WnNGdgr9S9d4U/yFDunUO2mOuBdl8ZJ6RIhw63CBf11CaC3GuxYaaKRdw1ElS/1H4/
+	IpL0bBZC2bXddsCfMD76eBvwpn6XMynvuM3RhIeQBAKnKdEfm58b7uo0vAjCuz4uRtgGefrgCWgRl
+	mNLBlzdRFAqZxhzwtM3+MZ/TBY0wAssbrmY1ARu1XgySdfRuTe7ExUil1IyND5sgKgIZ1S1l82agk
+	u3byKLFpJEAq19HO96MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBO8I-00000008NlB-2jL0;
-	Thu, 14 Nov 2024 00:54:50 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBO4A-00000008NIG-1SCR;
-	Thu, 14 Nov 2024 00:50:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=HxStjIbqCkHIGsb5YkLzMTsySu2+FeJnPPzLOOGhizw=; b=k
-	8lCXi3/VVMZA7GmT/BivtNVcY43y+238j3Csx+YKmsAdK7gRrJnZrMm++OVJs6cE
-	eNFzB9PWcKHuTP/dk78GzfKKXSF5FHo9597UVfze6R6X2cs8lD9avI9IGAgUbm7P
-	yLZOobo+5xtZhOCOGbCObTIgRlYt/Zf+Cvrwqkv3KQ=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-129 (Coremail) ; Thu, 14 Nov 2024 08:50:20 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 14 Nov 2024 08:50:20 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Quentin Schulz" <quentin.schulz@cherry.de>
-Cc: "Heiko Stuebner" <heiko@sntech.de>, hjc@rock-chips.com, 
-	andy.yan@rock-chips.com, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	"Heiko Stuebner" <heiko.stuebner@cherry.de>
-Subject: Re:Re: [PATCH 1/2] drm/rockchip: vop2: fix rk3588 dp+dsi maxclk
- verification
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <cb73853e-4201-4cc9-9e8a-f977e66241f6@cherry.de>
-References: <20240425195506.2935955-1-heiko@sntech.de>
- <20240425195506.2935955-2-heiko@sntech.de>
- <cb73853e-4201-4cc9-9e8a-f977e66241f6@cherry.de>
-X-NTES-SC: AL_Qu2YA/mfukwp5imdZekZnEobh+Y5UcK2s/ki2YFXN5k0mCTmyg4+bG5cLH7q9fmiKiCmoQmLURl14P5jTa5KbpjPaX03fUneRyBcUR0WBzmI
+	id 1tBPlu-00000008ZtS-0O6T;
+	Thu, 14 Nov 2024 02:39:50 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tBPkK-00000008Zkb-18Fk
+	for linux-rockchip@lists.infradead.org;
+	Thu, 14 Nov 2024 02:38:14 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AE2bpls029356;
+	Thu, 14 Nov 2024 11:37:53 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        dsimic@manjaro.org, sebastian.reichel@collabora.com,
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v2 6/9] arm64: dts: rockchip: fix property for pwm-fan for Radxa ROCK 5C
+Date: Thu, 14 Nov 2024 02:37:43 +0000
+Message-ID: <20241114023746.4867-6-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241114023746.4867-1-naoki@radxa.com>
+References: <20241114023746.4867-1-naoki@radxa.com>
 MIME-Version: 1.0
-Message-ID: <72672888.8f9.1932826549b.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: gSgvCgD3_+JNSTVnfU8mAA--.60608W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hKXXmc1QEikyQABs-
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241113_165034_766917_F7B6247A 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20241113_183812_537113_DAD67E98 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,67 +63,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+fix pwm period to match with vendor kernel[1].
 
-Hi,
+[1] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
 
-At 2024-05-06 15:44:36, "Quentin Schulz" <quentin.schulz@cherry.de> wrote:
->Hi Heiko,
->
->On 4/25/24 9:55 PM, Heiko Stuebner wrote:
->> From: Heiko Stuebner <heiko.stuebner@cherry.de>
->> 
->> The clock is in Hz while the value checked against is in kHz, so
->> actual frequencies will never be able to be below to max value.
->> Fix this by specifying the max-value in Hz too.
->> 
->> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
->> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
->> ---
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->> 
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> index 9bee1fd88e6a2..523880a4e8e74 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> @@ -1719,7 +1719,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
->>   		else
->>   			dclk_out_rate = v_pixclk >> 2;
->>   
->> -		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
->> +		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
->>   		if (!dclk_rate) {
->>   			drm_err(vop2->drm, "DP dclk_out_rate out of range, dclk_out_rate: %ld KHZ\n",
->
->It seems the error message is incorrect as well and should be saying Hz 
->instead of KHz. (note also the lowercase z).
+Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+Changes in v2:
+- reword commit message
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I think kHz is fine, we can find many siminary usage in drm:
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+index 0389f9e3ba65..24e33f98865a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+@@ -73,7 +73,7 @@ fan {
+ 		#cooling-cells = <2>;
+ 		cooling-levels = <0 64 128 192 255>;
+ 		fan-supply = <&vcc_5v0>;
+-		pwms = <&pwm3 0 10000 0>;
++		pwms = <&pwm3 0 60000 0>;
+ 	};
+ 
+ 	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
+-- 
+2.43.0
 
-drivers/gpu/drm/drm_vblank.c
-656:    drm_dbg_core(dev, "crtc %u: clock %d kHz framedur %d linedur %d\n",
->
->>   				dclk_out_rate);
->> @@ -1736,7 +1736,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
->>   		 * dclk_rate = N * dclk_core_rate N = (1,2,4 ),
->>   		 * we get a little factor here
->>   		 */
->> -		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
->> +		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
->>   		if (!dclk_rate) {
->>   			drm_err(vop2->drm, "MIPI dclk out of range, dclk_out_rate: %ld KHZ\n",
->
->Ditto.
->
->Otherwise,
->
->Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Acked-by: Andy Yan<andyshrk@163.com>
-
->
->Thanks!
->Quentin
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
