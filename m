@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08348D6DDF4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Nov 2024 11:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C52D68BC6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Nov 2024 15:13:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hB2tWEwF1vrUsmF2SzZzn1wNWy8udx7AMass8p1ViNA=; b=N1wFCuLoaVFugx
-	S0Tpy8L/fdXgc8tlXLCLCkIJcdII55RatuPboE9d22QPPkqRMgNGKVH/dpqtQIByh71OebiUqclIl
-	NFqKoZEqO7uQnU2vCYyR2ipdpm3haNo2ZhxWVAPsx74WSabj6XoDCBkUs4rRKlXS+HJiR3wZgp1rx
-	4EoTrF0BMe/MaOcukjdz+Nl2zLy3nFX3gtdKLIl5PSWTfj05Gnt44qs/EfPBWT297qfn9iG/uVwkc
-	FRozj7sXYqh5iqP/bFXkf020gYwI66Wd+pfhRcHmp9t7yZSBYRF6sKJxjAITP+PZY6/s0ClwXsmD/
-	js96lTCEQOd/gjG+jlcQ==;
+	List-Owner; bh=GYGD7IhACd+97J/YmzPAP7CYJTYFnXOMX3R01HmEFI0=; b=BwqtC1AgJiG+FS
+	bcOS+K0zPjo4EBLFXbuHtSH7iDDH/2el/R5FCoiEed1EBrbq9r+FN7iBBkrvFJ+tq64+ViApmeozV
+	oDAD+Qmmxkpnr0zLAEx+XaGmwANAj/85S3uC/AosK4ajmtpV9tko9jr3OUbxeRCFjAelRTUwmC8Cu
+	I5+/1voWF44bc0AAISy57IDA6bNrFGeyfboBI3HXod8hBugJFAxjJah9DuCvTusXA4ahKFZg9WmjB
+	RbH8b6rirpRFyFewfYSJ6UrDBQsAuFtqEqBQdZH+AkRqeU1THnTlmFqhoz76ryF3QhyaxH0o0meHz
+	08KfSKv/1y1TH5reIcYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBuqO-00000002Znc-1WVA;
-	Fri, 15 Nov 2024 11:50:32 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1tBy0E-000000037J2-1pBU;
+	Fri, 15 Nov 2024 15:12:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBupS-00000002Zan-3kre;
-	Fri, 15 Nov 2024 11:49:35 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-20c6f492d2dso19275295ad.0;
-        Fri, 15 Nov 2024 03:49:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731671373; x=1732276173; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=KtoZGAEyQBCnhyYoL/bdON4aQAbKow6V3dd3ML98XEo=;
-        b=Z3tYLOvYpWoeiw+i0ljr29ZDpuBnruqGUUV1JnnRN0hKfJ0pYvYf7c32QyTBIbj9Qn
-         R0mNNidD2MEXJtpFUdUbf1Z9y05QfEkTNAUzd+PJC1MhCjbviTKZ1gORxX6pyIKaTt/a
-         iZQ7G2o7XubeAJjAJvSOBz/NGvamwu0hzfmdScjt40YwNDZSjW6926qSWEm+BA/7zLt2
-         x3yWJiGMZJU5mhu2tvGRuyC5DWp9TpBErYKxJLHI0zrMWoXz6ys6Cflqa0ag68i5/n6z
-         LJw1HI1SjLVjBvhFsAC+jViU2FEF2pY5LpMIDW7iOgJs9XmzYGQfKsENVKyBB5eV6crG
-         Gxfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731671373; x=1732276173;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=KtoZGAEyQBCnhyYoL/bdON4aQAbKow6V3dd3ML98XEo=;
-        b=JziX3yO28o+i9CKShdO6elzbq0AHDOpRppOToFxZsn9TtVi9627DcbBjVRtWg8cBxq
-         jGx/dGE/oIVZi4vbf3y0lNHbxvuZ9iUhlbpEDBCEU7hRUtth4AGzn53ZwP6DPsfoXUAr
-         fwc0+qVfiYtX8lQ8jpxQS6OB7JXs2memQZDj29Jto6OgGsxoEiKYz2HNFBqRjp3Rk8nU
-         F2rKygB84mpWNJ01pPh3mKerhjTShZcvxOFn3Jy9nGvAn69VvHKw3vPC3hI+OSnMoBYo
-         hvaUakUuYXmkWLAhraIZunGPBvk0Wco7y/3l2FxWdXrx8Bz9z2PCE/iq4bm1kicP4Rmf
-         vOBA==
-X-Forwarded-Encrypted: i=1; AJvYcCWMp7/SSWN2W7N1EBeCqjdO+NBICMivsxVKtOeFt/GhAyGuI2XVAHTaq3Sg0uVQPZr3CHEVQlmd/KOhSMGU9Ly+@lists.infradead.org, AJvYcCWc/T5H5sNG5ldJmKl3ujkYMh3E+KBvYWD/fMx6/SWEU9CT4WqajoSnvugoQbTPt2huNtLarpUuIQsjXyx0f5s=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpFk06kAHoDqw51YCXYmk1v60FcNtUGE49RzpxfYIFXIKOOUuJ
-	uuPaKV8Ezr3UI8JKzIqNgpF3ySsUxOgaZSf4fOpAxRW211+5f8nt
-X-Google-Smtp-Source: AGHT+IE5sTGzwQKuTH0On3cSqtf2nsawCLjUF0bcqmiQ/aTjp84Xc+l7NZt2tv8FVSZSvOI7ACAIyQ==
-X-Received: by 2002:a17:902:d50a:b0:20c:8331:cb6e with SMTP id d9443c01a7336-211d0d818c6mr34430995ad.19.1731671373536;
-        Fri, 15 Nov 2024 03:49:33 -0800 (PST)
-Received: from HOME-PC ([223.185.134.27])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f47b2csm10469315ad.219.2024.11.15.03.49.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Nov 2024 03:49:33 -0800 (PST)
-From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-To: frattaroli.nicolas@gmail.com,
-	linux-rockchip@lists.infradead.org
-Cc: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	heiko@sntech.de,
-	linux-sound@vger.kernel.org,
+	id 1tBxzJ-0000000379z-0ykd;
+	Fri, 15 Nov 2024 15:11:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=nk174AGwbrN2iQ6lu65t+DAZ0jlZZM5p3WBAEQT210c=; b=2oiJfz2PsPaSVvAFd/OOAOWE9i
+	04gX2fak00SItozpZvfRKoQVQPDAg+TqJPLjy3Yf35Q/4wumcBHRVS5dkoQULujJU4Ligq/XI5H1H
+	MfWmVd+Nk58nZjqvJUp4ooBzGefeQPkx2Qf1S+fhSNyd2S3T7/NY16r/pYe6gSyMkgd05QvCVHCfZ
+	/CWAK2cC6vcUez7l7Uvi0T4fhZapXNnXdM9kRAkTsEsPuV/KTQp1sxmtLW3WcRkmzAKAg8yoMQ6sq
+	No1uZbmGJwUDon5wSTkVfwAyLTofPYWsgWWAeW/CBByIsft0295JLpJioFTu6c4+c8R6XT1e5Lslu
+	eAo6tqSw==;
+Received: from i53875a30.versanet.de ([83.135.90.48] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tBxz5-0002mM-O9; Fri, 15 Nov 2024 16:11:43 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@theobroma-systems.com,
+	hjc@rock-chips.com,
+	andy.yan@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Subject: [PATCH sound-next] ASoC: rockchip: i2s-tdm: Fix a useless call issue
-Date: Fri, 15 Nov 2024 17:19:24 +0530
-Message-Id: <20241115114924.23843-1-dheeraj.linuxdev@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	sebastian.reichel@collabora.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH v2] drm/rockchip: vop2: fix rk3588 dp+dsi maxclk verification
+Date: Fri, 15 Nov 2024 16:11:31 +0100
+Message-ID: <20241115151131.416830-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_034934_936673_E91E8847 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241115_071157_260541_242E0705 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,29 +80,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit fixes a useless call issue detected by Coverity
-(CID 1507978). The call to rockchip_i2s_ch_to_io is unnecessary as its
-return value is never checked or used.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+The clock is in Hz while the value checked against is in kHz, so
+actual frequencies will never be able to be below to max value.
+Fix this by specifying the max-value in Hz too.
+
+Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Acked-by: Andy Yan<andyshrk@163.com>
 ---
- sound/soc/rockchip/rockchip_i2s_tdm.c | 1 -
- 1 file changed, 1 deletion(-)
+changes in v2:
+- drop the separate vp3-config patch, as vp3 will always get the leftover
+  resources, so _should_ be fine (Andy)
+- fix error output to also report Hz for the value in Hz (Quentin)
+- add received Reviews+Acks
 
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index d1f28699652f..10f46fbe5175 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -577,7 +577,6 @@ static int rockchip_i2s_io_multiplex(struct snd_pcm_substream *substream,
- 			return -EINVAL;
- 		}
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 9ad025aa9ab0..0c8ec7220fbe 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1864,9 +1864,9 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 		else
+ 			dclk_out_rate = v_pixclk >> 2;
  
--		rockchip_i2s_ch_to_io(val, true);
- 	} else {
- 		struct snd_pcm_str *capture_str =
- 			&substream->pcm->streams[SNDRV_PCM_STREAM_CAPTURE];
+-		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
++		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
+ 		if (!dclk_rate) {
+-			drm_err(vop2->drm, "DP dclk_out_rate out of range, dclk_out_rate: %ld KHZ\n",
++			drm_err(vop2->drm, "DP dclk_out_rate out of range, dclk_out_rate: %ld Hz\n",
+ 				dclk_out_rate);
+ 			return 0;
+ 		}
+@@ -1881,9 +1881,9 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 		 * dclk_rate = N * dclk_core_rate N = (1,2,4 ),
+ 		 * we get a little factor here
+ 		 */
+-		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
++		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
+ 		if (!dclk_rate) {
+-			drm_err(vop2->drm, "MIPI dclk out of range, dclk_out_rate: %ld KHZ\n",
++			drm_err(vop2->drm, "MIPI dclk out of range, dclk_out_rate: %ld Hz\n",
+ 				dclk_out_rate);
+ 			return 0;
+ 		}
 -- 
-2.34.1
+2.45.2
 
 
 _______________________________________________
