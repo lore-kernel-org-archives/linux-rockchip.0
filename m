@@ -4,58 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D709D68BC6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Nov 2024 16:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77891D68BCD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Nov 2024 16:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lVIOEU7NvAvievmTt+MFmdc+ODryPNzB83V2aBMjEJs=; b=gAkixZWDAHumiG
-	XjXM4rB8XJCZbQPvG11jm4I3aN0Iwo/bd2L6tN4BgxfygNN5tTzP+q7mKbi3yF7Mg0YFgVv/3CzTq
-	L5ogZaFiHp4K7+1qpbNaIzmxIBjD7cz7zonYEY6rKgy5OD34T6TyTuWkNxq7xZdKatZr6FXSF5GD7
-	JYgJ7tsxHy7chSQKb5pjUxRXx2a/TsnZUXMpB4NeflBOOouMTtcd/cOrgbUbFaTPovgycNcLEW6Br
-	4amexaE89qQnU1PYj263MJ/1rD2cxYlgUFMpbPTUm4TRatk0j32HcvSq2YOsrEbFJWneLHm5rs3gJ
-	IAgxqtvd6qYtAJAWtxpA==;
+	List-Owner; bh=RUlJvqovFACDgAamftrAp4DMi8sByG9SPdV/iAfYO9U=; b=zD947OfQOhr6xl
+	SYAqi+6VHKPtnHthRbIY4MmR/iR6qPt3iFg729Zha/41gtmB28UkwOe0vMxIGyfYt9gxIIC2dWKEY
+	CvVRIFmy/FSHQtrW7wHZmmu79XL5Wfbq2tHvaWvHmPVRaimE7yNbaYOJFc7ZpNqdZMT+gJO1cMy0c
+	qsB5XXCrfKspXsPMrSXRd1uo05zdi99y/fMM/lR1G1fGYtOfvqdprLjJ/jCEKgMDgfHeulgipDghZ
+	5W/V2Y4mxddR53QdwomRHXkvX9tJ3ebVsaFM3qOgKiqxhnTbzq5kE7X7b6Mv5IsPN3+OJMG+P9w1+
+	biMTQge6s1JWcyL9CaJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBz8D-00000003Kti-3H9H;
-	Fri, 15 Nov 2024 16:25:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tBzd9-00000003SJj-1npT;
+	Fri, 15 Nov 2024 16:57:11 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBz4i-00000003K3d-1ViL;
-	Fri, 15 Nov 2024 16:21:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731687695;
-	bh=hzMNqFzjJmXhupDySrBmjKOmiFy0n0jBgxntqS1KgZs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dqxPlzsqQKMa2GOkMp5zMof02/OGqnSj/Xa2IvDASQM2MsCQ+Gx7cmVHQkL517wDh
-	 d/MDFCf1+aEqZ6GDz32dUuYiNyERNFCOPR29Vnq5L0T9OXqPzhS2P/+p76TlfgeSRO
-	 53ocPXS/kla7CH46o+rfvfOgt3ERTH1LaroAZ3ArO+B/NLyDjLuu5mEIxJmnk52OLQ
-	 KDvefA8k6dmtX/UkDZOtp2RBpz9Sdzm9jxEt8rwSU/ICepyQ6G8yRfuQjqiaJjZthO
-	 e9mlVLAOWkrfb0vu++5EiqcdXyha13WcDWStjUYY02MFUdTr67x82daHsnv/DSNLLy
-	 Zk+9OX6jqcrAA==
-Received: from bootstrap.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 74A6D17E3756;
-	Fri, 15 Nov 2024 17:21:32 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 3/3] arm64: dts: rockchip: Add VOP clock resets for rk3588s
-Date: Fri, 15 Nov 2024 11:20:42 -0500
-Message-ID: <20241115162120.83990-4-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241115162120.83990-1-detlev.casanova@collabora.com>
-References: <20241115162120.83990-1-detlev.casanova@collabora.com>
+	id 1tBzcE-00000003SFs-1KZ3;
+	Fri, 15 Nov 2024 16:56:15 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-53da5a27771so2375303e87.2;
+        Fri, 15 Nov 2024 08:56:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731689772; x=1732294572; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=u0nInsxIdNGOgQambcoXqwexeiN04SjXqkKyG9oCO2M=;
+        b=IiaDfMsdODD+4LbHplCIpqzCd4rdIpnl2gWMN0YiWwZ+DLFHxNznSnpmBKCn4Po8eZ
+         dhu/S6Z5koXiZU+ObAjYEj4pAdHqvirfOZ2w4EDWr95M+UWH2xkqD2xHDyjJBIf09XtI
+         gsPiEFC3QNgulwRQWitqfh6/2kl/KaHu/kA34JnKbO5JMhKh/0JL5ZRvVcVt2wXVZ924
+         PTGpbaQ1MMlBBZlivadadbjC+N4w/+i3TSp2NpqVXGFPNNhis2lOprp5VwMl4XVe3oVQ
+         iXUMQ0d6eQ4u//MY5qfuqAa8vYCdsRcrB3lppPYNZGfsdxR5/oI0Jca3IKmy+rTQKWrO
+         gl3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731689772; x=1732294572;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=u0nInsxIdNGOgQambcoXqwexeiN04SjXqkKyG9oCO2M=;
+        b=pPUe1zjDmbHDQJQLsO16YOIKBd+k/zCK3cABP0CQZ2dMFi05eJau3KeNgoRulLL9lE
+         jX3ODJe9QerjXIbfUJ9z1T/z8Xupz5CGUlVnd4/+U/STmI+4bLg5PuC4d2QT9O9Bngeu
+         BxMOx6n7DTWt+NIJqR6koZpgCgyZhkcDd2Z0RHLZ1DnAJxYPomc3FN5MhJDhJpxShvVv
+         HW9/6X5+IWckSUy22cNxyWUFNuNbu9m6HKrEHOrHuT2FOH1QaPUO457o54+6XQTzjXCz
+         Idmb02qBvnrIjRc3/QV2B+XNOUzxiaMgQCyJmU/is4nz/VjQCPuYCNLhH2N2bwb+Y0BG
+         iv2A==
+X-Forwarded-Encrypted: i=1; AJvYcCUCiTKlUCBfiivzvNxhrmuNXgUust9+4kvSIaPLHDzOe8b35sKcbS2EwhWb4wFffBYL9mIIhlOYzZaRTUaIf5Ns@lists.infradead.org, AJvYcCVAl1aW49zN0Rrhdwrz88FioKSUun57sRhLLeSrYzJCm7OUKzgXmFErJ6wgO6/S2sk8wtvpFtNEGPcMU9JFh7o=@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywvju8FraEfMJB+MCgjJTVXc0I/0LhfnHPmGD4HAKz984lg+s4/
+	e3eFmepe2w4+yh/pNMtoMVVTOmJTbILX3yBZTb66QR8gkmO23b3um3j9qaS+jTC+jbG4GnjeSqt
+	XiMK9j/JPhA9fxzjeD/Lc9Pu1fhw=
+X-Google-Smtp-Source: AGHT+IE20zD7t2FLBp8RIdE2sMJJAa9tUAjhCXdCLHXfNc2IobukMtVDq0qK63Ffk2tfmDubFC4R/lr31VQmlVMzCXI=
+X-Received: by 2002:a05:6512:3a8a:b0:53d:a283:f290 with SMTP id
+ 2adb3069b0e04-53dab2a65d6mr1953880e87.31.1731689771303; Fri, 15 Nov 2024
+ 08:56:11 -0800 (PST)
 MIME-Version: 1.0
+References: <20241111045408.1922-1-honyuenkwun@gmail.com> <20241111045408.1922-7-honyuenkwun@gmail.com>
+ <CAGJh8eDdj5zwENGWHHdZt8ejdVZ=d4GTNzW57rohyL2rvEA_hg@mail.gmail.com>
+In-Reply-To: <CAGJh8eDdj5zwENGWHHdZt8ejdVZ=d4GTNzW57rohyL2rvEA_hg@mail.gmail.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Fri, 15 Nov 2024 10:56:00 -0600
+Message-ID: <CALWfF7+7KSZ2UJUXgS_Pr3=xzMEyjKgZ4BPL47zkmfnM03HUqg@mail.gmail.com>
+Subject: Re: [PATCH 3/3 v3] arm64: dts: rockchip: Add Orange Pi 5 Max board
+To: Marco Schirrmeister <mschirrmeister@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_082136_541111_68DE778F 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241115_085614_353334_DEA57058 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,45 +85,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Heiko Stuebner <heiko.stuebner@cherry.de>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the needed clock resets for all rk3588(s) based SOCs.
+>
+> in your v1 patch series you mentioned you do not have access to EMMC
+> to test. I am happy to test EMMC, but I had problems with the v2 and
+> v3 patches.
+> v2 dts did not compile and I was getting errors for the hdmi0 entries
+> like "Label or path hdmi0 not found". I assume I am missing patches.
+> After removing it compiles but the board does not boot.
+>
+> v3 patches don't work against 6.12-rc6/rc7 snapshot. The patch that
+> modifies the 5 plus dts fails. I again assume I am missing other
+> patches.
+>
+> If you have some info with which kernel or other modifications I can
+> use your patches, then I am happy to do some testing.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+If your primary focus is to only test eMMC support for the Orange Pi 5
+Max, then apply the patches on top linux-rockchip for-next.
+https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=for-next
+That generated DTB should be able to run against an older kernel since
+the Orange Pi 5 Plus already works.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index d97d84b888375..b5c19423de9b6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1268,6 +1268,18 @@ vop: vop@fdd90000 {
- 			      "pclk_vop";
- 		iommus = <&vop_mmu>;
- 		power-domains = <&power RK3588_PD_VOP>;
-+		resets = <&cru SRST_A_VOP>,
-+			 <&cru SRST_H_VOP>,
-+			 <&cru SRST_D_VOP0>,
-+			 <&cru SRST_D_VOP1>,
-+			 <&cru SRST_D_VOP2>,
-+			 <&cru SRST_D_VOP3>;
-+		reset-names = "aclk",
-+			      "hclk",
-+			      "dclk_vp0",
-+			      "dclk_vp1",
-+			      "dclk_vp2",
-+			      "dclk_vp3";
- 		rockchip,grf = <&sys_grf>;
- 		rockchip,vop-grf = <&vop_grf>;
- 		rockchip,vo1-grf = <&vo1_grf>;
--- 
-2.47.0
+It's complicated since the HDMI Bridge support is in the pipeline for
+6.13-rc1 but it goes through different trees..
+The driver itself is merged into drm-misc next
 
+Where as the DTS updates are in linux-rockchip branch
+
+Also, regarding v3, I rebased on top of linux-rockchip for-next to
+include the updates for HDMI and GPU on the Orange Pi 5 Plus.
+
+For my development testing, I used Collabora's rk3588-test development
+branch, so all the needed patches were already in one place (since
+they test on a Radxa Rock 5B with the RK3588).
+https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-test/?ref_type=heads
+
+So for v3, I had to first cherry-pick the Orange Pi 5 Plus changes
+from linux-rockchip for-next.
+
+Note: for v3 I held off on adding the USB 3 support for the Max, I was
+going to let the Orange Pi 5 Plus finish their USB 3 submission before
+trying to refactor the common DTS nodes.
+https://lore.kernel.org/linux-rockchip/20241025175415.887368-1-wens@kernel.org/
+
+>
+> Cheers,
+> Marco
 
 _______________________________________________
 Linux-rockchip mailing list
