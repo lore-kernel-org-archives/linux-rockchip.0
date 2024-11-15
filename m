@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D7EC87FD1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3C9CA0EC3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YI1EpHHIqU050JNIvn37pqb0wmLQXWeoBy26RK3qWo4=; b=DgpMeugYcQB8nb
-	MdadHH/U86O9RIKS9whJNw/p60cvM4yhoJIWeoCcgZ746J/QX6QqBjcwjkwZ3fD6zbMpVfEXdOvly
-	a56IY6QHpaTVYJABa/ByK71nG3aoQeqbcChBBA/yvskV2kgwlzXjPYloLqUKwIKp1zlCnRfUTKly7
-	9qlhgk65djR6zGd+NjDWqtCfR8ylo9s1vd8Uq0bpCPRL7tFjrUGbKq+TuIB8TAjP/N8YaV9Mn2VZ3
-	9zWc2lY8mGk3io2kLgvAKXv3xKxJKWneYMayITAfSvLIDm3l5bTX1Gi4IDyZVOe5OScf6Gsvb6TNa
-	x5VcY8ogGB8JF63pFy5g==;
+	List-Owner; bh=MCKOW2zNDlZnpeUZ14LpsYo17uFeEt6U/N6Csq/a+G0=; b=krtaGtK6INHuT+
+	rrUP+ywhUCpQQneNI50nrRuM7c9ujfBbAkzy76fx7J82SvdVPJvrfi/Ett0SChuA1pKiLsgU/m9yD
+	t6j5yEziyFogq6aNPtmVxYP8wYbS+KWv5HfQRidX2fYF0rQ1rNdNOd5BL8PBkEhL8Tsi5gzzKn/jP
+	1kpvCrcWMLK5CyLDBYg0iIjDh21kbjngOdvgD4NfsTW7mFtI/ebyWLcEZHepggxXOTPvU1KL4oPBA
+	umvKaPpVS4bXfGFet4yFnMgIjR/OaE7tgozkC7xybSTtHJc1IYvd9ZhNzlGlHU7ZKZLh/Q9BQxpxI
+	KmbBi5G34ew5FcMzXcBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbbu-0000000EvS5-1Q0I;
-	Wed, 06 Aug 2025 10:43:06 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1ujbbv-0000000EvTx-3XO8;
+	Wed, 06 Aug 2025 10:43:09 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tC3ZR-0000000484Z-3B5r
+	id 1tC3Zd-000000048F0-0APJ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Nov 2024 21:09:38 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5cfa1ec3b94so171945a12.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 Nov 2024 13:09:37 -0800 (PST)
+	Fri, 15 Nov 2024 21:09:50 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a9ec86a67feso406762566b.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 Nov 2024 13:09:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731704976; x=1732309776; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1731704987; x=1732309787; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MaDJsFjngdpTSC4UtZp0JvItJKL05hX1CQDURe5cIPs=;
-        b=xt/qWM08icGytwSVUEhX+SyxxnmCEWdk6B2V7pV1zyLuX4A4NsTj3BH6BrZYGo6uon
-         xxLg4UbdXi3WH+onDvzqMK3TbWm4mVP7m0PcuzY6p2BWgluFmX+TIpDiwMPkJfXDDvzT
-         NWQEWZ7rVmoabV2G5d7WgHcEHXkHUMNNYRyKfssLWRCrNO7QqiY8HuuRw9b253eznKy4
-         xB2Rr6+up1iohoXxUpBTQBn4nA56F/ZkFxohLrfOqnj2EpTXPb1Lo8lDhlBfsvl0tHGo
-         Wd9EQ0xF5G/gR7UJlC9SxKg3foenh8wIDKDLrnK3Z5f3vj6cwUlGBf9yTfv+24Pi3uDw
-         5mOg==
+        bh=JsYKkvhpGxYN/nsXndcDcczu/pyOBha9maYVfqCaIuo=;
+        b=BP5sucxIJin2cz5t/N4s/K0dDJr83R5b77Fa4gpVZVvFPUtM1PbwMgwF3qaF7EI1PN
+         uKMEY8WRyFKCMuIJ5gf6y+GWrxd2AwhyFwqjPNNqPSibL0nxqF15z8wiNfwM0rHRbNYy
+         xMvusX63JsGhulk5MLwkiJakltbetmuX2yzlrnbY103aCqMSe9cnOea4MB4v+SrTnQtG
+         m7GG9kEw17xTz0TmB1ZEOTjkpqdffOFwroLJESx73yQutUT2jtYYzV415uJ79oM+KUqe
+         x8U0qQrUK9NkKfNyWPhb6pajlRXq6Tj0NiRGveiTEiJ0hy48Je4Oy46fuOC+a9S+M/IU
+         eKEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731704976; x=1732309776;
+        d=1e100.net; s=20230601; t=1731704987; x=1732309787;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MaDJsFjngdpTSC4UtZp0JvItJKL05hX1CQDURe5cIPs=;
-        b=UhmDfbPk/CHT6Vb4/dojXN8E5ibTyMwM7l1od8OupaAtDxkTJYo0bnCaqqzDQmSkHx
-         MBWS7JQ8UROmp2NVXOLazOwzTk4L8Tk7D0XGCo3G4Js5q0TRhtV2uNzVYRJ1n1q4ThG0
-         4WJRRQF/yYEho9pUngtiGuwAlujpnFgFphX8swgOh1UEJNDqWNTesa8uVHtTzn8OzMyk
-         Bt35SZPiagI7l7y1rRQuJVzNlfq4cJyg/Bm1tZIi3P6ItpeK3042uynQ+0DcKZ/2YIEk
-         WFam2c0Aw8cKEamvvxQTAaHYkhEC2AyoDHu6NEZ+i8/ARE8A9hMd+4WRQE4ejgEUHqnB
-         E28A==
-X-Forwarded-Encrypted: i=1; AJvYcCUZu1hWfKSFfaMgNAnpHoqdv+McWDbwAqRbgdAtiI4rAGYXWZS010Wx1lH1xUt8cdJWOxhek4KVrTG044Qc8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwPK1QqtplldEqim0r9gnLMeiEQkCBi318aXr/TxYEyDS2DBsYt
-	mPbRgrlAXcyeQ9r+5Oq2JAW/oQusYI/mNtCa+8JU9hcogtKtM3SA2ojlmgROOLQ=
-X-Google-Smtp-Source: AGHT+IFPY3knSoOjFOSw+FKqV/bCUh7TKMDj4KEvXFLpvr+Y8ELhi4rkKluEpzqZePJKQVtb4lya7g==
-X-Received: by 2002:a17:907:2d91:b0:a99:43e5:ac37 with SMTP id a640c23a62f3a-aa483426214mr277344666b.15.1731704976085;
-        Fri, 15 Nov 2024 13:09:36 -0800 (PST)
+        bh=JsYKkvhpGxYN/nsXndcDcczu/pyOBha9maYVfqCaIuo=;
+        b=ujV6AWdBzjrUZqYXrBE4jfE1vyT3f7IpqfibyhAHiRAz7M3JkF56RLTZ5Ve037vqKF
+         QNr1Kjxj2Kwuz0Q3FOhyiTVlhCH7DotHZWQgZV6qxNnGpxeTPRCk2D9JLrBH3ImNxzx2
+         gE3F0+cVdsQ8AvYIyfchbYQqVWcPB8dlumAtr+yh8DKA0cDLX2+rP3XCu/7dGg0g5kjK
+         o8Fa2JYOM0F0c2a9nGiiXueRG486yclbYxIg3mvuoJCXgQHqmtPxURYcBsITOgUVFAfN
+         +Bqf+XZ5L0BTrtlOyaG7V3dfERG63vdkl6E3EtfP1C8X6o+wBkhPoe3pRV5eCI+c++ir
+         uHjg==
+X-Forwarded-Encrypted: i=1; AJvYcCV0gVc91eVuS8B97jAvoZ++a7VJa3qloCnIpAiETRSASwAdMmS72g8quYyuVC91QrOk85GDIzOpYab5QedB2w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yynb/L8bHCypVHtXkRKA5GwdT3MJ6ohpCGWL2/B/a0vIIcw2e2s
+	LMgy6L/THMx/ZMG1CYm8BcYx2B7SmLMbsqLe4fD+oT5WQb7QRIIb3lABGNFKV5E=
+X-Google-Smtp-Source: AGHT+IFDdo4Ez6qAhnttBnH0913iVcsIQD4O+jaLTiUgGyLyyVbk2JIgfGuTK7H0cxIlhnYIHXnI6A==
+X-Received: by 2002:a17:907:3f8c:b0:a99:f1aa:a71f with SMTP id a640c23a62f3a-aa4833f7487mr324293366b.11.1731704986921;
+        Fri, 15 Nov 2024 13:09:46 -0800 (PST)
 Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df51648sm219626366b.62.2024.11.15.13.09.32
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df51648sm219626366b.62.2024.11.15.13.09.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Nov 2024 13:09:35 -0800 (PST)
+        Fri, 15 Nov 2024 13:09:46 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Fri, 15 Nov 2024 23:09:26 +0200
-Subject: [PATCH 1/5] drm/encoder_slave: make mode_valid accept const struct
+Date: Fri, 15 Nov 2024 23:09:29 +0200
+Subject: [PATCH 4/5] drm/connector: make mode_valid_ctx accept const struct
  drm_display_mode
 MIME-Version: 1.0
-Message-Id: <20241115-drm-connector-mode-valid-const-v1-1-b1b523156f71@linaro.org>
+Message-Id: <20241115-drm-connector-mode-valid-const-v1-4-b1b523156f71@linaro.org>
 References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
 In-Reply-To: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
 To: Jani Nikula <jani.nikula@linux.intel.com>, 
@@ -126,21 +126,21 @@ Cc: intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
  spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2918;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1695;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=p73O++3wotedHVxEc/OS0iEeK5HjHEeyRJw8kmUrclY=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnN7iHg3HP+UcGCGKYRySmptq7KP9Ng42lKX9lx
- EK9A+ybXVWJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZze4hwAKCRCLPIo+Aiko
- 1VmgB/9rxQm+iAzl+wi6vwGpdl+HNgPJZFXzu5cOtg8Q8IyEKfG0Mk/5Adwoa3BqRSDtrUZaI3X
- KiEQo8V0xPwWrJFzEmGzfoN72i6nWFebnQbjfIXt70HZPw6Gu7ufcvJsS3Duq/b/Th8/f3taLfo
- LJj+f+TWV1lC+9ObG14v3/4i6FFKkzzncn8HnS22OpAQ2AxdzLXYGSy7+E4Y7P2T1gDNumfgOHE
- juevCTvhN61ldGGOZFeCPby6Jjgp0M25sRRQkSL6SPQwau7HwCMbjckQexv5lAB9H+6+C6D8p9d
- nSe3+Sp7FKCb/pi71OeXv3z1csTh2P2cNnmAWuGLZ/zAdpir
+ bh=oLY7+gEEQX5y+IrkZsspi4uhz4i0DjMFBoH6fdvMkJw=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnN7iIEAveRWXmQWe1stGwllWWTGsdTdE1s1iig
+ 2BzWZCF0MOJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZze4iAAKCRCLPIo+Aiko
+ 1VHTCACzeIvQM2U7UstBpUccYyFqIL0ngRGXT9/4FmsiQcx0+H2ouTVyisjg/LLZ/vRZ+Sy9Dap
+ CcwztsrQ/32zb6SYfgOsdyQRoOBbTT5d4lzTS3Pe9PABuei6dm0lj3mJUX/Od2xwaIJT3Zqa/Du
+ JVKMw0vQvye08hlE3x6j/j8rF64zNh4t+0I5ejSfX+SAor0P0cJvSZQSJyi541ezhAuP0uOH1Mr
+ rZ4A7KbZFucqd4yp5jfQ5ttsyivo13fQRvEsVxt7dLMmFxP7HQgPei8s2hZj530wtj+eTAExRFs
+ NJFXe4LNfD5wLcUeRZiZMoWytSAqd5NxU3rpWQDXs06KLhfd
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_130937_804095_AF984EC4 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20241115_130949_102680_122705E8 
+X-CRM114-Status: GOOD (  12.47  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -159,69 +159,41 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 The mode_valid() callbacks of drm_encoder, drm_crtc and drm_bridge
-accept const struct drm_display_mode argument. Change the mode_valid
-callback of drm_encoder_slave to also accept const argument.
+accept const struct drm_display_mode argument. Change the mode_valid_ctx
+callback of drm_connector to also accept const argument.
 
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- drivers/gpu/drm/i2c/ch7006_drv.c          | 2 +-
- drivers/gpu/drm/i2c/sil164_drv.c          | 2 +-
- drivers/gpu/drm/nouveau/dispnv04/tvnv17.c | 2 +-
- include/drm/drm_encoder_slave.h           | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/i915/display/intel_dp_mst.c | 2 +-
+ include/drm/drm_modeset_helper_vtables.h    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/i2c/ch7006_drv.c b/drivers/gpu/drm/i2c/ch7006_drv.c
-index 131512a5f3bd996ad1e2eb869ffa09837daba0c7..a57f0a41c1a9e2006142fe0bad2914b0c344c82a 100644
---- a/drivers/gpu/drm/i2c/ch7006_drv.c
-+++ b/drivers/gpu/drm/i2c/ch7006_drv.c
-@@ -104,7 +104,7 @@ static bool ch7006_encoder_mode_fixup(struct drm_encoder *encoder,
- }
- 
- static int ch7006_encoder_mode_valid(struct drm_encoder *encoder,
--				     struct drm_display_mode *mode)
-+				     const struct drm_display_mode *mode)
- {
- 	if (ch7006_lookup_mode(encoder, mode))
- 		return MODE_OK;
-diff --git a/drivers/gpu/drm/i2c/sil164_drv.c b/drivers/gpu/drm/i2c/sil164_drv.c
-index ff23422727fce290a188e495d343e32bc2c373ec..708e119072fcb50c31b5596b75dc341429b93697 100644
---- a/drivers/gpu/drm/i2c/sil164_drv.c
-+++ b/drivers/gpu/drm/i2c/sil164_drv.c
-@@ -255,7 +255,7 @@ sil164_encoder_restore(struct drm_encoder *encoder)
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_mst.c b/drivers/gpu/drm/i915/display/intel_dp_mst.c
+index 7be8fb047b6c17cb37b9021a2dbf430f0aaecfa2..cfefd89209ca864e19771c538ca00016f9322e74 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_mst.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_mst.c
+@@ -1432,7 +1432,7 @@ static int intel_dp_mst_get_modes(struct drm_connector *connector)
  
  static int
- sil164_encoder_mode_valid(struct drm_encoder *encoder,
--			  struct drm_display_mode *mode)
-+			  const struct drm_display_mode *mode)
+ intel_dp_mst_mode_valid_ctx(struct drm_connector *connector,
+-			    struct drm_display_mode *mode,
++			    const struct drm_display_mode *mode,
+ 			    struct drm_modeset_acquire_ctx *ctx,
+ 			    enum drm_mode_status *status)
  {
- 	struct sil164_priv *priv = to_sil164_priv(encoder);
- 
-diff --git a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-index 3ecb101d23e949b753b873d24eec01ad6fe7f5d6..35ad4e10d27323c87704a3ff35b7dc26462c82bd 100644
---- a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-+++ b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-@@ -308,7 +308,7 @@ static int nv17_tv_get_modes(struct drm_encoder *encoder,
- }
- 
- static int nv17_tv_mode_valid(struct drm_encoder *encoder,
--			      struct drm_display_mode *mode)
-+			      const struct drm_display_mode *mode)
- {
- 	struct nv17_tv_norm_params *tv_norm = get_tv_norm(encoder);
- 
-diff --git a/include/drm/drm_encoder_slave.h b/include/drm/drm_encoder_slave.h
-index 49172166a164474f43e4afb2eeeb3cde8ae7c61a..b526643833dcf78bae29f9fbbe27de3f730b55d8 100644
---- a/include/drm/drm_encoder_slave.h
-+++ b/include/drm/drm_encoder_slave.h
-@@ -85,7 +85,7 @@ struct drm_encoder_slave_funcs {
- 	 * @mode_valid: Analogous to &drm_encoder_helper_funcs @mode_valid.
+diff --git a/include/drm/drm_modeset_helper_vtables.h b/include/drm/drm_modeset_helper_vtables.h
+index ec59015aec3cf3ba01510031c55df8c0b3e0b382..fa9ee6a128bec0205f501df6f7634757f5fcb9ee 100644
+--- a/include/drm/drm_modeset_helper_vtables.h
++++ b/include/drm/drm_modeset_helper_vtables.h
+@@ -1006,7 +1006,7 @@ struct drm_connector_helper_funcs {
+ 	 *
  	 */
- 	int (*mode_valid)(struct drm_encoder *encoder,
--			  struct drm_display_mode *mode);
-+			  const struct drm_display_mode *mode);
- 	/**
- 	 * @mode_set: Analogous to &drm_encoder_helper_funcs @mode_set
- 	 * callback. Wrapped by drm_i2c_encoder_mode_set().
+ 	int (*mode_valid_ctx)(struct drm_connector *connector,
+-			      struct drm_display_mode *mode,
++			      const struct drm_display_mode *mode,
+ 			      struct drm_modeset_acquire_ctx *ctx,
+ 			      enum drm_mode_status *status);
+ 
 
 -- 
 2.39.5
