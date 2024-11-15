@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC2CC87FDA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBEEC87FD3
 	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oGAXpCf0ogMqAii0Di6mzr9iijmY23K67sMOro53BA8=; b=vDWq7qzsauDMry
-	bpHFeWGC67SQgfnjZ+eEi5ybfbaSDly351jBc0eO/t73v6XtGbAZyB/0YH/erxc0E63efIUf5rl4F
-	99f9yp8g1CSBkATB8Mx3IGQFQYY8jOIzirls/GQ4AwH8ND8r9fqF7DslCW5iWXZZOpN+zwTVG7QJO
-	2IYOMMc+fgMNPIuyURiHEFQe9Es/fijd3tBVpSRzEp9aEX2etjpffwx3JveTFXSBDn7shSz+N9MQY
-	QQQfoZh4GaS65ZU4COtxuC9vwYKVt6YsIj+EHuwM0pbgibVvHMDz2p+sa1CBfL6mWGN1lm/OueLTZ
-	iVgDTZti6g+W15XTR7Lw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bU1SI1w57wmtcHXv6hKdjO+4kgtAuaHzmU/kQM+koMw=; b=xcrhBLfFHuEbUJ
+	pRfizUfiyE5Yas8EdAVzXkDDHI3+ddUmPdu/KLx2+xhgVGXP4i4+Hgx9Q9XJLQCfUVk75b3xM5Uca
+	nj8iwepWGYBaUnbeGohu8WGPCdfVt1KatoXwcPGdtu8FyYgkKnW35Vt1AK5U5f1tN+FPkQAMHG3NB
+	1FnxgbRlVsYSzeUVPD7kOere7v25yVIVQwJpfOQxDGBuQMQP/ujXhSsnNLbwOjJMqIfAX2h6yE4dW
+	stYngxxfeTCul/uf3ZYCdQRYWF/hSDXsh3tK0WBIWKeA3lXEvsE7AECpXw0T57Kl9d+alomvCx58O
+	gOIzobw0LLx6ikhVFb1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbbu-0000000EvSi-3ZQh;
-	Wed, 06 Aug 2025 10:43:06 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1ujbbs-0000000EvQj-2Bm3;
+	Wed, 06 Aug 2025 10:43:05 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tC3ZV-0000000487H-1BfO
+	id 1tC3ZP-0000000483V-0UV0
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Nov 2024 21:09:42 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5cf8593ca4bso2388491a12.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 Nov 2024 13:09:41 -0800 (PST)
+	Fri, 15 Nov 2024 21:09:36 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2fb4af0b6beso407871fa.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 Nov 2024 13:09:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731704980; x=1732309780; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6uHMCkPLDPF5XZhqTYsDkYOtTqtnVR38dCpXI61ABZc=;
-        b=MOeuwQPRPVPRHkJKoLmqC8x6ttJbQQ9YYW3uc6SORry4IKjnfvR6fJX9U6kiuTxmUs
-         nhtxcQCQ4PMCqn2T/Bk02Tow4ESoPlIkGirnOPruRGv+epoo9WXso01KVoU1ShkdUNoJ
-         qqH4QKXkQ1x6XrJcVFJNFBo/xL8QwGqYy18s87kwnfQinJhJwcLJkKy3XaYZuDTOFk08
-         Px5sW+upPP2L3Kw9VUlD5RdTC+F+raau44bY3snrtBjAX2013ewIS5tTn3GtmgjHYS3i
-         CmUedywdefCe/VnsqavtAC+GdkKwNnfXWlAFvUwVphxiROoLf7VkyS5f1vfOVD5M07RP
-         8srw==
+        d=linaro.org; s=google; t=1731704973; x=1732309773; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XED2X79g7oTzQZPuBi80aknKVusfXlwcC80XkRremeE=;
+        b=AnbE9FEZYq38Q+i0JAY/00cPgOrZW0m4GBTciCVjxxSEEK89+rry5lNJQvxbwz27tL
+         1NFn8bGn3LjLOLw10GJZ4VP/10IEZ8CNhAC+2M1zRZgFWFUBm3MsL/BZLgT/1ZFeKOUD
+         2Sra5NhthDX5qoxTBTNoJcoLBZEfo3goj9xWeQYaVaKuuSzenCkeQuoTE0U9pW8p/pxK
+         L+iRndywHyGRTQqt6Sq6IZFzdsyJKuHUCjJNl7Q1qxu8QHoRZ4h7AAnrkkQjlUKYgHw7
+         jv6IXkXfm2K+fhJOoro2hrjm8nqZUcwVhznTUblIKZNR0o5PISy7mYRRUMoS8gRPksR8
+         PZRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731704980; x=1732309780;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6uHMCkPLDPF5XZhqTYsDkYOtTqtnVR38dCpXI61ABZc=;
-        b=G2fLL+ZsYKOglZoWdMVFOq7PjrLWhimCu48ca0TT2MfQ6i9isoCmPaPBmB9zWCOezD
-         5xbZBhPzHRwX6dYq56/JZzsVn6j4AEmSWMbUR6IYRpUhgv3i98hWWwf/yJ3x649KCw0Q
-         nLa/M46MnZYKr/BSR86zQ1GLLcGO3kogqkppKpgoIzJwfhPQnBTVGoV9T4L2HoR7HIH6
-         FnPNLT6DwpzsXKz09+MRC2lu+vM7NsZQybOUnyGxpBRowPWWW5D4yIX1wFta6fpkpdCI
-         OCO4qeq2IddnKffUM4Pu52PYEKH/lzStjP4zijwprs/lmKxmHDr43H9YGa1nQmMRkDq6
-         HLhQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX3jWAs5gg63jTDPUvJ/Bc2gyLOn0T8BvOcFbdWRMKCUP4fQ1L8DCY/KDI1WHnvoHpzOmNBqU6XAOZGwFJWkg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7UPrAtMqwgkZjlmpcoohCX1ahD/R4jgUMUp/15hMAsPRxPgdq
-	HEFjKeB23X5cB0tzHnyMlcq+Sj2/He9MSElylG7yzCfwMboBesTGRPW09NW+DJ4=
-X-Google-Smtp-Source: AGHT+IGxHaf9fcl9XH3Yy4K6OzfNJb+yIGPjb6McxskUEb9IogL1YLwYggNBzkIhim2sOLfufDW+VA==
-X-Received: by 2002:a17:906:ef08:b0:a99:3c32:b538 with SMTP id a640c23a62f3a-aa483528a6fmr360455366b.42.1731704979697;
-        Fri, 15 Nov 2024 13:09:39 -0800 (PST)
+        d=1e100.net; s=20230601; t=1731704973; x=1732309773;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XED2X79g7oTzQZPuBi80aknKVusfXlwcC80XkRremeE=;
+        b=t4HHX2D4N99cX0Ubw8ld1bEK13AJZmJxhgfkHWWCWJjXqvgOUrPhn5ypF2RjFLISKq
+         r6QGbLaGlj63fESg52YFiifuo8ZjBJV+WU42onaqGhGw2me8aiGZRNzY1xsKjAHgwTF8
+         y+BCNrolwgPt+UaJYfx7epmQMpY8jwd8X1HlDM4KJg3FCC1tZqGI2yyRNahy0LFi80KA
+         /6PmJMddN2N1yI1oIKeK5WHSCH+lXqea4RvQ+5luRLVyB47PnYTM/v4uFOqLBpfhiQTA
+         u1m2jDNBywV7oTVCFT2jkHc3M/bOzKY72NQuvSZ0yCjCteJxjXk+dw5YZN8mkqkHoqMx
+         yUng==
+X-Forwarded-Encrypted: i=1; AJvYcCWVx3gLPKdgsF+T1/xnV36665yk0R0kq8Aw6VvN0ESzRwTo8lhFalwcVZ/XbVhCTM7mQcIGk4BS/WMQa2QHgw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwE7a7/H7Lg74jO96sxlKXQYQTunfp+zyB7Y1MJXtiFAa7xgFKI
+	04mQsHr8gjTcdTfGg+0fd8BI+hbNyo75si1AFylnsHNNqg+J8rZkYnJjUWmS+u8=
+X-Google-Smtp-Source: AGHT+IHez1wMZP17Apwa7Bnkqf7ljiE/uJbTx+3XZMcqqQX4tSNJGW0SXO/6d9g5SI/Am3EvbzmiwA==
+X-Received: by 2002:a2e:a9a5:0:b0:2fa:fdd1:be23 with SMTP id 38308e7fff4ca-2ff606dae98mr45142221fa.28.1731704972480;
+        Fri, 15 Nov 2024 13:09:32 -0800 (PST)
 Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df51648sm219626366b.62.2024.11.15.13.09.36
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df51648sm219626366b.62.2024.11.15.13.09.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Nov 2024 13:09:39 -0800 (PST)
+        Fri, 15 Nov 2024 13:09:31 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Fri, 15 Nov 2024 23:09:27 +0200
-Subject: [PATCH 2/5] drm/amdgpu: don't change mode in
- amdgpu_dm_connector_mode_valid()
+Subject: [PATCH 0/5] drm/connector: make mode_valid() callback accept const
+ mode pointer
+Date: Fri, 15 Nov 2024 23:09:25 +0200
+Message-Id: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
 MIME-Version: 1.0
-Message-Id: <20241115-drm-connector-mode-valid-const-v1-2-b1b523156f71@linaro.org>
-References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
-In-Reply-To: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAIW4N2cC/x2NwQqDMBAFf0X23AWjtoX+SukhZp+6UJOyERHEf
+ zf2OHOY2SnDFJle1U6GVbOmWMDdKgqTjyNYpTA1ddM55+4sNnNIMSIsyXhOAl79V+WSeWGPVvo
+ awyP0TyqRn2HQ7T94f47jBPjSJeVwAAAA
+X-Change-ID: 20241115-drm-connector-mode-valid-const-ae3db0ef6cb7
 To: Jani Nikula <jani.nikula@linux.intel.com>, 
  Rodrigo Vivi <rodrigo.vivi@intel.com>, 
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
@@ -126,21 +127,21 @@ Cc: intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
  spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1747;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5960;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=8PHqNvYNhd077+yMZGdRVPVQtJwqcuP4Sa84pHByMBM=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnN7iIkCEBV+I5bR4TS78RU0e2MvivZF+Q9IyXw
- EixhTur0JyJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZze4iAAKCRCLPIo+Aiko
- 1RrDCACt21MZrMiNUMyxvhABQ0cPHvM9U/AgIbDDO7KsAj2vwEdyLShml6B1R559Jq8voETjEL9
- +078yb1nu6CV+kEVMsCLyWFw6UxeB+cYhzNHLNY0XaEijGUK9+P7bqa1vk5P0ciW3yNlxIBE4bG
- Pbi3ypuJJQOMFd2qx/gt5R3ZNRVS0e/OjOmoRuxABzzNp/GA862gAioxCBoETiqKvawiyBMRFOi
- 2ofeAeyKDJWD0PfvL2vatCO6Dh4kmfG8TJG7CkGnJtYNGqCMpr+WoR8TW/0eoaN+Rs47pTYqp9X
- 88uGqYaDw6lWG+6NGKvhI0epp0XANid8bh3EOloIMBAU71W4
+ bh=7DBFK+lDKP5iAIHminI6ZsVedJ6Zsj0sk2U8oofC4jk=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnN7iH9UX+z3iPeGBrDJ+gqWgtsWho1RLd/uzgK
+ y5jp5dF6RSJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZze4hwAKCRCLPIo+Aiko
+ 1dvoB/9ggjr7svokfox4UbrLISeADRAMrka4CxEv6luVeowWrO4BDOHeR/LpneYbdOb0tmjA+Pb
+ ObskcENd45LKNnm8iiuEv3ORbexyMoRqMZI6FdO+hWMIvWfeFAeCrbxoEb2AU0mz/0OJRhYdFIh
+ 6ADcN+5MudlSWZqBj8CeTwERU6kZeeZ9h55X8e9ga9vjWTcvn37riLK7gIwCVt5aFKpDOVJTJEG
+ 3dOkx1p9Fu8DnCMYGt4g+zzCiCCQwSRVTWlIZ7YuQ1D6PJTmyvl30OSHCd3ej7eDm3HO7WLpKua
+ 3NsbAZnA8gZ1iI0FRTpMJG60zM1XwIjJD2ahRcO3pGZ5FetB
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_130941_343937_3B8B641B 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20241115_130935_171642_85E3F409 
+X-CRM114-Status: GOOD (  12.80  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -158,50 +159,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make amdgpu_dm_connector_mode_valid() duplicate the mode during the
-test rather than modifying the passed mode. This is a preparation to
-converting the mode_valid() callback of drm_connector to accept const
-struct drm_display_mode argument.
+While working on the generic mode_valid() implementation for the HDMI
+Connector framework I noticed that unlike other DRM objects
+drm_connector accepts non-const pointer to struct drm_display_mode,
+while obviously mode_valid() isn't expected to modify the argument.
+
+Mass-change the DRM framework code to pass const argument to that
+callback.
+
+Note: yes, I understand that this change might be hard to review and
+merge. The only viable option that I foresee is to add new callback,
+having the const argument and migrate drivers into using it one by one.
 
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+Dmitry Baryshkov (5):
+      drm/encoder_slave: make mode_valid accept const struct drm_display_mode
+      drm/amdgpu: don't change mode in amdgpu_dm_connector_mode_valid()
+      drm/sti: hda: pass const struct drm_display_mode* to hda_get_mode_idx()
+      drm/connector: make mode_valid_ctx accept const struct drm_display_mode
+      drm/connector: make mode_valid accept const struct drm_display_mode
 
-diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-index 75d6b90104f8fe196df06383b20ee88196a700bf..d0ca905e91eafe6c53f3f2ebdf3f2ae9589d7f89 100644
---- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-+++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-@@ -7381,6 +7381,7 @@ enum drm_mode_status amdgpu_dm_connector_mode_valid(struct drm_connector *connec
- {
- 	int result = MODE_ERROR;
- 	struct dc_sink *dc_sink;
-+	struct drm_display_mode *test_mode;
- 	/* TODO: Unhardcode stream count */
- 	struct dc_stream_state *stream;
- 	struct amdgpu_dm_connector *aconnector = to_amdgpu_dm_connector(connector);
-@@ -7405,11 +7406,16 @@ enum drm_mode_status amdgpu_dm_connector_mode_valid(struct drm_connector *connec
- 		goto fail;
- 	}
- 
--	drm_mode_set_crtcinfo(mode, 0);
-+	test_mode = drm_mode_duplicate(connector->dev, mode);
-+	if (!test_mode)
-+		goto fail;
-+
-+	drm_mode_set_crtcinfo(test_mode, 0);
- 
--	stream = create_validate_stream_for_sink(aconnector, mode,
-+	stream = create_validate_stream_for_sink(aconnector, test_mode,
- 						 to_dm_connector_state(connector->state),
- 						 NULL);
-+	drm_mode_destroy(connector->dev, test_mode);
- 	if (stream) {
- 		dc_stream_release(stream);
- 		result = MODE_OK;
+ drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c           |  8 ++++----
+ drivers/gpu/drm/amd/amdgpu/atombios_dp.c                 |  2 +-
+ drivers/gpu/drm/amd/amdgpu/atombios_dp.h                 |  2 +-
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c        | 12 +++++++++---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.h        |  2 +-
+ drivers/gpu/drm/arm/display/komeda/komeda_wb_connector.c |  2 +-
+ drivers/gpu/drm/arm/malidp_mw.c                          |  2 +-
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c             |  2 +-
+ drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c      |  2 +-
+ drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c |  7 -------
+ drivers/gpu/drm/drm_crtc_helper_internal.h               |  2 +-
+ drivers/gpu/drm/drm_probe_helper.c                       |  2 +-
+ drivers/gpu/drm/exynos/exynos_hdmi.c                     |  2 +-
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c                |  2 +-
+ drivers/gpu/drm/gma500/cdv_intel_crt.c                   |  2 +-
+ drivers/gpu/drm/gma500/cdv_intel_dp.c                    |  2 +-
+ drivers/gpu/drm/gma500/cdv_intel_hdmi.c                  |  2 +-
+ drivers/gpu/drm/gma500/cdv_intel_lvds.c                  |  2 +-
+ drivers/gpu/drm/gma500/oaktrail_hdmi.c                   |  2 +-
+ drivers/gpu/drm/gma500/psb_intel_drv.h                   |  2 +-
+ drivers/gpu/drm/gma500/psb_intel_lvds.c                  |  2 +-
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c                  |  2 +-
+ drivers/gpu/drm/i2c/ch7006_drv.c                         |  2 +-
+ drivers/gpu/drm/i2c/sil164_drv.c                         |  2 +-
+ drivers/gpu/drm/i915/display/dvo_ch7017.c                |  2 +-
+ drivers/gpu/drm/i915/display/dvo_ch7xxx.c                |  2 +-
+ drivers/gpu/drm/i915/display/dvo_ivch.c                  |  2 +-
+ drivers/gpu/drm/i915/display/dvo_ns2501.c                |  2 +-
+ drivers/gpu/drm/i915/display/dvo_sil164.c                |  2 +-
+ drivers/gpu/drm/i915/display/dvo_tfp410.c                |  2 +-
+ drivers/gpu/drm/i915/display/icl_dsi.c                   |  2 +-
+ drivers/gpu/drm/i915/display/intel_crt.c                 |  2 +-
+ drivers/gpu/drm/i915/display/intel_dp.c                  |  2 +-
+ drivers/gpu/drm/i915/display/intel_dp_mst.c              |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi.c                 |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi.h                 |  2 +-
+ drivers/gpu/drm/i915/display/intel_dvo.c                 |  2 +-
+ drivers/gpu/drm/i915/display/intel_dvo_dev.h             |  2 +-
+ drivers/gpu/drm/i915/display/intel_hdmi.c                |  2 +-
+ drivers/gpu/drm/i915/display/intel_lvds.c                |  2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c                |  2 +-
+ drivers/gpu/drm/i915/display/intel_tv.c                  |  2 +-
+ drivers/gpu/drm/i915/display/vlv_dsi.c                   |  2 +-
+ drivers/gpu/drm/imx/ipuv3/imx-tve.c                      |  2 +-
+ drivers/gpu/drm/msm/disp/mdp4/mdp4_lvds_connector.c      |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/tvnv17.c                |  2 +-
+ drivers/gpu/drm/nouveau/dispnv50/disp.c                  |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_connector.c              |  2 +-
+ drivers/gpu/drm/qxl/qxl_display.c                        |  2 +-
+ drivers/gpu/drm/radeon/atombios_dp.c                     |  2 +-
+ drivers/gpu/drm/radeon/radeon_connectors.c               | 10 +++++-----
+ drivers/gpu/drm/radeon/radeon_mode.h                     |  2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c                   |  2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c                     |  4 ++--
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c                   |  2 +-
+ drivers/gpu/drm/sti/sti_dvo.c                            |  2 +-
+ drivers/gpu/drm/sti/sti_hda.c                            | 12 ++++++------
+ drivers/gpu/drm/sti/sti_hdmi.c                           |  2 +-
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c                   |  2 +-
+ drivers/gpu/drm/tegra/dsi.c                              |  2 +-
+ drivers/gpu/drm/tegra/hdmi.c                             |  2 +-
+ drivers/gpu/drm/tegra/sor.c                              |  2 +-
+ drivers/gpu/drm/vc4/vc4_txp.c                            |  2 +-
+ drivers/gpu/drm/virtio/virtgpu_display.c                 |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_kms.c                      |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_kms.h                      |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c                     |  2 +-
+ include/drm/drm_encoder_slave.h                          |  2 +-
+ include/drm/drm_modeset_helper_vtables.h                 |  4 ++--
+ 69 files changed, 90 insertions(+), 91 deletions(-)
+---
+base-commit: 7d2faa8dbb7055a115fe0cd6068d7090094a573d
+change-id: 20241115-drm-connector-mode-valid-const-ae3db0ef6cb7
 
+Best regards,
 -- 
-2.39.5
+Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
 
 _______________________________________________
