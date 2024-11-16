@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CCECD68BE7
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Nov 2024 18:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B7FD68BE7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Nov 2024 18:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O1r3bu6ulqwWO9tKytlIRY9wdcl09G/BgIf/ESd3t5E=; b=np0HmjjWRg9yNB
-	gal+a7HkSSVzWhvRI05RrIHLFFP4bb/0tjCbMbmdx3wmi1SjBScuZ882Gdc+QhXfegB/SJG+J8xps
-	cX5J6inttpLiT7b+GZTtZdHfluvehnWP/6Mj9TtZylLImmKlM5K5TpU2g++0RgkAlGnxb2zKlB06P
-	zBo/vlDJ1C4xuo1uv+TLuR83b4lWtmgn3byXEdz7xYFpPRl6nGk7CYsPahWdlgDHcPluvw60zZyzL
-	IxjD0tr8lVTWAe9tUcUc7hSJmpasZHRkDzruyJGEQnfiILiB9ZuITkEC/ONwllW/+E8C/COnKzQy6
-	u/3TuAd8qIw2g4l/ebVQ==;
+	List-Owner; bh=B6PLTdFaMnRUhJzK8xsXcsRGnCZ03QdX/VRAg82MSZQ=; b=KCIChnaO82mF28
+	K7Vsj9iCGzAPuhS9BnRC6S+QcWZGKlaKqv9Co9D6pxb2Hw7/HQ2onvAMppoYh21ME+XvQ3KMrcLz9
+	ewjQr8KuA+6Yvk8zJbopHQb9IBkWkVGLyjYdg3UfflUB2G8u+EzcXxfUpnMJ/FfMeZ/5o8liHfggs
+	aM+uBNKLYQ15O3M8rvtkzwfbv4NdMaNYFlb8m5RQZovGof22Jnri6l959AXd16zqKsqKpTQmz7idR
+	vMX7qT7bXwpV+fJRljB0nQnL+I60KdO7SmI3b88RxyhU0/JTUmPc5tnG206VZh7HxsmIyVL5wC0wi
+	Ja2FbXz27jK7CeoYKECQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCNUI-000000062Y3-0Lkp;
-	Sat, 16 Nov 2024 18:25:38 +0000
+	id 1tCNVC-000000062ft-0Srr;
+	Sat, 16 Nov 2024 18:26:34 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCNRU-000000061xc-41xc;
+	id 1tCNRW-000000061yL-0xYO;
 	Sat, 16 Nov 2024 18:22:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731781363;
-	bh=5yLL8RBABIDFFVGZv2n5kbkq6Ay3LOmlFo5JVggJqLg=;
+	s=mail; t=1731781364;
+	bh=+vXjisEVYCifCf+z33u/bFOO0lR3e3Qmb5SviT++k/Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=obDQbAuVjSAgWb/fYXKu7UnT53UQHuJZrNXP58OgtW5qfw7iM46xBSBa5hFFjMG/p
-	 pb4YEfKB2OJUnLL+YMOOBPAvb+dl3OogjrWUWZUIpQnB+hulCVj7HD4XqDOOPcmpZq
-	 kQMMx9prBOzK29MeDzHYdwzc6ByIIWoQN0CX4HtJNk5/d8P11lGToLUFDbIc6/kDT/
-	 HpQTaTiy1U/OcUpq7TOHgJS2e38LPC5xxrUAhrA0PwI81wjF3lEqWlG8xRiPG7YoLU
-	 6fsK+qcmTuNlYavsyiXS/Y5fNCLioW1z7iDHrDPdBUh23GNA4o5K5Dqvvrr1mk4X1J
-	 OP9Gz1mG2JW7g==
+	b=ByWQALqQCMLAm1yBItp4upQlzSjAKi4CZzqz2Ue03i9ukCvvLb5RVYpc6ZQDptXSc
+	 vvE79bAhaAXBIItCitFReUAJknB1yj7shRJwYHZMYgPK0TZtQp8tH2iVhlCZdO7KvG
+	 nwwVj5kknnCy/iI1i0fqT4csjY+dWiem4GGG9LbI5Sl34H3DV3jo/3dh5hWOOcgT3/
+	 WXhu9ONcBfoS2adgs74KeFxDqb5ywAu3/gKBn8Po0zDSn5WKrOtgNCrtGhWy7EUlg4
+	 j8nQgX98WXQLQSO+d99FlFn2lMhFBXwgJxUpMd3TTPslQSqv7ZASelzAS+K1Sff/ZE
+	 plWKY5j5bTfQQ==
 Received: from localhost (unknown [86.120.21.57])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2A03417E377A;
-	Sat, 16 Nov 2024 19:22:43 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ACA7917E377D;
+	Sat, 16 Nov 2024 19:22:44 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 16 Nov 2024 20:22:33 +0200
-Subject: [PATCH 2/5] drm/rockchip: vop2: Drop unnecessary if_pixclk_rate
- computation
+Date: Sat, 16 Nov 2024 20:22:35 +0200
+Subject: [PATCH 4/5] arm64: dts: rockchip: Enable HDMI0 PHY clk provider on
+ RK3588
 MIME-Version: 1.0
-Message-Id: <20241116-vop2-hdmi0-disp-modes-v1-2-2bca51db4898@collabora.com>
+Message-Id: <20241116-vop2-hdmi0-disp-modes-v1-4-2bca51db4898@collabora.com>
 References: <20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com>
 In-Reply-To: <20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -64,8 +64,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241116_102245_173763_BB9809D8 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20241116_102246_423952_3FCCC950 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The if_pixclk_rate variable is not being used outside of the if-block in
-rk3588_calc_cru_cfg(), hence move the superfluous assignment from the
-first branch to the inner comment-block.
+Since commit c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock
+provider support"), the HDMI PHY PLL can be used as an alternative and
+more accurate pixel clock source for VOP2 to improve display modes
+handling on RK3588 SoC.
+
+Add the missing #clock-cells property to allow using the clock provider
+functionality of HDMI0 PHY.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 9ad025aa9ab0523c8807b331564c68da10c56c18..3e4c1cfd0bac6fa90f4cab85e27c2a69b86fc9aa 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1838,8 +1838,8 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
- 			K = 2;
- 		}
- 
--		if_pixclk_rate = (dclk_core_rate << 1) / K;
- 		/*
-+		 * if_pixclk_rate = (dclk_core_rate << 1) / K;
- 		 * if_dclk_rate = dclk_core_rate / K;
- 		 * *if_pixclk_div = dclk_rate / if_pixclk_rate;
- 		 * *if_dclk_div = dclk_rate / if_dclk_rate;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index a337f3fb8377e4a3a200d4d3a3773a237de2bd6e..22462e86f48027ab7c5e270f2fa04df7afcc1d24 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2811,6 +2811,7 @@ hdptxphy_hdmi0: phy@fed60000 {
+ 		reg = <0x0 0xfed60000 0x0 0x2000>;
+ 		clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX0>;
+ 		clock-names = "ref", "apb";
++		#clock-cells = <0>;
+ 		#phy-cells = <0>;
+ 		resets = <&cru SRST_HDPTX0>, <&cru SRST_P_HDPTX0>,
+ 			 <&cru SRST_HDPTX0_INIT>, <&cru SRST_HDPTX0_CMN>,
 
 -- 
 2.47.0
