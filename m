@@ -4,78 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37880D68BF0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Nov 2024 00:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCD8ED68BDD
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Nov 2024 08:00:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FosOzel4zSdTkoX9dKrXkoh32JbX/wHim8flZukTaro=; b=SLqPGdTrFjctNH
-	3YXx3rA1MDNztjjJGpKLC17zlIY80kyR9JDPtH9uMpR3H1b0ElvoyYW7Tl9epARImpYf68ytks0Sr
-	xiwfiRgEMj9MUzABTFs7eLXMbyxykGPTAoPbKMEi1/U75993xgwo7TP/n3DBzR+idPHLQuPEQtrBj
-	5givb2G8Ba/7gNpfTZ2uiCsPSBr0AFflnMBUHVOH1RbfMUhDtFwF7h/fA5IVqWKAB9W+794U8o/kQ
-	nRlLCy8fd3bvvua86vr+699AG4o21ZYCFVTlObn2Siv84awTZE1x3osaX6DLmFguLYZmXAbVm/Uca
-	Vj2pwG3+XIc/OY1ngGag==;
+	List-Owner; bh=NcRmmsv3R8vl1bwH7VizZ/8aTvi9nV4YC/Ru3oQ8iMs=; b=4ob89kF4gMRGBZ
+	5qg/gbOwLDLcmnYEXdkpF2xGkOi/L2W2/oUXJ8fpxoIsKTbDRLMHUderTk8PnJ7w0C76JXnV444YZ
+	wQJy9sRIkaex1VTDav7SUhTAqdOEmKnuiYC9aizwUTBdDEknlP5Nj+kl9ZTj7CzCmOKWAYIBAJbly
+	mtnwNIe1T1pXiRUODWms7h98b0DjPy3/S5kyVpzDpi+WiQ0RimJKk0Tzcaqu09X2FCZ52GfDhWr7i
+	dX0zNTqs3AtX3KXzsi3k+QFhj9jBPUU47SwP3uza8EFdigDWieqa7bpWMvi5EzD6ab7XcrcLXSnRX
+	FlXpx199QEr3Ghxus4fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCSkN-00000006YYv-0IgL;
-	Sun, 17 Nov 2024 00:02:35 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1tCaDC-00000006zCE-1O7O;
+	Sun, 17 Nov 2024 08:00:50 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCSkH-00000006YYO-3eai;
-	Sun, 17 Nov 2024 00:02:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1731801750; x=1763337750;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gxKgLgaDLjJze/Htyj3X1BttLL7u3v4J/jz7At2NUZ8=;
-  b=MdZ5Em9aZ1jMuF8ll1fhW+JDdJ06ulSug6GVUaiO0v328lmin6hHmYgA
-   Y05waehbT1pjBfWL8N6J0Ddn61M3U1UqFId3aYvMTF8GFBmDnMFKTx5Ju
-   7O4Ep49Mf2biURkqsXYLKIPnJQNEvX8EqOv1lWsb5vSeaQEiEMu5lzLZv
-   IV88DR202UsrPM/xopT00RSQFgTUytC+LZc6jE6je88WVTXyEq39ZCOk2
-   5j0KGGrTLhj1aujVVPuk6qaj3CnZsZ7xKjZlYphSUjSgv3tEVmEA1YTGx
-   KSJDD+3tzQFmXGf4zR2LWV2MD5oL9PeVP0JGTrNr0trouk1okzsAKSzG7
-   A==;
-X-CSE-ConnectionGUID: d6gCN5IYQUSZqDopGbteSw==
-X-CSE-MsgGUID: EkctcbD6QGW4XitFVBt2Gg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11258"; a="32027335"
-X-IronPort-AV: E=Sophos;i="6.12,160,1728975600"; 
-   d="scan'208";a="32027335"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2024 16:02:25 -0800
-X-CSE-ConnectionGUID: AJMT17puQ4uybtOhMITHQQ==
-X-CSE-MsgGUID: 7wYf6vcVQbCNRNHNE56khQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,160,1728975600"; 
-   d="scan'208";a="89289158"
-Received: from lkp-server01.sh.intel.com (HELO 1e3cc1889ffb) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 16 Nov 2024 16:02:22 -0800
-Received: from kbuild by 1e3cc1889ffb with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tCSk7-0001Av-1I;
-	Sun, 17 Nov 2024 00:02:19 +0000
-Date: Sun, 17 Nov 2024 08:02:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>,
-	frattaroli.nicolas@gmail.com, linux-rockchip@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, lgirdwood@gmail.com, broonie@kernel.org,
-	perex@perex.cz, tiwai@suse.com, heiko@sntech.de,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Subject: Re: [PATCH sound-next] ASoC: rockchip: i2s-tdm: Fix a useless call
- issue
-Message-ID: <202411170713.FymmFfl3-lkp@intel.com>
-References: <20241115114924.23843-1-dheeraj.linuxdev@gmail.com>
+	id 1tCaD8-00000006zBY-3hCq
+	for linux-rockchip@lists.infradead.org;
+	Sun, 17 Nov 2024 08:00:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0C71BA40C2F;
+	Sun, 17 Nov 2024 07:58:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AB0FC4CECD;
+	Sun, 17 Nov 2024 08:00:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731830445;
+	bh=yG/Prvv2cW4FAbQIxSEqLgZUGZ3kv80l7NsNSnpg53M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Gqfs5s6yPfPvpIR/sBXHis0a0AI5ejKOd74ZA3OIxcF77rHXSmvJu6tZGO5WjO2sp
+	 VI8Ds5IkGhecdxwAIcTLz4Ii1blB06aUeab/Af7dijufr/PetogT+B1f3+IoC9doIP
+	 3rBc/91TRUKN/Yysf1UEKuVllyeahSzksv5EiaLsZZhz+9Ly07mlMyl+OsTzRShHm5
+	 X8V8KYQUq8Ck4WDOuIses5VrALQ7Vb1T6Gbdf8qWLXCGzJD6jL9tlTlV3bsKx4J4cG
+	 gC65Sjr5DkIrvv2vzMS8kW9StasNCjgdW+gZm0GBTokQWSjJwjZBZ87GgML4RsUhhX
+	 7CDgY4aUilWUA==
+Message-ID: <8393e56d-8ba1-436d-ad97-ec44893d2f6f@kernel.org>
+Date: Sun, 17 Nov 2024 17:00:42 +0900
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241115114924.23843-1-dheeraj.linuxdev@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 12/14] PCI: rockchip-ep: Improve link training
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+ Niklas Cassel <cassel@kernel.org>
+References: <20241115230319.GA2065576@bhelgaas>
+From: Damien Le Moal <dlemoal@kernel.org>
+Content-Language: en-US
+Organization: Western Digital Research
+In-Reply-To: <20241115230319.GA2065576@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241116_160230_055529_706E69A7 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20241117_000047_004772_5B316351 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,70 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dheeraj,
+On 11/16/24 08:03, Bjorn Helgaas wrote:
+> On Thu, Oct 17, 2024 at 10:58:47AM +0900, Damien Le Moal wrote:
+>> The Rockchip RK3399 TRM V1.3 Part2, Section 17.5.8.1.2, step 7,
+>> describes the endpoint mode link training process clearly and states
+>> that:
+>>   Insure link training completion and success by observing link_st field
+>>   in PCIe Client BASIC_STATUS1 register change to 2'b11. If both side
+>>   support PCIe Gen2 speed, re-train can be Initiated by asserting the
+>>   Retrain Link field in Link Control and Status Register. The software
+>>   should insure the BASIC_STATUS0[negotiated_speed] changes to "1", that
+>>   indicates re-train to Gen2 successfully.
+> 
+> Since this only adds code and doesn't change existing code, I assume
+> this hardware doesn't automatically train to gen2 without this new
+> software assistance?
+> 
+> So the effect of this change is to use gen2 speed when supported by
+> both partners, when previously we only got gen1?
 
-kernel test robot noticed the following build warnings:
+Yes. The host side has something similar as well.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on linus/master v6.12-rc7 next-20241115]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Dheeraj-Reddy-Jonnalagadda/ASoC-rockchip-i2s-tdm-Fix-a-useless-call-issue/20241115-195011
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20241115114924.23843-1-dheeraj.linuxdev%40gmail.com
-patch subject: [PATCH sound-next] ASoC: rockchip: i2s-tdm: Fix a useless call issue
-config: loongarch-randconfig-r054-20241117 (https://download.01.org/0day-ci/archive/20241117/202411170713.FymmFfl3-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241117/202411170713.FymmFfl3-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411170713.FymmFfl3-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> sound/soc/rockchip/rockchip_i2s_tdm.c:517:12: warning: 'rockchip_i2s_ch_to_io' defined but not used [-Wunused-function]
-     517 | static int rockchip_i2s_ch_to_io(unsigned int ch, bool substream_capture)
-         |            ^~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/rockchip_i2s_ch_to_io +517 sound/soc/rockchip/rockchip_i2s_tdm.c
-
-081068fd641403 Nicolas Frattaroli 2021-10-01  516  
-081068fd641403 Nicolas Frattaroli 2021-10-01 @517  static int rockchip_i2s_ch_to_io(unsigned int ch, bool substream_capture)
-081068fd641403 Nicolas Frattaroli 2021-10-01  518  {
-081068fd641403 Nicolas Frattaroli 2021-10-01  519  	if (substream_capture) {
-081068fd641403 Nicolas Frattaroli 2021-10-01  520  		switch (ch) {
-081068fd641403 Nicolas Frattaroli 2021-10-01  521  		case I2S_CHN_4:
-081068fd641403 Nicolas Frattaroli 2021-10-01  522  			return I2S_IO_6CH_OUT_4CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  523  		case I2S_CHN_6:
-081068fd641403 Nicolas Frattaroli 2021-10-01  524  			return I2S_IO_4CH_OUT_6CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  525  		case I2S_CHN_8:
-081068fd641403 Nicolas Frattaroli 2021-10-01  526  			return I2S_IO_2CH_OUT_8CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  527  		default:
-081068fd641403 Nicolas Frattaroli 2021-10-01  528  			return I2S_IO_8CH_OUT_2CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  529  		}
-081068fd641403 Nicolas Frattaroli 2021-10-01  530  	} else {
-081068fd641403 Nicolas Frattaroli 2021-10-01  531  		switch (ch) {
-081068fd641403 Nicolas Frattaroli 2021-10-01  532  		case I2S_CHN_4:
-081068fd641403 Nicolas Frattaroli 2021-10-01  533  			return I2S_IO_4CH_OUT_6CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  534  		case I2S_CHN_6:
-081068fd641403 Nicolas Frattaroli 2021-10-01  535  			return I2S_IO_6CH_OUT_4CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  536  		case I2S_CHN_8:
-081068fd641403 Nicolas Frattaroli 2021-10-01  537  			return I2S_IO_8CH_OUT_2CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  538  		default:
-081068fd641403 Nicolas Frattaroli 2021-10-01  539  			return I2S_IO_2CH_OUT_8CH_IN;
-081068fd641403 Nicolas Frattaroli 2021-10-01  540  		}
-081068fd641403 Nicolas Frattaroli 2021-10-01  541  	}
-081068fd641403 Nicolas Frattaroli 2021-10-01  542  }
-081068fd641403 Nicolas Frattaroli 2021-10-01  543  
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Damien Le Moal
+Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
