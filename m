@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89C72D49221
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 13:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C65D4922E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 14:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cAycmfAu3ZlNlDx2wPl5oWgjMUSuiNpYXa1zaecoXkk=; b=wFkZES9lOK2WY6
-	JRr74VDH4ySaHr4JE9F9R1lRCZ3AlI81yIVlEhXvqkQs+2V3pJSitJ/d9mzJFGQqJzWm2pN5lhx7U
-	olil+4mVkAMp7vLRRx1r+kel7oCgVz72ZPLStjq22aQm2uzXucUzgK+Oj3GbRKtz+7QbNR6ODfwhO
-	zeHCazyWjtHk2ZMhSV5pxZN/FTfsQeJig1CM1r461DUdRAopqLa1XFh6/JPGzRu7KMoV2WU80FKRZ
-	tuIowA5UFufrnrbPobPZve2M4mzWq3QlG7c5YdXO8iMOIBQy6n3L18ueCjEkNoFF1MjWLdaV2hFwf
-	NBSNBtnm0rNAUN7xN9Sg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J2GHlHxYC6bQMduSHd8PxTVdDo/Vfj769aBvt2pdtvo=; b=U0Fxup4OygFptm
+	hndD3gQqP+dt8SZjar4K21+muDjvHCnhCc8OnQmTA7H4kHzeke3LAPdfvPXWN++LzYD5kN9CtSB3s
+	2SI+yCFrcSFmFbqh4CAqa9/HJXiHM1VsMlzbPmXMCexWFyjKWkMWcJelbP3VudB3cgNSocOCLshCT
+	hSquHiNu/nI4lXGCTraWyhldA8UNyONSZ6vxogeGQObwHSEgc5hW6n6aPAQNLcKmHGvkHFJLVNy7P
+	0PdXULI2bDEKn9toIjOvuG8aJrcfNrAlNyo4vxeAEoIHfQSjN7z7Mu+9sJPtHrxIy/0fsME0NXOJh
+	mRrgJDoG81E22JJqtb+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD1uG-00000009bM9-3RKG;
-	Mon, 18 Nov 2024 13:35:08 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tD3Bb-00000009ppZ-0kKA;
+	Mon, 18 Nov 2024 14:57:07 +0000
+Received: from mail-m121150.qiye.163.com ([115.236.121.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD1jv-00000009Yvp-0kEe;
-	Mon, 18 Nov 2024 13:24:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=s8lkok+c8KjBG6mzXAMaB5qxafa7OdEMZ1RhybIITR0=; b=KMcdEfm7q1WJhQMgq8EmafygPP
-	f1r7xrgEvyZSEg70NtxGPt2AatL8d5AZ7/iKKxkgJ+TxzwR0j+HeTv7LQ/9vxo2BIwfAFyvndye1v
-	dTRW2vzRx/W5NRiTkoFHYE3tfZXxsPibfh9DO7ZLC66U4cYKRjvu3z66CHcnJY7NFkQXo3lUVYpEg
-	CP+Ue4nwn2jBfsaOF4ubKIhMHbrziTka6DUGX9fIJSU1ELWosDKHpuAKWG5z4dEHzVkscG7oWRV83
-	66YUVzxC1GjzBNwBLLO8YeJe4Lt5S8jKbK81Vj89cjsp1kWzj3IX8d0ZNrCReVnr0WWmgRfQcwkMH
-	Czf7MeHw==;
-Received: from i53875a30.versanet.de ([83.135.90.48] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tD1jl-00060I-SG; Mon, 18 Nov 2024 14:24:17 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Niklas Cassel <cassel@kernel.org>, Niklas Cassel <Niklas.Cassel@wdc.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Damien Le Moal <dlemoal@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588
- SoC
-Date: Mon, 18 Nov 2024 14:24:16 +0100
-Message-ID: <39365498.J2Yia2DhmK@diego>
-In-Reply-To: <ZzsqdYUBNP7L9iRB@ryzen>
-References: <20241107123732.1160063-2-cassel@kernel.org> <ZzsqdYUBNP7L9iRB@ryzen>
+	id 1tD3BX-00000009pnA-2IUi;
+	Mon, 18 Nov 2024 14:57:05 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 317a7f35;
+	Mon, 18 Nov 2024 22:56:48 +0800 (GMT+08:00)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	jon.lin@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-spi@vger.kernel.org
+Subject: [PATCH] spi: rockchip-sfc: Embedded DMA only support 4B aligned address
+Date: Mon, 18 Nov 2024 22:56:46 +0800
+Message-Id: <20241118145646.2609039-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhoaTFZCT01PTh4ZSEpOSk5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a933fc6ba8d09d9kunm317a7f35
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6P006SBw*SzIhQ1ELSzkPMyov
+	GBgwCkxVSlVKTEhKQk9KQ0tCTU1PVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFDQ083Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=fhKzbRWaLMBVXGi5F1pcCy/LUI0n+JSbCyVA5a8UCaMGcee5HZb4Zw3KEK74/cUF6oOxDzAJB/Mo6VzGT9cTygrEXl87Deas3Xwkx9wSNw/7e1NFRQ/Xtnf5UsA+posFPdKhOsGodusVnV5SmP5C8KpDEs1ICFKYMi+tNV6vXCQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=orMLRxEgPaCVt+DUcYSRwYW0pCq8JjJqS0YZ0bC7OiQ=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_052427_237007_10F6DA90 
-X-CRM114-Status: GOOD (  27.23  )
+X-CRM114-CacheID: sfid-20241118_065704_142802_81DA00F1 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +75,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Niklas,
+Controller limitations.
 
-Am Montag, 18. November 2024, 12:52:23 CET schrieb Niklas Cassel:
-> On Thu, Nov 07, 2024 at 01:37:33PM +0100, Niklas Cassel wrote:
-> > Commit cd81d3a0695c ("arm64: dts: rockchip: add rk3588 pcie and php
-> > IOMMUs") added the rk3588 SoC's pcie IOMMU and php IOMMU as disabled.
-> > 
-> > The mmu600_pcie is connected with the five PCIe controllers.
-> > See 8.2 Block Diagram, in rk3588 TRM (Technical Reference Manual).
-> > 
-> > The five PCIe controllers are:
-> > pcie3x4, pcie3x2, pcie2x1l0, pcie2x1l1, pcie2x1l2.
-> > 
-> > pcie3x4 can run in either Root Complex mode or Endpoint mode, the other
-> > four PCIe controllers can only run in Root Complex mode. To describe this
-> > we thus have six different device nodes in the device tree.
-> > 
-> > A PCIe controller in Root Complex mode needs to specify an iommu-map, such
-> > that the device knows how to convert a Requester ID (PCI BDF) to an IOMMU
-> > master ID (stream ID). (A PCIe controller in Endpoint mode should use the
-> > iommus property, just like a regular device.)
-> > 
-> > If you look at the device tree bindings for msi-map and iommu-map, you can
-> > see that the conversion from Requester ID to MSI-specifier data is the same
-> > as the conversion from Requester ID to IOMMU specifier data. Thus it is
-> > sensible to define the iommu-map property value similar to the msi-map,
-> > such that the conversion will be identical.
-> > 
-> > Add the proper iommu device tree properties for these six device nodes
-> > connected to the mmu600_pcie, so that we can enable the mmu600_pcie IOMMU.
-> > (The mmu600_php IOMMU is not touched, so it is still disabled.)
-> > 
-> > Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> > ---
-> 
-> Hello Heiko,
-> 
-> Any chance of getting this picked up?
-> 
-> (If not now, then at least for 6.14.)
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-Oh, definitly :-) ... it's marked as to look at.
+ drivers/spi/spi-rockchip-sfc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-For 6.14 ... the patch arrived shortly before -rc7, with PCIe stuff in it.
-IOMMUs + PCIe is sort of a topic I'm cautious about shortly before
-the merge window ;-)
-
-
-Heiko
-
-
-
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index 316e3db88492..69d0f2175568 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -503,7 +503,7 @@ static int rockchip_sfc_exec_mem_op(struct spi_mem *mem, const struct spi_mem_op
+ 	rockchip_sfc_adjust_op_work((struct spi_mem_op *)op);
+ 	rockchip_sfc_xfer_setup(sfc, mem, op, len);
+ 	if (len) {
+-		if (likely(sfc->use_dma) && len >= SFC_DMA_TRANS_THRETHOLD) {
++		if (likely(sfc->use_dma) && len >= SFC_DMA_TRANS_THRETHOLD && !(len & 0x3)) {
+ 			init_completion(&sfc->cp);
+ 			rockchip_sfc_irq_unmask(sfc, SFC_IMR_DMA);
+ 			ret = rockchip_sfc_xfer_data_dma(sfc, op, len);
+-- 
+2.34.1
 
 
 _______________________________________________
