@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15384D10F37
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 04:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D599AD43FEE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 08:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pVlf6n4jp5RIP4TIKhmmXSpKUo8S1ry7tpiG1envC74=; b=CjNdpkB2cCeOFj
-	HRzhgdOVwiB0iRjIeqSXPlu2+eyskl749f+7srLC3kEE4MSgA1XbNmxy7bvjS6gLTBca+Ds+2LIAy
-	THXkPCi8sWN3ApfJczH893m3uZT/MCdNvc5THpRLkJZOxthMAZp9eTDcFhOMyTs1pex/WJMoZmxRh
-	/mLfnVKG3fUcgYge09GZxdfT3PsuovKKKMs844xVAPdqwGgtWCuq6KEOvIlmmZ7SQ65dx8luS0rbt
-	ARMRvmNmXOdobqV1qPUyy2rlO2MQr1q33M8rgm+34vOPcZZI1VLe3i3mn3IMWjNULuKlTHecrGNLp
-	HgEgAb1h92caMeAP4nAA==;
+	List-Owner; bh=scGcCRnpAuSPksh8hngieoBSW2fQmoGr9MMMIQskqdQ=; b=GZwFSRWZFd+d5l
+	zPKYnQfpEDt3Ub6rF6V2HvNo+iBVD/e2cAI188k4gbCTEAxSFH1l4ADWODCv+9TTbxHx4djzw04c+
+	C4Z0acA7mR04G0T1TICR9SA6msOuPEIxAm5aQuteMT7oRomdy8tQPRXQarLg59JCvz0Pyz4v6qx1X
+	8Fewsf4hMyY51db3kCjOF5/eeiVK6K1n8WOfHA6z0enG3o64icnsyWq8lLQCDGx2NQcFcW6y2NS+h
+	CafWQOQhQMuGOPk8QJZV0+61ZdLa5fqiA8yvenykp/uuIjIb3WcY+CC05XdKeXAeFFfKLqPHkxrMg
+	2dknpPiRB53CH2fIsfQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCtpB-00000008LRx-1CO4;
-	Mon, 18 Nov 2024 04:57:21 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1tCxCR-00000008nGE-0GDL;
+	Mon, 18 Nov 2024 08:33:35 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCtoF-00000008LMp-29Yl;
-	Mon, 18 Nov 2024 04:56:24 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-7f450f7f11dso1076793a12.2;
-        Sun, 17 Nov 2024 20:56:22 -0800 (PST)
+	id 1tCx6z-00000008lxw-0eJW;
+	Mon, 18 Nov 2024 08:27:58 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20c7ee8fe6bso36889625ad.2;
+        Mon, 18 Nov 2024 00:27:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731905782; x=1732510582; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1731918476; x=1732523276; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MIzb7uKmpBMgFz+tDnGmizcbHL7RIhkfCyBnVkIL8Ew=;
-        b=HRwTJWjY8ybbzrlLg4XR/RS6if18yOj92fuS4DmVr32pc4tDKPdxZmRzTouVGhCabX
-         Cl/yDouWqG1LX/zpaTFRV/0/IoRxnwGeKyl+nu2tEfprhPJ86hNNPo+NCQNZ7g3fUTm0
-         5E6NxsfHT+x2ab2bhWLCgLK98XwHpZNREs5kbpf7YRFQVPxcieStyfm4fZfM+dsSIUAJ
-         w8eDscw8MlCO15Zdxu9PfE/yCU4iEc9Yw/Qo4NnbBG0n5LRXEJQq7Bi6vp8GINCjKYeM
-         zJKuQuT78JQeki+j/1qdsVtWlPW77SGwoHcwibZ6wZJ3HU1UODUdxRNmYKnwmxsQee7O
-         ylkQ==
+        bh=5+U0kq1b3c+GGw5rsDzUNZuSYw2uDdPwqKTihhZOLBE=;
+        b=k65rWWc8OSrP4+JLgiYY2EQND7GKNdq1UkcEBoHefiaZi+Pd3/7ypwEFhM+KEeEnXd
+         0YaYnep0fIWWtC8owKFgoiyMdZ3R3bhbm7Ew4Zj7ixwExcD0XtVEyL9Z79Xt9y2bC+P5
+         e/dY6C3sqo3sHblPOnZ5gf88VWXWlMZBfcH7oqHTX+zgbUTOYetzTFJeLJxchbwdMN/I
+         YlykaIgJQ6boKhSXqu4mSyO7/9q8+jZeZIhtUfrQsWkvEEdkymr1HCtAFqmOEWkDM80E
+         hg8MD5osfryoEtb6oKufRd7JYvpGsz4MtZ72Z0ozZPjxCR5Kyp0JobSoWPlzLNODbyOC
+         +FKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731905782; x=1732510582;
+        d=1e100.net; s=20230601; t=1731918476; x=1732523276;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MIzb7uKmpBMgFz+tDnGmizcbHL7RIhkfCyBnVkIL8Ew=;
-        b=Msvhez4t4fcmkNSn+bJlkWsgI4WGo9jOLys34DD1tc291AQIhMR9+ifIZSOnITlp3x
-         SSBT53WrhwrBIOG3/tPuN0FisxB7jELkoHWKdZCQWszaCjJYVPMaCDoR7SdZlPDWx8Wf
-         UzcMUwY29lyPoFEBEVC1TINRDuOoLDz81VaRFdAmMIWn079WFWOCUaYUglgnfROeJzMr
-         MWRMPrLlLR6bWtXQCYIfsE3h6MUSk3pLzRMmK4CnsWsP9OfXOHysQWU+NLX0X+vUSZuG
-         sbut+wff1QccaUeQLDLQpqw6xE1aT28mvetU+05Gpw6f1NWKHWX/Byn5JXC9w8+WJH3K
-         50QQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW+8WE+ZoNmW0VKSv4co98FPZZaIxEvAsS2CJyL9Bwj/K9+HxyspEgN791SjOcQCizps0AduaF+vVKPA7kduEc=@lists.infradead.org, AJvYcCWcHAaoGvh2Ay/jToBfrKK0Lf4kZG8C9jBuGHedsByF/ADdb2D2U5i/PC01LiWVP4RS4ZUEkf6n/Ml3ChcrgXAC@lists.infradead.org
-X-Gm-Message-State: AOJu0YybQl9iyhtq8jOaFHzCPZpyF7IFxQWBQ+fh2yOZXRc+zC2Uh9D5
-	oOMzMV+9wSQoCJYESsmg07DiGAEZRdN5MzI+MZR9AKlwzePYDHmzxsYVPWgg
-X-Google-Smtp-Source: AGHT+IGM5q/XQhELTyhomnrivxdQ/jJhyyr8CxujelNS3o0So9Pf9jvqU/iscpoImttt0BHLahuDBw==
-X-Received: by 2002:a05:6a21:7e85:b0:1d4:fc66:30e8 with SMTP id adf61e73a8af0-1dc90b225a2mr11710103637.10.1731905782118;
-        Sun, 17 Nov 2024 20:56:22 -0800 (PST)
+        bh=5+U0kq1b3c+GGw5rsDzUNZuSYw2uDdPwqKTihhZOLBE=;
+        b=Qz2whz68NdlXSsjyOmSqTg9OsicX9mRQ1j8S+4Iy55BmzX+SVq73IktUlXaVcj4S1Y
+         zlfG8Qv3oQ/Xm++hZSYiQkk8ceK85Z7REXvmlLqnuJXvifnUes6tkDlrTE2ZA/wu08Kf
+         tr2mOgFeetysWrCefUHZyMRHtKwbxbpxt4sevLatBhTBa0Wr95XZxwjTvIGtLEFnRPhf
+         ZDdJUX5nVfDYZk7WTVSLm4XksMqNApeINM/SocayMDXUCQViUrIThOPYTi8+LoyfJadX
+         Ib1oEVw3Wr3E1LDh+md6QO3q2ocY5t3ahNWUpAPPnnCkGHVL2Rb9myn4S6Db2UZGWBXu
+         7Tfg==
+X-Forwarded-Encrypted: i=1; AJvYcCVZvTne8oucHBLuaMoY+AwWXbddYeflGW7xj/mL3TROWwO0ftNTCjLdyUBs8mdDOaB/TDqS/RUyXjwRLjLc8TM=@lists.infradead.org, AJvYcCWfPu9I6GbEW1xJ5akyFLYobzVsrOoff9mpWWNuJ6T9s1boBGontJI9GPqEgx6M+wFmbNZSYk+M4PskRuEc3uDy@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2mtrRDYVARuXCeFCHT6IEyalcdtdVEAcS4R21OPYPl9nfv9rQ
+	kSSPBt55wLCnZXwphPWJDFW2ZAUWYiNDTvNP1K96FX8TJyoq7sW2vsSO/IGu
+X-Google-Smtp-Source: AGHT+IGw0jQZ/MrW6S/RKnnf4ocslcGhBOa1jrlZ+Hoh+2XZUAiXC2Jr/ZqOqYkR1RF0H0FBVXczxQ==
+X-Received: by 2002:a17:903:2452:b0:20e:5997:c107 with SMTP id d9443c01a7336-211d0ec2dbfmr159737005ad.39.1731918475894;
+        Mon, 18 Nov 2024 00:27:55 -0800 (PST)
 Received: from HOME-PC ([223.185.133.4])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7f8c1c644b1sm5009044a12.42.2024.11.17.20.56.21
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21213a94970sm19695165ad.39.2024.11.18.00.27.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 Nov 2024 20:56:21 -0800 (PST)
+        Mon, 18 Nov 2024 00:27:55 -0800 (PST)
 From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-To: frattaroli.nicolas@gmail.com,
-	linux-rockchip@lists.infradead.org
-Cc: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
+To: dafna@fastmail.com,
+	laurent.pinchart@ideasonboard.com,
+	linux-media@vger.kernel.org
+Cc: mchehab@kernel.org,
 	heiko@sntech.de,
-	linux-sound@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Subject: [PATCHv2,sound-next] ASoC: rockchip: i2s-tdm: Fix a useless call issue
-Date: Mon, 18 Nov 2024 10:26:05 +0530
-Message-Id: <20241118045605.48440-1-dheeraj.linuxdev@gmail.com>
+Subject: [PATCH media-next] media: rkisp1: Fix unused value issue
+Date: Mon, 18 Nov 2024 13:57:49 +0530
+Message-Id: <20241118082749.55233-1-dheeraj.linuxdev@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_205623_552356_588315B6 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241118_002757_190854_092302EF 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,62 +95,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit fixes a useless call issue detected by Coverity
-(CID 1507978). The call to rockchip_i2s_ch_to_io is unnecessary as its
-return value is never checked or used. As a result, the function
-definition and call is removed.
+This commit fixes an unused value issue detected by Coverity (CID
+1519008). If ret is set to an error value in the switch statement, it is not
+handled before being overwritten later.
 
 Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
 ---
- sound/soc/rockchip/rockchip_i2s_tdm.c | 28 ---------------------------
- 1 file changed, 28 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index d1f28699652f..bd0dc586e24a 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -514,33 +514,6 @@ static void rockchip_i2s_tdm_xfer_resume(struct snd_pcm_substream *substream,
- 			   I2S_XFER_RXS_START);
- }
- 
--static int rockchip_i2s_ch_to_io(unsigned int ch, bool substream_capture)
--{
--	if (substream_capture) {
--		switch (ch) {
--		case I2S_CHN_4:
--			return I2S_IO_6CH_OUT_4CH_IN;
--		case I2S_CHN_6:
--			return I2S_IO_4CH_OUT_6CH_IN;
--		case I2S_CHN_8:
--			return I2S_IO_2CH_OUT_8CH_IN;
--		default:
--			return I2S_IO_8CH_OUT_2CH_IN;
--		}
--	} else {
--		switch (ch) {
--		case I2S_CHN_4:
--			return I2S_IO_4CH_OUT_6CH_IN;
--		case I2S_CHN_6:
--			return I2S_IO_6CH_OUT_4CH_IN;
--		case I2S_CHN_8:
--			return I2S_IO_8CH_OUT_2CH_IN;
--		default:
--			return I2S_IO_2CH_OUT_8CH_IN;
--		}
--	}
--}
--
- static int rockchip_i2s_io_multiplex(struct snd_pcm_substream *substream,
- 				     struct snd_soc_dai *dai)
- {
-@@ -577,7 +550,6 @@ static int rockchip_i2s_io_multiplex(struct snd_pcm_substream *substream,
- 			return -EINVAL;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index dd114ab77800..9ad5026ab10a 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 			break;
  		}
  
--		rockchip_i2s_ch_to_io(val, true);
- 	} else {
- 		struct snd_pcm_str *capture_str =
- 			&substream->pcm->streams[SNDRV_PCM_STREAM_CAPTURE];
++		if (ret)
++			break;
++
+ 		/* Parse the endpoint and validate the bus type. */
+ 		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+ 		if (ret) {
 -- 
 2.34.1
 
