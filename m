@@ -4,82 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464E5C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21846C87FDA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0J4v/CSK/xfplINAF4kNCeAuS3iQDqhi01CQVN3bmrw=; b=JE46z7uP3SY3MF
-	lZf3N1e7zWuhWAwSOdLVyKAXjb76ki8HjmWvDcjivvZZt4cirecv26GKiEv4POz1wBb3Iq/JAT+SS
-	vhDzKVUDs263TWt4kHjmOiRSjcyZzbOrm1ZJoWPXow4ahglZwrNp2MlDpYdjE/s0VCalXwB35S9fI
-	u1Qem3jtaJxwIUoiHeWdV0tRvJ+eCso6pjpL146Gfnjg2/UTpQ7fHa88enS/vbbGlfRdf39jkIWWQ
-	lozXB/ogi4FAuuVoEue1jLJ0QT+40k8GPxdGeparC/WqsAfNDQOh1ygM2jzfLEikThmH7URnTYKkR
-	Z1s7z6oRiHTbXj4o/jUA==;
+	List-Owner; bh=4uVZrJx1YDv+bZXgPXPiI1kqCykPMEviqlCh2n3FAZs=; b=FJ3+qyK1Mn48/V
+	x5oGnlc+qF8Z8Q2aXeiRcgJpo9nga4LQB52QlxwXd6wotmbNOBTHa39tfwdOEU4irGB9+DwaKT/Kd
+	ed03iM5+aJIMNb1a9siNpzTiQsAFj+yEvj4y04j+C8keLifNeOyjSZHSHFb1ei5PxR4B/rDhnKKsp
+	l0zfMHq+2LUf3N37ic11ZIUe6Bfpe22SZV3yRIcYnoWDTRhyrTLV9u0V3DZ8zBHNfiSBBuFtzQlwD
+	HqMeaxbAlYv1sEsm+tf7TxL8iDPma80VBMZczCL6gKH5S4UCtf2vido0/gfh9eyx5WmyaLj7xHjz0
+	vhoozqHSvrss88+tvmlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbc1-0000000EvZD-0wYM;
+	id 1ujbc1-0000000Eva9-3REi;
 	Wed, 06 Aug 2025 10:43:13 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCp7e-00000007zSS-0kp5
+	id 1tD1dJ-00000009XO2-1Tix
 	for linux-rockchip@lists.infradead.org;
-	Sun, 17 Nov 2024 23:56:07 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-6ee6a2ae6ecso15992207b3.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 Nov 2024 15:56:05 -0800 (PST)
+	Mon, 18 Nov 2024 13:17:41 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-539f1292a9bso4889216e87.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Nov 2024 05:17:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731887765; x=1732492565; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ec/Hk8LFdU6/qTj98SnoNsMivsG+0SE1lo+pLnCS5cs=;
-        b=MM4DiHf+4lFb50OYVMqXUQvEmEevBXgSv44w5DKrBLgy/+dB6oTHfg0nA/nXGfdMri
-         qZJieXWXY26kgw7dIaqSisL1bAT+6XERtUQ4hhPkiC7t7X7TODWlFfu1p4jUBy+WCXGH
-         Cj8vVEAWcjFeIafTSF2Pq+u1sGe9l5mKaTtBA9nytZf4AbtjDriyqVEIcwwuqBtb+ZuM
-         YUndYgJkcL3LFUwrlB6ODuL3/Q8hoA77b8dOJbHCt07VFjOTODZ69X65V89hVVzqh8OH
-         +aF4A/NNC7m+zJnwIXX1Ko7wEzLKgi6lsy0pkzXQwwcENPQJbW9Nycv2UFuP452jP1Ju
-         TYVQ==
+        d=linaro.org; s=google; t=1731935855; x=1732540655; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=QEQ0UnPHgL8X1IzKLkITrqLzsus1TunLlu+R1N5lrJc=;
+        b=fKletAq4Qj5WYbKLgPvHmJO9STnGnkwlCWIOmmrsGPpbRQn3+vsRLRsmzCQo0CiS2Q
+         BDV5aLiFJ+G1xNS67VS2cTSnd0JOr1pzUq3/KcqXF8S9zjl0d/G6rpRawtHwMcC32oNq
+         gMWRIor3hOrJlJJMFd2d3jjEXUqFUwu7tecgVjMI8FqaCis7dSPAWp7Lcp29vtb+1r3r
+         r25O69DuvyIeBAIW+wyvr388MFqineJ2FK897xtZOpe6dkg+AZnquyHmzKHHEVA03aSW
+         xd/9qxtqqmAj2JQOEOtyBeKWoorQk/FKCzrHPyMhQoOE40rdJPleGW6gu951FKFyMl4D
+         K3Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731887765; x=1732492565;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Ec/Hk8LFdU6/qTj98SnoNsMivsG+0SE1lo+pLnCS5cs=;
-        b=lpOnFwFingw0mewyv9YAlU6c5NHoUPdGLjwwWXR1gzwBaVLa9RpsU3IAINvV7E0f5+
-         EqTdLQFvX5RPrSkjRKlSgj0RRakaM8kn5/aHKbsnLHSV5RZCYDceiP/bF6wKOJgWwLuv
-         7L7cK9Z5jOgaLntue3KRD/Fts6S+uJgwAj4wMdBAECJNlNLDx4DK7XD4o4kxVJEO1hGH
-         4Lpf7BajYi0dWcS/SWv/y7gXFYv7I2f1jCN4wby54d4W7okk5nl7CIjaEF5aaDmWTntN
-         zygNiMdJ85GhwIxrG2G840cyPxr4JMl775V5eLPm0le61/Hjv7ZofFaacNt20Mg3VX1f
-         bslQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXXWcPod525BHF3DvtnxPLkuuFDoLsJCzZrRJQD7lD9Hhn5pbRt6xIpXcQagAHUIn7RlwrjuJ1vAS6YVqzYlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJ4MFJ/sCfrxGa9H0wlikr/DZdGnURCu4+KSGW7oKVNjult6W9
-	LV9vt3ellkzf3Whz6XLfeTVnSONO/zV0QfAzLOFem0n+PqP3uGrJrxbh+qUZ+EP0r6MJDWARBhq
-	/xw4TRYFD8m5Kl8JscH4MFH5Gw7ey4P710auddw==
-X-Google-Smtp-Source: AGHT+IGdPgjTWzOdmSZKhRLhwp47xWv9WolMRYt8LQitXBXOFxH5M2pSFFLUJPVswZmbkhncp4AJ66Q6lhrBlLmxMBA=
-X-Received: by 2002:a05:690c:6384:b0:6ee:3f5e:1c18 with SMTP id
- 00721157ae682-6ee55a2abddmr96890087b3.4.1731887764985; Sun, 17 Nov 2024
- 15:56:04 -0800 (PST)
-MIME-Version: 1.0
-References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
- <20241115-drm-connector-mode-valid-const-v1-1-b1b523156f71@linaro.org>
- <20241117205426.GE12409@pendragon.ideasonboard.com> <CAA8EJpr=4AQVRKbtR2MaCQfguGW0a=3ay-ttew-mFR4f086Uyg@mail.gmail.com>
- <20241117233250.GK12409@pendragon.ideasonboard.com>
-In-Reply-To: <20241117233250.GK12409@pendragon.ideasonboard.com>
+        d=1e100.net; s=20230601; t=1731935855; x=1732540655;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QEQ0UnPHgL8X1IzKLkITrqLzsus1TunLlu+R1N5lrJc=;
+        b=s0QQh4Y2YW95Sv9MmiAQ/m8xfuiQb6Wyhxo2T5X1dF98W7qSWJF55atWwAd6ubWMom
+         wp2BbJjpw+ex8MkpNj/yk9hNC7WTudZfhucEDLT7+gF3/craoKaxVvu0P0q21XCmVQgd
+         Cj/bp7hmafEh/Ysuo6yhSEFFor+7ViAjigDejeb+Yi3rhaPULE3j7nUvJR4eHhrSN8Gr
+         tQ1sYJkzXGAkyDyKPNpcfVPEizDb4bm7+OX+BBYmGqHaAl510RwmgiZ9cmjD6y5GR2kC
+         rlcuPm5lt/7dYbxWIKkaXYS14Tz7oF8ZnReHk+yGzP75fKlquQ1bt1beKmJoQrLNbHur
+         UjYQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVqTvyw05U7rs4kM0Lu0MGBaxdlS8bqfDohy6uC1/Ubb7Zs+mcJ9CD5midsxAzpO4MDvIP2Ha8DqHAvatuBZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLKiemKjCzuTMFY+pX+5pmSfsbjQ4Z0HB7byS+BOq/dhfcj5Bd
+	/RutVSlqIMhjnLKNu5rHm5xu9wX547xZzBZp7jUXO0oNqOB3l1BTpmqb/bOX5eg=
+X-Google-Smtp-Source: AGHT+IGdzRCE2acExYOAR/Q1TPJs2CyZISyIMx5j4q3L/H9VxSQ26s/Ffm8H90fecvqfEbJsuGZxrw==
+X-Received: by 2002:a05:6512:3e07:b0:536:55a9:caf0 with SMTP id 2adb3069b0e04-53dab25f7c9mr4511337e87.0.1731935855301;
+        Mon, 18 Nov 2024 05:17:35 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53da64f8cafsm1591434e87.54.2024.11.18.05.17.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Nov 2024 05:17:33 -0800 (PST)
+Date: Mon, 18 Nov 2024 15:17:31 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 18 Nov 2024 01:55:54 +0200
-Message-ID: <CAA8EJpq6Gkp4W=rGbpY6ASPgoDt=64HTFDk4_OZsTmbSUxhhGw@mail.gmail.com>
-Subject: Re: [PATCH 1/5] drm/encoder_slave: make mode_valid accept const
- struct drm_display_mode
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, 
-	Danilo Krummrich <dakr@redhat.com>, Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+	Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, 
+	Danilo Krummrich <dakr@redhat.com>, Harry Wentland <harry.wentland@amd.com>, 
+	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>, 
+	Alex Deucher <alexander.deucher@amd.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
 	Xinhui Pan <Xinhui.Pan@amd.com>, Alain Volmat <alain.volmat@foss.st.com>, 
 	Raphael Gallais-Pou <rgallaispou@gmail.com>, Liviu Dudau <liviu.dudau@arm.com>, 
 	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
@@ -96,26 +90,36 @@ Cc: Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.
 	Abhinav Kumar <quic_abhinavk@quicinc.com>, Sean Paul <sean@poorly.run>, 
 	Marijn Suijten <marijn.suijten@somainline.org>, Dave Airlie <airlied@redhat.com>, 
 	Gerd Hoffmann <kraxel@redhat.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
 	Samuel Holland <samuel@sholland.org>, Thierry Reding <thierry.reding@gmail.com>, 
 	Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
 	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Gurchetan Singh <gurchetansingh@chromium.org>, 
 	Chia-I Wu <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, intel-gfx@lists.freedesktop.org, 
-	intel-xe@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, nouveau@lists.freedesktop.org, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, nouveau@lists.freedesktop.org, 
 	amd-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
 	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 1/5] drm/encoder_slave: make mode_valid accept const
+ struct drm_display_mode
+Message-ID: <4prwsjl7nhg4u4tgyqdmgt6am5ryewslosmbezkfmyxgh2oket@zglhp7zqhfwe>
+References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
+ <20241115-drm-connector-mode-valid-const-v1-1-b1b523156f71@linaro.org>
+ <20241117205426.GE12409@pendragon.ideasonboard.com>
+ <CAA8EJpr=4AQVRKbtR2MaCQfguGW0a=3ay-ttew-mFR4f086Uyg@mail.gmail.com>
+ <20241117233250.GK12409@pendragon.ideasonboard.com>
+ <CAA8EJpq6Gkp4W=rGbpY6ASPgoDt=64HTFDk4_OZsTmbSUxhhGw@mail.gmail.com>
+ <87plms51w4.fsf@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87plms51w4.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_155606_228749_CB68E5B3 
-X-CRM114-Status: GOOD (  33.44  )
-X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
+X-CRM114-CacheID: sfid-20241118_051737_391293_2773C393 
+X-CRM114-Status: GOOD (  29.30  )
+X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:50 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,105 +136,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Nov 2024 at 01:33, Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
->
-> On Mon, Nov 18, 2024 at 01:22:12AM +0200, Dmitry Baryshkov wrote:
-> > On Sun, 17 Nov 2024 at 22:54, Laurent Pinchart wrote:
-> > > On Fri, Nov 15, 2024 at 11:09:26PM +0200, Dmitry Baryshkov wrote:
-> > > > The mode_valid() callbacks of drm_encoder, drm_crtc and drm_bridge
-> > > > accept const struct drm_display_mode argument. Change the mode_valid
-> > > > callback of drm_encoder_slave to also accept const argument.
-> > > >
-> > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > >
-> > > Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-> > >
-> > > On a side note, there's only two I2C slave encoder drivers left... I
-> > > wonder if we could so something about them. The ch7006 and sil164
-> > > drivers seem to be used by nouveau only, could they be moved to
-> > > drivers/gpu/drm/nouveau/ ? We would move the whole drm_encoder_slave
-> > > implementation there too, and leave it to die (or get taken out of limbo
-> > > and fixed) with dispnv04.
+On Mon, Nov 18, 2024 at 11:26:03AM +0200, Jani Nikula wrote:
+> On Mon, 18 Nov 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> > On Mon, 18 Nov 2024 at 01:33, Laurent Pinchart
+> > <laurent.pinchart@ideasonboard.com> wrote:
+> >>
+> >> On Mon, Nov 18, 2024 at 01:22:12AM +0200, Dmitry Baryshkov wrote:
+> >> > On Sun, 17 Nov 2024 at 22:54, Laurent Pinchart wrote:
+> >> > > On Fri, Nov 15, 2024 at 11:09:26PM +0200, Dmitry Baryshkov wrote:
+> >> > > > The mode_valid() callbacks of drm_encoder, drm_crtc and drm_bridge
+> >> > > > accept const struct drm_display_mode argument. Change the mode_valid
+> >> > > > callback of drm_encoder_slave to also accept const argument.
+> >> > > >
+> >> > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> >> > >
+> >> > > Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+> >> > >
+> >> > > On a side note, there's only two I2C slave encoder drivers left... I
+> >> > > wonder if we could so something about them. The ch7006 and sil164
+> >> > > drivers seem to be used by nouveau only, could they be moved to
+> >> > > drivers/gpu/drm/nouveau/ ? We would move the whole drm_encoder_slave
+> >> > > implementation there too, and leave it to die (or get taken out of limbo
+> >> > > and fixed) with dispnv04.
+> >> >
+> >> > Or it might be better to switch to drm_bridge. Currently we also have
+> >> > sil164 (sub)drivers in ast and i915 drivers. I don't know if there is
+> >> > any common code to share or not. If there is some, it might be nice to
+> >> > use common framework.
+> >>
+> >> That would require porting nouveau and i915 to drm_bridge. As much as
+> >> I'd love to see that happening, I won't hold my breath.
 > >
-> > Or it might be better to switch to drm_bridge. Currently we also have
-> > sil164 (sub)drivers in ast and i915 drivers. I don't know if there is
-> > any common code to share or not. If there is some, it might be nice to
-> > use common framework.
->
-> That would require porting nouveau and i915 to drm_bridge. As much as
-> I'd love to see that happening, I won't hold my breath.
+> > Me neither. Probably moving those two and drm_encoder_slave to nouveau
+> > is really the best course for now.
+> 
+> Granted, the dvo part of i915 is ugly, but it's also only relevant for
+> the oldest hardware i915 supports. Like 20 years old. Not sure there's
+> much return on investment in big refactoring, more risk that it breaks
+> without nobody noticing. Just let it be in i915?
 
-Me neither. Probably moving those two and drm_encoder_slave to nouveau
-is really the best course for now.
-
->
-> > > > ---
-> > > >  drivers/gpu/drm/i2c/ch7006_drv.c          | 2 +-
-> > > >  drivers/gpu/drm/i2c/sil164_drv.c          | 2 +-
-> > > >  drivers/gpu/drm/nouveau/dispnv04/tvnv17.c | 2 +-
-> > > >  include/drm/drm_encoder_slave.h           | 2 +-
-> > > >  4 files changed, 4 insertions(+), 4 deletions(-)
-> > > >
-> > > > diff --git a/drivers/gpu/drm/i2c/ch7006_drv.c b/drivers/gpu/drm/i2c/ch7006_drv.c
-> > > > index 131512a5f3bd996ad1e2eb869ffa09837daba0c7..a57f0a41c1a9e2006142fe0bad2914b0c344c82a 100644
-> > > > --- a/drivers/gpu/drm/i2c/ch7006_drv.c
-> > > > +++ b/drivers/gpu/drm/i2c/ch7006_drv.c
-> > > > @@ -104,7 +104,7 @@ static bool ch7006_encoder_mode_fixup(struct drm_encoder *encoder,
-> > > >  }
-> > > >
-> > > >  static int ch7006_encoder_mode_valid(struct drm_encoder *encoder,
-> > > > -                                  struct drm_display_mode *mode)
-> > > > +                                  const struct drm_display_mode *mode)
-> > > >  {
-> > > >       if (ch7006_lookup_mode(encoder, mode))
-> > > >               return MODE_OK;
-> > > > diff --git a/drivers/gpu/drm/i2c/sil164_drv.c b/drivers/gpu/drm/i2c/sil164_drv.c
-> > > > index ff23422727fce290a188e495d343e32bc2c373ec..708e119072fcb50c31b5596b75dc341429b93697 100644
-> > > > --- a/drivers/gpu/drm/i2c/sil164_drv.c
-> > > > +++ b/drivers/gpu/drm/i2c/sil164_drv.c
-> > > > @@ -255,7 +255,7 @@ sil164_encoder_restore(struct drm_encoder *encoder)
-> > > >
-> > > >  static int
-> > > >  sil164_encoder_mode_valid(struct drm_encoder *encoder,
-> > > > -                       struct drm_display_mode *mode)
-> > > > +                       const struct drm_display_mode *mode)
-> > > >  {
-> > > >       struct sil164_priv *priv = to_sil164_priv(encoder);
-> > > >
-> > > > diff --git a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> > > > index 3ecb101d23e949b753b873d24eec01ad6fe7f5d6..35ad4e10d27323c87704a3ff35b7dc26462c82bd 100644
-> > > > --- a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> > > > +++ b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> > > > @@ -308,7 +308,7 @@ static int nv17_tv_get_modes(struct drm_encoder *encoder,
-> > > >  }
-> > > >
-> > > >  static int nv17_tv_mode_valid(struct drm_encoder *encoder,
-> > > > -                           struct drm_display_mode *mode)
-> > > > +                           const struct drm_display_mode *mode)
-> > > >  {
-> > > >       struct nv17_tv_norm_params *tv_norm = get_tv_norm(encoder);
-> > > >
-> > > > diff --git a/include/drm/drm_encoder_slave.h b/include/drm/drm_encoder_slave.h
-> > > > index 49172166a164474f43e4afb2eeeb3cde8ae7c61a..b526643833dcf78bae29f9fbbe27de3f730b55d8 100644
-> > > > --- a/include/drm/drm_encoder_slave.h
-> > > > +++ b/include/drm/drm_encoder_slave.h
-> > > > @@ -85,7 +85,7 @@ struct drm_encoder_slave_funcs {
-> > > >        * @mode_valid: Analogous to &drm_encoder_helper_funcs @mode_valid.
-> > > >        */
-> > > >       int (*mode_valid)(struct drm_encoder *encoder,
-> > > > -                       struct drm_display_mode *mode);
-> > > > +                       const struct drm_display_mode *mode);
-> > > >       /**
-> > > >        * @mode_set: Analogous to &drm_encoder_helper_funcs @mode_set
-> > > >        * callback. Wrapped by drm_i2c_encoder_mode_set().
-> > > >
->
-> --
-> Regards,
->
-> Laurent Pinchart
-
+Agreed
 
 
 -- 
