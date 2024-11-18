@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D599AD43FEE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 08:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC25D49205
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 09:38:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=scGcCRnpAuSPksh8hngieoBSW2fQmoGr9MMMIQskqdQ=; b=GZwFSRWZFd+d5l
-	zPKYnQfpEDt3Ub6rF6V2HvNo+iBVD/e2cAI188k4gbCTEAxSFH1l4ADWODCv+9TTbxHx4djzw04c+
-	C4Z0acA7mR04G0T1TICR9SA6msOuPEIxAm5aQuteMT7oRomdy8tQPRXQarLg59JCvz0Pyz4v6qx1X
-	8Fewsf4hMyY51db3kCjOF5/eeiVK6K1n8WOfHA6z0enG3o64icnsyWq8lLQCDGx2NQcFcW6y2NS+h
-	CafWQOQhQMuGOPk8QJZV0+61ZdLa5fqiA8yvenykp/uuIjIb3WcY+CC05XdKeXAeFFfKLqPHkxrMg
-	2dknpPiRB53CH2fIsfQg==;
+	List-Owner; bh=NcnhYnkh3+UPF7lKHKotQyk88W3mVnshtfdr6dbe7vk=; b=xu6uLYij1l3IyA
+	Y+UCgEC1zAEF2RuwibcTwkesZE1p1y5iQeRxuBCkaKUJsw+WBzHyTL9nHxTxjdFpHEq5byEJqMSBH
+	brb51vEiO37paD4IEteYo1q1EvKV4H6V81sPxDrv82uflIlRytNOosgZ/dm4gx4rD8WMWM/8/pFN2
+	ExcTjHL8hp3c2WJMzSmtoqEi/sUCcjr7/mkrQgOqfgwz7NO7Rpl4ZI8r+DcxTg22irunqc0l9AA+n
+	zdbcuq8eD4o3Nznz7l0NMSmhUUIxu8JioP+CJIkZeBxfoXayjSqXtGTyohgl/X2G3nw39LuG7iin/
+	lT7+0ZRn9T78ce74XZ9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCxCR-00000008nGE-0GDL;
-	Mon, 18 Nov 2024 08:33:35 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1tCyDF-00000008wLl-2duH;
+	Mon, 18 Nov 2024 09:38:29 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCx6z-00000008lxw-0eJW;
-	Mon, 18 Nov 2024 08:27:58 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20c7ee8fe6bso36889625ad.2;
-        Mon, 18 Nov 2024 00:27:56 -0800 (PST)
+	id 1tCyCI-00000008w8u-3F5A;
+	Mon, 18 Nov 2024 09:37:31 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-71e49ad46b1so2896444b3a.1;
+        Mon, 18 Nov 2024 01:37:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731918476; x=1732523276; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1731922650; x=1732527450; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=5+U0kq1b3c+GGw5rsDzUNZuSYw2uDdPwqKTihhZOLBE=;
-        b=k65rWWc8OSrP4+JLgiYY2EQND7GKNdq1UkcEBoHefiaZi+Pd3/7ypwEFhM+KEeEnXd
-         0YaYnep0fIWWtC8owKFgoiyMdZ3R3bhbm7Ew4Zj7ixwExcD0XtVEyL9Z79Xt9y2bC+P5
-         e/dY6C3sqo3sHblPOnZ5gf88VWXWlMZBfcH7oqHTX+zgbUTOYetzTFJeLJxchbwdMN/I
-         YlykaIgJQ6boKhSXqu4mSyO7/9q8+jZeZIhtUfrQsWkvEEdkymr1HCtAFqmOEWkDM80E
-         hg8MD5osfryoEtb6oKufRd7JYvpGsz4MtZ72Z0ozZPjxCR5Kyp0JobSoWPlzLNODbyOC
-         +FKg==
+        bh=QW2IfhgsXhjkhuWBMY7B99CaNdpS5A7CGa3sZv7P9ac=;
+        b=OwaBArFn1QgYXqzfBi8l1BXLmITOH7BYyGZ13Kbb0Ii+S8jVMmxx4AF9rVPg0W3rm/
+         ZzUqHO20tWqomsKBJ6GdTphd/i6z6BtCYh1UGv1CvelhMI6IW1euJM1tWOPTzL1KWuL8
+         AfL+VmNIujvODI+jo3gLwmJy/3OOafE3R39cnPCp3p5DS2h6YyBJlejSVEQlzzGMJPTX
+         6nLRFQLmsoC/EksMZkYQ3LQohjnzOsMMvnDby89xivso4Czy+5Ek2YPjM0jxppoGiR8j
+         z+wAyHFeXIMM7+1Upm+69t3cV6qObRe9c7IJfkKW15cGKxGZVQmyLTwjU3lEOmTrJUO/
+         1RZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731918476; x=1732523276;
+        d=1e100.net; s=20230601; t=1731922650; x=1732527450;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=5+U0kq1b3c+GGw5rsDzUNZuSYw2uDdPwqKTihhZOLBE=;
-        b=Qz2whz68NdlXSsjyOmSqTg9OsicX9mRQ1j8S+4Iy55BmzX+SVq73IktUlXaVcj4S1Y
-         zlfG8Qv3oQ/Xm++hZSYiQkk8ceK85Z7REXvmlLqnuJXvifnUes6tkDlrTE2ZA/wu08Kf
-         tr2mOgFeetysWrCefUHZyMRHtKwbxbpxt4sevLatBhTBa0Wr95XZxwjTvIGtLEFnRPhf
-         ZDdJUX5nVfDYZk7WTVSLm4XksMqNApeINM/SocayMDXUCQViUrIThOPYTi8+LoyfJadX
-         Ib1oEVw3Wr3E1LDh+md6QO3q2ocY5t3ahNWUpAPPnnCkGHVL2Rb9myn4S6Db2UZGWBXu
-         7Tfg==
-X-Forwarded-Encrypted: i=1; AJvYcCVZvTne8oucHBLuaMoY+AwWXbddYeflGW7xj/mL3TROWwO0ftNTCjLdyUBs8mdDOaB/TDqS/RUyXjwRLjLc8TM=@lists.infradead.org, AJvYcCWfPu9I6GbEW1xJ5akyFLYobzVsrOoff9mpWWNuJ6T9s1boBGontJI9GPqEgx6M+wFmbNZSYk+M4PskRuEc3uDy@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2mtrRDYVARuXCeFCHT6IEyalcdtdVEAcS4R21OPYPl9nfv9rQ
-	kSSPBt55wLCnZXwphPWJDFW2ZAUWYiNDTvNP1K96FX8TJyoq7sW2vsSO/IGu
-X-Google-Smtp-Source: AGHT+IGw0jQZ/MrW6S/RKnnf4ocslcGhBOa1jrlZ+Hoh+2XZUAiXC2Jr/ZqOqYkR1RF0H0FBVXczxQ==
-X-Received: by 2002:a17:903:2452:b0:20e:5997:c107 with SMTP id d9443c01a7336-211d0ec2dbfmr159737005ad.39.1731918475894;
-        Mon, 18 Nov 2024 00:27:55 -0800 (PST)
+        bh=QW2IfhgsXhjkhuWBMY7B99CaNdpS5A7CGa3sZv7P9ac=;
+        b=CP+iTTufLEakLPNiHsmEoFFs4X26cxYJFZW7WWr584Mxzh9W7F/+t7JbLvl0oPOB+D
+         oyY/VJfwddwKNfmZnwcTyHzFaZSUQbvl2e+om0l3t1zJhHg98Pmk+5zNaxrlgPRw9CFC
+         2q/glJPDSEccXtsBwCpbE6Bhk4COWBCi0LZKMj59JezxRh8BUpDxo5gVcjDaLRR55svK
+         5/cyh5AXlxsUHTKIPTx5srCC7E+gZzXsK/CQfK5/Uwzy082H+Icb2Zj3qO/dbaEA9X1N
+         3A6FyTiGWV1vz1vA0OQPUsREYskaHaMLmOjmDDhRJ4OO4vSMw3E+Kw9N69gyfCyWifRD
+         0rfQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV/TyOTmvULURXH0Jj4QTkPqpkVkcI18maoqRDhEYSdJNu/b2QPMzkZdbnpgn6aS5BjIxiryCrApxsRrnPHSLc=@lists.infradead.org, AJvYcCXNXRqdiIN5bBpS4cs0p1TPMUZW5y76GjPwWedd0l/FwVqVFbzX2vsHBx+XbgBv1Kj/C7YZd2xQDgF5piTDx8qe@lists.infradead.org
+X-Gm-Message-State: AOJu0Yysx16R7nreLYrdr5VJTUIBxE6tbMEN7e939B2hxgvZiErPmcUV
+	tfSgqconfQNVRjCFjwVQKJax1DQ4HbTm4iwat1blWfDTQy9iBjqN
+X-Google-Smtp-Source: AGHT+IFnG8Al6NvOlovgTgrF7vExh8IbHZLAN5WSBXRN88bM7aNfyvAEiT0oobaDYvExVOElAobNIg==
+X-Received: by 2002:a05:6a00:4f8e:b0:71e:7887:81ac with SMTP id d2e1a72fcca58-72476d1764cmr13964427b3a.16.1731922649762;
+        Mon, 18 Nov 2024 01:37:29 -0800 (PST)
 Received: from HOME-PC ([223.185.133.4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21213a94970sm19695165ad.39.2024.11.18.00.27.54
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724772010f6sm5716632b3a.195.2024.11.18.01.37.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 00:27:55 -0800 (PST)
+        Mon, 18 Nov 2024 01:37:29 -0800 (PST)
 From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
 To: dafna@fastmail.com,
 	laurent.pinchart@ideasonboard.com,
@@ -71,14 +71,14 @@ Cc: mchehab@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Subject: [PATCH media-next] media: rkisp1: Fix unused value issue
-Date: Mon, 18 Nov 2024 13:57:49 +0530
-Message-Id: <20241118082749.55233-1-dheeraj.linuxdev@gmail.com>
+Subject: [PATCH v2 media-next] media: rkisp1: Fix unused value issue
+Date: Mon, 18 Nov 2024 15:07:21 +0530
+Message-Id: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_002757_190854_092302EF 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20241118_013730_809221_897B7E80 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,8 +96,8 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 This commit fixes an unused value issue detected by Coverity (CID
-1519008). If ret is set to an error value in the switch statement, it is not
-handled before being overwritten later.
+1519008). If ret is set to an error value in the switch statement, it is
+not handled before being overwritten later.
 
 Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
 ---
