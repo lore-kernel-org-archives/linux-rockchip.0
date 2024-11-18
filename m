@@ -4,81 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC25D49205
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 09:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B7E8D49205
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 10:19:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NcnhYnkh3+UPF7lKHKotQyk88W3mVnshtfdr6dbe7vk=; b=xu6uLYij1l3IyA
-	Y+UCgEC1zAEF2RuwibcTwkesZE1p1y5iQeRxuBCkaKUJsw+WBzHyTL9nHxTxjdFpHEq5byEJqMSBH
-	brb51vEiO37paD4IEteYo1q1EvKV4H6V81sPxDrv82uflIlRytNOosgZ/dm4gx4rD8WMWM/8/pFN2
-	ExcTjHL8hp3c2WJMzSmtoqEi/sUCcjr7/mkrQgOqfgwz7NO7Rpl4ZI8r+DcxTg22irunqc0l9AA+n
-	zdbcuq8eD4o3Nznz7l0NMSmhUUIxu8JioP+CJIkZeBxfoXayjSqXtGTyohgl/X2G3nw39LuG7iin/
-	lT7+0ZRn9T78ce74XZ9A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VIhakTnShXspVYOso2qAB/8TZXoVW0KOr9yho2c9C+g=; b=iCfcxmdmLK0nO3
+	VUmFJf9kIEbgPs9sVosKorNB6LqLpMuqpT7tLjpsolaAAY2obPzU6J/ThKAL2+KIx9uCU3niolm66
+	aRntQ8Uhyr8Veom/k2GpWbgoO3Kalm4DPYZDFKtZll7JJv6f4ITrkakoSQ+gBHs4n4lOL90PEmcc1
+	lQsT9dQdaLG+0lCgQzNzH6KN2GUfGNo2ot8QE4HEQJGzLnA0Ovpzbmmb1NCH2US3/cmOTpgSVB8UZ
+	fUoohFpzMvv59DlqKa5T74bPc8FYEhAyze9aO+IgXMi5Gtzpoo6HsGb0d9aNfdPmXokpmr2knP21+
+	BU5VwN8KUqH3vCQdjdpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCyDF-00000008wLl-2duH;
-	Mon, 18 Nov 2024 09:38:29 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1tCyrB-000000093e7-2jv4;
+	Mon, 18 Nov 2024 10:19:45 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCyCI-00000008w8u-3F5A;
-	Mon, 18 Nov 2024 09:37:31 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-71e49ad46b1so2896444b3a.1;
-        Mon, 18 Nov 2024 01:37:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731922650; x=1732527450; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=QW2IfhgsXhjkhuWBMY7B99CaNdpS5A7CGa3sZv7P9ac=;
-        b=OwaBArFn1QgYXqzfBi8l1BXLmITOH7BYyGZ13Kbb0Ii+S8jVMmxx4AF9rVPg0W3rm/
-         ZzUqHO20tWqomsKBJ6GdTphd/i6z6BtCYh1UGv1CvelhMI6IW1euJM1tWOPTzL1KWuL8
-         AfL+VmNIujvODI+jo3gLwmJy/3OOafE3R39cnPCp3p5DS2h6YyBJlejSVEQlzzGMJPTX
-         6nLRFQLmsoC/EksMZkYQ3LQohjnzOsMMvnDby89xivso4Czy+5Ek2YPjM0jxppoGiR8j
-         z+wAyHFeXIMM7+1Upm+69t3cV6qObRe9c7IJfkKW15cGKxGZVQmyLTwjU3lEOmTrJUO/
-         1RZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731922650; x=1732527450;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=QW2IfhgsXhjkhuWBMY7B99CaNdpS5A7CGa3sZv7P9ac=;
-        b=CP+iTTufLEakLPNiHsmEoFFs4X26cxYJFZW7WWr584Mxzh9W7F/+t7JbLvl0oPOB+D
-         oyY/VJfwddwKNfmZnwcTyHzFaZSUQbvl2e+om0l3t1zJhHg98Pmk+5zNaxrlgPRw9CFC
-         2q/glJPDSEccXtsBwCpbE6Bhk4COWBCi0LZKMj59JezxRh8BUpDxo5gVcjDaLRR55svK
-         5/cyh5AXlxsUHTKIPTx5srCC7E+gZzXsK/CQfK5/Uwzy082H+Icb2Zj3qO/dbaEA9X1N
-         3A6FyTiGWV1vz1vA0OQPUsREYskaHaMLmOjmDDhRJ4OO4vSMw3E+Kw9N69gyfCyWifRD
-         0rfQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV/TyOTmvULURXH0Jj4QTkPqpkVkcI18maoqRDhEYSdJNu/b2QPMzkZdbnpgn6aS5BjIxiryCrApxsRrnPHSLc=@lists.infradead.org, AJvYcCXNXRqdiIN5bBpS4cs0p1TPMUZW5y76GjPwWedd0l/FwVqVFbzX2vsHBx+XbgBv1Kj/C7YZd2xQDgF5piTDx8qe@lists.infradead.org
-X-Gm-Message-State: AOJu0Yysx16R7nreLYrdr5VJTUIBxE6tbMEN7e939B2hxgvZiErPmcUV
-	tfSgqconfQNVRjCFjwVQKJax1DQ4HbTm4iwat1blWfDTQy9iBjqN
-X-Google-Smtp-Source: AGHT+IFnG8Al6NvOlovgTgrF7vExh8IbHZLAN5WSBXRN88bM7aNfyvAEiT0oobaDYvExVOElAobNIg==
-X-Received: by 2002:a05:6a00:4f8e:b0:71e:7887:81ac with SMTP id d2e1a72fcca58-72476d1764cmr13964427b3a.16.1731922649762;
-        Mon, 18 Nov 2024 01:37:29 -0800 (PST)
-Received: from HOME-PC ([223.185.133.4])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724772010f6sm5716632b3a.195.2024.11.18.01.37.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 01:37:29 -0800 (PST)
-From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-To: dafna@fastmail.com,
-	laurent.pinchart@ideasonboard.com,
-	linux-media@vger.kernel.org
-Cc: mchehab@kernel.org,
-	heiko@sntech.de,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Subject: [PATCH v2 media-next] media: rkisp1: Fix unused value issue
-Date: Mon, 18 Nov 2024 15:07:21 +0530
-Message-Id: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tCyqE-000000093V0-1bLx;
+	Mon, 18 Nov 2024 10:18:47 +0000
+Received: from ideasonboard.com (net-93-150-224-74.cust.dsl.teletu.it [93.150.224.74])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 24B058FA;
+	Mon, 18 Nov 2024 11:18:25 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1731925107;
+	bh=IT22R0CGEdHu/u1Hhsz/PwFkorUmlTbDsfnhTMv07Ho=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ij2bzZwZUD2nInjP708QqKUk36/I/PUsGVnk+AhErh3b50lWTbeUITDzc0Dn4BtQy
+	 cQ6jD+issSReS/corYwZs1Q2rLzLjind3kRZPqd9F6Q+DCnbJVxGDk+X19FIVw6R4L
+	 ck+r3Vy/eKxSXvIOjQUTWrfzft+8OlLpG6aAHw+A=
+Date: Mon, 18 Nov 2024 11:18:34 +0100
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+Cc: dafna@fastmail.com, laurent.pinchart@ideasonboard.com, 
+	linux-media@vger.kernel.org, mchehab@kernel.org, heiko@sntech.de, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 media-next] media: rkisp1: Fix unused value issue
+Message-ID: <3obha26vg2agtmrxjft325ifiwyaftqchgpdgmm7aok7vt7e5c@jfknj6opiudo>
+References: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_013730_809221_897B7E80 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20241118_021846_556270_1E8BB73C 
+X-CRM114-Status: GOOD (  20.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,32 +68,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit fixes an unused value issue detected by Coverity (CID
-1519008). If ret is set to an error value in the switch statement, it is
-not handled before being overwritten later.
+Hi Dheeraj
 
-Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
- 1 file changed, 3 insertions(+)
+On Mon, Nov 18, 2024 at 03:07:21PM +0530, Dheeraj Reddy Jonnalagadda wrote:
+> This commit fixes an unused value issue detected by Coverity (CID
+> 1519008). If ret is set to an error value in the switch statement, it is
+> not handled before being overwritten later.
+>
+> Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index dd114ab77800..9ad5026ab10a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
- 			break;
- 		}
- 
-+		if (ret)
-+			break;
-+
- 		/* Parse the endpoint and validate the bus type. */
- 		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
- 		if (ret) {
--- 
-2.34.1
+Indeed there's something fishy here, however the issue is not very
+much about ret being overritten but rather the error condition
 
+	fwnode_graph_for_each_endpoint(fwnode, ep) {
+		switch (reg) {
+		case 0:
+        HERE   ---->   (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+				ret = -EINVAL;
+				break;
+			}
+
+			break;
+
+		case 1:
+			vep.bus_type = V4L2_MBUS_UNKNOWN;
+			break;
+		}
+        }
+
+breaks the inner switch and not the for loop.
+
+I would
+1) Slight reword the commit message to make it about missing an error
+condition
+2) Add a Fixes tag
+   Fixes: 7d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver optional")
+   so that this is collected in the stable trees
+
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index dd114ab77800..9ad5026ab10a 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+>  			break;
+>  		}
+>
+> +		if (ret)
+> +			break;
+> +
+
+The change is correct
+Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+
+Thanks
+  j
+
+>  		/* Parse the endpoint and validate the bus type. */
+>  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+>  		if (ret) {
+> --
+> 2.34.1
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
