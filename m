@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FF08D4921C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 05:55:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC2DD4921C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 06:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GYEGiKL/2Nid+mCJLIhNmnZAmqiVDkQoyzvRWugOfpE=; b=I3nJbAlidv2KTL
-	1JBKKS3JGZM/636AdPJG/dsyINLR2nkjcHEqe7i0hEV4xZgJ/5N1oYJPjzu2YuBsXAt7aHPf6ergZ
-	BlkmX8zdrI+LxBI9K9TjTwZ+C0V3c97AEBZpXiFIKLkljpywRiK49hdVre43sfBXdGlPt3GOv2icE
-	xcQ0oWC4lhK4uvOko/r9Ew3y1MZTOD9HUaptjWZPXnM/NluzKWKOgNibCGT3mVDD3D6kg96dzRjBU
-	z26QuAt8zPThwin49aZgem4JowOTv3Hr5EbDQBC/wVB2TIlfWPLELwBt5vIdPjEV+H2mGcrayHMRp
-	qvBJbm9D647AzTE++C1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fAyVMHnS3gvKXE5RDT753hxFzGxdW2uPmuWrWWhVuok=; b=vd1M1wrFSrLXb6
+	Q0oRNB7XP9DVMlPPKivmY5BzF/gfKyRaubKAqQGtpPKJw7gfyXbDJdUIVK9pPnt6i/jTLV/UpkKni
+	2MjvNMDUpKnsZXKhuKd6VMuqCKS6mk64Yq9D54Cqo45FfHehqYjKkDW2IImge9LNf18G2Hy+OYRQG
+	FH9/azn6nDZrTrrZuI5aAT+Ddd7CoGVWbAsiWZawPpz81T+Rlhf/zkhCNov8cvAHsV4VAm3V6ajxi
+	6w9LLqQEu9Y+A2fxpSWEyQzeiRc5BdgKAVwbEkt12H5OgSoaFYNkv+OelrlvNo2ErRLnRqJW4hVMw
+	4DbfaPNqXT8JVIYBoxgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDHCp-0000000BSt1-1eNZ;
-	Tue, 19 Nov 2024 05:55:19 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1tDHKj-0000000BTlK-3iYb;
+	Tue, 19 Nov 2024 06:03:29 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDHBt-0000000BSmT-0dG1;
-	Tue, 19 Nov 2024 05:54:22 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-2e3686088c3so3790446a91.0;
-        Mon, 18 Nov 2024 21:54:20 -0800 (PST)
+	id 1tDHJn-0000000BTbB-2o63;
+	Tue, 19 Nov 2024 06:02:32 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-21210eaa803so20364295ad.2;
+        Mon, 18 Nov 2024 22:02:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731995660; x=1732600460; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=sPR84UHCUvaOEvWy/NGk03Dr1sgtX6rUbFD2LbTCjgE=;
-        b=U+ny4ManuGPgjDYtsf5SMknS4+cf7CSj7JLZLJ5mmH0Ta1yY3/oPT8YaR9bcSs0euD
-         4lZWlcgd8/AVd3Edo+uAfDnZHZI8SiuZzYfUNRb6sFrhiWKiNEnn7pumhxXgTECQABEI
-         aKDoB3OWoolOHoslyHlbIxktK9N6OdT3WW05mNNFg1WdHQz/WkuMSfjwonreAL5jUxQ8
-         UX1zo44DJ8cMEUAQT/6b5xsF2HGwKu76d1iVGeqBHswfUbQCz+9PsAijCy20SG2eEIa9
-         cSylUmA9Vsd6I7y8XVKXd7FIxa/BQnx8yGyo6ih5Hfke+T5oR2wGJKhBwkjoR8VB6m2k
-         HRPA==
+        d=gmail.com; s=20230601; t=1731996150; x=1732600950; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OOil3dDH7JITIShOoBOkpe10yL+drWis3x4DtHVQ2HM=;
+        b=lomJKPo7U/suoBzHkfEtFDHbMLiNnsJO8DVdO8yDCBBeBHbDQ52ZzDwK1ccvnFE9ny
+         z1oMrdf5o6LUxiHbPdzwhN3lVCOWFE6d4RO0scb0WqVrM/z/cJwgGqXPTSN2sr4nQCwh
+         +VyF6FNTL1KdTCeOi4CqTr9/qpXRWoEjLB+w/pq7UdsTOGB2UQ4GrriIGZKv4yM6qGkG
+         Xz9c+zlaG4CtCq6Iqz+6BGeARxyWA86Du2pUZb7xHkDT4rNOtMmLEv40T2pwQUtN8jrV
+         X1ARk+M8n0bFZ9KQDhVBIvusm44cMqn+EMMGAcuF7CDF09OsQlQpoD26Y98HECxIap1r
+         qEbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731995660; x=1732600460;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sPR84UHCUvaOEvWy/NGk03Dr1sgtX6rUbFD2LbTCjgE=;
-        b=vfO+M32gmyfkWnFbXNIffEDYunDttYLBFjGVVdqbpPtrXTI8gyN0UD+iG0vFPzndER
-         Y7VSFy8MQgVcZWjQNKMxD8HN9CCgHkxzOcZYk6fZSOsmS8RUkTXpPTKvQdZ3KExVWHu2
-         wtJff076aOlXxU9oNxTMoEOxJGparYrLt3XQycIaVfv12Th+X67R1cXLLlaNUypHhiRU
-         7TKr8cq3mlyIw53Oh4wteSWi7zRVed/pKy8l1aQnob+JkNDHWT7KKj29+KN4MSfxMRTE
-         9obZPaaYaP2dyBCY+VPKG3Sk9LqzYkqa3CCO9ZMTRbBC9blkl6iHJvzNk3qmyV+Lyez2
-         OKuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVhugi435E/ZpHDFr66p3NX0stv3fvxMLiMunrZeMWznktRDaLp3jslCdY4scHaRqJakzFJ5EXxCPcUyNHC9Y9g@lists.infradead.org, AJvYcCVwfESa75eqXaxcfHPxQ7yZ0KnqHaHmYcyI0T3u2gT//eOFPlOrzRNORbcDT/rjhzWYUZ4AVq3D+5dqqwNIzaM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwqkE3rXwNO9LbTvLPGORGrKLTvhg8bIP5HY/KhbC1TdNfHC44r
-	J6BiDqvpIgD+iR3yGlKXxUDhy5IQiH1/FOAilZMOzVs1r5RIlnkS
-X-Google-Smtp-Source: AGHT+IGnv4VCMQafOLUTrIv29G+Q/+Mep91ihQQ7OEyN58NPfepR4RjFIymBqCb5CgP8lUvQpWrV2A==
-X-Received: by 2002:a17:90b:3b90:b0:2ea:4578:46c6 with SMTP id 98e67ed59e1d1-2ea457877d6mr12280134a91.30.1731995659578;
-        Mon, 18 Nov 2024 21:54:19 -0800 (PST)
+        d=1e100.net; s=20230601; t=1731996150; x=1732600950;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OOil3dDH7JITIShOoBOkpe10yL+drWis3x4DtHVQ2HM=;
+        b=vKz6hHOBCPURxJ3WRdOZp9kW6S7U717siWonFQRJ81oOTW3sOwCLAQCCG/QIc6s5U0
+         9xkpVs9zHZ8QxQMgkb9M3p22cVYBBGwaVva9zqSwf3uCI64G2/Tf0j3hdLa1PxlaEHzk
+         ZwJlYfrY4f211GsDy1PloN5Vu9xDoC2rMTSKfGxFDtGtiwRc0sJMsAXuDy+JzOILF4DQ
+         bWm4WZK/mgKW6VW+33OnATwYscVJcurffKTpBWpenlMwDewAeqw0Dw2IDB+dS5DFl7nL
+         y8n4v8axcVBKFwcsNGtRNW89Qmc5t77P0QL6X7s19CLfxDvSvZa+tjcap1ERFg0U7aqz
+         /hlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV5fW9n2xxTlLLa0mgjhrMz9rtBmZs69ZFS6i64w1i5q+s2ZTitLiOEvEj2/Gzns1wlEQU5NA0wQj43aQxR8Xy0@lists.infradead.org, AJvYcCXHZ168pSprXy+x4EQJWbe9bpe6EdNF4+tPgtyL0/PFOnbAiklgw1v/lmb638aoR/WBOBntbOpmgTdMeTlEjlU=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyZfAK6IWQCrNI+7PfptZjAtw6MupasMPUcA3lfQv/AF8CT2vwN
+	211LvwhhmnrxHGNnCejkcVz6l9jVqNhPNEERqK9hMkL8GGn2cuE5
+X-Google-Smtp-Source: AGHT+IE5jczlNszr/hQVgAIIjjWV07/Qlwho1T5W1FaBWG5/rSEd2Kg3I1/DhgwJESlr9Ah1FPEpJA==
+X-Received: by 2002:a17:90b:3c0c:b0:2ea:4150:3f82 with SMTP id 98e67ed59e1d1-2ea415044a0mr10785886a91.22.1731996150372;
+        Mon, 18 Nov 2024 22:02:30 -0800 (PST)
 Received: from HOME-PC ([223.185.133.4])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ea81b0e2fasm2581653a91.52.2024.11.18.21.54.18
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2124e973ecasm6588835ad.14.2024.11.18.22.02.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 21:54:19 -0800 (PST)
-Date: Tue, 19 Nov 2024 11:24:15 +0530
+        Mon, 18 Nov 2024 22:02:30 -0800 (PST)
 From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: dafna@fastmail.com, laurent.pinchart@ideasonboard.com,
-	linux-media@vger.kernel.org, mchehab@kernel.org, heiko@sntech.de,
+To: dafna@fastmail.com,
+	laurent.pinchart@ideasonboard.com,
+	linux-media@vger.kernel.org
+Cc: mchehab@kernel.org,
+	heiko@sntech.de,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 media-next] media: rkisp1: Fix unused value issue
-Message-ID: <ZzwoB4jt9LyTm0x7@HOME-PC>
-References: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
- <3obha26vg2agtmrxjft325ifiwyaftqchgpdgmm7aok7vt7e5c@jfknj6opiudo>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+Subject: [PATCH v3 media-next] media: rkisp1: Fix unused value issue
+Date: Tue, 19 Nov 2024 11:32:20 +0530
+Message-Id: <20241119060220.70124-1-dheeraj.linuxdev@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3obha26vg2agtmrxjft325ifiwyaftqchgpdgmm7aok7vt7e5c@jfknj6opiudo>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_215421_188038_B92EF485 
-X-CRM114-Status: GOOD (  27.83  )
+X-CRM114-CacheID: sfid-20241118_220231_706782_1F898ED9 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,79 +95,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 18, 2024 at 11:18:34AM +0100, Jacopo Mondi wrote:
-> Hi Dheeraj
-> 
-> On Mon, Nov 18, 2024 at 03:07:21PM +0530, Dheeraj Reddy Jonnalagadda wrote:
-> > This commit fixes an unused value issue detected by Coverity (CID
-> > 1519008). If ret is set to an error value in the switch statement, it is
-> > not handled before being overwritten later.
-> >
-> > Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-> 
-> Indeed there's something fishy here, however the issue is not very
-> much about ret being overritten but rather the error condition
-> 
-> 	fwnode_graph_for_each_endpoint(fwnode, ep) {
-> 		switch (reg) {
-> 		case 0:
->         HERE   ---->   (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
-> 				ret = -EINVAL;
-> 				break;
-> 			}
-> 
-> 			break;
-> 
-> 		case 1:
-> 			vep.bus_type = V4L2_MBUS_UNKNOWN;
-> 			break;
-> 		}
->         }
-> 
-> breaks the inner switch and not the for loop.
-> 
-> I would
-> 1) Slight reword the commit message to make it about missing an error
-> condition
-> 2) Add a Fixes tag
->    Fixes: 7d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver optional")
->    so that this is collected in the stable trees
-> 
-> > ---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> >
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > index dd114ab77800..9ad5026ab10a 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> >  			break;
-> >  		}
-> >
-> > +		if (ret)
-> > +			break;
-> > +
-> 
-> The change is correct
-> Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> 
-> Thanks
->   j
-> 
-> >  		/* Parse the endpoint and validate the bus type. */
-> >  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
-> >  		if (ret) {
-> > --
-> > 2.34.1
-> >
-> >
-Hi Jacopo,
+This commit fixes an unused value issue detected by Coverity (CID
+1519008). The error condition for the invalid MIPI CSI-2 is not
+properly handled as the break statement would only exit the switch block
+and not the entire loop. Fixed this by returning the error immediately
+after the switch block.
 
-Thank you for your feedback. I agree with your suggestion and will update 
-the commit message to describe the missing error condition.
+Fixes: 7d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver
+optional")
 
--Dheeraj
+Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index dd114ab77800..9ad5026ab10a 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 			break;
+ 		}
+ 
++		if (ret)
++			break;
++
+ 		/* Parse the endpoint and validate the bus type. */
+ 		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+ 		if (ret) {
+-- 
+2.34.1
 
 
 _______________________________________________
