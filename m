@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC728D4415D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 13:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C166AD4415E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 13:35:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fWsftgvbG0sGc5/ddIfuxql2U52q+sMPJu4drFM1dq4=; b=w1ufWg4M7CjNo/
-	pUI7dHPgJ63iJ5ioT65rJlOQHroAMNj70K/Zfj5ea9qAyhyCsyhherx7BIx7LDeWllaE3avwywFJs
-	QyH0uT1i/ULen9WMWIA6Ab8NguDVl0bI+N/ZtZoaw4b6Ac1ts57nQiO3JXRODlT13eRRxSHIyuDM7
-	vrsUyPnOONDDmXNwtyFGp1SSbKWzG5ygeAmLHbxa/la1TbqlR4mgqlzSW10iapTYCG9lgCYLTAu6J
-	rEV+wslcuKR5E3rri5LpSTN7vIGEyTtg/TNXcyAD2Ciq2lKJelSKlZkQuAR4nafUI2uDn7G+pFSeF
-	2XbNq4l4CaA2AOpawdlQ==;
+	List-Owner; bh=/Rm59+yLwiMsHb1pWJ/YOmp1WA1aR7S1Na7Zzrzt2dg=; b=DCy4SBm3NPPx1p
+	9nxgi1AK6zhK2tj2WRibdsaKlGEgbT51iZxSfOsmNH6yXrzTRgfp1KpjbrsfFOpkxRlvy3oRnwSvl
+	pQzMQm3cgDVYfLmJGOhcnr3udWHl3jbcBsjGwzlwkmlBJTG8oqHaVclFHmAcC89GWqvLjDqcx/LTi
+	wxbxmgSHeluH+qZ24BiAcAGP/IdYAJmxF+jXzakfZs7+vHH1QpSD7iAC6WuSrMgar+91rcm+UCK1P
+	v/YiwoPQ6cP1a4xGl3HEcecFAOuIkx+T4pLNODDtWbPOjO70Tl4ae+SiIkJ3T2UlYh9UHQrBbmbyH
+	78/lpZXC2nvKMUJww+tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDOLd-0000000CWIo-0gWI;
-	Tue, 19 Nov 2024 13:32:53 +0000
+	id 1tDOOL-0000000CWnZ-3WLm;
+	Tue, 19 Nov 2024 13:35:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDOIr-0000000CVcB-1UTY;
+	id 1tDOIr-0000000CVcJ-1v82;
 	Tue, 19 Nov 2024 13:30:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -32,17 +32,17 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=heKbr9O2GKx5xLAYwPcBI72bkFwvVK0SwD6u81KEJCg=; b=gp1pAgKw78BBuGpxs/OTpQ/ciL
-	KGYM30VM9wWnXMmSnqom84K92HtJ0ndUA9SJWLx908DkSCPhhxDjBBMoAlEbLOWHS9d3uq0EMQfNB
-	ffDjTcjAMQEg2e2jtWKRUrC5QuNNh5D9xY63iUElj7Yczx1UBszoLILJ741LPwHcGA2lnli8Tx7F4
-	IDAc3qn5dV6+yKcCoQOythUqhKY+o/l4Mxr59ow7XsFS0B1wYXG9ZCb106Rb0JAxrbBOg8ec/e9MH
-	9udfg63N2JQuqkL8AYvUFYgn7L79OX/QCU9tfQYKOS0XMWs8NgDQ4iUp4WtjoGhIYfmoU4aMIZDer
-	E6PBdXlg==;
+	bh=m/2ZD36wJW8eluwjHkCBxTv9qiyzz866KACmcI1qvBI=; b=imSx+KhdtyMNcGkm3iyHvcyggu
+	EMyEs4Jr8bF2o8lQtJU7npMjZB1euyc8RWkEbplSBlaQrgOQ+7XvxmyvwE2RU1/+k6UkRWsA4PHC7
+	kisi8cYA1WCEP88uiw2mGPLs4SGCNN2FLbmWLoNfH7RrYPTGQ3p+bcWyvPLTsXVlgE6S7g9H+2C1d
+	K9Yo8/Uh1RG1lu4K41gYl6yM8/PpOB4+jmpYrz411M7+utDHh0/yfwSlgM5H+2slnpAlBTJEJ8jh4
+	Nx0sf5FRfWEO7DEWXN/VaLttUVw+bQdfJXHAX9FrkedFrxdhbLK6HydZIGmtPGGRlF0TcYeupOdOO
+	IT56mhew==;
 Received: from i53875a30.versanet.de ([83.135.90.48] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tDOIn-0006z1-Dv; Tue, 19 Nov 2024 14:29:57 +0100
+	id 1tDOIp-0006z1-Gn; Tue, 19 Nov 2024 14:29:59 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -56,16 +56,16 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	sebastian.reichel@collabora.com
-Subject: [PATCH 1/5] clk: rockchip: rk3576: define clk_otp_phy_g
-Date: Tue, 19 Nov 2024 14:29:12 +0100
-Message-ID: <20241119132916.1057797-2-heiko@sntech.de>
+Subject: [PATCH 5/5] arm64: dts: rockchip: add rk3576 otp node
+Date: Tue, 19 Nov 2024 14:29:16 +0100
+Message-ID: <20241119132916.1057797-6-heiko@sntech.de>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241119132916.1057797-1-heiko@sntech.de>
 References: <20241119132916.1057797-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_053001_421072_9F902B5B 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20241119_053001_530775_24E04935 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +82,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The phy clock of the OTP block is also present, but was not defined
-so far. Though its clk-id already existed, so just define its location.
+This adds the otp node to the rk3576 soc devicetree including the
+individual fields we know about.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/rockchip/clk-rk3576.c | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 39 ++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
-index 595e010341f7..029939a98416 100644
---- a/drivers/clk/rockchip/clk-rk3576.c
-+++ b/drivers/clk/rockchip/clk-rk3576.c
-@@ -541,6 +541,8 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
- 			RK3576_CLKGATE_CON(5), 14, GFLAGS),
- 	GATE(CLK_OTPC_AUTO_RD_G, "clk_otpc_auto_rd_g", "xin24m", 0,
- 			RK3576_CLKGATE_CON(5), 15, GFLAGS),
-+	GATE(CLK_OTP_PHY_G, "clk_otp_phy_g", "xin24m", 0,
-+			RK3588_CLKGATE_CON(6), 0, GFLAGS),
- 	COMPOSITE(CLK_MIPI_CAMERAOUT_M0, "clk_mipi_cameraout_m0", mux_24m_spll_gpll_cpll_p, 0,
- 			RK3576_CLKSEL_CON(38), 8, 2, MFLAGS, 0, 8, DFLAGS,
- 			RK3576_CLKGATE_CON(6), 3, GFLAGS),
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 436232ffe4d1..c70c9dcfad82 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1149,6 +1149,45 @@ sdhci: mmc@2a330000 {
+ 			status = "disabled";
+ 		};
+ 
++		otp: otp@2a580000 {
++			compatible = "rockchip,rk3576-otp";
++			reg = <0x0 0x2a580000 0x0 0x400>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			clocks = <&cru CLK_OTPC_NS>, <&cru PCLK_OTPC_NS>,
++				 <&cru CLK_OTP_PHY_G>;
++			clock-names = "otp", "apb_pclk", "phy";
++			resets = <&cru SRST_OTPC_NS>, <&cru SRST_P_OTPC_NS>;
++			reset-names = "otp", "apb";
++
++			/* Data cells */
++			cpu_code: cpu-code@2 {
++				reg = <0x02 0x2>;
++			};
++			otp_cpu_version: cpu-version@5 {
++				reg = <0x05 0x1>;
++				bits = <3 3>;
++			};
++			otp_id: id@a {
++				reg = <0x0a 0x10>;
++			};
++			cpub_leakage: cpub-leakage@1e {
++				reg = <0x1e 0x1>;
++			};
++			cpul_leakage: cpul-leakage@1f {
++				reg = <0x1f 0x1>;
++			};
++			npu_leakage: npu-leakage@20 {
++				reg = <0x20 0x1>;
++			};
++			gpu_leakage: gpu-leakage@21 {
++				reg = <0x21 0x1>;
++			};
++			log_leakage: log-leakage@22 {
++				reg = <0x22 0x1>;
++			};
++		};
++
+ 		gic: interrupt-controller@2a701000 {
+ 			compatible = "arm,gic-400";
+ 			reg = <0x0 0x2a701000 0 0x10000>,
 -- 
 2.45.2
 
