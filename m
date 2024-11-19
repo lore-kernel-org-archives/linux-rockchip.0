@@ -4,61 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C65D4922E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Nov 2024 14:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FF08D4921C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 05:55:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J2GHlHxYC6bQMduSHd8PxTVdDo/Vfj769aBvt2pdtvo=; b=U0Fxup4OygFptm
-	hndD3gQqP+dt8SZjar4K21+muDjvHCnhCc8OnQmTA7H4kHzeke3LAPdfvPXWN++LzYD5kN9CtSB3s
-	2SI+yCFrcSFmFbqh4CAqa9/HJXiHM1VsMlzbPmXMCexWFyjKWkMWcJelbP3VudB3cgNSocOCLshCT
-	hSquHiNu/nI4lXGCTraWyhldA8UNyONSZ6vxogeGQObwHSEgc5hW6n6aPAQNLcKmHGvkHFJLVNy7P
-	0PdXULI2bDEKn9toIjOvuG8aJrcfNrAlNyo4vxeAEoIHfQSjN7z7Mu+9sJPtHrxIy/0fsME0NXOJh
-	mRrgJDoG81E22JJqtb+w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GYEGiKL/2Nid+mCJLIhNmnZAmqiVDkQoyzvRWugOfpE=; b=I3nJbAlidv2KTL
+	1JBKKS3JGZM/636AdPJG/dsyINLR2nkjcHEqe7i0hEV4xZgJ/5N1oYJPjzu2YuBsXAt7aHPf6ergZ
+	BlkmX8zdrI+LxBI9K9TjTwZ+C0V3c97AEBZpXiFIKLkljpywRiK49hdVre43sfBXdGlPt3GOv2icE
+	xcQ0oWC4lhK4uvOko/r9Ew3y1MZTOD9HUaptjWZPXnM/NluzKWKOgNibCGT3mVDD3D6kg96dzRjBU
+	z26QuAt8zPThwin49aZgem4JowOTv3Hr5EbDQBC/wVB2TIlfWPLELwBt5vIdPjEV+H2mGcrayHMRp
+	qvBJbm9D647AzTE++C1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD3Bb-00000009ppZ-0kKA;
-	Mon, 18 Nov 2024 14:57:07 +0000
-Received: from mail-m121150.qiye.163.com ([115.236.121.150])
+	id 1tDHCp-0000000BSt1-1eNZ;
+	Tue, 19 Nov 2024 05:55:19 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD3BX-00000009pnA-2IUi;
-	Mon, 18 Nov 2024 14:57:05 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 317a7f35;
-	Mon, 18 Nov 2024 22:56:48 +0800 (GMT+08:00)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH] spi: rockchip-sfc: Embedded DMA only support 4B aligned address
-Date: Mon, 18 Nov 2024 22:56:46 +0800
-Message-Id: <20241118145646.2609039-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tDHBt-0000000BSmT-0dG1;
+	Tue, 19 Nov 2024 05:54:22 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-2e3686088c3so3790446a91.0;
+        Mon, 18 Nov 2024 21:54:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731995660; x=1732600460; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=sPR84UHCUvaOEvWy/NGk03Dr1sgtX6rUbFD2LbTCjgE=;
+        b=U+ny4ManuGPgjDYtsf5SMknS4+cf7CSj7JLZLJ5mmH0Ta1yY3/oPT8YaR9bcSs0euD
+         4lZWlcgd8/AVd3Edo+uAfDnZHZI8SiuZzYfUNRb6sFrhiWKiNEnn7pumhxXgTECQABEI
+         aKDoB3OWoolOHoslyHlbIxktK9N6OdT3WW05mNNFg1WdHQz/WkuMSfjwonreAL5jUxQ8
+         UX1zo44DJ8cMEUAQT/6b5xsF2HGwKu76d1iVGeqBHswfUbQCz+9PsAijCy20SG2eEIa9
+         cSylUmA9Vsd6I7y8XVKXd7FIxa/BQnx8yGyo6ih5Hfke+T5oR2wGJKhBwkjoR8VB6m2k
+         HRPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731995660; x=1732600460;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sPR84UHCUvaOEvWy/NGk03Dr1sgtX6rUbFD2LbTCjgE=;
+        b=vfO+M32gmyfkWnFbXNIffEDYunDttYLBFjGVVdqbpPtrXTI8gyN0UD+iG0vFPzndER
+         Y7VSFy8MQgVcZWjQNKMxD8HN9CCgHkxzOcZYk6fZSOsmS8RUkTXpPTKvQdZ3KExVWHu2
+         wtJff076aOlXxU9oNxTMoEOxJGparYrLt3XQycIaVfv12Th+X67R1cXLLlaNUypHhiRU
+         7TKr8cq3mlyIw53Oh4wteSWi7zRVed/pKy8l1aQnob+JkNDHWT7KKj29+KN4MSfxMRTE
+         9obZPaaYaP2dyBCY+VPKG3Sk9LqzYkqa3CCO9ZMTRbBC9blkl6iHJvzNk3qmyV+Lyez2
+         OKuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVhugi435E/ZpHDFr66p3NX0stv3fvxMLiMunrZeMWznktRDaLp3jslCdY4scHaRqJakzFJ5EXxCPcUyNHC9Y9g@lists.infradead.org, AJvYcCVwfESa75eqXaxcfHPxQ7yZ0KnqHaHmYcyI0T3u2gT//eOFPlOrzRNORbcDT/rjhzWYUZ4AVq3D+5dqqwNIzaM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwqkE3rXwNO9LbTvLPGORGrKLTvhg8bIP5HY/KhbC1TdNfHC44r
+	J6BiDqvpIgD+iR3yGlKXxUDhy5IQiH1/FOAilZMOzVs1r5RIlnkS
+X-Google-Smtp-Source: AGHT+IGnv4VCMQafOLUTrIv29G+Q/+Mep91ihQQ7OEyN58NPfepR4RjFIymBqCb5CgP8lUvQpWrV2A==
+X-Received: by 2002:a17:90b:3b90:b0:2ea:4578:46c6 with SMTP id 98e67ed59e1d1-2ea457877d6mr12280134a91.30.1731995659578;
+        Mon, 18 Nov 2024 21:54:19 -0800 (PST)
+Received: from HOME-PC ([223.185.133.4])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ea81b0e2fasm2581653a91.52.2024.11.18.21.54.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Nov 2024 21:54:19 -0800 (PST)
+Date: Tue, 19 Nov 2024 11:24:15 +0530
+From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: dafna@fastmail.com, laurent.pinchart@ideasonboard.com,
+	linux-media@vger.kernel.org, mchehab@kernel.org, heiko@sntech.de,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 media-next] media: rkisp1: Fix unused value issue
+Message-ID: <ZzwoB4jt9LyTm0x7@HOME-PC>
+References: <20241118093721.55982-1-dheeraj.linuxdev@gmail.com>
+ <3obha26vg2agtmrxjft325ifiwyaftqchgpdgmm7aok7vt7e5c@jfknj6opiudo>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhoaTFZCT01PTh4ZSEpOSk5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a933fc6ba8d09d9kunm317a7f35
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6P006SBw*SzIhQ1ELSzkPMyov
-	GBgwCkxVSlVKTEhKQk9KQ0tCTU1PVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFDQ083Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=fhKzbRWaLMBVXGi5F1pcCy/LUI0n+JSbCyVA5a8UCaMGcee5HZb4Zw3KEK74/cUF6oOxDzAJB/Mo6VzGT9cTygrEXl87Deas3Xwkx9wSNw/7e1NFRQ/Xtnf5UsA+posFPdKhOsGodusVnV5SmP5C8KpDEs1ICFKYMi+tNV6vXCQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=orMLRxEgPaCVt+DUcYSRwYW0pCq8JjJqS0YZ0bC7OiQ=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <3obha26vg2agtmrxjft325ifiwyaftqchgpdgmm7aok7vt7e5c@jfknj6opiudo>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_065704_142802_81DA00F1 
-X-CRM114-Status: UNSURE (   9.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241118_215421_188038_B92EF485 
+X-CRM114-Status: GOOD (  27.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,29 +94,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Controller limitations.
+On Mon, Nov 18, 2024 at 11:18:34AM +0100, Jacopo Mondi wrote:
+> Hi Dheeraj
+> 
+> On Mon, Nov 18, 2024 at 03:07:21PM +0530, Dheeraj Reddy Jonnalagadda wrote:
+> > This commit fixes an unused value issue detected by Coverity (CID
+> > 1519008). If ret is set to an error value in the switch statement, it is
+> > not handled before being overwritten later.
+> >
+> > Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+> 
+> Indeed there's something fishy here, however the issue is not very
+> much about ret being overritten but rather the error condition
+> 
+> 	fwnode_graph_for_each_endpoint(fwnode, ep) {
+> 		switch (reg) {
+> 		case 0:
+>         HERE   ---->   (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+> 				ret = -EINVAL;
+> 				break;
+> 			}
+> 
+> 			break;
+> 
+> 		case 1:
+> 			vep.bus_type = V4L2_MBUS_UNKNOWN;
+> 			break;
+> 		}
+>         }
+> 
+> breaks the inner switch and not the for loop.
+> 
+> I would
+> 1) Slight reword the commit message to make it about missing an error
+> condition
+> 2) Add a Fixes tag
+>    Fixes: 7d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver optional")
+>    so that this is collected in the stable trees
+> 
+> > ---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index dd114ab77800..9ad5026ab10a 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  			break;
+> >  		}
+> >
+> > +		if (ret)
+> > +			break;
+> > +
+> 
+> The change is correct
+> Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> 
+> Thanks
+>   j
+> 
+> >  		/* Parse the endpoint and validate the bus type. */
+> >  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+> >  		if (ret) {
+> > --
+> > 2.34.1
+> >
+> >
+Hi Jacopo,
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+Thank you for your feedback. I agree with your suggestion and will update 
+the commit message to describe the missing error condition.
 
- drivers/spi/spi-rockchip-sfc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 316e3db88492..69d0f2175568 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -503,7 +503,7 @@ static int rockchip_sfc_exec_mem_op(struct spi_mem *mem, const struct spi_mem_op
- 	rockchip_sfc_adjust_op_work((struct spi_mem_op *)op);
- 	rockchip_sfc_xfer_setup(sfc, mem, op, len);
- 	if (len) {
--		if (likely(sfc->use_dma) && len >= SFC_DMA_TRANS_THRETHOLD) {
-+		if (likely(sfc->use_dma) && len >= SFC_DMA_TRANS_THRETHOLD && !(len & 0x3)) {
- 			init_completion(&sfc->cp);
- 			rockchip_sfc_irq_unmask(sfc, SFC_IMR_DMA);
- 			ret = rockchip_sfc_xfer_data_dma(sfc, op, len);
--- 
-2.34.1
+-Dheeraj
 
 
 _______________________________________________
