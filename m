@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BBBD44167
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 15:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01F6DD62077
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 17:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cOGsawuERP+8kRAA+nJjOV0Fiq1Q1iurXNpLVGR3Eao=; b=IKKjt6tly0XFcJ
-	Qf/JtTXt2QgTaZ6etwXKvTfyy0etOkLbcwBW22UA1K7Rrgd5E6tk2vW76TjwY9xHeS8waR6W7B+4n
-	X7Bpx4w7t+0gM81lShoU1poUYYJyRNL1oORuhAxOME1nT/lLSxcuQXdkNtWf4nedU3YUhxfE2wfYY
-	WLAjO/CGYDWbauBH4SyQ5fuJFdYXvSfz7r0kkkJZEeyJwY783iwfrz1xspLU4CRZOU8Bzzf2OsyqM
-	Q9n6dVteZJ1g66VWhuFF9Awr6C9t/cdMxIRySGTJnUOjBQKWRofKg820gw9qw8t9QfsHN7+edlHSj
-	RMZ71F00LybSJCLxie8w==;
+	List-Owner; bh=bx40IWFLSNPm5x05zk+gaawSN48AydzwQwySGfM8YP8=; b=oN/sxLHTximicA
+	xeRaEbCipKmqKqT35bU7nrispPci8A/g/ba8crmA5y6V8RBe/Lz3pWg24d8XCZ1HfpiIrmhYMNKFG
+	2Pj+5PTE66q4Vsf8YE5LTiPdrGfuNCY9V9Siuq9/UC86Hm3vfO1Hnn2Sd0W/HkvQc97xxywShh0Ls
+	fft5fnEWfNTm3aDbHDdeQHM1yBmFGqH7NLVEQXXVNqI6DvPzVGTVBIAsPDrEJhiUFUyDR0e9RYg2T
+	aVJpTbrEs50k3kLJuegT0JALSCgEWYrHlNowUsaGQvR20jw6YlkgWC9kmZEj66ZoPWGGgctGtss+I
+	ia1aiTvKu/iCO93gxlxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDQ0Z-0000000Cpjl-3ttX;
-	Tue, 19 Nov 2024 15:19:15 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tDRpX-0000000DBcq-0hT7;
+	Tue, 19 Nov 2024 17:15:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDPnJ-0000000CmXJ-3SMd;
-	Tue, 19 Nov 2024 15:05:35 +0000
+	id 1tDRoa-0000000DBSC-2yvU;
+	Tue, 19 Nov 2024 17:15:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 07296A42B41;
-	Tue, 19 Nov 2024 15:03:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04AB1C4CED2;
-	Tue, 19 Nov 2024 15:05:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 34EBE5C551B;
+	Tue, 19 Nov 2024 17:14:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A576AC4CECF;
+	Tue, 19 Nov 2024 17:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732028732;
-	bh=omKQ1LXz60S6HxBgblXKZPTRNsNAVHlmyvMzW5gHqZI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=H77Cyo5BofT2Mo7U07KbqxmaNWxSV4hXPpQ0DwTbvqnnQCsF13MsdlDphEyJE8xod
-	 MSwHsn4XMe1f5J+5iZN0ln9IAaSuTBtoEzELQPLJQPQAl2tVlfo5RT2+ylHIEt8aZ2
-	 zSzWnGqSVOwWRbSs1BeJjN9pRuEbwggP3L8Wc+Qgh29SxKGOA85b4YgghDaKfq75A4
-	 QyrpwI1LDYJa1gjr01Q2XgtfBeHy2ByCbfGQ2aUcewiEp9zkuuaPgDKeo/vuj1+HpO
-	 KhUCoijwlQDUHrg8uVAk2iGkFEzVeKtz30NJ11GSWPohoiglqhhqPFYrP0xnOaBZfN
-	 rZ5w7qR1oB7zw==
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org
-In-Reply-To: <20241118145646.2609039-1-jon.lin@rock-chips.com>
-References: <20241118145646.2609039-1-jon.lin@rock-chips.com>
-Subject: Re: [PATCH] spi: rockchip-sfc: Embedded DMA only support 4B
- aligned address
-Message-Id: <173202873074.60406.1798640869476341414.b4-ty@kernel.org>
-Date: Tue, 19 Nov 2024 15:05:30 +0000
+	s=k20201202; t=1732036499;
+	bh=GN8+TZ7dF+OVIe4W1EKDcGDnhm2IukYPViQYE4iYxxI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mFkNmuFI0VPYtiVbAwXPrbGkTuTUbPU6g9oXTqPo6Unhg+izBDfYIR4zM3nkFGI1k
+	 oOxQL0b5JS3pJjPUiOjTrjYWA2LhN6xCyZYG2TZVtBzk08qRTJM0kJhbVJFuLT+VW/
+	 TbQmcC8SQGV4WUvDYF6C76olltJCaKuhUdRU6eyQk3iiOFpM4i+xYfMVLKPrr1JBk1
+	 S6/0JvVCpvknj1HblDsNHhUpBKeWvNX/SUyXyROAFV6tuaA2b25rdu9Im3V+XdZ+xt
+	 GSV3+QDX00RH+S8AdpGtW6W0XHTOBzM5+xJt7+kqMmhoHHX1k5Tkh3vfidy5b+PNTa
+	 KhiQvZ+qcSIcA==
+Date: Tue, 19 Nov 2024 11:14:58 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>,
+	Maxime Ripard <mripard@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	David Airlie <airlied@gmail.com>, devicetree@vger.kernel.org,
+	kernel@collabora.com, Sandy Huang <hjc@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Simona Vetter <simona@ffwll.ch>
+Subject: Re: [PATCH 1/5] dt-bindings: display: vop2: Add optional PLL clock
+ properties
+Message-ID: <173203649757.1839089.16877007589155949446.robh@kernel.org>
+References: <20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com>
+ <20241116-vop2-hdmi0-disp-modes-v1-1-2bca51db4898@collabora.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-9b746
+Content-Disposition: inline
+In-Reply-To: <20241116-vop2-hdmi0-disp-modes-v1-1-2bca51db4898@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_070533_927453_9E84CF80 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241119_091500_788828_8C2A108D 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,38 +84,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Nov 2024 22:56:46 +0800, Jon Lin wrote:
-> Controller limitations.
+
+On Sat, 16 Nov 2024 20:22:32 +0200, Cristian Ciocaltea wrote:
+> On RK3588, HDMI PHY PLL can be used as an alternative and more accurate
+> pixel clock source for VOP2 video ports 0, 1 and 2.
 > 
+> Document the optional PLL clock properties corresponding to the two HDMI
+> PHYs available on the SoC.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-
-Thanks!
-
-[1/1] spi: rockchip-sfc: Embedded DMA only support 4B aligned address
-      commit: c752e87b9c3982b78dddcdd70dcb826df3cfd75d
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
