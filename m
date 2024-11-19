@@ -4,48 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E2B2D62067
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 09:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95954D62068
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Nov 2024 09:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5C0/XM9HkUBR8bzJKI9EDVZKAdwHyHHDy85jdy1o75Y=; b=SKqfjfhMmFDpF1
-	agzzLmcHBz1A8QvIgzV+cDYiP0qErAQi3NkcxpRmdWaBtLc8p4lYrQxPcqbA4jx7r4Xu2nG1iUH2V
-	H5b3ADL0L4/ZCDsGrgd01n12Q/WwTZFhrhJnxyEP4jlbwNDwQV41S8/riO2hStnNMu8wew8aLOqye
-	CJDVccK9EZojiKr9P6g44U4Ubb48mtwXlJcfQpUBDx5aUew+zjfm5EHaV3Kt3hMnX52vTk38J2eIQ
-	feuhvIwCulhZ79F6XRU1JqW4uqFMLHA9F0tzx4AlsAIwuffaAZf/OCKeXe2Fk46sD5WfsmglfOVUa
-	ofEbl7YdRKgWScOb+kmA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fCpKwupLVdlqTGwMi0Wrjygd0auwVn7dleJPrupR2Tw=; b=teBOHW/qv2/8zK
+	CiWpSTEzgKpvlcY1v7R7lKAL0Z36Ca4KpcOyYTDkP25xX6fU2jEE+EUkLacS/i/dyF+wGC/4F+RGi
+	tEkt12ebPktboq5mfNSQvWVPsYlHWLRdsPdGyaW9RcEMR3kpBylmDKAIVjPnAZgGv0gEIWv9we4Ga
+	txnRTxctHfrAsYFVKH05dwtKPXj0koXuE4omO5Zts/JVfRk21MLbIl8/x2jU4gv9jQPM0v/lTuF65
+	HVqh5/5NgAhs0mcBC04PD7sYUkSmjB20L6PinLkzXCzX9POtx8ipA/o3eLZR0w9z//GogoIrZsdfW
+	MDc+2MrZjps3zPtbCVBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDKtY-0000000Bwyd-2ZWe;
-	Tue, 19 Nov 2024 09:51:40 +0000
+	id 1tDKtb-0000000Bx15-2shM;
+	Tue, 19 Nov 2024 09:51:43 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDKtT-0000000Bwvl-2MOL
+	id 1tDKtT-0000000Bwvh-2ebA
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Nov 2024 09:51:39 +0000
+	Tue, 19 Nov 2024 09:51:41 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AJ9pHSM016079;
-	Tue, 19 Nov 2024 18:51:19 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AJ9pHSG016079;
+	Tue, 19 Nov 2024 18:51:17 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         dsimic@manjaro.org, sebastian.reichel@collabora.com,
         devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
         FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3 07/11] arm64: dts: rockchip: rename regulator for pcie2x1l2 for Radxa ROCK 5C
-Date: Tue, 19 Nov 2024 09:51:08 +0000
-Message-ID: <20241119095113.78151-7-naoki@radxa.com>
+Subject: [PATCH v3 01/11] arm64: dts: rockchip: add properties for pcie2x1l2 for Radxa ROCK 5C
+Date: Tue, 19 Nov 2024 09:51:02 +0000
+Message-ID: <20241119095113.78151-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241119095113.78151-1-naoki@radxa.com>
-References: <20241119095113.78151-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_015135_810770_1F9DFEA5 
-X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-CacheID: sfid-20241119_015135_913230_9F4F4078 
+X-CRM114-Status: UNSURE (   7.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,7 +61,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-use better name. no functional change is intended.
+by schematic[1], pcie2x1l2 CLKREQ and WAKE pins are connected.
+describe them in dts.
+
+[1] https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf
 
 Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
@@ -71,40 +72,26 @@ Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 Changes in v3:
 - none
 Changes in v2:
-- new
+- reword commit message
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 24e33f98865a..354de3c85d95 100644
+index 9b14d5383cdc..997e95bb5b74 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -76,13 +76,13 @@ fan {
- 		pwms = <&pwm3 0 60000 0>;
- 	};
+@@ -419,7 +419,9 @@ rgmii_phy1: ethernet-phy@1 {
  
--	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
-+	vcc3v3_pcie2x1l2: regulator-vcc3v3_pcie2x1l2 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pow_en>;
--		regulator-name = "pcie2x1l2_3v3";
-+		regulator-name = "vcc3v3_pcie2x1l2";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc_sysin>;
-@@ -423,7 +423,7 @@ &pcie2x1l2 {
- 		    <&pcie20x1m0_clkreqn>,
- 		    <&pcie20x1m0_waken>;
+ &pcie2x1l2 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie20x1_2_perstn_m0>;
++	pinctrl-0 = <&pcie20x1_2_perstn_m0>,
++		    <&pcie20x1m0_clkreqn>,
++		    <&pcie20x1m0_waken>;
  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
--	vpcie3v3-supply = <&pcie2x1l2_3v3>;
-+	vpcie3v3-supply = <&vcc3v3_pcie2x1l2>;
+ 	vpcie3v3-supply = <&pcie2x1l2_3v3>;
  	status = "okay";
- };
- 
 -- 
 2.43.0
 
