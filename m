@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BED7D44151
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 01:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8346D6E2DE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 08:58:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JPvOuobx/wm0iOp2C7rdme/oS7SdfL4tmsTQY4UHGzc=; b=oUo5mTYXEJlvuf
-	UWB+cz4HGwdZHnOysMGps/uvxUVu7Uz3uL35Nc10h8D0Dutq0hS9wUPq0oKjU81E/tTDjDHUALt9w
-	XMcavqNWPgu9YoBxqGL3WgawHGxkgzWzh+Ce3n0+qbXvHZo56SSRMQS+38DNum2EE6/+nJlTGgEKY
-	/CNz4ALwJokK2H8JqWPxOHgvxAc6XcXB+oPW3HR0ysQS4pmTPVhx+78Ovh5jm18dwQ4gkDw1dv3kx
-	CD86dy1u/5CZWDIgnk8UuXpj/4dTKXpgVf9XaBoYNFzGz2KX1+V83OAuQVStuMvOhhxpoGeBteIUj
-	GPF2poV10cq8jBnLWSBA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hGImLZizDH+EtLmT0nC23NUDapI6Krba2YgYRQ3DyVo=; b=HUJgquuwA42GpP
+	n8o+zCy9PzhNY7yPxjC62Q3SJLibA1/D/Rw0dPvVfIvXZwksy3vNwiZOSnIvbC6YgEvryrgbJXFeB
+	THP3HCvb624MM7H+tqv+eXr4PMuXY4R3Q0w3ksWocQbolyDpPrGEnkqBXAug5csZOJilPoCu+/Y2L
+	p1l0DbrVFwo5V6KA2kQwCvxGPOZhe3a8f3+AcxO8lBl2ewtwfQBcfHOF92bIbd4ohaEQy7jr4PU1U
+	taF5ueF5NcRSEeUAEyIpj2eMbYwtlTEW9FkGoGbsevG/oc4pROyhbvfm544Bel6aC0ZcQJOi95c1i
+	CWMmjnuqdHKB9o82xg0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDZQG-0000000E8eY-3weZ;
-	Wed, 20 Nov 2024 01:22:24 +0000
-Received: from mail-m60110.netease.com ([210.79.60.110])
+	id 1tDgXS-0000000EpKf-0sRA;
+	Wed, 20 Nov 2024 08:58:18 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDZQD-0000000E8dZ-21Er;
-	Wed, 20 Nov 2024 01:22:23 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 33e51e23;
-	Wed, 20 Nov 2024 09:22:10 +0800 (GMT+08:00)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH] spi: rockchip-sfc: Support ACPI
-Date: Wed, 20 Nov 2024 09:22:08 +0800
-Message-Id: <20241120012208.1193034-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tDgWV-0000000EpBD-1WDf;
+	Wed, 20 Nov 2024 08:57:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 20241A42DF8;
+	Wed, 20 Nov 2024 08:55:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A7FBC4CED0;
+	Wed, 20 Nov 2024 08:57:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732093038;
+	bh=NZWLHSmz7z/5yxwdahzySA58S6IipEOZgQkNj1QBZoE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OoeKGvDaprjf76dmMdBAlNpU2M7hSfpNcB5GHqeXIhiwgROPYsijW1r9yn1ZsskmX
+	 Dp9fDygOYV+8xnJjV4FeWiYbxU7msG4gezmHvRp0lNnO+0KGOgi0GPiARxcjImLFeD
+	 xzIhOxZAodkRSgmNRd96bh6ohyUJhFp5A2o+P++4uWN1lfwU7ea7yRQ1vkta2/xWXp
+	 oCFEvEDmhzykOLJr/hg7erK2Gll0nlHkDrDPPEUI52IU9YhhtNaT/XVLZIIRqfFhJr
+	 uZgo8HFuJ9rVup/zWjbBi9f34Gd+BxHk769dtF98lzFaaLWQ5HuyBvxXRAOGXKRIMs
+	 7tpgsjKfUwhlw==
+Date: Wed, 20 Nov 2024 09:57:14 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: srinivas.kandagatla@linaro.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, detlev.casanova@collabora.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, sebastian.reichel@collabora.com
+Subject: Re: [PATCH 3/5] dt-bindings: nvmem: rockchip,otp: Add compatible for
+ RK3576
+Message-ID: <uzqdch4xiesvc3wq6fcpv7ulw3g7olvyxed7s5payhlddgubiq@apnlq7xgzrjo>
+References: <20241119132916.1057797-1-heiko@sntech.de>
+ <20241119132916.1057797-4-heiko@sntech.de>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkxDTFZKH0NCHUlIS05ISkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a934729a09809d9kunm33e51e23
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRw6Tww6HDIeT0gqFTwySy8s
-	IzwaFDpVSlVKTEhJS01OTEhKTUxLVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKQ0lPNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=SIKkUbqd1UD6wg4Ir2CWDFg9eY5xS3C5QaInroY38GsKPx2HWyGq315zqKv3nAQmmVjk2d1e3zp+Q9VdoXxGhV8/ep98jWVAFAvrqlG+yUSrCnSEhHEXiLMol95k181NauvT+QssWMHVPE4lnYVDtU77hD3vcS7XZZSX8es/stQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=4roe1uOrMlMXfDLEUiS1htJOky9bJXMb1BjJs0uBvqY=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20241119132916.1057797-4-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_172222_060709_44B52234 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241120_005719_460463_999CD58C 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,56 +75,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Compatible with ACPI.
+On Tue, Nov 19, 2024 at 02:29:14PM +0100, Heiko Stuebner wrote:
+> Document the OTP memory found on Rockchip RK3576 SoC.
+> 
+> The RK3576 uses the same set of clocks as the px30/rk3308
+> but has one reset more, so adapt the binding to handle this
+> variant as well.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../bindings/nvmem/rockchip,otp.yaml           | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+> index a44d44b32809..dae7543a0179 100644
+> --- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+> @@ -14,6 +14,7 @@ properties:
+>      enum:
+>        - rockchip,px30-otp
+>        - rockchip,rk3308-otp
+> +      - rockchip,rk3576-otp
+>        - rockchip,rk3588-otp
+>  
+>    reg:
+> @@ -68,6 +69,23 @@ allOf:
+>            items:
+>              - const: phy
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3576-otp
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 3
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+That's redundant. 3 is there already. You wanted maxItems?
 
- drivers/spi/spi-rockchip-sfc.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+Missing constraint on clock-names (existing binding should be fixed as
+well, separate patch).
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 69d0f2175568..138508d2c736 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -491,7 +491,7 @@ static int rockchip_sfc_exec_mem_op(struct spi_mem *mem, const struct spi_mem_op
- 	u32 len = op->data.nbytes;
- 	int ret;
- 
--	if (unlikely(mem->spi->max_speed_hz != sfc->frequency)) {
-+	if (unlikely(mem->spi->max_speed_hz != sfc->frequency) && !has_acpi_companion(sfc->dev)) {
- 		ret = clk_set_rate(sfc->clk, mem->spi->max_speed_hz);
- 		if (ret)
- 			return ret;
-@@ -579,16 +579,24 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 	if (IS_ERR(sfc->regbase))
- 		return PTR_ERR(sfc->regbase);
- 
--	sfc->clk = devm_clk_get(&pdev->dev, "clk_sfc");
-+	if (!has_acpi_companion(&pdev->dev))
-+		sfc->clk = devm_clk_get(&pdev->dev, "clk_sfc");
- 	if (IS_ERR(sfc->clk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sfc->clk),
- 				     "Failed to get sfc interface clk\n");
- 
--	sfc->hclk = devm_clk_get(&pdev->dev, "hclk_sfc");
-+	if (!has_acpi_companion(&pdev->dev))
-+		sfc->hclk = devm_clk_get(&pdev->dev, "hclk_sfc");
- 	if (IS_ERR(sfc->hclk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sfc->hclk),
- 				     "Failed to get sfc ahb clk\n");
- 
-+	if (has_acpi_companion(&pdev->dev)) {
-+		ret = device_property_read_u32(&pdev->dev, "clock-frequency", &sfc->frequency);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret, "Failed to find clock-frequency\n");
-+	}
-+
- 	sfc->use_dma = !of_property_read_bool(sfc->dev->of_node, "rockchip,sfc-no-dma");
- 
- 	if (sfc->use_dma) {
--- 
-2.34.1
+> +        resets:
+> +          minItems: 2
+
+missing maxItems
+
+> +        reset-names:
+> +          items:
+> +            - const: otp
+> +            - const: apb
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
