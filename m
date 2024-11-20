@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AA07D711C9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 17:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E0B8D711C9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 17:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+roBJOiI3xrOZyvOLS2+B/faUmtuHAx5xYtdt42kGYM=; b=WseZB6FHgYtwfU
-	C5dqLLrtaVHeSuCb+el2waBPgmCe4lEXPQhWvReNTCtOnJLzxBNoqPyGAli0vHJZ/IwXZLpbUfA9/
-	pIJQuASUjDeeY3PhgFfch5A2qvmO9R7x+uKVFF4VHsJXibJfvluBi/oC1veEy3t8JRDnXfLlxfXfD
-	r22rtnSna6E+s2CyL6TPYrJ+xmO/Ahb1kJCKHlXsIqL6XHu4WItGzc/hg8+GNUpnK2cNaMFgi//uS
-	F/zVOYjQzSph+Ehrk1qI8auQx6OVJxlQE1ph8CF0+r+0R1QpXpQaEx5us/OpmcpuZKv5iQa5By87C
-	6jORE4PMN0l0QK+KxqNg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wZuFKBrQSLhWEN3N9HvmB3Y2vRUCogXtZUsFEfaw9uU=; b=C+FAwjJD7jku+i
+	lK2g5BsBXMV2/ckgm/gQvvLASPciSaxYgnlWyFKpfiWW/z3ZYDTcRsymnjJuNnx211mpxLtwO3M9c
+	4anTribghE6ruEfNugKZKFeYBcYb9uRIoYLbH7jxctG8Z1TWOIMI0Sw+nS0z+JmtUG1Z8c4iWEcuL
+	6XzCJZdzTxtz//tIEOF4IVczg+EAH1EWfB7upSpeBlDbV/i1XbgaKWuK2PWmQRv3YfE1SIOart7lL
+	9kL0r3NoXpRTgCUY9DNY3L9n0v76y2mu9wOFQjdktdCJmKhUhOwSdTp4DLy76BbvMAF1CU1YvVrWz
+	W6DJSGIQkTEUZFKaqdqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDoEX-0000000FtAM-3NHw;
-	Wed, 20 Nov 2024 17:11:17 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tDoFS-0000000FtNm-37n0;
+	Wed, 20 Nov 2024 17:12:14 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDoDb-0000000Fsy8-0cCD;
-	Wed, 20 Nov 2024 17:10:20 +0000
-Received: from ideasonboard.com (93-46-82-201.ip106.fastwebnet.it [93.46.82.201])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5E873E;
-	Wed, 20 Nov 2024 18:09:54 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1732122594;
-	bh=6OOO8IFdR9aIC/SVVyp7HAsGg+XEQlgbLko2LnIGNJs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dwdQxF78e1Dr0L6ZUUoFVnaFuNAXCRwNygIHHbCLmtYe98lSHTCXNEKI84RRc7+K4
-	 ZUAIog1q3i0rJ+uMmrVfkPzGX5Ww9a3zGc2KkbRhC67kkvgocNJzRplthEMaA5aDmh
-	 8C/9ZoHgFVhZGabWxqZX6K4KdRaNeyPm+AsD+2O4=
-Date: Wed, 20 Nov 2024 18:10:09 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Cc: dafna@fastmail.com, laurent.pinchart@ideasonboard.com, 
-	linux-media@vger.kernel.org, mchehab@kernel.org, heiko@sntech.de, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 media-next] media: rkisp1: Fix unused value issue
-Message-ID: <pbyb5dxy4wbwbnpzpojj6bhjgbqzoebrmk2y6j73szop2ve3wx@jdslb37ejya6>
-References: <20241119060220.70124-1-dheeraj.linuxdev@gmail.com>
+	id 1tDoED-0000000Ft4s-1nV3;
+	Wed, 20 Nov 2024 17:10:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0582CA432AA;
+	Wed, 20 Nov 2024 17:09:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9FF7C4CECD;
+	Wed, 20 Nov 2024 17:10:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732122656;
+	bh=VJdjT6ppJprT4unzbTuHlpuOe7eotljxYhNyiiIDt0Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VCAmAgCFc4MqFHVUiXQOtPe3ldhIVEB2Vi3m5p6HeGLxcC/BWIaLuz/2A0b3ZPgsb
+	 0G8CSJ49EPe8GodYk6rK3siKIljTgwE5Tuuis6CZm21TkPUCKTq2Azc+qzRGXnUosW
+	 V0WQnpFrO3BbzIzo4+onMaVXEnZTnNccTSoyiA9smC/ZZrd6YosgZACnJy7Nw82Gk7
+	 HWWgah5+Sbg+YvFflit9WKCGR8LgOBF0KnlnQAi4MwwCnfrU9oNU8//4bpC40qQJj3
+	 5cWPsFQcDv66KEUQyU2vDTTbTEvyL569WX8jTDoqYtbVs3Tp8y09c6tcse5eMSsw9A
+	 Lv1lGAYd+YQDw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: rk3588: add msi-parent for pcie3x4_ep
+Date: Wed, 20 Nov 2024 18:10:49 +0100
+Message-ID: <20241120171048.2839621-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241119060220.70124-1-dheeraj.linuxdev@gmail.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1246; i=cassel@kernel.org; h=from:subject; bh=VJdjT6ppJprT4unzbTuHlpuOe7eotljxYhNyiiIDt0Y=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLtJCRWz16pzvmPVeuiPsvs2Q01M49MZPxpbvzUsut2x V+JMge3jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEwkKoThn07qattteTXf3Gti txhsmS5ZZ//N7uG81Udl1+U3RHi1KDIy3DJmZznq97ry9LaV337Kq/sUXrDVvCa+4uuX0JXnreb lMwIA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241120_091019_321595_4623D0F6 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20241120_091057_528712_0DDBD143 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,50 +79,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dheeraj
+Add msi-parent for the pcie3x4_ep PCI endpoint node.
 
-On Tue, Nov 19, 2024 at 11:32:20AM +0530, Dheeraj Reddy Jonnalagadda wrote:
-> This commit fixes an unused value issue detected by Coverity (CID
-> 1519008). The error condition for the invalid MIPI CSI-2 is not
-> properly handled as the break statement would only exit the switch block
-> and not the entire loop. Fixed this by returning the error immediately
-> after the switch block.
->
-> Fixes: 7d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver
-> optional")
->
-> Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+The pcie3x4_ep node should use the same msi-parent as the pcie3x4 node
+(which represents the PCIe controller running in Root Complex mode).
 
-Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+The GIC ITS can be used to trigger an IRQ on the endpoint when any of
+the endpoint's PCI BARs are written to by the host[1].
 
-(if you receive a tag on a previous version of the patch you should
-carry it forward to the next patch version ;)
+[1] https://lore.kernel.org/linux-pci/20241116-ep-msi-v8-0-6f1f68ffd1bb@nxp.com/
 
-Thanks
-  j
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+Hello Heiko, this patch depends on:
+https://lore.kernel.org/linux-rockchip/20241107123732.1160063-2-cassel@kernel.org/
 
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index dd114ab77800..9ad5026ab10a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->  			break;
->  		}
->
-> +		if (ret)
-> +			break;
-> +
->  		/* Parse the endpoint and validate the bus type. */
->  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
->  		if (ret) {
-> --
-> 2.34.1
->
->
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+index 4a950907ea6f..ead151941e84 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+@@ -213,6 +213,7 @@ pcie3x4_ep: pcie-ep@fe150000 {
+ 		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
+ 				  "dma0", "dma1", "dma2", "dma3";
+ 		max-link-speed = <3>;
++		msi-parent = <&its1 0x0000>;
+ 		iommus = <&mmu600_pcie 0x0000>;
+ 		num-lanes = <4>;
+ 		phys = <&pcie30phy>;
+-- 
+2.47.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
