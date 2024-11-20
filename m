@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 822FAD63954
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 14:25:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FDAFD711BB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 15:43:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SeoSNTMtTlvKRSaX533NEJNdFXTRCfZ/dKQKqkFxKR8=; b=UTOZClyiG3cxyk
-	xacyKUyipV2ennp6y0TbUcwOtOkV2t2MjCrTsHEA6fWzgy5RVdjpGqzxYN4s2L7CFqkw7B3nGtI+w
-	yjzQseZAdiXfnUW5SDF0P4C992wZbupCHYLGRCMaoT58jZ7etga4SaSX9kBYHpWkUD2JnhzLFT3mJ
-	FmGREoJnfcb7L4wrsi2rjhpbV7UXg+tejYsyU8mTSSFio/aWEwr37sRpS13OLaXO7a8ibIrb71HKV
-	x/OmLe7ryng5X5JW4VnZeAJ0uqf8jeceu3PQ5GkJMd8zxIJzKWXk9xPpxPqttJrL4ilQlDRs5YvxM
-	HnqDQn0e09FJXAsvHk0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Message-Id:Date:Mime-Version:Reply-To:
+	Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L/E+GnTxQ6M6FbanXMEbovvKRd8qRrOjQurimJNIQyg=; b=qu8ykMiTZW2+tyngGhCJ1QokxI
+	Aay9zIpqaN/SmCvP9nDz92TDWzDztugOqdnNdWC9W5qKRJpYWgwDgIMcLZ3w1yYQEp0O0+HfljDaQ
+	RZfJC1YuqneHtBTuaq28VP/J86LhM9AYvOG4cy7/OyyUFWjqKKD8rXIyqCH2QGynT9mIG3V3AY5q5
+	vds36B10nCfgndLRDoQFA6jfmKMJBFuzq0slMtGqzDMBHq0JkzgXDrTnT7y6fOmrAeS+R3iG3XibZ
+	TpIw+y7+AIJMxOsyKlJSgZ6dIrZ4HkXEaoKpUfTj4rYnHRYOKCIb0+ybFmSdS/FrWLcBFzzSV1KzD
+	EpAG+r6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDleN-0000000FXsZ-03pv;
-	Wed, 20 Nov 2024 14:25:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tDmrc-0000000FiNh-2mDx;
+	Wed, 20 Nov 2024 15:43:32 +0000
+Received: from out-180.mta1.migadu.com ([2001:41d0:203:375::b4])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDleK-0000000FXrn-15Nh
+	id 1tDmrZ-0000000FiMm-09YB
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 Nov 2024 14:25:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732112742;
-	bh=KvjyYEigGAIEzNiagxO3KwdHG5J+fB7bQo5wDhPsuow=;
-	h=Subject:From:To:Date:In-Reply-To:References:From;
-	b=D8wUmjZ773YcWqtqoIdCnL8G3IgaI23r8gG0+swCd2x2iZnoLK/WlpWSVGF5lohqm
-	 X6rgiHmLh5amj44p62PlpxdOxN50lgFChNYhm4+R4mW1lWRAkLnvwIRsYrNviE3mJm
-	 mQuV/BXTfbsnXxLz1B3NwTLQ7o+afmpqAZ13XA9QA/avQPLObf4DtiKjl7xXP3o0pY
-	 hBvSGUhCFaSJIdjxQqMO2i3Lt4bdkGxPxP9bfRrVA1+VgCFKfNJ5tI5pdvHeeiZHx0
-	 z9C9p99iL4NZDqK4ICtTWBz/k0YRbuMOVyyIHbK8vFHHil5oSnnRtHGkxpnCd63cGG
-	 qe6qZNXXnwfzQ==
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:15:862e::580])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3653417E36B9;
-	Wed, 20 Nov 2024 15:25:41 +0100 (CET)
-Message-ID: <c9f19faacccd47b8a72fc4a29a0f75b30bce1aa1.camel@collabora.com>
-Subject: Re: [PATCH v2 2/3] media: verisilicon: add WebP decoding support
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Hugues Fruchet <hugues.fruchet@foss.st.com>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Fritz Koenig	 <frkoenig@chromium.org>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,  Daniel Almeida
- <daniel.almeida@collabora.com>, Andrzej Pietrasiewicz
- <andrzej.p@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Date: Wed, 20 Nov 2024 09:25:39 -0500
-In-Reply-To: <20241120110105.244413-3-hugues.fruchet@foss.st.com>
+	Wed, 20 Nov 2024 15:43:31 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1732117404;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ijQiYTo0MvMqRbNI+nXr/6jG3DNVFiqWLypIQ4tp2GQ=;
+	b=DBTlBHZzytFj+n1f8kvCoCVM5a86U9PQK68XJJhVVuVgXe73SOkiolNFeI8aBMEPV6Usv3
+	9v+NyzlhR7rsOqc2JGkGEMpF+paIACUeXG9b8cvG23lSL5k2IE8kZh+KfFAfpDuo5fYj6Y
+	z7p0tCb5hybS/fAmzoPObSFKZ3c1l+51bHMsq70MYqGckgJD89O/lgxuyNV2EwOtY44Nuj
+	DB+Pk2h2RoCROpZuFlNNuMW4Wfx7oaAELuBbWdWOwDRoMw1RqXub7VGq8n67huLwzgeuPf
+	ssxN+qaNzeMaWWVz6Td3H3AEstWvzcE2J9l8mDxAPtTB9wCo9qWEhiewHSrzPg==
+Date: Wed, 20 Nov 2024 16:43:12 +0100
+Message-Id: <D5R4DD00Z0A4.3BHMO8E5IZ6CH@cknow.org>
+Subject: Re: [PATCH v2 1/3] media: uapi: add WebP uAPI
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Hugues Fruchet" <hugues.fruchet@foss.st.com>, "Mauro Carvalho Chehab"
+ <mchehab@kernel.org>, "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>, "Hans Verkuil"
+ <hverkuil-cisco@xs4all.nl>, "Fritz Koenig" <frkoenig@chromium.org>,
+ "Sebastian Fricke" <sebastian.fricke@collabora.com>, "Daniel Almeida"
+ <daniel.almeida@collabora.com>, "Andrzej Pietrasiewicz"
+ <andrzej.p@collabora.com>, "Nicolas Dufresne"
+ <nicolas.dufresne@collabora.com>, "Benjamin Gaignard"
+ <benjamin.gaignard@collabora.com>, <linux-media@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>
 References: <20241120110105.244413-1-hugues.fruchet@foss.st.com>
-	 <20241120110105.244413-3-hugues.fruchet@foss.st.com>
-Organization: Collabora
-User-Agent: Evolution 3.54.1 (3.54.1-1.fc41) 
-MIME-Version: 1.0
+ <20241120110105.244413-2-hugues.fruchet@foss.st.com>
+In-Reply-To: <20241120110105.244413-2-hugues.fruchet@foss.st.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241120_062544_440287_EEED8903 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20241120_074329_616688_A6F7B494 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,103 +73,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============2242652573487315983=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbWVyY3JlZGkgMjAgbm92ZW1icmUgMjAyNCDDoCAxMjowMSArMDEwMCwgSHVndWVzIEZydWNo
-ZXQgYSDDqWNyaXTCoDoKPiBBZGQgV2ViUCBwaWN0dXJlIGRlY29kaW5nIHN1cHBvcnQgdG8gVlA4
-IHN0YXRlbGVzcyBkZWNvZGVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEh1Z3VlcyBGcnVjaGV0IDxo
-dWd1ZXMuZnJ1Y2hldEBmb3NzLnN0LmNvbT4KPiAtLS0KPiAgLi4uL21lZGlhL3BsYXRmb3JtL3Zl
-cmlzaWxpY29uL2hhbnRyb19nMV9yZWdzLmggfCAgMSArCj4gIC4uLi9wbGF0Zm9ybS92ZXJpc2ls
-aWNvbi9oYW50cm9fZzFfdnA4X2RlYy5jICAgIHwgMTQgKysrKysrKysrKysrKysKPiAgLi4uL21l
-ZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMgICAgfCAgMiArKwo+ICAuLi4v
-cGxhdGZvcm0vdmVyaXNpbGljb24vc3RtMzJtcDI1X3ZwdV9ody5jICAgICB8IDE3ICsrKysrKysr
-KysrKysrKy0tCj4gIDQgZmlsZXMgY2hhbmdlZCwgMzIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm9fZzFfcmVncy5oIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9o
-YW50cm9fZzFfcmVncy5oCj4gaW5kZXggYzYyM2IzYjBiZTE4Li5lN2Q0ZGI3ODhlNTcgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzFfcmVn
-cy5oCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzFf
-cmVncy5oCj4gQEAgLTIzMiw2ICsyMzIsNyBAQAo+ICAjZGVmaW5lICAgICBHMV9SRUdfREVDX0NU
-Ukw3X0RDVDdfU1RBUlRfQklUKHgpCQkoKCh4KSAmIDB4M2YpIDw8IDApCj4gICNkZWZpbmUgRzFf
-UkVHX0FERFJfU1RSCQkJCQkweDAzMAo+ICAjZGVmaW5lIEcxX1JFR19BRERSX0RTVAkJCQkJMHgw
-MzQKPiArI2RlZmluZSBHMV9SRUdfQUREUl9EU1RfQ0hST01BCQkJCTB4MDM4Cj4gICNkZWZpbmUg
-RzFfUkVHX0FERFJfUkVGKGkpCQkJCSgweDAzOCArICgoaSkgKiAweDQpKQo+ICAjZGVmaW5lICAg
-ICBHMV9SRUdfQUREUl9SRUZfRklFTERfRQkJCUJJVCgxKQo+ICAjZGVmaW5lICAgICBHMV9SRUdf
-QUREUl9SRUZfVE9QQ19FCQkJQklUKDApCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cxX3ZwOF9kZWMuYyBiL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cxX3ZwOF9kZWMuYwo+IGluZGV4IDg1MWViNjdmMTlm
-NS4uYzgzZWU2ZjVlZGM4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVy
-aXNpbGljb24vaGFudHJvX2cxX3ZwOF9kZWMuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vaGFudHJvX2cxX3ZwOF9kZWMuYwo+IEBAIC0zMDcsNiArMzA3LDEyIEBA
-IHN0YXRpYyB2b2lkIGNmZ19wYXJ0cyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+ICAJCQkgICBH
-MV9SRUdfREVDX0NUUkwzX1NUUkVBTV9MRU4oZGN0X3BhcnRfdG90YWxfbGVuKSwKPiAgCQkJICAg
-RzFfUkVHX0RFQ19DVFJMMyk7Cj4gIAo+ICsJaWYgKGN0eC0+dnB1X3NyY19mbXQtPmZvdXJjYyA9
-PSBWNEwyX1BJWF9GTVRfV0VCUF9GUkFNRSkKPiArCQl2ZHB1X3dyaXRlX3JlbGF4ZWQodnB1LAo+
-ICsJCQkJICAgRzFfUkVHX0RFQ19DVFJMM19TVFJFQU1fTEVOX0VYVAo+ICsJCQkJCShkY3RfcGFy
-dF90b3RhbF9sZW4gPj4gMjQpLAo+ICsJCQkJICAgRzFfUkVHX0RFQ19DVFJMMyk7Cj4gKwo+ICAJ
-LyogRENUIHBhcnRpdGlvbnMgYmFzZSBhZGRyZXNzICovCj4gIAlmb3IgKGkgPSAwOyBpIDwgaGRy
-LT5udW1fZGN0X3BhcnRzOyBpKyspIHsKPiAgCQl1MzIgYnl0ZV9vZmZzZXQgPSBkY3RfcGFydF9v
-ZmZzZXQgKyBkY3Rfc2l6ZV9wYXJ0X3NpemUgKyBjb3VudDsKPiBAQCAtNDI3LDYgKzQzMywxMiBA
-QCBzdGF0aWMgdm9pZCBjZmdfYnVmZmVycyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+ICAKPiAg
-CWRzdF9kbWEgPSBoYW50cm9fZ2V0X2RlY19idWZfYWRkcihjdHgsICZ2YjJfZHN0LT52YjJfYnVm
-KTsKPiAgCXZkcHVfd3JpdGVfcmVsYXhlZCh2cHUsIGRzdF9kbWEsIEcxX1JFR19BRERSX0RTVCk7
-Cj4gKwo+ICsJaWYgKGN0eC0+dnB1X3NyY19mbXQtPmZvdXJjYyA9PSBWNEwyX1BJWF9GTVRfV0VC
-UF9GUkFNRSkKPiArCQl2ZHB1X3dyaXRlX3JlbGF4ZWQodnB1LCBkc3RfZG1hICsKPiArCQkJCSAg
-IGN0eC0+ZHN0X2ZtdC5wbGFuZV9mbXRbMF0uYnl0ZXNwZXJsaW5lICoKPiArCQkJCSAgIGN0eC0+
-ZHN0X2ZtdC5oZWlnaHQsCj4gKwkJCQkgICBHMV9SRUdfQUREUl9EU1RfQ0hST01BKTsKPiAgfQo+
-ICAKPiAgaW50IGhhbnRyb19nMV92cDhfZGVjX3J1bihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+
-IEBAIC00NzEsNiArNDgzLDggQEAgaW50IGhhbnRyb19nMV92cDhfZGVjX3J1bihzdHJ1Y3QgaGFu
-dHJvX2N0eCAqY3R4KQo+ICAJCXJlZyB8PSBHMV9SRUdfREVDX0NUUkwwX1NLSVBfTU9ERTsKPiAg
-CWlmIChoZHItPmxmLmxldmVsID09IDApCj4gIAkJcmVnIHw9IEcxX1JFR19ERUNfQ1RSTDBfRklM
-VEVSSU5HX0RJUzsKPiArCWlmIChjdHgtPnZwdV9zcmNfZm10LT5mb3VyY2MgPT0gVjRMMl9QSVhf
-Rk1UX1dFQlBfRlJBTUUpCj4gKwkJcmVnIHw9IEcxX1JFR19ERUNfQ1RSTDBfV0VCUF9FOwo+ICAJ
-dmRwdV93cml0ZV9yZWxheGVkKHZwdSwgcmVnLCBHMV9SRUdfREVDX0NUUkwwKTsKPiAgCj4gIAkv
-KiBGcmFtZSBkaW1lbnNpb25zICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVy
-aXNpbGljb24vaGFudHJvX3Y0bDIuYwo+IGluZGV4IDI1MTNhZGZiZDgyNS4uNzA3NWIyYmExZWMy
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJv
-X3Y0bDIuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJv
-X3Y0bDIuYwo+IEBAIC00NzAsNiArNDcwLDcgQEAgaGFudHJvX3VwZGF0ZV9yZXF1aXJlc19yZXF1
-ZXN0KHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIHUzMiBmb3VyY2MpCj4gIAkJYnJlYWs7Cj4gIAlj
-YXNlIFY0TDJfUElYX0ZNVF9NUEVHMl9TTElDRToKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX1ZQOF9G
-UkFNRToKPiArCWNhc2UgVjRMMl9QSVhfRk1UX1dFQlBfRlJBTUU6Cj4gIAljYXNlIFY0TDJfUElY
-X0ZNVF9IMjY0X1NMSUNFOgo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfSEVWQ19TTElDRToKPiAgCWNh
-c2UgVjRMMl9QSVhfRk1UX1ZQOV9GUkFNRToKPiBAQCAtNDkyLDYgKzQ5Myw3IEBAIGhhbnRyb191
-cGRhdGVfcmVxdWlyZXNfaG9sZF9jYXB0dXJlX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCB1
-MzIgZm91cmNjKQo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfSlBFRzoKPiAgCWNhc2UgVjRMMl9QSVhf
-Rk1UX01QRUcyX1NMSUNFOgo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfVlA4X0ZSQU1FOgo+ICsJY2Fz
-ZSBWNEwyX1BJWF9GTVRfV0VCUF9GUkFNRToKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX0hFVkNfU0xJ
-Q0U6Cj4gIAljYXNlIFY0TDJfUElYX0ZNVF9WUDlfRlJBTUU6Cj4gIAkJdnEtPnN1YnN5c3RlbV9m
-bGFncyAmPSB+KFZCMl9WNEwyX0ZMX1NVUFBPUlRTX00yTV9IT0xEX0NBUFRVUkVfQlVGKTsKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9zdG0zMm1wMjVf
-dnB1X2h3LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3N0bTMybXAyNV92
-cHVfaHcuYwo+IGluZGV4IDgzMzgyMTEyMGIyMC4uNDhkNjkxMmMzYmFiIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vc3RtMzJtcDI1X3ZwdV9ody5jCj4g
-KysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9zdG0zMm1wMjVfdnB1X2h3
-LmMKPiBAQCAtMjIsMTAgKzIyLDEwIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaGFudHJvX2ZtdCBz
-dG0zMm1wMjVfdmRlY19mbXRzW10gPSB7Cj4gIAkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9O
-T05FLAo+ICAJCS5mcm1zaXplID0gewo+ICAJCQkubWluX3dpZHRoID0gRk1UX01JTl9XSURUSCwK
-PiAtCQkJLm1heF93aWR0aCA9IEZNVF9GSERfV0lEVEgsCj4gKwkJCS5tYXhfd2lkdGggPSBGTVRf
-NEtfV0lEVEgsCj4gIAkJCS5zdGVwX3dpZHRoID0gTUJfRElNLAo+ICAJCQkubWluX2hlaWdodCA9
-IEZNVF9NSU5fSEVJR0hULAo+IC0JCQkubWF4X2hlaWdodCA9IEZNVF9GSERfSEVJR0hULAo+ICsJ
-CQkubWF4X2hlaWdodCA9IEZNVF80S19IRUlHSFQsCgpJJ20gYSBsaXR0bGUgc3VycHJpc2VkIG9m
-IHRoaXMgY2hhbmdlLCBzaW5jZSB0aGlzIGlzIG1vZGlmeWluZyBWUDhfRlJBTUUsIHdoaWxlCndl
-IHNob3VsZCBpbnN0ZWFkIGludHJvZHVjZSBXRUJQX0ZSQU1FLgoKPiAgCQkJLnN0ZXBfaGVpZ2h0
-ID0gTUJfRElNLAo+ICAJCX0sCj4gIAl9LAo+IEBAIC02OCw2ICs2OCwxOSBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGhhbnRyb19mbXQgc3RtMzJtcDI1X3ZlbmNfZm10c1tdID0gewo+ICAJCS5jb2Rl
-Y19tb2RlID0gSEFOVFJPX01PREVfTk9ORSwKPiAgCQkuZW5jX2ZtdCA9IFJPQ0tDSElQX1ZQVV9F
-TkNfRk1UX1lVVjQyMFNQLAo+ICAJfSwKPiArCXsKPiArCQkuZm91cmNjID0gVjRMMl9QSVhfRk1U
-X1dFQlBfRlJBTUUsCj4gKwkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9WUDhfREVDLAo+ICsJ
-CS5tYXhfZGVwdGggPSAyLAo+ICsJCS5mcm1zaXplID0gewo+ICsJCQkubWluX3dpZHRoID0gRk1U
-X01JTl9XSURUSCwKPiArCQkJLm1heF93aWR0aCA9IEZNVF80S19XSURUSCwKPiArCQkJLnN0ZXBf
-d2lkdGggPSBNQl9ESU0sCj4gKwkJCS5taW5faGVpZ2h0ID0gRk1UX01JTl9IRUlHSFQsCj4gKwkJ
-CS5tYXhfaGVpZ2h0ID0gRk1UXzRLX0hFSUdIVCwKPiArCQkJLnN0ZXBfaGVpZ2h0ID0gTUJfRElN
-LAo+ICsJCX0sCj4gKwl9LAoKVGhpcyBpcyB2ZW5jX2ZtdCAoZW5jb2RlciksIHRoaXMgc2hvdWxk
-bid0IGJlIHRoZXJlLgoKPiAgCXsKPiAgCQkuZm91cmNjID0gVjRMMl9QSVhfRk1UX1lVWVYsCj4g
-IAkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9OT05FLAoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============2242652573487315983==
+Content-Type: multipart/signed;
+ boundary=362558ba14649f8628571f03aa27dfee1e8f08fb67a13bd40c8920dc409c;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+
+--362558ba14649f8628571f03aa27dfee1e8f08fb67a13bd40c8920dc409c
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+On Wed Nov 20, 2024 at 12:01 PM CET, Hugues Fruchet wrote:
+> This patch adds the WebP picture decoding kernel uAPI.
+>
+> This design is based on currently available VP8 API implementation and
+> aims to support the development of WebP stateless video codecs
+> on Linux.
+>
+> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+> ---
+>  Documentation/userspace-api/media/v4l/biblio.rst  |  9 +++++++++
+>  .../userspace-api/media/v4l/pixfmt-compressed.rst | 15 +++++++++++++++
+>  drivers/media/v4l2-core/v4l2-ioctl.c              |  1 +
+>  include/uapi/linux/videodev2.h                    |  1 +
+>  4 files changed, 26 insertions(+)
+>
+> ...
+>
+> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst =
+b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
+> index 806ed73ac474..e664e70b0619 100644
+> --- a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
+> +++ b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
+> @@ -169,6 +169,21 @@ Compressed Formats
+>  	this pixel format. The output buffer must contain the appropriate numbe=
+r
+>  	of macroblocks to decode a full corresponding frame to the matching
+>  	capture buffer.
+> +    * .. _V4L2-PIX-FMT-WEBP-FRAME:
+> +
+> +      - ``V4L2_PIX_FMT_WEBP_FRAME``
+> +      - 'WEBP'
+> +      - WEBP VP8 parsed frame, excluding WEBP RIFF header, keeping only =
+the VP8
+> +	bistream including the frame header, as extracted from the container.
+
+s/bistream/bitstream/ ?
+
+> +	This format is adapted for stateless video decoders that implement a
+> +	WEBP pipeline with the :ref:`stateless_decoder`.
+> +	Metadata associated with the frame to decode is required to be passed
+> +	through the ``V4L2_CID_STATELESS_VP8_FRAME`` control.
+> +	See the :ref:`associated Codec Control IDs <v4l2-codec-stateless-vp8>`.
+> +	Exactly one output and one capture buffer must be provided for use with
+> +	this pixel format. The output buffer must contain the appropriate numbe=
+r
+> +	of macroblocks to decode a full corresponding frame to the matching
+> +	capture buffer.
+> =20
+>      * .. _V4L2-PIX-FMT-VP9:
+> =20
+
+--362558ba14649f8628571f03aa27dfee1e8f08fb67a13bd40c8920dc409c
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZz4DkwAKCRDXblvOeH7b
+bl3+AQCQrqorEMx7IHx/yV9Ks+ZGWhPSDsuvFpHTmkJw4/J9CwEAuCPRCAChUMRj
+ZKzD27zT1v0e+k8CyZQlSc/Dhg+GmwA=
+=dqtH
+-----END PGP SIGNATURE-----
+
+--362558ba14649f8628571f03aa27dfee1e8f08fb67a13bd40c8920dc409c--
+
+
+--===============2242652573487315983==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2242652573487315983==--
+
