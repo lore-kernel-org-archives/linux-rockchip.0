@@ -4,78 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE00D743E9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Nov 2024 22:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1262CD6E2A4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Nov 2024 10:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pYTeHsISM54pgCfosUb/LPfaR9AjQcXVEh1PUKgtEjg=; b=V9MGskgK7UQ15Q
-	iHDKAm3gs/tteUbZslFyLZkzXA0jhjlTSKdzIuCyhM0T2seHlBdeLsp/C10zIhOhm/nXVIo+pJ1tA
-	PkzM2tOB4BJIGd8nVMMd/GXqeVF/0H/kgmL72PG/Hc7WrJn83nijAkmUcq1UpqbEi8hyM+f6Y+WPT
-	7YxdFOywIhkGHFwpWhRNblfPc1puY1Bn2BhdPMA+ZmpI2nZth0jdQooQLZ9EpC4r+W51w84ePiEGv
-	u6Sd9GNU5vp2tQ6R/eg8OGOtonnF6hugzq3i3kep46QwS/J49PVM1WQ8KSI4yKD9MQIhPP9ZNvQCE
-	byPIy4BwDEKlq85TNnJQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q2nyD2oK5Cmr4FCcjDpAJwbMV6cHsr1Kh7CqY+alWOY=; b=E/ZhuS0jxFlrq7Wa4LCaYRLKxs
+	Uho3cvpCJ82weCassMIcBFh1kTjGWC2O3Cv21EsDtVyKkUyHVhyOLqA53huC5qHB9qR2soaVQGszY
+	0fTqSv9Kyenof/DFOLmWkmrlDjmejiMuF0NY/XKOOPC3x03M6wYBuXDlGzbE3fTWf6Vr5cjC5yzaw
+	yfMxcIk807ERguo+xNXwRSVGAFWKc8kVBfACOGwQI4traYRC1pYpfgSSUwSnrnilFLMSKSaHSzcW3
+	QcP+9yl9lu6lvO4QK88le4E+pcxqHyCCd5TbGJXPNYcgQkyriBXkELN9IREuab/l9PpiU6O/AuP2h
+	7OpAlJJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDt14-0000000GKda-0LWT;
-	Wed, 20 Nov 2024 22:17:42 +0000
-Received: from smtpbg150.qq.com ([18.132.163.193])
+	id 1tE41O-0000000HIog-2O0K;
+	Thu, 21 Nov 2024 10:02:46 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDt06-0000000GKYA-1D4D;
-	Wed, 20 Nov 2024 22:16:45 +0000
-X-QQ-mid: bizesmtpip2t1732140984tymev5i
-X-QQ-Originating-IP: VFS7TXKFCL86VDvZbg+yeZ74TOGFmsQaL+ekJyN6cIk=
-Received: from [IPV6:240f:10b:7440:1:c3e4:b91c ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 21 Nov 2024 06:16:20 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 8514301682738835123
-Message-ID: <2664D23C9E354B20+5fb967f9-348d-4508-8e3e-b979e4e44b15@radxa.com>
-Date: Thu, 21 Nov 2024 07:16:20 +0900
+	id 1tE41L-0000000HInk-0D2l
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 Nov 2024 10:02:44 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AL42NIT028349;
+	Thu, 21 Nov 2024 11:02:30 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=selector1; bh=
+	tMHARmkV5I92PboMXt6Pp6b96tFSvjo8btyHafNWUhQ=; b=Jg62VrgcSnv4qCny
+	oQebn5uJV1AxeI36qhwi5I6pL937pOlrroCBrUdkVaFo5w4HbaeD53p76/IUApwf
+	qM6Dr0CsmJ4wyjefnDlakjfTE/rStJZ4UYBXr8h4EbzbRpqU9YEkTkKHUbA3iV0a
+	wqOnQzXDQCQ1xD4KYWkTo4MmkKTCWtTtfhK0HX+OyKZIVZbOYQ7xl7hPuQDFvvd5
+	6fl5r6lyn002AmIX/6mLf3c6pvdiXCJFtZKCaXAmtZee+bdbeIXpMUmWZfgzPb+j
+	y2VfK3yMbl1Way/ApSItKtVtJoi4YYSUqOcWd2T3ll3nm0JHvsOQwvAkb8qLByIx
+	n2W2mw==
+Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 42xkqf5t69-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 21 Nov 2024 11:02:29 +0100 (CET)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 41F8F40044;
+	Thu, 21 Nov 2024 11:00:53 +0100 (CET)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 112F225E1E1;
+	Thu, 21 Nov 2024 10:59:54 +0100 (CET)
+Received: from [10.48.86.208] (10.48.86.208) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 21 Nov
+ 2024 10:59:53 +0100
+Message-ID: <752c2573-97bc-4b5a-87d1-ca52b854a48d@foss.st.com>
+Date: Thu, 21 Nov 2024 10:59:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] Improve Rockchip VOP2 display modes handling on
- RK3588 HDMI0
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com>
+Subject: Re: [PATCH v2 1/3] media: uapi: add WebP uAPI
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+        Mauro Carvalho Chehab
+	<mchehab@kernel.org>,
+        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>,
+        Fritz Koenig <frkoenig@chromium.org>,
+        Sebastian
+ Fricke <sebastian.fricke@collabora.com>,
+        Daniel Almeida
+	<daniel.almeida@collabora.com>,
+        Andrzej Pietrasiewicz
+	<andrzej.p@collabora.com>,
+        Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>
+References: <20241120110105.244413-1-hugues.fruchet@foss.st.com>
+ <20241120110105.244413-2-hugues.fruchet@foss.st.com>
+ <19cf9e45e00ccf68f35339d8d694e026ffa48037.camel@collabora.com>
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: NTznjAszAYlzZCkTA1LBjxVmPSqCfhy9wWIoOTAUAwRVwzgwNmFb0/PC
-	2to8mUOPqu+T6Cqii5rMgHmPlzB1+Z9kJLUH0y3BKP7TYuit2XIxF4tNLxkiuYZmNnjvJqS
-	0TPMA1llGaRbGTdx0SVupSLY/TlSgILI80Au/jstu1s/AvtMbs8LrTAjG0ydzYR73CZWPUK
-	r3y/xQwnOfSu5wgMBrLZ3nQJ9M8pbpPHsZ71sVrxToFyt9QpCA7U8exQ2x8fv+EKXDZCXPu
-	jEUSCkAvKjNs6zWWGhJx7cZchH734cZv4hGH5wi7dWb2W6+aCZUlWgdIOIse0VcIIVu+O0K
-	U19GfRk5ME+ycbEvfRmkx7AwKUVYUxhlU+3+3tdvgkbxh6UGxwHdhE7FQO5Vzy0cwBNK6Pd
-	yJ5hfBa4bzA4jIQj2rGMkaCyFfrazDQpQY/AZ3iLj9qJbfUnX4/SaVj5jJ8yzxEIPAXPbTG
-	qo/l0aNag/oLaR2M3qebVPEWv9yeDgsp2CBavcvaw2xllfGkhONgDTb9RsmTnW+iicUHHMK
-	6QeaLbpAaLl8NqC+0n3/v+hW8jwwKtClmBFD1ur8tB6nTjTN5k65mYCi/Zq8oF0Cfmkb4K7
-	RTrP+Kbq77fpOm+2DDaCj7xY/X1GMmFaBDmOjnVgKYLkou0rBIyEsUHOgEyOZvHoV8S/4co
-	T87Kl2FrQoBFlh/o5HMNPhDrFhepOTMQL/Bvaq2Ypjrp7QevzZKPqgp8Vjeyn3jVhR3h3PC
-	33EzMHmQ5hevAOdeBskNYBz8zFx4O6jD6Voz2XJ8aF5BJqx0F/66C5zuxfB+b3ZL/RqRbB0
-	wIF//IIKiZIVa7gjrQgNR3pHII6WuEe3ZqMssA2lHSOoyvaYeD+VKNOQ7JuQ7R69pfBgVWS
-	b0dIyFO3WHdzpWKkuvtuG8cCltvVUF1FPUIHvY3fPE0=
-X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
-X-QQ-RECHKSPAM: 0
+From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
+In-Reply-To: <19cf9e45e00ccf68f35339d8d694e026ffa48037.camel@collabora.com>
+X-Originating-IP: [10.48.86.208]
+X-ClientProxiedBy: EQNCAS1NODE3.st.com (10.75.129.80) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241120_141642_857553_331152BF 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20241121_020243_373708_612F8D7E 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,157 +104,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 11/17/24 03:22, Cristian Ciocaltea wrote:
-> VOP2 support for RK3588 SoC is currently not capable to handle the full
-> range of display modes advertised by the connected screens, e.g. it
-> doesn't cope well with non-integer refresh rates like 59.94, 29.97,
-> 23.98, etc.
-> 
-> There are two HDMI PHYs available on RK3588, each providing a PLL that
-> can be used by three out of the four VOP2 video ports as an alternative
-> and more accurate pixel clock source. This is able to correctly handle
-> all display modes up to 4K@60Hz.
-> 
-> As for the moment HDMI1 output is not supported upstream, the patch
-> series targets HDMI0 only.
-> 
-> Additionally, note that testing any HDMI 2.0 specific modes, e.g.
-> 4K@60Hz, requires high TMDS clock ratio and scrambling support [1]. The
-> patch is usable but not yet ready to be submitted - I will handle this
-> soon.
-> 
-> Thanks,
-> Cristian
-> 
-> [1] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-hdmi-bridge-next-20241115
-> 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-
-for whole series
-
-Tested-by: FUKAUMI Naoki <naoki@radxa.com>
-
-Diginnos DG-NP09D 8.9inch 1920x1200 display works with your patch!
-
-Name: HSE
-EISA ID: ___0001
-EDID version: 1.3
-EDID extension blocks: 1
-Screen size: 120.0 cm x 68.0 cm (54.30 inches, aspect ratio 16/9 = 1.76)
-Gamma: 2.2
-Digital signal
-Max video bandwidth: 160 MHz
-
-	HorizSync 14-91
-	VertRefresh 22-80
-
-	# Monitor preferred modeline (59.9 Hz vsync, 74.6 kHz hsync, ratio 
-16/10, 40x44 dpi)
-	ModeLine "1920x1200" 193.25 1920 2008 2052 2592 1200 1204 1209 1245 
-+hsync +vsync
-
-	# Monitor supported modeline (59.9 Hz vsync, 33.7 kHz hsync, 
-interlaced, ratio 16/9, 40 dpi)
-	ModeLine "1920x1080" 74.18 1920 2008 2052 2200 1080 1084 1094 1125 
-+hsync +vsync Interlace
-
-	# Monitor supported CEA modeline (59.9 Hz vsync, 31.5 kHz hsync, ratio 
-4/3, 13x17 dpi) (bad ratio)
-	ModeLine "640x480" 25.175 640 656 752 800 480 490 492 525 -hsync -vsync
-
-	# Monitor supported CEA modeline (59.9 Hz vsync, 31.5 kHz hsync, ratio 
-3/2, 15x17 dpi) (bad ratio)
-	ModeLine "720x480" 27 720 736 798 858 480 489 495 525 -hsync -vsync
-
-	# Monitor supported CEA modeline (59.9 Hz vsync, 31.5 kHz hsync, ratio 
-3/2, 15x17 dpi) (bad ratio)
-	ModeLine "720x480" 27 720 736 798 858 480 489 495 525 -hsync -vsync
-
-	# Monitor supported CEA modeline (60.0 Hz vsync, 45.0 kHz hsync, ratio 
-16/9, 27 dpi)
-	ModeLine "1280x720" 74.25 1280 1390 1430 1650 720 725 730 750 +hsync +vsync
-
-	# Monitor supported CEA modeline (60.0 Hz vsync, 33.8 kHz hsync, 
-interlaced, ratio 16/9, 40 dpi)
-	ModeLine "1920x1080" 74.25 1920 2008 2052 2200 1080 1084 1094 1125 
-+hsync +vsync Interlace
-
-	# Monitor supported CEA modeline (60.0 Hz vsync, 67.5 kHz hsync, ratio 
-16/9, 40 dpi)
-	ModeLine "1920x1080" 148.5 1920 2008 2052 2200 1080 1084 1089 1125 
-+hsync +vsync
-
-	# Monitor supported CEA modeline (50.0 Hz vsync, 31.2 kHz hsync, ratio 
-5/4, 15x21 dpi) (bad ratio)
-	ModeLine "720x576" 27 720 732 796 864 576 581 586 625 -hsync -vsync
-
-	# Monitor supported CEA modeline (50.0 Hz vsync, 37.5 kHz hsync, ratio 
-16/9, 27 dpi)
-	ModeLine "1280x720" 74.25 1280 1720 1760 1980 720 725 730 750 +hsync +vsync
-
-	# Monitor supported CEA modeline (50.0 Hz vsync, 28.1 kHz hsync, 
-interlaced, ratio 16/9, 40 dpi)
-	ModeLine "1920x1080" 74.25 1920 2448 2492 2640 1080 1084 1094 1125 
-+hsync +vsync Interlace
-
-	# Monitor supported CEA modeline (50.0 Hz vsync, 56.2 kHz hsync, ratio 
-16/9, 40 dpi)
-	ModeLine "1920x1080" 148.5 1920 2448 2492 2640 1080 1084 1089 1125 
-+hsync +vsync
-
-	# Monitor supported modeline (85.4 Hz vsync, 44.9 kHz hsync, ratio 
-0.97, 9x17 dpi) (bad ratio)
-	ModeLine "464x480" 27 464 480 542 602 480 489 495 525 -hsync -vsync
-
-	# Monitor supported modeline (50.0 Hz vsync, 37.5 kHz hsync, ratio 
-16/9, 27 dpi)
-	ModeLine "1280x720" 74.25 1280 1720 1760 1980 720 725 730 750 +hsync +vsync
-
-	# Monitor supported modeline (50.0 Hz vsync, 28.1 kHz hsync, 
-interlaced, ratio 16/9, 40 dpi)
-	ModeLine "1920x1080" 74.25 1920 2448 2492 2640 1080 1084 1094 1125 
-+hsync +vsync Interlace
-
-	# Monitor supported modeline (59.9 Hz vsync, 31.5 kHz hsync, ratio 3/2, 
-15x17 dpi) (bad ratio)
-	ModeLine "720x480" 27 720 736 798 858 480 489 495 525 -hsync -vsync
-
-	# Monitor supported modeline (50.0 Hz vsync, 31.2 kHz hsync, ratio 5/4, 
-15x21 dpi) (bad ratio)
-	ModeLine "720x576" 27 720 732 796 864 576 581 586 625 -hsync -vsync
-
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> ---
-> Cristian Ciocaltea (5):
->        dt-bindings: display: vop2: Add optional PLL clock properties
->        drm/rockchip: vop2: Drop unnecessary if_pixclk_rate computation
->        drm/rockchip: vop2: Improve display modes handling on RK3588 HDMI0
->        arm64: dts: rockchip: Enable HDMI0 PHY clk provider on RK3588
->        arm64: dts: rockchip: Add HDMI0 PHY PLL clock source to VOP2 on RK3588
-> 
->   .../bindings/display/rockchip/rockchip-vop2.yaml   |  4 +++
->   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  7 +++--
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c       | 36 +++++++++++++++++++++-
->   3 files changed, 44 insertions(+), 3 deletions(-)
-> ---
-> base-commit: 744cf71b8bdfcdd77aaf58395e068b7457634b2c
-> change-id: 20241116-vop2-hdmi0-disp-modes-b39e3619768f
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmljb2xhcywKCnRoYW5rcyBmb3IgcmV2aWV3LAoKT24gMTEvMjAvMjQgMTU6MjEsIE5pY29s
+YXMgRHVmcmVzbmUgd3JvdGU6Cj4gSGkgSHVnaGUsCj4gCj4gdGhhbmtzIGZvciB0aGUgdXBkYXRl
+Lgo+IAo+IExlIG1lcmNyZWRpIDIwIG5vdmVtYnJlIDIwMjQgw6AgMTI6MDEgKzAxMDAsIEh1Z3Vl
+cyBGcnVjaGV0IGEgw6ljcml0wqA6Cj4+IFRoaXMgcGF0Y2ggYWRkcyB0aGUgV2ViUCBwaWN0dXJl
+IGRlY29kaW5nIGtlcm5lbCB1QVBJLgo+Pgo+PiBUaGlzIGRlc2lnbiBpcyBiYXNlZCBvbiBjdXJy
+ZW50bHkgYXZhaWxhYmxlIFZQOCBBUEkgaW1wbGVtZW50YXRpb24gYW5kCj4+IGFpbXMgdG8gc3Vw
+cG9ydCB0aGUgZGV2ZWxvcG1lbnQgb2YgV2ViUCBzdGF0ZWxlc3MgdmlkZW8gY29kZWNzCj4+IG9u
+IExpbnV4Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBIdWd1ZXMgRnJ1Y2hldCA8aHVndWVzLmZydWNo
+ZXRAZm9zcy5zdC5jb20+Cj4+IC0tLQo+PiAgIERvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9t
+ZWRpYS92NGwvYmlibGlvLnJzdCAgfCAgOSArKysrKysrKysKPj4gICAuLi4vdXNlcnNwYWNlLWFw
+aS9tZWRpYS92NGwvcGl4Zm10LWNvbXByZXNzZWQucnN0IHwgMTUgKysrKysrKysrKysrKysrCj4+
+ICAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jICAgICAgICAgICAgICB8ICAx
+ICsKPj4gICBpbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggICAgICAgICAgICAgICAgICAg
+IHwgIDEgKwo+PiAgIDQgZmlsZXMgY2hhbmdlZCwgMjYgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZm
+IC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9iaWJsaW8ucnN0
+IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9iaWJsaW8ucnN0Cj4+IGlu
+ZGV4IDM1Njc0ZWVhZTIwZC4uZGYzZTk2M2ZjNTRmIDEwMDY0NAo+PiAtLS0gYS9Eb2N1bWVudGF0
+aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2JpYmxpby5yc3QKPj4gKysrIGIvRG9jdW1lbnRh
+dGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9iaWJsaW8ucnN0Cj4+IEBAIC00NDcsMyArNDQ3
+LDEyIEBAIEFWMQo+PiAgIDp0aXRsZTogICAgIEFWMSBCaXRzdHJlYW0gJiBEZWNvZGluZyBQcm9j
+ZXNzIFNwZWNpZmljYXRpb24KPj4gICAKPj4gICA6YXV0aG9yOiAgICBQZXRlciBkZSBSaXZheiwg
+QXJnb24gRGVzaWduIEx0ZCwgSmFjayBIYXVnaHRvbiwgQXJnb24gRGVzaWduIEx0ZAo+PiArCj4+
+ICsuLiBfd2VicDoKPj4gKwo+PiArV0VCUAo+PiArPT09PQo+PiArCj4+ICs6dGl0bGU6ICAgICBX
+RUJQIHBpY3R1cmUgQml0c3RyZWFtICYgRGVjb2RpbmcgUHJvY2VzcyBTcGVjaWZpY2F0aW9uCj4+
+ICsKPj4gKzphdXRob3I6ICAgIEdvb2dsZSAoaHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20v
+c3BlZWQvd2VicCkKPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9t
+ZWRpYS92NGwvcGl4Zm10LWNvbXByZXNzZWQucnN0IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2Ut
+YXBpL21lZGlhL3Y0bC9waXhmbXQtY29tcHJlc3NlZC5yc3QKPj4gaW5kZXggODA2ZWQ3M2FjNDc0
+Li5lNjY0ZTcwYjA2MTkgMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFw
+aS9tZWRpYS92NGwvcGl4Zm10LWNvbXByZXNzZWQucnN0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24v
+dXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvcGl4Zm10LWNvbXByZXNzZWQucnN0Cj4+IEBAIC0xNjks
+NiArMTY5LDIxIEBAIENvbXByZXNzZWQgRm9ybWF0cwo+PiAgIAl0aGlzIHBpeGVsIGZvcm1hdC4g
+VGhlIG91dHB1dCBidWZmZXIgbXVzdCBjb250YWluIHRoZSBhcHByb3ByaWF0ZSBudW1iZXIKPj4g
+ICAJb2YgbWFjcm9ibG9ja3MgdG8gZGVjb2RlIGEgZnVsbCBjb3JyZXNwb25kaW5nIGZyYW1lIHRv
+IHRoZSBtYXRjaGluZwo+PiAgIAljYXB0dXJlIGJ1ZmZlci4KPj4gKyAgICAqIC4uIF9WNEwyLVBJ
+WC1GTVQtV0VCUC1GUkFNRToKPj4gKwo+PiArICAgICAgLSBgYFY0TDJfUElYX0ZNVF9XRUJQX0ZS
+QU1FYGAKPj4gKyAgICAgIC0gJ1dFQlAnCj4+ICsgICAgICAtIFdFQlAgVlA4IHBhcnNlZCBmcmFt
+ZSwgZXhjbHVkaW5nIFdFQlAgUklGRiBoZWFkZXIsIGtlZXBpbmcgb25seSB0aGUgVlA4Cj4+ICsJ
+YmlzdHJlYW0gaW5jbHVkaW5nIHRoZSBmcmFtZSBoZWFkZXIsIGFzIGV4dHJhY3RlZCBmcm9tIHRo
+ZSBjb250YWluZXIuCj4+ICsJVGhpcyBmb3JtYXQgaXMgYWRhcHRlZCBmb3Igc3RhdGVsZXNzIHZp
+ZGVvIGRlY29kZXJzIHRoYXQgaW1wbGVtZW50IGEKPj4gKwlXRUJQIHBpcGVsaW5lIHdpdGggdGhl
+IDpyZWY6YHN0YXRlbGVzc19kZWNvZGVyYC4KPj4gKwlNZXRhZGF0YSBhc3NvY2lhdGVkIHdpdGgg
+dGhlIGZyYW1lIHRvIGRlY29kZSBpcyByZXF1aXJlZCB0byBiZSBwYXNzZWQKPj4gKwl0aHJvdWdo
+IHRoZSBgYFY0TDJfQ0lEX1NUQVRFTEVTU19WUDhfRlJBTUVgYCBjb250cm9sLgo+PiArCVNlZSB0
+aGUgOnJlZjpgYXNzb2NpYXRlZCBDb2RlYyBDb250cm9sIElEcyA8djRsMi1jb2RlYy1zdGF0ZWxl
+c3MtdnA4PmAuCj4+ICsJRXhhY3RseSBvbmUgb3V0cHV0IGFuZCBvbmUgY2FwdHVyZSBidWZmZXIg
+bXVzdCBiZSBwcm92aWRlZCBmb3IgdXNlIHdpdGgKPj4gKwl0aGlzIHBpeGVsIGZvcm1hdC4gVGhl
+IG91dHB1dCBidWZmZXIgbXVzdCBjb250YWluIHRoZSBhcHByb3ByaWF0ZSBudW1iZXIKPj4gKwlv
+ZiBtYWNyb2Jsb2NrcyB0byBkZWNvZGUgYSBmdWxsIGNvcnJlc3BvbmRpbmcgZnJhbWUgdG8gdGhl
+IG1hdGNoaW5nCj4+ICsJY2FwdHVyZSBidWZmZXIuCj4gCj4gSSB3b25kZXIgaWYgd2Ugc2hvdWxk
+IGRvY3VtZW50IHRoZSBjb25zdHJhaW50cywgSSB0aGluawo+IFY0TDJfVlA4X0ZSQU1FX0ZMQUdf
+S0VZX0ZSQU1FIG11c3QgYmUgc2V0LCB3aGljaCBpbXBseSB0aGF0IGxhc3QvZ29sZGVuL2FsdAo+
+IHRpbWVzdGFtcCBhcmUgaWdub3JlZC4KCkkgd2lsbCBhZGQgc29tZXRoaW5nIGFib3V0IHRoYXQu
+Cgo+IAo+IFdpdGggdGhhdCBjbGFyaWZpZWQ6Cj4gCj4gUmV2aWV3ZWQtYnk6IE5pY29sYXMgRHVm
+cmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiAKPj4KPj4gICAKPj4gICAg
+ICAgKiAuLiBfVjRMMi1QSVgtRk1ULVZQOToKPj4gICAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bWVkaWEvdjRsMi1jb3JlL3Y0bDItaW9jdGwuYyBiL2RyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0
+bDItaW9jdGwuYwo+PiBpbmRleCAwMzA0ZGFhODQ3MWQuLmUyZmYwM2QwZDc3MyAxMDA2NDQKPj4g
+LS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4+ICsrKyBiL2RyaXZl
+cnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItaW9jdGwuYwo+PiBAQCAtMTUwMSw2ICsxNTAxLDcgQEAg
+c3RhdGljIHZvaWQgdjRsX2ZpbGxfZm10ZGVzYyhzdHJ1Y3QgdjRsMl9mbXRkZXNjICpmbXQpCj4+
+ICAgCQljYXNlIFY0TDJfUElYX0ZNVF9WQzFfQU5ORVhfTDoJZGVzY3IgPSAiVkMtMSAoU01QVEUg
+NDEyTSBBbm5leCBMKSI7IGJyZWFrOwo+PiAgIAkJY2FzZSBWNEwyX1BJWF9GTVRfVlA4OgkJZGVz
+Y3IgPSAiVlA4IjsgYnJlYWs7Cj4+ICAgCQljYXNlIFY0TDJfUElYX0ZNVF9WUDhfRlJBTUU6ICAg
+IGRlc2NyID0gIlZQOCBGcmFtZSI7IGJyZWFrOwo+PiArCQljYXNlIFY0TDJfUElYX0ZNVF9XRUJQ
+X0ZSQU1FOiAgICBkZXNjciA9ICJXRUJQIFZQOCBGcmFtZSI7IGJyZWFrOwo+PiAgIAkJY2FzZSBW
+NEwyX1BJWF9GTVRfVlA5OgkJZGVzY3IgPSAiVlA5IjsgYnJlYWs7Cj4+ICAgCQljYXNlIFY0TDJf
+UElYX0ZNVF9WUDlfRlJBTUU6ICAgIGRlc2NyID0gIlZQOSBGcmFtZSI7IGJyZWFrOwo+PiAgIAkJ
+Y2FzZSBWNEwyX1BJWF9GTVRfSEVWQzoJCWRlc2NyID0gIkhFVkMiOyBicmVhazsgLyogYWthIEgu
+MjY1ICovCj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggYi9p
+bmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPj4gaW5kZXggZTdjNGRjZTM5MDA3Li4wOWZm
+ZjI2OWU4NTIgMTAwNjQ0Cj4+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+
+PiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPj4gQEAgLTc1Nyw2ICs3NTcs
+NyBAQCBzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0IHsKPj4gICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9W
+QzFfQU5ORVhfTCB2NGwyX2ZvdXJjYygnVicsICdDJywgJzEnLCAnTCcpIC8qIFNNUFRFIDQyMU0g
+QW5uZXggTCBjb21wbGlhbnQgc3RyZWFtICovCj4+ICAgI2RlZmluZSBWNEwyX1BJWF9GTVRfVlA4
+ICAgICAgdjRsMl9mb3VyY2MoJ1YnLCAnUCcsICc4JywgJzAnKSAvKiBWUDggKi8KPj4gICAjZGVm
+aW5lIFY0TDJfUElYX0ZNVF9WUDhfRlJBTUUgdjRsMl9mb3VyY2MoJ1YnLCAnUCcsICc4JywgJ0Yn
+KSAvKiBWUDggcGFyc2VkIGZyYW1lICovCj4+ICsjZGVmaW5lIFY0TDJfUElYX0ZNVF9XRUJQX0ZS
+QU1FIHY0bDJfZm91cmNjKCdXJywgJ0InLCAnUCcsICdGJykgLyogV0VCUCBWUDggcGFyc2VkIGZy
+YW1lICovCj4+ICAgI2RlZmluZSBWNEwyX1BJWF9GTVRfVlA5ICAgICAgdjRsMl9mb3VyY2MoJ1Yn
+LCAnUCcsICc5JywgJzAnKSAvKiBWUDkgKi8KPj4gICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9WUDlf
+RlJBTUUgdjRsMl9mb3VyY2MoJ1YnLCAnUCcsICc5JywgJ0YnKSAvKiBWUDkgcGFyc2VkIGZyYW1l
+ICovCj4+ICAgI2RlZmluZSBWNEwyX1BJWF9GTVRfSEVWQyAgICAgdjRsMl9mb3VyY2MoJ0gnLCAn
+RScsICdWJywgJ0MnKSAvKiBIRVZDIGFrYSBILjI2NSAqLwo+IAoKQlIsCkh1Z3Vlcy4KCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
