@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B22C5D6ED2A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Nov 2024 13:24:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFC1CD78765
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Nov 2024 14:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vG5nt3QS6R0KkQz407ISYGaEboxSJUPrVdrxQu5dLNA=; b=H4pE7+10uChUdA
-	90rRJPpndb9hfMmshMHrZSjvY6vY3B2LMSACmrwkIBYqqr9fwnOOr5cwLztZqHZqJER4XKgZW1V8s
-	Jv8Y/wvnccBQj/c2xmFbwZa+1mO0up3l1Mi8+p8LdhNtSnxT1vZePc7gI0TxdO74ium4y1NpsgusU
-	mpBVqdefJlgP7TkXenOsB3Cfe35y1oBjKbcBfhTbD+l8lqxXMdhTyejSzW1bRiATJ0F2OFCh6/GU4
-	QMreye4eX4eciJhyl3A98+Eix/EEih6965a0ibSx5BOMXy+r34m1bh8JJgbMabD31HVygK0kzhtgh
-	A/o8QZVqoZjftwc9YDuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PoTsQA4QQsJmqlgGrg8M4u5VAdPGivMHWGznDJ7u2NA=; b=vxIEFeawmrxBUcJffIwaPXXIyP
+	Uv+vGawYTKfGpNhrafZw04n0VxIQWKQg6Rjes4yh5j2CqfSngsiSEPB5rKDXqxOhgAMGgzwYmj//i
+	9JSC1vNKlv3SEkuJuNQ4zE/k40HMd7nAKMH69ZgsyA426sed31NoMcs8zAZxFtPNVq/RdcZo0rCyk
+	l/su41/ddr6xtx7ek4jd/tRW5xqFGY+SJ1qzYg1oNjS6An/qF1xtYMpeOo74u6fG4P3C/DTDn14bZ
+	a0CpY+YoqkgRCyCS92N7siumbDYKoscKZjH5SxPvwV3bRbzWLidaJ5szXV+M2CgkFHVlKn4iEpq2W
+	N3TF5Dyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tE7B0-000000006VJ-1wKJ;
-	Thu, 21 Nov 2024 13:24:54 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93])
+	id 1tE82w-00000000CIU-3XZW;
+	Thu, 21 Nov 2024 14:20:38 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tE78P-000000005yE-20ci;
-	Thu, 21 Nov 2024 13:22:15 +0000
-Received: from pps.filterd (m0369457.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4ALAXHH1002018;
-	Thu, 21 Nov 2024 14:21:59 +0100
+	id 1tE82t-00000000CHb-2sTE;
+	Thu, 21 Nov 2024 14:20:37 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4ALA95BP028349;
+	Thu, 21 Nov 2024 15:20:18 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
 	content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	q6VXupjnTEVVWDbEaH7UOHhbUPZqhwx1VwGrB1UH9yU=; b=wGNVmgNeT2/V4w9V
-	my1uP2fOyC4FGUIydvyH99C0JUWz4p8howTZsncn324xTCNAiuzWAsh8dcAlr1aq
-	krW/hVjCnP0wnl/1khp0bYYpOJcqganzOPGc+H9cUKNiAZiDgOejLfQhGOdEePxe
-	LtZgRxy3FVIjRMubb3j9RgHDXlPqhCU928UP/Ol4ZPkqJqWrzK4mswJ62zvKpyOX
-	Yqu6WZSkug3Q1Sq1RbHsXBMm7sOZ+LGcRVLvngbbwSvOkJvclt2Av5YBcyUFegqu
-	lZ4vhp+Cl9bG3lvSxpvTu7Ck+E2hgxTPEVeVHb6pWugFaktS4t+Vv2HuRU2tsfUg
-	Pjq7JA==
+	JAlbkjqBlD0R3FSv5bX889vfuMU5j/rR8gfcpzLu/u0=; b=sbpl/LPiBr3D4gPg
+	/K8PcSO2DSu650saG5zzqbJeDCpFlqysf98wDAZP5pxSfKeqK14PEK7ZkP778mtM
+	NWHfndCwMrgNgej4wfQ4OzKyNmITFvbKSu6Fb3bbnexoFvZb1ZXi2uPz4/S7XGrb
+	zZMFOA6Friu12I7rzLjB8rUDO1m9SRGrmJWkaxJm2W1dU5fdpYlITvCEX7id04F4
+	ccW6yQkfDlbYzacvJvVmbiKajZrhaHpKPwrWND5BAyI5CMxsFgz4nyTgFqBlhL/9
+	CJV1BvgvvvPzrlJFqdmN96OxBN4ICUnYFHuslXTafavZiU1h+y6JCgiSmR0dVLP7
+	VsBwxQ==
 Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 42y77nmea8-1
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 42xkqf713x-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 21 Nov 2024 14:21:59 +0100 (CET)
+	Thu, 21 Nov 2024 15:20:18 +0100 (CET)
 Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id C5D484004A;
-	Thu, 21 Nov 2024 14:20:15 +0100 (CET)
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 86B6340046;
+	Thu, 21 Nov 2024 15:18:33 +0100 (CET)
 Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 9D9A32843CC;
-	Thu, 21 Nov 2024 14:19:08 +0100 (CET)
-Received: from localhost (10.48.86.208) by SHFDAG1NODE1.st.com (10.75.129.69)
- with Microsoft SMTP Server (version=TLS1_2,
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 5C0A828D457;
+	Thu, 21 Nov 2024 15:16:43 +0100 (CET)
+Received: from [10.48.86.208] (10.48.86.208) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 21 Nov
- 2024 14:19:08 +0100
-From: Hugues Fruchet <hugues.fruchet@foss.st.com>
+ 2024 15:16:42 +0100
+Message-ID: <86907cc9-5339-435a-a346-08beea21b886@foss.st.com>
+Date: Thu, 21 Nov 2024 15:16:41 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/3] Add WebP support to hantro decoder
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
         Ezequiel Garcia
 	<ezequiel@vanguardiasur.com.ar>,
         Philipp Zabel <p.zabel@pengutronix.de>,
         Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Hugues Fruchet
-	<hugues.fruchet@foss.st.com>,
         Sebastian Fricke
 	<sebastian.fricke@collabora.com>,
         Ricardo Ribalda <ribalda@chromium.org>,
@@ -77,13 +79,10 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>,
         <linux-rockchip@lists.infradead.org>,
         <linux-stm32@st-md-mailman.stormreply.com>,
         <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v3 2/3] media: verisilicon: add WebP decoding support
-Date: Thu, 21 Nov 2024 14:19:03 +0100
-Message-ID: <20241121131904.261230-3-hugues.fruchet@foss.st.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241121131904.261230-1-hugues.fruchet@foss.st.com>
 References: <20241121131904.261230-1-hugues.fruchet@foss.st.com>
-MIME-Version: 1.0
+Content-Language: en-US
+From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
+In-Reply-To: <20241121131904.261230-1-hugues.fruchet@foss.st.com>
 X-Originating-IP: [10.48.86.208]
 X-ClientProxiedBy: EQNCAS1NODE3.st.com (10.75.129.80) To SHFDAG1NODE1.st.com
  (10.75.129.69)
@@ -91,8 +90,8 @@ X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
  definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241121_052213_806903_1D8D1AA7 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20241121_062036_006556_78AE3E72 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,132 +103,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add WebP picture decoding support to VP8 stateless decoder.
+Hi all,
 
-Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
----
- .../media/platform/verisilicon/hantro_g1_regs.h |  1 +
- .../platform/verisilicon/hantro_g1_vp8_dec.c    | 14 ++++++++++++++
- .../media/platform/verisilicon/hantro_v4l2.c    |  2 ++
- .../platform/verisilicon/stm32mp25_vpu_hw.c     | 17 +++++++++++++++--
- 4 files changed, 32 insertions(+), 2 deletions(-)
+The corresponding GStreamer code has been pushed here (v4l2slwebpdec):
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7939
 
-diff --git a/drivers/media/platform/verisilicon/hantro_g1_regs.h b/drivers/media/platform/verisilicon/hantro_g1_regs.h
-index c623b3b0be18..e7d4db788e57 100644
---- a/drivers/media/platform/verisilicon/hantro_g1_regs.h
-+++ b/drivers/media/platform/verisilicon/hantro_g1_regs.h
-@@ -232,6 +232,7 @@
- #define     G1_REG_DEC_CTRL7_DCT7_START_BIT(x)		(((x) & 0x3f) << 0)
- #define G1_REG_ADDR_STR					0x030
- #define G1_REG_ADDR_DST					0x034
-+#define G1_REG_ADDR_DST_CHROMA				0x038
- #define G1_REG_ADDR_REF(i)				(0x038 + ((i) * 0x4))
- #define     G1_REG_ADDR_REF_FIELD_E			BIT(1)
- #define     G1_REG_ADDR_REF_TOPC_E			BIT(0)
-diff --git a/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c b/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
-index 851eb67f19f5..c83ee6f5edc8 100644
---- a/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
-@@ -307,6 +307,12 @@ static void cfg_parts(struct hantro_ctx *ctx,
- 			   G1_REG_DEC_CTRL3_STREAM_LEN(dct_part_total_len),
- 			   G1_REG_DEC_CTRL3);
- 
-+	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_WEBP_FRAME)
-+		vdpu_write_relaxed(vpu,
-+				   G1_REG_DEC_CTRL3_STREAM_LEN_EXT
-+					(dct_part_total_len >> 24),
-+				   G1_REG_DEC_CTRL3);
-+
- 	/* DCT partitions base address */
- 	for (i = 0; i < hdr->num_dct_parts; i++) {
- 		u32 byte_offset = dct_part_offset + dct_size_part_size + count;
-@@ -427,6 +433,12 @@ static void cfg_buffers(struct hantro_ctx *ctx,
- 
- 	dst_dma = hantro_get_dec_buf_addr(ctx, &vb2_dst->vb2_buf);
- 	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
-+
-+	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_WEBP_FRAME)
-+		vdpu_write_relaxed(vpu, dst_dma +
-+				   ctx->dst_fmt.plane_fmt[0].bytesperline *
-+				   ctx->dst_fmt.height,
-+				   G1_REG_ADDR_DST_CHROMA);
- }
- 
- int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
-@@ -471,6 +483,8 @@ int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- 		reg |= G1_REG_DEC_CTRL0_SKIP_MODE;
- 	if (hdr->lf.level == 0)
- 		reg |= G1_REG_DEC_CTRL0_FILTERING_DIS;
-+	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_WEBP_FRAME)
-+		reg |= G1_REG_DEC_CTRL0_WEBP_E;
- 	vdpu_write_relaxed(vpu, reg, G1_REG_DEC_CTRL0);
- 
- 	/* Frame dimensions */
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 2513adfbd825..7075b2ba1ec2 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -470,6 +470,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
- 		break;
- 	case V4L2_PIX_FMT_MPEG2_SLICE:
- 	case V4L2_PIX_FMT_VP8_FRAME:
-+	case V4L2_PIX_FMT_WEBP_FRAME:
- 	case V4L2_PIX_FMT_H264_SLICE:
- 	case V4L2_PIX_FMT_HEVC_SLICE:
- 	case V4L2_PIX_FMT_VP9_FRAME:
-@@ -492,6 +493,7 @@ hantro_update_requires_hold_capture_buf(struct hantro_ctx *ctx, u32 fourcc)
- 	case V4L2_PIX_FMT_JPEG:
- 	case V4L2_PIX_FMT_MPEG2_SLICE:
- 	case V4L2_PIX_FMT_VP8_FRAME:
-+	case V4L2_PIX_FMT_WEBP_FRAME:
- 	case V4L2_PIX_FMT_HEVC_SLICE:
- 	case V4L2_PIX_FMT_VP9_FRAME:
- 		vq->subsystem_flags &= ~(VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF);
-diff --git a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-index 833821120b20..c291b1560e20 100644
---- a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-@@ -22,10 +22,10 @@ static const struct hantro_fmt stm32mp25_vdec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
--			.max_width = FMT_FHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = FMT_MIN_HEIGHT,
--			.max_height = FMT_FHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -42,6 +42,19 @@ static const struct hantro_fmt stm32mp25_vdec_fmts[] = {
- 			.step_height = MB_DIM,
- 		},
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_WEBP_FRAME,
-+		.codec_mode = HANTRO_MODE_VP8_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
- 		.codec_mode = HANTRO_MODE_H264_DEC,
--- 
-2.25.1
+BR,
+Hugues.
 
+On 11/21/24 14:19, Hugues Fruchet wrote:
+> Add WebP image decoding support to stateless V4L2 VP8 decoder.
+> 
+> This have been tested on STM32MP257-EV board using GStreamer.
+> 
+> Simple basic test:
+> $> wget https://www.gstatic.com/webp/gallery/1.webp
+> $> gst-launch-1.0 filesrc location= 1.webp ! typefind ! v4l2slwebpdec ! imagefreeze num-buffers=20 ! waylandsink fullscreen=true
+> 
+> Slideshow of a set of WebP pictures and WebM video files:
+> $> wget https://www.gstatic.com/webp/gallery/2.webp
+> $> wget https://www.gstatic.com/webp/gallery/3.webp
+> $> wget https://www.gstatic.com/webp/gallery/4.webp
+> $> wget https://www.gstatic.com/webp/gallery/5.webp
+> $> wget https://samplemedia.linaro.org/VP8/big_buck_bunny_480p_VP8_VORBIS_25fps_1900K_short.WebM
+> $> gst-play-1.0 *.webp *.webm *.WebM --wait-on-eos
+> <hit key ">" to display next file >
+> 
+> Large WebP image > 16777215 (size > 2^24)
+> $> gst-launch-1.0 fakesrc num-buffers=1 format=4 do-timestamp=true filltype=3 sizetype=2 sizemax=25165824 blocksize=25165824 ! video/x-raw, format=I420, width=4096, height=3072, framerate=1/1 ! webpenc quality=100 ! filesink location=4096x3072_HQ_random.webp
+> $> ls -l 4096x3072_HQ_random.webp
+> [...] 16877404 Nov 20 11:40 4096x3072_HQ_random.webp
+> $> gst-launch-1.0 filesrc location= 4096x3072_HQ_random.webp blocksize=16876610 ! image/webp, width=1, height=1, framerate=0/1 ! v4l2slwebpdec ! imagefreeze num-buffers=20 ! waylandsink fullscreen=true
+> 
+> Large WebP image decoding using post-processor is untested because of lack
+> of hardware support on this platform, nevertheless support is provided in
+> this serie for further testing on another platform having post-processor
+> support.
+> 
+> ===========
+> = history =
+> ===========
+> version 3:
+>     - Fix remarks from Nicolas Dufresne:
+>      - Document constraint about key frame only for WebP
+>      - Fix rebase issue
+>     - Fix typo detected by Diederik de Haas
+> 
+> version 2:
+>     - Fix remarks from Nicolas Dufresne:
+>      - Use bytesperline helper to compute chroma size
+>      - Introduce a new explicit WEBP frame compressed format
+>        instead of relying on VP8 + WebP flag
+>      - 4K support in both decoder and post-proc
+> 
+> version 1:
+>    - Initial submission
+> 
+> Hugues Fruchet (3):
+>    media: uapi: add WebP uAPI
+>    media: verisilicon: add WebP decoding support
+>    media: verisilicon: postproc: 4K support
+> 
+>   .../userspace-api/media/v4l/biblio.rst          |  9 +++++++++
+>   .../media/v4l/pixfmt-compressed.rst             | 17 +++++++++++++++++
+>   drivers/media/platform/verisilicon/hantro.h     |  2 ++
+>   .../media/platform/verisilicon/hantro_g1_regs.h |  3 ++-
+>   .../platform/verisilicon/hantro_g1_vp8_dec.c    | 14 ++++++++++++++
+>   .../platform/verisilicon/hantro_postproc.c      |  6 +++++-
+>   .../media/platform/verisilicon/hantro_v4l2.c    |  2 ++
+>   .../platform/verisilicon/stm32mp25_vpu_hw.c     | 17 +++++++++++++++--
+>   drivers/media/v4l2-core/v4l2-ioctl.c            |  1 +
+>   include/uapi/linux/videodev2.h                  |  1 +
+>   10 files changed, 68 insertions(+), 4 deletions(-)
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
