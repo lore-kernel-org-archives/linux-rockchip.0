@@ -4,103 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8EC1D75E25
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Nov 2024 11:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407EBE69186
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Nov 2024 18:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PHD+Nm7EWKAmW1Y1NW7KDCJo0noiFc5S5TFNpUkY3R4=; b=E2xgKeGACKmBpc
-	9IxDqfR1MKZJpIWa981tTQ9Je8Zu3EjPdwsYpBP8RwEn96fp+Qyhp52J3aMcKGu5R9gf3+PcxbMLo
-	DZfL21g1Cluyctd6W2+OdO3tig90Jpu070Z+5HiJmUI2+e/nIjAoZ2AHR7f9LejQm9lHs2Pu3I1cz
-	9wy9bDVCV73nzUCmvqX1fAgjxuT0jBemX/dElEStP9zD5YI4ULjzRIm2ICXG5FFFGffVmcYzXO9aj
-	WRMn/tRbdRD6GTie44lrJLYp7vGEWLA1UHbZ27PXY0YD+EVG09RRWwX+lljlECNRbquYFlc13IFry
-	cbA2qIbwOXQ04XCWHx2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AVfgU9XzMNn3bKZ5tuwTux8s35ZGLCyO89rDQT7CdSI=; b=k99kKif5dSMSfCxzwHkhC97wRQ
+	V9v+rd0dw6Ln7L4Ld+rJvInX0QjTy7sYgxQKlMNPRbQuVuhb7K2c4e0z6RR0jZoDeF0f6smPTW5Wk
+	rIMbm15UCEv9Rq2Ig71zse9+qKShFDYfTyOKv6QY9Wp0GIU2d4PmzG1oPUh2883DRKYCRdlFa+rG1
+	E7yUhQ4tIe3szhbFi4kXZuwgMsi4nXHugVZyTmp9zynXFnAwnSTxT979RLUA6SSzK6fOa4Z5bbW+m
+	/Sd0VKqwZSts8p4cW+ZcLTLxqvUbffzJLRTrwDLP2TS/iF/t+Ovx1d0YhzjLCR04nFKPLdYwS2dkY
+	B4zwVkqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tERxZ-00000002NT4-0Xxn;
-	Fri, 22 Nov 2024 11:36:25 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1tEYDl-000000035q0-1nuc;
+	Fri, 22 Nov 2024 18:17:33 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tERwa-00000002NMM-42qj
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Nov 2024 11:35:26 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-53b13ea6b78so3551142e87.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Nov 2024 03:35:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732275323; x=1732880123; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=krxMhaTOFP6KQfuRozKR1NNs6wdGoTjqof+u9BiFDsk=;
-        b=YYWKCncTPLOMoffwzTkWUa25jxpia7hbBFvZB0NLCkmt2hP+QdGJDDQy3DY1FGyoVg
-         32fXhNOCh/01/y1fmc6eEyatQAUf3CrcSO6wrpUN37bI9iyBiGfTB+rJJ/3mdrkXAd40
-         5BHvzs+dpvqyTLvmSimJsi17OeOdf7QJwwviNTFstgDlWRV9Y5L2xuqzrSCWVA+1q/Dt
-         jBMNaL6E3urUL/LWaJtxNYGvHdxc6e5gm8obgCWHmLK9lK1HJlsLSlvDiaSwa19Ax+oO
-         LsKOWeuTZGbe1y6qZFIVAZhjlL9ci9jdEq4Zozlfub+1sSG0whUcvSAfDPolCY75ECR3
-         TibA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732275323; x=1732880123;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=krxMhaTOFP6KQfuRozKR1NNs6wdGoTjqof+u9BiFDsk=;
-        b=S+ecDFlXaCSezvyHgrO4uW83gOLgyAEZnozervRPmsonZg5TO/pwwFzy7WKM8vIvr3
-         gjbiEgBYSORe3Dz4zrfc3npqwhwYLc+h8A+T2c0AT6jM5/oc2Y0Th3mMgaHFmltVBuGj
-         0hyAmg5jV8DO94EyRyt1ilTvQSsHsU40oFXR3F1OzJjcl2XkvSNY42CYWki9sr2P4OiO
-         RYFJZsQHfDSkcvGcChpBRqOstmwOCPRLTCoEQr+CvgbDmuiEVZOQvXKWhGHdHWTkqL1J
-         vRG8xA1ulYQ4nnZRLIXYDbBA4shS2GAC6QfVFSxWYbso4hvcQgvTi6kWFlWOcmBjW4Ni
-         jgCA==
-X-Forwarded-Encrypted: i=1; AJvYcCWXfX7+n46gUrn997DmirJCCx8j0MFLjE3CX7z9c4mtwDMIilcCuU31Y5ce5Q2/TshzwFycL7LH4gCfOq8eFg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2ReqdcRskUcnwf/HCRQ6SuBWgTU0t0NFXA92A+c4OywsxeM7E
-	sO7nzoHrZfsv67r2qri97rGVgwQnKJmaIlMIctAwNXJqyVASeVytA1+tyTrfuIY=
-X-Gm-Gg: ASbGncsRE3/LltjNEUSDInnnK6Ra1A04btBL2VxDwhcrUD+YggRQU8lnfP0QiG2HR04
-	bA3n/EzLS/h2cvp/dXvcJKKT9YPjB/AlqqHACd9o0drFeTgSAOTcvVDzVRiUA5ikFf1qF2Hapgl
-	ePMLpET29n2+6THgeC9Pr+pjT+2rMJhfmbJrpwkP5Il+n0X7xME9MSbswW8MXo3JT6TReFiAoal
-	nSNquEuaOArj0CHEo4fRYGyie+Fkx7JIzbWctBNavXVc3a1lLzFbMXf5m/XrICfREnYpgZbg9vq
-	9J08fk0c2avRp/FXRdHa8m7tNxL4tQ==
-X-Google-Smtp-Source: AGHT+IHcS5D0tQAmLEPHu7UajYtNpfZvhiuBwDM25QDIUqbvD9w+ge3SD7yoJlUUHrhodq7JCz8ehA==
-X-Received: by 2002:ac2:5eda:0:b0:53d:d3ff:7874 with SMTP id 2adb3069b0e04-53dd3ff78e0mr1407682e87.29.1732275323001;
-        Fri, 22 Nov 2024 03:35:23 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53dd3f12809sm270502e87.38.2024.11.22.03.35.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Nov 2024 03:35:21 -0800 (PST)
-Date: Fri, 22 Nov 2024 13:35:19 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 3/7] drm/connector: implement generic HDMI codec
- helpers
-Message-ID: <altuhp26ntnpltvfdmikggdmibyizdwnrmwshte7sa2btmbgvj@mbhlvwb4xrzj>
-References: <20241122-drm-bridge-hdmi-connector-v4-0-b4d69d6e3bd9@linaro.org>
- <20241122-drm-bridge-hdmi-connector-v4-3-b4d69d6e3bd9@linaro.org>
- <87ed33zf5e.fsf@intel.com>
+	id 1tEYCo-000000035ds-1LrQ;
+	Fri, 22 Nov 2024 18:16:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1732299385; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=mWrR/MIIKZNZpZ/6AdRpQLm0JkRVejo7tOKMih3WC6BlYMNy8dZHjhYTz5das4bdLRGL78LyIgDOWIt9flw9jLDXYvEFDmR55jm+fOnh7jNWYjmLPVlVxgTbiAxZJh9KEWusQ6kKxRVe/c8AwIggDicXX88i83sQrtV0CnYyhlk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1732299385; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=t9pP/PHvr2gDzzkISxCFjGDZOpY33IndDzzlRxuzxkQ=; 
+	b=oCp3eeZD4WUeQ879DZYzGLtozGj360keC4hRwBG35JYsFrUE8QxyaxKuhs4Wa2md4ACMRPOsOTAEPv8jyygw4tJmE/jmRbma/WKpS1uy15PsV3FICLsqaDXSpr2JMddrz+xdzr8JCnyHPe/dWwyGEenHLnHoWsTQ5li6WH6LpjM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1732299385;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=t9pP/PHvr2gDzzkISxCFjGDZOpY33IndDzzlRxuzxkQ=;
+	b=XfoqYq5M7uwqyIpsohWgrhRdlWGFrMP+UuAr0PvWE1OTZZM7TtKZrEfQeAoezQjN
+	BRu9QY+lNYf7mo5pysaAv67aEt8oxi3JCecT3UaqpRG8Sfqesv57edcyls6laO8dM8u
+	0TZmV33+/Agq1Yu+pvlRgu5QuUpLqahmD0ZKJl/w=
+Received: by mx.zohomail.com with SMTPS id 1732299383586840.2282759601966;
+	Fri, 22 Nov 2024 10:16:23 -0800 (PST)
+Received: by mercury (Postfix, from userid 1000)
+	id 26BDC10604B0; Fri, 22 Nov 2024 19:16:19 +0100 (CET)
+Date: Fri, 22 Nov 2024 19:16:19 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 0/2] MIPI DSI phy for rk3588
+Message-ID: <iwmyaf3ygr6kpjfrspox52yt32xbw4vjuwg2ggqi7knr75b542@yldac2lh6dhy>
+References: <20241113221018.62150-1-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87ed33zf5e.fsf@intel.com>
+In-Reply-To: <20241113221018.62150-1-heiko@sntech.de>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/232.230.92
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241122_033525_011923_A22F89E2 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20241122_101634_432056_5E4DFBD0 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,42 +77,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7912580935904068678=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 22, 2024 at 01:22:53PM +0200, Jani Nikula wrote:
-> On Fri, 22 Nov 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
-> > diff --git a/drivers/gpu/drm/drm_internal.h b/drivers/gpu/drm/drm_internal.h
-> > index b2b6a8e49dda46f1cb3b048ef7b28356dd3aaa4e..8ed58e482fac4662b659276e8bc17690e1fdb9b7 100644
-> > --- a/drivers/gpu/drm/drm_internal.h
-> > +++ b/drivers/gpu/drm/drm_internal.h
-> > @@ -280,4 +280,9 @@ void drm_framebuffer_print_info(struct drm_printer *p, unsigned int indent,
-> >  				const struct drm_framebuffer *fb);
-> >  void drm_framebuffer_debugfs_init(struct drm_device *dev);
-> >  
-> > +/* drm_connector_hdmi_codec.c */
-> > +
-> > +int drm_connector_hdmi_codec_init(struct drm_connector *connector);
-> > +void drm_connector_hdmi_codec_cleanup(struct drm_connector *connector);
-> > +
-> >  #endif /* __DRM_INTERNAL_H__ */
-> 
-> Better fit in drm_crtc_internal.h or drm_crtc_helper_internal.h?
-> 
-> Maybe we could use an internal header inside display/. Or just 1:1
-> drm_foo_internal.h for every drm_foo.c to keep things simple and have
-> fewer interdependencies.
 
-Sounds like drm_connector_hdmi_codec_internal.h. Most likely we should
-also split or rename drm_crtc_*_internal.h, but that's a separate topic.
+--===============7912580935904068678==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="uvan6vjaye2so442"
+Content-Disposition: inline
 
--- 
-With best wishes
-Dmitry
+
+--uvan6vjaye2so442
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 0/2] MIPI DSI phy for rk3588
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Nov 13, 2024 at 11:10:16PM +0100, Heiko Stuebner wrote:
+> This adds the phy driver need for DSI output on rk3588.
+>=20
+> The phy itself is used for both DSI output and CSI input, though the
+> CSI part for the whole chain needs a lot more work, so is left out for
+> now and only the DSI part implemented.
+>=20
+> This allows the rk3588 with its current VOP support to drive a DSI display
+> using the DSI2 controller driver I'll submit in a next step.
+>=20
+> Only generic phy interfaces are used, so the DSI part is pretty straight
+> forward.
+>=20
+> changes in v3:
+> - add Krzysztof review tag to the binding
+> - address Sebastian's review comments
+>   - better error handling
+>   - dropping empty function
+>   - headers
+>   - not using of_match_ptr - this should also make the
+>     test-robot happier
+>=20
+> changes in v2:
+> - fix error in dt-binding example
+> - drop unused frequency table
+> - pull in some more recent improvements from the vendor-kernel
+>   which includes a lot less magic values
+> - already include the support for rk3576
+> - use dev_err_probe
+>=20
+> Heiko Stuebner (2):
+>   dt-bindings: phy: Add Rockchip MIPI CSI/DSI PHY schema
+>   phy: rockchip: Add Samsung CSI/DSI Combo DCPHY driver
+>=20
+>  .../phy/rockchip,rk3588-mipi-dcphy.yaml       |   82 +
+>  drivers/phy/rockchip/Kconfig                  |   12 +
+>  drivers/phy/rockchip/Makefile                 |    1 +
+>  .../phy/rockchip/phy-rockchip-samsung-dcphy.c | 1647 +++++++++++++++++
+>  4 files changed, 1742 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3588=
+-mipi-dcphy.yaml
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+
+The series works for me on the RK3588 EVB1:
+
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+--uvan6vjaye2so442
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdAym8ACgkQ2O7X88g7
++poztw//Q8nMPJS+hjF2Kk1qa3Q6fvMbFbG6oEuQmaFHMvJRRXZ0bS2H8DXEi75o
+D6XHgJTAsk05z6NXwMa8kGwVhL5YYzUHvBlVbDuRmFfVBsCvl+ETVKGnpebcXxkS
+jzn9UcyE+Qt1yrhJ/Q8oAWOHRgbkR+2PvVPsj/mwLNOFejFD1JSil9O+GOjUbFBH
+LETPO0PDdVjRUJUcWF3T31mWOfgFW3njT5tzFx56EX3Nsvrz1aIx9RsD/c1GWN35
+919EZBuXoT7E7nxFAlNEQ/VUtwPbuexd7ejtdoezJaoCHgK8vn3sZckHUjQgMllk
+m9s/V8ILJv/wyDoTkk3Ywn9DgIeWAgFNInCw0fi8/kGlF6Ju9AfIanGD7BHa0WxK
+3JfARYErXMllyv3V/zWjBkKPOrHSg/npZ6bnzC44VVHthoHvkJUez1Vifeh3Nmmr
+k/1VmCmIeBATIK92K8gcsj0tsiIBITDNyrbZsX1jZ+DAI/4jHz1NbOSw0gzezy7e
+WiyqB857c2S3caWftU8nfuFSGk5aKnhB9FZG7SGlQ/ln2jKmmTxmggVu/rBJZwh1
+KzONElwB2FyODDKuxnnQR0sBS30V/nhyovM45tMa5/5nfisut8b1i56lWx1KwmWg
+ey1nGl0SAkZLX4SdWDZd6shlm4+WWrBVfgwBzy2Pp+74P9qvi2U=
+=LZU3
+-----END PGP SIGNATURE-----
+
+--uvan6vjaye2so442--
+
+
+--===============7912580935904068678==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7912580935904068678==--
+
