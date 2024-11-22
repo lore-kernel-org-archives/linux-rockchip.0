@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44405E65D29
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Nov 2024 07:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 342F9E65D31
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Nov 2024 07:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/S1ipej6mDkUhIoqDtfHbVXZovCBJDxKDSeyewR8JyA=; b=pt6KHpopkQZ6Q0
-	N7iNwV5RlJNQPhkY+p4SA+lcvufBjjZf3C/M7O5KuPp7THf0BEcwfrnqd/Yjyb9hKWdSYpyJ0i5TF
-	oVnc6x1Ujvy1GgVHWImitH4rnq1kW0kkA5szvax4zzzKksDLAs4Prb7FR3QLbvYMROWQSjIMtel++
-	XylXaOLYrbUcDW5WfbHGuFgwCAzRkM9SHiGsrpexeZjKYA4aj462VFUKyycDCNJTEIuhb1J/qmEQQ
-	vci1MVnaOUGK5L5JypGr2ljZC/sPQ4T14BE0W8L5U/jJHcdREjRLvZ/MroHKuOtGkOjpBK0FTl3kN
-	B7knpY4y4YPdPjHC+3Nw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3rjrZCXzmg0b+2VwQytmgXBiLqX3rIlsaN62esJMErg=; b=Ijv0fqsC//yqfo
+	LV6dy9GevTrGMcFf1cyYdsxOm8VqPvUZWFEo9Hdtp4fmj2QVH6OE6hDPQo9ZDqs7GHlkRnJPQ+b7F
+	2rs4ehCglWj4kfC8b9tpE9u+f5grU/qL8b1eSXsKKIXkVCF8roIOOngVJ2rZHEKnUGI+lSROb/AyO
+	1a3Airsmw9CEsSpjow2cQWVaeqZQIh9n9NN/EHWTm+qWfSe8FU+CtcVCNl6CV9ms1mXyyjMLwbWyO
+	iJO6BXv1ZzD/++yjx+ppSM/BDbnfZHnxSfT50nvSyzrX6/eatvA0Ny99xzyB7cemvkKIcQ5kEW9Ut
+	Yd3kvpR51ZtMsMPcf7Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEO7V-00000001oQN-1QrR;
-	Fri, 22 Nov 2024 07:30:25 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1tEOXe-00000001rrS-2x5B;
+	Fri, 22 Nov 2024 07:57:26 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEO7R-00000001oMe-2bld;
-	Fri, 22 Nov 2024 07:30:23 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c04:2930::1])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3848de84;
-	Fri, 22 Nov 2024 15:30:09 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
+	id 1tEOWh-00000001rkP-0U06;
+	Fri, 22 Nov 2024 07:56:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=u2CzZQRt2A+r6WQzjhC3dMMoIgGWbh2r8sqexAlw87A=; b=oavklLj9lgVc1U6ewRXNKjUnYA
+	UuvJDHawdQgCSe1dPmUZK+NkujcFi8KfnIgUrc+e5NwiWvvTCnLo1aeE2HEtbHMW9CDnzrLotYG49
+	AKWw5gT0gqhhMpRwmG+Nyt3ky/0dblyNO6NC+RPFTyKBh3aOyQvIMn5WHsZfiB15C3e9g8Gh+NcR3
+	cxV7GTx5SU7WLkCBBlw0TVctHCCJX6yQRs4U5xsn0C+mW24Gj6lz6rw1+KLblO+Ra6NOEn43d1cT4
+	DcT77o7MehymcsUkkTayLuELMBUPpd0QWSI6gzcIgYAhKsM7PgvpT64O/NiKUnMgrIWdGkytK0d8A
+	3B/2gZJw==;
+Received: from [185.156.123.69] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tEOWY-0004Gz-25; Fri, 22 Nov 2024 08:56:18 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
-Date: Fri, 22 Nov 2024 15:30:05 +0800
-Message-Id: <20241122073006.99309-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
+Date: Fri, 22 Nov 2024 08:56:17 +0100
+Message-ID: <12563257.O9o76ZdvQC@phil>
+In-Reply-To: <20241122073006.99309-1-amadeus@jmu.edu.cn>
+References: <20241122073006.99309-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDQxhKVhgZQ0tDTUNPTE1NTVYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtPQUlCSEtBQUpZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0
-	1VSktLVUtZBg++
-X-HM-Tid: 0a9352c73fde03a2kunm3848de84
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Oj46Eww4PTIjTj8QECk*Tx8y
-	QjkaClZVSlVKTEhJSU1LTUpKSktCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS09BSUJIS0FBSllXWQgBWUFKTU5CNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241121_233021_885778_5BF06E07 
-X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-CacheID: sfid-20241121_235627_185413_0C52876B 
+X-CRM114-Status: UNSURE (   9.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,48 +80,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The reset-names of combphy are missing, add it.
+Am Freitag, 22. November 2024, 08:30:05 CET schrieb Chukun Pan:
+> The reset-names of combphy are missing, add it.
+> 
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 1 +
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 2 ++
- 2 files changed, 3 insertions(+)
+Fixes: fd3ac6e80497 ("dt-bindings: phy: rockchip: rk3588 has two reset lines")
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index ecaefe208e3e..695cccbdab0f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -350,6 +350,7 @@ combphy0: phy@fe820000 {
- 		assigned-clocks = <&pmucru CLK_PCIEPHY0_REF>;
- 		assigned-clock-rates = <100000000>;
- 		resets = <&cru SRST_PIPEPHY0>;
-+		reset-names = "phy";
- 		rockchip,pipe-grf = <&pipegrf>;
- 		rockchip,pipe-phy-grf = <&pipe_phy_grf0>;
- 		#phy-cells = <1>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 62be06f3b863..e55390629114 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -1681,6 +1681,7 @@ combphy1: phy@fe830000 {
- 		assigned-clocks = <&pmucru CLK_PCIEPHY1_REF>;
- 		assigned-clock-rates = <100000000>;
- 		resets = <&cru SRST_PIPEPHY1>;
-+		reset-names = "phy";
- 		rockchip,pipe-grf = <&pipegrf>;
- 		rockchip,pipe-phy-grf = <&pipe_phy_grf1>;
- 		#phy-cells = <1>;
-@@ -1697,6 +1698,7 @@ combphy2: phy@fe840000 {
- 		assigned-clocks = <&pmucru CLK_PCIEPHY2_REF>;
- 		assigned-clock-rates = <100000000>;
- 		resets = <&cru SRST_PIPEPHY2>;
-+		reset-names = "phy";
- 		rockchip,pipe-grf = <&pipegrf>;
- 		rockchip,pipe-phy-grf = <&pipe_phy_grf2>;
- 		#phy-cells = <1>;
--- 
-2.25.1
+It does looks like, before that patch above, the phy did not use
+nor require reset-names?
+
+No need to resend for this, as I think b4 will just pick up this
+addition when I grab the series from the list.
+
 
 
 _______________________________________________
