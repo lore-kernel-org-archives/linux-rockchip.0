@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67496D6ACE0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Nov 2024 14:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E4B5D6ACE3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Nov 2024 14:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsXEBu9Rnr5/+dbg/np0K4jMvEc6sSDx0fdRUVuO/7k=; b=1FXf5gVQbQ7Afj
-	ro3Jg5xz4/NWIj4eWSdz0mLosQ9WU1Lp44a9qQWzMcUeknVxtyLIdbbKOFelsLdkN0Fg9fKz1cmtp
-	3y9rPPbGJf/zUwmitwumKvKvaz2eZ+cuozdEJIAtFmLwJoFdrc/Y2y8AwcUOCePrJqPq6zjdVeYSn
-	nrxo9m/E4SUsIefwdIl/xgaNC5sWJXkwLVa+3UAKr0dJGuYZW0eFOBVbH0ZpUNQ9XAhUYmx5k/LLc
-	J7ei9LIOQLXCI4foWFOoYwP4DpIMAUWylXdrpQ1yZPqvoGN6KXeFEvfV3LUcqSKJ5HExUPHZl0V80
-	tewbFxLskVSIWg5sxOEg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ApFn22l2GgPEb9q4YZuqLzBfYo9OEWyhnyfh5YVkq7c=; b=VitGxeZ9HPzOHa
+	Kg0MKMzDBSq5vnRdQJBwD7TB872ZceNZHz0MTiRS7sCGmtZt4jcQxljw0wg9J7IW2+nwVyc2TI/tw
+	74PPBbMBsXhQwb7HmHhc1L+/7iE0+RJ15/tvLUb0Ehb4iiww1Qj49Af4OAg6+oUp36t0kBDmRt45W
+	w6UNdyV6TG2Qy924cTyOwbiTs6v2NLGLH+mnX6huWcxDcWLUfMji94vpURJL03LHvKXXuMRxvig9r
+	7zssJZ3u+Jw11Lk/PfpMY01ujZY1KwDHnS8GifFBNW5LuIErkNCmDrq8/Cr45yTmzuOyHOl195Tcy
+	KgtP+CMWK7J5XHkDqVkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJEo-0000000DOaq-2wup;
-	Wed, 27 Nov 2024 14:41:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tGJOw-0000000DQ0g-1kan;
+	Wed, 27 Nov 2024 14:52:22 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJAn-0000000DNlN-0n2z;
-	Wed, 27 Nov 2024 14:37:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Yi9ivZL7hE/+AzA0giTInnZeJXGkpovY54SIjT3aEK0=; b=pxykcM66aiKoDh/4VkTR3L4I/z
-	YCeJrljdqeu+hrNiYgKXEk/KgrW0IbRwcpLBsGDImydPRxLSjGJPUl781hBlJOr+mMd9cgFoqMzOE
-	7ZLFW37TIuto1KEHTXLXOP+i5rFu1nkEYUnJ6SKBkqHoDLz7PlWtADncByfXN39fGWM2OS1gnCdeW
-	ZOeDR2+xnzixNGzcjVLg06lndU3m3lxGBMPI/hbGG4P0k/dBhihEL6MNhWyGT0gHg7VF9XYzVZHEE
-	UMPs41LUipmm8ETKI4+cTTH6qJQ2a1NTuSxWB5I2L+/2GuRwtMfKvYDRl9EdRYaDlAnCjTFzi3cs9
-	BpX6FZiA==;
-Received: from i5e86190f.versanet.de ([94.134.25.15] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tGJAk-0002n6-Hw; Wed, 27 Nov 2024 15:37:42 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
-	devicetree@vger.kernel.org,
+	id 1tGJNR-0000000DPiV-0K6J;
+	Wed, 27 Nov 2024 14:50:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2BA52A438CF;
+	Wed, 27 Nov 2024 14:48:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCE5C4CECC;
+	Wed, 27 Nov 2024 14:50:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732719047;
+	bh=vMGke052xOGWISHZqol1znn3ywuvASsby7izzn1gJj4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=koXTkGJxo3isEtRCFjiNXReam61Dfgp4KJGbAV4Knp3yf91fFXntIdFlbR1caP5Rx
+	 z1lvZUdleK4nnMm/Y2zdpnL41Rc2KgqHHS1Ry+ixvdJjuFpPXZIdiRbNHxc1kWPdPE
+	 uVOVpJHaeBiPfq/chohoktmq2ZVahWAKmhoI44080ZCOR5munZh5/YOycccAyXGNgQ
+	 yPjnmTu/W76z7wNY20DoEFFEiz0ZMY3Qz2bSsmTOOR5mRlqhAUIeBwr0OM8u48/V3G
+	 GmBn92n92XcruqXX+DdYznE1w79jtKATbOB6QsDkzN3K0KlBzy84LKzIZ8apmJD/W6
+	 IsR03drAzZARA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dse@thaumatec.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add overlay for tiger-haikou video-demo adapter
-Date: Wed, 27 Nov 2024 15:37:19 +0100
-Message-ID: <20241127143719.660658-4-heiko@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241127143719.660658-1-heiko@sntech.de>
-References: <20241127143719.660658-1-heiko@sntech.de>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on dll_link_up irq in the combined sys irq
+Date: Wed, 27 Nov 2024 15:50:42 +0100
+Message-ID: <20241127145041.3531400-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4690; i=cassel@kernel.org; h=from:subject; bh=vMGke052xOGWISHZqol1znn3ywuvASsby7izzn1gJj4=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLdDQ92/Tihn5LVvuBOXsO9P3vXHsueIFTyNtrReKcvl 04wO6t9RykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACaSdpKR4VpYtjB/4yNj6Zkn U1oCxbY3zFOuW5Ys6eH00mU/h3jdCkaGj7x5bx/GH5Y+dbB/c7W22IXlOiyZWT27HbhrI6a8Fbr GCQA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_063745_312898_EAD97606 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20241127_065049_239999_CEF526C1 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,191 +79,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+Most boards using the pcie-dw-rockchip PCIe controller lack standard
+hotplug support.
 
-This adds support for the video-demo-adapter DEVKIT ADDON CAM-TS-A01
-(https://embedded.cherry.de/product/development-kit/) for the Haikou
-devkit with Tiger RK3588 SoM.
+Thus, when an endpoint is attached to the SoC, users have to rescan the bus
+manually to enumerate the device. This can be avoided by using the
+'dll_link_up' interrupt in the combined system interrupt 'sys'.
 
-The Video Demo adapter is an adapter connected to the fake PCIe slot
-labeled "Video Connector" on the Haikou devkit.
+Once the 'dll_link_up' irq is received, the bus underneath the host bridge
+is scanned to enumerate PCIe endpoint devices.
 
-It's main feature is a Leadtek DSI-display with touchscreen and a camera
-(that is not supported yet). To drive these components a number of
-additional regulators are grouped on the adapter as well as a PCA9670
-gpio-expander to provide the needed additional gpio-lines.
+This commit implements the same functionality that was implemented in the
+DWC based pcie-qcom driver in commit 4581403f6792 ("PCI: qcom: Enumerate
+endpoints based on Link up event in 'global_irq' interrupt").
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+The Root Complex specific device tree binding for pcie-dw-rockchip already
+has the 'sys' interrupt marked as required, so there is no need to update
+the device tree binding. This also means that we can request the 'sys' IRQ
+unconditionally.
+
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rk3588-tiger-haikou-video-demo.dtso       | 144 ++++++++++++++++++
- 2 files changed, 145 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 62 +++++++++++++++++--
+ 1 file changed, 58 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 3f888451a13e..a2404fcdc6fd 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -144,6 +144,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-coolpi-4b.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
-new file mode 100644
-index 000000000000..a7fe18b81170
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
-@@ -0,0 +1,144 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (C) 2024 Cherry Embedded Solutions GmbH
-+ *
-+ * DEVKIT ADDON CAM-TS-A01
-+ * https://embedded.cherry.de/product/development-kit/
-+ *
-+ * DT-overlay for the camera / DSI demo appliance for Haikou boards.
-+ * In the flavour for use with a Tiger system-on-module.
-+ */
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 1170e1107508..ce4b511bff9b 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -389,6 +389,34 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.stop_link = rockchip_pcie_stop_link,
+ };
+ 
++static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
++{
++	struct rockchip_pcie *rockchip = arg;
++	struct dw_pcie *pci = &rockchip->pci;
++	struct dw_pcie_rp *pp = &pci->pp;
++	struct device *dev = pci->dev;
++	u32 reg, val;
 +
-+/dts-v1/;
-+/plugin/;
++	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
++	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
 +
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
++	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
++	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
 +
-+&{/} {
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		power-supply = <&dc_12v>;
-+		pwms = <&pwm0 0 25000 0>;
-+	};
++	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
++		val = rockchip_pcie_get_ltssm(rockchip);
++		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
++			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
++			/* Rescan the bus to enumerate endpoint devices */
++			pci_lock_rescan_remove();
++			pci_rescan_bus(pp->bridge->bus);
++			pci_unlock_rescan_remove();
++		}
++	}
 +
-+	vcc1v8_video: regulator-vcc1v8-video {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc1v8-video";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_baseboard>;
-+	};
++	return IRQ_HANDLED;
++}
 +
-+	vcc2v8_video: regulator-vcc2v8-video {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc2v8-video";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc3v3_baseboard>;
-+	};
+ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ {
+ 	struct rockchip_pcie *rockchip = arg;
+@@ -418,14 +446,31 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
++static int rockchip_pcie_configure_rc(struct platform_device *pdev,
++				      struct rockchip_pcie *rockchip)
+ {
++	struct device *dev = &pdev->dev;
+ 	struct dw_pcie_rp *pp;
++	int irq, ret;
+ 	u32 val;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
+ 		return -ENODEV;
+ 
++	irq = platform_get_irq_byname(pdev, "sys");
++	if (irq < 0) {
++		dev_err(dev, "missing sys IRQ resource\n");
++		return irq;
++	}
 +
-+	video-adapter-leds {
-+		compatible = "gpio-leds";
++	ret = devm_request_threaded_irq(dev, irq, NULL,
++					rockchip_pcie_rc_sys_irq_thread,
++					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
++	if (ret) {
++		dev_err(dev, "failed to request PCIe sys IRQ\n");
++		return ret;
++	}
 +
-+		video-adapter-led {
-+			color = <LED_COLOR_ID_BLUE>;
-+			gpios = <&pca9670 7 GPIO_ACTIVE_HIGH>;
-+			label = "video-adapter-led";
-+			linux,default-trigger = "none";
-+		};
-+	};
-+};
+ 	/* LTSSM enable control mode */
+ 	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+@@ -436,7 +481,16 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+ 
+-	return dw_pcie_host_init(pp);
++	ret = dw_pcie_host_init(pp);
++	if (ret) {
++		dev_err(dev, "failed to initialize host\n");
++		return ret;
++	}
 +
-+&dsi0 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
++	/* unmask DLL up/down indicator */
++	rockchip_pcie_writel_apb(rockchip, 0x20000, PCIE_CLIENT_INTR_MASK_MISC);
 +
-+	panel@0 {
-+		compatible = "leadtek,ltk050h3148w";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		iovcc-supply = <&vcc1v8_video>;
-+		reset-gpios = <&pca9670 0 GPIO_ACTIVE_LOW>;
-+		vci-supply = <&vcc2v8_video>;
-+
-+		port {
-+			mipi_panel_in: endpoint {
-+				remote-endpoint = <&dsi0_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&dsi0_in {
-+	dsi0_in_vp3: endpoint {
-+		remote-endpoint = <&vp3_out_dsi0>;
-+	};
-+};
-+
-+&dsi0_out {
-+	dsi0_out_panel: endpoint {
-+		remote-endpoint = <&mipi_panel_in>;
-+	};
-+};
-+
-+&i2c6 {
-+	/* OV5675, GT911, DW9714 are limited to 400KHz */
-+	clock-frequency = <400000>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	touchscreen@14 {
-+		compatible = "goodix,gt911";
-+		reg = <0x14>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PC3 IRQ_TYPE_LEVEL_LOW>;
-+		irq-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&touch_int>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&pca9670 1 GPIO_ACTIVE_HIGH>;
-+		AVDD28-supply = <&vcc2v8_video>;
-+		VDDIO-supply = <&vcc3v3_baseboard>;
-+	};
-+
-+	pca9670: gpio@27 {
-+		compatible = "nxp,pca9670";
-+		reg = <0x27>;
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+	};
-+};
-+
-+&mipidcphy0 {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	touch {
-+		touch_int: touch-int {
-+			rockchip,pins = <3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&vp3 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	vp3_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
-+		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
-+		remote-endpoint = <&dsi0_in_vp3>;
-+	};
-+};
++	return ret;
+ }
+ 
+ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+@@ -457,7 +511,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 
+ 	ret = devm_request_threaded_irq(dev, irq, NULL,
+ 					rockchip_pcie_ep_sys_irq_thread,
+-					IRQF_ONESHOT, "pcie-sys", rockchip);
++					IRQF_ONESHOT, "pcie-sys-ep", rockchip);
+ 	if (ret) {
+ 		dev_err(dev, "failed to request PCIe sys IRQ\n");
+ 		return ret;
+@@ -553,7 +607,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 
+ 	switch (data->mode) {
+ 	case DW_PCIE_RC_TYPE:
+-		ret = rockchip_pcie_configure_rc(rockchip);
++		ret = rockchip_pcie_configure_rc(pdev, rockchip);
+ 		if (ret)
+ 			goto deinit_clk;
+ 		break;
 -- 
-2.45.2
+2.47.0
 
 
 _______________________________________________
