@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E4B5D6ACE3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Nov 2024 14:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D4B4D6ACE4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Nov 2024 15:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ApFn22l2GgPEb9q4YZuqLzBfYo9OEWyhnyfh5YVkq7c=; b=VitGxeZ9HPzOHa
-	Kg0MKMzDBSq5vnRdQJBwD7TB872ZceNZHz0MTiRS7sCGmtZt4jcQxljw0wg9J7IW2+nwVyc2TI/tw
-	74PPBbMBsXhQwb7HmHhc1L+/7iE0+RJ15/tvLUb0Ehb4iiww1Qj49Af4OAg6+oUp36t0kBDmRt45W
-	w6UNdyV6TG2Qy924cTyOwbiTs6v2NLGLH+mnX6huWcxDcWLUfMji94vpURJL03LHvKXXuMRxvig9r
-	7zssJZ3u+Jw11Lk/PfpMY01ujZY1KwDHnS8GifFBNW5LuIErkNCmDrq8/Cr45yTmzuOyHOl195Tcy
-	KgtP+CMWK7J5XHkDqVkA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0a0vvg4zXFD91LbcC9LMdOu92VJbWaMBmkJB0aseNC8=; b=je75FMNYwOQsqJ
+	MfkYcuDZgwgh/mJ05EwzwnJJDmQSF5BpXoPl/O9ZB885cmtbKDw+EBSyubnuxzNHesOSbVCzw5u+C
+	BtAqdXE1nu+3kZwR2FD0Waoup/nQ/ZkD4EUDga+QYlPSV6fThYgqTbrr6KYAyRLAWB98Hr3CgcJ0g
+	DvDormaSEK1f9/3DFu9a+vookx8RHU9UN4dqCOYmCn0MjnFGAqFMcBvweAXENO+OHvg+MRBcrsNUM
+	t6w385r1g+eXmULzptlGHVDWddQPvSlvSsw5bKUXexiHeKGOrK1Px2aDWa9oDTg922SwfDdohdzmD
+	gZmH4F6es3zQSGbSxBJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJOw-0000000DQ0g-1kan;
-	Wed, 27 Nov 2024 14:52:22 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tGJcj-0000000DS67-27zS;
+	Wed, 27 Nov 2024 15:06:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGJNR-0000000DPiV-0K6J;
-	Wed, 27 Nov 2024 14:50:50 +0000
+	id 1tGJbi-0000000DRqh-2Y20;
+	Wed, 27 Nov 2024 15:05:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2BA52A438CF;
-	Wed, 27 Nov 2024 14:48:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCE5C4CECC;
-	Wed, 27 Nov 2024 14:50:44 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C5CAD5C3A6D;
+	Wed, 27 Nov 2024 15:04:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A25E8C4CED3;
+	Wed, 27 Nov 2024 15:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732719047;
-	bh=vMGke052xOGWISHZqol1znn3ywuvASsby7izzn1gJj4=;
-	h=From:To:Cc:Subject:Date:From;
-	b=koXTkGJxo3isEtRCFjiNXReam61Dfgp4KJGbAV4Knp3yf91fFXntIdFlbR1caP5Rx
-	 z1lvZUdleK4nnMm/Y2zdpnL41Rc2KgqHHS1Ry+ixvdJjuFpPXZIdiRbNHxc1kWPdPE
-	 uVOVpJHaeBiPfq/chohoktmq2ZVahWAKmhoI44080ZCOR5munZh5/YOycccAyXGNgQ
-	 yPjnmTu/W76z7wNY20DoEFFEiz0ZMY3Qz2bSsmTOOR5mRlqhAUIeBwr0OM8u48/V3G
-	 GmBn92n92XcruqXX+DdYznE1w79jtKATbOB6QsDkzN3K0KlBzy84LKzIZ8apmJD/W6
-	 IsR03drAzZARA==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on dll_link_up irq in the combined sys irq
-Date: Wed, 27 Nov 2024 15:50:42 +0100
-Message-ID: <20241127145041.3531400-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.47.0
+	s=k20201202; t=1732719933;
+	bh=sB5WsF2yTtwAJZFMBi4Ub30MJ2hXC4QT4NG4uzLcRRo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ept6l6slC82V06hpuS5FuclQ4x/1Oo7ci31otvDJKT8wxxgrFr+TrYAC6SwVz7cfw
+	 BTpUnHj15/vdehiZspar722ryFF4mXbbuCt7B7iYEEG/ONglHHnya1lhfZh66c9paQ
+	 d80g1Tf4C3vjhBpdlBJIgs/4/BWbZUCbJffNNwUxCIA1G2//4kcw2fJpGwFsO8I+ht
+	 RLKa4KxposzT9J6o+xR6nR2RHUbjYfCairL/JawkR7ruhhycSGgfGwBRZrKSX8iRXh
+	 SU3PiZat6A0VKGvQ5bjVIBLXvZGisz2uChmgk89ABMHwSY4FO2uLkSOADd1cmOjvao
+	 yZdAXShismNyA==
+Date: Wed, 27 Nov 2024 09:05:31 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: rfoss@kernel.org, neil.armstrong@linaro.org, quentin.schulz@cherry.de,
+	maarten.lankhorst@linux.intel.com, krzk+dt@kernel.org,
+	andy.yan@rock-chips.com, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	mripard@kernel.org, tzimmermann@suse.de,
+	Laurent.pinchart@ideasonboard.com,
+	linux-rockchip@lists.infradead.org, conor+dt@kernel.org,
+	jernej.skrabec@gmail.com, Heiko Stuebner <heiko.stuebner@cherry.de>,
+	andrzej.hajda@intel.com, jonas@kwiboo.se,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/3] dt-bindings: display: rockchip: Add schema for
+ RK3588 DW DSI2 controller
+Message-ID: <173271993052.3509811.7014863879823500729.robh@kernel.org>
+References: <20241126201213.522753-1-heiko@sntech.de>
+ <20241126201213.522753-3-heiko@sntech.de>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4690; i=cassel@kernel.org; h=from:subject; bh=vMGke052xOGWISHZqol1znn3ywuvASsby7izzn1gJj4=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLdDQ92/Tihn5LVvuBOXsO9P3vXHsueIFTyNtrReKcvl 04wO6t9RykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACaSdpKR4VpYtjB/4yNj6Zkn U1oCxbY3zFOuW5Ys6eH00mU/h3jdCkaGj7x5bx/GH5Y+dbB/c7W22IXlOiyZWT27HbhrI6a8Fbr GCQA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <20241126201213.522753-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241127_065049_239999_CEF526C1 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20241127_070534_711494_80418B62 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,140 +81,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Most boards using the pcie-dw-rockchip PCIe controller lack standard
-hotplug support.
 
-Thus, when an endpoint is attached to the SoC, users have to rescan the bus
-manually to enumerate the device. This can be avoided by using the
-'dll_link_up' interrupt in the combined system interrupt 'sys'.
+On Tue, 26 Nov 2024 21:12:12 +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> The Display Serial Interface 2 (DSI-2) is part of a group of communication
+> protocols defined by the MIPI Alliance. The RK3588 implements this
+> specification in its two MIPI DSI-2 Host Controllers that are based on a
+> new Synopsis IP.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>  .../rockchip/rockchip,rk3588-mipi-dsi2.yaml   | 119 ++++++++++++++++++
+>  1 file changed, 119 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+> 
 
-Once the 'dll_link_up' irq is received, the bus underneath the host bridge
-is scanned to enumerate PCIe endpoint devices.
-
-This commit implements the same functionality that was implemented in the
-DWC based pcie-qcom driver in commit 4581403f6792 ("PCI: qcom: Enumerate
-endpoints based on Link up event in 'global_irq' interrupt").
-
-The Root Complex specific device tree binding for pcie-dw-rockchip already
-has the 'sys' interrupt marked as required, so there is no need to update
-the device tree binding. This also means that we can request the 'sys' IRQ
-unconditionally.
-
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 62 +++++++++++++++++--
- 1 file changed, 58 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 1170e1107508..ce4b511bff9b 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -389,6 +389,34 @@ static const struct dw_pcie_ops dw_pcie_ops = {
- 	.stop_link = rockchip_pcie_stop_link,
- };
- 
-+static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
-+{
-+	struct rockchip_pcie *rockchip = arg;
-+	struct dw_pcie *pci = &rockchip->pci;
-+	struct dw_pcie_rp *pp = &pci->pp;
-+	struct device *dev = pci->dev;
-+	u32 reg, val;
-+
-+	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
-+	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-+
-+	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
-+	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
-+
-+	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-+		val = rockchip_pcie_get_ltssm(rockchip);
-+		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
-+			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
-+			/* Rescan the bus to enumerate endpoint devices */
-+			pci_lock_rescan_remove();
-+			pci_rescan_bus(pp->bridge->bus);
-+			pci_unlock_rescan_remove();
-+		}
-+	}
-+
-+	return IRQ_HANDLED;
-+}
-+
- static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- {
- 	struct rockchip_pcie *rockchip = arg;
-@@ -418,14 +446,31 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
--static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
-+static int rockchip_pcie_configure_rc(struct platform_device *pdev,
-+				      struct rockchip_pcie *rockchip)
- {
-+	struct device *dev = &pdev->dev;
- 	struct dw_pcie_rp *pp;
-+	int irq, ret;
- 	u32 val;
- 
- 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
- 		return -ENODEV;
- 
-+	irq = platform_get_irq_byname(pdev, "sys");
-+	if (irq < 0) {
-+		dev_err(dev, "missing sys IRQ resource\n");
-+		return irq;
-+	}
-+
-+	ret = devm_request_threaded_irq(dev, irq, NULL,
-+					rockchip_pcie_rc_sys_irq_thread,
-+					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
-+	if (ret) {
-+		dev_err(dev, "failed to request PCIe sys IRQ\n");
-+		return ret;
-+	}
-+
- 	/* LTSSM enable control mode */
- 	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-@@ -436,7 +481,16 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
- 
--	return dw_pcie_host_init(pp);
-+	ret = dw_pcie_host_init(pp);
-+	if (ret) {
-+		dev_err(dev, "failed to initialize host\n");
-+		return ret;
-+	}
-+
-+	/* unmask DLL up/down indicator */
-+	rockchip_pcie_writel_apb(rockchip, 0x20000, PCIE_CLIENT_INTR_MASK_MISC);
-+
-+	return ret;
- }
- 
- static int rockchip_pcie_configure_ep(struct platform_device *pdev,
-@@ -457,7 +511,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
- 
- 	ret = devm_request_threaded_irq(dev, irq, NULL,
- 					rockchip_pcie_ep_sys_irq_thread,
--					IRQF_ONESHOT, "pcie-sys", rockchip);
-+					IRQF_ONESHOT, "pcie-sys-ep", rockchip);
- 	if (ret) {
- 		dev_err(dev, "failed to request PCIe sys IRQ\n");
- 		return ret;
-@@ -553,7 +607,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	switch (data->mode) {
- 	case DW_PCIE_RC_TYPE:
--		ret = rockchip_pcie_configure_rc(rockchip);
-+		ret = rockchip_pcie_configure_rc(pdev, rockchip);
- 		if (ret)
- 			goto deinit_clk;
- 		break;
--- 
-2.47.0
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
