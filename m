@@ -4,78 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08461D690EC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Nov 2024 09:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D97D690F9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Nov 2024 11:30:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B/n/ENW2e3fcmnNEuuwULHuR+qvETrXbiZ7Rgdr189s=; b=W2PqChzGVa6C0S
-	YLMF1+Y4CLG6Ow9cHdSITTb5NEz5o0i66nzGVFqBYILKQRVUfSCPnTetAdoPNp4NPm4ehQ5eeyHGB
-	8CH7IodeKbm5RdVBQ0EpqlF2DPs0MmDXcZ/0W2D470Aco6UpltjCaxRAyJznFlmh8AaZMJgUg96iO
-	8Ob3/L2/TkaqCa0B3++Ku+e1xJrLu9Zq6y9p7L0yiDhG88EnDkCMx7DfuKB2zKk8rma1/o72Swmwd
-	YpsttUwCQInWjCVmDjylO7hxb9FyW6yBGap+Omhdnr9oYBDGxBdEb1qd2GZWMRdWDdFhHIIYxKj5k
-	ei/rdhnYN9kK2z6Zb1qA==;
+	List-Owner; bh=wSXW1AYlgJ/gK4usU8nuZmo50uvYz7lj7dOQJ5ue35E=; b=5Gv6gTIz+N3NHf
+	Jw/riqc8/F1z0Ko/JTVrVJqhkCCyAtTR1Nn6pt/X7iQ4YWU7PGdfa0bb41FSQJQCmg+I3aLVtgTMx
+	TWCbjqvW0ko8naBg6gSBuYaEXSUkvB7tmkxuhL5o1bm3yimpLOkoLAmEZWHqtrWHZ1hX7bJsG3Dyl
+	MmEz0lqojwDEZEzH3JbGPhuujZ9uFbSqykBVYfC6ft9mjMvurH04NrqrQ1Hj1Ga9OdGL27DNVFLw2
+	ChYKc+HVquR4ji5mdbye+XbeNpICiCvIhHjtXCmABqEhdSPXgnhiduiI9bQm1jMzwDA9DUu+bUqAY
+	mJSdS8sH6rM6Z4G/jitg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGacD-0000000F7dj-2Fq5;
-	Thu, 28 Nov 2024 09:15:13 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1tGcil-0000000FMbG-1Wuz;
+	Thu, 28 Nov 2024 11:30:07 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGabC-0000000F7W0-3zMq;
-	Thu, 28 Nov 2024 09:14:12 +0000
+	id 1tGchl-0000000FMVZ-0whK;
+	Thu, 28 Nov 2024 11:29:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1732785251; x=1764321251;
+  t=1732793345; x=1764329345;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=xw2wO2fUU8KQ8iSrqcL95ODU94SFi+VqIXlFh7Mb7T0=;
-  b=lb1Ipw074WlN9SR7xAjO2h4H8+u5Xpordn7IwxNJkZhzDo20GVcZ3iwj
-   5s71VRJjD841bRKnCx0tLbWHyScGU+2V+c7nM3054XP+L0R++smzpVuSM
-   rKX/5wHuvXU0Jc86EtwKKuT7vOME6/6XznvuoqDjSwOLfpPAHlNEla7y7
-   lW0FUblYGJOTTB4sQEirAjT8kSS48PG+U0fgmcqOSk6iBfjHmOeslCJpa
-   23OHgRHVQHY8KeatHUyFQNbLCH9+W3MkRoo7On6fs6QXHL2hMrL6xf+p7
-   xDVr7y7w93UL2/mH0NaD/KbqzCuDkmPyXiNE0NqegndAGjKk10+M90E3/
-   g==;
-X-CSE-ConnectionGUID: lx95Vvg7T8i6njHX/T4tCA==
-X-CSE-MsgGUID: C4IWD1sCQ9uA2WdxSfHQow==
-X-IronPort-AV: E=McAfee;i="6700,10204,11269"; a="32946943"
+  bh=GOGSdHxhNEpjsOwO7lywxaLS0up1lx0fM8IsWbTEf+E=;
+  b=Q7/2/0oP3/BGvz/oe3UlOp119oK94LJA2AdEPz3DEPmOris4HEAOASui
+   NyazCDsKUNnQIyAA2quC1lF8+X0vL3p09lT7+wWFks5y3HYdfthbRoqQx
+   Y0N+aiv6u5Zu+RQZ+Xe/9ufp3Wbb892ztnpbeHru4Oq2UNSOv2HtrHjBq
+   xWcsQ1XpU7c9+vjgikGLVt9zDkL6EKu3UCs1dbMxSQKowQ40YFNfAQMYm
+   T+AOLEID5cO7gWTUTLNwCcbEVTl7eR2AHJt9Yj+z1R588C0Qur5ierLQJ
+   IyenxJL0ApABYSIPd1heZSKl7wWZ7oPKRiRz9YGb9lkBlhFbjBbS/a5wp
+   A==;
+X-CSE-ConnectionGUID: QuG3BCXcR1+n0gNktZu5tA==
+X-CSE-MsgGUID: MjbUBkbcQfmvD2XyrDzi8g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11269"; a="33076898"
 X-IronPort-AV: E=Sophos;i="6.12,192,1728975600"; 
-   d="scan'208";a="32946943"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2024 01:14:09 -0800
-X-CSE-ConnectionGUID: uqOmvXfmQWGhfoFoRafCKg==
-X-CSE-MsgGUID: qGqrPxt/RbKGmMsdYDmvEQ==
+   d="scan'208";a="33076898"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2024 03:29:00 -0800
+X-CSE-ConnectionGUID: Fa0PQXDvT92Zg4JrkfRbxA==
+X-CSE-MsgGUID: TnVO9SYjSDuUlM2KNDH2dA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.12,192,1728975600"; 
-   d="scan'208";a="96942880"
+   d="scan'208";a="92020639"
 Received: from lkp-server01.sh.intel.com (HELO 8122d2fc1967) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 28 Nov 2024 01:14:03 -0800
+  by fmviesa007.fm.intel.com with ESMTP; 28 Nov 2024 03:28:54 -0800
 Received: from kbuild by 8122d2fc1967 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1tGab3-0009Nx-07;
-	Thu, 28 Nov 2024 09:14:01 +0000
-Date: Thu, 28 Nov 2024 17:13:47 +0800
+	id 1tGchX-0009WL-33;
+	Thu, 28 Nov 2024 11:28:51 +0000
+Date: Thu, 28 Nov 2024 19:28:15 +0800
 From: kernel test robot <lkp@intel.com>
-To: Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de,
-	sebastian.reichel@collabora.com, heiko@sntech.de,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org, rfoss@kernel.org,
+	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+	jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dse@thaumatec.com, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v4 2/2] phy: rockchip: Add Samsung MIPI D-/C-PHY driver
-Message-ID: <202411281638.UyY41bPE-lkp@intel.com>
-References: <20241126131736.465111-3-heiko@sntech.de>
+	quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Daniel Semkowicz <dse@thaumatec.com>
+Subject: Re: [PATCH v2 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
+Message-ID: <202411281937.QyowC5lv-lkp@intel.com>
+References: <20241126201213.522753-4-heiko@sntech.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241126131736.465111-3-heiko@sntech.de>
+In-Reply-To: <20241126201213.522753-4-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241128_011411_092905_5A9CEDC0 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20241128_032905_299706_C8DDA081 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,171 +100,128 @@ Hi Heiko,
 
 kernel test robot noticed the following build errors:
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on robh/for-next linus/master v6.12 next-20241128]
+[auto build test ERROR on linus/master]
+[also build test ERROR on v6.12 next-20241128]
+[cannot apply to rockchip/for-next]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Heiko-Stuebner/dt-bindings-phy-Add-Rockchip-MIPI-C-D-PHY-schema/20241128-100435
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20241126131736.465111-3-heiko%40sntech.de
-patch subject: [PATCH v4 2/2] phy: rockchip: Add Samsung MIPI D-/C-PHY driver
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20241128/202411281638.UyY41bPE-lkp@intel.com/config)
+url:    https://github.com/intel-lab-lkp/linux/commits/Heiko-Stuebner/drm-bridge-synopsys-Add-MIPI-DSI2-host-controller-bridge/20241128-103709
+base:   linus/master
+patch link:    https://lore.kernel.org/r/20241126201213.522753-4-heiko%40sntech.de
+patch subject: [PATCH v2 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
+config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20241128/202411281937.QyowC5lv-lkp@intel.com/config)
 compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 592c0fe55f6d9a811028b5f3507be91458ab2713)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241128/202411281638.UyY41bPE-lkp@intel.com/reproduce)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241128/202411281937.QyowC5lv-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411281638.UyY41bPE-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202411281937.QyowC5lv-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
-   In file included from drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:8:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:548:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     548 |         val = __raw_readb(PCI_IOBASE + addr);
-         |                           ~~~~~~~~~~ ^
-   include/asm-generic/io.h:561:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     561 |         val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:37:51: note: expanded from macro '__le16_to_cpu'
-      37 | #define __le16_to_cpu(x) ((__force __u16)(__le16)(x))
-         |                                                   ^
-   In file included from drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:8:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:574:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     574 |         val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:35:51: note: expanded from macro '__le32_to_cpu'
-      35 | #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
-         |                                                   ^
-   In file included from drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:8:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:585:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     585 |         __raw_writeb(value, PCI_IOBASE + addr);
-         |                             ~~~~~~~~~~ ^
-   include/asm-generic/io.h:595:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     595 |         __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   include/asm-generic/io.h:605:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     605 |         __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   In file included from drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:21:
-   In file included from include/linux/mm.h:2213:
+   In file included from drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:20:
+   In file included from include/drm/bridge/dw_mipi_dsi2.h:15:
+   In file included from include/drm/drm_atomic.h:31:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2223:
    include/linux/vmstat.h:518:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
      518 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
          |                               ~~~~~~~~~~~ ^ ~~~
->> drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:895:23: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     895 |                            I_MUX_SEL_MASK, I_MUX_SEL_400MV);
-         |                                            ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:33:26: note: expanded from macro 'I_MUX_SEL_400MV'
-      33 | #define I_MUX_SEL_400MV         I_MUX_SEL(0)
-         |                                 ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:32:23: note: expanded from macro 'I_MUX_SEL'
-      32 | #define I_MUX_SEL(x)            FIELD_PREP(I_MUX_SEL_MASK, x)
-         |                                 ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:900:50: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     900 |         regmap_write(samsung->regmap, DPHY_MC_GNR_CON1, T_PHY_READY(0x2000));
-         |                                                         ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:69:25: note: expanded from macro 'T_PHY_READY'
-      69 | #define T_PHY_READY(x)          FIELD_PREP(GENMASK(15, 0), x)
-         |                                 ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:945:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     945 |                            S(samsung->pll.scaler) | P(samsung->pll.prediv));
-         |                            ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:40:16: note: expanded from macro 'S'
-      40 | #define S(x)                    FIELD_PREP(S_MASK, x)
-         |                                 ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:1116:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1116 |         val = EDGE_CON(7) | EDGE_CON_DIR(0) | EDGE_CON_EN |
+>> drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:315:9: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     315 |         val |= PHY_LPTX_CLK_DIV(esc_clk_div);
+         |                ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:72:30: note: expanded from macro 'PHY_LPTX_CLK_DIV'
+      72 | #define PHY_LPTX_CLK_DIV(x)             FIELD_PREP(GENMASK(12, 8), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:340:6: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     340 |                    PHY_IPI_RATIO(tmp));
+         |                    ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:88:27: note: expanded from macro 'PHY_IPI_RATIO'
+      88 | #define PHY_IPI_RATIO(x)                FIELD_PREP(GENMASK(21, 0), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:361:53: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     361 |         regmap_write(dsi2->regmap, DSI2_PHY_LP2HS_MAN_CFG, PHY_LP2HS_TIME(timing.data_lp2hs));
+         |                                                            ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:77:28: note: expanded from macro 'PHY_LP2HS_TIME'
+      77 | #define PHY_LP2HS_TIME(x)               FIELD_PREP(GENMASK(28, 0), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:375:10: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     375 |                 val |= PPI_WIDTH(PPI_WIDTH_8_BITS);
+         |                        ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:68:24: note: expanded from macro 'PPI_WIDTH'
+      68 | #define PPI_WIDTH(x)                    FIELD_PREP(GENMASK(9, 8), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:388:9: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     388 |         val |= PHY_LANES(dsi2->lanes);
+         |                ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:69:24: note: expanded from macro 'PHY_LANES'
+      69 | #define PHY_LANES(x)                    FIELD_PREP(GENMASK(5, 4), (x) - 1)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:409:48: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     409 |         regmap_write(dsi2->regmap, DSI2_DSI_VCID_CFG, TX_VCID(dsi2->channel));
+         |                                                       ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:96:22: note: expanded from macro 'TX_VCID'
+      96 | #define TX_VCID(x)                      FIELD_PREP(GENMASK(1, 0), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:430:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     430 |         val = IPI_DEPTH(color_depth) |
          |               ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:71:22: note: expanded from macro 'EDGE_CON'
-      71 | #define EDGE_CON(x)             FIELD_PREP(GENMASK(14, 12), x)
-         |                                 ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:1170:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1170 |         val = EDGE_CON(7) | EDGE_CON_DIR(0) | EDGE_CON_EN |
-         |               ^
-   drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:71:22: note: expanded from macro 'EDGE_CON'
-      71 | #define EDGE_CON(x)             FIELD_PREP(GENMASK(14, 12), x)
-         |                                 ^
-   7 warnings and 5 errors generated.
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:116:24: note: expanded from macro 'IPI_DEPTH'
+     116 | #define IPI_DEPTH(x)                    FIELD_PREP(GENMASK(7, 4), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:445:55: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     445 |         regmap_write(dsi2->regmap, DSI2_IPI_VID_VSA_MAN_CFG, VID_VSA_LINES(vsa));
+         |                                                              ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:133:27: note: expanded from macro 'VID_VSA_LINES'
+     133 | #define VID_VSA_LINES(x)                FIELD_PREP(GENMASK(9, 0), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:461:51: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     461 |         regmap_write(dsi2->regmap, DSI2_IPI_PIX_PKT_CFG, MAX_PIX_PKT(val));
+         |                                                          ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:141:26: note: expanded from macro 'MAX_PIX_PKT'
+     141 | #define MAX_PIX_PKT(x)                  FIELD_PREP(GENMASK(15, 0), x)
+         |                                         ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:573:56: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     573 |         regmap_write(dsi2->regmap, DSI2_CRI_TX_HDR, hdr_val | CMD_TX_MODE(lpm));
+         |                                                               ^
+   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:110:26: note: expanded from macro 'CMD_TX_MODE'
+     110 | #define CMD_TX_MODE(x)                  FIELD_PREP(BIT(24), x)
+         |                                         ^
+   1 warning and 10 errors generated.
 
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for MODVERSIONS
-   Depends on [n]: MODULES [=y] && !COMPILE_TEST [=y]
-   Selected by [y]:
-   - RANDSTRUCT_FULL [=y] && (CC_HAS_RANDSTRUCT [=y] || GCC_PLUGINS [=n]) && MODULES [=y]
-   WARNING: unmet direct dependencies detected for GET_FREE_REGION
-   Depends on [n]: SPARSEMEM [=n]
-   Selected by [m]:
-   - RESOURCE_KUNIT_TEST [=m] && RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
 
+vim +/FIELD_PREP +315 drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
 
-vim +/FIELD_PREP +895 drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-
-   881	
-   882	static void samsung_mipi_dcphy_bias_block_enable(struct samsung_mipi_dcphy *samsung)
-   883	{
-   884		u32 bias_con2 = 0x3223;
-   885	
-   886		regmap_write(samsung->regmap, BIAS_CON0, 0x0010);
-   887		regmap_write(samsung->regmap, BIAS_CON1, 0x0110);
-   888		regmap_write(samsung->regmap, BIAS_CON2, bias_con2);
-   889	
-   890		/* default output voltage select:
-   891		 * dphy: 400mv
-   892		 * cphy: 530mv
-   893		 */
-   894		regmap_update_bits(samsung->regmap, BIAS_CON4,
- > 895				   I_MUX_SEL_MASK, I_MUX_SEL_400MV);
-   896	}
-   897	
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  300  
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  301  static void dw_mipi_dsi2_phy_clk_mode_cfg(struct dw_mipi_dsi2 *dsi2)
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  302  {
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  303  	u32 sys_clk, esc_clk_div;
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  304  	u32 val = 0;
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  305  
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  306  	/*
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  307  	 * clk_type should be NON_CONTINUOUS_CLK before
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  308  	 * initial deskew calibration be sent.
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  309  	 */
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  310  	val |= NON_CONTINUOUS_CLK;
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  311  
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  312  	/* The maximum value of the escape clock frequency is 20MHz */
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  313  	sys_clk = clk_get_rate(dsi2->sys_clk) / USEC_PER_SEC;
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  314  	esc_clk_div = DIV_ROUND_UP(sys_clk, 20 * 2);
+c55ecdf5f795ca Heiko Stuebner 2024-11-26 @315  	val |= PHY_LPTX_CLK_DIV(esc_clk_div);
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  316  
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  317  	regmap_write(dsi2->regmap, DSI2_PHY_CLK_CFG, val);
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  318  }
+c55ecdf5f795ca Heiko Stuebner 2024-11-26  319  
 
 -- 
 0-DAY CI Kernel Test Service
