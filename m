@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D97D690F9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Nov 2024 11:30:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBFED69100
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Nov 2024 11:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wSXW1AYlgJ/gK4usU8nuZmo50uvYz7lj7dOQJ5ue35E=; b=5Gv6gTIz+N3NHf
-	Jw/riqc8/F1z0Ko/JTVrVJqhkCCyAtTR1Nn6pt/X7iQ4YWU7PGdfa0bb41FSQJQCmg+I3aLVtgTMx
-	TWCbjqvW0ko8naBg6gSBuYaEXSUkvB7tmkxuhL5o1bm3yimpLOkoLAmEZWHqtrWHZ1hX7bJsG3Dyl
-	MmEz0lqojwDEZEzH3JbGPhuujZ9uFbSqykBVYfC6ft9mjMvurH04NrqrQ1Hj1Ga9OdGL27DNVFLw2
-	ChYKc+HVquR4ji5mdbye+XbeNpICiCvIhHjtXCmABqEhdSPXgnhiduiI9bQm1jMzwDA9DUu+bUqAY
-	mJSdS8sH6rM6Z4G/jitg==;
+	List-Owner; bh=IsUVVWLtKr41zozQEZUuOcXMn9HeN4PSKksOYd/TWsE=; b=MsO0VOfzfttDZT
+	/hwcR7LLZb41U/fZSOAL3XjHPTD1Z2vDOzzESripwEmhZu9oJz1YIxWuRCsfs6Dvy6u0rDvSAGcSM
+	8GSTz9c4ge9apmYhouNDncJ+NPRALyagLD2Z/VjbNTAp7xKqACe98w4w0xB3Syq3JInVhVkZ7m70/
+	aWaTAns1nPCncP7FAwBr2zX945zq+WJCzx5cPsMtXi0AhoBzXp+8ZxZbOojR1jj1zGdd8I0ECw0ng
+	cjM7yTudrfQw+Bw8+QsNnqA5xUbs1XZ8tbejlvYQqKp5UgUBAJTWNAE3bVZaS4EWgwjLOPue8KX+t
+	8NKsScA5BhI59lmfTxJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGcil-0000000FMbG-1Wuz;
-	Thu, 28 Nov 2024 11:30:07 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1tGdAa-0000000FQF5-3cXH;
+	Thu, 28 Nov 2024 11:58:52 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGchl-0000000FMVZ-0whK;
-	Thu, 28 Nov 2024 11:29:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1732793345; x=1764329345;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=GOGSdHxhNEpjsOwO7lywxaLS0up1lx0fM8IsWbTEf+E=;
-  b=Q7/2/0oP3/BGvz/oe3UlOp119oK94LJA2AdEPz3DEPmOris4HEAOASui
-   NyazCDsKUNnQIyAA2quC1lF8+X0vL3p09lT7+wWFks5y3HYdfthbRoqQx
-   Y0N+aiv6u5Zu+RQZ+Xe/9ufp3Wbb892ztnpbeHru4Oq2UNSOv2HtrHjBq
-   xWcsQ1XpU7c9+vjgikGLVt9zDkL6EKu3UCs1dbMxSQKowQ40YFNfAQMYm
-   T+AOLEID5cO7gWTUTLNwCcbEVTl7eR2AHJt9Yj+z1R588C0Qur5ierLQJ
-   IyenxJL0ApABYSIPd1heZSKl7wWZ7oPKRiRz9YGb9lkBlhFbjBbS/a5wp
-   A==;
-X-CSE-ConnectionGUID: QuG3BCXcR1+n0gNktZu5tA==
-X-CSE-MsgGUID: MjbUBkbcQfmvD2XyrDzi8g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11269"; a="33076898"
-X-IronPort-AV: E=Sophos;i="6.12,192,1728975600"; 
-   d="scan'208";a="33076898"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2024 03:29:00 -0800
-X-CSE-ConnectionGUID: Fa0PQXDvT92Zg4JrkfRbxA==
-X-CSE-MsgGUID: TnVO9SYjSDuUlM2KNDH2dA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,192,1728975600"; 
-   d="scan'208";a="92020639"
-Received: from lkp-server01.sh.intel.com (HELO 8122d2fc1967) ([10.239.97.150])
-  by fmviesa007.fm.intel.com with ESMTP; 28 Nov 2024 03:28:54 -0800
-Received: from kbuild by 8122d2fc1967 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tGchX-0009WL-33;
-	Thu, 28 Nov 2024 11:28:51 +0000
-Date: Thu, 28 Nov 2024 19:28:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org, rfoss@kernel.org,
-	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
-	jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Daniel Semkowicz <dse@thaumatec.com>
-Subject: Re: [PATCH v2 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
-Message-ID: <202411281937.QyowC5lv-lkp@intel.com>
-References: <20241126201213.522753-4-heiko@sntech.de>
+	id 1tGdAY-0000000FQET-1uLY
+	for linux-rockchip@lists.infradead.org;
+	Thu, 28 Nov 2024 11:58:51 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id ada2fe7eead31-4adde46ccf8so237698137.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 28 Nov 2024 03:58:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1732795128; x=1733399928; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=thmJxm3LbpxOmnTbPgHnHFkvb0Qe5NEu+nq09ws8ow4=;
+        b=C9DvP+23aNrAJ06ovbniuQBPq1DTjSyHRArBRYkNwXgukkKdgmFfmW6DUTzmsVYzsg
+         9ky+N8tGH2VmkBdGqA9SP7zZqyeYZWFI+y79v+p/kivo+PgYb/zbY4G02XzSXnZZPBGT
+         /Yg/mH3dOkjSVoL1E4P24escwBSkojs7dltKzW+EYlkKMCUTxpebhRU9AxBCAcLQLo7x
+         TP+EkdSVj2wo6wL5Oecnp96tSlfeZcb78SRjXqfc5e/WyhxL3UetL/Cr0ls8yZCp0C48
+         cd5lDLeZrutclk9Yqc0oHqNeWzuchIKc2NhTC7NxO75otaGRj+IrK2QOCkLovT0dehqR
+         /KkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732795128; x=1733399928;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=thmJxm3LbpxOmnTbPgHnHFkvb0Qe5NEu+nq09ws8ow4=;
+        b=jg1ebelqzP9YUSWe8TgNTHxWqnMzAm5kE8JpstZtuHrD/O1Lf23CmDySYfLLM+E4Wq
+         k2F9un35g2EBadnhrWAdvx3UR1M0ZbYaAmfA++vyLphmcS3MsKHc0+vrwersRKqqK+mF
+         8SQBxV48xpDT0bjSJy6Gyf7ppQTEhDQ1J+8WjCNBWJWFpNMaOF8nRuFaJTNn9CeeZtcl
+         U7tAWq3RV1UEuxDhShzXJVzYz+MYoQt79Pqmkh6IpNDuL+DQLUha/GuldyHBUBSNeCG7
+         +p95W/pXX3Cbp63szAMzD/lvkm+8fJ8CnbZYzLRgiaELbYHg6Yw12QdBpt8720qZkxu3
+         NtPg==
+X-Forwarded-Encrypted: i=1; AJvYcCVFjwe5sj1RG2D+PypAUe4R2n302TsGw4+IRQnYGKfFVXusGJTIJZXTLCiIUrKdZfr6YFW4MkQwtWqEvYMDOg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywk0aSKimICFpfYOzRqYyKegUES+J8xiQBz+095zBuau1FrgVGF
+	qf8u+8zZ8EX8FCfvSA0SyEMC9jviClVIyZ01bHlRe656ZbxJ2a6lghMpoCbsRaP0RAxir1ZXSr6
+	iTia1SEVTHEt1YMvmIRlmKKsWhwE=
+X-Gm-Gg: ASbGnctSKBSlOJmBsFwUPqCfhkqDW8LXrE63OSJcx8R0WxdkdKoCgRZEUnuof8W7CWv
+	xAkf4JdgZB50bIMd+w9P5rob9w5wt8bm4poO+VkU5e5h6W6xsOCYQWacLlPZWMvgu
+X-Google-Smtp-Source: AGHT+IGjaZGV+Xcbgpdco0vufOvN8dzVlgh6sNvJ63b9BEm6HPt5yx45kBcgYD+xyfaWKpEXU1SCoB0b3NSQnNAptoU=
+X-Received: by 2002:a05:6102:c09:b0:4af:38f1:5127 with SMTP id
+ ada2fe7eead31-4af4491a0e8mr9471082137.22.1732795128320; Thu, 28 Nov 2024
+ 03:58:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241126201213.522753-4-heiko@sntech.de>
+References: <20241127015224.2361-1-naoki@radxa.com> <002469435A2D5C9E+b9a05cda-1ccf-46c9-8f4e-7a8534b1a875@radxa.com>
+In-Reply-To: <002469435A2D5C9E+b9a05cda-1ccf-46c9-8f4e-7a8534b1a875@radxa.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Thu, 28 Nov 2024 15:58:36 +0400
+Message-ID: <CABjd4YxAj09xWFzWW1d5XF7eU=M3KP+UcjyuRnt7JeabXt1Hew@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: rename rfkill label for Radxa ROCK 5B
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, robh@kernel.org, conor+dt@kernel.org, inindev@gmail.com, 
+	geert+renesas@glider.be, devicetree@vger.kernel.org, 
+	sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, 
+	jbx6244@gmail.com, krzk+dt@kernel.org, dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241128_032905_299706_C8DDA081 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20241128_035850_489216_B91258A7 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,143 +89,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.12 next-20241128]
-[cannot apply to rockchip/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Heiko-Stuebner/drm-bridge-synopsys-Add-MIPI-DSI2-host-controller-bridge/20241128-103709
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20241126201213.522753-4-heiko%40sntech.de
-patch subject: [PATCH v2 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20241128/202411281937.QyowC5lv-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 592c0fe55f6d9a811028b5f3507be91458ab2713)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241128/202411281937.QyowC5lv-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411281937.QyowC5lv-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:20:
-   In file included from include/drm/bridge/dw_mipi_dsi2.h:15:
-   In file included from include/drm/drm_atomic.h:31:
-   In file included from include/drm/drm_crtc.h:32:
-   In file included from include/drm/drm_modes.h:33:
-   In file included from include/drm/drm_connector.h:32:
-   In file included from include/drm/drm_util.h:36:
-   In file included from include/linux/kgdb.h:19:
-   In file included from include/linux/kprobes.h:28:
-   In file included from include/linux/ftrace.h:13:
-   In file included from include/linux/kallsyms.h:13:
-   In file included from include/linux/mm.h:2223:
-   include/linux/vmstat.h:518:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     518 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
->> drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:315:9: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     315 |         val |= PHY_LPTX_CLK_DIV(esc_clk_div);
-         |                ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:72:30: note: expanded from macro 'PHY_LPTX_CLK_DIV'
-      72 | #define PHY_LPTX_CLK_DIV(x)             FIELD_PREP(GENMASK(12, 8), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:340:6: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     340 |                    PHY_IPI_RATIO(tmp));
-         |                    ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:88:27: note: expanded from macro 'PHY_IPI_RATIO'
-      88 | #define PHY_IPI_RATIO(x)                FIELD_PREP(GENMASK(21, 0), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:361:53: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     361 |         regmap_write(dsi2->regmap, DSI2_PHY_LP2HS_MAN_CFG, PHY_LP2HS_TIME(timing.data_lp2hs));
-         |                                                            ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:77:28: note: expanded from macro 'PHY_LP2HS_TIME'
-      77 | #define PHY_LP2HS_TIME(x)               FIELD_PREP(GENMASK(28, 0), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:375:10: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     375 |                 val |= PPI_WIDTH(PPI_WIDTH_8_BITS);
-         |                        ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:68:24: note: expanded from macro 'PPI_WIDTH'
-      68 | #define PPI_WIDTH(x)                    FIELD_PREP(GENMASK(9, 8), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:388:9: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     388 |         val |= PHY_LANES(dsi2->lanes);
-         |                ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:69:24: note: expanded from macro 'PHY_LANES'
-      69 | #define PHY_LANES(x)                    FIELD_PREP(GENMASK(5, 4), (x) - 1)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:409:48: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     409 |         regmap_write(dsi2->regmap, DSI2_DSI_VCID_CFG, TX_VCID(dsi2->channel));
-         |                                                       ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:96:22: note: expanded from macro 'TX_VCID'
-      96 | #define TX_VCID(x)                      FIELD_PREP(GENMASK(1, 0), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:430:8: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     430 |         val = IPI_DEPTH(color_depth) |
-         |               ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:116:24: note: expanded from macro 'IPI_DEPTH'
-     116 | #define IPI_DEPTH(x)                    FIELD_PREP(GENMASK(7, 4), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:445:55: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     445 |         regmap_write(dsi2->regmap, DSI2_IPI_VID_VSA_MAN_CFG, VID_VSA_LINES(vsa));
-         |                                                              ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:133:27: note: expanded from macro 'VID_VSA_LINES'
-     133 | #define VID_VSA_LINES(x)                FIELD_PREP(GENMASK(9, 0), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:461:51: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     461 |         regmap_write(dsi2->regmap, DSI2_IPI_PIX_PKT_CFG, MAX_PIX_PKT(val));
-         |                                                          ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:141:26: note: expanded from macro 'MAX_PIX_PKT'
-     141 | #define MAX_PIX_PKT(x)                  FIELD_PREP(GENMASK(15, 0), x)
-         |                                         ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:573:56: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     573 |         regmap_write(dsi2->regmap, DSI2_CRI_TX_HDR, hdr_val | CMD_TX_MODE(lpm));
-         |                                                               ^
-   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c:110:26: note: expanded from macro 'CMD_TX_MODE'
-     110 | #define CMD_TX_MODE(x)                  FIELD_PREP(BIT(24), x)
-         |                                         ^
-   1 warning and 10 errors generated.
-
-
-vim +/FIELD_PREP +315 drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  300  
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  301  static void dw_mipi_dsi2_phy_clk_mode_cfg(struct dw_mipi_dsi2 *dsi2)
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  302  {
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  303  	u32 sys_clk, esc_clk_div;
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  304  	u32 val = 0;
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  305  
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  306  	/*
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  307  	 * clk_type should be NON_CONTINUOUS_CLK before
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  308  	 * initial deskew calibration be sent.
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  309  	 */
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  310  	val |= NON_CONTINUOUS_CLK;
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  311  
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  312  	/* The maximum value of the escape clock frequency is 20MHz */
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  313  	sys_clk = clk_get_rate(dsi2->sys_clk) / USEC_PER_SEC;
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  314  	esc_clk_div = DIV_ROUND_UP(sys_clk, 20 * 2);
-c55ecdf5f795ca Heiko Stuebner 2024-11-26 @315  	val |= PHY_LPTX_CLK_DIV(esc_clk_div);
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  316  
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  317  	regmap_write(dsi2->regmap, DSI2_PHY_CLK_CFG, val);
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  318  }
-c55ecdf5f795ca Heiko Stuebner 2024-11-26  319  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBOb3YgMjgsIDIwMjQgYXQgODowOeKAr0FNIEZVS0FVTUkgTmFva2kgPG5hb2tpQHJh
+ZHhhLmNvbT4gd3JvdGU6Cj4KPiBIaSwKPgo+IEkgZm9yZ290IG9uZSB0aGluZy4uLgo+Cj4gT24g
+MTEvMjcvMjQgMTA6NTIsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4gPiBvbiBST0NLIDVCLCB0aGVy
+ZSBpcyBubyBQQ0llIHNsb3QsIGluc3RlYWQgdGhlcmUgaXMgYSBNLjIgc2xvdC4KPiA+IHJma2ls
+bCBwaW4gaXMgbm90IGV4Y2x1c2l2ZSB0byBQQ0llIGRldmljZXMsIHRoZXJlIGlzIFNESU8gV2kt
+RmkKPiA+IGRldmljZXMuCj4gPgo+ID4gcmVuYW1lIHJma2lsbCBsYWJlbCBmcm9tICJyZmtpbGwt
+cGNpZS13bGFuIiB0byAicmZraWxsLW0yLXdsYW4iLCBpdAo+ID4gbWF0Y2hlcyB3aXRoIHJma2ls
+bC1idC4KPiA+Cj4KPiBGaXhlczogODJkNDBiMTQxYTRjICgiYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IGFkZCByZmtpbGwgbm9kZSBmb3IgTS4yIEtleQo+IEUgV2lGaSBvbiByb2NrLTViIikKCkluZGVl
+ZCwgdGhpcyBtYWtlcyBzZW5zZSwgdGhhbmsgeW91LiBTaG91bGQgYSBzaW1pbGFyIGNoYW5nZSBi
+ZQphcHBsaWVkIHRvIG90aGVyIGJvYXJkcyB0aGF0IGZvbGxvd2VkIHRoZSBSb2NrIDVCIGV4YW1w
+bGUsIHN1Y2ggYXMKb3JhbmdlcGktNS1wbHVzPwoKQmVzdCByZWdhcmRzLApBbGV4ZXkKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
