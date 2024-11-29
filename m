@@ -4,68 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56E0D70DEB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Nov 2024 21:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346C6D70E01
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Nov 2024 00:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v/EaS6GQxkcRNkqih+uG849LZzBiOc0YTxl9p7pAXj8=; b=IVzhlcm7K5U1LA
-	I0RRYFa9kFdd5dPhC5rF/pTecyY3u8pJwTa98Ab11SUlPfB2GFz1IuhgbrCGdM8xSVejaCMvbFDKZ
-	FbmYZw/3yc2JinwVPdWw6aV4xngCKlVLfCLadbqflquvOevH8c48nWtPaFR6wIuM4OewaYU5QjKvh
-	f1BfOWd/FCpQNvejML3NY7OcTk3y9ffUNt+7AE85G8xh7NmTnlYFf6E+41yw3Tbo/0cjKTb5VzMMD
-	q60RMzecFB8tiffyDGbjCkAKvcJJ9mQb0Q5z0eP/gn6dWt0OBqvAsYHznAtBtB1awOeya5IZveTPU
-	baECmf77EzZcvEfJ1K9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3F9U46DpUqXN5BQsT4+NqxNdVs942AnRrVNM1M/lwI0=; b=evtW41cI5UazY5
+	0QcpyufuQJ9qWuc/7ZJMmMlQmEpHMsMf9yrRP6JFxZGOb3Sr3f67WcmEaEdg96DDDerDdWPkSm04x
+	F4mai0kIJVpaXKSwv++PxQSKUqfuhdYuwpqfoNSg53/Z5/MofDrW4oLNkRXoReyT2UZNe4uSkDIDj
+	3dbKBEWVgByyuh5xgwoA8u9VF6qyGof6ygQsj5iCyV5Yk1PqbzoFz0hABMnKLmS8n0zfHmsXTzUbO
+	M22oyZ/ugGSbYlc0ERfLXPI2nKYKQt2Z+JJwkRwR7ZEgBA9xOAHSmMEv/D02yiL6uzH1YbfZwgY3t
+	kfpwTGMZdqDUeXRMCn/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGlnh-0000000GPhO-1He5;
-	Thu, 28 Nov 2024 21:11:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tGoof-0000000Gcn4-3cz5;
+	Fri, 29 Nov 2024 00:25:01 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tGlmh-0000000GPbA-3MHO;
-	Thu, 28 Nov 2024 21:10:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=dRGDSLsH1Ba5TlpGi2/Qppd+TqYA+uIyrCSKV8c+2WA=; b=ZICoxLpNRbdIDou0AmGn11jvlc
-	k03QIEqjQElwbzcq4BLd4vJIAj0vxYBM49xS66tC/8H0HkgCthYtDSsnTQA+p9oNSM5ND77P7Gstm
-	PLHz3JTUgHezjhaLnl1LgIgqJs41QR5KT94GVpPKokNyyLGy/UYbJmbLg0LeyArhA2Q0Q2Rgoz5YS
-	gVzkXjmrcRllJu45vXd0Q9c+TF8j/1deQYNLQIZHcCHyo1tKBys+jGiDrHmKvnv1LP57MZb1bqaf4
-	IcTqWIkje74vkMCvBCNcevb04kafzs5W3X8JAK3FaLWtlc0ckgYdh7MPjtOnqD0oAMYivtAMObQFd
-	hRUwMh/g==;
-Received: from i5e86190f.versanet.de ([94.134.25.15] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tGlmY-0007ud-1h; Thu, 28 Nov 2024 22:10:38 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: quentin.schulz@theobroma-systems.com,
-	hjc@rock-chips.com,
-	andy.yan@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	sebastian.reichel@collabora.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v2] drm/rockchip: vop2: fix rk3588 dp+dsi maxclk verification
-Date: Thu, 28 Nov 2024 22:10:28 +0100
-Message-ID: <173282819998.1000394.12551012503214788208.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241115151131.416830-1-heiko@sntech.de>
-References: <20241115151131.416830-1-heiko@sntech.de>
+	id 1tGooc-0000000GcmK-1QII
+	for linux-rockchip@lists.infradead.org;
+	Fri, 29 Nov 2024 00:25:00 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AT0OVdB020450;
+	Fri, 29 Nov 2024 09:24:31 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        macromorgan@hotmail.com, jonas@kwiboo.se, andyshrk@163.com,
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: add support for device tree overlays for Radxa devices
+Date: Fri, 29 Nov 2024 00:24:19 +0000
+Message-ID: <20241129002419.60404-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241128_131047_829706_42AD01EB 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20241128_162458_586681_5EF5F388 
+X-CRM114-Status: UNSURE (   6.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,22 +61,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+since Radxa devices use device tree overlays[1][2][3], make base .dts
+support them.
 
-On Fri, 15 Nov 2024 16:11:31 +0100, Heiko Stuebner wrote:
-> The clock is in Hz while the value checked against is in kHz, so
-> actual frequencies will never be able to be below to max value.
-> Fix this by specifying the max-value in Hz too.
-> 
-> 
+[1] arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+[2] arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtso
+[3] https://github.com/radxa-pkg/radxa-overlays
 
-Applied, thanks!
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ arch/arm64/boot/dts/rockchip/Makefile | 28 +++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-[1/1] drm/rockchip: vop2: fix rk3588 dp+dsi maxclk verification
-      commit: 5807f4ee6d32a4cce9a4df36f0d455c64c861947
-
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 86cc418a2255..cac3f39af82a 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -1,4 +1,32 @@
+ # SPDX-License-Identifier: GPL-2.0
++
++# Enables support for device tree overlays for Radxa devices
++DTC_FLAGS_rk3308-rock-pi-s := -@
++DTC_FLAGS_rk3308-rock-s0 := -@
++DTC_FLAGS_rk3328-rock-pi-e := -@
++DTC_FLAGS_rk3399-rock-4c-plus := -@
++DTC_FLAGS_rk3399-rock-4se := -@
++DTC_FLAGS_rk3399-rock-pi-4a-plus := -@
++DTC_FLAGS_rk3399-rock-pi-4a := -@
++DTC_FLAGS_rk3399-rock-pi-4b-plus := -@
++DTC_FLAGS_rk3399-rock-pi-4b := -@
++DTC_FLAGS_rk3399-rock-pi-4c := -@
++DTC_FLAGS_rk3399pro-rock-pi-n10 := -@
++DTC_FLAGS_rk3528-radxa-e20c := -@
++DTC_FLAGS_rk3566-radxa-cm3-io := -@
++DTC_FLAGS_rk3566-radxa-cm3.dtsi := -@
++DTC_FLAGS_rk3566-radxa-zero-3e := -@
++DTC_FLAGS_rk3566-radxa-zero-3w := -@
++DTC_FLAGS_rk3566-rock-3c := -@
++DTC_FLAGS_rk3568-radxa-cm3i.dtsi := -@
++DTC_FLAGS_rk3568-radxa-e25 := -@
++DTC_FLAGS_rk3568-rock-3a := -@
++DTC_FLAGS_rk3568-rock-3b := -@
++DTC_FLAGS_rk3588-rock-5-itx := -@
++DTC_FLAGS_rk3588-rock-5b := -@
++DTC_FLAGS_rk3588s-rock-5a := -@
++DTC_FLAGS_rk3588s-rock-5c := -@
++
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
