@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D6CD735E4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFECFD735EA
 	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Nov 2024 00:41:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=poXeOlcvNQAaJG9JVYbqWrO14pnDdjUqPy3Y/UNuBhk=; b=y1uo/abb7mOwWJ
-	3SgO7/nj3CG61a8LCId1UAM6wFhr4N8NWxKRsQRG/YtRXP2ad4silmxrf0AYsFfVnHHRbgRsxc7mS
-	VmTHpGXBhskVGkzHuU+8XHe8vxWo9UOPWYxkmXLtY/BwyDEgppXFH6vn9oyFTKb6Xsw8XxyT5H8UQ
-	hAJsTgtkrt8QAmjP/ngBq8a536yN3Y1nG19XrTD5DjDZU3URs174zYhJW2RpKUXVn8e6Ig5elmTUd
-	PFqTGiBKAImbRCzvtwIuFmiHsxBkLuJAvsz/w33WqbGWKbUDHgJ+ZSDGAdXacYgcCXa7/E95FiDRT
-	zzm1zqBGhA6BVUS21ImQ==;
+	List-Owner; bh=1unwV1KUNkiy0eVQszdPxtT7PM3cQZg25AOhP0sHsFk=; b=U0/2ivE/g/nBRw
+	n/guwXBgrCQ7tVuOShjOI8aBZMXF9lNUur1cnfJGXF5Bqipjfymz3AjNQanwXNieuJhMt4pfImotq
+	132o4uMrRdh/ZBr4UJClzmwRpDoXP+JbwspaZnKQGgUWoj4O2XjdyDfoCwsMExjAxa+hLq81qxfJG
+	usiLF4Vhe5rt+xjv1X4OeTpFFdlZ11jhe7A0Q4C4x0tdUJEmLsyLOb7LMAoprfE9UqCjT/Zya27GP
+	gFd3IhnJoADMEqoyKEy5TOGM4MwbcUQzvEEv6uyEFvXerUCo57HCtU7IEOUSvbySUyj7DuV2qS/Zs
+	H4bvGncsJcKBEqWDyPDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHBYA-00000001B8q-1dUP;
-	Sat, 30 Nov 2024 00:41:30 +0000
+	id 1tHBY9-00000001B8i-34CX;
+	Sat, 30 Nov 2024 00:41:29 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHBY4-00000001B5w-3jf1
+	id 1tHBY4-00000001B5t-3ZlN
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Nov 2024 00:41:29 +0000
+	Sat, 30 Nov 2024 00:41:28 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AU0f3BJ024368;
-	Sat, 30 Nov 2024 09:41:05 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4AU0f3BG024368;
+	Sat, 30 Nov 2024 09:41:04 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
-Subject: [PATCH 5/6] arm64: dts: rockchip: fix pwm-fan node for Radxa ROCK 5B
-Date: Sat, 30 Nov 2024 00:40:56 +0000
-Message-ID: <20241130004057.7432-6-naoki@radxa.com>
+Subject: [PATCH 2/6] arm64: dts: rockchip: add regulator for NPU for Radxa ROCK 5B
+Date: Sat, 30 Nov 2024 00:40:53 +0000
+Message-ID: <20241130004057.7432-3-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241130004057.7432-1-naoki@radxa.com>
 References: <20241130004057.7432-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241129_164125_134727_55EEB35F 
-X-CRM114-Status: UNSURE (   7.80  )
+X-CRM114-CacheID: sfid-20241129_164125_094646_F1130479 
+X-CRM114-Status: UNSURE (   7.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -60,31 +60,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-fix properties to match with vendor kernel.
+add "vdd_vpu_s0" regulator for NPU.
 
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 7c8359fe712a..6a02febaefb7 100644
+index 727a5880d87a..3cd8c63151db 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -64,10 +64,10 @@ led-0 {
- 
- 	fan: pwm-fan {
- 		compatible = "pwm-fan";
--		cooling-levels = <0 120 150 180 210 240 255>;
--		fan-supply = <&vcc5v0_sys>;
--		pwms = <&pwm1 0 50000 0>;
- 		#cooling-cells = <2>;
-+		cooling-levels = <0 64 128 192 255>;
-+		fan-supply = <&vcc5v0_sys>;
-+		pwms = <&pwm1 0 60000 0>;
+@@ -270,6 +270,29 @@ regulator-state-mem {
  	};
+ };
  
- 	rfkill {
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1m2_xfer>;
++	status = "okay";
++
++	vdd_npu_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		reg = <0x42>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_npu_s0";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <950000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc4v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++};
++
+ &i2c6 {
+ 	status = "okay";
+ 
 -- 
 2.43.0
 
