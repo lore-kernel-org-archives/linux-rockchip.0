@@ -4,124 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C8E2D7361B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Dec 2024 00:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF18CD49789
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Dec 2024 23:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sVs5ZPNZhu3bWp1tDIFTaewvAqUjO1DNYLjBIlR1/W4=; b=XtIJzJdUq/vtpp
-	8YgXeOJY3rFH28weQAgKc+xn31XLk7122abMZ50X1CWs/P6tf6heP0VeCoh8NsNcxVWxSxiToL9Lk
-	yKvnlnPzHzKovNry0L3I4jXCPxZOqboSZE7xuKKhGx4UG14UPPc4JXnvKoQzFLfLzHvrmG2cPIui0
-	t0S3RYMm7+llQlRRJD5BvzRux3vfAUbM5tLHKGOGJIDc3fbCNtANE7qneyniyd6NgGFe/iCpRHjZN
-	d9nqCWtLWQ6wNEOfRcz7L1pazfwguBVDWzZOTGNl3yf8zuvXLMpiBXxy1pG9SECCTWx218JF4dzXx
-	TA9OfRy6ecixVEHoDKHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mM4LOxt3fx0n8rtAlgVVVjNjHPj4AAp5fep3V9wwZJE=; b=wq1hOg5EP3gGVi4l9UXKqNlwbO
+	ueQ0GzSkI/IAXvf4hN0bXCHci9JagNRmM2//lgqebJ5aQ8CQCojAFsViSU7RtPP7SY0ODplHSkvTF
+	8mHvZnsf5crtJh/uuKz1dJ9iriHE7EE/uEOvjGObB81Qg9b/BhTmlrbNnqX0pa/ltTlYIn+LfdTx6
+	WB8Tow+RD7yDsIPCUwc+FDKwNGFmqG20OIDbeWGXd37gBQ2v5UNiU1aQZAqwk658fZuJspAbZ1JIN
+	YBWXOUxShtKnruJr+Yna7ZDm/TwiFylwsAbh0bOzLy7MdLq26Z81pkzokanyfNQjRfahVeXPPy4MD
+	I1ycM62Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHYDS-00000002qPa-0jZC;
-	Sun, 01 Dec 2024 00:53:38 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1tHsw4-00000004VRq-3CEF;
+	Sun, 01 Dec 2024 23:01:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHY4p-00000002oie-2tXv
-	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Dec 2024 00:44:45 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5d0cfb9fecaso1017589a12.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 30 Nov 2024 16:44:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733013882; x=1733618682; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YDP6TwU0/tWdPmghJyb5pX8fLQAMwFaK6bFPGzZBnzs=;
-        b=wnGzsnm8LXXSnpAW58jmsUOJ4SMuSYcILYV69JhEPYr3krqOlGh/7LKw6G/+fvp9yo
-         ym+sEAgB149Z7cBvFDc3f/LwIBjUAutQOtt7WVoGs/C1txRfYZrup2SAounaXHzCtgro
-         m2Y0hbUIRqL8qgEafjy0o/VPgc5RYgbh050b/lxtrBBnTYLV30p/0lgZQtmmJvNqAtYo
-         7XZpGdVBtSoeFORoK3eQIA7gkR1YC9yTiEVzvX61i1PXKyFu+FiOEXwdv3RSqe5tDlqC
-         lomnzrVdLKcf/OPxQvle2qpWBMyCE0idUujLYfgLixc8HM3NQiqvFF3Q3pHlujZJR+pw
-         m4mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733013882; x=1733618682;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YDP6TwU0/tWdPmghJyb5pX8fLQAMwFaK6bFPGzZBnzs=;
-        b=FpXt75bHpZ6iY3LTWXibKJawR6LHkwLZTgPyCmz1Wsb31yR+Qv89YIFWOrq7o6IIKJ
-         L4nNCMlz0NirPZK8cVUlzMsKYg5qPCGz0a42UQ+VNh1YKMjwJ4RrYQqIU/AxHPCkZfXo
-         abj0QWV1u4CtK0BvAwmbzFKKQZqsAMUDFF5c+jSnUXlTAS/vsn4WG0x/819j0qU2X4Qs
-         un8ML67nCquK+3E0E2owcqKhBLT62ygpRR3gpxEKTfM36PA7UOyS7zVZVDZoJ0jNEdrm
-         0fhWBk/Q96fLs6bMidELCUIuuhYCgiJJ0MUTmUY8/EcqrT8oPPrc0Arh7XtnBlqoRGEu
-         rCnA==
-X-Forwarded-Encrypted: i=1; AJvYcCUzHWp04m7ONJOZIn/HSSlzyPxrECqey9JO0DozqH4FYWjbU5gvwV6/RIZe7fABhbRusJynjTM0x61jFVYl5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyn3fszFDgHIJqN9dOfgv2g0dQ0PbojgEvL7jm2JmXPrgSSU0WT
-	ZGXp4/xklEvuT8vngGeZzWnuyHoXhtV1L7BqyxqmTsfddQ91yXpn12LL0KinIDiHFTCZPH46jNc
-	p
-X-Gm-Gg: ASbGncvy0+736vO2dQtXCFE9Ce9vmK6O+GOJOiWzn3eCsMbAjYIOh1J1ZQ/K0wzR+fv
-	CWFNuxK8xCWQ/NExBJKyE5HsWsO5eIWbSPFVrnnK+8DDm72yR8OQ6iyd9S86eO8J06qYHxhuCyo
-	N9EG00XEyCeGFZ93z0bZaBh0isdmyTFbBckduJS1XuymF97+LgI2afcFA/bYGkP6Uo9MdwrCLnX
-	oDGBG3dayjbakUlLKQwE/+TZpc/KJ5hc5PBfg6lqmfQMrAh4pWemF7VSw==
-X-Google-Smtp-Source: AGHT+IE5Iodta2UQP6qjtd0G2oZywxiR+z/FGF+U8cJWDKR8GZEI1K1wlfh9Q8JImD1VouVwulpc4Q==
-X-Received: by 2002:a05:6402:26cf:b0:5d0:8f25:24ff with SMTP id 4fb4d7f45d1cf-5d08f252625mr12479352a12.14.1733013882366;
-        Sat, 30 Nov 2024 16:44:42 -0800 (PST)
-Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d097e8d817sm3400359a12.63.2024.11.30.16.44.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Nov 2024 16:44:41 -0800 (PST)
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sun, 01 Dec 2024 02:44:13 +0200
-Subject: [PATCH v5 9/9] drm/vc4: hdmi: use
- drm_atomic_helper_connector_hdmi_update_edid()
+	id 1tHsv4-00000004VL1-2XKK;
+	Sun, 01 Dec 2024 23:00:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1733093992; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bE0WtpXaK8QuDqsEc8P7YE2eJ11W+5K5q9JbFrcQc/1A6ud8HQ2rITJLIXnJwhAy/+j4gLCSWgUIHYpKPYRncvWL29atBpkaTHRDO7KC2refctyA8rz0Io7kcHKDOczkb8JAUiQX1iS5Je5SDeM2PCwYGP9n0dGsBOV7D/IHY7Y=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1733093992; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=wFU3BBsk/0IMP6GXJyqeVrQbjT8QvAYTSLEUrZjXm+Q=; 
+	b=aY5PVHs04X4fQ07Lk2Sn8m1mhP3j4MsVayOiiwINFOEdgyukzfy5jwS7s0cRiZRjIHt5kwZhYar9jfgC4l8S5vwQHzJXS5GLEQuj9fzOfIIRelyPfAYiBR42GrSdMHSrFfMVrHON+FqcXEJBv9UTI5LZ2qZGnTJHeEN9hfSjgdM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733093992;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=wFU3BBsk/0IMP6GXJyqeVrQbjT8QvAYTSLEUrZjXm+Q=;
+	b=XU4v3l9xaClvU1VdLFMm14fvcMNigi9JybtvULqmvWazK3Ya87JRiMrPMFDAYRpd
+	oscHX7Dwgu8dnf/fSXQMVW7BhdqqgvqFXmcVG6Fn3KNYYuY2GlDUM9MwUeYIlmndur6
+	AGWmSf9bLjJe6bu3MBzYnCHtftE7AVn8EDzsinxM=
+Received: by mx.zohomail.com with SMTPS id 1733093989260596.7489467887624;
+	Sun, 1 Dec 2024 14:59:49 -0800 (PST)
+Received: by mercury (Postfix, from userid 1000)
+	id 773D410604CF; Sun, 01 Dec 2024 23:59:43 +0100 (CET)
+Date: Sun, 1 Dec 2024 23:59:43 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
+ for eDP mode
+Message-ID: <h4giob7bcrh7qmtepti6huym2llw4ujfmeff76vrgpahb5zy6x@dz6zghsifww5>
+References: <20241127075157.856029-1-damon.ding@rock-chips.com>
+ <2131853.KlZ2vcFHjT@diego>
+ <6e1f35c0-5ea8-414f-b3ea-4e7222c605ef@rock-chips.com>
+ <2886747.Y6S9NjorxK@diego>
 MIME-Version: 1.0
-Message-Id: <20241201-drm-bridge-hdmi-connector-v5-9-b5316e82f61a@linaro.org>
-References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
-In-Reply-To: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1798;
- i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=m9cAK5FN1NFJb6UQkn9k+gemX+2/diBeTweGL7F7R7w=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnS7FZMmMFV20DgQUuh8v5FF4nWRo8BcSipooZa
- EIAyUUoJziJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ0uxWQAKCRCLPIo+Aiko
- 1dDwB/wJfW4xZABPDcU/eL/SukBx0cSr5TyqsC+NOU/8rIY3SPpHoNzt2tfD+tYhv2vKAqVGaT+
- Y0Pd3xmibwzv12VUOjFt+1ZbNthzF8qyG6keOs747UGZJQ69PhRds6t4Rw0KD2DFD1qgLnoX/w3
- NmWud73M/PrrwTQ2hUm3HuLVNhUfXRhEp/60uu1faJkCzG0RKUK8ibOREThgoBWt/fKvWDG+Ohf
- Vsyc20q84GR6TrucJQRzobBfpKYBr77Vpb3pn0XZ9hGN3YwhCtLPDipCwnoXnmPkM17bSL8dJW4
- kP1LucL4uQp1AahjZxJZFLIhzCNDNlresD4ccZFTjoNzadBW
-X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
- fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
+In-Reply-To: <2886747.Y6S9NjorxK@diego>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/233.51.66
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241130_164443_757376_A7986B78 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20241201_150002_723468_0D42F668 
+X-CRM114-Status: GOOD (  42.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,59 +77,197 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: multipart/mixed; boundary="===============5445173038834474683=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the helper function to update the connector's information. This
-makes sure that HDMI-related events are handled in a generic way.
-Currently it is limited to the HDMI state reporting to the sound system.
 
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
----
- drivers/gpu/drm/vc4/vc4_hdmi.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+--===============5445173038834474683==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4uvvjljskgf7wmee"
+Content-Disposition: inline
 
-diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-index d0a9aff7ad43016647493263c00d593296a1e3ad..d83f587ab69f4b8f7d5c37a00777f11da8301bc1 100644
---- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-+++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-@@ -401,13 +401,16 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
- 	 */
- 
- 	if (status == connector_status_disconnected) {
-+		drm_atomic_helper_connector_hdmi_update_edid(connector, NULL);
- 		cec_phys_addr_invalidate(vc4_hdmi->cec_adap);
- 		return;
- 	}
- 
- 	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
- 
--	drm_edid_connector_update(connector, drm_edid);
-+	// TODO: use drm_atomic_helper_connector_hdmi_update() once it gains
-+	// CEC support
-+	drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
- 	cec_s_phys_addr(vc4_hdmi->cec_adap,
- 			connector->display_info.source_physical_address, false);
- 
-@@ -487,7 +490,9 @@ static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
- 	 */
- 
- 	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
--	drm_edid_connector_update(connector, drm_edid);
-+	// TODO: use drm_atomic_helper_connector_hdmi_update() once it gains
-+	// CEC support
-+	drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
- 	cec_s_phys_addr(vc4_hdmi->cec_adap,
- 			connector->display_info.source_physical_address, false);
- 	if (!drm_edid)
 
--- 
-2.39.5
+--4uvvjljskgf7wmee
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
+ for eDP mode
+MIME-Version: 1.0
 
+Hi,
+
+On Sat, Nov 30, 2024 at 09:25:12PM +0100, Heiko St=FCbner wrote:
+> Am Freitag, 29. November 2024, 03:43:57 CET schrieb Damon Ding:
+> > On 2024/11/27 19:04, Heiko St=FCbner wrote:
+> > > Am Mittwoch, 27. November 2024, 12:00:10 CET schrieb Damon Ding:
+> > >> On 2024/11/27 17:29, Heiko St=FCbner wrote:
+> > >>> Am Mittwoch, 27. November 2024, 08:51:51 CET schrieb Damon Ding:
+> > >>>> +static int rk_hdptx_phy_set_mode(struct phy *phy, enum phy_mode m=
+ode,
+> > >>>> +				 int submode)
+> > >>>> +{
+> > >>>> +	return 0;
+> > >>>> +}
+> > >>>analogix_dp_phy_power_on
+> > >>> I think it might make sense to go the same way as the DCPHY and also
+> > >>> naneng combophy, to use #phy-cells =3D 1 to select the phy-mode via=
+ DT .
+> > >>>
+> > >>> See [0] for Sebastians initial suggestion regarding the DC-PHY.
+> > >>> The naneng combophy already uses that scheme of mode-selection too.
+> > >>>
+> > >>> There is of course the issue of backwards-compatibility, but that c=
+an be
+> > >>> worked around in the binding with something like:
+> > >>>
+> > >>>    '#phy-cells':
+> > >>>       enum: [0, 1]
+> > >>>       description: |
+> > >>>         If #phy-cells is 0, PHY mode is set to PHY_TYPE_HDMI
+> > >>>         If #phy-cells is 1 mode is set in the PHY cells. Supported =
+modes are:
+> > >>>           - PHY_TYPE_HDMI
+> > >>>           - PHY_TYPE_DP
+> > >>>         See include/dt-bindings/phy/phy.h for constants.
+> > >>>
+> > >>> PHY_TYPE_HDMI needs to be added to include/dt-bindings/phy/phy.h
+> > >>> but PHY_TYPE_DP is already there.
+> > >>>
+> > >>> That way we would standardize on one form of accessing phy-types
+> > >>> on rk3588 :-) .
+> > >>>
+> > >>> Also see the Mediatek CSI rx phy doing this too already [1]
+> > >>>
+> > >>>
+> > >>> Heiko
+> > >>>
+> > >>> [0] https://lore.kernel.org/linux-rockchip/udad4qf3o7kt45nuz6gxsvsm=
+prh4rnyfxfogopmih6ucznizih@7oj2jrnlfonz/
+> > >>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.=
+git/tree/Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
+> > >>>
+> > >>
+> > >> It is really a nice way to separate HDMI and DP modes.
+> >=20
+> > I apologize for reopening the discussion about the phy-types setting.
+>=20
+> there is definitly no need to apologize. We're trying to find the best
+> solution afterall :-) .
+>=20
+> > With the .set_mode() of struct phy_ops, the HDMI and eDP dynamic=20
+> > switching can be achieved, which just depends on the right setting of
+> > enum phy_mode in include/linux/phy/phy.h. So the previous way of=20
+> > configuring phy mode may be also good.
+>=20
+> I think the deciding factor is, is there a use-case for needing to switch
+> modes at runtime.
+>=20
+> I do think the mode for the dc-phy and also the hdptx-phy is pretty much
+> decided by the board design.
+>=20
+> I.e. when you end up in a DP-connector (or eDP-panel) on your board you
+> need DP mode, and when you end up in a hdmi-connector you need the
+> HDMI phy mode.
+>=20
+> So I think the phy-mode for the hdptx-phy is largely dictated by the stat=
+ic
+> board definition (like devicetree), hence going with the dt-argument for
+> the mode.
+>=20
+> Like similar to the Naneng combophy, selecting its mode via argument
+> because deciding if it ends up in a sata port is a board-design thing.
+>
+> Is there a use-case where you need to switch at runtime between
+> HDMI and eDP? Like starting the phy in eDP mode but then needing
+> to switch to HDMI mode, while the device is running?
+
+I believe the eDP controller can only use the PHY in eDP mode and
+the HDMI controller can only use it in HDMI mode. So in order to
+support runtime switching, the following options are possible:
+
+1. Enable both controllers, the PHY decides which one is really
+   used, the other one is basically a non-functional dummy device
+   until the PHY is reconfigured. This requires the set_mode()
+   callback, since the HDMI and eDP drivers both expect their
+   PHY to be enabled.
+
+2. Properly enable / disable the used controller, so that only one
+   controller is active at the same time. In this case the switching
+   is handled one layer above and the PHY has nothing to do with it.
+   The phy_enable call from each controller would just set it up in
+   the right mode.
+
+I guess option 1 is the hacked solution, which is easier to
+implement as DRM's hotplug abilities are quite limited at the moment
+as far as I know. I think the second solution looks much cleaner and
+should be prefered for upstream. That solution does not require
+calling set_mode() for runtime switching making this whole argument
+void :)
+
+FWIW I think the DT argument based mode setting and the runtime set_mode
+are not necessarily mutual exclusive. In theory one could support both
+and adding set_mode support later does not change any ABI as far as
+I can see. Basically handle it like pin mux/configuration settings,
+which are usually automatically handled by the device core based on
+DT information, except for some drivers which have special needs.
+
+> > And other phys may want to support dynamic switching too, like the=20
+> > Rockchip USBDP combo phy.
+>=20
+> I guess USBDP is special in that in also does both modes dynamical
+> depending on its use (like type-c with option DP altmode)
+
+The USBDP PHY is indeed quite different from the PHYs in your list
+above, but for a different reason: All the combined PHYs you listed
+above only support one mode at the same time. E.g. you need to
+decide between PCIe, SATA and USB3 mode for the Naneng combophy.
+
+For the USBDP PHY the modes are not mutually exclusive. The USB
+controller can request the USBDP PHY in USB mode at the same time
+as the DP controller requests it in DP mode. Some additional
+registers configure how the lanes are being muxed. A typcial setup
+would be 2 lanes for USB3 and 2 lanes for DP.
+
+Greetings,
+
+-- Sebastian
+
+--4uvvjljskgf7wmee
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdM6lUACgkQ2O7X88g7
++poROg/9ERk55HG40SbfPg+6kCZ6sywLSwJTZweCCXGjvq9Q9R7JK/pVHrkgVhtJ
+H28UpwMTj2wN+idMK64a1EGf4ls0jw8dpDXS9y6M8f7/5Lu7DpO+c6qu+HCEOavL
+rVfk4ISVpT0KmbVrDDew1KRXekee9ch+uSO+VQAj/febMToxvkdqFS9PUibzmq0h
+VoUsyfct/7Ek9NKhmDPkvLVlvMHYNOrk7RsmMqlRN53zcyzrJSnbHsHlLjKCobwl
+s7zl6vhanR1sYBeoQ+4UdENOIQrDFuzJzdVp+zP6LvIpl4KbxbOD89bSI2tQLPPz
+yQCC5vBj+lwwhca4SWBp7cwoAJnY2n8A5T8qbrqMYZA7bsjafmZTrYbg1Tqe1X/H
+kAnmcZSue5fhQWV10xh9TuMcSc7LZyBZaRK+7rCooTOy5za7J/6VLHJ64uYE41sv
+Bx1XvfG5uDUh4qz1s6cAoEHdu7FYs1q9tdFeBo+uAh6ei5eScxxgXcBISq0wlhsJ
+D051T1P0DWRh5PgMWluGS6WuhBGlMxx10bqNQC1ad6sdYHXVsEFsXRwSioCSbhYf
+YNdoLkCk7qKUdQ11PMzhDqAZtAqV4ddKz+g7ZdDQDBBx29WgKTR73UhWNA9LvIe7
+pdClppVvA3Xgarmd0hbGt7P8LI/T6u6TemJ6Xo8zft6aYlaZ4zw=
+=y/X7
+-----END PGP SIGNATURE-----
+
+--4uvvjljskgf7wmee--
+
+
+--===============5445173038834474683==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5445173038834474683==--
+
