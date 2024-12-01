@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF18CD49789
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Dec 2024 23:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D9DD4978D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Dec 2024 23:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mM4LOxt3fx0n8rtAlgVVVjNjHPj4AAp5fep3V9wwZJE=; b=wq1hOg5EP3gGVi4l9UXKqNlwbO
-	ueQ0GzSkI/IAXvf4hN0bXCHci9JagNRmM2//lgqebJ5aQ8CQCojAFsViSU7RtPP7SY0ODplHSkvTF
-	8mHvZnsf5crtJh/uuKz1dJ9iriHE7EE/uEOvjGObB81Qg9b/BhTmlrbNnqX0pa/ltTlYIn+LfdTx6
-	WB8Tow+RD7yDsIPCUwc+FDKwNGFmqG20OIDbeWGXd37gBQ2v5UNiU1aQZAqwk658fZuJspAbZ1JIN
-	YBWXOUxShtKnruJr+Yna7ZDm/TwiFylwsAbh0bOzLy7MdLq26Z81pkzokanyfNQjRfahVeXPPy4MD
-	I1ycM62Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2/W8UfJcu9aXkySXBRQu2XazDfwzts2YmlhXnVsphGM=; b=eatM9ARSD2TC5f
+	TBdZRfmlR1Lu25q58WhqWzZpBScc2rV0qOLE3vfGUzWTMF7kdhJUX864hp3yCwq9lfDzVunv5P0Gt
+	SOSV5SEnvD0N+SS8fRHCRRNcxpOatV7d9akkAy/79WM1agoM9UnA12e00hYEAOHQeMZWHlgaxOtYZ
+	3oXh1FUsnaSjm6N+zviTcqg+4HGRxjDrP8NKLI1ks7jIlKZo76sc+OUWcKB+8RS7U2YxDYd3ernxq
+	BU6qTlmKHUwrel2h7bZUlpAbXTvI37D/rvcSBqBBhmKIzk/c4qxPnX+LsZpcbJOL80pFGdnlX9iLR
+	duXtvJabdWq/sDy8x3cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHsw4-00000004VRq-3CEF;
-	Sun, 01 Dec 2024 23:01:04 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tHtev-00000004Ye6-1Z7p;
+	Sun, 01 Dec 2024 23:47:25 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHsv4-00000004VL1-2XKK;
-	Sun, 01 Dec 2024 23:00:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1733093992; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bE0WtpXaK8QuDqsEc8P7YE2eJ11W+5K5q9JbFrcQc/1A6ud8HQ2rITJLIXnJwhAy/+j4gLCSWgUIHYpKPYRncvWL29atBpkaTHRDO7KC2refctyA8rz0Io7kcHKDOczkb8JAUiQX1iS5Je5SDeM2PCwYGP9n0dGsBOV7D/IHY7Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1733093992; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=wFU3BBsk/0IMP6GXJyqeVrQbjT8QvAYTSLEUrZjXm+Q=; 
-	b=aY5PVHs04X4fQ07Lk2Sn8m1mhP3j4MsVayOiiwINFOEdgyukzfy5jwS7s0cRiZRjIHt5kwZhYar9jfgC4l8S5vwQHzJXS5GLEQuj9fzOfIIRelyPfAYiBR42GrSdMHSrFfMVrHON+FqcXEJBv9UTI5LZ2qZGnTJHeEN9hfSjgdM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733093992;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=wFU3BBsk/0IMP6GXJyqeVrQbjT8QvAYTSLEUrZjXm+Q=;
-	b=XU4v3l9xaClvU1VdLFMm14fvcMNigi9JybtvULqmvWazK3Ya87JRiMrPMFDAYRpd
-	oscHX7Dwgu8dnf/fSXQMVW7BhdqqgvqFXmcVG6Fn3KNYYuY2GlDUM9MwUeYIlmndur6
-	AGWmSf9bLjJe6bu3MBzYnCHtftE7AVn8EDzsinxM=
-Received: by mx.zohomail.com with SMTPS id 1733093989260596.7489467887624;
-	Sun, 1 Dec 2024 14:59:49 -0800 (PST)
-Received: by mercury (Postfix, from userid 1000)
-	id 773D410604CF; Sun, 01 Dec 2024 23:59:43 +0100 (CET)
-Date: Sun, 1 Dec 2024 23:59:43 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
- for eDP mode
-Message-ID: <h4giob7bcrh7qmtepti6huym2llw4ujfmeff76vrgpahb5zy6x@dz6zghsifww5>
-References: <20241127075157.856029-1-damon.ding@rock-chips.com>
- <2131853.KlZ2vcFHjT@diego>
- <6e1f35c0-5ea8-414f-b3ea-4e7222c605ef@rock-chips.com>
- <2886747.Y6S9NjorxK@diego>
+	id 1tHtdw-00000004YZP-013z;
+	Sun, 01 Dec 2024 23:46:25 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-385d7b4da2bso2928670f8f.1;
+        Sun, 01 Dec 2024 15:46:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733096782; x=1733701582; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3n2sCT8MkP4WapXVYlrCUZa0gGtNlMO+qY9Q/noMw3M=;
+        b=NBHxhFpvhTtkaelowUV1IJ+U2wJ3RpWEmWJSHkZTD1setMdyikDA5oH6cyNZH8ZCtw
+         pKRDRxgX7WQHIEXkdsfgFmZqACHrOms9ZbzCQynFddlXEhXPJlEkjSnlF3MBSkDFo3JX
+         KQQwNg3a85lIMJQMGNW3rvQU5s25XzHnpep2Hr/FsVe5335q7jAAnqcbYMa/MD45iQ06
+         SjamzZAkiJeJoMF0BSOppPZd3dzBWWEbAb5VLl7m0eXkfMYtx8rcSybdVX1OaHcWHvZX
+         HRGn4jEqsxabuIqn6R6Um3DWDsIsMR018m9AOSgssZ4AyfBxXw2be17WKcEvKNbpDVE5
+         suNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733096782; x=1733701582;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3n2sCT8MkP4WapXVYlrCUZa0gGtNlMO+qY9Q/noMw3M=;
+        b=JEm1c+gmXOaX/IeLvI0SUTCsal0epkXKG+sJoWY1Z5XdorP2uohsRZQHfAT4tizeNS
+         1VqTJHmRarZnHQfpfn0hJHx06vOR680HhcjabtiCjBs5nr4dsPKTrbejUCx1roOP6e1u
+         RfSl8eK0PwJhk/q/keIKvVpZfz272d3M9GVIxE62TlthmFXb9W/Umz3kTv1adh6sLVEU
+         hEk0fncU9HtrFW4A5TBffVuhnKIYAwamUKUQUbkRP5yhusbqYhpdDjzS6PrfyDQXx7EC
+         5LS1mmvBITSlLil+VSF2Nynu3o8O/dlUs8U/MZyiNS3cj7E75nQJ/6fG2w5h5hWtrJ6r
+         /kjw==
+X-Forwarded-Encrypted: i=1; AJvYcCUFN5CxmKSHHMiIGPW6+DN6Q0vkpetDq8K5dmjPFPaZ0NJ7LJ+3VCBQ5GX7cL9grbf3VqRQlWJwc04/PKRmne8=@lists.infradead.org, AJvYcCX9scQkHsOpXVisAwMe86F6xHjZLIPvd3N7w05YBNrP7uQIi8S7itWcKUDEFwHIK/tI/hpMUwYVXXHP7GA2iMna@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz75W8PogyV8UZKXF44TcwiOaPY3McPBfQN6FL3YaSJEOir7EcD
+	qmfZ4NGb5VYYghGcgVkGjGnS2P0e+7Ba19XwEhsJmoSUiJ56S8Gpk5lAcw==
+X-Gm-Gg: ASbGncudZjVIou+folnkNNzUpoi9p9gqQjpci/QOKmA2jMpvqkHnqIqqYQZW5PXxKxr
+	loGte/62fZJ+wBb5X1/XkgfzXb/E4Q43gBuiJkXb4Sg9sI67rR3ArpW+xu/sSFp/j/0chXoHdXe
+	ZWGWeFH/N+jTlNvO1UguBD34R6SeyS0i6/psNsTCSCy1IvD54H1k2YbEr4lh7GALJInZMmK8p9+
+	pl4n2YfgdJH+GN6/AtgS7dNHZwoAEfG0fwF3j69LjM94zwJoXUII22o+Sfp9zTGWL0EDi8IlDzj
+	L0PLhwI2AA==
+X-Google-Smtp-Source: AGHT+IEdd5dpHxDU60Rl23qbbsd+Utd3y4mwZDWURtLTMc8M+gvOWR1ABoBD6snXzArhEA0NYOrLJQ==
+X-Received: by 2002:a05:6000:705:b0:382:49fe:6f8a with SMTP id ffacd0b85a97d-385c6edd520mr21824979f8f.55.1733096781435;
+        Sun, 01 Dec 2024 15:46:21 -0800 (PST)
+Received: from cypher.localdomain (213.95.187.81.in-addr.arpa. [81.187.95.213])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-385e2c84d52sm6116014f8f.49.2024.12.01.15.46.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Dec 2024 15:46:21 -0800 (PST)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: enable rng on all rk356x
+Date: Sun,  1 Dec 2024 23:46:05 +0000
+Message-ID: <20241201234613.52322-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <a>
+References: <a>
 MIME-Version: 1.0
-In-Reply-To: <2886747.Y6S9NjorxK@diego>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/233.51.66
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241201_150002_723468_0D42F668 
-X-CRM114-Status: GOOD (  42.54  )
+X-CRM114-CacheID: sfid-20241201_154624_064103_AA1E7E77 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,197 +97,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Type: multipart/mixed; boundary="===============5445173038834474683=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The rk356x rng is available on both the rk3566 and rk3568
+parts, the IP is all self contained within the SoCs so
+it's enabled already by default on rk3568 so let's enable
+it in the base rk356x.dtsi so it's enabled consistently
+everywhere.
 
---===============5445173038834474683==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4uvvjljskgf7wmee"
-Content-Disposition: inline
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 4 ----
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 1 -
+ 2 files changed, 5 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index ecaefe208e3e..9dc09db5034d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -397,10 +397,6 @@ power-domain@RK3568_PD_PIPE {
+ 	};
+ };
+ 
+-&rng {
+-	status = "okay";
+-};
+-
+ &usb_host0_xhci {
+ 	phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+ 	phy-names = "usb2-phy", "usb3-phy";
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index 62be06f3b863..2994cddb3464 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -1038,7 +1038,6 @@ rng: rng@fe388000 {
+ 		clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
+ 		clock-names = "core", "ahb";
+ 		resets = <&cru SRST_TRNG_NS>;
+-		status = "disabled";
+ 	};
+ 
+ 	i2s0_8ch: i2s@fe400000 {
+-- 
+2.47.1
 
---4uvvjljskgf7wmee
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
- for eDP mode
-MIME-Version: 1.0
-
-Hi,
-
-On Sat, Nov 30, 2024 at 09:25:12PM +0100, Heiko St=FCbner wrote:
-> Am Freitag, 29. November 2024, 03:43:57 CET schrieb Damon Ding:
-> > On 2024/11/27 19:04, Heiko St=FCbner wrote:
-> > > Am Mittwoch, 27. November 2024, 12:00:10 CET schrieb Damon Ding:
-> > >> On 2024/11/27 17:29, Heiko St=FCbner wrote:
-> > >>> Am Mittwoch, 27. November 2024, 08:51:51 CET schrieb Damon Ding:
-> > >>>> +static int rk_hdptx_phy_set_mode(struct phy *phy, enum phy_mode m=
-ode,
-> > >>>> +				 int submode)
-> > >>>> +{
-> > >>>> +	return 0;
-> > >>>> +}
-> > >>>analogix_dp_phy_power_on
-> > >>> I think it might make sense to go the same way as the DCPHY and also
-> > >>> naneng combophy, to use #phy-cells =3D 1 to select the phy-mode via=
- DT .
-> > >>>
-> > >>> See [0] for Sebastians initial suggestion regarding the DC-PHY.
-> > >>> The naneng combophy already uses that scheme of mode-selection too.
-> > >>>
-> > >>> There is of course the issue of backwards-compatibility, but that c=
-an be
-> > >>> worked around in the binding with something like:
-> > >>>
-> > >>>    '#phy-cells':
-> > >>>       enum: [0, 1]
-> > >>>       description: |
-> > >>>         If #phy-cells is 0, PHY mode is set to PHY_TYPE_HDMI
-> > >>>         If #phy-cells is 1 mode is set in the PHY cells. Supported =
-modes are:
-> > >>>           - PHY_TYPE_HDMI
-> > >>>           - PHY_TYPE_DP
-> > >>>         See include/dt-bindings/phy/phy.h for constants.
-> > >>>
-> > >>> PHY_TYPE_HDMI needs to be added to include/dt-bindings/phy/phy.h
-> > >>> but PHY_TYPE_DP is already there.
-> > >>>
-> > >>> That way we would standardize on one form of accessing phy-types
-> > >>> on rk3588 :-) .
-> > >>>
-> > >>> Also see the Mediatek CSI rx phy doing this too already [1]
-> > >>>
-> > >>>
-> > >>> Heiko
-> > >>>
-> > >>> [0] https://lore.kernel.org/linux-rockchip/udad4qf3o7kt45nuz6gxsvsm=
-prh4rnyfxfogopmih6ucznizih@7oj2jrnlfonz/
-> > >>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.=
-git/tree/Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
-> > >>>
-> > >>
-> > >> It is really a nice way to separate HDMI and DP modes.
-> >=20
-> > I apologize for reopening the discussion about the phy-types setting.
->=20
-> there is definitly no need to apologize. We're trying to find the best
-> solution afterall :-) .
->=20
-> > With the .set_mode() of struct phy_ops, the HDMI and eDP dynamic=20
-> > switching can be achieved, which just depends on the right setting of
-> > enum phy_mode in include/linux/phy/phy.h. So the previous way of=20
-> > configuring phy mode may be also good.
->=20
-> I think the deciding factor is, is there a use-case for needing to switch
-> modes at runtime.
->=20
-> I do think the mode for the dc-phy and also the hdptx-phy is pretty much
-> decided by the board design.
->=20
-> I.e. when you end up in a DP-connector (or eDP-panel) on your board you
-> need DP mode, and when you end up in a hdmi-connector you need the
-> HDMI phy mode.
->=20
-> So I think the phy-mode for the hdptx-phy is largely dictated by the stat=
-ic
-> board definition (like devicetree), hence going with the dt-argument for
-> the mode.
->=20
-> Like similar to the Naneng combophy, selecting its mode via argument
-> because deciding if it ends up in a sata port is a board-design thing.
->
-> Is there a use-case where you need to switch at runtime between
-> HDMI and eDP? Like starting the phy in eDP mode but then needing
-> to switch to HDMI mode, while the device is running?
-
-I believe the eDP controller can only use the PHY in eDP mode and
-the HDMI controller can only use it in HDMI mode. So in order to
-support runtime switching, the following options are possible:
-
-1. Enable both controllers, the PHY decides which one is really
-   used, the other one is basically a non-functional dummy device
-   until the PHY is reconfigured. This requires the set_mode()
-   callback, since the HDMI and eDP drivers both expect their
-   PHY to be enabled.
-
-2. Properly enable / disable the used controller, so that only one
-   controller is active at the same time. In this case the switching
-   is handled one layer above and the PHY has nothing to do with it.
-   The phy_enable call from each controller would just set it up in
-   the right mode.
-
-I guess option 1 is the hacked solution, which is easier to
-implement as DRM's hotplug abilities are quite limited at the moment
-as far as I know. I think the second solution looks much cleaner and
-should be prefered for upstream. That solution does not require
-calling set_mode() for runtime switching making this whole argument
-void :)
-
-FWIW I think the DT argument based mode setting and the runtime set_mode
-are not necessarily mutual exclusive. In theory one could support both
-and adding set_mode support later does not change any ABI as far as
-I can see. Basically handle it like pin mux/configuration settings,
-which are usually automatically handled by the device core based on
-DT information, except for some drivers which have special needs.
-
-> > And other phys may want to support dynamic switching too, like the=20
-> > Rockchip USBDP combo phy.
->=20
-> I guess USBDP is special in that in also does both modes dynamical
-> depending on its use (like type-c with option DP altmode)
-
-The USBDP PHY is indeed quite different from the PHYs in your list
-above, but for a different reason: All the combined PHYs you listed
-above only support one mode at the same time. E.g. you need to
-decide between PCIe, SATA and USB3 mode for the Naneng combophy.
-
-For the USBDP PHY the modes are not mutually exclusive. The USB
-controller can request the USBDP PHY in USB mode at the same time
-as the DP controller requests it in DP mode. Some additional
-registers configure how the lanes are being muxed. A typcial setup
-would be 2 lanes for USB3 and 2 lanes for DP.
-
-Greetings,
-
--- Sebastian
-
---4uvvjljskgf7wmee
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdM6lUACgkQ2O7X88g7
-+poROg/9ERk55HG40SbfPg+6kCZ6sywLSwJTZweCCXGjvq9Q9R7JK/pVHrkgVhtJ
-H28UpwMTj2wN+idMK64a1EGf4ls0jw8dpDXS9y6M8f7/5Lu7DpO+c6qu+HCEOavL
-rVfk4ISVpT0KmbVrDDew1KRXekee9ch+uSO+VQAj/febMToxvkdqFS9PUibzmq0h
-VoUsyfct/7Ek9NKhmDPkvLVlvMHYNOrk7RsmMqlRN53zcyzrJSnbHsHlLjKCobwl
-s7zl6vhanR1sYBeoQ+4UdENOIQrDFuzJzdVp+zP6LvIpl4KbxbOD89bSI2tQLPPz
-yQCC5vBj+lwwhca4SWBp7cwoAJnY2n8A5T8qbrqMYZA7bsjafmZTrYbg1Tqe1X/H
-kAnmcZSue5fhQWV10xh9TuMcSc7LZyBZaRK+7rCooTOy5za7J/6VLHJ64uYE41sv
-Bx1XvfG5uDUh4qz1s6cAoEHdu7FYs1q9tdFeBo+uAh6ei5eScxxgXcBISq0wlhsJ
-D051T1P0DWRh5PgMWluGS6WuhBGlMxx10bqNQC1ad6sdYHXVsEFsXRwSioCSbhYf
-YNdoLkCk7qKUdQ11PMzhDqAZtAqV4ddKz+g7ZdDQDBBx29WgKTR73UhWNA9LvIe7
-pdClppVvA3Xgarmd0hbGt7P8LI/T6u6TemJ6Xo8zft6aYlaZ4zw=
-=y/X7
------END PGP SIGNATURE-----
-
---4uvvjljskgf7wmee--
-
-
---===============5445173038834474683==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5445173038834474683==--
-
