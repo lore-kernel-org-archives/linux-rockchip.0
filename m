@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 371B7D7830F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 12:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18EE9D78312
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 12:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8xw0OxfiHLTE+VqmzAEutqTyD4Zg7Rb+ieZsnJvnoy4=; b=WMhd5byRAlK/sYLfbH0DckSqp/
-	/56S/RSkEzozW9hxkp9k8C9dyBA9HprU1/T649Ts5Tgq/9P1fzQ2bzQORlgR0UkM6r7O1L3KxJXzF
-	7mzivPb4Njlh9os2T+JXVhUtty5p1dRlYP6jmLg1fyaW0LeIPhUe860b+ttxQZCfcClDkTOL2EHWQ
-	Sk9vR8TyStIzhqYivo+oQ21rzmJ93icsSbuiupjbDKOue+uynDHVQbc9ibPQhi0Cit+Lywe8PxTU2
-	L69P9eLx6n8BkxXzIMyYuCC3ZuiA3aEKryNeWpCkBU2maYar/gWjFCR8RJlOIVfaFVcYYe60A0ufA
-	2h2jxtdA==;
+	bh=L3Sku0Qx/XM1xkZ++okN60akGRZlat6qt+px22oNKZk=; b=gDbhZfyQWejOrvEaKP8jXM6aK1
+	AZQwRJF8klCmh0zVELmO/2D1rynDouyYDAdiq9Q0OC3H1NA3iEc+6G6Bj/skyLogWM+mOVwuQcm4o
+	4cBWdU4tsl3FGPLQuVjjoogE372oQfoCMF5L5mHWA2x1PiY3QyjcmtF5rSkwYjA6auFtACZA7ywOF
+	5h6w0w5ISMv2yLrAdntMWwhhyAZmEtU3gOR5cmTRVvLU/YZECXhqzWox3ABGwxWhEWj8JC5MmxgAE
+	tEaAiM4iQ0TePdKcTwtZ+Sco4PW+bihtL2PIHvl8tO6sOi3DVZJFAUnsM38F9qlLW7wo3/yVRjYad
+	5G4l5Suw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI58H-00000005zKD-0FmJ;
-	Mon, 02 Dec 2024 12:02:29 +0000
-Received: from out-184.mta0.migadu.com ([2001:41d0:1004:224b::b8])
+	id 1tI5Cs-000000060dM-32lp;
+	Mon, 02 Dec 2024 12:07:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI57G-00000005z6j-0pg4
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Dec 2024 12:01:28 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1733140880;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zE2OmnrpksGvdeKauyPLCFpi8Ev/7hTWSH5TEETlfos=;
-	b=LiQyTvQwaQqMmBNU1M5tMte6SZt2JDT2miztkcBeTMXSmwtYLHyROU2fPKNARIVxhHR7SI
-	CefFw+TjjmXafVH0t4wJwk2MHYgiMKyET7oiR20SvDhBnEfIU+6dUB9JEHR3TILwV0pkPI
-	C4xufc+6oGA7ft1bR0xHYRvhQx/6UxwIzW0g4d0fx5yZWVdNb2L32veMPZH9XLCvq1vqvM
-	oU9pzM17CvNQcs65bpHd1YyyjMPuIjn6Re+Rp/l9jeNoAIXw5WaIqxhijbRm3ZOnB9zC0C
-	a7VxyLkjR3iCkj/RU7ee+gHWnc1WKb5v5r57Cmt8nY6CIsxW6Nr97Dr17M/6Ng==
-Date: Mon, 02 Dec 2024 13:01:09 +0100
-Message-Id: <D6175VTSP13T.200HWIIHOIDQQ@cknow.org>
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable rng on all rk356x
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>, "Dragan Simic"
- <dsimic@manjaro.org>, "Peter Robinson" <pbrobinson@gmail.com>
-References: <20241201234613.52322-1-pbrobinson@gmail.com>
- <302bdae2f4defeefe88ea4018a0be11f@manjaro.org>
- <b50376c7-c5d5-41ae-95ea-e2d68c1cc809@linaro.org>
-In-Reply-To: <b50376c7-c5d5-41ae-95ea-e2d68c1cc809@linaro.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1tI5Bs-000000060KC-0mTR;
+	Mon, 02 Dec 2024 12:06:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 909855C545C;
+	Mon,  2 Dec 2024 12:05:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC0A9C4CED1;
+	Mon,  2 Dec 2024 12:06:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733141171;
+	bh=gonlDT3L++kFgkgr8dwEbfsoVRovNYHWTLew/Kf9tDA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hbHRhY2lub2ExTdOJetcBFDhwu+3jfa+EiLOFKIZCj5FsnpxL5dkE4OSA/5YzfCiN
+	 BytwJIUKzld/skAfD1J8BjcoBn766ZcovPof/X2UuZ3ijUE+wkrD4YfKUheuGHuYiS
+	 tc+HuLijZQ9cTgJqM7EIAUrRszprQLw63h3LN7njOsUB4o24JXn/sjx1ulgtyy5Sh1
+	 jp7CXNyPFcIeh0ROCIoDm7k1QgaJd0UBSYQsythHssl+2kNqrCAdwlPDY+UWTOnm/9
+	 gzbkFc2ly+khQjDQORZIQaw4D+o72MclNW80EuUB3aFpsXy6+mcARrVDfYMdVQbMgy
+	 00ORvUoOAUqgQ==
+Date: Mon, 2 Dec 2024 13:06:09 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 2/9] ASoC: hdmi-codec: move no_capture_mute to struct
+ hdmi_codec_pdata
+Message-ID: <20241202-bald-just-guan-c5d41b@houat>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-2-b5316e82f61a@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <20241201-drm-bridge-hdmi-connector-v5-2-b5316e82f61a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_040126_694858_DF750284 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20241202_040612_308668_D4F7AB1C 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,59 +85,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0719913405460957407=="
+Content-Type: multipart/mixed; boundary="===============8570909182183140771=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============0719913405460957407==
-Content-Type: multipart/signed;
- boundary=b5f45d1f61fb7924a69af3f0023ad359b7a5d5d310c6ea15f796a8275403;
- micalg=pgp-sha256; protocol="application/pgp-signature"
 
---b5f45d1f61fb7924a69af3f0023ad359b7a5d5d310c6ea15f796a8275403
+--===============8570909182183140771==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="6bleloymsoph6swm"
+Content-Disposition: inline
+
+
+--6bleloymsoph6swm
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v5 2/9] ASoC: hdmi-codec: move no_capture_mute to struct
+ hdmi_codec_pdata
+MIME-Version: 1.0
 
-On Mon Dec 2, 2024 at 11:40 AM CET, Marcin Juszkiewicz wrote:
-> W dniu 2.12.2024 o 04:55, Dragan Simic pisze:
->  > On 2024-12-02 00:46, Peter Robinson wrote:
->  >> The rk356x rng is available on both the rk3566 and rk3568
->  >> parts, the IP is all self contained within the SoCs so
->  >> it's enabled already by default on rk3568 so let's enable
->  >> it in the base rk356x.dtsi so it's enabled consistently
->  >> everywhere.
->  >
->  > Please, go through the mailing list threads [1][2] that have led us
->  > to the current state.  To sum it up, it isn't about what's supported
->  > in the two RK356x SoC variants, but about the RK3566's HWRNG being
->  > disabled because the testing showed that it produces unacceptably
->  > low quality of random data, for some yet unknown reason.
->
-> So maybe there should be a comment in rockchip/rk3568.dtsi so we would=20
-> not get back to it again.
+Hi,
 
-I suggested to put that in the (original) commit message:
-https://lore.kernel.org/linux-rockchip/6690040.iosknibmi9@bagend/
-precisely because this was quite predictable to happen.
+On Sun, Dec 01, 2024 at 02:44:06AM +0200, Dmitry Baryshkov wrote:
+> The no_capture_mute flag might differ from platform to platform,
+> especially in the case of the wrapping implementations, like the
+> upcoming DRM HDMI Codec framework. Move the flag next to all other flags
+> in struct hdmi_codec_pdata.
+>=20
+> Acked-by: Mark Brown <broonie@kernel.org>
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
-So a +1 on a comment in the dtsi with a link to the discussion in the
-commit message.
+I appreciate it might be a dumb question, but I never really understood
+what no_capture_mute was all about. And in that context, why some
+drivers would need / use it, and some won't.
 
---b5f45d1f61fb7924a69af3f0023ad359b7a5d5d310c6ea15f796a8275403
+Maxime
+
+--6bleloymsoph6swm
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ02hiAAKCRDXblvOeH7b
-bl8ZAQDzAkc1dza7+FMijsFijExJqS8p/Wf3mTBaIcy5txEEmQEAyJoYozFLN/9W
-nHDB3oiWH07uU/u4hh5+ih8L8E5J5Qg=
-=4tEc
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ02isAAKCRAnX84Zoj2+
+dh7cAX0XHBjVLJpBJcVNDhUwsok/1i+5fU7IyNojyr9o2nI4uQUWrlieIDKy+bqP
+ioHa5RoBfjSfWzdwDB7Ep7QSE5U9JkH9uF5girAsucCKcCXGsKLVLM1wLOEDZrqo
+t4ux4qxeCw==
+=KL7e
 -----END PGP SIGNATURE-----
 
---b5f45d1f61fb7924a69af3f0023ad359b7a5d5d310c6ea15f796a8275403--
+--6bleloymsoph6swm--
 
 
---===============0719913405460957407==
+--===============8570909182183140771==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -133,5 +147,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0719913405460957407==--
+--===============8570909182183140771==--
 
