@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C3CD7832F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 15:33:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410B1D78333
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 16:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YuPKO/2fH2VfUA2FOKuhre9DYc/1UwXQw4llP8w7fpQ=; b=qnQi0OJZ0aSai/
-	tZ3CBFSF55XNOZKeo3wdyeMvC8NvZZS804LkwcbdQ4S8IjinKNmMKSSaiMenZsJTg2mkQuh+JejLE
-	iAQUfERPMNz4pYolmX6QFO58uovjgr67KfHb93ZZYSKS1rglMvMYzThYdr1sxTypw9ZbVe7axfuyS
-	LvQJhNEG6r83jzwMnPr3w5rYvA+MZ/sri7ndizvyJAxpgJ9IQqivHK57R5K/2+8bbapytWIiOQxWA
-	/2lXmWOSc+2MPK1TIqr2ULyAR4Mny3/iGSytfg5Rbr9EYnzu1CD0zNHq49xDbe5QLF5I5dTv2elEm
-	kLJe1rMW3PSrPyuJjpZw==;
+	List-Owner; bh=9FIpyh4oV5/8XDAyKvHGcTBWo59RATqn8BGdhKJF6Zo=; b=EtPTkGlhC1PQF4
+	vkQKg3NV1UvErSL0zPNG9wGnc4HLxlKJDm2eV4Bn2KHqvysYOTDECXM8GeXK39z736Z6lS1i4J49X
+	RUKTOWUBacrguqLG6b7OGycoyR3rJq85yIdeONEgMI44aHhCAKbSecCUAELvZe/omZRD9xCv3tBeW
+	TEgERz0Rf7LVZFp+529R1nSv8PEB0dRj57cstNXxGqwqNRMteKodUyRO0SdHWTsP2SkJJ3Hv6x/v8
+	5vXgdRoQI2S/FuobA66OPljIQY0549T19p8qGhHlugil6BhIWGA0jzvrvOlx83RWfOJc178BtF3a0
+	86Gk2SCUashYKhX03zTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8Qp-00000006fZK-4BiV;
-	Mon, 02 Dec 2024 15:33:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tI98S-00000006ooF-0aLC;
+	Mon, 02 Dec 2024 16:18:56 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI8Pb-00000006fPC-3NUO;
-	Mon, 02 Dec 2024 15:32:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=8UlTXmqTD0hVxGuezAQrdINnlLV/4cWXAbXA5kGF8qk=; b=QyFbn5MsXOAB+vwNcAdb4r2vc2
-	aKxodi9VxRUY66kSLGVZG9oKFfGaFvxXR6TGHBte5e+HKAroErJ7vVvhQ3KOwa4YDp7pr91br84yR
-	2jOW0jBwU5REZorAdkouPFHGKCbSi94tCM0TAZ8cvxO4qWZxNJ5xvKeEZ4dMa+3aBTOPibU79NqJ7
-	6AZrFbzWY8CoXvUibAI3BFzne7RNsFC1qXGZHra+Bvtrz5xEdQrrL5V8f1h526gDWDxPdaZnIJYkU
-	dA/QOUk4WpzSD0TfSOeAJvFTrOxJZIi0F0R91t103NnhfF0b5L46Rpq6yjSURfPxw235INQrRmtyI
-	l1Aj/lAA==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tI8PM-0003np-2f; Mon, 02 Dec 2024 16:32:20 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Diederik de Haas <didi.debian@cknow.org>,
- Dragan Simic <dsimic@manjaro.org>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable rng on all rk356x
-Date: Mon, 02 Dec 2024 16:32:19 +0100
-Message-ID: <2377405.n0HT0TaD9V@diego>
-In-Reply-To: <c50f603a9e1a819f17f72e97e92aeebd@manjaro.org>
-References: <20241201234613.52322-1-pbrobinson@gmail.com>
- <D6175VTSP13T.200HWIIHOIDQQ@cknow.org>
- <c50f603a9e1a819f17f72e97e92aeebd@manjaro.org>
+	id 1tI8rs-00000006lU9-03X0;
+	Mon, 02 Dec 2024 16:01:49 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-aa5366d3b47so718595966b.0;
+        Mon, 02 Dec 2024 08:01:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733155306; x=1733760106; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=KcIwgDwhH0r2JEAbp50oSCByWlOCYMPyzaBWedWcxxE=;
+        b=BenBxHKtWpHdDSVMHdooT14R3MNQo0/zKoGDlWx45rtz2B/NtfRi7ak+//BWFvy+ZC
+         8b2+WSunq97TfCDxhwtlyZ6xx5of043qOKeYxxyO8GlokosZvU5CSzS4DFOvZ3oZwgYp
+         iLERrGu0RP78hRTIAZsTYm3Fr55zbJhZDW6ZhpaixJMheiv9w6ItF3i2WUYFi4NGc4vL
+         M9lFDJvmPwZ1yD0+2gT4MDnj4/LB9qNpHzmekMJGwzv5L2y79X8Kybt5+wht9JXLDzfc
+         l3Psn4OMWg3oBF7/q7L/hsHVnc66R+NvLcrPBInupIfshd0PwVc14z5cKQEWDxfz8Pq9
+         JEZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733155306; x=1733760106;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KcIwgDwhH0r2JEAbp50oSCByWlOCYMPyzaBWedWcxxE=;
+        b=pSYeJB21oXWAKHTC65y/2/YN+wlAHK/lEZWv7SyiUpzeDAQ1PQgGvadwEUBQ7mXV8Q
+         8pVIltV8KGEZjpUeUBkqonOqaMzP7IhucYaAKl5qtr2pM/QhP5v8WPKjG1Rl/xHh9amt
+         AV+mIvtO8sV6lxZkpXzBhdOqXvW3J7a4wN05qvS6R4D3kPf01V7M2fEM4hvM+wqxI84O
+         KJD4FyctGCxIriR2Cau6vVaPOvTaAWHn8FYtM0hNcY6Bv6ucwLjQu0q/fvh5UwCCHszP
+         Tx6CUpROUAVezvsiFqWiN6SQraPz85paVCg0roDkIN48311nkQzwnqluA1mj2ESGQBNW
+         mzDg==
+X-Forwarded-Encrypted: i=1; AJvYcCUsMKhl9KNS9nSLHbKiLoMnpwhktvcEgt7oZLiew8/CMRSDGSU4V8QAZUHzGmXbQ7MaycEFLsWScZp9KAchHn0=@lists.infradead.org, AJvYcCW5mSIO8NPy1/hyQJdqd6Q3oGtv5WUa1wfWNnpkaJtIxtrV4/HzuKSiJah3mTwAWuyA2RW/ARQtwgIc@lists.infradead.org, AJvYcCX/i6qfExZMyceWepnwCN6nZL6oCv4O37B+jcmnOVap0NCD0fVA1tK1JrZ6cm9seQ9LIyWOWWMrnKMW5Sxx0Y9L@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZPjy6CwRzJV4YeHfDUYC1wzNsAZp8axAqn8Z/CNwCsSLf0yDt
+	B0TbeJ049yvP/Ds60EJDHiSYNrF/VTnYyzQBPcupR0SDc5ResvRrKCmo1e962llVmu4zBBVqLeM
+	0obfW3bdVkCzqC9UQKR6QE0b/rxQ=
+X-Gm-Gg: ASbGncv2AnW7L0GGFD2OLaFjXubr6RssRchCZffZQ0SSY9Ku6fBiOAdZERH4VDwbImp
+	SIzkJPWTh8gtNAiGiVFBe5qOP0/cfPZ4X
+X-Google-Smtp-Source: AGHT+IGFABNZQaOPRburPWloYkSi4CpGPxba8eF7BykGzMmRWWY/MWtNoKOUl7owa7F4QGuaqVaPpnIxNrEo8kH/2NE=
+X-Received: by 2002:a17:906:846c:b0:aa5:2a71:1646 with SMTP id
+ a640c23a62f3a-aa580f56a7fmr1829897466b.33.1733155303815; Mon, 02 Dec 2024
+ 08:01:43 -0800 (PST)
 MIME-Version: 1.0
+References: <20241012071919.3726-1-linux.amoon@gmail.com>
+In-Reply-To: <20241012071919.3726-1-linux.amoon@gmail.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Mon, 2 Dec 2024 21:31:26 +0530
+Message-ID: <CANAwSgSusXfr73LNySLJVnYPDNsyYmK_=2+YXAwm6bLE+NsWdQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] RK3399: PCie Phy using new helper function
+To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
+	open list <linux-kernel@vger.kernel.org>
+Cc: Dan Carpenter <dan.carpenter@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_073235_871580_8438DDE5 
-X-CRM114-Status: GOOD (  25.47  )
+X-CRM114-CacheID: sfid-20241202_080148_051314_FDC2DCF1 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +94,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 2. Dezember 2024, 15:50:07 CET schrieb Dragan Simic:
-> Hello Diederik and Marcin,
-> 
-> On 2024-12-02 13:01, Diederik de Haas wrote:
-> > On Mon Dec 2, 2024 at 11:40 AM CET, Marcin Juszkiewicz wrote:
-> >> W dniu 2.12.2024 o 04:55, Dragan Simic pisze:
-> >>  > On 2024-12-02 00:46, Peter Robinson wrote:
-> >>  >> The rk356x rng is available on both the rk3566 and rk3568
-> >>  >> parts, the IP is all self contained within the SoCs so
-> >>  >> it's enabled already by default on rk3568 so let's enable
-> >>  >> it in the base rk356x.dtsi so it's enabled consistently
-> >>  >> everywhere.
-> >>  >
-> >>  > Please, go through the mailing list threads [1][2] that have led us
-> >>  > to the current state.  To sum it up, it isn't about what's 
-> >> supported
-> >>  > in the two RK356x SoC variants, but about the RK3566's HWRNG being
-> >>  > disabled because the testing showed that it produces unacceptably
-> >>  > low quality of random data, for some yet unknown reason.
-> >> 
-> >> So maybe there should be a comment in rockchip/rk3568.dtsi so we would
-> >> not get back to it again.
-> > 
-> > I suggested to put that in the (original) commit message:
-> > https://lore.kernel.org/linux-rockchip/6690040.iosknibmi9@bagend/
-> > precisely because this was quite predictable to happen.
-> > 
-> > So a +1 on a comment in the dtsi with a link to the discussion in the
-> > commit message.
-> 
-> Totally agreed on adding a brief summary to the RK356x base SoC dtsi,
-> so I went ahead and sent a patch that adds it. [1]  I also expected
-> that to be described in the base dtsi back when the HWRNG support was
-> added, but it somehow went in without the description.
+Hi All,
 
-thanks a lot for doing that, so I'll drop this patch here now from my inbox.
+On Sat, 12 Oct 2024 at 12:49, Anand Moon <linux.amoon@gmail.com> wrote:
+>
+> Few clean of the phy change and Using guard notation makes the code
+> more compact and error handling for mutex_lock/mutex_unlock.
+>
+> Plz review te code changes, I tend to do silly mistake.
+>
+> v1:
+> [1] https://lore.kernel.org/all/20240901183221.240361-5-linux.amoon@gmail.com/
+> v2: Fix some typo in the subjects.
+> [2] https://lore.kernel.org/all/20241006182445.3713-1-linux.amoon@gmail.com/
+>
 
+Do you have any device comments on these code changes?
 
-Heiko
+> Thanks
+> -Anand
+>
+Thank
+-Anand
 
-
+> Anand Moon (6):
+>   phy: rockchip-pcie: Simplify error handling with dev_err_probe()
+>   phy: rockchip-pcie: Use devm_clk_get_enabled() helper
+>   phy: rockchip-pcie: Use regmap_read_poll_timeout() for PCIe reference
+>     clk PLL status
+>   phy: rockchip-pcie: Refactor mutex handling in
+>     rockchip_pcie_phy_power_off()
+>   phy: rockchip-pcie: Refactor mutex handling in
+>     rockchip_pcie_phy_power_on()
+>   phy: rockchip-pcie: Use guard notation when acquiring mutex
+>
+>  drivers/phy/rockchip/phy-rockchip-pcie.c | 148 +++++++----------------
+>  1 file changed, 47 insertions(+), 101 deletions(-)
+>
+>
+> base-commit: 09f6b0c8904bfaa1e0601bc102e1b6aa6de8c98f
+> --
+> 2.44.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
