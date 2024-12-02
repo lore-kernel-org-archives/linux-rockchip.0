@@ -4,168 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B988FD10DDD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 09:53:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D767FD10DDE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 09:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fcw8LULU5lQl6t/FDMPqjdQgEpTXnTL1PMu75UjCnlY=; b=bbo0/E8J601xM03oED7em/CKs0
-	1gwRhOwW/MC8lXfrIi+nuusqaWES4ONhN4ntOEeGVkt9u7d7mIcPLmEtFqjMJ/VfGT3oJsoqqsSgj
-	CaK1ThlupG3TlDdJ7R2Ufdyu9h+8UPiqtgT4Kf1iaOjFcCPLsG6SOuF5d5hQ4cGdIIQ9g2cyzzJoh
-	Em778/A/FU4yLj7Etr9j5/XZVLbz5YfctHwutbdNA7azFjJ/t/hd9w7okmBFTPcvkTTvLIYN0MjO6
-	3Ddhz7H4HvEML6ZP9GHLCd5NjTM8APoo+tj7ahZ77Z4wgYLDaFcf0GTuXD91D8gyjzZZRFN+g8rZy
-	YlhIYWxg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aaFMtAngrvKs6xSaOzREd4ykcXujq4umgspMOArFKoA=; b=AT28FIqLNvBtj4
+	3a6LLIS2a2WZCXmOSPqF5DGKdZhlAYA/9a2N+eKuI/Sdr4C8sqA6BMcW+BrijunKg/3cf6+mZxKkO
+	wrYeJNWiYeTCn9fBviYiBmpYvEJ5x1TTbDh3MwqlpheL92TE9jb1zzUY1nkJvWaXCbi7rbCjigFqF
+	GYsar+3p5sBGnMguByryWMglz2DTg2B9UzFWIV30oAPs4zZokc0RPuYvV/QCzEPyLvMVIHnpPn3An
+	hpNfr57+r5DZlvXxITrf9eTbAeCCVdHUxJWjKXW8PYNMTpY2Ve23p5ty79a4Pb6qc4IH8oA+HamXW
+	wM30/K0zux7b8guKXX2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI37H-00000005d6h-1Y3u;
-	Mon, 02 Dec 2024 09:53:19 +0000
-Received: from mail-db8eur05on2060c.outbound.protection.outlook.com ([2a01:111:f403:2614::60c] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1tI3Bx-00000005dpt-2Sjm;
+	Mon, 02 Dec 2024 09:58:09 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI36G-00000005d0m-4AR6;
-	Mon, 02 Dec 2024 09:52:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FbD93iO6SxQ5zQQqaNKty4LbbGCWwxkL/b6t9Q0XOqp6lMR2MnoLLN3W1aq1VAf6B75uXJ/QTtmZazUKj85EEyadd96D2JLRskQGa0plCsbmyljZyuAGcytR7WFCsPDGzQ0cL3ZNQruv5SsEOPGrOMj15JWxKgftQQ6QGCDZzAclx+fSK4ZvcgOc6XgwOShx9o4Nh7b0uk8qx88LwLzXHtz+TNIYzp40wn81bmLi2TkWckvLqlkAknB9oShIbLFb3fuygIqReoBvwwd+oHOvzLh7Nbi2DOhEXLagxri6h2q4pL5+4vZZGkAWtY4+7FTfSRoC1TLOsxQubAM2jAjAKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iXgz+7R7UFZOhCrpab9KPYwxBnwB9NGWrEa1XDoD6y8=;
- b=ThJaZsHXSMT+yYY1tB6pDPrMgCJndu4Zc3nlEHcJC6mdh4Bvj7FjMeG2htPlS7rcxiYaKub6/wTEw80j0kfymGi5RQ0LI+mkFbddj+tYfm4lG3/MNyv6OZS5id/hUU+/d/OVLxGJT0i4GMSTXjMImW4u9O0I6xLQmbv+vA7kxoHdkBaHuLe0DMbqeSiUqaVEXCSZzKgHBrdVUYfIiCEXAvwtFgPD0i3WvB1emTFKnFnB3XHI8SwQEPyi3dkLEl2T3KgfsOOorQELADv0YX3/zegMklbLluNIfWcIZtB2qKHZqu/ePaKjttnA6pC6LPtsHjBgvgu8g86v/v8LViDf0g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iXgz+7R7UFZOhCrpab9KPYwxBnwB9NGWrEa1XDoD6y8=;
- b=hjpmb72GKtbdBr8xsC7cdBh73uJRjoOWgrIUioN/cyjrDfvk43qGAd5GSbpVz58PNk9CWlkQdzpzz2DdYNYkcbeQNgvoWfUVmnGZRZFAkYwLf++J0EiBVpelsMnp8plkZrD4J8Gx83THTHLSGav/hCNxoFmsxsmheyGSzbDT7Go=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by VI2PR04MB10764.eurprd04.prod.outlook.com (2603:10a6:800:271::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8207.18; Mon, 2 Dec
- 2024 09:52:07 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%7]) with mapi id 15.20.8207.017; Mon, 2 Dec 2024
- 09:52:07 +0000
-Message-ID: <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de>
-Date: Mon, 2 Dec 2024 10:52:06 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on
- rk3399-puma
+	id 1tI3At-00000005deF-1ur3;
+	Mon, 02 Dec 2024 09:57:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=zX++2BfI71EfbL0UifJIyYdnjIn03M87iaL/MLYsMe4=; b=i/dJ/qDZA4x76D5c0J418PwECQ
+	pPOKivungXawQrf6RAPl5Qkpki5ptQMnwt6cWyxMj81J8JQG5s0V4B8s9z46wVRtMDLDP9BgCHuBu
+	qmo/ukICI31OS4muDHfZxYHggjmt4paR2h1nCFoQqKKFtrvJPj+YAD+/TaC1UpD9y/9WkDg2bE3mc
+	wYZmq2jl2BWnEnBhLcRltjz3FuNkDg9xVwXK/5VYnBcQzsB0MTrN1T12AzMuRX8nJ4b3e4tottRWv
+	4Nf5TZg3lHKGR51Rp6jX083np7KoII81O2a48MBF/ZSTMuN52ni2047l5iKt1qnFK7h5qN+hCtnEE
+	5NbaPxBQ==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tI3Am-0000Ii-BO; Mon, 02 Dec 2024 10:56:56 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Jakob Unterwurzacher <jakobunt@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sasha Levin <sashal@kernel.org>,
  Iskander Amara <iskander.amara@theobroma-systems.com>,
  Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
- Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>
+ Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>,
+ Quentin Schulz <quentin.schulz@cherry.de>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on
+ rk3399-puma
+Date: Mon, 02 Dec 2024 10:56:55 +0100
+Message-ID: <2578458.4XsnlVU6TS@diego>
+In-Reply-To: <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de>
 References: <20241202090408.201662-1-jakob.unterwurzacher@cherry.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20241202090408.201662-1-jakob.unterwurzacher@cherry.de>
-X-ClientProxiedBy: FR2P281CA0028.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:14::15) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+ <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|VI2PR04MB10764:EE_
-X-MS-Office365-Filtering-Correlation-Id: 930ebb99-24b3-44dd-b6d1-08dd12b6fb96
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Z0xWWktmMFFKbDBkZUt6YXIrcGRtY1NkQStQbzZrSUpGdHc4S3B5K2xhQjZ3?=
- =?utf-8?B?NkRZeDJEdjBMUGtpZGdUOC9kNXUxQmxKdStiM2RXTlhCbVF6VHRTejIrZzA1?=
- =?utf-8?B?YlBiRlpubDArY3RUWFJGV29VZFJVbEtKQ3hUM1grNkRDZ1RtM1ZuWjZyNFV3?=
- =?utf-8?B?NFk1b1hCNjMxUE9mVVBEMXk4NXJETSsweFM3Zm9LMmNzODJ2aFkzVmkwYmZn?=
- =?utf-8?B?cVVPZ3dodEoxS09ZZTJWVDJHOTNzN3Ezdk5JYVBYU3dLRFo1WEFTUjBIYTdZ?=
- =?utf-8?B?R0dReHlxaVNXUWRjbzVZdzk5bHRHR3piaVAwWkZUTDNvbDVxVno4L0x2cVlD?=
- =?utf-8?B?Undla0IwOHIrOXZxdHlrMXE4dlArd2dlbmRYWFNSVGI1ZmJ5VnptQ2laaElk?=
- =?utf-8?B?Y3hKSzdZNUp5VkpCREhINlc3aHZoWHhFaERDRkdTZlM3L2tqUEJlS1lhaFJL?=
- =?utf-8?B?RWtKRzJNSktXblpZZm9teHE5U0cxSVdzQ1A5N2g3U2pPcW9Ld3ZpZ2VkOUx6?=
- =?utf-8?B?L05WZzBoNkFQbWxjRlB0Tk1yK3ZsQlhFdG50Nk5zK21vQWlHNlYramZSNEl2?=
- =?utf-8?B?TjltRWpOR0xBUGE3QUdWZnlmU2t0ZlV4WlVGSE1zYWg5cUgrQUd4K3FGMm5J?=
- =?utf-8?B?b2tYczVRZzNiR2F3Z0VHaURFQVFGY2J0aURYVGxHaFArR2syangyM3JCOHJj?=
- =?utf-8?B?eUVzSWxCWVNOTDFkMG03cHlyL1lpWEFDSHBaaUp0S2JFeHRRdllRM05yMENL?=
- =?utf-8?B?NVlqdmE2dWNNaG9VUzZlZDJIMDMzeENQMjZjYkRJaEltVnMwYVZxM2VmQUQ3?=
- =?utf-8?B?bjNjNTJUV09CRUNBNy9ERVlXRFg5NHdsVXgyRjhhbDVibjJhbGFYZmRvRW1J?=
- =?utf-8?B?WHgzTU1OMUtjb2ZadnpFa3lPK2VTL0U4MlI4eTloOEdZV2ZoN2o4WjZvdWFi?=
- =?utf-8?B?VzY2QjNWTDB5dG1EM3VNUDBzcERRdmM3YUdhSWxtaExPUkszWWRFSHUyclBa?=
- =?utf-8?B?RXRFT2RUOHdGYnpuanRIM3M1Yjl5S3ZtVFNaTDBFQlBzTTRhbjJmYURUOTlk?=
- =?utf-8?B?ZHdMdVYyeWZNL0tUV1l4SHI2WXk0VmlLM2U3K3JIbDlZNytuSHRXMXpRN1h0?=
- =?utf-8?B?dG1VMFovVC8xclUxVWFqeW9TZzVJQUtGR1g1WHVQbDBmZFBrdFptVzFEQzhp?=
- =?utf-8?B?OTBMY2FKWEc3THY2SEgzTkR2a0NHNjRXRDNHMFd3VjBscjlmenU1ZFF6bWYy?=
- =?utf-8?B?L3l2R3p6MEt5Zk5zeHg3TnNOU0dmeEcxaW0vQlZOd1hJcDBtNWNpd2xvdHVZ?=
- =?utf-8?B?RDN4NFVwWGxVYXVqTjArQW1KNGt5M3dIK1hjM1JQNTdrNFU4bFA0YkJMbmdv?=
- =?utf-8?B?NEJrMklpTU12VVBPYUNuTXBoWmdqUjN3U2V0VTFWZkNVVm16N2J6S0owcTQ2?=
- =?utf-8?B?UUswRWFlRWVRaTAzZURYcVIrYlBUUFJDOTBNYmlxTWNsdUFaY0ZCNk5Eak1Y?=
- =?utf-8?B?KzhBdU9URG5mOERiQnBrV2puc09ZSkNrTlpGQjBvYlQvTldqL3RiQTY2R3Y5?=
- =?utf-8?B?MXpkRzdkREFReHd6SGlGaWZycTU3aTFLOWh2YjJXOFpnUjRaRERYTHc4elF3?=
- =?utf-8?B?Y0M0bkloRWpFZmY4V0tkc3oxeU5LUTJseUo3NW9YNWVQVDdhanVaNmtCSzdP?=
- =?utf-8?B?WlN1a0VDblNIeW8xaEQ5b2pjWkVBZnhlVXB6RFJHSUZ2dUFIQnZ2ZXRFc293?=
- =?utf-8?B?NUVRai9oc0RGNklHODVWZkhxU1lXdnd3NGxLSTlMZ2hNY3phajFpWmtFOWpI?=
- =?utf-8?B?RjhReTVRdjBtdUlORGJiUT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TEl0cFJCT2VDcDZGYnhXNzFjMWFBVTBuRW5JTDFPZWo1WnJhNnE0TDQ2dC8x?=
- =?utf-8?B?VEJsUjdweUtIQzVjMHlGeW0wb0tLZlJqRUc1eStIZzBKeWJqNWYrTi94R1g4?=
- =?utf-8?B?eFd1UTU2enRrcTIxSWJqZXc4c211VjI0QTg1eUFrZC9lQmcwNEpib0c2L2dO?=
- =?utf-8?B?Z2cyZ01EV01LQUw4WkhSSENtTXZOcWpCajhHbkdQNS8rZWw2cmNrQlZDalZH?=
- =?utf-8?B?Ky9Ga3c3TlI0TlhDNkZzVnVQRGRBVGJSWlRIbUtrczY5SFNrL3ZnRGhWaEhN?=
- =?utf-8?B?L3ZKMXdPbnE5b3NsOVYyQzJ1alk2MEtsRDVaM2t1M2c5UWRSMHlTdmpvZVhJ?=
- =?utf-8?B?S01DN3BkWEN5M0RNQUpSS2dQWGNuMWw1VUhRTVVYM0tQUlhHRUdkWE5kT2pz?=
- =?utf-8?B?NFhGT00vRmozV3h3Y3ZvbmZ2SVJmMFNnZlFobzFVb1hyMGROSnF2Ni9JcW15?=
- =?utf-8?B?RXEzUjZMeWkwelEvRVpJckpiaENuNWFWN3Jvb2VYNUJGb0tIdG5HY0pPZ2t4?=
- =?utf-8?B?ZUQ0Rk9UUUFwalNyMlY4OXJOWDJtVEI4RS9qcDJrMlVsdXhtNUM1QlNtUnhx?=
- =?utf-8?B?NzVjSjNOVFlwWUlmRU1USHZOcWsxaEZURlVrOStQMnFIU01SYmtPckFnTFF6?=
- =?utf-8?B?K1E3RWRuQVdyK1BLRXdaVGhvSzAxakltZGwvWnVlSXY3YnZ1VWRlZk0vQ0NZ?=
- =?utf-8?B?ZWdVbnBVSVRKR3J6UjFHck5uL2ptN3VCVEQ5TW5DUGpQR2FFbExUTXFWbmRR?=
- =?utf-8?B?akFNcVdIY2hjRDZHeXV2TzhPV1VlNURqUFduampJWGdpc3NiNU1BL0tROENq?=
- =?utf-8?B?cDhIRis3N3NrYjluRjRjbTJibkZiRnZVempnZXdlUEtBemQ5MXgwbnB2Yk92?=
- =?utf-8?B?THV3RTlhL285RVNhUXd2WGQ0Y0RnUTNrZUxSamg2c3VDNnQvMll0cm04SXpF?=
- =?utf-8?B?M1NUWlVoQVV3bU1VaFRXc3RyN1U3czFpMlI3TzBuMndhNkFyZGdKdTQ4QnVn?=
- =?utf-8?B?Z1pUd0xkQ0w3WC9OanRKek16VVVwRk01VlNsZmpGZDVSS2trTWZqdUpsbmcx?=
- =?utf-8?B?OFlvNEs5L3pFRDFMTUNUSTlBeG5Rb1J0aHM0eDQzZkNtTkx3VXJ0YXJQSzV2?=
- =?utf-8?B?M2tzRHRxVyswNzJGaFRtK0tjU0hGMGFDTkN1eVNUeWJhd0FqanJZUlIxZkpn?=
- =?utf-8?B?M0U1WEF0MDBTcldaSm1DbDZQT0Z6N2t0ZHd3bWd0dWVYd3RhVzJZck9GWGc5?=
- =?utf-8?B?MUdJTy9Zc2w2a2w3cFZTSVlRcG5pMjhUeTVWNHpGK2tmWHRrTjlXUGU2SmJE?=
- =?utf-8?B?ZXpkZ1ZxejNOMkRRL3pjRzBxWkVZZVdZRzB4azRVSlZoOTJ5SVpQOC9vMjBz?=
- =?utf-8?B?K0tLNFZSS096bXRzNUdTV1NLUHBWUHRnQjVITFJZU0JOQlE5NFE0VXVNd2RS?=
- =?utf-8?B?RXZIV21lTVN2MzM1cUFPNy9MQ0JxRGlKTGN5cnVaZFpHZWNqM0VhenVKRVZD?=
- =?utf-8?B?bHQvWW50VGhxeVlhOVVaMUtSMXQ0M24vaGpHWlRWNnh4MklBcmV0Q3dRRlFQ?=
- =?utf-8?B?MnovcHRMR3lFTkovendMWEd3cm52azhacTVHYXRFbEtYTzFINlBnOHc2cEdE?=
- =?utf-8?B?S2dKS0s3SG5QM2VzWm9ic2hwaGRVb21nblBQeEpDVjlRSExUZUlobFc0QW11?=
- =?utf-8?B?cDBIRmltK3NEQ1JrZlc4Njl5L25BdEtHSS9IZnh6ZHJVeWxnVjhwUzhaeVBI?=
- =?utf-8?B?NHNJRTlXWFZLeDV0TXk0UHhRVU9nZTQ0MTZyMjROZE0vNWdubFdiSXBVNnF6?=
- =?utf-8?B?d2piL0c1TE1LTU5qZFNhTWcvQWlyZWczSVpHNXFCQUNuNFBKWThxWDhKcmJw?=
- =?utf-8?B?UEpxOXlleUh1ZGE1SkJ5R0k5YWhQRlQ5MTkrYUVoSm1lb2VzUjFxK3JXT3pZ?=
- =?utf-8?B?V0xjemNLdlNXL3ZaNnluUlh1ak82b2drdmlMOWN1YUFud0dxd0lOUTJKeXpE?=
- =?utf-8?B?cXlVaUdHV3ZBL0h2V0hXRFNhYmdHRkhaaC83UWVhN3F2ejdhL2VoSmU5R0lT?=
- =?utf-8?B?eWlRaHhqRjdhemZoaEU4SkZTK1hNWk5NTGlyK1U3WG9RTERZdnh4Q1QrSnRX?=
- =?utf-8?B?L2R0eFhObHR3cnB6Z1d1enFrRkNmaXoyTnpyVzRtT3lFQ082UlJZb3BHVm5F?=
- =?utf-8?B?Tmc9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 930ebb99-24b3-44dd-b6d1-08dd12b6fb96
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Dec 2024 09:52:07.2182
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: agHZADi1Yqoes5pBEYUEOQxoB68VWfukLfDdgdqb5Er9ooCjfPHV2HzMuhPWBWq2bJgWTe9MASkKwCqig8k/AocwAJs5WIBP5FS3fPcyir8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10764
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_015217_042059_7EF61407 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20241202_015703_517132_E6DEDDD7 
+X-CRM114-Status: GOOD (  32.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,97 +77,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jakob,
-
-On 12/2/24 10:04 AM, Jakob Unterwurzacher wrote:
-> During mass manufacturing, we noticed the mmc_rx_crc_error counter,
-> as reported by "ethtool -S eth0 | grep mmc_rx_crc_error" to increase
-> above zero during nuttcp speedtests.
+Am Montag, 2. Dezember 2024, 10:52:06 CET schrieb Quentin Schulz:
+> Hi Jakob,
 > 
-> Cycling through the rx_delay range on two boards shows that is a large
-> "good" region from 0x11 to 0x35 (see below for details).
+> On 12/2/24 10:04 AM, Jakob Unterwurzacher wrote:
+> > During mass manufacturing, we noticed the mmc_rx_crc_error counter,
+> > as reported by "ethtool -S eth0 | grep mmc_rx_crc_error" to increase
+> > above zero during nuttcp speedtests.
+> > 
+> > Cycling through the rx_delay range on two boards shows that is a large
+> > "good" region from 0x11 to 0x35 (see below for details).
+> > 
+> 
+> Is this missing a "there" after that? "that there is a large good region"?
+> 
+> > This commit increases rx_delay to 0x11, which is the smallest
+> > possible change that fixes the issue we are seeing on the KSZ9031 PHY.
+> > This also matches what most other rk3399 boards do.
+> > 
+> > Tests for Puma PCBA S/N TT0069903:
+> > 
+> > 	rx_delay mmc_rx_crc_error
+> > 	-------- ----------------
+> > 	0x09 (dhcp broken)
+> > 	0x10 897
+> > 	0x11 0
+> > 	0x20 0
+> > 	0x30 0
+> > 	0x35 0
+> > 	0x3a 745
+> > 	0x3b 11375
+> > 	0x3c 36680
+> > 	0x40 (dhcp broken)
+> > 	0x7f (dhcp broken)
+> > 
+> > Tests for Puma PCBA S/N TT0157733:
+> > 
+> > 	rx_delay mmc_rx_crc_error
+> > 	-------- ----------------
+> > 	0x10 59
+> > 	0x11 0
+> > 	0x35 0
+> > 
+> > Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+> 
+> This would be a candidate for backporting I believe.
+> 
+> Therefore, a
+
+also please include a
+
+Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
+
+> Cc: <stable@vger.kernel.org>
+> 
+> here would have been nice (in the commit log), c.f. 
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html#select-the-recipients-for-your-patch
+> 
+> > ---
+> >   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > index 9efcdce0f593..13d0c511046b 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > @@ -181,7 +181,7 @@ &gmac {
+> >   	snps,reset-active-low;
+> >   	snps,reset-delays-us = <0 10000 50000>;
+> >   	tx_delay = <0x10>;
+> > -	rx_delay = <0x10>;
+> > +	rx_delay = <0x11>;
+> 
+> While at it, we could reorder this alphabetically and move rx_delay 
+
+I would disagree. This is a "fix", so should ideally only do the minimal
+changes to make life of the stable people easier.
+
+Doing this one-line change is way easier to understand than stuff also
+moving around.
+
+Heiko
+
+> between pinctrl-0 and snps,reset-gpio? c.f. 
+> https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.html#order-of-properties-in-device-node 
+> rx_delay and tx_delay seem to be vendor-specific but without the vendor 
+> prefix, but so is snps,reset-gpio so that should be fine to reorder this 
+> way.
+> 
+> Considering we have an option for KSZ9031 on RK3588 Jaguar and RK3588 
+> Tiger and the "same" MAC IP is used and that we use the same TXD and RXD 
+> delay than on RK3399 Puma right now, I guess we would want to check 
+> those don't need a change as well? (funnily enough, all RK3588-based 
+> boards in 6.12 actually have 0x00 for rx_delay and 0x43/0x44 for 
+> tx_delay, except ours which are at 0x10). Not a blocker for this patch 
+> though, so:
+> 
+> Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+> 
+> Thanks!
+> Quentin
 > 
 
-Is this missing a "there" after that? "that there is a large good region"?
 
-> This commit increases rx_delay to 0x11, which is the smallest
-> possible change that fixes the issue we are seeing on the KSZ9031 PHY.
-> This also matches what most other rk3399 boards do.
-> 
-> Tests for Puma PCBA S/N TT0069903:
-> 
-> 	rx_delay mmc_rx_crc_error
-> 	-------- ----------------
-> 	0x09 (dhcp broken)
-> 	0x10 897
-> 	0x11 0
-> 	0x20 0
-> 	0x30 0
-> 	0x35 0
-> 	0x3a 745
-> 	0x3b 11375
-> 	0x3c 36680
-> 	0x40 (dhcp broken)
-> 	0x7f (dhcp broken)
-> 
-> Tests for Puma PCBA S/N TT0157733:
-> 
-> 	rx_delay mmc_rx_crc_error
-> 	-------- ----------------
-> 	0x10 59
-> 	0x11 0
-> 	0x35 0
-> 
-> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
 
-This would be a candidate for backporting I believe.
 
-Therefore, a
-
-Cc: <stable@vger.kernel.org>
-
-here would have been nice (in the commit log), c.f. 
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#select-the-recipients-for-your-patch
-
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> index 9efcdce0f593..13d0c511046b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> @@ -181,7 +181,7 @@ &gmac {
->   	snps,reset-active-low;
->   	snps,reset-delays-us = <0 10000 50000>;
->   	tx_delay = <0x10>;
-> -	rx_delay = <0x10>;
-> +	rx_delay = <0x11>;
-
-While at it, we could reorder this alphabetically and move rx_delay 
-between pinctrl-0 and snps,reset-gpio? c.f. 
-https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.html#order-of-properties-in-device-node 
-rx_delay and tx_delay seem to be vendor-specific but without the vendor 
-prefix, but so is snps,reset-gpio so that should be fine to reorder this 
-way.
-
-Considering we have an option for KSZ9031 on RK3588 Jaguar and RK3588 
-Tiger and the "same" MAC IP is used and that we use the same TXD and RXD 
-delay than on RK3399 Puma right now, I guess we would want to check 
-those don't need a change as well? (funnily enough, all RK3588-based 
-boards in 6.12 actually have 0x00 for rx_delay and 0x43/0x44 for 
-tx_delay, except ours which are at 0x10). Not a blocker for this patch 
-though, so:
-
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-
-Thanks!
-Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
