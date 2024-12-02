@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A98D78337
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 17:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31337D7831C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 17:59:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/JxZb7h2urzW54KjLYwWkn3++k65V0NFJ4xL+Rhlw8s=; b=telIOrroRMgMnt8CPII9JdxhMT
-	q7fzwWfErmCYv+T3TA1d0NYxYCaUf0RgTSRrSFZqkVnTB31ysAwRPeEyR5Kr+klmgxf0vP4ve/w0L
-	1K5lKoqSsxCn2N/QXcPG7YXI/WBZwwjCnfxqaLbXSC20Je/Egifq1E4UC2xdv9vgDAXm68K3GSc8q
-	F4Vp7EQ1ublOznj+Bt+rBSiuXeXwiAj1uHYx0M0q8YPXrtjTWDj+xjaMVnN1dFZeuTwRNhqX3UkX+
-	cAWsvk5X4aeM5apaxdpfRLxxEYO/z1m99W9JgKkSlFONJWpJ4qwtn8Fs4ksPid0VycXxFlqVFlJjZ
-	usZGw2kA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G9OybNTp9wIGhBW8zDt6rKLxS5YzZUzPsWD3Fskz/Sg=; b=c361OpzEJ8lrX8
+	u0+O+K7I0zCcho3HtPvqxLE8Oi7OhQv60wT7gcb4V9KIfM64gKlsWEucxRwFZdOMzskBBbdw4iJUh
+	Bo9+4dm/Y5SAgPBjTNQsqwROo3fgG8HJ0tktkkPDgiYMEPmhDePTcaOKi8W5QscRJQ00Qx4uQI6w+
+	d+LNKJdmQxtFdXawfcHPfJZ+/sfE24G3zPaWw6kgBX6zbfPu1xvqTQ/78+Vi8vd0zLyY8CPwHyeGH
+	r3854clAiP5YqNE/b8HM6B5RVNguckmTGzgR+JSFP9jNRFCP3XDpzFFDc1cA8l44J4kXwNeD6maxL
+	znrBE4BOKIhVDORrx3IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI9rP-00000006xSO-3wrJ;
-	Mon, 02 Dec 2024 17:05:23 +0000
-Received: from out-187.mta0.migadu.com ([2001:41d0:1004:224b::bb])
+	id 1tIAhf-000000076EZ-0JKK;
+	Mon, 02 Dec 2024 17:59:23 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI9rM-00000006xQD-4398
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Dec 2024 17:05:22 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1733159115;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gOAOvw778ddifzLBAVTAVA7ViPhpzAN8s/3Zy+v6TwY=;
-	b=VJZ4NDMGPhmVUUl1yFPrEKK3II45/5cEG2KXmEIfKitVGXhwnFNbVoGxcw2RA2nGUo9wBD
-	fv4uKeEhwV74RapauaXWTUbqb33nust/6u4NsclfxW9Bs2kKz3+XoSnJq2I04iI/JbZkII
-	RfnXhA530DawCl08cSo2nGgTJdfxn3RAGqK26ITNMxYy3QqAjtIfTIrqLRGO55MuXb1zQ4
-	cOY2Hs9H+0qN/b2nnO6ELaMVgL0IrjPsZ+2W2OpwQv0+HyYt/x7BJv/TbUrVq1BK0KCiBx
-	t17qD8DWYubEJviYSZYrX/sKuksIoEhA15bjiuRjnI1AWh3BUW5qGLBjBW0hiw==
-Date: Mon, 02 Dec 2024 18:05:03 +0100
-Message-Id: <D61DMK8O9JCR.1C62A5UGI51BT@cknow.org>
-Cc: <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
- <marcin.juszkiewicz@linaro.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe why is HWRNG disabled in
- RK356x base dtsi
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Dragan Simic" <dsimic@manjaro.org>,
- <linux-rockchip@lists.infradead.org>
-References: <6b272e2f8f916c04b05db50df621659a5a7f29ab.1733149874.git.dsimic@manjaro.org>
-In-Reply-To: <6b272e2f8f916c04b05db50df621659a5a7f29ab.1733149874.git.dsimic@manjaro.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1tIAge-0000000763r-1IpH;
+	Mon, 02 Dec 2024 17:58:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 32920A40CBA;
+	Mon,  2 Dec 2024 17:56:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BD91C4CED1;
+	Mon,  2 Dec 2024 17:58:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733162299;
+	bh=bJXHhv1125KrcH8q0sNs+ESdxa4r7njPfil1NuS7//A=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Dxz/NeTUoIAnlz4vAj6C9KKzvQtSbUU6WtoHAu8iLkZlmOnxVaXaFYG1rhiMeqzDz
+	 rZDgv5XsmDpZZRowHBN1zLxUYkeddWh7TNZXK+PlceuAXTWSo7X1gOawVhIFOn1RKP
+	 X1gVSeEK/YgT/+3I6O65NQcMq+vtnsEPiSEjN/sUbXgT+sRxK+lBHFt2mGsRwkxEdO
+	 J6F8P+i4Kt7YpEKQsbdHAbcF2fT7ID+Lq2TrxINt5Aq9OaMC5AhQgGIaUQD90q3stV
+	 Y4qu7OYXEOBr9Se06hMfLiLdyhQ0+/5m/Wkf4UCLiRsNdAjHLRssmh5PXDELgRl2DQ
+	 Ea3QEzsPTnsIw==
+From: Mark Brown <broonie@kernel.org>
+To: frattaroli.nicolas@gmail.com, linux-rockchip@lists.infradead.org, 
+ Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20241118045605.48440-1-dheeraj.linuxdev@gmail.com>
+References: <20241118045605.48440-1-dheeraj.linuxdev@gmail.com>
+Subject: Re: [PATCHv2,sound-next] ASoC: rockchip: i2s-tdm: Fix a useless
+ call issue
+Message-Id: <173316229709.189181.1009410834028591581.b4-ty@kernel.org>
+Date: Mon, 02 Dec 2024 17:58:17 +0000
+MIME-Version: 1.0
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_090521_218102_1D1DF556 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20241202_095820_419411_1EA15107 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,95 +69,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0221091466731988769=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============0221091466731988769==
-Content-Type: multipart/signed;
- boundary=7e48cb5c561c9c94c8ce91377d76abea74c76a1a74e817be5c3f74398612;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+On Mon, 18 Nov 2024 10:26:05 +0530, Dheeraj Reddy Jonnalagadda wrote:
+> This commit fixes a useless call issue detected by Coverity
+> (CID 1507978). The call to rockchip_i2s_ch_to_io is unnecessary as its
+> return value is never checked or used. As a result, the function
+> definition and call is removed.
+> 
+> 
 
---7e48cb5c561c9c94c8ce91377d76abea74c76a1a74e817be5c3f74398612
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Applied to
 
-Hi,
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-I'd have swapped 'is' and 'HWRNG' in the subject, but otherwise ...
+Thanks!
 
-On Mon Dec 2, 2024 at 3:44 PM CET, Dragan Simic wrote:
-> Despite the presence of the hardware random number generator (HWRNG) in t=
-he
-> different Rockchip RK356x SoC variants, it remains disabled for the RK356=
-6
-> SoC because testing showed [1] that it produces unacceptably low quality =
-of
-> random data, for some yet unknown reason.  The HWRNG is enabled for the R=
-K3568
-> SoC, on which the testing showed good quality of the generated random dat=
-a.
->
-> To avoid possible confusion in the future, [2] let's have this described
-> briefly in the RK356x base SoC dtsi.
->
-> [1] https://lore.kernel.org/linux-rockchip/cover.1720969799.git.daniel@ma=
-krotopia.org/T/#u
-> [2] https://lore.kernel.org/linux-rockchip/20241201234613.52322-1-pbrobin=
-son@gmail.com/T/#u
->
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/b=
-oot/dts/rockchip/rk356x-base.dtsi
-> index 62be06f3b863..ab8f42c0a843 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> @@ -1032,6 +1032,11 @@ sdhci: mmc@fe310000 {
->  		status =3D "disabled";
->  	};
-> =20
-> +	/*
-> +	 * Testing showed that the HWRNG found in RK3566 produces unacceptably
-> +	 * low quality of random data, so the HWRNG isn't enabled for all RK356=
-x
-> +	 * SoC variants despite its presence.
-> +	 */
->  	rng: rng@fe388000 {
->  		compatible =3D "rockchip,rk3568-rng";
->  		reg =3D <0x0 0xfe388000 0x0 0x4000>;
+[1/1] ASoC: rockchip: i2s-tdm: Fix a useless call issue
+      commit: 42c7af046aaf35c42ef864cbd96df025c48ce50f
 
-Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Thanks for this :-)
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---7e48cb5c561c9c94c8ce91377d76abea74c76a1a74e817be5c3f74398612
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ03oxAAKCRDXblvOeH7b
-bnskAQCQUuFH8eysdScwXJpiPkXXRdU7mTDzJMtkUptCsFOzoQD/XP1IvlnN/atD
-YZ36wXEYt7ZtYgV2N+r28ZD2HWPOIgY=
-=+WZI
------END PGP SIGNATURE-----
+Thanks,
+Mark
 
---7e48cb5c561c9c94c8ce91377d76abea74c76a1a74e817be5c3f74398612--
-
-
---===============0221091466731988769==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0221091466731988769==--
-
