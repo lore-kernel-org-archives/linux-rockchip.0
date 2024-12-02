@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFB3D7832E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 15:14:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C3CD7832F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 15:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YZPEiWRtVRzZxVbYELi9mLY/JHrW98J6MlQNgi7psZE=; b=zpzPIe4VvUbXj/
-	zY5DpwklUQQjLWpNt9lHQJh+99ExRPMROXavOZ9cULeN7e15d3yfcvI6KQ/VNYQzqt3vT65/GM1s0
-	BGLHWar6AtN/cTJRI2M5efNqxEVJjE6JgKuiSj6pSamZ3+b90rkTfBoE+zOUQdDYFJNXXLW9Uhsk2
-	c2YRCMEBy3vtJMPBK42NmkKj1FY3qEAjVud4lJO27LHXs4OnnWLsvM9f4/tpqjaIGYJuRBgAmjYdZ
-	KGP8SRL49R0EQz7Zd8WcmbwE+HdHdMeSbp8MEfjVFgHpEh+nU9uCX4WsDTCb9wyE8R0VLJMAwTlGE
-	lubZY0tHZgMGe9gq3MlQ==;
+	List-Owner; bh=YuPKO/2fH2VfUA2FOKuhre9DYc/1UwXQw4llP8w7fpQ=; b=qnQi0OJZ0aSai/
+	tZ3CBFSF55XNOZKeo3wdyeMvC8NvZZS804LkwcbdQ4S8IjinKNmMKSSaiMenZsJTg2mkQuh+JejLE
+	iAQUfERPMNz4pYolmX6QFO58uovjgr67KfHb93ZZYSKS1rglMvMYzThYdr1sxTypw9ZbVe7axfuyS
+	LvQJhNEG6r83jzwMnPr3w5rYvA+MZ/sri7ndizvyJAxpgJ9IQqivHK57R5K/2+8bbapytWIiOQxWA
+	/2lXmWOSc+2MPK1TIqr2ULyAR4Mny3/iGSytfg5Rbr9EYnzu1CD0zNHq49xDbe5QLF5I5dTv2elEm
+	kLJe1rMW3PSrPyuJjpZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI87q-00000006bJG-3G7S;
-	Mon, 02 Dec 2024 15:14:14 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1tI8Qp-00000006fZK-4BiV;
+	Mon, 02 Dec 2024 15:33:52 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI867-00000006axv-0HXr;
-	Mon, 02 Dec 2024 15:12:28 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-21288ce11d7so39363935ad.2;
-        Mon, 02 Dec 2024 07:12:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733152346; x=1733757146; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HvFldH2UE7l++lKguJ5UKXHzEK7JVjP2Z1XY9Om0QMI=;
-        b=BEddVNkSWD2ZrxL1ZPZiOpR0lr6vtZLeYt2LovAa1L9QS1WFmSctm4c8514FWIqDPM
-         u/qgPjkgJfqgIfpJ0gkYigzL4RFvuGzExfCe2xhArG+ldBsBTh6MsKX0IvaXn3If1inF
-         KTs+YLPokksxmRqbbi+eMPaX/6dBy4g3lSLvVAWvBXi6/tl6hI0SjS5dMzrHHyyvgAzy
-         AsTkXR5GJWlm39YbIdOPBWqBbEANxrY69EkITBwj/illCbN4rm9Ez2N2Dl/WlT47/CN5
-         zNdUQTGRSUhIyzeJI8ISTsK3Sr8RhCB1pe8Hf8asbwwx9/L5AX9E8tV+Ookp+XHtWU3y
-         u1xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733152346; x=1733757146;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HvFldH2UE7l++lKguJ5UKXHzEK7JVjP2Z1XY9Om0QMI=;
-        b=NkNLwuhFLCPsEAnhnKql6mQeYYK0PVelOcttAlFn7WqsAmeAu5Potp4mor9uQsBgL4
-         o26x5NQY0lkeIqIi2geeCk9Dqsax7AFdnOMZP+BjEkDxCyfT4HKm/omjcFX4el+m27RW
-         41ke/UVR9m7FK29K+syteUU8IPSjhQ34jXp9W/7bPpMMRVqRqw4GyAXAVIz3Ad0KSxu5
-         xSSvIfAjy1Y+Mha7SvwpurDOMlSV6BMP46m/CxnhHARMw2Vj7MvEkwl4Ge+4FFQVha4w
-         +JVOx/QBGQU2PojjRJ93AGNduTGJOsFEyB6AS5K70cRUo2BgMF0hTKLc6qby7woKEFdV
-         PK2Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUTNn1oHcnqYeo0BAGvlebLyPolz2r02Hd43ji7jvC2qRWyCjJ1SrLWmjaKGweSbD2PNq1hr22vmDuJ9IogjoI=@lists.infradead.org, AJvYcCXB/Y+UhBGnlZIitPJQsc7eeT0u/MuMFwPWmM24VXf1oDeLVV5FSicgrCvU4wc4mlAaamJWH51KfbffuPULt0LJ@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxbnymsl/MlsZwaEdbDnfiOYBj225GoKw+W86xbGkQD2ku3iB30
-	kFoA3KtpyOG1WTbYQmCa/P7r39suw5rrJj1W0u00hcI8BGXIhS5D
-X-Gm-Gg: ASbGnct/cY1OofcS/ijzhN7Iyur5JywpHFZNCM8z3O4RAV+SXorYKKeCVGgXilk3bot
-	VSqWj7gnJpBD+iZCchUW0edIINRHQxHxO/Rajea4hRuNQnpYkcECDmlhh2fjLHLjpkh5e8fsdRL
-	j86lrqTHlSWRuRtzUSwIlzxpxhTs13U0WZ7pUQFd5x32g3Pci6bBfIrOEzCd5lPYbeMMet3eji7
-	qPf81QryW8WPzCx22svu04PMKuT1JnxRZpIvkrMuAOabBnrPXXeR472PHdIKF4gUw==
-X-Google-Smtp-Source: AGHT+IHTR2hBzTrmzTq4eocYsWa/4g+gtB/KL9P+ADubc0lgHB1LE2z0JA3Lf2Omsp9qmYl7/gxbIw==
-X-Received: by 2002:a17:903:1c9:b0:215:8af7:eff8 with SMTP id d9443c01a7336-2158af7f30bmr61814845ad.52.1733152344118;
-        Mon, 02 Dec 2024 07:12:24 -0800 (PST)
-Received: from localhost.localdomain ([113.30.217.223])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-215218f1da4sm78524955ad.12.2024.12.02.07.12.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 07:12:23 -0800 (PST)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v11 3/3] PCI: rockchip: Refactor rockchip_pcie_disable_clocks() function signature
-Date: Mon,  2 Dec 2024 20:41:44 +0530
-Message-ID: <20241202151150.7393-4-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241202151150.7393-1-linux.amoon@gmail.com>
-References: <20241202151150.7393-1-linux.amoon@gmail.com>
+	id 1tI8Pb-00000006fPC-3NUO;
+	Mon, 02 Dec 2024 15:32:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8UlTXmqTD0hVxGuezAQrdINnlLV/4cWXAbXA5kGF8qk=; b=QyFbn5MsXOAB+vwNcAdb4r2vc2
+	aKxodi9VxRUY66kSLGVZG9oKFfGaFvxXR6TGHBte5e+HKAroErJ7vVvhQ3KOwa4YDp7pr91br84yR
+	2jOW0jBwU5REZorAdkouPFHGKCbSi94tCM0TAZ8cvxO4qWZxNJ5xvKeEZ4dMa+3aBTOPibU79NqJ7
+	6AZrFbzWY8CoXvUibAI3BFzne7RNsFC1qXGZHra+Bvtrz5xEdQrrL5V8f1h526gDWDxPdaZnIJYkU
+	dA/QOUk4WpzSD0TfSOeAJvFTrOxJZIi0F0R91t103NnhfF0b5L46Rpq6yjSURfPxw235INQrRmtyI
+	l1Aj/lAA==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tI8PM-0003np-2f; Mon, 02 Dec 2024 16:32:20 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Diederik de Haas <didi.debian@cknow.org>,
+ Dragan Simic <dsimic@manjaro.org>
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: enable rng on all rk356x
+Date: Mon, 02 Dec 2024 16:32:19 +0100
+Message-ID: <2377405.n0HT0TaD9V@diego>
+In-Reply-To: <c50f603a9e1a819f17f72e97e92aeebd@manjaro.org>
+References: <20241201234613.52322-1-pbrobinson@gmail.com>
+ <D6175VTSP13T.200HWIIHOIDQQ@cknow.org>
+ <c50f603a9e1a819f17f72e97e92aeebd@manjaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_071227_103593_65503B57 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20241202_073235_871580_8438DDE5 
+X-CRM114-Status: GOOD (  25.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,60 +78,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor the rockchip_pcie_disable_clocks() function to accept a
-struct rockchip_pcie pointer instead of a void pointer. This change
-improves type safety and code readability by explicitly specifying
-the expected data type.
+Am Montag, 2. Dezember 2024, 15:50:07 CET schrieb Dragan Simic:
+> Hello Diederik and Marcin,
+> 
+> On 2024-12-02 13:01, Diederik de Haas wrote:
+> > On Mon Dec 2, 2024 at 11:40 AM CET, Marcin Juszkiewicz wrote:
+> >> W dniu 2.12.2024 o 04:55, Dragan Simic pisze:
+> >>  > On 2024-12-02 00:46, Peter Robinson wrote:
+> >>  >> The rk356x rng is available on both the rk3566 and rk3568
+> >>  >> parts, the IP is all self contained within the SoCs so
+> >>  >> it's enabled already by default on rk3568 so let's enable
+> >>  >> it in the base rk356x.dtsi so it's enabled consistently
+> >>  >> everywhere.
+> >>  >
+> >>  > Please, go through the mailing list threads [1][2] that have led us
+> >>  > to the current state.  To sum it up, it isn't about what's 
+> >> supported
+> >>  > in the two RK356x SoC variants, but about the RK3566's HWRNG being
+> >>  > disabled because the testing showed that it produces unacceptably
+> >>  > low quality of random data, for some yet unknown reason.
+> >> 
+> >> So maybe there should be a comment in rockchip/rk3568.dtsi so we would
+> >> not get back to it again.
+> > 
+> > I suggested to put that in the (original) commit message:
+> > https://lore.kernel.org/linux-rockchip/6690040.iosknibmi9@bagend/
+> > precisely because this was quite predictable to happen.
+> > 
+> > So a +1 on a comment in the dtsi with a link to the discussion in the
+> > commit message.
+> 
+> Totally agreed on adding a brief summary to the RK356x base SoC dtsi,
+> so I went ahead and sent a patch that adds it. [1]  I also expected
+> that to be described in the base dtsi back when the HWRNG support was
+> added, but it somehow went in without the description.
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
-v11: None
-v10: None
-v9: None
-v8: add add the missing () in the function name.
-v7: None
-v6: Fix the subject, add the missing () in the function name.
-v5: Fix the commit message and add r-b Manivannan.
-v4: None
-v3: None
-v2: No
----
----
- drivers/pci/controller/pcie-rockchip.c | 3 +--
- drivers/pci/controller/pcie-rockchip.h | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+thanks a lot for doing that, so I'll drop this patch here now from my inbox.
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 693aadc99d6c..fea867c24f75 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -267,9 +267,8 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
- 
--void rockchip_pcie_disable_clocks(void *data)
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip)
- {
--	struct rockchip_pcie *rockchip = data;
- 
- 	clk_bulk_disable_unprepare(rockchip->num_clks, rockchip->clks);
- }
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 87041ed88b38..11def598534b 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -369,7 +369,7 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip);
- int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip);
- void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip);
- int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip);
--void rockchip_pcie_disable_clocks(void *data);
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip);
- void rockchip_pcie_cfg_configuration_accesses(
- 		struct rockchip_pcie *rockchip, u32 type);
- 
--- 
-2.47.0
+
+Heiko
+
 
 
 _______________________________________________
