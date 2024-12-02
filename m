@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D9FD49798
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 03:59:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E97FAD10DD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 09:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J5g+54RrJmd12KJbn5HvPKMhK+jaGu0I2F1kD1AqqMQ=; b=4UmAeOmh50MoxJ
-	Li0E75ZZ7evqebFxQCH3DRe/xHqMZNg1nCxYIiRmTqqN9cDUA+MWSE0e/JCXzHV0jLQCzmbQa9h/1
-	9S4VEf//QlHlEU18LggyVezSGIRR1YgbOkzQk4M236YiwTzPsdRV+LHiGURrx66fpVj4XEM/1pRk8
-	ezwW+TENvTqH2+QL+gLDkrOEqtsWuLljw/hFeT1a4NAax4ojJOyYr1z8ga5fOBsPUH12b9D52v+fd
-	dgxc8XIl5depmmOp0VEJcfu8fZa2wDtd3dz+hm+b2Pm9N6BSoMOCX8ftg31FmCnPyXty1JoU2LtwJ
-	6fnl7Hzyzh0MztWkADdw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fl6DVRCTiPGRKWf6SLshyHZmIvIP6QzbPMVh4YVMvXA=; b=Eqci2q1XMExqfe
+	fEJF343zFWR16IjgddOUY5od1LFtHSumSmx69oZYmRPLYfeuT3gntMRM4mJs4FufiDNX75hIMODNg
+	0Nd6ALZ4rrxlXOQ3ipjqaWoCYYPHoOoGc5ADcw/Jl1CYL7bkC1YzwL3wSzZRM25cBCMOJ3yUpS2gc
+	LCBS8TSLuwuugGycxF9MrAYOUS8Wx8cnyz7zxKxk6z5/VLVCS4LgjiALcnpWxLf29ykq94TZ1A24+
+	Yx3iyE6YKg2xlHix8Uw3N2IGLrHkLPBDWJbX1GpiBa6O6rCgGXWUKqZNhq7wb2L6rgm0ishd6/CPC
+	UVo3DGiFZD+LkxQg6FlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxal-0000000509t-3oQZ;
-	Mon, 02 Dec 2024 03:59:23 +0000
-Received: from smtpbgeu2.qq.com ([18.194.254.142])
+	id 1tI2NS-00000005VPA-3vfG;
+	Mon, 02 Dec 2024 09:05:58 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxae-00000005076-3ngL
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Dec 2024 03:59:22 +0000
-X-QQ-mid: bizesmtpip4t1733111899tlvff56
-X-QQ-Originating-IP: vMQJaOZ47cUFKgAjPqPaMmnImir+v1iuEhaK45dHo9g=
-Received: from [IPV6:240f:10b:7440:1:f3e2:5ab0 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 02 Dec 2024 11:58:14 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 14815698824521554148
-Message-ID: <E09DCB0C302E5757+722fa6e3-3001-4c3d-8a31-bbd7efa0d3b3@radxa.com>
-Date: Mon, 2 Dec 2024 12:58:13 +0900
+	id 1tI2MO-00000005VFe-0D48;
+	Mon, 02 Dec 2024 09:04:56 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-434a95095efso28439225e9.0;
+        Mon, 02 Dec 2024 01:04:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733130290; x=1733735090; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=KdRw+3yRhHiEf7cq+avjlIDTXlKe07P6ezlIISrm9AA=;
+        b=fAv9iY4lFcJ7F21cv1Ho1Q0J795JsUJJ9wwZNaneW0RPQfkCSsTgYsiosHK8qRfQR1
+         f1fqYuXFxV0BdYoty8+5+eRL3+jnvzdRZsLiXtwzRW0tMtGOF6QRLAGwBMyWO/FyRdsx
+         G3Xx3bSoouf8dou0FQNSz0CqCX22hUGFQ6XmlEBRjRN5IcAwmN4Fa546VN7XvJrSyKpd
+         MI9203p+joq66IPNMWN5S/awB76oRTmCF5K7+QUGzVDTUjUbvuxnbkoyuAxW0IhU57Tk
+         O6npxRA4K4miUWE+wlWXnfe6KhSKW2aqVNS0HhMDvNE5NOdTX9Gk8qxXyRxWYh1m1wdg
+         PZig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733130290; x=1733735090;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KdRw+3yRhHiEf7cq+avjlIDTXlKe07P6ezlIISrm9AA=;
+        b=latdOAl+69ZsWuJciECUo2nm6OL0GlMsWv3DQmj1ztkHxfJrKPpCgWV9pcl5l4bcuO
+         osYfE0WixIpfNXMK7iyl/YZqRuBhVX+cDsQ7yTeX61XWtDyGc6B/50hWYV5h/on8pB10
+         6F0zjqjeufDD4sDih5RVcN+hGyUeAUQWzUYevVCzeuVEwb0uAJBbhIrnkz/Q84RSe1LV
+         KkfUq5Ci7l4mfbkXGcEcbWM5F3FRBQPjalQRZ98FVv3ItKTIOh5n0tXJwo+6TsSNnqZX
+         ySBiXmgA+YiB+8tNvuzBhDPLj8/TTKQosPbKpLlePJ0WPCdPrYT17m6TtmboybrrpUsq
+         zKtA==
+X-Forwarded-Encrypted: i=1; AJvYcCW6RWzjyvfNGF1DidnIlx2wZQDPNiJnDxhqPrd/+G/ScGZh2sJf/59LJby8XhmNFRyM3ZVztePXky7WIl2YZZ6H@lists.infradead.org, AJvYcCXFoz7S6NBXOlDMEZutxP35WfeHMIvMfkkxD+5jsxocae0TpKMKTL/aZ0og3c7Y81N3kk5dX453X+/sUps3lHc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwxwImfqITMMhCXkvWBHaw3EYPz43KYbPwjlh5Grdr8GS1niWxq
+	DKDkDKf0DuSc8VtRsAseNeoY46fOyMa7MZrrHh82OZHS26iYSOMi
+X-Gm-Gg: ASbGncsvZ/NKqD+8r3AC8sl2ggS/m6Sa4rO8y4M/E0ZI8Fc4IGH+FAcfbyCPfnnusPX
+	noOpaYWlDY3NA3i3parGg9vK+cyhn2VsKfPZRRs4ja78Y4IZWWXQ1Vl9P4nI274cN7PpVpu9yVc
+	6nr3xcJzCofnLbpawXA3My7vVNgPu3QNlgySmgfkroSXalrrEqBLB1ho4bsSuAgqDxM61OuBfHp
+	IE++GQfUPWNSLAab61/BZXR+1KHYSuT+P5n3VYKPK+5ljeyb00hKeu1680dQbSm5tMIXhl6FmLb
+	whdx+pEgHtUVUrCP+Go=
+X-Google-Smtp-Source: AGHT+IE5ej83vkEuAN7FUm2IFCFK29g4LXe0Xrj2GfYHRf/oTcVWykXSn2MRlBnJgbYj4lmc+7P9Ww==
+X-Received: by 2002:a05:6000:18a5:b0:385:df84:849b with SMTP id ffacd0b85a97d-385df8486eemr10060974f8f.11.1733130289614;
+        Mon, 02 Dec 2024 01:04:49 -0800 (PST)
+Received: from opti3050-1.lan (ip092042140082.rev.nessus.at. [92.42.140.82])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385ee4d932asm3658161f8f.26.2024.12.02.01.04.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Dec 2024 01:04:49 -0800 (PST)
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Sasha Levin <sashal@kernel.org>,
+	Iskander Amara <iskander.amara@theobroma-systems.com>,
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+	Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on rk3399-puma
+Date: Mon,  2 Dec 2024 10:04:07 +0100
+Message-Id: <20241202090408.201662-1-jakob.unterwurzacher@cherry.de>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] arm64: dts: rockchip: cosmetic changes for Radxa
- ROCK 5B
-To: heiko@sntech.de
-Cc: robh@kernel.org, conor+dt@kernel.org, inindev@gmail.com,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- linux-rockchip@lists.infradead.org, alchark@gmail.com, krzk+dt@kernel.org,
- dsimic@manjaro.org
-References: <20241202023227.2671-1-naoki@radxa.com>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20241202023227.2671-1-naoki@radxa.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: MRY6qckr/MVJ2xWtCpd5wkq6Prz6Albv7Q5hK2xBLOFOSa3E19CUut/l
-	n5IwDPpcooFCC/j8yzUL8WdK21WehKkufQbdDgu0tlImFge2oFV9fu1OIf23+l9Sem2wHoG
-	JaqYcvSNEA2pUafhFCh/zds+KOqZVFdoplzTFh4V79Ow2frqiVJbZd0xKMAjWLQjOQ+v7lb
-	oWrDpheskCcJ0nCFojsPdQUhU+Rq9sGjbgHuSAfaXXTTsDOvXeezqIktM18+UL7oW+JcYG0
-	NIwIhFRqBJf/o4D6eHmUEMOgbGeU2OVnASaWNtxPyK2pl7RznHLNKIc/S+NYTL1tzkHt5p5
-	lHdm4D4TvyrJCxbiyaqu3fs0xz2OrdNDga40JRqKx9VxAVVRxJGwA+Zlo98vOP2qQG5Jo1h
-	Hh0YYqlB6H///7aiY1Eq3TbxT2Lx5UeLvxqubo7oVwtfQ/o0yNhKwtredvIgFw74zSwF59f
-	TunUKGgQljc4aTHQfUprtCHQV2MEgnonmGR7qlr6uvUFi1KECrvMNiRmmGuQPBus6N+La8U
-	HbeFxqsLwBp1cXLkJnhYfI069LoqXk+u0XKBlD9tgV4dpLu6zMOOtbBH7iLtCV4V+ilg2dP
-	cNhKuutWgbUTmVISorm6E3BFWAe0KHoNw3yDSH8opD+EjSdlHDdNOopcrTjmUyeBed2Iu8A
-	NHTasuqNNky0N7SNa8q1QR1g3pIxBIpDuWriGeB9yYbIQuGGluja8AVxUADbIeFDFUacO7Y
-	lbBqKtVX0Apug0hmu/v6m2w2++BnRS2Wfkj7I3NGLroqLozO2lljY4j/d4R5HdR/9T61rAt
-	st6JnwBaZDsTwDdFFvPl5m68DtP6ojMK8F7JbtkJfkNO4T9yzSKwx2O9q2gkpJBlNfbnxqh
-	8PIvo7WesV7k/o0QenSPqcicM/vWE8ccpQQ1PHWREKY=
-X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241201_195917_442280_2F4F8B80 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241202_010452_086173_AD6B9182 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,50 +101,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+During mass manufacturing, we noticed the mmc_rx_crc_error counter,
+as reported by "ethtool -S eth0 | grep mmc_rx_crc_error" to increase
+above zero during nuttcp speedtests.
 
-I'm preparing patches for ROCK 5B+ (upgrade version of 5B) and for ROCK 
-5T (upgrade version of 5B+).
+Cycling through the rx_delay range on two boards shows that is a large
+"good" region from 0x11 to 0x35 (see below for details).
 
-I think it's possible to make shared .dtsi for these three boards.
+This commit increases rx_delay to 0x11, which is the smallest
+possible change that fixes the issue we are seeing on the KSZ9031 PHY.
+This also matches what most other rk3399 boards do.
 
-then, these two patch series
-  "arm64: dts: rockchip: sync dts with schematic for Radxa ROCK 5B"
-and
-  "arm64: dts: rockchip: cosmetic changes for Radxa ROCK 5B"
-will be dropped.
+Tests for Puma PCBA S/N TT0069903:
 
-please wait a week or so to submit my new patch series.
+	rx_delay mmc_rx_crc_error
+	-------- ----------------
+	0x09 (dhcp broken)
+	0x10 897
+	0x11 0
+	0x20 0
+	0x30 0
+	0x35 0
+	0x3a 745
+	0x3b 11375
+	0x3c 36680
+	0x40 (dhcp broken)
+	0x7f (dhcp broken)
 
-Best regards,
+Tests for Puma PCBA S/N TT0157733:
 
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
+	rx_delay mmc_rx_crc_error
+	-------- ----------------
+	0x10 59
+	0x11 0
+	0x35 0
 
-On 12/2/24 11:32, FUKAUMI Naoki wrote:
-> this patch series sort nodes and properties, remove redundant
-> properties, and minor cosmetic changes.
-> 
-> no functional change is intended.
-> 
-> this patch series depend on following patch series:
->   "arm64: dts: rockchip: sync dts with schematic for Radxa ROCK 5B"
->   https://patchwork.kernel.org/project/linux-rockchip/cover/20241130004057.7432-1-naoki@radxa.com/
-> 
-> FUKAUMI Naoki (4):
->    arm64: dts: rockchip: sort nodes in .dts for Radxa ROCK 5B
->    arm64: dts: rockchip: sort nodes in root node for Radxa ROCK 5B
->    arm64: dts: rockchip: sort properties in .dts for Radxa ROCK 5B
->    arm64: dts: rockchip: cosmetic changes for Radxa ROCK 5B
-> 
->   .../boot/dts/rockchip/rk3588-rock-5b.dts      | 184 ++++++++----------
->   1 file changed, 86 insertions(+), 98 deletions(-)
+Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index 9efcdce0f593..13d0c511046b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -181,7 +181,7 @@ &gmac {
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+ 	tx_delay = <0x10>;
+-	rx_delay = <0x10>;
++	rx_delay = <0x11>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.39.5
 
 
 _______________________________________________
