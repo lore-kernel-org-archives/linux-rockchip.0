@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3581ED49795
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 03:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D9FD49798
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 03:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4CZPS4KbfSCWrtXODBDo1sJteexO3UzDv6CCbACALgY=; b=Fb3vfOzxfZ2MWVo+dJGm0F2Oa8
-	8ZbbXRGox1f5A3Cn+jxEBoRVDoaGcAXP4u3xKjV8dLOz7pIjQDeJh0Vr8soYYWWFepJkOtfPNWZDb
-	m4Y7ORWQtXnjlfxlowIpKxVWC42eJ26/l3wOXAmFAwM7YnMke2S35vDGx1sA362Yk5fMPQfxlIzzq
-	7OJQlSoEE9/ceXkQkq5NWuJGrU5uXLG+hJCBzK9ODyj25DxwXexA1oa/fcEZdmXn0LjGDkb9iQdMv
-	K4jB8e7giJFfIK6kCfaKl26XRgJVzMSht1yK5dxL8glE2U2ounK2vL1TaIBjCW5zfGLR3HlsdolsO
-	wi73RKkA==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=J5g+54RrJmd12KJbn5HvPKMhK+jaGu0I2F1kD1AqqMQ=; b=4UmAeOmh50MoxJ
+	Li0E75ZZ7evqebFxQCH3DRe/xHqMZNg1nCxYIiRmTqqN9cDUA+MWSE0e/JCXzHV0jLQCzmbQa9h/1
+	9S4VEf//QlHlEU18LggyVezSGIRR1YgbOkzQk4M236YiwTzPsdRV+LHiGURrx66fpVj4XEM/1pRk8
+	ezwW+TENvTqH2+QL+gLDkrOEqtsWuLljw/hFeT1a4NAax4ojJOyYr1z8ga5fOBsPUH12b9D52v+fd
+	dgxc8XIl5depmmOp0VEJcfu8fZa2wDtd3dz+hm+b2Pm9N6BSoMOCX8ftg31FmCnPyXty1JoU2LtwJ
+	6fnl7Hzyzh0MztWkADdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxXn-00000004zid-1STz;
-	Mon, 02 Dec 2024 03:56:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tHxal-0000000509t-3oQZ;
+	Mon, 02 Dec 2024 03:59:23 +0000
+Received: from smtpbgeu2.qq.com ([18.194.254.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxWn-00000004zfU-2vPi;
-	Mon, 02 Dec 2024 03:55:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=964CsZFa0DtdYQz702jag30/6F8XCIRo36K7Z0RRRTU=; b=QHrAtDTTNDPNAyHkV5OgNkiHWH
-	fhvlWWO13oXOCz2InL12TuimojrLct1wMQeE4p+IbMvq32YCmoNaA9nj04wUX5Lh2RKLosHtR4uOr
-	D3ICnJJfzxn1M4pwiU8MBNkjtBMC9PxVh6oOoNb1zFkKetlunBx+hm51vvGNq/hGMID/8UJfWwLvC
-	sI1avPeGic9hpBBE3E5/ei2M1zzA4Qeuot6AYnOjJJE+XlBhcvHPpEl78kJ2zFwJzjWOoSVwV6s7S
-	YUqEeRDLtYZQleZEV+LND4E3Afbo6O+dFWbtxARa2h/RWErJ27aY4taqFS29yz3ncilqvlYb2ENE/
-	pMLT/pLg==;
-Received: from mail.manjaro.org ([116.203.91.91])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tHxWk-000000027Cz-1CTh;
-	Mon, 02 Dec 2024 03:55:16 +0000
+	id 1tHxae-00000005076-3ngL
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Dec 2024 03:59:22 +0000
+X-QQ-mid: bizesmtpip4t1733111899tlvff56
+X-QQ-Originating-IP: vMQJaOZ47cUFKgAjPqPaMmnImir+v1iuEhaK45dHo9g=
+Received: from [IPV6:240f:10b:7440:1:f3e2:5ab0 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 02 Dec 2024 11:58:14 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 14815698824521554148
+Message-ID: <E09DCB0C302E5757+722fa6e3-3001-4c3d-8a31-bbd7efa0d3b3@radxa.com>
+Date: Mon, 2 Dec 2024 12:58:13 +0900
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733111704;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=964CsZFa0DtdYQz702jag30/6F8XCIRo36K7Z0RRRTU=;
-	b=bP8Ukc/lpLFkUHoG6g6sdznQyR5ivg8vmC7QZjMRvwKpheOA2Gi+CcB1aS7jf764fqwKK1
-	4STa9w5npVT6Xoc2tuVzvQcFc9tN+9VK95y2G+uldqyX6qK22uAGyEAjNAfrHddqseSRCv
-	L+eLVDF1i6C6WeVEmV6BX381R4SfZgvX3556DPPoZYiYeksgu4tUxTJ6oGBJpLKD5PWgjC
-	VDwQSIQLE1HgkvHSjqZb2lPPbZTCPcvigWoKfyQRxuD3a+MxPT40TdZMIOS2FxRfRDWZ9A
-	XJGpg9ZVTx8p78uB712B9CWUgFCv+CLoY1Leo5AV77vyf1b0mw8eXulObf33zQ==
-Date: Mon, 02 Dec 2024 04:55:03 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Peter Robinson <pbrobinson@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable rng on all rk356x
-In-Reply-To: <20241201234613.52322-1-pbrobinson@gmail.com>
-References: <a> <20241201234613.52322-1-pbrobinson@gmail.com>
-Message-ID: <302bdae2f4defeefe88ea4018a0be11f@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/4] arm64: dts: rockchip: cosmetic changes for Radxa
+ ROCK 5B
+To: heiko@sntech.de
+Cc: robh@kernel.org, conor+dt@kernel.org, inindev@gmail.com,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ linux-rockchip@lists.infradead.org, alchark@gmail.com, krzk+dt@kernel.org,
+ dsimic@manjaro.org
+References: <20241202023227.2671-1-naoki@radxa.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20241202023227.2671-1-naoki@radxa.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MRY6qckr/MVJ2xWtCpd5wkq6Prz6Albv7Q5hK2xBLOFOSa3E19CUut/l
+	n5IwDPpcooFCC/j8yzUL8WdK21WehKkufQbdDgu0tlImFge2oFV9fu1OIf23+l9Sem2wHoG
+	JaqYcvSNEA2pUafhFCh/zds+KOqZVFdoplzTFh4V79Ow2frqiVJbZd0xKMAjWLQjOQ+v7lb
+	oWrDpheskCcJ0nCFojsPdQUhU+Rq9sGjbgHuSAfaXXTTsDOvXeezqIktM18+UL7oW+JcYG0
+	NIwIhFRqBJf/o4D6eHmUEMOgbGeU2OVnASaWNtxPyK2pl7RznHLNKIc/S+NYTL1tzkHt5p5
+	lHdm4D4TvyrJCxbiyaqu3fs0xz2OrdNDga40JRqKx9VxAVVRxJGwA+Zlo98vOP2qQG5Jo1h
+	Hh0YYqlB6H///7aiY1Eq3TbxT2Lx5UeLvxqubo7oVwtfQ/o0yNhKwtredvIgFw74zSwF59f
+	TunUKGgQljc4aTHQfUprtCHQV2MEgnonmGR7qlr6uvUFi1KECrvMNiRmmGuQPBus6N+La8U
+	HbeFxqsLwBp1cXLkJnhYfI069LoqXk+u0XKBlD9tgV4dpLu6zMOOtbBH7iLtCV4V+ilg2dP
+	cNhKuutWgbUTmVISorm6E3BFWAe0KHoNw3yDSH8opD+EjSdlHDdNOopcrTjmUyeBed2Iu8A
+	NHTasuqNNky0N7SNa8q1QR1g3pIxBIpDuWriGeB9yYbIQuGGluja8AVxUADbIeFDFUacO7Y
+	lbBqKtVX0Apug0hmu/v6m2w2++BnRS2Wfkj7I3NGLroqLozO2lljY4j/d4R5HdR/9T61rAt
+	st6JnwBaZDsTwDdFFvPl5m68DtP6ojMK8F7JbtkJfkNO4T9yzSKwx2O9q2gkpJBlNfbnxqh
+	8PIvo7WesV7k/o0QenSPqcicM/vWE8ccpQQ1PHWREKY=
+X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_035514_636637_6CF9560F 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20241201_195917_442280_2F4F8B80 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,61 +88,46 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Peter,
+Hi,
 
-On 2024-12-02 00:46, Peter Robinson wrote:
-> The rk356x rng is available on both the rk3566 and rk3568
-> parts, the IP is all self contained within the SoCs so
-> it's enabled already by default on rk3568 so let's enable
-> it in the base rk356x.dtsi so it's enabled consistently
-> everywhere.
+I'm preparing patches for ROCK 5B+ (upgrade version of 5B) and for ROCK 
+5T (upgrade version of 5B+).
 
-Please, go through the mailing list threads [1][2] that have led us
-to the current state.  To sum it up, it isn't about what's supported
-in the two RK356x SoC variants, but about the RK3566's HWRNG being
-disabled because the testing showed that it produces unacceptably
-low quality of random data, for some yet unknown reason.
+I think it's possible to make shared .dtsi for these three boards.
 
-[1] 
-https://lore.kernel.org/linux-rockchip/cover.1720969799.git.daniel@makrotopia.org/T/#u
-[2] 
-https://lore.kernel.org/linux-rockchip/cover.1722355365.git.daniel@makrotopia.org/T/#u
+then, these two patch series
+  "arm64: dts: rockchip: sync dts with schematic for Radxa ROCK 5B"
+and
+  "arm64: dts: rockchip: cosmetic changes for Radxa ROCK 5B"
+will be dropped.
 
-> Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 4 ----
->  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 1 -
->  2 files changed, 5 deletions(-)
+please wait a week or so to submit my new patch series.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+On 12/2/24 11:32, FUKAUMI Naoki wrote:
+> this patch series sort nodes and properties, remove redundant
+> properties, and minor cosmetic changes.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> index ecaefe208e3e..9dc09db5034d 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> @@ -397,10 +397,6 @@ power-domain@RK3568_PD_PIPE {
->  	};
->  };
+> no functional change is intended.
 > 
-> -&rng {
-> -	status = "okay";
-> -};
-> -
->  &usb_host0_xhci {
->  	phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
->  	phy-names = "usb2-phy", "usb3-phy";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> index 62be06f3b863..2994cddb3464 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> @@ -1038,7 +1038,6 @@ rng: rng@fe388000 {
->  		clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
->  		clock-names = "core", "ahb";
->  		resets = <&cru SRST_TRNG_NS>;
-> -		status = "disabled";
->  	};
+> this patch series depend on following patch series:
+>   "arm64: dts: rockchip: sync dts with schematic for Radxa ROCK 5B"
+>   https://patchwork.kernel.org/project/linux-rockchip/cover/20241130004057.7432-1-naoki@radxa.com/
 > 
->  	i2s0_8ch: i2s@fe400000 {
+> FUKAUMI Naoki (4):
+>    arm64: dts: rockchip: sort nodes in .dts for Radxa ROCK 5B
+>    arm64: dts: rockchip: sort nodes in root node for Radxa ROCK 5B
+>    arm64: dts: rockchip: sort properties in .dts for Radxa ROCK 5B
+>    arm64: dts: rockchip: cosmetic changes for Radxa ROCK 5B
+> 
+>   .../boot/dts/rockchip/rk3588-rock-5b.dts      | 184 ++++++++----------
+>   1 file changed, 86 insertions(+), 98 deletions(-)
+
 
 _______________________________________________
 Linux-rockchip mailing list
