@@ -4,68 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D767FD10DDE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 09:58:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF28AD78303
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 10:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aaFMtAngrvKs6xSaOzREd4ykcXujq4umgspMOArFKoA=; b=AT28FIqLNvBtj4
-	3a6LLIS2a2WZCXmOSPqF5DGKdZhlAYA/9a2N+eKuI/Sdr4C8sqA6BMcW+BrijunKg/3cf6+mZxKkO
-	wrYeJNWiYeTCn9fBviYiBmpYvEJ5x1TTbDh3MwqlpheL92TE9jb1zzUY1nkJvWaXCbi7rbCjigFqF
-	GYsar+3p5sBGnMguByryWMglz2DTg2B9UzFWIV30oAPs4zZokc0RPuYvV/QCzEPyLvMVIHnpPn3An
-	hpNfr57+r5DZlvXxITrf9eTbAeCCVdHUxJWjKXW8PYNMTpY2Ve23p5ty79a4Pb6qc4IH8oA+HamXW
-	wM30/K0zux7b8guKXX2Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ce67i0xnRnzFi0So0MjkZaqMaPUTAg7lECjcLZtJWoY=; b=4mTqSSI7te4kz4
+	mUET2K4qRIrc6QenXCGwSESCHVnUGg6veBT0jzSO+6F39oNtI863spqMytfvJQhjGRzC5jPbCsoO1
+	rqtMYH0EjizU8hUVvvFEatX0mAInXG/30rOKbJ9B/ncEriDkX3KwgGei25/aLbsCTgjZIM3X+NntL
+	Jl8LuWjhiyWqYPl3xgMB7lWVdKEgwMln/NGQAWVcxsatS5AlZ2R5ZLZvnfbAvJMutlT2w7FcXblb4
+	5xFQjcQWHMA0zn1kvarMVUsPtYpbmTOiYBp+zx766Wv7kjZXSR7asjPN2a7voCSIHYx9b5DuY1sHa
+	Vt4qufWBDXJ8ydvE8iQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI3Bx-00000005dpt-2Sjm;
-	Mon, 02 Dec 2024 09:58:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tI3fz-00000005jOw-0sUs;
+	Mon, 02 Dec 2024 10:29:11 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tI3At-00000005deF-1ur3;
-	Mon, 02 Dec 2024 09:57:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=zX++2BfI71EfbL0UifJIyYdnjIn03M87iaL/MLYsMe4=; b=i/dJ/qDZA4x76D5c0J418PwECQ
-	pPOKivungXawQrf6RAPl5Qkpki5ptQMnwt6cWyxMj81J8JQG5s0V4B8s9z46wVRtMDLDP9BgCHuBu
-	qmo/ukICI31OS4muDHfZxYHggjmt4paR2h1nCFoQqKKFtrvJPj+YAD+/TaC1UpD9y/9WkDg2bE3mc
-	wYZmq2jl2BWnEnBhLcRltjz3FuNkDg9xVwXK/5VYnBcQzsB0MTrN1T12AzMuRX8nJ4b3e4tottRWv
-	4Nf5TZg3lHKGR51Rp6jX083np7KoII81O2a48MBF/ZSTMuN52ni2047l5iKt1qnFK7h5qN+hCtnEE
-	5NbaPxBQ==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tI3Am-0000Ii-BO; Mon, 02 Dec 2024 10:56:56 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Jakob Unterwurzacher <jakobunt@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Sasha Levin <sashal@kernel.org>,
- Iskander Amara <iskander.amara@theobroma-systems.com>,
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
- Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>,
- Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on
- rk3399-puma
-Date: Mon, 02 Dec 2024 10:56:55 +0100
-Message-ID: <2578458.4XsnlVU6TS@diego>
-In-Reply-To: <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de>
-References: <20241202090408.201662-1-jakob.unterwurzacher@cherry.de>
- <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de>
+	id 1tI3en-00000005j84-3ZcR;
+	Mon, 02 Dec 2024 10:27:59 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-385f4a4093eso455456f8f.1;
+        Mon, 02 Dec 2024 02:27:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733135276; x=1733740076; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QALA3vJFqR8NKYOn5MTUFDxKO0FcS0aiXq3k1iQUdts=;
+        b=YNErOJZ7LcxPZBdHlJN9g6GYn6jMSvsVTl/sRV/E20RU555elNc2dRUmZGMaxpnNDc
+         1CvPYGWeg0GITEDd2nfEnYhAuBanrodJtC0YwRdIxppR7Ohi6qbXLTHr8rs6IWxWsPXx
+         CxDpz/qNODrHx1R4R9e0dk/5veuDOtgxQTH/F6qnwFXpZt/Qfnq+UbLBTdnn73tGa0ST
+         Xr0rCE0tQnPhUsKn+2tkHgEACja99GyS1pjwR2scNfBdFOeoia3ON1yMyRd4H1fDsFA3
+         4727yVpJ5egb0cUfpofmV3DJrDT3Cuh+sbp2F18SlwMUo436nAm02rX8CiNG1qxSah3N
+         HVuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733135276; x=1733740076;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QALA3vJFqR8NKYOn5MTUFDxKO0FcS0aiXq3k1iQUdts=;
+        b=Q9XzOLCyrxFEyYJF4mAR5gz5A/8dHrG6CJ86UQxUzLSlYAtqLmbRjP9RN3z1GUZJY+
+         fhGHteZI9UNRgtM+cg9T4yZQa/YKWXQnBx6DgKHohxsnBbT7Nj6U8qR4xajODCbn5Ny/
+         Tnb0KZPIdmFaAObavaVC9zCeMVr5BcC5X0jBby/QW+GXWwAdPgZvFP8raxqGWa59c6kD
+         iFlC8az7e7AurZqUqdDFq8LJ6JNSKukp3gJcE4mzzZzdm8TNMP+SJkoPey65mcX9yLNn
+         vCggVWzfU+UWTB/5DUY4gN4jOn/K3ElQl0tmlN6b9ZHzhDBOeNoy47/GUZ0jqzbXXRxd
+         9Tpw==
+X-Forwarded-Encrypted: i=1; AJvYcCUcoY8/wWvDPJeVG0Wt7Bt7rnZPDfB/fLvCdhD4ugixqWj22noAOZqrtpJdmrb812jE4CZxhZIbHHA9ZFebAkt/@lists.infradead.org, AJvYcCXUIZgDc+OXQy+HXAXAaFSHEJj9z5YiGWHTjoC1WGFjPXx3gxE234KbHcn5ZoDIwQ9zkcYQsnxEJ7uDQhjHIWM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzNniofyAU1sZIvrvy61XNUP2wVmdfq50UQC5RLkOmAF9hjqXWV
+	B4vgUO14TzwNEyszpCfOURdZiFg3Vt/hTmcFJHSJXAvQB0fn9MgW
+X-Gm-Gg: ASbGncvY0UXPRGXJf/l9FdoqvTMwRbnfU9cN56AChPavyanxbhoFr8HwM6kg7uOmH/Q
+	3XfCpE7zCAEoKFW/iSSXCCVLBa/F8jlU0fZIkZRQ5XFEopmfJXzNafxbGfVmv5Jiqey7zlvhiOE
+	Lc0Nt3kBh7wkrV285GzYlTxqLd0FukHyvVl7SjUVksax9cjJDxWX/sIKwzgR8VO0tGesGlb9T9o
+	sUrid2U7r5OapiinCv3uhi3/yisrLLHxsaTBEhjuVXFn/HOraat8vXQq/SVAe20SwJK99fldllB
+	gowiW86pRdFB7MmNZNk=
+X-Google-Smtp-Source: AGHT+IEtcv376POJl9E2bAxspbhqve3Y2tJ7pgMGWk2qvbJcgbnauunS2AuXTdMYxck6zEO85ZI3Tg==
+X-Received: by 2002:a05:6000:4610:b0:385:df43:2179 with SMTP id ffacd0b85a97d-385df432337mr10679245f8f.17.1733135275802;
+        Mon, 02 Dec 2024 02:27:55 -0800 (PST)
+Received: from opti3050-1.lan (ip092042140082.rev.nessus.at. [92.42.140.82])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385eeb999f4sm3781643f8f.109.2024.12.02.02.27.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Dec 2024 02:27:55 -0800 (PST)
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Iskander Amara <iskander.amara@theobroma-systems.com>,
+	Sasha Levin <sashal@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+	Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>,
+	Klaus Goger <klaus.goger@theobroma-systems.com>
+Cc: stable@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on rk3399-puma
+Date: Mon,  2 Dec 2024 11:25:44 +0100
+Message-Id: <20241202102543.204154-1-jakob.unterwurzacher@cherry.de>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_015703_517132_E6DEDDD7 
-X-CRM114-Status: GOOD (  32.18  )
+X-CRM114-CacheID: sfid-20241202_022757_887799_B7EB42B8 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,110 +108,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 2. Dezember 2024, 10:52:06 CET schrieb Quentin Schulz:
-> Hi Jakob,
-> 
-> On 12/2/24 10:04 AM, Jakob Unterwurzacher wrote:
-> > During mass manufacturing, we noticed the mmc_rx_crc_error counter,
-> > as reported by "ethtool -S eth0 | grep mmc_rx_crc_error" to increase
-> > above zero during nuttcp speedtests.
-> > 
-> > Cycling through the rx_delay range on two boards shows that is a large
-> > "good" region from 0x11 to 0x35 (see below for details).
-> > 
-> 
-> Is this missing a "there" after that? "that there is a large good region"?
-> 
-> > This commit increases rx_delay to 0x11, which is the smallest
-> > possible change that fixes the issue we are seeing on the KSZ9031 PHY.
-> > This also matches what most other rk3399 boards do.
-> > 
-> > Tests for Puma PCBA S/N TT0069903:
-> > 
-> > 	rx_delay mmc_rx_crc_error
-> > 	-------- ----------------
-> > 	0x09 (dhcp broken)
-> > 	0x10 897
-> > 	0x11 0
-> > 	0x20 0
-> > 	0x30 0
-> > 	0x35 0
-> > 	0x3a 745
-> > 	0x3b 11375
-> > 	0x3c 36680
-> > 	0x40 (dhcp broken)
-> > 	0x7f (dhcp broken)
-> > 
-> > Tests for Puma PCBA S/N TT0157733:
-> > 
-> > 	rx_delay mmc_rx_crc_error
-> > 	-------- ----------------
-> > 	0x10 59
-> > 	0x11 0
-> > 	0x35 0
-> > 
-> > Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-> 
-> This would be a candidate for backporting I believe.
-> 
-> Therefore, a
+During mass manufacturing, we noticed the mmc_rx_crc_error counter,
+as reported by "ethtool -S eth0 | grep mmc_rx_crc_error" to increase
+above zero during nuttcp speedtests.
 
-also please include a
+Cycling through the rx_delay range on two boards shows that there is a
+large "good" region from 0x11 to 0x35 (see below for details).
+
+This commit increases rx_delay to 0x11, which is the smallest
+possible change that fixes the issue we are seeing on the KSZ9031 PHY.
+This also matches what most other rk3399 boards do.
+
+Tests for Puma PCBA S/N TT0069903:
+
+	rx_delay mmc_rx_crc_error
+	-------- ----------------
+	0x09 (dhcp broken)
+	0x10 897
+	0x11 0
+	0x20 0
+	0x30 0
+	0x35 0
+	0x3a 745
+	0x3b 11375
+	0x3c 36680
+	0x40 (dhcp broken)
+	0x7f (dhcp broken)
+
+Tests for Puma PCBA S/N TT0157733:
+
+	rx_delay mmc_rx_crc_error
+	-------- ----------------
+	0x10 59
+	0x11 0
+	0x35 0
 
 Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
+Cc: <stable@vger.kernel.org>
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+---
+v2: cc stable, add "Fixes:", add omitted "there" to commit msg,
+    add Reviewed-by.
 
-> Cc: <stable@vger.kernel.org>
-> 
-> here would have been nice (in the commit log), c.f. 
-> https://www.kernel.org/doc/html/latest/process/submitting-patches.html#select-the-recipients-for-your-patch
-> 
-> > ---
-> >   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> > index 9efcdce0f593..13d0c511046b 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> > @@ -181,7 +181,7 @@ &gmac {
-> >   	snps,reset-active-low;
-> >   	snps,reset-delays-us = <0 10000 50000>;
-> >   	tx_delay = <0x10>;
-> > -	rx_delay = <0x10>;
-> > +	rx_delay = <0x11>;
-> 
-> While at it, we could reorder this alphabetically and move rx_delay 
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I would disagree. This is a "fix", so should ideally only do the minimal
-changes to make life of the stable people easier.
-
-Doing this one-line change is way easier to understand than stuff also
-moving around.
-
-Heiko
-
-> between pinctrl-0 and snps,reset-gpio? c.f. 
-> https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.html#order-of-properties-in-device-node 
-> rx_delay and tx_delay seem to be vendor-specific but without the vendor 
-> prefix, but so is snps,reset-gpio so that should be fine to reorder this 
-> way.
-> 
-> Considering we have an option for KSZ9031 on RK3588 Jaguar and RK3588 
-> Tiger and the "same" MAC IP is used and that we use the same TXD and RXD 
-> delay than on RK3399 Puma right now, I guess we would want to check 
-> those don't need a change as well? (funnily enough, all RK3588-based 
-> boards in 6.12 actually have 0x00 for rx_delay and 0x43/0x44 for 
-> tx_delay, except ours which are at 0x10). Not a blocker for this patch 
-> though, so:
-> 
-> Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-> 
-> Thanks!
-> Quentin
-> 
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index 9efcdce0f593..13d0c511046b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -181,7 +181,7 @@ &gmac {
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+ 	tx_delay = <0x10>;
+-	rx_delay = <0x10>;
++	rx_delay = <0x11>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.39.5
 
 
 _______________________________________________
