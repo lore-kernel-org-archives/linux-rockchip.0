@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEB5E74AC2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Dec 2024 16:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63923E74AC3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Dec 2024 16:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j9UVoMH0r/z7bfaP2lQqf0Vkfp5qzipy1evQx1gM6Lk=; b=gKiBtM79rUcYcJ
-	RqCw3o31wDV5cBbYlpaAAm6K7cZc19YRbq4ZsKaAOMi4TgrRMedrUHhgG/xuHihPeokA17yAwhnhz
-	mDboXZ61C5VOXe1irpQ8bXzgf5GtVtrbWEClFFEN8HgqsIMS8/8pS0zsKV/upeDsTOZzESrO3yiqs
-	g9LpGj/RqRuVCAXSXme26ESfTJJkqd4YFtgyj74+8QZHUNWTKb7v/q4W9zY56sTR9GKDCpZD02wxe
-	W6dp1Q54xGgMYq8RVbaMzWt+0GEEiO6UISQBEyxc59P0H4NtTtudiIKwr1Wa2AxtJGWBZOF0+NM6c
-	4tePvhEGqe6Qk8MybGXQ==;
+	List-Owner; bh=Rh147SvsrGnh/L0ucixP/5XTEzwy6LPGwdASqPm4M8c=; b=eySjBw2J/cXvTg
+	nqFiWElZvBO8Ll5f2ixgdt1QRWOfrkirPEt3t1wDfECFC5K90tme5YqAgaGxeVpaTYk5UQO9yIzx3
+	+Tw6bXsT25tE1zqsZ8UPzxO9TBe0Rh5m4giQ/h6/S0MV3HvFIpJs3SFNPok0NWIU6WnuH2SqL+TNT
+	1yg/gHeuhxX9DuhnJ04gOcdRPotZUQ+pNEEL7GPEhJQfA7LXlAS5xsfbco2oPLRT4i1fmprRAd7wf
+	2n032KvgM3bV9kwBfsL297qpj9L1NMUlXQH6HjAiEMtZAZ0H3QiKL0QVk3vGT1v1iebWVxAvkoCtw
+	EaUzytvnBPIleCVEShZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIVc2-0000000A4XI-2LhV;
-	Tue, 03 Dec 2024 16:18:58 +0000
+	id 1tIVdA-0000000A4iI-3TW0;
+	Tue, 03 Dec 2024 16:20:08 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIVbz-0000000A4WE-3fey
+	id 1tIVd7-0000000A4he-3RcN
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Dec 2024 16:18:56 +0000
+	Tue, 03 Dec 2024 16:20:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yhaxMPAd2c0afvX2792EZE1r3sNxolxn6w2os8f33rk=; b=aN5UlgvC6UhPoHoKuCxe+CBzRJ
-	X56HsU2XN4gLFuNKGUyLoLEeqpGssgwLpvIZnSg/pOYP429/mWDQPDH+5KkCEPFDh94tB//daRabv
-	xxpABiJ/xznG1J4D9u1NL4x4RmEjZm2CkOkMXUSE57rEPSd7+0nNL5sWDw6nMexNwEXg1TyLCDFjs
-	51rdlbR9s2GomQWKByejjGczSrex8H8breUDnrzfwmPJhWn7EmwVjW7gPgnK1Eh337PCy6x55tiJd
-	BqMM4wL1b8A4o1O9/0RzJn/gVKZPv5Y/fAiqQ6Mulluz2FbX6nN2DeWAcwOD8D8HBrVEm3l3U1qD3
-	LfNpAujg==;
+	bh=zr2fwaRM/tT8qiD2XWSBmLUeHIkf64MoUkSUJPRTs/Q=; b=Ch6idT0JkaBDTXZX27TctV+jBJ
+	MtzADH9V1R84Xxv2c4fPxyRDwngDdgGP8Qdr0+6q7G2cT1Aq7L+mETQrsU1L1bT6Xtk24uiINi9uC
+	kRxnidTh+x6nYELAlBw8HA1R8eHZZU4y0IyYcTg4zmCrnNGiPU+3OLffAdoDL5JR+s8K6v93E3bID
+	1CHqsAT7rygK9DK2DNYcl3zhWJh0MCY2jKwpJB0GZM5Efgr7gxW+7KHZSWEGMxe6r+EoRQYvmD3nO
+	Hf10Tz9c9KZMae9QTIErGKKh3qMJgSmxoF37E4FHx3fDKrXbgIh5WkPPrYlWtu7XPQc8WYgjltY2X
+	BXzwWtGA==;
 Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tIVbk-0003L9-SN; Tue, 03 Dec 2024 17:18:40 +0100
+	id 1tIVcy-0003Lo-BS; Tue, 03 Dec 2024 17:19:56 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: use Type-C port as USB HOST port for
- Radxa ROCK 5B
-Date: Tue, 03 Dec 2024 17:18:39 +0100
-Message-ID: <18640241.sWSEgdgrri@diego>
-In-Reply-To: <20241130014043.12942-1-naoki@radxa.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: fix USB 3.0 bottom port for Radxa ROCK
+ 5B
+Date: Tue, 03 Dec 2024 17:19:55 +0100
+Message-ID: <2724169.KRxA6XjA2N@diego>
+In-Reply-To: <20241130014043.12942-2-naoki@radxa.com>
 References: <20241130014043.12942-1-naoki@radxa.com>
+ <20241130014043.12942-2-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_081855_933985_109DB85B 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20241203_082005_868418_43487067 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,62 +74,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 30. November 2024, 02:40:42 CET schrieb FUKAUMI Naoki:
-> Type-C port is dual-role USB 3.0 port. add usb_host0_xhci and phy
-> nodes to use it as HOST port.
+Am Samstag, 30. November 2024, 02:40:43 CET schrieb FUKAUMI Naoki:
+> add rockchip,dp-lane-mux to usbdp_phy1 to make it work properly.
 
-This needs a bit more explanation on _why_ you're statically
-setting this to host-mode.
+Make it work properly is not an ideal commit description.
+
+I guess the lane assignment for the dp port should be discoverable
+in the device schematics, so the commit description should explain
+as much.
+
 
 Heiko
 
+> tested with ELECOM U3HC-A424P10BK[1]:
+> 
+> $ lsusb -t
+> /:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=ehci-platform/1p, 480M
+>     |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/4p, 480M
+>         |__ Port 003: Dev 003, If 0, Class=Wireless, Driver=btusb, 12M
+>         |__ Port 003: Dev 003, If 1, Class=Wireless, Driver=btusb, 12M
+> /:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=ohci-platform/1p, 12M
+> /:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=ehci-platform/1p, 480M
+> /:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 480M
+> /:  Bus 005.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+>     |__ Port 001: Dev 002, If 0, Class=Mass Storage, Driver=usb-storage, 5000M
+> /:  Bus 006.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 480M
+>     |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/5p, 480M
+>         |__ Port 005: Dev 003, If 0, Class=Billboard, Driver=[none], 480M
+> /:  Bus 007.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+>     |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/4p, 5000M
+>         |__ Port 004: Dev 003, If 0, Class=Mass Storage, Driver=usb-storage, 5000M
+> /:  Bus 008.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 480M
+> /:  Bus 009.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+>     |__ Port 001: Dev 002, If 0, Class=Mass Storage, Driver=usb-storage, 5000M
+> 
+> [1] https://www.elecom.co.jp/products/U3HC-A424P10BK.html
+> 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index 0ec4992b43cd..c5776e3b4aab 100644
+> index c5776e3b4aab..43fc1f24dfc9 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -840,6 +840,14 @@ &tsadc {
->  	status = "okay";
+> @@ -918,6 +918,7 @@ &usbdp_phy0 {
 >  };
 >  
-> +&u2phy0 {
-> +	status = "okay";
-> +};
-> +
-> +&u2phy0_otg {
-> +	status = "okay";
-> +};
-> +
->  &u2phy1 {
->  	status = "okay";
->  };
-> @@ -883,6 +891,11 @@ &usb_host0_ehci {
->  	status = "okay";
->  };
->  
-> +&usb_host0_xhci {
-> +	dr_mode = "host";
-> +	status = "okay";
-> +};
-> +
->  &usb_host1_ehci {
->  	status = "okay";
->  };
-> @@ -900,6 +913,10 @@ &usb_host2_xhci {
->  	status = "okay";
->  };
->  
-> +&usbdp_phy0 {
-> +	status = "okay";
-> +};
-> +
 >  &usbdp_phy1 {
+> +	rockchip,dp-lane-mux = <2 3>;
 >  	status = "okay";
 >  };
+>  
 > 
 
 
