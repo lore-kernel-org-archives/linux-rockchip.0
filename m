@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FE4E69E99
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Dec 2024 23:33:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A749E6C5E5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Dec 2024 01:35:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Ze/KetcIuO/ZcuT38tP4Hnxw9+xqmybC/yTk2Qhu20=; b=AWaqTmHh1pLyu2
-	Qwn2aZkCF2c1k9J2jrwbKOKysTfIebDLkhUK9AhSgMTIHyR47GlXQ4yr5ttsdkqlq8UMqAbFn37ny
-	FFmDu9zFLBUWymFQQ9zrB4WyFodyQhnb3Bvwt4injT8zQLlUoUdfybhIcqrE1FmvbFPsGqs7DrJoW
-	NxFmbo6fND0b6sv+NjzCZqeJ2qARh3Z1EjzODc6UBeUdSZRFfPH2fKMXwi3+aG3Q+eeJFhv9Sze53
-	GbLNIm9+rosJ6T/GtIu0Xi68EQl1RjVqJOfZWHUd4bC9yX0Mqm3/95GN1OuuVuap1kkCBPX77cxoY
-	oUBPIU3hVnDYMWdtwt9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=slBM1A5KlN95s8Z4rwsxBYziK5SbDbruBfZbfANDv6E=; b=w7dFMqfJeG7OTJ
+	WOCeKbtqTqVPmCHf4DGl2Wyh+hfeEBVdMw6+KGKgvziCZN6qpZI3GWsaBPctJ1qrygOYQlRsWta8l
+	nh9PUmaa8o6/mnVFSk1qsM0POuMwIG4YEfFS5bm+jvwi2LKpdBieGwZPqbKQeXt11NY7KF/d/mg6W
+	ukwnK7YVijKkhKXtQrWialqHfLuCG6rNqg0hvp6B8SziQWi1/B2cU1uExIQyuj5oDTv3gArMGiuvq
+	NKJqt/eZrJiThg6cLXMOlzU/55667hzb94RJnTAk0puEyxXcmbK0vHe1/+nAh6W7jM96K7+DRklho
+	5+B/CX5hn+63szqD3QAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIFv4-00000007jKz-2a2m;
-	Mon, 02 Dec 2024 23:33:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tIHp3-00000007w20-0CTg;
+	Tue, 03 Dec 2024 01:35:29 +0000
+Received: from mail-m25482.xmail.ntesmail.com ([103.129.254.82])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIFrI-00000007ihS-3St0;
-	Mon, 02 Dec 2024 23:29:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=LXjlLr10nL652nOirJQGwQvnZ/wVzDxyYQeBTmt9Ex8=; b=XkormIfKy0bQwW9lEejYRetW0r
-	R233wHdQwvqZ2nfj73Wkt7VeS27IAGG6VHETUq3MpLKyiJWSO0OA/fijtKCvne/OyoY5OLKgn3JCL
-	ayZvnqF4Zed1JhvLfxN6QHKusFjilhGXldsorlCQUMi1a9uWQEOs2XgoNJkyprLI6CM4ZI8J2cyEF
-	/JEW7r5Rm/3xIKufsDB6VtNTLgJ0/e5zwsFt9EfusZ+uAOSRHJKBWFxgwRAckmX/7fY9BiLcci9o4
-	S+MIMdue6RewhnfXgt1OsbG9CC/OBsiayJ7y0cyTd6zSfl3zlpvZqnNqOo880VGe+CZrUMr3id4wm
-	ENE79gGg==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tIFr6-0000OB-IN; Tue, 03 Dec 2024 00:29:28 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1tIHoz-00000007w1R-2qw0;
+	Tue, 03 Dec 2024 01:35:28 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 47ff938a;
+	Tue, 3 Dec 2024 09:35:15 +0800 (GMT+08:00)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	jon.lin@rock-chips.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
-Date: Tue,  3 Dec 2024 00:29:14 +0100
-Message-ID: <173318214612.1403925.12222889205247999008.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241122073006.99309-1-amadeus@jmu.edu.cn>
-References: <20241122073006.99309-1-amadeus@jmu.edu.cn>
+	linux-spi@vger.kernel.org
+Subject: [PATCH] spi: rockchip-sfc: Optimize the judgment mechanism completed by the controller
+Date: Tue,  3 Dec 2024 09:35:13 +0800
+Message-Id: <20241203013513.2628810-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh9KQ1YZTUtLS0NDSkJLGk9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a938a28453909d9kunm47ff938a
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NT46Mjo6KDIaThAMMzYuCQoX
+	URMaCUpVSlVKTEhISkNCTEpNSEpMVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKS0xNNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=jfakQW/DxzWDCeZTFJ2qwv2/HsVuQYqgzlaPYegq/OXq4isHh+F6aAHyLpNRSw4WLNvJsq4pAnNrWnXWq7n8ufzjxVUWIVUEycO5veT9MxLfRRv4/UZQgLvROOjRtjTeXvX1MbmYZKf4Bjjzb3JdKB6hEGWulwKbSrPtO7vWLfg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=hywco0EOZS8UPtB5JNfLuOnac/kvQFRPXPjTcGdkjTc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241202_152940_858155_80F72FC9 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20241202_173526_242846_E1F3145E 
+X-CRM114-Status: UNSURE (   8.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,20 +75,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+There is very little data left in fifo, and the controller will
+complete the transmission in a short period of time, so
+use readl_poll_timeout() for busy wait 10us to accelerate response.
 
-On Fri, 22 Nov 2024 15:30:05 +0800, Chukun Pan wrote:
-> The reset-names of combphy are missing, add it.
-> 
-> 
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-Applied, thanks!
+ drivers/spi/spi-rockchip-sfc.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-[1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
-      commit: 8b9c12757f919157752646faf3821abf2b7d2a64
-
-Best regards,
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index 138508d2c736..14f5b9346050 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -472,6 +472,16 @@ static int rockchip_sfc_xfer_done(struct rockchip_sfc *sfc, u32 timeout_us)
+ 	int ret = 0;
+ 	u32 status;
+ 
++	/*
++	 * There is very little data left in fifo, and the controller will
++	 * complete the transmission in a short period of time.
++	 */
++	ret = readl_poll_timeout(sfc->regbase + SFC_SR, status,
++				 !(status & SFC_SR_IS_BUSY),
++				 0, 10);
++	if (!ret)
++		return 0;
++
+ 	ret = readl_poll_timeout(sfc->regbase + SFC_SR, status,
+ 				 !(status & SFC_SR_IS_BUSY),
+ 				 20, timeout_us);
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
