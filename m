@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D969E64A87
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Dec 2024 12:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA2A3E64A85
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Dec 2024 12:28:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z5Q/VC+/oZ/74oSNX8RmV8yy2g1ku9x6rSPkkI0S9fM=; b=g95/29y1X+7vMd
-	kIONbQlou0pkGIJVoWOaXzyGNwlvx9ZYF0tAe2IxebvailHCZJIjfB28xw4fMX+zGcalE9NmZ5SnY
-	uiFMt8Ysp8ZG4sLJku8HSIO1TMMdpjh2ypYhYotRr9i8CdWtwkUpVhHPhWYnuT5U8udrARy+PzckK
-	Gp/3BCU84iIYujcmH0rhXWmFHzq16tCfSL8fYPGg9n1YQNkAG+WYA4I0vcyKQVI6Fg0/8Gd1q73EO
-	O2Fvxr7B2YBMoetnvLNsk4vatF+5RVomIPTrHiFx+FdXDXg+DLbihNE+urKAYLOjCYscYgxl8ph2m
-	B76rcPjVb+B2cDMaDreQ==;
+	List-Owner; bh=W9i1XA7HeE11r8yvUnb5QfqgcQ83nNlRjX5TdKT1gGM=; b=3X26QHAwDghH2B
+	qERORoEjR22GHmHOeqY5Ppq8sg2fJ59B61JgTahZsNIC2fSnaCOdzflXkLmtXk+NOFmDvEDnVowYX
+	9CbzNVWzk5Ho+enH5xUNfHydohzRMulhgDrLBhEXdU28ssZJixhK/c1Zjo3Pd6qY4YSLy1tve7Gec
+	NQlw2nAREaVAKO5cMk1N8ja2yHASU2jq9uA8PR0+R7Xm/f7C2jMfe839V9xjAXVr7JMtH7c5pomtz
+	Vaix5N8tBBfINDla6W6ol0ykDg38WNtRcZFmdi4E9M2Eqf5s3c8T0K9ptptB5eL5ru8lIMOQ8ZyUt
+	HduT5ceaHJD793Ad+9Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRzZ-00000009QSh-2QXF;
-	Tue, 03 Dec 2024 12:27:01 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1tIS1L-00000009Qqz-3rdz;
+	Tue, 03 Dec 2024 12:28:51 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIRsZ-00000009P5V-05kg
+	id 1tIS0L-00000009QiL-1OPi
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Dec 2024 12:19:48 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-53de035ea13so5660683e87.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Dec 2024 04:19:46 -0800 (PST)
+	Tue, 03 Dec 2024 12:27:50 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-53dd8b7796dso5812818e87.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Dec 2024 04:27:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733228384; x=1733833184; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1733228868; x=1733833668; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=5n+OPgKd4OeVfRcOdyszAmWQAYwYUA33KJvbyrKBpj8=;
-        b=EXLx2AXi3whwggmUakHP46miquVqVCqW3l0P7hVRrtwhRofytu1DqtNRncZdTye72X
-         ry5UdoKH6fDC1WH5dT7pm/eyckBYS76tVWD6pT2QCuizLjqQLPRKWC2Lxn8VSgpBHOGb
-         WOhmGynXhiQg+WP/NSx+3QEoCFb3Y8GmabCxjhdnw1x5Rg42LGRKOT+6a8X13YjD18uC
-         wJTiEfhAgz56ckpZKd7YS+lamdugOLr01yNBuO5QZ6aAh1f9BcoRUO9daycwkR4tcEe4
-         A0lkQXZM5YsYYNjDa/2HFu+bM02ec4ZjYaQBVkUS4GVdp2iyYbA6kDMH61mW8X/zii7d
-         6MfA==
+        bh=4tMW5BgK0yNLwCH6utYoQVhW0P2uh6V2gFL0Ya9nckg=;
+        b=xHkCwlQhUHR+gPnO3b8lihZNt0d1EsyjUMuqQvdKlSIQep4UOXZOGWLmQ+TJ/tBI6Z
+         xE4a15GfW43FMo/dS+/npojEu3R2z1c7L2lbmpDUDeAlRW16gFiohp0ayARodC8RXdou
+         eTrFPJT228aBZpxt+cjLjDMIpxmcideLrWXTpjAOZxeTomuzFYNXOy9K1dLDSdlu8EFS
+         cZmWXSELzFQQFIWBqs89pUqgmU2c85NnBpjG+UXr0BS+las3uSjmla62E9XajC0irmy5
+         9zZ2ElS6NsxEyWSSBspxuxlA0flJ1n8Zv4buq+w/MaZK+0UlHVdBFHHELPmmSygnBiz6
+         cv4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733228384; x=1733833184;
+        d=1e100.net; s=20230601; t=1733228868; x=1733833668;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5n+OPgKd4OeVfRcOdyszAmWQAYwYUA33KJvbyrKBpj8=;
-        b=VY629SVsIYGm4CGFoZiW1iphDS4pmECAcFtnQicXu8jYRwXK84ZpWEtwUSSAyQlssj
-         dedZ6FlWluL5geTY0+VLvmeQXciQwkAP/Lgy1AyHSfCGg/eExm79pguUFS44NxwEqlLD
-         XQUB3dMcnSP/V5iWSoavtWtJ2Ef7u9YYjxMxLm+JcXgxZCVyTBpN5QObF7KlAf58E8Zi
-         +JXQ1TpHsJyQPCAagnXP4XDbWwsV0tYjV+S6Wil4a6/p7G8HAPTE1zw5N2VbQIHXXBpI
-         w3HQxxDldzfYttexmnLVkT1PenqYppxtQB+mtQI276Rb30u/hPtxchYeftkpjjDYo45O
-         emCg==
-X-Forwarded-Encrypted: i=1; AJvYcCWdPW1mMgb/pDVZbk/VkgjooPaClnhJ6RdpLcoEx28JQOAXH79lnMqRBiVDDMI1XyctO4X+blbNNPsrtYG8+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQ+10PdLvrlaIzSUJgXts1DQkXg2DCq83aNRVebEHUMqgqGv5J
-	0BeLO622q8PBiv1EPl+CMT/pxxio7RDTqqijGX+nh25A28i8nHCjelJf1usJeHg=
-X-Gm-Gg: ASbGncv0DMba3v7jjJGL5hUZhmYxWk8sH1WD0jbYAcjASji9YRhCApmdLE4q+lkdx1f
-	YdWOOxdhPlJYcrfpRYNaA93FVFpiyQjVLJbDf6twMApL5CN35b/RAI6vHqtz3pTJQAZYMPWIzFL
-	4idHuOJsQAcyD8TO2fPi6BA6pczuxjm8zAI+gkfUEVj47kYEm/jZdJ+oxfBrmBECQAX5qwCdv+5
-	yj3OVNYBTfgwwmbvw0VbM1Ao+cv97EFMJ3oJONe5xqODkXfLeGdxffb5JaDhqvPz7qOF3tFtwH6
-	X7LEEWQ+HWs+KzXxB2DMzQh2m2E/aQ==
-X-Google-Smtp-Source: AGHT+IGqrNK3/JV3p7HUHgNYWUEc9ZkYpw0A4baw1aq7D6bW6M82dv1dR6gPJHjyZhTW0XLXbh3VUg==
-X-Received: by 2002:a05:6512:32c9:b0:53d:e43c:9c5d with SMTP id 2adb3069b0e04-53e12a06a29mr1124957e87.27.1733228384467;
-        Tue, 03 Dec 2024 04:19:44 -0800 (PST)
+        bh=4tMW5BgK0yNLwCH6utYoQVhW0P2uh6V2gFL0Ya9nckg=;
+        b=ENfPoN94nD9Q+NtYaPgZkzQO4ZBTX8axuQO/u/0GPXLSjqwvwEPl2IBU6DKwaGr9A7
+         YqE/n8Dw9gVPURvDly4vib9igP5e86QO06/ssvhOkr90jm2oJX250IWvIdLo4kM7LANZ
+         7aQcwbQWTZgFHMmDjoEd8MnCV7Az4R/VHx5nJz+gQAa6BXdxa7WUSyXYqfSn2op3wmU0
+         MJe9xzH7YRbhRLaImkp+nViAxDt3BsOwreJIYMTalnvpJTYS9t/AoQoUk4B5/ueK5+Ro
+         9cHu0yi/VXTFIUjUYNIdz+TeSO0JYGDnzfjtK3rU4U4o7d/RbiAYMxj0v+z2813qXh2I
+         2nhg==
+X-Forwarded-Encrypted: i=1; AJvYcCXpSMVFkyoxRJR/qUQ8hqfLbzAN92xSynQyomh4Qb0BmloRzMFk9jEHS0ML3skJZC8AacbcN+8nfADrvPV92g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzR7HjCRHu0zNxmiTvjBvn2Lphg3/pcjtD4DVMUn/Yk0RL7ETd1
+	9M9lao7N+rXnAhSoukCjimGWqPH934gibQyiTPcu38YcKIM123uOJlao9Afg280=
+X-Gm-Gg: ASbGncvfK8M/XtyX8UujVCVktRjSUxWFwiXfKci0vJYxZH+aIbx3FUvc9BrGI6hS/fc
+	h4R1d27wQW1yd0rXW19BpHmbh9vsCDIetijy91AR4W5973w/ufDhqNjms5mq50vjidCMbNIewkk
+	82oEbPnXT4qaLv3YQC53G8wd9p/yRDYJ+R5lVzYA1uEeHyuHdIlMHSeWMkRkqwh30CsvMa0Jq1X
+	ovTA44NEwmHdy7xkGMhn1lpFBsY6ZbxDB2DtOcSc3GSSZOJupkfVwW0iv/Jjjps+DXYRRGToWbq
+	hcokgWUhhq/+fN30Y2Yc5Oi96yAGeg==
+X-Google-Smtp-Source: AGHT+IG0HmZ8YSlH3L/g4YitdlPm2st4Okvau8mZpJCNyynGj3Z9KtsKcqo/MMABonQgOnqb21PQhQ==
+X-Received: by 2002:a05:6512:1089:b0:53d:d3ff:7309 with SMTP id 2adb3069b0e04-53e12a01ee6mr1387104e87.32.1733228867624;
+        Tue, 03 Dec 2024 04:27:47 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df643149asm1854312e87.37.2024.12.03.04.19.42
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df649f6f2sm1810134e87.246.2024.12.03.04.27.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Dec 2024 04:19:43 -0800 (PST)
-Date: Tue, 3 Dec 2024 14:19:41 +0200
+        Tue, 03 Dec 2024 04:27:46 -0800 (PST)
+Date: Tue, 3 Dec 2024 14:27:44 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -90,18 +90,18 @@ Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 8/9] drm/vc4: hdmi: switch to using generic HDMI Codec
- infrastructure
-Message-ID: <e7jngrc4nljdsksekinbkir2h76ztsth2xj4yqcyapfv43uryh@356yrxv3j4x6>
+Subject: Re: [PATCH v5 9/9] drm/vc4: hdmi: use
+ drm_atomic_helper_connector_hdmi_update_edid()
+Message-ID: <ae24x2bo736jpzi77l34hybejawwe4rp47v2idedga344ye6zr@bxsxz34dwrd2>
 References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
- <20241201-drm-bridge-hdmi-connector-v5-8-b5316e82f61a@linaro.org>
- <20241202-industrious-unnatural-beagle-7da5d4@houat>
+ <20241201-drm-bridge-hdmi-connector-v5-9-b5316e82f61a@linaro.org>
+ <20241202-married-bald-raven-7acd83@houat>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241202-industrious-unnatural-beagle-7da5d4@houat>
+In-Reply-To: <20241202-married-bald-raven-7acd83@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_041947_056480_EB6F3EE6 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20241203_042749_369275_2545F15D 
+X-CRM114-Status: GOOD (  33.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,68 +118,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 02, 2024 at 02:20:04PM +0100, Maxime Ripard wrote:
+On Mon, Dec 02, 2024 at 02:27:49PM +0100, Maxime Ripard wrote:
 > Hi,
 > 
-> Sorry, I've been drowning under work and couldn't review that series before.
-
-No worries, at this point I'm more concerned about my IGT series rather
-than this one.
-
-> 
-> I'll review the driver API for now, and we can focus on the exact
-> implementation later on.
-> 
-> On Sun, Dec 01, 2024 at 02:44:12AM +0200, Dmitry Baryshkov wrote:
-> > Drop driver-specific implementation and use the generic HDMI Codec
-> > framework in order to implement the HDMI audio support.
+> On Sun, Dec 01, 2024 at 02:44:13AM +0200, Dmitry Baryshkov wrote:
+> > Use the helper function to update the connector's information. This
+> > makes sure that HDMI-related events are handled in a generic way.
+> > Currently it is limited to the HDMI state reporting to the sound system.
 > > 
 > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 > > ---
-> >  drivers/gpu/drm/vc4/vc4_hdmi.c | 68 ++++++++++--------------------------------
-> >  drivers/gpu/drm/vc4/vc4_hdmi.h |  2 --
-> >  2 files changed, 15 insertions(+), 55 deletions(-)
+> >  drivers/gpu/drm/vc4/vc4_hdmi.c | 9 +++++++--
+> >  1 file changed, 7 insertions(+), 2 deletions(-)
 > > 
 > > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> > index 7295834e75fb1ab0cd241ed274e675567e66870b..d0a9aff7ad43016647493263c00d593296a1e3ad 100644
+> > index d0a9aff7ad43016647493263c00d593296a1e3ad..d83f587ab69f4b8f7d5c37a00777f11da8301bc1 100644
 > > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
 > > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> > @@ -595,6 +595,9 @@ static int vc4_hdmi_connector_init(struct drm_device *dev,
-> >  	if (vc4_hdmi->variant->supports_hdr)
-> >  		max_bpc = 12;
+> > @@ -401,13 +401,16 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
+> >  	 */
 > >  
-> > +	connector->hdmi_codec.max_i2s_channels = 8;
-> > +	connector->hdmi_codec.i2s = 1;
-> > +
+> >  	if (status == connector_status_disconnected) {
+> > +		drm_atomic_helper_connector_hdmi_update_edid(connector, NULL);
+> >  		cec_phys_addr_invalidate(vc4_hdmi->cec_adap);
+> >  		return;
+> >  	}
+> >  
+> >  	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
+> >  
+> > -	drm_edid_connector_update(connector, drm_edid);
+> > +	// TODO: use drm_atomic_helper_connector_hdmi_update() once it gains
+> > +	// CEC support
+> > +	drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
 > 
-> I guess it's a similar discussion than we had with HDMI2.0+ earlier
-> today, but I don't really like initializing by structs. Struct fields
-> are easy to miss, and can be easily uninitialized by mistake.
+> So, it's not just about EDID, and I think we shouldn't really focus on
+> that either.
 > 
-> I think I'd prefer to have them as argument to the init function. And if
-> they are optional, we can explicitly mark them as unused.
+> As that patch points out, even if we only consider EDID's, we have
+> different path depending on the connector status. It shouldn't be up to
+> the drivers to get this right.
+> 
+> What I had in mind was something like a
+> drm_atomic_helper_connector_hdmi_hotplug function that would obviously
+> deal with EDID only here, but would expand to CEC, scrambling, etc.
+> later on.
 
-Do you mean drm_connector_hdmi_init()? I think it's overloaded already,
-but I defintely can think about:
+I thought about it, after our discussion, but in the end I had to
+implement the EDID-specific function, using edid == NULL as
+"disconnected" event. The issue is pretty simple: there is no standard
+way to get EDID from the connector. The devices can call
+drm_edid_read(), drm_edid_read_ddc(connector->ddc) or (especially
+embedded bridges) use drm_edid_read_custom().
 
-drmm_connector_hdmi_init(..., max_bpc, HDMI_CODEC_I2S_PLAYBACK(8) |
-HDMI_CODEC_NO_CAPTURE | HDMI_CODEC_DAI_ID(4));
+Of course we can go with the functional way and add the
+.read_edid(drm_connector) callback to the HDMI funcs. Then the
+drm_atomic_helper_connector_hdmi_hotplug() function can read EDID on its
+own.
 
-or
-
-... | HDMI_CODEC_NO_DAI_ID)
-
-The default (0) being equivalent to:
-
-HDMI_CODEC_NO_I2S | HDMI_CODEC_NO_SPDIF | HDMI_CODEC_NO_CAPTURE | HDMI_CODEC_NO_DAI_ID
-
-WDYT?
+Also the function that you proposed perfectly fits the HPD notification
+callbacks, but which function should be called from the .get_modes()?
+The _hdmi_hotplug() doesn't fit there. Do we still end up with both
+drm_atomic_helper_connector_hdmi_hotplug() and
+drm_atomic_helper_connector_hdmi_update_edid()?
 
 > 
-> Like, it looks like the get_dai_id implementation relies on it being set
-> to < 0 for it to be ignored, but it's not here, so I'd assume it's used
-> with an ID of 0, even though the driver didn't support get_dai_id so
-> far?
+> And would cover both the connected/disconnected cases.
+> 
+> Maxime
+
 
 
 -- 
