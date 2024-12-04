@@ -4,68 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF149E7716C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 02:16:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BD15E7716C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 03:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/I7825nxClopX4hk6I1U20qKBKU5Ik+z0/smDnP6uxo=; b=o9nPei9ABh9WPJ
-	54XZR/PSSt+efpQ1mSRViskPnDG+DVQsaMzYFfKMjxCmkJcSY0UMTNyOjYTzYidujDlsZqHfGxSn6
-	7StEcphrOsia8jMZVcWdOBy3JfVT8NKOhRM2esuGu38RYdwczHhY853iVwPjzfYf54B/fPIrikndN
-	ZpplLs9WuFLFHfyU37v543MOlKuDLskV+4kHXoGWIRl14n+onfKbEGdg+dXNpmNNxvRdyj4Ul0mKg
-	VPKae80BQJxhRrGEr2VleMZbkwzxxVzgTUGKaRfTyPUNgQQHZEMoijftGVmy5DvlyyMKLHBWlILcN
-	1O+91fMYvl+RDx0Q2Jkg==;
+	List-Owner; bh=Nwqy8TA9S+KoX42Cn+7+RDKuIUPvIe+f09AZxzEVwow=; b=oWArs4/k0KBn8z
+	BEJgEwadao64P/Oczqqyf+rFX03rxz66VvnPcOH2S2D9ZvMaieghZxUi6VRg31O9aQj3r1F38RPhh
+	W1KyscQbSzXxkytB5jncTc6izQYRznfPqmVTXvweSSBND94RDA95pOvDp2KTfv7NBp+KRl7YZh5OJ
+	rQuLcTqXXB+6qj51nuh4zpLURBJ31SgA+e56otcTQAhNjkeha04VjsAgk2GyF4STYudF+A/seoIUa
+	J3WuhoeHI+ApxzldXbRwdu5GjB+A/5s9IatYgR33q4vk5+LO+HrjI2G+N4Yz6G330bOQyTcEIkn7q
+	MpcHAioSMFzQ5zz5n9uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIew2-0000000BH1q-1kCP;
-	Wed, 04 Dec 2024 02:16:14 +0000
-Received: from mail-m15577.qiye.163.com ([101.71.155.77])
+	id 1tIfv6-0000000BN2Z-3aix;
+	Wed, 04 Dec 2024 03:19:20 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIevz-0000000BGyn-3fdZ;
-	Wed, 04 Dec 2024 02:16:13 +0000
-Received: from [172.16.12.67] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4a145995;
-	Wed, 4 Dec 2024 10:16:00 +0800 (GMT+08:00)
-Message-ID: <af1cce1a-c46d-470f-a1b9-bfbc90b46415@rock-chips.com>
-Date: Wed, 4 Dec 2024 10:16:00 +0800
+	id 1tIfu5-0000000BMrn-0row
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Dec 2024 03:18:19 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-53df63230d0so7629206e87.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Dec 2024 19:18:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733282295; x=1733887095; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ov4oIDApdgx4WHS7bE5m2BIEReCDIeuVyAq9ezmep2w=;
+        b=FUblq3kaVGpQ/7JifRvJ2B6QzfMSKwRvDsAk8gJmWis5VaRQXS8Za/5e+ZyBy9eJt/
+         EtkC3ljOpT0lQN5X0nvnFtWhwAhwDuDHbZs1ZTzS4xvZBGZH0oKg/aSbKvANx2tEx5Pd
+         UNMAFlSc1Qh/tijRgNoLinT+SsiWYTN7+hvrBROHu/VmqyGl70layNWDzJ73SxeWSRTP
+         I23e9EQJ36TSXwTYGCR9Qx/Bw34FWCQQopt4w6Y4JFdt/YZCTfbEkj5yW22+MNgSUpzn
+         6+ppAOue5xdOjPE2VAKNZHLeo5CxyRDrcP5QAil0Kek7nJZ6QtwzdOPlQyCLH7LDjWtj
+         cF3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733282295; x=1733887095;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ov4oIDApdgx4WHS7bE5m2BIEReCDIeuVyAq9ezmep2w=;
+        b=mFbyNvT5gKo7CfzgiqxnEYwrPycRt5jj8CFapjIQpVnlcs8rQ2tiiUuhgmjjbnLghi
+         bBxTMYTLpEXlmHLl2owGbsHjOZ7uNHywilU8ATkLYpnOn8qR/lWAO6cuoX0V+ML7vg0h
+         hkITDCqEvffSNSp5or6Yr5UF24qOC3gYtBdnSoskNqisIz7Ro/l1Pb+y545YX9321nUH
+         omvlk5Ae2z55ZH4O8J78UDM6YsRxxYwyt6po8Au4yhL3B9bGQTRna1enNbLQ+YtY+nNh
+         z0GXV7kOeAMgTfPMduNtAAxk54a5FPrUDqvbdiamte6iJpLkMZK+qhy+rKZQx3+l7myy
+         x+XQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU2N/FEQhwypYVMbv5K+ZBH0aSrgCpk9v0AO/XhAmHdXVqquGf/ZZMKQNAku4yEq2yVN4/qcQQnY2nYvj7PUA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwGsdG92U6llStWhpMIX14+t0wfp0uVX003HNxsRbzotRCMKy8h
+	tGiXrTU5/81SVZ27TcdY/Zd5jL8uhgGpshqJtcjpbwxT+rT3ombDE3FFoAVdMHc=
+X-Gm-Gg: ASbGncsHXljdaAG/wHHg2QQvUQEPk4icuR9fy1aTfAEs2l2HYYzZjaZ+ma0yBXrG1Qi
+	ldGQkp4X+OCVnXrX2dSJPNuvYLKEhWPDH7QRd2f4dnL7EE7lxy20vkmtlWC6t/NvQVt/hihY9M7
+	frZ/ymtrSctopcktAVEyktT5VRfxKl2IUs7vviMPENoa6VQvmH5zCuc9LbipEjehNdZHSFKzhJi
+	xDdAUpE9vvJVLqtA47ZUTUsyyl20PwmAIYQiP4hOJ5G0XfbWJ1iOH0Me99cnHOxNFqUutNhD7jW
+	RMltP/sx7c94Xdb90U0O/UuP+R14lQ==
+X-Google-Smtp-Source: AGHT+IFJX8QZfHrEBC9Xxxj95DpGajpX3DiwA7TRxy/4ydOL7I3C5fwKfR6CJxAdfz87Jxn9zNInqQ==
+X-Received: by 2002:a05:6512:3a8e:b0:53d:a550:2885 with SMTP id 2adb3069b0e04-53e12a34282mr2179215e87.47.1733282295266;
+        Tue, 03 Dec 2024 19:18:15 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53df649f13csm2058532e87.230.2024.12.03.19.18.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 19:18:14 -0800 (PST)
+Date: Wed, 4 Dec 2024 05:18:11 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 7/9] drm/bridge_connector: hook
+ drm_atomic_helper_connector_hdmi_update_edid()
+Message-ID: <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
+ <87a5dc4zd5.fsf@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
- Daniel Semkowicz <dse@thaumatec.com>
-References: <20241203165450.1501219-1-heiko@sntech.de>
- <20241203165450.1501219-4-heiko@sntech.de>
-Content-Language: en-US
-From: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20241203165450.1501219-4-heiko@sntech.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5IGlZDTkhCSRkdSh9DGhhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a938f73f0f903afkunm4a145995
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MBA6Hjo5NDIiQgsiEC4hFjQU
-	ASIaC0JVSlVKTEhISUxDTk1JTUpOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFITUtDNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=dzcA+s18pHeWsAvT8DU6Gsg9UZW7nRkXuem7SF0t2SffbzdYCfnk1RxngwDRz/caOzZYcCZaQu9jL1FTEb9tq/sSV+YyDZMacY5Qosl70MpbmQuFuO09iKrupIcEb66TLNKyZAFWaXQGYXAWgfTjBZerWwqAAwdoOs17GOk8h04=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=7Qfir7c7WLrv83V+tyvAYKqAUcaUO9npr2R5cAdgfC0=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <87a5dc4zd5.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_181612_451436_284EBAFA 
-X-CRM114-Status: GOOD (  19.62  )
+X-CRM114-CacheID: sfid-20241203_191817_263522_A2EBB5BF 
+X-CRM114-Status: GOOD (  34.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +114,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+On Tue, Dec 03, 2024 at 04:25:58PM +0200, Jani Nikula wrote:
+> On Sun, 01 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> > Extend drm_bridge_connector code to read the EDID and use it to update
+> > connector status if the bridge chain implements HDMI bridge. Performing
+> > it from the generic location minimizes individual bridge's code and
+> > enforces standard behaviour from all corresponding drivers.
+> >
+> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > ---
+> >  drivers/gpu/drm/display/drm_bridge_connector.c | 67 ++++++++++++++++++++------
+> >  1 file changed, 53 insertions(+), 14 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+> > index 12ab9f14cc8a8672478ae2804c9a68d766d88ea5..71ae3b2c9049016d1cc0d39a787f6461633efd53 100644
+> > --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+> > +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+> > @@ -17,6 +17,7 @@
+> >  #include <drm/drm_edid.h>
+> >  #include <drm/drm_managed.h>
+> >  #include <drm/drm_modeset_helper_vtables.h>
+> > +#include <drm/drm_print.h>
+> >  #include <drm/drm_probe_helper.h>
+> >  #include <drm/display/drm_hdmi_state_helper.h>
+> >  
+> > @@ -175,17 +176,55 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
+> >   * Bridge Connector Functions
+> >   */
+> >  
+> > +static const struct drm_edid *
+> > +drm_bridge_connector_read_edid(struct drm_connector *connector,
+> > +			       enum drm_connector_status status)
+> > +{
+> > +	struct drm_bridge_connector *bridge_connector =
+> > +		to_drm_bridge_connector(connector);
+> > +	const struct drm_edid *drm_edid;
+> > +	struct drm_bridge *bridge;
+> > +
+> > +	bridge = bridge_connector->bridge_edid;
+> > +	if (!bridge)
+> > +		return NULL;
+> > +
+> > +	if (status != connector_status_connected)
+> > +		return NULL;
+> > +
+> > +	drm_edid = drm_bridge_edid_read(bridge, connector);
+> > +	if (!drm_edid_valid(drm_edid)) {
+> 
+> What's the case this check is for?
+> 
+> My preference would be that bridge->funcs->edid_read() uses
+> drm_edid_read*() family of functions that do the checks and return the
+> EDID.
+> 
+> There are some cases that just allocate a blob and return it. Would be
+> nice if they could be converted, but in the mean time could use
+> drm_edid_valid() right there. Additional validity checks are redundant.
 
-On 2024/12/4 00:54, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
->
-> This adds the glue code for the MIPI DSI2 bridge on Rockchip SoCs and
-> enables its use on the RK3588.
->
-> Right now the DSI2 controller is always paired with a DC-phy based on a
-> Samsung IP, so the interface values are set statically for now.
-> This stays true for the upcoming RK3576 as well.
->
-> Tested-by: Daniel Semkowicz <dse@thaumatec.com>
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
->   drivers/gpu/drm/rockchip/Kconfig              |  10 +
->   drivers/gpu/drm/rockchip/Makefile             |   1 +
->   .../gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  | 524 ++++++++++++++++++
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |   2 +
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   1 +
->   5 files changed, 538 insertions(+)
->   create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
->
-> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-> index 448fadd4ba15..84af423b7f90 100644
-> --- a/drivers/gpu/drm/rockchip/Kconfig
-> +++ b/drivers/gpu/drm/rockchip/Kconfig
-> @@ -10,6 +10,7 @@ config DRM_ROCKCHIP
->   	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
->   	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
->   	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
-> +	select DRM_DW_MIPI_DSI2 if ROCKCHIP_DW_MIPI_DSI2
->   	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
->   	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
->   	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
-> @@ -81,6 +82,15 @@ config ROCKCHIP_DW_MIPI_DSI
->   	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
->   	  select this option.
->   
-> +config ROCKCHIP_DW_MIPI_DSI2
-> +	bool "Rockchip specific extensions for Synopsys DW MIPI DSI2"
-> +	select GENERIC_PHY_MIPI_DPHY
-> +	help
-> +	  This selects support for Rockchip SoC specific extensions
-> +	  for the Synopsys DesignWare dsi driver. If you want to
-> +	  enable MIPI DSI on RK3576 or RK3588 based SoC, you should
-> +	  select this option.
-> +
->   config ROCKCHIP_INNO_HDMI
->   	bool "Rockchip specific extensions for Innosilicon HDMI"
->   	select DRM_DISPLAY_HDMI_HELPER
-> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-> index 3eab662a5a1d..2b867cebbc12 100644
-> --- a/drivers/gpu/drm/rockchip/Makefile
-> +++ b/drivers/gpu/drm/rockchip/Makefile
-> @@ -13,6 +13,7 @@ rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI_QP) += dw_hdmi_qp-rockchip.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi-rockchip.o
-> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI2) += dw-mipi-dsi2-rockchip.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_LVDS) += rockchip_lvds.o
->   rockchipdrm-$(CONFIG_ROCKCHIP_RGB) += rockchip_rgb.o
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-> new file mode 100644
-> index 000000000000..55eed4001634
-> --- /dev/null
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-> @@ -0,0 +1,524 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2024 Rockchip Electronics Co.Ltd
-This should be:
+This was c&p from drm_bridge_connector_get_modes_edid(). If you think
+that the check is redundant, could you please send a patch dropping the
+check?
 
-Rockchip Electronics Co., Ltd.
+> 
+> BR,
+> Jani.
+> 
+> 
+> > +		drm_edid_free(drm_edid);
+> > +		return NULL;
+> > +	}
+> > +
+> > +	return drm_edid;
+> > +}
+> > +
+> >  static enum drm_connector_status
+> >  drm_bridge_connector_detect(struct drm_connector *connector, bool force)
+> >  {
+> >  	struct drm_bridge_connector *bridge_connector =
+> >  		to_drm_bridge_connector(connector);
+> >  	struct drm_bridge *detect = bridge_connector->bridge_detect;
+> > +	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+> >  	enum drm_connector_status status;
+> >  
+> >  	if (detect) {
+> >  		status = detect->funcs->detect(detect);
+> >  
+> > +		if (hdmi) {
+> > +			const struct drm_edid *drm_edid;
+> > +			int ret;
+> > +
+> > +			drm_edid = drm_bridge_connector_read_edid(connector, status);
+> > +			ret = drm_atomic_helper_connector_hdmi_update_edid(connector, drm_edid);
+> > +			if (ret)
+> > +				drm_warn(connector->dev, "updating EDID failed with %d\n", ret);
+> > +
+> > +			drm_edid_free(drm_edid);
+> > +		}
+> > +
+> >  		drm_bridge_connector_hpd_notify(connector, status);
+> >  	} else {
+> >  		switch (connector->connector_type) {
+> > @@ -246,29 +285,29 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+> >  static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
+> >  					       struct drm_bridge *bridge)
+> >  {
+> > +	struct drm_bridge_connector *bridge_connector =
+> > +		to_drm_bridge_connector(connector);
+> > +	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+> >  	enum drm_connector_status status;
+> >  	const struct drm_edid *drm_edid;
+> > -	int n;
+> >  
+> >  	status = drm_bridge_connector_detect(connector, false);
+> >  	if (status != connector_status_connected)
+> > -		goto no_edid;
+> > +		return 0;
+> >  
+> > -	drm_edid = drm_bridge_edid_read(bridge, connector);
+> > -	if (!drm_edid_valid(drm_edid)) {
+> > +	/* In HDMI setup the EDID has been read and handled as a part of .detect() */
+> > +	if (!hdmi) {
+> > +		drm_edid = drm_bridge_connector_read_edid(connector, status);
+> > +		if (!drm_edid) {
+> > +			drm_edid_connector_update(connector, NULL);
+> > +			return 0;
+> > +		}
+> > +
+> > +		drm_edid_connector_update(connector, drm_edid);
+> >  		drm_edid_free(drm_edid);
+> > -		goto no_edid;
+> >  	}
+> >  
+> > -	drm_edid_connector_update(connector, drm_edid);
+> > -	n = drm_edid_connector_add_modes(connector);
+> > -
+> > -	drm_edid_free(drm_edid);
+> > -	return n;
+> > -
+> > -no_edid:
+> > -	drm_edid_connector_update(connector, NULL);
+> > -	return 0;
+> > +	return drm_edid_connector_add_modes(connector);
+> >  }
+> >  
+> >  static int drm_bridge_connector_get_modes(struct drm_connector *connector)
+> 
+> -- 
+> Jani Nikula, Intel
 
-This typo is from vendor kernel, we will correct all this kind of issue locally,
-and Andy is going to correct other files in drm for mainline kernel.
-
-Thanks,
-- Kever
-
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
