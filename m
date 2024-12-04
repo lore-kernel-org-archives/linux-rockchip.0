@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C728E7716D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 16:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBCBAE7716D
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 17:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hpI0nCPQPSR6x9Uy7qVt63Lv9oM5Rery7tMXR8VpKH8=; b=PyUVMK+0L03SQj
-	9PqO6l+9hZSjRbfAarkGTCgdjwUv4RLkNCciGkLqbqe5FGfX5dMa78ap84//9BEtQk9yXUqslpbtB
-	i6Hsx1nzTTYJegzfwCVJqLkKxuFFIY6EvhOYCylxaRt/lP1eY7VBbIeRLBK1DOFYHjQtAYfWR35uS
-	oEVQVKw85qH9uZz3jVf/VrKdxJSx7Qa2tpe/lNCjj1aH0d0a1y3sZiFspv+v/YhluroUGrO9iX4iO
-	NUOe4YyYmwagGyjpSZ6rAxV5cnPw8M3vn3BgLHkLzqsTop3+xFntxLCO+SHjfrxwXEhiSV62AR9gr
-	Tqf9Ez3N0B9paI4BdPrQ==;
+	List-Owner; bh=L2to8792CCNYXUX1ADz/3X5ulJ1jmgAhPtSSS6+G0aY=; b=o8mfdifM7gV3Z8
+	j+c2JaDeDjJKO1FScxlnU5i0K9a0hDPjI+XFgxX8to8IGt+Qr1fpef5deCPTzAqAZHH5yGZyb5Jr3
+	oOjOpQBecK9AC7rTboqHHLHd5PuVOWfB7kcF9Om2W6YkhB/YT4N8Ku91ihgXQiL9S92ZRznatlfn8
+	SwBv0FZ5dPFuGlXM9LjuXFHAJeqMw/nb7t8ey7fWHATGOww4FwkJ/93JNi/MkMi42d3gCgYwMQa5S
+	ya4vEdEdREdd6uv7eTwHdc+VxxTY45Z/1h2dhgiDGdLVRBeLIuP9OJW1d9bQoNP3eXN4F4DAGO9sV
+	SkhM7jWqKWq4Eu9gyM8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsCm-0000000DBCn-27Sk;
-	Wed, 04 Dec 2024 16:26:24 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tIsq9-0000000DI6O-0OuR;
+	Wed, 04 Dec 2024 17:07:05 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsBl-0000000DAzA-37Fm;
-	Wed, 04 Dec 2024 16:25:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7E522A40C00;
-	Wed,  4 Dec 2024 16:23:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25188C4CECD;
-	Wed,  4 Dec 2024 16:25:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733329520;
-	bh=Nc+FOIpt7TbIStp6l8xTivwnrh0gB0h1NmUqHHiH7nA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QoQHSMtd4xRonXrPYqRL5VXJnmIHOEMFLAjKen/RG11dUzDEesTySsjhWqTTjzqnZ
-	 MAKhvpaB9jZCECSo4t7d+Y0PvsofWNp6HV0LXi31HY1e8g7pAJ6V3F9GU/eCOmyEud
-	 DbLP/nBZh5Z07dtyGnM0xXKHJg9nwgzYxsPmnjLR+VYyG6TpI3w1WWaXb5FzgV5Cwc
-	 5lTFhVNFjQQ7JgihP759ATsJEtYFrBCj4AY4a7/ZGuwuhq+MQx1t01UDlmcqFDBWvs
-	 I6VQBGeeEeiGYCM01I+7vKkhjdk/kh+D/o6wU9l8QfxMikyQgcGyjMKY7KVBJIEfJ0
-	 ObcI5NywDCjEQ==
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org
-In-Reply-To: <20241203013513.2628810-1-jon.lin@rock-chips.com>
-References: <20241203013513.2628810-1-jon.lin@rock-chips.com>
-Subject: Re: [PATCH] spi: rockchip-sfc: Optimize the judgment mechanism
- completed by the controller
-Message-Id: <173332951887.13421.11537303801053149682.b4-ty@kernel.org>
-Date: Wed, 04 Dec 2024 16:25:18 +0000
+	id 1tIsoK-0000000DHlW-2wDP;
+	Wed, 04 Dec 2024 17:05:15 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E82114D4;
+	Wed,  4 Dec 2024 18:04:39 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1733331880;
+	bh=78gxj/BzoWW/qirjW9VkHtBeuxgnIovOYGaNqmENlXM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ORW1M6NSD/L10kyaJaBu69hYJhJ+ZqX0mJM0fy66bzh7YHxRWFubGNkNF7eKLB1KR
+	 9CNIPWNKHYNh8kV+TjHEtQ3xd/UR78LQvYnDJUWm1qM+Ji7XmZeIZOoU6PWiZ0F3Pi
+	 IJoycTEnrm+Kr9CxYCPs4C2ThkNRheyOw3EmO5/0=
+Date: Wed, 4 Dec 2024 19:04:56 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+Cc: dafna@fastmail.com, linux-media@vger.kernel.org, mchehab@kernel.org,
+	heiko@sntech.de, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 media-next] media: rkisp1: Fix unused value issue
+Message-ID: <20241204170456.GA16224@pendragon.ideasonboard.com>
+References: <20241119072653.72260-1-dheeraj.linuxdev@gmail.com>
+ <20241119075944.GA31681@pendragon.ideasonboard.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-9b746
+Content-Disposition: inline
+In-Reply-To: <20241119075944.GA31681@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_082521_846045_954F7439 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20241204_090512_888904_9D5D181F 
+X-CRM114-Status: GOOD (  28.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +68,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 03 Dec 2024 09:35:13 +0800, Jon Lin wrote:
-> There is very little data left in fifo, and the controller will
-> complete the transmission in a short period of time, so
-> use readl_poll_timeout() for busy wait 10us to accelerate response.
+On Tue, Nov 19, 2024 at 09:59:44AM +0200, Laurent Pinchart wrote:
+> Hi Dheeraj,
 > 
+> Thank you for the patch.
 > 
+> On Tue, Nov 19, 2024 at 12:56:53PM +0530, Dheeraj Reddy Jonnalagadda wrote:
+> > This commit fixes an unused value issue detected by Coverity (CID
+> > 1519008). The error condition for the invalid MIPI CSI-2 is not
+> > properly handled as the break statement would only exit the switch block
+> > and not the entire loop. Fixed this by returning the error immediately
+> > after the switch block.
+> 
+> The patch doesn't "return immediately". You can write "Fix this by
+> breaking from the look immediately after the switch block when an error
+> occurs." or something similar.
+> 
+> > 'Fixes: 8d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver
+> > optional")'
+> 
+> The Fixes tag should be formatted on a single line, without outer
+> quotes, and without a blank line between it and the Signed-off-by line:
+> 
+> Fixes: 8d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver optional")
 
-Applied to
+That commit ID doesn't exist in the git history. The commit
+corresponding to the message is 7d4f126fde89. I'll update the commit
+message accordingly.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+> > Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
+> 
+> I can update the commit message when applying the patch, there's no need
+> to submit a v5, unless if you want to. Please let me know if I should
+> take this version and update the commit message, or if you will send a
+> v5.
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+> > ---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index dd114ab77800..9ad5026ab10a 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  			break;
+> >  		}
+> >  
+> > +		if (ret)
+> > +			break;
+> > +
+> >  		/* Parse the endpoint and validate the bus type. */
+> >  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+> >  		if (ret) {
 
-Thanks!
+-- 
+Regards,
 
-[1/1] spi: rockchip-sfc: Optimize the judgment mechanism completed by the controller
-      commit: 577f1cf76ceedb5fbdc9aca4f712b21864ac15ee
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
