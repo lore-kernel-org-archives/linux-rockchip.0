@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 692A0E7716B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 05:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30657E7716B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 07:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9XWJ3RFjBQ2tst0mI0waNN8zUmPWp0tKEt6hjYlByaY=; b=qwsEZ0Uv7Pxkb2DGVivZUG/xG2
-	KKexLvIFD8sVpOo/y3C4kk7CatMx9G0VFqbfAD+eYKKS59mp2GV9WK+NGsGYb8A4lWirhqVSvM59j
-	gwDjgK83HO7gWwPk9HG4KuJ6UP7KkBDQKr+9hT8SXwRxmfid17V/uIplftvytOt91XDFRPZo4CSus
-	0/a+uA0WdX7OHrxeIIVHlUus2PS4ekEj3wONAHSkBbZYrRRMLw0aeWFIc2IiIcw8l9b4cMXAiv03Q
-	uL6P8zOziszH0zkTtqWVgN+J2tZxsAVewaCS4ZPIGdyFyRzqHH1dSU5xJenY1BzyymstEZv99y2Xy
-	I0D408Lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7k4vJPw38gDp6zxM76rx+OXVNmYti3y1SKkugwiziq8=; b=Ik2WyYn3XxiZLv
+	7ABuN6F6XdJi2NRlsj2Bqpp4yWtMPEJI013EOs6WFTDhXQJz3A9mpR4Ihvx7JVKG7npjAre4sVh7J
+	zW7hJGge+0laAgxbQ1Yarl3CnximlzmUh7tcpI3dOu87ltmPdhofFTqAS2ebTYaXGwRYZQ9LQTjJq
+	WkOf70kCDTqI6vfQSfPVDyINKTI4FKPs/aDjOQ1WVZl/u9fmn7iqU4x2IKlh4Mdbp2CvdPDhYQnfM
+	W1DdBem1+N74WLBXyIcPRXFs2+RgU3O8NQVwrCpOKCPkoE8OMAFh8WXDVXO21c3rSjlBuwPmqmQUH
+	pQ9/mXDEtTQVlVlgaKCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIi0r-0000000BX2O-1RsZ;
-	Wed, 04 Dec 2024 05:33:25 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tIk03-0000000Bjqt-02Bo;
+	Wed, 04 Dec 2024 07:40:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIi0o-0000000BX1x-19C5
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Dec 2024 05:33:23 +0000
+	id 1tIjz1-0000000Bjja-0yav;
+	Wed, 04 Dec 2024 07:39:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BA7D45C60F0;
+	Wed,  4 Dec 2024 07:38:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D646C4CED1;
+	Wed,  4 Dec 2024 07:39:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733297978;
+	bh=OZXyxFp5uWXU4+gtNDcxN94xsKibQqokm4SOMt4Xt5Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lyg8RjUGEl2gykO3cMw2tW7YE9qGqj3QwcLCyiSYGF8nZakDz4PXSmeILOTBxhian
+	 nTYR9rhzSDSt5uTlCPM/pP6n2XiPQMn8tB3oPMAZic+P4gyILBUzUZHMElyT9qmUUW
+	 hJr8S2Twk6DORz+F+XqCe3Tf3OvXY0txcULPWNW/vANxL5EnEg/d07W2hGt3b860ID
+	 VqFKGOqt+kTmlRbvkxxdBmdzlG3YNEEW72B/Rj9oU5lb5apCGLOAsLqMLZhyOiggX0
+	 w050em0y8RPkWSFtU6v/tfkAD5eG2er6wPX5c5Q1agAQ7GVKYLrt951bkKGLd7WSQZ
+	 3fEA8Rr7Rvpqg==
+Date: Wed, 4 Dec 2024 08:39:34 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, 
+	sebastian.reichel@collabora.com, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	dse@thaumatec.com, Heiko Stuebner <heiko.stuebner@cherry.de>, 
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v5 1/2] dt-bindings: phy: Add Rockchip MIPI C-/D-PHY
+ schema
+Message-ID: <mdlcm57lway2wqwh7tp6bj6mi3nlwuaeadbsmgx3h6kcfdisq5@76ikce4yqfs4>
+References: <20241203164934.1500616-1-heiko@sntech.de>
+ <20241203164934.1500616-2-heiko@sntech.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733290400;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P2g3bhmmojUvsrqFJkcem25HX+I+3zq50u2ZMd5NGWU=;
-	b=eZPw8q+iyJOMj0BeNww5BAamEly+HdsRywK6ycDI/zdBYiMPKui26NlGnWSmv1KEER13m6
-	qhdUV9/bwdDmqUHcGNYga2qRQvYHXLxoqlgeqUzXJSLPprA75eofoN3P18O4Tro/rHlOoU
-	twSr4XcyBT1Upo7jQqm02PiBFFMqrbvYS0HufVfu41elmlTYOu7RG10x1PDMeEFgmzmSL7
-	e4+2RUy6yCAGFIqSXvtrlc5AjzFFGI55QR4YRww6CEJmSeI3LGH8/Q9dkuYe54kYGacMZB
-	1v7u5FR12lYaHUJjdvNxOeTSzp5CRy6h07d5nlqr3AmBshS25ApfxVUjvAQ9jw==
-Date: Wed, 04 Dec 2024 06:33:19 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, sebastian.reichel@collabora.com,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: fix cooling-levels in pwm-fan
- for Radxa ROCK 5A/5C
-In-Reply-To: <20241204045447.1036-2-naoki@radxa.com>
-References: <20241204045447.1036-1-naoki@radxa.com>
- <20241204045447.1036-2-naoki@radxa.com>
-Message-ID: <ed28e18be8db8274abffbcf840ce0550@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <20241203164934.1500616-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_213322_458525_9253482A 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20241203_233939_311307_9D3B36B5 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,45 +73,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Fukaumi,
+On Tue, Dec 03, 2024 at 05:49:31PM +0100, Heiko Stuebner wrote:
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3576-mipi-dcphy
+> +      - rockchip,rk3588-mipi-dcphy
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#phy-cells":
+> +    const: 1
+> +    description: |
+> +      Argument is mode to operate in. Supported modes are:
+> +        - PHY_TYPE_DPHY
+> +        - PHY_TYPE_CPHY
+> +      See include/dt-bindings/phy/phy.h for constants.
 
-On 2024-12-04 05:54, FUKAUMI Naoki wrote:
-> fan behavior is better than current configuration.
 
-Could you, please, describe better what makes this configuration
-better, which fan make and model are you using, etc.?
+That's the only difference from version I gave review. It is approved
+style of passing phy type/mode, so adding this is not valid reason to
+drop my review tag and request re-review.
 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> this patch depends on [1] which depends on [2].
-> 
-> [1] 
-> https://patchwork.kernel.org/project/linux-rockchip/cover/20241128121929.62646-1-naoki@radxa.com/
-> [2] 
-> https://patchwork.kernel.org/project/linux-rockchip/patch/20241119095113.78151-1-naoki@radxa.com/
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-> index a1cac40d439e..472b41f0d47f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-> @@ -36,7 +36,7 @@ analog-sound {
->  	fan: fan {
->  		compatible = "pwm-fan";
->  		#cooling-cells = <2>;
-> -		cooling-levels = <0 64 128 192 255>;
-> +		cooling-levels = <0 120 150 180 210 240 255>;
->  		fan-supply = <&vcc_5v0>;
->  		pwms = <&pwm3 0 60000 0>;
->  	};
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
