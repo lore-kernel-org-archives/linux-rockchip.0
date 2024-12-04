@@ -4,98 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA355E7716D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 07:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DEAAE7716D
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 08:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UnepY5fWiKpNRGyNZjUCr7djFj6XW/xscxdJyiqG4XQ=; b=12GLfpxYWX3PXS
-	FhGWrL1GX74b3Qo0jtrDyQcXgQZvh2DsWmY+qffk49bwCCbrvtoiMnGQnKL1aPiiarovZgSgqO7G8
-	mNZ2pKyPPasTB+74Egg4T6B+5XmlSLLq3dTRPXm8jsJTFiPdRNtLHXdArgXBKvv6YWc86zAdo8rly
-	CFN8ShyuGI9Fe3jkghpPa3rKjO9OXA+L5dNztzJXfKRf3+2idbncHVXvfhGFNbi6GGNBqCmlP91Bf
-	vnKYPgPwD6kn0eAJ+Keb1XUBe01eXGFTq4HOgqgPbUOG14HvydZ3aBrm4BR2U2FFFiyIZyjo9nS+u
-	aWkLNbuKlVBykl0hiQog==;
+	List-Owner; bh=LghkD2XWPN1tVFcBEj9ic+bmX4XNprxXvOJYEjGWKtQ=; b=qh3GhdZv0jvWd7
+	3osjnz/vOl3PNLNQ6L53YPAI0vbkw1B289ua2dD7Yodf5UjbzuAkg8nCMMZYsBXwkE4J6/qkKYNWc
+	5DxV3cWmDYGh/cGHjxHQjWc+9o6LqBnQ56bLVhvXYB5PRrb/3C7fdeUdfJL4LdnUti4IlGTrLl+lM
+	VFwFEHoqvCuyNmBVZJs00lKcE1dOXRTsfessMZfo8cmZxIPQkAvwPtAMly2aimcBDNZAqcDaRKCTN
+	O3bwcE2rSXE1gmJJGzPVd88W3xOfeUqbk193Vd4JzikLYhzSQe+FP4b8gVTCvV7VRPTvj++Cyhsic
+	L2zLDORYzhz7o/x+5yRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIk2t-0000000BkXJ-2GxW;
-	Wed, 04 Dec 2024 07:43:39 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1tIket-0000000Bs2T-1HzA;
+	Wed, 04 Dec 2024 08:22:55 +0000
+Received: from mail-m10138.netease.com ([154.81.10.138])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIk1m-0000000Bk4Q-3kCe;
-	Wed, 04 Dec 2024 07:42:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1733298151; x=1764834151;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=gK06+f1C0mBtgYKTZ09XhG1sOVFjumSjIgGeM6ZwmU0=;
-  b=JbmURXo97MbGQlWyxfmRCwyqoTszCrXRO8NWX3FclIKkgp/Y5pqcl8i9
-   eE5MYVfHaxgF9JWViH9SZjr+R1GtjPUsxFX+iUtJDDXg81VrXagwWDsli
-   zO414RAROg6QxSfIAMPrtPtGJb/LKOOpKhGvUpuimo4z6PndyOSchTl39
-   PHSteGHz+D0phc4UqrJZdHnJobQUTNw+IBrmdHuFGqPietTjvG9kM07sI
-   ge9Op9rMh0paJEouvFIB7hSqkx9dWwmyEukrSpDzmjq5ToSihG9/DCead
-   Zbrmuu9m4EzR7JQEpc6utFgc4/1h8+c6It/3+hURQIbZ3fMBxmmTNacjA
-   Q==;
-X-CSE-ConnectionGUID: /KztvD7VT7CcUnw2maxGuA==
-X-CSE-MsgGUID: efYmaFQSTo+GqjtCESHPnA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11275"; a="21132177"
-X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; 
-   d="scan'208";a="21132177"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 23:42:27 -0800
-X-CSE-ConnectionGUID: ztyXjIeiR26vOG8EeEOB9Q==
-X-CSE-MsgGUID: MiRNI+71Qr6pKR5u1cWLig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; 
-   d="scan'208";a="131139278"
-Received: from mwiniars-desk2.ger.corp.intel.com (HELO localhost) ([10.245.246.205])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 23:42:14 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav
- Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE
- <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim
- <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
- <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?=
- <heiko@sntech.de>, Andy
- Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>, =?utf-8?Q?Ma=C3=ADra?= Canal
- <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 7/9] drm/bridge_connector: hook
- drm_atomic_helper_connector_hdmi_update_edid()
-In-Reply-To: <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
- <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
- <87a5dc4zd5.fsf@intel.com>
- <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
-Date: Wed, 04 Dec 2024 09:42:11 +0200
-Message-ID: <87v7vz3ne4.fsf@intel.com>
+	id 1tIkep-0000000BryI-0LDj;
+	Wed, 04 Dec 2024 08:22:53 +0000
+Received: from [172.16.12.69] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4ad26a51;
+	Wed, 4 Dec 2024 16:22:40 +0800 (GMT+08:00)
+Message-ID: <0f76db0b-3860-432e-a203-51ada754edd7@rock-chips.com>
+Date: Wed, 4 Dec 2024 16:22:24 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/3] dt-bindings: display: rockchip: Add schema for
+ RK3588 DW DSI2 controller
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20241203165450.1501219-1-heiko@sntech.de>
+ <20241203165450.1501219-3-heiko@sntech.de>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20241203165450.1501219-3-heiko@sntech.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkJKGlZPQ05OTh1JGR5DSEtWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	xVSktLVUpCS0tZBg++
+X-HM-Tid: 0a9390c3a48509d6kunm4ad26a51
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MEk6HRw5GjIuMwkuEx8VMise
+	AzoaCxRVSlVKTEhISEtLTk1JTE1LVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0tISTcG
+DKIM-Signature: a=rsa-sha256;
+	b=TAPD1f8FrzY6bmr10MqyHDoY5QJ80Wh6VhBXBw6Iig/0uuoRrXaXbst4bgNpUF/Q513M5PxDAwJMF04xHt/7EuHnvXgFjyNnqGA61iVaFJ9GAhdWhrQzZu2+7fxjTNeEizNHOCywYHueLz1GC+lOLiWMzWyP3UFSFpX+BaS7BBU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=q8GexcfsqDSq0Xf6Sj9VSbRCh6kFnCMa2Fvig5PVGyM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_234230_969575_A42E846E 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20241204_002251_715336_B35E8E46 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,40 +76,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 04 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
-> On Tue, Dec 03, 2024 at 04:25:58PM +0200, Jani Nikula wrote:
->> On Sun, 01 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
->> > +	drm_edid = drm_bridge_edid_read(bridge, connector);
->> > +	if (!drm_edid_valid(drm_edid)) {
->> 
->> What's the case this check is for?
->> 
->> My preference would be that bridge->funcs->edid_read() uses
->> drm_edid_read*() family of functions that do the checks and return the
->> EDID.
->> 
->> There are some cases that just allocate a blob and return it. Would be
->> nice if they could be converted, but in the mean time could use
->> drm_edid_valid() right there. Additional validity checks are redundant.
->
-> This was c&p from drm_bridge_connector_get_modes_edid(). If you think
-> that the check is redundant, could you please send a patch dropping the
-> check?
+Hi Heiko,
 
-Mmmh. It's just scary to *remove* them, and that's the reason I didn't
-want you to add one in the first place! :)
+On 12/4/24 00:54, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> The Display Serial Interface 2 (DSI-2) is part of a group of communication
+> protocols defined by the MIPI Alliance. The RK3588 implements this
+> specification in its two MIPI DSI-2 Host Controllers that are based on a
+> new Synopsis IP.
 
-BR,
-Jani.
+   Synopsys ?
 
-
--- 
-Jani Nikula, Intel
+> 
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>   .../rockchip/rockchip,rk3588-mipi-dsi2.yaml   | 119 ++++++++++++++++++
+>   1 file changed, 119 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+> new file mode 100644
+> index 000000000000..7c017e927223
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+> @@ -0,0 +1,119 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip specific extensions to the Synopsys Designware MIPI DSI2
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3588-mipi-dsi2
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 2
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pclk
+> +      - const: sys
+> +
+> +  rockchip,grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      This SoC uses GRF regs to switch between vopl/vopb.
+> +
+> +  phys:
+> +    maxItems: 1
+> +
+> +  phy-names:
+> +    const: dcphy
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    const: apb
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Input node to receive pixel data.
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: DSI output node to panel.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +required:
+> +  - compatible
+> +  - clocks
+> +  - clock-names
+> +  - rockchip,grf
+> +  - phys
+> +  - phy-names
+> +  - ports
+> +  - reg
+> +
+> +allOf:
+> +  - $ref: /schemas/display/dsi-controller.yaml#
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/power/rk3588-power.h>
+> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> +
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      dsi@fde20000 {
+> +        compatible = "rockchip,rk3588-mipi-dsi2";
+> +        reg = <0x0 0xfde20000 0x0 0x10000>;
+> +        interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&cru PCLK_DSIHOST0>, <&cru CLK_DSIHOST0>;
+> +        clock-names = "pclk", "sys";
+> +        resets = <&cru SRST_P_DSIHOST0>;
+> +        reset-names = "apb";
+> +        power-domains = <&power RK3588_PD_VOP>;
+> +        phys = <&mipidcphy0>;
+> +        phy-names = "dcphy";
+> +        rockchip,grf = <&vop_grf>;
+> +
+> +        ports {
+> +          #address-cells = <1>;
+> +          #size-cells = <0>;
+> +          dsi0_in: port@0 {
+> +            reg = <0>;
+> +          };
+> +
+> +          dsi0_out: port@1 {
+> +            reg = <1>;
+> +          };
+> +        };
+> +      };
+> +    };
 
 _______________________________________________
 Linux-rockchip mailing list
