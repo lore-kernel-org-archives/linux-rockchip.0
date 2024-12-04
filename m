@@ -4,64 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30657E7716B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 07:40:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA355E7716D
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 07:43:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7k4vJPw38gDp6zxM76rx+OXVNmYti3y1SKkugwiziq8=; b=Ik2WyYn3XxiZLv
-	7ABuN6F6XdJi2NRlsj2Bqpp4yWtMPEJI013EOs6WFTDhXQJz3A9mpR4Ihvx7JVKG7npjAre4sVh7J
-	zW7hJGge+0laAgxbQ1Yarl3CnximlzmUh7tcpI3dOu87ltmPdhofFTqAS2ebTYaXGwRYZQ9LQTjJq
-	WkOf70kCDTqI6vfQSfPVDyINKTI4FKPs/aDjOQ1WVZl/u9fmn7iqU4x2IKlh4Mdbp2CvdPDhYQnfM
-	W1DdBem1+N74WLBXyIcPRXFs2+RgU3O8NQVwrCpOKCPkoE8OMAFh8WXDVXO21c3rSjlBuwPmqmQUH
-	pQ9/mXDEtTQVlVlgaKCA==;
+	List-Owner; bh=UnepY5fWiKpNRGyNZjUCr7djFj6XW/xscxdJyiqG4XQ=; b=12GLfpxYWX3PXS
+	FhGWrL1GX74b3Qo0jtrDyQcXgQZvh2DsWmY+qffk49bwCCbrvtoiMnGQnKL1aPiiarovZgSgqO7G8
+	mNZ2pKyPPasTB+74Egg4T6B+5XmlSLLq3dTRPXm8jsJTFiPdRNtLHXdArgXBKvv6YWc86zAdo8rly
+	CFN8ShyuGI9Fe3jkghpPa3rKjO9OXA+L5dNztzJXfKRf3+2idbncHVXvfhGFNbi6GGNBqCmlP91Bf
+	vnKYPgPwD6kn0eAJ+Keb1XUBe01eXGFTq4HOgqgPbUOG14HvydZ3aBrm4BR2U2FFFiyIZyjo9nS+u
+	aWkLNbuKlVBykl0hiQog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIk03-0000000Bjqt-02Bo;
-	Wed, 04 Dec 2024 07:40:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tIk2t-0000000BkXJ-2GxW;
+	Wed, 04 Dec 2024 07:43:39 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIjz1-0000000Bjja-0yav;
-	Wed, 04 Dec 2024 07:39:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BA7D45C60F0;
-	Wed,  4 Dec 2024 07:38:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D646C4CED1;
-	Wed,  4 Dec 2024 07:39:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733297978;
-	bh=OZXyxFp5uWXU4+gtNDcxN94xsKibQqokm4SOMt4Xt5Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lyg8RjUGEl2gykO3cMw2tW7YE9qGqj3QwcLCyiSYGF8nZakDz4PXSmeILOTBxhian
-	 nTYR9rhzSDSt5uTlCPM/pP6n2XiPQMn8tB3oPMAZic+P4gyILBUzUZHMElyT9qmUUW
-	 hJr8S2Twk6DORz+F+XqCe3Tf3OvXY0txcULPWNW/vANxL5EnEg/d07W2hGt3b860ID
-	 VqFKGOqt+kTmlRbvkxxdBmdzlG3YNEEW72B/Rj9oU5lb5apCGLOAsLqMLZhyOiggX0
-	 w050em0y8RPkWSFtU6v/tfkAD5eG2er6wPX5c5Q1agAQ7GVKYLrt951bkKGLd7WSQZ
-	 3fEA8Rr7Rvpqg==
-Date: Wed, 4 Dec 2024 08:39:34 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, 
-	sebastian.reichel@collabora.com, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	dse@thaumatec.com, Heiko Stuebner <heiko.stuebner@cherry.de>, 
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v5 1/2] dt-bindings: phy: Add Rockchip MIPI C-/D-PHY
- schema
-Message-ID: <mdlcm57lway2wqwh7tp6bj6mi3nlwuaeadbsmgx3h6kcfdisq5@76ikce4yqfs4>
-References: <20241203164934.1500616-1-heiko@sntech.de>
- <20241203164934.1500616-2-heiko@sntech.de>
+	id 1tIk1m-0000000Bk4Q-3kCe;
+	Wed, 04 Dec 2024 07:42:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1733298151; x=1764834151;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=gK06+f1C0mBtgYKTZ09XhG1sOVFjumSjIgGeM6ZwmU0=;
+  b=JbmURXo97MbGQlWyxfmRCwyqoTszCrXRO8NWX3FclIKkgp/Y5pqcl8i9
+   eE5MYVfHaxgF9JWViH9SZjr+R1GtjPUsxFX+iUtJDDXg81VrXagwWDsli
+   zO414RAROg6QxSfIAMPrtPtGJb/LKOOpKhGvUpuimo4z6PndyOSchTl39
+   PHSteGHz+D0phc4UqrJZdHnJobQUTNw+IBrmdHuFGqPietTjvG9kM07sI
+   ge9Op9rMh0paJEouvFIB7hSqkx9dWwmyEukrSpDzmjq5ToSihG9/DCead
+   Zbrmuu9m4EzR7JQEpc6utFgc4/1h8+c6It/3+hURQIbZ3fMBxmmTNacjA
+   Q==;
+X-CSE-ConnectionGUID: /KztvD7VT7CcUnw2maxGuA==
+X-CSE-MsgGUID: efYmaFQSTo+GqjtCESHPnA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11275"; a="21132177"
+X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; 
+   d="scan'208";a="21132177"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 23:42:27 -0800
+X-CSE-ConnectionGUID: ztyXjIeiR26vOG8EeEOB9Q==
+X-CSE-MsgGUID: MiRNI+71Qr6pKR5u1cWLig==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; 
+   d="scan'208";a="131139278"
+Received: from mwiniars-desk2.ger.corp.intel.com (HELO localhost) ([10.245.246.205])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Dec 2024 23:42:14 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
+ Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
+ Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav
+ Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE
+ <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim
+ <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?=
+ <heiko@sntech.de>, Andy
+ Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, Dave Stevenson
+ <dave.stevenson@raspberrypi.com>, =?utf-8?Q?Ma=C3=ADra?= Canal
+ <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 7/9] drm/bridge_connector: hook
+ drm_atomic_helper_connector_hdmi_update_edid()
+In-Reply-To: <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
+ <87a5dc4zd5.fsf@intel.com>
+ <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
+Date: Wed, 04 Dec 2024 09:42:11 +0200
+Message-ID: <87v7vz3ne4.fsf@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241203164934.1500616-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241203_233939_311307_9D3B36B5 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241203_234230_969575_A42E846E 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +112,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 03, 2024 at 05:49:31PM +0100, Heiko Stuebner wrote:
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3576-mipi-dcphy
-> +      - rockchip,rk3588-mipi-dcphy
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#phy-cells":
-> +    const: 1
-> +    description: |
-> +      Argument is mode to operate in. Supported modes are:
-> +        - PHY_TYPE_DPHY
-> +        - PHY_TYPE_CPHY
-> +      See include/dt-bindings/phy/phy.h for constants.
+On Wed, 04 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> On Tue, Dec 03, 2024 at 04:25:58PM +0200, Jani Nikula wrote:
+>> On Sun, 01 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+>> > +	drm_edid = drm_bridge_edid_read(bridge, connector);
+>> > +	if (!drm_edid_valid(drm_edid)) {
+>> 
+>> What's the case this check is for?
+>> 
+>> My preference would be that bridge->funcs->edid_read() uses
+>> drm_edid_read*() family of functions that do the checks and return the
+>> EDID.
+>> 
+>> There are some cases that just allocate a blob and return it. Would be
+>> nice if they could be converted, but in the mean time could use
+>> drm_edid_valid() right there. Additional validity checks are redundant.
+>
+> This was c&p from drm_bridge_connector_get_modes_edid(). If you think
+> that the check is redundant, could you please send a patch dropping the
+> check?
+
+Mmmh. It's just scary to *remove* them, and that's the reason I didn't
+want you to add one in the first place! :)
+
+BR,
+Jani.
 
 
-That's the only difference from version I gave review. It is approved
-style of passing phy type/mode, so adding this is not valid reason to
-drop my review tag and request re-review.
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
+-- 
+Jani Nikula, Intel
 
 _______________________________________________
 Linux-rockchip mailing list
