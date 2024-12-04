@@ -4,54 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBCBAE7716D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 17:07:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA195E7716F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Dec 2024 23:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L2to8792CCNYXUX1ADz/3X5ulJ1jmgAhPtSSS6+G0aY=; b=o8mfdifM7gV3Z8
-	j+c2JaDeDjJKO1FScxlnU5i0K9a0hDPjI+XFgxX8to8IGt+Qr1fpef5deCPTzAqAZHH5yGZyb5Jr3
-	oOjOpQBecK9AC7rTboqHHLHd5PuVOWfB7kcF9Om2W6YkhB/YT4N8Ku91ihgXQiL9S92ZRznatlfn8
-	SwBv0FZ5dPFuGlXM9LjuXFHAJeqMw/nb7t8ey7fWHATGOww4FwkJ/93JNi/MkMi42d3gCgYwMQa5S
-	ya4vEdEdREdd6uv7eTwHdc+VxxTY45Z/1h2dhgiDGdLVRBeLIuP9OJW1d9bQoNP3eXN4F4DAGO9sV
-	SkhM7jWqKWq4Eu9gyM8w==;
+	List-Owner; bh=I0TqE9ZkJAB3gPN/vY2FQivbmnnDq0IXS3xKCVIXmNE=; b=DJVYUQG/IPKke0
+	IqjHT+PLM7eTyeiNuTOVpG9ADryNrXMoW+i+6kfhVXOJD8xNT82KTSufIcgvynaUlWvjnWQOFycTD
+	YADvu4ra/GNvkdJ/bjKDtXg2R7rm9ifdvWe0/g2iWC3mqORmLbD3D1XbojN8b07XGk6x1S+lO1/0L
+	rXjDgjD3YUK8hu42ps49+99nGmQn9vmF4ub48mh31BFafZiHJ5qskguGD7T9fXjinpy/wPwzPXv+V
+	/gCIS7SCmyLgK70KMJ6MwWE3kd4lCnkZnmgHqdgZcNk0y4vdPZOCsVsp5yNeqtzDW9UW6+8Uhvid/
+	UZs8YK8xPzKyAkQqjcwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsq9-0000000DI6O-0OuR;
-	Wed, 04 Dec 2024 17:07:05 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tIyct-0000000E7If-3iyj;
+	Wed, 04 Dec 2024 23:17:47 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tIsoK-0000000DHlW-2wDP;
-	Wed, 04 Dec 2024 17:05:15 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E82114D4;
-	Wed,  4 Dec 2024 18:04:39 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1733331880;
-	bh=78gxj/BzoWW/qirjW9VkHtBeuxgnIovOYGaNqmENlXM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ORW1M6NSD/L10kyaJaBu69hYJhJ+ZqX0mJM0fy66bzh7YHxRWFubGNkNF7eKLB1KR
-	 9CNIPWNKHYNh8kV+TjHEtQ3xd/UR78LQvYnDJUWm1qM+Ji7XmZeIZOoU6PWiZ0F3Pi
-	 IJoycTEnrm+Kr9CxYCPs4C2ThkNRheyOw3EmO5/0=
-Date: Wed, 4 Dec 2024 19:04:56 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-Cc: dafna@fastmail.com, linux-media@vger.kernel.org, mchehab@kernel.org,
-	heiko@sntech.de, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 media-next] media: rkisp1: Fix unused value issue
-Message-ID: <20241204170456.GA16224@pendragon.ideasonboard.com>
-References: <20241119072653.72260-1-dheeraj.linuxdev@gmail.com>
- <20241119075944.GA31681@pendragon.ideasonboard.com>
+	id 1tIycr-0000000E7HY-2BBf
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Dec 2024 23:17:46 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-53e0844ee50so355577e87.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 04 Dec 2024 15:17:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733354264; x=1733959064; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=R+qyWMAaxSXjS/GuoQtdsJ9zo8e90abOj5J8SrRL65M=;
+        b=xDzEuxtplgzfeXArIEdj+zqE2bvEjcglxjUhwJNmGOlLGVh4xsA4mfMH04hO0pp83+
+         suQsp21xwOrHYn+ayCG3c3M/jw7d78Sc3GQvbL0XjTcgunhfqtqgz58lwHqtnOBFr/DC
+         7xMPry0GcNmzw6zz3Xg5t6u1mvDMKK6NPBQkhvF/2jJDEPJtIZ7U3++SjzQEKCbXMs0U
+         z5244R9NY0ZJWlNg+n0HkwoX+v3Y5zIbKCr8bKOmx5cYfGbhDoN707KapsDcWcgL/XGG
+         Om4E/Twr4leDu1z8p0gF/KCpGjhtVsBs2HnR88pLoCH+UDxzqv506HYd3NSRu1IQb+az
+         2HSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733354264; x=1733959064;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=R+qyWMAaxSXjS/GuoQtdsJ9zo8e90abOj5J8SrRL65M=;
+        b=jImXtg0cc98/BXGVbt/v48Mp3qKmiUXV3IrlZLB216M1mfVVl2ObRfNFEIGjScVLWB
+         urmo25duy4f049hfFLy1bQmhE0V7UQ62ELOvTn5n0JhsjpBKN/MJMcA03uKJ7d/zk/IV
+         Kb+Ej/+MGhhF4FdTzQlvgVhexdKORPXYaWBeDZZhJ1e7+R4JE1zdD+MYwRCwoRfU3XY0
+         lMFCnYrVV/5l7VPKCfNfI92xHpLu0BHTuNppXg4BpF7bp+hSmB8Z49xy8zTnZQ+NHXiA
+         eMej5KMI01Ec5ErAu1uVUgES26oHqSuVZLb+FFCzwcxD6fMR09XrrGj8Wqxz1sMaJUaK
+         3xcQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVUrpcClwdtl+mmQH38JV4kOOEP70CuZDMQ9iAERbDPqtkzSLHPneAHMkj62fgLXnN8lmgHCOC8aEi+FGaJug==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLATfxkbgWWnHEJomxJpavuuydW/ygJKISdH64xCYX7+1Rejn+
+	N+lI+2vK2X+r2vYYLoEXCJ49IhprnXjbureQ6I0e49C4CTIBoLGUF7tYxPi3QSc=
+X-Gm-Gg: ASbGnctJe51m7owFBrrXbn4TsdcrGghZAkEQqT5UlRZzc08i3Hy7SeoNI8O/yqDLRmQ
+	go4Y2tT0yXVTFyQRqyQ2yNnZf3sFOE0de1X3Z+djIEBa+EAN05B7W5j84nqvSnv8lpHZIUewXn/
+	lJJ7BLseLLV4q0A5R9RWlOxcyPqL0TGdtmBH8gB3GBjX0mwjedSZpd0ZN3wVW/CEn7Eo2uiGqoC
+	v6Ab8m8vPNqDMBVI+CEHQP+UOlr0Kx0euh5IIaP79qMB6xrFK4/2vanfuX+ILxEg+RKFfx2zLh4
+	jVoXRQDsQTA1ne3dUoMX8Auv3pBb/g==
+X-Google-Smtp-Source: AGHT+IG2aNoUrJvkerXSq3eWJ+qwjRlvZ17m+biwTB/m1eLy8NPmwfbxly/t8CsrnbMCJEk1wfQi/Q==
+X-Received: by 2002:a05:6512:3f16:b0:53d:dd09:124a with SMTP id 2adb3069b0e04-53e129ed245mr3412222e87.8.1733354263629;
+        Wed, 04 Dec 2024 15:17:43 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53e229ca4c2sm31823e87.269.2024.12.04.15.17.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Dec 2024 15:17:42 -0800 (PST)
+Date: Thu, 5 Dec 2024 01:17:39 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 7/9] drm/bridge_connector: hook
+ drm_atomic_helper_connector_hdmi_update_edid()
+Message-ID: <3oz2k3ywwdkxhi4t4setfqjl54yzxg3nxe7upxwl4syyyygf42@3ynkabu2bmvs>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-7-b5316e82f61a@linaro.org>
+ <87a5dc4zd5.fsf@intel.com>
+ <txzri7x4pdeakx4juandk3hfhsbx3dhlulxfuehqlmrr7b3wpw@jaunqktsro6x>
+ <87v7vz3ne4.fsf@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241119075944.GA31681@pendragon.ideasonboard.com>
+In-Reply-To: <87v7vz3ne4.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241204_090512_888904_9D5D181F 
-X-CRM114-Status: GOOD (  28.29  )
+X-CRM114-CacheID: sfid-20241204_151745_569909_BDDDADEA 
+X-CRM114-Status: GOOD (  24.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,66 +121,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 19, 2024 at 09:59:44AM +0200, Laurent Pinchart wrote:
-> Hi Dheeraj,
+On Wed, Dec 04, 2024 at 09:42:11AM +0200, Jani Nikula wrote:
+> On Wed, 04 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> > On Tue, Dec 03, 2024 at 04:25:58PM +0200, Jani Nikula wrote:
+> >> On Sun, 01 Dec 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> >> > +	drm_edid = drm_bridge_edid_read(bridge, connector);
+> >> > +	if (!drm_edid_valid(drm_edid)) {
+> >> 
+> >> What's the case this check is for?
+> >> 
+> >> My preference would be that bridge->funcs->edid_read() uses
+> >> drm_edid_read*() family of functions that do the checks and return the
+> >> EDID.
+> >> 
+> >> There are some cases that just allocate a blob and return it. Would be
+> >> nice if they could be converted, but in the mean time could use
+> >> drm_edid_valid() right there. Additional validity checks are redundant.
+> >
+> > This was c&p from drm_bridge_connector_get_modes_edid(). If you think
+> > that the check is redundant, could you please send a patch dropping the
+> > check?
 > 
-> Thank you for the patch.
-> 
-> On Tue, Nov 19, 2024 at 12:56:53PM +0530, Dheeraj Reddy Jonnalagadda wrote:
-> > This commit fixes an unused value issue detected by Coverity (CID
-> > 1519008). The error condition for the invalid MIPI CSI-2 is not
-> > properly handled as the break statement would only exit the switch block
-> > and not the entire loop. Fixed this by returning the error immediately
-> > after the switch block.
-> 
-> The patch doesn't "return immediately". You can write "Fix this by
-> breaking from the look immediately after the switch block when an error
-> occurs." or something similar.
-> 
-> > 'Fixes: 8d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver
-> > optional")'
-> 
-> The Fixes tag should be formatted on a single line, without outer
-> quotes, and without a blank line between it and the Signed-off-by line:
-> 
-> Fixes: 8d4f126fde89 ("media: rkisp1: Make the internal CSI-2 receiver optional")
+> Mmmh. It's just scary to *remove* them, and that's the reason I didn't
+> want you to add one in the first place! :)
 
-That commit ID doesn't exist in the git history. The commit
-corresponding to the message is 7d4f126fde89. I'll update the commit
-message accordingly.
-
-> > Signed-off-by: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-> 
-> I can update the commit message when applying the patch, there's no need
-> to submit a v5, unless if you want to. Please let me know if I should
-> take this version and update the commit message, or if you will send a
-> v5.
-> 
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> 
-> > ---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > index dd114ab77800..9ad5026ab10a 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > @@ -228,6 +228,9 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> >  			break;
-> >  		}
-> >  
-> > +		if (ret)
-> > +			break;
-> > +
-> >  		/* Parse the endpoint and validate the bus type. */
-> >  		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
-> >  		if (ret) {
+Ack
 
 -- 
-Regards,
-
-Laurent Pinchart
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
