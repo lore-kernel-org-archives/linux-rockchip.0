@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A86DE77170
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 18:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800B9E7716E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 18:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FmkWP+hK7bzdURNMXDJbarRIFyIcDE9I0ZmEkH4EAB0=; b=nTXBvn1rUeTwemdbwTrpzbeSLs
-	lvGdMkfd58ak/655LEX+m0en5/QKzdtzOfWE5Hm/EYqe4CiqNTvjlb/fMM8ZxjLUXAaJ/0EmS/gW/
-	pHadARigESGOV/tSupuCYss5IhTu4TBEpUpF+LzFkOWGcHS6tbk7kbFgACYjHzdcmK2iTmvyCn6Dj
-	y7l7xZCgqoxMTGiY0EO02sd0Z4YwV1yreB+31iGRIClifWQi7EvuV+9bQTt86yRv/ccBc7TQwC5rp
-	AzJRN4P1D3Gyx18akMKATyjOajLupoeEJ1umnadFZl0Pu5dOW3NtHebCKpB3/0AlDbWq2rxhXXR0M
-	OeQzxM4A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UJanR+CYLSeTEIogpXSODVmntElaflcaw7phaMEmqBo=; b=ynLT1jxa0X42Uq
+	pk6n1Nw8K3sJ0jeT65w7GwSMRmi0BBizCpO0/AF4FypmaDJ64Sm/mVMYMnGMxUsZbTzXxt7FPc1Z0
+	Ab93ysF7r/HW+1LAS4nzBvsR85sAnk+Vn125iULHhBCJt48wDljVcgUTnWXccYjC2KjEuOCqgcMSk
+	X3WnnPH0Fq+viQXZEr8zIqzgGxqHJ/EXb+tKi1EkhFYhZdp2gfyydsFo0Vqz24Jy3oyKLaOjdp3wC
+	bxjRkkVfYr1sn6l5hmcods/+hdxziiMnpRqCZh9V4D7Ocq61U4CXpgXSFQofFxwKIDIMgBDMkw3wb
+	O3iBWcvxJ+U2HIUdD+Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJGHu-0000000H4Kf-1LTu;
-	Thu, 05 Dec 2024 18:09:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tJGdy-0000000H7gb-3lR2;
+	Thu, 05 Dec 2024 18:32:06 +0000
+Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJGDX-0000000H3Xl-3iXQ;
-	Thu, 05 Dec 2024 18:04:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1733421881; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CD7IQ9sWFL7LplVEoEnc0NaZmOuF/y0rMnTPwHbvX/n0+Wy1kmwvi2g/Dmov9FV8tSDE6QihziJhYSLNZUJIGVhVNk2b0nR9aTGiX44aNWWKy1lrT+7YlppBJXhurBP2IwpVlv3dAli0nEGsKSGcrIq/cdZkDcSQs+HR0ntm0VY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1733421881; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tXsmplCWIfDU1nslWwIzWjXlT1Uhwo23G/KzmcVHbWA=; 
-	b=AOBAnGEz+5pBuWHF1fr3zRWsZvFOUonvoDDj1zKnmNeTuEvDsb5rbbpXSSZbUM8mcJD2R8EgDMRCzkTyXAIH311txt422DYrmbHPLfSsLQ8S5H6XMuInc+HBX2skjSTMg/DQObGD7U+10Ndm+xtIQRcnxjQ8vPPUMUnSTNLX2ww=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733421881;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=tXsmplCWIfDU1nslWwIzWjXlT1Uhwo23G/KzmcVHbWA=;
-	b=SLgIBSPyZrlSRVdtdt8u5wyKkpez+z41A5lkHP/IjxRXWMXULNC2fPxqpO2qn4xh
-	Q69s3f7XeGip3ZO8f3afDchahlQ4n5yTM9V4p0A5MS/dHduVGpSKG9lBDjEoayEfSxa
-	Jxjg8ssPj3vD6lBlYGrC2szq5y5Kqo8Hp0T7Ceqk=
-Received: by mx.zohomail.com with SMTPS id 1733421877901470.7310984148362;
-	Thu, 5 Dec 2024 10:04:37 -0800 (PST)
-Received: by mercury (Postfix, from userid 1000)
-	id 563EF10604B0; Thu, 05 Dec 2024 19:04:32 +0100 (CET)
-Date: Thu, 5 Dec 2024 19:04:32 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
- for eDP mode
-Message-ID: <5ncdog66jtc4s7vxk2yt4jkknf2es3whvweuqmrxbot3azi5ge@t6s3xadkiasp>
-References: <20241127075157.856029-1-damon.ding@rock-chips.com>
- <2131853.KlZ2vcFHjT@diego>
- <6e1f35c0-5ea8-414f-b3ea-4e7222c605ef@rock-chips.com>
- <2886747.Y6S9NjorxK@diego>
- <h4giob7bcrh7qmtepti6huym2llw4ujfmeff76vrgpahb5zy6x@dz6zghsifww5>
- <2342f342-672c-447e-90d8-674b748af6a4@rock-chips.com>
- <abzu2chif2g3urxoqbm3gbe6cciexbmqvn44qezrx4hgllfkkn@7bzi5jl3stqe>
- <42035ebe-09b7-4005-912a-8ec72d5dabcc@rock-chips.com>
+	id 1tJGcP-0000000H7OO-1YGH
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Dec 2024 18:30:30 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
+	s=key1; t=1733423425;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=TkFcQWL7xs7GRrweqW2QeL14ugcBYgGFOAcV+eRKS1o=;
+	b=AUey5L7yyC5O5EmErxvxqKQAIN6CbvGyk2w5kVwJeC7t2tWMHbAr3lE4XgHzWBRLqBaNDK
+	RvbF0I6c69aNMkXECJ+gTu93x9duEeog1AdxrgbKabazA+XmG5R+snMPrmY6ZtwW9G3b5j
+	3n/AVqLM3RCex7PP7zNFaKjJeXFobhDCE+NaUuCev5v5S0NM6ngv9qax+r7vs0LZgQm46Q
+	p4q4OgzVFhBCDzSuzc5s7M+zRIXbunAoFUJ2POBa5wbEcx0Z5vk/8oBJprKTlPkRk25DcV
+	g54vr7nvD3jdCkG78ZXQQjLogMil3goZZBAS5V8cPsrh/rAV4f/xqq4P61uLoA==
+From: Val Packett <val@packett.cool>
+To: 
+Cc: Val Packett <val@packett.cool>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 1/2] dt-bindings: clock: rk3188-common: add PCLK_CIF0/PCLK_CIF1
+Date: Thu,  5 Dec 2024 15:29:35 -0300
+Message-ID: <20241205182954.5346-1-val@packett.cool>
 MIME-Version: 1.0
-In-Reply-To: <42035ebe-09b7-4005-912a-8ec72d5dabcc@rock-chips.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/233.339.97
-X-ZohoMailClient: External
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_100447_993982_6F726B2A 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20241205_103029_784693_285A501C 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,89 +73,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Type: multipart/mixed; boundary="===============4367886932818023883=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add missing clock IDs for the CIF (Camera InterFace) blocks
+on the RK3188/RK3066.
 
---===============4367886932818023883==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tgjajudtqqajoprm"
-Content-Disposition: inline
+Signed-off-by: Val Packett <val@packett.cool>
+---
 
+v2: split dt-bindings into separate patch
+    (oops, thought that only applies to actual yaml and not headers)
 
---tgjajudtqqajoprm
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support
- for eDP mode
-MIME-Version: 1.0
+ include/dt-bindings/clock/rk3188-cru-common.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Hello Damon,
+diff --git a/include/dt-bindings/clock/rk3188-cru-common.h b/include/dt-bindings/clock/rk3188-cru-common.h
+index 01e14ab252a7..dd988cc9d582 100644
+--- a/include/dt-bindings/clock/rk3188-cru-common.h
++++ b/include/dt-bindings/clock/rk3188-cru-common.h
+@@ -103,6 +103,8 @@
+ #define PCLK_PERI		351
+ #define PCLK_DDRUPCTL		352
+ #define PCLK_PUBL		353
++#define PCLK_CIF0		354
++#define PCLK_CIF1		355
+ 
+ /* hclk gates */
+ #define HCLK_SDMMC		448
+-- 
+2.47.1
 
-On Thu, Dec 05, 2024 at 09:13:33AM +0800, Damon Ding wrote:
-> Firstly, the term "the HDMI and eDP dynamic switching" can be somewhat
-> misleading, because the eDP usually does not support hot plug. The RK3588
-> eDP is often used as DP, and it actually supports DP 1.2. Therefore, it is
-> better to use the "the HDMI and DP dynamic switching" description.
-
-The part unclear to me is how the dynamic switching is supposed to
-happen. Looking at the TRM the hotplug detect signals also seem to be
-shared between HDMI and eDP. Can the RK3588S EVB distinguish if HDMI
-or eDP has been plugged, or does this require some user interaction
-to set the right mode?
-
-> Indeed, the devm_phy_get(dp->dev, "dp") and devm_of_phy_get_by_index() wi=
-ll
-> help to get the phy reference in .probe() or .bind().
->=20
-> However, the phy_set_mode() may be still needed in the HDMI and DP dynamic
-> switching application scenarios. We need the enum phy_mode
-> PHY_MODE_DP/PHY_MODE_HDMI to differentiate the configuration processes in
-> .power_on(), .power_off() and .configure() of struct phy_ops, which will =
-be
-> called in conjunction with plugging in and unplugging an HDMI or DP cable.
-
-I suppose you could fetch the PHY in power_on() and release it in
-power_off(). But using phy_set_mode() might indeed be better here.
-
--- Sebastian
-
---tgjajudtqqajoprm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdR6ykACgkQ2O7X88g7
-+pqINw/8CISqq7TtaVuYjbUOVbMUju+XZCYIgQ86pXkRiTB8jbo9FSE0v+9rD3B2
-oxzyPpwv6e3CW9hJHsPgmeUz+zqzwa+gzHDTtdyapfOhrDHbALNBaskJavvFxjAG
-rXs/kJaga35Z1AtGug6P//VQt5jOKx6VjBe51mQqphngJngD4gW2xr7Jh3zjSuJU
-uwx7QiMwxdT2ysmQkwddEXm5B8Wjn4NqmxehkLSQWF+gi9P0al9uuYua17vbz5OA
-sP3mpDYUsvPVUwPjYO+8c2eGuKFCIAwZBS01v1TtpjeEMCLqIZAAVcGpx1jwN2H/
-XIFLQaf06CvqvB4IqErNgoXfqVV/B/X0kCnHVEfu0AD8yrZ7sT7EVo/FtFF8/DtD
-yd7p3/+x+7z34LPUf6uhpjzyyko5gPZpFXILYSFACxhDO8ayX95PEQazQbmGnG0U
-pLanIRga3lIxoCaGXaFetBHOCeSiqWxBs9SPO7r3gWYQmBv15VPLhR4q+9lSjoFT
-O25niK3n7hgpuT40FfAcLgnftvycNIrTK9SWQbEeOKGH0G2Rq1rdk74zcgmlnQEM
-DjucMFzuoftYsJlq8HN2nPrwr7P07N6F0eFapyTH3xfGj3O1zbKroiosXZEFJDTo
-tl/VwfSg8bbGG/Zbc+/D+ZIvD+ovCWItkKoKJqB7j+lZJmbCzvc=
-=0mlA
------END PGP SIGNATURE-----
-
---tgjajudtqqajoprm--
-
-
---===============4367886932818023883==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4367886932818023883==--
-
