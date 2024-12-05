@@ -4,78 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E24B8E77171
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 08:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D8FE7716C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 09:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KRhBmzGy0+cEL9wpw7XwEzExVQGZjV4O48zPhqKHjfg=; b=c4Ws7WKxtw+x2q
-	QJ7aKdY9OLrQQW9DQuwBLQtMtzEXwLMaNU6LeM+BwxogSDf3y0IsrKIs0/yM5j8OFgDwquqI5SwrH
-	YsWOVogYVjoEfzyqwZ6+QKj6Ptw5bbn68cQ9p94r24dYADs7ZQIjbzqcUYfOLir0UGm//S1AjkIdZ
-	TIYip5U33ZjojBcIE9IbBLhH6EteFRxOIwc+yNe0VESf5jdxOIlnaa6WfWxeOB2ySUcXhK4ggYlAm
-	R9ksfyg9iKq5/EWG4bC4OSR1v7g34A+yyZUQMZrUoIjlDmldYJV9KZUXpcVkndgs3Vh3c8Qa6OZ/s
-	nWwpnWT0y6CedxDdeY+g==;
+	List-Owner; bh=xj67plf6cKawEEgQzcSxvEk5n98vHJYrv0EOoe7UZEo=; b=nUcfQJfjH8jVb1
+	4jsZFaWcoEHce9rttikgFCujiBuyCi5sr+BKLXvMBdJ/ei1rxGfQ4y+QWf5Bda+nZu3PWer1NekNk
+	txPyncPbc7eo0XNwFc6FtBgyG8K8gxl+TmL6LQAXT2TkL7R+M6Ny28HlrMHGc/4D3l26K8sPskOVJ
+	Zf7QaEHpCkWqyvUvK/9sX08uNoqxGS/Z2Qa+g6Ec9r4xeqQE16BXk6+eOgsr/Yo/YmPB/m16ouNYr
+	pKJHWYr1SsjiKLkke7ZddGsgXfkmdBEoopbP/ydyqIA7b6z14sskN7LvWHu8vQejFOgzQYrOj8DgG
+	Qpc4OrPjox8cYktRGv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ7fd-0000000FFms-1CVl;
-	Thu, 05 Dec 2024 08:57:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tJ7uk-0000000FJbI-1se3;
+	Thu, 05 Dec 2024 09:12:50 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ7cw-0000000FFEZ-2uCr;
-	Thu, 05 Dec 2024 08:54:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=IcsDxMoiN7TNJEZpNWOj8buoqn0gV394uJbXKXQCWiU=; b=k8jP2WcugNo+/MQCVJYO3fIkhb
-	3j/oEHrSZqj2AAkSxz9AhN98yp3oMZrlej7KKPK3JVYTXM4YfeRP8qspP0FaEihB6wviCExGlDMaR
-	lsOAIkY5tjia1/V5ndmmNmNjFYcyHshqcLNueCpMawZiAIUZJL+7OvAS64Xu+VNLpMIwIbrWjvnMv
-	efCtCVeM9qkX43oKq5D4jpr8Gdd96UQNsJn4Djli72NsRerZByogf8BRacfwCsEHEDTOa5pM3cb9f
-	jDxt3rYm/fzlpZiofwZsb8eShVHPKVzh7bvcZaoQ3IUeEefzGbKgL8GpZtEPcawH56k7O6Aad6Vwn
-	BBApXpgg==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ7ct-00000002oKm-2LyV;
-	Thu, 05 Dec 2024 08:54:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=IcsDxMoiN7TNJEZpNWOj8buoqn0gV394uJbXKXQCWiU=; b=cO1Bn9l+peVZ5Vp9k8peqnNgHR
-	aIBl+/9vunapUW8U+SeqbA2ARNPeIj/OnX+tsUTfGYNembEi14mWx+i7abMncCvpjz1UfR7yFbDvH
-	OBLv0HW+HWm0ObwTS97O+2SBqOryjFkK+f/RXloYT8M3Ma0wzTQ/dvYhb0uTzsMcrALxBHjQ0B9m/
-	VeTpNrYXoNJbNk+LKqtP79AT9NMzLN0EvmEjE2IYpHR57+fUcXJ3zczSieD8MMBqhEBubBUKIFYLi
-	G1yYOzNlqoKvPR3Oib9JptAQA0I6zlLL5T6acz445OFfnYoFepSKmZhc4pNf0p0KVZfw4DnMTJi5s
-	fckR/8gQ==;
-Received: from i5e86190f.versanet.de ([94.134.25.15] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tJ7cg-0001mo-UZ; Thu, 05 Dec 2024 09:54:10 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: hjc@rock-chips.com, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Piotr Zalewski <pZ010001011111@proton.me>
-Cc: skhan@linuxfoundation.org, Piotr Zalewski <pZ010001011111@proton.me>,
- Daniel Stone <daniel@fooishbar.org>, Dragan Simic <dsimic@manjaro.org>,
- Diederik de Haas <didi.debian@cknow.org>
-Subject: Re: [PATCH v7] rockchip/drm: vop2: add support for gamma LUT
-Date: Thu, 05 Dec 2024 09:54:09 +0100
-Message-ID: <12938960.VsHLxoZxqI@diego>
-In-Reply-To: <9Rp0NJW2QG5qDduowVaialZWN6xTe9KJFciu7Q2LERJZQXsUgFvMGXfcFaNznIEJEBpZeOdZPuL4fxOEFduaSJLuQJ3cIvN-fx2lEzYSBKE=@proton.me>
-References: <20241101185545.559090-3-pZ010001011111@proton.me>
- <9Rp0NJW2QG5qDduowVaialZWN6xTe9KJFciu7Q2LERJZQXsUgFvMGXfcFaNznIEJEBpZeOdZPuL4fxOEFduaSJLuQJ3cIvN-fx2lEzYSBKE=@proton.me>
+	id 1tJ7tJ-0000000FJCW-3St9;
+	Thu, 05 Dec 2024 09:11:22 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2ffbf4580cbso6013441fa.2;
+        Thu, 05 Dec 2024 01:11:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733389879; x=1733994679; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=g70770pHl/BwAdcq7mSKVqhSUdxEsRQhDHwPhr+/2R0=;
+        b=IyiQkPETdNXX71J74BrYBBp/nxvvPc9yp0X5RNjD7p+XPp5dS3szy63W06pZidl5Ps
+         VN3Dh7nZT90J2XeCXM6shYoX/mOdiWtxmNssOO+Tq5lMjPzb1+EOj397WpZEcLCLiT6O
+         XjCsv1RYJqqkgNMnKADQIjax+HZBm/9eJe8WfDogKATC+W0kxefEl4+EhxsOBNf0elvv
+         gXskE8nJ2zp1jF8qIU09/1fTuvteF2xP6EqO4Fn9iszReC68nSWmt6cFC7nMrxPtThAL
+         nrp7n4A5i/ibkksuD24x0i3jiGbcpZy+ikeeSR2YsK79TljcbuD0FlKcXYu/WGNsi+VZ
+         s+vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733389879; x=1733994679;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=g70770pHl/BwAdcq7mSKVqhSUdxEsRQhDHwPhr+/2R0=;
+        b=vsgntexTs2bOUBP+a4VcRvC6GN7pxoK7jmSp8A5PomEFWPaeRmEsm1/w6YNOWP2Dnf
+         jDVvRnyhHPIf1DoP90Ht8KdqvL0cIT0qfJS1xWsL17K4xLnxX/3TNiuEkg4Q77s/HgVV
+         cxLjSso6uaZ1pnk/GfbkJBQhA4Z0hP03VQYlXLKMumVoAi9I+ANotk2k2UwiMj0vgOKw
+         7vhXagGB3oCbbLQBdMIXyWNKSHGDVMciq3GqJpUW5vX/ovesFg4erDVX2FAcz0PXd0AM
+         6I6Lx14FskbBa5gbDj6aBpbZvL6ridnyJLKnA76eJx6QA7oTWeOZ7XjhOI/Ddo0Klw1I
+         SdyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX/aoiUWP4Hvc4xPrtpuex9hbj/46BVIHCrfakIpW5I5n9pJJAAJx3o0mIwHkxFj0XMUJfsVwb4SGT0JUxo2OQ=@lists.infradead.org, AJvYcCX0fvt/WA5KDQ4A9C8YnVp9hgM1P9q2DmHAIKkjenz07MeApD6u3MQoSrfUp9ezDDvwLWwVgV7C0+g15rHSF3h0@lists.infradead.org
+X-Gm-Message-State: AOJu0YzJMZzr0foAcqRX97gSblwvOu9Ca8EvbDarK0Sq/X56mrD+XKNE
+	3Zr9RzbCmefPG7QshOUaElNsrPSab49PEo0BPc8X6GejIXzQooEV
+X-Gm-Gg: ASbGnctN7jdN9/nveMTHPV2DCOsSB6ilE46Hd3Jb3BEook3iuPUql7FabuWlHNoEUCG
+	8ZWh8sa3VcH8BVpDS9JW5uP6v8qbiR7SixWOt5xSaA9PfpRan06Y4zoGUR30V6jH4tayL9OxL7+
+	V6Fg2GBvqsxWlsKHbEUbMrP3Q+1S2pu/zusQBmjqMQAfpQJtOUUslRsZCIVdG1cU1khNpv04apo
+	jEy5kTSUwSY9kxNVyqdXq1a6RsMiVF2T0FUerOflwvwUfawtaTwLw==
+X-Google-Smtp-Source: AGHT+IFZ6+YRR3jm0gV75fejVmMXL5MRbl//2N9aoRFrmHGjZdJU9MYPNc36DsVVHcoZY+7LCJrMXw==
+X-Received: by 2002:a2e:8e84:0:b0:300:18fc:8e55 with SMTP id 38308e7fff4ca-30018fc906cmr21853361fa.2.1733389879024;
+        Thu, 05 Dec 2024 01:11:19 -0800 (PST)
+Received: from [192.168.0.107] ([91.90.219.38])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-30020da1182sm1586511fa.35.2024.12.05.01.11.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 05 Dec 2024 01:11:18 -0800 (PST)
+Message-ID: <6c8e60a1-820b-4818-ad68-9b042533f4f9@gmail.com>
+Date: Thu, 5 Dec 2024 14:06:27 +0500
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Dmitry Yashin <dmt.yashin@gmail.com>
+Subject: Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
+ controller
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, rfoss@kernel.org,
+ Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ quentin.schulz@cherry.de, Dmitry Yashin <dmt.yashin@gmail.com>
+References: <20241203165450.1501219-1-heiko@sntech.de>
+Content-Language: en-US
+In-Reply-To: <20241203165450.1501219-1-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_085423_737895_3CCEC1C4 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20241205_011121_866934_17B08B00 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,29 +105,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+Hello Heiko,
 
-Am Mittwoch, 4. Dezember 2024, 16:45:21 CET schrieb Piotr Zalewski:
-> I just noticed that after coming out of suspend gamma LUT is lost and must
-> be rewritten by userspace.
-> 
-> So I guess it will be needed to save LUT to a buffer and rewrite it after
-> going out of suspend during modeset?
+On 03.12.24 21:54, Heiko Stuebner wrote:
+> This series adds a bridge and glue driver for the DSI2 controller found
+> in the rk3588 soc from Rockchip, that is based on a Synopsis IP block.
+>
+> As the manual states:
+> The Display Serial Interface 2 (DSI-2) is part of a group of communication
+> protocols defined by the MIPI Alliance. The MIPI DSI-2 Host Controller is
+> a digital core that implements all protocol functions defined in the
+> MIPI DSI-2 Specification.
+>
+>
+> While the driver structure is very similar to the previous DSI controller,
+> the programming model of the core is quite different, with a completely
+> new register set.
+>
+> Another notable difference is that the phy interface is variable now too
+> in its width and some other settings.
 
-Most likely ... the old vop does this already too, so I guess you can
-get inspiration from there. (gamma_set call in vop_crtc_atomic_enable())
+Thanks for the series. I was able to get output on my Radxa's Rock 5B
+(dsi1) + Radxa's 10FHD Display setup. Works smoothly with multiple DE's,
+rotation and display on/off.
 
-> I checked the patch isn't yet in the "official" linux-next.
+Tested-by: Dmitry Yashin <dmt.yashin@gmail.com>
 
-The patch is in drm-misc-next:
-https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/4f537776340dab2b680a4d8554567f6884240d0b
-
-so should turn up in linux-next at some point. This also means, please
-provide a follow-up patch for the suspend handling.
-
-Thanks a lot
-Heiko
-
+-- 
+Thanks,
+Dmitry
 
 
 _______________________________________________
