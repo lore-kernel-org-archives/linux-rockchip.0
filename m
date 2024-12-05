@@ -4,63 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10877E7716D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 12:35:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 894A9E7716D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 12:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F2fe1cdLva6IlFCDBDmDWAjItFEjma+AQ9baY/ZbwZo=; b=tZxT82ygB4iFyc
-	avjkNhk+NWYj8LyQ0SEJPUSvqQecr1B6ek1+qv9Hen7WTQ0pjAFIuROieCDoSuTa05ZmwyNj4UvVr
-	zihEwQG8irWlsXGUSJYzGwXz22LzEXsKuY6+01pB9dYDF1NEGhS59dE+8IoLgxEiYA2U2M3yySyjb
-	juwAHfyAP2LdWBVzSCATJ6JPj13aYYLwtTvql/pnwrzyKFPt/ccSvgj8ztA4UlHuawifrwGKKgyst
-	crzojquli6eodElAZm/VWL8okKCcjxgze9JTmawa5ctUrciSyuSHlEi3+s7yNAFJUdyRA//8zwBsd
-	JEJIXTsh1vue/uCsBWaw==;
+	List-Owner; bh=OFgk+Ap+Q0pE84PmriF0rCA+mvt1tnGwsSJl2ZuvlVc=; b=eLzDj22ZFPdBck
+	Zjl0JW4zHxPqretDjdGYTRjm/cmB1pJbHxBy6zOR+v9nUELXpoOR0US+tXrN5MgkcvCbmwYAcSj5O
+	p0gdZJ4wtkegb7EuzpJroxtBMQEsP0d7hy911EaJxHupiEcMz1vd5Tt9kXtIbUkW6cYcldD01z+cj
+	gqwoe8wN/GmLvWLmhfJmOulu/LKmwvZ3EEI6YE5WSBn2o/x5ygaaLmJEKNSu0Fj++c6ausKExai3Q
+	Go8BkF/i3mL4NleptapELV6bUXpEt5kCqeK99hH1u5gptbYnLZZRisSeu4ou0MuIG6S+iRNig0K4a
+	YfoWwGm08AEBmrvqftUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJB57-0000000Fyc7-1BRZ;
-	Thu, 05 Dec 2024 12:35:45 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tJBLY-0000000G1ZA-1MuG;
+	Thu, 05 Dec 2024 12:52:44 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJAza-0000000FxXV-095E;
-	Thu, 05 Dec 2024 12:30:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=FDTpwgkDlbRc1zIFut/KEqYGHdEqAg2rBPP//jqqsak=; b=2rGECUB6il0LywPas6Kn3dUIhN
-	NPlpm80YqXB+YXBd7D8OOzYK54IFSl4WsdFh3hpmP4jMzqHn3Beh/ld2frmibcVbI29x2GNe4Fw5L
-	ggHGa0ciIkz3oBa954gOM/XEUFaXGUyAxlDcgsKd2xmYHn9wvEucak/oqGjI27IBDTjKP/XQFM4Js
-	WtruVkYZq5VmVn/jHFOxX2Vk1lANiYz0QovoCeVk5IeZRWyhkKo2OAyRbG59oD+bj90ho63zwE+qh
-	OPQgWTPkrmmrhZJeGecAbvh9TBgCtA0FUx/PFILTdrOzxY9DWDafE+XyXFK5MDoxXrJcCW8dsiaB7
-	tfV/BC6Q==;
-Received: from i5e86190f.versanet.de ([94.134.25.15] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tJAzU-00048V-2e; Thu, 05 Dec 2024 13:29:56 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Val Packett <val@packett.cool>, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH] clk: rockchip: add clock ID for CIF0/1 on RK3066
-Date: Thu, 05 Dec 2024 13:29:55 +0100
-Message-ID: <1944322.g5d078U9FE@diego>
-In-Reply-To: <5kesytgbhfununu5li4ychaw4newkctx4wuhlshks2ertfkd2t@jauqcntehv2z>
-References: <20241205055122.11613-1-val@packett.cool>
- <5kesytgbhfununu5li4ychaw4newkctx4wuhlshks2ertfkd2t@jauqcntehv2z>
+	id 1tJBKX-0000000G1QV-00Ja;
+	Thu, 05 Dec 2024 12:51:42 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-e396e33d47dso967211276.0;
+        Thu, 05 Dec 2024 04:51:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733403099; x=1734007899; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jS4E65byXasH63nw7XWyV1kv5nRvT19nS2OJkpP32N8=;
+        b=LUJBWFnDNEkfTYwLML2wuVkrgQcQY/3VWNSfS1mMk9vsf++ERE3I8LCdqQJGdvQiji
+         0MGDVNoL5Tz5SxuisPU93ejnDANWGDzD2xJQOnVTfYZbHiYF2Q8RM/abbC7WEF9wjIpZ
+         M4PdNrZz1Z9gYThCwKoyW3wAbDOKVPWwKkZ5YkFtRXgm31QHaT1C5SNFDPYRqwHht+eP
+         tDhTg69nio40ohZ1zt7h5LOsqsE6DwKj+D8FcLinbaJIpRZO2rUqhsLO505wvOQch0G3
+         qQpecWKwKl5bgYgmEeP8mSSvwT0nYu+MQPKuNg2Z9PwHWcCGsQWv3GjvOebQIfvi8aix
+         USSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733403099; x=1734007899;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jS4E65byXasH63nw7XWyV1kv5nRvT19nS2OJkpP32N8=;
+        b=q2pg2Q4b7nGANYHWRjzoOmztaV7sZ5PmBtJPeSGTaeeTajXPpqMgL/DbAWuzoOIiw2
+         zEpJkJaZECO5Zr3sI3u6FKOa5z5jaq6P/FY4vWVfHXlhVxQjpS1q2usvh0RgTshilUzh
+         nhw9IX/+v1Psl6SLmujAJfRgxNPWWuGc+Cj4pLRS5sYv6XL2/u+i/fCzfrhLD8H2tnBO
+         gAGBGCst5vGwD+XDQe6RRDxkbtQW4Kopthh9lbsNN/+U4m9xs8CIbxbTPwtnbyyud4c3
+         aXcV+cTdB+18qiUxUMVn37ohVOzj597NobmUEQC45jKzxa1eKqTPMhXT4B+7AUd9hIlw
+         XVsw==
+X-Forwarded-Encrypted: i=1; AJvYcCU9YdhpDj0UgMqZkdLwVPGxAa0x/hAXc6BRJqlpmBy2YyJtoTFNNzJqjYt00n00ddLsr5u9Pof1JJRk58opmAzS@lists.infradead.org, AJvYcCXb5ehr8glScykcWqO8UYXcMe/1a0H6bkZ0n2Sf7HTZdW0JORPXriM/KZM9+sLFpZI+uvRDnes1v1FvKdHnS9M=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/wi1qutiQAtWWwVrJt+MSNwxCwnBnSQne5omVa9+Ygv/j82dB
+	vbzVIr7ZECNpdOgOOHN6jQUC3n+kqeIsbf8HP9XerGilaegPQsVQ2LfvS4qry0G2io909mECKtk
+	7P4Q14sZgZA1qF0pWcFxOQE/EBtI=
+X-Gm-Gg: ASbGncutO4t6DSGVeVZPtr5lnnKkzARrVTrNYNfUg5UT1Itp/na4v0ImIn19Smo804l
+	V6ccJlVYOhyxMHikv8R/U2emSFAZy/w==
+X-Google-Smtp-Source: AGHT+IHX0v+XaBJaQPFuk/qhOCAUGBnokLL70FRyDWpxKkVmlHChQDq7qhPmvE6TqRld9vHwDAhCRVKa0tsQqMwHWhg=
+X-Received: by 2002:a05:6902:2407:b0:e39:976e:cdae with SMTP id
+ 3f1490d57ef6-e39d3c22c53mr10848927276.12.1733403099483; Thu, 05 Dec 2024
+ 04:51:39 -0800 (PST)
 MIME-Version: 1.0
+References: <20241202090408.201662-1-jakob.unterwurzacher@cherry.de>
+ <63b3be80-cb6c-49e5-858f-70fd826140c5@cherry.de> <2578458.4XsnlVU6TS@diego> <CAMdYzYr9bULWou5gf43G-AywREWRCOhHmJ-fOQ1cEDWJSmGSdQ@mail.gmail.com>
+In-Reply-To: <CAMdYzYr9bULWou5gf43G-AywREWRCOhHmJ-fOQ1cEDWJSmGSdQ@mail.gmail.com>
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+Date: Thu, 5 Dec 2024 13:51:28 +0100
+Message-ID: <CAPv9Zmmz2W6aU16n1NYZvCrMcsXL8QK3d-mtfWy6d0vsTaNYQw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: increase gmac rx_delay to 0x11 on rk3399-puma
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Sasha Levin <sashal@kernel.org>, Iskander Amara <iskander.amara@theobroma-systems.com>, 
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>, 
+	Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>, 
+	Quentin Schulz <quentin.schulz@cherry.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_043002_088831_3D939DD2 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20241205_045141_039613_66BF0050 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +94,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-Am Donnerstag, 5. Dezember 2024, 11:25:28 CET schrieb Krzysztof Kozlowski:
-> On Thu, Dec 05, 2024 at 02:50:46AM -0300, Val Packett wrote:
-> > RK3066 does have two "CIF" video capture interface blocks, add their
-> > corresponding clock IDs so that they could be used.
-> > 
-> > Signed-off-by: Val Packett <val@packett.cool>
-> > ---
-> >  drivers/clk/rockchip/clk-rk3188.c             | 4 ++--
-> >  include/dt-bindings/clock/rk3188-cru-common.h | 2 ++
-> >  2 files changed, 4 insertions(+), 2 deletions(-)
-> 
-> Please run scripts/checkpatch.pl and fix reported warnings. Then please
-> run 'scripts/checkpatch.pl --strict' and (probably) fix more warnings.
-> Some warnings can be ignored, especially from --strict run, but the code
-> here looks like it needs a fix. Feel free to get in touch if the warning
-> is not clear.
-
-I guess you're taking a shot of the indentation?
-
-Though that is an intentional deviation, for the long lists of
-clock-declarations, that is more a spreadsheet than actual code.
-
-To give this some context, an excerpt from the rk3188 clock driver:
-
-        COMPOSITE(0, "aclk_lcdc1_pre", mux_pll_src_cpll_gpll_p, 0,
-                        RK2928_CLKSEL_CON(31), 15, 1, MFLAGS, 8, 5, DFLAGS,
-                        RK2928_CLKGATE_CON(1), 4, GFLAGS),
-        GATE(ACLK_PERI, "aclk_peri", "aclk_peri_pre", 0,
-                        RK2928_CLKGATE_CON(2), 1, GFLAGS),
-        COMPOSITE_NOMUX(HCLK_PERI, "hclk_peri", "aclk_peri_pre", 0,
-                        RK2928_CLKSEL_CON(10), 8, 2, DFLAGS | CLK_DIVIDER_POWER_OF_TWO,
-                        RK2928_CLKGATE_CON(2), 2, GFLAGS),
-        MUX(0, "cif_src", mux_pll_src_cpll_gpll_p, 0,
-                        RK2928_CLKSEL_CON(29), 0, 1, MFLAGS),
-
-Rockchip clocks most of the time consist of a mux+divider in one register
-and a gate-bit in another. Most clocks are of the COMPOSITE-type above.
-Surprisingly this is true since before 2013 - and even today :-) .
-
-So the notation is
-      TYPE(id, name, parent-name(s), main-clk-flags,
-	MUXDIV-reg, muxoffset, muxwidth, muxflags, divoffset, divwidth, divflags,
-	GATE-reg, gatebit, gateflags)
-
-Having all these elements keep their relative position makes it way easier
-on the eyes, compared to if they followed that opening parenthesis of each
-individual line or maybe reflowing of the elements.
-
-The only real change the clock definitions will see are fixes to wrong
-register numbers or wrong bits (or missing clock-ids), so being able to
-see check those easily is just nice to have.
-
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBEZWMgNSwgMjAyNCBhdCAyOjMz4oCvQU0gUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdt
+YWlsLmNvbT4gd3JvdGU6Cj4gPiA+ID4gQ3ljbGluZyB0aHJvdWdoIHRoZSByeF9kZWxheSByYW5n
+ZSBvbiB0d28gYm9hcmRzIHNob3dzIHRoYXQgaXMgYSBsYXJnZQo+ID4gPiA+ICJnb29kIiByZWdp
+b24gZnJvbSAweDExIHRvIDB4MzUgKHNlZSBiZWxvdyBmb3IgZGV0YWlscykuCj4gPiA+ID4KPiA+
+ID4KPiA+ID4gSXMgdGhpcyBtaXNzaW5nIGEgInRoZXJlIiBhZnRlciB0aGF0PyAidGhhdCB0aGVy
+ZSBpcyBhIGxhcmdlIGdvb2QgcmVnaW9uIj8KPgo+IFRoYXQgbGFyZ2UgZ29vZCByZWdpb24gaXMg
+YWN0dWFsbHkgYW4gZXllIHRoYXQgeW91IGFyZSBhbGlnbmluZyB0byB0aGUKPiBjbG9jayBzaWdu
+YWwuIFRoZSBib2FyZCBpcyBvbiB0aGUgdGFpbCBlbmQgb2YgdGhlIGV5ZSB3aGVyZSBpdCBpcwo+
+IGJhcmVseSB3b3JraW5nLiBUaGlzIHZhbHVlIGlzIHN1cHBvc2VkIHRvIGJlIHR1bmVkIHRvIGJl
+IGluIHRoZSBtaWRkbGUKPiBvZiB0aGF0IGV5ZS4gWW91IG1heSB3YW50IHRvIHRlc3QgdGhlIG9s
+ZCBib2FyZHMgYWdhaW5zdCB0aGUgbmV3Cj4gYm9hcmRzLCBiZWNhdXNlIGlmIHRoZSBvcmlnaW5h
+bCBib2FyZCB3YXMgdHVuZWQgY29ycmVjdGx5IHNvbWV0aGluZwo+IG1heSBoYXZlIGNoYW5nZWQg
+aW4gaGFyZHdhcmUgdGhhdCBjYXVzZWQgYSBzaWduaWZpY2FudCBzaGlmdCBpbiB0aGUKPiBleWUg
+bG9jYXRpb24uIEV4YW1wbGVzIG9mIHRoaXMgd291bGQgYmUgY2hhbmdpbmcgdG8gYSBuZXcgcGh5
+LAo+IGVuYWJsaW5nIHBoeSBkZWxheXMsIG9yIGNoYW5nZXMgaW4gdGhlIHRyYWNlIGxlbmd0aC4g
+SWYgdGhpcyBpcyB0aGUKPiBjYXNlLCB5b3UnbGwgcHJvYmFibHkgd2FudCB0byBtYWtlIGEgbmV3
+IHZhcmlhbnQgb2YgdGhlIGR0cyB0byBjb3Zlcgo+IHRoaXMuCgpUaGFua3MgZm9yIHRoZSBjb21t
+ZW50LgoKTm90aGluZyBzaG91bGQgaGF2ZSBjaGFuZ2VkIG9uIHRoZSBib2FyZCwgYW5kIEkgZHVn
+IG91dCBhIHJlYWxseSBvbGQKb25lIHRvIHZlcmlmeS4gSXQgYmVoYXZlcyB0aGUgc2FtZS4KMHgx
+MCBzZWVtcyB0byBiZSB0aGUgbG93ZXIgZWRnZSBvZiB0aGluZ3Mgc3RpbGwgd29ya2luZy4KCkkg
+d2lsbCBwdXQgcnhfZGVsYXkgaW4gdGhlIGNlbnRlciBvZiB0aGUgZXllIHdpdGggdGhlIHYzIHBh
+dGNoLgoKSSBhbHNvIGNoZWNrZWQgdHhfZGVsYXksIGFuZCB3ZSBhbHJlYWR5IHNlZW0gdG8gYmUg
+aW4gdGhlIG1pZGRsZSBvZgp0aGUgZXllLCBzbyBJIHdvbid0IHRvdWNoIGl0LgoKQmVzdCByZWdh
+cmRzLApKYWtvYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
