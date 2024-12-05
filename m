@@ -4,104 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C36E7716D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 11:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10877E7716D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 12:35:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7/ErKNQdOLgGpVB5nkYj9tPh3yAka5zu+wqicHILPEA=; b=2tVrLnXBkbsIT1
-	5EP+RQApOKI6Xn4xjOwhVnQPRQ8veMmqgH63tEiqUVekgDroH/zRIBnVxW3JIPa4L+lIzbl2oPS02
-	yHLmuATcwrTgcCcwj4vI8f/xtACgGaKocd6yauARG7ICv7bY8fZumO4MRCpqpF0vYZIqo6Z3Q4UUI
-	HbZEGhiuyZaXb2rawlYoeqhGkJ/SUabBWQ+zny1eHCqvdgyoD/swR33xogH2j5aJMJ2OvQkkwerlm
-	pgbcruaNklWT5SKsKkhshpj5qKAYSlDtfMNx1BpeL0TypdKmtxsIu8WpL5LgDAYEC3W1ZEWZ+2bvv
-	bPvZW0UI7a7SKSy4j4/g==;
+	List-Owner; bh=F2fe1cdLva6IlFCDBDmDWAjItFEjma+AQ9baY/ZbwZo=; b=tZxT82ygB4iFyc
+	avjkNhk+NWYj8LyQ0SEJPUSvqQecr1B6ek1+qv9Hen7WTQ0pjAFIuROieCDoSuTa05ZmwyNj4UvVr
+	zihEwQG8irWlsXGUSJYzGwXz22LzEXsKuY6+01pB9dYDF1NEGhS59dE+8IoLgxEiYA2U2M3yySyjb
+	juwAHfyAP2LdWBVzSCATJ6JPj13aYYLwtTvql/pnwrzyKFPt/ccSvgj8ztA4UlHuawifrwGKKgyst
+	crzojquli6eodElAZm/VWL8okKCcjxgze9JTmawa5ctUrciSyuSHlEi3+s7yNAFJUdyRA//8zwBsd
+	JEJIXTsh1vue/uCsBWaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJAVk-0000000FphN-2rBo;
-	Thu, 05 Dec 2024 11:59:12 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1tJB57-0000000Fyc7-1BRZ;
+	Thu, 05 Dec 2024 12:35:45 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ9JD-0000000FZSv-2mfv
-	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Dec 2024 10:42:13 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-385e0dadaaaso25136f8f.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Dec 2024 02:42:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733395330; x=1734000130; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FnoZGxzHG6LZDyvVjX+CssXgRHCJAKynJ1wSQcpNHJ0=;
-        b=R2Y80oauMyzXkHp7k860sPLuE2diaeA8G8D/mj5NlbAKIDMnTzXorwvMgX522AZ4cT
-         bPI2+dEoLjH9OAI6NHjxqjUcf0bdDUfKd5cHyIsLSVOtXXh4S0UB0e8ABNY1dNM51Jd5
-         ye7LmEMKhaH/rAySvKtawp19f3uWM0YRi/6gmhxOjykexdL7CL5YxYAHPstGrJXYVjVg
-         p/jjIRHcf0VvhjA7oWdaJcbHLPPiwC159T8+XUSvdzqKd7FHu7xXQu4CCUV8AokDATH/
-         p2x05z00Re4ye1kanr9aOXkkJac19xnq0is/A+S5aYKTxtP3udbcwEYeKseS+5H2QVuH
-         ehCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733395330; x=1734000130;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FnoZGxzHG6LZDyvVjX+CssXgRHCJAKynJ1wSQcpNHJ0=;
-        b=lQrxD5jTxazQjDjSc7nyjb3XiHcJdvSfHZfdXUTl4JQejJg3yEkWHLY+TBSHecaBko
-         S4S314QMk0MK9aXJ6CYBDRt4WAjdcFhtA1pLIMuTqRDTWunPXrNtRRvRECeR1MCdPdof
-         s8ITQ34XKD62YkD29v5u9Hi60LmYdOyDCHaiBekycROqyq17XU9vxdAYMMEpuSWbEYYB
-         wJuXNG/JV5Nn9yOWy9j4M8JsWMqOJH0n0wiSL0b2R9914lSxn//3NM7vUozE2N8cYtTo
-         Lymo+Ftkk4Ki2K4iY0EnjimiH9PZEA6QTU06hU3+0TcewWhboaOqsduraxOpYC9O57RS
-         TinQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW8ldfopNP55q8LQw4Ak4nabXv93r/juwUyHul4if0CP+PbBjsXpnctkv1GybUC/e9KRtUCzgVzpRZIVGAiJw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxEZYRxjwRS9kv7lkoJJPWpvex0sQ4UcgqI0/trcJwAhuC7Lhh+
-	AT5oK4OrpZj9//u7lM7R7nivGYQkwg7Ac8sfhfAkOW/RpxFez4ZftBohEg9XpSg=
-X-Gm-Gg: ASbGncudveNuK1YHri9EBIt12hlaNXFtQbYTNV0kzNvMj8tt8tGBI0iEQteRuFigMrZ
-	F24tD4IhUday7bkIrGqpNg/wrzwEpEPTQenSzrq4LS1Xq4rVK02/fEEAoLkxf/Rl99rtt2YaOdW
-	oPdgP1KGxXGftWf/EnzbhRMzlCv9Omslq3Z1OqG4P/6rvWUknR31Yze2a9M+1Cd7/erQQMSp2FK
-	KChFcXkvRMr08qvO8FKQgF6H2WC0VzKGv6ZalHirq4E9J26t4i88idu6FyswbnD9w==
-X-Google-Smtp-Source: AGHT+IGz3GjcyfBhQ5HlqLVmhmG7Qtmhnbj9BaPJEz/QzVaC6xVbnrbhQALk4UuX4nKmsjVBEJ+aKg==
-X-Received: by 2002:a5d:6d82:0:b0:385:e8e7:d0ac with SMTP id ffacd0b85a97d-385fde34d9bmr2947632f8f.13.1733395329824;
-        Thu, 05 Dec 2024 02:42:09 -0800 (PST)
-Received: from [127.0.1.1] ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3861ecf406csm1662701f8f.3.2024.12.05.02.42.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 02:42:09 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>, 
- Paul Cercueil <paul@crapouillou.net>, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
- Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>, 
- Nicolin Chen <nicoleotsuka@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- Adrien Grassein <adrien.grassein@gmail.com>, Adam Ford <aford173@gmail.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-mips@vger.kernel.org, alsa-devel@alsa-project.org, 
- linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org
-In-Reply-To: <cover.1727438777.git.geert+renesas@glider.be>
-References: <cover.1727438777.git.geert+renesas@glider.be>
-Subject: Re: (subset) [PATCH treewide 00/11] ASoC: Clean up
- {hp,mic}-det-gpio handling
-Message-Id: <173339532775.70936.4554643874403091214.b4-ty@linaro.org>
-Date: Thu, 05 Dec 2024 11:42:07 +0100
+	id 1tJAza-0000000FxXV-095E;
+	Thu, 05 Dec 2024 12:30:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=FDTpwgkDlbRc1zIFut/KEqYGHdEqAg2rBPP//jqqsak=; b=2rGECUB6il0LywPas6Kn3dUIhN
+	NPlpm80YqXB+YXBd7D8OOzYK54IFSl4WsdFh3hpmP4jMzqHn3Beh/ld2frmibcVbI29x2GNe4Fw5L
+	ggHGa0ciIkz3oBa954gOM/XEUFaXGUyAxlDcgsKd2xmYHn9wvEucak/oqGjI27IBDTjKP/XQFM4Js
+	WtruVkYZq5VmVn/jHFOxX2Vk1lANiYz0QovoCeVk5IeZRWyhkKo2OAyRbG59oD+bj90ho63zwE+qh
+	OPQgWTPkrmmrhZJeGecAbvh9TBgCtA0FUx/PFILTdrOzxY9DWDafE+XyXFK5MDoxXrJcCW8dsiaB7
+	tfV/BC6Q==;
+Received: from i5e86190f.versanet.de ([94.134.25.15] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tJAzU-00048V-2e; Thu, 05 Dec 2024 13:29:56 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Val Packett <val@packett.cool>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH] clk: rockchip: add clock ID for CIF0/1 on RK3066
+Date: Thu, 05 Dec 2024 13:29:55 +0100
+Message-ID: <1944322.g5d078U9FE@diego>
+In-Reply-To: <5kesytgbhfununu5li4ychaw4newkctx4wuhlshks2ertfkd2t@jauqcntehv2z>
+References: <20241205055122.11613-1-val@packett.cool>
+ <5kesytgbhfununu5li4ychaw4newkctx4wuhlshks2ertfkd2t@jauqcntehv2z>
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_024211_703452_0D10B5B8 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241205_043002_088831_3D939DD2 
+X-CRM114-Status: GOOD (  20.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,27 +77,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
-On Fri, 27 Sep 2024 14:42:15 +0200, Geert Uytterhoeven wrote:
-> 	Hi all,
+Am Donnerstag, 5. Dezember 2024, 11:25:28 CET schrieb Krzysztof Kozlowski:
+> On Thu, Dec 05, 2024 at 02:50:46AM -0300, Val Packett wrote:
+> > RK3066 does have two "CIF" video capture interface blocks, add their
+> > corresponding clock IDs so that they could be used.
+> > 
+> > Signed-off-by: Val Packett <val@packett.cool>
+> > ---
+> >  drivers/clk/rockchip/clk-rk3188.c             | 4 ++--
+> >  include/dt-bindings/clock/rk3188-cru-common.h | 2 ++
+> >  2 files changed, 4 insertions(+), 2 deletions(-)
 > 
-> The "gpio" suffix for GPIO consumers was deprecated a while ago, in
-> favor of the "gpios" suffix.  However, there are still several users of
-> the "hp-det-gpio" and "mic-det-gpio" properties, in DT bindings,
-> drivers, and DT source files.
-> 
-> [...]
+> Please run scripts/checkpatch.pl and fix reported warnings. Then please
+> run 'scripts/checkpatch.pl --strict' and (probably) fix more warnings.
+> Some warnings can be ignored, especially from --strict run, but the code
+> here looks like it needs a fix. Feel free to get in touch if the warning
+> is not clear.
 
-Applied, thanks!
+I guess you're taking a shot of the indentation?
 
-[03/11] ARM: dts: marvell: mmp2-olpc-xo-1-75: Switch to {hp,mic}-det-gpios
-        https://git.kernel.org/krzk/linux-dt/c/62f95d8a4920706e94759a8f5e34677528530cf1
-[08/11] arm64: dts: uniphier: Switch to hp-det-gpios
-        https://git.kernel.org/krzk/linux-dt/c/751df73d825b3f7e6cad42ed333c28096635784d
+Though that is an intentional deviation, for the long lists of
+clock-declarations, that is more a spreadsheet than actual code.
 
-Best regards,
--- 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To give this some context, an excerpt from the rk3188 clock driver:
+
+        COMPOSITE(0, "aclk_lcdc1_pre", mux_pll_src_cpll_gpll_p, 0,
+                        RK2928_CLKSEL_CON(31), 15, 1, MFLAGS, 8, 5, DFLAGS,
+                        RK2928_CLKGATE_CON(1), 4, GFLAGS),
+        GATE(ACLK_PERI, "aclk_peri", "aclk_peri_pre", 0,
+                        RK2928_CLKGATE_CON(2), 1, GFLAGS),
+        COMPOSITE_NOMUX(HCLK_PERI, "hclk_peri", "aclk_peri_pre", 0,
+                        RK2928_CLKSEL_CON(10), 8, 2, DFLAGS | CLK_DIVIDER_POWER_OF_TWO,
+                        RK2928_CLKGATE_CON(2), 2, GFLAGS),
+        MUX(0, "cif_src", mux_pll_src_cpll_gpll_p, 0,
+                        RK2928_CLKSEL_CON(29), 0, 1, MFLAGS),
+
+Rockchip clocks most of the time consist of a mux+divider in one register
+and a gate-bit in another. Most clocks are of the COMPOSITE-type above.
+Surprisingly this is true since before 2013 - and even today :-) .
+
+So the notation is
+      TYPE(id, name, parent-name(s), main-clk-flags,
+	MUXDIV-reg, muxoffset, muxwidth, muxflags, divoffset, divwidth, divflags,
+	GATE-reg, gatebit, gateflags)
+
+Having all these elements keep their relative position makes it way easier
+on the eyes, compared to if they followed that opening parenthesis of each
+individual line or maybe reflowing of the elements.
+
+The only real change the clock definitions will see are fixes to wrong
+register numbers or wrong bits (or missing clock-ids), so being able to
+see check those easily is just nice to have.
+
+
+Heiko
+
 
 
 _______________________________________________
