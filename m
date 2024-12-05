@@ -4,60 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B5D8E7716C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 10:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA0D4E77170
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Dec 2024 10:37:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G9hR9qSqPslHMqhdZ4uS18ymfoUqQcH2vlaVHfvDam0=; b=CDg8gtqnQjni13
-	C6UPRQmsHC0SWYb+5KOfH28mCbX9biByfeRC6m1AE3mVoxwhRffkbwFX6GvvZ/csqbQ4aVchxSihJ
-	N8xrArIrwDQh2uJLOcnzGZbwWyOAzzYlOZsDuTYl3Wrmr6P8EZDZYo4q2r37OvaZZq3ouUPeqVT0P
-	vrXdGzvoYRs2LQy+VCfc9LlsFfKOGxZBeaon+pG3de3aJkkV0Ap/wvQ3Wcoc8rlfBgPsxUIDRMG5Z
-	swosYxTea19K6/QPSD2utDuCEMmQRZRnFpRnQ6uE5/N4p+5Y2YBoJQBJZJ7uM5KIzdI2dqni22blN
-	KGq/8U6aYNJj3gZKwxlw==;
+	List-Owner; bh=NBbfppB5SYRLr6lO/dryxNGI0fC2Y6smX4ShaMYAA/U=; b=KfTAfOXH1EGNVP
+	dvz14hk1mnAMpU618DhWl8WzGgNd7mTe2Ab/D1gQHvGg0yGZoOBvxNaZEwHp5YP2V76SyoNboRbTP
+	74kr4ZsVBK0iY7kOc08ETsdC/Jf5gnjr7NhPcu4WlivbFxgNwgxF1bewvltQNw4y3dgziekdrRbv6
+	R0y+yypU9Ro5RU1LwBkZpa3jIkKC2JAqxWf6LzaGtC7YFe/3fE/T/aYIoZ9PPtTIA3fz9Vb7bB8t1
+	TvOdFOrT70f73JR3O2GhDuUO5Q59mtJi50aW+FrjDRsAQzlaEJflfl8j6RIDykw+w++I1s2maqQj8
+	uMJWHa//VKLhcz9gugYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ94s-0000000FVpR-14Ed;
-	Thu, 05 Dec 2024 10:27:22 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tJ9Em-0000000FXt5-3Hxa;
+	Thu, 05 Dec 2024 10:37:36 +0000
+Received: from mail-m11871.qiye.163.com ([115.236.118.71])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJ937-0000000FVSD-0LjF;
-	Thu, 05 Dec 2024 10:25:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 23AA4A430B0;
-	Thu,  5 Dec 2024 10:23:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AEFEC4CED1;
-	Thu,  5 Dec 2024 10:25:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733394331;
-	bh=xc/AP1q5J7sVe4uDrqIu8OSigI0sdX0g5xbtoyVjNxE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s7f/dkLhhctWIeUhGLpjKXnajl+5VZbXesXWXsw3g9wn7qcKhle+r+8J9OmlTgPtP
-	 4VziQdVRNp9frk6Gd3HgDsmJQ5yMp/ov/RMej/aIvR8Xt/wCVL5IdZXYLSX5/aFlsn
-	 /87Q4MMfeo+q2fKouI/C2HTFxtkh1QrDsCFiZGE62cFHULm8HWpHzrMp+QWJChO7aH
-	 WZVR5Rrder2DLmoTSi4Jcf4VMHrf06/SnzgMo3rTGpXSjSary79Wmj4hYZHfNLURpg
-	 fKL2XVZMAOyCLw/Sk4yEDZ/gs5zbJfQiO16d1fmuulK8tUR/X2L5qUaf+0tT0M0TgV
-	 9aUR7/WdcYNQw==
-Date: Thu, 5 Dec 2024 11:25:28 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Val Packett <val@packett.cool>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-clk@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH] clk: rockchip: add clock ID for CIF0/1 on RK3066
-Message-ID: <5kesytgbhfununu5li4ychaw4newkctx4wuhlshks2ertfkd2t@jauqcntehv2z>
-References: <20241205055122.11613-1-val@packett.cool>
+	id 1tJ9Dl-0000000FXfS-2OkT;
+	Thu, 05 Dec 2024 10:36:36 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4cf7c95c;
+	Thu, 5 Dec 2024 18:36:28 +0800 (GMT+08:00)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pci@vger.kernel.org
+Subject: [PATCH 1/6] dt-bindings: PCI: dwc: rockchip: Add rk3576 support
+Date: Thu,  5 Dec 2024 18:36:18 +0800
+Message-Id: <20241205103623.878181-2-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241205103623.878181-1-kever.yang@rock-chips.com>
+References: <20241205103623.878181-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241205055122.11613-1-val@packett.cool>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0hIGVZDGB4eGU5DThlCTB1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a9396647c2a03afkunm4cf7c95c
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRw6Qjo*KzIYMw0JHyMVCxgs
+	Qg0aCRxVSlVKTEhISEJPQkNCT05MVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMTEs3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=anhxgR45JOFGpKYa1kzJdcLz3u+TUdMFwNCxoA87+DdTw61fMspve3iNy1DjZNhpoUElFzHHaz82zHL/Z7AnKOKMpXZMAl5h37qDmi3Tli1Onw+YUAyoEGzB16SWA9y9CMV9CqPGeRf/zwOMOWkE2rdkuziEzOT1ib+2lh0C/Ic=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=HjmVk9gKLzWJyLcAvjRtiVX8Ir6tmlI7JsF/W31nlu4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_022533_180930_66B6AADF 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20241205_023634_012505_B6D1A6B8 
+X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,24 +86,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 05, 2024 at 02:50:46AM -0300, Val Packett wrote:
-> RK3066 does have two "CIF" video capture interface blocks, add their
-> corresponding clock IDs so that they could be used.
-> 
-> Signed-off-by: Val Packett <val@packett.cool>
-> ---
->  drivers/clk/rockchip/clk-rk3188.c             | 4 ++--
->  include/dt-bindings/clock/rk3188-cru-common.h | 2 ++
->  2 files changed, 4 insertions(+), 2 deletions(-)
+rk3576 is using the same controller as rk3568.
 
-Please run scripts/checkpatch.pl and fix reported warnings. Then please
-run 'scripts/checkpatch.pl --strict' and (probably) fix more warnings.
-Some warnings can be ignored, especially from --strict run, but the code
-here looks like it needs a fix. Feel free to get in touch if the warning
-is not clear.
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
 
-Best regards,
-Krzysztof
+ Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+index 550d8a684af3..5328ccad7130 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+@@ -26,6 +26,7 @@ properties:
+       - const: rockchip,rk3568-pcie
+       - items:
+           - enum:
++              - rockchip,rk3576-pcie
+               - rockchip,rk3588-pcie
+           - const: rockchip,rk3568-pcie
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
