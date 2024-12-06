@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05749E77173
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 13:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49340E77179
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 14:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8KpzLKFEZW3GyedWXPOac09NY/7VJarR6XeirswBsjw=; b=dUTK+MBqCzktuM
-	uy18uHUmdfRZy1UixEBbtRxm7wnPWqljx07T9n841fJ+NEapdx7yOR6OttCOoxKrXDhuTkuWIVVD8
-	RFpXWN5PcCKRXIhKT2bhGeawaylc9y58pt6u8LjtjPiHrUFvRRtHgVpyi8SkbjwWxPnVjuOtLbwkl
-	JKVWFc0jQVYpCGxzGKkdjXfHyzLq9qTWlEn0jztv0qlMqJ3YlrD7sg442l7+H/I644QKZzAZQtctx
-	VNyUC8CcxG0EkyhHt8WFDJZqM0lpCMoHkTlhnxbstlSvRj3DmvAf8+bSgtOwRCwWGbC1hZMAbfMK6
-	OWFIPXnx9HRDD96xabMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=92TA+l65lTTIXqnkQVXljKcqbqsXOPif1Jj3+UrOL8Y=; b=Dp1FqDplIY0eIhyPwJsTrW8GqV
+	rLLqQviijBh/AWsnlJRqqViDBrVKbKwsuiqJ79n62ib+XxgYqgpANGiZTAN1C/WcVinQgIY6az+02
+	Yqfptf4qGU1FeZ5wKmAy0V9JKKtB03c7+f+66kbicSDwjKzE/lXULVqPsDG17Qso5RZ/rgtnLiUuG
+	Zm+1YbDX2y3XdkEOkfEY0srdiZpgELDS0f+aAy/z41nTHd7T7zWZni9hFmtEWlQewdKFNquWKGuXt
+	jo6LzknMSPuUkyN4uhWkSc6uUJZGV/li5zZ4ceRGolqp7I1JqQT8qm+jp0QSgpdmZy0AM8D4b7hUx
+	wQwC5MmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJYmp-00000001mxm-0xH0;
-	Fri, 06 Dec 2024 13:54:27 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tJZ4t-00000001pvJ-3N4D;
+	Fri, 06 Dec 2024 14:13:07 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJYli-00000001mYt-2tkn;
-	Fri, 06 Dec 2024 13:53:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ZbYJrhkQc0nvUHQDz7CHZJDyBA/Z0++rFcxDzUyd6KA=; b=wJquaEgZ8eQk7upw2fXmwkzvEb
-	ROAcLrOufdlHgtSYsjWmNv5XPCMzML1UhZnRf+c1MBkbFItVt1uLgoF2IxvJOvK1Kk41XASnk/8ry
-	2lRgNuW2aEDsIvGQb3kwfoeiZx/e1vSWU7KCwLQrVVrgwv5QqfuvggH18yy7WnbphtpbjdgERexro
-	MBUZwdAqML56vLfu/UuWHMP3Bx4cbPTWkt4EgehUj5r6JwI36ud8GcbPdyLjahkAQP4yD3CDdDrhF
-	oPQS9Yoi5Me8b6tK0G6FhSPKNkfAcCkMIKNKurGgEvZnGneNBWgBbSAD+pIvyUacvoUM7Qh5rh035
-	2x89O6bw==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tJYld-0000cM-0l; Fri, 06 Dec 2024 14:53:13 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: vkoul@kernel.org, kishon@kernel.org,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH 2/2] phy: phy-rockchip-samsung-hdptx: Don't use dt aliases to
- determine phy-id
-Date: Fri, 06 Dec 2024 14:53:12 +0100
-Message-ID: <11259672.BaYr0rKQ5T@diego>
-In-Reply-To: <87273a36-07f9-4224-bfff-63e905be9b0a@collabora.com>
-References: <20241206103401.1780416-1-heiko@sntech.de>
- <20241206103401.1780416-3-heiko@sntech.de>
- <87273a36-07f9-4224-bfff-63e905be9b0a@collabora.com>
+	id 1tJZ3r-00000001poj-1AvU;
+	Fri, 06 Dec 2024 14:12:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6A00FA4424D;
+	Fri,  6 Dec 2024 14:10:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82B15C4CED1;
+	Fri,  6 Dec 2024 14:11:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733494320;
+	bh=8FH5lBgWNIAEjsKX33NT40twbgY4YS5QRxCuJsZyGS8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SBuKNaNZWbu26ObvbPG20Bv759vrpLQnlotkOFx+diGx23XzE1XB2okn3vzE/iq9x
+	 8ZbsrDjAeiCs4pj4wMrB9ir/qWrSVOPrxDMYhDGoVOOD0W44IFlWaKAWduj1GrD+0L
+	 dSgOX/UY09zzMCI/xwoXBk+D3A+UZzLtomTwDhjfaK/rd0gjQa+ZS2+z1H00S1mE5U
+	 3HxhJtM6GL7MnpkwbiqEM7ctI62Oxq+93wd8Q+If5EkjWpr83Km+TDB+DQhteklwnc
+	 UDExjGvZYIKU+mtsTtt2/tG7abNwP/dqU2Z7gEojfnnxbolV13Z4We2lmldrp6jsso
+	 5KGUQ7bUcvhow==
+Date: Fri, 6 Dec 2024 15:11:57 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 8/9] drm/vc4: hdmi: switch to using generic HDMI Codec
+ infrastructure
+Message-ID: <20241206-agile-tidy-avocet-c69bff@houat>
+References: <20241201-drm-bridge-hdmi-connector-v5-0-b5316e82f61a@linaro.org>
+ <20241201-drm-bridge-hdmi-connector-v5-8-b5316e82f61a@linaro.org>
+ <20241202-industrious-unnatural-beagle-7da5d4@houat>
+ <e7jngrc4nljdsksekinbkir2h76ztsth2xj4yqcyapfv43uryh@356yrxv3j4x6>
 MIME-Version: 1.0
+In-Reply-To: <e7jngrc4nljdsksekinbkir2h76ztsth2xj4yqcyapfv43uryh@356yrxv3j4x6>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_055318_773004_1898BE2E 
-X-CRM114-Status: GOOD (  27.84  )
+X-CRM114-CacheID: sfid-20241206_061203_447477_3073B19D 
+X-CRM114-Status: GOOD (  30.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,78 +87,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4792734864416470674=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
 
-Am Freitag, 6. Dezember 2024, 12:26:35 CET schrieb Cristian Ciocaltea:
-> On 12/6/24 12:34 PM, Heiko Stuebner wrote:
-> > From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> > 
-> > The phy needs to know its identity in the system (phy0 or phy1 on rk3588)
-> > for some actions and the driver currently contains code abusing of_alias
-> > for that.
-> > 
-> > Devicetree aliases are always optional and should not be used for core
-> > device functionality, so instead keep a list of phys on a soc in the
-> > of_device_data and find the phy-id by comparing against the mapped
-> > register-base.
-> > 
-> > Fixes: c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock provider support")
-> > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> > ---
-> >  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 50 ++++++++++++++++---
-> >  1 file changed, 44 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> > index c5c64c209e96..b137f8c4d157 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> > @@ -385,11 +385,22 @@ enum rk_hdptx_reset {
-> >  	RST_MAX
-> >  };
-> 
-> [...]
-> 
-> > +
-> > +	/* find the phy-id from the io address */
-> > +	hdptx->phy_id = -ENODEV;
-> > +	for (id = 0; id < hdptx->cfgs->num_phys; id++) {
-> > +		if (res->start == hdptx->cfgs->phy_ids[id]) {
-> > +			hdptx->phy_id = id;
-> > +			break;
-> > +		}
-> > +	}
-> > +
-> > +	if (hdptx->phy_id < 0)
-> > +		return dev_err_probe(dev, -ENODEV, "no matching device found\n");
-> 
-> Maybe we could simply fallback to assume phy1 doesn't exist in this
-> case, which avoids the need to provide a match data with a single entry.
-
-Personally I'm a fan of consistent behaviour, not things working
-accidentially ;-) . See the usbdp phy for example, also declaring just
-one phy using the same mechanism.
-
-Also I really don't trust the hdptxphy-grf being stable over time.
-Rockchip engineers always move bts around in those, so there will be a
-need for platform-data at some point anyway.
+--===============4792734864416470674==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="zlmn4u42a2hgjiwb"
+Content-Disposition: inline
 
 
-> Regardless,
-> 
-> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+--zlmn4u42a2hgjiwb
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v5 8/9] drm/vc4: hdmi: switch to using generic HDMI Codec
+ infrastructure
+MIME-Version: 1.0
 
-thanks :-)
+On Tue, Dec 03, 2024 at 02:19:41PM +0200, Dmitry Baryshkov wrote:
+> On Mon, Dec 02, 2024 at 02:20:04PM +0100, Maxime Ripard wrote:
+> > Hi,
+> >=20
+> > Sorry, I've been drowning under work and couldn't review that series be=
+fore.
+>=20
+> No worries, at this point I'm more concerned about my IGT series rather
+> than this one.
+>=20
+> >=20
+> > I'll review the driver API for now, and we can focus on the exact
+> > implementation later on.
+> >=20
+> > On Sun, Dec 01, 2024 at 02:44:12AM +0200, Dmitry Baryshkov wrote:
+> > > Drop driver-specific implementation and use the generic HDMI Codec
+> > > framework in order to implement the HDMI audio support.
+> > >=20
+> > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > > ---
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.c | 68 ++++++++++----------------------=
+----------
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.h |  2 --
+> > >  2 files changed, 15 insertions(+), 55 deletions(-)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4=
+_hdmi.c
+> > > index 7295834e75fb1ab0cd241ed274e675567e66870b..d0a9aff7ad43016647493=
+263c00d593296a1e3ad 100644
+> > > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > @@ -595,6 +595,9 @@ static int vc4_hdmi_connector_init(struct drm_dev=
+ice *dev,
+> > >  	if (vc4_hdmi->variant->supports_hdr)
+> > >  		max_bpc =3D 12;
+> > > =20
+> > > +	connector->hdmi_codec.max_i2s_channels =3D 8;
+> > > +	connector->hdmi_codec.i2s =3D 1;
+> > > +
+> >=20
+> > I guess it's a similar discussion than we had with HDMI2.0+ earlier
+> > today, but I don't really like initializing by structs. Struct fields
+> > are easy to miss, and can be easily uninitialized by mistake.
+> >=20
+> > I think I'd prefer to have them as argument to the init function. And if
+> > they are optional, we can explicitly mark them as unused.
+>=20
+> Do you mean drm_connector_hdmi_init()? I think it's overloaded already,
+> but I defintely can think about:
+>=20
+> drmm_connector_hdmi_init(..., max_bpc, HDMI_CODEC_I2S_PLAYBACK(8) |
+> HDMI_CODEC_NO_CAPTURE | HDMI_CODEC_DAI_ID(4));
+>=20
+> or
+>=20
+> ... | HDMI_CODEC_NO_DAI_ID)
+>=20
+> The default (0) being equivalent to:
+>=20
+> HDMI_CODEC_NO_I2S | HDMI_CODEC_NO_SPDIF | HDMI_CODEC_NO_CAPTURE | HDMI_CO=
+DEC_NO_DAI_ID
+>=20
+> WDYT?
 
-Heiko
+I know it's kind of contradictory, but it definitely looks overcrowded.
+
+A bit after we merged the HDMI infrastructure, Thomas commented that it
+might have been better to have a secondary init function instead of an
+alloc/init function.
+
+https://lore.kernel.org/all/5934b4b2-3a99-4b6b-b3e3-e57eb82b9b16@suse.de/
+
+It's still sitting in my inbox and haven't had the time to work on that,
+but maybe that's how we should deal with this?
+
+Switch to using drm_connector_init, then drm_connector_hdmi_init would
+only take care of the video stuff, and we could have an additional
+drm_connector_hdmi_audio_init?
+
+That way, we could have both explicit stuff, and yet not overcrowd the
+arguments list too much?
+
+Maxime
+
+--zlmn4u42a2hgjiwb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ1MGKAAKCRAnX84Zoj2+
+dsbFAYD9a9CbKAF5U+/Xm3fLE7a14J/XPBbuz9EMu0GYhSCDU8jSH+AV+9KU2ocR
+VKqXE0sBf3bndpAJ89NpeYGjJK6VbFoQ356f4QDu++x8FSywdfvKoLqiFOIjJWpk
+49TswdgyBg==
+=ehcm
+-----END PGP SIGNATURE-----
+
+--zlmn4u42a2hgjiwb--
 
 
+--===============4792734864416470674==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4792734864416470674==--
+
