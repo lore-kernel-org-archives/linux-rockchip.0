@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C08E77179
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 11:27:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18D9E77173
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 11:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Q8t2aazU9qCV07RsM787TxhzREP44H3qNgw7OKloSk=; b=UbeUGgFuVD/Vmj
-	VSrEdwXYRWJ82wRazCN5BaYNm7GQP7YK3+O+8q1gdxufGGxZlUrkoDbUzFpv+1YGqDbbOGwgMnYrw
-	cycGF4YpI7j6vSyxAYe031i7i7brLJCTxcl7LgZNocAEjUCEbKJATDsNNAjmaPKH6BIKdsAtOPwnx
-	Cyj+jL1mJC+ZRwyOfN7fCaXXNH33+D+IaEaf7hMcA1tZJm9ILmmRxH5V6DE9huXKsTVIfuyUsUFPF
-	ye5nz5yhxuD2XnAKWWqWdpIwbVjLVGB0SqR5nXPJwPvKzBx+14CSTDqfLMVD6AP2GburtwAk7A4Qa
-	jqVq+WTVdZNVyN1J0DnQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eXNYE1reWz+DmZ/O+9uGQ797uHuqxZmmTM/OHLZowL4=; b=D/EIcI70iLfkmW
+	qjUM6Z8bOczmu5r7k8Vo5A/sAE/NgPGb1wMKoBppneDpoQzNEMzaWi5YGzKbYxNrWER4l5MrOOhZS
+	am+TNfNu9r5b5JN/J+g/2UWBnKbmu6djlGzx3TNOSI/l/nyNdo5tZpYioka8p/mzEgN6XjAU145ao
+	OgFcoKIgUlZ1Gjdv/7RP67yUSDKZGFbuEV3hTSU1Tn31M0/siPz8vWOeYwObJQeFMj4rDH7YXqogU
+	b19K2isDStSTlxFOv0JnZNLehSe6u2TqcU3piLjM0kpXY0I6cThSxUIW7UvxQ92rjw3iRKO2Yhm9e
+	W0lP66pSVN67QpuYEf1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJWUo-00000001SGO-2DAY;
-	Fri, 06 Dec 2024 11:27:42 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tJWkT-00000001U96-3v2R;
+	Fri, 06 Dec 2024 11:43:53 +0000
+Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJWTm-00000001S4b-1IOc;
-	Fri, 06 Dec 2024 11:26:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733484396;
-	bh=92LOd4MVW8Q5TbMDOf61nL89xm4rnQFTUKQsD73JLss=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FNf7w7i0c3cowGaiFG8pUSh1g1UNSADZB4AaL/dDcWwsOrivA21zTi/NBBqTuXE8f
-	 MvT0q5EJ7owzF/J4OzM36JE9qEZUegyzP+s4diMmg0PR+qgrO+Z/W4FDy8998ZVUJ6
-	 APbPjeFis4XgoJtt+J+KZCLs+X00bvtOD1hLcApU5pGWNv834fCj6aG8t+GV0CQ2Ui
-	 iJuGN+hLeitnRl7Ccfr4GGnziJlzwqdex129nUVsKcmKI6DYUVIyIxZAnfDANJm9QC
-	 p6dnvJzX1U1xtiIiBB0zmC3+WEH3FTW48CwAGih+WiO974m2sgsDUxyl/NSgmdoTs2
-	 0i/xIgiWn1VKQ==
-Received: from [192.168.1.90] (unknown [188.27.48.199])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1tJWjS-00000001U1g-18zl;
+	Fri, 06 Dec 2024 11:42:51 +0000
+Received: from laptop.lan (unknown [125.33.216.38])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 57DB417E3614;
-	Fri,  6 Dec 2024 12:26:36 +0100 (CET)
-Message-ID: <87273a36-07f9-4224-bfff-63e905be9b0a@collabora.com>
-Date: Fri, 6 Dec 2024 13:26:35 +0200
+	by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 2CFCF3F789;
+	Fri,  6 Dec 2024 11:42:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1733485365;
+	bh=PFPFV0Ax8i8C9LyOLIOefcKHDDFqRhlURq1jSxeY31o=;
+	h=From:To:Subject:Date:Message-Id:MIME-Version;
+	b=blgoFFBseV8uNYm7ISBs4Rh1VbtPHumoIOXPTinyfqfICH5IaNJv1CLMT3yRtHsXJ
+	 3aSrEH7kzcWwEiUZLuWYDqkpfQ2fklpXSk50KvH0ju0RqTB1yfRMGWxE/ldKTFC1An
+	 iVNQ4RYYnqqC4dae2l/0MdarYIj2bYOw9EG9oqKe08YiC8tZ2+eueUQjd7e+/G1SbY
+	 2HWZCKN0uBZQEKI+RHwhs1F2L1h4B5bDY55uzMtumpV/6+90qAVWsqgZ8yW4+j3Luy
+	 M8Is54VTN/qYoBoiEd2PXcKOLdCsT+5bvxcK+77I1/ohFzNIplLdEoK43sccfj7ntE
+	 7Q7I8FcQ1dm5g==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] drm/rockchip: Remove unnecessary checking
+Date: Fri,  6 Dec 2024 19:42:33 +0800
+Message-Id: <20241206114233.1270989-1-guoqing.jiang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] phy: phy-rockchip-samsung-hdptx: Don't use dt aliases
- to determine phy-id
-To: Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20241206103401.1780416-1-heiko@sntech.de>
- <20241206103401.1780416-3-heiko@sntech.de>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20241206103401.1780416-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_032638_496902_BDD90075 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20241206_034250_486895_9D485A44 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,53 +79,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/6/24 12:34 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> The phy needs to know its identity in the system (phy0 or phy1 on rk3588)
-> for some actions and the driver currently contains code abusing of_alias
-> for that.
-> 
-> Devicetree aliases are always optional and should not be used for core
-> device functionality, so instead keep a list of phys on a soc in the
-> of_device_data and find the phy-id by comparing against the mapped
-> register-base.
-> 
-> Fixes: c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock provider support")
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
->  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 50 ++++++++++++++++---
->  1 file changed, 44 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> index c5c64c209e96..b137f8c4d157 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> @@ -385,11 +385,22 @@ enum rk_hdptx_reset {
->  	RST_MAX
->  };
+It is not needed since drm_atomic_helper_shutdown checks it.
 
-[...]
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> +
-> +	/* find the phy-id from the io address */
-> +	hdptx->phy_id = -ENODEV;
-> +	for (id = 0; id < hdptx->cfgs->num_phys; id++) {
-> +		if (res->start == hdptx->cfgs->phy_ids[id]) {
-> +			hdptx->phy_id = id;
-> +			break;
-> +		}
-> +	}
-> +
-> +	if (hdptx->phy_id < 0)
-> +		return dev_err_probe(dev, -ENODEV, "no matching device found\n");
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 585355de696b..64f5f547fb7a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -488,8 +488,7 @@ static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
+ {
+ 	struct drm_device *drm = platform_get_drvdata(pdev);
+ 
+-	if (drm)
+-		drm_atomic_helper_shutdown(drm);
++	drm_atomic_helper_shutdown(drm);
+ }
+ 
+ static const struct of_device_id rockchip_drm_dt_ids[] = {
+-- 
+2.35.3
 
-Maybe we could simply fallback to assume phy1 doesn't exist in this
-case, which avoids the need to provide a match data with a single entry.
-
-Regardless,
-
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
