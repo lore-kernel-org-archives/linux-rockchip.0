@@ -4,66 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889C8E7716E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 03:28:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB38EE77173
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 10:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U5+hs+85dngq1uPxeSoEwg24DhJr3g1l7iiDBuD/yfQ=; b=IdFOhua2e9brgWzUCytmDvi+fo
-	MF1O7FwmNNUL3hQc1ASN4gm18EvJJvoIlGhuJzjCZFgqKxHc5ZYvqm3a5eUOoxHZlenhiish8Ne72
-	zm4dH+LnT7OeExQXt8uBCYC642BAal9mAELg8diEUF+OgpIlA4J0tJbrfEuAkN5toDMAIHLiySaQA
-	WBV20rM+dPB1rmR3vZu54D6mrzV3KJb0MKWVuSIfWKD7SxkMPX1jh8fH/lqfo2ixKgwf3xB8+acRD
-	fv3pUk+ZosNWw4LprFM7J17bmpRelFJqCwWwPpgPUVzYf5Q1NXN3Xrp5md0GC8ruBwFuWmsUUrY64
-	jnWQnj2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rCHQ6c/jP2lVAkoa/Tov61GVc5h3QBsMtrxxVZ1a0KI=; b=ds3HBLCAaLQUW1
+	J6BLYa2P/IpMRBHtW8tb//th/ZIf8JcZ1vCOe39pujhwLBRQJUBuriQGwG9QMgGBX3fj1vjhB+6nx
+	XEwSW0VZB9Kjn/MiUtCW4vW46NgIMSYoJ+nL8S18wJQk4uMpQe5OyMX1QmweAc+qYMMVJfedOcQQ6
+	ztGO0RZ84T3L0VgTVVGjdCWcdB2YZmA2mz+fo8ct9QOW1GJ5DUiGqMCmGgRERrLeVWYXDF+aKHW72
+	Q5rAWt48DpwjTBSYgxQxoCpQyUEGRZ6lLcpHNVR5Z7nBOgdYnHyYyVmZVvKS27oPYnLUjW1W9jUUq
+	jajXw7GrkjUR+s/vO0iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJP18-00000000R2l-3ILi;
-	Fri, 06 Dec 2024 03:28:34 +0000
-Received: from mail-m49232.qiye.163.com ([45.254.49.232])
+	id 1tJVdF-00000001Isr-1Tiy;
+	Fri, 06 Dec 2024 10:32:21 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJP16-00000000R0P-0GHX;
-	Fri, 06 Dec 2024 03:28:33 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4df43c1a;
-	Fri, 6 Dec 2024 11:28:21 +0800 (GMT+08:00)
-Message-ID: <c0bc25b7-6e41-4ed8-ae8d-692a908607df@rock-chips.com>
-Date: Fri, 6 Dec 2024 11:28:21 +0800
+	id 1tJVOC-00000001ECX-3yvo
+	for linux-rockchip@lists.infradead.org;
+	Fri, 06 Dec 2024 10:16:50 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-53df67d6659so1827911e87.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Dec 2024 02:16:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733480207; x=1734085007; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XdpsanGAJq/HJAcg8LOfnw7m4WhAfgPQTWEy7/V+0WA=;
+        b=Hf8Czo/4MVnz1SGlcMzdGRUUEAIKJEk1zcU9X6j/m/IohmilTxCmBeb5Y+5O2UWnuA
+         DOVoGPXn0v2KDq+Pxt6mZXH2sfPE2HmwYZYhadHxW4TDHKxzQbpSJXzo9dDnmihqt5Az
+         qcnV5wGMd7lVc/MM68x4wAAtm7hoZY+aYTcIeXe2zomXmM1LDSk37HV6HVzgS4ody769
+         SL4nI0tlh6qNg4k5WmeuK1MOTxgsZOy/H5MoXs++UWkX+WnsizHz/mZQbBD5LyssdUx7
+         Fa8IGYTEPOemm4qfv9xC7dGOTrrUn/PD9vaDlw+qADP1Vq6J98klA50pPbRZfBd+0mQX
+         U++g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733480207; x=1734085007;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XdpsanGAJq/HJAcg8LOfnw7m4WhAfgPQTWEy7/V+0WA=;
+        b=GHCOUMUfmev540mtqB1GEwncnagyYmvfoZLu7FGiBANTC8J3PTeRxTVnm3HtBjEtBr
+         XdU989qVYNLh3tzNGGnfigcEFsvrtzLvsL8BFYesermJqpkCZczM937BfY+cIsJV8XwC
+         uv9DjA1JR01WelThXeJhLExZvBUpEfBmPk5WyrNM815aaDEw8jjn1r0m4kHCD+IJuQEi
+         tQ6da7RpR62nUuKVWG8VfJwwufEshJODD9guzhIfWlj4L2ifrVLs6dJtR9feo6hC8MH8
+         NeWRwCIFe4Rsf7AtbxfUJSNCA+CK3nCZnlhQUFboh9O73TheiBeUnkt5O8NhT0X+MsTd
+         jnoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU0Jw7e7XsRWC+qUdJcKoAkz5eMllAoSz8fV24Wo8xSAHfzwjCYPiiWdkwjf2XQVumTsJYhrtx29bQup3FSfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx0sLk2WXeIf/YWqoGS3OEXcsTnqlc0nTCLgHWm6yFFQUQW8dDV
+	A1lZpRjCqmG76tOrxEIs2CwA9hxwV0Pi9dbAGOms2PRoNHgh2fkVm4l1pe/5GZc=
+X-Gm-Gg: ASbGnctOCNDkyO8d85jCO9luooZb3zdgoB7Gk44thCJzof4IcQym4DhzEptQlU8kK6f
+	u1IQaHgoUUwaMWb8/wAko69ezFHMXhvUoxvrJiyh8H4TgtjrKq6hQyZmS0oZkKC8YEl7B1fvI/F
+	ja7HN4fqin1kdTViJ53nmnpch2ple0F/tWaOz8ay0up2aAOswXijy4Z3RWG6b8Dkz2L+p7uUX3n
+	6C1LN9D/WgavIHh8gpc9I/fLt06V08hR5eHGN811/0hvr6grTUrsKF4Tg==
+X-Google-Smtp-Source: AGHT+IFkrbYIrOOX+notTKc9sLOnekf4EyYqfJ1UPx3hlsMd+eSwOGD1rvbmH6UCcVPjOPfN3YJGzQ==
+X-Received: by 2002:ac2:5212:0:b0:53e:2ed9:8122 with SMTP id 2adb3069b0e04-53e2ed98271mr483402e87.22.1733480207015;
+        Fri, 06 Dec 2024 02:16:47 -0800 (PST)
+Received: from umbar.lan ([192.130.178.90])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53e2294738fsm462355e87.52.2024.12.06.02.16.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Dec 2024 02:16:45 -0800 (PST)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Fri, 06 Dec 2024 12:15:55 +0200
+Subject: [PATCH v6 01/10] ASoC: hdmi-codec: pass data to get_dai_id too
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 04/10] phy: phy-rockchip-samsung-hdptx: Add support for
- eDP mode
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20241127075157.856029-1-damon.ding@rock-chips.com>
- <2131853.KlZ2vcFHjT@diego>
- <6e1f35c0-5ea8-414f-b3ea-4e7222c605ef@rock-chips.com>
- <2886747.Y6S9NjorxK@diego>
- <h4giob7bcrh7qmtepti6huym2llw4ujfmeff76vrgpahb5zy6x@dz6zghsifww5>
- <2342f342-672c-447e-90d8-674b748af6a4@rock-chips.com>
- <abzu2chif2g3urxoqbm3gbe6cciexbmqvn44qezrx4hgllfkkn@7bzi5jl3stqe>
- <42035ebe-09b7-4005-912a-8ec72d5dabcc@rock-chips.com>
- <5ncdog66jtc4s7vxk2yt4jkknf2es3whvweuqmrxbot3azi5ge@t6s3xadkiasp>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <5ncdog66jtc4s7vxk2yt4jkknf2es3whvweuqmrxbot3azi5ge@t6s3xadkiasp>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0JDQlYdSBoZS0sfTx0dTx9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a939a02e70703a3kunm4df43c1a
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MhQ6GTo4OjIpSgEZKCkWFzww
-	FhVPCilVSlVKTEhIT05OTEtITkhNVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTUtLNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=kPHScr159WsiJG96Ork6FzwSMNbCQmUyQiTo49UIfTNDjTnurol/onZC7EOZpN8egR0d5Wltmfu4s4A1J2M/lM0yadBTKzrhmL5jyZk8oBUo6Ei1RJqUkOFc+a+RMgvgkwTIS2d4wyBGm1zAptOnnzrxcMoGdC5S+7C9miLNpcc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=OkOQFcENXzlE05E2GhFQKZHqHer5Jyvf4HzPjb5KtAk=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20241206-drm-bridge-hdmi-connector-v6-1-50dc145a9c06@linaro.org>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+In-Reply-To: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5692;
+ i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
+ bh=mf+Mbo35eir6B+rLArs//796iJiX64HF7YQK4dBg7Bc=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnUs8IaYJW+k5SE3hHwYqHHBuqemef33RuRKCYf
+ kdE0NK2gquJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ1LPCAAKCRCLPIo+Aiko
+ 1bSBCACCtZjKIQS+Bj+44o3OJdoyxZmYPBE6MN//iugAoMcK5In7DBzfTnazsoUgTXTlJV+KBzs
+ K6VspCTgwjXkFNiH18fKKUpEoIblZrZeBNA54jsgl/75JHwhjlILpGNMzV0lJBIo8lBXgNRV5eE
+ E06RaRtbicWAG/0OLMg6mHDo84Mrjz+ZkZUuGHOJUDN/Ssh5ykbFVbytxek+cFeC9IPAdQkmGw2
+ pRkjnWyIDW3lVFvTJWIm5m767qmw/GNwPGZNllOJBhOkjd0rWVf8PyVasjzuZE0D7sQ1jypZYWF
+ b5EcXqqIdOsFD4zZYm5ADR/o1EstOZMJ740FO/kps0HNPO//
+X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
+ fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241205_192832_611635_50897D0D 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20241206_021649_051421_BAD0E180 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,69 +131,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+The upcoming DRM connector HDMI codec implementation is going to use
+codec-specific data in the .get_dai_id to get drm_connector. Pass data
+to the callback, as it is done with other hdmi_codec_ops callbacks.
 
-On 2024/12/6 2:04, Sebastian Reichel wrote:
-> Hello Damon,
-> 
-> On Thu, Dec 05, 2024 at 09:13:33AM +0800, Damon Ding wrote:
->> Firstly, the term "the HDMI and eDP dynamic switching" can be somewhat
->> misleading, because the eDP usually does not support hot plug. The RK3588
->> eDP is often used as DP, and it actually supports DP 1.2. Therefore, it is
->> better to use the "the HDMI and DP dynamic switching" description.
-> 
-> The part unclear to me is how the dynamic switching is supposed to
-> happen. Looking at the TRM the hotplug detect signals also seem to be
-> shared between HDMI and eDP. Can the RK3588S EVB distinguish if HDMI
-> or eDP has been plugged, or does this require some user interaction
-> to set the right mode?
+Acked-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+---
+ drivers/gpu/drm/bridge/adv7511/adv7511_audio.c      | 3 ++-
+ drivers/gpu/drm/bridge/analogix/anx7625.c           | 3 ++-
+ drivers/gpu/drm/bridge/lontium-lt9611.c             | 3 ++-
+ drivers/gpu/drm/bridge/lontium-lt9611uxc.c          | 3 ++-
+ drivers/gpu/drm/bridge/sii902x.c                    | 3 ++-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 3 ++-
+ include/sound/hdmi-codec.h                          | 3 ++-
+ sound/soc/codecs/hdmi-codec.c                       | 2 +-
+ 8 files changed, 15 insertions(+), 8 deletions(-)
 
-Indeed, HDMI and eDP share the same pin for hotplug detect. However, 
-some users may connect the hotplug detection pin of DP-connector with an 
-unexpected pin that can not support the iomux of hotplug detect function 
-on RK3588 SoC. This could be due to a flaw in the hardware design, a 
-conflict in pin multiplexing, or other factors. Therefore, we support 
-the GPIO HDP function for the eDP, as DP also supports this for the same 
-reasons.
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+index 61f4a38e7d2bf6905683cbc9e762b28ecc999d05..51fb9a574b4e28450b2598a92e2930ace5128b71 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+@@ -204,7 +204,8 @@ static void audio_shutdown(struct device *dev, void *data)
+ }
+ 
+ static int adv7511_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-					struct device_node *endpoint)
++					struct device_node *endpoint,
++					void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index c036bbc92ba96ec4663c55cca091cd5da9f6d271..943dd3cf57738d8c232d57d793756eb2e3bf1c5a 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -1952,7 +1952,8 @@ static void anx7625_audio_shutdown(struct device *dev, void *data)
+ }
+ 
+ static int anx7625_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				       struct device_node *endpoint)
++				       struct device_node *endpoint,
++				       void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
+index 1ffbe473e4103dfc315a8cd3571e9407bf518797..60b7305c0fd1935e35742713c78937392b7faa79 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
+@@ -1057,7 +1057,8 @@ static void lt9611_audio_shutdown(struct device *dev, void *data)
+ }
+ 
+ static int lt9611_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				      struct device_node *endpoint)
++				      struct device_node *endpoint,
++				      void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
+index f89af8203c9d67cb05b629b27f66cf996baedd16..77bc09b875323d88f7346db9d24ea89a355c99b1 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
+@@ -522,7 +522,8 @@ static void lt9611uxc_audio_shutdown(struct device *dev, void *data)
+ }
+ 
+ static int lt9611uxc_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-					 struct device_node *endpoint)
++					 struct device_node *endpoint,
++					 void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/sii902x.c b/drivers/gpu/drm/bridge/sii902x.c
+index 9be9cc5b902594ebe6e1ac29ab8684623e336796..f0be803cc2274ca2199ed7661cf752b0a91434b6 100644
+--- a/drivers/gpu/drm/bridge/sii902x.c
++++ b/drivers/gpu/drm/bridge/sii902x.c
+@@ -815,7 +815,8 @@ static int sii902x_audio_get_eld(struct device *dev, void *data,
+ }
+ 
+ static int sii902x_audio_get_dai_id(struct snd_soc_component *component,
+-				    struct device_node *endpoint)
++				    struct device_node *endpoint,
++				    void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+index 26c187d20d973dc65801a3baa59ecf57d20072eb..86c412e9cbc80bb82bad5db3aa0263a7acd9c2d7 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+@@ -148,7 +148,8 @@ static int dw_hdmi_i2s_get_eld(struct device *dev, void *data, uint8_t *buf,
+ }
+ 
+ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+-				  struct device_node *endpoint)
++				  struct device_node *endpoint,
++				  void *data)
+ {
+ 	struct of_endpoint of_ep;
+ 	int ret;
+diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+index 5e1a9eafd10f5d4f831abbb6f4c0fff661909584..b3407b47b4a7878532ecf3b08eeecd443d6fdb07 100644
+--- a/include/sound/hdmi-codec.h
++++ b/include/sound/hdmi-codec.h
+@@ -105,7 +105,8 @@ struct hdmi_codec_ops {
+ 	 * Optional
+ 	 */
+ 	int (*get_dai_id)(struct snd_soc_component *comment,
+-			  struct device_node *endpoint);
++			  struct device_node *endpoint,
++			  void *data);
+ 
+ 	/*
+ 	 * Hook callback function to handle connector plug event.
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index d9df29a26f4f213a30a2ebcdb63a593f9cf4b901..f536ca60e162dca6b50b37854ca6de2c114bc2a1 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -995,7 +995,7 @@ static int hdmi_of_xlate_dai_id(struct snd_soc_component *component,
+ 	int ret = -ENOTSUPP; /* see snd_soc_get_dai_id() */
+ 
+ 	if (hcp->hcd.ops->get_dai_id)
+-		ret = hcp->hcd.ops->get_dai_id(component, endpoint);
++		ret = hcp->hcd.ops->get_dai_id(component, endpoint, hcp->hcd.data);
+ 
+ 	return ret;
+ }
 
-If the dynamic switching is enabled, HDMI detects the HPD signal through 
-  the hotplug detect function pin, while eDP uses one of the available 
-GPIO pins to do this.
+-- 
+2.39.5
 
-What's more, if the user connects an HDMI cable first and than connects 
-a DP cable as well, despite our clear instruction against using HDMI and 
-eDP simultaneously, the status register of GRF will indicate that HDMI 
-has been connected. Meanwhile, during the HPD detection process for eDP, 
-it will return "connector_status_disconnected". The reverse scenario 
-also applies.
-
-> 
->> Indeed, the devm_phy_get(dp->dev, "dp") and devm_of_phy_get_by_index() will
->> help to get the phy reference in .probe() or .bind().
->>
->> However, the phy_set_mode() may be still needed in the HDMI and DP dynamic
->> switching application scenarios. We need the enum phy_mode
->> PHY_MODE_DP/PHY_MODE_HDMI to differentiate the configuration processes in
->> .power_on(), .power_off() and .configure() of struct phy_ops, which will be
->> called in conjunction with plugging in and unplugging an HDMI or DP cable.
-> 
-> I suppose you could fetch the PHY in power_on() and release it in
-> power_off(). But using phy_set_mode() might indeed be better here.
-> 
-
-As a future expansion, the .set_mode() can also be helpful in the txffe 
-level adjustment for HDMI 2.1. :)
-
-> -- Sebastian
-
-Best regards,
-Damon
 
 _______________________________________________
 Linux-rockchip mailing list
