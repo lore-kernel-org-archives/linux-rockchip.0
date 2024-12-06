@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B94EE7717B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 14:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 148EEE77173
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 15:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1kk2jFAt+PWgUgMsQHHz6jlNiSrt/5C6KTcayVTIeS8=; b=hY9ZOFI4xpoavD
-	uHvX5i/2uobo6Hpl8mMRxJRs33DXcuGSCoolAyF3w9FHPD8f8MHLfP86XZHc9V7IsN/pb/xp8Lg0Y
-	NTzK4JS9TyfksePv0ok1PYduCC/Tmebs7DMoWgWuTl3oVcinIbqo6hmexHhm2w9hDEyZqm/dv9912
-	gOVxpGqSsmdK4Q64oj0tL9Hn6PptAbRNbsQBGE3buwb3rmd/p/qEbQn1qM86gJyvbJbIiZeSySff7
-	SEi9NUED88fQNAMpfCus8ZJS0FoE7Fq1T6S1j0xSNGPDYLxwNksC0xg29tLeKH/rgi5lGcQba1twa
-	86AEUZYtESW1G2uQCEhw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5H1naxHfx0cZcu9CvtS1aOw/40pwhjasnik0U6ucNnM=; b=Zj1Z1QGdsI+gD/
+	FWor5Fr0mfOcT7vUMSJG9E4h13JdNuiLfdYZx7qHyaRaEwasmrRBUDCfFKWtRugtc3TDe1W3sPAFm
+	kNYsiMyOXS5lyOMBTyEKRUSf5+ZzMGK+d3ZDThoMhcwnde0qcMUd1McXqPKqvkFRrvtlgBuQ8S0FU
+	JKOy6vw08BUsbzXRFOrZT6WZGwEGsne6XHVtQ1/6IRRzWuMnefRGDd3r1pyFJqRuzTq3ZixVjLHx7
+	Xsym5TInmPmXoW0hU7HODTZkQJT9tgrGQiqGgvI9nQBDxkPKR9G6yVTccTLMGG5oYwKBfj7ZidMek
+	xCEVC59WXaLvx8x7y94g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJZS2-00000001say-31Lq;
-	Fri, 06 Dec 2024 14:37:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tJaaA-000000022nn-2dLW;
+	Fri, 06 Dec 2024 15:49:30 +0000
+Received: from smtp-bc0a.mail.infomaniak.ch ([45.157.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJZQk-00000001sM0-21hc;
-	Fri, 06 Dec 2024 14:35:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=lXAYhpdfsf+gOIdq60uXPUI1h1U4aSY+52/5Tzkwy3o=; b=zGqZu5nmmiMR40kS1ag20bkZPn
-	34/WeQB+p3pPf5pLsBw3pnqEJbt/Oo/WuvhzsETmFIx3NcWETcipC+hKsTXGu93XASq00fG7IiRhY
-	ugoku54YtHBQCHd2dIrEF8RZto8uUUd2BPnAXualbTHQyzVf/HDdnXKEVNswMpIhJlD2+8YJWA/ZR
-	w2AR0CD0BSddg0M0kJN9aiTdyRi/PwU/fPifztlnuqZVfCvzMjPIi26kxT2H2TsWf1LAD9tDN28/1
-	0Kl1t9kLx7MQzvLaV4zLiQkE/kJ9RIFCW6VuRaphGb3r2RZvay3zfzCXbuZXcCfwy8zIPWpCN5DDT
-	U5xMwHLA==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tJZQW-00011Y-Hy; Fri, 06 Dec 2024 15:35:28 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v1 00/10] Add eDP support for RK3588
-Date: Fri, 06 Dec 2024 15:35:27 +0100
-Message-ID: <5939852.zQ0Gbyo6oJ@diego>
-In-Reply-To: <20241127075157.856029-1-damon.ding@rock-chips.com>
-References: <20241127075157.856029-1-damon.ding@rock-chips.com>
+	id 1tJaXF-000000022MQ-1RQm
+	for linux-rockchip@lists.infradead.org;
+	Fri, 06 Dec 2024 15:46:31 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Y4bG85qNJztSm;
+	Fri,  6 Dec 2024 16:46:24 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Y4bG81dM8z6Rx;
+	Fri,  6 Dec 2024 16:46:24 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 06 Dec 2024 16:46:17 +0100
+Subject: [PATCH] arm64: dts: rockchip: minimal support for Pre-ICT tester
+ adapter for RK3588 Jaguar
 MIME-Version: 1.0
+Message-Id: <20241206-pre-ict-jaguar-v1-1-7f660bd4b70c@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAEgcU2cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxNDIwMz3YIioFByiW5WYnppYpFukqVBWmJaaqpFUoqFElATUDotswJsYHR
+ sbS0AYe0Q72AAAAA=
+X-Change-ID: 20241206-pre-ict-jaguar-b90fafee8bd8
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_063542_512710_42E029EC 
-X-CRM114-Status: GOOD (  19.68  )
+X-CRM114-CacheID: sfid-20241206_074629_532288_D5848AB6 
+X-CRM114-Status: GOOD (  18.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,96 +63,233 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daemon,
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Am Mittwoch, 27. November 2024, 08:51:47 CET schrieb Damon Ding:
-> These patchs have been tested with a 1536x2048p60 eDP panel on
-> RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
-> on RK3588 EVB1 board.
-> 
-> Patch 1~3 are the RK3588 eDP support of Rockchip analogix_dp driver.
-> Patch 4   is the eDP mode support of samsung hdptx phy driver.
-> Patch 5~6 are the Rk3588 eDP support of Aanalogix DP driver. Add phy
->           interfaces is to configure the HDMI/eDP TX Combo PHY.
-> Patch 7~8 are the renaming of hdptxphy node. It is not only used by
->           HDMI display but also for the eDP display.
-> Patch 9   is the addition of RK3588 eDP0 node.
-> Patch 10  is to enable the eDP0 display on RK3588S EVB1 board.
+The Pre-ICT tester adapter connects to RK3588 Jaguar SBC through its
+proprietary Mezzanine connector.
 
-Could you maybe also bring over functionality for real bridge-handling?
-That way we'd have support for things like the dp-connector bridge.
+It exposes a PCIe Gen2 1x M.2 connector and two proprietary camera
+connectors. Support for the latter will come once the rest of the camera
+stack is supported.
 
-In the 6.1 vendor-tree I've found commits
-94e598190128 ("drm/rockchip: analogix_dp: Add support for external bridge")
-437e0a901b14 ("drm/bridge: analogix_dp: Support split mode for bridge chain")
+Additionally, the adapter loops some GPIOs together as well as route
+some GPIOs to power rails.
 
-needing a bit of cleanup of course, but that would get rid of the driver
-not handling the DRM_BRIDGE_ATTACH_NO_CONNECTOR flag too.
+This adapter is used for manufacturing RK3588 Jaguar to be able to test
+the Mezzanine connector is properly soldered.
 
-With a bit of streamlining, we could maybe even get rid of the panel-part
-completely, similar to how the dw-dsi controllers do it [0]
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+GPIO3A3, GPIO3A4, GPIO3B2 and GPIO3D2 to GPIO3D5 are all routed to power
+rails and can only be used as input and their bias are important to be
+able to properly detect soldering issues.
+---
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ .../dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso | 171 +++++++++++++++++++++
+ 2 files changed, 172 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 86cc418a2255cdc22f1d503e9519d2d9572d4e9d..60074d21d92b4800bdc555648a9360e13d19febc 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -139,6 +139,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-lts.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso
+new file mode 100644
+index 0000000000000000000000000000000000000000..9d44dfe2f30d793accb994a230c58038f0c3daad
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso
+@@ -0,0 +1,171 @@
++// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
++/*
++ * Copyright (c) 2024 Cherry Embedded Solutions GmbH
++ *
++ * Device Tree Overlay for the Pre-ICT tester adapter for the Mezzanine
++ * connector on RK3588 Jaguar.
++ *
++ * This adapter has a PCIe Gen2 x1 M.2 M-Key connector and two proprietary
++ * camera connectors (each their own I2C bus, clock, reset and PWM lines as well
++ * as 2-lane CSI).
++ *
++ * This adapter routes some GPIOs to power rails and loops together some other
++ * GPIOs.
++ *
++ * This adapter is used during manufacturing for validating proper soldering of
++ * the mezzanine connector.
++ */
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&{/} {
++	pre_ict_tester_vcc_1v2: regulator-pre-ict-tester-vcc-1v2 {
++		compatible = "regulator-fixed";
++		regulator-name = "pre_ict_tester_vcc_1v2";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1200000>;
++		regulator-max-microvolt = <1200000>;
++		vin-supply = <&vcc_3v3_s3>;
++	};
++
++	pre_ict_tester_vcc_2v8: regulator-pre-ict-tester-vcc-2v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "pre_ict_tester_vcc_2v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <2800000>;
++		regulator-max-microvolt = <2800000>;
++		vin-supply = <&vcc_3v3_s3>;
++	};
++};
++
++&combphy0_ps {
++	status = "okay";
++};
++
++&gpio3 {
++	pinctrl-0 = <&pre_ict_pwr2gpio>;
++	pinctrl-names = "default";
++};
++
++&pcie2x1l2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2x1l2_perstn_m0>;
++	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>; /* PCIE20X1_2_PERSTN_M0 */
++	vpcie3v3-supply = <&vcc_3v3_s3>;
++	status = "okay";
++};
++
++&pinctrl {
++	pcie2x1l2 {
++		pcie2x1l2_perstn_m0: pcie2x1l2-perstn-m0 {
++			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pre-ict-tester {
++		pre_ict_pwr2gpio: pre-ict-pwr2gpio-pins {
++			rockchip,pins =
++			/*
++			 * GPIO3_A3 requires two power rails to be properly
++			 * routed to the mezzanine connector to report a proper
++			 * value: VCC_1V8_S0_1 and VCC_IN_2. It may report an
++			 * incorrect value if VCC_1V8_S0_1 isn't properly routed,
++			 * but GPIO3_C6 would catch this HW soldering issue.
++			 * If VCC_IN_2 is properly routed, GPIO3_A3 should be
++			 * LOW. The signal shall not read HIGH in the event
++			 * GPIO3_A3 isn't properly routed due to soldering
++			 * issue. Therefore, let's enforce a pull-up (which is
++			 * the SoC default for this pin).
++			 */
++				<3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
++			/*
++			 * GPIO3_A4 is directly routed to VCC_1V8_S0_2 power
++			 * rail. It should be HIGH if all is properly soldered.
++			 * To guarantee that, a pull-down is enforced (which is
++			 * the SoC default for this pin) so that LOW is read if
++			 * the loop doesn't exist on HW (soldering issue on
++			 * either signals).
++			 */
++				<3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>,
++			/*
++			 * GPIO3_B2 requires two power rails to be properly
++			 * routed to the mezzanine connector to report a proper
++			 * value: VCC_1V8_S0_1 and VCC_IN_1. It may report an
++			 * incorrect value if VCC_1V8_S0_1 isn't properly routed,
++			 * but GPIO3_C6 would catch this HW soldering issue.
++			 * If VCC_IN_1 is properly routed, GPIO3_B2 should be
++			 * LOW. This is an issue if GPIO3_B2 isn't properly
++			 * routed due to soldering issue, because GPIO3_B2
++			 * default bias is pull-down therefore being LOW. So
++			 * the worst case scenario and the pass scenario expect
++			 * the same value. Make GPIO3_B2 a pull-up so that a
++			 * soldering issue on GPIO3_B2 reports HIGH but proper
++			 * soldering reports LOW.
++			 */
++				<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
++			/*
++			 * GPIO3_C6 is directly routed to VCC_1V8_S0_1 power
++			 * rail. It should be HIGH if all is properly soldered.
++			 * This is an issue if GPIO3_C6 or VCC_1V8_S0_1 isn't
++			 * properly routed due to soldering issue, because
++			 * GPIO3_C6 default bias is pull-up therefore being HIGH
++			 * in all cases:
++			 *  - GPIO3_C6 is floating (so HIGH) if GPIO3_C6 is not
++			 *    routed properly,
++			 *  - GPIO3_C6 is floating (so HIGH) if VCC_1V8_S0_1 is
++			 *    not routed properly,
++			 *  - GPIO3_C6 is HIGH if everything is proper,
++			 * Make GPIO3_C6 a pull-down so that a soldering issue
++			 * on GPIO3_C6 or VCC_1V8_S0_1 reports LOW but proper
++			 * soldering reports HIGH.
++			 */
++				<3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_down>,
++			/*
++			 * GPIO3_D2 is routed to VCC_5V0_1 power rail through a
++			 * voltage divider on the adapter.
++			 * It should be HIGH if all is properly soldered.
++			 * To guarantee that, a pull-down is enforced (which is
++			 * the SoC default for this pin) so that LOW is read if
++			 * the loop doesn't exist on HW (soldering issue on
++			 * either signals).
++			 */
++				<3 RK_PD2 RK_FUNC_GPIO &pcfg_pull_down>,
++			/*
++			 * GPIO3_D3 is routed to VCC_5V0_2 power rail through a
++			 * voltage divider on the adapter.
++			 * It should be HIGH if all is properly soldered.
++			 * To guarantee that, a pull-down is enforced (which is
++			 * the SoC default for this pin) so that LOW is read if
++			 * the loop doesn't exist on HW (soldering issue on
++			 * either signals).
++			 */
++				<3 RK_PD3 RK_FUNC_GPIO &pcfg_pull_down>,
++			/*
++			 * GPIO3_D4 is routed to VCC_3V3_S3_1 power rail through
++			 * a voltage divider on the adapter.
++			 * It should be HIGH if all is properly soldered.
++			 * To guarantee that, a pull-down is enforced (which is
++			 * the SoC default for this pin) so that LOW is read if
++			 * the loop doesn't exist on HW (soldering issue on
++			 * either signals).
++			 */
++				<3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_down>,
++			/*
++			 * GPIO3_D5 is routed to VCC_3V3_S3_2 power rail through
++			 * a voltage divider on the adapter.
++			 * It should be HIGH if all is properly soldered.
++			 * To guarantee that, a pull-down is enforced (which is
++			 * the SoC default for this pin) so that LOW is read if
++			 * the loop doesn't exist on HW (soldering issue on
++			 * either signals).
++			 */
++				<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++};
 
-Thanks
-Heiko
+---
+base-commit: b8f52214c61a5b99a54168145378e91b40d10c90
+change-id: 20241206-pre-ict-jaguar-b90fafee8bd8
 
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c#n335
-devm_drm_of_get_bridge() combines drm_of_find_panel_or_bridge()
-with devm_drm_panel_bridge_add(), so indepent of it being either a
-panel or other bridge, the driver below only needs to handle bridges.
-
-> Damon Ding (10):
->   drm/rockchip: analogix_dp: Use formalized struct definition for grf
->     field
->   dt-bindings: display: rockchip: analogix-dp: Add support for RK3588
->   drm/rockchip: analogix_dp: Add support for RK3588
->   phy: phy-rockchip-samsung-hdptx: Add support for eDP mode
->   drm/bridge: analogix_dp: add support for RK3588
->   drm/bridge: analogix_dp: Add support for phy configuration.
->   dt-bindings: display: rockchip: Fix label name of hdptxphy for RK3588
->     HDMI TX Controller
->   arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
->   arm64: dts: rockchip: Add eDP0 node for RK3588
->   arch64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
-> 
->  .../rockchip/rockchip,analogix-dp.yaml        |   1 +
->  .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   2 +-
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  33 +-
->  .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    |   2 +-
->  .../rockchip/rk3588-coolpi-cm5-genbook.dts    |   2 +-
->  .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   2 +-
->  .../rk3588-friendlyelec-cm3588-nas.dts        |   2 +-
->  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   2 +-
->  .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   2 +-
->  .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   2 +-
->  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   2 +-
->  .../boot/dts/rockchip/rk3588-tiger-haikou.dts |   2 +-
->  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   2 +-
->  .../boot/dts/rockchip/rk3588s-evb1-v10.dts    |  84 ++
->  .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 +-
->  .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  |   2 +-
->  .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   2 +-
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |   2 +-
->  .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   2 +-
->  .../boot/dts/rockchip/rk3588s-rock-5c.dts     |   2 +-
->  .../drm/bridge/analogix/analogix_dp_core.c    |   8 +-
->  .../drm/bridge/analogix/analogix_dp_core.h    |   2 +
->  .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  90 ++
->  .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 112 ++-
->  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 936 +++++++++++++++++-
->  include/drm/bridge/analogix_dp.h              |   3 +-
->  26 files changed, 1206 insertions(+), 97 deletions(-)
-> 
-> 
-
-
-
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
