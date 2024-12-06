@@ -4,53 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA3EE77173
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 19:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1163E77173
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 19:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
-	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BVoTlD3b1rKy2ixVmyF9+ykEhoUev5pbqpS5O2IEKZQ=; b=Ihtz+G3kFiqzOt
-	R+NQ9G1iTbziq30HAOnUBQNoPhw18xOIwYt9tVYt+B8TxJeaH3iSNyvgvAuzNT6HUdMmyOIuLnrV2
-	k1SPMGchf56K3GT3dUXg9AQW3fiIgAiVZ+IUuw+uXWWLzX1Jwt0tCuePmT0Apdxx9qnMQPDhZR6rn
-	srcvJBKDcesLDKDt5E0/mGLWPIOPcD0wjqq0/N3qRTucRum0UlV9HUVRf8BnEHJznGvi3ALjvM9OP
-	5xwkr7AvM+0bs8x9EHL9n+b3aFXjxtLPu6bPIo9r5mAT5514zb/G8/Qxh5RComyV0mG9f1r7cSmR4
-	Tc1jAl8exJW+rfC+ekLw==;
+	List-Owner; bh=XTCMIYGyOvF6RzUhJ2UadkjOafGsVcD3vQTuCKXf/t0=; b=YtiYZIwI1H1Z7p
+	QsL4vfajbFycz9vcyYLxB7TzqnlGT+HM9DNmQIckibK09ijVQ9LEK/TPgZSn64InXKCVuxiwKgPIA
+	U1VRhes97Q/7iHduawnf/NL2ek4aSPlOpawsW1zLdPvSaOaX6OTvd3XdQlVSBjryfrEYre8esi1bZ
+	JdM5hI10vAG04+J/UbmVTAD9f8Ox91yk47CPmCoT2fiUh3fB4gXeGyiRIWuiu4iTwWhoFX/K7ql4u
+	TF7+A/K7iBcqXkWDd6yeH5f/u4Ry4i7hrGPASuB4gQ/7hX8zuABmTK1Hl5UyiTxjpFWelYYPWxxrW
+	QoXQo3JwtAYeR0R97teg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJdz5-00000002Y78-1lWC;
-	Fri, 06 Dec 2024 19:27:27 +0000
-Received: from mail-4322.protonmail.ch ([185.70.43.22])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJdy1-00000002XwQ-28pD;
-	Fri, 06 Dec 2024 19:26:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1733513176; x=1733772376;
-	bh=X8JUvZDF8pZ0yrFE3tmHbXwwXfZImzkkNaXc3mj/tqA=;
-	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector:
-	 List-Unsubscribe:List-Unsubscribe-Post;
-	b=TgMB9PJiYp1AurePQcKDKKRhb5iu7GXqi7HXbRGra+wqFlXoUGGHvGPUG4I8EzHCf
-	 38EZb0oX8K8OOhPCN4JxOEvRaHBabV/nh+bAmgtOaYnwjW7K5p1scQueIbixupVC5H
-	 VUlhfcSyz/U8Kty3kKByJkbOUWkTGYIrcO1H3QI0FbuRidUd3yr6+ItKsqlPqydlTQ
-	 nLok/LZDKd4/3MCaC9ICWJt5kavTRXGtjt0Sh1r6Ksb87k2amfohwKGNr6ZtsfQcEe
-	 pfCYLGTLQlQAT0yQlrqSLzC5CBhMKMmJtWcJrEVNr5tCtfrDgsbBgmzhfDJ08byBhh
-	 pbK1JdFAXvUmQ==
-Date: Fri, 06 Dec 2024 19:26:10 +0000
-To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>
-Subject: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
-Message-ID: <20241206192013.342692-3-pZ010001011111@proton.me>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: eb3005eed4d313c0c579f9dbf9bb42fd9ad30527
+	id 1tJeNL-00000002bUu-35Iz;
+	Fri, 06 Dec 2024 19:52:31 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tJeLu-00000002bIQ-07RU;
+	Fri, 06 Dec 2024 19:51:03 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DE32B12FC;
+	Fri,  6 Dec 2024 11:51:26 -0800 (PST)
+Received: from [192.168.0.16] (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4CF733F58B;
+	Fri,  6 Dec 2024 11:50:57 -0800 (PST)
+Message-ID: <1f2b3af4-2b7a-4ac8-ab95-c80120ebf44c@arm.com>
+Date: Fri, 6 Dec 2024 19:50:55 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Mark Brown <broonie@kernel.org>, heiko@sntech.de,
+ luis.dearquer@inertim.com
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Christian Loehle <christian.loehle@arm.com>
+Subject: [PATCH] spi: rockchip: Fix PM runtime count on no-op cs
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_112622_280737_663D52C8 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241206_115102_115405_9B0E1E83 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,46 +63,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove color_mgmt_changed check from vop2_crtc_atomic_try_set_gamma to
-allow gamma LUT rewrite during modeset when coming out of suspend. Add
-a check for color_mgmt_changed directly in vop2_crtc_atomic_flush.
+The early bail out that caused an out-of-bounds write was removed with
+commit 5c018e378f91 ("spi: spi-rockchip: Fix out of bounds array
+access")
+Unfortunately that caused the PM runtime count to be unbalanced and
+underflowed on the first call. To fix that reintroduce a no-op check
+by reading the register directly.
 
-This patch fixes the patch adding gamma LUT support for vop2 [1].
-
-[1] https://lore.kernel.org/linux-rockchip/20241101185545.559090-3-pZ010001011111@proton.me/
-
-Suggested-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: stable@vger.kernel.org
+Fixes: 5c018e378f91 ("spi: spi-rockchip: Fix out of bounds array access")
+Signed-off-by: Christian Loehle <christian.loehle@arm.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Not particularly happy with it, it's just the most straightforward
+fix for the issue at hand. I couldn't quite convince myself that
+no-op rockchip_spi_set_cs() are 100% ruled out just from spi.c after
+the first call either, but maybe someone more familiar with the code
+can. I have only seen the issue for the first call / during boot FWIW.
+Any more elegant fix suggestions welcome! The other host controller
+drivers don't need the read before CS change, so this shouldn't really
+either.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 0c8ec7220fbe..d259f1c6571d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1601,7 +1601,7 @@ static void vop2_crtc_atomic_try_set_gamma(struct vop2 *vop2,
- 					   struct drm_crtc *crtc,
- 					   struct drm_crtc_state *crtc_state)
- {
--	if (!vop2->lut_regs || !crtc_state->color_mgmt_changed)
-+	if (!vop2->lut_regs)
- 		return;
+ drivers/spi/spi-rockchip.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 864e58167417..1bc012fce7cb 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -241,6 +241,20 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+ 	struct spi_controller *ctlr = spi->controller;
+ 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
+ 	bool cs_asserted = spi->mode & SPI_CS_HIGH ? enable : !enable;
++	bool cs_actual;
++
++	/*
++	 * SPI subsystem tries to avoid no-op calls that would break the PM
++	 * refcount below. It can't however for the first time it is used.
++	 * To detect this case we read it here and bail out early for no-ops.
++	 */
++	if (spi_get_csgpiod(spi, 0))
++		cs_actual = !!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SER) & 1);
++	else
++		cs_actual = !!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SER) &
++			       BIT(spi_get_chipselect(spi, 0)));
++	if (unlikely(cs_actual == cs_asserted))
++		return;
  
- 	if (!crtc_state->gamma_lut) {
-@@ -2669,7 +2669,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
- 	struct vop2 *vop2 = vp->vop2;
- 
- 	/* In case of modeset, gamma lut update already happened in atomic enable */
--	if (!drm_atomic_crtc_needs_modeset(crtc_state))
-+	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgmt_changed)
- 		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
- 
- 	vop2_post_config(crtc);
+ 	if (cs_asserted) {
+ 		/* Keep things powered as long as CS is asserted */
 -- 
-2.47.1
-
-
+2.34.1
 
 _______________________________________________
 Linux-rockchip mailing list
