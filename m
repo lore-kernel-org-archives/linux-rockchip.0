@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C25E7717D
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Dec 2024 21:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE7AE7717D
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Dec 2024 21:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KN6qb4ljHEWjBFxzlGcMC8hwPbGtWIuwhUvWDe1kN2U=; b=Zb5jV0Ugb0OWbm
-	ntz5OWAwkSfBdNtQ1SDkiRb/GzjCVrEfQJYPQh1DyK44mvT9SjwJdPg6oBhIzgeiofJbMcs8uqtW3
-	4iO1KLlUIH8hZD/s3kySlfl6Zs9CkR1abytjbpt59aZRJB3RhDXmpPHx8rR0cji6Oy3iaRNq5/Q6L
-	QWaOOasg5LgJTxnzxdAgP3QVmlvI4otw/4zSCEBy2dlLbO4BpltoP0EnpCfD0SeVSfkX1BV9qH0BM
-	n2Xg0i2mP1xylLcpqjIfvgvKMsqbuAkiDCzLr6iSHywqPX4AOHR+55Kg2oeabNmLI9GxfBHP4qoq6
-	hWrw+kdzWGUmUw2pIFbw==;
+	List-Owner; bh=+CyKqghyCR65It6749GjbybVGLf3sOi/Td3tB04dBew=; b=TT4UzKjppRl07y
+	nrIFz8v4wJoyxxLtjCpaFsuNIutno0UYyA+I4Bw8RjtXVxo0s3c9XSHThktPjLXchTL/tNYCtAfSc
+	CqFM32YMzwV3TSVFZTzs797AxpmZ6K0tDGea5XjM0UcRHheRZO++nOW7jqH1VVOthI3/gEjM/LQvX
+	mqk8lesd1xVFcGMbDvRwgYPEEsf8VJX16A8R8s6iZEqF2TLUZpyM/Unxs6uFBoti0S8JqEOsopT/L
+	Uo+qXRts1g7ksZPefb4O8TFLuXPobIBcpTeJq7RBKt/N2b56NVk41haDemn/xXcKKvdCyhfYMK8Dp
+	bTnMzpNHMcdfOUn5BORA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tK2S6-00000004RsO-0ZUk;
-	Sat, 07 Dec 2024 21:35:02 +0000
+	id 1tK2U6-00000004S8N-2D23;
+	Sat, 07 Dec 2024 21:37:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tK2Q3-00000004ROp-0Ub8;
-	Sat, 07 Dec 2024 21:32:56 +0000
+	id 1tK2Q3-00000004ROw-2qJQ;
+	Sat, 07 Dec 2024 21:32:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733607173;
-	bh=DuquKXFrrFxNB+/27gdv/HCQ8M7uGVTRTKsJMPlOXKI=;
+	s=mail; t=1733607174;
+	bh=Nafq+FLCBEcpE333sXMCjOF7hSfZUxcTRNgOL/SHq2s=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=h1J9Wef4KeKI4JXzeuvLmnYTV77d0z+0e53Y7dExy+ffZBBtoZ+ZWccb8AhIo4Tii
-	 /J197bavNgzrDkOI20AXfASZnQlasP92u3PtCqnRcl7Hyps77Xvqh2vlw1v0TuzQ5X
-	 ppU5eSnwsdlCgTVFPGi+q+obBOIiEikQQigUblX3soAZ4GEB7ektNn+z2atE1723rr
-	 H93k3dglMbnFiFcYeVb2Kw7KusCPdyOweoirhTqiyhiWsriyil2ScA/r5XbxV7D7MV
-	 8UPMCVrUZ6eTwEfvBcdkYpVsNtdxPIyJSeX6X4e5mk5AXLiZk0cpIb9aGfH5LcUNZs
-	 M5uXnb5ZqnfCQ==
+	b=Iv3tVR5zqj3C2rt7DFnT5VLAgUs1luwwH7JYXAMlTm99x3Q7biM6CxpUbHq3QWDmY
+	 +9R9zEFQuYe5e39hwcQMYpHgYZ1zBzWcJZuBnCVAEQgOvBMsER4rGNCz/DzmeWiV4X
+	 0xi7xXisSyTu3oCv0TWf345jVN+N8m95aY1yOmZfhbW0c0+eHESEu/6I1vXOr4Xa8D
+	 vT+j1tHc1v0KB6GLrwGPV7nBPQf+aohHdXY3AcLiTn6dCHkxDtNRjP8BRgn4PeELrJ
+	 +Ikbpe/MwYrEZG9xbwp0B0JWnFZ/AeGgz8AV1dKeRx2f5i/MlNpxQPiSvk3t5uumyV
+	 S4AC0gwKsLm4Q==
 Received: from localhost (unknown [188.27.48.199])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C53117E3803;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE97F17E3805;
 	Sat,  7 Dec 2024 22:32:53 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 07 Dec 2024 23:32:25 +0200
-Subject: [PATCH 2/4] arm64: dts: rockchip: Add PHY node for HDMI1 TX port
- on RK3588
+Date: Sat, 07 Dec 2024 23:32:26 +0200
+Subject: [PATCH 3/4] arm64: dts: rockchip: Add HDMI1 node on RK3588
 MIME-Version: 1.0
-Message-Id: <20241207-rk3588-hdmi1-v1-2-ca3a99b46a40@collabora.com>
+Message-Id: <20241207-rk3588-hdmi1-v1-3-ca3a99b46a40@collabora.com>
 References: <20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com>
 In-Reply-To: <20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -64,8 +63,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241207_133255_301978_D14D9FF8 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20241207_133255_911968_8A7D4F1C 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,54 +82,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In preparation to enable the second HDMI output port found on RK3588
-SoC, add the related PHY node.  This requires a GRF, hence add the
-dependent node as well.
+Add support for the second HDMI TX port found on RK3588 SoC.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 41 ++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 0ce0934ec6b793af45585f67d5312434d80357de..68fa9806164776cef8732bb776e958003779ba28 100644
+index 68fa9806164776cef8732bb776e958003779ba28..528319908247e90b33f9dbde0516f8bca849676f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -67,6 +67,11 @@ u2phy1_otg: otg-port {
- 		};
+@@ -140,6 +140,47 @@ i2s10_8ch: i2s@fde00000 {
+ 		status = "disabled";
  	};
  
-+	hdptxphy1_grf: syscon@fd5e4000 {
-+		compatible = "rockchip,rk3588-hdptxphy-grf", "syscon";
-+		reg = <0x0 0xfd5e4000 0x0 0x100>;
-+	};
-+
- 	i2s8_8ch: i2s@fddc8000 {
- 		compatible = "rockchip,rk3588-i2s-tdm";
- 		reg = <0x0 0xfddc8000 0x0 0x1000>;
-@@ -395,6 +400,22 @@ sata-port@0 {
- 		};
- 	};
- 
-+	hdptxphy1: phy@fed70000 {
-+		compatible = "rockchip,rk3588-hdptx-phy";
-+		reg = <0x0 0xfed70000 0x0 0x2000>;
-+		clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX1>;
-+		clock-names = "ref", "apb";
-+		#phy-cells = <0>;
-+		resets = <&cru SRST_HDPTX1>, <&cru SRST_P_HDPTX1>,
-+			 <&cru SRST_HDPTX1_INIT>, <&cru SRST_HDPTX1_CMN>,
-+			 <&cru SRST_HDPTX1_LANE>, <&cru SRST_HDPTX1_ROPLL>,
-+			 <&cru SRST_HDPTX1_LCPLL>;
-+		reset-names = "phy", "apb", "init", "cmn", "lane", "ropll",
-+			      "lcpll";
-+		rockchip,grf = <&hdptxphy1_grf>;
++	hdmi1: hdmi@fdea0000 {
++		compatible = "rockchip,rk3588-dw-hdmi-qp";
++		reg = <0x0 0xfdea0000 0x0 0x20000>;
++		clocks = <&cru PCLK_HDMITX1>,
++			 <&cru CLK_HDMITX1_EARC>,
++			 <&cru CLK_HDMITX1_REF>,
++			 <&cru MCLK_I2S6_8CH_TX>,
++			 <&cru CLK_HDMIHDP1>,
++			 <&cru HCLK_VO1>;
++		clock-names = "pclk", "earc", "ref", "aud", "hdp", "hclk_vo1";
++		interrupts = <GIC_SPI 173 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 174 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 175 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 176 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "avp", "cec", "earc", "main", "hpd";
++		phys = <&hdptxphy1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdmim2_tx1_cec &hdmim0_tx1_hpd
++			     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
++		power-domains = <&power RK3588_PD_VO1>;
++		resets = <&cru SRST_HDMITX1_REF>, <&cru SRST_HDMIHDP1>;
++		reset-names = "ref", "hdp";
++		rockchip,grf = <&sys_grf>;
++		rockchip,vo-grf = <&vo1_grf>;
 +		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			hdmi1_in: port@0 {
++				reg = <0>;
++			};
++
++			hdmi1_out: port@1 {
++				reg = <1>;
++			};
++		};
 +	};
 +
- 	usbdp_phy1: phy@fed90000 {
- 		compatible = "rockchip,rk3588-usbdp-phy";
- 		reg = <0x0 0xfed90000 0x0 0x10000>;
+ 	pcie3x4: pcie@fe150000 {
+ 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+ 		#address-cells = <3>;
 
 -- 
 2.47.0
