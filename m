@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B60EE77173
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Dec 2024 22:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C21E7717D
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Dec 2024 21:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HPq8Q80VVBJP/cXxVkVNseTQdivhaif1/87R38s/C+g=; b=loSkfXeCXB0YDI
-	HRcDbD6gROXgiCNVEdAx0/P7LlEuV8Q1OPkcAkHCR3FjLWM1xClKlY8LAqhAQclhHqX7BR0MePMWz
-	twTGnycX6bObYAgAtfXeNMYbNixVTTrXE+iwhH6nFgE5EX5qX0cv+sbFvcexmVPcImAD/VTnm8q6e
-	4uE3uXTzt3i46+sgiSJPgNzAeh2Mg9HfiRvYkM4Yx7Bh+VFU9Fbv2Ljx3j9EVYiEzA66BK1uKct2U
-	ulM6GsDUlOpWIqpU3QlCVanMkAgic7AvVUGlCqnNASsrJXrRbXmzDbOJugJTKaOV0BBmWpAk5dt1M
-	z8U/xWLAyt4269Uh01Zw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EdXsUbR8s//UuRwdqTHgX0RKdZfaqjSihEJXBGhqavk=; b=WkUyeO+NxkFn/K
+	VWMxkGOPrzNJrdN5SfuDlgndS7rxH4MGKET0+Z99AC7JuxS+OcxX2ltLz6uVhkrcfHoEEVj7Sf7s1
+	POgFNcKhFHBAYNnv9FKOGAeS7Nt03waNrdmXwueUHyaY+UwuWQDzQGMSX+qhip/C4+s23T4z0Gboe
+	lG5PVfMfrTNmnJVAysNsI6YtsfmO83pWfJCjw7f83eN3jaEKMbb9Nc55jOl2tgq33BtKoQCM6NztA
+	Z2enICcXHhNUmBCiIthkvAvDEiD9uLJzKQ/osSOb8PvHj/NspDlwllp/fleusrDeXWeKAhgkCPXxg
+	aA/oRAIcv/dlN/ve5YQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJgVb-00000002rYE-2lbL;
-	Fri, 06 Dec 2024 22:09:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tK2R6-00000004Ril-0Nio;
+	Sat, 07 Dec 2024 21:34:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tJgQc-00000002qhK-0UvQ;
-	Fri, 06 Dec 2024 22:04:03 +0000
+	id 1tK2Q2-00000004ROX-2eDN;
+	Sat, 07 Dec 2024 21:32:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733522639;
-	bh=w5/YY2wqmqV6QgwYuiXdkpRkQEFMfdXMRewTbnvqfOI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OKPBZ4WMhNwG9mP28+hs255Bl43GBXU0J7Y6V/Zv7fVi7YetP3gcicm+iFbD3Vzmo
-	 0yIjljXtMdXwMjBgcDygWRpSlH235euZZWFWS9w/BfZ8TCWSaz+7AjiApqUtN2XbHE
-	 dFGBCJpuEeKqfAEExSIofSXUUK+9WIW6BanRhlGt3inywEicNxx6NqmVmZ1N923AS0
-	 k8jO/9g/G/WWiWyqphfVjJqoqP2XZ9Pv4EvAtCOjbL5aX9Ym1ryhEXzGoRshhNR/yl
-	 iS+L82AgkDLAwdBt36RXzAYRLpeuFaxV680IK+CadB5+oWoxk8geM5zAD7LqSCHab6
-	 aNCXY9XcnDlvw==
+	s=mail; t=1733607171;
+	bh=e/F5YyK5MttfQZR5pjBEF/euITS0jR40bnuYvHJXw08=;
+	h=From:Subject:Date:To:Cc:From;
+	b=FuHnvg7p9ZFYZBs0s2l+Qp4zdmkfmcQyewSCFvqLzzSfDjhJfQ8h8L7HRYNtUFCVe
+	 QYMVe+Y97Fxscl1XjOasF8D8CmJCsXrD0gBU3TroAiMQILui7u4jSbq85oGY8ADPIj
+	 lQnKPq9737QDNcudJqNCNXtRhbSM0/YVmMczW6RRtxOKLO6ZLgT22xOQRiRIiC1AcH
+	 mWGJoSAWZvKoRU89qFyu6Xb+UPV4FqId5iG4s72Xm+PB31xZBcoFdemw1VfDsROBz9
+	 vh5cFeJ18IXv51kmgIH4fqEbzRzGrnbPmXkUkeYVnFlz6DPjbCla7feF93twdg7KTf
+	 j/58AyQV+Vchg==
 Received: from localhost (unknown [188.27.48.199])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B1DF817E380C;
-	Fri,  6 Dec 2024 23:03:59 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 869D417E37FF;
+	Sat,  7 Dec 2024 22:32:51 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 07 Dec 2024 00:03:44 +0200
-Subject: [PATCH 4/4] phy: rockchip: samsung-hdptx: Add high color depth
- management
+Subject: [PATCH 0/4] Add support for HDMI1 output on RK3588 SoC
+Date: Sat, 07 Dec 2024 23:32:23 +0200
+Message-Id: <20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20241207-phy-sam-hdptx-bpc-v1-4-03c2e4d6d797@collabora.com>
-References: <20241207-phy-sam-hdptx-bpc-v1-0-03c2e4d6d797@collabora.com>
-In-Reply-To: <20241207-phy-sam-hdptx-bpc-v1-0-03c2e4d6d797@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Sandor Yu <Sandor.yu@nxp.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
- Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-B4-Tracking: v=1; b=H4sIAOe+VGcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxNDIwNz3aJsY1MLC92MlNxMQ11zA5PkpCTz5BRz0zQloJaCotS0zAqwcdG
+ xtbUA1V/m1F4AAAA=
+X-Change-ID: 20241207-rk3588-hdmi1-704cbb7cd75f
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241206_140402_329946_9E088B1A 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20241207_133254_841710_19935B2A 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,74 +83,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
+The patches provide the basic support to handle the second HDMI output
+port found on Rockchip RK3588 SoC.
+
+For now I enabled it on Radxa ROCK 5B only, the board I've been using to
+validate this.
+
+** IMPORTANT **
+
+The series has a runtime dependency on "phy: phy-rockchip-samsung-hdptx:
+Don't use dt aliases to determine phy-id", a patch submitted recently by
+Heiko [1].  Without applying it, the functionality on both HDMI TX ports
+will break.
+
+Furthermore, please note this is subject to the same limitations as
+HDMI0 when it comes to the supported display modes.  The fixes provided
+via [2] are not applicable to HDMI1, hence I will handle it separately
+as soon as all dependencies are merged.
+
+Thanks,
+Cristian
+
+[1] https://lore.kernel.org/lkml/20241206103401.1780416-3-heiko@sntech.de/
+[2] https://lore.kernel.org/all/20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com/
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+Cristian Ciocaltea (4):
+      drm/rockchip: dw_hdmi_qp: Add support for RK3588 HDMI1 output
+      arm64: dts: rockchip: Add PHY node for HDMI1 TX port on RK3588
+      arm64: dts: rockchip: Add HDMI1 node on RK3588
+      arm64: dts: rockchip: Enable HDMI1 on rock-5b
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index eeadebdc476caa87aebbbd82f7102b62b22a0ea6..76c30c4ad6768679c3e36e3d0789e716afc0bc30 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -274,6 +274,7 @@ struct rk_hdptx_phy {
- 	int nr_clks;
- 	struct reset_control_bulk_data rsts[RST_MAX];
- 	unsigned long tmds_char_rate;
-+	unsigned int bpc;
- 
- 	/* clk provider */
- 	struct clk_hw hw;
-@@ -814,6 +815,9 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx,
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_POSTDIV_SEL_MASK,
- 			   FIELD_PREP(PLL_PCG_POSTDIV_SEL_MASK, cfg->pms_sdiv));
- 
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_SEL_MASK,
-+			   FIELD_PREP(PLL_PCG_CLK_SEL_MASK, (hdptx->bpc - 8) >> 1));
-+
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_EN,
- 			   PLL_PCG_CLK_EN);
- 
-@@ -916,7 +920,7 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 		rate = phy_get_bus_width(hdptx->phy) & 0xfffffff;
- 	}
- 
--	dev_dbg(hdptx->dev, "%s rate=%u\n", __func__, rate);
-+	dev_dbg(hdptx->dev, "%s rate=%u bpc=%u\n", __func__, rate, hdptx->bpc);
- 
- 	ret = rk_hdptx_phy_consumer_get(hdptx, rate);
- 	if (ret)
-@@ -943,6 +947,18 @@ static int rk_hdptx_phy_configure(struct phy *phy,
- 
- 	hdptx->tmds_char_rate = opts->hdmi.tmds_char_rate;
- 
-+	switch (opts->hdmi.bpc) {
-+	case 8:
-+	case 10:
-+	case 12:
-+	case 16:
-+		hdptx->bpc = opts->hdmi.bpc;
-+		break;
-+	default:
-+		dev_warn(hdptx->dev, "Discarded unsupported bpc: %u\n",
-+			 opts->hdmi.bpc);
-+	};
-+
- 	return 0;
- }
- 
-@@ -1090,6 +1106,7 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	hdptx->dev = dev;
-+	hdptx->bpc = 8;
- 
- 	regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(regs))
-
--- 
-2.47.0
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi  |  62 ++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts |  42 ++++++++-
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c  | 119 +++++++++++++++++++-----
+ 3 files changed, 198 insertions(+), 25 deletions(-)
+---
+base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
+change-id: 20241207-rk3588-hdmi1-704cbb7cd75f
 
 
 _______________________________________________
