@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DCE4E77180
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Dec 2024 21:37:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07560E7717D
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Dec 2024 21:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jR6Ta4OhBgisAvw4CrY/4xUkNDadaigOkIZegxSvZIU=; b=xyKSqve1JU3fOM
-	OvRUSDgCV4B5XjqSXjM8H2Hvv3WjNZEOOABlENkGV5a+A1qWHPIANVITYIvupsnO5mzH21uUXtrdV
-	qTVvVqB3rEE4xSAn5Pf6vBmsTNeRxFnAGufXcJSNR/7ZsgH9Cnn8dcq9FvvjFCPJoMsa+s/8tYRs5
-	N5EWZkjpXq4L3t4j/4sHQWcieIgAnNCwuXnnqvLyLdDUgjXr5Djmp34M3mEu1N1Kh6ijZ8LHC0kVc
-	1jbg/3J2dxB+Sdi5o0/xLjFCgR8Mq4O+rjyuW+hG9eYJD51Ot76YGf1T0OOTUCBa6KbAEaWb/OZ77
-	2yBekHBdt0uS+vS1JyqQ==;
+	List-Owner; bh=0fGAmPGoa4+lhuoCC1qigG82YuLamAzppkPqOtuKPvA=; b=SnBUu0fEZ9WRCk
+	hJTo6AJUQ1k2iBhgoar2qg+jpxaJixlnlEgJD7o+67HbUQsrkT14O1b4pulZuT6LyThQgY/th0zZi
+	bu11eZIwGOiYxocCWQsXHfyddZCSSLkORkpPlns9c+A5aSW/+ywTvdBAZHpwmOmkLqkUPutA3Z9Ze
+	ze8iX9PZf0na5VDVsqoX0HU57pqoKbesp5eTKSCLsGDtPKl//O3MPw9lTe88C13OjTAb4azXf8PBI
+	67FfYKBnTVOrzsrbflcUKW71phJUB+P4RWh9ZnNm7fbxp2ICmusVLAiVz7hFIM6T11xJN7gQ2HnQD
+	Wt/eDBro2Y4LxCgSirNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tK2U6-00000004S84-0Utb;
-	Sat, 07 Dec 2024 21:37:06 +0000
+	id 1tK2VA-00000004SIC-3QMM;
+	Sat, 07 Dec 2024 21:38:12 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tK2Q3-00000004ROe-0Umz;
-	Sat, 07 Dec 2024 21:32:57 +0000
+	id 1tK2Q4-00000004RPf-3qGL;
+	Sat, 07 Dec 2024 21:32:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733607172;
-	bh=3vdTlN4cRw+aqmcuxQVAud96wTtNxo35Ghla9Zs1JVY=;
+	s=mail; t=1733607174;
+	bh=SCcXEr+KFbRx8TCn5PCWtq/V3Qw/KVqvlgOoYmZD3W0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZqFw/Mlyp8xBLibspk69VS/PCUHouxZCE/U0IGOuUxCBGks4fLVlISBoGtUlEuA3T
-	 vbCIl3lMpnrb0OxsN8gguehxXbQybSd0MGezGp7JKqXt0upiZCmzRyR6ngj2OLCosE
-	 oW96fk9cZYt8c2Z7ulahCOf/c493NIBe/JgaU4vRjakeMmGpUnvy6NEcs2uIRjhHZL
-	 CZpf6UHtTpwz5bwEgK3VDtzg+taOwisvNt1zbk7wWW0k6vm1UA0cScv4VIZwndtDXj
-	 +8oCj1wB+sYzkfY2kdTXSk3za9V2i7hYuH7TWR1i3hPEz/juu5rlR1ogZOGv2/WYip
-	 y9HiZNXcM5YDg==
+	b=o+NFop28mM500kuvIyn5uKh7Rj4QxJjpNp7hffTFtXdprwLi0l6rdUmTL3xbvbyp2
+	 Xf5+kYrylwa/BUuH9Ctihrm3sRlElxK4/TDj4kYVJgWe3OkxXyM+WTAVtxMXRW5krc
+	 jepubeIiCpliycVLelRSWix216s9lQIx8WCoyiOHkUKrCRS7QBH76zckpS6YbUKXEU
+	 /tS+ySluGVWV78/KznNMy7QlhO8YU/MQjg4EpIBfvcYZhoNMnhxh/IXv8vn5Yx5Okk
+	 V/6rOYNTJuN2VvtGH2z40mZ/ZrpKZsNuIKv6kJfTOsULB9jlHf/yFp4U6btnAINWG7
+	 1qgiAcUA9IMjg==
 Received: from localhost (unknown [188.27.48.199])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 59BB417E3801;
-	Sat,  7 Dec 2024 22:32:52 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B809B17E3806;
+	Sat,  7 Dec 2024 22:32:54 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 07 Dec 2024 23:32:24 +0200
-Subject: [PATCH 1/4] drm/rockchip: dw_hdmi_qp: Add support for RK3588 HDMI1
- output
+Date: Sat, 07 Dec 2024 23:32:27 +0200
+Subject: [PATCH 4/4] arm64: dts: rockchip: Enable HDMI1 on rock-5b
 MIME-Version: 1.0
-Message-Id: <20241207-rk3588-hdmi1-v1-1-ca3a99b46a40@collabora.com>
+Message-Id: <20241207-rk3588-hdmi1-v1-4-ca3a99b46a40@collabora.com>
 References: <20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com>
 In-Reply-To: <20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -64,8 +63,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241207_133255_502592_C89E0B31 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20241207_133257_154552_CEEBD6E7 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,253 +82,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Provide the basic support required to enable the second HDMI TX port
-found on RK3588 SoC.
+Add the necessary DT changes to enable the second HDMI output port on
+Radxa ROCK 5B.
+
+While at it, switch the position of &vop_mmu and @vop to maintain the
+alphabetical order.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 119 ++++++++++++++++++++-----
- 1 file changed, 96 insertions(+), 23 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 42 +++++++++++++++++++++++--
+ 1 file changed, 40 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index c8b362cc2b95fd490029a9c0552ad9fbc5631d17..c36fc130b73440c9e3f2098f408a5cdd2f58e8ef 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -28,20 +28,26 @@
- #define RK3588_GRF_SOC_CON2		0x0308
- #define RK3588_HDMI0_HPD_INT_MSK	BIT(13)
- #define RK3588_HDMI0_HPD_INT_CLR	BIT(12)
-+#define RK3588_HDMI1_HPD_INT_MSK	BIT(15)
-+#define RK3588_HDMI1_HPD_INT_CLR	BIT(14)
- #define RK3588_GRF_SOC_CON7		0x031c
- #define RK3588_SET_HPD_PATH_MASK	GENMASK(13, 12)
- #define RK3588_GRF_SOC_STATUS1		0x0384
- #define RK3588_HDMI0_LEVEL_INT		BIT(16)
-+#define RK3588_HDMI1_LEVEL_INT		BIT(24)
- #define RK3588_GRF_VO1_CON3		0x000c
-+#define RK3588_GRF_VO1_CON6		0x0018
- #define RK3588_SCLIN_MASK		BIT(9)
- #define RK3588_SDAIN_MASK		BIT(10)
- #define RK3588_MODE_MASK		BIT(11)
- #define RK3588_I2S_SEL_MASK		BIT(13)
- #define RK3588_GRF_VO1_CON9		0x0024
- #define RK3588_HDMI0_GRANT_SEL		BIT(10)
-+#define RK3588_HDMI1_GRANT_SEL		BIT(12)
- 
- #define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
- #define HOTPLUG_DEBOUNCE_MS		150
-+#define MAX_HDMI_PORT_NUM		2
- 
- struct rockchip_hdmi_qp {
- 	struct device *dev;
-@@ -53,6 +59,7 @@ struct rockchip_hdmi_qp {
- 	struct phy *phy;
- 	struct gpio_desc *enable_gpio;
- 	struct delayed_work hpd_work;
-+	int port_id;
- };
- 
- static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encoder *encoder)
-@@ -127,20 +134,24 @@ dw_hdmi_qp_rk3588_read_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
- 	u32 val;
- 
- 	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &val);
-+	val &= hdmi->port_id ? RK3588_HDMI1_LEVEL_INT : RK3588_HDMI0_LEVEL_INT;
- 
--	return val & RK3588_HDMI0_LEVEL_INT ?
--		connector_status_connected : connector_status_disconnected;
-+	return val ? connector_status_connected : connector_status_disconnected;
- }
- 
- static void dw_hdmi_qp_rk3588_setup_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
- {
- 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
-+	u32 val;
-+
-+	if (hdmi->port_id)
-+		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_CLR,
-+				    RK3588_HDMI1_HPD_INT_CLR | RK3588_HDMI1_HPD_INT_MSK);
-+	else
-+		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
-+				    RK3588_HDMI0_HPD_INT_CLR | RK3588_HDMI0_HPD_INT_MSK);
- 
--	regmap_write(hdmi->regmap,
--		     RK3588_GRF_SOC_CON2,
--		     HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
--				   RK3588_HDMI0_HPD_INT_CLR |
--				   RK3588_HDMI0_HPD_INT_MSK));
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- }
- 
- static const struct dw_hdmi_qp_phy_ops rk3588_hdmi_phy_ops = {
-@@ -173,8 +184,12 @@ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
- 	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
- 
- 	if (intr_stat) {
--		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK,
--				    RK3588_HDMI0_HPD_INT_MSK);
-+		if (hdmi->port_id)
-+			val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_MSK,
-+					    RK3588_HDMI1_HPD_INT_MSK);
-+		else
-+			val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK,
-+					    RK3588_HDMI0_HPD_INT_MSK);
- 		regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 		return IRQ_WAKE_THREAD;
- 	}
-@@ -191,22 +206,44 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
- 	if (!intr_stat)
- 		return IRQ_NONE;
- 
--	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
--			    RK3588_HDMI0_HPD_INT_CLR);
-+	if (hdmi->port_id)
-+		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_CLR,
-+				    RK3588_HDMI1_HPD_INT_CLR);
-+	else
-+		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
-+				    RK3588_HDMI0_HPD_INT_CLR);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 
- 	mod_delayed_work(system_wq, &hdmi->hpd_work,
- 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
- 
--	val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
-+	if (hdmi->port_id)
-+		val |= HIWORD_UPDATE(0, RK3588_HDMI1_HPD_INT_MSK);
-+	else
-+		val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 
- 	return IRQ_HANDLED;
- }
- 
-+struct rockchip_hdmi_qp_cfg {
-+	unsigned int num_ports;
-+	unsigned int port_ids[MAX_HDMI_PORT_NUM];
-+	const struct dw_hdmi_qp_phy_ops *phy_ops;
-+};
-+
-+static const struct rockchip_hdmi_qp_cfg rk3588_hdmi_cfg = {
-+	.num_ports = 2,
-+	.port_ids = {
-+		0xfde80000,
-+		0xfdea0000,
-+	},
-+	.phy_ops = &rk3588_hdmi_phy_ops,
-+};
-+
- static const struct of_device_id dw_hdmi_qp_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3588-dw-hdmi-qp",
--	  .data = &rk3588_hdmi_phy_ops },
-+	  .data = &rk3588_hdmi_cfg },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, dw_hdmi_qp_rockchip_dt_ids);
-@@ -219,11 +256,13 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		"ref" /* keep "ref" last */
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index c44d001da16978bbbb8a93d652893a786e9ea79b..bf9e4dc601555050d8857e03b2f1fb5fe2cadaac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -49,6 +49,17 @@ hdmi0_con_in: endpoint {
+ 		};
  	};
- 	struct platform_device *pdev = to_platform_device(dev);
-+	const struct rockchip_hdmi_qp_cfg *cfg;
- 	struct dw_hdmi_qp_plat_data plat_data;
- 	struct drm_device *drm = data;
- 	struct drm_connector *connector;
- 	struct drm_encoder *encoder;
- 	struct rockchip_hdmi_qp *hdmi;
-+	struct resource *res;
- 	struct clk *clk;
- 	int ret, irq, i;
- 	u32 val;
-@@ -235,12 +274,31 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	if (!hdmi)
- 		return -ENOMEM;
  
--	plat_data.phy_ops = of_device_get_match_data(dev);
--	if (!plat_data.phy_ops)
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	if (!res)
-+		return -ENODEV;
++	hdmi1-con {
++		compatible = "hdmi-connector";
++		type = "a";
 +
-+	cfg = of_device_get_match_data(dev);
-+	if (!cfg)
- 		return -ENODEV;
- 
--	plat_data.phy_data = hdmi;
- 	hdmi->dev = &pdev->dev;
-+	hdmi->port_id = -ENODEV;
++		port {
++			hdmi1_con_in: endpoint {
++				remote-endpoint = <&hdmi1_out_con>;
++			};
++		};
++	};
 +
-+	/* Identify port ID by matching base IO address */
-+	for (i = 0; i < cfg->num_ports; i++) {
-+		if (res->start == cfg->port_ids[i]) {
-+			hdmi->port_id = i;
-+			break;
-+		}
-+	}
-+	if (hdmi->port_id < 0) {
-+		drm_err(hdmi, "Failed to match HDMI port ID\n");
-+		return hdmi->port_id;
-+	}
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -220,10 +231,30 @@ hdmi0_out_con: endpoint {
+ 	};
+ };
+ 
++&hdmi1 {
++	status = "okay";
++};
 +
-+	plat_data.phy_ops = cfg->phy_ops;
-+	plat_data.phy_data = hdmi;
++&hdmi1_in {
++	hdmi1_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_hdmi1>;
++	};
++};
++
++&hdmi1_out {
++	hdmi1_out_con: endpoint {
++		remote-endpoint = <&hdmi1_con_in>;
++	};
++};
++
+ &hdptxphy_hdmi0 {
+ 	status = "okay";
+ };
  
- 	encoder = &hdmi->encoder.encoder;
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-@@ -303,17 +361,26 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
- 	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
- 	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
--	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON3, val);
-+	regmap_write(hdmi->vo_regmap,
-+		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
-+		     val);
++&hdptxphy1 {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+@@ -891,11 +922,11 @@ &usb_host2_xhci {
+ 	status = "okay";
+ };
  
- 	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
- 			    RK3588_SET_HPD_PATH_MASK);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
+-&vop_mmu {
++&vop {
+ 	status = "okay";
+ };
  
--	val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
--			    RK3588_HDMI0_GRANT_SEL);
-+	if (hdmi->port_id)
-+		val = HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
-+				    RK3588_HDMI1_GRANT_SEL);
-+	else
-+		val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
-+				    RK3588_HDMI0_GRANT_SEL);
- 	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
+-&vop {
++&vop_mmu {
+ 	status = "okay";
+ };
  
--	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK, RK3588_HDMI0_HPD_INT_MSK);
-+	if (hdmi->port_id)
-+		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_MSK, RK3588_HDMI1_HPD_INT_MSK);
-+	else
-+		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK, RK3588_HDMI0_HPD_INT_MSK);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 
- 	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_qp_rk3588_hpd_work);
-@@ -391,14 +458,20 @@ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
- 	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
- 	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
- 	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
--	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON3, val);
-+	regmap_write(hdmi->vo_regmap,
-+		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
-+		     val);
- 
- 	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
- 			    RK3588_SET_HPD_PATH_MASK);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
- 
--	val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
--			    RK3588_HDMI0_GRANT_SEL);
-+	if (hdmi->port_id)
-+		val = HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
-+				    RK3588_HDMI1_GRANT_SEL);
-+	else
-+		val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
-+				    RK3588_HDMI0_GRANT_SEL);
- 	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
- 
- 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
+@@ -905,3 +936,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
+ 	};
+ };
++
++&vp1 {
++	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
++		remote-endpoint = <&hdmi1_in_vp1>;
++	};
++};
 
 -- 
 2.47.0
