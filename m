@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739C7E77173
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Dec 2024 17:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651C9E77173
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Dec 2024 17:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4EIqOhpLNHzcv399IJRkpK/ooJF6kY+9em9reKt+Zxw=; b=jWPWl1qpwZpuIK
-	Zry+trKetUvh8t85Mne/aYAeJw1Y66vrj2wUF+T+CcAX3IBTDMXDC6NC/6tficbJMTFWu6xpDKK/D
-	p7TNPaRMnj5eyBuURXDV6lQ5KW+a7oOfMX/7aLGuElQ4luYy114x2GPMSdfeF/dmZpIL4VNqIl33O
-	q6LhdWD5HN5KiqFWkBpBFM9R3FnmHTLRUM9rroDn8VMQkUz+pzTSypj1wDaQUct9M2TSxx78qeNq4
-	qpbfj7V2IX9yfYeoYifAMTyYmm6G/nd3wsO5hNrIr7w+0++OGpbUIs7Gzxb6xwmJHljDyu6YF1les
-	IrkJnt8y2DhnhYEcRIwA==;
+	List-Owner; bh=2HMUjX+7eIjjHWYPkmvYt19ExD51i9aALa7locdfEXw=; b=IxIkYf+XdX2idQ
+	gyaAkNiy9Z693SWhGKXG/dxpQD9k552uPMgfosV0PLW1ZnQLOUvpjncTie8qQ4A/HFznByKu+tGbE
+	nytu0r3rsp6//UMNKIGXNzSmPXJKBTLs2GULeb97i157sXSWHTG/sWAmM4llUYNxRhPDFCWlB71Zy
+	f6focz1e2BMxTlUaJ5Wf86+U4Ve4C2IsaRJ4QlrtSt9+4gryks6RYqRdOX9BVNv2DY9SlL1V/SF+W
+	El+z5HHgUJnWT6FXtRU6o0amsiNwCgNiMlfo6d7iSiMaeDQ6RDdeSARQGG5IHluRI6Dv6tVW47Mw6
+	JOzQQR9zNRgQyEBF7CoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKKdS-00000005bLH-3r41;
-	Sun, 08 Dec 2024 16:59:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tKKfT-00000005be3-2igB;
+	Sun, 08 Dec 2024 17:02:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKKcP-00000005b5X-2Cxn;
-	Sun, 08 Dec 2024 16:58:54 +0000
+	id 1tKKcc-00000005b9f-397V;
+	Sun, 08 Dec 2024 16:59:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 467B85C4A2D;
-	Sun,  8 Dec 2024 16:58:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12D8EC4CEDD;
-	Sun,  8 Dec 2024 16:58:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F05E5C4A42;
+	Sun,  8 Dec 2024 16:58:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A92D3C4CED2;
+	Sun,  8 Dec 2024 16:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733677132;
-	bh=c0/oRVMKi8RM3KwoeAcA/Gjd8kM3l17avco564yZ2a4=;
+	s=k20201202; t=1733677146;
+	bh=csE7uy0VuBahmgf5oPd1u9Pm9Uuc0fog2i/ia7R4hUU=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=K1TMMbtSwtNRoSSGL5/o42luALup4wGtbz8DdgNYee88KT0cI2Iunz3HRGwvRzXe7
-	 8NQOspNB9we09oCA9fNlDyPkbaeIJxbU7vl5SrgE+CEHqD/4IX/B/P8EtzqfAdI8PH
-	 UIGIHe3kMff5sZY2QqruBfc1vX2bHGzZRwtVg1EhffH33gXWX5eQT2doWN4lO0Q+Lk
-	 jpX8t5DukEZ2JFmyJ7t8pS2tmhuiX9vElu8tUKprlVuTeHr4ObvCRVAVTNE0DHEB3R
-	 RC10gEhmmSKZpsh0CkvB8rJnNXYobyoP8vrq3XniSZYw6qM31sBHaAzGQ1qwCmW4mu
-	 6RIFzFgBLMmhQ==
+	b=Htw7HIZdEhe2LScDIEdOM+f1t+IatbxgCkTl9b3LP718mi7na7alIiOpLSxG+JICo
+	 umt8rYK0wr+amLvDz8KOXr7b7jOe3uiCD37W7IAQSUDBdYQ9sa3q+otw9UelCNoAsu
+	 xYuX2h9qNRv77t3X3GHauTM1+BW4C+IvD3Gg1yoYlVriNAoVtBrCBwXbjSHTPNX+wh
+	 L+oSYYouNXI/08BOwkm/zqExYNCBz03HM1gqceE1BocBGzjqb6y3YYOdIFe5XOERJ8
+	 T3QC5YX75OTcz8d9hAQYJkk6UWTPD0ZHsfNOKxDckN8TkDMDuwxTFrOgpclIYdO3NJ
+	 B8d8lrUdUiaqQ==
 From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20241122073006.99309-1-amadeus@jmu.edu.cn>
-References: <20241122073006.99309-1-amadeus@jmu.edu.cn>
-Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: rk3568: add
- reset-names for combphy
-Message-Id: <173367712869.1031947.3262464465649332012.b4-ty@kernel.org>
-Date: Sun, 08 Dec 2024 22:28:48 +0530
+ linux-kernel@vger.kernel.org, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20241023-phy-sam-hdptx-rpm-fix-v1-1-87f4c994e346@collabora.com>
+References: <20241023-phy-sam-hdptx-rpm-fix-v1-1-87f4c994e346@collabora.com>
+Subject: Re: [PATCH] phy: rockchip: samsung-hdptx: Set drvdata before
+ enabling runtime PM
+Message-Id: <173367714219.1031947.13630149874442977785.b4-ty@kernel.org>
+Date: Sun, 08 Dec 2024 22:29:02 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_085853_620575_1558059A 
-X-CRM114-Status: UNSURE (   4.39  )
+X-CRM114-CacheID: sfid-20241208_085906_840792_70055F84 
+X-CRM114-Status: UNSURE (   5.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,15 +78,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 22 Nov 2024 15:30:05 +0800, Chukun Pan wrote:
-> The reset-names of combphy are missing, add it.
+On Wed, 23 Oct 2024 20:29:54 +0300, Cristian Ciocaltea wrote:
+> In some cases, rk_hdptx_phy_runtime_resume() may be invoked before
+> platform_set_drvdata() is executed in ->probe(), leading to a NULL
+> pointer dereference when using the return of dev_get_drvdata().
+> 
+> Ensure platform_set_drvdata() is called before devm_pm_runtime_enable().
 > 
 > 
+> [...]
 
 Applied, thanks!
 
-[2/2] phy: rockchip: naneng-combphy: fix phy reset
-      commit: fbcbffbac994aca1264e3c14da96ac9bfd90466e
+[1/1] phy: rockchip: samsung-hdptx: Set drvdata before enabling runtime PM
+      commit: 9d23e48654620fdccfcc74cc2cef04eaf7353d07
 
 Best regards,
 -- 
