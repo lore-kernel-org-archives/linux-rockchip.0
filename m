@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B29E2E7717D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60321E77182
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EzU+Pq6YwhYdNZ43v0ppU2l5XjyYYiZHgF6nIcNAT0A=; b=FJlGw5xYcxxWR1
-	AKRefnOOd3z44ZjZ37ksEYS22TD8fHEkpZxxT0sm45HsaniAWCNyz3aMb2hPxOM96Sojd39kxGSoU
-	6ntmGvAfYpWfLUVTHTBMdeoXMELzwLmpeAfWaEk+OQ72VUqQVyEISvDHvcpGt6cVzjhHXkUiA4XQL
-	RbpnDu8k/7dQP647OvQYGCEoyIFMhbMAZNW5kXNniGGg1kZ2lsWxxCInpq8pU3D3VGGKTpF+4kjn3
-	pkpl7KaE2M9LtCKWI6TixVQhosg9dI6ZJ2hWrDTfxpQFnh1YoXtJ/W+jOy4sEdUPZtAaKmHvEvYoC
-	xuk4nExbKAiKwey/YoWw==;
+	List-Owner; bh=bKMG36P1Q9lKV0w/BNSRAZrz9/qfvVoifZuEGzCdW0s=; b=JEC+475iEOOElA
+	tYp1e0AcnKDABLFv1SOuAAUnzTnxz5eo/UHHCGHqxvUkVj91zRFe5CKBp75ucnFTnJe35C4fzV8dX
+	nVW+OkKD91GgYdVh8QIthZy/V8pp8c57TpdMahfmPzWgyYQT8RTWa+VZyL5tbUBZgnao5uCLi2k9j
+	nEm/UBr39X7ApV747tgW40JwoSa1kt2xGhTKX7buiLvC7j85YbPqSfYWal66zI/lpG3/z90kIBv2s
+	0WctOSOkA4u+1pmRUiD8SG8JZTXOZM1Z4ed5Nj+vt9PtnhGg16FRraUg7AwKGiYTwQUTAvFapFiRl
+	Cfra7j3bQFn6qtfBx1cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdPC-00000007qdO-23yF;
-	Mon, 09 Dec 2024 13:02:30 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKd1d-00000007jo8-2ngg;
-	Mon, 09 Dec 2024 12:38:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=6+g6a9zgOHScfh8pfuzFaT8yOgJ0aWJt0L14J82G1Ls=; b=b
-	dPYyJnV3upeFShwT7RraFAkx/tTKOpnfz4CNYRVFrb3Xx2vYoOoHzqTM1EzxcHPk
-	ifF1GyBRSxmF0YsENDqL1TRqI2BlJRXosYfYhpTUy1PEfCl9RlcEo3QdiqU8DhsU
-	ZBIhczvV0uYDsBmJnxASZHzQglfodIiaJzgnFBld98=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-102 (Coremail) ; Mon, 9 Dec 2024 20:37:59 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Mon, 9 Dec 2024 20:37:59 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, s.hauer@pengutronix.de, 
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com, 
-	detlev.casanova@collabora.com, "Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:[PATCH] drm/rockchip: vop2: Setup delay cycle for Esmart2/3
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20241209122943.2781431-5-andyshrk@163.com>
-References: <20241209122943.2781431-1-andyshrk@163.com>
- <20241209122943.2781431-5-andyshrk@163.com>
-X-NTES-SC: AL_Qu2YAfufuEAs7ySfbOkZnEobh+Y5UcK2s/ki2YFXN5k0tCTI0SYQW29KGUD2y86DDiKsoAirUQVL5MpFRpJHY46IPszNAqsSk9+1LSBw9TfE
+	id 1tKdVK-00000007sfs-0tMB;
+	Mon, 09 Dec 2024 13:08:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKdBf-00000007mdK-2V6d;
+	Mon, 09 Dec 2024 12:48:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=YALQ/5d5xwJu+LceFpjWJMU1LIe6WE2pCNsHkacRTcI=; b=B2ScI27/o23d0xltBjPie1Ue+t
+	5XtAHemGGtwCU4r6Kw0aUPIQD/3gXCT7f1etTJxip3qhzWcqwfw4JXmXyLata74X+iJwHGqLwKa35
+	Nsd1CRZa4iw5OSl1D/JJ2ykK/4Lhc6MWwuc3LANeJWXxROWIri8EAGM0W5W6wQBQ3EvnsHzYSD1mt
+	0joyVgYhvrm/vdVBRbOVXBRMMOhfFEqjbGpFySbSEGgtfYppDM1xZwd4TSHOu8y61wQNkR15i7U5m
+	H7+bIm3oEyj2kB3K5ikDYec5gCiDvo1hNBIHz4HbHxHJ2D2OX0emZVllTYnSxCB05IAnB9+Rf6M4W
+	k43Bx9+g==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tKdBK-00088z-7p; Mon, 09 Dec 2024 13:48:10 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Robert Foss <rfoss@kernel.org>,
+ Todor Tomov <todor.too@gmail.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+ Shijie Qin <shijie.qin@nxp.com>, Michael Tretter <m.tretter@pengutronix.de>,
+ Emil Velikov <emil.velikov@collabora.com>,
+ Del Regno <angelogioacchino.delregno@somainline.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [RESEND PATCH] media: dt-bindings: trivial white-space and example
+ cleanup
+Date: Mon, 09 Dec 2024 13:48:08 +0100
+Message-ID: <9635159.2WqB4rESCP@diego>
+In-Reply-To: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
+References: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Message-ID: <d6e7dee.ba96.193ab6d2e3f.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZigvCgD3n76n5FZnEdI6AA--.44307W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxSwXmdW3sf+LAABsy
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_043810_068684_01A0FF71 
-X-CRM114-Status: UNSURE (   4.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241209_044831_629050_B99F3536 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,39 +101,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Montag, 9. Dezember 2024, 12:34:05 CET schrieb Krzysztof Kozlowski:
+> Minor cleanups without funcitonal impact:
+>  - There should not be an empty blank line after SPDX tag,
+>  - Convention is to indent DTS examples in coding style with 2- or
+>    4-space indentation (4 is preferred),
+>  - Drop unused labels in DTS examples.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Sorry, please ignore this patch.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-At 2024-12-09 20:29:14, "Andy Yan" <andyshrk@163.com> wrote:
->From: Andy Yan <andy.yan@rock-chips.com>
->
->Each layer needs to set the correct delay cycle to display properly
->without unexpected offset on screen.
->
->Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
->Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->---
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 ++
-> 1 file changed, 2 insertions(+)
->
->diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->index c3a572b1c8704..7dc8be7d61184 100644
->--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->@@ -2526,9 +2526,11 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
-> 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__ESMART1, dly);
-> 			break;
-> 		case ROCKCHIP_VOP2_SMART0:
->+		case ROCKCHIP_VOP2_ESMART2:
-> 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__SMART0, dly);
-> 			break;
-> 		case ROCKCHIP_VOP2_SMART1:
->+		case ROCKCHIP_VOP2_ESMART3:
-> 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__SMART1, dly);
-> 			break;
-> 		}
->-- 
->2.34.1
+(even looked at the whole patch and not only the Rockchip parts :-) )
+
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
