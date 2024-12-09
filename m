@@ -4,82 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A967E77173
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 07:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980A2E77180
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 09:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I/25cRJtBsrlcxLNnvxtqvmU5YQ40dUeRyEFIwP50lo=; b=AfRmpxWIgZ4nX7
-	6d/W48dmmhRGYf/OKQM2s347nKaS1AT44WZ8UZBheqGZD/+jLAnoQyULQZtD0VY7eZwfWzLN4gWmb
-	4elr/Gz6asYmv9uyiQ+Mc0RVzNJ7WKPIf4KxwNfEKfXJfjJvSplFJNym3S904y5iEC1gJWFOfP47a
-	IkZXric9RpWk1w3F21DCiyXZ6LCuYDBWQaTOEa8tfkf92MSBsOfNp3JF7R+e6xOQoShgElCeScjRo
-	gMpSjAilyv7bhFEBERUCbTAL09mQRa6sKCDDsJiSHl5hYNv4YKqXKyE65stadJyNBuHKFo+eNxBlA
-	GI6vFWDHJdyDeZ8ynhsA==;
+	List-Owner; bh=EExwcSwqJ8TbmvzAD8G33ErtvJXXt4R47COMgNvqWds=; b=sMedfrIIPwxf6Z
+	x21JE+df+lmlitBbvmQDKxL7rBTCnAxp0X3DfdLNOqimvuXFzXHYfjOHvQws0R5YdM+PjxHrJ+GPK
+	ISgt3jBC6+3wiPEMW0pZGQC1yGrWtfIbn8QHesxilNJucnGk6OuzgFx9KKk6qMet5yKNt2oitwrsx
+	FLZl+uWh4V9n7VNkyvDQk+f4+XoblpvBZZ3tNZp/32FQsYQSqAgGyM/3N4pRF4kHB6gLNHaPsygtS
+	lbe91goDjpgW6VrFeMIJ8Ikbf8eM/2TqDK8E68TPhE+i7G0VdmTmRNA225LSN/e0lyDDEBIZ4pzDI
+	KbI3aBMG05shwYEZV/tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKYEl-00000006jcw-2MFV;
-	Mon, 09 Dec 2024 07:31:23 +0000
-Received: from [1.95.21.16] (helo=mail-m16.yeah.net)
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKYDi-00000006jUH-2R3n;
-	Mon, 09 Dec 2024 07:30:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yeah.net;
-	s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
-	Content-Type; bh=/kuYzy4TvOvrW5Ysb7raR4QcHn1lxSFVuvD5F5LoL8s=;
-	b=N97k7CryICfX9jh86hJTeBgEADIbl2Lo29RYU94PkaJvrZv89euFfIkA+t8m7E
-	4sFUhL9EKlkhDetYq+lXjqDHhehecPNcCMscua1nbfV9cUrYp0s75prWk5006qpI
-	EuKiOPQXYyTPxhfdREhNVONR9ejRz9VYvu3+9sJopUgX4=
-Received: from dragon (unknown [])
-	by gzsmtp1 (Coremail) with SMTP id Mc8vCgCHe+ZOnFZnMep5BA--.46497S3;
-	Mon, 09 Dec 2024 15:29:20 +0800 (CST)
-Date: Mon, 9 Dec 2024 15:29:18 +0800
-From: Shawn Guo <shawnguo2@yeah.net>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Xiubo Li <Xiubo.Lee@gmail.com>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Adrien Grassein <adrien.grassein@gmail.com>,
-	Adam Ford <aford173@gmail.com>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-mips@vger.kernel.org,
-	alsa-devel@alsa-project.org, linuxppc-dev@lists.ozlabs.org,
+	id 1tKaI5-000000077OT-2YSr;
+	Mon, 09 Dec 2024 09:42:57 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKaI3-000000077Ny-0ZSp
+	for linux-rockchip@lists.infradead.org;
+	Mon, 09 Dec 2024 09:42:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6F3E3A411CB;
+	Mon,  9 Dec 2024 09:41:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28F73C4CED1;
+	Mon,  9 Dec 2024 09:42:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733737373;
+	bh=VBMr9LsHSJGPFtGqHFVHYbEn1eiiaJRMceDta957bZ4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EjFY/ZF0biPlZzHFX8a4yRdYvSt60iFvN7mRVBcIPEcifgQt8w5R7u8h38AxJFA9q
+	 cWAudzQI/acgkYf1+J+L+r7dvU920K5W/YiJz5WK2LS6UC4Ef0/H4u0fVQ6sJ1VXdD
+	 WCzGCJkQ48CHzwfUmYnhD60EkHjxSeKPassSZq6yif1GON0DrBr/w0s/fna1fw9aA8
+	 mKYCOstm9+BSHiX0qpbBwKt0gPF/VfyalxXYshZLZ4MkWh7CWuhCeJsZr4B2/wz0WR
+	 wubHfnCOovIlc9G9HFJfmaIcPEF8do5Bw2jiNQfnx/tOU9hu0xNKdD66z6eV4WqvYq
+	 2lj40laSJfQZg==
+Date: Mon, 9 Dec 2024 10:42:50 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko.stuebner@cherry.de>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH treewide 04/11] arm64: dts: freescale: imx: Switch to
- simple-audio-card,hp-det-gpios
-Message-ID: <Z1acTq/JV/JTHllY@dragon>
-References: <cover.1727438777.git.geert+renesas@glider.be>
- <b38545c29d6cbf0b394ddb4747ce810c679f95d1.1727438777.git.geert+renesas@glider.be>
+Subject: Re: [PATCH] dt-bindings: vendor-prefixes: Update rockchip company
+ name
+Message-ID: <kwx76ihsftsgw3u53l33z4kodihyfcvpqpl2a2nk7aedgnr6e6@2324w7s7zmio>
+References: <20241205082258.857018-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b38545c29d6cbf0b394ddb4747ce810c679f95d1.1727438777.git.geert+renesas@glider.be>
-X-CM-TRANSID: Mc8vCgCHe+ZOnFZnMep5BA--.46497S3
-X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
-	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUodgAUUUUU
-X-Originating-IP: [114.218.218.187]
-X-CM-SenderInfo: pvkd40hjxrjqh1hdxhhqhw/1tbiERiwZWdWZpHlSgAAs1
+In-Reply-To: <20241205082258.857018-1-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_233018_925646_663B09FB 
-X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-CacheID: sfid-20241209_014255_236469_6EC5599F 
+X-CRM114-Status: UNSURE (   5.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,13 +77,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 27, 2024 at 02:42:19PM +0200, Geert Uytterhoeven wrote:
-> Replace the deprecated "simple-audio-card,hp-det-gpio" property by
-> "simple-audio-card,hp-det-gpios" in Simple Audio Card device nodes.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+On Thu, Dec 05, 2024 at 04:22:58PM +0800, Kever Yang wrote:
+> Rockchip company name has update to below name since 2021:
+> Rockchip Electronics Co., Ltd.
 
-Applied, thanks!
+Some reference would be useful. Wikipedia says:
+Fuzhou Rockchip Electronics Co., Ltd.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
