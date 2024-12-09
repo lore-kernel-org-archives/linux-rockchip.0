@@ -4,61 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80384E77173
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Dec 2024 17:07:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0325AE77173
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 07:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FB+lU0crxGG4HfP6u18NVlbUp1jBEdbZv/l+YjfMt1U=; b=g+VzNzuEs8uxy4
-	d8M9lvgIuZLeFm4ZV+5O3un8z6z5Nk3SpvpdVPqTseAyNZBgiGIl3cys+NF3g3Kc92Q919C0pVmeL
-	JKrPYbA+GurNUSaeDQ8qHi2Cggh0/4KMhVhZ6pyeuk01R5NlBK+iQXJ5VUd9P7lOZ9KjujWimulOD
-	qWvEKBnK0kgtUfDxlH+CZHoc3+MBFYiS5B4GzQqRa7lrbGPdwpQp97t799YxspY8vRAKdNPbpLVrU
-	XekC2CZNFu4HnZJV/YSM9TCc76Bhdgw9xzbVmqEz27PcKM2FqqtFoH2VYmPZ4l+LUDnnz4jv1qfSI
-	TgNtQpeuIfRBpcFooVDw==;
+	List-Owner; bh=h86jlvgMTsTGmZGk2T6sR5JQPfq3wHJ86cHWEWCrvMc=; b=akPK53cPJng5VY
+	xRJNFDcj2djWiVcjtl+M/eKNGyC9eltsg/LrxIg6wmdEBqMmjT4TeWXReX0Td09jpUNwHh8kNAVHm
+	avRuWS4XwPLwJRK0DR83oH02/f5Di4MC767mtbyvi55G2zWZ1pA12Ws1pDjaIi53Gol0HEAkswJqN
+	mW8aNSbKgdwftFDA/bLFVnPd34Hx5qA2R/EEqdwFX9VFUQUvAl4QbPodKiMcnippXhhhnMmnHE/R6
+	3G7eqLN7rXrFex3/GR9uBB0CF19fBYsnjMsdzDbuot7rH8MpKguXFqS8o1Z+4FnhARPmzxd+0RmLt
+	+bBxQqD0Cr1D6QNwLcSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKKkD-00000005cdv-1zpk;
-	Sun, 08 Dec 2024 17:06:57 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKKgm-00000005buU-1YDe;
-	Sun, 08 Dec 2024 17:03:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 00F8CA40C61;
-	Sun,  8 Dec 2024 17:01:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A28CC4CEDD;
-	Sun,  8 Dec 2024 17:03:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733677403;
-	bh=OQkhVmHg4WqmUgczbEyYtY9bQLY+9YiQA/1vSnNXn7M=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=aB6UnM31+8W26tb/TQGEB9kp4chVw7K+fN1hsk2+kyCzCRph0z3e/3+f1viJd0Yog
-	 nq3xYt3QDjgDObDUsA3eB/pOO2Zd7wGTVtZ4j8IiHEHbu4frOIWRwkJ1k7PzcRtAbW
-	 MvPhglU7ADKMPeavMaFtruBqJ7KGFFiX5eza6vBFn0SfAkxbh8GHc6NjA2JVsm7Xl4
-	 5TomGWUT4SdV1xSaCJQaAk0iZuut3ZYu0OshFFQIZaWXiUNOrSYr8pzQ89NAfPjgYv
-	 krs18DD4JjQKAP0aJ8JDncaNlaYdLyl82gG5Xgf+EUK1pAZJ4dFdiweRcQpfWMC7oU
-	 JQ7Iog2fEsIBw==
-From: Vinod Koul <vkoul@kernel.org>
-To: kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, heiko@sntech.de, Frank Wang <frawang.cn@gmail.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, william.wu@rock-chips.com, 
- tim.chen@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
-In-Reply-To: <20241106021357.19782-1-frawang.cn@gmail.com>
-References: <20241106021357.19782-1-frawang.cn@gmail.com>
-Subject: Re: [RESEND PATCH v3 1/2] dt-bindings: phy: rockchip: add rk3576
- compatible
-Message-Id: <173367739882.1042266.13564574904755489254.b4-ty@kernel.org>
-Date: Sun, 08 Dec 2024 22:33:18 +0530
+	id 1tKYDH-00000006jQS-1yUt;
+	Mon, 09 Dec 2024 07:29:51 +0000
+Received: from mail-m16.yeah.net ([220.197.32.16])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKYCD-00000006jFR-3kQF;
+	Mon, 09 Dec 2024 07:28:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yeah.net;
+	s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
+	Content-Type; bh=F+/1F5usZGU4xwFJCSgL70wM6kK3SGbjvRaZHVo0Zx0=;
+	b=m0B7CQyjdSflcO4FEyoQ1bz1xXtz2aaBneveM0wWc38aRp5vbeDz7ctDwIsbGo
+	UpqW1iwusxzg7XkDGBClLBth7ICBRKhCwevETCuxrhblIgjkao37+jwTiBu7SfBf
+	aC9mJ7KN6axnCTQ6cuhvoNhlZUkd9iCPaxh/9g5n3Ctew=
+Received: from dragon (unknown [])
+	by gzsmtp1 (Coremail) with SMTP id Mc8vCgA3fxoBnFZnkeV5BA--.46779S3;
+	Mon, 09 Dec 2024 15:28:03 +0800 (CST)
+Date: Mon, 9 Dec 2024 15:28:00 +0800
+From: Shawn Guo <shawnguo2@yeah.net>
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>,
+	Nicolin Chen <nicoleotsuka@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Adrien Grassein <adrien.grassein@gmail.com>,
+	Adam Ford <aford173@gmail.com>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-mips@vger.kernel.org,
+	alsa-devel@alsa-project.org, linuxppc-dev@lists.ozlabs.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH treewide 10/11] ARM: dts: nxp: imx: Switch to
+ {hp,mic}-det-gpios
+Message-ID: <Z1acAA7gbxH7QfhT@dragon>
+References: <cover.1727438777.git.geert+renesas@glider.be>
+ <7ff1bfb73a6d6fc71f3d751dbb7133b045853f64.1727438777.git.geert+renesas@glider.be>
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <7ff1bfb73a6d6fc71f3d751dbb7133b045853f64.1727438777.git.geert+renesas@glider.be>
+X-CM-TRANSID: Mc8vCgA3fxoBnFZnkeV5BA--.46779S3
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUoGQ6UUUUU
+X-Originating-IP: [114.218.218.187]
+X-CM-SenderInfo: pvkd40hjxrjqh1hdxhhqhw/1tbiCQ6wZWdWeNqUcwAAsm
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241208_090324_479512_C563F075 
-X-CRM114-Status: UNSURE (   3.44  )
+X-CRM114-CacheID: sfid-20241208_232846_296237_408A8507 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,23 +97,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 06 Nov 2024 10:13:56 +0800, Frank Wang wrote:
-> Adds the compatible line to support RK3576 SoC.
+On Fri, Sep 27, 2024 at 02:42:25PM +0200, Geert Uytterhoeven wrote:
+> Replace the deprecated "hp-det-gpio" and "mic-det-gpio" properties by
+> "hp-det-gpios" resp. "mic-det-gpios" in Freescale Generic ASoC Sound
+> Card device nodes.
 > 
-> 
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
 Applied, thanks!
-
-[1/2] dt-bindings: phy: rockchip: add rk3576 compatible
-      commit: b136e9928dbe5e71474d9e2c8911c4a094e329c2
-[2/2] phy: rockchip-naneng-combo: add rk3576 support
-      commit: ba8ad7eece66ac5c579dd8de39efc72770e7cf64
-
-Best regards,
--- 
-~Vinod
-
 
 
 _______________________________________________
