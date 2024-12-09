@@ -4,87 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60321E77182
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D433E7717D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bKMG36P1Q9lKV0w/BNSRAZrz9/qfvVoifZuEGzCdW0s=; b=JEC+475iEOOElA
-	tYp1e0AcnKDABLFv1SOuAAUnzTnxz5eo/UHHCGHqxvUkVj91zRFe5CKBp75ucnFTnJe35C4fzV8dX
-	nVW+OkKD91GgYdVh8QIthZy/V8pp8c57TpdMahfmPzWgyYQT8RTWa+VZyL5tbUBZgnao5uCLi2k9j
-	nEm/UBr39X7ApV747tgW40JwoSa1kt2xGhTKX7buiLvC7j85YbPqSfYWal66zI/lpG3/z90kIBv2s
-	0WctOSOkA4u+1pmRUiD8SG8JZTXOZM1Z4ed5Nj+vt9PtnhGg16FRraUg7AwKGiYTwQUTAvFapFiRl
-	Cfra7j3bQFn6qtfBx1cA==;
+	List-Owner; bh=RjMKE2G0n4wNssFbdQDL1qxVMowk34po5zrnGbXn5jg=; b=IDsXOa5XbPrywf
+	CRqcnnufZ+VE/8vsIlwZkrEEBGqMlRWRLbdWnkVKPcWAzzbKsFU8xYXZxXj0NXmU9jDNXNLVItixX
+	/YHHYLkhS45KePumS+3lupzI2hVlVLUqr4+L19CN4gHUu37KSUblhNyRDZjpUhJpDMSmgfWr3cgkJ
+	28R4mQiNtH4rVyKW666Z/s9tuFyd1ZM3DVBpBE3GGjzs30sJWJGjQef/2tiMHix1cqllHmGdSHM+m
+	NPPab3Qcx8dEizFx5pUc1gcdlrNCL64SsfPHe/JqDzoduusH03a9++6uO018CVYFewyH+BmKI0Bwh
+	3lszReZ9l3HMDgN22PJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdVK-00000007sfs-0tMB;
-	Mon, 09 Dec 2024 13:08:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tKdYO-00000007to3-1zLt;
+	Mon, 09 Dec 2024 13:12:00 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdBf-00000007mdK-2V6d;
-	Mon, 09 Dec 2024 12:48:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YALQ/5d5xwJu+LceFpjWJMU1LIe6WE2pCNsHkacRTcI=; b=B2ScI27/o23d0xltBjPie1Ue+t
-	5XtAHemGGtwCU4r6Kw0aUPIQD/3gXCT7f1etTJxip3qhzWcqwfw4JXmXyLata74X+iJwHGqLwKa35
-	Nsd1CRZa4iw5OSl1D/JJ2ykK/4Lhc6MWwuc3LANeJWXxROWIri8EAGM0W5W6wQBQ3EvnsHzYSD1mt
-	0joyVgYhvrm/vdVBRbOVXBRMMOhfFEqjbGpFySbSEGgtfYppDM1xZwd4TSHOu8y61wQNkR15i7U5m
-	H7+bIm3oEyj2kB3K5ikDYec5gCiDvo1hNBIHz4HbHxHJ2D2OX0emZVllTYnSxCB05IAnB9+Rf6M4W
-	k43Bx9+g==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tKdBK-00088z-7p; Mon, 09 Dec 2024 13:48:10 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Robert Foss <rfoss@kernel.org>,
- Todor Tomov <todor.too@gmail.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Shijie Qin <shijie.qin@nxp.com>, Michael Tretter <m.tretter@pengutronix.de>,
- Emil Velikov <emil.velikov@collabora.com>,
- Del Regno <angelogioacchino.delregno@somainline.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [RESEND PATCH] media: dt-bindings: trivial white-space and example
- cleanup
-Date: Mon, 09 Dec 2024 13:48:08 +0100
-Message-ID: <9635159.2WqB4rESCP@diego>
-In-Reply-To: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
-References: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
+	id 1tKdF5-00000007nYV-0o9Q
+	for linux-rockchip@lists.infradead.org;
+	Mon, 09 Dec 2024 12:52:06 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9CpdQ6031943;
+	Mon, 9 Dec 2024 21:51:47 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        dsimic@manjaro.org, sebastian.reichel@collabora.com,
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v4 06/12] arm64: dts: rockchip: remove RTC and related node for Radxa ROCK 5C
+Date: Mon,  9 Dec 2024 12:51:25 +0000
+Message-ID: <20241209125131.4101-7-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241209125131.4101-1-naoki@radxa.com>
+References: <20241209125131.4101-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_044831_629050_B99F3536 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20241209_045203_549649_6A5735BA 
+X-CRM114-Status: UNSURE (   6.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,19 +63,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 9. Dezember 2024, 12:34:05 CET schrieb Krzysztof Kozlowski:
-> Minor cleanups without funcitonal impact:
->  - There should not be an empty blank line after SPDX tag,
->  - Convention is to indent DTS examples in coding style with 2- or
->    4-space indentation (4 is preferred),
->  - Drop unused labels in DTS examples.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+RTC doesn't exist on actual board. remove it.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+Changes in v4:
+- none
+Changes in v3:
+- none
+Changes in v2:
+- new
+---
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     | 23 -------------------
+ 1 file changed, 23 deletions(-)
 
-(even looked at the whole patch and not only the Rockchip parts :-) )
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+index 01537b47f880..1ba94396aab8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+@@ -350,23 +350,6 @@ regulator-state-mem {
+ 	};
+ };
+ 
+-&i2c5 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&i2c5m2_xfer>;
+-	status = "okay";
+-
+-	rtc@51 {
+-		compatible = "haoyu,hym8563";
+-		reg = <0x51>;
+-		#clock-cells = <0>;
+-		clock-output-names = "rtcic_32kout";
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&rtc_int_l>;
+-	};
+-};
+-
+ &i2c7 {
+ 	status = "okay";
+ 
+@@ -451,12 +434,6 @@ pow_en: pow-en {
+ 		};
+ 	};
+ 
+-	rtc {
+-		rtc_int_l: rtc-int-l {
+-			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	usb {
+ 		usb_host_pwren_h: usb-host-pwren-h {
+ 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+-- 
+2.43.0
 
 
 _______________________________________________
