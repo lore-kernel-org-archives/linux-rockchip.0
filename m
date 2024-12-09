@@ -4,113 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6647DE77180
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 11:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA589E77180
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 12:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H0QPNiOof2ZNQAPrVFwRPSyoJHCHFy7R11y5idDh9Y0=; b=UVoxehC+M5FrPQ1N2Y0pSu7Uz7
-	T3IoltD5Ay0+8+sy4NsDSRzPdk4i206899gqdiqchrvB3AEfz3t+MsCUX/QZKrLCSaMTK6Y8Zghrb
-	U+tnlXr+M5tgba6TWfGgvxBXt6K0ZwMBIejmnRSTMhL0j7ty5xDrA8eZNtCIp7TcjNsIQcktYjNFm
-	4tV65/RdjKfT97XQz0RfkOIZ089sORUoU2Hoybrg+7lVmh+IVW+AvBXP0IjxgPzsZEdrIM1OcDX/3
-	XsWglYQTNMp5Gdlx9ihrrPYytm9+RGgS3+iC4t+2SQblLCZL6d/Xn3Q5pXnGNopNkCbWiukCcHBx/
-	RtGO2oyw==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8g9KNhwtQYpdHAKWgE1mfuyBTzSD/1OG1OuCHJj1r9U=; b=XkAxaj0yf4ZzNt
+	gYOV9P67sJnM/OrCsTXp5cUHybyo2TuL8aLmNGS7NL2Vcy1NtZPAzja6hkz1eTTpABpLPDAviGvZ8
+	ZdaSsCAKf5Wcuj/UJYgtqVXNbD04ZdiEO2KdBYQ4ewiKIP6Nb7FGrpXC9oxbOOy9oZU09ZuNeK8La
+	Upv7wwE0P5I9V9JEvFn4Sw5mITQxXuD9Yqzi+5/JPlGIH0y1D36VGYBY3/GAQuY06/0suZIZ4dIxc
+	jhGjM/Yx5eOuI8cG9qZgwF01OhuEuzTPpJ2RpkPYAQKRObcT9scv7y4A+Edeu4XunQiC0NF8ctp5W
+	3JhrJw+3uIGUBTzUB2eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKcBz-00000007Xzy-2IDk;
-	Mon, 09 Dec 2024 11:44:47 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1tKcWP-00000007ca6-2Xy5;
+	Mon, 09 Dec 2024 12:05:53 +0000
+Received: from smtpbgeu1.qq.com ([52.59.177.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKc9x-00000007XZR-1xS9
+	id 1tKcWH-00000007cWG-3C0r
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Dec 2024 11:42:44 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-434e3953b65so14004975e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Dec 2024 03:42:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733744559; x=1734349359; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=W10XgeMj5m+No6tcPataZmZSnoW6PK2I9Ff3cBJBg7k=;
-        b=zmo1RrCs9bP8gU+1vuikj5QfH0MKM3yUTNtgTXG8Az/P6ctBNqy1/xxfc7EGgRkniG
-         /y+ofcBj3nRUr/fXlsYw35+1zGOSddY7xuvR/DA76VZvL8sYqO2e6KMmv13MPG/PK4Rq
-         oy3lRmJ4MkRgfU0/SsW43YreRA7UYwkRJy87LkFuN+yJFRY1YuWHSJsTVXAMDSZQ+9up
-         dRFYZ6PaRYG7Elhq8fgDAaW3tuqzxP1dWbh2rOtOSwwWIGcW4y34pI2yANRu2IORLNUW
-         IBJrT/rgjGLw0p8v39WJAb9zbiF7+01kb6wtuHHXWpZnkFvPh/5zNkacgJOeeE/qzAxl
-         wd3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733744559; x=1734349359;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=W10XgeMj5m+No6tcPataZmZSnoW6PK2I9Ff3cBJBg7k=;
-        b=qRqVjcFxGShC1ckkldeAhdzUP4C+Yqs1jxCil8wYKkfipgPWOE1WEImSe/qj4ImSOd
-         VmskNMsj1ITIk/9geXKS1jh5GfnqBFJDBBgGQyCbpkK7BXYg8Wkhc3VA9FDPj7Pi56Tv
-         EIbpyLInlAYxs9XPJ28GK07m86YvBEKNNRTNB4532E2GUeayE9DxMucmpR6c5g6N9/dO
-         EHck94u3+urxjjnRPg6QQ6zTLruJElXkCsXnA9yVfXzWv02GrnRHo4kmL/qH83ne0o1m
-         sTF56gsFYBP+7llXEqPILZTY3d/MP0D2S8YFfoZndSAafHR8+SIwfVLHHvFd4QBfLoE1
-         Qskw==
-X-Forwarded-Encrypted: i=1; AJvYcCXgYQn0lSxk9Lm4jQXM5B5Hc3zyz5w10+mcvYmfXMUzWpPtTn/315fNuEyRDIgKfvjLVFLorjUSF+bw7Te75A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZzRIjLj/q14JPnLcoMdVAMQ+7AFRf3VqDBSzSlfwJA7iHhAf5
-	rZUnuDk815vvE/7OK3Ys6LHK16YH3ixNH3++LKMt5ahdO02a/iz8EyH9bowPMzU=
-X-Gm-Gg: ASbGncuPGM97s2OXnoZTVvf8UH0jAZVQfY9oP0AtOFJ48un+/yBtWAWbH+6AsdxxCxx
-	fk5oi4bZ0CXXc9rPH+kC8WtcrIQ11zTmP+jG1ksWUKKR6f6K+MRBBvk+GGvPK7FkpUm74Tv19Wg
-	2qMOz6uXio3fSaHwu1UjPD5Le31/DX8Qj/8PZk/qTsULDg7C/5h66SeTRqwny+brY5TZTFzimaf
-	wkJgPJ009lCrXS1qvcPbEwS77QsthOMeP1G+IqAHwnCddW+I6pTq6qb5XQMCm0=
-X-Google-Smtp-Source: AGHT+IEbIQYg8EnIUDUPigKjpDEo3nHZn5oUqp1eGUTq6LEGGzSr1WjwD8bOZqQ7VZz3k53CLChrPw==
-X-Received: by 2002:a05:600c:1da7:b0:434:f871:1b97 with SMTP id 5b1f17b1804b1-434fffca42dmr648225e9.33.1733744559181;
-        Mon, 09 Dec 2024 03:42:39 -0800 (PST)
-Received: from [192.168.0.40] ([176.61.106.227])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434f2b08972sm60014355e9.27.2024.12.09.03.42.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Dec 2024 03:42:38 -0800 (PST)
-Message-ID: <c8f42175-3501-4d65-92ba-5878fe5ea5f4@linaro.org>
-Date: Mon, 9 Dec 2024 11:42:35 +0000
+	Mon, 09 Dec 2024 12:05:51 +0000
+X-QQ-mid: bizesmtpip2t1733745894t12g1rh
+X-QQ-Originating-IP: FCGHQIL8wqSCmJKer6km0MXNCC/re3TnueY7PBB3GNs=
+Received: from [IPV6:240f:10b:7440:1:a0b7:f16b ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 09 Dec 2024 20:04:50 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 11391674911926168947
+Message-ID: <D823208EACD51A7F+ab5e9bd9-2daf-41a3-a882-9b017d31dd1b@radxa.com>
+Date: Mon, 9 Dec 2024 21:04:49 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH] media: dt-bindings: trivial white-space and
- example cleanup
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Robert Foss <rfoss@kernel.org>,
- Todor Tomov <todor.too@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Shijie Qin <shijie.qin@nxp.com>, Michael Tretter <m.tretter@pengutronix.de>,
- Emil Velikov <emil.velikov@collabora.com>,
- Del Regno <angelogioacchino.delregno@somainline.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: fix cooling-levels in pwm-fan
+ for Radxa ROCK 5A/5C
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, sebastian.reichel@collabora.com,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20241204045447.1036-1-naoki@radxa.com>
+ <20241204045447.1036-2-naoki@radxa.com>
+ <ed28e18be8db8274abffbcf840ce0550@manjaro.org>
 Content-Language: en-US
-From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20241209113405.74226-1-krzysztof.kozlowski@linaro.org>
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <ed28e18be8db8274abffbcf840ce0550@manjaro.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MACXe2l6e7j9HxR+aajrKyiBH+aN/o1RiqMbdTZPzh62zmnIrPwh2VPL
+	/mhtJW1m+z+SPZKzIS2if9y86/LICwOibfpKhxGdI3Jxdd87gGxIcQS+5j47EhuA0XGWivo
+	KwiILp79aTzdojVZ0/9RSmazF8ThwqKeTGnSyxcfvJ6VU3jGnoOLDOCX50KZyEMVToTO+mA
+	whveCavBfHfdW05hQcbGKSqwQg+a6w+py0zkGeQ+CuY1C1zqw+3/HMx4WfwpRdNmHDTIRLO
+	RCyEGDy7LbcgITP35GTqtiDyTRWtz20si0A2AVf/YKxhBnDzkdmQWFNSYxSYvgxxl/53utf
+	xNy3tJH8KJ55GK28balZcq7KONhM6bGN6oOwzHFnkOv9ADcYmF3m6GrT3WInE1T/+rWYPJV
+	2Fz1BkRCIz4okc0QIhJ86Rlq0onNIhjQw41+gg9le7FMjCiO+8BECjP7j83DspDyZhvWuc9
+	iDDGhOBBXCV3lLrSu2TzrSAkwWQsr4AALt3HkN9b0sC3jFljffMDboPHzEdas/T/5oJyGFs
+	PIwtJXds5FflNumHIrUBSLDnfpghLuOwpD2DGA5PFmQn3YOj/bM1L7kuej3Lf1HgLBegOtD
+	MW8n/VBcVnUNgKBdXjywWsvhDBOa1EPkXpzteg/0/IgJlRilsPzXGS6WCtPsHRZEQUePkd3
+	bQJlfk0Wh6C0rMraLAU447x/WKQCaCOSMyV0t/EodUHUUyM7S+3Pbp/GAZfEAsNEjjDo42F
+	yIqCl/PjetcHBzpGJQJ1KoCv3Sj6bGzH/ELiRq5uzzFwZtVT5KhFYHOxxCY7770d8tLmijM
+	DvKAafZHmZJYT9hmT8Gwx8m3b4mRLMPQqvU/AJdqb9QiBvgz32g65YzsyZXjrwe9zC3mHKs
+	bZ71wMds+a5py1wwhwjAL/k/PbiZjoyGHz2PB8D+knU=
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_034241_899954_881A46E0 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241209_040546_257249_431A5337 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,64 +83,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 09/12/2024 11:34, Krzysztof Kozlowski wrote:
-> diff --git a/Documentation/devicetree/bindings/media/qcom,msm8916-camss.yaml b/Documentation/devicetree/bindings/media/qcom,msm8916-camss.yaml
-> index 9cc0a968a401..3469a43f00d4 100644
-> --- a/Documentation/devicetree/bindings/media/qcom,msm8916-camss.yaml
-> +++ b/Documentation/devicetree/bindings/media/qcom,msm8916-camss.yaml
-> @@ -1,5 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> -
->   %YAML 1.2
->   ---
->   $id:http://devicetree.org/schemas/media/qcom,msm8916-camss.yaml#
-> diff --git a/Documentation/devicetree/bindings/media/qcom,msm8996-camss.yaml b/Documentation/devicetree/bindings/media/qcom,msm8996-camss.yaml
-> index 5cb0e337ea6e..644646de338a 100644
-> --- a/Documentation/devicetree/bindings/media/qcom,msm8996-camss.yaml
-> +++ b/Documentation/devicetree/bindings/media/qcom,msm8996-camss.yaml
-> @@ -1,5 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> -
->   %YAML 1.2
->   ---
->   $id:http://devicetree.org/schemas/media/qcom,msm8996-camss.yaml#
-> diff --git a/Documentation/devicetree/bindings/media/qcom,sdm660-camss.yaml b/Documentation/devicetree/bindings/media/qcom,sdm660-camss.yaml
-> index 584106e275f6..68d8670557f5 100644
-> --- a/Documentation/devicetree/bindings/media/qcom,sdm660-camss.yaml
-> +++ b/Documentation/devicetree/bindings/media/qcom,sdm660-camss.yaml
-> @@ -1,5 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> -
->   %YAML 1.2
->   ---
->   $id:http://devicetree.org/schemas/media/qcom,sdm660-camss.yaml#
-> diff --git a/Documentation/devicetree/bindings/media/qcom,sdm845-camss.yaml b/Documentation/devicetree/bindings/media/qcom,sdm845-camss.yaml
-> index d32daaef1b50..289494f561e5 100644
-> --- a/Documentation/devicetree/bindings/media/qcom,sdm845-camss.yaml
-> +++ b/Documentation/devicetree/bindings/media/qcom,sdm845-camss.yaml
-> @@ -1,5 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> -
->   %YAML 1.2
->   ---
->   $id:http://devicetree.org/schemas/media/qcom,sdm845-camss.yaml#
-> diff --git a/Documentation/devicetree/bindings/media/qcom,sm8250-camss.yaml b/Documentation/devicetree/bindings/media/qcom,sm8250-camss.yaml
-> index 06db2c1e6079..a372d991e652 100644
-> --- a/Documentation/devicetree/bindings/media/qcom,sm8250-camss.yaml
-> +++ b/Documentation/devicetree/bindings/media/qcom,sm8250-camss.yaml
-> @@ -1,5 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> -
->   %YAML 1.2
-
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgp0aGFuayB5b3UgZm9yIHlvdXIgcmV2aWV3IQoKT24gMTIvNC8yNCAxNDozMywgRHJhZ2Fu
+IFNpbWljIHdyb3RlOgo+IEhlbGxvIEZ1a2F1bWksCj4gCj4gT24gMjAyNC0xMi0wNCAwNTo1NCwg
+RlVLQVVNSSBOYW9raSB3cm90ZToKPj4gZmFuIGJlaGF2aW9yIGlzIGJldHRlciB0aGFuIGN1cnJl
+bnQgY29uZmlndXJhdGlvbi4KPiAKPiBDb3VsZCB5b3UsIHBsZWFzZSwgZGVzY3JpYmUgYmV0dGVy
+IHdoYXQgbWFrZXMgdGhpcyBjb25maWd1cmF0aW9uCj4gYmV0dGVyLCB3aGljaCBmYW4gbWFrZSBh
+bmQgbW9kZWwgYXJlIHlvdSB1c2luZywgZXRjLj8KCkkgaGF2ZSB0aHJlZSBIZWF0c2hpbmsgMjUx
+M1sxXSBhbmQgSSBub3RpY2VkIHRoZXkgYmVoYXZlIHZlcnkgCmRpZmZlcmVudGx5Li4uIGl0J3Mg
+ZGlmZmljdWx0IHRvIHNheSB3aGljaCBjb29saW5nLWxldmVscyBpcyBiZXR0ZXIgb3IgCndvcnNl
+IHdpdGggdGhlc2UgaGVhdHNpbmsuCgpJJ2xsIGRyb3AgdGhpcyBwYXRjaC4KCkJlc3QgcmVnYXJk
+cywKClsxXSBodHRwczovL3JhZHhhLmNvbS9wcm9kdWN0cy9hY2Nlc3Nvcmllcy9oZWF0c2luay0y
+NTEzCgotLQpGVUtBVU1JIE5hb2tpClJhZHhhIENvbXB1dGVyIChTaGVuemhlbikgQ28uLCBMdGQu
+Cgo+PiBTaWduZWQtb2ZmLWJ5OiBGVUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+Cj4+IC0t
+LQo+PiB0aGlzIHBhdGNoIGRlcGVuZHMgb24gWzFdIHdoaWNoIGRlcGVuZHMgb24gWzJdLgo+Pgo+
+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXJvY2tjaGlw
+LyAKPj4gY292ZXIvMjAyNDExMjgxMjE5MjkuNjI2NDYtMS1uYW9raUByYWR4YS5jb20vCj4+IFsy
+XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtcm9ja2NoaXAvIAo+
+PiBwYXRjaC8yMDI0MTExOTA5NTExMy43ODE1MS0xLW5hb2tpQHJhZHhhLmNvbS8KPj4gLS0tCj4+
+IMKgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpIHwgMiAr
+LQo+PiDCoDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pgo+
+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2st
+NS5kdHNpCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5k
+dHNpCj4+IGluZGV4IGExY2FjNDBkNDM5ZS4uNDcyYjQxZjBkNDdmIDEwMDY0NAo+PiAtLS0gYS9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtcm9jay01LmR0c2kKPj4gKysrIGIv
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpCj4+IEBAIC0z
+Niw3ICszNiw3IEBAIGFuYWxvZy1zb3VuZCB7Cj4+IMKgwqDCoMKgIGZhbjogZmFuIHsKPj4gwqDC
+oMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInB3bS1mYW4iOwo+PiDCoMKgwqDCoMKgwqDCoMKg
+ICNjb29saW5nLWNlbGxzID0gPDI+Owo+PiAtwqDCoMKgwqDCoMKgwqAgY29vbGluZy1sZXZlbHMg
+PSA8MCA2NCAxMjggMTkyIDI1NT47Cj4+ICvCoMKgwqDCoMKgwqDCoCBjb29saW5nLWxldmVscyA9
+IDwwIDEyMCAxNTAgMTgwIDIxMCAyNDAgMjU1PjsKPj4gwqDCoMKgwqDCoMKgwqDCoCBmYW4tc3Vw
+cGx5ID0gPCZ2Y2NfNXYwPjsKPj4gwqDCoMKgwqDCoMKgwqDCoCBwd21zID0gPCZwd20zIDAgNjAw
+MDAgMD47Cj4+IMKgwqDCoMKgIH07Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
