@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F2BE7717D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 16:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84FDCE7717D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 16:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BmLIg76McDokyIeDAiMlkoHueIcFoXsvhLC4hoG0Ld0=; b=WtQmloKJ+cNv6HKPQ0gt/fTOU2
-	6amhTaqcp0rWLaxdZi+VolGkJNIiKhXM67UGZT6zgSKnTPmK4WWk+qt9qM8+CTr72jDIcu3Itb67j
-	Rk8BImodZUZ0NiSQ0SVZFWc2wh8GYuxvGq9v8MHRvO3gyE/8UTK5qxEYUz1j4q8wjeX5vh5eavUFK
-	8cw0uPKUWWyqrbpP5RkNN2mMa4oKY1xwkmzL5fHP0w0IS8iGOCLWG9xM0mloKEzlMJ3iH9mZmsoxM
-	EP65c7y30v9O32pzA+6hSDJFKclI1/qd8p1AOLVbY1RGc/yCLQxf5hP7I0pYEjF8JEcCmuaSngwIf
-	URJvz62A==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CmlV4KyLs5rvzy2lmx13ZQze4Kt+rYTkD+9v79t1cnw=; b=PGd3ijNf38NtLbocgZRcjNcwX+
+	GyzfAaXIy8YmHGLAI55EtHkNBB3UUPE9BQeifgFAjjRPWWBmc0OzsZpLXKLmKkHjppuIFFNUjn0V7
+	duObZ6hnXuNUbNm5Tfjswtwzo3dNxrPL1g3zxnXKMNmecD+vO8j1Ko3Uda5yKsCc8zK1FKr0Z835F
+	F8X0tNV79a3r4cONovRIcR3RGQXKjihnRlTqm0dqRaohKKmU3/urQJLaQPAXvaCvNSMEZG6U/ZDWc
+	SLlNxaHm0libODGBBLmNtJtgEailcD3OyFv+g7WJaFCgKbsM15tua24Q7S5lPvyC1iXB98yejL/xk
+	Pblu6M6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKgMA-00000008VTF-3p4q;
-	Mon, 09 Dec 2024 16:11:34 +0000
-Received: from out-185.mta0.migadu.com ([2001:41d0:1004:224b::b9])
+	id 1tKgWK-00000008XN0-2OoG;
+	Mon, 09 Dec 2024 16:22:04 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKgM7-00000008VRl-3gDW
+	id 1tKgWH-00000008XLZ-3Rzw
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Dec 2024 16:11:33 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1733760686;
+	Mon, 09 Dec 2024 16:22:03 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1733761319;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=LIKxDul1PcRU3jEvG5gfDjtOJwNlmOXizKV8HI2OXjs=;
-	b=RXIxVbmgY2RiTb762BtEh3yK1NiF08UMTYml4IZ5B/wiKXgNjViKlUeUFaVX+3E3qSp/1Y
-	cfuWCkJ2A4IsyMt8dKd6GkYYPxsQhSbIlwICGT1cy/tvfuQK9hiBGAuQs+MJXHxb10NWgp
-	9WKyi2/b4G15E1dOMuOPXv9LfSWMHhsA/ftIedCphTNKNGW3LryRQv7WIxS1V7jUpBWk7W
-	czGzOrEdbCttwDJh7O87AMvdBgX2ZefrLtOzcVIWtX0VmbAvUZVf9xrVhLE9eyVnWNIr+V
-	Qydg84tNNUpDhF6SGOyueLlAxPTJ3TmyDxLJy8SSEaWVTmdLPWY8aWHVPLc0dg==
-Date: Mon, 09 Dec 2024 17:11:03 +0100
-Message-Id: <D67AV178CEBD.3QA9VD4ZPRNQ1@cknow.org>
-Cc: <Laurent.pinchart@ideasonboard.com>, <andrzej.hajda@intel.com>,
- <andy.yan@rock-chips.com>, <conor+dt@kernel.org>,
- <devicetree@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <jernej.skrabec@gmail.com>, <jonas@kwiboo.se>, <krzk+dt@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <maarten.lankhorst@linux.intel.com>,
- <mripard@kernel.org>, <neil.armstrong@linaro.org>,
- <quentin.schulz@cherry.de>, <rfoss@kernel.org>, <robh@kernel.org>,
- <tzimmermann@suse.de>
-Subject: Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
- controller
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Daniel Semkowicz" <dse@thaumatec.com>, <heiko@sntech.de>
-References: <20241203165450.1501219-1-heiko@sntech.de>
- <20241209150619.33998-1-dse@thaumatec.com>
-In-Reply-To: <20241209150619.33998-1-dse@thaumatec.com>
-X-Migadu-Flow: FLOW_OUT
+	bh=TNu30NMcXpHXQeKZCe45rgGouT76yWzLuEVZhUqrCBo=;
+	b=tea2egOuca8a6xvcOAiUvV8A/iJyDV/OGrvxPVqHctBTofq6XbX9haevYAls6D4Vsz9xse
+	C33EeQCckkYu+Iex1tmslZDnxgU3aDRxv7EaFvO2GPkv2iYywvIatrdU9gjUnjl4CK2e3M
+	lnjCO7Tr67t2npurOlYuvzrDARI2OQ1/blU9qGwlNnPipXtnWy1n1lankdY5JY4gpczby7
+	6+F3q5majfHjZvvyOFmDZIeoslNYSFtdumi9ZWkBDvGHLhzHfWy3FJjaZ/d5ke3hJ+trHY
+	TojDmmVd8y7oCfQ6/2iVFPOTIz4b9pxtN5gFkb+cbp5Gh6z/UJQQBWQOFm3Nyw==
+Date: Mon, 09 Dec 2024 17:21:59 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, sebastian.reichel@collabora.com,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: convert blue LED to "pwd-leds" for
+ Radxa ROCK 5A/5C
+In-Reply-To: <20241209134158.4811-1-naoki@radxa.com>
+References: <20241209134158.4811-1-naoki@radxa.com>
+Message-ID: <aa66361152338edcf6bc2709f5120684@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_081132_413422_DBF2FC71 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20241209_082202_166427_CD6492B5 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,96 +68,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4417623677543080712=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4417623677543080712==
-Content-Type: multipart/signed;
- boundary=eefa09e675ebf91d252165db5d46d61f91efbf3c096cae57afe8caeae9bb;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+Hello Fukaumi,
 
---eefa09e675ebf91d252165db5d46d61f91efbf3c096cae57afe8caeae9bb
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On 2024-12-09 14:41, FUKAUMI Naoki wrote:
+> convert blue(heartbeat) LED from "gpio-leds" to "pwm-leds". user can
+> change brightness.
 
-Hi,
+Please, start all sentences with uppercase letters, because when
+there are periods (i.e. the '.' characters), there should also be
+matching starting uppercase letters.  As we know, that basically
+defines the primary syntax of a sentence in English.
 
-On Mon Dec 9, 2024 at 4:06 PM CET, Daniel Semkowicz wrote:
-> On 03.12.24 21:54, Heiko Stuebner wrote:
-> > This series adds a bridge and glue driver for the DSI2 controller found
-> > in the rk3588 soc from Rockchip, that is based on a Synopsis IP block.
-> >=20
->
-> I did more tests with different LVDS displays. I tested following
-> configurations with DSI/LVDS bridge:
-> - 1024x600@60.01
-> - 1024x768@60.02
-> - 1280x800@60.07
-> - 1366x768@60.06
->
-> All of them worked without issues, except 1366x768.
-> With this resolution, video is blurry, and offset incorrectly
-> to the left. There are also repeating errors on the console:
->
->   rockchip-drm display-subsystem: [drm] *ERROR* POST_BUF_EMPTY irq err at=
- vp3
->
-> In correct operation with other resolutions, there is no error.
-> I am not sure if this is a problem in your series or rather in VOP2
-> driver.
+I'm sorry if I'm stating the obvious, but this patch description
+simply doesn't read well.
 
-On my PineTab2 I got similar messages about 2 weeks ago:
-rockchip-drm display-subsystem: [drm] *ERROR* POST_BUF_EMPTY irq err at vp1
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-Preceding those, I got several panfrost related errors:
+I haven't checked the entire patch in detail, but as the blue LED
+(a.k.a. the IO_LED) on the ROCK 5A and 5C is powered by a SoC pin
+capable of generating PWM output, according to the board schematics
+that I checked, making it possible to adjust the LED brightness
+makes sense to me, and describes the hardware a bit better.
 
-panfrost fde60000.gpu: get clock failed -517
-panfrost fde60000.gpu: clk init failed -517
-platform fde60000.gpu: deferred probe pending: (reason unknown)
-platform cpufreq-dt: deferred probe pending: (reason unknown)
-vdd_gpu_npu: disabling
+Thus, please feel free to include my:
 
-But can also be that the PineTab2 (likely) needs regulator-always-on
-and regulator-boot-on in its vdd_gpu_npu node.
+Acked-by: Dragan Simic <dsimic@manjaro.org>
 
-> I tried to track down the problem, and it seems to be a generic issue
-> when horizontal line width is not divisible by 4.
-> Lowering line width to 1364px fixes the issue, but of course I have two
-> vertical lines of black pixels on the right.
-> I also made some tests with 720x1280 DSI display. Lowering horizontal
-> line to 718px shows the same problem. With 720px and 716px it works
-> correctly.
+... and please send a v2 with the patch description improved as
+already suggested above.  That suggestion also applies to pretty
+much all other patches that you sent recently.
 
-I haven't look further into it, but the PT2 has a 1280x800 resolution.
-
-HTH,
-  Diederik
-
---eefa09e675ebf91d252165db5d46d61f91efbf3c096cae57afe8caeae9bb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ1cWnwAKCRDXblvOeH7b
-bt6mAQC6vSnt+4gcL6mV0BWnp8ZL7iXn5fWiXFogAWGKMTLc7QEAoV2+ibpMQSek
-0THMoeuvcpjes+GUp5Tq8DFptaTtHAE=
-=lTYg
------END PGP SIGNATURE-----
-
---eefa09e675ebf91d252165db5d46d61f91efbf3c096cae57afe8caeae9bb--
-
-
---===============4417623677543080712==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+> this patch depends on [1] which depends on [2].
+> 
+> [1] 
+> https://patchwork.kernel.org/project/linux-rockchip/cover/20241209132406.4232-1-naoki@radxa.com/
+> [2] 
+> https://patchwork.kernel.org/project/linux-rockchip/cover/20241209125131.4101-1-naoki@radxa.com/
+> ---
+>  .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 34 ++++++++++++-------
+>  1 file changed, 22 insertions(+), 12 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
+> index d0b9513d56a7..d72314d917da 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
+> @@ -46,7 +46,7 @@ hdmi0_con_in: endpoint {
+>  	leds {
+>  		compatible = "gpio-leds";
+>  		pinctrl-names = "default";
+> -		pinctrl-0 = <&led_pins>;
+> +		pinctrl-0 = <&led_pin>;
+> 
+>  		led-0 {
+>  			color = <LED_COLOR_ID_GREEN>;
+> @@ -54,14 +54,6 @@ led-0 {
+>  			function = LED_FUNCTION_POWER;
+>  			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
+>  		};
+> -
+> -		led-1 {
+> -			color = <LED_COLOR_ID_BLUE>;
+> -			default-state = "on";
+> -			function = LED_FUNCTION_STATUS;
+> -			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+> -			linux,default-trigger = "heartbeat";
+> -		};
+>  	};
+> 
+>  	fan: pwm-fan {
+> @@ -72,6 +64,19 @@ fan: pwm-fan {
+>  		pwms = <&pwm3 0 60000 0>;
+>  	};
+> 
+> +	pwm-leds {
+> +		compatible = "pwm-leds";
+> +
+> +		led-1 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			default-state = "on";
+> +			function = LED_FUNCTION_STATUS;
+> +			linux,default-trigger = "heartbeat";
+> +			pwms = <&pwm11 0 1000000 0>;
+> +			max-brightness = <255>;
+> +		};
+> +	};
+> +
+>  	vbus_typec: regulator-vbus-typec {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vbus_typec";
+> @@ -422,9 +427,8 @@ &pcie2x1l2 {
+> 
+>  &pinctrl {
+>  	leds {
+> -		led_pins: led-pins {
+> -			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
+> -					<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		led_pin: led-pin {
+> +			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+> 
+> @@ -467,6 +471,12 @@ &pwm3 {
+>  	status = "okay";
+>  };
+> 
+> +&pwm11 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pwm11m3_pins>;
+> +	status = "okay";
+> +};
+> +
+>  &saradc {
+>  	vref-supply = <&vcca_1v8_s0>;
+>  	status = "okay";
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4417623677543080712==--
-
