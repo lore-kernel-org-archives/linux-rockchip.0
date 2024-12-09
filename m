@@ -4,46 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFFADE7717D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17268E77181
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:45:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DIOJXQUoSkf8pe7Ipi7Tu9+jbIY2FeFlGNsi+u7pMfE=; b=tV3g//a4CKHybI
-	If3Rg1bfYXP62pMGQm4LjPKhMgNNlWrVG4wxpGrGhuRXeT6+OgXn0ru0sUDl5yUFlXqR6jsfzMcO3
-	tlR4I57DBnZnIxOVRjzlJ/dgmpNqUh5WT+dKusBgft3++i5CWIcXFz72wozaeR6vs3+bjg26SmkWz
-	9aQgMC38TqSfBjo5GDFxZXbrFZqxdpOI3U1EtoGJJv/P7tAUQ0W8UZ5tYsm/2blKsK2EkpRkTk94S
-	lKEpbCFn/ZlUe9obWL+oC9RYsJ8Zvx4h1Y8qJ9T6yKnCIS5nNL7mlmVZ9KLw4uqXYGUu2uy5oRRXU
-	tWQwkUDa2MfhxSKtPKKw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ey4+/OeVBFSg/ZD3wASEj/uG6iJeQs78TgWRUnjiMLk=; b=ciuqoDlwfLdojo
+	+QG9AUY9UxoG62R7KfOnxnVUf39WQrHlBGHHSY1Gso82pNJ3kszQi86FATcw4v/6zKjm3tkAslYQq
+	iJ79JJkx9+OW+nK0wcQR07EN1s7ietDev2ctTy3h+HBUURU3thuRxOoY+gBC7WOj+GbzqFSyK2yc/
+	XlB48QxYMziRaj7/Sof9Mi6zky06XbGks5NGDs1YkZLXeY/4bVTJfwkCtsif2g8rNjSB7LIsYF+Hk
+	DXgwcP9/VRASAbL8tNebyaRTngBClq2eJk/Bch7L+8u1DbIG1fpvDWH6Zuhj5kjV7c9XMbroK8lwC
+	MY+y7h4O71LUD1ZrOpug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKe1b-000000082oj-30R9;
-	Mon, 09 Dec 2024 13:42:11 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKe1Y-000000082nF-3zxA
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Dec 2024 13:42:10 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9Dg21C032125;
-	Mon, 9 Dec 2024 22:42:02 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
+	id 1tKe4M-000000083MC-0Im9;
+	Mon, 09 Dec 2024 13:45:02 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKcu1-00000007gdo-1IY4;
+	Mon, 09 Dec 2024 12:30:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=N2nQW
+	BQmIKoC4QJEfJ78OOQrAzQPhXGv/+rsDTlwFiI=; b=ZOuhLhj5ZKetAookr9rZa
+	1+4eMaLfDAo+pBgOFnAcMoGz9FVPTBskmTqiA250e3M9uLLCUouj0umzJ/sxhOyT
+	pmkvxfmn7Ldi9UXvkjzyqUx7XTqB5QajIVxMC02KuvNxQi32KuDpAx4Upq8t2ByB
+	yqWcxEuHPUqAk/7V+jfe4k=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgD3Woe44lZnubZICA--.5849S11;
+	Mon, 09 Dec 2024 20:29:57 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        dsimic@manjaro.org, sebastian.reichel@collabora.com,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH] arm64: dts: rockchip: convert blue LED to "pwd-leds" for Radxa ROCK 5A/5C
-Date: Mon,  9 Dec 2024 13:41:58 +0000
-Message-ID: <20241209134158.4811-1-naoki@radxa.com>
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	s.hauer@pengutronix.de,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v5 06/18] drm/rockchip: vop2: Setup delay cycle for Esmart2/3
+Date: Mon,  9 Dec 2024 20:29:19 +0800
+Message-ID: <20241209122943.2781431-10-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241209122943.2781431-1-andyshrk@163.com>
+References: <20241209122943.2781431-1-andyshrk@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: PCgvCgD3Woe44lZnubZICA--.5849S11
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JFy8AFW3ZFW3uw48GF4xXrb_yoWkGwc_Ka
+	y7WF98GF1kuFn0q3WUCayfGrW2k3Z29F4I9FyDtF98ZF93A3sYya4Iyr1UXF15CF4fCF1v
+	93W0q3W3CF13GjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0ahF3UUUUU==
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g6wXmdW3S-w5QABsl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_054209_205027_69831D87 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20241209_043017_679674_8199B613 
+X-CRM114-Status: UNSURE (   8.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -61,94 +82,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-convert blue(heartbeat) LED from "gpio-leds" to "pwm-leds". user can
-change brightness.
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+Each layer needs to set the correct delay cycle to display properly
+without unexpected offset on screen.
+
+Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
-this patch depends on [1] which depends on [2].
 
-[1] https://patchwork.kernel.org/project/linux-rockchip/cover/20241209132406.4232-1-naoki@radxa.com/
-[2] https://patchwork.kernel.org/project/linux-rockchip/cover/20241209125131.4101-1-naoki@radxa.com/
----
- .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 34 ++++++++++++-------
- 1 file changed, 22 insertions(+), 12 deletions(-)
+(no changes since v1)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-index d0b9513d56a7..d72314d917da 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-@@ -46,7 +46,7 @@ hdmi0_con_in: endpoint {
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&led_pins>;
-+		pinctrl-0 = <&led_pin>;
- 
- 		led-0 {
- 			color = <LED_COLOR_ID_GREEN>;
-@@ -54,14 +54,6 @@ led-0 {
- 			function = LED_FUNCTION_POWER;
- 			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
- 		};
--
--		led-1 {
--			color = <LED_COLOR_ID_BLUE>;
--			default-state = "on";
--			function = LED_FUNCTION_STATUS;
--			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "heartbeat";
--		};
- 	};
- 
- 	fan: pwm-fan {
-@@ -72,6 +64,19 @@ fan: pwm-fan {
- 		pwms = <&pwm3 0 60000 0>;
- 	};
- 
-+	pwm-leds {
-+		compatible = "pwm-leds";
-+
-+		led-1 {
-+			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
-+			function = LED_FUNCTION_STATUS;
-+			linux,default-trigger = "heartbeat";
-+			pwms = <&pwm11 0 1000000 0>;
-+			max-brightness = <255>;
-+		};
-+	};
-+
- 	vbus_typec: regulator-vbus-typec {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vbus_typec";
-@@ -422,9 +427,8 @@ &pcie2x1l2 {
- 
- &pinctrl {
- 	leds {
--		led_pins: led-pins {
--			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
--					<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		led_pin: led-pin {
-+			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-@@ -467,6 +471,12 @@ &pwm3 {
- 	status = "okay";
- };
- 
-+&pwm11 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm11m3_pins>;
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcca_1v8_s0>;
- 	status = "okay";
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 8b9ca046eeeb..d7ddeec27c7d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2703,9 +2703,11 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
+ 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__ESMART1, dly);
+ 			break;
+ 		case ROCKCHIP_VOP2_SMART0:
++		case ROCKCHIP_VOP2_ESMART2:
+ 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__SMART0, dly);
+ 			break;
+ 		case ROCKCHIP_VOP2_SMART1:
++		case ROCKCHIP_VOP2_ESMART3:
+ 			sdly |= FIELD_PREP(RK3568_SMART_DLY_NUM__SMART1, dly);
+ 			break;
+ 		}
 -- 
-2.43.0
+2.34.1
 
 
 _______________________________________________
