@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A758E7717D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 17:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 131F7E7717D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 20:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5XkdoWGld0bZeYZZeB5pcihSESqzm/fC5zmN8fFxTqE=; b=DkVssrPrYGagTz
-	5XGAjvpQXOg/UUvmjxZvpN6KJdeK1IAEX7b3KFFd7C29ZN0yD7DAxD0v1x72o6pBW2S3WQ696EJ45
-	eNKCDBSgn3yNKvR/bwF90CudINXTUcQNh/s+rxGXNnsXCfGA4XGiDP8gReUfB5+EXGZxbzRo9imP/
-	sST9qvAWYgMfAkt6c0HOxjOkxXM1/eEpT1WyFtVcP4DQd5mlFJvxzx4fFTMos+6llIoZTK51H4zen
-	T0wRB4eOpf3n+y5fTC4ITI7zSr90ye6AzRKDR4Dlpx1pq1U4pfAgcmIyXsWYooFP93JdHR3lErAxD
-	jlQj/ybGqX4JL9mbTdlQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qUOXuI7cIA/FjHI81ixD1d56PSp7SK0s+uKtIkAST3Q=; b=yyOJG7nlMr0V+y
+	1njEoGPybu3hmTSkb7xCJCCxr+aflyU1bwOCeqOdgzUwe8M1FJd9J7DcOz0P4dZON/IJECddDG9Yq
+	uj6nPksCguWCT7y34T8aoNJb1hvwF+O4V0uZFt/2lrBTzNFmTQQ4gcGlucjCD5tBds/T1zvH9gIda
+	l8mdN6Y/WFty7gKH28VPeemwA30cqQ0vtQ5lMFJOhsA28BqfPKG+2lFuNle2TvWwIc1Vumjul0wfe
+	X4yB000scUNgh3mbtKaomtFT+FaRaobOQq///hssAG/tEhLeZMn8QCc+34hDccclPle5Pkrts0gMG
+	Iih7jkP/PKL6HJ0O6t7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKhFe-00000008fs4-1OrM;
-	Mon, 09 Dec 2024 17:08:54 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1tKjvq-000000096rw-2fQL;
+	Mon, 09 Dec 2024 20:00:38 +0000
+Received: from a7-50.smtp-out.eu-west-1.amazonses.com ([54.240.7.50])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKhD8-00000008fII-3Aov
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Dec 2024 17:06:20 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-6d88d3d1eb6so44018136d6.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Dec 2024 09:06:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1733763977; x=1734368777; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CEAfsLVBfsGUy76+oFFFHqlf6kVm31lMCS/pgQCj+NM=;
-        b=JQFTyLzatT7TfvNp5ypt0cl8KAVgN+lNDm6MQ9/SctCn6lv3ngT+spbsKA8maGc4HT
-         viId263EWvk7pbvOCIp64jNcaMcRL1HxwyLVlOJp1YLBTad94M37GVkWhrnM5x6tsIpr
-         PenWDmxF9oPLR49lNeICZCTgWqma5ETVwb6+BXQxnA4Y++mJC8DZZ4xCSCLpO0ovDvWC
-         U9zUIotcub1mb36UUuGyUz29ozzH6GXY9TCiMoHw4ZwZJ4nTmHlLmS/2WMR0YMbopvbv
-         S0goRUHx/ktFCsQfJ/vsRRxlwqxsr09tGYZTP5XfD8xkZ2IslTAGGiTRXNLqqihvhxhS
-         7VWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733763977; x=1734368777;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CEAfsLVBfsGUy76+oFFFHqlf6kVm31lMCS/pgQCj+NM=;
-        b=FzYGYNh62jhCI7Q+tw0QAbbQFHxVHlrsyX6amV9kF6qDy7Cq11J0ffr3MXpJoR8V7T
-         qKf8Zx153rknJsVM+Sdcq7OrDb8UnQlcR7hE8LGnT1E1bW2m66+CEU+cSxCGNH/syxCM
-         SjXNGFK9KWCRByKnMxaUk9fqPX1tWtEmGORlrSpHsk8n7z7J/x5vBhxDVCSxB9NY2HFn
-         hS6e4aKOcyz3bp2XBULbt0rk9XqownhoYrm6BIr0guH+eRxa2+tnTAh4wZabr2xHeLuE
-         ArMnnqjv9hZx6BI3ATCMBaIvbj5nn4aZuwralenMqYvWlAq5bEoC4hPYHv+hBa8NX/ZE
-         oaig==
-X-Forwarded-Encrypted: i=1; AJvYcCVg0NEHHnBidqNi87wGgnxra9XQexCmt0yimo2GkLxSNVxaOk3v4XaZL1UymUjta1FUemFQoGk1r+VCe/QZdw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx8cOpCom3+Aahppy7yorP1vJ5V/KpHrr/Xk25/RL7BGTySwgYB
-	aQ2MJflAVCXwwWakDVNantWwfCihYvOaca6CxH/TNNFrOGkBptzz604wIfoR3yokL/Qw7F4vGXz
-	EXAth1Dz4IWpNUuPRdCcGmG9MvDA5jQc1JL8V1Q==
-X-Gm-Gg: ASbGncu8S1bKxZ/BFAg7f4W253evNABlxqr+QjVcS3cAGFuusDWmibhDERP3MMZIwyc
-	/2jWNmSVuMhK8FKMKHtWnbOvZ2MUH
-X-Google-Smtp-Source: AGHT+IGAVS5+GIVv09oM5aUfkNYSqKqLURj0uHGDQYo0Hnrn9PDydwzeP97lSsusJEmrWZvi9Pv6yK2sFETMgjF0y6Y=
-X-Received: by 2002:ad4:5f8d:0:b0:6d8:8283:4466 with SMTP id
- 6a1803df08f44-6d9213835acmr1371546d6.18.1733763976815; Mon, 09 Dec 2024
- 09:06:16 -0800 (PST)
+	id 1tKjvo-000000096qa-2OOV;
+	Mon, 09 Dec 2024 20:00:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=bc7lryepznv65m6r2ewkpoafjt4fiq42; d=collabora.com; t=1733774430;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Transfer-Encoding;
+	bh=TSevmeKx94FxlgRo/CcTTaf/hv4yRk8Oh4auWI1Dd1Q=;
+	b=IT8R0FIlYZvOWsBl8EldxDI7f1kV/isR92rGxeV3emkzcxgYgl1uYGIcitp9L/lG
+	ElxiuyiD1Gi9kC07VYbCk/mffV+eGvKpy0w1I9dVSASL3OcAPO7Ixp+pE+otmoGC9rY
+	B8QXNba0EDsFXiKWcZFaqxUB8Mh/Nao+v0VcIyLZpgQd6ATj8su2YzxipB8dNS/UBMx
+	UOrf3QGKqPSWJSjhvCbzzG4XsFgQ6HlrODPep18eU6T72G5GtBjod5x2ohH0H2H86tB
+	irpoL/zVT6ddb+pjPRY1UV1iQxrfQKmSPSNm8QAIGUtpgcWaSqnacbRYj3F41x+TVZH
+	A8NoSgBsxw==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1733774430;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
+	bh=TSevmeKx94FxlgRo/CcTTaf/hv4yRk8Oh4auWI1Dd1Q=;
+	b=FL/k6hQ0J5tYtfi32VuREENfvG2zkCIuoqJDpVDCuMvb92WYmrs5I79Ds1w81EgJ
+	L05MhO8FAkNQEkbk2aCi7+D4P/Tmooo929taHVy7VF2oejTisok6y7CobeEjZkbjdJw
+	H178jScIdnRttO+sCa8jNox4Kq5WByK39zBuCeaE=
+From: Shreeya Patel <shreeya.patel@collabora.com>
+To: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, 
+	p.zabel@pengutronix.de, jose.abreu@synopsys.com, 
+	nelson.costa@synopsys.com, shawn.wen@rock-chips.com, 
+	nicolas.dufresne@collabora.com, hverkuil@xs4all.nl, 
+	hverkuil-cisco@xs4all.nl
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, shreeya.patel@collabora.com, 
+	dmitry.osipenko@collabora.com
+Subject: [PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
+Date: Mon, 9 Dec 2024 20:00:30 +0000
+Message-ID: <01020193ad025176-f2e8e4fd-41a6-42ef-b3d0-dfa87a6d0abd-000000@eu-west-1.amazonses.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20241209122943.2781431-1-andyshrk@163.com> <20241209123215.2781721-1-andyshrk@163.com>
-In-Reply-To: <20241209123215.2781721-1-andyshrk@163.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 9 Dec 2024 17:06:05 +0000
-Message-ID: <CAPj87rO0MG2yE_NTndbxQ77rW-p6-ht5kx5vsaOZikQfVmwrgg@mail.gmail.com>
-Subject: Re: [PATCH v5 08/18] drm/rockchip: vop2: Add check for 32 bpp format
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
-	s.hauer@pengutronix.de, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	derek.foreman@collabora.com, detlev.casanova@collabora.com, 
-	Andy Yan <andy.yan@rock-chips.com>
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.12.09-54.240.7.50
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_090618_957408_CBF44793 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20241209_120036_791061_C975B4BA 
+X-CRM114-Status: GOOD (  23.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,34 +81,235 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+This series implements support for the Synopsys DesignWare
+HDMI RX Controller, being compliant with standard HDMI 1.4b
+and HDMI 2.0.
 
-On Mon, 9 Dec 2024 at 12:32, Andy Yan <andyshrk@163.com> wrote:
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index bd8db45eeba6..1f101a3c3942 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1224,7 +1224,15 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
->                                 return -EINVAL;
->                         }
->                 }
-> +       }
->
-> +       if (fb->format->format == DRM_FORMAT_XRGB2101010 || fb->format->format == DRM_FORMAT_XBGR2101010) {
-> +               if (vop2->data->soc_id == 3588) {
-> +                       if (!rockchip_afbc(plane, fb->modifier)) {
-> +                               drm_err(vop2->drm, "Unsupported linear 32 bpp for %s\n", win->data->name);
-> +                               return -EINVAL;
-> +                       }
-> +               }
+Features that are currently supported by the HDMI RX driver
+have been tested on rock5b board using a HDMI to micro-HDMI cable.
+It is recommended to use a good quality cable as there were
+multiple issues seen during testing the driver.
 
-Please do this in the format_mod_supported() hook, so userspace can
-see the true support of each format/modifier per plane. This will then
-be checked in drm_atomic_plane_check() so you don't need to open-code
-it here.
+Please note the below information :-
+* HDMIRX driver now only works with the opensource TF-A.
+* We have tested the working of OBS studio with HDMIRX driver and
+there were no issues seen.
+* We also tested and verified the support for interlaced video.
 
-Cheers,
-Daniel
+To test the HDMI RX Controller driver, following example commands can be used :-
+
+root@debian-rockchip-rock5b-rk3588:~# v4l2-ctl --verbose -d /dev/video0 \
+--set-fmt-video=width=1920,height=1080,pixelformat='BGR3' --stream-mmap=4 \
+--stream-skip=3 --stream-count=100 --stream-to=/home/hdmiin4k.raw --stream-poll
+
+root@debian-rockchip-rock5b-rk3588:~# ffmpeg -f rawvideo -vcodec rawvideo \
+-s 1920x1080 -r 60 -pix_fmt bgr24 -i /home/hdmiin4k.raw output.mkv
+
+CEC compliance test results :-
+
+* https://gitlab.collabora.com/-/snippets/380
+* https://gitlab.collabora.com/-/snippets/381
+
+Following is the v4l2-compliance test result :-
+
+root@debian-rockchip-rock5b-rk3588:~# v4l2-compliance -d /dev/video0 
+v4l2-compliance 1.29.0-5278, 64 bits, 64-bit time_t
+v4l2-compliance SHA: 791da13728d9 2024-11-25 10:01:57
+
+Compliance test for snps_hdmirx device /dev/video0:
+
+Driver Info:
+	Driver name      : snps_hdmirx
+	Card type        : snps_hdmirx
+	Bus info         : platform:fdee0000.hdmi_receiver
+	Driver version   : 6.12.0
+	Capabilities     : 0x84201000
+		Video Capture Multiplanar
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04201000
+		Video Capture Multiplanar
+		Streaming
+		Extended Pix Format
+
+Required ioctls:
+	test VIDIOC_QUERYCAP: OK
+	test invalid ioctls: OK
+
+Allow for multiple opens:
+	test second /dev/video0 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
+
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK
+
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK
+	test VIDIOC_DV_TIMINGS_CAP: OK
+	test VIDIOC_G/S_EDID: OK
+
+Control ioctls (Input 0):
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 4 Private Controls: 0
+
+Format ioctls (Input 0):
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK (Not Supported)
+	test Composing: OK (Not Supported)
+	test Scaling: OK (Not Supported)
+
+Codec ioctls (Input 0):
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls (Input 0):
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test CREATE_BUFS maximum buffers: OK
+	test VIDIOC_REMOVE_BUFS: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK (Not Supported)
+	test blocking wait: OK
+
+Total for snps_hdmirx device /dev/video0: 48, Succeeded: 48, Failed: 0, Warnings: 0
+
+
+Changes in v5 :-
+- Fix the interrupt IRQ number in the dt-bindings and device tree
+- Add alignment property to ensure hdmi-receiver-cma
+  starts at a 64KB-aligned address
+- Change the MODULE_DESCRIPTION
+- Add VIDEO_SYNOPSYS_HDMIRX as prefix to the default edid config
+- Drop the enabling of default edid in the Kconfig
+- Replace the default EDID with hdmi-4k-300mhz EDID produced
+  by v4l2-ctl tool for better compatibility with various HDMI
+  cables and adapters
+- Rework the write_edid and set_edid functions
+- During format change, retrieve the current pixel format,
+  color depth, and AVI infoframe details instead of only
+  detecting the format
+- Improve the logging mechanism and delays in the
+  hdmirx_wait_signal_lock function
+- Fix the 4K@60 capturing for RGB format
+- Document what hdmirx_check_timing_valid function does
+- Rework the hdmirx_get_detected_timings function
+- Fix the NV16/24 size image value
+- Add the implementation from Benjamin Hoff to expose the
+  ITC type to v4l2
+- Remove all the firmware related code
+
+Changes in v4 :-
+- Remove DTS changes included in the device tree patch
+- Remove the hdmi rx pin info as it's already present
+in the rk3588-base-pinctrl.dtsi
+- Create a separate config option for selecting the EDID
+and enable it by default
+- Improve the comment related to DV timings and move it
+to the side of hdmirx_get_detected_timings
+- Add 100ms delay before pulling the HPD high
+- Do not return the detected timings from VIDIOC_G_DV_TIMINGS
+- Drop the bus info from hdmirx_querycap
+- If *num_planes != 0 then return 0 in hdmirx_queue_setup
+- Set queue->min_queued_buffers to 1
+- Drop q->allow_cache_hints = 0; as it's always 0 by default
+- Add a comment for q->dma_attrs = DMA_ATTR_FORCE_CONTIGUOUS;
+- Drop .read = vb2_fop_read as it's not supported by driver
+- Remove redundant edid_init_data_600M
+- Make HPD low when driver is loaded
+- Add support for reading AVI Infoframe
+- Remove msg_len checks from hdmirx_cec_transmit
+- Add info about the CEC compliance test in the cover letter
+- Add arbitration lost status
+- Validate the physical address inside the EDID
+
+Changes in v3 :-
+- Use v4l2-common helpers in the HDMIRX driver
+- Rename cma node and phandle names
+- Elaborate the comment to explain 160MiB calculation
+- Move &hdmi_receiver_cma to the rock5b dts file
+- Add information about interlaced video testing in the
+cover-letter
+
+Changes in v2 :-
+- Fix checkpatch --strict warnings
+- Move the dt-binding include file changes in a separate patch
+- Add a description for the hardware in the dt-bindings file
+- Rename resets, vo1 grf and HPD properties
+- Add a proper description for grf and vo1-grf phandles in the
+bindings
+- Rename the HDMI RX node name to hdmi-receiver
+- Include gpio header file in binding example to fix the
+dt_binding_check failure
+- Move hdmirx_cma node to the rk3588.dtsi file
+- Add an entry to MAINTAINERS file for the HDMIRX driver
+
+Shreeya Patel (4):
+  MAINTAINERS: Add entry for Synopsys DesignWare HDMI RX Driver
+  dt-bindings: media: Document bindings for HDMI RX Controller
+  arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+  media: platform: synopsys: Add support for HDMI input driver
+
+ .../bindings/media/snps,dw-hdmi-rx.yaml       |  132 +
+ MAINTAINERS                                   |    8 +
+ .../dts/rockchip/rk3588-base-pinctrl.dtsi     |   14 +
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   57 +
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/synopsys/Kconfig       |    3 +
+ drivers/media/platform/synopsys/Makefile      |    2 +
+ .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
+ .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+ .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2662 +++++++++++++++++
+ .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+ .../synopsys/hdmirx/snps_hdmirx_cec.c         |  283 ++
+ .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
+ 14 files changed, 3633 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+ create mode 100644 drivers/media/platform/synopsys/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+
+-- 
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
