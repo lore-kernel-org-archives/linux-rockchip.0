@@ -4,48 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B067E7717D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E70AE77181
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:12:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lMr8NUtj72aasVRKonENTwB/rMgoy0NW/3wasLIOn64=; b=by9srO3uqManr/
-	V1zbF0Vgzmm+NyofrBBG9JM9jcTtOLCSAZuiHhdUjkRV5dWSBgEzwuL4OL1xA3vFPt9rvpxp/xGyb
-	KncInO1lTRiF4QvT5Lnw/zIHsSCZJhwcV8zFUPHkfViEppmI7Y8pw7ucok0TMfuiwK6shJp4P+Ilr
-	lUlz7yAHB1PYI1Qnqs03bXRiWvFoUiylGGdhTyskgU5KLO0dkQ51Q5TQIHf6KTBSihrkw26m1CFjY
-	zYdZ0z8DckyO4ZkWMu8v2rww9J1mvnYghCVIibBj6CrlYKPUn5flQMHPjNGOnXV+hWtuWs25aYcUY
-	eQ8Etny4vcGqaL2dpp3Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6EGttOAg9W5gU6Wv+Gd9+wZCtBOQul5EDg0npGdbmlI=; b=b3Q7P9PnpxGGD9
+	Ru+g6n2sX2NsGr2VV2eb0xzHqOmxCYrxpIV734y9kApmNb6hEtuLJ/sL6M4+X7RN7ywYs/9DAgfOp
+	QmXv55yryYfD1ykV96CQ0IJBoMCJxEXB/Zhn2wXwiXq5BlyruqF5YRGdVwCO/Pc7LVPAj6QfG5UK6
+	F27WZI6aahv7qedanlUQLabwzlCWcnw+Uwe8nEKtSepWiTLZyQpLj1iPGMyCGc3tXnVyun2pnlKEZ
+	tnojMvXKrvC5IINOmk8/FwcNjhAygqrW1THN1dKjg7AQMz8rmg2rOVwKbf8QPPahw3tpUvr2rS/Eh
+	YVEQ3EqYhYnmB5ff0/LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdYQ-00000007trO-3vvg;
-	Mon, 09 Dec 2024 13:12:03 +0000
+	id 1tKdYS-00000007tt0-0CJq;
+	Mon, 09 Dec 2024 13:12:04 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdF5-00000007nY6-0o7R
+	id 1tKdF5-00000007nYR-0ntS
 	for linux-rockchip@lists.infradead.org;
 	Mon, 09 Dec 2024 12:52:07 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9CpdQ9031943;
-	Mon, 9 Dec 2024 21:51:47 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9CpdQ0031943;
+	Mon, 9 Dec 2024 21:51:39 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         dsimic@manjaro.org, sebastian.reichel@collabora.com,
         devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
         FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v4 09/12] arm64: dts: rockchip: fix pmic dcdc-reg7 regulator-name for Radxa ROCK 5C
-Date: Mon,  9 Dec 2024 12:51:28 +0000
-Message-ID: <20241209125131.4101-10-naoki@radxa.com>
+Subject: [PATCH v4 00/12] arm64: dts: rockchip: refine dts for Radxa ROCK 5C
+Date: Mon,  9 Dec 2024 12:51:19 +0000
+Message-ID: <20241209125131.4101-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241209125131.4101-1-naoki@radxa.com>
-References: <20241209125131.4101-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_045203_587713_5CA9601B 
-X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-CacheID: sfid-20241209_045203_558653_29DE9631 
+X-CRM114-Status: UNSURE (   5.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,32 +61,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-fix regulator-name to match with node label.
+this patch series includes fixes for difference from schematic and
+vendor kernel, minor improvements, cosmetic changes, etc.
 
-Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
-Changes in v4:
-- none
-Changes in v3:
-- new
----
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+FUKAUMI Naoki (12):
+  arm64: dts: rockchip: change function name for blue LED for Radxa ROCK
+    5C
+  arm64: dts: rockchip: change node name for pwm-fan for Radxa ROCK 5C
+  arm64: dts: rockchip: fix property for pwm-fan for Radxa ROCK 5C
+  arm64: dts: rockchip: rename regulator for pcie2x1l2 for Radxa ROCK 5C
+  arm64: dts: rockchip: add properties for pcie2x1l2 for Radxa ROCK 5C
+  arm64: dts: rockchip: remove RTC and related node for Radxa ROCK 5C
+  arm64: dts: rockchip: separate pinctrl for vcc_5v0 for Radxa ROCK 5C
+  arm64: dts: rockchip: add cd-gpios for sdmmc for Radxa ROCK 5C
+  arm64: dts: rockchip: fix pmic dcdc-reg7 regulator-name for Radxa ROCK
+    5C
+  arm64: dts: rockchip: fix pmic dcdc-reg10 label for Radxa ROCK 5C
+  arm64: dts: rockchip: fix proparties for pmic regulators for Radxa
+    ROCK 5C
+  arm64: dts: rockchip: sort nodes for Radxa ROCK 5C
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 1da082b18c0e..0f8048f6511b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -634,7 +634,7 @@ regulator-state-mem {
- 			};
- 
- 			vcc_2v0_pldo_s3: dcdc-reg7 {
--				regulator-name = "vdd_2v0_pldo_s3";
-+				regulator-name = "vcc_2v0_pldo_s3";
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <2000000>;
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     | 62 +++++++------------
+ 1 file changed, 22 insertions(+), 40 deletions(-)
+
 -- 
 2.43.0
 
