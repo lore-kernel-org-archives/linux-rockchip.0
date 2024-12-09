@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1F7E77180
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 12:50:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96446E77180
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 12:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fnh49wvfarQaIlQdzmqAhF039gD5UX/lfijHbjO2f1s=; b=IqwP0HDHUKA20H
-	yuShKvqSoO64gmRTfWzA79Fuks32dDHmDNzPpr9GODo4b7eC/mVM6+bh51APdI2YONvi+HkIVxdBe
-	sB2Z+BtdMk0nZM6ooMCV668y5TNKZtHqAD/ZWO/D3QpxN5s/uS6xmoE6aKKA/odrpqd0L5dqCffC/
-	Hj1vL80iwtgw9x2i7o7lEG/aGiqseQlvqTVuHl1RjM7cSru6TNOAc+7IfhCHrOxWymh+2UcUcQ/l8
-	2cmFXN0U6rBUJmp8A6n7Ybcnj/a+VIrnQPwqsF/iYiXk8VlX9KhKHdejEj3Fy7CMDcHa+Y1nuQd3q
-	MQt+/iC8bb35GJxh+NuA==;
+	List-Owner; bh=8+zMFl+3tozQqxJ2OKqQidZa3OgHUean70iSQ3QIbI0=; b=qOsBlG5fIZTW+Z
+	UIC1tV5koNn4eZfkMOGIh/pFDYR6aNqU9Q0jge4hlR07i7A3+JPziuUjc/YD8LVd9lYP9/804J2Tr
+	5CvLxCMcRd2szY1uTmv+bFdM9CVBvmMUa5s+a4qVN19hdN/EG0RiBgPd+79pCbWveOPcRNdJ9lCBD
+	IMJH5c+EnLcyqNIDPx2MYFk0rSU/+RZDtVNyPk0Z/qykWmKTM+5DzuP5EGSzsa2NMWx7hbGLlj86D
+	fEQ8+GXsJhtm6JBglod9Bb6HHvi/+/aZo6TdHzH6RZDhp1Ff/p3GIlE2ivSQPFTGX2dR9n9ztVYMg
+	HDm6Zas86Q0VdLDQfMiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKdDz-00000007nHP-2joN;
-	Mon, 09 Dec 2024 12:50:55 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1tKdF0-00000007nWp-3EWF;
+	Mon, 09 Dec 2024 12:51:58 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKcxL-00000007htw-0dlG;
-	Mon, 09 Dec 2024 12:33:44 +0000
+	id 1tKcxP-00000007hwM-2vr7;
+	Mon, 09 Dec 2024 12:33:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=zTITi
-	GeREwkYl45xFvAAln+/4PJl+8HFXJtjEDpFgiU=; b=Y3bBtckU0AKYCh0Oc5g5k
-	5XLZAkhP4+PzUoxD9x1lp8Eclt+y67RvxcPRB4Jqpx62FZ2z5Es9iHOay/9XOSCq
-	jlOPRtYPGDzhhFoBpw+rcFdENRF+5t/6wnSRyHgT2ggr7B6YSnxMDDm8i4KdMiYC
-	LdugxMo1kMCwtMyPFm/D/8=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=58Dm3
+	Eqh22L+JQTpTi4STstJ8qz0fGUCNuAiGro+EX0=; b=ZMi6z3U6th6UsW2WsV204
+	e+QeTso7VocRjfDFSrWvjcvLZlSa5tGg02AU7vi0WYztBvH70Xce6XXMINe/777Z
+	Z0JI5WW9x/0IuXKQ1PdKzMoEAMA6kk+o8BwzXWvBdHwURPqrJC4w6WKFu6vwwEra
+	O5yv1+pbNlusR2cE2WvTBs=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgDXvw6P41ZnqMLvAg--.38878S2;
-	Mon, 09 Dec 2024 20:33:23 +0800 (CST)
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgC3KOOb41ZnxO+AAA--.35994S2;
+	Mon, 09 Dec 2024 20:33:34 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -49,23 +49,23 @@ Cc: hjc@rock-chips.com,
 	detlev.casanova@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v5 12/18] drm/rockchip: vop2: Support for different layer select configuration between VPs
-Date: Mon,  9 Dec 2024 20:33:16 +0800
-Message-ID: <20241209123318.2781950-1-andyshrk@163.com>
+Subject: [PATCH v5 13/18] drm/rockchip: vop2: Introduce vop hardware version
+Date: Mon,  9 Dec 2024 20:33:29 +0800
+Message-ID: <20241209123330.2781991-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241209122943.2781431-1-andyshrk@163.com>
 References: <20241209122943.2781431-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PygvCgDXvw6P41ZnqMLvAg--.38878S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxtrW8JF4UZF47Zw18Gry8Xwb_yoWfGr4Dpa
-	yUursIg3W5CF45tryUJay8Zr4rGwnxtay3uan3Kw1xGF1rKrWDJF4ktF93A3Z8KF93ZryU
-	Xw1YgryDZrZrtFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+X-CM-TRANSID: PSgvCgC3KOOb41ZnxO+AAA--.35994S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3XryDWFW5Kw1xZw1UCw48WFg_yoWxKF4DpF
+	W7Aay5WrWxGa1qgw4kJFW3ZF4aywn2yay7JanrGw13try3KryDGan0qF17AFZ0yr92kr4j
+	yFn5A3yUWr47tr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
 	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jF-eOUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwWwXmdW3sfNVwABsr
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gKwXmdW4xoX5wAAsG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_043343_572265_EFFAD9C0 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20241209_043348_061465_A73EDE68 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,11 +84,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-In the upcoming VOP for rk3576, every VP has it's own LAYER_SEL
-register, and the configuration value of each VP for the same
-window maybe different, so extend the layer_sel_id to array,
-let it can descption the layer select configuration value for
-different VP.
+There is a version number hardcoded in the VOP VERSION_INFO
+register, and the version number increments sequentially based
+on the production order of the SOC.
+
+So using this version number to distinguish different VOP features
+will simplify the code.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
@@ -96,197 +97,179 @@ Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
 
 ---
 
-(no changes since v4)
+(no changes since v3)
 
-Changes in v4:
-- Typo fix: selet->select
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+- Add hardware version check
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 +--
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 38 ++++++++++----------
- 2 files changed, 22 insertions(+), 20 deletions(-)
+Changes in v2:
+- Introduce vop hardware version
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index a867e154801a..dcfa791be99d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -166,9 +166,9 @@ struct vop2_win_data {
- 	const unsigned int supported_rotations;
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 25 ++++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 11 +++++++++
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  3 +++
+ 3 files changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 1997a8deada8..4f56a7e91728 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -354,7 +354,7 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
  
- 	/**
--	 * @layer_sel_id: defined by register OVERLAY_LAYER_SEL of VOP2
-+	 * @layer_sel_id: defined by register OVERLAY_LAYER_SEL or PORTn_LAYER_SEL
- 	 */
--	unsigned int layer_sel_id;
-+	unsigned int layer_sel_id[ROCKCHIP_MAX_CRTC];
- 	uint64_t feature;
+ static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
+ {
+-	if (vop2->data->soc_id == 3588) {
++	if (vop2->version == VOP_VERSION_RK3588) {
+ 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
+ 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
+ 			return true;
+@@ -798,6 +798,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+ static void vop2_enable(struct vop2 *vop2)
+ {
+ 	int ret;
++	u32 version;
  
- 	uint8_t axi_bus_id;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 0cff1327c38e..80f9debd7aa9 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -350,7 +350,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.formats = formats_smart,
- 		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
--		.layer_sel_id = 3,
-+		/* 0xf means this layer can't attached to this VP */
-+		.layer_sel_id = { 3, 3, 3, 0xf },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
- 		.max_upscale_factor = 8,
-@@ -363,7 +364,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1e00,
--		.layer_sel_id = 7,
-+		.layer_sel_id = { 7, 7, 7, 0xf },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
- 		.max_upscale_factor = 8,
-@@ -376,7 +377,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1a00,
--		.layer_sel_id = 6,
-+		.layer_sel_id = { 6, 6, 6, 0xf },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
- 		.max_upscale_factor = 8,
-@@ -389,7 +390,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1800,
--		.layer_sel_id = 2,
-+		.layer_sel_id = { 2, 2, 2, 0xf },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
- 		.max_upscale_factor = 8,
-@@ -402,7 +403,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 0,
-+		.layer_sel_id = { 0, 0, 0, 0xf },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 					DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.max_upscale_factor = 4,
-@@ -417,7 +418,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 1,
-+		.layer_sel_id = { 1, 1, 1, 0xf },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 					DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_OVERLAY,
-@@ -582,7 +583,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 0,
-+		.layer_sel_id = { 0, 0, 0, 0 },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.axi_bus_id = 0,
-@@ -600,7 +601,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 1,
-+		.layer_sel_id = { 1, 1, 1, 1 },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
-@@ -618,7 +619,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 4,
-+		.layer_sel_id = { 4, 4, 4, 4 },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
-@@ -636,7 +637,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
--		.layer_sel_id = 5,
-+		.layer_sel_id =  { 5, 5, 5, 5 },
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
- 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_PRIMARY,
-@@ -654,7 +655,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1800,
--		.layer_sel_id = 2,
-+		.layer_sel_id = { 2, 2, 2, 2 },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_OVERLAY,
- 		.axi_bus_id = 0,
-@@ -670,7 +671,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1a00,
--		.layer_sel_id = 3,
-+		.layer_sel_id = { 3, 3, 3, 3 },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_OVERLAY,
- 		.axi_bus_id = 0,
-@@ -686,7 +687,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.formats = formats_esmart,
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
--		.layer_sel_id = 6,
-+		.layer_sel_id =  { 6, 6, 6, 6 },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_OVERLAY,
- 		.axi_bus_id = 1,
-@@ -702,7 +703,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1e00,
--		.layer_sel_id = 7,
-+		.layer_sel_id =  { 7, 7, 7, 7 },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
- 		.type = DRM_PLANE_TYPE_OVERLAY,
- 		.axi_bus_id = 1,
-@@ -1452,7 +1453,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
- 		 */
- 		for (old_layer_id = 0; old_layer_id < vop2->data->win_size; old_layer_id++) {
- 			layer_sel_id = (layer_sel >> (4 * old_layer_id)) & 0xf;
--			if (layer_sel_id == win->data->layer_sel_id)
-+			if (layer_sel_id == win->data->layer_sel_id[vp->id])
- 				break;
- 		}
- 
-@@ -1462,7 +1463,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
- 		for (i = 0; i < vop2->data->win_size; i++) {
- 			old_win = &vop2->win[i];
- 			layer_sel_id = (layer_sel >> (4 * (plane->state->normalized_zpos + ofs))) & 0xf;
--			if (layer_sel_id == old_win->data->layer_sel_id)
-+			if (layer_sel_id == old_win->data->layer_sel_id[vp->id])
- 				break;
- 		}
- 
-@@ -1512,13 +1513,14 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
- 		layer_sel &= ~RK3568_OVL_LAYER_SEL__LAYER(plane->state->normalized_zpos + ofs,
- 							  0x7);
- 		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(plane->state->normalized_zpos + ofs,
--							 win->data->layer_sel_id);
-+							 win->data->layer_sel_id[vp->id]);
- 		/*
- 		 * When we bind a window from layerM to layerN, we also need to move the old
- 		 * window on layerN to layerM to avoid one window selected by two or more layers.
- 		 */
- 		layer_sel &= ~RK3568_OVL_LAYER_SEL__LAYER(old_layer_id, 0x7);
--		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(old_layer_id, old_win->data->layer_sel_id);
-+		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(old_layer_id,
-+			     old_win->data->layer_sel_id[vp->id]);
+ 	ret = pm_runtime_resume_and_get(vop2->dev);
+ 	if (ret < 0) {
+@@ -817,10 +818,19 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
  	}
  
- 	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
++	version = vop2_readl(vop2, RK3568_VERSION_INFO);
++	if (version != vop2->version) {
++		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
++		return;
++	}
++	/*
++	 * rk3566 share the same vop version with rk3568, so
++	 * wen need to use soc_id for identification here.
++	 */
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+ 
+-	if (vop2->data->soc_id == 3588)
++	if (vop2->version == VOP_VERSION_RK3588)
+ 		rk3588_vop2_power_domain_enable_all(vop2);
+ 
+ 	vop2_writel(vop2, RK3568_REG_CFG_DONE, RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
+@@ -901,7 +911,7 @@ static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
+ 
+ static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
+ {
+-	return (vop2->data->soc_id != 3566 && vop2->data->soc_id != 3568);
++	return vop2->version != VOP_VERSION_RK3568;
+ }
+ 
+ static bool vop2_gamma_lut_in_use(struct vop2 *vop2, struct vop2_video_port *vp)
+@@ -1031,7 +1041,7 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 		return -EINVAL;
+ 	}
+ 
+-	if (vop2->data->soc_id == 3568 || vop2->data->soc_id == 3566) {
++	if (vop2->version == VOP_VERSION_RK3568) {
+ 		if (vop2_cluster_window(win)) {
+ 			if (!rockchip_afbc(plane, fb->modifier)) {
+ 				drm_err(vop2->drm, "Unsupported linear format for %s\n", win->data->name);
+@@ -1041,7 +1051,7 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 	}
+ 
+ 	if (fb->format->format == DRM_FORMAT_XRGB2101010 || fb->format->format == DRM_FORMAT_XBGR2101010) {
+-		if (vop2->data->soc_id == 3588) {
++		if (vop2->version == VOP_VERSION_RK3588) {
+ 			if (!rockchip_afbc(plane, fb->modifier)) {
+ 				drm_err(vop2->drm, "Unsupported linear 32 bpp for %s\n", win->data->name);
+ 				return -EINVAL;
+@@ -1260,7 +1270,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		&fb->format->format,
+ 		afbc_en ? "AFBC" : "", &yrgb_mst);
+ 
+-	if (vop2->data->soc_id > 3568) {
++	if (vop2->version > VOP_VERSION_RK3568) {
+ 		vop2_win_write(win, VOP2_WIN_AXI_BUS_ID, win->data->axi_bus_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_YRGB_R_ID, win->data->axi_yrgb_r_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_UV_R_ID, win->data->axi_uv_r_id);
+@@ -1320,7 +1330,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		 * this bit is gating disable, we should write 1 to
+ 		 * disable gating when enable afbc.
+ 		 */
+-		if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
++		if (vop2->version == VOP_VERSION_RK3568)
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+ 		else
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 1);
+@@ -2525,6 +2535,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 	vop2->dev = dev;
+ 	vop2->data = vop2_data;
+ 	vop2->ops = vop2_data->ops;
++	vop2->version = vop2_data->version;
+ 	vop2->drm = drm;
+ 
+ 	dev_set_drvdata(dev, vop2);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index dcfa791be99d..5514ece7df4d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -13,6 +13,15 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+ 
++#define VOP2_VERSION(major, minor, build)	((major) << 24 | (minor) << 16 | (build))
++
++/* The new SOC VOP version is bigger than the old */
++#define VOP_VERSION_RK3568	VOP2_VERSION(0x40, 0x15, 0x8023)
++#define VOP_VERSION_RK3588	VOP2_VERSION(0x40, 0x17, 0x6786)
++#define VOP_VERSION_RK3528	VOP2_VERSION(0x50, 0x17, 0x1263)
++#define VOP_VERSION_RK3562	VOP2_VERSION(0x50, 0x17, 0x4350)
++#define VOP_VERSION_RK3576	VOP2_VERSION(0x50, 0x19, 0x9765)
++
+ #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
+ 
+ #define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
+@@ -242,6 +251,7 @@ struct vop2_ops {
+ struct vop2_data {
+ 	u8 nr_vps;
+ 	u64 feature;
++	u32 version;
+ 	const struct vop2_ops *ops;
+ 	const struct vop2_win_data *win;
+ 	const struct vop2_video_port_data *vp;
+@@ -259,6 +269,7 @@ struct vop2_data {
+ };
+ 
+ struct vop2 {
++	u32 version;
+ 	struct device *dev;
+ 	struct drm_device *drm;
+ 	struct vop2_video_port vps[ROCKCHIP_MAX_CRTC];
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 80f9debd7aa9..baf81e97062c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1627,6 +1627,7 @@ static const struct vop2_ops rk3588_vop_ops = {
+ };
+ 
+ static const struct vop2_data rk3566_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1645,6 +1646,7 @@ static const struct vop2_data rk3566_vop = {
+ };
+ 
+ static const struct vop2_data rk3568_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1663,6 +1665,7 @@ static const struct vop2_data rk3568_vop = {
+ };
+ 
+ static const struct vop2_data rk3588_vop = {
++	.version = VOP_VERSION_RK3588,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF | VOP2_FEATURE_HAS_VO1_GRF |
+ 		   VOP2_FEATURE_HAS_VOP_GRF | VOP2_FEATURE_HAS_SYS_PMU,
+ 	.nr_vps = 4,
 -- 
 2.34.1
 
