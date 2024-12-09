@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86BAEE77180
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFFADE7717D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Dec 2024 13:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bx0QSIdru3Zzj7YY8aMuPi2FKG1I2fTk8E5vAzYUmTs=; b=lOQ2EQW8gh18zt
-	8P3IKd7GI/K7QG0ZMaff8kLz63UcGjfga0zIiKpyk/kcXAAVt5GN2tzFdnX8SDm1Kmd0We0jLkDpp
-	zFNlAUxD0s4eJ60rzEucp7tsio2cmZ+rTPAqKY4AXdopcPf/KCPgdtNTR0UwOzmzpAQqHr4hY95g5
-	F2+sKzicODXYvU5l6k6z5MGJwecBcwX5EFgTp1pMEawWW5FBLPKuxz5H1qJjg9ORGa5lKkLVtL6L6
-	uVpBAUM2uC/6RJovXb2k2Ssteri5W0uLd0FPx6W0jSe+xenqKMEABQ8LJrq3gDY3HeBiXXzVMK/oV
-	Pjmdeken2umBx6IYYZ/A==;
+	List-Owner; bh=DIOJXQUoSkf8pe7Ipi7Tu9+jbIY2FeFlGNsi+u7pMfE=; b=tV3g//a4CKHybI
+	If3Rg1bfYXP62pMGQm4LjPKhMgNNlWrVG4wxpGrGhuRXeT6+OgXn0ru0sUDl5yUFlXqR6jsfzMcO3
+	tlR4I57DBnZnIxOVRjzlJ/dgmpNqUh5WT+dKusBgft3++i5CWIcXFz72wozaeR6vs3+bjg26SmkWz
+	9aQgMC38TqSfBjo5GDFxZXbrFZqxdpOI3U1EtoGJJv/P7tAUQ0W8UZ5tYsm/2blKsK2EkpRkTk94S
+	lKEpbCFn/ZlUe9obWL+oC9RYsJ8Zvx4h1Y8qJ9T6yKnCIS5nNL7mlmVZ9KLw4uqXYGUu2uy5oRRXU
+	tWQwkUDa2MfhxSKtPKKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKe0u-000000082c0-3apz;
-	Mon, 09 Dec 2024 13:41:28 +0000
+	id 1tKe1b-000000082oj-30R9;
+	Mon, 09 Dec 2024 13:42:11 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKe0r-000000082bG-38WD
+	id 1tKe1Y-000000082nF-3zxA
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Dec 2024 13:41:27 +0000
+	Mon, 09 Dec 2024 13:42:10 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9DfIIK032120;
-	Mon, 9 Dec 2024 22:41:18 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4B9Dg21C032125;
+	Mon, 9 Dec 2024 22:42:02 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         dsimic@manjaro.org, sebastian.reichel@collabora.com,
         devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
         FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v2] arm64: dts: rockchip: Enable automatic fan control on Rock 5A/5C
-Date: Mon,  9 Dec 2024 13:41:13 +0000
-Message-ID: <20241209134113.4783-1-naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: convert blue LED to "pwd-leds" for Radxa ROCK 5A/5C
+Date: Mon,  9 Dec 2024 13:41:58 +0000
+Message-ID: <20241209134158.4811-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_054126_002372_8B283BE5 
-X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-CacheID: sfid-20241209_054209_205027_69831D87 
+X-CRM114-Status: UNSURE (   8.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -61,10 +61,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Link the PWM fan on Radxa ROCK 5A/5C as an active cooling device
-managed automatically by the thermal subsystem, with a target SoC
-temperature of 65 oC and a minimum-spin interval from 55 oC to 65 oC,
-to ensure airflow when the system gets warm.
+convert blue(heartbeat) LED from "gpio-leds" to "pwm-leds". user can
+change brightness.
 
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
@@ -73,62 +71,82 @@ this patch depends on [1] which depends on [2].
 [1] https://patchwork.kernel.org/project/linux-rockchip/cover/20241209132406.4232-1-naoki@radxa.com/
 [2] https://patchwork.kernel.org/project/linux-rockchip/cover/20241209125131.4101-1-naoki@radxa.com/
 ---
-Changes in v2
-- reword commit message (Dragan Simic)
----
- .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 32 ++++++++++++++++++-
- 1 file changed, 31 insertions(+), 1 deletion(-)
+ .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 34 ++++++++++++-------
+ 1 file changed, 22 insertions(+), 12 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-index 7ae032b3534c..d0b9513d56a7 100644
+index d0b9513d56a7..d72314d917da 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-@@ -64,7 +64,7 @@ led-1 {
+@@ -46,7 +46,7 @@ hdmi0_con_in: endpoint {
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&led_pins>;
++		pinctrl-0 = <&led_pin>;
+ 
+ 		led-0 {
+ 			color = <LED_COLOR_ID_GREEN>;
+@@ -54,14 +54,6 @@ led-0 {
+ 			function = LED_FUNCTION_POWER;
+ 			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
+ 		};
+-
+-		led-1 {
+-			color = <LED_COLOR_ID_BLUE>;
+-			default-state = "on";
+-			function = LED_FUNCTION_STATUS;
+-			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+-			linux,default-trigger = "heartbeat";
+-		};
+ 	};
+ 
+ 	fan: pwm-fan {
+@@ -72,6 +64,19 @@ fan: pwm-fan {
+ 		pwms = <&pwm3 0 60000 0>;
+ 	};
+ 
++	pwm-leds {
++		compatible = "pwm-leds";
++
++		led-1 {
++			color = <LED_COLOR_ID_BLUE>;
++			default-state = "on";
++			function = LED_FUNCTION_STATUS;
++			linux,default-trigger = "heartbeat";
++			pwms = <&pwm11 0 1000000 0>;
++			max-brightness = <255>;
++		};
++	};
++
+ 	vbus_typec: regulator-vbus-typec {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vbus_typec";
+@@ -422,9 +427,8 @@ &pcie2x1l2 {
+ 
+ &pinctrl {
+ 	leds {
+-		led_pins: led-pins {
+-			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
+-					<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
++		led_pin: led-pin {
++			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
  	};
  
--	pwm-fan {
-+	fan: pwm-fan {
- 		compatible = "pwm-fan";
- 		#cooling-cells = <2>;
- 		cooling-levels = <0 64 128 192 255>;
-@@ -380,6 +380,36 @@ rgmii_phy1: ethernet-phy@1 {
- 	};
+@@ -467,6 +471,12 @@ &pwm3 {
+ 	status = "okay";
  };
  
-+&package_thermal {
-+	polling-delay = <1000>;
-+
-+	trips {
-+		package_fan0: package-fan0 {
-+			hysteresis = <2000>;
-+			temperature = <55000>;
-+			type = "active";
-+		};
-+
-+		package_fan1: package-fan1 {
-+			hysteresis = <2000>;
-+			temperature = <65000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map0 {
-+			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-+			trip = <&package_fan0>;
-+		};
-+
-+		map1 {
-+			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
-+			trip = <&package_fan1>;
-+		};
-+	};
++&pwm11 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm11m3_pins>;
++	status = "okay";
 +};
 +
- &pcie2x1l2 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie20x1_2_perstn_m0>,
+ &saradc {
+ 	vref-supply = <&vcca_1v8_s0>;
+ 	status = "okay";
 -- 
 2.43.0
 
