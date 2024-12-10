@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDCE4E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 10:47:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB7BE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 10:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/XivJ8g5GGrp3bXCDyvWNMrnB7l5uG1rEwzIoN+aQEA=; b=Qqb51o+huNLirG7LD5c3bja7IE
-	b6Piqr8pVnB9s1kzSuVP/i7b8GTdRPR5dfYFt0AIKFDflI5SWzDFmlHsdCuAdV+4IJ0EEyHXctkib
-	JrVh55wijD8GG4BvPpg5KKo3NsbLR/zbTqkOzOpeN2cHrcJMLfLA29PiSMBNlV3VIhhrEMkUS15DQ
-	oRBExldOsZyhBq4kB2OjduGgwKxCPSosYPf4FueSfkjx1vJ6uQhaBh6+IGBgnzU2pRie8hJkPj5MO
-	UYisaMDBsI1ri6UxmMsOPqht5AxdrnPTZL9K+c6CkhZ4cmBwSjtYCPgtbqRn1Hfh9HA/gjIPZdmGY
-	0SOp9R9Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hp9B+qN1sOoiB6nrA4MMmT02O5DJdhBBIHcZAgZeIq0=; b=dqzyOZT2jUp0IJ
+	qwsWj3OV1x9FbABWFqxFjBZK+egOvaDM4IKgw12csoOVuoF7tFD8cKAKpMXznXowJK22nkOJVWgbZ
+	HSZyrop6dNR5xjmBhE++oyUUVFQa8lrB9Gv6AABn4kv6S8gm1Y9BqeAuRPZYPSIYBVnWPcKvxmzUk
+	NwFPDjmslfEfA71WU4FLbfEGoEdRW6QjTFZr9VZvVy0UK2jj4HNMaf+AMEoEElnFUTcNjQXQ+sAJd
+	EEc0Cbdik2e509TXG4xBr1zwee5b0mhm/nY0jsemM9LPcViuH6wzqTX0Stcx6qrPp30YooeQOK8Oj
+	qIFyKgXJUFZhZ+SDYZ0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKxlb-0000000BBXK-1rSH;
-	Tue, 10 Dec 2024 10:46:59 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tKxwF-0000000BE5k-1jDf;
+	Tue, 10 Dec 2024 10:57:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKxkX-0000000BBFt-0vRB;
-	Tue, 10 Dec 2024 10:45:54 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733827551;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=utTTuCvuh3w8J6nQIZy3AvdY9OBVE0hycTiZtgTEi6Y=;
-	b=XJbG1lW0Cdd/1WVz8664gHslMX0L0NGOdEauAEbidL2Gz+zZANyaa5m3Y7MF+Jwx1FK1wx
-	pqqqBhccPr0qh6EnZzwULif0FUZQ66Kxwgzs8vQB8yte7weND74C9EaecXpmqCgEglz0BF
-	qFpD2qwgBraLaXi75Xt3CbLWHoxlNT2gf2NBcVG0NPl8XRo0iAyxPXCf52e4vWk8401iYh
-	o9JK+th0SkNNtJx9t8m+GcLRSdvklGZGjF5jzws2NlAZxVD+uvUfVCoZb28YVZ2bhaxxxB
-	Ur1oPJd18Q8Rtn2REqhJNcictZvuw6q2QD1ubROxoc/dBFmPPYJzGwR097EJOg==
-Date: Tue, 10 Dec 2024 11:45:49 +0100
-From: Dragan Simic <dsimic@manjaro.org>
+	id 1tKxtJ-0000000BDHz-1gwD;
+	Tue, 10 Dec 2024 10:54:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=I/ecQv4FKuCtZE1AnEV/ijXpIAnWHT6qeI4gnhaOi3s=; b=AEgkMytKAjtQ4a1u/MLo8pPK9r
+	lU+a/eCQz7xpnrtDWYQyayPmWoYDo1jY7H1LXJWbT+J4TInvHdQpMhnXnBCV5UUegjvDHswnupRVb
+	3qSvaVJsf7KZtNGiD/0RJ5oQbmC3hFcswx4DNN0KplCbrLNt9sNzvozb2frb6hbl1a5TRpCK9w4rY
+	0tMfIFPQo9bPUoWbDNlVV9r/l+uLkIE+duuQzU4Vr7sfLPyCkgpcSF1vKpy89NceO/xSh+RNPihof
+	iDdpism0coDEv0NrmMTaULx4L1dyPWqbFzSNFydHtLkRCU8nzx5RAeEqEJyUT17xVPYzLs1Ot8xrK
+	i7w7euVA==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tKxt2-0004QH-Ie; Tue, 10 Dec 2024 11:54:40 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Peter Geis <pgwipeout@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
- Diederik de Haas <didi.debian@cknow.org>, Johan Jonker <jbx6244@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+Cc: Peter Geis <pgwipeout@gmail.com>, Conor Dooley <conor+dt@kernel.org>,
+ Diederik de Haas <didi.debian@cknow.org>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Levin Du <djw@t-chip.com.cn>, Rob Herring <robh@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 6/6] arm64: dts: rockchip: Remove address aligned beats
- from rk3328-roc
-In-Reply-To: <20241210013010.81257-7-pgwipeout@gmail.com>
+Subject: Re: [PATCH 5/6] arm64: dts: rockchip: correct rk3328-roc regulator map
+Date: Tue, 10 Dec 2024 11:54:39 +0100
+Message-ID: <14451790.lVVuGzaMjS@diego>
+In-Reply-To: <20241210013010.81257-6-pgwipeout@gmail.com>
 References: <20241210013010.81257-1-pgwipeout@gmail.com>
- <20241210013010.81257-7-pgwipeout@gmail.com>
-Message-ID: <2b68c2dd3618e5904a4eac1ec87d29a7@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ <20241210013010.81257-6-pgwipeout@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_024553_552536_DEEB1A67 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20241210_025457_443621_A1AFF457 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,71 +72,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Peter,
+Am Dienstag, 10. Dezember 2024, 02:30:09 CET schrieb Peter Geis:
+> The rk3328-roc-cc input power is sourced from a micro-usb port, while
+> the rk3328-roc-pc input power is sourced from a usb-c port. Both inputs
+> are 5vdc only. Remove the 12v input from the device tree.
 
-Thanks for the patch.  Please, see some comments below.
+full stop. Please don't do "While we are at it" commits.
 
-On 2024-12-10 02:30, Peter Geis wrote:
-> Since commit 8a469ee35606 ("arm64: dts: rockchip: Add txpbl node for
-> RK3399/RK3328"), the snps,aal, snps,txpbl, and snps,rxpbl nodes have
-> been unnecessary in the separate device trees. There is also a
-> performance loss to using snps,aal. Remove these from the rk3328-roc
-> device tree.
-> 
+> While we are at it, add missing voltages and supply to vcc_phy, missing
+> voltages to vcc_host1_5v, and standardize the order of regulator
+> properties among the fixed regulators.
+
+This second part wants to be its own commit :-) .
+
+Thanks
+Heiko
+
+> Fixes: 2171f4fdac06 ("arm64: dts: rockchip: add roc-rk3328-cc board")
 > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> 
 > ---
 > 
->  arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 3 ---
->  1 file changed, 3 deletions(-)
+>  arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 23 +++++++++++++-------
+>  1 file changed, 15 insertions(+), 8 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> index 6984387ff8b3..0d476cc2144d 100644
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
+> index f782c8220dd3..6984387ff8b3 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
 > +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> @@ -155,12 +155,9 @@ &gmac2io {
->  	phy-mode = "rgmii";
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&rgmiim1_pins>;
-> -	snps,aal;
+> @@ -24,22 +24,23 @@ gmac_clkin: external-gmac-clock {
+>  		#clock-cells = <0>;
+>  	};
+>  
+> -	dc_12v: regulator-dc-12v {
+> +	/* fed from passive usb input connector */
+> +	dc_5v: regulator-dc-5v {
+>  		compatible = "regulator-fixed";
+> -		regulator-name = "dc_12v";
+> +		regulator-name = "dc_5v";
+>  		regulator-always-on;
+>  		regulator-boot-on;
+> -		regulator-min-microvolt = <12000000>;
+> -		regulator-max-microvolt = <12000000>;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+>  	};
+>  
+>  	vcc_sd: regulator-sdmmc {
+>  		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_sd";
+>  		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&sdmmc0m1_pin>;
+>  		regulator-boot-on;
+> -		regulator-name = "vcc_sd";
+>  		regulator-min-microvolt = <3300000>;
+>  		regulator-max-microvolt = <3300000>;
+>  		vin-supply = <&vcc_io>;
+> @@ -50,22 +51,25 @@ vcc_sdio: regulator-sdmmcio {
+>  		states = <1800000 0x1>, <3300000 0x0>;
+>  		regulator-name = "vcc_sdio";
+>  		regulator-type = "voltage";
+> +		regulator-always-on;
+>  		regulator-min-microvolt = <1800000>;
+>  		regulator-max-microvolt = <3300000>;
+> -		regulator-always-on;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  
+>  	vcc_host1_5v: vcc_otg_5v: regulator-vcc-host1-5v {
+>  		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_host1_5v";
+>  		enable-active-high;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&usb20_host_drv>;
+> -		regulator-name = "vcc_host1_5v";
+>  		regulator-always-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  
+> +	/* sourced from usb input through 3A fuse */
+>  	vcc_sys: regulator-vcc-sys {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc_sys";
+> @@ -73,7 +77,7 @@ vcc_sys: regulator-vcc-sys {
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <5000000>;
+>  		regulator-max-microvolt = <5000000>;
+> -		vin-supply = <&dc_12v>;
+> +		vin-supply = <&dc_5v>;
+>  	};
+>  
+>  	vcc_phy: regulator-vcc-phy {
+> @@ -81,6 +85,9 @@ vcc_phy: regulator-vcc-phy {
+>  		regulator-name = "vcc_phy";
+>  		regulator-always-on;
+>  		regulator-boot-on;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vcc_io>;
+>  	};
+>  
+>  	leds {
+> 
 
-Huh, I see that quite a few RK3328 board dts files specify
-the snps,aal node.  I wonder was it a "cargo cult" approach
-at play, :) or was there some real need for it?
 
-Actually, I see now that you added snps,aal to rk3328-roc-
-cc.dts in the commit 393f3875c385 ("arm64: dts: rockchip:
-improve rk3328-roc-cc rgmii performance."), so I guess that
-your further research and testing showed that it actually
-isn't needed for Ethernet stability?
 
->  	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
->  	snps,reset-active-low;
->  	snps,reset-delays-us = <0 10000 50000>;
-> -	snps,rxpbl = <0x4>;
-> -	snps,txpbl = <0x4>;
 
-Unless I'm missing something, the commit 8a469ee35606 ("arm64:
-dts: rockchip: Add txpbl node for RK3399/RK3328") doesn't add
-the snps,rxpbl node to the RK3328 SoC dtsi, and the respective
-driver does nothing about it when the snps,txpbl node is found.
-
-Though, I see that rk3328-rock-pi-e.dts is the only other
-RK3328 board dts file that specifies the snps,rxpbl node, so
-it seems that removing the snps,rxpbl node here should be safe,
-especially because it was you who added it in the same commit
-mentioned above.  If there were some SoC-level issues, all
-RK3328 boards would've needed it.
-
->  	tx_delay = <0x24>;
->  	rx_delay = <0x18>;
->  	status = "okay";
 
 _______________________________________________
 Linux-rockchip mailing list
