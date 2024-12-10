@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E2EE7717D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 01:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC57E7717D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 01:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tawh8CZvVQgGp20N0bqnTwCSD9b23qiqutlE9jOB/pc=; b=Ah9g8942yfNq3Q
-	dmtLMIj982IYdytlHe/a2bAtkPqhdwefUY2s6e8h1I0RduXxZSwpL4WtRhzmf7qM2Ho1XRp5P6Hxm
-	wFcc4gsZUIfoIt17rKXOp2dJXb2b826S/QQQSLhkT8COsg1N//cPgNfk4xD3BBZhLIj8nd/cmabAp
-	bNGQ3K9YIlyaXiywUdogDyEP+1PsAixs64eFtjPEO5w1FzaosITV0FZolKNorNW2+iQoPdaq3c8C4
-	FOe+Ze8Hb5O6Zacy8AJoqAsDPMMIItdw0PAvhcrDSSIqbTj5+Rqm51Qc5eIzIMJi06cpxBqNBkcY3
-	4+HXNaV+KSlBWMeHhkgA==;
+	List-Owner; bh=5vNXAmVPEzTSxrPoJlH8HYDnEZ4JGEsynNV+WhsmvkA=; b=hOcx3AW/pXwLvb
+	bUTKadhZYj7jBSFVgf3FiI5tTphJtVVgahLj01L5eSKObSCw0WlnYz9NnlW5eL36bHokx9F3KsPjp
+	EBj0nfw084wMRR5mzHFVlVieS8Z+l640FruqFlQ9CB/MfguX7bZlxROxerb/G3z7oKV3LN8jYRTSS
+	ZpSEkFsrX/aN2jrkIDxcLtyvLcVlTtcFPccGG5YXB8nAlklOj6qAwnsRdXMJwgG7eriaU80EQwUoS
+	xB9ljurjEQtTwUp+qedyzm/qhQS8eKBEYaNYKtFtF3hyIwtqDo2F2xQYWMEf0hiqYZ3goic9qg3Vo
+	CtAhj0+XHHuSOVB7YnIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKpA7-00000009qlo-3fPW;
-	Tue, 10 Dec 2024 01:35:43 +0000
+	id 1tKpB8-00000009qu5-3LlD;
+	Tue, 10 Dec 2024 01:36:46 +0000
 Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKp58-00000009pvD-12gl;
-	Tue, 10 Dec 2024 01:30:35 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-6d8918ec243so50940656d6.1;
-        Mon, 09 Dec 2024 17:30:33 -0800 (PST)
+	id 1tKp5A-00000009pw6-1txl;
+	Tue, 10 Dec 2024 01:30:37 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-6d88d3d1eb6so48207116d6.0;
+        Mon, 09 Dec 2024 17:30:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733794233; x=1734399033; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1733794235; x=1734399035; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nes5VB2VcAfNvacXIUYzGUAIsX7gVlGNiJVgrHet/68=;
-        b=g1G5I81eJOstLqZYRVcgyO/0gCjTXxMgkN3fZwlA/pyKFuMOrnHPuJSJI9njrbEQX0
-         Oc3XdZY/mn2P9+7oK3fDlFjXZrD01s2oGaMqAq9Wg7R7a1UyoGVy9hg4MPwrp/aX/Ifn
-         IozEZEencvbLyiSkHprTnhBeQ5Pc45jorcfDmp/20TCAfipwgKIx35UHdesqMgLfuuR7
-         AxDit9bE96HorBSqRzhvkabr4pJFjTzWbzTe7UGVwH00SzDG9zGfE7fHwAFa7zai7vkx
-         GdcL6UkPqVZgtBk848JeXmd1xreeIsnIBUkYzcbkmJPjkzDaM6q9oYIc6qwkudU5vR/1
-         ur5Q==
+        bh=fC9D6bBSfVEUhHq7Trd28DiW5CSpsRgZ8oSjVO7Uwcc=;
+        b=Qs2FYrgVj/DwLkYMuTHa1uJ7Ht1dc2PEb+df+mbkWKBCCBdATrhoo5dFd+onWDwesZ
+         zW5hIBpEi7SiNONH5C8PjpD8QFF8scpnucsNcmNkJIwpnFnqRwZhtLuubxBN+1kJRlZu
+         CajFGarM6qU1ilTNXuMMCF/LqcmtkwGIVq6R0oFNBKaWdvCBzeapBQINUK5F2TD9KbZ/
+         HHxmh1lURxZZHL3432pjPB3fHVhkAxe02hlSmwBdzdpkTXPENtjoXLP+oktmxvpwz1sc
+         WTAp1dsV19+p70WqnunjvOg+VnAGrRsC2VJqdfiIqJfozW3bJk9JgLlBeceAJkWnNMdD
+         RjMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733794233; x=1734399033;
+        d=1e100.net; s=20230601; t=1733794235; x=1734399035;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nes5VB2VcAfNvacXIUYzGUAIsX7gVlGNiJVgrHet/68=;
-        b=iJoQI86RhMATP87jNxQyhzrY9MNrh5Rx+vBa/2pxExo0VSFma7rPVsWn6mNXcNsQVC
-         K/KdOZT2O1hHLlay0WdYYi0yceX/KSU7S1TtbowcHd4rPMKp+8kSYzgnu4YqyzBWWvmc
-         4SOSv4hv0WmoVuX/UAgXp+x92Q1E0wR8PRt214Y8ZT7Co4RdIi8CAr/+FQfNb2oYq6IH
-         rodOcYbDQt8f8H4LFpbCuRNIELVmpg1k2o0fqFqUgAzW5CPsGQ2ML6Rw1pggJ+ncWrE+
-         fpFSsx8X182UwZLyZhu4loxjRD045PHBxSouFh4LjSk7Kw12m45NXqO95HsoAMy3R4fr
-         LGgg==
-X-Forwarded-Encrypted: i=1; AJvYcCWTAb2j1Da+hVq0IgAC4u8TWoN/6iLpsxTYyL/rhE9WGs4xfN6bkW2klUNBpxbMbJrvXqTGdq7vZDDSpdoDLNTm@lists.infradead.org, AJvYcCX1sVQ/4PZGW4cwmfz63ElM3LdDF57gHaiub7k5tzykbfbCejQU12etX6NIqfnIjSfUXVuP7dTMtjL+sPsUJDI=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3O+zhLzqlZEpyfQewK/S8WsDWlLmxNrp/7PCEpyso/YZNrpFT
-	ptlwSy++xUDIZ0a2ao80qsBxJFcYyaKV4nHp79KNCmJSk5wYuM/s
-X-Gm-Gg: ASbGnct0E19d3rw1mRWQMbAGG6AU/n6xkfnnMsgF8B4XlFuUonLLfdWPluJfBQvxI2Z
-	w6C+fhwXn0ZYBe5OxqnazcDX6gEW/z42SFbSijXghNy2R/fAjLnG8CrePH+4VgtmSktYQiPIVD1
-	oj3TfvTAkBPw/LYMG+hD5E3rLvlq+/umaGBAYzyt9eWrVfxT6CKeEDP8RAiTuTNWz/aczzdQbFv
-	W+I0D5e5z9ZIbz+JblRcQlDeOlWwWiJ2NYXgK6oOlGUJJbxGg/Ai0zKnZCgTx6EPQ==
-X-Google-Smtp-Source: AGHT+IGDRUk9+gv8pP1CJieucgxw/FIyVkf5JoAn+WsrS/JAfYgwU4trbE3sWTyJ4SkA4cp4lgjq+A==
-X-Received: by 2002:a05:6214:d06:b0:6d8:850a:4d6a with SMTP id 6a1803df08f44-6d91e2d2bf2mr47046016d6.1.1733794232931;
-        Mon, 09 Dec 2024 17:30:32 -0800 (PST)
+        bh=fC9D6bBSfVEUhHq7Trd28DiW5CSpsRgZ8oSjVO7Uwcc=;
+        b=teDC/zZ//Esy1aPeCovcCydNHeGoHjT7hNSxsmkkeRxNIKCUGd2BBTcUUG0+S2SAbS
+         QzZpGwshLX3GOZ22tARf3Z8kpepggDEDnDV+dgu/hxk/zttGEPzsa2MrHEjphZ9KcW/m
+         fYGh47QbrEhYKsFEbBXuwIaz55GMDbCOmnzwhwUstAy+po7eji8KcGA+hz8gs/d1icPu
+         GgEX4TvFd1M4Nemf+Sb+DsKvCAsPluZJxHXnbnzlH2lvzJUAwmVYhocYmm10IfwVUp+B
+         XuBzfxprJmNzPqWow7ME1RDrvnli7yl2oP28FMp/X8Ofoq0VzqzHgLYhKqeGwFjUB5eV
+         tgxg==
+X-Forwarded-Encrypted: i=1; AJvYcCVs79OxYNFPWnwvUpdrQvBTygxtdfLSwBCShyXZg/LtC7yDRFc4wgtwWVM1uzY9UzdMncXfrkSCy1I8Hqubjew=@lists.infradead.org, AJvYcCVvFc6MzdGlDcUKwst9zjuyOk0UbllPWxCAQX/2w5td7wivF9UE1PdwamQo0epAG9BXBudf72z8sWzqjWwhuhXV@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqgLl9/Q2iYwoTEzyLGXb9o5/gv0W9KfTnFdY7GIuZw9/KH2G+
+	EOHoarhpR8f5qT2p5sK+TwsdDPTyO2ZXMbGWj4oZKS22s8EiqEMJ0IUp+qR8
+X-Gm-Gg: ASbGncveb3XUBxESKewQeQFQVrjBq3bNhFJpVMnsxtLnQsGiyj/0cp3djB2fTTfQWEq
+	yTdEDK6UEBg3qgnGd43aMwz6/Lv07hZRPuWa90wPj1sKXGzz0uL6uy05K0d8raDUiSNWchGsV5e
+	RUreiQIX5EUkiwdiLOf7bdqvKR6gTk78EKOGF/WKoUguIjsW0kOue2bSdKh1vf0udQLGLz7qrSz
+	NsBtFHIR/izEoEiDIDFoNqxEdWwa2mtTzDp79UGKh8Y07M4meEA5piXWFAeuzNhgg==
+X-Google-Smtp-Source: AGHT+IEljNAVBvyvJhfVHfvliBl66vtZbHIQPQl7CHgoQDBd6uJthPJkN2CurCsM+FLREOa8EJMyWQ==
+X-Received: by 2002:a05:6214:c82:b0:6d8:b5dd:7699 with SMTP id 6a1803df08f44-6d92131428amr19515826d6.17.1733794235614;
+        Mon, 09 Dec 2024 17:30:35 -0800 (PST)
 Received: from master-x64.sparksnet ([204.111.53.234])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d8f429a79csm36834346d6.72.2024.12.09.17.30.31
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d8f429a79csm36834346d6.72.2024.12.09.17.30.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 17:30:31 -0800 (PST)
+        Mon, 09 Dec 2024 17:30:34 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Peter Geis <pgwipeout@gmail.com>,
-	Alex Bee <knaerzche@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Diederik de Haas <didi.debian@cknow.org>,
 	Dragan Simic <dsimic@manjaro.org>,
 	Johan Jonker <jbx6244@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
+	Levin Du <djw@t-chip.com.cn>,
 	Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	shironeko <shironeko@tesaguri.club>
-Subject: [PATCH 4/6] arm64: dts: rockchip: add hevc power domain clock to rk3328
-Date: Tue, 10 Dec 2024 01:30:08 +0000
-Message-Id: <20241210013010.81257-5-pgwipeout@gmail.com>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 5/6] arm64: dts: rockchip: correct rk3328-roc regulator map
+Date: Tue, 10 Dec 2024 01:30:09 +0000
+Message-Id: <20241210013010.81257-6-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241210013010.81257-1-pgwipeout@gmail.com>
 References: <20241210013010.81257-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_173034_284650_A4E28749 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20241209_173036_488933_1B00FABE 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,68 +106,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a race condition at startup between disabling power domains not
-used and disabling clocks not used on the rk3328. When the clocks are
-disabled first, the hevc power domain fails to shut off leading to a
-splat of failures. Add the hevc core clock to the rk3328 power domain
-node to prevent this condition.
+The rk3328-roc-cc input power is sourced from a micro-usb port, while
+the rk3328-roc-pc input power is sourced from a usb-c port. Both inputs
+are 5vdc only. Remove the 12v input from the device tree.
 
-rcu: INFO: rcu_sched detected expedited stalls on CPUs/tasks: { 3-.... }
-1087 jiffies s: 89 root: 0x8/.
-rcu: blocking rcu_node structures (internal RCU debug):
-Sending NMI from CPU 0 to CPUs 3:
-NMI backtrace for cpu 3
-CPU: 3 UID: 0 PID: 86 Comm: kworker/3:3 Not tainted 6.12.0-rc5+ #53
-Hardware name: Firefly ROC-RK3328-CC (DT)
-Workqueue: pm genpd_power_off_work_fn
-pstate: 20400005 (nzCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : regmap_unlock_spinlock+0x18/0x30
-lr : regmap_read+0x60/0x88
-sp : ffff800081123c00
-x29: ffff800081123c00 x28: ffff2fa4c62cad80 x27: 0000000000000000
-x26: ffffd74e6e660eb8 x25: ffff2fa4c62cae00 x24: 0000000000000040
-x23: ffffd74e6d2f3ab8 x22: 0000000000000001 x21: ffff800081123c74
-x20: 0000000000000000 x19: ffff2fa4c0412000 x18: 0000000000000000
-x17: 77202c31203d2065 x16: 6c6469203a72656c x15: 6c6f72746e6f632d
-x14: 7265776f703a6e6f x13: 2063766568206e69 x12: 616d6f64202c3431
-x11: 347830206f742030 x10: 3430303034783020 x9 : ffffd74e6c7369e0
-x8 : 3030316666206e69 x7 : 205d383738353733 x6 : 332e31202020205b
-x5 : ffffd74e6c73fc88 x4 : ffffd74e6c73fcd4 x3 : ffffd74e6c740b40
-x2 : ffff800080015484 x1 : 0000000000000000 x0 : ffff2fa4c0412000
-Call trace:
-regmap_unlock_spinlock+0x18/0x30
-rockchip_pmu_set_idle_request+0xac/0x2c0
-rockchip_pd_power+0x144/0x5f8
-rockchip_pd_power_off+0x1c/0x30
-_genpd_power_off+0x9c/0x180
-genpd_power_off.part.0.isra.0+0x130/0x2a8
-genpd_power_off_work_fn+0x6c/0x98
-process_one_work+0x170/0x3f0
-worker_thread+0x290/0x4a8
-kthread+0xec/0xf8
-ret_from_fork+0x10/0x20
-rockchip-pm-domain ff100000.syscon:power-controller: failed to get ack on
-domain 'hevc', val=0x88220
+While we are at it, add missing voltages and supply to vcc_phy, missing
+voltages to vcc_host1_5v, and standardize the order of regulator
+properties among the fixed regulators.
 
-Fixes: 52e02d377a72 ("arm64: dts: rockchip: add core dtsi file for RK3328 SoCs")
+Fixes: 2171f4fdac06 ("arm64: dts: rockchip: add roc-rk3328-cc board")
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
 
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 23 +++++++++++++-------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 0597de415fe0..7d992c3c01ce 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -333,6 +333,7 @@ power: power-controller {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
+index f782c8220dd3..6984387ff8b3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
+@@ -24,22 +24,23 @@ gmac_clkin: external-gmac-clock {
+ 		#clock-cells = <0>;
+ 	};
  
- 			power-domain@RK3328_PD_HEVC {
- 				reg = <RK3328_PD_HEVC>;
-+				clocks = <&cru SCLK_VENC_CORE>;
- 				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3328_PD_VIDEO {
+-	dc_12v: regulator-dc-12v {
++	/* fed from passive usb input connector */
++	dc_5v: regulator-dc-5v {
+ 		compatible = "regulator-fixed";
+-		regulator-name = "dc_12v";
++		regulator-name = "dc_5v";
+ 		regulator-always-on;
+ 		regulator-boot-on;
+-		regulator-min-microvolt = <12000000>;
+-		regulator-max-microvolt = <12000000>;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
+ 	};
+ 
+ 	vcc_sd: regulator-sdmmc {
+ 		compatible = "regulator-fixed";
++		regulator-name = "vcc_sd";
+ 		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&sdmmc0m1_pin>;
+ 		regulator-boot-on;
+-		regulator-name = "vcc_sd";
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+ 		vin-supply = <&vcc_io>;
+@@ -50,22 +51,25 @@ vcc_sdio: regulator-sdmmcio {
+ 		states = <1800000 0x1>, <3300000 0x0>;
+ 		regulator-name = "vcc_sdio";
+ 		regulator-type = "voltage";
++		regulator-always-on;
+ 		regulator-min-microvolt = <1800000>;
+ 		regulator-max-microvolt = <3300000>;
+-		regulator-always-on;
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+ 	vcc_host1_5v: vcc_otg_5v: regulator-vcc-host1-5v {
+ 		compatible = "regulator-fixed";
++		regulator-name = "vcc_host1_5v";
+ 		enable-active-high;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&usb20_host_drv>;
+-		regulator-name = "vcc_host1_5v";
+ 		regulator-always-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
++	/* sourced from usb input through 3A fuse */
+ 	vcc_sys: regulator-vcc-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_sys";
+@@ -73,7 +77,7 @@ vcc_sys: regulator-vcc-sys {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+-		vin-supply = <&dc_12v>;
++		vin-supply = <&dc_5v>;
+ 	};
+ 
+ 	vcc_phy: regulator-vcc-phy {
+@@ -81,6 +85,9 @@ vcc_phy: regulator-vcc-phy {
+ 		regulator-name = "vcc_phy";
+ 		regulator-always-on;
+ 		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc_io>;
+ 	};
+ 
+ 	leds {
 -- 
 2.39.5
 
