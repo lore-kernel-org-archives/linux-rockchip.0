@@ -4,63 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB7BE7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 10:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA38CE77180
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 11:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hp9B+qN1sOoiB6nrA4MMmT02O5DJdhBBIHcZAgZeIq0=; b=dqzyOZT2jUp0IJ
-	qwsWj3OV1x9FbABWFqxFjBZK+egOvaDM4IKgw12csoOVuoF7tFD8cKAKpMXznXowJK22nkOJVWgbZ
-	HSZyrop6dNR5xjmBhE++oyUUVFQa8lrB9Gv6AABn4kv6S8gm1Y9BqeAuRPZYPSIYBVnWPcKvxmzUk
-	NwFPDjmslfEfA71WU4FLbfEGoEdRW6QjTFZr9VZvVy0UK2jj4HNMaf+AMEoEElnFUTcNjQXQ+sAJd
-	EEc0Cbdik2e509TXG4xBr1zwee5b0mhm/nY0jsemM9LPcViuH6wzqTX0Stcx6qrPp30YooeQOK8Oj
-	qIFyKgXJUFZhZ+SDYZ0Q==;
+	List-Owner; bh=dDlmUDg1c0C96xEGjbaF4JVsK7H87zKDVhpt4o6iy7o=; b=txJgSBSM0cMnyQ
+	LXod0lvNrfU0WX8JpWT34OTPwzl5ePB9A/SOsLzjiq/ETBuAAVcB9+eMfOoA2TCFyo/oX8HP2Y0El
+	OtZdbXhN0VUzqkx9r6AINcehK7Szwcm2zo/XRXoNEiTgugESusHbvawH5s5UCWhSBWJIhxrE1XKZ+
+	mU8me8OX/pJ8WzSj+gWjvsjXrgbdwuKyui6Noy9ZANE0d6+xt10+YhdaLbI5Lx2pf9OHpDIBueR4A
+	7nZlVVpjjW91G/7FngvOJqiVtjWkd28cko2WOZAudWBv5qSAvDc014BFa16jGN7ItNzDIcOZL75EQ
+	7gv/9Ri6jiigzLMK8h1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKxwF-0000000BE5k-1jDf;
-	Tue, 10 Dec 2024 10:57:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tKyRb-0000000BJil-2l8D;
+	Tue, 10 Dec 2024 11:30:23 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKxtJ-0000000BDHz-1gwD;
-	Tue, 10 Dec 2024 10:54:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=I/ecQv4FKuCtZE1AnEV/ijXpIAnWHT6qeI4gnhaOi3s=; b=AEgkMytKAjtQ4a1u/MLo8pPK9r
-	lU+a/eCQz7xpnrtDWYQyayPmWoYDo1jY7H1LXJWbT+J4TInvHdQpMhnXnBCV5UUegjvDHswnupRVb
-	3qSvaVJsf7KZtNGiD/0RJ5oQbmC3hFcswx4DNN0KplCbrLNt9sNzvozb2frb6hbl1a5TRpCK9w4rY
-	0tMfIFPQo9bPUoWbDNlVV9r/l+uLkIE+duuQzU4Vr7sfLPyCkgpcSF1vKpy89NceO/xSh+RNPihof
-	iDdpism0coDEv0NrmMTaULx4L1dyPWqbFzSNFydHtLkRCU8nzx5RAeEqEJyUT17xVPYzLs1Ot8xrK
-	i7w7euVA==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tKxt2-0004QH-Ie; Tue, 10 Dec 2024 11:54:40 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Peter Geis <pgwipeout@gmail.com>, Conor Dooley <conor+dt@kernel.org>,
- Diederik de Haas <didi.debian@cknow.org>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Levin Du <djw@t-chip.com.cn>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 5/6] arm64: dts: rockchip: correct rk3328-roc regulator map
-Date: Tue, 10 Dec 2024 11:54:39 +0100
-Message-ID: <14451790.lVVuGzaMjS@diego>
-In-Reply-To: <20241210013010.81257-6-pgwipeout@gmail.com>
-References: <20241210013010.81257-1-pgwipeout@gmail.com>
- <20241210013010.81257-6-pgwipeout@gmail.com>
+	id 1tKyQX-0000000BJaX-3cm1;
+	Tue, 10 Dec 2024 11:29:18 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5ceb03aadb1so7150807a12.0;
+        Tue, 10 Dec 2024 03:29:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733830156; x=1734434956; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Vsa+PCKL3nkjdlqJseBSn+MXW/M4bMK4clgKtZHb1eI=;
+        b=KiCvvdxzY5tUWmi9m7553vRay80bZIda9Ng+QFLZMm3v90z4d/1NhkzLmpi5Q1gcC4
+         /275dbxkqmWK8KeQOsB9dt8B+UYE+W05sn9bmE9Bq83dO7jAaOxyshNTnY07wp/0vXAW
+         fN6xDm8QFJCIsVw0mY0Ag6ufba2vJxlQTcq1faJffrvrvwFpJXUptfNXziQFtYtBIV0T
+         jI9jz1g/d/iwJA+EyJiZysxheBv4GZz0PJ/A6xqjtXYP5TNeOCxLL5Zk4v+x6Y4jPRg8
+         T0QPKfGl5o56H9aDf2d0gK8KquNB/KiWycU2sGSBujRypdhuFe0AioAHoc77IY6TOUlv
+         73dQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733830156; x=1734434956;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Vsa+PCKL3nkjdlqJseBSn+MXW/M4bMK4clgKtZHb1eI=;
+        b=D5sk2SohOjbxNJigY0XkjrSBdEoOR9pR++Vr+ZBPXobEA4FDyUthPKGfp8qokbSs2Z
+         KXDVkvjPxT8OZttT9pQjRlaTRv65vutK+e13GpHqWs7vS8VVE3Q85Lprs6YFq0Kk9ncy
+         1/GCHEGpoDREjmiuxyuFRKstlucTPu6ta/oNyYYWsuCvFxgyB0OghGtkNQl8pAKzyrCg
+         ScaVgBXPxifsxI0yNlL9+xcYoUDKYSV/DQVKufxhDmhVbg61FvaaWbMEh0FKpThX2CBJ
+         NRBAwz/yH8GJkpR6nS0+qXganxRsE5cjBS4RAmnTOkmhChQcgsG49JfI7X52o2ykOPMD
+         +LSw==
+X-Forwarded-Encrypted: i=1; AJvYcCVMdHnWH075U4dH3cbQtCvi028xAT4S8wE8f+gzq62/YeTf8wz6Xe1jViePPozPKHTF5OllAMv75Z+QU+rUyoB+@lists.infradead.org, AJvYcCWStlOOH3qsffYmbU1AKkhmGJDF1mbzhlpT8zBoByPbAWK7fgRoBxBsLzMBp6ryiAeUqQOdpY5XPKCys/DbQow=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwyG8g5CF2Nl9ih9B9hPVKMzsUAhrGANfsE/oorf4Il05LVEA2q
+	s7uzFqb3OE6kzwfC1QG0LY7R02Kh4HOfq3N+vmFPqeApLa09alH4X4U0JJhnA346ii559P1q2Qa
+	Hnh0rv2K3o7jHPFMpa8MwJlFfIA8=
+X-Gm-Gg: ASbGncuTi+Gh/I1+P6rRorSpYYV4M4kXzIwUm/pq4h0yeXZcVKfOm3CZWwBMBcuR+ka
+	VD9OSXIyhcl2nl3H3zlh1AB+xyYwJVjZ/fnWw
+X-Google-Smtp-Source: AGHT+IFH5n+zWAxeaP6Ebg2yPGAGyKrxuqKNK29gHMryFKRfiM7VSwvTxu54I6XWT3mw6cto3WCv6aezpiIGED9xMrI=
+X-Received: by 2002:a05:6402:210f:b0:5d0:b60a:2ff6 with SMTP id
+ 4fb4d7f45d1cf-5d418612cffmr5077206a12.22.1733830155765; Tue, 10 Dec 2024
+ 03:29:15 -0800 (PST)
 MIME-Version: 1.0
+References: <20241210013010.81257-1-pgwipeout@gmail.com> <20241210013010.81257-7-pgwipeout@gmail.com>
+ <2b68c2dd3618e5904a4eac1ec87d29a7@manjaro.org>
+In-Reply-To: <2b68c2dd3618e5904a4eac1ec87d29a7@manjaro.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Tue, 10 Dec 2024 06:29:02 -0500
+Message-ID: <CAMdYzYpj3d7Rq0O0QjV4r6HEf_e07R0QAhPT2NheZdQV3TnQ6g@mail.gmail.com>
+Subject: Re: [PATCH 6/6] arm64: dts: rockchip: Remove address aligned beats
+ from rk3328-roc
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, 
+	Diederik de Haas <didi.debian@cknow.org>, Johan Jonker <jbx6244@gmail.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_025457_443621_A1AFF457 
-X-CRM114-Status: GOOD (  19.45  )
+X-CRM114-CacheID: sfid-20241210_032917_902775_C66C96C9 
+X-CRM114-Status: GOOD (  28.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,121 +91,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 10. Dezember 2024, 02:30:09 CET schrieb Peter Geis:
-> The rk3328-roc-cc input power is sourced from a micro-usb port, while
-> the rk3328-roc-pc input power is sourced from a usb-c port. Both inputs
-> are 5vdc only. Remove the 12v input from the device tree.
-
-full stop. Please don't do "While we are at it" commits.
-
-> While we are at it, add missing voltages and supply to vcc_phy, missing
-> voltages to vcc_host1_5v, and standardize the order of regulator
-> properties among the fixed regulators.
-
-This second part wants to be its own commit :-) .
-
-Thanks
-Heiko
-
-> Fixes: 2171f4fdac06 ("arm64: dts: rockchip: add roc-rk3328-cc board")
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 23 +++++++++++++-------
->  1 file changed, 15 insertions(+), 8 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> index f782c8220dd3..6984387ff8b3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> @@ -24,22 +24,23 @@ gmac_clkin: external-gmac-clock {
->  		#clock-cells = <0>;
->  	};
->  
-> -	dc_12v: regulator-dc-12v {
-> +	/* fed from passive usb input connector */
-> +	dc_5v: regulator-dc-5v {
->  		compatible = "regulator-fixed";
-> -		regulator-name = "dc_12v";
-> +		regulator-name = "dc_5v";
->  		regulator-always-on;
->  		regulator-boot-on;
-> -		regulator-min-microvolt = <12000000>;
-> -		regulator-max-microvolt = <12000000>;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
->  	};
->  
->  	vcc_sd: regulator-sdmmc {
->  		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sd";
->  		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&sdmmc0m1_pin>;
->  		regulator-boot-on;
-> -		regulator-name = "vcc_sd";
->  		regulator-min-microvolt = <3300000>;
->  		regulator-max-microvolt = <3300000>;
->  		vin-supply = <&vcc_io>;
-> @@ -50,22 +51,25 @@ vcc_sdio: regulator-sdmmcio {
->  		states = <1800000 0x1>, <3300000 0x0>;
->  		regulator-name = "vcc_sdio";
->  		regulator-type = "voltage";
-> +		regulator-always-on;
->  		regulator-min-microvolt = <1800000>;
->  		regulator-max-microvolt = <3300000>;
-> -		regulator-always-on;
->  		vin-supply = <&vcc_sys>;
->  	};
->  
->  	vcc_host1_5v: vcc_otg_5v: regulator-vcc-host1-5v {
->  		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_host1_5v";
->  		enable-active-high;
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&usb20_host_drv>;
-> -		regulator-name = "vcc_host1_5v";
->  		regulator-always-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
->  		vin-supply = <&vcc_sys>;
->  	};
->  
-> +	/* sourced from usb input through 3A fuse */
->  	vcc_sys: regulator-vcc-sys {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc_sys";
-> @@ -73,7 +77,7 @@ vcc_sys: regulator-vcc-sys {
->  		regulator-boot-on;
->  		regulator-min-microvolt = <5000000>;
->  		regulator-max-microvolt = <5000000>;
-> -		vin-supply = <&dc_12v>;
-> +		vin-supply = <&dc_5v>;
->  	};
->  
->  	vcc_phy: regulator-vcc-phy {
-> @@ -81,6 +85,9 @@ vcc_phy: regulator-vcc-phy {
->  		regulator-name = "vcc_phy";
->  		regulator-always-on;
->  		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_io>;
->  	};
->  
->  	leds {
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBEZWMgMTAsIDIwMjQgYXQgNTo0NeKAr0FNIERyYWdhbiBTaW1pYyA8ZHNpbWljQG1h
+bmphcm8ub3JnPiB3cm90ZToKPgo+IEhlbGxvIFBldGVyLAo+Cj4gVGhhbmtzIGZvciB0aGUgcGF0
+Y2guICBQbGVhc2UsIHNlZSBzb21lIGNvbW1lbnRzIGJlbG93Lgo+Cj4gT24gMjAyNC0xMi0xMCAw
+MjozMCwgUGV0ZXIgR2VpcyB3cm90ZToKPiA+IFNpbmNlIGNvbW1pdCA4YTQ2OWVlMzU2MDYgKCJh
+cm02NDogZHRzOiByb2NrY2hpcDogQWRkIHR4cGJsIG5vZGUgZm9yCj4gPiBSSzMzOTkvUkszMzI4
+IiksIHRoZSBzbnBzLGFhbCwgc25wcyx0eHBibCwgYW5kIHNucHMscnhwYmwgbm9kZXMgaGF2ZQo+
+ID4gYmVlbiB1bm5lY2Vzc2FyeSBpbiB0aGUgc2VwYXJhdGUgZGV2aWNlIHRyZWVzLiBUaGVyZSBp
+cyBhbHNvIGEKPiA+IHBlcmZvcm1hbmNlIGxvc3MgdG8gdXNpbmcgc25wcyxhYWwuIFJlbW92ZSB0
+aGVzZSBmcm9tIHRoZSByazMzMjgtcm9jCj4gPiBkZXZpY2UgdHJlZS4KPiA+Cj4gPiBTaWduZWQt
+b2ZmLWJ5OiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPgo+ID4KPiA+IC0tLQo+ID4K
+PiA+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2MuZHRzaSB8IDMgLS0t
+Cj4gPiAgMSBmaWxlIGNoYW5nZWQsIDMgZGVsZXRpb25zKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy5kdHNpCj4gPiBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy5kdHNpCj4gPiBpbmRleCA2OTg0Mzg3
+ZmY4YjMuLjBkNDc2Y2MyMTQ0ZCAxMDA2NDQKPiA+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszMzI4LXJvYy5kdHNpCj4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzMyOC1yb2MuZHRzaQo+ID4gQEAgLTE1NSwxMiArMTU1LDkgQEAgJmdtYWMyaW8g
+ewo+ID4gICAgICAgcGh5LW1vZGUgPSAicmdtaWkiOwo+ID4gICAgICAgcGluY3RybC1uYW1lcyA9
+ICJkZWZhdWx0IjsKPiA+ICAgICAgIHBpbmN0cmwtMCA9IDwmcmdtaWltMV9waW5zPjsKPiA+IC0g
+ICAgIHNucHMsYWFsOwo+Cj4gSHVoLCBJIHNlZSB0aGF0IHF1aXRlIGEgZmV3IFJLMzMyOCBib2Fy
+ZCBkdHMgZmlsZXMgc3BlY2lmeQo+IHRoZSBzbnBzLGFhbCBub2RlLiAgSSB3b25kZXIgd2FzIGl0
+IGEgImNhcmdvIGN1bHQiIGFwcHJvYWNoCj4gYXQgcGxheSwgOikgb3Igd2FzIHRoZXJlIHNvbWUg
+cmVhbCBuZWVkIGZvciBpdD8KPgo+IEFjdHVhbGx5LCBJIHNlZSBub3cgdGhhdCB5b3UgYWRkZWQg
+c25wcyxhYWwgdG8gcmszMzI4LXJvYy0KPiBjYy5kdHMgaW4gdGhlIGNvbW1pdCAzOTNmMzg3NWMz
+ODUgKCJhcm02NDogZHRzOiByb2NrY2hpcDoKPiBpbXByb3ZlIHJrMzMyOC1yb2MtY2MgcmdtaWkg
+cGVyZm9ybWFuY2UuIiksIHNvIEkgZ3Vlc3MgdGhhdAo+IHlvdXIgZnVydGhlciByZXNlYXJjaCBh
+bmQgdGVzdGluZyBzaG93ZWQgdGhhdCBpdCBhY3R1YWxseQo+IGlzbid0IG5lZWRlZCBmb3IgRXRo
+ZXJuZXQgc3RhYmlsaXR5Pwo+Cj4gPiAgICAgICBzbnBzLHJlc2V0LWdwaW8gPSA8JmdwaW8xIFJL
+X1BDMiBHUElPX0FDVElWRV9MT1c+Owo+ID4gICAgICAgc25wcyxyZXNldC1hY3RpdmUtbG93Owo+
+ID4gICAgICAgc25wcyxyZXNldC1kZWxheXMtdXMgPSA8MCAxMDAwMCA1MDAwMD47Cj4gPiAtICAg
+ICBzbnBzLHJ4cGJsID0gPDB4ND47Cj4gPiAtICAgICBzbnBzLHR4cGJsID0gPDB4ND47Cj4KPiBV
+bmxlc3MgSSdtIG1pc3Npbmcgc29tZXRoaW5nLCB0aGUgY29tbWl0IDhhNDY5ZWUzNTYwNiAoImFy
+bTY0Ogo+IGR0czogcm9ja2NoaXA6IEFkZCB0eHBibCBub2RlIGZvciBSSzMzOTkvUkszMzI4Iikg
+ZG9lc24ndCBhZGQKPiB0aGUgc25wcyxyeHBibCBub2RlIHRvIHRoZSBSSzMzMjggU29DIGR0c2ks
+IGFuZCB0aGUgcmVzcGVjdGl2ZQo+IGRyaXZlciBkb2VzIG5vdGhpbmcgYWJvdXQgaXQgd2hlbiB0
+aGUgc25wcyx0eHBibCBub2RlIGlzIGZvdW5kLgo+Cj4gVGhvdWdoLCBJIHNlZSB0aGF0IHJrMzMy
+OC1yb2NrLXBpLWUuZHRzIGlzIHRoZSBvbmx5IG90aGVyCj4gUkszMzI4IGJvYXJkIGR0cyBmaWxl
+IHRoYXQgc3BlY2lmaWVzIHRoZSBzbnBzLHJ4cGJsIG5vZGUsIHNvCj4gaXQgc2VlbXMgdGhhdCBy
+ZW1vdmluZyB0aGUgc25wcyxyeHBibCBub2RlIGhlcmUgc2hvdWxkIGJlIHNhZmUsCj4gZXNwZWNp
+YWxseSBiZWNhdXNlIGl0IHdhcyB5b3Ugd2hvIGFkZGVkIGl0IGluIHRoZSBzYW1lIGNvbW1pdAo+
+IG1lbnRpb25lZCBhYm92ZS4gIElmIHRoZXJlIHdlcmUgc29tZSBTb0MtbGV2ZWwgaXNzdWVzLCBh
+bGwKPiBSSzMzMjggYm9hcmRzIHdvdWxkJ3ZlIG5lZWRlZCBpdC4KCkdvb2QgTW9ybmluZywKCllv
+dSdsbCBub3RpY2UgdGhlIGF1dGhvciBvZiB0aGF0IHBhdGNoIHdhcyBtZS4gU2V0dGluZyBhYWws
+IHR4cGJsLCBhbmQKcnhwYmwgd2FzIHRoZSBvcmlnaW5hbCBmaXggSSBjYW1lIHVwIHdpdGggZm9y
+IHRoZSByazMzMjgsIHdoaWNoIEkKYXBwbGllZCB0byB0aGUgb25seSBib2FyZCBJIGhhZC4gU29t
+ZW9uZSBlbHNlIGxhdGVyIG9uIGlzb2xhdGVkIGl0CnNwZWNpZmljYWxseSBpc29sYXRlZCBpdCB0
+byBqdXN0IHRoZSB0eHBibCBhbmQgYXBwbGllZCBpdCB0byBib3RoIHRoZQpyazMzMjggYW5kIHJr
+MzM5OSBkaXJlY3RseS4KClRoaXMgd2FzIGp1c3Qgc29tZXRoaW5nIHRoYXQgd2FzIGxlZnQgaGFu
+Z2luZyBhZnRlciB0aGF0IHJlc3VsdC4KCkxvb2tpbmcgYXQgaG93IHJrMzU2eCB3YXMgZG9uZSwg
+SSBzdXNwZWN0IHRoZXJlJ3MgYW4gZXZlbiBtb3JlIGVsZWdhbnQKc29sdXRpb24uIEhvd2V2ZXIg
+SSBkb24ndCBoYXZlIHRoZSBkZWVwIGxldmVsIGtub3dsZWRnZSBub3IKZG9jdW1lbnRhdGlvbiB0
+byBpbXBsZW1lbnQgaXQuCgpWZXJ5IFJlc3BlY3RmdWxseSwKUGV0ZXIgR2Vpcwo+Cj4gPiAgICAg
+ICB0eF9kZWxheSA9IDwweDI0PjsKPiA+ICAgICAgIHJ4X2RlbGF5ID0gPDB4MTg+Owo+ID4gICAg
+ICAgc3RhdHVzID0gIm9rYXkiOwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
