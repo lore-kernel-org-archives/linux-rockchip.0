@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0872E77186
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 23:19:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF29E77183
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 23:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xl1udsy9LrBWwqueLSVi9N8M0/jqYkACglx+ERweHJk=; b=0nCufFaDaVXN+A
-	JxcmZNlnrqj8fxFfV2gBRK4UvL2z5egwN5kDlYsndVZMgFzzL3ZYaH7L4R977VI/8XWc3HNBqUwhb
-	IaBXIUckBqGUYRMonsPBn8GuJjKxZmhslmLeepAFWGQfkycstOfPh0XaIqWj+3TbXhBYvBObTIf33
-	9jKff1qqsRNqY5tBbahnIPaL0/UTjAT8Ci1Lep9+epcPTOXJzsVz70zKB04bAhkSaSw8tXPOavfGx
-	3alCwzJ5Hluuaz5tDKo4HQlxQor4PaouBF78Q7hS4SfkMhkVICdrnuPY/Mn43KNLsZXX+bV6QOY4g
-	b7crl68NgNxGDquMjOFw==;
+	List-Owner; bh=Ms6U5GS0Jz5LzA5LancgUfrtHhuvot53nmxYEZka4V8=; b=NX4tE2jehi1CxC
+	CysMQumcRNiKDXuH6u3hDI1MI2dRgOt6AfUqSGC4czNrqiYJsLC7ZVGp5s+iivJZsedL3t4CL2Mhu
+	484y4J1/p+WozWEsOwMrbE/pVaM/6oBWFXZEt5XVFqOY7dYg8oifeoER5dRCA+15t4L1ixUy2kuir
+	986QvC6IC9CcAY19NcrhJ+bk4KLbV0V9hAZv4qgFWquctcpo35AB5tWUdrC6hydyw9d+kphfESBhw
+	nwUJa5fAO/10417A9MuBPCPDjbiUnzNYNi4FjHjxOzuDtE35NfRWFJlb9VNUYxD1joTa4+2NeldaE
+	IKzy3WqpD2eDdEm6DwtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL9VJ-0000000D8ph-0KUj;
-	Tue, 10 Dec 2024 23:18:57 +0000
+	id 1tL9VL-0000000D8sc-3w6d;
+	Tue, 10 Dec 2024 23:18:59 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL9M5-0000000D75K-3kLU;
-	Tue, 10 Dec 2024 23:09:27 +0000
+	id 1tL9Q2-0000000D7wZ-1RUK;
+	Tue, 10 Dec 2024 23:13:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=WbsUv2uSUD6IdLlUiwGe9UBfCIFkso55xH3tnUJICTk=; b=qnbA+GWZqDmQmtnEbp1wOfXfHH
-	pcMnTWVPMbmvNcTfsE2f5MuCJ3dgfqz+B8U379AMx4Y20MfXo1GMEY8LN5qpWX4C4kPOy+WZimTvW
-	MtvfBXRoXlIQYZ0p1y/81CD4wwrDty/fKRZ9a7DBkU1tQov4BN1UpkDzaxwJWogNK3Y+38mjFvqMw
-	VYVeyXC//lnGcdzqCkxOwGIkjrR/u9krKlx25+tt2O4IBqAIX+E5NDDJF9ZXW6oAwo635lLwxUXnT
-	J8lNtS5ohd7eTI3XB+5kJIU6NpITTL+9VqA++HW78eN1x0G1xrb/konDNe4q9inch0FALGCg0lgmw
-	JW35Zeng==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=phil.localnet)
+	bh=81i6uMmY+i+xArvA6cp+WIEYBBlzI51+0qtx8Tubxp8=; b=i2rDAb6WHYxBEfu8SxJTvRaN7u
+	iUo+pOHNf8FfDx/m5mbGJFCCTAa9Q38gqEUX3fvtlx5v3TDw6C3VYcRFPlhc6P5gzKnIyWi7cusqp
+	tuy4gQsXSF9LZ2OdGh5egvgZrl1LZ2Wps3jxqH7jTaa2EZ+lmqZVf3nluPhkxt71ngcrGPl196cBf
+	0pCXXv8w30tMBRkqsHjlNM/5kHK1E1TcamW19IyR5zC+zhoy3gZfFP/vX2t9LOHfZvjuk9c4JYieh
+	otmTL5WuabGLAGlgs3X36GhRKsRln9zlUEVggV6lOHIL+kh1qdb9+A2xmf/bBygDM3sFsOiPhhSt8
+	UdCE8GSg==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tL9Lu-0007Hr-QO; Wed, 11 Dec 2024 00:09:14 +0100
+	id 1tL9Pa-0007R7-KE; Wed, 11 Dec 2024 00:13:02 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, s.hauer@pengutronix.de,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
- detlev.casanova@collabora.com, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v5 04/18] drm/rockchip: vop2: Fix the windows switch between
- different layers
-Date: Wed, 11 Dec 2024 00:09:13 +0100
-Message-ID: <5109751.mvXUDI8C0e@phil>
-In-Reply-To: <20241209122943.2781431-8-andyshrk@163.com>
-References: <20241209122943.2781431-1-andyshrk@163.com>
- <20241209122943.2781431-8-andyshrk@163.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org,
+	Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	quentin.schulz@cherry.de
+Subject: Re: [PATCH v4 0/3] drm/rockchip: Add driver for the new DSI2 controller
+Date: Wed, 11 Dec 2024 00:12:59 +0100
+Message-ID: <173387236506.2374456.5462991780228290808.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241209231021.2180582-1-heiko@sntech.de>
+References: <20241209231021.2180582-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_150925_956679_84B8A2CF 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20241210_151330_375879_DC92F7C2 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,40 +90,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-Am Montag, 9. Dezember 2024, 13:29:17 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Tue, 10 Dec 2024 00:10:18 +0100, Heiko Stuebner wrote:
+> This series adds a bridge and glue driver for the DSI2 controller found
+> in the rk3588 soc from Rockchip, that is based on a Synopsis IP block.
 > 
-> Every layer of vop2 should bind a window, and we also need to make
-> sure that this window is not used by other layer.
+> As the manual states:
+> The Display Serial Interface 2 (DSI-2) is part of a group of communication
+> protocols defined by the MIPI Alliance. The MIPI DSI-2 Host Controller is
+> a digital core that implements all protocol functions defined in the
+> MIPI DSI-2 Specification.
 > 
-> 0x5 is a reserved layer sel value on rk3568, but it will select
-> Cluster3 on rk3588, configure unused layers to 0x5  will lead
-> alpha blending error on rk3588.
-> 
-> When we bind a window from layerM to layerN, we move the old window
-> on layerN to layerM.
-> 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Tested-by: Derek Foreman <derek.foreman@collabora.com>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> [...]
 
-> +		/*
-> +		 * Find the win bind to this layer in old state
-> +		 */
-> +		for (i = 0; i < vop2->data->win_size; i++) {
-> +			old_win = &vop2->win[i];
-> +			layer_sel_id = (layer_sel >> (4 * (plane->state->normalized_zpos + ofs))) & 0xf;
+Applied, thanks!
 
-checkpatch is unhappy about the length of this line (104 characters).
-Could you please restructure it (helper var or line break)
-so that it gets below the 100 character mark please?
+[1/3] drm/bridge/synopsys: Add MIPI DSI2 host controller bridge
+      commit: 0d6d86253fef1e6b1e38a54db14bcbea9d0d9ca4
+[2/3] dt-bindings: display: rockchip: Add schema for RK3588 DW DSI2 controller
+      commit: 77889f2baadc856a26eef4ed601e5e277d0518b5
+[3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
+      commit: 9f1e1e14f59de8e5a62226840abecbcdbd50221a
 
-Thanks a lot
-Heiko
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
