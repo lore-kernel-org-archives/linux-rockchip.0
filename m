@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D415E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 17:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132B8E77182
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 18:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mk/qJ18OPaW8R0Byz+tgrWO36dXX3dm9hCDWHr9TPN0=; b=Bp5i5Qby0VNUM3
-	ICVSENbjePD+68B+vuxymORFuu+Uv6axnq0NgSgW8iCiLwM1QY4Lw7SYlKKAUusXof0Jw2pWW8HS/
-	bKtQXV3jONLMdO/SSRms41goCF+Tskg/gWpwDHJZ0D/tPDQiXlnTOMixYNKw5pSVfJ9V5jLrzO1M6
-	LmNA6uUDqKg6aMX4i/Ir3gjtqnj+1gQ0HKzMhK+W6Vj5JUt4Mo79DKUDo9Rzts0uSPHmRf4vWkzme
-	RDWECVJKqo1ZOX3gC5P5h6ouM7EDNcCQzs9/xumBP7kE3XwwaYpaq/FYIor7YU1Zqtli1Okvust/B
-	s5murB58bmi3EyC/N8Sw==;
+	List-Owner; bh=QAhWMJo8W+kF1Nofe//jfJ7r7E1sYrMWxtXJLvh33Wg=; b=FQL5V/wp1jlr21
+	imHFl+GER0abQIm7hsFgExtVjueyQ4ojMFZgrB073qcglip59SS1Ns9nourg7fQALjTiM5ua9ppkA
+	pVqMnKqgcuscDsnX9dSY5UhgdRPBZg4c8QeG6mbhtD9lNgmXcreNcnuMp66wDDfFRoZszMvYex0Hz
+	Nf4VZl2ZuE1B4d5eQaIm+2JohR/UPohjEZ72ImfcWP3mkYaFUy/9/rQC28acTE7LSr0U5PBkp9PO4
+	GH45a74FPDVMz0FTU6NHNSKO2Uniefxy/e5dUjthFRjA7BaehEGTrJewvccQGu0icJ0SqrwKK4ppi
+	/FRIT5GEazigMTRfh/4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL4Oj-0000000CKOt-2JrZ;
-	Tue, 10 Dec 2024 17:51:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tL5Cf-0000000CQyV-1IvJ;
+	Tue, 10 Dec 2024 18:43:25 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL4Og-0000000CKOR-2J4I
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Dec 2024 17:51:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=WoKlAx2lCcPCu7/whr69+RY7ecshkhAuKHIc6JJIKNM=; b=DzHcu05sWfX6pdzjMZLdq+T7DV
-	nmGtLf+z+G+qdBtlrUlkYHGgB34pcga1S7HYighWzIZq8QNsSDuEnY9HW1pTSQG7gXs1jKY3jTK/b
-	0flnPv1NbqbNGrqnaFPONGw8nkz9T8fQYsq045bulbwfSGIeGW1S1bG77vwrI5p1WaqeDk+d41oeg
-	obIoukA/vxqioHKyu3zXQ4B+ui1THJoZ3qHJXzIVKMZOOHiBirycxIxfUGwhVocmY/FnPg8GF8U10
-	h9ubijuPHp+lBnqsBhUTJ/mxTGxrAo+ukmCv4FZ8GuTbiaoGYL8YBq4ghB9YBl4g1+veWQSF8UP3N
-	whgwynhw==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tL4OV-0000DD-Tt; Tue, 10 Dec 2024 18:51:36 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Mark Brown <broonie@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- =?ISO-8859-1?Q?Adri=E1n_Mart=EDnez?= Larumbe <adrian.larumbe@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Chen-Yu Tsai <wens@csie.org>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
-Subject: Re: [PATCH v4 6/7] pmdomain: rockchip: add regulator support
-Date: Tue, 10 Dec 2024 18:51:34 +0100
-Message-ID: <4082877.3daJWjYHZt@diego>
-In-Reply-To: <20241210171023.141162-7-sebastian.reichel@collabora.com>
-References: <20241210171023.141162-1-sebastian.reichel@collabora.com>
- <20241210171023.141162-7-sebastian.reichel@collabora.com>
+	id 1tL5A0-0000000CQMq-0flF;
+	Tue, 10 Dec 2024 18:40:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1733856018; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=eLJVeQYFPMFmIItBqw+iC3duBThTFKhy7qlLZqlBdIU+QgFxFRfrjF5IP8IoeUjJLJlIeIagNF4wBbn6cTCfihdaenCWHQfWPIEEWhqsABEYYGoxuChoTUuaWDv9sDTwId9YDeW2H7yPFSmw5b4zBYkN/6s/5QF2EGrdhe4shaw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1733856018; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=S6TU7l55Y0mdZ5Q3U4WL8dWps5L9M05F3suGGbIWtgw=; 
+	b=hTLXIKCaSIFGbIMfggLJZhU7NVYsgfCzxi/uJ6Ui4OlECzwHsZYl6nhw6chgxOsMaGd4f0qLM8D8OvpmZrSi4ntJdzPdgH3t9LQBuAdPNUAkU0zsvUwsYmTFuSsn2JuDaDzaPgm+Dlou7lVxKKUt8d9LRsn1dMwWr6lKjdEQX5M=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733856018;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=S6TU7l55Y0mdZ5Q3U4WL8dWps5L9M05F3suGGbIWtgw=;
+	b=LZELpwG5YCjb+W0kzThoZ7BmxJl1jkkHLx8U5ntvirtepwV6dLYCkEHPcf+wQ4Ye
+	HIAkjXa8s+snIddoOFA0SLqdENEE7uw368T1a62qyAQjo4Nh0Ha4Dqa0pnnoRn5BxTb
+	K2BcZD5DA49FKQYAbt39eq1FPMNUv/x5hfwAnCkE=
+Received: by mx.zohomail.com with SMTPS id 1733856016248872.700989510731;
+	Tue, 10 Dec 2024 10:40:16 -0800 (PST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: heiko@sntech.de, Andy Yan <andyshrk@163.com>
+Cc: hjc@rock-chips.com, krzk+dt@kernel.org, s.hauer@pengutronix.de,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
+ Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com
+Subject: Re: [PATCH v5 05/18] drm/rockchip: vop2: Set AXI id for rk3588
+Date: Tue, 10 Dec 2024 13:40:14 -0500
+Message-ID: <5839604.DvuYhMxLoT@trenzalore>
+In-Reply-To: <20241209122943.2781431-9-andyshrk@163.com>
+References: <20241209122943.2781431-1-andyshrk@163.com>
+ <20241209122943.2781431-9-andyshrk@163.com>
 MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_095146_826259_2142D2D8 
-X-CRM114-Status: GOOD (  35.92  )
+X-CRM114-CacheID: sfid-20241210_104040_278210_6DA5D644 
+X-CRM114-Status: GOOD (  23.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,238 +80,231 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 10. Dezember 2024, 18:06:46 CET schrieb Sebastian Reichel:
-> Some power domains require extra voltages to be applied. For example
-> trying to enable the GPU power domain on RK3588 fails when the SoC
-> does not have VDD GPU enabled. The same is expected to happen for
-> the NPU, which also has a dedicated supply line.
+Hi Andy,
+
+On Monday, 9 December 2024 07:29:18 EST Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> We get the regulator using devm_of_regulator_get(), so a missing
-> dependency in the devicetree is handled gracefully by printing a warning
-> and creating a dummy regulator. This is necessary, since existing DTs do
-> not have the regulator described. They might still work if the regulator
-> is marked as always-on. It is also working if the regulator is enabled
-> at boot time and the GPU driver is probed before the kernel disables
-> unused regulators.
+> There are two AXI bus in vop2, windows attached on the same bus must
+> have a unique channel YUV and RGB channel ID.
 > 
-> The regulator itself is not acquired at driver probe time, since that
-> creates an unsolvable circular dependency. The power domain driver must
-> be probed early, since SoC peripherals need it. Regulators on the other
-> hand depend on SoC peripherals like SPI, I2C or GPIO. MediaTek does not
-> run into this, since they have two power domain drivers.
+> The default IDs will conflict with each other on the rk3588, so they
+> need to be reassigned.
 > 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-sidenote:
-part of me is asking, why we're limiting regulator handling only to
-specific individual domains when all domains sort of have supplying
-regulators - just ones that normally always stay on.
-
-But, the binding is generic, so we can extend that later on in the driver
-if needed. Especially as this fixes a problem that happens right now.
-
-
-Heiko
-
-
+> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Tested-by: Derek Foreman <derek.foreman@collabora.com>
+> 
 > ---
->  drivers/pmdomain/rockchip/pm-domains.c | 113 +++++++++++++++++--------
->  1 file changed, 79 insertions(+), 34 deletions(-)
 > 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index f4e555dac20a..31c71b6fddf1 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -18,6 +18,7 @@
->  #include <linux/of_clk.h>
->  #include <linux/clk.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
->  #include <linux/mfd/syscon.h>
->  #include <soc/rockchip/pm_domains.h>
->  #include <dt-bindings/power/px30-power.h>
-> @@ -44,6 +45,7 @@ struct rockchip_domain_info {
->  	int idle_mask;
->  	int ack_mask;
->  	bool active_wakeup;
-> +	bool need_regulator;
->  	int pwr_w_mask;
->  	int req_w_mask;
->  	int clk_ungate_mask;
-> @@ -92,6 +94,8 @@ struct rockchip_pm_domain {
->  	u32 *qos_save_regs[MAX_QOS_REGS_NUM];
->  	int num_clks;
->  	struct clk_bulk_data *clks;
-> +	struct device_node *node;
-> +	struct regulator *supply;
->  };
->  
->  struct rockchip_pmu {
-> @@ -129,7 +133,7 @@ struct rockchip_pmu {
->  	.active_wakeup = wakeup,			\
->  }
->  
-> -#define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup)	\
-> +#define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup, regulator)	\
->  {							\
->  	.name = _name,					\
->  	.pwr_offset = p_offset,				\
-> @@ -145,6 +149,7 @@ struct rockchip_pmu {
->  	.idle_mask = (idle),				\
->  	.ack_mask = (ack),				\
->  	.active_wakeup = wakeup,			\
-> +	.need_regulator = regulator,			\
->  }
->  
->  #define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup)	\
-> @@ -303,8 +308,8 @@ void rockchip_pmu_unblock(void)
->  }
->  EXPORT_SYMBOL_GPL(rockchip_pmu_unblock);
->  
-> -#define DOMAIN_RK3588(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, wakeup)	\
-> -	DOMAIN_M_O_R(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, idle, wakeup)
-> +#define DOMAIN_RK3588(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, wakeup, regulator)	\
-> +	DOMAIN_M_O_R(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, idle, wakeup, regulator)
->  
->  static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
->  {
-> @@ -619,18 +624,57 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
->  	return 0;
->  }
->  
-> +static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
-> +{
-> +	return IS_ERR_OR_NULL(pd->supply) ? 0 : regulator_disable(pd->supply);
-> +}
-> +
-> +static int rockchip_pd_regulator_enable(struct rockchip_pm_domain *pd)
-> +{
-> +	struct rockchip_pmu *pmu = pd->pmu;
-> +
-> +	if (!pd->info->need_regulator)
-> +		return 0;
-> +
-> +	if (IS_ERR_OR_NULL(pd->supply)) {
-> +		pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
-> +
-> +		if (IS_ERR(pd->supply))
-> +			return PTR_ERR(pd->supply);
+> Changes in v5:
+> - Added in V5
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  9 +++++++
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 26 +++++++++++++++++++-
+>  3 files changed, 48 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c index
+> dc4edd65bc9e..8b9ca046eeeb 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1426,6 +1426,12 @@ static void vop2_plane_atomic_update(struct drm_plane
+> *plane, &fb->format->format,
+>  		afbc_en ? "AFBC" : "", &yrgb_mst);
+> 
+> +	if (vop2->data->soc_id > 3568) {
+
+Shouldn't this be done only for rk3588, as specified in the comments below ? 
+The test we did before showed that it is failing on rk3576 and 3576 is > 3588.
+
+I suggest
+
+	if (vop2->data->soc_id == 3588) {
+
+Regards,
+Detlev
+
+> +		vop2_win_write(win, VOP2_WIN_AXI_BUS_ID, win->data-
+>axi_bus_id);
+> +		vop2_win_write(win, VOP2_WIN_AXI_YRGB_R_ID, win->data-
+>axi_yrgb_r_id);
+> +		vop2_win_write(win, VOP2_WIN_AXI_UV_R_ID, win->data-
+>axi_uv_r_id);
 > +	}
 > +
-> +	return regulator_enable(pd->supply);
-> +}
-> +
->  static int rockchip_pd_power_on(struct generic_pm_domain *domain)
->  {
->  	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-> +	int ret;
-> +
-> +	ret = rockchip_pd_regulator_enable(pd);
-> +	if (ret) {
-> +		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
-> +		return ret;
-> +	}
->  
-> -	return rockchip_pd_power(pd, true);
-> +	ret = rockchip_pd_power(pd, true);
-> +	if (ret)
-> +		rockchip_pd_regulator_disable(pd);
-> +
-> +	return ret;
->  }
->  
->  static int rockchip_pd_power_off(struct generic_pm_domain *domain)
->  {
->  	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-> +	int ret;
->  
-> -	return rockchip_pd_power(pd, false);
-> +	ret = rockchip_pd_power(pd, false);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rockchip_pd_regulator_disable(pd);
-> +	return ret;
->  }
->  
->  static int rockchip_pd_attach_dev(struct generic_pm_domain *genpd,
-> @@ -711,6 +755,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
->  
->  	pd->info = pd_info;
->  	pd->pmu = pmu;
-> +	pd->node = node;
->  
->  	pd->num_clks = of_clk_get_parent_count(node);
->  	if (pd->num_clks > 0) {
-> @@ -1174,35 +1219,35 @@ static const struct rockchip_domain_info rk3576_pm_domains[] = {
->  };
->  
->  static const struct rockchip_domain_info rk3588_pm_domains[] = {
-> -	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false),
-> -	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x0, 0,       0,       0x0, 0,       0,       false),
-> -	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0x0, 0,       0,       0x0, 0,       0,       false),
-> -	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false),
-> -	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false),
-> -	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false),
-> -	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false),
-> -	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false),
-> -	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false),
-> -	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false),
-> -	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       0x0, BIT(18), BIT(9),  0x0, BIT(8),  BIT(8),  false),
-> -	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       0x0, BIT(19), BIT(10), 0x0, 0,       0,       false),
-> -	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       0x0, BIT(20), BIT(11), 0x0, BIT(9),  BIT(9),  false),
-> -	[RK3588_PD_VI]		= DOMAIN_RK3588("vi",      0x0, BIT(13), 0,       0x0, BIT(21), BIT(12), 0x0, BIT(10), BIT(10), false),
-> -	[RK3588_PD_FEC]		= DOMAIN_RK3588("fec",     0x0, BIT(14), 0,       0x0, BIT(22), BIT(13), 0x0, 0,       0,       false),
-> -	[RK3588_PD_ISP1]	= DOMAIN_RK3588("isp1",    0x0, BIT(15), 0,       0x0, BIT(23), BIT(14), 0x0, BIT(11), BIT(11), false),
-> -	[RK3588_PD_RGA31]	= DOMAIN_RK3588("rga31",   0x4, BIT(0),  0,       0x0, BIT(24), BIT(15), 0x0, BIT(12), BIT(12), false),
-> -	[RK3588_PD_VOP]		= DOMAIN_RK3588("vop",     0x4, BIT(1),  0,       0x0, BIT(25), BIT(16), 0x0, BIT(13) | BIT(14), BIT(13) | BIT(14), false),
-> -	[RK3588_PD_VO0]		= DOMAIN_RK3588("vo0",     0x4, BIT(2),  0,       0x0, BIT(26), BIT(17), 0x0, BIT(15), BIT(15), false),
-> -	[RK3588_PD_VO1]		= DOMAIN_RK3588("vo1",     0x4, BIT(3),  0,       0x0, BIT(27), BIT(18), 0x4, BIT(0),  BIT(16), false),
-> -	[RK3588_PD_AUDIO]	= DOMAIN_RK3588("audio",   0x4, BIT(4),  0,       0x0, BIT(28), BIT(19), 0x4, BIT(1),  BIT(17), false),
-> -	[RK3588_PD_PHP]		= DOMAIN_RK3588("php",     0x4, BIT(5),  0,       0x0, BIT(29), BIT(20), 0x4, BIT(5),  BIT(21), false),
-> -	[RK3588_PD_GMAC]	= DOMAIN_RK3588("gmac",    0x4, BIT(6),  0,       0x0, BIT(30), BIT(21), 0x0, 0,       0,       false),
-> -	[RK3588_PD_PCIE]	= DOMAIN_RK3588("pcie",    0x4, BIT(7),  0,       0x0, BIT(31), BIT(22), 0x0, 0,       0,       true),
-> -	[RK3588_PD_NVM]		= DOMAIN_RK3588("nvm",     0x4, BIT(8),  BIT(24), 0x4, 0,       0,       0x4, BIT(2),  BIT(18), false),
-> -	[RK3588_PD_NVM0]	= DOMAIN_RK3588("nvm0",    0x4, BIT(9),  0,       0x4, BIT(1),  BIT(23), 0x0, 0,       0,       false),
-> -	[RK3588_PD_SDIO]	= DOMAIN_RK3588("sdio",    0x4, BIT(10), 0,       0x4, BIT(2),  BIT(24), 0x4, BIT(3),  BIT(19), false),
-> -	[RK3588_PD_USB]		= DOMAIN_RK3588("usb",     0x4, BIT(11), 0,       0x4, BIT(3),  BIT(25), 0x4, BIT(4),  BIT(20), true),
-> -	[RK3588_PD_SDMMC]	= DOMAIN_RK3588("sdmmc",   0x4, BIT(13), 0,       0x4, BIT(5),  BIT(26), 0x0, 0,       0,       false),
-> +	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false, true),
-> +	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x0, 0,       0,       0x0, 0,       0,       false, true),
-> +	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0x0, 0,       0,       0x0, 0,       0,       false, false),
-> +	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
-> +	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
-> +	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
-> +	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, false),
-> +	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, false),
-> +	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, false),
-> +	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false, false),
-> +	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       0x0, BIT(18), BIT(9),  0x0, BIT(8),  BIT(8),  false, false),
-> +	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       0x0, BIT(19), BIT(10), 0x0, 0,       0,       false, false),
-> +	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       0x0, BIT(20), BIT(11), 0x0, BIT(9),  BIT(9),  false, false),
-> +	[RK3588_PD_VI]		= DOMAIN_RK3588("vi",      0x0, BIT(13), 0,       0x0, BIT(21), BIT(12), 0x0, BIT(10), BIT(10), false, false),
-> +	[RK3588_PD_FEC]		= DOMAIN_RK3588("fec",     0x0, BIT(14), 0,       0x0, BIT(22), BIT(13), 0x0, 0,       0,       false, false),
-> +	[RK3588_PD_ISP1]	= DOMAIN_RK3588("isp1",    0x0, BIT(15), 0,       0x0, BIT(23), BIT(14), 0x0, BIT(11), BIT(11), false, false),
-> +	[RK3588_PD_RGA31]	= DOMAIN_RK3588("rga31",   0x4, BIT(0),  0,       0x0, BIT(24), BIT(15), 0x0, BIT(12), BIT(12), false, false),
-> +	[RK3588_PD_VOP]		= DOMAIN_RK3588("vop",     0x4, BIT(1),  0,       0x0, BIT(25), BIT(16), 0x0, BIT(13) | BIT(14), BIT(13) | BIT(14), false, false),
-> +	[RK3588_PD_VO0]		= DOMAIN_RK3588("vo0",     0x4, BIT(2),  0,       0x0, BIT(26), BIT(17), 0x0, BIT(15), BIT(15), false, false),
-> +	[RK3588_PD_VO1]		= DOMAIN_RK3588("vo1",     0x4, BIT(3),  0,       0x0, BIT(27), BIT(18), 0x4, BIT(0),  BIT(16), false, false),
-> +	[RK3588_PD_AUDIO]	= DOMAIN_RK3588("audio",   0x4, BIT(4),  0,       0x0, BIT(28), BIT(19), 0x4, BIT(1),  BIT(17), false, false),
-> +	[RK3588_PD_PHP]		= DOMAIN_RK3588("php",     0x4, BIT(5),  0,       0x0, BIT(29), BIT(20), 0x4, BIT(5),  BIT(21), false, false),
-> +	[RK3588_PD_GMAC]	= DOMAIN_RK3588("gmac",    0x4, BIT(6),  0,       0x0, BIT(30), BIT(21), 0x0, 0,       0,       false, false),
-> +	[RK3588_PD_PCIE]	= DOMAIN_RK3588("pcie",    0x4, BIT(7),  0,       0x0, BIT(31), BIT(22), 0x0, 0,       0,       true, false),
-> +	[RK3588_PD_NVM]		= DOMAIN_RK3588("nvm",     0x4, BIT(8),  BIT(24), 0x4, 0,       0,       0x4, BIT(2),  BIT(18), false, false),
-> +	[RK3588_PD_NVM0]	= DOMAIN_RK3588("nvm0",    0x4, BIT(9),  0,       0x4, BIT(1),  BIT(23), 0x0, 0,       0,       false, false),
-> +	[RK3588_PD_SDIO]	= DOMAIN_RK3588("sdio",    0x4, BIT(10), 0,       0x4, BIT(2),  BIT(24), 0x4, BIT(3),  BIT(19), false, false),
-> +	[RK3588_PD_USB]		= DOMAIN_RK3588("usb",     0x4, BIT(11), 0,       0x4, BIT(3),  BIT(25), 0x4, BIT(4),  BIT(20), true, false),
-> +	[RK3588_PD_SDMMC]	= DOMAIN_RK3588("sdmmc",   0x4, BIT(13), 0,       0x4, BIT(5),  BIT(26), 0x0, 0,       0,       false, false),
->  };
->  
->  static const struct rockchip_pmu_info px30_pmu = {
+>  	if (vop2_cluster_window(win))
+>  		vop2_win_write(win, VOP2_WIN_AFBC_HALF_BLOCK_EN, 
+half_block_en);
 > 
+> @@ -3354,6 +3360,10 @@ static struct reg_field
+> vop2_cluster_regs[VOP2_WIN_MAX_REG] = { [VOP2_WIN_Y2R_EN] =
+> REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 8, 8),
+>  	[VOP2_WIN_R2Y_EN] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 9, 9),
+>  	[VOP2_WIN_CSC_MODE] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 10, 11),
+> +	[VOP2_WIN_AXI_YRGB_R_ID] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL2, 0, 
+3),
+> +	[VOP2_WIN_AXI_UV_R_ID] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL2, 5, 8),
+> +	/* RK3588 only, reserved bit on rk3568*/
+> +	[VOP2_WIN_AXI_BUS_ID] = REG_FIELD(RK3568_CLUSTER_CTRL, 13, 13),
+> 
+>  	/* Scale */
+>  	[VOP2_WIN_SCALE_YRGB_X] = 
+REG_FIELD(RK3568_CLUSTER_WIN_SCL_FACTOR_YRGB, 0,
+> 15), @@ -3446,6 +3456,10 @@ static struct reg_field
+> vop2_esmart_regs[VOP2_WIN_MAX_REG] = { [VOP2_WIN_YMIRROR] =
+> REG_FIELD(RK3568_SMART_CTRL1, 31, 31),
+>  	[VOP2_WIN_COLOR_KEY] = REG_FIELD(RK3568_SMART_COLOR_KEY_CTRL, 0, 
+29),
+>  	[VOP2_WIN_COLOR_KEY_EN] = REG_FIELD(RK3568_SMART_COLOR_KEY_CTRL, 
+31, 31),
+> +	[VOP2_WIN_AXI_YRGB_R_ID] = REG_FIELD(RK3568_SMART_CTRL1, 4, 8),
+> +	[VOP2_WIN_AXI_UV_R_ID] = REG_FIELD(RK3568_SMART_CTRL1, 12, 16),
+> +	/* RK3588 only, reserved register on rk3568 */
+> +	[VOP2_WIN_AXI_BUS_ID] = REG_FIELD(RK3588_SMART_AXI_CTRL, 1, 1),
+> 
+>  	/* Scale */
+>  	[VOP2_WIN_SCALE_YRGB_X] = 
+REG_FIELD(RK3568_SMART_REGION0_SCL_FACTOR_YRGB,
+> 0, 15), diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h index
+> 8786c2ba48df..0a3b22e8d14e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -78,6 +78,9 @@ enum vop2_win_regs {
+>  	VOP2_WIN_COLOR_KEY,
+>  	VOP2_WIN_COLOR_KEY_EN,
+>  	VOP2_WIN_DITHER_UP,
+> +	VOP2_WIN_AXI_BUS_ID,
+> +	VOP2_WIN_AXI_YRGB_R_ID,
+> +	VOP2_WIN_AXI_UV_R_ID,
+> 
+>  	/* scale regs */
+>  	VOP2_WIN_SCALE_YRGB_X,
+> @@ -149,6 +152,10 @@ struct vop2_win_data {
+>  	unsigned int layer_sel_id;
+>  	uint64_t feature;
+> 
+> +	uint8_t axi_bus_id;
+> +	uint8_t axi_yrgb_r_id;
+> +	uint8_t axi_uv_r_id;
+> +
+>  	unsigned int max_upscale_factor;
+>  	unsigned int max_downscale_factor;
+>  	const u8 dly[VOP2_DLY_MODE_MAX];
+> @@ -319,6 +326,7 @@ enum dst_factor_mode {
+> 
+>  #define RK3568_CLUSTER_WIN_CTRL0		0x00
+>  #define RK3568_CLUSTER_WIN_CTRL1		0x04
+> +#define RK3568_CLUSTER_WIN_CTRL2		0x08
+>  #define RK3568_CLUSTER_WIN_YRGB_MST		0x10
+>  #define RK3568_CLUSTER_WIN_CBR_MST		0x14
+>  #define RK3568_CLUSTER_WIN_VIR			0x18
+> @@ -341,6 +349,7 @@ enum dst_factor_mode {
+>  /* (E)smart register definition, offset relative to window base */
+>  #define RK3568_SMART_CTRL0			0x00
+>  #define RK3568_SMART_CTRL1			0x04
+> +#define RK3588_SMART_AXI_CTRL			0x08
+>  #define RK3568_SMART_REGION0_CTRL		0x10
+>  #define RK3568_SMART_REGION0_YRGB_MST		0x14
+>  #define RK3568_SMART_REGION0_CBR_MST		0x18
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c index
+> f7d3350594fa..37c65138012d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -395,7 +395,7 @@ static const struct vop2_video_port_data
+> rk3588_vop_video_ports[] = { * AXI1 is a read only bus.
+>   *
+>   * Every window on a AXI bus must assigned two unique
+> - * read id(yrgb_id/uv_id, valid id are 0x1~0xe).
+> + * read id(yrgb_r_id/uv_r_id, valid id are 0x1~0xe).
+>   *
+>   * AXI0:
+>   * Cluster0/1, Esmart0/1, WriteBack
+> @@ -415,6 +415,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .layer_sel_id = 0,
+>  		.supported_rotations = DRM_MODE_ROTATE_90 | 
+DRM_MODE_ROTATE_270 |
+>  				       DRM_MODE_REFLECT_X | 
+DRM_MODE_REFLECT_Y,
+> +		.axi_bus_id = 0,
+> +		.axi_yrgb_r_id = 2,
+> +		.axi_uv_r_id = 3,
+>  		.max_upscale_factor = 4,
+>  		.max_downscale_factor = 4,
+>  		.dly = { 4, 26, 29 },
+> @@ -431,6 +434,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+> DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_PRIMARY,
+> +		.axi_bus_id = 0,
+> +		.axi_yrgb_r_id = 6,
+> +		.axi_uv_r_id = 7,
+>  		.max_upscale_factor = 4,
+>  		.max_downscale_factor = 4,
+>  		.dly = { 4, 26, 29 },
+> @@ -446,6 +452,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+> DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_PRIMARY,
+> +		.axi_bus_id = 1,
+> +		.axi_yrgb_r_id = 2,
+> +		.axi_uv_r_id = 3,
+>  		.max_upscale_factor = 4,
+>  		.max_downscale_factor = 4,
+>  		.dly = { 4, 26, 29 },
+> @@ -461,6 +470,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+> DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_PRIMARY,
+> +		.axi_bus_id = 1,
+> +		.axi_yrgb_r_id = 6,
+> +		.axi_uv_r_id = 7,
+>  		.max_upscale_factor = 4,
+>  		.max_downscale_factor = 4,
+>  		.dly = { 4, 26, 29 },
+> @@ -475,6 +487,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .layer_sel_id = 2,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.axi_bus_id = 0,
+> +		.axi_yrgb_r_id = 0x0a,
+> +		.axi_uv_r_id = 0x0b,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 23, 45, 48 },
+> @@ -488,6 +503,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .layer_sel_id = 3,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.axi_bus_id = 0,
+> +		.axi_yrgb_r_id = 0x0c,
+> +		.axi_uv_r_id = 0x01,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 23, 45, 48 },
+> @@ -501,6 +519,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .layer_sel_id = 6,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.axi_bus_id = 1,
+> +		.axi_yrgb_r_id = 0x0a,
+> +		.axi_uv_r_id = 0x0b,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 23, 45, 48 },
+> @@ -514,6 +535,9 @@ static const struct vop2_win_data rk3588_vop_win_data[]
+> = { .layer_sel_id = 7,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+>  		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.axi_bus_id = 1,
+> +		.axi_yrgb_r_id = 0x0c,
+> +		.axi_uv_r_id = 0x0d,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 23, 45, 48 },
 
 
 
