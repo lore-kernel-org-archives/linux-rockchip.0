@@ -4,71 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C595E7717D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 00:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17415E7717D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 01:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j/LIE0jMCm3BMjWOo/mYvD6B4wXLfEOCbZFzQuCvlYA=; b=Ja1IiAEChmDe+i
-	0cVbVKvUoNqsV2Z0ExBXxYFD5S9OUb0yNkDSuYxAUe0cQcDCF9y7JYls0DJp4kmVQm30oV9CdO6fn
-	GBQtEW436Hj+2/85MBDx7c7PqClc/MF2RWmWj1NFqEsD0q0CeUqtf0lAaAM2YmcoWPOLzayn3A+9Z
-	9atAANiKWTusg2S5SKSa6HwCYfVJQl2AWlSa2A/3LLsXhZtYMuXaUdRGHW6AcCf04wxBxuaos7ErI
-	B9Qz4psv7VoOrZXu20Lfuu5bN3lIKokcnkjWcUN5Bvl2E5rX9s7vgjd74+ymbCNxNznE+XALNCE7k
-	TSrWlzI+4Uo7XjQB91qg==;
+	List-Owner; bh=W2kEJidbchBEfP7ZUdp1W+0JD3tp/2pZeRWzaOe1EPM=; b=w/OB/XImffF9NT
+	xeKIi8LOT8gqqibs/FiT43tj+JsWzbgnoe0KJyyKxQY9v2eOgEF+Ns28AK+Nz6yTEvrTfxl2k3qnH
+	ev2cx1d4riTtg5C0OSQ64mVagxWFlT2ZRI5DBHxLRuk4MyLDLTyhBlqIuBnm0n/6qOfd9kcMF5KGk
+	3vsI0j0MU5LA/ElMusTxOiiM18rg00WArgjRwNhBHvPIuAuveuLxloINhSXkC9kAnXIsgrdspAUht
+	a1/i7UVJsmIAYJbN0B/AOV+shG0+Y6gWpnY/PeqbenK5+e8STJeeWtphqtEwLK/P26MH2JPXU7z/U
+	Olm9qAWNXeHMsOQQgNXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKoV7-00000009kzs-13Zg;
-	Tue, 10 Dec 2024 00:53:21 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKoU3-00000009kkD-1Q8D;
-	Tue, 10 Dec 2024 00:52:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=FhW3RxWuSa2qtZWnSfHCog3V8YUyYEUWMbSHUEDeJ6Y=; b=H
-	4dZEI47ysOkjq2nt2vaVeH59o2igH7ym38HY80DnZ+V4Gzm0/3n4KSbUVTVOSsEz
-	4QUoO+0/MtDdhh9xjY6g8CXb8BHECm3+l7pXUrU1amejdQe6oqpYNMts7amWtABu
-	VabSbjvfTfU2NOMwuZTekoLsz8h24rxTfSR5gIeExI=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-102 (Coremail) ; Tue, 10 Dec 2024 08:50:51 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 10 Dec 2024 08:50:51 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "Daniel Semkowicz" <dse@thaumatec.com>, 
-	"Diederik de Haas" <didi.debian@cknow.org>, andy.yan@rock-chips.com, 
-	Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, 
-	conor+dt@kernel.org, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, jernej.skrabec@gmail.com, 
-	jonas@kwiboo.se, krzk+dt@kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	neil.armstrong@linaro.org, quentin.schulz@cherry.de, 
-	rfoss@kernel.org, robh@kernel.org, tzimmermann@suse.de
-Subject: Re:Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
+	id 1tKoeH-00000009m60-1vFj;
+	Tue, 10 Dec 2024 01:02:49 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKodD-00000009lyw-28SU
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Dec 2024 01:01:45 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-540254357c8so365309e87.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 09 Dec 2024 17:01:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733792502; x=1734397302; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=L3LcvQjrTDMU2Xstb8PTcViDl9lW1bNhQu6ciqVQKbE=;
+        b=Oh6E0liO0aPSe+tYS7W8cPq+2Qw4VKSclH0sT9BK3bHFGfXeiiMyZ3lPxsVoLQ6mxG
+         Cn5y1CkD9okx3p9OkiKRwvgFbdzRGBC87u8gfUosudJVsn/0/G37NjfrOSQ0TXDmnRqM
+         bE+Y6Rbp4w/lVMygEWNLpBBqoAXx0KOciqZrP0L+YutjAfak4nFMldLy/rgldmXvdv0B
+         2K4hg+lTa/ZTBuL+i+eQqiuar6NjrZpkkd47RNqq+lNLbI9ilMDK/1vGr76ECqTWWInm
+         /20e4dIZZdbkkKpwUpvqaNlaDuo53HpBbT5NtpLvbkKuHa38NsL1/NwMfU9yeDbMLT5J
+         N0ZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733792502; x=1734397302;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=L3LcvQjrTDMU2Xstb8PTcViDl9lW1bNhQu6ciqVQKbE=;
+        b=TwOVKCx0BDlMnqBzesTE3pWpL5hiddcHiMGhFzWg9xKVY9gxjpehDvmlHILs5OTt3O
+         qI//iXWdeProOn38iIa6h3l0WzGr4NkAS5zHuBL3NlPEt5rmRC1o5ivrS6kZpHjQCsds
+         Yg8wNSiT35ngV27MoV6hkkLRqBGBQOOiVK+eCFKdeoZu7ZwLrQRe5LACjw2v7CeylxWI
+         VxKCJSNIP7mkWWWtP8OGlVt6Lr9sgaU/Q9B2+uQDE1BoEkbZdszYkOm2al6InUrGI+kr
+         dfEYzSGcm5bFf48wWzL/a3PNlMCJZvhsgHIimqtfv3Kqz8G5rdO46xpdf7EOp5KWptoo
+         5qlw==
+X-Forwarded-Encrypted: i=1; AJvYcCVQP7NFm6ZOZJvZS38zSObtJPiXCnYhgLDz6Sdzvjg/dfmbwr9flXoBVKCbxQq9YfbE3ELEKdG4ZvoAxuxafQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwD/ZwxkjRAVaAF6Bf1hQEuzvEdxFDzKTxm2yp5mF/eKgm/i4HX
+	VzghbUCJuisdjLD368BDGpdJyGZgbQGY6i/g5vwe4eJRS5Nxf2IOqU/nVZdje/M=
+X-Gm-Gg: ASbGncv1ZekM3T2g937GTJONjkDQ18zqwhEeI5d0CGkSKsf9ZbZ9I3XZMBovp43+R/O
+	49vs/cMCV5Etp8kms/An2UVRyhhsr3cFHOV6WDK14f6/sVquekdo0DPNZhp+e09p7BQStycTBnI
+	k1kcLsxnp1H+hkPlvGtHh/aklxr+UXLNkgTxTrXKiYf6eMiZW/nb5FLrEPqrjZyRZkXyyAbOBQ2
+	GKQQsCVALuCoC7N3nOHr6qtSf5yJyNf0jUSW1hhN3usWftYgeQsZf/fCHQ7IdqCI6BnIarlXA5v
+	wwiALT/N3CzKunnZd0ucAAvJe/LfOq2bzw==
+X-Google-Smtp-Source: AGHT+IGILM694LFfCANVTXh/z3425jGIXUHVbOTTzyrGuCY/MpJfTZw0o+GZqr4bkrlnIoLzl3nnUg==
+X-Received: by 2002:a05:6512:3b89:b0:53e:239b:6097 with SMTP id 2adb3069b0e04-54024115ffdmr968809e87.50.1733792501835;
+        Mon, 09 Dec 2024 17:01:41 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53e3ab8dd61sm919009e87.44.2024.12.09.17.01.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Dec 2024 17:01:40 -0800 (PST)
+Date: Tue, 10 Dec 2024 03:01:38 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Andy Yan <andyshrk@163.com>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Daniel Semkowicz <dse@thaumatec.com>, Diederik de Haas <didi.debian@cknow.org>, 
+	andy.yan@rock-chips.com, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, 
+	conor+dt@kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	jernej.skrabec@gmail.com, jonas@kwiboo.se, krzk+dt@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, neil.armstrong@linaro.org, 
+	quentin.schulz@cherry.de, rfoss@kernel.org, robh@kernel.org, tzimmermann@suse.de
+Subject: Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
  controller
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <2203458.KiezcSG77Q@diego>
+Message-ID: <ay5hbnqqjhopaqof6z7j2rzm2bc6xa2vbzan2ak3if6wzmyip2@kqh7gtrajnm2>
 References: <20241203165450.1501219-1-heiko@sntech.de>
  <20241209150619.33998-1-dse@thaumatec.com>
- <D67AV178CEBD.3QA9VD4ZPRNQ1@cknow.org> <2203458.KiezcSG77Q@diego>
-X-NTES-SC: AL_Qu2YAfuSvkAu5yOeZOkZnEobh+Y5UcK2s/ki2YFXN5k0tCTI0SYQW29KGUD2y86DDiKsoAirUQVL5MpFRpJHY460ozr25CzPaQGPdj10sTtO
+ <D67AV178CEBD.3QA9VD4ZPRNQ1@cknow.org>
+ <2203458.KiezcSG77Q@diego>
+ <4e015ea9.960.193ae0c236a.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
-Message-ID: <4e015ea9.960.193ae0c236a.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZigvCgAXlJxrkFdn5vA6AA--.43974W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwmxXmdXikRb2gADsp
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <4e015ea9.960.193ae0c236a.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_165215_687137_0A5675E7 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20241209_170144_359691_A4F06B53 
+X-CRM114-Status: GOOD (  21.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +104,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIaSwKCkF0IDIwMjQtMTItMTAgMDc6MTI6MjYsICJIZWlrbyBTdMO8Ym5lciIgPGhlaWtvQHNu
-dGVjaC5kZT4gd3JvdGU6Cj5BbSBNb250YWcsIDkuIERlemVtYmVyIDIwMjQsIDE3OjExOjAzIENF
-VCBzY2hyaWViIERpZWRlcmlrIGRlIEhhYXM6Cj4+IEhpLAo+PiAKPj4gT24gTW9uIERlYyA5LCAy
-MDI0IGF0IDQ6MDYgUE0gQ0VULCBEYW5pZWwgU2Vta293aWN6IHdyb3RlOgo+PiA+IE9uIDAzLjEy
-LjI0IDIxOjU0LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4gPiA+IFRoaXMgc2VyaWVzIGFkZHMg
-YSBicmlkZ2UgYW5kIGdsdWUgZHJpdmVyIGZvciB0aGUgRFNJMiBjb250cm9sbGVyIGZvdW5kCj4+
-ID4gPiBpbiB0aGUgcmszNTg4IHNvYyBmcm9tIFJvY2tjaGlwLCB0aGF0IGlzIGJhc2VkIG9uIGEg
-U3lub3BzaXMgSVAgYmxvY2suCj4+ID4gPiAKPj4gPgo+PiA+IEkgZGlkIG1vcmUgdGVzdHMgd2l0
-aCBkaWZmZXJlbnQgTFZEUyBkaXNwbGF5cy4gSSB0ZXN0ZWQgZm9sbG93aW5nCj4+ID4gY29uZmln
-dXJhdGlvbnMgd2l0aCBEU0kvTFZEUyBicmlkZ2U6Cj4+ID4gLSAxMDI0eDYwMEA2MC4wMQo+PiA+
-IC0gMTAyNHg3NjhANjAuMDIKPj4gPiAtIDEyODB4ODAwQDYwLjA3Cj4+ID4gLSAxMzY2eDc2OEA2
-MC4wNgo+PiA+Cj4+ID4gQWxsIG9mIHRoZW0gd29ya2VkIHdpdGhvdXQgaXNzdWVzLCBleGNlcHQg
-MTM2Nng3NjguCj4+ID4gV2l0aCB0aGlzIHJlc29sdXRpb24sIHZpZGVvIGlzIGJsdXJyeSwgYW5k
-IG9mZnNldCBpbmNvcnJlY3RseQo+PiA+IHRvIHRoZSBsZWZ0LiBUaGVyZSBhcmUgYWxzbyByZXBl
-YXRpbmcgZXJyb3JzIG9uIHRoZSBjb25zb2xlOgo+PiA+Cj4+ID4gICByb2NrY2hpcC1kcm0gZGlz
-cGxheS1zdWJzeXN0ZW06IFtkcm1dICpFUlJPUiogUE9TVF9CVUZfRU1QVFkgaXJxIGVyciBhdCB2
-cDMKPj4gPgo+PiA+IEluIGNvcnJlY3Qgb3BlcmF0aW9uIHdpdGggb3RoZXIgcmVzb2x1dGlvbnMs
-IHRoZXJlIGlzIG5vIGVycm9yLgo+PiA+IEkgYW0gbm90IHN1cmUgaWYgdGhpcyBpcyBhIHByb2Js
-ZW0gaW4geW91ciBzZXJpZXMgb3IgcmF0aGVyIGluIFZPUDIKPj4gPiBkcml2ZXIuCj4KPlRoaXMg
-cmVhbGx5IHNvdW5kcyBsaWtlIHNvbWV0aGluZyBpcyB3cm9uZyBvbiB0aGUgdm9wIHNpZGUuCj5U
-aGUgaW50ZXJydXB0IGlzIHBhcnQgb2YgdGhlIHZvcCwgdGhlIGRpdmlzYWJsZSBieSA0IHRoaW5n
-cyBsaWtlbHkgdG9vLgoKVGhpcyBpcyBhIGhhcmR3YXJlIGxpbWl0YXRpb24gb24gdm9wIHNpZGU6
-ClRoZSBob3Jpem9udGFsIHJlc29sdXRpb24gbXVzdCBiZSA0IHBpeGVsIGFsaWduZWQuCgoKCj4K
-Pgo+SGVpa28KPgo+Cj4+IAo+PiBPbiBteSBQaW5lVGFiMiBJIGdvdCBzaW1pbGFyIG1lc3NhZ2Vz
-IGFib3V0IDIgd2Vla3MgYWdvOgo+PiByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IFtk
-cm1dICpFUlJPUiogUE9TVF9CVUZfRU1QVFkgaXJxIGVyciBhdCB2cDEKPj4gCj4+IFByZWNlZGlu
-ZyB0aG9zZSwgSSBnb3Qgc2V2ZXJhbCBwYW5mcm9zdCByZWxhdGVkIGVycm9yczoKPj4gCj4+IHBh
-bmZyb3N0IGZkZTYwMDAwLmdwdTogZ2V0IGNsb2NrIGZhaWxlZCAtNTE3Cj4+IHBhbmZyb3N0IGZk
-ZTYwMDAwLmdwdTogY2xrIGluaXQgZmFpbGVkIC01MTcKPj4gcGxhdGZvcm0gZmRlNjAwMDAuZ3B1
-OiBkZWZlcnJlZCBwcm9iZSBwZW5kaW5nOiAocmVhc29uIHVua25vd24pCj4+IHBsYXRmb3JtIGNw
-dWZyZXEtZHQ6IGRlZmVycmVkIHByb2JlIHBlbmRpbmc6IChyZWFzb24gdW5rbm93bikKPj4gdmRk
-X2dwdV9ucHU6IGRpc2FibGluZwo+PiAKPj4gQnV0IGNhbiBhbHNvIGJlIHRoYXQgdGhlIFBpbmVU
-YWIyIChsaWtlbHkpIG5lZWRzIHJlZ3VsYXRvci1hbHdheXMtb24KPj4gYW5kIHJlZ3VsYXRvci1i
-b290LW9uIGluIGl0cyB2ZGRfZ3B1X25wdSBub2RlLgo+PiAKPj4gPiBJIHRyaWVkIHRvIHRyYWNr
-IGRvd24gdGhlIHByb2JsZW0sIGFuZCBpdCBzZWVtcyB0byBiZSBhIGdlbmVyaWMgaXNzdWUKPj4g
-PiB3aGVuIGhvcml6b250YWwgbGluZSB3aWR0aCBpcyBub3QgZGl2aXNpYmxlIGJ5IDQuCj4+ID4g
-TG93ZXJpbmcgbGluZSB3aWR0aCB0byAxMzY0cHggZml4ZXMgdGhlIGlzc3VlLCBidXQgb2YgY291
-cnNlIEkgaGF2ZSB0d28KPj4gPiB2ZXJ0aWNhbCBsaW5lcyBvZiBibGFjayBwaXhlbHMgb24gdGhl
-IHJpZ2h0Lgo+PiA+IEkgYWxzbyBtYWRlIHNvbWUgdGVzdHMgd2l0aCA3MjB4MTI4MCBEU0kgZGlz
-cGxheS4gTG93ZXJpbmcgaG9yaXpvbnRhbAo+PiA+IGxpbmUgdG8gNzE4cHggc2hvd3MgdGhlIHNh
-bWUgcHJvYmxlbS4gV2l0aCA3MjBweCBhbmQgNzE2cHggaXQgd29ya3MKPj4gPiBjb3JyZWN0bHku
-Cj4+IAo+PiBJIGhhdmVuJ3QgbG9vayBmdXJ0aGVyIGludG8gaXQsIGJ1dCB0aGUgUFQyIGhhcyBh
-IDEyODB4ODAwIHJlc29sdXRpb24uCj4+IAo+PiBIVEgsCj4+ICAgRGllZGVyaWsKPj4gCj4KPgo+
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Dec 10, 2024 at 08:50:51AM +0800, Andy Yan wrote:
+> =
+
+> =
+
+> Hi,
+> =
+
+> At 2024-12-10 07:12:26, "Heiko St=FCbner" <heiko@sntech.de> wrote:
+> >Am Montag, 9. Dezember 2024, 17:11:03 CET schrieb Diederik de Haas:
+> >> Hi,
+> >> =
+
+> >> On Mon Dec 9, 2024 at 4:06 PM CET, Daniel Semkowicz wrote:
+> >> > On 03.12.24 21:54, Heiko Stuebner wrote:
+> >> > > This series adds a bridge and glue driver for the DSI2 controller =
+found
+> >> > > in the rk3588 soc from Rockchip, that is based on a Synopsis IP bl=
+ock.
+> >> > > =
+
+> >> >
+> >> > I did more tests with different LVDS displays. I tested following
+> >> > configurations with DSI/LVDS bridge:
+> >> > - 1024x600@60.01
+> >> > - 1024x768@60.02
+> >> > - 1280x800@60.07
+> >> > - 1366x768@60.06
+> >> >
+> >> > All of them worked without issues, except 1366x768.
+> >> > With this resolution, video is blurry, and offset incorrectly
+> >> > to the left. There are also repeating errors on the console:
+> >> >
+> >> >   rockchip-drm display-subsystem: [drm] *ERROR* POST_BUF_EMPTY irq e=
+rr at vp3
+> >> >
+> >> > In correct operation with other resolutions, there is no error.
+> >> > I am not sure if this is a problem in your series or rather in VOP2
+> >> > driver.
+> >
+> >This really sounds like something is wrong on the vop side.
+> >The interrupt is part of the vop, the divisable by 4 things likely too.
+> =
+
+> This is a hardware limitation on vop side:
+> The horizontal resolution must be 4 pixel aligned.
+
+Then mode_valid() and atomic_check() must reject modes that don't fit.
+
+> =
+
+> =
+
+> =
+
+
+-- =
+
+With best wishes
+Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
