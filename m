@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2895FE7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 23:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DDBCE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 23:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3z+D8Zoo3g1V9Swr8K1ErRBJrOMNnJ/fl54MuSztER8=; b=fGW/DsTcBvEp4/
-	zlyDsp8n8gfrC6XLzW10ZfvFgryJSTrrJFIiQPOC6XH1l9yxDWFIbQbWXMkwmYvSUc2KrKV19z1bH
-	YYo4m66OHl4iWguuUAxQG9yh9tQ9Mfi65tiFn7VI55610yVak9EA6vZ/2ogglP4JmbAxqZKWfPtl3
-	RaXn38WI3N5sJw8R/xb0gW04szAJkIxR2y05S5EbbBqtdq5EMIG3pLlTqzs5lJXo6qGX/08dwrJLH
-	+LSnvcOXFGzkSaiCC/PH4jpUuLpqXo8/HAgh+cHHfobfgCOCDH4WbZAuw184RzDhcxHePG58uXXoa
-	vuezWtv7D67ljDCPiHBQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7U98TCrWovMSgZARFgTThvvS9psACU6QISkDVrWJocQ=; b=D+5PtGPVl0bPiS/8V9kI1xcTTG
+	696zOv/kBodpjbOuPTlNksyqJNNEKi+Q0p/8mrR1+5uIqrp2bQfDRNrkM3QxU3U8m/m+vPCPjbtW9
+	NYHInZ/WuzcaX7ULamWH+WpgeNKEAVR9SFhJT1wrA41rHmLAvQPSHsEVGroSkp/5lA7Fwz1rsL4iS
+	wiS5BdBxrNW9HmBRIknGBbDc/0Oq+I4fyAvnzIdGiQSUrP8mI91qXCHaqkPOdSRacGK76FNdY1Ra5
+	ad6B+TSVu7Dn5A6wAP2gGLpyL6Q7hIAq1rWVU0l9o9jTPCNf6TJcVxeAfkgIh0d9wmEKMa+HohNFp
+	mss1h8hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL9PA-0000000D7ig-1Dw8;
-	Tue, 10 Dec 2024 23:12:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tL9RD-0000000D8Et-3rdY;
+	Tue, 10 Dec 2024 23:14:43 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL9K0-0000000D6Nr-27nb;
-	Tue, 10 Dec 2024 23:07:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733872031;
-	bh=tG+zEB9hq2JUdiypa3J0UW/bkrCDojHcflJ5SShtQyU=;
-	h=From:Subject:Date:To:Cc:From;
-	b=N0sZit+XfJbADE8Df1vccR7w7qaJ0F2CVsi5uewEobNB/2/N5dLLjdxhmASn5OgTg
-	 BJpvHwJRGPCvc1RcML7+PabPEXUgZ0AkTJhc3qTp62ispPwA5BN9OOwxtVAMVgKPYm
-	 5LgB9LlsgSY0RzqBmYLktzuzPaoM8BwrWcOZQz1iePLHs+KFQDbunm33vbs6mr2U4G
-	 lYpyoTFLsPGI+WIm7aJGYoHDi0ItzxkSQ6G2T48u1cHXe9LlgK4bh5E8V8JS8qrqZb
-	 9ansLj0NeBkKnZwL7FaX1GHS+jJpOpQjMjJ4a5MAQGko92RlnlLokWvcp185F1pxQz
-	 qqp/C7bX8VW3w==
-Received: from localhost (unknown [188.27.48.199])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 747F317E09AF;
-	Wed, 11 Dec 2024 00:07:11 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v2 0/4] Add support for HDMI1 output on RK3588 SoC
-Date: Wed, 11 Dec 2024 01:06:13 +0200
-Message-Id: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com>
+	id 1tL9Lg-0000000D6zL-0pkU;
+	Tue, 10 Dec 2024 23:09:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1733872126; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Jmd+5/qbY5GUV3MOzpohOMMqts6u+ys1LDBxEUaltkIDYgMq6Tk0zL9WKl/Q9yS3OzgSdbI6XJuIuFk0bMDn/lqaDhYvWZ2knW8f6uNvTArj+s7gbmUmlK4SdommoJ4YwiYlRW0XfOJNYx4DJmuKdWaee39JLgZzycrJoi6n/dE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1733872126; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gvq7gI8RNb3ICQbqC2EfSBDJrqnm4n1+J8nOiqfy3lQ=; 
+	b=K6cGwSI4CbELl1l4nugQMy9xuXMiKrxN3Fl0To5rjaksYSwnMEKvgotQN41IVxvPt2Es7cBxYq15284bWWClBlx0Y0T1TZAv6sUxIc5bHPuxIjQvJHlVN0BBl5D3gTN/+PY+b1IBGTGR9mCVSWm9N+gGMByPcSlry5f9uiUSCSs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1733872126;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=gvq7gI8RNb3ICQbqC2EfSBDJrqnm4n1+J8nOiqfy3lQ=;
+	b=FCCleR/WnMb963PKCB9u3gzKwI94hDrV38Lb8WuvG5CaGKwvUH0nRkfGOS+vBuZu
+	mPL+ii5FLdLrCbb/51VEciawQU6EC5ty9RrrD0lj6xDAPgjcJRkM1a5sIWSAbTnj2vu
+	T48zsW8qtMIungo+7xAIo+gPdr+t2hnkYmE9+4g4=
+Received: by mx.zohomail.com with SMTPS id 1733872124346453.90991571903544;
+	Tue, 10 Dec 2024 15:08:44 -0800 (PST)
+Received: by mercury (Postfix, from userid 1000)
+	id 2E0C110604B1; Wed, 11 Dec 2024 00:08:40 +0100 (CET)
+Date: Wed, 11 Dec 2024 00:08:40 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: Add USB-C support to ROCK 5B
+Message-ID: <5mjjq3f3tqu4h2f7wbdcfon6csfsuxge5skr6mmgozvq65uods@66yx7yuefzqn>
+References: <20241210163615.120594-1-sebastian.reichel@collabora.com>
+ <6A24DF29AE2F3CDC+70602cc7-2c03-470d-955f-06b2db116e20@radxa.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGXJWGcC/3XMSw7CIBSF4a00dywGKJW2I/dhOuBVubEtBgzRN
- Oxd7Nzhf5Lz7ZBcRJdgbHaILmPCsNXgpwaMV9vdEbS1gVMuGKeSxEfb9T3xdkVGJBVGa2ms7Ga
- ol2d0M74P7jbV9pheIX4OPbPf+gfKjFBiVKuGQYuLEvRqwrIoHaI6m7DCVEr5ArNct7SsAAAA
-X-Change-ID: 20241207-rk3588-hdmi1-704cbb7cd75f
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: Alexandre ARNOUD <aarnoud@me.com>, kernel@collabora.com, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org
-X-Mailer: b4 0.14.2
+In-Reply-To: <6A24DF29AE2F3CDC+70602cc7-2c03-470d-955f-06b2db116e20@radxa.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/233.827.1
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_150716_722901_8842B443 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20241210_150900_285487_E084425F 
+X-CRM114-Status: GOOD (  37.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +78,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4998255293640177388=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The patches provide the basic support to handle the second HDMI output
-port found on Rockchip RK3588 SoC.
 
-For now I enabled it on Radxa ROCK 5B only, the board I've been using to
-validate this.
+--===============4998255293640177388==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="537dfqts2is22e64"
+Content-Disposition: inline
 
-** IMPORTANT **
 
-The series has a runtime dependency on "phy: phy-rockchip-samsung-hdptx:
-Don't use dt aliases to determine phy-id", a patch submitted recently by
-Heiko [1].  Without applying it, the functionality on both HDMI TX ports
-will break.
+--537dfqts2is22e64
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: Add USB-C support to ROCK 5B
+MIME-Version: 1.0
 
-Furthermore, please note this is subject to the same limitations as
-HDMI0 when it comes to the supported display modes.  The fixes provided
-via [2] are not applicable to HDMI1, hence I will handle it separately
-as soon as all dependencies are merged.
+Hello Naoki,
 
-Thanks,
-Cristian
+On Wed, Dec 11, 2024 at 07:10:55AM +0900, FUKAUMI Naoki wrote:
+> Hi Sebastian,
+>=20
+> Thank you very much for your work!
+>=20
+> $ cat /sys/class/power_supply/tcpm-source-psy-4-0022/{current_max,current=
+_now,online,type,usb_type,voltage_max,voltage_min,voltage_now}
+> 1500000
+> 1500000
+> 1
+> USB
+> C [PD] PD_PPS
+> 20000000
+> 20000000
+> 20000000
+>=20
+> $ cat /sys/class/power_supply/tcpm-source-psy-4-0022/{current_max,current=
+_now,online,type,usb_type,voltage_max,voltage_min,voltage_now}
+> 5000000
+> 5000000
+> 1
+> USB
+> C PD [PD_PPS]
+> 20000000
+> 20000000
+> 20000000
+>=20
+> $ ls /sys/class/udc/
+> fc000000.usb
+>=20
+> I can configure it as CDC-NCM and host detects it.
+> But I could not use it as a HOST port. How to use it?
 
-[1] https://lore.kernel.org/lkml/20241206103401.1780416-3-heiko@sntech.de/
-[2] https://lore.kernel.org/all/20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com/
+You can switch between host and peripheral for Type-C ports like
+this depending on the remote sides capabilities:
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
-Changes in v2:
-- Override hdmi1 pinctrl-0 on rock-5b as it requires hdmim0_tx1_cec
-  instead of hdmim2_tx1_cec (fixes a pin conflict when enabling
-  CONFIG_SPI_ROCKCHIP_SFC)
-- Link to v1: https://lore.kernel.org/r/20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com
+ * echo host > /sys/class/typec/<port>/data_role
+ * echo device > /sys/class/typec/<port>/data_role
 
----
-Cristian Ciocaltea (4):
-      drm/rockchip: dw_hdmi_qp: Add support for RK3588 HDMI1 output
-      arm64: dts: rockchip: Add PHY node for HDMI1 TX port on RK3588
-      arm64: dts: rockchip: Add HDMI1 node on RK3588
-      arm64: dts: rockchip: Enable HDMI1 on rock-5b
+I tested this with a USB-C hub connected to the port, which works
+in host mode.
 
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi  |  62 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts |  44 ++++++++-
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c  | 119 +++++++++++++++++++-----
- 3 files changed, 200 insertions(+), 25 deletions(-)
----
-base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
-change-id: 20241207-rk3588-hdmi1-704cbb7cd75f
+> some minor nitpick is below:
+>=20
+> On 12/11/24 01:36, Sebastian Reichel wrote:
+> > Add hardware description for the USB-C port in the Radxa Rock 5 Model B.
+> > This describes the OHCI, EHCI and XHCI USB parts, but not yet the
+> > DisplayPort AltMode (bindings are not yet upstream).
+> >=20
+> > The fusb302 node is marked with status "fail", since the board is usual=
+ly
+> > powered through the USB-C port. Handling of errors can result in hard
+> > resets, which removed the bus power for some time resulting in a board
+> > reset.
+> >=20
+> > The main problem is that devices are supposed to interact with the
+> > power-supply within 5 seconds after the plug event according to the
+> > USB PD specification. This is more or less impossible to achieve when
+> > the kernel is the first software communicating with the power-supply.
+> >=20
+> > Recent U-Boot (v2025.01) will start doing USB-PD communication, which
+> > solves this issue. Upstream U-Boot doing USB-PD communication will also
+> > set the fusb302 node status to "okay". That way booting a kernel with
+> > the updated DT on an old U-Boot avoids a reset loop.
+> >=20
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >   .../boot/dts/rockchip/rk3588-rock-5b.dts      | 121 ++++++++++++++++++
+> >   1 file changed, 121 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm=
+64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > index d597112f1d5b..cb5990df6ccb 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > @@ -5,6 +5,7 @@
+> >   #include <dt-bindings/gpio/gpio.h>
+> >   #include <dt-bindings/leds/common.h>
+> >   #include <dt-bindings/soc/rockchip,vop2.h>
+> > +#include <dt-bindings/usb/pd.h>
+> >   #include "rk3588.dtsi"
+> >   / {
+> > @@ -84,6 +85,15 @@ rfkill-bt {
+> >   		shutdown-gpios =3D <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+> >   	};
+> > +	vcc12v_dcin: regulator-vcc12v-dcin {
+> > +		compatible =3D "regulator-fixed";
+> > +		regulator-name =3D "vcc12v_dcin";
+>=20
+> typec_vin by schematic.
 
+Ack. Will update in v2.
+
+> > +		regulator-always-on;
+> > +		regulator-boot-on;
+> > +		regulator-min-microvolt =3D <12000000>;
+> > +		regulator-max-microvolt =3D <12000000>;
+> > +	};
+> > +
+> >   	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
+> >   		compatible =3D "regulator-fixed";
+> >   		enable-active-high;
+> > @@ -142,6 +152,7 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+> >   		regulator-boot-on;
+> >   		regulator-min-microvolt =3D <5000000>;
+> >   		regulator-max-microvolt =3D <5000000>;
+> > +		vin-supply =3D <&vcc12v_dcin>;
+>=20
+> typec_vin.
+>=20
+> >   	};
+> >   	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
+> > @@ -264,6 +275,67 @@ regulator-state-mem {
+> >   	};
+> >   };
+> > +&i2c4 {
+> > +	pinctrl-names =3D "default";
+> > +	pinctrl-0 =3D <&i2c4m1_xfer>;
+> > +	status =3D "okay";
+> > +
+> > +	usbc0: usb-typec@22 {
+>=20
+> Is "usbc0" label necessary?
+
+no, but does it hurt?
+
+> > +		compatible =3D "fcs,fusb302";
+> > +		reg =3D <0x22>;
+> > +		interrupt-parent =3D <&gpio3>;
+> > +		interrupts =3D <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
+> > +		pinctrl-names =3D "default";
+> > +		pinctrl-0 =3D <&usbc0_int>;
+>=20
+> cc_int_l by schematic.
+
+Ack. I intentionally switched away from this naming, since cc prefix
+is imho a way worse prefix than usbc0. The _l suffix just means
+active low, which is already encoded in DT.
+
+But I don't have a strong opinion and can fix this in v2.
+
+> > +		vbus-supply =3D <&vcc12v_dcin>;
+>=20
+> typec_vin
+>=20
+> > +		/*
+> > +		 * When the board is starting to send power-delivery messages
+> > +		 * too late (5 seconds according to the specification), the
+> > +		 * power-supply reacts with a hard-reset. That removes the
+> > +		 * power from VBUS for some time, which resets te whole board.
+>=20
+> ... resets "the" whole board.
+
+Ack.
+
+>=20
+> > +		 */
+> > +		status =3D "fail";
+> > +
+> > +		usb_con: connector {
+>=20
+> Is "usb_con" label necessary?
+
+No. It should either be changed to "usbc0_con" or removed. In
+general I tend to add some labels when they might be needed by
+something in the future. They are more or less free anyways.
+
+-- Sebastian
+
+--537dfqts2is22e64
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdYye4ACgkQ2O7X88g7
++po8DxAAh/1GXsz90nU45/Kz30iOTPZiGT1VVldlfDiY3WfjReQOG0Z/gUEOwwb/
+cF+IqdzCUkdI96EPpWlrz9mAxKhpn/wSVSIWEmeRzQ66ynwSWrLHGjL8QkQyqsnX
+gJvjTbhLr9NJNPqc7/iFX2NFpjIdCPqCnNOLcb2M68SQo5yyTYIc+3K+6b9PeUau
+U5WOmbSSLa1GmSaG6OcYDZkc6YuntD66cY3Vn9UDVoaW0NWcvW92cqSHH5Gz3enU
+jp9Ha+GiR2tHPqbtKUe1+H0mGZUMP5XqvnA4ychh0YH6tertPI8OLJiLAC1PaRnk
+9X0AHlvTC7pF29KF87l6qyhFGliYb1KAc8hMewqcJhxKqPgV+PzlXIIPALanwQqX
+YKmi0/JFCj1xvkXwuENAJe9LyqdIoAm2JRz7AclNnScsBhoZQpk8X3GAMp2eDHAy
+1ucrC+yZslHmZiFZ/k5T9s4s0GuW7v/sM5tmRyz1w02fUI0q+7cm1VkJdNzpNBrZ
+onEwZTvTxIAtaCzRnVWXb63xlu4PyYN2G5L5OXcVPlb9jP7eJwwHgVozmgu/e702
+4sMnzuF+yBBK+C4+Sh6DXYjsCJF6lwI+Kqmfl010Ax6fqB4WzR4skDxUSmZlcuau
++L7mxsMwziz5ARmjjbiRn4KP3ObCc9/CsHICn8+hyyaKurLj3BI=
+=2Cci
+-----END PGP SIGNATURE-----
+
+--537dfqts2is22e64--
+
+
+--===============4998255293640177388==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4998255293640177388==--
+
