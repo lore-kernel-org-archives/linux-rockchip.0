@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DA1E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 11:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E8CE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 12:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C25PVZ/zda/Fi1XZ/tRxg9QwQ31nHHhimDbevvmsBaw=; b=jtba9x6of+ocTI
-	CUDOlHl53deLB4UDSQuV9z/DJTVCijqqttXO7rF9iltlw3o6iC/38jDek+VZOUuwxZcLmbr9ZWiwo
-	hFf+WAcGtXAnXiJHJubFFVqXFvzzXpIC+MdJ9M+IJvluTQuWxdYddNlBZCU+7E6doQfF4KxhOwAcD
-	UGD7OZLBJYlPk8pZB3PJVaZJhTLJ4rWn5AJ9LtmIWvBBdDEfuFuP0/Nw4ty48JC0npxR7Lgz64e5J
-	bjgDu4X6szIubv7hOxDmOB/R8+LDaj1+Vx92d4Nraae0EHJ+eACVjzLI/7gW7Id7HHc8fKyabiGoB
-	Vvv5foRAGEpdSXc9kxng==;
+	List-Owner; bh=kRv+zmdwNVo5tHKpyS8kCIeUOuudGMwR0vd6bspcziU=; b=G2WcisilG9plNd
+	j5jLnGcfT9mSGHUkx0khfkimz70k3po2Z2W3YmqNdvCOQqCMohhzP2kpuUsf2TKoJcPcpHt5xBAoM
+	hERG4wM4jE/GDtB+OT+Ux7u/iUVoV3xAE0JMu58ysEGfwmgogXa7qNnGmzrx7aEkhbPa9O0uoGecb
+	qpAyXwjjPDGwUDCE7l6SZ4vLSrvGnzUgnCHYlCtfVkJJa8ApaFQJbyisrhuBacfF6fuEwU2S8c93H
+	fFAy5Ek5LBiWX/3ERIFde1QQe27FvHyFdy6smUa8LjF6njDRIm7c/k5HIZ7ctuc+rI+x8/5Iv64SV
+	lbs7bCDS95ha/Te4cToQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKytK-0000000BMxU-3b2l;
-	Tue, 10 Dec 2024 11:59:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tKzQT-0000000BRSD-37TF;
+	Tue, 10 Dec 2024 12:33:17 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKysG-0000000BMl3-2BTG;
-	Tue, 10 Dec 2024 11:57:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=KbVJw5J4GWJ01T8kGIEWydEYZvhCAGIPzpK/iHXKbT8=; b=RuEz1aVQq20Lt9i1RM6zkuMFJP
-	E7gWUPReBqKH8hpAFsniOi4v/LpHXv3Huxx0sfQy6a6Wv4J8NoiuKlL56oJ3qoVXx8FhEKY6PMtJN
-	ZlEeAarE6zVUMWD2bArovq74ytqUrvtYhvxy66Wh7mwUtEnrz0Sz1Iqu5xioV064XpTb4dBa3HR2l
-	LL3z9/hSMcy+0EdyOgpDFDzVLZ0qHW7r4Rn4bBa4SO0AtawcKWHheuFdCZHHYXM2p/E2Ucn2vedyZ
-	C7JA5VBytM4DCLM+U8MgACvIs57uqQXQFYUli/U7BKzTLVA0bNP3xs9OQFSM8Jbttbyl1OFEz0VDU
-	e+IKUKqA==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tKys5-00058v-Pm; Tue, 10 Dec 2024 12:57:45 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+	id 1tKzPN-0000000BRDe-2X6R
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Dec 2024 12:32:12 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-3022c6155edso11964141fa.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Dec 2024 04:32:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733833927; x=1734438727; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=xFyd1PgF3D2/xwv+F2WOR3tO3r6sjTbGoWT6Q3TM8dg=;
+        b=uZzlRtaR3RiOylC+xT3J3sBW4qOAR4MR5Vsu5gAL+ck96jpj9O9GxYDZmhg7mQ8nFR
+         k51oH6xUQK/GNaRzfFV1VSAGuqCgsoYQpi39wSk0IzAYLqbP3+q/5rlO6eVcIKkZNlmm
+         sreXuhc0l3gzGsp3EFIKOQtcDP/nUmEwHEmUGGiMIg9saN2Y7GhTMBLJCsHPvF1a1G7G
+         5cvPsdu0hTmgbdjXdpmyk4KsR5U4aeaUvxGl6lJ4qIbZ3A2FVTqGU0coC61ldGH/6aoJ
+         T3B3lJ9dk/6Hd40ACm+pqRv45pjI6gEz7VA8/naaUcGx3v+TJRODAK6tJx5on9X7gZC5
+         k28Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733833927; x=1734438727;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xFyd1PgF3D2/xwv+F2WOR3tO3r6sjTbGoWT6Q3TM8dg=;
+        b=CqUtFaAl4uq87/C+1acAGo7wPJUz4sy5+fA6xNYsBh4pgDZvJz/qzAAKFvoPiRdU45
+         FOpJFk9SDXpzdfa2/5CUMuAv98lTsmu8xI2+xnmCqhzG8B4V8hQket9pJXkR7dPfBjVl
+         DdyZQ5COtHE/lQWjy21tGDVdbzQW+e6cNs+vcImGnwLfmNhyMvcjcXsx2kTl0s9uSOt5
+         g33GYgT4rYNeWcaGXF6v1VxzdpFF4L3kvVvDF+74woGtqG4MIG9EZTVHuZOPkRe2S3Ps
+         kdaW6MUASsvyu9tNI5t3uBlmrdObsHl6GB+W8Q6/letUnoLdknTmX3UQR50J9XXg+fxw
+         YnOw==
+X-Forwarded-Encrypted: i=1; AJvYcCVF7E8PFYBcjC+VWgofobod/RMN4Vr23mdLh+2YI9akK16fS9pq+/PWLOrzWKh9YfxvrVFMpCSvnvsFV2o8QA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4VQOzqRtMHJoz+ZLCoIzlVAPuMkPeX10L9w/d/nvUdOfEO8bX
+	mGx32qhpMUpraXMRFcES1mBlDDLLMuebRM/gRvTmif9sCeNbZGNmN1MNoxIjJzQ=
+X-Gm-Gg: ASbGncsC63Jz7Li+sGSSsKBzEcKw3YqQMayCLL1KfL7rubhqZYLVfqZcGFHui0l7AFE
+	aJsswiI6c7iAcd1sDi7pqE2IYbBYV9GQUt7eShxoiVRCuUMF+HXQWwOJN5cEXoXDG+0HUHSJrb+
+	olpu+kuPMV3iauJTwFfhuhud9Oe6toY3WdBoTv8tHfXAboj5Rv4fyh8R/y/5fT3lOS+/uZYkZyk
+	owQdlM1Wy0d0veG0L9yvEHunfoHXUI7Bd7/nQeM/K3/OthJP7uk8uI5wkUVTJaqryHBIDwW4gfR
+	lwIysJp8qqp99IpKR0mH6ZlhDHHYGqYr/Q==
+X-Google-Smtp-Source: AGHT+IFJ8BqRGzKbdRKo9sdokdyA13iJnEch3RCwabno4BEnD/wpduTivdAcQ64Maqs8TOr83ohZIw==
+X-Received: by 2002:a05:651c:1582:b0:302:2620:ecc7 with SMTP id 38308e7fff4ca-3022fd82956mr14279341fa.35.1733833927539;
+        Tue, 10 Dec 2024 04:32:07 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-30216eb1013sm9110231fa.34.2024.12.10.04.32.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Dec 2024 04:32:06 -0800 (PST)
+Date: Tue, 10 Dec 2024 14:32:03 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, s.hauer@pengutronix.de,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
- detlev.casanova@collabora.com, Andy Yan <andy.yan@rock-chips.com>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v5 01/18] drm/rockchip: vop2: Add debugfs support
-Date: Tue, 10 Dec 2024 12:57:44 +0100
-Message-ID: <4471861.MSiuQNM8U4@diego>
-In-Reply-To: <20241209122943.2781431-4-andyshrk@163.com>
-References: <20241209122943.2781431-1-andyshrk@163.com>
- <20241209122943.2781431-4-andyshrk@163.com>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Daniel Semkowicz <dse@thaumatec.com>, Diederik de Haas <didi.debian@cknow.org>, 
+	andy.yan@rock-chips.com, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, 
+	conor+dt@kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	jernej.skrabec@gmail.com, jonas@kwiboo.se, krzk+dt@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, neil.armstrong@linaro.org, 
+	quentin.schulz@cherry.de, rfoss@kernel.org, robh@kernel.org, tzimmermann@suse.de
+Subject: Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
+ controller
+Message-ID: <jl5obi7rd4h6ywozeqruxq2vx62sx5yf4wwpksrq3prdleps2k@d3zbr5ttquvn>
+References: <20241203165450.1501219-1-heiko@sntech.de>
+ <20241209150619.33998-1-dse@thaumatec.com>
+ <D67AV178CEBD.3QA9VD4ZPRNQ1@cknow.org>
+ <2203458.KiezcSG77Q@diego>
+ <4e015ea9.960.193ae0c236a.Coremail.andyshrk@163.com>
+ <ay5hbnqqjhopaqof6z7j2rzm2bc6xa2vbzan2ak3if6wzmyip2@kqh7gtrajnm2>
+ <33e2c5db.1300.193ae284b6d.Coremail.andyshrk@163.com>
+ <CAA8EJprLA09NP0KAztc5eoAMkGcrom84jg_pcbNcwN0FAaSLrw@mail.gmail.com>
+ <2d68155e.1e5b.193ae4616b9.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <2d68155e.1e5b.193ae4616b9.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_035756_588387_F81A517B 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20241210_043209_650319_F2B4D307 
+X-CRM114-Status: GOOD (  26.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,102 +108,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-
-Am Montag, 9. Dezember 2024, 13:29:13 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> /sys/kernel/debug/dri/vop2/summary:  dump vop display state
-> /sys/kernel/debug/dri/vop2/regs: dump whole vop registers
-> /sys/kernel/debug/dri/vop2/active_regs: only dump the registers of
-> activated modules
-> 
-> Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-> Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
-
-> +static void __vop2_regs_dump(struct seq_file *s, bool active_only)
-> +{
-> +	struct drm_info_node *node = s->private;
-> +	struct vop2 *vop2 = node->info_ent->data;
-> +	struct drm_minor *minor = node->minor;
-> +	struct drm_device *drm_dev = minor->dev;
-> +	const struct vop2_regs_dump *dump;
-> +	unsigned int i;
-> +
-> +	drm_modeset_lock_all(drm_dev);
-> +
-> +	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
-> +
-> +	if (vop2->enable_count) {
-> +		for (i = 0; i < vop2->data->regs_dump_size; i++) {
-> +			dump = &vop2->data->regs_dump[i];
-> +			vop2_regs_print(vop2, s, dump, active_only);
-> +		}
-> +	} else {
-> +		seq_printf(s, "VOP disabled\n");
-> +	}
-> +	drm_modeset_unlock_all(drm_dev);
-> +
-
-nit: not needed empty line at the end of the function
-
-> +}
-> +
-
-> +static void vop2_debugfs_init(struct vop2 *vop2, struct drm_minor *minor)
-> +{
-> +	struct dentry *root;
-> +	unsigned int i;
-> +
-> +	root = debugfs_create_dir("vop2", minor->debugfs_root);
-> +	if (!IS_ERR(root)) {
-> +		for (i = 0; i < ARRAY_SIZE(vop2_debugfs_list); i++)
-> +			vop2_debugfs_list[i].data = vop2;
-> +
-> +		drm_debugfs_create_files(vop2_debugfs_list,
-> +					 ARRAY_SIZE(vop2_debugfs_list),
-> +					 root, minor);
-> +	}
-> +}
-> +
-> +static int vop2_crtc_late_register(struct drm_crtc *crtc)
-> +{
-> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +	struct vop2 *vop2 = vp->vop2;
-> +
-> +	if (drm_crtc_index(crtc) == 0)
-> +		vop2_debugfs_init(vop2, crtc->dev->primary);
-> +
-> +	return 0;
-> +}
-
-I'm wondering about, shoudln't there be an unregister step too?
-I.e. the late_register callback says:
-"should be unregistered in the early_unregister callback" [0].
-
-And there exists drm_debugfs_remove_files(), though it doesn't
-seem t be used much - just by tegra.
-
-I haven't managed to find drm code handling that automatically though?
-
-
-Heiko
-
-
-[0] https://elixir.bootlin.com/linux/v6.12.4/source/include/drm/drm_crtc.h#L737
-[1] https://elixir.bootlin.com/linux/v6.12.4/source/drivers/gpu/drm/drm_debugfs.c#L265
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBEZWMgMTAsIDIwMjQgYXQgMDk6NTQ6MDlBTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6
+Cj4gCj4gSGkgRG1pdHJ5LAo+IAo+IOWcqCAyMDI0LTEyLTEwIDA5OjQ1OjEx77yMIkRtaXRyeSBC
+YXJ5c2hrb3YiIDxkbWl0cnkuYmFyeXNoa292QGxpbmFyby5vcmc+IOWGmemBk++8mgo+ID5PbiBU
+dWUsIDEwIERlYyAyMDI0IGF0IDAzOjIyLCBBbmR5IFlhbiA8YW5keXNocmtAMTYzLmNvbT4gd3Jv
+dGU6Cj4gPj4KPiA+Pgo+ID4+IEhpIERtaXRyeSwKPiA+Pgo+ID4+IOWcqCAyMDI0LTEyLTEwIDA5
+OjAxOjM477yMIkRtaXRyeSBCYXJ5c2hrb3YiIDxkbWl0cnkuYmFyeXNoa292QGxpbmFyby5vcmc+
+IOWGmemBk++8mgo+ID4+ID5PbiBUdWUsIERlYyAxMCwgMjAyNCBhdCAwODo1MDo1MUFNICswODAw
+LCBBbmR5IFlhbiB3cm90ZToKPiA+PiA+Pgo+ID4+ID4+Cj4gPj4gPj4gSGksCj4gPj4gPj4KPiA+
+PiA+PiBBdCAyMDI0LTEyLTEwIDA3OjEyOjI2LCAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRl
+Y2guZGU+IHdyb3RlOgo+ID4+ID4+ID5BbSBNb250YWcsIDkuIERlemVtYmVyIDIwMjQsIDE3OjEx
+OjAzIENFVCBzY2hyaWViIERpZWRlcmlrIGRlIEhhYXM6Cj4gPj4gPj4gPj4gSGksCj4gPj4gPj4g
+Pj4KPiA+PiA+PiA+PiBPbiBNb24gRGVjIDksIDIwMjQgYXQgNDowNiBQTSBDRVQsIERhbmllbCBT
+ZW1rb3dpY3ogd3JvdGU6Cj4gPj4gPj4gPj4gPiBPbiAwMy4xMi4yNCAyMTo1NCwgSGVpa28gU3R1
+ZWJuZXIgd3JvdGU6Cj4gPj4gPj4gPj4gPiA+IFRoaXMgc2VyaWVzIGFkZHMgYSBicmlkZ2UgYW5k
+IGdsdWUgZHJpdmVyIGZvciB0aGUgRFNJMiBjb250cm9sbGVyIGZvdW5kCj4gPj4gPj4gPj4gPiA+
+IGluIHRoZSByazM1ODggc29jIGZyb20gUm9ja2NoaXAsIHRoYXQgaXMgYmFzZWQgb24gYSBTeW5v
+cHNpcyBJUCBibG9jay4KPiA+PiA+PiA+PiA+ID4KPiA+PiA+PiA+PiA+Cj4gPj4gPj4gPj4gPiBJ
+IGRpZCBtb3JlIHRlc3RzIHdpdGggZGlmZmVyZW50IExWRFMgZGlzcGxheXMuIEkgdGVzdGVkIGZv
+bGxvd2luZwo+ID4+ID4+ID4+ID4gY29uZmlndXJhdGlvbnMgd2l0aCBEU0kvTFZEUyBicmlkZ2U6
+Cj4gPj4gPj4gPj4gPiAtIDEwMjR4NjAwQDYwLjAxCj4gPj4gPj4gPj4gPiAtIDEwMjR4NzY4QDYw
+LjAyCj4gPj4gPj4gPj4gPiAtIDEyODB4ODAwQDYwLjA3Cj4gPj4gPj4gPj4gPiAtIDEzNjZ4NzY4
+QDYwLjA2Cj4gPj4gPj4gPj4gPgo+ID4+ID4+ID4+ID4gQWxsIG9mIHRoZW0gd29ya2VkIHdpdGhv
+dXQgaXNzdWVzLCBleGNlcHQgMTM2Nng3NjguCj4gPj4gPj4gPj4gPiBXaXRoIHRoaXMgcmVzb2x1
+dGlvbiwgdmlkZW8gaXMgYmx1cnJ5LCBhbmQgb2Zmc2V0IGluY29ycmVjdGx5Cj4gPj4gPj4gPj4g
+PiB0byB0aGUgbGVmdC4gVGhlcmUgYXJlIGFsc28gcmVwZWF0aW5nIGVycm9ycyBvbiB0aGUgY29u
+c29sZToKPiA+PiA+PiA+PiA+Cj4gPj4gPj4gPj4gPiAgIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1
+YnN5c3RlbTogW2RybV0gKkVSUk9SKiBQT1NUX0JVRl9FTVBUWSBpcnEgZXJyIGF0IHZwMwo+ID4+
+ID4+ID4+ID4KPiA+PiA+PiA+PiA+IEluIGNvcnJlY3Qgb3BlcmF0aW9uIHdpdGggb3RoZXIgcmVz
+b2x1dGlvbnMsIHRoZXJlIGlzIG5vIGVycm9yLgo+ID4+ID4+ID4+ID4gSSBhbSBub3Qgc3VyZSBp
+ZiB0aGlzIGlzIGEgcHJvYmxlbSBpbiB5b3VyIHNlcmllcyBvciByYXRoZXIgaW4gVk9QMgo+ID4+
+ID4+ID4+ID4gZHJpdmVyLgo+ID4+ID4+ID4KPiA+PiA+PiA+VGhpcyByZWFsbHkgc291bmRzIGxp
+a2Ugc29tZXRoaW5nIGlzIHdyb25nIG9uIHRoZSB2b3Agc2lkZS4KPiA+PiA+PiA+VGhlIGludGVy
+cnVwdCBpcyBwYXJ0IG9mIHRoZSB2b3AsIHRoZSBkaXZpc2FibGUgYnkgNCB0aGluZ3MgbGlrZWx5
+IHRvby4KPiA+PiA+Pgo+ID4+ID4+IFRoaXMgaXMgYSBoYXJkd2FyZSBsaW1pdGF0aW9uIG9uIHZv
+cCBzaWRlOgo+ID4+ID4+IFRoZSBob3Jpem9udGFsIHJlc29sdXRpb24gbXVzdCBiZSA0IHBpeGVs
+IGFsaWduZWQuCj4gPj4gPgo+ID4+ID5UaGVuIG1vZGVfdmFsaWQoKSBhbmQgYXRvbWljX2NoZWNr
+KCkgbXVzdCByZWplY3QgbW9kZXMgdGhhdCBkb24ndCBmaXQuCj4gPj4KPiA+PiBXZSByb3VuZCBk
+b3duIHRvIDQgcGl4ZWwgYWxpZ25lZCBpbiBtb2RlX2ZpeHVwIGluIG91ciBic3Aga2VybmVsLAo+
+ID4KPiA+V2hhdCBpcyBtZWFudCBieSB0aGUgImJzcCBrZXJuZWwiIGhlcmU/IEkgZG9uJ3Qgc2Vl
+IGl0IGJlaW5nIHByZXNlbnQKPiAKPiBic3Aga2VybmVsIG1lYW5zIGRvd25zdHJlYW0gdmVuZG9y
+IGtlcm5lbC4KPiAKPiA+aW4gdGhlIG1haW5saW5lIGtlcm5lbC4gU28sIGlmIHRoZSBtb2RlIGlz
+IHVuc3VwcG9ydGVkLCBpdCBzaG91bGQgYmUKPiAKPiBXaWxsIGl0IGJlIGFjY2VwdGFibGUgdG8g
+YWRkIHRoaXMgcm91bmQgZG93biBpbiB0aGUgbWFpbmxpbmUgbW9kZV9maXh1cD8KCkkgdGhpbmsg
+c28uCgo+IAo+ID5yZWplY3RlZC4KPiA+Cj4gPj4gYmVjYXVzZSBzb21ldGltZXMsIHNvbWUgYm9h
+cmRzIGRvIGluZGVlZCBjaG9vc2UgYSBzY3JlZW4gdGhhdCBpcyBub3QgNCBwaXhlbCBhbGlnbmVk
+CgotLSAKV2l0aCBiZXN0IHdpc2hlcwpEbWl0cnkKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
