@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED974E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 08:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3295EE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 08:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XHC6HZxzobXNxd778vg4t8Tsz22tH4oXIQ39cALzF3s=; b=4xaWflr3PMz4OFuZkKxfHXbzyF
-	Umr3rDwfwrsuBeJiFTV5iDXSwuHmAhiSOwOOG7fI6q/N5cITnYAFmmaxotGhoZ9CJpmGh8RPHdCC1
-	wsoKwZe5k+6iIH5JjqNj4KfqnvKIYJjHLKgWUFUXc+3wYgPPSHdQF5NDaJ8sKh2jnlZ444D+1lMSP
-	iRJodW7k8FqfkM3L9qOS39KzgV8B8ERjrengvbPAsy27ts/IWBtu8bXHSqJpxgha5RDVNVds/8vth
-	MWC0aYSAgD1vv4cj177cVxxXpoAkQcnsOJfajnK9xd+mqDlwVdxX+Edbjy3wNrjYI7Z0eNN91UVYZ
-	Ssoctexw==;
+	bh=rsK2XbFhGuQHU9pvE1GJteXRm6qX3iBn09VkPJn0N1E=; b=D4gufJ5UFR/KhQWGFz6I4onFtj
+	5jUXU5V8PEPJqNtG0eHfaZ+A3A8kGQULin3vaSdyGgeKvPR7CHCh/mQAhRNP4KMEZrOzyi2GZvO4g
+	yUVzNHhqV6Vw8HaqNM++GhBkFI/V+HT4hUH2W7s9xwnSgF/QNFiTsEwKu7qXzmRTFFV7LW0OamHYs
+	oeoQFeeKTR43xT1xUIOKAeEVIw4mYDM/FEDCV7h98nuj0Diau6QcDplqZ40RePxAP2Z9r8HS/5FwN
+	4fE8gf8veyrHddTUYm+ua5KjI9lKg4Sj4yVVCIIeghIOK5/4g2cKXoVDFp/ur5HPpfRlMJTdQ3Fmm
+	Mz9QKtaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvCw-0000000Ae2d-3MfT;
-	Tue, 10 Dec 2024 08:03:02 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tKvSx-0000000AgP0-42Yj;
+	Tue, 10 Dec 2024 08:19:35 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKvBs-0000000AdvD-3aOL;
-	Tue, 10 Dec 2024 08:01:58 +0000
+	id 1tKvRt-0000000AgF5-0LZ9;
+	Tue, 10 Dec 2024 08:18:30 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733817714;
+	t=1733818707;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=8GJywCfHdvdwHDP5uXNzefsQ0GJ0yUR4X2Zmb8a5Y6g=;
-	b=BsEW4Zpc7tYFRnA/eaiEQ3pYNQXqR0g71UhiABbge+ZG1g8Gc3Yi5Rd+DE0SxCB4hzsVjF
-	6eKOaixnFsoB8OUAYmXfkOG9/+xxvqtobm7vp7ca/5tXkpqaSrDNEMPV/Vi8MGe39ahPUm
-	qC5nTFVc0Vuyrd+5ycS1z6m+rHOIMcf3YtcfUMS4JFB5JWQdMb24AcViZQTjUNJN/GaSL5
-	/X4Z8W5X3/3gcM8GsVY/k5fSFFMyKBs5+tA1H17JatXHIRM6n3A8rYCY8bkUXvhdXePG1G
-	NEEvUIBJMSqDfrmyWQvKDrdA32lh2MVR1l61YeKmrZ+d7BT9ydUEbpQtTxiGIg==
-Date: Tue, 10 Dec 2024 09:01:53 +0100
+	bh=OBUKULQdeAj3srAOUfNxAcrVMqtQrzmaJVxl5Kec0tI=;
+	b=lCnsrTK/1akQyLYVUjsKpfdC8FWRqa7ttTUhWa+bmTGtlWuysFdJ4hPh2dTiFKuIOQCOwJ
+	4djFAfDBuB1rMbjD3u5D0wiscNu/ACTFmIwg20YCsZKVlRnZJCmOdtsmRv8pdBsW7bFSgZ
+	ElVF7gfrMcl3d+S61cKqC1AYIZmocKBQ8iw3DHsl8eunXfoQdQ6Y1CPyEgTceanMUJYcvL
+	Q33kPgQLTgTDP6XbIxdX4b+Cq1mhN5ICozlogDEDU05rvrBFN0DjSn1xu4Sv4m7a8BMRje
+	BkQHwZ6YP6iMg6V5++lL6Mqpfx/SVcKe4bQbuHMrHISVa3KA98iI0y7K91Dpkg==
+Date: Tue, 10 Dec 2024 09:18:25 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Peter Geis <pgwipeout@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
- Diederik de Haas <didi.debian@cknow.org>, Johan Jonker <jbx6244@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/6] arm64: dts: rockchip: remove ethernet alias from
- rk3328-roc
-In-Reply-To: <20241210013010.81257-4-pgwipeout@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>, Finley Xiao
+ <finley.xiao@rock-chips.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Kevin Hilman <khilman@linaro.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski@linaro.org>, Ulf Hansson
+ <ulf.hansson@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/6] pmdomain: rockchip: fix rockchip_pd_power error
+ handling
+In-Reply-To: <20241210013010.81257-2-pgwipeout@gmail.com>
 References: <20241210013010.81257-1-pgwipeout@gmail.com>
- <20241210013010.81257-4-pgwipeout@gmail.com>
-Message-ID: <20693a7b7cb1aaed2c21b84fd57c4b72@manjaro.org>
+ <20241210013010.81257-2-pgwipeout@gmail.com>
+Message-ID: <1b323d6e9ef873bfc770e9d54b7a3a64@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_000157_167392_3F58FD8F 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20241210_001829_438424_194096E4 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +81,125 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hello Peter,
 
 On 2024-12-10 02:30, Peter Geis wrote:
-> Remove the ethernet alias added back in during the rk3328-roc dtsi
-> conversion.
-
-I just checked again the dtsi parent conversion I performed in
-the commit f3c6526d6fb2 ("arm64: dts: rockchip: Convert dts files
-used as parents to dtsi files"), and both rk3328-roc-cc.dts and
-rk3328-roc-pc.dts had the ethernet0 alias defined before the
-conversion.  Thus, the alias wasn't added back by mistake during
-the conversion, it was there before.
-
-Moreover, I don't see why would we want to delete the ethernet0
-alias(es) in the first place?  It's usual for Rockchip board dts
-files to have ethernetX aliases defined, and both ROC-RK3328-CC
-and ROC-RK3328-PC have their gmac2io DT nodes enabled, and the
-boards have wired Ethernet ports, so they should also have the
-ethernet0 alias(es) defined.
-
-Am I missing something?
-
-> Fixes: f3c6526d6fb2 ("arm64: dts: rockchip: Convert dts files used as
-> parents to dtsi files")
+> The calls rockchip_pd_power makes to rockchip_pmu_set_idle_request lack
+> any return error handling, causing device drivers to incorrectly 
+> believe
+> the hardware idle requests succeed when they may have failed. This 
+> leads
+> to software possibly accessing hardware that is powered off and the
+> subsequent SError panic that follows.
+> 
+> Add error checking and return errors to the calling function to prevent
+> such crashes.
+> 
+> gst-launch-1.0 videotestsrc num-buffers=2000 ! v4l2jpegenc ! fakesink
+> Setting pipeline to PAUSED ...er-x64
+> Pipeline is PREROLLING ...
+> Redistribute latency...
+> rockchip-pm-domain ff100000.syscon:power-controller: failed to get ack 
+> on
+> domain 'hevc', val=0x98260, idle = 0
+> SError Interrupt on CPU2, code 0x00000000bf000002 -- SError
+> CPU: 2 UID: 0 PID: 804 Comm: videotestsrc0:s Not tainted 6.12.0-rc5+ 
+> #54
+> Hardware name: Firefly roc-rk3328-cc (DT)
+> pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> pc : rockchip_vpu2_jpeg_enc_run+0x168/0xbc8
+> lr : device_run+0xb0/0x128
+> sp : ffff800082143a20
+> x29: ffff800082143a20 x28: 0000000000000140 x27: 0000000000000000
+> x26: ffff582c47a313e8 x25: ffff582c53e95000 x24: ffff582c53e92800
+> x23: ffff582c5bbe0000 x22: 0000000000000000 x21: ffff582c47a31080
+> x20: ffffa0d78cfa4168 x19: ffffa0d78cfa4168 x18: ffffb755b0519000
+> x17: 000000040044ffff x16: 00500072b5503510 x15: a7a6a5a4a3a29a99
+> x14: 989796959493928a x13: 0000000051eb851f x12: 00000000000000ff
+> x11: ffffa0d78d812880 x10: ffffa0d78d7fbca0 x9 : 000000000000003f
+> x8 : 0000000000000063 x7 : 000000000000003f x6 : 0000000000000040
+> x5 : ffff80008010d000 x4 : ffffa0d78cfa4168 x3 : ffffa0d78cfbfdd8
+> x2 : ffff80008010d0f4 x1 : 0000000000000020 x0 : 0000000000000140
+> Kernel panic - not syncing: Asynchronous SError Interrupt
+> CPU: 2 UID: 0 PID: 804 Comm: videotestsrc0:s Not tainted 6.12.0-rc5+ 
+> #54
+> Hardware name: Firefly roc-rk3328-cc (DT)
+> Call trace:
+> dump_backtrace+0xa0/0x128
+> show_stack+0x20/0x38
+> dump_stack_lvl+0xc8/0xf8
+> dump_stack+0x18/0x28
+> panic+0x3ec/0x428
+> nmi_panic+0x48/0xa0
+> arm64_serror_panic+0x6c/0x88
+> do_serror+0x30/0x70
+> el1h_64_error_handler+0x38/0x60
+> el1h_64_error+0x7c/0x80
+> rockchip_vpu2_jpeg_enc_run+0x168/0xbc8
+> device_run+0xb0/0x128
+> v4l2_m2m_try_run+0xac/0x230
+> v4l2_m2m_ioctl_streamon+0x70/0x90
+> v4l_streamon+0x2c/0x40
+> __video_do_ioctl+0x194/0x400
+> video_usercopy+0x10c/0x808
+> video_ioctl2+0x20/0x80
+> v4l2_ioctl+0x48/0x70
+> __arm64_sys_ioctl+0xb0/0x100
+> invoke_syscall+0x50/0x120
+> el0_svc_common.constprop.0+0x48/0xf0
+> do_el0_svc+0x24/0x38
+> el0_svc+0x38/0x100
+> el0t_64_sync_handler+0xc0/0xc8
+> el0t_64_sync+0x1a8/0x1b0
+> SMP: stopping secondary CPUs
+> Kernel Offset: 0x20d70c000000 from 0xffff800080000000
+> PHYS_OFFSET: 0xffffa7d3c0000000
+> CPU features: 0x00,00000090,00200000,0200421b
+> Memory Limit: none
+> ---[ end Kernel panic - not syncing: Asynchronous SError Interrupt ]---
+> 
+> Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain 
+> driver")
 > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+
+This patch is obviously correct, because not checking what
+rockchip_pmu_set_idle_request() returns was simply wrong.
+Thanks for the patch!
+
+Though, shouldn't we improve further the way proper error
+handling is performed in rockchip_do_pmu_set_power_domain(),
+by "rolling back" what rockchip_do_pmu_set_power_domain()
+did after powering up fails?
+
 > ---
 > 
->  arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 1 -
->  1 file changed, 1 deletion(-)
+>  drivers/pmdomain/rockchip/pm-domains.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> index b5bd5e7d5748..f782c8220dd3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-> @@ -9,7 +9,6 @@
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c
+> b/drivers/pmdomain/rockchip/pm-domains.c
+> index cb0f93800138..57e8fa25d2bd 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -590,14 +590,18 @@ static int rockchip_pd_power(struct
+> rockchip_pm_domain *pd, bool power_on)
+>  			rockchip_pmu_save_qos(pd);
 > 
->  / {
->  	aliases {
-> -		ethernet0 = &gmac2io;
->  		mmc0 = &sdmmc;
->  		mmc1 = &emmc;
->  	};
+>  			/* if powering down, idle request to NIU first */
+> -			rockchip_pmu_set_idle_request(pd, true);
+> +			ret = rockchip_pmu_set_idle_request(pd, true);
+> +			if (ret < 0)
+> +				return ret;
+>  		}
+> 
+>  		rockchip_do_pmu_set_power_domain(pd, power_on);
+> 
+>  		if (power_on) {
+>  			/* if powering up, leave idle mode */
+> -			rockchip_pmu_set_idle_request(pd, false);
+> +			ret = rockchip_pmu_set_idle_request(pd, false);
+> +			if (ret < 0)
+> +				return ret;
+> 
+>  			rockchip_pmu_restore_qos(pd);
+>  		}
 
 _______________________________________________
 Linux-rockchip mailing list
