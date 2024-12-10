@@ -4,74 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B691E7717D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 01:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B3BE7717D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 01:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3JKfqvnXOJ/Dm4VnVokz3K+3m77iEq71IbsgQYSK9CM=; b=Nr+YqDcFbinkEv
-	JZwOyCVbUdYpvD7qyKNiy5vzZZi6MvcvXtckhyQCfN7ec5jcWbvRUlCeW3C7fxefv2CNvDJWGzJC7
-	0QimzKS29uueBOYfqpCGcTzmwDgVXt974zBmEsKcdyKfGdLtscMzNY4gMnOsxcxADpQF+rabGZ548
-	YAikaXKpjMKReM+l75sweahm5lcTzYU5log+t9NscRoPlkLhU+S5jBWzkl3pdo1jr/70MQjIgxgua
-	kqXX3XTivMOB02QiFTcMq7WX8rDT5bWAo0k7TVAtnApYILF0XUxPyLo5OtvFee013qnAg2PZMxGE/
-	pmAuX7OrBtNtwHFHl9uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tezk05kE8AmMcAHijBuKLx5Qhxg/Ncxi9eIQDGVXD34=; b=RgpGuM8pkBsS+2
+	O6A8citOftwVIw+GIwMkAhw+2CEJs9pmb7yLcCw44lNgg3UbtyrsuX7oZJICTEfZJ7SCWjCS8UHES
+	cuI7GnLL+o97NH2DvGurmwEva8jORa0KLU2dgc+GAUbO9eiUIZA34jxPLWd9Gu2dk+ufiJQ8DrIyv
+	zT+BOCFTWmdm1Ns0HfeXCBamIWON07D5qHPD235GzNT0Rdh0Rrrbwk5+FODsH27RYzGlZNLwateoM
+	Yg3JYRFIclP2MpTq1Idfz74jBsWn4kry68fm7XUitG6iYy6UsbBXfp+TZoGLLsna3OGeWwYBFkplK
+	kNgrlmFg1lYlszQXG4BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKoys-00000009ors-3ojN;
-	Tue, 10 Dec 2024 01:24:06 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tKoxn-00000009og6-2Oax;
-	Tue, 10 Dec 2024 01:23:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=C8RlaUKPf21j08ezs3E/JiewGDRmoycUNvyVAbMCuu4=; b=I
-	B65uBjIN/o9jnLcLVy9aDh0cETx7W7zgLzGRscrTG+jlcb4jFsfyjLf3PqD9CN4p
-	c8Cohfw5QxZpEjGm5bcpU0gQEJogIly8esXHE3v8Gj0LF0BopoLg7BFIa0EAuQjx
-	SlE4CjXkBLURxmNP3gBgb9QDZ+EsZT2njssXRAJ8v4=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-102 (Coremail) ; Tue, 10 Dec 2024 09:21:36 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 10 Dec 2024 09:21:36 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	"Daniel Semkowicz" <dse@thaumatec.com>, 
-	"Diederik de Haas" <didi.debian@cknow.org>, andy.yan@rock-chips.com, 
-	Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, 
-	conor+dt@kernel.org, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, jernej.skrabec@gmail.com, 
-	jonas@kwiboo.se, krzk+dt@kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	neil.armstrong@linaro.org, quentin.schulz@cherry.de, 
-	rfoss@kernel.org, robh@kernel.org, tzimmermann@suse.de
-Subject: Re:Re: [PATCH v3 0/3] drm/rockchip: Add driver for the new DSI2
- controller
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <ay5hbnqqjhopaqof6z7j2rzm2bc6xa2vbzan2ak3if6wzmyip2@kqh7gtrajnm2>
-References: <20241203165450.1501219-1-heiko@sntech.de>
- <20241209150619.33998-1-dse@thaumatec.com>
- <D67AV178CEBD.3QA9VD4ZPRNQ1@cknow.org> <2203458.KiezcSG77Q@diego>
- <4e015ea9.960.193ae0c236a.Coremail.andyshrk@163.com>
- <ay5hbnqqjhopaqof6z7j2rzm2bc6xa2vbzan2ak3if6wzmyip2@kqh7gtrajnm2>
-X-NTES-SC: AL_Qu2YAfuSvE4i4CaZYekZnEobh+Y5UcK2s/ki2YFXN5k0tCTI0SYQW29KGUD2y86DDiKsoAirUQVL5MpFRpJHY4609LG24bETf9Rb4QXd0iNV
+	id 1tKp64-00000009q92-3SwH;
+	Tue, 10 Dec 2024 01:31:32 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tKp50-00000009pqz-1k7M;
+	Tue, 10 Dec 2024 01:30:27 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-6d8a3e99e32so40114956d6.2;
+        Mon, 09 Dec 2024 17:30:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1733794225; x=1734399025; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=yLptFqAMCqePRuk20SWKFsGYRWkZDJ2kBARfQHLQM5A=;
+        b=bADtMyJNLKlkYT8YlIHcblJ+YYTqtSc88eBjuO8dOLikEZT6jh9HZ5DFOPDdij+JYh
+         WPBRNqOLo2OkgoW24TWnJHEbLiLlq2ynhqPf6DQl/xazg3xve5oCeng6SJuTt0h7SYL2
+         ZVVZ1i00nHvo7EZX31Azt4EQB1AXDeiegt3WI6MZz7JvZcsZbtqy7B4ok5S5br+0G5A1
+         0L5izhGQetIIemkEzIBHynoSg7Es9emHm9/liIp7JalJTlaPrC0Rq61m2KA3vHW8S7z7
+         /QOeHrd/pLdRzvaabMHqWMoh9UFWYVBeaYT2Zxno3z0ANF0BhPBYSn1SHP51wQK4wGW2
+         t7GQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733794225; x=1734399025;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yLptFqAMCqePRuk20SWKFsGYRWkZDJ2kBARfQHLQM5A=;
+        b=pBlbkUeIJnYuLBc+mNrDg/mXosJhVQ7xujveH4jUjHOVv9Q3TKX4Qnj4yHPiNBjQRZ
+         jEWajoTXJyq2cHOTCLv4E6P7VrJ5x0fxBVcfGL4kjxpqXPIrbnXSZ9WW4worn1EbrT4D
+         6p/6KDM/4gXPLmp1IPMdDt3pc6Cq+v4NgeA8UbYPCfkTq8a77Mx1nMgkgzfOPpwEJV6A
+         TGf1OK40iR77zIajKtyc+5vufwvNYX6KU2N4ndUJqsgU3dGlAt9KsPtkeEBoCNHabWP6
+         X0rkV+GHHYQBvIciqnwIpfy1HwTVGOyXzrwZu6u21dr/y9Al22HgbflqGPqlSmIJCJwL
+         hK1A==
+X-Forwarded-Encrypted: i=1; AJvYcCXXVV0KFqHSPBQ2cOjUxZfQmva1mHIrIHtYPYoNxlq9ZVxMoHEokxbU8Al7/TPFumsv2lW0727OOQK8YV4xN2k=@lists.infradead.org, AJvYcCXeD9IesQIK+/MEpOnNCdPbftLGVgemBb9nav7CFNUipVCCJjkFMsQINnsHV0AgCHoKqIa63EjV4ufE1rmCuEdK@lists.infradead.org
+X-Gm-Message-State: AOJu0YycdNtB1OzfcYawtjUelEF+gBojJDT1JFn681xSXcpaVaorHDNf
+	foMcYiaiczeRdx2YvkcByXO33TUosC6RCsaiONmteBScrq7dUzPq
+X-Gm-Gg: ASbGncuS70+MrFe5l/FYeXHCOJXkvANS7BEXev55tC18G/yuC8HhTiHytRrZYqsd6UQ
+	fmK5eX7/pxuYaDP/a7xPLtYndW5ehqqCqD/w2c2cD1PQ1IA4lh6WMwh7weU1CqxGfDoaws+CyhC
+	3Hi3pBmuYvBohABGsaFOU74zMpqrzRDSPU1S0z98q8rteMmTi95bRA2t6LzrIk+1FjenAL96zh6
+	Pf/S6xDzFEP5I5CRBIxIXi0SR4Z8q7ILsrTw6PiE061OtnfZuJRneIKxb7rzCAPAQ==
+X-Google-Smtp-Source: AGHT+IGl94+bcjaYHpUAJtAtPKM7ozTtuuRWPzM7fSjzKBKRwV5Bk+GTu1vmg7p1bUUPpYPUkPwp+Q==
+X-Received: by 2002:a05:6214:e6b:b0:6d4:1dc0:2620 with SMTP id 6a1803df08f44-6d91e4465a0mr47573006d6.40.1733794224737;
+        Mon, 09 Dec 2024 17:30:24 -0800 (PST)
+Received: from master-x64.sparksnet ([204.111.53.234])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d8f429a79csm36834346d6.72.2024.12.09.17.30.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Dec 2024 17:30:23 -0800 (PST)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>,
+	Alex Bee <knaerzche@gmail.com>,
+	Caesar Wang <wxt@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Kevin Hilman <khilman@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Levin Du <djw@t-chip.com.cn>,
+	Liang Chen <cl@rock-chips.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	shironeko <shironeko@tesaguri.club>
+Subject: [PATCH 0/6] rockchip: rk3328 fixes in preparation for usb3-phy
+Date: Tue, 10 Dec 2024 01:30:04 +0000
+Message-Id: <20241210013010.81257-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Message-ID: <33e2c5db.1300.193ae284b6d.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZigvCgD3f7ehl1dnU_46AA--.45701W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gixXmdXkkuwGQACs3
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241209_172259_975115_AD4A60AC 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20241209_173026_450677_F1EE16E3 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,44 +114,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIERtaXRyeSwKCuWcqCAyMDI0LTEyLTEwIDA5OjAxOjM477yMIkRtaXRyeSBCYXJ5c2hrb3Yi
-IDxkbWl0cnkuYmFyeXNoa292QGxpbmFyby5vcmc+IOWGmemBk++8mgo+T24gVHVlLCBEZWMgMTAs
-IDIwMjQgYXQgMDg6NTA6NTFBTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6Cj4+IAo+PiAKPj4gSGks
-Cj4+IAo+PiBBdCAyMDI0LTEyLTEwIDA3OjEyOjI2LCAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0Bz
-bnRlY2guZGU+IHdyb3RlOgo+PiA+QW0gTW9udGFnLCA5LiBEZXplbWJlciAyMDI0LCAxNzoxMTow
-MyBDRVQgc2NocmllYiBEaWVkZXJpayBkZSBIYWFzOgo+PiA+PiBIaSwKPj4gPj4gCj4+ID4+IE9u
-IE1vbiBEZWMgOSwgMjAyNCBhdCA0OjA2IFBNIENFVCwgRGFuaWVsIFNlbWtvd2ljeiB3cm90ZToK
-Pj4gPj4gPiBPbiAwMy4xMi4yNCAyMTo1NCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+ID4+ID4g
-PiBUaGlzIHNlcmllcyBhZGRzIGEgYnJpZGdlIGFuZCBnbHVlIGRyaXZlciBmb3IgdGhlIERTSTIg
-Y29udHJvbGxlciBmb3VuZAo+PiA+PiA+ID4gaW4gdGhlIHJrMzU4OCBzb2MgZnJvbSBSb2NrY2hp
-cCwgdGhhdCBpcyBiYXNlZCBvbiBhIFN5bm9wc2lzIElQIGJsb2NrLgo+PiA+PiA+ID4gCj4+ID4+
-ID4KPj4gPj4gPiBJIGRpZCBtb3JlIHRlc3RzIHdpdGggZGlmZmVyZW50IExWRFMgZGlzcGxheXMu
-IEkgdGVzdGVkIGZvbGxvd2luZwo+PiA+PiA+IGNvbmZpZ3VyYXRpb25zIHdpdGggRFNJL0xWRFMg
-YnJpZGdlOgo+PiA+PiA+IC0gMTAyNHg2MDBANjAuMDEKPj4gPj4gPiAtIDEwMjR4NzY4QDYwLjAy
-Cj4+ID4+ID4gLSAxMjgweDgwMEA2MC4wNwo+PiA+PiA+IC0gMTM2Nng3NjhANjAuMDYKPj4gPj4g
-Pgo+PiA+PiA+IEFsbCBvZiB0aGVtIHdvcmtlZCB3aXRob3V0IGlzc3VlcywgZXhjZXB0IDEzNjZ4
-NzY4Lgo+PiA+PiA+IFdpdGggdGhpcyByZXNvbHV0aW9uLCB2aWRlbyBpcyBibHVycnksIGFuZCBv
-ZmZzZXQgaW5jb3JyZWN0bHkKPj4gPj4gPiB0byB0aGUgbGVmdC4gVGhlcmUgYXJlIGFsc28gcmVw
-ZWF0aW5nIGVycm9ycyBvbiB0aGUgY29uc29sZToKPj4gPj4gPgo+PiA+PiA+ICAgcm9ja2NoaXAt
-ZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBbZHJtXSAqRVJST1IqIFBPU1RfQlVGX0VNUFRZIGlycSBl
-cnIgYXQgdnAzCj4+ID4+ID4KPj4gPj4gPiBJbiBjb3JyZWN0IG9wZXJhdGlvbiB3aXRoIG90aGVy
-IHJlc29sdXRpb25zLCB0aGVyZSBpcyBubyBlcnJvci4KPj4gPj4gPiBJIGFtIG5vdCBzdXJlIGlm
-IHRoaXMgaXMgYSBwcm9ibGVtIGluIHlvdXIgc2VyaWVzIG9yIHJhdGhlciBpbiBWT1AyCj4+ID4+
-ID4gZHJpdmVyLgo+PiA+Cj4+ID5UaGlzIHJlYWxseSBzb3VuZHMgbGlrZSBzb21ldGhpbmcgaXMg
-d3Jvbmcgb24gdGhlIHZvcCBzaWRlLgo+PiA+VGhlIGludGVycnVwdCBpcyBwYXJ0IG9mIHRoZSB2
-b3AsIHRoZSBkaXZpc2FibGUgYnkgNCB0aGluZ3MgbGlrZWx5IHRvby4KPj4gCj4+IFRoaXMgaXMg
-YSBoYXJkd2FyZSBsaW1pdGF0aW9uIG9uIHZvcCBzaWRlOgo+PiBUaGUgaG9yaXpvbnRhbCByZXNv
-bHV0aW9uIG11c3QgYmUgNCBwaXhlbCBhbGlnbmVkLgo+Cj5UaGVuIG1vZGVfdmFsaWQoKSBhbmQg
-YXRvbWljX2NoZWNrKCkgbXVzdCByZWplY3QgbW9kZXMgdGhhdCBkb24ndCBmaXQuCgpXZSByb3Vu
-ZCBkb3duIHRvIDQgcGl4ZWwgYWxpZ25lZCBpbiBtb2RlX2ZpeHVwIGluIG91ciBic3Aga2VybmVs
-LCAKYmVjYXVzZSBzb21ldGltZXMsIHNvbWUgYm9hcmRzIGRvIGluZGVlZCBjaG9vc2UgYSBzY3Jl
-ZW4gdGhhdCBpcyBub3QgNCBwaXhlbCBhbGlnbmVkCj4KPj4gCj4+IAo+PiAKPgo+LS0gCj5XaXRo
-IGJlc3Qgd2lzaGVzCj5EbWl0cnkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+
+This is a series of fixes I uncovered during my work on the next
+generation rk3328 usb3 phy driver.
+
+The first patch fixes the error handling of the pm-domain driver. I
+don't expect this to break anything, but it is entirely possible some
+driver code makes some bad assumptions on the fact that this has been
+broken from the very beginning.
+
+The second patch fixes the ref_usb3otg clock parent. This was preventing
+correct reclocking of the usb3 phy.
+
+The third patch fixes the ethernet alias that was accidentlly readded
+during the rk3328-roc dtsi conversion.
+
+The fourth patch fixes a race condition between power domains and clocks
+being shut off during boot, which would cause an ugly splat on rk3328
+during boot on recent kernels.
+
+The fifth patch corrects the rk3328-roc fixed regulators and power input
+map. It also cleans up the fixed regulator flags to be consistent.
+
+The sixth patch removes address aligned beats and the redundant rxpbl
+and txpbl flags from the rk3328-roc, which are unnecessary now.
+
+Please examine and test these as necessary, especially the pm-domain fix
+patch.
+
+Very Respectfully,
+Peter Geis
+
+
+Peter Geis (6):
+  pmdomain: rockchip: fix rockchip_pd_power error handling
+  clk: rockchip: fix wrong clk_ref_usb3otg parent for rk3328
+  arm64: dts: rockchip: remove ethernet alias from rk3328-roc
+  arm64: dts: rockchip: add hevc power domain clock to rk3328
+  arm64: dts: rockchip: correct rk3328-roc regulator map
+  arm64: dts: rockchip: Remove address aligned beats from rk3328-roc
+
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi | 27 +++++++++++---------
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi     |  1 +
+ drivers/clk/rockchip/clk-rk3328.c            |  2 +-
+ drivers/pmdomain/rockchip/pm-domains.c       |  8 ++++--
+ 4 files changed, 23 insertions(+), 15 deletions(-)
+
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
