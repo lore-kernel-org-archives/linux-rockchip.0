@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86280E77180
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 20:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE1B7E7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 22:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RzMgh9nAGTXGB11QY1t8nT77hJyG41FlPJIkrjns9jE=; b=DQl3cioiszwrdd
-	JqXGD5cjVM1CIsLYjFJL9idXQ6IJLRjc2ZWryh8lAfi1cEvsdUSj4hQvKkJv+GUapM65vMFjCnlSK
-	p0Q4vZvQmw1Cf+S+xqSLftFYdGBndqACC/FjSPyncG5zm8pQn4+lIw/3Pe6DTkjXT6B/bqn8x1CQ/
-	7sFTcbat9bOZBadJkY5xFeIKiUGfd1fcgQc0jNkrxeDu/DOBFHEPLC3vgu3zdCeqLl3RZWLu5Ema0
-	ZuK1jnNlwFCvvRu8WAnjh4Bi3zEiFHzU2nVar0pcB4VUZTNxW5tMeoUkzzV1mSefBxuhPL6g1Ai+f
-	b/Nu6BjqWrUs7hIHnnnQ==;
+	List-Owner; bh=rICQuEuodLf4tLb6sQKn1YH44q1HcMLvhtYRgFv+jks=; b=AU6y5gCCNSTxAS
+	up1ahYDSa4JqDJ3RN5WvFTZZxE8Aa9rGuMra76uw5x/kwJfXMVL6+EhCEHDBj8KIcWWKJ9UR7RBOC
+	+6bXxiMG5T8EczKFijqHuddagfnUQ+dHj3bbDGfd6pbuXkICZ4KQ4RZCFWureAwqEDZ6b/3zaefZA
+	8brQDvESzjVxBpCOvV7XO6f2rLvHTjJdQcw7iTdoe/rn8JFL/xrd6y6HNC2yAjV+YguX5L8XOQzfn
+	OWXv28uoEZM+5vS/bVG8uBqhdbylfdNP3K2+kq1orTe4NRS8KQkWYS07UI7+PH2xgbDeqxJFm8zoY
+	X19OVgcA6qPWc1r7Qm6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL6dG-0000000CddN-1cE9;
-	Tue, 10 Dec 2024 20:14:58 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1tL8TS-0000000CxEL-1zhj;
+	Tue, 10 Dec 2024 22:12:58 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL6c3-0000000CdP4-1nyY;
-	Tue, 10 Dec 2024 20:13:44 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5d3f65844deso4325993a12.0;
-        Tue, 10 Dec 2024 12:13:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733861621; x=1734466421; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QgKU23big2iA/4lgJjztR5Vr5E09reP3/HgJodbz0+Y=;
-        b=H40yMZbH2JTWyF9dk+ZfefleQrjTv4RrsAzh6BAQ4rZoeZfVLlAQJmGpE1Y2pc5d0k
-         PIdsVzIwQpT1rEk/eWDC+eonu1wvoV+L1kdBqYY956FiCnANvO+MzblVj99Iu+A2aBer
-         KoI2C55RXCBmTOKVoxRm8YhOrdc3EGvUO3pZj3VVEmSdv0NqqY7vONamQsszie+qhdmi
-         WsL7jVCPi1OCI+ADGq6Wsa58NeJ1gCkWNhRE2f+/GnHRU3Iu6Xd7PCS34UvubdN93O6J
-         wMOf0191dQ4MelaTJm35X072O7XwUF0/SFw7Z/UGVx7DBjzlY+dMCIioyxqydfUlIfD7
-         dyNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733861621; x=1734466421;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QgKU23big2iA/4lgJjztR5Vr5E09reP3/HgJodbz0+Y=;
-        b=MmsRJ3AqWpbqwu3kv7X03/7NOySuPwMszEv/qkNlK/ZEskamSClFGgGiyNbuYXV+DB
-         UMvyNi6tHyJWzvo4lJN7REK9oCdlGaCTKgUOmFQsrhCNfzwxETinePMN4jj22/N8xejV
-         tAIOT78GKCM05CEi5s4v25BqxG/kEdfultLRrw33bfQRb6ivaDi4bu8m7giSmxr5w2h/
-         eeK8tERvZ/J/iZePoHqzlCCg+HfIf2Ua3fEyYt1JzDxGGCCB8EF9HtKJZmQIz4HORJ6E
-         1f68EUOmhjsh0FMMCN9vuAdT6XHj9voMJ8GCbLazkiu8LDm5HPntQTVyZJHJ2IJM25Qg
-         0IiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVBX2lED/CpmYH2nvj/3muLHjwKyo11t5LTmCAXxMnSzSnXTTD/D1u9oQH6iNYxa/SCZZ178C6ordFSswNwmLo=@lists.infradead.org, AJvYcCXJqfQfqKFMwNzYs2YYBFlOf8e40zBbJmSNw11wJyLEewFlihntiwlf7A3WwUg7F1khy8P2CIJxwauY6hGvp2RE@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzoe3pMjN59zUI078DbQ58tGl4+R+l9ks8lXrf1Uz8RQ8esTRxC
-	LG61hZuoWO083Xf6f4AJO/5uuhNy6nk50tmeUj+geQVRx6uQIIPRWB8RQrQTxG+ebDNSzCVH6VK
-	vIYuGCDBu1qBM/Hoi3tTYh+ZNOI0=
-X-Gm-Gg: ASbGncvCERGBmxu6GvLdwIZ0XVp9um2v4iqCtOGUisfRWcMOQIQBtm2x4xrm0b7iVpg
-	HIXPK08RnEmWK4NTWcNVUKfNpbR5IGRTpSOKH
-X-Google-Smtp-Source: AGHT+IHT1KsOnBSj6/Zb1BhVvcEFV7dOkovEkS80li9AoqSjDy646pb5zs7A/JETWOAV235CrH6wQHRXekgMqdfvQeU=
-X-Received: by 2002:a05:6402:4583:b0:5d2:2768:4f10 with SMTP id
- 4fb4d7f45d1cf-5d4330ada8dmr127736a12.17.1733861621325; Tue, 10 Dec 2024
- 12:13:41 -0800 (PST)
+	id 1tL8SK-0000000Cwsc-3WVf;
+	Tue, 10 Dec 2024 22:11:53 +0000
+X-QQ-mid: bizesmtpip4t1733868658t2yooom
+X-QQ-Originating-IP: is2dtZlVyv163ZGx/pSgk725Pe4YDEi/f+aGkZ+195Y=
+Received: from [IPV6:240f:10b:7440:1:9e54:d32d ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 11 Dec 2024 06:10:56 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 1576610226982818791
+Message-ID: <6A24DF29AE2F3CDC+70602cc7-2c03-470d-955f-06b2db116e20@radxa.com>
+Date: Wed, 11 Dec 2024 07:10:55 +0900
 MIME-Version: 1.0
-References: <20241210013010.81257-1-pgwipeout@gmail.com> <20241210013010.81257-4-pgwipeout@gmail.com>
- <20693a7b7cb1aaed2c21b84fd57c4b72@manjaro.org>
-In-Reply-To: <20693a7b7cb1aaed2c21b84fd57c4b72@manjaro.org>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Tue, 10 Dec 2024 15:13:29 -0500
-Message-ID: <CAMdYzYr-4mA703ZWGZnCoRtmmkS689XHk854j73M4pgJceeJcQ@mail.gmail.com>
-Subject: Re: [PATCH 3/6] arm64: dts: rockchip: remove ethernet alias from rk3328-roc
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, 
-	Diederik de Haas <didi.debian@cknow.org>, Johan Jonker <jbx6244@gmail.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: Add USB-C support to ROCK 5B
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+References: <20241210163615.120594-1-sebastian.reichel@collabora.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20241210163615.120594-1-sebastian.reichel@collabora.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: Nco2gOFShP5naH7TxSTL+WtrlsrIPepNzEeGmmfpnMsl19Y2oHDyvB4m
+	gGix6au8x4iwmgoIeV8iQeQp+XJsIFN/YJ6TpoM/uVfula6cfv8Ot18tErjjm65cewWBvkd
+	sYI4wWoNe0OJ4lL9zrmyZkL2WbePFgrPCmw7EfMwRpz0yiCRttFUEOAUTTYJGSlzqpJwBhk
+	zhua4zaGaXON/mUbZ5lFCBKuPbBr1T3M5Y0s3jDr4RaRG7TxvtMb38gV/CvyBXvrCvaLUEj
+	6d13GSXOYgT3z4nTkzIJVd0PqkJgqST6b3E61Wv2m7aKLDIHfn6lNnoLnFiz8acdTlVa2et
+	ovX7Vp6T1PofVZhz3xTkym6MjOwxf3o3mCfMcjDC9q8IfQVTTQM7Bo44WpP48x7opzEsMhl
+	OXNrGZ4Moh3irCeZ3w2g56i/QK9KUFHAQmoqmd55N+izvB9dZgbE5c1cIvi55m3aDNMRxxc
+	ibeakUKHtGptQZriefX2PCbZDgmlVqJVfk28+02mVTE1K5sylGXiP9tBOSr2E82qKhS8h7K
+	Ro0b4LgaET50fpplSLbF1+QZNggeEAV5IIzYCE7Wtpm9J9bQV8iQ5HRtnm3/z3JYd+aBErL
+	nPakD1OxSRvtwusUYKyl00s8jVB4N+ZaEtVqlqmeT0NaNtjuhnOpufOnpAJkxETTKFEfJBk
+	JndikrYdDgBKJInZyFuANgNmxG5zP8OH3iq5oYLP+FhM//7NDGV2+MYaUxOm9eTNc3G9WIR
+	/+v/Ijqoh8OMriAL6PycAVORcFDnf4Smvc2qsfY9ZN6KWaCOjMSt4z/lnIKb6lH45tbBPG5
+	9cdwSrbmBm0MLygxpfSaALDnLjMDOFyJNXDYhCLc4bxgAZmRkF1ivVykqJAZWWeqIUnl9FC
+	kSZlQllgi+98E1jz82H7t6Gpwnmg571Z
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_121343_467884_7E6CA86F 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20241210_141149_277216_6917C3F5 
+X-CRM114-Status: GOOD (  25.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +82,284 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBEZWMgMTAsIDIwMjQgYXQgMzowMeKAr0FNIERyYWdhbiBTaW1pYyA8ZHNpbWljQG1h
-bmphcm8ub3JnPiB3cm90ZToKPgo+IEhlbGxvIFBldGVyLAo+Cj4gT24gMjAyNC0xMi0xMCAwMjoz
-MCwgUGV0ZXIgR2VpcyB3cm90ZToKPiA+IFJlbW92ZSB0aGUgZXRoZXJuZXQgYWxpYXMgYWRkZWQg
-YmFjayBpbiBkdXJpbmcgdGhlIHJrMzMyOC1yb2MgZHRzaQo+ID4gY29udmVyc2lvbi4KPgo+IEkg
-anVzdCBjaGVja2VkIGFnYWluIHRoZSBkdHNpIHBhcmVudCBjb252ZXJzaW9uIEkgcGVyZm9ybWVk
-IGluCj4gdGhlIGNvbW1pdCBmM2M2NTI2ZDZmYjIgKCJhcm02NDogZHRzOiByb2NrY2hpcDogQ29u
-dmVydCBkdHMgZmlsZXMKPiB1c2VkIGFzIHBhcmVudHMgdG8gZHRzaSBmaWxlcyIpLCBhbmQgYm90
-aCByazMzMjgtcm9jLWNjLmR0cyBhbmQKPiByazMzMjgtcm9jLXBjLmR0cyBoYWQgdGhlIGV0aGVy
-bmV0MCBhbGlhcyBkZWZpbmVkIGJlZm9yZSB0aGUKPiBjb252ZXJzaW9uLiAgVGh1cywgdGhlIGFs
-aWFzIHdhc24ndCBhZGRlZCBiYWNrIGJ5IG1pc3Rha2UgZHVyaW5nCj4gdGhlIGNvbnZlcnNpb24s
-IGl0IHdhcyB0aGVyZSBiZWZvcmUuCj4KPiBNb3Jlb3ZlciwgSSBkb24ndCBzZWUgd2h5IHdvdWxk
-IHdlIHdhbnQgdG8gZGVsZXRlIHRoZSBldGhlcm5ldDAKPiBhbGlhcyhlcykgaW4gdGhlIGZpcnN0
-IHBsYWNlPyAgSXQncyB1c3VhbCBmb3IgUm9ja2NoaXAgYm9hcmQgZHRzCj4gZmlsZXMgdG8gaGF2
-ZSBldGhlcm5ldFggYWxpYXNlcyBkZWZpbmVkLCBhbmQgYm90aCBST0MtUkszMzI4LUNDCj4gYW5k
-IFJPQy1SSzMzMjgtUEMgaGF2ZSB0aGVpciBnbWFjMmlvIERUIG5vZGVzIGVuYWJsZWQsIGFuZCB0
-aGUKPiBib2FyZHMgaGF2ZSB3aXJlZCBFdGhlcm5ldCBwb3J0cywgc28gdGhleSBzaG91bGQgYWxz
-byBoYXZlIHRoZQo+IGV0aGVybmV0MCBhbGlhcyhlcykgZGVmaW5lZC4KPgo+IEFtIEkgbWlzc2lu
-ZyBzb21ldGhpbmc/CgpZb3UgYXJlbid0IG1pc3Npbmcgc29tZXRoaW5nLCBJIGp1c3QgbWlzdW5k
-ZXJzdG9vZCB3aGF0IHdhcyBoYXBwZW5pbmcKd2l0aCB5b3VyIHBhdGNoLiBJIGNhbiBzYWZlbHkg
-ZHJvcCB0aGlzLgoKVGhhbmtzIQpQZXRlcgoKPgo+ID4gRml4ZXM6IGYzYzY1MjZkNmZiMiAoImFy
-bTY0OiBkdHM6IHJvY2tjaGlwOiBDb252ZXJ0IGR0cyBmaWxlcyB1c2VkIGFzCj4gPiBwYXJlbnRz
-IHRvIGR0c2kgZmlsZXMiKQo+ID4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0
-QGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4KPiA+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzMyOC1yb2MuZHRzaSB8IDEgLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0p
-Cj4gPgo+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4
-LXJvYy5kdHNpCj4gPiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy5k
-dHNpCj4gPiBpbmRleCBiNWJkNWU3ZDU3NDguLmY3ODJjODIyMGRkMyAxMDA2NDQKPiA+IC0tLSBh
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy5kdHNpCj4gPiArKysgYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2MuZHRzaQo+ID4gQEAgLTksNyAr
-OSw2IEBACj4gPgo+ID4gIC8gewo+ID4gICAgICAgYWxpYXNlcyB7Cj4gPiAtICAgICAgICAgICAg
-IGV0aGVybmV0MCA9ICZnbWFjMmlvOwo+ID4gICAgICAgICAgICAgICBtbWMwID0gJnNkbW1jOwo+
-ID4gICAgICAgICAgICAgICBtbWMxID0gJmVtbWM7Cj4gPiAgICAgICB9OwoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Sebastian,
+
+Thank you very much for your work!
+
+$ cat 
+/sys/class/power_supply/tcpm-source-psy-4-0022/{current_max,current_now,online,type,usb_type,voltage_max,voltage_min,voltage_now}
+1500000
+1500000
+1
+USB
+C [PD] PD_PPS
+20000000
+20000000
+20000000
+
+$ cat 
+/sys/class/power_supply/tcpm-source-psy-4-0022/{current_max,current_now,online,type,usb_type,voltage_max,voltage_min,voltage_now}
+5000000
+5000000
+1
+USB
+C PD [PD_PPS]
+20000000
+20000000
+20000000
+
+$ ls /sys/class/udc/
+fc000000.usb
+
+I can configure it as CDC-NCM and host detects it.
+But I could not use it as a HOST port. How to use it?
+
+some minor nitpick is below:
+
+On 12/11/24 01:36, Sebastian Reichel wrote:
+> Add hardware description for the USB-C port in the Radxa Rock 5 Model B.
+> This describes the OHCI, EHCI and XHCI USB parts, but not yet the
+> DisplayPort AltMode (bindings are not yet upstream).
+> 
+> The fusb302 node is marked with status "fail", since the board is usually
+> powered through the USB-C port. Handling of errors can result in hard
+> resets, which removed the bus power for some time resulting in a board
+> reset.
+> 
+> The main problem is that devices are supposed to interact with the
+> power-supply within 5 seconds after the plug event according to the
+> USB PD specification. This is more or less impossible to achieve when
+> the kernel is the first software communicating with the power-supply.
+> 
+> Recent U-Boot (v2025.01) will start doing USB-PD communication, which
+> solves this issue. Upstream U-Boot doing USB-PD communication will also
+> set the fusb302 node status to "okay". That way booting a kernel with
+> the updated DT on an old U-Boot avoids a reset loop.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>   .../boot/dts/rockchip/rk3588-rock-5b.dts      | 121 ++++++++++++++++++
+>   1 file changed, 121 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index d597112f1d5b..cb5990df6ccb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -5,6 +5,7 @@
+>   #include <dt-bindings/gpio/gpio.h>
+>   #include <dt-bindings/leds/common.h>
+>   #include <dt-bindings/soc/rockchip,vop2.h>
+> +#include <dt-bindings/usb/pd.h>
+>   #include "rk3588.dtsi"
+>   
+>   / {
+> @@ -84,6 +85,15 @@ rfkill-bt {
+>   		shutdown-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+>   	};
+>   
+> +	vcc12v_dcin: regulator-vcc12v-dcin {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc12v_dcin";
+
+typec_vin by schematic.
+
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
+> +
+>   	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
+>   		compatible = "regulator-fixed";
+>   		enable-active-high;
+> @@ -142,6 +152,7 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+>   		regulator-boot-on;
+>   		regulator-min-microvolt = <5000000>;
+>   		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc12v_dcin>;
+
+typec_vin.
+
+>   	};
+>   
+>   	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
+> @@ -264,6 +275,67 @@ regulator-state-mem {
+>   	};
+>   };
+>   
+> +&i2c4 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c4m1_xfer>;
+> +	status = "okay";
+> +
+> +	usbc0: usb-typec@22 {
+
+Is "usbc0" label necessary?
+
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio3>;
+> +		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usbc0_int>;
+
+cc_int_l by schematic.
+
+> +		vbus-supply = <&vcc12v_dcin>;
+
+typec_vin
+
+> +		/*
+> +		 * When the board is starting to send power-delivery messages
+> +		 * too late (5 seconds according to the specification), the
+> +		 * power-supply reacts with a hard-reset. That removes the
+> +		 * power from VBUS for some time, which resets te whole board.
+
+... resets "the" whole board.
+
+> +		 */
+> +		status = "fail";
+> +
+> +		usb_con: connector {
+
+Is "usb_con" label necessary?
+
+> +			compatible = "usb-c-connector";
+> +			label = "USB-C";
+> +			data-role = "dual";
+> +			power-role = "sink";
+> +			try-power-role = "sink";
+> +			op-sink-microwatt = <1000000>;
+> +			sink-pdos =
+> +				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>,
+> +				<PDO_VAR(5000, 20000, 5000)>;
+> +
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				port@0 {
+> +					reg = <0>;
+> +					usbc0_role_sw: endpoint {
+> +						remote-endpoint = <&dwc3_0_role_switch>;
+> +					};
+> +				};
+> +
+> +				port@1 {
+> +					reg = <1>;
+> +					usbc0_orien_sw: endpoint {
+> +						remote-endpoint = <&usbdp_phy0_orientation_switch>;
+> +					};
+> +				};
+> +
+> +				port@2 {
+> +					reg = <2>;
+> +					dp_altmode_mux: endpoint {
+> +						remote-endpoint = <&usbdp_phy0_dp_altmode_mux>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>   &i2c6 {
+>   	status = "okay";
+>   
+> @@ -423,6 +495,10 @@ usb {
+>   		vcc5v0_host_en: vcc5v0-host-en {
+>   			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+> +
+> +		usbc0_int: usbc0-int {
+
+cc_int_l
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> +			rockchip,pins = <3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+>   	};
+>   };
+>   
+> @@ -835,6 +911,14 @@ &uart2 {
+>   	status = "okay";
+>   };
+>   
+> +&u2phy0 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy0_otg {
+> +	status = "okay";
+> +};
+> +
+>   &u2phy1 {
+>   	status = "okay";
+>   };
+> @@ -866,6 +950,29 @@ &usbdp_phy1 {
+>   	status = "okay";
+>   };
+>   
+> +&usbdp_phy0 {
+> +	mode-switch;
+> +	orientation-switch;
+> +	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
+> +	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		usbdp_phy0_orientation_switch: endpoint@0 {
+> +			reg = <0>;
+> +			remote-endpoint = <&usbc0_orien_sw>;
+> +		};
+> +
+> +		usbdp_phy0_dp_altmode_mux: endpoint@1 {
+> +			reg = <1>;
+> +			remote-endpoint = <&dp_altmode_mux>;
+> +		};
+> +	};
+> +};
+> +
+>   &usb_host0_ehci {
+>   	status = "okay";
+>   };
+> @@ -874,6 +981,20 @@ &usb_host0_ohci {
+>   	status = "okay";
+>   };
+>   
+> +&usb_host0_xhci {
+> +	usb-role-switch;
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		dwc3_0_role_switch: endpoint {
+> +			remote-endpoint = <&usbc0_role_sw>;
+> +		};
+> +	};
+> +};
+> +
+>   &usb_host1_ehci {
+>   	status = "okay";
+>   };
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
