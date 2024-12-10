@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6036AE77185
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 467E3E77182
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Dec 2024 17:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,40 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RbQ7dWO1Ud3bCZEcaDRFlxVhVgUs6yZYrQ9EsOidmk8=; b=L0L7HNX6EUEnR9
-	m9bH4NPmd6rwJQZya2PHEBIEvxhEUWUsrmlhWW+WljyRjsHohbU+ng990M/YFmheskcdw1BSLMSqI
-	aEGInpOmRi90udtuLCCSzJjG0sTLosaqbwsqc9y/QO+dHk7LQHAzo8sCHbflacV1U9fsUgL9rXlCL
-	kzshOH2V4ypXkCggrL81PNHsGKjd8gtu7+52xCahchGF6FB//81XoFa3kkZZMSC741m3pyLzVVWsD
-	ibafkMPlvNrCnBsY6mHsEEDK/UeIdUMyykXDSKuh692xbdWRC33QEjJqBjzVkDNhwqfRFjBeWwepe
-	rA97ricmvmGCO2UYvunQ==;
+	List-Owner; bh=lf0osoOMCR5dI/M85lLSCnBQwfxmmE4JJr9qxkCqZZs=; b=jn146GMuem6ZjP
+	gMpD9najJL3YN+mRf9/Y/L20YLCqPIdWps3TjkxjSpEN7lre8zQ9ifYbZ++A14eZj2FiR+Tb3xON2
+	COfPJjmXiB/xFkq8PRHZn8TQW7/eBW6UmylbRlnvFQT9TMctL8vGL+4o2RlnVLgzAlGHCdLljB1l0
+	OLlR+e/nhFaPkTFBiTUh3jm/ZcfzfyWrdgG4oJKTTCL55+q+QREkQUn1X+t4CcJPdObQDuk3YlahF
+	3GsJmz5YAJ0DV1HxP0QfFflKpf5f7ogDgQF+H11kgaFXU6XYJ57A7hzI8ERu/XGQDe27fD/3x1tZU
+	XbarISHZ85cHF4wQyJag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL3lL-0000000CDKB-0Oay;
+	id 1tL3lL-0000000CDKQ-3H2n;
 	Tue, 10 Dec 2024 17:11:07 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tL3kh-0000000CDAX-2Y2t
+	id 1tL3kh-0000000CDAo-2YAE
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Dec 2024 17:10:29 +0000
+	Tue, 10 Dec 2024 17:10:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1733850625;
-	bh=fC0pCAo2XvTLTelwyvhpjGUBmtu099+nMxksrhgRHPU=;
+	bh=NJ7R6moR13i/qYgT1UcSIwbcfv9v3Unc4ptYYcOTvR8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NI/1oTgD9eclSLSmBpjWvcQ7SBog1PdkLqMSi/Z2ZL0DMagPl4vucz3CpSXR/YH7+
-	 cSpoAGnvjOYu+sLhnBEi9Jh0IYzgQwDV+cT5BdqgOiI4cUVvFbK98nIk1NZhrFe7m4
-	 RsAfa8q/JAejqidwh/L/Qk/siLpoECavedvWkeSYaiIX0v9qXlSZlPLET8dh2AzHyI
-	 7VnZvQIr6g5xdVC+B613OQwJ4adHnVM68YRErMmz5Pzouk1HI7Vpb4j/kuP6E3awGe
-	 Fxosm0HTdNmDRLWEvOzpj+ZX/YuCd7Z/SLu4Z/seJ3yoMmoy3haK0LJ0YEPjrbwJPU
-	 gTvB3bIDdjuRg==
+	b=CV5pqR1ZizLOUCx6gWPAczRIc617fq/Oe9xuc+GK2VVGka9ZWLpUcfqgf1qxRwso+
+	 81PH6+Gn08GJWC5SYyvNHhFlPNr8eBBovsvrWHSi+L7Pc9oAJZ0vEmKFXJa+XfioR3
+	 jcubQOC4mPuriwMgyqo/rEfFvnSOVU+Og2Fp2LbitonLE9y6y8SmWvYrMBlrL3YPZt
+	 rMUPzf2K+dRyUCYWooW0SYp+b+HEIHmCu53SGJjs2bEVdE827AuInp3fvq5Zvyk+yc
+	 cbzkICZTPiAlfxgFyY2ampGH220J0KTum5zzKXxIZ2SyOB89ORE03UrSSVnENhyDcS
+	 rIkpt5yZMICqA==
 Received: from jupiter.universe (dyndsl-091-248-190-127.ewe-ip-backbone.de [91.248.190.127])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 214AF17E37B2;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 22E8D17E37C0;
 	Tue, 10 Dec 2024 18:10:25 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id A738548CC8C; Tue, 10 Dec 2024 18:10:24 +0100 (CET)
+	id A952D48CC8D; Tue, 10 Dec 2024 18:10:24 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -64,16 +64,16 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-pm@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v4 2/7] pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
-Date: Tue, 10 Dec 2024 18:06:42 +0100
-Message-ID: <20241210171023.141162-3-sebastian.reichel@collabora.com>
+Subject: [PATCH v4 3/7] pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
+Date: Tue, 10 Dec 2024 18:06:43 +0100
+Message-ID: <20241210171023.141162-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241210171023.141162-1-sebastian.reichel@collabora.com>
 References: <20241210171023.141162-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_091027_808170_4D0B1ED4 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20241210_091027_843396_CBCEF1A1 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +90,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the cleanup infrastructure to handle the mutex, which
-slightly improve code readability for this function.
+Currently rockchip_do_pmu_set_power_domain prints a warning if there
+have been errors turning on the power domain, but it does not return
+any errors and rockchip_pd_power() tries to continue setting up the
+QOS registers. This usually results in accessing unpowered registers,
+which triggers an SError and a full system hang.
+
+This improves the error handling by forwarding the error to avoid
+kernel panics.
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com> # On Rock 5B
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/pmdomain/rockchip/pm-domains.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/pmdomain/rockchip/pm-domains.c | 34 +++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index cb0f93800138..a161ee13c633 100644
+index a161ee13c633..8f440f2883db 100644
 --- a/drivers/pmdomain/rockchip/pm-domains.c
 +++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -574,13 +574,12 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 	struct rockchip_pmu *pmu = pd->pmu;
- 	int ret;
- 
--	mutex_lock(&pmu->mutex);
-+	guard(mutex)(&pmu->mutex);
- 
- 	if (rockchip_pmu_domain_is_on(pd) != power_on) {
- 		ret = clk_bulk_enable(pd->num_clks, pd->clks);
- 		if (ret < 0) {
- 			dev_err(pmu->dev, "failed to enable clocks\n");
--			mutex_unlock(&pmu->mutex);
- 			return ret;
- 		}
- 
-@@ -606,7 +605,6 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 		clk_bulk_disable(pd->num_clks, pd->clks);
- 	}
- 
--	mutex_unlock(&pmu->mutex);
- 	return 0;
+@@ -533,16 +533,17 @@ static int rockchip_pmu_domain_mem_reset(struct rockchip_pm_domain *pd)
+ 	return ret;
  }
  
+-static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+-					     bool on)
++static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
++					    bool on)
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	struct generic_pm_domain *genpd = &pd->genpd;
+ 	u32 pd_pwr_offset = pd->info->pwr_offset;
+ 	bool is_on, is_mem_on = false;
++	int ret;
+ 
+ 	if (pd->info->pwr_mask == 0)
+-		return;
++		return 0;
+ 
+ 	if (on && pd->info->mem_status_mask)
+ 		is_mem_on = rockchip_pmu_domain_is_mem_on(pd);
+@@ -557,16 +558,21 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 
+ 	wmb();
+ 
+-	if (is_mem_on && rockchip_pmu_domain_mem_reset(pd))
+-		return;
++	if (is_mem_on) {
++		ret = rockchip_pmu_domain_mem_reset(pd);
++		if (ret)
++			return ret;
++	}
+ 
+-	if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
+-				      is_on == on, 0, 10000)) {
+-		dev_err(pmu->dev,
+-			"failed to set domain '%s', val=%d\n",
+-			genpd->name, is_on);
+-		return;
++	ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
++					is_on == on, 0, 10000);
++	if (ret) {
++		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
++			genpd->name, on ? "on" : "off", is_on);
++		return ret;
+ 	}
++
++	return 0;
+ }
+ 
+ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+@@ -592,7 +598,11 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 			rockchip_pmu_set_idle_request(pd, true);
+ 		}
+ 
+-		rockchip_do_pmu_set_power_domain(pd, power_on);
++		ret = rockchip_do_pmu_set_power_domain(pd, power_on);
++		if (ret < 0) {
++			clk_bulk_disable(pd->num_clks, pd->clks);
++			return ret;
++		}
+ 
+ 		if (power_on) {
+ 			/* if powering up, leave idle mode */
 -- 
 2.45.2
 
