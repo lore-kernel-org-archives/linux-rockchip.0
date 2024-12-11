@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69710E7717D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 13:03:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEBBE7717D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 13:06:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lMc+R9HzF9YKI9s0dt+EXkWatvTaaUPWCH27l+hF/2c=; b=mtY9WZysMDirB/
-	oXwogZIYJXTiZ48o9I7KOwtkqskMxRWPR+z/JRZigZh8o/0Ydr1MVe3ZJynGkMIxULTX4TAfoQ36m
-	UTXcawnv/cHWxE1v+gigkHpTjLCW9QbR1+iMvOsmDIXlgnmim21u4uUK4nBIPunzSeO7D6yFyKl7Y
-	DDthe8D97cPOrqnDjSDBmJV89MtEwrDLO7s4XhEoOjisTTnbYo5BdbGXucAvIrvrSfX+nEAezDNWQ
-	ctjCM+wjVLOMCmB4GRSbAzmzkKKqpOvnqNN/48wVzseT2WNF4lpEJg9igKGQsgWsBak2i46sTyEMX
-	R4ZbZc/kOa+5EePVPVzg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pnC9qH+uITQ89xM9uNNaXsfVsnEU6s4z8Ss3+rYEtuI=; b=Q8wEjxu0WU0jCc
+	TOFCSRWGMGFtRIPPRBqXkNByNJLREDa9G3cfNiPAM7Hk8RKFUzepqEdD3DJd2P9J5yJ6Qw8SQMATY
+	GFNNfNjoivXjiv2X9Pl1zcNmZ/a7m0O+OsY4I6gLOLkRkHpfg804IovpWkucyTkluuF7VtAg+hg5u
+	kIj9XNTIlQgZxubYn8gEQ3wZAGw93a3G2vGZBf9vgt03V4McQ1h72nfpaNtqOHS1zeXoM1T1Ueo6g
+	iPCNspiU2nQTTDEMN+Fa97iBJjvrxfLMyml3DINUPiFFh7npHEkkkjgchWzARwHyLzEzVYwQIXlt1
+	d5V78Z2z3lVBf4QHh+fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLMMt-0000000Ev2p-1lwH;
-	Wed, 11 Dec 2024 13:03:07 +0000
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+	id 1tLMQ0-0000000EvoN-1gxJ;
+	Wed, 11 Dec 2024 13:06:20 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLMFG-0000000Etb1-0tPk
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Dec 2024 12:55:15 +0000
-Received: by mail-qt1-x82b.google.com with SMTP id d75a77b69052e-46772a0f8fbso22371811cf.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Dec 2024 04:55:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1733921713; x=1734526513; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=zHoDt/h8ui80UnaqOsX85MLqzjHOW1E0Add4KVcBBwg=;
-        b=dpxC7JfGfrELiwiZb3bl0GrggtyuviEAJyriPHIz23shcIZbsuNHIls6mfyq2aMAIo
-         7yvb08XZ22ODFOVaiR6LjnKmZtLc0/y/xazN/7kHdZqQrt7cxDR8TW1KLLwzyPCEyKU3
-         bOM8hXjdbwPvumE6ZsmFO9zL4vsFS1i2Ln8Rx6ZTlaTqnOGl2WBfEaD7gIWUJTXIoEg7
-         KqQToj586Ol9CUO9XkDC3Ru568aKUaQ8SQXZ9kUwRp42KbcIIPqqfUWSkG9/T87aiZ6u
-         IfTWhG2Pmo6X3K44wfsLRZ5gKiIMJY6qGReymsOsQ39jyKeK5ypPTeTvQzOIIInb8RVZ
-         l02g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733921713; x=1734526513;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zHoDt/h8ui80UnaqOsX85MLqzjHOW1E0Add4KVcBBwg=;
-        b=SdpZZFB57oQqTVwEU4LyXViFQcfzTKd3WDjBMvWeE0V4eeXmpwudvv3PiCxTmE9HFi
-         ui1JofRY5S2UKt1a2o2ktsf8vCUB/S+qppPWwg13LfElqRdIJCJ4pdZhiWHtd4NrOavH
-         eUH1Anr4UJIk5kwdz8Eq2Vp0H8GUan35IRkeaHOGK5lF0dvLWdKG1PcXjlezvMrsQgSi
-         xcj8aP2a2IneRqfdEyphj//0OW2ipH3yNSaPng7LBRPyHHDVX+6q6BnjnuE7ggFsnR4X
-         1iC7M8oarXeAiT5ePSq3WNqMHXqxFtrr0k8XxmGYF7pmoxrWCeMppN6Xj6WlvGK3XNs7
-         zCQQ==
-X-Gm-Message-State: AOJu0YxWE1eMc/woJM0MDzvlzkaJRJ22sYjTwomZz2F8+Z65WX27DO3c
-	e7LgocBOWBiqxK5G2GsN7tmSHTFbSxa+Vm7vPOo6km1ePhEHfczCnMsUBvEb7aiUAYsf+rwQUTW
-	NqN4ebDIYV3dpS+cbr7thPodV7s2gSx+Q
-X-Gm-Gg: ASbGncslwQPI95RrPxoQ6kVh9xy9uELiWALZ0+d1+w0URwq9xuRbE2vmv9Butu93XWm
-	pm91P9W9PFg/26c4g32Va7HzJBKNTP3wvSNs=
-X-Google-Smtp-Source: AGHT+IFqh6uACAwYwKtj/nn2LiYYfGBttFZYC8vViteqXGqgH5QHfuJqTGxVJdSsy9F3jVWbIB1dYDgyznzlHPAf9/g=
-X-Received: by 2002:a05:622a:1648:b0:467:5014:8bd9 with SMTP id
- d75a77b69052e-467892d706emr51720591cf.23.1733921713017; Wed, 11 Dec 2024
- 04:55:13 -0800 (PST)
+	id 1tLMM8-0000000Euo9-2bfz;
+	Wed, 11 Dec 2024 13:02:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Jkmc+0iMxSsuraunK1hN8Fbs31rpvecJZuCVn+Hdq70=; b=2EAp0vPV9U9VTzLQIBFoBNm3wm
+	wZi0Eggw03q+26nYB020dRYGjGIj1liBjiypzd55QnC7v5a+CyphFgnHfLRnru551jrqhGFMkFQg/
+	ZCbtrjpajxf9gFv40AJhXC+S2kNyDU39e8ckE3DgCmhpmY621QxHg3oC6P4H94nCJAPpb6PmHvQrd
+	0pA7NsaCoQ9cQ9XZxUtCsbT3RPORl4vo29LOiCS/o0MG9oNROg4xuR95xELFIO1x3vUv5eMGSStmf
+	nqmoN/uFxYXq36yG90YlKaLE8mkKbJaqjed7tWq9hjJCwu4r8gxYiWe9z+dK+LSrleaxEX0oBd0HG
+	xMlS/E2w==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tLMLd-0003DO-Li; Wed, 11 Dec 2024 14:01:49 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Lee Jones <lee@kernel.org>, Jiri Kosina <jikos@kernel.org>
+Cc: jic23@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
+ srinivas.pandruvada@linux.intel.com, bentiss@kernel.org,
+ dmitry.torokhov@gmail.com, pavel@ucw.cz, ukleinek@debian.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-leds@vger.kernel.org, stable@vger.kernel.org
+Subject: Re: [PATCH v9 1/9] HID: hid-sensor-hub: don't use stale platform-data on
+ remove
+Date: Wed, 11 Dec 2024 14:01:48 +0100
+Message-ID: <3196449.TQGk6oTFT5@diego>
+In-Reply-To: <n914pn7o-pr9n-5ss0-p744-73402nnn843p@xreary.bet>
+References: <20241107114712.538976-1-heiko@sntech.de> <20241211120844.GD7139@google.com>
+ <n914pn7o-pr9n-5ss0-p744-73402nnn843p@xreary.bet>
 MIME-Version: 1.0
-From: Vicente Bergas <vicencb@gmail.com>
-Date: Wed, 11 Dec 2024 13:55:01 +0100
-Message-ID: <CAAMcf8DL27-PYdEJ4eX1-PJnQDWB0osgHR0gbHAcr_oRniWOOg@mail.gmail.com>
-Subject: PCIe missing on RK3399
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_045514_252522_A6BF48D2 
-X-CRM114-Status: UNSURE (   6.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241211_050220_682092_0BB9AEEA 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,20 +80,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-i've tested the Linux kernel 6.13-rc1 and rc2 and in both cases PCIe
-is not detected on the RK3399 platform (rk3399-gru-kevin), whereas the
-kernel version 6.12.3 works fine.
+Am Mittwoch, 11. Dezember 2024, 13:24:42 CET schrieb Jiri Kosina:
+> On Wed, 11 Dec 2024, Lee Jones wrote:
+> 
+> > > > > This change was more or less a surprise find, because I wanted to make
+> > > > > the platform_data pointer in the mfd_cell struct const and this the hid
+> > > > > sensor hub stood out as doing something strange ;-) .
+> > > > > 
+> > > > > So patch 2 of this series actually depends on this change to not cause
+> > > > > build errors.
+> > > > 
+> > > > Ah, right.
+> > > > 
+> > > > > But seeing that we're after -rc6 alredy, I would assume the brunt of the 
+> > > > > mcu series might need to wait after 6.13-rc1 anyway - but I guess that 
+> > > > > depends on how Lee sees things ;-) .
+> > > > 
+> > > > OK, I am keeping my hands off it for the time being.
+> > > 
+> > > I can take it now with an Ack.
+> > 
+> > Looking to apply this set now.
+> > 
+> > Ack please.
+> 
+> I'd preferer if Srinivas could ack this as the more specific maintainer. 
+> Srinivas, please? 
 
-6.13 configuration is based on the same one as 6.12 and there aren't
-any significant PCI-related differences.
+The patch already includes the
+   Ack from Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+from a previous version, so I guess it should be ok already?
 
-The messages from dmesg on 6.13 don't show any PCI-related errors.
 
-Does somebody know what is going on?
 
-Regards,
-  Vicente.
 
 _______________________________________________
 Linux-rockchip mailing list
