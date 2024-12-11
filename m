@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20837E7717D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 17:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE57E77184
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 17:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=swQ87L9yTzvScDaHgGqJImhKLjdq3ZIqakZrBW/M5yI=; b=CkEHf9JFpgNrxF
-	9c5Z00HmaIXUF1GDo61Js8pTeO7Z5nYSu9dAuX7EDs41trB8fDtPnEpPjYV/EAfW5bRArLcmUoGvr
-	RpnsY6HrfL7pEiBHtjza6VWqi2pUZuya+6/acGBcwRrOETPoqOBQ+JuY6eEdU8QC3OObLEbbvwWdT
-	7ZqMoiUdZxoXbd7DQUpvqWPscKvhwjolu56zIBrJRWCcjr1xXzswnZlAjQHYI+kPxuDshVhnmNjrK
-	eOVsEmpIzLpZnZVxPqHb9qOghRr7mrCds8B4NIuNIh7vP+Ma/TVNuN0bA3Vbn7PSg4cYgvs3NMZO6
-	ofuX/CGKZvserKEWFaTg==;
+	List-Owner; bh=HHWPJ/5hKA+36o7x1s3kNlO9ug6vesq9Ib0M9rfadC0=; b=lbGUmn6YITMsKD
+	/ZV5fMwnWIsphS/m1CPujNBtj1Anpq7S0pTZthJ+yjpga6co78JEGWAglS8zgjh0e77UwsqlSnky9
+	Si2qRr3BapSnSLuhkGQpe65HZo7XOQwVj5400WhtaW3hRpwIdKIgfJzHOhrsP1vZ1ut58hfaxXwGl
+	Qv82EGInweyE/oY2y0hpSsNV+s3y/WLF1fOpc4bcEGQjsOjP5bAdXyrUAzDZ0icT78kjpz0KZUZsZ
+	HbE6YTl0Kz39JRefNX2ndISe5SYlcIbovctbM6KsXWvPvqHf8zWUKrjamX5epUZiMUm5Mvx5uCtrp
+	fZqfkx4mGP9zgQbZnWNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLQ4G-0000000FXm6-2JLx;
+	id 1tLQ4G-0000000FXmO-3nrd;
 	Wed, 11 Dec 2024 17:00:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLQ49-0000000FXhJ-2G1T
+	id 1tLQ49-0000000FXhH-2MKS
 	for linux-rockchip@lists.infradead.org;
 	Wed, 11 Dec 2024 17:00:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1733936399;
-	bh=QA/W4Vn8nd4z1rappItt5ah76H8Bb+sXB0WDKuwO/yc=;
+	bh=wscIrGbAnnlwwmBenRu9NQ9zTdMnj0cQssdU+EELuq0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Gp9+CQ4sb9RnRQs6PHV23HridSMBZDAF8bgbKc3WAv7z4SgVoTRxvQHMXq2GVGOhL
-	 JMZd807DDaA7ttfBLFokqRPKIAIPNDAQkruVsZ352WhX8vEuBom7bsZsE/tDjAYlUH
-	 UjbUpDH/jWLMVhiy4L/hP1M9rne+zWaDmYloBvOI2VP/CW0CdQDOOzXrv7zmRlln4t
-	 xVtoDMPfw3Tna73nDsGqxqc4HhstQdLJyzo+i6GMofJmEn94H8CjpktM+g77A5Aamr
-	 wLc+NvGkWhc3mEwrKW7JiwcZZHenlDIvrRPvOcLnhDp2RdIUZKYdIuSA/g3ZzMAEBN
-	 RNSVb82UgaQ1w==
+	b=YaSvZPCDh5d+JN8T+LubgKK74yeYa41ieMmqcGrTVsh0ZwK7WQrBmR8aCGpcXcxR1
+	 ux+TEGkptFixBYg3M0Q35YMMJy3AgRTJ/gHwOnPzjhE0bKT8ASiro+jeddUO84QdbR
+	 s/85Guq08/kaK1UUTRLOpEKlgCjwwxyZK9/vS7rjt2PDk50jJXQW6/aKtp46f/k9bk
+	 mlGhKJ9zsNHAd3fjXuJrhzBuM0ROHyCiTzgeuKrtBaAgXxBCduQDAXucr6RM8NQGne
+	 hs/KVoDA14xqNVLCk+Xag2YtIPOIDgsNzPQJMJN3/NnobfBfMmC7ppgEajPNF66ToO
+	 nrE0oMaN0myug==
 Received: from jupiter.universe (dyndsl-091-248-215-089.ewe-ip-backbone.de [91.248.215.89])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F4D017E37C3;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2D90017E37C0;
 	Wed, 11 Dec 2024 17:59:59 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8062848CC8E; Wed, 11 Dec 2024 17:59:58 +0100 (CET)
+	id 7E6FA48CC8D; Wed, 11 Dec 2024 17:59:58 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	linux-clk@vger.kernel.org
@@ -65,16 +65,16 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-rockchip@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v12 4/5] clk: rockchip: implement linked gate clock support
-Date: Wed, 11 Dec 2024 17:58:53 +0100
-Message-ID: <20241211165957.94922-5-sebastian.reichel@collabora.com>
+Subject: [PATCH v12 3/5] clk: rockchip: expose rockchip_clk_set_lookup
+Date: Wed, 11 Dec 2024 17:58:52 +0100
+Message-ID: <20241211165957.94922-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241211165957.94922-1-sebastian.reichel@collabora.com>
 References: <20241211165957.94922-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_090001_725417_AB342BA2 
-X-CRM114-Status: GOOD (  32.20  )
+X-CRM114-CacheID: sfid-20241211_090001_754378_15C62CC0 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,324 +91,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recent Rockchip SoCs have a new hardware block called Native Interface
-Unit (NIU), which gates clocks to devices behind them. These clock
-gates will only have a running output clock when all of the following
-conditions are met:
-
-1. the parent clock is enabled
-2. the enable bit is set correctly
-3. the linked clock is enabled
-
-To handle them this code registers them as a normal gate type clock,
-which takes care of condition 1 + 2. The linked clock is handled by
-using runtime PM clocks. Handling it via runtime PM requires setting
-up a struct device for each of these clocks with a driver attached
-to use the correct runtime PM operations. Thus the complete handling
-of these clocks has been moved into its own driver.
+Move rockchip_clk_add_lookup to clk.h, so that it can be used
+by sub-devices with their own driver. These might also have to
+do a lookup, so rename the function to rockchip_clk_set_lookup
+and add a matching rockchip_clk_get_lookup.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/clk/rockchip/Makefile     |  1 +
- drivers/clk/rockchip/clk-rk3588.c | 23 +--------
- drivers/clk/rockchip/clk.c        | 52 +++++++++++++++++++
- drivers/clk/rockchip/clk.h        | 25 +++++++++
- drivers/clk/rockchip/gate-link.c  | 85 +++++++++++++++++++++++++++++++
- 5 files changed, 165 insertions(+), 21 deletions(-)
- create mode 100644 drivers/clk/rockchip/gate-link.c
+ drivers/clk/rockchip/clk.c | 14 ++++----------
+ drivers/clk/rockchip/clk.h | 12 ++++++++++++
+ 2 files changed, 16 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
-index af2ade54a7ef..3fe7616f0ebe 100644
---- a/drivers/clk/rockchip/Makefile
-+++ b/drivers/clk/rockchip/Makefile
-@@ -13,6 +13,7 @@ clk-rockchip-y += clk-inverter.o
- clk-rockchip-y += clk-mmc-phase.o
- clk-rockchip-y += clk-muxgrf.o
- clk-rockchip-y += clk-ddr.o
-+clk-rockchip-y += gate-link.o
- clk-rockchip-$(CONFIG_RESET_CONTROLLER) += softrst.o
- 
- obj-$(CONFIG_CLK_PX30)          += clk-px30.o
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 618bda0be5a4..d76ab27dd1b8 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -12,25 +12,6 @@
- #include <dt-bindings/clock/rockchip,rk3588-cru.h>
- #include "clk.h"
- 
--/*
-- * Recent Rockchip SoCs have a new hardware block called Native Interface
-- * Unit (NIU), which gates clocks to devices behind them. These effectively
-- * need two parent clocks.
-- *
-- * Downstream enables the linked clock via runtime PM whenever the gate is
-- * enabled. This implementation uses separate clock nodes for each of the
-- * linked gate clocks, which leaks parts of the clock tree into DT.
-- *
-- * The GATE_LINK macro instead takes the second parent via 'linkname', but
-- * ignores the information. Once the clock framework is ready to handle it, the
-- * information should be passed on here. But since these clocks are required to
-- * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
-- * clocks critical until a better solution is available. This will waste some
-- * power, but avoids leaking implementation details into DT or hanging the
-- * system.
-- */
--#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf) \
--	GATE(_id, cname, pname, f, o, b, gf)
- #define RK3588_LINKED_CLK		CLK_IS_CRITICAL
- 
- 
-@@ -2513,8 +2494,8 @@ static int clk_rk3588_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 
--	rockchip_clk_register_branches(ctx, rk3588_clk_branches,
--				       ARRAY_SIZE(rk3588_clk_branches));
-+	rockchip_clk_register_late_branches(dev, ctx, rk3588_clk_branches,
-+					    ARRAY_SIZE(rk3588_clk_branches));
- 
- 	rockchip_clk_finalize(ctx);
- 
 diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 90eb651f1425..2ea4d616840d 100644
+index 45214607467e..90eb651f1425 100644
 --- a/drivers/clk/rockchip/clk.c
 +++ b/drivers/clk/rockchip/clk.c
-@@ -19,6 +19,7 @@
- #include <linux/clk-provider.h>
- #include <linux/io.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reboot.h>
- 
-@@ -467,6 +468,29 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
+@@ -197,12 +197,6 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
+ 	clk_fractional_divider_general_approximation(hw, rate, parent_rate, m, n);
  }
- EXPORT_SYMBOL_GPL(rockchip_clk_find_max_clk_id);
  
-+static struct platform_device *rockchip_clk_register_gate_link(
-+		struct device *parent_dev,
-+		struct rockchip_clk_provider *ctx,
-+		struct rockchip_clk_branch *clkbr)
-+{
-+	struct rockchip_gate_link_platdata gate_link_pdata = {
-+		.ctx = ctx,
-+		.clkbr = clkbr,
-+	};
-+
-+	struct platform_device_info pdevinfo = {
-+		.parent = parent_dev,
-+		.name = "rockchip-gate-link-clk",
-+		.id = clkbr->id,
-+		.fwnode = dev_fwnode(parent_dev),
-+		.of_node_reused = true,
-+		.data = &gate_link_pdata,
-+		.size_data = sizeof(gate_link_pdata),
-+	};
-+
-+	return platform_device_register_full(&pdevinfo);
-+}
-+
- void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				    struct rockchip_clk_branch *list,
- 				    unsigned int nr_clk)
-@@ -592,6 +616,9 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				list->div_width, list->div_flags,
- 				ctx->reg_base, &ctx->lock);
- 			break;
-+		case branch_linked_gate:
-+			/* must be registered late, fall-through for error message */
-+			break;
+-static void rockchip_clk_add_lookup(struct rockchip_clk_provider *ctx,
+-				    struct clk *clk, unsigned int id)
+-{
+-	ctx->clk_data.clks[id] = clk;
+-}
+-
+ static struct clk *rockchip_clk_register_frac_branch(
+ 		struct rockchip_clk_provider *ctx, const char *name,
+ 		const char *const *parent_names, u8 num_parents,
+@@ -292,7 +286,7 @@ static struct clk *rockchip_clk_register_frac_branch(
+ 			return mux_clk;
  		}
  
- 		/* none of the cases above matched */
-@@ -612,6 +639,31 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+-		rockchip_clk_add_lookup(ctx, mux_clk, child->id);
++		rockchip_clk_set_lookup(ctx, mux_clk, child->id);
+ 
+ 		/* notifier on the fraction divider to catch rate changes */
+ 		if (frac->mux_frac_idx >= 0) {
+@@ -451,7 +445,7 @@ void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
+ 			continue;
+ 		}
+ 
+-		rockchip_clk_add_lookup(ctx, clk, list->id);
++		rockchip_clk_set_lookup(ctx, clk, list->id);
+ 	}
+ }
+ EXPORT_SYMBOL_GPL(rockchip_clk_register_plls);
+@@ -613,7 +607,7 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 			continue;
+ 		}
+ 
+-		rockchip_clk_add_lookup(ctx, clk, list->id);
++		rockchip_clk_set_lookup(ctx, clk, list->id);
+ 	}
  }
  EXPORT_SYMBOL_GPL(rockchip_clk_register_branches);
- 
-+void rockchip_clk_register_late_branches(struct device *dev,
-+					 struct rockchip_clk_provider *ctx,
-+					 struct rockchip_clk_branch *list,
-+					 unsigned int nr_clk)
-+{
-+	unsigned int idx;
-+
-+	for (idx = 0; idx < nr_clk; idx++, list++) {
-+		struct platform_device *pdev = NULL;
-+
-+		switch (list->branch_type) {
-+		case branch_linked_gate:
-+			pdev = rockchip_clk_register_gate_link(dev, ctx, list);
-+			break;
-+		default:
-+			dev_err(dev, "unknown clock type %d\n", list->branch_type);
-+			break;
-+		}
-+
-+		if (!pdev)
-+			dev_err(dev, "failed to register device for clock %s\n", list->name);
-+	}
-+}
-+EXPORT_SYMBOL_GPL(rockchip_clk_register_late_branches);
-+
- void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
- 				  unsigned int lookup_id,
- 				  const char *name, const char *const *parent_names,
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index d9e071ca9c5d..9b37d44b9e5d 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -570,6 +570,7 @@ enum rockchip_clk_branch_type {
- 	branch_divider,
- 	branch_fraction_divider,
- 	branch_gate,
-+	branch_linked_gate,
- 	branch_mmc,
- 	branch_inverter,
- 	branch_factor,
-@@ -597,6 +598,7 @@ struct rockchip_clk_branch {
- 	int				gate_offset;
- 	u8				gate_shift;
- 	u8				gate_flags;
-+	unsigned int			linked_clk_id;
- 	struct rockchip_clk_branch	*child;
- };
- 
-@@ -895,6 +897,20 @@ struct rockchip_clk_branch {
- 		.gate_flags	= gf,				\
+@@ -637,7 +631,7 @@ void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+ 		return;
  	}
  
-+#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf)	\
-+	{							\
-+		.id		= _id,				\
-+		.branch_type	= branch_linked_gate,		\
-+		.name		= cname,			\
-+		.parent_names	= (const char *[]){ pname },	\
-+		.linked_clk_id	= linkedclk,			\
-+		.num_parents	= 1,				\
-+		.flags		= f,				\
-+		.gate_offset	= o,				\
-+		.gate_shift	= b,				\
-+		.gate_flags	= gf,				\
-+	}
-+
- #define MMC(_id, cname, pname, offset, shift)			\
- 	{							\
- 		.id		= _id,				\
-@@ -1034,6 +1050,11 @@ static inline void rockchip_clk_set_lookup(struct rockchip_clk_provider *ctx,
- 	ctx->clk_data.clks[id] = clk;
+-	rockchip_clk_add_lookup(ctx, clk, lookup_id);
++	rockchip_clk_set_lookup(ctx, clk, lookup_id);
  }
+ EXPORT_SYMBOL_GPL(rockchip_clk_register_armclk);
  
-+struct rockchip_gate_link_platdata {
-+	struct rockchip_clk_provider *ctx;
-+	struct rockchip_clk_branch *clkbr;
-+};
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 4c6e2c931f8e..d9e071ca9c5d 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -1022,6 +1022,18 @@ struct rockchip_clk_branch {
+ #define SGRF_GATE(_id, cname, pname)				\
+ 		FACTOR(_id, cname, pname, 0, 1, 1)
+ 
++static inline struct clk *rockchip_clk_get_lookup(struct rockchip_clk_provider *ctx,
++						  unsigned int id)
++{
++	return ctx->clk_data.clks[id];
++}
++
++static inline void rockchip_clk_set_lookup(struct rockchip_clk_provider *ctx,
++					   struct clk *clk, unsigned int id)
++{
++	ctx->clk_data.clks[id] = clk;
++}
 +
  struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
  			void __iomem *base, unsigned long nr_clks);
  struct rockchip_clk_provider *rockchip_clk_init_early(struct device_node *np,
-@@ -1046,6 +1067,10 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
- void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				    struct rockchip_clk_branch *list,
- 				    unsigned int nr_clk);
-+void rockchip_clk_register_late_branches(struct device *dev,
-+					 struct rockchip_clk_provider *ctx,
-+					 struct rockchip_clk_branch *list,
-+					 unsigned int nr_clk);
- void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
- 				struct rockchip_pll_clock *pll_list,
- 				unsigned int nr_pll, int grf_lock_offset);
-diff --git a/drivers/clk/rockchip/gate-link.c b/drivers/clk/rockchip/gate-link.c
-new file mode 100644
-index 000000000000..cd0f7a2d30ab
---- /dev/null
-+++ b/drivers/clk/rockchip/gate-link.c
-@@ -0,0 +1,85 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (c) 2024 Collabora Ltd.
-+ * Author: Sebastian Reichel <sebastian.reichel@collabora.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_clock.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/property.h>
-+#include "clk.h"
-+
-+static int rk_clk_gate_link_register(struct device *dev,
-+				     struct rockchip_clk_provider *ctx,
-+				     struct rockchip_clk_branch *clkbr)
-+{
-+	unsigned long flags = clkbr->flags | CLK_SET_RATE_PARENT;
-+	struct clk *clk;
-+
-+	clk = clk_register_gate(dev, clkbr->name, clkbr->parent_names[0],
-+				flags, ctx->reg_base + clkbr->gate_offset,
-+				clkbr->gate_shift, clkbr->gate_flags,
-+				&ctx->lock);
-+
-+	if (IS_ERR(clk))
-+		return PTR_ERR(clk);
-+
-+	rockchip_clk_set_lookup(ctx, clk, clkbr->id);
-+	return 0;
-+}
-+
-+static int rk_clk_gate_link_probe(struct platform_device *pdev)
-+{
-+	struct rockchip_gate_link_platdata *pdata;
-+	struct device *dev = &pdev->dev;
-+	struct clk *linked_clk;
-+	int ret;
-+
-+	pdata = dev_get_platdata(dev);
-+	if (!pdata)
-+		return dev_err_probe(dev, -ENODEV, "missing platform data");
-+
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return ret;
-+
-+	ret = devm_pm_clk_create(dev);
-+	if (ret)
-+		return ret;
-+
-+	linked_clk = rockchip_clk_get_lookup(pdata->ctx, pdata->clkbr->linked_clk_id);
-+	ret = pm_clk_add_clk(dev, linked_clk);
-+	if (ret)
-+		return ret;
-+
-+	ret = rk_clk_gate_link_register(dev, pdata->ctx, pdata->clkbr);
-+	if (ret)
-+		goto err;
-+
-+	return 0;
-+
-+err:
-+	pm_clk_remove_clk(dev, linked_clk);
-+	return ret;
-+}
-+
-+static const struct dev_pm_ops rk_clk_gate_link_pm_ops = {
-+	SET_RUNTIME_PM_OPS(pm_clk_suspend, pm_clk_resume, NULL)
-+};
-+
-+static struct platform_driver rk_clk_gate_link_driver = {
-+	.probe		= rk_clk_gate_link_probe,
-+	.driver		= {
-+		.name	= "rockchip-gate-link-clk",
-+		.pm = &rk_clk_gate_link_pm_ops,
-+		.suppress_bind_attrs = true,
-+	},
-+};
-+
-+static int __init rk_clk_gate_link_drv_register(void)
-+{
-+	return platform_driver_register(&rk_clk_gate_link_driver);
-+}
-+core_initcall(rk_clk_gate_link_drv_register);
 -- 
 2.45.2
 
