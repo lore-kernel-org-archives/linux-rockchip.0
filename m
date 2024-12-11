@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441F0E7717D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 07:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94820E7717D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 07:30:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N55bVOtqu75OZOSpGahi0z7lVFVa1v56W0J1PoUu3CE=; b=vM7Vdavshl+A2qux777qxArNus
-	+BnaxHuhE8XLdNzAauc0WObN2K1q4YM+Hm+jx2z81/+U/f6N4v8/+6GFHX5iG3I9uA0q+f4C8kXad
-	QuCNC8CsTXgdpp8i0MrJaOGNF+aX/0eGru4fc1FneEOqcm8LF2kRBS3wPq6dDXvZnu2iECcz6tQDy
-	rrt/olXEWyWacCed0u3wvdTR7DKevd+h0oU83VCZjehZEPDhPh/8Ybs0iKbdwm5J8fZmFeJ1Pe8Wf
-	XbzYkiqjcAAqFfXp6NVKN0dKH4YIbiUz8xvs5M5DKGuxJfyhQxJCaCCWDWyNErShx+CcF0pfHXWbK
-	QlRG2p4A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=G/gJqZfayxooTdHWj13jC5AnQNkIy6pZftOhA/6ATVc=; b=Czucr8ZkCspBtR
+	ZBl+VG5HUGDR7MklONX8FSF57moamXMJnciPFkEWwAofvloLzUq4o5odWoA/bj9CXYxsVO2mHEnhb
+	yfVGcmLFGHz6j5Y5zB8Mb+eaP4qnfWxNEQakibGXOHW4GUVwaE3Cpv8cBCAETweWSzpOicPFVBDcn
+	pchtsYrP0S88zGVQHfJG+MeVP1G8ZoiPWZob5izJo+YtxCQ59QjqN/iprX6wksK53h73K66L0BRN9
+	bRQ0KNmAZNOv3ikyQNBUZoMe2ikCKRhaXfJX2Jaesf0e2lHtI/qM+vdhrUfFYQE3BhIGImVKPFU0q
+	+6hHMlybO0CPP4PqrtjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLGwm-0000000E1nH-1DKz;
-	Wed, 11 Dec 2024 07:15:48 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tLHBI-0000000E3os-0yIc;
+	Wed, 11 Dec 2024 07:30:48 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLGwi-0000000E1mi-48j8
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Dec 2024 07:15:46 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733901343;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2BpPH1yZVswMH1Wf+Y33W6T2e9E3vXeSE18Bj4y0Ye0=;
-	b=TJEtEtzUYqQ65e01lVtM681qqNU2jM0jqtJAS7rK7ThybCuRlVT688yGCNBfKjfjhl2sRw
-	8BuqvkjWK259jzvkHOOYxp9XERUJxHorLH0TcxZKstcUTyYAlxPwOiGGKn1QJTckJCCBH9
-	HEQWOv6Eu6pSfnxtBRL9wcJohWrZkTV1zm3VZSnhy0Pi+04+wwZ4MxvOwxrmmOxI7IE66U
-	uc8lIrUUzCmFNVW5FGOjPwD+V+luBLKhOaOFtKPcwHMgOBSDTWWKfhZVHOXyxik2YbUE7t
-	ManjtLTHPtzovdeVn+HjHDrP6t3oYkMZxOyWX/5grq3FEiru8LIpdpR1SlKjEA==
-Date: Wed, 11 Dec 2024 08:15:42 +0100
+	id 1tLHAD-0000000E3VC-0fB5;
+	Wed, 11 Dec 2024 07:29:42 +0000
 From: Dragan Simic <dsimic@manjaro.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, macromorgan@hotmail.com, jonas@kwiboo.se,
- andyshrk@163.com, liujianfeng1994@gmail.com, tim@feathertop.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: arm: rockchip: add Radxa ROCK 5C Lite
-In-Reply-To: <699843916ED096AB+f9c38503-2cd7-4ffb-9832-494f57a21b41@radxa.com>
-References: <20241211060936.57452-1-naoki@radxa.com>
- <c6ba70f1681bb635190e9452ecb22d59@manjaro.org>
- <FE22A7AEB0707DE7+903efcab-b291-4a12-a9a5-ba1cc3658016@radxa.com>
- <699843916ED096AB+f9c38503-2cd7-4ffb-9832-494f57a21b41@radxa.com>
-Message-ID: <63b8a250281548896755cb0496031349@manjaro.org>
-X-Sender: dsimic@manjaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1733902179;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=hSvPaPYTDrhaxeXHOjgIwmnYGfYQBlYwxY0RwWwuTDc=;
+	b=rG4dnS5y6JnYoM1DAPyUi8dQvdMTe4IKS8rR8evqzGQHVFSLrYV8R2cuG4NLsht7d//3sm
+	nSxum/OIHO7IS/2w7w2xwLr/jk0b/CBI9XUfszoDHQAV0vQM+t5fqw9yLB8ArUgHcwwlSH
+	6pSncdl6KmtufzEsEIODza0Q++MRWr/MXivVowlvAXnwH9N7AlgERmokJR/rTdEctr06wp
+	WQUaGzWo4bVgHuUic/iO1exwpUvlgkwBVRRD3TcOAcJxYnQrmiRi07QTum0mezA1Pqajik
+	McBCzIm9e+9r3C32AcsgdRvVkBOFWzlOWr2QEPezozMRXlimU3leYjMHT34fhw==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Delete redundant RK3328 GMAC stability fixes
+Date: Wed, 11 Dec 2024 08:29:32 +0100
+Message-Id: <e00f08d2351e82d6acd56271a68c7ed05b3362e8.1733901896.git.dsimic@manjaro.org>
+MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_231545_169651_FFF8B231 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20241210_232941_481325_8DEE610B 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +67,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0xMi0xMSAwODowMiwgRlVLQVVNSSBOYW9raSB3cm90ZToKPiBqdXN0IEZZSSwKPiAK
-PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8/cT1lNTJjCgpBRkFJQ1Qs
-IGl0IGlzbid0IHRvbyBsYXRlIHRvIGludHJvZHVjZSAicm9ja2NoaXAscmszNTgyIi4gOikKCj4g
-T24gMTIvMTEvMjQgMTU6NDQsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4+IE9uIDEyLzExLzI0IDE1
-OjM2LCBEcmFnYW4gU2ltaWMgd3JvdGU6Cj4+PiBPbiAyMDI0LTEyLTExIDA3OjA5LCBGVUtBVU1J
-IE5hb2tpIHdyb3RlOgo+Pj4+IFRoZSBSYWR4YSBST0NLIDVDIExpdGUgdXNlcyBhIGRpZmZlcmVu
-dCBTb0MgKFJLMzU4MikgY29tcGFyZWQgdG8gdGhlCj4+Pj4gUmFkeGEgUk9DSyA1QyAoUkszNTg4
-UzIpLCBidXQgdGhlIHR3byBhcmUgY29tcGF0aWJsZSBmcm9tIGEgc29mdHdhcmUKPj4+PiBwZXJz
-cGVjdGl2ZS4KPj4+PiAKPj4+PiBGaXhlczogZGY0ZTA4YTVlZWQxICgiZHQtYmluZGluZ3M6IGFy
-bTogcm9ja2NoaXA6IGFkZCBSYWR4YSBST0NLIAo+Pj4+IDVDIikKPj4+PiBTaWduZWQtb2ZmLWJ5
-OiBGVUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+Cj4+Pj4gLS0tCj4+Pj4gwqBEb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwgfCAyICstCj4+Pj4g
-wqAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPj4+PiAKPj4+
-PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2Nr
-Y2hpcC55YW1sCj4+Pj4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3Jv
-Y2tjaGlwLnlhbWwKPj4+PiBpbmRleCA3NTMxOTlhMTI5MjMuLjIyNTRlZTA3OTA5NCAxMDA2NDQK
-Pj4+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlw
-LnlhbWwKPj4+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3Jv
-Y2tjaGlwLnlhbWwKPj4+PiBAQCAtODk1LDcgKzg5NSw3IEBAIHByb3BlcnRpZXM6Cj4+Pj4gwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLSBjb25zdDogcmFkeGEscm9jay01Ygo+Pj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzU4OAo+Pj4+IAo+Pj4+IC3CoMKgwqDCoMKg
-IC0gZGVzY3JpcHRpb246IFJhZHhhIFJPQ0sgNUMKPj4+PiArwqDCoMKgwqDCoCAtIGRlc2NyaXB0
-aW9uOiBSYWR4YSBST0NLIDVDLzVDIExpdGUKPj4+PiDCoMKgwqDCoMKgwqDCoMKgIGl0ZW1zOgo+
-Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgIC0gY29uc3Q6IHJhZHhhLHJvY2stNWMKPj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCAtIGNvbnN0OiByb2NrY2hpcCxyazM1ODhzCj4+PiAKPj4+IEkgdGhp
-bmsgaXQgd291bGQgYmUgYmV0dGVyIHRvIHVzZSAicm9ja2NoaXAscmszNTgyIiBoZXJlLCB0byBh
-bGxvdwo+Pj4gdXMgdG8gcG9zc2libHkgdXNlIHRoYXQgaW5mb3JtYXRpb24gbGF0ZXIuwqAgRm9y
-IGV4YW1wbGUsIHdlIG1pZ2h0Cj4+PiB3YW50IHRvIGJlIGFibGUgdG8gcmVjb2duaXplIFJLMzU4
-Mi1iYXNlZCBib2FyZHMgaW4gVS1Cb290IHdpdGhvdXQKPj4+IHRoZSBuZWVkIHRvIGxvb2sgaW50
-byB0aGUgZS1mdXNlcyBhdCBzb21lIHBvaW50LCBmb3Igd2hpY2ggcHVycG9zZQo+Pj4gaGF2aW5n
-IGEgY2xlYXIgZGVzaWduYXRvciBpbiB0aGUgRFQgd291bGQgZml0IHBlcmZlY3RseS4KPj4gCj4+
-IEl0IG1heSBiZSBva2F5IHRvIGludHJvZHVjZSAicm9ja2NoaXAscmszNTgyIiwgYnV0IHJlYWRp
-bmcgZS1mdXNlCj4+IGlzIHN0aWxsIHJlcXVpcmVkIGluIFUtQm9vdCBiZWNhdXNlIHdoaWNoIHVu
-aXQgKGNwdSBjb3JlWCwgZ3B1LCBldGMpCj4+IGlzIGJyb2tlbiBjYW5ub3QgYmUgZGV0ZXJtaW5l
-ZCB3aXRob3V0IHJlYWRpbmcgZS1mdXNlIGF0IHJ1bi10aW1lLgo+PiAKPj4+IEFzIGEgcmVtaW5k
-ZXIsIHVzaW5nICJyb2NrY2hpcCxyazM1ODIiIHdvdWxkIGFsc28gcmVxdWlyZSBhIHNtYWxsCj4+
-PiBhZGRpdGlvbiB0byBkcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My1pdHMuYy4KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Since the commit 8a469ee35606 ("arm64: dts: rockchip: Add txpbl node for
+RK3399/RK3328"), having "snps,txpbl" properties defined as Ethernet stability
+fixes in RK3328-based board dts(i) files is redundant, because that commit
+added the required fix to the RK3328 SoC dtsi, so let's delete them.
+
+It has been determined that the Ethernet stability fixes no longer require
+the "snps,rxpbl" and "snps,aal" properties, [1] out of which the latter also
+induces performance penalties, so let's delete these properties from the
+relevant RK3328-based board dts(i) files.
+
+This commit completes the removal of these redundant "snps,*" properties
+that was started by a patch from Peter Geis. [2]
+
+[1] https://lore.kernel.org/linux-rockchip/CAMdYzYpj3d7Rq0O0QjV4r6HEf_e07R0QAhPT2NheZdQV3TnQ6g@mail.gmail.com/
+[2] https://lore.kernel.org/linux-rockchip/20241210013010.81257-7-pgwipeout@gmail.com/
+
+Cc: Peter Geis <pgwipeout@gmail.com>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts                | 1 -
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi        | 1 -
+ arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi | 1 -
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts         | 3 ---
+ 4 files changed, 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+index 824183e515da..24baaa7f1d8c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+@@ -110,7 +110,6 @@ &gmac2io {
+ 	phy-supply = <&vcc_io>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmiim1_pins>;
+-	snps,aal;
+ 	snps,pbl = <0x4>;
+ 	tx_delay = <0x26>;
+ 	rx_delay = <0x11>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
+index f9fab35aed23..d5f129e304e5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
+@@ -142,7 +142,6 @@ &gmac2io {
+ 	phy-supply = <&vcc_io_33>;
+ 	pinctrl-0 = <&rgmiim1_pins>;
+ 	pinctrl-names = "default";
+-	snps,aal;
+ 
+ 	mdio {
+ 		compatible = "snps,dwmac-mdio";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
+index 181ec6de0019..9ec93f61433e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
+@@ -113,7 +113,6 @@ &gmac2io {
+ 	phy-supply = <&vcc_io>;
+ 	pinctrl-0 = <&rgmiim1_pins>;
+ 	pinctrl-names = "default";
+-	snps,aal;
+ 
+ 	mdio {
+ 		compatible = "snps,dwmac-mdio";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+index 3e08e2fd0a78..59dead1cc503 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+@@ -153,9 +153,6 @@ &gmac2io {
+ 	phy-supply = <&vcc_io>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmiim1_pins>;
+-	snps,aal;
+-	snps,rxpbl = <0x4>;
+-	snps,txpbl = <0x4>;
+ 	tx_delay = <0x26>;
+ 	rx_delay = <0x11>;
+ 	status = "okay";
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
