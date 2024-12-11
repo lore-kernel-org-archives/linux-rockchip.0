@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC4EE77180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 07:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC35E77180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 08:49:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BFU1Dj9UUz0KE8tVfMie/7pN0nlnirWopM8wkBY8b2g=; b=b9Ld29TMxTJnhK
-	Lh6sksSjk3pdq5xi/Z6oEOIAgKPCOgT3OTFDB2HDayEACzf7QTN1QSRLohl9Mi1cGpsvbSbhVaulF
-	WQ+gLHV4aLbjv2V8Y04x2p1kSspztl1keiw9kVTSBQohydBRem1DGkrArW2z1nqc/l4IIjcqLsxQ3
-	ABp/dNZinkY/VW0ZXayClJtoy9IhE8kTxHaUUq5qkH+23SMeLFnLLprQdgwmugWEgn0PyyJT1QrGz
-	dSqlRmx5IvmxKHV5h8CgYPId2wB5/hcnDzz+KzvVMNDjz7j9zoWuaEJDFF3JYfAUsxG2YDvtubmkY
-	yRHhr+DTAk3u7oCx9OJA==;
+	List-Owner; bh=i2l97+cBN/p3YnJ/wQ6hGtWIcvzeoUbNBvMyKfOw0ao=; b=YTV1wr/E94LJQj
+	tkxx1wzJu1fOLvpRvh/lu14kCD+qz3QNLw1hE8Cd9o3P8kiXNqp2VlUEAz66dnWauYe+e1F4GRkxa
+	et8LygtFOAQ4kO3Xi2G/ijPNhWraga8ruoeIT0efO0icr2b37C9rl3gehvXkbRSZOA46GzuZBWBuG
+	Qrz3sxekjnB+rGS9Sv1tKKh6+r+3G8ksg1i5NTIbhlbdNGssygKdyAvS3QxnMi/T/HvPjYvStIzXg
+	RjEwGI977J7b1hPxaP9TMrkraBCmAoEC+AH/oJqy40YSosU5p8h+xnzesSIXNuHi0ab89566LsASV
+	H6+e9onUHLIoycqziThA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHcq-0000000E8Id-41Yc;
-	Wed, 11 Dec 2024 07:59:16 +0000
-Received: from smtpbg156.qq.com ([15.184.82.18])
+	id 1tLIP8-0000000EHPi-0kU9;
+	Wed, 11 Dec 2024 08:49:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHbR-0000000E7v9-1cph
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Dec 2024 07:57:51 +0000
-X-QQ-mid: bizesmtpip2t1733903824tds9gjk
-X-QQ-Originating-IP: zcTIbWaBgJpLWN8vwo14CuHPWEubdTVz0EHQf+awOwI=
-Received: from [IPV6:240f:10b:7440:1:b238:648b ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 11 Dec 2024 15:56:59 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7527078534577677566
-Message-ID: <61D7C8736BCC33AE+805a6e6c-211d-4049-b4be-cb260907ab7d@radxa.com>
-Date: Wed, 11 Dec 2024 16:56:59 +0900
+	id 1tLINS-0000000EGwI-15Zh;
+	Wed, 11 Dec 2024 08:47:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=TOB+Fxp49rSShIZTVjtd1jIBj8qsd4mGBRlOc0nOjoY=; b=fFDwsdp22wcbCT+bR3kubCHU7P
+	RgjeyO2qzR2mrXOHIzbvyXNyJmiTtyixsDWmkL+7GTA458f+BQtAlLKGR5M0koTY12SzYatQzcfAT
+	KVFy/duNKx3RB/Ay3zxnrJX+o9QFscjXydr3HfVAiNkVEWgy0R6uIce38V3EsH2n3WpWN7rkr1YGS
+	G29nCmuM0v4Ss6poRMfMmEd6faZJrAEpe7in/bMwYsBCZy1lNZqzTmHebq2W/HjDUbaka33acg0HH
+	T3kBCi086tPHtknNMKNEtd+jjETUR+6Nl5NdgwcVJf7OunvqLCf4v1iMWTNzGHjDeZFCVM+Xkx90y
+	xhDC3BFQ==;
+Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tLIN0-0000Bg-N9; Wed, 11 Dec 2024 09:46:58 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Alexandre ARNOUD <aarnoud@me.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] Add support for HDMI1 output on RK3588 SoC
+Date: Wed, 11 Dec 2024 09:46:57 +0100
+Message-ID: <12942826.iMDcRRXYNz@diego>
+In-Reply-To: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com>
+References: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Convert blue LED to "pwd-leds"
- for Radxa ROCK 5A/5C
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, sebastian.reichel@collabora.com,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20241211063222.57904-1-naoki@radxa.com>
- <20241211-maturity-recess-33c8c3e1a771@thorsis.com>
- <b65002617b40c434821f5fac41d8e1b9@manjaro.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <b65002617b40c434821f5fac41d8e1b9@manjaro.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: MI3JFhEp21hOUxetmilohDKfRyTlVSHvjW4RK7POLTNEaLl/rbFXHeFn
-	JZ07bTJlpIZbGqJM6lxY9xIOsZvzE9YW8OfzTNK7gvCT54z3Zl0WkFqS/F+eQQtYyCq2b+x
-	DuFeNXQq2W7cS6KACf69v2HfQ/Ye5t2IMGF6HvGE51lVmHiK6VRe8LCSZFOZr1YzHYwpPFH
-	UfjFZEt7SkWiw5PlyWiH2lkNHyIAB4hK90Y7x3PjeF+GvnIwbxAr8Q9OS3KdSSl5kqOMZxT
-	2uQBcew0MUgUJTrO6QbSotZqmnbR8am/v+MlJeUJ9C49AuS/3+Y8gvg8Z3H9SLhtIElcamU
-	8AGSMbMbYzwLyRXQb6UaeE7lK4hDAPOY4uHrAIKqzIjs3xzbFGWxLWjqZ6LX72WJ5FFewNE
-	BHZUKyoB/IvSGb7L1weV8OrbKdP0Vl3DBsjqin76enEonkFnz330QsTfXRYBf7062FdRIVu
-	VhXtSajJaWNuOL7DAnsfILisWxbEK8+T2ibNpawHDasu/egNL78goxxQpXQ3fUgiPhEhvSN
-	ZBNkv8ZRjQrFr12/LXEyaVhDNFXjwPIyAEu7bL7yyc9Ah5liCARyOlPPS4lTHqgI08quwtr
-	xccQR0zOmDhQ9Lh1dc68ne/CTtZw/8urMIttgkqSOSkWEQ4hGdOIwmoMUxC3UhIXrnYAp+M
-	CAjERWblbMEXoVNRmqyS8lCySkZrbRLASBJRWBZeOL7BaQ+WMnHS9nFNUa7tStEVnAgeNK8
-	nJrbutuAIwuzlIWAj0OtL5KaJr5iupwPUHJEUp855a7EkmF4jFJA/uT2Z8+sQbA/2RIgc0A
-	qZBLIvbSJdHq9gmMbhLasaiTQTWYE2oV4z0MdQujPopmiWINaD+eFbJS2xva3w9mBaRBpoa
-	F5ZdNvaJ1iDx6CTZuTeSzG6LcRvHbbZCj3k7P6PYv9RokYotP758N8Aas0h7DOhAOiUsPSk
-	ntPdFeSuiIVO69Px4FqxxZ6GIU5f0kughprVVEWtDLanXJQ==
-X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_235750_029882_EA002119 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20241211_004726_342668_B4D8D8C1 
+X-CRM114-Status: GOOD (  23.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,85 +75,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQWxleGFuZGVyIGFuZCBEcmFnYW4sCgpPbiAxMi8xMS8yNCAxNjo0NSwgRHJhZ2FuIFNpbWlj
-IHdyb3RlOgo+IEhlbGxvIEFsZXhhbmRlciBhbmQgRnVrYXVtaSwKPiAKPiBPbiAyMDI0LTEyLTEx
-IDA4OjM2LCBBbGV4YW5kZXIgRGFobCB3cm90ZToKPj4gdGhlcmUncyBzdGlsbCBhIHR5cG8gaW4g
-dGhlIHN1YmplY3QuwqAgSXQgc2hvdWxkIHByb2JhYmx5IGFsc28gcmVhZAo+PiAicHdtIiwgcmln
-aHQ/Cj4gCj4gSW5kZWVkLsKgIEhlcmUncyBob3cgdGhlIHBhdGNoIHN1bW1hcnkgY291bGQgYmUg
-d29yZGVkIGluc3RlYWQ6Cj4gCj4gIMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBVc2UgUFdNIHRv
-IGRyaXZlIGJsdWUgTEVEIG9uIFJPQ0sgNUEvNUMKPiAKPiBTaW1wbGlmaWVkIGFuZCBsZXNzIHdv
-cmR5LCBidXQgc3RpbGwgZGVzY3JpcHRpdmUgZW5vdWdoLiA6KQoKCnllcywgaXQncyB0eXBvLi4u
-IHRoYW5rcyBmb3IgcG9pbnRpbmcgYW5kIGZpeGluZy4KCkJlc3QgcmVnYXJkcywKCi0tCkZVS0FV
-TUkgTmFva2kKUmFkeGEgQ29tcHV0ZXIgKFNoZW56aGVuKSBDby4sIEx0ZC4KCj4+IEFtIFdlZCwg
-RGVjIDExLCAyMDI0IGF0IDA2OjMyOjIyQU0gKzAwMDAgc2NocmllYiBGVUtBVU1JIE5hb2tpOgo+
-Pj4gVGhlIHBpbiBjb25uZWN0ZWQgdG8gdGhlIGJsdWUgTEVELCBHUElPM19ENSwgaXMgbm90IG9u
-bHkgYSBHUElPIGJ1dAo+Pj4gYWxzbyBoYXMgYSBQV00gZnVuY3Rpb24uIFVzaW5nIFBXTSwgdGhl
-IHVzZXIgY2FuIGNoYW5nZSB0aGUgYnJpZ2h0bmVzcwo+Pj4gb2YgdGhlIExFRC4KPj4+Cj4+PiBD
-b252ZXJ0IGJsdWUgTEVEIGZyb20gImdwaW8tbGVkcyIgdG8gInB3bS1sZWRzIiBhbmQgZW5hYmxl
-IHJlbGF0ZWQgUFdNLgo+Pj4KPj4+IEFja2VkLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5q
-YXJvLm9yZz4KPj4+IFNpZ25lZC1vZmYtYnk6IEZVS0FVTUkgTmFva2kgPG5hb2tpQHJhZHhhLmNv
-bT4KPj4+IC0tLQo+Pj4gdGhpcyBwYXRjaCBkZXBlbmRzIG9uIFsxXSB3aGljaCBkZXBlbmRzIG9u
-IFsyXS4KPj4+Cj4+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xp
-bnV4LXJvY2tjaGlwLyAKPj4+IGNvdmVyLzIwMjQxMjA5MTMyNDA2LjQyMzItMS1uYW9raUByYWR4
-YS5jb20vCj4+PiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4
-LXJvY2tjaGlwLyAKPj4+IGNvdmVyLzIwMjQxMjA5MTI1MTMxLjQxMDEtMS1uYW9raUByYWR4YS5j
-b20vCj4+PiAtLS0KPj4+IENoYW5nZXMgaW4gdjI6Cj4+PiAtIFJld29yZCBjb21taXQgbWVzc2Fn
-ZQo+Pj4gLS0tCj4+PiDCoC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNp
-wqDCoMKgwqAgfCAzNCArKysrKysrKysrKystLS0tLS0tCj4+PiDCoDEgZmlsZSBjaGFuZ2VkLCAy
-MiBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpIGIvYXJjaC8gCj4+
-PiBhcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpCj4+PiBpbmRleCBk
-MGI5NTEzZDU2YTcuLmQ3MjMxNGQ5MTdkYSAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2NrLTUuZHRzaQo+Pj4gKysrIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpCj4+PiBAQCAtNDYsNyArNDYsNyBA
-QCBoZG1pMF9jb25faW46IGVuZHBvaW50IHsKPj4+IMKgwqDCoMKgIGxlZHMgewo+Pj4gwqDCoMKg
-wqDCoMKgwqDCoCBjb21wYXRpYmxlID0gImdwaW8tbGVkcyI7Cj4+PiDCoMKgwqDCoMKgwqDCoMKg
-IHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcGluY3RybC0w
-ID0gPCZsZWRfcGlucz47Cj4+PiArwqDCoMKgwqDCoMKgwqAgcGluY3RybC0wID0gPCZsZWRfcGlu
-PjsKPj4+Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIGxlZC0wIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBjb2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+Owo+Pj4gQEAgLTU0LDE0ICs1NCw2
-IEBAIGxlZC0wIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmdW5jdGlvbiA9IExFRF9G
-VU5DVElPTl9QT1dFUjsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBncGlvcyA9IDwmZ3Bp
-bzMgUktfUEM0IEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4gwqDCoMKgwqDCoMKgwqDCoCB9Owo+Pj4g
-LQo+Pj4gLcKgwqDCoMKgwqDCoMKgIGxlZC0xIHsKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGNvbG9yID0gPExFRF9DT0xPUl9JRF9CTFVFPjsKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGRlZmF1bHQtc3RhdGUgPSAib24iOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZnVuY3Rp
-b24gPSBMRURfRlVOQ1RJT05fU1RBVFVTOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ3Bp
-b3MgPSA8JmdwaW8zIFJLX1BENSBHUElPX0FDVElWRV9ISUdIPjsKPj4+IC3CoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJlYXQiOwo+Pj4gLcKgwqDC
-oMKgwqDCoMKgIH07Cj4+PiDCoMKgwqDCoCB9Owo+Pj4KPj4+IMKgwqDCoMKgIGZhbjogcHdtLWZh
-biB7Cj4+PiBAQCAtNzIsNiArNjQsMTkgQEAgZmFuOiBwd20tZmFuIHsKPj4+IMKgwqDCoMKgwqDC
-oMKgwqAgcHdtcyA9IDwmcHdtMyAwIDYwMDAwIDA+Owo+Pj4gwqDCoMKgwqAgfTsKPj4+Cj4+PiAr
-wqDCoMKgIHB3bS1sZWRzIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInB3bS1s
-ZWRzIjsKPj4+ICsKPj4+ICvCoMKgwqDCoMKgwqDCoCBsZWQtMSB7Cj4+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBjb2xvciA9IDxMRURfQ09MT1JfSURfQkxVRT47Cj4+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBkZWZhdWx0LXN0YXRlID0gIm9uIjsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIGZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1NUQVRVUzsKPj4+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIGxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJlYXQiOwo+Pj4gK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgcHdtcyA9IDwmcHdtMTEgMCAxMDAwMDAwIDA+Owo+Pj4gK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgbWF4LWJyaWdodG5lc3MgPSA8MjU1PjsKPj4+ICvCoMKgwqDCoMKgwqDC
-oCB9Owo+Pj4gK8KgwqDCoCB9Owo+Pj4gKwo+Pj4gwqDCoMKgwqAgdmJ1c190eXBlYzogcmVndWxh
-dG9yLXZidXMtdHlwZWMgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInJlZ3Vs
-YXRvci1maXhlZCI7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIHJlZ3VsYXRvci1uYW1lID0gInZidXNf
-dHlwZWMiOwo+Pj4gQEAgLTQyMiw5ICs0MjcsOCBAQCAmcGNpZTJ4MWwyIHsKPj4+Cj4+PiDCoCZw
-aW5jdHJsIHsKPj4+IMKgwqDCoMKgIGxlZHMgewo+Pj4gLcKgwqDCoMKgwqDCoMKgIGxlZF9waW5z
-OiBsZWQtcGlucyB7Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcCxwaW5zID0g
-PDMgUktfUEM0IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+LAo+Pj4gLcKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwzIFJLX1BENSBSS19GVU5DX0dQSU8gJnBjZmdf
-cHVsbF9ub25lPjsKPj4+ICvCoMKgwqDCoMKgwqDCoCBsZWRfcGluOiBsZWQtcGluIHsKPj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJvY2tjaGlwLHBpbnMgPSA8MyBSS19QQzQgUktfRlVOQ19H
-UElPICZwY2ZnX3B1bGxfbm9uZT47Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIH07Cj4+PiDCoMKgwqDC
-oCB9Owo+Pj4KPj4+IEBAIC00NjcsNiArNDcxLDEyIEBAICZwd20zIHsKPj4+IMKgwqDCoMKgIHN0
-YXR1cyA9ICJva2F5IjsKPj4+IMKgfTsKPj4+Cj4+PiArJnB3bTExIHsKPj4+ICvCoMKgwqAgcGlu
-Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+ICvCoMKgwqAgcGluY3RybC0wID0gPCZwd20xMW0z
-X3BpbnM+Owo+Pj4gK8KgwqDCoCBzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+IMKg
-JnNhcmFkYyB7Cj4+PiDCoMKgwqDCoCB2cmVmLXN1cHBseSA9IDwmdmNjYV8xdjhfczA+Owo+Pj4g
-wqDCoMKgwqAgc3RhdHVzID0gIm9rYXkiOwo+Pj4gLS0gCj4+PiAyLjQzLjAKPiAKCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Cristian,
+
+Am Mittwoch, 11. Dezember 2024, 00:06:13 CET schrieb Cristian Ciocaltea:
+> The patches provide the basic support to handle the second HDMI output
+> port found on Rockchip RK3588 SoC.
+> 
+> For now I enabled it on Radxa ROCK 5B only, the board I've been using to
+> validate this.
+> 
+> ** IMPORTANT **
+> 
+> The series has a runtime dependency on "phy: phy-rockchip-samsung-hdptx:
+> Don't use dt aliases to determine phy-id", a patch submitted recently by
+> Heiko [1].  Without applying it, the functionality on both HDMI TX ports
+> will break.
+
+Looking at the drm/rockchip patch, that should not cause disruptions on
+its own, right?
+
+Only with the dts-parts enabled would we run into phy-issue.
+(Asking, because things go through different trees and the drm
+part looks ready)
+
+
+Heiko
+
+
+> Furthermore, please note this is subject to the same limitations as
+> HDMI0 when it comes to the supported display modes.  The fixes provided
+> via [2] are not applicable to HDMI1, hence I will handle it separately
+> as soon as all dependencies are merged.
+> 
+> Thanks,
+> Cristian
+> 
+> [1] https://lore.kernel.org/lkml/20241206103401.1780416-3-heiko@sntech.de/
+> [2] https://lore.kernel.org/all/20241116-vop2-hdmi0-disp-modes-v1-0-2bca51db4898@collabora.com/
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Changes in v2:
+> - Override hdmi1 pinctrl-0 on rock-5b as it requires hdmim0_tx1_cec
+>   instead of hdmim2_tx1_cec (fixes a pin conflict when enabling
+>   CONFIG_SPI_ROCKCHIP_SFC)
+> - Link to v1: https://lore.kernel.org/r/20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com
+> 
+> ---
+> Cristian Ciocaltea (4):
+>       drm/rockchip: dw_hdmi_qp: Add support for RK3588 HDMI1 output
+>       arm64: dts: rockchip: Add PHY node for HDMI1 TX port on RK3588
+>       arm64: dts: rockchip: Add HDMI1 node on RK3588
+>       arm64: dts: rockchip: Enable HDMI1 on rock-5b
+> 
+>  arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi  |  62 ++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts |  44 ++++++++-
+>  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c  | 119 +++++++++++++++++++-----
+>  3 files changed, 200 insertions(+), 25 deletions(-)
+> ---
+> base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
+> change-id: 20241207-rk3588-hdmi1-704cbb7cd75f
+> 
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
