@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87327E7717D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 07:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC4EE77180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 07:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hzmdRuGiwdUnaYWdyemEO6WeDsT1rqLwO5m7ZrOdTw4=; b=de7F3t7DTtT0Fkg7frHRl2bte7
-	NF/Sq5NsUM1RbPR0KHPRYSBQHcGO0wafGUDZpLxYEE3+QQa6Nvk6zVq0xLtfWGix2TUKNBSQWyX9a
-	vvIzgYFVbzB1Y9jW9A1t+j8zC0f0mqf7qY/CWSFMlCeBRUzDtnuyO0/0KSrnNbXqt0MGt1ZdJdHA5
-	8AM7Kyu4ELzEEFCg7OJyu6slUFir5u0pZ0GjA+K0yZcx0P2ysfTHrgz7n69pgQC7Iu8U/7uhUFNSz
-	JlJ/iDygo0zcDYsXubDW/Vv963o4tQfgM6lv4wTqSaNdZh1kZpYFooOzljGRYsVLaEh+Wp+KVfuSE
-	2At0XinQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BFU1Dj9UUz0KE8tVfMie/7pN0nlnirWopM8wkBY8b2g=; b=b9Ld29TMxTJnhK
+	Lh6sksSjk3pdq5xi/Z6oEOIAgKPCOgT3OTFDB2HDayEACzf7QTN1QSRLohl9Mi1cGpsvbSbhVaulF
+	WQ+gLHV4aLbjv2V8Y04x2p1kSspztl1keiw9kVTSBQohydBRem1DGkrArW2z1nqc/l4IIjcqLsxQ3
+	ABp/dNZinkY/VW0ZXayClJtoy9IhE8kTxHaUUq5qkH+23SMeLFnLLprQdgwmugWEgn0PyyJT1QrGz
+	dSqlRmx5IvmxKHV5h8CgYPId2wB5/hcnDzz+KzvVMNDjz7j9zoWuaEJDFF3JYfAUsxG2YDvtubmkY
+	yRHhr+DTAk3u7oCx9OJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHPC-0000000E5rX-2u49;
-	Wed, 11 Dec 2024 07:45:10 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tLHcq-0000000E8Id-41Yc;
+	Wed, 11 Dec 2024 07:59:16 +0000
+Received: from smtpbg156.qq.com ([15.184.82.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLHP9-0000000E5qQ-13qy
+	id 1tLHbR-0000000E7v9-1cph
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Dec 2024 07:45:08 +0000
+	Wed, 11 Dec 2024 07:57:51 +0000
+X-QQ-mid: bizesmtpip2t1733903824tds9gjk
+X-QQ-Originating-IP: zcTIbWaBgJpLWN8vwo14CuHPWEubdTVz0EHQf+awOwI=
+Received: from [IPV6:240f:10b:7440:1:b238:648b ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 11 Dec 2024 15:56:59 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 7527078534577677566
+Message-ID: <61D7C8736BCC33AE+805a6e6c-211d-4049-b4be-cb260907ab7d@radxa.com>
+Date: Wed, 11 Dec 2024 16:56:59 +0900
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1733903104;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vBj2qtH/NYARhotlO94z1olIPhWEieBQqvU3HWc4T9s=;
-	b=Xo2Ud858UlSi2vZaLVC44yeLQ7oVE7PQffx7eK0bxcBkUFUuQZx3Gtm0QfiYpX14zTlZ1V
-	OMJF7Wvckc1AQGcWvOexi4NLXfTC2ye3IANDY1zulyqPV0EraWmhJRyQ5AVz7OZBrB7c04
-	epzs8WP5l7/TpckOSmFLrBiITJ0wtOZ+PEMpnpRPGevQgNZWI+NQkSaH6Jp5QkMTLhnCio
-	h4NEuo0yzHZu5DSUiqMDJhhCy0hQx31XCDt/wl703G1PTEQLa1v73B9j3QcbEfSTTWnuqu
-	Gid0Ax1zlb7podMW3XYgXatZ3jTgxEQ+mur/6JIyPFlozzGQtbHJcPwApLQk8w==
-Date: Wed, 11 Dec 2024 08:45:04 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Convert blue LED to "pwd-leds"
+ for Radxa ROCK 5A/5C
+To: Dragan Simic <dsimic@manjaro.org>
 Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
  conor+dt@kernel.org, sebastian.reichel@collabora.com,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Convert blue LED to "pwd-leds"
- for Radxa ROCK 5A/5C
-In-Reply-To: <20241211-maturity-recess-33c8c3e1a771@thorsis.com>
 References: <20241211063222.57904-1-naoki@radxa.com>
  <20241211-maturity-recess-33c8c3e1a771@thorsis.com>
-Message-ID: <b65002617b40c434821f5fac41d8e1b9@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ <b65002617b40c434821f5fac41d8e1b9@manjaro.org>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <b65002617b40c434821f5fac41d8e1b9@manjaro.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MI3JFhEp21hOUxetmilohDKfRyTlVSHvjW4RK7POLTNEaLl/rbFXHeFn
+	JZ07bTJlpIZbGqJM6lxY9xIOsZvzE9YW8OfzTNK7gvCT54z3Zl0WkFqS/F+eQQtYyCq2b+x
+	DuFeNXQq2W7cS6KACf69v2HfQ/Ye5t2IMGF6HvGE51lVmHiK6VRe8LCSZFOZr1YzHYwpPFH
+	UfjFZEt7SkWiw5PlyWiH2lkNHyIAB4hK90Y7x3PjeF+GvnIwbxAr8Q9OS3KdSSl5kqOMZxT
+	2uQBcew0MUgUJTrO6QbSotZqmnbR8am/v+MlJeUJ9C49AuS/3+Y8gvg8Z3H9SLhtIElcamU
+	8AGSMbMbYzwLyRXQb6UaeE7lK4hDAPOY4uHrAIKqzIjs3xzbFGWxLWjqZ6LX72WJ5FFewNE
+	BHZUKyoB/IvSGb7L1weV8OrbKdP0Vl3DBsjqin76enEonkFnz330QsTfXRYBf7062FdRIVu
+	VhXtSajJaWNuOL7DAnsfILisWxbEK8+T2ibNpawHDasu/egNL78goxxQpXQ3fUgiPhEhvSN
+	ZBNkv8ZRjQrFr12/LXEyaVhDNFXjwPIyAEu7bL7yyc9Ah5liCARyOlPPS4lTHqgI08quwtr
+	xccQR0zOmDhQ9Lh1dc68ne/CTtZw/8urMIttgkqSOSkWEQ4hGdOIwmoMUxC3UhIXrnYAp+M
+	CAjERWblbMEXoVNRmqyS8lCySkZrbRLASBJRWBZeOL7BaQ+WMnHS9nFNUa7tStEVnAgeNK8
+	nJrbutuAIwuzlIWAj0OtL5KaJr5iupwPUHJEUp855a7EkmF4jFJA/uT2Z8+sQbA/2RIgc0A
+	qZBLIvbSJdHq9gmMbhLasaiTQTWYE2oV4z0MdQujPopmiWINaD+eFbJS2xva3w9mBaRBpoa
+	F5ZdNvaJ1iDx6CTZuTeSzG6LcRvHbbZCj3k7P6PYv9RokYotP758N8Aas0h7DOhAOiUsPSk
+	ntPdFeSuiIVO69Px4FqxxZ6GIU5f0kughprVVEWtDLanXJQ==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241210_234507_608888_EF9AB3AA 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20241210_235750_029882_EA002119 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,126 +84,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Alexander and Fukaumi,
-
-On 2024-12-11 08:36, Alexander Dahl wrote:
-> there's still a typo in the subject.  It should probably also read
-> "pwm", right?
-
-Indeed.  Here's how the patch summary could be worded instead:
-
-   arm64: dts: rockchip: Use PWM to drive blue LED on ROCK 5A/5C
-
-Simplified and less wordy, but still descriptive enough. :)
-
-> Am Wed, Dec 11, 2024 at 06:32:22AM +0000 schrieb FUKAUMI Naoki:
->> The pin connected to the blue LED, GPIO3_D5, is not only a GPIO but
->> also has a PWM function. Using PWM, the user can change the brightness
->> of the LED.
->> 
->> Convert blue LED from "gpio-leds" to "pwm-leds" and enable related 
->> PWM.
->> 
->> Acked-by: Dragan Simic <dsimic@manjaro.org>
->> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->> ---
->> this patch depends on [1] which depends on [2].
->> 
->> [1] 
->> https://patchwork.kernel.org/project/linux-rockchip/cover/20241209132406.4232-1-naoki@radxa.com/
->> [2] 
->> https://patchwork.kernel.org/project/linux-rockchip/cover/20241209125131.4101-1-naoki@radxa.com/
->> ---
->> Changes in v2:
->> - Reword commit message
->> ---
->>  .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 34 
->> ++++++++++++-------
->>  1 file changed, 22 insertions(+), 12 deletions(-)
->> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi 
->> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
->> index d0b9513d56a7..d72314d917da 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
->> @@ -46,7 +46,7 @@ hdmi0_con_in: endpoint {
->>  	leds {
->>  		compatible = "gpio-leds";
->>  		pinctrl-names = "default";
->> -		pinctrl-0 = <&led_pins>;
->> +		pinctrl-0 = <&led_pin>;
->> 
->>  		led-0 {
->>  			color = <LED_COLOR_ID_GREEN>;
->> @@ -54,14 +54,6 @@ led-0 {
->>  			function = LED_FUNCTION_POWER;
->>  			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
->>  		};
->> -
->> -		led-1 {
->> -			color = <LED_COLOR_ID_BLUE>;
->> -			default-state = "on";
->> -			function = LED_FUNCTION_STATUS;
->> -			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
->> -			linux,default-trigger = "heartbeat";
->> -		};
->>  	};
->> 
->>  	fan: pwm-fan {
->> @@ -72,6 +64,19 @@ fan: pwm-fan {
->>  		pwms = <&pwm3 0 60000 0>;
->>  	};
->> 
->> +	pwm-leds {
->> +		compatible = "pwm-leds";
->> +
->> +		led-1 {
->> +			color = <LED_COLOR_ID_BLUE>;
->> +			default-state = "on";
->> +			function = LED_FUNCTION_STATUS;
->> +			linux,default-trigger = "heartbeat";
->> +			pwms = <&pwm11 0 1000000 0>;
->> +			max-brightness = <255>;
->> +		};
->> +	};
->> +
->>  	vbus_typec: regulator-vbus-typec {
->>  		compatible = "regulator-fixed";
->>  		regulator-name = "vbus_typec";
->> @@ -422,9 +427,8 @@ &pcie2x1l2 {
->> 
->>  &pinctrl {
->>  	leds {
->> -		led_pins: led-pins {
->> -			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
->> -					<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
->> +		led_pin: led-pin {
->> +			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
->>  		};
->>  	};
->> 
->> @@ -467,6 +471,12 @@ &pwm3 {
->>  	status = "okay";
->>  };
->> 
->> +&pwm11 {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&pwm11m3_pins>;
->> +	status = "okay";
->> +};
->> +
->>  &saradc {
->>  	vref-supply = <&vcca_1v8_s0>;
->>  	status = "okay";
->> --
->> 2.43.0
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQWxleGFuZGVyIGFuZCBEcmFnYW4sCgpPbiAxMi8xMS8yNCAxNjo0NSwgRHJhZ2FuIFNpbWlj
+IHdyb3RlOgo+IEhlbGxvIEFsZXhhbmRlciBhbmQgRnVrYXVtaSwKPiAKPiBPbiAyMDI0LTEyLTEx
+IDA4OjM2LCBBbGV4YW5kZXIgRGFobCB3cm90ZToKPj4gdGhlcmUncyBzdGlsbCBhIHR5cG8gaW4g
+dGhlIHN1YmplY3QuwqAgSXQgc2hvdWxkIHByb2JhYmx5IGFsc28gcmVhZAo+PiAicHdtIiwgcmln
+aHQ/Cj4gCj4gSW5kZWVkLsKgIEhlcmUncyBob3cgdGhlIHBhdGNoIHN1bW1hcnkgY291bGQgYmUg
+d29yZGVkIGluc3RlYWQ6Cj4gCj4gIMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBVc2UgUFdNIHRv
+IGRyaXZlIGJsdWUgTEVEIG9uIFJPQ0sgNUEvNUMKPiAKPiBTaW1wbGlmaWVkIGFuZCBsZXNzIHdv
+cmR5LCBidXQgc3RpbGwgZGVzY3JpcHRpdmUgZW5vdWdoLiA6KQoKCnllcywgaXQncyB0eXBvLi4u
+IHRoYW5rcyBmb3IgcG9pbnRpbmcgYW5kIGZpeGluZy4KCkJlc3QgcmVnYXJkcywKCi0tCkZVS0FV
+TUkgTmFva2kKUmFkeGEgQ29tcHV0ZXIgKFNoZW56aGVuKSBDby4sIEx0ZC4KCj4+IEFtIFdlZCwg
+RGVjIDExLCAyMDI0IGF0IDA2OjMyOjIyQU0gKzAwMDAgc2NocmllYiBGVUtBVU1JIE5hb2tpOgo+
+Pj4gVGhlIHBpbiBjb25uZWN0ZWQgdG8gdGhlIGJsdWUgTEVELCBHUElPM19ENSwgaXMgbm90IG9u
+bHkgYSBHUElPIGJ1dAo+Pj4gYWxzbyBoYXMgYSBQV00gZnVuY3Rpb24uIFVzaW5nIFBXTSwgdGhl
+IHVzZXIgY2FuIGNoYW5nZSB0aGUgYnJpZ2h0bmVzcwo+Pj4gb2YgdGhlIExFRC4KPj4+Cj4+PiBD
+b252ZXJ0IGJsdWUgTEVEIGZyb20gImdwaW8tbGVkcyIgdG8gInB3bS1sZWRzIiBhbmQgZW5hYmxl
+IHJlbGF0ZWQgUFdNLgo+Pj4KPj4+IEFja2VkLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5q
+YXJvLm9yZz4KPj4+IFNpZ25lZC1vZmYtYnk6IEZVS0FVTUkgTmFva2kgPG5hb2tpQHJhZHhhLmNv
+bT4KPj4+IC0tLQo+Pj4gdGhpcyBwYXRjaCBkZXBlbmRzIG9uIFsxXSB3aGljaCBkZXBlbmRzIG9u
+IFsyXS4KPj4+Cj4+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xp
+bnV4LXJvY2tjaGlwLyAKPj4+IGNvdmVyLzIwMjQxMjA5MTMyNDA2LjQyMzItMS1uYW9raUByYWR4
+YS5jb20vCj4+PiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4
+LXJvY2tjaGlwLyAKPj4+IGNvdmVyLzIwMjQxMjA5MTI1MTMxLjQxMDEtMS1uYW9raUByYWR4YS5j
+b20vCj4+PiAtLS0KPj4+IENoYW5nZXMgaW4gdjI6Cj4+PiAtIFJld29yZCBjb21taXQgbWVzc2Fn
+ZQo+Pj4gLS0tCj4+PiDCoC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNp
+wqDCoMKgwqAgfCAzNCArKysrKysrKysrKystLS0tLS0tCj4+PiDCoDEgZmlsZSBjaGFuZ2VkLCAy
+MiBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpIGIvYXJjaC8gCj4+
+PiBhcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpCj4+PiBpbmRleCBk
+MGI5NTEzZDU2YTcuLmQ3MjMxNGQ5MTdkYSAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2NrLTUuZHRzaQo+Pj4gKysrIGIvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNS5kdHNpCj4+PiBAQCAtNDYsNyArNDYsNyBA
+QCBoZG1pMF9jb25faW46IGVuZHBvaW50IHsKPj4+IMKgwqDCoMKgIGxlZHMgewo+Pj4gwqDCoMKg
+wqDCoMKgwqDCoCBjb21wYXRpYmxlID0gImdwaW8tbGVkcyI7Cj4+PiDCoMKgwqDCoMKgwqDCoMKg
+IHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcGluY3RybC0w
+ID0gPCZsZWRfcGlucz47Cj4+PiArwqDCoMKgwqDCoMKgwqAgcGluY3RybC0wID0gPCZsZWRfcGlu
+PjsKPj4+Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIGxlZC0wIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCBjb2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+Owo+Pj4gQEAgLTU0LDE0ICs1NCw2
+IEBAIGxlZC0wIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmdW5jdGlvbiA9IExFRF9G
+VU5DVElPTl9QT1dFUjsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBncGlvcyA9IDwmZ3Bp
+bzMgUktfUEM0IEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4gwqDCoMKgwqDCoMKgwqDCoCB9Owo+Pj4g
+LQo+Pj4gLcKgwqDCoMKgwqDCoMKgIGxlZC0xIHsKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGNvbG9yID0gPExFRF9DT0xPUl9JRF9CTFVFPjsKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGRlZmF1bHQtc3RhdGUgPSAib24iOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZnVuY3Rp
+b24gPSBMRURfRlVOQ1RJT05fU1RBVFVTOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ3Bp
+b3MgPSA8JmdwaW8zIFJLX1BENSBHUElPX0FDVElWRV9ISUdIPjsKPj4+IC3CoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIGxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJlYXQiOwo+Pj4gLcKgwqDC
+oMKgwqDCoMKgIH07Cj4+PiDCoMKgwqDCoCB9Owo+Pj4KPj4+IMKgwqDCoMKgIGZhbjogcHdtLWZh
+biB7Cj4+PiBAQCAtNzIsNiArNjQsMTkgQEAgZmFuOiBwd20tZmFuIHsKPj4+IMKgwqDCoMKgwqDC
+oMKgwqAgcHdtcyA9IDwmcHdtMyAwIDYwMDAwIDA+Owo+Pj4gwqDCoMKgwqAgfTsKPj4+Cj4+PiAr
+wqDCoMKgIHB3bS1sZWRzIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInB3bS1s
+ZWRzIjsKPj4+ICsKPj4+ICvCoMKgwqDCoMKgwqDCoCBsZWQtMSB7Cj4+PiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBjb2xvciA9IDxMRURfQ09MT1JfSURfQkxVRT47Cj4+PiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBkZWZhdWx0LXN0YXRlID0gIm9uIjsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIGZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1NUQVRVUzsKPj4+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIGxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJlYXQiOwo+Pj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgcHdtcyA9IDwmcHdtMTEgMCAxMDAwMDAwIDA+Owo+Pj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgbWF4LWJyaWdodG5lc3MgPSA8MjU1PjsKPj4+ICvCoMKgwqDCoMKgwqDC
+oCB9Owo+Pj4gK8KgwqDCoCB9Owo+Pj4gKwo+Pj4gwqDCoMKgwqAgdmJ1c190eXBlYzogcmVndWxh
+dG9yLXZidXMtdHlwZWMgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInJlZ3Vs
+YXRvci1maXhlZCI7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIHJlZ3VsYXRvci1uYW1lID0gInZidXNf
+dHlwZWMiOwo+Pj4gQEAgLTQyMiw5ICs0MjcsOCBAQCAmcGNpZTJ4MWwyIHsKPj4+Cj4+PiDCoCZw
+aW5jdHJsIHsKPj4+IMKgwqDCoMKgIGxlZHMgewo+Pj4gLcKgwqDCoMKgwqDCoMKgIGxlZF9waW5z
+OiBsZWQtcGlucyB7Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcCxwaW5zID0g
+PDMgUktfUEM0IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+LAo+Pj4gLcKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwzIFJLX1BENSBSS19GVU5DX0dQSU8gJnBjZmdf
+cHVsbF9ub25lPjsKPj4+ICvCoMKgwqDCoMKgwqDCoCBsZWRfcGluOiBsZWQtcGluIHsKPj4+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJvY2tjaGlwLHBpbnMgPSA8MyBSS19QQzQgUktfRlVOQ19H
+UElPICZwY2ZnX3B1bGxfbm9uZT47Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIH07Cj4+PiDCoMKgwqDC
+oCB9Owo+Pj4KPj4+IEBAIC00NjcsNiArNDcxLDEyIEBAICZwd20zIHsKPj4+IMKgwqDCoMKgIHN0
+YXR1cyA9ICJva2F5IjsKPj4+IMKgfTsKPj4+Cj4+PiArJnB3bTExIHsKPj4+ICvCoMKgwqAgcGlu
+Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+ICvCoMKgwqAgcGluY3RybC0wID0gPCZwd20xMW0z
+X3BpbnM+Owo+Pj4gK8KgwqDCoCBzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+IMKg
+JnNhcmFkYyB7Cj4+PiDCoMKgwqDCoCB2cmVmLXN1cHBseSA9IDwmdmNjYV8xdjhfczA+Owo+Pj4g
+wqDCoMKgwqAgc3RhdHVzID0gIm9rYXkiOwo+Pj4gLS0gCj4+PiAyLjQzLjAKPiAKCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
