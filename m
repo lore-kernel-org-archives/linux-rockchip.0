@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D69BCE7717D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 09:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379F1E7717D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Dec 2024 10:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XG1PLStzY4hR7QFjKfiKQMQt574W4Lr4JpU0LRtIohQ=; b=2AdKLo/rsFKscz
-	xn0EjazePpxOMVMW6TXOGORTqJ7rMX3W5m8wAOdVxRLtelQUZWqbw8+sZI/uSVkteq5ZoALzmOtVl
-	uN0/1lKSE8++CMKMTJoZdJI3oCo3m+0e6iikaTEas3OHnhK+4ivApC8w7LXeTR8BmFx1AsiOWPCyL
-	tJiXKtvUolh//TKb1FFobY3fDKIP1rGeJBeBdt0H+F75qHEbAy0PeonVMRZ6J7ytED1tSnsPmL2As
-	V1Zc3Yqi1xR0WPSXicyM/va0bKk7iWriX9hc/lrPENa2hPWID8TbWKqZRXmTQiZ7Wxw9SueppFaom
-	ZHOappD9H5z837aw22iQ==;
+	List-Owner; bh=HcbkTTdSb4QgJbY6Eo1zU4/ZfbXGxcpZoNnbfcSNMBw=; b=2NhB+6DZ0Rc4jC
+	RzAD197827SOWT8Zf9UG8ROwmNmQaGC/0cUvsc99Ik/fKrnbVDRBW26tfw2HoLKRvXMDr1p9AnlJe
+	nc5kz2ZB6N0vCVkYHQMyLaVjeFDQBFND3MbZRLhJHgTSkVfi7mFwSoMYzmuJfvpX2WJLb7b14vXpd
+	FtAFXNGurl3EU1uiUxeUQKppLQVcByJda/HBHjXlSRtRB4vLoI4gLP4ZmCsIFFp2LJr56mRi8VMkj
+	kwVJWitZyKaPOliJpOpJtw+6QquCnmaEcp+MY/XpU9MPlqdrxEux/YJeLNuiXZn+cdYuRpqDLoEPv
+	wE85I0qdEN+jOkVJN8Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLJPY-0000000EUrv-3Ini;
-	Wed, 11 Dec 2024 09:53:40 +0000
+	id 1tLJmE-0000000EXzh-3fHV;
+	Wed, 11 Dec 2024 10:17:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLJO6-0000000EUZF-2tfV;
-	Wed, 11 Dec 2024 09:52:12 +0000
+	id 1tLJkf-0000000EXYc-436J;
+	Wed, 11 Dec 2024 10:15:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733910727;
-	bh=KQa0YljSDyn4f2yMLEHD4sXJuIGsikdtCBRivJW4u+8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pyixXY4yVLNRRp7l8Dm2uhUoxDDMaLYCUO/5v86h/IyllVT8vjBOMCX7DXuOpUAUV
-	 0DiTqMQFUF2iKae6huS8FOqPbSGjvqbXXSYXEpNoF74EpubmiSiAFF0tDOXL+Pzy64
-	 hjPHIg8LQgSXNytwthlq5gegWpuD04K6LxjhrAm5xxN8VmSzXc3osGt3F9arUiVWXn
-	 TDf7tlcvO/ehpOBt0tcB4n+szHA9ZC8FtmPBe5AbwafWyKSBz1SRmxSnsNfdWnzapp
-	 nOqs6NXyz7v9TzFul8L1vc7qt8e+D/vNUXds0ggK1usjzDbbao1yzT1M9wJvU3Ogku
-	 lMCUxeCWJYozA==
-Received: from [192.168.1.90] (unknown [188.27.48.199])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1733912128;
+	bh=eAufraMFMnfi2IGWNJkkS7Jvw+zFLnnar89/NtNbjiw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Yvnsj5DWio7ojSsr0PD02rfB0+uMYYEQE5WOnSyNKDR2HjXw2rK0L6TOU2DEitxH0
+	 WCmWJy+dRCAtn4kkAO2idsGzsYbsk4bSeexucu0C/CtgEMa7ntvSaBmuWJna1s3IIh
+	 t42y5gLCjbp0Oo8wiRKOWdoSKuyn2HUNlZW9kgHbJ/nrdpECJWYlWXnfvKEWa/lCVm
+	 DMrsT5+7ZE/NSQZHXmWAgh3XwHYe1o+XKAzO75BOtACPE0m88HHHrIjxCp7s0CCdji
+	 6LedlVG9x8WnqtBB3ySrHevu/oYhsIa37BhZ9WjgmbvSfSfwKtOJq+tqHrTRE0RCBh
+	 fBXjJd1cKBCOg==
+Received: from localhost (unknown [188.27.48.199])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 228AB17E35EA;
-	Wed, 11 Dec 2024 10:52:07 +0100 (CET)
-Message-ID: <a0cf9b40-8ac2-4d6a-a26c-bafa85096440@collabora.com>
-Date: Wed, 11 Dec 2024 11:52:06 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] Add support for HDMI1 output on RK3588 SoC
-To: Alexandre ARNOUD <aarnoud@me.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com>
- <BC29D61C-317D-4F82-AF42-EA3D705B0632@me.com>
-Content-Language: en-US
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD64417E35FC;
+	Wed, 11 Dec 2024 11:15:27 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <BC29D61C-317D-4F82-AF42-EA3D705B0632@me.com>
+Date: Wed, 11 Dec 2024 12:15:05 +0200
+Subject: [PATCH v2 1/5] dt-bindings: display: vop2: Add optional PLL clock
+ properties
+MIME-Version: 1.0
+Message-Id: <20241211-vop2-hdmi0-disp-modes-v2-1-471cf5001e45@collabora.com>
+References: <20241211-vop2-hdmi0-disp-modes-v2-0-471cf5001e45@collabora.com>
+In-Reply-To: <20241211-vop2-hdmi0-disp-modes-v2-0-471cf5001e45@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_015210_865355_EE18BB65 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20241211_021530_182750_66AC82D0 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,43 +83,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+On RK3588, HDMI PHY PLL can be used as an alternative and more accurate
+pixel clock source for VOP2 video ports 0, 1 and 2.
 
-On 12/11/24 11:42 AM, Alexandre ARNOUD wrote:
-> Hello Cristian,
-> 
->> On 11 Dec 2024, at 12:06 AM, Cristian Ciocaltea <cristian.ciocaltea@collabora.com> wrote:
->>
->> Changes in v2:
->> - Override hdmi1 pinctrl-0 on rock-5b as it requires hdmim0_tx1_cec
->>  instead of hdmim2_tx1_cec (fixes a pin conflict when enabling
->>  CONFIG_SPI_ROCKCHIP_SFC)
->> - Link to v1: https://lore.kernel.org/r/20241207-rk3588-hdmi1-v1-0-ca3a99b46a40@collabora.com
->>
->> ---
->> Cristian Ciocaltea (4):
->>      drm/rockchip: dw_hdmi_qp: Add support for RK3588 HDMI1 output
->>      arm64: dts: rockchip: Add PHY node for HDMI1 TX port on RK3588
->>      arm64: dts: rockchip: Add HDMI1 node on RK3588
->>      arm64: dts: rockchip: Enable HDMI1 on rock-5b
->>
->> arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi  |  62 ++++++++++++
->> arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts |  44 ++++++++-
->> drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c  | 119 +++++++++++++++++++-----
->> 3 files changed, 200 insertions(+), 25 deletions(-)
->> ---
->> base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
->> change-id: 20241207-rk3588-hdmi1-704cbb7cd75f
-> 
-> Tested-by: Alexandre ARNOUD <aarnoud@me.com>
-> 
-> Works perfectly on Rock-5B, thanks for your work.
+Document the optional PLL clock properties corresponding to the two HDMI
+PHYs available on the SoC.
 
-Thanks for your quick test report on the series, which helped
-identifying the pin conflict issue which I missed initially.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Regards,
-Cristian
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 2531726af306bd388c00c3c0a1785b2c7367e2bd..46d956e63338e196361483a668fbf5597ebce24f 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -53,6 +53,8 @@ properties:
+       - description: Pixel clock for video port 2.
+       - description: Pixel clock for video port 3.
+       - description: Peripheral(vop grf/dsi) clock.
++      - description: Alternative pixel clock provided by HDMI0 PHY PLL.
++      - description: Alternative pixel clock provided by HDMI1 PHY PLL.
+ 
+   clock-names:
+     minItems: 5
+@@ -64,6 +66,8 @@ properties:
+       - const: dclk_vp2
+       - const: dclk_vp3
+       - const: pclk_vop
++      - const: pll_hdmiphy0
++      - const: pll_hdmiphy1
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+
+-- 
+2.47.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
