@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAA0E77182
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 06:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7940AE77180
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 07:54:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F/SaBGX0bKiHJHJJg8nimhchRm5PDbmjxHSRcSQOMBY=; b=U/mTa6R0Sxrc2H
-	1iyUcHHi4P0tkP1IgeKRZJcJC3LTU/pUmtKubhw8iu4zi83VoE03Dj7DvFdXCMy6AcZUM8lkfvybb
-	d4c0RmSup6gjgPisiQufbQ38JUvG3PZBN618ShVkvaNHaOfwY7lk+tmVzfP430utXzd8/yY0oKkF+
-	SO5+Qi4pPfz6/Qha5Q0cha3h9E4/IyQpWXHpPGwKAWlP2qrCxybGcCVy33n1Mdh6WFHBtHcBMB93s
-	5CHtbiksYTi2e6BNnhZxLaWRd601JB8J9YjmBN+QQB8QQEcJKC15zlDQYzX7i3gHPgpNtNB9poFFN
-	hrHeD5IubXgeGw1eQEfg==;
+	List-Owner; bh=Qa4tylypnC3EQ2F5DEyI+DGAsOqhXFvlYENZu5neBYg=; b=Ez82pO9Qn0Ju8c
+	VPq4JUso7mF1PWGjxZ/qeELtNjN5MC/YOVTH6PXC6IK2pA/2ap8GGh9qs5H59Hn+XW4UuAF6FxySj
+	CiSOw7MaRSOBDvXhLIWB1D6lNs5tVfXnbi243I6aWWYQJhtliaCMwaKTyi3dyDaAW0Ssv87FPqBpM
+	0gTgRe4++4uSKaA/9q5RpPTie6pXo3V257yGkjJbx20cnNj92yliRgsRPzlHcgOc1WzpaXIcpyKLO
+	pZ486tSPJuPh5I4PkBBP2fhnMJvRxHhezq5Dt275j0dvVXvaq08CAI6CkCPUppX5svonnBa1jofW0
+	pngJGqY+lwQa20ygl7OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLcLW-0000000H0HH-0icO;
-	Thu, 12 Dec 2024 06:06:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLcLS-0000000H0FQ-1D0E;
-	Thu, 12 Dec 2024 06:06:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1733983599;
-	bh=gQg/SM6BaV0O6607W1vHe3GKWdp7ZsBXFCJWNiK9SFw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NpefOtj8iRu+DwDxM1asoHnH6dziH2LfwLXKHmxJwjyTK2JN3w24yG15L61xz/p4E
-	 1Q1hNWZSfjRGmpsMMSTs9jLtwssefNOSG/RM9//dKBgGoAZsPgvidKcKcmYdqNDckT
-	 DvXj7srS8GjxNG82ITA2ZyObZDMr+FKJHnPXJ2eCGa/aPO9skbkJH1KUiy92L5TrrG
-	 xe21GkQQE1jht1xTcoxCHfDQkpM7JcmrU5YdJUw6tiO4zFjK2H8i7k5fb5KgqX2LQ0
-	 4RGQwkIzVXHI/rHmuP57LGp8g4Zw2YWtHmYQD+Vb8T5wcqhADpRO9HVMDW86ncn8wZ
-	 iSdqcwuU72+UQ==
-Received: from [192.168.50.250] (unknown [171.76.86.135])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B8F6917E11E2;
-	Thu, 12 Dec 2024 07:06:32 +0100 (CET)
-Message-ID: <3e719a95-5b84-4530-9afe-c742e5c6eff7@collabora.com>
-Date: Thu, 12 Dec 2024 11:36:29 +0530
+	id 1tLe1W-0000000HCy6-3pRz;
+	Thu, 12 Dec 2024 07:54:14 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tLe0R-0000000HCno-2nSV;
+	Thu, 12 Dec 2024 07:53:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=HBi+04JPLT7DrBLR/Lw8GlnHsF4umta8MvAXzK493tM=; b=H
+	jhtkBvVSBFpWgywG2DsDJxzDRHwiyu2Z9StVS07RpLDttiyc7qvoataRs76NeoSo
+	X2Ahr+itAYTXphLzDdtm8BCi27Q2JRv1dYSU/FE03iQIIhLLrKipDZQCJFJDjn8b
+	EHJs6VfR78uJsZsR9CC2eFPhSZxn9yQrdI9Yd6r56s=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-102 (Coremail) ; Thu, 12 Dec 2024 15:52:34 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Thu, 12 Dec 2024 15:52:34 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
+	s.hauer@pengutronix.de, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com, 
+	"Andy Yan" <andy.yan@rock-chips.com>, kernel@collabora.com
+Subject: Re:Re: [PATCH v5 05/18] drm/rockchip: vop2: Set AXI id for rk3588
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <5843712.DvuYhMxLoT@bootstrap>
+References: <20241209122943.2781431-1-andyshrk@163.com>
+ <5839604.DvuYhMxLoT@trenzalore>
+ <2d381563.5e54.193b46d2f30.Coremail.andyshrk@163.com>
+ <5843712.DvuYhMxLoT@bootstrap>
+X-NTES-SC: AL_Qu2YAfWTtkEu4imcYekZnEobh+Y5UcK2s/ki2YFXN5k0tCTI0SYQW29KGUD2y86DDiKsoAirUQVL5MpFRpJHY44FoLj+8T3YPbknvEeelJJE
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] drm/ci: uprev IGT
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20241211142806.1824961-1-vignesh.raman@collabora.com>
- <f2dac4eatkajw633ksnnb3nfq7zop2l4ux2euj6jqg4hg3soqt@sv7p2r6xk7fz>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <f2dac4eatkajw633ksnnb3nfq7zop2l4ux2euj6jqg4hg3soqt@sv7p2r6xk7fz>
+Message-ID: <3f1eace4.75cf.193b9daf585.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: ZigvCgD3n75Dllpno5Q9AA--.64501W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxyzXmdaj6atHgACsn
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241211_220642_512423_C1076F90 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20241211_235308_077091_B03D3736 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,171 +75,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 12/12/24 03:09, Dmitry Baryshkov wrote:
-> On Wed, Dec 11, 2024 at 07:58:05PM +0530, Vignesh Raman wrote:
->> Uprev IGT to the latest version and update expectation files.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v1:
->>    - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1327810
->>      Will update the flake bug report link after v1 is reviewed.
->>
->> ---
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
->> index 066d24ee3e08..7752adff05c1 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
->> @@ -1,4 +1,7 @@
->>   kms_3d,Fail
->> +kms_cursor_legacy@forked-bo,Fail
->> +kms_cursor_legacy@forked-move,Fail
->> +kms_cursor_legacy@single-bo,Fail
->>   kms_cursor_legacy@torture-bo,Fail
-> 
-> Interesting, DRM_MODE_CURSOR_BO tests fail
-> 
->>   kms_force_connector_basic@force-edid,Fail
->>   kms_hdmi_inject@inject-4k,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> index 6dbc2080347d..581d0aa33b4f 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
->>   kms_color@ctm-signed,Fail
->>   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
->>   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
->> +kms_display_modes@extended-mode-basic,Fail
->> +kms_display_modes@mst-extended-mode-negative,Fail
-> 
-> This is a bug in 5f7cde6a9878 ("tests/kms_display_modes: Skip test if
-> joiner display is connected"), the driver unconditionally calls
-> is_joiner_mode(), or in 88abc2d2c646 ("lib/igt_kms: Add is_joiner_mode
-> function"), the is_joiner_mode() should return false for non-Intel
-> hardware. Please fix it in the IGT instead.
-
-Can we add this in skips mentioning the IGT gitab issue link?
-
-> 
->>   kms_flip@flip-vs-modeset-vs-hang,Fail
->>   kms_flip@flip-vs-panning-vs-hang,Fail
->>   kms_lease@lease-uevent,Fail
->> @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
->>   kms_plane_alpha_blend@alpha-7efc,Fail
->>   kms_plane_alpha_blend@coverage-7efc,Fail
->>   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
->> -kms_rmfb@close-fd,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
->> index d74e04405e65..5122233b9941 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
->> @@ -18,3 +18,10 @@ msm/msm_shrink@copy-gpu-oom-32
->>   # IGT Version: 1.28-g0df7b9b97
->>   # Linux Version: 6.9.0-rc7
->>   msm/msm_shrink@copy-gpu-oom-8
->> +
->> +# Board Name: sc7180-trogdor-kingoftown
->> +# Bug Report:
->> +# Failure Rate: 50
->> +# IGT Version: 1.29-g33adea9eb
->> +# Linux Version: 6.13.0-rc2
->> +kms_lease@page-flip-implicit-plane
-> 
-> Do you have a failure log?
-
-
-https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68026461#L3262
-
-Let me know if I can create a gitlab issue for this.
-
-Regards,
-Vginesh
-
-> 
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> index 6dbc2080347d..581d0aa33b4f 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
->>   kms_color@ctm-signed,Fail
->>   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
->>   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
->> +kms_display_modes@extended-mode-basic,Fail
->> +kms_display_modes@mst-extended-mode-negative,Fail
-> 
-> Again, the same IGT issue.
-> 
->>   kms_flip@flip-vs-modeset-vs-hang,Fail
->>   kms_flip@flip-vs-panning-vs-hang,Fail
->>   kms_lease@lease-uevent,Fail
->> @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
->>   kms_plane_alpha_blend@alpha-7efc,Fail
->>   kms_plane_alpha_blend@coverage-7efc,Fail
->>   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
->> -kms_rmfb@close-fd,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
->> index fa8c7e663858..69076751af24 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
->> @@ -1,4 +1,3 @@
->> -drm_read@invalid-buffer,Fail
->>   kms_color@ctm-0-25,Fail
->>   kms_color@ctm-0-50,Fail
->>   kms_color@ctm-0-75,Fail
->> @@ -19,6 +18,8 @@ kms_cursor_legacy@flip-vs-cursor-atomic,Fail
->>   kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
->>   kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
->>   kms_cursor_legacy@flip-vs-cursor-legacy,Fail
->> +kms_display_modes@extended-mode-basic,Fail
->> +kms_display_modes@mst-extended-mode-negative,Fail
-> 
-> The same IGT error
-> 
->>   kms_flip@flip-vs-modeset-vs-hang,Fail
->>   kms_flip@flip-vs-panning-vs-hang,Fail
->>   kms_lease@lease-uevent,Fail
->> @@ -28,4 +29,3 @@ kms_plane_alpha_blend@coverage-7efc,Fail
->>   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
->>   kms_plane_cursor@overlay,Fail
->>   kms_plane_cursor@viewport,Fail
->> -kms_rmfb@close-fd,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> index 4892c0c70a6d..8d26b23133aa 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> @@ -7,9 +7,4 @@ kms_cursor_legacy@torture-bo,Fail
->>   kms_cursor_legacy@torture-move,Fail
->>   kms_hdmi_inject@inject-4k,Fail
->>   kms_lease@lease-uevent,Fail
->> -kms_plane_alpha_blend@alpha-7efc,Fail
->> -kms_plane_alpha_blend@alpha-basic,Fail
->> -kms_plane_alpha_blend@alpha-opaque-fb,Fail
->> -kms_plane_alpha_blend@alpha-transparent-fb,Fail
->> -kms_plane_alpha_blend@constant-alpha-max,Fail
->>   msm/msm_recovery@gpu-fault-parallel,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
->> deleted file mode 100644
->> index c1859d9b165f..000000000000
->> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
->> +++ /dev/null
->> @@ -1,6 +0,0 @@
->> -# Board Name: sm8350-hdk
->> -# Bug Report: https://gitlab.freedesktop.org/drm/msm/-/issues/65
->> -# Failure Rate: 100
->> -# IGT Version: 1.28-ga73311079
->> -# Linux Version: 6.12.0-rc1
->> -msm/msm_recovery@gpu-fault
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIERldGxldiwKCkF0IDIwMjQtMTItMTEgMjM6NDU6MDEsICJEZXRsZXYgQ2FzYW5vdmEiIDxk
+ZXRsZXYuY2FzYW5vdmFAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj5PbiBXZWRuZXNkYXksIDExIERl
+Y2VtYmVyIDIwMjQgMDE6MzQ6MzQgRVNUIEFuZHkgWWFuIHdyb3RlOgo+PiBIaSBEZXRsZXYsCj4+
+IAo+PiBBdCAyMDI0LTEyLTExIDAyOjQwOjE0LCAiRGV0bGV2IENhc2Fub3ZhIiA8ZGV0bGV2LmNh
+c2Fub3ZhQGNvbGxhYm9yYS5jb20+IAo+d3JvdGU6Cj4+ID5IaSBBbmR5LAo+PiA+Cj4+ID5PbiBN
+b25kYXksIDkgRGVjZW1iZXIgMjAyNCAwNzoyOToxOCBFU1QgQW5keSBZYW4gd3JvdGU6Cj4+ID4+
+IEZyb206IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gPj4gCj4+ID4+IFRo
+ZXJlIGFyZSB0d28gQVhJIGJ1cyBpbiB2b3AyLCB3aW5kb3dzIGF0dGFjaGVkIG9uIHRoZSBzYW1l
+IGJ1cyBtdXN0Cj4+ID4+IGhhdmUgYSB1bmlxdWUgY2hhbm5lbCBZVVYgYW5kIFJHQiBjaGFubmVs
+IElELgo+PiA+PiAKPj4gPj4gVGhlIGRlZmF1bHQgSURzIHdpbGwgY29uZmxpY3Qgd2l0aCBlYWNo
+IG90aGVyIG9uIHRoZSByazM1ODgsIHNvIHRoZXkKPj4gPj4gbmVlZCB0byBiZSByZWFzc2lnbmVk
+Lgo+PiA+PiAKPj4gPj4gRml4ZXM6IDVhMDI4ZThmMDYyZiAoImRybS9yb2NrY2hpcDogdm9wMjog
+QWRkIHN1cHBvcnQgZm9yIHJrMzU4OCIpCj4+ID4+IFNpZ25lZC1vZmYtYnk6IEFuZHkgWWFuIDxh
+bmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gPj4gVGVzdGVkLWJ5OiBEZXJlayBGb3JlbWFuIDxk
+ZXJlay5mb3JlbWFuQGNvbGxhYm9yYS5jb20+Cj4+ID4+IAo+PiA+PiAtLS0KPj4gPj4gCj4+ID4+
+IENoYW5nZXMgaW4gdjU6Cj4+ID4+IC0gQWRkZWQgaW4gVjUKPj4gPj4gCj4+ID4+ICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYyB8IDE0ICsrKysrKysrKysrCj4+
+ID4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuaCB8ICA5ICsr
+KysrKysKPj4gPj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3AyX3JlZy5j
+IHwgMjYgKysrKysrKysrKysrKysrKysrKy0KPj4gPj4gIDMgZmlsZXMgY2hhbmdlZCwgNDggaW5z
+ZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+PiA+PiAKPj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4+ID4+IGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgaW5kZXgKPj4gPj4gZGM0ZWRkNjVi
+YzllLi44YjljYTA0NmVlZWIgMTAwNjQ0Cj4+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4+ID4+IEBAIC0xNDI2LDYgKzE0MjYsMTIgQEAgc3Rh
+dGljIHZvaWQgdm9wMl9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdAo+PiA+PiBkcm1fcGxhbmUg
+KnBsYW5lLCAmZmItPmZvcm1hdC0+Zm9ybWF0LAo+PiA+PiAKPj4gPj4gIAkJYWZiY19lbiA/ICJB
+RkJDIiA6ICIiLCAmeXJnYl9tc3QpOwo+PiA+PiAKPj4gPj4gKwlpZiAodm9wMi0+ZGF0YS0+c29j
+X2lkID4gMzU2OCkgewo+PiA+Cj4+ID5TaG91bGRuJ3QgdGhpcyBiZSBkb25lIG9ubHkgZm9yIHJr
+MzU4OCwgYXMgc3BlY2lmaWVkIGluIHRoZSBjb21tZW50cyBiZWxvdwo+PiA+PyBUaGUgdGVzdCB3
+ZSBkaWQgYmVmb3JlIHNob3dlZCB0aGF0IGl0IGlzIGZhaWxpbmcgb24gcmszNTc2IGFuZCAzNTc2
+IGlzID4KPj4gPjM1ODguCj4+IEkgdGhpbmsgdGhpcyBpcyBiZWNhdXNlIHlvdSB0ZXN0ZWQgYmVm
+b3JlIHdpdGggdGhlIHBhdGNoIEkgZ2F2ZSBEZXJlayAKPj4gd2l0aG91dCBheGkgaWQgYXNzaWdu
+ZWQgZm9yIHJrMzU3Ni4KPj4gSSBhc3NpZ25lZCBheGkgaWQgZm9yIHJrMzU3NiBpbiB0aGlzIHZl
+cnNpb24gMTgvMTjvvIhUaGUgbmV3IElEIGFzc2lnbm1lbnQgY2FuCj4+IGFkYXB0IHRvIG1vcmUg
+YXBwbGljYXRpb24gc2NlbmFyaW9zLu+8iSwgY2FuIHlvdSB0ZXN0IGl0IHdpdGggdGhlIHdob2xl
+IFY1Cj4+IHZlcnNpb24gYWdhaW4/Cj4KPlllcywgSSB3aWxsIGRvIHRoYXQuIEJ1dCBwYXRjaCAx
+OCBtZW50aW9uczoKPisgICAgICAgLyogUmVhZCBvbmx5IGJpdCBvbiByazM1NzYqLwo+KyAgICAg
+ICBbVk9QMl9XSU5fQVhJX0JVU19JRF0gPSBSRUdfRklFTEQoUkszNTY4X0NMVVNURVJfQ1RSTCwg
+MTMsIDEzKSwKPgo+QW5kIHRoZSBiaXQgaXMgYmVpbmcgd3JpdHRlbiBoZXJlLiBJZiBpdCBpcyBp
+bmRlZWQgd3JpdGFibGUsIHRoZW4gSSB3b3VsZCBkcm9wIAo+dGhhdCBjb21tZW50LgpUaGUgQVhJ
+X0JVU19JRCBmb3IgdHdvIENsdXN0ZXIgd2luZG93cyBvbiBSSzM1NzYgYXJlIGZpeGVkIGJ5IGhh
+cmR3YXJlLCB0aGF0IG1lYW5zCndoZXRoZXIgd2Ugd3JpdGUgaXQgb3Igbm90LCBpdCB3b24ndCBj
+aGFuZ2UgYW55dGhpbmcuCkJ1dCB0aGUgQVhJX0JVU19JRCBmb3IgRXNtYXJ0IHdpbmRvd3Mgb24g
+cmszNTc2IGFuZCAgQVhJX1lSR0IvVVZfUl9JRCBmb3IgYWxsCmNsdXN0ZXIvZXNtYXJ0IHdpbmRv
+d3Mgb24gcmszNTc2IGFyZSB3cml0ZWFibGUuCkkgdGhpbmsgd2UgZGlyZWN0bHkgd3JpdGUgaXQg
+aGVyZSBhcyB0aGUgY3VycmVudCBjb2RlIGNhbiBtYWtlIHRoaW5ncyBlYXN5LgoKCgo+Cj4+ID5J
+IHN1Z2dlc3QKPj4gPgo+PiA+CWlmICh2b3AyLT5kYXRhLT5zb2NfaWQgPT0gMzU4OCkgewo+PiA+
+Cj4+ID5SZWdhcmRzLAo+PiA+RGV0bGV2Cj4+ID4KPj4gPj4gKwkJdm9wMl93aW5fd3JpdGUod2lu
+LCBWT1AyX1dJTl9BWElfQlVTX0lELCB3aW4tPmRhdGEtCj4+ID4+Cj4+ID4+YXhpX2J1c19pZCk7
+Cj4+ID4+Cj4+ID4+ICsJCXZvcDJfd2luX3dyaXRlKHdpbiwgVk9QMl9XSU5fQVhJX1lSR0JfUl9J
+RCwgd2luLT5kYXRhLQo+PiA+Pgo+PiA+PmF4aV95cmdiX3JfaWQpOwo+PiA+Pgo+PiA+PiArCQl2
+b3AyX3dpbl93cml0ZSh3aW4sIFZPUDJfV0lOX0FYSV9VVl9SX0lELCB3aW4tPmRhdGEtCj4+ID4+
+Cj4+ID4+YXhpX3V2X3JfaWQpOwo+PiA+Pgo+PiA+PiArCX0KPj4gPj4gKwo+PiA+PiAKPj4gPj4g
+IAlpZiAodm9wMl9jbHVzdGVyX3dpbmRvdyh3aW4pKQo+PiA+PiAgCQo+PiA+PiAgCQl2b3AyX3dp
+bl93cml0ZSh3aW4sIFZPUDJfV0lOX0FGQkNfSEFMRl9CTE9DS19FTiwKPj4gPgo+PiA+aGFsZl9i
+bG9ja19lbik7Cj4+ID4KPgo+RGV0bGV2Lgo+Cj4KPgo+X19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KPkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+TGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcApfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
