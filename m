@@ -4,68 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE2BFE7717F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 08:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C50E77180
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 09:01:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0b1fiCmzf/Y6Cw4ALv6TyA+ZMM5A970nj+gsZCUcCGk=; b=pvsbKUweurCe8K
-	i2s0Y0ZXCHxic9HRPeGb12ALXt6NIDurmr7SjjeMpU1S8pMewrdihm61mUdUOCyBjZzTnyl+XarEa
-	rcO2RF0QvyMX4pM+KoGFZwS3xO3aKgr2nZzeajGibIkCO+oQ3SbxdnY+/HLHDc3011/LE6f0Koll6
-	u1nQUThgz4FlpFEMg8m3XvsDko9FotK/hmk6o0s6o9PFaq0bjov5sgRSOJE7Hrk1FK1c8XG4NX0+x
-	31uTD55wLnqvh5G3aj4K4/dOgiTLVfLkJ3sj5XvBcDZWuFloPsuKmkmU2ajrJAjNd285pGD+H8iZd
-	3AkpFq8HLR5TwNfgFoAQ==;
+	List-Owner; bh=XbjkaOFamaezdcpXLV7uIdTXwY7wmBHlwdH7KB4umHY=; b=0RZ735l1FgOwQo
+	Mt9wKAD6/d/Q067ctV2yi58JK7yF5WYKrdRFnBj+m480oT5julfOEUirYosLHCMAfvfdVm7kI1/fh
+	NOXvKFr2845Q1vRlpSLKCLezHQL7R3ihGcDI0axKYSsefzl/pGnWpShjB5jzeM0IuF2m0ieRnPMms
+	L9o1huHEOMM1HeFR2KD8hNpxF1NZ5pvjyv3XJuPO1KQ9L9yt28P/ytpJhoMN8o4+zxorvnJyloKxS
+	xC/1fRAmwTqqjfU8JxVuQPf8MvVNGnu7d1npEf+xAzpNwcPMKWbyDqZ5i7Qxd/0dIr1oL+XYfcbRl
+	bYQpe7rATLd1kkK8B9cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLeyu-0000000HOCk-0924;
-	Thu, 12 Dec 2024 08:55:36 +0000
-Received: from mail-m12746.qiye.163.com ([115.236.127.46])
+	id 1tLf4Y-0000000HPJx-1s3Z;
+	Thu, 12 Dec 2024 09:01:26 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLeyq-0000000HOBD-1QID;
-	Thu, 12 Dec 2024 08:55:34 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 587970be;
-	Thu, 12 Dec 2024 16:55:19 +0800 (GMT+08:00)
-Message-ID: <f6fd6efe-73bb-4aa2-a075-9a03c39951df@rock-chips.com>
-Date: Thu, 12 Dec 2024 16:55:19 +0800
+	id 1tLf4V-0000000HPHm-0AE0
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Dec 2024 09:01:25 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-53e3a5fa6aaso1579340e87.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 12 Dec 2024 01:01:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733994081; x=1734598881; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=V9TiYS4KmaBT6zbP9iM8l86SrBTAKM/ReGWqOBeJ8zc=;
+        b=ItNe/MjPIUdTyRQWKVSIhmeyIk3ge5loUvsr6abQhc1mR62R4NuvExiT4Ps3iKOrQq
+         CQHW92gF1Ho9ATDkFD2CSREFahUqDFdVOtRD7WNlj6d4jS7R2hh8d1ppt3A0kRH4p0MM
+         ZcvQz40Z4SBxeeDa8W4QRHcJoaVnHZprg08ESSUnbe/6I5LavgJ1tQpbU0vYXLN3jQyg
+         z9vnHz22RGCPAHLVbBw4drIMgfEiaEPdAVSz9xBB8JLhfF6Xk64IhVrNLmBEzRdl2yF1
+         s/Qu0+/1qq3OiLp0MsbzMnuZSdH7Z4joS7DjDLefNojH+U1w0ap1C6s4tbxlfHlTlRQT
+         crHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733994081; x=1734598881;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V9TiYS4KmaBT6zbP9iM8l86SrBTAKM/ReGWqOBeJ8zc=;
+        b=ZWJqnkTndf3Sq+g+vDDsrqSS6Gt+O/MoSiVLybi8azwt8tq2UmpfL1uHQzhWbnpt4Q
+         VS0prZfSEBOHtIHS/IUQS3CHwsLBroict50rc5eMUN/yejsG2XDkcZbVoHfMOSNiP0Zz
+         +PKoMk84F0983RhedDwo93XtvReLBhvWE/NHNOmW6O2mHsRO6T6b7MCsLLt3a2Y7cxNv
+         rcgtgLK/6GfmdDrLKcBOpnXNUPDugrOf+uLn6fAHEUYfjD76VfTfnQ9VLFq3KZJZKA8F
+         eYXCVYGyjDjZWCT74tgNraXvxZzT+s+e/1pKhKBfMCjew4Br8G65mqOTImEr/SR/ngTF
+         Slpg==
+X-Forwarded-Encrypted: i=1; AJvYcCVnIHRPVLVD30zym3firo200AZ0TqVxGpfGGlOH6yLbnzHmickpk92DtBaMfLSLRnZsVUvfEHeQkMCOewgixA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz1JzI3O1QKAsEefBCyXFZLtaZUqQ1nNgXCpRt9E6lc+7IBBP/+
+	e+awh8FMNF9mTtXjfDmhZZLIB/M8xOpCihbIKKUdPuN0tC3EWLABdSyN5rgVCqk=
+X-Gm-Gg: ASbGncs/GN0nsdRTMrnpAu61QZL68b/X+Qv6R0WwBrWz/qIvJcjWdoU7dqV+Cgjw2ph
+	CC4EAc0FbXxJ6JPZezPohAaPuQDyr7nw9gHErelDvJRSuORnI5BhSVHpLFqiCfTKRr+a/pjBX8t
+	XtuFQ2u4LqfTFVTexHXS3g6a1M2jSeVmf1ObnZUNWSUiD7MJJOTdb2daBvlnk1zQYUvMO/g8pRZ
+	cFSci7EO8lydAZJMsW6NN7MfEWs/4nXWAHGYd+Ju+SFEwh0AZFpj+Xn2/lPi6keMetaBnI1oazh
+	y2z/y9mLvyhlOR7eFOpGI1YTA5D9CuxFwPYA
+X-Google-Smtp-Source: AGHT+IHhrzxQingAH1/ImMh2/INtXiKEWN+68GziFuYfWDP98tpJWX78ikqP9dctbaH1rrrlMK66Bg==
+X-Received: by 2002:a05:6512:3056:b0:540:20c5:f847 with SMTP id 2adb3069b0e04-54032dd7f6fmr166941e87.22.1733994079461;
+        Thu, 12 Dec 2024 01:01:19 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53f39c826a2sm1608722e87.214.2024.12.12.01.01.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Dec 2024 01:01:18 -0800 (PST)
+Date: Thu, 12 Dec 2024 11:01:16 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] drm/ci: uprev IGT
+Message-ID: <auyavxigqqk3eq3ke775pv5cf4pwu3mdxmr5bfx2dybjnszseg@5rla5d7icwxk>
+References: <20241211142806.1824961-1-vignesh.raman@collabora.com>
+ <f2dac4eatkajw633ksnnb3nfq7zop2l4ux2euj6jqg4hg3soqt@sv7p2r6xk7fz>
+ <3e719a95-5b84-4530-9afe-c742e5c6eff7@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 06/10] drm/bridge: analogix_dp: Add support for phy
- configuration.
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: heiko@sntech.de, robh@kernel.org, conor+dt@kernel.org,
- algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org,
- hjc@rock-chips.com, kever.yang@rock-chips.com,
- linux-rockchip@lists.infradead.org, vkoul@kernel.org,
- andy.yan@rock-chips.com, krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-References: <20241127075157.856029-1-damon.ding@rock-chips.com>
- <20241127075157.856029-7-damon.ding@rock-chips.com>
- <twhosvpoyafo472gqsblpvxmuewe2lkqufxabp2q7o636uinfm@unzyfv2pchqn>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <twhosvpoyafo472gqsblpvxmuewe2lkqufxabp2q7o636uinfm@unzyfv2pchqn>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk1DT1YYHk1DQkkaHUtOGUpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93ba14685803a3kunm587970be
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MzI6Qjo4FTIPOjQOCTcYCB0h
-	DS8wCT9VSlVKTEhIQkJITElKQ09MVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMTE1JNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=Bm2MQOWkXjx8Pf9F3W4LsD7hTW78m7eB7oq2XDcJbwtsVGle3yaMemLVAEN+zVoWZx1sSiKi07Y1Rcxs8X+7lH/hi9FsqJO5eqOVWzogYs3zRK3doeb9Kv0vTMPvpyP88zoti2YuAe7NHqy+LN/uRRr11+USss2pTU7MU1cFiqk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=FoVNNZh4L/GMNtlxTr6ggp+PnIEfUziJ14W8Sk9sycA=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <3e719a95-5b84-4530-9afe-c742e5c6eff7@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_005532_918779_22120C5B 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20241212_010123_078004_223D198F 
+X-CRM114-Status: GOOD (  23.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,242 +98,179 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+On Thu, Dec 12, 2024 at 11:36:29AM +0530, Vignesh Raman wrote:
+> Hi Dmitry,
+> 
+> On 12/12/24 03:09, Dmitry Baryshkov wrote:
+> > On Wed, Dec 11, 2024 at 07:58:05PM +0530, Vignesh Raman wrote:
+> > > Uprev IGT to the latest version and update expectation files.
+> > > 
+> > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > > ---
+> > > 
+> > > v1:
+> > >    - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1327810
+> > >      Will update the flake bug report link after v1 is reviewed.
+> > > 
+> > > ---
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+> > > index 066d24ee3e08..7752adff05c1 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+> > > @@ -1,4 +1,7 @@
+> > >   kms_3d,Fail
+> > > +kms_cursor_legacy@forked-bo,Fail
+> > > +kms_cursor_legacy@forked-move,Fail
+> > > +kms_cursor_legacy@single-bo,Fail
+> > >   kms_cursor_legacy@torture-bo,Fail
+> > 
+> > Interesting, DRM_MODE_CURSOR_BO tests fail
+> > 
+> > >   kms_force_connector_basic@force-edid,Fail
+> > >   kms_hdmi_inject@inject-4k,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > > index 6dbc2080347d..581d0aa33b4f 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+> > > @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
+> > >   kms_color@ctm-signed,Fail
+> > >   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
+> > >   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
+> > > +kms_display_modes@extended-mode-basic,Fail
+> > > +kms_display_modes@mst-extended-mode-negative,Fail
+> > 
+> > This is a bug in 5f7cde6a9878 ("tests/kms_display_modes: Skip test if
+> > joiner display is connected"), the driver unconditionally calls
+> > is_joiner_mode(), or in 88abc2d2c646 ("lib/igt_kms: Add is_joiner_mode
+> > function"), the is_joiner_mode() should return false for non-Intel
+> > hardware. Please fix it in the IGT instead.
+> 
+> Can we add this in skips mentioning the IGT gitab issue link?
 
-On 2024/11/30 16:53, Dmitry Baryshkov wrote:
-> On Wed, Nov 27, 2024 at 03:51:53PM +0800, Damon Ding wrote:
->> Add support to configurate link rate, lane count, voltage swing and
->> pre-emphasis with phy_configure(). It is helpful in application scenarios
->> where analogix controller is mixed with the phy of other vendors.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> ---
->>   .../drm/bridge/analogix/analogix_dp_core.c    |  4 +-
->>   .../drm/bridge/analogix/analogix_dp_core.h    |  2 +
->>   .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 90 +++++++++++++++++++
->>   3 files changed, 94 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 6f10d88a34c5..7624ed13cdbf 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -1672,7 +1672,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_probe);
->>   
->>   int analogix_dp_suspend(struct analogix_dp_device *dp)
->>   {
->> -	phy_power_off(dp->phy);
->> +	analogix_dp_phy_power_off(dp);
-> 
-> Why?
-> 
->>   
->>   	if (dp->plat_data->power_off)
->>   		dp->plat_data->power_off(dp->plat_data);
->> @@ -1696,7 +1696,7 @@ int analogix_dp_resume(struct analogix_dp_device *dp)
->>   	if (dp->plat_data->power_on)
->>   		dp->plat_data->power_on(dp->plat_data);
->>   
->> -	phy_power_on(dp->phy);
->> +	analogix_dp_phy_power_on(dp);
-> 
-> Why?
-> 
+It's fine with me.
 
-These changes for phy_power_on()/phy_power_off() may be unnecessary. I 
-will just put the phy_set_mode() before phy_power_on() in next version.
+> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
+> > >   kms_flip@flip-vs-panning-vs-hang,Fail
+> > >   kms_lease@lease-uevent,Fail
+> > > @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+> > >   kms_plane_alpha_blend@alpha-7efc,Fail
+> > >   kms_plane_alpha_blend@coverage-7efc,Fail
+> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+> > > -kms_rmfb@close-fd,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+> > > index d74e04405e65..5122233b9941 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+> > > @@ -18,3 +18,10 @@ msm/msm_shrink@copy-gpu-oom-32
+> > >   # IGT Version: 1.28-g0df7b9b97
+> > >   # Linux Version: 6.9.0-rc7
+> > >   msm/msm_shrink@copy-gpu-oom-8
+> > > +
+> > > +# Board Name: sc7180-trogdor-kingoftown
+> > > +# Bug Report:
+> > > +# Failure Rate: 50
+> > > +# IGT Version: 1.29-g33adea9eb
+> > > +# Linux Version: 6.13.0-rc2
+> > > +kms_lease@page-flip-implicit-plane
+> > 
+> > Do you have a failure log?
+> 
+> 
+> https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68026461#L3262
+> 
+> Let me know if I can create a gitlab issue for this.
 
->>   
->>   	analogix_dp_init_dp(dp);
->>   
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> index 774d11574b09..a76079d61768 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
->> @@ -232,5 +232,7 @@ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
->>   			     struct dp_sdp *vsc, bool blocking);
->>   ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
->>   			     struct drm_dp_aux_msg *msg);
->> +void analogix_dp_phy_power_on(struct analogix_dp_device *dp);
->> +void analogix_dp_phy_power_off(struct analogix_dp_device *dp);
->>   
->>   #endif /* _ANALOGIX_DP_CORE_H */
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> index 3afc73c858c4..809bb0c72d18 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
->> @@ -11,6 +11,7 @@
->>   #include <linux/gpio/consumer.h>
->>   #include <linux/io.h>
->>   #include <linux/iopoll.h>
->> +#include <linux/phy/phy.h>
->>   
->>   #include <drm/bridge/analogix_dp.h>
->>   
->> @@ -513,10 +514,27 @@ void analogix_dp_enable_sw_function(struct analogix_dp_device *dp)
->>   void analogix_dp_set_link_bandwidth(struct analogix_dp_device *dp, u32 bwtype)
->>   {
->>   	u32 reg;
->> +	int ret;
->>   
->>   	reg = bwtype;
->>   	if ((bwtype == DP_LINK_BW_2_7) || (bwtype == DP_LINK_BW_1_62))
->>   		writel(reg, dp->reg_base + ANALOGIX_DP_LINK_BW_SET);
->> +
->> +	if (dp->phy) {
->> +		union phy_configure_opts phy_cfg = {0};
->> +
->> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
-> 
-> You can drop this, .set_lanes is false.
-> 
->> +		phy_cfg.dp.link_rate =
->> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
->> +		phy_cfg.dp.set_lanes = false;
->> +		phy_cfg.dp.set_rate = true;
->> +		phy_cfg.dp.set_voltages = false;
-> 
-> You don't need to set those to false, it's cleared by = {0};
-> 
->> +		ret = phy_configure(dp->phy, &phy_cfg);
->> +		if (ret && ret != -EOPNOTSUPP) {
->> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
->> +			return;
->> +		}
->> +	}
->>   }
->>   
->>   void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
->> @@ -530,9 +548,24 @@ void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
->>   void analogix_dp_set_lane_count(struct analogix_dp_device *dp, u32 count)
->>   {
->>   	u32 reg;
->> +	int ret;
->>   
->>   	reg = count;
->>   	writel(reg, dp->reg_base + ANALOGIX_DP_LANE_COUNT_SET);
->> +
->> +	if (dp->phy) {
->> +		union phy_configure_opts phy_cfg = {0};
->> +
->> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
->> +		phy_cfg.dp.set_lanes = true;
->> +		phy_cfg.dp.set_rate = false;
->> +		phy_cfg.dp.set_voltages = false;
-> 
-> Likewise
-> 
->> +		ret = phy_configure(dp->phy, &phy_cfg);
->> +		if (ret && ret != -EOPNOTSUPP) {
->> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
->> +			return;
->> +		}
->> +	}
->>   }
->>   
->>   void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
->> @@ -546,10 +579,39 @@ void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
->>   void analogix_dp_set_lane_link_training(struct analogix_dp_device *dp)
->>   {
->>   	u8 lane;
->> +	int ret;
->>   
->>   	for (lane = 0; lane < dp->link_train.lane_count; lane++)
->>   		writel(dp->link_train.training_lane[lane],
->>   		       dp->reg_base + ANALOGIX_DP_LN0_LINK_TRAINING_CTL + 4 * lane);
->> +
->> +	if (dp->phy) {
->> +		union phy_configure_opts phy_cfg = {0};
->> +
->> +		for (lane = 0; lane < dp->link_train.lane_count; lane++) {
->> +			u8 training_lane = dp->link_train.training_lane[lane];
->> +			u8 vs, pe;
->> +
->> +			vs = (training_lane & DP_TRAIN_VOLTAGE_SWING_MASK) >>
->> +			     DP_TRAIN_VOLTAGE_SWING_SHIFT;
->> +			pe = (training_lane & DP_TRAIN_PRE_EMPHASIS_MASK) >>
->> +			     DP_TRAIN_PRE_EMPHASIS_SHIFT;
->> +			phy_cfg.dp.voltage[lane] = vs;
->> +			phy_cfg.dp.pre[lane] = pe;
->> +		}
->> +
->> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
->> +		phy_cfg.dp.link_rate =
->> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
-> 
-> You can drop these two.
-
-Indeed, all the needless assignments for phy_configure() will be deleted 
-in next version.
+Somebody will have to look for more details, this one isn't that
+obvious.
 
 > 
->> +		phy_cfg.dp.set_lanes = false;
->> +		phy_cfg.dp.set_rate = false;
->> +		phy_cfg.dp.set_voltages = true;
->> +		ret = phy_configure(dp->phy, &phy_cfg);
->> +		if (ret && ret != -EOPNOTSUPP) {
->> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
->> +			return;
->> +		}
->> +	}
->>   }
->>   
->>   u32 analogix_dp_get_lane_link_training(struct analogix_dp_device *dp, u8 lane)
->> @@ -1053,3 +1115,31 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
->>   
->>   	return -EREMOTEIO;
->>   }
->> +
->> +void analogix_dp_phy_power_on(struct analogix_dp_device *dp)
->> +{
->> +	int ret;
->> +
->> +	ret = phy_set_mode(dp->phy, PHY_MODE_DP);
->> +	if (ret) {
->> +		dev_err(dp->dev, "%s: phy_set_mode() failed: %d\n", __func__, ret);
->> +		return;
->> +	}
->> +
->> +	ret = phy_power_on(dp->phy);
->> +	if (ret) {
->> +		dev_err(dp->dev, "%s: phy_power_on() failed: %d\n", __func__, ret);
+> Regards,
+> Vginesh
 > 
-> There is already a dev_err() call in phy_power_on().
-> 
->> +		return;
->> +	}
->> +}
->> +
->> +void analogix_dp_phy_power_off(struct analogix_dp_device *dp)
->> +{
->> +	int ret;
->> +
->> +	ret = phy_power_off(dp->phy);
->> +	if (ret) {
->> +		dev_err(dp->dev, "%s: phy_power_off() failed: %d\n", __func__, ret);
-> 
-> There is already a dev_err() call in phy_power_off().
-> 
->> +		return;
->> +	}
->> +}
->> -- 
->> 2.34.1
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+> > 
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> > > index 6dbc2080347d..581d0aa33b4f 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+> > > @@ -8,6 +8,8 @@ kms_color@ctm-red-to-blue,Fail
+> > >   kms_color@ctm-signed,Fail
+> > >   kms_cursor_legacy@cursor-vs-flip-toggle,Fail
+> > >   kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
+> > > +kms_display_modes@extended-mode-basic,Fail
+> > > +kms_display_modes@mst-extended-mode-negative,Fail
+> > 
+> > Again, the same IGT issue.
+> > 
+> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
+> > >   kms_flip@flip-vs-panning-vs-hang,Fail
+> > >   kms_lease@lease-uevent,Fail
+> > > @@ -15,4 +17,3 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+> > >   kms_plane_alpha_blend@alpha-7efc,Fail
+> > >   kms_plane_alpha_blend@coverage-7efc,Fail
+> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+> > > -kms_rmfb@close-fd,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
+> > > index fa8c7e663858..69076751af24 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
+> > > @@ -1,4 +1,3 @@
+> > > -drm_read@invalid-buffer,Fail
+> > >   kms_color@ctm-0-25,Fail
+> > >   kms_color@ctm-0-50,Fail
+> > >   kms_color@ctm-0-75,Fail
+> > > @@ -19,6 +18,8 @@ kms_cursor_legacy@flip-vs-cursor-atomic,Fail
+> > >   kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
+> > >   kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
+> > >   kms_cursor_legacy@flip-vs-cursor-legacy,Fail
+> > > +kms_display_modes@extended-mode-basic,Fail
+> > > +kms_display_modes@mst-extended-mode-negative,Fail
+> > 
+> > The same IGT error
+> > 
+> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
+> > >   kms_flip@flip-vs-panning-vs-hang,Fail
+> > >   kms_lease@lease-uevent,Fail
+> > > @@ -28,4 +29,3 @@ kms_plane_alpha_blend@coverage-7efc,Fail
+> > >   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+> > >   kms_plane_cursor@overlay,Fail
+> > >   kms_plane_cursor@viewport,Fail
+> > > -kms_rmfb@close-fd,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > > index 4892c0c70a6d..8d26b23133aa 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
+> > > @@ -7,9 +7,4 @@ kms_cursor_legacy@torture-bo,Fail
+> > >   kms_cursor_legacy@torture-move,Fail
+> > >   kms_hdmi_inject@inject-4k,Fail
+> > >   kms_lease@lease-uevent,Fail
+> > > -kms_plane_alpha_blend@alpha-7efc,Fail
+> > > -kms_plane_alpha_blend@alpha-basic,Fail
+> > > -kms_plane_alpha_blend@alpha-opaque-fb,Fail
+> > > -kms_plane_alpha_blend@alpha-transparent-fb,Fail
+> > > -kms_plane_alpha_blend@constant-alpha-max,Fail
+> > >   msm/msm_recovery@gpu-fault-parallel,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
+> > > deleted file mode 100644
+> > > index c1859d9b165f..000000000000
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-flakes.txt
+> > > +++ /dev/null
+> > > @@ -1,6 +0,0 @@
+> > > -# Board Name: sm8350-hdk
+> > > -# Bug Report: https://gitlab.freedesktop.org/drm/msm/-/issues/65
+> > > -# Failure Rate: 100
+> > > -# IGT Version: 1.28-ga73311079
+> > > -# Linux Version: 6.12.0-rc1
+> > > -msm/msm_recovery@gpu-fault
+> > 
 
-Best regards,
-Damon
-
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
