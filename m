@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435AEE7717F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 15:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837AAE7717F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 16:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pF513HuirrXqHIvYfM8+WDI8D4EGHIQiz4TIX7BetvQ=; b=E7qABgTdV4kq4R
-	gBvYKCIfXwmjphqfKL6qurHneMJg86UTMwp9I2MO6hN47xBAcqrRIiWQPorTuwBiaMHb6yTKshkyY
-	JeDBKwx1XR/YfTFL1Qquw0X7VExlZemAX1vxxZ1cEjM8mx214x6KHiIxPb6uTl3IX9fR0f1rEZLAO
-	K4Ard3+OWBqKiylLJXkTdWo5ATOHP7fHm3/xfGtkU0wvRev+4N9gARbZJNFUrewh4q2HgRdWUSaoR
-	GvLLMF8lKJInvZPgqolB28qmykPubMUEz84Mbbx9i8ljTWpsPpnYMd78oAehPbF6cNHO0yma1j8E2
-	SdUZKNHPjgUw5TIFB8cw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w2kr88nsXeHqNNCrPDeWCC+cJTcL4nXW2jGaIJFS//Y=; b=bqr9iXjjhlgczk
+	64Z/QHJAJzHM6GpsS6yuqG7V8KtMF1BUm7zYzHanl0ED86ILEHelxkW2tWajlyaYnhN2x3TX/1trk
+	rbIIU5h0/pjoB1O59C+cMYLxVIuVkqKa55NxIB4GCCiuV6wLmOlhxkt3aafRWntuBXmF8wmikwMXO
+	mWVN4nfsX7/WwTxaSW150uWGRfyMCJbKiiyQXwpWu6x84Ge1IuVnu9ZGJ6e6udXd+eMd8ap/A6Ihd
+	D4i6EriGY70zRuL78wTtIZhsMDuBu4JCFa6naDaGnd/wlG/K8Yu66wedJVrgcJfivscy/58A0hyYj
+	j04RKePr4+6z4hzPL6Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLlSK-00000000p6K-3VBY;
-	Thu, 12 Dec 2024 15:50:24 +0000
-Received: from a7-40.smtp-out.eu-west-1.amazonses.com ([54.240.7.40])
+	id 1tLlnC-00000000uTU-2GvM;
+	Thu, 12 Dec 2024 16:11:58 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLlLl-00000000nVF-0lNP;
-	Thu, 12 Dec 2024 15:43:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=bc7lryepznv65m6r2ewkpoafjt4fiq42; d=collabora.com; t=1734018213;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding;
-	bh=ltUDALF8WtRUBRtQU/ZvlBBXaB0jB77q/PnuMmcP0BA=;
-	b=U1wQpTr3k8eLSbyCBCHyrpP+wbs1XpZS9hsaqkvPRaoxq25BZr/dM6k1xQAk267h
-	RA5aOEbkc8rqk9RtQaIX+xl4oRR/h3CotlGUAvrd6J05OlHZTwauyYcdE+yjcn5hhew
-	6v2FVSJ/8hzUTRFdtt7IpFFG/5dfHZgHK11x+SyBo/p4RksDDs6W02B6shK1uB9xJ3K
-	tyfyd9N5rUU4WeK+EA+4SPx8BgFBzG5tjKntqL3LAcum9J3xETUWBWqxyDDOejpNpnU
-	bsRefvfbI/j9XGZEV68GLxyyXkrwfSssvjRaGNia40a+5TV2mTyNEdyec8jvOrlnRmP
-	sMO4u7KNAw==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1734018213;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=ltUDALF8WtRUBRtQU/ZvlBBXaB0jB77q/PnuMmcP0BA=;
-	b=hfVElm0gkL4Grt7PQrESSMWpcfKYEgyVVCSfM2oBuEj4LnmE7/FKiGmRp5KC6fNY
-	hW1Sk8gIv52BHGqp5Ak2Z3dd5PdFzQ9mmnXWAfBvv7m1np5iAJRzjjQs9l5Zh1OlTvq
-	k2sYNA/KDD0SzebN6C92B88egzp1dsvD1taccRNM=
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org, 
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 0/2] media: verisilicon: fix reference padding issue
-Date: Thu, 12 Dec 2024 15:43:33 +0000
-Message-ID: <01020193bb8a24ad-99eafebb-3b0b-40c0-9b28-3a0dbc84327a-000000@eu-west-1.amazonses.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tLlXS-00000000qDW-0SHn;
+	Thu, 12 Dec 2024 15:55:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id DC3BDA42910;
+	Thu, 12 Dec 2024 15:53:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9073DC4CED3;
+	Thu, 12 Dec 2024 15:55:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734018940;
+	bh=PKNBf0TCKuwNcifWvhSa7hUFVANZKsYx7vGJQEMnWHs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JbTyuEFzQhdRJOmDrKJyk9vWtv59qHQf6NV5vzbP3QL+w07scAiTpND/D+fCd5C8M
+	 HGFo7Zr4lA5KuhQLh7wMkG5WWx5Kwal2PKprL1LophqlY/WN+VyLBpsZN7PTE0uCjd
+	 XCQ0F8h0QOZONPX2obr7xgnwPTHDCgpgZWYhjXMhHfrPQXzgzL7yfoJDVJvO65o1bq
+	 w/zHPnbEtKLRQh0t0kyUZvpJsBX6ZnpdESQlKb/vt8tTSwZJc/KFJ6+Q+rhQJ5VEUp
+	 PKEBQhBU2DPnV/ofyaUbQV54Hzth2cvwnkNcKOatzAiuYps8eAMqojXzk68jfIL7aF
+	 PBNJQBAh1PLCA==
+Date: Thu, 12 Dec 2024 15:55:33 +0000
+From: Lee Jones <lee@kernel.org>
+To: Jiri Kosina <jikos@kernel.org>
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, jic23@kernel.org,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	jdelvare@suse.com, linux@roeck-us.net,
+	srinivas.pandruvada@linux.intel.com, bentiss@kernel.org,
+	dmitry.torokhov@gmail.com, pavel@ucw.cz, ukleinek@debian.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
+	linux-iio@vger.kernel.org, linux-leds@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v9 1/9] HID: hid-sensor-hub: don't use stale
+ platform-data on remove
+Message-ID: <20241212155533.GG7139@google.com>
+References: <20241107114712.538976-1-heiko@sntech.de>
+ <20241211120844.GD7139@google.com>
+ <n914pn7o-pr9n-5ss0-p744-73402nnn843p@xreary.bet>
+ <3196449.TQGk6oTFT5@diego>
+ <4s41717n-3888-os6o-384n-7678n0361r0s@xreary.bet>
 MIME-Version: 1.0
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.12.12-54.240.7.40
+Content-Disposition: inline
+In-Reply-To: <4s41717n-3888-os6o-384n-7678n0361r0s@xreary.bet>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_074338_195136_0F551EB3 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241212_075542_212474_0CB1002A 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,43 +79,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hantro hardware is splited into two parts: the decoder which produce
-tiled pixels formats and the post-processor which produce raster pixels
-formats.
-When post-processor is used the selected pixels format may not have the
-some padding/stride than the decoder output pixels format. This led to
-miscomputing chroma and motion vectors offsets so data are overlapping.
-This series introduce a reference pixels format that decoder use to
-compute the various needed offsets and size.
-
-With this series Fluster for VP9 tests is now 207/305 vs 145/305.
-HEVC test score isn't impacted by these patches (still 141/147).
-
-Version 2:
-- rebased on top of media-commiter/next
-- Add reviewed-by tags
-
-Benjamin Gaignard (2):
-  media: verisilicon: Store reference frames pixels format
-  media: verisilicon: Fix IMX8 native pixels format steps values
-
- drivers/media/platform/verisilicon/hantro.h   |  2 ++
- .../media/platform/verisilicon/hantro_g2.c    |  2 +-
- .../platform/verisilicon/hantro_postproc.c    | 32 +++++++------------
- .../media/platform/verisilicon/hantro_v4l2.c  | 21 ++++++++++++
- .../media/platform/verisilicon/imx8m_vpu_hw.c | 10 +++---
- 5 files changed, 40 insertions(+), 27 deletions(-)
-
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAxMSBEZWMgMjAyNCwgSmlyaSBLb3NpbmEgd3JvdGU6Cgo+IE9uIFdlZCwgMTEgRGVj
+IDIwMjQsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IAo+ID4gPiA+ID4gPiA+IFRoaXMgY2hhbmdl
+IHdhcyBtb3JlIG9yIGxlc3MgYSBzdXJwcmlzZSBmaW5kLCBiZWNhdXNlIEkgd2FudGVkIHRvIG1h
+a2UKPiA+ID4gPiA+ID4gPiB0aGUgcGxhdGZvcm1fZGF0YSBwb2ludGVyIGluIHRoZSBtZmRfY2Vs
+bCBzdHJ1Y3QgY29uc3QgYW5kIHRoaXMgdGhlIGhpZAo+ID4gPiA+ID4gPiA+IHNlbnNvciBodWIg
+c3Rvb2Qgb3V0IGFzIGRvaW5nIHNvbWV0aGluZyBzdHJhbmdlIDstKSAuCj4gPiA+ID4gPiA+ID4g
+Cj4gPiA+ID4gPiA+ID4gU28gcGF0Y2ggMiBvZiB0aGlzIHNlcmllcyBhY3R1YWxseSBkZXBlbmRz
+IG9uIHRoaXMgY2hhbmdlIHRvIG5vdCBjYXVzZQo+ID4gPiA+ID4gPiA+IGJ1aWxkIGVycm9ycy4K
+PiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IEFoLCByaWdodC4KPiA+ID4gPiA+ID4gCj4gPiA+ID4g
+PiA+ID4gQnV0IHNlZWluZyB0aGF0IHdlJ3JlIGFmdGVyIC1yYzYgYWxyZWR5LCBJIHdvdWxkIGFz
+c3VtZSB0aGUgYnJ1bnQgb2YgdGhlIAo+ID4gPiA+ID4gPiA+IG1jdSBzZXJpZXMgbWlnaHQgbmVl
+ZCB0byB3YWl0IGFmdGVyIDYuMTMtcmMxIGFueXdheSAtIGJ1dCBJIGd1ZXNzIHRoYXQgCj4gPiA+
+ID4gPiA+ID4gZGVwZW5kcyBvbiBob3cgTGVlIHNlZXMgdGhpbmdzIDstKSAuCj4gPiA+ID4gPiA+
+IAo+ID4gPiA+ID4gPiBPSywgSSBhbSBrZWVwaW5nIG15IGhhbmRzIG9mZiBpdCBmb3IgdGhlIHRp
+bWUgYmVpbmcuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IEkgY2FuIHRha2UgaXQgbm93IHdpdGggYW4g
+QWNrLgo+ID4gPiA+IAo+ID4gPiA+IExvb2tpbmcgdG8gYXBwbHkgdGhpcyBzZXQgbm93Lgo+ID4g
+PiA+IAo+ID4gPiA+IEFjayBwbGVhc2UuCj4gPiA+IAo+ID4gPiBJJ2QgcHJlZmVyZXIgaWYgU3Jp
+bml2YXMgY291bGQgYWNrIHRoaXMgYXMgdGhlIG1vcmUgc3BlY2lmaWMgbWFpbnRhaW5lci4gCj4g
+PiA+IFNyaW5pdmFzLCBwbGVhc2U/IAo+ID4gCj4gPiBUaGUgcGF0Y2ggYWxyZWFkeSBpbmNsdWRl
+cyB0aGUKPiA+ICAgIEFjayBmcm9tIFNyaW5pdmFzIFBhbmRydXZhZGEgPHNyaW5pdmFzLnBhbmRy
+dXZhZGFAbGludXguaW50ZWwuY29tPgo+ID4gZnJvbSBhIHByZXZpb3VzIHZlcnNpb24sIHNvIEkg
+Z3Vlc3MgaXQgc2hvdWxkIGJlIG9rIGFscmVhZHk/Cj4gCj4gQWgsIEkgbWlzc2VkIHRoYXQsIGlu
+ZGVlZCwgc29ycnkgZm9yIHRoZSBub2lzZS4KPiAKPiBXaXRoIHRoYXQKPiAKPiAJQWNrZWQtYnk6
+IEppcmkgS29zaW5hIDxqa29zaW5hQHN1c2UuY29tPgo+IAo+IGFuZCBMZWUsIHBsZWFzZSBmZWVs
+IGZyZWUgdG8gdGFrZSBpdC4KClRoYW5rcywgd2lsbCBkby4KCi0tIApMZWUgSm9uZXMgW+adjueQ
+vOaWr10KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
