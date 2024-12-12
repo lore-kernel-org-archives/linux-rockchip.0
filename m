@@ -4,98 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF169E77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 19:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7C0E77183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 19:32:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xiNkk0enBf2PWIAH8L7LKZpfNZmjvU305IzMHbu2qQM=; b=h9M6665O+F4cLQ
-	Nc9OART34MCqp67T1FANePQ6zzEzzxrjBGp6spc3tl+DkR470tHzheBOIXzrTqPYL+8z5Z/9WcmjF
-	aqHJN9MwBG4xH4sUqDcp4ItjX+0RHrmpOPHVo2AuK3MSq32Gv6UmUAl6s0w8Pr2d06FH7Hhh6pkPw
-	tNilaVf+WgD3Ng2KsZj+iiU7AtJsmTifqSJZMsfjcTXEmalSlKvfdQ6KcRXYpDaJQ/2p2QxwthNAZ
-	L/jXx+gcFZCcnJ2TynWkpAAIrwDzqXpVtr4uyiLyE50PZO7Bk5W6L4KMon/WFkvy6yZiX1TpGI5Rd
-	qtiYummo5B5YV/touUMA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g64GLbDXggKs1nfTdqqctsXShDjYNjWKUkBJYmBRZJA=; b=JEcKT3/1ZiBrv0ppHVEsZ3khF+
+	gZw91uBwlo8A8RwCIAWT8YJZc/cvE4H1jm6HjQZXTJHad/nE5amrdvZICvJ+cYk7Fq0sr17FXFteT
+	A9PVY9jgFrXaAiGdClG11/9E0/s7h0BhBxTqpqSPZhij9mP8UU0xt6vCt7YwXT8XNRQoqMzhmKgyj
+	+lA4ChYeLK9NhxO4ObMw/mczMRNCn6+Mx3VxWK7TzQsyKPlOfKFyH5eeaz+K40QfnWB5yfLESIrzk
+	DQ7idpju8AH2mQUe4/dLPC9gtEZ4vZgGx40XR+6L/AWYpHJ5TORcz+tRIQAYhwflEFnP36Q122sqz
+	4MSks2Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLofR-00000001aG5-1hVV;
-	Thu, 12 Dec 2024 19:16:09 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1tLovS-00000001ej6-0gzv;
+	Thu, 12 Dec 2024 19:32:42 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLneD-00000001LUS-07ab
+	id 1tLodR-00000001Zrp-18lo
 	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Dec 2024 18:10:50 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4BCGvbVE029911;
-	Thu, 12 Dec 2024 18:10:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	s2oXJFUSdO4b3N0K1tz9zIWqIb8TBGZozHuxtL/NG40=; b=WqiYTPB8dqHWp8Um
-	e1m2JHTUlzjbjeqNfGLgBho6B/UjQG5T5S0+HzdoEDn3wBFhNBG9TDkZL9mDzt4W
-	gLg3G5oMtxIgKFzUrNDJkwKCjd9cR0eaJTjK8M5yPFTYV0A4GHM2xQ/c1nwHmV7c
-	vYu2BfkttXiuJLYDBX29mdQShOuXm1rjYrBWMu0sRHikTizkZRVDCcxF0ak5CkWs
-	fCyY7VKRmXokF6rDWYnmsjS9umeVZC83zoNf+Q8+gnoqxmlf9WKtpbFE7EC+W7iq
-	tONGNvTNoxWH413KN7OWw6zSaWQkQ1WbfInTZLRyFbF989VWAfVOVvqRai7FiM3h
-	DOkoWg==
-Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43fd4xuujk-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Dec 2024 18:10:32 +0000 (GMT)
-Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
-	by NASANPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4BCIAVvV015187
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Dec 2024 18:10:31 GMT
-Received: from [10.134.70.212] (10.80.80.8) by nasanex01b.na.qualcomm.com
- (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 12 Dec
- 2024 10:10:31 -0800
-Message-ID: <7fa714e0-b9db-45a4-a7c4-118cf21dc590@quicinc.com>
-Date: Thu, 12 Dec 2024 10:10:30 -0800
+	Thu, 12 Dec 2024 19:14:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1734030828; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=d2KhIrTRCwsnrSEx5Awba5uvk41EF0jtrltCD/UEiBzj4zr8GnyyDi2B+GdQIb2QWV+v4mSWCXQPGQ/Tekvhw2llABm+j9ThHIAGkIZZqArnYHYyZGodb/cHX5DsB/2qDjNgeyetDXFdnlfDKfyMUgG/qBjtuUozXu6GseYPQvI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1734030828; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=wbJ8cGeT9Wi00jHtRJfO1mPAsezSL7iwI1iLiBCnwhA=; 
+	b=IPVolFHtc9XoXkZrf0RDz5Eezr1fbuG2+z6OLT/6GeL/pGBNuHen0xgU8IOMBtVZaV1RMFx4gPQrvhn+DAHXzVWK5k1ZW7zhvIQ1iEzNuSITBCJdvSMXFtzE8W85iWgeG017ZqHL87SsTuvcYmC4PYZ6bIglLpHB+x43rEJF4ZA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1734030828;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=wbJ8cGeT9Wi00jHtRJfO1mPAsezSL7iwI1iLiBCnwhA=;
+	b=WqwLGXMRlElCdIE54gl2MEFu8Olymm/zI0A6KavVx//bqv1lC38iqgsDk1MCnlhR
+	8zuCEnt0YIfSiexjncqGMSlzj+7tu4a2d4JKcphkKphuYAgUlT8nzB4IJoW9WhLzQui
+	nrzigylBi3iG7drL+xY0KvCptv6yXWL8YM4/q7hQ=
+Received: by mx.zohomail.com with SMTPS id 1734030825629780.8771974478221;
+	Thu, 12 Dec 2024 11:13:45 -0800 (PST)
+Received: by mercury (Postfix, from userid 1000)
+	id 57EE810604B1; Thu, 12 Dec 2024 20:13:40 +0100 (CET)
+Date: Thu, 12 Dec 2024 20:13:40 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	=?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
+	Chen-Yu Tsai <wens@csie.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, kernel@collabora.com, 
+	Dragan Simic <dsimic@manjaro.org>
+Subject: Re: [PATCH v5 3/7] pmdomain: rockchip: forward
+ rockchip_do_pmu_set_power_domain errors
+Message-ID: <v4oh6r5lr6eg3rg2poucotbuoddjllfp63lvmf7vuaawe2spvy@f2gv4nvubiw3>
+References: <20241211143044.9550-1-sebastian.reichel@collabora.com>
+ <20241211143044.9550-4-sebastian.reichel@collabora.com>
+ <CAMdYzYqLq=kSC8fiBapRS_8w0s8PaL9Yd46VgM56YbTEmUG1xA@mail.gmail.com>
+ <xe2wqm4ktutycxj7x4rskz4pn4cfmoci6zcgfxecmvc5bu7cqi@mqxi3pnehqq3>
+ <CAMdYzYpDXHtz_Fq5NJXqTdxVTcJcHkjcjU4-J=zwmE0BWmSsNw@mail.gmail.com>
+ <CAPDyKFoW5-U8hLcU-sryuMSP5-E2_yudFZ2-wH8-s62jn4qJ8A@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] drm/panel: add Raydium RM67200 panel driver
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-CC: Neil Armstrong <neil.armstrong@linaro.org>, Andy Yan <andyshrk@163.com>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
-        Simona
- Vetter <simona@ffwll.ch>,
-        Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-        <kernel@collabora.com>
-References: <20241210164333.121253-1-sebastian.reichel@collabora.com>
- <20241210164333.121253-3-sebastian.reichel@collabora.com>
- <2cbbc5d6-2d6b-4afe-a0ef-7f59d28724dc@quicinc.com>
- <2kfapf6iolb65g3kss2hulwpqiczyyk6vvv37pqthm7o625umf@vuo7saus5kcy>
-Content-Language: en-US
-From: Jessica Zhang <quic_jesszhan@quicinc.com>
-In-Reply-To: <2kfapf6iolb65g3kss2hulwpqiczyyk6vvv37pqthm7o625umf@vuo7saus5kcy>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01b.na.qualcomm.com (10.46.141.250)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: Wa0Ju1jR_y0qDp3vsQHUignnVGZZ_BJG
-X-Proofpoint-GUID: Wa0Ju1jR_y0qDp3vsQHUignnVGZZ_BJG
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 mlxlogscore=925 phishscore=0 adultscore=0
- suspectscore=0 spamscore=0 mlxscore=0 impostorscore=0 clxscore=1015
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412120129
+In-Reply-To: <CAPDyKFoW5-U8hLcU-sryuMSP5-E2_yudFZ2-wH8-s62jn4qJ8A@mail.gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/233.989.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_101049_185452_8CD9E8EF 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20241212_111405_383290_93CC8844 
+X-CRM114-Status: GOOD (  41.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,64 +88,209 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2927904269464794770=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
+--===============2927904269464794770==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="j6fd2ncdfhcvqlku"
+Content-Disposition: inline
 
-On 12/10/2024 2:41 PM, Sebastian Reichel wrote:
-> Hello Jessica,
-> 
-> On Tue, Dec 10, 2024 at 09:45:09AM -0800, Jessica Zhang wrote:
->> [...]
->>> +static const struct raydium_rm67200_panel_info w552793baa_info = {
->>> +	.mode = {
->>> +		.clock = 132000,
->>> +		.hdisplay = 1080,
->>> +		.hsync_start = 1095,
->>> +		.hsync_end = 1125,
->>> +		.htotal = 1129,
->>> +		.vdisplay = 1920,
->>> +		.vsync_start = 1935,
->>> +		.vsync_end = 1950,
->>> +		.vtotal = 1952,
->>> +		.width_mm = 68, /* 68.04mm */
->>> +		.height_mm = 121, /* 120.96mm */
->>> +		.type = DRM_MODE_TYPE_DRIVER,
->>> +	},
->>> +	.regulators = w552793baa_regulators,
->>> +	.num_regulators = ARRAY_SIZE(w552793baa_regulators),
->>> +	.panel_setup = w552793baa_setup,
->>
->> Just curious, will there be other panels with different regulators and init
->> commands added for this driver in the future?
-> 
-> I don't know any other RM67200 based panels. But the init sequence
-> contains lots of vendor specific registers and I'm pretty sure it
-> is specific to the W552793BAA. I put the regulators into the panel
-> specific section, because the datasheet for the RM67200 specifies
-> slightly different ones than the w552793baa datasheet. Thus I expect
-> that other displays might have slight differences.
 
-Ack, thanks for clarifying.
+--j6fd2ncdfhcvqlku
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v5 3/7] pmdomain: rockchip: forward
+ rockchip_do_pmu_set_power_domain errors
+MIME-Version: 1.0
 
-In that case,
+Hi,
 
-Reviewed-by: Jessica Zhang <quic_jesszhan@quicinc.com>
+On Thu, Dec 12, 2024 at 12:26:42PM +0100, Ulf Hansson wrote:
+> On Thu, 12 Dec 2024 at 00:11, Peter Geis <pgwipeout@gmail.com> wrote:
+> > On Wed, Dec 11, 2024 at 3:46=E2=80=AFPM Sebastian Reichel
+> > <sebastian.reichel@collabora.com> wrote:
+> > > On Wed, Dec 11, 2024 at 02:53:34PM -0500, Peter Geis wrote:
+> > > > On Wed, Dec 11, 2024 at 9:32=E2=80=AFAM Sebastian Reichel
+> > > > <sebastian.reichel@collabora.com> wrote:
+> > > > >
+> > > > > Currently rockchip_do_pmu_set_power_domain prints a warning if th=
+ere
+> > > > > have been errors turning on the power domain, but it does not ret=
+urn
+> > > > > any errors and rockchip_pd_power() tries to continue setting up t=
+he
+> > > > > QOS registers. This usually results in accessing unpowered regist=
+ers,
+> > > > > which triggers an SError and a full system hang.
+> > > > >
+> > > > > This improves the error handling by forwarding the error to avoid
+> > > > > kernel panics.
+> > > >
+> > > > I think we should merge your patch here with my patch for returning
+> > > > errors from rockchip_pmu_set_idle_request [1].
+> > >
+> > > I will have a look.
+> > >
+> > > > > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> > > > > Tested-by: Heiko Stuebner <heiko@sntech.de>
+> > > > > Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com> # On Roc=
+k 5B
+> > > > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > > > ---
+> > > > >  drivers/pmdomain/rockchip/pm-domains.c | 34 +++++++++++++++++---=
+------
+> > > > >  1 file changed, 22 insertions(+), 12 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmd=
+omain/rockchip/pm-domains.c
+> > > > > index a161ee13c633..8f440f2883db 100644
+> > > > > --- a/drivers/pmdomain/rockchip/pm-domains.c
+> > > > > +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> > > > > @@ -533,16 +533,17 @@ static int rockchip_pmu_domain_mem_reset(st=
+ruct rockchip_pm_domain *pd)
+> > > > >         return ret;
+> > > > >  }
+> > > > >
+> > > > > -static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_=
+domain *pd,
+> > > > > -                                            bool on)
+> > > > > +static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_d=
+omain *pd,
+> > > > > +                                           bool on)
+> > > > >  {
+> > > > >         struct rockchip_pmu *pmu =3D pd->pmu;
+> > > > >         struct generic_pm_domain *genpd =3D &pd->genpd;
+> > > > >         u32 pd_pwr_offset =3D pd->info->pwr_offset;
+> > > > >         bool is_on, is_mem_on =3D false;
+> > > > > +       int ret;
+> > > > >
+> > > > >         if (pd->info->pwr_mask =3D=3D 0)
+> > > > > -               return;
+> > > > > +               return 0;
+> > > > >
+> > > > >         if (on && pd->info->mem_status_mask)
+> > > > >                 is_mem_on =3D rockchip_pmu_domain_is_mem_on(pd);
+> > > > > @@ -557,16 +558,21 @@ static void rockchip_do_pmu_set_power_domai=
+n(struct rockchip_pm_domain *pd,
+> > > > >
+> > > > >         wmb();
+> > > > >
+> > > > > -       if (is_mem_on && rockchip_pmu_domain_mem_reset(pd))
+> > > > > -               return;
+> > > > > +       if (is_mem_on) {
+> > > > > +               ret =3D rockchip_pmu_domain_mem_reset(pd);
+> > > > > +               if (ret)
+> > > > > +                       return ret;
+> > > > > +       }
+> > > > >
+> > > > > -       if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, =
+pd, is_on,
+> > > > > -                                     is_on =3D=3D on, 0, 10000))=
+ {
+> > > > > -               dev_err(pmu->dev,
+> > > > > -                       "failed to set domain '%s', val=3D%d\n",
+> > > > > -                       genpd->name, is_on);
+> > > > > -               return;
+> > > > > +       ret =3D readx_poll_timeout_atomic(rockchip_pmu_domain_is_=
+on, pd, is_on,
+> > > > > +                                       is_on =3D=3D on, 0, 10000=
+);
+> > > > > +       if (ret) {
+> > > > > +               dev_err(pmu->dev, "failed to set domain '%s' %s, =
+val=3D%d\n",
+> > > > > +                       genpd->name, on ? "on" : "off", is_on);
+> > > > > +               return ret;
+> > > > >         }
+> > > > > +
+> > > > > +       return 0;
+> > > > >  }
+> > > > >
+> > > > >  static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool=
+ power_on)
+> > > > > @@ -592,7 +598,11 @@ static int rockchip_pd_power(struct rockchip=
+_pm_domain *pd, bool power_on)
+> > > > >                         rockchip_pmu_set_idle_request(pd, true);
+> > > > >                 }
+> > > > >
+> > > > > -               rockchip_do_pmu_set_power_domain(pd, power_on);
+> > > > > +               ret =3D rockchip_do_pmu_set_power_domain(pd, powe=
+r_on);
+> > > > > +               if (ret < 0) {
+> > > > > +                       clk_bulk_disable(pd->num_clks, pd->clks);
+> > > > > +                       return ret;
+> > > >
+> > > > Looking at it, we shouldn't return directly from here because the
+> > > > mutex never gets unlocked.
+> > >
+> > > Yes, we should do that after patch 2/7 from this series :)
+> >
+> > That's excellent!
+> >
+> > >
+> > > > Instead of repeating clk_bulk_disable and return ret for each failu=
+re,
+> > > > we can initialize ret =3D 0, have a goto: out pointing to
+> > > > clk_bulk_disable, and change return 0 to return ret at the end.
+> > >
+> > > Right now there is only a single clk_bulk_disable() in an error
+> > > case, so I did not use the typical error goto chain. I suppose
+> > > it makes a lot more sense with proper error handling for the calls
+> > > to rockchip_pmu_set_idle_request().
+> >
+> > If you'd like, I can base my v2 on this patch series with the changes
+> > I'm suggesting?
+>=20
+> I leave you guys to decide the best way forward, but please keep in
+> mind that fixes/stable patches are easier managed if they are as
+> simple as possible and without relying on cleanup patches. Better fix
+> the problem first, then clean up the code.
 
-Thanks,
+I had this ordered the other way around initially and as Heiko
+pointed out that makes things more complicated overall:
 
-Jessica Zhang
+https://lore.kernel.org/linux-rockchip/4864529.A9s0UXYOmP@diego/
 
-> 
-> Greetings,
-> 
-> -- Sebastian
+Greetings,
 
+-- Sebastian
+
+--j6fd2ncdfhcvqlku
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmdbNd0ACgkQ2O7X88g7
++ponTw//SV9QzhiNNpwaJEZ72Yh6NxpJRGo86MsMBSZ9/hhH/EzUuwcgl/xGydss
+96U9t15iugFbrra/alLpoMJVQX9qb8Y/xU3ClWUC6Anf8mKGVl1/6wZEewzkFG1b
+WTEwIbH1U7Smvoqu7y6U6GkdHlcqqm3HQinG6VJS92KMyXtWvPs6pwOb0Ta/sSGY
+qLxHPKGurxofPQOqc5/NDouHad5Hv07K4Ef8gaG6ng1fhAAu/zdt3Cr/kMzgfzPu
+VEBHcdaFbMfVAv+GbLjy6oos/jP1ZeOeTsFxBZAysVH7E++h5JRvAJayIdKzjN6i
+7K9EQ0qeBmGQES/8MirUlfBifYce62uVGsIRg1FfL7PxTRovwZGZEryyusq4FF0p
+cxSX4yQF8ZqaP/XclJVB4zZBZefltZaRh8WVkQvUJc/Y6VjuyV91MTnbVWOmOR7i
+j6t7k8L8ZwGIZ2n3PxMibZLsNZlSk40sgo7ox9DbwsdXaJO+13sdDIdcapUTjUOe
+jFrrvK0KnJfB+Jyg9f8W5Ur0BwX2of+seHNyRaUzDNkYHAXv/BNQqxzLXH9Ki0NA
+1M+juByBONsbRsCLAXyeg+IhosEooD841w09hs8PvYuPbNbw/Xlawz18oVp15GbG
+I5SmjfEeWnwDI7amjbsahRXQa8OvYYm7mRSPfLUUw9c3aLtikyo=
+=rS7x
+-----END PGP SIGNATURE-----
+
+--j6fd2ncdfhcvqlku--
+
+
+--===============2927904269464794770==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2927904269464794770==--
+
