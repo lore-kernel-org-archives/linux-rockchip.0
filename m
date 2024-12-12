@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD28E7717F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 20:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8365BE77182
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 20:08:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsCSctEbDUUsCeTLMGCtRqiIqgBJbcTX8XAiZ6gPiBQ=; b=M/6ZejhhkKpil3
-	yeCOeXjZC64EU0SB5i0asOa2BCTXLXfqZxdG4n+09uosQHgNHuVaXk9jrtp8Q8mOYUxW1fv7+cOf0
-	ujzzqksxYoaPCe+3h7U5UupwYMNYAteAIF72HwerwIGFmaavBfW4x9k+aFl+iH8a2tSqh5QHklVrM
-	7kSPaRhRUq4+Bh7XhRCnMidf7+19EifAjMGcBVn9sTx2Ggnw4S35j+k1Xe1BawtYzrcMTYS8yZLWH
-	9XEfgqD9epZb5Upbg3SUQucGhLBzFt4xHXIHD67EJA5Oob/eD8YZ7uGX7cOG7yNym1iEDSHctJK3n
-	Xk87CObmM5s9XzgccnJw==;
+	List-Owner; bh=cDsOhCTThCNIPNfH4ReAwwMz3Pjesll+SdQdX5XuAWk=; b=aAWHNAt3SZR5xZ
+	SEblLscsqNLT5PHxIkYHbjAjHriKVj2E+CXMtn1+KziScUWgH6oSASIxhzXXwwpL6k3f0wqLglSAT
+	FnDLu1XaLeWZ34fBGKlnNI0xgCa66NJkVTmnTE9/NwSrY0VmVMQdE4dNuVbp0iG8SxYBenjmxvCbU
+	cR0TwkWADVIFUnhJenBvzBDlNxIQd05Pfjd5ifyIO9HEuGp63owMuRicL8cHLmDFahVs1bzdiS2a9
+	6GYPmVUgtuRnmH4p01T3KIoywxBBw13U5XZDnLyFEDweEXpvYpYaikVYL5SxqQA4YulXhc4Oxv5Sz
+	PyppY3TzQ0Gwg5z2Xy/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLpTx-00000001kes-04qJ;
-	Thu, 12 Dec 2024 20:08:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tLpTw-00000001ke8-1dMg;
+	Thu, 12 Dec 2024 20:08:20 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLpPi-00000001jhz-3cDS;
-	Thu, 12 Dec 2024 20:04:00 +0000
+	id 1tLpPi-00000001ji0-1mng;
+	Thu, 12 Dec 2024 20:03:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734033836;
-	bh=c+MpG+anKYTp08zkr7m18UAM/ICmNVHs0fwN4TQT7ug=;
+	s=mail; t=1734033837;
+	bh=rzY/ekTj36CpGepR2T+DTbTdewEz706/EN294cYriO4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=iPQ6wBLRBNVjySpnmdW3TSqAf2TxkCxgPunouVnQaEz4uhD5LKlqGO3Gwy4PGt2w2
-	 BM0WJKbIRgSvRIU2o2dyee8whIRm0k3w4FK7kSjn1qELFLcXXUdIGGJ9oxmnN2Vaq7
-	 DPxWYPe0wM3Xvfb3tNJ6NsEIiNP2NPiJV3SWs4t89z/9rY60cJw/G93Ly5s+NSScXv
-	 XPMK7DomzsQnUwRvcDhZtWT/F8YocGK1zIq2LsnN8UEWyk5gWSLgJVnnK/ydhSAXsP
-	 rF/3ss6hNbPdsVpbpoK85rMOz+Em6ZeBs9Kmt6JXiF+vD1upvoNqYdwc5jITric0LD
-	 2PH5H1PJhl7xw==
+	b=XJV/kuoKfxKSxUEmXOw1KT5z/JxGOig6CtpENBQ27dFsm+yIIIqut5ChBzAHGr+Ie
+	 cq/svw7DEt1nvoy0Si7hou9PwTDinqjKqk129ufYEIqFDQzb3OAHINK1QaKicSo44/
+	 Yk3O+vV+wyqo1CMfZ/OUyZJezgxTJFn1GFPHqQ6CcmpqlrC5KEFEYeeuZk5hMTr/D7
+	 yELCx5SAYs/qCpsthZuSa51si8va/oFv8aAgiqNN89L52elMYHuSxezVwKUpV5qFOF
+	 WIuClvV8Usw9AqN3RExdD8yel2d+sfcWBzLOsyU3kYt0T9Z8xCrxp1YyiaHk96naBm
+	 FbyFgssQpKPYQ==
 Received: from localhost (unknown [188.27.48.199])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1773C17E37FC;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D90C917E37FF;
 	Thu, 12 Dec 2024 21:03:56 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 12 Dec 2024 22:03:33 +0200
-Subject: [PATCH v2 2/8] phy: hdmi: Add color depth configuration
+Date: Thu, 12 Dec 2024 22:03:34 +0200
+Subject: [PATCH v2 3/8] phy: rockchip: samsung-hdptx: Fix clock ratio setup
 MIME-Version: 1.0
-Message-Id: <20241212-phy-sam-hdptx-bpc-v2-2-57e672c7c7c4@collabora.com>
+Message-Id: <20241212-phy-sam-hdptx-bpc-v2-3-57e672c7c7c4@collabora.com>
 References: <20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com>
 In-Reply-To: <20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -60,8 +60,8 @@ Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_120359_050697_CDA99142 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20241212_120358_612319_57008576 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,33 +79,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend the HDMI configuration options to allow managing bits per color
-channel.  This is required by some PHY drivers such as
-rockchip-samsung-hdptx.
+The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+and not before.
 
+While at it, introduce a define for this rate limit constant.
+
+Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/phy/phy-hdmi.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
-index 6a696922bc7f29af63d88646701b2c0fcee5c885..f0ec963c6e84f1b7728acafc824dff191c6b873d 100644
---- a/include/linux/phy/phy-hdmi.h
-+++ b/include/linux/phy/phy-hdmi.h
-@@ -9,11 +9,13 @@
- /**
-  * struct phy_configure_opts_hdmi - HDMI configuration set
-  * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-+ * @bpc: Bits per color channel.
-  *
-  * This structure is used to represent the configuration state of a HDMI phy.
-  */
- struct phy_configure_opts_hdmi {
- 	unsigned long long tmds_char_rate;
-+	unsigned int bpc;
- };
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index ceab9c71d3b53ae0b746a10c081fcfaa7d5c5ae7..089020df5b4b8f9b44d272fa87a66e0f2c8ccaba 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -192,6 +192,7 @@
+ #define LN3_TX_SER_RATE_SEL_HBR2	BIT(3)
+ #define LN3_TX_SER_RATE_SEL_HBR3	BIT(2)
  
- #endif /* __PHY_HDMI_H_ */
++#define HDMI14_MAX_RATE			340000000
+ #define HDMI20_MAX_RATE			600000000
+ 
+ struct lcpll_config {
+@@ -826,7 +827,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
+ 
+ 	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+ 
+-	if (rate >= 3400000) {
++	if (rate > HDMI14_MAX_RATE / 100) {
+ 		/* For 1/40 bitrate clk */
+ 		rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lntop_highbr_seq);
+ 	} else {
 
 -- 
 2.47.0
