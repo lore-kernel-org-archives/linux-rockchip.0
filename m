@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250BBE77180
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 20:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7766BE77180
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Dec 2024 20:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=87LY5GqGtTK8vS6EnPhRKHIDl4MzM81Rn/PR7T6RlZY=; b=nUAXy+q6JkihLB
-	sMawceXnWZpThW1hxXsJXow4AJQq8YjhtlUWRXQv5F3N6r3hzmdwYIK/x/ULE3MXjN6sZ++WRfYxE
-	iSGmfBXEUb9bt/5L/muPpP0MNpstgd5spiAcYW+SDTNAy/8HQR2QRiWh0e5Wr+KNjwvPLEdDCtC6p
-	HE+FGYdQWpcUy1gnzsM4urq5ZjAAZQhmLAxWzRg3jfZ4nlgogKFlNeUYBF208XIslBiluI/XX1n28
-	Cgo55TZc5UILFm/mtrj7ZxS/s6X460DTIjd4iczBO4JN/8JkBK0oFNiH/6WL2santfjjzUOpDZkpH
-	kQBSdBTJjwiOiegawtdA==;
+	List-Owner; bh=UGW0Ctd9doNgnnhLPGitL1vti04ktb9QCI7LKQVgfmg=; b=JhOVKM9rkGzJBQ
+	6S9TkOHCKg6aajxfa2ozgPOjtLA008v1yU7vdqF9/B7qGUKn6/Qe6FKuRZ2TmowMlysdkR5ClCIE0
+	MGvxLFK47y8BUnxOZ6vc4JWBKkxnU5jwz3RuopPiqS9uItXFyv0efILCMn7un3g5pPVOFmlP3zyCg
+	lPkcw+g04DkP6EX+0vZ99cx0QxliByDyGZIRC5Zubn95BCx0DCvxmeDjZdIz6Ls5r/3t3R1k+2IzA
+	OGMFyJUh0tpK0H1fxnfhJIlv9srca/oEgm8VVAe68QtNu5rYCK800tjCo/+nglQ/dnc/OLvPaBSAj
+	DYBe6hMWKXkxsKKFCB1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLpW3-00000001l4M-08As;
-	Thu, 12 Dec 2024 20:10:31 +0000
+	id 1tLpX6-00000001lHh-19oV;
+	Thu, 12 Dec 2024 20:11:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tLpPk-00000001jjF-1R3V;
-	Thu, 12 Dec 2024 20:04:01 +0000
+	id 1tLpPk-00000001jjg-456M;
+	Thu, 12 Dec 2024 20:04:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734033838;
-	bh=hKOtzEz0yS1DTlvWFo1dHi6pZi36HD1vcv4F1b6/OjI=;
+	s=mail; t=1734033839;
+	bh=0KBDAKlS6OTWKJsepDHtAwj7Of1rpZ03O65zQOei1Q0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EyGp6yeyKvATJ4oEhqSLIay1oIe/R5dnuayt0prc1Xq35iv2v0+ZMgvYzA4yyeh4t
-	 snUN0u1+3UwfmaEcYXzZrJ6avCbwnl7VJx5OtzFxx8PJBQc/owwwOUM1hUolsHOeTC
-	 viGicSlhNPUB8hooUIITNHYWTCJ/9N/tsstAMjj52st1zSI/uEkVbacMBnJaFsxkYO
-	 aNMdNKbVS0eg6ciuQSarI3/R2r9KJLMuOGlnfQf091SclCr7CqnEFWPcA1xy6conk9
-	 6zA8aEGBADJF8rsmoc8AgiZtGQ9KpVCbDy7thwT8ZGFQHBPzliTNaxJQ7o+Nd0e1A3
-	 LAQlkmxyUgv4g==
+	b=pvpmLsnlAopc9qomZW/3qhi0MIBoJx3de9mjXNgBIaQIniAV2umZv8dQhqfCwCgVN
+	 kamh5ZFgzGX16C/u2LVaW8WwDrQdJJXpcglGSMUEyPbhi0ffUNlebEQRaHjQmlt96U
+	 jvIf+ot4z7BjoIMbwzEczrmpCxrqFgj1kj++7Y4G2Z/SLNE7dN1rPqpnfrcyr/Rlk8
+	 FY051B5A9zTZqvz69s9umooGut/CvZWQbCp503GbrFUhCiu7tVG6Ta7MrY5pZ0fk8q
+	 QRL3MixMXgpeifLacKqM8GhzFpcDGg9SUbO4vpUVJHTXTWlDxMhTEMh5Jf5m7IJyq9
+	 jrkq8V0K8LC7Q==
 Received: from localhost (unknown [188.27.48.199])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 74BDD17E3801;
-	Thu, 12 Dec 2024 21:03:58 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 42ADF17E3802;
+	Thu, 12 Dec 2024 21:03:59 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 12 Dec 2024 22:03:36 +0200
-Subject: [PATCH v2 5/8] phy: rockchip: samsung-hdptx: Setup TMDS char rate
- via phy_configure_opts_hdmi
+Date: Thu, 12 Dec 2024 22:03:37 +0200
+Subject: [PATCH v2 6/8] phy: rockchip: samsung-hdptx: Add high color depth
+ management
 MIME-Version: 1.0
-Message-Id: <20241212-phy-sam-hdptx-bpc-v2-5-57e672c7c7c4@collabora.com>
+Message-Id: <20241212-phy-sam-hdptx-bpc-v2-6-57e672c7c7c4@collabora.com>
 References: <20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com>
 In-Reply-To: <20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -61,8 +61,8 @@ Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241212_120400_528565_CE39E079 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20241212_120401_185769_AE20D87C 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,100 +79,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The current workaround to setup the TMDS character rate relies on the
-unconventional usage of phy_set_bus_width().
-
-Make use of the recently introduced HDMI PHY configuration API for this
-purpose.  The workaround will be dropped as soon as the switch has been
-completed on both ends.
+Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 44 ++++++++++++++++++-----
- 1 file changed, 35 insertions(+), 9 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 1f5b7ffc0c5c47def33c93736bb1bd1491cd59d0..bf0c7d74e70b9204c97c571e08cb0c140131acb9 100644
+index bf0c7d74e70b9204c97c571e08cb0c140131acb9..d90d89cfdff561e13ac3db3f143a4eef9cc85a03 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -244,6 +244,9 @@ struct rk_hdptx_phy {
- 	int nr_clks;
- 	struct reset_control_bulk_data rsts[RST_MAX];
+@@ -246,6 +246,7 @@ struct rk_hdptx_phy {
  
-+	/* PHY config opts */
-+	unsigned long tmds_char_rate;
-+
+ 	/* PHY config opts */
+ 	unsigned long tmds_char_rate;
++	unsigned int bpc;
+ 
  	/* clk provider */
  	struct clk_hw hw;
- 	unsigned long rate;
-@@ -872,18 +875,20 @@ static int rk_hdptx_phy_consumer_put(struct rk_hdptx_phy *hdptx, bool force)
- static int rk_hdptx_phy_power_on(struct phy *phy)
- {
- 	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
--	int bus_width = phy_get_bus_width(hdptx->phy);
-+	unsigned int rate = hdptx->tmds_char_rate / 100;
- 	int ret;
+@@ -786,6 +787,9 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx,
+ 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_POSTDIV_SEL_MASK,
+ 			   FIELD_PREP(PLL_PCG_POSTDIV_SEL_MASK, cfg->pms_sdiv));
  
--	/*
--	 * FIXME: Temporary workaround to pass pixel_clk_rate
--	 * from the HDMI bridge driver until phy_configure_opts_hdmi
--	 * becomes available in the PHY API.
--	 */
--	unsigned int rate = bus_width & 0xfffffff;
-+	if (rate == 0) {
-+		/*
-+		 * FIXME: Temporary workaround to setup TMDS char rate
-+		 * from the RK HDMI bridge driver.
-+		 * Will be removed as soon the switch to the HDMI PHY
-+		 * configuration API has been completed on both ends.
-+		 */
-+		rate = phy_get_bus_width(hdptx->phy) & 0xfffffff;
-+	}
++	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_SEL_MASK,
++			   FIELD_PREP(PLL_PCG_CLK_SEL_MASK, (hdptx->bpc - 8) >> 1));
++
+ 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_EN,
+ 			   PLL_PCG_CLK_EN);
  
--	dev_dbg(hdptx->dev, "%s bus_width=%x rate=%u\n",
--		__func__, bus_width, rate);
-+	dev_dbg(hdptx->dev, "%s rate=%u\n", __func__, rate);
+@@ -888,7 +892,7 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
+ 		rate = phy_get_bus_width(hdptx->phy) & 0xfffffff;
+ 	}
+ 
+-	dev_dbg(hdptx->dev, "%s rate=%u\n", __func__, rate);
++	dev_dbg(hdptx->dev, "%s rate=%u bpc=%u\n", __func__, rate, hdptx->bpc);
  
  	ret = rk_hdptx_phy_consumer_get(hdptx, rate);
  	if (ret)
-@@ -903,9 +908,20 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
- 	return rk_hdptx_phy_consumer_put(hdptx, false);
+@@ -915,6 +919,18 @@ static int rk_hdptx_phy_configure(struct phy *phy,
+ 
+ 	hdptx->tmds_char_rate = opts->hdmi.tmds_char_rate;
+ 
++	switch (opts->hdmi.bpc) {
++	case 8:
++	case 10:
++	case 12:
++	case 16:
++		hdptx->bpc = opts->hdmi.bpc;
++		break;
++	default:
++		dev_warn(hdptx->dev, "Discarded unsupported bpc: %u\n",
++			 opts->hdmi.bpc);
++	};
++
+ 	return 0;
  }
  
-+static int rk_hdptx_phy_configure(struct phy *phy,
-+				  union phy_configure_opts *opts)
-+{
-+	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
-+
-+	hdptx->tmds_char_rate = opts->hdmi.tmds_char_rate;
-+
-+	return 0;
-+}
-+
- static const struct phy_ops rk_hdptx_phy_ops = {
- 	.power_on  = rk_hdptx_phy_power_on,
- 	.power_off = rk_hdptx_phy_power_off,
-+	.configure = rk_hdptx_phy_configure,
- 	.owner	   = THIS_MODULE,
- };
+@@ -1062,6 +1078,7 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
-@@ -961,6 +977,16 @@ static int rk_hdptx_phy_clk_set_rate(struct clk_hw *hw, unsigned long rate,
- {
- 	struct rk_hdptx_phy *hdptx = to_rk_hdptx_phy(hw);
+ 	hdptx->dev = dev;
++	hdptx->bpc = 8;
  
-+	/*
-+	 * The TMDS char rate set via phy_configure(), if any, has
-+	 * precedence over the rate provided via clk_set_rate().
-+	 */
-+	if (hdptx->tmds_char_rate && hdptx->tmds_char_rate != rate) {
-+		dev_dbg(hdptx->dev, "Replaced clk_set_rate=%lu with tmds_char_rate=%lu\n",
-+			rate, hdptx->tmds_char_rate);
-+		rate = hdptx->tmds_char_rate;
-+	}
-+
- 	return rk_hdptx_ropll_tmds_cmn_config(hdptx, rate / 100);
- }
- 
+ 	regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(regs))
 
 -- 
 2.47.0
