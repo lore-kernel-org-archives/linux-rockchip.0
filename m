@@ -4,104 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1768EE7717D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 15:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDF3FE7717D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 15:41:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SU0e72VYLU931Y7umxkRaGdFL11MCi1dAPMuj/MSa6o=; b=IGbAB3S7/qVQIx
-	ITuMTJyg+pgGM39CYqCidGsknBwWf4WIwBRztnfl1GCAui5+G2583eCG1kS76luQEeKbuqw2eosBh
-	O3mLAL2wRFuV7euauNaAUrsl8bPcMNIyV4JS++QCv3LcdgW1QPVyjS3jMbSEMrYrV27lBfL5SmBQP
-	alcFJMlwLesCfoQiLTX6r8rXWeBOe93wUKtFZIl+RZqTwonL+sARvh2OZ1JPEUy4ZG1MxBdBwqMiM
-	RiJZ2PBNAqS9A6cEvuPR0A5yl9MmFS90bh5cCv/fSMKbiaePjXi0YJ9HZo9sf26K9Bnr3+Dwa1RT5
-	0GwgFXRC17zst/qabMoQ==;
+	List-Owner; bh=waV9Dte4rM7TIPGHNf0RbN8W82tlleetqX2Wul2mmFc=; b=zwb5RUN0rNgpQ4
+	k4u/03x+sPFD5s0RmiuWh0Dk9CJwVSjQJaPEW9Ymy40YzmxrAfAXAjRuGULVcyWUv9SHn5JemIVUU
+	QgXxJmuGt4CrEPOg6yZk207H96jaLh4ABhAkEIWILbSBfbfQE58VLn021mzZ55SJTUCCf6k0T491q
+	XdArjbbipmqMdRhxeiO3mSt9Am1k3ayZd0ZnPJSlqjiKb3WivuFxZo/hXkwXMSTkEcjkhiYrC+KCt
+	wsuJUp0VEqUtPOP+t/kzFoCW/wbeCQgmrWGrO9JlOvMZCfvpLu2xqLtGA3cLOXkJ1oQ4+rYCHp08x
+	aQf7CVGNR+aBM7m2VZhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM7J0-00000004E9U-2z0O;
-	Fri, 13 Dec 2024 15:10:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tM7nJ-00000004IhC-3jFt;
+	Fri, 13 Dec 2024 15:41:33 +0000
+Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM7Iy-00000004E88-28Km
+	id 1tM7nI-00000004Igc-0P3S
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Dec 2024 15:10:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A11685C6C69;
-	Fri, 13 Dec 2024 15:09:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04B49C4CED2;
-	Fri, 13 Dec 2024 15:10:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734102611;
-	bh=pu7CV/W001EZcdH5bxBKbdu6/xFC5CpjJ1xPFnY9AB4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZH2HMLXhf+HaXkVd4g7VWSnt05dxkfUUn6CE7dA1EwwNwzB+7o1duGdBiPY2HHRM7
-	 CBGaC4Nl03QUmtvpXohss4cpoqmS2Vc0RO7+jxY5qetSMDg40U7ni1Flrn8kNJ8Ilo
-	 VxVXjlKmgNODyDYW2e1pYikP0Wu7I7UmfHcjXO6BvC5sx8ZSNncjzl+74W8uFHZI30
-	 kiIappyHpwF9T0dw8QRDra2c8fA9YmotkxmoZf5Y7ZpoqmGSokhNsWFaMF2P9TDHq2
-	 7sMMp2nE8ahRWbLF80Z+wS9zwoLKu/WfoNGLRJnfEJoEqxOHzG/Xa8UkuxwloU7PE1
-	 j8wVejcH2qC1g==
-Message-ID: <ca3f43f8-f96a-4d2b-9273-a4d936fab6a6@kernel.org>
-Date: Fri, 13 Dec 2024 16:10:07 +0100
+	Fri, 13 Dec 2024 15:41:33 +0000
+Received: by mail-io1-xd29.google.com with SMTP id ca18e2360f4ac-844ce6d0716so142640539f.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Dec 2024 07:41:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1734104491; x=1734709291; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=c4wKn96MiedFl6ia4ZZdGHhhDmKHeXzJLuTF6TNk3g4=;
+        b=QPe70jjSnoxvULmlGjE2gX6gYqyIfeALBltJHQ0iPNsPfhvIu4vsxaLrabPVJ+GUaR
+         QxwMZ05c5YR4XVJXeH3Jt4UYV4oRYLJ6KmPIxKedJVyk2I5yO4zURrOp9w2OaTXf1IDk
+         NGFetVX06qpOiRP4NAOLUbQ8JIE2J+C+kNh6UE9T+CX6TUeGnbs9H51XGFxMMayhl8UR
+         cBoqhuMBp/c0E5CaGByGgG8Rh3eiMX+q6qi4nZKBrkpfH4tktTz44TIECVLMy0mbbTVm
+         6C7UhZGGUR/6RPq5eT60nBiY/5CcLc0H8hs2DJi+lVG6vetRGMPJeVOUrhTVsTNHmRsa
+         t00w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734104491; x=1734709291;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=c4wKn96MiedFl6ia4ZZdGHhhDmKHeXzJLuTF6TNk3g4=;
+        b=xJwYvIg35qim8K8Z0+lPaFGpzA3BUHvzLQMcf+fRIWrM4qHGjl6s+DPuBoKqmVV9Bd
+         h8oksOkdGCnJ1gq2c5bEtvVQuiD3c3Zrr13vHWfwa3D0MxB2q5OGULAdu5eA12gaDL3A
+         nEK7w+jNZuOH8+IVRudngG4xh4OOcPEIx54rk7dEFrRtzei4S2dDyWKbWFn/SB+qtgLm
+         oxgEJKHRYqpnUbjCuypd68GIels7n80C6Mlu5mkpiET9NOhD79yti0s6tQwJ/lBlcnb8
+         tDcbMHV0oRFrnMgiFM5tWRp/fqTHjVbKHo2fA29w6HILxZe0/vCtJ1BIqEaDRmTiRa8W
+         tbAw==
+X-Forwarded-Encrypted: i=1; AJvYcCUixpq7iWmCMJmVAO4moDTz8snJ9Jq1PxmF2/67HB75RZBO7pmWM9RVMSsO7wwhH2IDazQ/aHO8o3Kk2E2Lcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz6uw6hNcw+WwJ591cY9i4LRXcium28bVNX1Ea/F9B33+THqvhP
+	fQNw46yY75ybJkQMdA9xFQ3ojU2Iq1KYZn/2gicSK/4Mi/BCUFx3
+X-Gm-Gg: ASbGncsRAaoIHnt1FzaJ/DUGPdXTf/wshz/hBY/ZFga90YzwtboSHTo7JZB5ksW91v8
+	hLxSKRKDKmk9Gj3PVjEBLM3u3rUxyKR+4LsffMrPAf8pb9jyLVi3ExfC5S6XBUv6ddi94OrBZxX
+	PwuAu8HMZJ69g0/m+I70mb2BC2dDC44cBd5iq8vGTo3Zlg5cSfoLVq5Erp6sFJOKHoiVCykN5td
+	7KC1A8IgUnMmhJ5fCV+HRpM4aP2xVndxZlUUj9yzKyudkNy6oENjpRT7fyi7fbpz/wUMCCfICnL
+	1brLSQ2I4ye06dFDdJ4kueTftSk=
+X-Google-Smtp-Source: AGHT+IG7zKmTTY+3cU4+IRgs+3snv2XaZhum1/jfja2GkIpicjF9Tf6CDhdfxxuVlVsfE7nj39hb0A==
+X-Received: by 2002:a05:6602:2cd0:b0:844:debf:2c8f with SMTP id ca18e2360f4ac-844e88ea5c0mr342460839f.14.1734104490740;
+        Fri, 13 Dec 2024 07:41:30 -0800 (PST)
+Received: from localhost.localdomain (65-128-205-244.mpls.qwest.net. [65.128.205.244])
+        by smtp.gmail.com with ESMTPSA id ca18e2360f4ac-844cceb0c34sm148704339f.21.2024.12.13.07.41.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Dec 2024 07:41:29 -0800 (PST)
+From: Shimrra Shai <shimrrashai@gmail.com>
+To: krzk@kernel.org
+Cc: linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	shimrrashai@gmail.com
+Subject: Re: Re: Re: [PATCH v1 2/2] [Draft] dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
+Date: Fri, 13 Dec 2024 09:41:14 -0600
+Message-ID: <20241213154114.5078-1-shimrrashai@gmail.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <ca3f43f8-f96a-4d2b-9273-a4d936fab6a6@kernel.org>
+References: <ca3f43f8-f96a-4d2b-9273-a4d936fab6a6@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] [Draft] dt-bindings: arm: rockchip: Add Firefly
- ITX-3588J board
-To: Shimrra Shai <shimrrashai@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <c1b662d8-6470-49f2-a904-139a33061885@kernel.org>
- <20241213150225.3538-1-shimrrashai@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241213150225.3538-1-shimrrashai@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241213_071012_649880_345670FE 
-X-CRM114-Status: GOOD (  31.47  )
+X-CRM114-CacheID: sfid-20241213_074132_137599_0A73EB86 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,88 +100,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/12/2024 16:02, Shimrra Shai wrote:
-> On 2024-12-13, Krzysztof Kozlowski wrote:
-> 
->> Explain why this is draft, what does it even mean. Do you expect any
->> review or not?
-> 
-> Correct. As I pointed out, not 100% of things work.
-> 
->> Please run scripts/checkpatch.pl and fix reported warnings. Then please
->> run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
->> Some warnings can be ignored, especially from --strict run, but the code
->> here looks like it needs a fix. Feel free to get in touch if the warning
->> is not clear.
-> 
-> I did this, but I do not see any warnings beyond
-> 
-> "Prefer a maximum 75 chars per line (possible unwrapped commit
-> description?)"
-> 
-> for the 0th patch, which does not seem to be from the description and
-> 
-> "Missing commit description - Add an appropriate one"
-> 
-> for the others, and
-> 
-> "added, moved or deleted file(s), does MAINTAINERS need updating?"
-> 
-> on the 1st.
-> 
-> There don't seem to be any substantial errors indicated with the code
-> itself. What issues did you find, as you said it "looks like it needs a
+On 2024-12-13, Krzysztof Kozlowski wrote:
 
-""Missing commit description - Add an appropriate one"" is a substantial
-one - clearly we cannot take empty commits.
+> I mean exactly what is written. Use the tools and the tools will do the
+> job.
 
-> fix"? Nonetheless I wasn't planning on this one being a final submit
-> anyway, since as I said it was a draft because there were things not
-> working yet. But if there are other problems with it, I need to know what
-> they are esp. given as I said those tools have not indicated more problems
-> than those and they seem to do more with not adding further info to the
-> emails than the code itself, yet you say the actual code needs a fix.
-> 
->> Please use scripts/get_maintainers.pl to get a list of necessary people
->> and lists to CC. It might happen, that command when run on an older
->> kernel, gives you outdated entries. Therefore please be sure you base
->> your patches on recent Linux kernel.
-> 
-> Thanks for all this part. When you say this though:
-> 
->> You missed at least devicetree list (maybe more), so this won't be
->> tested by automated tooling. Performing review on untested code might be
->> a waste of time.
-> 
-> what do you mean by "device tree list"? I was not aware of this part of
+Since the remainder of your post is talking about CCs and the only other
+tools listed are related to CCs does this mean that by "device tree list"
+you were referring to a place to send messages, not a file in the source
+code with a list of device trees in it? I was interpreting your statement
+as referring to the latter, not the former. You also mentioned things being
+wrong with the code, too, even though they did not show up on the scripts/
+checkpatch.pl tool.
 
-I mean exactly what is written. Use the tools and the tools will do the job.
+> This does not work like this. Use the tools, not other people's
+> incorrect CC list.
 
-> the kernel source code. I modeled this submission off of others I've seen
+> I gave you instruction which tools to use, so I do not understand why do
+> you insist on not using them.
 
-This does not work like this. Use the tools, not other people's
-incorrect CC list.
+I am having trouble understanding is why. Are you talking about messaging
+or a part of the source code itself when you say "device tree list"? As you
+said that is necessary "for automated tools to work" and that makes me
+think it's some part of the source code run by such a tool, but here you
+are talking about "CC lists" i.e. messaging. So I do not understand what
+that word is referring to - that is my confusion. I certainly can use those
+CC tools but if there is also something that needs change in the code it
+won't be changed unless I know exactly what that is and thus I need to know
+if there are any outstanding code changes indicated before I make another
+submission using the CC tools.
 
-> here and I have only seen them submit the .dts, Makefile entry, and .yaml
-> entry in rockchip.yaml. I have not seen a "device tree list" different from
-> those. E.g. for this submission for the Orange Pi 5,
-> 
-> https://lore.kernel.org/linux-rockchip/20241111045408.1922-1-honyuenkwun@gmail.com/
-> 
-> those are the only items touched that I can see unless I missed something
-
-Cc list is entirely different... Did you really read my message? I state
-you Cc wrong addresses and you claim that above link has the same as
-yours, which is obviously not correct. So two things - my earlier
-message and above link - are kind of proofs. What else do you need?
-
-I gave you instruction which tools to use, so I do not understand why do
-you insist on not using them.
-
-
-
-Best regards,
-Krzysztof
+     Shimrra
 
 _______________________________________________
 Linux-rockchip mailing list
