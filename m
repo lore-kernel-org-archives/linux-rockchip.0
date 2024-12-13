@@ -4,105 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2D87E7717D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 16:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD53E7717F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 18:11:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fg29ig9+aVs4KrqGhJKvTB1tG21vai5kb8CCbG1Dzck=; b=qxUCJCLck+vomG
-	zKo2en+/8aQpIWLcSKL2dpZ7XAir2I28kj5MJIzrPMaaqD8CR5zs+3goOhynuyMVdmQLAB+KyY1a9
-	VrPLD6lZrgRwnTVTBu34pK3dTxpROxzQpJJCRka5KEzybyTClk4Jbd1hAbti5Botg2PW6ITH8KNgy
-	F3FRgM3FAQNBUEv8uWNjLaKNAT6bmPJt5iAtV0b3Uj3HOdhxIm2Ax4NU66cdyT9b6wOZEBLmK32jD
-	xSbYHI+/LXimNyPwPsvbvYXszygPFj24CIU1q7vQP4qIBrftsnWVCgXDQiK37f26n8NxxcoM05Rd7
-	yShCdkG7yBpZ41i8x1dA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Cmiub2MGqjsWCx9wUp1CmuXxaXemhjow0UJ+JPYeEb8=; b=Y3X4Lv9Xr48U7/
+	3tNHRnz5IRZieSj9G3ZufgweJPgnt747vsbyxr0owBsxhuM4TBnlMcKv5jJLfOECNWfCsXjDQIEHB
+	0tKlGovfQNW0NQuuAjcFp1LOZqTr4gl00S4Vqj4pRHnR3QsGptmYOYx/5kfSfvPLM/AcNxKi5qan3
+	kVKvBNskdRojz9OABqS5Uvn7Ct99Nt8jMAHcgHEjrsXQWzRcYI/bdC66MzVHKSm14jvKku6h6fOKY
+	Nh2ufPqJmEXJGAPckwVkahO35Di6yLfRLdjdS4bgYQOU9K5Imeu7cJf0jsbb/lV3Leq+Q+GDG0I3c
+	/SYBjkb3n9cPyvOEOqdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM8G5-00000004MZu-1rEc;
-	Fri, 13 Dec 2024 16:11:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tMA8A-00000004ey8-1rWG;
+	Fri, 13 Dec 2024 18:11:14 +0000
+Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM8G2-00000004MZW-3yfw
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Dec 2024 16:11:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E788E5C59EC;
-	Fri, 13 Dec 2024 16:10:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D71BEC4CED0;
-	Fri, 13 Dec 2024 16:11:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734106273;
-	bh=ZDJ6zsbRmCqE5uBgI1saUlaU+fIJ4twX6YJO4zOoFqs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SOBICi5DRjJjHCaXVz/QJ2aJWUtEcW6y3p+hLkO3p6H4QrGp+9x94ztXwWeXG8lqx
-	 NeBJVQjDACkxa6epmEmQloy1wUEA5M4dmbNY21DzzcnCGd1FBnKexW6Ix4vQtVS4Zs
-	 NYcHcoDPfuNTiN+SO4yyoCC6qaMTgg/m6LMhxSyY431OzdhmTB75Qvg4h5UEoG585H
-	 QLGDBl/nAS39wSp3d+SgddGzugePAdpVS+MVizqW60l3yADqByUAgW9aOigHrKgqOI
-	 psMY19CrNOBfhAlCvLHPG/3K1267T5MPpck2DGt7P5dto+CF4ew6yCQtTZB/lxdWkL
-	 J5wHlHwmgOX7w==
-Message-ID: <71cf636e-7124-4736-a63b-228394e9e149@kernel.org>
-Date: Fri, 13 Dec 2024 17:11:08 +0100
+	id 1tMA74-00000004elp-3Srs;
+	Fri, 13 Dec 2024 18:10:07 +0000
+Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-3a7d690479eso16206905ab.0;
+        Fri, 13 Dec 2024 10:10:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1734113406; x=1734718206; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZaUJxyWODTPt/EHA59a8Xm+chAdP/ldBcjz3rSODr3s=;
+        b=dOUvrUfIJpxOtxcAEZNKrG9db6bAMVGN12JnNwIkeJ5rRBP4+nz/q6Iz8pRXqnP0LQ
+         +kZ3hDh6+bQtn0A0c9cdNn+Dn6C9if4zm2CdtkJ4towFLmS6VBLNwZfu5ZtPkzxc7DBM
+         JF+lv4ETPYRLIdxqbm8rRxeHhZsgQJHEAlfUlrS4Ei7K4TPvpy8Tz/tfKyTLO0JSpb9P
+         YR0EFIToHu0Cc8CuqtrvRAPTY3Q5VJWOhvZ+MXMLZitKwxwWZr+HrEyTUzjx1F12tqZc
+         bzD3k/1pVVoDooHOeaQZNIjSzGzQDuwp1UuUzj+Z5pZlHyzyH7ljnyYyQ8jy9MdhrDWH
+         IRew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734113406; x=1734718206;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZaUJxyWODTPt/EHA59a8Xm+chAdP/ldBcjz3rSODr3s=;
+        b=hdFt1RYCEIRIj0bw5SCxiY5QXfTR2luFZy9Ht/m0H5tGNR7Vmcy/6NWMpPYWAd87n0
+         BovBNI9jh7A5ZpC5Gd+0X6/x0CCVMVuQxqAHxXTP4ttP/xWnutrPZfObY/c1tN+00LwG
+         1OXc6NIUtnW0FpkLq0jM2k1mwk1OP33mH/N2rik0TAaePjq9WGlhqnrmV1B0f7ogCXVb
+         DVM5rAW/koO4ec0kZZvouOPXSAnOBT0XsNflZpzVUz4zsMsWiBwW84ueRslaBugsQ93d
+         8njTE4PhiCfwBB5ioVZqUDxOciJcP+lNool94u8ixqkkNs8jiieHMs3bzmVjOQQ/EyVL
+         JsAg==
+X-Forwarded-Encrypted: i=1; AJvYcCUDP4XONUfS4ThTCwFQyNjDyaQ7O3H0WrEpmBiS/uJQkQraxWFr74Vr2OxLdas9VNnA9KyYtwj8rP8xxkRFBV3q@lists.infradead.org, AJvYcCUw0onxDwrnswdcVXxtalsXAnBX4Po/HYd+X0CL1WKx8LlAfKJ6M6HSXQZxb9BqsTepAH6bDGLFD+3oPZ8T04Y=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxV0UWlWbR2aRm5IDyHm4XpFSRqOMo4BHbu/P549MMSurXPR1dB
+	ONHjRCpTTn2Cf2l9joA9gbdZYi6MPmqSMzkyg1MgCoyfNlN8kLFf
+X-Gm-Gg: ASbGncuqfa3jXVzHYRO2tnx1Q5E/xI5uTa1nXsabYXHdrMk7xI/z56Gb5gQc4c99EJS
+	mpjKyXh0mxIT+9/Yht8cAQ/ITUx+7ipWZYinLuypuKGBrVj+aVRaWovBVDZm35MWIO4F4xQiDkJ
+	AGRjmvpW+Uu7X2WrDLQTAbTFEnOQgrPJIT+auIplOo+71DBEhLY7iLjIQ6csOp/1Jb2OzOfDk+F
+	iEoVLL7zRXTJkTsRDNVtg0+PSGy17217AU3EwdwAB0oVNs071sCdJ3y/CVAgY/5eYDODDVYpPKe
+	ru/yhDVo+x8SZsDlhr1dPFBAFrY=
+X-Google-Smtp-Source: AGHT+IH/MEREg6rxAa0/RtNlAsBMr5UpSbMTYOPeTSadT3t2wf9euEA3XWXtBYuE66GNqav6oNdK0g==
+X-Received: by 2002:a05:6e02:1aa8:b0:3a7:d84c:f2b0 with SMTP id e9e14a558f8ab-3aff50b340emr43862345ab.8.1734113405813;
+        Fri, 13 Dec 2024 10:10:05 -0800 (PST)
+Received: from localhost.localdomain (65-128-205-244.mpls.qwest.net. [65.128.205.244])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4e2baf714cesm2922533173.101.2024.12.13.10.10.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Dec 2024 10:10:05 -0800 (PST)
+From: Shimrra Shai <shimrrashai@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	Shimrra Shai <shimrrashai@gmail.com>
+Subject: [PATCH v2 0/2] arm64: dts: rockchip: Add Firefly ITX-3588J Board
+Date: Fri, 13 Dec 2024 12:08:53 -0600
+Message-ID: <20241213180855.16472-1-shimrrashai@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] [Draft] dt-bindings: arm: rockchip: Add Firefly
- ITX-3588J board
-To: Shimrra Shai <shimrrashai@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20241213154114.5078-1-shimrrashai@gmail.com>
- <20241213160337.5561-1-shimrrashai@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241213160337.5561-1-shimrrashai@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241213_081115_083724_D6F7058C 
-X-CRM114-Status: UNSURE (   8.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241213_101006_928139_AA7B90AC 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,21 +101,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/12/2024 17:03, Shimrra Shai wrote:
-> On 2024-12-13, Shimrra Shai wrote:
->> As you said that is necessary "for automated tools to work"
-> 
-> Correction to make an exact quotation: I meant to refer to when you said
-> "so this won't be tested by automated tooling".
-> 
-This was one form letter referring to one issue - you did not use the
-tools to create correct CC/To address list. You split it unnecessarily
-looking for some other meaning while it is still above one same thing.
-DT list is a discussion or mailing list. Entire development is via
-discussion lists.
+NOTE: This is a resubmit of a previous submission with corrected
+recipients list and some small changes to make it more suited for the
+general kernel (e.g. eMMC is enabled now).
 
-Best regards,
-Krzysztof
+---
+
+I am proposing a Device Tree Blob for the Firefly ITX-3588J board.
+This is another Mini-ITX form-factor board for the Rockchip RK3588
+SoC, along with the ROCK 5 ITX. This version still has some outstanding
+issues, however, so I am unsure if it is ready for incorporation in this
+state and I have not yet found a fix for them as of now. I invite any
+comments.
+
+Issues outstanding:
+ * Suspend does not work.
+ * The USB-C port does not work.
+ * Unsure how to get control over the main LED; the commented part
+   seems to cause a failure.
+ * Audio output on the back green port does not seem to work; but I
+   found this may be due to slight inadequacy of the still-new ES8323
+   driver - can suggest a patch for that too separately.
+ * Not sure if there are other board features that could still be enabled
+   with the present kernel drivers.
+
+Thanks,
+Shimrra
+
+Shimrra Shai (2):
+  arm64: dts: rockchip: add DTs for Firefly ITX-3588J
+  dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../dts/rockchip/rk3588-firefly-itx-3588j.dts | 1133 +++++++++++++++++
+ .../boot/dts/rockchip/rockchip-pca9555.h      |   31 +
+ 4 files changed, 1170 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rockchip-pca9555.h
+
+-- 
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
