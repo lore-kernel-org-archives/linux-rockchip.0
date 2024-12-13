@@ -4,90 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8807E7717F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 09:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81419E7717F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 09:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LaYq/x0cXltMey1fQLnN98AHytlXNZSTpkKGg+YZOP0=; b=KCgnoBZZscSVbI
-	HFGGdhKwwDL9AMa1wUul7uYh+9GLUKnrF8fdlg+iHmQ/8Ay64Z/XaQWjLAgkoc9AIlBgTi6omkabc
-	RV+bZvI2jxy6VeMtk4i7/FQa42JYvnBgPpAaNDbN1+/eS/aYfH68Qj98zEawN/wB2T6+C5LEMn3fL
-	PVbhAxCAU2IflDP/CelqNCRMv9sn5BC0N6J2CKPHt+/FfpT0UdN9gdh0Yw5YzOl8iZQuBp8EHMNoG
-	Jx61Xm9VQ6hPkFOKLoQfZXlcZc4Gs3Ak4zzu2phMLFWdnm79PrAAot4sXAf+wSO6hz3M6vWwzeamG
-	fRkfbd5J0InVYZhOvl7Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CemqygjeXiRiNjgRzlBpARLzXdZ41yKLdDlGpx9ejpc=; b=4BMjX4viXeuzRE
+	MHCdWrXMNu3AJlJL3ur3j2go7BQHOoNwOMsS4ugTw2JtRtdUtJHetNZ0wyOgIXQIU5S3GqIi+oUY9
+	DiGzB+GheJ0w4oOouE7pow7sak1iTk4y+Rp60SR3QcFvACzyCVj6hmHV48na5PfsIOn3EAgJviz+t
+	n6YIN7KLJG67mB/VYZDO4yt+D+uAufLancnqafwDN+cyrU9hguGcvzc5cOPrCVybZFLzpLPhr4lhf
+	4S+QTWey7+i5+0Mo5bxLrjWqBNEFw9zYDHCEWMaZg7CjWnG5FxspxCwYUtUFHAkiw+wvdPP+nakmP
+	c6uajKRVmAuBt2Ph4HdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM2Oo-00000003LDq-0h9f;
-	Fri, 13 Dec 2024 09:55:54 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1tM2On-00000003LDS-1p7G;
+	Fri, 13 Dec 2024 09:55:53 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tM2OJ-00000003L3o-2hln;
-	Fri, 13 Dec 2024 09:55:24 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a9f1d76dab1so314837566b.0;
-        Fri, 13 Dec 2024 01:55:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734083721; x=1734688521; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=jeEYpoT5ymS8tRy1xVLDixRmFAc5fwDD3sDDNeC0nh8=;
-        b=YPGOMYlQMjgdyMGZjjrVCoT26XsK8kPauTx7KRSlCVSJo5aduBiLeaUPeCE5Bux8Hs
-         vGJksrgeIpyQUAp8O59I8qTcgdG4lHA2PWDgBxlKVemF9nYWVytpuE4pyCOmttiwkHHg
-         mkPeSGUyGrh/rNK8xaVVfvccTTRPzexBMV08Lb7x4l2DfZgzZ7LMJjeJAPI8Bmr8+Sk+
-         6CaWXpGGcmD+98/r3EsrvavZT+jhO1ZZsvf3gXrXSi0ipV7CTqvOoiYociyG1XK5JHSF
-         zE5/w2YxwVgzsKOwaem17xDdHDD8HQ821lkSre4nyb3UQMyIB5gmNw5kpKuYZx+YP4xm
-         eBSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734083721; x=1734688521;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jeEYpoT5ymS8tRy1xVLDixRmFAc5fwDD3sDDNeC0nh8=;
-        b=mXHthkPbKrselx+eA+Y8/FulCc8ThIz4twtBKEDz5lKfXMNbdM92NaFsCaxXnXI887
-         lqdsm+fhKj78UeQr62s0GeAK2QCF7WiWXV5tk++Kcsc5jwD5mmP6AZpDkLyetAi1xQ8+
-         wpS4YxGZY+SxRXaW739mdorGtddpXQagSn69yImevjxEOC7707Fjc8pJaxTnUaM69NEM
-         dCjPx8gP+jWe0o57ZXngcXidI5dD3plYABsm2eQqBdk99cgiAy3VKADY2kLOEZ/v6irt
-         eMx8wKoV8QHGmDFKu/+UTtg9DFXmdBCj+7PzAreKFbJI5KAe2z+z88HFuTLdkLGJH7y8
-         7VuA==
-X-Forwarded-Encrypted: i=1; AJvYcCUMZ9Bc0nI45poawpPEpp6hvUJY3zzBb9QZ/8ZVt+wfqY/xZsjloHl3mGSF2W4wyb7HsRF0Fy2xvhmnHzD8JYw=@lists.infradead.org, AJvYcCXnG+KkBPVKcPYHNIlMF6Xi1TI9fxEG+5fSIWTx915eW9xW8sBagIDajNUKQz5DzeNBsJehIEvnMtZsY7PPp242@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBvk7CNwIlJ+6HQtVG6+ECYaG+3U661PZegzP81NUynWl5Y6we
-	Vtucwr9MUNc69SZ9CcpD+maiYEIEeJ48jUypGgDhF7b9VfubxMpM
-X-Gm-Gg: ASbGncth9rHRDYYerKQMtrJDFO9aY4+NiTQNgHzd6yrvCpuLU8qhtk8oh4zKXH7bcUr
-	AdWzSTEhjRWxImg7h3Va0P/TSgUZuXFPKd2Ppxfl3CdsqOfyYqeNL8KyJifsOBv2yKbYTXcxKLx
-	huh57pl5l5+iOEZskKEP/2LklvPs352/ZylrhFHXvzpXjoObtZbj77Fqcv78BunlNw3KVNYhtpH
-	bNyCvnbMphvdOlza1DSs8rBtHm7HqwJzl8Be9A4oXDDitdR42HORveKqapmx3jY/aWm5eW9V33u
-	+jMot4rCo1QO3B9NUKCvK6DaaA==
-X-Google-Smtp-Source: AGHT+IHZMHT5CWtXaqVR5si+MBRX4Sk47tkz4p5lH/eSEWo0dRkleARMLltPnuR/+triSY+HnVjWaA==
-X-Received: by 2002:a17:907:1c8b:b0:aa6:7cae:dba7 with SMTP id a640c23a62f3a-aab778c6ef1mr216718366b.4.1734083721229;
-        Fri, 13 Dec 2024 01:55:21 -0800 (PST)
-Received: from opti3050-1.lan (ip092042140082.rev.nessus.at. [92.42.140.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa6969a7645sm598970866b.16.2024.12.13.01.55.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Dec 2024 01:55:20 -0800 (PST)
-From: Jakob Unterwurzacher <jakobunt@gmail.com>
-X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-Date: Fri, 13 Dec 2024 10:54:58 +0100
-Subject: [PATCH v4] arm64: dts: rockchip: increase gmac rx_delay on
- rk3399-puma
+	id 1tM2LD-00000003KF7-1uN7
+	for linux-rockchip@lists.infradead.org;
+	Fri, 13 Dec 2024 09:52:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 875D4A405FB;
+	Fri, 13 Dec 2024 09:50:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D2FEC4CED0;
+	Fri, 13 Dec 2024 09:52:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734083530;
+	bh=BU/J16Ct4CwkI88Ev0nVluHMhJ7hjnowLd7wIxggf4M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XpU82KBfxjjRWfMsNAY4DdgnA0/pQPGsdZG4rPLMTh4hEb4kOXYKKqj3b+4MOg78/
+	 tRu+VhuRVOHuFerRLkA2FNKGrxRonw0Yt/+sJvxQ1PrgSE5efYjfU2mOlmszQ5sZ3M
+	 ehjWxCiJlhCx2H/ycld1AGF/50FBD3YWNYoe77GrnEjUKWudhI2UFKb7qBklwN817l
+	 d0CzhlbjGta7d67iylDTQ3qHs2UsAqJ4VElcZFCgFXKvjEe7uSXB6za3vclhDTIWq2
+	 qwAFMBTfXCjwLcExb5lDXuXKOFQAORlytg9s3z8c5nGQEICnxQlzcHA0KjBop0Stwd
+	 EvNWACQj9X6Ig==
+Date: Fri, 13 Dec 2024 10:52:06 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+	Jessica Zhang <quic_jesszhan@quicinc.com>, Andy Yan <andyshrk@163.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 1/2] dt-bindings: display: panel: Add Raydium RM67200
+Message-ID: <7uoc7higbx772dabs6k5zvrvgfmp2otai3bz2z62wnpv6pfa5s@jpe45f3qzyu2>
+References: <20241210164333.121253-1-sebastian.reichel@collabora.com>
+ <20241210164333.121253-2-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20241213-puma_rx_delay-v4-1-8e8e11cc6ed7@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAHEEXGcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyTHQUlJIzE
- vPSU3UzU4B8JSMDIxNDI0Nj3YLS3MT4oor4lNScxErdtMSUpOSUNANLcwtjJaCegqLUtMwKsHn
- RsbW1AFzzeNhfAAAA
-X-Change-ID: 20241213-puma_rx_delay-fadbcdf09783
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Klaus Goger <klaus.goger@theobroma-systems.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <20241210164333.121253-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241213_015523_707487_AC3F981E 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20241213_015211_562983_F676F800 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,69 +78,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During mass manufacturing, we noticed the mmc_rx_crc_error counter,
-as reported by "ethtool -S eth0 | grep mmc_rx_crc_error", to increase
-above zero during nuttcp speedtests. Most of the time, this did not
-affect the achieved speed, but it prompted this investigation.
+On Tue, Dec 10, 2024 at 05:41:30PM +0100, Sebastian Reichel wrote:
+> The Rockchip W552793DBA-V10 display/touchscreen board contains a
+> Wanchanglong W552793BAA panel, which in turn is using a Raydium
+> RM67200 MIPI-DSI controller. Add a DT binding for the DSI panel.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../display/panel/raydium,rm67200.yaml        | 72 +++++++++++++++++++
+>  1 file changed, 72 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/raydium,rm67200.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/raydium,rm67200.yaml b/Documentation/devicetree/bindings/display/panel/raydium,rm67200.yaml
+> new file mode 100644
+> index 000000000000..d0a6d3207811
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/raydium,rm67200.yaml
+> @@ -0,0 +1,72 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/panel/raydium,rm67200.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Raydium RM67200 based MIPI-DSI panels
+> +
+> +maintainers:
+> +  - Sebastian Reichel <sebastian.reichel@collabora.com>
+> +
+> +allOf:
+> +  - $ref: panel-common.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - wanchanglong,w552793baa
+> +      - const: raydium,rm67200
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  vdd-supply:
+> +    description: 2.8V Logic voltage
+> +
+> +  iovcc-supply:
+> +    description: 1.8V IO voltage
+> +
+> +  vsp-supply:
+> +    description: positive 5.5V voltage
+> +
+> +  vsn-supply:
+> +    description: negative 5.5V voltage
+> +
+> +  backlight: true
+> +  port: true
+> +  reset-gpios: true
+> +
+> +additionalProperties: false
 
-Cycling through the rx_delay range on six boards (see table below) of
-various ages shows that there is a large good region from 0x12 to 0x35
-where we see zero crc errors on all tested boards.
+This goes after required: field, as expressed in example-schema.
 
-The old rx_delay value (0x10) seems to have always been on the edge for
-the KSZ9031RNX that is usually placed on Puma.
+With this change:
 
-Choose "rx_delay = 0x23" to put us smack in the middle of the good
-region. This works fine as well with the KSZ9131RNX PHY that was used
-for a small number of boards during the COVID chip shortages.
-
-	Board S/N        PHY        rx_delay good region
-	---------        ---        --------------------
-	Puma TT0069903   KSZ9031RNX 0x11 0x35
-	Puma TT0157733   KSZ9031RNX 0x11 0x35
-	Puma TT0681551   KSZ9031RNX 0x12 0x37
-	Puma TT0681156   KSZ9031RNX 0x10 0x38
-	Puma 17496030079 KSZ9031RNX 0x10 0x37 (Puma v1.2 from 2017)
-	Puma TT0681720   KSZ9131RNX 0x02 0x39 (alternative PHY used in very few boards)
-
-	Intersection of good regions = 0x12 0x35
-	Middle of good region = 0x23
-
-Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
-Cc: stable@vger.kernel.org
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # Puma v2.1 and v2.3 with KSZ9031
-Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
----
-v4: drop internal Relates-to tag, add Tested-by, rebase to Linus master, send with b4
-v3: use rx_delay = 0x23 instead of 0x11, which was not enough.
-v2: cc stable, add "Fixes:", add omitted "there" to commit msg,
-v1: initial submission
----
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index d12e661dfd9917f820284477a215389c16205f46..995b30a7aae01a0326e9f80d6be930f227968539 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -182,7 +182,7 @@ &gmac {
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
- 	tx_delay = <0x10>;
--	rx_delay = <0x10>;
-+	rx_delay = <0x23>;
- 	status = "okay";
- };
- 
-
----
-base-commit: f932fb9b40749d1c9a539d89bb3e288c077aafe5
-change-id: 20241213-puma_rx_delay-fadbcdf09783
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
--- 
-Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+Krzysztof
 
 
 _______________________________________________
