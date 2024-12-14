@@ -4,144 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60A8C87FD3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47982CA0EC0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=00Vz+MljPbNCNag50ePYU7/H2xZ2ImC8yXBdvAqpHPE=; b=YZDG4qcODoZT5D
-	lX6USgdIql7i0pXTL7iOPRVxLLTu4ayWIP12iKxqYl1p0q3VtXPj+FNCK9nXnm7xV+wAf17kdQVBr
-	/nU63KjcA16EWgtIzF9+hr/RuEPhHNknb3yHbOGefkv91jh/NM7RsWt930ButANhhFHFX7sTjR+po
-	UGvgr6l/KMS/nYj1sgaAhTbmRk67kn/BVK6zkaw9tinB6v7jc3t9qrUhA8NOceMvApSHj64vMTWQ7
-	QX7LTOHuyMqpP7XP2Yh1bDS0eR48E7mU64lgS0/RNa0TmwWCDqfICYFcuTLTtuHiOA29GhImJ6wVm
-	dvWZUfaK0X759V+SraKA==;
+	List-Owner; bh=ZJIeARyl2OUBVXQcav6vbGI6PHClXYThxVro/AsiJDo=; b=RF2WIeqqaKacy9
+	9wb++1P9ZRBmKd2zWkQjPDoNVIFj3QTSgJbgnW1P0paOj8RiptYhv3OsqyQexaLHkderl5qKry6Qx
+	Lxhq/Of7bcTXvutCgiTUPEnSV9U05fEAAcDr5GMJjhXlXWRBPLO24IIgziKmUH4fvl5sp9jDC2kt8
+	wiJmmx9NKbfX9dIXfFqNxDXAHWUlMW6Ew3UCP3wIgnz+Oa0/xlrRgeDokOe/cSypFStR5MbeAWR1m
+	G+frj+LHM/huDXPHZ7tv3L7nFDc75kpB2qEerCKiKums8f/wHIcFQSLKF1WQX0YgJfb+65MsPuA2A
+	rHEFnXgvSfqrtQG+K7vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbcF-0000000Evqh-47Vy;
-	Wed, 06 Aug 2025 10:43:28 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiEii-00000007j25-3awg;
-	Sat, 02 Aug 2025 16:04:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1754150560; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WQqpUkXPtrxzpxaZ2hYfl+XOPYKxR/yR0rcNvg04LRAV+Tsf44cBMfyRI8vwmTxp6gChLAQiPjGtlwy/K9/JX//NPyH7DHB8Ls9uEYjsC0dr6CE5dX7KPtJg9DFRaUhNEv2SbmQChbOmcjGtuyBrJWCXYi6NE//Lt6k/YcpSEVQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1754150560; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xtf+dEyzkoelWC2Fx1wwuEkZQXXlAY749DZ4vNup7Cw=; 
-	b=hHHrzU5f++KJzrykhl5qlTExwl012A/zJUgHdgegKkwmNfKI8D3LZOgAROYses2JC1f6mU8skpwAGlagDmezWPJTkb+oc3sAmcoyg1tGLWs3PFHZAsPvG7EG9Z1xxAZTqJneL5PWuQ0spEMdUg74OA81m7ClHn9VORnJf/lBfuU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754150560;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=xtf+dEyzkoelWC2Fx1wwuEkZQXXlAY749DZ4vNup7Cw=;
-	b=V2U4lWFeUsKW1XUdY48JG6pxgTjVc/FBs9bOk6qZ6M6qlPk/usIQI2rIzHjaum91
-	Wvxe2kb/Bg9+AdRIIIXAhwCMTefshntu3rhhapqWQg1gEagHTxztLAzLCKJfhTyRN02
-	lQWJkogElFkvVK07iEt7bkp3i5NJH/xmkBJnBsA8=
-Received: by mx.zohomail.com with SMTPS id 1754150557071593.1499218812709;
-	Sat, 2 Aug 2025 09:02:37 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>,
- Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans de Goede <hansg@kernel.org>,
- Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
- Christian Gromm <christian.gromm@microchip.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>,
- Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>,
- Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andy Walls <awalls@md.metrocast.net>,
- Michael Tretter <m.tretter@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Dmitry Osipenko <digetx@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>,
- Zhou Peng <eagle.zhou@nxp.com>,
- Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Dikshita Agarwal <quic_dikshita@quicinc.com>,
- Abhinav Kumar <abhinav.kumar@linux.dev>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Nas Chung <nas.chung@chipsnmedia.com>,
- Jackson Lee <jackson.lee@chipsnmedia.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- =?UTF-8?B?xYF1a2Fzeg==?= Stelmach <l.stelmach@samsung.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Fabien Dessenne <fabien.dessenne@foss.st.com>,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Niklas =?UTF-8?B?U8O2ZGVybHVuZA==?= <niklas.soderlund@ragnatech.se>,
- Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>,
- Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
- Corentin Labbe <clabbe@baylibre.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>,
- Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, imx@lists.linux.dev,
- linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- mjpeg-users@lists.sourceforge.net,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Subject: Re: [PATCH 44/65] media: rockchip: rkvdec: Access v4l2_fh from file
-Date: Sat, 02 Aug 2025 12:02:27 -0400
-Message-ID: <12713603.O9o76ZdvQC@trenzalore>
-In-Reply-To: <20250802-media-private-data-v1-44-eb140ddd6a9d@ideasonboard.com>
-References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
- <20250802-media-private-data-v1-44-eb140ddd6a9d@ideasonboard.com>
+	id 1ujbcI-0000000Evtl-0mug;
+	Wed, 06 Aug 2025 10:43:30 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tMSKh-00000006PKg-0CVR
+	for linux-rockchip@lists.infradead.org;
+	Sat, 14 Dec 2024 13:37:24 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-30167f4c1e3so27460261fa.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 14 Dec 2024 05:37:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734183441; x=1734788241; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kfAoBNlarjV9Kr0yPdaLHtIo2MYFINu9J4XNO2CCrRg=;
+        b=Uip1lKlD2JLL8rzSW31YUIs3Q2TCjA+7BLHGBxEyuh6SfYU4Mmt0wO/Nw095Uci+Pz
+         ReQaunxIMoSwlpNsAShh4HL+n92Z8M0pnsFiUdvdpizd27sa7I1wpuSjt2MIg/OD+QRF
+         Si0t8J7bWyox9MS5Z/SbpsWW3ZGSpgUhJbPr4acd5etoPbjmbSfOUvbjQ+X0+i8UH8Gc
+         VwpGXq05CpDvu5aY4k6scBlG1E9XLQk8JDRjLMPM24bjREaGbD2cujka2yyfdZKB5gGf
+         +xzWFNuGtaF8DJHFcS/Ycua1/uF9f4xzcD9nrgq9xOOoLWET8uXpiSgWgsMBmCghjYoQ
+         g4Iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734183441; x=1734788241;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kfAoBNlarjV9Kr0yPdaLHtIo2MYFINu9J4XNO2CCrRg=;
+        b=kYmCSdJ2OuljqHOLads0++DpVQ8eeq/L9A+0CZXpIftW5WRZi7ad4VvIA5qvCGPigq
+         tPShbVJ9MVex5JfxUmEAOCpvsRi2fd4Ymf8ttNIFJyQu/Q3kHtwmKsM0pB5o6RVPY1vC
+         AwfRwZsbtbIRNqKsyaPik0xk2HnK9XFnYvt8waoXdqej+AQJA7TSu4dLeDmX9NFBtP3p
+         jaH6dGMmcxTRNcwZe1C+VPdENoV/tybJz+KpV67mujKNI0vgZU9xD3/hvxXdRV21sKek
+         NXfyXN8bT4CUXy2+BaL0ZZxVB2MONIg3QjgJCWVYR5uKJXWpTV0bXbh7p5vhh2tLWbSs
+         WJeQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWKtcjRPRXcSDgO/vVPhCxumP0JakvnxhUJeYSOmsurwHcALnlKmHxc/894rVxNEcHOogdDZROz09Plo9t1JA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyul8+mEa6J+3vWWWbRPm3nkvwbuVw0uSSzqXVkb+Tp4XHxeg8z
+	snv2C47nwqpNIVTQpk79aGpbI0yVZ9rU1Dj40DsRl21XyyWZpFsTXkbdi2EBoAc=
+X-Gm-Gg: ASbGncvRg0qBGdMBpW2NZPKnP5UZiGpV97Gj0X2Rw4lXFXc6HpGw+FNWJOyK+DbAW6z
+	xvzNEgmlnQhPrx6eNHnu7nO+8u3YMG3r6fLRNO2Bh0BObuZG97sN579oMpM+Oi+CbkhSEZlm7tE
+	l8WuG0oP79dRxhF4ODBjxfpdr327wlpeX5Rs39QAAiHNwUcP72lR39+l6fOUqQSnzLncvoFBz6x
+	cMBpphuq/izj/TSAM9C+kfriaEX2p5kTRzZxDi0kN1D4W+cu4Smj7H7Sw+06lDu
+X-Google-Smtp-Source: AGHT+IFSZO4bNy8AjxBG8Wtyvs2G2G0moKCebZ7Bi6AnMIS81nyzk1n5ZS+J4Ko1Sbkn2pNNU644nw==
+X-Received: by 2002:a05:651c:1541:b0:2ff:d2e4:8dd9 with SMTP id 38308e7fff4ca-302544b11d6mr24876241fa.32.1734183441395;
+        Sat, 14 Dec 2024 05:37:21 -0800 (PST)
+Received: from umbar.lan ([192.130.178.90])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120baa474sm220131e87.90.2024.12.14.05.37.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Dec 2024 05:37:20 -0800 (PST)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Sat, 14 Dec 2024 15:37:08 +0200
+Subject: [PATCH v2 4/5] drm/connector: make mode_valid_ctx take a const
+ struct drm_display_mode
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Message-Id: <20241214-drm-connector-mode-valid-const-v2-4-4f9498a4c822@linaro.org>
+References: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
+In-Reply-To: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, 
+ Danilo Krummrich <dakr@redhat.com>, Harry Wentland <harry.wentland@amd.com>, 
+ Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Xinhui Pan <Xinhui.Pan@amd.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Liviu Dudau <liviu.dudau@arm.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Peter Senna Tschudin <peter.senna@gmail.com>, Ian Ray <ian.ray@ge.com>, 
+ Martyn Welch <martyn.welch@collabora.co.uk>, 
+ Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Stefan Agner <stefan@agner.ch>, 
+ Alison Wang <alison.wang@nxp.com>, 
+ Patrik Jakobsson <patrik.r.jakobsson@gmail.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Rob Clark <robdclark@gmail.com>, 
+ Abhinav Kumar <quic_abhinavk@quicinc.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Gurchetan Singh <gurchetansingh@chromium.org>, 
+ Chia-I Wu <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
+Cc: intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ nouveau@lists.freedesktop.org, amd-gfx@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+ imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, virtualization@lists.linux.dev, 
+ spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ Jani Nikula <jani.nikula@intel.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1823;
+ i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
+ bh=fIH1atGQEvkLWi04AIEXYETQz0o/iNjqyQIeIWP3jdk=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBnXYoElMfelOPEJNjs+G1Yj9xgEcdTdcLAHLPa0
+ 1XczK3Ryz2JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZ12KBAAKCRCLPIo+Aiko
+ 1TNjCACQzndFYYYqNzhLedAqKs7VfOsz2ZEbJAu4qQr0caK2HF+hvtR+VUIlYwQ0jcqqWXJmXLM
+ +4HlPR43bEtxaoe4QpWwccR/sQYlEGLTcuF7/jlXw42WpNdOY6WhxbDnr23gMEQXuLD2NuXBTyB
+ XubcAVl2e73ZHfh1LpZ35luOaheCBIz8zL33f8d5nxxFyCEqHaY5q6zARwkPBAoe852c0K3chfm
+ oDoop8CfLRyNhvoGEF/YGoigASSuk7/jucbCfOlAXSz1JpttbSHzvLiZtgMdHVwI2RHxPySD27A
+ yiEIP9OceoguE2oL2gaLonv3bIozOrfBbnj0xVgmnNavKUi8
+X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
+ fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_090428_951909_13037311 
-X-CRM114-Status: GOOD (  18.24  )
-X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
+X-CRM114-CacheID: sfid-20241214_053723_135349_3FA27D62 
+X-CRM114-Status: GOOD (  12.23  )
+X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:50 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,116 +164,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+The mode_valid() callbacks of drm_encoder, drm_crtc and drm_bridge
+take a const struct drm_display_mode argument. Change the mode_valid_ctx
+callback of drm_connector to also take a const argument.
 
-Thanks for the cleanup !
+Acked-by: Jani Nikula <jani.nikula@intel.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+---
+ drivers/gpu/drm/i915/display/intel_dp_mst.c | 2 +-
+ include/drm/drm_modeset_helper_vtables.h    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-On Saturday, 2 August 2025 05:23:06 EDT Jacopo Mondi wrote:
-> The v4l2_fh associated with an open file handle is now guaranteed
-> to be available in file->private_data, initialised by v4l2_fh_add().
-> 
-> Access the v4l2_fh, and from there the driver-specific structure,
-> from the file * in all ioctl handlers.
-> 
-> While at it, remove the now unused fh_to_rkvdec_ctx() macro.
-> 
-> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+diff --git a/drivers/gpu/drm/i915/display/intel_dp_mst.c b/drivers/gpu/drm/i915/display/intel_dp_mst.c
+index 123c4ece626883bd2fde997d5752611bb82018ac..87e3e178df6e642da89e81ec92328735e477230a 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp_mst.c
++++ b/drivers/gpu/drm/i915/display/intel_dp_mst.c
+@@ -1445,7 +1445,7 @@ static int mst_connector_get_modes(struct drm_connector *connector)
+ 
+ static int
+ mst_connector_mode_valid_ctx(struct drm_connector *connector,
+-			     struct drm_display_mode *mode,
++			     const struct drm_display_mode *mode,
+ 			     struct drm_modeset_acquire_ctx *ctx,
+ 			     enum drm_mode_status *status)
+ {
+diff --git a/include/drm/drm_modeset_helper_vtables.h b/include/drm/drm_modeset_helper_vtables.h
+index ec59015aec3cf3ba01510031c55df8c0b3e0b382..fa9ee6a128bec0205f501df6f7634757f5fcb9ee 100644
+--- a/include/drm/drm_modeset_helper_vtables.h
++++ b/include/drm/drm_modeset_helper_vtables.h
+@@ -1006,7 +1006,7 @@ struct drm_connector_helper_funcs {
+ 	 *
+ 	 */
+ 	int (*mode_valid_ctx)(struct drm_connector *connector,
+-			      struct drm_display_mode *mode,
++			      const struct drm_display_mode *mode,
+ 			      struct drm_modeset_acquire_ctx *ctx,
+ 			      enum drm_mode_status *status);
+ 
 
-Reviewed-by: Detlev Casanova <detlev.casanova@collabora.com>
-
-> ---
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 14 +++++++-------
->  drivers/media/platform/rockchip/rkvdec/rkvdec.h |  5 -----
->  2 files changed, 7 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.c index
-> 481c2488f9ac64e70869ed21e5053cfbc4ed6e0e..9fa80ab3c62b7753e6c992aefd106ee99
-> ed375e4 100644 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -354,7 +354,7 @@ static int rkvdec_try_capture_fmt(struct file *file,
-> void *priv, struct v4l2_format *f)
->  {
->  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
->  	const struct rkvdec_coded_fmt_desc *coded_desc;
-> 
->  	/*
-> @@ -387,7 +387,7 @@ static int rkvdec_try_output_fmt(struct file *file, void
-> *priv, struct v4l2_format *f)
->  {
->  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
->  	const struct rkvdec_coded_fmt_desc *desc;
-> 
->  	desc = rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
-> @@ -418,7 +418,7 @@ static int rkvdec_try_output_fmt(struct file *file, void
-> *priv, static int rkvdec_s_capture_fmt(struct file *file, void *priv,
->  				struct v4l2_format *f)
->  {
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
->  	struct vb2_queue *vq;
->  	int ret;
-> 
-> @@ -439,7 +439,7 @@ static int rkvdec_s_capture_fmt(struct file *file, void
-> *priv, static int rkvdec_s_output_fmt(struct file *file, void *priv,
->  			       struct v4l2_format *f)
->  {
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
->  	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
->  	const struct rkvdec_coded_fmt_desc *desc;
->  	struct v4l2_format *cap_fmt;
-> @@ -504,7 +504,7 @@ static int rkvdec_s_output_fmt(struct file *file, void
-> *priv, static int rkvdec_g_output_fmt(struct file *file, void *priv,
->  			       struct v4l2_format *f)
->  {
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
-> 
->  	*f = ctx->coded_fmt;
->  	return 0;
-> @@ -513,7 +513,7 @@ static int rkvdec_g_output_fmt(struct file *file, void
-> *priv, static int rkvdec_g_capture_fmt(struct file *file, void *priv,
->  				struct v4l2_format *f)
->  {
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
-> 
->  	*f = ctx->decoded_fmt;
->  	return 0;
-> @@ -532,7 +532,7 @@ static int rkvdec_enum_output_fmt(struct file *file,
-> void *priv, static int rkvdec_enum_capture_fmt(struct file *file, void
-> *priv, struct v4l2_fmtdesc *f)
->  {
-> -	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
->  	u32 fourcc;
-> 
->  	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index, ctx->image_fmt);
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.h index
-> 35effe9467845fdfc4ffea432211d1d2e75a08b0..481aaa4bffe975fa106fb22e78bef90ad
-> e86a6cf 100644 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> @@ -124,11 +124,6 @@ struct rkvdec_ctx {
->  	void *priv;
->  };
-> 
-> -static inline struct rkvdec_ctx *fh_to_rkvdec_ctx(struct v4l2_fh *fh)
-> -{
-> -	return container_of(fh, struct rkvdec_ctx, fh);
-> -}
-> -
->  static inline struct rkvdec_ctx *file_to_rkvdec_ctx(struct file *filp)
->  {
->  	return container_of(file_to_v4l2_fh(filp), struct rkvdec_ctx, fh);
-
-
-
+-- 
+2.39.5
 
 
 _______________________________________________
