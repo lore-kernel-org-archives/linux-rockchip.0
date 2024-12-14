@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F22E7717F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Dec 2024 18:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B812E7716A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Dec 2024 07:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1g+dn+R0aUfdIZk/4RxfaIHFptOTlQdsMQ/wZBC9w/k=; b=jE4a60Vnf+qGyO
-	FS2wxP7goFlKeJPewmNyAWjN0Yr/EznScqwsdg1VSQJdWeDjAUFSNMXEqbC6cGiyxCVfiyP6J0hpl
-	HpSsomVCdhPEzp1r+PtId1Aqpl5exCULb/JXVsGS9WTF4GydvefoQFievS5oLhu/nEq2X6EPJ7LOh
-	Z5erBYaZ4vWjDtYOWKn3R2DdhN1IIips7czKfPyfEe9z6LZ/e7yWYw8i33U12wO9Jgf5B8qMKHnhr
-	FBELFAvlvY4QQPF84axhgNPSaNiXav8WCpLPmnhUcax3BoWzGWeundLRcsfiAc405Mdb/nn1Qzf04
-	jbQDbVNo4gC47qGHnNKg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Pg1CIrzIbizfsud+E+LOjH4RxdWWBXMnJY37YJwIabI=; b=bd++YENs+j9wnI
+	F1NoI+4hokmW+6nBWSvcQmtagWIUku5xM01PEDP1j/dho9y+eTrr3SKT9KSPQ27GHz+E7B3JpEc72
+	BuUBW3DIs6NdW1bg2/hl/JmNp6jvykJ4EzfrHM5YwX7inQQ2xO9YuwB/0q7ozibSx5Z0ykx1Y43g7
+	OmGvE4HRi/i8R9uCQCUiIdIBUX37SgaCN8xtEfHGzsTy1nlKoO41dRuTXx8f8UDqmlkd2EMT3zCpa
+	RWqIgRNl7yOokEQ8AyuwXjJ0zIIsg39lDth+/cXdipNqZzsw888bYh+8/71VikoBE0u6kCfRLmBNx
+	/3YpFOPdYQUln2VuOoDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMAWr-00000004hPL-1kKj;
-	Fri, 13 Dec 2024 18:36:45 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMAUo-00000004h6I-2rOD;
-	Fri, 13 Dec 2024 18:34:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=y+Is4l+QhZfpXEpYBJcEPsotkirV+fH0qWqP949FELk=; b=oQHOQHlloBXL+dlEq+hZEiVJ50
-	UXXJNGX2JQhxnxcyzop7cmApYLu1OFsTtqN35CnwDZZHJjP4EEjh9KQzOnEvaCtYm2TP4fenBRO+y
-	OP/5iqCb99S3sq+2CLXabTBYMbbJiZaANfopWRDhd6MAdC2DgUdT4NTHn+FqjkG+LV+WqZjl8Zohl
-	wMVBH00VDJ8L2dRfEPvSQGpgANNAnloFfoDbWql3tsxWgmQ58g8lnEwrqf2p8I17/11kTuTuooEAu
-	XmGTRpMilR0cMYofbshrWyEWebtSZd9d9qrgbi1ce3v9hhMIsTxOwKfl6B3WlEb25LBtwgpZDN8oq
-	5M5NLtRg==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tMAUn-0008GP-8k; Fri, 13 Dec 2024 19:34:37 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org, Shimrra Shai <shimrrashai@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
- Shimrra Shai <shimrrashai@gmail.com>
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: add DTs for Firefly ITX-3588J
-Date: Fri, 13 Dec 2024 19:34:36 +0100
-Message-ID: <10578885.nUPlyArG6x@diego>
-In-Reply-To: <20241213180855.16472-2-shimrrashai@gmail.com>
-References: <20241213180855.16472-1-shimrrashai@gmail.com>
- <20241213180855.16472-2-shimrrashai@gmail.com>
+	id 1tMMMU-00000005tCn-1iWY;
+	Sat, 14 Dec 2024 07:14:50 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tMMLa-00000005t4w-3AqG
+	for linux-rockchip@lists.infradead.org;
+	Sat, 14 Dec 2024 07:13:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=/jr6j
+	nLL8cAX9H3cWT2KiyjVLKxAcx77tgmPEs2DRJA=; b=X7ZSK6Fx3ChBL9LdY6DxY
+	3EM9szbF8ApuTdcdTNdDfQwCtlQLk+49+zFUhGuzwchdMOpad8Yaq89V5rcuClvs
+	EWz8gHXQfH1QYnCaPTNYwOsk0NyHnq47akRMdqOALJVV4cIDK1n/ImovQlBkEyTQ
+	OQim8Q68Krv5uPqy5Ey8ng=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDnl80hMF1ngrXcAQ--.46811S2;
+	Sat, 14 Dec 2024 15:13:40 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: sebastian.reichel@collabora.com,
+	kever.yang@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v2] drm/rockchip: Fix Copyright description
+Date: Sat, 14 Dec 2024 15:13:33 +0800
+Message-ID: <20241214071333.3325308-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+X-CM-TRANSID: _____wDnl80hMF1ngrXcAQ--.46811S2
+X-Coremail-Antispam: 1Uf129KBjvAXoW3uFy7GFWDWw4rtF48XFWkWFg_yoW8XFW3Co
+	WvkF15Ja4rCFs3C34YyF1IqF1fuwnrtas3Cw4FkFsFvryUC3yUJrs0vrZ5CF1YvryUAF4x
+	Aa10vrn8Ar1xAa48n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUceT5DUUUU
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQ+1XmddI4HI6gAAs3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241213_103438_866934_4ADA4D6F 
-X-CRM114-Status: GOOD (  28.11  )
+X-CRM114-CacheID: sfid-20241213_231355_108266_05CEDE80 
+X-CRM114-Status: UNSURE (   6.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,254 +76,378 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 13. Dezember 2024, 19:08:54 CET schrieb Shimrra Shai:
-> Main DTS for the board and Makefile addition.
-> 
-> Signed-off-by: Shimrra Shai <shimrrashai@gmail.com>
+From: Andy Yan <andy.yan@rock-chips.com>
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts b/arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts
-> new file mode 100644
-> index 000000000..a99c007c7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts
-> @@ -0,0 +1,1133 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/pwm/pwm.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +#include "dt-bindings/usb/pd.h"
-> +#include "rockchip-pca9555.h"
-> +#include "rk3588.dtsi"
+The company name has update to Rockchip Electronics Co., Ltd.
+since 2021.
+And change Co.Ltd to Co., Ltd. to fix mail server warning:
+DBL_SPAM(6.50)[co.ltd:url];
 
-in line with my comment in the binding, please split the system-on-module
-parts into a rk3588-firefly-core-3588j.dtsi and then include that file here.
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
+---
 
-> +
-> +/ {
-> +	model = "Firefly ITX-3588J";
-> +	compatible = "firefly,itx-3588j", "rockchip,rk3588";
-> +
-> +	aliases {
-> +		ethernet0 = &gmac0;
-> +		ethernet1 = &gmac1;
-> +		mmc0 = &sdhci;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	/* NB: There are also a "Reset" and "Mask ROM" button but I don't
-> +	 * know the right settings for these. - Shimrra Shai
-> +	 */
+Changes in v2:
+- Fix an omitted file cdn-dp-core.h
 
-same comment-style as below, plus
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c          | 2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.h          | 2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c           | 2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.h           | 2 +-
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 2 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     | 2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c            | 2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.h            | 2 +-
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c          | 2 +-
+ drivers/gpu/drm/rockchip/rk3066_hdmi.h          | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c      | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.h      | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h    | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_lvds.c        | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_lvds.h        | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_rgb.c         | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_rgb.h         | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c    | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c     | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.h     | 2 +-
+ 27 files changed, 27 insertions(+), 27 deletions(-)
 
-/*
- * There are additional Reset and Maskrom keys connected, but their
- * settings are still unknown right now.
- */
-
-> +	adc-keys-1 {
-
-why is it adc-keys-1 ? (where is -0 ?)
-
-> +		compatible = "adc-keys";
-> +		io-channels = <&saradc 1>;
-> +		io-channel-names = "buttons";
-> +		keyup-threshold-microvolt = <1800000>;
-> +		poll-interval = <100>;
-> +
-> +		button-recovery {
-> +			label = "Recovery";
-> +			linux,code = <KEY_VENDOR>;
-> +			press-threshold-microvolt = <2000>;
-> +		};
-> +	};
-> +
-> +	analog-sound {
-> +		compatible = "simple-audio-card";
-> +		pinctrl-0 = <&hp_detect>;
-> +		pinctrl-names = "default";
-> +		simple-audio-card,aux-devs = <&amp_headphones>, <&amp_speaker>;
-> +		simple-audio-card,format = "i2s";
-> +		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
-> +		simple-audio-card,mclk-fs = <384>;
-> +		simple-audio-card,name = "rockchip_es8323";
-> +		simple-audio-card,pin-switches = "Headphones", "Speaker";
-> +		simple-audio-card,routing =
-> +			"Speaker Amplifier INL", "LOUT2",
-> +			"Speaker Amplifier INR", "ROUT2",
-> +			"Speaker", "Speaker Amplifier OUTL",
-> +			"Speaker", "Speaker Amplifier OUTR",
-> +			"Headphones Amplifier INL", "LOUT1",
-> +			"Headphones Amplifier INR", "ROUT1",
-> +			"Headphones", "Headphones Amplifier OUTL",
-> +			"Headphones", "Headphones Amplifier OUTR",
-> +			"LINPUT1", "Microphone Jack",
-> +			"RINPUT1", "Microphone Jack",
-> +			"LINPUT2", "Onboard Microphone",
-> +			"RINPUT2", "Onboard Microphone";
-> +		simple-audio-card,widgets =
-> +			"Microphone", "Microphone Jack",
-> +			"Microphone", "Onboard Microphone",
-> +			"Headphone", "Headphones",
-> +			"Speaker", "Speaker";
-> +
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&i2s0_8ch>;
-> +		};
-> +
-> +		simple-audio-card,codec {
-> +			sound-dai = <&es8323>;
-> +			system-clock-frequency = <12288000>;
-> +		};
-> +	};
-> +
-> +	/* note: this does not seem to be a proper "amplifier" but is just
-
-	/*
-	 * note: this does not seem to be a proper "amplifier" but is just
-
-comment formatting please
-
-> +	 * a way to control the GPIO pins to switch on or off the given
-> +	 * sound output device
-> +	 */
-> +	amp_headphones: headphones-audio-amplifier {
-> +		compatible = "simple-audio-amplifier";
-> +		enable-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&headphone_amplifier_en>;
-> +		sound-name-prefix = "Headphones Amplifier";
-> +	};
-
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		/* NB: This Power LED control does not seem to work for
-> +		 * some reason. - Shimrra Shai
-> +		 */
-> +#if 0
-> +		power_led: led-0 {
-> +			gpios = <&gpio1 RK_PB3 GPIO_ACTIVE_HIGH>;
-> +			linux,default-trigger = "default-on";
-> +		};
-> +#endif
-
-please don't add dead code
-
-> +
-> +		user_led: led-1 {
-> +			gpios = <&pca9555 PCA_IO0_3 GPIO_ACTIVE_HIGH>;
-> +			linux,default-trigger = "disk-activity";
-> +		};
-> +	};
-> +
-> +	vcc_sata_pwr_en: vcc-sata-pwr-en-regulator {
-
-vcc_sata_pwr_en: regulator-vcc-sata-pwr-en
-
-Applied to all regulator nodes
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sata_pwr_en";
-> +		regulator-boot-on;
-> +		regulator-always-on;
-> +		enable-active-high;
-> +		gpio = <&pca9555 PCA_IO1_2 GPIO_ACTIVE_HIGH>;  //PCA_IO 12
-
-please sort properties (compatible, regs, [alphabetically], status) and please
-drop those comments at the end.
-
-Applied to all regulator nodes
-
-> +	};
-
-[...]
-
-> +&cpu_l0 {
-> +	cpu-supply = <&vdd_cpu_lit_s0>;
-> +	mem-supply = <&vdd_cpu_lit_mem_s0>;
-
-that mem-supply property is not specified and also is not necessary here.
-Same for the other cases above.
-
-> +};
-
-[...]
-
-> +	usbc0: usb-typec@22 {
-> +		compatible = "fcs,fusb302";
-> +		reg = <0x22>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&usbc0_int>;
-> +		vbus-supply = <&vbus5v0_typec_pwr_en>;
-> +		status = "okay";
-
-default status is always "okay", so no need to add it for new nodes.
-Same for possible other places in this file.
-
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rockchip-pca9555.h b/arch/arm64/boot/dts/rockchip/rockchip-pca9555.h
-> new file mode 100644
-> index 000000000..c4c9a2471
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rockchip-pca9555.h
-
-if anything, that include needs to live in include/dt-bindings/something
-and needs to be a separate patch, if you really need that
-
-> @@ -0,0 +1,31 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only OR MIT */
-> +/*
-> + * Bindings for the PCA9555 GPIO extender used on some Rockchip devices, e.g.
-> + * Firefly.
-> + *
-> + * Copyright (c) 2013 MundoReader S.L.
-> + * Authors: Heiko Stuebner <heiko@sntech.de>
-
-where does this copyright come from? I don't remember being involved
-in a binding header for that expander?
-
-
-> + *          Shimrra Shai <shimrrashai@gmail.com>
-> + */
-> +
-> +#ifndef __RK_PCA9555_H__
-> +#define __RK_PCA9555_H__
-> +
-> +#define PCA_IO0_0          0
-> +#define PCA_IO0_1          1
-> +#define PCA_IO0_2          2
-> +#define PCA_IO0_3          3
-> +#define PCA_IO0_4          4
-> +#define PCA_IO0_5          5
-> +#define PCA_IO0_6          6
-> +#define PCA_IO0_7          7
-> +#define PCA_IO1_0          8
-> +#define PCA_IO1_1          9
-> +#define PCA_IO1_2          10
-> +#define PCA_IO1_3          11
-> +#define PCA_IO1_4          12
-> +#define PCA_IO1_5          13
-> +#define PCA_IO1_6          14
-> +#define PCA_IO1_7          15
-> +
-> +#endif
-> 
-
-Heiko
-
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 546d13f19f9b..02876eb66e94 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -2,7 +2,7 @@
+ /*
+  * Rockchip SoC DP (Display Port) interface driver.
+  *
+- * Copyright (C) Fuzhou Rockchip Electronics Co., Ltd.
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author: Andy Yan <andy.yan@rock-chips.com>
+  *         Yakir Yang <ykk@rock-chips.com>
+  *         Jeff Chen <jeff.chen@rock-chips.com>
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index ff9d95e2c4d4..4b28121ffa42 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author: Chris Zhong <zyw@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+index 8e6e95d269da..17498f576ce7 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+@@ -1,7 +1,7 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+  * Copyright (C) 2016 Chris Zhong <zyw@rock-chips.com>
+- * Copyright (C) 2016 ROCKCHIP, Inc.
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  */
+ 
+ #ifndef _CDN_DP_CORE_H
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+index 33fb4d05c506..924fb1d3ece2 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author: Chris Zhong <zyw@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+index c7780ae3272a..13ed8cbdbafa 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author: Chris Zhong <zyw@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 1b64b6e39cc8..3398160ad75e 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0+
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:
+  *      Chris Zhong <zyw@rock-chips.com>
+  *      Nickey Yang <nickey.yang@rock-chips.com>
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 42bda4ffbbbd..e7a6669c46b0 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+- * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2014, Rockchip Electronics Co., Ltd.
+  */
+ 
+ #include <linux/clk.h>
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index b58e2a29294b..898d90155057 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  *    Zheng Yang <zhengyang@rock-chips.com>
+  *    Yakir Yang <ykk@rock-chips.com>
+  */
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.h b/drivers/gpu/drm/rockchip/inno_hdmi.h
+index a7edf3559e60..8b7ef3fac485 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.h
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  *    Zheng Yang <zhengyang@rock-chips.com>
+  *    Yakir Yang <ykk@rock-chips.com>
+  */
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index b0fc8ace2e41..403336397214 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  *    Zheng Yang <zhengyang@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.h b/drivers/gpu/drm/rockchip/rk3066_hdmi.h
+index 39a31c62a428..c3598ba7428c 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.h
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  *    Zheng Yang <zhengyang@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 3e9f590c734e..bf1d4c5599fa 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  *
+  * based on exynos_drm_drv.c
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 24b4ce5ceaf1..8bcce08a34d9 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  *
+  * based on exynos_drm_drv.h
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index cfe8b793d344..dcc1f07632c3 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.h b/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
+index bae4e079dfb1..5179026b12d6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index 93ed841f5dce..6330b883efc3 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
+index 72f59ac6d258..cdeae36b91a1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 69900138295b..57747f1cff26 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 0cf512cc1614..f04c9731ae7b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 2995988ef559..ca3f1613d51c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index aba733736ff7..385cf6881504 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:
+  *      Mark Yao <mark.yao@rock-chips.com>
+  *      Sandy Huang <hjc@rock-chips.com>
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+index 4ce967d23813..ca83d7b6bea7 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:
+  *      Sandy Huang <hjc@rock-chips.com>
+  *      Mark Yao <mark.yao@rock-chips.com>
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index dbfbde24698e..811020665120 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:
+  *      Sandy Huang <hjc@rock-chips.com>
+  */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.h b/drivers/gpu/drm/rockchip/rockchip_rgb.h
+index 1bd4e20e91eb..116f958b894d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.h
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:
+  *      Sandy Huang <hjc@rock-chips.com>
+  */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 4ee56ad7b811..cbabec73685b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author: Andy Yan <andy.yan@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 8998967f0c00..4e2099d86517 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+index fbf1bcc68625..addf8ca085f6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
++ * Copyright (C) Rockchip Electronics Co., Ltd.
+  * Author:Mark Yao <mark.yao@rock-chips.com>
+  */
+ 
+-- 
+2.34.1
 
 
 _______________________________________________
