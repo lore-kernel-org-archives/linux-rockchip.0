@@ -4,90 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EBF5E7716A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Dec 2024 03:31:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA846E7716A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Dec 2024 08:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pOleXWtc+TD1oXlN9HsWISW8S5yucz4K/IPCheGGi9A=; b=SsXJmNeVoVzBLe
-	QLWNimWncXszSsU8Yj+Cie9m7kYYOHxGmyQBaR/kMbhJNJoJHn852gh0kATUJhZtNMrWJ0GAJC1zk
-	zljyR3+AYEdMrkkpd2br8HTMbs5xi7SDYjgGSPGCHhAz8ky3+v3NbrBXaek9dkdQAT0lIuHsV2hxD
-	t2Jej8xnFLQZOn+r8ONtgIsIuyy/suwgRvmFJCJZK/p6Y/P58rL/pQ2FMRgGBz1aHW5ft6pFCigcT
-	EEXdhgY2rjMBNqu2QU/G9lfuLQGzHls7S59V+DNVujkCKbldqqWDyY2oZAN8thel/DqJQ5uvD2/ev
-	2RfRAyt9pN6MOoMFag8Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=u/R1p6SLPDV9Ft6odVhWoiJNDGgCx3Sg5YejVc9HHUU=; b=1X2yPASo2ce0+F
+	lgsPN2ZcyVmz//g6ioaFetVySAKAL6Jg9M3LkcAp39AC1C7LWCPZkvV+t/DeU2/2ljGjiTpl2paMp
+	ON6Fno2j60RhyZVDAIyPOkrGP0HceK6wJmRpntsbGcEYcSfoGmFDjxW2cnqAJ411Co8D0wveHcwsi
+	IJkRSwihV2qOnHSHSb5l6jlNFjDkuGXIgn36S/2FKEpLtbsr4GFh1eTVHGIrGJJ0tuvaf6JxWrUMz
+	7rxRw5KSdXSJkU59mXaacsn4iVJXyVmy9WvVoIOwj8N8tU6C8U7ZNherIPB0F0vWVRbS0psPLOlBB
+	aB7DiorpJcBPkD8JZ/ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMfLq-00000007KiR-2WC8;
-	Sun, 15 Dec 2024 03:31:26 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
+	id 1tMk8s-00000007dQp-04g6;
+	Sun, 15 Dec 2024 08:38:22 +0000
+Received: from mail-m1289.netease.com ([103.209.128.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMfHy-00000007K8B-38Ki;
-	Sun, 15 Dec 2024 03:27:28 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id ca18e2360f4ac-844e9b83aaaso172028539f.3;
-        Sat, 14 Dec 2024 19:27:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1734233246; x=1734838046; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XMKOxO+QQQnpK/gqTmp5of8X6K9CuNI4LFknE1hYc2M=;
-        b=T/ZdLLrT4+0/n1lDPbE5ToJ9oeJXMG/2CN8Fn3HQRrEAbZ9Hn4dUjp9ojIMfJjQm8j
-         X26pB/RGZ4JoS2ToXLcMRvlCmZii2T5RgpwINj94wehSfWBkZLnZlzvTj3JJnMGGyr6b
-         9jmRz5Smt63o2pSeeDr3DYNPlsmWt9ozK89XHh5n8iXrrWUKYGGydbvQaKq5iS1KSlBC
-         +oQwAuMO0LX/7B9eT5vhgomB7Sf25kwuKlqE3CsTP2pxQe9oKeGFlxa4F7RxkTfO/W9v
-         T0qhB8u6RnYx5VopwdEsuu3c8bT1GGL/n0YS8qjPM+MIhu485lgSbaefza9qoe56Qu7f
-         9grQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734233246; x=1734838046;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XMKOxO+QQQnpK/gqTmp5of8X6K9CuNI4LFknE1hYc2M=;
-        b=hLECFoizaWNcCaWrf5P7ReTd8fdPzP+GE3bPZfP0zTpHZMCxL5NLvyE85zy6oWbai1
-         aavbqRdpgpYj+t+8w7vHNE7bAmTY50lJHmXFYPKrbb8BoLhlgigs2sObfOHk5wmlVYxd
-         rk1fjci75rIi8Ymi1f64eZGzEnLXi2sa0yfEWiHpP40Ga15Wkz/8iLwR+b1V3P3d2SWs
-         cTzYaMx8bqTs5FNFqP6wGOY5xEhV0j1NeioLOLGq07ho3pxp2ZYtogxhtGHRweLiiSON
-         TIpzxjkdPvbXAG0yNjtyQZugYC80VwR1/hvFi3TTu6fuZ2jAZK6bv+41nxh9o/xrmlX9
-         KRng==
-X-Forwarded-Encrypted: i=1; AJvYcCUjlPybPIJwJDjb1c0q1qD3ZzDhFvNAURotPsF+BeZQnGZMaIm0s9Qif6RK7yOzS5cH18DcrDqQETwcHC1Ql1s=@lists.infradead.org, AJvYcCWdq45BUKRqKcCQauu4SRkgoxUSbRaYHMphbXxaYDso3qcC5LdDtLrCpgwteAug0K7uKr/xQJ3Q1mIw8IlysCY2@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy0TvngFuMh9Wmv5nKnySbwtkmPMtrxBPWJ9oLCD+AP3xaYQbpU
-	ZpEv8g838Zf3eguQf9kxL8lTEEPmfmmKq7Rxu+w/Gx2fWUgoEee6
-X-Gm-Gg: ASbGncvuYxy1wCkx+2R/6s71C+0LFJfsew6U80vcIZCeeseGxNweAZ0KGSTuQ0roOlb
-	aPZtGO39szSJBK+8T3pFvjZo87abq2fhU38vaAFYCTRs4akNLtS23BmYIN4pT7UvLs1TV7tC2yk
-	MvLPUX1vW6ZxU0EDEiS5KzTMunldfOCLZh5XFQKQ9F4x0UI9+99Q8MMLnhVdh2TVjLK4StZ1MTy
-	Z5+1P7QvUNPptICLpvi1hiLH3ksJG0Nge3lmAk8Zf1EMwLQz15qMIArAUF6VYcquPDzDBTU7ffx
-	odtmcIeDLP0gIMpGLzsI4ZqfYac=
-X-Google-Smtp-Source: AGHT+IH/Ga5WHa4WgsKsLSKgbEehuyqvn8KfLn7YekgXK2iiDYMjq8AZzP29aqVzMkcLbvuitLywqw==
-X-Received: by 2002:a05:6e02:3308:b0:3a7:fe8c:b012 with SMTP id e9e14a558f8ab-3aff8c92a85mr86513735ab.18.1734233245607;
-        Sat, 14 Dec 2024 19:27:25 -0800 (PST)
-Received: from localhost.localdomain (65-128-205-244.mpls.qwest.net. [65.128.205.244])
-        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-3b2482298c6sm7755575ab.31.2024.12.14.19.27.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Dec 2024 19:27:24 -0800 (PST)
-From: Shimrra Shai <shimrrashai@gmail.com>
-To: linux-kernel@vger.kernel.org
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
+	id 1tMk8o-00000007dPi-2ZaR;
+	Sun, 15 Dec 2024 08:38:21 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c02:27b0:7e2c:bf7a:d235:f376])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5c225228;
+	Sun, 15 Dec 2024 16:38:09 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: FUKAUMI Naoki <naoki@radxa.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	Shimrra Shai <shimrrashai@gmail.com>
-Subject: [PATCH v3 3/3] dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
-Date: Sat, 14 Dec 2024 21:24:55 -0600
-Message-ID: <20241215032507.4739-4-shimrrashai@gmail.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241215032507.4739-1-shimrrashai@gmail.com>
-References: <20241215032507.4739-1-shimrrashai@gmail.com>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 1/1] arm64: dts: rockchip: default to host mode for USB on Radxa E25
+Date: Sun, 15 Dec 2024 16:38:05 +0800
+Message-Id: <20241215083805.1461902-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTEkZVhpPGhpJH09OSkNJTVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtJQUlMGUtBTB5JGEEZHUwaQR9JSE5BHUhMTVlXWRYaDx
+	IVHRRZQVlPS0hVSktISk5MTlVKS0tVSkJLS1kG
+X-HM-Tid: 0a93c977c37403a2kunm5c225228
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NlE6Ejo6CzITLiMtHQsCDBNR
+	ERQwCQ5VSlVKTEhPSU5KQ0JLSUtPVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0lBSUwZS0FMHkkYQRkdTBpBH0lITkEdSExNWVdZCAFZQU1CSDcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241214_192726_829437_D86DC0C8 
-X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-CacheID: sfid-20241215_003818_882471_B8C6372B 
+X-CRM114-Status: UNSURE (   6.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,29 +68,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VXBkYXRlZCBEVCBiaW5kaW5nIGRvY3VtZW50YXRpb24gcGVyIEBIZWlrbyBTdMO8Ym5lcidzIHN1
-Z2dlc3Rpb24sIHRvCnJlZmxlY3QgdGhlIGJpcGFydGl0ZSBuYXR1cmUgb2YgdGhlIGJvYXJkLgoK
-U2lnbmVkLW9mZi1ieTogU2hpbXJyYSBTaGFpIDxzaGltcnJhc2hhaUBnbWFpbC5jb20+Ci0tLQog
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sIHwgNyAr
-KysrKysrCiAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sCmluZGV4IDc1MzE5
-OWExMi4uZmM3ZWU4NmUyIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2FybS9yb2NrY2hpcC55YW1sCkBAIC0xNjcsNiArMTY3LDEzIEBAIHByb3BlcnRpZXM6
-CiAgICAgICAgICAgLSBjb25zdDogZW5naWNhbSxweDMwLWNvcmUKICAgICAgICAgICAtIGNvbnN0
-OiByb2NrY2hpcCxweDMwCiAKKyAgICAgIC0gZGVzY3JpcHRpb246IEZpcmVmbHkgQ29yZS0zNTg4
-Si1iYXNlZCBib2FyZHMKKyAgICAgICAgaXRlbXM6CisgICAgICAgICAgLSBlbnVtOgorICAgICAg
-ICAgICAgICAtIGZpcmVmbHksaXR4LTM1ODhqCisgICAgICAgICAgLSBjb25zdDogZmlyZWZseSxj
-b3JlLTM1ODhqCisgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszNTg4CisKICAgICAgIC0g
-ZGVzY3JpcHRpb246IEZpcmVmbHkgQ29yZS1QWDMwLUpENCBvbiBNQi1KRDQtUFgzMCBiYXNlYm9h
-cmQKICAgICAgICAgaXRlbXM6CiAgICAgICAgICAgLSBjb25zdDogZmlyZWZseSxweDMwLWpkNC1j
-b3JlLW1iCi0tIAoyLjQ1LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+The Radxa E25 board has only one USB3.0 Type A connector,
+changing it to host mode is more appropriate.
+
+Cc: FUKAUMI Naoki <naoki@radxa.com>
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+index 98cfa3abb809..90a3cb54fd47 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+@@ -218,6 +218,7 @@ &usb_host0_ohci {
+ };
+ 
+ &usb_host0_xhci {
++	dr_mode = "host";
+ 	status = "okay";
+ };
+ 
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
