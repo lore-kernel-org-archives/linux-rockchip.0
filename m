@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF74BE7716A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Dec 2024 23:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BC49E7716A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Dec 2024 00:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Hrd2p8kCXCZvz801bv1Y3mqfLBiW/jEu0evsBUDf3M=; b=KM19/ZEcjBUYOJ
-	Feh5DBLBDKws60CHmuDyX6INaKKUfEEeG2vzihvLgz2OmBOAu+fkwIrLySz5H8UcPpght+jjfsrEv
-	hmeyBqt4og16POkBUfT5c7EVt5QibDoVfwopkPVr96d8tWlmpW2aiR4aN7qcmRSAK7OsLdRo95yJc
-	3gEJ0ZJcRdWfPJgjo144ppgtpuZRfhtbtW205jJd4O1yOLLBldXl/+5hMk6XEQEs8xp3GiX/E/OiS
-	Zq8dEPIN8N3VhUtnZvyjpxo0gjMvtgekGu9trTBLSGDL/C/Nkzdu5ur+/mMyL1X57pAms7mRfiTFm
-	Rt2Zj40IsJes71a2wHqw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=wWuOaMtFyt9HLIsmNhxmtXdtoWU4r+XfdXmgM3xdqeU=; b=OVx62isemrud4T
+	bL/viNrnuKV3m1vXnyke+URzZEEqDdwiLksKv/qiFnp3cMYkdTPPDhdXQ3m0uBsocUBYff5s+Eaxl
+	gkwisIQzwNzNXi2fELrbbzy+O6NX0XnS9sJOKuI/w5GxX4s6aVMSR4yBkYOK10QwLnbNYTiiL/3JE
+	7Nlz5pBt5FgL4ZmHyaRyhYGomco6nRqr9BCNUs3OOZXOpwUVJ+Pb4/qLtGHEOvU6ik80Zf3j8XAQH
+	32O70IoZSjK+WTyqDsf8edsQ3XuOdJ6GMB9p04zSGuTeYjWmZCVSJycGOWylW9EUvJ3Pcdjj6uOG6
+	zUVL7Mv2Jqm+3tCYxg3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMbJD-000000076Az-27BK;
-	Sat, 14 Dec 2024 23:12:27 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tMcG8-000000079FD-2Ad5;
+	Sun, 15 Dec 2024 00:13:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tMbI7-0000000760G-2kU9;
-	Sat, 14 Dec 2024 23:11:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=XnK2zDuvd06Q2CdiF2Jh3uNypUBp9FI0ZgGJeXwzVXE=; b=RnqVn1UnoQXWoLja4YR73nNs8V
-	f4ojahwjcd60HFpXz2b0Zd3coUK1ak/NqeB6Q3bXPTRVnWcJ3EaBwBvSGBAiqfyqCtfVlzweOYtV4
-	kxTXMtq/WxATh47oyPHXSKtBloW3pWaMupYtl8h23D/oAT6EXDslUk2oFIeMHGwKmQhj/2z0tbVxu
-	dEjtwCJowbzD+pez8qS9vOtXmOz553JZnoIGLXMfC6grpNyQ9M6SROoQGOy9fE9QVrQmDb0wNZ/vy
-	MpvIiEzBEbi+hBLufxhoLPKmkVM/kxtgOchxnS8J3x5/8UdQutVHqG1sS7KnIkmPqmFWBzVI7wBib
-	HP51q6JA==;
-Received: from i53875bc4.versanet.de ([83.135.91.196] helo=phil.fritz.box)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tMbHy-0000hg-VZ; Sun, 15 Dec 2024 00:11:11 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	hjc@rock-chips.com,
-	krzk+dt@kernel.org,
-	s.hauer@pengutronix.de,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1tMcG5-000000079Eo-42zz
+	for linux-rockchip@lists.infradead.org;
+	Sun, 15 Dec 2024 00:13:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21DEEA406EB;
+	Sun, 15 Dec 2024 00:11:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 262B0C4CED1;
+	Sun, 15 Dec 2024 00:13:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734221595;
+	bh=GOxtTBS0yKclfTbkzcgYLXgciMLHebdnxXnJIfg8xcs=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=NaAHXfUxtGgsVp/1JftfM7ApkQteOqXoL2wa03UIRyoj/IR73gVRkAlwX7G9U3OJ5
+	 MMsifXAJYwgTDk0gsii651oZgcaCFC44EqspBdwzFAzb2QIrqOAI4WU0fSgGa5vn1Y
+	 WQLZ6tsgEjqDd6ozo464Mm0NJs6dSnkmUdzxbwfYPjK0NbiJ7v52ayDeVXDCHwVQ7n
+	 AyjftSVb9Od6MXYucJRp5Ieu66iQWoI5m7M+yvoK6xIa67T8xze8E5Yg6ZeTKWWGpQ
+	 yTPHLyOAdwj3KGo0VFcMwM7b5eKaBUhdljM6uP4/2yFiV+fzrauxya4aCYu3+0UXmx
+	 Ms4+0Tv3AGipg==
+Date: Sat, 14 Dec 2024 18:13:13 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	derek.foreman@collabora.com,
-	detlev.casanova@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: (subset) [PATCH v6 00/16] VOP Support for rk3576
-Date: Sun, 15 Dec 2024 00:11:07 +0100
-Message-ID: <173421785408.212079.5671999900653465901.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241214081719.3330518-1-andyshrk@163.com>
-References: <20241214081719.3330518-1-andyshrk@163.com>
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: Re: [PATCH v5 13/14] PCI: rockchip-ep: Handle PERST# signal in
+ endpoint mode
+Message-ID: <20241215001313.GA3482864@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241017015849.190271-14-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241214_151119_688794_A2BB69C2 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20241214_161318_076252_CA928DF4 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +83,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, Oct 17, 2024 at 10:58:48AM +0900, Damien Le Moal wrote:
+> Currently, the Rockchip PCIe endpoint controller driver does not handle
+> the PERST# signal, which prevents detecting when link training should
+> actually be started or if the host resets the device. This however can
+> be supported using the controller reset_gpios property set as an input
+> GPIO for endpoint mode.
 
-On Sat, 14 Dec 2024 16:16:59 +0800, Andy Yan wrote:
-> Thanks for the basic work from Collabora, I can bringup a HDMI
-> display out on rk3576.
-> 
-> PATCH 1 is a carryover from the working when add support for
->     rk3588[0], is very usefull when some people want me
->     help debug some issue online, so I really hope it can
->     be merged at this round.
-> PATCH 2~8 are bugfix of rk3588 alpha blending which report and
->     test by Derek
-> PATCH 9~13 are preparations for rk3576 support
-> PATCH 17~18 are real support for rk376
-> 
-> [...]
+> @@ -50,6 +51,9 @@ struct rockchip_pcie_ep {
+>  	u64			irq_pci_addr;
+>  	u8			irq_pci_fn;
+>  	u8			irq_pending;
+> +	int			perst_irq;
+> +	bool			perst_asserted;
+> +	bool			link_up;
+>  	struct delayed_work	link_training;
+>  };
 
-Applied, thanks!
+I should have caught this last cycle, but just noticed this:
 
-[01/16] drm/rockchip: vop2: Add debugfs support
-        commit: 779964556c64cd3d76ddfeb34738ef78020fae84
-[02/16] drm/rockchip: vop2: Fix the windows switch between different layers
-        commit: 0ca953ac226eaffbe1a795f5e517095a8d494921
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+  $ make W=1 -k drivers/pci/ drivers/misc/pci_*
+  ...
+    CC      drivers/pci/controller/pcie-rockchip-ep.o
+  drivers/pci/controller/pcie-rockchip-ep.c:59: warning: Function parameter or struct member 'perst_irq' not described in 'rockchip_pcie_ep'
+  drivers/pci/controller/pcie-rockchip-ep.c:59: warning: Function parameter or struct member 'perst_asserted' not described in 'rockchip_pcie_ep'
+  drivers/pci/controller/pcie-rockchip-ep.c:59: warning: Function parameter or struct member 'link_up' not described in 'rockchip_pcie_ep'
+  drivers/pci/controller/pcie-rockchip-ep.c:59: warning: Function parameter or struct member 'link_training' not described in 'rockchip_pcie_ep'
 
 _______________________________________________
 Linux-rockchip mailing list
