@@ -4,76 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A174CE77180
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 18:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA91E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 21:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oU5QInCEhxtEVlETdXngB7kpXuRrRx5ALjny2hM0Seo=; b=ti2+sEESncp8KyYZcLdmnJe6OF
-	jM+OS5ksekPbf71n54ipUmbdj10JcZ/bcEDvys45p0NucBRhEBS6qWlDsSgjlImuglei1mfk/NRWW
-	dQmNJoXzCeJxPlnHuaI/bjwrUKAAKqGPECAmBVYoHqyxqJeD9QUtu6zypnZIrpZADmoDUAaNQLtxT
-	mx5X82MOqjQoMGMQBzxH7JFPVbS5UN1MMjyfw4jIqjwkg+gt1vy7rGQZR+Aj0khNalAk8MjTiXAjH
-	CYqVCOPNIPkX2bK9TevBkssEIeSGccQ1pqOFTKZpNREssM8F+y+VM/urdWsdNBfbm5FafOkWLW/1O
-	6b+qRJBw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pRBRcGRihcoAdzwYbQZo6mQqF+BfyE2Dx73RGiGf3P4=; b=B5AbhVP91RqvbB
+	IhuprzzL2seUt+DIBALF/Ix5+6EsR5VGPpj2oHgd9ofpD+8Lb6Mcmi9FF6iS2PcDQVzr4YdFar8EQ
+	X/Wb4oI7LOa1LmPi21aprMaJnvxUcyF4VA/x4PCDAIcFFl4DaEyM5JwE/7MoK55MLri6ZeMeOg6tk
+	gAM+t0EplX3wAvUOHRTinFQhnK7bic1AlIXJ57AhD/aXvq+FkrIF1Z8lv6iZLro+QwJjzB2QRjxn3
+	5q1/ZoBK9UjQCIntgJvFLsQCZt1EjI4rQO4n8JZjOtYMe0j6k7A/SADKWQ9I6QBwyNfz47aVxH5oN
+	coWDVxgD8a3f1OoM09KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNFm0-0000000AxYC-17HM;
-	Mon, 16 Dec 2024 18:24:52 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tNIso-0000000BSlc-3xJg;
+	Mon, 16 Dec 2024 21:44:06 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNEgA-0000000Ajh9-3CLm;
-	Mon, 16 Dec 2024 17:14:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 06AFEA418F4;
-	Mon, 16 Dec 2024 17:12:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04C81C4CED0;
-	Mon, 16 Dec 2024 17:14:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734369285;
-	bh=gSmxdiZIDJu8BiwcPOPmdFwY35K+Q89CNQo+hWjcaBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hQHCHQzd7ZPIab39Ofnd+yXIC4ls5Sg800JevG7+xsIAlI5/TSS8iZD8gBLSm+9C2
-	 JYycOcmN5xNLB6YWaiULVIf49/1INTM9Yy3QYPrJ0f2XaiRWXOJtBeHR96T7ar1k9m
-	 MQTAKU0UkGhpNiwmODYRvxOxjF0c7YdtvUSpMtswW0Ap4N3E0Gb02OS0ftC986pvEM
-	 gT6r2hlcQQWyNBsLSkCXJMIsUlm7UEoD2d+l8a8zVS2NlhjBa0Tr087/RROUBQRtp6
-	 j8cO5tnt5lwpEAfKOGfC2QNiqlfdta5JMk/eS/+3crxOYye9wiuiNZ5M896vJYb1+M
-	 qumZBJPpZFwmA==
-Date: Mon, 16 Dec 2024 18:14:43 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 04/10] drm/bridge: connector: add support for HDMI
- codec framework
-Message-ID: <20241216-benign-amiable-grebe-e0b3e1@houat>
-References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
- <20241206-drm-bridge-hdmi-connector-v6-4-50dc145a9c06@linaro.org>
+	id 1tNIri-0000000BSZX-0mZ3;
+	Mon, 16 Dec 2024 21:42:59 +0000
+Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-3a8aed87a0dso16075275ab.3;
+        Mon, 16 Dec 2024 13:42:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1734385376; x=1734990176; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DRJiV63LRq8fV+tehc1tAI/LgilDFILxKmmMTE8EzxM=;
+        b=ipDMPxCrOXwjO54lg/4xLfEBqxktmeQvOwLVlfJRSHQXzsHZ8Y7tZ6SsipyyF4T+B2
+         Z+tJwB3/qJfsz/dEItSF9ebzBkMVYKH6GlsRz4ncCJfVi/+NDCEQnawR5eccBrqX/L7I
+         ZNqCYTwBa9wDXx4dkw/KuhD40uXQz+xd8E/K+bMUmuCxgkzStHMWpxGGzacs7SiD2xjY
+         S1uIpySGl9R9YOudaGc9RXrQkDT0vjwgS6bg8+M1MwGqSdf12gVjfo+7RAC7vWEimkzF
+         OPb+QEF7h/Rvb3pg/OexCO81Dh83x777q+hNS6PtRrVyhMX8+cB1g3sm/egi7AigrifJ
+         aBXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734385376; x=1734990176;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DRJiV63LRq8fV+tehc1tAI/LgilDFILxKmmMTE8EzxM=;
+        b=M2KOGZVKKZaKbXjaRRrN4Uszpk32wwnm3jSadHEhRoclyBNP2GPe+jt9HNUhX/pbLj
+         Epj1aOeL2oO9E91xgrkV/5MYB73YsCV9Tck2mfjluD1Sy1Opls9msAMAOHJUClK9zoLa
+         EdLVzjnLGli2QJRzvnLPcmTNxN1A2Jq3omF8SMPQPtA0uf/wlPay5C8BpXQoGIqyNpz/
+         m2/fX0gRKnuvAYniuQWXdPUdDmmnh5wnr3ukUgaY0IUe3cM0LzX/kNvoHbdC0n+s1pkY
+         qOrt65O8QrzMZwFTKLp2JLUFjvvQTw2bTMO9HHDgSaFv6NTkiHv9NIWYbmZIEUHEOIwm
+         ePww==
+X-Forwarded-Encrypted: i=1; AJvYcCVOf4S5RkGBqY2yzTxVWA7P3sMEq1cG9cDr/xTMgKNBKE+mrqUelBBbo3do3Jz6j/6INFZwlMFFelzaRRg9sn2S@lists.infradead.org, AJvYcCXF1e00q3Jfz5HId+QOdLGaJQ3q1N+nSNY+ecuqp73YBaLjBpSicN4RwZgjLF0PO4/tWL/qComHpGWvX/U4K8Q=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzG3ZVExkPGb2dQ1LvhvQZvQIyWK8/YT4xR5Jr02kYGTPRDVf+p
+	hNKy3caYAKq7notB3kiUxcEr/HrT1f0LVanlQ4PjMSKskzTauqbx
+X-Gm-Gg: ASbGncv5Al6k7EHeCbBWLyoIRdxx7c2xkt1b84sZxz/2gpg6u3dQCN/DU4VUreLT4qB
+	eoCo3tB+QnkBYQNmN05XyDFQc7psh+XwFSyEA68pPYphpo/uaQFLDKeZ0rYmJSGXvogv0x7Zhgx
+	YgT/JaHItDV0L9o+ZvKFZu2NHhghChV/80lj/Owlhyfgp4uZNYFJSWCSBkYsxw86fxBrXCZ/Pyn
+	2jO3OrNqBtwfGNHkrhcCcYyeQ/O5AO3uaQREZsER/pl1p3TpetRX673VHZhMYiQvinmkx0OCxrr
+	AYVbi3zf/VPYvG1Dpabt5Rjn8PA=
+X-Google-Smtp-Source: AGHT+IFDidsqDmLm+P6RSEJBRFZE5QlyQnlF1Kd+ADUltzI0Z6Ahn4amtFa5gyQLV/DCYzsUMkU4uw==
+X-Received: by 2002:a05:6e02:1a07:b0:3ab:4bea:df97 with SMTP id e9e14a558f8ab-3affbbb656fmr162024405ab.23.1734385376356;
+        Mon, 16 Dec 2024 13:42:56 -0800 (PST)
+Received: from localhost.localdomain (65-128-205-244.mpls.qwest.net. [65.128.205.244])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4e5e32a342asm1426777173.89.2024.12.16.13.42.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Dec 2024 13:42:55 -0800 (PST)
+From: Shimrra Shai <shimrrashai@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	Shimrra Shai <shimrrashai@gmail.com>
+Subject: [PATCH v4 0/2] arm64: dts: rockchip: Add Firefly ITX-3588J Board
+Date: Mon, 16 Dec 2024 15:41:50 -0600
+Message-ID: <20241216214152.58387-1-shimrrashai@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-In-Reply-To: <20241206-drm-bridge-hdmi-connector-v6-4-50dc145a9c06@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_091446_945709_3B5C3A02 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20241216_134258_222348_650B74E3 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,113 +96,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8465849876730468573=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Draft 4 for the device trees for this board. I hope this one finally
+addresses all outstanding style and organization issues. Note that the
+technical functionality limitations from the preceding versions remain.
 
---===============8465849876730468573==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="h3bq7alicyplnrqd"
-Content-Disposition: inline
+Changes since draft 3:
+ * Removed the rockchip-pca9555.h header and used the pin numbers directly
+   in the .dts.
+ * Removed the display-subsystem node in the .dts. No other board seems to
+   have one like the one that was there and it was causing warnings.
+ * Removed extraneous property "rk806_dvs1_pwrdn" on the PMIC subnode on
+   SPI2.
+ * Removed an extraneous property "rockchip,skip-scan-in-resume" on the
+   PCIe node pcie2x1l0.
 
+Shimrra
 
---h3bq7alicyplnrqd
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 04/10] drm/bridge: connector: add support for HDMI
- codec framework
-MIME-Version: 1.0
+---
+Shimrra Shai (2):
+  dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
+  arm64: dts: rockchip: add DTs for Firefly ITX-3588J and its Core-3588J
+    SoM
 
-On Fri, Dec 06, 2024 at 12:15:58PM +0200, Dmitry Baryshkov wrote:
-> Add necessary glue code to be able to use new HDMI codec framework from
-> the DRM bridge drivers. The drm_bridge implements a limited set of the
-> hdmi_codec_ops interface, with the functions accepting both
-> drm_connector and drm_bridge instead of just a generic void pointer.
->=20
-> This framework is integrated with the DRM HDMI Connector framework, but
-> can also be used for DisplayPort connectors.
->=20
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> ---
->  drivers/gpu/drm/display/drm_bridge_connector.c | 100 +++++++++++++++++++=
-+++++-
->  include/drm/drm_bridge.h                       |  38 ++++++++++
->  2 files changed, 134 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu=
-/drm/display/drm_bridge_connector.c
-> index 512ced87ea18c74e182a558a686ddd83de891814..4fa1bb73d430d02d5b79a1a18=
-4c203ec9e9c66e7 100644
-> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
-> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-> @@ -21,6 +21,8 @@
->  #include <drm/display/drm_hdmi_helper.h>
->  #include <drm/display/drm_hdmi_state_helper.h>
-> =20
-> +#include <sound/hdmi-codec.h>
-> +
->  /**
->   * DOC: overview
->   *
-> @@ -368,10 +370,80 @@ static int drm_bridge_connector_write_infoframe(str=
-uct drm_connector *connector,
->  	return bridge->funcs->hdmi_write_infoframe(bridge, type, buffer, len);
->  }
-> =20
-> +static int drm_bridge_connector_audio_startup(struct drm_connector *conn=
-ector)
-> +{
-> +	struct drm_bridge_connector *bridge_connector =3D
-> +		to_drm_bridge_connector(connector);
-> +	struct drm_bridge *bridge;
-> +
-> +	bridge =3D bridge_connector->bridge_hdmi;
-> +	if (!bridge)
-> +		return -EINVAL;
-> +
-> +	if (bridge->funcs->hdmi_codec_audio_startup)
-> +		return bridge->funcs->hdmi_codec_audio_startup(connector, bridge);
-> +	else
-> +		return 0;
-> +}
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../rockchip/rk3588-firefly-core-3588j.dtsi   | 447 +++++++++++
+ .../dts/rockchip/rk3588-firefly-itx-3588j.dts | 705 ++++++++++++++++++
+ 4 files changed, 1160 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts
 
-Nit: it looks like you return in other cases, and there's no need for
-that else.
+-- 
+2.45.2
 
-I'd remove the else.
-
-Looks good otherwise, once fixed
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
-
-Maxime
-
---h3bq7alicyplnrqd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2BgAgAKCRAnX84Zoj2+
-diFoAYCKbrWMG5n+5jqP+LBnOpHQztpGr0fb/9SiSABc8x5qqhuNZ2mnrkin14cR
-DBnqLSoBgLO7VEPgbZZDR4NjbELbuh+1PGlUqiaaajox0mSG5OXJFXoEo+liaS9G
-zmiTmODHlw==
-=LiWN
------END PGP SIGNATURE-----
-
---h3bq7alicyplnrqd--
-
-
---===============8465849876730468573==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8465849876730468573==--
-
