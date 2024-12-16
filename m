@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F10E4E7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D398CE7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:42:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E/9dMp0WZL1sNAQ/gD0WhGP0364zTFLbtiIwfzo+RXc=; b=i2vQbuQXp16kzJ
-	JRsKiT+wlzRdX+KJoSE8mj6qJ/YKb5r6YKeRwDCsmdRjDktHr6oma2C1SoB35l/SxxwLXEcqHy1Fc
-	Oai21WOS68FFywa/ZRAdVaPKxt8Xhc8mZGj5hZwOrtzkNiYKwDoBHdF/byR7Q9sc3nDFhow+ma5JG
-	lvCefq0Z4Tc2mB51bhnKN6HoWBnrTOtsVoE09DXkvlp9nPw8Xy/vnmzoJXd4CYOG2e2chElizaN3R
-	EQoCT918AKP55O/tUn9oNriFLUL9KQilpK6XyZyIe792JCTaubQSEH1v1phTvTrUMYcDnEyMUup3o
-	ZKldQIPQtyL7A4jRPe6Q==;
+	List-Owner; bh=+JvCGf2D+ON7whdc1nPk9ztFo3AhHxYryAlrmLPyTH8=; b=bal93YPsp6CD2q
+	cadvPS0W2VSGWXkNfPNdDjmTKGCpI2QWMNnZiJM4jpl4wJkcjjCyb9ywNA/vFc10XoI89nGLWGy3r
+	93maSdogVSq/azNrQueK7kGAh83SKYv2LtVBm+F4JY9ieQAxcKZ3ITneYXRgH8Uo6TTuISqcAcvVR
+	MOmrjBuBGUZhmqvFFZJyQl6WGYRuOTxpmXhv2r2/yCU8MLlZ20FCjv4lSOdtdkpTyOyh/pdU0CORz
+	cfdokpFnuO6J935pQuRZ5dDjy+ZhqRRri6feyyjCHUuhKw9tvgtoN5xGjG5DYri2sYJ+EoiU8cxpp
+	CI54DR3Zcu5/9x+gtsLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBL7-0000000A7rS-10MR;
-	Mon, 16 Dec 2024 13:40:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tNBMN-0000000A7xk-2k3Q;
+	Mon, 16 Dec 2024 13:42:07 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBL4-0000000A7qL-2iuS
+	id 1tNBMK-0000000A7xI-0p0x
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 13:40:48 +0000
+	Mon, 16 Dec 2024 13:42:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E265C5C129A;
-	Mon, 16 Dec 2024 13:40:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C87FC4CEDD;
-	Mon, 16 Dec 2024 13:40:42 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7994AA4100D;
+	Mon, 16 Dec 2024 13:40:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CA10C4CED3;
+	Mon, 16 Dec 2024 13:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734356445;
-	bh=XOrG2kTTSiWGXEWWxX5oOq8e43jR2OPiWvgGkvmdKZg=;
+	s=k20201202; t=1734356523;
+	bh=AIjIVT8Z1JUCLnZL9shfAeCzdUi5cGGZzu9UZ1IzsLQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bwH+JbSUsJ8Kyl5PuJE7Qmy7WN82jL/Naanhmov9OMBPTAKc3148lKt3SutNVIYIS
-	 1U8C8OUXr9N3kyjh9BLIS3XuvYRoM39iAhnYzNT+YAaC5K0zubMMFecEU/1lmnXvea
-	 0HUq5heeMfZXIZfQs9WFHMkt0WL59wniO/EgiXahmu+eHdPUjqWAC3Psy49rgNoh/P
-	 AzHzWJv8F21L/TN889+e+KsNU57xJDvIIedDk8PxTmsdjU/q7XrlSC+GPTnqm2EgUl
-	 RaNw4hyh8k8VShhZH1BarJvwS9xKLYOeYARmgojF6zcbGffWT58deaw9cSkG3dgxEk
-	 PADRQpULeCsNA==
-Message-ID: <997d39ac-b78c-4584-ba86-d114120bad9c@kernel.org>
-Date: Mon, 16 Dec 2024 14:40:39 +0100
+	b=r+Fnvr9igltRevEMwnxIoCy5i/XBJu8tiS5Edev/imaOf5sIu+7bDfgW4Pc+NNsaF
+	 mGl1WfPVNwlXgk1kCykUb2LSnAvLQmeYNEkKWyraIpCXadt2SnLzfVHroEEUPqzEl6
+	 A+xMdawBXxfgfi+Szz7132THNckk+f2TV/MpIckVkd+sfPfafAjl+RMDc6MiVNTrCN
+	 eTFug6YoJ4s8qKzMTKgKt2ACNw1jZ7nFp0OkVqyI5KklePNZqg3pdjxJMwUUKf+Nuf
+	 +R/+wmLHC5zPTpbwKbmrME1hojQlHNafn280wL2m656zjAobVMcIWfRAffwTxZTeZg
+	 hKkFsL+zc/AJQ==
+Message-ID: <0b6a7a7a-ff5a-4897-a283-6bf582dd1d79@kernel.org>
+Date: Mon, 16 Dec 2024 14:41:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 10/12] arm64: dts: rockchip: Fix pmic dcdc-reg10 label
- for Radxa ROCK 5C
+Subject: Re: [PATCH v5 11/12] arm64: dts: rockchip: Fix proparties for pmic
+ regulators for Radxa ROCK 5C
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  dsimic@manjaro.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-11-naoki@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <20241216113052.15696-12-naoki@radxa.com>
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -99,10 +99,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241216113052.15696-11-naoki@radxa.com>
+In-Reply-To: <20241216113052.15696-12-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_054046_780054_C744955E 
-X-CRM114-Status: UNSURE (   5.10  )
+X-CRM114-CacheID: sfid-20241216_054204_365721_1F81899A 
+X-CRM114-Status: UNSURE (   5.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,17 +121,30 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 16/12/2024 12:30, FUKAUMI Naoki wrote:
-> Fix pmic dcdc-reg10 label to match with schematic[1]. No functional
-> change.
+> Fix proparties for dcdc-reg7 and nldo-reg3 regulators to match with
+
+
+
+You have so many typos in almost each commit msg. Here both in subject
+and commit msg.
+
+Run spell check before you send to the lists. Don't expect the reviewers
+to be your computer tools.
+
+Explain what is being fixed here. Why would you prefer to match with
+vendor kernel?
+
+> vendor kernel[1].
 > 
-> [1] https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf
+> [1] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
 > 
 > Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
 
-All your commits have the same flaw. You claim there is no functional
-change, yet there is a real bug to fix.
 
-All such trivial cleanups are not fixes and should be squashed together.
+
+
 Best regards,
 Krzysztof
 
