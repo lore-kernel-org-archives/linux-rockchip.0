@@ -4,60 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1154AE7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 10:16:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A611DE7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 11:26:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5qYfAYeXIM575lqzi7dmZoVjNWOvR0Z5AbjfuUrVUys=; b=xysAHiQ4xzg6o7TfBNTI/nEDq6
-	aUPsUNQaUI14NJd8hTJlsCQq8RKWUiHywNSl52voIMyhyZZ/keZnjhQqbTZZJtr4vUZmy7f8y3SN5
-	p6cAj8OxW9n+Hab2wD/N3WYTc17i0D5CSYg4VlTmvE9KdVLG/rvIZHEEyjkQ8sijDD4UoxVS80a4D
-	VrCo+65eJgFXdNhcnyOn4isOl1Gj3sQqlsyjZ1WoJM+DTkSbl9hqclrAT70djXivPzCYnsDP5tRlZ
-	XuI6e9WR7ICByKUbeUMahoMWy5rJHK60wNChTI0/ir1wGEYdSStVRhlABnVngpRhQMmAxoPF+LidO
-	YAGCxxog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+grUdN4wPpCyTuo7FnSdDWkWHkcKPIzw5K5n3urCUUE=; b=cuXKbkoxNHTOS7
+	dLUce8j0oE93NPG1r0v2LL7+xrAbQooba1g2lkWo8LL31mh4+kHfJ5bz00jVUOqaQA7/OnSDTku7b
+	SbZe7yfBK5MfqCiQZXZr8Q/z9Q6JjgY2JjMuTkb8KWcm/JB7hYIvzjNu2B8PF+N3vPiO0nasKg/3f
+	tJWGn1zjXRefp2THR3OC71wRMTUX3w5vtvciVLdtObaa96cStmCPxGYK0mcVloxaCJlWQpSEyv6X6
+	PWS4kPFMfaUrntFxEPmmqxlFNFWhLY7S41RqMV3tdFw0iZN0OHQmg2u4zZWx4PRmY9P1w7hlbI4fx
+	7n3WaGqFqX1SqLKN88hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN89c-00000009g5c-2ytk;
-	Mon, 16 Dec 2024 10:16:44 +0000
-Received: from mail-m15591.qiye.163.com ([101.71.155.91])
+	id 1tN9FG-00000009omH-0Cev;
+	Mon, 16 Dec 2024 11:26:38 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN88d-00000009fnv-0ONd;
-	Mon, 16 Dec 2024 10:15:44 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5dd55b80;
-	Mon, 16 Dec 2024 18:15:38 +0800 (GMT+08:00)
-Message-ID: <d0f89644-77b9-4bcd-9fab-42a10185c72f@rock-chips.com>
-Date: Mon, 16 Dec 2024 18:15:38 +0800
+	id 1tN9FC-00000009okY-1sRq
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Dec 2024 11:26:36 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5401d3ea5a1so4465608e87.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Dec 2024 03:26:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734348393; x=1734953193; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YThwe23mDMw58S0YzeDlQzDzb/FEzhlX3ugmbXf8RUY=;
+        b=fZo4SQOwo0xWJhD7JssscCw5uiAjfsNRwZHTJF9Jc7QQNHkcSmYZSR0BxDD3u8FvWq
+         HxZwq+QSStwsQS35T3bXbJUClyuR8ae9RSCQQAQiGDDzSP3TEPpZJp40VmwmKcHdS02c
+         O6LPSnvRew1Uuf/wDa4vZcIwvSN5FhB9wzdPpcpPg9C5Fqkz+chgLSJCPB7rdyf6VUui
+         9XcmUe7R/CDOqBIhY5d9simCjNU5TrvzOb5gXmFCr55mv0DiLZYJ858ND+QkEJhnXD6A
+         sHFuyfxavXDAxWN2tWzJ0h9b/pNimmyqfd4D6J/n57+Qcsv2Wgw5J/usCGRpBJjjUvOy
+         90nA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734348393; x=1734953193;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YThwe23mDMw58S0YzeDlQzDzb/FEzhlX3ugmbXf8RUY=;
+        b=VOM6PEuhbCjv8hTIGBtsJjTE4QsbMz04Ccf+OPhAh4xYHngkFqH2QdgU0eiYbMTU70
+         rxn+S1Ajx+oIZxP5D+i5m7+acRvAsiRAoogzwavCfL+Da1onmUSyUj5LZwW7bfxV5d+O
+         td63ov4/mS61wyR9AwKxih51bE6aa1QmisiS65TZDWdkq+8uOFolhDNONglZvMFh4Nsj
+         fcdTOgnpx2tthoOskYGGjjcL7vMu3Fgk2CaYC40KnTNw0K3MPLsiRp0PwFNUpwG3Pi7H
+         Vbv4EFXAoxKizhVbTSM3EVEeX18lRuM53gIbELbXtT8ltrVguHv2JBKfodGITdFTA5ws
+         klUg==
+X-Forwarded-Encrypted: i=1; AJvYcCWFQxzTPSNY/4sdF7F4rR42gNy6QTvbCj/A4ojxEV33HMTAZWPZjW/xuk/Wf7zJCT+sBTDePGcjNORMvYPGjg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzA6YX623h6NPCFLUENPI2QuPpTG1OaWCwVcwDcqnPsKPk7ppre
+	UmE6P7wesW2hRWNTk3/f2HfXNMUJLymW8jnaDUll73g+zTz8iY+Pxc94RAzwy54=
+X-Gm-Gg: ASbGnctAhyDd0rfDsFha4LhaSkGKT/ckOg86h3kOVR+zFF3eeZxmbcqKY5vONQsxZJl
+	m+S89gM6qDjmLKgOn+Y0Jrt9gSczQbufK9nD9VGHVwmcsyMtGCpxtFy4U8F8NE3bYPTzCS5QSRV
+	eHEkdtvdfh7oxNlVbZNVWkCQvA2F/1sYfrn/20xe9SPqVMHJSoC99G01xWJkNqssBHBTfJDApmL
+	CeqMpedYdAA0zqysQQFgZO54DnwW1HGBKkRE2kpQ4FJjMZrRVp6FxhyqhyLyexPwHM4Ie0NarkF
+	1L2OKWKQXE8exOZR0E1sR8L0kVc/hUe2AruK
+X-Google-Smtp-Source: AGHT+IEC5KXhrrXGsT1eFAB/sps15bbUKYwoGeuTdcyybvAtpoczQRZn+Xw2w8c/HQ9Uc8g8NeiFrQ==
+X-Received: by 2002:a05:6512:318b:b0:540:2a6e:3731 with SMTP id 2adb3069b0e04-5408b8f4a05mr4156948e87.5.1734348392766;
+        Mon, 16 Dec 2024 03:26:32 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120ba9e02sm811914e87.100.2024.12.16.03.26.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Dec 2024 03:26:32 -0800 (PST)
+Date: Mon, 16 Dec 2024 13:26:29 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 09/10] drm/vc4: hdmi: stop rereading EDID in
+ get_modes()
+Message-ID: <smaa7geowgyuvqvn6sph63ls5ublpt46zqdvt4yvqcg64scz3q@te52ty7x2soz>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+ <20241206-drm-bridge-hdmi-connector-v6-9-50dc145a9c06@linaro.org>
+ <20241206-caped-proficient-rattlesnake-c882f3@houat>
+ <73xdxb575n4ncmadffkwqzczoewbadq3forpvqt4vp7zfln2nq@o2wmbbbepwgg>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/11] arm64: dts: rockchip: Enable eDP0 display on
- RK3588S EVB1 board
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20241216031225.3746-1-damon.ding@rock-chips.com>
- <20241216031225.3746-11-damon.ding@rock-chips.com>
- <ay2im4itrj3k4p2ksobgsk77b7m4laaxctkfcpffqxj5ttxenm@mzdizmf3mlcb>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <ay2im4itrj3k4p2ksobgsk77b7m4laaxctkfcpffqxj5ttxenm@mzdizmf3mlcb>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh0fHVYYQxlMQh9DS0lMGEhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93cef75dd303a3kunm5dd55b80
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pxw6TCo6LjIREBkNNwNINi8T
-	VjAwCw1VSlVKTEhPSE9PSkhCQkhCVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJS09KNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=TC9dxZs/icAtO8OBygxS0RnpXEPu9qYtxe8eogDOgm3/nfYNDxZL7DAwNK72v5fA1kE1RnEuSUkU6dFhcd5nbWBqLdG0NiliydADY/owu7A8t1jtyNkaGpqpmRY3ifAaE2oMxgKBvn2obvJIaxk6h2pfI+KeVfL0pujMSR5MSyY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=bIZOhBSbBlumClO+5WBpvKWp8vXqGKwf+GCHshUCQ6I=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <73xdxb575n4ncmadffkwqzczoewbadq3forpvqt4vp7zfln2nq@o2wmbbbepwgg>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_021543_354964_4400587A 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20241216_032634_483117_3C9838C0 
+X-CRM114-Status: GOOD (  36.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,75 +114,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 2024/12/16 17:06, Dmitry Baryshkov wrote:
-> On Mon, Dec 16, 2024 at 11:12:24AM +0800, Damon Ding wrote:
->> Add the necessary DT changes to enable eDP0 on RK3588S EVB1 board:
->> - Add edp-panel node
->> - Set pinctrl of pwm12 for backlight
->> - Enable edp0/hdptxphy0/vp2
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v2:
->> - Remove brightness-levels and default-brightness-level properties in
->>    backlight node.
->> - Add the detail DT changes to commit message.
->> ---
->>   .../boot/dts/rockchip/rk3588s-evb1-v10.dts    | 50 +++++++++++++++++++
->>   1 file changed, 50 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->> index bc4077575beb..5c1ea25b6524 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->> @@ -9,6 +9,7 @@
->>   #include <dt-bindings/gpio/gpio.h>
->>   #include <dt-bindings/input/input.h>
->>   #include <dt-bindings/pinctrl/rockchip.h>
->> +#include <dt-bindings/soc/rockchip,vop2.h>
->>   #include <dt-bindings/usb/pd.h>
->>   #include "rk3588s.dtsi"
->>   
->> @@ -120,6 +121,18 @@ backlight: backlight {
->>   		pwms = <&pwm12 0 25000 0>;
->>   	};
->>   
->> +	edp_panel: edp-panel {
->> +		compatible = "lg,lp079qx1-sp0v";
+On Sun, Dec 08, 2024 at 01:06:46PM +0200, Dmitry Baryshkov wrote:
+> On Fri, Dec 06, 2024 at 03:34:52PM +0100, Maxime Ripard wrote:
+> > Hi,
+> > 
+> > On Fri, Dec 06, 2024 at 12:16:03PM +0200, Dmitry Baryshkov wrote:
+> > > The vc4_hdmi_connector_detect_ctx() via vc4_hdmi_handle_hotplug()
+> > > already reads EDID and propagates it to the drm_connector. Stop
+> > > rereading EDID as a part of the .get_modes() callback and just update
+> > > the list of modes. This matches the behaviour of the i915 driver.
+> > > 
+> > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > > ---
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.c | 21 ---------------------
+> > >  1 file changed, 21 deletions(-)
+> > > 
+> > > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > index e5ab42f72f618b90f956482db6c9c8074c1e3bf1..3364ef90968dad3074800f02926300ffceb75c69 100644
+> > > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > @@ -470,31 +470,10 @@ static int vc4_hdmi_connector_detect_ctx(struct drm_connector *connector,
+> > >  
+> > >  static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
+> > >  {
+> > > -	struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
+> > >  	struct vc4_dev *vc4 = to_vc4_dev(connector->dev);
+> > > -	const struct drm_edid *drm_edid;
+> > >  	int ret = 0;
+> > >  
+> > > -	/*
+> > > -	 * NOTE: This function should really take vc4_hdmi->mutex, but doing so
+> > > -	 * results in reentrancy issues since cec_s_phys_addr() might call
+> > > -	 * .adap_enable, which leads to that funtion being called with our mutex
+> > > -	 * held.
+> > > -	 *
+> > > -	 * Concurrency isn't an issue at the moment since we don't share
+> > > -	 * any state with any of the other frameworks so we can ignore
+> > > -	 * the lock for now.
+> > > -	 */
+> > > -
+> > > -	drm_edid = drm_edid_read_ddc(connector, vc4_hdmi->ddc);
+> > > -	drm_edid_connector_update(connector, drm_edid);
+> > > -	cec_s_phys_addr(vc4_hdmi->cec_adap,
+> > > -			connector->display_info.source_physical_address, false);
+> > > -	if (!drm_edid)
+> > > -		return 0;
+> > > -
+> > >  	ret = drm_edid_connector_add_modes(connector);
+> > > -	drm_edid_free(drm_edid);
+> > 
+> > I don't think that works though, for mostly two reasons:
+> > 
+> >  1) We're not sure we'll even have an hotplug interrupt if the system
+> >     boots with the connector plugged in for example.
+> > 
+> >  2) afaik, the get_modes ioctl directly calls get_modes too.
 > 
-> Please use aux-bus and a generic "edp-panel" entry for newer platforms
-> instead of declaring the panel on the platform bus. Placing eDP panels
-> on the platform bus has been deprecated for quite a while.
+> I think both paths use .fill_modes, not get_modes. And fill_modes
+> explicitly calls .detect / .detect_ctx. It would be nice if somebody can
+> verify the change on the acual hw. But as I wrote, i915 driver does
+> exactly the same: the EDID is read / updated in .detect_ctx(), while
+> .get_modes() only performs drm_edid_connector_add_modes().
+> Okay, there is one significant difference which we should probably patch
+> out: the .force() is also implemented to update EDID in the forced case.
+> I should probably do the same for the drivers being handled in this
+> patchset.
 
-I will apply the aux-bus in the next version. :-)
+Maxime, will .force() cover your concerns? I probably fail to see a path
+when .get_mode() is called without calling .detect() / .force() first.
 
-> 
->> +		backlight = <&backlight>;
->> +		power-supply = <&vcc3v3_lcd_edp>;
->> +
->> +		port {
->> +			panel_in_edp: endpoint {
->> +				remote-endpoint = <&edp_out_panel>;
->> +			};
->> +		};
->> +	};
->> +
->>   	combophy_avdd0v85: regulator-combophy-avdd0v85 {
->>   		compatible = "regulator-fixed";
->>   		regulator-name = "combophy_avdd0v85";
-> 
-Best regards,
-Damon
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
