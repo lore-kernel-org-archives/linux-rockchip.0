@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58EB4E77183
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 08:07:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055EAE7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 08:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKcBcJl74imJdCixA6reArbkQQGV9g5bQHi2FB6dAv8=; b=n+nZM9wF+zuUle
-	RIYDoeYxqZP0/ll4xVnjtX7AM+BjEfnKYd6302ImWCtBZwJtihkhFHt+uaK5gD/T2iCRpkPgZGtxC
-	sS9Mcg9zNJ/REFQkeLQrFw+eb6h6DzuNt/9Z+DHaA/MAbJbhOedf80afLElaNmcdVuScWl7cRRDIR
-	wHHQWbN4IWtni03TeZwfjm9y+3dqoAWj9Do0PBOoYISFEcO68E7671NNOSYf8I/3JkHbDRvqbXmJS
-	1Ix1i/67sv6OZ0vytRn4v1jtXVknxdEfXKhO4jemUvhjKErcHYqZg7+pxO5h44hyIwg0VbmKLFedm
-	aF4T6LoNoBX/pqOMpBCg==;
+	List-Owner; bh=n5oMTev4JVQ2rPGRxRi3G6dxCyWQ00zxOXfl3mUU3J4=; b=bcvj23znvqcHqe
+	l2MsoHoAzkzRtiarkVVePUvPfQ0Q1/i/srmtylc7pxPDkpS6lRJAcZk0LbcvgUhRSZKQPozD3/iSY
+	ecVLFnJlOc5Q2ffltCJo274x+J6GZtrg3Eqmgnlna8W/N4NbnB+R9SxkBcrJ/Y4Jw3vutuJP9d7xe
+	KMFtmDOMu5Oywt9icT0YPjH80NfV1gKjtaHPfxs5oef+gRUk/DMaTJRTKmQRtiHQHY89pI6OVlUTt
+	0iD7SUDQ5uZZPkSFHWnecO5v0F/5lR5TgbmFhdg1tU91dkJ/Kbi+kO+zGBbPAr3QB9cFbHlU/W0DB
+	0wHQ6/fTjKShEIOXEvzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN67u-00000009LOk-101T;
-	Mon, 16 Dec 2024 08:06:50 +0000
+	id 1tN685-00000009LSG-3ZT1;
+	Mon, 16 Dec 2024 08:07:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN67s-00000009LNi-0b4j
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 08:06:49 +0000
+	id 1tN683-00000009LQv-1AWL;
+	Mon, 16 Dec 2024 08:07:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=A5bn6knJzryQkL3CzFo6N9Sn/p2Hmwhbnzw0riz5FFg=; b=ECH6F9SKAjLOnyVZlDYnaROKFR
-	dvcSxcJHpddOUv1Ru5GftxVGDdyAm9823UZ66e611HdEez9PdFLdwjmefqym0lIgvzvIhuEde5PBf
-	uDKGEapBIqJJ6cPAuhdE7W5ICZQzj03g/A2Z1nHfncmBGZibEvdG91sI+4+qhlqAoJhg0BoKWsEqo
-	QRHAdUn9FFzsjlXCDHuTOrK5ogk9ImFuTq6jY6ANDD13hBoahgEhsbjcV3E6f+rKXtjHhuNSQCeLB
-	lFOR2a1TNlQbRx/+HB2T1GZMIXbnDNaHEI2FUk6aB76RMYaSzvt6CB7iXAyhJ16GYQ96liAgkV1F1
-	73qcVMQA==;
+	bh=ykA8HuFeO2n9T33KOENfQTgct9xH6AMqa65lfTAavAs=; b=OfUN9qq8QBMIKqzkSTNA6oo+1w
+	nyIpksqusAh8oyE7v1ko9vZ54cD4+HGcKA8JGaESkRP8ra9XuRRQW+H1sFc+Hp3EH7vJJnPrrF8L0
+	1KO872C3v0n5Tcb7NFZSLH72RlzlU9ncumD+pKzRPIH16b2eK0JnOg1Qq+MVrTYfOjIpxr5NRiF6M
+	ERCqI6ro/T9y/+RltH5UURIuw++KlPvzuHv8PxK/xt1FaoRC61Ljc8M197JbMhwwG2z54rp5eTeWC
+	aW/npIjztmeG0Ppmo+Evw9djr8vzmIJWhxNE4S/cv9K9dThR2myxXBuepZirty5G+9k4r1xqJripN
+	N1PE6M/Q==;
 Received: from i5e86190a.versanet.de ([94.134.25.10] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tN67b-0002tK-W4; Mon, 16 Dec 2024 09:06:32 +0100
+	id 1tN67y-0002wV-1N; Mon, 16 Dec 2024 09:06:54 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: mchehab@kernel.org, linux-media@vger.kernel.org,
- ezequiel@vanguardiasur.com.ar, Andy Yan <andyshrk@163.com>
+To: kishon@kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org,
+ Andy Yan <andyshrk@163.com>
 Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  kever.yang@rock-chips.com, sebastian.reichel@collabora.com,
  Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH] media: rockchip: rga: Fix Copyright description
-Date: Mon, 16 Dec 2024 09:06:30 +0100
-Message-ID: <3258928.5fSG56mABF@diego>
-In-Reply-To: <20241215093051.3447711-1-andyshrk@163.com>
-References: <20241215093051.3447711-1-andyshrk@163.com>
+Subject: Re: [PATCH] phy: rockchip: phy-rockchip-typec: Fix Copyright description
+Date: Mon, 16 Dec 2024 09:06:53 +0100
+Message-ID: <1813498.VLH7GnMWUR@diego>
+In-Reply-To: <20241215092441.3447155-1-andyshrk@163.com>
+References: <20241215092441.3447155-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_000648_175260_489CE4AB 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20241216_000659_319730_E709D806 
+X-CRM114-Status: UNSURE (   9.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,7 +75,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 15. Dezember 2024, 10:30:50 CET schrieb Andy Yan:
+Am Sonntag, 15. Dezember 2024, 10:24:40 CET schrieb Andy Yan:
 > From: Andy Yan <andy.yan@rock-chips.com>
 > 
 > The company name has update to Rockchip Electronics Co., Ltd.
