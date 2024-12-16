@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 515D7E77183
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70895E77180
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,39 +12,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4dj9SzgSBVBZUv3oysmygmH6ImJaXGDg5995TLyGig=; b=GyYbG1uFv41oyh
-	KKd06EERRVymvvrm0kQyqbXPtNOLS6d4VPZexX1wyKErShhJNRSM50Qfr/NpQNFLOXORanxJiTFME
-	jEXKZFeT1UJEQnzuEG8pUNTOTS08K/NL8xvX6WkN01LMcCdwiD3EyXKk/VzQmJzrvzIooGS8cBxUy
-	69TWXMcFElI49anMJp0yiyeDNFj2cEBLOM3M1kbt8DKLfBqfMiO8zUzhNWbNGMOOvKprvwtovJ9PA
-	fsn8YhvZYe7ZMcf4h13MLPGk5JJiRf7IpYzC/FoUNIoSL7Bl98+otW26ZjD0WoqRoFYGkSsy0vGeh
-	x5qZy48ACHENRlTLUWFQ==;
+	List-Owner; bh=4wj//7c6l/2dmlJ+SmIm56Pjsd436GkmXVNSyEtlJgg=; b=bm2dYwLMN6UnBU
+	xdv1CX5JqJhm/f1BJB+/jqbC19F4KAv0TfBTn7vgYl1tbjJLe3/EhKJz5mDlTkKwbVUNLFHkKAihB
+	qMhgkuFNH/AHt4SbLG22selYNr8bdtZRogN41krZb0BBBwPACgU9F0SpkcGK2tolj3qLTKiQWC040
+	cmQmSZR+UPSrCbsH4WjqzfCgQ/Jck4h3yWsbBc0oNt70gWHiS9nXpy31NDpfWJBc/NZPw6rh7pn9z
+	g+bIbNUNY5TP7yb8Rb0H0Of52+gDOlzQSEfYhJuHe7M/xPEV/tBSo/2rAsyzsyggKahxU5YwG3ggs
+	i1Wh161oCsvSZsrCWSng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNAO7-00000009zJr-0cAy;
-	Mon, 16 Dec 2024 12:39:51 +0000
+	id 1tNAO6-00000009zJR-1ziX;
+	Mon, 16 Dec 2024 12:39:50 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9Jj-00000009pn6-4AiO
+	id 1tN9Jj-00000009pn4-42ip
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 11:31:19 +0000
+	Mon, 16 Dec 2024 11:31:18 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBUxOO028690;
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBUxOM028690;
 	Mon, 16 Dec 2024 20:31:00 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         dsimic@manjaro.org, devicetree@vger.kernel.org,
         linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v5 03/12] arm64: dts: rockchip: Use a longer PWM period for the fan on Radxa ROCK 5C
-Date: Mon, 16 Dec 2024 11:30:43 +0000
-Message-ID: <20241216113052.15696-4-naoki@radxa.com>
+Subject: [PATCH v5 01/12] arm64: dts: rockchip: Change function name for blue LED for Radxa ROCK 5C
+Date: Mon, 16 Dec 2024 11:30:41 +0000
+Message-ID: <20241216113052.15696-2-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241216113052.15696-1-naoki@radxa.com>
 References: <20241216113052.15696-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_033116_245662_DB6C9818 
-X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-CacheID: sfid-20241216_033116_214547_A577BCFF 
+X-CRM114-Status: UNSURE (   9.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -62,44 +62,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The fan on Radxa ROCK 5C is driven via an AO3416 MOSFET, which has a
-total switch-on time of 0,6us and a total switch-off time of 6us [1],
-meaning that the current PWM period of just 10us is too short for
-fine-grained fan speed control. Increase the PWM period to 60us, so
-that the switch-on and switch-off time of the MOSFET fall within a
-more reasonable ~10% of the full period, thus making lower PWM duty
-cycles meaningful.
+Since Radxa ROCK 5C is updated version of Radxa ROCK 5A, everything
+should be compatible as much as possible.
 
-[1] https://www.aosmd.com/pdfs/datasheet/AO3416.pdf
+Change function for blue LED from HEARTBEAT to STATUS.
 
 Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
-Changes in v5:
-- Reword commit message (Alexey Charkov)
-Changes in v4:
-- none
-Changes in v3:
-- none
-Changes in v2:
-- reword commit message
+Changes in v5
+- Reword commit message
+Changes in v4
+- new
 ---
  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 630f026d856c..85589d1a6d3b 100644
+index 9b14d5383cdc..23e9b447b6f0 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -73,7 +73,7 @@ pwm-fan {
- 		#cooling-cells = <2>;
- 		cooling-levels = <0 64 128 192 255>;
- 		fan-supply = <&vcc_5v0>;
--		pwms = <&pwm3 0 10000 0>;
-+		pwms = <&pwm3 0 60000 0>;
- 	};
- 
- 	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
+@@ -62,7 +62,7 @@ led-0 {
+ 		led-1 {
+ 			color = <LED_COLOR_ID_BLUE>;
+ 			default-state = "on";
+-			function = LED_FUNCTION_HEARTBEAT;
++			function = LED_FUNCTION_STATUS;
+ 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
 -- 
 2.43.0
 
