@@ -4,45 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E52E77184
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5CDE7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:01:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0+RRsllbScjMDM+aOCVt2x+5fSaAxx3THDYF8SKzrSA=; b=zMiQz8cLlAVWby
-	aRPaxs/A/LUXgZV97ecTBRn0GZx1azVdBH/LfGvyK/a/xzc+QCerMn428WnDb1wfQqG7R2R4B11KT
-	d6RmyV2yi/15YNn6db7IdArUAKSc/b0trLVPJRceC2yjYCVJknUXPQ4UfJGiOjVZkq64uKEpVUEgm
-	39mdv0HT7GpWXwP2mglhM67avjf0Q/9IZPkz1YENs7TWa97zJtK5js6PUpFXaM57oNMwZqgR8uVSk
-	cizcPAP0ZGkNk06s9+a8UEK2Mb3VOARx6QiZFfTNU3A4lhSpSyetWQKZMw/cGU623cmKKMhQ6pHVG
-	3+3oUn2b8HZ8yOI6VgyQ==;
+	List-Owner; bh=FjjJnwWQUMJyjI9WO13M5UPog/zEfmNQhUoI5StKfkk=; b=A3a5o5RJ9SAssj
+	fYa49mtISrc/lxCvBtRtIkxUN+LVz4iO/jp8nraIbU8YvRhnxZ9mEEFO3c3SHpCONqvxADMUj5Xf3
+	wksAzSlgEoOUyNw6udnk5zCHM9XYQaj0L4cG1ZBEKbllnPww9iJAQ9NbuHCLILTGRh9EetsGM+DvN
+	jZHJ36If8Ox0KgwtqwSrLd38DGxgy3r/eKbQU3TJK3IDdPcp1BCrQfAne2+azpYf7nILJ7S1rz18P
+	u+MSXHnnVlby1AE2JyfUu7ROM+3T8egt+u8mxtCtgmGFXQKiLMs78Qb7fXMI+gK63iDjwCy9GL1zV
+	Z7gsC+rsVxebNiofPE2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9mo-00000009uTC-2D6C;
+	id 1tN9mo-00000009uSt-0Kvl;
 	Mon, 16 Dec 2024 12:01:18 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9mF-00000009uMN-1vnL
+	id 1tN9ju-00000009u4A-2kSo
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 12:00:44 +0000
+	Mon, 16 Dec 2024 11:58:20 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGC0bTj028820;
-	Mon, 16 Dec 2024 21:00:37 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBw5Pi028795;
+	Mon, 16 Dec 2024 20:58:05 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        dsimic@manjaro.org, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3] arm64: dts: rockchip: Use PWM to drive blue LED on ROCK 5A/5C
-Date: Mon, 16 Dec 2024 12:00:30 +0000
-Message-ID: <20241216120030.16173-1-naoki@radxa.com>
+Subject: [PATCH v3] arm64: dts: rockchip: Add rfkill for wireless modules for Radxa ROCK 5A
+Date: Mon, 16 Dec 2024 11:57:59 +0000
+Message-ID: <20241216115759.16127-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_040043_718832_21ACA159 
-X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-CacheID: sfid-20241216_035818_910744_E62520FD 
+X-CRM114-Status: UNSURE (   7.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -55,18 +52,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, cfsworks@gmail.com, sebastian.reichel@collabora.com, kever.yang@rock-chips.com, alchark@gmail.com, jbx6244@gmail.com, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, dsimic@manjaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pin connected to the blue LED, GPIO3_D5, is not only a GPIO but
-also has a PWM function. Using PWM, the user can change the brightness
-of the LED.
+Radxa ROCK 5A has a M.2 E key slot which can be used for wireless
+modules. There are two enable/disable switch pins, one for Wi-Fi,
+another for Bluetooth. These pins are connected to GPIO.
 
-Convert blue LED from "gpio-leds" to "pwm-leds" and enable related PWM.
+Add rfkill and rfkill-bt to control these pins via GPIO.
 
-Acked-by: Dragan Simic <dsimic@manjaro.org>
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
 this patch depends on [1] which depends on [2].
@@ -74,87 +71,37 @@ this patch depends on [1] which depends on [2].
 [1] https://patchwork.kernel.org/project/linux-rockchip/cover/20241216113052.15696-1-naoki@radxa.com/
 [2] https://patchwork.kernel.org/project/linux-rockchip/cover/20241216114547.15892-1-naoki@radxa.com/
 ---
-Changes in v3:
-- Reword subject
-Changes in v2:
+Changes in v3
 - Reword commit message
+Changes in v2
+- put rfkill nodes correct place
 ---
- .../boot/dts/rockchip/rk3588s-rock-5.dtsi     | 34 ++++++++++++-------
- 1 file changed, 22 insertions(+), 12 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-index d0b9513d56a7..d72314d917da 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5.dtsi
-@@ -46,7 +46,7 @@ hdmi0_con_in: endpoint {
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&led_pins>;
-+		pinctrl-0 = <&led_pin>;
- 
- 		led-0 {
- 			color = <LED_COLOR_ID_GREEN>;
-@@ -54,14 +54,6 @@ led-0 {
- 			function = LED_FUNCTION_POWER;
- 			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
- 		};
--
--		led-1 {
--			color = <LED_COLOR_ID_BLUE>;
--			default-state = "on";
--			function = LED_FUNCTION_STATUS;
--			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "heartbeat";
--		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 095e1f5f7786..278d372e9b16 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -19,4 +19,18 @@ regulator-vbus-typec {
+ 		regulator-min-microvolt = <12000000>;
+ 		regulator-max-microvolt = <12000000>;
  	};
- 
- 	fan: pwm-fan {
-@@ -72,6 +64,19 @@ fan: pwm-fan {
- 		pwms = <&pwm3 0 60000 0>;
- 	};
- 
-+	pwm-leds {
-+		compatible = "pwm-leds";
 +
-+		led-1 {
-+			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
-+			function = LED_FUNCTION_STATUS;
-+			linux,default-trigger = "heartbeat";
-+			pwms = <&pwm11 0 1000000 0>;
-+			max-brightness = <255>;
-+		};
++	rfkill {
++		compatible = "rfkill-gpio";
++		label = "rfkill-m2-wlan";
++		radio-type = "wlan";
++		shutdown-gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
 +	};
 +
- 	vbus_typec: regulator-vbus-typec {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vbus_typec";
-@@ -422,9 +427,8 @@ &pcie2x1l2 {
- 
- &pinctrl {
- 	leds {
--		led_pins: led-pins {
--			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
--					<3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		led_pin: led-pin {
-+			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-@@ -467,6 +471,12 @@ &pwm3 {
- 	status = "okay";
++	rfkill-bt {
++		compatible = "rfkill-gpio";
++		label = "rfkill-m2-bt";
++		radio-type = "bluetooth";
++		shutdown-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
++	};
  };
- 
-+&pwm11 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm11m3_pins>;
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcca_1v8_s0>;
- 	status = "okay";
 -- 
 2.43.0
 
