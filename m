@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936B7E7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCD2E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:38:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AhEpWqc2EfJFlNnc++4UiMfRZGRSWqpMSqWQ6DDRYmM=; b=vUB4mu8M6eboPw
-	E5Fm4z65m5eknA/iiyv5sILN+Fj4bPjoP0Hrj05uBCSFyG36yOUhiXpJfDocdmCojOkX5VexM3O84
-	bO77xG+etjGBvQppMF6zZEkZPbycw5nEQfKDd8jnxxUAqMsgE0HjDQsb0TwT0I/xXcBV6AQEXpp+R
-	C5tu8XFTHDturyaN7maMJMJpTC0xus4uRY0YHtcVHXC65Nh4NgvNQrtcHIyTQS//xtZv8eYJlJIdq
-	el/1AuFBG4zIRzAtAk2rZp5xjukrqynnw2C80Sa7xZ8OyIB6xuDY843D1kowEPQjHqsKA9rdPLy6I
-	/Y7plS40TMmYHCI7540w==;
+	List-Owner; bh=4yi2YKDQXDYBKDKEOu+fMViq59rWMx+GKcWyENSvcU8=; b=Av/IjUxesRIgDu
+	mcsK+jx5Ga8XLJHXiFRSx0S6zPHqzxuGsbEonmJjk9e4HZ2hlnLhHMjFUOmduBnYsVCwzVWWAzzcd
+	So0BFVKQskJi446eggTaVwLlgh7PQWj3oeLw19GYqrAwnUQy911A2cYRG7W1tfYxLIeSOEWyN1RrX
+	PFi34wVk37EIkdKludybYvqcjDAnyOBP7DAt4FFh7s4t3LiHoLgkYckC40BF45lP4gsgrf0EmK5wA
+	cfweDFcaFh3mHzvmPDAexw43UBFIAvt0sJRP8+oxfKjdSKV5YJmrUWuryYIVvaGo85iX/g3m/U9X7
+	szYW3fc1p7i+U9uUFtAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBIB-0000000A7TK-00kT;
-	Mon, 16 Dec 2024 13:37:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tNBJF-0000000A7Z4-1iqe;
+	Mon, 16 Dec 2024 13:38:53 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBI8-0000000A7T1-3xYR
+	id 1tNBJC-0000000A7Yf-3kSr
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 13:37:46 +0000
+	Mon, 16 Dec 2024 13:38:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6806AA4101F;
-	Mon, 16 Dec 2024 13:35:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49D39C4CED0;
-	Mon, 16 Dec 2024 13:37:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3771B5C56E1;
+	Mon, 16 Dec 2024 13:38:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B8C2C4CED0;
+	Mon, 16 Dec 2024 13:38:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734356263;
-	bh=3gGxxYa3BCzfmWZpUeYHSaI6w6/7DZ4pBSc3Gmk+/hc=;
+	s=k20201202; t=1734356330;
+	bh=xKdTuvDsARS7GIQE5TIyEYv7eWDWhMRR3Zr+MQ1WGGA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=otZReqdlceVYyxM7bGwZXig0ENqbNASAK/Z0oiyDyEzA7uQaopmOuPcb/UTvhUXwc
-	 EVgosX7pPygF3VoMtFtoL4tadzYt7jR+tTDbL4dSfdgiLUFN4qhR/cTqnFPna38Vcx
-	 EelSp/U8+/OAp3KwoZb9GeGJePPbKsSptcj6TpJv0CTcstyerRyWb1hVMgZ3mM8ad9
-	 AjI5JqZq2ZZGjQjFTIqRXoq3CG2MHjKVgJwtIq84T5WDkbWmKRTwN8XFCYJWqa9Pef
-	 OZyQu2LWJWKFdOPpgC3e/vpgUr6+aP29nQoHa4o/Drf3xAm13VXECQgx4/TauvUIXE
-	 DdnRc2GeQyZDA==
-Message-ID: <0b0efc1d-2340-4ec5-a46e-62a6cebbc2b6@kernel.org>
-Date: Mon, 16 Dec 2024 14:37:37 +0100
+	b=CwObR6UEjKfHiowDM5Nrv9G1luj8sAw6DeKy2YGmcBseWskbTIElXtSDKh5+t1ZxB
+	 85zCYC+J4kzcEYlbnyGUWYb6N8hPosMLEAwM/SMfB3xAAMShaaW+di2Tdad2PhulYb
+	 OOVrKE3URo4c1Q58s1neATBJb0EcaR2PAWGQ5S9EKcwa6P6oXYrpPlukpwgYdwnf6/
+	 RJ/SddOQUmDzbtyNdU2Nsa8ADL1AavALHFyzVDcbDHDQJW8nhNg2U0hEoWfadOuuUn
+	 IIhP6f5ueN3bByblLCQ7du8R/othvM66NuumnfxvFG84iXjkfxWm5hX/ss5W1/rOyZ
+	 6GTQDX3e6hjkg==
+Message-ID: <f525d875-734b-4c41-95ba-be07b11f8e1c@kernel.org>
+Date: Mon, 16 Dec 2024 14:38:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 02/12] arm64: dts: rockchip: Change node name for
- pwm-fan for Radxa ROCK 5C
+Subject: Re: [PATCH v5 04/12] arm64: dts: rockchip: Rename regulator for
+ pcie2x1l2 for Radxa ROCK 5C
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  dsimic@manjaro.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-3-naoki@radxa.com>
+ <20241216113052.15696-5-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,11 +99,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241216113052.15696-3-naoki@radxa.com>
+In-Reply-To: <20241216113052.15696-5-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_053745_109858_E60F8833 
-X-CRM114-Status: UNSURE (   3.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241216_053851_019565_5B3F651B 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,9 +120,42 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 16/12/2024 12:30, FUKAUMI Naoki wrote:
-> Use more common name "pwm-fan" for pwm-fan node. No functinal change.
+> Use consistent name with other regulators. No functional change.
+> 
+> Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+> Changes in v5:
+> - Reword commit message
+> Changes in v4:
+> - reword commit message
+> Changes in v3:
+> - none
+> Changes in v2:
+> - new
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index 85589d1a6d3b..61d75ab503b2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -76,13 +76,13 @@ pwm-fan {
+>  		pwms = <&pwm3 0 60000 0>;
+>  	};
+>  
+> -	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
+> +	vcc3v3_pcie2x1l2: regulator-vcc3v3_pcie2x1l2 {
 
-No, generic name is fan.
+No, neither explained, nor correct. See DTS coding style.
+
+Please use name for all fixed regulators which matches current format
+recommendation: 'regulator-[0-9]v[0-9]'
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml?h=v6.11-rc1#n46
+
+
 
 Best regards,
 Krzysztof
