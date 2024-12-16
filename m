@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCD2E7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F10E4E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:40:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4yi2YKDQXDYBKDKEOu+fMViq59rWMx+GKcWyENSvcU8=; b=Av/IjUxesRIgDu
-	mcsK+jx5Ga8XLJHXiFRSx0S6zPHqzxuGsbEonmJjk9e4HZ2hlnLhHMjFUOmduBnYsVCwzVWWAzzcd
-	So0BFVKQskJi446eggTaVwLlgh7PQWj3oeLw19GYqrAwnUQy911A2cYRG7W1tfYxLIeSOEWyN1RrX
-	PFi34wVk37EIkdKludybYvqcjDAnyOBP7DAt4FFh7s4t3LiHoLgkYckC40BF45lP4gsgrf0EmK5wA
-	cfweDFcaFh3mHzvmPDAexw43UBFIAvt0sJRP8+oxfKjdSKV5YJmrUWuryYIVvaGo85iX/g3m/U9X7
-	szYW3fc1p7i+U9uUFtAg==;
+	List-Owner; bh=E/9dMp0WZL1sNAQ/gD0WhGP0364zTFLbtiIwfzo+RXc=; b=i2vQbuQXp16kzJ
+	JRsKiT+wlzRdX+KJoSE8mj6qJ/YKb5r6YKeRwDCsmdRjDktHr6oma2C1SoB35l/SxxwLXEcqHy1Fc
+	Oai21WOS68FFywa/ZRAdVaPKxt8Xhc8mZGj5hZwOrtzkNiYKwDoBHdF/byR7Q9sc3nDFhow+ma5JG
+	lvCefq0Z4Tc2mB51bhnKN6HoWBnrTOtsVoE09DXkvlp9nPw8Xy/vnmzoJXd4CYOG2e2chElizaN3R
+	EQoCT918AKP55O/tUn9oNriFLUL9KQilpK6XyZyIe792JCTaubQSEH1v1phTvTrUMYcDnEyMUup3o
+	ZKldQIPQtyL7A4jRPe6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBJF-0000000A7Z4-1iqe;
-	Mon, 16 Dec 2024 13:38:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tNBL7-0000000A7rS-10MR;
+	Mon, 16 Dec 2024 13:40:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNBJC-0000000A7Yf-3kSr
+	id 1tNBL4-0000000A7qL-2iuS
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 13:38:52 +0000
+	Mon, 16 Dec 2024 13:40:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3771B5C56E1;
-	Mon, 16 Dec 2024 13:38:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B8C2C4CED0;
-	Mon, 16 Dec 2024 13:38:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E265C5C129A;
+	Mon, 16 Dec 2024 13:40:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C87FC4CEDD;
+	Mon, 16 Dec 2024 13:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734356330;
-	bh=xKdTuvDsARS7GIQE5TIyEYv7eWDWhMRR3Zr+MQ1WGGA=;
+	s=k20201202; t=1734356445;
+	bh=XOrG2kTTSiWGXEWWxX5oOq8e43jR2OPiWvgGkvmdKZg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CwObR6UEjKfHiowDM5Nrv9G1luj8sAw6DeKy2YGmcBseWskbTIElXtSDKh5+t1ZxB
-	 85zCYC+J4kzcEYlbnyGUWYb6N8hPosMLEAwM/SMfB3xAAMShaaW+di2Tdad2PhulYb
-	 OOVrKE3URo4c1Q58s1neATBJb0EcaR2PAWGQ5S9EKcwa6P6oXYrpPlukpwgYdwnf6/
-	 RJ/SddOQUmDzbtyNdU2Nsa8ADL1AavALHFyzVDcbDHDQJW8nhNg2U0hEoWfadOuuUn
-	 IIhP6f5ueN3bByblLCQ7du8R/othvM66NuumnfxvFG84iXjkfxWm5hX/ss5W1/rOyZ
-	 6GTQDX3e6hjkg==
-Message-ID: <f525d875-734b-4c41-95ba-be07b11f8e1c@kernel.org>
-Date: Mon, 16 Dec 2024 14:38:44 +0100
+	b=bwH+JbSUsJ8Kyl5PuJE7Qmy7WN82jL/Naanhmov9OMBPTAKc3148lKt3SutNVIYIS
+	 1U8C8OUXr9N3kyjh9BLIS3XuvYRoM39iAhnYzNT+YAaC5K0zubMMFecEU/1lmnXvea
+	 0HUq5heeMfZXIZfQs9WFHMkt0WL59wniO/EgiXahmu+eHdPUjqWAC3Psy49rgNoh/P
+	 AzHzWJv8F21L/TN889+e+KsNU57xJDvIIedDk8PxTmsdjU/q7XrlSC+GPTnqm2EgUl
+	 RaNw4hyh8k8VShhZH1BarJvwS9xKLYOeYARmgojF6zcbGffWT58deaw9cSkG3dgxEk
+	 PADRQpULeCsNA==
+Message-ID: <997d39ac-b78c-4584-ba86-d114120bad9c@kernel.org>
+Date: Mon, 16 Dec 2024 14:40:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 04/12] arm64: dts: rockchip: Rename regulator for
- pcie2x1l2 for Radxa ROCK 5C
+Subject: Re: [PATCH v5 10/12] arm64: dts: rockchip: Fix pmic dcdc-reg10 label
+ for Radxa ROCK 5C
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  dsimic@manjaro.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-5-naoki@radxa.com>
+ <20241216113052.15696-11-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,10 +99,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241216113052.15696-5-naoki@radxa.com>
+In-Reply-To: <20241216113052.15696-11-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_053851_019565_5B3F651B 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20241216_054046_780054_C744955E 
+X-CRM114-Status: UNSURE (   5.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,43 +121,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 16/12/2024 12:30, FUKAUMI Naoki wrote:
-> Use consistent name with other regulators. No functional change.
+> Fix pmic dcdc-reg10 label to match with schematic[1]. No functional
+> change.
+> 
+> [1] https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf
 > 
 > Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> Changes in v5:
-> - Reword commit message
-> Changes in v4:
-> - reword commit message
-> Changes in v3:
-> - none
-> Changes in v2:
-> - new
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> index 85589d1a6d3b..61d75ab503b2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> @@ -76,13 +76,13 @@ pwm-fan {
->  		pwms = <&pwm3 0 60000 0>;
->  	};
->  
-> -	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
-> +	vcc3v3_pcie2x1l2: regulator-vcc3v3_pcie2x1l2 {
 
-No, neither explained, nor correct. See DTS coding style.
+All your commits have the same flaw. You claim there is no functional
+change, yet there is a real bug to fix.
 
-Please use name for all fixed regulators which matches current format
-recommendation: 'regulator-[0-9]v[0-9]'
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml?h=v6.11-rc1#n46
-
-
-
+All such trivial cleanups are not fixes and should be squashed together.
 Best regards,
 Krzysztof
 
