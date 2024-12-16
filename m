@@ -4,60 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF0E2E7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B86F0E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 13:07:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sn6PJNFImqy2NsVUp8qNfqCv78VcXG9GHj8ERgpmwGU=; b=0n5KdqCIz2PAyKlwkQpTyTFs6o
-	/pYwm+eP1ScgZmkv60NhHw+p+7xZKYl5+1VM/NmD0dh5+zPdGBxbxDNGIXSBXgwibFF/YyqZjRVV9
-	UDE0ppAioixXv1NlwRnDAqGkYj4lLO/mAu/+ur4cOX8l+HIGlK5G9LBD0NX/TpNuNgXymm/Nx5oVQ
-	13Ra39AIiU97bWDJQdpAjocI2Q4dzXzn4+Md8Ml6/AZaTwiCcqcrc1uuqqOUDyVF4TZjT0ZydyiuV
-	sPgepQB7m8s3+IrZQ3iR9GzDoy+B9qiv2A3pT5Iv1vhvOd0lvajBKGqAubS5r58hDBKDKxiZGVZ2i
-	EFsYadvQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ky9NXV2/csHxUbiFVaBowW2IqkdWgb/X7Wv5shs6IGo=; b=2o5nnFLPeuyKqS
+	3DlJX+N8s3qIK051I3pkxOmpk+WnE73ZjJYbp92Ts1ouBGBbvy8h/a49pFQ8m4HKUYZ3mjgaWH74p
+	E4czE9P2+rgy93ECRjbkuix7VJn4p1B/qMnD3c09xp9FpLWPeTRWscQ+taBV3ST+XHSDPNrA6UChL
+	rABcaZtkraoRgD+0FXmYkLhMpTwe0FwX5KafD6cQjASfgxDGail8UGm2M3QWItmjTh4+IlGxdZe3H
+	9KVqeTdEyJTE0n1bO+mxayPAajInbN84+cs+XoJzzJ5eMbzamK+EMcsObmQBsXKPwWGyGfJmSuqkK
+	0YJc8RDOQc6/0sDXRzdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNASA-00000009zwm-0vNm;
-	Mon, 16 Dec 2024 12:44:02 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tNAot-0000000A3C4-1yAD;
+	Mon, 16 Dec 2024 13:07:31 +0000
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNAS7-00000009zwB-3KIe
+	id 1tNAnk-0000000A2pz-3c2N
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 12:44:01 +0000
+	Mon, 16 Dec 2024 13:06:22 +0000
+Received: by mail-qt1-x82d.google.com with SMTP id d75a77b69052e-4679eacf2c5so39326221cf.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Dec 2024 05:06:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1734354379; x=1734959179; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=wfiIlfNISL7LxmEo4PkSBvNVf6zI03QBaUXQpOsHzBk=;
+        b=eiuUlfLEC3PO+uptPhYEn5cpWnv1jLk7PJaMa40ZPM+/AX9NJVKDmDrzJf8AGHjRDn
+         l3LXD0nZBC8ytnSfKh4Gb2I48jWbk8hPE67LK8dF/UsmCrpxMUW38uJJA76O5tL1z1cZ
+         FNba3TeJE33AFyXWbgYeXx4Qy+Ji3XZFLoVd6+VTMMLv/qMAAzGC0g0odBLhD3RBws3G
+         enSCsThvnKkMlQkkAKfF5eQ+h38InKQ9uO4U7BSXoJctQDwIYRnzM/VwnDEtcu4toqlW
+         3tRCav/KKZOXVZ4pIWp7n0SQfqS0zjkLRom2gc7J5rPtEx/J0p/i509L/Wzdo+oCJop5
+         ahVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734354379; x=1734959179;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wfiIlfNISL7LxmEo4PkSBvNVf6zI03QBaUXQpOsHzBk=;
+        b=ca8hDsyti8l9aa7Znfs1IXXcOladVLj7PUTPOP21XpYVyv/dsZiln2GHty9l+2AJMn
+         aWZvziC68sjIEqicrAeyApgrrDmubCONsws6MgzMLJamck7Z+PNQ+dovhg7Ze6jhDile
+         yFnYFdJC5BI2TWqNauyTL8plxhff7YqEF/4H86It+fFDowYLDstudti2giHUqUh0qW9Q
+         MTo49vyK2GtIHZWst1KMtDKc6ZYATnz7OPIKaiO68MnAaG0x5gNFVSkq+MImmooBKzV5
+         OFEnRzrfaBBSlFi5p+65tjSdcreEzW2ndLCTVg2qnijOFXST6UemKl8+symSxgCFQABG
+         ckew==
+X-Forwarded-Encrypted: i=1; AJvYcCX4v60sU1W/hEEd0adQ0UBFupgcjWabwasvg54q/FQn6nOggP7/pDbfJyHDJhgAwHdCKcEuJFSCx7IK4mimHQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+T/WDCjAtaN2gCYAbQqv7xG8+3fNmmA1qOblBPPNZcJoESA0P
+	EtQxkqmgLQc7A/+otWtnAc2RJbrJql5wFDXVnYQbyzKKiGOTVtGa3w0IA2VienqY2iCjGREzs/j
+	Qc2tg0BRteoqYAev/89he3xRGRM6Tzm7U8RZNzQ==
+X-Gm-Gg: ASbGnctrmQm6nJjiDUl3Tj7bb3w0vw3QSyAX88rGFqXPkOH47w2xJ/XmsCU2/nWl+ur
+	FFbuUAWAP60qvGHR16hBq/SMWeWD/XdthiWWq
+X-Google-Smtp-Source: AGHT+IE9Cnqk1RFA303SJ/sEM1uxY2IdUkOrI2lN1tMljvUXQswUAevS43+NhsG6LahpLoL3T6y4Oj0/rJaBAzD6y9Y=
+X-Received: by 2002:a05:622a:454:b0:467:45b7:c498 with SMTP id
+ d75a77b69052e-467a577b4c5mr198761341cf.20.1734354378718; Mon, 16 Dec 2024
+ 05:06:18 -0800 (PST)
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1734353037;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=tgCIti+ssc1Xg36yK4ivJkFfNVpSpn+E3Ta5XD/CT6M=;
-	b=dXEzbnqSTbfhtyM33PrBBU884XkDCa6DXY+aj7MWnk5usglhL3BAuEv30dKMNFqbBZStwO
-	PS4OaUZdwDpjXBFFPZ54GBiHa8OvN35aLiJwvu/5gtrQpQ6S2v1HOFweDbP99dOFzENgXY
-	d7ij5KfMNh19mShGJtFIy8gMSQ6POO9mShnxo0rtBiJCzm22sb9o5qpHZ38/4xsDPkLw9p
-	Zsne+K3V4jGckbz9kJZGTw1scAobs2mKyZ7OUiDYVftSAMeP2UhkfvD2EaVFtaUlo9CiHg
-	t6QZxl0Ye8chmJF5H8afbpcUHMN22PWCdoEQ/lBC2s13DUjk5pnfUJbSVCxfZg==
-Date: Mon, 16 Dec 2024 13:43:57 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 03/12] arm64: dts: rockchip: Use a longer PWM period
- for the fan on Radxa ROCK 5C
-In-Reply-To: <20241216113052.15696-4-naoki@radxa.com>
-References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-4-naoki@radxa.com>
-Message-ID: <616cd7b81d5469de7bd5a84d2d23387f@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+References: <20241214081719.3330518-1-andyshrk@163.com> <20241214081719.3330518-9-andyshrk@163.com>
+In-Reply-To: <20241214081719.3330518-9-andyshrk@163.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Mon, 16 Dec 2024 13:06:07 +0000
+Message-ID: <CAPj87rOjqZdyht2y8MK7gVyk_eqEzk1Sy0DcxFtQRuhrHQ_oxA@mail.gmail.com>
+Subject: Re: [PATCH v6 08/16] drm/rockchip: vop2: Support 32x8 superblock afbc
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
+	s.hauer@pengutronix.de, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	derek.foreman@collabora.com, detlev.casanova@collabora.com, 
+	Andy Yan <andy.yan@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_044359_987118_4E198DC5 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20241216_050621_050370_2BC1C048 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,56 +91,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-12-16 12:30, FUKAUMI Naoki wrote:
-> The fan on Radxa ROCK 5C is driven via an AO3416 MOSFET, which has a
-> total switch-on time of 0,6us and a total switch-off time of 6us [1],
-> meaning that the current PWM period of just 10us is too short for
-> fine-grained fan speed control. Increase the PWM period to 60us, so
-> that the switch-on and switch-off time of the MOSFET fall within a
-> more reasonable ~10% of the full period, thus making lower PWM duty
-> cycles meaningful.
-> 
-> [1] https://www.aosmd.com/pdfs/datasheet/AO3416.pdf
-> 
-> Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+Hi Andy,
 
-Looking good to me.  Please, feel free to include:
+On Sat, 14 Dec 2024 at 08:18, Andy Yan <andyshrk@163.com> wrote:
+> This is the only afbc format supported by the upcoming
+> VOP for rk3576.
+>
+> Add support for it.
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+Out of interest, how was this tested? There is no 32x8 modifier in the
+format list in format_modifiers_afbc[], so it seems like it shouldn't
+be possible to get a 32x8 buffer on a plane at all.
 
-> ---
-> Changes in v5:
-> - Reword commit message (Alexey Charkov)
-> Changes in v4:
-> - none
-> Changes in v3:
-> - none
-> Changes in v2:
-> - reword commit message
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> index 630f026d856c..85589d1a6d3b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> @@ -73,7 +73,7 @@ pwm-fan {
->  		#cooling-cells = <2>;
->  		cooling-levels = <0 64 128 192 255>;
->  		fan-supply = <&vcc_5v0>;
-> -		pwms = <&pwm3 0 10000 0>;
-> +		pwms = <&pwm3 0 60000 0>;
->  	};
-> 
->  	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
+You can use the drm_info utility from
+https://gitlab.freedesktop.org/emersion/drm_info to validate that the
+list of supported formats/modifiers for each plane matches your
+expectation.
+
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
