@@ -4,42 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5CDE7717F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8B6E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FjjJnwWQUMJyjI9WO13M5UPog/zEfmNQhUoI5StKfkk=; b=A3a5o5RJ9SAssj
-	fYa49mtISrc/lxCvBtRtIkxUN+LVz4iO/jp8nraIbU8YvRhnxZ9mEEFO3c3SHpCONqvxADMUj5Xf3
-	wksAzSlgEoOUyNw6udnk5zCHM9XYQaj0L4cG1ZBEKbllnPww9iJAQ9NbuHCLILTGRh9EetsGM+DvN
-	jZHJ36If8Ox0KgwtqwSrLd38DGxgy3r/eKbQU3TJK3IDdPcp1BCrQfAne2+azpYf7nILJ7S1rz18P
-	u+MSXHnnVlby1AE2JyfUu7ROM+3T8egt+u8mxtCtgmGFXQKiLMs78Qb7fXMI+gK63iDjwCy9GL1zV
-	Z7gsC+rsVxebNiofPE2g==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z/fvPEcK2do3BhqsCjf00pXp5rpnkhKZthaKd+9nyS8=; b=KmKsbcZNIwyCAm
+	gtHf3WvmJLYFAnnOBEaxg/IHxN0J5IWGd+FJW+8e6cEn1wCv+M7Nc9HWYAIu1oqFai93xgXJpMjAF
+	pwQNMXP+IO57UoW8AnV7sWhdGzF2yo9+wHunbJRXW/DzR+Z2tlnkS+8z69LnpurSlMKN0/nuKQNBU
+	BJRCsX0svwyVN5QHEUrpW3H8Ln5j8GA6SCJKTpUDhIzpipMmVGfN/UOt+m3ezRRa9Cbm3XnmvVsya
+	IFmoBpwPCBc+HIPEoVoElIbAn1PBL6r1cs5KzWS6OhM0oKkSAajtmLO1GjCLngqaoRHBkbWaiWV0d
+	oPDvObQM18ulddOZiE+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9mo-00000009uSt-0Kvl;
-	Mon, 16 Dec 2024 12:01:18 +0000
+	id 1tNAO5-00000009zIx-3OCG;
+	Mon, 16 Dec 2024 12:39:49 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9ju-00000009u4A-2kSo
+	id 1tN9Jj-00000009pn0-3g3R
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 11:58:20 +0000
+	Mon, 16 Dec 2024 11:31:18 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBw5Pi028795;
-	Mon, 16 Dec 2024 20:58:05 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBUxON028690;
+	Mon, 16 Dec 2024 20:31:00 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
-Subject: [PATCH v3] arm64: dts: rockchip: Add rfkill for wireless modules for Radxa ROCK 5A
-Date: Mon, 16 Dec 2024 11:57:59 +0000
-Message-ID: <20241216115759.16127-1-naoki@radxa.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        dsimic@manjaro.org, devicetree@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v5 02/12] arm64: dts: rockchip: Change node name for pwm-fan for Radxa ROCK 5C
+Date: Mon, 16 Dec 2024 11:30:42 +0000
+Message-ID: <20241216113052.15696-3-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241216113052.15696-1-naoki@radxa.com>
+References: <20241216113052.15696-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_035818_910744_E62520FD 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20241216_033116_134263_7FAC43F8 
+X-CRM114-Status: UNSURE (   7.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -52,56 +57,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, cfsworks@gmail.com, sebastian.reichel@collabora.com, kever.yang@rock-chips.com, alchark@gmail.com, jbx6244@gmail.com, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, dsimic@manjaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Radxa ROCK 5A has a M.2 E key slot which can be used for wireless
-modules. There are two enable/disable switch pins, one for Wi-Fi,
-another for Bluetooth. These pins are connected to GPIO.
-
-Add rfkill and rfkill-bt to control these pins via GPIO.
+Use more common name "pwm-fan" for pwm-fan node. No functinal change.
 
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
-this patch depends on [1] which depends on [2].
-
-[1] https://patchwork.kernel.org/project/linux-rockchip/cover/20241216113052.15696-1-naoki@radxa.com/
-[2] https://patchwork.kernel.org/project/linux-rockchip/cover/20241216114547.15892-1-naoki@radxa.com/
----
-Changes in v3
+Changes in v5
 - Reword commit message
-Changes in v2
-- put rfkill nodes correct place
+Changes in v4
+- new
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 095e1f5f7786..278d372e9b16 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -19,4 +19,18 @@ regulator-vbus-typec {
- 		regulator-min-microvolt = <12000000>;
- 		regulator-max-microvolt = <12000000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+index 23e9b447b6f0..630f026d856c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+@@ -68,7 +68,7 @@ led-1 {
+ 		};
  	};
-+
-+	rfkill {
-+		compatible = "rfkill-gpio";
-+		label = "rfkill-m2-wlan";
-+		radio-type = "wlan";
-+		shutdown-gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	rfkill-bt {
-+		compatible = "rfkill-gpio";
-+		label = "rfkill-m2-bt";
-+		radio-type = "bluetooth";
-+		shutdown-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+	};
- };
+ 
+-	fan {
++	pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		cooling-levels = <0 64 128 192 255>;
 -- 
 2.43.0
 
