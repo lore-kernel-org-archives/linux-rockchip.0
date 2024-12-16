@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3F3E77180
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 03:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE6FE77180
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 03:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L8OyVGaQHUt8BLQ6mabcqcilaWb3CZKgb3re/zZa7AA=; b=euf6rsXHiEomxo
-	J5+Njd7amL3WubhPR8UWrQ1g8/RfnvCX3nohaqV/PRZ4pCZQe0VuM1c2kYVJoJz4sKj9b3AvUdLop
-	Fu7HN5kuic0rhknD0YGcsKV7ZHUnrAPUMwtBSMBT8QLJ+cExSlDnhZZ2OMIXNwv3CX51lYopQ/Hjf
-	MgmE8TcfLcTS5XEyNawVnDPRem3NdhWTQ+pFffyQsnWWoYRuLzQZwOzyKnPoe0ll+DzQT1aQQWk9I
-	nBqxIRuSiANUnILMtvTYEAJjdJhcQjPN/2Pm7ARRvTKSPVI2gZ2WyuV+okc4aZ/8tl6BMQdmXk6tO
-	UDDpmG84Nqse1qCI+RLw==;
+	List-Owner; bh=rT/pYVkBYyRtp19YDTr8pBkrCnVpT+3LRj8hA0in/zI=; b=VCM+ujXthIy3q0
+	7HKKBv89BHagbTE8qxNj5qJwXdDxmQPAPp9fCADTgI2WgAvafYDMOjerZtj3rORuFOF+flRIc2WY7
+	sajJ6pSNQDteK1GMhmUrsKdn8owas+Q6Tt/GZCSI3iTEhZP6wkW6lG70sWWGseydMydsIbO7IsHO5
+	xKX7kVumUnS4ubJpAzs+wgsbksjRYamHGM3tWF0LpZDucS8cNPLy0VAcR4v7jDuZBLkllUYAYUzpM
+	gmCCYymf/Ea0lO3PLoaqEn0dC6ll1bqOxJEH3h0cLHsAJClx6BbCYdKaKz92aPUGejRkfSsclejYs
+	kDmULUof5DYSa1pfcrRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN1yX-00000008wZv-4BUy;
-	Mon, 16 Dec 2024 03:40:53 +0000
-Received: from mail-m15599.qiye.163.com ([101.71.155.99])
+	id 1tN1yh-00000008wcE-2b9b;
+	Mon, 16 Dec 2024 03:41:03 +0000
+Received: from mail-m49227.qiye.163.com ([45.254.49.227])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN1yU-00000008wZ9-3Jap;
-	Mon, 16 Dec 2024 03:40:52 +0000
+	id 1tN1yf-00000008wbY-3EBn
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Dec 2024 03:41:03 +0000
 Received: from [172.16.12.67] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5d0822af;
-	Mon, 16 Dec 2024 11:40:46 +0800 (GMT+08:00)
-Message-ID: <69751cb9-006b-485b-b3da-b8d2788d519a@rock-chips.com>
-Date: Mon, 16 Dec 2024 11:40:46 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5d0822dc;
+	Mon, 16 Dec 2024 11:40:58 +0800 (GMT+08:00)
+Message-ID: <a5455f60-4705-4517-a262-226d1219cc17@rock-chips.com>
+Date: Mon, 16 Dec 2024 11:40:57 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] phy: rockchip: phy-rockchip-typec: Fix Copyright
- description
-To: Andy Yan <andyshrk@163.com>, kishon@kernel.org,
- linux-phy@lists.infradead.org, vkoul@kernel.org
+Subject: Re: [PATCH] media: rockchip: rga: Fix Copyright description
+To: Andy Yan <andyshrk@163.com>, mchehab@kernel.org,
+ linux-media@vger.kernel.org, ezequiel@vanguardiasur.com.ar
 Cc: heiko@sntech.de, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, sebastian.reichel@collabora.com,
  Andy Yan <andy.yan@rock-chips.com>
-References: <20241215092441.3447155-1-andyshrk@163.com>
+References: <20241215093051.3447711-1-andyshrk@163.com>
 Content-Language: en-US
 From: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20241215092441.3447155-1-andyshrk@163.com>
+In-Reply-To: <20241215093051.3447711-1-andyshrk@163.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk1DT1ZJGUhLHR9IS0odSk1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhPHVZKSEsZQx1KGRkYQ0xWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93cd8ddd4f03afkunm5d0822af
+X-HM-Tid: 0a93cd8e09d803afkunm5d0822dc
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODY6Fjo4QjIRKiFWCS0ZDkIc
-	EDYwFClVSlVKTEhPSElLT09DSU5IVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKS09MNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PU06HBw5SzIUUSFMCSM#Dk0O
+	HEMaCQ9VSlVKTEhPSElLT05CTUJOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFISEtPNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=QQJNvZkXkO4xuFK3Ssdr4t6ucRRATY442NcfcCZHa/oPkc1P0vGuqltjBsjzakKXb/VB0IMMzWWo8Ce/emekE7FNLYHtaQwsXGrPWHeap2sJ5GZOu7KwHDoDarleZyOz6m/jUzejrmQlvqpkV8hn+o7/VrnU2mIwAUFoSvvjnmA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Fx0nkf+AyUanISVWFcHsI/N1SR2FzzXYHeCfgWZJivE=;
+	b=cJnh5S23HYkwk60nuSGmzX+IJmO9fZjmQg+g7En5F2x73FJJr8OuqW0W6FZAKDrbZ9T/9+a8QDz7uNcqi1G4kK+ADrlIvGGDKcLa3d8n1sLiBlZwZrgQIENg3WfAI3fP2EJMjnvToPhzhL1o6H0WOunoAkjrurj/RXB9kTwuuBY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=U4klOZfq1Cxu+8x9TcEc9jk4qUXMCWi+y8koj8VIoSg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241215_194051_058796_E59EA94B 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20241215_194102_045141_57E5AE6D 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,7 +78,7 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On 2024/12/15 17:24, Andy Yan wrote:
+On 2024/12/15 17:30, Andy Yan wrote:
 > From: Andy Yan <andy.yan@rock-chips.com>
 >
 > The company name has update to Rockchip Electronics Co., Ltd.
@@ -92,21 +93,73 @@ Thanks,
 - Kever
 > ---
 >
->   drivers/phy/rockchip/phy-rockchip-typec.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   drivers/media/platform/rockchip/rga/rga-buf.c | 2 +-
+>   drivers/media/platform/rockchip/rga/rga-hw.c  | 2 +-
+>   drivers/media/platform/rockchip/rga/rga-hw.h  | 2 +-
+>   drivers/media/platform/rockchip/rga/rga.c     | 2 +-
+>   drivers/media/platform/rockchip/rga/rga.h     | 2 +-
+>   5 files changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-> index 122ae0fdc785..7b1dba252ce9 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+> index 8a48e9d91f96..0a7cb1af9b1a 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-buf.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+> @@ -1,6 +1,6 @@
+>   // SPDX-License-Identifier: GPL-2.0-only
+>   /*
+> - * Copyright (C) 2017 Fuzhou Rockchip Electronics Co.Ltd
+> + * Copyright (c) Rockchip Electronics Co., Ltd.
+>    * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>    */
+>   
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
+> index 11c3d7234757..26c6645797fe 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
 > @@ -1,6 +1,6 @@
 >   // SPDX-License-Identifier: GPL-2.0-only
 >   /*
 > - * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
 > + * Copyright (c) Rockchip Electronics Co., Ltd.
->    * Author: Chris Zhong <zyw@rock-chips.com>
->    *         Kever Yang <kever.yang@rock-chips.com>
->    *
+>    * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>    */
+>   
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.h b/drivers/media/platform/rockchip/rga/rga-hw.h
+> index e8917e5630a4..5ccc081a88b2 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.h
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.h
+> @@ -1,6 +1,6 @@
+>   /* SPDX-License-Identifier: GPL-2.0-only */
+>   /*
+> - * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Copyright (c) Rockchip Electronics Co., Ltd.
+>    * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>    */
+>   #ifndef __RGA_HW_H__
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+> index 1739ac0c8e92..c671d289ceed 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -1,6 +1,6 @@
+>   // SPDX-License-Identifier: GPL-2.0-only
+>   /*
+> - * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Copyright (c) Rockchip Electronics Co., Ltd.
+>    * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>    */
+>   
+> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
+> index 8105bb2efe57..69841f2a352e 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.h
+> +++ b/drivers/media/platform/rockchip/rga/rga.h
+> @@ -1,6 +1,6 @@
+>   /* SPDX-License-Identifier: GPL-2.0-only */
+>   /*
+> - * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Copyright (c) Rockchip Electronics Co., Ltd.
+>    * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>    */
+>   #ifndef __RGA_H__
 
 _______________________________________________
 Linux-rockchip mailing list
