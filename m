@@ -4,47 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1998E77189
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:39:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797E0E7717F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Dec 2024 12:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v6l46nafT3HXubbvM8Ef0pnbwnZEBqyYEszIkDSj2Zc=; b=rnrW0DMErn8pn/
-	8C3PhXq+MstEB+atJhJbIV7qrQH9icPApn8W2RU73Jj/SIT59aYBB8/791qOfn8kntDlwZgjj9AwV
-	y2HbX8WQaQfSIBbrZo/2EQM7quqeKETGSq22K3O+r/RSscIbdADUUJiDqkaHb6Ah9cw0x/XvDVssR
-	dmllVXI0tcy2zo0GfMKz4OliiSrVuR63+FCufovjenPGBMSd+1Skp1z4l5sINCLEc9J/2Mg6SDCa0
-	KM7BHL42779ulnCGADv5zD/IqV7dOPKa7RFuKvevFHlw9CqxjzdRCsULhUVNYNE8Ru0MzX4qjDKvL
-	XVou0BaJiTYkmHLbC0tw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=st0jo+9GpxBwy2pwma9TgpLAlvv0tsR43P19jRtKAmY=; b=yR1R+syHr4EP203LE0QHNwRZVJ
+	L866/M8hn6mmQH7xI4V7mPS9qQyzrYDxOsSa/jLc7+UPgYZDhTEoAttFTIIE7Mikp0Fxa8KIo6ld/
+	Ml0hPq2mb27D4yzcKhQkVfMI08L0kWW/swUPIpl5O4BxNARgcy9A77s2p5DL02QON3ubjpMKLHZoc
+	RfXfBPdnL1AGXn6OhGRPhD14lxEbG+u7cL9P86BEF6Hq8rKcFI/Np8i99rFIZpayWQDnBZRCS8PkM
+	xDTDr02vIs0fnh0Y9oc9nqlNUbWedfwwoLMk83g62vOwoOlhHggF4a9l5+dAQyM6/UkbFEEOlTtdh
+	zmxgv/9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNAO7-00000009zLK-3hAg;
-	Mon, 16 Dec 2024 12:39:51 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1tNARd-00000009zs2-3Z3k;
+	Mon, 16 Dec 2024 12:43:29 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tN9Jk-00000009pn8-16qz
+	id 1tNARb-00000009zrS-2ElL
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Dec 2024 11:31:19 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BGBUxOW028690;
-	Mon, 16 Dec 2024 20:31:01 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        dsimic@manjaro.org, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v5 11/12] arm64: dts: rockchip: Fix proparties for pmic regulators for Radxa ROCK 5C
-Date: Mon, 16 Dec 2024 11:30:51 +0000
-Message-ID: <20241216113052.15696-12-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241216113052.15696-1-naoki@radxa.com>
-References: <20241216113052.15696-1-naoki@radxa.com>
+	Mon, 16 Dec 2024 12:43:28 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1734353003;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xKXXz6P4+BYl3ua8DphqPWqvACQosGl10JmiUMXqOcc=;
+	b=ktAwb+s6gY0nQV/J6MM1lpTdJvZPKnVbAeAbCcWKbbwITGDK1TAirNjlcen5SbWsoIa2bJ
+	QqRQlIGutA+HdSpJ77f7m3rm34DiIxh4W1x/UY2HBgGSKvUip86ztNX61am4teYETXADUQ
+	fe1vno/BCPlGBKEWqTxi7bIcS4gamsi+GydGMC+AZqqtGZPCI0cckmEvG0XCHh81zSkF52
+	R7UTYhoJ01QxAYsr2dr8a8ucOzu86z+YPno+n7rnrhgcjWXGMiK6hctm5qjVwrbBMg56gU
+	uzZlln7LoGLkGnF6sLZcW38V0+kv9mBJAdNI4p9OJcup7tpTTdw6cnUT/toTCQ==
+Date: Mon, 16 Dec 2024 13:43:22 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 02/12] arm64: dts: rockchip: Change node name for
+ pwm-fan for Radxa ROCK 5C
+In-Reply-To: <20241216113052.15696-3-naoki@radxa.com>
+References: <20241216113052.15696-1-naoki@radxa.com>
+ <20241216113052.15696-3-naoki@radxa.com>
+Message-ID: <629ae206a3a463da7839fa4ee438f381@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_033116_515073_70A19854 
-X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-CacheID: sfid-20241216_044327_738140_DCF997B6 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -57,56 +70,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix proparties for dcdc-reg7 and nldo-reg3 regulators to match with
-vendor kernel[1].
+On 2024-12-16 12:30, FUKAUMI Naoki wrote:
+> Use more common name "pwm-fan" for pwm-fan node. No functinal change.
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-[1] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+Looking good to me, as a preparatory patch.  Please, feel free
+to include:
 
-Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
-Changes in v5:
-- Reword commit message
-Changes in v4:
-- none
-Changes in v3:
-- none
-Changes in v2:
-- split from "arm64: dts: rockchip: fix pmic properties for Radxa ROCK 5C"
----
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index fbe491e63852..60eabe22ef02 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -639,7 +639,6 @@ vcc_2v0_pldo_s3: dcdc-reg7 {
- 				regulator-boot-on;
- 				regulator-min-microvolt = <2000000>;
- 				regulator-max-microvolt = <2000000>;
--				regulator-ramp-delay = <12500>;
- 
- 				regulator-state-mem {
- 					regulator-on-in-suspend;
-@@ -793,7 +792,8 @@ vdda_0v75_s0: nldo-reg3 {
- 				regulator-max-microvolt = <750000>;
- 
- 				regulator-state-mem {
--					regulator-off-in-suspend;
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
- 				};
- 			};
- 
--- 
-2.43.0
-
+> ---
+> Changes in v5
+> - Reword commit message
+> Changes in v4
+> - new
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index 23e9b447b6f0..630f026d856c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -68,7 +68,7 @@ led-1 {
+>  		};
+>  	};
+> 
+> -	fan {
+> +	pwm-fan {
+>  		compatible = "pwm-fan";
+>  		#cooling-cells = <2>;
+>  		cooling-levels = <0 64 128 192 255>;
 
 _______________________________________________
 Linux-rockchip mailing list
