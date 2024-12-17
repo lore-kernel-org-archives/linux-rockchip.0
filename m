@@ -4,107 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FC9E7716A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 06:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E7ECE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 07:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AE1Sx5YLhunbvfniq6b70jAJ1NM7MqhNFjb62mv7G/4=; b=qM28r59QB+Pq2M
-	VO+HaZ2li+LFCl2s3j+MAZ9L6WQqWN/3xfhy6cYwGn78m35vHcEdu70RDDaJXWkIRUko3wFDL3wzd
-	WL01OhGYVhNnHBZSRhMKQ2hp7bwhEkfI7zovybFeQtwlGMJjW+1gCbYb2i4w7mkX1QmFY7j6L9YXU
-	lZ0zp/Uyil3BEW2bS7AjBkQ9s4Z6BJLdIekrli/YFCaO/T7OBMFLab+Bl3GJYZiTYum9MZ6lF8QXw
-	Q8NIufGaBr9Qc7NJJTcCHmV+/iLneoIyzRpwINj9dOWvsRkDe3oDMgARw9hgZv/fhuIriRJ5A+Q+B
-	nIGTwlftN1NigqflcZpQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DWWI4PnqNjMK+E9xdse1WVXsRvUM3Tt1P1t6DzOnoAk=; b=TAxlJ5uCbDF5/liec9UALs+bSl
+	ijJyz6AZv7MYt906y5ytjSJtZDNXKT5D9tIDvFBkf8pFyIZ5VkV7548utkhaNCI6S6LhNIeQyJYAt
+	/CVZMda6LhmgegbMyJhDR5RMF77IqXN4sgK5UR1I2fVNIG7D84YI8RsfWey/Dn0L3woQmnq7tlkiB
+	TCpww48BtSavSlbtIuHGNh+6/YgDU2d8Vv8BlBcDInsWLa+67d+EZsvY27ShQLVf8kk2fz6Sdrkdq
+	Rhteu7PvTryx8XYXm3HcRBuw3uEMVTdvfv3XR3BxofqyhBJaeHrZaNgEbjOXUgg9WrA1EHzZJmncu
+	Csy2jCBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNR0L-0000000COll-1OYu;
-	Tue, 17 Dec 2024 06:24:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tNRhK-0000000CX6z-3J77;
+	Tue, 17 Dec 2024 07:08:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNR0G-0000000COlE-3xic
+	id 1tNRSE-0000000CTzp-10sl
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 17 Dec 2024 06:53:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=13TDsSQlinwz1EcmKBBWdv1Cs56WkOpdN1EKtUlVS2A=; b=iZ8BRU6tJWJhkuTdBNoAkRQ4KM
+	Hq+cr+TputxU5SGSXgHAzyvmlokwL2QGIfFiPOU+a/dwQes7q+i6483dk7ugTN2rgpAB1pgTZozUT
+	f72+fFrP0XnVbmcUVlA4U14lthBm3wdNsrMpdlOiaff5R1RZBNOkRz36AGf8+PtVqEsm+VsQ2CPrq
+	h2lnxhsphGVVvuqzzMUvBAXHe+k9wWOG2aNKJDRAkCitX4SXxVAhm1Y7sZkD0fEvGEnKkIyjQinuf
+	2LelnFS9ExkwaLdCuLjNv61t8el4Vncsr0tYWc3PggoKgGc8O4C3uYucwt60itngjEKdEGyZVhFQF
+	KFWQz5HQ==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tNRSA-0000000512j-1ejy
 	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Dec 2024 06:24:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3A74F5C60B1;
-	Tue, 17 Dec 2024 06:23:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1788C4CED3;
-	Tue, 17 Dec 2024 06:24:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734416660;
-	bh=HP7VYFTUeo1ynBOsvM44SGKPU3G5H8agOi7Q5+Vyjaw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HkTQ8Y0xwxFUJ1CWNrfNRVo8M3H5fZIfqjX/Kc+Rs7tyQG//BHkk61e5buGVyxATj
-	 bRBeymM52G1jRfQduVr60eOE27qcvS8OO2N5vALAxcjiFmu6p8uQI15EIEAM04e78W
-	 ILsVw2mpmkxBRWfLs3u7NcrPeBSq6yIqY2rdzrjASK7uTJ+UJimXEtDRPZwPtwGoWI
-	 B8+9A8PS46rbccJbOkx/EFxO3HjGByy7+AkLDaRDBzdALxz/s2jC0z/Q+pkupB4BFb
-	 rg4ZvnT2CBKQSbPCfYmj00fKTy+hQvoGtwJJ+RvbiIB2LDCKmgX7EUcovaM/6/m/49
-	 rLOM5sO0gKS5Q==
-Message-ID: <3313fc80-73b9-4063-8076-64e65c5d5921@kernel.org>
-Date: Tue, 17 Dec 2024 07:24:15 +0100
+	Tue, 17 Dec 2024 06:53:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734418384;
+	bh=8pybKnNblGBBO5m98T2VCI4WkKLKpY2CIqzKDo5X3NE=;
+	h=Date:To:Cc:From:Subject:From;
+	b=gDKArG+iHtedQF1+0BijosfQx3/b3tS2RsQQnIaAp1kkAirCt1g/+RiVGNOHkr6cs
+	 bDhwaAN1BYyYeCXJUc8CcK4ptjYu+wWfYwQcnBC3TsznO7PTX85OiMeteiQwFe6Or5
+	 KyVSCj2KeBvx9GggStP5vgx6zP8q9ZY01mhxVFkjGLU/GG2oX8GtFqpS3Sproq9auG
+	 BEjPg7zvla6u4LjoK0yTRbV//ARbKaVyyLcSBApimnNmyF8pIPqpsFECB1dDwR0lEY
+	 gnJ3ljNstQhmH6VWNrjvqiCwzYdzy4tiE1P8UtVFs2jY2HehMXexZIFuiVKq65k5Pe
+	 Uln+lfinAvUwQ==
+Received: from [192.168.50.250] (unknown [171.76.86.135])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D63A317E125E;
+	Tue, 17 Dec 2024 07:52:58 +0100 (CET)
+Message-ID: <616aa015-9574-4527-9d07-d8d698bbcc3c@collabora.com>
+Date: Tue, 17 Dec 2024 12:22:52 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/12] arm64: dts: rockchip: Fix proparties for pmic
- regulators for Radxa ROCK 5C
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- dsimic@manjaro.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-12-naoki@radxa.com>
- <0b6a7a7a-ff5a-4897-a283-6bf582dd1d79@kernel.org>
- <DC42478EC0DFB00A+6e374774-07d8-493c-9f2f-e7106d1f2d61@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <DC42478EC0DFB00A+6e374774-07d8-493c-9f2f-e7106d1f2d61@radxa.com>
+To: linux-rockchip@lists.infradead.org,
+ dri-devel <dri-devel@lists.freedesktop.org>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
+ tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
+ Helen Mae Koike Fornazier <helen.koike@collabora.com>,
+ Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
+ Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+Subject: drm-ci: rockchip: kms_plane@plane-position-hole-dpms flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_222421_076859_45F0BBE9 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20241217_065310_838036_6AE8289F 
+X-CRM114-Status: UNSURE (   3.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,40 +90,343 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/12/2024 01:43, FUKAUMI Naoki wrote:
-> On 12/16/24 22:41, Krzysztof Kozlowski wrote:
->> On 16/12/2024 12:30, FUKAUMI Naoki wrote:
->>> Fix proparties for dcdc-reg7 and nldo-reg3 regulators to match with
->>
->>
->>
->> You have so many typos in almost each commit msg. Here both in subject
->> and commit msg.
->>
->> Run spell check before you send to the lists. Don't expect the reviewers
->> to be your computer tools.
-> 
-> Sorry for my poor English. I'll check it next time.
+Hi Maintainers,
 
-I am not pointing out English. I am pointing out not using standard
-tool, spellcheck, to fix issues in effortless way.
+There are some flake test reported for rockchip driver testing in drm-ci.
 
-> 
->> Explain what is being fixed here. Why would you prefer to match with
->> vendor kernel?
-> 
-> Not my preference, but the only reference.
+# Board Name: hp-11A-G6-EE-grunt
+# Failure Rate: 100
+# IGT Version: 1.29-g33adea9eb
+# Linux Version: 6.13.0-rc2
+kms_plane@plane-position-hole-dpms
 
-Then why the reference is correct? Provide some arguments why this
-should be changed to the "reference" and not the "reference" fixed.
+command: cd "/igt/libexec/igt-gpu-tools" && 
+"/igt/libexec/igt-gpu-tools/kms_plane" "--run-subtest" 
+"plane-position-hole-dpms"
+pid: 920
+exit status: exit status: 98
+stdout:
+-------
+IGT-Version: 1.29-g33adea9eb (aarch64) (Linux: 6.13.0-rc2-gc72a8c362509 
+aarch64)
+Using IGT_SRANDOM=1734342282 for randomisation
+Opened device: /dev/dri/card1
+Starting subtest: plane-position-hole-dpms
+Using (pipe A + eDP-1) to run the subtest.
+Starting dynamic subtest: pipe-A-plane-1
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../lib/igt_pipe_crc.c:125 igt_check_crc_equal()
+   #2 ../tests/kms_plane.c:320 test_plane_position()
+   #3 ../tests/kms_plane.c:1327 run_test.constprop.0()
+   #4 ../tests/kms_plane.c:1387 run_tests_for_pipe_plane.constprop.0()
+   #5 ../tests/kms_plane.c:1457 __igt_unique____real_main1444()
+   #6 ../tests/kms_plane.c:1444 main()
+   #7 [__libc_init_first+0x80]
+   #8 [__libc_start_main+0x98]
+   #9 [_start+0x30]
+Dynamic subtest pipe-A-plane-1: FAIL (1.054s)
+Starting dynamic subtest: pipe-A-plane-2
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../lib/igt_pipe_crc.c:125 igt_check_crc_equal()
+   #2 ../tests/kms_plane.c:320 test_plane_position()
+   #3 ../tests/kms_plane.c:1327 run_test.constprop.0()
+   #4 ../tests/kms_plane.c:1387 run_tests_for_pipe_plane.constprop.0()
+   #5 ../tests/kms_plane.c:1457 __igt_unique____real_main1444()
+   #6 ../tests/kms_plane.c:1444 main()
+   #7 [__libc_init_first+0x80]
+   #8 [__libc_start_main+0x98]
+   #9 [_start+0x30]
+Dynamic subtest pipe-A-plane-2: FAIL (0.272s)
+Starting dynamic subtest: pipe-A-plane-3
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../lib/igt_pipe_crc.c:125 igt_check_crc_equal()
+   #2 ../tests/kms_plane.c:320 test_plane_position()
+   #3 ../tests/kms_plane.c:1327 run_test.constprop.0()
+   #4 ../tests/kms_plane.c:1387 run_tests_for_pipe_plane.constprop.0()
+   #5 ../tests/kms_plane.c:1457 __igt_unique____real_main1444()
+   #6 ../tests/kms_plane.c:1444 main()
+   #7 [__libc_init_first+0x80]
+   #8 [__libc_start_main+0x98]
+   #9 [_start+0x30]
+Dynamic subtest pipe-A-plane-3: FAIL (0.289s)
+Using (pipe B + eDP-1) to run the subtest.
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../lib/igt_pipe_crc.c:433 igt_pipe_crc_get_crcs()
+   #2 ../lib/igt_pipe_crc.c:592 igt_pipe_crc_collect_crc()
+   #3 ../tests/kms_plane.c:232 test_grab_crc()
+   #4 ../tests/kms_plane.c:357 test_plane_position()
+   #5 ../tests/kms_plane.c:1327 run_test.constprop.0()
+   #6 ../tests/kms_plane.c:1387 run_tests_for_pipe_plane.constprop.0()
+   #7 ../tests/kms_plane.c:1457 __igt_unique____real_main1444()
+   #8 ../tests/kms_plane.c:1444 main()
+   #9 [__libc_init_first+0x80]
+   #10 [__libc_start_main+0x98]
+   #11 [_start+0x30]
+Subtest plane-position-hole-dpms: FAIL (3.234s)
+stderr:
+-------
+(kms_plane:920) igt_pipe_crc-WARNING: Warning on condition all_zero in 
+function crc_sanity_checks, file ../lib/igt_pipe_crc.c:475
+(kms_plane:920) igt_pipe_crc-WARNING: Suspicious CRC: All values are 0.
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+Dynamic subtest pipe-A-plane-1 failed.
+**** DEBUG ****
+(kms_plane:920) DEBUG: Testing connector eDP-1 using pipe A plane 1
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: set_pipe(A)
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: Selecting pipe A
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=1, 
+pitch=9600)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_fb(56)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_size (2400x1600)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_size(2400x1600)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=64, 
+height=64, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=2, 
+pitch=256)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.1: plane_set_fb(57)
+(kms_plane:920) igt_kms-DEBUG: display: A.1: plane_set_size (64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.1: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.1: fb_set_size(64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.1: plane_set_position(132,132)
+(kms_plane:920) igt_kms-DEBUG: display: commit {
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     eDP-1: SetCrtc pipe A, fb 
+56, src (0, 0), mode 2400x1600
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     SetPlane A.1, fb 57, src = 
+(0, 0) 64x64 dst = (132, 132) 64x64
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display: }
+(kms_plane:920) igt_pipe_crc-DEBUG: CRC mismatch at index 1: 0x0 != 0x2e30
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+(kms_plane:920) igt_core-INFO: Stack trace:
+(kms_plane:920) igt_core-INFO:   #0 ../lib/igt_core.c:2051 
+__igt_fail_assert()
+(kms_plane:920) igt_core-INFO:   #1 ../lib/igt_pipe_crc.c:125 
+igt_check_crc_equal()
+(kms_plane:920) igt_core-INFO:   #2 ../tests/kms_plane.c:320 
+test_plane_position()
+(kms_plane:920) igt_core-INFO:   #3 ../tests/kms_plane.c:1327 
+run_test.constprop.0()
+(kms_plane:920) igt_core-INFO:   #4 ../tests/kms_plane.c:1387 
+run_tests_for_pipe_plane.constprop.0()
+(kms_plane:920) igt_core-INFO:   #5 ../tests/kms_plane.c:1457 
+__igt_unique____real_main1444()
+(kms_plane:920) igt_core-INFO:   #6 ../tests/kms_plane.c:1444 main()
+(kms_plane:920) igt_core-INFO:   #7 [__libc_init_first+0x80]
+(kms_plane:920) igt_core-INFO:   #8 [__libc_start_main+0x98]
+(kms_plane:920) igt_core-INFO:   #9 [_start+0x30]
+****  END  ****
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+Dynamic subtest pipe-A-plane-2 failed.
+**** DEBUG ****
+(kms_plane:920) DEBUG: Testing connector eDP-1 using pipe A plane 2
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: set_pipe(A)
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: Selecting pipe A
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=3, 
+pitch=9600)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_fb(59)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_size (2400x1600)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_size(2400x1600)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=64, 
+height=64, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=4, 
+pitch=256)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.2: plane_set_fb(60)
+(kms_plane:920) igt_kms-DEBUG: display: A.2: plane_set_size (64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.2: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.2: fb_set_size(64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.2: plane_set_position(132,132)
+(kms_plane:920) igt_kms-DEBUG: display: commit {
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     eDP-1: SetCrtc pipe A, fb 
+59, src (0, 0), mode 2400x1600
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     SetPlane A.2, fb 60, src = 
+(0, 0) 64x64 dst = (132, 132) 64x64
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display: }
+(kms_plane:920) igt_pipe_crc-DEBUG: CRC mismatch at index 1: 0x0 != 0x62d0
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+(kms_plane:920) igt_core-INFO: Stack trace:
+(kms_plane:920) igt_core-INFO:   #0 ../lib/igt_core.c:2051 
+__igt_fail_assert()
+(kms_plane:920) igt_core-INFO:   #1 ../lib/igt_pipe_crc.c:125 
+igt_check_crc_equal()
+(kms_plane:920) igt_core-INFO:   #2 ../tests/kms_plane.c:320 
+test_plane_position()
+(kms_plane:920) igt_core-INFO:   #3 ../tests/kms_plane.c:1327 
+run_test.constprop.0()
+(kms_plane:920) igt_core-INFO:   #4 ../tests/kms_plane.c:1387 
+run_tests_for_pipe_plane.constprop.0()
+(kms_plane:920) igt_core-INFO:   #5 ../tests/kms_plane.c:1457 
+__igt_unique____real_main1444()
+(kms_plane:920) igt_core-INFO:   #6 ../tests/kms_plane.c:1444 main()
+(kms_plane:920) igt_core-INFO:   #7 [__libc_init_first+0x80]
+(kms_plane:920) igt_core-INFO:   #8 [__libc_start_main+0x98]
+(kms_plane:920) igt_core-INFO:   #9 [_start+0x30]
+****  END  ****
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+Dynamic subtest pipe-A-plane-3 failed.
+**** DEBUG ****
+(kms_plane:920) DEBUG: Testing connector eDP-1 using pipe A plane 3
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: set_pipe(A)
+(kms_plane:920) igt_kms-DEBUG: display: eDP-1: Selecting pipe A
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=5, 
+pitch=9600)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_fb(61)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: plane_set_size (2400x1600)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.0: fb_set_size(2400x1600)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=64, 
+height=64, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_plane:920) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=6, 
+pitch=256)
+(kms_plane:920) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_plane:920) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_plane:920) igt_kms-DEBUG: display: A.3: plane_set_fb(62)
+(kms_plane:920) igt_kms-DEBUG: display: A.3: plane_set_size (64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.3: fb_set_position(0,0)
+(kms_plane:920) igt_kms-DEBUG: display: A.3: fb_set_size(64x64)
+(kms_plane:920) igt_kms-DEBUG: display: A.3: plane_set_position(132,132)
+(kms_plane:920) igt_kms-DEBUG: display: commit {
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     eDP-1: SetCrtc pipe A, fb 
+61, src (0, 0), mode 2400x1600
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display:     SetCursor pipe A, fb 6 64x64
+(kms_plane:920) igt_kms-DEBUG: display:     MoveCursor pipe A, (132, 132)
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 
+&& plane_idx < pipe->n_planes
+(kms_plane:920) igt_kms-DEBUG: display: }
+(kms_plane:920) igt_pipe_crc-DEBUG: CRC mismatch at index 1: 0x0 != 0x62d0
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_assert_crc_equal, file ../lib/igt_pipe_crc.c:112:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: !mismatch || 
+igt_skip_crc_compare
+(kms_plane:920) igt_core-INFO: Stack trace:
+(kms_plane:920) igt_core-INFO:   #0 ../lib/igt_core.c:2051 
+__igt_fail_assert()
+(kms_plane:920) igt_core-INFO:   #1 ../lib/igt_pipe_crc.c:125 
+igt_check_crc_equal()
+(kms_plane:920) igt_core-INFO:   #2 ../tests/kms_plane.c:320 
+test_plane_position()
+(kms_plane:920) igt_core-INFO:   #3 ../tests/kms_plane.c:1327 
+run_test.constprop.0()
+(kms_plane:920) igt_core-INFO:   #4 ../tests/kms_plane.c:1387 
+run_tests_for_pipe_plane.constprop.0()
+(kms_plane:920) igt_core-INFO:   #5 ../tests/kms_plane.c:1457 
+__igt_unique____real_main1444()
+(kms_plane:920) igt_core-INFO:   #6 ../tests/kms_plane.c:1444 main()
+(kms_plane:920) igt_core-INFO:   #7 [__libc_init_first+0x80]
+(kms_plane:920) igt_core-INFO:   #8 [__libc_start_main+0x98]
+(kms_plane:920) igt_core-INFO:   #9 [_start+0x30]
+****  END  ****
+(kms_plane:920) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_pipe_crc_start, file ../lib/igt_pipe_crc.c:387:
+(kms_plane:920) igt_pipe_crc-CRITICAL: Failed assertion: 
+pipe_crc->crc_fd != -1
+(kms_plane:920) igt_pipe_crc-CRITICAL: Last errno: 5, Input/output error
 
-Best regards,
-Krzysztof
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68246514
+
+Please could you have a look at these test results and let us know if 
+you need more information. Thank you.
+
+Regards,
+Vignesh
 
 _______________________________________________
 Linux-rockchip mailing list
