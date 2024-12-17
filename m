@@ -4,83 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 712DEE7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 12:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B89E77184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 12:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jQoxloyOOXnbYiED88SKwVYsJ28U/dFrjanj1/BZeaU=; b=LmhszqNrrpE1Jt
-	5jsDDcbmQruQDvps+MWEtuaSmPqwIjbSjkz8OmaIjln7GRSN5JaZyxVw9xqpgb2RtRN0SYWVSbgpH
-	y+QMpjQhsAsyJXhGwjv21lAcKkLr8GC/BAJyBrXYFQ7WMG0TRyn8HqWiV51/b/DyA+8ogUDR9E378
-	v5a20XdegEDzKpYKoPLW7sxqhyYIMzOAEst04dMPYOOAo0aqahVmm8LEdF37xeH5kR0wYfOmdv7DJ
-	o9mKz493XdAcrT+NJaH/StFGJQfUh177LoZvxtWLXed9hv8+i/eDuJThE/NDig59yWXG3LKBGtuNq
-	62JB9Fr/dSnAPZe4S7Jw==;
+	List-Owner; bh=lbnM6mR20fcnSzAEtsxq80LWC7v6j5Qs5tMCMxawTF4=; b=shMjsHABkayKkk
+	9g8F2H3ebTihC6PAuiNuYLpM8Vqxoz8d5hfUqIpNL9riwKOJX7cGd/U+QcF20ItT4ZPeqAO49i4ft
+	WYV0U4MQ86yJCa4LfRzKGnsqQWWLYnWA3EZUSfCQdtoTMg63DRriA5w50VMsalENYVf2spoW4ZDZM
+	bYtzJqCF44gywmyPuWt7tDUz2dP2rZaGVkoo9u/ZT3j/C6JjViVdx+GgC+tzdOMC/JZcb4hxtzHng
+	Z716p+EKnrtbwYDZTxLOPNI9wFzNW/VxE7hHBMWpg9n8ERpD4bnsRCpGRNhb7h+aEeiUyXhco+YsF
+	ES40wDnPJEekViVzNW1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWO3-0000000DLkP-1f7d;
-	Tue, 17 Dec 2024 12:09:15 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1tNWjz-0000000DOK7-1Y0h;
+	Tue, 17 Dec 2024 12:31:55 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNWMx-0000000DLbl-1Mkl
+	id 1tNWjx-0000000DOJ0-0atu
 	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Dec 2024 12:08:08 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6d900c27af7so59825436d6.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Dec 2024 04:08:06 -0800 (PST)
+	Tue, 17 Dec 2024 12:31:54 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-53e3a5fa6aaso6552840e87.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Dec 2024 04:31:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1734437286; x=1735042086; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=j+dl3ly0rdbKwmGKotpv1oO2gk374L+s+XxGWg7hHC4=;
-        b=BlPU+nEZyhPQ7UyQRb3K8a8U8ZnSSFBmNtZ3r20cP538bgMzvjfLaewu1huwS7sIqC
-         LKndD2XVx5NTTUu0jxyl7tgVRRq7cBHyrGSCuGE+E0ZXehF3/SuQzb8M/W2fuwoTCHCn
-         p0QSrprIh9y55uqvxSTMOp0ndLGfIKtTXFG0vQDVHd84i2AClW0Lnqxdgbc52U8bafsO
-         W4d7x7I2VsLK1WnXpNiT3DRBzMrGtPXsZqyjWJ7hZTdksVukP7z3e0Pg+0CHOrlchfy4
-         aqcBhjBgZauhZAxbsdzusXufI8btpWKaJdBX0nW0HiM0JO4nxuxIFQdWpanGICTkZGaz
-         7dow==
+        d=linaro.org; s=google; t=1734438711; x=1735043511; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=OD2airYmXEIM5XCQfXb6/TEVO/ZX203WR6AY+SunHbs=;
+        b=RLhYu8eGTanNKcdJjLnUxEclnmebsRsfTlxBCAb47ONvHpCAEt/I+hBnGnCfVYoxvG
+         BA/q+BXPj8ZNYvRfiS1rAW45m8rz7OW/cIonhZPuZVF50I58B0JoiKcjh8XFMTGkRcRu
+         L0VkaD8mggFDhaTzkYa84TImf3HIyoAd5LjUVptyfH4GaCD++zaqKnN1Ui50sJjcdq5o
+         9hUbJ5IItaRd/iDczgrSdv0GJtl1bJ1/Gg2sR53hLDiftU3eFEbOGi1nkFzINlLKpYo0
+         u1cIv5kHfyutaZO/+uoal/sFYlD3iuiYzx1pRIdHcQz6TxqCao1lBqsiDJy3afS+aXdn
+         jDmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734437286; x=1735042086;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=j+dl3ly0rdbKwmGKotpv1oO2gk374L+s+XxGWg7hHC4=;
-        b=RNgE32VIsOHeUzQAKsUbyDQnVJp5Se19XbgYIo6peUZr+RB8BWCw7/YJxqo565XxOS
-         fhygaHP7G87J/ersxFXqhbqFPoSfvmdKutr/udYEgUG/sW3rDqFP6KG6Kyk5ClsnvRiF
-         G0/amcz8c7zq8yVpAh3B8BmtMAXcg9RufWvLQmBRXUTVjieVWLhNgPrdTqVsBKbugwyR
-         Hn6BB/eSLw6l3UJVb0ysx1Qs4srh2r2mDf/Oj7Q7xGM4mB/SsKDm74bjfvEzT7kMYkoj
-         QugkqVq5zEYIwxqE4rDfH6pJ9Y9GAnyNmMHOVjPd5BI9qqFqs8VwMKUKFcUuzNGYGPhu
-         L/rg==
-X-Forwarded-Encrypted: i=1; AJvYcCXngIEIF9NLQQk8D/ZvKnEFSIY5JZtOnU9zYuqydHaFRfRcM8iyDygrQpl/mW+fZcj7Ea2fdmA6oFYyAQkCcA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVJYQPewGFmDvQ4jCSZArFyvD6WPKIsob0HcJKNk5SrCmrKaCS
-	PrpIeWDEHAQGNHt/fOQEm5j1I+zdJoGzcMqrYFEow5mhBIuOhflHBxGMnD0bStgJ3VesisC0ZW4
-	VrFmxMjYt18+s4tx0/ZOXYAVEqZvem7zHvzTNdQ==
-X-Gm-Gg: ASbGncs5iGiyyzrQWK1wIv7fFgTl6YKtrkQ6H2xC+MvcJNrJl3CRiSqI1gmJCIKE5WO
-	DsYFLHRhv1J+T9DpamYoF+loAgGQVp09vBFmR
-X-Google-Smtp-Source: AGHT+IENXkFl1sf/3x7p8kafThXQqXSZZrmYVwhsRzFtxsCkGCBTgLsddU6Li0qrlY45bm/mZ6nEZU9yLbhu5otz4j4=
-X-Received: by 2002:a05:6214:d48:b0:6d8:a754:9647 with SMTP id
- 6a1803df08f44-6dc8ca57509mr252459736d6.17.1734437285918; Tue, 17 Dec 2024
- 04:08:05 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734438711; x=1735043511;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OD2airYmXEIM5XCQfXb6/TEVO/ZX203WR6AY+SunHbs=;
+        b=bLcKiCkSg4L5ws+S80V5cT3SI+tDUrgbpfF3/MmP5UVJqW7J/ijjGEP+7LTkHGk/4i
+         HdCu3RLAUvMitzeFrHSutoLy6srKy2h598C4n7gjlq/RwqGaQqZmidWwCllEK0IFT691
+         PXTGTF8SYpMvgJO/VdsrtuplagrfJTq1Un8cI3apdGS4jELTQMXhR+nS00LhXdvLEF3Y
+         Yfy3tEBt04yvJ02wO/7+4WJafXeyTMR5Y5LIPTqzsMtBiyL0sHe6ZiP9UnYNbUCq3aNU
+         5C2eCZ8ntPuYvlUYdeRSqOwmiIvm9mVD2d3a4+NGpJh9tHcPH+0wHlm9kmP6dCVAHCUp
+         zL2w==
+X-Forwarded-Encrypted: i=1; AJvYcCXdLULzb3NlCOlAUEfAsS/ifxt9N/rzAR70tWlYBGz+4umGOPk2wvhdKg6AIZ7ou7xPwz5oSHynltInXnIEgQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yza4nBZzvuYpmlA6VCD8G80e3YU4bd2rnOzml+TYytmhXuEBjRw
+	hYlIk2bOmHdp4AzHM+Jv1FfSGmZMdhGCq37rYzU4JJjK78FZ/TT6poM1/DfvcRo=
+X-Gm-Gg: ASbGncvtNG4rJ0Vr1gEwlCjZ7ZHM6JP30RDmKEpWdMdbrnleviVz0+f26bFogmjbnGx
+	vfz7TLiBkKcn4fYcKDmPJgsAW8HPk/k/xGd42d+mFuw2qLSwoSHLLjDiluYsvcW21Epl5C4d7o6
+	rwVXIs0Uoey6ft5gQZfvFULDQ5IpTUulohajMI6mZ3eqdTmaBzUYpzYiF3Ew+/soaxjf5xbVGaO
+	GYpz8ifyv30skthnE7pSvH3Nymo4723Vmh7/Df34SQtfFuQNgqJ3Hyo0VM1a1Ilml0r1tQFoNNX
+	vrsliNh4MELNkgMbfZDhaAyETqb/bvX+o+aC
+X-Google-Smtp-Source: AGHT+IGLqNfuo6dVnZwB0IG9CYkUL75QpM9W/HERVzyQaVYoG4TeHcNOZSSbW2843k7yE5uyrSEtJA==
+X-Received: by 2002:a05:6512:3e0c:b0:540:1fec:f331 with SMTP id 2adb3069b0e04-541315ac7a5mr947299e87.27.1734438711130;
+        Tue, 17 Dec 2024 04:31:51 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54120b9f3d0sm1145293e87.30.2024.12.17.04.31.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Dec 2024 04:31:49 -0800 (PST)
+Date: Tue, 17 Dec 2024 14:31:47 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
+ helpers
+Message-ID: <buem3nnscnyh7latovvnsbhp2ci6pbjpckfmrft2267afzwdwq@2roahluiow7t>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+ <20241206-drm-bridge-hdmi-connector-v6-3-50dc145a9c06@linaro.org>
+ <20241216-heretic-mackerel-of-wholeness-fcfed7@houat>
+ <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
+ <20241217-heretic-hopeful-jaguar-aeabec@houat>
 MIME-Version: 1.0
-References: <20241214081719.3330518-1-andyshrk@163.com> <20241214081719.3330518-9-andyshrk@163.com>
- <CAPj87rOjqZdyht2y8MK7gVyk_eqEzk1Sy0DcxFtQRuhrHQ_oxA@mail.gmail.com> <165af58a.697.193d2100239.Coremail.andyshrk@163.com>
-In-Reply-To: <165af58a.697.193d2100239.Coremail.andyshrk@163.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 17 Dec 2024 12:07:54 +0000
-Message-ID: <CAPj87rMfFXkbyh7UEJQw4JV1R18KLXC3GyF0CznrN1k3UdL0Lw@mail.gmail.com>
-Subject: Re: Re: [PATCH v6 08/16] drm/rockchip: vop2: Support 32x8 superblock afbc
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
-	s.hauer@pengutronix.de, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	derek.foreman@collabora.com, detlev.casanova@collabora.com, 
-	Andy Yan <andy.yan@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20241217-heretic-hopeful-jaguar-aeabec@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_040807_468503_B3EE577F 
-X-CRM114-Status: GOOD (  18.01  )
+X-CRM114-CacheID: sfid-20241217_043153_173343_5E311C72 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,43 +120,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+On Tue, Dec 17, 2024 at 08:43:10AM +0100, Maxime Ripard wrote:
+> Hi,
+> 
+> On Mon, Dec 16, 2024 at 07:47:32PM +0200, Dmitry Baryshkov wrote:
+> > On Mon, Dec 16, 2024 at 06:04:41PM +0100, Maxime Ripard wrote:
+> > > > +struct drm_connector_hdmi_codec_funcs {
+> > > > +	/**
+> > > > +	 * @audio_startup:
+> > > > +	 *
+> > > > +	 * Called when ASoC starts an audio stream setup. The
+> > > > +	 * @hdmi_audio_startup is optional.
+> > > > +	 *
+> > > > +	 * Returns:
+> > > > +	 * 0 on success, a negative error code otherwise
+> > > > +	 */
+> > > > +	int (*audio_startup)(struct drm_connector *connector);
+> > > > +
+> > > > +	/**
+> > > > +	 * @prepare:
+> > > > +	 * Configures HDMI-encoder for audio stream. Can be called
+> > > > +	 * multiple times for each setup. Mandatory.
+> > > > +	 *
+> > > > +	 * Returns:
+> > > > +	 * 0 on success, a negative error code otherwise
+> > > > +	 */
+> > > > +	int (*prepare)(struct drm_connector *connector,
+> > > > +		       struct hdmi_codec_daifmt *fmt,
+> > > > +		       struct hdmi_codec_params *hparms);
+> > > 
+> > > Missing newline
+> > > 
+> > > > +	/**
+> > > > +	 * @audio_shutdown:
+> > > > +	 *
+> > > > +	 * Shut down the audio stream. Mandatory.
+> > > > +	 *
+> > > > +	 * Returns:
+> > > > +	 * 0 on success, a negative error code otherwise
+> > > > +	 */
+> > > > +	void (*audio_shutdown)(struct drm_connector *connector);
+> > > 
+> > > And thus we can probably just call that one shutdown?
+> > 
+> > It should be called automatically by the sound system. I'd rather not
+> > call items directly that we are not supposed to call.
+> 
+> I meant that with my suggestion to call the function
+> drm_connector_hdmi_audio_init, that structure would be called
+> drm_connector_hdmi_audio_funcs, and thus the audio prefix in
+> audio_shutdown is redundant.
 
-On Tue, 17 Dec 2024 at 00:41, Andy Yan <andyshrk@163.com> wrote:
-> At 2024-12-16 21:06:07, "Daniel Stone" <daniel@fooishbar.org> wrote:
-> >On Sat, 14 Dec 2024 at 08:18, Andy Yan <andyshrk@163.com> wrote:
-> >> This is the only afbc format supported by the upcoming
-> >> VOP for rk3576.
-> >>
-> >> Add support for it.
-> >
-> >Out of interest, how was this tested? There is no 32x8 modifier in the
-> >format list in format_modifiers_afbc[], so it seems like it shouldn't
-> >be possible to get a 32x8 buffer on a plane at all.
->
-> The 32x8 modifier  added in PATCH 16/16:
->
-> +/* used from rk3576, afbc 32*8 half mode */
-> +static const uint64_t format_modifiers_rk3576_afbc[] = {
-> +       DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> +                               AFBC_FORMAT_MOD_SPLIT),
-> +
+I see. I posted the next iteration already, but I'll try to remember
+this change for the next iteration.
 
-Hmmm, that's strange; I applied the whole series with b4 but wasn't
-seeing that block defined. Maybe a bad conflict resolution. Sorry for
-the confusion.
-
-> I write an ovltest[0] tool which can take linear/AFBC rgb/yuv data from a file, then
-> commit to drm driver, I use this tool for most basic format test.
->
-> But when tested on weston, I found that weston does not use the AFBC format for display,
-> don't know why.
-
-You'll need a Mesa tree with e0f48568c7f2 included; if you have this
-then it should just work out of the box.
-
-Cheers,
-Daniel
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
