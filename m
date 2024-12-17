@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4638E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 16:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE6D6E7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 16:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XQAqvOT1mhbTimwa9TYaIm7VcdRYCNvdyp3HRLo3NFQ=; b=rkRAniCAPYoTSe
-	rPq4mQ3s1gFnHqa/ZvLXndWkIP5p4ddLLP/Wqudnp/JaAFlbmBHqjsV1qCQIXyiZoVPath8nCGUMw
-	+qxSB6QAYUGOnQtSA1LL7Kn7c/nFAMxwmusZdse7rXhYH1Dg6Vom/7SN4mFj83qqglJAqpvdRST5f
-	1XvmtBvaz4hmFEsEs6bl6UH2jKIyOCRAO34Ciu3IcMEaGkvx2ROsxjXec2CUFgx/FraLt4MBVGBYX
-	BXyOf+QedSItO3GWi33sFFRUYH4or0ZwsGnVoWgb64uNrv7J7h+U6yg+DgM66I8WzKvGvbw6LBOA7
-	2gjDrlH2JCD++wmpEWfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cgIPZJtmIP8ZZBhM9VJLWzuZxshO1bG4UJEfQJSx2d0=; b=qCqgx7Pp2e0STMsuKBUnFwsYFW
+	8eCMmKVxmu5rfMszdA1UOpZgZ2DZ/WDx9YhVpzqwLpzRTkDQ3G/ko+r0nT9RzXhg4gydunsAdjFft
+	fJh+G6iKQIlk/2mhd4JA/ocz/EZNKLvydXTD4z2Uw8tMu0StgQO3PwBTs2+bZlHCTAnN3LtrzXiMq
+	CsSa10sMnTvTQPxM+zsU3QVoNDTHd6xUZAk379wVA0LIvSeRfkQ8Bnsk5nJ/zo5VPzsEFB8MTwoVv
+	q6PqXM0VD87IE352nKy/7mQzcWTe40xBhnFX8w5NbqC3bxsBjSO2t1GoukuTXHSodgISfms+AeXPh
+	A0DeyTAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNaaE-0000000EDet-2Sa1;
-	Tue, 17 Dec 2024 16:38:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tNaqI-0000000EFpR-3YSb;
+	Tue, 17 Dec 2024 16:54:42 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNaYw-0000000EDKE-2VTB;
-	Tue, 17 Dec 2024 16:36:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734453404;
-	bh=PAu25BTtqRIZ7TehGqU+OEInbWitHM7ErDsbsrjdeLs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=j4RLQUW7ucEUCYXiyDkUlnsBvM/2UW3XQ+tXe5QtFGmabPBx/LEHLzuToIckoi5IE
-	 zM3iHNiqHKT2QFXip3jfVJFifsncvj5ApK2DQ8dmGHB2+qwUWZuwSJViEwPrcvnuer
-	 PLuBaW2XhQIz6BhRQ31wDM23mjlyMMaumPdvrxi/WoUJFI7K8eMCjGeo0lFTRFmM8Y
-	 LV4D6WbdcnnnNMoy95UFIYJQDoJ90kDeP2ZeWPKamvyUqUiF/rEHfsCsCwluXgJ2Z5
-	 SSJ4atgRy08XXAkbddJdCVc5VcANcz0QUfFFLV+5HqC0DMbUsC0+ZSS3iKYSN0wGTS
-	 3hJ6hpWYhdifA==
-Received: from [192.168.1.90] (unknown [84.232.140.38])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF34517E37B2;
-	Tue, 17 Dec 2024 17:36:43 +0100 (CET)
-Message-ID: <c45ff74a-c9a4-4cf1-8530-04087e06b07a@collabora.com>
-Date: Tue, 17 Dec 2024 18:36:41 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes handling
- on RK3588 HDMI0
-To: Maxime Ripard <mripard@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>
-Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>
+	id 1tNapB-0000000EFjP-2UQM;
+	Tue, 17 Dec 2024 16:53:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A5A89A41D2C;
+	Tue, 17 Dec 2024 16:51:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E537C4CED3;
+	Tue, 17 Dec 2024 16:53:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734454412;
+	bh=EOJspbm7MP7wG0IjvVUNU+l636arDNGqBCyTzRfpfbA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KlS7YtpFsL/gTqOzHFp9lpkcIkTrozL//Q/lMLNXbPW3Y6m2sgkt5CGABkkAjo0u2
+	 es6xqBqUBVJ+EEjVk4ljZzWGXLhxrWbnql7aU1x/Gq+smMLm85OG8Q4XnOdNUdbKuJ
+	 B9Kal/JswAvNPqnL3Fh80lNcUqkppz8sIqWUxhfVxzXvG+lxc+eHJf9YZXGWncIn1y
+	 sB07MUtRE4rm4aIbIuWtq+9lB3CpP9P1A4+LvzRvIMVMluirSZAJ8DNP7m56yyYOgw
+	 uesQmgEIrWcTGXVvI0gUxJdSoTfKoyJjYajgaslXGUBGUXTsPak061NnMfyBj6yWs1
+	 CoVcBpdw3jrCw==
+Date: Tue, 17 Dec 2024 17:53:29 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
+ handling on RK3588 HDMI0
+Message-ID: <20241217-zealous-boisterous-llama-52bfcc@houat>
 References: <20241211-vop2-hdmi0-disp-modes-v2-0-471cf5001e45@collabora.com>
  <1820767.5KxKD5qtyk@diego>
  <a4ex3s23r4k6wehyoaw3aylpcexfrclrxxykjpabhdfne2jgmu@ii6riiiga2zj>
  <1756448.izSxrag8PF@diego>
  <20241217-ubiquitous-refreshing-finch-aceade@houat>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241217-ubiquitous-refreshing-finch-aceade@houat>
+ <c45ff74a-c9a4-4cf1-8530-04087e06b07a@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <c45ff74a-c9a4-4cf1-8530-04087e06b07a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_083646_807345_61C949C6 
-X-CRM114-Status: GOOD (  27.74  )
+X-CRM114-CacheID: sfid-20241217_085333_781086_626DC007 
+X-CRM114-Status: GOOD (  44.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,118 +76,222 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7070446240950093923=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTIvMTcvMjQgNTowMCBQTSwgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiBPbiBXZWQsIERlYyAx
-MSwgMjAyNCBhdCAwNzowMToxNVBNICswMTAwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gQW0g
-TWl0dHdvY2gsIDExLiBEZXplbWJlciAyMDI0LCAxODo0Nzo0NCBDRVQgc2NocmllYiBNYXhpbWUg
-UmlwYXJkOgo+Pj4gT24gV2VkLCBEZWMgMTEsIDIwMjQgYXQgMDY6MjM6MDNQTSArMDEwMCwgSGVp
-a28gU3TDvGJuZXIgd3JvdGU6Cj4+Pj4gQW0gTWl0dHdvY2gsIDExLiBEZXplbWJlciAyMDI0LCAx
-ODowNzo1NyBDRVQgc2NocmllYiBNYXhpbWUgUmlwYXJkOgo+Pj4+PiBPbiBXZWQsIERlYyAxMSwg
-MjAyNCBhdCAxMjoxNTowN1BNICswMjAwLCBDcmlzdGlhbiBDaW9jYWx0ZWEgd3JvdGU6Cj4+Pj4+
-PiBUaGUgUkszNTg4IHNwZWNpZmljIGltcGxlbWVudGF0aW9uIGlzIGN1cnJlbnRseSBxdWl0ZSBs
-aW1pdGVkIGluIHRlcm1zCj4+Pj4+PiBvZiBoYW5kbGluZyB0aGUgZnVsbCByYW5nZSBvZiBkaXNw
-bGF5IG1vZGVzIHN1cHBvcnRlZCBieSB0aGUgY29ubmVjdGVkCj4+Pj4+PiBzY3JlZW5zLCBlLmcu
-IDI1NjB4MTQ0MEA3NUh6LCAyMDQ4eDExNTJANjBIeiwgMTAyNHg3NjhANjBIeiBhcmUganVzdCBh
-Cj4+Pj4+PiBmZXcgb2YgdGhlbS4KPj4+Pj4+Cj4+Pj4+PiBBZGRpdGlvbmFsbHksIGl0IGRvZXNu
-J3QgY29wZSB3ZWxsIHdpdGggbm9uLWludGVnZXIgcmVmcmVzaCByYXRlcyBsaWtlCj4+Pj4+PiA1
-OS45NCwgMjkuOTcsIDIzLjk4LCBldGMuCj4+Pj4+Pgo+Pj4+Pj4gTWFrZSB1c2Ugb2YgSERNSTAg
-UEhZIFBMTCBhcyBhIG1vcmUgYWNjdXJhdGUgRENMSyBzb3VyY2UgdG8gaGFuZGxlCj4+Pj4+PiBh
-bGwgZGlzcGxheSBtb2RlcyB1cCB0byA0S0A2MEh6Lgo+Pj4+Pj4KPj4+Pj4+IFRlc3RlZC1ieTog
-RlVLQVVNSSBOYW9raSA8bmFva2lAcmFkeGEuY29tPgo+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogQ3Jp
-c3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFib3JhLmNvbT4KPj4+Pj4+
-IC0tLQo+Pj4+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5j
-IHwgMzQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4+Pj4gIDEgZmlsZSBjaGFuZ2Vk
-LCAzNCBpbnNlcnRpb25zKCspCj4+Pj4+Pgo+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPj4+Pj4+IGluZGV4IDhiMmY1M2ZmZWZkYmYxY2M4NzM3
-YjNhODZlNjMwYTAzYTdmZDkzNDguLjM5M2ZlNmFhMTcwYWFlZTk2NjNjNGE2ZDk4YzFjZDZhNWVm
-NzkzOTIgMTAwNjQ0Cj4+Pj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcDIuYwo+Pj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AyLmMKPj4+Pj4+IEBAIC0xNTgsNiArMTU4LDcgQEAgc3RydWN0IHZvcDJfdmlk
-ZW9fcG9ydCB7Cj4+Pj4+PiAgCXN0cnVjdCBkcm1fY3J0YyBjcnRjOwo+Pj4+Pj4gIAlzdHJ1Y3Qg
-dm9wMiAqdm9wMjsKPj4+Pj4+ICAJc3RydWN0IGNsayAqZGNsazsKPj4+Pj4+ICsJc3RydWN0IGNs
-ayAqZGNsa19zcmM7Cj4+Pj4+PiAgCXVuc2lnbmVkIGludCBpZDsKPj4+Pj4+ICAJY29uc3Qgc3Ry
-dWN0IHZvcDJfdmlkZW9fcG9ydF9kYXRhICpkYXRhOwo+Pj4+Pj4gIAo+Pj4+Pj4gQEAgLTIxMiw2
-ICsyMTMsNyBAQCBzdHJ1Y3Qgdm9wMiB7Cj4+Pj4+PiAgCXN0cnVjdCBjbGsgKmhjbGs7Cj4+Pj4+
-PiAgCXN0cnVjdCBjbGsgKmFjbGs7Cj4+Pj4+PiAgCXN0cnVjdCBjbGsgKnBjbGs7Cj4+Pj4+PiAr
-CXN0cnVjdCBjbGsgKnBsbF9oZG1pcGh5MDsKPj4+Pj4+ICAKPj4+Pj4+ICAJLyogb3B0aW9uYWwg
-aW50ZXJuYWwgcmdiIGVuY29kZXIgKi8KPj4+Pj4+ICAJc3RydWN0IHJvY2tjaGlwX3JnYiAqcmdi
-Owo+Pj4+Pj4gQEAgLTIyMCw2ICsyMjIsOCBAQCBzdHJ1Y3Qgdm9wMiB7Cj4+Pj4+PiAgCXN0cnVj
-dCB2b3AyX3dpbiB3aW5bXTsKPj4+Pj4+ICB9Owo+Pj4+Pj4gIAo+Pj4+Pj4gKyNkZWZpbmUgVk9Q
-Ml9NQVhfRENMS19SQVRFCQk2MDAwMDAgLyoga0h6ICovCj4+Pj4+PiArCj4+Pj4+PiAgI2RlZmlu
-ZSB2b3AyX291dHB1dF9pZl9pc19oZG1pKHgpCSgoeCkgPT0gUk9DS0NISVBfVk9QMl9FUF9IRE1J
-MCB8fCBcCj4+Pj4+PiAgCQkJCQkgKHgpID09IFJPQ0tDSElQX1ZPUDJfRVBfSERNSTEpCj4+Pj4+
-PiAgCj4+Pj4+PiBAQCAtMTAzMyw2ICsxMDM3LDkgQEAgc3RhdGljIHZvaWQgdm9wMl9jcnRjX2F0
-b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPj4+Pj4+ICAKPj4+Pj4+ICAJdm9w
-Ml9jcnRjX2Rpc2FibGVfaXJxKHZwLCBWUF9JTlRfRFNQX0hPTERfVkFMSUQpOwo+Pj4+Pj4gIAo+
-Pj4+Pj4gKwlpZiAodnAtPmRjbGtfc3JjKQo+Pj4+Pj4gKwkJY2xrX3NldF9wYXJlbnQodnAtPmRj
-bGssIHZwLT5kY2xrX3NyYyk7Cj4+Pj4+PiArCj4+Pj4+PiAgCWNsa19kaXNhYmxlX3VucHJlcGFy
-ZSh2cC0+ZGNsayk7Cj4+Pj4+PiAgCj4+Pj4+PiAgCXZvcDItPmVuYWJsZV9jb3VudC0tOwo+Pj4+
-Pj4gQEAgLTIwNDksNiArMjA1NiwyNyBAQCBzdGF0aWMgdm9pZCB2b3AyX2NydGNfYXRvbWljX2Vu
-YWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4+Pj4+PiAgCj4+Pj4+PiAgCXZvcDJfdnBfd3Jp
-dGUodnAsIFJLMzU2OF9WUF9NSVBJX0NUUkwsIDApOwo+Pj4+Pj4gIAo+Pj4+Pj4gKwkvKgo+Pj4+
-Pj4gKwkgKiBTd2l0Y2ggdG8gSERNSSBQSFkgUExMIGFzIERDTEsgc291cmNlIGZvciBkaXNwbGF5
-IG1vZGVzIHVwCj4+Pj4+PiArCSAqIHRvIDRLQDYwSHosIGlmIGF2YWlsYWJsZSwgb3RoZXJ3aXNl
-IGtlZXAgdXNpbmcgdGhlIHN5c3RlbSBDUlUuCj4+Pj4+PiArCSAqLwo+Pj4+Pj4gKwlpZiAodm9w
-Mi0+cGxsX2hkbWlwaHkwICYmIG1vZGUtPmNydGNfY2xvY2sgPD0gVk9QMl9NQVhfRENMS19SQVRF
-KSB7Cj4+Pj4+PiArCQlkcm1fZm9yX2VhY2hfZW5jb2Rlcl9tYXNrKGVuY29kZXIsIGNydGMtPmRl
-diwgY3J0Y19zdGF0ZS0+ZW5jb2Rlcl9tYXNrKSB7Cj4+Pj4+PiArCQkJc3RydWN0IHJvY2tjaGlw
-X2VuY29kZXIgKnJrZW5jb2RlciA9IHRvX3JvY2tjaGlwX2VuY29kZXIoZW5jb2Rlcik7Cj4+Pj4+
-PiArCj4+Pj4+PiArCQkJaWYgKHJrZW5jb2Rlci0+Y3J0Y19lbmRwb2ludF9pZCA9PSBST0NLQ0hJ
-UF9WT1AyX0VQX0hETUkwKSB7Cj4+Pj4+PiArCQkJCWlmICghdnAtPmRjbGtfc3JjKQo+Pj4+Pj4g
-KwkJCQkJdnAtPmRjbGtfc3JjID0gY2xrX2dldF9wYXJlbnQodnAtPmRjbGspOwo+Pj4+Pj4gKwo+
-Pj4+Pj4gKwkJCQlyZXQgPSBjbGtfc2V0X3BhcmVudCh2cC0+ZGNsaywgdm9wMi0+cGxsX2hkbWlw
-aHkwKTsKPj4+Pj4+ICsJCQkJaWYgKHJldCA8IDApCj4+Pj4+PiArCQkJCQlkcm1fd2Fybih2b3Ay
-LT5kcm0sCj4+Pj4+PiArCQkJCQkJICJDb3VsZCBub3Qgc3dpdGNoIHRvIEhETUkwIFBIWSBQTEw6
-ICVkXG4iLCByZXQpOwo+Pj4+Pj4gKwkJCQlicmVhazsKPj4+Pj4+ICsJCQl9Cj4+Pj4+PiArCQl9
-Cj4+Pj4+PiArCX0KPj4+Pj4+ICsKPj4+Pj4KPj4+Pj4gSXQgc2VlbXMgcHJldHR5IGZyYWdpbGUg
-dG8gZG8gaXQgYXQgYXRvbWljX2VuYWJsZSB0aW1lLCBldmVuIG1vcmUgc28KPj4+Pj4gc2luY2Ug
-eW91IGRvbid0IGxvY2sgdGhlIHBhcmVudCBlaXRoZXIuCj4+Pj4+Cj4+Pj4+IEFueSByZWFzb24g
-bm90IHRvIGRvIGl0IGluIHRoZSBEUk0gb3IgY2xvY2sgZHJpdmVyIHByb2JlLCBhbmQgbWFrZSBz
-dXJlCj4+Pj4+IHlvdSBuZXZlciBjaGFuZ2UgdGhlIHBhcmVudCBzb21laG93Pwo+Pj4+Cj4+Pj4g
-T24gcmszNTg4IHdlIGhhdmUgMyBkY2xrX3MgYW5kIDIgaGRtaSBjb250cm9sbGVycy4gRWFjaCB2
-aWRlby1wb3J0IGNhbgo+Pj4+IHVzZSB0aGUgY2xvY2sgZ2VuZXJhdGVkIGZyb20gZWl0aGVyIHRo
-ZSBoZG1pMHBoeSBvciBoZG1pMXBoeSwgZGVwZW5kaW5nCj4+Pj4gb24gd2hpY2ggaGRtaS1jb250
-cm9sbGVyIGl0IHVzZXMuCj4+Pj4KPj4+PiBTbyB5b3UgYWN0dWFsbHkgbmVlZCB0byBrbm93IHdo
-aWNoIHZwWCB3aWxsIG91dHB1dCB0byB3aGljaCBoZG1pWSB0byB0aGVuCj4+Pj4gcmVwYXJlbnQg
-dGhhdCBkY2xrIHRvIHRoZSBoZG1pcGh5IG91dHB1dC4KPj4+Cj4+PiBUaGUgUm9ja2NoaXAgbm9t
-ZW5jbGF0dXJlIGlzbid0IHN1cGVyIG9idmlvdXMgdG8gbWUsIHNvcnJ5LiBJcyB0aGVyZSBhCj4+
-PiBkYXRhc2hlZXQgZm9yIHRoaXMgc29tZXdoZXJlPyBBbHNvLCBkb2VzIHRoaXMgdnBYIC0+IEhE
-TUktWSBtYXBwaW5nIG5lZWQKPj4+IHRvIGJlIGR5bmFtaWM/Cj4+Cj4+IFZQcyBhcmUgQ1JUQ3Mg
-aW4gZHJtLWxhbmd1YWdlIGFuZCBlYWNoIG9mIHRoZW0gY2FuIGRyaXZlIGEgZGlmZmVyaW5nCj4+
-IG51bWJlciBvZiBvdXRwdXQgZW5jb2RlcnMuIFRob3NlIHZpZGVvLXBvcnRzIGFsc28gaGF2ZSBk
-aWZmZXJpbmcgb3V0cHV0Cj4+IGNoYXJhY3RlcmlzdGljcyBpbiB0ZXJtcyBvZiBzdXBwb3J0ZWQg
-cmVzb2x1dGlvbiBhbmQgb3RoZXIgcHJvcGVydGllcy4KPj4KPj4gVGhlIHJrMzU4OCBUUk0gaGFz
-IGxlYWtlZCBpbiBhIG51bWJlciBvZiBwbGFjZXMsIGFuZCBpZiB5b3UgZmluZCBhCj4+IFRSTS1w
-YXJ0MiwgdGhlcmUgaXMgYSBzZWN0aW9uIGxhYmVsZWQgIkRpc3BsYXkgT3V0cHV0IEludGVyZmFj
-ZSBEZXNjcmlwdGlvbiIKPj4gdGhhdCBoYXMgYSBuaWNlIGdyYXBoaWMgZm9yIHRoYXQuCj4+Cj4+
-IE9yIGluIHNob3J0Ogo+PiAtIENSVEMoVlApMCBzdXBwb3J0cyA4SyByZXNvbHV0aW9uIGFuZCBj
-YW4gZHJpdmUgRFAwKzEsIEhETUkwKzEsIGVEUDArMQo+PiAgIFtpZiBJJ20gcmVhZGluZyB0aGlu
-Z3MgY29ycmVjdGx5LCA4SyB0b2dldGhlciB3aXRoIENSVEMxIHNvbWVob3cpCj4+IC0gQ1JUQyhW
-UCkxIHN1cHBvcnRzIDRLIHJlc29sdXRpb24gYW5kIGNhbiBkcml2ZSBEUDArMSwgSERNSTArMSwg
-ZURQMCsxCj4+IC0gQ1JUQyhWUCkyIHN1cHBvcnRzIDRLIHJlc29sdXRpb24gYW5kIGNhbiBkcml2
-ZSBEUDArMSwgSERNSTArMSwgZURQMDEsIERTSTArMQo+PiAtIENSVEMoVlApMyBzdXBwb3J0cyAy
-SyByZXNvbHV0aW9uIGFuZCBjYW4gZHJpdmUgRFNJMCsxIGFuZCBzb21lIEJUMTEyMCxCVDY1Ngo+
-Pgo+PiBzbyBmb3IgdGhlIDMgaGlnaGVyIHJlc29sdXRpb24gQ1JUQ3MgdGhlcmUgYXJlIGVzc2Vu
-dGlhbGx5IDYgb3IgOCBvdXRwdXQgb3B0aW9ucwo+PiBkZXBlbmRpbmcgb24gdGhlIGJvYXJkIGRl
-c2lnbgo+IAo+IFRoYXQncyBtdWNoIGNsZWFyZXIsIHRoYW5rcy4gSSdtIG5vdCBlbnRpcmVseSBz
-dXJlIGhvdyB0aGF0IGxpbmtzIHRvIHRoZQo+IG5lZWQgZm9yIHRoZSBQTEwgdG8gY2hhbmdlIGl0
-cyBwYXJlbnQgZGVwZW5kaW5nIG9uIHRoZSBvdXB1dC4gRG8geW91Cj4gbmVlZCB0byBhbHdheXMg
-aGF2ZSBhbGwgdGhlIG91dHB1dHMgb24gdGhlIHNhbWUgUExMPwoKT25lIG9mIHRoZSBwcm9ibGVt
-cyBpcyB0aGF0IHRoZSBQSFkgUExMcyBjYW5ub3QgYmUgdXNlZCBhcyBjbG9jayBzb3VyY2VzCmZv
-ciByZXNvbHV0aW9ucyBhYm92ZSA0S0A2MEh6LCB3aGlsZSBWT1AyIG9uIFJLMzU4OCBzdXBwb3J0
-cyB1cCB0byA4S0A2MEh6LAp3aGljaCBpcyBzdXBwb3NlZCB0byBiZSBoYW5kbGVkIGJ5IHRoZSBz
-eXN0ZW0gQ1JVLgoKTW9yZW92ZXIsIHRoZSAyIFBMTHMgYXJlIHNoYXJlZCBiZXR3ZWVuIDMgb3V0
-IG9mIHRoZSA0IHZpZGVvIHBvcnRzIGFscmVhZHkKbWVudGlvbmVkIGJ5IEhlaWtvLiAgVGhlcmUg
-aXMgcXVpdGUgYSBiaXQgb2YgY29tcGxleGl0eSBpbiBkb3duc3RyZWFtCmRyaXZlciB0byBoYW5k
-bGUgYWxsIHBvc3NpYmxlIHVzZWNhc2VzIC0gc2VlIFsxXSBmb3IgYSBicmllZiBkZXNjcmlwdGlv
-biBvbgpob3cgd2FzIHRoYXQgZGVzaWduZWQgdG8gd29yay4KClJlZ2FyZHMsCkNyaXN0aWFuCgpb
-MV0gaHR0cHM6Ly9naXRodWIuY29tL3JhZHhhL2tlcm5lbC9ibG9iL2xpbnV4LTYuMS1zdGFuLXJr
-cjQuMS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYyNMNDc0MgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============7070446240950093923==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="j4mpk3mpmbzuirpe"
+Content-Disposition: inline
+
+
+--j4mpk3mpmbzuirpe
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
+ handling on RK3588 HDMI0
+MIME-Version: 1.0
+
+On Tue, Dec 17, 2024 at 06:36:41PM +0200, Cristian Ciocaltea wrote:
+> On 12/17/24 5:00 PM, Maxime Ripard wrote:
+> > On Wed, Dec 11, 2024 at 07:01:15PM +0100, Heiko St=FCbner wrote:
+> >> Am Mittwoch, 11. Dezember 2024, 18:47:44 CET schrieb Maxime Ripard:
+> >>> On Wed, Dec 11, 2024 at 06:23:03PM +0100, Heiko St=FCbner wrote:
+> >>>> Am Mittwoch, 11. Dezember 2024, 18:07:57 CET schrieb Maxime Ripard:
+> >>>>> On Wed, Dec 11, 2024 at 12:15:07PM +0200, Cristian Ciocaltea wrote:
+> >>>>>> The RK3588 specific implementation is currently quite limited in t=
+erms
+> >>>>>> of handling the full range of display modes supported by the conne=
+cted
+> >>>>>> screens, e.g. 2560x1440@75Hz, 2048x1152@60Hz, 1024x768@60Hz are ju=
+st a
+> >>>>>> few of them.
+> >>>>>>
+> >>>>>> Additionally, it doesn't cope well with non-integer refresh rates =
+like
+> >>>>>> 59.94, 29.97, 23.98, etc.
+> >>>>>>
+> >>>>>> Make use of HDMI0 PHY PLL as a more accurate DCLK source to handle
+> >>>>>> all display modes up to 4K@60Hz.
+> >>>>>>
+> >>>>>> Tested-by: FUKAUMI Naoki <naoki@radxa.com>
+> >>>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.co=
+m>
+> >>>>>> ---
+> >>>>>>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 34 +++++++++++++++=
++++++++++++++
+> >>>>>>  1 file changed, 34 insertions(+)
+> >>>>>>
+> >>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/driver=
+s/gpu/drm/rockchip/rockchip_drm_vop2.c
+> >>>>>> index 8b2f53ffefdbf1cc8737b3a86e630a03a7fd9348..393fe6aa170aaee966=
+3c4a6d98c1cd6a5ef79392 100644
+> >>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> >>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> >>>>>> @@ -158,6 +158,7 @@ struct vop2_video_port {
+> >>>>>>  	struct drm_crtc crtc;
+> >>>>>>  	struct vop2 *vop2;
+> >>>>>>  	struct clk *dclk;
+> >>>>>> +	struct clk *dclk_src;
+> >>>>>>  	unsigned int id;
+> >>>>>>  	const struct vop2_video_port_data *data;
+> >>>>>> =20
+> >>>>>> @@ -212,6 +213,7 @@ struct vop2 {
+> >>>>>>  	struct clk *hclk;
+> >>>>>>  	struct clk *aclk;
+> >>>>>>  	struct clk *pclk;
+> >>>>>> +	struct clk *pll_hdmiphy0;
+> >>>>>> =20
+> >>>>>>  	/* optional internal rgb encoder */
+> >>>>>>  	struct rockchip_rgb *rgb;
+> >>>>>> @@ -220,6 +222,8 @@ struct vop2 {
+> >>>>>>  	struct vop2_win win[];
+> >>>>>>  };
+> >>>>>> =20
+> >>>>>> +#define VOP2_MAX_DCLK_RATE		600000 /* kHz */
+> >>>>>> +
+> >>>>>>  #define vop2_output_if_is_hdmi(x)	((x) =3D=3D ROCKCHIP_VOP2_EP_HD=
+MI0 || \
+> >>>>>>  					 (x) =3D=3D ROCKCHIP_VOP2_EP_HDMI1)
+> >>>>>> =20
+> >>>>>> @@ -1033,6 +1037,9 @@ static void vop2_crtc_atomic_disable(struct =
+drm_crtc *crtc,
+> >>>>>> =20
+> >>>>>>  	vop2_crtc_disable_irq(vp, VP_INT_DSP_HOLD_VALID);
+> >>>>>> =20
+> >>>>>> +	if (vp->dclk_src)
+> >>>>>> +		clk_set_parent(vp->dclk, vp->dclk_src);
+> >>>>>> +
+> >>>>>>  	clk_disable_unprepare(vp->dclk);
+> >>>>>> =20
+> >>>>>>  	vop2->enable_count--;
+> >>>>>> @@ -2049,6 +2056,27 @@ static void vop2_crtc_atomic_enable(struct =
+drm_crtc *crtc,
+> >>>>>> =20
+> >>>>>>  	vop2_vp_write(vp, RK3568_VP_MIPI_CTRL, 0);
+> >>>>>> =20
+> >>>>>> +	/*
+> >>>>>> +	 * Switch to HDMI PHY PLL as DCLK source for display modes up
+> >>>>>> +	 * to 4K@60Hz, if available, otherwise keep using the system CRU.
+> >>>>>> +	 */
+> >>>>>> +	if (vop2->pll_hdmiphy0 && mode->crtc_clock <=3D VOP2_MAX_DCLK_RA=
+TE) {
+> >>>>>> +		drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encod=
+er_mask) {
+> >>>>>> +			struct rockchip_encoder *rkencoder =3D to_rockchip_encoder(enc=
+oder);
+> >>>>>> +
+> >>>>>> +			if (rkencoder->crtc_endpoint_id =3D=3D ROCKCHIP_VOP2_EP_HDMI0)=
+ {
+> >>>>>> +				if (!vp->dclk_src)
+> >>>>>> +					vp->dclk_src =3D clk_get_parent(vp->dclk);
+> >>>>>> +
+> >>>>>> +				ret =3D clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
+> >>>>>> +				if (ret < 0)
+> >>>>>> +					drm_warn(vop2->drm,
+> >>>>>> +						 "Could not switch to HDMI0 PHY PLL: %d\n", ret);
+> >>>>>> +				break;
+> >>>>>> +			}
+> >>>>>> +		}
+> >>>>>> +	}
+> >>>>>> +
+> >>>>>
+> >>>>> It seems pretty fragile to do it at atomic_enable time, even more so
+> >>>>> since you don't lock the parent either.
+> >>>>>
+> >>>>> Any reason not to do it in the DRM or clock driver probe, and make =
+sure
+> >>>>> you never change the parent somehow?
+> >>>>
+> >>>> On rk3588 we have 3 dclk_s and 2 hdmi controllers. Each video-port c=
+an
+> >>>> use the clock generated from either the hdmi0phy or hdmi1phy, depend=
+ing
+> >>>> on which hdmi-controller it uses.
+> >>>>
+> >>>> So you actually need to know which vpX will output to which hdmiY to=
+ then
+> >>>> reparent that dclk to the hdmiphy output.
+> >>>
+> >>> The Rockchip nomenclature isn't super obvious to me, sorry. Is there a
+> >>> datasheet for this somewhere? Also, does this vpX -> HDMI-Y mapping n=
+eed
+> >>> to be dynamic?
+> >>
+> >> VPs are CRTCs in drm-language and each of them can drive a differing
+> >> number of output encoders. Those video-ports also have differing output
+> >> characteristics in terms of supported resolution and other properties.
+> >>
+> >> The rk3588 TRM has leaked in a number of places, and if you find a
+> >> TRM-part2, there is a section labeled "Display Output Interface Descri=
+ption"
+> >> that has a nice graphic for that.
+> >>
+> >> Or in short:
+> >> - CRTC(VP)0 supports 8K resolution and can drive DP0+1, HDMI0+1, eDP0+1
+> >>   [if I'm reading things correctly, 8K together with CRTC1 somehow)
+> >> - CRTC(VP)1 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP0+1
+> >> - CRTC(VP)2 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP01=
+, DSI0+1
+> >> - CRTC(VP)3 supports 2K resolution and can drive DSI0+1 and some BT112=
+0,BT656
+> >>
+> >> so for the 3 higher resolution CRTCs there are essentially 6 or 8 outp=
+ut options
+> >> depending on the board design
+> >=20
+> > That's much clearer, thanks. I'm not entirely sure how that links to the
+> > need for the PLL to change its parent depending on the ouput. Do you
+> > need to always have all the outputs on the same PLL?
+>=20
+> One of the problems is that the PHY PLLs cannot be used as clock sources
+> for resolutions above 4K@60Hz, while VOP2 on RK3588 supports up to 8K@60H=
+z,
+> which is supposed to be handled by the system CRU.
+
+But can that system CRU drive resolutions lower than 4k@60? If so, why
+do we bother with PHYs?
+
+> Moreover, the 2 PLLs are shared between 3 out of the 4 video ports already
+> mentioned by Heiko.  There is quite a bit of complexity in downstream
+> driver to handle all possible usecases - see [1] for a brief description =
+on
+> how was that designed to work.
+
+That's a generic allocation issue. Multiple drivers (vc4 for example)
+has this issue for other components. It can be fairly easily dealt with
+at atomic_check time.
+
+Maxime
+
+--j4mpk3mpmbzuirpe
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2GsgQAKCRAnX84Zoj2+
+dujIAX96ph7wCOEKhEVEvFE7nIYDouKQ48JPrJAUDi5plPwo1A/2ruUYjui/h6aO
+6e/R4ugBgM2dKMjhL2GPa78I2aqbjLCG/FGj4quQcjpkH3nmXDPHdkz5FaZJO0ee
+9vQJK4Wzqw==
+=+Pvw
+-----END PGP SIGNATURE-----
+
+--j4mpk3mpmbzuirpe--
+
+
+--===============7070446240950093923==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7070446240950093923==--
+
