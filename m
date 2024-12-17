@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0D70CCFA1D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2FA7CCFA1F
 	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=B5JyfiiOEzfyevbIMILCOHj4M65RdDQhHX1RxXNqiNQ=; b=HtqML0Ti72734h
-	h/3rraSKdG16zbOyhXshg5TSmAONYOALfxAFs8lFkiGcN7Z5dFuIPZEZCQh04FcTsGsBxgBuZhQv4
-	qBtiKoAez9J/2Dc9kbnDbWDj7d130w0sySY55yFgbK/np08Cz0VoTD8Bwawi3OVcijrwLPVz32oO9
-	sf0NQfk9qHP4SMnN1JhrwA2TdZw2yXt8XYATuFo+185anZeCVes0vXMfX+KwjlgsdfiQv0lm+aOWr
-	/ZtlQPis2p/VJmFnVbSFY4Qxg4sy36dEmC57wU+OVhioftWmYcQ2Sw3hSay3GNt7iXQdi6lYV0w7k
-	or5vNacn+w2oIHPFWaXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eX4NlfR0H3OpLvVBJojGuSMfPgG1Q7oqw+GoS3c3VwI=; b=nGxWPCAuY5kc+OYsztxCEVeXoY
+	ZSIO7XXsnF0IWlWoE63i5e24pY6jtWJCCUPa64LtkHttND/Auby+fGatrvxIOYphA41vurfDIdYGG
+	zOka1dbyQ168ACMoYGqpReclwM70MqNXoWv6q7frp06/0mjG/YSJDATCeTSZEh2B/nMGWR4RYWsDG
+	kv+KGRu3KL7ILBEzfxlwrfF5b8pSUtPPAlkNjrfXjIcMA85FjWwSYJcn7g+/iDIMC/nl2W6TWI2NH
+	Eb8OJSFnWcJ/ov/viA/AGNESO9jF60VH+faiPRgAjRP46laplpnSqYIeooLUQn/k166AuvgauRAxP
+	qu2q8xYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6X-0000000FROC-0k6f;
-	Thu, 06 Nov 2025 12:28:41 +0000
-Received: from mail-m1973190.qiye.163.com ([220.197.31.90])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTVG3-00000001MsW-0Wxm;
-	Mon, 23 Jun 2025 00:42:00 +0000
-Received: from DESKTOP-SN9UGS1 (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1987adbf8;
-	Mon, 23 Jun 2025 08:41:44 +0800 (GMT+08:00)
-Date: Mon, 23 Jun 2025 08:41:44 +0800
-From: "xxm@rock-chips.com" <xxm@rock-chips.com>
-To: robin.murphy <robin.murphy@arm.com>, 
-	joro <joro@8bytes.org>, 
-	will <will@kernel.org>, 
-	heiko <heiko@sntech.de>
-Cc: iommu <iommu@lists.linux.dev>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>
-Subject: =?utf-8?B?5Zue5aSNOiBSZTogW1BBVENIXSBpb21tdS9yb2NrY2hpcDogcHJldmVudCBpb21tdXMgZGVhZCBsb29wIHdoZW4gdHdvIG1hc3RlcnMgc2hhcmUgb25lIElPTU1V?=
-References: <20250620073945.572523-1-xxm@rock-chips.com>, 
-	<340d76b8-c3a6-4116-ae51-ac4e4ee6a994@arm.com>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.25.301[cn]
-Mime-Version: 1.0
-Message-ID: <202506230841445347043@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUNJHlYYTRpLTRpNGE5LTUhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a979a3bddab03ackunma08b86cd1b6046a
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OE06KTo5DDEzCi4ITxUaIj8w
-	TREKFC1VSlVKTE5LTUhCSEtOSkpNVTMWGhIXVQMDFjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lBWU5D
-	VUlJVUxVSkpPWVdZCAFZQU9LSEM3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=N2o1DUUNJO2OZFiwUvHWww+EiZsX+VCs5xwPWdyLGqmb85zvdLqcAyX3wORnh97ayVcJS8XqvgdxHGsTMvo/LyW3xVIfCYFaL2K562aV7T8kfOQOAcngWGBBxdoduI4KKC0AwwBExjvatfGbxKbnEPYBCXDj00RlYD0jS4CU4a8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=GEGAcyCqUXkwXqEOUaiQZ782N2IguRzssxIsxDn790c=;
-	h=date:mime-version:subject:message-id:from;
-X-Bad-Reply: References but no 'Re:' in Subject.
+	id 1vGz6W-0000000FRNq-2PHp;
+	Thu, 06 Nov 2025 12:28:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tNRZC-0000000CVoU-32x3
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Dec 2024 07:00:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734418825;
+	bh=ta6/RfirTMv6/TmEdMRAfKedVPrY5UfkkZ9TaGPE3gs=;
+	h=Date:To:Cc:From:Subject:From;
+	b=h3NIqfy6KEw9cxag/hB07uhrFPmmP/JIEsCAjglqx4YdEhEBB/DH1MyZLPfD4cOrQ
+	 mwsq2PH6/ly5XXb8q9NgN0fxPATnJM8z6mGOl6HsBURBFnrKZIAJrawAmKNeJ8JQmx
+	 0pX8H2WrqvQ8+Z1Dt3lEF2DDjE/L8csyD3scBlWpbebXpi6OVEXu/ztUz+p+08fM9C
+	 uLel/2+2kO30x73PSHKAbRxnnp0w9iDsyiJdp8TDZi4DjEeLeiOs9nshhbdtwydIgf
+	 hPpLJbBcHadhTt34zKSIiKADi4v0Rt3J+qCZtRyqMXQ0J3NTbShEyasBHnYVFkQhNk
+	 QLt2KKEpT5w3Q==
+Received: from [192.168.50.250] (unknown [171.76.86.135])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C03B117E12AC;
+	Tue, 17 Dec 2024 08:00:20 +0100 (CET)
+Message-ID: <7a1b888f-d7db-4ed7-96cd-3975ace837fb@collabora.com>
+Date: Tue, 17 Dec 2024 12:30:16 +0530
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: linux-rockchip@lists.infradead.org,
+ dri-devel <dri-devel@lists.freedesktop.org>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
+ tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
+ Helen Mae Koike Fornazier <helen.koike@collabora.com>,
+ Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
+ Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+Subject: Re: drm-ci: rockchip: kms_flip@flip-vs-absolute-wf_vblank flake
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250622_174159_631580_1A6AA68F 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20241216_230026_925126_62A02774 
+X-CRM114-Status: UNSURE (   3.68  )
+X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,52 +77,165 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUm9iaW4sCgoKPk9uIDIwMjUtMDYtMjAgODozOSBhbSwgU2ltb24gWHVlIHdyb3RlOgoKCgo+
-PiBXaGVuIHR3byBtYXN0ZXJzIHNoYXJlIGFuIElPTU1VLCBjYWxsaW5nIG9wcy0+b2ZfeGxhdGUg
-ZHVyaW5nCgoKCj4+IHRoZSBzZWNvbmQgbWFzdGVyJ3MgZHJpdmVyIGluaXQgbWF5IG92ZXJ3cml0
-ZSBpb21tdS0+ZG9tYWluIHNldAoKCgo+PiBieSB0aGUgZmlyc3QuIFRoaXMgY2F1c2VzIHRoZSBj
-aGVjayBpZiAoaW9tbXUtPmRvbWFpbiA9PSBkb21haW4pCgoKCj4+IGluIHJrX2lvbW11X2F0dGFj
-aF9kZXZpY2UoKSB0byBmYWlsLCByZXN1bHRpbmcgaW4gdGhlIHNhbWUKCgoKPj4gaW9tbXUtPm5v
-ZGUgYmVpbmcgYWRkZWQgdHdpY2UgdG8gJnJrX2RvbWFpbi0+aW9tbXVzLCB3aGljaCBjYW4KCgoK
-Pj4gbGVhZCB0byBhbiBpbmZpbml0ZSBsb29wIGluIHN1YnNlcXVlbnQgJnJrX2RvbWFpbi0+aW9t
-bXVzIG9wZXJhdGlvbnMuCgoKCj4KCgoKPkluZGVlZCB0aGlzIGlzIGEgcHJvcGVydHkgb2YgdGhl
-IElPTU1VIGluc3RhbmNlIGl0c2VsZiBzbyBpdCByZWFsbHkgCgoKCj5zaG91bGQgYmUgaW5pdGlh
-bGlzZWQgYmVmb3JlIHJlZ2lzdHJhdGlvbiwgaXJyZXNwZWN0aXZlIG9mIGNsaWVudCAKCgoKPmRl
-dmljZXMuIEZXSVcsIGlmIGl0J3MgcG9zc2libGUgdG8gdGFrZSBhbiB1bmV4cGVjdGVkIAoKCgo+
-UktfTU1VX0lSUV9QQUdFX0ZBVUxUIGltbWVkaWF0ZWx5IGFmdGVyIHJlcXVlc3RpbmcgdGhlIElS
-USAoZS5nLiBpbiBhIAoKCgo+a2R1bXAga2VybmVsIGFmdGVyIGEgY3Jhc2ggd2l0aCB0aGUgaGFy
-ZHdhcmUgc3RpbGwgcnVubmluZykgdGhlbiBJIHRoaW5rIAoKCgo+dGhlIGN1cnJlbnQgY29kZSBj
-b3VsZCBwcm9iYWJseSBlbmQgdXAgZGVyZWZlcmVuY2luZyBOVUxMIGluIAoKCgo+cmVwb3J0X2lv
-bW11X2ZhdWx0KCkgYXMgd2VsbC4KCgpUaGFua3MgIGZvciB5b3VyIHJldmlldyBhbmQgY2xlYXIg
-ZXhwbGFuYXRpb24sIEkgd2lsbCBhZGQgdGhlIGluZm9ybWF0aW9uIGFzIHlvdSBzdWdnZXN0ZWQu
-CgpTaW1vbiBYdWUKCj4KCgoKPlJldmlld2VkLWJ5OiBSb2JpbiBNdXJwaHkgPHJvYmluLm11cnBo
-eUBhcm0uY29tPgoKCgo+CgoKCj5BbmQgcHJvYmFibHkgYWxzbzoKCgoKPgoKCgo+Q2M6IHN0YWJs
-ZUB2Z2VyLmtlcm5lbC5vcmcKCgoKPkZpeGVzOiAyNWMyMzI1NTc1Y2MgKCJpb21tdS9yb2NrY2hp
-cDogQWRkIG1pc3Npbmcgc2V0X3BsYXRmb3JtX2RtYV9vcHMgCgoKCj5jYWxsYmFjayIpCgoKCj4K
-CgoKPlRoYW5rcywKCgoKPlJvYmluLgoKCgo+CgoKCj4+IFNpZ25lZC1vZmYtYnk6IFNpbW9uIFh1
-ZSA8eHhtQHJvY2stY2hpcHMuY29tPgoKCgo+PiAtLS0KCgoKPj7CoMKgIGRyaXZlcnMvaW9tbXUv
-cm9ja2NoaXAtaW9tbXUuYyB8IDMgKystCgoKCj4+wqDCoCAxIGZpbGUgY2hhbmdlZCwgMiBpbnNl
-cnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgoKCj4+IAoKCgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9pb21tdS9yb2NrY2hpcC1pb21tdS5jIGIvZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5j
-CgoKCj4+IGluZGV4IDIyZjc0YmEzM2EwZS4uZTZiYjNjNzg0MDE3IDEwMDY0NAoKCgo+PiAtLS0g
-YS9kcml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMKCgoKPj4gKysrIGIvZHJpdmVycy9pb21t
-dS9yb2NrY2hpcC1pb21tdS5jCgoKCj4+IEBAIC0xMTU3LDcgKzExNTcsNiBAQCBzdGF0aWMgaW50
-IHJrX2lvbW11X29mX3hsYXRlKHN0cnVjdCBkZXZpY2UgKmRldiwKCgoKPj7CoMKgIAkJcmV0dXJu
-IC1FTk9NRU07CgoKCj4+wqDCoCAKCgoKPj7CoMKgIAlkYXRhLT5pb21tdSA9IHBsYXRmb3JtX2dl
-dF9kcnZkYXRhKGlvbW11X2Rldik7CgoKCj4+IC0JZGF0YS0+aW9tbXUtPmRvbWFpbiA9ICZya19p
-ZGVudGl0eV9kb21haW47CgoKCj4+wqDCoCAJZGV2X2lvbW11X3ByaXZfc2V0KGRldiwgZGF0YSk7
-CgoKCj4+wqDCoCAKCgoKPj7CoMKgIAlwbGF0Zm9ybV9kZXZpY2VfcHV0KGlvbW11X2Rldik7CgoK
-Cj4+IEBAIC0xMTk1LDYgKzExOTQsOCBAQCBzdGF0aWMgaW50IHJrX2lvbW11X3Byb2JlKHN0cnVj
-dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCgoKCj4+wqDCoCAJaWYgKCFpb21tdSkKCgoKPj7CoMKg
-IAkJcmV0dXJuIC1FTk9NRU07CgoKCj4+wqDCoCAKCgoKPj4gKwlpb21tdS0+ZG9tYWluID0gJnJr
-X2lkZW50aXR5X2RvbWFpbjsKCgoKPj4gKwoKCgo+PsKgwqAgCXBsYXRmb3JtX3NldF9kcnZkYXRh
-KHBkZXYsIGlvbW11KTsKCgoKPj7CoMKgIAlpb21tdS0+ZGV2ID0gZGV2OwoKCgo+PsKgwqAgCWlv
-bW11LT5udW1fbW11ID0gMDsKCgoKPgoKCgo+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Maintainers,
+
+There are some flake test reported for rockchip driver testing in drm-ci.
+
+# Board Name: hp-11A-G6-EE-grunt
+# Bug Report:
+# Failure Rate: 100
+# IGT Version: 1.29-g33adea9eb
+# Linux Version: 6.13.0-rc2
+kms_flip@flip-vs-absolute-wf_vblank
+
+command: cd "/igt/libexec/igt-gpu-tools" && 
+"/igt/libexec/igt-gpu-tools/kms_flip" "--run-subtest" 
+"flip-vs-absolute-wf_vblank"
+pid: 1137
+exit status: exit status: 98
+stdout:
+-------
+IGT-Version: 1.29-g33adea9eb (aarch64) (Linux: 6.13.0-rc2-g1f006005ebf8 
+aarch64)
+Using IGT_SRANDOM=1734349644 for randomisation
+Opened device: /dev/dri/card1
+Using monotonic timestamps
+Starting subtest: flip-vs-absolute-wf_vblank
+Starting dynamic subtest: A-eDP1
+   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
+Expected frametime: 16663us; measured 16660.9us +- 46.199us accuracy 0.83%
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../tests/kms_flip.c:1434 run_test_on_crtc_set.constprop.0()
+   #2 ../tests/kms_flip.c:1829 run_test()
+   #3 ../tests/kms_flip.c:2078 __igt_unique____real_main2001()
+   #4 ../tests/kms_flip.c:2001 main()
+   #5 [__libc_init_first+0x80]
+   #6 [__libc_start_main+0x98]
+   #7 [_start+0x30]
+Dynamic subtest A-eDP1: FAIL (1.704s)
+Starting dynamic subtest: B-eDP1
+   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
+Expected frametime: 16663us; measured 16662.9us +- 39.823us accuracy 0.72%
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../tests/kms_flip.c:1434 run_test_on_crtc_set.constprop.0()
+   #2 ../tests/kms_flip.c:1829 run_test()
+   #3 ../tests/kms_flip.c:2078 __igt_unique____real_main2001()
+   #4 ../tests/kms_flip.c:2001 main()
+   #5 [__libc_init_first+0x80]
+   #6 [__libc_start_main+0x98]
+   #7 [_start+0x30]
+Dynamic subtest B-eDP1: FAIL (1.582s)
+Subtest flip-vs-absolute-wf_vblank: FAIL (3.315s)
+stderr:
+-------
+(kms_flip:1137) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1454:
+(kms_flip:1137) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+Dynamic subtest A-eDP1 failed.
+**** DEBUG ****
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=1, 
+pitch=9600)
+(kms_flip:1137) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=2, 
+pitch=9600)
+(kms_flip:1137) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1137) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1137) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1137) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
+1600 1603 1613 1733 0x48 0xa
+(kms_flip:1137) DEBUG: No stale events found
+(kms_flip:1137) INFO: Expected frametime: 16663us; measured 16660.9us +- 
+46.199us accuracy 0.83%
+(kms_flip:1137) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1454:
+(kms_flip:1137) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1137) igt_core-INFO: Stack trace:
+(kms_flip:1137) igt_core-INFO:   #0 ../lib/igt_core.c:2051 
+__igt_fail_assert()
+(kms_flip:1137) igt_core-INFO:   #1 ../tests/kms_flip.c:1434 
+run_test_on_crtc_set.constprop.0()
+(kms_flip:1137) igt_core-INFO:   #2 ../tests/kms_flip.c:1829 run_test()
+(kms_flip:1137) igt_core-INFO:   #3 ../tests/kms_flip.c:2078 
+__igt_unique____real_main2001()
+(kms_flip:1137) igt_core-INFO:   #4 ../tests/kms_flip.c:2001 main()
+(kms_flip:1137) igt_core-INFO:   #5 [__libc_init_first+0x80]
+(kms_flip:1137) igt_core-INFO:   #6 [__libc_start_main+0x98]
+(kms_flip:1137) igt_core-INFO:   #7 [_start+0x30]
+****  END  ****
+(kms_flip:1137) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1454:
+(kms_flip:1137) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1137) CRITICAL: Last errno: 22, Invalid argument
+Dynamic subtest B-eDP1 failed.
+**** DEBUG ****
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=3, 
+pitch=9600)
+(kms_flip:1137) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1137) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=4, 
+pitch=9600)
+(kms_flip:1137) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1137) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1137) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1137) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
+1600 1603 1613 1733 0x48 0xa
+(kms_flip:1137) DEBUG: No stale events found
+(kms_flip:1137) INFO: Expected frametime: 16663us; measured 16662.9us +- 
+39.823us accuracy 0.72%
+(kms_flip:1137) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1454:
+(kms_flip:1137) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1137) CRITICAL: Last errno: 22, Invalid argument
+(kms_flip:1137) igt_core-INFO: Stack trace:
+(kms_flip:1137) igt_core-INFO:   #0 ../lib/igt_core.c:2051 
+__igt_fail_assert()
+(kms_flip:1137) igt_core-INFO:   #1 ../tests/kms_flip.c:1434 
+run_test_on_crtc_set.constprop.0()
+(kms_flip:1137) igt_core-INFO:   #2 ../tests/kms_flip.c:1829 run_test()
+(kms_flip:1137) igt_core-INFO:   #3 ../tests/kms_flip.c:2078 
+__igt_unique____real_main2001()
+(kms_flip:1137) igt_core-INFO:   #4 ../tests/kms_flip.c:2001 main()
+(kms_flip:1137) igt_core-INFO:   #5 [__libc_init_first+0x80]
+(kms_flip:1137) igt_core-INFO:   #6 [__libc_start_main+0x98]
+(kms_flip:1137) igt_core-INFO:   #7 [_start+0x30]
+****  END  ****
+(kms_flip:1137) igt_kms-CRITICAL: Test assertion failure function 
+kmstest_set_connector_dpms, file ../lib/igt_kms.c:2246:
+(kms_flip:1137) igt_kms-CRITICAL: Failed assertion: found_it
+(kms_flip:1137) igt_kms-CRITICAL: Last errno: 9, Bad file descriptor
+(kms_flip:1137) igt_kms-CRITICAL: DPMS property not found on 53
+
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68249818
+
+Please could you have a look at these test results and let us know if 
+you need more information. Thank you.
+
+Regards,
+Vignesh
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
