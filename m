@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12FF2E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 07:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7A2E7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 07:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cmhjM9hQvkyW3fNDcjKaJCMQr26sXxh8bJ+YIYTML9I=; b=KCLT0/u9shQF0b
-	d7hhvKHtv0ZGMmb/ln0ekXYmwqKfdIvpLTxzY9yuNeP+De8I3Kzim2YNq3ACwtnGH9anAcS/mLk0w
-	SQSJ5Xc0lAgJD8TxEciLz3hJt0vMfC2mUzK2WFVtxKq/I6odLBouPp17L2xPXlJ8lQNcSVgig4cFM
-	8Rggrhd9EDst/DlglqsniL5bx0mXz0HeW/gmkMw5EFuXwULf57MLrnx6WoLVmqBLnGSPZjNqCd8CV
-	+pQVAH1ALskgdxL8wbnsRj5VtexiRlawxktOg/KTaaOC8cmkZoPtha2glEJZ57MxOZltcvWb68X7f
-	X0fWWg2bKJrM1IikViSQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IilzbkrOli4kUVIHeZ4TRjR9Grow5quxucXQUsScNqI=; b=l3+vNAbpo8NuO8xSpdmjtrivQV
+	Q+w1I8ikt0erK9W8BOZF1t+m/OvqOfzMdh4W5NERlAPABB6E4Q1xhqdV5PFCuLCKK5ds9mEKDyOIu
+	Lw7ol5nnAJBtqgBSsz2sN4LWF55p2wPgFYB0c/ZlZ2gTMoFqEycc+EaoPzCLFc8yWYRkmGaaiQXFj
+	3B0J55rrdhnsPzncVcH5/WWmCgRgINP+B7hn5oamg9idQC207nNYkPg1mUKse6CrifsDkBGtovbC2
+	uN0F/Uo2yPHjKSTAqxQfqe09LZMrGjkHx82ndSQRKjZ3jueVxaqxco5saHXUu3rYEtLbXA/3uK2kW
+	TiRLtQVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNRwO-0000000CZaF-3lDK;
-	Tue, 17 Dec 2024 07:24:24 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1tNSFk-0000000Cc69-0XrH;
+	Tue, 17 Dec 2024 07:44:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNRpX-0000000CY9z-0IQH
-	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Dec 2024 07:17:21 +0000
-X-QQ-mid: bizesmtpip3t1734419815tfi4l8w
-X-QQ-Originating-IP: FATXyyRXnHdEfrhFtUmXKV4mt7pDLQPrUgQlNZEBCLc=
-Received: from [IPV6:240f:10b:7440:1:1e5c:5a5f ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 17 Dec 2024 15:16:50 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 4968437046563404095
-Message-ID: <98F610891BD5E021+55967d60-9a5b-4b19-8005-f10f51bfe417@radxa.com>
-Date: Tue, 17 Dec 2024 16:16:50 +0900
+	id 1tNSEd-0000000Cbti-0SOV;
+	Tue, 17 Dec 2024 07:43:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 22183A41E15;
+	Tue, 17 Dec 2024 07:41:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A648EC4CED3;
+	Tue, 17 Dec 2024 07:43:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734421393;
+	bh=SFEB+1CioxLc5lMZKoURIeOpaioyZPe04X8yK/3CHYY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qgygh1jBZx5lw8SjMJZ9Rn89E9kJt7oapQfMySMCzPSBHCgBuwR0KzOWAzB51uN3c
+	 DFJJcdWpUijv2S9WKbhoJTLFMnw/TcqLsu5f+u/7yuUVgx8eq6k1P3RVktd6ksDe9r
+	 3KznClF/Fti3bWkP8h+V0dhDiQ7Kmfn+uvsey1jDZE5nv2DuAeGCNztZP5D18mHk93
+	 EE6lfm4G8EkU3pUWUW93gmUoHmLrgxokZ7oLJWxRvx1PCwHnSvvTJa1WsGv2sBnKJ3
+	 Di+eL1PIokZY3FnyLKS0DJF1ewNV7svRLMJRIZn0urB0dqfOOOgE7vxYn2sCjTERi+
+	 5SngBCjqBp21A==
+Date: Tue, 17 Dec 2024 08:43:10 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
+ helpers
+Message-ID: <20241217-heretic-hopeful-jaguar-aeabec@houat>
+References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
+ <20241206-drm-bridge-hdmi-connector-v6-3-50dc145a9c06@linaro.org>
+ <20241216-heretic-mackerel-of-wholeness-fcfed7@houat>
+ <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/12] arm64: dts: rockchip: Fix proparties for pmic
- regulators for Radxa ROCK 5C
-To: Krzysztof Kozlowski <krzk@kernel.org>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- dsimic@manjaro.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20241216113052.15696-1-naoki@radxa.com>
- <20241216113052.15696-12-naoki@radxa.com>
- <0b6a7a7a-ff5a-4897-a283-6bf582dd1d79@kernel.org>
- <DC42478EC0DFB00A+6e374774-07d8-493c-9f2f-e7106d1f2d61@radxa.com>
- <3313fc80-73b9-4063-8076-64e65c5d5921@kernel.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-Organization: Radxa Computer (Shenzhen) Co., Ltd.
-In-Reply-To: <3313fc80-73b9-4063-8076-64e65c5d5921@kernel.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: NQDSFSrlZSaiM2bjtiHdvzs93ID/yCWR2hCy8Tzzp1tsx7ecRc3+aVap
-	76F/9h06L0T1iDvgAQlzo7SX5sQTbkxL5H2lpsd5/Cc9ukXQgQxzhbiz+BL1pfNZQc/i6JB
-	v2Mecv+WJnneAtyHKxOLziFJJSV9hOAEFosIyIpatEqCxPGO/JoPRkrAZivPN8/1DteKQCE
-	+pg+zmKo4Duw2CXsY8jwnEzQ4ydRxVhv01s+mRhECqU7mKp4hL2Q4dA+YV3PtO8iZVB7x7Z
-	CU5OGM1gWZEezN4oa2DKyaeFf8XXpYHOJdYSN1ggib9nuP+A/MZS8q31pV9yjoB23hX0PiI
-	kfV7woqgrmv099iuk/H7m/flhOebBQ7PSTiGN14D/W0lwhKIIJqZfIE7oFZIFp51evbhaJl
-	mUDtOpmXjzt8IqD8pJDC01n2k8j5wq5fboSoMVwYJ6FU4qpElHtKmNjlqs5GcIjYnfInQNw
-	E4PF3edXEEK+6W1tipoiNChD3bz/cjPc2sJrs7uACa6zMmBk1yxamUZtUcP/dA9w6IhQ0Cj
-	XImRfc4aDb/wVU5SnSvTn0juNWVWq32p2dEkPZuSDccaOLUIdAJ1le6XhfFoovYT5t+q9Wx
-	lg6Swyz4cSRUtqZj/nOJWTIUA25pv+OoZIgqzKpHmwpmtAZ35SiXjA3k9CiHttawHYQHTQU
-	IiK002azv9+67GocBSQJaG57eWIm1w5lMJk2XswYfuh/SQ4nvncd/hIlpoWTcj7E4cxRPa2
-	JwXk0CM8p8oHmHO4f5VwG8REjpco5vput/KDg3sDuFza9cQQdl3RfFbsdxUzyTZZZPDxMMr
-	zPGMOne+VEdbSXBDnHe18FGRmANX9HOJ/wCjUEabsNGGci3UgPRXru3LK3Z5ks3qjkhjbzo
-	8t58GxksKxeIogBjU1hafJZmYdca/p8Co9nDxPChkiRNNxPNjpp3d6NG9HgCDvwZOcJX2RY
-	rZd0=
-X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
-X-QQ-RECHKSPAM: 0
+In-Reply-To: <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_231719_740303_117710F0 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20241216_234315_276823_CCE191D3 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,56 +87,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============5346527664829564433=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/17/24 15:24, Krzysztof Kozlowski wrote:
-> On 17/12/2024 01:43, FUKAUMI Naoki wrote:
->> On 12/16/24 22:41, Krzysztof Kozlowski wrote:
->>> On 16/12/2024 12:30, FUKAUMI Naoki wrote:
->>>> Fix proparties for dcdc-reg7 and nldo-reg3 regulators to match with
->>>
->>>
->>>
->>> You have so many typos in almost each commit msg. Here both in subject
->>> and commit msg.
->>>
->>> Run spell check before you send to the lists. Don't expect the reviewers
->>> to be your computer tools.
->>
->> Sorry for my poor English. I'll check it next time.
-> 
-> I am not pointing out English. I am pointing out not using standard
-> tool, spellcheck, to fix issues in effortless way.
-> 
->>
->>> Explain what is being fixed here. Why would you prefer to match with
->>> vendor kernel?
->>
->> Not my preference, but the only reference.
-> 
-> Then why the reference is correct? Provide some arguments why this
-> should be changed to the "reference" and not the "reference" fixed.
 
-Are you serious?
+--===============5346527664829564433==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="c4s3lijvuloytprp"
+Content-Disposition: inline
 
-Why do you think the current code is correct? It's written by me, typo 
-and copy-pasto generator. Need more argument?
 
-Best regards,
+--c4s3lijvuloytprp
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
+ helpers
+MIME-Version: 1.0
 
---
-FUKAUMI Naoki
-Typo and Copy-Pasto Generator
+Hi,
 
-> Best regards,
-> Krzysztof
-> 
+On Mon, Dec 16, 2024 at 07:47:32PM +0200, Dmitry Baryshkov wrote:
+> On Mon, Dec 16, 2024 at 06:04:41PM +0100, Maxime Ripard wrote:
+> > > +struct drm_connector_hdmi_codec_funcs {
+> > > +	/**
+> > > +	 * @audio_startup:
+> > > +	 *
+> > > +	 * Called when ASoC starts an audio stream setup. The
+> > > +	 * @hdmi_audio_startup is optional.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	int (*audio_startup)(struct drm_connector *connector);
+> > > +
+> > > +	/**
+> > > +	 * @prepare:
+> > > +	 * Configures HDMI-encoder for audio stream. Can be called
+> > > +	 * multiple times for each setup. Mandatory.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	int (*prepare)(struct drm_connector *connector,
+> > > +		       struct hdmi_codec_daifmt *fmt,
+> > > +		       struct hdmi_codec_params *hparms);
+> >=20
+> > Missing newline
+> >=20
+> > > +	/**
+> > > +	 * @audio_shutdown:
+> > > +	 *
+> > > +	 * Shut down the audio stream. Mandatory.
+> > > +	 *
+> > > +	 * Returns:
+> > > +	 * 0 on success, a negative error code otherwise
+> > > +	 */
+> > > +	void (*audio_shutdown)(struct drm_connector *connector);
+> >=20
+> > And thus we can probably just call that one shutdown?
+>=20
+> It should be called automatically by the sound system. I'd rather not
+> call items directly that we are not supposed to call.
 
+I meant that with my suggestion to call the function
+drm_connector_hdmi_audio_init, that structure would be called
+drm_connector_hdmi_audio_funcs, and thus the audio prefix in
+audio_shutdown is redundant.
+
+Maxime
+
+--c4s3lijvuloytprp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2EriQAKCRAnX84Zoj2+
+dn+KAXsHF1Me3a69DjYay1zSH0/PHfBLCaIV8MGlbctx2pAUq5SnrvsJZ2avXBJl
+7I+LlxABewcJcOkSen/hN0RxUNmpQaMQSHXReIonARDyzvaXra1BL1nAga4/ubzn
+jeARugW3sQ==
+=pdll
+-----END PGP SIGNATURE-----
+
+--c4s3lijvuloytprp--
+
+
+--===============5346527664829564433==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5346527664829564433==--
+
