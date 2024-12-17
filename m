@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7A2E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 07:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 944D8E7716A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 08:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IilzbkrOli4kUVIHeZ4TRjR9Grow5quxucXQUsScNqI=; b=l3+vNAbpo8NuO8xSpdmjtrivQV
-	Q+w1I8ikt0erK9W8BOZF1t+m/OvqOfzMdh4W5NERlAPABB6E4Q1xhqdV5PFCuLCKK5ds9mEKDyOIu
-	Lw7ol5nnAJBtqgBSsz2sN4LWF55p2wPgFYB0c/ZlZ2gTMoFqEycc+EaoPzCLFc8yWYRkmGaaiQXFj
-	3B0J55rrdhnsPzncVcH5/WWmCgRgINP+B7hn5oamg9idQC207nNYkPg1mUKse6CrifsDkBGtovbC2
-	uN0F/Uo2yPHjKSTAqxQfqe09LZMrGjkHx82ndSQRKjZ3jueVxaqxco5saHXUu3rYEtLbXA/3uK2kW
-	TiRLtQVw==;
+	bh=3Mefw9IAhirayXHOYfX32XLRR6JlUfVaE9JjgD0sgMM=; b=OXkrkBo+SOwKhRQdr1uMYON7hi
+	kFp5RBTfpFoHNM3dqN0tLtNrNWpEUsCdZCkqV8i+chLbwYGGo4lPMRfHPDm3dzj76RCBijCUVnqjq
+	lREwUvypnFuK5DZIP4b7ZQDMemNKeoL6iXJX3ucqMrSS80/o6W4SGclBJhKso78hF44cH8zZ6t06w
+	IFWWsT/G0z/oJUEBXllDBvOmOzpY/3RLG/3iJHbP0GG7y5G9VqesI6rm+6VGA2US1UKFRDXemJtKt
+	r3U3cdg/KgF0o2ACKn1TbBI5GZMe0RMidfU/7yIX0Fm0ioIxpyT3EO9JxJavYg7OAOqNP3QrMcDWM
+	wCuyoc5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNSFk-0000000Cc69-0XrH;
-	Tue, 17 Dec 2024 07:44:24 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tNTBh-0000000CkLV-0Wrx;
+	Tue, 17 Dec 2024 08:44:17 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNSEd-0000000Cbti-0SOV;
-	Tue, 17 Dec 2024 07:43:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 22183A41E15;
-	Tue, 17 Dec 2024 07:41:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A648EC4CED3;
-	Tue, 17 Dec 2024 07:43:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734421393;
-	bh=SFEB+1CioxLc5lMZKoURIeOpaioyZPe04X8yK/3CHYY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qgygh1jBZx5lw8SjMJZ9Rn89E9kJt7oapQfMySMCzPSBHCgBuwR0KzOWAzB51uN3c
-	 DFJJcdWpUijv2S9WKbhoJTLFMnw/TcqLsu5f+u/7yuUVgx8eq6k1P3RVktd6ksDe9r
-	 3KznClF/Fti3bWkP8h+V0dhDiQ7Kmfn+uvsey1jDZE5nv2DuAeGCNztZP5D18mHk93
-	 EE6lfm4G8EkU3pUWUW93gmUoHmLrgxokZ7oLJWxRvx1PCwHnSvvTJa1WsGv2sBnKJ3
-	 Di+eL1PIokZY3FnyLKS0DJF1ewNV7svRLMJRIZn0urB0dqfOOOgE7vxYn2sCjTERi+
-	 5SngBCjqBp21A==
-Date: Tue, 17 Dec 2024 08:43:10 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
- helpers
-Message-ID: <20241217-heretic-hopeful-jaguar-aeabec@houat>
-References: <20241206-drm-bridge-hdmi-connector-v6-0-50dc145a9c06@linaro.org>
- <20241206-drm-bridge-hdmi-connector-v6-3-50dc145a9c06@linaro.org>
- <20241216-heretic-mackerel-of-wholeness-fcfed7@houat>
- <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
+	id 1tNTAg-0000000Ck45-01Hj
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Dec 2024 08:43:15 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tNTAd-0005l6-Ch; Tue, 17 Dec 2024 09:43:11 +0100
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tNTAa-003ppe-2q;
+	Tue, 17 Dec 2024 09:43:09 +0100
+Received: from pengutronix.de (pd9e59fec.dip0.t-ipconnect.de [217.229.159.236])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 50E76390462;
+	Tue, 17 Dec 2024 08:43:09 +0000 (UTC)
+Date: Tue, 17 Dec 2024 09:43:09 +0100
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, heiko@sntech.de, 
+	cl@rock-chips.com, kever.yang@rock-chips.com, linux-can@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 0/2] rockchip: add can for RK3576 Soc
+Message-ID: <20241217-hallowed-adder-of-swiftness-3cd239-mkl@pengutronix.de>
+References: <20241217023908.1292999-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <exocd3b65cy6cy5w47cwx3ykn54ncf34hwyj7ffihs5jjzean5@y677uywnlah2>
+In-Reply-To: <20241217023908.1292999-1-zhangqing@rock-chips.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_234315_276823_CCE191D3 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20241217_004314_054011_BB258DC7 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,93 +75,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5346527664829564433=="
+Content-Type: multipart/mixed; boundary="===============5246836419195332455=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5346527664829564433==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="c4s3lijvuloytprp"
+--===============5246836419195332455==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vve2bzd3aa25xn66"
 Content-Disposition: inline
 
 
---c4s3lijvuloytprp
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--vve2bzd3aa25xn66
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 03/10] drm/connector: implement generic HDMI codec
- helpers
+Subject: Re: [PATCH 0/2] rockchip: add can for RK3576 Soc
 MIME-Version: 1.0
 
-Hi,
-
-On Mon, Dec 16, 2024 at 07:47:32PM +0200, Dmitry Baryshkov wrote:
-> On Mon, Dec 16, 2024 at 06:04:41PM +0100, Maxime Ripard wrote:
-> > > +struct drm_connector_hdmi_codec_funcs {
-> > > +	/**
-> > > +	 * @audio_startup:
-> > > +	 *
-> > > +	 * Called when ASoC starts an audio stream setup. The
-> > > +	 * @hdmi_audio_startup is optional.
-> > > +	 *
-> > > +	 * Returns:
-> > > +	 * 0 on success, a negative error code otherwise
-> > > +	 */
-> > > +	int (*audio_startup)(struct drm_connector *connector);
-> > > +
-> > > +	/**
-> > > +	 * @prepare:
-> > > +	 * Configures HDMI-encoder for audio stream. Can be called
-> > > +	 * multiple times for each setup. Mandatory.
-> > > +	 *
-> > > +	 * Returns:
-> > > +	 * 0 on success, a negative error code otherwise
-> > > +	 */
-> > > +	int (*prepare)(struct drm_connector *connector,
-> > > +		       struct hdmi_codec_daifmt *fmt,
-> > > +		       struct hdmi_codec_params *hparms);
-> >=20
-> > Missing newline
-> >=20
-> > > +	/**
-> > > +	 * @audio_shutdown:
-> > > +	 *
-> > > +	 * Shut down the audio stream. Mandatory.
-> > > +	 *
-> > > +	 * Returns:
-> > > +	 * 0 on success, a negative error code otherwise
-> > > +	 */
-> > > +	void (*audio_shutdown)(struct drm_connector *connector);
-> >=20
-> > And thus we can probably just call that one shutdown?
+On 17.12.2024 10:39:06, Elaine Zhang wrote:
+> rk3576 can is a new controller:
+> Support CAN and CANFD protocol.
+> Support DMA
 >=20
-> It should be called automatically by the sound system. I'd rather not
-> call items directly that we are not supposed to call.
+> There are major differences from the previous rk3568. All errata on the
+> rk3568 have been fixed and redesigned.
 
-I meant that with my suggestion to call the function
-drm_connector_hdmi_audio_init, that structure would be called
-drm_connector_hdmi_audio_funcs, and thus the audio prefix in
-audio_shutdown is redundant.
+I'm not convinced that we need a second driver for the hardware that has
+the erratas fixed. The mainline driver has quirks that allow you to
+specify if the IP core needs workarounds for the errata or not.
 
-Maxime
+regards,
+Marc
 
---c4s3lijvuloytprp
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--vve2bzd3aa25xn66
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2EriQAKCRAnX84Zoj2+
-dn+KAXsHF1Me3a69DjYay1zSH0/PHfBLCaIV8MGlbctx2pAUq5SnrvsJZ2avXBJl
-7I+LlxABewcJcOkSen/hN0RxUNmpQaMQSHXReIonARDyzvaXra1BL1nAga4/ubzn
-jeARugW3sQ==
-=pdll
+iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmdhOZkACgkQKDiiPnot
+vG8uLgf8DNFQnbIdm22IWWzF8IzCAqTetUPNQLvfWtU1jnilBjENPk/efnIkyMG6
+u5TksLnIqSMTaNhzExvc6KSqXln8V8FwaF09sJjmuNCfEpz0iZ9b7bhGl/M0LmdI
+Y1Ok4GG+xmmuPlVGHcH1VdvmWoBlUCLCi4gY2wqH/SEG5slkx2cc+BOrpW/rcjG0
+LXkigIlUNA3Dcn26L6NIoAqlfvfVqEMnV6xWylLZmkHQHN951eK3uer+guo0SBEF
+pmp3L0wtOilSGjShaVGwdC7+2JoBe3nG/qsT5/Rt11cEwtMvhpC14LX6tJnW3IPi
+LHQJxloBBFW88K6sjHjC/Plz4+4vJw==
+=O3qF
 -----END PGP SIGNATURE-----
 
---c4s3lijvuloytprp--
+--vve2bzd3aa25xn66--
 
 
---===============5346527664829564433==
+--===============5246836419195332455==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -184,5 +143,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5346527664829564433==--
+--===============5246836419195332455==--
 
