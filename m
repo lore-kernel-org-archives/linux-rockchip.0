@@ -4,64 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63949E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 14:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B32BE7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 15:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4IUxpEB7UjSxuYbWSrHZwdvEHK5SZa2x6+H7rENJ088=; b=eNoH2+9vlQmUQS
-	2RTkKXubrG1NzdlayDYjqVhdnv74hB15tKQpJXFY+tBystKBd+ylP5P/FgCpx1ESetv/kojvgGgsR
-	1rly0TdTCasdHbuRsmhHZjBY2Lz5h3WUxlpgk1EjsDnwLHzZ3SzxkO0o9h/CpF8/we7OLh325pIpX
-	euitbr8zPmCexoHDNGzhNZOTWr+TNk1v6FmV6jdltlQWAI+7GUxqZZ3tQGVkGBpnV2HeFhKXH8Kzg
-	hHWXN/Da/HU4xVdHo1ht5y8SlB5jrNzDWCbcmvXXCqs2YkBJQTvAJSysmjuVqSsfI54uiHZBTnwH7
-	Jtr0VaU57PGZnEKQF90w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7uvmgeM/rSmp6fET17nVsVVgdv/+a2EjJoNIj+l5gJk=; b=mbCwEEKrOilhJYBxk3TazOPmTU
+	4lyFMmBwzr9HctxnGbo6UuyUi7SnyCNegm38fqtwRWhxqFPz5FWeYgL9xHKm92kleOQrDv8Qx9//O
+	SYrQNwRd4uhRMcTRxwDJDUateW50x6BFx6b66AgeaBQBoEWF2bh5FdsUoDavHVgOGMGwXD/ORPglC
+	LHc1qLk9hLZDNWMZHPXLXYFVHWhyKxwVEPxyr5w2RkMxIrC8bTXyTWG/5d9VTVlNQrbi5mDq0roGb
+	gFL5ZYKQEkX9kKvNUx6SJnDFBYQXLm2nTJQsDRADsyvIDNqsj57tfCajsczsa7EQ2Gjy9sVwn8Myl
+	jq64POhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNYVP-0000000DjwX-2QFp;
-	Tue, 17 Dec 2024 14:24:59 +0000
+	id 1tNZ54-0000000Ds4Y-3Aop;
+	Tue, 17 Dec 2024 15:01:50 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNXRG-0000000DXKt-1zS4;
-	Tue, 17 Dec 2024 13:16:39 +0000
+	id 1tNZ3x-0000000Drso-3i97;
+	Tue, 17 Dec 2024 15:00:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 63E69A412F3;
-	Tue, 17 Dec 2024 13:14:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6638C4CED3;
-	Tue, 17 Dec 2024 13:16:32 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6FF4AA419D8;
+	Tue, 17 Dec 2024 14:58:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55759C4CED3;
+	Tue, 17 Dec 2024 15:00:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734441396;
-	bh=2ZJ0ETzEGovT3C+Lhgx2MC2gLEcVqJCSkAbyfxj/Rj0=;
+	s=k20201202; t=1734447640;
+	bh=VodShXdWCpbBVKCy8e5GaNuMf0HhKLV7ooZXobsFe9o=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t11yFRtDXZXYf7U/turp3S/eLXdXyGIa3s7eAy2myGUTN7Gzb+yZYbXAhGF12FSrf
-	 4zwItyNXBM6iVo1U73e8rgNsrnM0uJL9Plf3F1tJQ7ADUjAbp+TV0CTe1P1BnNen5g
-	 Pceba5qP/FIbztkrQ5ar85yQI9eKTNiS+zjipfpUK6iBwtEmex91RIMbFfg1HJB69X
-	 ejQgLxNUuzKIJlQYpgv5iTm7azYq1z2UpI2OHWPe3aXgp40LluKoUzZH1AkFS2ttNw
-	 W7CJ09HlujP08DuullW2BgsV72tW4rVuu+DzJ87KXvfDwkDS3RTRISYKZkM5UEF2x1
-	 ssrvm9mZ517sw==
-Date: Tue, 17 Dec 2024 13:16:29 +0000
-From: Lee Jones <lee@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: jikos@kernel.org, jic23@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
-	srinivas.pandruvada@linux.intel.com, bentiss@kernel.org,
-	dmitry.torokhov@gmail.com, pavel@ucw.cz, ukleinek@debian.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-leds@vger.kernel.org
-Subject: [GIT PULL] Immutable branch between MFD, HID, HWMON, Input and LEDs
- due for the v6.14 merge window
-Message-ID: <20241217131629.GJ2418536@google.com>
-References: <20241107114712.538976-1-heiko@sntech.de>
+	b=G8HrnkHx3Z01KwxYSdVrcySzZAyq7YjyJUe8DddDbWcHIV9SAsY77YUIkBoVZE0TB
+	 VWnniMScYNRuxl+CMZiD5+cGjvBJaJi0MzIS/5TDSaKO8pxicwHpz6r4mQdLh2fNkI
+	 RTkNlXz1+r00BM1kDRurtPJbQlRCGNsmQ+hHXyawVgMqZ2Qsrk0cumfsGETwj4Qniu
+	 7gRfT4bYsYp1xdZ8CPyognqSaS90N7TqG8xEFJTVP/dufFVmMyab5khRpYnJfV3ihs
+	 rrZ9Rbt/PQJOsfrsgStCmnVTXi5iMhCw2cUVtSrUrLRTj3QgSN9x0H4QGs6P7aD2pu
+	 ZmkU80QWEL3ag==
+Date: Tue, 17 Dec 2024 16:00:38 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
+ handling on RK3588 HDMI0
+Message-ID: <20241217-ubiquitous-refreshing-finch-aceade@houat>
+References: <20241211-vop2-hdmi0-disp-modes-v2-0-471cf5001e45@collabora.com>
+ <1820767.5KxKD5qtyk@diego>
+ <a4ex3s23r4k6wehyoaw3aylpcexfrclrxxykjpabhdfne2jgmu@ii6riiiga2zj>
+ <1756448.izSxrag8PF@diego>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241107114712.538976-1-heiko@sntech.de>
+In-Reply-To: <1756448.izSxrag8PF@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_051638_637967_E37E9DE8 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20241217_070042_052922_0F98CAC9 
+X-CRM114-Status: GOOD (  42.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,60 +67,202 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, kernel@collabora.com, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============1268228057922884523=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RW5qb3khCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDQwMzg0Yzg0MGVhMTk0
-NGQ3YzVhMzkyZTg5NzVlZDA4OGVjZjBiMzc6CgogIExpbnV4IDYuMTMtcmMxICgyMDI0LTEyLTAx
-IDE0OjI4OjU2IC0wODAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6
-CgogIHNzaDovL2dpdEBnaXRvbGl0ZS5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dp
-dC9sZWUvbWZkLmdpdCB0YWdzL2liLW1mZC1oaWQtaHdtb24taW5wdXQtbGVkcy12Ni4xNAoKZm9y
-IHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDk4NTVjYWY1ZDRlYjFkOGI4YmJhNjBiZTI1NjE4
-NmVhOGUwZjkwN2M6CgogIGh3bW9uOiBhZGQgZHJpdmVyIGZvciB0aGUgaHdtb24gcGFydHMgb2Yg
-cW5hcC1tY3UgZGV2aWNlcyAoMjAyNC0xMi0xNyAxMzoxNDo0OCArMDAwMCkKCi0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KSW1t
-dXRhYmxlIGJyYW5jaCBiZXR3ZWVuIE1GRCwgSElELCBIV01PTiwgSW5wdXQgYW5kIExFRHMgZHVl
-IGZvciB0aGUgdjYuMTQgbWVyZ2Ugd2luZG93CgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkhlaWtvIFN0dWVibmVyICg3KToK
-ICAgICAgSElEOiBoaWQtc2Vuc29yLWh1YjogZG9uJ3QgdXNlIHN0YWxlIHBsYXRmb3JtLWRhdGEg
-b24gcmVtb3ZlCiAgICAgIG1mZDogY29yZTogTWFrZSBwbGF0Zm9ybV9kYXRhIHBvaW50ZXIgY29u
-c3QgaW4gc3RydWN0IG1mZF9jZWxsCiAgICAgIGR0LWJpbmRpbmdzOiBtZmQ6IEFkZCBiaW5kaW5n
-IGZvciBxbmFwLHRzNDMzLW1jdSBkZXZpY2VzCiAgICAgIG1mZDogQWRkIGJhc2UgZHJpdmVyIGZv
-ciBxbmFwLW1jdSBkZXZpY2VzCiAgICAgIGxlZHM6IEFkZCBkcml2ZXIgZm9yIExFRHMgZnJvbSBx
-bmFwLW1jdSBkZXZpY2VzCiAgICAgIElucHV0OiBhZGQgZHJpdmVyIGZvciB0aGUgaW5wdXQgcGFy
-dCBvZiBxbmFwLW1jdSBkZXZpY2VzCiAgICAgIGh3bW9uOiBhZGQgZHJpdmVyIGZvciB0aGUgaHdt
-b24gcGFydHMgb2YgcW5hcC1tY3UgZGV2aWNlcwoKIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL21m
-ZC9xbmFwLHRzNDMzLW1jdS55YW1sICAgIHwgIDQyICsrKwogRG9jdW1lbnRhdGlvbi9od21vbi9p
-bmRleC5yc3QgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwogRG9jdW1lbnRhdGlvbi9od21v
-bi9xbmFwLW1jdS1od21vbi5yc3QgICAgICAgICAgICAgfCAgMjcgKysKIE1BSU5UQUlORVJTICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA5ICsKIGRyaXZlcnMvaGlk
-L2hpZC1zZW5zb3ItaHViLmMgICAgICAgICAgICAgICAgICAgICAgIHwgIDIxICstCiBkcml2ZXJz
-L2h3bW9uL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxMiArCiBkcml2
-ZXJzL2h3bW9uL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBk
-cml2ZXJzL2h3bW9uL3FuYXAtbWN1LWh3bW9uLmMgICAgICAgICAgICAgICAgICAgICB8IDM2NCAr
-KysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvaW5wdXQvbWlzYy9LY29uZmlnICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgIDEyICsKIGRyaXZlcnMvaW5wdXQvbWlzYy9NYWtlZmlsZSAgICAg
-ICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvaW5wdXQvbWlzYy9xbmFwLW1jdS1p
-bnB1dC5jICAgICAgICAgICAgICAgIHwgMTUzICsrKysrKysrKwogZHJpdmVycy9sZWRzL0tjb25m
-aWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMTEgKwogZHJpdmVycy9sZWRzL01h
-a2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9sZWRz
-L2xlZHMtcW5hcC1tY3UuYyAgICAgICAgICAgICAgICAgICAgICAgfCAyMjcgKysrKysrKysrKysr
-KwogZHJpdmVycy9tZmQvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAg
-MTMgKwogZHJpdmVycy9tZmQvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-fCAgIDIgKwogZHJpdmVycy9tZmQvcW5hcC1tY3UuYyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgfCAzMzggKysrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9saW51eC9tZmQvY29yZS5oICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGluY2x1ZGUvbGludXgvbWZkL3FuYXAt
-bWN1LmggICAgICAgICAgICAgICAgICAgICAgIHwgIDI2ICsrCiAxOSBmaWxlcyBjaGFuZ2VkLCAx
-MjU1IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9xbmFwLHRzNDMzLW1jdS55YW1sCiBj
-cmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9od21vbi9xbmFwLW1jdS1od21vbi5yc3QK
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2h3bW9uL3FuYXAtbWN1LWh3bW9uLmMKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2lucHV0L21pc2MvcW5hcC1tY3UtaW5wdXQuYwogY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvbGVkcy9sZWRzLXFuYXAtbWN1LmMKIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL21mZC9xbmFwLW1jdS5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9s
-aW51eC9tZmQvcW5hcC1tY3UuaAoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============1268228057922884523==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="z2odzs7z5tukhvub"
+Content-Disposition: inline
+
+
+--z2odzs7z5tukhvub
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
+ handling on RK3588 HDMI0
+MIME-Version: 1.0
+
+On Wed, Dec 11, 2024 at 07:01:15PM +0100, Heiko St=FCbner wrote:
+> Am Mittwoch, 11. Dezember 2024, 18:47:44 CET schrieb Maxime Ripard:
+> > On Wed, Dec 11, 2024 at 06:23:03PM +0100, Heiko St=FCbner wrote:
+> > > Am Mittwoch, 11. Dezember 2024, 18:07:57 CET schrieb Maxime Ripard:
+> > > > On Wed, Dec 11, 2024 at 12:15:07PM +0200, Cristian Ciocaltea wrote:
+> > > > > The RK3588 specific implementation is currently quite limited in =
+terms
+> > > > > of handling the full range of display modes supported by the conn=
+ected
+> > > > > screens, e.g. 2560x1440@75Hz, 2048x1152@60Hz, 1024x768@60Hz are j=
+ust a
+> > > > > few of them.
+> > > > >=20
+> > > > > Additionally, it doesn't cope well with non-integer refresh rates=
+ like
+> > > > > 59.94, 29.97, 23.98, etc.
+> > > > >=20
+> > > > > Make use of HDMI0 PHY PLL as a more accurate DCLK source to handle
+> > > > > all display modes up to 4K@60Hz.
+> > > > >=20
+> > > > > Tested-by: FUKAUMI Naoki <naoki@radxa.com>
+> > > > > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.c=
+om>
+> > > > > ---
+> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 34 ++++++++++++++=
+++++++++++++++
+> > > > >  1 file changed, 34 insertions(+)
+> > > > >=20
+> > > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drive=
+rs/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > index 8b2f53ffefdbf1cc8737b3a86e630a03a7fd9348..393fe6aa170aaee96=
+63c4a6d98c1cd6a5ef79392 100644
+> > > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > @@ -158,6 +158,7 @@ struct vop2_video_port {
+> > > > >  	struct drm_crtc crtc;
+> > > > >  	struct vop2 *vop2;
+> > > > >  	struct clk *dclk;
+> > > > > +	struct clk *dclk_src;
+> > > > >  	unsigned int id;
+> > > > >  	const struct vop2_video_port_data *data;
+> > > > > =20
+> > > > > @@ -212,6 +213,7 @@ struct vop2 {
+> > > > >  	struct clk *hclk;
+> > > > >  	struct clk *aclk;
+> > > > >  	struct clk *pclk;
+> > > > > +	struct clk *pll_hdmiphy0;
+> > > > > =20
+> > > > >  	/* optional internal rgb encoder */
+> > > > >  	struct rockchip_rgb *rgb;
+> > > > > @@ -220,6 +222,8 @@ struct vop2 {
+> > > > >  	struct vop2_win win[];
+> > > > >  };
+> > > > > =20
+> > > > > +#define VOP2_MAX_DCLK_RATE		600000 /* kHz */
+> > > > > +
+> > > > >  #define vop2_output_if_is_hdmi(x)	((x) =3D=3D ROCKCHIP_VOP2_EP_H=
+DMI0 || \
+> > > > >  					 (x) =3D=3D ROCKCHIP_VOP2_EP_HDMI1)
+> > > > > =20
+> > > > > @@ -1033,6 +1037,9 @@ static void vop2_crtc_atomic_disable(struct=
+ drm_crtc *crtc,
+> > > > > =20
+> > > > >  	vop2_crtc_disable_irq(vp, VP_INT_DSP_HOLD_VALID);
+> > > > > =20
+> > > > > +	if (vp->dclk_src)
+> > > > > +		clk_set_parent(vp->dclk, vp->dclk_src);
+> > > > > +
+> > > > >  	clk_disable_unprepare(vp->dclk);
+> > > > > =20
+> > > > >  	vop2->enable_count--;
+> > > > > @@ -2049,6 +2056,27 @@ static void vop2_crtc_atomic_enable(struct=
+ drm_crtc *crtc,
+> > > > > =20
+> > > > >  	vop2_vp_write(vp, RK3568_VP_MIPI_CTRL, 0);
+> > > > > =20
+> > > > > +	/*
+> > > > > +	 * Switch to HDMI PHY PLL as DCLK source for display modes up
+> > > > > +	 * to 4K@60Hz, if available, otherwise keep using the system CR=
+U.
+> > > > > +	 */
+> > > > > +	if (vop2->pll_hdmiphy0 && mode->crtc_clock <=3D VOP2_MAX_DCLK_R=
+ATE) {
+> > > > > +		drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->enco=
+der_mask) {
+> > > > > +			struct rockchip_encoder *rkencoder =3D to_rockchip_encoder(en=
+coder);
+> > > > > +
+> > > > > +			if (rkencoder->crtc_endpoint_id =3D=3D ROCKCHIP_VOP2_EP_HDMI0=
+) {
+> > > > > +				if (!vp->dclk_src)
+> > > > > +					vp->dclk_src =3D clk_get_parent(vp->dclk);
+> > > > > +
+> > > > > +				ret =3D clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
+> > > > > +				if (ret < 0)
+> > > > > +					drm_warn(vop2->drm,
+> > > > > +						 "Could not switch to HDMI0 PHY PLL: %d\n", ret);
+> > > > > +				break;
+> > > > > +			}
+> > > > > +		}
+> > > > > +	}
+> > > > > +
+> > > >=20
+> > > > It seems pretty fragile to do it at atomic_enable time, even more so
+> > > > since you don't lock the parent either.
+> > > >=20
+> > > > Any reason not to do it in the DRM or clock driver probe, and make =
+sure
+> > > > you never change the parent somehow?
+> > >=20
+> > > On rk3588 we have 3 dclk_s and 2 hdmi controllers. Each video-port can
+> > > use the clock generated from either the hdmi0phy or hdmi1phy, dependi=
+ng
+> > > on which hdmi-controller it uses.
+> > >=20
+> > > So you actually need to know which vpX will output to which hdmiY to =
+then
+> > > reparent that dclk to the hdmiphy output.
+> >=20
+> > The Rockchip nomenclature isn't super obvious to me, sorry. Is there a
+> > datasheet for this somewhere? Also, does this vpX -> HDMI-Y mapping need
+> > to be dynamic?
+>=20
+> VPs are CRTCs in drm-language and each of them can drive a differing
+> number of output encoders. Those video-ports also have differing output
+> characteristics in terms of supported resolution and other properties.
+>=20
+> The rk3588 TRM has leaked in a number of places, and if you find a
+> TRM-part2, there is a section labeled "Display Output Interface Descripti=
+on"
+> that has a nice graphic for that.
+>=20
+> Or in short:
+> - CRTC(VP)0 supports 8K resolution and can drive DP0+1, HDMI0+1, eDP0+1
+>   [if I'm reading things correctly, 8K together with CRTC1 somehow)
+> - CRTC(VP)1 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP0+1
+> - CRTC(VP)2 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP01, D=
+SI0+1
+> - CRTC(VP)3 supports 2K resolution and can drive DSI0+1 and some BT1120,B=
+T656
+>=20
+> so for the 3 higher resolution CRTCs there are essentially 6 or 8 output =
+options
+> depending on the board design
+
+That's much clearer, thanks. I'm not entirely sure how that links to the
+need for the PLL to change its parent depending on the ouput. Do you
+need to always have all the outputs on the same PLL?
+
+Maxime
+
+--z2odzs7z5tukhvub
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2GSEAAKCRAnX84Zoj2+
+dkN+AYDKiegGGxyLroYATo3bu+9NgN4V6vFWsPV3cL+HVPIO90qdD/0wwB0osZRt
+dB2fqqcBgNf1bwZw2HAzUfRG17f2sop0XVke4ZouF27bWL3FGwuw/pJuGLisMUbr
+X5LOWugv4Q==
+=MSfB
+-----END PGP SIGNATURE-----
+
+--z2odzs7z5tukhvub--
+
+
+--===============1268228057922884523==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1268228057922884523==--
+
