@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE6D6E7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 16:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C1E2E7717F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 17:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cgIPZJtmIP8ZZBhM9VJLWzuZxshO1bG4UJEfQJSx2d0=; b=qCqgx7Pp2e0STMsuKBUnFwsYFW
-	8eCMmKVxmu5rfMszdA1UOpZgZ2DZ/WDx9YhVpzqwLpzRTkDQ3G/ko+r0nT9RzXhg4gydunsAdjFft
-	fJh+G6iKQIlk/2mhd4JA/ocz/EZNKLvydXTD4z2Uw8tMu0StgQO3PwBTs2+bZlHCTAnN3LtrzXiMq
-	CsSa10sMnTvTQPxM+zsU3QVoNDTHd6xUZAk379wVA0LIvSeRfkQ8Bnsk5nJ/zo5VPzsEFB8MTwoVv
-	q6PqXM0VD87IE352nKy/7mQzcWTe40xBhnFX8w5NbqC3bxsBjSO2t1GoukuTXHSodgISfms+AeXPh
-	A0DeyTAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=keK58efo/i5+lv3KkXz+sSvE6X3YmRH0adH2MPuGAhE=; b=N9YxE5olmmatg2
+	K/b/MUQBfQojzkjAdD2e+Z/mD4lPPtY0gOhY3tQjtVd/Q7wRcevAM1r1UJP5bkciuSvOC2MdXkCnT
+	64L/eV1uepOLz3rHi3GCkVZIGb3x5h+i1ycNCzGTi01ypmwXw95PA2uqeiDBBfeG+QNQfuPAhTXaN
+	7w8K+gwJe4DvICDLvHq3WkF4KGJDrGiFN6mDOtbJJAFtxbJfomhM9gFhaoQvdjMGoOypOou5SBpmM
+	hvx8DD0g+z2YEcFACn6IUh6ZQkj2y/qd2y9v34kODuEPcLb6sp2BAr4z/AemukGCFnX680sDRo76i
+	8tilo7tig2VFUbi6EMsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNaqI-0000000EFpR-3YSb;
-	Tue, 17 Dec 2024 16:54:42 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tNawY-0000000EGXE-3iYN;
+	Tue, 17 Dec 2024 17:01:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNapB-0000000EFjP-2UQM;
-	Tue, 17 Dec 2024 16:53:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A5A89A41D2C;
-	Tue, 17 Dec 2024 16:51:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E537C4CED3;
-	Tue, 17 Dec 2024 16:53:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734454412;
-	bh=EOJspbm7MP7wG0IjvVUNU+l636arDNGqBCyTzRfpfbA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KlS7YtpFsL/gTqOzHFp9lpkcIkTrozL//Q/lMLNXbPW3Y6m2sgkt5CGABkkAjo0u2
-	 es6xqBqUBVJ+EEjVk4ljZzWGXLhxrWbnql7aU1x/Gq+smMLm85OG8Q4XnOdNUdbKuJ
-	 B9Kal/JswAvNPqnL3Fh80lNcUqkppz8sIqWUxhfVxzXvG+lxc+eHJf9YZXGWncIn1y
-	 sB07MUtRE4rm4aIbIuWtq+9lB3CpP9P1A4+LvzRvIMVMluirSZAJ8DNP7m56yyYOgw
-	 uesQmgEIrWcTGXVvI0gUxJdSoTfKoyJjYajgaslXGUBGUXTsPak061NnMfyBj6yWs1
-	 CoVcBpdw3jrCw==
-Date: Tue, 17 Dec 2024 17:53:29 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
- handling on RK3588 HDMI0
-Message-ID: <20241217-zealous-boisterous-llama-52bfcc@houat>
+	id 1tNavS-0000000EGLE-0Ryc;
+	Tue, 17 Dec 2024 17:00:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734454800;
+	bh=uuSw8aKFWxqFiQ4Pleowz22gxsmtmaYoLcqkORPkNzc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Pj3RxCaVg96G3ZKZ8XbKBInT9EL3zwrj0kTU17n4DShb5kITQRoUB/3aGkKTcZMjN
+	 v8nmEtfGKNzaq5+ToRCpKwgZcXLnyxSXyyXNyFbdFlRnVVecof2tTh3VypPTLLLEME
+	 Jb5iBAt1p3eDvdXkaMQb3N6OhkSmYnlWMAy1s9rK1H7FmjqdQf+zb29M+oeFgNT3A2
+	 yYCgO1cy7vD8tWht72XtDXCRri1l/wJXYwvETuUysrVtO6eEKpVLT5oiQln8jedKe5
+	 DtiVf3PLjiS1ikZXScPb1ehfBg8TfqIejK/ZfGmsOWvMjSc+JTKsiPzclL+QZmFd6n
+	 AQv0Bn4XVEDbA==
+Received: from [192.168.1.90] (unknown [84.232.140.38])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 809C617E37C0;
+	Tue, 17 Dec 2024 17:59:59 +0100 (CET)
+Message-ID: <2ba24dc6-b6e7-4964-af84-a5374903ce36@collabora.com>
+Date: Tue, 17 Dec 2024 18:59:57 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes handling
+ on RK3588 HDMI0
+To: Maxime Ripard <mripard@kernel.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>
 References: <20241211-vop2-hdmi0-disp-modes-v2-0-471cf5001e45@collabora.com>
  <1820767.5KxKD5qtyk@diego>
  <a4ex3s23r4k6wehyoaw3aylpcexfrclrxxykjpabhdfne2jgmu@ii6riiiga2zj>
  <1756448.izSxrag8PF@diego>
  <20241217-ubiquitous-refreshing-finch-aceade@houat>
  <c45ff74a-c9a4-4cf1-8530-04087e06b07a@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <c45ff74a-c9a4-4cf1-8530-04087e06b07a@collabora.com>
+ <20241217-zealous-boisterous-llama-52bfcc@houat>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241217-zealous-boisterous-llama-52bfcc@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_085333_781086_626DC007 
-X-CRM114-Status: GOOD (  44.54  )
+X-CRM114-CacheID: sfid-20241217_090002_352403_C6BA17B8 
+X-CRM114-Status: GOOD (  31.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,222 +84,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7070446240950093923=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7070446240950093923==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="j4mpk3mpmbzuirpe"
-Content-Disposition: inline
-
-
---j4mpk3mpmbzuirpe
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop2: Improve display modes
- handling on RK3588 HDMI0
-MIME-Version: 1.0
-
-On Tue, Dec 17, 2024 at 06:36:41PM +0200, Cristian Ciocaltea wrote:
-> On 12/17/24 5:00 PM, Maxime Ripard wrote:
-> > On Wed, Dec 11, 2024 at 07:01:15PM +0100, Heiko St=FCbner wrote:
-> >> Am Mittwoch, 11. Dezember 2024, 18:47:44 CET schrieb Maxime Ripard:
-> >>> On Wed, Dec 11, 2024 at 06:23:03PM +0100, Heiko St=FCbner wrote:
-> >>>> Am Mittwoch, 11. Dezember 2024, 18:07:57 CET schrieb Maxime Ripard:
-> >>>>> On Wed, Dec 11, 2024 at 12:15:07PM +0200, Cristian Ciocaltea wrote:
-> >>>>>> The RK3588 specific implementation is currently quite limited in t=
-erms
-> >>>>>> of handling the full range of display modes supported by the conne=
-cted
-> >>>>>> screens, e.g. 2560x1440@75Hz, 2048x1152@60Hz, 1024x768@60Hz are ju=
-st a
-> >>>>>> few of them.
-> >>>>>>
-> >>>>>> Additionally, it doesn't cope well with non-integer refresh rates =
-like
-> >>>>>> 59.94, 29.97, 23.98, etc.
-> >>>>>>
-> >>>>>> Make use of HDMI0 PHY PLL as a more accurate DCLK source to handle
-> >>>>>> all display modes up to 4K@60Hz.
-> >>>>>>
-> >>>>>> Tested-by: FUKAUMI Naoki <naoki@radxa.com>
-> >>>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.co=
-m>
-> >>>>>> ---
-> >>>>>>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 34 +++++++++++++++=
-+++++++++++++
-> >>>>>>  1 file changed, 34 insertions(+)
-> >>>>>>
-> >>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/driver=
-s/gpu/drm/rockchip/rockchip_drm_vop2.c
-> >>>>>> index 8b2f53ffefdbf1cc8737b3a86e630a03a7fd9348..393fe6aa170aaee966=
-3c4a6d98c1cd6a5ef79392 100644
-> >>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> >>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> >>>>>> @@ -158,6 +158,7 @@ struct vop2_video_port {
-> >>>>>>  	struct drm_crtc crtc;
-> >>>>>>  	struct vop2 *vop2;
-> >>>>>>  	struct clk *dclk;
-> >>>>>> +	struct clk *dclk_src;
-> >>>>>>  	unsigned int id;
-> >>>>>>  	const struct vop2_video_port_data *data;
-> >>>>>> =20
-> >>>>>> @@ -212,6 +213,7 @@ struct vop2 {
-> >>>>>>  	struct clk *hclk;
-> >>>>>>  	struct clk *aclk;
-> >>>>>>  	struct clk *pclk;
-> >>>>>> +	struct clk *pll_hdmiphy0;
-> >>>>>> =20
-> >>>>>>  	/* optional internal rgb encoder */
-> >>>>>>  	struct rockchip_rgb *rgb;
-> >>>>>> @@ -220,6 +222,8 @@ struct vop2 {
-> >>>>>>  	struct vop2_win win[];
-> >>>>>>  };
-> >>>>>> =20
-> >>>>>> +#define VOP2_MAX_DCLK_RATE		600000 /* kHz */
-> >>>>>> +
-> >>>>>>  #define vop2_output_if_is_hdmi(x)	((x) =3D=3D ROCKCHIP_VOP2_EP_HD=
-MI0 || \
-> >>>>>>  					 (x) =3D=3D ROCKCHIP_VOP2_EP_HDMI1)
-> >>>>>> =20
-> >>>>>> @@ -1033,6 +1037,9 @@ static void vop2_crtc_atomic_disable(struct =
-drm_crtc *crtc,
-> >>>>>> =20
-> >>>>>>  	vop2_crtc_disable_irq(vp, VP_INT_DSP_HOLD_VALID);
-> >>>>>> =20
-> >>>>>> +	if (vp->dclk_src)
-> >>>>>> +		clk_set_parent(vp->dclk, vp->dclk_src);
-> >>>>>> +
-> >>>>>>  	clk_disable_unprepare(vp->dclk);
-> >>>>>> =20
-> >>>>>>  	vop2->enable_count--;
-> >>>>>> @@ -2049,6 +2056,27 @@ static void vop2_crtc_atomic_enable(struct =
-drm_crtc *crtc,
-> >>>>>> =20
-> >>>>>>  	vop2_vp_write(vp, RK3568_VP_MIPI_CTRL, 0);
-> >>>>>> =20
-> >>>>>> +	/*
-> >>>>>> +	 * Switch to HDMI PHY PLL as DCLK source for display modes up
-> >>>>>> +	 * to 4K@60Hz, if available, otherwise keep using the system CRU.
-> >>>>>> +	 */
-> >>>>>> +	if (vop2->pll_hdmiphy0 && mode->crtc_clock <=3D VOP2_MAX_DCLK_RA=
-TE) {
-> >>>>>> +		drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encod=
-er_mask) {
-> >>>>>> +			struct rockchip_encoder *rkencoder =3D to_rockchip_encoder(enc=
-oder);
-> >>>>>> +
-> >>>>>> +			if (rkencoder->crtc_endpoint_id =3D=3D ROCKCHIP_VOP2_EP_HDMI0)=
- {
-> >>>>>> +				if (!vp->dclk_src)
-> >>>>>> +					vp->dclk_src =3D clk_get_parent(vp->dclk);
-> >>>>>> +
-> >>>>>> +				ret =3D clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
-> >>>>>> +				if (ret < 0)
-> >>>>>> +					drm_warn(vop2->drm,
-> >>>>>> +						 "Could not switch to HDMI0 PHY PLL: %d\n", ret);
-> >>>>>> +				break;
-> >>>>>> +			}
-> >>>>>> +		}
-> >>>>>> +	}
-> >>>>>> +
-> >>>>>
-> >>>>> It seems pretty fragile to do it at atomic_enable time, even more so
-> >>>>> since you don't lock the parent either.
-> >>>>>
-> >>>>> Any reason not to do it in the DRM or clock driver probe, and make =
-sure
-> >>>>> you never change the parent somehow?
-> >>>>
-> >>>> On rk3588 we have 3 dclk_s and 2 hdmi controllers. Each video-port c=
-an
-> >>>> use the clock generated from either the hdmi0phy or hdmi1phy, depend=
-ing
-> >>>> on which hdmi-controller it uses.
-> >>>>
-> >>>> So you actually need to know which vpX will output to which hdmiY to=
- then
-> >>>> reparent that dclk to the hdmiphy output.
-> >>>
-> >>> The Rockchip nomenclature isn't super obvious to me, sorry. Is there a
-> >>> datasheet for this somewhere? Also, does this vpX -> HDMI-Y mapping n=
-eed
-> >>> to be dynamic?
-> >>
-> >> VPs are CRTCs in drm-language and each of them can drive a differing
-> >> number of output encoders. Those video-ports also have differing output
-> >> characteristics in terms of supported resolution and other properties.
-> >>
-> >> The rk3588 TRM has leaked in a number of places, and if you find a
-> >> TRM-part2, there is a section labeled "Display Output Interface Descri=
-ption"
-> >> that has a nice graphic for that.
-> >>
-> >> Or in short:
-> >> - CRTC(VP)0 supports 8K resolution and can drive DP0+1, HDMI0+1, eDP0+1
-> >>   [if I'm reading things correctly, 8K together with CRTC1 somehow)
-> >> - CRTC(VP)1 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP0+1
-> >> - CRTC(VP)2 supports 4K resolution and can drive DP0+1, HDMI0+1, eDP01=
-, DSI0+1
-> >> - CRTC(VP)3 supports 2K resolution and can drive DSI0+1 and some BT112=
-0,BT656
-> >>
-> >> so for the 3 higher resolution CRTCs there are essentially 6 or 8 outp=
-ut options
-> >> depending on the board design
-> >=20
-> > That's much clearer, thanks. I'm not entirely sure how that links to the
-> > need for the PLL to change its parent depending on the ouput. Do you
-> > need to always have all the outputs on the same PLL?
->=20
-> One of the problems is that the PHY PLLs cannot be used as clock sources
-> for resolutions above 4K@60Hz, while VOP2 on RK3588 supports up to 8K@60H=
-z,
-> which is supposed to be handled by the system CRU.
-
-But can that system CRU drive resolutions lower than 4k@60? If so, why
-do we bother with PHYs?
-
-> Moreover, the 2 PLLs are shared between 3 out of the 4 video ports already
-> mentioned by Heiko.  There is quite a bit of complexity in downstream
-> driver to handle all possible usecases - see [1] for a brief description =
-on
-> how was that designed to work.
-
-That's a generic allocation issue. Multiple drivers (vc4 for example)
-has this issue for other components. It can be fairly easily dealt with
-at atomic_check time.
-
-Maxime
-
---j4mpk3mpmbzuirpe
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2GsgQAKCRAnX84Zoj2+
-dujIAX96ph7wCOEKhEVEvFE7nIYDouKQ48JPrJAUDi5plPwo1A/2ruUYjui/h6aO
-6e/R4ugBgM2dKMjhL2GPa78I2aqbjLCG/FGj4quQcjpkH3nmXDPHdkz5FaZJO0ee
-9vQJK4Wzqw==
-=+Pvw
------END PGP SIGNATURE-----
-
---j4mpk3mpmbzuirpe--
-
-
---===============7070446240950093923==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7070446240950093923==--
-
+T24gMTIvMTcvMjQgNjo1MyBQTSwgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiBPbiBUdWUsIERlYyAx
+NywgMjAyNCBhdCAwNjozNjo0MVBNICswMjAwLCBDcmlzdGlhbiBDaW9jYWx0ZWEgd3JvdGU6Cj4+
+IE9uIDEyLzE3LzI0IDU6MDAgUE0sIE1heGltZSBSaXBhcmQgd3JvdGU6Cj4+PiBPbiBXZWQsIERl
+YyAxMSwgMjAyNCBhdCAwNzowMToxNVBNICswMTAwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4+
+PiBBbSBNaXR0d29jaCwgMTEuIERlemVtYmVyIDIwMjQsIDE4OjQ3OjQ0IENFVCBzY2hyaWViIE1h
+eGltZSBSaXBhcmQ6Cj4+Pj4+IE9uIFdlZCwgRGVjIDExLCAyMDI0IGF0IDA2OjIzOjAzUE0gKzAx
+MDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4+Pj4gQW0gTWl0dHdvY2gsIDExLiBEZXplbWJl
+ciAyMDI0LCAxODowNzo1NyBDRVQgc2NocmllYiBNYXhpbWUgUmlwYXJkOgo+Pj4+Pj4+IE9uIFdl
+ZCwgRGVjIDExLCAyMDI0IGF0IDEyOjE1OjA3UE0gKzAyMDAsIENyaXN0aWFuIENpb2NhbHRlYSB3
+cm90ZToKPj4+Pj4+Pj4gVGhlIFJLMzU4OCBzcGVjaWZpYyBpbXBsZW1lbnRhdGlvbiBpcyBjdXJy
+ZW50bHkgcXVpdGUgbGltaXRlZCBpbiB0ZXJtcwo+Pj4+Pj4+PiBvZiBoYW5kbGluZyB0aGUgZnVs
+bCByYW5nZSBvZiBkaXNwbGF5IG1vZGVzIHN1cHBvcnRlZCBieSB0aGUgY29ubmVjdGVkCj4+Pj4+
+Pj4+IHNjcmVlbnMsIGUuZy4gMjU2MHgxNDQwQDc1SHosIDIwNDh4MTE1MkA2MEh6LCAxMDI0eDc2
+OEA2MEh6IGFyZSBqdXN0IGEKPj4+Pj4+Pj4gZmV3IG9mIHRoZW0uCj4+Pj4+Pj4+Cj4+Pj4+Pj4+
+IEFkZGl0aW9uYWxseSwgaXQgZG9lc24ndCBjb3BlIHdlbGwgd2l0aCBub24taW50ZWdlciByZWZy
+ZXNoIHJhdGVzIGxpa2UKPj4+Pj4+Pj4gNTkuOTQsIDI5Ljk3LCAyMy45OCwgZXRjLgo+Pj4+Pj4+
+Pgo+Pj4+Pj4+PiBNYWtlIHVzZSBvZiBIRE1JMCBQSFkgUExMIGFzIGEgbW9yZSBhY2N1cmF0ZSBE
+Q0xLIHNvdXJjZSB0byBoYW5kbGUKPj4+Pj4+Pj4gYWxsIGRpc3BsYXkgbW9kZXMgdXAgdG8gNEtA
+NjBIei4KPj4+Pj4+Pj4KPj4+Pj4+Pj4gVGVzdGVkLWJ5OiBGVUtBVU1JIE5hb2tpIDxuYW9raUBy
+YWR4YS5jb20+Cj4+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IENyaXN0aWFuIENpb2NhbHRlYSA8Y3Jp
+c3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5jb20+Cj4+Pj4+Pj4+IC0tLQo+Pj4+Pj4+PiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgfCAzNCArKysrKysrKysr
+KysrKysrKysrKysrKysrKysrCj4+Pj4+Pj4+ICAxIGZpbGUgY2hhbmdlZCwgMzQgaW5zZXJ0aW9u
+cygrKQo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AyLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcDIuYwo+Pj4+Pj4+PiBpbmRleCA4YjJmNTNmZmVmZGJmMWNjODczN2IzYTg2ZTYz
+MGEwM2E3ZmQ5MzQ4Li4zOTNmZTZhYTE3MGFhZWU5NjYzYzRhNmQ5OGMxY2Q2YTVlZjc5MzkyIDEw
+MDY0NAo+Pj4+Pj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcDIuYwo+Pj4+Pj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcDIuYwo+Pj4+Pj4+PiBAQCAtMTU4LDYgKzE1OCw3IEBAIHN0cnVjdCB2b3AyX3ZpZGVv
+X3BvcnQgewo+Pj4+Pj4+PiAgCXN0cnVjdCBkcm1fY3J0YyBjcnRjOwo+Pj4+Pj4+PiAgCXN0cnVj
+dCB2b3AyICp2b3AyOwo+Pj4+Pj4+PiAgCXN0cnVjdCBjbGsgKmRjbGs7Cj4+Pj4+Pj4+ICsJc3Ry
+dWN0IGNsayAqZGNsa19zcmM7Cj4+Pj4+Pj4+ICAJdW5zaWduZWQgaW50IGlkOwo+Pj4+Pj4+PiAg
+CWNvbnN0IHN0cnVjdCB2b3AyX3ZpZGVvX3BvcnRfZGF0YSAqZGF0YTsKPj4+Pj4+Pj4gIAo+Pj4+
+Pj4+PiBAQCAtMjEyLDYgKzIxMyw3IEBAIHN0cnVjdCB2b3AyIHsKPj4+Pj4+Pj4gIAlzdHJ1Y3Qg
+Y2xrICpoY2xrOwo+Pj4+Pj4+PiAgCXN0cnVjdCBjbGsgKmFjbGs7Cj4+Pj4+Pj4+ICAJc3RydWN0
+IGNsayAqcGNsazsKPj4+Pj4+Pj4gKwlzdHJ1Y3QgY2xrICpwbGxfaGRtaXBoeTA7Cj4+Pj4+Pj4+
+ICAKPj4+Pj4+Pj4gIAkvKiBvcHRpb25hbCBpbnRlcm5hbCByZ2IgZW5jb2RlciAqLwo+Pj4+Pj4+
+PiAgCXN0cnVjdCByb2NrY2hpcF9yZ2IgKnJnYjsKPj4+Pj4+Pj4gQEAgLTIyMCw2ICsyMjIsOCBA
+QCBzdHJ1Y3Qgdm9wMiB7Cj4+Pj4+Pj4+ICAJc3RydWN0IHZvcDJfd2luIHdpbltdOwo+Pj4+Pj4+
+PiAgfTsKPj4+Pj4+Pj4gIAo+Pj4+Pj4+PiArI2RlZmluZSBWT1AyX01BWF9EQ0xLX1JBVEUJCTYw
+MDAwMCAvKiBrSHogKi8KPj4+Pj4+Pj4gKwo+Pj4+Pj4+PiAgI2RlZmluZSB2b3AyX291dHB1dF9p
+Zl9pc19oZG1pKHgpCSgoeCkgPT0gUk9DS0NISVBfVk9QMl9FUF9IRE1JMCB8fCBcCj4+Pj4+Pj4+
+ICAJCQkJCSAoeCkgPT0gUk9DS0NISVBfVk9QMl9FUF9IRE1JMSkKPj4+Pj4+Pj4gIAo+Pj4+Pj4+
+PiBAQCAtMTAzMyw2ICsxMDM3LDkgQEAgc3RhdGljIHZvaWQgdm9wMl9jcnRjX2F0b21pY19kaXNh
+YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPj4+Pj4+Pj4gIAo+Pj4+Pj4+PiAgCXZvcDJfY3J0
+Y19kaXNhYmxlX2lycSh2cCwgVlBfSU5UX0RTUF9IT0xEX1ZBTElEKTsKPj4+Pj4+Pj4gIAo+Pj4+
+Pj4+PiArCWlmICh2cC0+ZGNsa19zcmMpCj4+Pj4+Pj4+ICsJCWNsa19zZXRfcGFyZW50KHZwLT5k
+Y2xrLCB2cC0+ZGNsa19zcmMpOwo+Pj4+Pj4+PiArCj4+Pj4+Pj4+ICAJY2xrX2Rpc2FibGVfdW5w
+cmVwYXJlKHZwLT5kY2xrKTsKPj4+Pj4+Pj4gIAo+Pj4+Pj4+PiAgCXZvcDItPmVuYWJsZV9jb3Vu
+dC0tOwo+Pj4+Pj4+PiBAQCAtMjA0OSw2ICsyMDU2LDI3IEBAIHN0YXRpYyB2b2lkIHZvcDJfY3J0
+Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPj4+Pj4+Pj4gIAo+Pj4+Pj4+
+PiAgCXZvcDJfdnBfd3JpdGUodnAsIFJLMzU2OF9WUF9NSVBJX0NUUkwsIDApOwo+Pj4+Pj4+PiAg
+Cj4+Pj4+Pj4+ICsJLyoKPj4+Pj4+Pj4gKwkgKiBTd2l0Y2ggdG8gSERNSSBQSFkgUExMIGFzIERD
+TEsgc291cmNlIGZvciBkaXNwbGF5IG1vZGVzIHVwCj4+Pj4+Pj4+ICsJICogdG8gNEtANjBIeiwg
+aWYgYXZhaWxhYmxlLCBvdGhlcndpc2Uga2VlcCB1c2luZyB0aGUgc3lzdGVtIENSVS4KPj4+Pj4+
+Pj4gKwkgKi8KPj4+Pj4+Pj4gKwlpZiAodm9wMi0+cGxsX2hkbWlwaHkwICYmIG1vZGUtPmNydGNf
+Y2xvY2sgPD0gVk9QMl9NQVhfRENMS19SQVRFKSB7Cj4+Pj4+Pj4+ICsJCWRybV9mb3JfZWFjaF9l
+bmNvZGVyX21hc2soZW5jb2RlciwgY3J0Yy0+ZGV2LCBjcnRjX3N0YXRlLT5lbmNvZGVyX21hc2sp
+IHsKPj4+Pj4+Pj4gKwkJCXN0cnVjdCByb2NrY2hpcF9lbmNvZGVyICpya2VuY29kZXIgPSB0b19y
+b2NrY2hpcF9lbmNvZGVyKGVuY29kZXIpOwo+Pj4+Pj4+PiArCj4+Pj4+Pj4+ICsJCQlpZiAocmtl
+bmNvZGVyLT5jcnRjX2VuZHBvaW50X2lkID09IFJPQ0tDSElQX1ZPUDJfRVBfSERNSTApIHsKPj4+
+Pj4+Pj4gKwkJCQlpZiAoIXZwLT5kY2xrX3NyYykKPj4+Pj4+Pj4gKwkJCQkJdnAtPmRjbGtfc3Jj
+ID0gY2xrX2dldF9wYXJlbnQodnAtPmRjbGspOwo+Pj4+Pj4+PiArCj4+Pj4+Pj4+ICsJCQkJcmV0
+ID0gY2xrX3NldF9wYXJlbnQodnAtPmRjbGssIHZvcDItPnBsbF9oZG1pcGh5MCk7Cj4+Pj4+Pj4+
+ICsJCQkJaWYgKHJldCA8IDApCj4+Pj4+Pj4+ICsJCQkJCWRybV93YXJuKHZvcDItPmRybSwKPj4+
+Pj4+Pj4gKwkJCQkJCSAiQ291bGQgbm90IHN3aXRjaCB0byBIRE1JMCBQSFkgUExMOiAlZFxuIiwg
+cmV0KTsKPj4+Pj4+Pj4gKwkJCQlicmVhazsKPj4+Pj4+Pj4gKwkJCX0KPj4+Pj4+Pj4gKwkJfQo+
+Pj4+Pj4+PiArCX0KPj4+Pj4+Pj4gKwo+Pj4+Pj4+Cj4+Pj4+Pj4gSXQgc2VlbXMgcHJldHR5IGZy
+YWdpbGUgdG8gZG8gaXQgYXQgYXRvbWljX2VuYWJsZSB0aW1lLCBldmVuIG1vcmUgc28KPj4+Pj4+
+PiBzaW5jZSB5b3UgZG9uJ3QgbG9jayB0aGUgcGFyZW50IGVpdGhlci4KPj4+Pj4+Pgo+Pj4+Pj4+
+IEFueSByZWFzb24gbm90IHRvIGRvIGl0IGluIHRoZSBEUk0gb3IgY2xvY2sgZHJpdmVyIHByb2Jl
+LCBhbmQgbWFrZSBzdXJlCj4+Pj4+Pj4geW91IG5ldmVyIGNoYW5nZSB0aGUgcGFyZW50IHNvbWVo
+b3c/Cj4+Pj4+Pgo+Pj4+Pj4gT24gcmszNTg4IHdlIGhhdmUgMyBkY2xrX3MgYW5kIDIgaGRtaSBj
+b250cm9sbGVycy4gRWFjaCB2aWRlby1wb3J0IGNhbgo+Pj4+Pj4gdXNlIHRoZSBjbG9jayBnZW5l
+cmF0ZWQgZnJvbSBlaXRoZXIgdGhlIGhkbWkwcGh5IG9yIGhkbWkxcGh5LCBkZXBlbmRpbmcKPj4+
+Pj4+IG9uIHdoaWNoIGhkbWktY29udHJvbGxlciBpdCB1c2VzLgo+Pj4+Pj4KPj4+Pj4+IFNvIHlv
+dSBhY3R1YWxseSBuZWVkIHRvIGtub3cgd2hpY2ggdnBYIHdpbGwgb3V0cHV0IHRvIHdoaWNoIGhk
+bWlZIHRvIHRoZW4KPj4+Pj4+IHJlcGFyZW50IHRoYXQgZGNsayB0byB0aGUgaGRtaXBoeSBvdXRw
+dXQuCj4+Pj4+Cj4+Pj4+IFRoZSBSb2NrY2hpcCBub21lbmNsYXR1cmUgaXNuJ3Qgc3VwZXIgb2J2
+aW91cyB0byBtZSwgc29ycnkuIElzIHRoZXJlIGEKPj4+Pj4gZGF0YXNoZWV0IGZvciB0aGlzIHNv
+bWV3aGVyZT8gQWxzbywgZG9lcyB0aGlzIHZwWCAtPiBIRE1JLVkgbWFwcGluZyBuZWVkCj4+Pj4+
+IHRvIGJlIGR5bmFtaWM/Cj4+Pj4KPj4+PiBWUHMgYXJlIENSVENzIGluIGRybS1sYW5ndWFnZSBh
+bmQgZWFjaCBvZiB0aGVtIGNhbiBkcml2ZSBhIGRpZmZlcmluZwo+Pj4+IG51bWJlciBvZiBvdXRw
+dXQgZW5jb2RlcnMuIFRob3NlIHZpZGVvLXBvcnRzIGFsc28gaGF2ZSBkaWZmZXJpbmcgb3V0cHV0
+Cj4+Pj4gY2hhcmFjdGVyaXN0aWNzIGluIHRlcm1zIG9mIHN1cHBvcnRlZCByZXNvbHV0aW9uIGFu
+ZCBvdGhlciBwcm9wZXJ0aWVzLgo+Pj4+Cj4+Pj4gVGhlIHJrMzU4OCBUUk0gaGFzIGxlYWtlZCBp
+biBhIG51bWJlciBvZiBwbGFjZXMsIGFuZCBpZiB5b3UgZmluZCBhCj4+Pj4gVFJNLXBhcnQyLCB0
+aGVyZSBpcyBhIHNlY3Rpb24gbGFiZWxlZCAiRGlzcGxheSBPdXRwdXQgSW50ZXJmYWNlIERlc2Ny
+aXB0aW9uIgo+Pj4+IHRoYXQgaGFzIGEgbmljZSBncmFwaGljIGZvciB0aGF0Lgo+Pj4+Cj4+Pj4g
+T3IgaW4gc2hvcnQ6Cj4+Pj4gLSBDUlRDKFZQKTAgc3VwcG9ydHMgOEsgcmVzb2x1dGlvbiBhbmQg
+Y2FuIGRyaXZlIERQMCsxLCBIRE1JMCsxLCBlRFAwKzEKPj4+PiAgIFtpZiBJJ20gcmVhZGluZyB0
+aGluZ3MgY29ycmVjdGx5LCA4SyB0b2dldGhlciB3aXRoIENSVEMxIHNvbWVob3cpCj4+Pj4gLSBD
+UlRDKFZQKTEgc3VwcG9ydHMgNEsgcmVzb2x1dGlvbiBhbmQgY2FuIGRyaXZlIERQMCsxLCBIRE1J
+MCsxLCBlRFAwKzEKPj4+PiAtIENSVEMoVlApMiBzdXBwb3J0cyA0SyByZXNvbHV0aW9uIGFuZCBj
+YW4gZHJpdmUgRFAwKzEsIEhETUkwKzEsIGVEUDAxLCBEU0kwKzEKPj4+PiAtIENSVEMoVlApMyBz
+dXBwb3J0cyAySyByZXNvbHV0aW9uIGFuZCBjYW4gZHJpdmUgRFNJMCsxIGFuZCBzb21lIEJUMTEy
+MCxCVDY1Ngo+Pj4+Cj4+Pj4gc28gZm9yIHRoZSAzIGhpZ2hlciByZXNvbHV0aW9uIENSVENzIHRo
+ZXJlIGFyZSBlc3NlbnRpYWxseSA2IG9yIDggb3V0cHV0IG9wdGlvbnMKPj4+PiBkZXBlbmRpbmcg
+b24gdGhlIGJvYXJkIGRlc2lnbgo+Pj4KPj4+IFRoYXQncyBtdWNoIGNsZWFyZXIsIHRoYW5rcy4g
+SSdtIG5vdCBlbnRpcmVseSBzdXJlIGhvdyB0aGF0IGxpbmtzIHRvIHRoZQo+Pj4gbmVlZCBmb3Ig
+dGhlIFBMTCB0byBjaGFuZ2UgaXRzIHBhcmVudCBkZXBlbmRpbmcgb24gdGhlIG91cHV0LiBEbyB5
+b3UKPj4+IG5lZWQgdG8gYWx3YXlzIGhhdmUgYWxsIHRoZSBvdXRwdXRzIG9uIHRoZSBzYW1lIFBM
+TD8KPj4KPj4gT25lIG9mIHRoZSBwcm9ibGVtcyBpcyB0aGF0IHRoZSBQSFkgUExMcyBjYW5ub3Qg
+YmUgdXNlZCBhcyBjbG9jayBzb3VyY2VzCj4+IGZvciByZXNvbHV0aW9ucyBhYm92ZSA0S0A2MEh6
+LCB3aGlsZSBWT1AyIG9uIFJLMzU4OCBzdXBwb3J0cyB1cCB0byA4S0A2MEh6LAo+PiB3aGljaCBp
+cyBzdXBwb3NlZCB0byBiZSBoYW5kbGVkIGJ5IHRoZSBzeXN0ZW0gQ1JVLgo+IAo+IEJ1dCBjYW4g
+dGhhdCBzeXN0ZW0gQ1JVIGRyaXZlIHJlc29sdXRpb25zIGxvd2VyIHRoYW4gNGtANjA/IElmIHNv
+LCB3aHkKPiBkbyB3ZSBib3RoZXIgd2l0aCBQSFlzPwoKSXQgY2FuLCBidXQgaXQncyBub3QgYWNj
+dXJhdGUgZW5vdWdoIHRvIHN1cHBvcnQgYWxsIG1vZGVzLCBlLmcuIHRob3NlCmhhdmluZyBmcmFj
+dGlvbmFsIHJlZnJlc2ggcmF0ZXMsIGFtb25nIG90aGVycy4gIFRoYXQncyBhY3R1YWxseSB0aGUK
+cmVhc29uIHdlJ2Qgd2FudCB0byBtYWtlIHVzZSBvZiB0aGUgUEhZIFBMTHMuCgo+PiBNb3Jlb3Zl
+ciwgdGhlIDIgUExMcyBhcmUgc2hhcmVkIGJldHdlZW4gMyBvdXQgb2YgdGhlIDQgdmlkZW8gcG9y
+dHMgYWxyZWFkeQo+PiBtZW50aW9uZWQgYnkgSGVpa28uICBUaGVyZSBpcyBxdWl0ZSBhIGJpdCBv
+ZiBjb21wbGV4aXR5IGluIGRvd25zdHJlYW0KPj4gZHJpdmVyIHRvIGhhbmRsZSBhbGwgcG9zc2li
+bGUgdXNlY2FzZXMgLSBzZWUgWzFdIGZvciBhIGJyaWVmIGRlc2NyaXB0aW9uIG9uCj4+IGhvdyB3
+YXMgdGhhdCBkZXNpZ25lZCB0byB3b3JrLgo+IAo+IFRoYXQncyBhIGdlbmVyaWMgYWxsb2NhdGlv
+biBpc3N1ZS4gTXVsdGlwbGUgZHJpdmVycyAodmM0IGZvciBleGFtcGxlKQo+IGhhcyB0aGlzIGlz
+c3VlIGZvciBvdGhlciBjb21wb25lbnRzLiBJdCBjYW4gYmUgZmFpcmx5IGVhc2lseSBkZWFsdCB3
+aXRoCj4gYXQgYXRvbWljX2NoZWNrIHRpbWUuCj4gCj4gTWF4aW1lCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
