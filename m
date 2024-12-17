@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F3DE7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 02:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 150ECE7716A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 05:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ul/cOypB/7eRnSy+SBKpiylRumaEMbCuDvSVm0mNsvg=; b=JI5xs92Qs2SzY5
-	Bfcf4l5rXyGtvDCq3qrFIahIcJlOoIH8q6/nQE5UQ93yc+q4Hc8FBBkgWIIECGBxIzqf6GL4fH4kp
-	o3aBBKf73HF2tcuLk1E+vbvJXqVoJPPH8MKlcP6LreLAAxPj2da1kmWOf6u25smRc+44ZU/HSO6h0
-	r66AWyxorugbMx6m30NtqHgYj/+9TadJZ67qOveIxm9n7ANTD2Qv5j1taW+RW12/954Cy9M7ZDSQX
-	veikDSqWoioXGi069dJzB2re/yKBwVP0wREmXZypgBnhc6qPixQfgojKRqUZlKOHSeC8pl4Ink/L0
-	jGquprb+Kd+6ya0ZxP+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5zG//GAatVn6OJjqGKfzs7qcV9fNoaVQ485JA/oKUNg=; b=lGML1Cxm9r97KQzb2JQHH5AdVs
+	fF8CWzRaOmvbNyp4WTIp7mokcuFMysR5cljzLoL+VjIxORBUnO4N2Qi4FUAb/XOO/PtHSF9AvYUMj
+	PQyKc8OtvcX8t5uzl+oI3G+VW3xtl6VoSvBkiVh1zgGc00owhd34Ymlj84uA6OgdCBJ5rDb0coAzR
+	ESDZQMnA2nhluWBR72RjZ/GBdF56BONXKzvfkvLEg0HjK7FAjLL3kCKEt+fMIB6WEw4dnvh4ZezET
+	YVQUZ+5iPYzRBH+eUCpY220GoSQdhAnUTFEyBaWbwpHzxkFHa40F2S4FUqF1WUuP/FuXUMHt2gPQI
+	OJBmg/6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNNWm-0000000Bzhq-13Jl;
-	Tue, 17 Dec 2024 02:41:40 +0000
-Received: from mail-m32107.qiye.163.com ([220.197.32.107])
+	id 1tNQPU-0000000CLBK-3rtg;
+	Tue, 17 Dec 2024 05:46:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNNUe-0000000BzSt-2Ukd;
-	Tue, 17 Dec 2024 02:39:29 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5ec156bf;
-	Tue, 17 Dec 2024 10:39:22 +0800 (GMT+08:00)
-From: Elaine Zhang <zhangqing@rock-chips.com>
-To: zhangqing@rock-chips.com,
-	mkl@pengutronix.de,
-	kernel@pengutronix.de,
-	mailhol.vincent@wanadoo.fr,
-	heiko@sntech.de,
-	cl@rock-chips.com,
-	kever.yang@rock-chips.com
-Cc: linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3576: add can dts nodes
-Date: Tue, 17 Dec 2024 10:39:08 +0800
-Message-Id: <20241217023908.1292999-3-zhangqing@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241217023908.1292999-1-zhangqing@rock-chips.com>
-References: <20241217023908.1292999-1-zhangqing@rock-chips.com>
+	id 1tNQCu-0000000CIoP-1zt3
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Dec 2024 05:33:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734413598;
+	bh=W/PU8T/7ShhBL/FEseZ8HPr/Bd2LMLqqB167+txVBig=;
+	h=Date:To:Cc:From:Subject:From;
+	b=LGXHpmIE4KJ4+eZhSN9MYvhD4yAUnbtbtT9n7uuQ/m0ejYxgm1b5mWI7KQVbA1yif
+	 /uvJOUFwYUxZS/45bUOa7IZq2A72ngUWMc1926DzatxNbnZuejgONnMsyUiutXTKBQ
+	 JeEBP0sqFVWJR5PxcBCd1x+aRv1HrTWssa2QyjM1RsfaBJypytMJjFNu6dA+fvqbsW
+	 Q+llvNKTDlrsEr4+kvcNy6Y66axFmPyX23JhoxV3CdyRhvDkqFnDqxihS4DA5Xpht1
+	 Xh4xe253WJtNL/uV/lK5lJ5ZaDJAmPHSO5iykw0IgTBbBs1XbwWwcv+XW8qT8V39XJ
+	 5lgwlrLg23x4Q==
+Received: from [192.168.50.250] (unknown [171.76.86.135])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E8B5517E1073;
+	Tue, 17 Dec 2024 06:33:13 +0100 (CET)
+Message-ID: <f944dd08-c88c-49ae-aff0-274374550a93@collabora.com>
+Date: Tue, 17 Dec 2024 11:03:11 +0530
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh9JTFYfSkJLTEsfGkpOTUtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93d27c02cf03a3kunm5ec156bf
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ny46Dio5LTILTR84IwoSUT0N
-	DDNPCwFVSlVKTEhPT0tISk1IQklIVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpPQko3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=WRSzkUcLFHUQwjHZ9FgA80+ljrbvUmQfByWfj/cQfxVhXpURm/hQJeGmnGypOut36OH8y8qHTwwEjeLSvTU+CTNOKRmb0jl/cvYNDFZrNHQLgbLkj/dx8SY3bsndragufi3Nr1KyrcOxLCSuVKdBzM4vjLxNjGVwzaC0/WtgM8c=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=mbc4XvnMPoqYWmjqlM+MGD27w/PMpYBtQHdgk1ZuX98=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: linux-rockchip@lists.infradead.org,
+ dri-devel <dri-devel@lists.freedesktop.org>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
+ tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
+ Helen Mae Koike Fornazier <helen.koike@collabora.com>,
+ Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
+ Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+Subject: drm-ci: rockchip: kms_bw@linear-tiling-1-displays-2160x1440p flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241216_183928_805873_E58DF277 
-X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-CacheID: sfid-20241216_213320_817344_D5F7B1B8 
+X-CRM114-Status: UNSURE (   3.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,56 +75,285 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 26 ++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+Hi Maintainers,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 436232ffe4d1..82fdfd4720ec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1195,6 +1195,32 @@ dmac2: dma-controller@2abd0000 {
- 			#dma-cells = <1>;
- 		};
- 
-+		can0: can@2ac00000 {
-+			compatible = "rockchip,rk3576-canfd";
-+			reg = <0x0 0x2ac00000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru CLK_CAN0>, <&cru HCLK_CAN0>;
-+			clock-names = "baudclk", "apb_pclk";
-+			resets = <&cru SRST_CAN0>, <&cru SRST_H_CAN0>;
-+			reset-names = "can", "can-apb";
-+			dmas = <&dmac0 20>;
-+			dma-names = "rx";
-+			status = "disabled";
-+		};
-+	
-+		can1: can@2ac10000 {
-+			compatible = "rockchip,rk3576-canfd";
-+			reg = <0x0 0x2ac10000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru CLK_CAN1>, <&cru HCLK_CAN1>;
-+			clock-names = "baudclk", "apb_pclk";
-+			resets = <&cru SRST_CAN1>, <&cru SRST_H_CAN1>;
-+			reset-names = "can", "can-apb";
-+			dmas = <&dmac1 21>;
-+			dma-names = "rx";
-+			status = "disabled";
-+		};
-+
- 		i2c1: i2c@2ac40000 {
- 			compatible = "rockchip,rk3576-i2c", "rockchip,rk3399-i2c";
- 			reg = <0x0 0x2ac40000 0x0 0x1000>;
--- 
-2.34.1
+There are some flake tests reported for rockchip driver testing in drm-ci.
 
+# Board Name: hp-11A-G6-EE-grunt
+# Failure Rate: 40
+# IGT Version: 1.29-g33adea9eb
+# Linux Version: 6.13.0-rc2
+kms_bw@linear-tiling-1-displays-2160x1440p
+
+
+command: cd "/igt/libexec/igt-gpu-tools" && 
+"/igt/libexec/igt-gpu-tools/kms_bw" "--run-subtest" 
+"linear-tiling-1-displays-2160x1440p"
+pid: 1999
+exit status: exit status: 98
+stdout:
+-------
+IGT-Version: 1.29-g33adea9eb (aarch64) (Linux: 6.13.0-rc2-g1f006005ebf8 
+aarch64)
+Using IGT_SRANDOM=1734350415 for randomisation
+Opened device: /dev/dri/card1
+Starting subtest: linear-tiling-1-displays-2160x1440p
+Assigning pipe A to output eDP-1 with mode 2160x1440p
+Stack trace:
+   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+   #1 ../lib/igt_pipe_crc.c:433 igt_pipe_crc_get_crcs()
+   #2 ../lib/igt_pipe_crc.c:592 igt_pipe_crc_collect_crc()
+   #3 ../tests/kms_bw.c:249 run_test_linear_tiling()
+   #4 ../tests/kms_bw.c:287 __igt_unique____real_main264()
+   #5 ../tests/kms_bw.c:264 main()
+   #6 [__libc_init_first+0x80]
+   #7 [__libc_start_main+0x98]
+   #8 [_start+0x30]
+Subtest linear-tiling-1-displays-2160x1440p: FAIL (1.093s)
+stderr:
+-------
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_pipe_crc_start, file ../lib/igt_pipe_crc.c:387:
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Failed assertion: pipe_crc->crc_fd 
+!= -1
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Last errno: 5, Input/output error
+Subtest linear-tiling-1-displays-2160x1440p failed.
+**** DEBUG ****
+(kms_bw:1999) DEBUG: Test requirement passed: !(pipe >= num_pipes)
+(kms_bw:1999) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 && 
+plane_idx < pipe->n_planes
+(kms_bw:1999) igt_kms-DEBUG: Test requirement passed: plane_idx >= 0 && 
+plane_idx < pipe->n_planes
+(kms_bw:1999) DEBUG: Test requirement passed: data->output[0]
+(kms_bw:1999) DEBUG: Test requirement passed: !(physical && pipe >= 
+data->connected_outputs)
+(kms_bw:1999) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2160, 
+height=1440, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_bw:1999) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=1, pitch=8640)
+(kms_bw:1999) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_bw:1999) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_bw:1999) igt_kms-DEBUG: display: eDP-1: set_pipe(A)
+(kms_bw:1999) igt_kms-DEBUG: display: eDP-1: Selecting pipe A
+(kms_bw:1999) igt_kms-DEBUG: display: A.0: plane_set_fb(55)
+(kms_bw:1999) igt_kms-DEBUG: display: A.0: plane_set_size (2160x1440)
+(kms_bw:1999) igt_kms-DEBUG: display: A.0: fb_set_position(0,0)
+(kms_bw:1999) igt_kms-DEBUG: display: A.0: fb_set_size(2160x1440)
+(kms_bw:1999) INFO: Assigning pipe A to output eDP-1 with mode 2160x1440p
+(kms_bw:1999) igt_kms-DEBUG: display: commit {
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "GAMMA_LUT" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x39/57
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "ACTIVE" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "VRR_ENABLED" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.0, fb 55
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_W" to 
+0x8700000/141557760
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_H" to 
+0x5a00000/94371840
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_W" to 
+0x870/2160
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_H" to 
+0x5a0/1440
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "FB_ID" to 0x37/55
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_ID" to 
+0x26/38
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.1, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.2, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.3, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "GAMMA_LUT" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "MODE_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "ACTIVE" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "VRR_ENABLED" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: B.0, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: B.1, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     eDP-1: preparing atomic, pipe: A
+(kms_bw:1999) igt_kms-DEBUG: eDP-1: Setting property "CRTC_ID" to 0x26/38
+(kms_bw:1999) igt_kms-DEBUG: display: }
+(kms_bw:1999) DEBUG: Test requirement passed: !(ret != 0)
+(kms_bw:1999) igt_kms-DEBUG: display: commit {
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "GAMMA_LUT" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "MODE_ID" to 0x39/57
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "ACTIVE" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: Pipe A: Setting property "VRR_ENABLED" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.0, fb 55
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_W" to 
+0x8700000/141557760
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "SRC_H" to 
+0x5a00000/94371840
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_W" to 
+0x870/2160
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_H" to 
+0x5a0/1440
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "FB_ID" to 0x37/55
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "CRTC_ID" to 
+0x26/38
+(kms_bw:1999) igt_kms-DEBUG: plane A.0: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.1, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.1: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.2, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.2: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: A.3, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane A.3: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "GAMMA_LUT" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "MODE_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "ACTIVE" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: Pipe B: Setting property "VRR_ENABLED" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: B.0, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.0: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     populating plane data: B.1, fb 0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "SRC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_X" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_Y" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_W" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_H" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "FB_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "CRTC_ID" to 0x0/0
+(kms_bw:1999) igt_kms-DEBUG: plane B.1: Setting property "rotation" to 0x1/1
+(kms_bw:1999) igt_kms-DEBUG: display:     eDP-1: preparing atomic, pipe: A
+(kms_bw:1999) igt_kms-DEBUG: eDP-1: Setting property "CRTC_ID" to 0x26/38
+(kms_bw:1999) igt_kms-DEBUG: display: }
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Test assertion failure function 
+igt_pipe_crc_start, file ../lib/igt_pipe_crc.c:387:
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Failed assertion: pipe_crc->crc_fd 
+!= -1
+(kms_bw:1999) igt_pipe_crc-CRITICAL: Last errno: 5, Input/output error
+(kms_bw:1999) igt_core-INFO: Stack trace:
+(kms_bw:1999) igt_core-INFO:   #0 ../lib/igt_core.c:2051 __igt_fail_assert()
+(kms_bw:1999) igt_core-INFO:   #1 ../lib/igt_pipe_crc.c:433 
+igt_pipe_crc_get_crcs()
+(kms_bw:1999) igt_core-INFO:   #2 ../lib/igt_pipe_crc.c:592 
+igt_pipe_crc_collect_crc()
+(kms_bw:1999) igt_core-INFO:   #3 ../tests/kms_bw.c:249 
+run_test_linear_tiling()
+(kms_bw:1999) igt_core-INFO:   #4 ../tests/kms_bw.c:287 
+__igt_unique____real_main264()
+(kms_bw:1999) igt_core-INFO:   #5 ../tests/kms_bw.c:264 main()
+(kms_bw:1999) igt_core-INFO:   #6 [__libc_init_first+0x80]
+(kms_bw:1999) igt_core-INFO:   #7 [__libc_start_main+0x98]
+(kms_bw:1999) igt_core-INFO:   #8 [_start+0x30]
+****  END  ****
+
+
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/68249817
+
+Please could you have a look at these test results and let us know if 
+you need more information. Thank you.
+
+Regards,
+Vignesh
 
 _______________________________________________
 Linux-rockchip mailing list
