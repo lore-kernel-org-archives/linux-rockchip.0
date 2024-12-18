@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58A0E77187
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 15:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DB1E77187
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 16:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3J/c8OVar4Eo80P4+tHde62suB3MdzYdAx//xAa4Ka0=; b=GDCXkbuflZb5lr
-	+NtN5p6QcWxbngllh0LPn6MOCGMKL8d5FxATJAdOsboNPM/a+hngLcmNYZ74AA+PQLJ6n71PnBK5l
-	GkdsDo+Y7k2j1RFT7/0UgJtJF3EJB4aR1wgioGWUpofzlq9uK55XJPdsvdZjVdwqVa3u2aKBex/fH
-	9h/gxazp2OYDVNq/9Bx3yddtBouM1csGzbGKLE/RjhN4xwy1JUEyBeujPyCXKx2My0XbQ+djcqkhA
-	F+sjzdOGaoYAvoZQbW9a6QSe3ZXjwv/e/A3+nFuSWXfvaIgLXLlPw0be32p/mQGrXykiAH5zz8d4n
-	1f4cU+V9kAnnZn6o2+eg==;
+	List-Owner; bh=pX9FkCGdWMzjfcbmGc+JK2m9G8FKYEwS4raFyKN6FRk=; b=SzOL+Q/MfnRU2j
+	bVk8At64J0BmeYkLJKY6BgcLN58ryK0ukS5x8aHOZdATPVmiqujR+jtJikRkdEhTL1mKvCiRWe+tO
+	9Bex6xyzu0Hi5in7Gd9+hK7zZQ3wLqWoWmhud9t9fQwbKty4Iag7QsAHFw6LwZvQNCUrbVKhM2Tc5
+	IZDluoCy5VCOywfw1kwh0oEG3jNEVj4P0lJMnkLabG32rug2GitkmmMBd9YCdwAXgpFfCwuY+RVZX
+	GivR22Tl/HM2Ry+P25sHanDT0+zHPxse10Zj0WuxiRX0vnGAcMTXhw1P90z+QnFy6zUbrAXuFsjH9
+	kgi+6p6lxyV2fPp6uOcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNwKA-0000000H5LS-0Jfl;
-	Wed, 18 Dec 2024 15:50:58 +0000
-Received: from mail-m127221.xmail.ntesmail.com ([115.236.127.221])
+	id 1tNwyg-0000000HBqm-2D46;
+	Wed, 18 Dec 2024 16:32:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNwHC-0000000H4kV-2bhD;
-	Wed, 18 Dec 2024 15:47:57 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 62079658;
-	Wed, 18 Dec 2024 23:47:43 +0800 (GMT+08:00)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH] spi: rockchip-sfc: Fix error in remove progress
-Date: Wed, 18 Dec 2024 23:47:41 +0800
-Message-Id: <20241218154741.901591-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tNwxZ-0000000HBk0-2Sw1;
+	Wed, 18 Dec 2024 16:31:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1734539498;
+	bh=mY3U7AbtnJQCWWh3Vx0S3LcnVgc2hSTazVJkcFVQpIo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=iRNQuBoOyjkWUbElYhDirfToUam6+fy7IPKah0TVqldU4lZ+iRHU5AL8WHEsI3nBf
+	 Qls2I4NVk8xKY4d+VPNmdkM9iP8zixQEdudA/dOS1/JjiG+ZDISM8yJcMj1ODSg8b0
+	 4jtiauIPWuhe+DyDDDI4s3B6Couypnq0v5ltPIFeYbxbV5DS4vQRY9l1B7eBL9Cx7d
+	 CRXb6vkMSeXKqs+iBFvAQ/9Mntj703tt2xkLQQEiDwBno/CAQz6XD4anhogP5neIiy
+	 0Mustuguh4mEA2QZv9QxMXRv5mBpZtAbd4sIUhg1jQFt75stp5zCBqVXfgKlIIuCQx
+	 VJyOYT1nPTzbw==
+Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:15:862e::c73])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B95C517E37B2;
+	Wed, 18 Dec 2024 17:31:37 +0100 (CET)
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Date: Wed, 18 Dec 2024 11:31:30 -0500
+Subject: [PATCH] arm64: defconfig: Enable RFKILL GPIO
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUIZGVZMGB5JGUsaSxpIHU5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93da741f7209d9kunm62079658
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OAw6Aww5NTITCBAQHyxJKzFN
-	CQIaCxJVSlVKTEhPTkhNQ01PT09MVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKT09KNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=XKpvBvIh0GfihsjPdKvwG9EvIk7S7fckssglKXt5f1EhMppvwFaMQ8p5v9LUY63ysK5KmZCkI92fdGSJ3p+MQ45FGI2DJakha8Rri7jTvZuCAewPG4bmzdJhSNXN7sA1F4QVKDXBpee6yL9C+bdxPcHfGcv9kjX9xzhrSQuWGkg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=OU+G1H8f52f2/x0TSjJIsIY+TxkbETn6gOAbnCRhzbM=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20241218-rk3588-rfkill-gpio-config-v1-1-dfdf464f97d4@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAOH4YmcC/x2MywqAIBAAfyX23IKPBOtXokPYakuhoRCB9O9Jp
+ 2EOMxUKZaYCU1ch082FU2wi+w7cvsZAyFtzUEINUkmL+dDGNviDzxPDxQldip4DGmdJaK23lUZ
+ o/ZXJ8/O/5+V9P2vpeaRrAAAA
+X-Change-ID: 20241218-rk3588-rfkill-gpio-config-5c8e0333dae9
+To: Will Deacon <will@kernel.org>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_074755_189845_603CCCB9 
-X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-CacheID: sfid-20241218_083141_794087_D8A13B48 
+X-CRM114-Status: UNSURE (   7.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,51 +78,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix error in remove progress:
-	[   43.026148] Call trace:
-	[   43.026370]  klist_next+0x1c/0x1d4
-	[   43.026671]  device_for_each_child+0x48/0xac
-	[   43.027049]  spi_unregister_controller+0x30/0x130
-	[   43.027469]  rockchip_sfc_remove+0x48/0x80 [spi_rockchip_sfc]
+Enable as a module the RFKILL GPIO driver. This is needed to power WiFi
+and Bluetooth radio on various RK3588 board. Without this module, rfkill
+will report the switch has hard blocked, which prevents using the WiFi
+or Bluetooth feature.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/spi/spi-rockchip-sfc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index c62831e6158633f07c1f3532fba62f09b31e7448..9293e988789f10cf074dc80188839a32485bee16 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -200,6 +200,7 @@ CONFIG_CFG80211=m
+ CONFIG_MAC80211=m
+ CONFIG_MAC80211_LEDS=y
+ CONFIG_RFKILL=m
++CONFIG_RFKILL_GPIO=m
+ CONFIG_NET_9P=y
+ CONFIG_NET_9P_VIRTIO=y
+ CONFIG_NFC=m
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 9146b56713b6..ca4f20283d23 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -184,6 +184,7 @@ struct rockchip_sfc {
- 	bool use_dma;
- 	u32 max_iosize;
- 	u16 version;
-+	struct spi_controller *host;
- };
- 
- static int rockchip_sfc_reset(struct rockchip_sfc *sfc)
-@@ -603,6 +604,7 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 
- 	sfc = spi_controller_get_devdata(host);
- 	sfc->dev = dev;
-+	sfc->host = host;
- 
- 	sfc->regbase = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(sfc->regbase))
-@@ -708,8 +710,8 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 
- static void rockchip_sfc_remove(struct platform_device *pdev)
- {
--	struct spi_controller *host = platform_get_drvdata(pdev);
- 	struct rockchip_sfc *sfc = platform_get_drvdata(pdev);
-+	struct spi_controller *host = sfc->host;
- 
- 	spi_unregister_controller(host);
- 
+---
+base-commit: e0fc7a7869452b877c26644fdf0b38dd9a6cf8d2
+change-id: 20241218-rk3588-rfkill-gpio-config-5c8e0333dae9
+
+Best regards,
 -- 
-2.34.1
+Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 
 _______________________________________________
