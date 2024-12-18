@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F36E77187
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 16:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27865E77188
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 18:15:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lsoxsSqedgOB7fBeo92QcrF/cvSWGvEN+GeLXQuRqB0=; b=JF5GpTdMaUcqRH
-	A8ZcXRC4hJ2NytHBQOE67iPc69eDDG+31ioddln8Nv3aH5nd/lHray7n6xf377ReDn/G0pcK3WNd8
-	F5G336vM6SClzBuBIq2JD+/VYnrIpcDamPIr0UQk6p4rhcXbs7Lv1YeKFqK12mUmvyeBo2N+tVqNk
-	KwDiqE4K9MxGwjjs46u7f53I9oz6TDu/7NDwrbeU/y3+/i6Xm2hKI86vpXLMMeRam/eV8A7tOAgCq
-	BMWWXET1DEueaHCXN4whbqxrnSPqC0/g+cw7kGrHTb0La7we10vODoHKBZkmEDYobps/MQY7DES91
-	wlEwqqU5ift86JtW4UVw==;
+	List-Owner; bh=h5HfJAsdPer/CXXed/K2XghYpfJ4NJGQ1TfZcHQ+1X4=; b=znek/unemd65mB
+	I4rCQxcuJddsZYaq1A82RdyiWhYl5r0gZsVkZ3LPD3DNsdPpcZAH6Bnxgm3/qtu1bmLCpvHnBk8Nt
+	hKIGmXwKyLjpqzdnlsPD/bjR9I4EuZjJeauhWU13nQM5Gy28V3AWDgbqhR54sadrmoIJiclT/vIOi
+	qwQpUew1/3euoMnYnm/qwLu+LO0l8eshPhgQWE4Su0bJ3bSnQ0LqmBB0o+SIttRbHFx22AzwvyIuw
+	AFdBNYgL3M4coE+2WoCg+4DGwvmIdSN2XjdRyK93kpLBQ/qOWYQG2WhLdW5WGLI7Lkobxf7PYXTCK
+	JRWG3t2kjQ1CUnNDKyYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNx9r-0000000HDeP-1pg9;
-	Wed, 18 Dec 2024 16:44:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tNyZx-0000000HPEI-26af;
+	Wed, 18 Dec 2024 18:15:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNx8O-0000000HDR2-1T2Z;
-	Wed, 18 Dec 2024 16:42:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=obxeOv5xS3pelA9rBXGzBgBDhhTmHuY1TLuS9kkDxuM=; b=b9NzLt6aR6WEi8aZiCa9QDGKFj
-	b5YEFDWiz6NiZ/qWC1v+BzaqszvXu8Kb5OgZXrYqdP0anWHF4JBVyLg9NinBO32bGdfqkt3gwJwDR
-	fRNc4miuzUebN8mYkOL65cCvvEFLUj6dqdSPA/KR1aON1oqT1f9iB2ll85DvYVuPYu5MQCSjvkAgv
-	1N4ffaWNDWZo0e0llTBpcoBDmUQEbNbsV4hjDvKgtQCu/AFDRnQk/ml3nEcoHrFvRfgBzNpgF7Jma
-	YtBaW72DPcF240N1J5K/8fi3nUvaF6nHqYGNCRbAsfGDN/ff/tt0r2iwcz/D/sG3qRq2XU4B0OCEY
-	ChVAMQRg==;
-Received: from i53875bfb.versanet.de ([83.135.91.251] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tNx8C-0002kl-87; Wed, 18 Dec 2024 17:42:40 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	hjc@rock-chips.com,
-	krzk+dt@kernel.org,
-	s.hauer@pengutronix.de,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	derek.foreman@collabora.com,
-	detlev.casanova@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: (subset) [PATCH v6 00/16] VOP Support for rk3576
-Date: Wed, 18 Dec 2024 17:42:29 +0100
-Message-ID: <173454013836.591676.16677827979094919661.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241214081719.3330518-1-andyshrk@163.com>
-References: <20241214081719.3330518-1-andyshrk@163.com>
+	id 1tNyYq-0000000HP9h-3sMs;
+	Wed, 18 Dec 2024 18:14:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5B43A5C3BC6;
+	Wed, 18 Dec 2024 18:13:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA0E8C4CECD;
+	Wed, 18 Dec 2024 18:14:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734545656;
+	bh=oLjRNaXefOfbuwuGz/n65DpsF3Fb5uurQPkAN2a0Nrk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=RFigwBAqLIxWG023Fhlwq7Ot86RHEKJKM/tCBsnaPO8XAoVjv8DwFdHgh6r7sp6/M
+	 UR7+jQXvsJkAYEid+oVGhFVpyC14xJ4Nul2q8O2dK8FJLAsXnjMLF2bA0SPvDqnhJI
+	 QC+1onguhqBRBQya7dfZ1JFcA8pv4ONJIRnMZ8n/yLN8E5GhgPvciBRsU68HlYkcEl
+	 G453VSFamRisQhgQNrERr78dTxyCml61ZNM17lk7k3pp4kdkDTWRriWdsIm8hu5dPw
+	 46Io3XhpdV+7kXa0fPCHs4X7mc/HoYquyOTwdcBaN3N/wsyV6CJ2gqd3rjBP8nLO6F
+	 mGpQqV2aM//4g==
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+ linux-spi@vger.kernel.org
+In-Reply-To: <20241218154741.901591-1-jon.lin@rock-chips.com>
+References: <20241218154741.901591-1-jon.lin@rock-chips.com>
+Subject: Re: [PATCH] spi: rockchip-sfc: Fix error in remove progress
+Message-Id: <173454565468.177553.7095093662126161024.b4-ty@kernel.org>
+Date: Wed, 18 Dec 2024 18:14:14 +0000
 MIME-Version: 1.0
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_084252_482585_756BF0B5 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20241218_101417_075927_6E8DC5BF 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,38 +73,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 14 Dec 2024 16:16:59 +0800, Andy Yan wrote:
-> Thanks for the basic work from Collabora, I can bringup a HDMI
-> display out on rk3576.
-> 
-> PATCH 1 is a carryover from the working when add support for
->     rk3588[0], is very usefull when some people want me
->     help debug some issue online, so I really hope it can
->     be merged at this round.
-> PATCH 2~8 are bugfix of rk3588 alpha blending which report and
->     test by Derek
-> PATCH 9~13 are preparations for rk3576 support
-> PATCH 17~18 are real support for rk376
+On Wed, 18 Dec 2024 23:47:41 +0800, Jon Lin wrote:
+> Fix error in remove progress:
+> 	[   43.026148] Call trace:
+> 	[   43.026370]  klist_next+0x1c/0x1d4
+> 	[   43.026671]  device_for_each_child+0x48/0xac
+> 	[   43.027049]  spi_unregister_controller+0x30/0x130
+> 	[   43.027469]  rockchip_sfc_remove+0x48/0x80 [spi_rockchip_sfc]
 > 
 > [...]
 
-Applied, thanks!
+Applied to
 
-[03/16] drm/rockchip: vop2: Set AXI id for rk3588
-        commit: 7b256880fdb2d7f23393b87bb557090f049e686a
-[04/16] drm/rockchip: vop2: Setup delay cycle for Esmart2/3
-        commit: c766998ba6df126ab6934d32ff2ff080316ec630
-[05/16] drm/rockchip: vop2: Check linear format for Cluster windows on rk3566/8
-        commit: df063c0b8ffbdca486ab2f802e716973985d8f86
-[06/16] drm/rockchip: vop2: Add check for 32 bpp format for rk3588
-        commit: 7e8a56c703c67bfa8d3f71a0c1c297bb1252b897
-[07/16] drm/rockchip: vop2: include rockchip_drm_drv.h
-        commit: 77b1ccb2a27c7b3b118a03bf1730def92070d31b
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Thanks!
+
+[1/1] spi: rockchip-sfc: Fix error in remove progress
+      commit: 7f9a1eed1ad8b274ed9163a02cef891a90427237
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
