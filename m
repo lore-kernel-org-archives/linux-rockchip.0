@@ -4,77 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E929E77183
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 08:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E39CE77187
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 10:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xKjQmk0DujqlvvrJ3egu+s3ug3vLNwKemwDQvS6LCCw=; b=I6o8WpJ2RFynBK7oZD8aluciZN
-	MDJRH9+zpbRIEn8X2+PuyXBZAXfWdHbf4JLZz/zNCwh9RVU1M9L/7j/vlzIPnSF5e/dpxhYwx8jBy
-	Se223gGEdq3I7/+ivjWXjO3T/ZojTlX5sYyL00a54Y3TkZvRz+nM32a8zEZJeLDsegfzFaEaDKSZ8
-	ZGSpV+9m8WEZm8tTZd52H5Pn/RtZeZY4EUWMUCq/07/5IgBF302DsDqyOGRdVecChKjK5y6xVXDzB
-	ZTxRhkv2qlbE5hQAca8KnTHBPLLcgpytLqB4x2EUAtESt3XB2nP5ykDCQmyFHpyH7omrU6qPg70dB
-	Fdo0UNwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=HX8KO7WhgRqd4yZSXa0yMdhO18dC8BRWKJWvVFsSFmo=; b=srme8AMZAq0gZPk3UTft9J8mUA
+	zgowyN5LlT8ubok34npbf2LLjPtGppms/uTpfvgDh3ID8gXHKDPzPDDiES42dWgerih8nnWvfHice
+	VCjyq3tsX2WY1QLSgMPvRrQnX+rWIVoWu5JR/+z2IvaPpGEPqqaCFNS10WhA+bbetMmnMaTSLPOyG
+	jgs1wq2G//zK6JTiC2vHagEiK8HfQYo9tNVbCkJLtXOpLAGONsHOSFc7Jln4lpf18DistnZp+S0CU
+	BxxBGE/6RwC14ZvqDa7JhgzUjz3yWPIjER8m/Mg+fOLyWqJvCbKtBjpZzxtVIvSA1Z2HDoom4lqP2
+	YcR/xTvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNozK-0000000FsEQ-15wo;
-	Wed, 18 Dec 2024 08:00:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tNrWe-0000000GIs4-30xE;
+	Wed, 18 Dec 2024 10:43:32 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNoyC-0000000Fs6V-2D0T;
-	Wed, 18 Dec 2024 07:59:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 274365C5EA7;
-	Wed, 18 Dec 2024 07:59:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65D16C4CECE;
-	Wed, 18 Dec 2024 07:59:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734508786;
-	bh=sqi+j1FWp7VAY/ARAadBpUhCp9Sk4hgOZxPX95wClrQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X0TEM8Koa59ree2WPetcR04rE84cgfBQw46LRKM3wLj29lxQ8tpTmoj2xBlumhjlT
-	 71clqYVjOL0cNR465CyvpA/0Vn/WDPI8lgOHqCEcwen6xr76dhF+VcZ0hP3ZHlCrYs
-	 bAvnJNlFQT+2AsgLx7mI4BapfT940lJWO/bRzmmQVDpEwKUnz7oG3eMtgEJqrVVDpK
-	 e0KKdfj3cuXNvUVWPaqvY99mxU4hDBwaQ1qAIfy20mrsc497E/Ilk084B/ni5JlTB/
-	 UirwcLtdloZe94am91hJbMF08vjJaH1fr+lQleSHJj9nqm0DCzBCDTN8toxM9zPP1r
-	 XNvyI7qxTSosg==
-Date: Wed, 18 Dec 2024 08:59:43 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Phong LE <ple@baylibre.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Russell King <linux@armlinux.org.uk>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-Message-ID: <20241218-wild-red-manatee-bb2a34@houat>
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat>
- <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
+	id 1tNrWc-0000000GIrS-3XEE;
+	Wed, 18 Dec 2024 10:43:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=hFnBzW9b1RQlzzgHaS4U4XGhJhBk+CB5H/7P4N1ouaIa57AKOhjrIeObB3qBR2sS8SHEfJ9Ptl0vOwJpRcu5TIzj3xgC9GIB7h0au+6+vcb02FfrFa70qFLYS9Qt1rlWochpzrc6+FvuSf6PHFiepJSjpDiF1Fv7vSQj11f/C5Ic4QxD8Wzj2AfRVqxfJFJtjTt6dwo+2YGDjpo8hlv39NWjWnuylSwasShmo1dpBy9Xdhuji4ydMNsrWQ431hEhZl8QrPa4aLkxQjYtzhKMJj7nfvQ0pdtwJ27wwt6g7ZsOEauag46pkBJ5NGmQeKZn8R8oNKiT2qZGXm2EhQQScw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kkjn50WSqkhDkzSnyOl5gCBjaF3WFvpt943PooctGnc=;
+ b=aaQbIuzoVcfWlCUs1hyhdepdY7FRBWdaXGx01R4O5mnQCWfRikCERJHhwC6eQLci0c9mTUSVFdQy97NaCBrVmpSdlbkuGqzyKuvZpIbcVzDyDmb71qgGngdoFfs32XVoX7fdSNmOhnSDnwPDLMwHdIGJGSxdFWfsz0E1RbJtDKyktt9jwyvTZgXsavO4INabMW8bIq2uaehj7jKXwwl2Zye1Q0FB4TH97RNYdYP6ErL3ek2Nki5P9mUfln2pVm70LD6ICMEUR+6YOstBQfFoWfOjrRPa8Am8oSefZjKLUnXqWHtr7p7J2Q2Iiegufp+WU19u77qK0+22qRcxirtniA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kkjn50WSqkhDkzSnyOl5gCBjaF3WFvpt943PooctGnc=;
+ b=TPDC8QpN36Jl0ZzfaLbd576wDfJ0feIT99KDnjASNxiCgfwU2/dEsbDFsk2Tua6ffMldjiuHOSdJE2jcHDokWuASpl97KYtX0wwBU3NNTCRFn+RbMH6Lm5mF7ioMpkJz8cMpd0UUgVzTngWoTDV6qwV1UZNju+9fWISLQH0Y9oc=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by DBBPR08MB10841.eurprd08.prod.outlook.com (2603:10a6:10:533::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8272.12; Wed, 18 Dec
+ 2024 10:43:26 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8251.015; Wed, 18 Dec 2024
+ 10:43:26 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Date: Wed, 18 Dec 2024 11:43:11 +0100
+Subject: [PATCH 1/2] arm64: dts: rockchip: fix num-channels property of
+ wolfvision pf5 mic
+Message-Id: <20241218-b4-wolfvision-pf5-update-v1-1-1d1959858708@wolfvision.net>
+References: <20241218-b4-wolfvision-pf5-update-v1-0-1d1959858708@wolfvision.net>
+In-Reply-To: <20241218-b4-wolfvision-pf5-update-v1-0-1d1959858708@wolfvision.net>
+To: Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1734518605; l=941;
+ i=michael.riesch@wolfvision.net; s=20240405; h=from:subject:message-id;
+ bh=qzSpgc0G4J2PYs8PSal9VZcgN2oBGczhdGFbiRkSdUE=;
+ b=FIh66hHY2zQg83t4nt1RM5dfrEQEUCnB2WEY0UulWm+oklpxqxldpOwnJ2pvb5M79MOpPV0aQ
+ umCAx+zWQjGB2i/WHr6KGf2+BRXwz9n19zGrFm3RcVOi89fBkfUjxsB
+X-Developer-Key: i=michael.riesch@wolfvision.net; a=ed25519;
+ pk=cSJmgKSH3B6kdCIDCl+IYDW1Pw/Ybc6g9rmnUd/G7Ck=
+X-ClientProxiedBy: VI1PR09CA0140.eurprd09.prod.outlook.com
+ (2603:10a6:803:12c::24) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-In-Reply-To: <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DBBPR08MB10841:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2ab725c0-9279-4a0e-04c5-08dd1f50cda4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|1800799024|38350700014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TVdDdmg3eVpsUXl1cVJsMmtVRzJaVlV2eUNHRkkyVXVtRzJyNjRDaDJ0Nk9C?=
+ =?utf-8?B?NS9IVnpUQjRGRG42MjZ1c2ROZktuRG8zQkx5ZG1ORkpGZkFBeGZsaXZTN0Zs?=
+ =?utf-8?B?Y3B6cTh2NUlwUnVyNmxROW95alBUSmN6UzhmVGRGbWFoR1VRb2Rhd3BxdHp1?=
+ =?utf-8?B?MjJWb3cwTkhiUlhIVjk2ZjRRM2EyTUJxMS91ajJ4dXJKajJMdTlhSGlFK3RP?=
+ =?utf-8?B?VEwxeG1rUVJ0alZUSXZhWk42cE1ZU250d3diek0xNWhTMkRCanhSUEhjSkF0?=
+ =?utf-8?B?V3VOSlgrOVJORjJ4bXJ2cFRGSVVSNGFoMDRYeGdOQ2RzdU5RNVZQOTJlaDVj?=
+ =?utf-8?B?YW5oTnlDK1NkeUpZYjBxRjhPYXB1SlY4Qlg2QVZwNEllekFxQjk3cFlidVk1?=
+ =?utf-8?B?MHFQQ1JKS3AxRmkxc3YvbXFEMEZmQ1J2b25yS0Y0cEFyOTJYVWdHaWdTS2FT?=
+ =?utf-8?B?a0h0enM5MzM4alVOdzg4bHVtb2FMWGJDUmtieWZOM2hmUkVDWmZsWmI3K3Ev?=
+ =?utf-8?B?VzV0aFRGL3N2SzB2U1dDZ0k1endkaldUMk1mandldEtRaENxYjVhNVVHQXpZ?=
+ =?utf-8?B?d2tzMmI3Mi8vTURSK1dwaC9xck9ZQW9YRTA3b2tYclJWTHlQMmxPb2VhT2JH?=
+ =?utf-8?B?akdGTzRTWGFaY1VMM1JXRmZhdGEybk0wRm91NGllcThScjhmK3BBR0pBZXli?=
+ =?utf-8?B?U2lUQ25TRVBGSG5JTm0rSXBlTVBJUTBmQmprK1F6elFRWFlPeGlWOEg4OUxw?=
+ =?utf-8?B?NEh2OGdWZHpBbzlpeXNITVgzYmVZZ20xRWhMc1c3R0xEbnZkSGJ3THMyeExY?=
+ =?utf-8?B?L0kxVDdWNlBuMlo3K0V3amFTTzlxN0xsMVppdGpBbzRIcmpFNDc1UUZZVkZW?=
+ =?utf-8?B?a1JXUk5Ob01uSnhZWHg5QVpvQzBUQzNJYUUvWHdwSWowVlRvSzJDbXc2R0hD?=
+ =?utf-8?B?M2FKdGRHdk5RYzNHclJQblZlUWRmT3hYNWxRekN4M1Ntb0dQRHdTU3djbHU0?=
+ =?utf-8?B?aWRmWDNTS0hRVkZ1NXJ6RnJxdUVLSnlzcUtBbXNXVHhYZU83cW1TYmxTRmdM?=
+ =?utf-8?B?NVVxTm8vaGg3bE1FRDRmQmlYZ2JsNDh1ZGdaNnBKWlpCLzZFUllnYk1PVE1Q?=
+ =?utf-8?B?dU5rODladEFzLyt0ZXpFUHVlbFdJMyt0YWJrRStoM0RmZWlnVGdyalkwaDlK?=
+ =?utf-8?B?UTNCWGlVV3ZJYXFFTkdSTXFPV1lhWFBhQWdyV09FbGQrYjNzN09iYkY1cEQ5?=
+ =?utf-8?B?NjBKSGNXYzVNT3dpMnRxcnRjQ2poVlQ5dldzb29TY3Jsc1JyUjVXRG5zNk81?=
+ =?utf-8?B?UjBUWGU1TUxUR1luMEFYaDhkVjlXa1NKd29lZzVSOTZSVWt0c05FMGJoTzRL?=
+ =?utf-8?B?YzNqaktBTTB3MXB2TzI0T0lxZjFjWE9ZMW5rQThFWDhmTTI4YUE0SWRCSUNl?=
+ =?utf-8?B?cEU1MTY1M1B2Z2ZmRlkrUWl1amV3WGsxZFFIQk5SRmJYRjVLY09NNXlDWGJN?=
+ =?utf-8?B?bDdWQ0NVUWJBTlVRMkN4eU5scERXSWVKQmp6QTZhYm5TWU9YVEd6cDNMSjQy?=
+ =?utf-8?B?eWVGVEFXTG9wUmlISVNXV3hpOVpPQnRmWGNhUmhYd0FkYUVFYXpDY1IxbVd6?=
+ =?utf-8?B?NDBqUW9ieG1paE9qNnlxWDE3YWlwZS91Z09EbS9laFpGN2VjTExOb3hMdi9I?=
+ =?utf-8?B?RmFxV01mTkpRcWVSZ1BCckRtYkUxRGU3S1JXMEozeHBaQStFL3owQlNPMWdG?=
+ =?utf-8?B?cHY3NXQ2NzFmcUs3TVdBQmRrL0ZHVEZFQm1vT1hzM05pdW0xSnhRMW85ZXd2?=
+ =?utf-8?B?ZDd4UXpVM2Y2MWVZa0h3YStPckNVR01CNnRpcll2V0QvazRkc2M4aHBoUlB5?=
+ =?utf-8?B?QkhoU2ZtUTgzdTFhL1FMZE5nekdUakZHbmE2N0tqaE9kZ1NEdWFaV09NYTMw?=
+ =?utf-8?Q?jZjnRBmglAjo9SLtMF/mxp46YmzxtTeQ?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(1800799024)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VkpYK2syL0lOY0Q5RElrbVAzOElGMDFhdytseC9rNjllcWwvbC9maWJKQUFO?=
+ =?utf-8?B?K01nUFFOTnFpUjJuUHJEaTFxMVBOcEwvc1MxS0Z6Umt3NStwMVFMcXl6Y3Ni?=
+ =?utf-8?B?bC9WaTZRaE91dGxFY0tRUVBNaWN2SEFCb3FkMUE2Wk9aTjQ5OHVkV3dQQ2Fm?=
+ =?utf-8?B?UlJZWmsrTTVQWnFkbCtQcWUzaXdaZEo4YjFBQklzZWkvN0ZUV1pPcEd4Qnpz?=
+ =?utf-8?B?ZUdlTVFna0UzLytWd0xIc1U3NGNDT0thMFBvUmVoa0lHSEE3YjZ1SWFOOWhB?=
+ =?utf-8?B?YU5LQUtPZFBVTEZzSjJPa1EwZitydlpwRFFuQW91THBFTml5MzVCdWV0eW9R?=
+ =?utf-8?B?VTRvTldTUE10aGVUWTZycFdzVm9iSU1nbFJpM0piZWYzaGhVcVljVlFCN1Fs?=
+ =?utf-8?B?bXVNZDErbGZ3WkJVQWxpWFcvWTkyYWZDQnptSGpZL1JMTnMvclAwaWlsT0ZM?=
+ =?utf-8?B?Z1JXZWdEVktaL2kyWFY1R1dyYWZkRFV4OXVxU20vNjM0YjhQM3ZDenRTM3Zi?=
+ =?utf-8?B?YTZVN1B3aFI0UG1ZYUl6WXRHTm9rVTBheHB5cDczV1BMTHJHZGpPbk9uZS9J?=
+ =?utf-8?B?cFBXNnIzU0RIc1hoTlA3ZWU3SHcwQy9Gb0xKN09pVVVzR1BWQVgwRDE3NnUx?=
+ =?utf-8?B?MzZvUjZXR0Myb2FFbkJTMU9Xc2NYNzhUQUsxZWJSaFdxYXdzb0Fvc1BnV2dy?=
+ =?utf-8?B?ZklHOE1xcFVSall5QTQwMVAwckdYUnFSQmhVK2I3ZUIxRTFKOTJFUEFGMDFF?=
+ =?utf-8?B?MjdUdmpMR1o3Qy96WHVBY3RCQ2ZMUVdtdjE0bjU2VUUyN2I0S1QrYWFzY0kx?=
+ =?utf-8?B?NVZuWGkwOWNhYytTd0k3U0h1ZFd3RGVZbk1MMnpzNk9kdS83Zlk0N05xOVp5?=
+ =?utf-8?B?MlZ6RW4rckt0NXZnSlNtYU43Y3BmbnlRTzhNUjVtekdMWFVPbGJGTHhndG9m?=
+ =?utf-8?B?KzZGdFJNcEdvUGhHd3d4eFhYeXRSbCsxUGUwTG5Qb1MzVXg1bVpBU2hJdzFa?=
+ =?utf-8?B?TnhySVJ1L1FDWHZSWVZBczFPTlg5MEN5NS9zY2FqYmdYMDNmdVlVUXY1TnVC?=
+ =?utf-8?B?LzIrbUxTQ1RZNC9UV2RWRnEybHBQNmJJVTdlZTlyUk1iZHpyUEg4WHFvWGRT?=
+ =?utf-8?B?VE5LaGNidWFqOTdXTXREYWdvS0dSRk9wNitBKzcvYkk4eDdKWmw3YVlJQmN6?=
+ =?utf-8?B?Zitza3ZsYjdEUzdOdjJMYTlBbWJhMGJDd1NaOHA2M2Q1ZGtVOUlRZ0JNbCt0?=
+ =?utf-8?B?TGlOWlNTSURqeHFOZTdNb2dmc0hMenNwVksyQlVMeVN3M00xaEVWTCsvS0E5?=
+ =?utf-8?B?TnhXNXRJdUJZK1V4RWtTY1U3bVl3czdYYmVqU1hMZUVJUlMwQ1JjdkFId3lF?=
+ =?utf-8?B?c0VnVU9vSk1wSS9icUxOd0Y0bFNHWEh0MzBjV2toMlB3V01qbDVHNk1uVUV3?=
+ =?utf-8?B?YVN4TXhnbStJZEliZjR6eXhhbUpYc0M4bThTcGh1enVFNlFYa1c2WnV5K1ZG?=
+ =?utf-8?B?M3cxOVNvZHhFTEYvLzJzWWpWV0c1ZGNVOW1xQS9aeXhXUEwzcjJ2MVZJRGRB?=
+ =?utf-8?B?RmJEZjhQWTByUC9RRmY1U05yalIyeDVWd0xTeWY2TG1zL3g2R1BDaGovVE4r?=
+ =?utf-8?B?S29pZTNwQlE0QVlHOGR3NkNHZXJTbzZVVzBYOUY4RXFOdjBTTjJaaGdLb1NS?=
+ =?utf-8?B?MENGT05jSHNvcTZjeGFtS21NdEZrWitqU01UUkU0dmphMjArdWFNSlI1cnN0?=
+ =?utf-8?B?TzBBN3U5bVN5WHNyVGI0SWs5UW9NTW5vYlpXZWVsU3dYWmpSeUYrVzN3U05t?=
+ =?utf-8?B?TUJ3NUozUmRwWTFaTHpES1I2WUNxeS9CYkowc0NGY0VkQlBFU1ZrUm84TXo3?=
+ =?utf-8?B?UitYNGNIRHVoMm84cXRIbU1HNUwyd3ZrS0V2YmJMTUp6SHhOZzZlQ2V4c2Zn?=
+ =?utf-8?B?bjdGR0dnc1lLSDNIcEhPLys2a1I4MkpNZkxGVWZSWFhrSmxWK0hEaWdMa2hT?=
+ =?utf-8?B?RXg3ak9GZWhtbkZOZE1VNmlTZHFTaGRPSGlqS28yUlRtRzAvRDViOUlzNVlw?=
+ =?utf-8?B?aGY5REhLZkM5cVowRThJVlhPSTVja1c2VUtac3BkNE1ybHpZM25WcXJrdi9q?=
+ =?utf-8?B?VUFMY1dhWFdibmZ1NExaV2RneFJhMWo5ZU1udDZuWEIwaVJ6bURvdEZ2TWhW?=
+ =?utf-8?Q?dpl2mj+jFa9sZNYWTwY4P7o=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ab725c0-9279-4a0e-04c5-08dd1f50cda4
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Dec 2024 10:43:26.5326
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Tk9gheh2RGdsdXkPTzbiAo2ez/PAJwne8OYlXVkj80ji5ADSHhE5p4tMX5ng95tYrN+tom8wE6GI670mhPLsdT5hToEbOfGN5UQhjOKrcfU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB10841
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_235948_650337_EBA83524 
-X-CRM114-Status: GOOD (  31.99  )
+X-CRM114-CacheID: sfid-20241218_024330_909364_9DF7C4CC 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,111 +181,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1582850763829955961=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The Rockchip RK3568 PDM block always considers stereo inputs. Therefore,
+the number of channels must be always an even number, even if a single
+mono microphone is attached.
 
---===============1582850763829955961==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="woythu4oziodei4y"
-Content-Disposition: inline
+Fixes: 0be29f76633a ("arm64: dts: rockchip: add wolfvision pf5 mainboard")
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts
+index e8243c908542..c6e413731241 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts
+@@ -53,7 +53,7 @@ hdmi_tx_5v: regulator-hdmi-tx-5v {
+ 
+ 	pdm_codec: pdm-codec {
+ 		compatible = "dmic-codec";
+-		num-channels = <1>;
++		num-channels = <2>;
+ 		#sound-dai-cells = <0>;
+ 	};
+ 
 
---woythu4oziodei4y
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-MIME-Version: 1.0
+-- 
+2.34.1
 
-On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
-> On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
-> > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
-> > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > > framework, I stumbled upon an issue while handling the Audio InfoFram=
-es.
-> > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > > there was no simple way to get the drm_connector that stayed at the e=
-nd
-> > > of the bridge chain. At the same point the drm_hdmi_connector functio=
-ns
-> > > expected to get drm_connector instance.
-> > >
-> > > While looking for a way to solve the issue, I stumbled upon several
-> > > deficiencies in existing hdmi_codec_ops implementations. Only few of =
-the
-> > > implementations were able to handle codec's 'plugged' callback. One
-> > > third of the drivers didn't implement the get_eld() callback.
-> > >
-> > > Most of the issues can be solved if drm_connector handles
-> > > hdmi-audio-codec on its own, delegating functionality to the actual
-> > > implementation, be it a driver that implements drm_connector or
-> > > drm_bridge.
-> > >
-> > > Implement such high-level framework, adding proper support for Audio
-> > > InfoFrame generation to the LT9611 driver.
-> > >
-> > > Several design decisions to be kept in mind:
-> > >
-> > > - drm_connector_hdmi_codec is kept as simple as possible. It implemen=
-ts
-> > >   generic functionality (ELD, hotplug, registration).
-> > >
-> > > - drm_hdmi_connector sets up HDMI codec device if the connector
-> > >   is setup correspondingly (either I2S or S/PDIF is marked as
-> > >   supported).
-> > >
-> > > - drm_bridge_connector provides a way to link HDMI audio codec
-> > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
-> > >   framework.
-> > >
-> > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
-> > >   bits. Only TDA889x driver sets them, while it's safe to assume that
-> > >   most of HDMI / DP devices do not support ARC / capture. I think the
-> > >   drivers should opt-in capture support rather than having to opt-out=
- of
-> > >   it.
-> >
-> > Sorry if this isn't clear to me and I'm quite late to the party, but did
-> > you test this on vc4 with both a pi3 and pi4, or was it just compile
-> > tested?
->=20
-> LT9611 is actually tested, VC4 is only compile-tested. Should I put an RF=
-T tag?
-
-Yeah, we definitely need to test it on the pi3 (polling-based) and the
-pi4 (irq-based) at least.
-
-Dave, Maira, could you give it a try?
-
-Maxime
-
---woythu4oziodei4y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ2KA6gAKCRAnX84Zoj2+
-doM7AYDYL5BrruN7W/ACWXLqTjEYQHCFy+iryAfwh6yE4f0RPJ6YFzy8mnTd+X1L
-Jm9FiCABgPBOTqSnWYqNQjCLhnY0tzsDweW5w5m2sSKXDd0eMFfMFWxI2AeBQJRe
-UpFPPwBPkQ==
-=R0UZ
------END PGP SIGNATURE-----
-
---woythu4oziodei4y--
-
-
---===============1582850763829955961==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1582850763829955961==--
-
