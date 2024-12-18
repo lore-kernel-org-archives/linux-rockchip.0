@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DB1E77187
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 16:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F36E77187
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 16:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pX9FkCGdWMzjfcbmGc+JK2m9G8FKYEwS4raFyKN6FRk=; b=SzOL+Q/MfnRU2j
-	bVk8At64J0BmeYkLJKY6BgcLN58ryK0ukS5x8aHOZdATPVmiqujR+jtJikRkdEhTL1mKvCiRWe+tO
-	9Bex6xyzu0Hi5in7Gd9+hK7zZQ3wLqWoWmhud9t9fQwbKty4Iag7QsAHFw6LwZvQNCUrbVKhM2Tc5
-	IZDluoCy5VCOywfw1kwh0oEG3jNEVj4P0lJMnkLabG32rug2GitkmmMBd9YCdwAXgpFfCwuY+RVZX
-	GivR22Tl/HM2Ry+P25sHanDT0+zHPxse10Zj0WuxiRX0vnGAcMTXhw1P90z+QnFy6zUbrAXuFsjH9
-	kgi+6p6lxyV2fPp6uOcA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lsoxsSqedgOB7fBeo92QcrF/cvSWGvEN+GeLXQuRqB0=; b=JF5GpTdMaUcqRH
+	A8ZcXRC4hJ2NytHBQOE67iPc69eDDG+31ioddln8Nv3aH5nd/lHray7n6xf377ReDn/G0pcK3WNd8
+	F5G336vM6SClzBuBIq2JD+/VYnrIpcDamPIr0UQk6p4rhcXbs7Lv1YeKFqK12mUmvyeBo2N+tVqNk
+	KwDiqE4K9MxGwjjs46u7f53I9oz6TDu/7NDwrbeU/y3+/i6Xm2hKI86vpXLMMeRam/eV8A7tOAgCq
+	BMWWXET1DEueaHCXN4whbqxrnSPqC0/g+cw7kGrHTb0La7we10vODoHKBZkmEDYobps/MQY7DES91
+	wlEwqqU5ift86JtW4UVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNwyg-0000000HBqm-2D46;
-	Wed, 18 Dec 2024 16:32:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tNx9r-0000000HDeP-1pg9;
+	Wed, 18 Dec 2024 16:44:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNwxZ-0000000HBk0-2Sw1;
-	Wed, 18 Dec 2024 16:31:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734539498;
-	bh=mY3U7AbtnJQCWWh3Vx0S3LcnVgc2hSTazVJkcFVQpIo=;
-	h=From:Date:Subject:To:Cc:From;
-	b=iRNQuBoOyjkWUbElYhDirfToUam6+fy7IPKah0TVqldU4lZ+iRHU5AL8WHEsI3nBf
-	 Qls2I4NVk8xKY4d+VPNmdkM9iP8zixQEdudA/dOS1/JjiG+ZDISM8yJcMj1ODSg8b0
-	 4jtiauIPWuhe+DyDDDI4s3B6Couypnq0v5ltPIFeYbxbV5DS4vQRY9l1B7eBL9Cx7d
-	 CRXb6vkMSeXKqs+iBFvAQ/9Mntj703tt2xkLQQEiDwBno/CAQz6XD4anhogP5neIiy
-	 0Mustuguh4mEA2QZv9QxMXRv5mBpZtAbd4sIUhg1jQFt75stp5zCBqVXfgKlIIuCQx
-	 VJyOYT1nPTzbw==
-Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:15:862e::c73])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B95C517E37B2;
-	Wed, 18 Dec 2024 17:31:37 +0100 (CET)
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Date: Wed, 18 Dec 2024 11:31:30 -0500
-Subject: [PATCH] arm64: defconfig: Enable RFKILL GPIO
+	id 1tNx8O-0000000HDR2-1T2Z;
+	Wed, 18 Dec 2024 16:42:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=obxeOv5xS3pelA9rBXGzBgBDhhTmHuY1TLuS9kkDxuM=; b=b9NzLt6aR6WEi8aZiCa9QDGKFj
+	b5YEFDWiz6NiZ/qWC1v+BzaqszvXu8Kb5OgZXrYqdP0anWHF4JBVyLg9NinBO32bGdfqkt3gwJwDR
+	fRNc4miuzUebN8mYkOL65cCvvEFLUj6dqdSPA/KR1aON1oqT1f9iB2ll85DvYVuPYu5MQCSjvkAgv
+	1N4ffaWNDWZo0e0llTBpcoBDmUQEbNbsV4hjDvKgtQCu/AFDRnQk/ml3nEcoHrFvRfgBzNpgF7Jma
+	YtBaW72DPcF240N1J5K/8fi3nUvaF6nHqYGNCRbAsfGDN/ff/tt0r2iwcz/D/sG3qRq2XU4B0OCEY
+	ChVAMQRg==;
+Received: from i53875bfb.versanet.de ([83.135.91.251] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tNx8C-0002kl-87; Wed, 18 Dec 2024 17:42:40 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	s.hauer@pengutronix.de,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: (subset) [PATCH v6 00/16] VOP Support for rk3576
+Date: Wed, 18 Dec 2024 17:42:29 +0100
+Message-ID: <173454013836.591676.16677827979094919661.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241214081719.3330518-1-andyshrk@163.com>
+References: <20241214081719.3330518-1-andyshrk@163.com>
 MIME-Version: 1.0
-Message-Id: <20241218-rk3588-rfkill-gpio-config-v1-1-dfdf464f97d4@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAOH4YmcC/x2MywqAIBAAfyX23IKPBOtXokPYakuhoRCB9O9Jp
- 2EOMxUKZaYCU1ch082FU2wi+w7cvsZAyFtzUEINUkmL+dDGNviDzxPDxQldip4DGmdJaK23lUZ
- o/ZXJ8/O/5+V9P2vpeaRrAAAA
-X-Change-ID: 20241218-rk3588-rfkill-gpio-config-5c8e0333dae9
-To: Will Deacon <will@kernel.org>, 
- Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_083141_794087_D8A13B48 
-X-CRM114-Status: UNSURE (   7.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241218_084252_482585_756BF0B5 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +83,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable as a module the RFKILL GPIO driver. This is needed to power WiFi
-and Bluetooth radio on various RK3588 board. Without this module, rfkill
-will report the switch has hard blocked, which prevents using the WiFi
-or Bluetooth feature.
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+On Sat, 14 Dec 2024 16:16:59 +0800, Andy Yan wrote:
+> Thanks for the basic work from Collabora, I can bringup a HDMI
+> display out on rk3576.
+> 
+> PATCH 1 is a carryover from the working when add support for
+>     rk3588[0], is very usefull when some people want me
+>     help debug some issue online, so I really hope it can
+>     be merged at this round.
+> PATCH 2~8 are bugfix of rk3588 alpha blending which report and
+>     test by Derek
+> PATCH 9~13 are preparations for rk3576 support
+> PATCH 17~18 are real support for rk376
+> 
+> [...]
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index c62831e6158633f07c1f3532fba62f09b31e7448..9293e988789f10cf074dc80188839a32485bee16 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -200,6 +200,7 @@ CONFIG_CFG80211=m
- CONFIG_MAC80211=m
- CONFIG_MAC80211_LEDS=y
- CONFIG_RFKILL=m
-+CONFIG_RFKILL_GPIO=m
- CONFIG_NET_9P=y
- CONFIG_NET_9P_VIRTIO=y
- CONFIG_NFC=m
+Applied, thanks!
 
----
-base-commit: e0fc7a7869452b877c26644fdf0b38dd9a6cf8d2
-change-id: 20241218-rk3588-rfkill-gpio-config-5c8e0333dae9
+[03/16] drm/rockchip: vop2: Set AXI id for rk3588
+        commit: 7b256880fdb2d7f23393b87bb557090f049e686a
+[04/16] drm/rockchip: vop2: Setup delay cycle for Esmart2/3
+        commit: c766998ba6df126ab6934d32ff2ff080316ec630
+[05/16] drm/rockchip: vop2: Check linear format for Cluster windows on rk3566/8
+        commit: df063c0b8ffbdca486ab2f802e716973985d8f86
+[06/16] drm/rockchip: vop2: Add check for 32 bpp format for rk3588
+        commit: 7e8a56c703c67bfa8d3f71a0c1c297bb1252b897
+[07/16] drm/rockchip: vop2: include rockchip_drm_drv.h
+        commit: 77b1ccb2a27c7b3b118a03bf1730def92070d31b
 
 Best regards,
 -- 
-Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
