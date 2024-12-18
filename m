@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 562BEE7717F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Dec 2024 20:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C3EFE77184
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 00:58:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aK/yERE5h2ZQDWsVyZE2eGkkYi8y+kQvs5G3UAWjH1g=; b=tOwTHstK+8lFNQ
-	f59V7qKCbOq7K8pnCU0dJmSa6Kjq/T9WX+7Wq+vN6eAvXMoTG13nWTw3VbqOXVW8tQBwgEcL33LVW
-	QlXpJ3GpM87rEsS0IS1zCNwHjsZKJX8e/Cw8VLg2+frNFuxBIa/NnUrQ2gs93obr6/5w92POCrjsG
-	9tQ0J7vcACwWwT5COj2+8NZWWMayeFL6T0EVX2prHoBVbXdrs957nuQyRQA1cXIAq1b6EEkydEknF
-	k77EpNQIZrF/W8AraQg8ggSU0fU+1t9i9gXRNIvFCPneK9cSrMmNZ3/rRVtuiIN2QO7N/7Jq1EqlC
-	JtNZbW8YqIXV23XPSZaQ==;
+	List-Owner; bh=H+An7wmdQ0zw9QeBEqq4ofTvXZbqfDuvr2mshghef1U=; b=unb2Vtae6bP9SB
+	gWXIzbMz0hcNjm0gRraZDG2I6UKKuPOYtgdzMo1760FMb0fGZyjsQNbZkB36LObSRIcUEpPy9dHCw
+	hoVjQkNItWYGPeo0qE7QyQ4cy3lqQfDRVbmKoT0ENc1O3OME2NInX/Cgy7ppV8kjT/E7sOJ5+PMXN
+	wyD96+phZlRi7Ju5q1ayq2GHk0fJ1tQpM/SDV2Ii3B4xcNN7urt9feIgZLxy13LMhJeM1wPvZkFYX
+	zlnOwO12Ia+FXFQ3KKxo2Qpn9Orl2ci/l3gBM7kcmyupw6eN1LsPtzD1+1t/281Xw2KTpKxzbFkma
+	7fCTndDewNF73VsBUJRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNeZW-0000000En61-0R5d;
-	Tue, 17 Dec 2024 20:53:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNeYP-0000000Emwh-2LMo;
-	Tue, 17 Dec 2024 20:52:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1734468746;
-	bh=QTgTwjrLzq+Vh3vlJUekypbgmjzQ4zFJ9paCtPkW590=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gGkDczDweBrHtxydhN7MEf8Pgf0FmBXq6Z860ntzw+x4TerllQUvTIbx8BZLHLxwc
-	 lQD8Qe3C01isMn2ZlHk4JGoDudQc2VyxV8dBoyiDMMBxfUp5qhCAQT+M5EkZAzV9iQ
-	 7iPiioHO2joqDxWOYGzvItswwkXYqtvFjOy5R92OYOk7bfrHX2LCPKLTjIGmhUvFj4
-	 fEYT11ZdPZo6NlFVDxf8+N+LJcTNw/DfdACT+D+/NLaq6yteMODWLiVpjVNRgGhQmA
-	 p2p/DMGGMX0YpKIgohX9+dpGT9Xb9cHysiLSkh2Spui1zjeDquY+PbG6/NtT7JEsPK
-	 IwNXHq1qS+L3w==
-Received: from [192.168.1.90] (unknown [84.232.140.38])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DA7CC17E380A;
-	Tue, 17 Dec 2024 21:52:25 +0100 (CET)
-Message-ID: <2be9721e-62f3-41cc-83a8-5189b750a655@collabora.com>
-Date: Tue, 17 Dec 2024 22:52:23 +0200
+	id 1tNiOB-0000000FFso-1JJk;
+	Wed, 18 Dec 2024 00:58:11 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tNiN4-0000000FFnw-3yuE;
+	Wed, 18 Dec 2024 00:57:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=WVQ1t6XbXjKcPHRJLel/oXZDB4vT3usNT7E4mGCaWbo=; b=C
+	CrFxfLsQl7/ZdHFUhT+Oiv6NIXnXWNK/3ZReX1pGDma1FKL+C4NDYyy25XHI7BeI
+	LwQbALMaRD1emzMVR2Yp0G5yUSxlM0dMEnTDJE1rKt8uTRG8xsuo9UXgAgGdnJxu
+	cIz+GDTe85g5XLSUsYkjgQiyb9tz8f7EQKOVA1l5qU=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-123 (Coremail) ; Wed, 18 Dec 2024 08:55:48 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Wed, 18 Dec 2024 08:55:48 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Daniel Stone" <daniel@fooishbar.org>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
+	s.hauer@pengutronix.de, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com, 
+	detlev.casanova@collabora.com, "Andy Yan" <andy.yan@rock-chips.com>, 
+	"Michael Riesch" <michael.riesch@wolfvision.net>, 
+	"Sebastian Reichel" <sebastian.reichel@collabora.com>
+Subject: Re:Re: Re: [PATCH v6 08/16] drm/rockchip: vop2: Support 32x8
+ superblock afbc
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <CAPj87rMfFXkbyh7UEJQw4JV1R18KLXC3GyF0CznrN1k3UdL0Lw@mail.gmail.com>
+References: <20241214081719.3330518-1-andyshrk@163.com>
+ <20241214081719.3330518-9-andyshrk@163.com>
+ <CAPj87rOjqZdyht2y8MK7gVyk_eqEzk1Sy0DcxFtQRuhrHQ_oxA@mail.gmail.com>
+ <165af58a.697.193d2100239.Coremail.andyshrk@163.com>
+ <CAPj87rMfFXkbyh7UEJQw4JV1R18KLXC3GyF0CznrN1k3UdL0Lw@mail.gmail.com>
+X-NTES-SC: AL_Qu2YBviTvEsv7iOfZekZnEobh+Y5UcK2s/ki2YFXN5k0kSTd/Q0jbG5RIFzK/PmpCAemoQmKVD9t6cdjQpdIUb8uN2gn21BCSQHSCgwDyDUQ
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/rockchip: Don't change hdmi reference clock rate
-To: Derek Foreman <derek.foreman@collabora.com>,
- Algea Cao <algea.cao@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20241217201708.3320673-1-derek.foreman@collabora.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20241217201708.3320673-1-derek.foreman@collabora.com>
+Message-ID: <32246002.9ef.193d7438b96.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eygvCgDX_3aUHWJnKQRCAA--.2254W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g25XmdiE2lfZwAEs7
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241217_125229_797742_8165E680 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241217_165703_371277_D01755F7 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +79,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/17/24 10:17 PM, Derek Foreman wrote:
-> The code that changes hdmi->ref_clk was accidentally copied from
-> downstream code that sets a different clock. We don't actually
-> want to set any clock here at all.
-> 
-> Setting this clock incorrectly leads to incorrect timings for
-> DDC, CEC, and HDCP signal generation.
-> 
-> No Fixes listed, as the theoretical timing error in DDC appears to
-> still be within tolerances and harmless - and HDCP and CEC are not
-> yet supported.
-> 
-> Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
-> ---
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 -------------
->  1 file changed, 13 deletions(-)
-
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpICBEYW5pZWwsCgpBdCAyMDI0LTEyLTE3IDIwOjA3OjU0LCAiRGFuaWVsIFN0b25lIiA8ZGFu
+aWVsQGZvb2lzaGJhci5vcmc+IHdyb3RlOgo+SGkgQW5keSwKPgo+T24gVHVlLCAxNyBEZWMgMjAy
+NCBhdCAwMDo0MSwgQW5keSBZYW4gPGFuZHlzaHJrQDE2My5jb20+IHdyb3RlOgo+PiBBdCAyMDI0
+LTEyLTE2IDIxOjA2OjA3LCAiRGFuaWVsIFN0b25lIiA8ZGFuaWVsQGZvb2lzaGJhci5vcmc+IHdy
+b3RlOgo+PiA+T24gU2F0LCAxNCBEZWMgMjAyNCBhdCAwODoxOCwgQW5keSBZYW4gPGFuZHlzaHJr
+QDE2My5jb20+IHdyb3RlOgo+PiA+PiBUaGlzIGlzIHRoZSBvbmx5IGFmYmMgZm9ybWF0IHN1cHBv
+cnRlZCBieSB0aGUgdXBjb21pbmcKPj4gPj4gVk9QIGZvciByazM1NzYuCj4+ID4+Cj4+ID4+IEFk
+ZCBzdXBwb3J0IGZvciBpdC4KPj4gPgo+PiA+T3V0IG9mIGludGVyZXN0LCBob3cgd2FzIHRoaXMg
+dGVzdGVkPyBUaGVyZSBpcyBubyAzMng4IG1vZGlmaWVyIGluIHRoZQo+PiA+Zm9ybWF0IGxpc3Qg
+aW4gZm9ybWF0X21vZGlmaWVyc19hZmJjW10sIHNvIGl0IHNlZW1zIGxpa2UgaXQgc2hvdWxkbid0
+Cj4+ID5iZSBwb3NzaWJsZSB0byBnZXQgYSAzMng4IGJ1ZmZlciBvbiBhIHBsYW5lIGF0IGFsbC4K
+Pj4KPj4gVGhlIDMyeDggbW9kaWZpZXIgIGFkZGVkIGluIFBBVENIIDE2LzE2Ogo+Pgo+PiArLyog
+dXNlZCBmcm9tIHJrMzU3NiwgYWZiYyAzMio4IGhhbGYgbW9kZSAqLwo+PiArc3RhdGljIGNvbnN0
+IHVpbnQ2NF90IGZvcm1hdF9tb2RpZmllcnNfcmszNTc2X2FmYmNbXSA9IHsKPj4gKyAgICAgICBE
+Uk1fRk9STUFUX01PRF9BUk1fQUZCQyhBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV8zMng4IHwK
+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBRkJDX0ZPUk1BVF9NT0RfU1BMSVQp
+LAo+PiArCj4KPkhtbW0sIHRoYXQncyBzdHJhbmdlOyBJIGFwcGxpZWQgdGhlIHdob2xlIHNlcmll
+cyB3aXRoIGI0IGJ1dCB3YXNuJ3QKPnNlZWluZyB0aGF0IGJsb2NrIGRlZmluZWQuIE1heWJlIGEg
+YmFkIGNvbmZsaWN0IHJlc29sdXRpb24uIFNvcnJ5IGZvcgo+dGhlIGNvbmZ1c2lvbi4KCkkgdGhp
+bmsgdGhhdCBtaWdodCBoYXZlIGJlZW4gY2F1c2VkIGJ5IG15IG1pc3Rha2UuIEkgaW5pdGlhbGx5
+IHNlbnQgdGhlIFY2IHZlcnNpb24gYXMgYSAtaW4tcmVwbHkgdG8gdGhlIFY1IHZlcnNpb24uCldo
+ZW4gSSByZWFsaXplZCB0aGUgbWlzdGFrZSwgYSBwYXJ0IG9mIGl0IGhhZCBhbHJlYWR5IGJlZW4g
+c2VudCBvdXQuIFRoZW4gSSBzZW50IHRoZSBlbnRpcmUgVjYgc2VyaWVzIHNlcGFyYXRlbHkKYWdh
+aW4uIE1heWJlIHRoYXQgbWFrZSBiNCBhbmQgbG9yZSBjb25mdXNlZOOAggoKPgo+PiBJIHdyaXRl
+IGFuIG92bHRlc3RbMF0gdG9vbCB3aGljaCBjYW4gdGFrZSBsaW5lYXIvQUZCQyByZ2IveXV2IGRh
+dGEgZnJvbSBhIGZpbGUsIHRoZW4KPj4gY29tbWl0IHRvIGRybSBkcml2ZXIsIEkgdXNlIHRoaXMg
+dG9vbCBmb3IgbW9zdCBiYXNpYyBmb3JtYXQgdGVzdC4KPj4KPj4gQnV0IHdoZW4gdGVzdGVkIG9u
+IHdlc3RvbiwgSSBmb3VuZCB0aGF0IHdlc3RvbiBkb2VzIG5vdCB1c2UgdGhlIEFGQkMgZm9ybWF0
+IGZvciBkaXNwbGF5LAo+PiBkb24ndCBrbm93IHdoeS4KPgo+WW91J2xsIG5lZWQgYSBNZXNhIHRy
+ZWUgd2l0aCBlMGY0ODU2OGM3ZjIgaW5jbHVkZWQ7IGlmIHlvdSBoYXZlIHRoaXMKPnRoZW4gaXQg
+c2hvdWxkIGp1c3Qgd29yayBvdXQgb2YgdGhlIGJveC4KClRoYW5rcywgSSB3aWxsIGNoZWNrIGl0
+LgoKPgo+Q2hlZXJzLAo+RGFuaWVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
