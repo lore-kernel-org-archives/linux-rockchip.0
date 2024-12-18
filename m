@@ -4,98 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDD9E77187
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 14:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58A0E77187
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Dec 2024 15:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WVccwcnypLe7iRk4gowh164hHvzifl4Bm5i/7D14dmw=; b=koVRQKszOcjr5e
-	9DJ9mvcYEK8PVhBRr05AKe7wGkrBpZUeoB5uGHwObBN4V+FBZNaKH6somIcM+kAGfxkuYQIqK3Jyd
-	hnO3Eo9gX0UOX+wDpu0snNNrN3Odne/2jMEFHjAHlD+s9ft0uFd5QchO/qDNi6aPZdpMTQzTFNhM7
-	yHxitIxxkbBEdpoMDXewoyN0c76vCQGxqhQLu6eKSt2hgwxvVaZXfPzgLtQODw7pGquN+YIPpv1mB
-	oJeov9jtmiVuWc2hRCaPIRaUqrgefuVlwN86b+gh86RfZsAjzfvRlshAdMmbAIxhWj1m7CWv2O4Zq
-	NnnptJYE3DVJjYqvWvJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3J/c8OVar4Eo80P4+tHde62suB3MdzYdAx//xAa4Ka0=; b=GDCXkbuflZb5lr
+	+NtN5p6QcWxbngllh0LPn6MOCGMKL8d5FxATJAdOsboNPM/a+hngLcmNYZ74AA+PQLJ6n71PnBK5l
+	GkdsDo+Y7k2j1RFT7/0UgJtJF3EJB4aR1wgioGWUpofzlq9uK55XJPdsvdZjVdwqVa3u2aKBex/fH
+	9h/gxazp2OYDVNq/9Bx3yddtBouM1csGzbGKLE/RjhN4xwy1JUEyBeujPyCXKx2My0XbQ+djcqkhA
+	F+sjzdOGaoYAvoZQbW9a6QSe3ZXjwv/e/A3+nFuSWXfvaIgLXLlPw0be32p/mQGrXykiAH5zz8d4n
+	1f4cU+V9kAnnZn6o2+eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNvQQ-0000000GvIs-1hrY;
-	Wed, 18 Dec 2024 14:53:22 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1tNwKA-0000000H5LS-0Jfl;
+	Wed, 18 Dec 2024 15:50:58 +0000
+Received: from mail-m127221.xmail.ntesmail.com ([115.236.127.221])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tNvPT-0000000Gv3i-3LEh
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Dec 2024 14:52:25 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-6f150ddc86dso53249667b3.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Dec 2024 06:52:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=raspberrypi.com; s=google; t=1734533542; x=1735138342; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=jikMDVImI7Pf9+NM113vi4yTRoWYSpkiHuuI1ghgiGU=;
-        b=BjlqoEv8zQx5DyJbbBvNAWaWkbTPUWcvp2LEaB5WjR8YmxZwqsPwtwzEUE2QZESSwM
-         czRS8oPn6UbZ35yFdJdJUYxFLRtpJGFDDwR6/Ed95CQFfpJiRWjZxwPCU/HWAtRwKZJF
-         bqrdX0D4us40oSlNPOb+6hp2L5Z6KYvjYicl7lQT0MwXG3Y2XLujiSWNYr1GmMxgqRWf
-         4GsBYK1H2cUAmTfqTlLe2xLucMfmcd7o1idcfxC2OVmU8QjJYf7el23jtC/DzTpjcvH7
-         fb/C/pWyyuBh7bZ/3zjBGxMOmmjuE0g0T8c4Wam8t7M03+QE3ETke4vBIqz+3QJ9Duz+
-         FF5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734533542; x=1735138342;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jikMDVImI7Pf9+NM113vi4yTRoWYSpkiHuuI1ghgiGU=;
-        b=saS/fsln5iQPXIGxkvUy0jFHpo1PPAAvIoNg/pWxmWwj8t9DyaclxQJOiOmjnwCHpi
-         qg6zE2J5BpGJtuNkqz9RxJ1lDkBl9FsFZYNJKuX/qkvoMCye2/8MbdNTfxRceQRkXdyV
-         g1mi5XxZ+Gc4tvhGNaTiNOfImtRNuMzHczyUad27J3gBw3tWoxqohgezF18NNzMS7uv1
-         Q19R6d4PLsPR6U3ogj+XM5EBLv6Jge2zUkwMDqJuum/8zXjc1vUqZpavwhRDZ13ctHVc
-         HSMmGPxcc4W19XGWU5MbaYVbT4VlgeGs3yNgc3z5fRu2ilsV9sljQ4eqR6GlZmW7Ylyy
-         115Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXthXK1ioeeq2/Yt+xAA3Fakqit2SAF0NIxDX5ovXUOL8tXugl/IGWWA0KmXaBDWA6kMizVn6KP6P05Pca6ZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YysRmBdTop+aIz3H2/1vrAxr5wOl81cD3pLB0tDTgzWEmn8Oz5U
-	p+trCmdAa/tYJX5OI9BF5OZ9rKhElBGUidPpr3+sxnC3EMrCd+lOlj//akqn9ipW4pJbwnCpryH
-	ueIhtnkC3WzKot4Bgd3Z947NcmfvA8mpZIX369Q==
-X-Gm-Gg: ASbGncuVk6FHbnJln0pB56RcqXeToRwnKhmpMY8ZcBqTc/jlyF00Mk29Xw3ANdRWxvZ
-	aIE5xrWSNzvwCUvkp2lFwu6+gNA01odhh7WYWfA==
-X-Google-Smtp-Source: AGHT+IFROOIaavezTSB4qbIDqYTANawNmOriE8EjpWA/iXMqK2VjNXjnSwbVB0kRn8qDDZTN6lGUdQkOSisxyeutzXQ=
-X-Received: by 2002:a05:690c:6c91:b0:6ef:a4bc:8bc9 with SMTP id
- 00721157ae682-6f3d22573a0mr22613297b3.21.1734533540880; Wed, 18 Dec 2024
- 06:52:20 -0800 (PST)
+	id 1tNwHC-0000000H4kV-2bhD;
+	Wed, 18 Dec 2024 15:47:57 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 62079658;
+	Wed, 18 Dec 2024 23:47:43 +0800 (GMT+08:00)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	jon.lin@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-spi@vger.kernel.org
+Subject: [PATCH] spi: rockchip-sfc: Fix error in remove progress
+Date: Wed, 18 Dec 2024 23:47:41 +0800
+Message-Id: <20241218154741.901591-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat> <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
- <20241218-wild-red-manatee-bb2a34@houat>
-In-Reply-To: <20241218-wild-red-manatee-bb2a34@houat>
-From: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Date: Wed, 18 Dec 2024 14:52:04 +0000
-Message-ID: <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUIZGVZMGB5JGUsaSxpIHU5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93da741f7209d9kunm62079658
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OAw6Aww5NTITCBAQHyxJKzFN
+	CQIaCxJVSlVKTEhPTkhNQ01PT09MVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKT09KNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=XKpvBvIh0GfihsjPdKvwG9EvIk7S7fckssglKXt5f1EhMppvwFaMQ8p5v9LUY63ysK5KmZCkI92fdGSJ3p+MQ45FGI2DJakha8Rri7jTvZuCAewPG4bmzdJhSNXN7sA1F4QVKDXBpee6yL9C+bdxPcHfGcv9kjX9xzhrSQuWGkg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=OU+G1H8f52f2/x0TSjJIsIY+TxkbETn6gOAbnCRhzbM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241218_065223_830458_85F48A63 
-X-CRM114-Status: GOOD (  32.63  )
+X-CRM114-CacheID: sfid-20241218_074755_189845_603CCCB9 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,68 +75,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime & Dmitry
+Fix error in remove progress:
+	[   43.026148] Call trace:
+	[   43.026370]  klist_next+0x1c/0x1d4
+	[   43.026671]  device_for_each_child+0x48/0xac
+	[   43.027049]  spi_unregister_controller+0x30/0x130
+	[   43.027469]  rockchip_sfc_remove+0x48/0x80 [spi_rockchip_sfc]
 
-On Wed, 18 Dec 2024 at 07:59, Maxime Ripard <mripard@kernel.org> wrote:
->
-> On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
-> > On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
-> > > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
-> > > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > > > framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> > > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > > > there was no simple way to get the drm_connector that stayed at the end
-> > > > of the bridge chain. At the same point the drm_hdmi_connector functions
-> > > > expected to get drm_connector instance.
-> > > >
-> > > > While looking for a way to solve the issue, I stumbled upon several
-> > > > deficiencies in existing hdmi_codec_ops implementations. Only few of the
-> > > > implementations were able to handle codec's 'plugged' callback. One
-> > > > third of the drivers didn't implement the get_eld() callback.
-> > > >
-> > > > Most of the issues can be solved if drm_connector handles
-> > > > hdmi-audio-codec on its own, delegating functionality to the actual
-> > > > implementation, be it a driver that implements drm_connector or
-> > > > drm_bridge.
-> > > >
-> > > > Implement such high-level framework, adding proper support for Audio
-> > > > InfoFrame generation to the LT9611 driver.
-> > > >
-> > > > Several design decisions to be kept in mind:
-> > > >
-> > > > - drm_connector_hdmi_codec is kept as simple as possible. It implements
-> > > >   generic functionality (ELD, hotplug, registration).
-> > > >
-> > > > - drm_hdmi_connector sets up HDMI codec device if the connector
-> > > >   is setup correspondingly (either I2S or S/PDIF is marked as
-> > > >   supported).
-> > > >
-> > > > - drm_bridge_connector provides a way to link HDMI audio codec
-> > > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
-> > > >   framework.
-> > > >
-> > > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
-> > > >   bits. Only TDA889x driver sets them, while it's safe to assume that
-> > > >   most of HDMI / DP devices do not support ARC / capture. I think the
-> > > >   drivers should opt-in capture support rather than having to opt-out of
-> > > >   it.
-> > >
-> > > Sorry if this isn't clear to me and I'm quite late to the party, but did
-> > > you test this on vc4 with both a pi3 and pi4, or was it just compile
-> > > tested?
-> >
-> > LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
->
-> Yeah, we definitely need to test it on the pi3 (polling-based) and the
-> pi4 (irq-based) at least.
->
-> Dave, Maira, could you give it a try?
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-I'm on it.
+ drivers/spi/spi-rockchip-sfc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-  Dave
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index 9146b56713b6..ca4f20283d23 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -184,6 +184,7 @@ struct rockchip_sfc {
+ 	bool use_dma;
+ 	u32 max_iosize;
+ 	u16 version;
++	struct spi_controller *host;
+ };
+ 
+ static int rockchip_sfc_reset(struct rockchip_sfc *sfc)
+@@ -603,6 +604,7 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
+ 
+ 	sfc = spi_controller_get_devdata(host);
+ 	sfc->dev = dev;
++	sfc->host = host;
+ 
+ 	sfc->regbase = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(sfc->regbase))
+@@ -708,8 +710,8 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
+ 
+ static void rockchip_sfc_remove(struct platform_device *pdev)
+ {
+-	struct spi_controller *host = platform_get_drvdata(pdev);
+ 	struct rockchip_sfc *sfc = platform_get_drvdata(pdev);
++	struct spi_controller *host = sfc->host;
+ 
+ 	spi_unregister_controller(host);
+ 
+-- 
+2.34.1
 
-> Maxime
 
 _______________________________________________
 Linux-rockchip mailing list
