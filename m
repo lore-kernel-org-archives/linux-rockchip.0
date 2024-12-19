@@ -4,98 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B2DE77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 16:17:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 376EEE7718A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 19:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oZ0VHKQpWqfJig51SAw4wysLvUz+WmmAgk/9dUrKYYw=; b=p8ddxW4FBX1LEP
-	bvCoi6SlbnaGKVvxtzLX2adS5bOso8Nyk8DGY8fqh/ITOfRkyyi5Ky2fC5L2GywS+bJX44utG4iwI
-	ZRI6NBrIp3IuPijz91jskodnULf7WWhqvNILJBVuAzg6tv7TiHtCADu/p4HbDLAChi3qUC7K5FQuE
-	dIYIKcH5MgzsxklQ6048b8bWrjksnpDuyeeYyNIIaCywsy/v+IMCyNET9JG0A/QuBMyWOoAXkPlZ+
-	fTahlx7BsxYCXZdQKcRQAk0r8+8EBC0Y+vHjV4P0XtpH0zUlvT5yPzVnOD57HQX1kP+hvW8KoYurz
-	b5JeNotZfS+N+Ljq17lw==;
+	List-Owner; bh=1OFZn3B8dZ1OpHGZd4cDJG3FAbxHkDOVLNARK5kKhUw=; b=iDLbABNmrd8LNU
+	JKG20rZjqZrWzr3icafQHS/ZQlpUWQYxi5aqzBuQY746d/cyveDGdl9PgPlBjqRSNkWPLuqeRBqmN
+	TAq49SmDWuVtvpNU+woooQh+xbxHTKBvrkXT9zeVxqW92Q5vpyQyItPhpxc6NgZeiSSPSOn6lKh0e
+	4M9uZZTkkQOFcjWgQSAA/Ens6e8Yj+3us/0BcwxGQj3D31EMhXHq3wBAuUj+a8qIIzwFUr65Hxy4d
+	Di74dmwMoYokHCCw47Pa2BZY1XexNcDTEJMKGxF7oMgJAEbhWkMUmEnt7C9GPKLcHUvJLwgkphgOb
+	H//wni38NvQIc2ICAplg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOJCw-00000002JiE-0YrK;
-	Thu, 19 Dec 2024 16:17:02 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOJCt-00000002JgO-3rrI
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Dec 2024 16:17:01 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-6f3d31808e3so7636497b3.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 08:16:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=raspberrypi.com; s=google; t=1734625018; x=1735229818; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1ZmzjNgd3FzWWFXoKed7UNpdcC9ExA3iDz2Moa5OROY=;
-        b=p7VMpDlmfaURtvfRwcW3A/ch32DS1/lMIYPQz0Ho8js89ESljrO/qrvq+ohPN9ciNV
-         pjP/sfkeNBa4ri3MXeBzQQoDyhJfriJa8UqW+cvdXhxTU1f7cQte+exskkssAI3Yo48A
-         QlV2lxjE9ZO6WXKuygg6xLvfHb1uSpUDYnrjaSbsevz0P4qKfHTx83F51+NL2KiQq/Bp
-         419Ezxm2WSxOLz/vrrW9piB11ckaVW5ZCyrw+ity67bU2esbmrmY/3QrCYPcGXprC/WV
-         Oa9ztmmOqUoNgdT6usDu//EDTUeuF4f2bA/+yrXr4z+c4EZE6m4zErvFmUuiWTrLdIUL
-         hxHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734625018; x=1735229818;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1ZmzjNgd3FzWWFXoKed7UNpdcC9ExA3iDz2Moa5OROY=;
-        b=Qxu3smyizZEQWx5YblDjA4ja51r+87JZkIwNamVwjYVIVkgW2iNxiA+0q1FFEgUZFq
-         tqyPkEVpJ4XDmobP9zRGJRy2IXBq6fjRfFzopH7OAxSq2UxIqSuERU6z+oG42m7dEzAA
-         QRO+Y8gloJGDP8PhCd3rEU3zyEnvVUzFPgxsMxzQzKsxtO324Ps4z1HLBTBMLYQ0BsRi
-         yx11gvf/xZAm6/vROe7f+HpYqJLJ1gmXQZ5UuVVdb4jecQEeiI2dxqcpJp1eq/4voopE
-         R8tbb0sn6n2daDJYKkiLoxJLbO0atv974ZEU9uqMYd/cjOTBBeLPNufAMVDqaDaSeP+K
-         y+Cg==
-X-Forwarded-Encrypted: i=1; AJvYcCV7dOlqYdlbOQAA0yohiBFRVQC6QeUQrB0ZjoJXa6bOKUyqeVQtxdCMWg8rUshsujS3Hrhq/tEZABe7loOW8Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywk7xVy6j6+BpTRs+Ke6KueJ3DQTME19wOscV4p3ZsOTdc/E8MG
-	JJwE1D5BIwdwJWYXOfdu/S33s7HCj23zrOGepcWs1ssCS1CpoAWj0LZxyg2sCHVfayCjL32aAhN
-	232OmoMWPMRjDlkYdTQdyiF7FAGK341q3VOioVA==
-X-Gm-Gg: ASbGncs/eGDIwAqzP15oQoys2IOAePuwMYVHjhhFV6YIjGg/yC4kn3iQG4HJ5Qlrnv/
-	b5cp/L6slXEnAbOeWdJnAHV4f2wnq7k2V7SifsA==
-X-Google-Smtp-Source: AGHT+IECkheCLvfI42XUCb3c+ehUjJfGKo2yL4elekXmeYHMSMkezHohmTNLU2nT00zZk2MNPaGa7Nbdr9wYj8x5cGM=
-X-Received: by 2002:a05:690c:7489:b0:6ef:94b3:72f6 with SMTP id
- 00721157ae682-6f3d26c386amr59410227b3.42.1734625016409; Thu, 19 Dec 2024
- 08:16:56 -0800 (PST)
+	id 1tOM45-00000002peD-35f2;
+	Thu, 19 Dec 2024 19:20:05 +0000
+Received: from bout3.ijzerbout.nl ([2a01:7c8:fff8:2b8:5054:ff:fe86:f72d])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tOM2w-00000002pKn-45qL;
+	Thu, 19 Dec 2024 19:18:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ijzerbout.nl; s=key;
+	t=1734635921; bh=ePqid386Kw0s0U8dD6CHm5o3ERJZxHjExxMl2I2S+uA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lIogWcGIG+pjsUbAY/EcEX04nRe7jtAwZzi3OC/A1F2Wj+Q19sLhjWnrlkrI6Heam
+	 vQ3XfW9KX1BBO5NK1YSVWgaXH2yhnItbEJYkXyWhysjMJmK05XfnQS7Lq19lkrQDSd
+	 tbF0Pww4MUh8j8Uq41rfLboOrm7nHybzPJH6EC9wsCfk0svST3lfzzyWuwIdEvFHvI
+	 8bz1L9ulYOLVntgDYqEGheJAegSW9TevRU4dJaQFrGEhhDsKqp4cd9jjVViEHtBvgp
+	 1Cb+Gdq84z4kRPdbzh3uZoCB1UOeofBRfR47C7jPys+0f+6NOol1q2Z4qS839cy1yH
+	 uzL8/wivb5tGjU1IajBpLZmpMLwPVaWXZmw7U20KW4HtGdAZvyl15Xu8Fl1GJ6Obb6
+	 4O1cAHukrEq82a6TkzVsl7rKRNCYnPeOVzVwOSYRTkpWK87s5GXqjEoT2ttdhMaSei
+	 ndv3zU5EllCcLxaMtxgvn8P5hQqCdJ3nHixwAh8VJshJQTNj1wi3x10UnZL1+MaEvA
+	 tanO3naAd8tvzPQRyA6DypW8zcjud5R+h2nlC7nBouKxHYITKgUAjjs41x8rEWbkRV
+	 vXKL9DneRi9aHD9wm1FqCgVlqFpIzAyOeT8orELDRVz6BdttjIxzQ3+gAxE2WY3DFZ
+	 EMPaJ1YoWkHWB9MgcfbTP8HM=
+Received: from [IPV6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a] (racer.ijzerbout.nl [IPv6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a])
+	by bout3.ijzerbout.nl (Postfix) with ESMTPSA id 899FD18010B;
+	Thu, 19 Dec 2024 20:18:40 +0100 (CET)
+Message-ID: <5d1ddf7e-2df5-4563-81e5-e0cfa7ef58da@ijzerbout.nl>
+Date: Thu, 19 Dec 2024 20:18:38 +0100
 MIME-Version: 1.0
-References: <20241217-drm-bridge-hdmi-connector-v7-0-cb9df2b6a515@linaro.org>
- <20241217-vivacious-chameleon-of-swiftness-f1edc4@houat> <CAA8EJprjCyWBNkRrc4W24uCwPtf_kxZLqNeNP8EJffbutYQ21w@mail.gmail.com>
- <20241218-wild-red-manatee-bb2a34@houat> <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
-In-Reply-To: <CAPY8ntDdcOXuWVgx6+cbgX5ct_-MXcE7CWDKgGP57EX6bvBLaw@mail.gmail.com>
-From: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Date: Thu, 19 Dec 2024 16:16:37 +0000
-Message-ID: <CAPY8ntAnJ1YDQee=pFSDY3+EXHj4_RZ-M1NMp2C3ZDdD5DsCKA@mail.gmail.com>
-Subject: Re: [PATCH v7 00/10] drm: add DRM HDMI Codec framework
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Phong LE <ple@baylibre.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Russell King <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 4/9] mfd: add base driver for qnap-mcu devices
+To: Heiko Stuebner <heiko@sntech.de>, lee@kernel.org, jikos@kernel.org,
+ jic23@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ jdelvare@suse.com, linux@roeck-us.net, srinivas.pandruvada@linux.intel.com,
+ bentiss@kernel.org, dmitry.torokhov@gmail.com, pavel@ucw.cz,
+ ukleinek@debian.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-input@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-leds@vger.kernel.org
+References: <20241107114712.538976-1-heiko@sntech.de>
+ <20241107114712.538976-5-heiko@sntech.de>
+Content-Language: en-US
+From: Kees Bakker <kees@ijzerbout.nl>
+In-Reply-To: <20241107114712.538976-5-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_081700_063307_A5AFF847 
-X-CRM114-Status: GOOD (  40.90  )
+X-CRM114-CacheID: sfid-20241219_111855_155756_CD7F94CA 
+X-CRM114-Status: GOOD (  24.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,123 +77,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Dec 2024 at 14:52, Dave Stevenson
-<dave.stevenson@raspberrypi.com> wrote:
+Op 07-11-2024 om 12:47 schreef Heiko Stuebner:
+> These microcontroller units are used in network-attached-storage devices
+> made by QNAP and provide additional functionality to the system.
 >
-> Hi Maxime & Dmitry
+> This adds the base driver that implements the serial protocol via
+> serdev and additionally hooks into the poweroff handlers to turn
+> off the parts of the system not supplied by the general PMIC.
 >
-> On Wed, 18 Dec 2024 at 07:59, Maxime Ripard <mripard@kernel.org> wrote:
-> >
-> > On Wed, Dec 18, 2024 at 07:24:23AM +0200, Dmitry Baryshkov wrote:
-> > > On Tue, 17 Dec 2024 at 19:21, Maxime Ripard <mripard@kernel.org> wrote:
-> > > > On Tue, Dec 17, 2024 at 02:40:22AM +0200, Dmitry Baryshkov wrote:
-> > > > > While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> > > > > framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> > > > > The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> > > > > there was no simple way to get the drm_connector that stayed at the end
-> > > > > of the bridge chain. At the same point the drm_hdmi_connector functions
-> > > > > expected to get drm_connector instance.
-> > > > >
-> > > > > While looking for a way to solve the issue, I stumbled upon several
-> > > > > deficiencies in existing hdmi_codec_ops implementations. Only few of the
-> > > > > implementations were able to handle codec's 'plugged' callback. One
-> > > > > third of the drivers didn't implement the get_eld() callback.
-> > > > >
-> > > > > Most of the issues can be solved if drm_connector handles
-> > > > > hdmi-audio-codec on its own, delegating functionality to the actual
-> > > > > implementation, be it a driver that implements drm_connector or
-> > > > > drm_bridge.
-> > > > >
-> > > > > Implement such high-level framework, adding proper support for Audio
-> > > > > InfoFrame generation to the LT9611 driver.
-> > > > >
-> > > > > Several design decisions to be kept in mind:
-> > > > >
-> > > > > - drm_connector_hdmi_codec is kept as simple as possible. It implements
-> > > > >   generic functionality (ELD, hotplug, registration).
-> > > > >
-> > > > > - drm_hdmi_connector sets up HDMI codec device if the connector
-> > > > >   is setup correspondingly (either I2S or S/PDIF is marked as
-> > > > >   supported).
-> > > > >
-> > > > > - drm_bridge_connector provides a way to link HDMI audio codec
-> > > > >   funcionality in the drm_bridge with the drm_connector_hdmi_codec
-> > > > >   framework.
-> > > > >
-> > > > > - It might be worth reverting the no_i2s_capture / no_spdif_capture
-> > > > >   bits. Only TDA889x driver sets them, while it's safe to assume that
-> > > > >   most of HDMI / DP devices do not support ARC / capture. I think the
-> > > > >   drivers should opt-in capture support rather than having to opt-out of
-> > > > >   it.
-> > > >
-> > > > Sorry if this isn't clear to me and I'm quite late to the party, but did
-> > > > you test this on vc4 with both a pi3 and pi4, or was it just compile
-> > > > tested?
-> > >
-> > > LT9611 is actually tested, VC4 is only compile-tested. Should I put an RFT tag?
-> >
-> > Yeah, we definitely need to test it on the pi3 (polling-based) and the
-> > pi4 (irq-based) at least.
-> >
-> > Dave, Maira, could you give it a try?
+> Turning off (at least the TSx33 devices using Rockchip SoCs) consists of
+> two separate actions. Turning off the MCU alone does not turn off the main
+> SoC and turning off only the SoC/PMIC does not turn off the hard-drives.
+> Also if the MCU is not turned off, the system also won't start again until
+> it is unplugged from power.
 >
-> I'm on it.
-
-Basic checks look OK.
-Pi3 and Pi4 tested, including 4k60 on Pi4 (enables scrambling). Audio
-works, and all the EDID parsing seems to be correct.
-
-Ideally I would like to do a couple more tests though as I had a
-couple of spontaneous reboots on Pi4 whilst hotplugging.
-Most likely it was just grounding issues, as I can't think of an
-obvious way for the kernel to be triggering an automatic reboot. They
-seemed to go away when I had enabled drm.debug=0x14, but more likely
-I'd connected the serial port and therefore provided another ground.
-Please don't hold the patches waiting on me though - I don't know when
-I'll have time to do them.
-
-
-Also unrelated to this patch set, I have noted I'm getting
-[   60.780897] WARNING: CPU: 3 PID: 501 at
-drivers/gpu/drm/vc4/vc4_hvs.c:743 __vc4_hvs_stop_channel+0x148/0x164
-[vc4]
-...
-[   60.781192]  __vc4_hvs_stop_channel+0x148/0x164 [vc4] (P)
-[   60.781212]  __vc4_hvs_stop_channel+0x40/0x164 [vc4] (L)
-[   60.781230]  vc4_hvs_stop_channel+0x30/0x3c [vc4]
-[   60.781248]  vc4_crtc_disable+0x140/0x1e8 [vc4]
-[   60.781266]  vc4_crtc_atomic_disable+0x98/0xb8 [vc4]
-[   60.781284]  disable_outputs+0x22c/0x33c [drm_kms_helper]
-[   60.781326]  drm_atomic_helper_commit_modeset_disables+0x1c/0x4c
-[drm_kms_helper]
-[   60.781347]  vc4_atomic_commit_tail+0x10c/0x8e4 [vc4]
-[   60.781364]  commit_tail+0xa0/0x188 [drm_kms_helper]
-[   60.781385]  drm_atomic_helper_commit+0x16c/0x180 [drm_kms_helper]
-[   60.781406]  drm_atomic_commit+0x88/0xc4 [drm]
-[   60.781500]  drm_client_modeset_commit_atomic+0x204/0x264 [drm]
-[   60.781553]  drm_client_modeset_commit_locked+0x5c/0x198 [drm]
-[   60.781603]  drm_client_modeset_commit+0x30/0x58 [drm]
-[   60.781652]  __drm_fb_helper_restore_fbdev_mode_unlocked+0xb4/0xe8
-[drm_kms_helper]
-[   60.781674]  drm_fb_helper_hotplug_event+0x108/0x12c [drm_kms_helper]
-[   60.781695]  drm_fbdev_client_hotplug+0x28/0xd4 [drm_client_lib]
-[   60.781700]  drm_client_dev_hotplug+0xc8/0x12c [drm]
-[   60.781750]  drm_connector_helper_hpd_irq_event+0x70/0xb0 [drm_kms_helper]
-[   60.781771]  vc4_hdmi_hpd_irq_thread+0x2c/0x3c [vc4]
-[   60.781790]  irq_thread_fn+0x2c/0xa8
-[   60.781799]  irq_thread+0x16c/0x2f4
-[   60.781805]  kthread+0x118/0x11c
-[   60.781813]  ret_from_fork+0x10/0x20
-On first plugging or unplugging a second monitor. I suspect that is
-spurious though and I'll look into it, but probably not this side of
-the Christmas break.
-
-  Dave
+> So on shutdown the MCU needs to be turned off separately before the
+> main PMIC.
+>
+> The protocol spoken by the MCU is sadly not documented, but was
+> obtained by listening to the chatter on the serial port, as thankfully
+> the "hal_app" program from QNAPs firmware allows triggering all/most
+> MCU actions from the command line.
+>
+> The implementation of how to talk to the serial device got some
+> inspiration from the rave-sp servdev driver.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>   MAINTAINERS                  |   6 +
+>   drivers/mfd/Kconfig          |  13 ++
+>   drivers/mfd/Makefile         |   2 +
+>   drivers/mfd/qnap-mcu.c       | 338 +++++++++++++++++++++++++++++++++++
+>   include/linux/mfd/qnap-mcu.h |  26 +++
+>   5 files changed, 385 insertions(+)
+>   create mode 100644 drivers/mfd/qnap-mcu.c
+>   create mode 100644 include/linux/mfd/qnap-mcu.h
+>
+> [...]
+> diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
+> new file mode 100644
+> index 000000000000..4be39d8b2905
+> --- /dev/null
+> +++ b/drivers/mfd/qnap-mcu.c
+> [...]
+> +int qnap_mcu_exec(struct qnap_mcu *mcu,
+> +		  const u8 *cmd_data, size_t cmd_data_size,
+> +		  u8 *reply_data, size_t reply_data_size)
+> +{
+> +	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
+> +	size_t length = reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
+> +	struct qnap_mcu_reply *reply = &mcu->reply;
+> +	int ret = 0;
+> +
+> +	if (length > sizeof(rx)) {
+> +		dev_err(&mcu->serdev->dev, "expected data too big for receive buffer");
+> +		return -EINVAL;
+> +	}
+> +
+> +	mutex_lock(&mcu->bus_lock);
+> +
+> +	reply->data = rx,
+> +	reply->length = length,
+> +	reply->received = 0,
+> +	reinit_completion(&reply->done);
+> +
+> +	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
+> +
+> +	serdev_device_wait_until_sent(mcu->serdev, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS));
+> +
+> +	if (!wait_for_completion_timeout(&reply->done, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS))) {
+> +		dev_err(&mcu->serdev->dev, "Command timeout\n");
+> +		ret = -ETIMEDOUT;
+> +	} else {
+> +		u8 crc = qnap_mcu_csum(rx, reply_data_size);
+Here `rx` is still not initialized.
+> +
+> +		if (crc != rx[reply_data_size]) {
+> +			dev_err(&mcu->serdev->dev,
+> +				"Invalid Checksum received\n");
+> +			ret = -EIO;
+> +		} else {
+> +			memcpy(reply_data, rx, reply_data_size);
+> +		}
+> +	}
+> +
+> +	mutex_unlock(&mcu->bus_lock);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(qnap_mcu_exec);
+>
 
 _______________________________________________
 Linux-rockchip mailing list
