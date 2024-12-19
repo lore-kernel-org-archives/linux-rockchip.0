@@ -4,57 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AAB5E77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 08:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EA7E77184
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 08:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8BYUscjoXvODcZ9isb9I/els0m9FPxZpB1f3bAtlpdk=; b=t+Rf/nZfx2eL3o
-	5TEdQN4FpwlQQzBebkOT84cvP1PcswlPlsq++CDavbEsUAj/WjOKgde/Lwq0ewX/cENo8hDYGiszD
-	Z5L8EqCfkNDa4a0ICPwzzR+j2Pa33B1h6j5yWh40goyjWdKVEOm2c0vhaKazkKSl9T6b68/kwm28Q
-	/LyDfPzRFgWeISuYu0TOJv6mLWRKAgeGdw/HsXZUOtyXcjwvGG5W4JLvI2DK9RLx1R3PQcQiCqFaC
-	RNtdyiiJE/wiPwHzcb6UHF6HRkm+eQo0v5/MpD3QZ9zcI8gwQsMPvltLIqtA80Dt1hHWQy+XG4q5S
-	rRyQE4M60CIVauycYtqQ==;
+	List-Owner; bh=BWhxPQVus8HHeU3BUdhCw+UIbNLu5bkfRoyqJwlaDDE=; b=Sbvch5c6sJD5Mz
+	kTDe41lTNqtajkRBnpS0GVv3PRNdGPARvdRv51DcqKtLk0dqsG2u8/cKt3PGOUc24OFAxfcU2cynh
+	KfeSv2vRsg0ErNHeks4w3RmdWu8uT7/2jDCIQBifxh5skRamiBcphWg6mNLdmeN3VJMKiK+5WFgpN
+	shYlvGUrllXeJUYS3LhMgAzFmn2BdJ9+JwXBefoyRudDeR9IuW9eJz1umAFfTVWl8P/M73sIXRZt2
+	Vwuy4l0LfNqboasVg6kA8KxWuw3ue6wdhf/rHHZzUSv9UWapNbfdd+y68PYA3i+9Kn5tdM4fFHgEW
+	MSOjp+OhUYQW580XRZ/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOBoR-00000001GRP-1snA;
-	Thu, 19 Dec 2024 08:23:15 +0000
-Received: from mail-m12741.qiye.163.com ([115.236.127.41])
+	id 1tOBuH-00000001HLv-0CDa;
+	Thu, 19 Dec 2024 08:29:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOBYb-00000001DD0-16o9;
-	Thu, 19 Dec 2024 08:06:54 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 633f41ff;
-	Thu, 19 Dec 2024 16:06:48 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: heiko@sntech.de
-Subject: [PATCH v3 15/15] arm64: dts: rockchip: Add eDP1 node for RK3588
-Date: Thu, 19 Dec 2024 16:06:04 +0800
-Message-Id: <20241219080604.1423600-16-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241219080604.1423600-1-damon.ding@rock-chips.com>
+	id 1tOBt9-00000001HCi-3VeD;
+	Thu, 19 Dec 2024 08:28:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2C04F5C6633;
+	Thu, 19 Dec 2024 08:27:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 446BCC4CECE;
+	Thu, 19 Dec 2024 08:28:05 +0000 (UTC)
+Date: Thu, 19 Dec 2024 09:28:03 +0100
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v3 02/15] dt-bindings: display: rockchip: analogix-dp:
+ Add support for RK3588
+Message-ID: <tdhs45ac2ivdke7idrzxrhlgsqlnswkb2maorau3guzrrwpce3@emdq7xx6cpwz>
 References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
+ <20241219080604.1423600-3-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0wZH1YeH09CGUkZThgZTE1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93ddf4808a03a3kunm633f41ff
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PAw6MBw5FDIXHBUIDzNJUVY5
-	HDQaFEtVSlVKTEhPTkJOTUpLT0NCVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTUtNNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=T5qoj/nUfPFODVZdYQUhe0g63NApXTeUetqK/OcCY9upqHzf3+QgK9J1IjBk/iZ5Gf8JIrtZseVQMonBdG0gHr/kwoIztzvgKPRqW2dZcUptQkdp/AW5fMxtGkICciNuaiQNYSBd3BpywVEseACeWBMfk9OBLA0twdp01KsKyJk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=7+2fjj059heOpf+rpe3kbPL1qR7hg06xGUuoQg4x/Os=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20241219080604.1423600-3-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_000653_509257_C2320BD5 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241219_002807_923196_86E887D4 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,101 +56,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the eDP1 output on RK3588 SoC.
+On Thu, Dec 19, 2024 at 04:05:51PM +0800, Damon Ding wrote:
+> Compared with RK3288/RK3399, the HBR2 link rate support is the main
+> improvement of RK3588 eDP TX controller, and there are also two
+> independent eDP display interfaces on RK3588 Soc.
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Drop, patch was very different.
 
----
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Add the main defferences of the RK3588 eDP and the previous versions
+>   in commit message
+> 
+> Changes in v3:
+> - expand the property clock-names, resets and reset-names
 
-Changes in v3:
-- remove unexpected alias/hdptxphy1_grf/hdptxphy1 configurations
-- remove currently unsupported property '#sound-dai-cells'
----
- .../arm64/boot/dts/rockchip/rk3588-extra.dtsi | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
+Adding new properties invalidates reviews. The patch is entirely, really
+significantly different so keeping the review is not acceptable.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 0ce0934ec6b7..ad96fe25814e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -67,6 +67,11 @@ u2phy1_otg: otg-port {
- 		};
- 	};
- 
-+	hdptxphy1_grf: syscon@fd5e4000 {
-+		compatible = "rockchip,rk3588-hdptxphy-grf", "syscon";
-+		reg = <0x0 0xfd5e4000 0x0 0x100>;
-+	};
-+
- 	i2s8_8ch: i2s@fddc8000 {
- 		compatible = "rockchip,rk3588-i2s-tdm";
- 		reg = <0x0 0xfddc8000 0x0 0x1000>;
-@@ -135,6 +140,34 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
- 	};
- 
-+	edp1: edp@fded0000 {
-+		compatible = "rockchip,rk3588-edp";
-+		reg = <0x0 0xfded0000 0x0 0x1000>;
-+		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>, <&cru CLK_EDP1_200M>;
-+		clock-names = "dp", "pclk", "spdif";
-+		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
-+		phys = <&hdptxphy1>;
-+		phy-names = "dp";
-+		power-domains = <&power RK3588_PD_VO1>;
-+		resets = <&cru SRST_EDP1_24M>, <&cru SRST_P_EDP1>;
-+		reset-names = "dp", "apb";
-+		rockchip,grf = <&vo1_grf>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			edp1_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			edp1_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	pcie3x4: pcie@fe150000 {
- 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
- 		#address-cells = <3>;
-@@ -395,6 +428,22 @@ sata-port@0 {
- 		};
- 	};
- 
-+	hdptxphy1: phy@fed70000 {
-+		compatible = "rockchip,rk3588-hdptx-phy";
-+		reg = <0x0 0xfed70000 0x0 0x2000>;
-+		clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX1>;
-+		clock-names = "ref", "apb";
-+		#phy-cells = <0>;
-+		resets = <&cru SRST_HDPTX1>, <&cru SRST_P_HDPTX1>,
-+			 <&cru SRST_HDPTX1_INIT>, <&cru SRST_HDPTX1_CMN>,
-+			 <&cru SRST_HDPTX1_LANE>, <&cru SRST_HDPTX1_ROPLL>,
-+			 <&cru SRST_HDPTX1_LCPLL>;
-+		reset-names = "phy", "apb", "init", "cmn", "lane", "ropll",
-+			      "lcpll";
-+		rockchip,grf = <&hdptxphy1_grf>;
-+		status = "disabled";
-+	};
-+
- 	usbdp_phy1: phy@fed90000 {
- 		compatible = "rockchip,rk3588-usbdp-phy";
- 		reg = <0x0 0xfed90000 0x0 0x10000>;
--- 
-2.34.1
+> ---
+>  .../display/rockchip/rockchip,analogix-dp.yaml     | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> index 60dedf9b2be7..4f84e8849876 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> @@ -15,6 +15,7 @@ properties:
+>      enum:
+>        - rockchip,rk3288-dp
+>        - rockchip,rk3399-edp
+> +      - rockchip,rk3588-edp
+>  
+>    clocks:
+>      minItems: 2
+> @@ -25,16 +26,23 @@ properties:
+>      items:
+>        - const: dp
+>        - const: pclk
+> -      - const: grf
+> +      - enum:
+> +          - grf
+> +          - spdif
+
+No, this cannot be flexible for existing variants.
+
+>  
+>    power-domains:
+>      maxItems: 1
+>  
+>    resets:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 2
+
+No, you must list the items.
+
+>  
+>    reset-names:
+> -    const: dp
+> +    minItems: 1
+> +    items:
+> +      - const: dp
+> +      - enum:
+> +          - apb
+
+I don't understand what happened here but all this is NAK. Why suddenly
+existing variants became different/changed? Nothing in commit msg
+explains this.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
