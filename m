@@ -4,52 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 376EEE7718A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 19:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3536CE77184
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 19:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1OFZn3B8dZ1OpHGZd4cDJG3FAbxHkDOVLNARK5kKhUw=; b=iDLbABNmrd8LNU
-	JKG20rZjqZrWzr3icafQHS/ZQlpUWQYxi5aqzBuQY746d/cyveDGdl9PgPlBjqRSNkWPLuqeRBqmN
-	TAq49SmDWuVtvpNU+woooQh+xbxHTKBvrkXT9zeVxqW92Q5vpyQyItPhpxc6NgZeiSSPSOn6lKh0e
-	4M9uZZTkkQOFcjWgQSAA/Ens6e8Yj+3us/0BcwxGQj3D31EMhXHq3wBAuUj+a8qIIzwFUr65Hxy4d
-	Di74dmwMoYokHCCw47Pa2BZY1XexNcDTEJMKGxF7oMgJAEbhWkMUmEnt7C9GPKLcHUvJLwgkphgOb
-	H//wni38NvQIc2ICAplg==;
+	List-Owner; bh=wt3689lKf5xwVT0zZQRW7zrZ1fSZh3yJf4j2ryxkt+A=; b=1NsSg9yvDW+atG
+	3H8OhQxwVnaAV8S/MqJ+Ft9ryKedaYQHR/9BPjxuX9VXUDTZSTJ9pBSZUUdM+I5x1N4uOIXcxJIah
+	VTsYCJhXALz70+ZITweN/opU6cYlbx2TuvYV0QiGuRk2q6fqwmGMv+EFhvY/KzCTK+jhxj+O+tYHr
+	TNnwgodjcch6SqzBBkW4Bdb+Z9vAzix064/6r8h/Q5g+1/FwZj3t1RCU7JLlhdg3ALx3ksZDlieoU
+	Q7GAENV4Nec/oOin+xUuZSyAYKSYQFyrljqspjIKl4EE8ps27CqGUeuN6FAS4aWXrnA3isfVPsyGc
+	ejr3AschZIsuaRKd8O1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOM45-00000002peD-35f2;
-	Thu, 19 Dec 2024 19:20:05 +0000
-Received: from bout3.ijzerbout.nl ([2a01:7c8:fff8:2b8:5054:ff:fe86:f72d])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOM2w-00000002pKn-45qL;
-	Thu, 19 Dec 2024 19:18:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ijzerbout.nl; s=key;
-	t=1734635921; bh=ePqid386Kw0s0U8dD6CHm5o3ERJZxHjExxMl2I2S+uA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lIogWcGIG+pjsUbAY/EcEX04nRe7jtAwZzi3OC/A1F2Wj+Q19sLhjWnrlkrI6Heam
-	 vQ3XfW9KX1BBO5NK1YSVWgaXH2yhnItbEJYkXyWhysjMJmK05XfnQS7Lq19lkrQDSd
-	 tbF0Pww4MUh8j8Uq41rfLboOrm7nHybzPJH6EC9wsCfk0svST3lfzzyWuwIdEvFHvI
-	 8bz1L9ulYOLVntgDYqEGheJAegSW9TevRU4dJaQFrGEhhDsKqp4cd9jjVViEHtBvgp
-	 1Cb+Gdq84z4kRPdbzh3uZoCB1UOeofBRfR47C7jPys+0f+6NOol1q2Z4qS839cy1yH
-	 uzL8/wivb5tGjU1IajBpLZmpMLwPVaWXZmw7U20KW4HtGdAZvyl15Xu8Fl1GJ6Obb6
-	 4O1cAHukrEq82a6TkzVsl7rKRNCYnPeOVzVwOSYRTkpWK87s5GXqjEoT2ttdhMaSei
-	 ndv3zU5EllCcLxaMtxgvn8P5hQqCdJ3nHixwAh8VJshJQTNj1wi3x10UnZL1+MaEvA
-	 tanO3naAd8tvzPQRyA6DypW8zcjud5R+h2nlC7nBouKxHYITKgUAjjs41x8rEWbkRV
-	 vXKL9DneRi9aHD9wm1FqCgVlqFpIzAyOeT8orELDRVz6BdttjIxzQ3+gAxE2WY3DFZ
-	 EMPaJ1YoWkHWB9MgcfbTP8HM=
-Received: from [IPV6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a] (racer.ijzerbout.nl [IPv6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a])
-	by bout3.ijzerbout.nl (Postfix) with ESMTPSA id 899FD18010B;
-	Thu, 19 Dec 2024 20:18:40 +0100 (CET)
-Message-ID: <5d1ddf7e-2df5-4563-81e5-e0cfa7ef58da@ijzerbout.nl>
-Date: Thu, 19 Dec 2024 20:18:38 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 4/9] mfd: add base driver for qnap-mcu devices
-To: Heiko Stuebner <heiko@sntech.de>, lee@kernel.org, jikos@kernel.org,
- jic23@kernel.org
+	id 1tOMSx-00000002tAC-39N4;
+	Thu, 19 Dec 2024 19:45:47 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tOMQy-00000002spc-2xp8;
+	Thu, 19 Dec 2024 19:43:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Trw19/+QiBbtHhclK1EUrKm5kQfG8IrKDSpHB+S9x+s=; b=Y4ASiIA7RKiZIUxh6Wkxf5FMz2
+	rmFwCsDftnxyt6CGxD5KPW2LNHr8SzvanArYNnYOPykiyu8lZxtFr3MmpSQEhB2qiSfw3gC6jAjwZ
+	VrI+879M/z3zrKTQV4UtRbKdva49oo7T1SQgaoeTu6ZzMpqGwfRWnbSCJej19tSJxN0pGgxBgJLUz
+	QcEnFLtnpBpa/hdJMKMRmgn2qqYGlf2gWXmsFEgX/XE/kwthI1rD1mQWqx4yHLHPsjL/l6pHFFljJ
+	1ePb61zC1vWf4XoADcpxwRv6BNUcHJn0AqAcvLYsVeaY5KN+he/3zSPok95HIXpdUPH7DAogou5ig
+	vTqbkzBg==;
+Received: from i53875bfb.versanet.de ([83.135.91.251] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tOMQQ-00028H-7j; Thu, 19 Dec 2024 20:43:10 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: lee@kernel.org, jikos@kernel.org, jic23@kernel.org,
+ Kees Bakker <kees@ijzerbout.nl>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  jdelvare@suse.com, linux@roeck-us.net, srinivas.pandruvada@linux.intel.com,
  bentiss@kernel.org, dmitry.torokhov@gmail.com, pavel@ucw.cz,
@@ -58,14 +54,17 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-input@vger.kernel.org, linux-iio@vger.kernel.org,
  linux-leds@vger.kernel.org
+Subject: Re: [PATCH v9 4/9] mfd: add base driver for qnap-mcu devices
+Date: Thu, 19 Dec 2024 20:43:08 +0100
+Message-ID: <3130486.CbtlEUcBR6@diego>
+In-Reply-To: <5d1ddf7e-2df5-4563-81e5-e0cfa7ef58da@ijzerbout.nl>
 References: <20241107114712.538976-1-heiko@sntech.de>
  <20241107114712.538976-5-heiko@sntech.de>
-Content-Language: en-US
-From: Kees Bakker <kees@ijzerbout.nl>
-In-Reply-To: <20241107114712.538976-5-heiko@sntech.de>
+ <5d1ddf7e-2df5-4563-81e5-e0cfa7ef58da@ijzerbout.nl>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_111855_155756_CD7F94CA 
-X-CRM114-Status: GOOD (  24.64  )
+X-CRM114-CacheID: sfid-20241219_114344_768639_4144F9D4 
+X-CRM114-Status: GOOD (  33.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,100 +76,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Op 07-11-2024 om 12:47 schreef Heiko Stuebner:
-> These microcontroller units are used in network-attached-storage devices
-> made by QNAP and provide additional functionality to the system.
->
-> This adds the base driver that implements the serial protocol via
-> serdev and additionally hooks into the poweroff handlers to turn
-> off the parts of the system not supplied by the general PMIC.
->
-> Turning off (at least the TSx33 devices using Rockchip SoCs) consists of
-> two separate actions. Turning off the MCU alone does not turn off the main
-> SoC and turning off only the SoC/PMIC does not turn off the hard-drives.
-> Also if the MCU is not turned off, the system also won't start again until
-> it is unplugged from power.
->
-> So on shutdown the MCU needs to be turned off separately before the
-> main PMIC.
->
-> The protocol spoken by the MCU is sadly not documented, but was
-> obtained by listening to the chatter on the serial port, as thankfully
-> the "hal_app" program from QNAPs firmware allows triggering all/most
-> MCU actions from the command line.
->
-> The implementation of how to talk to the serial device got some
-> inspiration from the rave-sp servdev driver.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->   MAINTAINERS                  |   6 +
->   drivers/mfd/Kconfig          |  13 ++
->   drivers/mfd/Makefile         |   2 +
->   drivers/mfd/qnap-mcu.c       | 338 +++++++++++++++++++++++++++++++++++
->   include/linux/mfd/qnap-mcu.h |  26 +++
->   5 files changed, 385 insertions(+)
->   create mode 100644 drivers/mfd/qnap-mcu.c
->   create mode 100644 include/linux/mfd/qnap-mcu.h
->
-> [...]
-> diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
-> new file mode 100644
-> index 000000000000..4be39d8b2905
-> --- /dev/null
-> +++ b/drivers/mfd/qnap-mcu.c
-> [...]
-> +int qnap_mcu_exec(struct qnap_mcu *mcu,
-> +		  const u8 *cmd_data, size_t cmd_data_size,
-> +		  u8 *reply_data, size_t reply_data_size)
-> +{
-> +	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
-> +	size_t length = reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
-> +	struct qnap_mcu_reply *reply = &mcu->reply;
-> +	int ret = 0;
-> +
-> +	if (length > sizeof(rx)) {
-> +		dev_err(&mcu->serdev->dev, "expected data too big for receive buffer");
-> +		return -EINVAL;
-> +	}
-> +
-> +	mutex_lock(&mcu->bus_lock);
-> +
-> +	reply->data = rx,
-> +	reply->length = length,
-> +	reply->received = 0,
-> +	reinit_completion(&reply->done);
-> +
-> +	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
-> +
-> +	serdev_device_wait_until_sent(mcu->serdev, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS));
-> +
-> +	if (!wait_for_completion_timeout(&reply->done, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS))) {
-> +		dev_err(&mcu->serdev->dev, "Command timeout\n");
-> +		ret = -ETIMEDOUT;
-> +	} else {
-> +		u8 crc = qnap_mcu_csum(rx, reply_data_size);
-Here `rx` is still not initialized.
-> +
-> +		if (crc != rx[reply_data_size]) {
-> +			dev_err(&mcu->serdev->dev,
-> +				"Invalid Checksum received\n");
-> +			ret = -EIO;
-> +		} else {
-> +			memcpy(reply_data, rx, reply_data_size);
-> +		}
-> +	}
-> +
-> +	mutex_unlock(&mcu->bus_lock);
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL_GPL(qnap_mcu_exec);
->
+Hi Kees,
+
+Am Donnerstag, 19. Dezember 2024, 20:18:38 CET schrieb Kees Bakker:
+> Op 07-11-2024 om 12:47 schreef Heiko Stuebner:
+> > These microcontroller units are used in network-attached-storage devices
+> > made by QNAP and provide additional functionality to the system.
+> >
+> > This adds the base driver that implements the serial protocol via
+> > serdev and additionally hooks into the poweroff handlers to turn
+> > off the parts of the system not supplied by the general PMIC.
+> >
+> > Turning off (at least the TSx33 devices using Rockchip SoCs) consists of
+> > two separate actions. Turning off the MCU alone does not turn off the main
+> > SoC and turning off only the SoC/PMIC does not turn off the hard-drives.
+> > Also if the MCU is not turned off, the system also won't start again until
+> > it is unplugged from power.
+> >
+> > So on shutdown the MCU needs to be turned off separately before the
+> > main PMIC.
+> >
+> > The protocol spoken by the MCU is sadly not documented, but was
+> > obtained by listening to the chatter on the serial port, as thankfully
+> > the "hal_app" program from QNAPs firmware allows triggering all/most
+> > MCU actions from the command line.
+> >
+> > The implementation of how to talk to the serial device got some
+> > inspiration from the rave-sp servdev driver.
+> >
+> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> > ---
+> >   MAINTAINERS                  |   6 +
+> >   drivers/mfd/Kconfig          |  13 ++
+> >   drivers/mfd/Makefile         |   2 +
+> >   drivers/mfd/qnap-mcu.c       | 338 +++++++++++++++++++++++++++++++++++
+> >   include/linux/mfd/qnap-mcu.h |  26 +++
+> >   5 files changed, 385 insertions(+)
+> >   create mode 100644 drivers/mfd/qnap-mcu.c
+> >   create mode 100644 include/linux/mfd/qnap-mcu.h
+> >
+> > [...]
+> > diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
+> > new file mode 100644
+> > index 000000000000..4be39d8b2905
+> > --- /dev/null
+> > +++ b/drivers/mfd/qnap-mcu.c
+> > [...]
+> > +int qnap_mcu_exec(struct qnap_mcu *mcu,
+> > +		  const u8 *cmd_data, size_t cmd_data_size,
+> > +		  u8 *reply_data, size_t reply_data_size)
+> > +{
+> > +	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
+> > +	size_t length = reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
+> > +	struct qnap_mcu_reply *reply = &mcu->reply;
+> > +	int ret = 0;
+> > +
+> > +	if (length > sizeof(rx)) {
+> > +		dev_err(&mcu->serdev->dev, "expected data too big for receive buffer");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	mutex_lock(&mcu->bus_lock);
+> > +
+> > +	reply->data = rx,
+> > +	reply->length = length,
+> > +	reply->received = 0,
+> > +	reinit_completion(&reply->done);
+> > +
+> > +	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
+> > +
+> > +	serdev_device_wait_until_sent(mcu->serdev, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS));
+> > +
+> > +	if (!wait_for_completion_timeout(&reply->done, msecs_to_jiffies(QNAP_MCU_TIMEOUT_MS))) {
+> > +		dev_err(&mcu->serdev->dev, "Command timeout\n");
+> > +		ret = -ETIMEDOUT;
+> > +	} else {
+> > +		u8 crc = qnap_mcu_csum(rx, reply_data_size);
+> Here `rx` is still not initialized.
+
+The MCU works in a way that a sent command always causes "reply_data_size"
+bytes to be returned.
+
+So for each qnap_mcu_write() above we know that this amount of bytes has
+been returned (and thus written into rx) if the completion above finishes
+sucessfully.
+
+"rx" is assigned to reply->data above (same as the expected received size).
+When characters are received on the serial line, this will trigger
+qnap_mcu_receive_buf() from the serdev and thus fill those elements in rx.
+
+So if we land at the qnap_mcu_csum() call, we do have received the expected
+amount of bytes from the serdev and thus rx is filled accordingly.
+
+If we don't receive the needed amount of bytes, we end up in the timeout
+above that.
+
+What did I miss?
+
+
+Heiko
+
+> > +
+> > +		if (crc != rx[reply_data_size]) {
+> > +			dev_err(&mcu->serdev->dev,
+> > +				"Invalid Checksum received\n");
+> > +			ret = -EIO;
+> > +		} else {
+> > +			memcpy(reply_data, rx, reply_data_size);
+> > +		}
+> > +	}
+> > +
+> > +	mutex_unlock(&mcu->bus_lock);
+> > +	return ret;
+> > +}
+> > +EXPORT_SYMBOL_GPL(qnap_mcu_exec);
+> >
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
