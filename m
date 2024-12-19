@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E710E7718A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 12:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892B3E77184
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 13:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=afsVYEqwOot+i88TGqRtqWdgWmIDu8lyDEqn+ufQUWA=; b=mc0sHLYgMfSCYF
-	MoKq6ujXUZcFd0A5f+NGFpmD0APfHVWlmgzYiO+J4IPdoEEgkf7+uvyP5mcxmfNynpag36WT7Ugoz
-	6/NtGLqIBiNvRd7C3BYBdT3zkXKZipY6Iw869jlRh9iXU1xSsfuTJMRKqbueCDMsOWTuRDt45EZPz
-	ZriiLNgs+wly0tYEngUjEzl74btxG+VIiehRA520v2gbls4SGTZ1ghmN9N40duHDoKG6pMM9VoXMP
-	NWn8h4pQDI2GPcC5uPPEwuUWbnUYP+6BKEiiXsQObHOj1nLwdNJYp2hp6JnXUYMCBoe9NOGxHPScZ
-	CLMHWzvhLRwU1M1KyQYg==;
+	List-Owner; bh=C/xHsnYlgFRHdSzOqSlNQKbkWaNv/FloJ0OWv9Yq0ag=; b=Qeqzyszu7Qk8K9
+	3mNjZJU5TJvb5C+os0KTIDZMm//EGpnDHq+GQMsfuDGNKU3o8TUZ1bzak6yULBDou8h1qG/8QPGN8
+	QvNjlza44Bc55eJ+yOPAonujA5NIKzZQWDeqzTWRJJVWDlfvm9eqH4qEtUEWYsmKwS02eWdtraMue
+	fy0hIasdFNtl7XPkZY/Jgs5yBFGLcuyJCf7KKwICv6QFqCoPgfG1Q7z6WnpWtZygMKBugM7twrRl9
+	veSZAIW1j4xqAC4QGQsCpZEpSPfmGuCv4LwcbJylwyZIxnC+/uKZDEGNRformPLLMsJw1eiXjQLQf
+	RoWTQpjChoxB1/jmGj2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOFr5-00000001qOA-2w0X;
-	Thu, 19 Dec 2024 12:42:15 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1tOGoQ-00000001yxm-42xn;
+	Thu, 19 Dec 2024 13:43:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOFk5-00000001odV-2BaW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Dec 2024 12:35:03 +0000
-Received: from dude04.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::ac])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <jre@pengutronix.de>)
-	id 1tOFk3-0007aQ-TF; Thu, 19 Dec 2024 13:34:59 +0100
-From: Jonas Rebmann <jre@pengutronix.de>
-Date: Thu, 19 Dec 2024 13:34:56 +0100
-Subject: [PATCH 1/2] arm64: dts: rockchip: MECSBC: Remove i2c2 node
+	id 1tOGnK-00000001yqw-0vPw;
+	Thu, 19 Dec 2024 13:42:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 431585C4D3B;
+	Thu, 19 Dec 2024 13:41:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99276C4CECE;
+	Thu, 19 Dec 2024 13:42:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734615745;
+	bh=BodwEG/s3P6E/2NShk1XvM+uIPEsnANNhnnZxJcTT7M=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=BMUD0UhBjwvnBoIorrBlY3odQNadBDjOgWdEwxwfK3rMJ+7NluOYcvhy9NLIRZ76z
+	 Co+4FlyIOtmX0/CAx9wAvH2dQoEDJik5ZQ9KEExaXg12ZygauOWaxkIOX8IIezaGDu
+	 mBK3+rIfXXYPNbVlQ0pqw1OWItnv+RS6Fqt4HxmFLpr0y+PdY3+GLWmxo6f4alaczx
+	 sOcpeN6iuzxrMelvou70olDMXNF013w9288dHOfgZ+hzDEdlxpygiG18ap7JeAt1ij
+	 6UfgLtJCeNirjSMS7PxLcJpb6eAe1m5CKzc+0Q9gK3LwnMrqA9L2FmRdeLtUBPOvN5
+	 i6ow9TW0DrF9g==
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+ linux-spi@vger.kernel.org
+In-Reply-To: <20241219010557.333327-1-jon.lin@rock-chips.com>
+References: <20241219010557.333327-1-jon.lin@rock-chips.com>
+Subject: Re: [PATCH] spi: rockchip-sfc: Using normal memory for dma
+Message-Id: <173461574310.119842.4743816830245681721.b4-ty@kernel.org>
+Date: Thu, 19 Dec 2024 13:42:23 +0000
 MIME-Version: 1.0
-Message-Id: <20241219-mb85rs128ty-mecsbc-v1-1-77a0e851ef19@pengutronix.de>
-References: <20241219-mb85rs128ty-mecsbc-v1-0-77a0e851ef19@pengutronix.de>
-In-Reply-To: <20241219-mb85rs128ty-mecsbc-v1-0-77a0e851ef19@pengutronix.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Jonas Rebmann <jre@pengutronix.de>, David Jander <david@protonic.nl>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=976; i=jre@pengutronix.de;
- h=from:subject:message-id; bh=SfUhCKWfnMwqxaoHNh+0OxbNh7oug+ykcNz4u6yGGJU=;
- b=owGbwMvMwCF2ZcYT3onnbjcwnlZLYkhPEfrEcz8rQFRfZW3HfDX9tWE7ecwbdQSNK55GHJpx4
- 1heWWp/RykLgxgHg6yYIkusmpyCkLH/dbNKu1iYOaxMIEMYuDgFYCInPzMybOSZl+3jVdm6s+7z
- t4vegn4d+zQWPo5qj9pWZO+tH++gycjwI47pvYun2YeHR7n7VuwpmpMUZP3XWjCf38Hu3GPlDVI
- sAA==
-X-Developer-Key: i=jre@pengutronix.de; a=openpgp;
- fpr=0B7B750D5D3CD21B3B130DE8B61515E135CD49B5
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:1101:1d::ac
-X-SA-Exim-Mail-From: jre@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_043501_554445_C0055218 
-X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-CacheID: sfid-20241219_054226_305728_CDFE0804 
+X-CRM114-Status: UNSURE (   9.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,40 +73,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Jander <david@protonic.nl>
+On Thu, 19 Dec 2024 09:05:57 +0800, Jon Lin wrote:
+> Nornal memory CPU copy with cache invalidate is more efficient
+> than uncache memory copy.
+> 
+> 
 
-One of the pins of i2c2 is actually in use as chip select 0 for spi0.
-The chip select 0 is used for an FRAM chip, which will be added in the
-next patch.
+Applied to
 
-Remove the i2c2 node from the rk3568-mecsbc device tree.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Signed-off-by: David Jander <david@protonic.nl>
-Signed-off-by: Jonas Rebmann <jre@pengutronix.de>
----
- arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts | 6 ------
- 1 file changed, 6 deletions(-)
+Thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts b/arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts
-index c491dc4d4947dc460330847dede052b1b25ba86c..ca041b4d2d38a4e06cd0a54a806fed2ab723c94d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts
-@@ -206,12 +206,6 @@ regulator-state-mem {
- 	};
- };
- 
--&i2c2 {
--	status = "okay";
--	pinctrl-names = "default";
--	pinctrl-0 = <&i2c2m0_xfer>;
--};
--
- &i2c3 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c3m0_xfer>;
+[1/1] spi: rockchip-sfc: Using normal memory for dma
+      commit: b69386fcbc6066fb4885667743ab4d4967d561b8
 
--- 
-2.39.5
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
