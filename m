@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C684EE77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 14:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB528E7718B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 14:23:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SX7wkf5rV3deNudOvE38H+7o3/AsAGVBpVPrD+t39xs=; b=z63cxBfP86CT/8
-	aHrM2CzByyrBYTRPWqGgNRl9Vekt87VjTGLwjLvMxM1lhWlc8SHDrTrFgXVpAz7TVXNt8xKvFTaa9
-	z46BQMtpb6kx0E6ZnJ4xvVHUvplzniwXDxTk7Lde+ZRWkU0cwsqmbb7yQcjuM3G+zV0C9uuwAdNHA
-	Xw/XF0NxtHZP5n31doUddMmnWl92pd43yYq0srn3M2bAktjK3wymO4y2jzKgQVn+aP8vdxvZ73o2R
-	0Y0vL6efGjSGTGThvoagx88QySJKBzdvJAuvd4NXMfJSdRwmcqp/QZv2A/0EQU6wtgn9Txb4NVomj
-	V/NAWrW13/gnEC0GFC6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GtQno0dkp18EqlKpVVEy7xvHDhkinD70+T4t3vRiFd4=; b=yrdp58sFbB102e
+	F2WnednXG7KPfoaGKFxdlVZ1FSa+elslyKmUxfXhUsI/kAdvgER40yBgJT6n4PomNH3Hy0icYFxtT
+	QGUGEsxQ6jzJa6t1XS0zJSVa9ROXu/Ycn6qIyinmCVrZAnPn/vJEI7XsriNXC61hQMKPpm4eU1jRA
+	1lr8gRcB9BKpBjXltfURu/0LW8N5eMlL3wPrmxKZgC3caM0/HqbnXLUD8nLXDTPKBAIBEPmCbGErt
+	xVKtcz9/kYxkFZdaA47FIdJEoHhhpaq1w/CX4VXooeRBKVtm5wQyupK9HdA7Vq497IGqjLg9CODEr
+	E3oFTBWlYpiCIi0YPwmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOHQv-000000022yg-2J8G;
+	id 1tOHQv-000000022yq-3ipw;
 	Thu, 19 Dec 2024 14:23:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+Received: from mail-m49195.qiye.163.com ([45.254.49.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOHPi-000000022pP-1G1N;
-	Thu, 19 Dec 2024 14:22:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6F4715C5CD5;
-	Thu, 19 Dec 2024 14:21:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB632C4CECE;
-	Thu, 19 Dec 2024 14:22:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734618125;
-	bh=EZZZYJUvUvtfyv5YN1EPSiV40YrW4jh3h61IvL87zD0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dpzxZ6GUMX3FCI9mPHzO2mV7npwK4bTOgJLGJsziBQ3MDWekZPMP29U9YdvPMHrfn
-	 XPxRSDcPcB0yLim+uN8h5zOVUW/auCN9tetlK7+Swk0pFl6GKnW94oo72L5Iy2UD4e
-	 NNIJDooaKXgyB649f2uxyHUPG2ndMwFXB+uHiiPAwR5Y7jW2cltGFA9jkVuPTUZ5BI
-	 1kIih1kf+o8u33LkgLeDQ0OBQ2hkmYH4Ajyw1CLGExJO59sbTEGkUXmJYMMd76an+W
-	 lRGLo9LAGjyVMHsShe1jPEeTnVksLjgu5rIJmMCl6RUOJHIkQw5J1Nl6By/aoDGGYT
-	 VCmgFrAocZj0w==
-Date: Thu, 19 Dec 2024 15:22:00 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	id 1tOHQ0-000000022sJ-2DV1;
+	Thu, 19 Dec 2024 14:22:26 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 63cf60df;
+	Thu, 19 Dec 2024 22:22:18 +0800 (GMT+08:00)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	jon.lin@rock-chips.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on
- dll_link_up irq in the combined sys irq
-Message-ID: <Z2QsCI60fK038OEv@ryzen>
-References: <20241127145041.3531400-2-cassel@kernel.org>
- <20241211053104.7sgo5bmmjnolwvhh@thinkpad>
- <Z1qY_K57lamVxqRm@ryzen>
+	linux-spi@vger.kernel.org
+Subject: [PATCH] spi: rockchip-sfc: Support sclk_x2 version
+Date: Thu, 19 Dec 2024 22:22:16 +0800
+Message-Id: <20241219142216.2123065-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Z1qY_K57lamVxqRm@ryzen>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhgeTVZPGR9MSB9MQx5LSUNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93df4c475409d9kunm63cf60df
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MUk6Tgw6FDINPgsXODhOGBMe
+	T09PCwJVSlVKTEhPTUpDSkhCSElKVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKQk5JNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=BXzSyWmVT/sY1tB/1XsRSqr4/YT7MXKhG6dbJWnM/Xg0ZtSqnJDBRI3qbSyuEnor/xO7POBv19f9X/RyVbYobAW6+EfDIPeoRewmVp/iVSiwVscfqTivF5viM5CaNnhDklaO0+tH9Jc6LQVBMxj7tE9nh00IslIoPb441fALTO4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=mogB8Z2BaCep1O7h/L6gI4XBbJfzWmp9owLVw4u/w3E=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_062206_375291_F9744C65 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20241219_062225_151690_CE6AFB10 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,19 +75,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 12, 2024 at 09:04:12AM +0100, Niklas Cassel wrote:
-> > 
-> > Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> 
-> Thanks for the review!
-> 
-> Could this patch please be picked up?
+SFC after version 8 supports dtr mode, so the IO is the binary output of
+the controller clock.
 
-Another week has past, hence another ping :)
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
+ drivers/spi/spi-rockchip-sfc.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
 
-Kind regards,
-Niklas
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index 36509bcccc27..59de351499a0 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -112,6 +112,7 @@
+ #define  SFC_VER_3			0x3
+ #define  SFC_VER_4			0x4
+ #define  SFC_VER_5			0x5
++#define  SFC_VER_8			0x8
+ 
+ /* Delay line controller register */
+ #define SFC_DLL_CTRL0			0x3C
+@@ -217,6 +218,22 @@ static u32 rockchip_sfc_get_max_iosize(struct rockchip_sfc *sfc)
+ 	return SFC_MAX_IOSIZE_VER3;
+ }
+ 
++static int rockchip_sfc_clk_set_rate(struct rockchip_sfc *sfc, unsigned long  speed)
++{
++	if (sfc->version >= SFC_VER_8)
++		return clk_set_rate(sfc->clk, speed * 2);
++	else
++		return clk_set_rate(sfc->clk, speed);
++}
++
++static unsigned long rockchip_sfc_clk_get_rate(struct rockchip_sfc *sfc)
++{
++	if (sfc->version >= SFC_VER_8)
++		return clk_get_rate(sfc->clk) / 2;
++	else
++		return clk_get_rate(sfc->clk);
++}
++
+ static void rockchip_sfc_irq_unmask(struct rockchip_sfc *sfc, u32 mask)
+ {
+ 	u32 reg;
+@@ -519,12 +536,12 @@ static int rockchip_sfc_exec_mem_op(struct spi_mem *mem, const struct spi_mem_op
+ 
+ 	if (unlikely(mem->spi->max_speed_hz != sfc->speed[cs]) &&
+ 	    !has_acpi_companion(sfc->dev)) {
+-		ret = clk_set_rate(sfc->clk, mem->spi->max_speed_hz);
++		ret = rockchip_sfc_clk_set_rate(sfc, mem->spi->max_speed_hz);
+ 		if (ret)
+ 			goto out;
+ 		sfc->speed[cs] = mem->spi->max_speed_hz;
+ 		dev_dbg(sfc->dev, "set_freq=%dHz real_freq=%ldHz\n",
+-			sfc->speed[cs], clk_get_rate(sfc->clk));
++			sfc->speed[cs], rockchip_sfc_clk_get_rate(sfc));
+ 	}
+ 
+ 	rockchip_sfc_adjust_op_work((struct spi_mem_op *)op);
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
