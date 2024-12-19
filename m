@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C9AE77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 07:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA56E7718F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 07:57:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u2HBKJ64+/KYjOd2N47V7uHR8/97WJ/u01ULTX2i+YA=; b=KWV1Vb3hajM7QH
-	bqRjs//+qLvLv2ViF2W8V47ht/8i2m7C7wj17gjwjPiDw57m91GY3WlfPs5Sdz0Fqzh/u2M7dLza3
-	Z5ULOo5T/75UieHjHABgxGopUouKinMcZUXFuuDAKu4esZuNtVuM2j7E+xUn7tEoXBkfOzi4wfMz4
-	VV8o6qE9BGJfXPpSa87lMAUJx0LksZSLBzHiHYZY9Rg2pTsA57wQdigYV/lcnw3J2Hkw/B/GHxadr
-	kt3XacT3YDq6MO3zjF6Kez7yOIprkP0NSe5r0crbba+x7KhI8graALDKoEHyMmEfx2jHC/9ncNpCB
-	6wUtsYHTIGcFrDiffF6A==;
+	List-Owner; bh=YIR6Ms0CjFGGdxBs4F7aJDapoajdgX6F0acshThu4LE=; b=FzvyGcgojhW8jA
+	lsAHi09FDIWD0KGBa8OtUrHG3heKWwhwwulY1mwh3AhltxpnulHIkFfJ8y/VcwJVTvw4FG8c+rBQ4
+	RRC1mVfkBYOfnefyjLP5XOHOqc1YOVjLO70SWtCqDNBspNT1pMkGPRAMGoh7Br8N+QcOPcbON/eEr
+	pdpKa8ANu4lvi7QN2Ae0zVoAl5v4PUpOu9yBd4w6FOQRRw665+YrDjQCr64cr9gkVdAiYLpBY9jia
+	A08RNmd0RhwjtwHEro9whuVLHw/m9ay6iyCVz5NUu+sJJ/D1ShEIknwTLQ0xBzK3VQ7xYm65S8Y08
+	SyMGu3yYikzEloAt1MGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOBN8-00000001ArO-0Ddx;
-	Thu, 19 Dec 2024 07:55:02 +0000
+	id 1tOBPI-00000001BLl-0PO7;
+	Thu, 19 Dec 2024 07:57:16 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOB8q-000000017ZS-0mBp;
-	Thu, 19 Dec 2024 07:40:16 +0000
+	id 1tOB8r-000000017Zg-2Qfy;
+	Thu, 19 Dec 2024 07:40:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=842LYi84RhO3n0sf3EEfEwJjlM+0ZMTo6Fz03p+CsAE=; b=dIPqk9GL3WS1o54HjYcgPDmScd
-	eBLMX1MjFxjQ+obHCGrI3U9MnNECKxBIeD2bdlTNuKZnGZ4C9W2m6N0/jWhUd+L6NJ2zc3dyxVMFg
-	HpVUZL+QBw3mYM4g9hiHI7/LRPbWpYV7rDJYQnJ4WcrBeKu3X9TvfAzKmT2R/n+kxrb2QbsmMJcmj
-	bcZAaU5sirX98iAvSwntZdOWrbFQyc5R6tk2kdgLkDob1dZJHBjj2laStJrlzWAG+0QkE+csY0m33
-	R5uAdbwpXmxl+HfdxgxGcy+u4Sf44C/jOtnE82cAlGZ4Xfi9m6arQLXZHQ6x+iP2JRMw9I7SQPc/Q
-	5nrBdAtA==;
-Received: from m16.mail.163.com ([220.197.31.4])
+	bh=d76oW+hJ02vk47g5jJkDC6wrHjePHlmxkDGSNxOrV/c=; b=gm7Q2R1EaMgIMwzrHPBoe29h+P
+	pJDsPKojsghNjaDWS1F8kqSuYScfM5/31XGuOtV6ODJEU3vdSaY7qchWelcroNX62fDExHsmm14Ks
+	hKhjmMdhqUSDlatI32w7sSaYWxphpa9vfaNf6G1sHQYLA2FjdCxs8xZy/2HltshqFoVsgL4HgyI+H
+	yUmxuz6abo6CsmkWkrB2R20nJPID1UHzXTH1QFMC6dk+TydKI8UoUZfX75lgEqJdQRUpZHzGdz8Mn
+	h0b77q++bwu96JKHveL+dCfzCjNsMCgeKnogtcRLDsltJ+W9iLz1CN9+SXpgS87sKHjEtzCSx1cGB
+	azssYoKQ==;
+Received: from m16.mail.163.com ([117.135.210.5])
 	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOB8m-00000005PFl-3C7b;
-	Thu, 19 Dec 2024 07:40:15 +0000
+	id 1tOB8m-00000005PFm-3oSZ;
+	Thu, 19 Dec 2024 07:40:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=842LY
-	i84RhO3n0sf3EEfEwJjlM+0ZMTo6Fz03p+CsAE=; b=azh3sFVMpu9IElJbwMKTc
-	oxAEhnvxCiSZXZuif2hYXeXI0l2Sacbj+knBbhtrAzbMGZpPAaNFniEACBGhXRqE
-	A8MBvMYpB4GXee2ukh0PL+4Xqyy3an33tT6HFdTAOkl1CCHUMUKk8CbBfIpy8oEf
-	RhzZSlN/vsaLwRBOegDCPM=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=d76oW
+	+hJ02vk47g5jJkDC6wrHjePHlmxkDGSNxOrV/c=; b=NaaPeZxn0KtGGJMzX+gWT
+	Se2jX4275vxbBsNbaHyztZywpu+ADDha18LYt1KFdsuwyb7znyg5SAXr/202X+C3
+	MKkq2hSR2s5eJQH5ww0gpL0duC3BQFAi5RmC8hlcOc4gyPMdKw0VmNjYPFX8yWab
+	OOtzRouTvPzAShkbkVfxlA=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wBnUtq0zWNnL5jUAA--.6492S6;
-	Thu, 19 Dec 2024 15:39:40 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wBnUtq0zWNnL5jUAA--.6492S10;
+	Thu, 19 Dec 2024 15:39:44 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -63,24 +63,25 @@ Cc: hjc@rock-chips.com,
 	derek.foreman@collabora.com,
 	detlev.casanova@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v7 4/9] drm/rockchip: vop2: Introduce vop hardware version
-Date: Thu, 19 Dec 2024 15:39:12 +0800
-Message-ID: <20241219073931.3997788-5-andyshrk@163.com>
+	Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH v7 8/9] dt-bindings: display: vop2: Add rk3576 support
+Date: Thu, 19 Dec 2024 15:39:16 +0800
+Message-ID: <20241219073931.3997788-9-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241219073931.3997788-1-andyshrk@163.com>
 References: <20241219073931.3997788-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wBnUtq0zWNnL5jUAA--.6492S6
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Xry3tF47Cry8WF4fWF1xXwb_yoWxKw1xpF
-	W7Aay5WrWxGa1qgw4kJay3ZF4aywn2yay7JanrGw13t3sxKryDGan0qF1ayFZ8tr92kr4j
-	yFs3ArW5WF4Utr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jsR6wUUUUU=
+X-CM-TRANSID: _____wBnUtq0zWNnL5jUAA--.6492S10
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WrWrKFW5try7CFWkWw17Wrg_yoW8WF1Dpa
+	93CF9rXry8GF17X34DGF1rCrs8XFn7Aa13GF4ktw1xtrsxKrsYgw4agrn8Zr45GFyxZaya
+	9F4ak34UJ392vrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j8pnQUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwe6XmdjydhscQAAsY
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwa6XmdjydhsxwAAsv
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_074013_288905_B71DB34C 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20241219_074013_477277_C9DD6979 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,196 +100,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-There is a version number hardcoded in the VOP VERSION_INFO
-register, and the version number increments sequentially based
-on the production order of the SOC.
-
-So using this version number to distinguish different VOP features
-will simplify the code.
+Add vop found on rk3576, the main difference between rk3576 and the
+previous vop is that each VP has its own interrupt line.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
 ---
 
-(no changes since v6)
-
-Changes in v6:
-- Add a blank line after hardware version check code
+(no changes since v3)
 
 Changes in v3:
-- Add comments for why we should treat rk3566 with special care.
-- Add hardware version check
+- ordered by soc name
+- Add description for newly added interrupt
 
 Changes in v2:
-- Introduce vop hardware version
+- Add dt bindings
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 26 ++++++++++++++------
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 11 +++++++++
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  3 +++
- 3 files changed, 33 insertions(+), 7 deletions(-)
+ .../bindings/display/rockchip/rockchip-vop2.yaml    | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index fded1e931c9a..c87c98a8fb3a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -354,7 +354,7 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 2531726af306..a44964b6c36a 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -20,6 +20,7 @@ properties:
+     enum:
+       - rockchip,rk3566-vop
+       - rockchip,rk3568-vop
++      - rockchip,rk3576-vop
+       - rockchip,rk3588-vop
  
- static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
- {
--	if (vop2->data->soc_id == 3588) {
-+	if (vop2->version == VOP_VERSION_RK3588) {
- 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
- 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
- 			return true;
-@@ -407,7 +407,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
- 	if (modifier == DRM_FORMAT_MOD_INVALID)
- 		return false;
+   reg:
+@@ -37,10 +38,14 @@ properties:
+       - const: gamma-lut
  
--	if (vop2->data->soc_id == 3568 || vop2->data->soc_id == 3566) {
-+	if (vop2->version == VOP_VERSION_RK3568) {
- 		if (vop2_cluster_window(win)) {
- 			if (modifier == DRM_FORMAT_MOD_LINEAR) {
- 				drm_dbg_kms(vop2->drm,
-@@ -418,7 +418,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
- 	}
+   interrupts:
+-    maxItems: 1
+-    description:
+-      The VOP interrupt is shared by several interrupt sources, such as
+-      frame start (VSYNC), line flag and other status interrupts.
++    minItems: 1
++    items:
++      - description:
++          vop system interrupt, such as bus error, and vsync for vop version under
++          rk3576.
++      - description:
++          independent interrupts for each video port, such as vsync and other video
++          port related error interrupts.
  
- 	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
--		if (vop2->data->soc_id == 3588) {
-+		if (vop2->version == VOP_VERSION_RK3588) {
- 			if (!rockchip_afbc(plane, modifier)) {
- 				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
- 				return false;
-@@ -817,6 +817,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
- static void vop2_enable(struct vop2 *vop2)
- {
- 	int ret;
-+	u32 version;
- 
- 	ret = pm_runtime_resume_and_get(vop2->dev);
- 	if (ret < 0) {
-@@ -836,10 +837,20 @@ static void vop2_enable(struct vop2 *vop2)
- 		return;
- 	}
- 
-+	version = vop2_readl(vop2, RK3568_VERSION_INFO);
-+	if (version != vop2->version) {
-+		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
-+		return;
-+	}
-+
-+	/*
-+	 * rk3566 share the same vop version with rk3568, so
-+	 * wen need to use soc_id for identification here.
-+	 */
- 	if (vop2->data->soc_id == 3566)
- 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
- 
--	if (vop2->data->soc_id == 3588)
-+	if (vop2->version == VOP_VERSION_RK3588)
- 		rk3588_vop2_power_domain_enable_all(vop2);
- 
- 	vop2_writel(vop2, RK3568_REG_CFG_DONE, RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
-@@ -920,7 +931,7 @@ static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
- 
- static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
- {
--	return (vop2->data->soc_id != 3566 && vop2->data->soc_id != 3568);
-+	return vop2->version != VOP_VERSION_RK3568;
- }
- 
- static bool vop2_gamma_lut_in_use(struct vop2 *vop2, struct vop2_video_port *vp)
-@@ -1259,7 +1270,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		&fb->format->format,
- 		afbc_en ? "AFBC" : "", &yrgb_mst);
- 
--	if (vop2->data->soc_id > 3568) {
-+	if (vop2->version > VOP_VERSION_RK3568) {
- 		vop2_win_write(win, VOP2_WIN_AXI_BUS_ID, win->data->axi_bus_id);
- 		vop2_win_write(win, VOP2_WIN_AXI_YRGB_R_ID, win->data->axi_yrgb_r_id);
- 		vop2_win_write(win, VOP2_WIN_AXI_UV_R_ID, win->data->axi_uv_r_id);
-@@ -1319,7 +1330,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		 * this bit is gating disable, we should write 1 to
- 		 * disable gating when enable afbc.
- 		 */
--		if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
-+		if (vop2->version == VOP_VERSION_RK3568)
- 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
- 		else
- 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 1);
-@@ -2523,6 +2534,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
- 	vop2->dev = dev;
- 	vop2->data = vop2_data;
- 	vop2->ops = vop2_data->ops;
-+	vop2->version = vop2_data->version;
- 	vop2->drm = drm;
- 
- 	dev_set_drvdata(dev, vop2);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index af3cd92e6815..21464d107bd3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -13,6 +13,15 @@
- #include "rockchip_drm_drv.h"
- #include "rockchip_drm_vop.h"
- 
-+#define VOP2_VERSION(major, minor, build)	((major) << 24 | (minor) << 16 | (build))
-+
-+/* The new SOC VOP version is bigger than the old */
-+#define VOP_VERSION_RK3568	VOP2_VERSION(0x40, 0x15, 0x8023)
-+#define VOP_VERSION_RK3588	VOP2_VERSION(0x40, 0x17, 0x6786)
-+#define VOP_VERSION_RK3528	VOP2_VERSION(0x50, 0x17, 0x1263)
-+#define VOP_VERSION_RK3562	VOP2_VERSION(0x50, 0x17, 0x4350)
-+#define VOP_VERSION_RK3576	VOP2_VERSION(0x50, 0x19, 0x9765)
-+
- #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
- 
- #define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
-@@ -242,6 +251,7 @@ struct vop2_ops {
- struct vop2_data {
- 	u8 nr_vps;
- 	u64 feature;
-+	u32 version;
- 	const struct vop2_ops *ops;
- 	const struct vop2_win_data *win;
- 	const struct vop2_video_port_data *vp;
-@@ -259,6 +269,7 @@ struct vop2_data {
- };
- 
- struct vop2 {
-+	u32 version;
- 	struct device *dev;
- 	struct drm_device *drm;
- 	struct vop2_video_port vps[ROCKCHIP_MAX_CRTC];
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 747e3628ae96..48629353929d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -1627,6 +1627,7 @@ static const struct vop2_ops rk3588_vop_ops = {
- };
- 
- static const struct vop2_data rk3566_vop = {
-+	.version = VOP_VERSION_RK3568,
- 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
- 	.nr_vps = 3,
- 	.max_input = { 4096, 2304 },
-@@ -1645,6 +1646,7 @@ static const struct vop2_data rk3566_vop = {
- };
- 
- static const struct vop2_data rk3568_vop = {
-+	.version = VOP_VERSION_RK3568,
- 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
- 	.nr_vps = 3,
- 	.max_input = { 4096, 2304 },
-@@ -1663,6 +1665,7 @@ static const struct vop2_data rk3568_vop = {
- };
- 
- static const struct vop2_data rk3588_vop = {
-+	.version = VOP_VERSION_RK3588,
- 	.feature = VOP2_FEATURE_HAS_SYS_GRF | VOP2_FEATURE_HAS_VO1_GRF |
- 		   VOP2_FEATURE_HAS_VOP_GRF | VOP2_FEATURE_HAS_SYS_PMU,
- 	.nr_vps = 4,
+   # See compatible-specific constraints below.
+   clocks:
 -- 
 2.34.1
 
