@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9104AE7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 741FFE7718A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dc6LtLYh1jnl2sYXW+/Zy6pWGvXJeCZ1szDF8zhwR7w=; b=OZ10fZUrZKMMHs
-	eKXLuBRvGXCN8g8VgBLJDENl9Ch6PpYo5h0mdgXl0+hXzOE1cgk5gvMGGvPhZ6MnlNp64uIV1PVkF
-	fqOx6QclhIOxGhVQTpFbryVzcMm23MHzvQRdpfPP699FGofjm9bvcVMHNNkjntY7h4q/wbNAF29fC
-	UXKfF5ztC3zvDHrQwgqSxoG1lsLP4Wz7tL3RkrYuQmsgBlxlP7CyVeqbVPHlvnTKeqVoySbpSvMEW
-	qkXesSbNb/OQXDLMweGxuMjnkIS9FcmQGKOdyozpByFOgbXCrPtEie4vy4hoTfYxL61i44MaD58p1
-	Bo4pQhvTwbX+6Usp2BUA==;
+	List-Owner; bh=waTfwYMO//lMhUoxpK7tcA25dsc8rH49wY/2wMMnFnY=; b=qD/y8nXnQqGQoJ
+	ZkflCQsTtty+lcSPGmf9kVH/IQuinePL+hrm+Ga00XrsRfUNHOGAFEjlVabWYmhPj6hU3RqcKZnss
+	nl2k13d5A6rR0kQ+kMRKZ5RL5GQouBWdC1AYYUUuRo7A0S/ONQxExOeyRAYYRpwFDmC+Wc0RCjeGV
+	A516BJ4IL9lgsJPvPndudJ2vDxO3BaRVx1p96AvleQUXQt4mJtk1L/VfSOdMIbt97uoxB6gZcOY4I
+	OKOov5+GzALmJrkxv/X8rZu7OVFS+wpah4CT4AGpD389pr+sZimf+TFAQCvBrs9tV1ut94dbqMmk5
+	CqRlqYN8cdu0ZxNLWJ+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOay6-00000004jD7-16cm;
-	Fri, 20 Dec 2024 11:14:54 +0000
-Received: from mail-m15577.qiye.163.com ([101.71.155.77])
+	id 1tOay8-00000004jHB-45Ap;
+	Fri, 20 Dec 2024 11:14:56 +0000
+Received: from mail-m15588.qiye.163.com ([101.71.155.88])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOapi-00000004fDn-0PDf
+	id 1tOapj-00000004fEO-17vT
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 11:06:15 +0000
+	Fri, 20 Dec 2024 11:06:16 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 657291e8;
-	Fri, 20 Dec 2024 19:06:11 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 657291eb;
+	Fri, 20 Dec 2024 19:06:12 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	Finley Xiao <finley.xiao@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH 16/38] nvmem: rockchip-otp: Add support for rk3568-otp
-Date: Fri, 20 Dec 2024 19:05:36 +0800
-Message-Id: <20241220110558.3511994-7-kever.yang@rock-chips.com>
+Subject: [PATCH 17/38] nvmem: rockchip-otp: Add support for rk3562
+Date: Fri, 20 Dec 2024 19:05:37 +0800
+Message-Id: <20241220110558.3511994-8-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241220110558.3511994-1-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
  <20241220110558.3511994-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklCH1ZCGk9LSB9NT01LHkhWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk4eQlYeH0wYS0xIQhlCTkJWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
 	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e3bf16ee03afkunm657291e8
+X-HM-Tid: 0a93e3bf1a1903afkunm657291eb
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRA6Dxw5PzIXSQgUTVErSBFL
-	FBxPFD1VSlVKTEhPTUJJTExJSUxNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFIQ0JINwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NDI6Agw6DDIOPggsGFENSBQs
+	AS9PChdVSlVKTEhPTUJJTExISEpCVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSEtCNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=cCbEWtAg0wdXiXoDvmNYFFqPI+BwoC7Eb8bWgEr3BWc8F1GZLwg+/bP33LHkyLt6Dg81M2PJWjhy4ceFIyZ6c2TrQ1l/YcyXv0UFWdY66VsgmVfgMnOH68Lctj4f2XZbhxf2KK0x2InshPG+huwJuDgccMi5q8g4gVHFhpkxqt8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=IUHEDGkMN9I7ssaEFo/oqi5+Z6MBCQzWgyFJRASPt48=;
+	b=UWmDRRqIwwam4OClGyr2mNiC+uSvj9VEBfVu7SRuT+aHTtGYtn+9zWNaLWZ2oM59Cn99Jim5Mg5Qw5KBUJLjSClQQrxIO6wMpBDoJCA5RY8P0sgwlJglS+faGo9qK4b6YOOjLtWlH28xaUXUVZ1gIOPq7NvYjttbTDq1oIqaVK4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=vlTw8ucEItlFxpvsBPgpOAVij+6tEI4gYlpEt46V6aw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_030614_336263_E5B0613F 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20241220_030615_485668_B7B93E90 
+X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,136 +78,48 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Finley Xiao <finley.xiao@rock-chips.com>
 
-This adds the necessary data for handling efuse on the rk3568.
+This adds the necessary data for handling otp on the rk3562.
 
 Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
- drivers/nvmem/rockchip-otp.c | 82 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
+ drivers/nvmem/rockchip-otp.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index ebc3f0b24166..a04bce89ecc8 100644
+index a04bce89ecc8..6f86cf8ec390 100644
 --- a/drivers/nvmem/rockchip-otp.c
 +++ b/drivers/nvmem/rockchip-otp.c
-@@ -27,6 +27,7 @@
- #define OTPC_USER_CTRL			0x0100
- #define OTPC_USER_ADDR			0x0104
- #define OTPC_USER_ENABLE		0x0108
-+#define OTPC_USER_QP			0x0120
- #define OTPC_USER_Q			0x0124
- #define OTPC_INT_STATUS			0x0304
- #define OTPC_SBPI_CMD0_OFFSET		0x1000
-@@ -53,6 +54,8 @@
- #define SBPI_ENABLE_MASK		GENMASK(16, 16)
- 
- #define OTPC_TIMEOUT			10000
-+#define OTPC_TIMEOUT_PROG		100000
-+#define RK3568_NBYTES			2
- 
- /* RK3588 Register */
- #define RK3588_OTPC_AUTO_CTRL		0x04
-@@ -184,6 +187,70 @@ static int px30_otp_read(void *context, unsigned int offset,
- 	return ret;
- }
- 
-+static int rk3568_otp_read(void *context, unsigned int offset, void *val,
-+			   size_t bytes)
-+{
-+	struct rockchip_otp *otp = context;
-+	unsigned int addr_start, addr_end, addr_offset, addr_len;
-+	unsigned int otp_qp;
-+	u32 out_value;
-+	u8 *buf;
-+	int ret = 0, i = 0;
-+
-+	addr_start = rounddown(offset, RK3568_NBYTES) / RK3568_NBYTES;
-+	addr_end = roundup(offset + bytes, RK3568_NBYTES) / RK3568_NBYTES;
-+	addr_offset = offset % RK3568_NBYTES;
-+	addr_len = addr_end - addr_start;
-+
-+	buf = kzalloc(array3_size(addr_len, RK3568_NBYTES, sizeof(*buf)),
-+		      GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	ret = rockchip_otp_reset(otp);
-+	if (ret) {
-+		dev_err(otp->dev, "failed to reset otp phy\n");
-+		return ret;
-+	}
-+
-+	ret = rockchip_otp_ecc_enable(otp, true);
-+	if (ret < 0) {
-+		dev_err(otp->dev, "rockchip_otp_ecc_enable err\n");
-+		return ret;
-+	}
-+
-+	writel(OTPC_USE_USER | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
-+	udelay(5);
-+	while (addr_len--) {
-+		writel(addr_start++ | OTPC_USER_ADDR_MASK,
-+		       otp->base + OTPC_USER_ADDR);
-+		writel(OTPC_USER_FSM_ENABLE | OTPC_USER_FSM_ENABLE_MASK,
-+		       otp->base + OTPC_USER_ENABLE);
-+		ret = rockchip_otp_wait_status(otp, OTPC_INT_STATUS, OTPC_USER_DONE);
-+		if (ret < 0) {
-+			dev_err(otp->dev, "timeout during read setup\n");
-+			goto read_end;
-+		}
-+		otp_qp = readl(otp->base + OTPC_USER_QP);
-+		if (((otp_qp & 0xc0) == 0xc0) || (otp_qp & 0x20)) {
-+			ret = -EIO;
-+			dev_err(otp->dev, "ecc check error during read setup\n");
-+			goto read_end;
-+		}
-+		out_value = readl(otp->base + OTPC_USER_Q);
-+		memcpy(&buf[i], &out_value, RK3568_NBYTES);
-+		i += RK3568_NBYTES;
-+	}
-+
-+	memcpy(val, buf + addr_offset, bytes);
-+
-+read_end:
-+	writel(0x0 | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
-+	kfree(buf);
-+
-+	return ret;
-+}
-+
- static int rk3588_otp_read(void *context, unsigned int offset,
- 			   void *val, size_t bytes)
- {
-@@ -274,6 +341,17 @@ static const struct rockchip_data px30_data = {
+@@ -341,6 +341,17 @@ static const struct rockchip_data px30_data = {
  	.reg_read = px30_otp_read,
  };
  
-+static const char * const rk3568_otp_clocks[] = {
++static const char * const rk3562_otp_clocks[] = {
 +	"usr", "sbpi", "apb_pclk", "phy",
 +};
 +
-+static const struct rockchip_data rk3568_data = {
++static const struct rockchip_data rk3562_data = {
 +	.size = 0x80,
-+	.clks = rk3568_otp_clocks,
-+	.num_clks = ARRAY_SIZE(rk3568_otp_clocks),
++	.clks = rk3562_otp_clocks,
++	.num_clks = ARRAY_SIZE(rk3562_otp_clocks),
 +	.reg_read = rk3568_otp_read,
 +};
 +
- static const char * const rk3588_otp_clocks[] = {
- 	"otp", "apb_pclk", "phy", "arb",
+ static const char * const rk3568_otp_clocks[] = {
+ 	"usr", "sbpi", "apb_pclk", "phy",
  };
-@@ -294,6 +372,10 @@ static const struct of_device_id rockchip_otp_match[] = {
+@@ -372,6 +383,10 @@ static const struct of_device_id rockchip_otp_match[] = {
  		.compatible = "rockchip,rk3308-otp",
  		.data = &px30_data,
  	},
 +	{
-+		.compatible = "rockchip,rk3568-otp",
-+		.data = &rk3568_data,
++		.compatible = "rockchip,rk3562-otp",
++		.data = &rk3562_data,
 +	},
  	{
- 		.compatible = "rockchip,rk3588-otp",
- 		.data = &rk3588_data,
+ 		.compatible = "rockchip,rk3568-otp",
+ 		.data = &rk3568_data,
 -- 
 2.25.1
 
