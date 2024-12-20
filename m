@@ -4,62 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DA6E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 17:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE05E7718D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 17:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m1QDTBo/5aubBsulDMJCa+MAl7r5+PbcpN7WL4smNiY=; b=D1JDGs95zlWxEg
-	9ZgybOC9Xah2UXFSfzGBvRzzu0mmFYU+ZZ9/pZU254WNBy3SlgvZ76DJFH07qAFvWykjNB5IXSvNd
-	vPJi06iWsECrQjblniKiFTnm62d4eIniONEIcORpkxTzXAs3BNRoyDuyhXuVZ7xm2ua8KhrVHjUKk
-	D4FOwJ22KaETNIGEod+r2qRSvA6nZmHgg+wtqyv1VL+fB7ulITnJd73w/XZxFLX2BiqeI9tLS/UsZ
-	8oBEgF6Wk9OYrw1p07/N5gJOSshQgvo72gZExSmS8Rl25Aa0aPriWXGzKJJIHnhZ6criHkhY4b/E9
-	kjNs0vPsKoR3ZLpVJ3Ig==;
+	List-Owner; bh=wFR9GqbcDQwXVxkMLUbuhPT13vmJv9wXMcFCAnTaCQw=; b=b97hnnEmwE8REy
+	nnkaNuGH1ROMLwQayOVOHirW0ObtV6CeZjJC504HW7XMJ1B+clq6/+1Rg0uM/Su8SzBbvzsf97lKg
+	bAc086TrHTpKBA/U/+weW+XlaAChbOR9twSJA4CUPiMP0ns51hqjG2fM9mSi8VFcnPC7Gtr1B7aLA
+	UI8ON2uzEUq9iSp7fCH1Q+l/onywTp1VUQiWSAVvV0Xjl9xUcQJomJOgMFPwJ1NJWVwL23LGV8XFf
+	k2RuFsRl/xT8ycYHvFILH6O+AoOGp5WOOVPVuNr91AGUEANvW3F2noMDmUTTJBSzuLo+T60HKgedY
+	Bhd8zNI4hNpgSi3KQdoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOgjK-00000005cvE-11Fq;
-	Fri, 20 Dec 2024 17:24:02 +0000
-Received: from smtp.forwardemail.net ([207.246.76.47])
+	id 1tOhCP-00000005htw-0oDA;
+	Fri, 20 Dec 2024 17:54:05 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOgV2-00000005ZbG-2Med
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 17:09:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1734714547;
- bh=j9X0qkclU5mbquP6ylYtzaM4fEOUHkCHYMmtnsUqTWw=;
- b=ERV/reus+X0XsltDz8CpJlVjJA4t0KqOdNI644uR6odjG6Z4GpqMc8OD/TPlt+7DhXslfUrOR
- jDWF1WXvYbGJYbtg1YzvfOkQU7xaG1n4nY0vifSGh9iPM1BvhCqkj6t+W/qWVIZUf1cJCprJOJo
- qAu2uhO0hG6elmJ/w4COShFRidj7awH7BbmrKALWTI1yqZT5ROLFXVAhBklUy++zuTbQ6/bIYE6
- 1KIZgu+PFAHjBsRxBpFRBOEl/YYXJOkan9RHVI2tbSZlhLTjHqgsCxiCmV8j48xs2bz0SsskWFH
- eSYZefiFmU3S+YJ4MNYCCqFzv4QyE0PBYpNJU6IYFiBw==
-Message-ID: <17251add-40b7-4d18-8626-2d74b29532fc@kwiboo.se>
-Date: Fri, 20 Dec 2024 18:09:01 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: ROCK3B: Correct clock rates for
- Ethernet PHYs
+	id 1tOggr-00000005cGG-3MeL;
+	Fri, 20 Dec 2024 17:21:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=9bh8Zf1/wCgm7hCKKwuFvGGD46PcOxs/1JrfZAt/c2U=; b=b9J04bGwUCd2FcF0KG/NwT5FSW
+	PBst32IBsF8Ad5i9PCNMzrbqNL2UG5fQMdcPbMjSb1gO3aAyzWTJGthxtLqFP2k7ojtEN+GViKEkZ
+	j4nrDTLKP1HhQQgH7BZH9Ku4/A2CgElfqcAh8AqONeYRicEUQ3Hi8SA/dXFJYwTrf0M0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tOggl-0023lP-Vc; Fri, 20 Dec 2024 18:21:24 +0100
+Date: Fri, 20 Dec 2024 18:21:23 +0100
+From: Andrew Lunn <andrew@lunn.ch>
 To: Alicja Michalska <alicja.michalska@9elements.com>
 Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: ROCK3B: Correct clock rates for
+ Ethernet PHYs
+Message-ID: <f3c6fd86-1fd8-4540-a4f4-0c6e3a0e2583@lunn.ch>
 References: <20241220163227.1501912-1-alicja.michalska@9elements.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
+MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20241220163227.1501912-1-alicja.michalska@9elements.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 207.246.76.47
-X-ForwardEmail-ID: 6765a4b2b8c9120276e3dca1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_090916_759436_8D70FBAC 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20241220_092129_840017_3A374154 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,25 +68,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alicja,
-
-On 2024-12-20 17:32, Alicja Michalska wrote:
+On Fri, Dec 20, 2024 at 05:32:27PM +0100, Alicja Michalska wrote:
 > Built-in ethernet PHYs did not work on mainline kernel:
+
+Builtin, as within the SoC?
 > 
 > fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
 > fe010000.ethernet eth0: __stmmac_open: Cannot attach to PHY
 
-Have you used mainline or vendor u-boot when testing?
+Not being able to find the PHY has nothing to do with RGMII delays.
+If the RGMII delays are wrong, packets will not be
+received/transmitted, or they will be corrupt and thrown away with
+checksum errors. But the PHY will be found and you can attach to it.
 
-There is an existing issue with RTL8211F PHYs that they must be reset
-before Linux can identify them, see [1] for more details on the issue.
+So please leave everything to do with RGMII delays alone, at least
+until you have a patch which causes the PHY to be found and attached.
+It is likely not broken.
 
-Mainline U-Boot will reset the Ethernet PHYs on this board and that
-should allow for Linux to identify and use the Ethernet PHYs.
-
-[1] https://lore.kernel.org/r/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
-
-> 
 > According to the board design, they need to be configured as output with
 > static TX/RX delay. This patch sets it accordingly.
 > 
@@ -118,6 +108,19 @@ should allow for Linux to identify and use the Ethernet PHYs.
 > +	clock_in_out = "output";
 >  	phy-supply = <&vcc_3v3>;
 > +	phy-mode = "rgmii";
+
+This is wrong. RGMII requires a 2ns delay between the data and clock
+lines. One way you can achieve this is by having extra long clock
+lines on the PCB. If you have that, you use phy-mode rgmii. If there
+are not extra long clock lines, you use rgmii-id, which indicates the
+MAC/PHY pair need to insert the delays.
+
+Now vendors very frequently get this wrong, monkeys typing Shakespeare
+until something works, with no idea why it works, or if it is correct.
+Using the wrong phy-mode, combined with wrong tx_delay and rx_delay
+settings cancel each other out and it works. But its just "Two wrongs
+make a right". We don't want mainline kernel code working like this.
+
 > +	phy-handle = <&rgmii_phy0>;
 >  	pinctrl-names = "default";
 >  	pinctrl-0 = <&gmac0_miim
@@ -131,123 +134,17 @@ should allow for Linux to identify and use the Ethernet PHYs.
 > +	snps,reset-active-low;
 > +	snps,reset-delays-us = <0 20000 100000>;
 
-The snps,reset props is deprecated and reset- props should be used in
-the PHY node.
+You are adding this here and removing the equivalent from the PHY
+node. Using the PHY node properties is the recommended way to do this,
+since it is the same for all PHYs, where as the vendor snps,
+properties only work for this device.
 
-This also changes to use 20/100 ms delay instead of current 20/50ms
-delay. If anything it could be changed to 20/80ms, I have only seen
-datasheets for rtl8211f mention minimum 10 ms and minimum 30-76 ms.
+So, now you have something that works, slowly undo all the changes,
+and find what actually made it work. But you need to undo stuff in
+pairs. Remove all the RGMII delay related changes and test. Remove the
+reset GPIO changes and test, etc.
 
-> +
-> +	tx_delay = <0x36>;
-> +	rx_delay = <0x2d>;
-
-Are you having issue with use of rgmii-id on your board?
-
-> +
->  	status = "okay";
->  };
->  
->  &gmac1 {
->  	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
->  	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
-> -	clock_in_out = "input";
-> -	phy-handle = <&rgmii_phy1>;
-> -	phy-mode = "rgmii-id";
-> +	assigned-clock-rates = <0>, <125000000>;
-> +	clock_in_out = "output";
->  	phy-supply = <&vcc_3v3>;
-> +	phy-mode = "rgmii";
-> +	phy-handle = <&rgmii_phy1>;
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&gmac1m1_miim
->  		     &gmac1m1_tx_bus2
->  		     &gmac1m1_rx_bus2
->  		     &gmac1m1_rgmii_clk
-> -		     &gmac1m1_rgmii_bus
-> -		     &gmac1m1_clkinout>;
-> +		     &gmac1m1_rgmii_bus>;
-> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 50000 150000>;
-
-Same here, but now this is 50/150 ms?
-
-> +
-> +	tx_delay = <0x47>;
-> +	rx_delay = <0x28>;
-
-Same here, is use of rgmii-id causing issues on your boards?
-
-> +
->  	status = "okay";
->  };
->  
-> +&mdio0 {
-> +	rgmii_phy0: ethernet-phy@0 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0>;
-
-The phy addr used for these boards is 0x1.
-
-> +	};
-> +};
-> +
-> +&mdio1 {
-> +	rgmii_phy1: ethernet-phy@0 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0>;
-
-Same here.
-
-> +	};
-> +};
-
-There should be no need to move these nodes, they should already be in
-alphabetical order?
-
-> +
->  &gpu {
->  	mali-supply = <&vdd_gpu>;
->  	status = "okay";
-> @@ -512,26 +540,6 @@ &i2s1m0_sdi0
->  	status = "okay";
->  };
->  
-> -&mdio0 {
-> -	rgmii_phy0: ethernet-phy@1 {
-> -		compatible = "ethernet-phy-ieee802.3-c22";
-
-If you want to use vendor u-boot you can probably change this to
-"ethernet-phy-id001c.c916".
-
-> -		reg = <1>;
-> -		reset-assert-us = <20000>;
-> -		reset-deassert-us = <50000>;
-> -		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-> -	};
-> -};
-> -
-> -&mdio1 {
-> -	rgmii_phy1: ethernet-phy@1 {
-> -		compatible = "ethernet-phy-ieee802.3-c22";
-
-Same here.
-
-Regards,
-Jonas
-
-> -		reg = <1>;
-> -		reset-assert-us = <20000>;
-> -		reset-deassert-us = <50000>;
-> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-> -	};
-> -};
-> -
->  &pcie2x1 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie20m1_pins>;
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
