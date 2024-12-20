@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51FD1E7718A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52DDAE77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 12:07:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=gRvuQG3q7cq4rNczGrgRBhdZ9fodWLRWpbDjJ2PLJmE=; b=K4JrH9t2LcRn5TNY1+PiiOZQAZ
-	KRjDytWWOYT5wqaqg0NRTEOdaj6m2naY89emUBWVON4a9aLbt/CMlV0/cTh2B0wBgGwtgIexgFcZv
-	8kLwZrMn9NvdQnV485KcZT0hfgHef0qJLQs2MAmt3Xs2mUikoHOYeRIyUvmuMbScXoNrILP4GUplV
-	ENo6LmCMXVWfpfCnbMNsLISjHXUZzWVgsgsbaPBfBtQBUSWw4LZ4+2y5SawoEQnEPU81cwtvGQh1W
-	3YTv9BopfSIlJW1cssSB3B5twEPLe9cB6vClpz9SP9+GkJiunw+Y33QT321/obF4RqI8W1cc2EDli
-	EhomDMGg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tzt+/qFjFz6L3XKWHxstUnU1JjjwQ6RBB8nAlJERicw=; b=EklxWv15m/Z2FrXnfRt4d7LWjB
+	5H87QTI//VGp+9NLQYcp2QG/rUs68+lmKBZjM4NiC/7EMdd6G+ud9E6cUfvnR9WdNMJR2z3v15iuB
+	CD9YI7QGAPY67xn06p7QJIrskvW7iYiNk1+nkIB/+zI4gnpft3eB0DW7FHUaJxMo4WdxxOMknZ/9x
+	qZPRPAXm458baCQESiSHPbX9heQA6QaNRfEO7URhcKQ9XuZoljFdcWVxp/qnh62bJOtwYn2cNMP2s
+	8m9YSDUW5x2rbxK7SbUwyCBOnt+eFxXGoeqjmYxYzzS/W25HUlQGMTAob8Cl+DCMrqwTvUog0KSVI
+	mb96WYnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tObRc-00000004oRu-2iTm;
-	Fri, 20 Dec 2024 11:45:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tObmv-00000004rCO-05NL;
+	Fri, 20 Dec 2024 12:07:25 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tObQH-00000004oDi-0HPH;
-	Fri, 20 Dec 2024 11:44:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BE8675C5E98;
-	Fri, 20 Dec 2024 11:43:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F39EC4CECD;
-	Fri, 20 Dec 2024 11:43:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734695039;
-	bh=1qaji/tPXJ3XFWsCN7ydyqQqoYJ3IFUXjpiRi1Tvqos=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=N3mLsHPsylqpb12A3xvUwgV8NZl0bbI9kcs45hj4BqnkU6osyxMMBlQFie65QfwsS
-	 mBW+X6SzrmWicuTrBDsGUhI5h2oeAJA+FxR+LrF/DHMw3INKYEmXhnJG6BlEgig64s
-	 8g0mkjguAbx1YiWJe5rC+4Yr/5gajiaO0B7PjkGwLfmjyA8p8JIGg1DLsFkogdQkW9
-	 gMA89iOlR32OtqKVjFjrk0wF2Fs+GiRoHxkKg/+Uq43LnrsYo6OR5iQUAe9U6/Tnyb
-	 chhOQRFYaEvBFOPONMcDGRL+gAMh65LnDRTzQgiB1rDr0wSBEyQhGYl5DGkrMv7Q8b
-	 wpz4Ct9dYYkBw==
-Date: Fri, 20 Dec 2024 05:43:57 -0600
+	id 1tObll-00000004r6o-1LqG
+	for linux-rockchip@lists.infradead.org;
+	Fri, 20 Dec 2024 12:06:14 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tObli-0008UH-Kf; Fri, 20 Dec 2024 13:06:10 +0100
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tOblg-004Mzd-0v;
+	Fri, 20 Dec 2024 13:06:09 +0100
+Received: from pengutronix.de (unknown [IPv6:2a01:4f8:1c1c:29e9:22:41ff:fe00:1400])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 2E122392EF0;
+	Fri, 20 Dec 2024 12:06:06 +0000 (UTC)
+Date: Fri, 20 Dec 2024 13:06:01 +0100
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, heiko@sntech.de, 
+	cl@rock-chips.com, kever.yang@rock-chips.com, linux-can@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] net: can: rockchip: add can for RK3576 Soc
+Message-ID: <20241219-sapphire-vicugna-of-opposition-be748f-mkl@pengutronix.de>
+References: <20241219011159.3357530-1-zhangqing@rock-chips.com>
+ <20241219011159.3357530-2-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, heiko@sntech.de, 
- linux-rockchip@lists.infradead.org, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, Simon Xue <xxm@rock-chips.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20241220101551.3505917-3-kever.yang@rock-chips.com>
-References: <20241220101551.3505917-1-kever.yang@rock-chips.com>
- <20241220101551.3505917-3-kever.yang@rock-chips.com>
-Message-Id: <173469503748.2890446.9450914997693920466.robh@kernel.org>
-Subject: Re: [PATCH v2 2/7] dt-bindings: PCI: dwc: rockchip: Add rk3576
- support
+In-Reply-To: <20241219011159.3357530-2-zhangqing@rock-chips.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_034401_197599_500E276C 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20241220_040613_355582_22286D13 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,63 +76,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2881393500559462926=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 20 Dec 2024 18:15:46 +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, but use msi interrupt instead of its,
-> so the msi-map is not required, and need to add a new 'msi' interrupt name.
-> 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
-> 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../devicetree/bindings/pci/rockchip-dw-pcie-common.yaml      | 1 +
->  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml   | 4 +---
->  2 files changed, 2 insertions(+), 3 deletions(-)
-> 
+--===============2881393500559462926==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="eudui3nm55akuurq"
+Content-Disposition: inline
 
-My bot found errors running 'make dt_binding_check' on your patch:
 
-yamllint warnings/errors:
+--eudui3nm55akuurq
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 1/2] net: can: rockchip: add can for RK3576 Soc
+MIME-Version: 1.0
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names:5: 'msi' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names:6: 'dma0' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names:7: 'dma1' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names:8: 'dma2' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: Unevaluated properties are not allowed ('power-domains' was unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
+On 19.12.2024 09:11:58, Elaine Zhang wrote:
+> Is new controller:
+> Support CAN and CANFD protocol.
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-doc reference errors (make refcheckdocs):
+Thanks for porting the rk3576 to the mainline driver. Looking at subtle
+differences between the IP cores I'm not sure if you want to add it to
+the existing driver or have a dedicated driver. But we can decide on
+this later. At least the mainline driver has a better structure than
+your original downstream driver.
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241220101551.3505917-3-kever.yang@rock-chips.com
+Why was the timestamp register removed from the registers? Previously
+the driver supported hardware timestamping. :(
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+Some general comments here, a more detailed review will follow.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Why have bits been removed from several registers and the remaining ones
+moved? That doesn't make it easier for driver developers to cover new IP
+cores. :(
 
-pip3 install dtschema --upgrade
+Please use FIELD_GET(), FIELD_PREP() macros instead of open coding shift
+and mask operations. See rest of the driver.
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Have you actually tested this code in both RX and TX direction? I don't
+see rkcanfd_handle_tx_int() being called?
 
+What's the purpose of "rockchip,rx-max-data"?
+
+Why do you add "rx_fifo_depth" to "struct rkcanfd_priv"? It's not used
+outside of rkcanfd_probe().
+
+Can you configure the IP core for CAN-2.0 only mode, so that it only
+receives CAN-2.0 frames only?
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--eudui3nm55akuurq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmdlXZAACgkQKDiiPnot
+vG83mQf/f6DaBGVIT5WusxNppsrY5LvjB2UCWh8j3u0AGBRxOL5ktwa/cZna9O4L
+BH0KOBH+K6mUQ6ssME6tH0EYz17DUbaaFnhPjVTRDGAQu0qktLXoFf0cRjiTo4vV
+xLLVVPn9++OTYFUQmN+SxWih0MHBK5+HhIUd+HZTw5GGWdt5V+Wh5kkS048slc9E
+mP2tspwcyzJaOAXz9zsdxOc540tcT4cfgI8GgzSIFiVtZWoliAEvgHFzNcp6ZZts
+GWRSK2Lf/sf6+mmbHNpa0GhG7M6zqu+nC6oVgVuWY23RO6laQvUTSktw0Ek9nq2f
+EtgEcqjYtJiSK62wZQ8ijhtgtX6D+Q==
+=AKwc
+-----END PGP SIGNATURE-----
+
+--eudui3nm55akuurq--
+
+
+--===============2881393500559462926==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2881393500559462926==--
+
