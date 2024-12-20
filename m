@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7189CE7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 15:30:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35774E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 16:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wpDsiy9eLamiOZQYzpc0LLgsQLTSwx1l+YueuUZm3gU=; b=hwEDginlbDR4+XCg8UXbyt8Nmt
-	r2cU7Ng6m35WnWWC/8dIoUPqk4B0ZdGN5UUtf6IjHTUeKrnud45BfCt6dejARquBsol0phJqYFHra
-	I4ND+i3CsnLPuZON2n4lb0N85TxxpyleH4J8AZ3L51Gr5RKNgNfUSVCpMVNwgcB3w6WiOvmZ+17UA
-	IwaV96DCtmGBLSND2dSl9uh85QR1iLbWC+zJuukpVzG/8uzCkKN29ZKr/9eYR2CSZcrhHs1yfkj//
-	lDeYN23muqnx5DDdW6G/HVjTXkPnt/a/RS+OTrBS427+RJYaNpgGGZQEzWuq1kdXVYWaNUh1/LXp6
-	ELN6apTQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r2mxyacinbyIELqcJmNcWBSdRepQNJREpTSgT2oA/N8=; b=M1YEm7wB7Tvsfe
+	HdZ+nmfQ5ZC8sI2MlILxiHCzIjziFb+X7AZR/KmknXm8vJbNeT2s8AfHIdSK6LHjyl/ma8zWV7Fd1
+	Z+dF48cdal9ZeNpQOPmTtWtoEYz0AZm4wUTCu6XWkiQvksGYnqyj2gaUo4jZK9fiZf+lUYWvIPLVU
+	k8R/oR1Odij7nXrNhhvISxtnM5y41tPrb23HwGUCqNv/A7NaHWVVJaLMlKDeUw5I8Rg3EeLGhpiyd
+	5RJoO16Ak1si/OanV8W31tn88gvZI0Ph23NZ9loCjuTfFaJKjO4a6raYzYW85ZyT0tp3sotHF10K8
+	WiaY/5B8cNPmELl1sj1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOexf-00000005K8x-1OzE;
-	Fri, 20 Dec 2024 15:30:43 +0000
-Received: from out-176.mta0.migadu.com ([2001:41d0:1004:224b::b0])
+	id 1tOfdd-00000005R2c-2hKp;
+	Fri, 20 Dec 2024 16:14:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOexc-00000005K84-1YNL
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 15:30:42 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1734708635;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YRPmWTEiScHh3brPPlHvzwFa2XSYuJikoYnOc7EBH3o=;
-	b=Fm9MrBtk+TxQUsaOMTfmUeu4ZuBTlJMLzg5v30zWaJCHM6bR2NzuSBZI8USYR9l7C1POz4
-	n8h2pJTZ5IGF/ZxuxM6FlkKvxHJg10zS3P0vRh/1c2alrGol5Fhc24n5vJCcXeGf5LIvzF
-	FFjh+I0gKB1JaENdgEj3yr4f/ZCnqCDzS+jjD4UqUJjJ23ZZOEcX1LNqDBMgTeRE7yvpLs
-	xp//zfX72Ct3HQbG8wKYIAek7KQy97L8I5W2W2ABdrlnRiwziTEHev5znZceiu6SSm8cEu
-	f/WAw8E4jxhyK5QQg8k27aQmYxoPRntrwTd9ZWkUhb7wSH3UJX193ZExlftFBQ==
-Date: Fri, 20 Dec 2024 16:30:24 +0100
-Message-Id: <D6GMVWF3ME00.39Z2MQY7ME97D@cknow.org>
-Cc: <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 35/38] dt-bindings: arm: rockchip: Add rk3562 evb2 board
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Diederik de Haas" <didi.debian@cknow.org>, "Kever Yang"
- <kever.yang@rock-chips.com>, <heiko@sntech.de>
-References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
- <20241220110558.3511994-1-kever.yang@rock-chips.com>
- <20241220110558.3511994-26-kever.yang@rock-chips.com>
- <D6GMI4JWTEFM.35B3HZS6Y9WWE@cknow.org>
-In-Reply-To: <D6GMI4JWTEFM.35B3HZS6Y9WWE@cknow.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1tOfcU-00000005QuB-21Xb;
+	Fri, 20 Dec 2024 16:12:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=AbDqHIPXfrCW7CMVqiAcvylC4uHIOElu8pVYGTvZe30=; b=F/xNgjcG0UaXCjrlCRJzZpBC2w
+	mMiyM4qZaoFo9+3O0OXQOQn5JHkMBYYE7UDSXePRhh/rKCTHOwswCk9kMK7/9dQAxTefIS75WBBgP
+	qIWigCvKtUT3JMoyFwZq/BOKl8/K/ozKLlLUjL/G3nUtHgUNcADEz5LQZTlWlwUvtduREzjnL1bZx
+	U82kAZ6nT1HTxFPAGknkHUiLH0C6cfAH1WRtfgvHwvH0j2BC9Qopb8/GqVIvpXV8NYef+tE1ESHdR
+	Z354Q2FKzNY5QzjNIPg9BvXQb3uTXTrG4t29+vj9/c8gXQp6ROw6wHJpJ6jbSwI2XY11yR/eVvfEJ
+	WixGrGKw==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tOfcR-00000005i1N-2RKl;
+	Fri, 20 Dec 2024 16:12:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5155F5C5CDD;
+	Fri, 20 Dec 2024 16:12:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D146FC4CECD;
+	Fri, 20 Dec 2024 16:12:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734711168;
+	bh=lT+NvKXEt+wDw547wMVflj0Ny9W3OCFAz0S4kRCQXyc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ob0iH/5cVvLnjtYxJS4SzD2U2vUzqvczNK6PKb13onAJa1JdH2JcBa/LUx469WpFV
+	 51MkXpZbQLTKD2tXqJUL6GpN9flX2/kHmqo84lzpxZ1HR3rTAvWCy9jLDfSlg0F1CC
+	 F+m1C+/9J6W5eoqZ/ILzoUxCsXolwifQfCcRcG/WJFyxQzBE4a/R/imyrQb6TSOIby
+	 mLerfWhHLLnG9lL5nd9G884coJy3ORjfeVZYgjR2mEb91uFjTXZDoasXy/B9vCsZEb
+	 vxVdLGM3UTr08eUKoNW7QrXuIwg/Ib/i563jV3g2G10T9QTm7I60ihfU7zHumgN6z4
+	 Ds0nAp7zXUkjA==
+Received: by wens.tw (Postfix, from userid 1000)
+	id DBAD15FB8F; Sat, 21 Dec 2024 00:12:44 +0800 (CST)
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@csie.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+Subject: [PATCH v2] arm64: dts: rockchip: orangepi-5-plus: Enable USB 3.0 ports
+Date: Sat, 21 Dec 2024 00:12:40 +0800
+Message-Id: <20241220161240.109253-1-wens@kernel.org>
+X-Mailer: git-send-email 2.39.5
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_073040_848397_BB6F2368 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20241220_161251_967229_9991D934 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,100 +84,222 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2389171626375804789=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2389171626375804789==
-Content-Type: multipart/signed;
- boundary=45082ac5a8e1ad64d2c5b74bf9dea07638ca4a64d6a8781858967a703737;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+From: Chen-Yu Tsai <wens@csie.org>
 
---45082ac5a8e1ad64d2c5b74bf9dea07638ca4a64d6a8781858967a703737
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+The Orange Pi 5 Plus has its first USB 3.0 interface on the SoC wired
+directly to the USB type C port next to the MASKROM button, and the
+second interface wired to a USB 3.0 hub which in turn is connected to
+the USB 3.0 host ports on the board, as well as the USB 2.0 connection
+on the M.2 E-key slot.
 
-Hi,
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 
-On Fri Dec 20, 2024 at 4:12 PM CET, Diederik de Haas wrote:
-> The To/Cc list seems a bit short?
+---
+Changes since v1:
+- Dropped source current to 1.4A
+- Dropped sink current to 10mA, since it doesn't actually sink current
+- Added try-power-role
+- Added newline before endpoint device nodes in USB connector node
+---
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 133 ++++++++++++++++++
+ 1 file changed, 133 insertions(+)
 
-I now noticed that comment applies to quite a bit of the patches.
-For dt-bindings patches I would at least include these:
-- Rob Herring <robh@kernel.org>
-- Krzysztof Kozlowski <krzk+dt@kernel.org>
-- Conor Dooley <conor+dt@kernel.org>
-- devicetree@vger.kernel.org
-- linux-arm-kernel@lists.infradead.org
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index 9f5a38b290bf..000d353645a9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -218,6 +218,18 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+ 		regulator-max-microvolt = <5000000>;
+ 	};
+ 
++	vbus5v0_typec: vbus-typec-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&typec5v_pwren>;
++		regulator-name = "vbus5v0_typec";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	vcc5v0_usb20: regulator-vcc5v0-usb20 {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -344,6 +356,57 @@ &i2c6 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+ 
++	usbc0: usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usbc0_int>;
++		vbus-supply = <&vbus5v0_typec>;
++		status = "okay";
++
++		usb_con: connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			data-role = "dual";
++			power-role = "dual";
++			source-pdos = <PDO_FIXED(5000, 1400, PDO_FIXED_USB_COMM)>;
++			sink-pdos = <PDO_FIXED(5000, 10, PDO_FIXED_USB_COMM)>;
++			op-sink-microwatt = <10>;
++			try-power-role = "source";
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc0_hs: endpoint {
++						remote-endpoint = <&usb_host0_xhci_drd_sw>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					usbc0_ss: endpoint {
++						remote-endpoint = <&usbdp_phy0_typec_ss>;
++					};
++				};
++
++				port@2 {
++					reg = <2>;
++
++					usbc0_sbu: endpoint {
++						remote-endpoint = <&usbdp_phy0_typec_sbu>;
++					};
++				};
++			};
++		};
++	};
++
+ 	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+@@ -485,6 +548,16 @@ vcc5v0_usb20_en: vcc5v0-usb20-en {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	usb-typec {
++		usbc0_int: usbc0-int {
++			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		typec5v_pwren: typec5v-pwren {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &pwm2 {
+@@ -876,6 +949,23 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
++&u2phy0 {
++	status = "okay";
++};
++
++&u2phy0_otg {
++	status = "okay";
++};
++
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	phy-supply = <&vcc5v0_sys>;
++	status = "okay";
++};
++
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -904,6 +994,33 @@ &uart9 {
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
++	mode-switch;
++	orientation-switch;
++	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
++	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usbdp_phy0_typec_ss: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_ss>;
++		};
++
++		usbdp_phy0_typec_sbu: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&usbc0_sbu>;
++		};
++	};
++};
++
++&usbdp_phy1 {
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -912,6 +1029,17 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
++&usb_host0_xhci {
++	usb-role-switch;
++	status = "okay";
++
++	port {
++		usb_host0_xhci_drd_sw: endpoint {
++			remote-endpoint = <&usbc0_hs>;
++		};
++	};
++};
++
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
+@@ -920,6 +1048,11 @@ &usb_host1_ohci {
+ 	status = "okay";
+ };
+ 
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
++
+ &vop_mmu {
+ 	status = "okay";
+ };
+-- 
+2.39.5
 
-Next to the ones you did include.
-``scripts/get_maintainers.pl <file>`` is a great help for this.
-
-Alternatively and IIUC, b4 should take care of that for you.
-
-Cheers,
-  Diederik
-
-> On Fri Dec 20, 2024 at 12:05 PM CET, Kever Yang wrote:
-> > Add device tree documentation for rk3562-evb2-v10.
-> >
-> > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> > ---
-> >
-> >  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docu=
-mentation/devicetree/bindings/arm/rockchip.yaml
-> > index b2681a45867b..e300a817226a 100644
-> > --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> > @@ -1011,6 +1011,11 @@ properties:
-> >            - const: rockchip,rk3566-box-demo
-> >            - const: rockchip,rk3566
-> > =20
-> > +      - description: Rockchip RK3562 Evaluation board 2
-> > +        items:
-> > +          - const: rockchip,rk3562-evb2-v10
-> > +          - const: rockchip,rk3562
->
-> I would expect RK3562 to come *before* RK3566.
-> In your other/smaller patch set you corrected the sorting of Rockchip
-> items; lets continue that 'tradition' ;-)
->
-> Cheers,
->   Diederik
->
-> > +
-> >        - description: Rockchip RK3568 Evaluation board
-> >          items:
-> >            - const: rockchip,rk3568-evb1-v10
-
-
---45082ac5a8e1ad64d2c5b74bf9dea07638ca4a64d6a8781858967a703737
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ2WNkgAKCRDXblvOeH7b
-bvcTAP9z2p5798cpq87ZsNQMoVGtfu1jtoMDUcqUm4nW+chwUwD+Ppwo5JrOtpyf
-xu00WPiPH01+cTswC9hlvVkK7U6N9gg=
-=Hr2E
------END PGP SIGNATURE-----
-
---45082ac5a8e1ad64d2c5b74bf9dea07638ca4a64d6a8781858967a703737--
-
-
---===============2389171626375804789==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2389171626375804789==--
-
