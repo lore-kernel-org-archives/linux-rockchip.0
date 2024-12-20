@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE896E77184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 00:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1190E77184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 00:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=61LjQY6TbFXlxT49663+LC/IOFjHWueyY9RqeP+4MIA=; b=1+RwJXINrx6wqi
-	trIwSkD/6TRkllYjwOb7dBdlu9/jac7/k+z59bN8JiDhUK+5ipXkBG4O5bTe0CxgzUXFRqG1JfhsJ
-	xtEYbKbDTxmwqJ+TcTN5MSUiyCJI1rv0U/bZjB0tV0TMsLdswSJRG8p7NcJGW5Sq7MwkHZiTvbK1b
-	BAIpIqSlIP9AaiFO9XwwgfKrm0zZMq1XWcSlBkl9CK8+Bp2Awqgt0Tlv9SW66YDBUAYiVTzkd243R
-	F0POayUj6pjQYpoPygKq+8bRNsGQ3t3anVMgo7Q7OC0MsvZdCBZ/n7DJTHxiQ5PZCmrJE8vML02EW
-	TXuhyibX6QzRxi8VE57A==;
+	List-Owner; bh=mZUiO3ySQISbjcDmsktMOC0rC1jshjto8BORdVjFHQc=; b=SlXZHIDjAhGkcy
+	tZORJng+7F4bL6B4qR0qMlElGo2stBXiJQIff9DhgC3MzmG6kjEJ1FSF+IUHLPNgnj7V0ckWfb2nn
+	GgVRtF1+XnZHgJJw2xTyLr5Whsy8rPW6FQfGKImIPTAyi4hTujwJRiOoHkNI8fpx7sg9JFxM6KBVh
+	Cusaww9iZL+NVHSC6MrA+JQ3ug3jmgXeh00rVlm7MGVs3vAgrxfItwglAwnE/t8/Ow6KVrq2r+EGU
+	gEOX/9SxniS6LsP072gcm1AZuZBo8OH643anRz7UlLusviEt14RYNJ9gKwHO/7Nw9P1PVT0T/wH8h
+	TSLgynXDE3YrWN4xfLoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOQhE-00000003RG4-1DeB;
-	Fri, 20 Dec 2024 00:16:48 +0000
+	id 1tOQiM-00000003RRa-2g3V;
+	Fri, 20 Dec 2024 00:17:58 +0000
 Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOQhC-00000003REu-1kaz
+	id 1tOQiJ-00000003RPH-2nfp
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 00:16:47 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-300392cc4caso15089211fa.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 16:16:46 -0800 (PST)
+	Fri, 20 Dec 2024 00:17:56 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-3022484d4e4so15418211fa.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 16:17:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734653804; x=1735258604; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1734653874; x=1735258674; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OvJSw2Y9AN4Bj+vC236l/3ETv8TjOwlc4v68lk/FkAI=;
-        b=LfFZsKOc+qxwQ/2gEJwky5LMgFViqYyBv5IEnHjbN6SNBxEnSwSsB2WFBzeVckRACG
-         gMibdKKiauEQmByp0Z1qyOu5Jzu/2b8D3DjX0ucXBqjLXqzL4+ZF4drrv27gsp55aH9S
-         24iuVJ/RZdn+5hmuplLK3O1zK+G2A4P+vDjcW2nBRI3fwZmjKKgZrFX22X1ccDYQJouu
-         fuMy5kRhnw/evAreW7jkTlV95MLg3+S3gRU1i/hvzTYmHiwgFP8ZqO3TW8ltE/M4TAIj
-         kydAdBJyCRtmnksyTVJljRo5J7YdHX9vtxXlHd6U/KLu3v/KCVOKwQc2ypxN9dku4uMy
-         CiLQ==
+        bh=88ypJKEjfY/PQxYw2dDvihxL+GlYw4/eG83FW6BzWoY=;
+        b=m7pYb+4AgH95gguwnzkz6byWUlEhVz7J8e0VsCGuoel8sG38IUzvjuTgBKdiUxsh4K
+         Gvqd5VDb97ta55VaXmH+qL0eM99epNu424QCHBcrJLpdWAM7yr3h8Wr9P8s/7MMQGhzT
+         hhFp91T0lOxEHKJjA6njlfBFh9jKFLUAFESv/Dpyi0SyJTP/v0/bZNAWO3sxIG0Is+OG
+         aXxjuDLOJqF7hzRRzXU3oKkNEG2TwhCJ8J+csY00dEuVYAu9Md4Ic01YsqgcsPMQcNFl
+         goLPR275+3CIZFpR/6k14gNU3jPY4LFdqmOUusrMRW1Njf3rhc3HhZWzdfhgrO8veUPt
+         VdXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734653804; x=1735258604;
+        d=1e100.net; s=20230601; t=1734653874; x=1735258674;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OvJSw2Y9AN4Bj+vC236l/3ETv8TjOwlc4v68lk/FkAI=;
-        b=CzKChcsaxtBg0ZJrX87UAM/hQMGiGSN4GCY05oqHhQ7v/8z/vo6TWcRxO/iWbGBc3o
-         SAOoT6B+fVk3Ufqi2UPMSJyx0JSikH0QOdHnIn8isyeYeHhRlykRw/qaYyPY8DRLhE9a
-         12o9a2FKGnUwVxjhcETLubVFQpHn3BM6cCMDSkCIePJsoWj6I32/cldY0RFDpLFI8Jq3
-         1060V89HbKuw+CQw8d6j4OobJrscAst5+i9BYAMm+oA+pFAN9CKWdMtyQ5kL5Qm+tMOS
-         UkypHzQYjIsr+o+gozI3dC+YocTHHn7FXCDr0MRsHB7ClO+0/dREtWI43O/+GVTh65R3
-         iEPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWTe1a99xyLeSynVtL4LNZc4sqTuCbQHDC2Eesi1V4B+j1JbsF3UPw4Ib6nT5gTI8j5J1S+XuVYCfY50m1gHw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx0Or6GcZZNJPEtHzdTguGkvBzATmaVcNqghbe86bfINqUt3CRD
-	3S8CczkYxsrj/fzGa34rQqepO/v7eIpEt08KrZkEwrFJk3qRdhPzShwxOG/m6yQ=
-X-Gm-Gg: ASbGncuKgpdttv2TmxDBHAYcd0XkCihjuGT2k719yrmj5pMuAJC0vn0ijiDny4hneOh
-	iYdC83yNkIdLK9YHRnkcYQ2KJsOlo1Fg39th5cqJ0iHbDJOP7/6zV90VsGtG/bviZeSHXx4zhOr
-	wNo+P3cem17V9s3hYYz7W7YzmI+tfJ+DpUpb4tyfj0eCrfcU7K5SvA46W7dkFS/xmBlUZwzwHbH
-	v9/ZpLlREmm/IUpBnMdt8JuljGwQVETfPu+QHJir9efNvmcJRckkq5UDY+IG71O5kQxdraFUyo8
-	TuPdXOtXCI8G1//FlLDmfshqi6D+2HcVFRJK
-X-Google-Smtp-Source: AGHT+IFzvivVhPXKl3I4o3iSV3ve0+PcDzlRsGs5VisyomFwo0ktK1fC6BvzsZrAH0qVPPj4EFPZsg==
-X-Received: by 2002:a05:651c:543:b0:302:17e7:e17e with SMTP id 38308e7fff4ca-3046831fbc7mr2884171fa.0.1734653804472;
-        Thu, 19 Dec 2024 16:16:44 -0800 (PST)
+        bh=88ypJKEjfY/PQxYw2dDvihxL+GlYw4/eG83FW6BzWoY=;
+        b=J3NVJpG0matFJxXDsNXDvMSV+MGvp+mGiM453XM3Q3RpUoei0KFqGPcsfPWs5mA0jr
+         E12ZJMmmffDCUa0O/HWFFypcI98Bb898mTehgUNkU+U/Bx54NK8zlymTehsqi5PoiGQH
+         nMnygSa6BtPDcegZ6oCDy7q54sSZqvCaKoU02hrff+yaIz4WYsshuvNfmqj9zpc4tQOQ
+         4GHHM0d7pB9s+xuCXh65OREBqL4dBiii8cx3y8nRpj+9RX188PuWjI9wJQ7VAkn9YrkW
+         Hm3ixt0ELPn6EJ2C50iDNs9IpLLYOOW0nYD8D4cv2uydieZtgNgrO7tKJntW/5nuj7N6
+         uxzQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX8VQNsjhmdX1RggTG2XspTM/0oD/4bOb9IY8MErHtWNA97kDaVqtWzc9mNOqw9O/FpbW8n3pUI3NkJFZvl1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzFk1Jayhw64FrYGmj5eCwfXvAPSJSBVpGf8vCW9m9xLSXHISYG
+	au7nsNXmvK5j4Uc465xvyEh8/ScNjLfVxGC8BimCCHfSQkyXfUHQ3r525WWMnaQ=
+X-Gm-Gg: ASbGnctVOfjzxI1Ff4KKn/KC3qJw0paeW15PSQ9UhLyI4JEr2N2TP7VvCtV5ZpIY2Jf
+	h6NFboxAhn1ZPfbTHrOsd5Gyfm0DTCt79T2B+LtK6flnNSWCS54yc1FK4oEdZ8/HtPRMPUv/xin
+	SF8bA4o6SErU4A96L3/xcyL0tjFbUQxUGYznQQdhQtJGdWKA/uVLIQxOTZjz1iRWj+B7PrfMP3W
+	d4ZAu0BwuHhIxSqr2xUME25UxRlfr4Kd3900vePhvDODnj7iwnxgXPm/rhS8b6tvJBreurXn+Er
+	OjvXykfe5SyoqAhwgiBiRq2fOXw2B+x5UB4F
+X-Google-Smtp-Source: AGHT+IFB2i5vKnWXGFFd2MWZqu6ISfQEn6gsPEZ+iz0AquMdjU/HdGNzEaZYfYTM6DlCEi0nsU27SA==
+X-Received: by 2002:a05:651c:4ca:b0:302:4130:e19c with SMTP id 38308e7fff4ca-30468571039mr2038491fa.19.1734653874050;
+        Thu, 19 Dec 2024 16:17:54 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045b06a200sm3596771fa.79.2024.12.19.16.16.42
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045ad6cb8asm3815281fa.18.2024.12.19.16.17.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 16:16:43 -0800 (PST)
-Date: Fri, 20 Dec 2024 02:16:41 +0200
+        Thu, 19 Dec 2024 16:17:52 -0800 (PST)
+Date: Fri, 20 Dec 2024 02:17:50 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v3 08/15] drm/rockchip: analogix_dp: Add support to get
+Subject: Re: [PATCH v3 09/15] drm/bridge: analogix_dp: Add support to get
  panel from the DP AUX bus
-Message-ID: <aiggslcdbdmnc2amlvmzycyxmu3f5zp6kt4ifgzq5gkuugmnem@oqnwf4o7hbss>
+Message-ID: <irh3rei7to7gevrr5dqwa3qr3nl2lunenyvvvlqnpiyplbk2vj@ooedydnvl4df>
 References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
- <20241219080604.1423600-9-damon.ding@rock-chips.com>
+ <20241219080604.1423600-10-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241219080604.1423600-9-damon.ding@rock-chips.com>
+In-Reply-To: <20241219080604.1423600-10-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_161646_467139_4F0EEE5D 
-X-CRM114-Status: GOOD (  27.43  )
+X-CRM114-CacheID: sfid-20241219_161755_712608_DB887B0C 
+X-CRM114-Status: GOOD (  23.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,72 +98,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 19, 2024 at 04:05:57PM +0800, Damon Ding wrote:
-> The rockchip_dp_of_panel_on_aux_bus() helps to check whether the DT
-> configurations related to the DP AUX bus are correct or not.
-> 
-> If failed to get the panel from the platform bus, it is good to try
-> the DP AUX bus. Then, the probing process will continue until it enters
-> the analogix_dp_bind(), where devm_of_dp_aux_populate_bus() is called
-> after &analogix_dp_device.aux has been initialized.
-
-No. devm_of_dp_aux_populate_bus() should be called before bind(). And
-bind should only be called from the done_probing() callback. The reason
-is very simple: the panel driver might be built as a module and might be
-not available when the analogix driver is being probed.
-
-Also, please invert the logic of the commit message (and the driver).
-The platform bus should be a fallback if there is no AUX bus panel, not
-other way around.
-
+On Thu, Dec 19, 2024 at 04:05:58PM +0800, Damon Ding wrote:
+> If the panel can not be found in the beginning of rockchip_dp_probe()
+> using the platform bus, we can still try to find it in analogix_dp_bind()
+> through the DP AUX bus after the &analogix_dp_device.aux has been
+> initialized.
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 > ---
->  .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 24 +++++++++++++++++--
->  1 file changed, 22 insertions(+), 2 deletions(-)
+>  .../drm/bridge/analogix/analogix_dp_core.c    | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index ba5263f85ee2..60c902abf40b 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -317,6 +317,24 @@ static const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs =
->  	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
->  };
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 9429c50cc1bc..eae02819e3bb 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -19,12 +19,14 @@
+>  #include <linux/platform_device.h>
 >  
-> +static bool rockchip_dp_of_panel_on_aux_bus(const struct device_node *np)
-> +{
-> +	struct device_node *bus_node, *panel_node;
-> +
-> +	bus_node = of_get_child_by_name(np, "aux-bus");
-> +	if (!bus_node)
-> +		return false;
-> +
-> +	panel_node = of_get_child_by_name(bus_node, "panel");
-> +	of_node_put(bus_node);
-> +	if (!panel_node)
-> +		return false;
-> +
-> +	of_node_put(panel_node);
-> +
-> +	return true;
-> +}
-> +
->  static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
->  {
->  	struct device *dev = dp->dev;
-> @@ -435,8 +453,10 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->  		return -ENODEV;
+>  #include <drm/bridge/analogix_dp.h>
+> +#include <drm/display/drm_dp_aux_bus.h>
+>  #include <drm/drm_atomic.h>
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_device.h>
+>  #include <drm/drm_edid.h>
+> +#include <drm/drm_of.h>
+>  #include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+> @@ -1733,6 +1735,23 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>  		goto err_disable_pm_runtime;
+>  	}
 >  
->  	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
-> -	if (ret < 0)
-> -		return ret;
-> +	if (ret < 0) {
-> +		if (!rockchip_dp_of_panel_on_aux_bus(dev->of_node))
-> +			return ret;
+> +	if (!dp->plat_data->panel) {
+> +		/*
+> +		 * If the edp-panel module has not yet been initialized, the
+> +		 * devm_of_dp_aux_populate_bus() function will return 0 and
+> +		 * the done_probing() callback will not be called either.
+> +		 * Consequently, the panel will never be found.
+> +		 *
+> +		 * This is the reason why we do not use the done_probing()
+> +		 * callback and do not check the reture value here.
+
+NAK. It is there for exactly this reason, to account for the panel
+driver being not present yet. Please make a use of the done_probing()
+callback.
+
+> +		 */
+> +		devm_of_dp_aux_populate_bus(&dp->aux, NULL);
+> +		ret = drm_of_find_panel_or_bridge(dp->dev->of_node, 1, 0,
+> +						  &dp->plat_data->panel, NULL);
+> +		if (ret)
+> +			goto err_unregister_aux;
 > +	}
->  
->  	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
->  	if (!dp)
+> +
+>  	ret = analogix_dp_create_bridge(drm_dev, dp);
+>  	if (ret) {
+>  		DRM_ERROR("failed to create bridge (%d)\n", ret);
 > -- 
 > 2.34.1
 > 
