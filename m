@@ -4,117 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351D8CCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 717BDCCD1AA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X7KGtxlGAOfjQSzVoGbMPXo7JfYeMyrtABpdYPbTcRs=; b=15c7ck1d5ERyVO
-	o5/L7/GLexUKH66nYwMV5WRr5e6iEvVWkTEArYgaMbzBmcRvC9PGC0XteYcoYuJYQMfqkCJCYdfqw
-	HGmIovzaFXeM6q+6P6IHxfFAUFy7zpUZmpxNnF9wxGyT3O4Qf/rxU69ES+WJpvn2ioWLo+vxk2o90
-	SFKWrCMkNALxEedRTFAWucoaNqhtQvohoRQPh1DoPLSuK5WonpRKhRCSSvdzlraNu7hI/XMq+Cxyy
-	RG2BWgxp+db4RV4GRVTHvZMZVix0NqMdZFhyfhGCyAigBS/JRaeLIVVBfSOsN8n7RzXxMppvn8dJ9
-	XnXIbBJ/N7mUhjQiabWQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sEfn2g2U9199aQehiBDFueDQ3D05O7Cw/qAObDD0mBQ=; b=1JAWWE6jvtw8MX
+	7rQLiZPNyrtOXIyo1x3Hqz4o0R+1/pDUuldiPfbzHpOHfKFZI0QKbRvKwJMA/84yldbS6i6jTBzzd
+	4OhOMAiHEDawZC93gaZ426b2TBkcd9lmStKBquwr0MuE5x6wTHom9LLnfeoZ3jfwnCbs+Mht8AVdU
+	8XM1jbVf1wm02weNKlBQ3w2OVSZZyg8otRA6O3udFy/KEgAqFixBixstadDrSLZwisvdExJsyfCdE
+	XonJ1TpkgKe+Vx0bot/3ErupT0AIb2IRnVgqzkAzU9KNxjpvJxHBOAGVygnLRAtcgGVGn7r7BIJTS
+	q2g9oZt7Cok142vgRs5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVp-0000000D9H9-44kI;
-	Mon, 20 Oct 2025 11:57:18 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vAoVp-0000000D9GO-2pad;
+	Mon, 20 Oct 2025 11:57:17 +0000
+Received: from mail-m49226.qiye.163.com ([45.254.49.226])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUZtd-0000000HVVe-0BFR;
-	Sun, 05 Jan 2025 23:19:02 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8DC5E7E9;
-	Mon,  6 Jan 2025 00:18:04 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1736119085;
-	bh=eN3aRIQ/gGCSrh9ouIKHrFhOanrFncaqzRShN6d8pSM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UeDysJQP/8Oa1/DV3kQKsywDTYtozyWwBNwdqtX1NaCn147rROcOhgDgaBzpl9UCN
-	 dkXrg5A0RWNQK6dEu/jHI3f++kMLiO8kBcwCiPgwkrE+/NNE7iR+kBs+koVfsvkkE+
-	 0++Ipy4b9rU2Z58OdadDTjM+gkVR9C1lYmx7Vl1g=
-Date: Mon, 6 Jan 2025 01:18:53 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>,
-	Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Xinhui Pan <Xinhui.Pan@amd.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Peter Senna Tschudin <peter.senna@gmail.com>,
-	Ian Ray <ian.ray@ge.com>,
-	Martyn Welch <martyn.welch@collabora.co.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Gurchetan Singh <gurchetansingh@chromium.org>,
-	Chia-I Wu <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	nouveau@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Jani Nikula <jani.nikula@intel.com>
-Subject: Re: [PATCH v2 0/5] drm/connector: make mode_valid() callback accept
- const mode pointer
-Message-ID: <20250105231853.GA21164@pendragon.ideasonboard.com>
-References: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
- <76ho36jqcraehnsgpjralpye52w7ryshhgizekn4qqfsikiojd@3yyorbvjkc7b>
+	id 1tOaOx-00000004bzM-0ESi;
+	Fri, 20 Dec 2024 10:38:36 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 656820ed;
+	Fri, 20 Dec 2024 18:38:26 +0800 (GMT+08:00)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH 00/38] rockchip: Add rk3562 support
+Date: Fri, 20 Dec 2024 18:37:46 +0800
+Message-Id: <20241220103825.3509421-1-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <76ho36jqcraehnsgpjralpye52w7ryshhgizekn4qqfsikiojd@3yyorbvjkc7b>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh9LT1ZJGktPSElKGk8fQxhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEtNQk
+	tVSktLVUpCWQY+
+X-HM-Tid: 0a93e3a5af4003afkunm656820ed
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nwg6Kxw6GTIRKggeThEUMR4h
+	P0gaCyxVSlVKTEhPTUJKSkpKTElJVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFOTUpJNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=LXQtSCOj5PQ5rmMQS8JUHg+aVmzux+tnR5NnlpILS50US/QWv5VBCTHDsqEiVs5WhSa9UqWxWgKBEnSg0vucKhE8FyZdsUwbc5ZsdiUz76LZqHiim02ORqBuKb413jRYfReSUFy7jfbzAaPEA5wGkuukfoQqA957T+ZIIQC0lqE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=RUJ3VBWN4hJZF+kjNTXL1lSb1odrwauQvfHGVuJDe90=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250105_151901_280306_61BD0282 
-X-CRM114-Status: GOOD (  25.29  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:19 -0700
+X-CRM114-CacheID: sfid-20241220_023835_630406_3984792C 
+X-CRM114-Status: GOOD (  15.74  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:05 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,132 +64,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Ulf Hansson <ulf.hansson@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic <dsimic@manjaro.org>, linux-phy@lists.infradead.org, Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, linux-clk@vger.kernel.org, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, Lars-Peter Clausen <lars@metafoo.de>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org, Jiri Slaby <jirislaby@kernel.org>, Lee Jones <lee@kernel.org>, Andy Yan <andyshrk@163.com>, Tim Lunn <tim@feathertop.org>, linux-stm32@st-md-mailman.stormreply.com, Maxime Coquelin <mcoquelin.stm32@gmail.com>, linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>, Jose Abreu <joabreu@synopsys.com>, linux-serial@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh@kernel.org>, Guenter Roeck <linux@roeck-us.net>, Kishon Vijay Abraham I <kishon@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, linux-pm@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-gpio@vger.kernel.org, Mark Brown <broonie@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Stephen Boyd <sboyd@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, linux-spi@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, FUKAUMI Naoki <naoki@radxa.com>, Jonathan Cameron <jic23@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Wu <david.wu@rock-chips.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Diederik de Haas <didi.debian@cknow.org>, "David S. Miller" <davem@davemloft.net>, Lukasz Luba <lukasz.luba@arm.com>, linux-i2c@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 06, 2025 at 12:47:07AM +0200, Dmitry Baryshkov wrote:
-> On Sat, Dec 14, 2024 at 03:37:04PM +0200, Dmitry Baryshkov wrote:
-> > While working on the generic mode_valid() implementation for the HDMI
-> > Connector framework I noticed that unlike other DRM objects
-> > drm_connector accepts non-const pointer to struct drm_display_mode,
-> > while obviously mode_valid() isn't expected to modify the argument.
-> > 
-> > Mass-change the DRM framework code to pass const argument to that
-> > callback.
-> > 
-> > The series has been compile-tested with defconfig for x86-64, arm and
-> > arm64.
-> > 
-> > Note: yes, I understand that this change might be hard to review and
-> > merge. The only viable option that I foresee is to add new callback,
-> > having the const argument and migrate drivers into using it one by one.
-> 
-> Colleagues, I'd like to graciously ping regarding this series. Should it
-> be merged as is (possibly requiring more R-B's)? Or should I rework it
-> adding something like .mode_valid_new() callback which takes const
-> argument?
 
-I personally like the end result. The diffstat isn't very big, I don't
-think it's that hard to review.
+This patch set adds rk3562 SoC and its evb support.
 
-> > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > ---
-> > Changes in v2:
-> > - Rebased on top of linux-next
-> > - Replaced 'accept const argument' with 'take a const arugment'
-> >   (Laurent)
-> > - Link to v1: https://lore.kernel.org/r/20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org
-> > 
-> > ---
-> > Dmitry Baryshkov (5):
-> >       drm/encoder_slave: make mode_valid accept const struct drm_display_mode
-> >       drm/amdgpu: don't change mode in amdgpu_dm_connector_mode_valid()
-> >       drm/sti: hda: pass const struct drm_display_mode* to hda_get_mode_idx()
-> >       drm/connector: make mode_valid_ctx take a const struct drm_display_mode
-> >       drm/connector: make mode_valid take a const struct drm_display_mode
-> > 
-> >  drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c           |  8 ++++----
-> >  drivers/gpu/drm/amd/amdgpu/atombios_dp.c                 |  2 +-
-> >  drivers/gpu/drm/amd/amdgpu/atombios_dp.h                 |  2 +-
-> >  drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c        | 12 +++++++++---
-> >  drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.h        |  2 +-
-> >  drivers/gpu/drm/arm/display/komeda/komeda_wb_connector.c |  2 +-
-> >  drivers/gpu/drm/arm/malidp_mw.c                          |  2 +-
-> >  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c             |  2 +-
-> >  drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c      |  2 +-
-> >  drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c |  7 -------
-> >  drivers/gpu/drm/display/drm_bridge_connector.c           |  2 +-
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c          |  2 +-
-> >  drivers/gpu/drm/drm_crtc_helper_internal.h               |  2 +-
-> >  drivers/gpu/drm/drm_probe_helper.c                       |  2 +-
-> >  drivers/gpu/drm/exynos/exynos_hdmi.c                     |  2 +-
-> >  drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c                |  2 +-
-> >  drivers/gpu/drm/gma500/cdv_intel_crt.c                   |  2 +-
-> >  drivers/gpu/drm/gma500/cdv_intel_dp.c                    |  2 +-
-> >  drivers/gpu/drm/gma500/cdv_intel_hdmi.c                  |  2 +-
-> >  drivers/gpu/drm/gma500/cdv_intel_lvds.c                  |  2 +-
-> >  drivers/gpu/drm/gma500/oaktrail_hdmi.c                   |  2 +-
-> >  drivers/gpu/drm/gma500/psb_intel_drv.h                   |  2 +-
-> >  drivers/gpu/drm/gma500/psb_intel_lvds.c                  |  2 +-
-> >  drivers/gpu/drm/gma500/psb_intel_sdvo.c                  |  2 +-
-> >  drivers/gpu/drm/i2c/ch7006_drv.c                         |  2 +-
-> >  drivers/gpu/drm/i2c/sil164_drv.c                         |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_ch7017.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_ch7xxx.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_ivch.c                  |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_ns2501.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_sil164.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/dvo_tfp410.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/icl_dsi.c                   |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_crt.c                 |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dp.c                  |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dp_mst.c              |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dsi.c                 |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dsi.h                 |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dvo.c                 |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_dvo_dev.h             |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_hdmi.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_lvds.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_sdvo.c                |  2 +-
-> >  drivers/gpu/drm/i915/display/intel_tv.c                  |  2 +-
-> >  drivers/gpu/drm/i915/display/vlv_dsi.c                   |  2 +-
-> >  drivers/gpu/drm/imx/ipuv3/imx-tve.c                      |  2 +-
-> >  drivers/gpu/drm/msm/disp/mdp4/mdp4_lvds_connector.c      |  2 +-
-> >  drivers/gpu/drm/nouveau/dispnv04/tvnv17.c                |  2 +-
-> >  drivers/gpu/drm/nouveau/dispnv50/disp.c                  |  2 +-
-> >  drivers/gpu/drm/nouveau/nouveau_connector.c              |  2 +-
-> >  drivers/gpu/drm/qxl/qxl_display.c                        |  2 +-
-> >  drivers/gpu/drm/radeon/atombios_dp.c                     |  2 +-
-> >  drivers/gpu/drm/radeon/radeon_connectors.c               | 10 +++++-----
-> >  drivers/gpu/drm/radeon/radeon_mode.h                     |  2 +-
-> >  drivers/gpu/drm/rockchip/cdn-dp-core.c                   |  2 +-
-> >  drivers/gpu/drm/rockchip/inno_hdmi.c                     |  4 ++--
-> >  drivers/gpu/drm/rockchip/rk3066_hdmi.c                   |  2 +-
-> >  drivers/gpu/drm/sti/sti_dvo.c                            |  2 +-
-> >  drivers/gpu/drm/sti/sti_hda.c                            | 12 ++++++------
-> >  drivers/gpu/drm/sti/sti_hdmi.c                           |  2 +-
-> >  drivers/gpu/drm/tegra/dsi.c                              |  2 +-
-> >  drivers/gpu/drm/tegra/hdmi.c                             |  2 +-
-> >  drivers/gpu/drm/tegra/sor.c                              |  2 +-
-> >  drivers/gpu/drm/vc4/vc4_txp.c                            |  2 +-
-> >  drivers/gpu/drm/virtio/virtgpu_display.c                 |  2 +-
-> >  drivers/gpu/drm/vmwgfx/vmwgfx_kms.c                      |  2 +-
-> >  drivers/gpu/drm/vmwgfx/vmwgfx_kms.h                      |  2 +-
-> >  drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c                     |  2 +-
-> >  include/drm/display/drm_hdmi_state_helper.h              |  2 +-
-> >  include/drm/drm_encoder_slave.h                          |  2 +-
-> >  include/drm/drm_modeset_helper_vtables.h                 |  4 ++--
-> >  71 files changed, 92 insertions(+), 93 deletions(-)
-> > ---
-> > base-commit: 4176cf5c5651c33769de83bb61b0287f4ec7719f
-> > change-id: 20241115-drm-connector-mode-valid-const-ae3db0ef6cb7
+The patch number is a little bit too big, some of them may need to split
+out for different maintainers, please let me know which patch need to
+split out.
+
+Test with GMAC, USB, PCIe, EMMC, SD Card.
+
+This patch set is base on the patche set for rk3576 evb1 support.
+
+
+David Wu (2):
+  ethernet: stmmac: dwmac-rk: Add gmac support for rk3562
+  ethernet: stmmac: dwmac-rk: Make the phy clock could be used for
+    external phy
+
+Finley Xiao (7):
+  clk: rockchip: add dt-binding header for rk3562
+  clk: rockchip: Add clock controller for the RK3562
+  dt-bindings: add power-domain header for RK3562 SoC
+  nvmem: rockchip-otp: Add support for rk3568-otp
+  nvmem: rockchip-otp: Add support for rk3562
+  arm64: dts: rockchip: add core dtsi for RK3562 Soc
+  arm64: dts: rockchip: Add RK3562 evb2 devicetree
+
+Frank Wang (1):
+  phy: rockchip: inno-usb2: add usb2 phy support for rk3562
+
+Jon Lin (1):
+  phy: rockchip-naneng-combo: Support rk3562
+
+Kever Yang (24):
+  dt-bindings: clock: add rk3562 cru bindings
+  dt-bindings: pinctrl: Add rk3562 pinctrl support
+  soc: rockchip: power-domain: add power domain support for rk3562
+  dt-bindings: rockchip-thermal: Support the RK3562 SoC compatible
+  dt-bindings: iio: adc: Add rockchip,rk3562-saradc string
+  dt-bindings: net: Add support for rk3562 dwmac
+  dt-bindings: nvmem: rockchip,otp: Add support for rk3562 and rk3568
+  dt-bindings: phy: rockchip: Add rk3562 naneng-combophy compatible
+  dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
+  dt-bindings: PCI: dwc: rockchip: Add rk3562 support
+  dt-bindings: mmc: Add support for rk3562 eMMC
+  dt-bindings: mmc: rockchip-dw-mshc: Add rk3562 compatible string
+  dt-bindings: power: rockchip: Add bindings for rk3562
+  dt-bindings: i2c: i2c-rk3x: Add rk3562 compatible
+  dt-bindings: gpu: Add rockchip,rk3562-mali compatible
+  dt-bindings: watchdog: Add rk3562 compatible
+  dt-bindings: spi: Add rockchip,rk3562-spi compatible
+  dt-bindings: serial: snps-dw-apb-uart: Add support for rk3562
+  dt-bindings: usb: dwc3: add compatible for rk3562
+  dt-bindings: pwm: rockchip: Add rockchip,rk3562-pwm
+  dt-bindings: rockchip: pmu: Add rk3562 compatible
+  dt-bindings: soc: rockchip: Add rk3562 syscon compatibles
+  dt-bindings: arm: rockchip: Add rk3562 evb2 board
+  dt-bindings: mfd: syscon: Add rk3562 QoS register compatible
+
+Shaohan Yao (1):
+  thermal: rockchip: Support the rk3562 SoC in thermal driver
+
+Simon Xue (1):
+  iio: adc: rockchip_saradc: add rk3562
+
+Steven Liu (1):
+  pinctrl: rockchip: add rk3562 support
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
+ .../bindings/clock/rockchip,rk3562-cru.yaml   |   62 +
+ .../bindings/gpu/arm,mali-bifrost.yaml        |    3 +-
+ .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
+ .../bindings/iio/adc/rockchip-saradc.yaml     |    2 +
+ .../devicetree/bindings/mfd/syscon.yaml       |    2 +
+ .../bindings/mmc/rockchip-dw-mshc.yaml        |    1 +
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |    9 +-
+ .../bindings/net/rockchip-dwmac.yaml          |    5 +-
+ .../bindings/nvmem/rockchip,otp.yaml          |   49 +-
+ .../bindings/pci/rockchip-dw-pcie.yaml        |    1 +
+ .../phy/phy-rockchip-naneng-combphy.yaml      |    1 +
+ .../bindings/phy/rockchip,inno-usb2phy.yaml   |    3 +-
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |    1 +
+ .../power/rockchip,power-controller.yaml      |    1 +
+ .../devicetree/bindings/pwm/pwm-rockchip.yaml |    1 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |    7 +
+ .../devicetree/bindings/spi/spi-rockchip.yaml |    1 +
+ .../bindings/thermal/rockchip-thermal.yaml    |    1 +
+ .../bindings/usb/rockchip,dwc3.yaml           |    3 +
+ .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3562-evb2-v10.dts     |  520 ++++
+ .../boot/dts/rockchip/rk3562-pinctrl.dtsi     | 2352 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3562.dtsi      | 1432 ++++++++++
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-rk3562.c             | 1111 ++++++++
+ drivers/clk/rockchip/clk.h                    |   39 +
+ drivers/iio/adc/rockchip_saradc.c             |   24 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    |  213 +-
+ drivers/nvmem/rockchip-otp.c                  |   97 +
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c |   49 +
+ .../rockchip/phy-rockchip-naneng-combphy.c    |  152 ++
+ drivers/pinctrl/pinctrl-rockchip.c            |  199 +-
+ drivers/pinctrl/pinctrl-rockchip.h            |    3 +-
+ drivers/pmdomain/rockchip/pm-domains.c        |   48 +-
+ drivers/thermal/rockchip_thermal.c            |  112 +-
+ include/dt-bindings/clock/rk3562-cru.h        |  733 +++++
+ include/dt-bindings/power/rk3562-power.h      |   35 +
+ 42 files changed, 7269 insertions(+), 22 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3562-cru.yaml
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rk3562.c
+ create mode 100644 include/dt-bindings/clock/rk3562-cru.h
+ create mode 100644 include/dt-bindings/power/rk3562-power.h
 
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
