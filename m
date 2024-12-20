@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF4FE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5966DE77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wd/j7FIgxqNJVvUJJjTKzQiqoKvwEcfF1IsrPnMCnOg=; b=2LrZJ6L4Hf5+L6
-	xjhMhvi/HDPLExZ+ln7g22TtI1Ft70oJyadZ+sYOSiX+abMx2aKCBbg/RHMWL3MvbZnqxj/ibkqfc
-	jSwuKwscwoLRw6oYfZUdEFH6mxuay86va7tnU00MvAeQ1m/sjGkVTVI2lmT2Zo770iRpbmVofC8N1
-	V6fhqh9MDXGMTuL9FwL6v5dJuOK9tm7OuPTlKOoiHQ8VeR/sJdnqha+9ybAIIlfEWO4vLtLogUz++
-	Dvbf1g58d4C+NECfe0JTuS93rj36/gkwwBg/odMorArm77hcb7BPKBuzo0KdFb9NQivCbuoaG5fwb
-	vYCj06q7BlFEyzNGao+w==;
+	List-Owner; bh=kofmiOWXBbAculBjSeYkOvmyCJsK7wCinrPbnuOVRZM=; b=OpwYjQwv0xgAAz
+	cVYHRUukAQRcpsncONsIdtnATLMiOL3QQ/bJoyzPQIhbi3jmkVIr0xReD0QXvcqUaskMIn6s5ezYi
+	EADMuxmfzvHMv7e5irx3Kc9/ntCcz9NKfYN4rdlDoXxwyrIwA03LGXtDbN6keVuAQyit1m+kQPLvv
+	v4GcN6npM5uPG3LOEX670Jf8B41g/ZxhCUZMHB3u1lTZqGr/o5Lwpu1XwBQ9u3jKAvjAiUwSAY3u0
+	jjDqo/zHae4JaaHX7/vBgNijtUSYIN2x8xEux0zUQZCjgqKvJHH7FQW/aOzDsDV1w94oiG+IZA3vz
+	o4gVAa4b5L6shRSYgiXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOaxv-00000004iwT-3osH;
-	Fri, 20 Dec 2024 11:14:43 +0000
-Received: from mail-m49196.qiye.163.com ([45.254.49.196])
+	id 1tOaxy-00000004j0d-3NQA;
+	Fri, 20 Dec 2024 11:14:46 +0000
+Received: from mail-m49208.qiye.163.com ([45.254.49.208])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOank-00000004f5P-1uNP
+	id 1tOanl-00000004f5r-3psa
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 11:04:14 +0000
+	Fri, 20 Dec 2024 11:04:15 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 657128c8;
-	Fri, 20 Dec 2024 19:04:09 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 657128d0;
+	Fri, 20 Dec 2024 19:04:11 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH 07/38] soc: rockchip: power-domain: add power domain support for rk3562
-Date: Fri, 20 Dec 2024 19:04:05 +0800
-Message-Id: <20241220110407.3511882-3-kever.yang@rock-chips.com>
+Subject: [PATCH 09/38] thermal: rockchip: Support the rk3562 SoC in thermal driver
+Date: Fri, 20 Dec 2024 19:04:07 +0800
+Message-Id: <20241220110407.3511882-5-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241220110407.3511882-1-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
  <20241220110407.3511882-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkpJGVZLQ0pNQ0tKThkYTx1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQktNHVZCQ0JISB9OQh5KHh5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e3bd3b1803afkunm657128c8
+X-HM-Tid: 0a93e3bd414503afkunm657128d0
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mxg6Hio4UTIOCAg8TVFDSUhM
-	TSowCRhVSlVKTEhPTUJJTU5LT0tNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPSE5INwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MiI6UTo5TjIPGAg6TUsuSUMC
+	MhQwCRlVSlVKTEhPTUJJTU5JS0lIVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFNSU9NNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=gBSOC5/0KvqUeNdu6ubOUTeXhOX0lvTdF61wn1ivk8XQvldH1EIFTcLvVo1GFVTvjSJ7l8Z/I9N7wyzuOyAeYItpgkuX2zL4X2V2wpq1xJn4AsPDRz7NI/B2Uy8ynWsPhiX0TCIpOkrrF0VM6d0XZa2qpou32DIAR/qXFV4v3Dw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=eY6N5uz6OJUSElJ4SnOGW2+HqmynPNyuwPemLC6DttA=;
+	b=A53xJd1RvLCBRWwpiYBj3ZsCJTPBKjxq0Vq91orF0zfXplJV+W54vlJh6l03aVnAYZUi8Mcrqz5TPij3nhy9cx3QWQHUOF2a4RPfnKFxZ7UX32bPKx4Sa2g28L7MDb7fCxblvQqwByKdSXDg9sD9Er94SzzBWVgNb6/iFCmAkeQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=NjLVTN7/RI83990q23Vq9VUZh5/11YsOgwaHHfMOObk=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_030412_706823_0B954288 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20241220_030414_141195_22A97CF2 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,118 +74,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This driver is modified to support RK3562 SoC.
-Add support to ungate clk.
-Add support to shut down memory for rk3562.
+From: Shaohan Yao <shaohan.yao@rock-chips.com>
 
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+There are one Temperature Sensor on rk3562, channel 0 is for chip.
+
+Signed-off-by: Shaohan Yao <shaohan.yao@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
- drivers/pmdomain/rockchip/pm-domains.c | 48 +++++++++++++++++++++++++-
- 1 file changed, 47 insertions(+), 1 deletion(-)
+ drivers/thermal/rockchip_thermal.c | 112 ++++++++++++++++++++++++++++-
+ 1 file changed, 111 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index cb0f93800138..9cb71657e7a0 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -2,7 +2,7 @@
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index f551df48eef9..aec0e634bd1f 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0-only
  /*
-  * Rockchip Generic power domain support.
-  *
-- * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
-+ * Copyright (c) 2015 Rockchip Electronics Co., Ltd.
+- * Copyright (c) 2014-2016, Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2014-2021, Fuzhou Rockchip Electronics Co., Ltd.
++ * Copyright (c) 2021-2024, Rockchip Electronics Co., Ltd.
+  * Caesar Wang <wxt@rock-chips.com>
   */
  
- #include <linux/io.h>
-@@ -32,6 +32,7 @@
- #include <dt-bindings/power/rk3366-power.h>
- #include <dt-bindings/power/rk3368-power.h>
- #include <dt-bindings/power/rk3399-power.h>
-+#include <dt-bindings/power/rk3562-power.h>
- #include <dt-bindings/power/rk3568-power.h>
- #include <dt-bindings/power/rockchip,rk3576-power.h>
- #include <dt-bindings/power/rk3588-power.h>
-@@ -129,6 +130,20 @@ struct rockchip_pmu {
- 	.active_wakeup = wakeup,			\
+@@ -185,6 +186,8 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_PERIOD_HT			0x6c
+ #define TSADCV3_AUTO_PERIOD			0x154
+ #define TSADCV3_AUTO_PERIOD_HT			0x158
++#define TSADCV9_Q_MAX				0x210
++#define TSADCV9_FLOW_CON			0x218
+ 
+ #define TSADCV2_AUTO_EN				BIT(0)
+ #define TSADCV2_AUTO_EN_MASK			BIT(16)
+@@ -195,6 +198,7 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
+ 
+ #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
++#define TSADCV3_AUTO_Q_SEL_EN_MASK		BIT(17)
+ 
+ #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
+ #define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
+@@ -220,6 +224,12 @@ struct rockchip_thermal_data {
+ #define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
+ #define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
+ #define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
++#define TSADCV7_AUTO_PERIOD_TIME		3000 /* 2.5ms */
++#define TSADCV7_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
++#define TSADCV12_AUTO_PERIOD_TIME		3000 /* 2.5ms */
++#define TSADCV12_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
++#define TSADCV3_Q_MAX_VAL			0x7ff /* 11bit 2047 */
++#define TSADCV12_Q_MAX_VAL			0xfff /* 12bit 4095 */
+ 
+ #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
+ #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
+@@ -230,6 +240,8 @@ struct rockchip_thermal_data {
+ 
+ #define PX30_GRF_SOC_CON2			0x0408
+ 
++#define RK3562_GRF_TSADC_CON			0x0580
++
+ #define RK3568_GRF_TSADC_CON			0x0600
+ #define RK3568_GRF_TSADC_ANA_REG0		(0x10001 << 0)
+ #define RK3568_GRF_TSADC_ANA_REG1		(0x10001 << 1)
+@@ -497,6 +509,45 @@ static const struct tsadc_table rk3399_code_table[] = {
+ 	{TSADCV3_DATA_MASK, 125000},
+ };
+ 
++static const struct tsadc_table rk3562_code_table[] = {
++	{0, -40000},
++	{1419, -40000},
++	{1428, -35000},
++	{1436, -30000},
++	{1445, -25000},
++	{1453, -20000},
++	{1462, -15000},
++	{1470, -10000},
++	{1479, -5000},
++	{1487, 0},
++	{1496, 5000},
++	{1504, 10000},
++	{1512, 15000},
++	{1521, 20000},
++	{1529, 25000},
++	{1538, 30000},
++	{1546, 35000},
++	{1555, 40000},
++	{1563, 45000},
++	{1572, 50000},
++	{1580, 55000},
++	{1589, 60000},
++	{1598, 65000},
++	{1606, 70000},
++	{1615, 75000},
++	{1623, 80000},
++	{1632, 85000},
++	{1640, 90000},
++	{1648, 95000},
++	{1657, 100000},
++	{1666, 105000},
++	{1674, 110000},
++	{1682, 115000},
++	{1691, 120000},
++	{1699, 125000},
++	{TSADCV2_DATA_MASK, 125000},
++};
++
+ static const struct tsadc_table rk3568_code_table[] = {
+ 	{0, -40000},
+ 	{1584, -40000},
+@@ -834,6 +885,37 @@ static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
+ 			       regs + TSADCV2_AUTO_CON);
  }
  
-+#define DOMAIN_M_G_SD(_name, pwr, status, req, idle, ack, g_mask, mem, wakeup, keepon)	\
-+{							\
-+	.name = _name,					\
-+	.pwr_w_mask = (pwr) << 16,			\
-+	.pwr_mask = (pwr),				\
-+	.status_mask = (status),			\
-+	.req_w_mask = (req) << 16,			\
-+	.req_mask = (req),				\
-+	.idle_mask = (idle),				\
-+	.ack_mask = (ack),				\
-+	.clk_ungate_mask = (g_mask),			\
-+	.active_wakeup = wakeup,			\
++static void rk_tsadcv12_initialize(struct regmap *grf, void __iomem *regs,
++				   enum tshut_polarity tshut_polarity)
++{
++	writel_relaxed(TSADCV12_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
++	writel_relaxed(TSADCV12_AUTO_PERIOD_HT_TIME,
++		       regs + TSADCV3_AUTO_PERIOD_HT);
++	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
++	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
++	writel_relaxed(TSADCV12_Q_MAX_VAL, regs + TSADCV9_Q_MAX);
++	writel_relaxed(TSADCV3_AUTO_Q_SEL_EN | TSADCV3_AUTO_Q_SEL_EN_MASK,
++		       regs + TSADCV2_AUTO_CON);
++	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
++			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++	else
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++
++	if (!IS_ERR(grf)) {
++		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_TSEN);
++		udelay(15);
++		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG0);
++		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG1);
++		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG2);
++		usleep_range(100, 200);
++	}
 +}
 +
- #define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup)	\
- {							\
- 	.name = _name,					\
-@@ -194,6 +209,9 @@ struct rockchip_pmu {
- #define DOMAIN_RK3399(name, pwr, status, req, wakeup)		\
- 	DOMAIN(name, pwr, status, req, req, req, wakeup)
- 
-+#define DOMAIN_RK3562(name, pwr, req, g_mask, mem, wakeup)		\
-+	DOMAIN_M_G_SD(name, pwr, pwr, req, req, req, g_mask, mem, wakeup, false)
-+
- #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
- 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
- 
-@@ -1130,6 +1148,18 @@ static const struct rockchip_domain_info rk3399_pm_domains[] = {
- 	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), BIT(29), true),
+ static void rk_tsadcv2_irq_ack(void __iomem *regs)
+ {
+ 	u32 val;
+@@ -1258,6 +1340,30 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
+ 	},
  };
  
-+static const struct rockchip_domain_info rk3562_pm_domains[] = {
-+					     /* name           pwr     req     g_mask  mem wakeup */
-+	[RK3562_PD_GPU]		= DOMAIN_RK3562("gpu",         BIT(0), BIT(1), BIT(1), 0, false),
-+	[RK3562_PD_NPU]		= DOMAIN_RK3562("npu",         BIT(1), BIT(2), BIT(2), 0, false),
-+	[RK3562_PD_VDPU]	= DOMAIN_RK3562("vdpu",        BIT(2), BIT(6), BIT(6), 0, false),
-+	[RK3562_PD_VEPU]	= DOMAIN_RK3562("vepu",        BIT(3), BIT(7), BIT(7) | BIT(3), 0, false),
-+	[RK3562_PD_RGA]		= DOMAIN_RK3562("rga",         BIT(4), BIT(5), BIT(5) | BIT(4), 0, false),
-+	[RK3562_PD_VI]		= DOMAIN_RK3562("vi",          BIT(5), BIT(3), BIT(3), 0, false),
-+	[RK3562_PD_VO]		= DOMAIN_RK3562("vo",  BIT(6), BIT(4), BIT(4), 16, false),
-+	[RK3562_PD_PHP]		= DOMAIN_RK3562("php",         BIT(7), BIT(8), BIT(8), 0, false),
++static const struct rockchip_tsadc_chip rk3562_tsadc_data = {
++	.chn_offset = 0,
++	.chn_num = 1, /* one channels for tsadc */
++
++	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
++	.tshut_temp = 95000,
++
++	.initialize = rk_tsadcv12_initialize,
++	.irq_ack = rk_tsadcv4_irq_ack,
++	.control = rk_tsadcv4_control,
++	.get_temp = rk_tsadcv4_get_temp,
++	.set_alarm_temp = rk_tsadcv3_alarm_temp,
++	.set_tshut_temp = rk_tsadcv3_tshut_temp,
++	.set_tshut_mode = rk_tsadcv3_tshut_mode,
++
++	.table = {
++		.id = rk3562_code_table,
++		.length = ARRAY_SIZE(rk3562_code_table),
++		.data_mask = TSADCV2_DATA_MASK,
++		.mode = ADC_INCREMENT,
++	},
 +};
 +
- static const struct rockchip_domain_info rk3568_pm_domains[] = {
- 	[RK3568_PD_NPU]		= DOMAIN_RK3568("npu",  BIT(1), BIT(2),  false),
- 	[RK3568_PD_GPU]		= DOMAIN_RK3568("gpu",  BIT(0), BIT(1),  false),
-@@ -1331,6 +1361,18 @@ static const struct rockchip_pmu_info rk3399_pmu = {
- 	.domain_info = rk3399_pm_domains,
- };
- 
-+static const struct rockchip_pmu_info rk3562_pmu = {
-+	.pwr_offset = 0x210,
-+	.status_offset = 0x230,
-+	.req_offset = 0x110,
-+	.idle_offset = 0x128,
-+	.ack_offset = 0x120,
-+	.clk_ungate_offset = 0x140,
-+
-+	.num_domains = ARRAY_SIZE(rk3562_pm_domains),
-+	.domain_info = rk3562_pm_domains,
-+};
-+
- static const struct rockchip_pmu_info rk3568_pmu = {
- 	.pwr_offset = 0xa0,
- 	.status_offset = 0x98,
-@@ -1429,6 +1471,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 		.compatible = "rockchip,rk3399-power-controller",
- 		.data = (void *)&rk3399_pmu,
+ static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
+ 	/* cpu, gpu */
+ 	.chn_offset = 0,
+@@ -1337,6 +1443,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
+ 		.compatible = "rockchip,rk3399-tsadc",
+ 		.data = (void *)&rk3399_tsadc_data,
  	},
 +	{
-+		.compatible = "rockchip,rk3562-power-controller",
-+		.data = (void *)&rk3562_pmu,
++		.compatible = "rockchip,rk3562-tsadc",
++		.data = (void *)&rk3562_tsadc_data,
 +	},
  	{
- 		.compatible = "rockchip,rk3568-power-controller",
- 		.data = (void *)&rk3568_pmu,
+ 		.compatible = "rockchip,rk3568-tsadc",
+ 		.data = (void *)&rk3568_tsadc_data,
 -- 
 2.25.1
 
