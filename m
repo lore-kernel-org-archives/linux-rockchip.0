@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72FA1E77184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 00:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE896E77184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 00:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ozkz5ZXdzUNvO3Ivqw9fYOLENQi3MUYZSnXifPLR4bk=; b=oqVKuPpPV3RkkU
-	pBxrb4SYbu16r2xUWnj4KvoPh+ex0JAfK5XOX85sz9+YtQDSb+k/kTviUuEzJ/JeVUzSJFtqr34RZ
-	47vQArNhpWVg5tfkJe724/ZkMtX0i/J6Zp3x6rZxpgoj4B2Ug3oRy+Di9y3UmjJ5i4WXx8nTIo4F/
-	lHQuymAmqY4dhBU1P0rTyGgEoqFe2S3C8Jh9iMbxLNJOZEzNRAXRezUnqPyM8a5rrpkWMuXqmlIc1
-	loKlGRi6zhau2ojO02DWyYjStGasYzHp5RsCQ6L+Bl5Euys0PWjlfe4FPjOWwfzSv/6MffhKQguYJ
-	xmJyA3XmiHKgLsr3ffig==;
+	List-Owner; bh=61LjQY6TbFXlxT49663+LC/IOFjHWueyY9RqeP+4MIA=; b=1+RwJXINrx6wqi
+	trIwSkD/6TRkllYjwOb7dBdlu9/jac7/k+z59bN8JiDhUK+5ipXkBG4O5bTe0CxgzUXFRqG1JfhsJ
+	xtEYbKbDTxmwqJ+TcTN5MSUiyCJI1rv0U/bZjB0tV0TMsLdswSJRG8p7NcJGW5Sq7MwkHZiTvbK1b
+	BAIpIqSlIP9AaiFO9XwwgfKrm0zZMq1XWcSlBkl9CK8+Bp2Awqgt0Tlv9SW66YDBUAYiVTzkd243R
+	F0POayUj6pjQYpoPygKq+8bRNsGQ3t3anVMgo7Q7OC0MsvZdCBZ/n7DJTHxiQ5PZCmrJE8vML02EW
+	TXuhyibX6QzRxi8VE57A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOQeY-00000003Qpf-27Er;
-	Fri, 20 Dec 2024 00:14:02 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1tOQhE-00000003RG4-1DeB;
+	Fri, 20 Dec 2024 00:16:48 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOQeV-00000003Qnu-1UAZ
+	id 1tOQhC-00000003REu-1kaz
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 00:14:00 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-53f757134cdso1329091e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 16:13:58 -0800 (PST)
+	Fri, 20 Dec 2024 00:16:47 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-300392cc4caso15089211fa.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 16:16:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734653637; x=1735258437; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1734653804; x=1735258604; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=+t86gi9G7/Nyl3NdC1IVXRnYkcURnLh8hewaEmUmJ3Y=;
-        b=PoPIDl2CaI2gb/EJNzHUgnUVhMqFbyzDhOUW1J2g+0BRDmi+1jbJo5jmLNsJDGLauV
-         rOiBujQbSSeBsDmSwrralSiz3vxz28L/R0lcSGh6U7l+wZ2isDpz0/cupVLrHY1RvOR2
-         pgUA+D6kH0zRpt68FxAEKASIEqJt9skn+mCHevB2S6YL3XSs65hnSk9rxhUrVXoXJlfg
-         +Sk9Emxr5a9oyOjbZMLECUUabuwxo0qgIDbKOlW+QblQwM3Zk7wbQ5tWaHtolvYl0q2D
-         KeBuZNVeZ451iSP8gmPI4Ktvg41P2pFXWlLK6jUaePiiRu3fz2QrjCLWCoqFP1vgimx2
-         li0A==
+        bh=OvJSw2Y9AN4Bj+vC236l/3ETv8TjOwlc4v68lk/FkAI=;
+        b=LfFZsKOc+qxwQ/2gEJwky5LMgFViqYyBv5IEnHjbN6SNBxEnSwSsB2WFBzeVckRACG
+         gMibdKKiauEQmByp0Z1qyOu5Jzu/2b8D3DjX0ucXBqjLXqzL4+ZF4drrv27gsp55aH9S
+         24iuVJ/RZdn+5hmuplLK3O1zK+G2A4P+vDjcW2nBRI3fwZmjKKgZrFX22X1ccDYQJouu
+         fuMy5kRhnw/evAreW7jkTlV95MLg3+S3gRU1i/hvzTYmHiwgFP8ZqO3TW8ltE/M4TAIj
+         kydAdBJyCRtmnksyTVJljRo5J7YdHX9vtxXlHd6U/KLu3v/KCVOKwQc2ypxN9dku4uMy
+         CiLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734653637; x=1735258437;
+        d=1e100.net; s=20230601; t=1734653804; x=1735258604;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+t86gi9G7/Nyl3NdC1IVXRnYkcURnLh8hewaEmUmJ3Y=;
-        b=sSO+g2cOJ+/q9Fd8kM7WJleK3FQO6mDanmBNX4vHaykl5716kJVq1ejDZKLTnZ3zhQ
-         71VVei3OsxXFplnoMw/WR6Rkcw91IgzJ4mfcocvuKK3CkjZusbKtCdcBjE9MDi8SLaoy
-         mTukXhInLuVt4HAEqz+jWZe7k9SoBA07m6Jyc/HuyuUBRrPJEZHAFvGwqGi7rllRNz9v
-         5RetWcPSU/McJycMe4YCvtIHRvG1mQA5TLaG7m7F0orrbPE6C5lFxoA+M9hd8fGX6gUS
-         kirthMv8Dr5LA+fZmTppSQSA9ITTMxeRsllonUdEaptebwRz3YL4UXRJfr0yfP2n0V18
-         pzUw==
-X-Forwarded-Encrypted: i=1; AJvYcCUfsZIwynJjEZEoDgb8xsYaHf5AbxpVvdFJv0nSZE7j12B3FbAOWmeDv35cm3JxP9bLzdjlKwc8K8+mElLDZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHZPUNu53u5MXOaQ/Y6DXS+4Ei6/nh+Aaj4Rr3zIiXZmMT5+CJ
-	NvwnaHNzGljsLhFtRCj508Tsr6XSCLjSmBGDS3BomtuJM9dY4alLgThv+Gu60RE=
-X-Gm-Gg: ASbGncsdVcnFFWN0hnx/qS9d6R3ifExv7fIfswZV3UNo9uuS013nUeaBfN+VOCC1+S2
-	zjbZap3VlxTZYL9pZcjAjeoODc3YHUouR7e6c7NX05lTlLE+swQbke06CRaZWg7rlNcAZEU4AQt
-	kjX/KwOESaSgGMDEX4RPwSYZHDihrGP2ssvKiHdAHuulpMR3KuqrLXuj2evTM7KOuOuH6T0chlj
-	AOBoZpH0xyeZ1Zn2w4pp8lTVOC480wwM2eBgQ50PIEwdYk6/ryrLOoQrI2cFPY5K2UFwtd0MboD
-	rPuIwlFw1GaH+qlTVUC2Z9DSYtYUAoK1Gy5c
-X-Google-Smtp-Source: AGHT+IF+jUkTs+trNuGfxVH/FmJYswxWVXFWxwsAch+XkSokcdZa7gP9TyRJCdDwYd2ZnKdNocqqsQ==
-X-Received: by 2002:a05:6512:33cd:b0:540:358d:d9b7 with SMTP id 2adb3069b0e04-5422957ac6cmr152434e87.52.1734653637396;
-        Thu, 19 Dec 2024 16:13:57 -0800 (PST)
+        bh=OvJSw2Y9AN4Bj+vC236l/3ETv8TjOwlc4v68lk/FkAI=;
+        b=CzKChcsaxtBg0ZJrX87UAM/hQMGiGSN4GCY05oqHhQ7v/8z/vo6TWcRxO/iWbGBc3o
+         SAOoT6B+fVk3Ufqi2UPMSJyx0JSikH0QOdHnIn8isyeYeHhRlykRw/qaYyPY8DRLhE9a
+         12o9a2FKGnUwVxjhcETLubVFQpHn3BM6cCMDSkCIePJsoWj6I32/cldY0RFDpLFI8Jq3
+         1060V89HbKuw+CQw8d6j4OobJrscAst5+i9BYAMm+oA+pFAN9CKWdMtyQ5kL5Qm+tMOS
+         UkypHzQYjIsr+o+gozI3dC+YocTHHn7FXCDr0MRsHB7ClO+0/dREtWI43O/+GVTh65R3
+         iEPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWTe1a99xyLeSynVtL4LNZc4sqTuCbQHDC2Eesi1V4B+j1JbsF3UPw4Ib6nT5gTI8j5J1S+XuVYCfY50m1gHw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx0Or6GcZZNJPEtHzdTguGkvBzATmaVcNqghbe86bfINqUt3CRD
+	3S8CczkYxsrj/fzGa34rQqepO/v7eIpEt08KrZkEwrFJk3qRdhPzShwxOG/m6yQ=
+X-Gm-Gg: ASbGncuKgpdttv2TmxDBHAYcd0XkCihjuGT2k719yrmj5pMuAJC0vn0ijiDny4hneOh
+	iYdC83yNkIdLK9YHRnkcYQ2KJsOlo1Fg39th5cqJ0iHbDJOP7/6zV90VsGtG/bviZeSHXx4zhOr
+	wNo+P3cem17V9s3hYYz7W7YzmI+tfJ+DpUpb4tyfj0eCrfcU7K5SvA46W7dkFS/xmBlUZwzwHbH
+	v9/ZpLlREmm/IUpBnMdt8JuljGwQVETfPu+QHJir9efNvmcJRckkq5UDY+IG71O5kQxdraFUyo8
+	TuPdXOtXCI8G1//FlLDmfshqi6D+2HcVFRJK
+X-Google-Smtp-Source: AGHT+IFzvivVhPXKl3I4o3iSV3ve0+PcDzlRsGs5VisyomFwo0ktK1fC6BvzsZrAH0qVPPj4EFPZsg==
+X-Received: by 2002:a05:651c:543:b0:302:17e7:e17e with SMTP id 38308e7fff4ca-3046831fbc7mr2884171fa.0.1734653804472;
+        Thu, 19 Dec 2024 16:16:44 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-542238215b6sm308711e87.188.2024.12.19.16.13.55
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045b06a200sm3596771fa.79.2024.12.19.16.16.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 16:13:56 -0800 (PST)
-Date: Fri, 20 Dec 2024 02:13:53 +0200
+        Thu, 19 Dec 2024 16:16:43 -0800 (PST)
+Date: Fri, 20 Dec 2024 02:16:41 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v3 07/15] drm/bridge: analogix_dp: Add support for phy
- configuration.
-Message-ID: <a6vvydjbx3hbckoy74iiyzguyyacwvdh6iirqydjfvhwgocw3a@knecggjcbcid>
+Subject: Re: [PATCH v3 08/15] drm/rockchip: analogix_dp: Add support to get
+ panel from the DP AUX bus
+Message-ID: <aiggslcdbdmnc2amlvmzycyxmu3f5zp6kt4ifgzq5gkuugmnem@oqnwf4o7hbss>
 References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
- <20241219080604.1423600-8-damon.ding@rock-chips.com>
+ <20241219080604.1423600-9-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241219080604.1423600-8-damon.ding@rock-chips.com>
+In-Reply-To: <20241219080604.1423600-9-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_161359_406695_45E48DF6 
-X-CRM114-Status: GOOD (  19.63  )
+X-CRM114-CacheID: sfid-20241219_161646_467139_4F0EEE5D 
+X-CRM114-Status: GOOD (  27.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,140 +98,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 19, 2024 at 04:05:56PM +0800, Damon Ding wrote:
-> Add support to configurate link rate, lane count, voltage swing and
-> pre-emphasis with phy_configure(). It is helpful in application scenarios
-> where analogix controller is mixed with the phy of other vendors.
+On Thu, Dec 19, 2024 at 04:05:57PM +0800, Damon Ding wrote:
+> The rockchip_dp_of_panel_on_aux_bus() helps to check whether the DT
+> configurations related to the DP AUX bus are correct or not.
+> 
+> If failed to get the panel from the platform bus, it is good to try
+> the DP AUX bus. Then, the probing process will continue until it enters
+> the analogix_dp_bind(), where devm_of_dp_aux_populate_bus() is called
+> after &analogix_dp_device.aux has been initialized.
+
+No. devm_of_dp_aux_populate_bus() should be called before bind(). And
+bind should only be called from the done_probing() callback. The reason
+is very simple: the panel driver might be built as a module and might be
+not available when the analogix driver is being probed.
+
+Also, please invert the logic of the commit message (and the driver).
+The platform bus should be a fallback if there is no AUX bus panel, not
+other way around.
+
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> 
 > ---
+>  .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 24 +++++++++++++++++--
+>  1 file changed, 22 insertions(+), 2 deletions(-)
 > 
-> Changes in v2:
-> - remove needless assignments for phy_configure()
-> - remove unnecessary changes for phy_power_on()/phy_power_off()
-> ---
->  .../drm/bridge/analogix/analogix_dp_core.c    |  1 +
->  .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 56 +++++++++++++++++++
->  2 files changed, 57 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 6f10d88a34c5..9429c50cc1bc 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1696,6 +1696,7 @@ int analogix_dp_resume(struct analogix_dp_device *dp)
->  	if (dp->plat_data->power_on)
->  		dp->plat_data->power_on(dp->plat_data);
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index ba5263f85ee2..60c902abf40b 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -317,6 +317,24 @@ static const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs =
+>  	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
+>  };
 >  
-> +	phy_set_mode(dp->phy, PHY_MODE_DP);
->  	phy_power_on(dp->phy);
->  
->  	analogix_dp_init_dp(dp);
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> index 3afc73c858c4..613ce504bea6 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> @@ -11,6 +11,7 @@
->  #include <linux/gpio/consumer.h>
->  #include <linux/io.h>
->  #include <linux/iopoll.h>
-> +#include <linux/phy/phy.h>
->  
->  #include <drm/bridge/analogix_dp.h>
->  
-> @@ -513,10 +514,25 @@ void analogix_dp_enable_sw_function(struct analogix_dp_device *dp)
->  void analogix_dp_set_link_bandwidth(struct analogix_dp_device *dp, u32 bwtype)
+> +static bool rockchip_dp_of_panel_on_aux_bus(const struct device_node *np)
+> +{
+> +	struct device_node *bus_node, *panel_node;
+> +
+> +	bus_node = of_get_child_by_name(np, "aux-bus");
+> +	if (!bus_node)
+> +		return false;
+> +
+> +	panel_node = of_get_child_by_name(bus_node, "panel");
+> +	of_node_put(bus_node);
+> +	if (!panel_node)
+> +		return false;
+> +
+> +	of_node_put(panel_node);
+> +
+> +	return true;
+> +}
+> +
+>  static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
 >  {
->  	u32 reg;
-> +	int ret;
+>  	struct device *dev = dp->dev;
+> @@ -435,8 +453,10 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+>  		return -ENODEV;
 >  
->  	reg = bwtype;
->  	if ((bwtype == DP_LINK_BW_2_7) || (bwtype == DP_LINK_BW_1_62))
->  		writel(reg, dp->reg_base + ANALOGIX_DP_LINK_BW_SET);
-> +
-> +	if (dp->phy) {
-> +		union phy_configure_opts phy_cfg = {0};
-> +
-> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
-
-Should not be necessary, you are only setting the .set_rate.
-
-> +		phy_cfg.dp.link_rate =
-> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
-> +		phy_cfg.dp.set_rate = true;
-> +		ret = phy_configure(dp->phy, &phy_cfg);
-> +		if (ret && ret != -EOPNOTSUPP) {
-> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
-> +			return;
-> +		}
+>  	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
+> -	if (ret < 0)
+> -		return ret;
+> +	if (ret < 0) {
+> +		if (!rockchip_dp_of_panel_on_aux_bus(dev->of_node))
+> +			return ret;
 > +	}
->  }
 >  
->  void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
-> @@ -530,9 +546,22 @@ void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
->  void analogix_dp_set_lane_count(struct analogix_dp_device *dp, u32 count)
->  {
->  	u32 reg;
-> +	int ret;
->  
->  	reg = count;
->  	writel(reg, dp->reg_base + ANALOGIX_DP_LANE_COUNT_SET);
-> +
-> +	if (dp->phy) {
-> +		union phy_configure_opts phy_cfg = {0};
-> +
-> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
-> +		phy_cfg.dp.set_lanes = true;
-> +		ret = phy_configure(dp->phy, &phy_cfg);
-> +		if (ret && ret != -EOPNOTSUPP) {
-> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
-> +			return;
-> +		}
-> +	}
->  }
->  
->  void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
-> @@ -546,10 +575,37 @@ void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
->  void analogix_dp_set_lane_link_training(struct analogix_dp_device *dp)
->  {
->  	u8 lane;
-> +	int ret;
->  
->  	for (lane = 0; lane < dp->link_train.lane_count; lane++)
->  		writel(dp->link_train.training_lane[lane],
->  		       dp->reg_base + ANALOGIX_DP_LN0_LINK_TRAINING_CTL + 4 * lane);
-> +
-> +	if (dp->phy) {
-> +		union phy_configure_opts phy_cfg = {0};
-> +
-> +		for (lane = 0; lane < dp->link_train.lane_count; lane++) {
-> +			u8 training_lane = dp->link_train.training_lane[lane];
-> +			u8 vs, pe;
-> +
-> +			vs = (training_lane & DP_TRAIN_VOLTAGE_SWING_MASK) >>
-> +			     DP_TRAIN_VOLTAGE_SWING_SHIFT;
-> +			pe = (training_lane & DP_TRAIN_PRE_EMPHASIS_MASK) >>
-> +			     DP_TRAIN_PRE_EMPHASIS_SHIFT;
-> +			phy_cfg.dp.voltage[lane] = vs;
-> +			phy_cfg.dp.pre[lane] = pe;
-> +		}
-> +
-> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
-> +		phy_cfg.dp.link_rate =
-> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
-
-This two should not be necessary, please drop them.
-
-> +		phy_cfg.dp.set_voltages = true;
-> +		ret = phy_configure(dp->phy, &phy_cfg);
-> +		if (ret && ret != -EOPNOTSUPP) {
-> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
-> +			return;
-> +		}
-> +	}
->  }
->  
->  u32 analogix_dp_get_lane_link_training(struct analogix_dp_device *dp, u8 lane)
+>  	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+>  	if (!dp)
 > -- 
 > 2.34.1
 > 
