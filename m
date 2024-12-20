@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 741FFE7718A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007D4E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=waTfwYMO//lMhUoxpK7tcA25dsc8rH49wY/2wMMnFnY=; b=qD/y8nXnQqGQoJ
-	ZkflCQsTtty+lcSPGmf9kVH/IQuinePL+hrm+Ga00XrsRfUNHOGAFEjlVabWYmhPj6hU3RqcKZnss
-	nl2k13d5A6rR0kQ+kMRKZ5RL5GQouBWdC1AYYUUuRo7A0S/ONQxExOeyRAYYRpwFDmC+Wc0RCjeGV
-	A516BJ4IL9lgsJPvPndudJ2vDxO3BaRVx1p96AvleQUXQt4mJtk1L/VfSOdMIbt97uoxB6gZcOY4I
-	OKOov5+GzALmJrkxv/X8rZu7OVFS+wpah4CT4AGpD389pr+sZimf+TFAQCvBrs9tV1ut94dbqMmk5
-	CqRlqYN8cdu0ZxNLWJ+w==;
+	List-Owner; bh=0xiW1FtEo5rjrw87Pz8XHJhhPYX3if0UDoFiy+MDc2A=; b=RoJmfEEgZ3ioRz
+	mIQgWbU9p9PcLGmSn+M4iFNhExP2ueyu1BW0y/JL+251g8JjzaXNLBdkR3YtBnYj6FNwyNi33XuJ6
+	Sb8rPy4P1gk8/xgTaDC1n69Nn2ABPD/4uTZk0kS7aEUag/PoNF61x0J1ollaTQIoKQbTJeWmq53L+
+	vV12bjPvFdCscxrS23liZ/UMbAiY7ZWGlQ7fTHqnf8kHb00LXffVRqICFPvUHA8k22Yofk2ZcvVGx
+	uk/aM1IJ17+QaSo6+LlptI87TZyFN6KKsJL3tNZnubzKTETEBYoDKL3BKa0fKv7Kzj1i185K9IliH
+	hQM2C06UgVMwNOba6JLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOay8-00000004jHB-45Ap;
-	Fri, 20 Dec 2024 11:14:56 +0000
-Received: from mail-m15588.qiye.163.com ([101.71.155.88])
+	id 1tOayA-00000004jIl-2tEk;
+	Fri, 20 Dec 2024 11:14:58 +0000
+Received: from mail-m15591.qiye.163.com ([101.71.155.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOapj-00000004fEO-17vT
+	id 1tOapk-00000004fEv-0DGj
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 11:06:16 +0000
+	Fri, 20 Dec 2024 11:06:17 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 657291eb;
-	Fri, 20 Dec 2024 19:06:12 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 657291ef;
+	Fri, 20 Dec 2024 19:06:13 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
-	Finley Xiao <finley.xiao@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH 17/38] nvmem: rockchip-otp: Add support for rk3562
-Date: Fri, 20 Dec 2024 19:05:37 +0800
-Message-Id: <20241220110558.3511994-8-kever.yang@rock-chips.com>
+Subject: [PATCH 18/38] dt-bindings: phy: rockchip: Add rk3562 naneng-combophy compatible
+Date: Fri, 20 Dec 2024 19:05:38 +0800
+Message-Id: <20241220110558.3511994-9-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241220110558.3511994-1-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
  <20241220110558.3511994-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk4eQlYeH0wYS0xIQhlCTkJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e3bf1a1903afkunm657291eb
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhkaGFZNTB1DSE1KTEMeTE9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93e3bf1e2c03afkunm657291ef
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NDI6Agw6DDIOPggsGFENSBQs
-	AS9PChdVSlVKTEhPTUJJTExISEpCVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSEtCNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PCo6SBw5PDIODAhOTUo3SBcO
+	SwxPCxRVSlVKTEhPTUJJTExPS0JKVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFDSE03Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=UWmDRRqIwwam4OClGyr2mNiC+uSvj9VEBfVu7SRuT+aHTtGYtn+9zWNaLWZ2oM59Cn99Jim5Mg5Qw5KBUJLjSClQQrxIO6wMpBDoJCA5RY8P0sgwlJglS+faGo9qK4b6YOOjLtWlH28xaUXUVZ1gIOPq7NvYjttbTDq1oIqaVK4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vlTw8ucEItlFxpvsBPgpOAVij+6tEI4gYlpEt46V6aw=;
+	b=eYgZnT6D+LWznI/QFsTw8soiJMOksswkq7bC3z0MZw4A5Jd8uBjuB1JgvXxvSkwo57n3BIupFLpfrvgOOxIBgWwBqXN1kQ4ri1gX5ccaoK1YA8eIDWZpXD7Q3aAApUMvMULOMf0g39iOXVnRIOZqlIxFcF25c4EddMTdIP8yBPM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=dHzeIUe7fozDj8cUe5wnNwhlFJjGkU1QFipvtmXGK6U=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_030615_485668_B7B93E90 
-X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-CacheID: sfid-20241220_030616_267784_6EBAD58F 
+X-CRM114-Status: UNSURE (   5.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,50 +75,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+rk3562 use the same Naneng Combo Phy driver as rk3568.
 
-This adds the necessary data for handling otp on the rk3562.
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
- drivers/nvmem/rockchip-otp.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml     | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index a04bce89ecc8..6f86cf8ec390 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -341,6 +341,17 @@ static const struct rockchip_data px30_data = {
- 	.reg_read = px30_otp_read,
- };
- 
-+static const char * const rk3562_otp_clocks[] = {
-+	"usr", "sbpi", "apb_pclk", "phy",
-+};
-+
-+static const struct rockchip_data rk3562_data = {
-+	.size = 0x80,
-+	.clks = rk3562_otp_clocks,
-+	.num_clks = ARRAY_SIZE(rk3562_otp_clocks),
-+	.reg_read = rk3568_otp_read,
-+};
-+
- static const char * const rk3568_otp_clocks[] = {
- 	"usr", "sbpi", "apb_pclk", "phy",
- };
-@@ -372,6 +383,10 @@ static const struct of_device_id rockchip_otp_match[] = {
- 		.compatible = "rockchip,rk3308-otp",
- 		.data = &px30_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3562-otp",
-+		.data = &rk3562_data,
-+	},
- 	{
- 		.compatible = "rockchip,rk3568-otp",
- 		.data = &rk3568_data,
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+index 1b3de6678c08..888e6b2aac5a 100644
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+@@ -12,6 +12,7 @@ maintainers:
+ properties:
+   compatible:
+     enum:
++      - rockchip,rk3562-naneng-combphy
+       - rockchip,rk3568-naneng-combphy
+       - rockchip,rk3576-naneng-combphy
+       - rockchip,rk3588-naneng-combphy
 -- 
 2.25.1
 
