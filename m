@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACA2EE77184
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Dec 2024 21:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72FA1E77184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 00:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i3PoY8KWC8vGIVun3eGs+ss8jCM8e1Rj8YJchTv62so=; b=xVrVGZq7/FZjob
-	kB/cdOgCV+5y5/VMdWZWZRKDzoqzeNaZWYXmX/eo4ndn6M9shZEbC3eq/Og6M47enoNyVvOhA1TdE
-	NnxKYnzXE9i0AKmwGMcSGeHJoUWo4MQp5K5ZmXVgGJJA88mKvJs3YDaCy3nxWD1beZeiAYU/ndN+n
-	sI+ZoR12vJCgYmJ6kmNOaQgJfUGTFyOHZiTtR3vsvCIr7memXwHsN4nG8Ea7dDiNWoLHLfKL7fBrC
-	JVXbRg53eibVyV8Ak5z/I0ifucbokqo8f06gxJTdm2uvFcPn/FiND+4rj6h94Bugdv+aZTCm4Lpmk
-	RltnaUplEsKdtc/RCeSA==;
+	List-Owner; bh=ozkz5ZXdzUNvO3Ivqw9fYOLENQi3MUYZSnXifPLR4bk=; b=oqVKuPpPV3RkkU
+	pBxrb4SYbu16r2xUWnj4KvoPh+ex0JAfK5XOX85sz9+YtQDSb+k/kTviUuEzJ/JeVUzSJFtqr34RZ
+	47vQArNhpWVg5tfkJe724/ZkMtX0i/J6Zp3x6rZxpgoj4B2Ug3oRy+Di9y3UmjJ5i4WXx8nTIo4F/
+	lHQuymAmqY4dhBU1P0rTyGgEoqFe2S3C8Jh9iMbxLNJOZEzNRAXRezUnqPyM8a5rrpkWMuXqmlIc1
+	loKlGRi6zhau2ojO02DWyYjStGasYzHp5RsCQ6L+Bl5Euys0PWjlfe4FPjOWwfzSv/6MffhKQguYJ
+	xmJyA3XmiHKgLsr3ffig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tONmp-0000000373F-3EqF;
-	Thu, 19 Dec 2024 21:10:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tOQeY-00000003Qpf-27Er;
+	Fri, 20 Dec 2024 00:14:02 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOMiz-00000002xCZ-0XGs;
-	Thu, 19 Dec 2024 20:02:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Tp2pK6lzyD5U9SMCt2mZyhgNP17G7t7mTEM/wB/wlzQ=; b=vBiqfcfLrYdj2SfSKxFCxxLjK5
-	+BS3nhubWvI92g3iIT3ypQf/dHEO/g1f4zOpaKzpvZEkvmPLoEPep20OfdzOiF2SAWqbnhTytrPdA
-	uJVoWP87LdoKm3S+yL2kc94F48IauVLGVGpB/Q1Wy51CmGC0fh3qxpWm7VJUqeUNWE8WDVJl4MuKQ
-	q2eS+OKgcX7UDcMJrvQ4PlWw7PHEuZty29h2oTg7fH79wzGku+teodDzj3V5awl2mb7A3z1R5Uzd6
-	7EBx3lL/rpI4kEgylLcBNvjVY438SLRm13XuU67Eb/Y+fxgQElD/NL/09Xisvf18vDUwJPoJfNKJx
-	twovPmzA==;
-Received: from i53875bfb.versanet.de ([83.135.91.251] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tOMic-0002JL-NF; Thu, 19 Dec 2024 21:01:58 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: lee@kernel.org, jikos@kernel.org, jic23@kernel.org,
- Kees Bakker <kees@ijzerbout.nl>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- jdelvare@suse.com, linux@roeck-us.net, srinivas.pandruvada@linux.intel.com,
- bentiss@kernel.org, dmitry.torokhov@gmail.com, pavel@ucw.cz,
- ukleinek@debian.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-input@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-leds@vger.kernel.org
-Subject: Re: [PATCH v9 4/9] mfd: add base driver for qnap-mcu devices
-Date: Thu, 19 Dec 2024 21:01:57 +0100
-Message-ID: <5047567.0VBMTVartN@diego>
-In-Reply-To: <4cecc705-84ab-44d5-8725-eb973254f257@ijzerbout.nl>
-References: <20241107114712.538976-1-heiko@sntech.de> <3130486.CbtlEUcBR6@diego>
- <4cecc705-84ab-44d5-8725-eb973254f257@ijzerbout.nl>
+	id 1tOQeV-00000003Qnu-1UAZ
+	for linux-rockchip@lists.infradead.org;
+	Fri, 20 Dec 2024 00:14:00 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-53f757134cdso1329091e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Dec 2024 16:13:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734653637; x=1735258437; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=+t86gi9G7/Nyl3NdC1IVXRnYkcURnLh8hewaEmUmJ3Y=;
+        b=PoPIDl2CaI2gb/EJNzHUgnUVhMqFbyzDhOUW1J2g+0BRDmi+1jbJo5jmLNsJDGLauV
+         rOiBujQbSSeBsDmSwrralSiz3vxz28L/R0lcSGh6U7l+wZ2isDpz0/cupVLrHY1RvOR2
+         pgUA+D6kH0zRpt68FxAEKASIEqJt9skn+mCHevB2S6YL3XSs65hnSk9rxhUrVXoXJlfg
+         +Sk9Emxr5a9oyOjbZMLECUUabuwxo0qgIDbKOlW+QblQwM3Zk7wbQ5tWaHtolvYl0q2D
+         KeBuZNVeZ451iSP8gmPI4Ktvg41P2pFXWlLK6jUaePiiRu3fz2QrjCLWCoqFP1vgimx2
+         li0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734653637; x=1735258437;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+t86gi9G7/Nyl3NdC1IVXRnYkcURnLh8hewaEmUmJ3Y=;
+        b=sSO+g2cOJ+/q9Fd8kM7WJleK3FQO6mDanmBNX4vHaykl5716kJVq1ejDZKLTnZ3zhQ
+         71VVei3OsxXFplnoMw/WR6Rkcw91IgzJ4mfcocvuKK3CkjZusbKtCdcBjE9MDi8SLaoy
+         mTukXhInLuVt4HAEqz+jWZe7k9SoBA07m6Jyc/HuyuUBRrPJEZHAFvGwqGi7rllRNz9v
+         5RetWcPSU/McJycMe4YCvtIHRvG1mQA5TLaG7m7F0orrbPE6C5lFxoA+M9hd8fGX6gUS
+         kirthMv8Dr5LA+fZmTppSQSA9ITTMxeRsllonUdEaptebwRz3YL4UXRJfr0yfP2n0V18
+         pzUw==
+X-Forwarded-Encrypted: i=1; AJvYcCUfsZIwynJjEZEoDgb8xsYaHf5AbxpVvdFJv0nSZE7j12B3FbAOWmeDv35cm3JxP9bLzdjlKwc8K8+mElLDZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHZPUNu53u5MXOaQ/Y6DXS+4Ei6/nh+Aaj4Rr3zIiXZmMT5+CJ
+	NvwnaHNzGljsLhFtRCj508Tsr6XSCLjSmBGDS3BomtuJM9dY4alLgThv+Gu60RE=
+X-Gm-Gg: ASbGncsdVcnFFWN0hnx/qS9d6R3ifExv7fIfswZV3UNo9uuS013nUeaBfN+VOCC1+S2
+	zjbZap3VlxTZYL9pZcjAjeoODc3YHUouR7e6c7NX05lTlLE+swQbke06CRaZWg7rlNcAZEU4AQt
+	kjX/KwOESaSgGMDEX4RPwSYZHDihrGP2ssvKiHdAHuulpMR3KuqrLXuj2evTM7KOuOuH6T0chlj
+	AOBoZpH0xyeZ1Zn2w4pp8lTVOC480wwM2eBgQ50PIEwdYk6/ryrLOoQrI2cFPY5K2UFwtd0MboD
+	rPuIwlFw1GaH+qlTVUC2Z9DSYtYUAoK1Gy5c
+X-Google-Smtp-Source: AGHT+IF+jUkTs+trNuGfxVH/FmJYswxWVXFWxwsAch+XkSokcdZa7gP9TyRJCdDwYd2ZnKdNocqqsQ==
+X-Received: by 2002:a05:6512:33cd:b0:540:358d:d9b7 with SMTP id 2adb3069b0e04-5422957ac6cmr152434e87.52.1734653637396;
+        Thu, 19 Dec 2024 16:13:57 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-542238215b6sm308711e87.188.2024.12.19.16.13.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Dec 2024 16:13:56 -0800 (PST)
+Date: Fri, 20 Dec 2024 02:13:53 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v3 07/15] drm/bridge: analogix_dp: Add support for phy
+ configuration.
+Message-ID: <a6vvydjbx3hbckoy74iiyzguyyacwvdh6iirqydjfvhwgocw3a@knecggjcbcid>
+References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
+ <20241219080604.1423600-8-damon.ding@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241219080604.1423600-8-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241219_120221_169724_227A9CB3 
-X-CRM114-Status: GOOD (  34.76  )
+X-CRM114-CacheID: sfid-20241219_161359_406695_45E48DF6 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,134 +92,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 19. Dezember 2024, 20:51:41 CET schrieb Kees Bakker:
-> Op 19-12-2024 om 20:43 schreef Heiko St=FCbner:
-> > Hi Kees,
-> >
-> > Am Donnerstag, 19. Dezember 2024, 20:18:38 CET schrieb Kees Bakker:
-> >> Op 07-11-2024 om 12:47 schreef Heiko Stuebner:
-> >>> These microcontroller units are used in network-attached-storage devi=
-ces
-> >>> made by QNAP and provide additional functionality to the system.
-> >>>
-> >>> This adds the base driver that implements the serial protocol via
-> >>> serdev and additionally hooks into the poweroff handlers to turn
-> >>> off the parts of the system not supplied by the general PMIC.
-> >>>
-> >>> Turning off (at least the TSx33 devices using Rockchip SoCs) consists=
- of
-> >>> two separate actions. Turning off the MCU alone does not turn off the=
- main
-> >>> SoC and turning off only the SoC/PMIC does not turn off the hard-driv=
-es.
-> >>> Also if the MCU is not turned off, the system also won't start again =
-until
-> >>> it is unplugged from power.
-> >>>
-> >>> So on shutdown the MCU needs to be turned off separately before the
-> >>> main PMIC.
-> >>>
-> >>> The protocol spoken by the MCU is sadly not documented, but was
-> >>> obtained by listening to the chatter on the serial port, as thankfully
-> >>> the "hal_app" program from QNAPs firmware allows triggering all/most
-> >>> MCU actions from the command line.
-> >>>
-> >>> The implementation of how to talk to the serial device got some
-> >>> inspiration from the rave-sp servdev driver.
-> >>>
-> >>> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> >>> ---
-> >>>    MAINTAINERS                  |   6 +
-> >>>    drivers/mfd/Kconfig          |  13 ++
-> >>>    drivers/mfd/Makefile         |   2 +
-> >>>    drivers/mfd/qnap-mcu.c       | 338 +++++++++++++++++++++++++++++++=
-++++
-> >>>    include/linux/mfd/qnap-mcu.h |  26 +++
-> >>>    5 files changed, 385 insertions(+)
-> >>>    create mode 100644 drivers/mfd/qnap-mcu.c
-> >>>    create mode 100644 include/linux/mfd/qnap-mcu.h
-> >>>
-> >>> [...]
-> >>> diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
-> >>> new file mode 100644
-> >>> index 000000000000..4be39d8b2905
-> >>> --- /dev/null
-> >>> +++ b/drivers/mfd/qnap-mcu.c
-> >>> [...]
-> >>> +int qnap_mcu_exec(struct qnap_mcu *mcu,
-> >>> +		  const u8 *cmd_data, size_t cmd_data_size,
-> >>> +		  u8 *reply_data, size_t reply_data_size)
-> >>> +{
-> >>> +	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
-> >>> +	size_t length =3D reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
-> >>> +	struct qnap_mcu_reply *reply =3D &mcu->reply;
-> >>> +	int ret =3D 0;
-> >>> +
-> >>> +	if (length > sizeof(rx)) {
-> >>> +		dev_err(&mcu->serdev->dev, "expected data too big for receive buff=
-er");
-> >>> +		return -EINVAL;
-> >>> +	}
-> >>> +
-> >>> +	mutex_lock(&mcu->bus_lock);
-> >>> +
-> >>> +	reply->data =3D rx,
-> >>> +	reply->length =3D length,
-> >>> +	reply->received =3D 0,
-> >>> +	reinit_completion(&reply->done);
-> >>> +
-> >>> +	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
-> >>> +
-> >>> +	serdev_device_wait_until_sent(mcu->serdev, msecs_to_jiffies(QNAP_MC=
-U_TIMEOUT_MS));
-> >>> +
-> >>> +	if (!wait_for_completion_timeout(&reply->done, msecs_to_jiffies(QNA=
-P_MCU_TIMEOUT_MS))) {
-> >>> +		dev_err(&mcu->serdev->dev, "Command timeout\n");
-> >>> +		ret =3D -ETIMEDOUT;
-> >>> +	} else {
-> >>> +		u8 crc =3D qnap_mcu_csum(rx, reply_data_size);
-> >> Here `rx` is still not initialized.
-> > The MCU works in a way that a sent command always causes "reply_data_si=
-ze"
-> > bytes to be returned.
-> >
-> > So for each qnap_mcu_write() above we know that this amount of bytes has
-> > been returned (and thus written into rx) if the completion above finish=
-es
-> > sucessfully.
-> >
-> > "rx" is assigned to reply->data above (same as the expected received si=
-ze).
-> > When characters are received on the serial line, this will trigger
-> > qnap_mcu_receive_buf() from the serdev and thus fill those elements in =
-rx.
-> >
-> > So if we land at the qnap_mcu_csum() call, we do have received the expe=
-cted
-> > amount of bytes from the serdev and thus rx is filled accordingly.
-> >
-> > If we don't receive the needed amount of bytes, we end up in the timeout
-> > above that.
-> >
-> > What did I miss?
-> Sorry, my fault. I missed the essential part of the external event (exter=
-nal
-> for this function that is).
-> Thanks for explaining.
+On Thu, Dec 19, 2024 at 04:05:56PM +0800, Damon Ding wrote:
+> Add support to configurate link rate, lane count, voltage swing and
+> pre-emphasis with phy_configure(). It is helpful in application scenarios
+> where analogix controller is mixed with the phy of other vendors.
+> 
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - remove needless assignments for phy_configure()
+> - remove unnecessary changes for phy_power_on()/phy_power_off()
+> ---
+>  .../drm/bridge/analogix/analogix_dp_core.c    |  1 +
+>  .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 56 +++++++++++++++++++
+>  2 files changed, 57 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 6f10d88a34c5..9429c50cc1bc 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -1696,6 +1696,7 @@ int analogix_dp_resume(struct analogix_dp_device *dp)
+>  	if (dp->plat_data->power_on)
+>  		dp->plat_data->power_on(dp->plat_data);
+>  
+> +	phy_set_mode(dp->phy, PHY_MODE_DP);
+>  	phy_power_on(dp->phy);
+>  
+>  	analogix_dp_init_dp(dp);
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> index 3afc73c858c4..613ce504bea6 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/gpio/consumer.h>
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+> +#include <linux/phy/phy.h>
+>  
+>  #include <drm/bridge/analogix_dp.h>
+>  
+> @@ -513,10 +514,25 @@ void analogix_dp_enable_sw_function(struct analogix_dp_device *dp)
+>  void analogix_dp_set_link_bandwidth(struct analogix_dp_device *dp, u32 bwtype)
+>  {
+>  	u32 reg;
+> +	int ret;
+>  
+>  	reg = bwtype;
+>  	if ((bwtype == DP_LINK_BW_2_7) || (bwtype == DP_LINK_BW_1_62))
+>  		writel(reg, dp->reg_base + ANALOGIX_DP_LINK_BW_SET);
+> +
+> +	if (dp->phy) {
+> +		union phy_configure_opts phy_cfg = {0};
+> +
+> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
 
-no worries :-) .
+Should not be necessary, you are only setting the .set_rate.
 
-The more eyes, the better.
+> +		phy_cfg.dp.link_rate =
+> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
+> +		phy_cfg.dp.set_rate = true;
+> +		ret = phy_configure(dp->phy, &phy_cfg);
+> +		if (ret && ret != -EOPNOTSUPP) {
+> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
+> +			return;
+> +		}
+> +	}
+>  }
+>  
+>  void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
+> @@ -530,9 +546,22 @@ void analogix_dp_get_link_bandwidth(struct analogix_dp_device *dp, u32 *bwtype)
+>  void analogix_dp_set_lane_count(struct analogix_dp_device *dp, u32 count)
+>  {
+>  	u32 reg;
+> +	int ret;
+>  
+>  	reg = count;
+>  	writel(reg, dp->reg_base + ANALOGIX_DP_LANE_COUNT_SET);
+> +
+> +	if (dp->phy) {
+> +		union phy_configure_opts phy_cfg = {0};
+> +
+> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
+> +		phy_cfg.dp.set_lanes = true;
+> +		ret = phy_configure(dp->phy, &phy_cfg);
+> +		if (ret && ret != -EOPNOTSUPP) {
+> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
+> +			return;
+> +		}
+> +	}
+>  }
+>  
+>  void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
+> @@ -546,10 +575,37 @@ void analogix_dp_get_lane_count(struct analogix_dp_device *dp, u32 *count)
+>  void analogix_dp_set_lane_link_training(struct analogix_dp_device *dp)
+>  {
+>  	u8 lane;
+> +	int ret;
+>  
+>  	for (lane = 0; lane < dp->link_train.lane_count; lane++)
+>  		writel(dp->link_train.training_lane[lane],
+>  		       dp->reg_base + ANALOGIX_DP_LN0_LINK_TRAINING_CTL + 4 * lane);
+> +
+> +	if (dp->phy) {
+> +		union phy_configure_opts phy_cfg = {0};
+> +
+> +		for (lane = 0; lane < dp->link_train.lane_count; lane++) {
+> +			u8 training_lane = dp->link_train.training_lane[lane];
+> +			u8 vs, pe;
+> +
+> +			vs = (training_lane & DP_TRAIN_VOLTAGE_SWING_MASK) >>
+> +			     DP_TRAIN_VOLTAGE_SWING_SHIFT;
+> +			pe = (training_lane & DP_TRAIN_PRE_EMPHASIS_MASK) >>
+> +			     DP_TRAIN_PRE_EMPHASIS_SHIFT;
+> +			phy_cfg.dp.voltage[lane] = vs;
+> +			phy_cfg.dp.pre[lane] = pe;
+> +		}
+> +
+> +		phy_cfg.dp.lanes = dp->link_train.lane_count;
+> +		phy_cfg.dp.link_rate =
+> +			drm_dp_bw_code_to_link_rate(dp->link_train.link_rate) / 100;
 
-Heiko
+This two should not be necessary, please drop them.
 
+> +		phy_cfg.dp.set_voltages = true;
+> +		ret = phy_configure(dp->phy, &phy_cfg);
+> +		if (ret && ret != -EOPNOTSUPP) {
+> +			dev_err(dp->dev, "%s: phy_configure() failed: %d\n", __func__, ret);
+> +			return;
+> +		}
+> +	}
+>  }
+>  
+>  u32 analogix_dp_get_lane_link_training(struct analogix_dp_device *dp, u8 lane)
+> -- 
+> 2.34.1
+> 
 
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
