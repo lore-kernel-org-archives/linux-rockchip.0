@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F57E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57EEFE7718A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rybaJYmKve4fWNIgQrNtFL+e1Spw78MMy9NkhUJKS7A=; b=T81QNhRBk916FT
-	tO221TAzlraS4O0Sr1yvCKnB6BFMzdGI3XKujhpzwhGYkFvH0yeah+UbWYMM+OnuJDbfub/vcw9zB
-	EIdx4BAsuEVmLqbvkOrOs5VwD9YHPPF3u28+W5fBaA2fRMpeJaSj5IZM8kINE1EDEgpNHeW+PVmZ+
-	0vfA8T3mP3tNgEqIyD/V3VWQCo3XnuI/XIfRzQTYAtSh3DSOJoE6hN7qSmpeg9Oqo13VuSaDQVdaS
-	pw08TTdW0oVjjgJ6tY3zbYExMHZyWHqOoWIQVdWjyzrojaUROLfHXJbBpp9dxcXZMnbDkvqB4wHbQ
-	rgQxmEcygk4cPfPfLGWA==;
+	List-Owner; bh=cRk8JzM9A8EBh3kGneDRg3yi8vzKRo/i0j8uOo0gEVY=; b=nlel7rGysX0+DK
+	hedZzSmC7AxUNU8wa459n70mLpfthjsxykHwYdbs7odJdcRz7xUnQaDpeuzRXKyQLAE6ZwtEvA32Z
+	+N7bDNVITpph4kWzDJZwInm4MebYTIG1QevJWpaJynxzktRbUCqD6kX1JjYDkxfDcbzkEN+5ngFDH
+	nI3a1L7Ie6HRi6x5S9FplOpwEPVLsn8+pPBYsC14lvI/dQ4d9jQBCX7Mzu5/Sw/7eR0bP9mhwbrzg
+	v4eqH6joyhOHSds66S4FVDxwSq1AjgX24dpv4JiMAXBt800DsdJ4NG+JjSj06ww7xX8zQqG1OwS34
+	MEAQRpYwLqG5BHf0yQrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOayF-00000004jQj-1unx;
-	Fri, 20 Dec 2024 11:15:03 +0000
-Received: from mail-m15597.qiye.163.com ([101.71.155.97])
+	id 1tOayI-00000004jWJ-2TjR;
+	Fri, 20 Dec 2024 11:15:06 +0000
+Received: from mail-m155104.qiye.163.com ([101.71.155.104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOapl-00000004fFm-32qN
+	id 1tOapn-00000004fGT-11eP
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Dec 2024 11:06:18 +0000
+	Fri, 20 Dec 2024 11:06:20 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 657291f6;
-	Fri, 20 Dec 2024 19:06:14 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 657291ff;
+	Fri, 20 Dec 2024 19:06:16 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH 20/38] dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
-Date: Fri, 20 Dec 2024 19:05:40 +0800
-Message-Id: <20241220110558.3511994-11-kever.yang@rock-chips.com>
+Subject: [PATCH 22/38] dt-bindings: PCI: dwc: rockchip: Add rk3562 support
+Date: Fri, 20 Dec 2024 19:05:42 +0800
+Message-Id: <20241220110558.3511994-13-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241220110558.3511994-1-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
  <20241220110558.3511994-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0pCQlZPH0lNSU0ZHkhNTB5WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR9OT1YeQk0dS0gdTh4ZTxpWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e3bf245703afkunm657291f6
+X-HM-Tid: 0a93e3bf2b6d03afkunm657291ff
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nxw6Lyo6CzIUNggKCEoDSA1L
-	Q1EKCQJVSlVKTEhPTUJJTExOTU1KVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSExPNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OVE6TDo6TzINCAg1TUoWSBEZ
+	PjIwCT5VSlVKTEhPTUJJTExMT0hKVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFDS003Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=hG/v46CPCrhT2pCFdhtRtaV1Bf3+WfFeT3dfrcqpDkoLK6xwCRt4uqzenDw3CdNC79w+Ll4/AAEFxo0Y4ucqRw7Wye/mOnXyE95nyNLNugbSCo5TkcsQ78P05bNuF8j6pDmQ5UM8+CqKfaVdqwgMRVirwkF4kOQAxTfel8jD8j0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=l4sS4jdc6mI0+Llv9QtpAg8NbLOEBMveI73kPmorKsY=;
+	b=gd8YY4xdasUMFJGnpplzoZqUvdlahV/TNmUYEp/5XUzM6TuR19UMkwewBpp/Lmo21cPcwVbjQAOeE5BOZhA9syweRV/1pveISitJSAoR1cC1oAptOCUwjn7To5H0DBCv5AvsOlHSdRzUpcyqzVQfg9lNb9mDB5deDlGrJy/NTB8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=XlZSKzqDAI8Q/sWLhvLW2bRYC8/gbbsgUgVrglap+7k=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_030617_938082_4D3B4CD6 
-X-CRM114-Status: UNSURE (   6.04  )
+X-CRM114-CacheID: sfid-20241220_030619_442139_259EF129 
+X-CRM114-Status: UNSURE (   5.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,42 +75,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add compatible for the USB2 phy in the Rockchip RK3562 SoC.
+rk3562 is using the same controller as rk3568.
 
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
- .../devicetree/bindings/phy/rockchip,inno-usb2phy.yaml         | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-index 6a7ef556414c..367297f6f8b5 100644
---- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-@@ -19,6 +19,7 @@ properties:
-       - rockchip,rk3328-usb2phy
-       - rockchip,rk3366-usb2phy
-       - rockchip,rk3399-usb2phy
-+      - rockchip,rk3562-usb2phy
-       - rockchip,rk3568-usb2phy
-       - rockchip,rk3576-usb2phy
-       - rockchip,rk3588-usb2phy
-@@ -150,7 +151,6 @@ allOf:
-             enum:
-               - rockchip,rk3568-usb2phy
-               - rockchip,rk3588-usb2phy
--
-     then:
-       properties:
-         host-port:
-@@ -190,6 +190,7 @@ allOf:
-               - rockchip,rk3328-usb2phy
-               - rockchip,rk3366-usb2phy
-               - rockchip,rk3399-usb2phy
-+              - rockchip,rk3562-usb2phy
-               - rockchip,rk3568-usb2phy
-               - rockchip,rk3588-usb2phy
-               - rockchip,rv1108-usb2phy
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+index 9a464731fa4a..dce6d68865c7 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+@@ -26,6 +26,7 @@ properties:
+       - const: rockchip,rk3568-pcie
+       - items:
+           - enum:
++              - rockchip,rk3562-pcie
+               - rockchip,rk3576-pcie
+               - rockchip,rk3588-pcie
+           - const: rockchip,rk3568-pcie
 -- 
 2.25.1
 
