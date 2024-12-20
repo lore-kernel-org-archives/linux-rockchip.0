@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE33E7718A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 08:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B2CE77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 10:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=26hgBGZ8cVKHhc+iNdtX/kYOsFV0EbkBuCZhYHAt1NE=; b=eja+fVHaV4ceEW4hMjWs5Yqoet
-	lCcOYD1e0Pb/+tY/u8T7rk7wZw2mkqDqn6eO9aKRXucdYS8N1xxMRrXYUxRJlTF8y6EAbsoJj9kec
-	x/kIPv6kdgNem7iuA8yhfl+PQy8OMDwujvs8STRQ+NCznDZyFTE0RuV+9uyEBitvBaHiOAWmlgmIr
-	39APXgMp1lTsTzTpPLtGWDpjDIrD6Rg6CNQouppdPoj+JiNHbT5gnbbf2Rq5iyCDHQfiP1vvfrR3E
-	w10nmZrXeVBO/azf9JWt4Ub+7eCENcdTw4LuT3y3CLNfXsXzY4OtuyVzszeELS4RQZwwJC1qwQybq
-	HGar5AbQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FAsIIJ586taDOn62X5pqILJBOkmtGYj+ziAQ/kTuP5U=; b=163C+wn0E3luua
+	hLZoxMsUhCKhgd8OhY8nI4WTX2E+k4rbz5vPlZUtgirEgDKJwLBkXW4H4ki25gU2ex5L/3nDCvSC/
+	8ADPtItpGOi9sciz0+q5kOGqoZzB/+UiGypL+chsIrrrKnrN7H+q/rI5X7xexayiWwIrZg2UdLDQk
+	RhzoyaSTJ0GhhxTCbUj0P3O2ge8FQZwMRT2Te0jMoC0s274DmsQDKUZ62OxBnfgXbeTHeF1QF09c4
+	ZLUjYEVWLO+GZJVpVvq7kSh9oVfOdIxEhCvLNiH/K6tp/jr/v4eVzp2gLe6NLuOr+ulnZdbFpSRai
+	i3yDQbB0kBEnggadCseA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOYOB-00000004HOa-2hiN;
-	Fri, 20 Dec 2024 08:29:39 +0000
-Received: from mail-m127208.xmail.ntesmail.com ([115.236.127.208])
+	id 1tOa8x-00000004ZYE-0LDc;
+	Fri, 20 Dec 2024 10:22:03 +0000
+Received: from mail-m19731120.qiye.163.com ([220.197.31.120])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOYO7-00000004HN5-2ZVn;
-	Fri, 20 Dec 2024 08:29:37 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 6524bd1b;
-	Fri, 20 Dec 2024 16:29:28 +0800 (GMT+08:00)
-Message-ID: <3663bbec-fcb2-4f93-aae6-3c2082491069@rock-chips.com>
-Date: Fri, 20 Dec 2024 16:29:27 +0800
+	id 1tOa3A-00000004YSs-0Tzy;
+	Fri, 20 Dec 2024 10:16:05 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 655ee8f9;
+	Fri, 20 Dec 2024 18:15:54 +0800 (GMT+08:00)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2 1/7] dts: arm64: rockchip: Add rk3576 naneng combphy nodes
+Date: Fri, 20 Dec 2024 18:15:45 +0800
+Message-Id: <20241220101551.3505917-2-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241220101551.3505917-1-kever.yang@rock-chips.com>
+References: <20241220101551.3505917-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/15] drm/rockchip: analogix_dp: Add support to get
- panel from the DP AUX bus
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
- <20241219080604.1423600-9-damon.ding@rock-chips.com>
- <aiggslcdbdmnc2amlvmzycyxmu3f5zp6kt4ifgzq5gkuugmnem@oqnwf4o7hbss>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <aiggslcdbdmnc2amlvmzycyxmu3f5zp6kt4ifgzq5gkuugmnem@oqnwf4o7hbss>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkkfSFZMQ0hDHUMeTkMYGEJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e32f9ba603a3kunm6524bd1b
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0YGFZCTExMSUNMHk9JS0lWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93e3910ec103afkunm655ee8f9
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PRA6Lgw6ETIUTQg#DBcePSI8
-	AiwKCRBVSlVKTEhPTUNISExLSkJLVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJQ0pDNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MBQ6PSo*TTIUTQgvMDMNM0wV
+	LShPFAlVSlVKTEhPTUNCTE5NSUhNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJS09INwY+
 DKIM-Signature: a=rsa-sha256;
-	b=iEi6g1WMQQreiv/+FEJCxMCUiHjf/pV7eXzPhn/R84mzSsPiUpa3E0pgNA78zs+aUH82NbkYE5nvx0SD3EXcLWntxzRLBLx5uPo67d6NN2FC4uiXzp/o+RB9hp572xA8aE1pa2rgbtS2afjv1ldkQhc3tnc4vYHr8cUpRnoDCyg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=GihI+WisojgBHpW5R0ME2hXDuA+DiNX0v2ROBByVWgY=;
+	b=LHm6IXmSWU2R8sVXMNeVDVBCevVAd8UgDuCu0E9AFoIfsNYilmnnvjrwK7R2dd0Y74E6BMpTlt33J6WvF9N7A7zzsuNKkY+V7Y4ngFZf7Mo1zUV5LR2XiCC2/VKhzWfsdGjSD4D0pTz+F5RReF8p/kn4tpbgEiL+UqVGfaPJWeA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=VcSwRVt3H0f3RKt3MQIfunyz6ue6nKZTuTheD8LW6gs=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_002936_183035_67EF117E 
-X-CRM114-Status: GOOD (  22.87  )
+X-CRM114-CacheID: sfid-20241220_021604_654175_F161B6AF 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,92 +79,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+rk3576 has two naneng combo phy,
+- combophy0 is used for one of pcie and sata;
+- combophy1 is used for one of pcie, sata and usb3;
 
-On 2024/12/20 8:16, Dmitry Baryshkov wrote:
-> On Thu, Dec 19, 2024 at 04:05:57PM +0800, Damon Ding wrote:
->> The rockchip_dp_of_panel_on_aux_bus() helps to check whether the DT
->> configurations related to the DP AUX bus are correct or not.
->>
->> If failed to get the panel from the platform bus, it is good to try
->> the DP AUX bus. Then, the probing process will continue until it enters
->> the analogix_dp_bind(), where devm_of_dp_aux_populate_bus() is called
->> after &analogix_dp_device.aux has been initialized.
-> 
-> No. devm_of_dp_aux_populate_bus() should be called before bind(). And
-> bind should only be called from the done_probing() callback. The reason
-> is very simple: the panel driver might be built as a module and might be
-> not available when the analogix driver is being probed.
-> 
-> Also, please invert the logic of the commit message (and the driver).
-> The platform bus should be a fallback if there is no AUX bus panel, not
-> other way around.
-> 
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
 
-I have tried the logic as you recommanded, and it is really a good way. 
-I will fix this in the next version.
+Changes in v2:
+- update the clock and reset names to pass the DTB CHECK
 
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> ---
->>   .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 24 +++++++++++++++++--
->>   1 file changed, 22 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index ba5263f85ee2..60c902abf40b 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -317,6 +317,24 @@ static const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs =
->>   	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
->>   };
->>   
->> +static bool rockchip_dp_of_panel_on_aux_bus(const struct device_node *np)
->> +{
->> +	struct device_node *bus_node, *panel_node;
->> +
->> +	bus_node = of_get_child_by_name(np, "aux-bus");
->> +	if (!bus_node)
->> +		return false;
->> +
->> +	panel_node = of_get_child_by_name(bus_node, "panel");
->> +	of_node_put(bus_node);
->> +	if (!panel_node)
->> +		return false;
->> +
->> +	of_node_put(panel_node);
->> +
->> +	return true;
->> +}
->> +
->>   static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
->>   {
->>   	struct device *dev = dp->dev;
->> @@ -435,8 +453,10 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->>   		return -ENODEV;
->>   
->>   	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
->> -	if (ret < 0)
->> -		return ret;
->> +	if (ret < 0) {
->> +		if (!rockchip_dp_of_panel_on_aux_bus(dev->of_node))
->> +			return ret;
->> +	}
->>   
->>   	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
->>   	if (!dp)
->> -- 
->> 2.34.1
->>
-> 
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 36 ++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-Best regards,
-Damon
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 436232ffe4d1..a147879da501 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1587,6 +1587,42 @@ uart11: serial@2afd0000 {
+ 			status = "disabled";
+ 		};
+ 
++		combphy0_ps: phy@2b050000 {
++			compatible = "rockchip,rk3576-naneng-combphy";
++			reg = <0x0 0x2b050000 0x0 0x100>;
++			#phy-cells = <1>;
++			clocks = <&cru CLK_REF_PCIE0_PHY>,
++				 <&cru PCLK_PCIE2_COMBOPHY0>,
++				 <&cru PCLK_PCIE0>;
++			clock-names = "ref", "apb", "pipe";
++			assigned-clocks = <&cru CLK_REF_PCIE0_PHY>;
++			assigned-clock-rates = <100000000>;
++			resets = <&cru SRST_PCIE0_PIPE_PHY>,
++				 <&cru SRST_P_PCIE2_COMBOPHY0>;
++			reset-names = "phy", "apb";
++			rockchip,pipe-grf = <&php_grf>;
++			rockchip,pipe-phy-grf = <&pipe_phy0_grf>;
++			status = "disabled";
++		};
++
++		combphy1_psu: phy@2b060000 {
++			compatible = "rockchip,rk3576-naneng-combphy";
++			reg = <0x0 0x2b060000 0x0 0x100>;
++			#phy-cells = <1>;
++			clocks = <&cru CLK_REF_PCIE1_PHY>,
++				 <&cru PCLK_PCIE2_COMBOPHY1>,
++				 <&cru PCLK_PCIE1>;
++			clock-names = "ref", "apb", "pipe";
++			assigned-clocks = <&cru CLK_REF_PCIE1_PHY>;
++			assigned-clock-rates = <100000000>;
++			resets = <&cru SRST_PCIE1_PIPE_PHY>,
++				 <&cru SRST_P_PCIE2_COMBOPHY1>;
++			reset-names = "phy", "apb";
++			rockchip,pipe-grf = <&php_grf>;
++			rockchip,pipe-phy-grf = <&pipe_phy1_grf>;
++			status = "disabled";
++		};
++
+ 		sram: sram@3ff88000 {
+ 			compatible = "mmio-sram";
+ 			reg = <0x0 0x3ff88000 0x0 0x78000>;
+-- 
+2.25.1
 
 
 _______________________________________________
