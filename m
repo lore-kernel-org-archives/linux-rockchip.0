@@ -4,75 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35774E77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 16:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E959E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 16:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r2mxyacinbyIELqcJmNcWBSdRepQNJREpTSgT2oA/N8=; b=M1YEm7wB7Tvsfe
-	HdZ+nmfQ5ZC8sI2MlILxiHCzIjziFb+X7AZR/KmknXm8vJbNeT2s8AfHIdSK6LHjyl/ma8zWV7Fd1
-	Z+dF48cdal9ZeNpQOPmTtWtoEYz0AZm4wUTCu6XWkiQvksGYnqyj2gaUo4jZK9fiZf+lUYWvIPLVU
-	k8R/oR1Odij7nXrNhhvISxtnM5y41tPrb23HwGUCqNv/A7NaHWVVJaLMlKDeUw5I8Rg3EeLGhpiyd
-	5RJoO16Ak1si/OanV8W31tn88gvZI0Ph23NZ9loCjuTfFaJKjO4a6raYzYW85ZyT0tp3sotHF10K8
-	WiaY/5B8cNPmELl1sj1w==;
+	List-Owner; bh=WaEuW0ayvX7iCT5VdlZzvy9dubzA8Y0I6bUS2G2MWxY=; b=fFZxyay/3YzFCF
+	opiKb9jtEHWRzybI/cnVJwIfcx4k8TnexqBnNnpbiWwNde9k+oucw45QrfJsU7YSUVwILMm0EMuWh
+	VeLhm9kcOt1xl4gE8Uz7S+h5M4LF6uypanercI+O0bRVx6LSo93prxVKef5F11U8UEhUf71bBTo0Z
+	geHndBlcGGhJ1FJMIExV1Z2Hjl4qzH5oHIGNpM+2Ydx71oTanCWQUaDAjk1zuhNYswRUN+KZGw4Ru
+	b9aA82TaWZlQ8/So31fSrqmvOQFEBGI/EpLhEsxnWcaLJIwLs3gZjuuA5UG7wtbomnFFZ2LsD0R9Q
+	BF3M9fIdjOfCkUMdYWsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfdd-00000005R2c-2hKp;
-	Fri, 20 Dec 2024 16:14:05 +0000
+	id 1tOfwx-00000005Tg9-3k2R;
+	Fri, 20 Dec 2024 16:34:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfcU-00000005QuB-21Xb;
-	Fri, 20 Dec 2024 16:12:54 +0000
+	id 1tOfvt-00000005Tbz-11oK
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 20 Dec 2024 16:32:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:In-Reply-To:References;
-	bh=AbDqHIPXfrCW7CMVqiAcvylC4uHIOElu8pVYGTvZe30=; b=F/xNgjcG0UaXCjrlCRJzZpBC2w
-	mMiyM4qZaoFo9+3O0OXQOQn5JHkMBYYE7UDSXePRhh/rKCTHOwswCk9kMK7/9dQAxTefIS75WBBgP
-	qIWigCvKtUT3JMoyFwZq/BOKl8/K/ozKLlLUjL/G3nUtHgUNcADEz5LQZTlWlwUvtduREzjnL1bZx
-	U82kAZ6nT1HTxFPAGknkHUiLH0C6cfAH1WRtfgvHwvH0j2BC9Qopb8/GqVIvpXV8NYef+tE1ESHdR
-	Z354Q2FKzNY5QzjNIPg9BvXQb3uTXTrG4t29+vj9/c8gXQp6ROw6wHJpJ6jbSwI2XY11yR/eVvfEJ
-	WixGrGKw==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	bh=2l7F3pjuoDH3GKZ6bPXFtH3xTXOQ8g8lc//roM40EcA=; b=CDQpHKt01hdz4EJNhkbwx4oa/C
+	fIa/ttKi/vf2QQu2ZAH7Ri8n2ERskib6TdnuSMYODOgm+QYBaprg7+1aox2hBrE3Mpwf/6iybcJdW
+	7wrrHNzctruzPBiEj0vo2D2pdGaBd6P8I4WfGFtNS94uipiZaikCurzl37QZozHisyuiYqSItmK4L
+	fnJNkswOY8xsNMBurAN120rpnzwHUgH4zeige3nSpINSi/9gYZikxnf1zuAPJ1kCam12zLKMb11zJ
+	j7af8salr2R0V2C/cUUwGGgoMNbxdaFySk2H93g3jr/aXLTr1aE4Nr4LYdKVFJE1Dd9Z/N1wEF05r
+	ijwkBYmA==;
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOfcR-00000005i1N-2RKl;
-	Fri, 20 Dec 2024 16:12:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5155F5C5CDD;
-	Fri, 20 Dec 2024 16:12:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D146FC4CECD;
-	Fri, 20 Dec 2024 16:12:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734711168;
-	bh=lT+NvKXEt+wDw547wMVflj0Ny9W3OCFAz0S4kRCQXyc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Ob0iH/5cVvLnjtYxJS4SzD2U2vUzqvczNK6PKb13onAJa1JdH2JcBa/LUx469WpFV
-	 51MkXpZbQLTKD2tXqJUL6GpN9flX2/kHmqo84lzpxZ1HR3rTAvWCy9jLDfSlg0F1CC
-	 F+m1C+/9J6W5eoqZ/ILzoUxCsXolwifQfCcRcG/WJFyxQzBE4a/R/imyrQb6TSOIby
-	 mLerfWhHLLnG9lL5nd9G884coJy3ORjfeVZYgjR2mEb91uFjTXZDoasXy/B9vCsZEb
-	 vxVdLGM3UTr08eUKoNW7QrXuIwg/Ib/i563jV3g2G10T9QTm7I60ihfU7zHumgN6z4
-	 Ds0nAp7zXUkjA==
-Received: by wens.tw (Postfix, from userid 1000)
-	id DBAD15FB8F; Sat, 21 Dec 2024 00:12:44 +0800 (CST)
-From: Chen-Yu Tsai <wens@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Chen-Yu Tsai <wens@csie.org>,
-	devicetree@vger.kernel.org,
+	id 1tOfvp-00000005j53-3M8P
+	for linux-rockchip@lists.infradead.org;
+	Fri, 20 Dec 2024 16:32:56 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3862a921123so1505292f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Dec 2024 08:32:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=9elements.com; s=google; t=1734712370; x=1735317170; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2l7F3pjuoDH3GKZ6bPXFtH3xTXOQ8g8lc//roM40EcA=;
+        b=W49c+bhoQU5NMhmLaqLf/tZ70Ngn/ymE4T0ciOSwJG2QRfeEE7Ly1kS34i7IkbatD3
+         xUoZsv7JsbOuJEhPKgc5BBdupYyrdZmF8zWxXyw7VIYFeeyp0pIgm89B9MP03NMoWUC0
+         b4Oo7Hd4ega1U3sd5JUou/jFM0q7ZNCQEhVgykcJDYLbJZ+lM/mLNcMpqaL9T1z4jM0A
+         q2M/ReeG0Y1v4igqaYKuLZ+jURqEDs5PVe7RP3Y9JaJ5J1W3tf3CDOrI10qvLJdftYRl
+         w5dy/WLDeQl0JhKheurspRDiJUrr7VtLk8NOegnTGfaP/DuuTNKd97uL4T7mUFbCuJ8a
+         OkUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734712370; x=1735317170;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=2l7F3pjuoDH3GKZ6bPXFtH3xTXOQ8g8lc//roM40EcA=;
+        b=Q4eyVIPYx1DWa7wg6UYHDBlkaAjLT/bDqxTfU232r0uFqAkKAtlvVksWIeEjyR9o/M
+         Ui0JvLXUllGyXocF/phJNNyLG0xC2zvZF1RAiM8CSdNvYqVnhjbnjZkqP/AWes2KjPMK
+         0HAgGTJbLzOOlkPr57ZyOH2rZxGBKmI1iNxTvrzN8Be0G8Ec5EeCwl4E/HyAoP8/DMGa
+         6Z26WwyUldh6CkgKkd5CqVmTxskz+0zOnSm/c3zrqAS66wr4gSjRUmp0IiYzi8BTICEN
+         X3SlMmnrZRjnr1ludm1w9yTXT8tWwlZf837uhX6dILMJzPCzCZWbz5m9QlcHcYWjEW+3
+         rfVw==
+X-Gm-Message-State: AOJu0Yzd5OfLNEbs8RxVU1D6DgfBqyI2YDEIInLJBu1WipqB+uly4SH3
+	xvNDO8NRaQwirj96d1IVPVIidkVBNrI76/x540Pd6Xwi+5CGoR864Pd6k7nsvETGamv3391PC5g
+	/sgPjYA==
+X-Gm-Gg: ASbGnctCo5e8+FrooU/TN84FhM+KDDF0UtE4jrUn/NyZF3ITqvL95lHEhL3sieN1D9P
+	ePZ5MawZad0/9YVI/DEuan5p90jBnPbPxO6fooPOtZ2YK8ROQt51tJDqPFtbzcQg/Odvy7LgF4p
+	6yscOEAcVMNcS8dWWytGwLh1LJGRmH52he01JNMLNxmsy7+bKHzU+p+JcIf5/Tk110xd+YBCqGn
+	3zaAXHxmj72cEnkaixDs10UdFLreuQ+vBXYqd48DHjk2rZtqGUwQKIypEOICaZ3VmXStGskGeRM
+	XYXVL1rfKKzsD3D8Zi1Tj/juZO6IOzVTAS7Uh/jl1/q0rBRAHvSIElpYlw==
+X-Google-Smtp-Source: AGHT+IGAt3760Qhq8XM3fVQ4ouCmUKpaz/sP4mtLEw32k0+oB77VuzIh0ce8Xp3r2hz5RJC3cF50Bg==
+X-Received: by 2002:a05:6000:1a86:b0:386:3702:d2d8 with SMTP id ffacd0b85a97d-38a22400b0emr3189544f8f.58.1734712370342;
+        Fri, 20 Dec 2024 08:32:50 -0800 (PST)
+Received: from elemental.sec.9e.network (ip-078-094-000-050.um19.pools.vodafone-ip.de. [78.94.0.50])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38a1c89e1a1sm4365193f8f.69.2024.12.20.08.32.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Dec 2024 08:32:49 -0800 (PST)
+From: Alicja Michalska <alicja.michalska@9elements.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
-Subject: [PATCH v2] arm64: dts: rockchip: orangepi-5-plus: Enable USB 3.0 ports
-Date: Sat, 21 Dec 2024 00:12:40 +0800
-Message-Id: <20241220161240.109253-1-wens@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	Alicja Michalska <alicja.michalska@9elements.com>
+Subject: [PATCH] arm64: dts: rockchip: ROCK3B: Correct clock rates for Ethernet PHYs
+Date: Fri, 20 Dec 2024 17:32:27 +0100
+Message-ID: <20241220163227.1501912-1-alicja.michalska@9elements.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_161251_967229_9991D934 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20241220_163254_253771_FA875BEF 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,214 +113,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chen-Yu Tsai <wens@csie.org>
+Built-in ethernet PHYs did not work on mainline kernel:
 
-The Orange Pi 5 Plus has its first USB 3.0 interface on the SoC wired
-directly to the USB type C port next to the MASKROM button, and the
-second interface wired to a USB 3.0 hub which in turn is connected to
-the USB 3.0 host ports on the board, as well as the USB 2.0 connection
-on the M.2 E-key slot.
+fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
+fe010000.ethernet eth0: __stmmac_open: Cannot attach to PHY
 
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+According to the board design, they need to be configured as output with
+static TX/RX delay. This patch sets it accordingly.
 
+Signed-off-by: Alicja Michalska <alicja.michalska@9elements.com>
 ---
-Changes since v1:
-- Dropped source current to 1.4A
-- Dropped sink current to 10mA, since it doesn't actually sink current
-- Added try-power-role
-- Added newline before endpoint device nodes in USB connector node
----
- .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 133 ++++++++++++++++++
- 1 file changed, 133 insertions(+)
+ .../boot/dts/rockchip/rk3568-rock-3b.dts      | 68 +++++++++++--------
+ 1 file changed, 38 insertions(+), 30 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-index 9f5a38b290bf..000d353645a9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-@@ -218,6 +218,18 @@ vcc5v0_sys: regulator-vcc5v0-sys {
- 		regulator-max-microvolt = <5000000>;
- 	};
- 
-+	vbus5v0_typec: vbus-typec-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&typec5v_pwren>;
-+		regulator-name = "vbus5v0_typec";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+index 3d0c1ccfaa79..5350158302e4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+@@ -183,37 +183,65 @@ &cpu3 {
+ &gmac0 {
+ 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
+ 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
+-	clock_in_out = "input";
+-	phy-handle = <&rgmii_phy0>;
+-	phy-mode = "rgmii-id";
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
+ 	phy-supply = <&vcc_3v3>;
++	phy-mode = "rgmii";
++	phy-handle = <&rgmii_phy0>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac0_miim
+ 		     &gmac0_tx_bus2
+ 		     &gmac0_rx_bus2
+ 		     &gmac0_rgmii_clk
+-		     &gmac0_rgmii_bus
+-		     &gmac0_clkinout>;
++		     &gmac0_rgmii_bus>;
++	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 20000 100000>;
 +
- 	vcc5v0_usb20: regulator-vcc5v0-usb20 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -344,6 +356,57 @@ &i2c6 {
- 	clock-frequency = <400000>;
- 	status = "okay";
- 
-+	usbc0: usb-typec@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_int>;
-+		vbus-supply = <&vbus5v0_typec>;
-+		status = "okay";
++	tx_delay = <0x36>;
++	rx_delay = <0x2d>;
 +
-+		usb_con: connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			power-role = "dual";
-+			source-pdos = <PDO_FIXED(5000, 1400, PDO_FIXED_USB_COMM)>;
-+			sink-pdos = <PDO_FIXED(5000, 10, PDO_FIXED_USB_COMM)>;
-+			op-sink-microwatt = <10>;
-+			try-power-role = "source";
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					usbc0_hs: endpoint {
-+						remote-endpoint = <&usb_host0_xhci_drd_sw>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+
-+					usbc0_ss: endpoint {
-+						remote-endpoint = <&usbdp_phy0_typec_ss>;
-+					};
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+
-+					usbc0_sbu: endpoint {
-+						remote-endpoint = <&usbdp_phy0_typec_sbu>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+
- 	hym8563: rtc@51 {
- 		compatible = "haoyu,hym8563";
- 		reg = <0x51>;
-@@ -485,6 +548,16 @@ vcc5v0_usb20_en: vcc5v0-usb20-en {
- 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usb-typec {
-+		usbc0_int: usbc0-int {
-+			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		typec5v_pwren: typec5v-pwren {
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pwm2 {
-@@ -876,6 +949,23 @@ &tsadc {
  	status = "okay";
  };
  
-+&u2phy0 {
-+	status = "okay";
-+};
+ &gmac1 {
+ 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+ 	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
+-	clock_in_out = "input";
+-	phy-handle = <&rgmii_phy1>;
+-	phy-mode = "rgmii-id";
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
+ 	phy-supply = <&vcc_3v3>;
++	phy-mode = "rgmii";
++	phy-handle = <&rgmii_phy1>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac1m1_miim
+ 		     &gmac1m1_tx_bus2
+ 		     &gmac1m1_rx_bus2
+ 		     &gmac1m1_rgmii_clk
+-		     &gmac1m1_rgmii_bus
+-		     &gmac1m1_clkinout>;
++		     &gmac1m1_rgmii_bus>;
++	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 50000 150000>;
 +
-+&u2phy0_otg {
-+	status = "okay";
-+};
++	tx_delay = <0x47>;
++	rx_delay = <0x28>;
 +
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc5v0_sys>;
-+	status = "okay";
-+};
-+
- &u2phy2 {
- 	status = "okay";
- };
-@@ -904,6 +994,33 @@ &uart9 {
  	status = "okay";
  };
  
-+&usbdp_phy0 {
-+	mode-switch;
-+	orientation-switch;
-+	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usbdp_phy0_typec_ss: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&usbc0_ss>;
-+		};
-+
-+		usbdp_phy0_typec_sbu: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&usbc0_sbu>;
-+		};
++&mdio0 {
++	rgmii_phy0: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0>;
 +	};
 +};
 +
-+&usbdp_phy1 {
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-@@ -912,6 +1029,17 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	usb-role-switch;
-+	status = "okay";
-+
-+	port {
-+		usb_host0_xhci_drd_sw: endpoint {
-+			remote-endpoint = <&usbc0_hs>;
-+		};
++&mdio1 {
++	rgmii_phy1: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0>;
 +	};
 +};
 +
- &usb_host1_ehci {
+ &gpu {
+ 	mali-supply = <&vdd_gpu>;
  	status = "okay";
- };
-@@ -920,6 +1048,11 @@ &usb_host1_ohci {
+@@ -512,26 +540,6 @@ &i2s1m0_sdi0
  	status = "okay";
  };
  
-+&usb_host1_xhci {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
- &vop_mmu {
- 	status = "okay";
- };
+-&mdio0 {
+-	rgmii_phy0: ethernet-phy@1 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <1>;
+-		reset-assert-us = <20000>;
+-		reset-deassert-us = <50000>;
+-		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+-	};
+-};
+-
+-&mdio1 {
+-	rgmii_phy1: ethernet-phy@1 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <1>;
+-		reset-assert-us = <20000>;
+-		reset-deassert-us = <50000>;
+-		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+-	};
+-};
+-
+ &pcie2x1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie20m1_pins>;
 -- 
-2.39.5
+2.47.1
 
 
 _______________________________________________
