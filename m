@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74532E7718C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B221BE77188
 	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Dec 2024 11:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,51 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S7JaqCNWxoWCbgs1dGl/gcq+35dkd+ZfEdhoGsASG+0=; b=fDpD+1PZc42/Sx
-	3x4YbQOWkmsu5qYiQ3EjtWE/QUDd4u/XIMhjt0yWkkPJq9E3qBUc1jfNiso7L+VCJ2Fm+kDEei0Lq
-	zVVg9hX3VqdWJabaXt7hG33HzRPTVEPEue5dhvfOVMxOeu5peObYP7zqR/Af9lDq3cFwp/E2tYcmo
-	ngsUMnEjdbxmbRf1w7ppj/yLWXLTXxxHwOxu+9XcG4LB81iSAPADsS9qrzjIkP7xevpcF1+WAs2yX
-	iFs55xjGfBQvWOmRJ4DWUZaoNQ3bv2eC15DWHrPnR48Zxh0fFVMs5aKn308Cjwb7YD2dBOYYlT49a
-	eCaUr+ud3oye8fiD14kw==;
+	List-Owner; bh=wmu/4zOWbBuCpkHWFD0uAd+81GA427MEC797EzlJ7GI=; b=3c/spDnmrMHVD9
+	p6sK8bR0FfZu/zP1cwmGOvdUfEcLq0AYp+vrIivORyS/QNoU20PKqDJAlU4zoJW5xb17scd55CRIO
+	hOUdP7rQCMGBt6tWFXUSExEy43x4e9kTn5B69Uks6d0xQEkfuG9uxU7M+rEgkNTubJKc+Ivw0zrCJ
+	q3tTWWXkTJUelIBlhKqxKGtIul2sdVA7Z1UvMy/w2jB+D+FMkRBV3lYLo36Rw389tN+yBYdHP6gkR
+	Uco9RJZk5tRuLDySNZC6uorBM7fPDoL8nKhhWTIVM/QDl0Xb8nu5Nd7Mt1H3mD2wYyNL5Zk1nHQZc
+	nttCaXO1wFhYawkUhBGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOaxz-00000004j27-2V6r;
-	Fri, 20 Dec 2024 11:14:47 +0000
-Received: from mail-m32122.qiye.163.com ([220.197.32.122])
+	id 1tOay1-00000004j4P-1RzZ;
+	Fri, 20 Dec 2024 11:14:49 +0000
+Received: from mail-m19731105.qiye.163.com ([220.197.31.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOapd-00000004fC5-3AFT
+	id 1tOape-00000004fCF-19sH
 	for linux-rockchip@lists.infradead.org;
 	Fri, 20 Dec 2024 11:06:11 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 657291d2;
-	Fri, 20 Dec 2024 19:06:06 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 657291d6;
+	Fri, 20 Dec 2024 19:06:07 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
+	Simon Xue <xxm@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>
-Subject: [PATCH 10/38] dt-bindings: iio: adc: Add rockchip,rk3562-saradc string
-Date: Fri, 20 Dec 2024 19:05:30 +0800
-Message-Id: <20241220110558.3511994-1-kever.yang@rock-chips.com>
+Subject: [PATCH 11/38] iio: adc: rockchip_saradc: add rk3562
+Date: Fri, 20 Dec 2024 19:05:31 +0800
+Message-Id: <20241220110558.3511994-2-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241220103825.3509421-1-kever.yang@rock-chips.com>
+In-Reply-To: <20241220110558.3511994-1-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
+ <20241220110558.3511994-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh8ZH1ZDTU8aGRlNHx9MSk5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93e3bf03e903afkunm657291d2
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkkeSlYaS0waTR9MGEJOHkNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93e3bf06f903afkunm657291d6
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pz46Syo4HDISLgg9CFY6SBYs
-	NQMKCjdVSlVKTEhPTUJJTE1MSExMVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKS01INwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PzI6TAw4SzIRPghJGFEcSBwe
+	KSEwCTxVSlVKTEhPTUJJTE1DSk1LVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJS0NLNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=c0yGiXLPf+OdYv71tVTuzFQGUZ3U3dVYfyfhpG1HZweW+YPbbACxSYUNNTvW9D/O6DuT5+9pBBKG+MmWNkzdcg05EAKuLoCKXeC4hlCurUK42Lp8ngRkTl0/H62kdzp0MuQ3IjXFpmmT/IsnyGfTTU9MIj1NDn4/dDOddDczZF4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=YQ0B+UF6z6qRHlvIZAjak6rQj1AlbRw5Fkx/l4QLEYs=;
+	b=Rh6ZUIPvFdrPFyZhUh2nLJBZgJu/Y7mPUHKjLxd4JgmSorkF04xdd9X4QJ7fOfpvO7ZCV2PoRkIjuYWfhEMITX9qQfZQkWscpWhVg/siOpvxrOYEroXpfxex6Hd/9KWWtCfleQ5brGYg3ITHqNtWbtoQabiVJKBI0NGjAs9yZZM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=PWTpV5unBG06xQWRz5c8PNc7qqWDa9gYmL9khDtzsDU=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_030609_986481_71F2854C 
-X-CRM114-Status: UNSURE (   5.24  )
+X-CRM114-CacheID: sfid-20241220_030610_493430_95610704 
+X-CRM114-Status: UNSURE (   7.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,32 +76,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,rk3562-saradc compatible string.
-The saradc on rk3562 is v2 controller, with 10bit width which is different
-with rk3588.
+From: Simon Xue <xxm@rock-chips.com>
 
+rk3562 is using v2 saradc with 8 channels.
+
+Signed-off-by: Simon Xue <xxm@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
- Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/iio/adc/rockchip_saradc.c | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-index fd93ed3991e0..da8bc6f50a32 100644
---- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-@@ -16,9 +16,11 @@ properties:
-       - const: rockchip,rk3066-tsadc
-       - const: rockchip,rk3399-saradc
-       - const: rockchip,rk3588-saradc
-+      - const: rockchip,rk3562-saradc
-       - items:
-           - const: rockchip,rk3576-saradc
-           - const: rockchip,rk3588-saradc
-+          - const: rockchip,rk3562-saradc
-       - items:
-           - enum:
-               - rockchip,px30-saradc
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 240cfa391674..7c8a9d37d245 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -1,7 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+  * Rockchip Successive Approximation Register (SAR) A/D Converter
+- * Copyright (C) 2014 ROCKCHIP, Inc.
++ * Copyright (C) 2014 Rockchip Electronics Co., Ltd.
+  */
+ 
+ #include <linux/bitfield.h>
+@@ -275,6 +275,25 @@ static const struct rockchip_saradc_data rk3399_saradc_data = {
+ 	.power_down = rockchip_saradc_power_down_v1,
+ };
+ 
++static const struct iio_chan_spec rockchip_rk3562_saradc_iio_channels[] = {
++	SARADC_CHANNEL(0, "adc0", 10),
++	SARADC_CHANNEL(1, "adc1", 10),
++	SARADC_CHANNEL(2, "adc2", 10),
++	SARADC_CHANNEL(3, "adc3", 10),
++	SARADC_CHANNEL(4, "adc4", 10),
++	SARADC_CHANNEL(5, "adc5", 10),
++	SARADC_CHANNEL(6, "adc6", 10),
++	SARADC_CHANNEL(7, "adc7", 10),
++};
++
++static const struct rockchip_saradc_data rk3562_saradc_data = {
++	.channels = rockchip_rk3562_saradc_iio_channels,
++	.num_channels = ARRAY_SIZE(rockchip_rk3562_saradc_iio_channels),
++	.clk_rate = 1000000,
++	.start = rockchip_saradc_start_v2,
++	.read = rockchip_saradc_read_v2,
++};
++
+ static const struct iio_chan_spec rockchip_rk3568_saradc_iio_channels[] = {
+ 	SARADC_CHANNEL(0, "adc0", 10),
+ 	SARADC_CHANNEL(1, "adc1", 10),
+@@ -324,6 +343,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
+ 	}, {
+ 		.compatible = "rockchip,rk3399-saradc",
+ 		.data = &rk3399_saradc_data,
++	}, {
++		.compatible = "rockchip,rk3562-saradc",
++		.data = &rk3562_saradc_data,
+ 	}, {
+ 		.compatible = "rockchip,rk3568-saradc",
+ 		.data = &rk3568_saradc_data,
 -- 
 2.25.1
 
