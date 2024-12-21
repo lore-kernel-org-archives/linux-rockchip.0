@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 388AEE7718E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 10:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AECDE77184
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 12:56:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HY+OBhoEB2NwTyxVzo3cxRhszDqS4yf074iuA0giP10=; b=sjpEpUl6YVSAdI
-	mDAX8DMZZh78qFrHhzT86tdqY4hnCFMc3okGGmwoFLYACjPup3q51Q4/OBavoOuhofDGD+YEnkAk0
-	WO4j0Vxb7Vwm7JZOy8oVFJbtl4p83fmW+X8rb8zS0/r/wLZxHTfmMFIo3c1JhG8Tsd6/zGGTYys1A
-	A0jFK7Qto1ag/ejPNkzxH8M89y4rQ0iskMf4UwejO0A34Al9AEwYmW0VNnRh9rvILW9GFFai7bSAF
-	B9WEihETufXCCZDqpiK2a+e7e08iGwAUuocYQEXyZN2c54z3Rc4Qk4SbmhA5+ryaRAFQFrNXTE6JY
-	gjuLsj7kQQfGZ6GaqOIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W77ZMeHRWMHbuCQ8iVCfHDGuYIbctCDL3gMXAcl9V5E=; b=y0yoHGobRdWccQ
+	Jqef98ts0a1HRa3Ql9RvPbsHo70kLdXrLPzQlxUJ+uiCxmFzvMC+qsWuz1Iv4z/dS3pTv+Bdtya7r
+	srGtrl3oS8WAGITaPWoORIQa04UHpZ9onRBKrdkvHbZk76JbIu2OauwU3Pyzi/EyKIGkqIDInyKhS
+	2gwdyVz1+UQWlC1GZ6+x4XfD1KxXxCNfpwIoBy+S6TKnCnxcpvYPECgEBq8NBzoTwweAF3X/TB+Ge
+	XV0kCi2KgebgNhEQJ4OoZwLmFJRK8pesrPU7edzydSX7t/X0EbJqjJHD2fynWDW7FT4lNdeXr+d12
+	VoSmDMgffhZx2+/J+C9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOx4Y-00000006sSx-1Z0r;
-	Sat, 21 Dec 2024 10:51:02 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOx3L-00000006sMh-0RAO;
-	Sat, 21 Dec 2024 10:49:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=PRPW0
-	53mS4IaHw56KlN863LLiyhwoTVI+WYIIxpNhJA=; b=ZKGBDUz0hc9SdNtNqBNbe
-	xnGgEAfJyW/euqeczXFKyavwmgzlDXvJChw9alAUG8QnnmTf9exd7t9urwPMF3iI
-	Mm7WkVrbm1kwPYph8slnoyW7P2ciAXcPHVWMP0Cb9XATobHU0xg/nHWOyCDdxg1M
-	mJHZGnhA/g1mIlAc0M0s/Q=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wD3b68ynWZnEhWnAg--.2634S2;
-	Sat, 21 Dec 2024 18:49:26 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: dsimic@manjaro.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	krzk+dt@kernel.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: aliase sdhci as mmc0 for rk3566 box demo
-Date: Sat, 21 Dec 2024 18:49:07 +0800
-Message-ID: <20241221104920.4193034-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tOz24-00000006zTs-2meu;
+	Sat, 21 Dec 2024 12:56:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tOz0s-00000006zPc-0pHp;
+	Sat, 21 Dec 2024 12:55:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Tvo6xwYWGeSnCsDnjEWAgafbwiwjvh049xe5Nk5dpNg=; b=xZ6bak7BpkQBZ6tVs1jszJBZgY
+	2CC/heXQBljSq1+UnQj/pnQd+QVanLlfBQGcBRmIhQdmL2p7gXWOQyEyTM2Ag6SEzXVXG9Xz5if8L
+	blJSkMIW15bhu9sGbs1as/6txHDYYtb1hE1FM8GGlT5dBFjTzGdjEBQuE4g4gHL5uF4wZOT6053lE
+	/xYdiD08XmIfBXrRKTWC3+izfjyGfabO4OXRVl3wlihMEyEXvPhYuft/W8se4laZwvi4z3PHN0pZ3
+	kUpVr6NVyOnzmvGeIB6nvKe+o4Qn5zLWUlZpkPazLsCDchbWK6yNGBlvIQa0lamk3Bn7AIk/hxJcg
+	jNxua1LA==;
+Received: from i53875bfb.versanet.de ([83.135.91.251] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tOz0Y-0008N9-TD; Sat, 21 Dec 2024 13:55:02 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: dsimic@manjaro.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, krzk+dt@kernel.org,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: aliase sdhci as mmc0 for rk3566 box demo
+Date: Sat, 21 Dec 2024 13:55:02 +0100
+Message-ID: <24438615.ouqheUzb2q@diego>
+In-Reply-To: <20241221104920.4193034-1-andyshrk@163.com>
+References: <20241221104920.4193034-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3b68ynWZnEhWnAg--.2634S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZryDuFyxJry5AFyrCr1xKrg_yoW3uFc_Xa
-	4xWrs5JFs3Cr90qw1kKayrG34ak3s3C34fJa4Fya1kJFWaqay8JFW5Jwn2y34Uur4FkrZ3
-	Jay3ZFyxCF1YkjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0DUUUUUUUU==
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwi8XmdmiMTT1wACsS
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241221_024947_550334_90D3EF91 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241221_045522_269676_DD409FE2 
+X-CRM114-Status: GOOD (  20.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +74,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Hi Andy,
 
-Follow most others rk356x based boards, and u-boot only use mmc0/1
-as mmc boot targets, so aliase sdhci as mmc0.
+Am Samstag, 21. Dezember 2024, 11:49:07 CET schrieb Andy Yan:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Follow most others rk356x based boards, and u-boot only use mmc0/1
+> as mmc boot targets, so aliase sdhci as mmc0.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+> index 41b4cd5a4220..7d0eedf1bd0d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+> @@ -19,9 +19,9 @@ / {
+>  
+>  	aliases {
+>  		ethernet0 = &gmac1;
+> -		mmc0 = &sdmmc0;
+> -		mmc1 = &sdmmc1;
+> -		mmc2 = &sdhci;
+> +		mmc0 = &sdhci;
+> +		mmc1 = &sdmmc0;
+> +		mmc2 = &sdmmc1;
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+sorry, but that won't be possible :-( .
 
- arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+The original aliases for the mmc order were added over 2 years ago
+(november 2022) and became part of the ABI then.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-index 41b4cd5a4220..7d0eedf1bd0d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-@@ -19,9 +19,9 @@ / {
- 
- 	aliases {
- 		ethernet0 = &gmac1;
--		mmc0 = &sdmmc0;
--		mmc1 = &sdmmc1;
--		mmc2 = &sdhci;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc0;
-+		mmc2 = &sdmmc1;
- 	};
- 
- 	chosen: chosen {
--- 
-2.34.1
+Imagine someone using that board with a rootfs=/dev/mmcblk2p1 part
+in the commandline to mount the old sdhci-part1 as rootfs, but now
+you reorder the controllers, so so that commandline would try to access
+sdmmc1, so their system won't boot anymore after just a simple kernel
+update.
+
+Breaking people's setup is one of those big no-go-s in the kernel, so
+sadly you'll need to live with the existing order.
+
+
+Heiko
+
 
 
 _______________________________________________
