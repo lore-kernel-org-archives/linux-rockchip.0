@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202D5E7718D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 20:24:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7328DE7718B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 20:24:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p5dWvMbrNaeYm1BNV1X+zHRHXjdski6nMOUR1pnND7w=; b=Fa+oF4JivFYE7B
-	n4/6xmtbgd6J8Vsq4XgVg8VXFveDstNCadS2wGCAttTesK1WxtwzcJLtRJxPpaNYi4R81NfLWKjLr
-	JRe9SaYVhsAFrprIg9j7MCCAlywWfHYkQKknn7rNrRcTsYo7oeQxjF3wO9BRuF+ow1ke06RruwsWI
-	w/MEHVqc6JYgV6MB3SF4nwp6hiOOMDLTUqMIZeAx/gz7cKF+iQZj8/o/tfDFyY2hwakLv9Kiv2ZCL
-	Fp1N8M0W067HQngo925n+IDKoGqzNTm8s7o/5P3fnV8jI4nsD+YQ31WB7orG7t+YbdEPVbfmn1dYa
-	nYcuWcwm1v86k5zHGAlA==;
+	List-Owner; bh=tJkv+v7FFR67p72fXc2ROoEHdupU+akzjzxCE2LB35s=; b=m6CsATljmX2Xbz
+	ONOltsnKrBPvHdY/cgg8Br3HC7Kvzu0T3yKXkBUW6ebsWHPMCcM0bdlXpVLTzwdQN+4SqUaZlxnRc
+	U14E64pCLdaQ+B7QnjZEZBH3DXxs5fPwGWSk7eqOzIwVkV6Tu5PLR63lthqCETziI4DgPXJZ8hHxf
+	en8Knf5r6KAmnAx0Iws4IbribHWvN3jAku7j6Hylfl0cnM23OiLYqHrfMZrYw8hA3Lcv5YUpSa+Uy
+	MKyD60+1s8xVL2WHA0+wI2p4V/gYEWCBxJN+kiSH4eRZFhL+LkdYvY7722MT13uzNJ8BXq4ytrFLa
+	7mojhMPkGuzAb1y7L96w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP60x-00000007Oho-0gW8;
-	Sat, 21 Dec 2024 20:23:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tP61d-00000007OoG-2Wr2;
+	Sat, 21 Dec 2024 20:24:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP607-00000007Ofj-2yax
+	id 1tP61a-00000007Onk-1O2B
 	for linux-rockchip@lists.infradead.org;
-	Sat, 21 Dec 2024 20:23:04 +0000
+	Sat, 21 Dec 2024 20:24:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5084A5C4C66;
-	Sat, 21 Dec 2024 20:22:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BD88C4CECE;
-	Sat, 21 Dec 2024 20:23:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D4FCD5C4D03;
+	Sat, 21 Dec 2024 20:23:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A899C4CECE;
+	Sat, 21 Dec 2024 20:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734812582;
-	bh=4AAbWIebUsqwMfQ2kKt3c5ZBFsV8y/NVb2NuIfKgVWE=;
+	s=k20201202; t=1734812673;
+	bh=kC6ApHlp9vWB/rALZRbkpB7kak4MBtQPS4YPirIl4iQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ObWP01ZG/HdRMXrvkOXNzfsmUJR0BSZ9vbfRywDQ9hzuQsNSd8+fU1ItGzbId+t/F
-	 jYkmQJeFnFBpgtp5BMlQEldPZc0mtKLSl38c0lLoXEcbL1Rd8bF1PoeU03iMoiwkvF
-	 qTs5KVVTRiKIT4/VF+Y9IMaYzY9VShSZ8TbpEYbVgz8HK2kwGUspTKdemlTfYOutev
-	 18BaZyPQregYinuErR/Z+LXjbIJWGlm+gLDtEGkVO2XAnvmZRaIg9O+Er23V5Z+69y
-	 gtLF+yxIHKjKDvomwIeQq2B1+Jd+c0uj9+eXMyiDPUArnqslBYW/vTZzl0UtSIXyVK
-	 f9cy9ow4UL6jg==
-Message-ID: <62f569c2-f75a-4695-9cfe-c30bbe59e679@kernel.org>
-Date: Sat, 21 Dec 2024 21:22:59 +0100
+	b=c46fkZ7HpXuInetU+nsUiPXmqMVCNEblte60Pv0sU+nLv2aI59ldoTSZ+XPaL5J8x
+	 vvbHy8aFtfWT8jCfMr7en34mbuxkSbcTegTE2JeBgFA6i5A1I0qs44P8Z5UK0nnLP+
+	 7gn1R4sSfgAbg+6A3lyLv1DkOhWY0xk/tksQK5hBYmwBK1J+m2GPkHJyrqw8uBUFFx
+	 OkuPo2zLrCWe/dHnFg4d6MA0F+41oi+KaY4nEhTWAxiNaFUjAIbK7bV1WSLSN1ehLa
+	 e6AFYiLj+7iYaFWVTrqjLWqp7OPoVxvDE5nGErDAgv4267J7GRtQ0e489Y+8xXAIol
+	 8YH/nBzaUTw5A==
+Message-ID: <49d20b6c-8160-49c3-be5d-dc3c40829ad9@kernel.org>
+Date: Sat, 21 Dec 2024 21:24:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 36/38] dt-bindings: mfd: syscon: Add rk3562 QoS register
- compatible
+Subject: Re: [PATCH 06/38] dt-bindings: add power-domain header for RK3562 SoC
 To: Kever Yang <kever.yang@rock-chips.com>, heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
- <20241220110558.3511994-1-kever.yang@rock-chips.com>
- <20241220110558.3511994-27-kever.yang@rock-chips.com>
+ <20241220110407.3511882-1-kever.yang@rock-chips.com>
+ <20241220110407.3511882-2-kever.yang@rock-chips.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,11 +97,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241220110558.3511994-27-kever.yang@rock-chips.com>
+In-Reply-To: <20241220110407.3511882-2-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241221_122303_848607_EEB5094F 
-X-CRM114-Status: UNSURE (   6.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241221_122434_497969_285B6D14 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,12 +117,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 20/12/2024 12:05, Kever Yang wrote:
-> Document rk3562 compatible for QoS registers.
+On 20/12/2024 12:04, Kever Yang wrote:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
 > 
+> According to a description from TRM, add all the power domains.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+
+
+1. Split your series per subsystem (and learn which subsystems are
+involved here), this is really unnecessary patch bomb.
+2. Header goes always with DT bindings.
+
 > ---
-<form letter>
+> 
+>  include/dt-bindings/power/rk3562-power.h | 35 ++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rk3562-power.h
+> 
+> diff --git a/include/dt-bindings/power/rk3562-power.h b/include/dt-bindings/power/rk3562-power.h
+> new file mode 100644
+> index 000000000000..616b5b9be3e1
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3562-power.h
+> @@ -0,0 +1,35 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+
+3. Dual license.
+
+4. <form letter>
 Please use scripts/get_maintainers.pl to get a list of necessary people
 and lists to CC. It might happen, that command when run on an older
 kernel, gives you outdated entries. Therefore please be sure you base
@@ -143,6 +165,8 @@ a waste of time.
 
 Please kindly resend and include all necessary To/Cc entries.
 </form letter>
+
+All these apply to all your patches. I won't be reviewing the rest.
 
 Best regards,
 Krzysztof
