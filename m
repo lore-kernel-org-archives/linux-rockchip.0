@@ -4,85 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB6ADE7718B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 15:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C10EE7718B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Dec 2024 20:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FjHP7SRv90sX15ZN8oDOx3poGghFw4pqS7R35vgtXbA=; b=4Ts2VGec0YHvsN
-	a5WC6ySEoz8XOhi8805rbk/RdTOHnscowYbk3YCNmnkQbtEON4qPuEG+sja70Lgt4y1okkahxzjZ5
-	2wmFh4WOoZMlhfpeaYBf7VL2TRgwEvIC8LumSjN44P8utewjL0sIMY4e7buiDMe+uBHYWslCtR3gE
-	zk0awOHrDoebG7VOk6KtPNI7Na0pXuhd9zT4EBDjl1VA1BHSAva0zsONYyVdBsZJzJl0Yy+nwc1eb
-	OieBMjkoU68q5GgKpSA7t+10IpX4fPkR/1DGdY7RCWiRI8vqHLWCr1XinqwSI+nFg4SvbkmSJWNEd
-	d5yJ41aZNSm3CCNKC/mw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qRaSPh+iOAD7WohHZOztY/qD+mh9CQjQ1AHBdoCtLHA=; b=sCm2ubCT2g5GiM
+	QaDMyEDyBtUE7HcBxQGTiYgLkmVppixGkSygsa3uovcB4mWt4tzI0QOXEiD5pnXFvFPyYPlPBFRD9
+	Zntk9WxvxqJbkKjVZVeae1iZgkgARv9hJuN9IuUaLQ1G3E6jwS4XBKvnybgXj+YD08E7eVQCyMVzu
+	rtGcqmP3sCgLEAJavfPaenN/YV1s9XPQ4/rKhAs6035WIUaLMI/iNg9PNne0cwR3uHEf2eB9CQxr4
+	Rv+z47TUr4craMi+cnihicQfJXmps9w6p1R6zKKcHc9Mdd07nLPb6hOAeYXbuPFYWOD+smGgPAM8n
+	pKhqPl16NmVJ+I6PnQJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP1F5-000000077Jr-1o8Z;
-	Sat, 21 Dec 2024 15:18:11 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1tP5sb-00000007O8R-46AA;
+	Sat, 21 Dec 2024 20:15:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tP1F3-000000077JN-0m9J
+	id 1tP5sZ-00000007O82-1GLD
 	for linux-rockchip@lists.infradead.org;
-	Sat, 21 Dec 2024 15:18:10 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-725ee6f56b4so2560262b3a.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 21 Dec 2024 07:18:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1734794287; x=1735399087; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=bl4pEkJ+Bsnqat0NylNt98XfhDmcqD+zuY6vbF8ltmo=;
-        b=iQUYSChbcA9vRYomlP4N4Sz+Z+IjSaQ2X4u1AE3x2ci5SnLdSiIp0IXvz05vbV9qgc
-         7jquyDFk+axlz9soqzZwxZrl1PnmbAfFRXr7SbvPMceqxTbG3G3iUStM5V9rbZsX0X4e
-         H0IP7WnGh5FG/uBWP362/C/83I7l64tpCVHM+U2YOmaIf3JoTkC1aCSp7YPi3nIeba9P
-         v7FRGPwjjCnqbHyEtRkRaIEJWcl3NSYU/EzLzxOLDV/cNMyqrfo7psm5Da9YTcr9X2p+
-         v9+TjsJnGe8lybJO0fMxoyR2lyrpV7VzmDKWSj10nbEH1Z5P+JiQ/i2BS223FErQIIpf
-         lxKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734794287; x=1735399087;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bl4pEkJ+Bsnqat0NylNt98XfhDmcqD+zuY6vbF8ltmo=;
-        b=R2sdBVKGOTnvkuwPyGpth335yqoq+NhNwKHnctP0QwtvLNCqQ2fstuC/YUCcvRXCeq
-         DpgMxnKdLzXMmZ8BTTeVMzFT9hsgOduKFGYDet+w8RHDs+iav6R3UOfGRM0O+YaxV9VP
-         vSfqIIb8/cLlnHjqb4SEH15Dp5uTC5JMlvLjPjYni3TY/VzWyG0Oht3cqWn8luSDyZtL
-         S/Nawe8TrwyucsTeBSXrhFhOhwim8iLMia5BYeO5wS6vcYlApQTjefyi1XmLA5DuvpR5
-         EY31/nCfPBB6D8nA0mLmK2HUVOMgbT5A3k5injqXebnaisQuE7qtYgC7EqWSc6tK/EFN
-         jVbg==
-X-Forwarded-Encrypted: i=1; AJvYcCV/QR8Dd19hVQWs4HgoaFWxDgFpEvfKdMS9UQTD2YUAEOLAXzMBuxPVCM7jqDEHKWNBpf+Q0Pc8mxFtshwr3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxyaaHdW+k+ANKpkqdLkW8n1caJPzauU2SxmQqacmUry5C6NRjp
-	u7obNoGitNdxYmx+ODjRXmFYeHUhxfSj2rETSFm+RmUUwwgVwEYrEcMdO6KD2Vs=
-X-Gm-Gg: ASbGncuKkICeT21VdtvOFTN2hrP/QHn4vS9oKF0ifs68bzbrBgl2eSItsLykhimE77Q
-	A2pFtd9UJ34lV7u1c4pJGDpxwt/SZBZxOZ7YDLrQr3JDEnEDwMZ7+wHarGL4W4ffAvJeKI+Kh2p
-	0vxayDv9DOyHA9mmw6h3jOnij7mTBmAz2zK8Inb8hEYd4sx7MOoSWDa+sHOZj69wAh5ncZPXWnM
-	8M6V14aL/HaWcGrJaKsR5BjRPBqKat7wwbihejFS9oGB8Zk4uPut67YK0B4dQ6rW6qN
-X-Google-Smtp-Source: AGHT+IHaN8Ws7cNJxi+W+zqLPd3EnDfDJJBxBjqb4+tAZwpMW1/iij7gkAWdz4uBBQP31s/KRu8lVg==
-X-Received: by 2002:a05:6a00:1411:b0:725:f376:f4f4 with SMTP id d2e1a72fcca58-72abde01aa8mr9248366b3a.13.1734794287425;
-        Sat, 21 Dec 2024 07:18:07 -0800 (PST)
-Received: from tops-ThinkPad-E14-Gen-5.. ([183.82.41.52])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad90b949sm4877522b3a.176.2024.12.21.07.18.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Dec 2024 07:18:07 -0800 (PST)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>,
-	Mitchell Ma <machuang@radxa.com>
-Subject: [PATCH] arm64: dts: rockchip: Fix PCIe3 handling for Edgeble-6TOPS Modules
-Date: Sat, 21 Dec 2024 20:47:58 +0530
-Message-Id: <20241221151758.345257-1-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.34.1
+	Sat, 21 Dec 2024 20:15:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B1E085C4A5E;
+	Sat, 21 Dec 2024 20:14:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67CEFC4CECE;
+	Sat, 21 Dec 2024 20:15:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734812114;
+	bh=z4JnE8zgEfvurcDdcikxT1vxEbZjRKjBv9lfLT5RGds=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CEZ8ixw6mWrLi80dTPFinmDEOtYAS0hzhi2p1+ls2ZhgSIs1DdJ+FT+B29gtoWCBy
+	 b9p576LFCpi3ePKB+CE/qeqKbdqcWkvld8A2wc934h8QYwQ/7CotYkXO+L8d6UiaqV
+	 lvHcHiLsxp4YfXn8YgIlRhbKoGvtOizvP4KtFu/X6v8wvptz2AX2c8PfPKOGAMYIM8
+	 pFrwvFV+7DiuFJrQzqZMadt0xGEBh+1N+/jmYAXRtayQSbjV5Bkr9FswtNRzw6vRh7
+	 XiuxVdbo6Q4b9jmxCtijWo+teQ3Zy4vln+G1XnBmj8rS3C/XtRUZkWfMnXjEf37Pv4
+	 LYkVLm0+LqITA==
+Message-ID: <99e54beb-fa4b-4d51-9ab7-b35cc61dc164@kernel.org>
+Date: Sat, 21 Dec 2024 21:15:09 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 04/12] arm64: dts: rockchip: Rename regulator for
+ pcie2x1l2 for Radxa ROCK 5C
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ dsimic@manjaro.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20241216113052.15696-1-naoki@radxa.com>
+ <20241216113052.15696-5-naoki@radxa.com>
+ <f525d875-734b-4c41-95ba-be07b11f8e1c@kernel.org>
+ <47B1D9F5B9EC2A94+55e35302-64c6-4651-8f27-416723b8218b@radxa.com>
+ <57C678CDC48F30E6+634c520a-a0b8-478f-9b5b-8b746aa5ab9c@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <57C678CDC48F30E6+634c520a-a0b8-478f-9b5b-8b746aa5ab9c@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241221_071809_443205_379C7EE4 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20241221_121515_551366_C870C4DB 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,189 +117,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Edgeble 6TOPS modules has configured the PCIe3.0 with
-- 2 lanes on Port1 of pcie3x2 controller for M.2 M-Key
-- 2 lanes on Port0 of pcie3x4 controller for B and E-Key
-
-The, current DT uses opposite controller nodes that indeed uses
-incorrect reset, regulator nodes.
-
-The configuration also uses refclk oscillator that need to enable
-explicitly in DT to avoid the probe hang on while reading DBI.
-
-So, this patch fixes all these essential issues and make this PCIe work
-properly.
-
-Issues fixed are,
-- Fix the associate controller nodes for M and B, E-Key
-- Fix the reset gpio handlings
-- Fix the regulator handlings and naming convensions
-- Support pcie_refclk oscillator
-
-Fixes: 92eaee21abbd ("arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2
-B-Key, E-Key")
-Fixes: 5d85d4c7e03b ("arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2
-M-Key")
-Reported-by: Mitchell Ma <machuang@radxa.com>
-Co-developed-by: Mitchell Ma <machuang@radxa.com>
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
- .../dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 81 ++++++++++++++-----
- 1 file changed, 59 insertions(+), 22 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-index 05ae9bdcfbbd..7125790bbed2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-@@ -10,6 +10,15 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	/* Unnamed gated oscillator: 100MHz,3.3V,3225 */
-+	pcie30_port0_refclk: pcie30_port1_refclk: pcie-oscillator {
-+		compatible = "gated-fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <100000000>;
-+		clock-output-names = "pcie30_refclk";
-+		vdd-supply = <&vcc3v3_pi6c_05>;
-+	};
-+
- 	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_pcie2x1l0";
-@@ -19,26 +28,26 @@ vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
- 		vin-supply = <&vcc_3v3_s3>;
- 	};
- 
--	vcc3v3_pcie3x2: regulator-vcc3v3-pcie3x2 {
-+	vcc3v3_bkey: regulator-vcc3v3-bkey {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpios = <&gpio2 RK_PC4 GPIO_ACTIVE_HIGH>; /* PCIE_4G_PWEN */
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pcie3x2_vcc3v3_en>;
--		regulator-name = "vcc3v3_pcie3x2";
-+		pinctrl-0 = <&pcie_4g_pwen>;
-+		regulator-name = "vcc3v3_bkey";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		startup-delay-us = <5000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
--	vcc3v3_pcie3x4: regulator-vcc3v3-pcie3x4 {
-+	vcc3v3_pcie30: vcc3v3_pi6c_05: regulator-vcc3v3-pi6c-05 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpios = <&gpio2 RK_PC5 GPIO_ACTIVE_HIGH>; /* PCIE30x4_PWREN_H */
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pcie3x4_vcc3v3_en>;
--		regulator-name = "vcc3v3_pcie3x4";
-+		pinctrl-0 = <&pcie30x4_pwren_h>;
-+		regulator-name = "vcc3v3_pcie30";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		startup-delay-us = <5000>;
-@@ -98,24 +107,52 @@ &pcie2x1l0 {
- };
- 
- &pcie30phy {
-+	data-lanes = <1 1 2 2>;
-+	/* separate clock lines from the clock generator to phy and devices */
-+	rockchip,rx-common-refclk-mode = <0 0 0 0>;
- 	status = "okay";
- };
- 
--/* B-Key and E-Key */
-+/* M-Key */
- &pcie3x2 {
-+	/*
-+	 * The board has a "pcie_refclk" oscillator that needs enabling,
-+	 * so add it to the list of clocks.
-+	 */
-+	clocks = <&cru ACLK_PCIE_2L_MSTR>, <&cru ACLK_PCIE_2L_SLV>,
-+		 <&cru ACLK_PCIE_2L_DBI>, <&cru PCLK_PCIE_2L>,
-+		 <&cru CLK_PCIE_AUX1>, <&cru CLK_PCIE2L_PIPE>,
-+		 <&pcie30_port1_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
-+	num-lanes = <2>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3x2_rst>;
--	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>; /* PCIE30X4_PERSTn_M1_L */
--	vpcie3v3-supply = <&vcc3v3_pcie3x2>;
-+	pinctrl-0 = <&pcie30x2_perstn_m1_l>;
-+	reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>; /* PCIE30X2_PERSTn_M1_L */
-+	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
- };
- 
--/* M-Key */
-+/* B-Key and E-Key */
- &pcie3x4 {
-+	/*
-+	 * The board has a "pcie_refclk" oscillator that needs enabling,
-+	 * so add it to the list of clocks.
-+	 */
-+	clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+		 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+		 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
-+		 <&pcie30_port0_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3x4_rst>;
--	reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>; /* PCIE30X2_PERSTn_M1_L */
--	vpcie3v3-supply = <&vcc3v3_pcie3x4>;
-+	pinctrl-0 = <&pcie30x4_perstn_m1_l>;
-+	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>; /* PCIE30X4_PERSTn_M1_L */
-+	vpcie3v3-supply = <&vcc3v3_bkey>;
- 	status = "okay";
- };
- 
-@@ -127,20 +164,20 @@ pcie2_0_rst: pcie2-0-rst {
- 	};
- 
- 	pcie3 {
--		pcie3x2_rst: pcie3x2-rst {
--			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		pcie30x2_perstn_m1_l: pcie30x2-perstn-m1-l {
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		pcie3x2_vcc3v3_en: pcie3x2-vcc3v3-en {
--			rockchip,pins = <2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		pcie_4g_pwen: pcie-4g-pwen {
-+			rockchip,pins = <2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 
--		pcie3x4_rst: pcie3x4-rst {
--			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		pcie30x4_perstn_m1_l: pcie30x4-perstn-m1-l {
-+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		pcie3x4_vcc3v3_en: pcie3x4-vcc3v3-en {
--			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		pcie30x4_pwren_h: pcie30x4-pwren-h {
-+			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAvMTIvMjAyNCAwNzo1MSwgRlVLQVVNSSBOYW9raSB3cm90ZToKPiBIaSBLcnp5c3p0b2Ys
+Cj4gCj4gQ291bGQgeW91IHBsZWFzZSByZXBseSB0byB0aGlzIGVtYWlsPwo+IChOb3QgZm9yIG1l
+LCBidXQgZm9yIGV2ZXJ5b25lKQoKWW91IGhhdmUgbWUgaG93IG11Y2ggdGltZS4uLiAzIGRheXMg
+dG8gcmVwbHk/Cgo+IAo+IEJlc3QgcmVnYXJkcywKPiAKPiAtLQo+IEZVS0FVTUkgTmFva2kKPiBS
+YWR4YSBDb21wdXRlciAoU2hlbnpoZW4pIENvLiwgTHRkLgo+IAo+IE9uIDEyLzE3LzI0IDEwOjEx
+LCBGVUtBVU1JIE5hb2tpIHdyb3RlOgo+PiBPbiAxMi8xNi8yNCAyMjozOCwgS3J6eXN6dG9mIEtv
+emxvd3NraSB3cm90ZToKPj4+IE9uIDE2LzEyLzIwMjQgMTI6MzAsIEZVS0FVTUkgTmFva2kgd3Jv
+dGU6Cj4+Pj4gVXNlIGNvbnNpc3RlbnQgbmFtZSB3aXRoIG90aGVyIHJlZ3VsYXRvcnMuIE5vIGZ1
+bmN0aW9uYWwgY2hhbmdlLgo+Pj4+Cj4+Pj4gRml4ZXM6IDNkZGY1Y2RiNzdlNiAoImFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBhZGQgUmFkeGEgUk9DSyA1QyIpCj4+Pj4gU2lnbmVkLW9mZi1ieTogRlVL
+QVVNSSBOYW9raSA8bmFva2lAcmFkeGEuY29tPgo+Pj4+IC0tLQo+Pj4+IENoYW5nZXMgaW4gdjU6
+Cj4+Pj4gLSBSZXdvcmQgY29tbWl0IG1lc3NhZ2UKPj4+PiBDaGFuZ2VzIGluIHY0Ogo+Pj4+IC0g
+cmV3b3JkIGNvbW1pdCBtZXNzYWdlCj4+Pj4gQ2hhbmdlcyBpbiB2MzoKPj4+PiAtIG5vbmUKPj4+
+PiBDaGFuZ2VzIGluIHYyOgo+Pj4+IC0gbmV3Cj4+Pj4gLS0tCj4+Pj4gwqAgYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2stNWMuZHRzIHwgNiArKystLS0KPj4+PiDCoCAx
+IGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj4g
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2NrLTVj
+LmR0cyBiL2FyY2gvIAo+Pj4+IGFybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtcm9jay01
+Yy5kdHMKPj4+PiBpbmRleCA4NTU4OWQxYTZkM2IuLjYxZDc1YWI1MDNiMiAxMDA2NDQKPj4+PiAt
+LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtcm9jay01Yy5kdHMKPj4+
+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtcm9jay01Yy5kdHMK
+Pj4+PiBAQCAtNzYsMTMgKzc2LDEzIEBAIHB3bS1mYW4gewo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDC
+oCBwd21zID0gPCZwd20zIDAgNjAwMDAgMD47Cj4+Pj4gwqDCoMKgwqDCoCB9Owo+Pj4+IC3CoMKg
+wqAgcGNpZTJ4MWwyXzN2MzogcmVndWxhdG9yLXBjaWUyeDFsMi0zdjMgewo+Pj4+ICvCoMKgwqAg
+dmNjM3YzX3BjaWUyeDFsMjogcmVndWxhdG9yLXZjYzN2M19wY2llMngxbDIgewo+Pj4KPj4+IE5v
+LCBuZWl0aGVyIGV4cGxhaW5lZCwgbm9yIGNvcnJlY3QuIFNlZSBEVFMgY29kaW5nIHN0eWxlLgo+
+Pj4KPj4+IFBsZWFzZSB1c2UgbmFtZSBmb3IgYWxsIGZpeGVkIHJlZ3VsYXRvcnMgd2hpY2ggbWF0
+Y2hlcyBjdXJyZW50IGZvcm1hdAo+Pj4gcmVjb21tZW5kYXRpb246ICdyZWd1bGF0b3ItWzAtOV12
+WzAtOV0nCj4+Pgo+Pj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5l
+bC9naXQvdG9ydmFsZHMvbGludXguZ2l0LyAKPj4+IHRyZWUvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL3JlZ3VsYXRvci9maXhlZC1yZWd1bGF0b3IueWFtbD8gCj4+PiBoPXY2LjEx
+LXJjMSNuNDYKPj4KPj4gJ3JlZ3VsYXRvci1bMC05XXZbMC05XScgaXMgcHJlZmVycmVkLCBidXQg
+J3JlZ3VsYXRvci1bMC05YS16LV0rJyBpcyBhbHNvIAo+PiBwZXJtaXR0ZWQsIHJpZ2h0Pwo+Pgo+
+PiBpLmUuIHJlZ3VsYXRvci12Y2MzdjNfcGNpZTJ4MWwyIHNob3VsZCBiZSByZWd1bGF0b3ItdmNj
+M3YzLXBjaWUyeDFsMgo+Pgo+Pgo+PiBPciwgc2hvdWxkIHdlIHJldmVydCBiZWxvdyBwYXRjaCBh
+bmQgdXNlICdyZWd1bGF0b3ItWzAtOV12WzAtOV0nPwo+Pgo+PiAgwqBodHRwczovL2xvcmUua2Vy
+bmVsLm9yZy8gCj4+IGFsbC8wYWU0MDQ5My05M2U5LTQwY2QtOWNhOS05OTBhZTA2NGYyMWFAZ21h
+aWwuY29tLwo+Pgo+PiBJcyAncmVndWxhdG9yLTB2MCcgdmFsaWQ/CgpXaHkgd291bGQgaXQgYmUg
+dmFsaWQ/IENhbiB5b3UgaGF2ZSByZWd1bGF0b3Igd2l0aCAwIHZvbHRzPwoKPj4gSXMgJ3JlZ3Vs
+YXRvci0xMnYwJyBpbnZhbGlkPwoKUmVhZCB0aGUgYmluZGluZy4gSSBnYXZlIHlvdSB2ZXJ5IHNw
+ZWNpZmljIGxpbmsuCgo+Pgo+PiBIb3cgc2hvdWxkIHdlIGhhbmRsZSBtdWx0aXBsZSAxdjgvM3Yz
+LzV2MCByZWd1bGF0b3JzPwoKSnVzdCBhZGQgc3VmZml4LiBCdXQgdXN1YWxseSBtb3JlIHRoYW4g
+b25lIHN1ZmZpeCwgdmNjKzN2MytwY2llXzJ4MWwyLAptZWFucyB5b3UgY3JlYXRlZCBhIHZlcnkg
+c3BlY2lmaWMgbmFtZS4KCgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
