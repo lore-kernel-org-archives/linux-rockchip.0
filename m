@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62278E7718D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Dec 2024 16:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6844E77188
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Dec 2024 16:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rWE3uVxHgIBmia12pWjHnHMFk9SSQOpr3b+7z69svxA=; b=2vdwdcVjPmrWJ4
-	lxeWma7sqHkDkZjXD9DRAt7IdiUuokeqIZ5q3SwJ//dthXFaCIuknAJq4buzfFRIjG+/MG2Fh/Z/e
-	gWuba3S0yLNrcVNTYQb0lR8GOlYVtJSZIQWhVo5lUSxLno2K2AQAlvt5R1oOMquuA8w9qjKvPDD96
-	ToA+6aTkTFnUDBFc4jpcOvqcrDlCtRkkjJOUQe/gEt1o2J23Pwd763PO8l5oejICDUU04jBTVb/tO
-	It2bMnA09n6iv8A6qCwGJrQEJBvsJq1aUsd0f2ELkwtpV4u9wKSMeAhy8XuHLLEtvzJML6dj1gHcv
-	+pgosE8KsEeXG3UlU4eg==;
+	List-Owner; bh=/1RQ0+qhCPnwozNUcJfY13tH1OpE47gT4Vm/L6W4Mh4=; b=ndwIrRe/ZEfY7Q
+	0cAWZlcOjrl6PYo3BDQmWJXMtWBvtaTAaY1KdvN8snWC+H0tSmsTSDy9mDVRuwwc1XexmsyxX9t0F
+	DISlYNBf3vFWwiK3hiSoXxJfG+rtSVCW6MjZ9UFgKQ9VriANJM1fNAR1dCzvyk45qWIS05ksAlAhS
+	hbGdKPNjaPUlltb58dfrR2iOW5R6kZrutCX5sJgwOGQAPwG0gTqWwNPOphw2mzaAaBWqoVSkjkFO1
+	33FYkBTEp1IqPbwSJmmEoOknizClYMFGgdmOE2PUVo7gSn+HQyNNEq+RjDywUxyTP8l+UNBP91olL
+	tR7uHI9/qqIOnV+K0i4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPOSo-00000008UFX-0zt2;
-	Sun, 22 Dec 2024 16:05:54 +0000
+	id 1tPOVi-00000008ULK-3sx0;
+	Sun, 22 Dec 2024 16:08:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPOSl-00000008UEf-3FZi
+	id 1tPOVg-00000008UKy-1UPd
 	for linux-rockchip@lists.infradead.org;
-	Sun, 22 Dec 2024 16:05:52 +0000
+	Sun, 22 Dec 2024 16:08:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=sJK39RA0K5056eaTfV7JaZNqqhDu4nNGoPt+f+k2PyI=; b=tq/UhkZ3gxaXxvXTxe5+nbjpqk
-	E2qCZ1uaLkLR7P6d9HqUrMIhkYRW6ek0/o/ekaGlRNavCTDj6kjKmHgQwBeXMz3KJABZGnFNfH7LF
-	pYvyHs5F35Gwd98Ps5/Ar53+C3PFM+9JRNznUM3ytUfPOuNyqpHvMy08ojROI3glbRnbENL0nj5w6
-	hBzL7hgCqi7BEgvnxhREn8KiWMttZllJM1/nnHTGrJMj8e/D0UPk+5rYDjIowe1fbww7UO0jR4d7m
-	ibzqEvRLZfRunOrUmWYuuOEHpFySznK8kRRYlYd21O8wF6597KA8iM5N2SU6a20hI/iV+wsEGiWoZ
-	Ga5cLZMw==;
+	bh=OJAa8ZOX3JItAwodoe1YGgwTpC/WvMlwN7ZuIURxJy4=; b=mtx3UF6MStD6lN0ZiHem1bMs0J
+	TiC9lzMHSVEIOhhbC6DUZxlciz2kHnxOzRwZ4SfajY5h3b7nmd9LAmYoWU19C0HBY9/mhk9UHoXLu
+	fk5PrNo0Sn7IWVyL4LEkqIqUFJFasvHUr/YD3sWRGG688nEAsGVwus1R6FNrqAU8dYHQEA6EzTLWA
+	lOWEy0runwT/HFb196+jYXs8c4eJVmZ/8Ds7zC17lznGEj3rmvz1VjApdC2kn0DVUsXiU4YL69ll4
+	SLNB4ZOPHNOp6Jl5hgwngPzwpY/DHE5z2rKRkHW+iEsVvlILxPofzTjWDQuNVri7aWuETYmmXuf90
+	yjUUlsgA==;
 Received: from i53875adc.versanet.de ([83.135.90.220] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tPOSk-0007eT-CA; Sun, 22 Dec 2024 17:05:50 +0100
+	id 1tPOVe-0007gW-Uv; Sun, 22 Dec 2024 17:08:50 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 05/38] pinctrl: rockchip: add rk3562 support
-Date: Sun, 22 Dec 2024 17:05:49 +0100
-Message-ID: <17013676.geO5KgaWL5@diego>
-In-Reply-To: <20241220110407.3511882-1-kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org
+Subject: Re: [PATCH 02/38] clk: rockchip: add dt-binding header for rk3562
+Date: Sun, 22 Dec 2024 17:08:49 +0100
+Message-ID: <2261039.72vocr9iq0@diego>
+In-Reply-To: <20241220103825.3509421-3-kever.yang@rock-chips.com>
 References: <20241220103825.3509421-1-kever.yang@rock-chips.com>
- <20241220110407.3511882-1-kever.yang@rock-chips.com>
+ <20241220103825.3509421-3-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241222_080551_826894_B66225FA 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20241222_080852_410727_E305268B 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +79,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 20. Dezember 2024, 12:04:03 CET schrieb Kever Yang:
-> From: Steven Liu <steven.liu@rock-chips.com>
+Am Freitag, 20. Dezember 2024, 11:37:48 CET schrieb Kever Yang:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
 > 
-> Add support for the 5 GPIO banks in the rk3562.
+> Add the dt-bindings header for the rk3562, that gets shared between
+> the clock controller and the clock references in the dts.
+> Add softreset ID for rk3562.
 > 
-> Signed-off-by: Steven Liu <steven.liu@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 > ---
 > 
->  drivers/pinctrl/pinctrl-rockchip.c | 199 ++++++++++++++++++++++++++++-
->  drivers/pinctrl/pinctrl-rockchip.h |   3 +-
->  2 files changed, 200 insertions(+), 2 deletions(-)
+>  include/dt-bindings/clock/rk3562-cru.h | 733 +++++++++++++++++++++++++
+>  1 file changed, 733 insertions(+)
+>  create mode 100644 include/dt-bindings/clock/rk3562-cru.h
 > 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index 36d4eaf0ebd1..c919437a1dbc 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -1,6 +1,7 @@
->  // SPDX-License-Identifier: GPL-2.0-only
->  /*
->   * Pinctrl driver for Rockchip SoCs
-> + * Copyright (c) 2020-2024 Rockchip Electronics Co., Ltd.
->   *
->   * Copyright (c) 2013 MundoReader S.L.
->   * Author: Heiko Stuebner <heiko@sntech.de>
+> diff --git a/include/dt-bindings/clock/rk3562-cru.h b/include/dt-bindings/clock/rk3562-cru.h
+> new file mode 100644
+> index 000000000000..1b5a63a7e98d
+> --- /dev/null
+> +++ b/include/dt-bindings/clock/rk3562-cru.h
+> @@ -0,0 +1,733 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2022-2024 Rockchip Electronics Co., Ltd.
+> + * Author: Finley Xiao <finley.xiao@rock-chips.com>
+> + */
 
-nitpick: it would look nicer to keep the Copyright blocks together, like
+Forgot to add:
 
-  * Pinctrl driver for Rockchip SoCs
-  *
-+ * Copyright (c) 2020-2024 Rockchip Electronics Co., Ltd.
-  * Copyright (c) 2013 MundoReader S.L.
-  * Author: Heiko Stuebner <heiko@sntech.de>
+We might want to follow newer file naming conventions, see 
+- include/dt-bindings/clock/rockchip,rk3576-cru.h
+- include/dt-bindings/clock/rockchip,rk3588-cru.h
 
-other than that, the rk3562 variant looks quirk-free, so
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+and please dual license, as
+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
 
 
 Heiko
