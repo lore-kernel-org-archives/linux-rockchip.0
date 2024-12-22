@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95517E77188
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Dec 2024 21:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E950E77188
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Dec 2024 23:17:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mLhAcq//G5tavqR1c4xR4HuzB0esZzlgS5BPMXFlsao=; b=OZrrp5vKyO/gTU
-	8gMXMJOiO9+RiGFah303fQHsWa+wToIhyXJGVkqK9Qp28BCiQm933TMUo0PxbrTxyeEJ2fN5uQFUD
-	ZSR5hM/O7VPo6AQcu4V6BJeVINOAfhpINjjTlNOcgFICG1i8IInTREL2xXRrSCJKmxoXT1iUXbeYs
-	DwqfOuBOn/RDVLRlyIOCKjX8XM207NpyzzHKC8BzsH/btXVKU/djbGx4q5Zng+jVODVrvkHupCNm4
-	kkJZM3ffwFIyPAjYG/f8a2iEuFytptRpnzmY4V0qgCPoxz3YuCc5S9heSAslvgh96Odn/U/0j14ka
-	rQEoMiI+0SXGP/A/unIw==;
+	List-Owner; bh=mUFBEm1C04e8V4W5rX9QtsXaRvgMBQKq62ea574827A=; b=rKjPPldFqTBdrI
+	wQ52pxNXw2q/mEEyMWEYB4Vg2U2n7uiXKeN7ktbrUpIaJrZyHm5UnQZ8DMr62cn0iazBpbzVkgPoI
+	zREMfm6k0sY6wwyw/mlll1H0MAzHqhWz0fPCAOBzEFn89ZLlTB03y8/ySlM+8T5F5CggbaG0Qxef0
+	fpPxwqrlpsp8lntOzn6QHiMhZTXkX88XzG5ZqbRGThRBT5Mq6NECQw/VQrhrPb6UWtedo1A85eoAb
+	Ep3bkOymAKrM3hf/k08OebBPNppSAwpnulUjRiWMFaAXb+KQezpWp+9KB8QJ9zf7awepE2pjCQy79
+	CiJhSQQsBTyOtxCRd0XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPTGM-00000008qT5-1GRS;
-	Sun, 22 Dec 2024 21:13:22 +0000
-Received: from mail-pl1-f174.google.com ([209.85.214.174])
+	id 1tPVCn-00000008xNZ-3GrF;
+	Sun, 22 Dec 2024 23:17:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPTF9-00000008qPH-2RHb;
-	Sun, 22 Dec 2024 21:12:08 +0000
-Received: by mail-pl1-f174.google.com with SMTP id d9443c01a7336-21644aca3a0so37988805ad.3;
-        Sun, 22 Dec 2024 13:12:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734901926; x=1735506726;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4k38+bC4o4JY/nExyesCKw1Oyf/W4W8hN/wgHfx4tKk=;
-        b=lUm361Tqx4fGZSYA5jmF5DgpJ4ULbbOKUwACY4qF5vHF/pf71E/f5tEgztwljElIdh
-         H1kZr3I8DFeQ+iRq3E6CVOfC7oRwSfbzpPcJuiDCAmciq1iw9Iu/r9PyiSoGbeT7LK6G
-         a5On073Ds+Q3N1k5hXxgxENIUQDvVkZ6q6d8wyKtR50lw6hvZhGsCJpsdxwj1uuJ8gCU
-         YRrWzYSyT2169m1CqtJhJikwYhq/vGXinvQZ8K1WteZKP3M60MpjsY3KKCxI09LH+TFu
-         XkudH7GQtjqa97S1LHSK0QhgK09dxTWzFjYIR9l9y0vk50gac32/doiRQy4AFYTRuTtn
-         JTZA==
-X-Forwarded-Encrypted: i=1; AJvYcCXT3cY3loy9dzt6tyP89iZpxF1fV/q8baiaAg8IspJLEOu16F5Bc4mTOGskNe/tfNLKNPE0zTuawDtvCe+2yVI=@lists.infradead.org, AJvYcCXdZ6A2Tl944azING6kL54TueiA7oc2QFSOMtIX3QpMuGHfuS9FhIc1Uom8318Euq2qkKpJ79LZ0X4v02hWXIUa@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYHj0nXll+X6EAAegNHXHOyeDgJBz+6+XnKmtCEGYdOu2jdBcW
-	wgKLfsMfcIesGAg1AdbRE922nOnPxu9bycCRbG5As6zKlBlyIYPc
-X-Gm-Gg: ASbGncu25pIniC+yYFXt5bfP+K5PhxNje4UDiB665qVzBus01Dr8KRNFcj2ajVIpi/T
-	uakF6UsAXDHqu2FKMXfVIA+fzQEoxEF7cytQxEbgur2tudQGIb6dwD+NDnsJaxuTrnYYPsdZtyT
-	qD/eC2ZBa9wHocoOGKfxURtwHcfApiyOA+5UC8JwPTa4sALZ/3PVpXPouOf07vsbDPYT4e07I3a
-	E5Jp3cs7UM+Os9HGkDOzxE21DGwXoLOj4pf3kE1+tOLGujBiYQaGW5m0JLmqtfAezh01WXgMz6D
-	fxzd48TtWHZs57o=
-X-Google-Smtp-Source: AGHT+IHvYfdLxwvSBegIAr+l+/j6AuDpyaWscN+dBbMElcNGPAGpUwZZ++vm4K3x0zJBaL3mmLcrHg==
-X-Received: by 2002:a17:902:f644:b0:215:7421:262 with SMTP id d9443c01a7336-219e6e89283mr175922225ad.12.1734901926177;
-        Sun, 22 Dec 2024 13:12:06 -0800 (PST)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-219dc9d444csm60664785ad.137.2024.12.22.13.12.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Dec 2024 13:12:05 -0800 (PST)
-Date: Mon, 23 Dec 2024 06:12:03 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	id 1tPVBb-00000008xKZ-2QdD;
+	Sun, 22 Dec 2024 23:16:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CF3995C544C;
+	Sun, 22 Dec 2024 23:15:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59779C4CECD;
+	Sun, 22 Dec 2024 23:16:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734909393;
+	bh=sPExyfB5xDKjo6+h/9m7CJfp/uLSnGqHu8pchYo7G5U=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=naNCs+EuFAAcALfm760+rvgwFrB97BCO1EEIuTqdvBQYxdpX1QlUc1wbjNd15qTwO
+	 glBx7TpMrYqx/u7gZowjCzKV9BJAAHA4j3BXwuoOkd9CFkK2PnC3rEsygbab1UMgZw
+	 T0Ibarav9ZcPF0itvvs9q4NCZOfO5RWiGoS66uYzz+E+70wSdKtg7DCqFxNBz47f7v
+	 EqieAlVspcYmKYT+JJ1nY+Jqq4FKQjI1yNGg8tbMh/KQTbfKDYh8TiC+3yy9Wg9gpt
+	 Ke4Zs+mpI3BPWR8LdZVcI9VZ1CUOXLMrHIObG6soTJ0ZESXTsSt8MtYCsvAuLgbF+d
+	 sUAYa3ylCDU1Q==
+Received: from 91-161-240-24.subs.proxad.net ([91.161.240.24] helo=wait-a-minute.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tPVBW-006FHJ-Me;
+	Sun, 22 Dec 2024 23:16:30 +0000
+Date: Sun, 22 Dec 2024 23:16:30 +0000
+Message-ID: <8734ifs3zl.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: FUKAUMI Naoki <naoki@radxa.com>,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	tglx@linutronix.de,
+	jonas@kwiboo.se,
+	macromorgan@hotmail.com,
+	andyshrk@163.com,
+	liujianfeng1994@gmail.com,
+	dmt.yashin@gmail.com,
+	tim@feathertop.org,
+	marcin.juszkiewicz@linaro.org,
+	michael.riesch@wolfvision.net,
+	alchark@gmail.com,
+	sebastian.reichel@collabora.com,
+	jbx6244@gmail.com,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on
- dll_link_up irq in the combined sys irq
-Message-ID: <20241222211203.GC3111282@rocinante>
-References: <20241127145041.3531400-2-cassel@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241127145041.3531400-2-cassel@kernel.org>
+Subject: Re: [PATCH 1/3] irqchip/gic-v3: Enable Rockchip 3588001 erratum workaround for RK3582
+In-Reply-To: <f93b3bfb5151e4b617b1c99c91b4956f@manjaro.org>
+References: <20241222030355.2246-1-naoki@radxa.com>
+	<20241222030355.2246-2-naoki@radxa.com>
+	<86msgoozqa.wl-maz@kernel.org>
+	<f93b3bfb5151e4b617b1c99c91b4956f@manjaro.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 91.161.240.24
+X-SA-Exim-Rcpt-To: dsimic@manjaro.org, naoki@radxa.com, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de, jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com, liujianfeng1994@gmail.com, dmt.yashin@gmail.com, tim@feathertop.org, marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net, alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241222_131207_644710_5CA3CF6B 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20241222_151635_714574_1D6FF185 
+X-CRM114-Status: GOOD (  33.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +104,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Dragan,
 
-> Most boards using the pcie-dw-rockchip PCIe controller lack standard
-> hotplug support.
+On Sun, 22 Dec 2024 18:25:02 +0000,
+Dragan Simic <dsimic@manjaro.org> wrote:
 > 
-> Thus, when an endpoint is attached to the SoC, users have to rescan the bus
-> manually to enumerate the device. This can be avoided by using the
-> 'dll_link_up' interrupt in the combined system interrupt 'sys'.
+> Hello Marc,
 > 
-> Once the 'dll_link_up' irq is received, the bus underneath the host bridge
-> is scanned to enumerate PCIe endpoint devices.
+> On 2024-12-22 10:04, Marc Zyngier wrote:
+> > On Sun, 22 Dec 2024 03:03:53 +0000,
+> > FUKAUMI Naoki <naoki@radxa.com> wrote:
+> >> 
+> >> Rockchip RK3582 is a scaled down version of Rockchip RK3588(S). Apply
+> >> Rockchip 3588001 erratum workaround to RK3582.
+> >> 
+> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> >> ---
+> >>  drivers/irqchip/irq-gic-v3-its.c | 3 ++-
+> >>  1 file changed, 2 insertions(+), 1 deletion(-)
+> >> 
+> >> diff --git a/drivers/irqchip/irq-gic-v3-its.c
+> >> b/drivers/irqchip/irq-gic-v3-its.c
+> >> index 92244cfa0464..c59ce9332dc0 100644
+> >> --- a/drivers/irqchip/irq-gic-v3-its.c
+> >> +++ b/drivers/irqchip/irq-gic-v3-its.c
+> >> @@ -4861,7 +4861,8 @@ static bool __maybe_unused
+> >> its_enable_rk3588001(void *data)
+> >>  {
+> >>  	struct its_node *its = data;
+> >> 
+> >> -	if (!of_machine_is_compatible("rockchip,rk3588") &&
+> >> +	if (!of_machine_is_compatible("rockchip,rk3582") &&
+> >> +	    !of_machine_is_compatible("rockchip,rk3588") &&
+> >>  	    !of_machine_is_compatible("rockchip,rk3588s"))
+> >>  		return false;
+> >> 
+> > 
+> > Please use the relevant property for that purpose ("dma-noncoherent")
+> > at the distributor and ITS levels. We're not adding extra compatibles
+> > for this anymore, and you might as well fix the core dtsi to expose
+> > such property.
 > 
-> This commit implements the same functionality that was implemented in the
-> DWC based pcie-qcom driver in commit 4581403f6792 ("PCI: qcom: Enumerate
-> endpoints based on Link up event in 'global_irq' interrupt").
+> Thanks for your response.
 > 
-> The Root Complex specific device tree binding for pcie-dw-rockchip already
-> has the 'sys' interrupt marked as required, so there is no need to update
-> the device tree binding. This also means that we can request the 'sys' IRQ
-> unconditionally.
+> After a more detailed look into drivers/irqchip/irq-gic-v3-its.c,
+> it seems that relying on the "dma-noncoherent" DT property may not
+> be equivalent to adding another compatible check.
 
-Applied to controller/rockchip, thank you!
+It is. My email makes it plain what needs doing.
 
-[01/01] PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ in the combined sys IRQ
-        https://git.kernel.org/pci/pci/c/191b732176e7
+> Here are a few
+> quotations from irq-gic-v3-its.c, to illustrate this better:
+> 
+> 4746 static bool __maybe_unused its_enable_rk3588001(void *data)
+> 4747 {
+> 4748         struct its_node *its = data;
+> 4749
+> 4750         if (!of_machine_is_compatible("rockchip,rk3588") &&
+> 4751             !of_machine_is_compatible("rockchip,rk3588s"))
+> 4752                 return false;
+> 4753
+> 4754         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+> 4755         gic_rdists->flags |= RDIST_FLAGS_FORCE_NON_SHAREABLE;
+> 4756
+> 4757         return true;
+> 4758 }
+> 4759
+> 4760 static bool its_set_non_coherent(void *data)
+> 4761 {
+> 4762         struct its_node *its = data;
+> 4763
+> 4764         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+> 4765         return true;
+> 4766 }
+> 
+> 4814 #ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
+> 4815         {
+> 4816                 .desc   = "ITS: Rockchip erratum RK3588001",
+> 4817                 .iidr   = 0x0201743b,
+> 4818                 .mask   = 0xffffffff,
+> 4819                 .init   = its_enable_rk3588001,
+> 4820         },
+> 4821 #endif
+> 4822         {
+> 4823                 .desc   = "ITS: non-coherent attribute",
+> 4824                 .property = "dma-noncoherent",
+> 4825                 .init   = its_set_non_coherent,
+> 4826         },
 
-	Krzysztof
+Nothing tickles me more than having my own work being thrown back at
+me.
+
+> 
+> As visible above, using the "dma-noncoherent" DT property results
+> in not setting the RDIST_FLAGS_FORCE_NON_SHAREABLE flag, which the
+> its_enable_rk3588001() function does.  In other words, it doesn't
+> seem that "dma-noncoherent" is a "drop-in" replacement for adding
+> yet another compatible for the RK3582.
+
+You clearly haven't read what I wrote. Or rather, you read what you
+wanted to read, and ignored half of it.
+
+>
+> Modifying the current behavior of the "dma-noncoherent" DT property
+> doesn't seem like an option, because it's already used in a couple
+> of board dts(i) files.  Should we introduce another DT property,
+> perhaps "dma-noncoherent-rdist" or something similar?
+
+No. We have everything we need. Believe it or not, I actually know
+what I'm talking about. I know, this is surprising. I surprise myself
+sometimes.
+
+> Could you, please, advise on how to move forward with this?  I'm
+
+I already have.
+
+> willing to implement the required patches, but I'd prefer to reduce
+> the possible back-and-forth on them, to save everyone's time.
+
+May I suggest that you read my email again? How about grepping through
+the upstream DT collection and (shock, horror) look at the imx95.dtsi
+file, which suffers from the same braindead behaviour as the RK stuff?
+
+For clarity, let me paste it here again, and add some emphasis for
+extra clarity:
+
+> > Please use the relevant property for that purpose ("dma-noncoherent")
+> > at the distributor and ITS levels. We're not adding extra compatibles
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now, please go look at the code for real this time, appreciate how the
+"dma-noncoherent" property placed at the distributor *AND* ITS levels
+combine to give you the effects the hardware requires.
+
+To sum it up: the standard properties and the Rockchip hacks are
+strictly equivalent, there is no need for anything extra, and I stand
+by my NAK on this very patch.
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
