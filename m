@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4557FE7718B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 12:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E63A7E7718B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 12:55:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iqtSC9FoXKRbGf4N5e/gHWs02bZZpqjLKccZvBUbjJc=; b=ricXiwSe06jmBt
-	EhI564q2gmOEOs0RM0i4jwi4ua7VGtrtGXzn3QaV6dmaGb7QQzlw9+NhBw9YG+ibFGsj33PDcCPTv
-	aVekJGEm9mrBn9kJPaoxsICnqKg7jr3DJC8keITNfyKtMaiV9IOz3u2fq+/tTBJGYXU/ilASG5XNu
-	X82zN0CH9FAshH2+hptRabT2TgMg0CMeMmyUviP6SElziXeBeqRkZ2MCUGE3qoi0r2igncT7U5ry5
-	zw34+xoA8LPPnsh7H0l0hDKCUWH4idcbxx13B6NiAAWoMR6mJJN78GF7aAgbT7XBzlDqMPK/7gQja
-	tboN5c5kkOaPT2GuU5gA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=lZBxC6n4G+edr3Xvbotdb142ETGi6O1XS6Mw2nRQs8c=; b=MLAPJk5JsnStS2h9xaPV6Md7DN
+	9uMAdnfFzGB0+7tbidNgWXLs2qTAfH+hGTNC51SLxQKQFuntdJMxuRTe+qdHBOyVGPuvx4ZeT9Eye
+	tqmkmigSjMWanL5gX4Dmit1Ob8TuL5xlfYYHFkxEejR0QqBmv5bGNzdIqGTGCXrNga6m/vv9q+gKp
+	JtUSpVtdxbJc1qApbR0yOqskba9TyShhYpZ7uvwXflYouMAH5A2oeNeCkJrkcX47S2mlea9TGT4P9
+	BhtKrzeKMe9gEoEqvZ6IF/YnZYvXzND2uPalcL70FNldauEBPyaBHyJ92RRtU4+plcEKUbzGxXiW4
+	cY4ccsuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPhi1-0000000A04x-1Lus;
-	Mon, 23 Dec 2024 12:38:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tPhy1-0000000A1CB-1qtQ;
+	Mon, 23 Dec 2024 12:55:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPhhy-0000000A04X-1kez;
-	Mon, 23 Dec 2024 12:38:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=SGKjXT44ZxRLzSSUoOpZvLtX/l3kIF1j/AjArQpwkAU=; b=wwPMXFHV6pZGalDr4H4ARCpQjp
-	JX/74ZMXMJou9/+klqzemjn9t/ujgZh7UYLgaOY/tyvH+Bkk+JzEu5Zn4i5bKwTN8pdDnf+APH9ok
-	zSxoZs21/BBd+IyqF8RycethVN4E658aLIPO5W5guswqIOZ0N4t6BOJHZ7f3NtcK1w88CG/MW3fhD
-	T3gz1M9H97AJNO+wknh2JZRs4I9O2onE3jg8gKw0XbkswkOnNMBtHEEvSiNjSdNAh1PPtMv2dLPz0
-	1j4C0fCgSpDOKzBMUxVAo2gdcyJ5uPRbYmuE8vScNWmZpJMdHXICqtrC3u3yhyZkq/Od6gK9YvmCc
-	oT2dahag==;
-Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tPhhg-0002QI-VZ; Mon, 23 Dec 2024 13:38:33 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Liang Chen <cl@rock-chips.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 3/7] dts: arm64: rockchip: Add rk3576 pcie nodes
-Date: Mon, 23 Dec 2024 13:38:31 +0100
-Message-ID: <2046140.PIDvDuAF1L@diego>
-In-Reply-To: <bfd84b6b-9b19-4d9b-b0a3-cb6ed1f8084c@rock-chips.com>
-References: <20241220101551.3505917-1-kever.yang@rock-chips.com>
- <i54jjqt7uaxrurdapsyxwmb5iokiwzgm5cvlaamlggycrpyd3v@azhmfwgetrzm>
- <bfd84b6b-9b19-4d9b-b0a3-cb6ed1f8084c@rock-chips.com>
+	id 1tPhv6-0000000A0nZ-140H;
+	Mon, 23 Dec 2024 12:52:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7CA105C58E0;
+	Mon, 23 Dec 2024 12:51:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3E48C4CED3;
+	Mon, 23 Dec 2024 12:52:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1734958343;
+	bh=DZLOOBiciJyhBDbKsGMbSYPglw0YxTgZsF13HIoYz+M=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=nbcVR4s6J3hbdtJ9pz2NUcqJSVhM2pStEpJ0Pwzw1QiQvpS9Jz63F0VCghs0zpkjS
+	 UQg5VIhMx+Ck8WYPRy97+PfuwVCCm/onNwk1kWnSw08v2koP7NHThRg+xfssOgZ2WV
+	 Zjex9HxkPbwqQPT4T7V6y4jRjd0MrxvGE6GB/yybVzC5AZ1V9tQvJh1e4tEEL+/E/Y
+	 U4gI3+Huui1A7SSwOCj6/RST2iURB/SHYhNnAsvJ5Ym4Yt3LMkRykum3dVs3R0so2J
+	 MUkkFKTkodryU/Z8Aj/I1PdDGbmRg5nYRNNEQ2vT/DyiAg0QJS1b/WGazZ/r9RQogB
+	 PVrtDFaZQ1Qeg==
+Date: Mon, 23 Dec 2024 06:52:21 -0600
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: tglx@linutronix.de, liujianfeng1994@gmail.com, heiko@sntech.de, 
+ marcin.juszkiewicz@linaro.org, krzk+dt@kernel.org, tim@feathertop.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ macromorgan@hotmail.com, conor+dt@kernel.org, jonas@kwiboo.se, 
+ sebastian.reichel@collabora.com, andyshrk@163.com, dmt.yashin@gmail.com, 
+ jbx6244@gmail.com, maz@kernel.org, alchark@gmail.com, dsimic@manjaro.org, 
+ linux-rockchip@lists.infradead.org, michael.riesch@wolfvision.net
+To: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20241222030355.2246-1-naoki@radxa.com>
+References: <20241222030355.2246-1-naoki@radxa.com>
+Message-Id: <173495825045.503766.3208217124829960779.robh@kernel.org>
+Subject: Re: [PATCH 0/3] rockchip: Add support for RK3582
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_043850_493488_F3B88719 
-X-CRM114-Status: GOOD (  22.88  )
+X-CRM114-CacheID: sfid-20241223_045224_382885_E1E13546 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,51 +76,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 23. Dezember 2024, 11:49:23 CET schrieb Kever Yang:
-> Hi Krzysztof,
-> 
-> On 2024/12/22 14:38, Krzysztof Kozlowski wrote:
-> > On Fri, Dec 20, 2024 at 06:15:47PM +0800, Kever Yang wrote:
-> >> rk3576 has two pcie controller, both are pcie2x1 used with
-> >> naneng-combphy.
-> >>
-> >> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> >> ---
-> > Please use subject prefixes matching the subsystem. You can get them for
-> > example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
-> > your patch is touching. For bindings, the preferred subjects are
-> > explained here:
-> > https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
-> >
-> Will update with arm64: dts: .
-> >> Changes in v2:
-> >> - Update clock and reset names and sequence to pass DTB check
-> >>
-> >>   arch/arm64/boot/dts/rockchip/rk3576.dtsi | 109 +++++++++++++++++++++++
-> >>   1 file changed, 109 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> index a147879da501..df7dfe702221 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> @@ -1016,6 +1016,115 @@ qos_npu_m1ro: qos@27f22100 {
-> >>   			reg = <0x0 0x27f22100 0x0 0x20>;
-> >>   		};
-> >>   
-> >> +		pcie0: pcie@2a200000 {
-> >> +			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
-> >> +			bus-range = <0x0 0xf>;
-> > Follow DTS coding style in properties order and everything around here.
-> 
-> I can do it for most of the properties, but is there any other rules 
-> other than sort,
-> 
-> eg. compatible and reg in the beginning and status in the end?
 
-correct, that is the preferred sorting :-) .
+On Sun, 22 Dec 2024 03:03:52 +0000, FUKAUMI Naoki wrote:
+> Rockchip RK3582 is a scaled down version of Rockchip RK3588(S).
+> 
+> - Dual Cortex-A76 and quad Cortex-A55 CPU
+> - No GPU
+> - 5TOPS NPU
+> - H.264/H.265 video encoder up to 4K@60fps
+> 
+> This patch series adds RK3582 support to the GIC and the Radxa E52C
+> compact network computer.
+> 
+> FUKAUMI Naoki (3):
+>   irqchip/gic-v3: Enable Rockchip 3588001 erratum workaround for RK3582
+>   dt-bindings: arm: rockchip: Add Radxa E52C
+>   arm64: dts: rockchip: Add Radxa E52C
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 729 ++++++++++++++++++
+>  drivers/irqchip/irq-gic-v3-its.c              |   3 +-
+>  4 files changed, 737 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> 
+> --
+> 2.43.0
+> 
+> 
+> 
 
 
-Heiko
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3582-radxa-e52c.dtb' for 20241222030355.2246-1-naoki@radxa.com:
+
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: adc-keys: 'key-vendor' does not match any of the regexes: '^button-', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/input/adc-keys.yaml#
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: pwm-leds: led-1:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-4-4100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'netdev', 'none', 'rc-feedback', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-4-4100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-4-4100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-4-4100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-4-4100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-pwm.yaml#
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: pwm-leds: led-1: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-pwm.yaml#
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: pwm-leds: led-2:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-3-3100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'netdev', 'none', 'rc-feedback', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-3-3100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-3-3100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-3-3100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-3-3100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-pwm.yaml#
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: pwm-leds: led-2: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-pwm.yaml#
+
+
+
 
 
 
