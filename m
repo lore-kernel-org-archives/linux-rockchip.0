@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06662E7718B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 12:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4557FE7718B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 12:38:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=CLLLUaHFj6tlciZ6S9AVFkpVBxf4V6A4rc6YSba9y20=; b=H/kU1HDVVK9dyaETQh+eNW5INF
-	UcfhmJ+mlDFlhrU6nD1K4lg2ZAwV+zpSiPbuuZNmhR6xQGmdgElWYr6jBElUQfqLlKjn9MkbcJJGe
-	51lB5COnkNhZrzJTfEKhObNbkT5jzM19s/n9E+D76brvxbxT5hIRpmdz4DA/NiWp0HeFvVHnv+eJr
-	jl8K8IdJx8mbGqdCu6b1RLFIvtyn+qXfGacAz5paGqZ737Kgt8XPl714MIeWguSNoRBc994mGiDpD
-	FZLz2LH/YFdnSzh2lzQKegRYPiOQ+1H9grrO/1iAfj0pXmF9+DzdbEIc1t5gqhswIuCfTUrEEs5+3
-	jcLNBY4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iqtSC9FoXKRbGf4N5e/gHWs02bZZpqjLKccZvBUbjJc=; b=ricXiwSe06jmBt
+	EhI564q2gmOEOs0RM0i4jwi4ua7VGtrtGXzn3QaV6dmaGb7QQzlw9+NhBw9YG+ibFGsj33PDcCPTv
+	aVekJGEm9mrBn9kJPaoxsICnqKg7jr3DJC8keITNfyKtMaiV9IOz3u2fq+/tTBJGYXU/ilASG5XNu
+	X82zN0CH9FAshH2+hptRabT2TgMg0CMeMmyUviP6SElziXeBeqRkZ2MCUGE3qoi0r2igncT7U5ry5
+	zw34+xoA8LPPnsh7H0l0hDKCUWH4idcbxx13B6NiAAWoMR6mJJN78GF7aAgbT7XBzlDqMPK/7gQja
+	tboN5c5kkOaPT2GuU5gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPhax-00000009zjQ-3TR4;
-	Mon, 23 Dec 2024 12:31:35 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tPhi1-0000000A04x-1Lus;
+	Mon, 23 Dec 2024 12:38:53 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPhZl-00000009zeD-0xft;
-	Mon, 23 Dec 2024 12:30:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 52271A40CF1;
-	Mon, 23 Dec 2024 12:28:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA429C4CED3;
-	Mon, 23 Dec 2024 12:30:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734957019;
-	bh=6nXbrL1gwIytwF5O4XWcHKIPCE3bZ8kGnps/owl0hCU=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Nx6bZ0N7x9kx21ITNGRYUptWqADRtrtEc4CBIHp1Xvaxrr6eECiGHwPb3xejQFZaH
-	 XxpAF9MuZFAqDe+xlJtkB9vH9AtesxBtCEckTZON9jjmenbNOlB3RbN2bh+pgJ2orJ
-	 7hNt3RFqWznstdgwtEzvm0Tx335YFql2Vwn6ws8DfeqjpOZZ17SvCkLusIL8yZ3F0w
-	 UDIBaDhZTiosKMOt+l49dUUliqaYavE80CtjMdwp0cSWH4fmv1nHpWj984tkUXDr6f
-	 xU60eoVFgX3QPWuZ5L0zbkyNHYlX9Z4FiuUGntG7hPcvcsC4IFicjveCTieJx3nKwA
-	 KKtMsrlNto5eQ==
-Date: Mon, 23 Dec 2024 06:30:17 -0600
+	id 1tPhhy-0000000A04X-1kez;
+	Mon, 23 Dec 2024 12:38:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=SGKjXT44ZxRLzSSUoOpZvLtX/l3kIF1j/AjArQpwkAU=; b=wwPMXFHV6pZGalDr4H4ARCpQjp
+	JX/74ZMXMJou9/+klqzemjn9t/ujgZh7UYLgaOY/tyvH+Bkk+JzEu5Zn4i5bKwTN8pdDnf+APH9ok
+	zSxoZs21/BBd+IyqF8RycethVN4E658aLIPO5W5guswqIOZ0N4t6BOJHZ7f3NtcK1w88CG/MW3fhD
+	T3gz1M9H97AJNO+wknh2JZRs4I9O2onE3jg8gKw0XbkswkOnNMBtHEEvSiNjSdNAh1PPtMv2dLPz0
+	1j4C0fCgSpDOKzBMUxVAo2gdcyJ5uPRbYmuE8vScNWmZpJMdHXICqtrC3u3yhyZkq/Od6gK9YvmCc
+	oT2dahag==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tPhhg-0002QI-VZ; Mon, 23 Dec 2024 13:38:33 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
+ Liang Chen <cl@rock-chips.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 3/7] dts: arm64: rockchip: Add rk3576 pcie nodes
+Date: Mon, 23 Dec 2024 13:38:31 +0100
+Message-ID: <2046140.PIDvDuAF1L@diego>
+In-Reply-To: <bfd84b6b-9b19-4d9b-b0a3-cb6ed1f8084c@rock-chips.com>
+References: <20241220101551.3505917-1-kever.yang@rock-chips.com>
+ <i54jjqt7uaxrurdapsyxwmb5iokiwzgm5cvlaamlggycrpyd3v@azhmfwgetrzm>
+ <bfd84b6b-9b19-4d9b-b0a3-cb6ed1f8084c@rock-chips.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, Simon Xue <xxm@rock-chips.com>, 
- linux-rockchip@lists.infradead.org, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
-To: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20241223110637.3697974-3-kever.yang@rock-chips.com>
-References: <20241223110637.3697974-1-kever.yang@rock-chips.com>
- <20241223110637.3697974-3-kever.yang@rock-chips.com>
-Message-Id: <173495701750.480868.16123444058526675248.robh@kernel.org>
-Subject: Re: [PATCH v3 2/7] dt-bindings: PCI: dw: rockchip: Add rk3576
- support
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_043021_352174_3E7395C1 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20241223_043850_493488_F3B88719 
+X-CRM114-Status: GOOD (  22.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,52 +80,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 23 Dec 2024 19:06:32 +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, with msi interrupt directly to gic instead
-> of to gic its, so
-> - no its suport is required and the 'msi-map' is not need anymore,
-> - a new 'msi' interrupt is needed.
+Am Montag, 23. Dezember 2024, 11:49:23 CET schrieb Kever Yang:
+> Hi Krzysztof,
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
+> On 2024/12/22 14:38, Krzysztof Kozlowski wrote:
+> > On Fri, Dec 20, 2024 at 06:15:47PM +0800, Kever Yang wrote:
+> >> rk3576 has two pcie controller, both are pcie2x1 used with
+> >> naneng-combphy.
+> >>
+> >> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> >> ---
+> > Please use subject prefixes matching the subsystem. You can get them for
+> > example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
+> > your patch is touching. For bindings, the preferred subjects are
+> > explained here:
+> > https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+> >
+> Will update with arm64: dts: .
+> >> Changes in v2:
+> >> - Update clock and reset names and sequence to pass DTB check
+> >>
+> >>   arch/arm64/boot/dts/rockchip/rk3576.dtsi | 109 +++++++++++++++++++++++
+> >>   1 file changed, 109 insertions(+)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> >> index a147879da501..df7dfe702221 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> >> @@ -1016,6 +1016,115 @@ qos_npu_m1ro: qos@27f22100 {
+> >>   			reg = <0x0 0x27f22100 0x0 0x20>;
+> >>   		};
+> >>   
+> >> +		pcie0: pcie@2a200000 {
+> >> +			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
+> >> +			bus-range = <0x0 0xf>;
+> > Follow DTS coding style in properties order and everything around here.
 > 
-> Changes in v3:
-> - Fix dtb check broken on rk3588
-> - Update commit message
+> I can do it for most of the properties, but is there any other rules 
+> other than sort,
 > 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../devicetree/bindings/pci/rockchip-dw-pcie-common.yaml      | 4 +++-
->  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml   | 4 +---
->  2 files changed, 4 insertions(+), 4 deletions(-)
-> 
+> eg. compatible and reg in the beginning and status in the end?
 
-My bot found errors running 'make dt_binding_check' on your patch:
+correct, that is the preferred sorting :-) .
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml:85:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
 
-dtschema/dtc warnings/errors:
+Heiko
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241223110637.3697974-3-kever.yang@rock-chips.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
