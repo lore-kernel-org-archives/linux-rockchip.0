@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99E62E7718B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 10:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35D26E7718B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 10:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ilrj2JPJQjsdz+Tcq+VMIvbRKNETEGVAQzcPs6sr290=; b=o7z5LdUwiWdN+xKwDK4lv1rbQ1
-	SVNpan8Q5fNy2fydo0HNNiVK/hvGUIs7bxUUwxXuGgKAHuRsQYVZK06eQVmw7EQ4JP246LYkfMboN
-	ykS5CW2v/2/qt13aPIuaxAb8qDk2RYIvqAWs4rqEw84jA9boEkDaX2hWqv6mu37R0rgFtHUhuMSs5
-	xJt3E5M1XjCVZpyczNqC6y9489XDyKez0WjSbNMk7gJwmFgyjWefL7OqW9IZCcDI1inclX+BJvozn
-	hgjH2Bu9n9AqEHvSRE83gOxcz0jGhG+NDPbGRwyPExiw9ZAvvnFJI+BFhIqfvBtClqx5ZYK4CXz5E
-	jUOQtguw==;
+	bh=WBF/Hhl3aTA/DED2CnpG/Z4lGlXvuScKqSYriF74nXQ=; b=LRN6HhPANXrcj/eon5fHlsFmn+
+	5OKpGs00wVzVW6elA8PAQ5I5Q1FpebcpTcif8oFpyypEl63MBtPnht6DDs5FcN1dvaXARFk4XKOWT
+	8x3tUoBCdus8z2SNkPeYyAy4X0+M2/mjsEsGD0T+0TKtNg0TrBMduQpT3w1jQbz7bfiLFjlotAYtn
+	0j8Ops69SIp56LqBNuSqEaZA0/TWFf7FhJ4eG62XM40zqkXsOwjbVOTy8ThJvRCarSYoSXG3yKovW
+	8DitExbCz+18mqxvUmbNW0XTysCUcOuhC0d5pveWOL6FNHQvnAtZfgqS3QoJATFviHGPXeJGIHK4D
+	/k493p/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPfXC-00000009mTi-3lJH;
-	Mon, 23 Dec 2024 10:19:34 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tPflA-00000009ncy-1Lc6;
+	Mon, 23 Dec 2024 10:34:00 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPfVQ-00000009m7d-2JOX;
-	Mon, 23 Dec 2024 10:17:45 +0000
+	id 1tPfl8-00000009ncY-0YMs
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Dec 2024 10:33:59 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1734949062;
+	t=1734950036;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=enmGRB08NO3QtmnFWnrY/j35Ct4goMW51ko1m6ZxXIE=;
-	b=OS6lF9DA3Qk56GSVsHBoA4h/fjqlpxfSN90yeEsrNDQqipZ75LyawXRLUOupkoFB+jtvSQ
-	8e+hh/d3Fy895oHRhXzAw9fB5oDpvosl8xHP/CTroTzSlfqv9wdmuHBt50Pfx9ACjmNNhR
-	5cC76hhTuFWsL2crVeHQGFxlxhkBhKkVEodCtkfKf3N9AoCA5UgWLrV6jSz4TZSCbGiEC3
-	/+4T+wN4YSi96It+UCRalHnGu2eKDdbz5cZUM3DalRXJ0kTwWbWUlQTLQKu1ePrLehqHec
-	EYH53Xpm9QvXi9urcH18XEc26NhOocnLusK7BXwy67QomvFsHkBta2N5OAKYgQ==
-Date: Mon, 23 Dec 2024 11:17:42 +0100
+	bh=+uDqEKfZmjRtcwf9AXrkiBbUT1Vkgc3fKlMIoDQ7vkw=;
+	b=c2VpAnRbRY22cr9v8qkdIJ+xMW0Gvvutt4eXuOrsvWZz/YeT1mk1KgyAIH7wPOMPMeT9KT
+	GSSKOFOu2HZhv2LKXsNbGB4rKt2b1JTE4YqmC6LCw+NJFE+sYtog5uL/Fk6TWczpxfcwLD
+	Si1PMr/jsbGz3eCUKEUaOsO8ajB7RkgenpztFkCK9SNOtyewaQlvtfr/mVhz1+gOCREokA
+	p1YSA2/bOkAPqNEFzKpWXOxgaH1QbLoQBzAbnrymakhMcd61pn7RC+sbVRWG9M27tqfxic
+	L/E4nYEyd05g6+ZAqSHQUfyG358QJPKZzzqTg3fMOwLcT/uwcOBM7sR3KSQCMg==
+Date: Mon, 23 Dec 2024 11:33:56 +0100
 From: Dragan Simic <dsimic@manjaro.org>
-To: Marc Zyngier <maz@kernel.org>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de,
- jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com,
- liujianfeng1994@gmail.com, dmt.yashin@gmail.com, tim@feathertop.org,
- marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net,
- alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E52C
-In-Reply-To: <87zfkmrb4u.wl-maz@kernel.org>
-References: <20241222030355.2246-1-naoki@radxa.com>
- <20241222030355.2246-4-naoki@radxa.com> <87zfkmrb4u.wl-maz@kernel.org>
-Message-ID: <2a00f25b95cca5f43631188c996d98b9@manjaro.org>
+Subject: Re: [PATCH v6 2/7] arm64: dts: rockchip: Use a longer PWM period for
+ the fan on Radxa ROCK 5C
+In-Reply-To: <20241223013926.1134-3-naoki@radxa.com>
+References: <20241223013926.1134-1-naoki@radxa.com>
+ <20241223013926.1134-3-naoki@radxa.com>
+Message-ID: <b474fcce9df1ec4474237959fddcd84e@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_021744_751353_031F9FBF 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20241223_023358_349356_73E17558 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,72 +74,57 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Marc,
+Hello Fukaumi,
 
-On 2024-12-23 10:39, Marc Zyngier wrote:
-> On Sun, 22 Dec 2024 03:03:55 +0000,
-> FUKAUMI Naoki <naoki@radxa.com> wrote:
->> 
->> Radxa E52C is a compact network computer[1] based on the Rockchip
->> RK3582 SoC:
->> 
->> - Dual Cortex-A76 and quad Cortex-A55 CPU
+On 2024-12-23 02:39, FUKAUMI Naoki wrote:
+> The fan on Radxa ROCK 5C is driven via an AO3416 MOSFET, which has a
+> total switch-on time of 0,6us and a total switch-off time of 6us [1],
+> meaning that the current PWM period of just 10us is too short for
+> fine-grained fan speed control. Increase the PWM period to 60us, so
+> that the switch-on and switch-off time of the MOSFET fall within a
+> more reasonable ~10% of the full period, thus making lower PWM duty
+> cycles meaningful.
 > 
-> So you have *two* big cores.
+> [1] https://www.aosmd.com/pdfs/datasheet/AO3416.pdf
 > 
->> - 5TOPS NPU
->> - 2GB/4GB/8GB LPDDR4 RAM
->> - 16GB/32GB/64GB on-board eMMC
->> - microSD card slot
->> - USB 3.0 Type-A HOST port
->> - USB Type-C debug port
->> - USB Type-C power port (5V only)
->> - 2x 2.5GbE ports
->> 
->> [1] https://radxa.com/products/network-computer/e52c
->> 
->> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->> ---
->>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->>  .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 729 
->> ++++++++++++++++++
->>  2 files changed, 730 insertions(+)
->>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> 
-> [...]
-> 
->> +&cpu_b0 {
->> +	cpu-supply = <&vdd_cpu_big0_s0>;
->> +};
->> +
->> +&cpu_b1 {
->> +	cpu-supply = <&vdd_cpu_big0_s0>;
->> +};
->> +
->> +&cpu_b2 {
->> +	cpu-supply = <&vdd_cpu_big1_s0>;
->> +};
->> +
->> +&cpu_b3 {
->> +	cpu-supply = <&vdd_cpu_big1_s0>;
->> +};
-> 
-> And yet you configure 4. If your HW only has 2 A76s, surely something
-> should remove these cores for this platform rather than keep them
-> around.
+> Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-Indeed, U-Boot will do that, based on the efuses that contain the
-data required to determine which CPU cores (and/or clusters) are
-defective and need to be marked as disabled.
+As a note, it seems that you forgot to include my Reviewed-by tag
+for this patch in the v6. [*]
 
-Maybe we should add a comment block above the "cpu_b0" node, to
-describe that a bit better.  Perhaps something like this:
+[*] 
+https://lore.kernel.org/linux-rockchip/616cd7b81d5469de7bd5a84d2d23387f@manjaro.org/
 
-   /*
-    * In the Rockchip RK3582 SoC, some CPU cores end up disabled
-    * and unused because they're marked in the efuses as defective.
-    * The disabling in the DT is performed by the boot loader.
-    */
+> ---
+> Changes in v6:
+> - none
+> Changes in v5:
+> - Reword commit message (Alexey Charkov)
+> Changes in v4:
+> - none
+> Changes in v3:
+> - none
+> Changes in v2:
+> - Reword commit message
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index 23e9b447b6f0..910ec67bd4eb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -73,7 +73,7 @@ fan {
+>  		#cooling-cells = <2>;
+>  		cooling-levels = <0 64 128 192 255>;
+>  		fan-supply = <&vcc_5v0>;
+> -		pwms = <&pwm3 0 10000 0>;
+> +		pwms = <&pwm3 0 60000 0>;
+>  	};
+> 
+>  	pcie2x1l2_3v3: regulator-pcie2x1l2-3v3 {
 
 _______________________________________________
 Linux-rockchip mailing list
