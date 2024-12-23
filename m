@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E63DE7718B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 10:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B07E7718B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 11:06:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pB7r2OfzUQN+7kRRSnkUUNRr/GclxqN2qdU46So/lIQ=; b=pBNV9Pxn7XGMqn
-	mxrc7D3SNbmuRyHnaLpgp3JHaVpxpAt1yVkp3gnrktGg0EcPkqMKyIQdDk4niNuRoAxWg0qHbDyV8
-	lNpNKsxUECjwrQMFI2eUOv3nO6abF31sH1QlZByRy03+c8M7HOyoh3tVj9aiVG5o+lswsUtRAQtRO
-	gCw4LNo9Gdd/N/jQXx0HARISwaeD8nzuNCDfIKxsff7fMah+umsdUpjNkIW5ZH53yKXVWdLEfz6Bg
-	izmaVJHHfkswBSegzMJeF8GCY01QCPYtA7hzeIrdNek25aySg6GPvWbIlB6aAmjJ73/s/lnMEz/TP
-	4q4KwjaEka1aBdclP+Yw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zbd1EQNgd8l1nyWAvfXFgRF79qJpgxxTcX7eQeJ95CU=; b=yMa3AAprXsUkaK
+	x6ecf/eIho4dCyPJIqw46o6aMMgqfRNXN4MbCaAFDHvy25CQRJU6jSHmD/i0jdmtlEOhaSUd9XY2I
+	2CaEhf/jGtpDF8cVMVBpL8cSTxNB6JvbkTB4lQdjdEqhR3dRRiJZoqpTplnes4F2DA/Xeg4J2yxED
+	/V9Y0fQRSgiweSPI3aEa1Xbqygsn/OekdNH0EKLiViRdWDOCwKAzVsuO3Kj6B+yEuocEh9YUkqbdo
+	UzHSs+FelLgVXQgk8wY1uRVLnrcFOPMQr4MYC0odGGZLUHB9YwJ9QXcYweyWa6Wlfwo3MnLm+vygR
+	lndq07loB4d0yCChRRbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPg0I-00000009oT2-032N;
-	Mon, 23 Dec 2024 10:49:38 +0000
-Received: from mail-m127150.qiye.163.com ([115.236.127.150])
+	id 1tPgGt-00000009qXe-04Ms;
+	Mon, 23 Dec 2024 11:06:47 +0000
+Received: from mail-m4921.qiye.163.com ([45.254.49.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPg0E-00000009oRl-2L8g;
-	Mon, 23 Dec 2024 10:49:36 +0000
-Received: from [172.16.12.67] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 68e43e06;
-	Mon, 23 Dec 2024 18:49:23 +0800 (GMT+08:00)
-Message-ID: <bfd84b6b-9b19-4d9b-b0a3-cb6ed1f8084c@rock-chips.com>
-Date: Mon, 23 Dec 2024 18:49:23 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/7] dts: arm64: rockchip: Add rk3576 pcie nodes
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Liang Chen <cl@rock-chips.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-References: <20241220101551.3505917-1-kever.yang@rock-chips.com>
- <20241220101551.3505917-4-kever.yang@rock-chips.com>
- <i54jjqt7uaxrurdapsyxwmb5iokiwzgm5cvlaamlggycrpyd3v@azhmfwgetrzm>
-Content-Language: en-US
+	id 1tPgGp-00000009qVR-3MaG;
+	Mon, 23 Dec 2024 11:06:45 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 68ea0131;
+	Mon, 23 Dec 2024 19:06:38 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <i54jjqt7uaxrurdapsyxwmb5iokiwzgm5cvlaamlggycrpyd3v@azhmfwgetrzm>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-pci@vger.kernel.org,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	devicetree@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Tim Lunn <tim@feathertop.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Elon Zhang <zhangzj@rock-chips.com>,
+	Andy Yan <andyshrk@163.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: [PATCH v3 0/7] Rockchip: add Rockchip rk3576 EVB1 board
+Date: Mon, 23 Dec 2024 19:06:30 +0800
+Message-Id: <20241223110637.3697974-1-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhLSlZOTkgYTxoZTkkaHhhWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh5LHVZIHx1KShhPTkIeHR9WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
 	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93f322c9a803afkunm68e43e06
+X-HM-Tid: 0a93f33294e803afkunm68ea0131
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MTY6Mio4HDILLgECNy8#Dx82
-	NwIwFC5VSlVKTEhPQk5LQk1PQkhJVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKTU1PNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NFE6Szo6MTIKCAEKN081GRMD
+	PxYKCwlVSlVKTEhPQk5JS0tLQ0tIVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKTkxMNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=jPUVWrsgyzKi94L9A8rKusVeSNeYfH7N6p8iP3gNWad+4NpdkFj6cn7s91hmeDuM6sCh0VBHf9h6oj6jDopFv+rZ4wkLpHWMmy/OxyVnp1pZDPHa6ks2evflHT1JziZs7SkZjHRSsAwnPppEVGBBoZXyiqIPY1zDMp+XBmKNxWA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=PV13Ub+8jid25AmeIHH2+OOK0XdtZ0k68I4uUJsLJ/Y=;
+	b=Zr0KezkxrrlHR7mhy/y4gFYBIO5808CgTCfiJ72APnW2QLkyU8OiV13w4eCF25b8MA+TsQXRhp9uXJ4yCdI8avyrV4BS8FyOWmTJeRrmUxkxjZWlSg38mZSi9rLEaQiWiuHnTXY2Nq9GEyWqgotxNEIzpM06QCPBFwJxPeOqtYo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=hkUv9K/cbcAwXcBbSaeyYRD07IQjadduDFOI/Z3WPJc=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_024935_159118_54A393B2 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20241223_030644_044031_E495CDB4 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,61 +93,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+This patch set is for rockchip rk3576 evb1.
+Based on the naneng combphy patch from Frank Wang.
 
-On 2024/12/22 14:38, Krzysztof Kozlowski wrote:
-> On Fri, Dec 20, 2024 at 06:15:47PM +0800, Kever Yang wrote:
->> rk3576 has two pcie controller, both are pcie2x1 used with
->> naneng-combphy.
->>
->> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
->> ---
-> Please use subject prefixes matching the subsystem. You can get them for
-> example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
-> your patch is touching. For bindings, the preferred subjects are
-> explained here:
-> https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
->
-Will update with arm64: dts: .
->> Changes in v2:
->> - Update clock and reset names and sequence to pass DTB check
->>
->>   arch/arm64/boot/dts/rockchip/rk3576.dtsi | 109 +++++++++++++++++++++++
->>   1 file changed, 109 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
->> index a147879da501..df7dfe702221 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
->> @@ -1016,6 +1016,115 @@ qos_npu_m1ro: qos@27f22100 {
->>   			reg = <0x0 0x27f22100 0x0 0x20>;
->>   		};
->>   
->> +		pcie0: pcie@2a200000 {
->> +			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
->> +			bus-range = <0x0 0xf>;
-> Follow DTS coding style in properties order and everything around here.
+This version including the patch adding usb nodes from Frank Wang.
 
-I can do it for most of the properties, but is there any other rules 
-other than sort,
+Changes in v3:
+- Update the subject
+- Fix dtb check broken on rk3588
+- Update commit message
+- Update the subject
+- sort for all the board entries instead of two rockchip boards
+- update some properties order
 
-eg. compatible and reg in the beginning and status in the end?
+Changes in v2:
+- Update the clock and reset names to pass the DTB CHECK
+- remove required 'msi-map'
+- add interrupt name 'msi'
+- Update clock and reset names and sequence to pass DTB check
+- collect acked-by tag
+- collect acked-by tag
+- Enable USB nodes
 
+Frank Wang (1):
+  arm64: dts: rockchip: add usb related nodes for rk3576
 
-Thanks,
+Kever Yang (6):
+  arm64: dts: rockchip: Add rk3576 naneng combphy nodes
+  dt-bindings: PCI: dw: rockchip: Add rk3576 support
+  arm64: dts: rockchip: Add rk3576 pcie nodes
+  dt-bindings: arm: rockchip: Sort for boards not in correct order
+  dt-bindings: arm: rockchip: Add rk3576 evb1 board
+  arm64: dts: rockchip: Add rk3576 evb1 board
 
-- Kever
+ .../devicetree/bindings/arm/rockchip.yaml     |  59 +-
+ .../bindings/pci/rockchip-dw-pcie-common.yaml |   4 +-
+ .../bindings/pci/rockchip-dw-pcie.yaml        |   4 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3576-evb1-v10.dts     | 722 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 278 +++++++
+ 6 files changed, 1037 insertions(+), 31 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
 
->
-> Best regards,
-> Krzysztof
->
->
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
