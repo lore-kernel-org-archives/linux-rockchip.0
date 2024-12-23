@@ -4,47 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 258D9E7718D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 01:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB85CE7718D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 01:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NApmNBEngo3CrW7SEBl2JPHMgBW3SC0cIUXPepjecyI=; b=UxrncYUa9+dcY8
-	hxFYdBwhSpCQLKjag6X2O6lhtC0K8bFxZHimVsPQidaVg/u/LAw1gNM9tWd+Dx8ZSHSuYrGCOIoh9
-	zYxFsRdhdcQgSP4Cpmdmf2UsJl8nRhtwsoylWBjNUC+jHMmphgwIADRNyqGsqxpFILjZPFa0VvqxL
-	jBUGKPO5A7K+q0F740P+pSQk1X+fSE67l7MedHj+FI5Jr+6FfHGA7LeQ6v5OVZcchtdG80wn/jg1U
-	ys8isti7vRcCiLg+MjBMW/3pZzz4O7B0YdX0Xwib27A4fxokzeMa6ebIYnWgZlQav5KMg7WdUOwy0
-	r+JOjDbehvwx8cs+HWlg==;
+	List-Owner; bh=Jqk7ORtKjuvDWoXmbm4PETSYRxOXGRIgVdjkqfdGIg4=; b=b0iZ/+bu5As2/9
+	17a6zunVOpgOWFOKFQEHzK06aiTWimOdLufBnLbVog+KrQ2/txR5hps7Jiz2xLBN1PhjxP/qDniED
+	PXLZW/QiUNZjoR2TivWXCAvVEbDuARwenSXKeJeeLZqUUAKBtQuyu8g/jJlIGaiPUSEIVB3EwfpyL
+	qBMVkiU7f7vxMpS7D8WYyyJTuWChoAjD+33y13oELqZJDenBBf+NPCkIa3Zostyo9Kda+cSLBdsPy
+	DF3VcdmFjgdCgs6Z4J7sKDgtajJywlf2lDYMSqykSNHEdaAGcaT7zKgcKQ016HOBDAPIJyNqlCU/D
+	BFEXE3KiAljl+60hwMuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPXQI-000000095jt-19N4;
-	Mon, 23 Dec 2024 01:39:54 +0000
+	id 1tPXe2-000000096oR-34iK;
+	Mon, 23 Dec 2024 01:54:06 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPXQ7-000000095b8-3dxz
+	id 1tPXdz-000000096mf-0gM6
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Dec 2024 01:39:47 +0000
+	Mon, 23 Dec 2024 01:54:04 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BN1dW72024519;
-	Mon, 23 Dec 2024 10:39:33 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BN1rORg024581;
+	Mon, 23 Dec 2024 10:53:27 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        dsimic@manjaro.org, devicetree@vger.kernel.org,
+        dsimic@manjaro.org, jonas@kwiboo.se, macromorgan@hotmail.com,
+        andyshrk@163.com, dmt.yashin@gmail.com, liujianfeng1994@gmail.com,
+        tim@feathertop.org, marcin.juszkiewicz@linaro.org,
+        michael.riesch@wolfvision.net, alchark@gmail.com, jbx6244@gmail.com,
+        kever.yang@rock-chips.com, jing@jing.rocks, devicetree@vger.kernel.org,
         linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v6 3/7] arm64: dts: rockchip: Remove the RTC and related nodes for Radxa ROCK 5C
-Date: Mon, 23 Dec 2024 01:39:22 +0000
-Message-ID: <20241223013926.1134-4-naoki@radxa.com>
+Subject: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa E52C
+Date: Mon, 23 Dec 2024 01:53:17 +0000
+Message-ID: <20241223015318.1999-2-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241223013926.1134-1-naoki@radxa.com>
-References: <20241223013926.1134-1-naoki@radxa.com>
+In-Reply-To: <20241223015318.1999-1-naoki@radxa.com>
+References: <20241223015318.1999-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241222_173944_124422_8C750165 
-X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-CacheID: sfid-20241222_175403_421735_DE7E83E0 
+X-CRM114-Status: UNSURE (   6.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -62,66 +66,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is no RTC on the actual board, so remove it.
+Add devicetree binding for the Radxa E52C.
 
-Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+Radxa E52C is a compact network computer based on the Rockchip RK3582
+SoC.
+
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
-Changes in v6:
-- Reword commit message
-Changes in v5:
-- Reword commit message
-Changes in v4:
-- none
-Changes in v3:
-- none
 Changes in v2:
-- new
+- Add "rockchip,rk3588s"
 ---
- .../boot/dts/rockchip/rk3588s-rock-5c.dts     | 23 -------------------
- 1 file changed, 23 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 910ec67bd4eb..8b7bb382a20c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -350,23 +350,6 @@ regulator-state-mem {
- 	};
- };
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 753199a12923..2152d170524a 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -812,6 +812,12 @@ properties:
+           - const: radxa,e20c
+           - const: rockchip,rk3528
  
--&i2c5 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&i2c5m2_xfer>;
--	status = "okay";
--
--	rtc@51 {
--		compatible = "haoyu,hym8563";
--		reg = <0x51>;
--		#clock-cells = <0>;
--		clock-output-names = "rtcic_32kout";
--		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&rtc_int_l>;
--	};
--};
--
- &i2c7 {
- 	status = "okay";
- 
-@@ -449,12 +432,6 @@ pow_en: pow-en {
- 		};
- 	};
- 
--	rtc {
--		rtc_int_l: rtc-int-l {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--
- 	usb {
- 		usb_host_pwren_h: usb-host-pwren-h {
- 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++      - description: Radxa E52C
++        items:
++          - const: radxa,e52c
++          - const: rockchip,rk3582
++          - const: rockchip,rk3588s
++
+       - description: Radxa Rock
+         items:
+           - const: radxa,rock
 -- 
 2.43.0
 
