@@ -4,88 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCB9E7718D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 09:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4E6E7718D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Dec 2024 10:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ww0kpjzV6qJPGAlNH432SNLG15732zC94wnWchwshmk=; b=XkxkhkkUOCSKlL
-	BPb2lif5Xy0IcSUksoXa7Yp9NkLwdXbFXaa36sliFFVoKSEVRFKaiYDK16UZmD7BMzE/Q2NCe250Y
-	pauQ6ye1BbxLBYQ+TkCKnR3jmY6Hrugs7Z/xF+bNBhRIj2k3SqlPnayRkhIjeSg8JEYeHY2hNrzV7
-	kyYvQs0UXUZTooLbblSdEZ8W223LSj2BPQ7zj+O+AZ2pwelZzWVrua0NE3rrmkA3HLUeoGtnSAF5q
-	QY2LKiJSvbm808rwv1CJYORjPpCoC/GxxHhJsRTiL7GjjNEi3/xaly++hKwIifttNT1P7bzHiBJ9k
-	7+zNdhEH2GjOydHoe8/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TQTTxZrebk5PTp5SCZp+IkKReQu4335vi/5si1hpmFo=; b=UCqwTBUeexhWhb7TLW66yHNGp4
+	cemceKYP/gZ+HyBUYnFPvSiXMuZzQYRcP824PqAleQSgqyIYx9gEOU/Q2TQNpTCbJTzZp48WGiSPc
+	Nr2AecyvhE0Z8Sj3eT0gnHYYbe/EudsV8g6cfprErBMpEQ9W+KKh5qc2ObSmZZj4fRAaJVc5y79aP
+	JMuxEBXHUN02sUTcS0EEpakVH+zKxTZDVyEAfAb7FpyxP2I3Ja24PrqJ5GMvuz9qMXnTMpjzmPUk/
+	eEo+6GNI0M/ejdbLvHCC5Agiy4JzpHsALYo1va5lx5lD8F1YH7mQAtuRlXCoqXO74xcNafBxJZKFI
+	dpXFipGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPevx-00000009fop-1XnG;
-	Mon, 23 Dec 2024 09:41:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tPfQF-00000009ldA-0Txk;
+	Mon, 23 Dec 2024 10:12:23 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tPeuk-00000009feB-1Lc0;
-	Mon, 23 Dec 2024 09:39:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C27DD5C0501;
-	Mon, 23 Dec 2024 09:39:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46BD6C4CED3;
-	Mon, 23 Dec 2024 09:39:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734946789;
-	bh=Euy4sMJkEwz5VdTY+bm3x+j/aIo7YZtp5N9LHcz3ZRE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=T6KpVZF3DpZMaE9Vcnxi3b8d9Jox8AA/xKQ4sHL9WgIrrXkeOH4+ooG0/jtNSTSoZ
-	 hF+HGYgoyASpUnQTRHJM5EFbeCmiw3is876ObPoNy9e39xUwjUX8j8czyacN8YJg3Z
-	 tcVLRGboyuvPaoqI8W2rtvzXcMZVNprWjhUtWARh6JoGZd/9m49HLGa58vDXx5ifz2
-	 Mv7fZbv9V/kseMdqI/dnyg0heOy7zEuRx3th5au03IhsdP62lWAXPzA/kAJ3viVOP7
-	 ZlNHOKfi/o87VxtDNwsr0uIadKfdg2gnM8+G+dEX+dNLV/TAMROtJqkGstWoSgxaN2
-	 lq+34ROUfDeEA==
-Received: from 91-161-240-24.subs.proxad.net ([91.161.240.24] helo=wait-a-minute.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1tPeug-006LBL-GG;
-	Mon, 23 Dec 2024 09:39:46 +0000
-Date: Mon, 23 Dec 2024 09:39:45 +0000
-Message-ID: <87zfkmrb4u.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	tglx@linutronix.de,
-	jonas@kwiboo.se,
-	macromorgan@hotmail.com,
-	andyshrk@163.com,
-	liujianfeng1994@gmail.com,
-	dmt.yashin@gmail.com,
-	dsimic@manjaro.org,
-	tim@feathertop.org,
-	marcin.juszkiewicz@linaro.org,
-	michael.riesch@wolfvision.net,
-	alchark@gmail.com,
-	sebastian.reichel@collabora.com,
-	jbx6244@gmail.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E52C
-In-Reply-To: <20241222030355.2246-4-naoki@radxa.com>
+	id 1tPfP2-00000009lYM-0Qrt;
+	Mon, 23 Dec 2024 10:11:11 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1734948664;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=msg5fBDnvA5A5aMJjXE3flrPRKktl7CdeY8acKw/CG0=;
+	b=MZiQWl3tHRj4qFxgPuKj4evBjkB6Bg+thjSP4v2GN+xwMO1uydBc90L0CPa7r4qPLme4CB
+	DGhy1ICtlQqZba59RPyB0yUNMEazxI3vZXo+ifjifFrCZZJk7jMCFLTxm/HJVMgynwjwnI
+	HejW81XMaXOcTmXBQvt8phKf17/oAB+8sAPKFE8CwqmeM3u6bavPOU5Q63zvwADvsje+0i
+	+XIj1hg/+4ZtyMEhy4faoFWYfAyxh5T8whEcYlmsy0k30mTXHNSSxf3I5MbEOhWBsLcQAw
+	lh2CYnusld9w5koro71jsFN7R31hwWdW2OlmEEmXl2K07QCEq/YPNPlISJUifw==
+Date: Mon, 23 Dec 2024 11:11:03 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Marc Zyngier <maz@kernel.org>
+Cc: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de,
+ jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com,
+ liujianfeng1994@gmail.com, dmt.yashin@gmail.com, tim@feathertop.org,
+ marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net,
+ alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/3] irqchip/gic-v3: Enable Rockchip 3588001 erratum
+ workaround for RK3582
+In-Reply-To: <871pxysq76.wl-maz@kernel.org>
 References: <20241222030355.2246-1-naoki@radxa.com>
-	<20241222030355.2246-4-naoki@radxa.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 91.161.240.24
-X-SA-Exim-Rcpt-To: naoki@radxa.com, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de, jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com, liujianfeng1994@gmail.com, dmt.yashin@gmail.com, dsimic@manjaro.org, tim@feathertop.org, marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net, alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+ <20241222030355.2246-2-naoki@radxa.com> <86msgoozqa.wl-maz@kernel.org>
+ <f93b3bfb5151e4b617b1c99c91b4956f@manjaro.org>
+ <8734ifs3zl.wl-maz@kernel.org>
+ <e3498590dd81b150670e36561d99b6f4@manjaro.org>
+ <871pxysq76.wl-maz@kernel.org>
+Message-ID: <d9919917c5d518608a7d4e3cac8faf53@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241223_013950_448688_AA17B544 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20241223_021108_447566_E7567E6F 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,67 +77,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 22 Dec 2024 03:03:55 +0000,
-FUKAUMI Naoki <naoki@radxa.com> wrote:
+On 2024-12-23 10:29, Marc Zyngier wrote:
+> On Mon, 23 Dec 2024 06:10:21 +0000,
+> Dragan Simic <dsimic@manjaro.org> wrote:
+>> On 2024-12-23 00:16, Marc Zyngier wrote:
+>> > On Sun, 22 Dec 2024 18:25:02 +0000,
+>> > Dragan Simic <dsimic@manjaro.org> wrote:
+>> >> On 2024-12-22 10:04, Marc Zyngier wrote:
+>> >> > On Sun, 22 Dec 2024 03:03:53 +0000,
+>> >> > FUKAUMI Naoki <naoki@radxa.com> wrote:
+>> >> >>
+>> >> >> Rockchip RK3582 is a scaled down version of Rockchip RK3588(S). Apply
+>> >> >> Rockchip 3588001 erratum workaround to RK3582.
+>> >> >>
+>> >> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+>> >> >> ---
+>> >> >>  drivers/irqchip/irq-gic-v3-its.c | 3 ++-
+>> >> >>  1 file changed, 2 insertions(+), 1 deletion(-)
+>> >> >>
+>> >> >> diff --git a/drivers/irqchip/irq-gic-v3-its.c
+>> >> >> b/drivers/irqchip/irq-gic-v3-its.c
+>> >> >> index 92244cfa0464..c59ce9332dc0 100644
+>> >> >> --- a/drivers/irqchip/irq-gic-v3-its.c
+>> >> >> +++ b/drivers/irqchip/irq-gic-v3-its.c
+>> >> >> @@ -4861,7 +4861,8 @@ static bool __maybe_unused
+>> >> >> its_enable_rk3588001(void *data)
+>> >> >>  {
+>> >> >>  	struct its_node *its = data;
+>> >> >>
+>> >> >> -	if (!of_machine_is_compatible("rockchip,rk3588") &&
+>> >> >> +	if (!of_machine_is_compatible("rockchip,rk3582") &&
+>> >> >> +	    !of_machine_is_compatible("rockchip,rk3588") &&
+>> >> >>  	    !of_machine_is_compatible("rockchip,rk3588s"))
+>> >> >>  		return false;
+>> >> >>
+>> >> >
+>> >> > Please use the relevant property for that purpose ("dma-noncoherent")
+>> >> > at the distributor and ITS levels. We're not adding extra compatibles
+>> >> > for this anymore, and you might as well fix the core dtsi to expose
+>> >> > such property.
+>> >>
+>> >> Thanks for your response.
+>> >>
+>> >> After a more detailed look into drivers/irqchip/irq-gic-v3-its.c,
+>> >> it seems that relying on the "dma-noncoherent" DT property may not
+>> >> be equivalent to adding another compatible check.
+>> >
+>> > It is. My email makes it plain what needs doing.
+>> >
+>> >> Here are a few
+>> >> quotations from irq-gic-v3-its.c, to illustrate this better:
+>> >>
+>> >> 4746 static bool __maybe_unused its_enable_rk3588001(void *data)
+>> >> 4747 {
+>> >> 4748         struct its_node *its = data;
+>> >> 4749
+>> >> 4750         if (!of_machine_is_compatible("rockchip,rk3588") &&
+>> >> 4751             !of_machine_is_compatible("rockchip,rk3588s"))
+>> >> 4752                 return false;
+>> >> 4753
+>> >> 4754         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+>> >> 4755         gic_rdists->flags |= RDIST_FLAGS_FORCE_NON_SHAREABLE;
+>> >> 4756
+>> >> 4757         return true;
+>> >> 4758 }
+>> >> 4759
+>> >> 4760 static bool its_set_non_coherent(void *data)
+>> >> 4761 {
+>> >> 4762         struct its_node *its = data;
+>> >> 4763
+>> >> 4764         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+>> >> 4765         return true;
+>> >> 4766 }
+>> >>
+>> >> 4814 #ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
+>> >> 4815         {
+>> >> 4816                 .desc   = "ITS: Rockchip erratum RK3588001",
+>> >> 4817                 .iidr   = 0x0201743b,
+>> >> 4818                 .mask   = 0xffffffff,
+>> >> 4819                 .init   = its_enable_rk3588001,
+>> >> 4820         },
+>> >> 4821 #endif
+>> >> 4822         {
+>> >> 4823                 .desc   = "ITS: non-coherent attribute",
+>> >> 4824                 .property = "dma-noncoherent",
+>> >> 4825                 .init   = its_set_non_coherent,
+>> >> 4826         },
+>> >
+>> > Nothing tickles me more than having my own work being thrown back at
+>> > me.
+>> 
+>> I'm sorry, that wasn't my intention.  I just wanted to make
+>> referencing to what I was talking about a bit easier.  Though,
+>> I now see that I was wrong, and I apologize for the noise.
 > 
-> Radxa E52C is a compact network computer[1] based on the Rockchip
-> RK3582 SoC:
-> 
-> - Dual Cortex-A76 and quad Cortex-A55 CPU
+> No need to apologise. Just understand that the way you approached the
+> discussion was suboptimal. Next time, just ask how the proposed
+> solution works, rather than asserting that it doesn't.
 
-So you have *two* big cores.
+Thanks.  Indeed, the way I approached it was waaay suboptimal.
+I just wanted to clarify that it was an honest mistake resulting
+from not looking at the code carefully enough, nothing else.
 
-> - 5TOPS NPU
-> - 2GB/4GB/8GB LPDDR4 RAM
-> - 16GB/32GB/64GB on-board eMMC
-> - microSD card slot
-> - USB 3.0 Type-A HOST port
-> - USB Type-C debug port
-> - USB Type-C power port (5V only)
-> - 2x 2.5GbE ports
-> 
-> [1] https://radxa.com/products/network-computer/e52c
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 729 ++++++++++++++++++
->  2 files changed, 730 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> Hopefully we can move on and you and Naoki can come up with a set of
+> patches that does the right thing.
 
-[...]
-
-> +&cpu_b0 {
-> +	cpu-supply = <&vdd_cpu_big0_s0>;
-> +};
-> +
-> +&cpu_b1 {
-> +	cpu-supply = <&vdd_cpu_big0_s0>;
-> +};
-> +
-> +&cpu_b2 {
-> +	cpu-supply = <&vdd_cpu_big1_s0>;
-> +};
-> +
-> +&cpu_b3 {
-> +	cpu-supply = <&vdd_cpu_big1_s0>;
-> +};
-
-And yet you configure 4. If your HW only has 2 A76s, surely something
-should remove these cores for this platform rather than keep them
-around.
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+Of course.  I've already prepared a small patch series that,
+hopefully, does the right thing when it comes to the Rockchip
+3588001 errata.  I'll submit it soon, after I check the patches
+a bit further.
 
 _______________________________________________
 Linux-rockchip mailing list
