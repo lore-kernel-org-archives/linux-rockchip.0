@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE48AE77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 10:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4591AE7718D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 12:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I9mEmFNlplt8I5lSg7M7/q73IU11aFLO2PSC6Abjlps=; b=XeoW7TNKhzHEr+
-	I8ykayqwZak6y00PBqWWDkaBjJWq1BCTKbVd7E86huizZOqYnRI1GecGHiw3le0C9LJSm9BoY3xGJ
-	rJmunWtBzGYATxYXc2RFMEzD9RAkxTWDDj8D1Gtf8zYcg8uqvCExv2m7g0avupRG8xYnhTEwSgoSw
-	FT2dBxWHkDwm0VFErZ8an/euNjFzC/2aorkR3RrJ7ZaUIBKATcmCp01tvMpHxinlQ7m31wtZIW+d6
-	Zt7lNdsooYc30uOePnGlJcQ314pAA4RxPElxOERW8WujabZcLl+IY/Yt1fEcz2Oq07u9YRKa1SMMz
-	Jk50oBD8MLpNFQx/TkxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QkxEh3VupqS1mbWhbU/kBEcer0hDWXuMzwt8mtNFBhg=; b=Qe/j0dCONYY4uR
+	NKhjT6m15afc2geTU7SgTcYg7XS3+ScYaQigvqM59eR4y+lkeuUCZ/lQ9A9ebmg4AmHbK6kJN6xI1
+	czHKNPi7oTNgESi4pngADXC3DRvy9Wyr9I/hSo+uqP5HztN0Ps8aXug6VFDS4fR2ogn2e5ri+wtsD
+	E1dzSnjZjSguYucoX1hQnA32G/JrYp/bw2WKyjUHxqDUdAWPPgyK+i5HgGNdA7X4yGxcJTWSrENbm
+	zaTmlyh0BIOsIOWNJFpgUOU7jHW+a1N84PHrRwh38Ui1JGdCIT7ZDnql2HflqIk2tRvY5LCRd3mxs
+	evJMqifnSdyU8EWlaxiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ2VR-0000000BoRf-1y7D;
-	Tue, 24 Dec 2024 10:51:17 +0000
-Received: from mail-m121145.qiye.163.com ([115.236.121.145])
+	id 1tQ41C-0000000BwZk-0k4O;
+	Tue, 24 Dec 2024 12:28:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1Nt-0000000BcFo-2wCJ;
-	Tue, 24 Dec 2024 09:39:27 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 6aa90325;
-	Tue, 24 Dec 2024 17:39:21 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
+	id 1tQ41A-0000000BwZD-2akb;
+	Tue, 24 Dec 2024 12:28:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=FpgSUxP8zy9z3Ozm+IeXLmSotIQFRVFdlAAn52p9XAk=; b=zJMnPWxsL2xtSkCXoWlGw8VLzA
+	hTNv5gQmIrm3nEfhiAXMtjlfwkkLzbXlFq2dLB1LwznnOH+h6+edEo/U4ktfxtvYMIMJfAchIeHcX
+	bmG3yfi4h2u+TyyjoSsQcLCz5ITJJyrwVqOaZA98oy/TgQ6/fUq+AqFqizV6yRbO1USJUl9/IjVdN
+	lqZKstEV8knrnwD4NqpgDcghDrNGu3Z/HwyWQXJl6XAPlokKzRl5WxcULPddtpbmHVwfiyTHD/42d
+	ufO/wrr5mLrTDZTOB+lnPnGfQ3HhWVbhSjr/mOL9gON/l3ToqetmH7kiNzcffRoFqlA84tFzCyIdo
+	rhdJBSyw==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tQ40u-00016A-Dw; Tue, 24 Dec 2024 13:27:52 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Kever Yang <kever.yang@rock-chips.com>
 Cc: linux-rockchip@lists.infradead.org,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 1/2] dt-bindings: power: add power binding header for RK3562 SoC
-Date: Tue, 24 Dec 2024 17:39:19 +0800
-Message-Id: <20241224093920.3816071-1-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+ Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-phy@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
+Date: Tue, 24 Dec 2024 13:27:51 +0100
+Message-ID: <1956693.6tgchFWduM@diego>
+In-Reply-To: <20241224094240.3817261-1-kever.yang@rock-chips.com>
+References: <20241224094240.3817261-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhhCHlYZS0xJGRlJTElPTE9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93f809083303afkunm6aa90325
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6K006ORw5KjIUTUoaPU83EC0t
-	ERMKCwJVSlVKTEhOS0hISk1JQ0tLVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKTUtINwY+
-DKIM-Signature: a=rsa-sha256;
-	b=USCz0+cTFZYqsuy50xTDM+NZLqMW8vVGjw+vgsjS6V3ay97cZ5EKbHJPjb7QvziW7spZJlabQkrMiGvD8Op2pbWtQbcgVv0xg5P3ro1ldQ7fOI/8NSbloKYdNAqxHnMnjFMVn5ggCvhHGIZ96GixPGMYY4lmpCZGeK/OGPMB1pM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=TF+TORshgAPHG06YtQFQVSUqYlUt1YDkgX4r9t+o1GA=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_013925_952944_73F103D3 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241224_042808_685173_19E7E249 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,66 +77,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+Am Dienstag, 24. Dezember 2024, 10:42:39 CET schrieb Kever Yang:
+> Add compatible for the USB2 phy in the Rockchip RK3562 SoC.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 
-According to a description from TRM, add all the power domains.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
+> ---
+> 
+>  .../devicetree/bindings/phy/rockchip,inno-usb2phy.yaml         | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> index 6a7ef556414c..367297f6f8b5 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> @@ -19,6 +19,7 @@ properties:
+>        - rockchip,rk3328-usb2phy
+>        - rockchip,rk3366-usb2phy
+>        - rockchip,rk3399-usb2phy
+> +      - rockchip,rk3562-usb2phy
+>        - rockchip,rk3568-usb2phy
+>        - rockchip,rk3576-usb2phy
+>        - rockchip,rk3588-usb2phy
+> @@ -150,7 +151,6 @@ allOf:
+>              enum:
+>                - rockchip,rk3568-usb2phy
+>                - rockchip,rk3588-usb2phy
+> -
+>      then:
+>        properties:
+>          host-port:
+> @@ -190,6 +190,7 @@ allOf:
+>                - rockchip,rk3328-usb2phy
+>                - rockchip,rk3366-usb2phy
+>                - rockchip,rk3399-usb2phy
+> +              - rockchip,rk3562-usb2phy
+>                - rockchip,rk3568-usb2phy
+>                - rockchip,rk3588-usb2phy
+>                - rockchip,rv1108-usb2phy
+> 
 
-Changes in v2:
-- rename to rockchip,rk3562-power.h
-- update the subject
-- use dual license
 
- .../dt-bindings/power/rockchip,rk3562-power.h | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
- create mode 100644 include/dt-bindings/power/rockchip,rk3562-power.h
 
-diff --git a/include/dt-bindings/power/rockchip,rk3562-power.h b/include/dt-bindings/power/rockchip,rk3562-power.h
-new file mode 100644
-index 000000000000..d728c9ee908d
---- /dev/null
-+++ b/include/dt-bindings/power/rockchip,rk3562-power.h
-@@ -0,0 +1,35 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+/*
-+ * Copyright (c) 2022-2024 Rockchip Electronics Co., Ltd.
-+ */
-+#ifndef __DT_BINDINGS_POWER_RK3562_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3562_POWER_H__
-+
-+/* VD_CORE */
-+#define RK3562_PD_CPU_0		0
-+#define RK3562_PD_CPU_1		1
-+#define RK3562_PD_CPU_2		2
-+#define RK3562_PD_CPU_3		3
-+#define RK3562_PD_CORE_ALIVE	4
-+
-+/* VD_PMU */
-+#define RK3562_PD_PMU		5
-+#define RK3562_PD_PMU_ALIVE	6
-+
-+/* VD_NPU */
-+#define RK3562_PD_NPU		7
-+
-+/* VD_GPU */
-+#define RK3562_PD_GPU		8
-+
-+/* VD_LOGIC */
-+#define RK3562_PD_DDR		9
-+#define RK3562_PD_VEPU		10
-+#define RK3562_PD_VDPU		11
-+#define RK3562_PD_VI		12
-+#define RK3562_PD_VO		13
-+#define RK3562_PD_RGA		14
-+#define RK3562_PD_PHP		15
-+#define RK3562_PD_LOGIC_ALIVE	16
-+
-+#endif
--- 
-2.25.1
 
 
 _______________________________________________
