@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9AA8E7718E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 17:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCBB6E7718E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 17:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7NziAj12WO1Cpy7rQ4qYG1HFJox7FyGFWhpx/5SZluE=; b=Dg3fwP2C6qhxus
-	RVvldhoMTSSyr6QeEV0rWvKrPLIUsoPTHRplzYYm9ZljXUE1szJDtW3V2IzF8cKDWI/FynX0BpTJm
-	6+5NJOrDl5q6TLwlyDtlK+mDz7BPnPIYh/5rqRpJLTtZOArxnxlDiLEYyCi9GWVmlfICzbAHvHyGu
-	bTwVt/Pl78blnq+gKd8aeyhPVZ1To6f34jHIEws59tWuGDz6Ax5p+E2jXs8+x39DrQiZkTPyLczW0
-	HCNyR5emMQy87+usR20ujDcv6RuezgPPnLXmQ4HQAy0Hkv7C49PCGyoUjnoIzbVXbZ7rBY51SJPjN
-	D8/OYeixQmXqGLRamrJA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j0AyJLR0x9A5v5526zbxUwy4meeWrLcSSMWCzTLNW08=; b=IQAC63QaOm9jku
+	lcxmG9ddK224GJtBh1PqFRcZHhoXpkD4eFCr0rX0vQAcM9/5ywwrnbPorvKvuKrxTjFMm5jeKzzQc
+	sMTGKXp14PAQ8DpxaQKQ6V9nYxBbyBlIi995x7zOb08LspoZu4fm0BrpG4L0Dg1edg3/wFMvHT1It
+	CPsb+vVKyX8M6nnZ0E8gk8ruERPWt/cbRko+0QA3d7YxA32nPrtGeQtLNrJHt3YhCBtzsZWtek02v
+	DvY2oZggV2rU8hfGwx6sKUXnaTkUGUjzyKOLkgtIqOMc8FjfJnH7Xjnfgx8a8A5r2HUReBcsZL09P
+	uNqdGzBkZJIYUQyon36A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8P6-0000000CNMj-1jZU;
-	Tue, 24 Dec 2024 17:09:08 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1tQ8RV-0000000COID-3xDs;
+	Tue, 24 Dec 2024 17:11:37 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8MW-0000000CMZo-2iHo;
-	Tue, 24 Dec 2024 17:06:41 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 7712C40004;
-	Tue, 24 Dec 2024 17:06:14 +0000 (UTC)
+	id 1tQ8Mh-0000000CMbB-1eRx;
+	Tue, 24 Dec 2024 17:06:42 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 96C0A40005;
+	Tue, 24 Dec 2024 17:06:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1735059983;
+	t=1735059997;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=r/Gn3c6Z2+oOxsTlq15aX44iSBF2ngtpY5A8qzg8rVM=;
-	b=ji12gTaveVn1lCP9UvPR+lkewDUv8CjCn0LOn5zGo0v79llUFWB6v2y+102nr1zl6n9jBC
-	0clzBYCG3ZysNzwaHVFSlmYUHUiVmLTmNEocUe48zTa0Vz5JtEW8Pf44pvyi7zbtozvv2r
-	LzXmlzO4kxANnZVsIvaWHRuRro9pdTSe3WVI7xKA/gaJHGhedzr0uVbu+2qROKMI4a7sNz
-	ADkmUKNe+kuhpOajUlCu0MaTzP+u+fssGUgj80ySYyhqmKQYNQnF0BYJiEkzRX8EaQS0AP
-	vW8Yiwy5rO5E+wjkrkXA3jg7McS1I4rk4AsLkRIAv6CgT6vbd7JEjJeycg4/Wg==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=bezjIfKOhlEJE79cO6ZVpXOH6/T+183qkN81Q6qLp7w=;
+	b=Ddus1nDN/HV/efnFoKVhCO0lsAHr8YlxE7Qs0TAFIPUKc+XDRY/DDNiP54CK9Q2DZzyP51
+	3rtnCqtA7FMeilhKd4LG5q/DghuhJXAfAlOrQWxTJifHTW5zCK1Lma6/rDImIwDUX2ZDoq
+	hizT5/JJTAXhUrwwbQTM1wuoB7++JEwtipQrPbZq50E8/gcSkMp/GAhtTLT+rP6xKZ0I7Z
+	NbouR9QM/tmEhqj0a680boj66RzleG9Y22Hx4ebPQ3OCGOHBajByxGcRrjka3HBYjfXMOK
+	p8G+ZBMljP7KIFdhLZ5zAqsuHsXYVIuR5IbGmEcJht+kAzE1FPOMcmyWyR8m/g==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 00/27] spi-nand/spi-mem DTR support
-Date: Tue, 24 Dec 2024 18:05:45 +0100
-Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
+Date: Tue, 24 Dec 2024 18:05:48 +0100
+Subject: [PATCH v2 03/27] spi: amd: Support per spi-mem operation frequency
+ switches
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAOnpamcC/yXNyw6DIBCF4VcxrDuGmYAxXfU9GheotE6ioOClx
- vjupXb5ncV/DhFtYBvFPTtEsCtH9i6BbploOuPeFrhNFiRJIaGEjV3tXQsFIEJoEKbFtBCXcfR
- hBomqJKkNoSGRGmOwL/5c/WeV3HGcfdivuxV/678sSWOBWmKuSl2UChAGnhbb58HszvSP2vu5Z
- 5c3fhDVeZ5f4IGW6LkAAAA=
-X-Change-ID: 20241210-winbond-6-11-rc1-quad-support-0148205a21a2
+Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-3-ad218dbc406f@bootlin.com>
+References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
+In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
 To: Mark Brown <broonie@kernel.org>, Sanjay R Mehta <sanju.mehta@amd.com>, 
  Serge Semin <fancer.lancer@gmail.com>, Han Xu <han.xu@nxp.com>, 
  Conor Dooley <conor.dooley@microchip.com>, 
@@ -75,14 +74,12 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
  linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-mtd@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
- openbmc@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com, 
- Pratyush Yadav <pratyush@kernel.org>, 
- Tudor Ambarus <tudor.ambarus@linaro.org>, stable+noautosel@kernel.org
+ openbmc@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com
 X-Mailer: b4 0.15-dev
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_090628_996331_9AF8F4E2 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20241224_090639_699357_25FFBA37 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,130 +96,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mark, hello MTD folks,
+Every ->exec_op() call correctly configures the spi bus speed to the
+maximum allowed frequency for the memory using the constant spi default
+parameter. Since we can now have per-operation constraints, let's use
+the value that comes from the spi-mem operation structure instead. In
+case there is no specific limitation for this operation, the default spi
+device value will be given anyway.
 
-Here is a (big) series supposed to bring DTR support in SPI-NAND.
+This controller however performed a frequency check, which is also
+observed during the ->check_op() phase.
 
-I could have split this into two but I eventually preferred showing the
-big picture. Once v1 will be over, I can make it two. However when we'll
-discuss merging, we'll have to share an immutable tag among the two
-subsystems.
+The per-operation frequency capability is thus advertised to the spi-mem
+core.
 
-Here is the logic:
-* patches 1 & 2 add support for spi-mem operations with a specific
-  frequency limitation. This is not only related to DTR support, because
-  as you can see I could use this to support basic features in the
-  Winbond driver.
-* patches 3-17 are going through all the easy controller drivers, where
-  effectively supporting these per-operation limitation was easy to
-  do. In practice, I believe all controllers can, but software is
-  sometimes the limiting factor. All controllers without spi-mem support
-  will gracefully handle the request (provided that they already care
-  about the maximum speed of course), and all the updated controllers in
-  this series will also handle the situation correctly. For the others,
-  it's an opt-in parameter, so they will simply refuse the operation
-  during the checks_op/supports_op() phase.
-* patches 18-20 add DTR support in spi-mem.
-* patches 21-24 add DTR support in SPI-NAND.
-* patches 25-27 add DTR support to Winbon chips.
-
+Cc: Sanjay R Mehta <sanju.mehta@amd.com>
+Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
-Changes in v2:
-- Fixed breakage reported by Mark.
-- Created an "adjust_op_freq" helper in the core and used it from
-  spi_mem_exec_op(). This way it is called only once. The main parameter
-  must still be casted otherwise we would need to do the call outside of
-  spi_mem_exec_op() which would imply about 40 different changes in the
-  core and drivers and also the assurance that we would get it wrong
-  again later.
-- Reworked the logic for picking the best variant to include all
-  subtleties due to maximum/supported frequencies. The choice takes
-  slightly longer now but should return the truly fastest variant for
-  each case.
-- Removed unique parenthesis in some kdoc comment.
-- Fixed the inconsistency when handling the maximum per operation
-  frequencies between spi-mem and non spi-mem controllers.
-- Fixed many typos.
-- Added a core check to validate the per op frequency against the minimum
-  supported frequencies by controller drivers.
-- Removed a useless check from the amd driver and turned a function
-  void. Also used the controller parameters in this driver rather than
-  the top-level definitions.
-- Clarified some of the commit logs.
-- Collected tags.
-- Prevented a patch from being picked-up automatically by the stable
-  team.
-- Reordered some terms in macros in the spi-mem core.
-- Rebased on top of v6.13-rc1.
-- Link to v1: https://lore.kernel.org/r/20241025161501.485684-1-miquel.raynal@bootlin.com
+ drivers/spi/spi-amd.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
----
-Miquel Raynal (27):
-      spi: spi-mem: Extend spi-mem operations with a per-operation maximum frequency
-      spi: spi-mem: Add a new controller capability
-      spi: amd: Support per spi-mem operation frequency switches
-      spi: amd: Drop redundant check
-      spi: amlogic-spifc-a1: Support per spi-mem operation frequency switches
-      spi: cadence-qspi: Support per spi-mem operation frequency switches
-      spi: dw: Support per spi-mem operation frequency switches
-      spi: fsl-qspi: Support per spi-mem operation frequency switches
-      spi: microchip-core-qspi: Support per spi-mem operation frequency switches
-      spi: mt65xx: Support per spi-mem operation frequency switches
-      spi: mxic: Support per spi-mem operation frequency switches
-      spi: nxp-fspi: Support per spi-mem operation frequency switches
-      spi: rockchip-sfc: Support per spi-mem operation frequency switches
-      spi: spi-sn-f-ospi: Support per spi-mem operation frequency switches
-      spi: spi-ti-qspi: Support per spi-mem operation frequency switches
-      spi: zynq-qspi: Support per spi-mem operation frequency switches
-      spi: zynqmp-gqspi: Support per spi-mem operation frequency switches
-      spi: spi-mem: Reorder spi-mem macro assignments
-      spi: spi-mem: Create macros for DTR operation
-      spi: spi-mem: Estimate the time taken by operations
-      mtd: spinand: Create distinct fast and slow read from cache variants
-      mtd: spinand: Add an optional frequency to read from cache macros
-      mtd: spinand: Enhance the logic when picking a variant
-      mtd: spinand: Add support for read DTR operations
-      mtd: spinand: winbond: Update the *JW chip definitions
-      mtd: spinand: winbond: Add comment about naming
-      mtd: spinand: winbond: Add support for DTR operations
+diff --git a/drivers/spi/spi-amd.c b/drivers/spi/spi-amd.c
+index d30a21b0b05f96fe5361d16a1fca3467260e0a08..485ae1e382e3eb8f4d72ebb0fb15c51b9a118d3b 100644
+--- a/drivers/spi/spi-amd.c
++++ b/drivers/spi/spi-amd.c
+@@ -479,6 +479,9 @@ static bool amd_spi_supports_op(struct spi_mem *mem,
+ 		return false;
+ 	}
+ 
++	if (op->max_freq < mem->spi->controller->min_speed_hz)
++		return false;
++
+ 	return spi_mem_default_supports_op(mem, op);
+ }
+ 
+@@ -676,7 +679,7 @@ static int amd_spi_exec_mem_op(struct spi_mem *mem,
+ 
+ 	amd_spi = spi_controller_get_devdata(mem->spi->controller);
+ 
+-	ret = amd_set_spi_freq(amd_spi, mem->spi->max_speed_hz);
++	ret = amd_set_spi_freq(amd_spi, op->max_freq);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -705,6 +708,10 @@ static const struct spi_controller_mem_ops amd_spi_mem_ops = {
+ 	.supports_op = amd_spi_supports_op,
+ };
+ 
++static const struct spi_controller_mem_caps amd_spi_mem_caps = {
++	.per_op_freq = true,
++};
++
+ static int amd_spi_host_transfer(struct spi_controller *host,
+ 				   struct spi_message *msg)
+ {
+@@ -782,6 +789,7 @@ static int amd_spi_probe(struct platform_device *pdev)
+ 	host->setup = amd_spi_host_setup;
+ 	host->transfer_one_message = amd_spi_host_transfer;
+ 	host->mem_ops = &amd_spi_mem_ops;
++	host->mem_caps = &amd_spi_mem_caps;
+ 	host->max_transfer_size = amd_spi_max_transfer_size;
+ 	host->max_message_size = amd_spi_max_transfer_size;
+ 
 
- drivers/mtd/nand/spi/alliancememory.c |  4 +--
- drivers/mtd/nand/spi/ato.c            |  4 +--
- drivers/mtd/nand/spi/core.c           | 15 ++++++--
- drivers/mtd/nand/spi/esmt.c           |  4 +--
- drivers/mtd/nand/spi/foresee.c        |  4 +--
- drivers/mtd/nand/spi/gigadevice.c     | 16 ++++-----
- drivers/mtd/nand/spi/macronix.c       |  4 +--
- drivers/mtd/nand/spi/micron.c         |  8 ++---
- drivers/mtd/nand/spi/paragon.c        |  4 +--
- drivers/mtd/nand/spi/toshiba.c        |  4 +--
- drivers/mtd/nand/spi/winbond.c        | 27 ++++++++++++---
- drivers/mtd/nand/spi/xtx.c            |  4 +--
- drivers/spi/spi-amd.c                 | 21 ++++++------
- drivers/spi/spi-amlogic-spifc-a1.c    |  7 +++-
- drivers/spi/spi-cadence-quadspi.c     |  3 +-
- drivers/spi/spi-dw-core.c             | 10 ++++--
- drivers/spi/spi-fsl-qspi.c            | 12 +++++--
- drivers/spi/spi-mem.c                 | 64 +++++++++++++++++++++++++++++++++++
- drivers/spi/spi-microchip-core-qspi.c | 26 +++++++++++---
- drivers/spi/spi-mt65xx.c              |  7 +++-
- drivers/spi/spi-mxic.c                |  3 +-
- drivers/spi/spi-nxp-fspi.c            | 12 +++++--
- drivers/spi/spi-rockchip-sfc.c        | 11 ++++--
- drivers/spi/spi-sn-f-ospi.c           |  8 +++--
- drivers/spi/spi-ti-qspi.c             |  7 +++-
- drivers/spi/spi-zynq-qspi.c           | 13 +++++--
- drivers/spi/spi-zynqmp-gqspi.c        | 13 ++++---
- include/linux/mtd/spinand.h           | 58 ++++++++++++++++++++++++++++---
- include/linux/spi/spi-mem.h           | 56 +++++++++++++++++++++++++++++-
- 29 files changed, 349 insertions(+), 80 deletions(-)
----
-base-commit: 9100187b36091e5cc046d1f415f50a04ec31c25f
-change-id: 20241210-winbond-6-11-rc1-quad-support-0148205a21a2
-
-Best regards,
 -- 
-Miquel Raynal <miquel.raynal@bootlin.com>
+2.47.0
 
 
 _______________________________________________
