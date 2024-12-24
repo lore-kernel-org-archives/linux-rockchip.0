@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BFCE77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:57:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79D9CE7718E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TuEv1mdcCXhZ19Eh88VfZfzLbRm51pjIEoyaZtaOeWA=; b=wiuNZxFXNPCo9L
-	jImfxgl3nqxqE0VzaBWvrQZRilVzz4TUbzOM/nmUMh9MgfPh6IItfWPTRgVGPw+jNK9CDka/EVi6R
-	Mr52V63144dHUH9HABL2dk9VUrR6D1zNEGJI8s3DEOuBPVopGoUeyMYoLTCYfSHEBJA7N/Z4gtanT
-	zLw5hHPvQomG4ykvmU97cGaLwuX+kh35EUKFkEp/uwin5nQnoaWaAhauvoffODh9kKZUMU2GV97aN
-	u23vMfs/BEO5eBkfY71BT65t6eW+0i+Z6Zf/VJiiWXnuyf30YvWWMl7omRR4LVwsAM8rBfz3+Eodd
-	VLU66tULFKfnTa2lIg/Q==;
+	List-Owner; bh=9dnIpJYqDS7Z6KqtqyTubfSf1IgROauvrfK0jRMoIn8=; b=lRXOeqp9LmSu5k
+	WHrYZZl0w2cQtFW8/9ydrMGoFcvxDSyFPUtAhnQWXSGrxBNUKJ2aEKSSWF3QWuTTsDmS0/4meS+nB
+	PglJL6iLGco28OlhLXEOLfV0/yXVrVkyzv3pBJYPatIPhBXgWvxTgbr4DDMzQexogWMux3JZeF59a
+	eqIGpmaBhJE4/oyuyCABZfPiDr4av3B6BEnnSOkZnpeIG27ytFqgCLB7BaJOCdkackvbBa6G24BBU
+	DZiPwi2LrhwZM94s4cSihNz9UP47jNXmsDocFSlPXJ57xxu6Tid3H9BacCZLeigEEUvMJyUCjq035
+	vIS64jkXPAM8fZu4PVGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1ez-0000000BfQ4-26tF;
-	Tue, 24 Dec 2024 09:57:05 +0000
-Received: from mail-m127231.xmail.ntesmail.com ([115.236.127.231])
+	id 1tQ1g8-0000000BffR-2bkv;
+	Tue, 24 Dec 2024 09:58:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1R9-0000000Bcrg-0MKY;
-	Tue, 24 Dec 2024 09:42:48 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 6aaa2d20;
-	Tue, 24 Dec 2024 17:42:43 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Frank Wang <frank.wang@rock-chips.com>,
-	William Wu <william.wu@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/2] phy: rockchip: inno-usb2: add usb2 phy support for rk3562
-Date: Tue, 24 Dec 2024 17:42:40 +0800
-Message-Id: <20241224094240.3817261-2-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241224094240.3817261-1-kever.yang@rock-chips.com>
-References: <20241224094240.3817261-1-kever.yang@rock-chips.com>
+	id 1tQ1Rj-0000000Bd2B-2lbW
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Dec 2024 09:43:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 97670A41442;
+	Tue, 24 Dec 2024 09:41:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB9F2C4CED0;
+	Tue, 24 Dec 2024 09:43:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735033402;
+	bh=RA5sS+LHe7DdBB+p8rWK5aaRQ2sxjMPQzK5z1SuxXUs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=k6qI958LWgBe7Ke9QTtJLD1XdOBbpACohHvR6nPJtmrkDcf/Z5ViolwskfKJZ6bTF
+	 6kLd3fkOh5DR9istquPw0vId18UMY8qox43kfk2bvMpJ+3XANpyLr9l8b/940jl5M5
+	 liZ/V3Ch9iOXPKTv1aw7n6nIdSEvAvEervMA/iFgXh5TBD1PxSOf86LVLRv3GseEsg
+	 Hq1T45JthNOaB28WM0d1nipvNqwBY0O+PAIO2lCZZBBYEGO7+XIT+4daU44Hb6r7/+
+	 z9SJB07yNZ4f+snkD8lp5mWp2KCPkeiXy1Obr9qNXIBR+rE0uPCah5Ot3s9Qz4MQsh
+	 HmjEg/LBLFEPA==
+Date: Tue, 24 Dec 2024 10:43:18 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, dsimic@manjaro.org, jonas@kwiboo.se, macromorgan@hotmail.com, 
+	andyshrk@163.com, dmt.yashin@gmail.com, liujianfeng1994@gmail.com, 
+	tim@feathertop.org, marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net, 
+	alchark@gmail.com, jbx6244@gmail.com, kever.yang@rock-chips.com, jing@jing.rocks, 
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa E52C
+Message-ID: <hs45mw6utovel4ok53iys2vxy5njv3etsimuotoylfqs2joybt@hgdrv647z4kp>
+References: <20241223015318.1999-1-naoki@radxa.com>
+ <20241223015318.1999-2-naoki@radxa.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkpPGVZKGRkYThgYGUoZTkxWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93f80c1aff03afkunm6aaa2d20
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pi46Myo4CzIOIkoDSypLExMr
-	KEwwFB5VSlVKTEhOS0hISE1PTUhOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFITkpNNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=Rt1bgtdk3TcGQXSFabYDZ7HaqgYljKByp+xNz3+rv9bq5bSJWhtXN5S8663MxxGfS7PEMfgiOMjPp+c+wcQtthePShh9qJSzS1QtzeAFCjFQGiru+if94RigBeHt6H4WmClrTswk0CVNxmbMWDix7t8tg+V3sU1CwVH9jPMrdx0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Uoo6+k5NJ8svVAMBnfn+xo8VKgOaaJ2mCNQkwDUDJvw=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20241223015318.1999-2-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_014247_316780_4114B73F 
-X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-CacheID: sfid-20241224_014323_764094_1EA3970A 
+X-CRM114-Status: UNSURE (   8.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,94 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wang <frank.wang@rock-chips.com>
+On Mon, Dec 23, 2024 at 01:53:17AM +0000, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa E52C.
+> 
+> Radxa E52C is a compact network computer based on the Rockchip RK3582
+> SoC.
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+> Changes in v2:
+> - Add "rockchip,rk3588s"
 
-RK3652 has one USB2.0 PHY with two ports, the OTG port support OTG
-and BC1.2, the SoC provide USB GRF and APB to access the registers.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-This adds vbus detection function control and make the below tuning
-to enhance the usb2-phy SQ for RK3562 SoC.
- - enable pre-emphasis during non-chirp phase
- - set HS eye height to 425mv
- - turn off differential receiver by default to save power
-
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
-
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 96f3d868a526..946dd7ac409d 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1892,6 +1892,54 @@ static const struct rockchip_usb2phy_cfg rk3399_phy_cfgs[] = {
- 	{ /* sentinel */ }
- };
- 
-+static const struct rockchip_usb2phy_cfg rk3562_phy_cfgs[] = {
-+	{
-+		.reg = 0xff740000,
-+		.num_ports	= 2,
-+		.clkout_ctl	= { 0x0108, 4, 4, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_OTG] = {
-+				.phy_sus	= { 0x0100, 8, 0, 0, 0x1d1 },
-+				.bvalid_det_en	= { 0x0110, 2, 2, 0, 1 },
-+				.bvalid_det_st	= { 0x0114, 2, 2, 0, 1 },
-+				.bvalid_det_clr = { 0x0118, 2, 2, 0, 1 },
-+				.idfall_det_en	= { 0x0110, 5, 5, 0, 1 },
-+				.idfall_det_st	= { 0x0114, 5, 5, 0, 1 },
-+				.idfall_det_clr = { 0x0118, 5, 5, 0, 1 },
-+				.idrise_det_en	= { 0x0110, 4, 4, 0, 1 },
-+				.idrise_det_st	= { 0x0114, 4, 4, 0, 1 },
-+				.idrise_det_clr = { 0x0118, 4, 4, 0, 1 },
-+				.ls_det_en	= { 0x0110, 0, 0, 0, 1 },
-+				.ls_det_st	= { 0x0114, 0, 0, 0, 1 },
-+				.ls_det_clr	= { 0x0118, 0, 0, 0, 1 },
-+				.utmi_avalid	= { 0x0120, 10, 10, 0, 1 },
-+				.utmi_bvalid	= { 0x0120, 9, 9, 0, 1 },
-+				.utmi_ls	= { 0x0120, 5, 4, 0, 1 },
-+			},
-+			[USB2PHY_PORT_HOST] = {
-+				.phy_sus	= { 0x0104, 8, 0, 0x1d2, 0x1d1 },
-+				.ls_det_en	= { 0x0110, 1, 1, 0, 1 },
-+				.ls_det_st	= { 0x0114, 1, 1, 0, 1 },
-+				.ls_det_clr	= { 0x0118, 1, 1, 0, 1 },
-+				.utmi_ls	= { 0x0120, 17, 16, 0, 1 },
-+				.utmi_hstdet	= { 0x0120, 19, 19, 0, 1 }
-+			}
-+		},
-+		.chg_det = {
-+			.cp_det		= { 0x0120, 24, 24, 0, 1 },
-+			.dcp_det	= { 0x0120, 23, 23, 0, 1 },
-+			.dp_det		= { 0x0120, 25, 25, 0, 1 },
-+			.idm_sink_en	= { 0x0108, 8, 8, 0, 1 },
-+			.idp_sink_en	= { 0x0108, 7, 7, 0, 1 },
-+			.idp_src_en	= { 0x0108, 9, 9, 0, 1 },
-+			.rdm_pdwn_en	= { 0x0108, 10, 10, 0, 1 },
-+			.vdm_src_en	= { 0x0108, 12, 12, 0, 1 },
-+			.vdp_src_en	= { 0x0108, 11, 11, 0, 1 },
-+		},
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
- 	{
- 		.reg = 0xfe8a0000,
-@@ -2210,6 +2258,7 @@ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
- 	{ .compatible = "rockchip,rk3328-usb2phy", .data = &rk3328_phy_cfgs },
- 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
- 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
-+	{ .compatible = "rockchip,rk3562-usb2phy", .data = &rk3562_phy_cfgs },
- 	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
- 	{ .compatible = "rockchip,rk3576-usb2phy", .data = &rk3576_phy_cfgs },
- 	{ .compatible = "rockchip,rk3588-usb2phy", .data = &rk3588_phy_cfgs },
--- 
-2.25.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
