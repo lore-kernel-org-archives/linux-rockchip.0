@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D787E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CDA4E77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:41:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D2eqJ1ODC5xOnwCe6+jnuM53QpyaB9xR9PeCfc5fhyg=; b=pRbMfq8U2nVjmI
-	Oy15YLHudBvEVSp1UCxgA/jT/AG8vZ1VddHH5t6lH3e6SV4FnlDo36vQnkrgph5CGjW0u/osoijRQ
-	KWZx2kOZ9XvRsduChvzIhuDgRfAmz2rDcxOsn9RhVL6IZWhmy4s4PlJD6bJeNQ83tuD/y3QWssgQh
-	c6nS8mBFo9GFt6p3ot4AeuADa5qsTrD8kcDaYZkN8Ohb1NMlf0B4VkJw4MIQ1gEUCLpEkLvd76SDz
-	m3RMq4wJ36bWY/bAN2D99pWe0EVf8SCsZfGaeDG1H2F0J7R8vtEQOcP5e8LMiEUbFsQplFHl6oqHl
-	cUA5Gs7DtZzpkW6PSdHg==;
+	List-Owner; bh=/ANfx/1RzDfTQUCCPoOQswxFS+jzNxTRneH6E6sjIWo=; b=qhOAn983MmUuUO
+	5WuV6ynNDebjpt+u0Rl5LgwEnFz040ljy26Pb07C1f2JFB2CbYV6AtRGG0AvN4YuCihSWNJ7WY+IE
+	3A6a0eUVxds/qXK4VxugFMWBN+AmOEPuHWr3bB/9W8ylRVZerWkxDN//I0B85uapkySPOAUzECZJg
+	yvZDTkkqksS8OsgW6HomgjeG/fIIJHb97gEEnyvw06UX7tq+K9XXF5mQSf1cZfTFFVvTydISObFWe
+	IODYS5LT6XvWwxhjRNr2g3TPZO1Un+Pr1QKoyL7+ug5CmK4N8VnJLJH4xMc+yofIxixMSipSXpn+R
+	90LlUm9mgT6TxNrF3VlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1Ne-0000000BcBu-02Zi;
-	Tue, 24 Dec 2024 09:39:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tQ1Pw-0000000BcZw-3zbM;
+	Tue, 24 Dec 2024 09:41:32 +0000
+Received: from mail-m12770.qiye.163.com ([115.236.127.70])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1LM-0000000BbrC-3LVS;
-	Tue, 24 Dec 2024 09:36:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3049B5C5DBD;
-	Tue, 24 Dec 2024 09:36:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CAC8C4CED0;
-	Tue, 24 Dec 2024 09:36:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735033007;
-	bh=7CoSrZ3e9UDAyDEUzqMEvSsGqADAYZH5CAhzI1dteeQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aZU1Y1CXY4pRoKTbD8WCPCczFvueol8DojEYbuztpMtqslP4iQ4bFsyJq6vsN1P8B
-	 pjwNlA2I0vecEEpZ7vW78FAWmFNK4w6yJHupq1Xq5xZEiHpz8UNKdyJ73M02HSNYFH
-	 L3iqHQvwggCASZamlcKJUEghoUWzteeh6HoENmlAy0WK0Bf5HBXbCxvkzV9CAH0Eoh
-	 9lR77s24JNPOMBrTtB4yJsiZg0LEkIJGROe4t1VExpKr92qSfbCOEZJklZqXzP83UW
-	 QpHNo1tqBrfcCzI2hEEYnrdU6uAN9viKIyKw5ncZQJNSo3Xa2+7fKf7cS+t1Q7pPRJ
-	 OFiDFgnZTxaMQ==
-Date: Tue, 24 Dec 2024 10:36:44 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v3 10/15] dt-bindings: display: rockchip: analogix-dp:
- Add support to get panel from the DP AUX bus
-Message-ID: <6ycjcteeornplagnwnl2l3xlsaanvyobg5clr6ie5gewti32ll@fnvu6ankyum3>
-References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
- <20241219080604.1423600-11-damon.ding@rock-chips.com>
+	id 1tQ1Nu-0000000BcG3-3FJz;
+	Tue, 24 Dec 2024 09:39:28 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 6aa9032d;
+	Tue, 24 Dec 2024 17:39:22 +0800 (GMT+08:00)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-pm@vger.kernel.org,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Subject: [PATCH v2 2/2] soc: rockchip: power-domain: add power domain support for rk3562
+Date: Tue, 24 Dec 2024 17:39:20 +0800
+Message-Id: <20241224093920.3816071-2-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241224093920.3816071-1-kever.yang@rock-chips.com>
+References: <20241224093920.3816071-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241219080604.1423600-11-damon.ding@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUkZHlZDGRlJHRhMHx0dH09WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a93f8090cd403afkunm6aa9032d
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6My46Tgw6MzIOSUooF0hJECMf
+	DkJPCRBVSlVKTEhOS0hISk1PS0JIVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPT0pPNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=AcT/noO30omhJSUYcdP+9+GskAYRxWwkTLmAJrQMt44QQUL/QrtHSIi0fupc03iQhfKLxi0oxg9u9NG0loj4/FFAmdlUJjc6iveCFxE3SEPrgH788VyTtG9Hvk3+I4OOxiX22XBhJzdXuAsvhuzZf/VeILYYPOFXmFlkf2qce2c=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=XleyPgZ/9CM1PcFef+OPgtrYNksdCSgQk5pDrBsSbTY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_013648_884183_F99C40AA 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241224_013927_236839_9D87C26C 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,25 +75,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 19, 2024 at 04:05:59PM +0800, Damon Ding wrote:
-> According to Documentation/devicetree/bindings/display/dp-aux-bus.yaml,
-> it is a good way to get panel through the DP AUX bus.
-> 
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> ---
->  .../bindings/display/rockchip/rockchip,analogix-dp.yaml        | 3 +++
->  1 file changed, 3 insertions(+)
+This driver is modified to support RK3562 SoC.
+Add support to ungate clk.
+Add support to shut down memory for rk3562.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
 
-Best regards,
-Krzysztof
+Changes in v2:
+- update the header after rename
+
+ drivers/pmdomain/rockchip/pm-domains.c | 48 +++++++++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index cb0f93800138..d05ec0a009a0 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -2,7 +2,7 @@
+ /*
+  * Rockchip Generic power domain support.
+  *
+- * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
++ * Copyright (c) 2015 Rockchip Electronics Co., Ltd.
+  */
+ 
+ #include <linux/io.h>
+@@ -32,6 +32,7 @@
+ #include <dt-bindings/power/rk3366-power.h>
+ #include <dt-bindings/power/rk3368-power.h>
+ #include <dt-bindings/power/rk3399-power.h>
++#include <dt-bindings/power/rockchip,rk3562-power.h>
+ #include <dt-bindings/power/rk3568-power.h>
+ #include <dt-bindings/power/rockchip,rk3576-power.h>
+ #include <dt-bindings/power/rk3588-power.h>
+@@ -129,6 +130,20 @@ struct rockchip_pmu {
+ 	.active_wakeup = wakeup,			\
+ }
+ 
++#define DOMAIN_M_G_SD(_name, pwr, status, req, idle, ack, g_mask, mem, wakeup, keepon)	\
++{							\
++	.name = _name,					\
++	.pwr_w_mask = (pwr) << 16,			\
++	.pwr_mask = (pwr),				\
++	.status_mask = (status),			\
++	.req_w_mask = (req) << 16,			\
++	.req_mask = (req),				\
++	.idle_mask = (idle),				\
++	.ack_mask = (ack),				\
++	.clk_ungate_mask = (g_mask),			\
++	.active_wakeup = wakeup,			\
++}
++
+ #define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup)	\
+ {							\
+ 	.name = _name,					\
+@@ -194,6 +209,9 @@ struct rockchip_pmu {
+ #define DOMAIN_RK3399(name, pwr, status, req, wakeup)		\
+ 	DOMAIN(name, pwr, status, req, req, req, wakeup)
+ 
++#define DOMAIN_RK3562(name, pwr, req, g_mask, mem, wakeup)		\
++	DOMAIN_M_G_SD(name, pwr, pwr, req, req, req, g_mask, mem, wakeup, false)
++
+ #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
+ 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
+ 
+@@ -1130,6 +1148,18 @@ static const struct rockchip_domain_info rk3399_pm_domains[] = {
+ 	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), BIT(29), true),
+ };
+ 
++static const struct rockchip_domain_info rk3562_pm_domains[] = {
++					     /* name           pwr     req     g_mask  mem wakeup */
++	[RK3562_PD_GPU]		= DOMAIN_RK3562("gpu",         BIT(0), BIT(1), BIT(1), 0, false),
++	[RK3562_PD_NPU]		= DOMAIN_RK3562("npu",         BIT(1), BIT(2), BIT(2), 0, false),
++	[RK3562_PD_VDPU]	= DOMAIN_RK3562("vdpu",        BIT(2), BIT(6), BIT(6), 0, false),
++	[RK3562_PD_VEPU]	= DOMAIN_RK3562("vepu",        BIT(3), BIT(7), BIT(7) | BIT(3), 0, false),
++	[RK3562_PD_RGA]		= DOMAIN_RK3562("rga",         BIT(4), BIT(5), BIT(5) | BIT(4), 0, false),
++	[RK3562_PD_VI]		= DOMAIN_RK3562("vi",          BIT(5), BIT(3), BIT(3), 0, false),
++	[RK3562_PD_VO]		= DOMAIN_RK3562("vo",  BIT(6), BIT(4), BIT(4), 16, false),
++	[RK3562_PD_PHP]		= DOMAIN_RK3562("php",         BIT(7), BIT(8), BIT(8), 0, false),
++};
++
+ static const struct rockchip_domain_info rk3568_pm_domains[] = {
+ 	[RK3568_PD_NPU]		= DOMAIN_RK3568("npu",  BIT(1), BIT(2),  false),
+ 	[RK3568_PD_GPU]		= DOMAIN_RK3568("gpu",  BIT(0), BIT(1),  false),
+@@ -1331,6 +1361,18 @@ static const struct rockchip_pmu_info rk3399_pmu = {
+ 	.domain_info = rk3399_pm_domains,
+ };
+ 
++static const struct rockchip_pmu_info rk3562_pmu = {
++	.pwr_offset = 0x210,
++	.status_offset = 0x230,
++	.req_offset = 0x110,
++	.idle_offset = 0x128,
++	.ack_offset = 0x120,
++	.clk_ungate_offset = 0x140,
++
++	.num_domains = ARRAY_SIZE(rk3562_pm_domains),
++	.domain_info = rk3562_pm_domains,
++};
++
+ static const struct rockchip_pmu_info rk3568_pmu = {
+ 	.pwr_offset = 0xa0,
+ 	.status_offset = 0x98,
+@@ -1429,6 +1471,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 		.compatible = "rockchip,rk3399-power-controller",
+ 		.data = (void *)&rk3399_pmu,
+ 	},
++	{
++		.compatible = "rockchip,rk3562-power-controller",
++		.data = (void *)&rk3562_pmu,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3568-power-controller",
+ 		.data = (void *)&rk3568_pmu,
+-- 
+2.25.1
 
 
 _______________________________________________
