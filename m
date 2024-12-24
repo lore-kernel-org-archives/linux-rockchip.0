@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A8D3E7718D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 17:32:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F41CCE7718E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 17:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O1mUnKG1oFIsDsRTcd/YqNDXW1HSSA9QOESruC+AAh4=; b=lFpGXVadPCv2wc
-	BKXKojxRto3GebfjL7uzZPfdSiWfrXqBMvwdAGa4EPJ5DMkLc1j+UiSoIeW49ei0XRMo4wPCbjr0x
-	rF7BGAWU+j4HFxbOX2qhG0F3EqQcefkIs3SIifEV5yzjJtvoqlWtNw+qMojezXXS0f76QYZdETXsf
-	TVZiqTtLkE51EpZi7R/DYW0kE563w8Q2s9PgqL9H9di5z1C1+X8T/psYn9J/QIUewXro6yQKa5AU0
-	P3+GQX2rMcR+nH1RkLMMZtZAde+EdV5M31PlngB5ax8KRvwdgvsdNlvMw4TTeuSM7AdHkZf1lGM3+
-	Rb9oHREaR2+KPc47q/RA==;
+	List-Owner; bh=7wCbB9bsLbFZC+t0oxFfW7rXMTMqF/UBdoebx/Gw9cs=; b=NtD9Q+bcE7F/Eu
+	S96IzC1+0o+TMFKV4EGzyTUa0wkfNVoz0+qVRXeIvJHSEetXK8VeWHx17bWZFXb69Oxl1aqz9LCvc
+	e04kxQhbIGbmcF5lYe8gaC1TIkPcStUwK95ks+b/7OeyxWcFXg+ysYsa7SkU/zwkjxOBy1uJhLD+8
+	ieDa5/itJsNTWK3uFD21l1MjRFO7dbz2/wMQJ97I+wdn+y8VvBPlO32wotMdU6fDMO0UFL/D9Y7X3
+	BSExgyVTU5aB/Ipg+NUoDevTqRWWqUr/MXCLFTercYdzpmcHRdRRFHm+fHlS6hh9FhyalOvcAIlTD
+	0WONGzPZAS7Umihrla0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8m2-0000000CVTu-1ply;
-	Tue, 24 Dec 2024 17:32:50 +0000
+	id 1tQ8nD-0000000CVsC-0XqL;
+	Tue, 24 Dec 2024 17:34:03 +0000
 Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ8O7-0000000CN1H-0sdb;
-	Tue, 24 Dec 2024 17:08:08 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 2476840002;
-	Tue, 24 Dec 2024 17:08:01 +0000 (UTC)
+	id 1tQ8OB-0000000CN3P-2KWp;
+	Tue, 24 Dec 2024 17:08:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4FBA240005;
+	Tue, 24 Dec 2024 17:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1735060085;
+	t=1735060089;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=+4OsasNx8lhobCm5ORTBJQ6wBy7WkLnmvrsNMBWmSJ4=;
-	b=Bzx8EfmHiwZa5evAKhuHzFGByKQK+6zDdGV+b5AUFTMeWY2TvOSxI9RxY04NNOg+9i2uJ7
-	7QLwCGd8mJLoUXAZX1/Ko87uyYIcHxsJ4vqdqC3if3qLJJtkj8XPuVgaXkfHoX8RM/1UhL
-	IPJNcKey+8qBTIiX4QsGhLnSsjquwzQWVKflqEvt5uqVGFzEr6tYvaNpzusa+yCRa5Lq16
-	YkJemgbFsUbxTmsm2TycV+PjQg1qd5iFJ0zKFZbjXLF9+XAwfKmms0K6y8ANtEiX9Ygx/F
-	JNh5x3zy0dTkP8BKZLED4xrBcEVn2WHVqQLm0liqHOIahWU7xZ4PKxeSxzyLWw==
+	bh=sEcOYXJrONKHwBqG/6O0ih6T2LYP/HBXQ4mMGLoulzI=;
+	b=TLomLwdjOWdFo+9NPFZ7aGrSt7rUkXNrIfD2TTJ3JP1r4ILA4u2VMWLk8Qap7c1ELdZMQ2
+	rMJ2dvQEhXQJlORPG/e1DFs6jOrplEcHJUIGjDG7D3EohYYReibZBUoXCsQkCn+erq9tLd
+	3WO6r8MskQ5y3DT82uHth9QUdSlyHm6LxgE/5wf11566NgyOmeXUhjTcF2gGj/e2SR7sQZ
+	v7DT0pMEQ/Qe+gn7lyQ/FYxRLp3yPW0dypm5PaSRDh1tdXt5dOCqHDKLhNXhha34QnPKTw
+	oYb+4EEZzpiAY7+Q1o6i8y+cX5N5DSjsJ7qwigMklp0U4622u6/J7aHuqeavBg==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Tue, 24 Dec 2024 18:06:07 +0100
-Subject: [PATCH v2 22/27] mtd: spinand: Add an optional frequency to read
- from cache macros
+Date: Tue, 24 Dec 2024 18:06:08 +0100
+Subject: [PATCH v2 23/27] mtd: spinand: Enhance the logic when picking a
+ variant
 MIME-Version: 1.0
-Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-22-ad218dbc406f@bootlin.com>
+Message-Id: <20241224-winbond-6-11-rc1-quad-support-v2-23-ad218dbc406f@bootlin.com>
 References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
 In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
 To: Mark Brown <broonie@kernel.org>, Sanjay R Mehta <sanju.mehta@amd.com>, 
@@ -78,8 +78,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.15-dev
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_090807_543698_A6890A70 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20241224_090811_903180_2EF6ABB4 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,36 +96,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-While the SPINAND_PAGE_READ_FROM_CACHE_FAST_OP macro is supposed to be
-able to run at the flash highest supported frequency, it is not the case
-of the regular read from cache, which may be limited in terms of maximum
-frequency. Add an optional argument to this macro, which will be used to
-set the maximum frequency, if any.
+Currently the best variant picked in the first one in the list provided
+in the manufacturer driver. This worked well while all operations where
+performed at the same speed, but with the introduction of DTR transfers
+and per operation maximum frequencies, this no longer works correctly.
+
+Let's continue iterating over all the alternatives, even if we find a
+match, keeping a reference over the theoretically fastest
+operation. Only at the end we can tell which variant is the best.
+
+This logic happening only once at boot, the extra computing needed
+compared to the previous version is acceptable wrt. the expected
+improvements.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- include/linux/mtd/spinand.h | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/mtd/nand/spi/core.c | 13 ++++++++++---
+ include/linux/spi/spi-mem.h |  2 +-
+ 2 files changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/include/linux/mtd/spinand.h b/include/linux/mtd/spinand.h
-index 63c89307c86524143913660c66ec4fe4375904f8..1948e654b8aacb3d4b774a00939e8e8198f53da7 100644
---- a/include/linux/mtd/spinand.h
-+++ b/include/linux/mtd/spinand.h
-@@ -62,11 +62,12 @@
- 		   SPI_MEM_OP_NO_DUMMY,					\
- 		   SPI_MEM_OP_NO_DATA)
+diff --git a/drivers/mtd/nand/spi/core.c b/drivers/mtd/nand/spi/core.c
+index 94f33c8be031ac60208e22e4e3fa0d90cfae093c..a2a8cfd1752139e3227fa4a39ab0e25bbeec53f8 100644
+--- a/drivers/mtd/nand/spi/core.c
++++ b/drivers/mtd/nand/spi/core.c
+@@ -1198,10 +1198,13 @@ spinand_select_op_variant(struct spinand_device *spinand,
+ 			  const struct spinand_op_variants *variants)
+ {
+ 	struct nand_device *nand = spinand_to_nand(spinand);
++	const struct spi_mem_op *best_variant = NULL;
++	u64 best_op_duration_ns = ULLONG_MAX;
+ 	unsigned int i;
  
--#define SPINAND_PAGE_READ_FROM_CACHE_OP(addr, ndummy, buf, len) \
-+#define SPINAND_PAGE_READ_FROM_CACHE_OP(addr, ndummy, buf, len, ...) \
- 	SPI_MEM_OP(SPI_MEM_OP_CMD(0x03, 1),				\
- 		   SPI_MEM_OP_ADDR(2, addr, 1),				\
- 		   SPI_MEM_OP_DUMMY(ndummy, 1),				\
--		   SPI_MEM_OP_DATA_IN(len, buf, 1))
-+		   SPI_MEM_OP_DATA_IN(len, buf, 1),			\
-+		   __VA_OPT__(SPI_MEM_OP_MAX_FREQ(__VA_ARGS__)))
+ 	for (i = 0; i < variants->nops; i++) {
+ 		struct spi_mem_op op = variants->ops[i];
++		u64 op_duration_ns = 0;
+ 		unsigned int nbytes;
+ 		int ret;
  
- #define SPINAND_PAGE_READ_FROM_CACHE_FAST_OP(addr, ndummy, buf, len) \
- 	SPI_MEM_OP(SPI_MEM_OP_CMD(0x0b, 1),			\
+@@ -1220,13 +1223,17 @@ spinand_select_op_variant(struct spinand_device *spinand,
+ 				break;
+ 
+ 			nbytes -= op.data.nbytes;
++
++			op_duration_ns += spi_mem_calc_op_duration(&op);
+ 		}
+ 
+-		if (!nbytes)
+-			return &variants->ops[i];
++		if (!nbytes && op_duration_ns < best_op_duration_ns) {
++			best_op_duration_ns = op_duration_ns;
++			best_variant = &variants->ops[i];
++		}
+ 	}
+ 
+-	return NULL;
++	return best_variant;
+ }
+ 
+ /**
+diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
+index 82390712794c5a4dcef1319c19d74b77b6e1e724..c4830dfaff3db5549c45bb7a9c4bf5110fa2e338 100644
+--- a/include/linux/spi/spi-mem.h
++++ b/include/linux/spi/spi-mem.h
+@@ -424,7 +424,7 @@ bool spi_mem_default_supports_op(struct spi_mem *mem,
+ 
+ int spi_mem_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op);
+ void spi_mem_adjust_op_freq(struct spi_mem *mem, struct spi_mem_op *op);
+-u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op *op);
++u64 spi_mem_calc_op_duration(struct spi_mem_op *op);
+ 
+ bool spi_mem_supports_op(struct spi_mem *mem,
+ 			 const struct spi_mem_op *op);
 
 -- 
 2.47.0
