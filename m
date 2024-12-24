@@ -4,66 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00241E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29493E77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Dec 2024 09:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kofmiOWXBbAculBjSeYkOvmyCJsK7wCinrPbnuOVRZM=; b=FMokeJi59G7hgU
-	xFEvLGqB82f/XY3QDGe/iL8RgX5Y6WifAjhIMTzJe38vAz+uwLnOf0R8r+LdO7jacIYXklemizQco
-	X6VJ/OfLVHyogTw8DCYjuY8y/FcXg46449ZC8SvY3mQ3IIcAhmBlLVf3twmO/CTTPDR3H/Bfmn9HS
-	LVZo8nNHDAlyRGPShDOU5yl5+fWv8xlNt2IaaDdBu5DFErtkSGiF1DPrJSkInziHJ6uqiNva7Fs1h
-	PqWdwMVReOri0kkhCg2Sdksv+FoPdyaKc/gwLfFbsxQB5M5tZVJwNoXN+mdk9LBKwix5kxmydJVLR
-	yZGhBSNpup+6M4H4rSig==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=67qBHyFM56gGU+bMOE596y2PmOhrOn2JR/skU4VftDo=; b=pulE1eh0PfiBDx
+	JhwDLk3YsNhjvv/VNYPlo32nhJiwN6mXkEYUCAt999W2bFDzjcbXi8de47FLobse2wt2WNhqptrLF
+	ADAMwcQMEKAPuD6OBF/xSffPCWztK2deAfZZZUDCXACZP4WpfFvedXX29RxVexsMGEarISECcBQDG
+	Zs6G6OGe+Gk9ntzRK3ciFkL74DDD0AhuWq8YOWQH6B6wONIPNsf8tFQ1HMywNLMmOXC1urU7huAAb
+	Dv9hAPQwhIdi4DaCp6qnK6me8FFM/9vBCdQQWdvkjWGPYnQB8y6tWcUJx+4Z+kIU6HsVh8NIlU1o4
+	2SqsAiex0cj9FprG21LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1g9-0000000Bffh-03E0;
-	Tue, 24 Dec 2024 09:58:17 +0000
-Received: from mail-m3294.qiye.163.com ([220.197.32.94])
+	id 1tQ1hK-0000000Bfvz-2zkU;
+	Tue, 24 Dec 2024 09:59:30 +0000
+Received: from mail-m19731109.qiye.163.com ([220.197.31.109])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQ1Th-0000000BdHB-2BnJ;
-	Tue, 24 Dec 2024 09:45:26 +0000
+	id 1tQ1Xc-0000000BdyG-3HBT;
+	Tue, 24 Dec 2024 09:49:30 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 6aa90537;
-	Tue, 24 Dec 2024 17:40:20 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 6aad4ed7;
+	Tue, 24 Dec 2024 17:49:21 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Shaohan Yao <shaohan.yao@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-pm@vger.kernel.org,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	linux-kernel@vger.kernel.org,
-	Zhang Rui <rui.zhang@intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 2/2] thermal: rockchip: Support the rk3562 SoC in thermal driver
-Date: Tue, 24 Dec 2024 17:40:15 +0800
-Message-Id: <20241224094015.3816301-2-kever.yang@rock-chips.com>
+Subject: [PATCH v2 00/17] rockchip: Add rk3562 support
+Date: Tue, 24 Dec 2024 17:49:03 +0800
+Message-Id: <20241224094920.3821861-1-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241224094015.3816301-1-kever.yang@rock-chips.com>
-References: <20241224094015.3816301-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkwYSFZMS0MaSx9KQh5JTxlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a93f809ecbd03afkunm6aa90537
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx1OGFZCHUlLSB0dSx5OTE9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+X-HM-Tid: 0a93f8122e8303afkunm6aad4ed7
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OBQ6NAw5MzIWUUpKSzgLMRMS
-	VjgKCU9VSlVKTEhOS0hISUlKTExMVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFNSU9NNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PxA6ODo6AjIJHEoJS1EdLD8s
+	DxEKCU5VSlVKTEhOS0hITE1PQ0xDVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTUJDNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=ju8NuTRxypQ+vafyGJ0EUsS7lZDiIqnBPvtmdVI7pJzN+Eu5oIh9DG/7SIRnpGPR/w2vje8FkNyuKmgnygw4Dii1Oaube9ACQdzDPWm24yf9qRvNX/eQzxUeLxP5uavAyLjI1ljDr3xGRMpaD/bLTLCCDrw9Jd85ybrEuc2RmrM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=NjLVTN7/RI83990q23Vq9VUZh5/11YsOgwaHHfMOObk=;
+	b=B4O+M/Zw24LyURNcEw+WhDYJK29iAHTi0p4dShi0/NhEClO4QvsLlaGzwjfu6wmFcSn5fN5xHurXqhfa05Z/V+HFtpARvcipLUAtfEvn/JVqKw3D5bl5WacGOSbQ9WTLN3PzdpWIg/Xxm3+foqpbqwx3bhj89Wvq4UKSq85Zlys=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=oAXD/EvvyZpJMisxlK2FCVt8jBq9aehKbViTNvrjWK8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241224_014525_749731_75DBC6A3 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20241224_014928_980961_985D3D1D 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,200 +63,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Ulf Hansson <ulf.hansson@linaro.org>, devicetree@vger.kernel.org, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Andy Yan <andyshrk@163.com>, Finley Xiao <finley.xiao@rock-chips.com>, linux-i2c@vger.kernel.org, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Simon Xue <xxm@rock-chips.com>, Jiri Slaby <jirislaby@kernel.org>, Lee Jones <lee@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org, linux-serial@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, Guenter Roeck <linux@roeck-us.net>, linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Mark Brown <broonie@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Riesch <michael.riesch@wolfvision.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shaohan Yao <shaohan.yao@rock-chips.com>
 
-There are one Temperature Sensor on rk3562, channel 0 is for chip.
+This patch set adds rk3562 SoC and its evb support.
 
-Signed-off-by: Shaohan Yao <shaohan.yao@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
+Split out patches belong to different subsystem.
 
- drivers/thermal/rockchip_thermal.c | 112 ++++++++++++++++++++++++++++-
- 1 file changed, 111 insertions(+), 1 deletion(-)
+Test with GMAC, USB, PCIe, EMMC, SD Card.
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index f551df48eef9..aec0e634bd1f 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- * Copyright (c) 2014-2016, Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2014-2021, Fuzhou Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2021-2024, Rockchip Electronics Co., Ltd.
-  * Caesar Wang <wxt@rock-chips.com>
-  */
- 
-@@ -185,6 +186,8 @@ struct rockchip_thermal_data {
- #define TSADCV2_AUTO_PERIOD_HT			0x6c
- #define TSADCV3_AUTO_PERIOD			0x154
- #define TSADCV3_AUTO_PERIOD_HT			0x158
-+#define TSADCV9_Q_MAX				0x210
-+#define TSADCV9_FLOW_CON			0x218
- 
- #define TSADCV2_AUTO_EN				BIT(0)
- #define TSADCV2_AUTO_EN_MASK			BIT(16)
-@@ -195,6 +198,7 @@ struct rockchip_thermal_data {
- #define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
- 
- #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
-+#define TSADCV3_AUTO_Q_SEL_EN_MASK		BIT(17)
- 
- #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
- #define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
-@@ -220,6 +224,12 @@ struct rockchip_thermal_data {
- #define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
- #define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
- #define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
-+#define TSADCV7_AUTO_PERIOD_TIME		3000 /* 2.5ms */
-+#define TSADCV7_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
-+#define TSADCV12_AUTO_PERIOD_TIME		3000 /* 2.5ms */
-+#define TSADCV12_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
-+#define TSADCV3_Q_MAX_VAL			0x7ff /* 11bit 2047 */
-+#define TSADCV12_Q_MAX_VAL			0xfff /* 12bit 4095 */
- 
- #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
- #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
-@@ -230,6 +240,8 @@ struct rockchip_thermal_data {
- 
- #define PX30_GRF_SOC_CON2			0x0408
- 
-+#define RK3562_GRF_TSADC_CON			0x0580
-+
- #define RK3568_GRF_TSADC_CON			0x0600
- #define RK3568_GRF_TSADC_ANA_REG0		(0x10001 << 0)
- #define RK3568_GRF_TSADC_ANA_REG1		(0x10001 << 1)
-@@ -497,6 +509,45 @@ static const struct tsadc_table rk3399_code_table[] = {
- 	{TSADCV3_DATA_MASK, 125000},
- };
- 
-+static const struct tsadc_table rk3562_code_table[] = {
-+	{0, -40000},
-+	{1419, -40000},
-+	{1428, -35000},
-+	{1436, -30000},
-+	{1445, -25000},
-+	{1453, -20000},
-+	{1462, -15000},
-+	{1470, -10000},
-+	{1479, -5000},
-+	{1487, 0},
-+	{1496, 5000},
-+	{1504, 10000},
-+	{1512, 15000},
-+	{1521, 20000},
-+	{1529, 25000},
-+	{1538, 30000},
-+	{1546, 35000},
-+	{1555, 40000},
-+	{1563, 45000},
-+	{1572, 50000},
-+	{1580, 55000},
-+	{1589, 60000},
-+	{1598, 65000},
-+	{1606, 70000},
-+	{1615, 75000},
-+	{1623, 80000},
-+	{1632, 85000},
-+	{1640, 90000},
-+	{1648, 95000},
-+	{1657, 100000},
-+	{1666, 105000},
-+	{1674, 110000},
-+	{1682, 115000},
-+	{1691, 120000},
-+	{1699, 125000},
-+	{TSADCV2_DATA_MASK, 125000},
-+};
-+
- static const struct tsadc_table rk3568_code_table[] = {
- 	{0, -40000},
- 	{1584, -40000},
-@@ -834,6 +885,37 @@ static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
- 			       regs + TSADCV2_AUTO_CON);
- }
- 
-+static void rk_tsadcv12_initialize(struct regmap *grf, void __iomem *regs,
-+				   enum tshut_polarity tshut_polarity)
-+{
-+	writel_relaxed(TSADCV12_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
-+	writel_relaxed(TSADCV12_AUTO_PERIOD_HT_TIME,
-+		       regs + TSADCV3_AUTO_PERIOD_HT);
-+	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
-+	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
-+	writel_relaxed(TSADCV12_Q_MAX_VAL, regs + TSADCV9_Q_MAX);
-+	writel_relaxed(TSADCV3_AUTO_Q_SEL_EN | TSADCV3_AUTO_Q_SEL_EN_MASK,
-+		       regs + TSADCV2_AUTO_CON);
-+	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-+		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
-+			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
-+			       regs + TSADCV2_AUTO_CON);
-+	else
-+		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
-+			       regs + TSADCV2_AUTO_CON);
-+
-+	if (!IS_ERR(grf)) {
-+		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_TSEN);
-+		udelay(15);
-+		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG0);
-+		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG1);
-+		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG2);
-+		usleep_range(100, 200);
-+	}
-+}
-+
- static void rk_tsadcv2_irq_ack(void __iomem *regs)
- {
- 	u32 val;
-@@ -1258,6 +1340,30 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
- 	},
- };
- 
-+static const struct rockchip_tsadc_chip rk3562_tsadc_data = {
-+	.chn_offset = 0,
-+	.chn_num = 1, /* one channels for tsadc */
-+
-+	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-+	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-+	.tshut_temp = 95000,
-+
-+	.initialize = rk_tsadcv12_initialize,
-+	.irq_ack = rk_tsadcv4_irq_ack,
-+	.control = rk_tsadcv4_control,
-+	.get_temp = rk_tsadcv4_get_temp,
-+	.set_alarm_temp = rk_tsadcv3_alarm_temp,
-+	.set_tshut_temp = rk_tsadcv3_tshut_temp,
-+	.set_tshut_mode = rk_tsadcv3_tshut_mode,
-+
-+	.table = {
-+		.id = rk3562_code_table,
-+		.length = ARRAY_SIZE(rk3562_code_table),
-+		.data_mask = TSADCV2_DATA_MASK,
-+		.mode = ADC_INCREMENT,
-+	},
-+};
-+
- static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
- 	/* cpu, gpu */
- 	.chn_offset = 0,
-@@ -1337,6 +1443,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
- 		.compatible = "rockchip,rk3399-tsadc",
- 		.data = (void *)&rk3399_tsadc_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3562-tsadc",
-+		.data = (void *)&rk3562_tsadc_data,
-+	},
- 	{
- 		.compatible = "rockchip,rk3568-tsadc",
- 		.data = (void *)&rk3568_tsadc_data,
+This patch set is base on the patche set for rk3576 evb1 support.
+
+Changes in v2:
+- Update in sort order
+- remove grf in cru
+- Update some properties order
+
+Finley Xiao (2):
+  arm64: dts: rockchip: add core dtsi for RK3562 Soc
+  arm64: dts: rockchip: Add RK3562 evb2 devicetree
+
+Kever Yang (15):
+  dt-bindings: PCI: dwc: rockchip: Add rk3562 support
+  dt-bindings: mmc: Add support for rk3562 eMMC
+  dt-bindings: mmc: rockchip-dw-mshc: Add rk3562 compatible string
+  dt-bindings: power: rockchip: Add bindings for rk3562
+  dt-bindings: i2c: i2c-rk3x: Add rk3562 compatible
+  dt-bindings: gpu: Add rockchip,rk3562-mali compatible
+  dt-bindings: watchdog: Add rk3562 compatible
+  dt-bindings: spi: Add rockchip,rk3562-spi compatible
+  dt-bindings: serial: snps-dw-apb-uart: Add support for rk3562
+  dt-bindings: usb: dwc3: add compatible for rk3562
+  dt-bindings: pwm: rockchip: Add rockchip,rk3562-pwm
+  dt-bindings: rockchip: pmu: Add rk3562 compatible
+  dt-bindings: soc: rockchip: Add rk3562 syscon compatibles
+  dt-bindings: arm: rockchip: Add rk3562 evb2 board
+  dt-bindings: mfd: syscon: Add rk3562 QoS register compatible
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
+ .../bindings/gpu/arm,mali-bifrost.yaml        |    3 +-
+ .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
+ .../devicetree/bindings/mfd/syscon.yaml       |    2 +
+ .../bindings/mmc/rockchip-dw-mshc.yaml        |    1 +
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |    9 +-
+ .../bindings/pci/rockchip-dw-pcie.yaml        |    1 +
+ .../power/rockchip,power-controller.yaml      |    1 +
+ .../devicetree/bindings/pwm/pwm-rockchip.yaml |    1 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |    7 +
+ .../devicetree/bindings/spi/spi-rockchip.yaml |    1 +
+ .../bindings/usb/rockchip,dwc3.yaml           |    3 +
+ .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3562-evb2-v10.dts     |  520 ++++
+ .../boot/dts/rockchip/rk3562-pinctrl.dtsi     | 2352 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3562.dtsi      | 1432 ++++++++++
+ 19 files changed, 4340 insertions(+), 4 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3562.dtsi
+
 -- 
 2.25.1
 
