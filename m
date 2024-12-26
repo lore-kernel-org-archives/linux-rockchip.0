@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FD23E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 06:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3A09E7718E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 13:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oh0T4Dd25gB36LrwYXGBhHX6EQUjDoPfBGSL0dmfkOA=; b=P3lTHmq/XN8Tdp
-	CuLF1dsO3c7hCkFRLIHxLMC08/zTuUyKg9gG3qEfnTN+hgZKrb74ADXXjO3+TnsX0ksJ+GEdANeh6
-	OTzuflh7uTpkcw+ugCj7+HtOVRYazdKEU5xMd7XOwzYnF6PIrmDlfw4vWcBJccVTb0o3eJhnR3qff
-	UZPETCIZ3/cq6KeuZYMyjD9cl7FOsqXGJFafnhveYEmMzq9b0CNGKpTzoPjPwETECzXs66XvPi79Q
-	9CpRQVTdsoCXtHtSY4XoaZYlkTFXRvo4YJ77M4nw07oH/q5pjBVPQr2PFeEmXHNgrfzJq+RPILUao
-	+VvMn1yP1dkoVl/3nt+Q==;
+	List-Owner; bh=50plBmSGy5etErkbqwIFzJupy8hCEp9GPMdT8quxTbM=; b=a2OZi862t9suDl
+	7xTy0IfbVa/QgGwvhz4/kYnNUTdFQ1Y0+0qM6opUzGm90QfvBgp7uCO6F1ubi0AitxqM/z7N2sqdT
+	I6BXLO/i49vxVJ1BK4Na2OOX5XPCb+RoyyiNONfnHh1fKAphHCzR/mti//dLzUVpeZwjkSWjTlWKR
+	APuT1QvhIRN516j8FS1oyjy99in91MUZkB/kVTYFF/E0qtsHlinN3bqikRKtqcubqNqTGpHiy+As1
+	yQmDXNGbPn0m5RkykBZHaDVmKujRxg9Iz/dy/z80Ps5whbqjY9yaaUcz6oH6Rrr4CPz22otPQX/On
+	/3wyo069SlO79T2S9mpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQhkx-0000000FLzv-1gEl;
-	Thu, 26 Dec 2024 06:54:03 +0000
-Received: from mail-m127223.xmail.ntesmail.com ([115.236.127.223])
+	id 1tQnj8-0000000FoQj-2gMM;
+	Thu, 26 Dec 2024 13:16:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQhRb-0000000FIpy-2uKl;
-	Thu, 26 Dec 2024 06:34:05 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 6dc511c7;
-	Thu, 26 Dec 2024 14:33:59 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: heiko@sntech.de
-Subject: [PATCH v4 17/17] arm64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
-Date: Thu, 26 Dec 2024 14:33:13 +0800
-Message-Id: <20241226063313.3267515-18-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241226063313.3267515-1-damon.ding@rock-chips.com>
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
+	id 1tQnj6-0000000FoPg-0jRE;
+	Thu, 26 Dec 2024 13:16:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=QuJVCoe+jVx4z79HAuyYsWkjoMo2LtRn7644iNoaWLA=; b=GnuPGQvyArjMdrL9VcBZZkB3Vl
+	T6JnZ3JyobbLLJ9QJcjl1xR3kcDg8q6HsgtYKJ2KTG8Eo6xICT1Ck3EEjMqcWYbC22DM5kPPMC8b1
+	+uviOCiKqpTgF5A3LqvR0CypyVLvbfMcZiLFTxgtqq44gcJd0MwEzEhIerH85eRxx3tsBlcYMX+Yz
+	uCMXRRTRoGxBE6QnkYN8S+KJn3d9WXu60TfML0LmYwU6PrDpSpYKTNacF3bOKZVYXuWqgZv1Bz7xo
+	6layAcavmEia3Rw/kt0XWtFKBLjLYKYZNRXoQ4a76bfRJCe+aGwg7IHGTo+2NsHRniE5hnecoG4EI
+	yY87AfoA==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tQnj1-00044c-3w; Thu, 26 Dec 2024 14:16:27 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Kever Yang <kever.yang@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+ Rob Herring <robh@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ David Wu <david.wu@rock-chips.com>, Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Eric Dumazet <edumazet@google.com>
+Subject: Re: [PATCH 1/3] dt-bindings: net: Add support for rk3562 dwmac
+Date: Thu, 26 Dec 2024 14:16:26 +0100
+Message-ID: <3453500.5fSG56mABF@phil>
+In-Reply-To: <20241224094124.3816698-1-kever.yang@rock-chips.com>
+References: <20241224094124.3816698-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkeSVZCTUxCGB5MTx5KGU5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9401ac08c403a3kunm6dc511c7
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OC46TDo5KjIPLkxNGT8tKi43
-	Gh9PCRxVSlVKTEhOSkJPQ09LQklCVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTUpDNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=cCSsbex0/dNbjMxMb+bOn8b53C7EuH34QH7lBYq53lq3uQpawZb4GDqkhvSFUs3hPRNipZIrFd/At9+v0Kug6zdGm5pxhlLqI29ARGW37MSqLUJaZsBql+aCt/QZ9rzKG9obGR5a9XBpocRvX2jYdrjMSLI9yBI5l66uI6vyP1c=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=5B+165n+MzbVRJTh4JVbKwkFxA7nXZdCiikkY2/r/tA=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_223403_944260_F26474F8 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20241226_051632_250875_68440C46 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,127 +73,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary DT changes to enable eDP0 on RK3588S EVB1 board:
-- Set pinctrl of pwm12 for backlight
-- Enable edp0/hdptxphy0/vp2
-- Add aux-bus/panel nodes
+Hi Kever,
 
-The eDP panel model used on this board is LP079QX1_SP0V. Due to the
-broken identification, the compatible of panel node is set to
-"lg,lp079qx1-sp0v" rather than "edp-panel". The log related to this
-issue may be like:
+Am Dienstag, 24. Dezember 2024, 10:41:22 CET schrieb Kever Yang:
+> Add a rockchip,rk3562-gmac compatible for supporting the 2 gmac
+> devices on the rk3562.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> index f8a576611d6c..02b7d9e78c40 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> @@ -24,6 +24,7 @@ select:
+>            - rockchip,rk3366-gmac
+>            - rockchip,rk3368-gmac
+>            - rockchip,rk3399-gmac
+> +          - rockchip,rk3562-gmac
+>            - rockchip,rk3568-gmac
+>            - rockchip,rk3576-gmac
+>            - rockchip,rk3588-gmac
+> @@ -49,9 +50,11 @@ properties:
+>                - rockchip,rk3366-gmac
+>                - rockchip,rk3368-gmac
+>                - rockchip,rk3399-gmac
+> +              - rockchip,rk3562-gmac
+>                - rockchip,rv1108-gmac
+>        - items:
+>            - enum:
+> +              - rockchip,rk3562-gmac
+>                - rockchip,rk3568-gmac
+>                - rockchip,rk3576-gmac
+>                - rockchip,rk3588-gmac
 
-[    0.623793] panel-simple-dp-aux aux-fdec0000.edp: Unknown panel ETC
-0x0000, using conservative timings
+You only need to add the rk3562 only to one of those blocks.
+The bottom one contains the snps,dwmac-4.20a element and looking at the
+soc devicetree, it seems that is the correct one:
+	compatible = "rockchip,rk3562-gmac", "snps,dwmac-4.20a";
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+So you only need the second addition where the newer socs are in the enum.
 
----
+> @@ -59,7 +62,7 @@ properties:
+>            - const: snps,dwmac-4.20a
+>  
+>    clocks:
+> -    minItems: 5
+> +    minItems: 4
+>      maxItems: 8
 
-Changes in v2:
-- Remove brightness-levels and default-brightness-level properties in
-  backlight node.
-- Add the detail DT changes to commit message.
+This should get mentioned in the commit message
 
-Changes in v3:
-- Use aux-bus instead of platform bus for edp-panel.
 
-Changes in v4:
-- Add comments related to the use of panel compatible "lg,lp079qx1-sp0v"
-  in the commit message.
----
- .../boot/dts/rockchip/rk3588s-evb1-v10.dts    | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
+Heiko
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-index bc4077575beb..9547ab18e596 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-@@ -9,6 +9,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include <dt-bindings/usb/pd.h>
- #include "rk3588s.dtsi"
- 
-@@ -238,6 +239,41 @@ &combphy2_psu {
- 	status = "okay";
- };
- 
-+&edp0 {
-+	force-hpd;
-+	status = "okay";
-+
-+	aux-bus {
-+		panel {
-+			compatible = "lg,lp079qx1-sp0v";
-+			backlight = <&backlight>;
-+			power-supply = <&vcc3v3_lcd_edp>;
-+
-+			port {
-+				panel_in_edp: endpoint {
-+					remote-endpoint = <&edp_out_panel>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&edp0_in {
-+	edp0_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_edp0>;
-+	};
-+};
-+
-+&edp0_out {
-+	edp_out_panel: endpoint {
-+		remote-endpoint = <&panel_in_edp>;
-+	};
-+};
-+
-+&hdptxphy0 {
-+	status = "okay";
-+};
-+
- &i2c3 {
- 	status = "okay";
- 
-@@ -399,6 +435,7 @@ usbc0_int: usbc0-int {
- };
- 
- &pwm12 {
-+	pinctrl-0 = <&pwm12m1_pins>;
- 	status = "okay";
- };
- 
-@@ -1168,3 +1205,18 @@ usbdp_phy0_dp_altmode_mux: endpoint@1 {
- 		};
- 	};
- };
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vp2 {
-+	vp2_out_edp0: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
-+		reg = <ROCKCHIP_VOP2_EP_EDP0>;
-+		remote-endpoint = <&edp0_in_vp2>;
-+	};
-+};
--- 
-2.34.1
 
 
 _______________________________________________
