@@ -4,88 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEC3E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 17:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7514E77188
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 20:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lWestcHu8us3945Um+AS81DPlpdOX0aJbmXE8OingPw=; b=KeQDEbVp8wAL9V
-	IJwhwzuXKy6YyCm7gRwu7jAO8VbTndb8gwKbHhkIt1N8K7+wwDNfSh9HFnK2lXDdTaHJAE/UAgZ9B
-	GiEIJ+Xcsdb9I5YlcQNuzY68s9Pj2ThsJZeq2G72nS45Hhcq+H0K4PY2NzQNUHsAZ47QJImBPmAQ/
-	Km213Bs1qxQEVT84k49he/ZVXkjocxuup0lbRE2OzWZkoeVfga82eykHd0f1rBhWNcTJkkDQD6YOL
-	4sg9DqfW/BAVO4p15sNc7JCGXKObrk98IV7G30BxsHyAkRMcmnCXL012rRIfhnYLepjjR3IL7Lwt7
-	3V75VVDTOiq+Oad7le8g==;
+	List-Owner; bh=GK9KyFzUUcKS+QWs/7wmukWCFsr3mPlfvEvSSuUPXoo=; b=Kbk6H9ltNrT/DJ
+	ow8Agaqk63AXTZjyQxTrz8+HckG1fRgXUcr7TE/Zb0QYon9sbKdNZmunF6rdT4ACmbr2Sa7tv/wIT
+	NopFHroQ9wsOuyEpQrU7RH0ED7JWcoq1af94j3IQ4KhC7HfYbxLhWsRBCOAk7M0QZMdxXuoMBr2R6
+	DAyYT85XeLUznn0xs3aZtxRslJRmq+PdZXoe46eYBGWzHtJOkleEustDPGJJLI4OZxMKVia3myvxh
+	mbBqvmDTkUwE+wMmC+INdasuasxNUaLWqRdZsLEj6Mzudvjw2lm0nNN8EAe3bgbZUe0zVC71bJ/xZ
+	K/k3JmJjc5eyjDHLXDuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQrqk-0000000GA6k-3gyx;
-	Thu, 26 Dec 2024 17:40:42 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1tQuBR-0000000GLQq-2BEa;
+	Thu, 26 Dec 2024 20:10:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQrm5-0000000G9WL-3OVT
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Dec 2024 17:35:55 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-2ef87d24c2dso6565414a91.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Dec 2024 09:35:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1735234552; x=1735839352; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=E9Hxi9sszYSp2cS3KRHvqcLvWwaE0E5fecrWh0T8tms=;
-        b=VvkE275gwm4j9dyv2CNabbGiMxN+pYIiLo9rlKDeOawIbssQfpsZhKE0HU84iMoTVd
-         3s7TNl96hiVRiUygVa70YxDojqVcaTm6D+gNdlMfpP303MLwVXgds5izWbGYV9cKN+mc
-         twcUqUzjmSArbiFgmkvBAmsSVhsLwXO7nDg9piGFoFmVfgkuoV3prph1JH+tvtnTl/bs
-         211kE98YVj+diojP/1dR7s71AK1qK9jcqYNOCt+Q52hpaqwMjpIhB4m1O9h0XYmY27E4
-         SiMDzfDhD4eTL6lS3RrzCY5m1EUGFo4THSXelxkxOStUV71qs2oLj4Xzxhh4FawddpN7
-         p7dQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735234552; x=1735839352;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=E9Hxi9sszYSp2cS3KRHvqcLvWwaE0E5fecrWh0T8tms=;
-        b=KXmHgEBL33BpA7Few9mtAZ8VXvx2zvkj/pcl0KCD2jnzujCzJyCJKUBL1YIgBEkz3O
-         du0LxhANKi1YMBK0bu6hrhRw4bmiiXnNBRoPB+XwHaHMBWH3Z2VVifFJSBtxAENcnkab
-         hqpmVvky/GYMtutqjc4hAI8MrCeE84C2ecrnCSTmrRh1atTKIMkZvGwA7gWREgQwDPAZ
-         YmMdld1xFEAcFX0x8VEucQbRVsE84vMNUC7BT65vMG69M5HyGr9g3fGnIxY22sgtZqwz
-         5mFiPoOeoX8HeshMqJhxOGM0zGnAhM4ScQTSYyZ4Z6jWrKd86268vC8CLNHOGFbH5sPA
-         /VIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU6zpYG151iqY8sDudhzumeX56Zo/8QIrwWmjybqulS0HNhnx5uoWpjoSS+1pshoOvIu1YlSGKOj49jX5SUDQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxT0GX85Tlj3G20AkPXvqmlE18iR9wbB2GIaQWWr17mTxz4czCh
-	cQyudQnFeZF819vcQZsU69MEiIw8BViMjfFzOWmQ9nJ15Ew+CW/lCSer0wTF8FU=
-X-Gm-Gg: ASbGncv0zKM9hdC7tJ2moI7cJ/cOlq/K5YDi5Xd2qnND5RTZWyqR4O2ofHk4EPenxZs
-	x6aurcTO0y/KrzCcZOO1pyvdDOjEIEBrUbp+GNHGkpgjGGFTjHAFGg5jN2JqU6s5wXVQGhPiL43
-	RnfHOwBlD139w7kTvvALc/rOwMBVVRJDvwUr7qIaa5lqqBIK1ndXYJz5T/H/6YIsUgix8g88DT4
-	9CqeG4FG+5ukDunhDVpZcZ3wA0lkF0U1IiZ1hH15UUXrIu2/dvZTtTb1Xx0nslblPfTrAL2
-X-Google-Smtp-Source: AGHT+IGR8b1qFS8O/216LzEHsL2snOtTt/JUhfXE7hEdBOQDqshwj0GgvqkF0MIY6yWqZ4cmqEhOag==
-X-Received: by 2002:a17:90b:514d:b0:2ee:889b:b11e with SMTP id 98e67ed59e1d1-2f452ec3775mr36227157a91.30.1735234552633;
-        Thu, 26 Dec 2024 09:35:52 -0800 (PST)
-Received: from tops-ThinkPad-E14-Gen-5.. ([2405:201:c00a:a918:ba33:f9a0:ac68:19f])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f4477c8461sm14281147a91.13.2024.12.26.09.35.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Dec 2024 09:35:52 -0800 (PST)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Enable HDMI1 out for Edgeble-6TOPS Modules
-Date: Thu, 26 Dec 2024 23:05:30 +0530
-Message-Id: <20241226173530.37037-2-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.34.1
+	id 1tQuBP-0000000GLQC-0gZb;
+	Thu, 26 Dec 2024 20:10:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=uHADjZWdw1Z80SAwttCPxxV6YOm9qJgtYyMVsffjvCI=; b=zksnfj9QozQvXiGmR2GECQ7zAl
+	0loT5RaZMAEbvYP6vpxMI0mZGboIXloa7UDtzZunpIoyEhkY7cNmybiPWrDENyQpx2kzAjFztTYfc
+	Ruefs4RqBFgMzqt5hvsPCDdy+g7osrd/6emnKWmk9Z6OFB6yR1mSWuH+DLAKO3/A4ADabsNUVp0VQ
+	P8yW3nHc1omD9KNlULUJjtra6fB771DckkT2d+960JZYBveuyTuhtLBl6WdzT//bJuIpNyV9/PBzL
+	7buacJE/E0O/hSVFgzS5FqVO1LJCxM0LcPorggtEJQiTp6L6HQWmk3gS2V0rmeJPu9KMyLhCkrpr+
+	i0JbxA3Q==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tQuBI-0007A9-7q; Thu, 26 Dec 2024 21:10:04 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Jagan Teki <jagan@edgeble.ai>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Jagan Teki <jagan@edgeble.ai>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add HDMI1 node to rk3588
+Date: Thu, 26 Dec 2024 21:10:03 +0100
+Message-ID: <7380278.lOV4Wx5bFT@diego>
 In-Reply-To: <20241226173530.37037-1-jagan@edgeble.ai>
 References: <20241226173530.37037-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241226_093553_849631_AD2846EB 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20241226_121011_234413_CC89B40B 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,92 +73,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edgeble-6TOPS modules configure HDMI1 for HDMI Out from RK3588.
+Hi Jagan,
 
-Enable it on Edgeble-6TOPS IO Board dtsi.
+Am Donnerstag, 26. Dezember 2024, 18:35:29 CET schrieb Jagan Teki:
+> HDMI1 Output is available RK3588 (not for RK3588S).
+> 
+> Add support for it.
+> 
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
- .../dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
+Cristian already has a series open, adding hdmi1 support [0].
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-index 7125790bbed2..4883b31ddeaf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-@@ -4,12 +4,24 @@
-  */
- 
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- 
- / {
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
-+
- 	/* Unnamed gated oscillator: 100MHz,3.3V,3225 */
- 	pcie30_port0_refclk: pcie30_port1_refclk: pcie-oscillator {
- 		compatible = "gated-fixed-clock";
-@@ -81,6 +93,26 @@ &combphy2_psu {
- 	status = "okay";
- };
- 
-+&hdmi1 {
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
-+&hdptxphy_hdmi1 {
-+	status = "okay";
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -275,3 +307,18 @@ &usb_host1_ohci {
- &usb_host2_xhci {
- 	status = "okay";
- };
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp0>;
-+	};
-+};
--- 
-2.34.1
+Also please note the dependency note on the hdptxphy 0+1 handling
+patch series.
+
+
+Heiko
+
+[0] https://lore.kernel.org/linux-rockchip/20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com/
+
+
 
 
 _______________________________________________
