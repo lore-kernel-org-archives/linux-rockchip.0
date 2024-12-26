@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 784F8E7718B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 00:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 853BBE7718B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 00:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DN+bOtcVE4z02NuCQyP8VfpDDuLXN2EmAPFFkzygHbA=; b=ju0JD5Wuh5E11q
-	vaOFoiJp/k9HAe4/YPhkwUmrPhv4FD+ddWyrCHhtYpBEzJjJAuRqaDRYg14pa8cmI2jGOFFojq/vd
-	L1V6XeQYAHmcCPJ+HR+8nPAD4OJXc06gl35tWqFvoOazMrabCySlKqrApnk2zjdbFC3V1sCcolJau
-	hjsvSmEdqHgZxa8ya6LLNEWtC+EP6R9sp6K8Xf542LWa8iNSDmLzJ0kNDgT9CM7rXFKF+TgZ/B3FP
-	gp6nZJXglBxvJk3+sE6mNsRZHOqc3yxTaiIZKacSNpRoBDEMYxzV72k19AP48iugV7YFUEJMHbMRG
-	sFbwyure8Vx2mCoQnD/g==;
+	List-Owner; bh=Z9TtbUR8EXjh8+SCXLnnq7vz7lbR50pCWXVWpCcwAaY=; b=HDnZhS8p3Cqz+z
+	ULRK+J/KY9j+z684eFvIIrtrZW+lmzfSOAsw3pueIOppgAvlvfDzW95MpmrYKF1kzorjqXk2hZo6Z
+	WqJ/VXONTw+yikjCOyLAxggnqKHvE5sOypw5Pjql7k3Clyni2cJJ40hBUGXf/zMrO3yS3ZpS9JDOB
+	QVhwb9lSC6w46KgoyMlVcP6qhPbZteNVS15QHf4r54jB9eSG0GLa0mpgDJj5KfLUNaKqFrVKzldzd
+	nrA5Yb/KIV3lWsBvZklRt1zv65vaY8uVM3+huQ81LgVdJsj5OPuMDrFPFJbsRPwIyAjB35/Z7BHGD
+	vkeXzwVlPwiJZ6mNyv3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQbst-0000000EY5q-2dc0;
-	Thu, 26 Dec 2024 00:37:51 +0000
+	id 1tQbuS-0000000EYIx-3Hyo;
+	Thu, 26 Dec 2024 00:39:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQbsA-0000000EY0d-42Ca;
-	Thu, 26 Dec 2024 00:37:08 +0000
+	id 1tQbuQ-0000000EYIG-1aqR;
+	Thu, 26 Dec 2024 00:39:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=DVUOoOUpQeEBvO1qM1vAdUojdFi2eQVCv9h2wfb1gxI=; b=yVrgVqVtiEsk2Tkyc+rsnt/Hen
-	yCi4FLQ8oVMgOiDPim2Il7tZiIz+qGghrhZPZYABpCU3oeaH00uEFpBEklmTr9kLZ60A0IHKlrSis
-	4TmMs4TzoxHaMkWaKPRVpYqSINWhzEakQkhmKwqBIBwXFOGtu3v413WD3xKUbkGPwBAkEq3CjRVD5
-	a85JxnpxJoOEZr7U6GwjRySPN3+nbAnSb2z64C7w+56YU3wujx1XP+A/mi6xPC8nINFDm77YvRxMI
-	HnmoDls9+lGwH5OEc1pZERIzYDb9ZgRr3B/YogeFlYLV56ORknuu8srEkNOUkFMvuUdLUAFwvhJ7M
-	qOb3JBPw==;
+	bh=vvqCUwKVTzYMhdJqzWkqyXvwsvG0AIMbePI763uVLm0=; b=BF8ZUKmcSGmiiBWE8iopcALx4c
+	gNQGI3iY+f7IR0v8nHOSAelarKX3GGPAIe5hl0CM+ZU+9JpsoAL/5m1O7g63WNh9Zy3ebRI98vgTa
+	+lIQwrWLABC71rGx0oyJIh75TqZU8zPUVtqpNKhhuglyLATI+vauvvBVJV/cysNufCQ56lhNYuP0y
+	WYGjqvNfA9JHNXtkUUd9iZXnn7ddNmFhNVnXcR0ONYVDRZNKZBfodMhJ77bfDipRKE43SHXkeSIBO
+	bZgt64EtNv36sYxvD/z5Jfz6Lufi1AvbID9ulD+nqTuMl//QUm12f9O1HQY9Vth0vXUOlc+QdW76q
+	7Y1b5mAQ==;
 Received: from i53875a54.versanet.de ([83.135.90.84] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tQbs4-0004IU-C9; Thu, 26 Dec 2024 01:37:00 +0100
+	id 1tQbuL-0004LM-FN; Thu, 26 Dec 2024 01:39:21 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Kever Yang <kever.yang@rock-chips.com>
 Cc: linux-rockchip@lists.infradead.org,
  Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>,
- Rob Herring <robh@kernel.org>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Elaine Zhang <zhangqing@rock-chips.com>,
+ Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 04/17] dt-bindings: power: rockchip: Add bindings for rk3562
-Date: Thu, 26 Dec 2024 01:36:59 +0100
-Message-ID: <2102620.tdWV9SEqCh@phil>
-In-Reply-To: <20241224094920.3821861-5-kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 03/17] dt-bindings: mmc: rockchip-dw-mshc: Add rk3562
+ compatible string
+Date: Thu, 26 Dec 2024 01:39:20 +0100
+Message-ID: <13860713.uLZWGnKmhe@phil>
+In-Reply-To: <20241224094920.3821861-4-kever.yang@rock-chips.com>
 References: <20241224094920.3821861-1-kever.yang@rock-chips.com>
- <20241224094920.3821861-5-kever.yang@rock-chips.com>
+ <20241224094920.3821861-4-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_163707_008406_965141C2 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20241225_163926_431240_0AD5942C 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +78,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 24. Dezember 2024, 10:49:07 CET schrieb Kever Yang:
-> Add the compatible string for rk3562 SoC.
+Am Dienstag, 24. Dezember 2024, 10:49:06 CET schrieb Kever Yang:
+> Add RK3588 compatible string for SD interface.
+
+	^ this still says rk3588
+
 > 
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
 > ---
 > 
 > Changes in v2: None
 > 
->  .../devicetree/bindings/power/rockchip,power-controller.yaml     | 1 +
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
 >  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> index 650dc0aae6f5..79b948518f0c 100644
-> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> @@ -40,6 +40,7 @@ properties:
->        - rockchip,rk3366-power-controller
->        - rockchip,rk3368-power-controller
->        - rockchip,rk3399-power-controller
-> +      - rockchip,rk3562-power-controller
->        - rockchip,rk3568-power-controller
->        - rockchip,rk3576-power-controller
->        - rockchip,rk3588-power-controller
+> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> index 06df1269f247..772f592291bf 100644
+> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> @@ -38,6 +38,7 @@ properties:
+>                - rockchip,rk3328-dw-mshc
+>                - rockchip,rk3368-dw-mshc
+>                - rockchip,rk3399-dw-mshc
+> +              - rockchip,rk3562-dw-mshc
+>                - rockchip,rk3568-dw-mshc
+>                - rockchip,rk3588-dw-mshc
+>                - rockchip,rv1108-dw-mshc
 > 
 
 
