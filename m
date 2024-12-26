@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E3FFE7718D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01EE6E7718B
 	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 00:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J92uL3tGdeJ8GadoqSzf+Ve1o7TM3lyIjT0f7lieteU=; b=PqGJJ3admmPDBk
-	SWy1qL+L6VXq2+Dc2vOXs+t9b/mxlRQe71JpFfWS151kHlRbKvFAfs8MbXWCV51e2H0YTjG9CJb0R
-	rObKQkWjBM4fDJI42RoQcLvonD9R6kIY83Pcuq6Q3PyMdZnal4WNoBbZyzwZC+vlQGSQETh8bOHHQ
-	N+85aXnMLAz9FcMkwh5gDLoRycViAqnLzWgSBjKsLaE06VZdlNExZx7bqzBJfTKbamOru/SfGI3mt
-	uDve8n2o5ijkdwuPjI2sPgTBnHUxfU3YAFXXemtv10iJYMklAQebw6tYNZGm0vDyk1czAMMdBS4H1
-	FKL5ezQbRlSTu+kFTb4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7UhXEsLpmsgPB3bs2BR5aoMffYMivIzJ8Xmzeg6cjdY=; b=ls4jyDXXzEHgz7
+	Yd4S65Wtho+2fiJ7ZbhFKGsgrpZcJuqnc/I9/d7jJDCzSucb295lv4f5XsjsJPN1DW3Kv83vnhRn7
+	IeyfoAkhQzSKADmigKVcrobHdc2kZd+bTZ0w25//mO+jeTw5nj6OrZbf98WCKVgYiCsXR+GAa509v
+	+vg8cIz8qGddqThk4DlEIBcXbzsG/OHgmiK8exHAC705zN7+IgDC12hbZn7ItZtAzcAoqT8U7Y8Ow
+	afQ2cpCHpKGi7NucpArKpTSrTiFANneHYAvEZvKM3ZcekKs351LtXwXUH1ovUFtcJRulnDdjbH+HW
+	6OsqZ2fDeaqIJrda7W5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQcE2-0000000EeBM-2BYO;
-	Thu, 26 Dec 2024 00:59:42 +0000
+	id 1tQcE3-0000000EeCW-3jFW;
+	Thu, 26 Dec 2024 00:59:43 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQcDz-0000000Ee8J-2RPj
+	id 1tQcE1-0000000Ee9x-2gkF
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Dec 2024 00:59:41 +0000
+	Thu, 26 Dec 2024 00:59:42 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BQ0x56F003966;
-	Thu, 26 Dec 2024 09:59:05 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4BQ0x56G003966;
+	Thu, 26 Dec 2024 09:59:10 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -39,14 +39,16 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         sebastian.reichel@collabora.com, alchark@gmail.com, inindev@gmail.com,
         jbx6244@gmail.com, devicetree@vger.kernel.org,
         linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v2 0/2] arm64: dts: rockchip: Add Radxa ROCK 5B+
-Date: Thu, 26 Dec 2024 00:58:42 +0000
-Message-ID: <20241226005845.46473-1-naoki@radxa.com>
+Subject: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
+Date: Thu, 26 Dec 2024 00:58:43 +0000
+Message-ID: <20241226005845.46473-2-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241226005845.46473-1-naoki@radxa.com>
+References: <20241226005845.46473-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_165939_837608_3A224CEB 
-X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-CacheID: sfid-20241225_165941_902972_71DFB013 
+X-CRM114-Status: UNSURE (   6.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,24 +66,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Radxa ROCK 5B+ is an upgraded version of the Radxa ROCK 5B.
+Add devicetree binding for the Radxa ROCK 5B+.
 
-This patch series introduces a shared .dtsi that can be used on the
-new Radxa ROCK 5B+, the existing Radxa ROCK 5B, and the upcoming Radxa
-ROCK 5T.
+The Radxa ROCK 5B+ is an upgraded version of the ROCK 5B based on the
+Rockchip RK3588 SoC.
 
-FUKAUMI Naoki (2):
-  dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
-  arm64: dts: rockchip: Add Radxa ROCK 5B+
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+Changes in v2:
+- None
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3588-rock-5.dtsi      | 1042 +++++++++++++++++
- .../boot/dts/rockchip/rk3588-rock-5b-plus.dts |   87 ++
- 4 files changed, 1135 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 753199a12923..df959dbfa9eb 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -895,6 +895,11 @@ properties:
+           - const: radxa,rock-5b
+           - const: rockchip,rk3588
+ 
++      - description: Radxa ROCK 5B+
++        items:
++          - const: radxa,rock-5b-plus
++          - const: rockchip,rk3588
++
+       - description: Radxa ROCK 5C
+         items:
+           - const: radxa,rock-5c
 -- 
 2.43.0
 
