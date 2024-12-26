@@ -4,81 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FCEE77188
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 05:28:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E7FE7718E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 06:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GjT3wO+SrfUxMsEWIBfiiwNDEbW4edaY59VapbFVtHA=; b=hdhx4s0wOXE31d
-	6cfailStegxktVqKg6VO6zqtcGouECvTsx9acppl2TLnsxWf2JgfJbmVaZNe/CZGzSezn3tyVCtg4
-	xjWbyw0Osm+epVuowkG3s47PbFKTLvxRTqHxG855gy2pIlwmlCX64wT7ldI2HvzcY7KStGEao1LMQ
-	idiRkdyWd+WtXeuF46nmqlg+PPBwLkzPm7tmEOmMlfae6OhzdM8xCecnQP/1jLXrgc/oDjrTPRWuJ
-	wHPiqof6AwGSRDBIeIkMXWK+EpxBgbp0L4Of37EF3WMigEmTIPFhu0qZDTfxqEUH1s608n4qsMx+u
-	4PsBmrgTbGhUAqe1AGLQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PJO5JyIvwvumTNI985mWWtFnI+skQOZv9Tr6kn7MmhE=; b=fDwL43aQLk0iyJ
+	+ciDuPmJQuyJ8tYOmfNgAzzDy+om4l5y6uRmvFy0zfiImrxLjIXGkn4rKopy98v08nxMGoN9iI9fD
+	tpxOFQ6nmOYDZqzAJ4W9fBc+7MJbHSS8m1nERLWFHOL/Mkwqqx4pzGTKLE8WOyGTUKvdeFym5rddA
+	Ao9enBXdm1CEcuGCTLEBFW2xkyr4QXi7bySLzMuRdgEHIe/6mtgY8Cmz8+MG7DPNBk+feecbBzYSy
+	tAN9clA0yV4zzVAKI1L+zLlWt60t3GkxWQnWxlaDZRgbDxHXPjQtM1ZdXD5OXrNlPywr45baGNiVC
+	BZ/geT5CxSAIxKMdN13A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQgPd-0000000FDJL-0PAo;
-	Thu, 26 Dec 2024 05:27:57 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1tQhRB-0000000FIYa-1PW1;
+	Thu, 26 Dec 2024 06:33:37 +0000
+Received: from mail-m49208.qiye.163.com ([45.254.49.208])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQgOV-0000000FD2e-1cda;
-	Thu, 26 Dec 2024 05:26:48 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5d27243ba8bso11969207a12.2;
-        Wed, 25 Dec 2024 21:26:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735190805; x=1735795605; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=T+JDr1LaRapYlu+PHe/GJEFAnj4I7CbUPpdQPHNvTfI=;
-        b=EouxycGVfXGlDLkV/FB+rKHvXE50Pe3d1KOH9jE1zEsB70AauQungEsRPuaC/8pBha
-         +UVS64+XDa6IcsGj/fyxcIO7ndeyHRfscRvkVscDRn9HwElze+lMmv1Q4Tlqiu+xwNJV
-         Jw80LDruAf27w0X+2ITMWLVMeWcAOGFy4iUYQZmWRFJNFIz4VnqESABJBh6KJUVsd/ah
-         +ZS1+lpuKAjPfhjcsxZNSql2mOSoUcHwMc680VHmxdqw6zGGWj9Pffl6VTtUx1r2bw/+
-         rqx22B9aIjZr2vrFnf8nG064IKnV9pKJpelLQjAvSQMxbKeOvxPb7ZnykC5CWqdHX2u1
-         AB2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735190805; x=1735795605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=T+JDr1LaRapYlu+PHe/GJEFAnj4I7CbUPpdQPHNvTfI=;
-        b=AtccdH6dmocxxvfiSgZ6vKCwHueXseq8xuaSQZjE58tO3RtnDl9X1aZA7tMt+xTQJJ
-         Ouuij6lYRBwI/Yf2yy/L/yOGrseNwXZ8VlVx2J+L+jYO4CeLCjofSiL3qzP5dh73yazc
-         QgPMsw3nsnkxODOgxeheVtuuDM7UDefhe2nmEiRS5g4vZkpBIcyP/K3i3aZ3Y8tmorfJ
-         5NUu1x9P9sJ2cqZvSXfIsv3eCecuSI74uivoytxXUXHUZbEqRN9W1XOS4FEsYXjeUzng
-         tRMUkX2p2xdKDb6GQN+slP2H8HpyW868MktX9NUuGcMVIzCqE1bIP1SadiGKOgkvc4lv
-         jFaA==
-X-Forwarded-Encrypted: i=1; AJvYcCVjl7TLgmYr3lKoJ1eZ61o5ibvqMNMzbl02ruJ1wa2hZkAkY5H3zGIUNFyoM6L/mxROMj+IINtAGAdPrBG3gaAy@lists.infradead.org, AJvYcCWYj/ZpkOpLTmlSujDwFsKUgesVl/x+WDQPRR/opsqpW7CnQrwvgalkgewHLXk1Mgk4A0xvTLP9RwqtIwZolGg=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwjYfVkMU0/DaijJK4lsECzVZ7xMUCZZlIcnCNiBGePNNxK04ZV
-	8CmeRxDDI5PQbFyGZihUPDG7sElNkwf27E52odsRXZs5GZa8cLbyEZLbZviqkvC1f1zBH/GU7jo
-	2nT8xstukHnro9QDVUtJLBAbQcRs=
-X-Gm-Gg: ASbGncvXJzNPDwF5hOifdOOBCdSP/gtBrKJHrsB/pfPGTbEy+32idfQoZMFrWIfByO9
-	cnrsQFYY+T8MMpdvTC4R1fShWkrvjhTGKtHjrng==
-X-Google-Smtp-Source: AGHT+IHQ7vKwTP1Zh5rdZtm6sAzdXA46Hbae0qn8v1s5EYWSFykwVcX3dLIMcWjb/pilCPy7xwAqCzbLwxMhQ5SdnJA=
-X-Received: by 2002:a05:6402:5255:b0:5d4:75b:8ced with SMTP id
- 4fb4d7f45d1cf-5d81de39845mr18362948a12.32.1735190804649; Wed, 25 Dec 2024
- 21:26:44 -0800 (PST)
+	id 1tQhR7-0000000FIWe-2Vlk;
+	Thu, 26 Dec 2024 06:33:35 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 6dc5110e;
+	Thu, 26 Dec 2024 14:33:26 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH v4 00/17] Add eDP support for RK3588
+Date: Thu, 26 Dec 2024 14:32:56 +0800
+Message-Id: <20241226063313.3267515-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20241202151150.7393-1-linux.amoon@gmail.com> <20241202151150.7393-2-linux.amoon@gmail.com>
-In-Reply-To: <20241202151150.7393-2-linux.amoon@gmail.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Thu, 26 Dec 2024 10:56:28 +0530
-Message-ID: <CANAwSgRgnwszYSH4uS-u=52f0vQuB2_SGcfNak_Xipe4=gXPOg@mail.gmail.com>
-Subject: Re: [PATCH v11 1/3] PCI: rockchip: Simplify clock handling by using
- clk_bulk*() function
-To: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkhIS1YYGk0dQ09MTEJOHUpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCS0
+	NVSktLVUpCWQY+
+X-HM-Tid: 0a9401ab8ab803a3kunm6dc5110e
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODY6Tgw4DTIOCEwOGk49ETdO
+	MB4wFD5VSlVKTEhOSkJPQ0tDTU5MVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFITUJLNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=LS4C2XH5YX3jpuM0BRLyZjigaXN2JeKdAZASXp4dqcfoBypO3KrU2CkUuPKM7quHE4Rf4ZmcvUVmRJ3G7TwpQ/A6IaoLGRPnHarNgp32+to0CQ6dRmWDMUD/k3dAqbsE0TSV6s1VqPsYq9dhD6xmqzeI2FILScel/mDiHZDWv+Q=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=WtDvYzoJBC9gaqFxvXZe9/0NcEOfevXaBFtnWX74jvo=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_212647_437330_E7656CE2 
-X-CRM114-Status: GOOD (  25.97  )
+X-CRM114-CacheID: sfid-20241225_223334_223622_500A7005 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,168 +64,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi All,
+These patchs have been tested with a 1536x2048p60 eDP panel on
+RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
+on RK3588 EVB1 board. Furthermore, the eDP display has been rechecked
+on RK3399 sapphire excavator board.
 
-On Mon, 2 Dec 2024 at 20:42, Anand Moon <linux.amoon@gmail.com> wrote:
->
-> Currently, the driver acquires clks and prepare enable/disable unprepare
-> the clks individually thereby making the driver complex to read.
-> But this can be simplified by using the clk_bulk*() APIs.
-> Use devm_clk_bulk_get_all() API to acquire all the clks and use
-> clk_bulk_prepare_enable() to prepare enable clks
-> and clk_bulk_disable_unprepare() APIs disable unprepare them in bulk.
->
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> ---
+Patch 1~3   are the RK3588 eDP support of Rockchip analogix_dp driver.
+Patch 4~7   are the eDP mode support of samsung hdptx phy driver.
+Patch 8~9   are the RK3588 eDP support of Aanalogix DP driver. Add phy
+            interfaces is to configure the HDMI/eDP TX Combo PHY.
+Patch 10~13 are to support to get panel from the DP AUX bus.
+Patch 14~15 are the renaming of hdptxphy node. It is not only used by
+            HDMI display but also for the eDP display.
+Patch 16    is the addition of RK3588 eDP0 node.
+Patch 17    is to enable the eDP0 display on RK3588S EVB1 board.
 
-Gentle ping ?
+Damon Ding (17):
+  drm/rockchip: analogix_dp: Use formalized struct definition for grf
+    field
+  dt-bindings: display: rockchip: analogix-dp: Add support for RK3588
+  drm/rockchip: analogix_dp: Add support for RK3588
+  phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and
+    ROPLL_REF
+  phy: phy-rockchip-samsung-hdptx: Supplement some register names with
+    their full version
+  phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all
+    registers
+  phy: phy-rockchip-samsung-hdptx: Add support for eDP mode
+  drm/bridge: analogix_dp: Add support for RK3588
+  drm/bridge: analogix_dp: Add support for phy configuration.
+  dt-bindings: display: rockchip: analogix-dp: Add support to get panel
+    from the DP AUX bus
+  drm/bridge: analogix_dp: Add a new member aux to struct
+    analogix_dp_plat_data
+  drm/rockchip: analogix_dp: Add support to get panel from the DP AUX
+    bus
+  drm/bridge: analogix_dp: Convert &analogix_dp_device.aux into a
+    pointer
+  dt-bindings: display: rockchip: Fix label name of hdptxphy for RK3588
+    HDMI TX Controller
+  arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
+  arm64: dts: rockchip: Add eDP0 node for RK3588
+  arm64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
 
-Thanks
--Anand
+ .../rockchip/rockchip,analogix-dp.yaml        |  12 +-
+ .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  32 +-
+ .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    |   2 +-
+ .../rockchip/rk3588-coolpi-cm5-genbook.dts    |   2 +-
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   2 +-
+ .../rk3588-friendlyelec-cm3588-nas.dts        |   2 +-
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   2 +-
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   2 +-
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   2 +-
+ .../boot/dts/rockchip/rk3588-tiger-haikou.dts |   2 +-
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588s-evb1-v10.dts    |  52 +
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 +-
+ .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  |   2 +-
+ .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   2 +-
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     |   2 +-
+ .../drm/bridge/analogix/analogix_dp_core.c    |  97 +-
+ .../drm/bridge/analogix/analogix_dp_core.h    |   2 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  54 +-
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 217 +++-
+ .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 988 +++++++++++++++++-
+ include/drm/bridge/analogix_dp.h              |   5 +-
+ 26 files changed, 1326 insertions(+), 167 deletions(-)
 
-> V11: None
-> V10: None
-> v9: Re write the commmit message.
-> v8: Improve the description of the code changes in commit messagee.
->     Add Rb: Manivannan
-> v7: Update the functional change in commmit message.
-> v6: None.
-> v5: switch to use use devm_clk_bulk_get_all()? gets rid of hardcoding the
->        clock names in driver.
-> v4: use dev_err_probe for error patch.
-> v3: Fix typo in commit message, dropped reported by.
-> v2: Fix compilation error reported by Intel test robot.
-> ---
->  drivers/pci/controller/pcie-rockchip.c | 65 +++-----------------------
->  drivers/pci/controller/pcie-rockchip.h |  7 ++-
->  2 files changed, 10 insertions(+), 62 deletions(-)
->
-> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-> index b9ade7632e11..53aaba03aca6 100644
-> --- a/drivers/pci/controller/pcie-rockchip.c
-> +++ b/drivers/pci/controller/pcie-rockchip.c
-> @@ -129,29 +129,9 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->                 return dev_err_probe(dev, PTR_ERR(rockchip->perst_gpio),
->                                      "failed to get PERST# GPIO\n");
->
-> -       rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
-> -       if (IS_ERR(rockchip->aclk_pcie)) {
-> -               dev_err(dev, "aclk clock not found\n");
-> -               return PTR_ERR(rockchip->aclk_pcie);
-> -       }
-> -
-> -       rockchip->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
-> -       if (IS_ERR(rockchip->aclk_perf_pcie)) {
-> -               dev_err(dev, "aclk_perf clock not found\n");
-> -               return PTR_ERR(rockchip->aclk_perf_pcie);
-> -       }
-> -
-> -       rockchip->hclk_pcie = devm_clk_get(dev, "hclk");
-> -       if (IS_ERR(rockchip->hclk_pcie)) {
-> -               dev_err(dev, "hclk clock not found\n");
-> -               return PTR_ERR(rockchip->hclk_pcie);
-> -       }
-> -
-> -       rockchip->clk_pcie_pm = devm_clk_get(dev, "pm");
-> -       if (IS_ERR(rockchip->clk_pcie_pm)) {
-> -               dev_err(dev, "pm clock not found\n");
-> -               return PTR_ERR(rockchip->clk_pcie_pm);
-> -       }
-> +       rockchip->num_clks = devm_clk_bulk_get_all(dev, &rockchip->clks);
-> +       if (rockchip->num_clks < 0)
-> +               return dev_err_probe(dev, err, "failed to get clocks\n");
->
->         return 0;
->  }
-> @@ -375,39 +355,11 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
->         struct device *dev = rockchip->dev;
->         int err;
->
-> -       err = clk_prepare_enable(rockchip->aclk_pcie);
-> -       if (err) {
-> -               dev_err(dev, "unable to enable aclk_pcie clock\n");
-> -               return err;
-> -       }
-> -
-> -       err = clk_prepare_enable(rockchip->aclk_perf_pcie);
-> -       if (err) {
-> -               dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
-> -               goto err_aclk_perf_pcie;
-> -       }
-> -
-> -       err = clk_prepare_enable(rockchip->hclk_pcie);
-> -       if (err) {
-> -               dev_err(dev, "unable to enable hclk_pcie clock\n");
-> -               goto err_hclk_pcie;
-> -       }
-> -
-> -       err = clk_prepare_enable(rockchip->clk_pcie_pm);
-> -       if (err) {
-> -               dev_err(dev, "unable to enable clk_pcie_pm clock\n");
-> -               goto err_clk_pcie_pm;
-> -       }
-> +       err = clk_bulk_prepare_enable(rockchip->num_clks, rockchip->clks);
-> +       if (err)
-> +               return dev_err_probe(dev, err, "failed to enable clocks\n");
->
->         return 0;
-> -
-> -err_clk_pcie_pm:
-> -       clk_disable_unprepare(rockchip->hclk_pcie);
-> -err_hclk_pcie:
-> -       clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> -err_aclk_perf_pcie:
-> -       clk_disable_unprepare(rockchip->aclk_pcie);
-> -       return err;
->  }
->  EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
->
-> @@ -415,10 +367,7 @@ void rockchip_pcie_disable_clocks(void *data)
->  {
->         struct rockchip_pcie *rockchip = data;
->
-> -       clk_disable_unprepare(rockchip->clk_pcie_pm);
-> -       clk_disable_unprepare(rockchip->hclk_pcie);
-> -       clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> -       clk_disable_unprepare(rockchip->aclk_pcie);
-> +       clk_bulk_disable_unprepare(rockchip->num_clks, rockchip->clks);
->  }
->  EXPORT_SYMBOL_GPL(rockchip_pcie_disable_clocks);
->
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index a51b087ce878..f79c0a1cbbd0 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -11,6 +11,7 @@
->  #ifndef _PCIE_ROCKCHIP_H
->  #define _PCIE_ROCKCHIP_H
->
-> +#include <linux/clk.h>
->  #include <linux/kernel.h>
->  #include <linux/pci.h>
->  #include <linux/pci-ecam.h>
-> @@ -321,10 +322,8 @@ struct rockchip_pcie {
->         struct  reset_control *pm_rst;
->         struct  reset_control *aclk_rst;
->         struct  reset_control *pclk_rst;
-> -       struct  clk *aclk_pcie;
-> -       struct  clk *aclk_perf_pcie;
-> -       struct  clk *hclk_pcie;
-> -       struct  clk *clk_pcie_pm;
-> +       struct  clk_bulk_data *clks;
-> +       int     num_clks;
->         struct  regulator *vpcie12v; /* 12V power supply */
->         struct  regulator *vpcie3v3; /* 3.3V power supply */
->         struct  regulator *vpcie1v8; /* 1.8V power supply */
-> --
-> 2.47.0
->
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
