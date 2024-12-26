@@ -4,52 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B43E7718B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Dec 2024 22:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2DDE7718B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 00:35:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DP4fXYI43mYxSO2kik7zeQKNSqzllPHENa36lFlNrus=; b=cYhUR75wKPtOhXnvvKAu1ZdCIo
-	2xOrD2V3Yd2P5dZe29onr+/gW5k5HkZuVPetBPldEbFB54AI0QjpqmpiIwCGbdhgkAme7oPJXzjF6
-	z/RJ+qbV1r1SdWsRcN1NF8YD2SqNxmjBJto9eHdsCnS4EUQrt9lDHDLAQHG29hqu6pn5r3YGk22R1
-	fNjCuDr6q6udUrPkMec2vN1tGpiPf1UUS/np+6WUin5j4kdWKj+mS8D9AJvK7qnE4VgLhnj+wNtL8
-	GYVvUQHzAybvwALA+pp8ZY1dJ3iWR9z0oen0yOIEpGw62z/q6GKVpXlDBJuFWuIJtPN665TIvBDnJ
-	Z9lAfysw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TUpokELjyjryy0NFc1tQzQYoQXCgoQ0juayd/m1BhYo=; b=us6olP/RF1ru09
+	wZu6KC9kT46GGcsxxKsdBcx70FKTXK2mjPG+K76oChBLRmENXSaLm+JAFJNExx8f55wtRIb6pYFDy
+	IAt33weISpO6DoXVpY9wbGe+RgUimloNzsQFGryGSremq4BKLMDbdL9AMVrOehTS4AzgkScPE+//e
+	h5RAi1kEnLY6DsYGHZQcp9djaePH3xYvisCpeVmjYnYPmid3L09OQAozLJVASqA92CW0W+0w249NC
+	1mTLpdl0nzXIO3J3P61O203ztOVFQLjXS9mqjSzqwvI0H/XPygFjbnZa8j4EB88NF7msaTl93QlCs
+	s+zvGEPoVVdR/l6PG0dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQZms-0000000EOPB-1mUG;
-	Wed, 25 Dec 2024 22:23:30 +0000
-Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
+	id 1tQbql-0000000EXoP-0mT2;
+	Thu, 26 Dec 2024 00:35:39 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQZmp-0000000EOO7-2oGN
+	id 1tQbqh-0000000EXns-387q
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Dec 2024 22:23:29 +0000
-Date: Thu, 26 Dec 2024 00:23:13 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kazlauskas.me;
-	s=key1; t=1735165397;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=k9pF6+2axEMbavdACTkaPmVYaDIgYUJbNjLXch1X4X8=;
-	b=IM1OsVaJiYT7/mFrDMofj27TQeTx5AdLKG3iG+Vdc40uyLejSi+Csp9CnMOp7oASQoLlz+
-	/OxqcqAfXlNF7IqBy8DI1tWe/4aIFCOgL8NGJ65YNy/G2+ZsXTHDAen2ptYtJvS3PhC4Ff
-	4wQ324/ZNvoRQjpzXVkoo8K+UcCHAck=
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Simonas Kazlauskas <linux-rockchip@kazlauskas.me>
-To: linux-rockchip@lists.infradead.org
-Subject: [PATCH] rk3328: request that SoC resets use the first reset
-Message-ID: <66qwutykozwkh6veu6ojbmwp4glmefrvkncyu6gytdpy76kj2k@fpgggo4wczpt>
-References: <345dtojzib23cd3dnqe4wftqbwlu3ozey6oc4qrkcf3nbbehua@3l64mrtmrgvq>
+	Thu, 26 Dec 2024 00:35:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XnjTBP16KGtGJBYXoy8uXq0dzk6OV5wbB39xpaT3xNQ=; b=zcexjbNiaR48aL+tug/mQWM3SR
+	eFibOXzfr4kBn1a+X8IHhAmJVWhBnlODLtV7LgWJ7ZZTcTIilPhtHhPdeTY8ISH/e59qtjAh5bRVt
+	+YwOD4nGqn82HHzxEXZXkItK58gMUN9nhNxoQgxhOoI6riePWpn6qjaRao8elbfiC0Wikl35SDRfy
+	CqG5GSLGNBZ4jOrJHcwlYcUtNUe/4fZd5bDxSz5Awo0HtS8KDMWho0tnVWQ+PpLn2mDJe7wbHMnmT
+	3do3z1uaZPg0RyTTVFGeNAfwVOz+87p5X7N2jZp38AEQtZVBvecLxGz+hVEYpEHgVr+RcJRYjrCDM
+	ikfipWMw==;
+Received: from i53875a54.versanet.de ([83.135.90.84] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tQbqc-0004Gf-SL; Thu, 26 Dec 2024 01:35:30 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ Jisheng Zhang <jszhang@kernel.org>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 02/17] dt-bindings: mmc: Add support for rk3562 eMMC
+Date: Thu, 26 Dec 2024 01:35:29 +0100
+Message-ID: <5169773.31r3eYUQgx@phil>
+In-Reply-To: <20241224094920.3821861-3-kever.yang@rock-chips.com>
+References: <20241224094920.3821861-1-kever.yang@rock-chips.com>
+ <20241224094920.3821861-3-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <345dtojzib23cd3dnqe4wftqbwlu3ozey6oc4qrkcf3nbbehua@3l64mrtmrgvq>
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241225_142327_998309_5ED0D98C 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20241225_163536_103209_D11F4B17 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,88 +73,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On my test board (Radxa RockPiE)/setup the second reset does not appear
-to be working at all - requesting second reset even as early as inside
-the U-Boot will entirely hang the CPU with the only way to recover from
-it being to pull physical RST pin to ground or to power cycle the
-device. While there may be ways to set up the second reset such that it
-would work correctly, it is pretty clear to me that at least Linux
-doesn't do that currently.
+Hi Kever,
 
-SOC reset sources (watchdog timer in particular) defaults to using the
-second type of reset, so any attempts to use the feature on my board are
-unsuccessful. Instead of the SoC reset, a hang occurs.
+Am Dienstag, 24. Dezember 2024, 10:49:05 CET schrieb Kever Yang:
+> rk3562 is using the same controller as rk3588.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+> Changes in v2: None
+> 
+>  .../devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml      | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> index c3d5e0230af1..33f4288ff879 100644
+> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> @@ -14,16 +14,19 @@ properties:
+>    compatible:
+>      oneOf:
 
-This change makes a request that SoC reset sources use the first reset;
-the same one as the regular reset that occurs as part of a regular
-reboot.
+oneOf means what the naming suggests, the compatible needs to
+either follow the "items", the old one means:
+	"rockchip,rk3576-dwcmshc", "rockchip,rk3588-dwcmshc"
+or the enum below, which means "one" element from the enum
+list.
 
-Context: The second type of reset is supposed to preserve GPIO and GRF
-state, which to me sounds undesirable, especially for WDT use: what if
-the GPIO/GRF state was exactly the part that led to WDT elapse?
+>        - items:
+> -          - const: rockchip,rk3576-dwcmshc
+> +          - const: rockchip,rk3568-dwcmshc
+>            - const: rockchip,rk3588-dwcmshc
 
-Note: I do not have any other Rockchip hardware currently to test if the
-behaviour extends to other SoCs by this manufacturer. As thus the
-implementation is self-contained to rk3328 currently.
+That means, both the rk3568 and rk3588 entries in the enum below need
+to stay, as they represent the single-value compatibles and the items
+above should definitly not mention the rk3568, but instead be modified
+to just include the rk3562. So just modify the items above to include it:
 
-Signed-off-by: Simonas Kazlauskas <linux@kazlauskas.me>
----
-  drivers/clk/rockchip/clk-rk3328.c | 15 +++++++++++++++
-  drivers/clk/rockchip/clk.h        |  1 +
-  2 files changed, 16 insertions(+)
+     - items:
+         - enum:
+             - rockchip,rk3562-dwcmshc
+             - rockchip,rk3576-dwcmshc
+         - const: rockchip,rk3588-dwcmshc
 
-diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index 3bb87b27b662..9ef2d53341e0 100644
---- a/drivers/clk/rockchip/clk-rk3328.c
-+++ b/drivers/clk/rockchip/clk-rk3328.c
-@@ -878,6 +878,20 @@ static const char *const rk3328_critical_clocks[] __initconst = {
-  	"pclk_phy_niu",
-  };
-  
-+#define RK3328_TSADC_GLB_SRST_CTRL_MASK		(1 << 14)
-+#define RK3328_WDT_GLB_SRST_CTRL_MASK		(1 << 14)
-+
-+static void rk3328_soc_rst_init(void __iomem *reg_base)
-+{
-+	void __iomem *glb_cnt_address;
-+	uint32_t previous_value;
-+
-+	glb_cnt_address = reg_base + RK3328_GLB_CNT_TH;
-+	previous_value = readl(glb_cnt_address);
-+	writel(previous | RK3328_TSADC_GLB_SRST_CTRL_MASK | RK3328_WDT_GLB_SRST_CTRL_MASK,
-+	       glb_cnt_address);
-+}
-+
-  static void __init rk3328_clk_init(struct device_node *np)
-  {
-  	struct rockchip_clk_provider *ctx;
-@@ -890,6 +904,7 @@ static void __init rk3328_clk_init(struct device_node *np)
-  		return;
-  	}
-  
-+	rk3328_soc_rst_init(reg_base);
-  	clk_nr_clks = rockchip_clk_find_max_clk_id(rk3328_clk_branches,
-  						   ARRAY_SIZE(rk3328_clk_branches)) + 1;
-  	ctx = rockchip_clk_init(np, reg_base, clk_nr_clks);
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index f1957e1c1178..bf5f23952064 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -157,6 +157,7 @@ struct clk;
-  #define RK3328_CLKSEL_CON(x)		((x) * 0x4 + 0x100)
-  #define RK3328_CLKGATE_CON(x)		((x) * 0x4 + 0x200)
-  #define RK3328_GRFCLKSEL_CON(x)		((x) * 0x4 + 0x100)
-+#define RK3328_GLB_CNT_TH		0x90
-  #define RK3328_GLB_SRST_FST		0x9c
-  #define RK3328_GLB_SRST_SND		0x98
-  #define RK3328_SOFTRST_CON(x)		((x) * 0x4 + 0x300)
--- 
-2.47.0
+>        - enum:
+> -          - rockchip,rk3568-dwcmshc
+> -          - rockchip,rk3588-dwcmshc
+>            - snps,dwcmshc-sdhci
+>            - sophgo,cv1800b-dwcmshc
+>            - sophgo,sg2002-dwcmshc
+>            - sophgo,sg2042-dwcmshc
+>            - thead,th1520-dwcmshc
+
+
+Heiko
+
 
 
 _______________________________________________
