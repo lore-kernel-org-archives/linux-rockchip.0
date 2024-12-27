@@ -4,62 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31068E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 09:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB3ECE7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 10:28:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SdyX8rCnTDzdE99LBUq1D5f/QdGnJHToMECQQ3wmSPU=; b=DMT/lWQPW1mFz4
-	+y45dXMemGLlOZqZYOaXIjgum/rA/tHf5g7xYL1ZdcVoWgtvwJPWkNWXsVxGbjwrvlWiz35fzoPMM
-	8EiT/f1X4mfOmXGb9CphvzDnzwUweeIHj6FsEgcA2MMYoMcfYvBFiLDZ5WbkQv2ChxErPz7DNMUnt
-	cv50kzEaZdH/63MuEip5EqJUusICnuy+xhtvKFXiGCY0eMj+bfK8lSaMBfMeaeUyRZlC8Cc3GMa2a
-	x7M+lDcCjb2wsIgCuqMS7fd8CO6C/x5QPDmY6PZxiCsoV5qtTTWm8ervcdxDkyIgSqSOpGJuCDbOI
-	hy9R522BSERLKhPqO/1Q==;
+	List-Owner; bh=hKnGlU07KQphaQ2d4TSPwtMxRO26asUYhYct7WQ2F1A=; b=hbegLiu0miMFPv
+	JioYYIc+yDv3WXFg9Axqd2nQiLkDmZXGJh33Sdm1OSh/knNuOVKYtNp5rxS2nQGLCxZNfhVaZiBKL
+	cfMWQjv/x/J3v4x7ycv8Wx/A26q92pG3nkFFjnplYJ3zYfTWdkgIr92thF+JDYqcb+WStWMoMw1oJ
+	yrf8/zdaX0GmO1EUfMXZKpjTtOxni59uAVevRtjaFzD7GCgQ0EoO6JbZaSojzRoY4v8dLShMM6lXx
+	PCnzTrNBMEFdvVodhb1CiS7dJQdXQcedQ4kESwbZKq8/Q1Q2iygTbeOT1l6ZiKyJVGJwtMlTjmCTl
+	VBCyeVt5fkPWd+vFZLLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR6FM-0000000HRqO-1qwt;
-	Fri, 27 Dec 2024 09:03:04 +0000
+	id 1tR7Zz-0000000HZP2-0ahd;
+	Fri, 27 Dec 2024 10:28:27 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR6C8-0000000HRKL-0y2s;
-	Fri, 27 Dec 2024 08:59:45 +0000
+	id 1tR7Ym-0000000HZHP-3aAa;
+	Fri, 27 Dec 2024 10:27:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1DD5D5C621C;
-	Fri, 27 Dec 2024 08:59:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1F0EC4CED0;
-	Fri, 27 Dec 2024 08:59:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 143785C55D0;
+	Fri, 27 Dec 2024 10:26:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DA29C4CED0;
+	Fri, 27 Dec 2024 10:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735289983;
-	bh=Ha9eaZKe2pPLaVPj/BlrvwxCVnKMNdxIOtRX6jvdDl4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b0OgJ3LWV3lMZcfL0iy221Bm/Ia5/6HMN8xhv1smt/qqzKgO37JkxWiXmyBruURwU
-	 ZzxARQxgi68rbBqmP33CfcmCzIhixmWwdAheU/6St2LKkvpL0g92hNYLDgopwbBxFh
-	 YP8WVjpFltuTYCTwGYrlHsClX992XwjP5Ipsl9wAuxTs8W527T8hqXkQmdOWWiKPZr
-	 O/9Z5gX8uKbBkcJOjhYT4WUinUjUVt2XZ96B0x0+lQfbXmxCCP4WvYsw2TYr2XdwpK
-	 yS5lREtCxJvHxD0+XNTB8xKgvZG6YhFJJ8RzX2T+GTgw1euxmLV7Dy8HG/qIO2elgc
-	 1Z2QNDajBKpSg==
-Date: Fri, 27 Dec 2024 09:59:40 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Vinod Koul <vkoul@kernel.org>, linux-kernel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-phy@lists.infradead.org, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip: Add rk3562
- naneng-combophy compatible
-Message-ID: <m3iznr4xjh5hgnca4jyj64uejesf3ulgfpycvrw5phrirca5wv@hx5rx2tumw36>
-References: <20241224094217.3817100-1-kever.yang@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241224094217.3817100-1-kever.yang@rock-chips.com>
+	s=k20201202; t=1735295231;
+	bh=fU2sdWBrQB2PnLL4rIYUz4+FG6O6X/h4b2VgDw5HNtE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=bcUiYQ56MdZSoZMlhWBuVuNaDbzwzUd1XqHWEPGV4DuHkTbAs8uc/0wF4uOYFkG73
+	 Bj9K/yyoR9BfvJTY+A/oMHvNjpFg0Cs/q2umEcfXgD7aq9Dj9h5KLTlsNBo2TnBZ9A
+	 HV/1UueVaEBTV5MBs9zINjS6F9vxzfWNGJeuYhrJBT8Ir4yqJsflIfwc7Lp37wRg8Q
+	 qkqaVH9zD+oMKfO9uKJ35AxGjS6SryFdoaIM/KagTnNilFCs1U2tobfQAIsvUVDvi6
+	 FN8pkpZz90uTJJH+2ghibilscbE1dJ2nVHQN60yrM7ozTgwFVLCMO/6CYR6SMpzHbs
+	 dfYyKSBIYJiJA==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tR7Yi-007CZr-OZ;
+	Fri, 27 Dec 2024 10:27:08 +0000
+Date: Fri, 27 Dec 2024 10:27:07 +0000
+Message-ID: <86ldw1pgjo.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	tglx@linutronix.de,
+	jonas@kwiboo.se,
+	macromorgan@hotmail.com,
+	andyshrk@163.com,
+	liujianfeng1994@gmail.com,
+	dmt.yashin@gmail.com,
+	dsimic@manjaro.org,
+	tim@feathertop.org,
+	marcin.juszkiewicz@linaro.org,
+	michael.riesch@wolfvision.net,
+	alchark@gmail.com,
+	sebastian.reichel@collabora.com,
+	jbx6244@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E52C
+In-Reply-To: <5EDFB980DF778743+9f26c8cc-d86d-46ed-9642-cdca10fe7e91@radxa.com>
+References: <20241222030355.2246-1-naoki@radxa.com>
+	<20241222030355.2246-4-naoki@radxa.com>
+	<87zfkmrb4u.wl-maz@kernel.org>
+	<5EDFB980DF778743+9f26c8cc-d86d-46ed-9642-cdca10fe7e91@radxa.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: naoki@radxa.com, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de, jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com, liujianfeng1994@gmail.com, dmt.yashin@gmail.com, dsimic@manjaro.org, tim@feathertop.org, marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net, alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_005944_313972_3D4903B2 
-X-CRM114-Status: UNSURE (   5.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241227_022712_988201_2246C74C 
+X-CRM114-Status: GOOD (  23.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +104,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 24, 2024 at 05:42:15PM +0800, Kever Yang wrote:
-> rk3562 use the same Naneng Combo Phy driver as rk3568.
+On Mon, 23 Dec 2024 10:16:04 +0000,
+FUKAUMI Naoki <naoki@radxa.com> wrote:
+> 
+> Hi Marc,
+> 
+> On 12/23/24 18:39, Marc Zyngier wrote:
+> > On Sun, 22 Dec 2024 03:03:55 +0000,
+> > FUKAUMI Naoki <naoki@radxa.com> wrote:
+> >> 
+> >> Radxa E52C is a compact network computer[1] based on the Rockchip
+> >> RK3582 SoC:
+> >> 
+> >> - Dual Cortex-A76 and quad Cortex-A55 CPU
+> > 
+> > So you have *two* big cores.
+> > 
+> >> - 5TOPS NPU
+> >> - 2GB/4GB/8GB LPDDR4 RAM
+> >> - 16GB/32GB/64GB on-board eMMC
+> >> - microSD card slot
+> >> - USB 3.0 Type-A HOST port
+> >> - USB Type-C debug port
+> >> - USB Type-C power port (5V only)
+> >> - 2x 2.5GbE ports
+> >> 
+> >> [1] https://radxa.com/products/network-computer/e52c
+> >> 
+> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> >> ---
+> >>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> >>   .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 729 ++++++++++++++++++
+> >>   2 files changed, 730 insertions(+)
+> >>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> > 
+> > [...]
+> > 
+> >> +&cpu_b0 {
+> >> +	cpu-supply = <&vdd_cpu_big0_s0>;
+> >> +};
+> >> +
+> >> +&cpu_b1 {
+> >> +	cpu-supply = <&vdd_cpu_big0_s0>;
+> >> +};
+> >> +
+> >> +&cpu_b2 {
+> >> +	cpu-supply = <&vdd_cpu_big1_s0>;
+> >> +};
+> >> +
+> >> +&cpu_b3 {
+> >> +	cpu-supply = <&vdd_cpu_big1_s0>;
+> >> +};
+> > 
+> > And yet you configure 4. If your HW only has 2 A76s, surely something
+> > should remove these cores for this platform rather than keep them
+> > around.
+> 
+> One of the four cores may be defective. This information is stored in
+> the OTP, so we need to run our software to detect which core is
+> defective. Then we disable the cluster that contains the defective
+> core.
 
-Usual comments...
+Is it one? Is it two? If anything, this sort of binning information
+should be clearly explained in the cover letter, and a comment placed
+in the DTS file to explain that the DT needs to be further processed
+by the bootloader to be valid.
 
-Best regards,
-Krzysztof
+	M.
 
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
