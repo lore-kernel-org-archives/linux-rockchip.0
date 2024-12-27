@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16C9E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 17:41:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F6E9E7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 20:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YSqFeHhZpZwICs+SwrivXyEXfwCJRmeUtcTVs4ZLVPU=; b=dMf4tIoawkCV6DYlHQTHqEy/5e
-	LzO0bnmadC56P5I2FwaXXm2S7HZQyMhtgwvupblt1MPfjof/Tsgmu1u78+Ig08xXvwBQfSqePgbEP
-	bMzi2ypvaGonvd55nscEDisTbERsYn20D0btdJv/f7SNbJ7YPSspCm3+74kvFe6XQrhdUnO+93hP9
-	JXZCWLYGEN+DYY7SYI6qArg/O7H/RmxbDc5JLo1yKCNE9D5L/XPuSrlrQT8F3/7oN1nOUDqNYbT6i
-	eChgJNjK/oofdLZo6XC8GFxIo4NIEm+CGNZY17iNahWD7MQ4xKruOEfaq+1Tet+SnTQqu1ekNEjTU
-	EyUFDrKA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Dzy3K7zLOAodU/qToJiyuTk2DLWUkl+8y6ndnSvJQkc=; b=wtS1dOUYk1fceC
+	kDgtmRewAvqQ9CG9gQ8xYoxXSQNoWkTc7HMDFr37ZPAFJZvhgj40z6V1SXyEovo0n7dQHzApJ+Ngd
+	7ocoDMj8yd/TfLr+yczlmm18bKreAs/OxjnzemzUsbDV88Hiz+DRkA5BrLPs+f8HtxhxpSBcsx59S
+	7ogIPw/p/kYWtoy3Uv9QoCC+YxPeeDbGqBEPiTkH8AGjhb00N59GqZCN6sT/pYHNcq+0Oa5FkQ7fE
+	HgByMPZ+kABEpSxYpn683We3+G7APmqOSR3YzoadWoidATjXIVqviv1BBan+zlNX3gNdDBiZRdj7y
+	S3z9sKEyMctqYRuVjlyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRELA-00000000jw9-1iHb;
-	Fri, 27 Dec 2024 17:41:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tRGf0-00000000t7R-3f7a;
+	Fri, 27 Dec 2024 20:10:14 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tREJz-00000000joO-2MqV;
-	Fri, 27 Dec 2024 17:40:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CF6825C586D;
-	Fri, 27 Dec 2024 17:39:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88DC9C4CED0;
-	Fri, 27 Dec 2024 17:40:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735321222;
-	bh=J0ATrIW5UmsXjG0M+E3OY4XBnQlH/p5LBOiOgE9mP8w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=G55cB9ZD43x64IkyWPMSD3L75JCZ0fYzOiZr+xEyYDf0vJHiwYTyeKO4dNRNYhUCq
-	 mqvrRP2oCQdUyDv4m2Lyacf9qb6ypjdeC2onHWErLX/wz01wmq8enpeNEofpHYWMJN
-	 VejPCEItnHHbTDCFynWmFNNmC4uy3R/PaizM4Ck58+gLjERb2Hr3woWSa3aqUsaFTz
-	 Ez2uLD1Lyrg7bre+ZJCVONe+VHLNNW6W7oPX2oFlXVdhcnm82ibi14wkXV9dHxOewF
-	 1mLLdZF409LVDyzUlazGmGyXegRS9ieTJb9gyKnU17ZvitYHeZe78XFEAmCDMBdTEM
-	 YJDgzda6Livog==
-Date: Fri, 27 Dec 2024 17:40:18 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: arm: rockchip: Add Edgeble 6TOPS
- Automotive Edge AI CM
-Message-ID: <20241227-tactile-recreate-9de95e933e49@spud>
-References: <20241227133420.169714-1-jagan@edgeble.ai>
- <20241227133420.169714-2-jagan@edgeble.ai>
+	id 1tRGdo-00000000szg-0R0i;
+	Fri, 27 Dec 2024 20:09:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=rTpmM+N9yTb8Q9bJONsWhH4t0UI7Y+ya/IYjpiMz6Cg=; b=j6E/9czHO7e5hBXHB6GqUWeYO2
+	z7aTYMKv1Qgq4Dm3MKG/qG7+b4el3bPiBfDrVTm81uYq1sdKdwM5Wv3XXMFsgVpNC4Hcb/smYIBii
+	syYK5lxbtVxSq+V81T0QLB8QH06P3gm2+FIqIjkD/bHBgS4mSziaJ5hU9tZa19D7LCBQAgFXK098Y
+	BO96XvGk5zw9olS9eMGKRy0V6hodSgXwuaaJLDiX9R+MdsQPkpV1rxkAJBiF6Lh8sOh0Tl66a7E7p
+	PmJpcwCoUaBOabFVDltoSJkH5sx6c1mtZZbbXOtSnmapGGyPSOGEUpcMUpCDjEkTsP6knM9PjK04Z
+	0f75DO4w==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tRGdX-00037B-1A; Fri, 27 Dec 2024 21:08:43 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>, Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH] dt-bindings: phy: add rk3576 hdptx phy
+Date: Fri, 27 Dec 2024 21:08:41 +0100
+Message-ID: <3255768.PYKUYFuaPT@diego>
+In-Reply-To: <hh3zowf257dwwp3uo7al5l5ql7hewy7j5rzjqdt3eqvd653mdj@4tgjm6zdsuyi>
+References: <20241224091919.267698-1-andyshrk@163.com>
+ <hh3zowf257dwwp3uo7al5l5ql7hewy7j5rzjqdt3eqvd653mdj@4tgjm6zdsuyi>
 MIME-Version: 1.0
-In-Reply-To: <20241227133420.169714-2-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_094023_654115_EF722361 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20241227_120900_168602_AD6DFEF7 
+X-CRM114-Status: GOOD (  19.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,59 +66,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8736015727282695558=="
+Cc: kishon@kernel.org, detlev.casanova@collabora.com, robh@kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof, Andy,
 
---===============8736015727282695558==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="V32klBqQoWD9BeHs"
-Content-Disposition: inline
+Am Freitag, 27. Dezember 2024, 09:55:59 CET schrieb Krzysztof Kozlowski:
+> On Tue, Dec 24, 2024 at 05:19:13PM +0800, Andy Yan wrote:
+> > From: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > The HDPTX PHY on rk3576 is compatible with it on
+> > rk3588.
+> > 
+> > Add compatible for it.
+> > 
+> > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > ---
+> > 
+> >  .../devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml | 7 +++++--
+> >  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> Also: where are any users of this binding?
+> 
+> We don't take bindings without *UPSTREAM* users.
 
+Andy, can you do a (separate) DTS series that binds all the display stuff
+together on one rk3576 board? (iommu, hdptxphy, vop, hdmi)
 
---V32klBqQoWD9BeHs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Depending on how the driver sides go, this may be need to be revised at
+the end, but should hopefully satisfy that "show a user" thing.
 
-On Fri, Dec 27, 2024 at 07:04:18PM +0530, Jagan Teki wrote:
-> Edgeble Edge AI CM6C is an Edge AI Accelerator module based on Rockchip
-> RK3588M.
->=20
-> Edgeble Edge AI CM6 Industrial IO board is an evaluation board that
-> would compatible with Edge AI CM6.
->=20
-> Add bindings for it.
->=20
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
---V32klBqQoWD9BeHs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ27mggAKCRB4tDGHoIJi
-0mE3AQC+09x5ioHgVwKJcDofflS/irAVJwe6Q9jkSmmlbO33dwEAwU4/+49hOw+6
-ZN6DN17kLUxKDhF9diGKOEuJZM7ycQI=
-=vQ8D
------END PGP SIGNATURE-----
-
---V32klBqQoWD9BeHs--
+I guess Kever's EVB-series [0] might be a good base to build upon, with it
+being a Rockchip EVB?
 
 
---===============8736015727282695558==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+For people reading along, that whole display chain consists of:
+- iommu [1]
+- core display-controller additions for the rk3576 [2]
+- this hdptxphy binding
+- additions for the dw-hdmi-qp glue [3]
+
+Heiko
+
+
+[0] https://lore.kernel.org/lkml/20241220101551.3505917-1-kever.yang@rock-chips.com/
+[1] https://lore.kernel.org/lkml/20240920094947.7566-1-andyshrk@163.com/
+[2] https://lore.kernel.org/lkml/20241214081831.3330714-1-andyshrk@163.com/
+[3} https://lore.kernel.org/lkml/20241225103741.364597-1-andyshrk@163.com/
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8736015727282695558==--
-
