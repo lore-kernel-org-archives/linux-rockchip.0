@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F42E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 15:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9C63E7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 16:47:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fIpQH0Doczig9Hei+ZDrPw/mtFEojGXe519iwAX4M7Q=; b=uMorEJOQw2tdbQ7wZ8yM+eeY9/
-	1mDAp6e0eJdxBTIDQer9d4M2TI9ofLrc4jyuNE0CRheeGjf2KybN+Dx9lL7nrOrGt5paOJLuM0MPA
-	E1VDWGDeNKrHBsaoyy/T6M+VwWhP0io6eFGspknwEmVXljXR2Ir1qxloUBFA0vX1pAlkcS6mNNOgm
-	G7HSakcB57IEffhNzm3bzEAMNLrtAvfy6JV32kVCHZ1/FkfFJzZ4M0u5jRF92Tuq/3xwdJMN6uWuL
-	Dici8b6fiNNSCqJsq71vpB2whkMieincBwtcBPe7G8QAjx+934uAz4K8rC7PBPBJ2eIDypPINYimc
-	EsTioUuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NIVZels2m3/7Fz6tKVq2yZm+4b38K2N9cLZDBxCvzyI=; b=nNuNMiQUlMG1qh
+	R3lFhwbga/fm2PjCi04GHmTRfmys9iHe7I6Snwi5by32PuI4KsRcQme9BMiqqH+ecU0xyOITvIbgj
+	RibgcGYnQn0RVYADOFrGKCgfyq9dk6AP5OHia+cfNe5gRfYr4bO1SXHfA2cGa6Vd9UcgZ7cgC7wzG
+	pKQ85o6zBhcRfdK2runxxapw+ZHzT8Buzj8iYBD4JyMXoHNfa1sUG0dKmORLxDKrDyoRu8XZ4CXxe
+	SYKML7jiz+BZAjGaLZiw/kI/Rne0qZSQ1tY3aG8Wfay992mstetdsZ83+pTvScQUvqkpgcjY554uP
+	u0rz93R9owHotxVFJoXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRCaJ-00000000Yxu-40VD;
-	Fri, 27 Dec 2024 15:49:07 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tRDUu-00000000dkK-3v3Y;
+	Fri, 27 Dec 2024 16:47:36 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRCZ9-00000000Yte-0yyu;
-	Fri, 27 Dec 2024 15:47:56 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1735314473;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ur0RhuIydq2U2A43n4jYm1JsAzfs2SVp5UUjwaZSQxM=;
-	b=HufIOT09skINtdAcEUYQTO638YzwXb0DeVI7ykCNr2eh4lF+lmtyYskdWWBT2c3wAckytI
-	LwZC03+bHgQ7OJhd2UUQtMUJc8u9JsMGQxpIz+IjmSyUELzMxPhqXibxFZCGgGElsnCo0H
-	3KUTmngCgRRiErBGhe5CnYLUVZ90kvnXhlv+A3LVnwN1uksN6airkA5HwTukAA5hfhg0jJ
-	NV8mtpqg+RGvbdIBDjUN13OvVtXs+1vj/5w/TzPWZxo62HbTo0jezIF5sJMTVi4/1+Vfh/
-	rRE5jIwjQzRjr6kvGtgzVlBqvtw/YF1RE7C0UqCh+J6Vsj+3CHVUwOB+MGmqCg==
-Date: Fri, 27 Dec 2024 16:47:52 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Marc Zyngier <maz@kernel.org>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, tglx@linutronix.de,
- jonas@kwiboo.se, macromorgan@hotmail.com, andyshrk@163.com,
- liujianfeng1994@gmail.com, dmt.yashin@gmail.com, tim@feathertop.org,
- marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net,
- alchark@gmail.com, sebastian.reichel@collabora.com, jbx6244@gmail.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/3] irqchip/gic-v3: Enable Rockchip 3588001 erratum
- workaround for RK3582
-In-Reply-To: <d9919917c5d518608a7d4e3cac8faf53@manjaro.org>
-References: <20241222030355.2246-1-naoki@radxa.com>
- <20241222030355.2246-2-naoki@radxa.com> <86msgoozqa.wl-maz@kernel.org>
- <f93b3bfb5151e4b617b1c99c91b4956f@manjaro.org>
- <8734ifs3zl.wl-maz@kernel.org>
- <e3498590dd81b150670e36561d99b6f4@manjaro.org>
- <871pxysq76.wl-maz@kernel.org>
- <d9919917c5d518608a7d4e3cac8faf53@manjaro.org>
-Message-ID: <f84c6820fb54b6eab15575c6bc30dc83@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+	id 1tRDTj-00000000dex-32MA;
+	Fri, 27 Dec 2024 16:46:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id D43CAA418BF;
+	Fri, 27 Dec 2024 16:44:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44AFDC4CED0;
+	Fri, 27 Dec 2024 16:46:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735317982;
+	bh=NR72lyZThb08GVl0XXhuv/BqbDdMj0okVQpzzBcEtRA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=CTQ/LYXjWiRbaQQXA64Zcxq1QSjQAXpvKLGMQrOegBRi6u24JpIQMKrWt9AnJXN98
+	 Z93AqzoO0zaMZcBND8q01tHQDwInC5CQNqvFus0xhyQsO+2CMbcKXoK1FX5jDjC1FT
+	 4JaudG+tEBQmn8ZWA/ESbbpVLFpuAQiDR2JIH/9cdHVndGqa8xYLvUPOtHp4SfFWdc
+	 FnCKMpLdOh3GWkP1E8HtbSipKayHT9XMy0RlKnojy8ahy1Sn6jRnW/sRWwrrlkGapx
+	 9WRi/kvya+iVYY5syMjNnaBW6nRkMDaIVbBKYaXrW3yMYhvH9wEex5tdDuRD9yLsO1
+	 +Cs645Qov3PYg==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=wait-a-minute.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tRDTf-007FyL-Rc;
+	Fri, 27 Dec 2024 16:46:20 +0000
+Date: Fri, 27 Dec 2024 16:46:19 +0000
+Message-ID: <87bjwxoyzo.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	tglx@linutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH 2/2] irqchip/gic-v3-its: Make "dma-noncoherent" preferred for RK358x errata
+In-Reply-To: <1382cd99ec213b5fb6f3b23d4e895f078f587b8f.1735313870.git.dsimic@manjaro.org>
+References: <cover.1735313870.git.dsimic@manjaro.org>
+	<1382cd99ec213b5fb6f3b23d4e895f078f587b8f.1735313870.git.dsimic@manjaro.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: dsimic@manjaro.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, naoki@radxa.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_074755_576532_B1DC192F 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20241227_084623_913425_E7656120 
+X-CRM114-Status: GOOD (  26.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,126 +87,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-12-23 11:11, Dragan Simic wrote:
-> On 2024-12-23 10:29, Marc Zyngier wrote:
->> On Mon, 23 Dec 2024 06:10:21 +0000,
->> Dragan Simic <dsimic@manjaro.org> wrote:
->>> On 2024-12-23 00:16, Marc Zyngier wrote:
->>> > On Sun, 22 Dec 2024 18:25:02 +0000,
->>> > Dragan Simic <dsimic@manjaro.org> wrote:
->>> >> On 2024-12-22 10:04, Marc Zyngier wrote:
->>> >> > On Sun, 22 Dec 2024 03:03:53 +0000,
->>> >> > FUKAUMI Naoki <naoki@radxa.com> wrote:
->>> >> >>
->>> >> >> Rockchip RK3582 is a scaled down version of Rockchip RK3588(S). Apply
->>> >> >> Rockchip 3588001 erratum workaround to RK3582.
->>> >> >>
->>> >> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->>> >> >> ---
->>> >> >>  drivers/irqchip/irq-gic-v3-its.c | 3 ++-
->>> >> >>  1 file changed, 2 insertions(+), 1 deletion(-)
->>> >> >>
->>> >> >> diff --git a/drivers/irqchip/irq-gic-v3-its.c
->>> >> >> b/drivers/irqchip/irq-gic-v3-its.c
->>> >> >> index 92244cfa0464..c59ce9332dc0 100644
->>> >> >> --- a/drivers/irqchip/irq-gic-v3-its.c
->>> >> >> +++ b/drivers/irqchip/irq-gic-v3-its.c
->>> >> >> @@ -4861,7 +4861,8 @@ static bool __maybe_unused
->>> >> >> its_enable_rk3588001(void *data)
->>> >> >>  {
->>> >> >>  	struct its_node *its = data;
->>> >> >>
->>> >> >> -	if (!of_machine_is_compatible("rockchip,rk3588") &&
->>> >> >> +	if (!of_machine_is_compatible("rockchip,rk3582") &&
->>> >> >> +	    !of_machine_is_compatible("rockchip,rk3588") &&
->>> >> >>  	    !of_machine_is_compatible("rockchip,rk3588s"))
->>> >> >>  		return false;
->>> >> >>
->>> >> >
->>> >> > Please use the relevant property for that purpose ("dma-noncoherent")
->>> >> > at the distributor and ITS levels. We're not adding extra compatibles
->>> >> > for this anymore, and you might as well fix the core dtsi to expose
->>> >> > such property.
->>> >>
->>> >> Thanks for your response.
->>> >>
->>> >> After a more detailed look into drivers/irqchip/irq-gic-v3-its.c,
->>> >> it seems that relying on the "dma-noncoherent" DT property may not
->>> >> be equivalent to adding another compatible check.
->>> >
->>> > It is. My email makes it plain what needs doing.
->>> >
->>> >> Here are a few
->>> >> quotations from irq-gic-v3-its.c, to illustrate this better:
->>> >>
->>> >> 4746 static bool __maybe_unused its_enable_rk3588001(void *data)
->>> >> 4747 {
->>> >> 4748         struct its_node *its = data;
->>> >> 4749
->>> >> 4750         if (!of_machine_is_compatible("rockchip,rk3588") &&
->>> >> 4751             !of_machine_is_compatible("rockchip,rk3588s"))
->>> >> 4752                 return false;
->>> >> 4753
->>> >> 4754         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
->>> >> 4755         gic_rdists->flags |= RDIST_FLAGS_FORCE_NON_SHAREABLE;
->>> >> 4756
->>> >> 4757         return true;
->>> >> 4758 }
->>> >> 4759
->>> >> 4760 static bool its_set_non_coherent(void *data)
->>> >> 4761 {
->>> >> 4762         struct its_node *its = data;
->>> >> 4763
->>> >> 4764         its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
->>> >> 4765         return true;
->>> >> 4766 }
->>> >>
->>> >> 4814 #ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
->>> >> 4815         {
->>> >> 4816                 .desc   = "ITS: Rockchip erratum RK3588001",
->>> >> 4817                 .iidr   = 0x0201743b,
->>> >> 4818                 .mask   = 0xffffffff,
->>> >> 4819                 .init   = its_enable_rk3588001,
->>> >> 4820         },
->>> >> 4821 #endif
->>> >> 4822         {
->>> >> 4823                 .desc   = "ITS: non-coherent attribute",
->>> >> 4824                 .property = "dma-noncoherent",
->>> >> 4825                 .init   = its_set_non_coherent,
->>> >> 4826         },
->>> >
->>> > Nothing tickles me more than having my own work being thrown back at
->>> > me.
->>> 
->>> I'm sorry, that wasn't my intention.  I just wanted to make
->>> referencing to what I was talking about a bit easier.  Though,
->>> I now see that I was wrong, and I apologize for the noise.
->> 
->> No need to apologise. Just understand that the way you approached the
->> discussion was suboptimal. Next time, just ask how the proposed
->> solution works, rather than asserting that it doesn't.
+On Fri, 27 Dec 2024 15:42:24 +0000,
+Dragan Simic <dsimic@manjaro.org> wrote:
 > 
-> Thanks.  Indeed, the way I approached it was waaay suboptimal.
-> I just wanted to clarify that it was an honest mistake resulting
-> from not looking at the code carefully enough, nothing else.
+> The preferred way to denote hardware with non-coherent DMA is to use the
+> "dma-noncoherent" DT property, [1] instead of relying on the compatibles. [2]
+> Alas, older versions of the Rockchip RK3588 and RK3588S SoC dts(i) files
+> failed to specify this DT property, which means that checking the compatibles
+> remains required for backward SoC dts(i) compatibility.
 > 
->> Hopefully we can move on and you and Naoki can come up with a set of
->> patches that does the right thing.
+> Let's have the Rockchip 3588001 hardware errata handled the preferred way,
+> with newer versions of the Rockchip RK3588, RK3588S and RK3582 SoC dts(i)
+> files that properly specify the "dma-noncoherent" DT properties at both the
+> GIC redistributor and the GIC ITS levels, while falling back to checking the
+> compatibles for backward RK3588 and RK3588S SoC dts(i) compatibility.
 > 
-> Of course.  I've already prepared a small patch series that,
-> hopefully, does the right thing when it comes to the Rockchip
-> 3588001 errata.  I'll submit it soon, after I check the patches
-> a bit further.
+> [1] Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml
+> [2] https://lore.kernel.org/linux-rockchip/86msgoozqa.wl-maz@kernel.org/
+> 
+> Cc: Marc Zyngier <maz@kernel.org>
+> Cc: FUKAUMI Naoki <naoki@radxa.com>
+> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+> ---
+>  drivers/irqchip/irq-gic-v3-its.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
+> index fdec478ba5e7..982dcbb30f39 100644
+> --- a/drivers/irqchip/irq-gic-v3-its.c
+> +++ b/drivers/irqchip/irq-gic-v3-its.c
+> @@ -4747,6 +4747,18 @@ static bool __maybe_unused its_enable_rk3588001(void *data)
+>  {
+>  	struct its_node *its = data;
+>  
+> +	/*
+> +	 * The preferred way to denote hardware with non-coherent DMA is to use
+> +	 * the "dma-noncoherent" DT property, which the older RK3588 SoC dts(i)
+> +	 * files failed to specify, relying on the compatibles instead.
+> +	 *
+> +	 * Thus, check for the presence of "dma-noncoherent" DT property first,
+> +	 * to let the hardware quirk be handled the preferred way, and fall back
+> +	 * to checking the compatibles for backward dts(i) compatibility.
+> +	 */
+> +	if (!of_dma_is_coherent(to_of_node(its->fwnode_handle)))
+> +		return false;
+> +
+>  	if (!of_machine_is_compatible("rockchip,rk3588") &&
+>  	    !of_machine_is_compatible("rockchip,rk3588s"))
+>  		return false;
+> 
 
-For future reference, here's the link to the above-mentioned
-small patch series on the linux-rockchip mailing list:
+I'm sorry, but this patch serves no purpose. We already have a
+workaround in place, and we don't need to handle it *twice*.
 
-https://lore.kernel.org/linux-rockchip/cover.1735313870.git.dsimic@manjaro.org/T/#u
+Worse, it is actively harmful. A DT that would only advertise the
+property on the ITS would result in a broken system, while it would
+work correctly with the current code.
+
+Additionally, look at what of_dma_is_coherent() does, and how it will
+fetch a property that is potentially completely unrelated to the GIC
+node, or eventually return some random default. The binding documents
+the dma-noncoherent property as part of the relevant nodes, and not
+anywhere else.
+
+In the end, this is just dead code, and potentially worse. So while
+I'm rather supportive of your first patch in this series as it allows
+OSs other than Linux to *maybe* avoid this hack, the Linux driver
+doesn't need any change.
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
