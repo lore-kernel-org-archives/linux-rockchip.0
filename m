@@ -4,79 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C784E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Dec 2024 20:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 265ABE77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 03:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iMu388jk8aoHmiyW/v0c4o4jF5G6++hWHrl9p0gz6Nw=; b=r7yXNAOBgGYBDY
-	BsWAfWvMeBoVN6RWCjevmhwyT7WTuMSTBqqVrfSQAZqHe865A3QB5jhsLVIWwMDR9x6zPYsGOGkH8
-	QhEkh6+8/EEdIXOqzTdxwMauLH4b1pO8qTr2dsIb3TZqWwoDDU8rZvcmcia0YhLRgzioGuFv9PSpF
-	xML2sWMkutNpWFXWTEJXosUfxjZsucjA+VIrFkJf5fI9+k6zPdg7/5qvkXEqz8I+3yLZZhKk7UjD/
-	cdPvgEcaAcTePFqXE7RuuajQyUITshUhhSbKDTXsC7XSlryO+7QHj/vPCjrJTRP2Bm3VJ3i3L+NoM
-	306KEx1V8DQhvvbUL0lw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2/Z/Wy4sUv3Bzog8IMJivtHJvkx2OWW1IU2NGcnwt/4=; b=MyNtCAV/8j6HZl
+	F1cNPnRI1mLmmoWZkEgKJ66NWSq+4zpF4Y9aLsDtlwPX41qKAdD/EIcJ56B+oITidQgMsqnin4hhC
+	z8awESr8N8UaFejSH3m8W/C+2w87ZJQEefHpPuB99ttpn3IpqjcRtB4c7+B2ksagfkgzh9RsXw+mj
+	FukF1x1VDfZbPOvZaBNqeBG2FjFT9uv+l8ecTG80ZLeh+oU3/lNOM9Z4Y7gkRYnLh++OXudLVNdLj
+	LznL9HbtzT45FHMMgiIW70ov8tbe7vdb3SxhqjFJJoKDhid0BTOVCdrNE0AmK7Gs4ha/+MqCdezSV
+	sIGbqUrgS1cs2JModDQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQuRn-0000000GMvY-3USQ;
-	Thu, 26 Dec 2024 20:27:07 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1tR0kD-0000000Gvdr-2fzQ;
+	Fri, 27 Dec 2024 03:10:33 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tQuRk-0000000GMu1-2Vig
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Dec 2024 20:27:05 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e46ebe19489so6544532276.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Dec 2024 12:27:04 -0800 (PST)
+	id 1tR0kA-0000000GvcL-1YwW;
+	Fri, 27 Dec 2024 03:10:31 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-3011c7b39c7so81021811fa.1;
+        Thu, 26 Dec 2024 19:10:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735244823; x=1735849623; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=FPKRoDpify9h+IqEe2EG1BoGb8mJ4mV8pWzFyX2ts3w=;
-        b=kpWxqhvFGnsS0iYnRMYCrOzVljOppldlkOFtrpA7T0FyCi+5UvzSg9fPhyO1FnkYEc
-         YymVkXJOuJ3Ps19uYFco6edoqe0xGBVXOG8LVeAmzXj2SlAXqFumi7XUDd3rSzoYCRXh
-         YR6A1fWtX2JN74lojdptDGs8DtgLICa8BKtb5Kk78Wavy+NjvajiDFOC8B6wVd19UH/5
-         7oMDbxkhgn3QrydxgW7g1NgFnOsmJv9Sr/F5DmqPjEhgfSE2h38yvWrRQODPFRMnHhrh
-         AC6P7QevGwS/DDM+iZj9VlDMszXyqNHQHn1sTKisWrNAqOfD+7l9qsjhOu3VPU91TUZt
-         tncQ==
+        d=gmail.com; s=20230601; t=1735269028; x=1735873828; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=u9GzOqSFTFut+M0trF5n5rtYW7iZuRD8VsII4Yb9qIs=;
+        b=S/6RRsFJ9FTRGqnNKIaUICSfxQ0+FPiVx2zNN9gRVJC2Tl0eB07WWo/Ov9L7wcaQvw
+         1a4wBSGQZRpMn2/314g66mus7J40znVyEUEIyP9uZRK8gGYY5i3P/q0UW4AZQfGHKd8z
+         M74TShSS2IGhzE9kYUl1YZIhywluBy+OLFpfOkQ8cA+h23waEN3Dgfnbdt+8kIllVjRA
+         2U4MY1uZPdc+w7pMdg7zY1SCifHiQTuvJkcLszQ+3W7EPe0oHxuwx26ZMmMVRgKAoKSM
+         yOKeORJhzO0fHtZ8HHGHlF77tOEzYL2SJ8RcqWju7CxbuqpKDElEHKPcmQ5x3W15mzGs
+         GLdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735244823; x=1735849623;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1735269028; x=1735873828;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=FPKRoDpify9h+IqEe2EG1BoGb8mJ4mV8pWzFyX2ts3w=;
-        b=dP90eXkd58hM7/x6RZb+eU9UltvsjeGQjOm2AhjzwkCHHgATd20x7e0LpfOL3bZ58n
-         1fnpxqyXQlkK2zqopc/ZHiIwynr0CtLRewzh5Aq6Iox/KqA40BnZPK+DplTt192pDrJu
-         InCi3GFQybOoqEcPP+iSI1xQEhQ13J90/YfNWkTSfBKrZcgIvSLbD1e6GwkQ99Aq/apj
-         1sDEqOxyXah9ZmLFlz8PEonWolGIsXj0Hxy4hCx7RT4mtd+/uVP90/nZK2erczgKGvPI
-         8fzOeXHf1h/0PI18RNmuU+3basZIs+BTcZubyBTvIWGeh7N6gsL7meldOW/AeZZjCWuB
-         tF2g==
-X-Forwarded-Encrypted: i=1; AJvYcCW2m5xqWZMrBvxxSkYYcoYZ69mCPODwhk6jCa9JK+3KcnNuLiLTXCvfWyFCacfslHXRrIb+UYzY3i/7Pe7kCQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1Hvry2laVEbvU6XxVvSvOrO8ViJxOQ14px2Rky+hFu4RyhwUF
-	H+/IDyJA60kfP/74aRIltVO7QtDJ8xQ3SvglTltL3xmaywEsLQvfEmdE0iE8j8dOGMOmIwc1fo1
-	dX/qvREyCGVxMb65aAhQxp9d5DmidXsTN7XJ+QA==
-X-Gm-Gg: ASbGncv4J5Bgr2FQ0wsiByzpIy6oeNmXYNHf0R+ATLBd5qkXvRjKtISEvSBFJuyPrZo
-	KfIZBdx1mgK8yetzKr5rKWSzDJHYRw2baslj82RfzfOKEFfTYnH7bHyUVvYyOi+zkW6/2pA==
-X-Google-Smtp-Source: AGHT+IHDUZL5Eg2UGPvFlhghbyzwMvFDpOHMklFDUf4MZxRXkdzrV37grJ0wXkgFU3RiQ0B52ASFNrZDlpN/T8sXHhM=
-X-Received: by 2002:a05:690c:7489:b0:6ef:8122:282f with SMTP id
- 00721157ae682-6f3f8134f5emr177842837b3.24.1735244821935; Thu, 26 Dec 2024
- 12:27:01 -0800 (PST)
+        bh=u9GzOqSFTFut+M0trF5n5rtYW7iZuRD8VsII4Yb9qIs=;
+        b=ZmGkwW4qXJ7a7gnqm1YxBBC43cuqTY2UUOWWG93afoiT3q3pDaRMpnAMKRLj2bn1Zd
+         LthSQtBZhyiQ2N7u3Xz5xhkWhYH/gFfbLbkw5CdGDX6r9JJZYN60UvBzpvTV2v81b9AX
+         Koz22JcClxgw+1Vt2dAQ/oaqEDAI8WdEkn0SFBevhF4ycxRUMRWyJGF3ACxuFsk1WCbP
+         MLzb/fxTXv74UVOD8JAuugn3ONFWWjMfiMcr5HGqca+CxtZ/O+/leGgAU88XzMJhXado
+         n2ezqDIopEns8vxPItDZTNu1P83DXus1VROLGjBHg+fWh6UIQq75rj/q0vDaoX9pJTY7
+         ukqA==
+X-Forwarded-Encrypted: i=1; AJvYcCVcVPDu7iccksU+INduqbc/YhLx1P5v/MZozJUEzPkSH0SOYNGG67i1HTibw8OU/GTRiQdiCEXFy/V61JQW3H3U@lists.infradead.org, AJvYcCVvgUuR6OIiGGBf4MoukWpSuMnmVNQQ6hWBkx+59GxwMIkKIdEwTyBuQr4nv/+ytvb56YxixntPTCUfk6/M3I0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLFq5H2NwOUrwShADCNMw+xLCov4JZ7rm/fZWCvNM/SpSRAaDl
+	YRCqgmmA84Fjn+ZrPX4hoyolxJ5lozuyDk4pGI+SUi7zx8jYXGE=
+X-Gm-Gg: ASbGncveMAWnL207JYLcK91L7zbRMytDAp4Ad4zoGapsvFhGX/5y9O7rWLxrDeeJtf0
+	HmvAIZA1OcZGaG2NaxVuwrg5P8M8OJP/kaI9Tl4xjg2ZZwu7NYyQA0H5pttQQQVwWMi7N3dWpp1
+	DdoImnobVy1/IZVHQ/W5ZZ0P2qIN88cA6doyLAUyQhBEBGbs0xs7l8QOXisqXzixRF+iqzD6htU
+	W7xG6VPYhvhqIWiPA4Zr7+B5E4C5KnbBzJSVt4LTO17v+pnzSUPbM6lOPc=
+X-Google-Smtp-Source: AGHT+IExyyy4jgRB3UWLgHTsEeFRs0/I8P7gVGIIOS5qg76b9sHxaxSVCTtLynrzkX+OeGPg7e1UAg==
+X-Received: by 2002:a2e:a701:0:b0:302:3021:9b03 with SMTP id 38308e7fff4ca-30468567821mr64398891fa.17.1735269027581;
+        Thu, 26 Dec 2024 19:10:27 -0800 (PST)
+Received: from JetTurbine.homenetwork ([2a0e:e6c0:20d3:2100::1d])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045ad6cccasm24326141fa.1.2024.12.26.19.10.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Dec 2024 19:10:27 -0800 (PST)
+From: Ivan Sergeev <ivan8215145640@gmail.com>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
+Date: Fri, 27 Dec 2024 06:10:12 +0300
+Message-Id: <20241227-bigtreetech-cb2-v3-0-91c556adcffe@gmail.com>
 MIME-Version: 1.0
-References: <20241219080604.1423600-1-damon.ding@rock-chips.com>
- <20241219080604.1423600-15-damon.ding@rock-chips.com> <cg7bnhol4gvzji7agxazas7nkxy7zammzy67rjvhp35yqyraju@73daepsbmuae>
- <d2b47813-45fa-4148-8a4a-6cf4a18ee7ca@rock-chips.com> <CAA8EJpp0Smtqx7VQ5zdg9x3EhuLpk4u4vGv=rv8DHJ0rhei18w@mail.gmail.com>
- <32c7ef0a-8da6-449a-8f2d-59965aa622ec@rock-chips.com>
-In-Reply-To: <32c7ef0a-8da6-449a-8f2d-59965aa622ec@rock-chips.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Thu, 26 Dec 2024 22:26:51 +0200
-Message-ID: <CAA8EJpqFwQGT=wYWuSf8izw9V=zJJ-YVA40i3f8L7wnZfPjyTA@mail.gmail.com>
-Subject: Re: [PATCH v3 14/15] arm64: dts: rockchip: Enable eDP0 display on
- RK3588S EVB1 board
-To: Damon Ding <damon.ding@rock-chips.com>
+X-B4-Tracking: v=1; b=H4sIAJQabmcC/x3MQQqAIBBA0avIrBNyHCK7SrRIm2o2FSoRhHdPW
+ r7F/y8kjsIJBvVC5FuSnEeFbRSEfT421rJUA7ZIBpG0ly1H5sxh18GjNr0j8pacMx3U6oq8yvM
+ fx6mUD4afMxphAAAA
+X-Change-ID: 20241224-bigtreetech-cb2-18944b349916
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Ivan Sergeev <ivan8215145640@gmail.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1789;
+ i=ivan8215145640@gmail.com; h=from:subject:message-id;
+ bh=eEZPMqnFAFZL6U2Nau2tHWImP2Mq85i2tQEbvcKc10U=;
+ b=owEBbQKS/ZANAwAIAbzfXRlQM5b9AcsmYgBnbhqid1wH5MSiCj96ZCeJnpipynuRqmr3gltID
+ HJ6JOMyTM6JAjMEAAEIAB0WIQROCZtApKFz1fvvsOS8310ZUDOW/QUCZ24aogAKCRC8310ZUDOW
+ /RA6EACokGH4AkfQnCDMNuE1ab9eqYd5OpqsM1kRnmTCckb+s/fhcf+zmlOvMz/6tY7keWDMOkI
+ h01pY2Oo7uf4yAa9DkqM9gw5NgZsFcPnXRMtlbwjWOIk2ZW0xiXp6MgiMhFf/Y0FwoGHX2zb7B+
+ pmoL0G6br4N1oL+wPkHHoiImXft9pJQeWp6p01Qq4tMwFMOBtrSLOXg6Ra98w1rmTdeLNrm6RYA
+ lpkA9WCDaZqIEoCjaUFmVN9ddDcIocLcWq4bDh8a2EOGpHjwX6Ean/WYf2hVslhG1IEnE++juJU
+ 9zjkH5F+ZINJ9wXDB9DxjgYu63JcnQCD31blP0+yQObyPsPM5X5QCN3LCiNHekjxYZWV6r2hqdA
+ Rx2MfOr/a93JqlhsNzyzx7SVzYe3CGQsiC3NqZYx4Ht72BffT04hMBVvGCorLFxcHQO4oZ6JpfR
+ wKs9rIMPzau5AK0AcgSo65OGpvtrsORexLBB/+2ntOPj2A15G7ebSmscaBs2gTMNH5JnpaVUcO3
+ koA82atd+/DBb5zrzxKntdLGS/WEJlXqfgKM3fNqpCNaRsh/X+EHyox4I4sWmBqucqekb/SZz6S
+ 0qsfZjyhWevc8lfDTWjqch9BHHURsohzC+4IDMlDjSoM9/zNgYOKdMw/IuQgHV8aZks39/LqcH7
+ DRfMuHpKCFcBp1w==
+X-Developer-Key: i=ivan8215145640@gmail.com; a=openpgp;
+ fpr=4E099B40A4A173D5FBEFB0E4BCDF5D19503396FD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241226_122704_634155_33B7FBBA 
-X-CRM114-Status: GOOD (  28.36  )
+X-CRM114-CacheID: sfid-20241226_191030_437421_6CFDEAAC 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,167 +111,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Dec 2024 at 11:34, Damon Ding <damon.ding@rock-chips.com> wrote:
->
-> Hi Dmitry,
->
-> On 2024/12/20 13:38, Dmitry Baryshkov wrote:
-> > On Fri, 20 Dec 2024 at 04:38, Damon Ding <damon.ding@rock-chips.com> wrote:
-> >>
-> >> Hi Dmitry,
-> >>
-> >> On 2024/12/20 8:20, Dmitry Baryshkov wrote:
-> >>> On Thu, Dec 19, 2024 at 04:06:03PM +0800, Damon Ding wrote:
-> >>>> Add the necessary DT changes to enable eDP0 on RK3588S EVB1 board:
-> >>>> - Add edp-panel node
-> >>>> - Set pinctrl of pwm12 for backlight
-> >>>> - Enable edp0/hdptxphy0/vp2
-> >>>>
-> >>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> >>>>
-> >>>> ---
-> >>>>
-> >>>> Changes in v2:
-> >>>> - Remove brightness-levels and default-brightness-level properties in
-> >>>>     backlight node.
-> >>>> - Add the detail DT changes to commit message.
-> >>>>
-> >>>> Changes in v3:
-> >>>> - Use aux-bus instead of platform bus for edp-panel.
-> >>>> ---
-> >>>>    .../boot/dts/rockchip/rk3588s-evb1-v10.dts    | 52 +++++++++++++++++++
-> >>>>    1 file changed, 52 insertions(+)
-> >>>>
-> >>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-> >>>> index bc4077575beb..9547ab18e596 100644
-> >>>> --- a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-> >>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-> >>>> @@ -9,6 +9,7 @@
-> >>>>    #include <dt-bindings/gpio/gpio.h>
-> >>>>    #include <dt-bindings/input/input.h>
-> >>>>    #include <dt-bindings/pinctrl/rockchip.h>
-> >>>> +#include <dt-bindings/soc/rockchip,vop2.h>
-> >>>>    #include <dt-bindings/usb/pd.h>
-> >>>>    #include "rk3588s.dtsi"
-> >>>>
-> >>>> @@ -238,6 +239,41 @@ &combphy2_psu {
-> >>>>       status = "okay";
-> >>>>    };
-> >>>>
-> >>>> +&edp0 {
-> >>>> +    force-hpd;
-> >>>> +    status = "okay";
-> >>>> +
-> >>>> +    aux-bus {
-> >>>> +            panel {
-> >>>> +                    compatible = "lg,lp079qx1-sp0v";
-> >>>
-> >>> Why do you need the particular compat string here? Can you use the
-> >>> generic "edp-panel" instead? What if the user swaps the panel?
-> >>>
-> >>
-> >> The eDP panels used in conjunction with the RK3588S EVB1 have broken
-> >> identification, which is one of the valid reasons for using a particular
-> >> compat string. So the generic_edp_panel_probe() can not return success
-> >> when using the "edp-panel".
-> >
-> > Broken how? I don't see such info in the commit message.
-> >
->
-> The log related to the broken identification may be like:
->
-> [    0.623793] panel-simple-dp-aux aux-fdec0000.edp: Unknown panel ETC
-> 0x0000, using conservative timings
+BigTreeTech CB2 and Pi2 are Rockchip RK3566 SoM and SBC boards made by
+BigTreeTech for the intent of using as a 3d printer control board.
+It is a successor to the Allwinner H616-based BigTreeTech CB1 and Pi, so
+the device trees for CB2 and Pi2 are also done in the same manner: the
+common nodes and properties are put into a dtsi file that the
+board-specific device trees include.
 
-According to [1] the ETC / 0x0000 is a correct identification for that
-panel. I'd suggest adding the timings to the driver instead.
+Changes in v3:
+- Proper formatting and patch series sending (using b4)
+- Converted spaces to tab indentation in the dtsi file
+- Fixed empty line where the license identifier should be
 
-[1]  https://www.elecok.com/data_sheet/107657/LP079QX1-SP0V_7.9%22_a-Si_TFT-LCD%2CPanel_for_LG_Display(EN).pdf?download=true
+Changes in v2:
+- Added bigtreetech cb2 and pi2 boards to the list of platforms
+- Split BigTreeTech CB2 and Pi2 into two device trees using common dtsi
 
->
-> The eDP panel used in RK3588S EVB1 is indeed the LP079QX1_SP0V model, it
-> should be also reasonable to use the "lg,lp079qx1-sp0v".
->
-> And I will mention all of the above in the commit message for the next
-> version.
->
-> >>
-> >>>> +                    backlight = <&backlight>;
-> >>>> +                    power-supply = <&vcc3v3_lcd_edp>;
-> >>>> +
-> >>>> +                    port {
-> >>>> +                            panel_in_edp: endpoint {
-> >>>> +                                    remote-endpoint = <&edp_out_panel>;
-> >>>> +                            };
-> >>>> +                    };
-> >>>> +            };
-> >>>> +    };
-> >>>> +};
-> >>>> +
-> >>>> +&edp0_in {
-> >>>> +    edp0_in_vp2: endpoint {
-> >>>> +            remote-endpoint = <&vp2_out_edp0>;
-> >>>> +    };
-> >>>> +};
-> >>>> +
-> >>>> +&edp0_out {
-> >>>> +    edp_out_panel: endpoint {
-> >>>> +            remote-endpoint = <&panel_in_edp>;
-> >>>> +    };
-> >>>> +};
-> >>>> +
-> >>>> +&hdptxphy0 {
-> >>>> +    status = "okay";
-> >>>> +};
-> >>>> +
-> >>>>    &i2c3 {
-> >>>>       status = "okay";
-> >>>>
-> >>>> @@ -399,6 +435,7 @@ usbc0_int: usbc0-int {
-> >>>>    };
-> >>>>
-> >>>>    &pwm12 {
-> >>>> +    pinctrl-0 = <&pwm12m1_pins>;
-> >>>>       status = "okay";
-> >>>>    };
-> >>>>
-> >>>> @@ -1168,3 +1205,18 @@ usbdp_phy0_dp_altmode_mux: endpoint@1 {
-> >>>>               };
-> >>>>       };
-> >>>>    };
-> >>>> +
-> >>>> +&vop_mmu {
-> >>>> +    status = "okay";
-> >>>> +};
-> >>>> +
-> >>>> +&vop {
-> >>>> +    status = "okay";
-> >>>> +};
-> >>>> +
-> >>>> +&vp2 {
-> >>>> +    vp2_out_edp0: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
-> >>>> +            reg = <ROCKCHIP_VOP2_EP_EDP0>;
-> >>>> +            remote-endpoint = <&edp0_in_vp2>;
-> >>>> +    };
-> >>>> +};
-> >>>> --
-> >>>> 2.34.1
-> >>>>
->
-> Best regards
-> Damon
->
+Link to v2 1/2: https://lore.kernel.org/linux-rockchip/20241224135751.350379-2-ivan8215145640@gmail.com/
+Link to v2 2/2: https://lore.kernel.org/linux-rockchip/20241224140057.350667-2-ivan8215145640@gmail.com/
 
+Link to v1: https://lore.kernel.org/linux-rockchip/20241222203952.84217-2-ivan8215145640@gmail.com/
 
+Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
+---
+Ivan Sergeev (2):
+      dt-bindings: arm: rockchip: Add BigTreeTech CB2 and Pi2
+      arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  11 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   2 +
+ .../dts/rockchip/rk3566-bigtreetech-cb2-manta.dts  |  10 +
+ .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 941 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-bigtreetech-pi2.dts   |  10 +
+ 5 files changed, 974 insertions(+)
+---
+base-commit: 4bbf9020becbfd8fc2c3da790855b7042fad455b
+change-id: 20241224-bigtreetech-cb2-18944b349916
+
+Best regards,
 -- 
-With best wishes
-Dmitry
+Ivan Sergeev <ivan8215145640@gmail.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
