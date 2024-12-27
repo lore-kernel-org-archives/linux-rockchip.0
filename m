@@ -4,58 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 668C3E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 10:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F4BE7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 13:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Qoa+i2USeV07M6ZJ2dWj+U45FSXF594fyxeEM5lEII=; b=euQ2vYfKVyN7Ja
-	tRH1nz37S5ifOm1+AIY7GfPNfIoSheIDxP4hrcAYLi9weg7IbLdinfx99kYctJ3qtc+GHmGyUHv+Y
-	0+gSAy1Wr+cklHyt+/dQ0I4p+YJeDw6hu9liAFWmv4M4J8cBr415wt8p6oGYQcbqKnfu4UBye9oae
-	WCZeNGPUQh1dlAMfnu4ri1lQHsd8bx3Zhtnu2DkWgLg5mchKS9YJJFfItKDPnlK3+q7s4I0Ah78eD
-	PrysF9Iq7g8BcgXewiKttPjrj52MJH0EeHoNZT21uVyc5eGvqozHuuryY5G/JsSSqLmezSmWMpPPP
-	Kp3dEuV0hO/scjwiBa5w==;
+	List-Owner; bh=y5uwH8NISwHCSbo/W5TUoAD8RNG7DHRGLIvCFjbuSLs=; b=HxpU6enk4+JCQn
+	Mzlyf5Jyixj/mt8x1qO+csSex9Ap8+w8n13lnQ0YGZp443t4xikFBin/kOo/QRzWr5M6CADT3lEHG
+	vvDtpGmZ6bum5r6354tl5Mg9W0xish88/Tfvgql2GEVR04mFaW++vq9tadCAMuGShktAYyvArfmPk
+	dJWY2kD6GbvL3Yv27nHZWFwhtrgOAp3pEmhqXS3sfiA1toC1y8R05WNF+kpmCfBQOOL6scajo6FuG
+	slVF0h3R0NH59J1VuLM/CjBVWc0gQArC0mp6V7Rvbxe3xJLcBMeuEaRoKSYVUPvArwrMxxabIEZrt
+	t6YvZpFnoQc30COI1hjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR7t8-000000000Xm-0rlD;
-	Fri, 27 Dec 2024 10:48:14 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR7ru-000000000C2-3yuP;
-	Fri, 27 Dec 2024 10:47:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=YnthY4zZdSbrOKLUnSFJOycJreOsuayfzdspDnc2WqI=; b=S
-	BF4//NBwO4oYyIcRbXZSVRPixCAyvfmBwfUOaZswjJwD7NxyhzpY7bndDmchh06i
-	4ca0RAcu3+wApiMbqeKsORhhndBO1CAc3mFMysbPUE9uFMjP9BVsPL0bgBoMSsm0
-	duLZBLKEfYgF+7XfMljlk3Ne78S7O+n5UYyfJnsi1s=
-Received: from andyshrk$163.com ( [103.29.142.67] ) by
- ajax-webmail-wmsvr-40-130 (Coremail) ; Fri, 27 Dec 2024 18:46:32 +0800
- (CST)
-X-Originating-IP: [103.29.142.67]
-Date: Fri, 27 Dec 2024 18:46:32 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
-Subject: Re:Re: [PATCH] dt-bindings: phy: add rk3576 hdptx phy
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <gkx4rmkwhngqsn5wotp3mdk6nn4oydrzgkfwhansd6j5ap5pek@rowfnww34rsd>
-References: <20241224091919.267698-1-andyshrk@163.com>
- <gkx4rmkwhngqsn5wotp3mdk6nn4oydrzgkfwhansd6j5ap5pek@rowfnww34rsd>
-X-NTES-SC: AL_Qu2YB/6SuUsi5CeQbOkfmkcVgOw9UcO5v/Qk3oZXOJF8jADoxjoPQEJSJELo/860NC+UmgmGTTRuyOZHZoV9TZwxc2Q0W5vhsxfDZXdaIOeosA==
+	id 1tRAIX-00000000HDI-1J9m;
+	Fri, 27 Dec 2024 13:22:37 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tRADx-00000000Ga1-3pFa
+	for linux-rockchip@lists.infradead.org;
+	Fri, 27 Dec 2024 13:17:55 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2eed82ca5b4so8697181a91.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 27 Dec 2024 05:17:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1735305473; x=1735910273; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=iAXFsxzlonOLXIwCn7fwLxpEOxOZpKttSBYOZ0M8BhA=;
+        b=qKNZinq8Aq4CYQ3U9ybnT6hLHULy1rzZXcwFrl7IKgvv2gD0pTdT3ujMuqTPkyaKl/
+         w7t8w7fGN8QlEntisLolhlDDS1qP/s76lMMTeH+VjyG1KRvbNQhEaWQSdKtiupKNKThB
+         g4FyZ8JlKfxUkrnp8J2zctbU4xyiHCLpagGvGUZNvSOyUJRXKrI86AQu5NvHP1bsEGvv
+         tru15Gbo5p8VYEOvyGIt/5ePq6461DmU1vR7h902vYRgfboqr/ZqXiufTnhbhPWiZ28Z
+         KVd+YM8kZkEetObFxW3pjscI5SaiTAHwfBztUl28Ryl6qiK3gYmt4ZJyn45y1V9dKCOD
+         tp6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735305473; x=1735910273;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iAXFsxzlonOLXIwCn7fwLxpEOxOZpKttSBYOZ0M8BhA=;
+        b=ij880ZavYyxQDeXJxZfHjR+BpsV8P1DZpkGAE5epnlEvdHI4PthFLaHMfcP+EQjd8K
+         R934cx/ZDa1MyUhHlc4LD/OaLjqn51BFFBHd4mdC4q3UzJ3iXr9tWZdB3moyBwiCEhne
+         oFsEikVeoGU1+X7L9N5jQ8zxPzePzURgfC+x+bf7bP1mLR6UzWSFPwFV5LmT8Tgaaxlz
+         j4Zo2s8F3iySYTa/3VycvJxFHFWOFar4gOQPHvk3tDJB8orp5TmUlooIJcc481h7/R0M
+         OodYp4e1h6MZmZwQArZAhG2uKS4WV9AVysP3AtNSMQRdiJWmLNLlKQnyWoQEzSmpafPf
+         NDCA==
+X-Forwarded-Encrypted: i=1; AJvYcCVJGHU03s+EQtCL6qWMn57p2ipI8QeAInNssXyNcibul0xRy8eLh07Om8UUuGJTS2cZBiBJbb6RlDFmE1huvQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAxh1wjCMSpC5b1V2aMzUm9kmknm2FKXLIVW/vMUNwADwXkqIe
+	lDATG9gQRzdH3TrXdHu1X2jxTrF4rGPher61NH3ObHZWQJrEd8JleCXbaSfbzmmjcEtqC2aVX+J
+	WdUvpDRoQSxsFg0o7hd5suOHpv+iL7syq4Lx3hw==
+X-Gm-Gg: ASbGncv/+4dgLDWI8EzKy75Z28ftH5QU93RcLIkfLejDXn5E6tnvrg9hYB0i7k5QVyx
+	jc+ErmIQtvcPzc4Zr5y8GFQVa1P75teaJU0/O
+X-Google-Smtp-Source: AGHT+IGJXNWgYAZk4yTpptTSbNQn9IKrdlEA0Qzrr4v2C2qdF2+VE2NVca0nGnqFhl/5SkEJUK38o98Ip0n+fUXbfnQ=
+X-Received: by 2002:a17:90a:da8e:b0:2ea:712d:9a82 with SMTP id
+ 98e67ed59e1d1-2f452ec6fadmr40836147a91.29.1735305472878; Fri, 27 Dec 2024
+ 05:17:52 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <5de24299.9cde.19407b99e5c.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: gigvCgD3HyGJhW5n27FKAA--.24661W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQ7CXmdufw6o2gACsz
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+References: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com> <20241211-rk3588-hdmi1-v2-2-02cdca22ff68@collabora.com>
+In-Reply-To: <20241211-rk3588-hdmi1-v2-2-02cdca22ff68@collabora.com>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Fri, 27 Dec 2024 18:47:41 +0530
+Message-ID: <CA+VMnFzJumtLmhFxNt8Mjzju7nC6wMWn2zDwpiRg3CEULRzDyA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: Add PHY node for HDMI1 TX
+ port on RK3588
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Alexandre ARNOUD <aarnoud@me.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_024659_384107_6F6115A0 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20241227_051754_217089_C86C6334 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,48 +94,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kishon@kernel.org, detlev.casanova@collabora.com, heiko@sntech.de, robh@kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIEtyenlzenRvZiwKCkF0IDIwMjQtMTItMjcgMTY6NTU6MjcsICJLcnp5c3p0b2YgS296bG93
-c2tpIiA8a3J6a0BrZXJuZWwub3JnPiB3cm90ZToKPk9uIFR1ZSwgRGVjIDI0LCAyMDI0IGF0IDA1
-OjE5OjEzUE0gKzA4MDAsIEFuZHkgWWFuIHdyb3RlOgo+PiBGcm9tOiBBbmR5IFlhbiA8YW5keS55
-YW5Acm9jay1jaGlwcy5jb20+Cj4+IAo+PiBUaGUgSERQVFggUEhZIG9uIHJrMzU3NiBpcyBjb21w
-YXRpYmxlIHdpdGggaXQgb24KPj4gcmszNTg4Lgo+Cj5QbGVhc2Ugd3JhcCBjb21taXQgbWVzc2Fn
-ZSBhY2NvcmRpbmcgdG8gTGludXggY29kaW5nIHN0eWxlIC8gc3VibWlzc2lvbgo+cHJvY2VzcyAo
-bmVpdGhlciB0b28gZWFybHkgbm9yIG92ZXIgdGhlIGxpbWl0KToKPmh0dHBzOi8vZWxpeGlyLmJv
-b3RsaW4uY29tL2xpbnV4L3Y2LjQtcmMxL3NvdXJjZS9Eb2N1bWVudGF0aW9uL3Byb2Nlc3Mvc3Vi
-bWl0dGluZy1wYXRjaGVzLnJzdCNMNTk3Cj4KPj4gCj4+IEFkZCBjb21wYXRpYmxlIGZvciBpdC4K
-Pgo+IkFkZCBjb21wYXRpYmxlIGZvciB0aGUgSERQVFggUEhZIG9uIHJrMzU3Niwgd2hpY2ggaXMg
-ZnVsbHkgY29tcGF0aWJsZQo+d2l0aCBmb28gYmFyLiIKPgo+T25lIHNlbnRlbmNlLgoKV2lsbCBk
-byBpbiBWMiwgdGhhbmtzLgoKPgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4gPGFuZHku
-eWFuQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4gCj4+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5n
-cy9waHkvcm9ja2NoaXAscmszNTg4LWhkcHR4LXBoeS55YW1sIHwgNyArKysrKy0tCj4+ICAxIGZp
-bGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+PiAKPj4gZGlmZiAt
-LWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcm9ja2NoaXAscmsz
-NTg4LWhkcHR4LXBoeS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Bo
-eS9yb2NrY2hpcCxyazM1ODgtaGRwdHgtcGh5LnlhbWwKPj4gaW5kZXggODRmZTU5ZGJjZjQ4Li4z
-NjRkYjIwNDljZTIgMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9waHkvcm9ja2NoaXAscmszNTg4LWhkcHR4LXBoeS55YW1sCj4+ICsrKyBiL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcm9ja2NoaXAscmszNTg4LWhkcHR4LXBoeS55
-YW1sCj4+IEBAIC0xMSw4ICsxMSwxMSBAQCBtYWludGFpbmVyczoKPj4gIAo+PiAgcHJvcGVydGll
-czoKPj4gICAgY29tcGF0aWJsZToKPj4gLSAgICBlbnVtOgo+PiAtICAgICAgLSByb2NrY2hpcCxy
-azM1ODgtaGRwdHgtcGh5Cj4+ICsgICAgb25lT2Y6Cj4+ICsgICAgICAtIGNvbnN0OiByb2NrY2hp
-cCxyazM1ODgtaGRwdHgtcGh5Cj4+ICsgICAgICAtIGl0ZW1zOgo+Cj5XaHkgaXRlbXM/Cj4KPj4g
-KyAgICAgICAgICAtIGVudW06Cj4KPldoeSBlbnVtPwo+Cj4+ICsgICAgICAgICAgICAgIC0gcm9j
-a2NoaXAscmszNTc2LWhkcHR4LXBoeQo+Cj5TbyB0aGF0J3MganVzdCBlbnVtIHdpdGggcHJldmlv
-dXMgZW50cnkuLi4gYnV0IHlvdSBzYWlkIGNvbXBhdGlibGUsIHlldAo+bm90aGluZyBpcyBoZXJl
-LiBUZXN0IHlvdXIgcGF0Y2hlcyAtIERUUyB3aWxsIGZhaWwgb24gdGhpcy4gRHJpdmVyIGFzCj53
-ZWxsIChhc3N1bWluZyB5b3UgZXhwcmVzc2VkIHByb3Blcmx5IGNvbXBhdGliaWxpdHkpLgoKSXMg
-dGhpcyB0aGUgcmlnaHQgd2F5IHRvIHdyaXRlIGl0IO+8n++8mgoKcHJvcGVydGllczoKICAgY29t
-cGF0aWJsZToKLSAgICBlbnVtOgotICAgICAgLSByb2NrY2hpcCxyazM1ODgtaGRwdHgtcGh5Cisg
-ICAgb25lT2Y6CisgICAgICAtIGVudW06CisgICAgICAgICAgLSByb2NrY2hpcCxyazM1ODgtaGRw
-dHgtcGh5CisgICAgICAtIGl0ZW1zOgorICAgICAgICAgIC0gZW51bToKKyAgICAgICAgICAgICAg
-LSByb2NrY2hpcCxyazM1NzYtaGRwdHgtcGh5CisgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAs
-cmszNTg4LWhkcHR4LXBoeQo+Cj5CZXN0IHJlZ2FyZHMsCj5Lcnp5c3p0b2YKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wed, 11 Dec 2024 at 04:37, Cristian Ciocaltea
+<cristian.ciocaltea@collabora.com> wrote:
+>
+> In preparation to enable the second HDMI output port found on RK3588
+> SoC, add the related PHY node.  This requires a GRF, hence add the
+> dependent node as well.
+>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+
+Tested-by: Jagan Teki <jagan@edgeble.ai> # edgeble-6tops-modules
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
