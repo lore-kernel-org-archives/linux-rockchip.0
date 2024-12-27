@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480C5E7718F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 17:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16C9E7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 17:41:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BG9nub8b8sjFxCnvdYiBv0QvyRxjitPmLlM/ZS056wo=; b=OyzyRsZ3MHVJF86cFPS31t8o5N
-	pjD+8d+MPHkU5gji8hMkzBkgRiSl40sijN5/eXeNkXyHMfibSxL5IA7HBI4VaLODNS/aW916G/f/P
-	PMv/v1omBQGvAtPv092eNxHOLeeGhZwdysvJRoTUYid8rJY5zlqeE8oIdceQqi8M1uqEe6cbe9x1n
-	78xF2f6jwuDl5f3uyxCA8XIm1QIa3QZFf9UEdNqzGr7dnb8pJqrNSIlEzjBIfHN5TyMNpFlVsTuR4
-	zU2qilsNNr4Sx102bKjA6UJw01jfQNgZW6wSey+Zxyxs8nXkSuaIQr4WDMGyZxnzcbEhUfc2V5LPv
-	FBFtdHdw==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YSqFeHhZpZwICs+SwrivXyEXfwCJRmeUtcTVs4ZLVPU=; b=dMf4tIoawkCV6DYlHQTHqEy/5e
+	LzO0bnmadC56P5I2FwaXXm2S7HZQyMhtgwvupblt1MPfjof/Tsgmu1u78+Ig08xXvwBQfSqePgbEP
+	bMzi2ypvaGonvd55nscEDisTbERsYn20D0btdJv/f7SNbJ7YPSspCm3+74kvFe6XQrhdUnO+93hP9
+	JXZCWLYGEN+DYY7SYI6qArg/O7H/RmxbDc5JLo1yKCNE9D5L/XPuSrlrQT8F3/7oN1nOUDqNYbT6i
+	eChgJNjK/oofdLZo6XC8GFxIo4NIEm+CGNZY17iNahWD7MQ4xKruOEfaq+1Tet+SnTQqu1ekNEjTU
+	EyUFDrKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRE81-00000000ikP-1HCg;
-	Fri, 27 Dec 2024 17:28:01 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tRELA-00000000jw9-1iHb;
+	Fri, 27 Dec 2024 17:41:36 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRDpX-00000000gWf-2vky;
-	Fri, 27 Dec 2024 17:08:57 +0000
+	id 1tREJz-00000000joO-2MqV;
+	Fri, 27 Dec 2024 17:40:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CF6825C586D;
+	Fri, 27 Dec 2024 17:39:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88DC9C4CED0;
+	Fri, 27 Dec 2024 17:40:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735321222;
+	bh=J0ATrIW5UmsXjG0M+E3OY4XBnQlH/p5LBOiOgE9mP8w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=G55cB9ZD43x64IkyWPMSD3L75JCZ0fYzOiZr+xEyYDf0vJHiwYTyeKO4dNRNYhUCq
+	 mqvrRP2oCQdUyDv4m2Lyacf9qb6ypjdeC2onHWErLX/wz01wmq8enpeNEofpHYWMJN
+	 VejPCEItnHHbTDCFynWmFNNmC4uy3R/PaizM4Ck58+gLjERb2Hr3woWSa3aqUsaFTz
+	 Ez2uLD1Lyrg7bre+ZJCVONe+VHLNNW6W7oPX2oFlXVdhcnm82ibi14wkXV9dHxOewF
+	 1mLLdZF409LVDyzUlazGmGyXegRS9ieTJb9gyKnU17ZvitYHeZe78XFEAmCDMBdTEM
+	 YJDgzda6Livog==
+Date: Fri, 27 Dec 2024 17:40:18 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Jagan Teki <jagan@edgeble.ai>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: arm: rockchip: Add Edgeble 6TOPS
+ Automotive Edge AI CM
+Message-ID: <20241227-tactile-recreate-9de95e933e49@spud>
+References: <20241227133420.169714-1-jagan@edgeble.ai>
+ <20241227133420.169714-2-jagan@edgeble.ai>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1735319333;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=V+aVcM9v3TNGbuFeqCMbEPfxEC3QzdL9gjWHd99xPEg=;
-	b=eKCauRBIFjWdhQRTKcWc34askPCgFz+/QKBbL9VFE3Xw9osf4GyHzpH6oZ+0TfW7tWmBHZ
-	LcLNZgo3NzmNalz+TyxcFPOSLN/OxRc1L82X8CaA+2tfOqT878hisB9g5f4tH8HhzKnQis
-	kx2LxlHV6EYSlHSC01/PNqeVRKtz/M6O+k6CEYa+UaYOftUJVGyDTzr2Y8kFHdLiSAkB+g
-	6uOJY8OC8vxwEn35a8jL+l9NHaztpL0b28LlD013SAedVySmi5yTIiEpImiBlhXu8ZWB56
-	/6lrON+YT/Xm0e2nARpCt8QIcr7L0D0DsiwEh7HhfoEDo00xFgQOKECMUAd0/A==
-Date: Fri, 27 Dec 2024 18:08:53 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Marc Zyngier <maz@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de, tglx@linutronix.de,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH 2/2] irqchip/gic-v3-its: Make "dma-noncoherent" preferred
- for RK358x errata
-In-Reply-To: <87bjwxoyzo.wl-maz@kernel.org>
-References: <cover.1735313870.git.dsimic@manjaro.org>
- <1382cd99ec213b5fb6f3b23d4e895f078f587b8f.1735313870.git.dsimic@manjaro.org>
- <87bjwxoyzo.wl-maz@kernel.org>
-Message-ID: <f90c39e7637eebb6e021e3a9754eaa4b@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <20241227133420.169714-2-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_090856_044038_9DB49B92 
-X-CRM114-Status: GOOD (  25.05  )
+X-CRM114-CacheID: sfid-20241227_094023_654115_EF722361 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,120 +70,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8736015727282695558=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Marc,
 
-On 2024-12-27 17:46, Marc Zyngier wrote:
-> On Fri, 27 Dec 2024 15:42:24 +0000,
-> Dragan Simic <dsimic@manjaro.org> wrote:
->> 
->> The preferred way to denote hardware with non-coherent DMA is to use 
->> the
->> "dma-noncoherent" DT property, [1] instead of relying on the 
->> compatibles. [2]
->> Alas, older versions of the Rockchip RK3588 and RK3588S SoC dts(i) 
->> files
->> failed to specify this DT property, which means that checking the 
->> compatibles
->> remains required for backward SoC dts(i) compatibility.
->> 
->> Let's have the Rockchip 3588001 hardware errata handled the preferred 
->> way,
->> with newer versions of the Rockchip RK3588, RK3588S and RK3582 SoC 
->> dts(i)
->> files that properly specify the "dma-noncoherent" DT properties at 
->> both the
->> GIC redistributor and the GIC ITS levels, while falling back to 
->> checking the
->> compatibles for backward RK3588 and RK3588S SoC dts(i) compatibility.
->> 
->> [1] 
->> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml
->> [2] 
->> https://lore.kernel.org/linux-rockchip/86msgoozqa.wl-maz@kernel.org/
->> 
->> Cc: Marc Zyngier <maz@kernel.org>
->> Cc: FUKAUMI Naoki <naoki@radxa.com>
->> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
->> ---
->>  drivers/irqchip/irq-gic-v3-its.c | 12 ++++++++++++
->>  1 file changed, 12 insertions(+)
->> 
->> diff --git a/drivers/irqchip/irq-gic-v3-its.c 
->> b/drivers/irqchip/irq-gic-v3-its.c
->> index fdec478ba5e7..982dcbb30f39 100644
->> --- a/drivers/irqchip/irq-gic-v3-its.c
->> +++ b/drivers/irqchip/irq-gic-v3-its.c
->> @@ -4747,6 +4747,18 @@ static bool __maybe_unused 
->> its_enable_rk3588001(void *data)
->>  {
->>  	struct its_node *its = data;
->> 
->> +	/*
->> +	 * The preferred way to denote hardware with non-coherent DMA is to 
->> use
->> +	 * the "dma-noncoherent" DT property, which the older RK3588 SoC 
->> dts(i)
->> +	 * files failed to specify, relying on the compatibles instead.
->> +	 *
->> +	 * Thus, check for the presence of "dma-noncoherent" DT property 
->> first,
->> +	 * to let the hardware quirk be handled the preferred way, and fall 
->> back
->> +	 * to checking the compatibles for backward dts(i) compatibility.
->> +	 */
->> +	if (!of_dma_is_coherent(to_of_node(its->fwnode_handle)))
->> +		return false;
->> +
->>  	if (!of_machine_is_compatible("rockchip,rk3588") &&
->>  	    !of_machine_is_compatible("rockchip,rk3588s"))
->>  		return false;
->> 
-> 
-> I'm sorry, but this patch serves no purpose. We already have a
-> workaround in place, and we don't need to handle it *twice*.
+--===============8736015727282695558==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="V32klBqQoWD9BeHs"
+Content-Disposition: inline
 
-Thanks for reviewing this series so quickly!
 
-Regarding handling the workaround twice, I agree that this patch
-is somewhat redundant, but without this patch and with the "dma-
-noncoherent" DT properties in the proper places we'll actually
-end up with some kind of double hanling.
+--V32klBqQoWD9BeHs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-More precisely, RDIST_FLAGS_FORCE_NON_SHAREABLE will be set twice,
-which doesn't do any harm, but it's something that made me twitch
-a bit and produce this patch.
+On Fri, Dec 27, 2024 at 07:04:18PM +0530, Jagan Teki wrote:
+> Edgeble Edge AI CM6C is an Edge AI Accelerator module based on Rockchip
+> RK3588M.
+>=20
+> Edgeble Edge AI CM6 Industrial IO board is an evaluation board that
+> would compatible with Edge AI CM6.
+>=20
+> Add bindings for it.
+>=20
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-> Worse, it is actively harmful. A DT that would only advertise the
-> property on the ITS would result in a broken system, while it would
-> work correctly with the current code.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Indeed, that possible issue bugged me as well.  Though, we can
-probably rest assured that the RK3588 dtsi files are changed to
-include the "dma-noncoherent" DT properties correctly.
+--V32klBqQoWD9BeHs
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> Additionally, look at what of_dma_is_coherent() does, and how it will
-> fetch a property that is potentially completely unrelated to the GIC
-> node, or eventually return some random default. The binding documents
-> the dma-noncoherent property as part of the relevant nodes, and not
-> anywhere else.
+-----BEGIN PGP SIGNATURE-----
 
-That's a possibility, but I think that the same argument about the
-RK3588 dtsi correctness may also apply here.
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ27mggAKCRB4tDGHoIJi
+0mE3AQC+09x5ioHgVwKJcDofflS/irAVJwe6Q9jkSmmlbO33dwEAwU4/+49hOw+6
+ZN6DN17kLUxKDhF9diGKOEuJZM7ycQI=
+=vQ8D
+-----END PGP SIGNATURE-----
 
-> In the end, this is just dead code, and potentially worse. So while
-> I'm rather supportive of your first patch in this series as it allows
-> OSs other than Linux to *maybe* avoid this hack, the Linux driver
-> doesn't need any change.
+--V32klBqQoWD9BeHs--
 
-I'm happy to drop this patch, but I just wanted to describe the
-rationale behind it, as explained above.
+
+--===============8736015727282695558==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8736015727282695558==--
+
