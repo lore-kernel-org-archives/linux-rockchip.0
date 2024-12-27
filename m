@@ -4,48 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF814E7718F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 07:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A776E7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 08:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wry1Q6Nsyf4VnfhvmpZV7RS2bDp7nKWLXr+i3+LKzTs=; b=mowyrg8vuioChY
-	7/CmjmGQullPTg/cYFdifsKRpAR5if4VNFBmA+J5KPTrwcFbJFpG6NHRvhqxdbTWlHEMDebL1FTmz
-	xb92sWmW1ehrVUbmAyULkEttGOsvrelHq7YQNU8y6Z1wKXkHOnOAEiD95EpGpaIryze3Ph+OE8Ajs
-	F1YO2n4l847lQY7DMiLg4R3sXoCfeglsXS+qQLxFBxbwx3C6JMrQwTBnPBAjgh0bLwhf47TdKMXwn
-	o3fchLCThv1izOS1jm6i1Sj+arq0EjiY1D87YkpLafruABSTi3aO8DqdmJ6HbVsn/YROy2vi9tBWE
-	/BQxJmXg6nCtNPQ+8x/g==;
+	List-Owner; bh=whU8WTHBO1ZUZnO2k47LS9PVRh1g+76JOiiquHag5JE=; b=s7CPBkvWCEZvsb
+	QvXupImyeS5qOqOj3HDOj1c5yLCZCfeLDPYM2pCFpnF8INjqWR9TKB9+v8YpDo0uOi2y2v9YFAjY/
+	1lINax0aFm9I61OpVnW8AApqn3c6/FhEXnXk45RACO7Kc8sjKX5pK68b61dMEMrR9Z7D0rZnG9zDI
+	B1S777z180hqK7+czCPgDoiNUJXQo90yqLtMiBIs1LbPmWFeDY7/5tSeg/V+ZX3c7GhjGwb89TsEv
+	BKacIowDufXgrxODH67eBEpIGgSYRVyo/WbEqtHCDHoNO6wYjkcY4DlSwR1NXHGc8IyBFwvvMZ4S3
+	GcWRZRjLYT5yuEa9cBvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR5Bk-0000000HJjx-02MP;
-	Fri, 27 Dec 2024 07:55:16 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tR5aj-0000000HM8p-1ghl;
+	Fri, 27 Dec 2024 08:21:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR5AY-0000000HJYm-0Y6V;
-	Fri, 27 Dec 2024 07:54:03 +0000
+	id 1tR5ZX-0000000HLx1-2nIj;
+	Fri, 27 Dec 2024 08:19:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 91FEFA41239;
-	Fri, 27 Dec 2024 07:52:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C94FC4CED0;
-	Fri, 27 Dec 2024 07:54:00 +0000 (UTC)
-Date: Fri, 27 Dec 2024 08:53:57 +0100
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 10/17] dt-bindings: display: rockchip: analogix-dp:
- Add support to get panel from the DP AUX bus
-Message-ID: <uwzrv4jgqqx6ge3lh3if37qvb6w7ubkusohunbn7ukmq5tt6du@e5fwoik4tex2>
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-11-damon.ding@rock-chips.com>
+	by dfw.source.kernel.org (Postfix) with ESMTP id 654EA5C5789;
+	Fri, 27 Dec 2024 08:19:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D53F3C4CED0;
+	Fri, 27 Dec 2024 08:19:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735287590;
+	bh=0agEqi+5wy6dQCun+Z5776mCYbsO105lHFh4cC3fVss=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=unro+TWKsFjwnlQEzLbzqHKh4IKhT5lvQIxljrTMtuGSHUKqkeGeCxI46CyB+GhxS
+	 8dQntWzKEYLpIWgSXajYEG9fL8OIQQAGekOZ1jGGdg1T8I7llCLXLgrLua9kXVZwAx
+	 jtpRGh281Ru3iIFANmHpk9vNI1uE+9SagfYWQXKTYECYyDmtI7Rc4EwJl4ZlWU/usM
+	 b8luzAhs7czcnDVzMJ9My1zG3d3UeRb1uIJIh5/bWLCpKTzSukENqnfJ69EFVEM63s
+	 iMuMWepmOufWdhKrpsaxZLNbkIvst7gAHUp6sbfask0q7pVv6Bgl4vFAODnz0xpkOa
+	 5DPbSP4V+8pcA==
+Date: Fri, 27 Dec 2024 09:19:47 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Ivan Sergeev <ivan8215145640@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add BigTreeTech CB2
+ and Pi2
+Message-ID: <rchtzv3pkzef4jznrxnqwws5cexdsheccsu2jpu2p65zkdeya5@tnlps3gs35sb>
+References: <20241227-bigtreetech-cb2-v3-0-91c556adcffe@gmail.com>
+ <20241227-bigtreetech-cb2-v3-1-91c556adcffe@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241226063313.3267515-11-damon.ding@rock-chips.com>
+In-Reply-To: <20241227-bigtreetech-cb2-v3-1-91c556adcffe@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241226_235402_239766_777B873E 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241227_001951_750902_D66AF44C 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,29 +70,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 26, 2024 at 02:33:06PM +0800, Damon Ding wrote:
-> According to Documentation/devicetree/bindings/display/dp-aux-bus.yaml,
-> it is a good way to get panel through the DP AUX bus.
+On Fri, Dec 27, 2024 at 06:10:13AM +0300, Ivan Sergeev wrote:
+> BigTreeTech CB2 and Pi2 are Rockchip RK3566 based boards
 > 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> 
-> Changes in v4:
-> - Move the dt-bindings commit before related driver commits
+> Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Changelog does not go to commit msg.
+---
 
-Please run scripts/checkpatch.pl and fix reported warnings. After that,
-run also and (probably) fix more warnings. Some warnings can be
-ignored, especially from --strict run, but the code here looks like it
-needs a fix. Feel free to get in touch if the warning is not clear.
+<form letter>
+This is an automated instruction, just in case, because many review tags
+are being ignored. If you know the process, you can skip it (please do
+not feel offended by me posting it here - no bad intentions intended).
+If you do not know the process, here is a short explanation:
+
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions of patchset, under or above your Signed-off-by tag, unless
+patch changed significantly (e.g. new properties added to the DT
+bindings). Tag is "received", when provided in a message replied to you
+on the mailing list. Tools like b4 can help here. However, there's no
+need to repost patches *only* to add the tags. The upstream maintainer
+will do that for tags received on the version they apply.
+
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+</form letter>
 
 Best regards,
 Krzysztof
