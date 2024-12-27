@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A776E7718B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 08:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780BFE7718B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Dec 2024 08:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=whU8WTHBO1ZUZnO2k47LS9PVRh1g+76JOiiquHag5JE=; b=s7CPBkvWCEZvsb
-	QvXupImyeS5qOqOj3HDOj1c5yLCZCfeLDPYM2pCFpnF8INjqWR9TKB9+v8YpDo0uOi2y2v9YFAjY/
-	1lINax0aFm9I61OpVnW8AApqn3c6/FhEXnXk45RACO7Kc8sjKX5pK68b61dMEMrR9Z7D0rZnG9zDI
-	B1S777z180hqK7+czCPgDoiNUJXQo90yqLtMiBIs1LbPmWFeDY7/5tSeg/V+ZX3c7GhjGwb89TsEv
-	BKacIowDufXgrxODH67eBEpIGgSYRVyo/WbEqtHCDHoNO6wYjkcY4DlSwR1NXHGc8IyBFwvvMZ4S3
-	GcWRZRjLYT5yuEa9cBvw==;
+	List-Owner; bh=QdfmFPGbV7t1wNRx3WuGH3NSYGKHOXMaTw24K1vaMgU=; b=LlpbUFByZcNO7M
+	WoC/Fkq9nymK2p1Ex695/Rr/ZuuZtF/MQvSCQcPk7gH1iW6VFGw3wKuoYVHLKY4yD/n81+wIlIhAg
+	FdAocEesyVTNftEyh5ifSe7+IWbXN0keJcALWaPksA411/rdhgnEg/1Wrpt5hV/0lhbC3yC08+vQm
+	uVPvCD0uRPug1bIv+lPo0gHnJRESjnz0VZ2ATiPEXKluINsJq96cS/rP9rApD4TpULtMi5olKUPq0
+	DrdMQqScTx3nDQhMd6IyPqkfmUAiZf73qHpL0alg1uJRSr/5VSLnJ2HkyqKdQ3D73Tzg0P+cZGHAk
+	0ABvSmKoUW8qiANRlP5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR5aj-0000000HM8p-1ghl;
-	Fri, 27 Dec 2024 08:21:05 +0000
+	id 1tR5ge-0000000HMpQ-2STq;
+	Fri, 27 Dec 2024 08:27:12 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tR5ZX-0000000HLx1-2nIj;
-	Fri, 27 Dec 2024 08:19:52 +0000
+	id 1tR5fR-0000000HMiL-3zDo;
+	Fri, 27 Dec 2024 08:25:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 654EA5C5789;
-	Fri, 27 Dec 2024 08:19:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D53F3C4CED0;
-	Fri, 27 Dec 2024 08:19:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A49EB5C5A49;
+	Fri, 27 Dec 2024 08:25:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5452BC4CED0;
+	Fri, 27 Dec 2024 08:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735287590;
-	bh=0agEqi+5wy6dQCun+Z5776mCYbsO105lHFh4cC3fVss=;
+	s=k20201202; t=1735287957;
+	bh=kkic30YQ5TOo/SlO6pr1SQR1B+qz6Q+mjSYY2kIShSc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=unro+TWKsFjwnlQEzLbzqHKh4IKhT5lvQIxljrTMtuGSHUKqkeGeCxI46CyB+GhxS
-	 8dQntWzKEYLpIWgSXajYEG9fL8OIQQAGekOZ1jGGdg1T8I7llCLXLgrLua9kXVZwAx
-	 jtpRGh281Ru3iIFANmHpk9vNI1uE+9SagfYWQXKTYECYyDmtI7Rc4EwJl4ZlWU/usM
-	 b8luzAhs7czcnDVzMJ9My1zG3d3UeRb1uIJIh5/bWLCpKTzSukENqnfJ69EFVEM63s
-	 iMuMWepmOufWdhKrpsaxZLNbkIvst7gAHUp6sbfask0q7pVv6Bgl4vFAODnz0xpkOa
-	 5DPbSP4V+8pcA==
-Date: Fri, 27 Dec 2024 09:19:47 +0100
+	b=SBUIrJGgQbqqjn53lLUdo4Aacmg8K7pDiYaUlnE4TlAVywF6qPIRd+p2PfXu+HCXO
+	 qeLSULeJUxuqum/mCiKLzfCCO9Abwtrlbgcer1t+Eq52WUmVh7FBc7B9GJQWSE3kfz
+	 p9sZ6Ds1/tS6QVZU6vJJ3bWzARF7AbcdJugflc6cTXh/2CsM+vBqd8e4jhLj7OBp67
+	 7BXyfLa5Cg6ILP3Kz5DSb83cR9XnPiXurrLXZnnEPpEkIY7m70Bi2x+uO4LtPVMJki
+	 iu+1fHTUGBIF4bNf4+/0W/LKO0bP01LP+EjUMX2yYLKDp8dsdRI9WYgj7Co5OX92OX
+	 rvDDckw//yiMQ==
+Date: Fri, 27 Dec 2024 09:25:53 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Ivan Sergeev <ivan8215145640@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add BigTreeTech CB2
- and Pi2
-Message-ID: <rchtzv3pkzef4jznrxnqwws5cexdsheccsu2jpu2p65zkdeya5@tnlps3gs35sb>
-References: <20241227-bigtreetech-cb2-v3-0-91c556adcffe@gmail.com>
- <20241227-bigtreetech-cb2-v3-1-91c556adcffe@gmail.com>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+	Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>, 
+	linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3562 cru bindings
+Message-ID: <krrqtjllx6akrurefbtuhgxw6bwmkiro5rtvdexoevjyufm2uz@r5biw7kbttyr>
+References: <20241224092310.3814460-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241227-bigtreetech-cb2-v3-1-91c556adcffe@gmail.com>
+In-Reply-To: <20241224092310.3814460-1-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241227_001951_750902_D66AF44C 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20241227_002558_039110_9E73C96A 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +75,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 27, 2024 at 06:10:13AM +0300, Ivan Sergeev wrote:
-> BigTreeTech CB2 and Pi2 are Rockchip RK3566 based boards
+On Tue, Dec 24, 2024 at 05:23:08PM +0800, Kever Yang wrote:
+> Document the device tree bindings of the rockchip rk3562 SoC
+> clock and reset unit.
 > 
-> Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 11 +++++++++++
->  1 file changed, 11 insertions(+)
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+A nit, subject: drop second/last, redundant "bindings". The
+"dt-bindings" prefix is already stating that these are bindings.
+See also:
+https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
----
 
-<form letter>
-This is an automated instruction, just in case, because many review tags
-are being ignored. If you know the process, you can skip it (please do
-not feel offended by me posting it here - no bad intentions intended).
-If you do not know the process, here is a short explanation:
+s/rk3562/Rocchip RK3562/
+or whatever your proper name is (and use proper capitalized parts of
+products)
 
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-versions of patchset, under or above your Signed-off-by tag, unless
-patch changed significantly (e.g. new properties added to the DT
-bindings). Tag is "received", when provided in a message replied to you
-on the mailing list. Tools like b4 can help here. However, there's no
-need to repost patches *only* to add the tags. The upstream maintainer
-will do that for tags received on the version they apply.
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3562-cru
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 1
+> +
+> +  "#reset-cells":
+> +    const: 1
+> +
+> +  clocks:
+> +    maxItems: 2
 
-https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
-</form letter>
+
+Why clocks are not required?
+
+> +
+> +  clock-names:
+> +    items:
+> +      - const: xin24m
+> +      - const: xin32k
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - "#clock-cells"
+> +  - "#reset-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    clock-controller@ff100000 {
+> +      compatible = "rockchip,rk3562-cru";
+> +      reg = <0xff100000 0x40000>;
+> +      #clock-cells = <1>;
+> +      #reset-cells = <1>;
+
+Why clocks are not here?
 
 Best regards,
 Krzysztof
