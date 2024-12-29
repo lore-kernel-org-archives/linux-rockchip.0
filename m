@@ -4,58 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA050E7718F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 06:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E1DE7718B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 10:12:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oknvf8ZGg8ss4uOgZPK5UQjChpw4Vf0TylAaJXuJ0C4=; b=ISbS2eHsu0myQo
-	nhoFgbrGwXnTvwZl9hFvBsEP3KLfr2x+aCngiD1tGeLGCjqoTZkXk6+DLmrwVUAt4yGKfIUUtAZfZ
-	aDFq67XXXdRF9VVbf7WlGzY4VIqhbZ0BnNWSM+hRZ5PKDp4sHJebMYRAjt+BVTKzXX9u9qvL5/+3O
-	zFetvpK5oIoEO67yBuo0us5qNWXD2mKhDy+HYiDe/GRKA9w8XWfu8b+HJeDHB4hsX0S1I6KgA7wc8
-	dc9AZ6xD4FNs4SxIuzZ0TlKBaww7fbXnQDI7eZdmw9JcUImVnLpYkekXS1PLgutTp0urdp4iBeKXn
-	F9frnBPoMDx2gRohY4xg==;
+	List-Owner; bh=Nt8n+sXat9IvKafxmXWsqXjXQzbtYagsq8bYZroZmTc=; b=e5eu7sYn4Lces9
+	jjbHFy6UBHdNk3c55cvOXk4HAjDLymUSV/nNiSfcCgs8tO9fgH/Rm8SkWcRpccjah8rz6spi8+juA
+	uIOCETYkT+v3KNNxN+f70IYcclZHtBBwaB5wNBqs4K7cwXF62fO6qjU+2h3Zoj1lezs4I0hDDZlV/
+	OOJr8BxFqBwp+2TqwM1/H/TXPwnTR7HHssLAtKRXLoJZnJ20n0E6DRUt1zAoYq2VUoIHDGlNlr1iu
+	AzpmzEYNlblmEDJASe9R35/IVXPSjuYtUK5XlSDSXMJn8jJ/ldxBaY/TzVhF3Yzvm9WscTauxo1BJ
+	s7n83c8fVTNA6dLExtMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRn88-0000000306j-2OC1;
-	Sun, 29 Dec 2024 06:50:28 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRn6v-00000002zxW-16ss;
-	Sun, 29 Dec 2024 06:49:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=MdgozdjrCxolx9SB5vbH0N/QD7pGNbLmzkrFN04lyWM=; b=K
-	GM8x0T+FK+DPvKGKldZIZ21Dv+Gj4BQtgmLUVjAFji+N8MKyt4WtV7GbA1ngFLRr
-	vsRAjfPj8EUFXIftarmPgD/440Y7lHmGtIWW01fTHxaE0GK6hl0lGtNzayP9ptK6
-	nl90VM7FWrcf5svriPwLQPAmzgQQNkuqARrBENfE8w=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-135 (Coremail) ; Sun, 29 Dec 2024 14:48:36 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Sun, 29 Dec 2024 14:48:36 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Subject: Re:Re: [PATCH v2 0/8] Add display subsystem dt node on rk3576
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <4950097.GXAFRqVoOG@diego>
-References: <20241228122155.646957-1-andyshrk@163.com>
- <4950097.GXAFRqVoOG@diego>
-X-NTES-SC: AL_Qu2YB/ieu0Eq4CafY+lS3TJ694VEL57u+a5GusA2ecAsnATi4iQeZGRsL2rN79iDOb9IyTpUTG/GyHU6hCyg
+	id 1tRqHQ-00000003EkS-0Eay;
+	Sun, 29 Dec 2024 10:12:16 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tRqFH-00000003EPL-1hEs
+	for linux-rockchip@lists.infradead.org;
+	Sun, 29 Dec 2024 10:10:04 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-43658c452f5so12065715e9.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 29 Dec 2024 02:10:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1735467001; x=1736071801; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=khsQQuQ61UqfLoQjYcyUre/fUsjYTl1Aj9lrnLjhkeI=;
+        b=wY8/jCTMW4jHKFgELcdwZcDcLK3/X5Am3wUEH01MulEoQrnAGBSA36vDoNCh72N2fu
+         1X8UiKpGeyF5awiXov/AfPyaNPQOgS1TbnrhPUpetgsAp0mguxZA3eJ1C+kP/WiTXCGf
+         39tksjZ+r/LqelOnIzIjGXGWI61VyXTHMWMZi5MJS2vfvzbH+pfKmzjdDAHB6D4eT9uY
+         BiyEnrv/uls+oJ9n6LAfRYnAbSbvPsiSieJLcgtVuC8bA5p1VXF6f9J+wIU1igCcVb0F
+         pebSuC+tcVTuSGl6oYtzqGFhnq6gRpC93XC5oCuMi7VpbFrxfNQ6bDiLLHPxI0kh4Cct
+         qTcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735467001; x=1736071801;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=khsQQuQ61UqfLoQjYcyUre/fUsjYTl1Aj9lrnLjhkeI=;
+        b=PtSOByWnrp2Xev9mr/6rMOVyBtJL967RoedHx5YqF+b3T+ehuR+qOfBPXjpxIyJu7Y
+         6LmC9NgfA/vymnpqmKQkZxJNTTMkQWB4EfRYeclpuuErw84eX38s8KaNTmfFhf4t8Hke
+         XaZE7ULf5I5Qc0VgWD+NTL4J5OulFpBFzVhksPC2NBykKFTqTRS5auuw6QR3Mqix/TGY
+         e3ohWBMH3SKeQRnK0MKlP/bbYQwrjPNnlVaPPFlm3bCbZjxJWHqB01NCpFjeAXwS68KB
+         4KVvtZt+PF6aDBHsn8K0HypzRn0IlOiGGNNncL1T7Cu5rwIrDZowufm2M7ocHelOirFa
+         u4YA==
+X-Forwarded-Encrypted: i=1; AJvYcCVOI1OE28afH8JvDbrzjGSRau9SAxkbpFXFD6KTP4LCc6IoL59yWZ4ApYkHBhU7DGd+nKwxOBDiGa7JmnvIUA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyArWgRD/vs4np8B92KXTKH3fnmtX83XWvo6YAiP1B59iVSt7GR
+	sEKZJ8wdIXNbuqwK1zf6483E56bb5IKxkFgRci8MBsxqkZvWrwtMJkoa6ldS1yQ=
+X-Gm-Gg: ASbGncu7iixavj+L1iCC3cc+8zM77dFlR7plnf5YEiVaA+9BFelxJ/iXItuM0B2tQQh
+	XaHZ8NrQnA9JHqC+XPgg13wiC5BP8ZWs/NEs/cWnosuPg8b9nIg5j7oH90Xd8kzV1bpZyxJLk02
+	mKlmd2wqGqkKVX/gAKKg9U2T/1YUyXbJjI3vwdE3eDT1zvVb2LXTbsCaUBRiRHw7p5OeLYYSfVu
+	csVXBEDAASZxIdUPnSXg+yYZta7yBhpAf+ba8gWDGmUcwLPVScedbZpRYAvee3a3nPv0AG9
+X-Google-Smtp-Source: AGHT+IHe3HeMgdBYJg120JuyBz3xv5V39AfkqdmPSMsMsnaeeM2fsQk5UW2Kgj9EB8ub9FEeeqqGaw==
+X-Received: by 2002:a05:600c:4ec7:b0:436:6460:e688 with SMTP id 5b1f17b1804b1-43668bab39amr110519775e9.9.1735467001515;
+        Sun, 29 Dec 2024 02:10:01 -0800 (PST)
+Received: from [127.0.1.1] ([178.197.223.165])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436611ea423sm325608385e9.2.2024.12.29.02.09.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Dec 2024 02:10:00 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: linux-kernel@vger.kernel.org, Conor Dooley <conor@kernel.org>
+Cc: Conor Dooley <conor.dooley@microchip.com>, 
+ Dinh Nguyen <dinguyen@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Huacai Chen <chenhuacai@kernel.org>, 
+ WANG Xuerui <kernel@xen0n.name>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ imx@lists.linux.dev, loongarch@lists.linux.dev
+In-Reply-To: <20240717-partake-antivirus-3347e415fb7d@spud>
+References: <20240717-anvil-ashy-544e80a1317c@spud>
+ <20240717-partake-antivirus-3347e415fb7d@spud>
+Subject: Re: (subset) [PATCH v1 4/4] ARM: dts: socfpga: remove non-existent
+ DAC from CycloneV devkit
+Message-Id: <173546699896.10551.718059378827423411.b4-ty@linaro.org>
+Date: Sun, 29 Dec 2024 11:09:58 +0100
 MIME-Version: 1.0
-Message-ID: <6ff7470.1060.194112c804a.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: hygvCgDnb6zE8HBnsv1KAA--.47223W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqB-EXmdw4CsLugADsD
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241228_224913_653514_923B6D32 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20241229_021003_453395_6C9B7DA6 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,60 +102,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, iommu@lists.linux.dev, devicetree@vger.kernel.org, joro@8bytes.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org, detlev.casanova@collabora.com, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, cl@rock-chips.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIaSBIZWlrbywKCkF0IDIwMjQtMTItMjkgMDI6MzY6MzYsICJIZWlrbyBTdMO8Ym5lciIgPGhl
-aWtvQHNudGVjaC5kZT4gd3JvdGU6Cj5IaSBBbmR5LAo+Cj5BbSBTYW1zdGFnLCAyOC4gRGV6ZW1i
-ZXIgMjAyNCwgMTM6MjE6NDMgQ0VUIHNjaHJpZWIgQW5keSBZYW46Cj4+IEZyb206IEFuZHkgWWFu
-IDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gCj4+IAo+PiBBcyB0aGUgVk9QWzBdIGFuZCBI
-RE1JWzFdIGRyaXZlciBoYXZlIGFscmVhZHkgYmVlbiBzdWJtaXR0ZWQgZm9yIHJldmlldy4KPj4g
-VGhpcyBzZXJpZXMgc2VuZCBhbGwgZGlzcGxheSByZWxhdGVkIGRldmljZSB0cmVlIHBhcnQgdG9n
-ZXRoZXIuCj4+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI0
-MTIxOTA3MzkzMS4zOTk3Nzg4LTEtYW5keXNocmtAMTYzLmNvbS9ULyN0Cj4+IFsxXSBodHRwczov
-L2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI0MTIyNTEwMzc0MS4zNjQ1OTctMS1h
-bmR5c2hya0AxNjMuY29tL1QvI3QKPgo+bm90IHRvIGNvbmZ1c2UgeW91IHRvbyBtdWNoLCBJIG1h
-aW5seSBtZWFudCB0aGF0IHdlIHdlcmUgbWlzc2luZyB0aGUKPiJhcm02NDogZHRzOiByb2NrY2hp
-cDoiIHBhdGNoZXMgZnJvbSB0aGlzIHNlcmllcy4KClNvcnJ5LCBJIG1pc3VuZGVyc3Rvb2QgaXQg
-aW4gVjIgLiBCZWZvcmUgZ28gdG8gdGhlIG5leHQgc3RlcCwgSSB3b3VsZCBsaWtlIHRvIGNvbmZp
-cm0gaXQgYWdhaW46CkRvZXMgdGhhdCBtZWFuIEkgc2hvdWxkOgoxLiAgdGhlIGR0cyBwYXRjaGVz
-KDYvOCwgNy84IDgvOCkgc2hvdWxkIGJlIHNlbnQgYXMgYSBzZXBhcmF0ZSBzZXJpZXMuCjIuIFBB
-VENIIDUvOCBzaG91bGQgc3RpbGwgZ28gd2l0aCB0aGUgcmszNTc2IHZvcCBkcml2ZXJbMF0KMy4g
-UEFUQ0ggMy84IHNob3VsZCBzdGlsbCBnbyB3aXRoIHRoZSByazM1NzYgaGRtaSBkaXJ2ZXJbMV0K
-NC4gUEFUQ0ggMS84LCAyLzggNC84ICBzaG91bGQgc3RpbGwgYmUgc2VudCBzZXBhcmF0ZSAgPwoK
-IAo+Cj5UaGUgZHQtYmluZGluZyBwYXRjaGVzIGFyZSAoYWxyZWFkeSkgcGFydCBvZiB0aGUgZHJp
-dmVyIGNoYW5nZXMgYW5kCj5zaG91bGQgc3RheSBwYXJ0IG9mIHRob3NlIHNlcmllcywgdG8gcHJl
-dmVudCBjb25mdXNpb24gb2Ygd2hhdCBwYXJ0IGdvZXMKPndoZXJlIDotKSAuCj4KPgo+SGVpa28K
-Pgo+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+IC0gV3JhcCBjb21taXQgbWVzc2FnZSBhY2NvcmRpbmcg
-dG8gTGludXggY29kaW5nIHN0eWxlCj4+IC0gTWFrZSAicm9ja2NoaXAscmszNTg4LWhkcHR4LXBo
-eSIgY29uc3QgZm9yICJyb2NrY2hpcCxyazM1NzYtaGRwdHgtcGh5Igo+PiAtIE1ha2UgZGVjbGFy
-ZSBwaHkvcm9wbGwvbGNwbGwgcmVzZXQgbGluZSBhcmUgbm90IGV4aXQgb24gcmszNTc2Cj4+IC0g
-ZGVzY3JpYmUgY29uc3RyYWludCBTT0MgYnkgU09DIGZvciB2b3AyIGJpbmRpbmcsIGFzIGludGVy
-cnVwdHMgb2YgcmszNTc2Cj4+ICAgaXMgdmVyeSBkaWZmZXJlbnQgZnJvbSBvdGhlcnMKPj4gLSBE
-cm9wIEtyenlzenRvZidzIFJldmlld2VkLWJ5IGZvciB2b3BwMiBiaW5kaW5ncywgYXMgdGhpcyB2
-ZXJzaW9uIGNoYW5nZWQgYSBsb3QuCj4+IAo+PiBDaGFuZ2VzIGluIHYxOgo+PiAtIG9yZGVyZWQg
-Ynkgc29jIG5hbWUKPj4gLSBBZGQgZGVzY3JpcHRpb24gZm9yIG5ld2x5IGFkZGVkIGludGVycnVw
-dAo+PiAKPj4gQW5keSBZYW4gKDgpOgo+PiAgIGR0LWJpbmRpbmdzOiBzb2M6IHJvY2tjaGlwOiBh
-ZGQgcmszNTc2IGhkcHR4cGh5IGdyZiBzeXNjb24KPj4gICBkdC1iaW5kaW5nczogcGh5OiBBZGQg
-cmszNTc2IGhkcHR4IHBoeQo+PiAgIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiByb2NrY2hpcDogQWRk
-IHJrMzU3NiBoZG1pIGNvbnRyb2xsZXIKPj4gICBkdC1iaW5kaW5nczogaW9tbXU6IHJvY2tjaGlw
-OiBBZGQgUm9ja2NoaXAgUkszNTc2Cj4+ICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IHZvcDI6IEFk
-ZCByazM1NzYgc3VwcG9ydAo+PiAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgdm9wIGZvciBy
-azM1NzYKPj4gICBhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIGhkbWkgZm9yIHJrMzU3Ngo+PiAg
-IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBFbmFibGUgaGRtaSBkaXNwbGF5IG9uIHNpZ2U1Cj4+IAo+
-PiAgLi4uL3JvY2tjaGlwL3JvY2tjaGlwLHJrMzU4OC1kdy1oZG1pLXFwLnlhbWwgIHwgICAxICsK
-Pj4gIC4uLi9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcDIueWFtbCAgICAgICB8ICA3MCAr
-KysrKysrKy0tCj4+ICAuLi4vYmluZGluZ3MvaW9tbXUvcm9ja2NoaXAsaW9tbXUueWFtbCAgICAg
-ICAgfCAgIDEgKwo+PiAgLi4uL3BoeS9yb2NrY2hpcCxyazM1ODgtaGRwdHgtcGh5LnlhbWwgICAg
-ICAgIHwgIDYyICsrKysrKy0tLQo+PiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tj
-aGlwL2dyZi55YW1sIHwgICAxICsKPj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYtYXJt
-c29tLXNpZ2U1LmR0cyB8ICA0NyArKysrKysrCj4+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzU3Ni5kdHNpICAgICAgfCAxMjYgKysrKysrKysrKysrKysrKysrCj4+ICA3IGZpbGVz
-IGNoYW5nZWQsIDI3NiBpbnNlcnRpb25zKCspLCAzMiBkZWxldGlvbnMoLSkKPj4gCj4+IAo+Cj4K
-Pgo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+
+On Wed, 17 Jul 2024 10:37:56 +0100, Conor Dooley wrote:
+> There is no Rohm DAC on the CycloneV devkit according to the online
+> documentation for it that I could find, and it definitely does not have
+> a dh2228fv as this device does not actually exist! Remove the DAC node
+> from the devicetree as it is not acceptable to pretend to have a device
+> on a board in order to bind the spidev driver in Linux.
+> 
+> 
+> [...]
+
+Applied, thanks!
+
+[4/4] ARM: dts: socfpga: remove non-existent DAC from CycloneV devkit
+      https://git.kernel.org/krzk/linux-dt/c/ba9dfa76ebb030df6b605e16239a8052c3c02171
+
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
