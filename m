@@ -4,64 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E749CE7718B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 11:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83627E7718F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 14:37:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uvT1rLJ2m5FKm7xq9lPx3kHhuJBtwKInKzXXd9H3FkE=; b=aW6aUdbkj5xFU8
-	ZG55AhDEah6t+67oAqS1ZBTBhyRyTj7kvQfAMrBJI7ouJIkGjuVK1zcAVtbHAeFSi3dhThinmIaHB
-	S/0DZAOC9Mf9eFkonFFZQalbgRr2dt6TwtSGBbKFWRxjDtBH6lT4Khmo+gCqnXUL11NhAQsWZ/mzF
-	5hYJ3097+L80wbb/K+OMl4CaIIe1y/LAlg5y0aL7KIToH+Wi1qHAID9wicyW/P8OxV0YCNkSJdN9S
-	OQzHSqF10VXNGrUvxYyJh9GxtpifmdPDQ8W1KZEgYJ90qUFhRApk8zP7rJoHHRyVnefWmL5eFn66G
-	b9rA21ZG366jPj7FmB0g==;
+	List-Owner; bh=ko6Me+twGOY31NPAq4QaTNiO7ZmK8hzAXgM7tuNdePQ=; b=q7XB1j8+wgjc3P
+	IScDkEPl+0989eDnWpwe2JXYC9vuuF7ZfhcXDt/7dFhCBVKzD7H/esQtT2xJTAYsA2WFIuWnTd/2w
+	9QKqWznR4mIckth4x9++9apDNrkHj+alhTpvcf/ldEJybex4rjiGiFB8UGMR7/zEk1lIA/O+D9SZo
+	tm7QNq/hsS9Dw/gHTRixK92SupsH7wFpPRnemlZHBXcP/xfBiQRMBByUebCaByVlG5XX2jlkyL9Go
+	7vel8t0rBMAx62LlPlc95iWltmzJdKMLPUQIQZuCaCMcNMRib4y7VzxJ2zfOzS3tYZxgpdKpW1lHd
+	0TWzdV39QQUVSvSpYJwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRr3G-00000003Iip-3h4Q;
-	Sun, 29 Dec 2024 11:01:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tRuQ5-00000003V9h-1hmR;
+	Sun, 29 Dec 2024 14:37:29 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRr3F-00000003IiO-03Y1
-	for linux-rockchip@lists.infradead.org;
-	Sun, 29 Dec 2024 11:01:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 98BFBA409F2;
-	Sun, 29 Dec 2024 10:59:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1033C4CED1;
-	Sun, 29 Dec 2024 11:01:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735470098;
-	bh=HIUKol1lhJ7a6WQ5Eg6nWAR+OEd8LhPQUbSzdcQkHuc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D2feMjbtDFMKAO1IfK3+OFmqOkLiVabCVcl3IoRQZuFmRMA2emmT0OltUSHcyZ8E0
-	 M1mMNqUiN32ZaqH9lsb7niozAms+rnwJxyJldyQvBPJWLI8wTUOibEiEF9eFUHnPT2
-	 LTU4xG6F5mml6W2+/5gLscFLjliCgY/XBTIYhl2oVlNZGueOG/johznls+rKmqmhvf
-	 wloUsXL14lOJq92BC1B0xEo9YTaiLl/ya3ivKFizjE/HfsFVZ6PT0GxZcWonvGw+h/
-	 ENh0JayomOlp//l8oy7WsACS/1+idU9az0pFypdPH0j2LrkBRhS1KNcichtV518SWU
-	 hbJwFF1YZN3Vg==
-Date: Sun, 29 Dec 2024 12:01:35 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, dsimic@manjaro.org, jonas@kwiboo.se, macromorgan@hotmail.com, 
-	liujianfeng1994@gmail.com, dmt.yashin@gmail.com, tim@feathertop.org, 
-	marcin.juszkiewicz@linaro.org, michael.riesch@wolfvision.net, sebastian.reichel@collabora.com, 
-	alchark@gmail.com, inindev@gmail.com, jbx6244@gmail.com, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
-Message-ID: <2qhpltryco3yqzmiu42ojf2wtekwevikxrt3v6myb73izzgxc3@6wq34glt7rmo>
-References: <20241226005845.46473-1-naoki@radxa.com>
- <20241226005845.46473-2-naoki@radxa.com>
+	id 1tRuOr-00000003V2X-3EwN;
+	Sun, 29 Dec 2024 14:36:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=xIeTXK2tT8GiOrGH1G6rXzh8bEX4/s2CJjW9ca6ycWY=; b=qKVQP+UHNn1KBZzCZwhZEP+dv5
+	JVeHDMjBlFKGne6r2oerhTUo6xr4REMBXAj9Zsp4HrkIFIH5fyvmXDwITnbI0H/wSNZbUu0eqMw3c
+	Dlsclx1C5/gKngjj6XIB9hEGZxmX9opOFL0VFztQb7U5WYy5CugnVJb/Nrbzfpr2PQK/oxLm6Jbi3
+	mjAx2Wa0FQUFS/0TalNBcMOrAuR6U6AZUmIWyVNCY9QMr04kjj4w5QUesj3v/IrLWQulot4XZvRux
+	11daSIUyDraGOB0TtUfHnyo3S9yEeS+FAJfmZuQnI1bVcDSXWVjO8uHj/cGJ6j3s5jRvCXE3GKU0b
+	XJD9GaZw==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tRuOY-000400-7W; Sun, 29 Dec 2024 15:35:54 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2 0/8] Add display subsystem dt node on rk3576
+Date: Sun, 29 Dec 2024 15:35:53 +0100
+Message-ID: <3330586.aeNJFYEL58@diego>
+In-Reply-To: <6ff7470.1060.194112c804a.Coremail.andyshrk@163.com>
+References: <20241228122155.646957-1-andyshrk@163.com> <4950097.GXAFRqVoOG@diego>
+ <6ff7470.1060.194112c804a.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241226005845.46473-2-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241229_030141_132167_B43D5149 
-X-CRM114-Status: UNSURE (   7.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241229_063613_836887_026361BA 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,26 +66,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: robh@kernel.org, iommu@lists.linux.dev, devicetree@vger.kernel.org, joro@8bytes.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org, detlev.casanova@collabora.com, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, cl@rock-chips.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 26, 2024 at 12:58:43AM +0000, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa ROCK 5B+.
-> 
-> The Radxa ROCK 5B+ is an upgraded version of the ROCK 5B based on the
-> Rockchip RK3588 SoC.
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> Changes in v2:
-> - None
+Hi Andy,
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Am Sonntag, 29. Dezember 2024, 07:48:36 CET schrieb Andy Yan:
+> =
 
-Best regards,
-Krzysztof
+> Hi Heiko,
+> =
+
+> At 2024-12-29 02:36:36, "Heiko St=FCbner" <heiko@sntech.de> wrote:
+> >Hi Andy,
+> >
+> >Am Samstag, 28. Dezember 2024, 13:21:43 CET schrieb Andy Yan:
+> >> From: Andy Yan <andy.yan@rock-chips.com>
+> >> =
+
+> >> =
+
+> >> As the VOP[0] and HDMI[1] driver have already been submitted for revie=
+w.
+> >> This series send all display related device tree part together.
+> >> [0] https://lore.kernel.org/linux-rockchip/20241219073931.3997788-1-an=
+dyshrk@163.com/T/#t
+> >> [1] https://lore.kernel.org/linux-rockchip/20241225103741.364597-1-and=
+yshrk@163.com/T/#t
+> >
+> >not to confuse you too much, I mainly meant that we were missing the
+> >"arm64: dts: rockchip:" patches from this series.
+> =
+
+> Sorry, I misunderstood it in V2 . Before go to the next step, I would lik=
+e to confirm it again:
+> Does that mean I should:
+> 1.  the dts patches(6/8, 7/8 8/8) should be sent as a separate series.
+> 2. PATCH 5/8 should still go with the rk3576 vop driver[0]
+> 3. PATCH 3/8 should still go with the rk3576 hdmi dirver[1]
+> 4. PATCH 1/8, 2/8 4/8  should still be sent separate  ?
+
+exactly. The reason behind this is to prevent confusion about who is
+expected to apply a patch.
+
+The dt-binding goes together with driver-changes into that subsystem-tree.
+This normally also includes single bindings. So the "normal" expectation is
+that the iommu-binding patch goes through the iommu tree, the phy-binding
+patch goes through the phy tree and so on.
+
+And of course the hdmi-binding patch goes together with the hdmi-driver
+change.
+
+
+Heiko
+
+
+> >The dt-binding patches are (already) part of the driver changes and
+> >should stay part of those series, to prevent confusion of what part goes
+> >where :-) .
+> >
+> >
+> >Heiko
+> >
+> >
+> >> Changes in v2:
+> >> - Wrap commit message according to Linux coding style
+> >> - Make "rockchip,rk3588-hdptx-phy" const for "rockchip,rk3576-hdptx-ph=
+y"
+> >> - Make declare phy/ropll/lcpll reset line are not exit on rk3576
+> >> - describe constraint SOC by SOC for vop2 binding, as interrupts of rk=
+3576
+> >>   is very different from others
+> >> - Drop Krzysztof's Reviewed-by for vopp2 bindings, as this version cha=
+nged a lot.
+> >> =
+
+> >> Changes in v1:
+> >> - ordered by soc name
+> >> - Add description for newly added interrupt
+> >> =
+
+> >> Andy Yan (8):
+> >>   dt-bindings: soc: rockchip: add rk3576 hdptxphy grf syscon
+> >>   dt-bindings: phy: Add rk3576 hdptx phy
+> >>   dt-bindings: display: rockchip: Add rk3576 hdmi controller
+> >>   dt-bindings: iommu: rockchip: Add Rockchip RK3576
+> >>   dt-bindings: display: vop2: Add rk3576 support
+> >>   arm64: dts: rockchip: Add vop for rk3576
+> >>   arm64: dts: rockchip: Add hdmi for rk3576
+> >>   arm64: dts: rockchip: Enable hdmi display on sige5
+> >> =
+
+> >>  .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   1 +
+> >>  .../display/rockchip/rockchip-vop2.yaml       |  70 ++++++++--
+> >>  .../bindings/iommu/rockchip,iommu.yaml        |   1 +
+> >>  .../phy/rockchip,rk3588-hdptx-phy.yaml        |  62 ++++++---
+> >>  .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
+> >>  .../boot/dts/rockchip/rk3576-armsom-sige5.dts |  47 +++++++
+> >>  arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 126 ++++++++++++++++++
+> >>  7 files changed, 276 insertions(+), 32 deletions(-)
+> >> =
+
+> >> =
+
+> >
+> >
+> >
+> >
+> =
+
+
+
+
 
 
 _______________________________________________
