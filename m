@@ -4,57 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83627E7718F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 14:37:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C10E8E7718B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 18:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ko6Me+twGOY31NPAq4QaTNiO7ZmK8hzAXgM7tuNdePQ=; b=q7XB1j8+wgjc3P
-	IScDkEPl+0989eDnWpwe2JXYC9vuuF7ZfhcXDt/7dFhCBVKzD7H/esQtT2xJTAYsA2WFIuWnTd/2w
-	9QKqWznR4mIckth4x9++9apDNrkHj+alhTpvcf/ldEJybex4rjiGiFB8UGMR7/zEk1lIA/O+D9SZo
-	tm7QNq/hsS9Dw/gHTRixK92SupsH7wFpPRnemlZHBXcP/xfBiQRMBByUebCaByVlG5XX2jlkyL9Go
-	7vel8t0rBMAx62LlPlc95iWltmzJdKMLPUQIQZuCaCMcNMRib4y7VzxJ2zfOzS3tYZxgpdKpW1lHd
-	0TWzdV39QQUVSvSpYJwA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ApcmyoUKtimvq+XIAz4rLnFm5womFy6/ti6qUGEHjlU=; b=Y+1fQXzdaCgQON
+	imbCBR+To6ohaOaC7zLBEvDD0b1ux4RhynDYHOzcrR6F7MbgRNyxfkOBJm7+t42VgOleRvleBrh5l
+	ijMRhIfk3GrrPOyinMd8EGdKl8aoOf3IIHWQvfqkzRjkDkbuBS6pM2D5iIW/agDTcyNAekl03y6M7
+	uYf2v/rjmZn0+TGkRPTjT42H22758U9YgcUZY1Olqu8hH2wjnUJwt3fRglKM5hDlLVP/O1mhlwx3R
+	Tt2aIVcBGj0m+dr0tCr4msLmwk0IEIardfaB5oYdGeS1v/sUnAzIFei9lBDzpE8m3z/7KuA39JznN
+	zu1UbKDbsgcvP4TCLAeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRuQ5-00000003V9h-1hmR;
-	Sun, 29 Dec 2024 14:37:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tRyHk-00000003lBe-2UkD;
+	Sun, 29 Dec 2024 18:45:08 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRuOr-00000003V2X-3EwN;
-	Sun, 29 Dec 2024 14:36:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=xIeTXK2tT8GiOrGH1G6rXzh8bEX4/s2CJjW9ca6ycWY=; b=qKVQP+UHNn1KBZzCZwhZEP+dv5
-	JVeHDMjBlFKGne6r2oerhTUo6xr4REMBXAj9Zsp4HrkIFIH5fyvmXDwITnbI0H/wSNZbUu0eqMw3c
-	Dlsclx1C5/gKngjj6XIB9hEGZxmX9opOFL0VFztQb7U5WYy5CugnVJb/Nrbzfpr2PQK/oxLm6Jbi3
-	mjAx2Wa0FQUFS/0TalNBcMOrAuR6U6AZUmIWyVNCY9QMr04kjj4w5QUesj3v/IrLWQulot4XZvRux
-	11daSIUyDraGOB0TtUfHnyo3S9yEeS+FAJfmZuQnI1bVcDSXWVjO8uHj/cGJ6j3s5jRvCXE3GKU0b
-	XJD9GaZw==;
-Received: from i5e860d12.versanet.de ([94.134.13.18] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tRuOY-000400-7W; Sun, 29 Dec 2024 15:35:54 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v2 0/8] Add display subsystem dt node on rk3576
-Date: Sun, 29 Dec 2024 15:35:53 +0100
-Message-ID: <3330586.aeNJFYEL58@diego>
-In-Reply-To: <6ff7470.1060.194112c804a.Coremail.andyshrk@163.com>
-References: <20241228122155.646957-1-andyshrk@163.com> <4950097.GXAFRqVoOG@diego>
- <6ff7470.1060.194112c804a.Coremail.andyshrk@163.com>
+	id 1tRyGY-00000003l4u-3P7a;
+	Sun, 29 Dec 2024 18:43:56 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-71e3284f963so4662888a34.1;
+        Sun, 29 Dec 2024 10:43:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1735497833; x=1736102633; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=u+EdG5AVyHNwIiF9DcSDNXkkUaDpmSGr2w5UNQ4/SUQ=;
+        b=GdmdnASGnQ1YH8Tw7obPwfsFDxE5JfUWDDwI8MYj4n/r1AmrSlFn4zCepjEjVM8cyg
+         fNd1P7EP7HAvzg8Ic4c7NfkOa9YrX6jbdgfS+6X16eELP3JGuChK+acexMS2FXjMtO1X
+         eZlKQkuVYunxXdsn6Ix35bymG36gzqS7XqKM5n70Vox48UjhSUo8pqQ9ijL6C8IMZerq
+         Yqv29e+a0kHRML46omQp2unUxcsVH7wcs/tQ5wmHemsJUYGR6UFcgoS5PMoImZF4Azdy
+         D/UT388y8BK2Xg4uDDIhedoPoSUnUMS4bHxm6iImAin3OBcN8G5inv1xqdBXQL4qzwqb
+         KcEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735497833; x=1736102633;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=u+EdG5AVyHNwIiF9DcSDNXkkUaDpmSGr2w5UNQ4/SUQ=;
+        b=LlP96zoz6PMx3dqvsuQkEH4xQScQ63iSts8iapK4ZQK8OI8eAFZ7ZkXD97sfvaQ1sB
+         NcufNv3iInWFAWULI1MWquXzeL3TuDGikZhRN6a5IIuo8LpS9dFDUoDvZlgn8z4t21dg
+         RT8i89EU2x4JcaD4NY0DYJJMLrXidp9+3r/sMjyji1bwwzXEQtbL7PvWORgVUKimEbOH
+         oZyLfEzUwMtD+fIZl58yarjDsQoSwX4vXjdx5/j/rUtoeLJFzClW33X4ueskGnt3TMJq
+         ODzkxIvKDqqRx+IVuWraxWPG1h6D29ayn8UklGH5EcMA8DF8IU19rr2UemoAvdKaP0kE
+         ZtOA==
+X-Forwarded-Encrypted: i=1; AJvYcCW2TF8UzEUXU/EKQc0twop3dYXQ/a35PuIj6QVtc/1g70T/r2Av1esidJmnvO+fIlaieZbmvVNi8XSJvECbzVs=@lists.infradead.org, AJvYcCWHnP8F7A3UAHGtOBcSNKl4CC00SoqK59QhsJiwVCGo7EVMpbsG7QNij9cFew7+Oi0yTTOkoWmGVD+h4dMcknEW@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywpfgt1CC6J3mMCIgDc8fxti1cO5qdsf51LNEKVl8TcLIh7AbWx
+	O/rpP7meUjPIqWbneNCPgya8U1TJtoAWnG/5UvC6au5dFFrl0egH
+X-Gm-Gg: ASbGncub2z9DVBacRgiJqGVjUn224zQlE5xQj00K2OphZivw836uCgx2KrZgEMcP/N+
+	RyK9R7K1J96DtoX5VS7mXgx/BkPoGvrNKBnUlNS2vk4bpEgPm28KdtVJD0RHGSMHh8YpYMKpBha
+	HduGZDSQGtqPIvQXu7Qfl880Qt2v6DhYKu9tns87/YxTHVAmdx36d6DnN2286sj/0mrJThZFFnd
+	SywIYoYdTc3NNuyZ3H3BsKHHEN9xM6jKUU47SNa+pe4MTLC3E/eSMBWeLjLOfpp
+X-Google-Smtp-Source: AGHT+IFX5tXXeMQ27jrDhnaZ0ipObtd0vNMPgxqr9NK5Gmo3CLw+ebz1oX7nKY0qSeKGYla2nBbMeQ==
+X-Received: by 2002:a05:6830:6f0b:b0:71d:4b55:ae20 with SMTP id 46e09a7af769-720ff7fdde6mr22770855a34.6.1735497833186;
+        Sun, 29 Dec 2024 10:43:53 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:e765:a49c:5c4:1103])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-71fc97d6fafsm5515645a34.31.2024.12.29.10.43.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Dec 2024 10:43:51 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v4 0/7] arm64: dts: rockchip: Orange Pi 5 Max board
+Date: Sun, 29 Dec 2024 12:41:25 -0600
+Message-ID: <20241229184256.1870-2-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241229_063613_836887_026361BA 
-X-CRM114-Status: GOOD (  23.94  )
+X-CRM114-CacheID: sfid-20241229_104354_846695_221774D8 
+X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,122 +94,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, iommu@lists.linux.dev, devicetree@vger.kernel.org, joro@8bytes.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, vkoul@kernel.org, detlev.casanova@collabora.com, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, cl@rock-chips.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Changes in v4:
+- Orange Pi 5 Ultra was released and does not use VP0 to HDMI0
+- Move HDMI0 from common to the board level
+- Make DTSI to be shared by the credit card sized 5 Max and 5 Ultra
+- Updates for the newly submitted HDMI1 support
+- Add Ack for dt-binding
 
-Am Sonntag, 29. Dezember 2024, 07:48:36 CET schrieb Andy Yan:
-> =
+Changes in v3:
+- Refactor to share common include with Orange Pi 5 Plus
 
-> Hi Heiko,
-> =
+Changes in v2:
+- squashed commits together for initial board file
 
-> At 2024-12-29 02:36:36, "Heiko St=FCbner" <heiko@sntech.de> wrote:
-> >Hi Andy,
-> >
-> >Am Samstag, 28. Dezember 2024, 13:21:43 CET schrieb Andy Yan:
-> >> From: Andy Yan <andy.yan@rock-chips.com>
-> >> =
-
-> >> =
-
-> >> As the VOP[0] and HDMI[1] driver have already been submitted for revie=
-w.
-> >> This series send all display related device tree part together.
-> >> [0] https://lore.kernel.org/linux-rockchip/20241219073931.3997788-1-an=
-dyshrk@163.com/T/#t
-> >> [1] https://lore.kernel.org/linux-rockchip/20241225103741.364597-1-and=
-yshrk@163.com/T/#t
-> >
-> >not to confuse you too much, I mainly meant that we were missing the
-> >"arm64: dts: rockchip:" patches from this series.
-> =
-
-> Sorry, I misunderstood it in V2 . Before go to the next step, I would lik=
-e to confirm it again:
-> Does that mean I should:
-> 1.  the dts patches(6/8, 7/8 8/8) should be sent as a separate series.
-> 2. PATCH 5/8 should still go with the rk3576 vop driver[0]
-> 3. PATCH 3/8 should still go with the rk3576 hdmi dirver[1]
-> 4. PATCH 1/8, 2/8 4/8  should still be sent separate  ?
-
-exactly. The reason behind this is to prevent confusion about who is
-expected to apply a patch.
-
-The dt-binding goes together with driver-changes into that subsystem-tree.
-This normally also includes single bindings. So the "normal" expectation is
-that the iommu-binding patch goes through the iommu tree, the phy-binding
-patch goes through the phy tree and so on.
-
-And of course the hdmi-binding patch goes together with the hdmi-driver
-change.
-
-
-Heiko
-
-
-> >The dt-binding patches are (already) part of the driver changes and
-> >should stay part of those series, to prevent confusion of what part goes
-> >where :-) .
-> >
-> >
-> >Heiko
-> >
-> >
-> >> Changes in v2:
-> >> - Wrap commit message according to Linux coding style
-> >> - Make "rockchip,rk3588-hdptx-phy" const for "rockchip,rk3576-hdptx-ph=
-y"
-> >> - Make declare phy/ropll/lcpll reset line are not exit on rk3576
-> >> - describe constraint SOC by SOC for vop2 binding, as interrupts of rk=
-3576
-> >>   is very different from others
-> >> - Drop Krzysztof's Reviewed-by for vopp2 bindings, as this version cha=
-nged a lot.
-> >> =
-
-> >> Changes in v1:
-> >> - ordered by soc name
-> >> - Add description for newly added interrupt
-> >> =
-
-> >> Andy Yan (8):
-> >>   dt-bindings: soc: rockchip: add rk3576 hdptxphy grf syscon
-> >>   dt-bindings: phy: Add rk3576 hdptx phy
-> >>   dt-bindings: display: rockchip: Add rk3576 hdmi controller
-> >>   dt-bindings: iommu: rockchip: Add Rockchip RK3576
-> >>   dt-bindings: display: vop2: Add rk3576 support
-> >>   arm64: dts: rockchip: Add vop for rk3576
-> >>   arm64: dts: rockchip: Add hdmi for rk3576
-> >>   arm64: dts: rockchip: Enable hdmi display on sige5
-> >> =
-
-> >>  .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   1 +
-> >>  .../display/rockchip/rockchip-vop2.yaml       |  70 ++++++++--
-> >>  .../bindings/iommu/rockchip,iommu.yaml        |   1 +
-> >>  .../phy/rockchip,rk3588-hdptx-phy.yaml        |  62 ++++++---
-> >>  .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
-> >>  .../boot/dts/rockchip/rk3576-armsom-sige5.dts |  47 +++++++
-> >>  arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 126 ++++++++++++++++++
-> >>  7 files changed, 276 insertions(+), 32 deletions(-)
-> >> =
-
-> >> =
-
-> >
-> >
-> >
-> >
-> =
-
-
-
-
-
+Link to v1: https://lore.kernel.org/linux-rockchip/20241026100310.52679-1-honyuenkwun@gmail.com/
 
 _______________________________________________
 Linux-rockchip mailing list
