@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 100C8E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 12:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7E8E77194
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 12:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pEflEWs8aFDyYWvUr8BtQHtPWKy4c56JS1puTqW4LgI=; b=tcSKywiWvxZQqz
-	UKgdk6VB2KI1Bi1jnxV05SJI5/Ej0H96jltS+BW6xFoneeA6kVYPon0/+31u0gJ+jAP1jFRfA20LZ
-	yRrDVqrPHlYwxBpaMfVa18e5b/XQ4sQ1AItKDJqlUOZfDzQcAjWzL9hDx/Lw6EvzyjItRwnPp3DqM
-	uLw7I/FD4FA2CjcgWQOIZj/ceF7x6gkQy2vWlw6ECa/21WSZ4EsxCEZwV7fshHGzD8yopB1o8hq8D
-	RRcsB7F9LpG7c6kXgFInlCMdkbosK52OHXRSh2je32MDfV56jh1rxONzM5zAek8r4ikYA2zkpfDdP
-	4Y7BU/SOBSfDlR1JDCxQ==;
+	List-Owner; bh=+xsLAAUKf1vhgoDANj8luh+BzOWE9Z5KKSYlQB7T7nQ=; b=CkRFjLKCt20enp
+	q1ji8Iqp6aI+rvClWcsklKv3lOxk0GXLIgW9HVps+brhxhCYYRZ2WmcvZGbSA4yHcTG07zdtbio6l
+	yH67he6HCHzTnIOejdGnuLrFTTz0Hxy/76jZiLxmMKQjrXaHruJW9pOAJyg78P5L4K8ffU4cpbtq/
+	CGPKwVUXZRa6HIzh0neL5XrhgVGKEoTKv1AYuP5U8MHuoon8Qf/fhWWi+sh9NuVenpTefM7cYpKDX
+	vs/WdbFNe0KEJKQvFuxGQZcVz0HWTZalQZYEyggc+TM8LkRuN6egHT+ZRW6tbyuBcXbvmg7WkZpTt
+	LfI0480kAKivU1VjBNow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSFAW-00000005CxN-3Bs4;
-	Mon, 30 Dec 2024 12:46:48 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1tSFAV-00000005Cwc-3cBt;
+	Mon, 30 Dec 2024 12:46:47 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSF9g-00000005CjB-3WSq
+	id 1tSF9I-00000005Ccw-4ABG
 	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Dec 2024 12:45:58 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-3003d7ca01cso99301091fa.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 04:45:56 -0800 (PST)
+	Mon, 30 Dec 2024 12:45:34 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2ffd6b7d77aso123254901fa.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 04:45:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735562755; x=1736167555; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1735562731; x=1736167531; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wR+rDjRYRPZhYRjSFOwWeCZzooZ4kP9UqFam3k443z8=;
-        b=gFJ0Rr6F+KzhxK4sIP1VsOW/CbaeQJU/xOtiOprNdoprr+eEsfpuMX3n/Q/ypTBM0+
-         Kq81v9hWhjmeQB8vQPO6kupcKVs03v+v17hIUjU908BAaoZCoviBpRlT747jNvfXilYY
-         VFvVxso/gdwLX4MtX/w97bgZLN41QfoFmsGYBnvzFjIxOpblxMsLPQD/xFwnJcIcS2HB
-         aGvFkpQUBaIs/MUrIhEmCaX5iTETu/ZmoaJlEUQ5B+ywFek9vsgIdQLxGJUSFs2+gNar
-         DWsUu2b6Mu9v7pMcXN/V4rDsDAD7p0sg3N/ZTIyS4WK+dxnMpgvC1M6Av+Qb204HVv+F
-         T89A==
+        bh=tYYedohEc9vf/SRWvXYMUw8vyrAayil4GiZBetI0DRQ=;
+        b=ucbxV3dGwUgmc1U00T3Q3qpH4vnUG6zzaIXq+AOzV77SelYRY12Yo2opzuOQoE3+5u
+         JTpgZaxM+zoO9EozAjE+JLIsNAxropz22CKrCJPRtNDUq/02vptvOfcaL0Z52r4S/Dey
+         1Eo+sGmFwE7GdJzMqKzfwFCk8Hm6J5x5LXbc8SD7Wq9rILUNcfGINTkZ9+jMn38TtV85
+         /Y1sisUuCrc8VjCTzoKrSoACStVbznok11Pa/5KiUuRhgf8UbHAYExjQw9y+lPwACWJZ
+         nmV58NcfChkX8HlQLjHSwGtA+heWOyMplOzgWboWCYhYfh8SdHumAEFnWPhZ5e4CMMbQ
+         DhSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735562755; x=1736167555;
+        d=1e100.net; s=20230601; t=1735562731; x=1736167531;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wR+rDjRYRPZhYRjSFOwWeCZzooZ4kP9UqFam3k443z8=;
-        b=YBYJJ8C5bFoUAKHGI22M+1MQ9mzB7oX0n5y0PxTxiL/nr4hBsN59CfPpBDu+/Ljnyt
-         RLKg+/vjfQhvKn7ums2AyZ/ln/YLLXeM3pdhO5OeybKxH7KWi0P3f0oTE5b1TuyO86aM
-         fKUp1BLRPy8Ih+g4DCfvrYHKNqXw+1+Yrj5Obgo3KF6xxoghSd9hkxYDPW12PvkD8TkW
-         aoNLGc6zr8lkyCdIKYBBePuo9LTieoL6Wd8arSoqN4uPH4QxhJQjGyo23TST3r70r/yb
-         QaNCI/vm2IXr9so0AKa6BJ6AcdCW4FpW8P48Ctp/XUzv27L8VSVNnM3zM5R6waIrQrAE
-         N8Pg==
-X-Forwarded-Encrypted: i=1; AJvYcCXmVQkbjNLlr93pFp0vvlgzTEQLqEslD/yJWogEzm5NIV8p+PobEtJ8n6FdjqTodjenrrq0jp0UyAUMgKxP9Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKDxCBY1m2S43AGQ8XTD5dTnhrgaxjHHdJWOwVzuomEUellrQY
-	jdpfjFnZKaFnDxUuiQa68XuOSRnOvaY2R0xh/OR+u0xzKScTvR7Xw9O7wSmZQno=
-X-Gm-Gg: ASbGncutCQH8ajg6N/pk/0GUoC7BLLuIIl/mIfD72eDjBuI08WB7tMUf3wWRzYuAE3p
-	B63tVXVsbdHpdxbskOKPZRDgib4t2CieTAdUTJ+OluHKEg67sY1eVUSVvThImftqFlRMvZSJwn7
-	g3fKXGNWNnAmZzid+CI06GIZj0o8hmJnnUv+nBdUZH0R9KMu6wS0Y70K8DM973lEwArsaTzI+Nq
-	DludYDhpXR9BtZXSpu6p6Gtuqg/K/OTkZ16uWus6kQCTllR3YwGU+ArmYwFzuEfcvYLqa8/7PVR
-	AH8WdTaXVBpw+rR0NmrtW5EADSx9c4SHdjlf
-X-Google-Smtp-Source: AGHT+IGQKU2FvLR9cA2rX0pjCPif1JwZJgsXfRJ7/tnNeUSB87XImquoxTJIlGTComk+jVqCQS1kGw==
-X-Received: by 2002:a05:651c:50d:b0:300:3de4:ff57 with SMTP id 38308e7fff4ca-304685f2d61mr135629341fa.26.1735562754937;
-        Mon, 30 Dec 2024 04:45:54 -0800 (PST)
+        bh=tYYedohEc9vf/SRWvXYMUw8vyrAayil4GiZBetI0DRQ=;
+        b=GgdhHYk1Mux/TDrQT6FkoAhVS8tAD+m2q1p6lSpEQUoU2+wwQ1lvy/qU2t7oaZb1I0
+         fcnUAPT9QWrl2Hb+U1oSmoePCQ3u5Sj3592jQFIrfHgnQN/2mbhTBA32g8BTBpKSYI50
+         0QwNqtpdzh5kTI3pHL50Vmq76kKOsrDgKj2IAWZv4uZRroEpBIXRnyAZYW6yI7Zk0u+8
+         h4zfoTAz4UOftwQMAP0m4ghkd1c1iGNXpox/xRrSVhxsoxsWRp0uZUPEe9NEv0KGtqlG
+         j6QFsOHqTv2wOxZRP8kuUSzV9lF0R2QMY17aPsh82TJAhpZOwnd5hDeuVLP8VGkMOOzn
+         WZKg==
+X-Forwarded-Encrypted: i=1; AJvYcCUYd5ZTxI+TlhXqgEA3/KpxjHMzgLzxPFB3zqAVKk6Ia6qoWu5XTlbHnKqPpTjIVle4EquRnQ/yoS7oQMdX8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyaW6WXzePBxw7PW9saWAQmYaPJQd2VCYHKP+M8yXQ9Z2RrBgzi
+	OkOHpQDrWDJnGnqtuztG8dMLlcVPSlJMk34oNXvZyLfGcJ8Oj8UqUoN/ax0OO+g=
+X-Gm-Gg: ASbGncu319f4oNIlYYMjr/1qkHDJpQPJutZGk5Ixt0CcCC1JJnUZWt61HoSKs0IpwV5
+	oGe7vgrNFtiCzAVAPGxriITlvMb1ao15MdDF6R+uV3hcGnl6/nVRxI0h0hsWgKeF4qyVpWUiTFH
+	N9SLXgXfslcb03f6eIpjJSDEdFmG2RgUwn3rSR6K46I1N20aJT2j1nTsv82/9ADZYZ+y+bLwRg1
+	lV9qwOxYNq10vs7S7+0NEjqYjIyFuOxcjhn2msBctzeZakIw3Eh/qshEKSmO8w75uO4lJWS99Ex
+	Zk2p/uQVUF2HxI2W6pQOQWUiN/taDzkOcDgG
+X-Google-Smtp-Source: AGHT+IFHlYAccbO2U+l1/+qdqnOJIZ9pmRBeI/fEyYOfTMJsxs8AYRAGyUUI0bNMBdlPg6thA6H6QQ==
+X-Received: by 2002:a05:651c:2223:b0:302:4130:e19d with SMTP id 38308e7fff4ca-30468535947mr120605401fa.9.1735562731167;
+        Mon, 30 Dec 2024 04:45:31 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54244e19cdbsm1240805e87.132.2024.12.30.04.45.52
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045ad6cae6sm34594261fa.23.2024.12.30.04.45.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Dec 2024 04:45:53 -0800 (PST)
-Date: Mon, 30 Dec 2024 14:45:51 +0200
+        Mon, 30 Dec 2024 04:45:30 -0800 (PST)
+Date: Mon, 30 Dec 2024 14:45:27 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 08/17] drm/bridge: analogix_dp: Add support for RK3588
-Message-ID: <n7xgy6v7txz56ew3mcinwhnln4jxar5uxtogs3om36ft2y4wz4@ln2uqsfaszbi>
+Subject: Re: [PATCH v4 07/17] phy: phy-rockchip-samsung-hdptx: Add support
+ for eDP mode
+Message-ID: <shr7ak7keqza3gw6wra2zra35qht2cxlzkvtuhzl3swzf2fwxy@i2v4o53lhese>
 References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-9-damon.ding@rock-chips.com>
+ <20241226063313.3267515-8-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241226063313.3267515-9-damon.ding@rock-chips.com>
+In-Reply-To: <20241226063313.3267515-8-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_044556_870961_79BA572E 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241230_044533_030388_210C5C5D 
+X-CRM114-Status: GOOD (  25.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,16 +98,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 26, 2024 at 02:33:04PM +0800, Damon Ding wrote:
-> Add max_link_rate and max_lane_count configs for RK3588.
+On Thu, Dec 26, 2024 at 02:33:03PM +0800, Damon Ding wrote:
+> Add basic support for RBR/HBR/HBR2 link rates, and the voltage swing and
+> pre-emphasis configurations of each link rate have been verified according
+> to the eDP 1.3 requirements.
+
+Well... Please describe what's happening here. That the HDMI PHY on your
+platform also provides support for DP / eDP. Please document any design
+decisions that you had to make.
+
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> ---
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++++
->  1 file changed, 4 insertions(+)
 > 
+> ---
+> 
+> Changes in v2:
+> - Add the module author
+> 
+> Changes in v3:
+> - Split this patch into two, one for correction and the other for
+>   extension
+> 
+> Changes in v4:
+> - Add link_rate and lanes parameters in struct rk_hdptx_phy to store the
+>   phy_configure() result for &phy_configure_opts.dp.link_rate and
+>   &phy_configure_opts.dp.lanes
+> ---
+>  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 896 +++++++++++++++++-
+>  1 file changed, 889 insertions(+), 7 deletions(-)
+> 
+> @@ -933,9 +1484,339 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
+>  	return rk_hdptx_phy_consumer_put(hdptx, false);
+>  }
+>  
+> +static int rk_hdptx_phy_set_mode(struct phy *phy, enum phy_mode mode,
+> +				 int submode)
+> +{
+> +	return 0;
+> +}
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+No need for the stub, please drop it. The host controller driver can
+still call phy_set_mode() / _ext(), the call will return 0.
+
+> +
+> +static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
+> +				      struct phy_configure_opts_dp *dp)
+> +{
+> +	int i;
+> +
+> +	if (dp->set_rate) {
+> +		switch (dp->link_rate) {
+> +		case 1620:
+> +		case 2700:
+> +		case 5400:
+> +			break;
+> +		default:
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+> +	if (dp->set_lanes) {
+> +		switch (dp->lanes) {
+> +		case 0:
+
+Is it really a valid config to have 0 lanes?
+
+> +		case 1:
+> +		case 2:
+> +		case 4:
+> +			break;
+> +		default:
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+> +	if (dp->set_voltages) {
+> +		for (i = 0; i < hdptx->lanes; i++) {
+> +			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
+> +				return -EINVAL;
+> +
+> +			if (dp->voltage[i] + dp->pre[i] > 3)
+> +				return -EINVAL;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+
+[..]
+
+> +
+> +static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+> +{
+> +	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
+> +	enum phy_mode mode = phy_get_mode(phy);
+> +	int ret;
+> +
+> +	if (mode != PHY_MODE_DP)
+> +		return -EINVAL;
+
+I'd say, return 0;
+
+> +
+> +	ret = rk_hdptx_phy_verify_config(hdptx, &opts->dp);
+> +	if (ret) {
+> +		dev_err(hdptx->dev, "invalid params for phy configure\n");
+> +		return ret;
+> +	}
+> +
+> +	if (opts->dp.set_rate) {
+> +		ret = rk_hdptx_phy_set_rate(hdptx, &opts->dp);
+> +		if (ret) {
+> +			dev_err(hdptx->dev, "failed to set rate: %d\n", ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	if (opts->dp.set_lanes) {
+> +		ret = rk_hdptx_phy_set_lanes(hdptx, &opts->dp);
+> +		if (ret) {
+> +			dev_err(hdptx->dev, "failed to set lanes: %d\n", ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	if (opts->dp.set_voltages) {
+> +		ret = rk_hdptx_phy_set_voltages(hdptx, &opts->dp);
+> +		if (ret) {
+> +			dev_err(hdptx->dev, "failed to set voltages: %d\n",
+> +				ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct phy_ops rk_hdptx_phy_ops = {
+>  	.power_on  = rk_hdptx_phy_power_on,
+>  	.power_off = rk_hdptx_phy_power_off,
+> +	.set_mode  = rk_hdptx_phy_set_mode,
+> +	.configure = rk_hdptx_phy_configure,
+>  	.owner	   = THIS_MODULE,
+>  };
+>  
+> @@ -1149,5 +2030,6 @@ module_platform_driver(rk_hdptx_phy_driver);
+>  
+>  MODULE_AUTHOR("Algea Cao <algea.cao@rock-chips.com>");
+>  MODULE_AUTHOR("Cristian Ciocaltea <cristian.ciocaltea@collabora.com>");
+> +MODULE_AUTHOR("Damon Ding <damon.ding@rock-chips.com>");
+>  MODULE_DESCRIPTION("Samsung HDMI/eDP Transmitter Combo PHY Driver");
+>  MODULE_LICENSE("GPL");
+> -- 
+> 2.34.1
+> 
 
 -- 
 With best wishes
