@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D55E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 18:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01614E77188
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 19:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=lpA5MFI3spUepCuM0WDT+M4qs1YiME33KqfHp+72DlU=; b=EHTzwkiW7dXHQJ6OyUAwTp2U0V
-	FbcidjGUOk96Sqt/WdEUMxH0f3wIYSCPEoH4HKUj2NC4l3IBPo047TIEhe8oq9bOjVIyBWrC5W9m5
-	jowkqKTvJk8nGZdaujUVX3X+BGZXOTQIBCVDjGoWwZlt+jzQEUAYYbax+1a+SEDWrANfFuWEAB03G
-	qC7TBy7hmRP19j0xbeiSC3YjtCzdluBvRtzW+X6b+FIwnwhDb3kEbOlJAmaZiQgeTaAqUp3E0ue4L
-	Mit1BMoRehX61Y4Rsjl3vot1ivsA4LzIQN8OLyJ5qwMZB1Nmu+6oE3VO/goAJ/TjsctDdrzMlOjk5
-	WKX3GsEQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=nUfCKBZ5YcZuWubfj9TUdZdFcCu7kMT78Hi5L/P2cbw=; b=A8suovOfZ6lmBm
+	5C0zYcM1yi4a2VB162h0WfOk/kqQAt6f+QxMTu1EKOaFaSL7v1zTp6TqLmXgxGNHDnrON5zb09bQ6
+	QDIoEPZQPP8iGLlxpzLBIGq+65gjgv/3d49cYNTyw6bl59E+PiwU3jOFROxDgcYbAYB1eKAMF0pgm
+	gJ6l5Aak34IOcO5luFWe/CNm8LZlSgm4PyiVMB6OCUkqWC2LyJAPz29vqpoBEUTljo5ESmMGyk0IL
+	Ug1Lfi8QOYcMS6+DJCvjed3e23rwr64SflkUM7Jk09JHoLfCd9EauyzXIp32402AU8LskvSefKLLL
+	5fTtpcSSDz4D5gsEd5jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSKLW-00000005dxs-1UnD;
-	Mon, 30 Dec 2024 18:18:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tSLJS-00000005jlQ-18DF;
+	Mon, 30 Dec 2024 19:20:26 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSKKK-00000005dlY-2Jpw;
-	Mon, 30 Dec 2024 18:17:17 +0000
+	id 1tSLIH-00000005jeN-0jAv;
+	Mon, 30 Dec 2024 19:19:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C1C59A40EB9;
-	Mon, 30 Dec 2024 18:15:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2DD2C4CED6;
-	Mon, 30 Dec 2024 18:17:14 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id AF8A6A40F2A;
+	Mon, 30 Dec 2024 19:17:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 413F2C4CED0;
+	Mon, 30 Dec 2024 19:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735582634;
-	bh=yO/bDAAjALbmdooiFvPDhcv3ctrG92wc4GGL6V+fiSk=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Zhffs2bbyXPE3L1zn5MNztjnOMSJAzkqiRxv2VHJnIX4tbQYGojgAgpYtH2DJu80o
-	 bctRSbqot6s7R73zULPZaN29ngPsiEtnxlqJYrT6rLAtnlUthxgyTj0DDfbxa7QUtP
-	 ydUwinjHQH6mCKXfOnB9ykYmqRlWKW+5BESYiq1YFMsK7CKqkAG9t721YaQLVuR2uZ
-	 V6LPodkOIUoqLTPwtfTlNTClcH1LH6+pIhFRwGnHNZLZrU5eNKWM/lz0ACdpvACh/e
-	 qIXkjyMwLUcDoPAGdvwnK1KRWG2n/EPGBF62o5tneVKLdtqzJPay2GGBWWkk7yrBv2
-	 B/H2x6UzisL+A==
-Date: Mon, 30 Dec 2024 12:17:13 -0600
+	s=k20201202; t=1735586351;
+	bh=X0EYxHXdyVdmOPGxViBjSU30WP05CYZbb75sYLlIZak=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=kfp+sQw+92xxFfPP5xyPzMvbLdqPXLOBdfm2btiHhnRSOn0NYolCFg2fwL3XgQKAn
+	 xOicRxgCm/GJGDPPlA1icF7IXRfYE3/nsC96+2jqRnp0hGqo/2o8XSdbIH8kkhZ+33
+	 U1CoYnr/nl19EduvPnO71DJYp0UQXyjA9EBs6V4jlbqZy0OPscozdhA1+EY+Ga0x6b
+	 WYGDj60Nbj+wHpFf4LJVXkjQJ6xuTHhNAoUcn6kMqhgAtq4wWxVhi89CWGlv9RjWY/
+	 eP6dAw6YUK2CzEUT5rGbij5l0zqVspX8PEGFSmy7GEeo4znW1yORMYIQQzn0bxg/Sr
+	 v79iM6hEOHZsQ==
+Date: Mon, 30 Dec 2024 13:19:08 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on
+ dll_link_up irq in the combined sys irq
+Message-ID: <20241230191908.GA3962801@bhelgaas>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, 
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org
-To: Ivan Sergeev <ivan8215145640@gmail.com>
-In-Reply-To: <20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com>
-References: <20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com>
-Message-Id: <173558214299.2262675.7745978856834508715.robh@kernel.org>
-Subject: Re: [PATCH v4 0/2] arm64: dts: rockchip: Add BigTreeTech CB2 and
- Pi2
+Content-Disposition: inline
+In-Reply-To: <20241127145041.3531400-2-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_101716_720648_7E4D32A4 
-X-CRM114-Status: GOOD (  18.64  )
+X-CRM114-CacheID: sfid-20241230_111913_278746_5A8810C8 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,104 +77,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 30 Dec 2024 17:58:17 +0300, Ivan Sergeev wrote:
-> BigTreeTech CB2 and Pi2 are Rockchip RK3566 SoM and SBC boards made by
-> BigTreeTech for the intent of using as a 3d printer control board.
-> It is a successor to the Allwinner H616-based BigTreeTech CB1 and Pi, so
-> the device trees for CB2 and Pi2 are also done in the same manner: the
-> common nodes and properties are put into a dtsi file that the
-> board-specific device trees include.
+On Wed, Nov 27, 2024 at 03:50:42PM +0100, Niklas Cassel wrote:
+> Most boards using the pcie-dw-rockchip PCIe controller lack standard
+> hotplug support.
 > 
-> Changes in v4:
-> - Removed invalid `i2c,ignore-nak` properties
-> - Set `#address-cells` and `size-cells` on `sdmmc1`
-> - Fixed `phy-supply` properties of usb host nodes
-> - Link to v3: https://lore.kernel.org/r/20241227-bigtreetech-cb2-v3-0-91c556adcffe@gmail.com
+> Thus, when an endpoint is attached to the SoC, users have to rescan the bus
+> manually to enumerate the device. This can be avoided by using the
+> 'dll_link_up' interrupt in the combined system interrupt 'sys'.
 > 
-> Changes in v3:
-> - Proper formatting and patch series sending (using b4)
-> - Converted spaces to tab indentation in the dtsi file
-> - Fixed empty line where the license identifier should be
-> - Link to v2 1/2: https://lore.kernel.org/linux-rockchip/20241224135751.350379-2-ivan8215145640@gmail.com/
-> - Link to v2 2/2: https://lore.kernel.org/linux-rockchip/20241224140057.350667-2-ivan8215145640@gmail.com/
+> Once the 'dll_link_up' irq is received, the bus underneath the host bridge
+> is scanned to enumerate PCIe endpoint devices.
 > 
-> Changes in v2:
-> - Added bigtreetech cb2 and pi2 boards to the list of platforms
-> - Split BigTreeTech CB2 and Pi2 into two device trees using common dtsi
-> - Link to v1: https://lore.kernel.org/linux-rockchip/20241222203952.84217-2-ivan8215145640@gmail.com/
+> This commit implements the same functionality that was implemented in the
+> DWC based pcie-qcom driver in commit 4581403f6792 ("PCI: qcom: Enumerate
+> endpoints based on Link up event in 'global_irq' interrupt").
 > 
-> Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
-> ---
-> Ivan Sergeev (2):
->       dt-bindings: arm: rockchip: Add BigTreeTech CB2 and Pi2
->       arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
-> 
->  .../devicetree/bindings/arm/rockchip.yaml          |  11 +
->  arch/arm64/boot/dts/rockchip/Makefile              |   2 +
->  .../dts/rockchip/rk3566-bigtreetech-cb2-manta.dts  |  10 +
->  .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 943 +++++++++++++++++++++
->  .../boot/dts/rockchip/rk3566-bigtreetech-pi2.dts   |  10 +
->  5 files changed, 976 insertions(+)
-> ---
-> base-commit: d6ef8b40d075c425f548002d2f35ae3f06e9cf96
-> change-id: 20241224-bigtreetech-cb2-18944b349916
-> 
-> Best regards,
-> --
-> Ivan Sergeev <ivan8215145640@gmail.com>
-> 
-> 
-> 
+> The Root Complex specific device tree binding for pcie-dw-rockchip already
+> has the 'sys' interrupt marked as required, so there is no need to update
+> the device tree binding. This also means that we can request the 'sys' IRQ
+> unconditionally.
 
+Thanks for doing this!
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+> @@ -436,7 +481,16 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
+>  	pp = &rockchip->pci.pp;
+>  	pp->ops = &rockchip_pcie_host_ops;
+>  
+> -	return dw_pcie_host_init(pp);
+> +	ret = dw_pcie_host_init(pp);
+> +	if (ret) {
+> +		dev_err(dev, "failed to initialize host\n");
+> +		return ret;
+> +	}
+> +
+> +	/* unmask DLL up/down indicator */
+> +	rockchip_pcie_writel_apb(rockchip, 0x20000, PCIE_CLIENT_INTR_MASK_MISC);
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3566-bigtreetech-cb2-manta.dtb rockchip/rk3566-bigtreetech-pi2.dtb' for 20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com:
-
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: host-port: phy-supply: 'oneOf' conditional failed, one must be fixed:
-	[[181, 182]] is not of type 'object'
-	[181, 182] is too long
-	from schema $id: http://devicetree.org/schemas/dt-core.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: host-port: phy-supply: 'oneOf' conditional failed, one must be fixed:
-	[[184, 185]] is not of type 'object'
-	[184, 185] is too long
-	from schema $id: http://devicetree.org/schemas/dt-core.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: host-port: phy-supply: 'oneOf' conditional failed, one must be fixed:
-	[[181, 182]] is not of type 'object'
-	[181, 182] is too long
-	from schema $id: http://devicetree.org/schemas/dt-core.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: host-port: phy-supply: 'oneOf' conditional failed, one must be fixed:
-	[[184, 185]] is not of type 'object'
-	[184, 185] is too long
-	from schema $id: http://devicetree.org/schemas/dt-core.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-
-
-
-
-
+I know we already had a bare 0x60000 in rockchip_pcie_configure_ep(),
+but can we add #defines for both of these PCIE_CLIENT_INTR_MASK_MISC
+bits?
 
 _______________________________________________
 Linux-rockchip mailing list
