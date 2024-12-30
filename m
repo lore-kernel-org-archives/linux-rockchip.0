@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010B7E7718B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Dec 2024 19:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87CE2E7718B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 02:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xCBDJJ61EstaNoKkyjDaigz/D6uWQnvJX3Uu2xL8ly8=; b=LE0S9SY2li9xjK
-	PBEJEcxXBczPBEp54JEaQKXYnPD9ACDU09FtkSFq4go+vDx+V3ZqkRxg2Zrr2x6QsXdmOo6+SNZCH
-	JA/GTmF2cv0aYudtkAx4h4qO5fqyhwUJMQBu6jv+i8fHasVPBRBcdxK0JBvpjOSMYbQR3lsXS5C8o
-	pl/ciejWF8G11dwE+veBOngmwvtzizLkAXnWeDchZUO0DxxOpywoIqG/Ru51oHEDEqMHBnEJ2FJ96
-	nNjYmVen9/QF7Tw2sELqjKFeVbCo/TQl1oeEVzduihouNbgRuDkF3QUGybt3wF7unbfblSLy4HhdN
-	rFFaUvYG6Fj60oXI1KhQ==;
+	List-Owner; bh=uhNvt997iJwwBWqtfTajbxkveaYoqIPYXfI8lgqMDnY=; b=G59AkPiNN58lJG
+	BjvC6rn85IUxNBE0gY0OQCQL0nNYwmQ/RKoBM54EFbvjiYYmkhoOwPgrClHER/ol27LDU2qHRu/3w
+	Ar4BYAaOqen1yvS8flBzYXGoBo5uKJYD/9gHpaZXE8jadm2+PkpOZ5EZtH54/2MBNeWbYJXUmWrxO
+	PZFecEmNcgoJqajqIBijJjrVvbMWVOQT1HCaOgQUVpDjp8vJVIHczwyR2V1zo3Q/6EE5oASPVWBja
+	GXAlE48xTOo4cIV2tai8aHF6sJKmsXyb8id/mZBdJvEk+cD0WhDj7k4P38jGu8CKizElBqgNlUbha
+	lf7Zi/3i5aYCBEE6n90w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRyrr-00000003oLB-3kYZ;
-	Sun, 29 Dec 2024 19:22:27 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1tS5gS-00000004MpV-275H;
+	Mon, 30 Dec 2024 02:39:08 +0000
+Received: from stravinsky.debian.org ([2001:41b8:202:deb::311:108])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tRyqf-00000003oFJ-3Tpf;
-	Sun, 29 Dec 2024 19:21:15 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4361dc6322fso55944505e9.3;
-        Sun, 29 Dec 2024 11:21:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735500072; x=1736104872; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=F/m6mQE93XRbEC7aZffF1JFPjsU9ESCMe5TCbG/hYT0=;
-        b=Aflu3pooNLReYrwN/l9eh7qUwyLwx9Srngp72itxT692SBz7ncECPuVrtFkDErB/T9
-         uE823FPsyBFEKmzcpttnnUVfa8p/n/V0+FPd9aiCVdAMZEXkU1k5tupaMxDnfoOINZHm
-         acLoXFHtrxtxpZbSKXSpKP2SExQ8wLDQnC0M2M4J+t7y8A4FZTAN0gvjAGycc0U2kMkM
-         v7D+4VwZEVkvqmIGFwdtUDrz2Q7OlRyOJQnlRVsXmXpTYRkERaURTZSqXXEYacWeg2Au
-         opwDFwWeQd2f7+RzKbjXn8fTQ0I70SfD3SzH2iIfkaDuF8RZ7QOEcyK0yMACA/+lzsv9
-         rsEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735500072; x=1736104872;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=F/m6mQE93XRbEC7aZffF1JFPjsU9ESCMe5TCbG/hYT0=;
-        b=epEg2Tr+qGN8tGbh3eWwv4K6zb468ghzffN4zVtlTqKpks9U0AH7X1rgJ1RPvzVDSn
-         1z4EskuHM7qTgHmbIci7/E0U6HB0gW/3UP777Z4Dy85QRzcKV5yrFFywO1x89KVcMNaI
-         ZpyoLLPasq6iVMdhwvHvnXtiWCW8zouZs8ibfHoQJ7Xgkkx1MAEgj+ZhIbcAssEGdbF2
-         qeg6FeOM33pZBMe5vcOKYn45GytmVTjpr8F87pKHxG8+175TxYm71ayNVcwKB4cCa+5x
-         lRvENxjl6At+A0IySpw8y7ythw3LbN53BcPoSqf0mCBnfLzeJ8bo+OWXuy6RZU59Xnka
-         iOjQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVeyx5y1dXrTf/Bvl3P/+0f4iqh7MIbmVRFuS2rEeDf8FUypCdo8FFbwQjD+cvouqbiX2TojtC+3FC+asyq6rc=@lists.infradead.org, AJvYcCXoDKpen7nxG0EidTf35HGON8TIGl6De+eX/772RBvh5JNQ5lVOUjTIpqPSTn5xdfPzb/vTZ4QSAQLVadMnl9aA@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPSL2c39AW8nCvPnyNEYw77pmZMXW1sE2FASNRWUBN7lrat4Ts
-	6GxxOPz23i1ujfcHqSlC8SkJJt4o3NIGHPQ44FLNxOYH0iTv2NL2psn231ANEEetbRzcjgQ2TB+
-	Qkr6KZ81XnrArHV08kvxAL+kN/jg=
-X-Gm-Gg: ASbGncsj87tXl2ysxYKq/DCYpb7ZDi+WAUa8PGWVK81Ve7oc6r6+f+voR4sGxw3apvj
-	fqLxQJUEROAOchO/NY7jC54t1jBH2MBDeHYzjGD7E/1OO7mc8Edj55drdUNfhp9NheS/rdA==
-X-Google-Smtp-Source: AGHT+IERbyKDJY64pbsXCfiLuatq/oqkmWljGpRnNR4+iBZE0z2MspqeiGU222OSzsWUzmZRuvrFwmm5Of+SKsxCHM0=
-X-Received: by 2002:a05:6000:1f84:b0:385:f349:ffef with SMTP id
- ffacd0b85a97d-38a223ffa57mr22988717f8f.41.1735500070610; Sun, 29 Dec 2024
- 11:21:10 -0800 (PST)
-MIME-Version: 1.0
-References: <20241229184256.1870-2-honyuenkwun@gmail.com> <20241229184256.1870-3-honyuenkwun@gmail.com>
-In-Reply-To: <20241229184256.1870-3-honyuenkwun@gmail.com>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Sun, 29 Dec 2024 13:20:59 -0600
-Message-ID: <CALWfF7Kg9HQoqyEYaj9FGPYu3+vAzZNLMVhSr_90SFDg5Syc9w@mail.gmail.com>
-Subject: Re: [PATCH 1/7] arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
+	id 1tS5PQ-00000004KVk-1HPU;
+	Mon, 30 Dec 2024 02:21:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
+	s=smtpauto.stravinsky; h=X-Debian-User:In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=BeWo63al5Q9jX6hi9OUFCf7WTwROUVRvfEBDDGUsRVE=; b=UuxtOpUjYXKk5/JoecKoQ3msk4
+	F+Oljxs5RTcVAhtK+npvBAieFFYxYAhDVpKs15tdmNiu/SFuOG6/KxUkIGwcbfjgnpjT62dTNA4TX
+	F9blddjoK/oa8yVfLbTjOUq23hObaMLDJD1cCgBmX2JFgPotpQEaAFDwikB8egvFPoipQ5jRWIwTe
+	h+gxPqvsuybuw2IfwcpGkyvx7d8hugEGE9clxi5KDXbSc0Vi6SHHSbq7B5LqPjM+xAAlCW2nNqvAI
+	ESRZNKlamxMxtlhphmh//+8D15akoxpsdKhTrCHxT3o+nsVSMGeEJKDYTSQyRusd0MLybo9b2Eyh4
+	ogfVAjgQ==;
+Received: from authenticated user
+	by stravinsky.debian.org with esmtpsa (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.94.2)
+	(envelope-from <zeha@debian.org>)
+	id 1tS5Or-005cYz-TA; Mon, 30 Dec 2024 02:20:58 +0000
+Date: Mon, 30 Dec 2024 03:20:55 +0100
+From: Chris Hofstaedtler <zeha@debian.org>
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org, rfoss@kernel.org,
+	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+	jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Daniel Semkowicz <dse@thaumatec.com>,
+	Dmitry Yashin <dmt.yashin@gmail.com>
+Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: Add MIPI DSI2 host
+ controller bridge
+Message-ID: <Z3IDh0TOAKqaovz2@per.namespace.at>
+References: <20241209231021.2180582-1-heiko@sntech.de>
+ <20241209231021.2180582-2-heiko@sntech.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241209231021.2180582-2-heiko@sntech.de>
+X-Debian-User: zeha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241229_112113_881269_9F317DC4 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241229_182132_359539_0F04996A 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +78,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBEZWMgMjksIDIwMjQgYXQgMTI6NDTigK9QTSBKaW1teSBIb24gPGhvbnl1ZW5rd3Vu
-QGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBmb3IgT3JhbmdlIFBpIDUgUGx1cy9NYXgvVWx0cmEgYW5k
-IEFJIE1heAo+IC0tLQo+ICAuLi4vZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMu
-ZHRzICAgfCA4MzMgKystLS0tLS0tLS0tLS0tLS0tCj4gIC4uLmdlcGktNS1wbHVzLmR0cyA9PiBy
-azM1ODgtb3JhbmdlcGktNS5kdHNpfSB8IDE5NSArLS0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgNzcg
-aW5zZXJ0aW9ucygrKSwgOTUxIGRlbGV0aW9ucygtKQo+ICBjb3B5IGFyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAve3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzID0+IHJrMzU4OC1vcmFuZ2Vw
-aS01LmR0c2l9ICg4MCUpCgpIZWlrbywKClNob3VsZCBJIGdvIGFoZWFkIGFuZCBtYWtlIGEgdjUg
-aW5jbHVkaW5nIHRoZSBmb2xsb3dpbmcgaW4gbXkgYmFzZWxpbmUKYmVmb3JlIHRoZSByZWZhY3Rv
-cj8KLSBHUFUgcG93ZXIgZG9tYW4gZGVwZW5kZW5jeSBbMV0KLSBVU0IgMy4wIG9uIDUgUGx1cyBb
-Ml0KRG8gdGhvc2Ugc2VyaWVzIGxvb2sgbGlrZSB0aGV5J2xsIGdvIGluIGFzIGlzPwoKWzFdIGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjQxMjExMTQzMDQ0Ljk1NTAt
-OC1zZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tLwpbMl0gaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvbGludXgtcm9ja2NoaXAvMjAyNDEyMjAxNjEyNDAuMTA5MjUzLTEtd2Vuc0BrZXJuZWwu
-b3JnLwoKSmltbXkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Hi,
+
+On Tue, Dec 10, 2024 at 12:10:19AM +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> Add a Synopsys Designware MIPI DSI host DRM bridge driver for their
+> DSI2 host controller, based on the Rockchip version from the driver
+> rockchip/dw-mipi-dsi2.c in their vendor-kernel with phy & bridge APIs.
+> 
+> While the driver is heavily modelled after the previous IP, the register
+> set of this DSI2 controller is completely different and there are also
+> additional properties like the variable-width phy interface.
+> 
+> Tested-by: Daniel Semkowicz <dse@thaumatec.com>
+> Tested-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+[..]
+> +static void dw_mipi_dsi2_set_vid_mode(struct dw_mipi_dsi2 *dsi2)
+> +{
+> +	u32 val = 0, mode;
+> +	int ret;
+> +
+> +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HFP)
+> +		val |= BLK_HFP_HS_EN;
+> +
+> +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HBP)
+> +		val |= BLK_HBP_HS_EN;
+> +
+> +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HSA)
+> +		val |= BLK_HSA_HS_EN;
+
+For all three of these: is setting an ENable bit the right thing to
+turn features *off*?
+
+> +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_BURST)
+> +		val |= VID_MODE_TYPE_BURST;
+> +	else if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+> +		val |= VID_MODE_TYPE_NON_BURST_SYNC_PULSES;
+> +	else
+> +		val |= VID_MODE_TYPE_NON_BURST_SYNC_EVENTS;
+> +
+> +	regmap_write(dsi2->regmap, DSI2_DSI_VID_TX_CFG, val);
+> +
+> +	regmap_write(dsi2->regmap, DSI2_MODE_CTRL, VIDEO_MODE);
+> +	ret = regmap_read_poll_timeout(dsi2->regmap, DSI2_MODE_STATUS,
+> +				       mode, mode & VIDEO_MODE,
+> +				       1000, MODE_STATUS_TIMEOUT_US);
+> +	if (ret < 0)
+> +		dev_err(dsi2->dev, "failed to enter video mode\n");
+> +}
+...
+
+Chris
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
