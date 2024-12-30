@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D09E7718F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7160E77188
 	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 12:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,76 +12,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AdxV5wKqQSp5lTf8IFJRGKd+3XpfI9tROx/uNJyVFuY=; b=w4XS7UByO4Y9aX
-	R4eDa43Lva+dFMxVpaCkvYEsxkMYnptDkXgN34JhoXPtCLa9i5JAiaAho+gR6ki2ZILWcRCUvaUCJ
-	2LFXNSUg25BYDzY/scpyQt/DNDLa45HibhHEPTcUOOoskYoZtx/GtEcjzpgwgRA2s3fiOMFNGD7+G
-	4/EzmsONoULf2g3PgeOr0UxjASoiCnQADRv/NByuQ2GTpyamY3n+sIGZmF6wmYdDHNx3Vgyd2FXTF
-	dckPHbi/LifHJVBRiV0YeDBlkF/U9bM2uIVxMziOl3YjHl/MaOskNmUuQ2Dork7bHGRl6BUIYzH08
-	4DH01Vwg6La3C3K4Q1vQ==;
+	List-Owner; bh=RQTdADYDdo3LzpKRDB5vFLXzqEbXmXNpF4OhTVnKwR4=; b=gsAe2r4/5xquAp
+	AyAhzJ+w4uviH9QoZIbX5Y+K9YhLbhK0VECfU/L9o/05Ih9sGqa4AOX7fsAhOAJvNvlGdQSdPmFAc
+	TkAZOLfy0joUoqSv8fvAloAZnchN8PPvES99UulXl6fSMbHrRz1y+Fj1FMI1golg4cj4eQK05v+OU
+	4zcSbCFegdFzMwJlx1afGLzRpyQzgEESfmj/N2x3g5qxx6dpFVuv90klHoMxpalQFWdCNdtRKavwm
+	4zAUEOy6Fvmd/ZBpCzjO001BqnJO2NfWWJJHMWvA1/AEJ7c9Df2dcp+zFqj7djTbCqyM+Ui+whuXd
+	29eU51MZBCnegE4JNF5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSEzl-00000005BmO-4Ayx;
+	id 1tSEzl-00000005Blp-1XoQ;
 	Mon, 30 Dec 2024 12:35:41 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSEyr-00000005BbO-1VWj
+	id 1tSExg-00000005BQn-317K
 	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Dec 2024 12:34:46 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-3004028c714so103895321fa.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 04:34:45 -0800 (PST)
+	Mon, 30 Dec 2024 12:33:33 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-53df19bf6a9so14137665e87.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 04:33:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735562084; x=1736166884; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1735562011; x=1736166811; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YjXNF8u6gFmP3bof4Qnz0c0Cqvunc1cPgbGWTZ/EO4s=;
-        b=A4dofS8NBQWmzqBqfys0G9I8MmB4opmha9pP6qleN3I0c8Cb2RgIdBpu2hKqXxY/az
-         hBl4LN8YVuoCc0HZNYH64RxVxasJU77vn0UFBdqmeXLiss2WHtQzPPfOv4rVcc2b5DDR
-         qbDgK+7eVbdzHuN/Fx3eUvi9s7QBpckSr9rdRa7glQbha1rJbnyHGk41QZSK40zIksvx
-         0cZ3t/SjbtNXUUgM/B+cZFI23IMu9cvo3lteCs0De6/ohkH4NXZrn/UXGci70vrk89ie
-         CfnWVdKypIKF7BrB/C9gn3q885B0W9Di8xJC+O6Gqr97/+qUGRv1ciHiXpQhAfk+UxJB
-         JYWQ==
+        bh=/KYkN53WI+JNUVPnu1L7iFZzO5YGuruzvwyya/+uFx4=;
+        b=rtj6QRcEJJ+7Bl+rqMazt7qlm8G3Fw5Kio+xajrFouuz+e+pmomTBBMjUKK5lWaRsu
+         Yh4qVC8o8ox5p+qwj/EB38NguKO02CMo4jArDfbYeVx8AKza3LNlU+yJ/x6uA28aj46r
+         l3gCMiDH2E6YNJw//yE4D7RpIr96WuR1ta2xbsmUdB6ZQnOXT6FXfTjYFDY2vGlaVMev
+         r+67jCNLvB9RNtqSgmDKp8GsPRrI5sYUh/q893Jx4KbWYTwVeXEUZZXxVUlQ2O+qrTqX
+         6jY01KQyLHjg4agJ2/w7q+PJHbD85sHRJLgzagXxUJAHy2+R9mqB/Nvp2PF1cmZEKo49
+         vvaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735562084; x=1736166884;
+        d=1e100.net; s=20230601; t=1735562011; x=1736166811;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YjXNF8u6gFmP3bof4Qnz0c0Cqvunc1cPgbGWTZ/EO4s=;
-        b=RhIdIVqRh70CekTzq/mXVcOhALOocLrN8QA6KqHdZCfbqc1mbkPZl0sSxgAYWvGGNN
-         jhhUKcBMhWtOKJ4i0/nvmd7S/LYwJC9zIRfn76CYMZDNfUGfgw1utMFc2K/3pVjwqiez
-         ToBCH4r0l2jrtY2mzZkGgKDDDAs6sd8+ZmBMAWlME1wr1OFNPDx+RHrYjSudLZRx5ylJ
-         x2I6r3WcuqJnFofSoTwzEv21a6Y+Q9u4wQSBI5ocMoMQtS5nwVmolShRksDCrwZA8Sf5
-         i48fO/1qWmcz8THvuch8GuIXvBpPxXQLDop63EFcLkCIuiljn5GXnmPJN5DNkn/Hvyu2
-         zpuw==
-X-Forwarded-Encrypted: i=1; AJvYcCWjuPPBfgP9s/4Ukc8R7Q3QLO7Bh9rd9o/uxaWJlamqKdGCy4vMT88MUf8FxLKlWcA8PKG+Fj/ugYzumuNSjA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnCTwEnYumbCyfUi6/8PF555ZvdlL9LzuHDTYJZjX6+chs04GN
-	3dWzEluMT79T2P24xV7wkPTaw7+TGZrMg9xO12HdGRjJV08a4a6IlPz7R9SWsFw=
-X-Gm-Gg: ASbGnctK7yMom8QfMfrPHrgktzc7bg1qnfvo4K+oIo4pfoGawvUw1jz1PETf2O5NbST
-	RrWP3YKzYBZAMvmQvpvQEf7f5vmxq2slmvcZ55NCz7AohO2wK/zXB/jCiEchW2D+g7j2DNECL64
-	QMnuCbOwH7AsKCCbP3tfDsGKjI0gJXrgVSpf5nW27a0SgA3dzayu8qS01CkfnM05jKWeQHbhJPn
-	Fe6TuuHjFEEjDmOVGK8UrMxHYzBE0Uyf2LXET9YcVnX7Djvjhb9SkZnuJ7hJjqP5GWZnjeFRVNw
-	Uen5vRFl/Md0tHSW53ZZIvZf8VqYX0E1wdP4
-X-Google-Smtp-Source: AGHT+IGALgVEuR6VwAjmraqK3t5VKz84isdY66XsU2c6gkzu6ybhJpLRqnsbX8hjceGwE1pfjHVNsQ==
-X-Received: by 2002:a2e:a69f:0:b0:300:377d:2c36 with SMTP id 38308e7fff4ca-30468630934mr83167351fa.40.1735562082309;
-        Mon, 30 Dec 2024 04:34:42 -0800 (PST)
+        bh=/KYkN53WI+JNUVPnu1L7iFZzO5YGuruzvwyya/+uFx4=;
+        b=V9KtPOuMFjpXEJlYb+5v3BWbkO45DLB9MF//H2KkVrVG752RqA7ik3DG/ztB60UHE2
+         9YquOLOaoARjsVicn09hwy6t24TNmEHDm75EJTm5N+i2vHYMo+J2Wa4OeQLLLtbYZzI4
+         rFp1gLJBEEI3c+pCHw7Cd2PZHiP16rRiURVZjHyebzmyCgIvK9uQJRSdD0l6/EMe2Bw0
+         rEDKtA5MpBy+azRsDV1yX4TuoIEHcu/qinbYvyh/hhIikIC2CxwZWIQrd/uTZnZX3SeH
+         afDRyUaNG06Kkk8i+Ipz21OOQXAPAPMVnJkrqdMFSt4W3GhugwkpInMh8ElPRPAr+jSF
+         0lWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVyBQXPDSaTWaf3V4FNFx/LOySeFFT7SD+zNYMTb26NOnCo40dQvDVHTMr0LY+hwim01QcQeMHRONjzULDAiA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YznzDlUTlrOSIlbJ4C/JwSwuxFx8vkokDHQMCdrPRy/J6wr8fbN
+	c6O5WBOEcNOogstpyvE+uwmuXwBH4lJq2bxZtiYRYEqVnhi9hAUb9h5NS7OcStQ=
+X-Gm-Gg: ASbGncsrjcglW8ZM28PxMlcRQ94U3tJh6cvqWRj+IL9B6e9EtgdqqfyYquCnh+Hew6a
+	ge8ayrC5GLOJwmS039ygA7FdA2fgsZYhmAsZV/QBYUhXgT3FxqYJi876wtGZZ0sKtcbU2i+Cv/d
+	5qPtPE+T+mXFmaYu2z7t5yqz426+yRO10z3eZpa2O8Rus1IdYPBpQUMfaSVaH1Bk9XVsIUIyx7C
+	OeSszJRFoT3czhBqltTrexAP3tATlzfDYJFWVo5g+u2Qq/BKuJCfteT4k6ZxsIkaZngrIhLyW+Y
+	GWXVp5HFti7/Vzgw9f2Q6LFISt5j0QGO+wrI
+X-Google-Smtp-Source: AGHT+IFuphrsUAmtBsapn4MuuZ4zkhPDCYfwZQ1OQx+nK20jXRfJS5fbhwKtwh7lTAQAKIeTPggikA==
+X-Received: by 2002:a05:6512:334f:b0:542:2990:722e with SMTP id 2adb3069b0e04-54229907232mr9337220e87.15.1735562010862;
+        Mon, 30 Dec 2024 04:33:30 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045ad9bbdesm34304741fa.44.2024.12.30.04.34.40
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5423d3b5697sm1688236e87.133.2024.12.30.04.33.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Dec 2024 04:34:41 -0800 (PST)
-Date: Mon, 30 Dec 2024 14:34:38 +0200
+        Mon, 30 Dec 2024 04:33:29 -0800 (PST)
+Date: Mon, 30 Dec 2024 14:33:27 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 06/17] phy: phy-rockchip-samsung-hdptx: Add the
- '_MASK' suffix to all registers
-Message-ID: <3dgfsscqpvlqzajjeav6oneeyae2tpc46av7hadgon5uwqibg5@ubziqwztp62m>
+Subject: Re: [PATCH v4 05/17] phy: phy-rockchip-samsung-hdptx: Supplement
+ some register names with their full version
+Message-ID: <nr7ilsmyu5kubahmq5pjscgpf5wrnzn456zoohatpftr2zjpfv@fl2mx4y3cel5>
 References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-7-damon.ding@rock-chips.com>
+ <20241226063313.3267515-6-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241226063313.3267515-7-damon.ding@rock-chips.com>
+In-Reply-To: <20241226063313.3267515-6-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_043445_397789_29682480 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241230_043332_762923_D5E3A620 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,20 +98,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 26, 2024 at 02:33:02PM +0800, Damon Ding wrote:
-> Adding the '_MASK' suffix to all registers ensures consistency in the
-> naming convention for register macros throughout the file.
-
-Nit: usually it would be "Add the '_MASK' suffix [...] in order to
-ensure consistency [...]".
-
+On Thu, Dec 26, 2024 at 02:33:01PM +0800, Damon Ding wrote:
+> Complete the register names of CMN_REG(0081) and CMN_REG(0087) to their
+> full version, and it can help to better match the datasheet.
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> 
 > ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> 
 
 -- 
 With best wishes
