@@ -4,83 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25133E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 13:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A12E77188
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 14:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sYqc8PjUQQHdXG7sto30jBJITkyrpOqCSp5kgdRFiZ8=; b=hww7miVgbsnVpz
-	R8IM9rF0UUGQ+b9IpVWIDvOlhnxNRGeiMkhF/0qQ+iXN1us1b7hm1qVM9VX3d5Sx6jv22m7xQjcOL
-	DrfYcIU46Wu2uVpq4pz7Pr1umml0Q60U1lqxOpQvxhRsTHKSy4q6KULAJvvh9uoj86fccjTjSEJaP
-	2OgxfJ7CQdJugCfj9IgBQu0UzXRkgz/t9+TW26ZL7pUiSmYZ6d65bMpCCz86ucVwpf/oiVTILCOPW
-	pvPbsmMvsOvvw7PPkSDVN+0b87AoCz88tD+8nCy+H1feHGwdXO5/Wtk2tT8jmGglb79vcsA2MFIxL
-	NdmYrTElNrwTCIsJRpww==;
+	List-Owner; bh=Cz3aUHM6SdwP1T+QXosAn0NQN5pKXbTDmmD3CHk49DY=; b=l6dUPC+R4ffbF6
+	0wZnfgbA/Dp3f2S5K3/XvMn/ZNqcgeMT1bZynm79LviahdYhjlzEExICO6vc7tdJPENZU/kbSb/k0
+	jY3CE35UW2P5jAhK9prk2CAwvhlPhlVBDjOpZFDc/UVNXtHkN8hGA0HW9OkVTPxDTaI8b9WeBsX0q
+	SzhedD/eXnGTMcJ3N7W2bNHtiqztTfyVAX7pS2xcGNVzmxmby3NtEiCSF1A/DAkRUvP0DABuc6nrg
+	FFd6ak0KoaEnm8XnbCoijfps8pDWFUL5z9Zt9iyeIcnH9kYsEnbpwr25tg972G72wCXnnHYo+GAio
+	90qMijRM4VeYTxG+89UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSFvq-00000005HTm-03X3;
-	Mon, 30 Dec 2024 13:35:42 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1tSHE2-00000005OjU-3Nmj;
+	Mon, 30 Dec 2024 14:58:34 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSFvn-00000005HSk-1rcA
-	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Dec 2024 13:35:40 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53e384e3481so8845786e87.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 05:35:39 -0800 (PST)
+	id 1tSHE0-00000005Ohr-1PVn;
+	Mon, 30 Dec 2024 14:58:33 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-30037784fceso101000131fa.2;
+        Mon, 30 Dec 2024 06:58:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735565738; x=1736170538; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=q5prvbL4qVVxyUau/62tjpzq6Xjuv+m8EjzcAcEKEz4=;
-        b=DcwZyxZ+t3kDotT68wIz0t2E6Ko9xPxX9SZDhBCayv05E92Y4mAgyLz3RihW2ur42L
-         jKyai7DAJbbB7UY8Nr54SHJv6F2xr9Z06Uiae8asJC4DiI751ylVFqvgQkaNvlcje+kn
-         CQ4NUa3QKlTknhgMy4BmRsT77hCyRPwWOZTUqVDXTIi40pNV5J+sjTot7vLMT6EdXkIe
-         Ahb/RBTn9XZwyQlAnp7GFW1LuVWe8S7pIpgtGvQGLrd8Ig0wynMTaIP/VqDzlQl3VnHK
-         cd7o5owsi9hCEx36nIe3HbYHNGkuzi1Fa9i/+hAObk5AfEZRTr0R2PA2F/Ravm+rA6ci
-         rnbA==
+        d=gmail.com; s=20230601; t=1735570710; x=1736175510; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CcUs5V3NaAvho7+pyHks8hnj2f07Xk/qrLoafEl76mI=;
+        b=VjF7O2c/9w6cVi07LySCEBDgcrPXHoNyBVQ8C66Zjp+xlMYkqJnHUenNYjLwmokAKo
+         juUvSQq3bIlqQVPAMbEl8+Yr7U808YZ+HnekQbIUKjGTFDCuAILlHVpJVLFm9mM61rYW
+         +bgxE9+3TXjS22hqhoHX0OKPDcUTTByWXOrPlp1L+F+PlvqsrdCzCkBV0Xyxus5zH0Al
+         dlZr+Z3GTgG6vCxiyGXbJ9wV3dnVZJDLAOrb6a90/8vrHi77p/EueQM0IpxDqnPA5KJT
+         5jy+bzwt9dsQ2hy5gHWkR3oRC5ZLIHlLXGYbb+s/2yiZn3o5Rd3uEEvcc3MEQ3aCBqyK
+         4MRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735565738; x=1736170538;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q5prvbL4qVVxyUau/62tjpzq6Xjuv+m8EjzcAcEKEz4=;
-        b=mok2mTR7cyqKq84vCzoOz89bA7qfpqj7GAR8T1PKIiQJrE+1+U5bfU1663JmLb0nR/
-         gq6SV0BG8T5mHayWV3Ekmt8ynYM5X6PNGaN40xVS663qnRHOBnDiQVdtXXk9yUR7iig+
-         uSltDND32fXxGNsEh96ndQ2G3iNdrfD2byRVtXyT2T0i3B7VGeO0UrjWYznRS/C2R/w0
-         PDlFHepMYnxThEiRq6n85guaCppovGZrK4bjq3xW81sF+K02wJlw/fN9aKG9Lzcz1hqi
-         Vq8VZPN312ePpZiCg+K62ryi36kPJUhLzyRiXWuCZlJuTHDZh7laOmn42bTs1NzOlE2k
-         yKaA==
-X-Forwarded-Encrypted: i=1; AJvYcCUTzhdNVidnz/mDwq/hiYtBWGN+eGJO10a0gA4gUS2YJ3f/9hO6vfpSL8darazVNWhw6kbvcxWXJVuMVywqSA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwvDBKKcVL9VFlwdaDARdYWQTsjirVi3O67BJd/ksOeE8SZW4VF
-	x/l5jflvVvToNfR50q9fKGM6Oxl7qOXLqjgrH4c8duFZAQBi4YleqNTMfCC7BuQ=
-X-Gm-Gg: ASbGncvsnPqNxuIC3I2KR9WnVO8Jir2dF+RUDzzcgJ7PNCl3c/aRXIzP41zASGW2yiF
-	pNzzd1CI6ry5d8uV8XI3V6UiyesNrCY5KYgLWsdnF9J83Ec3ELSMmz59j/dPaJZwIs2p3wgXjr5
-	a9Bj9oS0iBnRps3S3i+hXxRSa0axK5Mskf2V3+ByS8CIKTRSZdkVNeHmI/jfnj1jWRG09f7JXXP
-	Yn/BV0O83exH1CdsmPwm/pJf+nq/O5gsVEdS6Twlulj7wBzlG7wpbburGKrntlnJQNMpsyFjxHK
-	1/3PFOmQ42/O5fiumFTMrJK/JUcOYTeoW6Yi
-X-Google-Smtp-Source: AGHT+IGYRhZnLXNmLM+FMzz0ZpamPsZkQchJSYMBUnIzcz5KdEvg8k8tQLs0cvWfBZIvHDrkMU6Dow==
-X-Received: by 2002:a05:6512:3ca8:b0:542:2a20:e694 with SMTP id 2adb3069b0e04-5422a20e73dmr10688219e87.20.1735565737587;
-        Mon, 30 Dec 2024 05:35:37 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5423e0662e3sm1661166e87.188.2024.12.30.05.35.35
+        d=1e100.net; s=20230601; t=1735570710; x=1736175510;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CcUs5V3NaAvho7+pyHks8hnj2f07Xk/qrLoafEl76mI=;
+        b=MwWsNwM2L0QSQncDND4SEWWzWbh6xQE/dA7+h5GdXs0492oIS3FcnxLEpF2OsDwnsi
+         rGqlMgvSL0fm99cxusZUC19lDvnMt/Kpr1jYXSqvMCCRWSBmfT+PjH5R86fgFppyVtDt
+         imVDW2EQQ5kEv36GA1tXDZQWOTklubdYWnQTjv5llwASnH/wo6ifqQoMrXhSM+yZSvP5
+         lnFvSFqDwcSHL8mRnGF3czQNQ7EGnpFz31e/dmQ4adoUKbjDWsOWnhoDQpAz0aOEwijS
+         hBFSqUCexmHFlibMDF5rHAiZ3BsVQ9ZdLcZd0cUKqL5fFmVsee4rwaEj1w4qyviDu/9D
+         5IAw==
+X-Forwarded-Encrypted: i=1; AJvYcCWTFZDO8NV5JhoSHP7/bS+uoSUzZ89l+6xZtjJAPXS1xY/J9nZ4HziHd3nma+PmILWtiRgF4KdaqrgauT5eqnvL@lists.infradead.org, AJvYcCXRGo6PtkOhLYpgHC22RMILzPyWwqlWD5e5ZQ6N4kMIbL7SACbOZ4Iccpmr08MILDdc+bvmvZ1QwNseBV6Yjbw=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZoHpDF9jUURGoqxqujD5vEnIqKXIl+hc6cr0Zsy3ANfT0Vxvm
+	1ZRhygDpyjBCPU/H6fOP+9GRSD9m6qm2rgfJ6d66RBJSNKfylrBLQYykmNk=
+X-Gm-Gg: ASbGncv0HbIqj4OH3s1m5hs0pauIofPLV7VxxDEifSqzJm+FbYY1RltVytUHBlb4VLq
+	FJN+1svhWeQoX748aMO7qykhLOoAT50VewCAFCG9nt5lrd7gqaaYApFwM+A1YvpZiTV/htoe5Id
+	jRsi9f+DoJ0kIeAh7VNj2V/59kJ2ikczSVUoAN4L5uXAuDBBL8Re0PmI6m4tU6+Rg8QiK8T1S/m
+	QZTUD+lLC63HsBQMqFx57Ok8F0WWFRRSvkOHQ5rpzjbioquS8LlNZ7cOTg=
+X-Google-Smtp-Source: AGHT+IGGle7L3Pgw7YylhfihahGvyOEaP7KbJQB691xKUVzMelucw7pM0g381qkKyOpyxUJSbMnafQ==
+X-Received: by 2002:a05:651c:50b:b0:300:1f2c:e3cf with SMTP id 38308e7fff4ca-30468556638mr121726901fa.13.1735570710108;
+        Mon, 30 Dec 2024 06:58:30 -0800 (PST)
+Received: from JetTurbine.homenetwork ([2a0e:e6c0:20d3:2100::1d])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3045b096026sm34385111fa.118.2024.12.30.06.58.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Dec 2024 05:35:36 -0800 (PST)
-Date: Mon, 30 Dec 2024 15:35:33 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 13/17] drm/bridge: analogix_dp: Convert
- &analogix_dp_device.aux into a pointer
-Message-ID: <e52pbjnusvuoqiyoorjr5msrfmgeqs2jt5sk6zcesvzy7cszzk@fzrtpsjoklgu>
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-14-damon.ding@rock-chips.com>
+        Mon, 30 Dec 2024 06:58:29 -0800 (PST)
+From: Ivan Sergeev <ivan8215145640@gmail.com>
+Date: Mon, 30 Dec 2024 17:58:18 +0300
+Subject: [PATCH v4 1/2] dt-bindings: arm: rockchip: Add BigTreeTech CB2 and
+ Pi2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241226063313.3267515-14-damon.ding@rock-chips.com>
+Message-Id: <20241230-bigtreetech-cb2-v4-1-26d2d30e07ce@gmail.com>
+References: <20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com>
+In-Reply-To: <20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Ivan Sergeev <ivan8215145640@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1174;
+ i=ivan8215145640@gmail.com; h=from:subject:message-id;
+ bh=p5DkTJDu5QlNVWl35gjaVUthknkZBv6iZeP84hntyqE=;
+ b=owEBbQKS/ZANAwAIAbzfXRlQM5b9AcsmYgBncrUUA3PrmBoOQc7ZK6KuFz3wKh25H4s2Ks4/y
+ ZkZpGqK4jGJAjMEAAEIAB0WIQROCZtApKFz1fvvsOS8310ZUDOW/QUCZ3K1FAAKCRC8310ZUDOW
+ /UB5D/0UqZVTLfo9t+CZwDH2325WVdLwSnj4si0Dt3/1sDivld5EZu2i/ygHdEHQQjL+rbQb33g
+ JhZ4VjkWj02or1/DxwriZMD8lTPai8vi7FA4+r+rytYFAwn9V3VA/xhBVw9muFCUFgsBvLUCNt6
+ PhG4Ey94ehyjyJyk2QhvSQR/dx7tKp4twzUfH1ewHb1M+CPOatsPKX0p40L78FNm/UoFlh3FYuZ
+ pDJ0ZHbo7Dic4kfvcbikF2pnjO4qhlxlvzjAmXiKgxz1kyWy4ylJZmZGHmZo6riNCgfv2Kt7Nkf
+ +2cSgiVcJftrvwM8YUSKxia/vPn35aRxpeBBiZtp8b10Ole3XL2A9oPi/A1f+T9N1/NyOpqkbWz
+ HBdv5rBRkATd7L9iVpX1BipqMHhO+v248a0xt4PSe5ScihVPq0HSmsMGV2pxF+1IbPsTfG4iUtk
+ DkyCNy7KyHk7FBufRZfN4kd3+kP23XRuIImQfX5ReTgpPOkSVv6SRQGELXfTFLzaOsLR+V0fKig
+ 2Xhhdd19vGuFh/g2B4dDCTmlmPxz5BYlyMgO4rdjNfcKP5FRIZRiMV7RsmB/XsFcv4P6QEEDhQd
+ HNpcr62xDuk+9qNiqgp8K/JJPpnjAPAeLtCpu37WQ0gH7Tw4nNJ4ZDxGhz/GYwNd+FOujTK9q3+
+ jXUo0ykFOopWMzQ==
+X-Developer-Key: i=ivan8215145640@gmail.com; a=openpgp;
+ fpr=4E099B40A4A173D5FBEFB0E4BCDF5D19503396FD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_053539_498588_B3706FDC 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20241230_065832_377421_CC6BE694 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,63 +113,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 26, 2024 at 02:33:09PM +0800, Damon Ding wrote:
-> With the previous patch related to the support of getting panel from
-> the DP AUX bus, the &analogix_dp_device.aux can be obtained from the
-> &analogix_dp_plat_data.aux.
-> 
-> Furthermore, the assignment of &analogix_dp_plat_data.connector is
-> intended to obtain the pointer of struct analogix_dp_device within the
-> analogix_dpaux_transfer() function.
-> 
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> ---
->  .../drm/bridge/analogix/analogix_dp_core.c    | 92 ++++++++++---------
->  .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
->  .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  2 +-
->  3 files changed, 50 insertions(+), 46 deletions(-)
-> 
+BigTreeTech CB2 and Pi2 are Rockchip RK3566 based boards
 
-[...]
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-> @@ -1127,6 +1128,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
->  
->  	if (!dp->plat_data->skip_connector) {
->  		connector = &dp->connector;
-> +		dp->plat_data->connector = &dp->connector;
->  		connector->polled = DRM_CONNECTOR_POLL_HPD;
->  
->  		ret = drm_connector_init(dp->drm_dev, connector,
-> @@ -1535,7 +1537,9 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
->  static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
->  				       struct drm_dp_aux_msg *msg)
->  {
-> -	struct analogix_dp_device *dp = to_dp(aux);
-> +	struct analogix_dp_plat_data *plat_data = to_pdata(aux);
-> +	struct drm_connector *connector = plat_data->connector;
-> +	struct analogix_dp_device *dp = to_dp(connector);
-
-I see that Analogix DP driver doesn't support
-DRM_BRIDGE_ATTACH_NO_CONNECTOR, but at the same time I don't think this
-is the step in the right direction. Instead please keep the AUX bus on
-the Analogix side and add an API to go from struct drm_dp_aux to struct
-analogix_dp_plat_data. Then your done_probing() callback can use that
-function.
-
->  	int ret;
->  
->  	pm_runtime_get_sync(dp->dev);
-> 
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 753199a12923fadaa48c407a8e55e7854db7203e..349453b1676bfac45abf5cd49d6bd9f847281213 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -81,6 +81,17 @@ properties:
+           - const: azw,beelink-a1
+           - const: rockchip,rk3328
+ 
++      - description: BigTreeTech CB2 Manta M4/8P
++        items:
++          - const: bigtreetech,cb2-manta
++          - const: bigtreetech,cb2
++          - const: rockchip,rk3566
++
++      - description: BigTreeTech Pi 2
++        items:
++          - const: bigtreetech,pi2
++          - const: rockchip,rk3566
++
+       - description: bq Curie 2 tablet
+         items:
+           - const: mundoreader,bq-curie2
 
 -- 
-With best wishes
-Dmitry
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
