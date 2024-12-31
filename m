@@ -4,97 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18EFDE77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 02:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC1A8E7718B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 08:25:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cONxJfehfCoTTeJIMrxCDA3nKd7/VrmBtJoNeK/tXkU=; b=FIEeGX0t2OrA6e
-	b4s6YTW+RBj6C6Ht5sVQBiZMF8y/kOkYKdjcqRudoHtR3mNVJHuxInTatT+Dc5k+d0P2pMNw8XnBX
-	8z982TkelB/vaP1aY4d/oTqqEKTn+4UgKupGlSNxOoj9oABU5kbj9COCaijgkeQLVNE1MskH2Igh2
-	sXct3tQ5Lelxpu1i5w5yGAluQ4hhKE8g08k+dP4EPjZYxhyeyWD0/W/0je7c6hpOwF/IZGcgqULXM
-	z9TrmD/U3qunA1d32Vuih7WMv+sd6YRs9zzjzVBbaowj8y8wdbBFG65lMDQINx0BbP089AuDC1N4x
-	ps4sRI9Z56YtFgCDXV1w==;
+	List-Owner; bh=q9IR0vlccklmbgDP8SNyI80Any+CnkvU5b9d6l+h408=; b=vw/wR9+LRCBXA3
+	K6i7MgWCMZw2GmjpveUg21ROxaeoY425rYaixFv7r2Bf9f2Vpyhxp3zRu/bbZS6LANEnXuLMuOr6f
+	iqNSXFRZFybkF0TWKHhb/btf8fwiTkHr8bEDNc/1C7/0o//A5MpYJH6wEO5+KoJUo9Xsuju2vZnrG
+	O0dGb50O3ekXTilVGd0ji9I2SXcXTvgflpSNutSwSDY6HA381lhYYayKnx3aG5G+T53POgPvV7BoK
+	kjgefhLofbWnzFjzE5mZrOOkaaOQgBV1s7JjphTn3YjJwXL73AwwJEmPnqvfG6EDYUWOyGSg+8vim
+	KFoW3J1AbyaDVOG8cplg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSS5v-00000006KqF-44AC;
-	Tue, 31 Dec 2024 02:34:55 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1tSXYf-00000006oih-0l2Z;
+	Tue, 31 Dec 2024 08:24:57 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSS5s-00000006Kp5-3Jqq
-	for linux-rockchip@lists.infradead.org;
-	Tue, 31 Dec 2024 02:34:54 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-54021daa6cbso10164929e87.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 30 Dec 2024 18:34:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735612491; x=1736217291; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=RI+7nbA0Mzu0ksJ91JaVgtOoMaDibvKyhcyw54LCMU4=;
-        b=SKk5rjti1e89T9b5u6+H/CPUkvI/bkE5eei9724Zd2zsDxrz5E6KKf+KGwy7MlylL3
-         jljmUYTsYB/VN58clOVezMAZLQf5lPtRmNFkmTIPpzwHxiQbmW/FY8d8SE9pvIASLWj6
-         PVLQE2f23Y8PnFIDSanmOvzMyMl6GdgsdpMfWilkKCIFhjAIvlZTxK14jrRT+M9RbTgC
-         Fz5nT1PfSM8A4KruohUk4EUHxUVo2xO4lLk7NTexbeJ/ayjxwZoJ6H0llH7AYm0YEyV8
-         DJfRQPGKaydz2+6vpV+8qQU5YE1NydxpKPWM+bGiUZkMuUzhIyWSwCuuzJNEs+6StZaE
-         KBzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735612491; x=1736217291;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RI+7nbA0Mzu0ksJ91JaVgtOoMaDibvKyhcyw54LCMU4=;
-        b=GMPuc5NjG2dTZ9xSVym2N0xAo1BKpAfDtAqdN5Fl88dOveauErfMpBxnOUpWaYfxO9
-         Qtl04SDelbQXy1X9I73sb8lNcxvm2rCnH3/BfkcYg0y5H+6UbhqdxcRLh7FBKlhyg1G+
-         CqxuWE++Op6Z3aPHF2pRXxjU2StKNBvOP6Zs8stNNTHJDmyvkIDd3yz9xhyGWu2Ulko/
-         GRYgJySuag31mJGfA+N7Vu7pdaOSsCuB1eNvkR97q59D6h3Vxa3zIXJEyu4PdZYA5D1n
-         Zpk0CjU6uZ+dlrZoDkpHPxGZU7JV42mrwSSSE8wBb9Y+OUW/k1rYuemYi5nLnA/Zh871
-         LXcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVRVSmEEbOCM69n1VPX5+HfiQ5hLIsj7T2jc085dNYeQsXsDZ3WK7ShMmUf0AGV2JXlTGL5DzmP1lNY++j9LA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyMTZ2tztLhXJHClJT/ESQBEgjy0IvtfbgT1rMz7hMPz0A2k/S6
-	JcHTXqQoSSWWJYEGikAM/a0ZL07LqllQLo76hSiAAsXr4YRjq/bsjy5XUqgvtJU=
-X-Gm-Gg: ASbGncvH6Q4wC+GyuByrd5k+9m7f5Df8eWK7f9dWyOM9Vh+vLTNhhs+rEaAPcjV7rwx
-	ea/8JbSZPZ1ZfWYWrdO9uf2jMsfnCHlSnkJ2NS+9TtCwdjr+e9cz1aND/cSauveIVlqCMIf1WhI
-	agjAdAX4rb6EKPKTy15JY3jSWBkDrBgskpu8Wg7sOXKh7gHyjC5K2EJD4UFRk4w+lIlgXVadDPo
-	SeYEVg0pTe+daaDtwA0E8L1L4G+MnWFLtjvFnNoTlGrQTCxMgFFqSjxbg5y0fZq21weZ9Md/93T
-	znFegXQ/5JeA37pZ2DeLHqCXEMcNZvXUuUk8
-X-Google-Smtp-Source: AGHT+IEQngwlXfM9dt8rjOdrOkpWLx4+BQSwZSDQz+VJSVqmUl9GZRZw3hBdn7Zi64KM99/WDZ1KDg==
-X-Received: by 2002:a05:6512:3405:b0:542:2a8b:d56f with SMTP id 2adb3069b0e04-5422a8bd614mr11921584e87.4.1735612490788;
-        Mon, 30 Dec 2024 18:34:50 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5424c72cf59sm980707e87.271.2024.12.30.18.34.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Dec 2024 18:34:49 -0800 (PST)
-Date: Tue, 31 Dec 2024 04:34:47 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com, 
-	alain.volmat@foss.st.com, alim.akhtar@samsung.com, andrzej.hajda@intel.com, 
-	andy.yan@rock-chips.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
-	chunkuang.hu@kernel.org, dave.stevenson@raspberrypi.com, dri-devel@lists.freedesktop.org, 
-	heiko@sntech.de, hjc@rock-chips.com, inki.dae@samsung.com, 
-	jani.nikula@linux.intel.com, jernej.skrabec@gmail.com, jonas@kwiboo.se, 
-	kernel-list@raspberrypi.com, krzk@kernel.org, kyungmin.park@samsung.com, lgirdwood@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, 
-	mcanal@igalia.com, mripard@kernel.org, neil.armstrong@linaro.org, 
-	p.zabel@pengutronix.de, perex@perex.cz, ple@baylibre.com, rfoss@kernel.org, 
-	rgallaispou@gmail.com, simona@ffwll.ch, sw0312.kim@samsung.com, tiwai@suse.com, 
-	tzimmermann@suse.de
-Subject: Re: [PATCH v10 03/10] drm/connector: implement generic HDMI audio
- helpers
-Message-ID: <l3u3wtnxyhrwjynevkwfjwarisc4yt4xy2rbzf5kb7k5l5dw3n@lxqtimymyjg6>
-References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
- <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
+	id 1tSXXT-00000006oY8-30YY;
+	Tue, 31 Dec 2024 08:23:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8B251A4007B;
+	Tue, 31 Dec 2024 08:21:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF944C4CEDC;
+	Tue, 31 Dec 2024 08:23:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735633422;
+	bh=8k7A7pn5KKxr1hAtXg6k+QrsCY9z/C72vgdY+d0asXU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aywhAM9CB0qyWKi9qwSfMfwPQayyzhqdqeZOI+brEmTbnRfv8wGj59BYjIGtg0Y/x
+	 Ggiowx+uGTybxmDi9KF0rMUJnhFXkOtDV7Ng6XZB45Ah7/u/p5sgxCS5N6s9P0VYpn
+	 ekzAjtcvrTKiyadrSuV7Pxsl1xdqktIQNfP1zh9GPEiJVGCctIj/4D0+oDUlr8Apv/
+	 s5d3q6C0Tp9Z34xi5nMTirKOL6hwS9VYVl7TH5Ip1YVPYGFJs3czHcZn5i0SNq5pDH
+	 VlZs9UrLMkeZVnJt/ZQmKrn0YhagLrAfsYECognXKukpo0T6UbcX2wfv8vqA/OOLrM
+	 Iof2vBIg9nWew==
+Date: Tue, 31 Dec 2024 09:23:39 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Cc: robh@kernel.org, iommu@lists.linux.dev, heiko@sntech.de, 
+	devicetree@vger.kernel.org, joro@8bytes.org, hjc@rock-chips.com, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	vkoul@kernel.org, detlev.casanova@collabora.com, 
+	linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, 
+	linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, cl@rock-chips.com
+Subject: Re: [PATCH v2 5/8] dt-bindings: display: vop2: Add rk3576 support
+Message-ID: <6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf>
+References: <20241228122155.646957-1-andyshrk@163.com>
+ <20241228122155.646957-6-andyshrk@163.com>
+ <ihvrdnntfuvvycnlhysnm43wylotovvnivu4wxcne3bwc6etpj@n2rq6n77lmma>
+ <4847f6b1.1c60.19412092a7a.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
+In-Reply-To: <4847f6b1.1c60.19412092a7a.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_183452_872368_FF6A0F77 
-X-CRM114-Status: GOOD (  27.24  )
+X-CRM114-CacheID: sfid-20241231_002343_884449_11C428DF 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,91 +78,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 31, 2024 at 01:43:11AM +0100, Martin Blumenstingl wrote:
-> Hello Dmitry,
+On Sun, Dec 29, 2024 at 06:49:38PM +0800, Andy Yan wrote:
 > 
-> this is great work - thanks for your efforts!
 > 
-> To give some context:
-> I am working on a HDMI controller driver for the Amlogic Meson8/8b/8m2
-> SoCs. Unfortunately the driver is not mature enough for upstream
-> submission (all I have is the vendor driver which serves as reference).
-> That said, my goal is to upstream the driver at some point. I have
-> already switched my driver to use hdmi_{clear,write}_infoframe. Now
-> I'm trying this series to simplify my code even further - by using
-> your audio helper work!
+> Hi Krzysztof,
 > 
-> > --- /dev/null
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_audio_helper.c
-> > @@ -0,0 +1,190 @@
-> > [...]
-> > +static const struct hdmi_codec_ops drm_connector_hdmi_audio_ops = {
-> > +	.audio_startup = drm_connector_hdmi_audio_startup,
-> > +	.prepare = drm_connector_hdmi_audio_prepare,
-> > +	.audio_shutdown = drm_connector_hdmi_audio_shutdown,
-> > +	.mute_stream = drm_connector_hdmi_audio_mute_stream,
-> > +	.get_eld = drm_connector_hdmi_audio_get_eld,
-> > +	.get_dai_id = drm_connector_hdmi_audio_get_dai_id,
-> > +	.hook_plugged_cb = drm_connector_hdmi_audio_hook_plugged_cb,
-> > +};
-> On my platform drm_connector_hdmi_audio_prepare() is never called. As
-> a result of that the audio infoframe is never written to my HDMI
-> controller hardware (hdmi_write_infoframe() is never called with type
-> HDMI_INFOFRAME_TYPE_AUDIO). My hack to make it work is to add the
-> following line to drm_connector_hdmi_audio_ops:
->   .hw_params = drm_connector_hdmi_audio_prepare,
+> At 2024-12-29 18:13:39, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
+> >On Sat, Dec 28, 2024 at 08:21:48PM +0800, Andy Yan wrote:
+> >> From: Andy Yan <andy.yan@rock-chips.com>
+> >> 
+> >> Add vop found on rk3576, the main difference between rk3576 and the
+> >> previous vop is that each VP has its own interrupt line.
+> >> 
+> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> >> 
+> >> ---
+> >> 
+> >> Changes in v2:
+> >> - describe constraint SOC by SOC, as interrupts of rk3576 is very
+> >>   different from others
+> >> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
+> >> 
+> >> Changes in v1:
+> >> - ordered by soc name
+> >> - Add description for newly added interrupt
+> >> 
+> >>  .../display/rockchip/rockchip-vop2.yaml       | 70 +++++++++++++++----
+> >>  1 file changed, 56 insertions(+), 14 deletions(-)
+> >> 
+> >> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> >> index 2531726af306..f28cea4a6d82 100644
+> >> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> >> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> >> @@ -20,6 +20,7 @@ properties:
+> >>      enum:
+> >>        - rockchip,rk3566-vop
+> >>        - rockchip,rk3568-vop
+> >> +      - rockchip,rk3576-vop
+> >>        - rockchip,rk3588-vop
+> >>  
+> >>    reg:
+> >> @@ -37,10 +38,22 @@ properties:
+> >>        - const: gamma-lut
+> >>  
+> >>    interrupts:
+> >> -    maxItems: 1
+> >> -    description:
+> >> -      The VOP interrupt is shared by several interrupt sources, such as
+> >> -      frame start (VSYNC), line flag and other status interrupts.
+> >> +    minItems: 1
+> >> +    maxItems: 4
+> >> +    items:
+> >> +      - description:
+> >
+> >That's contradictory. min/max say 1-4, but here you list two interrupts.
 > 
-> I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
-> seems that there is only a single driver which uses the .prepare
-> callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
-> implement .hw_params instead.
+> There are 4 interrupts on rk3576, and the other SOC only have one.
 
-Yes. However .hw_params don't have access to the infoframe contents, so
-I had to settle on implementing .prepare.
+But you listed two interrupts, so where does the "two" come from?
 
+> I am sorry that I am not familiar with this schema language; I have read many
+> other YAML bindings these days and try to write it correctly.
 > 
-> The audio controller code for my platform is already upstream:
-> - sound/soc/meson/aiu-codec-ctrl.c
-> - sound/soc/meson/aiu-encoder-i2s.c
-> - sound/soc/meson/aiu-fifo-i2s.c
-> 
-> My understanding is that you have a platform with a lontium-lt9611
-> HDMI controller available for testing. Can you please help me
-> investigate and find out which piece of code is calling
-> hdmi_codec_prepare() and therefore lt9611_hdmi_audio_prepare() on
-> your board?
+> Maybe I should not list the interrupts-names here(then list the interrupt-name by soc at allOf:  part),
+>  like the clocks handles in samsung,usb3-drd-phy.yaml  ?
 
-Sure, this is the call trace on my platform (Qualcomm SDM845,
-sdm845-db845c.dts):
+xxx-names are supposed to be fully synced with xxx, so something needs
+to be fixed here. You can of course remove interrupt-names *completely*
+(but not partially, because all properties must be defined in top-level).
 
-lt9611_hdmi_audio_prepare+0x1c/0xc0 (P)
-drm_bridge_connector_audio_prepare+0x2c/0x40 (L)
-drm_bridge_connector_audio_prepare+0x2c/0x40
-drm_connector_hdmi_audio_prepare+0x24/0x30
-hdmi_codec_prepare+0xec/0x144
-snd_soc_pcm_dai_prepare+0x78/0x10c
-__soc_pcm_prepare+0x54/0x190
-dpcm_be_dai_prepare+0x120/0x1d0
-dpcm_fe_dai_prepare+0x9c/0x2a0
-snd_pcm_do_prepare+0x30/0x50
-snd_pcm_action_single+0x48/0xa4
-snd_pcm_action_nonatomic+0xa0/0xa8
-snd_pcm_prepare+0x90/0xec
-snd_pcm_common_ioctl+0xd94/0x1a24
-snd_pcm_ioctl+0x30/0x48
-__arm64_sys_ioctl+0xb4/0xec
-invoke_syscall+0x48/0x110
-el0_svc_common.constprop.0+0x40/0xe0
-do_el0_svc+0x1c/0x28
-el0_svc+0x48/0x110
-el0t_64_sync_handler+0x10c/0x138
-el0t_64_sync+0x198/0x19c
+Best regards,
+Krzysztof
 
-Hope, this helps.
-
--- 
-With best wishes
-Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
