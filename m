@@ -4,62 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F989E7718F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 00:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19347E77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 00:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9JWU7da7aytTQPgs56rSVwlaIRk2pQu/G1PQ5NQN4ss=; b=JrChFTRk0G0IDI
-	5ok5KROmEyOthGuT2Q89aLhtsQ7Xf8wkqsestBA6WBl8t2PsBTguVb9zytHomvsG4Isk7WeZtOydr
-	5/5rwCsvtkt6oSqLaGbMwYs983ZmfyWHVruSfIbjqIlVsinDV2aCUJ1sZb/wzKWuLpXauktU1L8pE
-	8K4Gfv8ydUS16bFQ8uhxs6wM+vtTpCUaAxeJ6vwwo4rZJmL9hwGgiDrde7z8SNdwuW3g6JzvYPylf
-	GU7t23Wld59w+uH0hDbFpztTEgeeQy2UulOPw25mUVXNaoFSTlQqg54cf83gfT6MuuQkw3wkqQKCB
-	xdyWqe93VaCLJFTykTOg==;
+	List-Owner; bh=uozU7xiEJz9zgCxA2VVIOY+m42eFuU+8ddje2vo+Kls=; b=j0HIHm1qLHfkD0
+	YAA3MhXkMp6fTHHolCr4NHBRk8d/p9VWEeJd1cmcXeQFTj357b1aHnl3oyC4f4IcvuNalAguqZcoD
+	MdEbNmYmIZQ3qJUsZ1SsBODaCr7T0DL6ZOS40QyTXZ0GoQXfWLBM9CXokaui/vhwuLW16E4hzj5dD
+	FcI67LxSQ8RJ7VnG23qeMcpqaVhupdeBKXcoXYjK+cwgHxY/S5rd2QGgE6GEi9b9c8pggFurg4r9Q
+	h05NlyvluqGhhU26I01ChYnrln2FD4JeUYUgR5Ms34rQelgD8jjdIKMPssNfrgEqntVaViXX9JDC4
+	6Ri5b5rdKfzobHk6UN1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSQ7g-00000006Cdw-2lHo;
-	Tue, 31 Dec 2024 00:28:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tSQNO-00000006E2M-3j7y;
+	Tue, 31 Dec 2024 00:44:50 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSQ6T-00000006CTx-1Ddu;
-	Tue, 31 Dec 2024 00:27:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Ro/DoIxPTQaYjz+4yPa+Cz8iLKFVM57HWDgrlLw5WE0=; b=FnfkFP4CRjvtQmqmAc40YkcvxP
-	J8TmBraLy4RSaMLdgd9Ymgkc2MRaxCzf8WVnEle64Hw92iP/focrKILAqTl4U/HiVLlZCRn06Ov48
-	zY1s7UUz/64bEYGbsBuVx3e5aREOZmiVmoEPhuvS8U1c5/YqO2g64YP4Y188oiaq6G4OLwliW6UKS
-	AZNO7PH7NnzHlMHTBoK7bjrB/ybL1iB4HaCTJyrjKBIBGpVgROb3+PD6/9p8jhk4S5dBSvBuv5Pf8
-	8suOo/QjBw8LEDNr93phakpOWEECZYzTbAb9ToaLY2xy3p/4+BAsuA1m5FavvoN2fLbVqW3iCjgLU
-	f5SussYg==;
-Received: from i5e860d12.versanet.de ([94.134.13.18] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tSQ6E-000300-DH; Tue, 31 Dec 2024 01:27:06 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/7] arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
-Date: Tue, 31 Dec 2024 01:27:05 +0100
-Message-ID: <868000342.0ifERbkFSE@phil>
-In-Reply-To: <CALWfF7Kg9HQoqyEYaj9FGPYu3+vAzZNLMVhSr_90SFDg5Syc9w@mail.gmail.com>
-References: <20241229184256.1870-2-honyuenkwun@gmail.com>
- <20241229184256.1870-3-honyuenkwun@gmail.com>
- <CALWfF7Kg9HQoqyEYaj9FGPYu3+vAzZNLMVhSr_90SFDg5Syc9w@mail.gmail.com>
+	id 1tSQME-00000006DvZ-0i5A;
+	Tue, 31 Dec 2024 00:43:39 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-aa69107179cso1586459366b.0;
+        Mon, 30 Dec 2024 16:43:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20230601; t=1735605816; x=1736210616; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IMEB8NCZ8QveU/RhcsTwV/DZjVBc049BfdXpRNTavFw=;
+        b=LlemakNdrIdzbU2fLxjmpooWZF8IoJ79sNs+nSjJNV10BTiLRH8pyy0RwKiF1D5oM7
+         JpZOcWUCNlz4FJSErMC1S9vgVftlhjPTdgaQPSJKUkinfK9PhWc52s6X5+nYwFQGLM74
+         2iQ8T1wVkIZ6D4A89RlBlSgL2FCezvUYJDMIkkHDHj3nn1E01c2Tzap1D1iJnapiz+6U
+         F0u8EdZCFGcTzZR4HaWkmZBhr+JA8s3920kiD4RZwZXfMH4/ziZ93FNAGCZ5cU1JDCzZ
+         ugdxNh3dM1L4TnJCQkyWQBUYIgBuEU5B6yGlWMh35j3PQNK08NhtthK0fw11pE5r5xVe
+         NB+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735605816; x=1736210616;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IMEB8NCZ8QveU/RhcsTwV/DZjVBc049BfdXpRNTavFw=;
+        b=faof8Pg8ZMHRrX/Rja+TXtHfzS93N8M7lMDSOwcRWnzNLYStL1JBN80M6FFAG3R2lN
+         CrIlsKUsXEH0KE+cYGuKxfXMwZaEsrIvFUw4QZgwt8lcvKPVddybUfjSouS8SPjdRaYz
+         gsWUuykdM3z8xbup4plqqBlZjckoe7bs/7RWKv4LA5KNq6z75Tc2Zu8qWAlH3Yvt8OaS
+         tY/A0PRAZv3O/BkeHvN4fAmDK9ntqDqmvREYXQ82HKUItv4aj687PafI5WXlV9/d0R4E
+         arVjBkgWNtRUMOdiGsYjfZ/W7gwsHkvWOhbsMFMt2cmEVb+ABNbyw7jubBwW5vf1aKKK
+         zV9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUJSuuHZQQaty8n7iwKTG9fSZZYMK5xVGggZan2tpPyIWLq2bxH6L4lejkMB+Vm8RKrAPpVahjurAX91ukz5hRF@lists.infradead.org, AJvYcCUtAjj3owCJbsHpuWaP3Aefj5wJHt3X4isJgmey4jr0hAJw/eagK1PQQqWAVM2q6no0P+y9jEZmzhWcdRJvS9I=@lists.infradead.org, AJvYcCWgxGWeCR7f60crf1e0donQLcR3b+cpK8k9lf/OUYRgcj5+/YZOD9lm68T8qI7i9z4rBPjPusmb2rg9xq1k4DU=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRqNCn7ezwphzUtjrhOIxrOya14VjeXfdKmxyPqD1pZcJLeeHB
+	esFOeQPoAhFpt0UUSv1K6s57nWYdetbWbraFrivvJfNJ/jxlHqpq
+X-Gm-Gg: ASbGncsPVix0OWTDzQ9rlrMHrW3++3PIaXTtEigIObSR0tZRgID4iM4BBActuNbh/0H
+	/9k1pZwchqTh2ndjXmfDdNPGtveJNzh262FeG6PTUuffY9ox2pH3i/aYBLiBJYcGF6+5y+E+kGN
+	0S4GF9jQCREk1htUU/APdQX1hZguLHZ0QfVQZfly5ATBzE4OdlyDuC/Acsi6dFayaJIWKqX8x1q
+	sKzMo1kThtqCjIFY+b3zagFlufPI9KzS/NISKpI0tjR7gnPNuS/jSOvwn0cfmhNrb/q61gS8F1Y
+	kLd/i+RwqWFDtSK3ygc5QDrPa2MPJ7Z1EKL0JLGQDT4D1y+DR3FgHbuzVPt8FxqZWd5lgX21WN7
+	2SSfogIvQz/KWuf/nPQM/BcBRHA==
+X-Google-Smtp-Source: AGHT+IHEGIcJK+SSB1VqPTnorkRP+VtiC6uvv9JG0CKDkLO9JdbaG0jU5yoLZ0jcvFezMTEsCCv8Bg==
+X-Received: by 2002:a17:906:99cc:b0:aae:85a9:5b66 with SMTP id a640c23a62f3a-aae85a95d37mr2281685866b.60.1735605815987;
+        Mon, 30 Dec 2024 16:43:35 -0800 (PST)
+Received: from localhost.localdomain (dynamic-2a02-3100-a465-b000-1e86-0bff-fe2f-57b7.310.pool.telefonica.de. [2a02:3100:a465:b000:1e86:bff:fe2f:57b7])
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-aac0f06dc7esm1523425066b.193.2024.12.30.16.43.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Dec 2024 16:43:33 -0800 (PST)
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+To: dmitry.baryshkov@linaro.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	airlied@gmail.com,
+	alain.volmat@foss.st.com,
+	alim.akhtar@samsung.com,
+	andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com,
+	angelogioacchino.delregno@collabora.com,
+	broonie@kernel.org,
+	chunkuang.hu@kernel.org,
+	dave.stevenson@raspberrypi.com,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	inki.dae@samsung.com,
+	jani.nikula@linux.intel.com,
+	jernej.skrabec@gmail.com,
+	jonas@kwiboo.se,
+	kernel-list@raspberrypi.com,
+	krzk@kernel.org,
+	kyungmin.park@samsung.com,
+	lgirdwood@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	linux@armlinux.org.uk,
+	maarten.lankhorst@linux.intel.com,
+	matthias.bgg@gmail.com,
+	mcanal@igalia.com,
+	mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	p.zabel@pengutronix.de,
+	perex@perex.cz,
+	ple@baylibre.com,
+	rfoss@kernel.org,
+	rgallaispou@gmail.com,
+	simona@ffwll.ch,
+	sw0312.kim@samsung.com,
+	tiwai@suse.com,
+	tzimmermann@suse.de
+Subject: RE: [PATCH v10 03/10] drm/connector: implement generic HDMI audio helpers
+Date: Tue, 31 Dec 2024 01:43:11 +0100
+Message-ID: <20241231004311.2574720-1-martin.blumenstingl@googlemail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
+References: <20241224-drm-bridge-hdmi-connector-v10-3-dc89577cd438@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_162721_346183_BF9C01C0 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20241230_164338_207095_A8EECEE4 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,32 +133,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSmltbXksCgpBbSBTb25udGFnLCAyOS4gRGV6ZW1iZXIgMjAyNCwgMjA6MjA6NTkgQ0VUIHNj
-aHJpZWIgSmltbXkgSG9uOgo+IE9uIFN1biwgRGVjIDI5LCAyMDI0IGF0IDEyOjQ04oCvUE0gSmlt
-bXkgSG9uIDxob255dWVua3d1bkBnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+IGZvciBPcmFuZ2Ug
-UGkgNSBQbHVzL01heC9VbHRyYSBhbmQgQUkgTWF4Cj4gPiAtLS0KPiA+ICAuLi4vZHRzL3JvY2tj
-aGlwL3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzICAgfCA4MzMgKystLS0tLS0tLS0tLS0tLS0t
-Cj4gPiAgLi4uZ2VwaS01LXBsdXMuZHRzID0+IHJrMzU4OC1vcmFuZ2VwaS01LmR0c2l9IHwgMTk1
-ICstLS0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDc3IGluc2VydGlvbnMoKyksIDk1MSBkZWxldGlv
-bnMoLSkKPiA+ICBjb3B5IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAve3JrMzU4OC1vcmFu
-Z2VwaS01LXBsdXMuZHRzID0+IHJrMzU4OC1vcmFuZ2VwaS01LmR0c2l9ICg4MCUpCj4gCj4gSGVp
-a28sCj4gCj4gU2hvdWxkIEkgZ28gYWhlYWQgYW5kIG1ha2UgYSB2NSBpbmNsdWRpbmcgdGhlIGZv
-bGxvd2luZyBpbiBteSBiYXNlbGluZQo+IGJlZm9yZSB0aGUgcmVmYWN0b3I/Cj4gLSBHUFUgcG93
-ZXIgZG9tYW4gZGVwZW5kZW5jeSBbMV0KPiAtIFVTQiAzLjAgb24gNSBQbHVzIFsyXQo+IERvIHRo
-b3NlIHNlcmllcyBsb29rIGxpa2UgdGhleSdsbCBnbyBpbiBhcyBpcz8KCklmIHlvdSB3YW50IHRv
-IGRvIGEgdjUsIHlvdSBfY291bGRfIGluY2x1ZGUgdGUgVVNCIHRoaW5nLCBiZWNhdXNlIHRoYXQK
-aXMgRFRTIG9ubHksIHNvIG9uIG15IHR1cmYgOy0pIC4KCllvdSBjb3VsZCBhbHNvIGRyb3AgdGhl
-IFJGQyArIFVOVEVTVEVEIHBhcnRzIGZvciBub3cgYW5kIHJlc3VibWl0IHRoZW0KbGF0ZXIuCgpG
-b3IgdGhlIEdQVSBwb3dlciBkb21haW4gSSBjYW5ub3Qgc2F5IHdoZW4gdGhpcyB3aWxsIGdvIGlu
-LCBzbyBiZXR0ZXIKbm90IGRlcGVuZCBvbiBpdC4gRXNwZWNpYWxseSBhcyB3ZSBkb24ndCBrbm93
-IHdoZW4gcGVvcGxlIHdpbGwgcmV0dXJuCmZyb20geG1hcy9uZXcteWVhciB2YWNhdGlvbnMuCgpT
-byBpZGVhbGx5IGZvciB0aGUgcG93ZXItZG9tYWluIHRoaW5nLCBjcmVhdGUgYSBmb2xsb3ctdXAg
-cGF0Y2guCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+Hello Dmitry,
+
+this is great work - thanks for your efforts!
+
+To give some context:
+I am working on a HDMI controller driver for the Amlogic Meson8/8b/8m2
+SoCs. Unfortunately the driver is not mature enough for upstream
+submission (all I have is the vendor driver which serves as reference).
+That said, my goal is to upstream the driver at some point. I have
+already switched my driver to use hdmi_{clear,write}_infoframe. Now
+I'm trying this series to simplify my code even further - by using
+your audio helper work!
+
+> --- /dev/null
+> +++ b/drivers/gpu/drm/display/drm_hdmi_audio_helper.c
+> @@ -0,0 +1,190 @@
+> [...]
+> +static const struct hdmi_codec_ops drm_connector_hdmi_audio_ops = {
+> +	.audio_startup = drm_connector_hdmi_audio_startup,
+> +	.prepare = drm_connector_hdmi_audio_prepare,
+> +	.audio_shutdown = drm_connector_hdmi_audio_shutdown,
+> +	.mute_stream = drm_connector_hdmi_audio_mute_stream,
+> +	.get_eld = drm_connector_hdmi_audio_get_eld,
+> +	.get_dai_id = drm_connector_hdmi_audio_get_dai_id,
+> +	.hook_plugged_cb = drm_connector_hdmi_audio_hook_plugged_cb,
+> +};
+On my platform drm_connector_hdmi_audio_prepare() is never called. As
+a result of that the audio infoframe is never written to my HDMI
+controller hardware (hdmi_write_infoframe() is never called with type
+HDMI_INFOFRAME_TYPE_AUDIO). My hack to make it work is to add the
+following line to drm_connector_hdmi_audio_ops:
+  .hw_params = drm_connector_hdmi_audio_prepare,
+
+I checked all instances of struct hdmi_codec_ops in v6.13-rc3 and it
+seems that there is only a single driver which uses the .prepare
+callback (drivers/gpu/drm/vc4/vc4_hdmi.c). All other drivers seem to
+implement .hw_params instead.
+
+The audio controller code for my platform is already upstream:
+- sound/soc/meson/aiu-codec-ctrl.c
+- sound/soc/meson/aiu-encoder-i2s.c
+- sound/soc/meson/aiu-fifo-i2s.c
+
+My understanding is that you have a platform with a lontium-lt9611
+HDMI controller available for testing. Can you please help me
+investigate and find out which piece of code is calling
+hdmi_codec_prepare() and therefore lt9611_hdmi_audio_prepare() on
+your board?
+
+
+Thank you and best regards,
+Martin
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
