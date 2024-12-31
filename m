@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F9D7E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Dec 2024 20:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F989E7718F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 00:28:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=30S1m7+zK3DPx6oozm49wPhi49PxY5m1q0Yaov2YOaw=; b=kF2XSvEpJINFNC
-	HC14OQtC5CHyHYlULlcGSHxa3pAll4OxHHbmM3hZ2dImI4dqx8k6AShNfT+/fFoPzqhXkka7jvBc6
-	DfaNWG1JV7+y7V3XHFZPqLEBSut2wXGy3hB+mx3GFBSDLzjtozW3NEDqzIvJbTd0VlqaK/0NgXo3s
-	cGJecwvBwJxu/Zzb5W/E6n22T95GC6O3kROgOnllRyB9vyi1otbcSjlSJTLKLnnaeUeiVpjzkr9Tc
-	T767ROHKMvPvq5BX9kt7WdCy0+ltVSmM+bqU4YCaTRTdhW5Ya6e8uZozebvmf9iIoe06fIUgjSNKu
-	ki1Y6wUG3eGnh9x+pjdw==;
+	List-Owner; bh=9JWU7da7aytTQPgs56rSVwlaIRk2pQu/G1PQ5NQN4ss=; b=JrChFTRk0G0IDI
+	5ok5KROmEyOthGuT2Q89aLhtsQ7Xf8wkqsestBA6WBl8t2PsBTguVb9zytHomvsG4Isk7WeZtOydr
+	5/5rwCsvtkt6oSqLaGbMwYs983ZmfyWHVruSfIbjqIlVsinDV2aCUJ1sZb/wzKWuLpXauktU1L8pE
+	8K4Gfv8ydUS16bFQ8uhxs6wM+vtTpCUaAxeJ6vwwo4rZJmL9hwGgiDrde7z8SNdwuW3g6JzvYPylf
+	GU7t23Wld59w+uH0hDbFpztTEgeeQy2UulOPw25mUVXNaoFSTlQqg54cf83gfT6MuuQkw3wkqQKCB
+	xdyWqe93VaCLJFTykTOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSM5K-00000005msU-15z3;
-	Mon, 30 Dec 2024 20:09:54 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tSQ7g-00000006Cdw-2lHo;
+	Tue, 31 Dec 2024 00:28:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSM49-00000005mmI-0355;
-	Mon, 30 Dec 2024 20:08:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8223BA40EC4;
-	Mon, 30 Dec 2024 20:06:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B9E8C4CED0;
-	Mon, 30 Dec 2024 20:08:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735589319;
-	bh=iF55zMP9L3C3aKSEuO3ZPhsPTgILQXLSOfQH2gO0RfQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WnO3JblXuVzBQChHdlG4g7jmRArjY2JM6usCAqyNa1KByG1JIBxjqdBN8eF2Dvozb
-	 Ee6a6dJCXB7rnwBOiu99+O/E3Ufp+7ZGjq9r5T8cN7y/QG1lYpsl3IGOg7DemD8o3v
-	 ppdWgUoIKv2EPGKEQojkuRuYzlnRc/dz/ZZNYvzruk+A1vf1EmgHybyOLAx9SmvrAW
-	 uvAFc4irQxqTB1qfvDIOyPLdhsD4jbLRR8HVnItGpRGY3xIHSYAP8zWjza62puhSqV
-	 AepduyBmGTEuOgkbw1LQXgzTJ1f6Ov3rbWOcX+dYCV7DKYDA4SahJVNuwZO0F9OibI
-	 XKkRKxxePqT2g==
-Date: Mon, 30 Dec 2024 14:08:37 -0600
-From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Alexander Shiyan <eagle.alexander923@gmail.com>,
-	Val Packett <val@packett.cool>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/6] media: dt-bindings: media: add bindings for
- rockchip rk3568 vicap
-Message-ID: <20241230200837.GA2477354-robh@kernel.org>
-References: <20241217-v6-8-topic-rk3568-vicap-v2-0-b1d488fcc0d3@wolfvision.net>
- <20241217-v6-8-topic-rk3568-vicap-v2-3-b1d488fcc0d3@wolfvision.net>
+	id 1tSQ6T-00000006CTx-1Ddu;
+	Tue, 31 Dec 2024 00:27:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Ro/DoIxPTQaYjz+4yPa+Cz8iLKFVM57HWDgrlLw5WE0=; b=FnfkFP4CRjvtQmqmAc40YkcvxP
+	J8TmBraLy4RSaMLdgd9Ymgkc2MRaxCzf8WVnEle64Hw92iP/focrKILAqTl4U/HiVLlZCRn06Ov48
+	zY1s7UUz/64bEYGbsBuVx3e5aREOZmiVmoEPhuvS8U1c5/YqO2g64YP4Y188oiaq6G4OLwliW6UKS
+	AZNO7PH7NnzHlMHTBoK7bjrB/ybL1iB4HaCTJyrjKBIBGpVgROb3+PD6/9p8jhk4S5dBSvBuv5Pf8
+	8suOo/QjBw8LEDNr93phakpOWEECZYzTbAb9ToaLY2xy3p/4+BAsuA1m5FavvoN2fLbVqW3iCjgLU
+	f5SussYg==;
+Received: from i5e860d12.versanet.de ([94.134.13.18] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tSQ6E-000300-DH; Tue, 31 Dec 2024 01:27:06 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/7] arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
+Date: Tue, 31 Dec 2024 01:27:05 +0100
+Message-ID: <868000342.0ifERbkFSE@phil>
+In-Reply-To: <CALWfF7Kg9HQoqyEYaj9FGPYu3+vAzZNLMVhSr_90SFDg5Syc9w@mail.gmail.com>
+References: <20241229184256.1870-2-honyuenkwun@gmail.com>
+ <20241229184256.1870-3-honyuenkwun@gmail.com>
+ <CALWfF7Kg9HQoqyEYaj9FGPYu3+vAzZNLMVhSr_90SFDg5Syc9w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241217-v6-8-topic-rk3568-vicap-v2-3-b1d488fcc0d3@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241230_120841_194102_C51DE48D 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20241230_162721_346183_BF9C01C0 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,218 +71,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 17, 2024 at 04:55:15PM +0100, Michael Riesch wrote:
-> Add documentation for the Rockchip RK3568 Video Capture (VICAP) unit.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->  .../bindings/media/rockchip,rk3568-vicap.yaml      | 168 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  2 files changed, 169 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-> new file mode 100644
-> index 000000000000..ef7b14ca6879
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-> @@ -0,0 +1,168 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip,rk3568-vicap.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3568 Video Capture (VICAP)
-> +
-> +maintainers:
-> +  - Michael Riesch <michael.riesch@wolfvision.net>
-> +
-> +description:
-> +  The Rockchip RK3568 Video Capture (VICAP) block features a digital video
-> +  port (DVP, a parallel video interface) and a MIPI CSI-2 port. It receives
-> +  the data from camera sensors, video decoders, or other companion ICs and
-> +  transfers it into system main memory by AXI bus.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3568-vicap
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: ACLK
-> +      - description: HCLK
-> +      - description: DCLK
-> +      - description: ICLK
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: hclk
-> +      - const: dclk
-> +      - const: iclk
-> +
-> +  rockchip,cif-clk-delaynum:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    minimum: 0
-> +    maximum: 127
-> +    description:
-> +      Delay the DVP path clock input to align the sampling phase, only valid
-> +      in dual edge sampling mode.
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    items:
-> +      - description: ARST
-> +      - description: HRST
-> +      - description: DRST
-> +      - description: PRST
-> +      - description: IRST
-> +
-> +  reset-names:
-> +    items:
-> +      - const: arst
-> +      - const: hrst
-> +      - const: drst
-> +      - const: prst
-> +      - const: irst
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to general register file used for video input block control.
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: input port on the parallel interface
-
-What about the CSI-2 interface?
-
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              bus-type:
-> +                enum: [5, 6]
-> +
-> +            required:
-> +              - bus-type
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - ports
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3568-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/rk3568-power.h>
-> +    #include <dt-bindings/media/video-interfaces.h>
-> +
-> +    parent {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        vicap: video-capture@fdfe0000 {
-> +            compatible = "rockchip,rk3568-vicap";
-> +            reg = <0x0 0xfdfe0000 0x0 0x200>;
-> +            interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
-> +            assigned-clocks = <&cru DCLK_VICAP>;
-> +            assigned-clock-rates = <300000000>;
-> +            clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>,
-> +                     <&cru DCLK_VICAP>, <&cru ICLK_VICAP_G>;
-> +            clock-names = "aclk", "hclk", "dclk", "iclk";
-> +            iommus = <&vicap_mmu>;
-> +            power-domains = <&power RK3568_PD_VI>;
-> +            resets = <&cru SRST_A_VICAP>, <&cru SRST_H_VICAP>,
-> +                     <&cru SRST_D_VICAP>, <&cru SRST_P_VICAP>,
-> +                     <&cru SRST_I_VICAP>;
-> +            reset-names = "arst", "hrst", "drst", "prst", "irst";
-> +            rockchip,grf = <&grf>;
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                vicap_dvp: port@0 {
-> +                    reg = <0>;
-> +
-> +                    vicap_dvp_input: endpoint {
-> +                        bus-type = <MEDIA_BUS_TYPE_BT656>;
-> +                        bus-width = <16>;
-> +                        pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
-> +                        remote-endpoint = <&it6801_output>;
-> +                    };
-> +                };
-> +
-> +                vicap_mipi: port@1 {
-> +                    reg = <1>;
-> +                };
-> +            };
-> +        };
-> +
-> +        vicap_mmu: iommu@fdfe0800 {
-> +            compatible = "rockchip,rk3568-iommu";
-
-Not part of this binding, so drop this node.
-
-> +            reg = <0x0 0xfdfe0800 0x0 0x100>;
-> +            interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>;
-> +            clock-names = "aclk", "iface";
-> +            #iommu-cells = <0>;
-> +            power-domains = <&power RK3568_PD_VI>;
-> +            rockchip,disable-mmu-reset;
-> +        };
-> +    };
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1138c8858bc7..8dbeb2927a08 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -20223,6 +20223,7 @@ M:	Michael Riesch <michael.riesch@wolfvision.net>
->  L:	linux-media@vger.kernel.org
->  S:	Maintained
->  F:	Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
-> +F:	Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
->  
->  ROCKCHIP CRYPTO DRIVERS
->  M:	Corentin Labbe <clabbe@baylibre.com>
-> 
-> -- 
-> 2.34.1
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSmltbXksCgpBbSBTb25udGFnLCAyOS4gRGV6ZW1iZXIgMjAyNCwgMjA6MjA6NTkgQ0VUIHNj
+aHJpZWIgSmltbXkgSG9uOgo+IE9uIFN1biwgRGVjIDI5LCAyMDI0IGF0IDEyOjQ04oCvUE0gSmlt
+bXkgSG9uIDxob255dWVua3d1bkBnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+IGZvciBPcmFuZ2Ug
+UGkgNSBQbHVzL01heC9VbHRyYSBhbmQgQUkgTWF4Cj4gPiAtLS0KPiA+ICAuLi4vZHRzL3JvY2tj
+aGlwL3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzICAgfCA4MzMgKystLS0tLS0tLS0tLS0tLS0t
+Cj4gPiAgLi4uZ2VwaS01LXBsdXMuZHRzID0+IHJrMzU4OC1vcmFuZ2VwaS01LmR0c2l9IHwgMTk1
+ICstLS0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDc3IGluc2VydGlvbnMoKyksIDk1MSBkZWxldGlv
+bnMoLSkKPiA+ICBjb3B5IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAve3JrMzU4OC1vcmFu
+Z2VwaS01LXBsdXMuZHRzID0+IHJrMzU4OC1vcmFuZ2VwaS01LmR0c2l9ICg4MCUpCj4gCj4gSGVp
+a28sCj4gCj4gU2hvdWxkIEkgZ28gYWhlYWQgYW5kIG1ha2UgYSB2NSBpbmNsdWRpbmcgdGhlIGZv
+bGxvd2luZyBpbiBteSBiYXNlbGluZQo+IGJlZm9yZSB0aGUgcmVmYWN0b3I/Cj4gLSBHUFUgcG93
+ZXIgZG9tYW4gZGVwZW5kZW5jeSBbMV0KPiAtIFVTQiAzLjAgb24gNSBQbHVzIFsyXQo+IERvIHRo
+b3NlIHNlcmllcyBsb29rIGxpa2UgdGhleSdsbCBnbyBpbiBhcyBpcz8KCklmIHlvdSB3YW50IHRv
+IGRvIGEgdjUsIHlvdSBfY291bGRfIGluY2x1ZGUgdGUgVVNCIHRoaW5nLCBiZWNhdXNlIHRoYXQK
+aXMgRFRTIG9ubHksIHNvIG9uIG15IHR1cmYgOy0pIC4KCllvdSBjb3VsZCBhbHNvIGRyb3AgdGhl
+IFJGQyArIFVOVEVTVEVEIHBhcnRzIGZvciBub3cgYW5kIHJlc3VibWl0IHRoZW0KbGF0ZXIuCgpG
+b3IgdGhlIEdQVSBwb3dlciBkb21haW4gSSBjYW5ub3Qgc2F5IHdoZW4gdGhpcyB3aWxsIGdvIGlu
+LCBzbyBiZXR0ZXIKbm90IGRlcGVuZCBvbiBpdC4gRXNwZWNpYWxseSBhcyB3ZSBkb24ndCBrbm93
+IHdoZW4gcGVvcGxlIHdpbGwgcmV0dXJuCmZyb20geG1hcy9uZXcteWVhciB2YWNhdGlvbnMuCgpT
+byBpZGVhbGx5IGZvciB0aGUgcG93ZXItZG9tYWluIHRoaW5nLCBjcmVhdGUgYSBmb2xsb3ctdXAg
+cGF0Y2guCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
