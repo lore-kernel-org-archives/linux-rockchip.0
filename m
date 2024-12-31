@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 277C3E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 09:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2473E77194
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 09:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1HvMjMuAolHnb5oQOthgrFr/egqQEzfL1Dc48dFsJT0=; b=0B+oJf+SJVNWG4
-	j29c/wloI4ai0W0QpftRMmHTyvHIrHp4RZkLby2yCqOE783B4Rda1Uq817zzZGD+Y2dRCYpZvQwnd
-	wVAKkGYDjZ/6JFgzO2oQ3n9iCBKTxu6YkaJsi/tjpC0/p45SwGwSxQDntXzZ/Wz24YBa5sXA2Ue4x
-	vDLet0ibo7wyYM6LzGB9kdXC5j1TWJ+W5f9dalu1TBxdWGBAsYNRkbJHGYyP6GwP3J6nJQ2pDoDtO
-	fjBCrSmqa3bov2Y8d7Yx6acNjo80qeFoOB5woZPoz0m3/hUWmNzWfIZm88yGlrouZ/tMVZmZ9cA2O
-	BgExgC9V3EIi9koiiIzA==;
+	List-Owner; bh=QbsG+V/ePXjr1JthwrCaLKjZcp/qqvZhgk2DP603ooM=; b=GSVEkTOMtYr/7N
+	97Mvp7rh1DBd5NDmRulGDi1Pr1h+9e0pHPObCZ3O8AsIc5Bh+OHRIc2q0PhVoU+VBCyrR2i1uA0kH
+	+yzYm3vZ7tJlsN//oBoATo3rzzkrS9snFCgZi86fpkBe29wqUKmPrLybTJ2LfObesuz6MRw04VeQE
+	7/1fRqPYuhEvI11rHkdqeeydUA0nfBUdzdmgGufV4m6tAQSBp6j09IWz3yPqzsKlbjl8/yv420NDi
+	YB2OG/GGiqQPHBVqbJv9bkHjb3htSFjYHbKpx9z+QWtA63ZKzMwhooH80CcK+b7OOL5u6vs7sC1Zf
+	Np6Lmn+5brcel7OaMTeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSYso-00000006ycT-0ew3;
+	id 1tSYso-00000006ycj-2Fxw;
 	Tue, 31 Dec 2024 09:49:50 +0000
 Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSYo1-00000006xe9-44q0;
+	id 1tSYo1-00000006xeE-457d;
 	Tue, 31 Dec 2024 09:44:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version:
-	Content-Type; bh=GGNk+E6dN1fEhd5Gt/Vz/ei4dfIItKSH9jCkiZwv9sY=;
-	b=HbGIzSfy5SNCKN8MSGGkVz1hsF8QY1jnejLcZS9JEQMYA39C7rCh1FXoMVswFU
-	dLx8KiQgxVfwuteOQEJ+U5a2MjMxJeOhjPsZLkpi4PCDV26KHfsVivRrAjaniFdj
-	tVcAco4xxzgp61VjnRAeo+PsZlCSRd5Yzk51v0CKtdyvY=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=YwJsx
+	9tuqzRtv1xmM/rKlqDG9slqFAbEfQwpxDjham4=; b=iC6FpPTNdQ+riK0PaFQlC
+	Wo1CWZzuxanjWWB7/8eomiU4hiFVK85dD3V5jbl4OT8pWFtFV01Hpw6KYHSLRxHk
+	QplMk1o88DVgdK1x8RFpjRFJY0aTrbYZ8VNvez7TUv+gN5VveKc1w3YoibQxPasm
+	hvrQnkvU+fQmaQGyADx34Y=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wD3v8P6vHNnCZWrCw--.29543S3;
-	Tue, 31 Dec 2024 17:44:30 +0800 (CST)
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wD3v8P6vHNnCZWrCw--.29543S5;
+	Tue, 31 Dec 2024 17:44:32 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: krzk+dt@kernel.org,
@@ -46,24 +46,25 @@ Cc: krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 1/3] drm/rockchip: dw_hdmi_qp: Add platform ctrl callback
-Date: Tue, 31 Dec 2024 17:44:17 +0800
-Message-ID: <20241231094425.253398-2-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH v2 3/3] drm/rockchip: Add basic RK3576 HDMI output support
+Date: Tue, 31 Dec 2024 17:44:19 +0800
+Message-ID: <20241231094425.253398-4-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241231094425.253398-1-andyshrk@163.com>
 References: <20241231094425.253398-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3v8P6vHNnCZWrCw--.29543S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW3WFWrZF4UurWDGFyxAr13urg_yoW7ArW8p3
-	yUAw1YyrWkJF47Xr4FvF97tFW2y3W7J3ySqF97tFyYy3WFqrn5KF93Wa15Jr4SvF9xuF47
-	C39Yy34rJF1UGFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j4eHDUUUUU=
+X-CM-TRANSID: _____wD3v8P6vHNnCZWrCw--.29543S5
+X-Coremail-Antispam: 1Uf129KBjvJXoW3WFyrKF1xAF45Gw1kWFWDCFg_yoWxtry7pw
+	42y345tFykJF47Jw1IyFn3X3y2kwnrt3yrWa9rWayayFyFgr1fKF93WF45JFyDuFykZFy2
+	ka1kZay5XFnrtrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jxiSdUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hnGXmdzt4WQFgAAsz
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQrGXmdztQzPaQAAsw
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241231_014454_403693_59F81161 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20241231_014454_405653_795B32C2 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,102 +76,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgoKVGhlcmUgYXJlIHNvbWUg
-Y29udHJvbCBiaXRzIGZvciBJTyBhbmQgaW50ZXJydXB0cyBzdGF0dXMgc2NhdHRlcmVkCmFjcm9z
-cyBkaWZmZXJlbnQgR1JGIG9uIGRpZmZlcnQgU09DLgpBZGQgcGxhdGZvcm0gY2FsbGJhY2sgZm9y
-IHRoaXMgSU8gc2V0dGluZyBhbmQgaW50ZXJydXB0cyBzdGF0dXMKaGFuZGxpbmcuCgpTaWduZWQt
-b2ZmLWJ5OiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+CgotLS0KCkNoYW5nZXMg
-aW4gdjI6Ci0gRml4IGNvbXBpbGF0aW9uIHdhcm5pbmc6IHVudXNlZCB2YXJpYWJsZSDigJh2YWzi
-gJkgWy1XdW51c2VkLXZhcmlhYmxlXQoKIC4uLi9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAt
-cm9ja2NoaXAuYyAgICB8IDgyICsrKysrKysrKysrKy0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA1
-NCBpbnNlcnRpb25zKCspLCAyOCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHdfaGRtaV9xcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYwppbmRleCBjMzZmYzEzMGI3MzQuLjcxMWJiZTFj
-NzQ3MCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9j
-a2NoaXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaV9xcC1yb2NrY2hp
-cC5jCkBAIC02Miw2ICs2MiwxMiBAQCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaV9xcCB7CiAJaW50IHBv
-cnRfaWQ7CiB9OwogCitzdHJ1Y3Qgcm9ja2NoaXBfaGRtaV9xcF9jdHJsX29wcyB7CisJdm9pZCAo
-KmlvX2luaXQpKHN0cnVjdCByb2NrY2hpcF9oZG1pX3FwICpoZG1pKTsKKwlpcnFyZXR1cm5fdCAo
-KmlycV9jYWxsYmFjaykoaW50IGlycSwgdm9pZCAqZGV2X2lkKTsKKwlpcnFyZXR1cm5fdCAoKmhh
-cmRpcnFfY2FsbGJhY2spKGludCBpcnEsIHZvaWQgKmRldl9pZCk7Cit9OworCiBzdGF0aWMgc3Ry
-dWN0IHJvY2tjaGlwX2hkbWlfcXAgKnRvX3JvY2tjaGlwX2hkbWlfcXAoc3RydWN0IGRybV9lbmNv
-ZGVyICplbmNvZGVyKQogewogCXN0cnVjdCByb2NrY2hpcF9lbmNvZGVyICpya2VuY29kZXIgPSB0
-b19yb2NrY2hpcF9lbmNvZGVyKGVuY29kZXIpOwpAQCAtMjI2LDkgKzIzMiw0NyBAQCBzdGF0aWMg
-aXJxcmV0dXJuX3QgZHdfaGRtaV9xcF9yazM1ODhfaXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkK
-IAlyZXR1cm4gSVJRX0hBTkRMRUQ7CiB9CiAKK3N0YXRpYyB2b2lkIGR3X2hkbWlfcXBfcmszNTg4
-X2lvX2luaXQoc3RydWN0IHJvY2tjaGlwX2hkbWlfcXAgKmhkbWkpCit7CisJdTMyIHZhbDsKKwor
-CXZhbCA9IEhJV09SRF9VUERBVEUoUkszNTg4X1NDTElOX01BU0ssIFJLMzU4OF9TQ0xJTl9NQVNL
-KSB8CisJICAgICAgSElXT1JEX1VQREFURShSSzM1ODhfU0RBSU5fTUFTSywgUkszNTg4X1NEQUlO
-X01BU0spIHwKKwkgICAgICBISVdPUkRfVVBEQVRFKFJLMzU4OF9NT0RFX01BU0ssIFJLMzU4OF9N
-T0RFX01BU0spIHwKKwkgICAgICBISVdPUkRfVVBEQVRFKFJLMzU4OF9JMlNfU0VMX01BU0ssIFJL
-MzU4OF9JMlNfU0VMX01BU0spOworCisJcmVnbWFwX3dyaXRlKGhkbWktPnZvX3JlZ21hcCwKKwkJ
-ICAgICBoZG1pLT5wb3J0X2lkID8gUkszNTg4X0dSRl9WTzFfQ09ONiA6IFJLMzU4OF9HUkZfVk8x
-X0NPTjMsCisJCSAgICAgdmFsKTsKKworCXZhbCA9IEhJV09SRF9VUERBVEUoUkszNTg4X1NFVF9I
-UERfUEFUSF9NQVNLLCBSSzM1ODhfU0VUX0hQRF9QQVRIX01BU0spOworCXJlZ21hcF93cml0ZSho
-ZG1pLT5yZWdtYXAsIFJLMzU4OF9HUkZfU09DX0NPTjcsIHZhbCk7CisKKwlpZiAoaGRtaS0+cG9y
-dF9pZCkKKwkJdmFsID0gSElXT1JEX1VQREFURShSSzM1ODhfSERNSTFfR1JBTlRfU0VMLAorCQkJ
-CVJLMzU4OF9IRE1JMV9HUkFOVF9TRUwpOworCWVsc2UKKwkJdmFsID0gSElXT1JEX1VQREFURShS
-SzM1ODhfSERNSTBfR1JBTlRfU0VMLAorCQkJCVJLMzU4OF9IRE1JMF9HUkFOVF9TRUwpOworCXJl
-Z21hcF93cml0ZShoZG1pLT52b19yZWdtYXAsIFJLMzU4OF9HUkZfVk8xX0NPTjksIHZhbCk7CisK
-KwlpZiAoaGRtaS0+cG9ydF9pZCkKKwkJdmFsID0gSElXT1JEX1VQREFURShSSzM1ODhfSERNSTFf
-SFBEX0lOVF9NU0ssIFJLMzU4OF9IRE1JMV9IUERfSU5UX01TSyk7CisJZWxzZQorCQl2YWwgPSBI
-SVdPUkRfVVBEQVRFKFJLMzU4OF9IRE1JMF9IUERfSU5UX01TSywgUkszNTg4X0hETUkwX0hQRF9J
-TlRfTVNLKTsKKwlyZWdtYXBfd3JpdGUoaGRtaS0+cmVnbWFwLCBSSzM1ODhfR1JGX1NPQ19DT04y
-LCB2YWwpOworfQorCitzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX2hkbWlfcXBfY3RybF9v
-cHMgcmszNTg4X2hkbWlfY3RybF9vcHMgPSB7CisJLmlvX2luaXQJCT0gZHdfaGRtaV9xcF9yazM1
-ODhfaW9faW5pdCwKKwkuaXJxX2NhbGxiYWNrCSAgICAgICAgPSBkd19oZG1pX3FwX3JrMzU4OF9p
-cnEsCisJLmhhcmRpcnFfY2FsbGJhY2sJPSBkd19oZG1pX3FwX3JrMzU4OF9oYXJkaXJxLAorfTsK
-Kwogc3RydWN0IHJvY2tjaGlwX2hkbWlfcXBfY2ZnIHsKIAl1bnNpZ25lZCBpbnQgbnVtX3BvcnRz
-OwogCXVuc2lnbmVkIGludCBwb3J0X2lkc1tNQVhfSERNSV9QT1JUX05VTV07CisJY29uc3Qgc3Ry
-dWN0IHJvY2tjaGlwX2hkbWlfcXBfY3RybF9vcHMgKmN0cmxfb3BzOwogCWNvbnN0IHN0cnVjdCBk
-d19oZG1pX3FwX3BoeV9vcHMgKnBoeV9vcHM7CiB9OwogCkBAIC0yMzgsNiArMjgyLDcgQEAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9oZG1pX3FwX2NmZyByazM1ODhfaGRtaV9jZmcgPSB7
-CiAJCTB4ZmRlODAwMDAsCiAJCTB4ZmRlYTAwMDAsCiAJfSwKKwkuY3RybF9vcHMgPSAmcmszNTg4
-X2hkbWlfY3RybF9vcHMsCiAJLnBoeV9vcHMgPSAmcmszNTg4X2hkbWlfcGh5X29wcywKIH07CiAK
-QEAgLTI2NSw3ICszMTAsNiBAQCBzdGF0aWMgaW50IGR3X2hkbWlfcXBfcm9ja2NoaXBfYmluZChz
-dHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAlzdHJ1Y3QgcmVzb3Vy
-Y2UgKnJlczsKIAlzdHJ1Y3QgY2xrICpjbGs7CiAJaW50IHJldCwgaXJxLCBpOwotCXUzMiB2YWw7
-CiAKIAlpZiAoIXBkZXYtPmRldi5vZl9ub2RlKQogCQlyZXR1cm4gLUVOT0RFVjsKQEAgLTI4Miw2
-ICszMjYsMTIgQEAgc3RhdGljIGludCBkd19oZG1pX3FwX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRl
-dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJaWYgKCFjZmcpCiAJCXJldHVybiAt
-RU5PREVWOwogCisJaWYgKCFjZmctPmN0cmxfb3BzIHx8ICFjZmctPmN0cmxfb3BzLT5pb19pbml0
-IHx8CisJICAgICFjZmctPmN0cmxfb3BzLT5pcnFfY2FsbGJhY2sgfHwgIWNmZy0+Y3RybF9vcHMt
-PmlycV9jYWxsYmFjaykgeworCQlkZXZfZXJyKGRldiwgIk1pc3NpbmcgcGxhdGZvcm0gY3RybCBv
-cHNcbiIpOworCQlyZXR1cm4gLUVOT0RFVjsKKwl9CisKIAloZG1pLT5kZXYgPSAmcGRldi0+ZGV2
-OwogCWhkbWktPnBvcnRfaWQgPSAtRU5PREVWOwogCkBAIC0zNTcsMzEgKzQwNyw3IEBAIHN0YXRp
-YyBpbnQgZHdfaGRtaV9xcF9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
-IGRldmljZSAqbWFzdGVyLAogCQlyZXR1cm4gcmV0OwogCX0KIAotCXZhbCA9IEhJV09SRF9VUERB
-VEUoUkszNTg4X1NDTElOX01BU0ssIFJLMzU4OF9TQ0xJTl9NQVNLKSB8Ci0JICAgICAgSElXT1JE
-X1VQREFURShSSzM1ODhfU0RBSU5fTUFTSywgUkszNTg4X1NEQUlOX01BU0spIHwKLQkgICAgICBI
-SVdPUkRfVVBEQVRFKFJLMzU4OF9NT0RFX01BU0ssIFJLMzU4OF9NT0RFX01BU0spIHwKLQkgICAg
-ICBISVdPUkRfVVBEQVRFKFJLMzU4OF9JMlNfU0VMX01BU0ssIFJLMzU4OF9JMlNfU0VMX01BU0sp
-OwotCXJlZ21hcF93cml0ZShoZG1pLT52b19yZWdtYXAsCi0JCSAgICAgaGRtaS0+cG9ydF9pZCA/
-IFJLMzU4OF9HUkZfVk8xX0NPTjYgOiBSSzM1ODhfR1JGX1ZPMV9DT04zLAotCQkgICAgIHZhbCk7
-Ci0KLQl2YWwgPSBISVdPUkRfVVBEQVRFKFJLMzU4OF9TRVRfSFBEX1BBVEhfTUFTSywKLQkJCSAg
-ICBSSzM1ODhfU0VUX0hQRF9QQVRIX01BU0spOwotCXJlZ21hcF93cml0ZShoZG1pLT5yZWdtYXAs
-IFJLMzU4OF9HUkZfU09DX0NPTjcsIHZhbCk7Ci0KLQlpZiAoaGRtaS0+cG9ydF9pZCkKLQkJdmFs
-ID0gSElXT1JEX1VQREFURShSSzM1ODhfSERNSTFfR1JBTlRfU0VMLAotCQkJCSAgICBSSzM1ODhf
-SERNSTFfR1JBTlRfU0VMKTsKLQllbHNlCi0JCXZhbCA9IEhJV09SRF9VUERBVEUoUkszNTg4X0hE
-TUkwX0dSQU5UX1NFTCwKLQkJCQkgICAgUkszNTg4X0hETUkwX0dSQU5UX1NFTCk7Ci0JcmVnbWFw
-X3dyaXRlKGhkbWktPnZvX3JlZ21hcCwgUkszNTg4X0dSRl9WTzFfQ09OOSwgdmFsKTsKLQotCWlm
-IChoZG1pLT5wb3J0X2lkKQotCQl2YWwgPSBISVdPUkRfVVBEQVRFKFJLMzU4OF9IRE1JMV9IUERf
-SU5UX01TSywgUkszNTg4X0hETUkxX0hQRF9JTlRfTVNLKTsKLQllbHNlCi0JCXZhbCA9IEhJV09S
-RF9VUERBVEUoUkszNTg4X0hETUkwX0hQRF9JTlRfTVNLLCBSSzM1ODhfSERNSTBfSFBEX0lOVF9N
-U0spOwotCXJlZ21hcF93cml0ZShoZG1pLT5yZWdtYXAsIFJLMzU4OF9HUkZfU09DX0NPTjIsIHZh
-bCk7CisJY2ZnLT5jdHJsX29wcy0+aW9faW5pdChoZG1pKTsKIAogCUlOSVRfREVMQVlFRF9XT1JL
-KCZoZG1pLT5ocGRfd29yaywgZHdfaGRtaV9xcF9yazM1ODhfaHBkX3dvcmspOwogCkBAIC0zOTQs
-OCArNDIwLDggQEAgc3RhdGljIGludCBkd19oZG1pX3FwX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRl
-dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJCXJldHVybiBpcnE7CiAKIAlyZXQg
-PSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxKGhkbWktPmRldiwgaXJxLAotCQkJCQlkd19oZG1p
-X3FwX3JrMzU4OF9oYXJkaXJxLAotCQkJCQlkd19oZG1pX3FwX3JrMzU4OF9pcnEsCisJCQkJCWNm
-Zy0+Y3RybF9vcHMtPmhhcmRpcnFfY2FsbGJhY2ssCisJCQkJCWNmZy0+Y3RybF9vcHMtPmlycV9j
-YWxsYmFjaywKIAkJCQkJSVJRRl9TSEFSRUQsICJkdy1oZG1pLXFwLWhwZCIsCiAJCQkJCWhkbWkp
-OwogCWlmIChyZXQpCi0tIAoyLjM0LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Andy Yan <andy.yan@rock-chips.com>
+
+The HDMI on RK3576 shares the same IP block (PHY and Controller)
+with rk3588.
+However, there are some control bits scattered in different GRF.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+
+(no changes since v1)
+
+ .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 143 +++++++++++++++++-
+ 1 file changed, 141 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index 711bbe1c7470..5d83fadadf1d 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -25,6 +25,41 @@
+ 
+ #include "rockchip_drm_drv.h"
+ 
++#define RK3576_IOC_MISC_CON0		0xa400
++#define RK3576_HDMI_HPD_INT_MSK		BIT(2)
++#define RK3576_HDMI_HPD_INT_CLR		BIT(1)
++
++#define RK3576_IOC_HDMI_HPD_STATUS	0xa440
++#define RK3576_HDMI_LEVEL_INT		BIT(3)
++
++#define RK3576_VO0_GRF_SOC_CON1		0x0004
++#define RK3576_HDMI_FRL_MOD		BIT(0)
++#define RK3576_HDMI_HDCP14_MEM_EN	BIT(15)
++
++#define RK3576_VO0_GRF_SOC_CON8		0x0020
++#define RK3576_COLOR_FORMAT_MASK	(0xf << 4)
++#define RK3576_COLOR_DEPTH_MASK		(0xf << 8)
++#define RK3576_RGB                     (0 << 4)
++#define RK3576_YUV422                  (0x1 << 4)
++#define RK3576_YUV444                  (0x2 << 4)
++#define RK3576_YUV420                  (0x3 << 4)
++#define RK3576_8BPC                    (0x0 << 8)
++#define RK3576_10BPC                   (0x6 << 8)
++#define RK3576_CECIN_MASK		BIT(3)
++
++#define RK3576_VO0_GRF_SOC_CON12	0x0030
++#define RK3576_GRF_OSDA_DLYN		(0xf << 12)
++#define RK3576_GRF_OSDA_DIV		(0x7f << 1)
++#define RK3576_GRF_OSDA_DLY_EN		BIT(0)
++
++#define RK3576_VO0_GRF_SOC_CON14	0x0038
++#define RK3576_I2S_SEL_MASK		BIT(0)
++#define RK3576_SPDIF_SEL_MASK		BIT(1)
++#define HDCP0_P1_GPIO_IN		BIT(2)
++#define RK3576_SCLIN_MASK		BIT(4)
++#define RK3576_SDAIN_MASK		BIT(5)
++#define RK3576_HDMI_GRANT_SEL		BIT(6)
++
+ #define RK3588_GRF_SOC_CON2		0x0308
+ #define RK3588_HDMI0_HPD_INT_MSK	BIT(13)
+ #define RK3588_HDMI0_HPD_INT_CLR	BIT(12)
+@@ -167,6 +202,37 @@ static const struct dw_hdmi_qp_phy_ops rk3588_hdmi_phy_ops = {
+ 	.setup_hpd	= dw_hdmi_qp_rk3588_setup_hpd,
+ };
+ 
++static enum drm_connector_status
++dw_hdmi_qp_rk3576_read_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++{
++	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
++	u32 val;
++
++	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &val);
++
++	return val & RK3576_HDMI_LEVEL_INT ?
++		connector_status_connected : connector_status_disconnected;
++}
++
++static void dw_hdmi_qp_rk3576_setup_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++{
++	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
++	u32 val;
++
++	val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_CLR,
++	      RK3576_HDMI_HPD_INT_CLR | RK3576_HDMI_HPD_INT_MSK);
++
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++	regmap_write(hdmi->regmap, 0xa404, 0xffff0102);
++}
++
++static const struct dw_hdmi_qp_phy_ops rk3576_hdmi_phy_ops = {
++	.init		= dw_hdmi_qp_rk3588_phy_init,
++	.disable	= dw_hdmi_qp_rk3588_phy_disable,
++	.read_hpd	= dw_hdmi_qp_rk3576_read_hpd,
++	.setup_hpd	= dw_hdmi_qp_rk3576_setup_hpd,
++};
++
+ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = container_of(work,
+@@ -182,6 +248,45 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
+ 	}
+ }
+ 
++static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
++{
++	struct rockchip_hdmi_qp *hdmi = dev_id;
++	u32 intr_stat, val;
++
++	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
++	if (intr_stat) {
++		val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_MSK,
++				RK3576_HDMI_HPD_INT_MSK);
++
++		regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++		return IRQ_WAKE_THREAD;
++	}
++
++	return IRQ_NONE;
++}
++
++static irqreturn_t dw_hdmi_qp_rk3576_irq(int irq, void *dev_id)
++{
++	struct rockchip_hdmi_qp *hdmi = dev_id;
++	u32 intr_stat, val;
++
++	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
++
++	if (!intr_stat)
++		return IRQ_NONE;
++
++	val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_CLR,
++			RK3576_HDMI_HPD_INT_CLR);
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++	mod_delayed_work(system_wq, &hdmi->hpd_work,
++			msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
++
++	val = HIWORD_UPDATE(0, RK3576_HDMI_HPD_INT_MSK);
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++
++	return IRQ_HANDLED;
++}
++
+ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = dev_id;
+@@ -232,6 +337,21 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
++{
++	u32 val;
++
++	val = HIWORD_UPDATE(RK3576_SCLIN_MASK, RK3576_SCLIN_MASK) |
++		HIWORD_UPDATE(RK3576_SDAIN_MASK, RK3576_SDAIN_MASK) |
++		HIWORD_UPDATE(RK3576_HDMI_GRANT_SEL, RK3576_HDMI_GRANT_SEL) |
++		HIWORD_UPDATE(RK3576_I2S_SEL_MASK, RK3576_I2S_SEL_MASK);
++
++	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
++
++	val = HIWORD_UPDATE(0, RK3576_HDMI_HPD_INT_MSK);
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++}
++
+ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
+ {
+ 	u32 val;
+@@ -263,6 +383,12 @@ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
+ 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+ }
+ 
++static const struct rockchip_hdmi_qp_ctrl_ops rk3576_hdmi_ctrl_ops = {
++	.io_init		= dw_hdmi_qp_rk3576_io_init,
++	.irq_callback	        = dw_hdmi_qp_rk3576_irq,
++	.hardirq_callback	= dw_hdmi_qp_rk3576_hardirq,
++};
++
+ static const struct rockchip_hdmi_qp_ctrl_ops rk3588_hdmi_ctrl_ops = {
+ 	.io_init		= dw_hdmi_qp_rk3588_io_init,
+ 	.irq_callback	        = dw_hdmi_qp_rk3588_irq,
+@@ -276,6 +402,15 @@ struct rockchip_hdmi_qp_cfg {
+ 	const struct dw_hdmi_qp_phy_ops *phy_ops;
+ };
+ 
++static const struct rockchip_hdmi_qp_cfg rk3576_hdmi_cfg = {
++	.num_ports = 1,
++	.port_ids = {
++		0x27da0000,
++	},
++	.ctrl_ops = &rk3576_hdmi_ctrl_ops,
++	.phy_ops = &rk3576_hdmi_phy_ops,
++};
++
+ static const struct rockchip_hdmi_qp_cfg rk3588_hdmi_cfg = {
+ 	.num_ports = 2,
+ 	.port_ids = {
+@@ -287,8 +422,12 @@ static const struct rockchip_hdmi_qp_cfg rk3588_hdmi_cfg = {
+ };
+ 
+ static const struct of_device_id dw_hdmi_qp_rockchip_dt_ids[] = {
+-	{ .compatible = "rockchip,rk3588-dw-hdmi-qp",
+-	  .data = &rk3588_hdmi_cfg },
++	{ .compatible = "rockchip,rk3576-dw-hdmi-qp",
++	  .data = &rk3576_hdmi_cfg
++	}, {
++	  .compatible = "rockchip,rk3588-dw-hdmi-qp",
++	  .data = &rk3588_hdmi_cfg
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, dw_hdmi_qp_rockchip_dt_ids);
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
