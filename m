@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48244E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 09:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48419E77194
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Dec 2024 09:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GpiN7JUxhfA4p8gK0+kaXhp1u3H9fIbU7qTHd+KFEs0=; b=P81YbX12CxUfAD
-	TT0LOWxoH/urIqxBqVyXpGrVyiy92AlbQksuhtGxqXnkFcWaH3vGH60EvfXTwDeT6LZ3n8RqtGnXD
-	qtePGGN/v2FlMFJ7SSVa4p43KEXl6lJ8sLoCRIxxKU4aO3i+zY4WGIrsC+NjcUkdLt+n+SR7TvOxq
-	eClYsYaiWzV1MDOq2ROP2LgF79NEEsrciKseqXnF42ymLXvK2/Ou8a8BXmo3ICxCp+a7WSo0BvdQM
-	5AoT5eSeAck6d1AMttdnq3VlEhW0Niek23Ggcgq/JEugYWJHTgnXeEYYAHIoyvroe0Bi/CdYAPr7+
-	zm03UEuQIhETQvMn85Hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H2UmbgNJN9cT3V6itRDYwNluRCJw7kjVMWywLtiRCZU=; b=0boGvArPuHEam5
+	LTKeYLnnMFY7EZkk/WSZR9uNOQucnx0WLG5y3SZUPpC9wksBLIOXN7T3TY30VLkIyRISEVcnr6juE
+	ixSGZYQ/lhSSLJGUwyvISpf3PgVGfD0KVq/765z0LLvzZVaCkEa+y2yovE4G19cv3V8QkKhIXwsDf
+	qgw+9yhEcs8RaF8mS/Hkr+tYjq7oTEDxgnO4nPytRCAa9WSMBFbKIyf2ZKH3uyyVgi+lgktoJvcMK
+	d0iz0+340FnFA2ZXVJe5oBthkQAnhwxVFP9JRshH4XFNzBsaQjHzRfjGAoLPpjInrUkyMFecxIeos
+	kNbP/J5O/Z9M1kFU5q0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSYqT-00000006yIG-2KhW;
+	id 1tSYqT-00000006yIO-3rRH;
 	Tue, 31 Dec 2024 09:47:25 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tSYo0-00000006xeJ-2oiZ;
+	id 1tSYo0-00000006xeC-35yj;
 	Tue, 31 Dec 2024 09:44:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=pg0Uf
-	V4prOtW7FOVVRBO2lYE1N8dbmghRAassomDga4=; b=CBl7s6Mx6gtwsmDOtiqAZ
-	2s0SKfQ8p9At50xZ+X7JTIA6D6uFFBZeT+59xcyptwKwR32TsTb4NFmJMPsjmvMt
-	abWdDyQYED3EvS5JNIviDVyhyylyghqAjeDjdayRYQkV5nfe84F3ZzpakPaI4g1R
-	CrSCh4gHXn4gwK1YUqLzU4=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version:
+	Content-Type; bh=KgtALxJqBWoQB4v1+ibC8c5vtvvbQuSbp6eJ9TpCs4o=;
+	b=p6SMH6CRyG46D1iaJalUPdckQsBULJUgmM857QpPXRSGSKbX6bCwGcmzq+wk0O
+	5yLGIphuAfDHIkWFQa7dJqWoikY2BFlY1zbsFd68bTU2CYMYfsOtxdfaSm/167HM
+	3pwy6+h/jNUahP74w7a/MlyqGvVU/DmaCrxN6PX+5RszM=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wD3v8P6vHNnCZWrCw--.29543S4;
-	Tue, 31 Dec 2024 17:44:31 +0800 (CST)
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wD3v8P6vHNnCZWrCw--.29543S2;
+	Tue, 31 Dec 2024 17:44:29 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: krzk+dt@kernel.org,
@@ -47,23 +47,21 @@ Cc: krzk+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 2/3] dt-bindings: display: rockchip: Add rk3576 hdmi controller
-Date: Tue, 31 Dec 2024 17:44:18 +0800
-Message-ID: <20241231094425.253398-3-andyshrk@163.com>
+Subject: [PATCH v2 0/3] Add HDMI support for rk3576
+Date: Tue, 31 Dec 2024 17:44:16 +0800
+Message-ID: <20241231094425.253398-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241231094425.253398-1-andyshrk@163.com>
-References: <20241231094425.253398-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3v8P6vHNnCZWrCw--.29543S4
-X-Coremail-Antispam: 1Uf129KBjvdXoW7XFW3Kr4UZr1UWF4UKF1ftFb_yoWDXrbEqa
-	4xZ3Z8ZFs5Zr1Y9w1DJ397Wws8Ja17KF4kGa1UAF4DJa4kKrZYqr95G343KFykAF17uFyx
-	CFn5XrWUG3ZxJjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8OTmDUUUUU==
+X-CM-TRANSID: _____wD3v8P6vHNnCZWrCw--.29543S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7XFW3Kr4UZr1UWF4UKr13twb_yoW3Zrb_K3
+	4Sq3s8ur18uF1Yya47tw4xWa93tay2gFZ5GF48K3ZrJFWkJF48Xrn3JrWYqa4rZF1YkFnr
+	Gr4YqFy8CanIyjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUbySotUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hnGXmdzt4WQFgABsy
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqR7GXmdztQzPNgAAs7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241231_014453_059131_41AE395B 
-X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-CacheID: sfid-20241231_014453_163518_41D0C948 
+X-CRM114-Status: UNSURE (   7.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,42 +74,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
-
-RK3576 HDMI TX Controller is very similar to that of RK3588, but
-with some control bits for IO and interrupts status scattered across
-different GRF.
-
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
-
-(no changes since v1)
-
- .../bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml    | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-index d8e761865f27..b838b5ec2dca 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-@@ -29,6 +29,7 @@ allOf:
- properties:
-   compatible:
-     enum:
-+      - rockchip,rk3576-dw-hdmi-qp
-       - rockchip,rk3588-dw-hdmi-qp
- 
-   reg:
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgoKClJLMzU3NiBIRE1JIFRY
+IENvbnRyb2xsZXIgaXMgdmVyeSBzaW1pbGFyIHRvIHRoYXQgb2YgUkszNTg4LCBidXQgd2l0aApz
+b21lIGNvbnRyb2wgYml0cyBmb3IgSU8gYW5kIGludGVycnVwdHMgc3RhdHVzIHNjYXR0ZXJlZCBh
+Y3Jvc3MgZGlmZmVyZW50CkdSRi4KClBBVENIIDEvMyBpcyBhZGQgcGxhdGZvcm0gY3RybCBjYWxs
+YmFjayBmb3IgSU8gc2V0dGluZyBhbmQgaW50ZXJydXB0cwpzdGF0dXMgaGFuZGluZy4KUEFUQ0gg
+Mi8zIH4gMy8zIGFyZSBhZGQgc3VwcG9ydCBmb3IgcmszNTc2CgpDaGFuZ2VzIGluIHYyOgotIEZp
+eCBjb21waWxhdGlvbiB3YXJuaW5nOiB1bnVzZWQgdmFyaWFibGUg4oCYdmFs4oCZIFstV3VudXNl
+ZC12YXJpYWJsZV0KCkFuZHkgWWFuICgzKToKICBkcm0vcm9ja2NoaXA6IGR3X2hkbWlfcXA6IEFk
+ZCBwbGF0Zm9ybSBjdHJsIGNhbGxiYWNrCiAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IHJvY2tjaGlw
+OiBBZGQgcmszNTc2IGhkbWkgY29udHJvbGxlcgogIGRybS9yb2NrY2hpcDogQWRkIGJhc2ljIFJL
+MzU3NiBIRE1JIG91dHB1dCBzdXBwb3J0CgogLi4uL3JvY2tjaGlwL3JvY2tjaGlwLHJrMzU4OC1k
+dy1oZG1pLXFwLnlhbWwgIHwgICAxICsKIC4uLi9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAt
+cm9ja2NoaXAuYyAgICB8IDIyNSArKysrKysrKysrKysrKystLS0KIDIgZmlsZXMgY2hhbmdlZCwg
+MTk2IGluc2VydGlvbnMoKyksIDMwIGRlbGV0aW9ucygtKQoKLS0gCjIuMzQuMQoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
