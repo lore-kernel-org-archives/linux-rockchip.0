@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49231E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 11:58:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B86E77188
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 12:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LxaTZI9H3lnyIvDkUUuidkMZ/rZEqUvYCrOg2y/pP/8=; b=LDA9LXM+N1/Qpk
-	LT01U0dIA1JGC7EgIQneFYxSsL0vyCBT8/H4oJafv48zn1mV/u1TIP5EqlANNBlPdERiPs3l+WzRy
-	riFpcTgjeBcCh5Qb+aJ15txkfCAqfSbcijby1VEHRJiVauV3O8x4qsI2CMXxdzUL9KkbctRVNix6c
-	D9NN/9+IiXdpDmY6bjs25mv/bQ8Bb3TSRXLIdlQ6a9rjwpseKkcCnw8P67UKOTkP0A7Lo1wn3diCu
-	GrEzpk6oCzZnX++RkmWBdoHr92zQYR8R7kBWYhrV9NsxUgmQUOjGsN3b7G8Fw0AJ/Pa0heQte4MOz
-	aNg3JSieiUteUywX7O5A==;
+	List-Owner; bh=zpoHmJe0jNQISSdePHHxbEJxKnF02dgTx3NPLhf8F0I=; b=wf3AtzdyT6FUGa
+	8NGYdKBiTWZCktV/8no/g7d0daCK6OJz+p5FJefeVwODpucpBJ/l+41AoLQ6rqK2BYM1L2ocO/eTX
+	lvdECiQplbpvBukzMWnk8KZBkKfeAMzdx47Egp/pGf2V+ehJ4z1WaT/7P4jVJiqpUKmWKZw8UvmpI
+	HqrG7PFiiT2NKZg3YrwNG2qFs3C4xIfnhZ5NODIcyf6Nxj7spXXMpqS+qoUgCc3+vijxXy+m5Yx56
+	uw8wwgofzW3DsUY6Bh5Abu06N0wK8McbPT7oJfpNDaj5L2PGWLDvuSpgpoeh8tA/xaMT913xnGw9J
+	5DkDedryWXSKIpcYIaWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTJqD-0000000AImj-1fBO;
-	Thu, 02 Jan 2025 11:58:17 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tTKUN-0000000AMim-1u67;
+	Thu, 02 Jan 2025 12:39:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTJp1-0000000AIe3-3BAr;
-	Thu, 02 Jan 2025 11:57:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=j9BRYqtU1/upqh8/+Oi84LPuS1gHyWF/MWynsZDnmsI=; b=YIeI3qCH5MGj7bJGccxx3mZoYZ
-	tyrZ+UeWV1Yz1LAvt0YJLRqpxWMflvnA9fEWguGwPda7GTs4zUt+waTidGWxa1hYWmZnRyWvXbsmG
-	ybecqROk8igzdkLkShtoNPGwCnqjcZvIAOD2SMrND5QKmjFCXCxMQSYDXTt1vq5pumbeWbTWN9DjZ
-	A91+2EwTPjnT0meDoGRe0Gq6vMIPCoK6axxlSUXYOLtNXpbrQPK0ps029ffIW13hc5lSMUXnb+/6e
-	puxeAU7lbZ/kGCjrQLkFgJOEj4T7EbOyD4EsUQ0KZKcbzflN+eJ2s8G5M4PqgTf1OmZgTrumrY6rn
-	M5UQx5Kg==;
-Received: from i5e860d14.versanet.de ([94.134.13.20] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tTJou-0007jf-8O; Thu, 02 Jan 2025 12:56:56 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>,
- Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH 3/3] drm/rockchip: Add basic RK3576 HDMI output support
-Date: Thu, 02 Jan 2025 12:56:55 +0100
-Message-ID: <15367137.tv2OnDr8pf@diego>
-In-Reply-To: <20241225103741.364597-4-andyshrk@163.com>
-References: <20241225103741.364597-1-andyshrk@163.com>
- <20241225103741.364597-4-andyshrk@163.com>
+	id 1tTKTC-0000000AMdC-3qMl;
+	Thu, 02 Jan 2025 12:38:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1735821513;
+	bh=qN3wx4iRobhYPryY9mzAir8xmXEV8TBbYXBnM1/XkGw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=p7f5xAhdjEvLiZhepWhLcOjuM8QEZRArtvMO74WLJ0Tf7hxtTQIvB9poHaCNhhXT2
+	 DlHsJrxsqcQtkFKI/lxVONFCBG8Quho/3BqIALE+Ab7De3AFnt/PvON5cFxmIBgD1E
+	 5TigcKZ60oCP4eoRboN0o81dfjXWVePU+rCgb2CjEkjwcfEttehP65U55ecRQxqDBI
+	 rRLHt4Ks/KJ3WDy+DBI98yUl92IEmnlufag2dyZeVYyvug95kk8O/gOfxCTRBLCw0r
+	 k/VADRUJUFUkoIZfdrSYSRyUduaQOCgQ0VAz02DiFQF5zhh0onF6Ui66CMINjs4a6h
+	 2GpHZUehZF1hQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 93B9917E156C;
+	Thu,  2 Jan 2025 13:38:32 +0100 (CET)
+Message-ID: <3d6cf760-28df-42b6-8500-bda6597cfb2e@collabora.com>
+Date: Thu, 2 Jan 2025 13:38:32 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] phy: Use (of|device)_property_present() for non-boolean
+ properties
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20241231163121.241543-1-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241231163121.241543-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_035703_804117_68371729 
-X-CRM114-Status: GOOD (  21.27  )
+X-CRM114-CacheID: sfid-20250102_043835_187061_8C0FA8FA 
+X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,62 +75,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mripard@kernel.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 25. Dezember 2024, 11:37:31 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+Il 31/12/24 17:31, Rob Herring (Arm) ha scritto:
+> The use of (of|device)_property_read_bool() for non-boolean properties
+> is deprecated in favor of (of|device)_property_present() when testing
+> for property presence.
 > 
-> The HDMI on RK3576 shares the same IP block (PHY and Controller)
-> with rk3588.
-> However, there are some control bits scattered in different GRF.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
-The attribution is strange. Where does the Signed-off from Detlev come
-from?
+For MediaTek:
 
-At that position it would mean that he's the sender, but that's obviously
-not the case.
-
-I guess it's either just the Tested-by ... or you need an additional
-Co-Developed-by if Detlev contributed to this patch.
-
-
-> ---
-> 
->  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 143 +++++++++++++++++-
->  1 file changed, 141 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> index b21e868e7c16..bd9216e45e74 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-[...]
-> @@ -287,8 +422,12 @@ static const struct rockchip_hdmi_qp_cfg rk3588_hdmi_cfg = {
->  };
->  
->  static const struct of_device_id dw_hdmi_qp_rockchip_dt_ids[] = {
-> -	{ .compatible = "rockchip,rk3588-dw-hdmi-qp",
-> -	  .data = &rk3588_hdmi_cfg },
-> +	{ .compatible = "rockchip,rk3576-dw-hdmi-qp",
-> +	  .data = &rk3576_hdmi_cfg
-> +	}, {
-> +	  .compatible = "rockchip,rk3588-dw-hdmi-qp",
-> +	  .data = &rk3588_hdmi_cfg
-> +	},
-
-nit: please keep consistent styling between the listentries. Right now the
-rk3576 and changed rk3588 entries use different styles.
-
-
-Heiko
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 _______________________________________________
