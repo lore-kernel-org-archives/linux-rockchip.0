@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17C7E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 15:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A590E77188
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 16:57:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ub3nhdzAdbtFX7ms3ecaxUO/CZ9dlWdZDh6HD5KXq5o=; b=0XwYqXgzYC+VMd
-	rm3nbd58SKsOeT2Ax6Iivehg7gtTJz8DoYqejawuR2UhRk/S99uZlv2snNrC5QH+S8JgRf0UuIf4K
-	6peRFsqV72/HGaa16f+B/Hise075F39sDXXAVuXT0ocHwV5gCu5k9FgzBCa58U8p+ToyakuNIMY0g
-	lYLCturntvmMW+UuvsqXJAwSnD6VtNv99CwN4zwb9rNrWhlmI5CX781K8kocyK63nyMNj5CrYR1qQ
-	07ZEcrCadyWGXfINIdrFV0lEGf+zYLKWS9JCIrgY6kEW7RxvxdPZK9P8cQZReegXP7FdAVm+FHDCp
-	Uk/qygNOL3yKGK2Xz5aw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9NMFzT6LRuXLl25a/RlZehQdZ5f4inoXRon28OS2CDs=; b=lnRb+f0UzCgPxl
+	pVYzMjVWnTdJkj5B6+YlcXde8Tj+6Y6007/b3K7L9eZAfxmLG/M81QVmBRG9AOmSzkBdaevAWNLq9
+	l9BVfc3au3TsHDfQ5yHUyw22KH/Lj9mLq2YKjT+IzkI3HrCbdWjk22eN9jRfm1K2TfTN6ZazIrlg+
+	3ruUgM7kHiauMtwG7qls0O91bAqK2ER4GhS5DCFo5bfE9YDZ6V8iHZePymokb6G8lUtB6tyn8MYcL
+	3UyInF2IHGcIw+ifDQCVfWLwezAZSt71t9YSVSB6USA8iF4z4ZSO8KPjteRPX4VoRDnCCFBSs9pEd
+	gUnVPBaJ4UFd1ltpHT0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTNFa-0000000AiYA-3yo8;
-	Thu, 02 Jan 2025 15:36:42 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1tTOW0-0000000Auhp-0B7P;
+	Thu, 02 Jan 2025 16:57:44 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTNEO-0000000AiNv-2VgD;
-	Thu, 02 Jan 2025 15:35:29 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-53f22fd6887so11019157e87.2;
-        Thu, 02 Jan 2025 07:35:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735832126; x=1736436926; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iT4Lk/9j6jfvzdv4mtNNNlRP6HP4iXENTaMgFI8ZadE=;
-        b=AdXOhgBj+6ilYBdTdlTR5QSsO6O+GZHVvu21aThozvWFj8345kfIcrc87NELw2Dh8o
-         fYojO9av5HUeKGL9C6jViwXuqV4P0nRy7WOBm/HFD9m50LDv3VTm2nJyaiTleojptRcG
-         F/jfklWce4yhss7YvS5AnPdMCmeSvx7rmc7QKRNB1QoriFG+6uhucmo/38JVzV+YsI/f
-         gwCfzeKSwuaX+Jw70k5NMwueFhZPReukAr0Cj7HpE0o4dLzlnotbU+rM+CLIDcSZ3QCM
-         Fm0QPI5oF0QueNycVRtq9bDn5NANkAaMUZZGImB1uTStVGRsGuKkMlNRiMLd3eFLc/Jn
-         7aNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735832126; x=1736436926;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iT4Lk/9j6jfvzdv4mtNNNlRP6HP4iXENTaMgFI8ZadE=;
-        b=Ux9xJH6jsqjgHJILU7tujh03Ht/rxidNO6HqSwMZYZnzUm2WyTjhAFs7qXX4w2P5LY
-         83sB+dI9fgsNZrscDM+M1RsA440vp7OjNgFCNgv5uTLpTFuivJGhX0ZkOrHXvRdvwR2E
-         JbKlrX3D2cCYObyg3adDeidwBFndMjoCGu/tvDO5JdEpCJbBA4uSJUta5YAHTdJYEXHc
-         CEsiNMDQT+TVO6GfufD4NLHij2rlDZMgha1zgBjxiQ++04F+X2Ax/ZYDjokzs6kxSHpc
-         sJJnV4fN4It/CFvIJMJXT7jwufsR/AHZi9cKprq5eGDPlUIOK9MpwO06HJ/UsycYAyyW
-         3ttw==
-X-Forwarded-Encrypted: i=1; AJvYcCUO++81+TqTNgvyFTUND/CwEWWutc3jFWZctHZxhNTx0AStFBIbWB8Z9WZ6+TL0+8/u0R44F3goO3jobrSrERmr@lists.infradead.org, AJvYcCWgbi1tJjQ5kJ25DnCuxL4DxO/LtOhuuwYEDQpQ6LUySn5ET8+VoFtd3M6dP9p5L8H3BFfqlVCWAxfGQ+P+mKc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyrDly3lAxhVs1zLkvfJw2J1a2zoabqzwT6YAI5gMlHtmwvVgro
-	CFZSo8wZwkR2Tf524EN+zHqP5T9i8S2mQFdYEJl27ZytgxRzdfgk
-X-Gm-Gg: ASbGncudkST3yo+HvTQInyBReskdP3pz4UqscVbSVy0UufN4OoMuUFp5n+aAusgA1wH
-	PPE/lGsePnlDmVNOIPOpSXjcAzVryuQnFIsHyfJfjRTB9h+0BwA/fn5w4DfJ+ye3qsb7pEYOPLi
-	OXlFFAKsR7CUx+4gkwQ4hYHM6AQ14/6U7h3QMLTGo95KbGFf3eAjZNq2gbyDyEXOcPfB+/WKw8Q
-	cFhKzXfc4Sm9ZQVcqfOVcv5/t0zyM+jJ4V84PZav4PAWAQlJ7L/w+ru1wCIqoTucre9eiMyw8KE
-	GaG5FA+n4OBYYqcdRvDm/C/vq99sswt6PhI/2y7dm9dMKA9PQ638
-X-Google-Smtp-Source: AGHT+IFuQdFNtPKtYU0kU7F2ognrgVg6FfagolZHbxa4JZ1HZFQ63T/tY5ua6ZtGvZjW1YAsQ2kn3w==
-X-Received: by 2002:a05:6512:b19:b0:542:2e09:639a with SMTP id 2adb3069b0e04-5422e0963efmr12639162e87.10.1735832125581;
-        Thu, 02 Jan 2025 07:35:25 -0800 (PST)
-Received: from razdolb.local (static.248.157.217.95.clients.your-server.de. [95.217.157.248])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54223602617sm3958832e87.109.2025.01.02.07.35.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Jan 2025 07:35:24 -0800 (PST)
-From: Mikhail Rudenko <mike.rudenko@gmail.com>
-Date: Thu, 02 Jan 2025 18:35:00 +0300
-Subject: [PATCH] media: rkisp1: allow non-coherent video capture buffers
+	id 1tTOVx-0000000Aufy-0aEJ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 02 Jan 2025 16:57:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1735837059;
+ bh=dRM7LIJF9jh6lqB+/i8HwabrDShaWCLC/iAJxa/ormM=;
+ b=Wo3rZ0ec2mVd74Il9cInd3Cf4V6NvwiTYNtBLRNXMN3rHBINY7s7aHktC3qaT8EerRWupPGSP
+ cVrYh0TFN9fwfx6IRl+8locMVymnFSBU96cOcvY9YXUKGanmqYnDiqrfUrfHn2bbOtUR49cqAM/
+ wsO5vDcGQzGICbG+u+YQCEmZl7mW4kRz0LoC3Dm6xlf2Fi7MvAffn8MEaJnvBGh4f7bL83nmEUd
+ 5EFhi6CS4d3Su1BTOSVjswWwaaB/BIBv4zYTKaXnqb/1o3MD+XTA/gvHQhw0X2pTAoJpHOXgmtW
+ dKgOP8CS7SjTCnTqVPvDKx4bexOJs0lhannw3ZmzdVmA==
+X-ForwardEmail-Version: 0.4.40
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from [192.168.2.234] ([78.69.151.207]
+ 78-69-151-207-no600.tbcn.telia.com) by smtp.forwardemail.net (Forward
+ Email) with ESMTPSA (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384); Thu,
+ 02 Jan 2025 16:57:19 +0000
+Message-ID: <688c8fb6-68f7-45f1-98fc-8b3252b3ecbf@kwiboo.se>
+Date: Thu, 2 Jan 2025 17:57:18 +0100
 MIME-Version: 1.0
-Message-Id: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
-X-B4-Tracking: v=1; b=H4sIACOydmcC/x3MMQqAMAxA0atIZgO2iopXEYe2Rg1CKqmIIN7d4
- viG/x9IpEwJhuIBpYsTR8kwZQFhc7IS8pwNtrKNsbVB36DunA6UKCFupCQnurmlLnSu7b2DnB5
- KC9//dpze9wOZweAXZgAAAA==
-X-Change-ID: 20241231-b4-rkisp-noncoherent-ad6e7c7a68ba
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Mikhail Rudenko <mike.rudenko@gmail.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: rk3568: add
+ reset-names for combphy
+To: Jianfeng Liu <liujianfeng1994@gmail.com>, vkoul@kernel.org
+Cc: amadeus@jmu.edu.cn, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, kishon@kernel.org, krzk+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, p.zabel@pengutronix.de, robh@kernel.org,
+ yifeng.zhao@rock-chips.com
+References: <173367712869.1031947.3262464465649332012.b4-ty@kernel.org>
+ <20250102151601.2615178-1-liujianfeng1994@gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250102151601.2615178-1-liujianfeng1994@gmail.com>
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 6776c574758981c18e6f13ec
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_073528_639071_814E0075 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20250102_085741_493281_8EA0B69B 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +85,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, the rkisp1 driver always uses coherent DMA allocations for
-video capture buffers. However, on some platforms, using non-coherent
-buffers can improve performance, especially when CPU processing of
-MMAP'ed video buffers is required.
+On 2025-01-02 16:16, Jianfeng Liu wrote:
+> Hi,
+> 
+> On Sun, 08 Dec 2024 22:28:48 +0530, Vinod Koul wrote:
+>> Applied, thanks!
+>>
+>> [2/2] phy: rockchip: naneng-combphy: fix phy reset
+>>      commit: fbcbffbac994aca1264e3c14da96ac9bfd90466e
+> 
+> The other patch in this series:
+> arm64: dts: rockchip: rk3568: add reset-names for combphy
+> is missing in v6.13-rc5, which will break pcie2 of rk3568 because the phy
+> driver has changed.
 
-For example, on the Rockchip RK3399 running at maximum CPU frequency,
-the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
-malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
-non-coherent DMA allocation. CPU usage also decreases accordingly.
+Yes, the commit fbcbffbac994 ("phy: rockchip: naneng-combphy: fix phy
+reset") breaks backward compatibility with existing DTs and this commit
+should probably be reverted or driver need a fix that fall back to old
+behavior in case DT is missing reset-names.
 
-This change allows userspace to request the allocation of non-coherent
-buffers. Note that the behavior for existing users will remain unchanged
-unless they explicitly set the V4L2_MEMORY_FLAG_NON_COHERENT flag when
-allocating buffers.
+Regards,
+Jonas
 
-Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 6dcefd144d5abe358323e37ac6133c6134ac636e..c94f7d1d73a92646457a27da20726ec6f92e7717 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1563,6 +1563,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
- 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
- 	q->lock = &node->vlock;
- 	q->dev = cap->rkisp1->dev;
-+	q->allow_cache_hints = 1;
- 	ret = vb2_queue_init(q);
- 	if (ret) {
- 		dev_err(cap->rkisp1->dev,
-
----
-base-commit: 40ed9e9b2808beeb835bd0ed971fb364c285d39c
-change-id: 20241231-b4-rkisp-noncoherent-ad6e7c7a68ba
-
-Best regards,
--- 
-Mikhail Rudenko <mike.rudenko@gmail.com>
+> 
+> Best regards,
+> Jianfeng
+> 
 
 
 _______________________________________________
