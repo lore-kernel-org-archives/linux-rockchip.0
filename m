@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC222E77188
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 17:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B84E77188
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jan 2025 21:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KmDsNTtLHsQl0XSXRxUHjpzEy90lNnp9iQHKxDt7zCU=; b=tPUebtKiFZt0Eh
-	Stc5x2JxTVew2BRn2ty5+fTcdQoxkgKJAnXqbn9FqmIZpbfGgGQ3Y4nnIrp2tpRNsPWgJ3DzJgN9E
-	tE9Epwhd8pk8s/XPJUrbBDUdgdkwl3OqF+QMo7QyPJ9XDDfqLjKsY4yrIOA0hl1icp67t10QjfPos
-	5C38G7q7LVPYJIZyLkVOKeoouC/PE10/7XnDR7jGMtkg1Ybwt8BWxKOQu8ZcFiqZRUtZuY8iTZKCs
-	++GjysY4O01zEe7W5QbhsMOSg+plJiWxEh+yJ26pvup0eLtlc4jUSPvC+FGxCm2b/bk0+UMYyPNwK
-	8BFpMsjzeWH6cXP+G9Pw==;
+	List-Owner; bh=axGBKG2lZ/JcK4MduHskRL8VzS4SPAYxTyT/wELWchc=; b=rKS08hdMpo6KU/
+	+UzE/B4YWQ9ya3yf9uL3TKRTOLh8imE+EFAZb8+rZBTJOuzZm9fhT2OjzZJ9ES24S1wD2x+gicF12
+	LKKMkUMixb7TAl8ldGCZ5evauE5RgH/nzSRoUqnZOktLChxxWIm30V/xBN0u5nH/wxFRJTWdoX5A/
+	dXuxZ6fd8mhpVHPo1EkvtfnLJT49x6MhbcLfeMDacHOW4ecmk/jfLAg95p9yxdFtwq/QMiHG33f9h
+	5Aw6J80W9XjsmCk5zezW1r1mfpBrTDFX5zMtSY1FxpLHvZ0rIzDyw6y/pYt7u6UusJwl/L8P/50fa
+	T8ca2lsQbG+EGm9bD/7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTOko-0000000Ax6R-2ogB;
-	Thu, 02 Jan 2025 17:13:02 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tTT96-0000000BXyI-15vI;
+	Thu, 02 Jan 2025 21:54:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTOhM-0000000AwbM-0LQc;
-	Thu, 02 Jan 2025 17:09:29 +0000
+	id 1tTT7w-0000000BXtr-2bK4;
+	Thu, 02 Jan 2025 21:53:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E725AA410AD;
-	Thu,  2 Jan 2025 17:07:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C49EC4CED0;
-	Thu,  2 Jan 2025 17:09:24 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 73E1DA415D1;
+	Thu,  2 Jan 2025 21:51:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAFAEC4CED0;
+	Thu,  2 Jan 2025 21:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735837766;
-	bh=Dfckcslj2/8WRc8SptWS2FQp9woBnJsNqD3xm+9mJes=;
+	s=k20201202; t=1735854791;
+	bh=LKTc6/sATowwzTd72kbpfKRHreyAr4MLhR803zIVUD4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ruyYold5U8duzlVE6n5ktgNH83eSQ0/GovN3m3oZtWtSnr5Fshqdt/Nrtb16S3MgB
-	 lqycf6xuS3anj00QuzamQ2IpKPjJJNCc2v79T83c/NVR5FlOq/B/FmOBOyqn/Nl3zc
-	 CGuDGrxIeqVbQ3p3VC4c7vzMeR9Dsg4rtHlzDUm6A21iogjVht5qksfT6kYmx5TCX5
-	 +nP6bCUrW8Qs22O3Tgm9YU085lSxkPr+Vb2vtQ24xHpkun+yhLOZ781XIoZ+GzlNc1
-	 Qo8p6cexKtpHOo0nW+d20c+dlauVTRXyUyWz0EkZ+EwYmh9xKWq7UIlOYCSNIR5lwm
-	 naSL8cRx8xi/w==
-Date: Thu, 2 Jan 2025 18:09:22 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	b=Ko9Xe3+c2+oYnvo3KrLpFiKWwx5Teb2uSAo0DPzjtK6QNGW33BiFdLbWezqBGGAvq
+	 CODqugAzl6lZzIB7HtZxVRoNiGUvBEgIiMMJQzediAOM2OgdB6c4reLyl0tq8e2LSS
+	 MOdlZx6Djz2COKShZ8dHo4prMZCpgQkY2IrD+daSgE55S1U3pZ7gudZfW1oq3GjLoE
+	 9kt5cctJ4GHt1hUm4HEgTbF88Z8GPFs/D1AWJzlqh/EiWKpdZunhF26vD32l6egRLK
+	 cN1mkfZhvZWMvZ5kMSQfvQa1cziwtBsQVCbaxa84dZddTflz1cqtl3yK6ICFQ7wuE4
+	 8prn0mt2mUSGw==
+Date: Thu, 2 Jan 2025 15:53:08 -0600
+From: Rob Herring <robh@kernel.org>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Ondrej Jirman <megi@xff.cz>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Enumerate endpoints based on
- dll_link_up irq in the combined sys irq
-Message-ID: <Z3bIQj4b-9gV-Sd9@ryzen>
-References: <20241127145041.3531400-2-cassel@kernel.org>
- <20241230191908.GA3962801@bhelgaas>
+Subject: Re: [RFC 4/7] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5
+ Ultra
+Message-ID: <20250102215308.GA636148-robh@kernel.org>
+References: <20241229184256.1870-2-honyuenkwun@gmail.com>
+ <20241229184256.1870-8-honyuenkwun@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241230191908.GA3962801@bhelgaas>
+In-Reply-To: <20241229184256.1870-8-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_090928_193526_E71EC4FC 
-X-CRM114-Status: GOOD (  22.20  )
+X-CRM114-CacheID: sfid-20250102_135312_719598_8B85BDFA 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,52 +76,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 30, 2024 at 01:19:08PM -0600, Bjorn Helgaas wrote:
-> On Wed, Nov 27, 2024 at 03:50:42PM +0100, Niklas Cassel wrote:
-> > Most boards using the pcie-dw-rockchip PCIe controller lack standard
-> > hotplug support.
-> > 
-> > Thus, when an endpoint is attached to the SoC, users have to rescan the bus
-> > manually to enumerate the device. This can be avoided by using the
-> > 'dll_link_up' interrupt in the combined system interrupt 'sys'.
-> > 
-> > Once the 'dll_link_up' irq is received, the bus underneath the host bridge
-> > is scanned to enumerate PCIe endpoint devices.
-> > 
-> > This commit implements the same functionality that was implemented in the
-> > DWC based pcie-qcom driver in commit 4581403f6792 ("PCI: qcom: Enumerate
-> > endpoints based on Link up event in 'global_irq' interrupt").
-> > 
-> > The Root Complex specific device tree binding for pcie-dw-rockchip already
-> > has the 'sys' interrupt marked as required, so there is no need to update
-> > the device tree binding. This also means that we can request the 'sys' IRQ
-> > unconditionally.
-> 
-> Thanks for doing this!
-> 
-> > @@ -436,7 +481,16 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
-> >  	pp = &rockchip->pci.pp;
-> >  	pp->ops = &rockchip_pcie_host_ops;
-> >  
-> > -	return dw_pcie_host_init(pp);
-> > +	ret = dw_pcie_host_init(pp);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to initialize host\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	/* unmask DLL up/down indicator */
-> > +	rockchip_pcie_writel_apb(rockchip, 0x20000, PCIE_CLIENT_INTR_MASK_MISC);
-> 
-> I know we already had a bare 0x60000 in rockchip_pcie_configure_ep(),
-> but can we add #defines for both of these PCIE_CLIENT_INTR_MASK_MISC
-> bits?
+On Sun, Dec 29, 2024 at 12:41:31PM -0600, Jimmy Hon wrote:
+> Add devicetree binding for the Xunlong Orange Pi 5 Ultra board.
 
-Sure, I will send a follow-up patch.
+Why RFC? Looks fine to me.
 
+However, you should have 'v4' on every patch in the series if this is 
+v4.
 
-Kind regards,
-Niklas
+> 
+> The Orange Pi 5 Ultra is a single board computer powered by the Rockchip
+> RK3588 with similar board layout as the 5 Max but with the HDMI0 swapped
+> for HDMI IN.
+> 
+> Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 2a141d99c533..9dd424265826 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -1075,11 +1075,12 @@ properties:
+>            - const: xunlong,orangepi-3b
+>            - const: rockchip,rk3566
+>  
+> -      - description: Xunlong Orange Pi 5 Max/Plus
+> +      - description: Xunlong Orange Pi 5 Max/Plus/Ultra
+>          items:
+>            - enum:
+>                - xunlong,orangepi-5-max
+>                - xunlong,orangepi-5-plus
+> +              - xunlong,orangepi-5-ultra
+>            - const: rockchip,rk3588
+>  
+>        - description: Xunlong Orange Pi R1 Plus / LTS
+> -- 
+> 2.47.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
