@@ -4,68 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D5BE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 15:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B21E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 15:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=36PyGPp5zmhpq5DY4Sxy/xNipmE8OEpS7tCN9G+4YFU=; b=r6tvHEMyXoxUTZ
-	LHqhHpxYDf3tBN5EvUollwGhyUa3+RH7yZe/T01LG48CrHpBCXvZIDi7k2lljjV6Jw+0vv64IC87x
-	wtbeSSKp1snquC7XLqD/ZfI55gnhKUnkLPwiEskekFwSwUhFUEV5QBCxS8WC1i8BT2OuO96Bjr3sT
-	qZMR63/hWSucFYlzP766s798Y0Hj8Os04jZ+HpXEnihgkYdGwdj/+K56ncznYeU6yb96nQtYoff3s
-	4bAP3mdw0anqAGptmq2yf4WH3LH92fzH83H7nGczSRVjhFRAuDth2lpMrrauv4tdCJvK3cTIptcH0
-	qvIdtAl2zSvjjDtuAA/Q==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=mlvGabbaWSjYkSSHvOw3sbH4Szk1X/LNecTsPcnwaRE=; b=VxogwCNhPV2Vmdqm3TM5qAB4Ry
+	H5lx32G8o46QSFP95LFI+WfkOb4osAH6242Pcy3TqKXIrudE9vCab28bTP7dCkT8w8e8/fagAtL7q
+	p8YOUIjH8+Bc2UAGMIuOAh7OAGoZpod3aV46SIRpWp8OAZ51NlwI2BppAgCXnP7Uq37WXuB7tCy/C
+	gbMKUmzmrfJsVrErCw/hgVuQcuKqnYebm+PBEnJj0vznJT1tyySJZmyp9OkMNk878twTfM8D3yXBY
+	vTP3Z2BqsIMojinddRdQafwkK+t+wECE3JBhi4Wj63f9O9YwYUKJbtsgevy5nqefLMraBizjpVJ1l
+	0mHMTRJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTjL5-0000000DEBX-0oJz;
-	Fri, 03 Jan 2025 15:11:51 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tTjX9-0000000DGYU-2Yux;
+	Fri, 03 Jan 2025 15:24:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTjJr-0000000DDzM-0aSp;
-	Fri, 03 Jan 2025 15:10:36 +0000
+	id 1tTjTY-0000000DFaG-2M2v;
+	Fri, 03 Jan 2025 15:20:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 30BA4A40BE4;
-	Fri,  3 Jan 2025 15:08:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABE5FC4CECE;
-	Fri,  3 Jan 2025 15:10:31 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C250B5C6461;
+	Fri,  3 Jan 2025 15:19:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B95E0C4CEE3;
+	Fri,  3 Jan 2025 15:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1735917034;
-	bh=1BF/6cjFkwRL519wCuap2QXMjEYM9CYI1Dk9qxzXxNc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vJ/ApSphiN0qvPN/WMJ+exnXwCvG9WFvpjWQRoBQBZcqsyUjnn18nMvnIqLGZ06lY
-	 +RkGa0cC+t7uOFJ9JqNsid9tEeuhCrAL4pSp+0I0uo5PX6AdEdoKAoQjDW+BIde+WY
-	 tYCOHmN4MlLC1J28eVTXF9UpQl6y3EroHLu0La2eGSpxkG/4HK2kgo3+OYe8vc9AV2
-	 4dmKOA9ZuekWiaIfZKGzZkCj5MVDFG4gYtk13UX+CvrBswD5Jm6BnuGdByRhMBBWv9
-	 Y+UmfzAfmios8vQXrVYmdKi5yxQAFjh7HnvXID8K7LQ5O7TzO+VGIWNlQSiIzk1aub
-	 fLGO436FH22rw==
-Date: Fri, 3 Jan 2025 16:10:29 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <Z3f95RXj7GhZZHEP@ryzen>
-References: <20240809073610.2517-1-linux.amoon@gmail.com>
- <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
- <Z3fzad51PIxccDGX@ryzen>
- <CANAwSgQEunirUf3O3FJJAUsQu9mQYD_Y40uJ_zMYDZYVy5J=wQ@mail.gmail.com>
- <Z3f4JQZ6yYV1BJ-b@ryzen>
- <CANAwSgRTcHuDNLvPJAs7ZaV-NnepeOkHj_kVc5OAJtP03hd6pQ@mail.gmail.com>
+	s=k20201202; t=1735917635;
+	bh=el3W4jiKTFvgMk17ql8zwcLjJZEPe9R2tL1/ytsFm0A=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=gW3bTJJXXhJqwHA/o8w67zkkWOyYDtJgE3u9AQJb9QcOknB98NQMpjSw0d30yNGgv
+	 kHg4Lc+5EJU00jjz81uNQVk9lktSt4QUGbFdAsT5uC4cWzkT9FpjXi8y1D6dWCvrSz
+	 xmlthFSQd2Em7MlP84AfRzwsO1xRQtb2Oa8DI3CQ5e1swhp/gHqkuUiSnQCeBSVYYL
+	 XNpQd8VdyesfMv60dz3vyAjTkfIHA+JIcNwN65A4bGJpl7N80mEt+1VPQwu/0Jpp/J
+	 o6f78GWUx6+dN8akEnPZcIAFwBthcV0uckH/Jb5uaapIO7p8hqHAmaVgWjw+DBuLlA
+	 kd26iR8YDPLrw==
+Date: Fri, 03 Jan 2025 09:20:34 -0600
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CANAwSgRTcHuDNLvPJAs7ZaV-NnepeOkHj_kVc5OAJtP03hd6pQ@mail.gmail.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
+ Ondrej Jirman <megi@xff.cz>, linux-arm-kernel@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org
+To: Jimmy Hon <honyuenkwun@gmail.com>
+In-Reply-To: <20250103004114.1902-1-honyuenkwun@gmail.com>
+References: <20250103004114.1902-1-honyuenkwun@gmail.com>
+Message-Id: <173591746023.2305391.8447160640005890243.robh@kernel.org>
+Subject: Re: [PATCH v5 0/4] Orange Pi 5 Max
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_071035_240197_2F81CECD 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250103_072036_684784_67785F55 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,36 +73,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 03, 2025 at 08:36:18PM +0530, Anand Moon wrote:
-> > >
-> > > We need to enable the GMAC PHY and reset it using the proper GPIO pin
-> > > (PCIE_PERST_L).
-> > > Please refer to the schematic for more details.
-> >
-> > The PERST# GPIO is already asserted + deasserted from the PCIe Root Complex
-> > (host) driver:
-> > https://github.com/torvalds/linux/blob/v6.13-rc5/drivers/pci/controller/dwc/pcie-dw-rockchip.c#L191-L206
-> >
-> > which will cause the endpoint device (a RTL8125 NIC in this case)
-> > to be reset during bootup.
-> >
-> Thanks for letting me know. It seems like a workaround.
-> I'll try to disable this and test it again.
+
+On Thu, 02 Jan 2025 18:41:09 -0600, Jimmy Hon wrote:
+> Changes in v5:
+> - Include Orange Pi 5 Plus USB 3.0 change in baseline before refactor
+> - Defer Orange Pi 5 Ultra to a later series
+> - Defer Orange Pi 5 Plus HDMI1 to a later series
+> Link to v4: https://lore.kernel.org/linux-rockchip/20241229184256.1870-2-honyuenkwun@gmail.com/
 > 
-> My point is that we haven't enabled the GMAC PHY (device nodes)
-> and must properly reset the GMAC.
+> Changes in v4:
+> - Orange Pi 5 Ultra was released and does not use VP0 to HDMI0
+> - Move HDMI0 from common to the board level
+> - Make DTSI to be shared by the credit card sized 5 Max and 5 Ultra
+> - Updates for the newly submitted HDMI1 support
+> - Add Ack for dt-binding
 > 
-> We're relying on the code above hack to do that job.
+> Changes in v3:
+> - Refactor to share common include with Orange Pi 5 Plus
+> 
+> Changes in v2:
+> - squashed commits together for initial board file
+> 
+> Link to v1: https://lore.kernel.org/linux-rockchip/20241026100310.52679-1-honyuenkwun@gmail.com/
+> 
+> Jimmy Hon (4):
+>   arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
+>   dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Max
+>   arm64: dts: rockchip: Add Orange Pi 5 Max board
+>   arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../rockchip/rk3588-orangepi-5-compact.dtsi   | 151 ++++
+>  .../dts/rockchip/rk3588-orangepi-5-max.dts    | 101 +++
+>  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 855 ++----------------
+>  .../boot/dts/rockchip/rk3588-orangepi-5.dtsi  | 806 +++++++++++++++++
+>  6 files changed, 1128 insertions(+), 792 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
+> 
+> 
+> base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
+> prerequisite-patch-id: 6346d482f91509dec24bfe5d4f0ca0d345b90deb
+> prerequisite-patch-id: 4672b745f4308a7be527749279edb71625d120e6
+> prerequisite-patch-id: 2743fb64eba2a29eaf993ebc8a5d6ee445b69dfa
+> --
+> 2.47.1
+> 
+> 
+> 
 
-I do not think it is a hack.
 
-If you look in most PCIe controller drivers, they toggle PERST before
-enumerating the bus:
-$ git grep gpiod_set_value drivers/pci/controller/
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
 
 
-Kind regards,
-Niklas
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588-orangepi-5-max.dtb rockchip/rk3588-orangepi-5-plus.dtb' for 20250103004114.1902-1-honyuenkwun@gmail.com:
+
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dtb: audio-codec@11: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/sound/everest,es8328.yaml#
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dtb: audio-codec@11: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/sound/everest,es8328.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
