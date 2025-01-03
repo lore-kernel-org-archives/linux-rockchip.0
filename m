@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7B9E77188
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 16:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30A7E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 16:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ztb6SF+qiMcWFoY+aor5jpiRaQ930e25qteNB571QAg=; b=BiW37P703HIegL
-	QK+Z2b4FBLUz77qBWBrJxgswgNHzSeeac0zcOwO2Rcj1FjgSSeCnqGMm9/wxH6qvWEpFCGXEpq8KV
-	jAEp0wB4LyyVOwgfx0qdiZBjgF+vUT8M8UPMd+udtqIixnOdZOSv2wT0wp+HLMYsaz1S+1giAiVv4
-	1HtDnlRhblF8YAxwFq4HFCE+zqXxERLUDFLwYCZWWlhP6zentO1jfKIatJKJgWAsRotCbK8pB9xOa
-	d9jMoYh+FoUl1TOOkfUdUf9Ql1dzpchrKxmt6Igu9cDuk09ntoSVHMj3n95VQnNZKT6GQlpT3BkcU
-	0n2LrBNzrFgAIp+aHwRw==;
+	List-Owner; bh=rBPhs6LCg7TggApyNdt5BoUXpCZauG3BoEpC/yVo1+M=; b=4OBIFEUcnSYnOe
+	zZeZSCed8WIiu5/neDyUD9pol7qNk3FqIDzFVbYmTpM313FnexkxfYl7AFMG5+tMZVQVj9dggwvKl
+	exh4rb1kWx9QxTa57Tk3VOu2/GttCTDCA3kNsLiva498FjmLecf6HIO+Tdz7qdC8f09Zk/pF8NfCF
+	jRMklYa8hJexQI04yMpmEa9xXp3mVY1jO6123z09w9AClGelxAD6+4EH4Z30j35XiJaB9CNj9CDOy
+	TeSwb3wi7Ag/VudApmyCuRkhyls0O+UNdSzhdXHnIPxUfFnXtcv/yf2ucHYeBnWkAZJOXpjJRbcqi
+	hVAqOSb63jj3Q9vXMpzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTkBs-0000000DNsM-106W;
-	Fri, 03 Jan 2025 16:06:24 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tTkef-0000000DRWT-07O1;
+	Fri, 03 Jan 2025 16:36:09 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTkAd-0000000DNgu-1oK9;
-	Fri, 03 Jan 2025 16:05:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=euKQv8+qLLAglA2nxjWTRO4cSqgxw8gfNLiNQS7D87I=; b=G/rXWzC1EPtUX9suhRFYwTZz43
-	DQgHcKa0CHDONit0ayHI6R7vHtpUHqndnWo/VMxvl6sSzrOmfknUDAbyRP02WnSK3eRWTy4H8V+K/
-	ABR2aF01Zd9a2CAIGQOGeBs6E0IcQufO/lwgI7nMuzKgZI5jHwKfwwDt56UTmC2buEls=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tTkAR-00154Q-Ao; Fri, 03 Jan 2025 17:04:55 +0100
-Date: Fri, 3 Jan 2025 17:04:55 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
-References: <20240809073610.2517-1-linux.amoon@gmail.com>
- <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+	id 1tTkdQ-0000000DRPz-3qqK;
+	Fri, 03 Jan 2025 16:34:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4576AA404DC;
+	Fri,  3 Jan 2025 16:33:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB947C4CECE;
+	Fri,  3 Jan 2025 16:34:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1735922091;
+	bh=83DIF3mFLGw5ydl0IM2PKCB3azWLkypjNn+5xAAuKf0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pEB0OThNpNMl8LgLujdnkXrUmKE5Wb85k8l+FG7RzmbH3Ubi+tomlN4HOJ3oAbCpb
+	 8NNNougV5UcWMlVTsJZprC0S/f1eyedEj0eKguSag9pqfsxFzGQalgR5RUsZM95YHz
+	 2oHkaFSH0s5QbcO+tV5tDk2yAmpxedA7yzNISkqPiqDNFsWfIq8AWgV7VsPN01j9DJ
+	 gTQtLVStdEAtSLBzLwqf1bB+ca971cz0ocekt35XEnKNB305Px2OPchhGksj6xBCLv
+	 BeruJQPpAOvK7QQmuSKCMueJvkDj2mCrC7oEYbMXOJ7kJlq7Mh31BZEdmVl1LOT1Zx
+	 U0O1fBazmP2Bg==
+Date: Fri, 3 Jan 2025 10:34:49 -0600
+From: Rob Herring <robh@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
+	detlev.casanova@collabora.com, daniel@fooishbar.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v8 8/9] dt-bindings: display: vop2: Add rk3576 support
+Message-ID: <20250103163449.GA2382623-robh@kernel.org>
+References: <20241231090802.251787-1-andyshrk@163.com>
+ <20241231090802.251787-9-andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+In-Reply-To: <20241231090802.251787-9-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_080507_472449_ADB66A92 
-X-CRM114-Status: UNSURE (   5.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250103_083453_085079_7C061B31 
+X-CRM114-Status: GOOD (  20.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,16 +76,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac1 {
-> +       clock_in_out = "output";
-> +       phy-handle = <&rgmii_phy1>;
-> +       phy-mode = "rgmii";
+On Tue, Dec 31, 2024 at 05:07:51PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Add vop found on rk3576, the main difference between rk3576 and the
+> previous vop is that each VP has its own interrupt line.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v8:
+> - Fix dt_binding_check errors
+> - ordered by soc name
+> - Link to the previous version:
+>   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+> 
+> Changes in v4:
+> - describe constraint SOC by SOC, as interrupts of rk3576 is very
+>   different from others
+> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
+> 
+> Changes in v3:
+> - ordered by soc name
+> - Add description for newly added interrupt
+> 
+> Changes in v2:
+> - Add dt bindings
+> 
+>  .../display/rockchip/rockchip-vop2.yaml       | 81 ++++++++++++++-----
+>  1 file changed, 63 insertions(+), 18 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> index 2531726af306..4cdd9cced10c 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> @@ -20,6 +20,7 @@ properties:
+>      enum:
+>        - rockchip,rk3566-vop
+>        - rockchip,rk3568-vop
+> +      - rockchip,rk3576-vop
+>        - rockchip,rk3588-vop
+>  
+>    reg:
+> @@ -37,10 +38,21 @@ properties:
+>        - const: gamma-lut
+>  
+>    interrupts:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 4
+>      description:
+> -      The VOP interrupt is shared by several interrupt sources, such as
+> -      frame start (VSYNC), line flag and other status interrupts.
+> +      For VOP version under rk3576, the interrupt is shared by several interrupt
+> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
+> +      For VOP version from rk3576 there is a system interrupt for bus error, and
+> +      every video port has it's independent interrupts for vsync and other video
+> +      port related error interrupts.
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: vop-sys
+> +      - const: vop-vp0
+> +      - const: vop-vp1
+> +      - const: vop-vp2
 
-rgmii is wrong. Please search the archives about this topic, it comes
-up every month. You need to remove the tx_delay and rx_delay
-properties, and use rgmii-id.
+Drop 'vop-' as it is redundant.
 
-	Andrew
+>  
+>    # See compatible-specific constraints below.
+>    clocks:
+> @@ -120,43 +132,76 @@ allOf:
+>        properties:
+>          compatible:
+>            contains:
+> -            const: rockchip,rk3588-vop
+> +            enum:
+> +              - rockchip,rk3566-vop
+> +              - rockchip,rk3568-vop
+>      then:
+>        properties:
+>          clocks:
+> -          minItems: 7
+> +          minItems: 5
+>          clock-names:
+> -          minItems: 7
+> -
+
+Keep the blank line between DT properties
+
+> +          minItems: 5
+>          ports:
+>            required:
+>              - port@0
+>              - port@1
+>              - port@2
+> -            - port@3
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3576-vop
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 5
+
+blank line
+
+> +        clock-names:
+> +          minItems: 5
+
+blank line, and so on.
+
+> +        ports:
+> +          required:
+> +            - port@0
+> +            - port@1
+> +            - port@2
+> +        interrupts:
+> +          items:
+> +            - description: vop system interrupt, such as axi bus error
+> +            - description: interrupts for video port0, such as vsync, dsp_hold.
+> +            - description: interrupts for video port1, such as vsync, dsp_hold.
+> +            - description: interrupts for video port2, such as vsync, dsp_hold.
+
+These descriptions belong at the top level.
+
+> +        interrupt-names:
+> +          items:
+> +            - const: vop-sys
+> +            - const: vop-vp0
+> +            - const: vop-vp1
+> +            - const: vop-vp2
+
+Why are these names defined twice?
+
+You just need 'minItems: 4' in both of these.
+
+>        required:
+>          - rockchip,grf
+> -        - rockchip,vo1-grf
+> -        - rockchip,vop-grf
+>          - rockchip,pmu
+>  
+> -    else:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3588-vop
+> +    then:
+>        properties:
+> -        rockchip,vo1-grf: false
+> -        rockchip,vop-grf: false
+> -        rockchip,pmu: false
+
+How is there no long a case without these properties?
+
+> -
+>          clocks:
+> -          maxItems: 5
+> +          minItems: 7
+>          clock-names:
+> -          maxItems: 5
+> -
+> +          minItems: 7
+>          ports:
+>            required:
+>              - port@0
+>              - port@1
+>              - port@2
+> +            - port@3
+> +      required:
+> +        - rockchip,grf
+> +        - rockchip,vo1-grf
+> +        - rockchip,vop-grf
+> +        - rockchip,pmu
+>  
+>  additionalProperties: false
+>  
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
