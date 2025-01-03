@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3C1CE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 00:48:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B0FE77197
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 03:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5oCdDSBsWm4xvy4+2B47esN0OBDnRIUZdQJd18/HPlE=; b=tY4DStQx00dp9H
-	inaNylNiSOw1+5kPZPKQvzVix9rwo0IcmqHuBsq1o+ehvAZtwMcKCzeNCfklwDONUl3LVRmYJ2H3q
-	lWfetk7dBOm2oX/djTEuYtkKlUxjFcB5BExvXGzdMG7CV1Zh2j5LNgqFiRr4tNdwiW7vaYsvCiDpI
-	3GV0Gp927VUm9fdFy95aoC7kfK8N1uYZQwVRAfTcHcumPgKfbeSz9hp8VO9/VzczqPt7RdiztAgR9
-	8Nd32fVUJyLPfm2wGQudYJwZNPDwA4hHQBuARQ8YZuaGT4PrmTCJpWmUppy1r8EreFwVohngmseSF
-	cAydx8em0kwkpWMB8yqw==;
+	List-Owner; bh=/pIbqKiRvqmCL0qWAupnK5Iotx5p3dRlqRsAKO9t9SU=; b=IAwKnCe8Sn43AV
+	G0s7MD3QNfH+jUPH6wIJ97fI43MR3zr5AE2T9Nk0Kv3yon3QW4e+zyY5BfIgjO5BrYchIk5rQ7WXt
+	7f5rEcSxGM5b5WA3AaQHNhTTgyuAMs+JLcoAK16cIzKVcSdhpQ9i4J8U7uwijCOSY3ToIL9+64ZSt
+	fBhjt6Lb7oCypo+fZsgVsT3FIjGouXkJxfOe8lodYnBzDfcZxW2BzQMQJxf3WKjpd3I1WBHzhKGHL
+	u/YlksyCLLwVcDHwQuwbmtCJ0Fyr9bi7Ebn26w4Y0J6r9SwlahcrtHe6m26dfzp1t/VAPfj170e9l
+	rUyx6+wzJ+nR2HC5meFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTVr6-0000000Bn6e-0T10;
-	Fri, 03 Jan 2025 00:48:00 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1tTYOV-0000000C0wh-34tp;
+	Fri, 03 Jan 2025 03:30:39 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTVlC-0000000BmCB-3EdQ;
-	Fri, 03 Jan 2025 00:41:55 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-3ebbec36900so6648344b6e.1;
-        Thu, 02 Jan 2025 16:41:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735864913; x=1736469713; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=IopJjy+4htGbFyvRuIA3d+W4GxSDgdBl5Jiqo11xrNPr4MY3Cm++gUfHGwbuS2JASq
-         kAb+ofpkS7sF9qaGcDySuu0Ft2au6PSz7QP7ZIIbeG/hEkXRzAzeCd85spTLNLmpKi8e
-         /G0uzHXb7YGI9hzy0sYCliFatbImy6Ez3wE0Okw8J3Z6NhxW6/M6/Hc6IcxSRLVyfhki
-         OK/L4Bj29rKMEzN4iGNeyG2evwkD/IJQ1/7WfQvzd6M/i8UbqzRPo2zP6Ffop0+1WvVT
-         3EHQfOEcSayTMczhmVD4nDQWY2vysiEV9xM0RbKB6PsyPIe2iIv478JHp3T95Kt64Yzi
-         PuKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735864913; x=1736469713;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=d8ICJQa1nId5BUWyq4WLRs1RNIMdNKqAoqqPYAfse94Uu5DDZK71+Y9RvnytFC85ME
-         3a1w0e8ftugEo8OcoQhtQS9tsGedqsJDYiA0eu3WEFNrK0C908o/pwbBIe8t+t/iLRvi
-         IT3ucIpxSj4PewSzaPS5MdC1k8XMBn6dEGW/k9h3Qd8lFETsKQ4fUzUeeuKZ7Dwo1PHR
-         bNkmT2r3E2raKs6j8MbDh9UDEeshaGj97degS8Ss3tNV0amYAruHP93Muv9H0QBWrMO8
-         shIiYVqctrV9CUveCCdxctG6JBgvCjgakP7zOXchOpY97Fq7L/wE2r4oNvF0fGfnKBBC
-         tTJg==
-X-Forwarded-Encrypted: i=1; AJvYcCUxN2I5XQXdyKs3i+DqoLt7ZWDdFSXhCNCWbbvs69UEZmDn6pXF/4DnQdqpk9QOO9EQUwt2N31txsNASd9wao1j@lists.infradead.org, AJvYcCXvIlpKFye5YGjkT0I8jL6pCOHf+QzyDo9f5nchxESWSBXNFdIWRyCca01Biqnq2LYJg7Cg0tVXTQcE34Wh+pE=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywvyx/E8l/Wzv9EYmJvU2jyGI9XeK2INZ9ZqLxUgitywWZ3cN7x
-	LO3QAM/tHiMRMu1OGJoLa1I3DjxWuqLRuWJWRgkOPf+1JX6M+caPFPsJqeTB
-X-Gm-Gg: ASbGncvulgJeewRTGVe2BgKfKv2oOxFzdwejztCsuTCy31TzaNT7a36z6s6Em19LHJl
-	gbt8uuUVz6Xs5lZsR6zVp71qa9TFieyFw6V2BkPun1SFjsG9ea5NRjUwm/9n0XN3vYv5A///ta/
-	IubVU0Dcxv3uAk1PQ31PUgTfhM1FOSXeKwcG4bneyTJMwK4iqpVeF6VhY8Mf/Ia/R7uB7Cig2g3
-	4ZAHUak3v4QEQJT/yt6SOTdLLYq+kAjtVhGYjyYl4/SGuxW5FeIHRrFEzrqTmDhKQ==
-X-Google-Smtp-Source: AGHT+IEoHQWwiLapEKVgytJxSQmhBEks8va984wiDZUIavYE5wi+XlT5dD2vv0dEfEgVlwxD3tjWSw==
-X-Received: by 2002:a05:6808:2e8d:b0:3ec:d34f:4c73 with SMTP id 5614622812f47-3ed890d85b9mr32263494b6e.27.1735864913718;
-        Thu, 02 Jan 2025 16:41:53 -0800 (PST)
-Received: from tower.cjhon.com ([2603:8081:ad00:4a:19f2:4f54:d97c:af6e])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3ece2549542sm8087778b6e.32.2025.01.02.16.41.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Jan 2025 16:41:52 -0800 (PST)
-From: Jimmy Hon <honyuenkwun@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1tTYOS-0000000C0vl-2r10;
+	Fri, 03 Jan 2025 03:30:38 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [119.122.213.157])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 791e1b01;
+	Fri, 3 Jan 2025 11:30:22 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	kishon@kernel.org,
+	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH v5 4/4] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
-Date: Thu,  2 Jan 2025 18:41:13 -0600
-Message-ID: <20250103004114.1902-5-honyuenkwun@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250103004114.1902-1-honyuenkwun@gmail.com>
-References: <20250103004114.1902-1-honyuenkwun@gmail.com>
+	liujianfeng1994@gmail.com,
+	p.zabel@pengutronix.de,
+	robh@kernel.org,
+	vkoul@kernel.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
+Date: Fri,  3 Jan 2025 11:30:16 +0800
+Message-Id: <20250103033016.79544-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <688c8fb6-68f7-45f1-98fc-8b3252b3ecbf@kwiboo.se>
+References: <688c8fb6-68f7-45f1-98fc-8b3252b3ecbf@kwiboo.se>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQ0sdVkxCGR1KSxhCGh5PQ1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTkxZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
+	tZBg++
+X-HM-Tid: 0a942a36cf0d03a2kunm791e1b01
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NAw6Ezo5HTISIS0VPy5ODTA9
+	KhVPFDVVSlVKTEhOQ0xOS0lIQ0hPVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpIVUpOTFlXWQgBWUFKS0tMNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_164154_805086_435EEF40 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20250102_193036_906990_AC4D3AC9 
+X-CRM114-Status: UNSURE (   9.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,82 +80,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the second HDMI output port on the Orange Pi 5 Max
+Hi,
+> The other patch in this series:
+> arm64: dts: rockchip: rk3568: add reset-names for combphy
+> is missing in v6.13-rc5, which will break pcie2 of rk3568
+> because the phy driver has changed.
 
-Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
----
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+I don't know why the dts patch hasn't been merged into the mainline yet.
+Maybe the merge window is different. Can you test the following patch?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index ce44549babf4..ecfbed2d0059 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -21,6 +21,17 @@ hdmi0_con_in: endpoint {
- 			};
- 		};
- 	};
-+
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
- };
+```
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -325,6 +325,10 @@ static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy
+ 	priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
  
- &hdmi0 {
-@@ -39,10 +50,33 @@ hdmi0_out_con: endpoint {
- 	};
- };
+ 	priv->phy_rst = devm_reset_control_get(dev, "phy");
++	/* fallback to old behaviour */
++	if (IS_ERR_OR_NULL(priv->phy_rst))
++		priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
++
+ 	if (IS_ERR(priv->phy_rst))
+ 		return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy reset\n");
  
-+&hdmi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
-+			     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
- &hdptxphy_hdmi0 {
- 	status = "okay";
- };
- 
-+&hdptxphy1 {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 
- 	usb {
-@@ -58,3 +92,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi0_in_vp0>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp1>;
-+	};
-+};
+```
+
+Thanks,
+Chukun
+
 -- 
-2.47.1
+2.25.1
 
 
 _______________________________________________
