@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F5DAE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 00:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7F5E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 00:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b/jMuX2n667ewKyx4UDSBrjKUS9fl9K9fsrDBNs4i+o=; b=v78Mso/hakYK/8
-	d7c8Hb6xlm5ErO0rwvjzmWsnlr1H3N9Ot59pHEMjntGsFyAGWzW/33aNzuLWGvRcACYBGMYK14fFr
-	D7jn5uNIfKs4eLggRDHliigFD3gPDNEbGlPnqUa3qViESfcrNpbV8YjJCgDDaHclUARXn57Lqx9b5
-	PEiF7UX9/sm7xbuteQkVBIIf+tgHvu7ys1O8C4S2E2MC04i3FzIAQOLlVwqYfiFTFYkgq+OrB/End
-	Ky6I1+Zol98dGmmcdXnXPzuyG05uI+r955i7tR2v5aWmjY6TB66nOZqgmpg6tE2Ll0LW2YXCmh94Z
-	56n0nGekYVgExCvmSlxg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=X2Mr97zkty03UxpJyIajyiho4POW2QdL83HMcBnZjvI=; b=iZj92XKc5u/e0C
+	1/YzEZ8Ms+gEbybfsq3/MOwkTkc0uTd7OMRgMIy28ftbLf2A5gsUCWhCb2cZ8LTx6LBnaaglMo/xs
+	NTP66zJs0W6P4dDIwSCismoGcDNRFIjvnUlTNrKak44jDIIxCKWib2NScU9efyQZyiJPrYfsebVVI
+	wD+vb9VvSTgmZcoPWBW9NoCSjFpk/bEkcJdSxy5GZL2RlDicIwRq5NgKh4hbqprq9/G88Gv+V++vK
+	z4wO7ATB9Fd8nyoaAtNM7RxsMi5NeKEdqcPFoHO8SvUR20gPa7wkLMroVGUEzVZErSX8BWWZvyZjG
+	r8pXL9/sOSAD6vrbEfjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTVQF-0000000BkPb-1ukB;
-	Fri, 03 Jan 2025 00:20:15 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1tTVmJ-0000000BmIn-1nuW;
+	Fri, 03 Jan 2025 00:43:03 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTVP4-0000000BkGv-1xVR;
-	Fri, 03 Jan 2025 00:19:03 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4361fe642ddso124756555e9.2;
-        Thu, 02 Jan 2025 16:19:01 -0800 (PST)
+	id 1tTVl3-0000000Bm8p-0ZDi;
+	Fri, 03 Jan 2025 00:41:46 +0000
+Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-3ebc678b5c9so6494498b6e.3;
+        Thu, 02 Jan 2025 16:41:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735863540; x=1736468340; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=huSEKVbzBTMcqWXnTQrTDEYxm+6yBPzd064JJPMGrmA=;
-        b=MbcQKnG3gHDaLqCZzpdIcRW3eAiHN/6HZpy0rUUpfuMQxxLi/v56UOZGhupebasbFt
-         MJ5we+uNCClyMLLQCIzHN4DxaWYfVODS800lTIy+MjenWJUL3/RbGR7DlgbshFmGa6lO
-         dD7DJhRl7kh0/jrHFuhEiWHybOk6aUhPwUGad0MMXM0H3fpS8MB+PMEpuBK3CUlHyHA/
-         T3WAuWSxt6tp47Q2s0s9TLRf3OTypgrd3sakhuHxBNYwcJiHVOanQ3XagYLb1/yNbNUw
-         DDYQJ1EeYHVySOzbPXxdbebEU3faORN1jQsxRD4PRcjt9pjhSm7+NJqFJC2RKqTx3zu+
-         tyDA==
+        d=gmail.com; s=20230601; t=1735864904; x=1736469704; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=B8v6uqtbrgtFXWBbv11wmm4bIaVeFWrU62HFvHHEutk=;
+        b=M0Ci/f4tdQUQNFucNWEweJY59uy86d4HbRhHlh8F3Ec2+EVQkWCf/uPj7ZTeVk48dA
+         +u3WvI3X/NPvWeDqSgzoxTFuaERREjxmJBHpf43h35Edbxu8HmmtVU+dKGPtFUS7WbjZ
+         +RWeJRGA/m+MA4bFR2HZPmettxkVZD67VQWa60BkHyWQ1oUQuJx0fQR5pBtiNthJPoS4
+         ZUorhNsm5MztWU2psNLsLvFlCUiPl3mBW/rji628G0F+5gSQD74VKd91GxHMqmxtPGtw
+         AbrjE0WRFSWJ1FewqtAIhMhWK+TKCubQDIRkq2eYoc1YoseUHT8pQRSJgvLPulezXMke
+         HpkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735863540; x=1736468340;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=huSEKVbzBTMcqWXnTQrTDEYxm+6yBPzd064JJPMGrmA=;
-        b=wlikGq6VlEjFand5l/c+BexBYozINgE0N8dutGBulmGJDvu7Th9UxCG0JDwZ2Srkwj
-         1atq2h2uOyGR+b/T95TEqgiFhBKZn3CzQoBsYwe/B08rtOfxQqOpiZESzjXWYNcFG2W+
-         051KpD/uiZskECPKw9GSqW9bnYCOeyNcBsX1oT9rRHm0V78WDVlf89TgTAqamtMqUKzE
-         +VrIt1X7zL+zvI+0g15812m1m/jfN+StRvWrLsWZKhzchADwaFYShUIghTcCSyH+nrhn
-         ftf4nFIYEV8+p9dg3en70/1rKFAReA6TLjOKNO9nakdSxn0ju0EeoNKrQMNKkqBEjZ4e
-         98uA==
-X-Forwarded-Encrypted: i=1; AJvYcCW/KkxDABzSEtHQ7guboh3S69W9sXl8XM87ZoWYuDG/e7WlmxUT19q1z9jVbvd7O5cpR9mz4NvFPJmizseR4UQ=@lists.infradead.org, AJvYcCXIeZ0THxHDL6jnjxh9YIlXHCW3FFH5MLhHXQ0lvb8HVFHlpMYbgz/NilEvYO8QL+AWmxTxAnaN0P6cAyMf0hRC@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx1m7PsL9omSS+zN/Bd8BzUeWqZe2v0An8XbufpIcJYcDgB+c7k
-	2A1HsK5PkyVzM/zACes6V12lVJVn0vGOdlNdB06uCbpy5pfE3B1yNaa1AjgbBWftfnafwrJ48Ix
-	kIjtI7S0RDNPM4HBCbBFRsdz9aYg=
-X-Gm-Gg: ASbGncvJM4znAHnS/VJm3yw3zsYkz5Ogd/jDe+1e/nRf6UY9REizFiWFJPCDBtC1O45
-	8J67l5+qAibg7qp+FjCZiOutWe2P7CY/MKM/hU96nHhtg1XVRWNHW0xNv1PrPBUqkqE3e1g==
-X-Google-Smtp-Source: AGHT+IFAauF3ujNhgDjOT4xeOGtCr/wxIkY8hqpVIBW0I65Elwxcj3g4j+FKksFlophDch/7GEvnM0WPPbbN955zfiQ=
-X-Received: by 2002:a5d:47c5:0:b0:38a:4184:1216 with SMTP id
- ffacd0b85a97d-38a4b9a98d4mr17319346f8f.46.1735863539752; Thu, 02 Jan 2025
- 16:18:59 -0800 (PST)
-MIME-Version: 1.0
-References: <20241229184256.1870-2-honyuenkwun@gmail.com> <20241229184256.1870-8-honyuenkwun@gmail.com>
- <20250102215308.GA636148-robh@kernel.org>
-In-Reply-To: <20250102215308.GA636148-robh@kernel.org>
+        d=1e100.net; s=20230601; t=1735864904; x=1736469704;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B8v6uqtbrgtFXWBbv11wmm4bIaVeFWrU62HFvHHEutk=;
+        b=nmTlmJUCJYbuGQ8c720tHqOy/qa04wlw2zYcp3Vhj1G6CQw7O2aFy1CsJvuf2iyJDX
+         XVlbEbh4zUZ7krWR564TlyHxK1QIZVf+c3Fl0qQhWaUr6bRuUh+RzFjq/zT+qT/1dsLy
+         2ex5NKxs2DyAJfd6wTZ+GKa9Eign/jJU9znuEH1bkSKDvDr+SRSDwx5hI43+hlHBqpOP
+         cn10jDA3b1awrAX2aATLtd4gXotxfmOUmoL+oiEQ51NBiwQ6cXsTSLIJOTBuus3i5Khf
+         oJOyE4KiNufv7BvP2Yv/YzW79rN0mXNnKI6GLJ/iABIwIYoV3NsBvYeXQcZ53+uTTE9q
+         RAMw==
+X-Forwarded-Encrypted: i=1; AJvYcCUoWeAaD84tJN26nDysIUWHwO7Ze9EJJNOqD1yqst321IQN2ZgzQRmwzS0Dbe0HP7t4L6W0pkMdLQTd+boJVyvU@lists.infradead.org, AJvYcCXEJlrXJAkNFlkuLBwn2jySGUvMpddk7FzCAD7+j8fYCVdadM9zJPyJ/f2L/hOiRP/yXrH+MvGkJMbAsdVoUG4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzYnW7cPMwUw4tbMiF9i3uYhuDaOy8OFLhYaSnBXbN0jqCWlNuY
+	dmARh63Ob0tAugvQ+Jg+IP1x6G8G6Z3CExSNoohujCXebaWL1qC+
+X-Gm-Gg: ASbGncuG6hGrWIRQDEnjD09BMf7QcX14E7+Y86sEXlhIEvMRii12XjmPK43gdJ6vEh4
+	UMm+PeBYBwhWJoL+UebZcEz8ehsbHfozOH1S2xJaOIHJAA4LA5eYnc3S+2lgq5/Czhs6o6tB3Dh
+	yVJ/uD3CyJVutuoKxt+5QiCwK0dPAgYkW46ZBct5QpxFCH9GDx6hjkLnFkv9bcl7e2DKaxEGVTM
+	w4MkrYTtoZl1HF9kHVjW/ejkiHBJwsWCClQSmeO7pQMJOdnLHoQPU/u3GF8XyU/XQ==
+X-Google-Smtp-Source: AGHT+IEO+EHHquaLaJGM8mJz60yerNlQhCuDujC6QrXjn/VefwZGrwI9E2QKYbGRjYGhJdxYDlOuxQ==
+X-Received: by 2002:a05:6808:23cf:b0:3ec:d34f:4c6f with SMTP id 5614622812f47-3ed88f3def7mr25419306b6e.15.1735864903762;
+        Thu, 02 Jan 2025 16:41:43 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:19f2:4f54:d97c:af6e])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3ece2549542sm8087778b6e.32.2025.01.02.16.41.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Jan 2025 16:41:42 -0800 (PST)
 From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Thu, 2 Jan 2025 18:18:48 -0600
-Message-ID: <CALWfF7+B1nkKsA9RvCVhAytotgRM16-6Q1z+V5YyQCDSh4cc9w@mail.gmail.com>
-Subject: Re: [RFC 4/7] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Ultra
-To: Rob Herring <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Ondrej Jirman <megi@xff.cz>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH v5 0/4] Orange Pi 5 Max
+Date: Thu,  2 Jan 2025 18:41:09 -0600
+Message-ID: <20250103004114.1902-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.47.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_161902_505280_3DB0D89F 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20250102_164145_170961_CFDADFFB 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +94,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKYW4gMiwgMjAyNSBhdCAzOjUz4oCvUE0gUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVs
-Lm9yZz4gd3JvdGU6Cj4KPiBPbiBTdW4sIERlYyAyOSwgMjAyNCBhdCAxMjo0MTozMVBNIC0wNjAw
-LCBKaW1teSBIb24gd3JvdGU6Cj4gPiBBZGQgZGV2aWNldHJlZSBiaW5kaW5nIGZvciB0aGUgWHVu
-bG9uZyBPcmFuZ2UgUGkgNSBVbHRyYSBib2FyZC4KPgo+IFdoeSBSRkM/IExvb2tzIGZpbmUgdG8g
-bWUuClRoZSBEVFMgaXMgb25seSBhIFJGQyBiZWNhdXNlIHRoZSBib2FyZCBzY2hlbWF0aWMgZm9y
-IHRoZSBVbHRyYSBoYXMKbm90IGJlZW4gcmVsZWFzZWQgeWV0LiBTbyBJIGhhdmVuJ3QgYmVlbiBh
-YmxlIHRvIGNvbmZpcm0gdGhlIHBpbm91dHMuCgpUaGUgNSBVbHRyYSBEVFMgaXMgbWFpbmx5IGEg
-cHJldmlldyB0byBzaG93IHRoZSBzaW1pbGFyaXRpZXMgYmV0d2Vlbgp0aGUgNSBNYXggYW5kIHRo
-ZSA1IFVsdHJhLgoKPgo+IEhvd2V2ZXIsIHlvdSBzaG91bGQgaGF2ZSAndjQnIG9uIGV2ZXJ5IHBh
-dGNoIGluIHRoZSBzZXJpZXMgaWYgdGhpcyBpcwo+IHY0LgpXaWxsIGRvLgoKPgo+ID4KPiA+IFRo
-ZSBPcmFuZ2UgUGkgNSBVbHRyYSBpcyBhIHNpbmdsZSBib2FyZCBjb21wdXRlciBwb3dlcmVkIGJ5
-IHRoZSBSb2NrY2hpcAo+ID4gUkszNTg4IHdpdGggc2ltaWxhciBib2FyZCBsYXlvdXQgYXMgdGhl
-IDUgTWF4IGJ1dCB3aXRoIHRoZSBIRE1JMCBzd2FwcGVkCj4gPiBmb3IgSERNSSBJTi4KPiA+Cj4g
-PiBTaWduZWQtb2ZmLWJ5OiBKaW1teSBIb24gPGhvbnl1ZW5rd3VuQGdtYWlsLmNvbT4KPiA+IC0t
-LQo+ID4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFt
-bCB8IDMgKystCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlv
-bigtKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvYXJtL3JvY2tjaGlwLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-YXJtL3JvY2tjaGlwLnlhbWwKPiA+IGluZGV4IDJhMTQxZDk5YzUzMy4uOWRkNDI0MjY1ODI2IDEw
-MDY0NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2Nr
-Y2hpcC55YW1sCj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJt
-L3JvY2tjaGlwLnlhbWwKPiA+IEBAIC0xMDc1LDExICsxMDc1LDEyIEBAIHByb3BlcnRpZXM6Cj4g
-PiAgICAgICAgICAgIC0gY29uc3Q6IHh1bmxvbmcsb3JhbmdlcGktM2IKPiA+ICAgICAgICAgICAg
-LSBjb25zdDogcm9ja2NoaXAscmszNTY2Cj4gPgo+ID4gLSAgICAgIC0gZGVzY3JpcHRpb246IFh1
-bmxvbmcgT3JhbmdlIFBpIDUgTWF4L1BsdXMKPiA+ICsgICAgICAtIGRlc2NyaXB0aW9uOiBYdW5s
-b25nIE9yYW5nZSBQaSA1IE1heC9QbHVzL1VsdHJhCj4gPiAgICAgICAgICBpdGVtczoKPiA+ICAg
-ICAgICAgICAgLSBlbnVtOgo+ID4gICAgICAgICAgICAgICAgLSB4dW5sb25nLG9yYW5nZXBpLTUt
-bWF4Cj4gPiAgICAgICAgICAgICAgICAtIHh1bmxvbmcsb3JhbmdlcGktNS1wbHVzCj4gPiArICAg
-ICAgICAgICAgICAtIHh1bmxvbmcsb3JhbmdlcGktNS11bHRyYQo+ID4gICAgICAgICAgICAtIGNv
-bnN0OiByb2NrY2hpcCxyazM1ODgKPiA+Cj4gPiAgICAgICAgLSBkZXNjcmlwdGlvbjogWHVubG9u
-ZyBPcmFuZ2UgUGkgUjEgUGx1cyAvIExUUwo+ID4gLS0KPiA+IDIuNDcuMQo+ID4KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Changes in v5:
+- Include Orange Pi 5 Plus USB 3.0 change in baseline before refactor
+- Defer Orange Pi 5 Ultra to a later series
+- Defer Orange Pi 5 Plus HDMI1 to a later series
+Link to v4: https://lore.kernel.org/linux-rockchip/20241229184256.1870-2-honyuenkwun@gmail.com/
+
+Changes in v4:
+- Orange Pi 5 Ultra was released and does not use VP0 to HDMI0
+- Move HDMI0 from common to the board level
+- Make DTSI to be shared by the credit card sized 5 Max and 5 Ultra
+- Updates for the newly submitted HDMI1 support
+- Add Ack for dt-binding
+
+Changes in v3:
+- Refactor to share common include with Orange Pi 5 Plus
+
+Changes in v2:
+- squashed commits together for initial board file
+
+Link to v1: https://lore.kernel.org/linux-rockchip/20241026100310.52679-1-honyuenkwun@gmail.com/
+
+Jimmy Hon (4):
+  arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
+  dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Max
+  arm64: dts: rockchip: Add Orange Pi 5 Max board
+  arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../rockchip/rk3588-orangepi-5-compact.dtsi   | 151 ++++
+ .../dts/rockchip/rk3588-orangepi-5-max.dts    | 101 +++
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 855 ++----------------
+ .../boot/dts/rockchip/rk3588-orangepi-5.dtsi  | 806 +++++++++++++++++
+ 6 files changed, 1128 insertions(+), 792 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
+
+
+base-commit: 40384c840ea1944d7c5a392e8975ed088ecf0b37
+prerequisite-patch-id: 6346d482f91509dec24bfe5d4f0ca0d345b90deb
+prerequisite-patch-id: 4672b745f4308a7be527749279edb71625d120e6
+prerequisite-patch-id: 2743fb64eba2a29eaf993ebc8a5d6ee445b69dfa
+-- 
+2.47.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
