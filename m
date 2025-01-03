@@ -4,55 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE40E7718F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 15:25:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 928D7E77199
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 15:32:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H6tEaGEZvDSc9oxK4E9Va4hjl4ngfHP8zXOKqt7WBNQ=; b=l/pTB3xCK8A3yd
-	5bG8yjvw3T32iURJQW84gN4yVXFIzoxih8qxDJdWiAxrpgO6KaOIlijNsgIqXXxLdohEpMOcZSzcd
-	ffNX2F/GIdo3u+So5BW/FLFzHoeaf23CN5hYjoTCT8orNViq2VgVf3/m/DxTcafRiclDXrzYvEUE/
-	Ooo+Z8RQ/QbEgRYyKAmy33q+0FBAO+crKzpUfG5ja7I7BpLsxCx9euboRPN5P6IKI2zt9bKPeeU0u
-	BMGhSTvQqkU4WOf/hqExzB1li1y2Dd5mvHDiNGyh2e7NxOtNZFHgQjEW5jQqkmuVnf6z43a2jnxje
-	a+akv3wPLe0Re42Tuxzg==;
+	List-Owner; bh=NEgbIByaI9uYCEFb8FumbQA4c1CZ2nIRL11OZO3ox1Q=; b=3qxWOVeapFsnvj
+	B4kyuiNlmWikJTn4G1Ehvwh37+U3hwT70Z94Di0eDMT6PnhCmbBxJduN9ZqaysAnQgDb86YLVgiyZ
+	YMa6q+wRq7O7Qrg9WnS2k9cqW/9g6dBkCi0bFMNCqRRjj2vZ8kYJ3F2wxtG+ynxdmDLfSm5sqi0bX
+	gmw9Fex160To6YvowqKcpKoKMoEFsU3ZAdSMd+mbWu+0X4+nFAgHsQbfsr3zFMj3AirdZ8pPFVmSc
+	pN6xBUfIBtp2dZWclwdT1DVAM7M9zf3lqqXNBooVnITdmHvqNC91Q2CutsMjTdT7UE+wBe4NdLzIU
+	eJg/XzlyUAIrWKMPQiog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTjYM-0000000DGqI-3zzi;
-	Fri, 03 Jan 2025 15:25:34 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tTjfD-0000000DIEa-0gs4;
+	Fri, 03 Jan 2025 15:32:39 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTjWO-0000000DGNP-0F4X;
-	Fri, 03 Jan 2025 15:23:33 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82381316;
-	Fri,  3 Jan 2025 16:22:37 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1735917757;
-	bh=i9kymvajo0n+q8tZsZ+ijeIsUcCEKGJTagFA0ES5SZU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Wkjf83bKsMJSqbD8hUCibEPlXcRcutwd9TuP0pjxy+jhrFmCGde9CZwNtX5VsQ2x2
-	 Dx2XQMKTFcW5yiP4I/eVFkZ+hSmVblOhdXxx9xMFu0UvcUwI0rBFI0ZOxiZ/XFNae9
-	 /T3RUsoPN0u7X++sUf+HARDP2rw4rVOiLkyvkh1Y=
-Date: Fri, 3 Jan 2025 17:23:26 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
-Message-ID: <20250103152326.GP554@pendragon.ideasonboard.com>
-References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
+	id 1tTjco-0000000DHaK-35zq;
+	Fri, 03 Jan 2025 15:30:12 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5d7e3f1fdafso25549720a12.0;
+        Fri, 03 Jan 2025 07:30:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1735918209; x=1736523009; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=BxHhQidADsZYijaS3zKgdvU9SQtnlays+edgk6k/XtM=;
+        b=SEDqU7Ow+ZdqgFR7+KWyL9nZ45Cla5WPsaiqkMhmyoPrZMX8wiMqfJmiIAFGYDFnEQ
+         uhRU6c6TPfTFazQ+/i0iql+U6RgRB6XZkiuWUbbRNiaGLTeyvFUV0TV+RMEZtwtvlUsN
+         ud+f3tAfyypBDYploFNcsZQussyyRvH/t3GChplTVNpPL84S7W+5AALgvoUTAsLLcqos
+         uUnWS8quBBLhcq/26bnwHzjfd5yJBB54Qz6gdmvNpVIN/t5RcLidoGoBL/jbSGrTs9+O
+         Z1A/yAMuyaFQ+o3IPiQiIX/Ub7IS6z5pIfOR3dlz8GJTIV7WQes90FfIBGVvugzKvJq0
+         0DtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735918209; x=1736523009;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BxHhQidADsZYijaS3zKgdvU9SQtnlays+edgk6k/XtM=;
+        b=l2bXjz+H1NC/Gy/oxTv8iU7kS2NaJPREpEhFTU2u47HzNffdjNbPTuOX9ttvj7dZHx
+         zUjVkgj9jaej4wnZQuHhdkQNy7AHM7nr170HirpDNWZehK5H56ursE7x4c7og6l47nha
+         tQfO1Zt0sxof2W7G0/Hxgks9RexlnkJvIBHcf14yh2d/WnSR5GcmqYlEe/3nAqS+InZM
+         ijdfbxZ92luwGJ05nsyMdKlpiDOGTEjRDskTFayAH9ussS7OuZ9m0dYJtRVcJJFayXHk
+         +Oq3rZkboVBC6/Xr+JF/yMoQLpk1bOqmkq7DSc0P42boOXynEuqtQE8LeX3ElsYP/iIB
+         N5wg==
+X-Forwarded-Encrypted: i=1; AJvYcCU5iXjTRMf4Nogy7yLOJ+vkL2GoPZ/H+AZMx05G8tCw1LvPD4/imexT7kkpXZX8ynyd2nNISP8dH/xReKRggJ4=@lists.infradead.org, AJvYcCXvNMbopizLcjzIfnHgCvoRQtKMwwRb+H6NQOQfFbc8JOYD5EDIw84FFf+P1lgbLwQnKKfWkUH4MUoGxzSj/tMB@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywvi0zdrCVM6BrSoIgDbm042H6Mbi/PJfZnHtIq42d5BE8Pun8t
+	wIxoNK9OEjkDiX0TTFYKTzULgKFlW/l1zdipKhA9tQBjIUeIMpGSOSwEekDKShhCMC1ftyqal3w
+	YCciye4nW4oIAHI9qdGrBk2gzkxg=
+X-Gm-Gg: ASbGncv/DNvec498AmAkAADyLRskn6p9q/CAA3qW/JRLCpjQWLu3NPQXNauaD+Yf5MR
+	FUFYKYBTyYweySvEDGnN2H+Q/oWhIa4ZwG78iNQ==
+X-Google-Smtp-Source: AGHT+IEPhcS9BPyqvGIlQM2qXRZWsDDIi6z7TAAUpcov+fr9Fgzy4hHGMc+y4Zxj9EpJBFID0GYe0Wlb3V6uYMu3fCI=
+X-Received: by 2002:a05:6402:401b:b0:5d0:c098:69 with SMTP id
+ 4fb4d7f45d1cf-5d81dde75a3mr47865343a12.16.1735918208507; Fri, 03 Jan 2025
+ 07:30:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
+References: <20240809073610.2517-1-linux.amoon@gmail.com> <Z3fKkTSFFcU9gQLg@ryzen>
+ <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+ <Z3fzad51PIxccDGX@ryzen> <CANAwSgQEunirUf3O3FJJAUsQu9mQYD_Y40uJ_zMYDZYVy5J=wQ@mail.gmail.com>
+ <Z3f4JQZ6yYV1BJ-b@ryzen> <CANAwSgRTcHuDNLvPJAs7ZaV-NnepeOkHj_kVc5OAJtP03hd6pQ@mail.gmail.com>
+ <Z3f95RXj7GhZZHEP@ryzen>
+In-Reply-To: <Z3f95RXj7GhZZHEP@ryzen>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Fri, 3 Jan 2025 20:59:51 +0530
+Message-ID: <CANAwSgQEb7rWFaeEO3Mb8LAwK6A5mrCyQFEysmSpeVdhoRWrtw@mail.gmail.com>
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_072332_245347_75050660 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20250103_073010_777467_2E16DB50 
+X-CRM114-Status: GOOD (  21.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,50 +97,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
-> Currently, the rkisp1 driver always uses coherent DMA allocations for
-> video capture buffers. However, on some platforms, using non-coherent
-> buffers can improve performance, especially when CPU processing of
-> MMAP'ed video buffers is required.
-> 
-> For example, on the Rockchip RK3399 running at maximum CPU frequency,
-> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
-> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
-> non-coherent DMA allocation. CPU usage also decreases accordingly.
+Hi Niklas
 
-What's the time taken by the cache management operations ?
+On Fri, 3 Jan 2025 at 20:40, Niklas Cassel <cassel@kernel.org> wrote:
+>
+> On Fri, Jan 03, 2025 at 08:36:18PM +0530, Anand Moon wrote:
+> > > >
+> > > > We need to enable the GMAC PHY and reset it using the proper GPIO pin
+> > > > (PCIE_PERST_L).
+> > > > Please refer to the schematic for more details.
+> > >
+> > > The PERST# GPIO is already asserted + deasserted from the PCIe Root Complex
+> > > (host) driver:
+> > > https://github.com/torvalds/linux/blob/v6.13-rc5/drivers/pci/controller/dwc/pcie-dw-rockchip.c#L191-L206
+> > >
+> > > which will cause the endpoint device (a RTL8125 NIC in this case)
+> > > to be reset during bootup.
+> > >
+> > Thanks for letting me know. It seems like a workaround.
+> > I'll try to disable this and test it again.
+> >
+> > My point is that we haven't enabled the GMAC PHY (device nodes)
+> > and must properly reset the GMAC.
+> >
+> > We're relying on the code above hack to do that job.
+>
+> I do not think it is a hack.
+>
+> If you look in most PCIe controller drivers, they toggle PERST before
+> enumerating the bus:
+> $ git grep gpiod_set_value drivers/pci/controller/
+>
 
-> This change allows userspace to request the allocation of non-coherent
-> buffers. Note that the behavior for existing users will remain unchanged
-> unless they explicitly set the V4L2_MEMORY_FLAG_NON_COHERENT flag when
-> allocating buffers.
-> 
-> Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> index 6dcefd144d5abe358323e37ac6133c6134ac636e..c94f7d1d73a92646457a27da20726ec6f92e7717 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> @@ -1563,6 +1563,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
->  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
->  	q->lock = &node->vlock;
->  	q->dev = cap->rkisp1->dev;
-> +	q->allow_cache_hints = 1;
->  	ret = vb2_queue_init(q);
->  	if (ret) {
->  		dev_err(cap->rkisp1->dev,
-> 
-> ---
-> base-commit: 40ed9e9b2808beeb835bd0ed971fb364c285d39c
-> change-id: 20241231-b4-rkisp-noncoherent-ad6e7c7a68ba
+Ok, understood. However, we have multiple reset lines per controller,
+so the PCIe driver will reset these lines using gpiod_set_value.
 
--- 
-Regards,
+PCIE30X4_PERSTn_M1_L
+PCIE30x1_0_PERSTn_M1_L
+PCIE_PERST_L
+>
+> Kind regards,
+> Niklas
 
-Laurent Pinchart
+Thanks
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
