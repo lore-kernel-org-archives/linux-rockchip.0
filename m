@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B0FE77197
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 03:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DED2E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jan 2025 05:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/pIbqKiRvqmCL0qWAupnK5Iotx5p3dRlqRsAKO9t9SU=; b=IAwKnCe8Sn43AV
-	G0s7MD3QNfH+jUPH6wIJ97fI43MR3zr5AE2T9Nk0Kv3yon3QW4e+zyY5BfIgjO5BrYchIk5rQ7WXt
-	7f5rEcSxGM5b5WA3AaQHNhTTgyuAMs+JLcoAK16cIzKVcSdhpQ9i4J8U7uwijCOSY3ToIL9+64ZSt
-	fBhjt6Lb7oCypo+fZsgVsT3FIjGouXkJxfOe8lodYnBzDfcZxW2BzQMQJxf3WKjpd3I1WBHzhKGHL
-	u/YlksyCLLwVcDHwQuwbmtCJ0Fyr9bi7Ebn26w4Y0J6r9SwlahcrtHe6m26dfzp1t/VAPfj170e9l
-	rUyx6+wzJ+nR2HC5meFw==;
+	List-Owner; bh=SmRrFCf2y+2dq9og0FWdh4vchyZKoqgvSoGy7IXbaRI=; b=rMBP5PAGbmKSAZ
+	yh4C804WVLodSbHG9rlGhMHZSnMrpRNeSnxTIjrIUt/UBScJgxzpaI2Lpg2oKaNHWTeXTf2+ZK7+Y
+	9UXsp9RdtS4lBPiMGeEZdvcKQg6kZbTaR+Nm6xpXTH27WUky4WlGJw+9nRQZWeJHDVueCICWIz5da
+	9oXQ2W8uz3wi3COXUf/vA0QE3N5lxSPIuCaCmfmpnqSWHdS0zgVSTs1pTx1jQFW7yP+MokbmS2xkf
+	qNWoaGEEzdNdw7/VlU7N+qJDFwuth3MFOlvsREuMvGBeD/KqSY0U3+0KVdgInnHgwyyvcYL8ksoU2
+	A0yd8y36rvMKP4Ho3PLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTYOV-0000000C0wh-34tp;
-	Fri, 03 Jan 2025 03:30:39 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1tTai7-0000000C9nk-3n2J;
+	Fri, 03 Jan 2025 05:59:03 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTYOS-0000000C0vl-2r10;
-	Fri, 03 Jan 2025 03:30:38 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [119.122.213.157])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 791e1b01;
-	Fri, 3 Jan 2025 11:30:22 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jonas@kwiboo.se
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	kishon@kernel.org,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	liujianfeng1994@gmail.com,
-	p.zabel@pengutronix.de,
-	robh@kernel.org,
-	vkoul@kernel.org
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rk3568: add reset-names for combphy
-Date: Fri,  3 Jan 2025 11:30:16 +0800
-Message-Id: <20250103033016.79544-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <688c8fb6-68f7-45f1-98fc-8b3252b3ecbf@kwiboo.se>
-References: <688c8fb6-68f7-45f1-98fc-8b3252b3ecbf@kwiboo.se>
+	id 1tTai4-0000000C9mM-2mGO
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Jan 2025 05:59:02 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-3003d7ca01cso128265651fa.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 02 Jan 2025 21:58:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1735883938; x=1736488738; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=sFlWSYAVuSson+OhthOc5MObp0JO2PaKlR/7cwxtKLk=;
+        b=lJOCF4getyLfCTeb7T9gis1JfTlyqANzE85LuaJJDjqnhHKEfFUXaBl1pOx5+IbRaJ
+         WSqfIche3gDO6hCmbpiqvFnUlNhDfvd0kGOThC5LwT6ny2gKBtAhE61MO+wF1+rtiUYI
+         901Ozh5JDaLzwB8MmM0CsIOxsK+DOa+2qod6BTSBAORj0cuJuKMWQLuSQXe2wpeQB3Yg
+         1o+hmCEU//PxONurY6juhbXJjqrZhCGKL5IJ55Pxz5mN+b3noKKCoqEZblL535LRj0LU
+         Yn+9JuQsnp6K6WjQui2ZsyDshsjlwKKioUs1/xn0i9EdK/PMIEWWcniY8Rq8kcb5X2V1
+         m88g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735883938; x=1736488738;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sFlWSYAVuSson+OhthOc5MObp0JO2PaKlR/7cwxtKLk=;
+        b=HhRmJg2YZHb1jlEbZkUpHDek90Jf08fLox8L1tT6UPNToN9rgcjjQgTj8r2nHjfvDc
+         qDW/fSaPztgGAoA8sQQY7vK47M6x5nUGG7HRoGoXvYlvSWJddthE8r4sdJDu/VosQVnz
+         ZhFJmEEFOEkQWXxHRXxgeNWVh8VvNtsiGqWy4c+ZSb0jvODOgRSoW/HGJWGzJiHSEXkc
+         qIGKsqV6/gJL7ivWi/UZPMkyteS2Hp0Tcaw2lgD6DZBd75Oz2mzPODKEnmpLLMYywO+e
+         wMDdZwtPad/dL7PMqwdn6QGVo48utv3OXjD+8YFk78914oZxkjPpKPZ05GU4kss6V6+b
+         kPqg==
+X-Forwarded-Encrypted: i=1; AJvYcCWiN5V5NtzC5zyhvZQAnG5DCNtN5CD0nLoTGDyd3SviZBBdYxVQgkt6DSoE3CJPxOotKLAChMY8YuugtXaeNQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw/hrb9xfxInrP52okyXX13V0x8ActGvz8PgFHXa3wgMprhlDjY
+	w1zK5BEE+kpN/cDidM8Jg4EryPgHLpoyXxKm1yzpFcAzg8KoYba8CZv4oPaNlSU=
+X-Gm-Gg: ASbGnctGgaaCsLFHZIWa8SRDfGeJkRuMXawC/xsTtIDrJpBsdnceb+zhjoW8oBmJJnc
+	lIwe1fNIizXOotba/B01OPW6ttkUohA5WJ74EX3nf4FnlvNxXAOnkPYZ2/2CaUOwEd7CWEIPnsi
+	Ki3/N7bbQOTSQShgIhcnpwLjDKfDWsvIAqwJedjMLgURKNcHlCOFltG70XXBx0oPdd4Ws8vk72C
+	gW3z7ApU47hidYCTDdHVecltCPuqTnt/lR+cAhkq2UTF1cFtZsaguFL8vYNVraszs7zSF8/VJ1P
+	YmO+q0O++jSOj4KyQlfbLeRSJyvlcfvEdNAV
+X-Google-Smtp-Source: AGHT+IE6y4JdTtlzcbrnGGg7v7FjSgwU7e/vWxQ7TgNE5uhhWt7BpBzFop0XHrbVtbgwiv0CXbLJOQ==
+X-Received: by 2002:a2e:bc1a:0:b0:302:3a46:10a7 with SMTP id 38308e7fff4ca-3046851f9cemr129431821fa.5.1735883938405;
+        Thu, 02 Jan 2025 21:58:58 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3049ec4ca6bsm26165151fa.56.2025.01.02.21.58.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Jan 2025 21:58:57 -0800 (PST)
+Date: Fri, 3 Jan 2025 07:58:54 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] drm/ci: uprev IGT
+Message-ID: <dj2r22upxnj2aicjnsvoqnhd4n73tyfgm36jtvixxp4vphocev@gggcjakm3xge>
+References: <20241217160655.2371138-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQ0sdVkxCGR1KSxhCGh5PQ1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTkxZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
-	tZBg++
-X-HM-Tid: 0a942a36cf0d03a2kunm791e1b01
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NAw6Ezo5HTISIS0VPy5ODTA9
-	KhVPFDVVSlVKTEhOQ0xOS0lIQ0hPVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpIVUpOTFlXWQgBWUFKS0tMNwY+
+Content-Disposition: inline
+In-Reply-To: <20241217160655.2371138-1-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250102_193036_906990_AC4D3AC9 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250102_215900_709323_97C45165 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +101,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-> The other patch in this series:
-> arm64: dts: rockchip: rk3568: add reset-names for combphy
-> is missing in v6.13-rc5, which will break pcie2 of rk3568
-> because the phy driver has changed.
+On Tue, Dec 17, 2024 at 09:36:52PM +0530, Vignesh Raman wrote:
+> Uprev IGT to the latest version and update expectation files.
+> 
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+> 
+> v1:
+>   - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1327810
+>     Will update the flake bug report link after v1 is reviewed.
+> 
+> v2:
+>   - Pipeline link - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1331363
+>     Updated flake test bug report links.
+> 
 
-I don't know why the dts patch hasn't been merged into the mainline yet.
-Maybe the merge window is different. Can you test the following patch?
-
-```
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -325,6 +325,10 @@ static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy
- 	priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
- 
- 	priv->phy_rst = devm_reset_control_get(dev, "phy");
-+	/* fallback to old behaviour */
-+	if (IS_ERR_OR_NULL(priv->phy_rst))
-+		priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
-+
- 	if (IS_ERR(priv->phy_rst))
- 		return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy reset\n");
- 
-```
-
-Thanks,
-Chukun
+What is the current state of this patch? It would have been really nice
+to get it in, we have patches depending on updated IGT.
 
 -- 
-2.25.1
-
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
