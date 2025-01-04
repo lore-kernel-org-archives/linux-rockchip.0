@@ -4,89 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C999FE77198
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jan 2025 02:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B44E77188
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jan 2025 06:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5oCdDSBsWm4xvy4+2B47esN0OBDnRIUZdQJd18/HPlE=; b=4XJFAQejQOfKcB
-	Cm8JMiE4vkKB8wjqovCYfWeqztZ+3Kh9Nrmc4PSUyElMR4/ocNMBFunhAMR7QrNRHodEdLUDIbiSY
-	23wuOOE5tw/nLvHBrCCZkhWF+HSHQUnD9KOwIClHsuklSGpGcmtK/7EVuFs6URnuVOyBbgXVXYNYi
-	f7fTNlnZZymMRku3dSUMCw5aTSXZrgwYQ72WTT+ZNTVLSHA9i71rGUSM0cO9/Ndo+jptJl8i2D7ln
-	3TC05Gpa65c6RuGnUbZZjqXltYwKRs2TRWb1yyQKBihLjZVjAUUKVX/xynp3tl1W0boBigXAiyxOd
-	biRBNhzgTbfvtIgqboPg==;
+	List-Owner; bh=LVRrzYkGQ7L+73sf1rUK3/BuW8jBCQcs7u7cxbscGAM=; b=ZqplF71MXGMoiy
+	E6C+1sNxOOQ9jVppOzRUhmhFycSmPUdr2hHsyuzzvbLzwWrikv66JyMwcyqJ9Ta9S79IbYoLZ2k4V
+	+ueGvPh0d9/PfpqKd3jnc94DE2d7C+GXP+A7eCjTUnYDBejGnDLyMJNwILMzWs0/IDm9TsXXqVbHi
+	Um0FRZYtoEqs7i14cA+I/k5xFwTj2mO3bVb9Pce6x9YCdR25TClMNlzJDlUNsf1IPXSMHRpxTCoX6
+	wWBjSwmsevTtD3eNWLUOYpiSm/fGvctBcvhgJ6tMtDot5Z68CCJUtdB7yWFGgzSHggFqHw7xo9twJ
+	jJK4K6f2sig852qrXqPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTtep-0000000ELvm-19eA;
-	Sat, 04 Jan 2025 02:12:55 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1tTxye-0000000Eb8x-2P7o;
+	Sat, 04 Jan 2025 06:49:40 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTtYY-0000000ELFJ-0j0n;
-	Sat, 04 Jan 2025 02:06:27 +0000
-Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-71e36b27b53so6648051a34.1;
-        Fri, 03 Jan 2025 18:06:25 -0800 (PST)
+	id 1tTxxS-0000000Eb0T-3Q6c
+	for linux-rockchip@lists.infradead.org;
+	Sat, 04 Jan 2025 06:48:28 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-53e3c47434eso13390645e87.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 03 Jan 2025 22:48:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1735956385; x=1736561185; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1735973304; x=1736578104; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=MNUGN/OFiesVmIRpk6ao4s0Wc8glNfbMb9xpJHvt4LL1t0JnLlEkgfTsqQ+J18DcSE
-         fIpL0A02M3gqcGUKvdEZbtX8ZyxJxd1jRy0QKLoHwG+zZOoc9CTRB64JpMaLfyRCYhqN
-         RquDjXjd0mESHIlPf8Pc0ttMCK5cC8afDuc0PcTWmS3uY0tJcEXKjQB3+JEybW4CEz97
-         80Q0Uk0OjJhZA5NGGQxfJvDB+12m0fpwgdTS4d/ikNsmlYC5ee9zu8vtHOeh8Npoz34H
-         RK/RP6cBsVdiR8h5jkUQjzfcCJ4GLYlSCTVBVVvYTAWZvZjYb5GebDOAXOXw5CkhRiDH
-         Esgg==
+        bh=OL2v2cgbonvN/57biijzRWsX5GH+mP+xPVPcn+nnd/k=;
+        b=UcjPTG4u8FM+0LTrWr+mujnS/cyXuXLFGWNDbe/jFz2ZXH1DX00XGjawpIixC79A5y
+         MAq5wMtB52VlnvERExM1fcHFqA323uaYG5miPLP99uSJMEPjCkZHSu/mPnvEZhlWIfAx
+         z24k1I6jd7Cnm5/m6lc/ra9w0Ca6ksy5Jzkjsm/lhCW6aMiUhtkYlap+dOtV49bTAGDJ
+         yLaJS5fMn7u+Mtio3P0/Rae7xLsGUqsNwpGHJ4njEjS4M5V1/q96XGvuyeEPDY9P3v9f
+         adxhZ6nU+8sQjH0tIL2M0mosSlpPPu/S8swfPvBCfW/jHJzQ5UZNi59yNYVmWmutLbfo
+         Q4lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735956385; x=1736561185;
+        d=1e100.net; s=20230601; t=1735973304; x=1736578104;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=Q47O1oamk5wxiLpeX/qvrk1v9V5xasB2O9sco+IqZs991MUf06B2RATh4EZZCs7tCD
-         BnF3BkxoHaXMhPWQu8aa5lQWz9+QZUn6B/4PCsSXppaUnYOakPObN2/5IItGFvx/YHRz
-         m87g1YB2nq5KFYEpAcE/X2rjfMcE0IN39qaJLkQZQmYxtZ4/kVOiCNbeTHU7RaYgmAIR
-         SzQrCH0M8kr5Ng67qSxqd5RjD1ReD0OL1BUwCwna/LUGMK385t2qjwldLWuNvjTATvvk
-         KWSJWBWByCeNz24gFTzxTLWXEKqJWZupmRz+F1L5yBhW3EB4T3FwSHecYWghf6sfPpi7
-         aMLA==
-X-Forwarded-Encrypted: i=1; AJvYcCWsVUcFGDHoCPfXnnYm5LUW03lAXepEI+daV4SIhM2qo8L+yhOOD2D/9G8xnGHNtubP/Mx2nYP+HbzKV7BIuiQ=@lists.infradead.org, AJvYcCXkSoB7sGKQRfl7rnzdZF6s21TwUJv6XJrF7gAt7VccSU+4Gt7KDlaG1sxlL/Pe8WULzjlrpuCzQrxrNzLIiCab@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTiaUGGX7dMnt1Uhhvydr3XedMKBaG+K7pFgMrQlM929/maUtd
-	kUg8ZVR5cStI77vD6K04Ul1tdLQtyU8svZn4IiLSqdt5FdEafOUB
-X-Gm-Gg: ASbGncvaEpqqUmzBhaE5eD643Fq7stVPcBvwNMnPgm2k1gDRlkM12QtOhSqZunYuiGz
-	ExFJEybFqMENstsqKKDlmLksOjs1arcFeOF/ezr0HLsitRk/7O8vvHt0QZeT/QSSkEuBq8fNH6F
-	d8qZUgbsJNNx6sOn0qDYr19FLwA5kK2D0463vA07ZnFmjIKEA3kU7eNQRoBxMB6BwR8+tpUltE2
-	yTu9R3wcL8nNOx2LIcfTztYAXrp0koKCuHikJEodJ/UQeFZge1E82swEp8h+t/8Yg==
-X-Google-Smtp-Source: AGHT+IFfJu0KWbafVRQ9nCVj07LtoEYzd1Pxn64GMymrVWa+4v/clLuGTdqdSOuoKn2k0AtwnI3T9Q==
-X-Received: by 2002:a05:6830:700c:b0:71e:5a:f4f4 with SMTP id 46e09a7af769-720ff8ee854mr35955653a34.25.1735956385152;
-        Fri, 03 Jan 2025 18:06:25 -0800 (PST)
-Received: from tower.cjhon.com ([2603:8081:ad00:4a:7057:8598:1940:24f4])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-71fc998ef6asm8406568a34.50.2025.01.03.18.06.22
+        bh=OL2v2cgbonvN/57biijzRWsX5GH+mP+xPVPcn+nnd/k=;
+        b=v2zlfMEWQzIa11jpQ6tNrYWKxC+uVTCUn71sHccprrpHJ7jhtTwXjhvdQM8Y9MNcGS
+         E9GX3J1WlSVv9IUlcuPAVrh5Vnod8K017AHZdZjHDuhgH5mSGtlf9rpBsjQjxOXh+L68
+         wYwv66nq4VDM7736waG+swq+dDGoXpyzgUqOBKT+z6XVSWbh6cLARGV8Dy5zs/SfurqY
+         S3/XIzwQ8nA5nUZ4teunwJUtLNLQM42D2sRV7LHHzamARlPFU9agdvWsfk2LOO4JttBC
+         ym5H3Cw1StTeN0ak82E47HrFjFkAdBE6GvmaA0hheBLeuDKgwaqhryZMBEgvmH7KT9Z7
+         bCzg==
+X-Forwarded-Encrypted: i=1; AJvYcCXqGzllYxhRowjNi8QBDQghWyxDAoZnlk1e+OSIOTb2MRRrzGNbhgFK+y0x3JGKHuGIDZrD5LWGW/xOmyzm5A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyHwnNPKya0Uty5WwrWO6KFoe85Ou+MiLa4O6151U95qnhbRl61
+	NCUjpxz0WgJguoXNUBg5jnZUdi96t1ECWlc2N5kDJYXoxvo6Zipp5Xso1YC/8LI=
+X-Gm-Gg: ASbGncvYrIJE5T5SFFTJ7kmx/dRshC+oFvJeWxbyuK3Gg5ZmkyJ5L6dgSsxvRPeLIxS
+	/BAGEmFqI51nSEDbeihNNMRfAhLmyuR9bJL8KU0hbORWEXOhq9NjYoyJE5Phi93bLONqQA16G2I
+	6643jHxpbhooLediFEtOX6Mpj+7+NQl8sn/i6ImK+ijpl+xATVCE6mvBhKQfQyXUPcy+TDJELg0
+	T3Sw1Y/901ArU3GYD+AML17hP0FDCpE4zgsjjJJYQja1lyN2hDbOyKJ58Hd+A+17PVGUAUDkfRu
+	K5Y2lmfNzYWB731gXN7xkCc8
+X-Google-Smtp-Source: AGHT+IH3b8Wrusc5F4Hb8fKgaj49rA+Ki+WtT2vpjNm4L2ymezTReLIBxE1xf5KxHdrS/65tedN1lQ==
+X-Received: by 2002:a05:6512:1114:b0:540:2fbb:22cb with SMTP id 2adb3069b0e04-54229533aeemr14027670e87.13.1735973304217;
+        Fri, 03 Jan 2025 22:48:24 -0800 (PST)
+Received: from eriador.lan (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54223825f3csm4213238e87.226.2025.01.03.22.48.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jan 2025 18:06:24 -0800 (PST)
-From: Jimmy Hon <honyuenkwun@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
+        Fri, 03 Jan 2025 22:48:22 -0800 (PST)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Phong LE <ple@baylibre.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH v6 4/4] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
-Date: Fri,  3 Jan 2025 20:05:40 -0600
-Message-ID: <20250104020544.6777-5-honyuenkwun@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250104020544.6777-1-honyuenkwun@gmail.com>
-References: <20250104020544.6777-1-honyuenkwun@gmail.com>
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v10 00/10] drm: add DRM HDMI Codec framework
+Date: Sat,  4 Jan 2025 08:48:19 +0200
+Message-ID: <173597328997.875472.12782462213120017264.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
+References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_180626_206866_23724A4D 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250103_224826_845702_19C36269 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,82 +138,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the second HDMI output port on the Orange Pi 5 Max
+On Tue, 24 Dec 2024 03:47:52 +0200, Dmitry Baryshkov wrote:
+> While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
+> framework, I stumbled upon an issue while handling the Audio InfoFrames.
+> The HDMI codec callbacks weren't receiving the drm_atomic_state, so
+> there was no simple way to get the drm_connector that stayed at the end
+> of the bridge chain. At the same point the drm_hdmi_connector functions
+> expected to get drm_connector instance.
+> 
+> [...]
 
-Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
----
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+Applied to drm-misc-next, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index ce44549babf4..ecfbed2d0059 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -21,6 +21,17 @@ hdmi0_con_in: endpoint {
- 			};
- 		};
- 	};
-+
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
- };
- 
- &hdmi0 {
-@@ -39,10 +50,33 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+&hdmi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
-+			     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
- &hdptxphy_hdmi0 {
- 	status = "okay";
- };
- 
-+&hdptxphy1 {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 
- 	usb {
-@@ -58,3 +92,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi0_in_vp0>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp1>;
-+	};
-+};
+[01/10] ASoC: hdmi-codec: pass data to get_dai_id too
+        commit: 6af45d7df1099ccac634b36f8cdfa32fbca8c1d1
+[02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
+        commit: bb1d67bf82fbd2c550fa637e0b8a966ee81a293b
+[03/10] drm/connector: implement generic HDMI audio helpers
+        commit: baf616647fe6f857a0cf2187197de31e9bb17a71
+[04/10] drm/bridge: connector: add support for HDMI codec framework
+        commit: 0beba3f9d366c6df10e5b080fc99c45ac17248ed
+[05/10] drm/bridge: lt9611: switch to using the DRM HDMI codec framework
+        commit: c054aa1bf529a2fa13546b25231d16bb0fd87ca2
+[06/10] drm/display/hdmi: implement hotplug functions
+        commit: ab716b74dc9dd4903b9006f473137e1aa624af56
+[07/10] drm/bridge_connector: hook drm_atomic_helper_connector_hdmi_hotplug()
+        commit: 4b5a79d7f4d5c34120c6f2e8836bc8ad3a43594c
+[08/10] drm/vc4: hdmi: switch to using generic HDMI Codec infrastructure
+        commit: 9640f1437a88d8c617ff5523f1f9dc8c3ff29121
+[09/10] drm/vc4: hdmi: stop rereading EDID in get_modes()
+        commit: b4fa0800760c20fe34318a1079687526fc323572
+[10/10] drm/vc4: hdmi: use drm_atomic_helper_connector_hdmi_hotplug()
+        commit: 2ea9ec5d2c207a41d523f8804053cee00fe50763
+
+Best regards,
 -- 
-2.47.1
+With best wishes
+Dmitry
 
 
 _______________________________________________
