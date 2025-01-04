@@ -4,124 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B44E77188
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jan 2025 06:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0D94E77188
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jan 2025 07:25:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LVRrzYkGQ7L+73sf1rUK3/BuW8jBCQcs7u7cxbscGAM=; b=ZqplF71MXGMoiy
-	E6C+1sNxOOQ9jVppOzRUhmhFycSmPUdr2hHsyuzzvbLzwWrikv66JyMwcyqJ9Ta9S79IbYoLZ2k4V
-	+ueGvPh0d9/PfpqKd3jnc94DE2d7C+GXP+A7eCjTUnYDBejGnDLyMJNwILMzWs0/IDm9TsXXqVbHi
-	Um0FRZYtoEqs7i14cA+I/k5xFwTj2mO3bVb9Pce6x9YCdR25TClMNlzJDlUNsf1IPXSMHRpxTCoX6
-	wWBjSwmsevTtD3eNWLUOYpiSm/fGvctBcvhgJ6tMtDot5Z68CCJUtdB7yWFGgzSHggFqHw7xo9twJ
-	jJK4K6f2sig852qrXqPQ==;
+	List-Owner; bh=qkDcIE/YZkLPe+9zqjbfxD/F7y9vMLJ6WYReQeBMhOE=; b=2gFGAFgMV3snF7
+	zu9LaVlSoGOdECtykTw7x0zUGiP6pChOPwRmQ5gePmZZq6w3oxhfalhvwP97TOuH+V3Cgz1RgOwkJ
+	pe3Lv7oc2Jr7+58XbJIDhB24YjtV+ngv3qZQeLWwoRaVjWk5DIROY1mzSDslxpTMtk3h0Ze62BCLR
+	sCkcB+jxDtPUZsMLAv+0hybbriMeq5VusCjXIwfttGiTc7QuWZ2cepO08amPTEKConBbi+tpQmDNs
+	vtQ++XLvIrUkmePc5mIQdsmfDr4UGG7Ek0XU9IbwuJptqLoWo9EUYSElynSXSsAbcOs5i2bsbBpgK
+	oAFaxNRHt03pYpDYvf4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTxye-0000000Eb8x-2P7o;
-	Sat, 04 Jan 2025 06:49:40 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1tTyXP-0000000EeEq-1cBI;
+	Sat, 04 Jan 2025 07:25:35 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tTxxS-0000000Eb0T-3Q6c
-	for linux-rockchip@lists.infradead.org;
-	Sat, 04 Jan 2025 06:48:28 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-53e3c47434eso13390645e87.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 03 Jan 2025 22:48:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735973304; x=1736578104; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OL2v2cgbonvN/57biijzRWsX5GH+mP+xPVPcn+nnd/k=;
-        b=UcjPTG4u8FM+0LTrWr+mujnS/cyXuXLFGWNDbe/jFz2ZXH1DX00XGjawpIixC79A5y
-         MAq5wMtB52VlnvERExM1fcHFqA323uaYG5miPLP99uSJMEPjCkZHSu/mPnvEZhlWIfAx
-         z24k1I6jd7Cnm5/m6lc/ra9w0Ca6ksy5Jzkjsm/lhCW6aMiUhtkYlap+dOtV49bTAGDJ
-         yLaJS5fMn7u+Mtio3P0/Rae7xLsGUqsNwpGHJ4njEjS4M5V1/q96XGvuyeEPDY9P3v9f
-         adxhZ6nU+8sQjH0tIL2M0mosSlpPPu/S8swfPvBCfW/jHJzQ5UZNi59yNYVmWmutLbfo
-         Q4lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735973304; x=1736578104;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OL2v2cgbonvN/57biijzRWsX5GH+mP+xPVPcn+nnd/k=;
-        b=v2zlfMEWQzIa11jpQ6tNrYWKxC+uVTCUn71sHccprrpHJ7jhtTwXjhvdQM8Y9MNcGS
-         E9GX3J1WlSVv9IUlcuPAVrh5Vnod8K017AHZdZjHDuhgH5mSGtlf9rpBsjQjxOXh+L68
-         wYwv66nq4VDM7736waG+swq+dDGoXpyzgUqOBKT+z6XVSWbh6cLARGV8Dy5zs/SfurqY
-         S3/XIzwQ8nA5nUZ4teunwJUtLNLQM42D2sRV7LHHzamARlPFU9agdvWsfk2LOO4JttBC
-         ym5H3Cw1StTeN0ak82E47HrFjFkAdBE6GvmaA0hheBLeuDKgwaqhryZMBEgvmH7KT9Z7
-         bCzg==
-X-Forwarded-Encrypted: i=1; AJvYcCXqGzllYxhRowjNi8QBDQghWyxDAoZnlk1e+OSIOTb2MRRrzGNbhgFK+y0x3JGKHuGIDZrD5LWGW/xOmyzm5A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyHwnNPKya0Uty5WwrWO6KFoe85Ou+MiLa4O6151U95qnhbRl61
-	NCUjpxz0WgJguoXNUBg5jnZUdi96t1ECWlc2N5kDJYXoxvo6Zipp5Xso1YC/8LI=
-X-Gm-Gg: ASbGncvYrIJE5T5SFFTJ7kmx/dRshC+oFvJeWxbyuK3Gg5ZmkyJ5L6dgSsxvRPeLIxS
-	/BAGEmFqI51nSEDbeihNNMRfAhLmyuR9bJL8KU0hbORWEXOhq9NjYoyJE5Phi93bLONqQA16G2I
-	6643jHxpbhooLediFEtOX6Mpj+7+NQl8sn/i6ImK+ijpl+xATVCE6mvBhKQfQyXUPcy+TDJELg0
-	T3Sw1Y/901ArU3GYD+AML17hP0FDCpE4zgsjjJJYQja1lyN2hDbOyKJ58Hd+A+17PVGUAUDkfRu
-	K5Y2lmfNzYWB731gXN7xkCc8
-X-Google-Smtp-Source: AGHT+IH3b8Wrusc5F4Hb8fKgaj49rA+Ki+WtT2vpjNm4L2ymezTReLIBxE1xf5KxHdrS/65tedN1lQ==
-X-Received: by 2002:a05:6512:1114:b0:540:2fbb:22cb with SMTP id 2adb3069b0e04-54229533aeemr14027670e87.13.1735973304217;
-        Fri, 03 Jan 2025 22:48:24 -0800 (PST)
-Received: from eriador.lan (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54223825f3csm4213238e87.226.2025.01.03.22.48.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jan 2025 22:48:22 -0800 (PST)
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Phong LE <ple@baylibre.com>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
+	id 1tTyWD-0000000Edug-1V7M;
+	Sat, 04 Jan 2025 07:24:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1735975461; x=1767511461;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=hApevf4s8W35qlEae1IzG8ICVMdOQ9BpJ7wqh1gKCt8=;
+  b=KzluGCsO/WVCG+K4T2FgA3PntQsqtuTpQ9Mr/x7cIHd4DIXtb5RBUJ1W
+   VeieZDmvMgCZLAWkZEgaLW3Lx41w3XEZReOUe1/Nd5Yzj3DEKsYlMpd5y
+   kJt2nyqpk7Fj4hvhx+eWGBhk3qUsnGYLhoIcdmFpITJNSo4pDgMCr1AqS
+   n+VAq0z3TDwF4S9u/DzqfbQlH/m4kLTIlLG9YwMNobCZxKAXsLQqL+mhb
+   0lmm8TvDzNYplfeHJugABAAj3CrVjJY4nkmJmT2er741vGW3zqIFA2q3N
+   j5+NI5rI7wWYdgBpr3L1mW3qs2zxrucTLRjO67P8HitXKi4vUWVKsfzFC
+   A==;
+X-CSE-ConnectionGUID: UN6SC135SMuKohAtGVuf6g==
+X-CSE-MsgGUID: uX3Fu0PlRimqFhlWMdsN2w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11304"; a="39030205"
+X-IronPort-AV: E=Sophos;i="6.12,288,1728975600"; 
+   d="scan'208";a="39030205"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jan 2025 23:24:14 -0800
+X-CSE-ConnectionGUID: /lzjVEECRMO8wtInbqsUSg==
+X-CSE-MsgGUID: 3kwcATRGRHuLQHDtEimq8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="102466773"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 03 Jan 2025 23:24:12 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tTyW1-000Ajd-2s;
+	Sat, 04 Jan 2025 07:24:09 +0000
+Date: Sat, 4 Jan 2025 15:23:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jimmy Hon <honyuenkwun@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: oe-kbuild-all@lists.linux.dev, Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-sound@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v10 00/10] drm: add DRM HDMI Codec framework
-Date: Sat,  4 Jan 2025 08:48:19 +0200
-Message-ID: <173597328997.875472.12782462213120017264.b4-ty@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
-References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: Re: [PATCH 6/7] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
+Message-ID: <202501041500.EeQw8gzk-lkp@intel.com>
+References: <20241229184256.1870-11-honyuenkwun@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241229184256.1870-11-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250103_224826_845702_19C36269 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20250103_232421_406338_754566C8 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,44 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Dec 2024 03:47:52 +0200, Dmitry Baryshkov wrote:
-> While porting lt9611 DSI-to-HDMI bridge driver to use HDMI Connector
-> framework, I stumbled upon an issue while handling the Audio InfoFrames.
-> The HDMI codec callbacks weren't receiving the drm_atomic_state, so
-> there was no simple way to get the drm_connector that stayed at the end
-> of the bridge chain. At the same point the drm_hdmi_connector functions
-> expected to get drm_connector instance.
-> 
-> [...]
+Hi Jimmy,
 
-Applied to drm-misc-next, thanks!
+kernel test robot noticed the following build errors:
 
-[01/10] ASoC: hdmi-codec: pass data to get_dai_id too
-        commit: 6af45d7df1099ccac634b36f8cdfa32fbca8c1d1
-[02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
-        commit: bb1d67bf82fbd2c550fa637e0b8a966ee81a293b
-[03/10] drm/connector: implement generic HDMI audio helpers
-        commit: baf616647fe6f857a0cf2187197de31e9bb17a71
-[04/10] drm/bridge: connector: add support for HDMI codec framework
-        commit: 0beba3f9d366c6df10e5b080fc99c45ac17248ed
-[05/10] drm/bridge: lt9611: switch to using the DRM HDMI codec framework
-        commit: c054aa1bf529a2fa13546b25231d16bb0fd87ca2
-[06/10] drm/display/hdmi: implement hotplug functions
-        commit: ab716b74dc9dd4903b9006f473137e1aa624af56
-[07/10] drm/bridge_connector: hook drm_atomic_helper_connector_hdmi_hotplug()
-        commit: 4b5a79d7f4d5c34120c6f2e8836bc8ad3a43594c
-[08/10] drm/vc4: hdmi: switch to using generic HDMI Codec infrastructure
-        commit: 9640f1437a88d8c617ff5523f1f9dc8c3ff29121
-[09/10] drm/vc4: hdmi: stop rereading EDID in get_modes()
-        commit: b4fa0800760c20fe34318a1079687526fc323572
-[10/10] drm/vc4: hdmi: use drm_atomic_helper_connector_hdmi_hotplug()
-        commit: 2ea9ec5d2c207a41d523f8804053cee00fe50763
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on robh/for-next linus/master v6.13-rc5 next-20241220]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Best regards,
+url:    https://github.com/intel-lab-lkp/linux/commits/Jimmy-Hon/arm64-dts-rockchip-refactor-common-rk3588-orangepi-5-dtsi/20241230-064740
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20241229184256.1870-11-honyuenkwun%40gmail.com
+patch subject: [PATCH 6/7] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
+config: arm64-defconfig (https://download.01.org/0day-ci/archive/20250104/202501041500.EeQw8gzk-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250104/202501041500.EeQw8gzk-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501041500.EeQw8gzk-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> Error: arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts:53.1-7 Label or path hdmi1 not found
+>> Error: arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts:60.1-10 Label or path hdmi1_in not found
+>> Error: arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts:66.1-11 Label or path hdmi1_out not found
+>> Error: arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts:76.1-11 Label or path hdptxphy1 not found
+>> FATAL ERROR: Syntax error parsing input tree
+
 -- 
-With best wishes
-Dmitry
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
