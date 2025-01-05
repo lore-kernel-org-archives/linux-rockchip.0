@@ -4,130 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1264E77197
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jan 2025 09:48:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 606C2E77197
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jan 2025 10:02:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qQwMB3mCBLaK6eti7Uj0I+4v+MbA0XSEMcNC9HL5SWU=; b=s9vozzYl+DWhGv
-	6E3Ee9dv6ZInljYFz04jZR6CVOJ2zs2DTohCQsR5K9GaK08QvlGjdsj/MPx6rodhZMikcA32ds5SN
-	wzLQw9fnq6b/fQRDH7kyuwr8dGzns9EFsZ5Jhpms5GfyvY2fjKO7cxiHyV7VBocIOPh65OCKVynBb
-	CPqa5KUskotFq44f4FU+hcQWuJ1hpk7Lc/BxA963ImBEQ+gVa9j1whW0djWSsxeev22Ar8cRdkftQ
-	/LAYJBA3uWOOwu4yDqBnyW0MbLAJ04L+8Bkru1HZfF+58fwzjgpocvPAhXs/pCtE5RVEtC6tiiM4l
-	pO5JylZS6A1UmsxE0wQw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5j+XQnivwIN1Yj5trXNOV7IT1SC1CP2Y+MH77zgd9DQ=; b=YFIVvB+WUHHrtf
+	/gDQIQRiOO9o7eQhSP2EhXsmr9wURdtmAaCohV8wMR5gBccA06fn67FSipYS++hQSCq0HBGNH3epe
+	I2MD42xcPrBAB5Skk1KiDaogn1he691eYCngYcLm+lvRqDxl083oO0FFHV1Fq9vs/KoP8EK4mPnef
+	gkRUfDj7xbgsB+NAiPSVC5RqWSs3gP2onFbeJmt4+N0ymm/oSVZGs2/r4IsCLwTwKriMjgg2ja/6N
+	c4m83gPaOgTElRMVl2fEYhfyQzrKPAIsnLvWS2KFsnxt9iKqkn5/GQS+FdehJypsAvUaPyNyk2xh7
+	rSVJMHakhwAdoVGhlDpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUNFE-0000000Gd71-3nMD;
-	Sun, 05 Jan 2025 09:48:28 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1tUNT8-0000000GeRj-2w7v;
+	Sun, 05 Jan 2025 10:02:50 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUNE3-0000000Gd0C-0HGh
-	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Jan 2025 09:47:16 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5d3ea2a5a9fso1994799a12.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 05 Jan 2025 01:47:14 -0800 (PST)
+	id 1tUNRw-0000000GeHQ-37bq;
+	Sun, 05 Jan 2025 10:01:38 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-53e389d8dc7so14370379e87.0;
+        Sun, 05 Jan 2025 02:01:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736070433; x=1736675233; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=FwWFJk3E2hQKwW/U0+2xxWeFCfb/uwGs2aCzoqUQROA=;
-        b=aB5B3MCD5/fj8MO9dEFICAc7rpfaZikE1seQUOXQg1Q9Zl7rVSJvpnTZKXnW3+Hmj1
-         Q3ZReX1IxAZR/9bAiwtqLfGE3w+da4t4eODNHzRQlOJPHJm/wgwNjS0mwkzRG9Er6PpK
-         sMRT/u/JbPRBQJWAomVrvy1tHkoz/TLGegvK4LwIKCmPPhb9S6rttvm63xfDFwEBtqR+
-         YyoYiP5/6jirrfpslTaNGOqgKZNVAmyn3iJqVBm6zZsBACPQuM0/yQu1KFjzIN/tSuk2
-         4ajK4oeSUQXXufSsN9cG7eObXLvmH/hs36RRy42kDQmTlaRtPvDOr/T8ExsMlr/ED4m4
-         AW/w==
+        d=gmail.com; s=20230601; t=1736071294; x=1736676094; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ioXaEb8AhEb9ppd2CiarkcVgpik13EQZ3YX/6ej2zCA=;
+        b=HYoeh88NhDVIMUmEbfWMjXJ8PrbxThFQ1W7IKe/giImCZXqAMXHEd9k/5vyjVT1Gr2
+         4tmMv0pcCP/8yROpkC4HhLn9XmOROa8Savb3Lz0hrLq7Yi8kZdlV6DtwKGlZZJh0MYOV
+         xhV/pEOtWt5Ckgby0H2bmKFnZB/zXvepEDPbcRF0z1jkIDDnm/bfVuonpeY+7xE2vQGf
+         c+eHZQNonQY+AyqIQvTalTtPxnkKpLj8CSBI+KoxsXwmLkzNNAQZpxDqNrWDX4oK11b9
+         5uRhz9J2LZ6EHsWA1Faq5vBtkJAwI+09vallhO038qutZ75UalcCgpVv0a6MF/gzjsuf
+         dYHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736070433; x=1736675233;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FwWFJk3E2hQKwW/U0+2xxWeFCfb/uwGs2aCzoqUQROA=;
-        b=sXl3ggviZa6BNlsNMDEPjFhfELdl+gzWaxuGRQDpkpH7WPXAZMaR0Eo+PXr36NyqEp
-         nA+wIqZXhTaajm290Vi4iGuqdj1wWW+9KWTTlI2TVyJo6ghwMvtWkPVuA7L532stvEQu
-         oerpUzRLMi3XzSila+/LMY0Wq081WEIjXvZEozbeYQ6e7KJXq4ldJr7wWo/5RHjM/kg+
-         F6ajkXN6GAOuOIRzRzmXy0hXn3vKAx2TlEJcUrrNczmYEgMNZVmMj1IMMytM2yj6YQug
-         X768KZC22px59ezdzjcSnLZ3ai2M3l0XgPl/7t5NdIvZc09bFR55GQyP3NmJmVYm1jIn
-         oECA==
-X-Forwarded-Encrypted: i=1; AJvYcCVXsHgId4CzGZG4wakUbbQDgnczdm2pyCpvCr4wSlXoiXqLEiPektFUlSOOC2RCdQo/ETFDwR7UgEzdlXWWIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/CfZy1Ln4F4YVsE9DO93zJ43faJFvP9Tql5TdS6b095agOAM/
-	PvnmLFPsLFhmc0mP7T1yySNooSkP575uFT1o7eIuq/X/qOaDiWGJVIcCXFSCTkY=
-X-Gm-Gg: ASbGnctXrENcadFIvNCZKhyQt2/KI0E7bqP1kpXzR+l5yKnST/Z9YK4GeegXTLXvyC/
-	w4fRuUC2M7jmgyJzleYEenkgCGt0hoGz7UtA8kkO2jatdrd6fFrQNeiMzSUiChM2cw75CzKtlo+
-	S3lYa/SJ9YCGTOj30D+jNVptgIrlLvcMlH2ZBb2P8DOuyAR5GNypEFrxcNAqi26qv6nxBSKJz1h
-	Y3jWhL0dr9/VPCma/c7i4J9UQEgKMPCz0ycxewATCqqS7lxmesG63rGbz189mMqXb2JBM9EEj6L
-X-Google-Smtp-Source: AGHT+IFBAgxEYhPQ8HTOUlchzxxlKiWSC2Pj7X7DaXwcKXltm+3dNqCxGlJWXie/QUbDh3tB7xbT1Q==
-X-Received: by 2002:a17:906:3099:b0:aae:83c7:fd4e with SMTP id a640c23a62f3a-aae83c80390mr1497141566b.13.1736070432783;
-        Sun, 05 Jan 2025 01:47:12 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.223.165])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0eae71desm2097610566b.89.2025.01.05.01.47.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 05 Jan 2025 01:47:12 -0800 (PST)
-Message-ID: <f089027b-6417-4d02-8f8a-24a3ecff74a9@linaro.org>
-Date: Sun, 5 Jan 2025 10:47:10 +0100
+        d=1e100.net; s=20230601; t=1736071294; x=1736676094;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ioXaEb8AhEb9ppd2CiarkcVgpik13EQZ3YX/6ej2zCA=;
+        b=nkQiYqCmgYQ3Uer2s2S9Rqko+tj2/ngF9omjZWd/jBYTVvA0AFhWuV9+qx8Oyw6EwP
+         4qOEztBnAFlxirj6ZiKsGSP64TfrdB2/9s5JgUow9IguI6ErtObq+QPQc98fjWkdNlxD
+         fBBHVSiS6bOosXkfs9tFAOhQ0M9kPOPHboGU/fC9eYE7zotjTRaAcXcEuRdxljashk1V
+         VmXyAOe8zj2cSF0XhAOm76PqSohraER9/w4nBthPmCYAN2t4+MxSOsLmceu5EQAhyGR4
+         iwPmwGjslGPdvyR6l+LLaZDmgQZDRtvcevL6WXNHN5zsxVfBp/PYrFUvJvBDzMFtxNc+
+         Nqyg==
+X-Forwarded-Encrypted: i=1; AJvYcCVb7kytg6QcGo7GGOC2mXdKirInZJevcDsAqxwh0EwYDjQuZkwyKTOoePYh3EcqBbr4ECyoLT87Ez4/+TPrZog=@lists.infradead.org, AJvYcCXxUOkgYDP6wKkZ8EL9CfKZx0D+GFt3IhQRQQSSaArZQ6OdajbqiIFoLkUFMQ8QTjvtFhK7UelkXy7cTT1drAy3@lists.infradead.org
+X-Gm-Message-State: AOJu0YzPJeeQWropBPHC6dLzPIY7oTkGBamJ+s1eCWrV0Pz+0kLyxDwT
+	MyjW7y/pDomW5MLMItSvRW73pWh+BlSip42Hf5j3B8/Vim4lnkZLHUgnrE95aw==
+X-Gm-Gg: ASbGnctuUwYSHEzIAArCYkuw3tm5TWr87r5AvNg1jg7m6X/441qKEspWh4Cvp2Js7hw
+	bM5yr9QCVYaj36Z8W9nDZtvrPBu/CCbqaPcIas5sF8TNGH0gI9BX4zo3Sc6M35Ah0rHzh2byGDo
+	7amAg5Cb9cbMW/7JP9oAaaoD9aosaDWIfXIGu2nD1CcxrfV+8qwjcXXsQmN3rw/Q/kYePC4WF6S
+	SnLZ3IXLMRCx3Sy00cR31bLjhteLlp3+FSCvZjeIPym1FRwQ+rVw0Ow6ic=
+X-Google-Smtp-Source: AGHT+IGYOoAYruqEmrXXpBPQrWSQF4Z4pQ+Zw4ZngvJDeKbJyND9eGnpgNG9zhGuRrVEioq1mNzSPg==
+X-Received: by 2002:a05:6512:33cd:b0:540:358d:d9b7 with SMTP id 2adb3069b0e04-5422957ac6cmr15595789e87.52.1736071293641;
+        Sun, 05 Jan 2025 02:01:33 -0800 (PST)
+Received: from JetTurbine.homenetwork ([2a0e:e6c0:20d3:2100::1d])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54223813806sm4580828e87.114.2025.01.05.02.01.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 05 Jan 2025 02:01:33 -0800 (PST)
+From: Ivan Sergeev <ivan8215145640@gmail.com>
+Subject: [PATCH v5 0/2] arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
+Date: Sun, 05 Jan 2025 13:01:27 +0300
+Message-Id: <20250105-bigtreetech-cb2-v5-0-923f911b10c0@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/2] arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
-To: Ivan Sergeev <ivan8215145640@gmail.com>, robh@kernel.org
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <D6U1B36JH3HU.WQ8GEL7M3HRW@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <D6U1B36JH3HU.WQ8GEL7M3HRW@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAHdYemcC/2WNywqDMBBFf0WybkpeatNV/6N0oZNRB+qDREKL+
+ O+NQqHF5blwzl1YQE8Y2DVbmMdIgcYhQX7KGHTV0CInl5gpoYxUyvCa2tkjzggdh1pxebHG1Np
+ YKwuWrMljQ6+9eH8k7ijMo3/vB1Fv67dVHlpRc8GthDwvKgdNg7e2r+h5hrFnWyuaH1+Lo2+Sr
+ wqnnBYoSvjz13X9AFnh0MTuAAAA
+X-Change-ID: 20241224-bigtreetech-cb2-18944b349916
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Ivan Sergeev <ivan8215145640@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2326;
+ i=ivan8215145640@gmail.com; h=from:subject:message-id;
+ bh=Ve6DAyAdX75MBAsvdAMcYRB0imSwGJB9zDUZrNYiJ9Y=;
+ b=owEBbQKS/ZANAwAIAbzfXRlQM5b9AcsmYgBnelh8s8U3cjvCpHPRrs2T/+ajFNPVuuPWhJFqo
+ l6XqLavdomJAjMEAAEIAB0WIQROCZtApKFz1fvvsOS8310ZUDOW/QUCZ3pYfAAKCRC8310ZUDOW
+ /QRbEADX9HM1YyxNIQB/J0YA+nNDhvdWyPZOY6j/rx4I0XtLRB6SoHVugL1pxAzauWVYNJjZb/T
+ gB4lu0d/7Ze44LTzww4hPFuF1Fl/wKdLXdVkJqooNzZvdbF3neGaLzK7neXSDozZiQV3nF1a0HQ
+ FQBvNp+Wrbelt+vJS3veBiJjJsw+QRrcitDwrUJY5UET82gZ14+Skbe3e/L/sCFKBIT7EgHnkjf
+ JUSq/Znv9+s/rp7rQTG0Yn3+MXd5BNfpGSg5+lFdfgU0GLRVfuv6kfBLrARmtzYjLWeBWpwzFF5
+ pupDOWhWrh6bYFKMGRoYHldXayd9mhtqQI2vHReKwrp5zb/bGmgGS4uHGmEhEjmTqb6at6IpitC
+ QM1fc3Hjjg22Q1cXmy+z67licL5d7CaVXB/iNqybMbqT8Umqt09Px1de45vYDJ5otNtKpwzHskL
+ 463PwUJV2V+8rKAs4LGtAbWL3bmkvbucHw9IuvmbQOP2htgNc6wkYSkqyq9mcL53Nls8iZuNNHM
+ lRN9tEYVoILP/SljACWRlRHdQnlh0qqOYL/WfE3OGBE/ZTNfLw9+bMzu2ozPNkB4/ym01M3WDV0
+ 7Sm9/c/xUGIldrKU/3NVUr4eb78wNKmfpvPiRDWqQhkFY/h2L4uQOslH6Cc+RULRzfxEmj4aBcA
+ DE+JDMkFDcpF/RQ==
+X-Developer-Key: i=ivan8215145640@gmail.com; a=openpgp;
+ fpr=4E099B40A4A173D5FBEFB0E4BCDF5D19503396FD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250105_014715_131706_48077ACD 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20250105_020136_801238_A157BEBC 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,41 +118,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/01/2025 10:33, Ivan Sergeev wrote:
-> Preparing a v5, fixed the phy-supply for usb nodes, but I have questions
-> for the other warnings.
-> 
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
-> 
-> Using `grep -r 'ti,tsc2007' Documentation` I can find a schema file for
-> that `compatible` value: Documentation/devicetree/bindings/input/touchscreen/tsc2007.txt
-> Is it an invalid value or not a proper schema?
+BigTreeTech CB2 and Pi2 are Rockchip RK3566 SoM and SBC boards made by
+BigTreeTech for the intent of using as a 3d printer control board.
+It is a successor to the Allwinner H616-based BigTreeTech CB1 and Pi, so
+the device trees for CB2 and Pi2 are also done in the same manner: the
+common nodes and properties are put into a dtsi file that the
+board-specific device trees include.
 
-It's just not a schema. Warning can be ignored but you can also convert
-TXT to schema in separate patch.
+Changes in v5:
+- Applied requested changes
+- Fixed usb `phy-supply` format
+- Removed improperly named pinctrl nodes that were unused.
+- Fixed names of other pinctrl nodes
+- Link to v4: https://lore.kernel.org/r/20241230-bigtreetech-cb2-v4-0-26d2d30e07ce@gmail.com
 
-> 
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
->> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
->> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
->> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
->> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
->> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-> 
-> I don't understand how these nodes differ in structure dcompared to
-> other pinctrl nodes. Am I missing somethign taht is causing this
-> warning?
+Changes in v4:
+- Removed invalid `i2c,ignore-nak` properties
+- Set `#address-cells` and `size-cells` on `sdmmc1`
+- Fixed `phy-supply` properties of usb host nodes
+- Link to v3: https://lore.kernel.org/r/20241227-bigtreetech-cb2-v3-0-91c556adcffe@gmail.com
 
-Wrong naming. gpio and gpios are only GPIOs, not pinctrl. That's why
-your SoC pinctrl schema is supposed to have strict suffix or prefix
-naming for such pincfg nodes :/
+Changes in v3:
+- Proper formatting and patch series sending (using b4)
+- Converted spaces to tab indentation in the dtsi file
+- Fixed empty line where the license identifier should be
+- Link to v2 1/2: https://lore.kernel.org/linux-rockchip/20241224135751.350379-2-ivan8215145640@gmail.com/
+- Link to v2 2/2: https://lore.kernel.org/linux-rockchip/20241224140057.350667-2-ivan8215145640@gmail.com/
 
+Changes in v2:
+- Added bigtreetech cb2 and pi2 boards to the list of platforms
+- Split BigTreeTech CB2 and Pi2 into two device trees using common dtsi
+- Link to v1: https://lore.kernel.org/linux-rockchip/20241222203952.84217-2-ivan8215145640@gmail.com/
+
+Signed-off-by: Ivan Sergeev <ivan8215145640@gmail.com>
+---
+Ivan Sergeev (2):
+      dt-bindings: arm: rockchip: Add BigTreeTech CB2 and Pi2
+      arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  11 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   2 +
+ .../dts/rockchip/rk3566-bigtreetech-cb2-manta.dts  |  10 +
+ .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 919 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-bigtreetech-pi2.dts   |  10 +
+ 5 files changed, 952 insertions(+)
+---
+base-commit: 63676eefb7a026d04b51dcb7aaf54f358517a2ec
+change-id: 20241224-bigtreetech-cb2-18944b349916
 
 Best regards,
-Krzysztof
+-- 
+Ivan Sergeev <ivan8215145640@gmail.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
