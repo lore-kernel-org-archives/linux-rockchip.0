@@ -4,56 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF33E77199
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jan 2025 22:28:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C0EDE77197
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jan 2025 09:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:To:From:Subject:Cc:
+	Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uNGPImUwcsLynxKdqduporyfuzlFf5xVlozWRa+gBzQ=; b=SyU5C92V7J9W4S
-	QbsNTDDJS20ezU0Ghv8mZeCO6OI333U9MnVMma2PpxTmLruoJ32dIWUww0KUJovNjPPkPWkURMPWS
-	y/Jp57AozkVMKwBAXs1YyTkvO+b0G3Waitt/l5wsNu8RYCFrhAX0YftVkaIAJClABPo62j4ipBhA5
-	PSjqqP/UsFI9bEfEezM7g6VUgWlcM94F097DHEW+sGDO191eHsYwODsoxAlFPF3IBrqp+mPQTCfKF
-	k/getSCmkqmNlAUZVSKF5wLs0ogK+pt8g0+3QTFRjFQ71vDtuQu4jRVtbR5xClGoYBOaAG7KoTQQQ
-	anqMlOJHMBBBYw1rGWfw==;
+	References:List-Owner; bh=m9ma0HLRHeoPK+YTiVsgXTH/cmRO9iaTRlaaLO4fAGk=; b=CqU
+	/k+ur0RRcvhrAxFxZMkAmTp/t+mWqTdNmfL710xMaXm8Li2iQQiO7/1DYcDJr1NHG3yu8UVpe2mYO
+	KUKf7jTSq5N4EBO1dPVNsHRDLXN5cxcY22KFzvzHH0neSGMcczEvZUN8/N6DsuaySWbN4o944Gm3J
+	otRzy+kCCtfoWNvX2fbTTIUSBR+MaAgMPdeyoOS03hehO8gRaDQlOGfamiyI1vL37bFA6uaZi5vGR
+	exnXYeOIg8dEse03KpnNzs3tXZUVeea2tYcB4lxGpLRQ4XPFuc+46CrvLtfIiBpPeO3KEh30b2+YH
+	b9b0T36mhiHzVn+zR9n3e/MqAOWZddQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUCca-0000000Fj6K-0n61;
-	Sat, 04 Jan 2025 22:27:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tUN1e-0000000Gc7A-1nLg;
+	Sun, 05 Jan 2025 09:34:26 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUCbO-0000000Fj28-3MZZ;
-	Sat, 04 Jan 2025 22:26:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ujcfpRKEAeXT1T9589mAQuACGTaXWAGgYaTuHKcYIq4=; b=i6iGQ2tPd85SXBX/OGgpILVT2A
-	QRQgN3I8cI1mVINs2U2DImtrA731rjtefzyd/7ms73qP7Gg0OBWoqcBDDEMAj7y8gdP1QTRzJE7aC
-	v5PEGI40HT4/OzEFE6gLvWZD+qYxCf84rlI9YkElDiDLjXct0N90FIuTcsBamYo/9XOLpZ0HmXdsK
-	Z6GfgjPRatEFbRpJCKirCDYr7fKMCvL945tD41Q5Nm0acrxn7oNqmOFJ/oxn4nDbpvQ0S8uyU9toS
-	0sOAI3cAUJO1/Rv4oxMOKcN65weCid1/+WngZ++o8mOkEi4ek6iytC5KcYrgIwwG68lcM9lu3/TPC
-	vM5CN2WQ==;
-Received: from i53875aad.versanet.de ([83.135.90.173] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tUCb6-0005tm-J3; Sat, 04 Jan 2025 23:26:20 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: vkoul@kernel.org, Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v3] dt-bindings: phy: Add rk3576 hdptx phy
-Date: Sat, 04 Jan 2025 23:26:19 +0100
-Message-ID: <2195662.yKVeVyVuyW@phil>
-In-Reply-To: <20241231092721.252405-1-andyshrk@163.com>
-References: <20241231092721.252405-1-andyshrk@163.com>
-MIME-Version: 1.0
+	id 1tUN0S-0000000Gc1c-3r0O;
+	Sun, 05 Jan 2025 09:33:14 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5401bd6cdb7so13904914e87.2;
+        Sun, 05 Jan 2025 01:33:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736069590; x=1736674390; darn=lists.infradead.org;
+        h=in-reply-to:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cAfbM0Jbk/gjeLLcZ5ja/lJYA1YUlZW4eHX0QXqR1cs=;
+        b=IYiQto6S/52UcvPegWYlvLpsMxOcMakopF0v7drFIJ4nl0DjfIRq2XxZKAvc1D4RSo
+         uFvqPEuVM9jFcz6pb559szdDgSskz93YM69wQWKUPwBx2TZA6pmvvCpi+QP8p0+g6+4j
+         zDx/s49FJ/fL3+XyZxrhgO87WGJMtrAkM+o0bf/CrrvI51CUqO66nEoNCNkb+tTM/Bsi
+         dgcy4j70lN49EsT/7VulrZFiQkOJbp5ORbyHVfp8nHoWHS6ZGAQAHZj4sH/6q/D+HQdG
+         PKzTV4TE6anoLP8Cyy6qm23OjO2vDpImKQt98RIjFhRjTnCjneqsX7c3Sn5PJMLfLuAX
+         biGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736069590; x=1736674390;
+        h=in-reply-to:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=cAfbM0Jbk/gjeLLcZ5ja/lJYA1YUlZW4eHX0QXqR1cs=;
+        b=RMA1UlHeZtEmAVA/Fc6njjnBGAB+uAVLGqWjLdn9vbk15x7tcyaGLr8Mm0Z7xcy8eA
+         yvKpA1Qs1u2mpIEMLejRXgre8zqhxms3JHj4t3CDqFvH1bqFyDltX/vFLCoOcH8MsYzU
+         eB+jvh+qdH0n1fMZc670ZD+glyxd2fpIep10XGaPCkuAB0CMm/mY0PW9tq32A2aKx5Ny
+         XlAFpFIGDC0EBd8YsCzH10xebD24XbU6emvrFXyow87urw/sBV2zmsFrFupsJ0nZ/Rgc
+         oxRrFu+esNhv0LWOFWBTXv8FzWXrGhx5sTWR7d1t/xQi/RmP9MOQLJm1M3erzJg8U39E
+         0g1g==
+X-Forwarded-Encrypted: i=1; AJvYcCUS6MO1Y7m9R5iCgiFIzg6XWrNZNxqx1O7s2qR981lt8hmpDyNxz+etyC+RtJaxKuxd/+pAHvkCINxpclprmBg=@lists.infradead.org, AJvYcCWGj4cGwNOjI//CXuxLVkcCcXX2/z1ZQSl9MSy+MIlaXZ2JMnXh9p6UOx85hprNI1lhUDvwCtclBYrjZamtVdyW@lists.infradead.org
+X-Gm-Message-State: AOJu0YwanCUqPUVLEwxzRftP1Ia8fvKGPCcLrjaB3T8JCOc0ladYp7KE
+	pqD/P1QwEGriyxdy/2u8uDkaefyAnGlC1XneerRlLigOe9kLHYo=
+X-Gm-Gg: ASbGnct8C1crQdp7/QfcTVr+W6L++s9RwEzdK9IqEXIIfI4HCaQgceukyDuBg7dNgps
+	lsctmGzFzfvkDPpxPtjiYUMjheGfI5sdKVuczlsAwN4gX0RNHlso3tffMWF/nZku1ZCIsD94kHv
+	3ViULcfl9DBXqlOz7tkCOyGL8PlMWQcecEqAeulAHKICebx9Lx48+pfkjvPOQ8i5m8n4Z0rdGqD
+	hbWPpkap/BYbjJHYEfPrAN99p/uBmQYAncgGjkMCA==
+X-Google-Smtp-Source: AGHT+IGXrFQ3c/4Xujd3mtsXoH+NCwI31P0XPVu0rR/SPGx4mopJY4igEbtUZxPjkGCE52fgrLrTlQ==
+X-Received: by 2002:a05:6512:3a90:b0:53e:3a73:6ddc with SMTP id 2adb3069b0e04-5422953c384mr17544794e87.33.1736069590126;
+        Sun, 05 Jan 2025 01:33:10 -0800 (PST)
+Received: from localhost ([2a0e:e6c0:20d3:2100::1d])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-542238136dfsm4692186e87.160.2025.01.05.01.33.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 05 Jan 2025 01:33:09 -0800 (PST)
+Mime-Version: 1.0
+Date: Sun, 05 Jan 2025 12:33:09 +0300
+Message-Id: <D6U1B36JH3HU.WQ8GEL7M3HRW@gmail.com>
+Cc: <conor+dt@kernel.org>, <devicetree@vger.kernel.org>, <heiko@sntech.de>,
+ <ivan8215145640@gmail.com>, <krzk+dt@kernel.org>,
+ <krzysztof.kozlowski@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v4 0/2] arm64: dts: rockchip: Add BigTreeTech CB2 and
+ Pi2
+From: "Ivan Sergeev" <ivan8215145640@gmail.com>
+To: <robh@kernel.org>
+X-Mailer: aerc 0.18.2
+In-Reply-To: <173558214299.2262675.7745978856834508715.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250104_142639_038970_443ACFEC 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20250105_013312_970922_37268F73 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,27 +94,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kishon@kernel.org, devicetree@vger.kernel.org, robh@kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 31. Dezember 2024, 10:27:11 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Add compatible for the HDPTX PHY on rk3576, which is compatible with
-> rk3588, but without rst_phy/rst_ropll/rst_lcpll.
-> 
-> In fact, these three reset lines are also optional on the rk3588,
-> they just used for debug, then they were removed on the rk3576 IC
-> design.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Preparing a v5, fixed the phy-supply for usb nodes, but I have questions
+for the other warnings.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: /i2c@fe5c0000/ns2009@48: failed to match any schema with compatible: ['ti,tsc2007']
 
+Using `grep -r 'ti,tsc2007' Documentation` I can find a schema file for
+that `compatible` value: Documentation/devicetree/bindings/input/touchscreen/tsc2007.txt
+Is it an invalid value or not a proper schema?
 
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
+> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
+> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: wireless-bluetooth: uart1-gpios: {'rockchip,pins': [[2, 13, 0, 187]]} is not of type 'array'
+> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+> arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dtb: touch: touch-gpio: {'rockchip,pins': [[0, 13, 0, 189], [0, 14, 0, 187]]} is not of type 'array'
+> 	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+
+I don't understand how these nodes differ in structure dcompared to
+other pinctrl nodes. Am I missing somethign taht is causing this
+warning?
 
 _______________________________________________
 Linux-rockchip mailing list
