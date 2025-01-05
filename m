@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF6CFE77198
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jan 2025 15:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADB06E77197
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jan 2025 16:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WdefFvfc8YqjLzrdv+F1ZXwZhuDc5VnHuYImLgQLsp4=; b=dd2I4Jtid5XNi9a7ZXMQuGPJ1I
-	dNTnww5FXfNjbuhmLn6Zr48MyWHE6tj74Qb4/A30OaMpHdrFRqBVHe6HjF040S07JYmF9H89YUVND
-	NH9UK1VWxKOQD0zNeTqf59XQdzLKdtMPK2l/KhUoEenf9jWefDmcPW+WvLBTSOnUo0kdry/njnWVz
-	3sluum6nMX6WymBVwaghf9SukTR1rHcH+kmIO3PYvgDQ7j74l8jeta98EH+hsXpenfRGCn9szkuN7
-	t89Z6FlfAiaVpXMqOx5VjliaiFE4NDtDPNEdis8SHezSXdCPqS7Rnf/c34r/CRU+PivaNEjgvokEG
-	BJK7oRKQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wdLV6jQsu1+wD5fdADSo8b1HKB5Yt0e7y+anoQzNNpY=; b=oD3uHUAlcfTe2p
+	+qfw0hBgtab5tU3fWrgl5IN1b5PB48RQaWXyO6UhKAYn+IS61cAkMKJ7aEX3IiNqAaIpvAJvabHTc
+	SoUSoywRzKCVtNoPVwhd8SnjWvnGEBwdxaAthPmgFiTGwHWbQZW4aVUoQMroOIPWX+Au4PlJ4f9/J
+	PI9PS7QfmQcavnzkImMPCzY5fl52QR0jiI9uhUZabUdp6/QgRQXNN+TvwVdJyNIwXtCLLduXXHdW2
+	Yp2FQ9F66F7bmB/L1/OpTFKVE8PsXlm8iScJ0nS1AQPX4l3rcHZPC1D29nV+N2e6eEvlKcPIQb/LM
+	GmzR+OVxqY7w4Mfm753g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUSfP-0000000H0Ef-3mh9;
-	Sun, 05 Jan 2025 15:35:52 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tUTDR-0000000H3FP-2GtN;
+	Sun, 05 Jan 2025 16:11:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUSfM-0000000H0E8-1h53
-	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Jan 2025 15:35:49 +0000
+	id 1tUT9i-0000000H2mh-0R4o;
+	Sun, 05 Jan 2025 16:07:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=X+OeFSCd7YH38tPZ53li4XDnnHkIKso75p2alieFcW0=; b=gjpX5IrUdI3qTyw3bc1uw8tTQX
+	35xwcckj7conxnuHM+jSiR4TyEjidGD8vQTaj0961SN7gCpPeTsfh8XxapbjsBR1y0rGVv/epKXeH
+	Jf7JVWe8FyMyPEY1LPM4ztxMTtwIvF30P7Fd2AplVQXUu5bwI04RV+nCalblCn48IxFqxmUoCSgKF
+	rusenmfHALE3wkl7jqliw+/zOxarMoi1Tm6rWUb4y3Ta4p+fLH2pZngm9xIqgok9e097SYKuTYQ76
+	TLrMNBS5eUPBzNh4kjRUiRfPaYVp9CLPnC0WQV9RYwQ0Xhd90vAgDuHR8rJf4b4FT6QHs8bk7fF1K
+	vNkAYlAQ==;
+Received: from i53875aad.versanet.de ([83.135.90.173] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tUT9X-0006uS-DQ; Sun, 05 Jan 2025 17:06:59 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: (subset) [PATCH v8 0/9] VOP Support for rk3576
+Date: Sun,  5 Jan 2025 17:06:48 +0100
+Message-ID: <173609319909.2437943.5709822695475196700.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241231090802.251787-1-andyshrk@163.com>
+References: <20241231090802.251787-1-andyshrk@163.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1736091343;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u1MCmjilWTgBhn7D2vqKDiQLyu7tF+DDIvHY3jHHcXQ=;
-	b=fLjMkOSik2u/ae8t9/y8LTitp1tnMi01FEDhrivWlzyf6Rz1QXFZ3hmSFdtuY8xPN96mxU
-	UM7/93o9r3ohbNzc4u0eMj4rYEAKifnUmRbYKCQ49vFlBZgqdbif0KLb2hoGs5QVpEhw7k
-	BSCEQK8O8GTOrHpJM3RY5SmTUe9HWqO85HN0Wi5qTM1AKPFYHCP40Nu13NJFigJJOqzkw4
-	PsSkFOEzBjAy2l+4PfGNiJEqQGqvVVSZocDUQCORsEoHx3+RDxM9hwB547I5NHeYelPgqC
-	1Fvr7ZyPFk5adkYKGQUBDsaEzrqEXv7OJiUxIsxi6WTn5/BONNK3GL3ONanMyw==
-Date: Sun, 05 Jan 2025 16:35:39 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Kever Yang <kever.yang@rock-chips.com>, FUKAUMI Naoki <naoki@radxa.com>,
- robh@kernel.org, conor+dt@kernel.org, liujianfeng1994@gmail.com,
- jonas@kwiboo.se, cfsworks@gmail.com, dmt.yashin@gmail.com,
- jbx6244@gmail.com, sebastian.reichel@collabora.com, tim@feathertop.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- marcin.juszkiewicz@linaro.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, michael.riesch@wolfvision.net,
- macromorgan@hotmail.com, krzk+dt@kernel.org, jing@jing.rocks
-Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Radxa E52C
-In-Reply-To: <6900956.G0QQBjFxQf@phil>
-References: <20241226024630.13702-1-naoki@radxa.com>
- <20241226024630.13702-2-naoki@radxa.com>
- <E280EE989942CA2A+4252fa87-049d-4b73-ac28-537f29c09660@radxa.com>
- <6900956.G0QQBjFxQf@phil>
-Message-ID: <965d7330ece716c991e89d6d2dfe02df@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250105_073548_629375_50E04609 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20250105_080710_175743_22D5D1B3 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +78,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
 
-On 2025-01-05 14:29, Heiko Stuebner wrote:
-> Am Freitag, 3. Januar 2025, 07:45:58 CET schrieb FUKAUMI Naoki:
->> What do you think about the introduction of the "rockchip,rk3582"
->> compatibility string?
+On Tue, 31 Dec 2024 17:07:43 +0800, Andy Yan wrote:
+> Here is the V8
 > 
-> I'm not Kever, but I do like the way you did this :-) .
+> Patches that have already been merged in V6 are dropped.
 > 
-> I.e. the rk3582 _is_ a rk3588 with those cores disabled.
+> PATCH 1~7 are preparations for rk3576 support
+> PATCH 8~9 are real support for rk376
 > 
-> So going the way you did allows us to not introduce too much
-> overhead while still already having the rk3582 naming in there
-> if it becomes necessary later on.
+> [...]
 
-I'm glad that you like it, so it hasn't turned out it was me
-providing some kind of bad guidance, so to speak. :) [*]
+Applied, thanks!
 
-[*] 
-https://lore.kernel.org/linux-rockchip/c6ba70f1681bb635190e9452ecb22d59@manjaro.org/
+[1/9] drm/rockchip: vop2: Support 32x8 superblock afbc
+      commit: 938fbb16aba8f7b88e0fdcf56f315a5bbad41aad
 
->> On 12/26/24 11:46, FUKAUMI Naoki wrote:
->> > Add devicetree binding for the Radxa E52C.
->> >
->> > Radxa E52C is a compact network computer based on the Rockchip RK3582
->> > SoC.
->> >
->> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->> > ---
->> > Changes in v3:
->> > - Collect A-b tag
->> > Changes in v2:
->> > - Add "rockchip,rk3588s"
->> > ---
->> >   Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->> >   1 file changed, 6 insertions(+)
->> >
->> > diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> > index 753199a12923..2152d170524a 100644
->> > --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->> > +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> > @@ -812,6 +812,12 @@ properties:
->> >             - const: radxa,e20c
->> >             - const: rockchip,rk3528
->> >
->> > +      - description: Radxa E52C
->> > +        items:
->> > +          - const: radxa,e52c
->> > +          - const: rockchip,rk3582
->> > +          - const: rockchip,rk3588s
->> > +
->> >         - description: Radxa Rock
->> >           items:
->> >             - const: radxa,rock
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
