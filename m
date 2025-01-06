@@ -4,57 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F51E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F835E77188
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bk4ilK3P6Lb98MToKMcxrmchGK1FWNvsXZ1YecvSel4=; b=4wQpA/ZMtintxn
-	9BwdyKlxtl/+skKL74UU6Ph6VurfZjxwXPBpFNxx4HQHolM1BHEYWTJtd95wyyWUQR7IxJTmM2+4p
-	EAsAwzzOeu1PwXMEQPFlo3sic2qXyIrglBkOS2XM2keKuYfG82HcpxVKZEv4toap0jUZ/wsbuBflW
-	0mMa+BvAOP4Su3n9eV8CJYs/4A02V4nYsq9Icl4lAXCMfm7oXEh53HKhY9Ycu6Qcg7cgPwVZ/xBep
-	jzDejrGfrp97O8CVYXg+CnGk6YzgX2MLNx38r+xJuPjKvQAUj0g16es24aIt8dr+QxNhmX19KRlFD
-	sCKgYrCUfFe8Ua13vTNw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=cCvr/zqBXFX4uR0LXcxu7/r7iN941dt0mCkHyIKydWA=; b=pEHTItbddQ3Srj
+	T261O1afHZjteFOABKXcsX/BZMpf5n67+NxThvnBHu1w9socx3hb/dzRN/qPP3zJPFdsn55B1cgqQ
+	q3TziNg2Dl+ng/jGdv8n+H/2HH73lkLy4/AzOa7/LqQhh3HfKgVytz8sVpx6uPqW4VdaXpJPnozS5
+	rd7nKo/XRxOkE0aDnjiRuIN6H07eeaQzXXZZrroAURFwrlcFW5uT18xn6s3DdDI9JGC6wvlo88qEL
+	BKuGau6Qr0HzMjPTM5QGZYhej7rS1PSTo3QUhgtmTT4ocfUwGtn4rvWWTEN4PdPnzaIRN23FZArD4
+	4vjAYdHSCfMLUHpcxOnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUjMS-00000000fqM-3WIy;
-	Mon, 06 Jan 2025 09:25:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tUjqO-00000000lDf-3QK8;
+	Mon, 06 Jan 2025 09:56:20 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUjLF-00000000fbM-1UmN;
-	Mon, 06 Jan 2025 09:24:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=VBnkfPPwd/0z0UzRp7pSBtfbNp5mlwbhbYUinjn7t6s=; b=C6PgRuatqaL/JCQeSBgq90fYbR
-	cgS9RBnuNFoNmBPp82CGyMEIE98ptU4gncieb/wDBgYHeNrMAgDiOfjWNR4H1pvLRbqz16DhI6ziZ
-	lVH+IdsGn+z4Q0WMmKaGPekvYreupbWXQl3ZVKd70kqq+j6yRCSOu0o9zU40Oc/HSOgVMHzTOf0Hn
-	j1gcFw88ylpQUZAEAwnUNLm0S5dc4OhH03UcUE97EJ7B0azFCG7qamRBaX/M0HyBrGZS86vcR/5bS
-	WSpJP1Vs8zHOkuB3WK1+/UXhMv16JmpmJYBexATgN45dORXy7Yb/Dm1c+t0O7Vj/kmKo1umLIM82a
-	MoPAvHJA==;
-Received: from i53875aad.versanet.de ([83.135.90.173] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tUjKx-0003r1-RV; Mon, 06 Jan 2025 10:23:51 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH 1/3] drm/rockchip: dw_hdmi_qp: Add platform ctrl callback
-Date: Mon, 06 Jan 2025 10:23:50 +0100
-Message-ID: <2263586.72vocr9iq0@diego>
-In-Reply-To: <2f23fa41.82d9.1943ac12d62.Coremail.andyshrk@163.com>
-References: <20241225103741.364597-1-andyshrk@163.com> <2175680.OBFZWjSADL@diego>
- <2f23fa41.82d9.1943ac12d62.Coremail.andyshrk@163.com>
+	id 1tUjqB-00000000lBB-48qz
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 Jan 2025 09:56:09 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-38637614567so6399944f8f.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Jan 2025 01:56:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736157366; x=1736762166; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=XPxusyoqlnRrNJq7+ups8OMfqGNcbuHMUJVymBouBjo=;
+        b=pj6F9eMRN1WyHBnQ6NELgRE8AfkjTn2+A8D/ytlBipOyOa8hyUvdKEequm0afpS408
+         obz6WTCKA5xTXhQ5UQM7/sFav/qg0eztZowy675+d0E9Bhcxt5SatrDFpQwVDSizkeYF
+         yUXYjCke6HB/ki2EQdG/qKXWuFVyzKTWil5SUlYfw14fkb6iEzUuh3q3J2hMwRX8MVRm
+         yx8obOOKAK7vXfGeb/GLukrv2XCZurwOdjk8Nv9W9l0jaDpmuQT2atshMxRmAtABgdY/
+         LJ6IJ2cdL/5v3TQwb53E38ywUspZXdA6ejA2KwjMddoAjy5QTC8JC+I+gkZioqBTjLVk
+         ewow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736157366; x=1736762166;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XPxusyoqlnRrNJq7+ups8OMfqGNcbuHMUJVymBouBjo=;
+        b=ct0UGNqKWEp+N+JHU6MLC0pgpZeyg52r7BCFW1Tq9MKBnyzET0L3VldPIJvIuqbFUQ
+         OwRwlX88vjwHm+WlSRs2XONlL6ixyYBwqWTpuA6YVbIYvoAu5QSBIMnLmZYykOoBzr/4
+         5U6Xx5NzMJyvzeX7ZE43Y5Jejl5sCMJRAEPTJ3nKVx5ddRPdc9efm4USrsnmgBMXLWra
+         TdjuJ+KHlI+H+ur0u06O2RSLNewAMK0NBa5yQzq8+EUKW5nJdFPRUvFM+RZBTx2sWKIb
+         UatcyzaK3FQcp7c5DNZ31pIIVPXv0a4nJ1WPyiqFIaJ4DZ/ylMCRSi0VGO3tpGOlJNT1
+         pjGg==
+X-Forwarded-Encrypted: i=1; AJvYcCVBHYSklQoc9DJZopg/qMoCWFOyFANdWp1R8rl7QFGdNgEcWuT5tX/draC0QjNucV3EyRUYnv/LmEmbMiBoAQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+M25odNj3F8I0wP9+WrpHt+pjCJMWEzLc9KySRDNuoPn5XfOb
+	QY/mtEis13GboskdPP/UsYJ9/aYc/oGU+fdhmCL79qTc2IE3Ak6f6z7yM93tLlQ=
+X-Gm-Gg: ASbGncs4ViZxquaqOMRm8ELc4JRRCYugz8DhbddomJIb5AtnFdX6cMa7DIkja54ndkS
+	cveZlpv0Sl6KQH3/WGbQdb1dkORaATuUxicBabn0KO9CCtL4JlvyY04A2qDKmAmpMKpC8Uy7lMu
+	Prpi61bw6fK6tuTIZCK/pyJxRG5q0FlwMguRTjFdNjQ+CAUI/FEdGJd2HKAKWJ37Y7D5VtY3ov6
+	tGtXzdrH11NTyS6Ou8sLHohJiCdyBXkxn/r5a5RKnDQ4EFvGToJVfjgGVD1gA==
+X-Google-Smtp-Source: AGHT+IGhWRISLmROsfexY/7S1VN3olm0rXAnp4XlnaP5acP2aBFiZteVn7JIK9wCL3+4yp5Vobvaww==
+X-Received: by 2002:a5d:6484:0:b0:388:da10:ea7e with SMTP id ffacd0b85a97d-38a221faea2mr45331915f8f.24.1736157366234;
+        Mon, 06 Jan 2025 01:56:06 -0800 (PST)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43661219a08sm568953115e9.25.2025.01.06.01.56.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jan 2025 01:56:05 -0800 (PST)
+Date: Mon, 6 Jan 2025 12:56:02 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Peter Geis <pgwipeout@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+	Peter Geis <pgwipeout@gmail.com>, Caesar Wang <wxt@rock-chips.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Kevin Hilman <khilman@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/6] pmdomain: rockchip: fix rockchip_pd_power error
+ handling
+Message-ID: <e3a5c27e-cab1-409d-b118-7dc96962db36@stanley.mountain>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241210013010.81257-2-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_012409_412735_67422BCC 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20250106_015608_059995_9ABEF0C7 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,92 +101,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mripard@kernel.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 6. Januar 2025, 09:35:26 CET schrieb Andy Yan:
-> =
+Hi Peter,
 
-> Hi Heiko,
-> =
+kernel test robot noticed the following build warnings:
 
-> At 2025-01-02 19:51:58, "Heiko St=FCbner" <heiko@sntech.de> wrote:
-> >Hi Andy,
-> >
-> >Am Mittwoch, 25. Dezember 2024, 11:37:29 CET schrieb Andy Yan:
-> >> From: Andy Yan <andy.yan@rock-chips.com>
-> >> =
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> >> There are some control bits for IO and interrupts status scattered
-> >> across different GRF on differt SOC.
-> >> Add platform callback for this IO setting and interrupts status
-> >> handling.
-> >> =
+url:    https://github.com/intel-lab-lkp/linux/commits/Peter-Geis/pmdomain-rockchip-fix-rockchip_pd_power-error-handling/20241210-093424
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20241210013010.81257-2-pgwipeout%40gmail.com
+patch subject: [PATCH 1/6] pmdomain: rockchip: fix rockchip_pd_power error handling
+config: powerpc-randconfig-r072-20241223 (https://download.01.org/0day-ci/archive/20241224/202412240015.MfjYhpNz-lkp@intel.com/config)
+compiler: powerpc-linux-gcc (GCC) 14.2.0
 
-> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> >> =
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202412240015.MfjYhpNz-lkp@intel.com/
 
-> >> ---
-> >> =
+smatch warnings:
+drivers/pmdomain/rockchip/pm-domains.c:614 rockchip_pd_power() warn: inconsistent returns '&pmu->mutex'.
 
-> >>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 81 ++++++++++++-------
-> >>  1 file changed, 54 insertions(+), 27 deletions(-)
-> >> =
+vim +614 drivers/pmdomain/rockchip/pm-domains.c
 
-> >> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/=
-gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> index c36fc130b734..b21e868e7c16 100644
-> >> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> @@ -62,6 +62,12 @@ struct rockchip_hdmi_qp {
-> >>  	int port_id;
-> >>  };
-> >>  =
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  572  static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  573  {
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  574  	struct rockchip_pmu *pmu = pd->pmu;
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  575  	int ret;
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  576  
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  577  	mutex_lock(&pmu->mutex);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  578  
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  579  	if (rockchip_pmu_domain_is_on(pd) != power_on) {
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  580  		ret = clk_bulk_enable(pd->num_clks, pd->clks);
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  581  		if (ret < 0) {
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  582  			dev_err(pmu->dev, "failed to enable clocks\n");
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  583  			mutex_unlock(&pmu->mutex);
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  584  			return ret;
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  585  		}
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  586  
+8b579881de295d drivers/pmdomain/rockchip/pm-domains.c Detlev Casanova 2024-08-29  587  		rockchip_pmu_ungate_clk(pd, true);
+8b579881de295d drivers/pmdomain/rockchip/pm-domains.c Detlev Casanova 2024-08-29  588  
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  589  		if (!power_on) {
+074c6a422d86ff drivers/soc/rockchip/pm_domains.c      Elaine Zhang    2016-04-14  590  			rockchip_pmu_save_qos(pd);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  591  
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  592  			/* if powering down, idle request to NIU first */
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  593  			ret = rockchip_pmu_set_idle_request(pd, true);
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  594  			if (ret < 0)
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  595  				return ret;
 
-> >> +struct rockchip_hdmi_qp_ctrl_ops {
-> >> +	void (*io_init)(struct rockchip_hdmi_qp *hdmi);
-> >> +	irqreturn_t (*irq_callback)(int irq, void *dev_id);
-> >> +	irqreturn_t (*hardirq_callback)(int irq, void *dev_id);
-> >> +};
-> >> +
-> >>  static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encode=
-r *encoder)
-> >>  {
-> >>  	struct rockchip_encoder *rkencoder =3D to_rockchip_encoder(encoder);
-> >> @@ -226,9 +232,47 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq,=
- void *dev_id)
-> >>  	return IRQ_HANDLED;
-> >>  }
-> >>  =
+mutex_unlock(&pmu->mutex);
 
-> >> +static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
-> >> +{
-> >> +	u32 val;
-> >> +
-> >> +	val =3D HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
-> >> +	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
-> >> +	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
-> >> +	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
-> >> +
-> >
-> >nit: below val =3D ... and regmap_write don't have a blank line between =
-them
-> >which makes sense to show that they belong together. So the blank above
-> >can probably also go away.
-> =
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  596  		}
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  597  
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  598  		rockchip_do_pmu_set_power_domain(pd, power_on);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  599  
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  600  		if (power_on) {
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  601  			/* if powering up, leave idle mode */
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  602  			ret = rockchip_pmu_set_idle_request(pd, false);
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  603  			if (ret < 0)
+a15817772c0ae6 drivers/pmdomain/rockchip/pm-domains.c Peter Geis      2024-12-10  604  				return ret;
 
-> Okay, it will be removed in V2.
+mutex_unlock(&pmu->mutex);
 
-just realized that I commented on the "wrong" version :-)
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  605  
+074c6a422d86ff drivers/soc/rockchip/pm_domains.c      Elaine Zhang    2016-04-14  606  			rockchip_pmu_restore_qos(pd);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  607  		}
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  608  
+8b579881de295d drivers/pmdomain/rockchip/pm-domains.c Detlev Casanova 2024-08-29  609  		rockchip_pmu_ungate_clk(pd, false);
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  610  		clk_bulk_disable(pd->num_clks, pd->clks);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  611  	}
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  612  
+d909072d0521a8 drivers/soc/rockchip/pm_domains.c      Jeffy Chen      2018-02-28  613  	mutex_unlock(&pmu->mutex);
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08 @614  	return 0;
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  615  }
+7c696693a4f54d drivers/soc/rockchip/pm_domains.c      Caesar Wang     2015-09-08  616  
 
-https://lore.kernel.org/r/20241231094425.253398-1-andyshrk@163.com
-seems to be the most recent one.
-
-Heiko
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 
 _______________________________________________
