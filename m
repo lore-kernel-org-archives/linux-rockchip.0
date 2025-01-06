@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73973E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 11:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E0BE77188
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 11:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ts5uW+YHrYflZagFlzwSViGWTi6qS5aSyvEHpNTUlwo=; b=dBDnGa7p/ciaMR
-	grtwuFBTAWQ6TN1EUp+QpW9pbw0LEfSyHqNRBYdyxBYb1xLzQjXJNhVIx+hhsczBH6SXOGsrqEb1C
-	To4801/g4pgYqUjqSFGAAhccB0nshRL5p2cv+C/HsTHYLFd/M4iegv01hQccqqJ6l7cxzeA5FYL2W
-	unhr0C9nTzCH8LJ0AIMZhtOeaW3r+06jzaEjlX5RLP0s+nxwk6YCV+rgMTLljFWjELDsnUxu6iUjF
-	6NKPY7FJKa4eDQit4EV/I7hL24QS7isljCVzFLepbAONNoYKfcAVt46sCagwCmxS0u4GM4A5BHQTC
-	AxnWmeBxGm4G6IzvASyg==;
+	List-Owner; bh=wFfpqlBpHhNlgoERnaJUY3G7zVJSSuVCcuepfi9mm50=; b=ZV+yI3/edZBwTq
+	GRA/v4WTgDQ+PfGlqYEF7KCmxVaW+EIeEBUbz4QXkJEV/X3es1XAPV/1tXzmnSiSUs8vdJsaqba56
+	3MDr/tzBZvWJ+hKu8SMlikLpdKfMlxJ3xZaX/djElGD9V60atFsMOih+nmLY3yMrmNf9KGeTOmhHM
+	I6v1vITuekhDJeP4o3nLHrLY+tS3qjDqUrpPQwUejDV3LauF6Yn3kQI/YZnZCtTOE1skpvowZ+Uj8
+	qdFVzVnt4Sg/yeWgwCyCNrzM+zw1aBs+0Zr/GMDCPmx6MUPzxPByAuDw9EHTDawug+k5o1IjVhR3z
+	ub5GsK7/tbhhIBlZ+7mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlDG-0000000128h-0Ty1;
-	Mon, 06 Jan 2025 11:24:02 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tUlQC-00000001461-0QVJ;
+	Mon, 06 Jan 2025 11:37:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlBt-000000011nu-27Xi;
-	Mon, 06 Jan 2025 11:22:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1736162538; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Fd4GPL7WAp5LG34Vk++s+97YODkquIiSHLE8seNW2x5mg9HCDyEpxYvkBWWKVUtzHftMbUaMbUpYDkQTyGftpE///5AjmVCjAyKNZb69ayywWf783VnZKvhU8EBNprey2Idgqz//f1lOec9M4Rs32NP3B5qbfxX/VkJhjlBmjYM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1736162538; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tmyr51wBaWMVsQf9Gd5l3648NBOuHaUG4V2slFrV+uY=; 
-	b=XoI4KlcZlFWaeYBZIN21DJfdtZTf58mh+VqV+aDjjfknaU0CBJAT3YYBz/KFUaKZ2Bw7E5BN9swbGR7nlPJWpV0iMrMLTv1U/q23AziYYc8b+bXJzKJs3KyuWYNEb5KvUjW/8QIUzvQbOfsjdKvCk/eblkwiwMtgyZcMfHjEKMs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1736162538;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=tmyr51wBaWMVsQf9Gd5l3648NBOuHaUG4V2slFrV+uY=;
-	b=YGe46b57Y9XwcTg4kGMv9YEn4OWqmTlaA/ibgGfzK88oHWDHviao6wuX+jwHo0vr
-	SaId5uLmSrnVIyWk447c8hmxAgnSuY/dUuztJIKk2x6/JJZfyev07jJII/xyhTWnI2m
-	3BsV3pRwaj7QjL59CIdWlJGI0woiCNn9QqLRW7W8=
-Received: by mx.zohomail.com with SMTPS id 1736162536761759.2420010727011;
-	Mon, 6 Jan 2025 03:22:16 -0800 (PST)
-Message-ID: <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
-Date: Mon, 6 Jan 2025 14:22:09 +0300
+	id 1tUlOy-000000013nV-1sQd;
+	Mon, 06 Jan 2025 11:36:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 86382A41595;
+	Mon,  6 Jan 2025 11:34:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2479BC4CED2;
+	Mon,  6 Jan 2025 11:36:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736163367;
+	bh=LBUAxpsmYNXZIFglggMMgniIO0kuiGahee6e3Q3OKnI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MlWRZbjtf4gKUzYYZH+8KgpJiXwlSsEJyANSob7yODDCDbUlHN+ikT7MdfO22zqZi
+	 jcJ1UobMrlmUCNb69sLUOtvqJOqHC2nUfcA3Anx1hsfR76jVeh2fiboToNB3kjhZg/
+	 RUT3CqE5oockJapAyDM/wBE/gn2ATj4jLtEfFo/PE0iaOLl++ABclgMkyvZ6nt845z
+	 Sb2QBdD6/qk1zOtA2tIXccSGQZlrFMH9DqkItq9uEYtZNdOTOyliWdnlB2E96TbM78
+	 3YLF5EVLKT5zaprK7L7Q7cIsW7uzwuX5GFOuvQwG9MIqfgY6AypnYjtwbkRrqi2uGS
+	 kfKBU91gKN6rg==
+Date: Mon, 6 Jan 2025 12:36:02 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	lpieralisi@kernel.org, kw@linux.com, heiko@sntech.de,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH v2] PCI: dw-rockchip: remove redundant dev_err
+Message-ID: <Z3vAIksxz9rVqLF9@ryzen>
+References: <327718207d3cd72847c079ff9d56eb246744c182.1736126067.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
-To: Tim Surber <me@timsurber.de>, Shreeya Patel
- <shreeya.patel@collabora.com>, heiko@sntech.de, mchehab@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
- hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20241210193904.883225-1-shreeya.patel@collabora.com>
- <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
-Content-Language: en-US
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <327718207d3cd72847c079ff9d56eb246744c182.1736126067.git.xiaopei01@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_032238_416148_2B939435 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250106_033608_564628_3AA8C134 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +73,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 1/6/25 03:16, Tim Surber wrote:
-> I applied your patch to rockchip/next on an FriendlyElec CM3588 device with arm- 
-> trusted-firmware 2.12. This is the same hardware/cable/sources I used previously
-> Sadly I could not get it to work at all.
+On Mon, Jan 06, 2025 at 04:14:04PM +0800, Pei Xiao wrote:
+> dev_err is redundant because platform_get_irq_byname() already prints an
+> error.
 > 
-> After connection to a HDMI source I get the following error with all devices and 
-> resolutions I tested
-> # dmesg
-> snps_hdmirx fdee0000.hdmi_receiver: hdmirx_controller_init wait timer base lock 
-> failed
-> snps_hdmirx fdee0000.hdmi_receiver: hdmirx_phy_register_write wait cr write done 
-> failed (repeating multiple times)
+> cocci warnings:
+> 	drivers/pci/controller/dwc/pcie-dw-rockchip.c:454:2-9:line 454 is
+> redundant because platform_get_irq() already prints an error
+> 
+> so remove redundant dev_err.
+> 
+> Fixes: 8719dbc54668 ("PCI: dw-rockchip: Enumerate endpoints based on dll_link_up irq in the combined sys irq")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202412312343.najrW1Db-lkp@intel.com/
+> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+> ---
+> V2:add to pci list
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 8 ++------
+>  1 file changed, 2 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index ce4b511bff9b..a9795866e915 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -458,10 +458,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>  		return -ENODEV;
+>  
+>  	irq = platform_get_irq_byname(pdev, "sys");
+> -	if (irq < 0) {
+> -		dev_err(dev, "missing sys IRQ resource\n");
+> +	if (irq < 0)
+>  		return irq;
+> -	}
+>  
+>  	ret = devm_request_threaded_irq(dev, irq, NULL,
+>  					rockchip_pcie_rc_sys_irq_thread,
+> @@ -504,10 +502,8 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+>  		return -ENODEV;
+>  
+>  	irq = platform_get_irq_byname(pdev, "sys");
+> -	if (irq < 0) {
+> -		dev_err(dev, "missing sys IRQ resource\n");
+> +	if (irq < 0)
+>  		return irq;
+> -	}
+>  
+>  	ret = devm_request_threaded_irq(dev, irq, NULL,
+>  					rockchip_pcie_ep_sys_irq_thread,
+> -- 
+> 2.25.1
+> 
 
-Sounds like interrupt may be not working for you. Interrupt won't work
-using downstream version of AT-F, though I assume you're using vanilla
-version of the AT-F. Could you please show output of `cat
-/proc/interrupts | grep rk_hdmirx` after plugging the HDMI cable.
-
--- 
-Best regards,
-Dmitry
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
