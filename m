@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435F7E77198
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 12:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E238E7719A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 14:48:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9i/2ToB3Rwh0iud/oW7juPKG94p9dysMcr9FJJekopQ=; b=xT+qli8/s8U/wA
-	YhFFTGOUllDmfEEcDSBs+oQB+qQoKmHSSzPLHC6ZmEBjeHHn6mdWX29iYXFCRu8ipWUqUjtOQth2a
-	db3caSa0gs/gRY+ex6GxcsTbfxk9/Xx6/RMcAPNnbawIcBLaBhNebEH6/TMb5NFcYS+E3CDwkH9/p
-	qEtFJq1HXmoDVIspxrm7NHpd0P5T6Q0WZf7iG0WP2PFy1H2UEi/5JNF4TT6i05mCyrNqIdtwLtHY6
-	dJvjB01KZTFgmkBUd8OjUim0pMSdaUjZzjRkDRZNGYscbsJDGOaCkB8A2djloN5bubPWsJc5L2ZmE
-	M9i5G/beGRi6VzIe2dVA==;
+	List-Owner; bh=QzYVArxePfZSeBKESHb58v9D0KVJZ9e8WMdNYEuIS9I=; b=RTkG506SfXcBHb
+	WwF4ihJLJeQ8dsNKIT/MDL1dPUohXFR5+t5lEJpFOrlrPDX27Xmyus51XQavblaqzUdtjpmKAR6Ne
+	qfFPuYGKpB/q8Dw7RQ4SR35GJw7oC/Yf+Q4sZVyGcb7cPaCKsy+Ce+Of6TNgJ6wL+/ugPAgz+IDGE
+	ELORK8ukxQWRJDMzfVuA8AhJLuHe4WyjJnXyg/EZVZluPaR+M8xpFAJEIvAIoht7rWjqnuZxbnThS
+	vmwmO+I5jhe/cQ1uuNB+TX2tjivrlsDgOEs5NkTDVvmJ/5zMAlrKBYGZJokdfwEj912/Nn1fqnAkM
+	oZHRx8B1Rb21WWnRzbKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUm7R-00000001CK4-0KPX;
-	Mon, 06 Jan 2025 12:22:05 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1tUoPX-00000001drk-2aHg;
+	Mon, 06 Jan 2025 14:48:55 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlqj-000000018PS-0HhF;
-	Mon, 06 Jan 2025 12:04:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736165089; x=1767701089;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NfJHdrBGwxLD4KXgBvfFDw2dyyxkbKlKk/G9mt3LZRg=;
-  b=hxGGh/3CQUbaH+zmwj6hkRqnSQjvHsMMM48Jc2AWcjkq0QSqyjKtvvJ6
-   vKRuk4nON+IuNqSCGkE/FQruOOg9zPHNOK1DrSxbFcEoyKvdH414kAFhB
-   qHSyTNWrQSf+9Ig4SzBgk0Z0kv7Mn5b//b58iuczegxcnZRsumDnWy5g1
-   Qq/mr2Uq+rV/VuRGjg6LwTQ5EQ6mMUuY4dxw010LJ2ev69J+Os5uqzeYM
-   DIqlIYYY5LP31C4DK49cIfv67SAepckoDceO2MMCMTmzK2UQadteOhX7U
-   TdbX0kfqc2wACMpo4ljAfCTfTBAXyU5jSXeRcA9XrU4i/WS8sjFqvDGK1
-   A==;
-X-CSE-ConnectionGUID: 3no2b0e+QuSiUt3iWCAoGA==
-X-CSE-MsgGUID: qbae+hztRTeG3YMc8uut/A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11307"; a="40081293"
-X-IronPort-AV: E=Sophos;i="6.12,292,1728975600"; 
-   d="scan'208";a="40081293"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jan 2025 04:04:48 -0800
-X-CSE-ConnectionGUID: kR/KRLXITESOX5ZmQ2HLXw==
-X-CSE-MsgGUID: lzy1oEUZT2uwsB8DV3SmAA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,292,1728975600"; 
-   d="scan'208";a="102320508"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by fmviesa007.fm.intel.com with ESMTP; 06 Jan 2025 04:04:45 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tUlqd-000CZ5-1K;
-	Mon, 06 Jan 2025 12:04:43 +0000
-Date: Mon, 6 Jan 2025 20:03:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chukun Pan <amadeus@jmu.edu.cn>, Vinod Koul <vkoul@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH 1/1] phy: rockchip: naneng-combphy: compatible with old
- DT for RK3568
-Message-ID: <202501061921.ToV59CNC-lkp@intel.com>
-References: <20250106070000.605284-1-amadeus@jmu.edu.cn>
+	id 1tUo9o-00000001aMs-3h3s
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 Jan 2025 14:32:42 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-e549a71dd3dso4073926276.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Jan 2025 06:32:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736173959; x=1736778759; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=fJSZIXJSkHeJBkdcb6ya9oMRq6rzriaUtPDL7vlAVQw=;
+        b=kJw8LumpMKyLYmrquxvbJ/YkBXfubB/aeYQLjiDVXzDJEr6aYWrhBHixq2aiI07mYc
+         m9UEi6QDv21Gn76Kb0NIvRyA/xzSYodOQwji5H5vHaWbtqosatImZrs2xMaklT9E9KVW
+         g4g2VSDgcFkEyyuRYyStWGpecf5LiqV4wYcj94M3hV/lrXfhMjdF3zfNq/SVUV9cA0Io
+         HF4imWzBGJw3vAx8GPMO71WCgJHU7N2K9SXwSaBYynO+q22JPZ5vbDPXeZfQf6a9hxR0
+         9flXmYVBnznCPX0Z5+05aXE0OJ+zmo/8dJVE3nRc8gVf7bHdEV+H1PqmZGyigyNqHA8O
+         wNFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736173959; x=1736778759;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fJSZIXJSkHeJBkdcb6ya9oMRq6rzriaUtPDL7vlAVQw=;
+        b=pTCBz+cbMUUfnxo+rwpA5xqcJ1YM19hJ61jf2MJrhYtKaw3Gb0/MgoEG7CABgakt/Z
+         d6BlBgPIakuMKdlqam6kHxLlHFUZuJBvsbHwJ0NS9vpeLS7kU5M5un6FmGS0yq3XAof9
+         AJjQ/aROoNabA2EAwb07nefNiwfbsts7jFmHRBdx69tjviynuAwXij5JfInRjgLVrAEJ
+         yu3yKgVFSPmrFg1iVjFR18/V1lSRCjcOEX3n31KLpd9H7WpG7IWHsSbVI5EaxYOx+XIx
+         7AJ3rn4qsHQCJeYAQ4zI0Kx8mm2hXyM9uu3KEwS8o/jz8yBKWo1TnLZ4jzq72vIZg2Zr
+         vYOA==
+X-Forwarded-Encrypted: i=1; AJvYcCUCaLVAw6bWlfn4wlsqVBuhFkqmU62SXcP7btvs4rvqIYtBu0xYHL5hPt1uftWR2GOQI5Sh8zZbQUw1DNWT2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKWL4LdNCuQefFFWArHJ+0v8J0lr3iuu1EdXYCfSYaq2LD6cDi
+	wVBAp5HVkxDWBAJ0zVpJlpS3jad7eWa7cdyQeIJNdqmq1c/LO2hLWIbOFmUWFHgzIC3gkW8hBwG
+	a86r2BKIacNVaD4TY85FbRt6ullh2J51unwFrOQ==
+X-Gm-Gg: ASbGncv68IHGK6WNlLrdfXhaz1JAo0OKM0FEnLhKmt5+47SD32aRYUnm2IPxZ04G6O7
+	nv7ZFx/RiXG9kSxTRf14lIBcGp7Wlb+OmC92Az7K0/xGzNk80iT1NWdL8sw3RKJnnsRnrxQ==
+X-Google-Smtp-Source: AGHT+IHmvXuwvGSdBr59QFJmGXR85prnYmkeJd5ryoQXMvTWEemEChNFf5E52WxYsQ1l+y7kBas5ggRo21B4VIcMRB4=
+X-Received: by 2002:a05:690c:7106:b0:6ef:7640:e18a with SMTP id
+ 00721157ae682-6f3f820f277mr479003527b3.31.1736173959645; Mon, 06 Jan 2025
+ 06:32:39 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250106070000.605284-1-amadeus@jmu.edu.cn>
+References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
+ <20241226063313.3267515-14-damon.ding@rock-chips.com> <e52pbjnusvuoqiyoorjr5msrfmgeqs2jt5sk6zcesvzy7cszzk@fzrtpsjoklgu>
+ <e2a18f8c-dc38-4b12-968e-dd369cb34cb4@rock-chips.com>
+In-Reply-To: <e2a18f8c-dc38-4b12-968e-dd369cb34cb4@rock-chips.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Mon, 6 Jan 2025 14:09:34 +0200
+Message-ID: <CAA8EJpo5aE4itm8MTeCpqns5eLuWj0TaZW5qwrw02_Zc73NNiw@mail.gmail.com>
+Subject: Re: [PATCH v4 13/17] drm/bridge: analogix_dp: Convert
+ &analogix_dp_device.aux into a pointer
+To: Damon Ding <damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_040449_254711_BEE5C32F 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20250106_063240_950546_6563A79C 
+X-CRM114-Status: GOOD (  28.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,122 +87,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+On Mon, 6 Jan 2025 at 13:04, Damon Ding <damon.ding@rock-chips.com> wrote:
+>
+> Hi Dmitry,
+>
+> On 2024/12/30 21:35, Dmitry Baryshkov wrote:
+> > On Thu, Dec 26, 2024 at 02:33:09PM +0800, Damon Ding wrote:
+> >> With the previous patch related to the support of getting panel from
+> >> the DP AUX bus, the &analogix_dp_device.aux can be obtained from the
+> >> &analogix_dp_plat_data.aux.
+> >>
+> >> Furthermore, the assignment of &analogix_dp_plat_data.connector is
+> >> intended to obtain the pointer of struct analogix_dp_device within the
+> >> analogix_dpaux_transfer() function.
+> >>
+> >> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> >> ---
+> >>   .../drm/bridge/analogix/analogix_dp_core.c    | 92 ++++++++++---------
+> >>   .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
+> >>   .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  2 +-
+> >>   3 files changed, 50 insertions(+), 46 deletions(-)
+> >>
+> >
+> > [...]
+> >
+> >> @@ -1127,6 +1128,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
+> >>
+> >>      if (!dp->plat_data->skip_connector) {
+> >>              connector = &dp->connector;
+> >> +            dp->plat_data->connector = &dp->connector;
+> >>              connector->polled = DRM_CONNECTOR_POLL_HPD;
+> >>
+> >>              ret = drm_connector_init(dp->drm_dev, connector,
+> >> @@ -1535,7 +1537,9 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+> >>   static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+> >>                                     struct drm_dp_aux_msg *msg)
+> >>   {
+> >> -    struct analogix_dp_device *dp = to_dp(aux);
+> >> +    struct analogix_dp_plat_data *plat_data = to_pdata(aux);
+> >> +    struct drm_connector *connector = plat_data->connector;
+> >> +    struct analogix_dp_device *dp = to_dp(connector);
+> >
+> > I see that Analogix DP driver doesn't support
+> > DRM_BRIDGE_ATTACH_NO_CONNECTOR, but at the same time I don't think this
+> > is the step in the right direction. Instead please keep the AUX bus on
+> > the Analogix side and add an API to go from struct drm_dp_aux to struct
+> > analogix_dp_plat_data. Then your done_probing() callback can use that
+> > function.
+> >
+>
+> It is truly a more concise way.
+>
+> In the next version, I will add the following functions on the Analogix
+> side in order to get the pointers of struct analogix_dp_plat_data and
+> struct drm_dp_aux on the Rockchip side. And the way has already been
+> verified.
 
-kernel test robot noticed the following build errors:
+LGTM, thank you.
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.13-rc6 next-20250106]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>
+> struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct
+> drm_dp_aux *aux)
+> {
+>         struct analogix_dp_device *dp = to_dp(aux);
+>
+>         return dp->plat_data;
+> }
+> EXPORT_SYMBOL_GPL(analogix_dp_aux_to_plat_data);
+>
+> struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
+> {
+>         return &dp->aux;
+> }
+> EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
+>
+> >>      int ret;
+> >>
+> >>      pm_runtime_get_sync(dp->dev);
+> >>
+> >
+>
+> Best regards
+> Damon
+>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chukun-Pan/phy-rockchip-naneng-combphy-compatible-with-old-DT-for-RK3568/20250106-150311
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20250106070000.605284-1-amadeus%40jmu.edu.cn
-patch subject: [PATCH 1/1] phy: rockchip: naneng-combphy: compatible with old DT for RK3568
-config: arm64-randconfig-004-20250106 (https://download.01.org/0day-ci/archive/20250106/202501061921.ToV59CNC-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 096551537b2a747a3387726ca618ceeb3950e9bc)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250106/202501061921.ToV59CNC-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202501061921.ToV59CNC-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:12:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:21:
-   In file included from include/linux/mm.h:2224:
-   include/linux/vmstat.h:504:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     504 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     505 |                            item];
-         |                            ~~~~
-   include/linux/vmstat.h:511:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     511 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     512 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/vmstat.h:524:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     524 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     525 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
->> drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:314:21: error: incompatible pointer to integer conversion passing 'struct reset_control *' to parameter of type 'long' [-Wint-conversion]
-     314 |         if (IS_ERR(ERR_PTR(priv->phy_rst)))
-         |                            ^~~~~~~~~~~~~
-   include/linux/err.h:39:48: note: passing argument to parameter 'error' here
-      39 | static inline void * __must_check ERR_PTR(long error)
-         |                                                ^
-   3 warnings and 1 error generated.
-
-
-vim +314 drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-
-   274	
-   275	static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy_priv *priv)
-   276	{
-   277		int i;
-   278	
-   279		priv->num_clks = devm_clk_bulk_get_all(dev, &priv->clks);
-   280		if (priv->num_clks < 1)
-   281			return -EINVAL;
-   282	
-   283		priv->refclk = NULL;
-   284		for (i = 0; i < priv->num_clks; i++) {
-   285			if (!strncmp(priv->clks[i].id, "ref", 3)) {
-   286				priv->refclk = priv->clks[i].clk;
-   287				break;
-   288			}
-   289		}
-   290	
-   291		if (!priv->refclk) {
-   292			dev_err(dev, "no refclk found\n");
-   293			return -EINVAL;
-   294		}
-   295	
-   296		priv->pipe_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pipe-grf");
-   297		if (IS_ERR(priv->pipe_grf)) {
-   298			dev_err(dev, "failed to find peri_ctrl pipe-grf regmap\n");
-   299			return PTR_ERR(priv->pipe_grf);
-   300		}
-   301	
-   302		priv->phy_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pipe-phy-grf");
-   303		if (IS_ERR(priv->phy_grf)) {
-   304			dev_err(dev, "failed to find peri_ctrl pipe-phy-grf regmap\n");
-   305			return PTR_ERR(priv->phy_grf);
-   306		}
-   307	
-   308		priv->enable_ssc = device_property_present(dev, "rockchip,enable-ssc");
-   309	
-   310		priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
-   311	
-   312		priv->phy_rst = devm_reset_control_get(dev, "phy");
-   313		/* fallback to old behaviour */
- > 314		if (IS_ERR(ERR_PTR(priv->phy_rst)))
-   315			priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
-   316	
-   317		if (IS_ERR(priv->phy_rst))
-   318			return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy reset\n");
-   319	
-   320		return 0;
-   321	}
-   322	
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
