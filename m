@@ -4,66 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A0C3E77198
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F51E77188
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:25:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sdFW4DsY6D2kiBc/FzEws3w0A/nGKT5xMT+zQtKB7E0=; b=kobyD319DGpECs
-	Lfl/I7ia6d8XL8Xsdfoz6XmiFetqSVptexytQqUVJnV5lWOvhfIiYdWlhWbM2K4nXi+9J0jCrkPs5
-	43vR+LdQ+85ta1SdUcFHvSQcbj18bN6ltqXb7xSz2bPL2DRS+/Th/wjnExi+y+MMW3doH5y7IT8N+
-	QQ2mBLy0jPaaxptWuyu7akot1RDYkP0mSvMyGyxsn/VnzwWGuVkjNDBR2aGKZb9IQ3KbkKwqz5iO+
-	YZ9BxaSBwqAZN5fjUGDqFxMOxuK4Xp7EDh3P707p6zWYv/cuM8pLYnD+E47Nkx3bUtHl3RE97RkQe
-	ujgMi8vVHEmqQ4kAhlCQ==;
+	List-Owner; bh=bk4ilK3P6Lb98MToKMcxrmchGK1FWNvsXZ1YecvSel4=; b=4wQpA/ZMtintxn
+	9BwdyKlxtl/+skKL74UU6Ph6VurfZjxwXPBpFNxx4HQHolM1BHEYWTJtd95wyyWUQR7IxJTmM2+4p
+	EAsAwzzOeu1PwXMEQPFlo3sic2qXyIrglBkOS2XM2keKuYfG82HcpxVKZEv4toap0jUZ/wsbuBflW
+	0mMa+BvAOP4Su3n9eV8CJYs/4A02V4nYsq9Icl4lAXCMfm7oXEh53HKhY9Ycu6Qcg7cgPwVZ/xBep
+	jzDejrGfrp97O8CVYXg+CnGk6YzgX2MLNx38r+xJuPjKvQAUj0g16es24aIt8dr+QxNhmX19KRlFD
+	sCKgYrCUfFe8Ua13vTNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUjJH-00000000fFF-2eNs;
-	Mon, 06 Jan 2025 09:22:07 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1tUjMS-00000000fqM-3WIy;
+	Mon, 06 Jan 2025 09:25:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUjGz-00000000ehK-3j14
-	for linux-rockchip@lists.infradead.org;
-	Mon, 06 Jan 2025 09:19:46 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1tUjGr-0003ug-Qe; Mon, 06 Jan 2025 10:19:37 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1tUjGq-0078rL-02;
-	Mon, 06 Jan 2025 10:19:36 +0100
-Received: from pza by lupine with local (Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1tUjGq-000B7m-2G;
-	Mon, 06 Jan 2025 10:19:36 +0100
-Message-ID: <0b5eaa41745209a5a5368516d8433bb3319ca9b5.camel@pengutronix.de>
-Subject: Re: [PATCH 1/2] Re: [PATCH 1/1] phy: rockchip: naneng-combphy:
- compatible with old DT for RK3568
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: heiko@sntech.de, kishon@kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org,  linux-rockchip@lists.infradead.org,
- liujianfeng1994@gmail.com, vkoul@kernel.org
-Date: Mon, 06 Jan 2025 10:19:36 +0100
-In-Reply-To: <20250106075015.1061630-1-amadeus@jmu.edu.cn>
-References: <2b04ca7fa5135c1194c39a9fbf2d6ab5630d6ef3.camel@pengutronix.de>
-	 <20250106075015.1061630-1-amadeus@jmu.edu.cn>
-User-Agent: Evolution 3.46.4-2 
+	id 1tUjLF-00000000fbM-1UmN;
+	Mon, 06 Jan 2025 09:24:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=VBnkfPPwd/0z0UzRp7pSBtfbNp5mlwbhbYUinjn7t6s=; b=C6PgRuatqaL/JCQeSBgq90fYbR
+	cgS9RBnuNFoNmBPp82CGyMEIE98ptU4gncieb/wDBgYHeNrMAgDiOfjWNR4H1pvLRbqz16DhI6ziZ
+	lVH+IdsGn+z4Q0WMmKaGPekvYreupbWXQl3ZVKd70kqq+j6yRCSOu0o9zU40Oc/HSOgVMHzTOf0Hn
+	j1gcFw88ylpQUZAEAwnUNLm0S5dc4OhH03UcUE97EJ7B0azFCG7qamRBaX/M0HyBrGZS86vcR/5bS
+	WSpJP1Vs8zHOkuB3WK1+/UXhMv16JmpmJYBexATgN45dORXy7Yb/Dm1c+t0O7Vj/kmKo1umLIM82a
+	MoPAvHJA==;
+Received: from i53875aad.versanet.de ([83.135.90.173] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tUjKx-0003r1-RV; Mon, 06 Jan 2025 10:23:51 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH 1/3] drm/rockchip: dw_hdmi_qp: Add platform ctrl callback
+Date: Mon, 06 Jan 2025 10:23:50 +0100
+Message-ID: <2263586.72vocr9iq0@diego>
+In-Reply-To: <2f23fa41.82d9.1943ac12d62.Coremail.andyshrk@163.com>
+References: <20241225103741.364597-1-andyshrk@163.com> <2175680.OBFZWjSADL@diego>
+ <2f23fa41.82d9.1943ac12d62.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_011945_942745_A2FD72CB 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20250106_012409_412735_67422BCC 
+X-CRM114-Status: GOOD (  20.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,42 +66,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mripard@kernel.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mo, 2025-01-06 at 15:50 +0800, Chukun Pan wrote:
-> Hi,
-> > > diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > > index a1532ef8bbe9..372f5c07b5bd 100644
-> > > --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > > +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > > @@ -325,6 +325,10 @@ static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy
-> > >  	priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
-> > >  
-> > >  	priv->phy_rst = devm_reset_control_get(dev, "phy");
-> > 
-> > This should be devm_reset_control_get_exclusive().
-> 
-> I will change this.
-> 
-> > > +	/* fallback to old behaviour */
-> > > +	if (IS_ERR(ERR_PTR(priv->phy_rst)))
-> > 
-> > Drop superfluous ERR_PTR().
-> 
-> I think it would be better if I changed it to this?
-> 
-> if (PTR_ERR(priv->phy_rst) == -ENOENT)
-> 	priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
+Am Montag, 6. Januar 2025, 09:35:26 CET schrieb Andy Yan:
+> =
 
-I agree, otherwise this would ignore a broken reset-names property in
-the device tree. When the resets property is broken, the fallback would
-fail anyway.
+> Hi Heiko,
+> =
 
-regards
-Philipp
+> At 2025-01-02 19:51:58, "Heiko St=FCbner" <heiko@sntech.de> wrote:
+> >Hi Andy,
+> >
+> >Am Mittwoch, 25. Dezember 2024, 11:37:29 CET schrieb Andy Yan:
+> >> From: Andy Yan <andy.yan@rock-chips.com>
+> >> =
+
+> >> There are some control bits for IO and interrupts status scattered
+> >> across different GRF on differt SOC.
+> >> Add platform callback for this IO setting and interrupts status
+> >> handling.
+> >> =
+
+> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> >> =
+
+> >> ---
+> >> =
+
+> >>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 81 ++++++++++++-------
+> >>  1 file changed, 54 insertions(+), 27 deletions(-)
+> >> =
+
+> >> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/=
+gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> >> index c36fc130b734..b21e868e7c16 100644
+> >> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> >> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> >> @@ -62,6 +62,12 @@ struct rockchip_hdmi_qp {
+> >>  	int port_id;
+> >>  };
+> >>  =
+
+> >> +struct rockchip_hdmi_qp_ctrl_ops {
+> >> +	void (*io_init)(struct rockchip_hdmi_qp *hdmi);
+> >> +	irqreturn_t (*irq_callback)(int irq, void *dev_id);
+> >> +	irqreturn_t (*hardirq_callback)(int irq, void *dev_id);
+> >> +};
+> >> +
+> >>  static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encode=
+r *encoder)
+> >>  {
+> >>  	struct rockchip_encoder *rkencoder =3D to_rockchip_encoder(encoder);
+> >> @@ -226,9 +232,47 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq,=
+ void *dev_id)
+> >>  	return IRQ_HANDLED;
+> >>  }
+> >>  =
+
+> >> +static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
+> >> +{
+> >> +	u32 val;
+> >> +
+> >> +	val =3D HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
+> >> +	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
+> >> +	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
+> >> +	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
+> >> +
+> >
+> >nit: below val =3D ... and regmap_write don't have a blank line between =
+them
+> >which makes sense to show that they belong together. So the blank above
+> >can probably also go away.
+> =
+
+> Okay, it will be removed in V2.
+
+just realized that I commented on the "wrong" version :-)
+
+https://lore.kernel.org/r/20241231094425.253398-1-andyshrk@163.com
+seems to be the most recent one.
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
