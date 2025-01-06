@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C847E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 12:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435F7E77198
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 12:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gAqmmFe+3z5PLT9k2E+oaM1uMgrXMpIGIvvcC5SqJ48=; b=jyHE+R44c9OMlE
-	mpak0CLLROzmbPkRuualj0ByqAgRsvFa8ow1gJM9oOonNZI4JXzGRYQVTbFMEsdmxWAJKA0SrVuB9
-	UvqBUxg0vFVUeyNbH1jmIBw/oB3nVdx2xD3fSmGHLQqXJ70PsgmQ+lF5jcL6JojJkh45mFJutTGSt
-	Kc7hN6GuGxAk0Y6x2ry6Chwxd+PF2WCuNxad508mEdGEsiXGu7uAUpaTpi4d0QYtRx9GxSdkrrjK9
-	9s3I0coMXnvRBbcBWwOSzxEZiLK5hAG3/7kNYp4YT1fTUb83OUU0ElUg6rsp7h6Ws/VhqC9hiJrix
-	qZfgXnTJEJ3NaTZzMNbA==;
+	List-Owner; bh=9i/2ToB3Rwh0iud/oW7juPKG94p9dysMcr9FJJekopQ=; b=xT+qli8/s8U/wA
+	YhFFTGOUllDmfEEcDSBs+oQB+qQoKmHSSzPLHC6ZmEBjeHHn6mdWX29iYXFCRu8ipWUqUjtOQth2a
+	db3caSa0gs/gRY+ex6GxcsTbfxk9/Xx6/RMcAPNnbawIcBLaBhNebEH6/TMb5NFcYS+E3CDwkH9/p
+	qEtFJq1HXmoDVIspxrm7NHpd0P5T6Q0WZf7iG0WP2PFy1H2UEi/5JNF4TT6i05mCyrNqIdtwLtHY6
+	dJvjB01KZTFgmkBUd8OjUim0pMSdaUjZzjRkDRZNGYscbsJDGOaCkB8A2djloN5bubPWsJc5L2ZmE
+	M9i5G/beGRi6VzIe2dVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUm0V-00000001AjJ-1QvW;
-	Mon, 06 Jan 2025 12:14:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tUm7R-00000001CK4-0KPX;
+	Mon, 06 Jan 2025 12:22:05 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUloh-000000017nc-2tuH;
-	Mon, 06 Jan 2025 12:02:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1095D5C5E5F;
-	Mon,  6 Jan 2025 12:02:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62F3BC4CED2;
-	Mon,  6 Jan 2025 12:02:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736164962;
-	bh=8hbnYnhhNRS1odBlOsB2AFOK7uZwrgUA7KpMr9M2iM4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QCnnh718JfWjisbFGKiHgltXcFr004DU7UAgvYqtPvUq2cA7TsG5gikaWdxwS1t6T
-	 J8zbTN5MXEP90VKg5mPPF1NKz2GEohpWoLE3LCJx/F2ynWRYPMOFuxMp+mU8zvyRn+
-	 z3G6FzJ96CrqcfV/h3Sd3p1ACarU+BkMcy1WyItlcUPEc9HGvasZFctrKEek6JlzEN
-	 OPIJ43ALFRXCD0ZJfCZGK7mS5kNi6YHzKDtv7n+sOY0Uxu/Ijg7LpPzOv+S+7F0QJX
-	 BTregMZBJCeuJTPNUbH8Syj/zS5QQxIpNiX2wwQwqacvQHH4uUnyLBqW10+2IEmTGl
-	 zoZVZtc5m6Ezw==
-Date: Mon, 6 Jan 2025 13:02:38 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	id 1tUlqj-000000018PS-0HhF;
+	Mon, 06 Jan 2025 12:04:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1736165089; x=1767701089;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NfJHdrBGwxLD4KXgBvfFDw2dyyxkbKlKk/G9mt3LZRg=;
+  b=hxGGh/3CQUbaH+zmwj6hkRqnSQjvHsMMM48Jc2AWcjkq0QSqyjKtvvJ6
+   vKRuk4nON+IuNqSCGkE/FQruOOg9zPHNOK1DrSxbFcEoyKvdH414kAFhB
+   qHSyTNWrQSf+9Ig4SzBgk0Z0kv7Mn5b//b58iuczegxcnZRsumDnWy5g1
+   Qq/mr2Uq+rV/VuRGjg6LwTQ5EQ6mMUuY4dxw010LJ2ev69J+Os5uqzeYM
+   DIqlIYYY5LP31C4DK49cIfv67SAepckoDceO2MMCMTmzK2UQadteOhX7U
+   TdbX0kfqc2wACMpo4ljAfCTfTBAXyU5jSXeRcA9XrU4i/WS8sjFqvDGK1
+   A==;
+X-CSE-ConnectionGUID: 3no2b0e+QuSiUt3iWCAoGA==
+X-CSE-MsgGUID: qbae+hztRTeG3YMc8uut/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11307"; a="40081293"
+X-IronPort-AV: E=Sophos;i="6.12,292,1728975600"; 
+   d="scan'208";a="40081293"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jan 2025 04:04:48 -0800
+X-CSE-ConnectionGUID: kR/KRLXITESOX5ZmQ2HLXw==
+X-CSE-MsgGUID: lzy1oEUZT2uwsB8DV3SmAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,292,1728975600"; 
+   d="scan'208";a="102320508"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by fmviesa007.fm.intel.com with ESMTP; 06 Jan 2025 04:04:45 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tUlqd-000CZ5-1K;
+	Mon, 06 Jan 2025 12:04:43 +0000
+Date: Mon, 6 Jan 2025 20:03:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>, Vinod Koul <vkoul@kernel.org>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <Z3vGXrUIII4ixNnF@ryzen>
-References: <20240809073610.2517-1-linux.amoon@gmail.com>
- <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
- <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
- <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
- <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch>
- <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
+	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 1/1] phy: rockchip: naneng-combphy: compatible with old
+ DT for RK3568
+Message-ID: <202501061921.ToV59CNC-lkp@intel.com>
+References: <20250106070000.605284-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
+In-Reply-To: <20250106070000.605284-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_040243_818860_9C3ACB57 
-X-CRM114-Status: GOOD (  32.95  )
+X-CRM114-CacheID: sfid-20250106_040449_254711_BEE5C32F 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,106 +94,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 06, 2025 at 01:28:27PM +0530, Anand Moon wrote:
-> Hi Andrew,
-> 
-> On Sun, 5 Jan 2025 at 23:27, Andrew Lunn <andrew@lunn.ch> wrote:
-> >
-> > On Sun, Jan 05, 2025 at 11:16:21PM +0530, Anand Moon wrote:
-> > > Hi Andrew,
-> > >
-> > > On Fri, 3 Jan 2025 at 21:34, Andrew Lunn <andrew@lunn.ch> wrote:
-> > > >
-> > > > > +&gmac1 {
-> > > > > +       clock_in_out = "output";
-> > > > > +       phy-handle = <&rgmii_phy1>;
-> > > > > +       phy-mode = "rgmii";
-> > > >
-> > > > rgmii is wrong. Please search the archives about this topic, it comes
-> > > > up every month. You need to remove the tx_delay and rx_delay
-> > > > properties, and use rgmii-id.
-> > > >
-> > > According to the RKRK3588 TRM-Part1 (section 25.6.11 Clock
-> > > Architecture), in RGMII mode,
-> > > the TX clock source is exclusively derived from the CRU (Clock Request Unit).
-> > > To dynamically adjust the timing alignment between TX/RX clocks and
-> > > data, delay lines are
-> > > integrated into both the TX and RX clock paths.
-> > >
-> > > Register SYS_GRF_SOC_CON7[5:2] enables these delay lines,
-> > > while registers SYS_GRF_SOC_CON8[15:0] and SYS_GRF_SOC_CON9[15:0]
-> > > are used to configure the delay length for each path respectively.
-> > > Each delay line comprises 200 individual delay elements.
-> > >
-> > > Therefore, it is necessary to configure both TX and RX delay values
-> > > appropriately
-> > > with phy-mode set as rgmii.
-> > >
-> > > [1[ https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c#L1889-L1914
-> > >
-> > > I have gone through a few of the archives about this topic
-> > >
-> > > [2] https://lore.kernel.org/linux-rockchip/4fdcb631-16cd-d5f1-e2be-19ecedb436eb@linaro.org/T/
-> >
-> > O.K, let me repeat what i have said a number of times over the last
-> > couple of years.
-> >
-> > phy-mode = "rgmii" means the PCB has extra long clock lines on the
-> > PCB, so the 2ns delay is provided by them.
-> >
-> > phy-mode = "rgmii-id" means the MAC/PHY pair need to arrange to add
-> > the 2ns delay. As far as the DT binding is concerned, it does not
-> > matter which of the two does the delay. However, there is a convention
-> > that the PHY adds the delay, if possible.
-> >
-> > So, does your PCB have extra long clock lines?
-> >
-> > Vendors often just hack until it works. But works does not mean
-> > correct. I try to review as many .dts files as i can, but some do get
-> > passed me, so there are plenty of bad examples in mainline.
-> >
-> >         Andrew
-> 
-> Thanks for this tip, I am no expert in hardware design.
-> 
-> Here is the schematic design of the board, it looks like RTL8125B page 24
-> is controlled by a PCIe 2.0 bus
+Hi Chukun,
 
-As both me an Manivannan said earlier in this thread,
-PCIe endpoint devices should not be described in device tree
-(the exception is an FPGA, and when you need to describe devices
-within the FPGA).
+kernel test robot noticed the following build errors:
 
-So I think that adding a "ethernet-phy" device tree node in this case is
-wrong (as the Ethernet PHY in this case is integrated in the PCIe connected
-NIC, and not a discrete component on the SoC).
+[auto build test ERROR on linus/master]
+[also build test ERROR on v6.13-rc6 next-20250106]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Chukun-Pan/phy-rockchip-naneng-combphy-compatible-with-old-DT-for-RK3568/20250106-150311
+base:   linus/master
+patch link:    https://lore.kernel.org/r/20250106070000.605284-1-amadeus%40jmu.edu.cn
+patch subject: [PATCH 1/1] phy: rockchip: naneng-combphy: compatible with old DT for RK3568
+config: arm64-randconfig-004-20250106 (https://download.01.org/0day-ci/archive/20250106/202501061921.ToV59CNC-lkp@intel.com/config)
+compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 096551537b2a747a3387726ca618ceeb3950e9bc)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250106/202501061921.ToV59CNC-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501061921.ToV59CNC-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:12:
+   In file included from include/linux/phy/phy.h:17:
+   In file included from include/linux/regulator/consumer.h:35:
+   In file included from include/linux/suspend.h:5:
+   In file included from include/linux/swap.h:9:
+   In file included from include/linux/memcontrol.h:21:
+   In file included from include/linux/mm.h:2224:
+   include/linux/vmstat.h:504:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     504 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     505 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:511:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     511 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     512 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:524:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     524 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     525 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:314:21: error: incompatible pointer to integer conversion passing 'struct reset_control *' to parameter of type 'long' [-Wint-conversion]
+     314 |         if (IS_ERR(ERR_PTR(priv->phy_rst)))
+         |                            ^~~~~~~~~~~~~
+   include/linux/err.h:39:48: note: passing argument to parameter 'error' here
+      39 | static inline void * __must_check ERR_PTR(long error)
+         |                                                ^
+   3 warnings and 1 error generated.
 
 
-Kind regards,
-Niklas
+vim +314 drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
 
-> 
-> [0] https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock5b_v13_sch.pdf
-> 
-> PERSTB              ---<< PCIE_PERST_L (GPIO3_B0_u)
-> LANWAKER        --->> PCIE20_1_2_WAKEn_M1_L (GPIO3_D0_u)
-> LAN_CLKREQB  --->> PCIE20_1_2_CLKREQn_M1_L( GPIO3_C7_u)
-> IOLATEB             --->> +V3P3A
-> 
-> PCIE2.0 DATA Impedance 85 R
-> 
-> PCIE_WLAN_TX_C_DP  ----->PCIE20_0_TXP
-> PCIE_WLAN_TX_C_DN  ----->PCIE20_0_TXN
-> 
-> PCIE2.0 CLK Impedance 100 R
-> 
-> PCIE3_WLAN_REFCLK0_DP --> PCIE20_0_REFCLKP
-> PCIE3_WLAN_REFCLK0_DN--->PCIE20_0_REFCLKN
-> 
-> I have no idea about the grf clk and data path delay over here.
-> 
-> Thanks
-> -Anand
+   274	
+   275	static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy_priv *priv)
+   276	{
+   277		int i;
+   278	
+   279		priv->num_clks = devm_clk_bulk_get_all(dev, &priv->clks);
+   280		if (priv->num_clks < 1)
+   281			return -EINVAL;
+   282	
+   283		priv->refclk = NULL;
+   284		for (i = 0; i < priv->num_clks; i++) {
+   285			if (!strncmp(priv->clks[i].id, "ref", 3)) {
+   286				priv->refclk = priv->clks[i].clk;
+   287				break;
+   288			}
+   289		}
+   290	
+   291		if (!priv->refclk) {
+   292			dev_err(dev, "no refclk found\n");
+   293			return -EINVAL;
+   294		}
+   295	
+   296		priv->pipe_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pipe-grf");
+   297		if (IS_ERR(priv->pipe_grf)) {
+   298			dev_err(dev, "failed to find peri_ctrl pipe-grf regmap\n");
+   299			return PTR_ERR(priv->pipe_grf);
+   300		}
+   301	
+   302		priv->phy_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pipe-phy-grf");
+   303		if (IS_ERR(priv->phy_grf)) {
+   304			dev_err(dev, "failed to find peri_ctrl pipe-phy-grf regmap\n");
+   305			return PTR_ERR(priv->phy_grf);
+   306		}
+   307	
+   308		priv->enable_ssc = device_property_present(dev, "rockchip,enable-ssc");
+   309	
+   310		priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
+   311	
+   312		priv->phy_rst = devm_reset_control_get(dev, "phy");
+   313		/* fallback to old behaviour */
+ > 314		if (IS_ERR(ERR_PTR(priv->phy_rst)))
+   315			priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
+   316	
+   317		if (IS_ERR(priv->phy_rst))
+   318			return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy reset\n");
+   319	
+   320		return 0;
+   321	}
+   322	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
