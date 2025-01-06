@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE0AE77188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A0C3E77198
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 09:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uJ5sGULFoblXKTFkaGnmCR/jbRqSgGZ2TxtYXXl9cXc=; b=MNYAcbotT7MZtX0PgAVwiEW5O8
-	7uWg3Gso74Yz3N6/Wp36KgH7xmssRe0OpaNefPQtSjtOYG12zaBo9uwYmu0YCe5bGDFKGXKosDuro
-	LDpYzeUROFQG6cVPMVf1ss9AAPI0oYmf/knZUV98nRjmKNmehonf+lctVg6I9bJPA3bkW53Seijea
-	iSqrVmsr0o+g5bO9JJCEDgjyT2W7lNusD8aypkf5AtoqJEFOhzr1TZF0ErII0Z5TYB4tfVhT8RTuC
-	ogYP1fqTjMF8c+SugDwAEIk9ZAvOPdSll2+ZZ83s2CJtZv7qhNhzqOS4xl/SBRQk0u9J/LOCykI09
-	eJEOVg/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sdFW4DsY6D2kiBc/FzEws3w0A/nGKT5xMT+zQtKB7E0=; b=kobyD319DGpECs
+	Lfl/I7ia6d8XL8Xsdfoz6XmiFetqSVptexytQqUVJnV5lWOvhfIiYdWlhWbM2K4nXi+9J0jCrkPs5
+	43vR+LdQ+85ta1SdUcFHvSQcbj18bN6ltqXb7xSz2bPL2DRS+/Th/wjnExi+y+MMW3doH5y7IT8N+
+	QQ2mBLy0jPaaxptWuyu7akot1RDYkP0mSvMyGyxsn/VnzwWGuVkjNDBR2aGKZb9IQ3KbkKwqz5iO+
+	YZ9BxaSBwqAZN5fjUGDqFxMOxuK4Xp7EDh3P707p6zWYv/cuM8pLYnD+E47Nkx3bUtHl3RE97RkQe
+	ujgMi8vVHEmqQ4kAhlCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUj7M-00000000cEB-0LnI;
-	Mon, 06 Jan 2025 09:09:48 +0000
-Received: from mail-m32102.qiye.163.com ([220.197.32.102])
+	id 1tUjJH-00000000fFF-2eNs;
+	Mon, 06 Jan 2025 09:22:07 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUj7I-00000000cBb-0fNl;
-	Mon, 06 Jan 2025 09:09:45 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 7d472a1c;
-	Mon, 6 Jan 2025 17:09:36 +0800 (GMT+08:00)
-Message-ID: <48e5f547-0f7a-406f-990e-6ec3e5df3e8f@rock-chips.com>
-Date: Mon, 6 Jan 2025 17:09:36 +0800
+	id 1tUjGz-00000000ehK-3j14
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 Jan 2025 09:19:46 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tUjGr-0003ug-Qe; Mon, 06 Jan 2025 10:19:37 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tUjGq-0078rL-02;
+	Mon, 06 Jan 2025 10:19:36 +0100
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tUjGq-000B7m-2G;
+	Mon, 06 Jan 2025 10:19:36 +0100
+Message-ID: <0b5eaa41745209a5a5368516d8433bb3319ca9b5.camel@pengutronix.de>
+Subject: Re: [PATCH 1/2] Re: [PATCH 1/1] phy: rockchip: naneng-combphy:
+ compatible with old DT for RK3568
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: heiko@sntech.de, kishon@kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org,  linux-rockchip@lists.infradead.org,
+ liujianfeng1994@gmail.com, vkoul@kernel.org
+Date: Mon, 06 Jan 2025 10:19:36 +0100
+In-Reply-To: <20250106075015.1061630-1-amadeus@jmu.edu.cn>
+References: <2b04ca7fa5135c1194c39a9fbf2d6ab5630d6ef3.camel@pengutronix.de>
+	 <20250106075015.1061630-1-amadeus@jmu.edu.cn>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/17] phy: phy-rockchip-samsung-hdptx: Add the '_MASK'
- suffix to all registers
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-7-damon.ding@rock-chips.com>
- <3dgfsscqpvlqzajjeav6oneeyae2tpc46av7hadgon5uwqibg5@ubziqwztp62m>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <3dgfsscqpvlqzajjeav6oneeyae2tpc46av7hadgon5uwqibg5@ubziqwztp62m>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0ZS1YaHUsfSkxOS0hJTE5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a943ae0763003a3kunm7d472a1c
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PxQ6SAw4CjITEx8wGBxKTEtK
-	TA0aCyJVSlVKTEhNSk5PTkxDSkpNVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFOQkI3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=PiuwPbAqxmEFBwTa2T0HrOX4XUXA3zPt+sglkv0JcB16IrLZpVbngO+jbHH4Mya55DrE/dTmA0yKZYELC6l/GAiO5N0hshCpCngbvtwiGZkY6IDqplB148jYLo69e1HURmXFLi3CgjIeYHJVE34Om3fHBpslXUaCrFqRCYWGLWU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=IOtYJ/4fuEb2AjwCiDYcEOfXLlyiZIOg+Et+T8SsFS0=;
-	h=date:mime-version:subject:message-id:from;
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_010944_698614_02E12054 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250106_011945_942745_A2FD72CB 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,36 +75,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 2024/12/30 20:34, Dmitry Baryshkov wrote:
-> On Thu, Dec 26, 2024 at 02:33:02PM +0800, Damon Ding wrote:
->> Adding the '_MASK' suffix to all registers ensures consistency in the
->> naming convention for register macros throughout the file.
+On Mo, 2025-01-06 at 15:50 +0800, Chukun Pan wrote:
+> Hi,
+> > > diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > > index a1532ef8bbe9..372f5c07b5bd 100644
+> > > --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > > +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > > @@ -325,6 +325,10 @@ static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy
+> > >  	priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
+> > >  
+> > >  	priv->phy_rst = devm_reset_control_get(dev, "phy");
+> > 
+> > This should be devm_reset_control_get_exclusive().
 > 
-> Nit: usually it would be "Add the '_MASK' suffix [...] in order to
-> ensure consistency [...]".
+> I will change this.
 > 
-
-The commit msg will be fixed in next v5 patch series.
-
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
+> > > +	/* fallback to old behaviour */
+> > > +	if (IS_ERR(ERR_PTR(priv->phy_rst)))
+> > 
+> > Drop superfluous ERR_PTR().
 > 
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> I think it would be better if I changed it to this?
 > 
+> if (PTR_ERR(priv->phy_rst) == -ENOENT)
+> 	priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
 
-Best regards
-Damon
+I agree, otherwise this would ignore a broken reset-names property in
+the device tree. When the resets property is broken, the fallback would
+fail anyway.
+
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
