@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4692E77188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 11:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C847E77188
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 12:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gvKfqWOKeQvrpBDhnb5hcDtsEi5+fKJcA6U59Qk5IYk=; b=SzH+f2ktMi2DBd
-	CacxjzdOiWhFwa2G8FvKAJSsdcGfMfIe+VCcgvFJ8J4vdu/YZMkg7ixWXNoMIi1RyVhDsQvDnLa5R
-	M7JLy/X2FvPrJtYP97rpKbAgbSma4SJJDG/gaYK6FX40hpA3XEN9ULcbTbHxNXK+aCisWIf4BJ4v6
-	SamOXarQeZMeOZHG4o84K8YdDlFll4e5v8yK860FDNDUxEQikRyapB7fpynRTsH6McJfGMqLZ6blz
-	/rOXxcXQAJ+mLoPPhmeztBRyLjoErld5RKRaHffXxpeM3WUtZgg0hTSbMNvJrKtnCr4eemSCqyGQQ
-	5wYbZa7jGifp5zuSIX5A==;
+	List-Owner; bh=gAqmmFe+3z5PLT9k2E+oaM1uMgrXMpIGIvvcC5SqJ48=; b=jyHE+R44c9OMlE
+	mpak0CLLROzmbPkRuualj0ByqAgRsvFa8ow1gJM9oOonNZI4JXzGRYQVTbFMEsdmxWAJKA0SrVuB9
+	UvqBUxg0vFVUeyNbH1jmIBw/oB3nVdx2xD3fSmGHLQqXJ70PsgmQ+lF5jcL6JojJkh45mFJutTGSt
+	Kc7hN6GuGxAk0Y6x2ry6Chwxd+PF2WCuNxad508mEdGEsiXGu7uAUpaTpi4d0QYtRx9GxSdkrrjK9
+	9s3I0coMXnvRBbcBWwOSzxEZiLK5hAG3/7kNYp4YT1fTUb83OUU0ElUg6rsp7h6Ws/VhqC9hiJrix
+	qZfgXnTJEJ3NaTZzMNbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlRL-000000014L9-0ccW;
-	Mon, 06 Jan 2025 11:38:35 +0000
-Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUlPb-000000013y0-3K4d;
-	Mon, 06 Jan 2025 11:36:49 +0000
-Received: from 8bytes.org (p200300f6af348600d06e0009f19b6c7e.dip0.t-ipconnect.de [IPv6:2003:f6:af34:8600:d06e:9:f19b:6c7e])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id BE4222E0016;
-	Mon,  6 Jan 2025 12:36:46 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1736163406;
-	bh=YN58tjVz70PHm/pGFOJ+/GEdu/r7pxe7tJRI2ZBFXmU=;
+	id 1tUm0V-00000001AjJ-1QvW;
+	Mon, 06 Jan 2025 12:14:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tUloh-000000017nc-2tuH;
+	Mon, 06 Jan 2025 12:02:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1095D5C5E5F;
+	Mon,  6 Jan 2025 12:02:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62F3BC4CED2;
+	Mon,  6 Jan 2025 12:02:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736164962;
+	bh=8hbnYnhhNRS1odBlOsB2AFOK7uZwrgUA7KpMr9M2iM4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O+eZgIxO/FoAd8/RTShOPk8F+f5IpkpVxsuPx4+tZ/b33HJTWqYVLLffeHEUgKAVp
-	 +QEWB32R5ziD8qV4vLWUSPxDPMg+qQ/S/9AzF2qFvf1QrCbkNHUYLVr33dTgPQc07N
-	 sOLK2KQtkDPiOv/ftv290QVXDlkRuo1Yg5rfNjFs6piSWshM5UNgx9GHc472Usn06f
-	 ZVBYORJ/SCcnS0xhJAyLXsQxLfwZwT2GeoQD9ba8uLNhOIvKMhGHmf6V4RBqfK07X7
-	 4T4uaZ7osSNna3/vMPLs9C1OJTyPZhZX/giQJbTdP578ibDMzyCKSt8DlFS1NRt23t
-	 BMrVvluk5MxBQ==
-Date: Mon, 6 Jan 2025 12:36:45 +0100
-From: Joerg Roedel <joro@8bytes.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, krzk+dt@kernel.org, robh@kernel.org,
-	devicetree@vger.kernel.org, iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [RESEND PATCH] dt-bindings: iommu: rockchip: Add Rockchip RK3576
-Message-ID: <Z3vATdi6q83QAcU1@8bytes.org>
-References: <20241231093154.252595-1-andyshrk@163.com>
+	b=QCnnh718JfWjisbFGKiHgltXcFr004DU7UAgvYqtPvUq2cA7TsG5gikaWdxwS1t6T
+	 J8zbTN5MXEP90VKg5mPPF1NKz2GEohpWoLE3LCJx/F2ynWRYPMOFuxMp+mU8zvyRn+
+	 z3G6FzJ96CrqcfV/h3Sd3p1ACarU+BkMcy1WyItlcUPEc9HGvasZFctrKEek6JlzEN
+	 OPIJ43ALFRXCD0ZJfCZGK7mS5kNi6YHzKDtv7n+sOY0Uxu/Ijg7LpPzOv+S+7F0QJX
+	 BTregMZBJCeuJTPNUbH8Syj/zS5QQxIpNiX2wwQwqacvQHH4uUnyLBqW10+2IEmTGl
+	 zoZVZtc5m6Ezw==
+Date: Mon, 6 Jan 2025 13:02:38 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+Message-ID: <Z3vGXrUIII4ixNnF@ryzen>
+References: <20240809073610.2517-1-linux.amoon@gmail.com>
+ <Z3fKkTSFFcU9gQLg@ryzen>
+ <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+ <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
+ <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
+ <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch>
+ <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241231093154.252595-1-andyshrk@163.com>
+In-Reply-To: <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_033648_050982_4CB76C50 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250106_040243_818860_9C3ACB57 
+X-CRM114-Status: GOOD (  32.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,17 +83,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 31, 2024 at 05:31:50PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Mon, Jan 06, 2025 at 01:28:27PM +0530, Anand Moon wrote:
+> Hi Andrew,
 > 
-> Just like RK3588, RK3576 is compatible to the existing rk3568
-> binding.
+> On Sun, 5 Jan 2025 at 23:27, Andrew Lunn <andrew@lunn.ch> wrote:
+> >
+> > On Sun, Jan 05, 2025 at 11:16:21PM +0530, Anand Moon wrote:
+> > > Hi Andrew,
+> > >
+> > > On Fri, 3 Jan 2025 at 21:34, Andrew Lunn <andrew@lunn.ch> wrote:
+> > > >
+> > > > > +&gmac1 {
+> > > > > +       clock_in_out = "output";
+> > > > > +       phy-handle = <&rgmii_phy1>;
+> > > > > +       phy-mode = "rgmii";
+> > > >
+> > > > rgmii is wrong. Please search the archives about this topic, it comes
+> > > > up every month. You need to remove the tx_delay and rx_delay
+> > > > properties, and use rgmii-id.
+> > > >
+> > > According to the RKRK3588 TRM-Part1 (section 25.6.11 Clock
+> > > Architecture), in RGMII mode,
+> > > the TX clock source is exclusively derived from the CRU (Clock Request Unit).
+> > > To dynamically adjust the timing alignment between TX/RX clocks and
+> > > data, delay lines are
+> > > integrated into both the TX and RX clock paths.
+> > >
+> > > Register SYS_GRF_SOC_CON7[5:2] enables these delay lines,
+> > > while registers SYS_GRF_SOC_CON8[15:0] and SYS_GRF_SOC_CON9[15:0]
+> > > are used to configure the delay length for each path respectively.
+> > > Each delay line comprises 200 individual delay elements.
+> > >
+> > > Therefore, it is necessary to configure both TX and RX delay values
+> > > appropriately
+> > > with phy-mode set as rgmii.
+> > >
+> > > [1[ https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c#L1889-L1914
+> > >
+> > > I have gone through a few of the archives about this topic
+> > >
+> > > [2] https://lore.kernel.org/linux-rockchip/4fdcb631-16cd-d5f1-e2be-19ecedb436eb@linaro.org/T/
+> >
+> > O.K, let me repeat what i have said a number of times over the last
+> > couple of years.
+> >
+> > phy-mode = "rgmii" means the PCB has extra long clock lines on the
+> > PCB, so the 2ns delay is provided by them.
+> >
+> > phy-mode = "rgmii-id" means the MAC/PHY pair need to arrange to add
+> > the 2ns delay. As far as the DT binding is concerned, it does not
+> > matter which of the two does the delay. However, there is a convention
+> > that the PHY adds the delay, if possible.
+> >
+> > So, does your PCB have extra long clock lines?
+> >
+> > Vendors often just hack until it works. But works does not mean
+> > correct. I try to review as many .dts files as i can, but some do get
+> > passed me, so there are plenty of bad examples in mainline.
+> >
+> >         Andrew
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Thanks for this tip, I am no expert in hardware design.
+> 
+> Here is the schematic design of the board, it looks like RTL8125B page 24
+> is controlled by a PCIe 2.0 bus
 
-Applied, thanks.
+As both me an Manivannan said earlier in this thread,
+PCIe endpoint devices should not be described in device tree
+(the exception is an FPGA, and when you need to describe devices
+within the FPGA).
+
+So I think that adding a "ethernet-phy" device tree node in this case is
+wrong (as the Ethernet PHY in this case is integrated in the PCIe connected
+NIC, and not a discrete component on the SoC).
+
+
+Kind regards,
+Niklas
+
+> 
+> [0] https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock5b_v13_sch.pdf
+> 
+> PERSTB              ---<< PCIE_PERST_L (GPIO3_B0_u)
+> LANWAKER        --->> PCIE20_1_2_WAKEn_M1_L (GPIO3_D0_u)
+> LAN_CLKREQB  --->> PCIE20_1_2_CLKREQn_M1_L( GPIO3_C7_u)
+> IOLATEB             --->> +V3P3A
+> 
+> PCIE2.0 DATA Impedance 85 R
+> 
+> PCIE_WLAN_TX_C_DP  ----->PCIE20_0_TXP
+> PCIE_WLAN_TX_C_DN  ----->PCIE20_0_TXN
+> 
+> PCIE2.0 CLK Impedance 100 R
+> 
+> PCIE3_WLAN_REFCLK0_DP --> PCIE20_0_REFCLKP
+> PCIE3_WLAN_REFCLK0_DN--->PCIE20_0_REFCLKN
+> 
+> I have no idea about the grf clk and data path delay over here.
+> 
+> Thanks
+> -Anand
 
 _______________________________________________
 Linux-rockchip mailing list
