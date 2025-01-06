@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E238E7719A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 14:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AECFE77198
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jan 2025 14:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QzYVArxePfZSeBKESHb58v9D0KVJZ9e8WMdNYEuIS9I=; b=RTkG506SfXcBHb
-	WwF4ihJLJeQ8dsNKIT/MDL1dPUohXFR5+t5lEJpFOrlrPDX27Xmyus51XQavblaqzUdtjpmKAR6Ne
-	qfFPuYGKpB/q8Dw7RQ4SR35GJw7oC/Yf+Q4sZVyGcb7cPaCKsy+Ce+Of6TNgJ6wL+/ugPAgz+IDGE
-	ELORK8ukxQWRJDMzfVuA8AhJLuHe4WyjJnXyg/EZVZluPaR+M8xpFAJEIvAIoht7rWjqnuZxbnThS
-	vmwmO+I5jhe/cQ1uuNB+TX2tjivrlsDgOEs5NkTDVvmJ/5zMAlrKBYGZJokdfwEj912/Nn1fqnAkM
-	oZHRx8B1Rb21WWnRzbKQ==;
+	List-Owner; bh=VQ0i5WomwRPCGVMd+xGA8e0fei1mVW+mTlgkOK+YK+E=; b=mA9/GlN9A73u8U
+	9DyxcpUApHBK+iKLuJSExpuNG6jFs5hI87f+d0YLalDVy9edvrX+rvFlsUXOnlwYtz9TMYf5JtIOd
+	aEvQ+bNhKR/dedjPrblM1unHbNrVGwhasGkJEtMQVw10/53LPTYtRKvlTB8Klu2IsEeERmth2TYJp
+	kjpEd7T82b16VL/adtXkivRQl2u9UpJ1VBWGUhplBC979ISGoI2ZvRqKqibXkJX0uYJUwJdJj9czD
+	RvY5E6f/dgC+0W8DrVCMobRpVJ+6omy+/wGxOSSi5n6pt+cqDC12DiY2OMDYQ4aQgWHRJPP5tq3Gg
+	FJQtYrKgCuYnziktJttg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUoPX-00000001drk-2aHg;
-	Mon, 06 Jan 2025 14:48:55 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1tUoSO-00000001eaU-0ieG;
+	Mon, 06 Jan 2025 14:51:52 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUo9o-00000001aMs-3h3s
-	for linux-rockchip@lists.infradead.org;
-	Mon, 06 Jan 2025 14:32:42 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-e549a71dd3dso4073926276.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 06 Jan 2025 06:32:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736173959; x=1736778759; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=fJSZIXJSkHeJBkdcb6ya9oMRq6rzriaUtPDL7vlAVQw=;
-        b=kJw8LumpMKyLYmrquxvbJ/YkBXfubB/aeYQLjiDVXzDJEr6aYWrhBHixq2aiI07mYc
-         m9UEi6QDv21Gn76Kb0NIvRyA/xzSYodOQwji5H5vHaWbtqosatImZrs2xMaklT9E9KVW
-         g4g2VSDgcFkEyyuRYyStWGpecf5LiqV4wYcj94M3hV/lrXfhMjdF3zfNq/SVUV9cA0Io
-         HF4imWzBGJw3vAx8GPMO71WCgJHU7N2K9SXwSaBYynO+q22JPZ5vbDPXeZfQf6a9hxR0
-         9flXmYVBnznCPX0Z5+05aXE0OJ+zmo/8dJVE3nRc8gVf7bHdEV+H1PqmZGyigyNqHA8O
-         wNFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736173959; x=1736778759;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=fJSZIXJSkHeJBkdcb6ya9oMRq6rzriaUtPDL7vlAVQw=;
-        b=pTCBz+cbMUUfnxo+rwpA5xqcJ1YM19hJ61jf2MJrhYtKaw3Gb0/MgoEG7CABgakt/Z
-         d6BlBgPIakuMKdlqam6kHxLlHFUZuJBvsbHwJ0NS9vpeLS7kU5M5un6FmGS0yq3XAof9
-         AJjQ/aROoNabA2EAwb07nefNiwfbsts7jFmHRBdx69tjviynuAwXij5JfInRjgLVrAEJ
-         yu3yKgVFSPmrFg1iVjFR18/V1lSRCjcOEX3n31KLpd9H7WpG7IWHsSbVI5EaxYOx+XIx
-         7AJ3rn4qsHQCJeYAQ4zI0Kx8mm2hXyM9uu3KEwS8o/jz8yBKWo1TnLZ4jzq72vIZg2Zr
-         vYOA==
-X-Forwarded-Encrypted: i=1; AJvYcCUCaLVAw6bWlfn4wlsqVBuhFkqmU62SXcP7btvs4rvqIYtBu0xYHL5hPt1uftWR2GOQI5Sh8zZbQUw1DNWT2g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyKWL4LdNCuQefFFWArHJ+0v8J0lr3iuu1EdXYCfSYaq2LD6cDi
-	wVBAp5HVkxDWBAJ0zVpJlpS3jad7eWa7cdyQeIJNdqmq1c/LO2hLWIbOFmUWFHgzIC3gkW8hBwG
-	a86r2BKIacNVaD4TY85FbRt6ullh2J51unwFrOQ==
-X-Gm-Gg: ASbGncv68IHGK6WNlLrdfXhaz1JAo0OKM0FEnLhKmt5+47SD32aRYUnm2IPxZ04G6O7
-	nv7ZFx/RiXG9kSxTRf14lIBcGp7Wlb+OmC92Az7K0/xGzNk80iT1NWdL8sw3RKJnnsRnrxQ==
-X-Google-Smtp-Source: AGHT+IHmvXuwvGSdBr59QFJmGXR85prnYmkeJd5ryoQXMvTWEemEChNFf5E52WxYsQ1l+y7kBas5ggRo21B4VIcMRB4=
-X-Received: by 2002:a05:690c:7106:b0:6ef:7640:e18a with SMTP id
- 00721157ae682-6f3f820f277mr479003527b3.31.1736173959645; Mon, 06 Jan 2025
- 06:32:39 -0800 (PST)
+	id 1tUnPE-00000001Rje-3Hea;
+	Mon, 06 Jan 2025 13:44:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=jPkB+WGq3E7u+EGSM2PcJI+Gi33CoRnyjGq/ftg1apk=; b=ISl0fbKuUQ8lMiwligsmbR+plC
+	JjC342g3xpVPQWI2K9aXk9wSCnkVVCcHqv4jR+KivMdjhNVDnaSVQHAQO1dvn1ef+/Z90Y4pdjgMK
+	OhmdIb9F/npjbPB+1TPiV+G+w2jlQ79mJkVU4qPaenwOBrkvohtj5iLtUO/IEi8yiQGA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tUnP1-001tBo-T9; Mon, 06 Jan 2025 14:44:19 +0100
+Date: Mon, 6 Jan 2025 14:44:19 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+Message-ID: <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
+References: <20240809073610.2517-1-linux.amoon@gmail.com>
+ <Z3fKkTSFFcU9gQLg@ryzen>
+ <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+ <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
+ <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
+ <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch>
+ <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
+ <Z3vGXrUIII4ixNnF@ryzen>
 MIME-Version: 1.0
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-14-damon.ding@rock-chips.com> <e52pbjnusvuoqiyoorjr5msrfmgeqs2jt5sk6zcesvzy7cszzk@fzrtpsjoklgu>
- <e2a18f8c-dc38-4b12-968e-dd369cb34cb4@rock-chips.com>
-In-Reply-To: <e2a18f8c-dc38-4b12-968e-dd369cb34cb4@rock-chips.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 6 Jan 2025 14:09:34 +0200
-Message-ID: <CAA8EJpo5aE4itm8MTeCpqns5eLuWj0TaZW5qwrw02_Zc73NNiw@mail.gmail.com>
-Subject: Re: [PATCH v4 13/17] drm/bridge: analogix_dp: Convert
- &analogix_dp_device.aux into a pointer
-To: Damon Ding <damon.ding@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <Z3vGXrUIII4ixNnF@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_063240_950546_6563A79C 
-X-CRM114-Status: GOOD (  28.57  )
+X-CRM114-CacheID: sfid-20250106_054432_827173_D772E303 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,100 +75,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 6 Jan 2025 at 13:04, Damon Ding <damon.ding@rock-chips.com> wrote:
->
-> Hi Dmitry,
->
-> On 2024/12/30 21:35, Dmitry Baryshkov wrote:
-> > On Thu, Dec 26, 2024 at 02:33:09PM +0800, Damon Ding wrote:
-> >> With the previous patch related to the support of getting panel from
-> >> the DP AUX bus, the &analogix_dp_device.aux can be obtained from the
-> >> &analogix_dp_plat_data.aux.
-> >>
-> >> Furthermore, the assignment of &analogix_dp_plat_data.connector is
-> >> intended to obtain the pointer of struct analogix_dp_device within the
-> >> analogix_dpaux_transfer() function.
-> >>
-> >> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> >> ---
-> >>   .../drm/bridge/analogix/analogix_dp_core.c    | 92 ++++++++++---------
-> >>   .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
-> >>   .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  2 +-
-> >>   3 files changed, 50 insertions(+), 46 deletions(-)
-> >>
-> >
-> > [...]
-> >
-> >> @@ -1127,6 +1128,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
-> >>
-> >>      if (!dp->plat_data->skip_connector) {
-> >>              connector = &dp->connector;
-> >> +            dp->plat_data->connector = &dp->connector;
-> >>              connector->polled = DRM_CONNECTOR_POLL_HPD;
-> >>
-> >>              ret = drm_connector_init(dp->drm_dev, connector,
-> >> @@ -1535,7 +1537,9 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
-> >>   static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
-> >>                                     struct drm_dp_aux_msg *msg)
-> >>   {
-> >> -    struct analogix_dp_device *dp = to_dp(aux);
-> >> +    struct analogix_dp_plat_data *plat_data = to_pdata(aux);
-> >> +    struct drm_connector *connector = plat_data->connector;
-> >> +    struct analogix_dp_device *dp = to_dp(connector);
-> >
-> > I see that Analogix DP driver doesn't support
-> > DRM_BRIDGE_ATTACH_NO_CONNECTOR, but at the same time I don't think this
-> > is the step in the right direction. Instead please keep the AUX bus on
-> > the Analogix side and add an API to go from struct drm_dp_aux to struct
-> > analogix_dp_plat_data. Then your done_probing() callback can use that
-> > function.
-> >
->
-> It is truly a more concise way.
->
-> In the next version, I will add the following functions on the Analogix
-> side in order to get the pointers of struct analogix_dp_plat_data and
-> struct drm_dp_aux on the Rockchip side. And the way has already been
-> verified.
+> As both me an Manivannan said earlier in this thread,
+> PCIe endpoint devices should not be described in device tree
+> (the exception is an FPGA, and when you need to describe devices
+> within the FPGA).
+> 
+> So I think that adding a "ethernet-phy" device tree node in this case is
+> wrong (as the Ethernet PHY in this case is integrated in the PCIe connected
+> NIC, and not a discrete component on the SoC).
 
-LGTM, thank you.
+There are other cases when PCIe devices need a DT node. One is when
+you have an onboard ethernet switch connected to the Ethernet
+device. The switch has to be described in DT, and it needs a phandle
+to the ethernet interface. Hence you need a DT node the phandle points
+to.
 
->
-> struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct
-> drm_dp_aux *aux)
-> {
->         struct analogix_dp_device *dp = to_dp(aux);
->
->         return dp->plat_data;
-> }
-> EXPORT_SYMBOL_GPL(analogix_dp_aux_to_plat_data);
->
-> struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
-> {
->         return &dp->aux;
-> }
-> EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
->
-> >>      int ret;
-> >>
-> >>      pm_runtime_get_sync(dp->dev);
-> >>
-> >
->
-> Best regards
-> Damon
->
+You are also making the assumption that the PCIe ethernet interface
+has firmware driving all its subsystems. Which results in every PCIe
+ethernet device manufacture re-inventing what Linux can already do for
+SoC style Ethernet interfaces which do not have firmware, linux drives
+it all. I personally would prefer Linux to drive the hardware, via a
+DT node, since i then don't have to deal with firmware bugs i cannot
+fix, its just Linux all the way down.
 
-
--- 
-With best wishes
-Dmitry
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
