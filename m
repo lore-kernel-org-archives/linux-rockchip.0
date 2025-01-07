@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72107E77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 07:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BFEE77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 07:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1fVGsAJFlH0h8OZIa4GOOXw/UYzBDJ3fqM8TYkuBE9o=; b=iAqZIgao1ySWj7
-	IqDU6BRN6wPiD4R9/0pbFb1n1J3ywyyGPYPiCsmJgIn5wG6sVtjO70F/GEuo+X3rh5OSJh0+4kQIQ
-	x9W+62BwLLBNLwNxgCojqik2gzsmlFQv7a7pJjwqje6dceDh7KBhNEnZBDNKjKrBMjZR83zna+yu3
-	/QEgAEfOxTdUeZtnTSbt/tMvKP8HneeUwQyEBEwgfZU0WKZMzMLpULoZAHwCk4BsyawQlCBm4S+A6
-	SD8ZJBz2N6OhhOuHzDNExkifK7BGCp7ZK0s+I+gJx2H5eW/SfBEtUPToWbwXVWFbKQn0q1AiyhL68
-	T0NGumUVbe/9rUtp3PrQ==;
+	List-Owner; bh=TnXF3G0yfBL+sYkTIB/XBUTzapURFCLtmPKMld7YZyI=; b=X3s4BZvI/WY5Wl
+	qRNYHQdmwqje0Mmjp4mBwLcJmNAYXAEe23HxTy2p0QN35T0ft3RskB3GsuoUVc2OhgXKV2Tq/pPVW
+	kt2iR3P9Jwm1DSV85BuEJjCZcODmgwqDPX+MXbOxyFKFToh+QhHhDoM+tkwdTog8Y9Za6KvSxvoVa
+	TndwdfTAboq9s+o3b4IzPzauKaj0yanQyRT+XTLAtMq/RPKIFy4qqjZkj/NAgN18El9cYpIRH7zlj
+	Hu5xY6/I+xrj5Uvg/FR4YTnFQGUoGG7FgOCcR8YfoALa6rhVnBG8nwCSpCiBxF9caQXMsO1tAJUtx
+	WRpqsc0FcmTjhmoLjglg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV4LH-00000003noY-1Vr7;
-	Tue, 07 Jan 2025 07:49:35 +0000
-Received: from mail-m49228.qiye.163.com ([45.254.49.228])
+	id 1tV4MT-00000003o0m-1qFB;
+	Tue, 07 Jan 2025 07:50:49 +0000
+Received: from mail-m32110.qiye.163.com ([220.197.32.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV4KA-00000003ncn-4A6v;
-	Tue, 07 Jan 2025 07:48:31 +0000
-Received: from [172.16.12.67] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 7f39847a;
-	Tue, 7 Jan 2025 15:48:22 +0800 (GMT+08:00)
-Message-ID: <1f75f634-5de1-4fd7-949c-123b44a770f8@rock-chips.com>
-Date: Tue, 7 Jan 2025 15:48:22 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1tV4L2-00000003nkl-3e5b;
+	Tue, 07 Jan 2025 07:49:24 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 7f3b5a76;
+	Tue, 7 Jan 2025 15:49:15 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3 5/7] dt-bindings: arm: rockchip: Sort for boards not in
- correct order
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Chris Morgan <macromorgan@hotmail.com>, Rob Herring <robh@kernel.org>,
- Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, Tim Lunn <tim@feathertop.org>,
- linux-arm-kernel@lists.infradead.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Andy Yan <andyshrk@163.com>
-References: <20241223110637.3697974-1-kever.yang@rock-chips.com>
- <20241223110637.3697974-6-kever.yang@rock-chips.com>
- <dzrmlapgca6vwqpfxi7sub37z4taerinslfthqwqi7jltb4xxh@wtry22ybpd2r>
-Content-Language: en-US
-In-Reply-To: <dzrmlapgca6vwqpfxi7sub37z4taerinslfthqwqi7jltb4xxh@wtry22ybpd2r>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v4 1/7] arm64: dts: rockchip: Add rk3576 naneng combphy nodes
+Date: Tue,  7 Jan 2025 15:49:05 +0800
+Message-Id: <20250107074911.550057-2-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250107074911.550057-1-kever.yang@rock-chips.com>
+References: <20250107074911.550057-1-kever.yang@rock-chips.com>
+MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR1NS1YYHUkZS0NNT0MdQkpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkMaH1ZDHUIYS0IZTxlOH0hWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	JVSktLVUpCS0tZBg++
-X-HM-Tid: 0a943fbc743603afkunm7f39847a
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a943fbd41f503afkunm7f3b5a76
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ni46HTo*SDIVORM#FDEuSE0*
-	PgtPFAlVSlVKTEhNSUhNSktPSE5LVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMTE03Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6My46Lgw6FTILMRM3SSpCSE0q
+	LR0aCgNVSlVKTEhNSUhNSk5NTE5DVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJSktONwY+
 DKIM-Signature: a=rsa-sha256;
-	b=gepdztKqe2bERtuGHBs4iUoDmWFbxRAHq74BJzuNjZScZCckT2jVZtz9xN1Z5eqBgsthK+VNQdE93chKMSn71rIagS5b1JhFtzAxtNGPQw3yD/t8or3MpIcvXfZ/tNDKXcGHUfk+71cM7CQEwPBuX74GnPIx6mrm7G7Mvlg/DcM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=W7Waz4qoMm7Thy7CdWwhTSGFNbjxkVcZlwArb6siD10=;
+	b=ae71aq9gsUG5V1a0Dln8Hh/L0LgV+IqS4/i+n/Awi05lflNiNJFB+42V4IWNstuoCRsbXwajWn41adwznm+7FggGxhrF/JfjGKpoLjzyEwCKkgM37REewsvwMfiRjIH9U2xWpB7qy3zeSOYZJ+eN0X4/P9xLnsTTlEymFn6cRI4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=uSCqXXvyq7kaloFgBj+3piFhPo3zSlCSuA6539oXzdw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_234827_242517_8257FCFE 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20250106_234921_089018_53F42E66 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,38 +79,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof
+rk3576 has two naneng combo phys:
+- combophy0 is used for one of pcie and sata;
+- combophy1 is used for one of pcie, sata and usb3;
 
-On 2024/12/23 22:58, Krzysztof Kozlowski wrote:
-> On Mon, Dec 23, 2024 at 07:06:35PM +0800, Kever Yang wrote:
->> The board entries should be sort in correct order.
-> And what is the sorting rule for this file? Board name? SoC compatible?
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
 
-This is sort by the description msg, which should be easy to find out if 
-look at
+Changes in v4: None
+Changes in v3:
+- Update the subject
 
-the content in the file instead of the patch.
+Changes in v2:
+- Update the clock and reset names to pass the DTB CHECK
 
-Will update the commit msg.
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 36 ++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-> Explain this in commit msg... and please test your patches before
-> posting. Public infrastructure is not replacement of your tests (see
-> failiure reported by Rob).
-I do run the test in my side, but the tool does not show this warning,
-not sure if because of my tool not up to date.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 436232ffe4d1..a147879da501 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1587,6 +1587,42 @@ uart11: serial@2afd0000 {
+ 			status = "disabled";
+ 		};
+ 
++		combphy0_ps: phy@2b050000 {
++			compatible = "rockchip,rk3576-naneng-combphy";
++			reg = <0x0 0x2b050000 0x0 0x100>;
++			#phy-cells = <1>;
++			clocks = <&cru CLK_REF_PCIE0_PHY>,
++				 <&cru PCLK_PCIE2_COMBOPHY0>,
++				 <&cru PCLK_PCIE0>;
++			clock-names = "ref", "apb", "pipe";
++			assigned-clocks = <&cru CLK_REF_PCIE0_PHY>;
++			assigned-clock-rates = <100000000>;
++			resets = <&cru SRST_PCIE0_PIPE_PHY>,
++				 <&cru SRST_P_PCIE2_COMBOPHY0>;
++			reset-names = "phy", "apb";
++			rockchip,pipe-grf = <&php_grf>;
++			rockchip,pipe-phy-grf = <&pipe_phy0_grf>;
++			status = "disabled";
++		};
++
++		combphy1_psu: phy@2b060000 {
++			compatible = "rockchip,rk3576-naneng-combphy";
++			reg = <0x0 0x2b060000 0x0 0x100>;
++			#phy-cells = <1>;
++			clocks = <&cru CLK_REF_PCIE1_PHY>,
++				 <&cru PCLK_PCIE2_COMBOPHY1>,
++				 <&cru PCLK_PCIE1>;
++			clock-names = "ref", "apb", "pipe";
++			assigned-clocks = <&cru CLK_REF_PCIE1_PHY>;
++			assigned-clock-rates = <100000000>;
++			resets = <&cru SRST_PCIE1_PIPE_PHY>,
++				 <&cru SRST_P_PCIE2_COMBOPHY1>;
++			reset-names = "phy", "apb";
++			rockchip,pipe-grf = <&php_grf>;
++			rockchip,pipe-phy-grf = <&pipe_phy1_grf>;
++			status = "disabled";
++		};
++
+ 		sram: sram@3ff88000 {
+ 			compatible = "mmio-sram";
+ 			reg = <0x0 0x3ff88000 0x0 0x78000>;
+-- 
+2.25.1
 
-Thanks,
-- Kever
->
-> Best regards,
-> Krzysztof
->
->
 
 _______________________________________________
 Linux-rockchip mailing list
