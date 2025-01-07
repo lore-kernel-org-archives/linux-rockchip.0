@@ -4,84 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0881FE77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 11:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5FADE77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 12:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1rffpU29JXeZnTDr7pN25TxsPN1cWRZ7oj+7rTQZdto=; b=YHkzjzj22u460r
-	xCM+mm6Wishh5fjw6xxkaoLztWdp0kOmBcOTemfGsrSdCEmC7adZicOXZRdKkeDgNgNeJdqnKrCOs
-	fRyIQZG9FC/AVv4tmGqM1Jo7wJW2VdQOlPcAEvFgYVO+KpV0OepV/5bPCLNTf5SVp6mPR5uTUvrjF
-	KVB3K1Px5brXul0Xmd21jJI4ArWIFRdT5PHedOgykbuSnfis0jbLxowFfJoIbffRVdZj+OoMabcY7
-	is03BgZQ4jS2Vr6CH8WieLlPFrI5c+YomWT2RiijTl5EtX/x61tjy4SkIGMzuaFVf4GNkcuqyCqvK
-	6ZzLQqPNq1F2IDrT/eYg==;
+	List-Owner; bh=HwILIky/0SaRHXi4ARhavC2DgwMz+z9eG0luJr/SAtA=; b=GN8o+7CxWUIdCm
+	J2GatbezqqRKdrk8Q92K3fq7MMztJhzvwHQ6Tm60Y+FVdBCBPBMtvO1Rzb8XdDg+9YIUvS5HK68UV
+	VxuDqZzGyxNc8YXe5fv0ruxdc11YSBCgBaJj5w1ZSZzjuCg5qMTPe1rosjzcoxBgc/IOPSyfgA6Cf
+	svsPHs5whAKwf0XTCsiPhDkRXrrRzvNMR1A6Ddin0N6WHpmSV/SZGeAACMmhI1T4wBH52RcBoTYc9
+	+XP0GUHDD60fO5UA7ki51H76HFTsR06HFCdibGBF6xsGb7h/8FD6SlMonbrmFigb0FK38Pr51TGTl
+	q1TEZWvLGCnjddlyJ0ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV7YI-00000004VuN-1VDs;
-	Tue, 07 Jan 2025 11:15:14 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1tV8PU-00000004i7K-1Pdy;
+	Tue, 07 Jan 2025 12:10:12 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV7X5-00000004VfH-1ZQv;
-	Tue, 07 Jan 2025 11:14:00 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5d3e6274015so27303038a12.0;
-        Tue, 07 Jan 2025 03:13:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736248437; x=1736853237; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=e9E/E5WdaG5UpoJCBLLOu4O2PJcFjCjuJagVvXEwtPM=;
-        b=gwVGSETgq9unvYdc1epbyF7x+RL1TEYFz9Y9y9Qy+rii7rekh+wKVau095bCgo21zO
-         FMAWT3SqcO2YVRiJHG9ER/OtHdzpmhd++DjbkH1CZXAwc9iULnvH7+eieGz3nVqw2/pU
-         oZs8/MjtC7hzwxIp3TQQDffIrJK1rs7SggBJ+EzYxK7AhV3Al3lbpcUjHZCh2VYWWxlE
-         70fduhJdJyG6mbR3vZFCWyzpUu+oGKaQkehuvHD79btYLVBNivPfblav4TyWynPluqoS
-         wDgGdt++y6IG5xiKDRssc7CsNaJpyzn8A9Kq4u2h45e2RNUCFIkrqbr5shz2VkZkEGlH
-         E9XQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736248437; x=1736853237;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e9E/E5WdaG5UpoJCBLLOu4O2PJcFjCjuJagVvXEwtPM=;
-        b=ZUJrDOgEI047si3yd4Sp3j7qiT7CYYSZ/UFQcYxZtcnf695N9VClU8J656352zJhQt
-         1B0oY3hlvbnEb68wj+bCeP63zQmSQXQg7GjXVQZiq2fuAdG1r1nB62a+e4JLNUUapWa8
-         jggpMNu6qZNPLqhX5vKKQFyMd7JGi+MQazoD6ueJqUCszYSUx2CQXoTg4s3YLK6wPNSY
-         FQHfA2AkH3UvFfrKLyiP2v2YD/88BoxU+5gsqIMJ/uti/Rq3xl7Z/g72zMTxDHYwBndT
-         8qmIdwjVYKGQhkiLcRLRlQ8dgJ2tykLtqwRI+ZzS2n8+FXaR9xer1vHySnUpR+DnPpDx
-         /PAw==
-X-Forwarded-Encrypted: i=1; AJvYcCUpKQhZ0pA1kvvZPOx3DeTFSKUX4VcMXc5YfWi9jY2DlUQ0qEHi/ZO1TiY9o7UubTd4gzOSTHEq3aF23ulYRc8=@lists.infradead.org, AJvYcCWY1cRmd/qn0ptZ5brut3roEMORyVIFtX6Kvaf7wjnkqdD7MrnrK0hcgTSzPQ21CdWi7xzcEJqzLQkd43Kt9iKv@lists.infradead.org
-X-Gm-Message-State: AOJu0YyfrrRI+8K6PuUAkhSFq7DbSuxMPnJD8Nh8L36NT0WPuuf0t5Vo
-	GFztHpWvebadEVc61jTW2djztcykPsDQmu2w+F9zZ9TuQAeOTFu5DjhTq01DqiQEIDhjF2GKj21
-	AjTtsmeKcKe6udQbEDq43h8L17zU=
-X-Gm-Gg: ASbGnctDNQoUZf1TEUxECG+mX28EI/YxW4gEmddSEXtjrqIkjuhbEIWoI/yIuveZsg2
-	Wt0SaItsQUJEeOMvUHX3EgR1Bp1fhF3QtnE1GYw==
-X-Google-Smtp-Source: AGHT+IGUW/KivPaqDT8jfIsIOe2JvzgrK1iPNtSEV0SLtUlhQXiILMBCyfvuP0zQQUjJ43RAhpPpPZmm7HFnHQ869Lo=
-X-Received: by 2002:a50:858b:0:b0:5d9:b8a:9e08 with SMTP id
- 4fb4d7f45d1cf-5d90b8a9feemr13666313a12.16.1736248436820; Tue, 07 Jan 2025
- 03:13:56 -0800 (PST)
+	id 1tV8E4-00000004f2X-2xGJ;
+	Tue, 07 Jan 2025 11:58:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 198615C6171;
+	Tue,  7 Jan 2025 11:57:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6BBAC4CED6;
+	Tue,  7 Jan 2025 11:58:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736251104;
+	bh=JHRpYXNzTasLGOx33u2irRAWwer3YDDAnZyLXm0wAk8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=RaoM5wfXo6eVfWrThIoBURxwQmBgYs9zHZgSpVc4tbaEKrpl5CpO7qkY2+GtbPDa/
+	 QEPCFMm6/KMi2I7Nyx+IYTCINU5OJcgmdha9r7x7dAsMiBc3eycuEr9Ozg2XcBcsPD
+	 Jt0mW1yJnbCG/Jqjld87rNaVhjtMMti4owMSktUc0mRP63u8JeVzLeXz7bGgzZhHqu
+	 D5JSPky5ThjHtrrT/9GeNM9G7QFoThi4L+sQmGS9nm/LV5oXrUgZ4AzN4x7Onk5ker
+	 5prw7/KmSoBz7WqvNzP3wZGuuYPXZ7ngD31A3dUGjAdlxMDmoyZDQ79uB83zuWVDWB
+	 wcmUdtKVVJsgw==
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+ linux-spi@vger.kernel.org
+In-Reply-To: <20241219142216.2123065-1-jon.lin@rock-chips.com>
+References: <20241219142216.2123065-1-jon.lin@rock-chips.com>
+Subject: Re: [PATCH] spi: rockchip-sfc: Support sclk_x2 version
+Message-Id: <173625110270.23847.15036834629603583307.b4-ty@kernel.org>
+Date: Tue, 07 Jan 2025 11:58:22 +0000
 MIME-Version: 1.0
-References: <20240809073610.2517-1-linux.amoon@gmail.com> <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
- <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch> <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
- <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch> <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
- <Z3vGXrUIII4ixNnF@ryzen> <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
-In-Reply-To: <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Tue, 7 Jan 2025 16:43:38 +0530
-Message-ID: <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com>
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Niklas Cassel <cassel@kernel.org>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_031359_410745_AE68AD2B 
-X-CRM114-Status: GOOD (  20.91  )
+X-CRM114-CacheID: sfid-20250107_035824_787943_59915E45 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +72,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrewm,
+On Thu, 19 Dec 2024 22:22:16 +0800, Jon Lin wrote:
+> SFC after version 8 supports dtr mode, so the IO is the binary output of
+> the controller clock.
+> 
+> 
 
-On Mon, 6 Jan 2025 at 19:14, Andrew Lunn <andrew@lunn.ch> wrote:
->
-> > As both me an Manivannan said earlier in this thread,
-> > PCIe endpoint devices should not be described in device tree
-> > (the exception is an FPGA, and when you need to describe devices
-> > within the FPGA).
-> >
-> > So I think that adding a "ethernet-phy" device tree node in this case is
-> > wrong (as the Ethernet PHY in this case is integrated in the PCIe connected
-> > NIC, and not a discrete component on the SoC).
->
-> There are other cases when PCIe devices need a DT node. One is when
-> you have an onboard ethernet switch connected to the Ethernet
-> device. The switch has to be described in DT, and it needs a phandle
-> to the ethernet interface. Hence you need a DT node the phandle points
-> to.
->
-> You are also making the assumption that the PCIe ethernet interface
-> has firmware driving all its subsystems. Which results in every PCIe
-> ethernet device manufacture re-inventing what Linux can already do for
-> SoC style Ethernet interfaces which do not have firmware, linux drives
-> it all. I personally would prefer Linux to drive the hardware, via a
-> DT node, since i then don't have to deal with firmware bugs i cannot
-> fix, its just Linux all the way down.
->
->         Andrew
-Ok Thanks for clarifying.
+Applied to
 
-I was just trying to understand the call trace for mdio bus which got
-me confused.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-[0] https://lore.kernel.org/all/Z3fKkTSFFcU9gQLg@ryzen/
+Thanks!
 
-Thanks
--Anand
+[1/1] spi: rockchip-sfc: Support sclk_x2 version
+      commit: af103eb7d7d881cf6ff7414242bce2d8e394cc32
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
