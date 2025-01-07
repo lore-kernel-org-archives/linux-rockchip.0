@@ -4,58 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5FADE77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 12:10:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E84E77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 13:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HwILIky/0SaRHXi4ARhavC2DgwMz+z9eG0luJr/SAtA=; b=GN8o+7CxWUIdCm
-	J2GatbezqqRKdrk8Q92K3fq7MMztJhzvwHQ6Tm60Y+FVdBCBPBMtvO1Rzb8XdDg+9YIUvS5HK68UV
-	VxuDqZzGyxNc8YXe5fv0ruxdc11YSBCgBaJj5w1ZSZzjuCg5qMTPe1rosjzcoxBgc/IOPSyfgA6Cf
-	svsPHs5whAKwf0XTCsiPhDkRXrrRzvNMR1A6Ddin0N6WHpmSV/SZGeAACMmhI1T4wBH52RcBoTYc9
-	+XP0GUHDD60fO5UA7ki51H76HFTsR06HFCdibGBF6xsGb7h/8FD6SlMonbrmFigb0FK38Pr51TGTl
-	q1TEZWvLGCnjddlyJ0ng==;
+	List-Owner; bh=ZuiO0WEJgPcY1BBi1d0DVkq52eM1SQa7kRqG1sIIHac=; b=ILlfmFqj3DfMTh
+	ic3h2Z61VCYhk0Pt/d67Jb7Twdq1Q3hAdMqNO4ekcgFOugf8/Ulu5M0pN200PGbJZtN1tT1xcSBdO
+	e4J2qWIjJg5meu1SENUXzs3ETzGcdYGNOCHCHpY6nVoIW/2CfDVVW1jOpuFvn+a4lNwkR3QXplxQZ
+	YwwnS5C/BPcqojdl5690riAVAxKX8/z1jMgQTdzcZzOuy1ALzMc306Pk0A0nzPoL8CS/klkwyNZDM
+	XqLhwzISM3bAp6J6qk5TsZZdKsFTCW+Lnnfb8WIpgTkdbstO+R2JqzFqvsHwVqbPr891KN8wtUpiu
+	IZpVF4hDJvRpvGbU2NKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8PU-00000004i7K-1Pdy;
-	Tue, 07 Jan 2025 12:10:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tV9VK-00000004yx5-2EIr;
+	Tue, 07 Jan 2025 13:20:18 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV8E4-00000004f2X-2xGJ;
-	Tue, 07 Jan 2025 11:58:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 198615C6171;
-	Tue,  7 Jan 2025 11:57:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6BBAC4CED6;
-	Tue,  7 Jan 2025 11:58:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736251104;
-	bh=JHRpYXNzTasLGOx33u2irRAWwer3YDDAnZyLXm0wAk8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=RaoM5wfXo6eVfWrThIoBURxwQmBgYs9zHZgSpVc4tbaEKrpl5CpO7qkY2+GtbPDa/
-	 QEPCFMm6/KMi2I7Nyx+IYTCINU5OJcgmdha9r7x7dAsMiBc3eycuEr9Ozg2XcBcsPD
-	 Jt0mW1yJnbCG/Jqjld87rNaVhjtMMti4owMSktUc0mRP63u8JeVzLeXz7bGgzZhHqu
-	 D5JSPky5ThjHtrrT/9GeNM9G7QFoThi4L+sQmGS9nm/LV5oXrUgZ4AzN4x7Onk5ker
-	 5prw7/KmSoBz7WqvNzP3wZGuuYPXZ7ngD31A3dUGjAdlxMDmoyZDQ79uB83zuWVDWB
-	 wcmUdtKVVJsgw==
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org
-In-Reply-To: <20241219142216.2123065-1-jon.lin@rock-chips.com>
-References: <20241219142216.2123065-1-jon.lin@rock-chips.com>
-Subject: Re: [PATCH] spi: rockchip-sfc: Support sclk_x2 version
-Message-Id: <173625110270.23847.15036834629603583307.b4-ty@kernel.org>
-Date: Tue, 07 Jan 2025 11:58:22 +0000
+	id 1tV9Oz-00000004xLS-2ZsJ;
+	Tue, 07 Jan 2025 13:13:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=TvCtZRn6q2yrOkVr53SYY2q+vLoe2lQ9suphlIdglAc=; b=XiTQokded4/20LkiEtgFMPQTon
+	GQMLclhYTJJjBsn3umKCydHoX5+QzGoLJjUxO3385EVQymx8hF6WSsEYMNEevcLAG7ZZXxPydXWB+
+	H/6jTdPjcs5GlpnEtqKu1bHnss3O/e0o+lbIliqiqA1JbkIYH+eE9b0t2w4pF/PxRxHU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tV9Oo-002EdJ-RP; Tue, 07 Jan 2025 14:13:34 +0100
+Date: Tue, 7 Jan 2025 14:13:34 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+Message-ID: <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
+References: <20240809073610.2517-1-linux.amoon@gmail.com>
+ <Z3fKkTSFFcU9gQLg@ryzen>
+ <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+ <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
+ <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
+ <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch>
+ <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
+ <Z3vGXrUIII4ixNnF@ryzen>
+ <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
+ <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Disposition: inline
+In-Reply-To: <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_035824_787943_59915E45 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20250107_051345_650946_9A6BD11E 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,40 +82,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Dec 2024 22:22:16 +0800, Jon Lin wrote:
-> SFC after version 8 supports dtr mode, so the IO is the binary output of
-> the controller clock.
+> I was just trying to understand the call trace for mdio bus which got
+> me confused.
 > 
-> 
+> [0] https://lore.kernel.org/all/Z3fKkTSFFcU9gQLg@ryzen/
 
-Applied to
+There is nothing particularly unusual in there. We see PCI bus
+enumeration has found a device and bound a driver to it. The driver
+has instantiated an MDIO bus, which has scanned the MDIO bus and found
+a PHY. The phylib core then tried to load the kernel module needed to
+drive the PHY.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Just because it is a PCI device does not mean firmware has to control
+all the hardware. Linux has no problems controlling all this, and it
+saves reinventing the wheel in firmware, avoids firmware bugs, and
+allows new features to be added etc.
 
-Thanks!
-
-[1/1] spi: rockchip-sfc: Support sclk_x2 version
-      commit: af103eb7d7d881cf6ff7414242bce2d8e394cc32
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
