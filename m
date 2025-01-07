@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6A1E77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 07:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9123AE77199
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 07:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N0VZNg+qKE4ZIUqHBA4K73dqCPVN4xZmabuhht7nrnw=; b=S0W95D54lK/MLG
-	QuFz9OFrvtAWJBFqdpM20o5iRoo7xFBXaTs0MzPF0UsgkTNIlyn4/CUYFVMqxcS5TdIpfKgwvEV/0
-	VAnk97XBG1+JHLZj5vv7I3oJBC+FV4nb/HEY6lieceYPvayGVtEEq1wiESjE8/mxEGmZ7XOuQ3pRW
-	m0f29u7iuOls73MAKeKsk2rpbEiHvAHHiua1LLg2SVB5IoPVH6yWtqQYdihAcV1yJBwR3lOM7ef7p
-	NcxBxaS9E+YIAlhSjIajDTk+zu68C8Liy0zKCtghy3ZjeTqLy0UEnCUllv2ZIFxiKHNCNrUGbaTrQ
-	FM+7vwAouYSNncxGKwjA==;
+	List-Owner; bh=nvVFAHCC4vdQYlHodjE42LnxkaTC+IqRmM+VYRhe4cI=; b=q3UvaEs51L/QfS
+	dnlbORaadLpP+g+UeFebuaJOeMfm0GDvZ9Z2JKmZSJsgDx7HhIb56IqLC4sOyOTOlH46Zfi5iRZ+k
+	IeVr1xvzMXCJjRdS36inViD+6qjy0QN5c+RMpE/xv4FgeoS9yjtThKKAdeQq8hA+Kjslz9UZYEQjA
+	qvVj9Tfv25Rm4R67i8o3jmmOiZWI4Sc5Fp7QQ8SOSqtqrUd57RjYxoaE1zvKeWkguwZmcyv5dPx07
+	wCIbQPQgK5cOiRlY9kIukhYgFIVnWXL4c0lWkHRkVDVuoA4W1sfS/Y90Zb0We7ugEF0xl9Wh5uefu
+	sbF3GrdEz/vcNXKL4Wmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV3lQ-00000003jbw-3whi;
-	Tue, 07 Jan 2025 07:12:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tV41l-00000003l8I-0maN;
+	Tue, 07 Jan 2025 07:29:25 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV3kD-00000003jRh-3jvB;
-	Tue, 07 Jan 2025 07:11:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 438D55C548E;
-	Tue,  7 Jan 2025 07:10:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DC1CC4CED6;
-	Tue,  7 Jan 2025 07:11:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736233876;
-	bh=oVzbTsDLgefB50txfb216cLON17wOYvCaNrqmAHQkP4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kCMyI1Wb+iprQ+nkKWGTKrkpcuAHe0ZlZ1oVveWfi0D+5ctNTc7W/E+fDz3Q+eyCw
-	 zjCen/nSb7ssXXANkY0pVndKU6LMW/HuNj1HSuQ8zsjp2bUQLJhCuSzUGtGMKqOZmp
-	 4qetV3tZ7aN6l3ykpfIUugddWgkjehyyDkX6BDagapdCH2uGj+U5nKjfdraegFmm45
-	 VfJDYzxImL5uB6c1OAARqGXlA8KTDc1mLnLA7+1RfrhGtRaHalCBT4GaVwvhJS1b2n
-	 kwe6KiZiJwLcV0pHmgVY3wBgg3ftCjkEfDtU+SfwQFffdjRSlUDk7TaXM5+IGEcxKs
-	 WNNXKnwsZoyZw==
-Date: Tue, 7 Jan 2025 08:11:12 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add H96 Max V58 TV box
-Message-ID: <n4p5ixqoqm6innjzqk5wlcugok737f6yv2zto2sdgpm4ew2bhq@3bhqk3mkott5>
-References: <20250106-rk3588-h96-max-v58-v1-0-d25255f851fc@gmail.com>
- <20250106-rk3588-h96-max-v58-v1-1-d25255f851fc@gmail.com>
+	id 1tV40F-00000003kuZ-3Asu;
+	Tue, 07 Jan 2025 07:27:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1736234855; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QXWTIpWVqxpOeg1IeOEIr6JsM+7G3I65kYd3BuGPw2DaD4EBqDAtPCzUiPfbVAb5ZnLza8qKVd+gZshlXHdLYwhz4624P1TCtV0CiQpC4zsTLQQnbxKL7+mEcQVs6bm2xs9m4Fr2nWEjimsTGpEkW7s6PZI77e1CgBXTy5dtLl0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1736234855; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=fyjpROUPKqz0yOrw3lpCO0/rz2teNQQiUnOciqqXxZA=; 
+	b=a644ozs87rf4CXJ3UrMuY7xEojRKhvbFWTnYevaNZcKizu4ZfTgHqzi7MxSBmyP657wJtPgR03IGkX8VHn1OjXaF9Wc9xBk5fC4w23kCGSpeUnG1fPMAY7eDBxaUPVuhYzO59d+bjwUNJJwG/EfF7NVPYyuM7Z0e4xbDJBDjjfw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1736234855;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=fyjpROUPKqz0yOrw3lpCO0/rz2teNQQiUnOciqqXxZA=;
+	b=I11xgHOoNC2rhJ7Jol1KFQIBNVrUn1IQUZyRgQ466AtyWmW+9w3Tyo69badWKgvt
+	WXAiBUUyomoo7Mj9jzemsOZyqHtZZnLWVg5DlYg+T31CZubU/TvCcyGMZcm2TohcslA
+	87cJKZguiA+tVchZMuuZHi9Ye15hzkkWu7o6KOig=
+Received: by mx.zohomail.com with SMTPS id 1736234853465966.2061584357726;
+	Mon, 6 Jan 2025 23:27:33 -0800 (PST)
+Message-ID: <a5226fac-2a5b-47f3-b32e-8662bf932bd4@collabora.com>
+Date: Tue, 7 Jan 2025 10:27:26 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250106-rk3588-h96-max-v58-v1-1-d25255f851fc@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
+To: Tim Surber <me@timsurber.de>, Shreeya Patel
+ <shreeya.patel@collabora.com>, heiko@sntech.de, mchehab@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
+ jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20241210193904.883225-1-shreeya.patel@collabora.com>
+ <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
+ <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
+ <fbb5016e-678c-4e54-a6a8-0ccaa2bdf45c@timsurber.de>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <fbb5016e-678c-4e54-a6a8-0ccaa2bdf45c@timsurber.de>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_231117_970584_D98B7AE3 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20250106_232751_829710_D1AD8633 
+X-CRM114-Status: UNSURE (   5.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,24 +89,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 06, 2025 at 01:07:17AM +0400, Alexey Charkov wrote:
-> H96 Max V58 is a compact Rockchip RK3588 based device that ships
-> with Android and is meant for use as a TV connected media box.
+On 1/7/25 03:08, Tim Surber wrote:
+> Hi Dmitry,
 > 
-> Add device tree binding for it.
+> that was my fault, my build script did not copy over the new ATF properly.
+> 
+> Now it works, I will update with test results with many different
+> resolutions/formats here soon.
 
-BTW, this can be written shorter and clearer:
-Add Devicetree binding for H96 Max V58: a compact Rockchip RK3588 based
-device that ships with Android and is meant for use as a TV connected
-media box.
+Thanks for the quick update, please post the results once ready.
 
-Regardless:
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
+-- 
 Best regards,
-Krzysztof
-
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
