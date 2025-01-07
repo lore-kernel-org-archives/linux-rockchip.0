@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846CFE77188
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 03:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6A1E77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 07:12:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U4kkkSZCPOOJwKb3pUnJW6+zXIhDZIV9mWMaICp8J3w=; b=4viU4Hrmkf6G3b2yTzaDdi0U0I
-	XApVEA21Y+nJCin4HXcJmd+dtTIv9cXN6cDzbQA5fFFWAL6aoWB2eUhRMIxbpAWR0YvM81alLFkqw
-	fkfa7mT1Vvr3CiqUZ7dmk7wraIFt1Z3twYNXtAUKoMhOIioWfmcdAn3vg9yYGU7e+mizdqtxuv+Eb
-	iuKhd/O7dlFIwYPcaUBmIn6X+BcsQz6gYaJCG9ltG4+uPIAz26VjamBAz4m2sqgWAi3i++8/Nkags
-	UgNI5BwdUKAgm2Rjs/rP4vPnSr8wmO3Xfr5DTrxAp3OQAuv+E9S2lzKObBXLXjkOKF933Hh/hSsdp
-	YbwD/y9A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N0VZNg+qKE4ZIUqHBA4K73dqCPVN4xZmabuhht7nrnw=; b=S0W95D54lK/MLG
+	QuFz9OFrvtAWJBFqdpM20o5iRoo7xFBXaTs0MzPF0UsgkTNIlyn4/CUYFVMqxcS5TdIpfKgwvEV/0
+	VAnk97XBG1+JHLZj5vv7I3oJBC+FV4nb/HEY6lieceYPvayGVtEEq1wiESjE8/mxEGmZ7XOuQ3pRW
+	m0f29u7iuOls73MAKeKsk2rpbEiHvAHHiua1LLg2SVB5IoPVH6yWtqQYdihAcV1yJBwR3lOM7ef7p
+	NcxBxaS9E+YIAlhSjIajDTk+zu68C8Liy0zKCtghy3ZjeTqLy0UEnCUllv2ZIFxiKHNCNrUGbaTrQ
+	FM+7vwAouYSNncxGKwjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUzrT-00000003GjX-02gY;
-	Tue, 07 Jan 2025 03:02:31 +0000
-Received: from mail-m32123.qiye.163.com ([220.197.32.123])
+	id 1tV3lQ-00000003jbw-3whi;
+	Tue, 07 Jan 2025 07:12:32 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUzrM-00000003Gi1-22n2;
-	Tue, 07 Jan 2025 03:02:28 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 7e9abd46;
-	Tue, 7 Jan 2025 11:02:15 +0800 (GMT+08:00)
-Message-ID: <96f8310f-93f1-4bcb-8637-137e1159ff83@rock-chips.com>
-Date: Tue, 7 Jan 2025 11:02:15 +0800
+	id 1tV3kD-00000003jRh-3jvB;
+	Tue, 07 Jan 2025 07:11:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 438D55C548E;
+	Tue,  7 Jan 2025 07:10:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DC1CC4CED6;
+	Tue,  7 Jan 2025 07:11:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736233876;
+	bh=oVzbTsDLgefB50txfb216cLON17wOYvCaNrqmAHQkP4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kCMyI1Wb+iprQ+nkKWGTKrkpcuAHe0ZlZ1oVveWfi0D+5ctNTc7W/E+fDz3Q+eyCw
+	 zjCen/nSb7ssXXANkY0pVndKU6LMW/HuNj1HSuQ8zsjp2bUQLJhCuSzUGtGMKqOZmp
+	 4qetV3tZ7aN6l3ykpfIUugddWgkjehyyDkX6BDagapdCH2uGj+U5nKjfdraegFmm45
+	 VfJDYzxImL5uB6c1OAARqGXlA8KTDc1mLnLA7+1RfrhGtRaHalCBT4GaVwvhJS1b2n
+	 kwe6KiZiJwLcV0pHmgVY3wBgg3ftCjkEfDtU+SfwQFffdjRSlUDk7TaXM5+IGEcxKs
+	 WNNXKnwsZoyZw==
+Date: Tue, 7 Jan 2025 08:11:12 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Alexey Charkov <alchark@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add H96 Max V58 TV box
+Message-ID: <n4p5ixqoqm6innjzqk5wlcugok737f6yv2zto2sdgpm4ew2bhq@3bhqk3mkott5>
+References: <20250106-rk3588-h96-max-v58-v1-0-d25255f851fc@gmail.com>
+ <20250106-rk3588-h96-max-v58-v1-1-d25255f851fc@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 07/17] phy: phy-rockchip-samsung-hdptx: Add support for
- eDP mode
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
- <20241226063313.3267515-8-damon.ding@rock-chips.com>
- <shr7ak7keqza3gw6wra2zra35qht2cxlzkvtuhzl3swzf2fwxy@i2v4o53lhese>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <shr7ak7keqza3gw6wra2zra35qht2cxlzkvtuhzl3swzf2fwxy@i2v4o53lhese>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkIaSFYZGE1KHUtLSxpMGBhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a943eb680b303a3kunm7e9abd46
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PS46Fhw*ITIOTBwQATFWSxkZ
-	NBIKCQFVSlVKTEhNSUpDQkhMSU9KVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPQkhDNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=LYaCAU+RlzanzYmS6Fd7fwnVehf05WEHutrgvrenWPyUEsaiZoZEsMipp8elxtDCC+wzA6v7ql0TSWw9AKlHiKohmW9N5CAfCBVcnQW1M4A6VpxWJOoYFsxunQQ97cOjqaU4shWbirYweHC6d6UwR89l9L7ZcTD/gaWdYlxUAOg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=j4WHIo9pquJ7g/2ENU41c9ttOjw9RexpamwpH2bk1DY=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20250106-rk3588-h96-max-v58-v1-1-d25255f851fc@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_190225_022632_F97C9A2A 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20250106_231117_970584_D98B7AE3 
+X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,193 +70,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 2024/12/30 20:45, Dmitry Baryshkov wrote:
-> On Thu, Dec 26, 2024 at 02:33:03PM +0800, Damon Ding wrote:
->> Add basic support for RBR/HBR/HBR2 link rates, and the voltage swing and
->> pre-emphasis configurations of each link rate have been verified according
->> to the eDP 1.3 requirements.
+On Mon, Jan 06, 2025 at 01:07:17AM +0400, Alexey Charkov wrote:
+> H96 Max V58 is a compact Rockchip RK3588 based device that ships
+> with Android and is meant for use as a TV connected media box.
 > 
-> Well... Please describe what's happening here. That the HDMI PHY on your
-> platform also provides support for DP / eDP. Please document any design
-> decisions that you had to make.
-> 
+> Add device tree binding for it.
 
-Yes, I will add more relevant descriptions in the next version.
+BTW, this can be written shorter and clearer:
+Add Devicetree binding for H96 Max V58: a compact Rockchip RK3588 based
+device that ships with Android and is meant for use as a TV connected
+media box.
 
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v2:
->> - Add the module author
->>
->> Changes in v3:
->> - Split this patch into two, one for correction and the other for
->>    extension
->>
->> Changes in v4:
->> - Add link_rate and lanes parameters in struct rk_hdptx_phy to store the
->>    phy_configure() result for &phy_configure_opts.dp.link_rate and
->>    &phy_configure_opts.dp.lanes
->> ---
->>   .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 896 +++++++++++++++++-
->>   1 file changed, 889 insertions(+), 7 deletions(-)
->>
->> @@ -933,9 +1484,339 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
->>   	return rk_hdptx_phy_consumer_put(hdptx, false);
->>   }
->>   
->> +static int rk_hdptx_phy_set_mode(struct phy *phy, enum phy_mode mode,
->> +				 int submode)
->> +{
->> +	return 0;
->> +}
-> 
-> No need for the stub, please drop it. The host controller driver can
-> still call phy_set_mode() / _ext(), the call will return 0.
+Regardless:
 
-Without the &phy_ops.set_mode(), the phy driver can not get phy_mode to 
-distinguish between HDMI and DP mode via the phy_get_mode(), even if the 
-host driver calls phy_set_mode() / _ext(). Additionally, the previous 
-discussion [0] also mentioned future considerations for dynamic 
-switching. Indeed, I should add a related comment before the 'return 0;' 
-to enhance understandability.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-> 
->> +
->> +static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
->> +				      struct phy_configure_opts_dp *dp)
->> +{
->> +	int i;
->> +
->> +	if (dp->set_rate) {
->> +		switch (dp->link_rate) {
->> +		case 1620:
->> +		case 2700:
->> +		case 5400:
->> +			break;
->> +		default:
->> +			return -EINVAL;
->> +		}
->> +	}
->> +
->> +	if (dp->set_lanes) {
->> +		switch (dp->lanes) {
->> +		case 0:
-> 
-> Is it really a valid config to have 0 lanes?
-
-The case of 0 lanes is indeed unnecessary.
-
-> 
->> +		case 1:
->> +		case 2:
->> +		case 4:
->> +			break;
->> +		default:
->> +			return -EINVAL;
->> +		}
->> +	}
->> +
->> +	if (dp->set_voltages) {
->> +		for (i = 0; i < hdptx->lanes; i++) {
->> +			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
->> +				return -EINVAL;
->> +
->> +			if (dp->voltage[i] + dp->pre[i] > 3)
->> +				return -EINVAL;
->> +		}
->> +	}
->> +
->> +	return 0;
->> +}
->> +
-> 
-> [..]
-> 
->> +
->> +static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opts)
->> +{
->> +	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
->> +	enum phy_mode mode = phy_get_mode(phy);
->> +	int ret;
->> +
->> +	if (mode != PHY_MODE_DP)
->> +		return -EINVAL;
-> 
-> I'd say, return 0;
-
-Yes, it is really not an error.
-
-> 
->> +
->> +	ret = rk_hdptx_phy_verify_config(hdptx, &opts->dp);
->> +	if (ret) {
->> +		dev_err(hdptx->dev, "invalid params for phy configure\n");
->> +		return ret;
->> +	}
->> +
->> +	if (opts->dp.set_rate) {
->> +		ret = rk_hdptx_phy_set_rate(hdptx, &opts->dp);
->> +		if (ret) {
->> +			dev_err(hdptx->dev, "failed to set rate: %d\n", ret);
->> +			return ret;
->> +		}
->> +	}
->> +
->> +	if (opts->dp.set_lanes) {
->> +		ret = rk_hdptx_phy_set_lanes(hdptx, &opts->dp);
->> +		if (ret) {
->> +			dev_err(hdptx->dev, "failed to set lanes: %d\n", ret);
->> +			return ret;
->> +		}
->> +	}
->> +
->> +	if (opts->dp.set_voltages) {
->> +		ret = rk_hdptx_phy_set_voltages(hdptx, &opts->dp);
->> +		if (ret) {
->> +			dev_err(hdptx->dev, "failed to set voltages: %d\n",
->> +				ret);
->> +			return ret;
->> +		}
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->>   static const struct phy_ops rk_hdptx_phy_ops = {
->>   	.power_on  = rk_hdptx_phy_power_on,
->>   	.power_off = rk_hdptx_phy_power_off,
->> +	.set_mode  = rk_hdptx_phy_set_mode,
->> +	.configure = rk_hdptx_phy_configure,
->>   	.owner	   = THIS_MODULE,
->>   };
->>   
->> @@ -1149,5 +2030,6 @@ module_platform_driver(rk_hdptx_phy_driver);
->>   
->>   MODULE_AUTHOR("Algea Cao <algea.cao@rock-chips.com>");
->>   MODULE_AUTHOR("Cristian Ciocaltea <cristian.ciocaltea@collabora.com>");
->> +MODULE_AUTHOR("Damon Ding <damon.ding@rock-chips.com>");
->>   MODULE_DESCRIPTION("Samsung HDMI/eDP Transmitter Combo PHY Driver");
->>   MODULE_LICENSE("GPL");
->> -- 
->> 2.34.1
->>
-> 
-
-Best regards
-Damon
-
-[0]https://patchwork.kernel.org/project/linux-rockchip/patch/20241127075157.856029-5-damon.ding@rock-chips.com/
+Best regards,
+Krzysztof
 
 
 _______________________________________________
