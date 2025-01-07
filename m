@@ -4,65 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F88E77197
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 11:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E14E77197
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 12:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oS8TeRQIuMQBOS33fB3FUsWzWwyRFnu84G2cN00k3/M=; b=nHH/98InP+RlFf
-	rrnFq7y9W780kpp7SIAm0AI0G9CP+lXeqm/VqqUoxQZ/2Bc55gZ6d5gERO0U2eLwWjFe8SraJLsRv
-	94FS4Z83HLMt7E5I1tyon0VWa65DkAoNZHdah42Q6FgTONuibAIVzZoRL8Ul6YiGl+3j4KD98e2WD
-	F1FTN+GuTPf5MqPKdNCuOqJygQzpdiV/KjhTC2bJwJOPPltwpgmG2MBNGvg+wjd03DkjtaAHD9gD2
-	B67rwjczq7uqsm3SkZSw7GgeSFpIcbfg9B9pbI1F0sHkmvLMRxhlHvz3EWHmhg4LyDNHV68DvIxNw
-	jmVNBlE551cHwUtatnmQ==;
+	List-Owner; bh=6JOKRRe1/GInAcKOx4gWw1RBAKWp7d2FNWdZSIIp9ec=; b=IUvUOA1ARHREGC
+	ihRmN+Rsaa2mgKODhMM129GsZwyOXzQa+eG5tjynIPDKLl/r4SE47+xruskjWrmjPps5vO95oDPlD
+	zrrqKfAPqQFYdIXfiYu5GrpwpcGDR2XUhdp6+BIGR7fKzyaIhiBMdkM01kSGiIF0juyOkE+MXB4bG
+	W8rTvx4oydOqLJ67nnakOLgXm0fn32+nVDTNa/zPTQxSWz6Ot11xFsjAkmo7YJNgHnHnObC6hGw15
+	Om1m18tdPy1HEgS9VFQaSeRLcuVCOx3fY6StzMY72hsNHVvviMNz2RXsnT+h3s4rV9LplCXUBhDpb
+	Lxz6zq/BzURxrMqm5p6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVquK-0000000BkzR-2QF3;
-	Thu, 09 Jan 2025 11:41:00 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tVrdw-0000000BqwB-45CD;
+	Thu, 09 Jan 2025 12:28:08 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVqt6-0000000BkjX-0PG0;
-	Thu, 09 Jan 2025 11:39:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=I6zb0OhlfmF9gSa4+JBxd9Zk/f3SlG4gbriSxMO5M08=; b=w+1Ei6El/fwT3nz6n9ABJ/UA0I
-	SVxnSWUyGHOcSpm0m+Q3SkfSK/C/KbAV3lb8raug+8klFZ/uG8aO6Bmt3yQNypnWv8YjKEEADhZX5
-	aDXlflKxbv6a6e5Wh5nK2yI3xaQUfg6PjU80yL4K2s5LvvApScOb+IzbhvCdSIHjeofqm+pJyjNXK
-	ecnMpoo73Yll9B4SlfzOqEYvyqx/T2z5hPxKbRaZrbNQr+Ja09A+OT4DHUh6NgiiDkYrT/DthU2O9
-	OuA3FNu3id8ure667EK4D7t2Jadih9jxSuTkpY7gQSYCbjC/EvQLWn72NAvuvZ1rFnlzWmOY3Gr68
-	UWczEhHg==;
-Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tVqt0-0001FD-E7; Thu, 09 Jan 2025 12:39:38 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Yao Zi <ziyao@disroot.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/5] dt-bindings: clock: Document clock and reset unit of
- RK3528
-Date: Thu, 09 Jan 2025 12:39:37 +0100
-Message-ID: <1774158.yIU609i1g2@diego>
-In-Reply-To: <Z3-T3JwcsW0xYKvk@pie>
-References: <20250108114605.1960-2-ziyao@disroot.org>
- <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
- <Z3-T3JwcsW0xYKvk@pie>
+	id 1tVrci-0000000BqnC-2DUe;
+	Thu, 09 Jan 2025 12:26:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1736278291; bh=d3pREvs7LhLX8BNJ2qTqolnU1R4+qY6PVTnmctgTA6c=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=MyPgZVKKPDLRR906LGRw1S2GTco8eaS5ykJW9/71Gb5mSEnrs8oQP8ltwtqyODdDw
+	 7xHgVG8W6JmtCVh/k5o+YX3tBTiFNOOvfMsjeRkAh6mYbP4zRKDJGvUzfJvXNDcKzG
+	 vGli+Hva0xr++b9694J2VImzvmy9MFqJbllRU7+8=
+Date: Tue, 7 Jan 2025 20:31:31 +0100
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Chen-Yu Tsai <wens@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: orangepi-5-plus: Enable USB 3.0
+ ports
+Message-ID: <bx4xir4kfhui4d2xb357hnohhpqvgcne5a36qb4ahxyggrxkxo@7f7vyharp4yz>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Chen-Yu Tsai <wens@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20241220161240.109253-1-wens@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241220161240.109253-1-wens@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_033944_160885_65E996BE 
-X-CRM114-Status: GOOD (  32.48  )
+X-CRM114-CacheID: sfid-20250109_042653_018165_BF39DE06 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,97 +70,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 9. Januar 2025, 10:16:12 CET schrieb Yao Zi:
-> On Thu, Jan 09, 2025 at 09:59:25AM +0100, Krzysztof Kozlowski wrote:
-> > On Wed, Jan 08, 2025 at 11:46:02AM +0000, Yao Zi wrote:
-> > > There are two types of clocks in RK3528 SoC, CRU-managed and
-> > > SCMI-managed. Independent IDs are assigned to them.
-> > > 
-> > > For the reset part, differing from previous Rockchip SoCs and
-> > > downstream bindings which embeds register offsets into the IDs, gapless
-> > > numbers starting from zero are used.
-> > > 
-> > > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > > ---
-> > >  .../bindings/clock/rockchip,rk3528-cru.yaml   |  67 +++
-> > >  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
-> > >  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
-> > >  3 files changed, 761 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> > >  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
-> > >  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> > > new file mode 100644
-> > > index 000000000000..19dbda858172
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> > > @@ -0,0 +1,67 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Rockchip RK3528 Clock and Reset Controller
-> > > +
-> > > +maintainers:
-> > > +  - Yao Zi <ziyao@disroot.org>
-> > > +
-> > > +description: |
-> > > +  The RK3528 clock controller generates the clock and also implements a reset
-> > > +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
-> > > +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
-> > > +  module.
-> > > +  Each clock is assigned an identifier, consumer nodes can use it to specify
-> > > +  the clock. All available clock and reset IDs are defined in dt-binding
-> > > +  headers.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: rockchip,rk3528-cru
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  assigned-clocks: true
-> > > +
-> > > +  assigned-clock-rates: true
-> > 
-> > Drop both, totally redundant.
+Hello Chen-Yu,
+
+On Sat, Dec 21, 2024 at 12:12:40AM +0800, Chen-Yu Tsai wrote:
+> From: Chen-Yu Tsai <wens@csie.org>
 > 
-> Okay, will fix in next version.
+> The Orange Pi 5 Plus has its first USB 3.0 interface on the SoC wired
+> directly to the USB type C port next to the MASKROM button, and the
+> second interface wired to a USB 3.0 hub which in turn is connected to
+> the USB 3.0 host ports on the board, as well as the USB 2.0 connection
+> on the M.2 E-key slot.
 > 
-> > > +
-> > > +  clocks:
-> > > +    items:
-> > > +      - description: External 24MHz oscillator clock
-> > > +      - description: 50MHz clock generated by PHY module
-
-you could adjust the description to something like
-	50MHz clock generated by PHY module only for gmac0
-or so, to make it more clear where that signal goes to.
-
-> > > +
-> > > +  clock-names:
-> > > +    items:
-> > > +      - const: xin24m
-> > > +      - const: gmac0
-> > 
-> > gmac
-> > (unless you have gmac1 here as well but then please add it now)
+> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 > 
-> RK3528 comes with two onchip gmacs. This input clock is only used for
-> the first one and I think keeping the number would give the reader an
-> extra hint. What do you think about it?
+> ---
+> Changes since v1:
+> - Dropped source current to 1.4A
+> - Dropped sink current to 10mA, since it doesn't actually sink current
+> - Added try-power-role
+> - Added newline before endpoint device nodes in USB connector node
+> ---
+>  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 133 ++++++++++++++++++
+>  1 file changed, 133 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> index 9f5a38b290bf..000d353645a9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> @@ -218,6 +218,18 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+>  		regulator-max-microvolt = <5000000>;
+>  	};
+>  
+> +	vbus5v0_typec: vbus-typec-regulator {
 
-I would agree here. Looking through the TRM registers, gmac0 gets _only_
-supplied from that external input, while gmac1 only gets supplied from
-a number of internal sources (different sources for gmac1-specific clocks)
+I think the new policy is to prefix with 'regulator-' so eg.:
 
-Heiko
+	vbus5v0_typec: regulator-vbus5v0-typec
 
+With that:
 
+Reviewed-by: Ondrej Jirman <megi@xff.cz>
+
+thank you,
+	o.
 
 _______________________________________________
 Linux-rockchip mailing list
