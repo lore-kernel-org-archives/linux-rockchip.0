@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E84E77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 13:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E56E77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 15:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZuiO0WEJgPcY1BBi1d0DVkq52eM1SQa7kRqG1sIIHac=; b=ILlfmFqj3DfMTh
-	ic3h2Z61VCYhk0Pt/d67Jb7Twdq1Q3hAdMqNO4ekcgFOugf8/Ulu5M0pN200PGbJZtN1tT1xcSBdO
-	e4J2qWIjJg5meu1SENUXzs3ETzGcdYGNOCHCHpY6nVoIW/2CfDVVW1jOpuFvn+a4lNwkR3QXplxQZ
-	YwwnS5C/BPcqojdl5690riAVAxKX8/z1jMgQTdzcZzOuy1ALzMc306Pk0A0nzPoL8CS/klkwyNZDM
-	XqLhwzISM3bAp6J6qk5TsZZdKsFTCW+Lnnfb8WIpgTkdbstO+R2JqzFqvsHwVqbPr891KN8wtUpiu
-	IZpVF4hDJvRpvGbU2NKA==;
+	List-Owner; bh=6KoZNGdVE2imeeJXziZi0YRy5DqV+96FaBzFuTTlJ+k=; b=KBUXDtN7ASRvUH
+	4PA7+NYiSByJ9bCR33MVlREQPx+Ud42LVzvsF9VzDP2XXiBTDzDNfWEoNxzexe5aGJkGjEEoWq0/r
+	ncC2pemL/oc8MKG7t0qVXJ9InbGj2tR2HGpONgidcahpN3qdmPz7kVhMNJ7bkwHYcN3KX5Yftf2Zb
+	15okoKASpJhLBLl6C54tFsg5Lma2lyDkNaZqHsiZ/E/rcuwBlMxQGhvMr2LE5qMkk3iZW397UOqX0
+	W3bNB0HzaXnRezLe5VRe52BgzFFJZJP00dABGUNgOkJqIkuKBm8JHYEkiOhe2EOyiIU2fLlUWS4fn
+	YYdeT/DupXbPysgmQIGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9VK-00000004yx5-2EIr;
-	Tue, 07 Jan 2025 13:20:18 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tVB69-00000005LQ4-3Eyt;
+	Tue, 07 Jan 2025 15:02:25 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tV9Oz-00000004xLS-2ZsJ;
-	Tue, 07 Jan 2025 13:13:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=TvCtZRn6q2yrOkVr53SYY2q+vLoe2lQ9suphlIdglAc=; b=XiTQokded4/20LkiEtgFMPQTon
-	GQMLclhYTJJjBsn3umKCydHoX5+QzGoLJjUxO3385EVQymx8hF6WSsEYMNEevcLAG7ZZXxPydXWB+
-	H/6jTdPjcs5GlpnEtqKu1bHnss3O/e0o+lbIliqiqA1JbkIYH+eE9b0t2w4pF/PxRxHU=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tV9Oo-002EdJ-RP; Tue, 07 Jan 2025 14:13:34 +0100
-Date: Tue, 7 Jan 2025 14:13:34 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
-References: <20240809073610.2517-1-linux.amoon@gmail.com>
- <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
- <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch>
- <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
- <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch>
- <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
- <Z3vGXrUIII4ixNnF@ryzen>
- <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
- <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com>
+	id 1tVB2A-00000005Kh2-0waj;
+	Tue, 07 Jan 2025 14:58:19 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-aaedd529ba1so1756722066b.1;
+        Tue, 07 Jan 2025 06:58:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1736261896; x=1736866696; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Az2wVx1hCiPjzJ0BVL12MlXicctDopMjOkqCsQ4N3kk=;
+        b=mOy9X0De0bnasJrrCmRZE+itycW6bcIC04AK0m3TCu9pRiBWW3ZYczc4JGcrenfMF/
+         er1nsJGMmbItQQ1AXEuNBmVAsmM29oY25sXH8gNQafAJaTiH6rK6KNfSsnhJ/NlQIvxP
+         YbruzGUmJ4KrCEmLjNV2ZkxEKBAiSFP6fdqXwlEGZjTuMqquaKt/zs6FsaQTKY+yUjck
+         WdQZ8nea11ahCx7wt1CJm9VBeIeaEpuHH35kTlG/w3woXsd2oDsCu+42ipWoycfGD01V
+         U1UNUN8j8i/y4XVn28Px/K36euKE+xUq6LTaDU5Spu57A8jRdyugUSFm/8MCel2olXKF
+         fp/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736261896; x=1736866696;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Az2wVx1hCiPjzJ0BVL12MlXicctDopMjOkqCsQ4N3kk=;
+        b=eV2hW7TBZ6V+Ht67wnNxMnRHSKEmuxnRPPb4Yh0WDuOnpm3hAoAzmDsPTS40UCgaSx
+         r49Z7bIzMDfB30Tp0DEQmAzTDrAijEt41Pa9pwST58tHvDuCP5/RZOedDxnqpOcx9dom
+         7NIgFKEferj/Q4urZnkGxTvl6ZzL7NsNmFZBS/joo5iN0JnzorLC6LhG+QGT6LGl+7oF
+         SVLqDEf0F+WoMmqIKm5ZCN89kucHEZ4SpqoMOhIJ8z/c1xzsAeIgVSDp6FhT+x/bCkA/
+         UdkCJcUy17j7eTiQI/lOa6o4WIC5t5z6k3BOeztCSaiWnWO5cKzdXVDVXxQSnLR/ZpOp
+         qj/g==
+X-Forwarded-Encrypted: i=1; AJvYcCUgT2NJ1/jEXaqhAH5sYGZNJG1AWjf8t9Cni03Y/1Oxy3Ym7Y+McmSH8rCWNYp4h7b7WHBdlO+tWDzjB2mxPfM=@lists.infradead.org, AJvYcCVGf+zsRSDIczTeN6nY8GY0jUA8OyJ4DyDTnBWDz7i3FcKbQhKt1CuAkt27/sHw8PlIgnV6v8UHivzGm46XunGE@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVCAig5cBdFt3MRlwXLm+m/mOEOGEWHZfEDlsWRmVQcS+f6KSv
+	+fINwiZ00JeeEt124Dbn0N41+utOxzRRg+bQWwduJ9iCGKOO9Jo6NXie0ese/heP1iOprg1y5Gp
+	dMJkoTyaSDPJoR0Kn//aqZBGqWF0=
+X-Gm-Gg: ASbGncugU8WQ2JbWNi4vPp06yC0LwQ2T+nwa/Gt38QwNBzi2OhiNzcXvnvL0/Nq346P
+	vmGvOW/hE6x88i7Ovge7E3cKY7SsviXT6pM3XVg==
+X-Google-Smtp-Source: AGHT+IHo/aaG2IRziYHWgdJTI7LpsNtYnkQPqpLDzk81p5lbFEu3We9AunbvRFqyiMLdOxqwHKgstcmD7QIW7IPgedI=
+X-Received: by 2002:a05:6402:1588:b0:5d3:ba42:e9e3 with SMTP id
+ 4fb4d7f45d1cf-5d81dd9ce81mr153578555a12.13.1736261896167; Tue, 07 Jan 2025
+ 06:58:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com>
+References: <20240809073610.2517-1-linux.amoon@gmail.com> <Z3fKkTSFFcU9gQLg@ryzen>
+ <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
+ <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch> <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
+ <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch> <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
+ <Z3vGXrUIII4ixNnF@ryzen> <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
+ <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com> <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
+In-Reply-To: <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Tue, 7 Jan 2025 20:27:58 +0530
+Message-ID: <CANAwSgTWXBhhDk4Yq3U8qTTRBUOx24MvM7moWoKFkKU8Nn6eAw@mail.gmail.com>
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Niklas Cassel <cassel@kernel.org>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_051345_650946_9A6BD11E 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20250107_065818_260114_097AA777 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,23 +99,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> I was just trying to understand the call trace for mdio bus which got
-> me confused.
-> 
-> [0] https://lore.kernel.org/all/Z3fKkTSFFcU9gQLg@ryzen/
+Hi Andrew
 
-There is nothing particularly unusual in there. We see PCI bus
-enumeration has found a device and bound a driver to it. The driver
-has instantiated an MDIO bus, which has scanned the MDIO bus and found
-a PHY. The phylib core then tried to load the kernel module needed to
-drive the PHY.
+On Tue, 7 Jan 2025 at 18:43, Andrew Lunn <andrew@lunn.ch> wrote:
+>
+> > I was just trying to understand the call trace for mdio bus which got
+> > me confused.
+> >
+> > [0] https://lore.kernel.org/all/Z3fKkTSFFcU9gQLg@ryzen/
+>
+> There is nothing particularly unusual in there. We see PCI bus
+> enumeration has found a device and bound a driver to it. The driver
+> has instantiated an MDIO bus, which has scanned the MDIO bus and found
+> a PHY. The phylib core then tried to load the kernel module needed to
+> drive the PHY.
+>
+> Just because it is a PCI device does not mean firmware has to control
+> all the hardware. Linux has no problems controlling all this, and it
+> saves reinventing the wheel in firmware, avoids firmware bugs, and
+> allows new features to be added etc.
+>
+>         Andrew
 
-Just because it is a PCI device does not mean firmware has to control
-all the hardware. Linux has no problems controlling all this, and it
-saves reinventing the wheel in firmware, avoids firmware bugs, and
-allows new features to be added etc.
+Thanks for clarifying.
 
-	Andrew
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
