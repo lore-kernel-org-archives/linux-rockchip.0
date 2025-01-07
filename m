@@ -4,85 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E56E77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 15:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA388E77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 15:48:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6KoZNGdVE2imeeJXziZi0YRy5DqV+96FaBzFuTTlJ+k=; b=KBUXDtN7ASRvUH
-	4PA7+NYiSByJ9bCR33MVlREQPx+Ud42LVzvsF9VzDP2XXiBTDzDNfWEoNxzexe5aGJkGjEEoWq0/r
-	ncC2pemL/oc8MKG7t0qVXJ9InbGj2tR2HGpONgidcahpN3qdmPz7kVhMNJ7bkwHYcN3KX5Yftf2Zb
-	15okoKASpJhLBLl6C54tFsg5Lma2lyDkNaZqHsiZ/E/rcuwBlMxQGhvMr2LE5qMkk3iZW397UOqX0
-	W3bNB0HzaXnRezLe5VRe52BgzFFJZJP00dABGUNgOkJqIkuKBm8JHYEkiOhe2EOyiIU2fLlUWS4fn
-	YYdeT/DupXbPysgmQIGg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=92Jx4dIPlZDXDEWjG2D1WCbEaAXbbVz+HuykCV1PKpo=; b=Do0vOrrQ0KGo0q
+	wrKsGYGzAuyJvS2MGNbUAdN717XWg80hV1yE4Z3AvuuSZ0vq/yjYIBGKBRnItPe9c6ObPEpIHilqu
+	WNA62KNxQ4P9xtQ4jADa/urhRJ4eT2j54zfY2TqARdIlRgTbAP8TCWgSgyLVlMW02ee/x9asaKdeZ
+	5KPx1dIaQM9DknKHhMvi3LEYeigenC7jdc7Wwbyhlp2+9BfKCZfx1/5bx+Ozr4fslui5zql+n2gLw
+	lPZskWOHGJyisvbD11npGkrL79Hxk4cwjJDu6cAhd+gOq5pgtZB57iyPANp1h/Ba1TI35LvFDRIMz
+	dZhN3BySSpM5fFFOrL+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVB69-00000005LQ4-3Eyt;
-	Tue, 07 Jan 2025 15:02:25 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1tVBoV-00000005Uu4-2Xi3;
+	Tue, 07 Jan 2025 15:48:15 +0000
+Received: from mail-m15599.qiye.163.com ([101.71.155.99])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVB2A-00000005Kh2-0waj;
-	Tue, 07 Jan 2025 14:58:19 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-aaedd529ba1so1756722066b.1;
-        Tue, 07 Jan 2025 06:58:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736261896; x=1736866696; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Az2wVx1hCiPjzJ0BVL12MlXicctDopMjOkqCsQ4N3kk=;
-        b=mOy9X0De0bnasJrrCmRZE+itycW6bcIC04AK0m3TCu9pRiBWW3ZYczc4JGcrenfMF/
-         er1nsJGMmbItQQ1AXEuNBmVAsmM29oY25sXH8gNQafAJaTiH6rK6KNfSsnhJ/NlQIvxP
-         YbruzGUmJ4KrCEmLjNV2ZkxEKBAiSFP6fdqXwlEGZjTuMqquaKt/zs6FsaQTKY+yUjck
-         WdQZ8nea11ahCx7wt1CJm9VBeIeaEpuHH35kTlG/w3woXsd2oDsCu+42ipWoycfGD01V
-         U1UNUN8j8i/y4XVn28Px/K36euKE+xUq6LTaDU5Spu57A8jRdyugUSFm/8MCel2olXKF
-         fp/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736261896; x=1736866696;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Az2wVx1hCiPjzJ0BVL12MlXicctDopMjOkqCsQ4N3kk=;
-        b=eV2hW7TBZ6V+Ht67wnNxMnRHSKEmuxnRPPb4Yh0WDuOnpm3hAoAzmDsPTS40UCgaSx
-         r49Z7bIzMDfB30Tp0DEQmAzTDrAijEt41Pa9pwST58tHvDuCP5/RZOedDxnqpOcx9dom
-         7NIgFKEferj/Q4urZnkGxTvl6ZzL7NsNmFZBS/joo5iN0JnzorLC6LhG+QGT6LGl+7oF
-         SVLqDEf0F+WoMmqIKm5ZCN89kucHEZ4SpqoMOhIJ8z/c1xzsAeIgVSDp6FhT+x/bCkA/
-         UdkCJcUy17j7eTiQI/lOa6o4WIC5t5z6k3BOeztCSaiWnWO5cKzdXVDVXxQSnLR/ZpOp
-         qj/g==
-X-Forwarded-Encrypted: i=1; AJvYcCUgT2NJ1/jEXaqhAH5sYGZNJG1AWjf8t9Cni03Y/1Oxy3Ym7Y+McmSH8rCWNYp4h7b7WHBdlO+tWDzjB2mxPfM=@lists.infradead.org, AJvYcCVGf+zsRSDIczTeN6nY8GY0jUA8OyJ4DyDTnBWDz7i3FcKbQhKt1CuAkt27/sHw8PlIgnV6v8UHivzGm46XunGE@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVCAig5cBdFt3MRlwXLm+m/mOEOGEWHZfEDlsWRmVQcS+f6KSv
-	+fINwiZ00JeeEt124Dbn0N41+utOxzRRg+bQWwduJ9iCGKOO9Jo6NXie0ese/heP1iOprg1y5Gp
-	dMJkoTyaSDPJoR0Kn//aqZBGqWF0=
-X-Gm-Gg: ASbGncugU8WQ2JbWNi4vPp06yC0LwQ2T+nwa/Gt38QwNBzi2OhiNzcXvnvL0/Nq346P
-	vmGvOW/hE6x88i7Ovge7E3cKY7SsviXT6pM3XVg==
-X-Google-Smtp-Source: AGHT+IHo/aaG2IRziYHWgdJTI7LpsNtYnkQPqpLDzk81p5lbFEu3We9AunbvRFqyiMLdOxqwHKgstcmD7QIW7IPgedI=
-X-Received: by 2002:a05:6402:1588:b0:5d3:ba42:e9e3 with SMTP id
- 4fb4d7f45d1cf-5d81dd9ce81mr153578555a12.13.1736261896167; Tue, 07 Jan 2025
- 06:58:16 -0800 (PST)
+	id 1tVBoN-00000005Urt-1W7H;
+	Tue, 07 Jan 2025 15:48:14 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 801e0ada;
+	Tue, 7 Jan 2025 23:47:57 +0800 (GMT+08:00)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	jon.lin@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-spi@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: spi: rockchip-sfc: Add rockchip,fspi compatible
+Date: Tue,  7 Jan 2025 23:47:54 +0800
+Message-Id: <20250107154755.2037197-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20240809073610.2517-1-linux.amoon@gmail.com> <Z3fKkTSFFcU9gQLg@ryzen>
- <CANAwSgS5ZWGTP+A11r_qFSrjWZH_DqsM89MLiP+1VAxhz+e+2A@mail.gmail.com>
- <5a3e8fda-f9e4-4c2f-847b-93f521b8313b@lunn.ch> <CANAwSgSUuEvJb2Vn58o0i7Soo3jGzM8EYHvDtUTPxRHekCpruA@mail.gmail.com>
- <c94570db-c0af-4d92-935c-5cc242356818@lunn.ch> <CANAwSgQ_gojVxvi_OyHTyTSdzRrno=Yymn0AdEXyTHTgDTyFcA@mail.gmail.com>
- <Z3vGXrUIII4ixNnF@ryzen> <b49e6147-32c6-4239-bdba-72f25ef04a9f@lunn.ch>
- <CANAwSgQqPREeFQisQZXqB52+w+j54Bwq4RMiHf3qUTXmnTxCAw@mail.gmail.com> <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
-In-Reply-To: <c08f3d69-1f3d-49a6-96ac-0c2f990f9a8d@lunn.ch>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Tue, 7 Jan 2025 20:27:58 +0530
-Message-ID: <CANAwSgTWXBhhDk4Yq3U8qTTRBUOx24MvM7moWoKFkKU8Nn6eAw@mail.gmail.com>
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Niklas Cassel <cassel@kernel.org>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhkeS1YeHUNOQh1OS09CQ0tWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a94417385e609d9kunm801e0ada
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PlE6Myo*TjIXAxEqKSoxKAEN
+	Ni1PCzBVSlVKTEhNSU1PQ0xDTk9NVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFKS0lKNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=PEpMNyvR8BcHN0tcoj6vbenk8oCRdNnkKnCclgmfwjTRBjJJVpoLi0E7QgE45Bd2cNuoVBqof9+9djBscSSb3HReo6rs1SI3Ai7K0thSCuNxxjtcnORuTGG3yb/5wpFQReO8TROfUg0EdrVXKomYLGvE0VRTS+UuA67yDWcIKt8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=8ZaCjqw3pN3r+klL+dtGLBICAVtHTeQRB+45CR/nm1c=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_065818_260114_097AA777 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20250107_074807_938866_F18540A7 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +75,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew
+FSPI is an SFC upgrade IP that adds functions such as XIP.
 
-On Tue, 7 Jan 2025 at 18:43, Andrew Lunn <andrew@lunn.ch> wrote:
->
-> > I was just trying to understand the call trace for mdio bus which got
-> > me confused.
-> >
-> > [0] https://lore.kernel.org/all/Z3fKkTSFFcU9gQLg@ryzen/
->
-> There is nothing particularly unusual in there. We see PCI bus
-> enumeration has found a device and bound a driver to it. The driver
-> has instantiated an MDIO bus, which has scanned the MDIO bus and found
-> a PHY. The phylib core then tried to load the kernel module needed to
-> drive the PHY.
->
-> Just because it is a PCI device does not mean firmware has to control
-> all the hardware. Linux has no problems controlling all this, and it
-> saves reinventing the wheel in firmware, avoids firmware bugs, and
-> allows new features to be added etc.
->
->         Andrew
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-Thanks for clarifying.
+ Documentation/devicetree/bindings/spi/rockchip-sfc.yaml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
--Anand
+diff --git a/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+index ac1503de0478..4d64155d03f8 100644
+--- a/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
++++ b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+@@ -15,11 +15,15 @@ allOf:
+ 
+ properties:
+   compatible:
+-    const: rockchip,sfc
++    enum:
++      - rockchip,fspi
++      - rockchip,sfc
++
+     description:
+       The rockchip sfc controller is a standalone IP with version register,
+       and the driver can handle all the feature difference inside the IP
+       depending on the version register.
++      The rockchip flexible spi controller is the next generation IP of sfc.
+ 
+   reg:
+     maxItems: 1
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
