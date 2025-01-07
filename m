@@ -4,70 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CA4DE77188
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 00:09:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846CFE77188
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 03:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fu9JT0ZRRn9sHcSErVjx2p9aXcu++kPlmgXXo0CFX0k=; b=CxVAPUCIfMjYie
-	GzBrGjSW/QQ2xWmmUGJuuU3nmuGjX1hC+jlbZ1u5j7SMVcIaiLBEC8rXsqcld6/6O9G7GW9PvyR2t
-	EPalG9fmJgJV8p20PIB1V4vMSxhbqpcwcfAuwPN4ARjLvRC6HhXs0NwMMxbcmdTR8Wyqno8+bZqKn
-	74ixI8OKcmhIuBG72fTB/W5LKifeDptOuhoN5ECNzBbDjjoh2uv70shX8BNy0+n8UUziXkSg+PvUe
-	MxTR//nkhpepvk6fDW6iMthEQ7ycvVkvg6l21UPnx7WuQxnLlLUc9eDns6YOroPetkDoX/PkDzve7
-	J4Ba65tDYJK0n/EHYLuw==;
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U4kkkSZCPOOJwKb3pUnJW6+zXIhDZIV9mWMaICp8J3w=; b=4viU4Hrmkf6G3b2yTzaDdi0U0I
+	XApVEA21Y+nJCin4HXcJmd+dtTIv9cXN6cDzbQA5fFFWAL6aoWB2eUhRMIxbpAWR0YvM81alLFkqw
+	fkfa7mT1Vvr3CiqUZ7dmk7wraIFt1Z3twYNXtAUKoMhOIioWfmcdAn3vg9yYGU7e+mizdqtxuv+Eb
+	iuKhd/O7dlFIwYPcaUBmIn6X+BcsQz6gYaJCG9ltG4+uPIAz26VjamBAz4m2sqgWAi3i++8/Nkags
+	UgNI5BwdUKAgm2Rjs/rP4vPnSr8wmO3Xfr5DTrxAp3OQAuv+E9S2lzKObBXLXjkOKF933Hh/hSsdp
+	YbwD/y9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUxA8-000000030eo-40C8;
-	Tue, 07 Jan 2025 00:09:36 +0000
-Received: from mout-p-201.mailbox.org ([80.241.56.171])
+	id 1tUzrT-00000003GjX-02gY;
+	Tue, 07 Jan 2025 03:02:31 +0000
+Received: from mail-m32123.qiye.163.com ([220.197.32.123])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUx8t-000000030Y9-2ZPq;
-	Tue, 07 Jan 2025 00:08:21 +0000
-Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mout-p-201.mailbox.org (Postfix) with ESMTPS id 4YRrwt4ZMmz9sdQ;
-	Tue,  7 Jan 2025 01:08:14 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=timsurber.de;
-	s=MBO0001; t=1736208494;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BumHPRnrYrdKW/Ic+24BWv5+zL59cBJOtuFj5cevjs4=;
-	b=OU4XrsrbWs9vcf2e19/jiPqNgKYH3UHzjaCzxv/dan3sRB6e/fJ4Y041Ba+qewt0BsmnRE
-	4qriNDlldbPOBQu7tB1ST4p2eBmO5AqC9VxGtbgnl4Unhf57oVaHBxzgk+F47VZ19LZM9i
-	67/hY94UOle+T88knGv1GmzUba7oU/On1d1Krt0y5edcsfHV6LSLqDn5P9JszuwaQQc1Aj
-	942h7YG9kFBgh+udiWw+ZUQecroM8nlBdm+yQiSPEObspMeqAmmOQXSQrjXIppwYQVMqae
-	6+3YkYgnXEt11CLDp7/aXkiKyPdI3K44td89qllGN15pM7QzTkwX7OwdQubL0g==
-Message-ID: <fbb5016e-678c-4e54-a6a8-0ccaa2bdf45c@timsurber.de>
-Date: Tue, 7 Jan 2025 01:08:08 +0100
+	id 1tUzrM-00000003Gi1-22n2;
+	Tue, 07 Jan 2025 03:02:28 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 7e9abd46;
+	Tue, 7 Jan 2025 11:02:15 +0800 (GMT+08:00)
+Message-ID: <96f8310f-93f1-4bcb-8637-137e1159ff83@rock-chips.com>
+Date: Tue, 7 Jan 2025 11:02:15 +0800
 MIME-Version: 1.0
-Subject: Re: [RESEND PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
- mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
- p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
- hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20241210193904.883225-1-shreeya.patel@collabora.com>
- <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
- <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 07/17] phy: phy-rockchip-samsung-hdptx: Add support for
+ eDP mode
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+References: <20241226063313.3267515-1-damon.ding@rock-chips.com>
+ <20241226063313.3267515-8-damon.ding@rock-chips.com>
+ <shr7ak7keqza3gw6wra2zra35qht2cxlzkvtuhzl3swzf2fwxy@i2v4o53lhese>
 Content-Language: en-US
-From: Tim Surber <me@timsurber.de>
-In-Reply-To: <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
-X-Rspamd-Queue-Id: 4YRrwt4ZMmz9sdQ
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <shr7ak7keqza3gw6wra2zra35qht2cxlzkvtuhzl3swzf2fwxy@i2v4o53lhese>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkIaSFYZGE1KHUtLSxpMGBhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a943eb680b303a3kunm7e9abd46
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PS46Fhw*ITIOTBwQATFWSxkZ
+	NBIKCQFVSlVKTEhNSUpDQkhMSU9KVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPQkhDNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=LYaCAU+RlzanzYmS6Fd7fwnVehf05WEHutrgvrenWPyUEsaiZoZEsMipp8elxtDCC+wzA6v7ql0TSWw9AKlHiKohmW9N5CAfCBVcnQW1M4A6VpxWJOoYFsxunQQ97cOjqaU4shWbirYweHC6d6UwR89l9L7ZcTD/gaWdYlxUAOg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=j4WHIo9pquJ7g/2ENU41c9ttOjw9RexpamwpH2bk1DY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_160820_106868_7D11DB9B 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20250106_190225_022632_F97C9A2A 
+X-CRM114-Status: GOOD (  25.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,6 +69,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -86,36 +77,185 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Dmitry,
 
-that was my fault, my build script did not copy over the new ATF properly.
-
-Now it works, I will update with test results with many different 
-resolutions/formats here soon.
-
-Best regards,
-Tim
-
-
-On 1/6/25 12:22, Dmitry Osipenko wrote:
-> Hi,
+On 2024/12/30 20:45, Dmitry Baryshkov wrote:
+> On Thu, Dec 26, 2024 at 02:33:03PM +0800, Damon Ding wrote:
+>> Add basic support for RBR/HBR/HBR2 link rates, and the voltage swing and
+>> pre-emphasis configurations of each link rate have been verified according
+>> to the eDP 1.3 requirements.
 > 
-> On 1/6/25 03:16, Tim Surber wrote:
->> I applied your patch to rockchip/next on an FriendlyElec CM3588 device with arm-
->> trusted-firmware 2.12. This is the same hardware/cable/sources I used previously
->> Sadly I could not get it to work at all.
+> Well... Please describe what's happening here. That the HDMI PHY on your
+> platform also provides support for DP / eDP. Please document any design
+> decisions that you had to make.
+> 
+
+Yes, I will add more relevant descriptions in the next version.
+
 >>
->> After connection to a HDMI source I get the following error with all devices and
->> resolutions I tested
->> # dmesg
->> snps_hdmirx fdee0000.hdmi_receiver: hdmirx_controller_init wait timer base lock
->> failed
->> snps_hdmirx fdee0000.hdmi_receiver: hdmirx_phy_register_write wait cr write done
->> failed (repeating multiple times)
+>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Add the module author
+>>
+>> Changes in v3:
+>> - Split this patch into two, one for correction and the other for
+>>    extension
+>>
+>> Changes in v4:
+>> - Add link_rate and lanes parameters in struct rk_hdptx_phy to store the
+>>    phy_configure() result for &phy_configure_opts.dp.link_rate and
+>>    &phy_configure_opts.dp.lanes
+>> ---
+>>   .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 896 +++++++++++++++++-
+>>   1 file changed, 889 insertions(+), 7 deletions(-)
+>>
+>> @@ -933,9 +1484,339 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
+>>   	return rk_hdptx_phy_consumer_put(hdptx, false);
+>>   }
+>>   
+>> +static int rk_hdptx_phy_set_mode(struct phy *phy, enum phy_mode mode,
+>> +				 int submode)
+>> +{
+>> +	return 0;
+>> +}
 > 
-> Sounds like interrupt may be not working for you. Interrupt won't work
-> using downstream version of AT-F, though I assume you're using vanilla
-> version of the AT-F. Could you please show output of `cat
-> /proc/interrupts | grep rk_hdmirx` after plugging the HDMI cable.
+> No need for the stub, please drop it. The host controller driver can
+> still call phy_set_mode() / _ext(), the call will return 0.
+
+Without the &phy_ops.set_mode(), the phy driver can not get phy_mode to 
+distinguish between HDMI and DP mode via the phy_get_mode(), even if the 
+host driver calls phy_set_mode() / _ext(). Additionally, the previous 
+discussion [0] also mentioned future considerations for dynamic 
+switching. Indeed, I should add a related comment before the 'return 0;' 
+to enhance understandability.
+
 > 
+>> +
+>> +static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
+>> +				      struct phy_configure_opts_dp *dp)
+>> +{
+>> +	int i;
+>> +
+>> +	if (dp->set_rate) {
+>> +		switch (dp->link_rate) {
+>> +		case 1620:
+>> +		case 2700:
+>> +		case 5400:
+>> +			break;
+>> +		default:
+>> +			return -EINVAL;
+>> +		}
+>> +	}
+>> +
+>> +	if (dp->set_lanes) {
+>> +		switch (dp->lanes) {
+>> +		case 0:
+> 
+> Is it really a valid config to have 0 lanes?
+
+The case of 0 lanes is indeed unnecessary.
+
+> 
+>> +		case 1:
+>> +		case 2:
+>> +		case 4:
+>> +			break;
+>> +		default:
+>> +			return -EINVAL;
+>> +		}
+>> +	}
+>> +
+>> +	if (dp->set_voltages) {
+>> +		for (i = 0; i < hdptx->lanes; i++) {
+>> +			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
+>> +				return -EINVAL;
+>> +
+>> +			if (dp->voltage[i] + dp->pre[i] > 3)
+>> +				return -EINVAL;
+>> +		}
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+> 
+> [..]
+> 
+>> +
+>> +static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+>> +{
+>> +	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
+>> +	enum phy_mode mode = phy_get_mode(phy);
+>> +	int ret;
+>> +
+>> +	if (mode != PHY_MODE_DP)
+>> +		return -EINVAL;
+> 
+> I'd say, return 0;
+
+Yes, it is really not an error.
+
+> 
+>> +
+>> +	ret = rk_hdptx_phy_verify_config(hdptx, &opts->dp);
+>> +	if (ret) {
+>> +		dev_err(hdptx->dev, "invalid params for phy configure\n");
+>> +		return ret;
+>> +	}
+>> +
+>> +	if (opts->dp.set_rate) {
+>> +		ret = rk_hdptx_phy_set_rate(hdptx, &opts->dp);
+>> +		if (ret) {
+>> +			dev_err(hdptx->dev, "failed to set rate: %d\n", ret);
+>> +			return ret;
+>> +		}
+>> +	}
+>> +
+>> +	if (opts->dp.set_lanes) {
+>> +		ret = rk_hdptx_phy_set_lanes(hdptx, &opts->dp);
+>> +		if (ret) {
+>> +			dev_err(hdptx->dev, "failed to set lanes: %d\n", ret);
+>> +			return ret;
+>> +		}
+>> +	}
+>> +
+>> +	if (opts->dp.set_voltages) {
+>> +		ret = rk_hdptx_phy_set_voltages(hdptx, &opts->dp);
+>> +		if (ret) {
+>> +			dev_err(hdptx->dev, "failed to set voltages: %d\n",
+>> +				ret);
+>> +			return ret;
+>> +		}
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static const struct phy_ops rk_hdptx_phy_ops = {
+>>   	.power_on  = rk_hdptx_phy_power_on,
+>>   	.power_off = rk_hdptx_phy_power_off,
+>> +	.set_mode  = rk_hdptx_phy_set_mode,
+>> +	.configure = rk_hdptx_phy_configure,
+>>   	.owner	   = THIS_MODULE,
+>>   };
+>>   
+>> @@ -1149,5 +2030,6 @@ module_platform_driver(rk_hdptx_phy_driver);
+>>   
+>>   MODULE_AUTHOR("Algea Cao <algea.cao@rock-chips.com>");
+>>   MODULE_AUTHOR("Cristian Ciocaltea <cristian.ciocaltea@collabora.com>");
+>> +MODULE_AUTHOR("Damon Ding <damon.ding@rock-chips.com>");
+>>   MODULE_DESCRIPTION("Samsung HDMI/eDP Transmitter Combo PHY Driver");
+>>   MODULE_LICENSE("GPL");
+>> -- 
+>> 2.34.1
+>>
+> 
+
+Best regards
+Damon
+
+[0]https://patchwork.kernel.org/project/linux-rockchip/patch/20241127075157.856029-5-damon.ding@rock-chips.com/
 
 
 _______________________________________________
