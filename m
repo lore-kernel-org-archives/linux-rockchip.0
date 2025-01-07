@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 200ACE77197
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 15:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42563E77197
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jan 2025 18:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tKnvq62qgPOn6FkZKNEAr2FHGVtcbJRqx3IOR9GcEiU=; b=BIRl5gpdofG4a7
-	oX37CLFzZcSL04/R+32mwiTJhFQ81fXsHmGJC71TBM+LdFpF8DSVIEuqz8cskl1ECfUFz2375+y0p
-	a1r5nrjvLJ8RzOKyn0i3DFr047BRBoySGakTOkIWAcTJ17gCuZAccapv6C1kSpKLbFVZ8J+6QutwU
-	9uOrFqz8LKiWMEMDsbQOcGKLN1Z2h9gQS/idi9h1GHwI+Su9WFo2lR+MhUNLZUTjn5GB/lDd4/HfF
-	cEeV9suJYfDradx6HfGofvpY2uIGEAoQPSPJm8HRUcmrw+brHSjR4mrHEzWPCEGWM3QjOrqNVHPpY
-	j/Bv/RO+SMTSANukIB2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BOfYaoHuCbveNCyfNkX204g7dm+cbwK6jc+ogbeqqfk=; b=BH7+HnYn/q49S3
+	FpAiD0wptY5LCEwWvuI/cJ6uulY86zSH3dxDaLNwvqKltKjDophAs3ZUkz7mVGwGFjNJLoYX5h/Ss
+	kPpQEQEloqMBNcsI/36KNOGds5orDk4p3KNwX/KfZCEds5jPHJLi2HBeQ0DdR1jj4DyJ0SO/nDOuI
+	hRHKdstdMpE1D9hQXCacgOeevdT+b65RPp+MDr/rBX7pW9ows4cIlrVwV9hRdE0Ufmj9+c+qWH3Aa
+	7CdEaP8LypOmgTxyyk7RKb8QcfxdII4g8XaaXxTuU2EMDlEAL3tvFAm9ukNwyKtu94jDs03RPHHaY
+	lVge+IAtBRvlx/8noXQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVBpg-00000005V2Q-2Jii;
-	Tue, 07 Jan 2025 15:49:28 +0000
-Received: from mail-m118196.ym.163.com ([115.236.118.196])
+	id 1tVE8B-000000060Fi-2x1f;
+	Tue, 07 Jan 2025 18:16:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVBoO-00000005Uru-1x1H;
-	Tue, 07 Jan 2025 15:48:14 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 801e0ade;
-	Tue, 7 Jan 2025 23:48:00 +0800 (GMT+08:00)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
+	id 1tVE6y-0000000603f-0eym;
+	Tue, 07 Jan 2025 18:15:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 744195C295C;
+	Tue,  7 Jan 2025 18:14:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F558C4CED6;
+	Tue,  7 Jan 2025 18:15:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736273725;
+	bh=HBHcmiYhdV1i4DCHsk2yrqZrt9sMvcGZpjOw1kIPmYg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=R/oRDHZ1ZZT+orMFLLX76WpaXpgt3NZL1kwo0oQrmKl83504ib50B/6/n5QXTpONS
+	 WrPp78wn2KU6NSs1TMbZ8Z581qkDl02ZY1u3xeVkw46pGmecYpZhHVHD2k3pfjL1KJ
+	 h813PUx+WE8/pfnDPn4bwwudKiph4OTr4eVRWRLEXQg8HHOo5bO52TA1ttuMBZjhSR
+	 n3xm4g15xorFkAubYAkc92O+n4xTViWPaEYDsKwT8X+BhQiqAUj8PES/AYIIwa2KAa
+	 uFYfwLIwkIlry1mHWdzdjiU1ERjfB2VOEgxB+vFywuZcP8v/UkyabQWaweGDlsDD05
+	 bwHrtO2bymmZA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH 2/2] spi: rockchip-sfc: Add rockchip,fspi compatible
-Date: Tue,  7 Jan 2025 23:47:55 +0800
-Message-Id: <20250107154755.2037197-2-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250107154755.2037197-1-jon.lin@rock-chips.com>
-References: <20250107154755.2037197-1-jon.lin@rock-chips.com>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 0/6] PCI: endpoint: Add support for resizable BARs
+Date: Tue,  7 Jan 2025 19:14:50 +0100
+Message-ID: <20250107181450.3182430-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk5LS1ZJTR9LHhoeSh4dGkxWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a944173916109d9kunm801e0ade
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OQw6LAw6DjITHxEUKSpMKAwz
-	KzFPCh1VSlVKTEhNSU1PQ0NKSExMVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFDS083Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=Q1SPhU6twQ0nlv+ONHZXIjROcWiO8EYPGXr0HcXOR4Y5jXa5x3mny0tkRHyAlgi6XYY7IdOachcnCVczX6fhx3mVsC5oqg9RKhoo9xLAaxcgiBxN/WdiTPQiEGp4e+ot6+IX0vbsWOdZNtd4e7b9Z9s5BDAX6/DMdaqyCodsMH4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=XJLawlfMWnWq2XaeHw3MAcM0toNaZ6iL2XtcMfjanUw=;
-	h=date:mime-version:subject:message-id:from;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2535; i=cassel@kernel.org; h=from:subject; bh=HBHcmiYhdV1i4DCHsk2yrqZrt9sMvcGZpjOw1kIPmYg=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJr86XkFW1NSuLvlzoyr1h2c96f+yqlrpfTfF2OztFYP 812JcO5jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEzk325GhuMOr+Xer/iTvb9l Xvomy68+6YaMl//N4DK+4r1ynsUsLm+Gv9JG7xbfFLzUtNOUee1vx1nr4qqqD2l8Efswa8dG1dg Dh9gB
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250107_074808_723823_FB9B730B 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250107_101528_276137_9EDDF19F 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +81,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-FSPI is an SFC upgrade IP, support new feature like XIP. But RK AP
-SOC FSPI early version integration implementation is the same as SFC.
+The PCI endpoint framework currently does not support resizable BARs.
 
-Add rockchip,fspi compatible to match with RK technical reference
-manual.
+Add a new BAR type BAR_RESIZABLE, so that EPC drivers can support resizable
+BARs properly.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+For a resizable BAR, we will only allow a single supported size.
+This is by design, as we do not need/want the complexity of the host side
+resizing our resizable BAR.
 
- drivers/spi/spi-rockchip-sfc.c | 1 +
- 1 file changed, 1 insertion(+)
+In the DWC driver specifically, the DWC driver currently handles resizable
+BARs using an ugly hack where a resizable BAR is force set to a fixed size
+BAR with 1 MB size if detected. This is bogus, as a resizable BAR can be
+configured to sizes other than 1 MB.
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 59de351499a0..88fbde27925e 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -808,6 +808,7 @@ static const struct dev_pm_ops rockchip_sfc_pm_ops = {
- };
- 
- static const struct of_device_id rockchip_sfc_dt_ids[] = {
-+	{ .compatible = "rockchip,fspi"},
- 	{ .compatible = "rockchip,sfc"},
- 	{ /* sentinel */ }
- };
+With these changes, an EPF driver will be able to call pci_epc_set_bar()
+to configure a resizable BAR to an arbitrary size, just like for
+BAR_PROGRAMMABLE. Thus, DWC based EPF drivers will no longer be forced to
+a bogus 1 MB forced size for resizable BARs.
+
+
+Tested/verified on a Radxa Rock 5b (rk3588) by:
+-Modifying pci-epf-test.c to request BAR sizes that are larger than 1 MB:
+ -static size_t bar_size[] = { 512, 512, 1024, 16384, 131072, 1048576 };
+ +static size_t bar_size[] = { SZ_1M, SZ_1M, SZ_2M, SZ_2M, SZ_4M, SZ_4M };
+ (Make sure to set CONFIG_CMA_ALIGNMENT=10 such that dma_alloc_coherent()
+  calls are aligned even for allocations larger than 1 MB.)
+-Rebooting the host to make sure that the DWC EP driver configures the BARs
+ correctly after receiving a link down event.
+-Modifying EPC features to configure a BAR as 64-bit, to make sure that we
+ handle 64-bit BARs correctly.
+-Modifying the DWC EP driver to set a size larger than 2 GB, to make sure
+ we handle BAR sizes larger than 2 GB (for 64-bit BARs) correctly.
+-Running the consecutive BAR test in pci_endpoint_test.c to make sure that
+ the address translation works correctly.
+
+
+Kind regards,
+Niklas
+
+Niklas Cassel (6):
+  PCI: endpoint: Add BAR type BAR_RESIZABLE
+  PCI: dwc: ep: Move dw_pcie_ep_find_ext_capability()
+  PCI: dwc: endpoint: Add support for BAR type BAR_RESIZABLE
+  PCI: keystone: Describe resizable BARs as resizable BARs
+  PCI: keystone: Specify correct alignment requirement
+  PCI: dw-rockchip: Describe resizable BARs as resizable BARs
+
+ drivers/pci/controller/dwc/pci-keystone.c     |   6 +-
+ .../pci/controller/dwc/pcie-designware-ep.c   | 228 +++++++++++++++---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c |  22 +-
+ drivers/pci/endpoint/pci-epf-core.c           |   4 +
+ include/linux/pci-epc.h                       |   3 +
+ 5 files changed, 216 insertions(+), 47 deletions(-)
+
 -- 
-2.34.1
+2.47.1
 
 
 _______________________________________________
