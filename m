@@ -4,158 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E10C87FD3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:48:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88C0DC87FD1
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 11:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wbMDXm7P6vNQs/JSg0wmJFQrXt0kpHrDxlWfi+DWgBc=; b=UOfOmJWTPnHn9S
-	p6x4RHFLRaV/Hb5qfq5JALbCxRhmghA2Gy0/PkugCIR3iwWIW72Aj4UrZBwQ6NMaYvpQQxEvJTT3j
-	yIZHa1I4abIc7AUTzrZnmMphGrBmlxVy4sNXwZLVCM3bkVHWl6O5Hx8Cosqkm9uBsoFGacz0b6OcW
-	/lxgHbcXnI3Tqg3gJDH+OBE67DD2oVcxF1cUvlnMTPL6JIGcHTag7BWF9VBblv8jUz8OW+V8dS1y3
-	Fa+97IB+7n02Q/k/iOyXOF+PCQG8fkrtQstPR5mrBVPhqCytltS2+y90egKpz6jHWlS8Od7oivr+0
-	8yqm6t1FCH0gpULmKFWA==;
+	List-Owner; bh=kRk38ThEgX56B2VUn5tp3gOyaIBJN/UuIhmhQHPETTI=; b=nwRxVuGZThL8Oi
+	DT2V+XyYlu5M/1fSlhQ9CD9BGJp+rjYFSExqmDYJ2YJi2E++LGJAdfXG6cXkVR9N9aM8nuxacws7Y
+	5xOUd4ciePPnX5KhhITeXIjYPkZVQzhBen4H1wN60o4Y0D6Q5LHNUrwNU4g0ugbCZZyMC45GwnLuQ
+	n35+5snqiMsJO42dtLl+gZiAGy8E7JfMwthv7M4UJZOsuMDQhh3afhEoUe3B0+qltP1mlO1ONp8M3
+	/X6HnqQrChzVtaiWN28zPAx/4aNMZI7WtTwyZeAlg1UcyGYR+0DhhfWiW4FYZ/DMfGeBbDB+TcJxC
+	qOf8HcxKTs+sIOtEAXGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbh9-0000000Ewgu-1XLU;
-	Wed, 06 Aug 2025 10:48:31 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWcrZ-00000005sZZ-3rT2;
-	Tue, 01 Jul 2025 15:25:39 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-6fafdd322d3so38215446d6.3;
-        Tue, 01 Jul 2025 08:25:37 -0700 (PDT)
+	id 1ujcZe-0000000F2iw-2KL0;
+	Wed, 06 Aug 2025 11:44:50 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tV7o6-00000004YzI-3EV3
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 Jan 2025 11:31:38 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-53f22fd6832so17033379e87.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Jan 2025 03:31:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751383537; x=1751988337; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
-        b=fzk1h6BCEI8LPPFqKo3vx5lm2kf5rIemtvaP9XjPa2TmeZL/nLgHrV7m9u+ovHgg8c
-         6f3GKrmoto2AixJnEs10LK9h69pIvbhwdMFHxSPRZUmIFeeIsuF8pbASy3fcCS4Mc0Wn
-         Ew5V7UJC4FsOMyHuL03U+JyoKsfspBgwdiYIo3byJk3c/HMWZrgNsWbRrOJB2nlL+cUu
-         +zjQZ5OhAZN6sSwcGvt3FxsxGt5C7Rmn/r0nTSSJ3REpAkgo4YTpF2cYDQ7aFHrT4Qie
-         l5jwBcsvbWTT6p7JXlkM0X0GISCABp1InEOzD9JwDcj0ycGp1fqcb1sx4tFo5fvRUzyP
-         xVgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751383537; x=1751988337;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1736249493; x=1736854293; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
-        b=EcfwYkY5+tO0XG8kXqtdc076W1pJBdwaTE+r49tLvYqqCFIBsytd23MVmlRX5lGlZo
-         jP5vDf9qtrlqde1NR7hcFZ8nEnMBEuUrLQYqUm0yU/o/nQq2TItx6/KMoHYSQo0ggTIq
-         22RdbO11lCtxZpc5iQ9+COWBUOCTLqeWhPUWzGASCPcoHioC4rmILEcdQB3aCl06k2Ec
-         Yi50DDnGLjZNTyclS3cjNd4DzUGhyRV+JZCp4Sb3bh1fWGpfXT3wf1sTaNgGbMgRwvbM
-         66urYiJfGDy/f0JiHB1rZZbC07CF2FXOf3lGCyC5qOrZ8Rk7TIizux4gXQFVYHxDEEqe
-         SSlg==
-X-Forwarded-Encrypted: i=1; AJvYcCU9IfheQqaRDQuT6h123AVUsSQzKy94lpp3++L3yP8EOsjD/v3F0q+Z/pJcHt5zCXgu3F3IYSIo+DiFccN8xgY=@lists.infradead.org, AJvYcCUw2IEJpm54lBEJPFoGF29J30PBWJmMGLbuz48kB9WWlRug4oWxzejvcIyl9sc2Rbeo38nW5pl5DxsD@lists.infradead.org, AJvYcCWkuDQ09Z+43kyIqq21j3Sjs4PpoWWaSigFuiKzDaG+IQsXJu7ooPHFfuE+oaShy8YvvRxn3QyVbH29GVPu@lists.infradead.org, AJvYcCXMQXlA/V70u6GuxBcC/ipjnou/wkZdgDT9OkH4ENp2Xuc8K6mizY89CYuoxkh172syoHRFaq9ZvVKVzDewGyo=@lists.infradead.org, AJvYcCXMwFeClWt0e+ykAjh1Mdv5I296SJDiJtxdR8mCMN355NCVYa/qv7BbrODn4ABzK5rdtV+Sqmu8pop0noKfGRxdwA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1CJMLRCUo9o1fo5Hu5dq1xHZnwYXKe85bzbId0sB58hyH29NT
-	QR7wY+nGZfwCwWsQnhqgqj71jYyxh7ANqVASWjTz2LwueCL1Tdxs+wgz
-X-Gm-Gg: ASbGncsv4hTuxCnUsZXINKXwzKb+L6xDUxpZCfB4PmVlZok5OlsqOE8IHSzE32utws0
-	5dJj+xU7Aw6PC2oyzApAerH/JJOvtso+E3Ha04ITCxo4kvNYYBfpvo1AnN9p+ziLaXm/GVKCdDz
-	rUVw9RplGM+0EtT0VUlZB1TGrtV+ypGCCiMtwqBVK5g+9qCUgqQ8GctO4AbFkqnox2cYpViehJy
-	kuGiZHrk7A7100wf0NffZvSg+dVnzh2NceqtI+OsKW+fEzPIvg7i6ecR+UI/US7mJ1UI/EoAs0c
-	qEHaNlFgFVThxGQsxO2Sn/YHKSnzMQyFgoUXIyMuKRHrlKSzov2aucS+A91U
-X-Google-Smtp-Source: AGHT+IFGwV5rgzZNlThD3qZhxiETqJeu0UK36HZAls92ncvO2dh0OxLl48BruxfcxiFAUDT+MVUh3g==
-X-Received: by 2002:a05:6214:d08:b0:6e8:fbb7:675b with SMTP id 6a1803df08f44-7000291854amr270803556d6.32.1751383536220;
-        Tue, 01 Jul 2025 08:25:36 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:517d::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd771acfe6sm85521916d6.31.2025.07.01.08.25.14
+        bh=G3N5s5fdL2YNf7soMuvHTeYgJ8vy52pHoEfk/tcGSD8=;
+        b=oW4jI8xPq+mIICDSvuVysXCKToK7FfzfLzx++y5Zv9TfiG0M+CeezaxJzBSiiqHwWo
+         cMQnyKOTR14TNKdkmkN9nXX2gpSJJggw9oh+FqG3rxWZPwmK5h0hHTOG2BO8dRBZcJjy
+         IlxkDCFo28Gu/Wj7O3HNTEfqyPoMCEGSdjL/pxoODRHkX6pvgUS0VWY40FF4gk7fzqe/
+         1T9P0zpBz2gXzAa3IvXKE3Gd1ZNWetyBuZfjHRnGt6oaZLwyZmnunWj6U8kZ2uBEp+ho
+         ANQiE3UHnTadZd6uUUBHAtw17SjzQfOsnu5gFYRlO++RHzzoTMkJAtTY5fe69H0J9mUK
+         pb7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736249493; x=1736854293;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=G3N5s5fdL2YNf7soMuvHTeYgJ8vy52pHoEfk/tcGSD8=;
+        b=i4c5qVIpDCOUqWQJsQQ+3FZaqK9YhWiT2zbq17M35r6YHWRF15bZxPIKhjb2XqqfOD
+         FfSNwvWVdjnTnAcpFU52GMCFoLQw5aT4yzEFSzm3dsx9nb7xhCGAAE5kG3YE8VFqxwG/
+         2KmnOQqzUZ/8/KZxCU+RgDjYTXsJhN46/ZwSO+QA7fxkn4HXUfFPJtuNBDafMFlcfLJw
+         l1GAvTER8BgTrWSmLQhFfp5O13R5oyen5IfClcUtC5TbfvMJN3R7VsLzMWgxwn1wTmHz
+         jO+HHzvfBi4H7gfFfOx1xdZPn0feknWC0IZa3h+mpeOJ6JmzlWgFLCVOoN/H/9+fWNGT
+         ZBaA==
+X-Forwarded-Encrypted: i=1; AJvYcCXYjUFNSnGkrOAnCXyGX05eJiqEL6bhdINVsM4kh24ioqX6yNLbssH/yEb3PWZ/Qz8ZXePYXZW0226HIhtJEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwD5DAzpDhezVceIxyWQiNHjIs5KIlzn+Wx4GFrgg+lHgQ4VOk4
+	x/pfCxofMT1WA8bpUyj/P8CFhq6xK2/g0on1Sjb7kKSSjOQ3fYlNRqQM6e6gXyk=
+X-Gm-Gg: ASbGncsznfTN+q9rT86MgDecNrL/k6L6IoUUEAbagHtvPtzKDxZMYhrsO+WzOSGpPIl
+	kKO4EXFL6iPAm/+akdcDqui2n8fa4wi95YpqjHuqvaXxz53f9MBjEm+VprLG/8SsaG0HXzT4+t8
+	uUxior7J8+Hl2mCtnSwH3tXYGHdE+l84wIHmj9ezscNM6Z06gL94bNseoiQRDtcS91n7RazXn0z
+	9BMCWLDpeZroaQcgC5pDq3kleLzxn/J8nnuns/1ZwM3g4BcIXY6+nU+rH+3DW2bbjagUD7sUGe6
+	IZCmHneCegdURMb7H86hdNy/
+X-Google-Smtp-Source: AGHT+IENf5iIM0eyUUKKI+rIQnGA5rELVSy2jGiVzJtZlwGnyitqzrPGGRO+n/bqFHmHqnjQEDg7ZA==
+X-Received: by 2002:ac2:4c4c:0:b0:542:7217:361a with SMTP id 2adb3069b0e04-54272173890mr3514721e87.10.1736249493006;
+        Tue, 07 Jan 2025 03:31:33 -0800 (PST)
+Received: from eriador.lan (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-542235f658csm5169219e87.44.2025.01.07.03.31.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Jul 2025 08:25:35 -0700 (PDT)
-Date: Tue, 1 Jul 2025 12:25:12 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Waqar Hameed <waqar.hameed@axis.com>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
-	Julien Panis <jpanis@baylibre.com>,
-	William Breathitt Gray <wbg@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Cosmin Tanislav <cosmin.tanislav@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matteo Martelli <matteomartelli3@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?utf-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>,
-	Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Karol Gugala <kgugala@antmicro.com>,
-	Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+        Tue, 07 Jan 2025 03:31:31 -0800 (PST)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Karol Herbst <kherbst@redhat.com>,
+	Lyude Paul <lyude@redhat.com>,
+	Danilo Krummrich <dakr@redhat.com>,
+	Harry Wentland <harry.wentland@amd.com>,
+	Leo Li <sunpeng.li@amd.com>,
+	Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	Xinhui Pan <Xinhui.Pan@amd.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Peter Senna Tschudin <peter.senna@gmail.com>,
+	Ian Ray <ian.ray@ge.com>,
+	Martyn Welch <martyn.welch@collabora.co.uk>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
 	Alim Akhtar <alim.akhtar@samsung.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Souradeep Chowdhury <quic_schowdhu@quicinc.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Stefan Agner <stefan@agner.ch>,
+	Alison Wang <alison.wang@nxp.com>,
+	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
 	Shawn Guo <shawnguo@kernel.org>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, kernel@axis.com,
-	linux-iio@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-mmc@vger.kernel.org, imx@lists.linux.dev,
-	netdev@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-spi@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
-	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <aGP92Aqcxt-x78nu@geday>
-References: <pnd7c0s6ji2.fsf@axis.com>
+	Fabio Estevam <festevam@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Dave Airlie <airlied@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Gurchetan Singh <gurchetansingh@chromium.org>,
+	Chia-I Wu <olvaffe@gmail.com>,
+	Zack Rusin <zack.rusin@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Jani Nikula <jani.nikula@intel.com>
+Subject: Re: [PATCH v2 0/5] drm/connector: make mode_valid() callback accept const mode pointer
+Date: Tue,  7 Jan 2025 13:31:28 +0200
+Message-ID: <173624946815.1500596.321177900833598022.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
+References: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_082537_963138_1CEF01A4 
-X-CRM114-Status: GOOD (  15.51  )
-X-Mailman-Approved-At: Wed, 06 Aug 2025 03:45:50 -0700
+X-CRM114-CacheID: sfid-20250107_033134_832593_75287A45 
+X-CRM114-Status: GOOD (  11.69  )
+X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,28 +179,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
-> When `devm_add_action_or_reset()` fails, it is due to a failed memory
-> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-> anything when error is `-ENOMEM`. Therefore, remove the useless call to
-> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-> return the value instead.
+On Sat, 14 Dec 2024 15:37:04 +0200, Dmitry Baryshkov wrote:
+> While working on the generic mode_valid() implementation for the HDMI
+> Connector framework I noticed that unlike other DRM objects
+> drm_connector accepts non-const pointer to struct drm_display_mode,
+> while obviously mode_valid() isn't expected to modify the argument.
+> 
+> Mass-change the DRM framework code to pass const argument to that
+> callback.
+> 
+> [...]
 
-Hi Waqar,
+Applied to drm-misc-next, thanks!
 
-thank you for the patch. However I personally advise you to split the
-patches per-file and remember to then precede each individual patch
-subject with the proper subsystem and driver touched.
+[1/5] drm/encoder_slave: make mode_valid accept const struct drm_display_mode
+      commit: 7a5cd45fab0a2671aa4ea6d8fb80cea268387176
+[2/5] drm/amdgpu: don't change mode in amdgpu_dm_connector_mode_valid()
+      commit: b255ce4388e09f14311e7912d0ccd45a14a08d66
+[3/5] drm/sti: hda: pass const struct drm_display_mode* to hda_get_mode_idx()
+      commit: 5f011b442006ccb29044263df10843de80fc0b14
+[4/5] drm/connector: make mode_valid_ctx take a const struct drm_display_mode
+      commit: 66df9debcb29d14802912ed79a9cf9ba721b51a4
+[5/5] drm/connector: make mode_valid take a const struct drm_display_mode
+      commit: 26d6fd81916e62d2b0568d9756e5f9c33f0f9b7a
 
-While this looks like a nit-pick, it really isn't, and my suggestion
-will make reviewing much more easier and you'll get your Reviewed-by's
-and Acked-by's much more smoothly.
+Best regards,
+-- 
+With best wishes
+Dmitry
 
-The cover-letter should probably be preceded by "treewide" instead of
-a specific subsystem.
-
-Thank you,
-Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
