@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3D2E77188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 12:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F10C4E77188
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 12:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kOlVA8wPM+wSecirIAbqteEzPa7YVz4x96rLo7mN5lc=; b=OtEqJHyOoWJetE
-	wuB0ToQ+9Rv4bFuKEqjJ7ikdkQHAUWxJVKDWT3jAkwEPH9xVUcEEmd25BrwtCnvudDOh+toEnVMsF
-	+d/zbUKyrUFcXKSYscjUB7OvW1O0+ZaN/Xz05oOq1Lll1P4+ucTv9wfEjGvKtzKlo/WbiphSdReH7
-	Eq5uUDr2/QvqRQwQ6h7JAPd4Kpx8VJJWQ765Mg4OzO4NoB4Y+Td1lFRPo8BB+xqq86G2zcHYCG2gr
-	7EcQhbCRsJU4jO+M8p6dQga1OTqVvM8L9wrrlPvionXgV0O9N0Js6EgDuNTsbidFH73fUy0sZSuLM
-	/03+V0kzcd8+CR69IoDQ==;
+	List-Owner; bh=tUWpEwf9zm65ROF0iOhV+WTIVm2jqrAPsu6cNALiFtI=; b=vL63D6S5Ncrq3o
+	QMWM/xWexRP51vS8jfdxDQ8IfTJN2tp951y9uK3c2F//LvN9zvQP3/SH86ZvZhWPE5lwjKVt9BNhh
+	d6+U4EM1fzNYyBx8KG1/6c0c71ivsz91V7Ko11bNAX+Ar+4RT/AGezbZqa/8ywigtw60jD4gWk8H5
+	oBiKG6YO2nrCmbQhUxmbFb0I9EVtj3CWjcAoSgGkiDhYUH+kr02TjeQtLSAqO4y1TNR54GORQGo5J
+	clY6xxclrBTU7z+vnbojcZn0gNeByKmLmqWfhJAI1win0Z2GbwUjvMprWxyETmS5dd7dUj+P6Bqe6
+	+U0FQv6Ge2FS/60MVUQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVVKb-00000008SNm-0HyE;
-	Wed, 08 Jan 2025 12:38:41 +0000
-Received: from layka.disroot.org ([178.21.23.139])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVUXA-00000008HQZ-3FhE;
-	Wed, 08 Jan 2025 11:47:37 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 4BEF325BCB;
-	Wed,  8 Jan 2025 12:47:32 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BtPQKoG2eIOz; Wed,  8 Jan 2025 12:47:28 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1736336848; bh=1pkpQsa+REF1tJCdkKoGqcXMk6p5YIj1+XA5lPxMgnc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=I3WRS7ezJmFQ+xQ8t0So04riW667+GToWi2GIZFNUliGjBfBxGRNaJjwHoq+4Pq9w
-	 Q264UquhenbnJhG73fwVWn9UyDlt0DDiqkp1OPio8AT0yyd/UyNwKKzOZYGBauGQlr
-	 mn5v/ZgZKS3L0s0HvOdZ5YF5beXpEsmquYlyNYW0fRBQzBeDwrebJxLKlHyv7NS1E3
-	 Iu+PV23r/ZbXAEcDJ7hvvEooXUy/sRfYI6fsdrYfVYnKys7C7OTUiTZAeP5HA9F1Ju
-	 CN3MMjLrfLYzuoDR9hbXegQShRnqKtCRrbIuiMa1RepGMQT//+mYPUMj45sC01Sgld
-	 PCGbILDHQyAFA==
-From: Yao Zi <ziyao@disroot.org>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-clk@vger.kernel.org,
+	id 1tVVKk-00000008SQk-1lr2;
+	Wed, 08 Jan 2025 12:38:50 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tVUcX-00000008Ip8-17JY
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Jan 2025 11:53:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=rools
+	kztbdlbAA/+HUHVgEBvkV4MLFCTYz9LciF0cIw=; b=P4GHrMZxeL1Pef8GJlNw0
+	3tT/Qkj0GBSgHCQheCF9E0PNdiHtVTjeRBeBn3GjceTOcYFgpRww7AYNnqXpqJY1
+	gvc83pA61i2m2FMX9lyZk3JcNt/MmpGwJ4KQ/5U0dkrXURfdyEa4DoRJA6FL7jSl
+	blQKs50oYIFOYiBnsKxUco=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDHpyUCZ35n8Xn7EQ--.26804S8;
+	Wed, 08 Jan 2025 19:52:46 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Add UART clocks for RK3528 SoC
-Date: Wed,  8 Jan 2025 11:46:06 +0000
-Message-ID: <20250108114605.1960-7-ziyao@disroot.org>
-In-Reply-To: <20250108114605.1960-2-ziyao@disroot.org>
-References: <20250108114605.1960-2-ziyao@disroot.org>
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	robh@kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v9 06/11] drm/rockchip: vop2: Introduce vop hardware version
+Date: Wed,  8 Jan 2025 19:52:23 +0800
+Message-ID: <20250108115233.17729-7-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250108115233.17729-1-andyshrk@163.com>
+References: <20250108115233.17729-1-andyshrk@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: _____wDHpyUCZ35n8Xn7EQ--.26804S8
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Xry3tF47Cry8WF4fWF1xXwb_yoWxKw1xpF
+	W7AFW5WrWxGa1qgw4kJay3ZF4aywn2yay7JanrGw13t3sxKr9rGan0qF1ayFZ8tr92kr4j
+	yFs3ArW5WF4jyr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07joeHDUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQDOXmd+XnnQkAABsG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_034736_942318_242BD49E 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250108_035309_647428_726733F8 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,92 +84,200 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing clocks in UART nodes for RK3528 SoC.
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
+There is a version number hardcoded in the VOP VERSION_INFO
+register, and the version number increments sequentially based
+on the production order of the SoC.
+
+So using this version number to distinguish different VOP features
+will simplify the code.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+
 ---
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 37fd40377076..5b334690356a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -168,7 +168,8 @@ cru: clock-controller@ff4a0000 {
- 		uart0: serial@ff9f0000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xff9f0000 0x0 0x100>;
--			clock-frequency = <24000000>;
-+			clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -178,6 +179,8 @@ uart0: serial@ff9f0000 {
- 		uart1: serial@ff9f8000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xff9f8000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -187,6 +190,8 @@ uart1: serial@ff9f8000 {
- 		uart2: serial@ffa00000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xffa00000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -195,6 +200,8 @@ uart2: serial@ffa00000 {
+(no changes since v6)
+
+Changes in v6:
+- Add a blank line after hardware version check code
+
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+- Add hardware version check
+
+Changes in v2:
+- Introduce vop hardware version
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 26 ++++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 11 +++++++++
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  3 +++
+ 3 files changed, 33 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index d65df005bb94..7290a978c669 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -354,7 +354,7 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
  
- 		uart3: serial@ffa08000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
-+			clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
-+			clock-names = "baudclk", "apb_pclk";
- 			reg = <0x0 0xffa08000 0x0 0x100>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -204,6 +211,8 @@ uart3: serial@ffa08000 {
- 		uart4: serial@ffa10000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xffa10000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -213,6 +222,8 @@ uart4: serial@ffa10000 {
- 		uart5: serial@ffa18000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xffa18000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -222,6 +233,8 @@ uart5: serial@ffa18000 {
- 		uart6: serial@ffa20000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xffa20000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
-@@ -231,6 +244,8 @@ uart6: serial@ffa20000 {
- 		uart7: serial@ffa28000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xffa28000 0x0 0x100>;
-+			clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
-+			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
+ static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
+ {
+-	if (vop2->data->soc_id == 3588) {
++	if (vop2->version == VOP_VERSION_RK3588) {
+ 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
+ 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
+ 			return true;
+@@ -407,7 +407,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 	if (modifier == DRM_FORMAT_MOD_INVALID)
+ 		return false;
+ 
+-	if (vop2->data->soc_id == 3568 || vop2->data->soc_id == 3566) {
++	if (vop2->version == VOP_VERSION_RK3568) {
+ 		if (vop2_cluster_window(win)) {
+ 			if (modifier == DRM_FORMAT_MOD_LINEAR) {
+ 				drm_dbg_kms(vop2->drm,
+@@ -418,7 +418,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 	}
+ 
+ 	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
+-		if (vop2->data->soc_id == 3588) {
++		if (vop2->version == VOP_VERSION_RK3588) {
+ 			if (!rockchip_afbc(plane, modifier)) {
+ 				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
+ 				return false;
+@@ -817,6 +817,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+ static void vop2_enable(struct vop2 *vop2)
+ {
+ 	int ret;
++	u32 version;
+ 
+ 	ret = pm_runtime_resume_and_get(vop2->dev);
+ 	if (ret < 0) {
+@@ -836,10 +837,20 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
+ 	}
+ 
++	version = vop2_readl(vop2, RK3568_VERSION_INFO);
++	if (version != vop2->version) {
++		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
++		return;
++	}
++
++	/*
++	 * rk3566 share the same vop version with rk3568, so
++	 * wen need to use soc_id for identification here.
++	 */
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+ 
+-	if (vop2->data->soc_id == 3588)
++	if (vop2->version == VOP_VERSION_RK3588)
+ 		rk3588_vop2_power_domain_enable_all(vop2);
+ 
+ 	vop2_writel(vop2, RK3568_REG_CFG_DONE, RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
+@@ -920,7 +931,7 @@ static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
+ 
+ static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
+ {
+-	return (vop2->data->soc_id != 3566 && vop2->data->soc_id != 3568);
++	return vop2->version != VOP_VERSION_RK3568;
+ }
+ 
+ static bool vop2_gamma_lut_in_use(struct vop2 *vop2, struct vop2_video_port *vp)
+@@ -1259,7 +1270,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		&fb->format->format,
+ 		afbc_en ? "AFBC" : "", &yrgb_mst);
+ 
+-	if (vop2->data->soc_id > 3568) {
++	if (vop2->version > VOP_VERSION_RK3568) {
+ 		vop2_win_write(win, VOP2_WIN_AXI_BUS_ID, win->data->axi_bus_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_YRGB_R_ID, win->data->axi_yrgb_r_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_UV_R_ID, win->data->axi_uv_r_id);
+@@ -1319,7 +1330,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		 * this bit is gating disable, we should write 1 to
+ 		 * disable gating when enable afbc.
+ 		 */
+-		if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
++		if (vop2->version == VOP_VERSION_RK3568)
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+ 		else
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 1);
+@@ -2498,6 +2509,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 	vop2->dev = dev;
+ 	vop2->data = vop2_data;
+ 	vop2->ops = vop2_data->ops;
++	vop2->version = vop2_data->version;
+ 	vop2->drm = drm;
+ 
+ 	dev_set_drvdata(dev, vop2);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 37cdf0ed9455..485462749121 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -13,6 +13,15 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+ 
++#define VOP2_VERSION(major, minor, build)	((major) << 24 | (minor) << 16 | (build))
++
++/* The new SOC VOP version is bigger than the old */
++#define VOP_VERSION_RK3568	VOP2_VERSION(0x40, 0x15, 0x8023)
++#define VOP_VERSION_RK3588	VOP2_VERSION(0x40, 0x17, 0x6786)
++#define VOP_VERSION_RK3528	VOP2_VERSION(0x50, 0x17, 0x1263)
++#define VOP_VERSION_RK3562	VOP2_VERSION(0x50, 0x17, 0x4350)
++#define VOP_VERSION_RK3576	VOP2_VERSION(0x50, 0x19, 0x9765)
++
+ #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
+ 
+ #define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
+@@ -242,6 +251,7 @@ struct vop2_ops {
+ struct vop2_data {
+ 	u8 nr_vps;
+ 	u64 feature;
++	u32 version;
+ 	const struct vop2_ops *ops;
+ 	const struct vop2_win_data *win;
+ 	const struct vop2_video_port_data *vp;
+@@ -259,6 +269,7 @@ struct vop2_data {
+ };
+ 
+ struct vop2 {
++	u32 version;
+ 	struct device *dev;
+ 	struct drm_device *drm;
+ 	struct vop2_video_port vps[ROCKCHIP_MAX_CRTC];
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 8160f76de995..248b9e6729e9 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1627,6 +1627,7 @@ static const struct vop2_ops rk3588_vop_ops = {
+ };
+ 
+ static const struct vop2_data rk3566_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1645,6 +1646,7 @@ static const struct vop2_data rk3566_vop = {
+ };
+ 
+ static const struct vop2_data rk3568_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1663,6 +1665,7 @@ static const struct vop2_data rk3568_vop = {
+ };
+ 
+ static const struct vop2_data rk3588_vop = {
++	.version = VOP_VERSION_RK3588,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF | VOP2_FEATURE_HAS_VO1_GRF |
+ 		   VOP2_FEATURE_HAS_VOP_GRF | VOP2_FEATURE_HAS_SYS_PMU,
+ 	.nr_vps = 4,
 -- 
-2.47.1
+2.34.1
 
 
 _______________________________________________
