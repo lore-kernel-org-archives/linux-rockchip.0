@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA0FE77199
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 10:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 867F7E77188
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 11:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bIKTQF70HxGDrvFJsGWwHGbzpYBUWDY1US++7qQv/wA=; b=fDuXERFyfxu5DF
-	iGfacUPU2HIYrBZXNMAQXoidFzUHIDIpYncNBodIDf9pAJcD6CuXkX/dUmjBVINMP/jk0amAtfES3
-	yJjeU1rg6B8zv3VLRQwNNlmS+PCRUezuwi8COXDrqrb3bEwxToiHeO5GR+BMceNW8tZhaJ3L8t12q
-	BDgYv5/TJFkvXP6Mz6lyR9perlhuASEtH92yAngiUSYm89JOYP81IcG0b6SnRbbPgH6kVvOX4XQ+N
-	ao7EcZP8/av9jNkXfIHBN/JUcHrJ4PLwGbaDEIoMfXBA+U7vsDHsn3SJ6SieT/bI+Z6sAhBX9OkAQ
-	47AzqpICOzvK4h2d2k8g==;
+	List-Owner; bh=dzxE7aw3IMW18lcQsAcOXLr6/CYw8e2OfEfi9qQwgGI=; b=ZmsLidOFNLcliw
+	QgGUGtslmH5ni5qtAjY8lHrTceZPQggalicljXywbx4Oe0A9AUqBhkoQtKdhtNtzePgIbyfed/BF3
+	yVRk0gLcLH3xST9c21v3H/kJpYdobP2dD/iWsfdVtlDi5i+ve/8kpMyUw7zItBLcXmRATqmaIHQtG
+	AX/eWg7BX8OtplYhp7g8hi+vEkvhXMXI+P4Jmh8+cyJbOUodAdGMdnPBSjto8Y4cDqJYXsWTAX0ia
+	9o0oXJ6VCRVocASeJYHrxvOA3vWaa+ZGe9/Ig1EW0iH+BbZl3fKkG2nSDt0e1ac2tqPX0RDjpdKex
+	wiBjaNJscaqSR+lNGuSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVSzy-00000007uu1-17w6;
-	Wed, 08 Jan 2025 10:09:14 +0000
+	id 1tVTrS-000000088Bw-11PQ;
+	Wed, 08 Jan 2025 11:04:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVSsY-00000007tkN-28NL;
-	Wed, 08 Jan 2025 10:01:35 +0000
+	id 1tVTkw-000000085tF-2FTN;
+	Wed, 08 Jan 2025 10:57:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=haf0qmSyrhLVsKjdMgPxImS4Aw0qzcWAx31UOE4mIDU=; b=cQ+xelv0EXXpYwUIN56Ns4pU9T
-	o3++o3Wo3sicI2WdZ7pmo0RAztn0ebpn+DC3b1wm3IcVyVt6BBfMrbJkTYtDxaXvgdaI+0s3SkZlz
-	GXAVhCMxYzy7jAoiE+xBq5bCdIv3tOuaJCSGl56XtRb2l2djzaQMN2K0qRtHr2qLHZ4v2++OqbtCC
-	uHNNKqtJq1SYX58L1K6y0RnBJaq1+idfLAla9oZkZ6Un+05JIZOa0aE79OsOnAGPL9Nvk+JysosWN
-	rHYxdpqiz7cZO7pJ9Nex5m7PMRJsczeCGU1VPRel3eZxv9HUKdy9Q9NrBmbiNhy6L8Y8hoxjG3wWk
-	ejvOvmmw==;
-Received: from i53875aad.versanet.de ([83.135.90.173] helo=diego.localnet)
+	bh=/v21PJ92BLiZLaAmySzflUsqw2duXejF1cLmBsDVtgo=; b=uChUI2wJmVcPzZGKbM1an/vu2x
+	6hxl3i197uqlHZcgIguTOlS0VPQ9NvVaGnCBoJvCWtb9wA5NxEexO+5ZNt4FZFyRD3L2OEPKPgY/m
+	LmKvG/VfGpeQ9HBAqHI65auUkT2sK5X2L8KaWQ4po0psz3qEaqeLfq2IcHCyO/ZvKyl4rz8cqaDHV
+	5HpA21AIuTSeZzPFoAm4u4BTGjWsJ/VVUH18A7AWr8f+fjhM618FHAm6vJnzngTAb3mDhDA/o/k2b
+	vfWqlBftJWv8mzzuBvjrrc/prYcqlY1Bt2o52KW6QTXwgLjY3ecCYk9ueSQ7PwSMGxkPqrpJGUSPb
+	ZTOioeng==;
+Received: from i53875aad.versanet.de ([83.135.90.173] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tVSsV-0004XV-3D; Wed, 08 Jan 2025 11:01:31 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Alexey Charkov <alchark@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexey Charkov <alchark@gmail.com>
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add SPDIF nodes to RK3588(s) device
- trees
-Date: Wed, 08 Jan 2025 11:01:30 +0100
-Message-ID: <1950286.IobQ9Gjlxr@diego>
-In-Reply-To: <20250108-rk3588-h96-max-v58-v2-2-522301b905d6@gmail.com>
+	id 1tVTku-0004wu-FB; Wed, 08 Jan 2025 11:57:44 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH v2 0/3] arm64: dts: rockchip: Add H96 Max V58 (RK3588 based TV box)
+Date: Wed,  8 Jan 2025 11:57:33 +0100
+Message-ID: <173633124859.2752317.14863192546901710024.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250108-rk3588-h96-max-v58-v2-0-522301b905d6@gmail.com>
 References: <20250108-rk3588-h96-max-v58-v2-0-522301b905d6@gmail.com>
- <20250108-rk3588-h96-max-v58-v2-2-522301b905d6@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_020134_720654_8A9B084E 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20250108_025746_572696_83381DDA 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,186 +80,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alexey,
 
-Am Mittwoch, 8. Januar 2025, 10:09:07 CET schrieb Alexey Charkov:
-> RK3588s has four SPDIF transmitters, and the full RK3588 has six.
-> They are fully compatible to RK3568 ones. Add respective nodes
-> to .dtsi files.
-
-While it may seem that way, we still want soc-specific compatibles,
-to future-proof this.
-
-I.e. going the the
-	compatible = "rockchip,rk3588-spdif", "rockchip,rk3568-spdif";
-way, so that now things can just match against the rk3568, but if some
-fault emerges later on the code can be fixed with the DT staying just
-compatible.
-
-The spdif also has an example already for all the spdif variants that are
-compatible to the rk3066 [3], so it'd need another "items" block for things
-being compatible with the rk3568.
-
-
-Heiko
-
-
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
-
-> Adapted from vendor sources at [1] and [2], respectively
+On Wed, 08 Jan 2025 13:09:05 +0400, Alexey Charkov wrote:
+> Add support for H96 Max V58: a compact TV box based on Rockchip
+> RK3588 SoC [1] that ships with Android by default.
 > 
-> [1] https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> [2] https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> Note that there is no publicly available hardware documentation,
+> nor vendor sources to be used as a reference, so this implementation
+> is best effort based on poking around my board and staring at the
+> decompiled stock DTB. It works for me, but improvement suggestions
+> are very much welcome.
 > 
-> Signed-off-by: Alexey Charkov <alchark@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi  | 64 ++++++++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 30 ++++++++++++
->  2 files changed, 94 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> index 8cfa30837ce72581d0b513a8274ab0177eb5ae15..ff0c9191737b34979a408067df1a664dbe87395f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> @@ -1318,6 +1318,21 @@ vop_mmu: iommu@fdd97e00 {
->  		status = "disabled";
->  	};
->  
-> +	spdif_tx2: spdif-tx@fddb0000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfddb0000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF2_DP0_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF2>, <&cru HCLK_SPDIF2_DP0>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac1 6>;
-> +		interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		power-domains = <&power RK3588_PD_VO0>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	i2s4_8ch: i2s@fddc0000 {
->  		compatible = "rockchip,rk3588-i2s-tdm";
->  		reg = <0x0 0xfddc0000 0x0 0x1000>;
-> @@ -1335,6 +1350,21 @@ i2s4_8ch: i2s@fddc0000 {
->  		status = "disabled";
->  	};
->  
-> +	spdif_tx3: spdif-tx@fdde0000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfdde0000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF3_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF3>, <&cru HCLK_SPDIF3>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac1 7>;
-> +		interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		power-domains = <&power RK3588_PD_VO1>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	i2s5_8ch: i2s@fddf0000 {
->  		compatible = "rockchip,rk3588-i2s-tdm";
->  		reg = <0x0 0xfddf0000 0x0 0x1000>;
-> @@ -2016,6 +2046,40 @@ &i2s3_sdi
->  		status = "disabled";
->  	};
->  
-> +	spdif_tx0: spdif-tx@fe4e0000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfe4e0000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF0_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF0>, <&cru HCLK_SPDIF0>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac0 5>;
-> +		interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		pinctrl-0 = <&spdif0m0_tx>;
-> +		pinctrl-names = "default";
-> +		power-domains = <&power RK3588_PD_AUDIO>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
-> +	spdif_tx1: spdif-tx@fe4f0000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfe4f0000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF1_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF1>, <&cru HCLK_SPDIF1>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac1 5>;
-> +		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		pinctrl-0 = <&spdif1m0_tx>;
-> +		pinctrl-names = "default";
-> +		power-domains = <&power RK3588_PD_AUDIO>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	gic: interrupt-controller@fe600000 {
->  		compatible = "arm,gic-v3";
->  		reg = <0x0 0xfe600000 0 0x10000>, /* GICD */
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-> index 4a950907ea6f51c1d4123d52b73b726226db37bc..ba1bcd12c558847680aaaa2377d6d0a84fdaa1db 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-> @@ -67,6 +67,21 @@ u2phy1_otg: otg-port {
->  		};
->  	};
->  
-> +	spdif_tx5: spdif-tx@fddb8000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfddb8000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF5_DP1_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF5>, <&cru HCLK_SPDIF5_DP1>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac1 22>;
-> +		interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		power-domains = <&power RK3588_PD_VO0>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	i2s8_8ch: i2s@fddc8000 {
->  		compatible = "rockchip,rk3588-i2s-tdm";
->  		reg = <0x0 0xfddc8000 0x0 0x1000>;
-> @@ -84,6 +99,21 @@ i2s8_8ch: i2s@fddc8000 {
->  		status = "disabled";
->  	};
->  
-> +	spdif_tx4: spdif-tx@fdde8000 {
-> +		compatible = "rockchip,rk3568-spdif";
-> +		reg = <0x0 0xfdde8000 0x0 0x1000>;
-> +		assigned-clock-parents = <&cru PLL_AUPLL>;
-> +		assigned-clocks = <&cru CLK_SPDIF4_SRC>;
-> +		clock-names = "mclk", "hclk";
-> +		clocks = <&cru MCLK_SPDIF4>, <&cru HCLK_SPDIF4>;
-> +		dma-names = "tx";
-> +		dmas = <&dmac1 8>;
-> +		interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		power-domains = <&power RK3588_PD_VO1>;
-> +		#sound-dai-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	i2s6_8ch: i2s@fddf4000 {
->  		compatible = "rockchip,rk3588-i2s-tdm";
->  		reg = <0x0 0xfddf4000 0x0 0x1000>;
-> 
-> 
+> [...]
+
+Applied, thanks!
+
+[1/3] dt-bindings: arm: rockchip: Add H96 Max V58 TV box
+      commit: 6e9efe826b02ccd68700be691ce9addbd5c81e40
+[3/3] arm64: dts: rockchip: Add H96 Max V58 TV Box based on RK3588 SoC
+      commit: b53864811b35247193856a45567d416b8341ae7d
+
+I've just dropped the spdif bits from the board in patch3 to be
+handled separately. (And moved the status in spi2 at the end of
+the property list)
 
 
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
