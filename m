@@ -4,63 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDB02E77188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 08:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F49E77199
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 08:37:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NWF1qEuT84NGAOD7tEcTGHXApFRZ9BhOHvAyOjP7jaY=; b=NQje0V5aGVKX/f
-	n74EQ7WLkkz5KEWi+etnc1AICuOaSqc4jhZSW8d2+Ea+BOPniapTk05nzP7KLR1JEia9FITcgfDgq
-	dSSnlIlqOV9Hq8kJXzpYyJ49U9oFE6YaW9gHbO3lQEpOxzC3AWv7Ym3+/iktF09+oTm+bK6+As00K
-	SL2TGPnB3ERMWpv4Vt5zPCZUEnKcpLHjZ0U3kZ5ak7vonew0QKVUdyxV+WolXRH+m7T3z7JwSjPXc
-	+RHcmrQR+jYYY74SLuBR+vqNqMlIs61qk3cywzcgwQT7ejApxwXTX2AyYQ8VhYOjzaFbWrDsEjep3
-	xKP9mZJ6Vabcj6hyVoKw==;
+	List-Owner; bh=GQ9dbfNhE7mzsO5z2qGiP3j8sCNDnvr+Y8Tp9Lfj+4k=; b=dggu7qJGmq0E57
+	6gCCvhm9l/N8SNveLS9sew1FjDeMzNythG0Dzv18w1z5tLM4Q+FZVAi3E6F1ZfdxurOaxFKnbg6cv
+	Qyb+P1KibWETEg3KaTmIJiWgsIJX89xBsOrNKiBKsOUG0A5LB30airUeiYdQxFu39oBq0kp5w78VX
+	dVSqYWT4Oi5QXI5E+0bL4FJOzwZsSEczb3VDtgNL/TxBLB13WCJkaaJls2pbrz2/YaAP6nFq949hY
+	FGT//HY6Fcg06RqObStMSdfcWc+gCXZ4S0xFdyWsjODkR4umXvFHTboft/g0B2Wiev3lChufapOnc
+	Hm1p/u60d8m8X29xRclA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVRH0-00000007WkE-2as1;
-	Wed, 08 Jan 2025 08:18:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tVRYw-00000007aiE-1k78;
+	Wed, 08 Jan 2025 08:37:14 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVRF2-00000007WVg-0943;
-	Wed, 08 Jan 2025 08:16:41 +0000
+	id 1tVQ6I-00000007MKF-2eSG;
+	Wed, 08 Jan 2025 07:03:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 53FA15C4B58;
-	Wed,  8 Jan 2025 08:15:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63AC8C4CEE0;
-	Wed,  8 Jan 2025 08:16:38 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3DA57A40512;
+	Wed,  8 Jan 2025 07:01:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E91AC4CEE0;
+	Wed,  8 Jan 2025 07:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736324199;
-	bh=RYpqzehaxcbuCAQe6zrPlG3oflSe5JINhcfNw0oboaw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SN9rihRiNeZ6JiTIV9G8AhvKNqTV65xqUUlJ6zm3F6KFLgu21kpDjS7GaMDz/nlj1
-	 7AEZWS6jajD7fdAa9NdRFU+z29OUbylvSL9N2/fvCjkH1itEXOr8uovDc/n5pmRRR/
-	 pRd6B9NjZhNcQhFeuTU9YRYRgvnbY7LdgOcPQ9eBwJ0GeT8OGD1jLY2QcRTcomk9/b
-	 eGJf/tY+XVwTrCLBpR1qGY0M2vDb5DlKLyFkJvyG4EuLPUmXzfhEJvA0GqP1Zb8/Ps
-	 6stQQ35xCMsudVnMco5Sv8x8WNMIgXprRSzPzULtFEWsJEFROzMEXEERRovyteLcHh
-	 4c5v4d0woNtMQ==
-Date: Wed, 8 Jan 2025 09:16:35 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
-	Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, linux-kernel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 2/7] dt-bindings: PCI: dw: rockchip: Add rk3576 support
-Message-ID: <tsxho4vhadrl6tsb2k5e2vxaeuun3k5pdkojzwjruqkof54dyd@gs3wsuxzwu4a>
-References: <20250107074911.550057-1-kever.yang@rock-chips.com>
- <20250107074911.550057-3-kever.yang@rock-chips.com>
+	s=k20201202; t=1736319813;
+	bh=SvIK420w+PZ2NiVdG1ir7vz8pGZ7XKbU9DcUEGGjBZc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Gu/SpvYx2PuVqAJpFMIuihbR8u3bhfU3lq/RFg7Jv+wL4kR6cR4PvDipPriMA7eHa
+	 2mq92zoj+r4fiM4QcDfqUB/DNN1B803gLuz/R124kgDf1Ki+Mna/cv2M+0OZd80Ui4
+	 2uj39Zq0UABw0I8cKRR631Z2LNiyVDawUkIkoFLI+t5weLvvu+6rb/G6O5s6AUmRdg
+	 793aFIo/6glIXAnN3xvo4p4yBajwLwpK3wamO1GPkGYSD4oSdGCEaSnWDgWkEyGfDt
+	 OTTxlutHl9qCwDP4RvkKHD0YNOn5fRoyHrC6suDh0ysKQlWEqMZYJiCK9Me/sgofmW
+	 ubz30TEQAbZBg==
+Message-ID: <1ef2ece5-f4ed-46ca-9bf5-75f898565a62@kernel.org>
+Date: Wed, 8 Jan 2025 08:03:28 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250107074911.550057-3-kever.yang@rock-chips.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] spi: rockchip-sfc: Add rockchip,fspi compatible
+To: Jon Lin <jon.lin@rock-chips.com>, broonie@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ linux-spi@vger.kernel.org
+References: <20250107154755.2037197-1-jon.lin@rock-chips.com>
+ <20250107154755.2037197-2-jon.lin@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250107154755.2037197-2-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_001640_124172_6B2911C4 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20250107_230334_803212_8F334097 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +118,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 07, 2025 at 03:49:06PM +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, with msi interrupt directly to gic instead
-> of to gic its, so
-> - no its support is required and the 'msi-map' is not need anymore,
-> - a new 'msi' interrupt is needed.
+On 07/01/2025 16:47, Jon Lin wrote:
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
-> 
-> Changes in v4:
-> - Fix wrong indentation in dt_binding_check report by Rob
-> 
-> Changes in v3:
-> - Fix dtb check broken on rk3588
-> - Update commit message
-> 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../devicetree/bindings/pci/rockchip-dw-pcie-common.yaml      | 4 +++-
->  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml   | 4 +---
->  2 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> index cc9adfc7611c..e4fcc2dff413 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> @@ -81,7 +81,9 @@ properties:
->        - const: msg
->        - const: legacy
->        - const: err
-> -      - const: dma0
-> +      - enum:
-> +          - msi
-> +          - dma0
-
-Commit msg said new interrupt, but this basically replaces existing DMA0
-interrupt. Maybe that's the problem with this common binding and you
-just miss constraining in each device binding. If so: fix also them.
-
-Also: your interrupts property does not match this anymore.
+> diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+> index 59de351499a0..88fbde27925e 100644
+> --- a/drivers/spi/spi-rockchip-sfc.c
+> +++ b/drivers/spi/spi-rockchip-sfc.c
+> @@ -808,6 +808,7 @@ static const struct dev_pm_ops rockchip_sfc_pm_ops = {
+>  };
+>  
+>  static const struct of_device_id rockchip_sfc_dt_ids[] = {
+> +	{ .compatible = "rockchip,fspi"},
+>  	{ .compatible = "rockchip,sfc"},
+I don't understand why you are adding generic compatible which is not
+even used. Use proper SoC specific compatibles and fallbacks when
+applicable (see writing bindings document).
 
 Best regards,
 Krzysztof
-
 
 _______________________________________________
 Linux-rockchip mailing list
