@@ -4,86 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EACDE77199
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 11:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6A6E77199
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 11:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=63OmkSVTmqkMkw9NLeudPia0XFE8m2E4Hbe0JXe97xg=; b=AXKgmL8YAg9vQv
-	ATVrvd1eNZ1RLic+lFr+qk+vOwL9kCEZHcRfLCczpkoBVcdM5mPToLkEGqK8RvVzaR8ovNNoyLNVM
-	abLg/EVCQkVgPS+ViaFbodOfw3o8Nwfm6mPRerPvoBCRNybF0G1hY/LqW7X7K6Q74SP5VWjJ/W4Db
-	Th1MCZTxRfNriC9B5S9AcyDde4v7201qXotKwvUkt1b7V8JkTKGJBgKnPPmDfbcEdkQoP6cgw82XW
-	WMXMp+KEJlFrIkbx4Yr6OAkZ4ttii/gB1VAmOzzwSfGSgFUE4i7Q9883NbecRNj7Xj6z4f3aLdZy/
-	s7NJP+x6bNph8dDP1YvA==;
+	List-Owner; bh=gy4KdtdsaV+aL3NG8/P7Ol8juhu0mP9zbMK7aDs0IdM=; b=K5jGDDF8BpiIbS
+	/wMmkVpFl0cy48cXPT7oeVwzTSFZ02zcuh5bY3jAT0RGr/XDRUWBsa1WNepLFWHIjDqcERe3ms+Pv
+	c1t53zwIXO9ncOfJdDhkj15onkWyY9IOgBeQk4fJx/LlgL0OOx6/xx3q93jUE7XKc4iJnebi49yLv
+	SAsQVZ/nke9xtfSU3yhFlTwv1FNhP1Kra4zLfRZTkwQ0XElQZ+qkxquJxfSBQqCFg4rvLkP3M3zHB
+	heC/W4poUepbbEIgU78w6w2ySGKlUn6aWnnukejRrHudVIJ6+2dqQAxTfKy6yR5V+qheX7iR2ZUYn
+	fzbfSgiCIcKjJBlUKxew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVTse-000000088OC-0Quo;
-	Wed, 08 Jan 2025 11:05:44 +0000
+	id 1tVTyW-000000089qc-3Us1;
+	Wed, 08 Jan 2025 11:11:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVTlG-0000000861v-09Ab;
-	Wed, 08 Jan 2025 10:58:07 +0000
+	id 1tVTqz-0000000882P-3MR3;
+	Wed, 08 Jan 2025 11:04:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=NoqnFYUo08zl9sWUFbQWTKaMIDKJok6y4m0E+eEGjW0=; b=eIMaio5zc/+B4GTx3PuSdSuLPd
-	nDICgbOAAgkMxx8haKwyg7JDocSjvGKLzvzW68TJkq0h/kO4ekwS9IJfder0V2RMwCa0R49+VTPIF
-	lcLoTebP3YurjlCjif8qQzAw+oojrEE1gJzkpBznJhzlcAWZQOjXZrCPVNSI2dYTE6pEZJY+3Z+7l
-	eig/GIGgCrEV8wUak0Ego/S479d+gz/6Qz56BBp1JdxCHnbotZ7fKmdb0sBf9ntF2/0AyVRYT0wnc
-	vlFcqZik8YJq1g6Ln6iQXLNRIbf+6zyOgkYsI2FcUdS7VFeah7e7xyD5U01qAKZfIVPBTxypwqGiC
-	JhBfd5Yw==;
+	bh=yzL9Apxx9PBwEi1gxO5jcG1dhq3hPMCgrw+SZsgCon4=; b=Ylbh2QTaU8quP4cFdlfsmw0sSi
+	HvsL9hrKYUTXoghA79EvxZq5M4bIcYOoujtYJAhTol4h3881Z3+/73XykMiH1e7qlRDoan2nYLQcC
+	Up01P+t18nySj04MnsBY5BhqPKsF5//EI7/Hy4WAzjcmbgAIYkMolJbuQbnIL+WvM/6Ni472pNY5E
+	nfnv0DDyBBNyOvb4To18LXuE1EzyNIXPEyC4TpXVrCx1Ic3Ccg2YteRLzb5grnV7GXEYdHEPdxBE6
+	vKVDSJ8BVX/nXqwrQK/8psG5n3EVFFlphCF8qaL8izjgUrsyl/Zwn+9OFcrneuxvbyhRQA3b9GS59
+	b4rye7pQ==;
 Received: from i53875aad.versanet.de ([83.135.90.173] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tVTkw-0004wu-3A; Wed, 08 Jan 2025 11:57:46 +0100
+	id 1tVTqu-000507-Aa; Wed, 08 Jan 2025 12:03:56 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Kever Yang <kever.yang@rock-chips.com>
+To: Chen-Yu Tsai <wens@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	Simon Xue <xxm@rock-chips.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Liang Chen <cl@rock-chips.com>,
-	linux-pci@vger.kernel.org,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Andy Yan <andyshrk@163.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
+	Chen-Yu Tsai <wens@csie.org>,
 	devicetree@vger.kernel.org,
-	Rob Herring <robh@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Tim Lunn <tim@feathertop.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: (subset) [PATCH v4 0/7] Rockchip: add Rockchip rk3576 EVB1 board
-Date: Wed,  8 Jan 2025 11:57:35 +0100
-Message-ID: <173633124858.2752317.13499985925633362517.b4-ty@sntech.de>
+	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: orangepi-5-plus: Enable USB 3.0 ports
+Date: Wed,  8 Jan 2025 12:03:46 +0100
+Message-ID: <173633412683.2758244.11920236524646659506.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250107074911.550057-1-kever.yang@rock-chips.com>
-References: <20250107074911.550057-1-kever.yang@rock-chips.com>
+In-Reply-To: <20241220161240.109253-1-wens@kernel.org>
+References: <20241220161240.109253-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_025806_074946_94156213 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20250108_030401_853237_91E9700C 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,34 +79,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 07 Jan 2025 15:49:04 +0800, Kever Yang wrote:
-> This patch set is for rockchip rk3576 evb1.
-> Based on the naneng combphy patch from Frank Wang.
+On Sat, 21 Dec 2024 00:12:40 +0800, Chen-Yu Tsai wrote:
+> The Orange Pi 5 Plus has its first USB 3.0 interface on the SoC wired
+> directly to the USB type C port next to the MASKROM button, and the
+> second interface wired to a USB 3.0 hub which in turn is connected to
+> the USB 3.0 host ports on the board, as well as the USB 2.0 connection
+> on the M.2 E-key slot.
 > 
-> This version including the patch adding usb nodes from Frank Wang.
-> 
-> Changes in v4:
-> - Fix wrong indentation in dt_binding_check report by Rob
-> - Update the commit msg with sort rule per required by Krzysztof.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/7] arm64: dts: rockchip: Add rk3576 naneng combphy nodes
-      commit: ddbf63b25866a4a58222d763f9f2d29c309e00e8
-[4/7] arm64: dts: rockchip: add usb related nodes for rk3576
-      commit: 23ec57a32da448cb3415d6abad3457b14c69af25
-[5/7] dt-bindings: arm: rockchip: Sort for boards not in correct order
-      commit: ffd07673f08a03ff5532212ebbd98fbfd0dac00e
-[6/7] dt-bindings: arm: rockchip: Add rk3576 evb1 board
-      commit: 88dc3756ece1d19ab0aa85ceb6ffb4e5f9318ae1
-[7/7] arm64: dts: rockchip: Add rk3576 evb1 board
-      commit: f135a1a07352b848d3d39557413dd1cd3716d930
+[1/1] arm64: dts: rockchip: orangepi-5-plus: Enable USB 3.0 ports
+      commit: a15d12f36eb78692d5c3ebd8a5db7fddf3ea160c
 
-I've dropped the PCIe patches (and pcie nodes from the board)
-to be handled separately and also sorted some things
-(regulator nodes, button nodes) and fixed some empty-lines things
+Renamed the regulator node according to convention (regulator-foo)
+and moved it to its correct alphabetical position.
 
 Best regards,
 -- 
