@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBE3E7719A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 22:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B546BE7719C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 22:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BrpJ4WCnv0Cb52k6e+HNFt+VQAWmLGOCkK3oMoClOFY=; b=Hx065T47judtoV
-	kKdGL9SEqUC3eRvRbiWOh8HFJ95USWK/DI4P4Y4UylBfGaJBUMZCdrkQrNbd/OuHC5KVyTECQmjNi
-	bk2j909v1KdMqLhY7c4xViZv4t/Q6hKKL1leVNDY9cR3LbYnytxe1Kecgi/IY5/lBzBbOrCotMZaY
-	bEGiRAQhrr1Khd5HV8YpJOp4IhOIprB+rj4zwl1zITpF5jNDWfqPQjD0yTqE5OQfpo8xmie+CbYHi
-	RF7rSLXiVf40LJJG/GeZQg0BQioKoaji2kxc1KB19afUXKG/mnn31ec43PLsouGRHGxhZktfAzJl1
-	MQi1GDnzMwuBMVDF957w==;
+	List-Owner; bh=Wdbr/+eAZycTK7Ml0bn6UVoMCvha8E+9pvIED0YAo48=; b=fZlte6nU37IX71
+	s/AdsL5iQKO9/VmQs0MAE9fW+pUw93MNVlUh0knzUE7ocPM8gARvJlHojcGm4VVQgEkdbjUd9KPCb
+	fM+TkNQH0af4ArWqdJNPE33/okW/8G+ywZSChNYEKoUg3HnmZivNevuiCsiRhWXT5NnDSc5fnBU7y
+	PG8XHWGzm0F1yjjx2nI790Y3xwOP2EMLuG0B5ctYVSisrSzM+N0/Q1wfYobq2tMzgW7CSSZT/Yo5Q
+	rmVeKQTEJhItNocPSPem4ZkPXZJ+Ji0lR+x1WggcpWmUGMvxJdEnv6Gen+Uu21E0B8oYgem1BKOGh
+	se9GxvWg51rtkdeIW7vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW1JO-0000000DUJY-00av;
-	Thu, 09 Jan 2025 22:47:34 +0000
+	id 1tW1V7-0000000DVda-1O4M;
+	Thu, 09 Jan 2025 22:59:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW1IA-0000000DUAr-1dp9;
-	Thu, 09 Jan 2025 22:46:19 +0000
+	id 1tW1V4-0000000DVcv-0O7E;
+	Thu, 09 Jan 2025 22:59:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=NWcauDOjKnYU4RcQC5PZBZLk9Ag4Oc862avoOH5RmR8=; b=X0BI3bseCuXzMdWwiok/8TEWjn
-	akAG6GzKjYk4LPTUFpJKrr3V+6LSnWTK9rSiUHwLgQo+QlnQ6Exvjq6gJSEWgYpOOp/kFM+ltqVSj
-	LmkAC8nxr2/OwFP2AhAnue18sS5+F1eUo5I7p/t073PJS+ed8BV13kORxJ42PGPXOjMuzeq1gC3gI
-	o00pJBBJtN/1lzKrY1yyaIE1aFwYu0bnNgaadY70moQUSR5dFBcCT1eg+XuOBaqGXhDw8xWRpeiE7
-	9TDh8db7qb1eaQrwNzpyzE5tniEk0NqnYTYGeyz6ggO9Tdv8FdkGU5B6ppurmtt/FPaCsEHLqC0Q3
-	0PJOPS4Q==;
-Received: from i5e860d05.versanet.de ([94.134.13.5] helo=localhost.localdomain)
+	bh=5X3Tmvihn3grkA7Jge4RjfqiSvPeilgE9yOD+d9FpVI=; b=s+jwsQH2++ZJTa21jBBjugQMXI
+	4bHOZkHr3BtbA6u/uOhHobPv3MGeFWhNFGUl43iw9TYIyTjmoijwv6stOdPuOX44mYtM+Ex4veIlv
+	GanP8Ltk9SSPFArY9HIjzDL6w9HBmiDH9lkAf/YRbJ76vQtfeMTBh+9CdrFBgxC6jT1PLksF27MCM
+	uT5h6cp1P/vX38GEwJikltALOY4zAv1uVLPRdaX6J8i+zNB6LmK+4A346bu7woaR2Pb1GBGscGht6
+	qpjxlF/C8UEv09LkPOGTvCxTCmWsQsAVjWgo7DBUgDUT6zw9zcZF7Od+phqWlT6xPgO3SWYExc5bS
+	MfLPLsiA==;
+Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tW1I3-0005ho-TG; Thu, 09 Jan 2025 23:46:11 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v8 0/4] Orange Pi 5 Max
-Date: Thu,  9 Jan 2025 23:46:01 +0100
-Message-ID: <173646269067.2939804.12592916938678988873.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250109051619.1825-1-honyuenkwun@gmail.com>
-References: <20250109051619.1825-1-honyuenkwun@gmail.com>
+	id 1tW1Uq-0005mI-C2; Thu, 09 Jan 2025 23:59:24 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch, Thomas Zimmermann <tzimmermann@suse.de>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 19/25] drm/rockchip: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Date: Thu, 09 Jan 2025 23:59:23 +0100
+Message-ID: <3227546.fEcJ0Lxnt5@diego>
+In-Reply-To: <20250109150310.219442-20-tzimmermann@suse.de>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-20-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_144618_428653_7250AFE5 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20250109_145938_152774_B6C834CA 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,38 +77,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Donnerstag, 9. Januar 2025, 15:57:13 CET schrieb Thomas Zimmermann:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch to a multiple of 64.
+> =
 
-On Wed, 08 Jan 2025 23:16:14 -0600, Jimmy Hon wrote:
-> Add device-tree for Orange Pi 5 Max
-> 
-> Orange Pi now has 3 SBCs using the RK3588 SOC. Refactor the common parts
-> of the 5 Plus DTS so it can be shared with the 5 Max and the 5 Ultra.
-> The 5 Max and 5 Ultra have a similar credit-card sized board layout and
-> will also share a DTSI between them.
-> 
-> [...]
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: "Heiko St=FCbner" <heiko@sntech.de>
+> Cc: Andy Yan <andy.yan@rock-chips.com>
 
-Applied, thanks!
+I've looked up the patch implementing the new functionality - patch2 of
+this series [0] and that looks really nice to get proper helpers and not
+having many drivers open-coding the same functionality in different ways.
 
-[1/4] arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
-      commit: ea63f4666e483b48a49d9774d8c680f81165ff06
-[2/4] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Max
-      commit: 6327f2d83dce514d43134dedb766df000420b779
-[3/4] arm64: dts: rockchip: Add Orange Pi 5 Max board
-      commit: c600d252dc52ffc29982ee6873b6eee064193752
+So for the Rockchip adaptation:
 
-The whole hdmi1 thing still needs to wait for the phy maintainer to
-pick up phy driver patches, so I've only taken the first patches
-for now.
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+and looking forward to this getting merged :-)
+
+Thanks a lot for working on that
+Heiko
+
+[0] https://patchwork.kernel.org/project/linux-rockchip/patch/2025010915031=
+0.219442-3-tzimmermann@suse.de/
+
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> =
+
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/dr=
+m/rockchip/rockchip_drm_gem.c
+> index 6330b883efc3..3bd06202e232 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/vmalloc.h>
+>  =
+
+>  #include <drm/drm.h>
+> +#include <drm/drm_dumb_buffers.h>
+>  #include <drm/drm_fb_helper.h>
+>  #include <drm/drm_gem.h>
+>  #include <drm/drm_gem_dma_helper.h>
+> @@ -403,13 +404,12 @@ int rockchip_gem_dumb_create(struct drm_file *file_=
+priv,
+>  			     struct drm_mode_create_dumb *args)
+>  {
+>  	struct rockchip_gem_object *rk_obj;
+> -	int min_pitch =3D DIV_ROUND_UP(args->width * args->bpp, 8);
+> +	int ret;
+>  =
+
+> -	/*
+> -	 * align to 64 bytes since Mali requires it.
+> -	 */
+> -	args->pitch =3D ALIGN(min_pitch, 64);
+> -	args->size =3D args->pitch * args->height;
+> +	/* 64-byte alignment required by Mali */
+> +	ret =3D drm_mode_size_dumb(dev, args, SZ_64, 0);
+> +	if (ret)
+> +		return ret;
+>  =
+
+>  	rk_obj =3D rockchip_gem_create_with_handle(file_priv, dev, args->size,
+>  						 &args->handle);
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
