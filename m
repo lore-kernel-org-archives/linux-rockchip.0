@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2754C02185
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 15:03:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BCFE7719B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 15:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MCzbeVNwoo/Rr0ukHBpJFO0lRQjrcaJA+lnlMzZ1sww=; b=H265jMHYMCv46y
-	3u4kLiWCF4JHzuoq3DacRwLlcLYCTYy/pCloS/WhzsveDnZ+ZgmN0zK8G6lwkYtQeHFJWvC+nqecr
-	mEEz3QdrxwHb1SRxX6X3Qo5gL0taHkA/RoaP5zFyC6JDoOdodtreV1Jkri6WTwfEiBIkHWAn4b8ly
-	934S9me3eYCvlrfyQam7OTXj3GRryFBcv175plNbI8SUWUxCqx+QsfieYcrIzeAjAoTnIOQI+Ez/Q
-	60k+d83A8n5Y7/WHNG+uzHv2+45ECWkrgkoDBMGUDLLnu21826YYXYVlX2CCyk0C483DZ+ILH0EMB
-	UFLwE0INZPIppSiZUROA==;
+	List-Owner; bh=5I/DfpJ88IRqUva+fuplhWDvLnAV+aAbUVUFoi2sQrw=; b=vPE1pkW5cMij2f
+	yCvpoXR42VLelihYt75HduCqi7YASe6390unD7r3x8ARB2qBGytSue66AenZJGNOPwmOH3NxjbwCl
+	W6/cKrWQtJqtuTr6hjWgL3MlgyiLwvyKKS3Z6pCT4xWU2xKN+E03fFpKF4govDfk8b09C0FgYT8O3
+	++ca4zSIIMaz4pf7P1NneQMsgJwWh+Y+jndzQ8whSbNbGa7FWEcQbjuKTHc/NTjw2MyhmzlzbrTsl
+	YL+LQMMweKLb6FERuvhC0lEyCzHAZuds/Si0aboldY9r5cK8D7HxLbxOprCYPkmp3I0FeDBaGZ/1+
+	vPZQRgtZaPotiCg9o7ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4a-0000000CN1V-2dff;
-	Thu, 09 Jan 2025 15:03:48 +0000
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+	id 1tVu4e-0000000CN8D-06l2;
+	Thu, 09 Jan 2025 15:03:52 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4C-0000000CMMb-3nsH;
-	Thu, 09 Jan 2025 15:03:28 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	id 1tVu4E-0000000CMPf-2rMB;
+	Thu, 09 Jan 2025 15:03:29 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 560EC1F455;
-	Thu,  9 Jan 2025 15:03:22 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 214142117B;
+	Thu,  9 Jan 2025 15:03:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736435003; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1736435005; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dlB8gALn1o96mpymG+jR60eAc3m1/AcHQiXg4BbiBLc=;
-	b=twwf6bRkpdKoZbvnVil5OIS9zFS4Nl4YkETG5YWHIzRH9t2fNHB9NPCN+go+XqNXJHgCB1
-	q27ZcbHf0nXJdntb4Z1YeAcXls8jYY5WwKYpVRr7Zz1in9ZdSactUKaLDdc6YjJ8IYsmx8
-	caSjErYSXtXv87RFGViu9+DIDVMdDvI=
+	bh=kNsjwPuvxigodZL3RVyzkFKzJlbnuv8zInJMu1cAV54=;
+	b=mHC4BY4v0XRblAzURsuI5fLJdxUamLs0dQqT+9rcHseAZgky5Sc7GtNtWz7aFuc5dOozzt
+	VJbL4YTY/i1VCkegdtB/QrbCayouuXlzSpQqgps7bavO2+wu+XdXePW8FmTFtMJmyAHUNr
+	Q3wohlh1Vfu9a7NfOUICW86X6xwP06A=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736435003;
+	s=susede2_ed25519; t=1736435005;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dlB8gALn1o96mpymG+jR60eAc3m1/AcHQiXg4BbiBLc=;
-	b=MDWzRXw1agMN0fVPgxJSAd9CV57KEnNuZFPPF1FOZml8wr0xK3LyjP64b95ZKMqRJRLph+
-	pHKfciLuwypgCLCw==
-Authentication-Results: smtp-out2.suse.de;
-	none
+	bh=kNsjwPuvxigodZL3RVyzkFKzJlbnuv8zInJMu1cAV54=;
+	b=7IXWhQu4iR5JkcOvc9aZwbJA+iaYNtsjxD1mSQ6imepfirGqwhXSVCBpglaH8lZ+Xr9a6z
+	2DlTzOaLJ5/arlDg==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=mHC4BY4v;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=7IXWhQu4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736435002; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1736435005; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dlB8gALn1o96mpymG+jR60eAc3m1/AcHQiXg4BbiBLc=;
-	b=aTd4wlIjW2Ym/cI/L10oTJnpoZoVXB9QiHOfV6piOCDx5zzt8S9b742qbwpr+coTsfCQAH
-	KTGj8R3O3J65bIygefD8Cw4x+GF6gLHkhHsE4sbDsoJd+sNisUowc4D7hjWLGhzj3wOfZf
-	3dsPNHfTS9ILQydyYFiqzNYAHVmpr14=
+	bh=kNsjwPuvxigodZL3RVyzkFKzJlbnuv8zInJMu1cAV54=;
+	b=mHC4BY4v0XRblAzURsuI5fLJdxUamLs0dQqT+9rcHseAZgky5Sc7GtNtWz7aFuc5dOozzt
+	VJbL4YTY/i1VCkegdtB/QrbCayouuXlzSpQqgps7bavO2+wu+XdXePW8FmTFtMJmyAHUNr
+	Q3wohlh1Vfu9a7NfOUICW86X6xwP06A=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736435002;
+	s=susede2_ed25519; t=1736435005;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dlB8gALn1o96mpymG+jR60eAc3m1/AcHQiXg4BbiBLc=;
-	b=Pe3ScWyOfQDGNKt/GkTehVmf7gpnpBC2JJpDrTJq3GWNdC+oMbIkbH3leZ23JIzhLy83t4
-	bsI2LaOWdyCUmqCQ==
+	bh=kNsjwPuvxigodZL3RVyzkFKzJlbnuv8zInJMu1cAV54=;
+	b=7IXWhQu4iR5JkcOvc9aZwbJA+iaYNtsjxD1mSQ6imepfirGqwhXSVCBpglaH8lZ+Xr9a6z
+	2DlTzOaLJ5/arlDg==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B7E8113A8B;
-	Thu,  9 Jan 2025 15:03:21 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 99E55139AB;
+	Thu,  9 Jan 2025 15:03:24 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id sNaEKznlf2c1awAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 09 Jan 2025 15:03:21 +0000
+	id SFg7JDzlf2c1awAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Thu, 09 Jan 2025 15:03:24 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com,
 	mripard@kernel.org,
@@ -100,46 +101,48 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>
-Subject: [PATCH v2 13/25] drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Thu,  9 Jan 2025 15:57:07 +0100
-Message-ID: <20250109150310.219442-14-tzimmermann@suse.de>
+	Biju Das <biju.das.jz@bp.renesas.com>
+Subject: [PATCH v2 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Thu,  9 Jan 2025 15:57:12 +0100
+Message-ID: <20250109150310.219442-19-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250109150310.219442-1-tzimmermann@suse.de>
 References: <20250109150310.219442-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-X-Spamd-Result: default: False [-1.30 / 50.00];
+X-Rspamd-Queue-Id: 214142117B
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-1.51 / 50.00];
 	BAYES_HAM(-3.00)[100.00%];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	NEURAL_HAM_LONG(-1.00)[-1.000];
 	R_MISSING_CHARSET(0.50)[];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
 	NEURAL_HAM_SHORT(-0.20)[-1.000];
 	MIME_GOOD(-0.10)[text/plain];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ARC_NA(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[somainline.org:email,quicinc.com:email,suse.de:mid,suse.de:email,imap1.dmz-prg2.suse.org:helo,linaro.org:email,poorly.run:email];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[24];
-	RCVD_TLS_ALL(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,suse.de,gmail.com,quicinc.com,linaro.org,poorly.run,somainline.org];
-	FROM_HAS_DN(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	MX_GOOD(-0.01)[];
 	FUZZY_BLOCKED(0.00)[rspamd.com];
-	R_RATELIMIT(0.00)[to_ip_from(RLqirfcw6gnbcr9a9yhi49fhi6)];
 	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid,suse.de:email];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	DKIM_TRACE(0.00)[suse.de:+];
+	TO_DN_SOME(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
 	FREEMAIL_ENVRCPT(0.00)[gmail.com]
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_070325_332519_D83EAAF3 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20250109_070326_909188_4F35CCF3 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,66 +160,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. The hardware requires the scnaline pitch to be a multiple
-of 32 pixels. Therefore compute the byte size of 32 pixels in the given
-color mode and align the pitch accordingly.
+buffer size. Align the pitch according to hardware requirements.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Rob Clark <robdclark@gmail.com>
-Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Sean Paul <sean@poorly.run>
-Cc: Marijn Suijten <marijn.suijten@somainline.org>
+Cc: Biju Das <biju.das.jz@bp.renesas.com>
 ---
- drivers/gpu/drm/msm/msm_gem.c | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
-index ebc9ba66efb8..a956905f1ef2 100644
---- a/drivers/gpu/drm/msm/msm_gem.c
-+++ b/drivers/gpu/drm/msm/msm_gem.c
-@@ -11,8 +11,10 @@
- #include <linux/dma-buf.h>
- #include <linux/pfn_t.h>
- 
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_prime.h>
- #include <drm/drm_file.h>
-+#include <drm/drm_fourcc.h>
- 
- #include <trace/events/gpu_mem.h>
- 
-@@ -700,8 +702,29 @@ void msm_gem_unpin_iova(struct drm_gem_object *obj,
- int msm_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
- 		struct drm_mode_create_dumb *args)
+diff --git a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c
+index 90c6269ccd29..f752369cd52f 100644
+--- a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c
++++ b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c
+@@ -75,10 +75,11 @@ const struct rzg2l_du_format_info *rzg2l_du_format_info(u32 fourcc)
+ int rzg2l_du_dumb_create(struct drm_file *file, struct drm_device *dev,
+ 			 struct drm_mode_create_dumb *args)
  {
--	args->pitch = align_pitch(args->width, args->bpp);
--	args->size  = PAGE_ALIGN(args->pitch * args->height);
-+	u32 fourcc;
-+	const struct drm_format_info *info;
-+	u64 pitch_align;
+-	unsigned int min_pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+-	unsigned int align = 16 * args->bpp / 8;
 +	int ret;
-+
-+	/*
-+	 * Adreno needs pitch aligned to 32 pixels. Compute the number
-+	 * of bytes for a block of 32 pixels at the given color format.
-+	 * Use the result as pitch alignment.
-+	 */
-+	fourcc = drm_driver_color_mode_format(dev, args->bpp);
-+	if (fourcc == DRM_FORMAT_INVALID)
-+		return -EINVAL;
-+	info = drm_format_info(fourcc);
-+	if (!info)
-+		return -EINVAL;
-+	pitch_align = drm_format_info_min_pitch(info, 0, SZ_32);
-+	if (!pitch_align || pitch_align > U32_MAX)
-+		return -EINVAL;
-+	ret = drm_mode_size_dumb(dev, args, pitch_align, 0);
+ 
+-	args->pitch = roundup(min_pitch, align);
++	ret = drm_mode_size_dumb(dev, args, 16 * args->bpp / 8, 0);
 +	if (ret)
 +		return ret;
-+
- 	return msm_gem_new_handle(dev, file, args->size,
- 			MSM_BO_SCANOUT | MSM_BO_WC, &args->handle, "dumb");
+ 
+ 	return drm_gem_dma_dumb_create_internal(file, dev, args);
  }
 -- 
 2.47.1
