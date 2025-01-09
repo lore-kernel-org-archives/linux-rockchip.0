@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3AD3E77199
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 09:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E2BE77197
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 09:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AaXG09HpcR95Acpcq5AfazlvYqp7f0r/z81Q5uP5JGQ=; b=c/IWTnBAzDcD+U
-	wwEMy5QFMYYN1UrAAfnxUzVLuDFMnNrxD4CF03Kf9HoT/j2Ik/FfXgCmhsO3JTs6o8OfqnlMRckmD
-	A2RXu9gwtxUAp6v0ZWKWO/3df8Hu+GU7lQO1etmz71tL58MFmwgf+tWjUp7P12vIZUzNdMPagwYJm
-	haSVVpf2kNAIm6HyxMiNBaS8e24ge7jOjY3Wm16ff+BZLRCPEV0e51mHsr5Mp3tS20HFe5xCiFfo3
-	j+0Ma3zwFlqM4qa3y3w7txBtEgmbLToIQcTtbYF2JoczVixA4VkVBDNap/tum4E0hM+sdApPc0byx
-	ciTAwDHvWyvOKHJ1r23w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dmeLHqUdTKLoum5X7snijx49QcH0bM1PO6geR6iL0gg=; b=4CTv994a2aK7lY
+	T1/5hkfbZM82LIHMU5bNw+03r1RCE9J/ARn+ZNAazh1wHYL48J0x6+xHqhxlBC4buwQvzVJOqzic2
+	YpYS4/0Cj+Zu0Fgyvgn/FcDQLKba5w9pRtT2IJZRiKvxd3t2lRAdv0zJ8xwoQrJoejUuQrAZODkLU
+	IYVCuWGvjVXNNlyUkb3oZ7E/v/zqDAB9pndozuc+8PaY0j9eKmgOYF6i2WrY98/d8yApFNAHdaE5y
+	54wV0SVqVmogLPDk2ab5cPI+R0QP3nKUQOaeZgD7FI3w90m60ju7vtqRbxskd5Qz/oULGiYhnKJ1t
+	75tO8XqManoXxwmcCzqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVoPH-0000000BFME-1VXh;
-	Thu, 09 Jan 2025 09:00:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tVoax-0000000BIDq-1imK;
+	Thu, 09 Jan 2025 09:12:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVoO1-0000000BF4q-3Hd1;
-	Thu, 09 Jan 2025 08:59:31 +0000
+	id 1tVoVT-0000000BH0a-2bDQ;
+	Thu, 09 Jan 2025 09:07:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 43E2E5C5A32;
-	Thu,  9 Jan 2025 08:58:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19AB2C4CED2;
-	Thu,  9 Jan 2025 08:59:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B4E485C4820;
+	Thu,  9 Jan 2025 09:06:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B31CDC4CED2;
+	Thu,  9 Jan 2025 09:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736413169;
-	bh=Sc6QqQz2Zq7wQpvdnuknqWgjeROXiIqNNUloa9EIDdw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C4GWE1do+W6PEulta2FXq7gYIj/EGTO+4e7I2toDxA7xnsKq6EU7na3HIPE1VXXHT
-	 Z0KM7wy2o4Erjau/dW7Q2vTJndt2xh5KvOZQd9iLmByDbqMOK4HTZdmX28MGc/oE5o
-	 pADlHWwHxJ/hqOw2CQBEXJaNERc3qmLyIRThwzH4F0pzQwztlw9J5o1otiW23iiajP
-	 UWuqEPXmERGhZV+eQVjswDBebe9VKKrlTH++8af1Awh7PinxRpB5gTr8zUPoNqQdGT
-	 sS7V1Rosc640tAxbQZ32ChWw344dnIq1/z6WvMZv9d9SxcIZKUAV0zeA4mpkmNSXms
-	 Vb71gJUtkH4RQ==
-Date: Thu, 9 Jan 2025 09:59:25 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yao Zi <ziyao@disroot.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/5] dt-bindings: clock: Document clock and reset unit
- of RK3528
-Message-ID: <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
-References: <20250108114605.1960-2-ziyao@disroot.org>
- <20250108114605.1960-3-ziyao@disroot.org>
+	s=k20201202; t=1736413630;
+	bh=6KlrG7UfxSvJaPknWB0rSoQau5l3FVtxo3MXEwgzCUE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=rTDqH0AHJ6nvoW+VFen417Pt0QdHWMJKtH/3GbENGtF1YnfNr21m63oE82LyJFKyB
+	 9Wv+IUH8j+y3h/EW+g7rbgXlD6L4lBj+Qfcrybeaivm8AkvHlgnzipn48QwTNX/uou
+	 jRPNhpkzWipvTz0E17r1VAwS9HwN/jAD+DnArnt+bbH/w7ryJUk2YRj2VTxdtFcqEA
+	 nrjkLfxPPs/NI1VehquHkbYo6aV4FqxmtLUDPDMPtaGEYqqb225YaH+qAR1SWgztLp
+	 5PRdw8Z+6gK7d/sGodEs7QKm2YZ9F65tnsYEYmx1H1fLxUoChAq2h5e4+GolToi2r9
+	 1Q8Hf70hQ4eDw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 0/6] PCI: endpoint: Add support for resizable BARs
+Date: Thu,  9 Jan 2025 10:06:52 +0100
+Message-ID: <20250109090652.110905-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250108114605.1960-3-ziyao@disroot.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2645; i=cassel@kernel.org; h=from:subject; bh=6KlrG7UfxSvJaPknWB0rSoQau5l3FVtxo3MXEwgzCUE=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLrJ65RSb/AZanz+7n7qnvJ8btNVvKedXny6KGVRuqeN 3a7Hzz831HKwiDGxSArpsji+8Nlf3G3+5TjindsYOawMoEMYeDiFICJXHJl+Cu+UtuJ3Usif/4K pWvfsquab/QlPV/h79s55Z9l5gG7ZUIM/4tajh9dLf5mu+YqsZ83XlQ1cR0X8fdR1EkVXRWspFo wiwsA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_005929_905830_99BFA9F7 
-X-CRM114-Status: GOOD (  19.14  )
+X-CRM114-CacheID: sfid-20250109_010711_742672_428DAEEF 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,79 +81,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 08, 2025 at 11:46:02AM +0000, Yao Zi wrote:
-> There are two types of clocks in RK3528 SoC, CRU-managed and
-> SCMI-managed. Independent IDs are assigned to them.
-> 
-> For the reset part, differing from previous Rockchip SoCs and
-> downstream bindings which embeds register offsets into the IDs, gapless
-> numbers starting from zero are used.
-> 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  .../bindings/clock/rockchip,rk3528-cru.yaml   |  67 +++
->  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
->  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
->  3 files changed, 761 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> new file mode 100644
-> index 000000000000..19dbda858172
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> @@ -0,0 +1,67 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3528 Clock and Reset Controller
-> +
-> +maintainers:
-> +  - Yao Zi <ziyao@disroot.org>
-> +
-> +description: |
-> +  The RK3528 clock controller generates the clock and also implements a reset
-> +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
-> +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
-> +  module.
-> +  Each clock is assigned an identifier, consumer nodes can use it to specify
-> +  the clock. All available clock and reset IDs are defined in dt-binding
-> +  headers.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3528-cru
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  assigned-clocks: true
-> +
-> +  assigned-clock-rates: true
+The PCI endpoint framework currently does not support resizable BARs.
 
-Drop both, totally redundant.
+Add a new BAR type BAR_RESIZABLE, so that EPC drivers can support resizable
+BARs properly.
 
-> +
-> +  clocks:
-> +    items:
-> +      - description: External 24MHz oscillator clock
-> +      - description: 50MHz clock generated by PHY module
-> +
-> +  clock-names:
-> +    items:
-> +      - const: xin24m
-> +      - const: gmac0
+For a resizable BAR, we will only allow a single supported size.
+This is by design, as we do not need/want the complexity of the host side
+resizing our resizable BAR.
 
-gmac
-(unless you have gmac1 here as well but then please add it now)
+In the DWC driver specifically, the DWC driver currently handles resizable
+BARs using an ugly hack where a resizable BAR is force set to a fixed size
+BAR with 1 MB size if detected. This is bogus, as a resizable BAR can be
+configured to sizes other than 1 MB.
 
-Best regards,
-Krzysztof
+With these changes, an EPF driver will be able to call pci_epc_set_bar()
+to configure a resizable BAR to an arbitrary size, just like for
+BAR_PROGRAMMABLE. Thus, DWC based EPF drivers will no longer be forced to
+a bogus 1 MB forced size for resizable BARs.
+
+
+Tested/verified on a Radxa Rock 5b (rk3588) by:
+-Modifying pci-epf-test.c to request BAR sizes that are larger than 1 MB:
+ -static size_t bar_size[] = { 512, 512, 1024, 16384, 131072, 1048576 };
+ +static size_t bar_size[] = { SZ_1M, SZ_1M, SZ_2M, SZ_2M, SZ_4M, SZ_4M };
+ (Make sure to set CONFIG_CMA_ALIGNMENT=10 such that dma_alloc_coherent()
+  calls are aligned even for allocations larger than 1 MB.)
+-Rebooting the host to make sure that the DWC EP driver configures the BARs
+ correctly after receiving a link down event.
+-Modifying EPC features to configure a BAR as 64-bit, to make sure that we
+ handle 64-bit BARs correctly.
+-Modifying the DWC EP driver to set a size larger than 2 GB, to make sure
+ we handle BAR sizes larger than 2 GB (for 64-bit BARs) correctly.
+-Running the consecutive BAR test in pci_endpoint_test.c to make sure that
+ the address translation works correctly.
+
+
+Changes since V1:
+-Fix Wtautological-constant-out-of-range-compare compiler warning on
+ 32-bit builds.
+
+
+Kind regards,
+Niklas
+
+Niklas Cassel (6):
+  PCI: endpoint: Add BAR type BAR_RESIZABLE
+  PCI: dwc: ep: Move dw_pcie_ep_find_ext_capability()
+  PCI: dwc: endpoint: Add support for BAR type BAR_RESIZABLE
+  PCI: keystone: Describe resizable BARs as resizable BARs
+  PCI: keystone: Specify correct alignment requirement
+  PCI: dw-rockchip: Describe resizable BARs as resizable BARs
+
+ drivers/pci/controller/dwc/pci-keystone.c     |   6 +-
+ .../pci/controller/dwc/pcie-designware-ep.c   | 228 +++++++++++++++---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c |  22 +-
+ drivers/pci/endpoint/pci-epf-core.c           |   4 +
+ include/linux/pci-epc.h                       |   3 +
+ 5 files changed, 216 insertions(+), 47 deletions(-)
+
+-- 
+2.47.1
 
 
 _______________________________________________
