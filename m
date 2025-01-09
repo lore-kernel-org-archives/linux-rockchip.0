@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD755E77197
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 11:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F88E77197
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 11:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=klru/K7GH4Nws+YxY09I/4GchvKThCUZP6PWlDJBzAs=; b=YBAkhFaCkMCj2b
-	og3U+HHd7ReN4xo24rTV+OQsGhBRqS89NTma/VPFHnSi91SkDuYkckPZPOH4vBZr677uvPisxydq0
-	9xgUyelwbO9hShmndC1pVCxbvKES2ioGJFdwrEzqrWusFM5Ea8FW6rHAxH63vqcD8ZSGtxW6tRVMD
-	Z6Pg+2+yBkM+UKpCx/PjLdsROkZmTVWQD65FPM4WP4Q5+VWX7fiVkRHTE87r8BXNuFZBbdPKwAukg
-	DLRvFhZvnkXuRSYg3lJPv8z6VaERtchoAAEwgfz2RepJHY8vX3llXfkpX8/ypuVR/yxoWrrPRVAUM
-	5eYTNQEd/A8YQ+9anCKg==;
+	List-Owner; bh=oS8TeRQIuMQBOS33fB3FUsWzWwyRFnu84G2cN00k3/M=; b=nHH/98InP+RlFf
+	rrnFq7y9W780kpp7SIAm0AI0G9CP+lXeqm/VqqUoxQZ/2Bc55gZ6d5gERO0U2eLwWjFe8SraJLsRv
+	94FS4Z83HLMt7E5I1tyon0VWa65DkAoNZHdah42Q6FgTONuibAIVzZoRL8Ul6YiGl+3j4KD98e2WD
+	F1FTN+GuTPf5MqPKdNCuOqJygQzpdiV/KjhTC2bJwJOPPltwpgmG2MBNGvg+wjd03DkjtaAHD9gD2
+	B67rwjczq7uqsm3SkZSw7GgeSFpIcbfg9B9pbI1F0sHkmvLMRxhlHvz3EWHmhg4LyDNHV68DvIxNw
+	jmVNBlE551cHwUtatnmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVqZ7-0000000Bgl4-3D3x;
-	Thu, 09 Jan 2025 11:19:05 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tVquK-0000000BkzR-2QF3;
+	Thu, 09 Jan 2025 11:41:00 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVqTv-0000000Bfpu-18ho
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Jan 2025 11:13:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id EC88EA41866;
-	Thu,  9 Jan 2025 11:11:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E413C4CED2;
-	Thu,  9 Jan 2025 11:13:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736421222;
-	bh=p9TIhZ7OX45tv8xEyiNTKxCq5RRiqfzvRAm+X/81d7E=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=P3Osmzss9bivLlAXPP80FDZzf6i4wCubrYw4m30ieMYEX66TKKpeBb4gwp/iaDKn8
-	 kHuURrzwslSw57vBc0Hq+KqWTVGWoET3kYvSZNJOESlkNOnz3TucmliRrRf3o2yjBc
-	 uwpF57uRS2o7KSfIVXtA8G0D5WNrXDlN3/19iyPOxvyPQesho77n8v2cYEGiVUecw8
-	 nRnn53J+ZaAiHDGTD7LWeTfyEDr+k6AWv8vnIT5brFe9NOSaFP4aV9e4FoczeYezSd
-	 tiClthcn+T6qJNW6PNdZiw9jMc1NPD0t4xKDv60ziltqnLfUPhyL4+sERxuQYg3v4s
-	 KWHb3X1YSiThA==
-From: Lee Jones <lee@kernel.org>
-To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
- Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
- linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-In-Reply-To: <20241224094920.3821861-16-kever.yang@rock-chips.com>
-References: <20241224094920.3821861-1-kever.yang@rock-chips.com>
- <20241224094920.3821861-16-kever.yang@rock-chips.com>
-Subject: Re: (subset) [PATCH v2 15/17] dt-bindings: mfd: syscon: Add rk3562
- QoS register compatible
-Message-Id: <173642122026.2601082.8486356764608570006.b4-ty@kernel.org>
-Date: Thu, 09 Jan 2025 11:13:40 +0000
+	id 1tVqt6-0000000BkjX-0PG0;
+	Thu, 09 Jan 2025 11:39:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=I6zb0OhlfmF9gSa4+JBxd9Zk/f3SlG4gbriSxMO5M08=; b=w+1Ei6El/fwT3nz6n9ABJ/UA0I
+	SVxnSWUyGHOcSpm0m+Q3SkfSK/C/KbAV3lb8raug+8klFZ/uG8aO6Bmt3yQNypnWv8YjKEEADhZX5
+	aDXlflKxbv6a6e5Wh5nK2yI3xaQUfg6PjU80yL4K2s5LvvApScOb+IzbhvCdSIHjeofqm+pJyjNXK
+	ecnMpoo73Yll9B4SlfzOqEYvyqx/T2z5hPxKbRaZrbNQr+Ja09A+OT4DHUh6NgiiDkYrT/DthU2O9
+	OuA3FNu3id8ure667EK4D7t2Jadih9jxSuTkpY7gQSYCbjC/EvQLWn72NAvuvZ1rFnlzWmOY3Gr68
+	UWczEhHg==;
+Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tVqt0-0001FD-E7; Thu, 09 Jan 2025 12:39:38 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Yao Zi <ziyao@disroot.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/5] dt-bindings: clock: Document clock and reset unit of
+ RK3528
+Date: Thu, 09 Jan 2025 12:39:37 +0100
+Message-ID: <1774158.yIU609i1g2@diego>
+In-Reply-To: <Z3-T3JwcsW0xYKvk@pie>
+References: <20250108114605.1960-2-ziyao@disroot.org>
+ <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
+ <Z3-T3JwcsW0xYKvk@pie>
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_031343_373660_33476785 
-X-CRM114-Status: UNSURE (   3.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250109_033944_160885_65E996BE 
+X-CRM114-Status: GOOD (  32.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,16 +74,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyNCBEZWMgMjAyNCAxNzo0OToxOCArMDgwMCwgS2V2ZXIgWWFuZyB3cm90ZToKPiBE
-b2N1bWVudCByazM1NjIgY29tcGF0aWJsZSBmb3IgUW9TIHJlZ2lzdGVycy4KPiAKPiAKCkFwcGxp
-ZWQsIHRoYW5rcyEKClsxNS8xN10gZHQtYmluZGluZ3M6IG1mZDogc3lzY29uOiBBZGQgcmszNTYy
-IFFvUyByZWdpc3RlciBjb21wYXRpYmxlCiAgICAgICAgY29tbWl0OiBhYmE0ZjczNmZjNTU1M2I5
-MzY4MDhjY2RmZDNjZTIxZWUzZWM3YWUwCgotLQpMZWUgSm9uZXMgW+adjueQvOaWr10KCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Donnerstag, 9. Januar 2025, 10:16:12 CET schrieb Yao Zi:
+> On Thu, Jan 09, 2025 at 09:59:25AM +0100, Krzysztof Kozlowski wrote:
+> > On Wed, Jan 08, 2025 at 11:46:02AM +0000, Yao Zi wrote:
+> > > There are two types of clocks in RK3528 SoC, CRU-managed and
+> > > SCMI-managed. Independent IDs are assigned to them.
+> > > 
+> > > For the reset part, differing from previous Rockchip SoCs and
+> > > downstream bindings which embeds register offsets into the IDs, gapless
+> > > numbers starting from zero are used.
+> > > 
+> > > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > > ---
+> > >  .../bindings/clock/rockchip,rk3528-cru.yaml   |  67 +++
+> > >  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
+> > >  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
+> > >  3 files changed, 761 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> > >  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
+> > >  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> > > new file mode 100644
+> > > index 000000000000..19dbda858172
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> > > @@ -0,0 +1,67 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Rockchip RK3528 Clock and Reset Controller
+> > > +
+> > > +maintainers:
+> > > +  - Yao Zi <ziyao@disroot.org>
+> > > +
+> > > +description: |
+> > > +  The RK3528 clock controller generates the clock and also implements a reset
+> > > +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
+> > > +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
+> > > +  module.
+> > > +  Each clock is assigned an identifier, consumer nodes can use it to specify
+> > > +  the clock. All available clock and reset IDs are defined in dt-binding
+> > > +  headers.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: rockchip,rk3528-cru
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +  assigned-clocks: true
+> > > +
+> > > +  assigned-clock-rates: true
+> > 
+> > Drop both, totally redundant.
+> 
+> Okay, will fix in next version.
+> 
+> > > +
+> > > +  clocks:
+> > > +    items:
+> > > +      - description: External 24MHz oscillator clock
+> > > +      - description: 50MHz clock generated by PHY module
+
+you could adjust the description to something like
+	50MHz clock generated by PHY module only for gmac0
+or so, to make it more clear where that signal goes to.
+
+> > > +
+> > > +  clock-names:
+> > > +    items:
+> > > +      - const: xin24m
+> > > +      - const: gmac0
+> > 
+> > gmac
+> > (unless you have gmac1 here as well but then please add it now)
+> 
+> RK3528 comes with two onchip gmacs. This input clock is only used for
+> the first one and I think keeping the number would give the reader an
+> extra hint. What do you think about it?
+
+I would agree here. Looking through the TRM registers, gmac0 gets _only_
+supplied from that external input, while gmac1 only gets supplied from
+a number of internal sources (different sources for gmac1-specific clocks)
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
