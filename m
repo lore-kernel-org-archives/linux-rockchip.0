@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A4CCE77199
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 09:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D787CE77199
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 09:21:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pRSlkydrLbL6STV8qW27zvNSwZ3Kf2X2up98UxmEBuc=; b=eaMYMkxAH471S6
-	ugZc+jnT0uNZaH1irbB0IEKD6sIxrYlg2MbJkAz8E3wp731i/PTv505Bovxpk5TryaOtp6cEAR2mT
-	fgavv8qrxQU4mgqQg+1xPiQMX4IlfgS0M1rboY6DBTlWdJ5FgH8SMeeNPIuKIimaUKvhBeFqrqpFY
-	Tfh5N+vze05CZDLi+3vd2eQhpSzivvkOgu7yfc9guE4lsBRUnE7rxFeya+cI8ofs4np/ybeqbm9iC
-	rkwS4QXM5o9lituu4Xl48wFEeobw0AdK5Soitpb0tEbcTFO5mx4Up6YJpyZwHV5R6WLug6Qn0Jp4j
-	x8PfZJFGd56cB7kdzH/A==;
+	List-Owner; bh=699FnClEHavWUHl1TX5Ul3bMbK2D3i7RLIrikMSUy5A=; b=I6w7mbN0/Ls5Gr
+	Zts2NvZ+9iNYtjWnEfMefQf+KjCG9KizAUBfwKVsBD3csJKSMjH0pWrphwKoCdq1hXgAKEtxwr6PD
+	8AaWEfR/ivD7jHzShq6hjx/iEgkvssBXP61WEAJtByvoH6ya9DIjR8lKU/a/3d48Q2ZQ5WXkq9vxy
+	JoKNleCMWlNS9Yj996Cl+kHsAeN1vwrK86ZC8RONmnMOf7bh0vNVWlsN0ZElceDjqP+Pj+hu18kvf
+	Ul4772pXFnpsbIYqpLHc53jSyJWT3OW6/AJj69mg8DwLBhHaMhrkSHJCA8od+EZtXexso+obESB9Z
+	ChO7bAUhU0bYYXlR4EaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVodM-0000000BIzi-18sC;
-	Thu, 09 Jan 2025 09:15:20 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tVojU-0000000BL1C-3OWF;
+	Thu, 09 Jan 2025 09:21:40 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVoVj-0000000BH5W-2KjZ;
-	Thu, 09 Jan 2025 09:07:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F3590A414C5;
-	Thu,  9 Jan 2025 09:05:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0F90C4CED2;
-	Thu,  9 Jan 2025 09:07:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736413646;
-	bh=YjPRYyKxFWfwBGyFIc8FXbd9BDk5/XxDt0/Kay6MfyM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X18kmc8A6vFgxxnB7m37j4OZRb4cTcp4oI70EwmaR/7qGXk/yLNUPPQpoiDAziJnv
-	 q2Ntlqhpiupa4cr2eGxa46Ji4zoJFL0bLrxBYcsnkq6hYFywMBLrWD9GGXjiqmJpwx
-	 kBKAZKp36NWquCvevCnOQkjLRfE86y8UY4WSr44mJqJ03qTHYt4ApDiqjIO7y5z4z+
-	 eVgcZ4StE+uGGYLxVum6j9SoP3ou+P6pwIYxY4nv7UmvEC1kJXk6MdzF9sKJmn86oR
-	 ITS+GtImU3s2yx9TLAIv0JfjTKThybIf5oDfaNysHrxLFzwz4p7mlyA+El0wcuM75l
-	 XBXKhGks0xS5Q==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 6/6] PCI: dw-rockchip: Describe resizable BARs as resizable BARs
-Date: Thu,  9 Jan 2025 10:06:58 +0100
-Message-ID: <20250109090652.110905-14-cassel@kernel.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250109090652.110905-8-cassel@kernel.org>
-References: <20250109090652.110905-8-cassel@kernel.org>
+	id 1tVoeU-0000000BJVp-2bHN;
+	Thu, 09 Jan 2025 09:16:32 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id A52F725B74;
+	Thu,  9 Jan 2025 10:16:25 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id drfea6D4_RPN; Thu,  9 Jan 2025 10:16:21 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1736414181; bh=0xssGUaTU/N9kw20xJoCUInNv2QQ7gksj+PFGnZRZQM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=S35kHxXn7ZtR1jTBLNzkbBHuUJlmcfM/5tc6JCxr6jxGws/4//S75oR1ea4UmP5jy
+	 p+grjNMpyscc9x0l292GmqIFCBu+I/9c+7iOrhPkjO9cLduPwaLrv8/Cs9mP6j3QRA
+	 iZYVVvGYw5yUEVMa9S08jVZv4AmE2HfNm622oBJxFHnRt3C/Fx98/Q5WtOMxuZe9Ck
+	 qp+0arF1FlKvR5Bkd2iNeU7S+ANO4tzABcIyRrKK+A1688UYSl7+5h7zsM3aLJvTx0
+	 7UlzM+80DltqU+Hy14nrXlcuQ/wkbtA/2r8wJiIRMI0/QCB0gyCCjduGhMfaLFfUvF
+	 5/N4VHDKyij3g==
+Date: Thu, 9 Jan 2025 09:16:12 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/5] dt-bindings: clock: Document clock and reset unit
+ of RK3528
+Message-ID: <Z3-T3JwcsW0xYKvk@pie>
+References: <20250108114605.1960-2-ziyao@disroot.org>
+ <20250108114605.1960-3-ziyao@disroot.org>
+ <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2520; i=cassel@kernel.org; h=from:subject; bh=YjPRYyKxFWfwBGyFIc8FXbd9BDk5/XxDt0/Kay6MfyM=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLrJ246/n9iHc+0po1bBV95XOt7xmsjf82T498kUZ67P 91vNnQs7ihlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBEvikx/OH15mtycl+6LmPH 5d2xpo5+f3WCVzNdFWYW2n32mnPX/ReMDHs8D19b2zv3/f+sw+yaT60NhMsC7ma/6KgN1a2Qdov N4AQA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_010727_778826_80CC7525 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20250109_011631_088419_F9150A3C 
+X-CRM114-Status: GOOD (  26.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,66 +81,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Looking at "11.4.4.29 USP_PCIE_RESBAR Registers Summary" in the rk3588 TRM,
-we can see that none of the BARs are Fixed BARs, but actually Resizable
-BARs.
+On Thu, Jan 09, 2025 at 09:59:25AM +0100, Krzysztof Kozlowski wrote:
+> On Wed, Jan 08, 2025 at 11:46:02AM +0000, Yao Zi wrote:
+> > There are two types of clocks in RK3528 SoC, CRU-managed and
+> > SCMI-managed. Independent IDs are assigned to them.
+> > 
+> > For the reset part, differing from previous Rockchip SoCs and
+> > downstream bindings which embeds register offsets into the IDs, gapless
+> > numbers starting from zero are used.
+> > 
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  .../bindings/clock/rockchip,rk3528-cru.yaml   |  67 +++
+> >  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
+> >  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
+> >  3 files changed, 761 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> >  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
+> >  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
+> > 
+> > diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> > new file mode 100644
+> > index 000000000000..19dbda858172
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> > @@ -0,0 +1,67 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Rockchip RK3528 Clock and Reset Controller
+> > +
+> > +maintainers:
+> > +  - Yao Zi <ziyao@disroot.org>
+> > +
+> > +description: |
+> > +  The RK3528 clock controller generates the clock and also implements a reset
+> > +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
+> > +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
+> > +  module.
+> > +  Each clock is assigned an identifier, consumer nodes can use it to specify
+> > +  the clock. All available clock and reset IDs are defined in dt-binding
+> > +  headers.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: rockchip,rk3528-cru
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  assigned-clocks: true
+> > +
+> > +  assigned-clock-rates: true
+> 
+> Drop both, totally redundant.
 
-I couldn't find any reference in the rk3568 TRM, but looking at the
-downstream PCIe endpoint driver, rk3568 and rk3588 are treated as the same,
-so the BARs on rk3568 must also be Resizable BARs.
+Okay, will fix in next version.
 
-Now when we actually have support for Resizable BARs, let's configure
-these BARs as such.
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: External 24MHz oscillator clock
+> > +      - description: 50MHz clock generated by PHY module
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: xin24m
+> > +      - const: gmac0
+> 
+> gmac
+> (unless you have gmac1 here as well but then please add it now)
 
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+RK3528 comes with two onchip gmacs. This input clock is only used for
+the first one and I think keeping the number would give the reader an
+extra hint. What do you think about it?
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index ce4b511bff9b..6a307a961756 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -273,12 +273,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_4] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_4] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
- 
- /*
-@@ -293,12 +293,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
- 	.bar[BAR_4] = { .type = BAR_RESERVED, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
- 
- static const struct pci_epc_features *
--- 
-2.47.1
+> 
+> Best regards,
+> Krzysztof
+> 
 
+Thanks,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
