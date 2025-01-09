@@ -4,141 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F16CE77199
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 16:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A3AE77197
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 16:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qrWhvXok9kdunT3w+4tj6fncsTJpX1Z7tCUnhKD6H+k=; b=jIyix0hqfSYHE9
-	sNrxirOCkLma2/2kHlGKGJwpv3SdsN6q+4wriQyp4u6LUvL1j8ekjQZG8fqqTaRCp7ghIojdYc1nz
-	bxa0Yrp4OTmvv7s3kHZ1N8vm+eY5QsR9jNFxcmGz/dUUNS/WMJ3p/G8neRNU+00oj6MBcVkt75ztU
-	EzaSdNX1KPfCsYdDV9jeKE5OYltpY9s8Vj34WjLOvg7mo3ZP/0zNz0J8Hy4A9+PDAAL9RmiJvxDwa
-	g6wD4pT1kL/A73wH4HdsF8W4PAMaYkS3i664YZmn2Ro2KcZ19zAWz2Kn0WrpNGidyQDieMydNezgh
-	e9RxJI8isfVQR/JFi9TA==;
+	List-Owner; bh=p0n4+AxVftr9RZg0rP1QiTUKbYUgIlfnTZSfLQfRhC8=; b=m3QW0PADkIjgYO
+	UXTPpaIcUQSSAzAxfPoajNS9ct4iSIs7I+ZIXWpzU+rFFaDDNwpRmklWfYLuX8b/ESGNWTOi1rco+
+	M8SkPh0p63fxBkXdoWY8j9tvpDXVpPNF699aOHy+jM1br1OsVYk2sH0yi8pR3CSyZ9Bd1+rKGbuLC
+	HTacq2WgYWEE2VcOsmPJ3RWnRo3RDsNdW32XVct2XnB580eN+/qf162cMhmgH8SWpv+Q94erGENFu
+	NvwOX5tEuTGI15aj0tjIvubGmjM+9G3gnpyFhYWNCHqVbmUA7BdT5EOU4lSXieD4d5AsXfsc2N7fI
+	fjBp9Kys/2CQ9Ziy8jhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVv4C-0000000CbhB-2rFs;
-	Thu, 09 Jan 2025 16:07:28 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1tVvq4-0000000ClNS-3Z39;
+	Thu, 09 Jan 2025 16:56:56 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVu4C-0000000CMLZ-18e5;
-	Thu, 09 Jan 2025 15:03:27 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id BAFFA21174;
-	Thu,  9 Jan 2025 15:03:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736435003; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AgJ1Uel3fQ0OFlYjfDZNvHPH7R5FmE1kSGP9lTwtvrY=;
-	b=Fe1uDndM2y7P0uvzje0g0g0qeEJEDI2lgge0X0K7TDScfle35Lic5QYsPGtXFgdeCyWQdL
-	VMicoZh4aAaZwRfbqOKlvSwqw5ySex6R7/MKzIzoy90Tx6gqa1M6Vb6IN11C4GJfAdqYfc
-	pyKW9qvmiGnLL9SPCKK2Ir0/oXgAcRg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736435003;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AgJ1Uel3fQ0OFlYjfDZNvHPH7R5FmE1kSGP9lTwtvrY=;
-	b=IS3is//aQ5D9PkvNXBl60gAhz0vI3nonfLEkLctfTgBtfLjh+vfRDyMpjnA/VB0R2wA546
-	iIFWZJE0QInDgWCA==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736435001; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AgJ1Uel3fQ0OFlYjfDZNvHPH7R5FmE1kSGP9lTwtvrY=;
-	b=mPNZxbxW1B1UdWkIay1zim9xbTFMuUyhV6RrZjYXa6GyM341tf4FDtC0KM0NuOfato3TbO
-	Z7lIEA5yaCEwzUMTHDiFMGQz+IQEfiDTNR7+jGp4vXxmTKrXt8/i2SXdxm6xzmGA7L79Mb
-	vYiB2Coam5Ct8oCetk3uJUWnOp127Ag=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736435001;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AgJ1Uel3fQ0OFlYjfDZNvHPH7R5FmE1kSGP9lTwtvrY=;
-	b=qWKUwcnlINfcVzk4Fogtu8Rng/AVTI8qT4RTm+Em8OX+dIsxho6s2JLThdC3oHgt48Mlu3
-	NinqtG50OUGTZmBQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 24BE1139AB;
-	Thu,  9 Jan 2025 15:03:21 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id 8J+aBznlf2c1awAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 09 Jan 2025 15:03:21 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	airlied@gmail.com,
-	simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	xen-devel@lists.xenproject.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 12/25] drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Thu,  9 Jan 2025 15:57:06 +0100
-Message-ID: <20250109150310.219442-13-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250109150310.219442-1-tzimmermann@suse.de>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
+	id 1tVvoj-0000000CkzP-2Pz9;
+	Thu, 09 Jan 2025 16:55:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=evpzqHxtYX+aFEQtJHdzEeFAuzdxM9ygHYkzc3TerWg=; b=Npsdf93Q8R4QrWJQCTpcejLVWs
+	+a3ySUZrk3R2LN5ULgtf1Z0fkzKxeyaAKYNcRGPhSwDe6o0+2NjLlPZ6vXZAE/HBT0IKDrfHYBKBN
+	d+Stocy26dfJ9bF2yFW6Xyv92u7SmmtMFb35Cd0W59s9WblDZiqzpsTn0OmYYC4uVfTo+sgNFYvHp
+	wNAUUAk6uxS9pG2f6csvo2obODedYV+iYgH+hJKoBRk+vN6eMZw/ziXhPv3bVoKLsRg3liexAEatN
+	89qFfDoaIsaLwH28L8/iYWmonGNjz6RCicYAV9ccka7h/WIm2QAZjw07MWjhdR2N2P5DSEwV2SJrX
+	hqO+OdZg==;
+Received: from i5e860d05.versanet.de ([94.134.13.5] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tVvoh-0003hx-BY; Thu, 09 Jan 2025 17:55:31 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Dragan Simic <dsimic@manjaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Delete redundant RK3328 GMAC stability fixes
+Date: Thu,  9 Jan 2025 17:55:16 +0100
+Message-ID: <173644170628.2899934.16230769617276217345.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <fe05ecccc9fe27a678ad3e700ea022429f659724.1733943615.git.dsimic@manjaro.org>
+References: <fe05ecccc9fe27a678ad3e700ea022429f659724.1733943615.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-X-Spamd-Result: default: False [-1.30 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_MISSING_CHARSET(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	ARC_NA(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[collabora.com:email,imap1.dmz-prg2.suse.org:helo,suse.de:mid,suse.de:email];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	TAGGED_RCPT(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[23];
-	FROM_EQ_ENVFROM(0.00)[];
-	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,suse.de,kernel.org,pengutronix.de,gmail.com,collabora.com];
-	FROM_HAS_DN(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FREEMAIL_TO(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	TO_DN_SOME(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_070324_505781_52B136AB 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250109_085533_632893_D7B96DBA 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,52 +80,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch to a multiple of 8.
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_gem.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+On Wed, 11 Dec 2024 21:40:52 +0100, Dragan Simic wrote:
+> Since the commit 8a469ee35606 ("arm64: dts: rockchip: Add txpbl node for
+> RK3399/RK3328"), having "snps,txpbl" properties defined as Ethernet stability
+> fixes in RK3328-based board dts(i) files is redundant, because that commit
+> added the required fix to the RK3328 SoC dtsi, so let's delete them.
+> 
+> It has been determined that the Ethernet stability fixes no longer require
+> "snps,rxpbl", "snps,aal" and "snps,force_thresh_dma_mode" properties, [1][2]
+> out of which the last two also induce performance penalties, so let's delete
+> these properties from the relevant RK3328-based board dts(i) files.
+> 
+> [...]
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_gem.c b/drivers/gpu/drm/mediatek/mtk_gem.c
-index a172456d1d7b..21e08fabfd7f 100644
---- a/drivers/gpu/drm/mediatek/mtk_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_gem.c
-@@ -8,6 +8,7 @@
- 
- #include <drm/drm.h>
- #include <drm/drm_device.h>
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_gem.h>
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_prime.h>
-@@ -124,15 +125,9 @@ int mtk_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
- 	struct mtk_gem_obj *mtk_gem;
- 	int ret;
- 
--	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
--
--	/*
--	 * Multiply 2 variables of different types,
--	 * for example: args->size = args->spacing * args->height;
--	 * may cause coverity issue with unintentional overflow.
--	 */
--	args->size = args->pitch;
--	args->size *= args->height;
-+	ret = drm_mode_size_dumb(dev, args, SZ_8, 0);
-+	if (ret)
-+		return ret;
- 
- 	mtk_gem = mtk_gem_create(dev, args->size, false);
- 	if (IS_ERR(mtk_gem))
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: Delete redundant RK3328 GMAC stability fixes
+      commit: 3ca11da6e8a7b578c28dcecc31237791955c62fc
+
+Best regards,
 -- 
-2.47.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
