@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55708E77197
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97BB2E7719A
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 17:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,82 +12,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gWCj757s52k6UNpPNn4ngV0C+ffEigFqUuypPPlEe38=; b=Zlber633N9jMz4
-	W3BqQ1RCRYRhihEFaAqKPf5mNpLDerXrLSa2LUtljedeQ701cicX3HLKA1ejNeBLLueC7dbl7SVsE
-	1Nw/1gTGUSM/JbytXgkTXD7Fa9Q+ugATQRfoXYGjSOLqBfTSp55CurK2hNs1aPaoAWcSmp3MeZ6Pm
-	Www1bWN2OykbL9fNnK8k8FCj9ttniy3L8Bmw5lRMrxP/EHCKynTrOyRbpqLmtmD7CidiPQAOjCoIe
-	GRHVNfJNXPGGXSxONnrr84llmElF7folePCY0ehLcF0cIXhNQw4M7WtspPlrQtGSjH0Rc0Mm2oy5n
-	u2moZFBLWJXs7/BfbUOw==;
+	List-Owner; bh=LZg0fswUT0JNToLuHAnCQYSv7lW4uauXJR5beNfJtAE=; b=LQ0kk8Bl0+1ItO
+	0gV9R2y3a6V3HPsOxap+yxXMWeVxgIvGirFlk0CKlaEIj4fyjVKfTlkzrFPOyGwPV5zWSB0YyF6jo
+	+/oTNVolgiE/Iv/vyyG0R8GfejACL3swKNcZTJa1DjGQkTEsIMOXPqfb3Jg10Ga27pqXESv7z1X0S
+	krytW00YLT1kz4eV+qcX3oCOp4GCgvQTr2YkknjTErEpwWvjAroFDXnKNgKNP/1l7CSYk/gqT4+jx
+	wgjfJkNcAA3RdhipjkgF48+gMDSV8MX/X0jIL7YyTdQbSZH2T0I7YJ6puAIAAiY4DH9kvaap1ghvJ
+	DwiLOgR3enrBfj+YnJPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVvvz-0000000CmLx-0Wy6;
-	Thu, 09 Jan 2025 17:03:03 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVvp4-0000000Cl8C-1Y7L
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 09 Jan 2025 16:55:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=yG1bQCbW33R256XkWNU4fJepnPv28LylkVyxqX0Jz9E=; b=fT0VKITw7zhCf0pw0I+Ca6mVi4
-	Mdf1H3XYPzxRvbDUnPVwDwfrNt2to2C8nsCjG0CdbzsDyuy+J2W4A/x6AFYNJDF2JniG4Iz3TaJHK
-	Un736ljHNQDmlfy4oiIn26Xb075Br/1WwIl0lBtYicvA2A634UcLSLrT8rpqSgOlhn/LqYD4JvEEi
-	2l9P9cnEDK+ufbrf0nzZF6eA8Q8v+DZyxqgYlmzTL1u7VXKz5/4gmlCimLC2ZpvOjBiDa0ayjX9aY
-	/QfPx533gKYbB0GUVa/zPtqVKnrNxHVwwMxnGewy0QKzfGc/bedXmyiDIR+zaJ5I91bzMHOpFI0SG
-	9z4vJvHw==;
+	id 1tVvvy-0000000CmLa-3HV9;
+	Thu, 09 Jan 2025 17:03:02 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVvov-00000009bv0-3new
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Jan 2025 16:55:53 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tVvoz-0000000Cl6C-1DKF;
+	Thu, 09 Jan 2025 16:55:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yG1bQCbW33R256XkWNU4fJepnPv28LylkVyxqX0Jz9E=; b=ALA+qVOYXRcMdnZ9WJcVHI/pdj
-	mUuifzN0CluQdS4IaG76LIDPyrepX0z41bDX3x7oz66Ae11H3PO1ZvvDhtTyquuF4oGX4RbvdBD7s
-	riGFg7rZa7Y6LWQGtTXK1FJ+GNgGPdn30pt+ms2t20lUjVq8zHIyFh7WpS5jbejJqA7pJvptC0oXR
-	It8AaQNL9+bFhh9AOuir5B0Bq8gsDmYN3YRmODlHMt1IquRM8IXs4fbcfdZr2e4MQtVd7vgLgWnp8
-	19v/k88JRr4F0xpzaINi1MlvgDXP95FMfGY0wlDL8VPFQmxz+pdJnRveV3OOJjcXIaNUO9Ggx0sNp
-	SVJ+hQQA==;
+	bh=MG2PC3Zfg+MmD5FAuZEOrUx3DYBcgDBYhI0nzWQqYMA=; b=WU4NeVokegoniUiiC5jCKGjvm0
+	L+cq8Id3ZkAy5uCzvERdkXJshZEOIHAmda35OBfioAkpeWDkt+N7VJsJ30Ao/hkfNWCX4Yt2f0flx
+	r+FXYshIcSIqMKdBUlBdzZJbM13YK37S6972hxdn8owuXUB6+4eHz02boN6daHKufuk4MTUZ4gUGf
+	TCNnIE+PvF4sARzmTvXqHDSTrURFv7WCJM+j9/S5Nc/DZenNfyyehgJf4/HDiMlQephclug3ejEIV
+	AVSjQ7NKWKi0MmtEwhe7RzomsUAZkRA1wYoCIV2Xkbh39D+71saWAHoK9UpYIyuDDEovXvjPDQyYt
+	PU7QKG/w==;
 Received: from i5e860d05.versanet.de ([94.134.13.5] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tVvoj-0003hx-RU; Thu, 09 Jan 2025 17:55:33 +0100
+	id 1tVvoj-0003hx-4C; Thu, 09 Jan 2025 17:55:33 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-clk@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Peter Geis <pgwipeout@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Alex Bee <knaerzche@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	huangtao@rock-chips.com,
-	andy.yan@rock-chips.com,
-	Michal Tomek <mtdev79b@gmail.com>,
-	Ilya K <me@0upti.me>,
-	Chad LeClair <leclair@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
 	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v12 0/5] rockchip: clk: add GATE_LINK support
-Date: Thu,  9 Jan 2025 17:55:20 +0100
-Message-ID: <173644170626.2899934.2363636508136913470.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add hevc power domain clock to rk3328
+Date: Thu,  9 Jan 2025 17:55:19 +0100
+Message-ID: <173644170631.2899934.14806787138893349994.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241211165957.94922-1-sebastian.reichel@collabora.com>
-References: <20241211165957.94922-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20241214224339.24674-1-pgwipeout@gmail.com>
+References: <20241214224339.24674-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_165551_343731_D8B51A0E 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20250109_085549_330397_44E8068E 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +88,55 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 11 Dec 2024 17:58:49 +0100, Sebastian Reichel wrote:
-> This implements proper GATE_LINK support following the suggestion from Stephen
-> Boyd to use clk PM operations by creating MFD dynamically. This required some
-> restructuring, since CLK_OF_DECLARE() is called before devices are available.
+On Sat, 14 Dec 2024 22:43:39 +0000, Peter Geis wrote:
+> There is a race condition at startup between disabling power domains not
+> used and disabling clocks not used on the rk3328. When the clocks are
+> disabled first, the hevc power domain fails to shut off leading to a
+> splat of failures. Add the hevc core clock to the rk3328 power domain
+> node to prevent this condition.
 > 
-> Apart from improved power consumption, this fixes the runtime errors from the
-> pmdomain driver (failed to set idle on domain '%s'). Last but not least it is
-> a first step towards reducing usage of CLK_OF_DECLARE_DRIVER() registered
-> clocks, which should only be used for early clocks needed for the system
-> timer (see this talk from LPC: https://www.youtube.com/watch?v=dofbbVuIAPk ).
+> rcu: INFO: rcu_sched detected expedited stalls on CPUs/tasks: { 3-.... }
+> 1087 jiffies s: 89 root: 0x8/.
+> rcu: blocking rcu_node structures (internal RCU debug):
+> Sending NMI from CPU 0 to CPUs 3:
+> NMI backtrace for cpu 3
+> CPU: 3 UID: 0 PID: 86 Comm: kworker/3:3 Not tainted 6.12.0-rc5+ #53
+> Hardware name: Firefly ROC-RK3328-CC (DT)
+> Workqueue: pm genpd_power_off_work_fn
+> pstate: 20400005 (nzCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> pc : regmap_unlock_spinlock+0x18/0x30
+> lr : regmap_read+0x60/0x88
+> sp : ffff800081123c00
+> x29: ffff800081123c00 x28: ffff2fa4c62cad80 x27: 0000000000000000
+> x26: ffffd74e6e660eb8 x25: ffff2fa4c62cae00 x24: 0000000000000040
+> x23: ffffd74e6d2f3ab8 x22: 0000000000000001 x21: ffff800081123c74
+> x20: 0000000000000000 x19: ffff2fa4c0412000 x18: 0000000000000000
+> x17: 77202c31203d2065 x16: 6c6469203a72656c x15: 6c6f72746e6f632d
+> x14: 7265776f703a6e6f x13: 2063766568206e69 x12: 616d6f64202c3431
+> x11: 347830206f742030 x10: 3430303034783020 x9 : ffffd74e6c7369e0
+> x8 : 3030316666206e69 x7 : 205d383738353733 x6 : 332e31202020205b
+> x5 : ffffd74e6c73fc88 x4 : ffffd74e6c73fcd4 x3 : ffffd74e6c740b40
+> x2 : ffff800080015484 x1 : 0000000000000000 x0 : ffff2fa4c0412000
+> Call trace:
+> regmap_unlock_spinlock+0x18/0x30
+> rockchip_pmu_set_idle_request+0xac/0x2c0
+> rockchip_pd_power+0x144/0x5f8
+> rockchip_pd_power_off+0x1c/0x30
+> _genpd_power_off+0x9c/0x180
+> genpd_power_off.part.0.isra.0+0x130/0x2a8
+> genpd_power_off_work_fn+0x6c/0x98
+> process_one_work+0x170/0x3f0
+> worker_thread+0x290/0x4a8
+> kthread+0xec/0xf8
+> ret_from_fork+0x10/0x20
+> rockchip-pm-domain ff100000.syscon:power-controller: failed to get ack on domain 'hevc', val=0x88220
 > 
 > [...]
 
 Applied, thanks!
 
-[1/5] clk: rockchip: support clocks registered late
-      commit: 9e89f02da718bc912f7f253b58804d4a52efed30
-[2/5] clk: rockchip: rk3588: register GATE_LINK later
-      commit: 33af96244a66f855baa43d424844bb437c79c30c
-[3/5] clk: rockchip: expose rockchip_clk_set_lookup
-      commit: fe0fb6675fa48cade97d8bcd46226479c4a704df
-[4/5] clk: rockchip: implement linked gate clock support
-      commit: c62fa612cfa66ab58ab215e5afc95c43c613b513
-[5/5] clk: rockchip: rk3588: drop RK3588_LINKED_CLK
-      commit: e9cdd7d6cf2a5031a968dc21f4f566101b602150
+[1/1] arm64: dts: rockchip: add hevc power domain clock to rk3328
+      commit: 3699f2c43ea9984e00d70463f8c29baaf260ea97
 
 Best regards,
 -- 
