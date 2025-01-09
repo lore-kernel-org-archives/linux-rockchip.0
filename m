@@ -4,62 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E980E77188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jan 2025 23:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95712E77188
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 03:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vTGnENnWro1Ksie8dgklKI+XMY8EMETz32weoo473Ds=; b=0Ghyvwt0oOHDEs
-	cB4rq5A4TYqaE1lwtgi8HXuwerMQkGwvurR+yobEzYb7w5IIKrJy2xVD7q9Y6Up1mBRTx68dyxecX
-	Zkqv5zty7QysnKFd2SR0/1g/2uH1Xs/nPRRtHMle7k5bIkC8yDSobiXlkRJJ+2EdPq4xbMaOOXgmi
-	aa5LW8GK1jguAlRsn6twwZaRR0j2RyQnomJkK2jYdlQCTV4JRcR+Ri4+c0ZCG+Nr3EmRcpIeeVwg2
-	Gyo79iODpBqNUydVf16ENa9CLcBJsdkfo0tVGmcPXU6FH6XFQvzK3gnAMptxN8+tho1aVLj0FCspP
-	yoJuPla3x+VZ0tkN+p7w==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n7EDzrcQCK7vQtJ7VN6CK39EgAf8BqC7UulCLrk21VA=; b=K2h2mmJr2tmlk1
+	UFAI2R/Dv+/3BT3p2lfbq22Pl63Ma03466/7pSR2a2EGqJcT1D+8UBlC8OLP185Adg/AqIVpLC+eI
+	bYAaT1rXQFxsObqwzkwcqUBfoC1zCSGrXpVUuLK3+OvUY9jZ3rNiQHAo/2uR+SMkczha44lDXL4mV
+	fUO33y8JifjTVz3kV7SCH2dVO6aJ5zY4v/nXXmBS0hJTCRQUngws1E9zxecfVcU7NIMsHDmeu9laz
+	+z1N8OlUsT5k37emNfQjS+HwJJpzKr66N83wTJgkxmhZshXnKIRnsNMKgu0HNfGEhhW4ZzOUG1Lm3
+	67+XTAsIC9pbGMxQf8Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVfXg-0000000A9bJ-3kVb;
-	Wed, 08 Jan 2025 23:32:52 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tVjD9-0000000AZd4-3VVE;
+	Thu, 09 Jan 2025 03:27:55 +0000
+Received: from mail-m32104.qiye.163.com ([220.197.32.104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVfWG-0000000A9R4-3Sjt;
-	Wed, 08 Jan 2025 23:31:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4FF48A41BB5;
-	Wed,  8 Jan 2025 23:29:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A7DDC4CED3;
-	Wed,  8 Jan 2025 23:31:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736379083;
-	bh=hGzh6Ux0equEOkz0+aeV+MQwWoU7zw3mDv7K/oHfxJA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VuNtBX7gO9+r+kRfw5uE/mylZqfhHuk6TrQGv6FcAiOMa/afIdcIwtJlAuUhxkqEJ
-	 aL28jKgy+1KXiTElsi7FNtMlsaowk8YaId0DYdjfZO3NoGHAXRhn/5EHJTwcCPE7lk
-	 Tyg0TcgFJ+iTbPexED2K1JjcIXIqf8dAri4hbc63Fb/npIm5uqIE50p32fXDw6KYCv
-	 2/uXdqdceLDJOTMI3YCGve0lLtJ9vyAuvjXcvc7hFkhXNSiVt3jmHIKS0fcKEkFB1l
-	 juFvd5ZsT0Z6QlSL6KFMGNlpnSZGwR0Y/7EF9HGHktEYyA0N1ngq2/wh7qylEjxWIA
-	 qokiP1TX1M2rg==
-Date: Wed, 8 Jan 2025 17:31:22 -0600
-From: Rob Herring <robh@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v9 10/11] dt-bindings: display: vop2: Add rk3576 support
-Message-ID: <20250108233122.GA1227227-robh@kernel.org>
-References: <20250108115233.17729-1-andyshrk@163.com>
- <20250108115233.17729-11-andyshrk@163.com>
+	id 1tVjD7-0000000AZag-0UCQ;
+	Thu, 09 Jan 2025 03:27:54 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 82c0195e;
+	Thu, 9 Jan 2025 11:27:43 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH v5 00/20] Add eDP support for RK3588
+Date: Thu,  9 Jan 2025 11:27:05 +0800
+Message-Id: <20250109032725.1102465-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250108115233.17729-11-andyshrk@163.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxlPSlYeQklNTEhPH05CThlWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a94491a88dc03a3kunm82c0195e
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pgg6Djo6EzIKFxQwLAJLTCwI
+	LT8KCgtVSlVKTEhNSEJISU1OS0xLVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPS05JNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=a2hk+6GOC6v2e0a4ANeM4MO77pNsnsbtFVc/JQsu/z6E7nQIqOjRgDB9Qz1XLv6zmOgeaiTffyuUc2VCTXAIIk5ja7XU/Db3u0FolxWJCbfa2sr2TOVyL6+mjDPZi3N47vY5cXa4H2Rwum7m4HjqioJy2by2b1MQcjPc4uJXFaw=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=kOAA9iSyzFQMTnJ/IrrO9xw8dXd24x9YPykOwNf/caA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_153124_999991_D1444339 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20250108_192753_415376_8CD154E2 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,187 +64,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 08, 2025 at 07:52:27PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Add vop found on rk3576, the main difference between rk3576 and the
-> previous vop is that each VP has its own interrupt line.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v9:
-> - Drop 'vop-' prefix of interrupt-names.
-> - Add blank line between DT properties
-> - Remove list interrupt-names in top level
+These patchs have been tested with a 1536x2048p60 eDP panel on
+RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
+on RK3588 EVB1 board. Furthermore, the eDP display has been rechecked
+on RK3399 sapphire excavator board.
 
-That's the opposite of what we usually want...
+Patch 1~4   are the eDP mode support of samsung hdptx phy driver.
+Patch 5~8   are preparations for the RK3588 eDP support on both Analogix
+            side and Rockchip side.
+Patch 9~12  are to support to get panel from the DP AUX bus.
+Patch 13~15 are the RK3588 Analogix DP driver support.
+Patch 16    is to add the power sequencing delays for panel model
+            LP079QX1-SP0V.
+Patch 17~18 are the renaming of hdptxphy node. It is not only used by
+            HDMI display but also for the eDP display.
+Patch 19    is the addition of RK3588 eDP0 node.
+Patch 20    is to enable the eDP0 display on RK3588S EVB1 board.
 
-> 
-> Changes in v8:
-> - Fix dt_binding_check errors
-> - ordered by soc name
-> - Link to the previous version:
->   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
-> 
-> Changes in v4:
-> - describe constraint SOC by SOC, as interrupts of rk3576 is very
->   different from others
-> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
-> 
-> Changes in v3:
-> - ordered by soc name
-> - Add description for newly added interrupt
-> 
-> Changes in v2:
-> - Add dt bindings
-> 
->  .../display/rockchip/rockchip-vop2.yaml       | 83 +++++++++++++++----
->  1 file changed, 67 insertions(+), 16 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> index 2531726af306..44256cdcb877 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> @@ -20,6 +20,7 @@ properties:
->      enum:
->        - rockchip,rk3566-vop
->        - rockchip,rk3568-vop
-> +      - rockchip,rk3576-vop
->        - rockchip,rk3588-vop
->  
->    reg:
-> @@ -37,10 +38,17 @@ properties:
->        - const: gamma-lut
->  
->    interrupts:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 4
->      description:
-> -      The VOP interrupt is shared by several interrupt sources, such as
-> -      frame start (VSYNC), line flag and other status interrupts.
-> +      For VOP version under rk3576, the interrupt is shared by several interrupt
-> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
-> +      For VOP version from rk3576 there is a system interrupt for bus error, and
-> +      every video port has it's independent interrupts for vsync and other video
-> +      port related error interrupts.
-> +
-> +  interrupt-names:
-> +    maxItems: 4
->  
->    # See compatible-specific constraints below.
->    clocks:
-> @@ -120,43 +128,86 @@ allOf:
->        properties:
->          compatible:
->            contains:
-> -            const: rockchip,rk3588-vop
-> +            enum:
-> +              - rockchip,rk3566-vop
-> +              - rockchip,rk3568-vop
->      then:
->        properties:
->          clocks:
-> -          minItems: 7
-> +          minItems: 5
-> +
->          clock-names:
-> -          minItems: 7
-> +          minItems: 5
->  
->          ports:
->            required:
->              - port@0
->              - port@1
->              - port@2
-> -            - port@3
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3576-vop
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 5
-> +
-> +        clock-names:
-> +          minItems: 5
-> +
-> +        ports:
-> +          required:
-> +            - port@0
-> +            - port@1
-> +            - port@2
-> +
-> +        interrupts:
-> +          items:
-> +            - description: vop system interrupt, such as axi bus error
-> +            - description: interrupts for video port0, such as vsync, dsp_hold.
-> +            - description: interrupts for video port1, such as vsync, dsp_hold.
-> +            - description: interrupts for video port2, such as vsync, dsp_hold.
-> +
-> +        interrupt-names:
-> +          items:
-> +            - const: sys
-> +            - const: vp0
-> +            - const: vp1
-> +            - const: vp2
->  
->        required:
->          - rockchip,grf
-> -        - rockchip,vo1-grf
-> -        - rockchip,vop-grf
->          - rockchip,pmu
->  
-> -    else:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3588-vop
-> +    then:
->        properties:
-> -        rockchip,vo1-grf: false
-> -        rockchip,vop-grf: false
-> -        rockchip,pmu: false
-> -
->          clocks:
-> -          maxItems: 5
-> +          minItems: 7
-> +
->          clock-names:
-> -          maxItems: 5
-> +          minItems: 7
->  
->          ports:
->            required:
->              - port@0
->              - port@1
->              - port@2
-> +            - port@3
-> +
-> +      required:
-> +        - rockchip,grf
-> +        - rockchip,vo1-grf
-> +        - rockchip,vop-grf
-> +        - rockchip,pmu
+Damon Ding (20):
+  phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and
+    ROPLL_REF
+  phy: phy-rockchip-samsung-hdptx: Supplement some register names with
+    their full version
+  phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all
+    registers
+  phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
+  drm/rockchip: analogix_dp: Replace DRM_...() functions with drm_...()
+    or dev_...()
+  drm/rockchip: analogix_dp: Use formalized struct definition for grf
+    field
+  drm/rockchip: analogix_dp: Expand device data to support multiple edp
+    display
+  drm/bridge: analogix_dp: Add support for phy configuration.
+  dt-bindings: display: rockchip: analogix-dp: Add support to get panel
+    from the DP AUX bus
+  drm/bridge: analogix_dp: support to get &analogix_dp_device.plat_data
+    and &analogix_dp_device.aux
+  drm/bridge: analogix_dp: Add support to get panel from the DP AUX bus
+  drm/rockchip: analogix_dp: Add support to get panel from the DP AUX
+    bus
+  dt-bindings: display: rockchip: analogix-dp: Add support for RK3588
+  drm/bridge: analogix_dp: Add support for RK3588
+  drm/rockchip: analogix_dp: Add support for RK3588
+  drm/edp-panel: Add LG Display panel model LP079QX1-SP0V
+  dt-bindings: display: rockchip: Fix label name of hdptxphy for RK3588
+    HDMI TX Controller
+  arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
+  arm64: dts: rockchip: Add eDP0 node for RK3588
+  arm64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
 
-Where do the existing platforms have a constraint of only 1 interrupt?
+ .../rockchip/rockchip,analogix-dp.yaml        |  40 +-
+ .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  32 +-
+ .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    |   2 +-
+ .../rockchip/rk3588-coolpi-cm5-genbook.dts    |   2 +-
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   2 +-
+ .../rk3588-friendlyelec-cm3588-nas.dts        |   2 +-
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   2 +-
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   2 +-
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   2 +-
+ .../boot/dts/rockchip/rk3588-tiger-haikou.dts |   2 +-
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588s-evb1-v10.dts    |  54 +
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 +-
+ .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  |   2 +-
+ .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   2 +-
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   2 +-
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     |   2 +-
+ .../drm/bridge/analogix/analogix_dp_core.c    |  81 +-
+ .../drm/bridge/analogix/analogix_dp_core.h    |   1 +
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  52 +
+ drivers/gpu/drm/panel/panel-edp.c             |   8 +
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 233 +++--
+ .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 971 +++++++++++++++++-
+ include/drm/bridge/analogix_dp.h              |   7 +-
+ 27 files changed, 1344 insertions(+), 169 deletions(-)
 
-And now while rk3576 has defined interrupt-names, all the other can have 
-4 entries with anything.
+-- 
+2.34.1
 
-Rob
 
 _______________________________________________
 Linux-rockchip mailing list
