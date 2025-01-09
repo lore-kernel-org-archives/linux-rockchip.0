@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4C7E77197
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 03:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4EA9E77199
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 03:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uC2r1zzdkQAXhN57ofeuO6iJ0h65zRXK+ed9Ok8hEP4=; b=yHxGkXEJRDbWN2
-	6y9Yk674D2+JjW1HHE8fpd32ejcsCRQ5c9WpV+z9cVDhGFEIYO1PqNdFelAVdPvQodZNj3qIPFpvm
-	IMJG1pXGkNi3xDZkH9ngZVMqL+x7BCOQkuq2adaMeTHuVM29NCnrVHp3qrRgfuZXF1TzZj9xAl62i
-	1PyD3Egq9XZHTgE5h0EtfvGOjnI/O8XzXpKX9qA4tcQt4jw0/cc6KOt1KamVoEbVQfHnApYFrqRuh
-	dsYkNwQUKkwoBantvZ79AwmX+KmlSGHJx0Blp3pwxO0CeReubk+Wb531QYPOzWD0nLQc1mAq6KqvR
-	/+A/PvvXmfFrkw6jqdQA==;
+	List-Owner; bh=fAM3Q6aDgQ4ywqwK5cSCRZgBE6eTFzfVpJp2wAbliTI=; b=a0e/F6acrNZ5cZ
+	gVrqeSdznMJ30yEqzF9nuyzjl2fnFuzmx97rAt8PE0Bjrrk0ENrt2Tv3kdQm5zlp1DDSFbkUIww0v
+	Kgh4X0TE3Ypknm6G8KNn3eL3H/jL9HUdsZdIMit7DngA85J6Vl8VPZaYGErsl8v0EZBOz1VdEWmqg
+	JWCz/e75LR4GzbHWn7tUc0W7/KtFT6FGqaE4M6L1RnDR34uxHXI3h2XjJhtDCN9EwFpSQhuvwyYYQ
+	lpJECGcOOag9GDqfEIxVmh+EXuDCqCD7Xw6t2zaBWABrZL0MDeX7gCpb+bl/ngUA3+A3IUELGu7pn
+	UezDbhIxOqFJn4mCcJgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVjLi-0000000AbmR-0YDX;
-	Thu, 09 Jan 2025 03:36:46 +0000
-Received: from mail-m32107.qiye.163.com ([220.197.32.107])
+	id 1tVjMu-0000000AbyV-2Rhm;
+	Thu, 09 Jan 2025 03:38:00 +0000
+Received: from mail-m19731114.qiye.163.com ([220.197.31.114])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVjDj-0000000AZnq-0Y2c;
-	Thu, 09 Jan 2025 03:28:32 +0000
+	id 1tVjDj-0000000AZoR-4AdN;
+	Thu, 09 Jan 2025 03:28:33 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 82c01ab5;
-	Thu, 9 Jan 2025 11:28:25 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 82c01ac2;
+	Thu, 9 Jan 2025 11:28:27 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: heiko@sntech.de
-Subject: [PATCH v5 15/20] drm/rockchip: analogix_dp: Add support for RK3588
-Date: Thu,  9 Jan 2025 11:27:20 +0800
-Message-Id: <20250109032725.1102465-16-damon.ding@rock-chips.com>
+Subject: [PATCH v5 16/20] drm/edp-panel: Add LG Display panel model LP079QX1-SP0V
+Date: Thu,  9 Jan 2025 11:27:21 +0800
+Message-Id: <20250109032725.1102465-17-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250109032725.1102465-1-damon.ding@rock-chips.com>
 References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh0YTFZPTEhKQkkeSh5IGBpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a94491b2ecf03a3kunm82c01ab5
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0JMGVZNGh9NT09DGklDShhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a94491b35d203a3kunm82c01ac2
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OTY6LTo*OjIXTBQZFlYWQx0e
-	OT0wFBVVSlVKTEhNSEJISEtMT0NCVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFNS0NKNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NjI6FRw4PTIRCxQfFlZIQykC
+	FS5PCgJVSlVKTEhNSEJISEtCSU1CVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKTElMNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=NPmedofdK5E9T6tLE4Ac1lVWZEWy2gKefnGZTW7dd3eVbGuoqA1/GvjBC92hYSkGfYsE0J4UNzw9G1wB7pVxhic8wo57ciMzEARo4Yeua4PiLTbnnboSvJmyzxAlUJpOqTX7yT4uN85HHh9CWEpqgg71vojzIkiCFOWrxN8r9rk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=4jFFoCjuV3Jo3BNNQTzoJDqGitiW8KDhOAw7o3MwPKA=;
+	b=CO00IuK7yMiOHHNDr/maexYbn5q+l81UIJljQTFro7IhdCuWdrZeJu7nrVG7rDJqMp9NCg1tUscTnpnqK8SbyvmqVKXKR3rqimaB2v+6KgVYcVmjDKlZp8HG9b3bgF9CUtWKX7dQl+1knm3A/ATEnd8NPZcOsITyh6RN26d3Wo4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=9/Sor/kLQSb3dLK3caIMXvkBUCStb7nd7IdU6n7mgto=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_192831_432238_C77E72AC 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20250108_192832_227659_66ED1140 
+X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,186 +72,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 integrates the Analogix eDP 1.3 TX controller IP and the HDMI/eDP
-TX Combo PHY based on a Samsung IP block. There are also two independent
-eDP display interface with different address on RK3588 Soc.
+The raw edid for LP079QX1-SP0V panel model is:
 
-The patch currently adds only the basic support, specifically RGB output
-up to 4K@60Hz, without the tests for audio, PSR and other eDP 1.3 specific
-features.
-
-In additon, the above Analogix IP has always been utilized as eDP on
-Rockchip platform, despite its capability to also support the DP v1.2.
-Therefore, the newly added logs will contain the term 'edp' rather than
-'dp'. And the newly added 'apb' reset control is to ensure the APB bus
-of eDP controller works well on the RK3588 SoC.
+00 ff ff ff ff ff ff 00 16 83 00 00 00 00 00 00
+04 17 01 00 a5 10 0c 78 06 ef 05 a3 54 4c 99 26
+0f 50 54 00 00 00 01 01 01 01 01 01 01 01 01 01
+01 01 01 01 01 01 ea 4e 00 4c 60 00 14 80 0c 10
+84 00 78 a0 00 00 00 18 00 00 00 10 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 fe 00 4c
+50 30 37 39 51 58 31 2d 53 50 30 56 00 00 00 fc
+00 43 6f 6c 6f 72 20 4c 43 44 0a 20 20 20 00 3f
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-
 ---
+ drivers/gpu/drm/panel/panel-edp.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Changes in v2:
-- Add support for the other eDP output edp1
-
-Changes in v3:
-- Fix the unexpected use of alias
-- Add more details in commit message
-
-Changes in v4:
-- Add the 'apb' reset control
-
-Changes in v5:
-- Use drm_...()/dev_...() instead of DRM_...()
-- Clean &rockchip_dp_chip_data.reg related comments in commit message
-- Move the modifications in anlogix_dp.h to the Analogix side in order
-  to avoid the warning:
-
-  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1506:10: warning:
-  enumeration value 'RK3588_EDP' not handled in switch [-Wswitch]
-          switch (dp->plat_data->dev_type) {
-
----
- .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 61 ++++++++++++++++++-
- 1 file changed, 58 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 3ae01b870f49..de24999f5b61 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -51,10 +51,12 @@ struct rockchip_grf_reg_field {
- /**
-  * struct rockchip_dp_chip_data - splite the grf setting of kind of chips
-  * @lcdc_sel: grf register field of lcdc_sel
-+ * @edp_mode: grf register field of edp_mode
-  * @chip_type: specific chip type
-  */
- struct rockchip_dp_chip_data {
- 	const struct rockchip_grf_reg_field lcdc_sel;
-+	const struct rockchip_grf_reg_field edp_mode;
- 	u32	chip_type;
- 	u32	reg;
- };
-@@ -69,6 +71,7 @@ struct rockchip_dp_device {
- 	struct clk               *grfclk;
- 	struct regmap            *grf;
- 	struct reset_control     *rst;
-+	struct reset_control     *apbrst;
- 
- 	const struct rockchip_dp_chip_data *data;
- 
-@@ -114,6 +117,10 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
- 	usleep_range(10, 20);
- 	reset_control_deassert(dp->rst);
- 
-+	reset_control_assert(dp->apbrst);
-+	usleep_range(10, 20);
-+	reset_control_deassert(dp->apbrst);
-+
- 	return 0;
- }
- 
-@@ -135,12 +142,21 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 		return ret;
- 	}
- 
-+	ret = rockchip_grf_field_write(dp->grf, &dp->data->edp_mode, 1);
-+	if (ret != 0)
-+		dev_err(dp->dev, "failed to set edp mode %d\n", ret);
-+
- 	return ret;
- }
- 
- static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
- {
- 	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
-+	int ret;
-+
-+	ret = rockchip_grf_field_write(dp->grf, &dp->data->edp_mode, 0);
-+	if (ret != 0)
-+		dev_err(dp->dev, "failed to set edp mode %d\n", ret);
- 
- 	clk_disable_unprepare(dp->pclk);
- 
-@@ -205,6 +221,10 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
- 	struct rockchip_dp_device *dp = encoder_to_dp(encoder);
- 	struct drm_crtc *crtc;
- 	struct drm_crtc_state *old_crtc_state;
-+	struct of_endpoint endpoint;
-+	struct device_node *remote_port, *remote_port_parent;
-+	char name[32];
-+	u32 port_id;
- 	int ret;
- 
- 	crtc = rockchip_dp_drm_get_new_crtc(encoder, state);
-@@ -222,13 +242,27 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
- 		return;
- 	}
- 
--	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
-+	ret = drm_of_encoder_active_endpoint(dp->dev->of_node, encoder, &endpoint);
- 	if (ret < 0)
- 		return;
- 
--	drm_dbg_core(dp->drm_dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
-+	remote_port_parent = of_graph_get_remote_port_parent(endpoint.local_node);
-+	if (remote_port_parent) {
-+		if (of_get_child_by_name(remote_port_parent, "ports")) {
-+			remote_port = of_graph_get_remote_port(endpoint.local_node);
-+			of_property_read_u32(remote_port, "reg", &port_id);
-+			of_node_put(remote_port);
-+			sprintf(name, "%s vp%d", remote_port_parent->full_name, port_id);
-+		} else {
-+			sprintf(name, "%s %s",
-+				remote_port_parent->full_name, endpoint.id ? "vopl" : "vopb");
-+		}
-+		of_node_put(remote_port_parent);
-+
-+		drm_dbg_core(dp->drm_dev, "%s output to edp\n", name);
-+	}
- 
--	ret = rockchip_grf_field_write(dp->grf, &dp->data->lcdc_sel, ret);
-+	ret = rockchip_grf_field_write(dp->grf, &dp->data->lcdc_sel, endpoint.id);
- 	if (ret != 0)
- 		drm_err(dp->drm_dev, "Could not write to GRF: %d\n", ret);
- 
-@@ -322,6 +356,12 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- 		return PTR_ERR(dp->rst);
- 	}
- 
-+	dp->apbrst = devm_reset_control_get_optional(dev, "apb");
-+	if (IS_ERR(dp->apbrst)) {
-+		dev_err(dev, "failed to get apb reset control\n");
-+		return PTR_ERR(dp->apbrst);
-+	}
-+
- 	return 0;
- }
- 
-@@ -521,9 +561,24 @@ static const struct rockchip_dp_chip_data rk3288_dp[] = {
- 	{ /* sentinel */ }
+diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
+index 94a46241dece..8274118d2a8c 100644
+--- a/drivers/gpu/drm/panel/panel-edp.c
++++ b/drivers/gpu/drm/panel/panel-edp.c
+@@ -1802,6 +1802,12 @@ static const struct panel_delay delay_200_500_e50_po2e200 = {
+ 	.powered_on_to_enable = 200,
  };
  
-+static const struct rockchip_dp_chip_data rk3588_edp[] = {
-+	{
-+		.edp_mode = GRF_REG_FIELD(0x0000, 0, 0),
-+		.chip_type = RK3588_EDP,
-+		.reg = 0xfdec0000,
-+	},
-+	{
-+		.edp_mode = GRF_REG_FIELD(0x0004, 0, 0),
-+		.chip_type = RK3588_EDP,
-+		.reg = 0xfded0000,
-+	},
-+	{ /* sentinel */ }
++static const struct panel_delay delay_50_500_e200 = {
++	.hpd_absent = 50,
++	.unprepare = 500,
++	.enable = 200,
 +};
 +
- static const struct of_device_id rockchip_dp_dt_ids[] = {
- 	{.compatible = "rockchip,rk3288-dp", .data = &rk3288_dp },
- 	{.compatible = "rockchip,rk3399-edp", .data = &rk3399_edp },
-+	{.compatible = "rockchip,rk3588-edp", .data = &rk3588_edp },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, rockchip_dp_dt_ids);
+ #define EDP_PANEL_ENTRY(vend_chr_0, vend_chr_1, vend_chr_2, product_id, _delay, _name) \
+ { \
+ 	.ident = { \
+@@ -1948,6 +1954,8 @@ static const struct edp_panel_entry edp_panels[] = {
+ 	EDP_PANEL_ENTRY('C', 'S', 'W', 0x1100, &delay_200_500_e80_d50, "MNB601LS1-1"),
+ 	EDP_PANEL_ENTRY('C', 'S', 'W', 0x1104, &delay_200_500_e50, "MNB601LS1-4"),
+ 
++	EDP_PANEL_ENTRY('E', 'T', 'C', 0x0000, &delay_50_500_e200, "LP079QX1-SP0V"),
++
+ 	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d51, &delay_200_500_e200, "Unknown"),
+ 	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d5b, &delay_200_500_e200, "MB116AN01"),
+ 	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d5c, &delay_200_500_e200, "MB116AN01-2"),
 -- 
 2.34.1
 
