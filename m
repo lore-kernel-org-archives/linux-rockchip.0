@@ -4,88 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2687E77197
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 05:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D338EE7719A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 06:30:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5oCdDSBsWm4xvy4+2B47esN0OBDnRIUZdQJd18/HPlE=; b=OvQ1fHQwMe/IxQ
-	GYqGmwOdEwzmc9vVyvRqlOCunOdpdBVDPuj5Mu6cDNgfPLw8RxQeiQQZ1MXHzvtCpplv5WBrIuOWo
-	qYFi4nBiBL6PS6mWNC11njP7hESOnjVTDbDlZYp8KGP3ZpIf5IrWD+sLOmLL68T+nucv8QXNffRbu
-	jkKtxeOE244BSjXcA0uIMdWJ7MHpGlNH4toJy/XtJuQq97G+RN9QOtAChsdspCmfJ+3coWqbc/iHD
-	ivolwnEwLGDa3ko5QsB3711+dHOiZDikoSvHqHJ4I8pNwE43ah63C55lAFcIx7ThaXqlQc+XkOqNd
-	3tmAbMFFmWGoj3DDKTpw==;
+	List-Owner; bh=ZmQHHHqO29XLw79wyE5jRDpuRhytQ0wHASK0a7W+1gw=; b=gnHGnZiiTTgEhp
+	a4YCT7lde7i4eZud0u0uzRcFnHsxo14xrAKsFjWk8/n0nfvDCshHCtkGzhVUwdCAzi+g9mQfoYKY4
+	TXTqvooRgQr+gywLYxWpnzfTT5+yHSDviOKzj3cOeRiQT5L3gWofcfle8CMbCUp/fvJQZ5ps2D/8A
+	+ZyP+PKKDVKYUQBfbJY4q+9YIg7HhmabCioiSGGJQfKr6ZxWhbTfNFg9e2cmOa56YSLbdUb3QZc7a
+	18/JCdtM5R/JNghh45LyuLS1iVEF6dRyZ5pai5c3AdS7R0EaZBHGDTWf5knPIaRmol8NWXwcPohVH
+	5spmGcauE67g66oZUXeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVl0b-0000000AnLL-2uWC;
-	Thu, 09 Jan 2025 05:23:05 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVkug-0000000AmSX-1ZaA;
-	Thu, 09 Jan 2025 05:16:59 +0000
-Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-71e3167b90dso283425a34.0;
-        Wed, 08 Jan 2025 21:16:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736399817; x=1737004617; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=fQgYmW49qTVkCCzKWq1cL6zO177MKqPtsuyDIpPk5x7qLAJdhnuU34/G8+HveUcAyy
-         gg7w8gKwSB36OiQpv7ErC5e9EHukV4/irsR3hf/LtP/pEa61106+jbeptfce+Hu2uSVr
-         a4UYkkrnhSiYTVhfEHGnBvIAmKwkAYU7uq+mY8c7sYtypcN93pvMziBB0hBE5Wm9rWfL
-         7unvcFfQkDRkC5u6hUaoGV+ELeuilzxtGWXFDd1LCdHANihEf69kYeJjVYD08NBUG825
-         JH1YAUnyV593xvK126a2TL9zoNt6to4MgY7xvguntoikhJKQ7HpX2BmC2/Cji89OCR7/
-         0VOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736399817; x=1737004617;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xhbPOgs5hdCM6+iNzYizeI0jRjlgIwhloeZJA197DFE=;
-        b=cyrZN5Q/3njt7cI7SxOlPE0/ukE4KMWdFC2eOBS81FSXTGkpCk+47zlP6U77ZNQK4g
-         wYub3vPQeRHPhDGP1rnXLhWVfYSdcl5ORVEYr5N0iQTrRLjnkcCX4LDLJUuvNypRjt7p
-         s3VDQYD6Esbqhyg7RJ8HR5WzT3W8QNaxuLSjiePhQsTrAsg4clg9GStM+0b3HRu+Ms5B
-         7QT5HatsshHmhGPD1xyWWe3JL3wkgBMjzWhsYrvPXQo+GrIQqR4HIuBeVbpKYSAv6QzH
-         w1McD9YUeaooHHYpRTPYFx/NDOAAUiEdPih1i4ngLl4ksXZtBylggskkZP7NSF14Lx33
-         Ko0w==
-X-Forwarded-Encrypted: i=1; AJvYcCUy/OrALFJGccAeuYGj4v9pNbv38AaPZkY6BI49fG26RdLsDytQUiixxndha1JtR0pInTnKbgXnzXh4TybUnIw=@lists.infradead.org, AJvYcCVL/JJOsj9/aIEQ8XfkxLXhI13c5+lNbn4GlhVLzYqIR00ogzPt2gqmvzRFmGoMSZjP/u+VuiAUTrLgSLAcOQwp@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8M4XpV95Icc3sr+gCO9blu96jKrKJWyukbhgIhJeDVJx3qUtV
-	bwpQBxWVJhit8axUJ+3EZRuFVw3JC8wh5zqsatOUrDtpx+A0NZqA
-X-Gm-Gg: ASbGnctOU9ezuxsEsPyOFLAmpbv+O8HE8QoF36Vr+4awNW2zP1zWqqEABEiSxpNI/Ir
-	uh5oDwwBHaTxWc1pHMs16NrM9yBcbvDfPVFdoqh6MIUNBWQzjUHEkZA4aou7TUAOY0O/ojDN2fX
-	Xs41eUrhEB/Akby4vUwYgrJp2bLYoVid9EdbIyhm7BYFI1sd9p6Cp7K9HIW+ZA1krid+T9pfJBd
-	3hd3fGKhQq8Ju3Vpp1y0IV8ROdQZhH7X8Kbc0ZihaZRsu8OUWRMD60oYnQzQz7loQ==
-X-Google-Smtp-Source: AGHT+IEpt0d5ijmwFkkrX4I7/Zuu+7GGnQCle9sRDy4Mh3arQmHmqyc3VJTxBx4Hrg0pJkqoZChGFg==
-X-Received: by 2002:a05:6830:6213:b0:718:d31:feb8 with SMTP id 46e09a7af769-721e2e2ded2mr3597170a34.7.1736399817306;
-        Wed, 08 Jan 2025 21:16:57 -0800 (PST)
-Received: from tower.cjhon.com ([2603:8081:ad00:4a:f022:ffa3:5bc0:c1c3])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-723185481bcsm187612a34.21.2025.01.08.21.16.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 21:16:56 -0800 (PST)
-From: Jimmy Hon <honyuenkwun@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH v8 4/4] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Max
-Date: Wed,  8 Jan 2025 23:16:18 -0600
-Message-ID: <20250109051619.1825-5-honyuenkwun@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250109051619.1825-1-honyuenkwun@gmail.com>
-References: <20250109051619.1825-1-honyuenkwun@gmail.com>
+	id 1tVm3k-0000000AvZF-2fBv;
+	Thu, 09 Jan 2025 06:30:24 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tVm2W-0000000AvKL-10tC;
+	Thu, 09 Jan 2025 06:29:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=xNVUF8UGN6na3JrIgXHKi8KH+dFuTcPxSWvpjZfV1NQ=; b=M
+	hG1HV36d/CdYz4NXULcYtzLAuec5UGZaWJwrxZivAkvc0bhSgoT14b5DpKPk5pzC
+	SKx1QMDkvmKUzRzQAvLd99t5RVJ72eiJqKUN0niG13FCs0UR58DEu69ljGeqs/1T
+	9CIdaXsLTZVNhE/LvFloXmmC8wDp0W4zDJwDmgsq0c=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-121 (Coremail) ; Thu, 9 Jan 2025 14:28:36 +0800 (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Thu, 9 Jan 2025 14:28:36 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Damon Ding" <damon.ding@rock-chips.com>
+Subject: Re:[PATCH v5 05/20] drm/rockchip: analogix_dp: Replace DRM_...()
+ functions with drm_...() or dev_...()
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20250109032725.1102465-6-damon.ding@rock-chips.com>
+References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
+ <20250109032725.1102465-6-damon.ding@rock-chips.com>
+X-NTES-SC: AL_Qu2YBPibu0kq4COQZekfmkcVgOw9UcO5v/Qk3oZXOJF8jArp+TAefEJSMWvIws60LDKUmgmGdih16sFZbLt8cLIWzZj7DHW+VdjsZkBgVygZtw==
 MIME-Version: 1.0
+Message-ID: <40b09942.533e.19449c023a1.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eSgvCgB3PMeUbH9ndwBTAA--.16079W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqR3PXmd-YuGrTwACsY
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250108_211658_627051_CE8D99B2 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20250108_222908_687360_5D77B881 
+X-CRM114-Status: UNSURE (   9.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,89 +68,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the second HDMI output port on the Orange Pi 5 Max
 
-Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
----
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+Hi Damon,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index ce44549babf4..ecfbed2d0059 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -21,6 +21,17 @@ hdmi0_con_in: endpoint {
- 			};
- 		};
- 	};
-+
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
- };
- 
- &hdmi0 {
-@@ -39,10 +50,33 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+&hdmi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
-+			     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
- &hdptxphy_hdmi0 {
- 	status = "okay";
- };
- 
-+&hdptxphy1 {
-+	status = "okay";
-+};
-+
- &pinctrl {
- 
- 	usb {
-@@ -58,3 +92,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi0_in_vp0>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp1>;
-+	};
-+};
--- 
-2.47.1
+At 2025-01-09 11:27:10, "Damon Ding" <damon.ding@rock-chips.com> wrote:
+>According to the comments in include/drm/drm_print.h, the DRM_...()
+>functions are deprecated in favor of drm_...() or dev_...() functions.
+>
+>Use drm_err()/drm_dbg_core()/drm_dbg_kms() instead of
+>DRM_DEV_ERROR()/DRM_ERROR()/DRM_DEV_DEBUG()/DRM_DEBUG_KMS() after
+>rockchip_dp_bind() is called, and replace DRM_DEV_ERROR() with dev_err()
+>before calling it.
+>
+>Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>---
+> .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 29 ++++++++++---------
+> 1 file changed, 15 insertions(+), 14 deletions(-)
+>
+>diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>index 546d13f19f9b..8114c3238609 100644
+>--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>@@ -100,13 +100,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+> 
+> 	ret = clk_prepare_enable(dp->pclk);
+> 	if (ret < 0) {
+>-		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
+>+		drm_err(dp->drm_dev, "failed to enable pclk %d\n", ret);
 
+               You just need to pass dp here:
+                drm_err(dp, "failed to enable pclk %d\n", ret);
 
+> 		return ret;
+> 	}
+> 
+> 	ret = rockchip_dp_pre_init(dp);
+> 	if (ret < 0) {
+>-		DRM_DEV_ERROR(dp->dev, "failed to dp pre init %d\n", ret);
+>+		drm_err(dp->drm_dev, "failed to dp pre init %d\n", ret);
+> 		clk_disable_unprepare(dp->pclk);
+> 		return ret;
+> 	}
+>@@ -126,12 +126,13 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+> static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+> 				 struct drm_connector *connector)
+> {
+>+	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
+> 	struct drm_display_info *di = &connector->display_info;
+> 	/* VOP couldn't output YUV video format for eDP rightly */
+> 	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
+> 
+> 	if ((di->color_formats & mask)) {
+>-		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
+>+		drm_dbg_kms(dp->drm_dev, "Swapping display color format from YUV to RGB\n");
+> 		di->color_formats &= ~mask;
+> 		di->color_formats |= DRM_COLOR_FORMAT_RGB444;
+> 		di->bpc = 8;
+>@@ -201,17 +202,17 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+> 	else
+> 		val = dp->data->lcdsel_big;
+> 
+>-	DRM_DEV_DEBUG(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
+>+	drm_dbg_core(dp->drm_dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
+> 
+> 	ret = clk_prepare_enable(dp->grfclk);
+> 	if (ret < 0) {
+>-		DRM_DEV_ERROR(dp->dev, "failed to enable grfclk %d\n", ret);
+>+		drm_err(dp->drm_dev, "failed to enable grfclk %d\n", ret);
+> 		return;
+> 	}
+> 
+> 	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
+> 	if (ret != 0)
+>-		DRM_DEV_ERROR(dp->dev, "Could not write to GRF: %d\n", ret);
+>+		drm_err(dp->drm_dev, "Could not write to GRF: %d\n", ret);
+> 
+> 	clk_disable_unprepare(dp->grfclk);
+> }
+>@@ -236,7 +237,7 @@ static void rockchip_dp_drm_encoder_disable(struct drm_encoder *encoder,
+> 
+> 	ret = rockchip_drm_wait_vact_end(crtc, PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
+> 	if (ret)
+>-		DRM_DEV_ERROR(dp->dev, "line flag irq timed out\n");
+>+		drm_err(dp->drm_dev, "line flag irq timed out\n");
+> }
+> 
+> static int
+>@@ -277,7 +278,7 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+> 
+> 	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> 	if (IS_ERR(dp->grf)) {
+>-		DRM_DEV_ERROR(dev, "failed to get rockchip,grf property\n");
+>+		dev_err(dev, "failed to get rockchip,grf property\n");
+> 		return PTR_ERR(dp->grf);
+> 	}
+> 
+>@@ -287,19 +288,19 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+> 	} else if (PTR_ERR(dp->grfclk) == -EPROBE_DEFER) {
+> 		return -EPROBE_DEFER;
+> 	} else if (IS_ERR(dp->grfclk)) {
+>-		DRM_DEV_ERROR(dev, "failed to get grf clock\n");
+>+		dev_err(dev, "failed to get grf clock\n");
+> 		return PTR_ERR(dp->grfclk);
+> 	}
+> 
+> 	dp->pclk = devm_clk_get(dev, "pclk");
+> 	if (IS_ERR(dp->pclk)) {
+>-		DRM_DEV_ERROR(dev, "failed to get pclk property\n");
+>+		dev_err(dev, "failed to get pclk property\n");
+> 		return PTR_ERR(dp->pclk);
+> 	}
+> 
+> 	dp->rst = devm_reset_control_get(dev, "dp");
+> 	if (IS_ERR(dp->rst)) {
+>-		DRM_DEV_ERROR(dev, "failed to get dp reset control\n");
+>+		dev_err(dev, "failed to get dp reset control\n");
+> 		return PTR_ERR(dp->rst);
+> 	}
+> 
+>@@ -315,12 +316,12 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
+> 
+> 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+> 							     dev->of_node);
+>-	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+>+	drm_dbg_kms(drm_dev, "possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+> 
+> 	ret = drm_simple_encoder_init(drm_dev, encoder,
+> 				      DRM_MODE_ENCODER_TMDS);
+> 	if (ret) {
+>-		DRM_ERROR("failed to initialize encoder with drm\n");
+>+		drm_err(drm_dev, "failed to initialize encoder with drm\n");
+> 		return ret;
+> 	}
+> 
+>@@ -340,7 +341,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+> 
+> 	ret = rockchip_dp_drm_create_encoder(dp);
+> 	if (ret) {
+>-		DRM_ERROR("failed to create drm encoder\n");
+>+		drm_err(drm_dev, "failed to create drm encoder\n");
+> 		return ret;
+> 	}
+> 
+>-- 
+>2.34.1
+>
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
