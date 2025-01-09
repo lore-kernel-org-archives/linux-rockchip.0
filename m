@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B546BE7719C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 22:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B30FE7719A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 23:04:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wdbr/+eAZycTK7Ml0bn6UVoMCvha8E+9pvIED0YAo48=; b=fZlte6nU37IX71
-	s/AdsL5iQKO9/VmQs0MAE9fW+pUw93MNVlUh0knzUE7ocPM8gARvJlHojcGm4VVQgEkdbjUd9KPCb
-	fM+TkNQH0af4ArWqdJNPE33/okW/8G+ywZSChNYEKoUg3HnmZivNevuiCsiRhWXT5NnDSc5fnBU7y
-	PG8XHWGzm0F1yjjx2nI790Y3xwOP2EMLuG0B5ctYVSisrSzM+N0/Q1wfYobq2tMzgW7CSSZT/Yo5Q
-	rmVeKQTEJhItNocPSPem4ZkPXZJ+Ji0lR+x1WggcpWmUGMvxJdEnv6Gen+Uu21E0B8oYgem1BKOGh
-	se9GxvWg51rtkdeIW7vw==;
+	List-Owner; bh=phklxlUgwUCKq0Amy9mULMSpuzeyRZ1RAFT/il35scI=; b=RUAWj4w4Oy4AAF
+	hCd8LCfHJg7p7SFtn321h8ooOEzy6KkOd17rLJhmcHpPgSp67FWk6LRsJxAtkNLFYgFIsbdlOq9IV
+	0+rN8/TF+8r+BMcuesXUGO8vYtfWopcOVAF3xrMFmi2lYsLMJ0kneuKC9bQBQCrJKGU3/GPja4ylx
+	qNHuZpVahBhyu0fbq4Vm3i9fCgkgHhMOPPymO3Ue8ET0LNju4HKJnlyZd1qZHPM2zzvPz4cblJ+EU
+	e3JLXE2q3LAaaf49fBOGQikC2JMsfosSCGUa0udJ/H7+dcK+d2Q67ealaUIpZc090aOLKH3X+DLyn
+	miUKrMfjHsUJhxLJq21A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW1V7-0000000DVda-1O4M;
-	Thu, 09 Jan 2025 22:59:41 +0000
+	id 1tW1Zi-0000000DWMR-2V5p;
+	Thu, 09 Jan 2025 23:04:26 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW1V4-0000000DVcv-0O7E;
-	Thu, 09 Jan 2025 22:59:39 +0000
+	id 1tW1YU-0000000DWBO-2goF;
+	Thu, 09 Jan 2025 23:03:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=5X3Tmvihn3grkA7Jge4RjfqiSvPeilgE9yOD+d9FpVI=; b=s+jwsQH2++ZJTa21jBBjugQMXI
-	4bHOZkHr3BtbA6u/uOhHobPv3MGeFWhNFGUl43iw9TYIyTjmoijwv6stOdPuOX44mYtM+Ex4veIlv
-	GanP8Ltk9SSPFArY9HIjzDL6w9HBmiDH9lkAf/YRbJ76vQtfeMTBh+9CdrFBgxC6jT1PLksF27MCM
-	uT5h6cp1P/vX38GEwJikltALOY4zAv1uVLPRdaX6J8i+zNB6LmK+4A346bu7woaR2Pb1GBGscGht6
-	qpjxlF/C8UEv09LkPOGTvCxTCmWsQsAVjWgo7DBUgDUT6zw9zcZF7Od+phqWlT6xPgO3SWYExc5bS
-	MfLPLsiA==;
+	bh=2Hc9m1dPBDPuWb47dArImrMSzilYfkcFH6qpnwe202U=; b=oBB+UDtlo9fsDTebtDxQhn7Nwm
+	VKSxQCiJa5SPi0oW7hlItnioj/0wI8JwrcvxDaLtvGdFsFHWCb5KOmX7ClMseKRNv7Wz63nrRA0aH
+	v9GacM01qGUr/QxcjQwfkp7Y7XLFORZnvt2BMrkKHhn5lE/NjizZY/zciikJcplKNCH4Gqb2jW4Js
+	9g+Wf9Q5SPYl6g4p07DZfTvBgM7q6lxACDf5rVl4z3IB41nRugDEzZGKSptD3xK+Y0sPEXwJFlmHs
+	MAoEso/qR+dr0XXBcvPh3vi+gcLHCzPFip6DsShz/68IY+aH7PGIcl28OYAG94aKMU+1YdvSfcUr1
+	UagzyiLQ==;
 Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tW1Uq-0005mI-C2; Thu, 09 Jan 2025 23:59:24 +0100
+	id 1tW1YT-0005pB-Aj; Fri, 10 Jan 2025 00:03:09 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch, Thomas Zimmermann <tzimmermann@suse.de>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Thomas Zimmermann <tzimmermann@suse.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v2 19/25] drm/rockchip: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Date: Thu, 09 Jan 2025 23:59:23 +0100
-Message-ID: <3227546.fEcJ0Lxnt5@diego>
-In-Reply-To: <20250109150310.219442-20-tzimmermann@suse.de>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-20-tzimmermann@suse.de>
+To: linux-kernel@vger.kernel.org, Shimrra Shai <shimrrashai@gmail.com>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, robh@kernel.org,
+ Shimrra Shai <shimrrashai@gmail.com>
+Subject: Re: [PATCH v4 1/2] dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
+Date: Fri, 10 Jan 2025 00:03:08 +0100
+Message-ID: <2999810.o0KrE1Onz3@diego>
+In-Reply-To: <20241216214152.58387-2-shimrrashai@gmail.com>
+References: <20241216214152.58387-1-shimrrashai@gmail.com>
+ <20241216214152.58387-2-shimrrashai@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_145938_152774_B6C834CA 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20250109_150310_683073_FA911FDF 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,82 +70,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 9. Januar 2025, 15:57:13 CET schrieb Thomas Zimmermann:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch to a multiple of 64.
-> =
-
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=FCbner" <heiko@sntech.de>
-> Cc: Andy Yan <andy.yan@rock-chips.com>
-
-I've looked up the patch implementing the new functionality - patch2 of
-this series [0] and that looks really nice to get proper helpers and not
-having many drivers open-coding the same functionality in different ways.
-
-So for the Rockchip adaptation:
-
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-and looking forward to this getting merged :-)
-
-Thanks a lot for working on that
-Heiko
-
-[0] https://patchwork.kernel.org/project/linux-rockchip/patch/2025010915031=
-0.219442-3-tzimmermann@suse.de/
-
+Am Montag, 16. Dezember 2024, 22:41:51 CET schrieb Shimrra Shai:
+> Document board compatible bindings.
+> 
+> Signed-off-by: Shimrra Shai <shimrrashai@gmail.com>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> =
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 753199a12..fc7ee86e2 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -167,6 +167,13 @@ properties:
+>            - const: engicam,px30-core
+>            - const: rockchip,px30
+>  
+> +      - description: Firefly Core-3588J-based boards
+> +        items:
+> +          - enum:
+> +              - firefly,itx-3588j
+> +          - const: firefly,core-3588j
+> +          - const: rockchip,rk3588
+> +
+>        - description: Firefly Core-PX30-JD4 on MB-JD4-PX30 baseboard
+>          items:
+>            - const: firefly,px30-jd4-core-mb
+> 
 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/dr=
-m/rockchip/rockchip_drm_gem.c
-> index 6330b883efc3..3bd06202e232 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -9,6 +9,7 @@
->  #include <linux/vmalloc.h>
->  =
+In v3 [0] the board dt-binding got an
 
->  #include <drm/drm.h>
-> +#include <drm/drm_dumb_buffers.h>
->  #include <drm/drm_fb_helper.h>
->  #include <drm/drm_gem.h>
->  #include <drm/drm_gem_dma_helper.h>
-> @@ -403,13 +404,12 @@ int rockchip_gem_dumb_create(struct drm_file *file_=
-priv,
->  			     struct drm_mode_create_dumb *args)
->  {
->  	struct rockchip_gem_object *rk_obj;
-> -	int min_pitch =3D DIV_ROUND_UP(args->width * args->bpp, 8);
-> +	int ret;
->  =
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-> -	/*
-> -	 * align to 64 bytes since Mali requires it.
-> -	 */
-> -	args->pitch =3D ALIGN(min_pitch, 64);
-> -	args->size =3D args->pitch * args->height;
-> +	/* 64-byte alignment required by Mali */
-> +	ret =3D drm_mode_size_dumb(dev, args, SZ_64, 0);
-> +	if (ret)
-> +		return ret;
->  =
-
->  	rk_obj =3D rockchip_gem_create_with_handle(file_priv, dev, args->size,
->  						 &args->handle);
-> =
+so Krzysztof already noted, please carry those forward into new versions.
 
 
-
+[0] https://lore.kernel.org/linux-arm-kernel/x7y24y3bkbj5fzx5pdprjr5umg6egxsy2xscfbj3xgzgzubvdk@ppncjiqoekk7/
 
 
 
