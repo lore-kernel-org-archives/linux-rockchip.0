@@ -4,67 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE4A4E77197
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 17:07:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF8EE7719A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 17:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JQmfj/tnhkPlgeuxocS8WV/lE84eHx7nv2CzlkRguIM=; b=vU68IqW2H8mmO9
-	El2R+VYizr1JVF/AEh+7WivqwH5t8fngChtpxlV62L5voDTofGSx4eFJJuBQfqhBMaM229CUVJvX8
-	la4Uh1bie9Qibx0RusjLB8v3EqpKQKWSzUebtGX5tWIOb8PcDQh71Fvk2/+OhCW10ve1yrK6k3rcn
-	nQ2XEgwRnKQ9F7RLAkjVA6RP2a7YQRIc3pES39hRECXYyyZt9UNWK0cU1qCIC9kOl6fJNtseiMrpN
-	VohhO8TnJZCgMau7KWRXgXJX/4/ZeuJwavPal83TVbkB4uy20IV1EMTr0TMAQOGLSQ4uzjplPGkZr
-	AFFwfenXjQnAco/nsHJw==;
+	List-Owner; bh=6S+ayg3j7+kQeL2kA6ggAfb3trafn5RnOUJ0mxwRPNI=; b=kcd2w8Zvk/cfNN
+	tKyF4aOquEiVyxfOZQuYLTVRKSGMfJwF9QbB7lmLDcXwtuYUyESAr9wePUslW3m9+pMwSbOdLveoz
+	AcMSxnalPczvmgh+Q05VUtIDv0Dd2hXH//CLT4PBLRXdIK/yuggW6l+idyPyYONTXZ+jjFbXH2ObP
+	lSafzHf6ij6S0uU8IJbrTuYL37aWnW6LQ4ttzL/BJlYKgzgR4gZDLroudBcRDIIK9y7ZKnHzv0+2k
+	isij2bV1voONvLzns6ve6vEZy5LZzx5f18nAGa0SQLxNisOHgUf6JfifuOxr6ejWerhJlzL4DpD9h
+	/5wTtZDx3kxRQ5d970Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVw0M-0000000Cn7u-34vf;
-	Thu, 09 Jan 2025 17:07:34 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1tVw6W-0000000CnmQ-0eKt;
+	Thu, 09 Jan 2025 17:13:56 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVvz7-0000000CmxK-4Btx;
-	Thu, 09 Jan 2025 17:06:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736442378; x=1767978378;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=nRlcHIWMWNlXsOd44T5vQ9NpUDVOuQOnfEVemUhpcOQ=;
-  b=SAuiXy1/LTzh12wrSjMs/s2tbYOokp6qQPY3/o9KuTToN3W1VcN7KahX
-   szttA/ETTKwkuNoNkLdCGpU2Y1Y2wyEtKqG8pElHPpHqShI/XLCH41Nqj
-   xHg1+k0CkYMN3AvDfhiFVWK4lwu1qVqMC+zLFJoOSKY2+SmdvC7M/aPti
-   64i6nygAsySUSpkhB24Sd/Xrg91ibEk/y8aqNscG9CtD8Ke80WmjPjxVc
-   yncjq/UPwxM3bkaReYL3ZSATxhQr+DLrLkDqRM0ujRu//VDBy+rDeUOaJ
-   I7XTGUln76CVk/LDryVUrAfBryuQjYNwtwXTYzNoScD+lq9PNqFpBtQ82
-   g==;
-X-CSE-ConnectionGUID: o4pG2Zt7QpiejLV/xeTfbw==
-X-CSE-MsgGUID: DjkjD2FFQ9eEgxpXDi3ApQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11310"; a="59187432"
-X-IronPort-AV: E=Sophos;i="6.12,301,1728975600"; 
-   d="scan'208";a="59187432"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jan 2025 09:06:17 -0800
-X-CSE-ConnectionGUID: cBRNnM2EQTmTyLxB4/0c3w==
-X-CSE-MsgGUID: RTSHhsAZTra0iE/QVd9KiA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,301,1728975600"; 
-   d="scan'208";a="108461943"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jan 2025 09:06:11 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 1F59A11F951;
-	Thu,  9 Jan 2025 19:06:08 +0200 (EET)
-Date: Thu, 9 Jan 2025 17:06:08 +0000
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
+	id 1tVw5H-0000000Cne3-2afG;
+	Thu, 09 Jan 2025 17:12:41 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 29C9B9FC;
+	Thu,  9 Jan 2025 18:11:41 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1736442701;
+	bh=uhkXg/EPKEWf0hrvEKJHWpb/MtLkbHrB4R9KcaWrJ5c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Z1WDds6PNKloMPIdeFYjkX0VkFBb7SBPf9nkbHrZDhHD9xu9F8DnwP2oq+RVhlDO5
+	 PiXXUyn8NIvDSIYHNK6vaTM0zYyn02cOX9OCBEl4Rv6lFYf91tRxr+crRNx19iEjRa
+	 mIsHc3a+4skJifA1kAtYcHMxil/dRoBOJ7b7U4j8=
+Date: Thu, 9 Jan 2025 19:12:32 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Michael Riesch <michael.riesch@wolfvision.net>
 Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
 	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
+	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>,
 	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -75,25 +53,23 @@ Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
 	Sebastian Fricke <sebastian.fricke@collabora.com>,
 	Alexander Shiyan <eagle.alexander923@gmail.com>,
 	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Mehdi Djait <mehdi.djait@bootlin.com>,
 	Gerald Loacker <gerald.loacker@wolfvision.net>
-Subject: Re: [PATCH v2 4/6] media: rockchip: add a driver for the rockchip
+Subject: Re: [PATCH v2 0/6] media: rockchip: add a driver for the rockchip
  camera interface (cif)
-Message-ID: <Z4ACALOeioLroqmw@kekkonen.localdomain>
+Message-ID: <20250109171232.GA17638@pendragon.ideasonboard.com>
 References: <20241217-v6-8-topic-rk3568-vicap-v2-0-b1d488fcc0d3@wolfvision.net>
- <20241217-v6-8-topic-rk3568-vicap-v2-4-b1d488fcc0d3@wolfvision.net>
- <Z3-f1SrrRjMnB-1C@kekkonen.localdomain>
- <561bef3e-2511-4741-9175-5c15239f9b1f@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <561bef3e-2511-4741-9175-5c15239f9b1f@wolfvision.net>
+In-Reply-To: <20241217-v6-8-topic-rk3568-vicap-v2-0-b1d488fcc0d3@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_090618_126722_0E3942C0 
-X-CRM114-Status: GOOD (  58.43  )
+X-CRM114-CacheID: sfid-20250109_091239_801060_C630CAB9 
+X-CRM114-Status: GOOD (  38.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,387 +81,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Thu, Jan 09, 2025 at 02:05:54PM +0100, Michael Riesch wrote:
-> Hi Sakari,
-> 
-> Thanks a lot for your review!
-
-You're welcome!
-
-> 
-> On 1/9/25 11:07, Sakari Ailus wrote:
-> > Hi Michael,
-> > 
-> > Thanks for the update.
-> > 
-> > On Tue, Dec 17, 2024 at 04:55:16PM +0100, Michael Riesch wrote:
-...
-> >> +static int cif_subdev_notifier_register(struct cif_device *cif_dev, int index)
-> > 
-> > This function name is misleading. It does not register a notifier, it
-> > prepares one though.
-> 
-> cif_subdev_notifier_add(..) ?
-
-Sounds good.
-
-> >> +{
-> >> +	struct v4l2_async_notifier *ntf = &cif_dev->notifier;
-> >> +	struct v4l2_fwnode_endpoint *vep;
-> >> +	struct cif_remote *remote;
-> >> +	struct device *dev = cif_dev->dev;
-> >> +	struct fwnode_handle *ep;
-> >> +	int ret;
-> >> +
-> >> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), index, 0,
-> >> +					     FWNODE_GRAPH_ENDPOINT_NEXT);
-> >> +	if (!ep)
-> >> +		return -ENODEV;
-> >> +
-> >> +	if (index == 0) {
-> > 
-> > index seems to be always 0.
-> 
-> Right now, yes. The soon-to-be-added MIPI paths shall bring different
-> indices into play.
-
-Ack.
-
-> 
-> > 
-> >> +		vep = &cif_dev->dvp.vep;
-> >> +
-> >> +		vep->bus_type = V4L2_MBUS_UNKNOWN;
-> >> +		ret = v4l2_fwnode_endpoint_parse(ep, vep);
-> >> +		if (ret)
-> >> +			goto complete;
-> >> +
-> >> +		if (vep->bus_type != V4L2_MBUS_BT656 &&
-> >> +		    vep->bus_type != V4L2_MBUS_PARALLEL) {
-> >> +			v4l2_err(&cif_dev->v4l2_dev, "unsupported bus type\n");
-> >> +			goto complete;
-> >> +		}
-> >> +
-> >> +		remote = v4l2_async_nf_add_fwnode_remote(ntf, ep,
-> >> +							 struct cif_remote);
-> >> +		if (IS_ERR(remote)) {
-> >> +			ret = PTR_ERR(remote);
-> >> +			goto complete;
-> >> +		}
-> >> +
-> >> +		cif_dev->dvp.stream.remote = remote;
-> >> +		remote->stream = &cif_dev->dvp.stream;
-> >> +	} else {
-> >> +		ret = -ENODEV;
-> >> +		goto complete;
-> >> +	}
-> >> +
-> >> +complete:
-> >> +	fwnode_handle_put(ep);
-> >> +
-> >> +	return ret;
-> >> +}
-> >> +
-> >> +static void cif_subdev_notifier_unregister(struct cif_device *cif_dev,
-> >> +					   int index)
-> > 
-> > This seems to be redundant.
-> 
-> Ack.
-> 
-> > 
-> >> +{
-> >> +}
-> >> +
-> >> +static int cif_entities_register(struct cif_device *cif_dev)
-> > 
-> > This function appears to be misnamed.
-> 
-> Hm. The function registers the different entities of this hardware, such
-> as the DVP. However, I am not emotionally attached to this name and any
-> suggestions are welcome :-)
-
-Ok, fair enough: one of the things it does is to register the video device
-but it does a whole lot of other stuff unrelated to it. How about just
-cif_register()?
-
-> 
-> > 
-> >> +{
-> >> +	struct v4l2_async_notifier *ntf = &cif_dev->notifier;
-> >> +	struct device *dev = cif_dev->dev;
-> >> +	int ret;
-> >> +
-> >> +	v4l2_async_nf_init(ntf, &cif_dev->v4l2_dev);
-> >> +	ntf->ops = &cif_subdev_notifier_ops;
-> >> +
-> >> +	if (cif_dev->match_data->dvp) {
-> >> +		ret = cif_subdev_notifier_register(cif_dev, 0);
-> >> +		if (ret) {
-> >> +			dev_err(dev,
-> >> +				"failed to register notifier for dvp: %d\n",
-> >> +				ret);
-> >> +			goto err;
-> >> +		}
-> >> +
-> >> +		ret = cif_dvp_register(cif_dev);
-> >> +		if (ret) {
-> >> +			dev_err(dev, "failed to register dvp: %d\n", ret);
-> >> +			goto err_dvp_notifier_unregister;
-> >> +		}
-> >> +	}
-> >> +
-> >> +	ret = v4l2_async_nf_register(ntf);
-> >> +	if (ret)
-> >> +		goto err_notifier_cleanup;
-> >> +
-> >> +	return 0;
-> >> +
-> >> +err_notifier_cleanup:
-> >> +	if (cif_dev->match_data->dvp)
-> >> +		cif_dvp_unregister(cif_dev);
-> >> +err_dvp_notifier_unregister:
-> >> +	if (cif_dev->match_data->dvp)
-> >> +		cif_subdev_notifier_unregister(cif_dev, 0);
-> >> +	v4l2_async_nf_cleanup(ntf);
-> >> +err:
-> >> +	return ret;
-> >> +}
-> >> +
-> >> +static void cif_entities_unregister(struct cif_device *cif_dev)
-
-And similarly here.
-
-> >> +{
-> >> +	v4l2_async_nf_unregister(&cif_dev->notifier);
-> >> +	v4l2_async_nf_cleanup(&cif_dev->notifier);
-> >> +
-> >> +	if (cif_dev->match_data->dvp) {
-> >> +		cif_subdev_notifier_unregister(cif_dev, 0);
-> >> +		cif_dvp_unregister(cif_dev);
-> >> +	}
-> >> +}
-> >> +
-> >> +static irqreturn_t cif_isr(int irq, void *ctx)
-> >> +{
-> >> +	irqreturn_t ret = IRQ_NONE;
-> >> +
-> >> +	if (cif_dvp_isr(irq, ctx) == IRQ_HANDLED)
-> >> +		ret = IRQ_HANDLED;
-> >> +
-> >> +	return ret;
-> >> +}
-> >> +
-> >> +static int cif_probe(struct platform_device *pdev)
-> >> +{
-> >> +	struct device *dev = &pdev->dev;
-> >> +	struct cif_device *cif_dev;
-> >> +	u32 cif_clk_delaynum = 0;
-> >> +	int ret, irq, i;
-> >> +
-> >> +	cif_dev = devm_kzalloc(dev, sizeof(*cif_dev), GFP_KERNEL);
-> >> +	if (!cif_dev)
-> >> +		return -ENOMEM;
-> >> +
-> >> +	cif_dev->match_data = of_device_get_match_data(dev);
-> >> +	if (!cif_dev->match_data)
-> >> +		return -ENODEV;
-> >> +
-> >> +	dev_set_drvdata(dev, cif_dev);
-> >> +	cif_dev->dev = dev;
-> >> +
-> >> +	cif_dev->base_addr = devm_platform_ioremap_resource(pdev, 0);
-> >> +	if (IS_ERR(cif_dev->base_addr))
-> >> +		return PTR_ERR(cif_dev->base_addr);
-> >> +
-> >> +	irq = platform_get_irq(pdev, 0);
-> >> +	if (irq < 0)
-> >> +		return irq;
-> >> +
-> >> +	ret = devm_request_irq(dev, irq, cif_isr, IRQF_SHARED,
-> >> +			       dev_driver_string(dev), dev);
-> >> +	if (ret)
-> >> +		return dev_err_probe(dev, ret, "failed to request irq\n");
-> >> +	cif_dev->irq = irq;
-> > 
-> > Where do you need the irq field?
-> 
-> Hm. Seems to be a leftover. Should we check irq == cif_dev->irq in the
-> ISR or is this unnecessary?
-
-You've got the device context already, I don't think you need to check the
-irq.
-
-> >> +	cif_dev->media_dev.dev = dev;
-> >> +	strscpy(cif_dev->media_dev.model, CIF_DRIVER_NAME,
-> >> +		sizeof(cif_dev->media_dev.model));
-> >> +	media_device_init(&cif_dev->media_dev);
-> >> +
-> >> +	cif_dev->v4l2_dev.mdev = &cif_dev->media_dev;
-> >> +	cif_dev->v4l2_dev.notify = cif_notify;
-> >> +	strscpy(cif_dev->v4l2_dev.name, CIF_DRIVER_NAME,
-> >> +		sizeof(cif_dev->v4l2_dev.name));
-> > 
-> > Do you need to set the name? v4l2_device_register() assigns a default one.
-> 
-> I guess we can use the default, then.
-> 
-> We do need to set the model of the media device, though, right?
-
-Correct.
-
-> >> +static int cif_stream_start_streaming(struct vb2_queue *queue,
-> >> +				      unsigned int count)
-> >> +{
-> >> +	struct cif_stream *stream = queue->drv_priv;
-> >> +	struct cif_device *cif_dev = stream->cif_dev;
-> >> +	struct v4l2_subdev *sd = stream->remote->sd;
-> >> +	int ret;
-> >> +
-> >> +	stream->frame_idx = 0;
-> >> +	stream->frame_phase = 0;
-> >> +
-> >> +	ret = video_device_pipeline_start(&stream->vdev, &stream->pipeline);
-> >> +	if (ret) {
-> >> +		dev_err(cif_dev->dev, "failed to start pipeline %d\n", ret);
-> >> +		goto err_out;
-> >> +	}
-> >> +
-> >> +	ret = pm_runtime_resume_and_get(cif_dev->dev);
-> >> +	if (ret < 0) {
-> >> +		dev_err(cif_dev->dev, "failed to get runtime pm, %d\n", ret);
-> >> +		goto err_pipeline_stop;
-> >> +	}
-> >> +
-> >> +	ret = cif_stream_init_buffers(stream);
-> >> +	if (ret)
-> >> +		goto err_runtime_put;
-> >> +
-> >> +	if (stream->start_streaming) {
-> >> +		ret = stream->start_streaming(stream);
-> >> +		if (ret < 0)
-> >> +			goto err_runtime_put;
-> >> +	}
-> >> +
-> >> +	ret = v4l2_subdev_call(sd, video, s_stream, 1);
-> > 
-> > Could you use v4l2_subdev_enable_streams() instead for this?
-> > 
-> > See e.g. drivers/media/pci/intel/ipu6 for an example.
-> 
-> This should be pretty much a 1:1 replacement I guess? But with support
-> for streams?
-
-Yes, and I'd prefer to get rid of the s_stream() op altogether. That may
-take a long time though.
-
-> >> +static int cif_stream_enum_framesizes(struct file *file, void *fh,
-> >> +				      struct v4l2_frmsizeenum *fsize)
-> >> +{
-> >> +	struct cif_stream *stream = video_drvdata(file);
-> >> +	struct v4l2_subdev_frame_size_enum fse = {
-> >> +		.index = fsize->index,
-> >> +		.which = V4L2_SUBDEV_FORMAT_ACTIVE,
-> >> +	};
-> >> +	struct v4l2_subdev *sd = stream->remote->sd;
-> >> +	const struct cif_output_fmt *fmt;
-> >> +	int ret;
-> >> +
-> >> +	fmt = cif_stream_find_output_fmt(stream, fsize->pixel_format);
-> >> +	if (!fmt)
-> >> +		return -EINVAL;
-> >> +
-> >> +	fse.code = fmt->mbus_code;
-> >> +
-> >> +	ret = v4l2_subdev_call(sd, pad, enum_frame_size, NULL, &fse);
-> > 
-> > You shouldn't get this information from the sensor driver but just convey
-> > what this device supports.
-> 
-> OK, but what does this device support? In principle, there is a
-> continuous range of frame sizes up to a certain maximum size. But in
-> practice, it depends on the subdevice as there is no scaler in the DVP
-> path. Thus, every frame size but the one that the subdevice delivers
-> will result in a broken stream?
-
-Could you use CIF_MAX_WIDTH and CIF_MAX_HEIGHT?
-
-> 
-> If this does not return the only possible frame size, is this callback
-> useful at all?
-
-In order not to configure an output size for the sensor that can't be
-received by this block?
-
-> >> diff --git a/drivers/media/platform/rockchip/cif/cif-stream.h b/drivers/media/platform/rockchip/cif/cif-stream.h
-> >> new file mode 100644
-> >> index 000000000000..5bfa260eda83
-> >> --- /dev/null
-> >> +++ b/drivers/media/platform/rockchip/cif/cif-stream.h
-> >> @@ -0,0 +1,24 @@
-> >> +/* SPDX-License-Identifier: GPL-2.0 */
-> >> +/*
-> >> + * Rockchip Camera Interface (CIF) Driver
-> >> + *
-> >> + * Copyright (C) 2024 Michael Riesch <michael.riesch@wolfvision.net>
-> >> + */
-> >> +
-> >> +#ifndef _CIF_STREAM_H
-> >> +#define _CIF_STREAM_H
-> >> +
-> >> +#include "cif-common.h"
-> >> +
-> >> +struct cif_stream_config {
-> >> +	const char *name;
-> >> +};
-> >> +
-> >> +void cif_stream_pingpong(struct cif_stream *stream);
-> >> +
-> >> +int cif_stream_register(struct cif_device *cif_dev, struct cif_stream *stream,
-> >> +			const struct cif_stream_config *config);
-> >> +
-> >> +void cif_stream_unregister(struct cif_stream *stream);
-> > 
-> > There are other CIFs out there. I think it'd be good to use either some
-> > Rockchip specific prefix (rk maybe?) or a namespace.
-> 
-> Are there? In drivers/media or in general?
-
-I may recall something that may be after all related to this.
-
-Either way, "cif" is a non-specific short string and it's entirely
-conceivable it'll easily conflict with something else.
-
-> 
-> And would that apply to all the method and struct names in this driver
-> or to the driver as well (location, file names)?
-> 
-> The name has been discussed several times during the 13 iterations of
-> the PX30 VIP series and I believe it changed from (cif//rkcif_) in
-> downstream -> (vip//vip_) in Maximes work -> (cif/cif-/cif_) in Mehdis
-> work, where the tuple is (driver directory/filename prefix/function and
-> structs prefix).
-> 
-> Hence I am a bit reluctant to change the naming convention yet again.
-> That said, I'll be prepared to change it JUST ONE MORE TIME to any tuple
-> you suggest -- but this really should be the end of the name bikeshedding.
-
-I don't care about the internal naming but the global symbols. Using a
-namespace is another option.
-
--- 
-Kind regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWljaGFlbCwKCk9uIFR1ZSwgRGVjIDE3LCAyMDI0IGF0IDA0OjU1OjEyUE0gKzAxMDAsIE1p
+Y2hhZWwgUmllc2NoIHdyb3RlOgo+IEhhYmlkZXJlLAo+IAo+IFRMO0RSOgo+IAo+IFRoaXMgc2Vy
+aWVzIGludHJvZHVjZXMgc3VwcG9ydCBmb3IgdGhlIFJvY2tjaGlwIENhbWVyYSBJbnRlcmZhY2Ug
+KENJRiksCj4gd2hpY2ggY2FuIGJlIGZvdW5kIChpbiB0aGUgZm9ybSBvZiB2YXJpYW50cyB0aGF0
+IGRpZmZlciBzaWduaWZpY2FudGx5KSBpbgo+IGRpZmZlcmVudCBSb2NrY2hpcCBTb0NzIGluIGdl
+bmVyYWwsIGFuZCBmb3IgdGhlIFJvY2tjaGlwIFJLMzU2OCBWaWRlbwo+IENhcHR1cmUgKFZJQ0FQ
+KSB2YXJpYW50IGluIHBhcnRpY3VsYXIuCj4gCj4gVGhlIHBhdGNoZXMgYXJlIGZ1bmN0aW9uYWwg
+YW5kIGhhdmUgYmVlbiB0ZXN0ZWQgc3VjY2Vzc2Z1bGx5IG9uIGEKPiBjdXN0b20gUkszNTY4IGJv
+YXJkIGluY2x1ZGluZyB0aGUgSVRFIFRlY2guIElUNjgwMSBIRE1JIHJlY2VpdmVyIGFzCj4gYXR0
+YWNoZWQgc3ViZGV2aWNlLiBUaGUgSVQ2ODAxIGRyaXZlciBzdGlsbCBuZWVkcyBzb21lIGxvdmlu
+ZyBjYXJlIGJ1dAo+IHNoYWxsIGJlIHN1Ym1pdHRlZCBhcyB3ZWxsIGF0IHNvbWUgcG9pbnQuCj4g
+Cj4gVGhlIGxvbmcgc3RvcnkgKGdhdGhlciAncm91bmQgY2hpbGRyZW4pOgo+IAo+IFRoZSBSb2Nr
+Y2hpcCBDYW1lcmEgSW50ZXJmYWNlIChDSUYpIGlzIGZlYXR1cmVkIGluIG1hbnkgUm9ja2NoaXAg
+U29Dcwo+IGluIGRpZmZlcmVudCB2YXJpYXRpb25zLiBGb3IgZXhhbXBsZSwgdGhlIFBYMzAgVmlk
+ZW8gSW5wdXQgUHJvY2Vzc29yIChWSVApCj4gaXMgYWJsZSB0byByZWNlaXZlIHZpZGVvIGRhdGEg
+dmlhIHRoZSBEaWdpdGFsIFZpZGVvIFBvcnQgKERWUCwgYSBwYXJhbGxlbAo+IGRhdGEgaW50ZXJm
+YWNlIGFuZCB0cmFuc2ZlciBpdCBpbnRvIHN5c3RlbSBtZW1vcnkgdXNpbmcgYSBkb3VibGUtYnVm
+ZmVyaW5nCj4gbWVjaGFuaXNtIGNhbGxlZCBwaW5nLXBvbmcgbW9kZS4gVGhlIFJLMzU2OCBWaWRl
+byBDYXB0dXJlIChWSUNBUCkgdW5pdCwKPiBvbiB0aGUgb3RoZXIgaGFuZCwgZmVhdHVyZXMgYSBE
+VlAgYW5kIGEgTUlQSSBDU0ktMiByZWNlaXZlciB0aGF0IGNhbgo+IHJlY2VpdmUgdmlkZW8gZGF0
+YSBpbmRlcGVuZGVudGx5IChib3RoIHVzaW5nIHRoZSBwaW5nLXBvbmcgc2NoZW1lKS4KPiBUaGUg
+ZGlmZmVyZW50IHZhcmlhbnRzIG1heSBoYXZlIGFkZGl0aW9uYWwgZmVhdHVyZXMsIHN1Y2ggYXMg
+c2NhbGluZwo+IGFuZC9vciBjcm9wcGluZy4KPiBGaW5hbGx5LCB0aGUgUkszNTg4IFZJQ0FQIHVu
+aXQgY29uc3RpdHV0ZXMgYW4gZXNzZW50aWFsIHBpZWNlIG9mIHRoZSBjYW1lcmEKPiBpbnRlcmZh
+Y2Ugd2l0aCBvbmUgRFZQLCBzaXggTUlQSSBDU0ktMiByZWNlaXZlcnMsIHNjYWxlL2Nyb3AgdW5p
+dHMsIGFuZAo+IGRpZmZlcmVudCBkYXRhIHBhdGggbXVsdGlwbGV4ZXJzICh0byBzeXN0ZW0gbWVt
+b3J5LCB0byBJU1AsIC4uLikuCj4gCj4gVGhpcyBzdWJtaXNzaW9uIGJhc2VzIG9uIHRoZSB3b3Jr
+IG9mIHNldmVyYWwgQm9vdGxpbiBkZXZlbG9wZXJzIHdobyBoYXZlCj4gYmVlbiB0aXJlbGVzc2x5
+IHN1Ym1pdHRpbmcgc3VwcG9ydCBmb3IgdGhlIFBYMzAgVmlkZW8gSW5wdXQgUHJvY2Vzc29yIChW
+SVApCj4gYmxvY2sgZm9yIGluY2x1c2lvbiBpbiBtYWlubGluZS4gVGhpcyBwcm9jZXNzIGhhcyBi
+ZWVuIGdvaW5nIG9uIGZvciBzZXZlcmFsCj4geWVhcnMgbm93LCB3aXRoIE1heGltZSBDaGV2YWxs
+aWVyIHdvcmtpbmcgb24gdGhlIHRvcGljIHVwIHRvIHY1IFswXSBhbmQKPiBNZWhkaSBEamFpdCB0
+YWtpbmcgb3ZlciB1bnRpbCB2MTMgWzFdLgo+IEluIHRoZSByZXZpZXcgZmVlZGJhY2sgb24gdjEz
+IGEgbWFqb3IgcmV3b3JrIHdpdGggYSBtZWRpYSBjb250cm9sbGVyCj4gY2VudHJpYyBkcml2ZXIg
+YXMgYSBnb2FsIHdhcyByZXF1ZXN0ZWQuIFRoaXMgbW90aXZhdGVkIG1lIHRvIHRha2Ugb3Zlcgo+
+ICh3aXRoIG5vIGNsdWUgYWJvdXQgdGhlIE1DIGZyYW1ld29yayB3aGF0c29ldmVyLCB0aG91Z2gp
+Lgo+IAo+IEkgZGVjaWRlZCB0byBtZXJnZSBNZWhkaSdzIHYxMyB3aXRoIG15IHYxIG9mIHRoZSBS
+SzM1NjggVklDQVAgc3VwcG9ydCBbMl0KPiBhbmQgcmVmYWN0b3IgdGhlIHdob2xlIHRoaW5nLiBU
+aGUgcmVzdWx0aW5nIHYyIG9mIHRoZSBzZXJpZXMgbm93IGFkZHMgYQo+IGJhc2ljIG1lZGlhIGNv
+bnRyb2xsZXIgY2VudHJpYyBWNEwyIGRyaXZlciBmb3IgdGhlIFJvY2tjaGlwIENJRiB3aXRoCj4g
+IC0gc3VwcG9ydCBmb3IgdGhlIFBYMzAgVklQIChub3QgdGVzdGVkLCB0aG91Z2gsIGR1ZSB0byB0
+aGUgbGFjayBvZiBIVykKPiAgLSBzdXBwb3J0IGZvciB0aGUgUkszNTY4IFZJQ0FQIERWUAo+ICAt
+IGFic3RyYWN0aW9uIGZvciB0aGUgcGluZy1wb25nIHNjaGVtZSB0byBhbGxvdyBmb3IgZnV0dXJl
+IGV4dGVuc2lvbnMgCj4gCj4gSG93ZXZlciwgc2V2ZXJhbCBmZWF0dXJlcyBhcmUgbm90IHlldCBh
+ZGRyZXNzZWQsIHN1Y2ggYXMKPiAgLSBzdXBwb3J0IGZvciB0aGUgUkszNTY4IE1JUEkgQ1NJLTIg
+cmVjZWl2ZXIKCldlJ3ZlIGRpc2N1c3NlZCB0aGlzIHByZXZpb3VzbHkgb24gSVJDLCBidXQgSSBk
+b24ndCB0aGluayB0aGUgaXNzdWUgaGFzCmJlZW4gcmFpc2VkIG9uIHRoZSBsaXN0LgoKSSdtIHB1
+enpsZWQgYnkgaG93IHRoaXMgd2lsbCB3b3JrLiBBcyBmYXIgYXMgSSB1bmRlcnN0YW5kLCB0aGUg
+UkszNTY4CmhhcyBhIENTSS0yIHJlY2VpdmVyIHdpdGggNCBkYXRhIGxhbmVzIGFuZCAyIGNsb2Nr
+IGxhbmVzLiBJIGFzc3VtZSB0aGlzCmlzIHVzZWQgdG8gc3VwcG9ydCBib3RoIDJ4MiBsYW5lcyBh
+bmQgMXg0IGxhbmVzLiBCb3RoIHRoZSBWSUNBUCBhbmQgSVNQCnNlY3Rpb25zIG9mIHRoZSBUUk0g
+bGlzdCBDU0kyIFJYIHJlZ2lzdGVycywgYnV0IGl0J3Mgbm90IGNsZWFyIGhvdyB0aGUKY29tcG9u
+ZW50cyBhcmUgYWxsIGNvbm5lY3RlZC4gRG9lcyB0aGUgSVNQIG5lZWQgdG8gYmUgcGFydCBvZiB0
+aGUgc2FtZQptZWRpYSBncmFwaCA/Cgo+ICAtIHN1cHBvcnQgZm9yIHRoZSBSSzM1ODggdmFyaWFu
+dAo+ICAtIHN1cHBvcnQgZm9yIHRoZSBzY2FsaW5nL2Nyb3BwaW5nIHVuaXRzIHRoYXQgY2FuIGJl
+IGZvdW5kIGluIHNvbWUKPiAgICB2YXJpYW50cwo+ICAtIHN1cHBvcnQgZm9yIGNhcHR1cmluZyBk
+aWZmZXJlbnQgdmlydHVhbCBjaGFubmVscyAodXAgdG8gZm91ciBJRHMKPiAgICBwb3NzaWJsZSkK
+PiBUaGlzIG5lZWRzIHRvIGJlIGluIHRoZSBzY29wZSBvZiBmdXR1cmUgd29yay4KPiAKPiBGaW5h
+bGx5LCBwbGVhc2UgZm9yZ2l2ZSBtZSBpZiBJIGZvcmdvdCB0byBhZGRyZXNzIHJldmlld2VyIGNv
+bW1lbnRzIGZyb20KPiB0aGUgcHJldmlvdXMgaXRlcmF0aW9ucy4gQmV0d2VlbiB2MSBhbmQgdjEz
+IHRoZXkgaGF2ZSBzZWVuIHNpZ25pZmljYW50Cj4gZmVlZGJhY2sgaW5jbHVkaW5nIHJlbmFtaW5n
+IHRoZSBjb21wbGV0ZSBkcml2ZXIgdHdpY2UgKGZyb20gcmtjaWYgdG8gdmlwCj4gYW5kIGJhY2sg
+dG8gY2lmKSBhbmQgSSBhbSBwcmV0dHkgc3VyZSB0aGF0IEkgd2FzIG5vdCBhYmxlIHRvIGdhdGhl
+cgo+IGV2ZXJ5dGhpbmcuCj4gCj4gTG9va2luZyBmb3J3YXJkIHRvIHlvdXIgY29tbWVudHMhCj4g
+Cj4gWzBdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIwMjAxMjI5MTYxNzI0
+LjUxMTEwMi0xLW1heGltZS5jaGV2YWxsaWVyQGJvb3RsaW4uY29tLwo+IFsxXSBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9saW51eC1tZWRpYS9jb3Zlci4xNzA3Njc3ODA0LmdpdC5tZWhkaS5kamFp
+dC5rQGdtYWlsLmNvbS8KPiBbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjQwMjIw
+LXY2LTgtdG9waWMtcmszNTY4LXZpY2FwLXYxLTAtMjY4MGExZmE2NDBiQHdvbGZ2aXNpb24ubmV0
+Lwo+IAo+IFRvOiBNZWhkaSBEamFpdCA8bWVoZGkuZGphaXRAbGludXguaW50ZWwuY29tPgo+IFRv
+OiBNYXhpbWUgQ2hldmFsbGllciA8bWF4aW1lLmNoZXZhbGxpZXJAYm9vdGxpbi5jb20+Cj4gVG86
+IFRow6lvIExlYnJ1biA8dGhlby5sZWJydW5AYm9vdGxpbi5jb20+Cj4gVG86IFRob21hcyBQZXRh
+enpvbmkgPHRob21hcy5wZXRhenpvbmlAYm9vdGxpbi5jb20+Cj4gVG86IFNha2FyaSBBaWx1cyA8
+c2FrYXJpLmFpbHVzQGlraS5maT4KPiBUbzogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5j
+aGFydEBpZGVhc29uYm9hcmQuY29tPgo+IFRvOiBNYXVybyBDYXJ2YWxobyBDaGVoYWIgPG1jaGVo
+YWJAa2VybmVsLm9yZz4KPiBUbzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPiBU
+bzogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6aytkdEBrZXJuZWwub3JnPgo+IFRvOiBDb25vciBE
+b29sZXkgPGNvbm9yK2R0QGtlcm5lbC5vcmc+Cj4gVG86IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+Cj4gVG86IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4g
+VG86IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPgo+IFRvOiBTZWJhc3Rp
+YW4gRnJpY2tlIDxzZWJhc3RpYW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+Cj4gVG86IEFsZXhhbmRl
+ciBTaGl5YW4gPGVhZ2xlLmFsZXhhbmRlcjkyM0BnbWFpbC5jb20+Cj4gVG86IFZhbCBQYWNrZXR0
+IDx2YWxAcGFja2V0dC5jb29sPgo+IFRvOiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+
+IFRvOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IENjOiBsaW51eC1t
+ZWRpYUB2Z2VyLmtlcm5lbC5vcmcKPiBDYzogZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKPiBD
+YzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwo+IENjOiBsaW51eC1hcm0ta2VybmVsQGxp
+c3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+Zwo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEB3b2xmdmlz
+aW9uLm5ldD4KPiAKPiBDaGFuZ2VzIGluIHYyOgo+IC0gbWVyZ2VkIHdpdGggTWVoZGkncyB2MTMK
+PiAtIHJlZmFjdG9yZWQgdGhlIGNvbXBsZXRlIGRyaXZlciB0b3dhcmRzIGEgbWVkaWEgY29udHJv
+bGxlciBjZW50cmljIGRyaXZlcgo+IC0gYWJzdHJhY3RlZCB0aGUgZ2VuZXJpYyBwaW5nLXBvbmcg
+c3RyZWFtIChjYW4gYmUgdXNlZCBmb3IgRFZQIGFzIHdlbGwgYXMgZm9yIENTSS0yKQo+IC0gc3dp
+dGNoZWQgdG8gTVBMQU5FIEFQSQo+IC0gYWRkZWQgc3VwcG9ydCBmb3Igbm90aWZpY2F0aW9ucwo+
+IC0gTGluayB0byB2MTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI0MDIyMC12Ni04LXRv
+cGljLXJrMzU2OC12aWNhcC12MS0wLTI2ODBhMWZhNjQwYkB3b2xmdmlzaW9uLm5ldAo+IAo+IC0t
+LQo+IE1laGRpIERqYWl0ICgyKToKPiAgICAgICBtZWRpYTogZHQtYmluZGluZ3M6IG1lZGlhOiBh
+ZGQgYmluZGluZ3MgZm9yIHJvY2tjaGlwIHB4MzAgdmlwCj4gICAgICAgYXJtNjQ6IGR0czogcm9j
+a2NoaXA6IGFkZCB0aGUgdmlwIG5vZGUgdG8gcHgzMAo+IAo+IE1pY2hhZWwgUmllc2NoICg0KToK
+PiAgICAgICBtZWRpYTogZHQtYmluZGluZ3M6IG1lZGlhOiB2aWRlby1pbnRlcmZhY2VzOiBhZGQg
+ZGVmaW5lcyBmb3Igc2FtcGxpbmcgbW9kZXMKPiAgICAgICBtZWRpYTogZHQtYmluZGluZ3M6IG1l
+ZGlhOiBhZGQgYmluZGluZ3MgZm9yIHJvY2tjaGlwIHJrMzU2OCB2aWNhcAo+ICAgICAgIG1lZGlh
+OiByb2NrY2hpcDogYWRkIGEgZHJpdmVyIGZvciB0aGUgcm9ja2NoaXAgY2FtZXJhIGludGVyZmFj
+ZSAoY2lmKQo+ICAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgdmljYXAgbm9kZSB0byBy
+azM1NngKPiAKPiAgLi4uL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLHB4MzAtdmlwLnlhbWwgICAg
+ICAgICAgfCAxMjMgKysrKwo+ICAuLi4vYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAscmszNTY4LXZp
+Y2FwLnlhbWwgICAgICB8IDE2OCArKysrKwo+ICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICAgOSArCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcHgzMC5kdHNpICAgICAgICAgICAgIHwgIDEyICsKPiAgYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1NngtYmFzZS5kdHNpICAgICAgfCAgNDQgKysKPiAgZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgIDEgKwo+ICBkcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICB8ICAgMSArCj4gIGRy
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvY2lmL0tjb25maWcgICAgICAgIHwgIDE1ICsK
+PiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9jaWYvTWFrZWZpbGUgICAgICAgfCAg
+IDMgKwo+ICAuLi4vbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvY2lmL2NpZi1jYXB0dXJlLWR2cC5j
+ICB8IDc5NCArKysrKysrKysrKysrKysrKysrKysKPiAgLi4uL21lZGlhL3BsYXRmb3JtL3JvY2tj
+aGlwL2NpZi9jaWYtY2FwdHVyZS1kdnAuaCAgfCAgMjQgKwo+ICBkcml2ZXJzL21lZGlhL3BsYXRm
+b3JtL3JvY2tjaGlwL2NpZi9jaWYtY29tbW9uLmggICB8IDE2MyArKysrKwo+ICBkcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL2NpZi9jaWYtZGV2LmMgICAgICB8IDQwNSArKysrKysrKysr
+Kwo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL2NpZi9jaWYtcmVncy5oICAgICB8
+IDEzMiArKysrCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvY2lmL2NpZi1zdHJl
+YW0uYyAgIHwgNjc2ICsrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L3JvY2tjaGlwL2NpZi9jaWYtc3RyZWFtLmggICB8ICAyNCArCj4gIGluY2x1ZGUvZHQtYmluZGlu
+Z3MvbWVkaWEvdmlkZW8taW50ZXJmYWNlcy5oICAgICAgIHwgICA0ICsKPiAgMTcgZmlsZXMgY2hh
+bmdlZCwgMjU5OCBpbnNlcnRpb25zKCspCj4gLS0tCj4gYmFzZS1jb21taXQ6IDQwMzg0Yzg0MGVh
+MTk0NGQ3YzVhMzkyZTg5NzVlZDA4OGVjZjBiMzcKPiBjaGFuZ2UtaWQ6IDIwMjQwMjIwLXY2LTgt
+dG9waWMtcmszNTY4LXZpY2FwLWI5YjNmOTkyNWY0NAoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBp
+bmNoYXJ0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
