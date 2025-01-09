@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8E5DE77199
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 08:56:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3AD3E77199
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jan 2025 09:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2r6r6pis0pUBTp8YMAiLNnIJDY8B7hvtaSalEnous5Q=; b=XN2R8gjRr+W42q
-	gWNcY4dCJYSa0vLaIa0yScMygI8uKEiFyu3OLViFFidbOEE9VHX3U2tV3i1pLEA/lW9pmfZ+4mPf1
-	MfLP17k0RppZl2EOWRM7c/JzK/Kzc+KVtXOgdTgpcfpP8dhxAJqWKacKkjqjbHeE+iH0i34ekQaWP
-	oejd3Ygrh5q11/ixhrSfX40tz3j2sLwlN6CgP6NJZg855lP/WXakAc8ODoH3Dt+las3Z+pzP6Fkrk
-	ma2pR3kJeGYUE0VDzO+Fq0k6Y2WmvPasBpZdu1j5kcHSE8Yc5IlwZbGiTn4n1T6D6k1YJljfJdzXw
-	tyKMS8gT5WG6W3wqDdnA==;
+	List-Owner; bh=AaXG09HpcR95Acpcq5AfazlvYqp7f0r/z81Q5uP5JGQ=; b=c/IWTnBAzDcD+U
+	wwEMy5QFMYYN1UrAAfnxUzVLuDFMnNrxD4CF03Kf9HoT/j2Ik/FfXgCmhsO3JTs6o8OfqnlMRckmD
+	A2RXu9gwtxUAp6v0ZWKWO/3df8Hu+GU7lQO1etmz71tL58MFmwgf+tWjUp7P12vIZUzNdMPagwYJm
+	haSVVpf2kNAIm6HyxMiNBaS8e24ge7jOjY3Wm16ff+BZLRCPEV0e51mHsr5Mp3tS20HFe5xCiFfo3
+	j+0Ma3zwFlqM4qa3y3w7txBtEgmbLToIQcTtbYF2JoczVixA4VkVBDNap/tum4E0hM+sdApPc0byx
+	ciTAwDHvWyvOKHJ1r23w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVoKh-0000000BEV5-0pY9;
-	Thu, 09 Jan 2025 08:56:03 +0000
+	id 1tVoPH-0000000BFME-1VXh;
+	Thu, 09 Jan 2025 09:00:47 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tVoJR-0000000BEI1-1nVt;
-	Thu, 09 Jan 2025 08:54:46 +0000
+	id 1tVoO1-0000000BF4q-3Hd1;
+	Thu, 09 Jan 2025 08:59:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1218F5C5A3A;
-	Thu,  9 Jan 2025 08:54:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18D48C4CED2;
-	Thu,  9 Jan 2025 08:54:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 43E2E5C5A32;
+	Thu,  9 Jan 2025 08:58:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19AB2C4CED2;
+	Thu,  9 Jan 2025 08:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736412883;
-	bh=LombH1FD70xGrzs2x51pntDQW6o2Z1wYpa9hFitkHlE=;
+	s=k20201202; t=1736413169;
+	bh=Sc6QqQz2Zq7wQpvdnuknqWgjeROXiIqNNUloa9EIDdw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LpzT/UaHrYznnPqZq03T5+rn1MsO3ikIHjM++A+fSpNYpveoizqxWcg1FM7AARFy+
-	 uFTDL9ym1zgSHu1Go5E0lNhq+YjNmAVRRAwQ5bHn+/EvsjxrQdaInuFa5FA815DPST
-	 12BQgzy84zAw308jBjHtERr+wafzu9ujZLlmrfuNpRlwtJRl2KrtrYAaGW2R5VMMYR
-	 zPiSQLoN3HLnQt0dnqdhL/8MAhj5MR27OPBFch0W76lnS9enoxZEPcRt7z+h5eVd0U
-	 v0HmSl+a49k/GhFBnUAd475JIsgqZUGKDYHOIjpCYgqbo/fRMfxorrloywtbUx/zAC
-	 Pw9Qiqf64Lifg==
-Date: Thu, 9 Jan 2025 09:54:40 +0100
+	b=C4GWE1do+W6PEulta2FXq7gYIj/EGTO+4e7I2toDxA7xnsKq6EU7na3HIPE1VXXHT
+	 Z0KM7wy2o4Erjau/dW7Q2vTJndt2xh5KvOZQd9iLmByDbqMOK4HTZdmX28MGc/oE5o
+	 pADlHWwHxJ/hqOw2CQBEXJaNERc3qmLyIRThwzH4F0pzQwztlw9J5o1otiW23iiajP
+	 UWuqEPXmERGhZV+eQVjswDBebe9VKKrlTH++8af1Awh7PinxRpB5gTr8zUPoNqQdGT
+	 sS7V1Rosc640tAxbQZ32ChWw344dnIq1/z6WvMZv9d9SxcIZKUAV0zeA4mpkmNSXms
+	 Vb71gJUtkH4RQ==
+Date: Thu, 9 Jan 2025 09:59:25 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v5 13/20] dt-bindings: display: rockchip: analogix-dp:
- Add support for RK3588
-Message-ID: <gmwmnjc4pzyzzstyozlfcdaw2ntfxg6ixofio2j746hmixhblc@sjbcvwcgitmy>
-References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
- <20250109032725.1102465-14-damon.ding@rock-chips.com>
+To: Yao Zi <ziyao@disroot.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/5] dt-bindings: clock: Document clock and reset unit
+ of RK3528
+Message-ID: <tep74dy3oc6y2wwhp6bthv6brhkge7cojzrtj6x53lvtsws4g5@areqtyxhyayq>
+References: <20250108114605.1960-2-ziyao@disroot.org>
+ <20250108114605.1960-3-ziyao@disroot.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250109032725.1102465-14-damon.ding@rock-chips.com>
+In-Reply-To: <20250108114605.1960-3-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_005445_513390_C95CEA4B 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20250109_005929_905830_99BFA9F7 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,66 +72,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 09, 2025 at 11:27:18AM +0800, Damon Ding wrote:
-> Compared with RK3288/RK3399, the HBR2 link rate support is the main
-> improvement of RK3588 eDP TX controller, and there are also two
-> independent eDP display interfaces on RK3588 Soc.
+On Wed, Jan 08, 2025 at 11:46:02AM +0000, Yao Zi wrote:
+> There are two types of clocks in RK3528 SoC, CRU-managed and
+> SCMI-managed. Independent IDs are assigned to them.
 > 
-> The newly added 'apb' reset is to ensure the APB bus of eDP controller
-> works well on the RK3588 SoC.
+> For the reset part, differing from previous Rockchip SoCs and
+> downstream bindings which embeds register offsets into the IDs, gapless
+> numbers starting from zero are used.
 > 
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> 
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
 > ---
+>  .../bindings/clock/rockchip,rk3528-cru.yaml   |  67 +++
+>  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
+>  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
+>  3 files changed, 761 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+>  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
+>  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
 > 
-> Changes in v2:
-> - Add the main defferences of the RK3588 eDP and the previous versions
->   in commit message
-> 
-> Changes in v3:
-> - Expand the property clock-names, resets and reset-names
-> 
-> Changes in v4:
-> - Remove 'spdif' clock which added in v3
-> - Add the comment of newly added 'apb' reset in commit message
-> 
-> Changes in v5:
-> - Put the differences between RK3288/RK3399 and RK3588 into 'allOf'
-> ---
->  .../rockchip/rockchip,analogix-dp.yaml        | 37 ++++++++++++++++---
->  1 file changed, 31 insertions(+), 6 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-> index eaf4e67e232e..3cdea9e63522 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-> @@ -15,6 +15,7 @@ properties:
->      enum:
->        - rockchip,rk3288-dp
->        - rockchip,rk3399-edp
-> +      - rockchip,rk3588-edp
->  
->    clocks:
->      minItems: 2
-> @@ -30,12 +31,6 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> -  resets:
-> -    maxItems: 1
-> -
-> -  reset-names:
-> -    const: dp
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> new file mode 100644
+> index 000000000000..19dbda858172
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+> @@ -0,0 +1,67 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3528 Clock and Reset Controller
+> +
+> +maintainers:
+> +  - Yao Zi <ziyao@disroot.org>
+> +
+> +description: |
+> +  The RK3528 clock controller generates the clock and also implements a reset
+> +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
+> +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
+> +  module.
+> +  Each clock is assigned an identifier, consumer nodes can use it to specify
+> +  the clock. All available clock and reset IDs are defined in dt-binding
+> +  headers.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3528-cru
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  assigned-clocks: true
+> +
+> +  assigned-clock-rates: true
 
-Widest constraints are always here. You only needed to add allOf.
+Drop both, totally redundant.
 
-https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+> +
+> +  clocks:
+> +    items:
+> +      - description: External 24MHz oscillator clock
+> +      - description: 50MHz clock generated by PHY module
+> +
+> +  clock-names:
+> +    items:
+> +      - const: xin24m
+> +      - const: gmac0
+
+gmac
+(unless you have gmac1 here as well but then please add it now)
 
 Best regards,
 Krzysztof
