@@ -4,86 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D569DE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 07:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E742EE7719D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 07:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HsawfbesuVGHSR54aMU2ua59ZkcFN/NHkq8Iatt2shg=; b=IcZPWsqp8qtIke3qSjgPXr8g69
-	PreqG6v16wQmAyq2YkM+eSVMfYN7p5+vZ+WmEBowVQ2faYT5Tjg0hfrQJ2nDgaS1BuclOTWAL+00+
-	ZT/g6nFNAnq/kYNYU+oz/ZOUPPSHlcfaLTCQlO1i+hzP9gIWsFXJ8APsvggh5dgmAa6up5gYAaRJJ
-	0Kjf+k0m/DVKw9RLmtXyzXGaGsIMZNUt4gfFftzNRzaJYsoZWHQCHOH5Xc1V1xl4tkeKeP0I50dMs
-	dc4Ti05Hmp3ggnA9BEgtFYWo8aMu1L6njiTm+GD90E1MI70k2O+Xsmiz7OQsjDdblxef2uHmDY8fX
-	N2WZpUyQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qNI9itcj/8SCiLgoJc8Vj7JMh2cwvuXq6j3w+MKLEl8=; b=lstRhDi/97IFdM
+	1xStyL0d1mqPiCrOCvsASvVxfAc+y09EQ7s6pVn2OjbKWFSW1HisKv+70t6L9RrCRX81rsG3ns+cO
+	vOTnTO2THpcbm+6lNs45U+6lbk0jNXCcLKvjk7nE6gXTsiMzUvM/8FryE8e5ApXlRWTd0SiGAwKJx
+	JygD/yA9PReNqIInocPEVIVRAalJulcoBQWK+D6JBcf7A2R1UCHEkMZbwg5VlMi1wWoolyid6QzG1
+	xEGPX5dBBtuawtpkAyfwc5FuOCpLlTVmzT7d3r8ZeZuV50nO+nyP0AgJ1D/+JaRCZ/IplR1NJakzl
+	oqlQR4OaJfXQYWG+AANw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9BZ-0000000ELJf-2NUc;
-	Fri, 10 Jan 2025 07:12:01 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1tW9Wt-0000000ENe6-2XJ7;
+	Fri, 10 Jan 2025 07:34:03 +0000
+Received: from mail-m32121.qiye.163.com ([220.197.32.121])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9BX-0000000ELJE-0Tph
-	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jan 2025 07:12:00 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-215770613dbso21169095ad.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jan 2025 23:11:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736493118; x=1737097918; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=6JhAk3LyNeuL4pIjZ/eFDn69Yt1/tQD7RF9CVVPDAUA=;
-        b=G4NhGp7ajjGjUosnPkRphI5EzR6wsT13X5XbPraARzKjBKcEkKNLKvMLxBFVXv8rv8
-         q7Cxytu//eMQXEBVS3i8A0YjIGbaZwZTAx37CYXxBllPXlitsNhPW/EkZWPJ5tbS9Si/
-         vjzIahAw1Nx71HFUNaVqFhzAtxguIViHIBICvqGnNnD5yr8TZ5DNGjBimEXU0LeM9SG3
-         oVnOOQdQRkdx3tdUVoRM2S7PXMznvg/4TWfNY9j5z4Rpo3D82hEieiJCLjKEcKjomPoE
-         NS9VRWXeemTXADvcXCptSrKM6MvVsvkXoZ28KPKtSm4bijXn4DZz+jT4UTM2+BGxN3TR
-         oiow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736493118; x=1737097918;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6JhAk3LyNeuL4pIjZ/eFDn69Yt1/tQD7RF9CVVPDAUA=;
-        b=Z8vTnIoqR3t+T38NScfTsLapH76Jg5TtbCMhJ1HhP2vaxurQGngnVfUBdXN8tkpD+c
-         ALR2SbhItRI/M1IhAiFlTMmZbE8tXKKmZ6JvZJTZUrUHn51/ahfeGacn/vFVJmDY8fUQ
-         5gjJUsz7O7n2NeTtW9OPj4ZJ1sE6bQxphJGdPxHdp9WeTCT7Ye+FJIk0YMIQBWm81fAI
-         6CppDheVZfH0ZdnnsH92KwWiPcyhF7/5CXnj5hpfiZXJDZt2zlpTZQve79vQaim1nVvW
-         3pd3q6ev9fb+Dd5ukLERxArQMADU5X7E44mC4zdt9cTGuz9Oc0QsMDTocpHa4AgtCz8V
-         g2BA==
-X-Forwarded-Encrypted: i=1; AJvYcCUb9506pKr4+jr009KVO9ZeIrD5BpsOptcMMd4dzlMvar6xLhsWANq2I9Xvo6maj98zaxddyuHGoHPKp356Uw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZhZRQgmf3cXAyo2qpnuaq77hGNsM/c6jUyWLm+g1GNnu5QN4q
-	sOanbLWCh9qPDParOdh4B6zeXa+5wilqWPmFtCttYAo7ppDqDcpF/3N4vg==
-X-Gm-Gg: ASbGnctbVkfjjRh1MsdLnN5ybxjethtLmuWhuQgT92Wi56cVRR7aTbveTjKYq9TXkWw
-	hcakrELlOJorowotXR91pOsRb/sj4PIltrvlMeB6Me+ZkVe1ww64l8brHidrlektPaYSZX255FN
-	FEao5mqfsZ2Ro7bhs43OIk2+RoBz7GPPO4sBwyWYSPQTZbKCfg5ZgjEguqH+fMsimSDaI5+Cfj1
-	aJyeMci5LtGr/WTBi4vsjyCWyHO/8Zi2nUBCe6wKv4vAvsoNzSjYg8rGNUh3DQTR3B5v6I+zCse
-	u2DZFbcBE44jeF7S3L5IP8BWU9NTeGM+Sw==
-X-Google-Smtp-Source: AGHT+IEnOPWpuTuG+lEVsrl+ei3DCryc+gyWyFKx/UBJQdXPmi2nv1xpjm95k5fLE74i5u6BlPC3mg==
-X-Received: by 2002:a17:903:192:b0:216:282d:c692 with SMTP id d9443c01a7336-21a83f76822mr141874435ad.34.1736493118077;
-        Thu, 09 Jan 2025 23:11:58 -0800 (PST)
-Received: from [0.0.0.0] (ec2-54-193-105-225.us-west-1.compute.amazonaws.com. [54.193.105.225])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f13a7absm8267425ad.91.2025.01.09.23.11.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Jan 2025 23:11:57 -0800 (PST)
-Message-ID: <af371a1f-0ed4-4db4-b531-59971d14e458@gmail.com>
-Date: Thu, 9 Jan 2025 23:13:47 -0800
+	id 1tW9Wq-0000000ENdD-1LQI;
+	Fri, 10 Jan 2025 07:34:02 +0000
+Received: from [172.16.12.67] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 8511728f;
+	Fri, 10 Jan 2025 15:33:49 +0800 (GMT+08:00)
+Message-ID: <5025409d-5021-41b4-99ef-94ebde6f9828@rock-chips.com>
+Date: Fri, 10 Jan 2025 15:33:49 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [Question] How to enable CoreSight ETMv4 on rk3399?
-To: Robin Murphy <robin.murphy@arm.com>, Seonghyun Park <shp4rk@gmail.com>,
- linux-rockchip@lists.infradead.org
-References: <CAJrb40DBH_fDkGik6_0sa3eZ2JQujmN1KkRWrCFeSZwNCZat9w@mail.gmail.com>
- <d3ea9b55-dcdc-8a21-b2a9-c2b7878492fc@arm.com>
+Subject: Re: [PATCH v4 2/7] dt-bindings: PCI: dw: rockchip: Add rk3576 support
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+ Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
+References: <20250107074911.550057-1-kever.yang@rock-chips.com>
+ <20250107074911.550057-3-kever.yang@rock-chips.com>
+ <tsxho4vhadrl6tsb2k5e2vxaeuun3k5pdkojzwjruqkof54dyd@gs3wsuxzwu4a>
 Content-Language: en-US
-From: Bo Gan <ganboing@gmail.com>
-In-Reply-To: <d3ea9b55-dcdc-8a21-b2a9-c2b7878492fc@arm.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <tsxho4vhadrl6tsb2k5e2vxaeuun3k5pdkojzwjruqkof54dyd@gs3wsuxzwu4a>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0NCHVZNSEhOSh5OGUtDHh1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a944f22372003afkunm8511728f
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6K0k6HRw5TTIPTA8jFiMXPzIs
+	AxIaFBhVSlVKTEhNT0JPT0hKTUJLVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJS0xPNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=cUCg55WIgxh7Krkfj5w+j2tmu5+OrqTz198q9yBn6KHGeWg4DqxM0S6ixBBrvTZlZThXX+QKAfbbYtXiZwoJVDrTYlZaFbNtNpWcybdvlQCOGmN7aIjPj4YT37Y9zkC7vhcUdAbJsavbzJHWRLuLsPev/ZlwcdV9gywUhcaRSHw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=TOxPOUhClqqhDKpCo7Jmi3oX0GLglQHl4yT+VgEP/lI=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_231159_162954_8865447C 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250109_233400_902030_30B9C575 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,178 +83,65 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Seonghyun,
+Hi Krzysztof,
 
-Hope you are still around. I revived my rockpro64 for some coresight debugging.
-Robin is right. We need to keep all those components clocked/enabled for a
-successful scan. Easiest way is to disable cpu-sleep/cluster-sleep through
-cpupower:
-
-$ cpupower idle-set -D 2
-$ cpupower idle-info
-CPUidle driver: psci_idle
-CPUidle governor: menu
-analyzing CPU 0:
-
-Number of idle states: 3
-Available idle states: WFI cpu-sleep cluster-sleep
-WFI:
-Flags/Description: ARM WFI
-Latency: 1
-Usage: 50336
-Duration: 4990394200
-cpu-sleep (DISABLED) :
-Flags/Description: cpu-sleep
-Latency: 370
-Usage: 3226
-Duration: 3412630
-cluster-sleep (DISABLED) :
-Flags/Description: cluster-sleep
-Latency: 900
-Usage: 13599
-Duration: 120658311
-
-$ python3 coresight-tools/csscan.py --topology 0xfe400000
-
-@0xfe400000    0x000 0x000 r0.0                        ROM table
-@0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 locked
-@0xfe403000    0x23b 0x906 r4.0  CS CTI                CTI            <no arch>        channels:4 triggers:8 locked
-@0xfe404000    0x23b 0x101 r1.0  TM101 Timestamp       CoreSight timestamp generator
-@0xfe405000    0x23b 0x912 r4.0  CS TPIU               port           <no arch>        TPIU locked
-@0xfe420000    0x23b 0x4a3 r4.0                        ROM table
-@0xfe430000    0x23b 0xd03 r4.0  Cortex-A53 debug      core-debug     Arm v8.0-A       aff=0x80000000 midr=0x410fd034 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe431000    0x23b 0x9d3 r4.0  Cortex-A53 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000000 counters:6 64-bit prescale exportable id: 67ffbfff 00000000 00000000 00000000 locked
-@0xfe432000    0x23b 0xd03 r4.0  Cortex-A53 debug      core-debug     Arm v8.0-A       aff=0x80000001 midr=0x410fd034 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe433000    0x23b 0x9d3 r4.0  Cortex-A53 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000001 counters:6 64-bit prescale exportable id: 67ffbfff 00000000 00000000 00000000 locked
-@0xfe434000    0x23b 0xd03 r4.0  Cortex-A53 debug      core-debug     Arm v8.0-A       aff=0x80000002 midr=0x410fd034 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe435000    0x23b 0x9d3 r4.0  Cortex-A53 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000002 counters:6 64-bit prescale exportable id: 67ffbfff 00000000 00000000 00000000 locked
-@0xfe436000    0x23b 0xd03 r4.0  Cortex-A53 debug      core-debug     Arm v8.0-A       aff=0x80000003 midr=0x410fd034 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe437000    0x23b 0x9d3 r4.0  Cortex-A53 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000003 counters:6 64-bit prescale exportable id: 67ffbfff 00000000 00000000 00000000 locked
-@0xfe438000    0x23b 0x9a8 r4.0  Cortex-A53 CTI        CTI            Arm CTI          aff=0x80000000 channels:4 triggers:8 gate-inputs locked
-@0xfe439000    0x23b 0x9a8 r4.0  Cortex-A53 CTI        CTI            Arm CTI          aff=0x80000001 channels:4 triggers:8 gate-inputs locked
-@0xfe43a000    0x23b 0x9a8 r4.0  Cortex-A53 CTI        CTI            Arm CTI          aff=0x80000002 channels:4 triggers:8 gate-inputs locked
-@0xfe43b000    0x23b 0x9a8 r4.0  Cortex-A53 CTI        CTI            Arm CTI          aff=0x80000003 channels:4 triggers:8 gate-inputs locked
-@0xfe43c000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000000 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 locked
-@0xfe43d000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000001 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 locked
-@0xfe43e000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000002 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 locked
-@0xfe43f000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000003 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 locked
-@0xfe600000    0x23b 0x4a4 r0.0  Cortex-A72 ROM        ROM table
-@0xfe610000    0x23b 0xd08 r0.0  Cortex-A72 debug      core-debug     Arm v8.0-A       aff=0x80000100 midr=0x410fd082 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe620000    0x23b 0x906 r4.0  CS CTI                CTI            <no arch>        channels:4 triggers:8 locked
-@0xfe630000    0x23b 0x9d8 r0.0  Cortex-A72 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000100 counters:6 64-bit prescale exportable id: 7fff0f3f 00000000 00000000 00000000 locked
-@0xfe640000    0x23b 0x95a r0.0  Cortex-A72 ETM        ETM            Arm ETMv4.0      aff=0x80000100 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 locked
-@0xfe710000    0x23b 0xd08 r0.0  Cortex-A72 debug      core-debug     Arm v8.0-A       aff=0x80000101 midr=0x410fd082 pfr=0x1002222 dfr=0x10305106 bkpt:6(2) wpt:4 PMUv3 pc-sampling:3 locked
-@0xfe720000    0x23b 0x906 r4.0  CS CTI                CTI            <no arch>        channels:4 triggers:8 locked
-@0xfe730000    0x23b 0x9d8 r0.0  Cortex-A72 PMU        PMU (core)     Arm PMUv3.0      aff=0x80000101 counters:6 64-bit prescale exportable id: 7fff0f3f 00000000 00000000 00000000 locked
-@0xfe740000    0x23b 0x95a r0.0  Cortex-A72 ETM        ETM            Arm ETMv4.0      aff=0x80000101 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 locked
-
-ATB topology detection
-ATB scan... @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-   0->0  @0xfe405000    0x23b 0x912 r4.0  CS TPIU               port           <no arch>        TPIU unlocked integration
-ATB scan... @0xfe43c000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000000 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 unlocked integration
-   0->0  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB scan... @0xfe43d000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000001 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 unlocked integration
-   0->1  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB scan... @0xfe43e000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000002 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 unlocked integration
-   0->2  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB scan... @0xfe43f000    0x23b 0x95d r4.0  Cortex-A53 ETM        ETM            Arm ETMv4.0      aff=0x80000003 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:30 extinsel:4 unlocked integration
-   0->3  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB scan... @0xfe640000    0x23b 0x95a r0.0  Cortex-A72 ETM        ETM            Arm ETMv4.0      aff=0x80000100 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
-   0->4  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB scan... @0xfe740000    0x23b 0x95a r0.0  Cortex-A72 ETM        ETM            Arm ETMv4.0      aff=0x80000101 pdsr=0x00000021 ETMv4.0 ts:64 bb cc min-ccit:4 retstack events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2 seqstates:4 extin:110 extinsel:4 unlocked integration
-   0->5  @0xfe401000    0x23b 0x908 r2.0  CS Funnel             funnel         <no arch>        in-ports:6 unlocked integration
-ATB topology detection complete.
-
-On 6/7/23 03:42, Robin Murphy wrote:
-> On 2023-06-05 14:21, Seonghyun Park wrote:
->> Hi, community.
+On 2025/1/8 16:16, Krzysztof Kozlowski wrote:
+> On Tue, Jan 07, 2025 at 03:49:06PM +0800, Kever Yang wrote:
+>> rk3576 is using dwc controller, with msi interrupt directly to gic instead
+>> of to gic its, so
+>> - no its support is required and the 'msi-map' is not need anymore,
+>> - a new 'msi' interrupt is needed.
 >>
->> I am trying to reproduce coresight-trace, a CoreSight ETMv4 trace decoder
->> utility, (https://github.com/RICSecLab/coresight-trace) on RockPro64 with
->> vanilla 6.3.1 Linux kernel and vanilla dts.
+>> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>> ---
 >>
->> The utility depends on a library called CSAL
->> (https://github.com/RICSecLab/CSAL/tree/fc8c493) which is used to configure
->> CoreSight registers.
+>> Changes in v4:
+>> - Fix wrong indentation in dt_binding_check report by Rob
 >>
->> I found that the helper script, csscan.py
->> (https://github.com/ARM-software/CSAL/blob/fc8c493/csscan.py), which is
->> supposed to print the topology of CoreSignt components given the address
->> of the ROM table, but it ends up halting the whole machine when trying to
->> access CoreSight components within Big core cluster. Here is the failing log:
+>> Changes in v3:
+>> - Fix dtb check broken on rk3588
+>> - Update commit message
 >>
->> ```
->> sudo python3 coresight-tools/csscan.py --topology 0xfe400000
->> @0xfe400000 0x000 0x000 r0.0 ROM table
->> @0xfe401000 0x23b 0x908 r2.0 CS Funnel funnel <no arch> in-ports:6
->> @0xfe403000 0x23b 0x906 r4.0 CS CTI CTI <no arch> channels:4 triggers:8
->> @0xfe404000 0x23b 0x101 r1.0 TM101 Timestamp CoreSight timestamp generator
->> @0xfe405000 0x23b 0x912 r4.0 CS TPIU port <no arch> TPIU
->> @0xfe420000 0x23b 0x4a3 r4.0 ROM table
->> @0xfe430000 - device excluded from scan
->> @0xfe431000 0x23b 0x9d3 r4.0 Cortex-A53 PMU PMU (core) Arm PMUv3 rev0
->> aff=0x80000000 not acessing
->> @0xfe432000 - device excluded from scan
->> @0xfe433000 0x23b 0x9d3 r4.0 Cortex-A53 PMU PMU (core) Arm PMUv3 rev0
->> aff=0x80000001 not acessing
->> @0xfe434000 - device excluded from scan
->> @0xfe435000 0x23b 0x9d3 r4.0 Cortex-A53 PMU PMU (core) Arm PMUv3 rev0
->> aff=0x80000002 not acessing
->> @0xfe436000 - device excluded from scan
->> @0xfe437000 0x23b 0x9d3 r4.0 Cortex-A53 PMU PMU (core) Arm PMUv3 rev0
->> aff=0x80000003 not acessing
->> @0xfe438000 0x23b 0x9a8 r4.0 Cortex-A53 CTI CTI Arm CTI rev0
->> aff=0x80000000 channels:4 triggers:8 gate
->> @0xfe439000 0x23b 0x9a8 r4.0 Cortex-A53 CTI CTI Arm CTI rev0
->> aff=0x80000001 channels:4 triggers:8 gate
->> @0xfe43a000 0x23b 0x9a8 r4.0 Cortex-A53 CTI CTI Arm CTI rev0
->> aff=0x80000002 channels:4 triggers:8 gate
->> @0xfe43b000 0x23b 0x9a8 r4.0 Cortex-A53 CTI CTI Arm CTI rev0
->> aff=0x80000003 channels:4 triggers:8 gate
->> @0xfe43c000 0x23b 0x95d r4.0 Cortex-A53 ETM ETM Arm ETMv4 rev0
->> aff=0x80000000 pdsr=0x00000023 ETMv4.0 ts:64 bb cc min-ccit:4 retstack
->> stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2
->> seqstates:4 extin:30 extinsel:4
->> @0xfe43d000 0x23b 0x95d r4.0 Cortex-A53 ETM ETM Arm ETMv4 rev0
->> aff=0x80000001 pdsr=0x00000023 ETMv4.0 ts:64 bb cc min-ccit:4 retstack
->> stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2
->> seqstates:4 extin:30 extinsel:4
->> @0xfe43e000 0x23b 0x95d r4.0 Cortex-A53 ETM ETM Arm ETMv4 rev0
->> aff=0x80000002 pdsr=0x00000023 ETMv4.0 ts:64 bb cc min-ccit:4 retstack
->> stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2
->> seqstates:4 extin:30 extinsel:4
->> @0xfe43f000 0x23b 0x95d r4.0 Cortex-A53 ETM ETM Arm ETMv4 rev0
->> aff=0x80000003 pdsr=0x00000023 ETMv4.0 ts:64 bb cc min-ccit:4 retstack
->> stall events:4 resources:16 addrcomp:4 ssc:1 pecomp:0 counters:2
->> seqstates:4 extin:30 extinsel:4
->> @0xfe600000 0x23b 0x4a4 r0.0 ROM table
->> @0xfe610000 - device excluded from scan
->> @0xfe620000 0x23b 0x906 r4.0 CS CTI CTI <no arch> channels:4 triggers:8
+>> Changes in v2:
+>> - remove required 'msi-map'
+>> - add interrupt name 'msi'
 >>
->> (halt)
->> ```
+>>   .../devicetree/bindings/pci/rockchip-dw-pcie-common.yaml      | 4 +++-
+>>   Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml   | 4 +---
+>>   2 files changed, 4 insertions(+), 4 deletions(-)
 >>
->> Based on the TRM, the address it starts to fail seems to be around the
->> CLUSTERB_CTI0 or CLUSTERB_PMU0, implying that there are some issues with
->> accessing CoreSight components on the Big core cluster.
-> 
-> Most likely because the big cores are idle such that the cluster is clock-gated and/or powered off. This is one of the perils of poking around in /dev/mem.
-> 
->> I'd like to ask if you have any recommendations on what I should do to resolve
->> this issue.
-> 
-> You could muck about with sysfs and/or kernel parameters trying to disable as many power management features as possible, but the better option would be to add the CoreSight components to the devicetree and use the kernel drivers which can handle clocks and power domains properly. See [1] for the overview.
-> 
-> Robin.
-> 
-> [1] https://www.kernel.org/doc/html/latest/trace/coresight/index.html
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+>> index cc9adfc7611c..e4fcc2dff413 100644
+>> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+>> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+>> @@ -81,7 +81,9 @@ properties:
+>>         - const: msg
+>>         - const: legacy
+>>         - const: err
+>> -      - const: dma0
+>> +      - enum:
+>> +          - msi
+>> +          - dma0
+> Commit msg said new interrupt, but this basically replaces existing DMA0
+> interrupt. Maybe that's the problem with this common binding and you
+> just miss constraining in each device binding. If so: fix also them.
+rk3588 has 9 interrupt, and the 6th-9th is dma0-3;
+rk3568 only has 5 interrupts, no dma0-3;
+rk3576 add one more "msi" interrupt which is the 6th interrupt;
+The upcomming rk3562 is the same as rk3576.
+I'm sorry I'm not so good at this yaml grammar, how should I take care 
+of this case?
 
-Bo
+
+Thanks,
+- Kever
+>
+> Also: your interrupts property does not match this anymore.
+>
+> Best regards,
+> Krzysztof
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
