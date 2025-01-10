@@ -4,111 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB9F2E7719C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 12:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA634E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 13:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JG1boJ2qrSho0KewLscnfKuDs6tDRJqYRB5sq9JGjgw=; b=URAVicKBt4C/bG
-	5ndLwv5B9P/G6Zfm4ZQYBwVeMd1AXmF09iysUsn781TqFZWtjEzrDjFH5KqkDdCqkGaFM4zQuuaKi
-	W0pQYaVrruCTdKqricASBMaThKS3jlamgy8wI7dfe7y/yr6Jh/JMPlUnq5H3PMQue9VDggJt7kuDP
-	0yy6t1GlhkTrJIz+Lusrye8dCYF7oQ9TShcisjtIOti5nOne5/ZtqV5n0nVVHqDl8GgoLm9eYnZgP
-	WG5idoqAWxd0FD5b4dHRNrOTjJaRWGjB8r/I4wdl+4CRJugyuW5dAYnxNCwe38Qb91Bb1dbh86TkH
-	csCxomoQQhpkSUq5t/Eg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+g0T5RCgi35Qv73h7ldB4dC3SP5eG1n+W1r/oV6rKV8=; b=uCXhkTAJXtE1xOVr3YmBjqhkjD
+	FxxOhwE5RxVkeBKu5YTgxh/FW94KPETNsgYxG3eo0Ye+7e97svpEF1nfWROuyXeZsTp+KSHK8I3lo
+	og4RKr/unWYbkfzxYamD/G1CUc0+tjfky75UMAxxgEh29ldzlXrRzUXwibqYE30U4HkmBfo3OmdE5
+	e1EkPWcgSCme/dCI+BlCx1WVoeyYS1G63HfaJ+PykU9aDz5pmimIYnkhfPREjUhDQCPET7QfQ1pCr
+	V5v53rA0554WbEemenMPsU5u4NrZUQEqvvmlPr3mNKAwtnXzBa9jtCJCqLNqB7mPl1nCLue3kNvIu
+	uy3UITEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEEt-0000000FIFz-2k4K;
-	Fri, 10 Jan 2025 12:35:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tWEpk-0000000FQcq-2iEh;
+	Fri, 10 Jan 2025 13:13:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWEDf-0000000FI2n-2C5B;
-	Fri, 10 Jan 2025 12:34:32 +0000
+	id 1tWELq-0000000FK8V-20wh;
+	Fri, 10 Jan 2025 12:42:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D7F4F5C5485;
-	Fri, 10 Jan 2025 12:33:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CE6CC4CED6;
-	Fri, 10 Jan 2025 12:34:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CCE6B5C10C3;
+	Fri, 10 Jan 2025 12:42:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0816AC4CEDD;
+	Fri, 10 Jan 2025 12:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736512470;
-	bh=xOZKllbtf0ntBVuWP7yX9LNtkHoqyDw5ywkuO2+0lRQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qXeS2rOPwedPmPw1WlthSFmBWxxXzYbZ7p0YkCAhHHMmWwg6jiJpzx8aF2CY5BI+N
-	 LCdyYAUGbnKNHf9NnqkNhPHEG6RFBczbgrxH9VcDrmZPXQiX2KV0ikca5g4Y5Em4Vx
-	 X7jKgR4T9GcTIkZvc3deWVSCQnc+hBpwSJGpUN9XWYYeIDjVNcgl9QxGLi5T+frOqW
-	 VU1FrrdbXKQ7mcseprj8R1ImkRqtzJk/E1wkkhhKysNUrenuDgbPtr1qL5A8MFwmOp
-	 5j/QbdKShhcZtgnnu4xldiWfnDJZ7BTstSAJzqhyRrqCjXTypdn2JUtiqeVRnCcRlI
-	 S77R3Q5ccI2bA==
-Message-ID: <c2831c3d-72fa-4a32-8c2c-668679de5a66@kernel.org>
-Date: Fri, 10 Jan 2025 13:34:22 +0100
+	s=k20201202; t=1736512977;
+	bh=jQisMlTjYfeo02yHCaf8/3pDTMXN8QMfrZ/MAhEXiCE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KpD0sW7UIABuucxd/Qx8pWVveKRBTPjoee4MF0KjKw8i5YDBoDzL5JYvu4BaELO0t
+	 M/U8H/SXs0PIabw+VP/Wmcv2zkse9maGzd/9rSoZgJ6hC/Lu3TEGJ9VrLXjmmeRFg1
+	 vFZp71KV7rVxbfsUrwau0sxqutt53V+fSRgOWgFQTeVLDgWzOazdvg68BZ9FapN4Et
+	 JWbE4PuKzWFwlzYvCA+Uzkc1/eq5V73FfErBUEePlT0QeeVOCwHPXy/saY0DV/C3w1
+	 EubDaTDdWlxizzmd69Sr4YfE+GSogwgowB31K0GFRmk2/goQYinjInn1BjN5IFfOdI
+	 Cy3tqd/O7Qjaw==
+Date: Fri, 10 Jan 2025 12:42:47 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
+	Serge Semin <fancer.lancer@gmail.com>, Han Xu <han.xu@nxp.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Haibo Chen <haibo.chen@nxp.com>,
+	Yogesh Gaur <yogeshgaur.83@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Michal Simek <michal.simek@amd.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Raju Rangoju <Raju.Rangoju@amd.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Steam Lin <stlin2@winbond.com>, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v2 20/27] spi: spi-mem: Estimate the time taken by
+ operations
+Message-ID: <ca317e2c-cd09-4884-b9eb-9cf23ae88078@sirena.org.uk>
+References: <20241224-winbond-6-11-rc1-quad-support-v2-0-ad218dbc406f@bootlin.com>
+ <20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/7] dt-bindings: PCI: dw: rockchip: Add rk3576 support
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- linux-pci@vger.kernel.org, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- linux-arm-kernel@lists.infradead.org
-References: <20250107074911.550057-1-kever.yang@rock-chips.com>
- <20250107074911.550057-3-kever.yang@rock-chips.com>
- <tsxho4vhadrl6tsb2k5e2vxaeuun3k5pdkojzwjruqkof54dyd@gs3wsuxzwu4a>
- <5025409d-5021-41b4-99ef-94ebde6f9828@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <5025409d-5021-41b4-99ef-94ebde6f9828@rock-chips.com>
+In-Reply-To: <20241224-winbond-6-11-rc1-quad-support-v2-20-ad218dbc406f@bootlin.com>
+X-Cookie: Many are cold, but few are frozen.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_043431_652420_1D14A153 
+X-CRM114-CacheID: sfid-20250110_044258_594828_7BB985FD 
 X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,48 +101,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6949731808710075921=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/01/2025 08:33, Kever Yang wrote:
->>>
->>>   .../devicetree/bindings/pci/rockchip-dw-pcie-common.yaml      | 4 +++-
->>>   Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml   | 4 +---
->>>   2 files changed, 4 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
->>> index cc9adfc7611c..e4fcc2dff413 100644
->>> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
->>> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
->>> @@ -81,7 +81,9 @@ properties:
->>>         - const: msg
->>>         - const: legacy
->>>         - const: err
->>> -      - const: dma0
->>> +      - enum:
->>> +          - msi
->>> +          - dma0
->> Commit msg said new interrupt, but this basically replaces existing DMA0
->> interrupt. Maybe that's the problem with this common binding and you
->> just miss constraining in each device binding. If so: fix also them.
-> rk3588 has 9 interrupt, and the 6th-9th is dma0-3;
-> rk3568 only has 5 interrupts, no dma0-3;
-> rk3576 add one more "msi" interrupt which is the 6th interrupt;
-> The upcomming rk3562 is the same as rk3576.
-> I'm sorry I'm not so good at this yaml grammar, how should I take care 
-> of this case?
 
-Explain this in commit msg and add proper constraints per device, e.g.:
-https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L127
+--===============6949731808710075921==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="RVMhmV/ewGAzdaKp"
+Content-Disposition: inline
 
-This change for interrupts in top-level could stay.
 
-Best regards,
-Krzysztof
+--RVMhmV/ewGAzdaKp
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Dec 24, 2024 at 06:06:05PM +0100, Miquel Raynal wrote:
+> In the SPI-NAND layer, we currently make list of operation variants from
+> the fastest one to the slowest and there is a bit of logic in the core
+> to go over them and pick the first one that is supported by the
+> controller, ie. the fastest one among the supported ops.
+
+This breaks the build:
+
+/build/stage/linux/drivers/spi/spi-mem.c:580:5: error: conflicting types fo=
+r =E2=80=98spi_mem_calc_op_duration=E2=80=99; have =E2=80=98u64(struct spi_=
+mem_op *)=E2=80=99 {aka =E2=80=98long long unsigned int(struct spi_mem_op *=
+)=E2=80=99}
+  580 | u64 spi_mem_calc_op_duration(struct spi_mem_op *op)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /build/stage/linux/drivers/spi/spi-mem.c:12:
+/build/stage/linux/include/linux/spi/spi-mem.h:427:5: note: previous declar=
+ation of =E2=80=98spi_mem_calc_op_duration=E2=80=99 with type =E2=80=98u64(=
+struct spi_mem *, struct spi_mem_op *)=E2=80=99 {aka =E2=80=98long long uns=
+igned int(struct spi_mem *, struct spi_mem_op *)=E2=80=99}
+  427 | u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op=
+ *op);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /build/stage/linux/include/linux/linkage.h:7,
+                 from /build/stage/linux/arch/arm/include/asm/bug.h:5,
+                 from /build/stage/linux/include/linux/bug.h:5,
+                 from /build/stage/linux/include/linux/thread_info.h:13,
+                 from /build/stage/linux/include/linux/sched.h:14,
+                 from /build/stage/linux/include/linux/ratelimit.h:6,
+                 from /build/stage/linux/include/linux/dev_printk.h:16,
+                 from /build/stage/linux/include/linux/device.h:15,
+                 from /build/stage/linux/include/linux/dmaengine.h:8,
+                 from /build/stage/linux/drivers/spi/spi-mem.c:8:
+/build/stage/linux/drivers/spi/spi-mem.c:593:19: error: conflicting types f=
+or =E2=80=98spi_mem_calc_op_duration=E2=80=99; have =E2=80=98u64(struct spi=
+_mem_op *)=E2=80=99 {aka =E2=80=98long long unsigned int(struct spi_mem_op =
+*)=E2=80=99}
+  593 | EXPORT_SYMBOL_GPL(spi_mem_calc_op_duration);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/build/stage/linux/include/linux/export.h:56:28: note: in definition of mac=
+ro =E2=80=98__EXPORT_SYMBOL=E2=80=99
+   56 |         extern typeof(sym) sym;                                 \
+      |                            ^~~
+/build/stage/linux/include/linux/export.h:69:41: note: in expansion of macr=
+o =E2=80=98_EXPORT_SYMBOL=E2=80=99
+   69 | #define EXPORT_SYMBOL_GPL(sym)          _EXPORT_SYMBOL(sym, "GPL")
+      |                                         ^~~~~~~~~~~~~~
+/build/stage/linux/drivers/spi/spi-mem.c:593:1: note: in expansion of macro=
+ =E2=80=98EXPORT_SYMBOL_GPL=E2=80=99
+  593 | EXPORT_SYMBOL_GPL(spi_mem_calc_op_duration);
+      | ^~~~~~~~~~~~~~~~~
+/build/stage/linux/include/linux/spi/spi-mem.h:427:5: note: previous declar=
+ation of =E2=80=98spi_mem_calc_op_duration=E2=80=99 with type =E2=80=98u64(=
+struct spi_mem *, struct spi_mem_op *)=E2=80=99 {aka =E2=80=98long long uns=
+igned int(struct spi_mem *, struct spi_mem_op *)=E2=80=99}
+  427 | u64 spi_mem_calc_op_duration(struct spi_mem *mem, struct spi_mem_op=
+ *op);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+
+--RVMhmV/ewGAzdaKp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmeBFcYACgkQJNaLcl1U
+h9BhIgf+KXE1JExJo+WBN7mYcyQ4HitVxI+rVexdbI+QMmjPpB2umRebJU2u0F2O
+zJlk5R6eGXdOn3H83H0CacUm11VVNZmqP1yUSytO4sjiyHdh7Zp70UkidrhA0O9F
+pRM9l9bBbWV3FzLgZCYjZ03y6A+A9CrIsGRVAuX/rAUHENGshIN+Wa1j4ZwRkI+u
+Nid4YWfQkB1UjSFhcx6d9iDq65hTlrHDn5ThFmIDGZCTS8NRcUAevtkdwoU9thC7
+1xTCkJ92ejUGQ3TTzVrlg6qsnSJTAARPhDZ8WasEfN+L/LWyRI181QAMRKG4oOOi
+swVXAClyqCX9avFjDoBP8aArkjRb4A==
+=qXZ3
+-----END PGP SIGNATURE-----
+
+--RVMhmV/ewGAzdaKp--
+
+
+--===============6949731808710075921==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6949731808710075921==--
+
