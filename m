@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD24E77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 10:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2446E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 10:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oqeczOxeM1qS41Eod55ic07HK9dzmMuIhlbCGGomaOc=; b=ATwBZKGd1u4wW2
-	SwbrTtu/uSrjwi2eWKv6DMGKELrHSFIVaUi+1b1DIs/4uXeC4W0rcSehRGBYkkw+ntefyqSco1Ujm
-	qai7NvyB5n+YaFpxIHPWYwZ9sRfwdflg4iJU5pMjHecG2RNSkp4ntM+r7ohQKR9yLQSvCMOVt6EWP
-	v1jFjFrnrwGtWvtkcAGStuMsg0jCVkpkpV3M7GB1KjULiioPUDmf04iBetpd5ffv7yHl0ohFiVTEY
-	uU/uk+Q/121zW/w0vHvZDcOT6rEK0lMAD/sRl1qH9awjhlg9Zud3feQXAcyU7h9KvRDCtV3xXjD3z
-	Ezhjq7LFZ1an4r58OGrg==;
+	List-Owner; bh=f7dFVIgMyhhJMT05l1ft8BA3+xtMgJT0BtrTvaxLIl8=; b=hwjC0Tot1WC73C
+	BloOzB8kLKV099sCO+OUz5rMepEqFL/MGfEGS8pYLg7Ceoh/BbKN4M98jts1iixLf0UnItdLueYyl
+	DSh6QywH6WFSmBWXccqcmEVlzYRQwkc4H1anPZCZulrVa6ES6n8O5URaXSVmfC8Y5k3lmJknnYFPc
+	0nW43UC8MxnOoAusYnbEc0lRRQQTwjiqyZZAABjapwBdlGFSnx+PnawYLojooRY3xy/QEdzdCUM0K
+	eq/fLYsXefKP6MkklLXcBubDu7kqOd+PVonva93MU4IkR0qmWwZuHni5JuZsi87Vq0xslV8Qz0fGG
+	APtew3x5tJnhf/njczkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWByC-0000000EtFj-41Ab;
-	Fri, 10 Jan 2025 10:10:24 +0000
+	id 1tWC0a-0000000EtwI-3Gs8;
+	Fri, 10 Jan 2025 10:12:52 +0000
 Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWBww-0000000EslV-32Ke;
+	id 1tWBww-0000000Eslu-34zC;
 	Fri, 10 Jan 2025 10:09:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=vx4b9
-	04GoBOQPZxPkHCVqjXWtg+tthn2HPth/upQ9wQ=; b=gX+UlOYZ58HCPq6knNLNZ
-	IXQdJvnIeAbAwcXvggmLNgxNvyCH41DIQZ9au5AIxFQ4RHxyrbsX0GwKaznVWinw
-	C9hzYs2kJ8X3TcPHy7sKxG/bbZVKCw6EAHR0xYPVyRejcaJ0t11/Q0lCwWkbU/XB
-	vo7gkQa0R5sZstXavG/XnE=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=1tK63
+	p6E06ruoBhr4yP+6MI3hNsxARoiIZJBTFpZRnw=; b=msqhldbHSPSs7V8XJLL+u
+	yo+9/614y+4lJdTNRMRDVsWGzpI1CJtO5rJDUQCwxrbYO5Qrq32PhEMsCPQQJlBT
+	7YDC3dIKahIYGoLXb05EE1Y/uvwUsYXnwu9iWI800rzHk434Kes5n20t4Kp0Z90m
+	w0Kw2c/GJtfk18RBXNAk4c=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgBHPRKh8YBn2sBEEQ--.4640S9;
-	Fri, 10 Jan 2025 18:08:44 +0800 (CST)
+	by gzsmtp4 (Coremail) with SMTP id PygvCgBHPRKh8YBn2sBEEQ--.4640S11;
+	Fri, 10 Jan 2025 18:08:46 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -51,23 +51,24 @@ Cc: hjc@rock-chips.com,
 	sebastian.reichel@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v10 07/11] drm/rockchip: vop2: Register the primary plane and overlay plane separately
-Date: Fri, 10 Jan 2025 18:08:22 +0800
-Message-ID: <20250110100832.27551-8-andyshrk@163.com>
+Subject: [PATCH v10 09/11] drm/rockchip: vop2: Add uv swap for cluster window
+Date: Fri, 10 Jan 2025 18:08:24 +0800
+Message-ID: <20250110100832.27551-10-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250110100832.27551-1-andyshrk@163.com>
 References: <20250110100832.27551-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PygvCgBHPRKh8YBn2sBEEQ--.4640S9
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGFWxtw4kKr43tFyrKryxuFg_yoWrZrW3pa
-	13ta90qr4xWrsFgry8JF4jyFWYyan2kay7Crn8Gw1a934Sgr93ur48KF1DAF15uFnrWFya
-	kFW3K39Y9FWj9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jV5lbUUUUU=
+X-CM-TRANSID: PygvCgBHPRKh8YBn2sBEEQ--.4640S11
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW8Ww1kAF4UAw47JFy7ZFb_yoW8XrWfpa
+	13ArWqgw45Kw4Iq34kJFW5AFWSywnxKay7uws7tw1F9ry3KFyDG3Z0kFWUAr1qyFsFkF47
+	tF93JrW7Zr1jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jVc_-UUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gLQXmeA8KYWdAAAsN
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqR7QXmeA6nmZGAAAsM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_020907_133531_6D62C96C 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20250110_020907_160003_8C5CC0C1 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,163 +87,40 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-In the upcoming VOP of rk3576, a Window cannot attach to all Video Ports,
-so make sure all VP find it's suitable primary plane, then register the
-remain windows as overlay plane will make code easier.
+The Cluster windows of upcoming VOP on rk3576 also support
+linear YUV support, we need to set uv swap bit for it.
+
+As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
+0xffffffff, so this register will not be touched on these
+two platforms.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
 Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
-
 ---
 
-(no changes since v3)
+(no changes since v1)
 
-Changes in v3:
-- Add comments for why we should treat rk3566 with special care.
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 100 +++++++++++--------
- 1 file changed, 61 insertions(+), 39 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index a1a0383713b5..d3e21fb00225 100644
+index 6040fd2388d3..3e9581e8adab 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2222,22 +2222,29 @@ static int vop2_plane_init(struct vop2 *vop2, struct vop2_win *win,
- 	return 0;
- }
+@@ -1373,10 +1373,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
  
--static struct vop2_video_port *find_vp_without_primary(struct vop2 *vop2)
-+/*
-+ * On RK3566 these windows don't have an independent
-+ * framebuffer. They can only share/mirror the framebuffer
-+ * with smart0, esmart0 and cluster0 respectively.
-+ * And RK3566 share the same vop version with Rk3568, so we
-+ * need to use soc_id for identification here.
-+ */
-+static bool vop2_is_mirror_win(struct vop2_win *win)
- {
--	int i;
--
--	for (i = 0; i < vop2->data->nr_vps; i++) {
--		struct vop2_video_port *vp = &vop2->vps[i];
--
--		if (!vp->crtc.port)
--			continue;
--		if (vp->primary_plane)
--			continue;
-+	struct vop2 *vop2 = win->vop2;
+ 	rb_swap = vop2_win_rb_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
+-	if (!vop2_cluster_window(win)) {
+-		uv_swap = vop2_win_uv_swap(fb->format->format);
+-		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+-	}
++	uv_swap = vop2_win_uv_swap(fb->format->format);
++	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
  
--		return vp;
-+	if (vop2->data->soc_id == 3566) {
-+		switch (win->data->phys_id) {
-+		case ROCKCHIP_VOP2_SMART1:
-+		case ROCKCHIP_VOP2_ESMART1:
-+		case ROCKCHIP_VOP2_CLUSTER1:
-+			return true;
-+		default:
-+			return false;
-+		}
-+	} else {
-+		return false;
- 	}
--
--	return NULL;
- }
- 
- static int vop2_create_crtcs(struct vop2 *vop2)
-@@ -2248,7 +2255,9 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	struct drm_plane *plane;
- 	struct device_node *port;
- 	struct vop2_video_port *vp;
--	int i, nvp, nvps = 0;
-+	struct vop2_win *win;
-+	u32 possible_crtcs;
-+	int i, j, nvp, nvps = 0;
- 	int ret;
- 
- 	for (i = 0; i < vop2_data->nr_vps; i++) {
-@@ -2287,42 +2296,55 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	}
- 
- 	nvp = 0;
--	for (i = 0; i < vop2->registered_num_wins; i++) {
--		struct vop2_win *win = &vop2->win[i];
--		u32 possible_crtcs = 0;
--
--		if (vop2->data->soc_id == 3566) {
--			/*
--			 * On RK3566 these windows don't have an independent
--			 * framebuffer. They share the framebuffer with smart0,
--			 * esmart0 and cluster0 respectively.
--			 */
--			switch (win->data->phys_id) {
--			case ROCKCHIP_VOP2_SMART1:
--			case ROCKCHIP_VOP2_ESMART1:
--			case ROCKCHIP_VOP2_CLUSTER1:
-+	/* Register a primary plane for every crtc */
-+	for (i = 0; i < vop2_data->nr_vps; i++) {
-+		vp = &vop2->vps[i];
-+
-+		if (!vp->crtc.port)
-+			continue;
-+
-+		for (j = 0; j < vop2->registered_num_wins; j++) {
-+			win = &vop2->win[j];
-+
-+			/* Aready registered as primary plane */
-+			if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
-+				continue;
-+
-+			if (vop2_is_mirror_win(win))
- 				continue;
--			}
--		}
- 
--		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
--			vp = find_vp_without_primary(vop2);
--			if (vp) {
-+			if (win->type == DRM_PLANE_TYPE_PRIMARY) {
- 				possible_crtcs = BIT(nvp);
- 				vp->primary_plane = win;
-+				ret = vop2_plane_init(vop2, win, possible_crtcs);
-+				if (ret) {
-+					drm_err(vop2->drm, "failed to init primary plane %s: %d\n",
-+						win->data->name, ret);
-+					return ret;
-+				}
- 				nvp++;
--			} else {
--				/* change the unused primary window to overlay window */
--				win->type = DRM_PLANE_TYPE_OVERLAY;
-+				break;
- 			}
- 		}
-+	}
-+
-+	/* Register all unused window as overlay plane */
-+	for (i = 0; i < vop2->registered_num_wins; i++) {
-+		win = &vop2->win[i];
-+
-+		/* Aready registered as primary plane */
-+		if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
-+			continue;
-+
-+		if (vop2_is_mirror_win(win))
-+			continue;
- 
--		if (win->type == DRM_PLANE_TYPE_OVERLAY)
--			possible_crtcs = (1 << nvps) - 1;
-+		win->type = DRM_PLANE_TYPE_OVERLAY;
- 
-+		possible_crtcs = (1 << nvps) - 1;
- 		ret = vop2_plane_init(vop2, win, possible_crtcs);
- 		if (ret) {
--			drm_err(vop2->drm, "failed to init plane %s: %d\n",
-+			drm_err(vop2->drm, "failed to init overlay plane %s: %d\n",
- 				win->data->name, ret);
- 			return ret;
- 		}
+ 	if (fb->format->is_yuv) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
 -- 
 2.34.1
 
