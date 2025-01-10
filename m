@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17584E77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 19:07:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98312E77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 23:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pb0hcZF5Kls0YnqfNoe0Y/ZI9gxojYksjkwJ5tvAeP8=; b=G2vf9Il9qwYC9u
-	jvn+rRM9vuvo/mV8JyU2p9iIiNCvuTgnZ5wik5FzaTHkjAMD90/c9Vg30F/ZK/s0ydl71utNv0DTE
-	TaN0vkHVuLMcHjnE8N8zfF3BZ/TK6TqDW2QyuQRAFhmMPSIuB4H69ONtFBH6uiHF3dhVua33a39Td
-	fGyzMPf7evtOsw02kniKEu+ZI8CR82RMvf0jOkOjFlFBQ6HQvwiGT0hjPCWtECA33tgPxl/hZ09bA
-	kY0ZXDfd//og7feNkYcHZZCzNvzYnOFNN6YGqYnk3dHtNHCedij2+X0ObseRzqRW91m+zyXd8Twd2
-	BI7YQH4FVQRSNnk26qzg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ubQCwJHeOkAaOO1L8OF+MZz8Fj9bY9fDTAAwINkwRnA=; b=1+T5aERO3dxWf5
+	ScrYNs4zJa5IR/VOYiE0DhclgyTcapzbGvB/XB7u+8OIQqfJnqj2JU6i4FcwD6atm7KNohTLZyJeL
+	KK0Vr40Y8A97UnHrc/Oh9XADyGpvffpOkM+nL5zcc2rN2e5YEArRp5ddNRXxqaRvj4wC6+qpflHgX
+	2S/KnWxnEU3wtusx//w18L0ZFwbynXBbYls4nLMx17uw8JHWR3CIXJapaxjEUe2DWmd67l0ZgcNdA
+	4jyyWeuj7u2piWZLmTl5T4bMCtDKll1aw1I0X0gOmc1nLMW7lMbRIWJVI3o/VStUL3M85DRs49HcD
+	rkMgoQyfvWY2SZZJHJ8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWKM5-0000000Gi9y-0WS2;
-	Fri, 10 Jan 2025 19:07:37 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tWOrJ-0000000HJyu-2aE7;
+	Fri, 10 Jan 2025 23:56:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWJBk-0000000GUqe-3mdm;
-	Fri, 10 Jan 2025 17:52:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 340365C5115;
-	Fri, 10 Jan 2025 17:52:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBAD3C4CED6;
-	Fri, 10 Jan 2025 17:52:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736531571;
-	bh=SFidNPCEzzdhqDMHpT0ZBS1qDa7/zS3vqT1bcr65LnE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hJ9bZT9tczqg36KU4u6eeqTb1soNKUi4jFKxz0hhNEszVpwr9k9zEWBeBj7Mv9EED
-	 WkgOWH7Sb6St0SIyCxaPqkDmrETi94j9+2Ii3LVSi50No2Tk9CRK/+4lP24fibBK+C
-	 4Xi60yQOKPXklaK9wG0OHqz+GL9IWOfAfGvWL/mx95640061C2vJ9JNQWZHjp8e1SJ
-	 tk2Au3qdBiIO8/j+Vhg+Mn2ElcAgfycx4KvLzJfuqwmIlZUJCgL8rgJG0ixc4veeVD
-	 5jxTUrrLRJ50EQtM2lNw2rOhAolT6/GzU0UpbvdfSKClNKd26SMe3dm35W60OL39tW
-	 +EFtowt4redjg==
-From: Mark Brown <broonie@kernel.org>
-To: Sanjay R Mehta <sanju.mehta@amd.com>, Han Xu <han.xu@nxp.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Daire McNamara <daire.mcnamara@microchip.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Haibo Chen <haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, 
- Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@amd.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Raju Rangoju <Raju.Rangoju@amd.com>, 
- Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Steam Lin <stlin2@winbond.com>, linux-spi@vger.kernel.org, 
- linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-mtd@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
- openbmc@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com, 
- Pratyush Yadav <pratyush@kernel.org>, 
- Tudor Ambarus <tudor.ambarus@linaro.org>, stable+noautosel@kernel.org
-In-Reply-To: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com>
-References: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com>
-Subject: Re: (subset) [PATCH v3 00/27] spi-nand/spi-mem DTR support
-Message-Id: <173653156367.340868.12224888423783635897.b4-ty@kernel.org>
-Date: Fri, 10 Jan 2025 17:52:43 +0000
+	id 1tWOrH-0000000HJy4-3enX;
+	Fri, 10 Jan 2025 23:56:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=IdVGNC9ihRyCEJa28AxTFiJgmP1qaIyuSvobrf5SOtY=; b=SGQ7uBBOiv7KspwRiMLEJW3ULQ
+	5D7dKER3EoqdcK4ICWMRsg110cz5DUrE1PpyoLmIaZ86/S7ENf/mwAqZToRezL6aOS1t4dJ29A4vI
+	feddJ7U2LPizNDyje5aCA8zjyjw730xgbIzRBflS0qBCVJaw6SCv9R4QM3s//9HemWz6T5O87UGFI
+	QPvArJqF9oFSMxodKli1OECVhqhKt3B3vXmg+Q5t+pJn/DLK9i+uDhYAQF9/cZs+dzhUNJZvVE2Xn
+	krsXBJ7Z5PyD7oly1E0pvURsM5VE6PcdSo2W3631TSQDb5gReo3PGbDX520B8CwlxPuGQrWFW58+z
+	6vnDqYUQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tWOrD-00000009wU0-3wzC;
+	Fri, 10 Jan 2025 23:56:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=IdVGNC9ihRyCEJa28AxTFiJgmP1qaIyuSvobrf5SOtY=; b=ZFsX2dVi/Crk59eyAJ8h9G3L6A
+	pRTax6S+InGDCsxYa1c5yy9k/HTWVTW5CqKusH2z+re5OIGVXusgFj1GSbnb1OgcON+MVUdbQ6Oju
+	J7Dmp8LpddnVRWc80FzF24CSqiyGf/3SZy33W/jXD/m/x3gupY5ou5WFlE7pNWi8JzNUIivFEwxv/
+	5qOfYMnAoHgU0Dn3H8bKqYF6Ct+6q8rJz6aJ6dAEqYB0NXGBhnwr4v5amdkADUPrHjui3i6wvDtkh
+	yFiDBZ17yJHBMziGAVwtBRTIvWXqI3DbJM0JpSzUGjKyIBBYGI76ZzYsbxNIJhnHJFOqwTPQCv1ma
+	Npp3smqg==;
+Received: from i5e860d05.versanet.de ([94.134.13.5] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tWOr9-0000zZ-Dq; Sat, 11 Jan 2025 00:55:59 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.14 #1
+Date: Sat, 11 Jan 2025 00:55:54 +0100
+Message-ID: <2193001.3Lj2Plt8kZ@diego>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_095253_031505_F58891A9 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20250110_235604_146645_49B15157 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,43 +84,167 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Jan 2025 15:45:02 +0100, Miquel Raynal wrote:
-> Here is a (big) series supposed to bring DTR support in SPI-NAND.
-> 
-> I could have split this into two but I eventually preferred showing the
-> big picture. Once v1 will be over, I can make it two. However when we'll
-> discuss merging, we'll have to share an immutable tag among the two
-> subsystems.
-> 
-> [...]
+Hi soc maintainers,
 
-Applied to
+please find below and in a subsequent pull-requests
+Rockchip changes for for 6.14 .
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Some new boards, two newly supported peripherals and a bunch
+of small things happened over the christmas period :-)
 
-Thanks!
+So far there haven't been arm32 changes this time around.
 
-[20/27] spi: spi-mem: Estimate the time taken by operations
-        commit: 226d6cb3cb799aae46d0dd19a521133997d9db11
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Please pull.
+Thanks
+Heiko
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+  Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
 
-Thanks,
-Mark
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.14-rockchip-dts64-1
+
+for you to fetch changes up to ebe82df46fba0f0fe45d7e03ddf5ca0f6e758a06:
+
+  arm64: dts: rockchip: add DTs for Firefly ITX-3588J and its Core-3588J SoM (2025-01-10 00:13:16 +0100)
+
+----------------------------------------------------------------
+New boards rk3576-evb1, H96 Max V58 TV Box (rk3588), BigTreeTech CB2
+(SoM + baseboard) and Pi2 (SBC), Firefly ITX-3588J (Core-3588J SoM),
+Orange Pi 5 Max.
+
+A interesting case is the Radxa E52C using a soc called rk3582. This is
+rk3588-variant where some cpu cores are disabled during production and
+the bootloader needs to read the available cores from efuses and adapt
+the DT it hands over to the kernel.
+
+New supported peripherals are just the naneng combophy + the usb
+controllers using them on the rk3576 as well as the arm,smmu attached
+to the PCI controller on rk3588.
+
+And finally there are of course a number of board-specific enablements
+and refinements (MCU on Qnap-TS433, USB3 on NanoPi R6C/R6S and Orange Pi
+5+ etc.
+
+----------------------------------------------------------------
+Alexey Charkov (2):
+      dt-bindings: arm: rockchip: Add H96 Max V58 TV box
+      arm64: dts: rockchip: Add H96 Max V58 TV Box based on RK3588 SoC
+
+Andy Yan (1):
+      dt-bindings: soc: rockchip: add rk3576 hdptxphy grf syscon
+
+Anton Kirilov (1):
+      arm64: dts: rockchip: Enable the USB 3.0 port on NanoPi R6C/R6S
+
+Chen-Yu Tsai (1):
+      arm64: dts: rockchip: Enable USB 3.0 ports on orangepi-5-plus
+
+David Jander (2):
+      arm64: dts: rockchip: Remove unused i2c2 node from rk3568-mecsbc
+      arm64: dts: rockchip: Add FRAM MB85RS128TY to rk3568-mecsbc
+
+Dragan Simic (1):
+      arm64: dts: rockchip: Delete redundant RK3328 GMAC stability fixes
+
+FUKAUMI Naoki (2):
+      dt-bindings: arm: rockchip: Add Radxa E52C
+      arm64: dts: rockchip: Add Radxa E52C
+
+Frank Wang (1):
+      arm64: dts: rockchip: add usb related nodes for rk3576
+
+Heiko Stuebner (2):
+      arm64: dts: rockchip: hook up the MCU on the QNAP TS433
+      arm64: dts: rockchip: set hdd led labels on QNAP-TS433
+
+Ivan Sergeev (2):
+      dt-bindings: arm: rockchip: Add BigTreeTech CB2 and Pi2
+      arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2
+
+Jagan Teki (1):
+      arm64: dts: rockchip: Fix PCIe3 handling for Edgeble-6TOPS Modules
+
+Jakob Unterwurzacher (1):
+      arm64: dts: rockchip: increase gmac rx_delay on rk3399-puma
+
+Jimmy Hon (3):
+      arm64: dts: rockchip: refactor common rk3588-orangepi-5.dtsi
+      dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Max
+      arm64: dts: rockchip: Add Orange Pi 5 Max board
+
+Jonas Karlman (1):
+      arm64: dts: rockchip: Fix sdmmc access on rk3308-rock-s0 v1.1 boards
+
+Kever Yang (4):
+      arm64: dts: rockchip: Add rk3576 naneng combphy nodes
+      dt-bindings: arm: rockchip: Sort for boards not in correct order
+      dt-bindings: arm: rockchip: Add rk3576 evb1 board
+      arm64: dts: rockchip: Add rk3576 evb1 board
+
+Michael Riesch (2):
+      arm64: dts: rockchip: fix num-channels property of wolfvision pf5 mic
+      arm64: dts: rockchip: enable hdmi out audio on wolfvision pf5
+
+Niklas Cassel (1):
+      arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC
+
+Sebastian Reichel (1):
+      arm64: dts: rockchip: add WLAN to rk3588-evb1 controller
+
+Shimrra Shai (2):
+      dt-bindings: arm: rockchip: Add Firefly ITX-3588J board
+      arm64: dts: rockchip: add DTs for Firefly ITX-3588J and its Core-3588J SoM
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  94 ++-
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   7 +
+ arch/arm64/boot/dts/rockchip/rk3308-rock-s0.dts    |  25 +-
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |   1 -
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi |   1 -
+ .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi |   1 -
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |   3 -
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |   1 -
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |   2 +-
+ .../dts/rockchip/rk3566-bigtreetech-cb2-manta.dts  |  10 +
+ .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 904 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-bigtreetech-pi2.dts   |  10 +
+ arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts     |  19 +-
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts |  61 ++
+ .../boot/dts/rockchip/rk3568-wolfvision-pf5.dts    |  10 +-
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 731 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 169 ++++
+ arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts | 743 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   3 +-
+ .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi |  81 +-
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  82 ++
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |   4 +
+ .../dts/rockchip/rk3588-firefly-core-3588j.dtsi    | 443 ++++++++++
+ .../boot/dts/rockchip/rk3588-firefly-itx-3588j.dts | 702 ++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts | 802 ++++++++++++++++++
+ .../dts/rockchip/rk3588-orangepi-5-compact.dtsi    | 151 ++++
+ .../boot/dts/rockchip/rk3588-orangepi-5-max.dts    |  60 ++
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   | 894 ++++----------------
+ .../arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi | 805 ++++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi |  18 +
+ 31 files changed, 6027 insertions(+), 811 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2-manta.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
+
+
 
 
 _______________________________________________
