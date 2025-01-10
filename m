@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA900E77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 08:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A2AE7719C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 08:06:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dZ6AqxegB66pe2jUPba0LF6uGaQgPaCghyKAsSTsglg=; b=axYPjhk8Pv3mTy
-	ULnVxMpfqaDbd6L6CwbL40ERePpG4a6LeFjvJ/yiS+os+MuDPska8bewyt9h8s6MA44jGk36haMZq
-	rwx/em6lpKIeVR0UrejFSNUc6mVVWPSfiXcKMUHl5QF40A59WaCpN7JKWdTbMLPqzgqxJZMtex2q6
-	ETxWTeuPXZFOUDJ3HdprKAbv791jdde/zFpgmajU+ypv9XZy8f9PViNgTswUS47b7cg/tyyuGC4oV
-	3b0fmsjxnm3FGx0KAcADKXEL5jSrHhN7itj84dHodNjL+rJcQcZpr3TJYLjfXxq82nG1ePs6sPHIt
-	v9uKR1eNOXWm5zVuDiaQ==;
+	List-Owner; bh=5kTtB0YVNuRg5sZejIsNSY3t/wEcbEP40V7nrZL06lI=; b=3LXpygq4oouLRZ
+	oEB3a00VgeXWZCgx3M+UB4sDSzaqozsafv9hFL9+8r70K7q/l61VzCA6Gw1OWvrHFqz6Yq2KtF5Jm
+	V82ummLEOyscdyUlqcR1g3efqsmcv/phmj7TXHKyovskWa/B3+MUdBluv9lMt9CdAPIQuSOVyPfRB
+	gf/3gG3jWa1s/hU+Dw8Qltooy8+VQXDBFANHSTacHD6KiddSYZYD1Mu4lcTZkLs6eDCf7AtN4CjDU
+	3oqbWqetsrXZ6mYjC75GIqCoaKjWlCeMmZLzsioaq8Z8/kKaq9X6VaY7Ub63LrvWZOpSN/b8EAOFT
+	bV4zO/GE9XIjSf815lWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9wj-0000000ESGX-1cFd;
-	Fri, 10 Jan 2025 08:00:45 +0000
-Received: from mail-m155100.qiye.163.com ([101.71.155.100])
+	id 1tWA2H-0000000ESrq-1R6L;
+	Fri, 10 Jan 2025 08:06:29 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW9wg-0000000ESFy-3T0y;
-	Fri, 10 Jan 2025 08:00:44 +0000
-Received: from [172.16.12.67] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 851fbfa0;
-	Fri, 10 Jan 2025 16:00:38 +0800 (GMT+08:00)
-Message-ID: <b4df8a73-58a2-4765-a9e4-3513cb2bc720@rock-chips.com>
-Date: Fri, 10 Jan 2025 16:00:38 +0800
+	id 1tWA2E-0000000ESpq-2gSA
+	for linux-rockchip@lists.infradead.org;
+	Fri, 10 Jan 2025 08:06:27 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tWA1z-0008Lc-0Q; Fri, 10 Jan 2025 09:06:11 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tWA1x-0007gT-21;
+	Fri, 10 Jan 2025 09:06:09 +0100
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tWA1x-0001oH-1d;
+	Fri, 10 Jan 2025 09:06:09 +0100
+Message-ID: <abd8ec5ad105d61f2ff372f88d7376bdf245acef.camel@pengutronix.de>
+Subject: Re: [PATCH v2 10/25] drm/imx/ipuv3: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Thomas Zimmermann <tzimmermann@suse.de>, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com, 
+	simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
+	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, Shawn Guo
+	 <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+	Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>
+Date: Fri, 10 Jan 2025 09:06:09 +0100
+In-Reply-To: <20250109150310.219442-11-tzimmermann@suse.de>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+	 <20250109150310.219442-11-tzimmermann@suse.de>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/17] dt-bindings: mmc: rockchip-dw-mshc: Add rk3562
- compatible string
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>
-References: <20241224094920.3821861-1-kever.yang@rock-chips.com>
- <20241224094920.3821861-4-kever.yang@rock-chips.com>
- <13860713.uLZWGnKmhe@phil>
-Content-Language: en-US
-From: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <13860713.uLZWGnKmhe@phil>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0pCS1YdThlPQxlPHR5DSBpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a944f3ac48a03afkunm851fbfa0
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRQ6LTo*OTISOQ8oIhYhESo0
-	LB9PCUtVSlVKTEhNT0JNS09LSU9PVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSk5CNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=ac3gz2WAq5OUJlbH0VXidvDlgJ29scrwRqUnnOQXeZRh/XMPCGCiBVj7R+Pfe75GTH5wKDH7hAZK7+JFEskSZ7z8gC55pv8cgvHUm8uto0wBQ/SSCj0iIU6fG2wbgW2yQgJWlEfjNZ1M+vxI48sw16vlhbx5GnQlk0BjE8n/ipc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=ePfcZ2p/T1m/EvSrH7frcAMuiJufoadhcrRBzNxT72g=;
-	h=date:mime-version:subject:message-id:from;
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_000043_058581_3CC2FAA9 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20250110_000626_672493_364D5BD5 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,46 +83,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Do, 2025-01-09 at 15:57 +0100, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. The hardware requires the framebuffer width to be a
+> multiple of 8. The scanline pitch has be large enough to support
+> this. Therefore compute the byte size of 8 pixels in the given color
+> mode and align the pitch accordingly.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <s.hauer@pengutronix.de>
+> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+> Cc: Fabio Estevam <festevam@gmail.com>
 
-On 2024/12/26 08:39, Heiko Stuebner wrote:
-> Am Dienstag, 24. Dezember 2024, 10:49:06 CET schrieb Kever Yang:
->> Add RK3588 compatible string for SD interface.
-> 	^ this still says rk3588
-Sorry, will update in next version.
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-Thanks,
-- Kever
->
->> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
->> ---
->>
->> Changes in v2: None
->>
->>   Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->> index 06df1269f247..772f592291bf 100644
->> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->> @@ -38,6 +38,7 @@ properties:
->>                 - rockchip,rk3328-dw-mshc
->>                 - rockchip,rk3368-dw-mshc
->>                 - rockchip,rk3399-dw-mshc
->> +              - rockchip,rk3562-dw-mshc
->>                 - rockchip,rk3568-dw-mshc
->>                 - rockchip,rk3588-dw-mshc
->>                 - rockchip,rv1108-dw-mshc
->>
->
->
->
->
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
