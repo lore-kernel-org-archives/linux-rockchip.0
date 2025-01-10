@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17381E7719C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 01:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F4EE77188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 06:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xlp6ybSP5RSBP/WYTJBij/3YUEiXPXfbs5b/o3gGRAs=; b=yzctwScZylZh0o
-	55k8ARa6IJ8AMXL3O/w37oLH//GDdQ7XkgxhzHSVMx2j7fwZnCBBHrAL8G7PfBH40IO0aB6XLeRho
-	O8haId/VyMC4ETZySxoHZ4o3K4uGAzgdh4d3Mqt5G6AvKfyJ6/oLQsZZAxkxljAhp/BDD4CYj3NW0
-	JOsI5puG/P3pBWo2riaLxcdvlXuxGGTnEUE8O0bcc8RlcI19J2fhuIfyUsIZIoNQ5LMl/cDpHJ/Ja
-	YFtUBTuSPm9BtFoLxX98mn6GgJFQtvwYYE00hgfAX2vVwIrIP9b3TYFOYbeOOlvCdoT+4F01v2yUB
-	dIpjGChifrwWa3gpILcA==;
+	List-Owner; bh=arM9bq3eKHijvMcM2eJTchu3dHLhab6tqOVXDntNSbc=; b=LPYa0JoFY5uNa4
+	DcVfWlmkaA6eo77V1XJfCoumc4cZPDhM7EkT61y+CZkkEylYQCgeLRnUHYH8gQoKtAYGaRyCGr7HZ
+	d7AO175RFowgpmJ66pethhmaEHYCNAMPCt14248NSCItRr2We8mpRtf8856KMKn0S8eBv5w5E+vsv
+	JOMJQGzeQxhmj4aXyCmNlPSoLEc71wHUeha4u5deYL4Gnrk6nlxSGwUSmp3CzSo5XRKG5Vw3CQlX0
+	CwJnlBFAcb3dm/fWny1GImqhZlnvAM3WO39w3ZLnXUPeV8J7F9reHLZC4jOVL0SQNd2fGEOa3gfEr
+	Q6Zsmj0+VW3xBaXiDbZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW4A7-0000000DnJP-3PlH;
-	Fri, 10 Jan 2025 01:50:11 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tW4A4-0000000DnIB-2zNV;
-	Fri, 10 Jan 2025 01:50:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=rp/KcRTe1MsmgU0PH0K2oNjpoThGJemgMsEfHLsmXZU=; b=W
-	0+7i2RYJnb+IwDKnerRnHxSxLQCjeH0nmPAixXRZJIh73RBq6tWkXMlB8ARB+/jY
-	np1B30dwgcuk3AfdfRFVCdiEx8UK+S2MJZD/8WuIfTW+pMd2/CA2ZVtLym/AK7/5
-	ZlsIJ8WXsVg/F0EKQPdKfYxTn5KUwLSo/yOl2xLFwA=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-121 (Coremail) ; Fri, 10 Jan 2025 09:49:34 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Fri, 10 Jan 2025 09:49:34 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Thomas Zimmermann" <tzimmermann@suse.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com, 
-	simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, 
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-Subject: Re:[PATCH v2 02/25] drm/dumb-buffers: Provide helper to set pitch
- and size
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250109150310.219442-3-tzimmermann@suse.de>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-3-tzimmermann@suse.de>
-X-NTES-SC: AL_Qu2YBPicvE8s4iWYYukfmkcVgOw9UcO5v/Qk3oZXOJF8jArp+TAefEJSMWvIws60LDKUmgmGdih16sFZbLt8cLIWf0LCiIohAdHyNGUiBtRGKQ==
+	id 1tW8jp-0000000EHzk-0ws4;
+	Fri, 10 Jan 2025 06:43:21 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tW8SE-0000000EFGr-02It;
+	Fri, 10 Jan 2025 06:25:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1736490310; x=1768026310;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=JNRPGPlyUeOYSMCCIReZWx4/A6kB9kI6sWqUW61ccvw=;
+  b=TrRQAGzHvOMgWCztTO/KbSoJ/AZRM7l/rpGUR0V80bQwNp4TEhdj2JOv
+   90FHuwvsXUdaEdjSah0tNuMlw5/1wuv90Uqryx7ElAsFV4P5ArIQCFUbY
+   SgwATqSwzBlp4ZKlelnXnn6ufkQGXAPzsUSoj/GMNEd+OnprQiR/ynosD
+   f/Ntd9Xn37EduKW8fQvJGRgWJ50McULu9pO0WbAeei+YNZzt209KGI/IC
+   n7KKGZAcQIpgnnHrkutvzXMt0Ft2bP1U4DUe82kQuoQxIYNg4lkSZq4TL
+   J1EvkP30TwEMHscUzbLqh8hw/ZYwTWGjGERvIw+GuIkKtSTE27qFFMZb+
+   g==;
+X-CSE-ConnectionGUID: lkzMIbzQSc+S0KLtQxqv0w==
+X-CSE-MsgGUID: 4aDPTHRbQmq1H6yjUp3wWw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11310"; a="36935802"
+X-IronPort-AV: E=Sophos;i="6.12,303,1728975600"; 
+   d="scan'208";a="36935802"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jan 2025 22:25:07 -0800
+X-CSE-ConnectionGUID: wHSmfOucTXOWrcz09KdPMQ==
+X-CSE-MsgGUID: hPBfvydBS6uD27k00ZqUVQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="104162427"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 09 Jan 2025 22:25:03 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tW8S3-000IdZ-36;
+	Fri, 10 Jan 2025 06:24:59 +0000
+Date: Fri, 10 Jan 2025 14:24:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: Damon Ding <damon.ding@rock-chips.com>, heiko@sntech.de
+Subject: Re: [PATCH v5 07/20] drm/rockchip: analogix_dp: Expand device data
+ to support multiple edp display
+Message-ID: <202501101445.xlso2z73-lkp@intel.com>
+References: <20250109032725.1102465-8-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Message-ID: <94f78e1.19bf.1944de709b0.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: eSgvCgDnqsWufIBna6lTAA--.18314W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBTQXmeAdu58vQABsN
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <20250109032725.1102465-8-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250109_175009_072565_CF572A17 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20250109_222510_083840_9613AD5A 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,223 +81,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: algea.cao@rock-chips.com, llvm@lists.linux.dev, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-phy@lists.infradead.org, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, Damon Ding <damon.ding@rock-chips.com>, oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, dmitry.baryshkov@linaro.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Damon,
 
-Hi Thomas,
+kernel test robot noticed the following build warnings:
 
-At 2025-01-09 22:56:56, "Thomas Zimmermann" <tzimmermann@suse.de> wrote:
->Add drm_modes_size_dumb(), a helper to calculate the dumb-buffer
->scanline pitch and allocation size. Implementations of struct
->drm_driver.dumb_create can call the new helper for their size
->computations. There's currently quite a bit of code duplication
->among DRM's memory managers. Each calculates scanline pitch and
->buffer size from the given arguments, but the implementations are
->inconsistent in how they treat alignment and format support. Later
->patches will unify this code on top of drm_mode_size_dumb() as
->much as possible.
->
->drm_mode_size_dumb() uses existing 4CC format helpers to interpret the
->given color mode. This makes the dumb-buffer interface behave similar
->the kernel's video= parameter. Again, current per-driver implementations
->likely have subtle differences or bugs in how they support color modes.
->
->Future directions: one bug is present in the current input validation
->in drm_mode_create_dumb(). The dumb-buffer overflow tests round up any
->given bits-per-pixel value to a multiple of 8. So even one-bit formats,
->such as DRM_FORMAT_C1, require 8 bits per pixel. While not common,
->low-end displays use such formats; with a possible overcommitment of
->memory. At some point, the validation logic in drm_mode_size_dumb() is
->supposed to replace the erronous code.
->
->Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->---
-> drivers/gpu/drm/drm_dumb_buffers.c | 93 ++++++++++++++++++++++++++++++
-> include/drm/drm_dumb_buffers.h     | 14 +++++
-> 2 files changed, 107 insertions(+)
-> create mode 100644 include/drm/drm_dumb_buffers.h
->
->diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
->index 9916aaf5b3f2..fd39720bd617 100644
->--- a/drivers/gpu/drm/drm_dumb_buffers.c
->+++ b/drivers/gpu/drm/drm_dumb_buffers.c
->@@ -25,6 +25,8 @@
-> 
-> #include <drm/drm_device.h>
-> #include <drm/drm_drv.h>
->+#include <drm/drm_dumb_buffers.h>
->+#include <drm/drm_fourcc.h>
-> #include <drm/drm_gem.h>
-> #include <drm/drm_mode.h>
-> 
->@@ -57,6 +59,97 @@
->  * a hardware-specific ioctl to allocate suitable buffer objects.
->  */
-> 
->+static int drm_mode_align_dumb(struct drm_mode_create_dumb *args,
->+			       unsigned long pitch_align,
->+			       unsigned long size_align)
->+{
->+	u32 pitch = args->pitch;
->+	u32 size;
->+
->+	if (!pitch)
->+		return -EINVAL;
->+
->+	if (pitch_align)
->+		pitch = roundup(pitch, pitch_align);
->+
->+	/* overflow checks for 32bit size calculations */
->+	if (args->height > U32_MAX / pitch)
->+		return -EINVAL;
->+
->+	if (!size_align)
->+		size_align = PAGE_SIZE;
->+	else if (!IS_ALIGNED(size_align, PAGE_SIZE))
->+		return -EINVAL;
->+
->+	size = ALIGN(args->height * pitch, size_align);
->+	if (!size)
->+		return -EINVAL;
->+
->+	args->pitch = pitch;
->+	args->size = size;
->+
->+	return 0;
->+}
->+
->+/**
->+ * drm_mode_size_dumb - Calculates the scanline and buffer sizes for dumb buffers
->+ * @dev: DRM device
->+ * @args: Parameters for the dumb buffer
->+ * @pitch_align: Scanline alignment in bytes
->+ * @size_align: Buffer-size alignment in bytes
->+ *
->+ * The helper drm_mode_size_dumb() calculates the size of the buffer
->+ * allocation and the scanline size for a dumb buffer. Callers have to
->+ * set the buffers width, height and color mode in the argument @arg.
->+ * The helper validates the correctness of the input and tests for
->+ * possible overflows. If successful, it returns the dumb buffer's
->+ * required scanline pitch and size in &args.
->+ *
->+ * The parameter @pitch_align allows the driver to specifies an
->+ * alignment for the scanline pitch, if the hardware requires any. The
->+ * calculated pitch will be a multiple of the alignment. The parameter
->+ * @size_align allows to specify an alignment for buffer sizes. The
->+ * returned size is always a multiple of PAGE_SIZE.
->+ *
->+ * Returns:
->+ * Zero on success, or a negative error code otherwise.
->+ */
->+int drm_mode_size_dumb(struct drm_device *dev,
->+		       struct drm_mode_create_dumb *args,
->+		       unsigned long pitch_align,
->+		       unsigned long size_align)
->+{
->+	u32 fourcc;
->+	const struct drm_format_info *info;
->+	u64 pitch;
->+
->+	/*
->+	 * The scanline pitch depends on the buffer width and the color
->+	 * format. The latter is specified as a color-mode constant for
->+	 * which we first have to find the corresponding color format.
->+	 *
->+	 * Different color formats can have the same color-mode constant.
->+	 * For example XRGB8888 and BGRX8888 both have a color mode of 32.
->+	 * It is possible to use different formats for dumb-buffer allocation
->+	 * and rendering as long as all involved formats share the same
->+	 * color-mode constant.
->+	 */
->+	fourcc = drm_driver_color_mode_format(dev, args->bpp);
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on robh/for-next drm/drm-next drm-exynos/exynos-drm-next linus/master v6.13-rc6 next-20250109]
+[cannot apply to drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-misc/drm-misc-next drm-tip/drm-tip]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-This will return -EINVAL with bpp drm_mode_legacy_fb_format doesn't support,
-such as(NV15, NV20, NV30, bpp is 10)[0]
+url:    https://github.com/intel-lab-lkp/linux/commits/Damon-Ding/phy-phy-rockchip-samsung-hdptx-Swap-the-definitions-of-LCPLL_REF-and-ROPLL_REF/20250109-113114
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20250109032725.1102465-8-damon.ding%40rock-chips.com
+patch subject: [PATCH v5 07/20] drm/rockchip: analogix_dp: Expand device data to support multiple edp display
+config: hexagon-randconfig-002-20250110 (https://download.01.org/0day-ci/archive/20250110/202501101445.xlso2z73-lkp@intel.com/config)
+compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project f5cd181ffbb7cb61d582fe130d46580d5969d47a)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250110/202501101445.xlso2z73-lkp@intel.com/reproduce)
 
-And there are also some AFBC based format with bpp can't be handled here, see:
-static __u32 drm_gem_afbc_get_bpp(struct drm_device *dev,
-                                  const struct drm_mode_fb_cmd2 *mode_cmd)
-{               
-        const struct drm_format_info *info;
-                
-        info = drm_get_format_info(dev, mode_cmd);
-                
-        switch (info->format) {
-        case DRM_FORMAT_YUV420_8BIT:       
-                return 12;
-        case DRM_FORMAT_YUV420_10BIT:      
-                return 15;                 
-        case DRM_FORMAT_VUY101010:         
-                return 30;                 
-        default:
-                return drm_format_info_bpp(info, 0);
-        }
-}
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202501101445.xlso2z73-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/gpu/drm/rockchip/analogix_dp-rockchip.c:60: warning: Function parameter or struct member 'reg' not described in 'rockchip_dp_chip_data'
 
 
+vim +60 drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
 
-[0]https://gitlab.freedesktop.org/mesa/drm/-/blob/main/tests/modetest/buffers.c?ref_type=heads#L159
+8f0ac5c4835291 Yakir Yang 2016-07-24  50  
+d9c900b0270a18 Yakir Yang 2016-06-29  51  /**
+d9c900b0270a18 Yakir Yang 2016-06-29  52   * struct rockchip_dp_chip_data - splite the grf setting of kind of chips
+bbb8c3102ebf3b Damon Ding 2025-01-09  53   * @lcdc_sel: grf register field of lcdc_sel
+d9c900b0270a18 Yakir Yang 2016-06-29  54   * @chip_type: specific chip type
+d9c900b0270a18 Yakir Yang 2016-06-29  55   */
+d9c900b0270a18 Yakir Yang 2016-06-29  56  struct rockchip_dp_chip_data {
+bbb8c3102ebf3b Damon Ding 2025-01-09  57  	const struct rockchip_grf_reg_field lcdc_sel;
+d9c900b0270a18 Yakir Yang 2016-06-29  58  	u32	chip_type;
+26f1f37804f0d4 Damon Ding 2025-01-09  59  	u32	reg;
+d9c900b0270a18 Yakir Yang 2016-06-29 @60  };
+9e32e16e9e989f Yakir Yang 2016-03-29  61  
 
-This introduce a modetest failure on rockchip platform:
-# modetest -M rockchip -s 70@68:1920x1080 -P 32@68:1920x1080@NV30
-setting mode 1920x1080-60.00Hz on connectors 70, crtc 68
-testing 1920x1080@NV30 overlay plane 32
-failed to create dumb buffer: Invalid argument
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
-I think other platform with bpp can't handler by  drm_mode_legacy_fb_format will
-also see this kind of failure:
-
-
-
->+	if (fourcc == DRM_FORMAT_INVALID)
->+		return -EINVAL;
->+	info = drm_format_info(fourcc);
->+	if (!info)
->+		return -EINVAL;
->+	pitch = drm_format_info_min_pitch(info, 0, args->width);
->+	if (!pitch || pitch > U32_MAX)
->+		return -EINVAL;
->+
->+	args->pitch = pitch;
->+
->+	return drm_mode_align_dumb(args, pitch_align, size_align);
->+}
->+EXPORT_SYMBOL(drm_mode_size_dumb);
->+
-> int drm_mode_create_dumb(struct drm_device *dev,
-> 			 struct drm_mode_create_dumb *args,
-> 			 struct drm_file *file_priv)
->diff --git a/include/drm/drm_dumb_buffers.h b/include/drm/drm_dumb_buffers.h
->new file mode 100644
->index 000000000000..6fe36004b19d
->--- /dev/null
->+++ b/include/drm/drm_dumb_buffers.h
->@@ -0,0 +1,14 @@
->+/* SPDX-License-Identifier: MIT */
->+
->+#ifndef __DRM_DUMB_BUFFERS_H__
->+#define __DRM_DUMB_BUFFERS_H__
->+
->+struct drm_device;
->+struct drm_mode_create_dumb;
->+
->+int drm_mode_size_dumb(struct drm_device *dev,
->+		       struct drm_mode_create_dumb *args,
->+		       unsigned long pitch_align,
->+		       unsigned long size_align);
->+
->+#endif
->-- 
->2.47.1
->
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
