@@ -4,62 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E5BE77188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 16:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBF0E7719C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jan 2025 16:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qT0oGzGklMnIKbb0AXsT0Tfm3lQNC9a5q3FCX7Yg9i8=; b=aupZ1aG7bcyrwQ
-	HRlkmAhk9NnG+kw9khkbVG4FABFq52ER9uiyuhXQnz9d7+7o81ZWH1J1JINtlfGUX4T0gIYfnIXO2
-	wFKr6v7rpnao+xAZNY/+V+u2hlC1Iwxs70QSfAIGztbEFA18BcJdAYe7TNOBZxc2hAd1C8Yh4Dbla
-	x3t5hViokKxebVl0mVaGpEsce3qxSqrzpQ00DsZHo9L3Qqn9R8+DS30d+bqeVDqWSDfLIoNKq38a8
-	DTAvKRkU1kkJ2mWy6sCPYtBjCatWWdn5ZWWDvybohnzafjiAZ3aKsJtLo4+HRDvNajymKNsbWLM5Q
-	frp+zmE0Wnc8WjOp64aQ==;
+	List-Owner; bh=JArNhlbbEQfC/0W38HAJE+7oCI0Sb+xozGQ2UflJtn8=; b=y8X7RerwatJPmW
+	vQryMk5nMtEIx4aVHK5O4SlXMtM7w9CLyJ7snfuiCu5fJiqXFQLfZ+a7BZIKsriksmS+w8MXXewS1
+	f7WnKncAn2EKaVDU3DgGWPMrppAJiB2STixqPzO2e1EAsab2yfs9oOjmoubWXFRJ2QrSJxFoW7RPn
+	yytBjiB+/ddDCO6dzaDXsC18oXNRvM5+f7Tom2acbZTqdqzDELgaDAk2VXRoqiSGDo1N1iJ+W+YBX
+	el1rjmPoa9FqW6o98HQivAInLk2yFKOsfiyhUQedM6O2j6zDHNdCawNeQhvim5uv3oupNeqVnXDUH
+	IoRPZ3RZEbvgpDMy45dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWHSx-0000000G8WI-26x0;
-	Fri, 10 Jan 2025 16:02:31 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tWHXp-0000000G9cO-1PqC;
+	Fri, 10 Jan 2025 16:07:33 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWH4W-0000000FyuF-1L2o;
-	Fri, 10 Jan 2025 15:37:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1ABDAA42526;
-	Fri, 10 Jan 2025 15:35:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12DD9C4CED6;
-	Fri, 10 Jan 2025 15:37:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736523435;
-	bh=t/DCLtxTAMc6j2jDTGiXPzE5QLvYDxwka7Xtc0lpisQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IO/BUphEXrds0kt8ktdN0EDh4YXbN7rr/hC1yO0J37SC1Gf5SF1IInMlU2ChMaG9n
-	 jyi516GoF+AEOuts7KPRJgOJ3Vt01PRePBb8m7AByK7bvvSLzbNKRvpDBhlkjBSRm6
-	 a2bnT4yA9HcMpovdLCe06Gw/aabyimLWOWzKjwMW+hJLZ+O0fz+PMLcpwpSY9X/dJC
-	 i8ap8sl4v64+KuA4NfQ+aJs20O2vDqHf0OCOsiTQz/XJvPM4fijMfHtSkr2EU9B/nl
-	 5LpRTtflSz9orIksuejhxc0WaQsM7L4I9eP9bmEg6Wx8tDFw3ClpH8Mh8RD0Uxa2fA
-	 6myCtPjBgNLxQ==
-Date: Fri, 10 Jan 2025 09:37:14 -0600
-From: Rob Herring <robh@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org,
-	sebastian.reichel@collabora.com, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v10 10/11] dt-bindings: display: vop2: Add rk3576 support
-Message-ID: <20250110153714.GA2912633-robh@kernel.org>
-References: <20250110100832.27551-1-andyshrk@163.com>
- <20250110100832.27551-11-andyshrk@163.com>
+	id 1tWGGT-0000000FgAs-2kJP;
+	Fri, 10 Jan 2025 14:45:35 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 1317AFF807;
+	Fri, 10 Jan 2025 14:45:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1736520331;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BZ7N9DxFJs+ypWx4tpIWo4afnbo0gO3jjiMo2DbsJnA=;
+	b=Ep+W3RwwhmDUkoOO8gMAhVAvq+JxfEHNNEhlItnkm6ggFf2cddQXzxap3MgR9mXKCDscmq
+	m/wfrLsZs+FKMbbg3tKL/2WRy+/PqYCmxdj31+BFkJ6U5x977eYrMYR4dWMjtIP/3LrZOr
+	+9YwOhVFPYowtfyY29H0gM+j+73hpW4Om/PtB2G7ZEY2XAWCJZ8fN34jETT6A7RWvtNVug
+	+95UyUbdJXRSJsOX/bPjB6A+lRpnt8Hsb4V24g0Id8tv5VrIKh/LnBd4/KNLdRLwc3FzxP
+	0132EdjtSokHP0suQe2WqJ8kvsWTOT3s3qDIdFB6l5xjeBP3BxhjdUWbwB3+gg==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Date: Fri, 10 Jan 2025 15:45:09 +0100
+Subject: [PATCH v3 07/27] spi: dw: Support per spi-mem operation frequency
+ switches
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250110100832.27551-11-andyshrk@163.com>
+Message-Id: <20250110-winbond-6-11-rc1-quad-support-v3-7-7ab4bd56cf6e@bootlin.com>
+References: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com>
+In-Reply-To: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com>
+To: Mark Brown <broonie@kernel.org>, Sanjay R Mehta <sanju.mehta@amd.com>, 
+ Serge Semin <fancer.lancer@gmail.com>, Han Xu <han.xu@nxp.com>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Daire McNamara <daire.mcnamara@microchip.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Haibo Chen <haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@amd.com>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, 
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
+ Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Raju Rangoju <Raju.Rangoju@amd.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Steam Lin <stlin2@winbond.com>, linux-spi@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-mtd@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+ openbmc@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com
+X-Mailer: b4 0.15-dev
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250110_073716_485556_9D3E4903 
-X-CRM114-Status: GOOD (  21.24  )
+X-CRM114-CacheID: sfid-20250110_064533_956882_FB9F1598 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,226 +96,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 10, 2025 at 06:08:25PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Add vop found on rk3576, the main difference between rk3576 and the
-> previous vop is that each VP has its own interrupt line.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v10:
-> - Move interrupt-names back to top level
-> - Add constraint of interrupts for all platform
-> - Add constraint for all grf phandles
-> - Reorder some properties
-> 
-> Changes in v9:
-> - Drop 'vop-' prefix of interrupt-names.
-> - Add blank line between DT properties
-> - Remove list interrupt-names in top level
-> 
-> Changes in v8:
-> - Fix dt_binding_check errors
-> - ordered by soc name
-> - Link to the previous version:
->   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
-> 
-> Changes in v4:
-> - describe constraint SOC by SOC, as interrupts of rk3576 is very
->   different from others
-> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
-> 
-> Changes in v3:
-> - ordered by soc name
-> - Add description for newly added interrupt
-> 
-> Changes in v2:
-> - Add dt bindings
-> 
->  .../display/rockchip/rockchip-vop2.yaml       | 101 +++++++++++++++---
->  1 file changed, 87 insertions(+), 14 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> index 2531726af306..3bae71142018 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> @@ -14,12 +14,14 @@ description:
->  maintainers:
->    - Sandy Huang <hjc@rock-chips.com>
->    - Heiko Stuebner <heiko@sntech.de>
-> +  - Andy Yan <andyshrk@163.com>
->  
->  properties:
->    compatible:
->      enum:
->        - rockchip,rk3566-vop
->        - rockchip,rk3568-vop
-> +      - rockchip,rk3576-vop
->        - rockchip,rk3588-vop
->  
->    reg:
-> @@ -37,10 +39,21 @@ properties:
->        - const: gamma-lut
->  
->    interrupts:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 4
->      description:
-> -      The VOP interrupt is shared by several interrupt sources, such as
-> -      frame start (VSYNC), line flag and other status interrupts.
-> +      For VOP version under rk3576, the interrupt is shared by several interrupt
-> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
-> +      For VOP version from rk3576 there is a system interrupt for bus error, and
-> +      every video port has it's independent interrupts for vsync and other video
-> +      port related error interrupts.
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: sys
-> +      - const: vp0
-> +      - const: vp1
-> +      - const: vp2
->  
->    # See compatible-specific constraints below.
->    clocks:
-> @@ -120,43 +133,102 @@ allOf:
->        properties:
->          compatible:
->            contains:
-> -            const: rockchip,rk3588-vop
-> +            enum:
-> +              - rockchip,rk3566-vop
-> +              - rockchip,rk3568-vop
->      then:
->        properties:
->          clocks:
-> -          minItems: 7
-> +          minItems: 5
-> +
->          clock-names:
-> -          minItems: 7
-> +          minItems: 5
-> +
-> +        interrupts:
-> +          minItems: 1
-> +          maxItems: 1
-> +
-> +        interrupt-names: false
->  
->          ports:
->            required:
->              - port@0
->              - port@1
->              - port@2
-> -            - port@3
-> +
-> +        rockchip,vo1-grf: false
-> +        rockchip,vop-grf: false
-> +        rockchip,pmu: false
->  
->        required:
->          - rockchip,grf
-> -        - rockchip,vo1-grf
-> -        - rockchip,vop-grf
-> -        - rockchip,pmu
->  
-> -    else:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3576-vop
-> +    then:
->        properties:
-> +        clocks:
-> +          minItems: 5
-> +
-> +        clock-names:
-> +          minItems: 5
-> +
-> +        interrupts:
-> +          minItems: 4
-> +          maxItems: 4
+Every ->exec_op() call correctly configures the spi bus speed to the
+maximum allowed frequency for the memory using the constant spi default
+parameter. Since we can now have per-operation constraints, let's use
+the value that comes from the spi-mem operation structure instead. In
+case there is no specific limitation for this operation, the default spi
+device value will be given anyway.
 
-max is already 4, so drop.
+The per-operation frequency capability is thus advertised to the spi-mem
+core.
 
-> +
-> +        interrupt-names:
-> +          minItems: 4
-> +          maxItems: 4
+Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+---
+ drivers/spi/spi-dw-core.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-same here.
+diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
+index 431788dd848cea1d854affe0d1fb971f680824a1..3d49b1dbaed4d491c0df659c061582e71f2c514d 100644
+--- a/drivers/spi/spi-dw-core.c
++++ b/drivers/spi/spi-dw-core.c
+@@ -677,7 +677,7 @@ static int dw_spi_exec_mem_op(struct spi_mem *mem, const struct spi_mem_op *op)
+ 	 * operation. Transmit-only mode is suitable for the rest of them.
+ 	 */
+ 	cfg.dfs = 8;
+-	cfg.freq = clamp(mem->spi->max_speed_hz, 0U, dws->max_mem_freq);
++	cfg.freq = clamp(op->max_freq, 0U, dws->max_mem_freq);
+ 	if (op->data.dir == SPI_MEM_DATA_IN) {
+ 		cfg.tmode = DW_SPI_CTRLR0_TMOD_EPROMREAD;
+ 		cfg.ndf = op->data.nbytes;
+@@ -894,6 +894,10 @@ static void dw_spi_hw_init(struct device *dev, struct dw_spi *dws)
+ 		dw_writel(dws, DW_SPI_CS_OVERRIDE, 0xF);
+ }
+ 
++static const struct spi_controller_mem_caps dw_spi_mem_caps = {
++	.per_op_freq = true,
++};
++
+ int dw_spi_add_host(struct device *dev, struct dw_spi *dws)
+ {
+ 	struct spi_controller *host;
+@@ -941,8 +945,10 @@ int dw_spi_add_host(struct device *dev, struct dw_spi *dws)
+ 		host->set_cs = dw_spi_set_cs;
+ 	host->transfer_one = dw_spi_transfer_one;
+ 	host->handle_err = dw_spi_handle_err;
+-	if (dws->mem_ops.exec_op)
++	if (dws->mem_ops.exec_op) {
+ 		host->mem_ops = &dws->mem_ops;
++		host->mem_caps = &dw_spi_mem_caps;
++	}
+ 	host->max_speed_hz = dws->max_freq;
+ 	host->flags = SPI_CONTROLLER_GPIO_SS;
+ 	host->auto_runtime_pm = true;
 
-> +
-> +        ports:
-> +          required:
-> +            - port@0
-> +            - port@1
-> +            - port@2
-> +
->          rockchip,vo1-grf: false
->          rockchip,vop-grf: false
-> -        rockchip,pmu: false
->  
-> +      required:
-> +        - rockchip,grf
-> +        - rockchip,pmu
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3588-vop
-> +    then:
-> +      properties:
->          clocks:
-> -          maxItems: 5
-> +          minItems: 7
-> +
->          clock-names:
-> -          maxItems: 5
-> +          minItems: 7
-> +
-> +        interrupts:
-> +          minItems: 1
+-- 
+2.47.0
 
-min is already 1, so drop.
-
-> +          maxItems: 1
-> +
-> +        interrupt-names: false
->  
->          ports:
->            required:
->              - port@0
->              - port@1
->              - port@2
-> +            - port@3
-> +
-> +      required:
-> +        - rockchip,grf
-> +        - rockchip,vo1-grf
-> +        - rockchip,vop-grf
-> +        - rockchip,pmu
->  
->  additionalProperties: false
->  
-> @@ -184,6 +256,7 @@ examples:
->                                "dclk_vp1",
->                                "dclk_vp2";
->                  power-domains = <&power RK3568_PD_VO>;
-> +                rockchip,grf = <&grf>;
->                  iommus = <&vop_mmu>;
->                  vop_out: ports {
->                      #address-cells = <1>;
-> -- 
-> 2.34.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
