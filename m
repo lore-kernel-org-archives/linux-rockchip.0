@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81146E7719A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jan 2025 11:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F503E7719A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jan 2025 11:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5wzySRwqK43x9ga7ur+M7JsUyZ0yuK1o5lgtUR9iUCw=; b=SxplbtSIHozVON
-	Wp8S25wynqhVDl47y4PMRa8eUye/ClWoLckOVupy+k18tKSGXtNJL/NXX+4sljeauV2M82EmtBYzf
-	CPl2ohrePnEMqXUVItCrKFs43o0+6I9E3MVkNnMcCv86cXqu+WBTafGfZIiUG66li/xyB+ukaMdeA
-	sFCpPZRRzfnRKc5R0dH4zTvk1cI4xijZzCPsWglMlEznpL08VTEVb1BZAaVXoZQN2hdbmtI+X6g8Q
-	9gsm507oivsseityRZdL3I5fdP/z0i1/WFxZowaBeDYGMRSARuxKUD/i9S+KjVqyg8LETw/t/cNO6
-	giSWK8/K+qL0k4wjpyaQ==;
+	List-Owner; bh=7LqLMQ0IR8uerlNkR5n5P9j3Dr4UfDPYGl+yioHTkRY=; b=k0Fu7X9AYesYCW
+	ZNkWIKk77sLd8/72erzDN17CMpP5Bt4/OZW5SFFMx2Q4BMmvP0UrGN6MFn2LW19IPsEw/awJzVo51
+	14Xg/u0rU7tWFZ1kTjjDylunbA8DWBxOEO23xJxV0JDdZWRPlKD6x/hTrE/EdnsnMu+TQE8/e7xtB
+	UlWZXHrfh2q5UPcI2Wt8m6Gwpk1DbrWcxKp4e1/2YFUDeyn9ou1GAtKrN5IeOFlrLdBldCq/XHaeP
+	j14aWzXHrPwpLbT+Tovas/XGNcQF/zswezWERoAjKoiM4Nbb6PAafS8ueMzF3juPp5hzFvUEk2AZB
+	N5mntOyt93kWsaDFRYjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWZgV-00000000h3J-42yE;
-	Sat, 11 Jan 2025 11:29:43 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1tWZhh-00000000hFo-4Ay6;
+	Sat, 11 Jan 2025 11:30:57 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWZe4-00000000gJQ-3UOP;
-	Sat, 11 Jan 2025 11:27:14 +0000
+	id 1tWZe7-00000000gKc-1z4H;
+	Sat, 11 Jan 2025 11:27:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=Aj3p5
-	YEkL2Je1AnEdaQQ2QACpF4/wWQgDcT/1GT+BA4=; b=CJOzYETYG3LC/2YInBYoE
-	P2BSq4DIu00k+ROn95QVKBfCkr+8oPS+VcCidky/dJWBbIy8cnWOA6soenLU8Lz7
-	YGMkGNYOOI366ILeJ2M5csx6mpxLgomESe4rTxkttesMNLTEUWp5M4W20XRF1U7j
-	qzIueBv1ggEbYuU04xFLsg=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=zlwQ/
+	zugAITGUW6CmnYVDBT+3S9dhbJfYNreL5Qv5dI=; b=fsdG2PByApZZQUXBMDY9X
+	dy6nnFlfqOysrfy4pRRSjgvx3FcPhrcLhB0Sm7yGzmUnaN5IT7t1337mmi9/Rshd
+	5+6Iw+T981vC0uZ06GvkQWd/0XqTKzz9Qc/8lekvTubxAS3+5QVCg/rSUNPjxC3W
+	F1D0qMJbsKmqVwE2Zar8dw=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wDn36JYVYJnnIeyFQ--.42561S4;
-	Sat, 11 Jan 2025 19:26:26 +0800 (CST)
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wDn36JYVYJnnIeyFQ--.42561S6;
+	Sat, 11 Jan 2025 19:26:29 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -50,23 +50,23 @@ Cc: hjc@rock-chips.com,
 	robh@kernel.org,
 	sebastian.reichel@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v11 02/11] drm/rockchip: vop2: Rename TRANSFORM_OFFSET to TRANSFORM_OFFS
-Date: Sat, 11 Jan 2025 19:26:00 +0800
-Message-ID: <20250111112614.432247-3-andyshrk@163.com>
+Subject: [PATCH v11 04/11] drm/rockchip: vop2: Merge vop2_cluster/esmart_init function
+Date: Sat, 11 Jan 2025 19:26:02 +0800
+Message-ID: <20250111112614.432247-5-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250111112614.432247-1-andyshrk@163.com>
 References: <20250111112614.432247-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn36JYVYJnnIeyFQ--.42561S4
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCrWxKw4rJw15Jr18uw17Wrg_yoWrCr18pr
-	W3JayDWF4UKFs2gFWkAr15AF48Xan2y3yfGa9xJrnIqFyaga4DWwnFka4UJr4Uta4I9FZ2
-	q3saqrW7urW3tr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jU2-5UUUUU=
+X-CM-TRANSID: _____wDn36JYVYJnnIeyFQ--.42561S6
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWw4UKF17CrWktr18AFykAFb_yoW5Xr1DpF
+	W3Jr43Xr4UGFsF9r4kJrn8uF1Fkr12yaykAa48KwnIkwnrKF9FkFn5JF10yr90krWvkFy2
+	yFs7K3y3ua429r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UJCzNUUUUU=
 X-Originating-IP: [103.29.142.67]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gzRXmeCTmhtaAABsW
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gbRXmeCTmht0gAAsn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250111_032713_263836_8DAF5B5D 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20250111_032715_921715_D9289BAB 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,79 +85,90 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This help avoid "exceeds 100 columns" warning from checkpatch
+Now these two function share the same logic, the can
+be merged as one.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
 
 (no changes since v1)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 4 ++--
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 42 +++++---------------
+ 1 file changed, 11 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 03248ac4ba4a..5ee8a7b86d0b 100644
+index f7e2df1431b0..29a81ff152f3 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1517,7 +1517,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
- 		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
--		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, transform_offset);
-+		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, transform_offset);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_OFFSET, ((src->x1 >> 16) | src->y1));
- 		vop2_win_write(win, VOP2_WIN_AFBC_DSP_OFFSET, (dest->x1 | (dest->y1 << 16)));
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_VIR_WIDTH, stride);
-@@ -1528,7 +1528,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	} else {
- 		if (vop2_cluster_window(win)) {
- 			vop2_win_write(win, VOP2_WIN_AFBC_ENABLE, 0);
--			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, 0);
-+			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, 0);
- 		}
+@@ -2398,18 +2398,18 @@ static int vop2_find_rgb_encoder(struct vop2 *vop2)
+ 	return -ENOENT;
+ }
  
- 		vop2_win_write(win, VOP2_WIN_YRGB_VIR, DIV_ROUND_UP(fb->pitches[0], 4));
-@@ -3420,7 +3420,7 @@ static const struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_AFBC_TILE_NUM] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_VIR_WIDTH, 16, 31),
- 	[VOP2_WIN_AFBC_PIC_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_PIC_OFFSET, 0, 31),
- 	[VOP2_WIN_AFBC_DSP_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_DSP_OFFSET, 0, 31),
--	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET, 0, 31),
-+	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS, 0, 31),
- 	[VOP2_WIN_AFBC_ROTATE_90] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 0, 0),
- 	[VOP2_WIN_AFBC_ROTATE_270] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 1, 1),
- 	[VOP2_WIN_XMIRROR] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 2, 2),
-@@ -3519,7 +3519,7 @@ static const struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_AFBC_PIC_OFFSET] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_PIC_SIZE] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_DSP_OFFSET] = { .reg = 0xffffffff },
--	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = { .reg = 0xffffffff },
-+	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_HDR_PTR] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_HALF_BLOCK_EN] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_ROTATE_270] = { .reg = 0xffffffff },
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 29cc7fb8f6d8..8510140b0869 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -118,7 +118,7 @@ enum vop2_win_regs {
- 	VOP2_WIN_AFBC_PIC_OFFSET,
- 	VOP2_WIN_AFBC_PIC_SIZE,
- 	VOP2_WIN_AFBC_DSP_OFFSET,
--	VOP2_WIN_AFBC_TRANSFORM_OFFSET,
-+	VOP2_WIN_AFBC_TRANSFORM_OFFS,
- 	VOP2_WIN_AFBC_HDR_PTR,
- 	VOP2_WIN_AFBC_HALF_BLOCK_EN,
- 	VOP2_WIN_AFBC_ROTATE_270,
-@@ -335,7 +335,7 @@ enum dst_factor_mode {
- #define RK3568_CLUSTER_WIN_DSP_INFO		0x24
- #define RK3568_CLUSTER_WIN_DSP_ST		0x28
- #define RK3568_CLUSTER_WIN_SCL_FACTOR_YRGB	0x30
--#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET	0x3C
-+#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS	0x3C
- #define RK3568_CLUSTER_WIN_AFBCD_OUTPUT_CTRL	0x50
- #define RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE	0x54
- #define RK3568_CLUSTER_WIN_AFBCD_HDR_PTR	0x58
+-static int vop2_cluster_init(struct vop2_win *win)
++static int vop2_regmap_init(struct vop2_win *win, const struct reg_field *regs,
++			    int nr_regs)
+ {
+ 	struct vop2 *vop2 = win->vop2;
+ 	int i;
+ 
+-	for (i = 0; i < vop2->data->nr_cluster_regs; i++) {
++	for (i = 0; i < nr_regs; i++) {
+ 		const struct reg_field field = {
+-			.reg = (vop2->data->cluster_reg[i].reg != 0xffffffff) ?
+-				vop2->data->cluster_reg[i].reg + win->offset :
+-				vop2->data->cluster_reg[i].reg,
+-			.lsb = vop2->data->cluster_reg[i].lsb,
+-			.msb = vop2->data->cluster_reg[i].msb
++			.reg = (regs[i].reg != 0xffffffff) ?
++				regs[i].reg + win->offset : regs[i].reg,
++			.lsb = regs[i].lsb,
++			.msb = regs[i].msb
+ 		};
+ 
+ 		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+@@ -2420,28 +2420,6 @@ static int vop2_cluster_init(struct vop2_win *win)
+ 	return 0;
+ };
+ 
+-static int vop2_esmart_init(struct vop2_win *win)
+-{
+-	struct vop2 *vop2 = win->vop2;
+-	int i;
+-
+-	for (i = 0; i < vop2->data->nr_smart_regs; i++) {
+-		const struct reg_field field = {
+-			.reg = (vop2->data->smart_reg[i].reg != 0xffffffff) ?
+-				vop2->data->smart_reg[i].reg + win->offset :
+-				vop2->data->smart_reg[i].reg,
+-			.lsb = vop2->data->smart_reg[i].lsb,
+-			.msb = vop2->data->smart_reg[i].msb
+-		};
+-
+-		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+-		if (IS_ERR(win->reg[i]))
+-			return PTR_ERR(win->reg[i]);
+-	}
+-
+-	return 0;
+-}
+-
+ static int vop2_win_init(struct vop2 *vop2)
+ {
+ 	const struct vop2_data *vop2_data = vop2->data;
+@@ -2458,9 +2436,11 @@ static int vop2_win_init(struct vop2 *vop2)
+ 		win->win_id = i;
+ 		win->vop2 = vop2;
+ 		if (vop2_cluster_window(win))
+-			ret = vop2_cluster_init(win);
++			ret = vop2_regmap_init(win, vop2->data->cluster_reg,
++					       vop2->data->nr_cluster_regs);
+ 		else
+-			ret = vop2_esmart_init(win);
++			ret = vop2_regmap_init(win, vop2->data->smart_reg,
++					       vop2->data->nr_cluster_regs);
+ 		if (ret)
+ 			return ret;
+ 	}
 -- 
 2.34.1
 
