@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BF8E7719A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jan 2025 10:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 670D1E7719A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jan 2025 11:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y027C8uxKQCqYDzaKeu2LS1qv9qk60wvumm19q0AXjE=; b=C6c9PgChen1oyG
-	dWr4clFU8r2bBm+6HhANt/dk31c5lnnWuhhWMZuWRnNPnhjTJktHkOiPTeOxx04oUw/D7QsmbHEue
-	j74mdu+mMzuyQbtH4Oc1kUsrxNOJYtxCpJKzGQrRelaZGMPJMCeVRliob0t94RLIcviILHOE42Lya
-	ibWQHK1hQyh+rri62vdg0Vgt2uo+wPRKONGcw/iJ9aBZapTkb4k/pIOzZC1KPrnul5GdKqeEBywW1
-	3yU8kE14asmGk4RooTe+gs3cD9UGF8H0vIXbl+PN3+kECDAlfFs7SQ98Qs5ACGYI/qMrcqrTI4tcA
-	lduDW2Ex0EQrd+a7n8iQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Z39xWCU41QWxHoEi+PkPoyZ90bHnKk/PnXz8SdYSC0I=; b=k5KghnTgHcc7I6
+	s+D8aoNSsUfdDl3t43A/DvcboucdNgLsCuIepH3hBs1Cyn9OG3OesdYEyh22J8FfaqgiWUrQ4EF9M
+	TSjh50PmYjHfxTdRWmag6SgNH/TDJx6LuCG8Wo7SNRpk1EAocInv4DCHPNazqPXwI1KaYpFogaVg0
+	wsQyZxT0FXCqKdGruGAoPB9IxtWwcgQUVBgZ8S5hKfu8kYgCAQgQcZ/KyTcdXIcLzdlzfCsAOjBuF
+	FGFtgC0xZfaCF7GEiUUnYEQZB8noYcEjOvt48LFjuZ2cRLbv3vGA/l5InbbVdak5jJ9oY0yiJnj1+
+	3/5os8jHrWe8MbuXVNKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWYky-00000000c9b-1t5w;
-	Sat, 11 Jan 2025 10:30:16 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1tWZfJ-00000000giL-2vxl;
+	Sat, 11 Jan 2025 11:28:29 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tWYjj-00000000byX-2ViG;
-	Sat, 11 Jan 2025 10:29:01 +0000
+	id 1tWZe4-00000000gJ6-1DEE;
+	Sat, 11 Jan 2025 11:27:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=XqPooFU4lDQIMmbWwzTdUBSgmvqEZt0ZN26iMC58hk8=; b=B
-	uhGhh8cdUvNxwa/3wFTY/H9m8dUUgSBofmYJ6OjdDNKDT7b7ByXbZYnKv18Um3sc
-	wjGaVumw+l0jzvLYfXivhI1Mw/eURNIuoRuTffCTbcqGRtz74E5A62+XzAEmTl2Y
-	Neo/XDuQYm6YigxxE8VZVxB3K2Aec4rvGQIwiitQEU=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-104 (Coremail) ; Sat, 11 Jan 2025 18:28:26 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Sat, 11 Jan 2025 18:28:26 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Damon Ding" <damon.ding@rock-chips.com>
-Subject: Re:[PATCH v5 20/20] arm64: dts: rockchip: Enable eDP0 display on
- RK3588S EVB1 board
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250109032725.1102465-21-damon.ding@rock-chips.com>
-References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
- <20250109032725.1102465-21-damon.ding@rock-chips.com>
-X-NTES-SC: AL_Qu2YBPmSvksr4COfY+lS7TNL56tbLqrJwL5gnvMwRNstqDDI/jkhRUZdM2DZ7MGY4ITc56TKdO2qxwviwKtO
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=axwj1
+	a7CY9td4ZxrvElu+4T1mZkP2eLMBnmoeanF1YY=; b=IZ8Bp6y97t05YdKAo3FkW
+	8+NHlaWeD7Ye1emzbe8zwYf6Yx0hAfnznTOyq2TWryIFY63IVNgmj0DyxmQ8fUZj
+	stV6VSvL2Ju0Q3uDt7jQ1HzTCG30WT1t4BmT3+vZRbo7Pg1lixEfTQe0X16F465t
+	iE1GJW5lGm7dvsN/cCCF2U=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wDn36JYVYJnnIeyFQ--.42561S2;
+	Sat, 11 Jan 2025 19:26:20 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	robh@kernel.org,
+	sebastian.reichel@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v11 00/11] VOP Support for rk3576
+Date: Sat, 11 Jan 2025 19:25:58 +0800
+Message-ID: <20250111112614.432247-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-ID: <8927876.291e.19454e86e8f.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aCgvCgDnD1XKR4Jn4k1VAA--.23943W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBjRXmeCQygHywAEs5
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-CM-TRANSID: _____wDn36JYVYJnnIeyFQ--.42561S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGw1xuryUGryxXrW3Zr4xZwb_yoW5uryrp3
+	95C3s8XrWxGF1jqr4kJw1DCr1SqanIyFWfK34fKw13Ja4qyFyIkrWa9r1Yvr9xX3W8Zr4j
+	9F4Sya1UKanFvF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UkrchUUUUU=
+X-Originating-IP: [103.29.142.67]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gzRXmeCTmhtaAAAsX
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250111_022900_047298_9AF89392 
-X-CRM114-Status: UNSURE (   6.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250111_032712_718585_27EF84BC 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,135 +76,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Damon,
-
-At 2025-01-09 11:27:25, "Damon Ding" <damon.ding@rock-chips.com> wrote:
->Add the necessary DT changes to enable eDP0 on RK3588S EVB1 board:
->- Set pinctrl of pwm12 for backlight
->- Enable edp0/hdptxphy0/vp2
->- Add aux-bus/panel nodes
->
->Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->
->---
->
->Changes in v2:
->- Remove brightness-levels and default-brightness-level properties in
->  backlight node.
->- Add the detail DT changes to commit message.
->
->Changes in v3:
->- Use aux-bus instead of platform bus for edp-panel.
->
->Changes in v4:
->- Add comments related to the use of panel compatible "lg,lp079qx1-sp0v"
->  in the commit message.
->
->Changes in v5:
->- Use "edp-panel" instead of "lg,lp079qx1-sp0v"
->- Remove unnecessary comments in commit message
->- Assign the parent of DCLK_VOP2_SRC to PLL_V0PLL
->---
-> .../boot/dts/rockchip/rk3588s-evb1-v10.dts    | 54 +++++++++++++++++++
-> 1 file changed, 54 insertions(+)
->
->diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->index bc4077575beb..a8c151b41e21 100644
->--- a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->+++ b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
->@@ -9,6 +9,7 @@
-> #include <dt-bindings/gpio/gpio.h>
-> #include <dt-bindings/input/input.h>
-> #include <dt-bindings/pinctrl/rockchip.h>
->+#include <dt-bindings/soc/rockchip,vop2.h>
-> #include <dt-bindings/usb/pd.h>
-> #include "rk3588s.dtsi"
-> 
->@@ -238,6 +239,41 @@ &combphy2_psu {
-> 	status = "okay";
-> };
-> 
->+&edp0 {
->+	force-hpd;
->+	status = "okay";
->+
->+	aux-bus {
->+		panel {
->+			compatible = "edp-panel";
->+			backlight = <&backlight>;
->+			power-supply = <&vcc3v3_lcd_edp>;
->+
->+			port {
->+				panel_in_edp: endpoint {
->+					remote-endpoint = <&edp_out_panel>;
->+				};
->+			};
->+		};
->+	};
->+};
->+
->+&edp0_in {
->+	edp0_in_vp2: endpoint {
->+		remote-endpoint = <&vp2_out_edp0>;
->+	};
->+};
->+
->+&edp0_out {
->+	edp_out_panel: endpoint {
->+		remote-endpoint = <&panel_in_edp>;
->+	};
->+};
->+
->+&hdptxphy0 {
->+	status = "okay";
->+};
->+
-> &i2c3 {
-> 	status = "okay";
-> 
->@@ -399,6 +435,7 @@ usbc0_int: usbc0-int {
-> };
-> 
-> &pwm12 {
->+	pinctrl-0 = <&pwm12m1_pins>;
-> 	status = "okay";
-> };
-> 
->@@ -1168,3 +1205,20 @@ usbdp_phy0_dp_altmode_mux: endpoint@1 {
-> 		};
-> 	};
-> };
->+
->+&vop_mmu {
->+	status = "okay";
->+};
->+
->+&vop {
->+	assigned-clocks = <&cru DCLK_VOP2_SRC>;
->+	assigned-clock-parents = <&cru PLL_V0PLL>;
-
-It's necessary to explain why we need to  assign V0PLL for DCLK_VOP2_SRC in commit message.
+From: Andy Yan <andy.yan@rock-chips.com>
 
 
->+	status = "okay";
->+};
->+
->+&vp2 {
->+	vp2_out_edp0: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
->+		reg = <ROCKCHIP_VOP2_EP_EDP0>;
->+		remote-endpoint = <&edp0_in_vp2>;
->+	};
->+};
->-- 
->2.34.1
->
+Patches that have already been merged in drm-misc-next are dropped.
+
+PATCH 1~9 are preparations for rk3576 support
+PATCH 10~11 are real support for rk376
+
+I test it with a 1080P/4K HDMI output with modetest and weston
+output.
+
+If there are some one want to have a try, I have a tree based on
+Linux 6.13-rc6 here[0]
+
+[0]https://github.com/andyshrk/linux/tree/rk3576-vop2-upstream-v10
+
+Links to V10:
+https://lore.kernel.org/linux-rockchip/20250110100832.27551-1-andyshrk@163.com/
+
+Changes in v11:
+- Remove redundant min/maxItems constraint
+
+Changes in v10:
+- Move interrupt-names back to top level
+- Add constraint of interrupts for all platform
+- Add constraint for all grf phandles
+- Reorder some properties
+
+Changes in v9:
+- Drop 'vop-' prefix of interrupt-names.
+- Add blank line between DT properties
+- Remove list interrupt-names in top level
+- Drop 'vop-' prefix of interrupt-names.
+
+Changes in v8:
+- Remove redundant blank line before drm_bus_format_enum_list
+- Add a blank line before DRM_ENUM_NAME_FN
+- Fix dt_binding_check errors
+- ordered by soc name
+- Link to the previous version:
+  https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+
+Changes in v7:
+- Fix rk3588 dp+dsi maxclk verification
+
+Changes in v6:
+- Add a blank line after hardware version check code
+-  More specific explanation about the AXI_BUS_ID register bit of
+   cluster window.
+
+Changes in v5:
+- Add axi id configuration
+- Remove the non-existent CBCR scale register.
+
+Changes in v4:
+- Typo fix: selet->select
+- describe constraint SOC by SOC, as interrupts of rk3576 is very
+  different from others
+- Drop Krzysztof's Reviewed-by, as this version changed a lot.
+
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+- Add hardware version check
+- Add comments for why we should treat rk3566 with special care.
+- ordered by soc name
+- Add description for newly added interrupt
+- Share the alpha setup function with rk3568
+- recoder the code block by soc
+
+Changes in v2:
+- Add platform specific callback
+- Introduce vop hardware version
+- Add dt bindings
+- Add platform specific callback
+
+Andy Yan (10):
+  drm/rockchip: vop2: Rename TRANSFORM_OFFSET to TRANSFORM_OFFS
+  drm/rockchip: vop2: Add platform specific callback
+  drm/rockchip: vop2: Merge vop2_cluster/esmart_init function
+  drm/rockchip: vop2: Support for different layer select configuration
+    between VPs
+  drm/rockchip: vop2: Introduce vop hardware version
+  drm/rockchip: vop2: Register the primary plane and overlay plane
+    separately
+  drm/rockchip: vop2: Set plane possible crtcs by possible vp mask
+  drm/rockchip: vop2: Add uv swap for cluster window
+  dt-bindings: display: vop2: Add rk3576 support
+  drm/rockchip: vop2: Add support for rk3576
+
+Heiko Stuebner (1):
+  drm/rockchip: vop2: use devm_regmap_field_alloc for cluster-regs
+
+ .../display/rockchip/rockchip-vop2.yaml       |   97 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 1473 +++-----------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  275 ++-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 1798 ++++++++++++++++-
+ 4 files changed, 2377 insertions(+), 1266 deletions(-)
+
+-- 
+2.34.1
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
