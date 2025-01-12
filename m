@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A37E77188
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jan 2025 22:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F4CE7719F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jan 2025 22:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AfIxUFXhM7Lq5MYmLv+MyGcBckFkLt+t6EUbpUL+1BE=; b=CHUbOdX+JPD53m
-	T2rZlj+zXmzc997szc2csqBsKp+3o6OWrXxjVa01FOsrlT2yHAQbEmm+6i13nRMYkcBS5omWWximK
-	w26T21M4aJcgrJ9F2L+7l7Nd9nG1+W8fBYzGSUkHyYMuVxPkmo/5SsL8uvtFOStGLRCc2rZR/hkMD
-	60pGfTCpV/tK5L1UviyJR/aha4x3/WwWdTTbUASqBPRQUnbplwRNfp+vky67uk6jhZfeld5Inp2bG
-	VCiwFZE87057Nup8HqXY739IVlYEm7Tucv29SLDOAhVOWvJGzgIOeNZl9CJyj+sjaw3P5Lyf8U5WP
-	tVxQS0YVM/Kg2wiiDVFg==;
+	List-Owner; bh=jzVHt1AbqIOD6qxXt2FYv0k3VDwxp4JGqHjrytFspGo=; b=vuMQqMSBfLs6ga
+	pPO23fIhRQGvk2CmOgVcGJsi34sbZB8F1ckQYcRXcmGE2L4teDdj06GnpclG8RIjznTrmwDAbYi2T
+	+5mp8CzvXgfAo2H6oKwgUoOyop58MuueDimUP8WL408S3nE86Lhp6PN5NGtME2AxdyPLZwvZHsr1Y
+	F5CrDR1Gs2rnSjU0MUcHPiE3wjvcvEBNHkICca63ZgcjLGrB7JG8s119RfAh/Fhtboopio4LvLJc8
+	EJ4IyP+0E/5GJBsO4ORHKEZJxaoM075MmGHoNvOzpVYAqcVszyFwuXA9UWwCb7W7T329vzFbhCKl5
+	6jr891RbRMTAn3keDORw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tX6Rl-00000003XUm-05OZ;
-	Sun, 12 Jan 2025 22:28:41 +0000
+	id 1tX6hz-00000003Yy5-3CDJ;
+	Sun, 12 Jan 2025 22:45:27 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tX6QT-00000003XMx-3rWI;
-	Sun, 12 Jan 2025 22:27:23 +0000
+	id 1tX6gi-00000003Yok-3xfk;
+	Sun, 12 Jan 2025 22:44:10 +0000
 Received: from [192.168.0.160] (unknown [222.77.7.241])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 04B107817F;
-	Mon, 13 Jan 2025 06:27:17 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 04B107817F
+	by classfun.cn (Postfix) with ESMTPSA id 46D9A7817F;
+	Mon, 13 Jan 2025 06:44:06 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 46D9A7817F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1736720839;
-	bh=6Gbp/iAkE0WvSs9YPY1BfcKbb4Jn7r1/Bj7q1lILlsI=;
+	s=default; t=1736721846;
+	bh=jEPOAcNs906aUJ+b8CTcLrheXhGyiJcFCUN6p22264g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xov2FoAnMFPjBO2RmvVEdjjBXfTo4+WUl9V01wGOrMlaIKOnGaFFV+hpGtifwy5EW
-	 5X9GK3c7nkxYj0C/Pcp9BO5Jrod2ComUxDR47q66NvVsuEU5h9WBk1wfwUQB08s/lB
-	 zSHbhN5dwz9HHKXEfz+Z7dx56wF+Dt3WgLr0XmyA=
-Message-ID: <526e0c19-6495-4dcf-bf6b-b5bd62a7a631@classfun.cn>
-Date: Mon, 13 Jan 2025 06:27:25 +0800
+	b=oru766WfWGH5XN6eqNNkbvUu9lYUCvdL3pjOhugR8Iyv4zmuLrepk3Ci0Uv+wdjfx
+	 f5rsXluJ8lu2hB79XNiiNMrX5YDWofxVArSzdUFj1LeeTEJnv7NKG9xJ3zq7rIeBOG
+	 iQ0iHhMR8/YcQ396LmYiMoO2narHOeizLMqUlRVk=
+Message-ID: <9a8237c4-1ca2-4cce-b836-a3394692a144@classfun.cn>
+Date: Mon, 13 Jan 2025 06:44:14 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/3] Add support for Ariaboard Photonicat RK3568
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Junhao Xie <bigfoot@classfun.cn>
-References: <20250112073344.1976411-1-bigfoot@classfun.cn>
- <c520a0d829bbe26b9802f57f94f3957c@manjaro.org>
+Subject: Re: [PATCH v6 3/3] arm64: dts: rockchip: add dts for Ariaboard
+ Photonicat RK3568
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Junhao Xie <bigfoot@classfun.cn>
+References: <20250112073344.1976411-4-bigfoot@classfun.cn>
+ <20250112082036.19922-1-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <c520a0d829bbe26b9802f57f94f3957c@manjaro.org>
+In-Reply-To: <20250112082036.19922-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250112_142722_258665_B6CE6BB8 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20250112_144409_266529_BB985D41 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,63 +67,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNS8xLzEyIDE2OjUwLCBEcmFnYW4gU2ltaWMgd3JvdGU6Cj4gSGVsbG8gSnVuaGFvLAo+
-IAo+IE9uIDIwMjUtMDEtMTIgMDg6MzMsIEp1bmhhbyBYaWUgd3JvdGU6Cj4+IEFkZCBkdHMgZm9y
-IEFyaWFib2FyZCBQaG90b25pY2F0IFJLMzU2OC4KPj4KPj4gVGhpcyBzZXJpZXMgYnJpbmcgc3Vw
-cG9ydCBmb3I6Cj4+ICogRGVidWcgVUFSVAo+PiAqIFNESU8gUUNBOTM3NyBXaUZpIGFuZCBCbHVl
-dG9vdGgKPj4gKiBNLjIgRS1LZXkgUENJZSBXaUZpIGFuZCBCbHVldG9vdGgKPj4gKiBNLjIgQi1L
-ZXkgVVNCIE1vZGVtIFdXQU4KPj4gKiBFdGhlcm5ldCBXQU4gUG9ydAo+PiAqIE1pY3JvU0QgQ2Fy
-ZCBzbG90Cj4+ICogZU1NQwo+PiAqIEhETUkgT3V0cHV0Cj4+ICogTWFsaSBHUFUKPj4gKiBVU0Ig
-VHlwZS1BCj4+Cj4+IENoYW5nZWQgZnJvbSB2MToKPj4gLSBtb3ZlIHNvbWUgZ2VuZXJhbCBub2Rl
-cyAoZmlybXdhcmUsIHJhbW9vcHMsIHJlYm9vdC1tb2RlKSB0byByazM1NnguZHRzaQo+IAo+IFRo
-aXMgZW50cnkgZnJvbSB0aGUgY2hhbmdlbG9nIGNhdWdodCBteSBhdHRlbnRpb24sIHNvIEkgdHJp
-ZWQKPiB0byBmaW5kIG91dCB3aGF0IGV4YWN0bHkgaGFwcGVuZWQgYmFjayB0aGVuLsKgIFRob3Vn
-aCwgYWZ0ZXIgZ29pbmcKPiB0aHJvdWdoIHRoZSBtYWlsaW5nIGxpc3QgYXJjaGl2ZSwgSSBzdGls
-bCBkb24ndCBzZWUgd2hlcmUgdGhlCj4gYXMtZGVzY3JpYmVkIGNoYW5nZSB0b29rIHBsYWNlLCBz
-byBwZXJoYXBzIHRoaXMgY2hhbmdlbG9nIGVudHJ5Cj4gbmVlZHMgYWRqdXN0aW5nLgoKQ2h1a3Vu
-IFBhbiBzdWdnZXN0ZWQgbW92aW5nIHRoZXNlIG5vZGVzIHRvIHJrMzU2eC5kdHNpLCBidXQgSSBo
-YXZlIG5vdCBkb25lCnRoYXQgeWV0IGFuZCBzaW1wbHkgZGVsZXRlZCB0aGVtLiBJIHdpbGwgZml4
-IHRoZSBjaGFuZ2Vsb2cuCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvMjAyNDA5MDUwMzQw
-MDkuMjgxMjQtMS1hbWFkZXVzQGptdS5lZHUuY24vCgotIHJlbW92ZSBzb21lIGdlbmVyYWwgbm9k
-ZXMgKGZpcm13YXJlLCByYW1vb3BzLCByZWJvb3QtbW9kZSkKCj4gCj4+IC0gZ21hYzEgY2hhbmdl
-IHRvIHBoeS1tb2RlIHJnbWlpLWlkCj4+IC0gY29ycmVjdGVkIHNvbWUgcmVndWxhdG9yIHRvIGJl
-IGNsb3NlciB0byBzY2hlbWF0aWNzCj4+IC0gcmVuYW1lIHJrMzU2OC1hcmlhYm9hcmQtcGhvdG9u
-aWNhdC5kdHMgdG8gcmszNTY4LXBob3RvbmljYXQuZHRzCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwu
-b3JnL2xrbWwvMjAyNDA5MDQxMTE0NTYuODcwODktMS1iaWdmb290QGNsYXNzZnVuLmNuLwo+Pgo+
-PiBDaGFuZ2VkIGZyb20gdjI6Cj4+IC0gcmVtb3ZlIHVudXNlZCBoZWFkZXJzCj4+IC0gY29ycmVj
-dGVkIHNvbWUgcmVndWxhdG9yIHRvIGJlIGNsb3NlciB0byBzY2hlbWF0aWNzCj4+IC0gcmVtb3Zl
-IHVzYl9ob3N0MV9vaGNpLCB1c2JfaG9zdDFfZWhjaSwgdXNiMnBoeTFfaG9zdCB0aGF0IGhhdmUg
-bm8gY29ubmVjdGlvbgo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzIwMjQwOTA2MDQ1
-NzA2LjEwMDQ4MTMtMS1iaWdmb290QGNsYXNzZnVuLmNuLwo+Pgo+PiBDaGFuZ2VkIGZyb20gdjM6
-Cj4+IC0gY29ycmVjdGVkIHNvbWUgcmVndWxhdG9yIHRvIGJlIGNsb3NlciB0byBzY2hlbWF0aWNz
-Cj4+IC0gY2hhbmdlZCB0byB1c2luZyBjbGszMmtfb3V0MSBpbiB4aW4zMmsKPj4gaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvbGttbC8yMDI0MDkxMTEyMjgwOS4xNzg5Nzc4LTItYmlnZm9vdEBjbGFz
-c2Z1bi5jbi8KPj4KPj4gQ2hhbmdlZCBmcm9tIHY0Ogo+PiAtIGNvcnJlY3RlZCBzb21lIHJlZ3Vs
-YXRvciB0byBiZSBjbG9zZXIgdG8gc2NoZW1hdGljcwo+PiAtIGNvcnJlY3RlZCBzb21lIGxhYmVs
-IHRvIG1hdGNoIG5vZGUgbmFtZQo+PiAtIHVzZSByZXNldHMgcHJvcHMgaW4gcGh5IG5vZGUgaW5z
-dGVhZCBkZXByZWNhdGVkIHNucHMscmVzZXQtZ3Bpbwo+PiBodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9sa21sLzIwMjQwOTE0MTQ1NTQ5Ljg3OTkzNi0xLWJpZ2Zvb3RAY2xhc3NmdW4uY24vCj4+Cj4+
-IENoYW5nZWQgZnJvbSB2NToKPj4gLSByZXNvcnQgcmVndWxhdG9yIG5vZGVzCj4+IC0gcmVtb3Zl
-IGRyX21vZGUgZnJvbSB1c2JfaG9zdDFfeGhjaQo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9s
-a21sLzIwMjQxMTA4MDMxODQ3LjcwMDYwNi0xLWJpZ2Zvb3RAY2xhc3NmdW4uY24vCj4+Cj4+IEp1
-bmhhbyBYaWUgKDMpOgo+PiDCoCBkdC1iaW5kaW5nczogdmVuZG9yLXByZWZpeGVzOiBBZGQgcHJl
-Zml4IGZvciBBcmlhYm9hcmQKPj4gwqAgZHQtYmluZGluZ3M6IGFybTogcm9ja2NoaXA6IEFkZCBB
-cmlhYm9hcmQgUGhvdG9uaWNhdCBSSzM1NjgKPj4gwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFk
-ZCBkdHMgZm9yIEFyaWFib2FyZCBQaG90b25pY2F0IFJLMzU2OAo+Pgo+PiDCoC4uLi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1swqDCoMKgwqAgfMKgwqAgNSArCj4+IMKgLi4u
-L2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWzCoCB8wqDCoCAyICsKPj4g
-wqBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlwqDCoMKgwqDCoMKgwqDCoCB8
-wqDCoCAxICsKPj4gwqAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXBob3RvbmljYXQuZHRz
-wqDCoCB8IDU5OSArKysrKysrKysrKysrKysrKysKPj4gwqA0IGZpbGVzIGNoYW5nZWQsIDYwNyBp
-bnNlcnRpb25zKCspCj4+IMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTY4LXBob3RvbmljYXQuZHRzCgpUaGFua3MgZm9yIHlvdXIgcmV2aWV3LCBJ
-IHdpbGwgZml4IGFsbCBwcm9ibGVtcyBpbiBuZXh0IHZlcnNpb24hCgpCZXN0IHJlZ2FyZHMsCkp1
-bmhhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On 2025/1/12 16:20, Chukun Pan wrote:
+> Hi,
+>> +	/* pi6c pcie clock generator */
+>> +	vcc3v3_pi6c: regulator-vcc3v3-pi6c {
+>> +		compatible = "regulator-fixed";
+>> +		enable-active-high;
+>> +		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+> 
+> Although both gpio and gpios can be used here, I tend 
+> to use gpio to keep it consistent with other parts.
+> (vcc3v3_sd, vcc3v4_rf, vcc5v0_usb30_otg0 ...)
+
+Yes, I overlooked it, I will change it to this:
+gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+
+> 
+>> +&mdio1 {
+>> +	rgmii_phy1: ethernet-phy@0 {
+> 
+> Only one rgmii phy I think '1' is not needed?
+> Or `phy@address: ethernet-phy@address {`
+
+I used sgmii_phy0 rgmii_phy1 to name them, they are
+indeed redundant, and sgmii is not in mainline yet,
+I will change rgmii_phy1 to rgmii_phy.
+
+> 
+>> +		compatible = "ethernet-phy-ieee802.3-c22";
+>> +		reg = <0x0>;
+> 
+> The phy address should be 3. Can you try it?
+
+It seems to work fine when using address 0x3, I will modify it.
+
+> 
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&eth1_phy_rst>;
+> 
+> Is pinctrl necessary here?
+
+I will remove it.
+
+The node now looks like this:
+&mdio1 {
+	rgmii_phy: ethernet-phy@3 {
+		compatible = "ethernet-phy-ieee802.3-c22";
+		reg = <0x3>;
+		reset-assert-us = <20000>;
+		reset-deassert-us = <100000>;
+		reset-gpios = <&gpio4 RK_PC0 GPIO_ACTIVE_LOW>;
+		rx-internal-delay-ps = <1500>;
+		tx-internal-delay-ps = <1500>;
+	};
+};
+
+> 
+>> +&sdmmc1 {
+>> +   ...
+>> +	wifi: wifi@1 {
+>> +   ...
+>> +&uart1 {
+>> +   ...
+>> +	bluetooth: bluetooth {
+> 
+> No aliases needed.
+
+I will remove it.
+
+> 
+
+Thanks for your review, I will fix all problems in next version!
+
+Best regards,
+Junhao
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
