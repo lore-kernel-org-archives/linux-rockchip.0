@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB9E5E7719E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 11:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CE9C02180
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 15:55:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9wPGLb9pvhFABLAoF/9MZrYu0UtvQxCa1Y6tmdU2k9A=; b=XRVterCE67ZmZ1
-	0fElY4cQ+KH5wjfkv6dFTPfH1GavcPfgNnGwOdJUi/+X4LJrW520T5G7SBh3uoqLx3VgJa/3z5LJU
-	/fLMLUm2x1eAf7zDziK1A/wacuQKk/8ZNq0wHGP9WQilGflkdIqQ8zclfSOGIFVAbTTs9BT8JgjtS
-	rtN+hL+z8iYQHFB4G5y0hW8AOqxufnKc2uoqIbf4ZDeTtS9mnP82BS7rslwvBs3qXwtIPJ15na4Ua
-	tyQVU7e6WJZbTZKotA27AvYmlWN4tmCjnexulGb4R6E+Su+NPVBrEXqEVSrp0tjqW7FOc2g3R2oqx
-	JNpMoyJKswiaHvdjVS/A==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=7NW724olIBHe5uBdouWNRtl9rX8hE3Slbt+SMC3mfCY=; b=vYAqEh8Ud8hTzo6gWj70hW/Qfc
+	kTCHnFzfca+CnVbC2xUGdZXXyRDcpghsHRHnNI/VgNtVrxyrdQip9ax/k6d7cmX8v1L6+Ell1e0QC
+	kbDrP5+Dk8JudYu1oi97XI6KZLZswRnlgMLOUB+FEV26QUeeUn/brDXwjChDsf+gadditX9uIzhkR
+	3UAsW/f6wBKarHz0ySBxWnreiQHLNiwG7ZxEk9Xzlzc07F+rI+pjZCsoGpnOmkO4yRN+dc1+xav4g
+	s8Kum8ZY2sWwIh6kiYpcQQOmk3WTfXzCcJB2OoQksOU96BwGRGw7+FizSAHcd9cSMCOJ+MlyCJBuS
+	gBxGxdmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXIBy-00000004qB1-2Iv5;
-	Mon, 13 Jan 2025 11:01:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tXMmg-00000005kEL-3qFt;
+	Mon, 13 Jan 2025 15:55:22 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXIAi-00000004pzU-3GIi;
-	Mon, 13 Jan 2025 10:59:53 +0000
+	id 1tXMKL-00000005chp-19ZY;
+	Mon, 13 Jan 2025 15:26:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 171495C49F8;
-	Mon, 13 Jan 2025 10:59:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E513FC4CED6;
-	Mon, 13 Jan 2025 10:59:48 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id F408DA4101F;
+	Mon, 13 Jan 2025 15:24:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8BACC4CED6;
+	Mon, 13 Jan 2025 15:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736765991;
-	bh=QIWLDCAmcI1C+xvUDFC7xp8Yn/Gi3b0khk0TnqElATQ=;
-	h=From:Date:Subject:To:Cc:From;
-	b=jjoGlL0+Uy+eDbOExpu6Pn9TRlQ5ZGhlp1GN9Q3LgRjHfA9SdeElCX+nlXjGZE4Zb
-	 vRKGAsp4zVpJCJ5ZI5oleD2VC7fNUL2zcEQnaUpJZdMlEIFPmSjd5vz4VR11LRDc0o
-	 AMWvRW3/c64M/UbhWcOV1wBJN52e1BrG5QojGDmUTe6cy5Dnlo13w/0AAVGiwIJbZj
-	 ICU5FtJupJeEQOWIhmBWtvlOxjZ4hZWIvbYQEJ00IIyRu8HVQpFK4yvWjj8Lu+Ie40
-	 SVoc4wLHhXmuUhJXNE6XqNBfFEltijb8+maPBJHvZyDDUS3pIC6NkftT/aNuvqUxye
-	 gQdU/bkNaZchw==
-From: Niklas Cassel <cassel@kernel.org>
-Date: Mon, 13 Jan 2025 11:59:34 +0100
-Subject: [PATCH] PCI: dw-rockchip: Skip waiting for link up
+	s=k20201202; t=1736781963;
+	bh=yPKcwvMEc1LS0HKT9AuScKrjPr7zkhgV+Fd5sl68nR8=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=F6TTET+Sb0BKahiFIUm0XJTQiKk18f6lKSazk1qg0bT3j3iUwp6Ro7Se9JdvIn/tD
+	 hiXTSTGuH6OYu+TEtVqB5kR+xdVbyJwnuvafSxBCyS3Sik66s1vafXL4dS3SfDpIcV
+	 vWUimkSnEHOOsEXKCqzKEfOvbzDlEmburaxaVp7AEB/8BYltEWKXgqRd6L5CSd2A9t
+	 wLgK0z1U2PkV/A3XfCilaEk4D0RL9GTTYvnP3egiaZVdYDmRiBHdsdsHZTFXNRYp9u
+	 LYXGJdvPjhQWHEwS3XhZ384B5gtWd3dkVUAN7AqzEt1LQ0kp/OUgCZLNKJH2iu7OoZ
+	 bYD/qBIgI57Wg==
+Date: Mon, 13 Jan 2025 09:26:02 -0600
 MIME-Version: 1.0
-Message-Id: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIABXyhGcC/x3MTQqAIBBA4avErBvwpzZdJVqYjTkEKhoVSHdPW
- n6L9yoUykwFpq5CposLx9Ag+w6sN2En5K0ZlFCjkFJjjvawnhOGiLfhEwehnVvtoLTU0LKUyfH
- zL+flfT8OWRQhYgAAAA==
-X-Change-ID: 20250113-rockchip-no-wait-403ffbc42313
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>, Anand Moon <linux.amoon@gmail.com>, 
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Niklas Cassel <cassel@kernel.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1285; i=cassel@kernel.org;
- h=from:subject:message-id; bh=QIWLDCAmcI1C+xvUDFC7xp8Yn/Gi3b0khk0TnqElATQ=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJbPqmYqOpeqY05+MXbvOGK0ZtZrkU2Hi0rufiTuJ6au
- 4rv2W3XUcrCIMbFICumyOL7w2V/cbf7lOOKd2xg5rAygQxh4OIUgImwKTL8z9E/tSODJaq3VWFq
- W5d83n+fe5OWlbFfOSd6sDBUQaZYg5FhatCf175aTldnTm572Pi2sv/x5JBbOyeoa9WsSNZYvtq
- UFwA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp;
- fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, 
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ Chukun Pan <amadeus@jmu.edu.cn>, Dragan Simic <dsimic@manjaro.org>
+To: Junhao Xie <bigfoot@classfun.cn>
+In-Reply-To: <20250112073344.1976411-1-bigfoot@classfun.cn>
+References: <20250112073344.1976411-1-bigfoot@classfun.cn>
+Message-Id: <173678159607.2153021.5826282359797453753.robh@kernel.org>
+Subject: Re: [PATCH v6 0/3] Add support for Ariaboard Photonicat RK3568
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_025952_861658_72F3E7A9 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250113_072605_441011_75A6772C 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,43 +75,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Root Complex specific device tree binding for pcie-dw-rockchip has the
-'sys' interrupt marked as required.
 
-The driver requests the 'sys' IRQ unconditionally, and errors out if not
-provided.
+On Sun, 12 Jan 2025 15:33:41 +0800, Junhao Xie wrote:
+> Add dts for Ariaboard Photonicat RK3568.
+> 
+> This series bring support for:
+> * Debug UART
+> * SDIO QCA9377 WiFi and Bluetooth
+> * M.2 E-Key PCIe WiFi and Bluetooth
+> * M.2 B-Key USB Modem WWAN
+> * Ethernet WAN Port
+> * MicroSD Card slot
+> * eMMC
+> * HDMI Output
+> * Mali GPU
+> * USB Type-A
+> 
+> Changed from v1:
+> - move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
+> - gmac1 change to phy-mode rgmii-id
+> - corrected some regulator to be closer to schematics
+> - rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
+> https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
+> 
+> Changed from v2:
+> - remove unused headers
+> - corrected some regulator to be closer to schematics
+> - remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
+> https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
+> 
+> Changed from v3:
+> - corrected some regulator to be closer to schematics
+> - changed to using clk32k_out1 in xin32k
+> https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
+> 
+> Changed from v4:
+> - corrected some regulator to be closer to schematics
+> - corrected some label to match node name
+> - use resets props in phy node instead deprecated snps,reset-gpio
+> https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
+> 
+> Changed from v5:
+> - resort regulator nodes
+> - remove dr_mode from usb_host1_xhci
+> https://lore.kernel.org/lkml/20241108031847.700606-1-bigfoot@classfun.cn/
+> 
+> Junhao Xie (3):
+>   dt-bindings: vendor-prefixes: Add prefix for Ariaboard
+>   dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
+>   arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3568-photonicat.dts   | 599 ++++++++++++++++++
+>  4 files changed, 607 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+> 
+> --
+> 2.47.1
+> 
+> 
+> 
 
-Thus, we can unconditionally set use_linkup_irq before calling
-dw_pcie_host_init().
 
-This will skip the wait for link up (since the bus will be enumerated once
-the link up IRQ is triggered), which reduces the bootup time.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 1170e1107508bd793b610949b0afe98516c177a4..62034affb95fbb965aad3cebc613a83e31c90aee 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -435,6 +435,7 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
- 
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
-+	pp->use_linkup_irq = true;
- 
- 	return dw_pcie_host_init(pp);
- }
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
----
-base-commit: 2adda4102931b152f35d054055497631ed97fe73
-change-id: 20250113-rockchip-no-wait-403ffbc42313
+  pip3 install dtschema --upgrade
 
-Best regards,
--- 
-Niklas Cassel <cassel@kernel.org>
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250112073344.1976411-1-bigfoot@classfun.cn:
+
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: rfkill-modem: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
+
+
+
+
 
 
 _______________________________________________
