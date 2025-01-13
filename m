@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CF5E7719E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 10:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB9E5E7719E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 11:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/Nkk8a0760yyJmMYR6OestK+Z6Q+8E9/CCIgwyJVbXk=; b=T/WcWF+fRM7g2b
-	FT5hTAm6K9Ubxx1ZpLdyMJgDP5GSuSAkkBjODgTQz0fb5Ey+vjTDjxJ+IVP+1mDusrtDWGyW4tntw
-	gj6DHT+3kcrB3vTk0ITO5Nw/1mSM7UWuVf8Px4TTKoKTyGyNfLgWt1+wQxA42G61NIr9aOwpBulch
-	ut45DSj7exQtb3zv6PVKRK8JVybsHDrI7rbQnrTJ7+Kj/rIFLdcQ+T+dThvFaHJHkssiAfWLm+2Dc
-	9k8ilZfKlqW/I7uuvltZDVur4RAfHTxHTF+veZ09rRgyLB9BCHkBHQFCw0oh6yPihfdu/t3wgFmuQ
-	GFlinntFvWTNHgjGrFzA==;
+	List-Owner; bh=9wPGLb9pvhFABLAoF/9MZrYu0UtvQxCa1Y6tmdU2k9A=; b=XRVterCE67ZmZ1
+	0fElY4cQ+KH5wjfkv6dFTPfH1GavcPfgNnGwOdJUi/+X4LJrW520T5G7SBh3uoqLx3VgJa/3z5LJU
+	/fLMLUm2x1eAf7zDziK1A/wacuQKk/8ZNq0wHGP9WQilGflkdIqQ8zclfSOGIFVAbTTs9BT8JgjtS
+	rtN+hL+z8iYQHFB4G5y0hW8AOqxufnKc2uoqIbf4ZDeTtS9mnP82BS7rslwvBs3qXwtIPJ15na4Ua
+	tyQVU7e6WJZbTZKotA27AvYmlWN4tmCjnexulGb4R6E+Su+NPVBrEXqEVSrp0tjqW7FOc2g3R2oqx
+	JNpMoyJKswiaHvdjVS/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXI1P-00000004owK-0nK8;
-	Mon, 13 Jan 2025 10:50:15 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXI09-00000004or9-2o3B;
-	Mon, 13 Jan 2025 10:48:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=5c1RH
-	mM1cAEbY78r+MfYlRCpJaIAWuqFWRnpFbls3KQ=; b=Zfbkp5MI6rmFx5UBaJKVP
-	6ELrl3UVDnJdlamQ37p5b+pdEW0tdNmeVaFgj/oMp5Pia9ZkHFxqRlEWosynsf/g
-	209D1pa/+gHCgZNef2pXulNw6lIQ2dOssT3YN988KZwo6wmITFSxzi3SrLXlz5rX
-	++ZWGa6yc/LEzHE2yDCtsE=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3_yB874RnnvU5Fw--.18888S2;
-	Mon, 13 Jan 2025 18:48:33 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzk+dt@kernel.org,
-	dsimic@manjaro.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH] arm64: dts: rockchip: Fix lcdpwr_en pin for Cool Pi GenBook
-Date: Mon, 13 Jan 2025 18:47:34 +0800
-Message-ID: <20250113104825.2390427-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tXIBy-00000004qB1-2Iv5;
+	Mon, 13 Jan 2025 11:01:10 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXIAi-00000004pzU-3GIi;
+	Mon, 13 Jan 2025 10:59:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 171495C49F8;
+	Mon, 13 Jan 2025 10:59:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E513FC4CED6;
+	Mon, 13 Jan 2025 10:59:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736765991;
+	bh=QIWLDCAmcI1C+xvUDFC7xp8Yn/Gi3b0khk0TnqElATQ=;
+	h=From:Date:Subject:To:Cc:From;
+	b=jjoGlL0+Uy+eDbOExpu6Pn9TRlQ5ZGhlp1GN9Q3LgRjHfA9SdeElCX+nlXjGZE4Zb
+	 vRKGAsp4zVpJCJ5ZI5oleD2VC7fNUL2zcEQnaUpJZdMlEIFPmSjd5vz4VR11LRDc0o
+	 AMWvRW3/c64M/UbhWcOV1wBJN52e1BrG5QojGDmUTe6cy5Dnlo13w/0AAVGiwIJbZj
+	 ICU5FtJupJeEQOWIhmBWtvlOxjZ4hZWIvbYQEJ00IIyRu8HVQpFK4yvWjj8Lu+Ie40
+	 SVoc4wLHhXmuUhJXNE6XqNBfFEltijb8+maPBJHvZyDDUS3pIC6NkftT/aNuvqUxye
+	 gQdU/bkNaZchw==
+From: Niklas Cassel <cassel@kernel.org>
+Date: Mon, 13 Jan 2025 11:59:34 +0100
+Subject: [PATCH] PCI: dw-rockchip: Skip waiting for link up
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3_yB874RnnvU5Fw--.18888S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWrtr48Kr1rtryUWr4UXFy8uFg_yoW8JrW3pw
-	nxC397KF97WryUtF4qg3ZxJrs5Cw4Dtan0kr97XryxtF4fZF1DJ3W2gwn3CF1DXr4Iva1r
-	uFsagry7WF1DZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRuHq7UUUUU=
-X-Originating-IP: [103.29.142.67]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hzTXmeE551qTAABs9
+Message-Id: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIABXyhGcC/x3MTQqAIBBA4avErBvwpzZdJVqYjTkEKhoVSHdPW
+ n6L9yoUykwFpq5CposLx9Ag+w6sN2En5K0ZlFCjkFJjjvawnhOGiLfhEwehnVvtoLTU0LKUyfH
+ zL+flfT8OWRQhYgAAAA==
+X-Change-ID: 20250113-rockchip-no-wait-403ffbc42313
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>, Anand Moon <linux.amoon@gmail.com>, 
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Niklas Cassel <cassel@kernel.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1285; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=QIWLDCAmcI1C+xvUDFC7xp8Yn/Gi3b0khk0TnqElATQ=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJbPqmYqOpeqY05+MXbvOGK0ZtZrkU2Hi0rufiTuJ6au
+ 4rv2W3XUcrCIMbFICumyOL7w2V/cbf7lOOKd2xg5rAygQxh4OIUgImwKTL8z9E/tSODJaq3VWFq
+ W5d83n+fe5OWlbFfOSd6sDBUQaZYg5FhatCf175aTldnTm572Pi2sv/x5JBbOyeoa9WsSNZYvtq
+ UFwA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp;
+ fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_024858_147543_4B38215C 
-X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-CacheID: sfid-20250113_025952_861658_72F3E7A9 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,40 +88,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the schematic, the lcdpwr_en pin is GPIO0_C4,
-not GPIO1_C4.
+The Root Complex specific device tree binding for pcie-dw-rockchip has the
+'sys' interrupt marked as required.
 
-Fixes: 4a8c1161b843 ("arm64: dts: rockchip: Add support for rk3588 based Cool Pi CM5 GenBook")
-Signed-off-by: Andy Yan <andyshrk@163.com>
+The driver requests the 'sys' IRQ unconditionally, and errors out if not
+provided.
+
+Thus, we can unconditionally set use_linkup_irq before calling
+dw_pcie_host_init().
+
+This will skip the wait for link up (since the bus will be enumerated once
+the link up IRQ is triggered), which reduces the bootup time.
+
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-index 92f0ed83c990..bc6b43a77153 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-@@ -113,7 +113,7 @@ vcc3v3_lcd: regulator-vcc3v3-lcd {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_lcd";
- 		enable-active-high;
--		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcdpwr_en>;
- 		vin-supply = <&vcc3v3_sys>;
-@@ -241,7 +241,7 @@ &pcie3x4 {
- &pinctrl {
- 	lcd {
- 		lcdpwr_en: lcdpwr-en {
--			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 1170e1107508bd793b610949b0afe98516c177a4..62034affb95fbb965aad3cebc613a83e31c90aee 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -435,6 +435,7 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
  
- 		bl_en: bl-en {
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
++	pp->use_linkup_irq = true;
+ 
+ 	return dw_pcie_host_init(pp);
+ }
+
+---
+base-commit: 2adda4102931b152f35d054055497631ed97fe73
+change-id: 20250113-rockchip-no-wait-403ffbc42313
+
+Best regards,
 -- 
-2.43.0
+Niklas Cassel <cassel@kernel.org>
 
 
 _______________________________________________
