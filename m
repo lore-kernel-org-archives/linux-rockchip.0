@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346D1C02180
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 19:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0562FC02180
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 20:23:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=a8dF7dQ2AmtpUvKySubTOsMi2SMSrDpv5lflUScL9m0=; b=T2/kzrAMjlHWh9
-	uXpGI5/pOvyTxBvsXDnWXnMgLS6aE7SVP2L+MpPxPsJ1FiF4T4fGLiV2yI7xJ6LNYl3TqcbgbbEHv
-	RycFEq3YFWWHfXJMqlY0bYZEs0baooqAKZ39o80GZcUdIUokELZfWcpBlblkY2STbJg626/rxNfWi
-	S6Nh0Wwic3OvtnLOdTTkAjZBhX33MGiPBevAQ35q2uxRfZYDtPvUnQYwBcaN91IUw537MhRM+WJqk
-	x4fIp8jm3Zkak+P+jbeNhE0PlYDdv3bhRQMKkTC+HCvQTUx/ZBisQo+87Fgfet1ZMixhexGXDihzz
-	VtU/VpoM5TiDzWC6AMCg==;
+	List-Owner; bh=oE1Ui7BZsQIFNmLeY6M42mhFPo1wWonGSGiaWzCHnOI=; b=cod7rTM6+G1knX
+	frrgL9w40R1/s+s72zWLvQao8QtEUSAZFV7fZfQQDC875OMJB8GglSHgcR34iM95pwNQgT95rd8dK
+	Y1+9vlDA6il9PS12KsfnjwMzh2F33nqkUdbdSGXNTKisIGoVkJScyuKHk2F2bISYyPiD++ZW1ATq1
+	MnpBqNSjcHZjEebVuw55pxaZwZmjLrbtvPLneuN1oRTzVRk/0UIwM9ix9pZhbXuw3zmZalkAprfoz
+	dYHSfq7OwkJ5NH/DzI7gjcjv4jQGOaQRrfOlMh6vLrDVYX8cyCwCI5hpxpLQX9OgG5G4zg+mxSAZX
+	f2KwXJ8YyalM7wj/+i5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXQ76-00000006Nbt-3PJP;
-	Mon, 13 Jan 2025 19:28:40 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tXQyR-00000006Xx6-150P;
+	Mon, 13 Jan 2025 20:23:47 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXQ5r-00000006NFl-2Qrh;
-	Mon, 13 Jan 2025 19:27:24 +0000
+	id 1tXQxC-00000006Xpj-1Iz3;
+	Mon, 13 Jan 2025 20:22:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DD3ADA41328;
-	Mon, 13 Jan 2025 19:25:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9317FC4CED6;
-	Mon, 13 Jan 2025 19:27:21 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3A2E3A4101D;
+	Mon, 13 Jan 2025 20:20:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE748C4CED6;
+	Mon, 13 Jan 2025 20:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736796441;
-	bh=CjvjHO6S+8TLxs+4MjSObjN8IEm72lKwk6gKdw1AnX4=;
+	s=k20201202; t=1736799749;
+	bh=4XBsIsziAr422cRjy/WKCVKgVG1YXMwN58TxJtr6+5c=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=SBBjA9YtHpIZAElZpnXG7eyfeQ47XnV2mrw7Y/If8zZYzI8PeuENl94vB2jeUoJnY
-	 CiIUpMTsmqzDqMGlRcbPenMZOXjlEwNutg5rBIpj9tRinHVXehfiNZIxjLero1PSAt
-	 YVEXx3MYLSUJbNpj4tIzDymbUCfohNWie4Cugfj9NsNZd+Uv0uUbWcWmRrRZH2d8RS
-	 J4+cMxU8CUP/HsaLwat+svRKSxflCFf6t39tCclPh0wZ8yRjxJrQo2su3DiQQr/80a
-	 HkJ/u3IdJsSHFRtJlcbtIIlHibWB/ZMWEWJjO7j5XjQmrmQbuQ5fJxOvLxaCs+nHR+
-	 HLTx8TXjhKJEQ==
-Date: Mon, 13 Jan 2025 13:27:20 -0600
+	b=AHWuHhHnfKQrdFZTiZDwYEjqgFR6aq6ew0yAp3HDahpOWJMmbsvyso/AZlw4SrZph
+	 hKRufIBPagMUNxFbWZ9Qjvo3+DFt5ufFZHxAhaU6Y0+sDfJhDbfVCiZnPKuR8Nk0TC
+	 4bSigVWPsRMlrYwWC9BvWbcm2VIcGF0SL03eO37EqIM1/3nByWnMrnCBp51ZGv3BqI
+	 UyWRmxz375UMEUqN68pVzZKeBa6JFZ/bDglBmsL/TsUjm8qqLdOMJsCWobg7LE4oLF
+	 jyd2EEMUPKNcxZgZFJGrKsPfolj8ob7uCNb+xlqaNFGIo3P6Aw3wslqZOA0sns9r1G
+	 ghu4BfDWwF6qA==
+Date: Mon, 13 Jan 2025 14:22:26 -0600
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Niklas Cassel <cassel@kernel.org>
 Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -52,16 +52,15 @@ Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Damien Le Moal <dlemoal@kernel.org>,
 	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-Message-ID: <20250113192720.GA414640@bhelgaas>
+Message-ID: <20250113202226.GA420041@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_112723_678162_E97F6CC9 
-X-CRM114-Status: GOOD (  21.39  )
+X-CRM114-CacheID: sfid-20250113_122230_418560_80E8CE0F 
+X-CRM114-Status: GOOD (  18.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,13 +92,7 @@ On Mon, Jan 13, 2025 at 11:59:34AM +0100, Niklas Cassel wrote:
 > 
 > Signed-off-by: Niklas Cassel <cassel@kernel.org>
 
-Thanks!  I was just reviewing the addition of your dll_link_up IRQ
-handler, and was about to ask whether you wanted to set use_linkup_irq
-to avoid the wait, but here's the patch already :)
-
-I think I'll sort out the branches so the dll_link_up IRQ handler,
-this patch, and the corresponding qcom change go on the same branch as
-Krishna's patch to skip waiting if pp->use_linkup_irq.
+Applied to pci/controller/dwc for v6.14, thanks!
 
 > ---
 >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
