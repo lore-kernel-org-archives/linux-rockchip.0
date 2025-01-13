@@ -4,62 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F6BE7719A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 04:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA17C02181
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 07:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3C0OkyhM0oogFQDZePH2uehRbBn9DzIspyulfNW5kLQ=; b=W9tlqVa4rMbb9WG45HW4LyiVZn
-	kkuRLnnYVvspnmJKQAm3dTYeqD0II+uVsyosGHsxvjgndG56pen7m0VFrwhUUYaMPrfEGgHc4izwR
-	jqkwuNc3Gv2qFDAgP+pkQW4cbWwN9qW7yg9eBk48KHal90CVAbLzgS9NPJbTiy+KKCsKQRtqM+wy1
-	XNHQOi+pUVAfkp1Pnn2X3TOgSb94rUt1gjplykzNBvQ4ZQLpgl1Ln5x8IQE0BfwL3UZqOZmcObwfe
-	GcF4BZsRgujeU/xtbQGOz4CeQ9NBO7nXjOepJEcbASBXqrs8kHFportwFBwPjLtEji4fqhlji1fXi
-	Rt/gU/EQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XNZk+9QiuuxAOUH+Jkn/BySKgm+0XJC7//nbIPpSoAA=; b=fGa/FjToTkKp/H
+	0/2Qnr7Lw8LbI4N6P28SckSRQ1289Pryfm7GvKCm/+PLqtbE5Yn/1jrAMRcSGTPd/3vO7/nKfv31o
+	7s3DViDLLrhL7859Yio9mqM7QjgUyJA9+swcCNs7DcOZuuWuDoqtyTkfz8zlAVr1TJlxFFQCP8vwH
+	ABUyGT0iietVkRgilmQTQAjpy9jjVYwrZoaFDDN9tX6vcW4MYeq6abUS9/HfmtG9CmGydmky4JjUV
+	vG/kFYVibjW88Ci+5iIlL6x8x/zvZxPao4EZmvLfpLGgO68FP2cpyTQoOAIySCSNA63u5LdWNb5Tx
+	ryHHTHF7lJBAE/aKuIfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXC7f-00000003zG0-3JYd;
-	Mon, 13 Jan 2025 04:32:19 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tXFF4-00000004I30-1Em0;
+	Mon, 13 Jan 2025 07:52:10 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXC6P-00000003z64-1JVb;
-	Mon, 13 Jan 2025 04:31:02 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1736742659;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	id 1tXFF1-00000004I15-2Tt5;
+	Mon, 13 Jan 2025 07:52:09 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id A63632116C;
+	Mon, 13 Jan 2025 07:52:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736754724; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=07ejYXIKIrcD3/kHRGf9djGVZsaJOUEXa1BtdRMH9Dw=;
-	b=HQMw8pc01xVq5qweIoyG+O9dX2sCtsMT7qubGQMankj+ewQmkUqfUteq8KagLgXr7fnQd6
-	hX6ey6CdgF+DAzQezUXMy35u0pzDqfb0MjCtblTTnjSYd9WV8MzPN0FpZdekwZpgNNx+bZ
-	1bM4jjH7prDU6UYUaOP9R7U3hEWg/4DzLN/UmeM2i6JQraf/kAw7i/3sQnlnf3H6FKV7XR
-	NtA1pggxmGSz+I6CqJjnYi1balKCXFERMvNWL3/xbABDtQ3D0IkUxDghMChXL4cWEuiOoA
-	U2u+v1od9oU7zB64+kyXInci43aYdfACpWZaGtNQDzm8Ti3glxnOZ3vhmYJAsA==
-Date: Mon, 13 Jan 2025 05:30:59 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jonas
- Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki
- <naoki@radxa.com>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 0/3] Add support for Ariaboard Photonicat RK3568
-In-Reply-To: <526e0c19-6495-4dcf-bf6b-b5bd62a7a631@classfun.cn>
-References: <20250112073344.1976411-1-bigfoot@classfun.cn>
- <c520a0d829bbe26b9802f57f94f3957c@manjaro.org>
- <526e0c19-6495-4dcf-bf6b-b5bd62a7a631@classfun.cn>
-Message-ID: <ff16c764821c3d010f49524e4a3a177b@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ej5S2FqsrLfl2DOy4vNFP4EEenMuOKkjeg5fw8+ryy8=;
+	b=UGec6fOBbSuM5/YwhFmAlt57APKx49vUpyhM2dXq1qgH2DoUQhtCvTHDVkyM651h37cY2Q
+	uD4kKgyMcjO1ejhDqihQZvOXJQHXYign5PDQ9q3y7owQZu1PjY3kMxXXe+u58a/fXQOt4G
+	aR9MrTbpgoH33QqMdIkoQeIltEIWK0E=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736754724;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ej5S2FqsrLfl2DOy4vNFP4EEenMuOKkjeg5fw8+ryy8=;
+	b=wOUzlPapnGL4hQxyY/3aso3HpttkWYzvxJpGlSsgxagHXECdZeo0Rlkl3bAbpwoe5tO7D/
+	0F0cjrpaEuMdmxCw==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736754724; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ej5S2FqsrLfl2DOy4vNFP4EEenMuOKkjeg5fw8+ryy8=;
+	b=UGec6fOBbSuM5/YwhFmAlt57APKx49vUpyhM2dXq1qgH2DoUQhtCvTHDVkyM651h37cY2Q
+	uD4kKgyMcjO1ejhDqihQZvOXJQHXYign5PDQ9q3y7owQZu1PjY3kMxXXe+u58a/fXQOt4G
+	aR9MrTbpgoH33QqMdIkoQeIltEIWK0E=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736754724;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ej5S2FqsrLfl2DOy4vNFP4EEenMuOKkjeg5fw8+ryy8=;
+	b=wOUzlPapnGL4hQxyY/3aso3HpttkWYzvxJpGlSsgxagHXECdZeo0Rlkl3bAbpwoe5tO7D/
+	0F0cjrpaEuMdmxCw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 320C113310;
+	Mon, 13 Jan 2025 07:52:04 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id myLrCiTGhGcsNgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 13 Jan 2025 07:52:04 +0000
+Message-ID: <44f1170e-ad76-4dae-abae-986b5482dfc6@suse.de>
+Date: Mon, 13 Jan 2025 08:52:03 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 02/25] drm/dumb-buffers: Provide helper to set pitch
+ and size
+To: Andy Yan <andyshrk@163.com>
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
+ linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org,
+ xen-devel@lists.xenproject.org
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-3-tzimmermann@suse.de>
+ <94f78e1.19bf.1944de709b0.Coremail.andyshrk@163.com>
+ <e800ebc2-39b5-46d5-89ec-883ed1c7626b@suse.de>
+ <443491d4.4087.1945dcc04e3.Coremail.andyshrk@163.com>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <443491d4.4087.1945dcc04e3.Coremail.andyshrk@163.com>
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-0.999];
+	MIME_GOOD(-0.10)[text/plain];
+	FREEMAIL_TO(0.00)[163.com];
+	RCPT_COUNT_TWELVE(0.00)[19];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ARC_NA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[163.com,gmail.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[linux.intel.com,kernel.org,gmail.com,ffwll.ch,lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org];
+	TO_DN_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250112_203101_638152_B6AC630C 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20250112_235207_786304_38563096 
+X-CRM114-Status: GOOD (  24.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,71 +165,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSnVuaGFvLAoKT24gMjAyNS0wMS0xMiAyMzoyNywgSnVuaGFvIFhpZSB3cm90ZToKPiBP
-biAyMDI1LzEvMTIgMTY6NTAsIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gT24gMjAyNS0wMS0xMiAw
-ODozMywgSnVuaGFvIFhpZSB3cm90ZToKPj4+IEFkZCBkdHMgZm9yIEFyaWFib2FyZCBQaG90b25p
-Y2F0IFJLMzU2OC4KPj4+IAo+Pj4gVGhpcyBzZXJpZXMgYnJpbmcgc3VwcG9ydCBmb3I6Cj4+PiAq
-IERlYnVnIFVBUlQKPj4+ICogU0RJTyBRQ0E5Mzc3IFdpRmkgYW5kIEJsdWV0b290aAo+Pj4gKiBN
-LjIgRS1LZXkgUENJZSBXaUZpIGFuZCBCbHVldG9vdGgKPj4+ICogTS4yIEItS2V5IFVTQiBNb2Rl
-bSBXV0FOCj4+PiAqIEV0aGVybmV0IFdBTiBQb3J0Cj4+PiAqIE1pY3JvU0QgQ2FyZCBzbG90Cj4+
-PiAqIGVNTUMKPj4+ICogSERNSSBPdXRwdXQKPj4+ICogTWFsaSBHUFUKPj4+ICogVVNCIFR5cGUt
-QQo+Pj4gCj4+PiBDaGFuZ2VkIGZyb20gdjE6Cj4+PiAtIG1vdmUgc29tZSBnZW5lcmFsIG5vZGVz
-IChmaXJtd2FyZSwgcmFtb29wcywgcmVib290LW1vZGUpIHRvIAo+Pj4gcmszNTZ4LmR0c2kKPj4g
-Cj4+IFRoaXMgZW50cnkgZnJvbSB0aGUgY2hhbmdlbG9nIGNhdWdodCBteSBhdHRlbnRpb24sIHNv
-IEkgdHJpZWQKPj4gdG8gZmluZCBvdXQgd2hhdCBleGFjdGx5IGhhcHBlbmVkIGJhY2sgdGhlbi7C
-oCBUaG91Z2gsIGFmdGVyIGdvaW5nCj4+IHRocm91Z2ggdGhlIG1haWxpbmcgbGlzdCBhcmNoaXZl
-LCBJIHN0aWxsIGRvbid0IHNlZSB3aGVyZSB0aGUKPj4gYXMtZGVzY3JpYmVkIGNoYW5nZSB0b29r
-IHBsYWNlLCBzbyBwZXJoYXBzIHRoaXMgY2hhbmdlbG9nIGVudHJ5Cj4+IG5lZWRzIGFkanVzdGlu
-Zy4KPiAKPiBDaHVrdW4gUGFuIHN1Z2dlc3RlZCBtb3ZpbmcgdGhlc2Ugbm9kZXMgdG8gcmszNTZ4
-LmR0c2ksIGJ1dCBJIGhhdmUKPiBub3QgZG9uZSB0aGF0IHlldCBhbmQgc2ltcGx5IGRlbGV0ZWQg
-dGhlbS4gSSB3aWxsIGZpeCB0aGUgY2hhbmdlbG9nLgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
-L2xrbWwvMjAyNDA5MDUwMzQwMDkuMjgxMjQtMS1hbWFkZXVzQGptdS5lZHUuY24vCj4gCj4gLSBy
-ZW1vdmUgc29tZSBnZW5lcmFsIG5vZGVzIChmaXJtd2FyZSwgcmFtb29wcywgcmVib290LW1vZGUp
-CgpPaCwgdGhhbmtzIGZvciB0aGUgbnVkZ2UsIEkganVzdCBhZGRlZCBhIFRPRE8gdG8gInNwcmlu
-a2xlIiBhIGZldwoic3lzY29uLXJlYm9vdC1tb2RlIiBhbmQgInJhbW9vcHMiIG5vZGVzIG9udG8g
-dGhlIHJlbGV2YW50IFNvQyBkdHNpCmZpbGVzLiAgVGhvc2Ugd2lsbCBiZSBoaWdobHkgdXNlZnVs
-IHdoZW4gZGVidWdnaW5nIG15c3RlcmlvdXMgY3Jhc2hlcwphbmQgbG9ja3VwcyB0aGF0IGhhcHBl
-biBvbiB2YXJpb3VzIGRldmljZXMgaW4gdGhlIGZpZWxkLgoKPj4+IC0gZ21hYzEgY2hhbmdlIHRv
-IHBoeS1tb2RlIHJnbWlpLWlkCj4+PiAtIGNvcnJlY3RlZCBzb21lIHJlZ3VsYXRvciB0byBiZSBj
-bG9zZXIgdG8gc2NoZW1hdGljcwo+Pj4gLSByZW5hbWUgcmszNTY4LWFyaWFib2FyZC1waG90b25p
-Y2F0LmR0cyB0byByazM1NjgtcGhvdG9uaWNhdC5kdHMKPj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwu
-b3JnL2xrbWwvMjAyNDA5MDQxMTE0NTYuODcwODktMS1iaWdmb290QGNsYXNzZnVuLmNuLwo+Pj4g
-Cj4+PiBDaGFuZ2VkIGZyb20gdjI6Cj4+PiAtIHJlbW92ZSB1bnVzZWQgaGVhZGVycwo+Pj4gLSBj
-b3JyZWN0ZWQgc29tZSByZWd1bGF0b3IgdG8gYmUgY2xvc2VyIHRvIHNjaGVtYXRpY3MKPj4+IC0g
-cmVtb3ZlIHVzYl9ob3N0MV9vaGNpLCB1c2JfaG9zdDFfZWhjaSwgdXNiMnBoeTFfaG9zdCB0aGF0
-IGhhdmUgbm8gCj4+PiBjb25uZWN0aW9uCj4+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21s
-LzIwMjQwOTA2MDQ1NzA2LjEwMDQ4MTMtMS1iaWdmb290QGNsYXNzZnVuLmNuLwo+Pj4gCj4+PiBD
-aGFuZ2VkIGZyb20gdjM6Cj4+PiAtIGNvcnJlY3RlZCBzb21lIHJlZ3VsYXRvciB0byBiZSBjbG9z
-ZXIgdG8gc2NoZW1hdGljcwo+Pj4gLSBjaGFuZ2VkIHRvIHVzaW5nIGNsazMya19vdXQxIGluIHhp
-bjMyawo+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDI0MDkxMTEyMjgwOS4xNzg5
-Nzc4LTItYmlnZm9vdEBjbGFzc2Z1bi5jbi8KPj4+IAo+Pj4gQ2hhbmdlZCBmcm9tIHY0Ogo+Pj4g
-LSBjb3JyZWN0ZWQgc29tZSByZWd1bGF0b3IgdG8gYmUgY2xvc2VyIHRvIHNjaGVtYXRpY3MKPj4+
-IC0gY29ycmVjdGVkIHNvbWUgbGFiZWwgdG8gbWF0Y2ggbm9kZSBuYW1lCj4+PiAtIHVzZSByZXNl
-dHMgcHJvcHMgaW4gcGh5IG5vZGUgaW5zdGVhZCBkZXByZWNhdGVkIHNucHMscmVzZXQtZ3Bpbwo+
-Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDI0MDkxNDE0NTU0OS44Nzk5MzYtMS1i
-aWdmb290QGNsYXNzZnVuLmNuLwo+Pj4gCj4+PiBDaGFuZ2VkIGZyb20gdjU6Cj4+PiAtIHJlc29y
-dCByZWd1bGF0b3Igbm9kZXMKPj4+IC0gcmVtb3ZlIGRyX21vZGUgZnJvbSB1c2JfaG9zdDFfeGhj
-aQo+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDI0MTEwODAzMTg0Ny43MDA2MDYt
-MS1iaWdmb290QGNsYXNzZnVuLmNuLwo+Pj4gCj4+PiBKdW5oYW8gWGllICgzKToKPj4+IMKgIGR0
-LWJpbmRpbmdzOiB2ZW5kb3ItcHJlZml4ZXM6IEFkZCBwcmVmaXggZm9yIEFyaWFib2FyZAo+Pj4g
-wqAgZHQtYmluZGluZ3M6IGFybTogcm9ja2NoaXA6IEFkZCBBcmlhYm9hcmQgUGhvdG9uaWNhdCBS
-SzM1NjgKPj4+IMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgZHRzIGZvciBBcmlhYm9hcmQg
-UGhvdG9uaWNhdCBSSzM1NjgKPj4+IAo+Pj4gwqAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0v
-cm9ja2NoaXAueWFtbMKgwqDCoMKgIHzCoMKgIDUgKwo+Pj4gwqAuLi4vZGV2aWNldHJlZS9iaW5k
-aW5ncy92ZW5kb3ItcHJlZml4ZXMueWFtbMKgIHzCoMKgIDIgKwo+Pj4gwqBhcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCAxICsKPj4+IMKg
-Li4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1waG90b25pY2F0LmR0c8KgwqAgfCA1OTkgCj4+
-PiArKysrKysrKysrKysrKysrKysKPj4+IMKgNCBmaWxlcyBjaGFuZ2VkLCA2MDcgaW5zZXJ0aW9u
-cygrKQo+Pj4gwqBjcmVhdGUgbW9kZSAxMDA2NDQgCj4+PiBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU2OC1waG90b25pY2F0LmR0cwo+IAo+IFRoYW5rcyBmb3IgeW91ciByZXZpZXcs
-IEkgd2lsbCBmaXggYWxsIHByb2JsZW1zIGluIG5leHQgdmVyc2lvbiEKClRoYW5rcywgYWx0aG91
-Z2ggaXQgd2FzIGp1c3QgYSAibWlsZS1oaWdoIiByZXZpZXcgdGhhdCBjb3ZlcmVkCm9ubHkgYSBm
-ZXcgdGhpbmdzIHRoYXQgY2F1Z2h0IG15IGF0dGVudGlvbi4gOikKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi
+
+
+Am 13.01.25 um 04:53 schrieb Andy Yan:
+[...]
+>> Thanks for taking a look. That NV-related code at [0] is a 'somewhat
+>> non-idiomatic use' of the UAPI. The dumb-buffer interface really just
+>> supports a single plane. The fix would be a new ioctl that takes a DRM
+>> 4cc constant and returns a buffer handle/pitch/size for each plane. But
+>> that's separate series throughout the various components.
+> So is there a standard way to create buffer for NV-related format now ?
+
+I don't know, but it doesn't look like there is. As I outlined, a new 
+dumb-buffer interface seems required.
+
+> With a quick search, I can see many user space use dumb-buffer for NV-releated
+> buffer alloc:
+>
+> [0]https://github.com/tomba/kmsxx/blob/master/kms%2B%2B/src/pixelformats.cpp
+> [1]https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/blob/master/lib/igt_fb.c?ref_type=heads
+> [2]https://gitlab.freedesktop.org/gstreamer/gstreamer/-/blob/main/subprojects/gst-plugins-bad/sys/kms/gstkmsutils.c?ref_type=heads#L116
+>
+>> There's also code XRGB16161616F. This is a viable format for the UAPI,
+>> but seems not very useful in practice.
+>>
+>>> And there are also some AFBC based format with bpp can't be handled here, see:
+>>> static __u32 drm_gem_afbc_get_bpp(struct drm_device *dev,
+>>>                                     const struct drm_mode_fb_cmd2 *mode_cmd)
+>>> {
+>>>           const struct drm_format_info *info;
+>>>                   
+>>>           info = drm_get_format_info(dev, mode_cmd);
+>>>                   
+>>>           switch (info->format) {
+>>>           case DRM_FORMAT_YUV420_8BIT:
+>>>                   return 12;
+>>>           case DRM_FORMAT_YUV420_10BIT:
+>>>                   return 15;
+>>>           case DRM_FORMAT_VUY101010:
+>>>                   return 30;
+>>>           default:
+>>>                   return drm_format_info_bpp(info, 0);
+>>>           }
+>>> }
+>> Same problem here. These YUV formats are multi-planar and there should
+>> be no dumb buffers for them.
+> These afbc based format are one plane, see:
+
+Apologies. I confused them with other YUV formats.
+
+>
+> /*
+>   * 1-plane YUV 4:2:0
+>   * In these formats, the component ordering is specified (Y, followed by U
+>   * then V), but the exact Linear layout is undefined.
+>   * These formats can only be used with a non-Linear modifier.
+>   */
+> #define DRM_FORMAT_YUV420_8BIT  fourcc_code('Y', 'U', '0', '8')
+> #define DRM_FORMAT_YUV420_10BIT fourcc_code('Y', 'U', '1', '0')
+>
+>> As we still have to support these all use cases, I've modified the new
+>> helper to fallback to computing the pitch from the given bpp value.
+>> That's what drivers currently do. Could you please apply the attached
+>> patch on top of the series and report back the result of the test? You
+>> should see a kernel warning about the unknown color mode, but allocation
+>> should succeed.
+> Yes, the attached patch works for my test case.
+
+Thanks for testing. I'll include the changes in the patch' next iteration.
+
+Best regards
+Thomas
+
+>
+>> Best regards
+>> Thomas
+>>
+>>>
+>>> [0]https://gitlab.freedesktop.org/mesa/drm/-/blob/main/tests/modetest/buffers.c?ref_type=heads#L159
+>>>
+>>> This introduce a modetest failure on rockchip platform:
+>>> # modetest -M rockchip -s 70@68:1920x1080 -P 32@68:1920x1080@NV30
+>>> setting mode 1920x1080-60.00Hz on connectors 70, crtc 68
+>>> testing 1920x1080@NV30 overlay plane 32
+>>> failed to create dumb buffer: Invalid argument
+>>>
+>>> I think other platform with bpp can't handler by  drm_mode_legacy_fb_format will
+>>> also see this kind of failure:
+>>>
+>>>
+>>>
+>>>> +	if (fourcc == DRM_FORMAT_INVALID)
+>>>> +		return -EINVAL;
+>>>> +	info = drm_format_info(fourcc);
+>>>> +	if (!info)
+>>>> +		return -EINVAL;
+>>>> +	pitch = drm_format_info_min_pitch(info, 0, args->width);
+>>>> +	if (!pitch || pitch > U32_MAX)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	args->pitch = pitch;
+>>>> +
+>>>> +	return drm_mode_align_dumb(args, pitch_align, size_align);
+>>>> +}
+>>>> +EXPORT_SYMBOL(drm_mode_size_dumb);
+>>>> +
+>>>> int drm_mode_create_dumb(struct drm_device *dev,
+>>>> 			 struct drm_mode_create_dumb *args,
+>>>> 			 struct drm_file *file_priv)
+>>>> diff --git a/include/drm/drm_dumb_buffers.h b/include/drm/drm_dumb_buffers.h
+>>>> new file mode 100644
+>>>> index 000000000000..6fe36004b19d
+>>>> --- /dev/null
+>>>> +++ b/include/drm/drm_dumb_buffers.h
+>>>> @@ -0,0 +1,14 @@
+>>>> +/* SPDX-License-Identifier: MIT */
+>>>> +
+>>>> +#ifndef __DRM_DUMB_BUFFERS_H__
+>>>> +#define __DRM_DUMB_BUFFERS_H__
+>>>> +
+>>>> +struct drm_device;
+>>>> +struct drm_mode_create_dumb;
+>>>> +
+>>>> +int drm_mode_size_dumb(struct drm_device *dev,
+>>>> +		       struct drm_mode_create_dumb *args,
+>>>> +		       unsigned long pitch_align,
+>>>> +		       unsigned long size_align);
+>>>> +
+>>>> +#endif
+>>>> -- 
+>>>> 2.47.1
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> Linux-rockchip mailing list
+>>>> Linux-rockchip@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>> -- 
+>> --
+>> Thomas Zimmermann
+>> Graphics Driver Developer
+>> SUSE Software Solutions Germany GmbH
+>> Frankenstrasse 146, 90461 Nuernberg, Germany
+>> GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+>> HRB 36809 (AG Nuernberg)
+
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
