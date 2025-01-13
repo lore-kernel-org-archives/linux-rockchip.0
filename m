@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981E9E7719F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 10:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CF5E7719E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 10:50:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pRSlkydrLbL6STV8qW27zvNSwZ3Kf2X2up98UxmEBuc=; b=qsmwuTKsqVXL36
-	xwgYUif0+3MN5PPJLfWqO33li8aFw7SirdNN051QESf3y0GPlvl/BXjgnHIyklVCbB5dHlDPuwMlP
-	OK2a326KBlqcLfuk7vTsq/iDp23WKy/ugpgdtsdlFz6FpQ0J//nyGnVBDvMEcrx1NF26ooc+8vcdx
-	go184EUbY3MDovtpeHgQAys6o4pihms8qrqWBUC4zAirMMMvtzH5fj37W1cIwPAhKBYiszGTW+7M0
-	5hbf3Q2aTMVoqdERzI3xZ8faBrJZLUL1+e71x4OUJ1Uf0/6pYoj5nS4pDkG8jKrjRUFyr6drekmzi
-	qZRoRjG2kFzN48o58zdA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/Nkk8a0760yyJmMYR6OestK+Z6Q+8E9/CCIgwyJVbXk=; b=T/WcWF+fRM7g2b
+	FT5hTAm6K9Ubxx1ZpLdyMJgDP5GSuSAkkBjODgTQz0fb5Ey+vjTDjxJ+IVP+1mDusrtDWGyW4tntw
+	gj6DHT+3kcrB3vTk0ITO5Nw/1mSM7UWuVf8Px4TTKoKTyGyNfLgWt1+wQxA42G61NIr9aOwpBulch
+	ut45DSj7exQtb3zv6PVKRK8JVybsHDrI7rbQnrTJ7+Kj/rIFLdcQ+T+dThvFaHJHkssiAfWLm+2Dc
+	9k8ilZfKlqW/I7uuvltZDVur4RAfHTxHTF+veZ09rRgyLB9BCHkBHQFCw0oh6yPihfdu/t3wgFmuQ
+	GFlinntFvWTNHgjGrFzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXHiD-00000004nAn-43up;
-	Mon, 13 Jan 2025 10:30:25 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXHg4-00000004mjt-3ElR;
-	Mon, 13 Jan 2025 10:28:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 99B7AA40DAC;
-	Mon, 13 Jan 2025 10:26:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEADDC4CED6;
-	Mon, 13 Jan 2025 10:28:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736764091;
-	bh=YjPRYyKxFWfwBGyFIc8FXbd9BDk5/XxDt0/Kay6MfyM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=k46+ZMIP6SHUP2Fkk1BFOsyeCxNX7n2Tbjur95ZFq5q2DbYzf7Sq7EDdqsA8gxEw5
-	 570kJOPmVAKjtq8E9Y0dQK+N6RUIYBoAPh1pf8BclgS2AoQSKlvcj6V+7UmQC7mIvC
-	 d5tqvfmtzqkpnwC1+bmRQXvrRUAgd99KDExOArPK3jp+uz2O4kmquwgbeLJQpflqNN
-	 lAaxMVXiDX/VqfFItKZm0K1OR1kNR9F6xwBYmpfQKxM9JI+JctSA9RMh/y5e2JNAqS
-	 g/K7zuvMLn60B2XgLZ2+GjAoNBJ7fDdNtAb9EFajN/cChTAQ2P4+8MBXv3SsExmI/6
-	 VH9T+9u0N03Cg==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Udit Kumar <u-kumar1@ti.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
+	id 1tXI1P-00000004owK-0nK8;
+	Mon, 13 Jan 2025 10:50:15 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXI09-00000004or9-2o3B;
+	Mon, 13 Jan 2025 10:48:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=5c1RH
+	mM1cAEbY78r+MfYlRCpJaIAWuqFWRnpFbls3KQ=; b=Zfbkp5MI6rmFx5UBaJKVP
+	6ELrl3UVDnJdlamQ37p5b+pdEW0tdNmeVaFgj/oMp5Pia9ZkHFxqRlEWosynsf/g
+	209D1pa/+gHCgZNef2pXulNw6lIQ2dOssT3YN988KZwo6wmITFSxzi3SrLXlz5rX
+	++ZWGa6yc/LEzHE2yDCtsE=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3_yB874RnnvU5Fw--.18888S2;
+	Mon, 13 Jan 2025 18:48:33 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: krzk+dt@kernel.org,
+	dsimic@manjaro.org,
+	robh@kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 6/6] PCI: dw-rockchip: Describe resizable BARs as resizable BARs
-Date: Mon, 13 Jan 2025 11:27:37 +0100
-Message-ID: <20250113102730.1700963-14-cassel@kernel.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250113102730.1700963-8-cassel@kernel.org>
-References: <20250113102730.1700963-8-cassel@kernel.org>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH] arm64: dts: rockchip: Fix lcdpwr_en pin for Cool Pi GenBook
+Date: Mon, 13 Jan 2025 18:47:34 +0800
+Message-ID: <20250113104825.2390427-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2520; i=cassel@kernel.org; h=from:subject; bh=YjPRYyKxFWfwBGyFIc8FXbd9BDk5/XxDt0/Kay6MfyM=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJbXs08/n9iHc+0po1bBV95XOt7xmsjf82T498kUZ67P 91vNnQs7ihlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBE7GMY/kpNM51z/fnWH8tX b7Xh0/42q2HXBuZbPxdmfDMJZlx2vlGE4X9Z2e8H766k1KS8PhzEVXg+4ctaAwNWl2L7hMSNJ9o X/eEBAA==
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CM-TRANSID: _____wD3_yB874RnnvU5Fw--.18888S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWrtr48Kr1rtryUWr4UXFy8uFg_yoW8JrW3pw
+	nxC397KF97WryUtF4qg3ZxJrs5Cw4Dtan0kr97XryxtF4fZF1DJ3W2gwn3CF1DXr4Iva1r
+	uFsagry7WF1DZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRuHq7UUUUU=
+X-Originating-IP: [103.29.142.67]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hzTXmeE551qTAABs9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_022812_945026_1D0E67B1 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20250113_024858_147543_4B38215C 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,65 +77,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Looking at "11.4.4.29 USP_PCIE_RESBAR Registers Summary" in the rk3588 TRM,
-we can see that none of the BARs are Fixed BARs, but actually Resizable
-BARs.
+According to the schematic, the lcdpwr_en pin is GPIO0_C4,
+not GPIO1_C4.
 
-I couldn't find any reference in the rk3568 TRM, but looking at the
-downstream PCIe endpoint driver, rk3568 and rk3588 are treated as the same,
-so the BARs on rk3568 must also be Resizable BARs.
-
-Now when we actually have support for Resizable BARs, let's configure
-these BARs as such.
-
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Fixes: 4a8c1161b843 ("arm64: dts: rockchip: Add support for rk3588 based Cool Pi CM5 GenBook")
+Signed-off-by: Andy Yan <andyshrk@163.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index ce4b511bff9b..6a307a961756 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -273,12 +273,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_4] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_4] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
+ arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
+index 92f0ed83c990..bc6b43a77153 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
+@@ -113,7 +113,7 @@ vcc3v3_lcd: regulator-vcc3v3-lcd {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_lcd";
+ 		enable-active-high;
+-		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&lcdpwr_en>;
+ 		vin-supply = <&vcc3v3_sys>;
+@@ -241,7 +241,7 @@ &pcie3x4 {
+ &pinctrl {
+ 	lcd {
+ 		lcdpwr_en: lcdpwr-en {
+-			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
  
- /*
-@@ -293,12 +293,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
- 	.bar[BAR_4] = { .type = BAR_RESERVED, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
- 
- static const struct pci_epc_features *
+ 		bl_en: bl-en {
 -- 
-2.47.1
+2.43.0
 
 
 _______________________________________________
