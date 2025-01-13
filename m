@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90DAFC02183
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 08:25:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319BBE7719F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 09:20:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mQAeKGBgI9lvo9bKR4Q3LIzg1neCq93QBXNdKyyGi1w=; b=CEcohyqlkCW5tBKceWr3PhcKqI
-	76nU7lWfQdVxIPpnEnFqi8IepBOkLxBl3wHN0rAK6YkFokqJMEjgkbeabFzYV4Scz2cEq2V2lumbW
-	uUU7dW1IdxMr1Hk1KBcsP3utFjQGAoYoenRzn4gmz75xLGViZ2dkGdxbXe8f/3okYnNJBvaOPW5d4
-	TIw3Ft684U3RQAxv30vlLJk1OXDy0jwPEBcmXLOoVMuauwAfIw5vkFzsvIGRp7MJ7JAU3XKRCXvRH
-	l9Ue+AWQrF3fMaDoy6nVVSfHV+sZyNJl6uTxUVfHqe+VS553QyeNdnF/aEdb4aAv71m5+vGkhSn0v
-	WR8AFxXQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+6ljvnBzcfoSd1uAHdPI/Vdy9lTe1A5HX+uIqKny+U4=; b=CINsbfx2+n/7X3
+	TNpSGnGPVbc3go+cEohP20WD5PlHZ4aw2+QIJAe3o9OJHyP/AWJtCLIVJMynAhIkgolJ/bKyhmfzP
+	o8eF0Y9NBd8p6uVvG/m3p19/gPnqjQW3bYMZROn5O0CkU0711RgNhG2tdXvYnKHCaourCiJZt1Zk6
+	DLJWOlnssk1wpCCAhCtLIUruvw4L6uaT9CMOG1Sb72cvztdws0oD6OBqIuAwWzAdC36Vwjwy/2kID
+	QbVRhpAIuWqvOFbeNhpOH7uHfOlpPSCpFOcCDt8jCeQL1mk/Obd8exN1O/al/2pXnBs5qYqmmnAg0
+	gk3VOJdJEWSisECYDNiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXFlR-00000004Njl-2rSo;
-	Mon, 13 Jan 2025 08:25:37 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tXGcU-00000004a38-1OSQ;
+	Mon, 13 Jan 2025 09:20:26 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXFkC-00000004Ncd-0dpE;
-	Mon, 13 Jan 2025 08:24:21 +0000
+	id 1tXGSV-00000004Y8u-0GzY
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Jan 2025 09:10:09 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5401bd6cdb7so4083529e87.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Jan 2025 01:10:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736759405; x=1737364205; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=2m7BqFyPTCb5l2+wQfuOnNqekkEOfPARePQKvpZbjSw=;
+        b=f66w0IweUKuCo07oZfKp/IZrAs5/BZA08j1LADCj/KUCVFcrDI7VIIkzwXZICmWvDe
+         XjCnkuMJjFkZ/p5+G+sBvBlgXJ1Addjv2Fmqy+ERtUcKo2xLtmkoC9nDE3H0S9RTAEPa
+         RZazfSAt0SZxQjvakPq/C5s0X89LwZpd1Sdt4frzpnQRHlnTaDvv8lI55lxT2wR0tPHR
+         X5yBWVgifkvw61Hr6ASDKao+zaIVeywCPMir8frtPcDcmRco8mZByxawbEbTDuFCMObz
+         pQeBd1DOfu70tCTOhmy3yD5pJSUmuwRDPJbDC5enRLSo5Ojt4MM3OlrqsINI//ZvpL/l
+         YE/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736759405; x=1737364205;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2m7BqFyPTCb5l2+wQfuOnNqekkEOfPARePQKvpZbjSw=;
+        b=TZg4LDG+2Pusstj7Yget1sGcUl8jK7KDQbndKnFFpO6BUZpI+qkFLBNrCdckqVZZyl
+         KGvvK2IdlWrwYWACCHASAD6pMgSXj1/UjS0krzzieaRmpkOJezQoMXauOhyUos6HRAGo
+         rTQzNKSXIwsFfiSQ0hOxFNYnNkFuh31ymXijCrqjjOrHHsnUs+ezJcSdYe/nQ4m3mWYZ
+         yfOgfv+uMIvUEANchBfLTjQpsiWDP0GeY1WnCeIZGc2PuArUUFDAD2EYifFGtymGpRVD
+         ClnqLnINQoZp+G1LbZwrWec+sAb9jAXEdH2/HWzLDYJRUz1wxGWMM49iZ4BYRbaS35yh
+         Mw6g==
+X-Forwarded-Encrypted: i=1; AJvYcCWWVjMhR3MuMGd79H3bkS0SXAfdYpvkuhUYPiG6rdahwShn2DxdjZ1WyxrvX3tcRG568Ur+n5Aqxc4MCqL23w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvbyF+f3FnCPIUwaljZfYfAT8uE9gdmw2waCep7XwVLO7uv5Ei
+	7S9Zm7/zDtjf5PvJYQpUF23n02LPzne/zDs7ZwdLIf3UKgH9dm4MwZJoHmBuy/s=
+X-Gm-Gg: ASbGncvAOPQauB+bBuFgzgWMdCTEwgOOdrmUBhb2OSmg9fIvOnv72sDEsPim4xgdEW1
+	2mwm3TS+OGYPHNM7tiEyH6xndBteUh1Da1ndwd4+CEdXk1wwaw4QKlTxyAT0kMhTNPaNg60REws
+	S/GQ346nsm+Mz0QDTsxq2BRglxdrLRsxEyFb3UtsKXJDsO52uzr4s398grXqexuVuvDaUViL2P1
+	SUoLJb/xRnBF9IwELw9+PnnEE/eTUiwySP2J23EjZuAK76CmItZjSL9MsYxzkJET0VY7wALjnNx
+	j3wIs5zH9/GmLKFs338XyVEKPlM0NuCXI3E1
+X-Google-Smtp-Source: AGHT+IGw4VY/Y6W8zkOKJuAFr5OCeGQE4lHsOJ/tJKFeVu0YC0sUMWeW67o9DovWrzDT+skDY5PJJw==
+X-Received: by 2002:a05:6512:3f12:b0:540:3566:5397 with SMTP id 2adb3069b0e04-542845b70d4mr6410811e87.22.1736759405308;
+        Mon, 13 Jan 2025 01:10:05 -0800 (PST)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5428be5492bsm1294955e87.104.2025.01.13.01.10.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Jan 2025 01:10:04 -0800 (PST)
+Date: Mon, 13 Jan 2025 11:10:01 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v1 0/6] Add eDP mode support for Rockchip Samsung HDPTX
+ PHY
+Message-ID: <ezoduel3qz5ihlhekry26cb7ace3bm4xmzsfrsqvbodtcl3gjq@xxo75h7uozei>
+References: <20250112090714.1564158-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1736756657;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NP5Y8/O0Oc9k478L1LRw9mJQHwjSZlVZoadTLuLD3bY=;
-	b=d8Empi5WA2UJ1zS0ddwUrM+Qk1NkOfJa4O3dj5SEXV6LaLW7Y+bc12XtymLBfnjfJ6AgIt
-	sf/zpnRI2sY1w1ufENH7lsq77JuGSqiG8Td2KqrSyllg3aqZthzhUOWKQcWfVXzlnh9n9p
-	dZT1YstAPQKIzzzJWDIxgoHf4KrYWzWgolISWRgFS1fN0vRprnNkcGA9HTODoDwmrfU47C
-	eMai8Ilw7AxGhPCMWO6oGs0+Fwa4ZtXEX+98DYe7iRKAA7k/Pc2dy2Mzbm/e8R0hVILBxM
-	fGNUlWyfs/7sVCUtcMkdK3zpn4r3OmQqBgMLkhnUrWlel2a+BNWaVQKoVLZ49g==
-Date: Mon, 13 Jan 2025 09:24:16 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jonas
- Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki
- <naoki@radxa.com>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 3/3] arm64: dts: rockchip: add dts for Ariaboard
- Photonicat RK3568
-In-Reply-To: <54b5dac0-5791-4b20-a237-dac6fd03c259@classfun.cn>
-References: <20250112073344.1976411-1-bigfoot@classfun.cn>
- <20250112073344.1976411-4-bigfoot@classfun.cn>
- <1e72cc9cdc390e79e97806fe4f7d8abf@manjaro.org>
- <35f8fe37-b06f-49eb-b0c2-430421f1ff3b@classfun.cn>
- <7b55c7469774c41d9896df3100df1630@manjaro.org>
- <54b5dac0-5791-4b20-a237-dac6fd03c259@classfun.cn>
-Message-ID: <3ee25756b12e999631bd959d787ff248@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <20250112090714.1564158-1-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_002420_482874_8C39A5A4 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20250113_011008_306084_B6A43EB8 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +91,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSnVuaGFvLAoKT24gMjAyNS0wMS0xMyAwOToxOCwgSnVuaGFvIFhpZSB3cm90ZToKPiBP
-biAyMDI1LzEvMTMgMTI6MjUsIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gT24gMjAyNS0wMS0xMiAy
-MzoxNiwgSnVuaGFvIFhpZSB3cm90ZToKPj4+IE9uIDIwMjUvMS8xMiAxNjo0NywgRHJhZ2FuIFNp
-bWljIHdyb3RlOgo+Pj4+IFVubGVzcyB0aGUgZGVzaWduIG9mIHRoZSBib2FyZCBpcyBwcm9wcmll
-dGFyeSwgaXQgd291bGQgYmUgZ29vZAo+Pj4+IHRvIHByb3ZpZGUgYSBsaW5rIHRvIHRoZSBib2Fy
-ZCBzY2hlbWF0aWMsIGZvciB0aG9zZSBpbnRlcmVzdGVkCj4+Pj4gaW4gdmVyaWZ5aW5nIHRoZSBi
-b2FyZCBEVCBmaWxlLgo+Pj4+IAo+Pj4+IEFzIGEgbm90ZSwgSSBhbHJlYWR5IHRyaWVkIHRvIGZp
-bmQgdGhlIGJvYXJkIHNjaGVtYXRpYyB3aXRoIG5vCj4+Pj4gc3VjY2Vzcywgc28gdGhlIGRlc2ln
-biBtaWdodCBiZSBwcm9wcmlldGFyeS4KPj4+IAo+Pj4gWWVzLCB0aGlzIGJvYXJkIGlzIHByb3By
-aWV0YXJ5LiBJIGFza2VkIHRoZSBtYW51ZmFjdHVyZXIgYW5kCj4+PiB0aGV5IGRvbid0IHByb3Zp
-ZGUgc2NoZW1hdGljcy4KPj4+IAo+Pj4gQnV0IEkgZm91bmQgYSBwYXJ0aWFsIHNjaGVtYXRpYyBk
-aWFncmFtIG9mIHNvbWUgb2YgY29ubmVjdG9ycwo+Pj4gb24gdGhlIGJvYXJkIGhlcmUKPj4+IGh0
-dHBzOi8vZGwuYXJpYWJvYXJkLmNvbS9waG90b25pY2F0X3JrMzU2OC9QaG90b25pY2F0JTIwcmsz
-NTY4JTIwRVZCJTIwQm9hcmQlMjBzcGVjLnBkZgo+PiAKPj4gWWVzLCBJIGFsc28gZm91bmQgdGhh
-dCBQREYgZmlsZS7CoCBJdCdzIHNvbWV3aGF0IHNpbWlsYXIgdG8gd2hhdAo+PiBSYXNwYmVycnkg
-UGkgcHJvdmlkZXMgd2l0aCBpdHMgcmVkdWNlZCBzY2hlbWF0aWNzIC0tIGhlbHBmdWwgdG8KPj4g
-YW4gZXh0ZW50LCBidXQgc3RpbGwgbGVhdmluZyBhIGxvdCB0byBiZSBkZXNpcmVkLgo+PiAKPj4g
-T3V0IG9mIGN1cmlvc2l0eSwgd2hhdCBkaWQgeW91IGFjdHVhbGx5IHVzZSBhcyBhIHJlZmVyZW5j
-ZSB0byBjcmVhdGUKPj4gdGhlIGJvYXJkIGR0cyBmaWxlP8KgIFBlcmhhcHMgc29tZSBkb3duc3Ry
-ZWFtIGR0cyBmaWxlIHByb3ZpZGVkIGJ5Cj4+IHRoZSBtYW51ZmFjdHVyZXIgb3IgZm91bmQgaW4g
-c29tZSBvcGVyYXRpbmcgc3lzdGVtIGltYWdlPwo+IAo+IEkgd3JvdGUgdGhpcyBkZXZpY2UgdHJl
-ZSBiYXNlZCBvbiBvdGhlciByazM1NjggZGV2aWNlcyBpbiBtYWlubGluZSwKPiBhbmQgZG93bnN0
-cmVhbSBib2FyZCBkdHM6Cj4gaHR0cHM6Ly9naXRodWIuY29tL3Bob3RvbmljYXQvcm9ja2NoaXBf
-cmszNTY4X2tlcm5lbC9ibG9iL25vdm90ZWNoLTUuMTAvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1NjgtcGhvdG9uaWNhdC1iYXNlLmR0c2kKClRoYW5rcyBmb3IgdGhlIGNsYXJpZmlj
-YXRpb24uICBJdCB3b3VsZCBiZSBnb29kIHRvIGluY2x1ZGUgdGhhdApsaW5rIGluIHRoZSBkZXNj
-cmlwdGlvbiBvZiBwYXRjaCAzLzMsIGZvciBmdXR1cmUgcmVmZXJlbmNlLgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Sun, Jan 12, 2025 at 05:07:08PM +0800, Damon Ding wrote:
+> Picked from:
+> https://patchwork.kernel.org/project/linux-rockchip/list/?series=923593
+
+Then it should have been v6, not v1.
+
+> 
+> These patchs have been tested with a 1536x2048p60 eDP panel on
+> RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
+> on RK3588 EVB1 board.
+> 
+> Damon Ding (6):
+>   phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and
+>     ROPLL_REF
+>   phy: phy-rockchip-samsung-hdptx: Supplement some register names with
+>     their full version
+>   phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all
+>     registers
+>   phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
+>   dt-bindings: display: rockchip: Fix label name of hdptxphy for RK3588
+>     HDMI TX Controller
+>   arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
+> 
+>  .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   2 +-
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   4 +-
+>  .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    |   2 +-
+>  .../rockchip/rk3588-coolpi-cm5-genbook.dts    |   2 +-
+>  .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   2 +-
+>  .../rk3588-friendlyelec-cm3588-nas.dts        |   2 +-
+>  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   2 +-
+>  .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   2 +-
+>  .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   2 +-
+>  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   2 +-
+>  .../boot/dts/rockchip/rk3588-tiger-haikou.dts |   2 +-
+>  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   2 +-
+>  .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 +-
+>  .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  |   2 +-
+>  .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   2 +-
+>  .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |   2 +-
+>  .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   2 +-
+>  .../boot/dts/rockchip/rk3588s-rock-5c.dts     |   2 +-
+>  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 971 +++++++++++++++++-
+>  19 files changed, 934 insertions(+), 75 deletions(-)
+> 
+> -- 
+> 2.34.1
+> 
+
+-- 
+With best wishes
+Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
