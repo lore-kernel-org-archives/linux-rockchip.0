@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A405E7719A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 03:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C643E7719A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jan 2025 04:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FWcIdauRdDT/VfFpfjUC9AGIeBSgEFFwxQ33xKurU8I=; b=oLy8GarEPjfkw+
-	yHT5QwhGlrK1SFn+lnHjOzgYFV4tJMiqowyR9W8LyHDNfhlxeyR83BzBub2wp8PhUWfJJqCRVxDDT
-	Usvceks9rNnr9qUSN1aY3NM6O5j3qC2e1dYf7jI+9J/v7o9K66Cltd3g0w4GAxdJV4lXu1xqz3JvC
-	3wFsztXfYkMRZdDfpgZaiGGHRnMGfN93u0OQaBMlLRX/yS5gsXMK3lNETXzznxXoycwtna/BIJGrk
-	z5hgugs2iWAz/fFehkDuPjZ8xev5BbJhuFSjqUKgbvNhXyjFC/k++RCJBLSaYrYRqvoOQROaIKxT3
-	ijctDN+/K7F9i4RtlByA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QiODrvHgk0wdKIQAoxBgYidb9zTpo3LxjCIsHxIzQVk=; b=ODbCx0EDhlCd6ajYghHif5E9In
+	p7lI0eruqcxaO4I38rU+lrCMXlmSLhvIcd3O8EXTDeeQrx1s0El3APv9S6ixlh2urZ6rOwDuEO2uI
+	GcZ7BMvTY75EJuEj7d6BPXQix5axL3UhOCEzhZHeCO4ugvu2ZVMiZLWSRcIFRswwVvzJKptwPQoRa
+	dIKclqc4xeB/DAdQGH/0k4fY4E1wm1lcva3kpXbPdZTsxFrQ/ndFRAHHAcTZDCLua3dVvyExlhTpI
+	vABtkryhXE99NXrztXeYBPaUwQ6DvS6ofUfxWihP3GYg2m8crztXIEMgsbt9G3eMPOE7FHO2pjhTS
+	t54bBM7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXBXC-00000003x1e-2DR3;
-	Mon, 13 Jan 2025 03:54:38 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXBX9-00000003wzx-0NEH;
-	Mon, 13 Jan 2025 03:54:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=eemiIfpJILwOwTzjnZMeRKg1K3cifJJEv104WN7Ptf8=; b=J
-	CISy2Zi4WrKmoei+W04SElMfBUZbXsY2n+xpFOCqDmNHtyexlDrgrdshJr2bSKLl
-	P7T4CJE7Qo1SvA9EIwv7dmzQkavXi3jFYVYDqoIHIRZGv1dLejGYHHEfnDQtQRE3
-	0VYGm1B27i9cq78tLx+8WoWRmp3FsjWETp5TF+zyWA=
-Received: from andyshrk$163.com ( [103.29.142.67] ) by
- ajax-webmail-wmsvr-40-117 (Coremail) ; Mon, 13 Jan 2025 11:53:59 +0800
- (CST)
-X-Originating-IP: [103.29.142.67]
-Date: Mon, 13 Jan 2025 11:53:59 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Thomas Zimmermann" <tzimmermann@suse.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com, 
-	simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, 
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-Subject: Re:Re: [PATCH v2 02/25] drm/dumb-buffers: Provide helper to set
- pitch and size
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <e800ebc2-39b5-46d5-89ec-883ed1c7626b@suse.de>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-3-tzimmermann@suse.de>
- <94f78e1.19bf.1944de709b0.Coremail.andyshrk@163.com>
- <e800ebc2-39b5-46d5-89ec-883ed1c7626b@suse.de>
-X-NTES-SC: AL_Qu2YBPufv0wo7yKeZulS/DNQ2YpmHKvs4olgqcQkZd0qqTHPyz4QZ0BuLUbI3d4WuFSnvoMCEgbKZbJt8QVJ
+	id 1tXC2d-00000003yqE-1vDc;
+	Mon, 13 Jan 2025 04:27:07 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXC1M-00000003ygn-0yJ9;
+	Mon, 13 Jan 2025 04:25:49 +0000
 MIME-Version: 1.0
-Message-ID: <443491d4.4087.1945dcc04e3.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: dSgvCgCXH4lXjoRnjolVAA--.27065W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAHTXmeEidhe-AACs2
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1736742345;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0i/rYtONain48RRX0u5I3QgFdCO9Q8AGBJWpvj/+2GM=;
+	b=LNbCiOsqcKhBuhmC+ka4eaFtsvRGNV9N9yDGYt065LSqN2h6wpjt8HqKqdgfh5AK9pL53e
+	Gu4PRBhlJXoyPCukxwzdmhXC4kKch/mepdvJfwC4vVgRclFaCTEYAhV2wZRdPc+sqXYHuW
+	W95mRt5Ep8+aiqxsll2kRwseXuUxzD82QBikOLPbtjuivLN94k77gZUtW/1qRWidCaLx2n
+	hJLFjQwL1sg7RTR7Kb5D7lXePybHDfKjzPwgLV9I3gqLCw2pttN6QJK2J4JTnyIgxfKjs1
+	i6YIFqWzCuzDpZHZqOszZ7zLPHd5+v71P14vuHEdNTg8ipZPw3oASDRVh4UBRQ==
+Date: Mon, 13 Jan 2025 05:25:44 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Junhao Xie <bigfoot@classfun.cn>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jonas
+ Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki
+ <naoki@radxa.com>, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 3/3] arm64: dts: rockchip: add dts for Ariaboard
+ Photonicat RK3568
+In-Reply-To: <35f8fe37-b06f-49eb-b0c2-430421f1ff3b@classfun.cn>
+References: <20250112073344.1976411-1-bigfoot@classfun.cn>
+ <20250112073344.1976411-4-bigfoot@classfun.cn>
+ <1e72cc9cdc390e79e97806fe4f7d8abf@manjaro.org>
+ <35f8fe37-b06f-49eb-b0c2-430421f1ff3b@classfun.cn>
+Message-ID: <7b55c7469774c41d9896df3100df1630@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250112_195435_513568_E9A8B123 
-X-CRM114-Status: GOOD (  27.96  )
+X-CRM114-CacheID: sfid-20250112_202548_582795_BFBCB7E7 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,286 +73,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Thomas,
-
-At 2025-01-10 21:23:48, "Thomas Zimmermann" <tzimmermann@suse.de> wrote:
->Hi
->
->
->Am 10.01.25 um 02:49 schrieb Andy Yan:
->> Hi Thomas,
->>
->> At 2025-01-09 22:56:56, "Thomas Zimmermann" <tzimmermann@suse.de> wrote:
->>> Add drm_modes_size_dumb(), a helper to calculate the dumb-buffer
->>> scanline pitch and allocation size. Implementations of struct
->>> drm_driver.dumb_create can call the new helper for their size
->>> computations. There's currently quite a bit of code duplication
->>> among DRM's memory managers. Each calculates scanline pitch and
->>> buffer size from the given arguments, but the implementations are
->>> inconsistent in how they treat alignment and format support. Later
->>> patches will unify this code on top of drm_mode_size_dumb() as
->>> much as possible.
->>>
->>> drm_mode_size_dumb() uses existing 4CC format helpers to interpret the
->>> given color mode. This makes the dumb-buffer interface behave similar
->>> the kernel's video= parameter. Again, current per-driver implementations
->>> likely have subtle differences or bugs in how they support color modes.
->>>
->>> Future directions: one bug is present in the current input validation
->>> in drm_mode_create_dumb(). The dumb-buffer overflow tests round up any
->>> given bits-per-pixel value to a multiple of 8. So even one-bit formats,
->>> such as DRM_FORMAT_C1, require 8 bits per pixel. While not common,
->>> low-end displays use such formats; with a possible overcommitment of
->>> memory. At some point, the validation logic in drm_mode_size_dumb() is
->>> supposed to replace the erronous code.
->>>
->>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->>> ---
->>> drivers/gpu/drm/drm_dumb_buffers.c | 93 ++++++++++++++++++++++++++++++
->>> include/drm/drm_dumb_buffers.h     | 14 +++++
->>> 2 files changed, 107 insertions(+)
->>> create mode 100644 include/drm/drm_dumb_buffers.h
->>>
->>> diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
->>> index 9916aaf5b3f2..fd39720bd617 100644
->>> --- a/drivers/gpu/drm/drm_dumb_buffers.c
->>> +++ b/drivers/gpu/drm/drm_dumb_buffers.c
->>> @@ -25,6 +25,8 @@
->>>
->>> #include <drm/drm_device.h>
->>> #include <drm/drm_drv.h>
->>> +#include <drm/drm_dumb_buffers.h>
->>> +#include <drm/drm_fourcc.h>
->>> #include <drm/drm_gem.h>
->>> #include <drm/drm_mode.h>
->>>
->>> @@ -57,6 +59,97 @@
->>>   * a hardware-specific ioctl to allocate suitable buffer objects.
->>>   */
->>>
->>> +static int drm_mode_align_dumb(struct drm_mode_create_dumb *args,
->>> +			       unsigned long pitch_align,
->>> +			       unsigned long size_align)
->>> +{
->>> +	u32 pitch = args->pitch;
->>> +	u32 size;
->>> +
->>> +	if (!pitch)
->>> +		return -EINVAL;
->>> +
->>> +	if (pitch_align)
->>> +		pitch = roundup(pitch, pitch_align);
->>> +
->>> +	/* overflow checks for 32bit size calculations */
->>> +	if (args->height > U32_MAX / pitch)
->>> +		return -EINVAL;
->>> +
->>> +	if (!size_align)
->>> +		size_align = PAGE_SIZE;
->>> +	else if (!IS_ALIGNED(size_align, PAGE_SIZE))
->>> +		return -EINVAL;
->>> +
->>> +	size = ALIGN(args->height * pitch, size_align);
->>> +	if (!size)
->>> +		return -EINVAL;
->>> +
->>> +	args->pitch = pitch;
->>> +	args->size = size;
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +/**
->>> + * drm_mode_size_dumb - Calculates the scanline and buffer sizes for dumb buffers
->>> + * @dev: DRM device
->>> + * @args: Parameters for the dumb buffer
->>> + * @pitch_align: Scanline alignment in bytes
->>> + * @size_align: Buffer-size alignment in bytes
->>> + *
->>> + * The helper drm_mode_size_dumb() calculates the size of the buffer
->>> + * allocation and the scanline size for a dumb buffer. Callers have to
->>> + * set the buffers width, height and color mode in the argument @arg.
->>> + * The helper validates the correctness of the input and tests for
->>> + * possible overflows. If successful, it returns the dumb buffer's
->>> + * required scanline pitch and size in &args.
->>> + *
->>> + * The parameter @pitch_align allows the driver to specifies an
->>> + * alignment for the scanline pitch, if the hardware requires any. The
->>> + * calculated pitch will be a multiple of the alignment. The parameter
->>> + * @size_align allows to specify an alignment for buffer sizes. The
->>> + * returned size is always a multiple of PAGE_SIZE.
->>> + *
->>> + * Returns:
->>> + * Zero on success, or a negative error code otherwise.
->>> + */
->>> +int drm_mode_size_dumb(struct drm_device *dev,
->>> +		       struct drm_mode_create_dumb *args,
->>> +		       unsigned long pitch_align,
->>> +		       unsigned long size_align)
->>> +{
->>> +	u32 fourcc;
->>> +	const struct drm_format_info *info;
->>> +	u64 pitch;
->>> +
->>> +	/*
->>> +	 * The scanline pitch depends on the buffer width and the color
->>> +	 * format. The latter is specified as a color-mode constant for
->>> +	 * which we first have to find the corresponding color format.
->>> +	 *
->>> +	 * Different color formats can have the same color-mode constant.
->>> +	 * For example XRGB8888 and BGRX8888 both have a color mode of 32.
->>> +	 * It is possible to use different formats for dumb-buffer allocation
->>> +	 * and rendering as long as all involved formats share the same
->>> +	 * color-mode constant.
->>> +	 */
->>> +	fourcc = drm_driver_color_mode_format(dev, args->bpp);
->> This will return -EINVAL with bpp drm_mode_legacy_fb_format doesn't support,
->> such as(NV15, NV20, NV30, bpp is 10)[0]
->
->Thanks for taking a look. That NV-related code at [0] is a 'somewhat 
->non-idiomatic use' of the UAPI. The dumb-buffer interface really just 
->supports a single plane. The fix would be a new ioctl that takes a DRM 
->4cc constant and returns a buffer handle/pitch/size for each plane. But 
->that's separate series throughout the various components.
-
-So is there a standard way to create buffer for NV-related format now ?
-With a quick search, I can see many user space use dumb-buffer for NV-releated
-buffer alloc:
-
-[0]https://github.com/tomba/kmsxx/blob/master/kms%2B%2B/src/pixelformats.cpp
-[1]https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/blob/master/lib/igt_fb.c?ref_type=heads
-[2]https://gitlab.freedesktop.org/gstreamer/gstreamer/-/blob/main/subprojects/gst-plugins-bad/sys/kms/gstkmsutils.c?ref_type=heads#L116
-
->
->There's also code XRGB16161616F. This is a viable format for the UAPI, 
->but seems not very useful in practice.
->
->>
->> And there are also some AFBC based format with bpp can't be handled here, see:
->> static __u32 drm_gem_afbc_get_bpp(struct drm_device *dev,
->>                                    const struct drm_mode_fb_cmd2 *mode_cmd)
->> {
->>          const struct drm_format_info *info;
->>                  
->>          info = drm_get_format_info(dev, mode_cmd);
->>                  
->>          switch (info->format) {
->>          case DRM_FORMAT_YUV420_8BIT:
->>                  return 12;
->>          case DRM_FORMAT_YUV420_10BIT:
->>                  return 15;
->>          case DRM_FORMAT_VUY101010:
->>                  return 30;
->>          default:
->>                  return drm_format_info_bpp(info, 0);
->>          }
->> }
->
->Same problem here. These YUV formats are multi-planar and there should 
->be no dumb buffers for them.
-
-These afbc based format are one plane, see:
-
-/*
- * 1-plane YUV 4:2:0
- * In these formats, the component ordering is specified (Y, followed by U
- * then V), but the exact Linear layout is undefined.
- * These formats can only be used with a non-Linear modifier.
- */
-#define DRM_FORMAT_YUV420_8BIT  fourcc_code('Y', 'U', '0', '8')
-#define DRM_FORMAT_YUV420_10BIT fourcc_code('Y', 'U', '1', '0')
-
->
->As we still have to support these all use cases, I've modified the new 
->helper to fallback to computing the pitch from the given bpp value. 
->That's what drivers currently do. Could you please apply the attached 
->patch on top of the series and report back the result of the test? You 
->should see a kernel warning about the unknown color mode, but allocation 
->should succeed.
-
-Yes, the attached patch works for my test case.
-
->
->Best regards
->Thomas
->
->>
->>
->> [0]https://gitlab.freedesktop.org/mesa/drm/-/blob/main/tests/modetest/buffers.c?ref_type=heads#L159
->>
->> This introduce a modetest failure on rockchip platform:
->> # modetest -M rockchip -s 70@68:1920x1080 -P 32@68:1920x1080@NV30
->> setting mode 1920x1080-60.00Hz on connectors 70, crtc 68
->> testing 1920x1080@NV30 overlay plane 32
->> failed to create dumb buffer: Invalid argument
->>
->> I think other platform with bpp can't handler by  drm_mode_legacy_fb_format will
->> also see this kind of failure:
->>
->>
->>
->>> +	if (fourcc == DRM_FORMAT_INVALID)
->>> +		return -EINVAL;
->>> +	info = drm_format_info(fourcc);
->>> +	if (!info)
->>> +		return -EINVAL;
->>> +	pitch = drm_format_info_min_pitch(info, 0, args->width);
->>> +	if (!pitch || pitch > U32_MAX)
->>> +		return -EINVAL;
->>> +
->>> +	args->pitch = pitch;
->>> +
->>> +	return drm_mode_align_dumb(args, pitch_align, size_align);
->>> +}
->>> +EXPORT_SYMBOL(drm_mode_size_dumb);
->>> +
->>> int drm_mode_create_dumb(struct drm_device *dev,
->>> 			 struct drm_mode_create_dumb *args,
->>> 			 struct drm_file *file_priv)
->>> diff --git a/include/drm/drm_dumb_buffers.h b/include/drm/drm_dumb_buffers.h
->>> new file mode 100644
->>> index 000000000000..6fe36004b19d
->>> --- /dev/null
->>> +++ b/include/drm/drm_dumb_buffers.h
->>> @@ -0,0 +1,14 @@
->>> +/* SPDX-License-Identifier: MIT */
->>> +
->>> +#ifndef __DRM_DUMB_BUFFERS_H__
->>> +#define __DRM_DUMB_BUFFERS_H__
->>> +
->>> +struct drm_device;
->>> +struct drm_mode_create_dumb;
->>> +
->>> +int drm_mode_size_dumb(struct drm_device *dev,
->>> +		       struct drm_mode_create_dumb *args,
->>> +		       unsigned long pitch_align,
->>> +		       unsigned long size_align);
->>> +
->>> +#endif
->>> -- 
->>> 2.47.1
->>>
->>>
->>> _______________________________________________
->>> Linux-rockchip mailing list
->>> Linux-rockchip@lists.infradead.org
->>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->-- 
->--
->Thomas Zimmermann
->Graphics Driver Developer
->SUSE Software Solutions Germany GmbH
->Frankenstrasse 146, 90461 Nuernberg, Germany
->GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
->HRB 36809 (AG Nuernberg)
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSnVuaGFvLAoKT24gMjAyNS0wMS0xMiAyMzoxNiwgSnVuaGFvIFhpZSB3cm90ZToKPiBP
+biAyMDI1LzEvMTIgMTY6NDcsIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gT24gMjAyNS0wMS0xMiAw
+ODozMywgSnVuaGFvIFhpZSB3cm90ZToKPj4+IEFkZCBkdHMgZm9yIEFyaWFib2FyZCBQaG90b25p
+Y2F0IFJLMzU2OC4KPj4+IAo+Pj4gV29ya2luZyBJTzoKPj4+IMKgwqDCoCBEZWJ1ZyBVQVJUCj4+
+PiDCoMKgwqAgU0RJTyBRQ0E5Mzc3IFdpRmkgYW5kIEJsdWV0b290aAo+Pj4gwqDCoMKgIE0uMiBF
+LUtleSBQQ0llIFdpRmkgYW5kIEJsdWV0b290aAo+Pj4gwqDCoMKgIE0uMiBCLUtleSBVU0IgTW9k
+ZW0gV1dBTgo+Pj4gwqDCoMKgIEV0aGVybmV0IFdBTiBQb3J0Cj4+PiDCoMKgwqAgTWljcm9TRCBD
+YXJkIHNsb3QKPj4+IMKgwqDCoCBlTU1DCj4+PiDCoMKgwqAgSERNSSBPdXRwdXQKPj4+IMKgwqDC
+oCBNYWxpIEdQVQo+Pj4gwqDCoMKgIFVTQiBUeXBlLUEKPj4+IAo+Pj4gTm90IHdvcmtpbmcgSU86
+Cj4+PiDCoMKgwqAgRXRoZXJuZXQgTEFOIFBvcnQgKExhY2sgb2YgU0dNSUkgc3VwcG9ydCkKPj4+
+IMKgwqDCoCBQb3dlciBtYW5hZ2VtZW50IE1DVSBvbiBVQVJUNCAoRHJpdmVyIHBlbmRpbmcpCj4+
+PiAKPj4+IE5vdCB3b3JraW5nIElPIGluIE1DVToKPj4+IMKgwqDCoCBCYXR0ZXJ5IHZvbHRhZ2Ug
+c2Vuc29yCj4+PiDCoMKgwqAgQm9hcmQgdGVtcGVyYXR1cmUgc2Vuc29yCj4+PiDCoMKgwqAgSGFy
+ZHdhcmUgUG93ZXItb2ZmCj4+PiDCoMKgwqAgSGFyZHdhcmUgV2F0Y2hkb2cKPj4+IMKgwqDCoCBO
+ZXR3b3JrIHN0YXR1cyBMRUQKPj4+IMKgwqDCoCBSZWFsLXRpbWUgY2xvY2sKPj4+IMKgwqDCoCBV
+U0IgQ2hhcmdlciB2b2x0YWdlIHNlbnNvcgo+Pj4gCj4+PiBBYm91dCBvbmJvYXJkIHBvd2VyIG1h
+bmFnZW1lbnQgTUNVOgo+Pj4gwqDCoMKgIEEgaGVhcnRiZWF0IG11c3QgYmUgc2VudCB0byB0aGUg
+TUNVIHdpdGhpbiA2MCBzZWNvbmRzLAo+Pj4gwqDCoMKgIG90aGVyd2lzZSB0aGUgTUNVIHdpbGwg
+cmVzdGFydCB0aGUgc3lzdGVtLgo+Pj4gwqDCoMKgIFdoZW4gcG93ZXJpbmcgb2ZmLCBhIHNodXRk
+b3duIGNvbW1hbmQgbmVlZHMgdG8gYmUgc2VudCB0byB0aGUgCj4+PiBNQ1UuCj4+PiDCoMKgwqAg
+V2hlbiB0aGUgcG93ZXIgYnV0dG9uIGlzIGxvbmcgcHJlc3NlZCwgdGhlIE1DVSB3aWxsIHNlbmQg
+YSAKPj4+IHNodXRkb3duCj4+PiDCoMKgwqAgY29tbWFuZCB0byB0aGUgc3lzdGVtLiBJZiBzeXN0
+ZW0gZG9lcyBub3Qgc2h1dGRvd24gd2l0aGluIDYwIAo+Pj4gc2Vjb25kcywKPj4+IMKgwqDCoCB0
+aGUgcG93ZXIgd2lsbCBiZSB0dXJuZWQgb2ZmIGRpcmVjdGx5Lgo+Pj4gwqDCoMKgIE1DVSBvbmx5
+IHByb3ZpZGVzIHZvbHRhZ2UgZm9yIGNoYXJnZXIgYW5kIGJhdHRlcnkuCj4+PiDCoMKgwqAgTWFu
+dWZhY3R1cmVyIHJlbW92ZWQgUks4eHggUE1JQy4KPj4gCj4+IFVubGVzcyB0aGUgZGVzaWduIG9m
+IHRoZSBib2FyZCBpcyBwcm9wcmlldGFyeSwgaXQgd291bGQgYmUgZ29vZAo+PiB0byBwcm92aWRl
+IGEgbGluayB0byB0aGUgYm9hcmQgc2NoZW1hdGljLCBmb3IgdGhvc2UgaW50ZXJlc3RlZAo+PiBp
+biB2ZXJpZnlpbmcgdGhlIGJvYXJkIERUIGZpbGUuCj4+IAo+PiBBcyBhIG5vdGUsIEkgYWxyZWFk
+eSB0cmllZCB0byBmaW5kIHRoZSBib2FyZCBzY2hlbWF0aWMgd2l0aCBubwo+PiBzdWNjZXNzLCBz
+byB0aGUgZGVzaWduIG1pZ2h0IGJlIHByb3ByaWV0YXJ5Lgo+IAo+IFllcywgdGhpcyBib2FyZCBp
+cyBwcm9wcmlldGFyeS4gSSBhc2tlZCB0aGUgbWFudWZhY3R1cmVyIGFuZAo+IHRoZXkgZG9uJ3Qg
+cHJvdmlkZSBzY2hlbWF0aWNzLgo+IAo+IEJ1dCBJIGZvdW5kIGEgcGFydGlhbCBzY2hlbWF0aWMg
+ZGlhZ3JhbSBvZiBzb21lIG9mIGNvbm5lY3RvcnMKPiBvbiB0aGUgYm9hcmQgaGVyZQo+IGh0dHBz
+Oi8vZGwuYXJpYWJvYXJkLmNvbS9waG90b25pY2F0X3JrMzU2OC9QaG90b25pY2F0JTIwcmszNTY4
+JTIwRVZCJTIwQm9hcmQlMjBzcGVjLnBkZgoKWWVzLCBJIGFsc28gZm91bmQgdGhhdCBQREYgZmls
+ZS4gIEl0J3Mgc29tZXdoYXQgc2ltaWxhciB0byB3aGF0ClJhc3BiZXJyeSBQaSBwcm92aWRlcyB3
+aXRoIGl0cyByZWR1Y2VkIHNjaGVtYXRpY3MgLS0gaGVscGZ1bCB0bwphbiBleHRlbnQsIGJ1dCBz
+dGlsbCBsZWF2aW5nIGEgbG90IHRvIGJlIGRlc2lyZWQuCgpPdXQgb2YgY3VyaW9zaXR5LCB3aGF0
+IGRpZCB5b3UgYWN0dWFsbHkgdXNlIGFzIGEgcmVmZXJlbmNlIHRvIGNyZWF0ZQp0aGUgYm9hcmQg
+ZHRzIGZpbGU/ICBQZXJoYXBzIHNvbWUgZG93bnN0cmVhbSBkdHMgZmlsZSBwcm92aWRlZCBieQp0
+aGUgbWFudWZhY3R1cmVyIG9yIGZvdW5kIGluIHNvbWUgb3BlcmF0aW5nIHN5c3RlbSBpbWFnZT8K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
