@@ -4,61 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F32FC02185
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 14:45:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16BAEE77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 14:47:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=92XODfheTolsKsGyOvTX1bV37NURT3gJjSm9R3rg+3g=; b=FEEoSjAYDQhnSCf7wbFj4iO0EJ
-	dKtRLfPiJkiI7wA/B9V55EYjC4t1WIejE9zl1ZVCt4S3vGguum6QO3KruYQRSk8UVPNCLFPMbc3rR
-	Ky6YD00P8mloYi7PdoFh9dQCjFFz7EEMd6K5XwKgbubcyzzbsVfX4Kpzlgnbd++41jA6ZuNs89IMo
-	G6UmukKm82kq7gb8pTphGDp8sF3XPy/cAWLdACapLWE0BBB0uKAg0KD2DAO/MAvqPNpwVrNQoyQHc
-	ECiSJjTZwmfQJ503jzIiDnyEH1LiWaZ6SAcLQ+dKY+HsHOt/8nsrJezI8GqACLbuHGdTH1Q4Y7faV
-	I6C/x5gQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4mqrMpNGf+tqou0AJKr1FOWeRngAQuXyoZOTIXtrdoc=; b=3JHt410FzA4RVjSOwUIg8qj08n
+	t/B4GF9/edTOe7ni3vHc6fLrYdpVceDwpo6IUUElnA7o6SL0KlVrd+yHV0+i0ZdnUquKlWG/1vIqg
+	NvkvyCqii6WAnHp9xrXNRenrjZ1/r65sRTxAdowJDGWqncCb0L19AVLeH16rcE1KnIJDY8Mk6EIx4
+	6fyPQXGI4Q7xJ+MLsVNlIZZ9fn5Qb227GmqFxes1lGxKY6ZtJWelNM7PLSBhDhz7L7MaNse7UFcP7
+	YIDKMFAFzsNew1UdtUd/uECsRzYyciZOVx/EfUDQ4pC70+ztwjaTIMjNXoS8B3e80ENM7Svmc3wcN
+	1/mjYYVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXiAI-00000008iyM-1Hh4;
-	Tue, 14 Jan 2025 14:45:10 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tXiCj-00000008jbn-3iJG;
+	Tue, 14 Jan 2025 14:47:41 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXi91-00000008iip-38Bx;
-	Tue, 14 Jan 2025 14:43:53 +0000
+	id 1tXiAg-00000008j4L-1zwr;
+	Tue, 14 Jan 2025 14:45:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 58176A41682;
-	Tue, 14 Jan 2025 14:42:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3639C4CEDD;
-	Tue, 14 Jan 2025 14:43:49 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id ED674A416A3;
+	Tue, 14 Jan 2025 14:43:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96D8DC4CEE3;
+	Tue, 14 Jan 2025 14:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736865830;
-	bh=Jxbairy/WoxAViGP+GS8+YL2QWSQ/jRrTknwJjQ2WpM=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=POJ79/Q4eDeO1+RQaoggZZnOwSoKjiH+BHrAk96LifP9/y8toEzzbYUhsS+ZBp+YK
-	 54BatVms1eFGGXiQaXvJZYlZqb/Zq2fKeM5+FTqmkdR7S2sUbLby3gIejkA+f13HDs
-	 19QB4ag0N5cwhPWL36aLH8AfE48JUcJZ/Uw8A9Th5S1Em1AApMMSpW0Jt1iDbsw0Y8
-	 LQCh+anIkOccs1+9PKHmCnMxQQzaWFID5+A8+wsDIs6dozinmJwT85ZBHYQfpJNTno
-	 5+O7oTOCKrMapHfxY6vLWsFhYv+iyW9Uafgw0VWk7xT0zmUmEIgEKE4gC3ExWZciOB
-	 iFY8AOdRzIfKA==
-Date: Tue, 14 Jan 2025 08:43:48 -0600
+	s=k20201202; t=1736865932;
+	bh=njLUbHodj+PkFFJbOpBXMJe/dUHzlPds6g689ssKjDA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ArLYPNP+SZ3jG9EoUmQe5FLLdIDakxwq6Q7RuSD32e73BsYYGiP0HGskwiYISsVk/
+	 A4cN4oaepryylm2zcdyZvwXYmrLXtLEkSjmh3sypogzbKV5dGowGgn5utBYogoeqCQ
+	 gGkaQY0DleA1JU9QhyMp3KQpXRHFHLHLiauaOSxLBjUzjflCEWHxRDD1Tr5JejWzfB
+	 rDcIoXWLIpb1nRBKBBEyfnD3XWjNbkCB8L9qbqxDEpYrpu5k96LEAYFBhQj/kso8Re
+	 cSId/vsSLtV+VWwQndcoz6njFJXIniqcEvPmIAynpF235AZiTHCOJKUOH9gpbPBxqK
+	 RiYjQh2gbztFQ==
+Date: Tue, 14 Jan 2025 14:45:22 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Phong LE <ple@baylibre.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: (subset) [PATCH v10 00/10] drm: add DRM HDMI Codec framework
+Message-ID: <078e2d2f-3bd1-47ed-b6f8-60f6913fdce9@sirena.org.uk>
+References: <20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org>
+ <173680655387.149204.17517246537828613856.b4-ty@kernel.org>
+ <CAA8EJprDaOTEOYf5JHC7UYwqRn2vXUH9FT==HjZg1QNfDMmBcA@mail.gmail.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Dragan Simic <dsimic@manjaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
- Jonas Karlman <jonas@kwiboo.se>, FUKAUMI Naoki <naoki@radxa.com>
-To: Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <20250114001411.1848529-1-bigfoot@classfun.cn>
-References: <20250114001411.1848529-1-bigfoot@classfun.cn>
-Message-Id: <173686580742.898653.5081010500008594364.robh@kernel.org>
-Subject: Re: [PATCH v7 0/3] Add support for Ariaboard Photonicat RK3568
+In-Reply-To: <CAA8EJprDaOTEOYf5JHC7UYwqRn2vXUH9FT==HjZg1QNfDMmBcA@mail.gmail.com>
+X-Cookie: Sauron is alive in Argentina!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_064351_910877_11ED2E58 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20250114_064534_652197_F4AB836D 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,111 +102,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0844823875430345600=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 14 Jan 2025 08:14:08 +0800, Junhao Xie wrote:
-> Add dts for Ariaboard Photonicat RK3568.
-> 
-> This series bring support for:
-> * Debug UART
-> * SDIO QCA9377 WiFi and Bluetooth
-> * M.2 E-Key PCIe WiFi and Bluetooth
-> * M.2 B-Key USB Modem WWAN
-> * Ethernet WAN Port
-> * MicroSD Card slot
-> * eMMC
-> * HDMI Output
-> * Mali GPU
-> * USB Type-A
-> 
-> Changed from v1:
-> - remove some general nodes (firmware, ramoops, reboot-mode)
-> - gmac1 change to phy-mode rgmii-id
-> - corrected some regulator to be closer to schematics
-> - rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
-> https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
-> 
-> Changed from v2:
-> - remove unused headers
-> - corrected some regulator to be closer to schematics
-> - remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
-> https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
-> 
-> Changed from v3:
-> - corrected some regulator to be closer to schematics
-> - changed to using clk32k_out1 in xin32k
-> https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
-> 
-> Changed from v4:
-> - corrected some regulator to be closer to schematics
-> - corrected some label to match node name
-> - use resets props in phy node instead deprecated snps,reset-gpio
-> https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
-> 
-> Changed from v5:
-> - resort regulator nodes
-> - remove dr_mode from usb_host1_xhci
-> https://lore.kernel.org/lkml/20241108031847.700606-1-bigfoot@classfun.cn/
-> 
-> Changed from v6:
-> - fix property gpios to gpio in vcc3v3_pi6c
-> - rename rgmii_phy1 to rgmii_phy
-> - change address from 0x0 to 0x3 in rgmii_phy
-> - add link to downstream board dts
-> https://lore.kernel.org/lkml/20250112073344.1976411-1-bigfoot@classfun.cn/
-> 
-> Junhao Xie (3):
->   dt-bindings: vendor-prefixes: Add prefix for Ariaboard
->   dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
->   arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3568-photonicat.dts   | 591 ++++++++++++++++++
->  4 files changed, 599 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-> 
-> --
-> 2.47.1
-> 
-> 
-> 
+--===============0844823875430345600==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nKWVI6A6JSkBavZP"
+Content-Disposition: inline
 
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+--nKWVI6A6JSkBavZP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+On Tue, Jan 14, 2025 at 03:45:15AM +0200, Dmitry Baryshkov wrote:
+> On Tue, 14 Jan 2025 at 00:16, Mark Brown <broonie@kernel.org> wrote:
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+> > [01/10] ASoC: hdmi-codec: pass data to get_dai_id too
+> >         commit: a8e792d3f0bbecb87ab05e9592cadf0b178ab952
+> > [02/10] ASoC: hdmi-codec: move no_capture_mute to struct hdmi_codec_pdata
+> >         commit: 5b0779ae13de345b405a67c71cbb63705cadb295
 
-  pip3 install dtschema --upgrade
+> Mark, they had your Acks, so they were picked into drm-misc-next.
+> Would that be a problem?
+
+No, the reason I applied them was because I was getting fed up of the
+resends and figured it would be easier to just apply the patches so they
+were in -rc1 and could be dropped.  I'll have missed any mail about this
+being applied due to the drm: header.
+
+--nKWVI6A6JSkBavZP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmeGeIIACgkQJNaLcl1U
+h9BABAf/Rpl0QApU53vHkXku439fvk1W2JlcIkEhtO9wlYIsly+z2mnUMkCOSX4i
+JLpb+GVB0L2TJAF1Y3HQ0ESBC6JzV7JzQiUqBkOTZEOQIXLdCu40xDg5coebNiS4
+sw5DHqMiE7q3rAcXPCkkACdE+o+7S6CuIKgnMXuvMBcNUlNCcmbDEei/z3aSihs+
+A/02s7UlSruEVd5UZv84abvqrMTVq963YEtAnbufnFJ/+xmJzqxzreVWOOMZFG3v
+EmzqBpCq91RmV1JJ8gJe6RnmIfKn2PjesCresNQhoIQecqVkff5nZFIxu77C2vVF
+UlobtBVzPrmFG8C//RkIpQUHCptnCQ==
+=oDw/
+-----END PGP SIGNATURE-----
+
+--nKWVI6A6JSkBavZP--
 
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250114001411.1848529-1-bigfoot@classfun.cn:
-
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: rfkill-modem: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
-
-
-
-
-
+--===============0844823875430345600==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0844823875430345600==--
+
