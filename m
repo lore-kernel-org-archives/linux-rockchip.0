@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9685E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 19:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F2E5E77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 20:02:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
+	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1SsQT3tU4/y5cSwqAQ9TmdCVJQGhveacs0xpG5hOZwQ=; b=IDiFpJX/27kEsy
-	cACaiyaXq/lTU56tip4+WervLrn6U0ScENu41A5BfqDYVOvb3v2cCLwWWFqSQsnWQZFG+EYpoC50W
-	L+fONoGeH03Axw5yo8+jkWDbxuN6GF4msIBZ/Ki8S6n2VYX2X47obO37F7/Ry/9BkYIcw/c6thhbQ
-	JInyxePqtvEhlcqByFILeKEz7d4tqGhKwnCmomEeXBNyxfTKMVEyBYGNRIt3d+MAFYMv2/1L0zANb
-	ZXL1M36f+G+d2JDaJgbzMrhYLLtlfrxEmkBzG7BTuDkcGuyIJJvIsvR2Zr4TMRnLhnvYyl/zAa2LE
-	nXbwMSPVEDZjt3bdfNfg==;
+	List-Owner; bh=FAj2QMbtinEaci50qI3AEe3OyMe2OUWuIU8diMd4BPk=; b=SHgat2qnqSEYiO
+	iGqLS37FLFzeDaCLd09GjnkDwz29CV0c9zlGT+fT1I+tERl4QbQ+Q76Zr00VCYR1bis/oy0mGkkIm
+	kPOORVC7EyEG30djHnfxVRApgZayXoPuDdBhy22wGm3oPUZMKyRj8R+IB/QkC+09NIZYedUeg6Hg7
+	6XbvbDYV+yvXrQ1Et2WzRpZDbPTTuKwO1QkUOYFRFqH5VJXLXeQ5eihS//2mu2SBVm/4rfthT1FQS
+	y8r+nvWd7rrqwSw1PydTbS/LDr6Rq3QDb79a4cByeZ0bv3XrC7ZEQxIoay/B+YNjbK4roqhKckDWI
+	smBVR69/VdSLDuMpor3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXn0i-00000009azx-0BQ7;
-	Tue, 14 Jan 2025 19:55:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tXn7K-00000009cGS-3SaR;
+	Tue, 14 Jan 2025 20:02:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXmyp-00000009abO-3y7r;
-	Tue, 14 Jan 2025 19:53:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=elTGNPu988fAjTrte4nu/pddpSDUwQszKGZ49ovLxfc=; b=MjPzkRGPKNYsvU1uc5+Pq6wcAk
-	27LVQ7PmktQQgGI9NXBvjERYPeKgL/L/mmM8IYrZHYoxkYntegNpyD6rbfvpjzklp/+3WBdfdAjIU
-	MVdwcwYs3owINMW/gYHJCzQeJLLQCkKuZ69pXn7H7k7y3ejKT54v2Pyw04AoHR03krcXLFuVN1/Yg
-	/U9ZdogGhdv/hjp3ZptTFSmiIQ0TZhEq9m4dooWWKF/1TLw0RyEu5NAV85NJfSWm1htFSo02TiMYx
-	xLItCJwAaQZY/+OEoHtJ8mYm4kGL5qCdE5Rez7RfWfvW1fMzbelTJ+hRurFzyZ2FFTEaBPLDlA9+O
-	fXQof7lQ==;
-Received: from i53875b2c.versanet.de ([83.135.91.44] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tXmyf-0007Mt-L4; Tue, 14 Jan 2025 20:53:29 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Joerg Roedel <joro@8bytes.org>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH] iommu: Use str_enable_disable-like helpers
-Date: Tue, 14 Jan 2025 20:53:28 +0100
-Message-ID: <23826147.6Emhk5qWAg@diego>
-In-Reply-To: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
-References: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
+	id 1tXm2D-00000009T7u-1b1N
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 14 Jan 2025 18:53:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Date:To:Cc:From:Subject:References:
+	In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=pSHj05XqsDV6TQqTZU38hHIQGZD0/W6LRLWXVHUKG6k=; b=evku3WW4qrPxWaRwt1EvBz2aAJ
+	iaL9CpEWHzDlc5uAnrklha2BE2vqN4Zah3zFkwRvBfeSl2U5O0hky6oAnVv2cJKBghxy4PsB1cOSm
+	Tfc5UFFG/tl0cEKibekl7D+JTKGBz9eLQB3TiP2izFgpKPNKEM/5GtfRcix8TjzzTmQBfYJXB8nvN
+	6QyIdTzH/JDJzkO/6Eb/GEdstCdF94EL4+HGOxSWycqlAd45IqZ0ix1jvQOhVp/sw0UI+MER+3+fi
+	cyNYxAXAJ0MqCmQe4O1yWcEhHgl2EGGvTt44kdWpvdG9pRl7DZYp6aDPRL2nBaout5BVn+z/kfMPW
+	0R1fHFmQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tXm2A-0000000AYqd-2WDC
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Jan 2025 18:53:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 899B15C59CC;
+	Tue, 14 Jan 2025 18:52:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA92DC4CEDD;
+	Tue, 14 Jan 2025 18:53:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736880781;
+	bh=arcvPQRaygLd/y/EZtH/XTVjRL9Lu4Bch5hftUjZUZE=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=Lvw4v8MgpMQvHGEBNlQjQs8Ap2N3yYK9VkSSq/QtnDQxic9hJD3ji+n2RFzupFsJi
+	 BCQ99I5zVHwCO04zzENS89S8/R+Da3j73O6ToT5tcVEBfIfK9pFOtZR0P1TPcTFRfv
+	 UdV0Lnbze/qhb6zDK98si6x5pFJIGydba7sJy7UqRQW/uo3GmQ0+WBVL25bCJtj3PB
+	 oxBsG5oxy2FTWesiy/qr8dctXux00yImEi2MKh7gJzW+63jetmnhAdr5/ZXBjj6Yfy
+	 HNEKuJq0N18849N9vFxI1tlgDMyKP8WSb9hBA6V+EaBZkR12g2sHDzYK0cG+RNkiTs
+	 FYknZfuez5hGw==
+Message-ID: <07b6745150c7bb671e7355117075c652.sboyd@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <2020465.PYKUYFuaPT@diego>
+References: <2020465.PYKUYFuaPT@diego>
+Subject: Re: [GIT PULL] Rockchip clock changes for 6.14 #1
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Tue, 14 Jan 2025 10:52:58 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_115340_008613_5EF2AAC1 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20250114_185302_868978_FF727D82 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +87,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 14. Januar 2025, 20:26:42 CET schrieb Krzysztof Kozlowski:
-> Replace ternary (condition ? "enable" : "disable") syntax with helpers
-> from string_choices.h because:
-> 1. Simple function call with one argument is easier to read.  Ternary
->    operator has three arguments and with wrapping might lead to quite
->    long code.
-> 2. Is slightly shorter thus also easier to read.
-> 3. It brings uniformity in the text - same string.
-> 4. Allows deduping by the linker, which results in a smaller binary
->    file.
+Quoting Heiko Stuebner (2025-01-14 05:30:35)
+> Hi Mike, Stephen,
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-
->  drivers/iommu/rockchip-iommu.c              | 3 ++-
-
-For the Rockchip part
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 4b369419b32c..323cc665c357 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -25,6 +25,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/slab.h>
->  #include <linux/spinlock.h>
-> +#include <linux/string_choices.h>
->  
->  #include "iommu-pages.h"
->  
-> @@ -611,7 +612,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
->  
->  			dev_err(iommu->dev, "Page fault at %pad of type %s\n",
->  				&iova,
-> -				(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
-> +				str_write_read(flags == IOMMU_FAULT_WRITE));
->  
->  			log_iova(iommu, i, iova);
->  
+> please find below a pull-request with Rockchip clock change for 6.14
 > 
+> Please pull.
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
+> 
+>   Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.14-rockchip-clk1
+> 
+> for you to fetch changes up to cd8b5366636bdff0449b789fb2d33abb20804255:
+> 
+>   clk: rockchip: rk3588: make refclko25m_ethX critical (2025-01-09 16:23:32 +0100)
+> 
+> ----------------------------------------------------------------
 
-
-
-
+Thanks. Pulled into clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
