@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB8A4C02180
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 00:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D329C02184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 00:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YJs/IaYEWbOBUuUvBjystPyUWcYKZPhlj96Lk8t3H9s=; b=pEGi7/kPEz9Ah9
-	KkcnFKDAijMAjrdZol9+jW1y5cqXsM5Pey5GqSEsD7r3KrQBA0HBrDXL6U9WEDKlUpI4e2ZYppREK
-	jEXDk3ktuVTZagQDiHMgZKymLPDBho873KGXqCNoNYNckZKeRxr4Bm4n8j+AlQSsU63OZttLY4GsE
-	E/33dwd28+yb2WYbZ6mHsbu5P0ZV5n265ApXsdNBiOfiehqAwyPdDy1DuupjTByHCYZFVtquC1Ajq
-	6VEmxk2V2kmU4tx9W8eIEgbHQDMLfpygB3l1NaGKeQgsxwxvgzR8/5CCwMZ5oBWjNPMXFcLTz3ZQI
-	r5Jz2N54fMUqgCBxjR9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3qNk6vQI36++5EdBFSdZ3Q0fAHN7HWQj7f+qNROb7hU=; b=4r1ZBTrzvn6v+Q
+	SBggcsxDTaXbbdMLuVMbQf70L9crdd8237rF7NXT2BFhs/NxMLrssMGdX/kQGE1gDlvfVlVdMlPQi
+	WCsgZckEW3I5yktTMNB/gD1AS9khkO+/sd0OzvkKZLxV9/KmSf+urp0Jx7tN+qBPW8kgoXTSBpD92
+	JWLmzVGAq2j/Hr7qyt4WC8C3Hm3cnH7NY389k9gGdVct6S9r87Ia+97fWUA/V7rr5VXZs4aPmIBXJ
+	RXA9xq1byauD2zkICCWVJd3w1JZbZpZygzxnxLU7OTXxrzxEIKRxrFUgV/+1ea+d43Ny/I2eJG0CK
+	pEthMknDKRuXDwYq/q5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXUca-0000000720Y-0dB1;
-	Tue, 14 Jan 2025 00:17:28 +0000
+	id 1tXUcZ-0000000720R-3Own;
+	Tue, 14 Jan 2025 00:17:27 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXUa7-000000071YC-2FnK;
+	id 1tXUa7-000000071YZ-2G99;
 	Tue, 14 Jan 2025 00:14:57 +0000
 Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.162.122])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 29EE978841;
-	Tue, 14 Jan 2025 08:14:45 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 29EE978841
+	by classfun.cn (Postfix) with ESMTPSA id 4472178919;
+	Tue, 14 Jan 2025 08:14:47 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 4472178919
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1736813687;
-	bh=uXQUmf+sUnAZX17QEqWUsAvmffSZN44xH/IxQSgjoig=;
-	h=From:To:Cc:Subject:Date:From;
-	b=qakSak/b1OejsADI6HfazO/Cm+reAR/lopzCErBFyXv20Ks1JTEgRZ0awRokF6NEk
-	 9/lZrl26bRS5ujcR+e7D0ZdYKX2nn60Bi20UzuzxX5pRnZKVdZmmcx1PBihdxGpU6L
-	 vnatJjoo/DBWAWAnX7g67LsC7w1i6kg4i5uOy9oE=
+	s=default; t=1736813693;
+	bh=UkDTYY8KW5swg2Vb/3ARy/Sz6kcmYdaLC2Hfhsg9HCM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BvRjU2uWrVOulgoWCG+VJVtH6onLVhPbmYurG5LeFRS9c3NQV95A+A5UZDNwUJqI3
+	 4PQ22QT65bYVKAj/SRiE5GzsFzZpbSF8Rv3txSBRvMv+HRsweOdSZICMgOhB7Nd0vc
+	 t2U/hmCviYuwMPjqziKwfESov4i55U8YSv8KV07E=
 From: Junhao Xie <bigfoot@classfun.cn>
 To: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
@@ -51,15 +51,19 @@ Cc: Rob Herring <robh@kernel.org>,
 	FUKAUMI Naoki <naoki@radxa.com>,
 	Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v7 0/3] Add support for Ariaboard Photonicat RK3568
-Date: Tue, 14 Jan 2025 08:14:08 +0800
-Message-ID: <20250114001411.1848529-1-bigfoot@classfun.cn>
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v7 1/3] dt-bindings: vendor-prefixes: Add prefix for Ariaboard
+Date: Tue, 14 Jan 2025 08:14:09 +0800
+Message-ID: <20250114001411.1848529-2-bigfoot@classfun.cn>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250114001411.1848529-1-bigfoot@classfun.cn>
+References: <20250114001411.1848529-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250113_161455_977857_90F6F4A4 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20250113_161455_973688_B66F2970 
+X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +80,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add dts for Ariaboard Photonicat RK3568.
+Add an entry for Ariaboard from Shanghai Novotech
 
-This series bring support for:
-* Debug UART
-* SDIO QCA9377 WiFi and Bluetooth
-* M.2 E-Key PCIe WiFi and Bluetooth
-* M.2 B-Key USB Modem WWAN
-* Ethernet WAN Port
-* MicroSD Card slot
-* eMMC
-* HDMI Output
-* Mali GPU
-* USB Type-A
+Ariaboard represents a product line from Shanghai Novotech Co., Ltd.
 
-Changed from v1:
-- remove some general nodes (firmware, ramoops, reboot-mode)
-- gmac1 change to phy-mode rgmii-id
-- corrected some regulator to be closer to schematics
-- rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
-https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
+Link: https://shanghainovotech.com/
+Link: https://ariaboard.com/
 
-Changed from v2:
-- remove unused headers
-- corrected some regulator to be closer to schematics
-- remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
-https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
+Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changed from v3:
-- corrected some regulator to be closer to schematics
-- changed to using clk32k_out1 in xin32k
-https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
-
-Changed from v4:
-- corrected some regulator to be closer to schematics
-- corrected some label to match node name
-- use resets props in phy node instead deprecated snps,reset-gpio
-https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
-
-Changed from v5:
-- resort regulator nodes
-- remove dr_mode from usb_host1_xhci
-https://lore.kernel.org/lkml/20241108031847.700606-1-bigfoot@classfun.cn/
-
-Changed from v6:
-- fix property gpios to gpio in vcc3v3_pi6c
-- rename rgmii_phy1 to rgmii_phy
-- change address from 0x0 to 0x3 in rgmii_phy
-- add link to downstream board dts
-https://lore.kernel.org/lkml/20250112073344.1976411-1-bigfoot@classfun.cn/
-
-Junhao Xie (3):
-  dt-bindings: vendor-prefixes: Add prefix for Ariaboard
-  dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
-  arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-photonicat.dts   | 591 ++++++++++++++++++
- 4 files changed, 599 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index da01616802c7..25e1efbe7c3a 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -147,6 +147,8 @@ patternProperties:
+     description: Arctic Sand
+   "^arcx,.*":
+     description: arcx Inc. / Archronix Inc.
++  "^ariaboard,.*":
++    description: Shanghai Novotech Co., Ltd. (Ariaboard)
+   "^aries,.*":
+     description: Aries Embedded GmbH
+   "^arm,.*":
 -- 
 2.47.1
 
