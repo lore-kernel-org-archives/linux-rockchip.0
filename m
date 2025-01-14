@@ -4,73 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03DF7C02183
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 14:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F32FC02185
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 14:45:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDkhuTzDp9S/W9hJ0xEgTwz7X1i94b589qTw6GY7YSo=; b=nUPPgDhM4yVfwm
-	ceBUvXIPQfMgmoBXOkuRz6GPnLkpPDah2FfTeazAC0EpM4AYUidA4SUrM9psI9FAsC3SLBmXvJstQ
-	bbVh9uw2ZorHT1mFkJ87e79dHCnZ0pUk4+wsQjks9hB2c4UZWVBIU9CDh86ZTDGocI5pBn2fi1oIm
-	OL/p/gNrCn3piW6YIdbCod+dmDq0Er6IgOglHA5eql8T0VievRvr90tBsYQB9eG3Zm2zJkKyDhay5
-	AtdYx+P38aOFU5Rts8GR/X/EfY3jSTbWvfZaO0rkSTum8mA19W8l/N0az3n5UbWAlTsiXvtoohjvL
-	F0UwRYazhTEVWXiT4V4Q==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=92XODfheTolsKsGyOvTX1bV37NURT3gJjSm9R3rg+3g=; b=FEEoSjAYDQhnSCf7wbFj4iO0EJ
+	dKtRLfPiJkiI7wA/B9V55EYjC4t1WIejE9zl1ZVCt4S3vGguum6QO3KruYQRSk8UVPNCLFPMbc3rR
+	Ky6YD00P8mloYi7PdoFh9dQCjFFz7EEMd6K5XwKgbubcyzzbsVfX4Kpzlgnbd++41jA6ZuNs89IMo
+	G6UmukKm82kq7gb8pTphGDp8sF3XPy/cAWLdACapLWE0BBB0uKAg0KD2DAO/MAvqPNpwVrNQoyQHc
+	ECiSJjTZwmfQJ503jzIiDnyEH1LiWaZ6SAcLQ+dKY+HsHOt/8nsrJezI8GqACLbuHGdTH1Q4Y7faV
+	I6C/x5gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXhnF-00000008emh-3Gmn;
-	Tue, 14 Jan 2025 14:21:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tXiAI-00000008iyM-1Hh4;
+	Tue, 14 Jan 2025 14:45:10 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXhj6-00000008dpI-2iEa;
-	Tue, 14 Jan 2025 14:17:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1736864221;
-	bh=UcLT/NGwEPJZ5L1DHsFtFzF+XOJMTV8UvHS9FoikQUE=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=J6wdGop5G4nss4xyIPKF1t7RgMLG7uignLmWgtjyf/K7aqRNzaFLmZOLNdIgQoN03
-	 mBtzE0NfcjP8UrsFiF2V36hFhuIUuS/Pwwrrr132lusduiDR6OUdojfNFgn/O+h84e
-	 E2KCxWlMg/96AjAfJJ1HvgLwCevc73sjTmXVbWg0y9eU9v+GpGKZwoT+JAaBAH40NX
-	 44l/ff93fblxo6G79nkFpDImkyQ9G/UAiQ7clKytn/JT3zObw37DhHGdQBDVM+L3YP
-	 RbFY9HaEDzuKW2N7JPG8T+pwHMNNLsZy6WOwacukqcrxE9BIA51dW4iXT/PlZXg56e
-	 YFAM0Wx6kGIsw==
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:15:862e::7a9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 869C917E02BE;
-	Tue, 14 Jan 2025 15:16:58 +0100 (CET)
-Message-ID: <c71eb0c2052814f709d1cc36bd3e968d72a96749.camel@collabora.com>
-Subject: Re: [RESEND PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>, Tim Surber	
- <me@timsurber.de>, Shreeya Patel <shreeya.patel@collabora.com>,
- heiko@sntech.de, 	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, 	mturquette@baylibre.com, sboyd@kernel.org,
- p.zabel@pengutronix.de, 	jose.abreu@synopsys.com,
- nelson.costa@synopsys.com, shawn.wen@rock-chips.com, 	hverkuil@xs4all.nl,
- hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Date: Tue, 14 Jan 2025 09:16:55 -0500
-In-Reply-To: <9399a881-7d45-4ca3-8249-2e554184d038@collabora.com>
-References: <20241210193904.883225-1-shreeya.patel@collabora.com>
-	 <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
-	 <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
-	 <fbb5016e-678c-4e54-a6a8-0ccaa2bdf45c@timsurber.de>
-	 <a5226fac-2a5b-47f3-b32e-8662bf932bd4@collabora.com>
-	 <d61e344f-fcdd-47af-a142-e8d42edec045@timsurber.de>
-	 <9399a881-7d45-4ca3-8249-2e554184d038@collabora.com>
-Organization: Collabora
-User-Agent: Evolution 3.54.2 (3.54.2-1.fc41) 
+	id 1tXi91-00000008iip-38Bx;
+	Tue, 14 Jan 2025 14:43:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 58176A41682;
+	Tue, 14 Jan 2025 14:42:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3639C4CEDD;
+	Tue, 14 Jan 2025 14:43:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736865830;
+	bh=Jxbairy/WoxAViGP+GS8+YL2QWSQ/jRrTknwJjQ2WpM=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=POJ79/Q4eDeO1+RQaoggZZnOwSoKjiH+BHrAk96LifP9/y8toEzzbYUhsS+ZBp+YK
+	 54BatVms1eFGGXiQaXvJZYlZqb/Zq2fKeM5+FTqmkdR7S2sUbLby3gIejkA+f13HDs
+	 19QB4ag0N5cwhPWL36aLH8AfE48JUcJZ/Uw8A9Th5S1Em1AApMMSpW0Jt1iDbsw0Y8
+	 LQCh+anIkOccs1+9PKHmCnMxQQzaWFID5+A8+wsDIs6dozinmJwT85ZBHYQfpJNTno
+	 5+O7oTOCKrMapHfxY6vLWsFhYv+iyW9Uafgw0VWk7xT0zmUmEIgEKE4gC3ExWZciOB
+	 iFY8AOdRzIfKA==
+Date: Tue, 14 Jan 2025 08:43:48 -0600
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Dragan Simic <dsimic@manjaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
+ Jonas Karlman <jonas@kwiboo.se>, FUKAUMI Naoki <naoki@radxa.com>
+To: Junhao Xie <bigfoot@classfun.cn>
+In-Reply-To: <20250114001411.1848529-1-bigfoot@classfun.cn>
+References: <20250114001411.1848529-1-bigfoot@classfun.cn>
+Message-Id: <173686580742.898653.5081010500008594364.robh@kernel.org>
+Subject: Re: [PATCH v7 0/3] Add support for Ariaboard Photonicat RK3568
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_061704_853352_4285DE6E 
-X-CRM114-Status: GOOD (  39.63  )
+X-CRM114-CacheID: sfid-20250114_064351_910877_11ED2E58 
+X-CRM114-Status: GOOD (  18.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,115 +70,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbWFyZGkgMTQgamFudmllciAyMDI1IMOgIDE0OjM3ICswMzAwLCBEbWl0cnkgT3NpcGVua28g
-YSDDqWNyaXTCoDoKPiBPbiAxLzkvMjUgMDI6MTcsIFRpbSBTdXJiZXIgd3JvdGU6Cj4gPiBIaSwK
-PiA+IAo+ID4gSSB0ZXN0ZWQgeW91ciBwYXRjaCB3aXRoIHRoZSBjb21tYW5kCj4gPiAKPiA+ICMg
-Z3N0LWxhdW5jaC0xLjAgLXYgdjRsMnNyYyBkZXZpY2U9L2Rldi92aWRlbzEgISBmYWtlc2luawo+
-ID4gCj4gPiBJZiB0aGlzIHdvcmtlZCBJIG1vdmVkIG9uIHRvIGEgdmlzdWFsIHRlc3QgdXNpbmcK
-PiA+IAo+ID4gIyBnc3QtbGF1bmNoLTEuMCAtdiB2NGwyc3JjIGRldmljZT0vZGV2L3ZpZGVvMSAh
-IHF1ZXVlICEgdjRsMmNvbnZlcnQgIQo+ID4gd2F5bGFuZHNpbmsKPiA+IAo+ID4gSSB1c2VkIGEg
-V2luZG93cyBQQ8KgIHdpdGggYSBOdmlkaWEgR1RYIDQwNjAgYXMgbXkgc291cmNlIGZvciB0aGUK
-PiA+IGZvbGxvd2luZyB0ZXN0cy4KPiA+IAo+ID4gPiBGb3JtYXTCoMKgwqDCoMKgwqAgfCBSZXN1
-bHTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gPiA+IC0tLS0tLS0tLS0tLSB8IC0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gfAo+ID4gPiA0azYwcCBSR0LCoMKgwqAgfCBS
-ZWNvZ25pemVkIGFzIDEwODBwIC8gMTIwIGZwcyAtIG5vIG91dHB1dMKgwqAgfAo+ID4gPiA0azYw
-cCA0OjI6MsKgIHwgUmVjb2duaXplZCBhcyAxMDgwcCAvIDEyMCBmcHMgLSBubyBvdXRwdXTCoMKg
-IHwKPiA+ID4gNGs2MHAgNDo0OjTCoCB8IEVycm9yOiBEZXZpY2Ugd2FudHMgMSBwbGFuZXPCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+ID4gPiA0azMwcCBSR0LCoMKgwqAgfCBva8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+ID4gPiA0azMwcCA0OjI6MsKgIHwgb2vCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHwKPiA+ID4gNGszMHAgNDo0OjTCoCB8IEVycm9yOiBEZXZpY2Ug
-d2FudHMgMSBwbGFuZXPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+ID4gPiBGSEQ2
-MHAgUkdCwqDCoCB8IG9rwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gPiA+IEZIRDYwcCA0
-OjI6MiB8IG9rwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gPiA+IEZIRDYwcCA0OjQ6NCB8
-IEVycm9yOiBEZXZpY2Ugd2FudHMgMSBwbGFuZXPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfAo+ID4gCj4gPiAKPiA+IFdoZW4gdGVzdGluZyA0OjQ6NCBjaHJvbWEgSSBnb3QgdGhlIGZv
-bGxvd2luZyBlcnJvcjoKPiA+IAo+ID4gIyBnc3QtbGF1bmNoLTEuMCAtdiB2NGwyc3JjIGRldmlj
-ZT0vZGV2L3ZpZGVvMSAhIGZha2VzaW5rCj4gPiAvc3lzL3Y0bDIvZ3N0djRsMm9iamVjdC5jKDQz
-NDQpOiBnc3RfdjRsMl9vYmplY3Rfc2V0X2Zvcm1hdF9mdWxsICgpOiAvCj4gPiBHc3RQaXBlbGlu
-ZTpwaXBlbGluZTAvR3N0VjRsMlNyYzp2NGwyc3JjMDoKPiA+IERldmljZSB3YW50cyAxIHBsYW5l
-cwo+ID4gCj4gPiBJIGNvdWxkIHJlY29yZCBhbmQgY29udmVydCAod2l0aCBlcnJvcnMpIHRoZSBm
-aWxlcyB3aXRoIDQ6NDo0IGNocm9tYQo+ID4gdXNpbmcgdGhlIGNvbW1hbmQgU2hyZWV5YSBwb3N0
-ZWQsIGJ1dCB0aGUgcmVzdWx0aW5nIHZpZGVvIGhhZCB3cm9uZwo+ID4gY29sb3JzIGFuZCB3YXMg
-Zmxhc2hpbmcuCj4gPiAKPiA+IEkgd2FzIG5vdCBhYmxlIHRvIHRlc3QgNDoyOjAgY2hyb21hLiBJ
-IHRyaWVkIHRvIGdlbmVyYXRlIGFuIGN1c3RvbSBFRElECj4gPiB3aXRoIHN1cHBvcnQgZm9yIGl0
-IGJ1dCBJIGNvdWxkIG5vdCBzZWxlY3QgaXQgaW4gdGhlIGdyYXBoaWNzIGRyaXZlciBpbgo+ID4g
-dGhlIHNvdXJjZSwgbWF5YmUgdGhpcyBpcyBqdXN0IGFuIGlzc3VlIHdpdGggbXkgc2V0dXAuCj4g
-Cj4gVGhhbmtzIGEgbG90IGZvciB0aGUgdGVzdGluZywgdmVyeSBhcHByZWNpYXRlIGl0ISBHb29k
-IHRoYXQgUkdCIHdvcmtzCj4gZm9yIHlvdSB3aXRoIG5vIHByb2JsZW1zLgo+IAo+IFRlc3Rpbmcg
-WVVWIGZvcm1hdHMgaXNuJ3QgdHJpdmlhbC4gUGVyc29uYWxseSBJJ3ZlIGEgY3VzdG9tIHNldHVw
-IHdpdGggYQo+IG1vZGlmaWVkIGRpc3BsYXkgZHJpdmVyIG9mIFJQaSB0byB0ZXN0IHRoZW0uIFNl
-ZSBtb3JlIGJlbG93Lgo+IAo+ID4gSSBhbHNvIG9ic2VydmVkIHRoYXQgdGhlIHRoZSBmcmFtZXJh
-dGUgaXMgcmVwb3J0ZWQgd3JvbmcsIGZvciBleGFtcGxlCj4gPiBzZXR0aW5nIHRoZSBzb3VyY2Ug
-dG8gRkhENjBwIFJHQiByZXN1bHRlZCBpbiB0aGUgZm9sbG93aW5nOgo+ID4gCj4gPiAjIHY0bDIt
-Y3RsIC0tYWxsIC1MIC0tbGlzdC1mb3JtYXRzLWV4dCAtZCAvZGV2L3ZpZGVvMAo+ID4gQWN0aXZl
-IHdpZHRoOiAxOTIwCj4gPiDCoMKgwqDCoEFjdGl2ZSBoZWlnaHQ6IDEwODAKPiA+IMKgwqDCoMKg
-VG90YWwgd2lkdGg6IDIyMDAKPiA+IMKgwqDCoMKgVG90YWwgaGVpZ2h0OiAxMTI1Cj4gPiDCoMKg
-wqDCoEZyYW1lIGZvcm1hdDogcHJvZ3Jlc3NpdmUKPiA+IMKgwqDCoMKgUG9sYXJpdGllczogLXZz
-eW5jIC1oc3luYwo+ID4gwqDCoMKgwqBQaXhlbGNsb2NrOiAyMTQwNzYwMDAgSHogKDg2LjUwIGZy
-YW1lcyBwZXIgc2Vjb25kKQo+ID4gCj4gPiBUaGlzIHdyb25nIGZyYW1lcmF0ZSByZXBvcnRpbmcg
-c2VlbWVkIHRvIGhhcHBlbiBhY3Jvc3MgYWxsIGZyYW1lcmF0ZXMKPiA+IGFuZCByZXNvbHV0aW9u
-cy4gR3N0cmVhbWVyIFBpcGVsaW5lIG5lZ290YXRpb24gc2hvd2VkIHRoZSBzYW1lIHJlc3VsdHMu
-Cj4gCj4gSSd2ZSByZS10ZXN0ZWQgWVVWNDQ0IDRrIGNhcHR1cmUgdXNpbmcgUlBpNCwgd29ya3Mg
-Zmxhd2xlc3NseS4gTm90ZSBmb3IKPiBnc3QtbGF1bmNoLTEuMCB5b3UgdXNlZCB2aWRlbzEgYW5k
-IHZpZGVvMCBkZXZpY2UgaXMgdXNlZCBieSB2NGwyLWN0bAo+IGNvbW1hbmQgYWJvdmUsIG1heWJl
-IHlvdSdyZSB1c2luZyB3cm9uZyBkZXZpY2UuIFBsZWFzZSBwb3N0IGEgY29tcGxldGUKPiBvdXRw
-dXQgb2YgdGhlIHY0bDItY3RsIGNvbW1hbmQuCj4gCj4gVGhlIGNvbW1hbmQgSSB1c2VkIHRvIHRl
-c3QgWVVWNDQ0IGNhcHR1cmU6Cj4gCj4gIyB2NGwyLWN0bCAtLXZlcmJvc2UgLWQgL2Rldi92aWRl
-bzEKPiAtLXNldC1mbXQtdmlkZW89d2lkdGg9Mzg0MCxoZWlnaHQ9MjE2MCxwaXhlbGZvcm1hdD1O
-VjI0IC0tc3RyZWFtLW1tYXA9NAo+IC0tc3RyZWFtLXNraXA9MyAtLXN0cmVhbS1jb3VudD0zMzAw
-IC0tc3RyZWFtLXRvPWhkbWkucmF3IC0tc3RyZWFtLXBvbGwKPiAKPiBUaGUgSSBjb252ZXJ0ZWQg
-Y2FwdHVyZWQgZGF0YSB0byBhIHZpZGVvIGZpbGUgYW5kIHBsYXllZCBpdDoKPiAKPiAjIGZmbXBl
-ZyAtZiByYXd2aWRlbyAtdmNvZGVjIHJhd3ZpZGVvIC1zIDM4NDB4MjE2MCAtciAzMCAtcGl4X2Zt
-dCBudjI0Cj4gLXkgLWkgaGRtaS5yYXcgb3V0cHV0Lm1rdiAmJiBtcHYgb3V0cHV0Lm1rdiAtbG9v
-cCAwCj4gCj4gRG9uJ3Qgc2VlIGFueSBwcm9ibGVtcyB3aXRoIGEgcmVwb3J0ZWQgZnJhbWVyYXRl
-Ogo+IAo+IERWIHRpbWluZ3M6Cj4gICAgICAgICBBY3RpdmUgd2lkdGg6IDM4NDAKPiAgICAgICAg
-IEFjdGl2ZSBoZWlnaHQ6IDIxNjAKPiAgICAgICAgIFRvdGFsIHdpZHRoOiA0NDAwCj4gICAgICAg
-ICBUb3RhbCBoZWlnaHQ6IDIyNTAKPiAgICAgICAgIEZyYW1lIGZvcm1hdDogcHJvZ3Jlc3NpdmUK
-PiAgICAgICAgIFBvbGFyaXRpZXM6IC12c3luYyAtaHN5bmMKPiAgICAgICAgIFBpeGVsY2xvY2s6
-IDI5Njk5MjAwMCBIeiAoMzAuMDAgZnJhbWVzIHBlciBzZWNvbmQpCj4gCj4gTm90ZSB0aGUgdGlt
-aW5nIGRhdGEgcmVwb3J0ZWQgYnkgdjRsMi1jdGwgdXBkYXRlcyBhZnRlciBsYXVuY2hpbmcgdGhl
-Cj4gY2FwdHVyZS4gSXQncyBub3QgdXBkYXRlZCBkeW5hbWljYWxseSB3aGVuIHlvdSBjaGFuZ2lu
-ZyBtb2RlIG9uIHRoZSBzb3VyY2UuCgpHU3RyZWFtZXIgdXNlcyBHX1BBUk0gdG8gZ2V0IGFuZCBy
-ZXBvcnQgdGhlIGZyYW1lIGludGVydmFsIChhbmQgZmxpcCB0aGUKZnJhY3Rpb24gb3ZlciB0byBt
-YWtlIGl0IGEgZnJhbWUgcmF0ZSkuIEkndmUgYXNzdW1lZCB0aGVzZSB0d28gc2hvdWxkIG1hdGNo
-IGFuZAppdCB3YXNuJ3Qgd29ydGggYSBzcGVjaWFsIGNhc2Ugb2YgSERNSSByZWNlaXZlcnMuCgpO
-aWNvbGFzCgo+IAo+IExhc3RseSwgcGxlYXNlIHJ1biBgZWNobyAzID4KPiAvc3lzL21vZHVsZS9z
-eW5vcHN5c19oZG1pcngvcGFyYW1ldGVycy9kZWJ1Z2AuICBXYXRjaCB0aGUga21zZyBsb2cuCj4g
-Q2hlY2sgdGhhdCBpdCBzYXlzICJoZG1pcnhfZ2V0X3BpeF9mbXQ6IHBpeF9mbXQ6IFlVVjQ0NCIg
-d2hlbiB5b3UKPiBjb25uZWN0aW5nIEhETUkgY2FibGUgdG8gYSBZVVY0NDQgc291cmNlIGFuZCBz
-ZWUgb3RoZXIgcmVsYXRlZCBtZXNzYWdlcy4KPiBJZiBpdCBzYXlzIFJHQiwgdGhlbiB5b3VyIHNv
-dXJjZSBpcyB0cmFuc21pdHRpbmcgUkdCLgo+IAo+ID4gRHVyaW5nIG15IHRlc3RpbmcgSSBnb3Qg
-c29tZXRpbWVzIGFuIGVycm9yCj4gPiAKPiA+IAo+ID4gIyBkbWVzZwo+ID4gZG1hIGFsbG9jIG9m
-IHNpemUgMjQ4ODMyMDAgZmFpbGVkCj4gPiAKPiA+IAo+ID4gSSdtIG5vdCBzdXJlIHdoZW4gdGhp
-cyBoYXBwZW5lZCBhbmQgaG93IHRvIHJlcHJvZHVjZSBpdC4KPiAKPiBUaGlzIGNvbWVzIGZyb20g
-djRsIGNvcmUsIHNob3VsZCBiZSBoYXJtbGVzcyBhcyBsb25nIGFzIGNhcHR1cmUgd29ya3MuCj4g
-SXQncyBhIGtub3duIG5vaXN5IG1zZywgeW91IG1heSBpZ25vcmUgaXQgZm9yIHRvZGF5Lgo+IAo+
-ID4gVGhlbiBJIHRyaWVkIHRvIHVzZSBhbiBBcHBsZVRWIDRrIGFzIHNvdXJjZS4gSSBkb24ndCBr
-bm93IHdoYXQKPiA+IHJlc29sdXRpb24gaXQgdHJpZWQgdG8gbmVnb3RpYXRlIGJ1dCBJIGdvdCB0
-aGlzIGVycm9yIGluIGFkZGl0aW9uIHRvIHRoZQo+ID4gcHJldmlvdXMgIkRldmljZSB3YW50cyAx
-IHBsYW5lcyIgYW5kIG5vIGNvbm5lY3Rpb246Cj4gPiAKPiA+ICMgZG1lc2cKPiA+IGZkZWUwMDAw
-LmhkbWlfcmVjZWl2ZXI6IGhkbWlyeF9xdWVyeV9kdl90aW1pbmdzOiBzaWduYWwgaXMgbm90IGxv
-Y2tlZAo+ID4gZmRlZTAwMDAuaGRtaV9yZWNlaXZlcjogaGRtaXJ4X3dhaXRfc2lnbmFsX2xvY2s6
-IHNpZ25hbCBub3QgbG9jaywKPiA+IHRtZHNfY2xrX3JhdGlvOjAKPiA+IGZkZWUwMDAwLmhkbWlf
-cmVjZWl2ZXI6IGhkbWlyeF93YWl0X3NpZ25hbF9sb2NrOiBtdV9zdDoweDAsIHNjZGNfc3Q6MHgw
-LAo+ID4gZG1hX3N0MTA6MHgxMAo+ID4gZmRlZTAwMDAuaGRtaV9yZWNlaXZlcjogaGRtaXJ4X3dh
-aXRfc2lnbmFsX2xvY2s6IHNpZ25hbCBub3QgbG9jaywKPiA+IHRtZHNfY2xrX3JhdGlvOjAKPiA+
-IGZkZWUwMDAwLmhkbWlfcmVjZWl2ZXI6IGhkbWlyeF93YWl0X3NpZ25hbF9sb2NrOiBtdV9zdDow
-eDAsIHNjZGNfc3Q6MHgwLAo+ID4gZG1hX3N0MTA6MHgxNAo+IAo+ICJEZXZpY2Ugd2FudHMgMSBw
-bGFuZXMiIHNvdW5kcyBsaWtlIHlvdSdyZSB1c2luZyBhIHdyb25nIHY0bCB2aWRlbwo+IGRldmlj
-ZS4gUGxlYXNlIGRvdWJsZSBjaGVjay4gVGhvdWdoLCB0aGUgInNpZ25hbCBub3QgbG9jayIgbWVh
-bnMgaXQKPiBkb2Vzbid0IHdvcmsgYW55d2F5cywgcGxlYXNlIG1ha2Ugc3VyZSB5b3UncmUgdXNp
-bmcgdGhlIGRlZmF1bHQgZHJpdmVyCj4gRURJRCBhbmQgbm90IGEgY3VzdG9tIG9uZS4KPiAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On Tue, 14 Jan 2025 08:14:08 +0800, Junhao Xie wrote:
+> Add dts for Ariaboard Photonicat RK3568.
+> 
+> This series bring support for:
+> * Debug UART
+> * SDIO QCA9377 WiFi and Bluetooth
+> * M.2 E-Key PCIe WiFi and Bluetooth
+> * M.2 B-Key USB Modem WWAN
+> * Ethernet WAN Port
+> * MicroSD Card slot
+> * eMMC
+> * HDMI Output
+> * Mali GPU
+> * USB Type-A
+> 
+> Changed from v1:
+> - remove some general nodes (firmware, ramoops, reboot-mode)
+> - gmac1 change to phy-mode rgmii-id
+> - corrected some regulator to be closer to schematics
+> - rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
+> https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
+> 
+> Changed from v2:
+> - remove unused headers
+> - corrected some regulator to be closer to schematics
+> - remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
+> https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
+> 
+> Changed from v3:
+> - corrected some regulator to be closer to schematics
+> - changed to using clk32k_out1 in xin32k
+> https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
+> 
+> Changed from v4:
+> - corrected some regulator to be closer to schematics
+> - corrected some label to match node name
+> - use resets props in phy node instead deprecated snps,reset-gpio
+> https://lore.kernel.org/lkml/20240914145549.879936-1-bigfoot@classfun.cn/
+> 
+> Changed from v5:
+> - resort regulator nodes
+> - remove dr_mode from usb_host1_xhci
+> https://lore.kernel.org/lkml/20241108031847.700606-1-bigfoot@classfun.cn/
+> 
+> Changed from v6:
+> - fix property gpios to gpio in vcc3v3_pi6c
+> - rename rgmii_phy1 to rgmii_phy
+> - change address from 0x0 to 0x3 in rgmii_phy
+> - add link to downstream board dts
+> https://lore.kernel.org/lkml/20250112073344.1976411-1-bigfoot@classfun.cn/
+> 
+> Junhao Xie (3):
+>   dt-bindings: vendor-prefixes: Add prefix for Ariaboard
+>   dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
+>   arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3568-photonicat.dts   | 591 ++++++++++++++++++
+>  4 files changed, 599 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+> 
+> --
+> 2.47.1
+> 
+> 
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250114001411.1848529-1-bigfoot@classfun.cn:
+
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
+arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: rfkill-modem: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
