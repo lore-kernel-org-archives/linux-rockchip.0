@@ -4,76 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7459E77188
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 11:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B725AE77188
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 13:31:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D0koP+OZcCcTvNZOs0dyuK5v/esGz/QEl7Z7HlRb+3g=; b=SpoTCef2Y2WbP/
-	ALEdI9V3jDiOJbMnZ/0LBwWpQDvK6hDRmpRFsknWVDnvc3agvBr5kJyXfFKdOKT+gx4haMb6LZOzP
-	9VzIB1/PwMId5x0505+B8Awc3Y58jkKVKkpwmI1nGym5rmjDD+qwaXjFKUKn/pvkHIn538J8vcPvj
-	R7LwRbxpHWoy044qG7AAvTiYgr/Ax3p1JX1ygwEKl0GuQgPqjCceuiDVBJ03XSDhuHFbdKdl3c19f
-	zQJezV3t8fbD7YyrKMlLhl2kHsT5A6BfBB+AIE3ykpbG7Xw6hlV8CKmj0MEjtBhqgyzYgVJri1FRT
-	PBTHVZ7HTf812l/YaGpw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T+Bctl71kkeuY3h35pHURRhTsIlaaysmEh1xZ0aYnE0=; b=JHggSwbUq2IDNr
+	fhCyAeE28aVhON7a/j2qrJC2faYP2xHeCHalhITGrUR7SfZPghk6Mdt/VoGWxTt4BWltzDR1jR3Hd
+	VKNaqGM22GxdlOrIJhCOZNYqaQ4JFMNuP1WIzwR6CMUQUFovKHuFQTVLYo97mox85lTQ60SLhCG3W
+	A4/rKNOgAQJruZUNpsnlx8/fER+/DugQ0EdsDJsRYl4zSceCHALSQTTyq7Oo5vmbALX15cANoU50u
+	E3P7dhNNLDML/nYAufuKYKM8HsiW7kTYwFgDAk+nPNm33ykVGe2o5uHyJtUFstzmA0VDjFMKriFwE
+	tTB3F/ZJA/bT6m+stNLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXfHR-00000008HeF-32VC;
-	Tue, 14 Jan 2025 11:40:21 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tXh0O-00000008Ww1-3ffH;
+	Tue, 14 Jan 2025 13:30:52 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXfFE-00000008HIY-2ah8;
-	Tue, 14 Jan 2025 11:38:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1736854659; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K7bpJoRSD9xaIAURIufGX2z7/sm5DwWQadN52Eb15woL8g8Lf+l9p9/fH4LU1XaNc3kS121S+xP3WwsJ9l90mJKRfqo6j02t5fSISv5Dvfj0o/Xzq+eAhlN+xZOxsv77vitaqO8e+idlWO/DOM6aUYA8W8yzzV0pPYjWGgwGCa4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1736854659; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KjQD7wnzrgRiFT2qnnM8Tu9JE5J2THHckGAFjcSoO6I=; 
-	b=D8OdykcCRRKQfNSJH6+LY1fhWSWWamjHe89vaxZTl0tIlchBZXVPkL2U5xJAhwB2z3XdCFFi/7ObNaMvIljLtABWGpFhW1yooID9I9HRYQqV2rzWGSHk21mlyARLgd0QHAXobfp9Fr1alm+ZvwQOmQLjcubcXUKnEN6aw+O+tmw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1736854659;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=KjQD7wnzrgRiFT2qnnM8Tu9JE5J2THHckGAFjcSoO6I=;
-	b=Oe++g22Q8hGcC3MenJqDOIgRmGKuaE4Q/MQTx0pV4V/Zgii555nAhn0ZyI9oHwX0
-	PmS6jvKZA0git0k/0l+QpCkrUqjzq1KGNfNt06dmlFOOrHaodKl1PddgMUedvXpa0AK
-	vh4bLSzfLHlAUAqDpvH/6TW2FpHOEAingRxHXgMk=
-Received: by mx.zohomail.com with SMTPS id 1736854656305475.3833676137276;
-	Tue, 14 Jan 2025 03:37:36 -0800 (PST)
-Message-ID: <9399a881-7d45-4ca3-8249-2e554184d038@collabora.com>
-Date: Tue, 14 Jan 2025 14:37:30 +0300
+	id 1tXh0L-00000008Wuo-3wCa
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Jan 2025 13:30:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=DsDqFsKNlq6k5bv26Wc6cezOu7WfsIt9U2WvPdD+fPo=; b=ZxVsSuT8Xs5o8SLdZaOxUY8byS
+	O8m3iIAPaCTgl2t9Qmq0bFUCKO9G5xIfg90xcvw0Ps4SOm9phB5k/2fZzRKMcMKOM5Tzn7H/Dg6Kl
+	ztrb0ZHGDNsDGe/I3IVrnEBqXqAb70NPBLx1fDw6M6gbCM+qAliy8oi1hOH7huKSgEr7S/ddz4sp8
+	nvVKu79sdIugOnd1kUmoqjaBgze1LFLXlvkd2h63/2tok/NbrbIS0LZ1gjjfVU8HxzFtkO3ZJ5voR
+	qDhJDBZHAEqXBHA5pwvY+mdSgdAmvwPy6+8aTvH1zWv4Hv/3CWMHxp6htcNUT/pRchiQZz48WRwti
+	pOdjrTGQ==;
+Received: from i53875b2c.versanet.de ([83.135.91.44] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tXh08-0002c1-EM; Tue, 14 Jan 2025 14:30:36 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 6.14 #1
+Date: Tue, 14 Jan 2025 14:30:35 +0100
+Message-ID: <2020465.PYKUYFuaPT@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v5 0/4] Add Synopsys DesignWare HDMI RX Controller
-To: Tim Surber <me@timsurber.de>, Shreeya Patel
- <shreeya.patel@collabora.com>, heiko@sntech.de, mchehab@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
- hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20241210193904.883225-1-shreeya.patel@collabora.com>
- <acb91a34-c0f8-4f03-8945-755b4e42dcf3@timsurber.de>
- <925d7571-48e4-437d-b55c-3f7bbad8af1d@collabora.com>
- <fbb5016e-678c-4e54-a6a8-0ccaa2bdf45c@timsurber.de>
- <a5226fac-2a5b-47f3-b32e-8662bf932bd4@collabora.com>
- <d61e344f-fcdd-47af-a142-e8d42edec045@timsurber.de>
-Content-Language: en-US
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <d61e344f-fcdd-47af-a142-e8d42edec045@timsurber.de>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_033804_750480_F3DE9C1F 
-X-CRM114-Status: GOOD (  29.00  )
+X-CRM114-CacheID: sfid-20250114_053049_996760_D27B0E77 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,106 +66,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMS85LzI1IDAyOjE3LCBUaW0gU3VyYmVyIHdyb3RlOgo+IEhpLAo+IAo+IEkgdGVzdGVkIHlv
-dXIgcGF0Y2ggd2l0aCB0aGUgY29tbWFuZAo+IAo+ICMgZ3N0LWxhdW5jaC0xLjAgLXYgdjRsMnNy
-YyBkZXZpY2U9L2Rldi92aWRlbzEgISBmYWtlc2luawo+IAo+IElmIHRoaXMgd29ya2VkIEkgbW92
-ZWQgb24gdG8gYSB2aXN1YWwgdGVzdCB1c2luZwo+IAo+ICMgZ3N0LWxhdW5jaC0xLjAgLXYgdjRs
-MnNyYyBkZXZpY2U9L2Rldi92aWRlbzEgISBxdWV1ZSAhIHY0bDJjb252ZXJ0ICEKPiB3YXlsYW5k
-c2luawo+IAo+IEkgdXNlZCBhIFdpbmRvd3MgUEPCoCB3aXRoIGEgTnZpZGlhIEdUWCA0MDYwIGFz
-IG15IHNvdXJjZSBmb3IgdGhlCj4gZm9sbG93aW5nIHRlc3RzLgo+IAo+IHwgRm9ybWF0wqDCoMKg
-wqDCoMKgIHwgUmVzdWx0wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+IHwgLS0tLS0tLS0tLS0tIHwgLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB8Cj4gfCA0azYwcCBSR0LC
-oMKgwqAgfCBSZWNvZ25pemVkIGFzIDEwODBwIC8gMTIwIGZwcyAtIG5vIG91dHB1dMKgwqAgfAo+
-IHwgNGs2MHAgNDoyOjLCoCB8IFJlY29nbml6ZWQgYXMgMTA4MHAgLyAxMjAgZnBzIC0gbm8gb3V0
-cHV0wqDCoCB8Cj4gfCA0azYwcCA0OjQ6NMKgIHwgRXJyb3I6IERldmljZSB3YW50cyAxIHBsYW5l
-c8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gfCA0azMwcCBSR0LCoMKgwqAgfCBv
-a8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+IHwgNGszMHAgNDoyOjLCoCB8IG9rwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gfCA0azMwcCA0OjQ6NMKgIHwgRXJyb3I6IERldmljZSB3
-YW50cyAxIHBsYW5lc8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gfCBGSEQ2MHAg
-UkdCwqDCoCB8IG9rwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4gfCBGSEQ2MHAgNDoyOjIg
-fCBva8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+IHwgRkhENjBwIDQ6NDo0IHwgRXJyb3I6
-IERldmljZSB3YW50cyAxIHBsYW5lc8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4g
-Cj4gCj4gV2hlbiB0ZXN0aW5nIDQ6NDo0IGNocm9tYSBJIGdvdCB0aGUgZm9sbG93aW5nIGVycm9y
-Ogo+IAo+ICMgZ3N0LWxhdW5jaC0xLjAgLXYgdjRsMnNyYyBkZXZpY2U9L2Rldi92aWRlbzEgISBm
-YWtlc2luawo+IC9zeXMvdjRsMi9nc3R2NGwyb2JqZWN0LmMoNDM0NCk6IGdzdF92NGwyX29iamVj
-dF9zZXRfZm9ybWF0X2Z1bGwgKCk6IC8KPiBHc3RQaXBlbGluZTpwaXBlbGluZTAvR3N0VjRsMlNy
-Yzp2NGwyc3JjMDoKPiBEZXZpY2Ugd2FudHMgMSBwbGFuZXMKPiAKPiBJIGNvdWxkIHJlY29yZCBh
-bmQgY29udmVydCAod2l0aCBlcnJvcnMpIHRoZSBmaWxlcyB3aXRoIDQ6NDo0IGNocm9tYQo+IHVz
-aW5nIHRoZSBjb21tYW5kIFNocmVleWEgcG9zdGVkLCBidXQgdGhlIHJlc3VsdGluZyB2aWRlbyBo
-YWQgd3JvbmcKPiBjb2xvcnMgYW5kIHdhcyBmbGFzaGluZy4KPiAKPiBJIHdhcyBub3QgYWJsZSB0
-byB0ZXN0IDQ6MjowIGNocm9tYS4gSSB0cmllZCB0byBnZW5lcmF0ZSBhbiBjdXN0b20gRURJRAo+
-IHdpdGggc3VwcG9ydCBmb3IgaXQgYnV0IEkgY291bGQgbm90IHNlbGVjdCBpdCBpbiB0aGUgZ3Jh
-cGhpY3MgZHJpdmVyIGluCj4gdGhlIHNvdXJjZSwgbWF5YmUgdGhpcyBpcyBqdXN0IGFuIGlzc3Vl
-IHdpdGggbXkgc2V0dXAuCgpUaGFua3MgYSBsb3QgZm9yIHRoZSB0ZXN0aW5nLCB2ZXJ5IGFwcHJl
-Y2lhdGUgaXQhIEdvb2QgdGhhdCBSR0Igd29ya3MKZm9yIHlvdSB3aXRoIG5vIHByb2JsZW1zLgoK
-VGVzdGluZyBZVVYgZm9ybWF0cyBpc24ndCB0cml2aWFsLiBQZXJzb25hbGx5IEkndmUgYSBjdXN0
-b20gc2V0dXAgd2l0aCBhCm1vZGlmaWVkIGRpc3BsYXkgZHJpdmVyIG9mIFJQaSB0byB0ZXN0IHRo
-ZW0uIFNlZSBtb3JlIGJlbG93LgoKPiBJIGFsc28gb2JzZXJ2ZWQgdGhhdCB0aGUgdGhlIGZyYW1l
-cmF0ZSBpcyByZXBvcnRlZCB3cm9uZywgZm9yIGV4YW1wbGUKPiBzZXR0aW5nIHRoZSBzb3VyY2Ug
-dG8gRkhENjBwIFJHQiByZXN1bHRlZCBpbiB0aGUgZm9sbG93aW5nOgo+IAo+ICMgdjRsMi1jdGwg
-LS1hbGwgLUwgLS1saXN0LWZvcm1hdHMtZXh0IC1kIC9kZXYvdmlkZW8wCj4gQWN0aXZlIHdpZHRo
-OiAxOTIwCj4gwqDCoMKgwqBBY3RpdmUgaGVpZ2h0OiAxMDgwCj4gwqDCoMKgwqBUb3RhbCB3aWR0
-aDogMjIwMAo+IMKgwqDCoMKgVG90YWwgaGVpZ2h0OiAxMTI1Cj4gwqDCoMKgwqBGcmFtZSBmb3Jt
-YXQ6IHByb2dyZXNzaXZlCj4gwqDCoMKgwqBQb2xhcml0aWVzOiAtdnN5bmMgLWhzeW5jCj4gwqDC
-oMKgwqBQaXhlbGNsb2NrOiAyMTQwNzYwMDAgSHogKDg2LjUwIGZyYW1lcyBwZXIgc2Vjb25kKQo+
-IAo+IFRoaXMgd3JvbmcgZnJhbWVyYXRlIHJlcG9ydGluZyBzZWVtZWQgdG8gaGFwcGVuIGFjcm9z
-cyBhbGwgZnJhbWVyYXRlcwo+IGFuZCByZXNvbHV0aW9ucy4gR3N0cmVhbWVyIFBpcGVsaW5lIG5l
-Z290YXRpb24gc2hvd2VkIHRoZSBzYW1lIHJlc3VsdHMuCgpJJ3ZlIHJlLXRlc3RlZCBZVVY0NDQg
-NGsgY2FwdHVyZSB1c2luZyBSUGk0LCB3b3JrcyBmbGF3bGVzc2x5LiBOb3RlIGZvcgpnc3QtbGF1
-bmNoLTEuMCB5b3UgdXNlZCB2aWRlbzEgYW5kIHZpZGVvMCBkZXZpY2UgaXMgdXNlZCBieSB2NGwy
-LWN0bApjb21tYW5kIGFib3ZlLCBtYXliZSB5b3UncmUgdXNpbmcgd3JvbmcgZGV2aWNlLiBQbGVh
-c2UgcG9zdCBhIGNvbXBsZXRlCm91dHB1dCBvZiB0aGUgdjRsMi1jdGwgY29tbWFuZC4KClRoZSBj
-b21tYW5kIEkgdXNlZCB0byB0ZXN0IFlVVjQ0NCBjYXB0dXJlOgoKIyB2NGwyLWN0bCAtLXZlcmJv
-c2UgLWQgL2Rldi92aWRlbzEKLS1zZXQtZm10LXZpZGVvPXdpZHRoPTM4NDAsaGVpZ2h0PTIxNjAs
-cGl4ZWxmb3JtYXQ9TlYyNCAtLXN0cmVhbS1tbWFwPTQKLS1zdHJlYW0tc2tpcD0zIC0tc3RyZWFt
-LWNvdW50PTMzMDAgLS1zdHJlYW0tdG89aGRtaS5yYXcgLS1zdHJlYW0tcG9sbAoKVGhlIEkgY29u
-dmVydGVkIGNhcHR1cmVkIGRhdGEgdG8gYSB2aWRlbyBmaWxlIGFuZCBwbGF5ZWQgaXQ6CgojIGZm
-bXBlZyAtZiByYXd2aWRlbyAtdmNvZGVjIHJhd3ZpZGVvIC1zIDM4NDB4MjE2MCAtciAzMCAtcGl4
-X2ZtdCBudjI0Ci15IC1pIGhkbWkucmF3IG91dHB1dC5ta3YgJiYgbXB2IG91dHB1dC5ta3YgLWxv
-b3AgMAoKRG9uJ3Qgc2VlIGFueSBwcm9ibGVtcyB3aXRoIGEgcmVwb3J0ZWQgZnJhbWVyYXRlOgoK
-RFYgdGltaW5nczoKICAgICAgICBBY3RpdmUgd2lkdGg6IDM4NDAKICAgICAgICBBY3RpdmUgaGVp
-Z2h0OiAyMTYwCiAgICAgICAgVG90YWwgd2lkdGg6IDQ0MDAKICAgICAgICBUb3RhbCBoZWlnaHQ6
-IDIyNTAKICAgICAgICBGcmFtZSBmb3JtYXQ6IHByb2dyZXNzaXZlCiAgICAgICAgUG9sYXJpdGll
-czogLXZzeW5jIC1oc3luYwogICAgICAgIFBpeGVsY2xvY2s6IDI5Njk5MjAwMCBIeiAoMzAuMDAg
-ZnJhbWVzIHBlciBzZWNvbmQpCgpOb3RlIHRoZSB0aW1pbmcgZGF0YSByZXBvcnRlZCBieSB2NGwy
-LWN0bCB1cGRhdGVzIGFmdGVyIGxhdW5jaGluZyB0aGUKY2FwdHVyZS4gSXQncyBub3QgdXBkYXRl
-ZCBkeW5hbWljYWxseSB3aGVuIHlvdSBjaGFuZ2luZyBtb2RlIG9uIHRoZSBzb3VyY2UuCgpMYXN0
-bHksIHBsZWFzZSBydW4gYGVjaG8gMyA+Ci9zeXMvbW9kdWxlL3N5bm9wc3lzX2hkbWlyeC9wYXJh
-bWV0ZXJzL2RlYnVnYC4gIFdhdGNoIHRoZSBrbXNnIGxvZy4KQ2hlY2sgdGhhdCBpdCBzYXlzICJo
-ZG1pcnhfZ2V0X3BpeF9mbXQ6IHBpeF9mbXQ6IFlVVjQ0NCIgd2hlbiB5b3UKY29ubmVjdGluZyBI
-RE1JIGNhYmxlIHRvIGEgWVVWNDQ0IHNvdXJjZSBhbmQgc2VlIG90aGVyIHJlbGF0ZWQgbWVzc2Fn
-ZXMuCklmIGl0IHNheXMgUkdCLCB0aGVuIHlvdXIgc291cmNlIGlzIHRyYW5zbWl0dGluZyBSR0Iu
-Cgo+IER1cmluZyBteSB0ZXN0aW5nIEkgZ290IHNvbWV0aW1lcyBhbiBlcnJvcgo+IAo+IAo+ICMg
-ZG1lc2cKPiBkbWEgYWxsb2Mgb2Ygc2l6ZSAyNDg4MzIwMCBmYWlsZWQKPiAKPiAKPiBJJ20gbm90
-IHN1cmUgd2hlbiB0aGlzIGhhcHBlbmVkIGFuZCBob3cgdG8gcmVwcm9kdWNlIGl0LgoKVGhpcyBj
-b21lcyBmcm9tIHY0bCBjb3JlLCBzaG91bGQgYmUgaGFybWxlc3MgYXMgbG9uZyBhcyBjYXB0dXJl
-IHdvcmtzLgpJdCdzIGEga25vd24gbm9pc3kgbXNnLCB5b3UgbWF5IGlnbm9yZSBpdCBmb3IgdG9k
-YXkuCgo+IFRoZW4gSSB0cmllZCB0byB1c2UgYW4gQXBwbGVUViA0ayBhcyBzb3VyY2UuIEkgZG9u
-J3Qga25vdyB3aGF0Cj4gcmVzb2x1dGlvbiBpdCB0cmllZCB0byBuZWdvdGlhdGUgYnV0IEkgZ290
-IHRoaXMgZXJyb3IgaW4gYWRkaXRpb24gdG8gdGhlCj4gcHJldmlvdXMgIkRldmljZSB3YW50cyAx
-IHBsYW5lcyIgYW5kIG5vIGNvbm5lY3Rpb246Cj4gCj4gIyBkbWVzZwo+IGZkZWUwMDAwLmhkbWlf
-cmVjZWl2ZXI6IGhkbWlyeF9xdWVyeV9kdl90aW1pbmdzOiBzaWduYWwgaXMgbm90IGxvY2tlZAo+
-IGZkZWUwMDAwLmhkbWlfcmVjZWl2ZXI6IGhkbWlyeF93YWl0X3NpZ25hbF9sb2NrOiBzaWduYWwg
-bm90IGxvY2ssCj4gdG1kc19jbGtfcmF0aW86MAo+IGZkZWUwMDAwLmhkbWlfcmVjZWl2ZXI6IGhk
-bWlyeF93YWl0X3NpZ25hbF9sb2NrOiBtdV9zdDoweDAsIHNjZGNfc3Q6MHgwLAo+IGRtYV9zdDEw
-OjB4MTAKPiBmZGVlMDAwMC5oZG1pX3JlY2VpdmVyOiBoZG1pcnhfd2FpdF9zaWduYWxfbG9jazog
-c2lnbmFsIG5vdCBsb2NrLAo+IHRtZHNfY2xrX3JhdGlvOjAKPiBmZGVlMDAwMC5oZG1pX3JlY2Vp
-dmVyOiBoZG1pcnhfd2FpdF9zaWduYWxfbG9jazogbXVfc3Q6MHgwLCBzY2RjX3N0OjB4MCwKPiBk
-bWFfc3QxMDoweDE0CgoiRGV2aWNlIHdhbnRzIDEgcGxhbmVzIiBzb3VuZHMgbGlrZSB5b3UncmUg
-dXNpbmcgYSB3cm9uZyB2NGwgdmlkZW8KZGV2aWNlLiBQbGVhc2UgZG91YmxlIGNoZWNrLiBUaG91
-Z2gsIHRoZSAic2lnbmFsIG5vdCBsb2NrIiBtZWFucyBpdApkb2Vzbid0IHdvcmsgYW55d2F5cywg
-cGxlYXNlIG1ha2Ugc3VyZSB5b3UncmUgdXNpbmcgdGhlIGRlZmF1bHQgZHJpdmVyCkVESUQgYW5k
-IG5vdCBhIGN1c3RvbSBvbmUuCgotLSAKQmVzdCByZWdhcmRzLApEbWl0cnkKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Mike, Stephen,
+
+please find below a pull-request with Rockchip clock change for 6.14
+
+Please pull.
+
+Thanks
+Heiko
+
+
+The following changes since commit 40384c840ea1944d7c5a392e8975ed088ecf0b37:
+
+  Linux 6.13-rc1 (2024-12-01 14:28:56 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.14-rockchip-clk1
+
+for you to fetch changes up to cd8b5366636bdff0449b789fb2d33abb20804255:
+
+  clk: rockchip: rk3588: make refclko25m_ethX critical (2025-01-09 16:23:32 +0100)
+
+----------------------------------------------------------------
+Real handling of the linked clocks (clocks of the interconnect port a
+peripheral is connected to) on rk3588 using pm-clocks, allowing us to
+stop marking them as critical and one more rk3588 critical clock, that
+the kernel cannot handle otherise right now.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      clk: rockchip: rk3588: make refclko25m_ethX critical
+
+Sebastian Reichel (5):
+      clk: rockchip: support clocks registered late
+      clk: rockchip: rk3588: register GATE_LINK later
+      clk: rockchip: expose rockchip_clk_set_lookup
+      clk: rockchip: implement linked gate clock support
+      clk: rockchip: rk3588: drop RK3588_LINKED_CLK
+
+ drivers/clk/rockchip/Makefile     |   1 +
+ drivers/clk/rockchip/clk-rk3588.c | 120 +++++++++++++++++++++++---------------
+ drivers/clk/rockchip/clk.c        | 102 +++++++++++++++++++++++++++-----
+ drivers/clk/rockchip/clk.h        |  40 +++++++++++++
+ drivers/clk/rockchip/gate-link.c  |  85 +++++++++++++++++++++++++++
+ 5 files changed, 288 insertions(+), 60 deletions(-)
+ create mode 100644 drivers/clk/rockchip/gate-link.c
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
