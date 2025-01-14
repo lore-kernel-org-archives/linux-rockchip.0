@@ -4,85 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DAA6C02183
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 17:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E1FC02183
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jan 2025 17:32:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tvLSzbmn+eifEqAH4Aao8EQ2KJFXI4eHHVOYaksop6Q=; b=y/r9mh92cqPwi3
-	6Q+QcvTnln5SRio1wrrT/aWE1Lq5MK/WFDZ83xTd7Y5wDKRDzEh2eskcwJk1T2YFGWLz9xw9mUuAI
-	6mCJU+N2PVBKjKedd0ng4zodxxcUe1bvJEC1M3RvkArk5MKelhKB27E65ppxpEaXuU+dAd/j3csdz
-	FyIm5vwyZAcwXkmDiY6XG0UkpHsuJ9FTk2GOjNjrIMGq27U6O83hOv+dCAzPuTcRdMU5eDRcp9W+x
-	lBWzCzkZlcRzFBxlxWuq9cFwiO7eMK0KGOA0CEd9lICn2TSguXLw6hFEl8Xd1Omzz6BSdyKDEyygg
-	aqV4Mr6RVU/rqDy1BxKA==;
+	List-Owner; bh=Mj2zWTxeTt148zfes2g0Q0bjGZefBCnDdMgcM0cT+Kc=; b=kdxp8CDpEIXBsM
+	We7y4wAvsjmXcwxdkIwjRTqJAWAMeNTH118jTl77v59JjkWN8E9za73RfnmzEWTqzOANCPw6EdB3s
+	5JhGc5ynnM898g4r43VR9iGplz+R5zgqTRNGNsbOte+1UwPqKPl0uXZdOI4IOA3SYKPTLSTz39DAD
+	nrHz+cYrdZuh8iZciF/HMagKRO3TprEem1mX9Y1KyZ6/bmrAz5hyei5XNdL3OC6BbJ8Qs0PDGVpPD
+	x4Ja79ZKl6zBRQwOJj4MvTOk2tHfce9UEl020kQFmctLsbHbYFY213SwTb3y+bcUhqRBjgBZnzFVL
+	tLjkKUFtbyDOisB4Wpnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXkPJ-000000098UN-1Glm;
-	Tue, 14 Jan 2025 17:08:49 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1tXkmD-00000009DDN-2coU;
+	Tue, 14 Jan 2025 17:32:29 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXkO2-000000098Dj-09nv;
-	Tue, 14 Jan 2025 17:07:31 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-54298ec925bso3431897e87.3;
-        Tue, 14 Jan 2025 09:07:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736874447; x=1737479247; darn=lists.infradead.org;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
-        bh=Nnoh24Dz4UQuumTV0v3UEOHMNb0aqFjMMibU0zsSBlc=;
-        b=TVJA7EWiRVvBtX6P9pqqV0hxWTWP/Xj43s1e98JKT7C/JDuUMtS6H3SndUmDUIs4op
-         9+YxHkL/ZDpoUZ2Ltcc+pRCGzr92+XU1BdymjtqJ4T6b+dew9Dgif4LZBb040AqlSAXi
-         HRC5iWl1bJhNr/2PHMJTEH9QqCOzz41dI8Zd3MTYEY0ufkxh3mnqPpiJOXi1Y2C8+foM
-         Xg19IJC/0jEms8ArU0ga/EA770h+sfE9bpXgNP6sZKumVbmtn54qh0pcFdiAFpSpo7xm
-         ZN7kfmUD5eK8Xg8K3DoCvAD8KKpFYoNp1mmbVJR375ZbNlujEQ/1U6gh/F4s90kTgYSB
-         hexg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736874447; x=1737479247;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Nnoh24Dz4UQuumTV0v3UEOHMNb0aqFjMMibU0zsSBlc=;
-        b=vSsrNLc/T/OGntC29T1fTqIWDWUL2q5GuPTfH9homKA5PbdSD/gc34fyiIpT6XCKJC
-         XGvClV+8TeRryvANiJTa7l0yFj937Thv8T2uckyUYiEnM3eM4EoKbGpNT0myD9EMlQ1K
-         KJpqM67weTjJew5U0ucERdsmcVhgial1w/OtCK7B23EhbSR68BN4XJoee9v9Pclydj6T
-         oU9a3bZ9LC52bY/ibO0cO66/OM5OfnRkzdlz/+eIFIydLrrGdCW3rIaywFwV3qW+PHt4
-         XpGeK8TmkgYdgdWTRDX5OIvgtVfL7DG5ZYdhwFqFiGUgqNGL1PiFK3zRZLmwfVqFCHxq
-         /gzA==
-X-Forwarded-Encrypted: i=1; AJvYcCWq/OhZMb83xtAyTQgY1L/iVRB8CTj/yE573t5m34DfhP45lVikUEAG2oc1CZpfXVrA2S+YZa3FegUc6ZusEwI9@lists.infradead.org, AJvYcCXwc8V8WwrGMzdZNnVtwn9IOqDbQ3uZ4QRevic08SeL8BxbpXEhd8m0/j1h6YDrL1uKvF0cAVs1LiTsvI7kf6c=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSSjzUm3sn6i5wo5xi8BWAbHJHgDngfjrdV+1jrM0wpqSGWgiq
-	auZkzhWYULAs2cAaTxsAYTnrbQcK88A1OnP2aiv0QO4MhZSpEyPNtaRODY0NBuI=
-X-Gm-Gg: ASbGnctrVL0YlcR6drVOGkdcjrlF4Q9E1/kKSNGrNtcPyucK8B98ZhxCLxnLZbo1o/v
-	3BvdfJ/Oi0nQ01N+Lrs2SV7wPlcnPJEySLRLwqWvtCZgw+RGacoqwfUx6MuelSBoH2Yf4pfkCYJ
-	SN7BvgmCyiwb5iX1aHex00GlHsAOJE15DxmCj8LE9bBswpHgt4tBJQhMs75VorZ++e2vm85zi1k
-	CPEw/Vg9Cct7vOn+eGo6ECnYaV3ewQBiLDZRIvkqkIWs2taNkdvLIX3VcfYMwx/7/59531eL9iU
-	ysqy60SeojxpVxJ6IErUmD5BCRGg9dj2pF593mJlfEBa
-X-Google-Smtp-Source: AGHT+IHeaRN9PDguwxNaRUx8e7RlNc1zAJ+FhIwOOoRUyKrjzbduxhH7kD38+VAVbJRFlGbFeDbwlw==
-X-Received: by 2002:a05:6512:3a83:b0:53e:362e:ed3 with SMTP id 2adb3069b0e04-542845aed9emr6667187e87.1.1736874447229;
-        Tue, 14 Jan 2025 09:07:27 -0800 (PST)
-Received: from razdolb (static.248.157.217.95.clients.your-server.de. [95.217.157.248])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5428bec073esm1769027e87.194.2025.01.14.09.07.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 09:07:26 -0800 (PST)
-References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
- <20250103152326.GP554@pendragon.ideasonboard.com>
-User-agent: mu4e 1.10.9; emacs 29.4.50
-From: Mikhail Rudenko <mike.rudenko@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
-Date: Tue, 14 Jan 2025 19:00:39 +0300
-In-reply-to: <20250103152326.GP554@pendragon.ideasonboard.com>
-Message-ID: <87bjw9s4s3.fsf@gmail.com>
+	id 1tXkku-00000009CwV-2tH0;
+	Tue, 14 Jan 2025 17:31:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=vK4b5hmfFQg90bKf5c35DlRbGDFITMqw3G3MDy4quhw=; b=L+Mn8MLeKAqlc3Yy3KOe4L8g73
+	WZimn4WgzcyM0muig8nFU9U7oZoRkZXYu9gfUshX0xsVcSpeM4ltf2FunIveIcvBkcL4sE330nOwn
+	hvOAQ/fa++zhoCC/Ba8nng+m8vgBLpcuD0b0h4jKnwM5+Xw7bOcS3Fenvvak5uFcZWKHHEnYicAPJ
+	dxqxsWtuX9MGUxNhvXFC75M5LBKbQgyJnOhE9CTzWI29oezpyCTks6eVjB7SeyeMG9nOId+vK7d3f
+	hodL28z6NCAwZsOcVs1TT+N+1yXW9B5ibz6l6Gx5a5Gcdn0Q39dgbEL8wy2ysiy1L/GxhvyXvGjT+
+	X7liPiYA==;
+Received: from i53875b2c.versanet.de ([83.135.91.44] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tXkkJ-0005Ki-N1; Tue, 14 Jan 2025 18:30:31 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Chris Hofstaedtler <zeha@debian.org>, andy.yan@rock-chips.com,
+ Guochun Huang <hero.huang@rock-chips.com>
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Daniel Semkowicz <dse@thaumatec.com>, Dmitry Yashin <dmt.yashin@gmail.com>
+Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: Add MIPI DSI2 host controller bridge
+Date: Tue, 14 Jan 2025 18:30:30 +0100
+Message-ID: <3556284.QJadu78ljV@diego>
+In-Reply-To: <Z3IDh0TOAKqaovz2@per.namespace.at>
+References: <20241209231021.2180582-1-heiko@sntech.de>
+ <20241209231021.2180582-2-heiko@sntech.de>
+ <Z3IDh0TOAKqaovz2@per.namespace.at>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_090730_076521_9A0EEBD3 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20250114_093108_756720_EBCC020F 
+X-CRM114-Status: GOOD (  23.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +82,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Chris,
 
-Hi Laurent,
+Am Montag, 30. Dezember 2024, 03:20:55 CET schrieb Chris Hofstaedtler:
+> On Tue, Dec 10, 2024 at 12:10:19AM +0100, Heiko Stuebner wrote:
+> > From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> > 
+> > Add a Synopsys Designware MIPI DSI host DRM bridge driver for their
+> > DSI2 host controller, based on the Rockchip version from the driver
+> > rockchip/dw-mipi-dsi2.c in their vendor-kernel with phy & bridge APIs.
+> > 
+> > While the driver is heavily modelled after the previous IP, the register
+> > set of this DSI2 controller is completely different and there are also
+> > additional properties like the variable-width phy interface.
+> > 
+> > Tested-by: Daniel Semkowicz <dse@thaumatec.com>
+> > Tested-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> > Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+> > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> [..]
+> > +static void dw_mipi_dsi2_set_vid_mode(struct dw_mipi_dsi2 *dsi2)
+> > +{
+> > +	u32 val = 0, mode;
+> > +	int ret;
+> > +
+> > +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HFP)
+> > +		val |= BLK_HFP_HS_EN;
+> > +
+> > +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HBP)
+> > +		val |= BLK_HBP_HS_EN;
+> > +
+> > +	if (dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HSA)
+> > +		val |= BLK_HSA_HS_EN;
+> 
+> For all three of these: is setting an ENable bit the right thing to
+> turn features *off*?
 
-On 2025-01-03 at 17:23 +02, Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
+first of all, thanks a lot for noticing this discrepancy :-) .
 
-> On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
->> Currently, the rkisp1 driver always uses coherent DMA allocations for
->> video capture buffers. However, on some platforms, using non-coherent
->> buffers can improve performance, especially when CPU processing of
->> MMAP'ed video buffers is required.
->>
->> For example, on the Rockchip RK3399 running at maximum CPU frequency,
->> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
->> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
->> non-coherent DMA allocation. CPU usage also decreases accordingly.
->
-> What's the time taken by the cache management operations ?
+Looking at the documentation, all 3 of those hw-bits are described as
+  "Enables filling the H.. period with blanking packets. ..."
 
-Sorry for the late reply, your question turned out a little more
-interesting than I expected initially. :)
+where the MIPI_DSI_VIDEO_MODE_NO_* flags are described as
+  "disable hfront-porch/... area"
 
-When capturing using Yavta with MMAP buffers under the conditions mentioned
-in the commit message, ftrace gives 437.6 +- 1.1 us for
-dma_sync_sgtable_for_cpu and 409 +- 14 us for
-dma_sync_sgtable_for_device. Thus, it looks like using non-coherent
-buffers in this case is more CPU-efficient even when considering cache
-management overhead.
 
-When trying to do the same measurements with libcamera, I failed. In a
-typical libcamera use case when MMAP buffers are allocated from a
-device, exported as dmabufs and then used for capture on the same device
-with DMABUF memory type, cache management in kernel is skipped [1]
-[2]. Also, vb2_dc_dmabuf_ops_{begin,end}_cpu_access are no-ops [3], so
-DMA_BUF_IOCTL_SYNC from userspace does not work either.
+So yes, I _think_ "disable front-porch" would _should_ result in
+"don't fill the period with blanking packets", but am not fully sure.
 
-So it looks like to make this change really useful, the above issue of
-cache management for libcamera/DMABUF/videobuf2-dma-contig has to be
-solved. I'm not an expert in this area, so any advice is kindly welcome. :)
+I've run the two boards I have with inverting the checks as sounds
+sensible right now, aka doing:
+	if (!(dsi2->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HFP))
+etc and both displays I have ran just fine.
 
-[1] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n411
-[2] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n829
-[3] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-dma-contig.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n426
+As the driver was originally part of a vendor-kernel based on 5.10, which
+I think was before the _NO addition from [0] it could be caused by a
+misread of the flags that were named differently back then.
 
---
-Best regards,
-Mikhail Rudenko
+
+So yes, switching things around does sound like the right thing to do.
+
+
+Heiko
+
+[0] https://lore.kernel.org/all/20210629074703.v2.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid/
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
