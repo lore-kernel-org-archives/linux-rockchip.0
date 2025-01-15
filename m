@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75669C02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 11:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD3EC02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 11:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6I4El+yjy0s2eODRbSS9s1DYHVuRBchGL2QDLd8O2ac=; b=Y+SSOM1ue1QU0p
-	Gl0ttSPkq+3F6u/Me/jtBrTP6sVS0hmoCP/X6ElUqmzuKp82I2yGFs5M8RuREu11Csm9+gJ98TBgd
-	onof+IYkPryfHPXTbYVZDMQjmbCpG2bNql0RQv6oC2+KXzgcr/4hzHp1FCYezXEwc3glQ9HEyHY92
-	bifPh3qU2lQ/a0tANvxcgrJqMxm7xtHyrBbZCCOXppHAHR84NYfZ89XZbLinzeszWGKoT6avwRXH5
-	IC2g0Cgsv6V3/xFcXEjqr6aREcMNMhEfFXOuu3E+hkcms5zzYgk2oCK4wXohO2bUhHlB5kxoWgmQ3
-	Moa5QT7YVXIh1PXS1WZQ==;
+	List-Owner; bh=M8u8DE6hQYGE74v7pnO0w8ozBODYk7qqGj/H1RZlWts=; b=luSTzTzKCVpnFj
+	NrRSBfmj6DzeS0Ub6fbU58/FSYo/GnjCwLqXRz4QUbTIlN0KmV4FdxOLpvK98xFlEF+qPgED42Hiu
+	YXd2dt32/Iu67yMJzJUrH9rvNkeBU5fQykeqUeUgXumBJRM2YjLoy2+Cz+O8SeeoeLedNmapk9JGY
+	0hWlZhI40HGWwX3awgnUlkNTIOppEhBXmJ8Gy477eqpeo38P5pcurHkzZyJE5o09Mg3U/1TVEqHOo
+	U8lZv1SUFAHdmtpSh7tjnuYIgqNvfkdaKGmgE+Xf9mH4GC5tMOElrXb1bQAg7EWuLXw6BnjXkjnQK
+	iLv8aIA5hXRy4gYWkTIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY1bB-0000000BgQf-2p22;
-	Wed, 15 Jan 2025 11:30:13 +0000
-Received: from mail-pl1-f178.google.com ([209.85.214.178])
+	id 1tY1ci-0000000BgiM-2ocp;
+	Wed, 15 Jan 2025 11:31:48 +0000
+Received: from mail-pl1-f172.google.com ([209.85.214.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY1ZY-0000000BgBu-3Uqg;
-	Wed, 15 Jan 2025 11:28:33 +0000
-Received: by mail-pl1-f178.google.com with SMTP id d9443c01a7336-2167141dfa1so13238155ad.1;
-        Wed, 15 Jan 2025 03:28:32 -0800 (PST)
+	id 1tY1cg-0000000Bghi-21Qe;
+	Wed, 15 Jan 2025 11:31:47 +0000
+Received: by mail-pl1-f172.google.com with SMTP id d9443c01a7336-2163b0c09afso121390235ad.0;
+        Wed, 15 Jan 2025 03:31:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736940512; x=1737545312;
+        d=1e100.net; s=20230601; t=1736940706; x=1737545506;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pqp/xKYJlk6xjm9oXtg0IyK09CAv3plZIRx1yYheMC0=;
-        b=wpmLd2O1AHehdTW1xteLXsLEP0O1R3UsHNIHCPfROw//jRh9hvmp2MCLZjFi+wFvJg
-         yQlgqL5YUhGySDb43DE1aGKsZebcO5rj1FmNr4rA5JZjytm31jSpl6YmGsCC3cJqhpoA
-         sCi2DRaGTuSRwyGvNCT5Y6bWkaCE4NSKj1cwuHJQVWucIVODKImhkHcJuZhObE7XMk5W
-         ccXaSWg+ES7fFQzHQI+Ei/IJ+m9iw+t8gr3yD+xFh64njFOJjGfBsDi5x/f4SdrJkPJr
-         hqNvdHd/WuyuNmMmxpnQGLmc5cg1XLnVSSb9jzZSntIXhCD6sFGnFep1aUllXPJEDobo
-         3ufQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVMmxrFMaByw5Epc8cIt5OErHvtWeJDs4TDaFdY7/ed5mLSjynvMQ9i4n089+kdRfYJdNkG7aQyGTytaBLOOGE=@lists.infradead.org, AJvYcCXRQTyiOmLxLNwjKpe3kddN4xP+xn+SCDJ7QlBB2ZrscVmCIfe0rgSGsLeSxotHbBKga7jEl4qNlji4NeaLSt0W@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx8BMhNkMNeYjsPXPDKdC18tOaJeclsXwklr/j3teRGWdzRUv26
-	RZJ8RXDeixheo9U4AK/XEmuAHG80ZxJ1lYkzt/ImPCJ2he7SBe/sqC4e8zRv
-X-Gm-Gg: ASbGncsvjojU5ebvjmBGmth+5XHPDM25CyAd1g1FT9XhPiQrwI00RPMargnf9iOKnAQ
-	6F3NzsRmKFsy6CDeT12FVQgrAOWWrzaOo3VWma/hwOsDHxWqklZzVRieRAPSdCNa2in6s7QwcD7
-	g3JRElfN8nwkTHvOCDYIlXgCk6pQdEF8djn2g+2O0lajJLm9yH9SpUluu4nMshClaTOMzKhFOxk
-	pMd7m4sK/UlkxuB6ZczKEiiDor1k0lsM8+Cl26ZFXqFKUfFqJGRp3VjVqK4blLASaZSkuPd00LS
-	BDP303DfyJ4RHm0=
-X-Google-Smtp-Source: AGHT+IEKdHrLd7CdKz/bzUdcA2Iy0TnBTOOXFKEtiOmjZ3qwUkKfa5EV0XWzkjB574DaqoYFs4zJVg==
-X-Received: by 2002:a17:902:c40b:b0:215:ba2b:cd55 with SMTP id d9443c01a7336-21bf0b76a12mr38927045ad.2.1736940512009;
-        Wed, 15 Jan 2025 03:28:32 -0800 (PST)
+        bh=lMf/gjH9CaGlznAM7Zrfe8YwB74BkxcaBNpx5Jp341k=;
+        b=BvZrEDF7ZUrDLqb2w4l6sf+aLqX4cbiaPHdWSF4//JZyisElkn9XH9iDG9YKyk2pvh
+         iPbkJrTcvkNb+F7T5fa6eq+lbU+pxS+jaQnzwml6G7ywFOagW1JvuhOip3Ed8gX7l1bv
+         yhiHBuH5eWSo2PjGTdUnjA02SYfgdPB/JQH4F4+yFU+4+nA0+D5FyNSo35wa38spnac+
+         RGF4YTp6tB3hAGnYHLaLQtBvrlhukpHn7YqGr7IS5jZxNGwCrthQ32SOlK3WdJ8twNKJ
+         8yDCFRmtzHAKeL5JNGnMgmdbhAwaRRr7g9MXfWA0OSiDfpAz/oC5Q93NFXCBQqa90Z7J
+         ymTg==
+X-Forwarded-Encrypted: i=1; AJvYcCUVBg22hiE+wrQT/KMC90hWjDcDCdlZxfKmVgN9gqqNvwerVFFuxdAtz/rszczl1/dg5XSSw6ML206mfWAbRpk=@lists.infradead.org, AJvYcCUWe88FBoq0BztAVDWC35QFQo4D4g8TuApmiIH+Ox/07j/KuRMfzUBFcXgAD0B8f9G1f+UXakfh0Nfn1w8QKI78@lists.infradead.org
+X-Gm-Message-State: AOJu0YzsM5ayTtpokLjcWwpxZzua7IVeLQmscY2QG4QdHg1P66qM/uR5
+	dC+W0WKGjPjLx0ClD+87nPgwx0/gw3OCzwLdnDjGNnIJzVjQB+5sVYcP53uo
+X-Gm-Gg: ASbGncuJUmIsZ36G3l71Dnij+fq+OGd9GyPpsU6jArn98/L/ooLt0GTn7sSvFTbkLu4
+	CawrUEa6F5bkiBcTPj+DDBRvqAWrnRJHPabnyyH7XwYs/mzsXc8gHwInF8LWyr1D5bvekhQx2os
+	oEa+/u6MIWE3ObiU/Ds0+fhGkmwbmQYq+lTcbcnHUHPvzuUPckY4eSklp1DVGGC9MBhuM+yUQmD
+	8SX9UITNs4igT+yqO7MLnNA0tKgEKSn/MYIfX0UcxXJ9MnCnZcOgfByydf6WXBmN2HJq3Ad9qYh
+	xxuN31uQZu5ncNI=
+X-Google-Smtp-Source: AGHT+IHH3vdl0SoO7I29qFqmrTAjmo+4RApDGp3zpjzEyS9KqQP4GKUQ7H0LW2xUTEH4LU28i+G6ew==
+X-Received: by 2002:a05:6a00:2c86:b0:726:41e:b313 with SMTP id d2e1a72fcca58-72d21fc659dmr36762604b3a.16.1736940705705;
+        Wed, 15 Jan 2025 03:31:45 -0800 (PST)
 Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f2199ebsm81265345ad.143.2025.01.15.03.28.30
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72d40658db6sm9275820b3a.104.2025.01.15.03.31.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jan 2025 03:28:31 -0800 (PST)
-Date: Wed, 15 Jan 2025 20:28:28 +0900
+        Wed, 15 Jan 2025 03:31:45 -0800 (PST)
+Date: Wed, 15 Jan 2025 20:31:43 +0900
 From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	cassel@kernel.org, lpieralisi@kernel.org, heiko@sntech.de,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH v2] PCI: dw-rockchip: remove redundant dev_err
-Message-ID: <20250115112828.GJ4176564@rocinante>
-References: <327718207d3cd72847c079ff9d56eb246744c182.1736126067.git.xiaopei01@kylinos.cn>
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: rockchip-ep: Fix error code in
+ rockchip_pcie_ep_init_ob_mem()
+Message-ID: <20250115113143.GK4176564@rocinante>
+References: <Z014ylYz_xrrgI4W@stanley.mountain>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <327718207d3cd72847c079ff9d56eb246744c182.1736126067.git.xiaopei01@kylinos.cn>
+In-Reply-To: <Z014ylYz_xrrgI4W@stanley.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_032832_873001_05FF0FB1 
-X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-CacheID: sfid-20250115_033146_531843_0C6EFA26 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,18 +96,11 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello,
 
-> dev_err is redundant because platform_get_irq_byname() already prints an
-> error.
-> 
-> cocci warnings:
-> 	drivers/pci/controller/dwc/pcie-dw-rockchip.c:454:2-9:line 454 is
-> redundant because platform_get_irq() already prints an error
-> 
-> so remove redundant dev_err.
+> Return -ENOMEM if pci_epc_mem_alloc_addr() fails.  Don't return success.
 
-Applied to controller/dwc for v6.14, thank you!
+Applied to controller/rockchip for v6.14, thank you!
 
-	Krzysztof
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
