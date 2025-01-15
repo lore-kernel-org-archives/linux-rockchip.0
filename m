@@ -4,98 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61680C02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 18:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA72C02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 19:14:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o1tl3tSCjBuZhj1JfuUx5md59HUOPkizmr6neVToZk4=; b=jRbddfckM/qkRC
-	F6OQ83d7EXX00bQynoGOOSRcrj27jDw8vpC0zT07zd1aCsw9wRPa8OWhrK3w/BpIqKouEhdam1PxD
-	CWrMJp79Itck8/rg+pqr/bflxlttiUhXaP0rBn+eSOuEtH5kgkQXA3DrsIBl9SoYoUzArwx/M8mDo
-	0GNfxqv7InFYtM5XyUp5YEu+tSVbVA7cz+ymwA0R2y9KWgm15FBd/wrIvejGSdksvzqKCPbSEUMMy
-	zyQT/5PvI13TaqcwKP9+jEGGmR8dHkFIFltt7MdwOtds+rCGuhKV8M5Kufr3fi3XhutOaoq0tIAhM
-	wJXNtrOq3+tGOXid/qhA==;
+	List-Owner; bh=J+siarhxuknSSNXy5vYfTWGN86AlQJrkFkS60S3zwvY=; b=rW5XuZwEUHbs0g
+	ZsPu21BdlPCGT58kdUSwZsiumN5hzOrNoM2EYuAyVfdljZF3JVAnhNlvV4TepJW6Brqfz+rvo5FPR
+	wmpIiaRVMjSBRKmvurzGCx667jTJ0v9Qq5Xd+C/CEmc0oe1DmNK55corV+prpDnur5okEyzflLFHQ
+	DkwWBlmpkj5MVDifQAzMRDYLZhUIzDk/Nn+Gp3HpyVuCCR7nbufEIH3TxfCNLf7/0XyF9kd8IjlAl
+	1G/+i+CKsuj60cwas0Z07Tbto6paoYaVaOJ69GUY84eaogTHOmRn3jjiRkpFo6F92THjzyXv16xaw
+	Jw9NLikTsVWAOZV+BLww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8OF-0000000CoRy-3cag;
-	Wed, 15 Jan 2025 18:45:19 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1tY8q4-0000000Crpd-1keP;
+	Wed, 15 Jan 2025 19:14:04 +0000
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY8Ab-0000000ClLs-4ADC;
-	Wed, 15 Jan 2025 18:31:15 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 420B0FF803;
-	Wed, 15 Jan 2025 18:31:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1736965870;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jLoWi3Wg0eiQh/tot5fchMc56NRkY1AedYStPaUs9Pk=;
-	b=XVoQSRAsHPXADFu3jVGI7dBwCecPD+dviwtiINSG7gG2QTYI7ZKoCGbAlzsXnHawAhGKwl
-	24LiXfzCQR3pIZBqvn9qb/WI76bBR/gYM5iK3v27XfrrihWyj6I9DuAIL0fsvT3vsw3I/q
-	czvnLPptcYBnGEnhrm8GhgmQ8vCeUtjENVYUkzFUKo7lU8h2121ib4vf8mK5lggJa2imhw
-	wuKxnh8Eev9ag9+Xsu7zpWrkt2h27deaKdBBBwhgImA9Rm+AwpotMeHj0kiG0/Az9PUc1t
-	KHhtrdM1rJLw5PWkyTBKEJFeu2A3AfGxN8CmN6JVLXE0bXGUEx1cXfp5ava0qA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Mark Brown <broonie@kernel.org>,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Han Xu <han.xu@nxp.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
+	id 1tY8ol-0000000Cref-1XJB
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Jan 2025 19:12:45 +0000
+Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-467a6781bc8so1187841cf.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jan 2025 11:12:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1736968362; x=1737573162; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=/4oGFxCwPaJgAdqTBVjzj8myjSC006R3VVcxomH2jWc=;
+        b=CxhZXIdDBGbvOk3LpFKKptyg7++mxW2jK/f4l919X8cn/GqdWwWbLPdgfc0s1Yo3ML
+         yvE6LE51F4g71XfO1z/prc3qJMsvovuRG+xUHvNi/7WFJxC6TNynrgJqVYRvENPyFch1
+         1YMgzY6btbUp7ML4DkG3hjcOk3PWguf2F/P4CAFRE43uyBUph2xg9CpEdNCxvt2Y+k/i
+         mehxWNJQHEjySZtRYsgvp7s3jrDm9A+wb9CM4XCIlQUNLd3bp0sorI7Wt9MIXDkTrTjb
+         LaggSmihdIEuRGVWQIba7mqs62w2Icendr5EDNjg4oJunnkfiwskUjTfGAMv4xhz90Ud
+         PKgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736968362; x=1737573162;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/4oGFxCwPaJgAdqTBVjzj8myjSC006R3VVcxomH2jWc=;
+        b=tjNBEfQbsx/UKRc7pvU8ZZppJD5sSscJaV86YMophfYT5syMWFDZQ3dDkKsOB5s+ci
+         jIgodvvA278CmeTupjfcLH2+UjJKL1mco3tYzl/IBQoVCpUmCB/X1/EGdsFjb8feocUM
+         osq7yg9wEAgQ37Gxb/7QB63Dd8Mt4PUHFd/iQ5UQlAQuuIcE9k6FnppbF6D63V2w1kdM
+         V6eJy5cfBaTIoMoDBZV7ZereHqIBHU9q+DVvAXt66wfsupIy9Xwxq9lWxDNm6NQh6wgt
+         13i3Snq0v12ocQHbGfWzrChgzIOWVWw7Dq+e7CmWh8U8Ck1NbfUpQAufv2nOc+Y02v1N
+         TCeg==
+X-Forwarded-Encrypted: i=1; AJvYcCUSsjgs3oAU11I8OuUCGPlk4kgroRPEOCFEtiuXGsqtiAKJ17eA+sv0pohbNC3yq2pR/o/S4oyr5Up5N5AmrQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyftx/QGQUexwTcqgVeBP5OssRaVOUQVdN+8M95sLQwK3pULHgg
+	Q2+vnqeDCfT3BnqD3Wi1E7ATcPycQFDjxqcC5lAfr5Mri7Jd9PnYnov34/xZJ00=
+X-Gm-Gg: ASbGncvIh87RVQpPfUTqm2oVsbENoE2NHu15MmVB+cEsqs+sY4KKZgcUHmdm8AMrii6
+	Ck3Xiq7ODtAiBVDjECMxmKgvlAWHWjiVvO5nOC2hR5tqHVQMr9lQgYZtmcIdUcP+LJK2Se4wwj7
+	ZNIdgrQyFM9Ital4TYJuwZm2HYgZLwPksCQKbSw+i5AKxXHvw8Y+UKPSEymxVE1Do4Mqs2HR3oW
+	/ToDXlQGGQlGifVd54m0OmwcJvM7z3i/llPKUoGImrvsVPacCDP0f48yhro0jDfILGk6OOo0eIf
+	HiU8f8HpU5Vz/xktViuJzh9Gc2ed7Q==
+X-Google-Smtp-Source: AGHT+IGLgsr87VLlZ/6vxEgew2f6ev8/p69ziLEOON6TEwqWnOVVTirBJBkB/bFj8Dm/enP76kSGnA==
+X-Received: by 2002:a05:622a:1a96:b0:462:ea22:33bb with SMTP id d75a77b69052e-46c7107aa17mr104417681cf.38.1736968361749;
+        Wed, 15 Jan 2025 11:12:41 -0800 (PST)
+Received: from ziepe.ca (hlfxns017vw-142-68-128-5.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.128.5])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46c873de559sm67648981cf.78.2025.01.15.11.12.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jan 2025 11:12:41 -0800 (PST)
+Received: from jgg by wakko with local (Exim 4.97)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1tY8oi-00000002pPE-1jhH;
+	Wed, 15 Jan 2025 15:12:40 -0400
+Date: Wed, 15 Jan 2025 15:12:40 -0400
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Joerg Roedel <joro@8bytes.org>, Yong Wu <yong.wu@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Raju Rangoju <Raju.Rangoju@amd.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Steam Lin <stlin2@winbond.com>,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mtd@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Tudor Ambarus <tudor.ambarus@linaro.org>
-Subject: Re: [PATCH v3 21/27] mtd: spinand: Create distinct fast and slow read from cache variants
-Date: Wed, 15 Jan 2025 19:31:02 +0100
-Message-ID: <173696548250.435435.10416906996871126975.b4-ty@bootlin.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
-References: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com> <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] iommu: Use str_enable_disable-like helpers
+Message-ID: <20250115191240.GA650389@ziepe.ca>
+References: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Disposition: inline
+In-Reply-To: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_103114_290445_E54B9906 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20250115_111243_571899_194E869E 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,43 +102,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAxMCBKYW4gMjAyNSAxNTo0NToyMyArMDEwMCwgTWlxdWVsIFJheW5hbCB3cm90ZToK
-PiBTbyBmYXIsIHRoZSBTUElOQU5EX1BBR0VfUkVBRF9GUk9NX0NBQ0hFX09QIG1hY3JvIHdhcyB0
-YWtpbmcgYSBmaXJzdAo+IGFyZ3VtZW50LCAiZmFzdCIsIHdoaWNoIHdhcyBpbmR1Y2luZyB0aGUg
-cG9zc2liaWxpdHkgdG8gc3VwcG9ydCBoaWdoZXIKPiBidXMgZnJlcXVlbmNpZXMgdGhhbiB3aXRo
-IHRoZSBub3JtYWwgKHNsb3dlcikgcmVhZCBmcm9tIGNhY2hlCj4gYWx0ZXJuYXRpdmUuIEluIHBy
-YWN0aWNlLCB3aXRob3V0IGZyZXF1ZW5jeSBjaGFuZ2Ugb24gdGhlIGJ1cywgdGhpcyB3YXMKPiBs
-aWtlbHkgd2l0aG91dCBlZmZlY3QsIGJlc2lkZXMgcGVyaGFwcyBhbGxvd2luZyBhbm90aGVyIHZh
-cmlhbnQgb2YgdGhlCj4gc2FtZSBjb21tYW5kLCB0aGF0IGNvdWxkIHJ1biBhdCB0aGUgZGVmYXVs
-dCBoaWdoZXN0IHNwZWVkLiBJZiB3ZSB3YW50IHRvCj4gc3VwcG9ydCB0aGlzIGZ1bGx5LCB3ZSBu
-ZWVkIHRvIGFkZCBhIGZyZXF1ZW5jeSBwYXJhbWV0ZXIgdG8gdGhlIHNsb3dlc3QKPiBjb21tYW5k
-LiBCdXQgYmVmb3JlIHdlIGRvIHRoYXQsIGxldCdzIGRyb3AgdGhlICJmYXN0IiBib29sZWFuIGZy
-b20gdGhlCj4gbWFjcm8gYW5kIGR1cGxpY2F0ZSBpdCwgdGhpcyB3aWxsIGZ1cnRoZXIgaGVscCBz
-dXBwb3J0aW5nIGhhdmluZwo+IGRpZmZlcmVudCBmcmVxdWVuY2llcyBhbGxvd2VkIGZvciBlYWNo
-IHZhcmlhbnQuCj4gCj4gWy4uLl0KClRoZSBmb2xsb3dpbmcgcGF0Y2hlcyBoYXZlIGJlZW4gYXBw
-bGllZCB0byBuYW5kL25leHQ6CgpbMjEvMjddIG10ZDogc3BpbmFuZDogQ3JlYXRlIGRpc3RpbmN0
-IGZhc3QgYW5kIHNsb3cgcmVhZCBmcm9tIGNhY2hlIHZhcmlhbnRzCiAgICAgICAgY29tbWl0OiAw
-NDIwODcyNDc4MzVkYWQxZWM1ZTM5MDUyYWJmMDIyZmQxM2M2MzI2ClsyMi8yN10gbXRkOiBzcGlu
-YW5kOiBBZGQgYW4gb3B0aW9uYWwgZnJlcXVlbmN5IHRvIHJlYWQgZnJvbSBjYWNoZSBtYWNyb3MK
-ICAgICAgICBjb21taXQ6IDdjZTBkMTZkNTgwMmJmZGU0MjA5ZTUyZWU4YWQ2NDRjYTFlYWI0MjMK
-WzIzLzI3XSBtdGQ6IHNwaW5hbmQ6IEVuaGFuY2UgdGhlIGxvZ2ljIHdoZW4gcGlja2luZyBhIHZh
-cmlhbnQKICAgICAgICBjb21taXQ6IDY2NmMyOTliZTY5NmYwMmMzMzU0ZGExMDQyOTVmYjk0Yjhm
-NjVkMjUKWzI0LzI3XSBtdGQ6IHNwaW5hbmQ6IEFkZCBzdXBwb3J0IGZvciByZWFkIERUUiBvcGVy
-YXRpb25zCiAgICAgICAgY29tbWl0OiA4NTg2YmM4ZDk1NDg4ZGZhYWRiYzFhZjg5YmE1OTkwMGQy
-YzM5MTE5ClsyNS8yN10gbXRkOiBzcGluYW5kOiB3aW5ib25kOiBVcGRhdGUgdGhlICpKVyBjaGlw
-IGRlZmluaXRpb25zCiAgICAgICAgY29tbWl0OiAxZWE4MDhiNGQxNWI5YmRkYzQ4YWY3NWIwNjY4
-YjgyMzY2YjViOTI3ClsyNi8yN10gbXRkOiBzcGluYW5kOiB3aW5ib25kOiBBZGQgY29tbWVudCBh
-Ym91dCBuYW1pbmcKICAgICAgICBjb21taXQ6IDYxYzcxNTVlM2ZlOTM4ZDRkYTQ2NzFiMmY4NGUy
-OWVhZjc5ZjVmNDYKWzI3LzI3XSBtdGQ6IHNwaW5hbmQ6IHdpbmJvbmQ6IEFkZCBzdXBwb3J0IGZv
-ciBEVFIgb3BlcmF0aW9ucwogICAgICAgIGNvbW1pdDogYmU3YTA1ZGI0MjUyZWRiZmZiNDM0ODRi
-MTQ3NTUwNDhmYjhkYjcxMAoKUGF0Y2hlKHMpIHNob3VsZCBiZSBhdmFpbGFibGUgb24gbXRkL2xp
-bnV4LmdpdCBhbmQgd2lsbCBiZQpwYXJ0IG9mIHRoZSBuZXh0IFBSIChwcm92aWRlZCB0aGF0IG5v
-IHJvYm90IGNvbXBsYWlucyBieSB0aGVuKS4KCktpbmQgcmVnYXJkcywKTWlxdcOobAoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Jan 14, 2025 at 08:26:42PM +0100, Krzysztof Kozlowski wrote:
+> Replace ternary (condition ? "enable" : "disable") syntax with helpers
+> from string_choices.h because:
+> 1. Simple function call with one argument is easier to read.  Ternary
+>    operator has three arguments and with wrapping might lead to quite
+>    long code.
+> 2. Is slightly shorter thus also easier to read.
+> 3. It brings uniformity in the text - same string.
+> 4. Allows deduping by the linker, which results in a smaller binary
+>    file.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 3 ++-
+>  drivers/iommu/arm/arm-smmu/arm-smmu.c       | 3 ++-
+>  drivers/iommu/mtk_iommu.c                   | 9 +++++----
+>  drivers/iommu/mtk_iommu_v1.c                | 3 ++-
+>  drivers/iommu/rockchip-iommu.c              | 3 ++-
+>  5 files changed, 13 insertions(+), 8 deletions(-)
+
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+
+Jason
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
