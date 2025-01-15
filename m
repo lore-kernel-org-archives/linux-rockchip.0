@@ -4,59 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B99C02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 09:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC336C02183
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 10:14:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aVixv03RCVoSLmZ7f6mSCX2lXYwZhHQ6Lw4GF+zEhIo=; b=H2ye0XAfxOY8854DjSZ4DHme9i
-	QH8NqteM/1faXRTS9yzdfTD51e/g8ZqfhLOYH2AwU8BphvdhPjNv/ownYpCbz3EJJ0OI1ktsvaJCT
-	69IyUDaDP5Am1gOBeDpL5AuBAECcOxr6+83mhSrcnUlhwWsbrfPFJZn7khx7GpFPhvtVVsxbcg1G0
-	O58ly6MztP41xE4no9g3QvUqhQVUJ1DAK5GZU+aSxMEoMToipGA7HVB6E2sK4uxsn88SP/DRtg8wT
-	ny7JAPIojngRN1DH6mnlwK9U7qEfZpTpM5iex5YFt0xkuTxNADXbXWy8s49P4wTS+CSjtVXf6iHkK
-	iH0IPsww==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cQ9/z4Jlbcc1rRq3Aj+n/X0XRSqzlCftY+aKq7/Moow=; b=NHH7+eJGhvoNHl
+	9VmGoWSgDv2EmzNc2/z6EwlxY6zQvMr6MUVGwSJNexqS00HW38mTmziK/DWXoAsTcWLMGVyWprTjF
+	wI3yG05t3rgsqdl20wCl0pljtVTNEmYUfZNsVTGV4kICKROEVC/XxRr0qMQiCkRW5kZ0uyJFgO/VB
+	+BWFcfsvlyEaxenxT78mpYq0IR+ITO7PPG54Ml9/Vl+QIj55wxORo/f6ZvZuWZ1i3Z9OkpWBF/EQ+
+	s2JLINoXjcQ8AF+mSoGB5P3hhAy3FcH+EDi8wAsRsdQBTF6yF17GuiQLRAkG0noYweFKfBtO7t54J
+	wHUsMt9cBPO8lw0Dywnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY05R-0000000BPqs-2NIw;
-	Wed, 15 Jan 2025 09:53:21 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tY0PP-0000000BS4i-3bYW;
+	Wed, 15 Jan 2025 10:13:59 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY04B-0000000BPiE-0Jvb;
-	Wed, 15 Jan 2025 09:52:04 +0000
+	id 1tY0PM-0000000BS3a-3IAY;
+	Wed, 15 Jan 2025 10:13:58 +0000
+Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A30BD22E;
+	Wed, 15 Jan 2025 11:12:54 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1736935975;
+	bh=A0uT2PZu2vMEF9l8RixHcuD7XJQCUpNHinaQ0kfDHhA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=pmR2bdALx1oQyukLslwEK4I+DzAJ+sQ7jabs2IStX4+lbodFhHRKpbzD2TbgjeFIq
+	 wvGaKkMawbqcDlftYcVj6Xwl5RO6AMISn5ADly0zRVsc0cmRz82fdiURAcZKwFjw2x
+	 puw3h1fl2vbnDQxZ0v1561h2shhHO4y1sRLg8SKI=
+Message-ID: <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
+Date: Wed, 15 Jan 2025 12:13:48 +0200
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1736934718;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MhzeunR8rJgrZ00XQVoPh7HS7sUwFQAgiu34BTjBQ7E=;
-	b=g9Hmqxqt5W9Fcav3vjfAskxGSrwwUjqsZjenEBNE4dOTvaRg81qCWb95ztMh2IzQH+4Gzk
-	FaiMX/gLzaDOL66pL0m2Io/R015jLWkH6l2vkCuVq4qoxrah2fHGiSG2H+lL9OSNAvGcej
-	rK2dCgXVU/rO5V/YQP0jcP0BzFXL2jyiD8+x398nq73UyMeiIvk4buaYSC0T5cFklaeZ6k
-	/mfSf9nWS1c0vbGlDN4fIrP2f1vcxiShzSmw4WsPlWx+k2KOmWfg4OBvtdVjl/b90cQ2TI
-	ReIbSYuClhAgVltlKK3ADzzbHafZ9YjJ3+5dbfBe3CF8yIegOi3eELWbcm7vsg==
-Date: Wed, 15 Jan 2025 10:51:57 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, didi.debian@cknow.org,
- marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe why is HWRNG disabled in
- RK356x base dtsi
-In-Reply-To: <6b272e2f8f916c04b05db50df621659a5a7f29ab.1733149874.git.dsimic@manjaro.org>
-References: <6b272e2f8f916c04b05db50df621659a5a7f29ab.1733149874.git.dsimic@manjaro.org>
-Message-ID: <b1f97e555e57e6593251bb1ef1353423@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Thomas Zimmermann <tzimmermann@suse.de>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-26-tzimmermann@suse.de>
+Content-Language: en-US
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
+ 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
+In-Reply-To: <20250109150310.219442-26-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_015203_280455_84FFF308 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20250115_021356_969685_62FACA4D 
+X-CRM114-Status: GOOD (  24.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,58 +120,101 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Just a brief reminder about this patch...
+Hi!
 
-On 2024-12-02 15:44, Dragan Simic wrote:
-> Despite the presence of the hardware random number generator (HWRNG) in 
-> the
-> different Rockchip RK356x SoC variants, it remains disabled for the 
-> RK3566
-> SoC because testing showed [1] that it produces unacceptably low 
-> quality of
-> random data, for some yet unknown reason.  The HWRNG is enabled for the 
-> RK3568
-> SoC, on which the testing showed good quality of the generated random 
-> data.
+On 09/01/2025 16:57, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch according to hardware requirements.
 > 
-> To avoid possible confusion in the future, [2] let's have this 
-> described
-> briefly in the RK356x base SoC dtsi.
-> 
-> [1] 
-> https://lore.kernel.org/linux-rockchip/cover.1720969799.git.daniel@makrotopia.org/T/#u
-> [2] 
-> https://lore.kernel.org/linux-rockchip/20241201234613.52322-1-pbrobinson@gmail.com/T/#u
-> 
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 5 +++++
->  1 file changed, 5 insertions(+)
+>   drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
+>   1 file changed, 5 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> index 62be06f3b863..ab8f42c0a843 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> @@ -1032,6 +1032,11 @@ sdhci: mmc@fe310000 {
->  		status = "disabled";
->  	};
-> 
-> +	/*
-> +	 * Testing showed that the HWRNG found in RK3566 produces 
-> unacceptably
-> +	 * low quality of random data, so the HWRNG isn't enabled for all 
-> RK356x
-> +	 * SoC variants despite its presence.
-> +	 */
->  	rng: rng@fe388000 {
->  		compatible = "rockchip,rk3568-rng";
->  		reg = <0x0 0xfe388000 0x0 0x4000>;
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> index b47463473472..7ea0cd4f71d3 100644
+> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> @@ -19,6 +19,7 @@
+>   #include <drm/drm_crtc.h>
+>   #include <drm/drm_device.h>
+>   #include <drm/drm_drv.h>
+> +#include <drm/drm_dumb_buffers.h>
+>   #include <drm/drm_encoder.h>
+>   #include <drm/drm_fbdev_dma.h>
+>   #include <drm/drm_fourcc.h>
+> @@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
+>   				    struct drm_mode_create_dumb *args)
+>   {
+>   	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
+> -	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+> +	int ret;
+>   
+>   	/* Enforce the alignment constraints of the DMA engine. */
+> -	args->pitch = ALIGN(pitch, dpsub->dma_align);
+> +	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
+> +	if (ret)
+> +		return ret;
+>   
+>   	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
+>   }
+
+I have some trouble with this one.
+
+I have sent a series to add some pixel formats:
+
+https://lore.kernel.org/all/20250115-xilinx-formats-v2-0-160327ca652a@ideasonboard.com/
+
+Let's look at XV15. It's similar to NV12, but 10 bits per component, and 
+some packing and padding.
+
+First plane: 3 pixels in a 32 bit group
+Second plane: 3 pixels in a 64 bit group, 2x2 subsampled
+
+So, on average, a pixel on the first plane takes 32 / 3 = 10.666... bits 
+on a line. That's not a usable number for the DRM_IOCTL_MODE_CREATE_DUMB 
+ioctl.
+
+What I did was to use the pixel group size as "bpp" for 
+DRM_IOCTL_MODE_CREATE_DUMB. So, e.g., for 720 x 576:
+
+Stride for first plane: 720 * (32 / 3) / 8 = 960 bytes
+Stride for second plane: 720 / 2 * (64 / 3) / 8 = 960 bytes
+
+First plane: 720 / 3 = 240 pixel groups
+Second plane: 720 / 2 / 3 = 120 pixel groups
+
+So I allocated the two planes with:
+240 x 576 with 32 bitspp
+120 x 288 with 64 bitspp
+
+This worked, and if I look at the DRM_IOCTL_MODE_CREATE_DUMB in the 
+docs, I can't right away see anything there that says my tactic was not 
+allowed.
+
+The above doesn't work anymore with this patch, as the code calls 
+drm_driver_color_mode_format(), which fails for 64 bitspp. It feels a 
+bit odd that DRM_IOCTL_MODE_CREATE_DUMB will try to guess the RGB fourcc 
+for a dumb buffer allocation.
+
+So, what to do here? Am I doing something silly? What's the correct way 
+to allocate the buffers for XV15? Should I just use 32 bitspp for the 
+plane 2 too, and double the width (this works)?
+
+Is DRM_IOCTL_MODE_CREATE_DUMB only meant for simple RGB formats? The 
+xilinx driver can, of course, just not use drm_mode_size_dumb(). But if 
+so, I guess the limitations of drm_mode_size_dumb() should be documented.
+
+Do we need a new dumb-alloc ioctl that takes the format and plane number 
+as parameters? Or alternatively a simpler dumb-alloc that doesn't have 
+width and bpp, but instead takes a stride and height as parameters? I 
+think those would be easier for the userspace to use, instead of trying 
+to adjust the parameters to be suitable for the kernel.
+
+  Tomi
+
 
 _______________________________________________
 Linux-rockchip mailing list
