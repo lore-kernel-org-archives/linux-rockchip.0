@@ -4,98 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 804A3E77188
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 01:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF2CE77188
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 02:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=87SHSmCPNzmJ4HJ+1OOv5SdiuovwUnTF8QY/4CSTLIU=; b=eTHDJf3TDVw+Pf
-	kZ1koG6HuekLrB0Rx9gY9DBSHVr6Oey348wHcrYn/ewOZJN/B4pUDWjsNhx1fwgdBA1ED3KkAwEIJ
-	JwdP48soqafZV2SbaRTVdMe1eoaSF/2xZxSJvjZhGkbrRABEuqK1pZfxWO7v4bUY4U8hFVos/79hO
-	VJ8hwxnFQ88svCF7yhENFf1meYVLGh6FiRqyVj2zthzOipPxod/fEWurESIweJAgQu+irBP+vJb/P
-	s22ovKKrbEPOya0t4rBboog7Aq9os+k6GHBPVb6WWC3Fawr2Pj47A95MuIzK8awXwJqcotukB4xu3
-	1d1iQFb8NAdgQ/humoKw==;
+	List-Owner; bh=J9tmoLcsMGpFLkMQnu7FiQxwNWPPbefup6KXQQh5Hoc=; b=hB0Dy4xf7wnUKJ
+	VZpJa0UfjOJ3/HWwvNiUtxYt0XDHvawohIn03x6u8OCYIulpjc07NsNPR2kWLQZMBCNcf2b2DuqzW
+	F5go2Y0blWpZziewzgbV4z2siOo3zmx52+kOGLGYvHgpOxErdYe8t1tgW9Pv7E24kMyJoX+tdkm5h
+	Ke3wumXJ+b5iXnq9TpPSjE5kb5M9AgByB1GKvw/QYayOtySvHE2IxwPlHoTtpQalihpZRJakZ2rUg
+	E5+d5w5jG2ao1MpoloXGhLt6H/6XzVBZgLRQbFnVuXzJf0DJDc8nqR/j6za/XpNW+xKsxPjbhDJ7+
+	YLky2wr5Tti/Kw4ZErZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXsIR-0000000AJMV-2bXV;
-	Wed, 15 Jan 2025 01:34:15 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1tXshk-0000000AMY7-1I2O;
+	Wed, 15 Jan 2025 02:00:24 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXsBL-0000000AHu2-0SPn;
-	Wed, 15 Jan 2025 01:26:57 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-46b1d40ac6bso3507761cf.0;
-        Tue, 14 Jan 2025 17:26:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736904414; x=1737509214; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hFMwJAaeoRNdQ7wFB7oOxwf1IaEkyF3Nv5JGSL6B9MU=;
-        b=T7Wj2di/aPMiUmP4bdgIr92du6aqk0fMOm7N6XsaUM/tSFb4tfe/WQm8vs8zWW8rvY
-         dtrf8Io6u0Z6sr33BtvrSAPYOL3iXSXbDC5z8TDwd+LJvFfuKQSaee0CyE4v7p80K2r6
-         Ds+xMOFfG46MP1zAXkZGth5oYIrOObnKrvpzhQU7nLgAJIx3vKjqQEVfda6q9GU6ClVO
-         HrAP+iptsWT/d5weoPDVNitjZ0YdCI/Z0j6lkWz7gkgfaMyL/FG6Xq8hzhUCr/nuUYvy
-         R2lwxNgubFTnmNeGjD2mtfgN62Gs4sZdcxq2CKAJph+Sh0e8SKq5xLXITEedpXd9OaQn
-         uhuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736904414; x=1737509214;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hFMwJAaeoRNdQ7wFB7oOxwf1IaEkyF3Nv5JGSL6B9MU=;
-        b=r1DbBu6YcosncQZfWZXL0qXkFJwapXHcqwERBTTVJa8nmXSqSmfEPkScwXNe/8p2pR
-         vQt/duly5Kqk3pwNtmErMhq/OrLOrGcyqxrOw0dzN/MKniE/W7kOOsnyF+No2D2FkRx6
-         0wTG0/c1SdKGbOMWTD8PNe1VZ7GsJ4TnsPl/DZ/tnv7SrjxWmNO/2SMGxfKrTlOm4Si6
-         VFzPw+52KtkujjcfhoTE+XXi6LAwyhpVvbZDfe2H08pilqhs4C2m5UahdqV9LofiPwIC
-         Hcx2yR/d3Co0jbgG2VRVcNkXgkUCT6elFtTDxurF8hVC3fY+hp0/TLZOuR3d75wRGdf9
-         yL/g==
-X-Forwarded-Encrypted: i=1; AJvYcCUGa8gpc88XE4G4G8oM22uVrFG9TuE/k335CXBBgIU/D4rorRNCncOH51PWQFyzeZspVG9GeM0DM+pN7On+76c=@lists.infradead.org, AJvYcCUdLb1kjniMkDwlj2gAgdp5Gzn32/DcsXTzEZ5+2Y27iiq7gkoxpqHqDsRbn1RFp+TpzbwH43JXk7E288pGCTr/@lists.infradead.org
-X-Gm-Message-State: AOJu0YzXfNUt7zngDs8/ynKWSjLTqOZ3RzyU0LfrKKjbbuh/dk9UDjV1
-	41gLr3MkTqkoiaFi+BcNwWdPy22HKqi9p5/1Epb/hS/bMDsUwHgE
-X-Gm-Gg: ASbGncsjU2R7ppOsHbKkCe/MTN/XG5Bkiupfj1jeQJzMAJo5DAIuNHlKZVFW9kQb+gk
-	3BdjO22ZeEc2gN2ba9awKYGIV8wkNFPMjsyWug+CDml0y//N8RwlMcWGzbYRVP76RJ2MW5lHTIh
-	r8qJUfkziTvv31aTR4jSfbjDEBiI110SjqHInIJ1s4j+DcFHSK6510DXv5DjPe5eQHI31OttXWN
-	ZG+Lo3igBNjUpe0yZr5cjTNPdDAk/naP8UQMufWAAbV3XlBPi2wxVTq3FFZtUIOYWMw
-X-Google-Smtp-Source: AGHT+IFbToSOgBgyFlAAQb6WU2ckT5CIGlBK7iJrhnVXB8ROQS2yvhyIzkDE/m/9jLZTkhccFjgHlg==
-X-Received: by 2002:a05:622a:344:b0:467:6654:3dda with SMTP id d75a77b69052e-46df56ad2d9mr20388131cf.12.1736904413930;
-        Tue, 14 Jan 2025 17:26:53 -0800 (PST)
-Received: from master-x64.sparksnet ([204.111.227.95])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-46c8733130dsm59933881cf.25.2025.01.14.17.26.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 17:26:52 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: zyw@rock-chips.com,
-	kever.yang@rock-chips.com,
-	frank.wang@rock-chips.com,
-	william.wu@rock-chips.com,
-	wulf@rock-chips.com,
-	linux-rockchip@lists.infradead.org,
-	Peter Geis <pgwipeout@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Trevor Woerner <twoerner@gmail.com>,
+	id 1tXshh-0000000AMWr-0JVh;
+	Wed, 15 Jan 2025 02:00:22 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:1f0:6a66:664e:ef87:7f44])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 8b43c33e;
+	Wed, 15 Jan 2025 10:00:09 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [RFC PATCH v1 6/6] arm64: dts: rockchip: enable the usb3 phy on remaining rk3328 boards
-Date: Wed, 15 Jan 2025 01:26:27 +0000
-Message-Id: <20250115012628.1035928-7-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250115012628.1035928-1-pgwipeout@gmail.com>
-References: <20250115012628.1035928-1-pgwipeout@gmail.com>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	naoki@radxa.com
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: default to host mode for USB on Radxa E25
+Date: Wed, 15 Jan 2025 10:00:06 +0800
+Message-Id: <20250115020006.10336-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <d7b2e993-c6c8-4e60-bfe2-80857ca8a992@kwiboo.se>
+References: <d7b2e993-c6c8-4e60-bfe2-80857ca8a992@kwiboo.se>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTE9CVhpIHh1ISEtDHk9MQ1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQUodS0FNGk1NQU1NTx5BHh1DTEFMHU9PWVdZFhoPEh
+	UdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQktLWQY+
+X-HM-Tid: 0a9467b0878c03a2kunm8b43c33e
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OE06TRw*LTIcF08sMQoDFz4C
+	LitPCxVVSlVKTEhNQktNT0pLTkNDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0tBSh1LQU0aTU1BTU1PHkEeHUNMQUwdT09ZV1kIAVlBTEpINwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_172655_145634_159BEB3F 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20250114_180021_312782_C0BD09EC 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,113 +76,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the new usb3 phy nodes on the remaining rk3328 boards. This is
-done separately from the rk3328-roc boards due to lack of testing, in
-case of regressions.
+Hi,
+> I would advise against using any sd-uhs- mode for sd-card on Rockchip
+> RK356x boards because of a timing issue during boot between mmc,
+> regulator and IO-domain drivers.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
+This problem seems to occur only on rk356x?
 
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi   | 12 ++++++++++++
- .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi   | 12 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 12 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts       | 12 ++++++++++++
- 4 files changed, 48 insertions(+)
+> Ideally this race condition should be solved instead of limiting use
+> of UHS modes. However, use of sd-uhs-sdr50 is typically more forgiving
+> and has been used on other boards.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
-index 1715d311e1f2..a4d880725a96 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
-@@ -385,6 +385,18 @@ rtl8153: device@2 {
- 	};
- };
- 
-+&usb3phy {
-+	status = "okay";
-+};
-+
-+&usb3phy_utmi {
-+	status = "okay";
-+};
-+
-+&usb3phy_pipe {
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
-index 82021ffb0a49..f70d28e6da5d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
-@@ -349,6 +349,18 @@ rtl8153: device@2 {
- 	};
- };
- 
-+&usb3phy {
-+	status = "okay";
-+};
-+
-+&usb3phy_utmi {
-+	status = "okay";
-+};
-+
-+&usb3phy_pipe {
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index 425de197ddb8..4ce6b16cf291 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -440,6 +440,18 @@ &usbdrd3 {
- 	status = "okay";
- };
- 
-+&usb3phy {
-+	status = "okay";
-+};
-+
-+&usb3phy_utmi {
-+	status = "okay";
-+};
-+
-+&usb3phy_pipe {
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 745d3e996418..2e366de96390 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -379,6 +379,18 @@ &usbdrd3 {
- 	status = "okay";
- };
- 
-+&usb3phy {
-+	status = "okay";
-+};
-+
-+&usb3phy_utmi {
-+	status = "okay";
-+};
-+
-+&usb3phy_pipe {
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
+It seems that sd-uhs-sdr50 does not need 1.8V IO voltage.
+I tested the speed on a rk3528 board with sdio wifi:
+(The IO voltage of sdio on this board is 3.3V)
+
+highspeed: 170Mbps DL
+sdr50:     290Mbps DL
+sdr104:    290Mbps DL
+
+So sdr50 should be safe.
+
+Thanks,
+Chukun
+
 -- 
-2.39.5
+2.25.1
 
 
 _______________________________________________
