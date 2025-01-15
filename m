@@ -4,82 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5145C02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 18:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61680C02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 18:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AgyA4qZsDpXkuzutxdj9LUL4IWBySuO6VnlIUv4/YNw=; b=hQapNFoyMufFBa
-	Oqm605UvfgAowKA6hjwy7OVC2rHeQuNKYceKjB1niPCIiZFvSZFlKcf21jJ14B9mpSBzdN98JcJsW
-	3FgxyX0Q1oZXlUfjfeGDpMNObnlOUP/QQf/5sM82C/Y2TwbjtYJyrEVv5HNVx3AGvqdVPhaQnjFeS
-	HDZYzokLC3wkWJu/j6X9Rv8KEy00Bf5okPjyHlh7JnuHWiiBWB6nd12faZWcC/CTv2wb2vvHeYcVv
-	Sm+mTGsJSgyiFcjNm64NyBqqWKxMODpwa5ZuzGhUt0DvtVH83I6gn8lA1fVyl/jXQV5ytaZ4MPGZM
-	4uGLH7GO456+RCv335rA==;
+	List-Owner; bh=o1tl3tSCjBuZhj1JfuUx5md59HUOPkizmr6neVToZk4=; b=jRbddfckM/qkRC
+	F6OQ83d7EXX00bQynoGOOSRcrj27jDw8vpC0zT07zd1aCsw9wRPa8OWhrK3w/BpIqKouEhdam1PxD
+	CWrMJp79Itck8/rg+pqr/bflxlttiUhXaP0rBn+eSOuEtH5kgkQXA3DrsIBl9SoYoUzArwx/M8mDo
+	0GNfxqv7InFYtM5XyUp5YEu+tSVbVA7cz+ymwA0R2y9KWgm15FBd/wrIvejGSdksvzqKCPbSEUMMy
+	zyQT/5PvI13TaqcwKP9+jEGGmR8dHkFIFltt7MdwOtds+rCGuhKV8M5Kufr3fi3XhutOaoq0tIAhM
+	wJXNtrOq3+tGOXid/qhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY82b-0000000CkDH-0VWy;
-	Wed, 15 Jan 2025 18:22:57 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1tY8OF-0000000CoRy-3cag;
+	Wed, 15 Jan 2025 18:45:19 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY82Y-0000000CkCp-3vTg;
-	Wed, 15 Jan 2025 18:22:56 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5d9f0a6adb4so73704a12.1;
-        Wed, 15 Jan 2025 10:22:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736965373; x=1737570173; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=wtFOqkBVbdu6zNF6h4YnkKJZaUS0WkW/Wxv1qDA9ygA=;
-        b=XfscInjG6aJi6kRCxBScIB59J/bhubg9vI87EILc+Svj3omXS6mwytLVNZZB0ADHxM
-         IdPrK5FxkOlJd9xLjsSOmr3Oo28xmHqzFUQXDp8pwjglcBQk/O/73ffHbsqlDjNaKhC7
-         PiFS1Q8ZP4ng/fNJj42apcrKA80N0sbJzJn6zEBGRfUxtTC8/QcJp0R8hQGF+Q5U+sgB
-         yTi0r9qtdD2TgjgH3ZtP11jnw5yBt/DxJ0Ui44AWKs55r3yuH55c6jMuuOFPLGrCejdu
-         cPQwV6WfSpZGzY4aUPihcjgP8Q/Z5nhRPHF9x3suQ144NmObGJqfrctMzR6hrLd0hpmR
-         Lwrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736965373; x=1737570173;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wtFOqkBVbdu6zNF6h4YnkKJZaUS0WkW/Wxv1qDA9ygA=;
-        b=tEK03zf8MCeroMWf7+Ni/Qg3HTeCJ19Zd3ih9VFgAvrUzqA2IYyLFCzY4J2+0DUrvG
-         TlzoNtbrRIFpwGX2Xmky4FZposmIQ9dVLQ5somuPfUaW5F9yHwWlrvIhudZHz0fySqmQ
-         /P3bYFiAo9pW/M7TQLUedH2OPWqSdEaQj/GoubVqWggfTWF+cDdfTlH1YBflM9rQsnOf
-         fLyByIJlNglyay+HZZA0lgV8XvA6Ft76SoAYp8AHbySPnO88CZwdMXGJT9ceaiyXNEnZ
-         mTq9XVKZV29/jR6iTMH/2FivbNULq0tpRlAQji0WHFAwDJ9NvWskMNEYjij74FaYGZcQ
-         YJ3g==
-X-Forwarded-Encrypted: i=1; AJvYcCVHM6x4PQpCJChOzTx5+WyUXbXEeEqfucBHhe2CYj78V423x0mLLRPNXAhJP7uzNFnmxNC9IXYdn2sFOsp6ld1+@lists.infradead.org, AJvYcCWBPWErdvZWk9ywa0omGWUoZV0hQiMcgxauDGLxdaCyXLB92cDlD6u8cNKYRxyGXlUF9P/01fwEtLy9yF3hvyM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxfBAm2AZDqVPpcRnLjzk7wFxhhFmoYgqwlrwxCvwQWxEBbm+aR
-	7Y5aPbO7CV8y973oen/KQXsl+vxxqV16tQqZF1+dOuooIie1zSDWmbCfqG0AbFX5g/FuucRzLKH
-	YvKfXWqzyPQZhtG2U4PMQr+veLHI=
-X-Gm-Gg: ASbGncu6uZyLzye4u9usD7vfIq0u5ypL8wFKTY+7VxjfkDLCDmKYWr3zSJ9Y9oJehHx
-	zVZBfkXpbF2MSLJRL7K0duXiTz6FjCW+R58xucw==
-X-Google-Smtp-Source: AGHT+IH4ZBPCX1+Zs+u6aD4i/Mk+EEOp4Zxu5uuiRB2111BunzMgKFahuNg0HGJ0e/tCZoud1qbk+dK1yM9Wb1ed+A8=
-X-Received: by 2002:a05:6402:4023:b0:5d3:ba97:527e with SMTP id
- 4fb4d7f45d1cf-5d972e47717mr27159444a12.25.1736965370851; Wed, 15 Jan 2025
- 10:22:50 -0800 (PST)
+	id 1tY8Ab-0000000ClLs-4ADC;
+	Wed, 15 Jan 2025 18:31:15 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 420B0FF803;
+	Wed, 15 Jan 2025 18:31:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1736965870;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jLoWi3Wg0eiQh/tot5fchMc56NRkY1AedYStPaUs9Pk=;
+	b=XVoQSRAsHPXADFu3jVGI7dBwCecPD+dviwtiINSG7gG2QTYI7ZKoCGbAlzsXnHawAhGKwl
+	24LiXfzCQR3pIZBqvn9qb/WI76bBR/gYM5iK3v27XfrrihWyj6I9DuAIL0fsvT3vsw3I/q
+	czvnLPptcYBnGEnhrm8GhgmQ8vCeUtjENVYUkzFUKo7lU8h2121ib4vf8mK5lggJa2imhw
+	wuKxnh8Eev9ag9+Xsu7zpWrkt2h27deaKdBBBwhgImA9Rm+AwpotMeHj0kiG0/Az9PUc1t
+	KHhtrdM1rJLw5PWkyTBKEJFeu2A3AfGxN8CmN6JVLXE0bXGUEx1cXfp5ava0qA==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Mark Brown <broonie@kernel.org>,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Han Xu <han.xu@nxp.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Haibo Chen <haibo.chen@nxp.com>,
+	Yogesh Gaur <yogeshgaur.83@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Michal Simek <michal.simek@amd.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Raju Rangoju <Raju.Rangoju@amd.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Steam Lin <stlin2@winbond.com>,
+	linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-mtd@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Tudor Ambarus <tudor.ambarus@linaro.org>
+Subject: Re: [PATCH v3 21/27] mtd: spinand: Create distinct fast and slow read from cache variants
+Date: Wed, 15 Jan 2025 19:31:02 +0100
+Message-ID: <173696548250.435435.10416906996871126975.b4-ty@bootlin.com>
+X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
+References: <20250110-winbond-6-11-rc1-quad-support-v3-0-7ab4bd56cf6e@bootlin.com> <20250110-winbond-6-11-rc1-quad-support-v3-21-7ab4bd56cf6e@bootlin.com>
 MIME-Version: 1.0
-References: <20250115174012.bdny6nxxr4tuzyis@thinkpad> <20250115174834.GA538101@bhelgaas>
-In-Reply-To: <20250115174834.GA538101@bhelgaas>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Wed, 15 Jan 2025 23:52:33 +0530
-X-Gm-Features: AbW1kvZ50fXNCVlx0U9GjzuVih3n2_IhFXemWMJd-_PuYqVJD6pFzYzcMcNZWiA
-Message-ID: <CANAwSgQ2-r5gHmNwf9YTWXEU-mQ6dVpjFV4gzM+sVGsTUit7ew@mail.gmail.com>
-Subject: Re: [PATCH linux-next v1] PCI: rockchip: Improve error handling in
- clock return value
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Dan Carpenter <dan.carpenter@linaro.org>, linux-pci@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_102254_972880_FCBFDE02 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20250115_103114_290445_E54B9906 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,44 +107,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mani/ Bjon,
-
-On Wed, 15 Jan 2025 at 23:18, Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Wed, Jan 15, 2025 at 11:10:12PM +0530, Manivannan Sadhasivam wrote:
-> > On Mon, Jan 06, 2025 at 09:00:38PM +0530, Anand Moon wrote:
-> >
-> > Subject should include the word 'fix' not 'improve'
-> >
-> > > Updates the error message to include the actual return value of
-> >
-> > s/Updates/Update (imperative form)
-> >
-> > > devm_clk_bulk_get_all, which provides more context for debugging
-> > > and troubleshooting the root cause of clock retrieval failures.
-> >
-> > Btw, it is not just updating the error message, it also returns the
-> > actual error code.
-correct.
->
-> Already squashed into
-> https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/commit/?id=abdd4c8ea7d7,
-> sorry I didn't mention that here.
->
-Thanks,
-
-I will focus on improving my communication skills and delivering impactful
-commit messages in the future.
-
-Thank
--Anand
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCAxMCBKYW4gMjAyNSAxNTo0NToyMyArMDEwMCwgTWlxdWVsIFJheW5hbCB3cm90ZToK
+PiBTbyBmYXIsIHRoZSBTUElOQU5EX1BBR0VfUkVBRF9GUk9NX0NBQ0hFX09QIG1hY3JvIHdhcyB0
+YWtpbmcgYSBmaXJzdAo+IGFyZ3VtZW50LCAiZmFzdCIsIHdoaWNoIHdhcyBpbmR1Y2luZyB0aGUg
+cG9zc2liaWxpdHkgdG8gc3VwcG9ydCBoaWdoZXIKPiBidXMgZnJlcXVlbmNpZXMgdGhhbiB3aXRo
+IHRoZSBub3JtYWwgKHNsb3dlcikgcmVhZCBmcm9tIGNhY2hlCj4gYWx0ZXJuYXRpdmUuIEluIHBy
+YWN0aWNlLCB3aXRob3V0IGZyZXF1ZW5jeSBjaGFuZ2Ugb24gdGhlIGJ1cywgdGhpcyB3YXMKPiBs
+aWtlbHkgd2l0aG91dCBlZmZlY3QsIGJlc2lkZXMgcGVyaGFwcyBhbGxvd2luZyBhbm90aGVyIHZh
+cmlhbnQgb2YgdGhlCj4gc2FtZSBjb21tYW5kLCB0aGF0IGNvdWxkIHJ1biBhdCB0aGUgZGVmYXVs
+dCBoaWdoZXN0IHNwZWVkLiBJZiB3ZSB3YW50IHRvCj4gc3VwcG9ydCB0aGlzIGZ1bGx5LCB3ZSBu
+ZWVkIHRvIGFkZCBhIGZyZXF1ZW5jeSBwYXJhbWV0ZXIgdG8gdGhlIHNsb3dlc3QKPiBjb21tYW5k
+LiBCdXQgYmVmb3JlIHdlIGRvIHRoYXQsIGxldCdzIGRyb3AgdGhlICJmYXN0IiBib29sZWFuIGZy
+b20gdGhlCj4gbWFjcm8gYW5kIGR1cGxpY2F0ZSBpdCwgdGhpcyB3aWxsIGZ1cnRoZXIgaGVscCBz
+dXBwb3J0aW5nIGhhdmluZwo+IGRpZmZlcmVudCBmcmVxdWVuY2llcyBhbGxvd2VkIGZvciBlYWNo
+IHZhcmlhbnQuCj4gCj4gWy4uLl0KClRoZSBmb2xsb3dpbmcgcGF0Y2hlcyBoYXZlIGJlZW4gYXBw
+bGllZCB0byBuYW5kL25leHQ6CgpbMjEvMjddIG10ZDogc3BpbmFuZDogQ3JlYXRlIGRpc3RpbmN0
+IGZhc3QgYW5kIHNsb3cgcmVhZCBmcm9tIGNhY2hlIHZhcmlhbnRzCiAgICAgICAgY29tbWl0OiAw
+NDIwODcyNDc4MzVkYWQxZWM1ZTM5MDUyYWJmMDIyZmQxM2M2MzI2ClsyMi8yN10gbXRkOiBzcGlu
+YW5kOiBBZGQgYW4gb3B0aW9uYWwgZnJlcXVlbmN5IHRvIHJlYWQgZnJvbSBjYWNoZSBtYWNyb3MK
+ICAgICAgICBjb21taXQ6IDdjZTBkMTZkNTgwMmJmZGU0MjA5ZTUyZWU4YWQ2NDRjYTFlYWI0MjMK
+WzIzLzI3XSBtdGQ6IHNwaW5hbmQ6IEVuaGFuY2UgdGhlIGxvZ2ljIHdoZW4gcGlja2luZyBhIHZh
+cmlhbnQKICAgICAgICBjb21taXQ6IDY2NmMyOTliZTY5NmYwMmMzMzU0ZGExMDQyOTVmYjk0Yjhm
+NjVkMjUKWzI0LzI3XSBtdGQ6IHNwaW5hbmQ6IEFkZCBzdXBwb3J0IGZvciByZWFkIERUUiBvcGVy
+YXRpb25zCiAgICAgICAgY29tbWl0OiA4NTg2YmM4ZDk1NDg4ZGZhYWRiYzFhZjg5YmE1OTkwMGQy
+YzM5MTE5ClsyNS8yN10gbXRkOiBzcGluYW5kOiB3aW5ib25kOiBVcGRhdGUgdGhlICpKVyBjaGlw
+IGRlZmluaXRpb25zCiAgICAgICAgY29tbWl0OiAxZWE4MDhiNGQxNWI5YmRkYzQ4YWY3NWIwNjY4
+YjgyMzY2YjViOTI3ClsyNi8yN10gbXRkOiBzcGluYW5kOiB3aW5ib25kOiBBZGQgY29tbWVudCBh
+Ym91dCBuYW1pbmcKICAgICAgICBjb21taXQ6IDYxYzcxNTVlM2ZlOTM4ZDRkYTQ2NzFiMmY4NGUy
+OWVhZjc5ZjVmNDYKWzI3LzI3XSBtdGQ6IHNwaW5hbmQ6IHdpbmJvbmQ6IEFkZCBzdXBwb3J0IGZv
+ciBEVFIgb3BlcmF0aW9ucwogICAgICAgIGNvbW1pdDogYmU3YTA1ZGI0MjUyZWRiZmZiNDM0ODRi
+MTQ3NTUwNDhmYjhkYjcxMAoKUGF0Y2hlKHMpIHNob3VsZCBiZSBhdmFpbGFibGUgb24gbXRkL2xp
+bnV4LmdpdCBhbmQgd2lsbCBiZQpwYXJ0IG9mIHRoZSBuZXh0IFBSIChwcm92aWRlZCB0aGF0IG5v
+IHJvYm90IGNvbXBsYWlucyBieSB0aGVuKS4KCktpbmQgcmVnYXJkcywKTWlxdcOobAoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
