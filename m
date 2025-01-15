@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AEDC02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 10:41:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DBFC02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 10:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yzVveinKrw/2mafF6OYqyPJ9xG3SP4E0l6PKHY5rYWE=; b=ybPlt+k5Y4Zf64
-	mQg/2BhqvNONgYWD4j3Fvn9ELYEDdusVtJ1QOGNxnrFqQoj4IkLSNv7/ilHjAo61Ko6KvqSK4yiC2
-	WYqw5gwIQsyqMoFddc2ELzLNTrzBLxzKrpB0aYlW/6ydC0tMmfNLMpTTrfLMfeqjDbdPhaCm6hqUE
-	MXFzQPsBDzJsDB7YN3HZEsftAaNKOqXtUxBwR0fB9hKUFJF/aYjC8Hwme8wa+Qz3U2G6x77JJGGLm
-	10vmnZhgUDFamS0HDynRUryGlEhG5bV0urg+mSRIwkfHFLkWdmyjvQtTDl7NS3llDcW8KiE/J0L9q
-	PnQM8TExyiBc5I08nILg==;
+	List-Owner; bh=Jrod6M+HmjlN1MrQ/e0NXNNutKxMfdCiKiD+KoQ06As=; b=Ue+ENLI4KYyt/c
+	0SXu0I1go0c/1Fg9J9XFox/bZH52oxETTydKgU9Mi7OkThYw3AuLXrP7JGNPt53ho3DowzhuaxPwk
+	3BsXNgnrJ0adOnncw1Z8KJogLlHSf8wfeGvnfqo1Q2ByWenuMbUct3lgs9dutwWOSsZvwAJGcMYG2
+	z8rUujY0pCdjA3+1Nt2/i5h15nib50sIqF920uOT+ROuFiHgsMk+ThwLoUEtbRYbEn3z55X/TlL8U
+	E9p1MESSU1uKkyyYvz/KUudb8qJzMOHvZCTHKNMrnyna6IxqrEuSFoZOizIqkROhy+AFo7XG01mes
+	bNF6pDuaV8K5ivARZmqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY0pg-0000000BXwT-3CND;
-	Wed, 15 Jan 2025 10:41:08 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1tY15M-0000000BaR4-2zJG;
+	Wed, 15 Jan 2025 10:57:20 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY0kH-0000000BWgz-0egi;
-	Wed, 15 Jan 2025 10:35:34 +0000
+	id 1tY146-0000000BaKy-2Mi1;
+	Wed, 15 Jan 2025 10:56:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1736937333; x=1768473333;
+  t=1736938563; x=1768474563;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=srmbFPQOHGz4l0rqphK2ONGqHNDOAhI+wHcwQagKgAY=;
-  b=gTOsXL19XjQeysrb6m1j9prpEv2+gPdvJtv3bBF+KaInmxW0y9IqbInZ
-   Vfn+koGDVWs7XxRw6+ZnQ23L3bhlsiO/asIwWCMcfeeLkKsNPjLnuaSqG
-   7npolJyLQw05faQgzk5CtWDlpJvvjnnKjABSdzeXs8+x2z+GR8A9sa2/V
-   4YkhtkuexIZkq/Jh1XlbJcjlUx5k1+qqIs88aOq6YwMyvEKCWUSBzCiH9
-   Eagf60MUAp8RVHV0hYbMgetS0RAqu6TlzVoXRW17kT8Tu5GU5eMw95LHe
-   siE8J8Zj6sbxxvPf06fnT//cpF8cinEvfV/c80+goxcN8T4mRycZOjQZN
-   A==;
-X-CSE-ConnectionGUID: kmqtbzojSYaqqBIhfndD4g==
-X-CSE-MsgGUID: 14GSIo/6SCm7ul7J93Npcw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11315"; a="37293888"
-X-IronPort-AV: E=Sophos;i="6.12,317,1728975600"; 
-   d="scan'208";a="37293888"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 02:35:31 -0800
-X-CSE-ConnectionGUID: yHD1Mg5hS+CA7ypCYlvO/A==
-X-CSE-MsgGUID: BCdZ7nwgR6K8jb4ux29lKA==
+  bh=a21DYM9Y6e9dtyfgQrzamCDEH03wQiwkyZKuBps1SoA=;
+  b=j6KjQcUsuMel3bKX6w11kvEOhiE6ngxfKjRsyV5E8QWvruDteif8lHxL
+   6V8elAQa7Ug9KPakCqsvzbDoWomIKMgoy0NDca5UizL9CdTFq7AmwfU5p
+   Zt9Bh6WXFkYM9LaGLPPvG1MLSDt7QDzaVLDDZJN69qKLERg/fqpKYxzyd
+   El5nRi7e6UH8ptSQq9tFyul7URi9UfN31HAJ+Qj9OGLkgAlKoJHmrtNMK
+   WNeDJ9+Cb2g1BZ3eHsWz2ETNnWIll1nvlSUllP6uW1BsRiitRzrYuSWlV
+   S+6ZuUKbDj9msmB4YX1v07hhmHLGB/xfsKwXJQo50i3In//wcgr5T3nbW
+   Q==;
+X-CSE-ConnectionGUID: B1qZ6JkKRWKjo/wWXm/Tnw==
+X-CSE-MsgGUID: f+53aSimTUKCVP0XszElsA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="48676873"
+X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; 
+   d="scan'208";a="48676873"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 02:56:02 -0800
+X-CSE-ConnectionGUID: TmEfFQvuR1ePkAM3ceV8tw==
+X-CSE-MsgGUID: dWdMibSbRlaXaN84cYZa8w==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.12,317,1728975600"; 
-   d="scan'208";a="110064450"
+   d="scan'208";a="104936194"
 Received: from bergbenj-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.244.123])
-  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 02:35:26 -0800
-Date: Wed, 15 Jan 2025 11:35:19 +0100
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jan 2025 02:55:56 -0800
+Date: Wed, 15 Jan 2025 11:55:43 +0100
 From: Mehdi Djait <mehdi.djait@linux.intel.com>
 To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, =?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
 	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
 	Kever Yang <kever.yang@rock-chips.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, 
@@ -67,19 +67,18 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
 	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Mehdi Djait <mehdi.djait@bootlin.com>, Gerald Loacker <gerald.loacker@wolfvision.net>
+	Mehdi Djait <mehdi.djait@bootlin.com>, Gerald Loacker <gerald.loacker@wolfvision.net>, 
+	Paul Kocialkowski <paulk@sys-base.io>, Sebastian Reichel <sebastian.reichel@collabora.com>
 Subject: Re: [PATCH v2 0/6] media: rockchip: add a driver for the rockchip
  camera interface (cif)
-Message-ID: <2ktcdemu3og64vuvyxykpxrwquewubsqcpmhxykynkbl5ddwym@dsxaldpwu2u4>
+Message-ID: <vbhqvvdjfjv2plavyd4gd2aypy6epybatq22mhgkcenndjgjly@73vacmvvv2fj>
 References: <20241217-v6-8-topic-rk3568-vicap-v2-0-b1d488fcc0d3@wolfvision.net>
- <20250109171232.GA17638@pendragon.ideasonboard.com>
- <6380144e-f0c4-4415-89d5-36ed3d5a4205@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6380144e-f0c4-4415-89d5-36ed3d5a4205@wolfvision.net>
+In-Reply-To: <20241217-v6-8-topic-rk3568-vicap-v2-0-b1d488fcc0d3@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_023533_278963_E3D66520 
-X-CRM114-Status: GOOD (  48.88  )
+X-CRM114-CacheID: sfid-20250115_025602_642706_D23D187F 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,123 +95,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael and Laurent,
+Hi Michael,
 
-On Fri, Jan 10, 2025 at 09:48:04AM +0100, Michael Riesch wrote:
-> Hi Laurent,
+On Tue, Dec 17, 2024 at 04:55:12PM +0100, Michael Riesch wrote:
+> Habidere,
 > 
-> On 1/9/25 18:12, Laurent Pinchart wrote:
-> > Hi Michael,
-> > 
-> > On Tue, Dec 17, 2024 at 04:55:12PM +0100, Michael Riesch wrote:
-> >> [...]
-> >> and refactor the whole thing. The resulting v2 of the series now adds a
-> >> basic media controller centric V4L2 driver for the Rockchip CIF with
-> >>  - support for the PX30 VIP (not tested, though, due to the lack of HW)
-> >>  - support for the RK3568 VICAP DVP
-> >>  - abstraction for the ping-pong scheme to allow for future extensions 
-> >>
-> >> However, several features are not yet addressed, such as
-> >>  - support for the RK3568 MIPI CSI-2 receiver
-> > 
-> > We've discussed this previously on IRC, but I don't think the issue has
-> > been raised on the list.
-> > 
-> > I'm puzzled by how this will work. As far as I understand, the RK3568
-> > has a CSI-2 receiver with 4 data lanes and 2 clock lanes. I assume this
-> > is used to support both 2x2 lanes and 1x4 lanes. Both the VICAP and ISP
-> > sections of the TRM list CSI2 RX registers, but it's not clear how the
-> > components are all connected. Does the ISP need to be part of the same
-> > media graph ?
+> TL;DR:
 > 
-> Well you are not the only one to be puzzled by this HW :-) I started to
-> bring up the MIPI CSI-2 part and can describe the situation as I
-> understand it. No claim for correctness or completeness, though.
+> This series introduces support for the Rockchip Camera Interface (CIF),
+> which can be found (in the form of variants that differ significantly) in
+> different Rockchip SoCs in general, and for the Rockchip RK3568 Video
+> Capture (VICAP) variant in particular.
 > 
-> Indeed, the RK3568 MIPI CSI-2 PHY (TRM Chapter 28) has 4 data lanes and
-> 2 clock lanes. And indeed it is possible to attach one device (1x4) or
-> two devices (2x2) to it. In the latter case the PHY is operated in split
-> mode (and 1x4 would be the default full mode, then). The mode can be set
-> in a GRF register.
+> The patches are functional and have been tested successfully on a
+> custom RK3568 board including the ITE Tech. IT6801 HDMI receiver as
+> attached subdevice. The IT6801 driver still needs some loving care but
+> shall be submitted as well at some point.
 > 
-> The RK3568 features a MIPI CSI-2 host controller (TRM Chapter 27) that
-> (apparently) is connected to the RK3568 VICAP but has its registers in a
-> separate memory region. Right now I am trying to clean up the downstream
-> V4L2 subdevice driver for this host controller, which shall be linked to
-> the PHY using the "phys" DT property, and linked to the VICAP using DT
-> endpoints. In the end, the media graph could look like
+> The long story (gather 'round children):
 > 
->   CC1 (V4L2 subdev) --> RK3568 VICAP DVP (V4L2 device)
-> 
->   CC2 (V4L2 subdev) --> RK3568 MIPI CSI-2 HOST (V4L2 subdev) -->
->   RK3568 VICAP MIPI (V4L2 device)
-> 
-> where CC denotes a companion chip, such as an image sensor or a video
-> decoder. Note that there are two disjoint subgraphs in this topology.
-> 
-> As you already pointed out, the RK3568 ISP features its integrated MIPI
-> CSI-2 host controller (as e.g. the RK3399 ISP does). This host
-> controller is represented by a V4L2 subdevice as well, and the
-> connection to the (same) MIPI PHY is established similarly. The
-> difference may be that this controller has its registers within the ISP
-> register block and is thus tightly coupled to the ISP (and the rkisp1
-> driver).
-> 
-> Now I guess that in split mode the ISP MIPI path works completely
-> independent and could be represented either by a separate media graph or
-> by another disjoint subgraph in the same media graph.
-> In split mode we need to define which host controller should handle
-> which set of lanes (there are two sets, clock 1 + data 1 + data 2 as
-> well as clock 2 + data 3 + data 4). Right now I am not sure how this
-> should be accomplished, but then the split mode can also wait a bit.
-> 
-> However, as you pointed out in our IRC discussion, it is mentioned in
-> TRM Chapter 12 that the RK3568 ISP can also process the DVP input. This
-> still needs some verification, the rest of the paragraph is pure
-> speculation. But maybe on simply needs to set the correct bits in
-> CTRL_0000_VI_DPCL. Now this would mean that there should be one large
-> media graph the includes the RK3568 VICAP as well as the RK3568 ISP,
-> i.e., something along the lines
-> 
->   CC0 (V4L2 subdev) --> RK3568 ISP MIPI CSI-2 HOST (V4L2 subdev)
->                             |
->                             v
->                      RK3568 ISP MUX (V4L2 subdev) --> RK3568 ISP...
->                             ^
->                             |
->   CC1 (V4L2 subdev) --> MAGIC V4L2 subdev? -->
->   RK3568 VICAP DVP (V4L2 device)
-> 
->   CC2 (V4L2 subdev) --> RK3568 MIPI CSI-2 HOST (V4L2 subdev) -->
->   RK3568 VICAP MIPI (V4L2 device)
-> 
-> where the MAGIC V4L2 subdev should be a fan out of some sort?!
-> 
-> Now to answer your question: I guess it is going to be one media graph
-> for RK3568 VICAP and RK3588 ISP. This shall be in perfect alignment with
-> the RK3588, where VICAP and ISPs are clearly connected.
+> The Rockchip Camera Interface (CIF) is featured in many Rockchip SoCs
+> in different variations. For example, the PX30 Video Input Processor (VIP)
+> is able to receive video data via the Digital Video Port (DVP, a parallel
+> data interface and transfer it into system memory using a double-buffering
+> mechanism called ping-pong mode. The RK3568 Video Capture (VICAP) unit,
+> on the other hand, features a DVP and a MIPI CSI-2 receiver that can
+> receive video data independently (both using the ping-pong scheme).
+> The different variants may have additional features, such as scaling
+> and/or cropping.
+> Finally, the RK3588 VICAP unit constitutes an essential piece of the camera
+> interface with one DVP, six MIPI CSI-2 receivers, scale/crop units, and
+> different data path multiplexers (to system memory, to ISP, ...).
 
-From what I can gather online:
+I wanted to CC Paul on this and add this really GOOD summary he provided
+while reviewing v6 of the CIF driver: Feel free to add (or not) some of
+the infos from it.
 
-"For RV1126/RV1109 and RK356X platforms, VICAP and ISP are two independent image processing IPs,
-If the image collected by VICAP is to be processed by ISP , it is necessary to generate v4l2
-corresponding to the interface of VICAP at the driver level sub The device is linked to the node
-corresponding to the ISP to provide parameters for the ISP driver to use."
+----------------------------------------------------------------------------------
+So I have spent a bit of time trying to figure out the history of this unit
+and in which platform in was used. The takeaway is that the earliest Rockchip
+SoC that uses it is the RK3066 (2012) and the latest SoC is the RK3566/RK3568
+(2020). Earlier SoCs (RK29) do mention VIP but seems quite clear that this is
+a whole different unit and the recent RK3588 (2021) has a new VICAP_DVP unit
+(mixed with VICAP_MIPI) which also seems significantly different.
 
-"For the RK356X chip, VICAP has only a single core and has both dvp/mipi interfaces. The dvp interface
-corresponds to a rkvicap_dvp node, and the mipi interface corresponds to a rkvicap_mipi_lvds node each
-node can be collected independently."
+Over the course of the existence of this unit, it is most often referred to
+as CIF. Since this is also the name for the driver in the Rockchip tree,
+I feel like it is best to use CIF as the mainline terminology instead of VIP.
+Note that the unit is also called VICAP in RK3566/RK3568.
 
-"In order to synchronize the VICAP collected data information to the isp driver, it is necessary to link the
-logical sditf node generated by the VICAP driver to the virtual node
-device generated by the isp"
+Here is the detail of my research on the concerned chips. The + at the beginning
+of the line indicate support in Rockchip's 4.4 tree:
 
-In a graph showing how ISP and VICAP are connected a virtual connection
-is used (as opposed to a Entitative connection, e.g., between the mipi
-sensor and the csi2 dphy)
+- RK3566/RK3568 (2020): CIF pins + VICAP terminology
++ RK1808 (2019): CIF pins + VIP registers + VIP_MIPI registers
++ PX30 (2017): VIP pins + VIP registers
++ RK3328 (2017): CIF pins + VIP terminology
+- RK3326 (2017): CIF pins + VIP terminology
+- RK3399 (2016): CIF pins
+- RK3368 (2015): CIF pins
+- PX2 (2014-11): CIF pins + CIF registers
++ RK3126/RK3128 (2014-10): CIF pins + registers
++ RK3288 (2014-05): CIF pins + VIP terminology
+- RK3026 (2013): CIF pins + CIF registers
+- RK3168/RK3188/PX3 (2012): CIF pins + CIF registers
+- RK3066 (2012): CIF pins + CIF registers
+----------------------------------------------------------------------------------
 
-So from my understanding, VICAP/ISP2.1 of rk3568 seem to be different from the rk3588,
-where the VICAP is clearly connected to the two ISP3.0
+I also CC'd Sebastian Reichel, as he might be interested in this, he is tracking 
+the upstream status of the RK3588: 
+https://gitlab.collabora.com/hardware-enablement/rockchip-3588/notes-for-rockchip-3588/-/blob/main/mainline-status.md?ref_type=heads
 
 --
 Kind Regards
