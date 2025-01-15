@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDAD6E77188
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 02:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C59C02183
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 02:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LEv0Q0E2xcbpAXcZwesjZtcCoCjn28U6LNxF72CGljo=; b=tUj83RgJSgXTU1
-	gPUORWwLqHB3KpAB//Z/SmOqMhPIMyUFhRJUW/YnKVB0jjGaVJI48eKnVRUr5/3wGVix9t+kWYqI+
-	tKrjEz1byEbZ9Nuodv902eh9ecLaucBe14aSA6SkIZL5gWFFprE1aJ2fVBJGTviqIsK0sicIpbWOn
-	Xv3Oyhp5/99wwHP8OP2CSgSuDXF0QcWXha9zUv18KgZpil6bclW/P9LKJPKxoYsQ5c21SpxCeA4fv
-	xJkQoJilbIg2baGfgytXuEwwmUoZ3q8cyZsbXkT6G+ozTL3sibRO05ekUrxhOSKvulIOWuMtsyPqz
-	gyrvza+Rkmhm4K4jZ2dQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o8XSICzlqwCxS1w3J9nrjBIeoohqeIgMKEbA5EGTTTQ=; b=El0yKvwsXEbTWt
+	j5ndY6c+U0j+r6X/cdNvDW1FRcjqIVOev6hCf0b7ep5Wfn16HSCjT96O2cNS/ETSRRqfsHl/maMIF
+	oBQRuIXohCnJYXrm7LOFNYE2oiWWJ8oT+A9qD/wYjNvHGtEqw3qosB244jpz7d1oxUvyV/GYv4NZB
+	TjMOy1u5Bd0khVIy1n0EHkg/MORBWIyHzIYulQ3IC9bGpXZXp6XXPmaLf55SVmQVDPupmJuFaLWhH
+	ylz8M7cG3N/vfC36UrvvD56fDtKq3+gOQQkATNA8kK96TYaEKodLqxS87eRgXHSC8PmXarLgHiCVh
+	C7FoIljSUcro0eG+dSiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXtDw-0000000AQ44-2PCK;
-	Wed, 15 Jan 2025 02:33:40 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1tXtRL-0000000ARlJ-203K;
+	Wed, 15 Jan 2025 02:47:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXtDu-0000000AQ3M-2jVi;
-	Wed, 15 Jan 2025 02:33:39 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2ef718cb473so1260714a91.1;
-        Tue, 14 Jan 2025 18:33:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736908417; x=1737513217; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=S4acl8v4X7Xc6vcnsDKKEEdZ9ptXjvdjq4rSlCL1DJg=;
-        b=e/9rzd0KDaTuce0FGuxj+b9DmgWmzhN/yxqArUtafAH0O4cbMT4Nfu88oO4N5Rkb6+
-         jPlnXwjo3d1Wp8He6XJaP61umkOsyxP7oxs6bz1WDPqtASFp/KkaTAzB/Aps7Dhrzt0x
-         QtS8j8/vLCk8K0zyqfQoFuSV0zX9U1Fiu2juPBwgHk9k2KknO5YhdY1g95MYhzvpJO6e
-         4g8CVmFCApJx1oaqx15+BA6iMmcQMLXZhEvtXRp0tZ2X+4c1MRlJ0C/3VsnpSikY6Xe+
-         Zspu7+We30sMEZMTzumvqR/n2ruNqQOg44U5jPFXvjglcA16A6bPthkMXQXsrRnU+TG9
-         5X6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736908417; x=1737513217;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=S4acl8v4X7Xc6vcnsDKKEEdZ9ptXjvdjq4rSlCL1DJg=;
-        b=No8M8hxxhqEFZgkXc012IDDA2/GX0jgwqWvysNX7XW3HNq2jrFazxf+XpDLTCY6DVT
-         hBPXxnJIrleNWjW5ajn3LSzcbMSNNbgn/g6pdU9wWUHoqt08tCwGVOHymIcHVPjSSls2
-         +O/o4NSVUpaZmhBPtnEqo+X81IAAlTNLU+Y8jxC6uLchTqbOOPIqMYBnyo8Huwu61goC
-         k4sfOgG9i+wZJ2rBpcrENvFGpAH1MihS8ret9Oh8N6jDDSbhFc8AaC32+aknBo8aTFxo
-         9yqmbdAsBTlJjwVKNM1T4mCvDRQiZRv4/hATZ6Dl+9CgulmACaK/bOOcIEhUVJTWRP/4
-         3Nyw==
-X-Forwarded-Encrypted: i=1; AJvYcCUZS8LUR+HzkSc5LtNwu3wctTmIG3SRjDp/BxWYVRS95933gcGr7QTnG51d2iON+3MkzSb93NuqJ3PgKy/zhdpC@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVQVY3zJQq7/egvX6m4zZrM4cOfISG8B6Y9OFQuwJPmRDtloh8
-	fFskb8VEp+94Reg/0YYASt9F9jtITm5e0YLbr1UwW8L/ECjzpevCnLfdJl6V
-X-Gm-Gg: ASbGncv0SMN62BrWYfKYAzzO+IXU5hhgI4lETs4lW5WVmmGgBTm+z5PJXXyUD6vePaf
-	xa8kZTPzrhLarEENSJLFQMMM+ljmk99DNtbgjCZBVmCBL4aegM2PRGevhfdc2PQM740DUuFBIVh
-	LqRKtv7i9V/5qxNB3PsqD2U/onk5MxPHt+vDWZlfNU2EL5/exdyhgKYvArLO90Qw9rmtgmbdcVo
-	SH/m1yoa+GV8MtQXiF0kwjgu6JwbAseJUT6f0ZauKNgg6Zw+ZDdp5o3QcHhRQ==
-X-Google-Smtp-Source: AGHT+IGcZ/eXHZZprBGPqA6wCsk3LShy21GEt+Ojmd21JLtYOCZyvRcvCqbnL+v/Y8N8VwkHv+a1Eg==
-X-Received: by 2002:a17:90b:2e03:b0:2ee:e518:c1d4 with SMTP id 98e67ed59e1d1-2f548f1a2cemr15584055a91.1.1736908417140;
-        Tue, 14 Jan 2025 18:33:37 -0800 (PST)
-Received: from rock-5b.. ([221.220.131.19])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21a9f256fd8sm72902215ad.242.2025.01.14.18.33.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 18:33:36 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Enable HDMI on armsom-sige7
-Date: Wed, 15 Jan 2025 10:33:21 +0800
-Message-ID: <20250115023327.2881820-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tXsEX-0000000AIiT-3xQD;
+	Wed, 15 Jan 2025 01:30:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 789F35C5A8A;
+	Wed, 15 Jan 2025 01:29:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBF51C4CEDD;
+	Wed, 15 Jan 2025 01:30:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736904613;
+	bh=JGayQbeENovujuBJWgRZ/GamXKwMqxtIrxDsX3uD4PM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=poCMdomjGUuv1enZWrMvQBGikq7XqoWdPgtThSf6VzWj1cHh6JoKhVxbdVGVV5Ikg
+	 5oizYvsuhFMUEDjOVaFAvsIREsVuQIWJI17F0inIkQrpxtB2W8hS/8kMDKB4r2bHQA
+	 jC/kW3Joug10ioV5ozO8enrCq6Ybc5t92fwjCG+rGoArewA56P0xfQFTuDtPSK4ewu
+	 0wgZiobEWDpWuaU3zbC/xzlXm7UFuoPY6xjkWL0On2mGgWwzv1T0sB+WqsPqTGDpWx
+	 cprgUbxTRDIRj9yv6OcZAm8QfTHoSmIH1Yye3D9IUgvo3u3nxqkSdxITZWNGMEbRFa
+	 qk6GtI/rG+6zA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB9DF380AA5F;
+	Wed, 15 Jan 2025 01:30:36 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH net-next] net: phy: Constify struct mdio_device_id
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173690463579.211072.4197459392952353174.git-patchwork-notify@kernel.org>
+Date: Wed, 15 Jan 2025 01:30:35 +0000
+References: <403c381b7d9156b67ad68ffc44b8eee70c5e86a9.1736691226.git.christophe.jaillet@wanadoo.fr>
+In-Reply-To: <403c381b7d9156b67ad68ffc44b8eee70c5e86a9.1736691226.git.christophe.jaillet@wanadoo.fr>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: michael.hennerich@analog.com, andrew@lunn.ch, hkallweit1@gmail.com,
+ linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, florian.fainelli@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com,
+ sbranden@broadcom.com, richardcochran@gmail.com, kabel@kernel.org,
+ daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, arun.ramadoss@microchip.com,
+ UNGLinuxDriver@microchip.com, lxu@maxlinear.com,
+ piergiorgio.beruto@gmail.com, andrei.botila@oss.nxp.com, heiko@sntech.de,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_183338_693202_8584739C 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20250114_173014_021832_F075BC14 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,99 +87,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary DT changes to enable HDMI on ArmSoM Sige7.
+Hello:
 
-Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
----
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Changes in v2:
-- Only send patch for armsom sige7, and I will send patch for armsom w3
-  when hdmi1 support is landed.
-- Change HDMI0 to HDMI in commit msg because the board only has one hdmi
-  port.
-https://lore.kernel.org/all/20241111165026.60805-1-liujianfeng1994@gmail.com/
+On Sun, 12 Jan 2025 15:14:50 +0100 you wrote:
+> 'struct mdio_device_id' is not modified in these drivers.
+> 
+> Constifying these structures moves some data to a read-only section, so
+> increase overall security.
+> 
+> On a x86_64, with allmodconfig, as an example:
+> Before:
+> ======
+>    text	   data	    bss	    dec	    hex	filename
+>   27014	  12792	      0	  39806	   9b7e	drivers/net/phy/broadcom.o
+> 
+> [...]
 
- .../boot/dts/rockchip/rk3588-armsom-sige7.dts | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
+Here is the summary with links:
+  - [net-next] net: phy: Constify struct mdio_device_id
+    https://git.kernel.org/netdev/net-next/c/b01b59a4fa87
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-index 08f09053a06..b3e9ffe5234 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-@@ -4,6 +4,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3588.dtsi"
- 
- / {
-@@ -33,6 +34,17 @@ analog-sound {
- 			  "Headphone", "Headphones";
- 	};
- 
-+	hdmi0-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi0_con_in: endpoint {
-+				remote-endpoint = <&hdmi0_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -164,6 +176,26 @@ &gpu {
- 	status = "okay";
- };
- 
-+&hdmi0 {
-+	status = "okay";
-+};
-+
-+&hdmi0_in {
-+	hdmi0_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi0>;
-+	};
-+};
-+
-+&hdmi0_out {
-+	hdmi0_out_con: endpoint {
-+		remote-endpoint = <&hdmi0_con_in>;
-+	};
-+};
-+
-+&hdptxphy_hdmi0 {
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
-@@ -723,3 +755,18 @@ &usb_host1_xhci {
- 	dr_mode = "host";
- 	status = "okay";
- };
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi0_in_vp0>;
-+	};
-+};
+You are awesome, thank you!
 -- 
-2.43.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
