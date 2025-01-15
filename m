@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E46EC02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 03:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8457AC02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 04:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qJt5BfGVizOLPVtijCYHQxXmkcguWRPgD7Qb+Xctdug=; b=y2tS+bUdyDB2gS
-	fly+iFcM3jE8v4ZWXeIoEl8E1z1BHsF4s8UjIV2c2n9pxEULXslHho3YwfSi2z7ycDUfX4HFqlQcs
-	gCCS2WbM7m/0foxtrqyIs1Kl2vniMcD3eBzY74z/BcUZkRl+P2JX69urOUb0cbT1ape53NV9BbGea
-	ayOz/8lMRdyfAuRQjnHu4YAkPbY6c2LRkWVVWRBgCSgZb1skNNvz5k2sunnK4UOSQfDkNjplrOrBD
-	d8xPNaidP8qB/afPWPfMf54qxvdeKG55OdD1SFq6c1tQoZq0E45CQ0PLcAjYQBH3Jm2/BsPSoH+t5
-	W+zIoJuK1Scai7KriXmw==;
+	List-Owner; bh=zbtsDIHlRUbUBXYp4s9x9T4meAqkXnALRovGpBxvBYA=; b=lOxosc9/yxf8hV
+	JDNYXAFn6rYioadKpbP8tv0+jk+iuTasY3ACyJmLGCkaVsFqW9FiqMt8FKbtcbEYujdsqhRThuBa6
+	WNrxwjywcf697XGayCDsBiCJtGNsLOGfssyH9bKf8aLLcKLu9H/v3jnwvpnulcUUwOTV5qC68nCHu
+	vkqD8jPkpTBkB+HKgbzBr7ke5hgd8OeUsdM5vD2lk5Ebl1qUxstlr9VyOTKs/MqPJOcZFypEE4p0r
+	xbk/s0smZ3K/jt4m7Pl2AZZFMrlASRoQ1mq2MsF1HwKshiPBl8mV9Vz+TW8nqIK+PunzlBEcM5eK/
+	lv+8j1A/VOYzB9Qpe4bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXuQc-0000000AYcY-1CVg;
-	Wed, 15 Jan 2025 03:50:50 +0000
-Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	id 1tXuZk-0000000AZRJ-3y2U;
+	Wed, 15 Jan 2025 04:00:16 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXuQZ-0000000AYah-0IVZ
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Jan 2025 03:50:48 +0000
-Message-ID: <078ddd52-1d04-4aad-935a-67c12ebf569a@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1736913034;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jVhN80lSe9/RJE7xTb/gBfGOBNDnLQWNn0HdoXTdJX4=;
-	b=teidT1Fw63fY1UplJo7A5bi9iE7QpymiDozRtg4zga+cfodcNKCHBs5xeOi588P6Xgf2QP
-	CYp1SqpJZNtGd/fHLlyHIgbHFs46Z3aoqpduhurkaP+sGXJgpt1fvAeSbcUUllSz8kx3vA
-	np+KZYyxC2PBSgowDFD5qMH7M7wgWl8=
-Date: Wed, 15 Jan 2025 11:50:20 +0800
+	id 1tXuZf-0000000AZPr-2RgX;
+	Wed, 15 Jan 2025 04:00:14 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [119.122.212.126])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 8b92a360;
+	Wed, 15 Jan 2025 12:00:06 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	heiko@sntech.de,
+	kishon@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	liujianfeng1994@gmail.com,
+	p.zabel@pengutronix.de,
+	vkoul@kernel.org
+Subject: Re: [PATCH v2 1/1] phy: rockchip: naneng-combphy: compatible reset with old DT
+Date: Wed, 15 Jan 2025 12:00:03 +0800
+Message-Id: <20250115040003.29306-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <df8e0ff8-355b-4c18-9349-0f04ae16e01b@kwiboo.se>
+References: <df8e0ff8-355b-4c18-9349-0f04ae16e01b@kwiboo.se>
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 11/25] drm/loongson: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Thomas Zimmermann <tzimmermann@suse.de>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Sui Jingfeng <suijingfeng@loongson.cn>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-12-tzimmermann@suse.de>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Sui Jingfeng <sui.jingfeng@linux.dev>
-In-Reply-To: <20250109150310.219442-12-tzimmermann@suse.de>
-X-Migadu-Flow: FLOW_OUT
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGkJKVhgaH08aGR4fS0lDGVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVKSU1ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
+	tZBg++
+X-HM-Tid: 0a94681e573303a2kunm8b92a360
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PjY6HQw6HzITOU4oED8fDkMd
+	ED8KCj1VSlVKTEhNQkpITUtMSElCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpJVUpJTVlXWQgBWUFITE83Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_195047_264852_EC02BCE7 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20250114_200011_846150_3A890522 
+X-CRM114-Status: UNSURE (   5.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,98 +72,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Hi,
+> The commit fbcbffbac994 ("phy: rockchip: naneng-combphy: fix phy reset")
+> broke backwards compatibly with old DTs and has already been backported
+> breaking i.e. PCIe and USB on Rockchip RK356x boards on stable and
+> longterm kernels.
 
-On 2025/1/9 22:57, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch according to hardware requirements.
->
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Sui Jingfeng <suijingfeng@loongson.cn>
-> Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
+The dts changes have been merged into v6.13-rc7,
+maybe it can be sent to linux-stable.
 
-
-Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
-
-
-> ---
->   drivers/gpu/drm/loongson/lsdc_gem.c | 29 ++++++++---------------------
->   1 file changed, 8 insertions(+), 21 deletions(-)
->
-> diff --git a/drivers/gpu/drm/loongson/lsdc_gem.c b/drivers/gpu/drm/loongson/lsdc_gem.c
-> index a720d8f53209..9f982b85301f 100644
-> --- a/drivers/gpu/drm/loongson/lsdc_gem.c
-> +++ b/drivers/gpu/drm/loongson/lsdc_gem.c
-> @@ -6,6 +6,7 @@
->   #include <linux/dma-buf.h>
->   
->   #include <drm/drm_debugfs.h>
-> +#include <drm/drm_dumb_buffers.h>
->   #include <drm/drm_file.h>
->   #include <drm/drm_gem.h>
->   #include <drm/drm_prime.h>
-> @@ -204,45 +205,31 @@ int lsdc_dumb_create(struct drm_file *file, struct drm_device *ddev,
->   	const struct lsdc_desc *descp = ldev->descp;
->   	u32 domain = LSDC_GEM_DOMAIN_VRAM;
->   	struct drm_gem_object *gobj;
-> -	size_t size;
-> -	u32 pitch;
-> -	u32 handle;
->   	int ret;
->   
-> -	if (!args->width || !args->height)
-> -		return -EINVAL;
-> -
-> -	if (args->bpp != 32 && args->bpp != 16)
-> -		return -EINVAL;
-> -
-> -	pitch = args->width * args->bpp / 8;
-> -	pitch = ALIGN(pitch, descp->pitch_align);
-> -	size = pitch * args->height;
-> -	size = ALIGN(size, PAGE_SIZE);
-> +	ret = drm_mode_size_dumb(ddev, args, descp->pitch_align, 0);
-> +	if (ret)
-> +		return ret;
->   
->   	/* Maximum single bo size allowed is the half vram size available */
-> -	if (size > ldev->vram_size / 2) {
-> -		drm_err(ddev, "Requesting(%zuMiB) failed\n", size >> 20);
-> +	if (args->size > ldev->vram_size / 2) {
-> +		drm_err(ddev, "Requesting(%zuMiB) failed\n", (size_t)(args->size >> PAGE_SHIFT));
->   		return -ENOMEM;
->   	}
->   
-> -	gobj = lsdc_gem_object_create(ddev, domain, size, false, NULL, NULL);
-> +	gobj = lsdc_gem_object_create(ddev, domain, args->size, false, NULL, NULL);
->   	if (IS_ERR(gobj)) {
->   		drm_err(ddev, "Failed to create gem object\n");
->   		return PTR_ERR(gobj);
->   	}
->   
-> -	ret = drm_gem_handle_create(file, gobj, &handle);
-> +	ret = drm_gem_handle_create(file, gobj, &args->handle);
->   
->   	/* drop reference from allocate, handle holds it now */
->   	drm_gem_object_put(gobj);
->   	if (ret)
->   		return ret;
->   
-> -	args->pitch = pitch;
-> -	args->size = size;
-> -	args->handle = handle;
-> -
->   	return 0;
->   }
->   
+Thanks,
+Chukun
 
 -- 
-Best regards,
-Sui
+2.25.1
 
 
 _______________________________________________
