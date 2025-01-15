@@ -4,115 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87418C02183
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 14:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F7AC02185
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 14:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N0N2dvemipt2XZ9oRvjPSK8lxHhxc/DhX4lMjwZcjTY=; b=OOm5lgcCt6L1F3
-	rJek6TAMsiEdZULRCXQiQQ7CElDE8rrk2pHISNFuMrRcOJQRoO3zyuF7yGnW5zfgx1BOcMWiitEDm
-	TigE2d82PfO79WFs5LUKlqiMLlXeQJKNPWQJ9APXynLHVlal0Lb4bWl65n3UJb1MvnA7Gx75dv6rh
-	MHu0ENgDtRci7a5yeHK6vy6jfApZ7TvFNCviIldZhLbxvw/T1hdMFRC3+uCYLcIk5Ek9EkbR7jz1J
-	UeR2F/gwr85ivRYmmCuEYs8HITFQUngM1W0KzhrzZb5/I5rPBCaFxVVT9QEMLnqfujNGP0pu+1CFz
-	t1+lTpY3MektE9Q6EN5Q==;
+	List-Owner; bh=a93BJQYxD0QT3qf7RS3S9b+ZUIJOF5s/oFeHiTOQU1k=; b=zV0BqtKh8tTcdV
+	FAPpoydoNpZ60xIasmSOCH8TBw9SCp6RD27tF54bl99BP73xfEwP3WeJJyHp+BOBb8Q1vjH/+THsK
+	ytUA5xtTeNDRFeRWQhifb4fL6H0HlqhSf3Wl6uqJAl87caHk+tDi8Akr1ul4BVJRClw050+kclEbL
+	e8bz/Pss0P4KLvA7rXUumh+zOb+JAtutzZxEmlL3bmV+FL+tXGooCfMT86f/Aw+9Y3t1BQshwOFdH
+	21MOQYVNhAjQwWMEVDtALga7EwoYVeHDwRjyQZ/MRGit2UwCBsJmktq02yQpT+SBVi5+oMs14DoGY
+	kMqgfkHCRoPHXlCYedqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY4J5-0000000C6wE-27mI;
-	Wed, 15 Jan 2025 14:23:43 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tY4UY-0000000C8fV-17h9;
+	Wed, 15 Jan 2025 14:35:34 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tY4Fv-0000000C6Py-0Drw;
-	Wed, 15 Jan 2025 14:20:28 +0000
-Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 15D16526;
-	Wed, 15 Jan 2025 15:19:24 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1736950766;
-	bh=7qiyO+wfBrEyDk/AoXCj+nFogFQS7ryzGCzAqhdWb38=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FNEnqs8pIxmzmXTlNZ5aoLcVlgUYO4x7tjA2Y+EpzVZYLe4hGm7k1eU8rP1U9FwYK
-	 RPx9CD1DBq9txbEDtdRq2erdoqbqnEGp7lnsvla38haKmYWSWUKigfw6gmUqEA/ioo
-	 GsAPA1Hr9rXNsFdn2I8B1WzDBAcDit9zy8TZ7Wrw=
-Message-ID: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
-Date: Wed, 15 Jan 2025 16:20:19 +0200
+	id 1tY4Tf-0000000C8ZX-20GM
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Jan 2025 14:34:41 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-6d92cd1e811so8074826d6.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jan 2025 06:34:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1736951678; x=1737556478; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=wgpCbUXuk0fjx7PlpFBa3YSbnvvXmj+DNx/eEdB8F5M=;
+        b=mtZsEk35qOcp+dJB6bF2UgYMnBvKuUewYL9lO+qYKhpDcnWJhVhAvfRkm/EUIHOQFI
+         f9PPFJ6d5RVS7M/2x3QFXHzf9xTmrg9phavH7f3j1VdiuvKoT+i/ELZ8kT/lFxZuMFkc
+         DNmynN9+eykzU9C7Mzvy9cGa4ZcWuv7Q4KSTn5MOoFaHUgI3JlM9PFmLuDBbYRhWhq09
+         uxAaWX1FLfjzuu9WHUBiD2tLiOYzw2LPvpRzLmQKmKuABPIKAjybNnRtXSo8iWfTyZkP
+         I+Bn/bqS/lA6stuVbOnrSRTXg4tNE/idYqGHB42yFFZbL+8XPZq0DEYEC0pXlNqzC0pp
+         gusQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736951678; x=1737556478;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wgpCbUXuk0fjx7PlpFBa3YSbnvvXmj+DNx/eEdB8F5M=;
+        b=sD3bWvE8A8etS3EDUSAm+TCEz3EqNWf59ivvN/XXI+rNyJpGdQNPE9y041I/59G7vB
+         ZcQ/eDWdIZv8sMQsNbdBjbMNNiXa3/8jYFDuyTtuNJKqHIgLQmd8bmRe87GHLO9QdYIs
+         aDcPCbQ2x+nEy+cwG1EidSXqta7mExq2xCAW52m0746MA8+ysvlC3ndipIFwRDitDlbr
+         M6oxm9jCDexyFLuSqtvvfEH0IkcFQwXsK0+iqBLiVl7oV15oWwdTlt+oh8QUwe6T1kky
+         kBCAE3xAi9oPiaibBk1gYnTpkykQamy+gQlYpkxN1Rz/ttmCUQQWH54pgMujL2+txyYK
+         Ho1A==
+X-Forwarded-Encrypted: i=1; AJvYcCWJRxB5Zx6rabtfN5pHHjomL1Dwmw6FK8hRk1Ge+PB3jyxqriEL5eln9Vrq9rImMv3kVUzhAMwlaEGFvyvHlQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzsQATxk9Pv2XJgLGrT/VTiY4ahDIDcty/ndKaKGiESiJ670py9
+	arziRPoaB744294dWkfHRd2NmiX1YZnVW/jyGGKXj14Xv7SUv1/L0shTFH/uoZgY2cRF1U5AKR6
+	v0KaJ0nIbgDrfQ/hXiPzdy0UKnNabZgUgT6KKug==
+X-Gm-Gg: ASbGncuPE9uSPJYip5boqihacHIBeWPpyVy8xavRROezQDG9W9TadbqOH8I1TLgGVrb
+	uQMxfRiS1T9Vyg+rSoG6pQPk8gf89zMTbHCc=
+X-Google-Smtp-Source: AGHT+IFPz9fbMcvhhyZZGYYuWLUwXCRTy8s+kBCbi69J2hIRU1+TB7begqOpM0+xy1s6GqB+nx1X6ZJAR0totDSXOwo=
+X-Received: by 2002:a05:6214:486:b0:6d8:e7c9:ffa0 with SMTP id
+ 6a1803df08f44-6e192c73ef5mr43851476d6.19.1736951677902; Wed, 15 Jan 2025
+ 06:34:37 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Thomas Zimmermann <tzimmermann@suse.de>,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
- simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andy Yan <andyshrk@163.com>
-References: <20250109150310.219442-1-tzimmermann@suse.de>
- <20250109150310.219442-26-tzimmermann@suse.de>
- <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
- <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
- <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
- <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
- <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
- <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
- <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
- <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
-Content-Language: en-US
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
- 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
-In-Reply-To: <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+References: <20250109150310.219442-1-tzimmermann@suse.de> <20250109150310.219442-26-tzimmermann@suse.de>
+ <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com> <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com> <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com> <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com> <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+In-Reply-To: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Wed, 15 Jan 2025 14:34:26 +0000
+X-Gm-Features: AbW1kvZOqZIfsgr5MQqIuf1jKNJtcUmkb-2ddanRpBEhDxEw_Wl931RGN2rzkA8
+Message-ID: <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>, maarten.lankhorst@linux.intel.com, 
+	mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
+	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Yan <andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250115_062027_228653_20A6E034 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20250115_063439_514426_2C434006 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,64 +100,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTUvMDEvMjAyNSAxNTo0NSwgVGhvbWFzIFppbW1lcm1hbm4gd3JvdGU6Cj4gSGkKPiAKPiAK
-PiBBbSAxNS4wMS4yNSB1bSAxNDozMyBzY2hyaWViIFRvbWkgVmFsa2VpbmVuOgo+IFsuLi5dCj4+
-PiBZZWFoLCB0aGVyZSBhcmUgY29uc3RyYWlucyBpbiB0aGUgc2NhbmxpbmUgYW5kIGJ1ZmZlciBh
-bGlnbm1lbnRzIGFuZCAKPj4+IG9yaWVudGF0aW9uLiBBbmQgaWYgd2Ugc2F5IHRoYXQgYnBwPT0x
-MiBtZWFucyBOVjEyLCBpdCB3aWxsIGJlIGEgCj4+PiBwcm9ibGVtIGZvciBhbGwgb3RoZXIgY2Fz
-ZXMgd2hlcmUgYnBwPT0xMiBtYWtlcyBzZW5zZS4KPj4KPj4gSSBmZWVsIEkgc3RpbGwgZG9uJ3Qg
-cXVpdGUgdW5kZXJzdGFuZC4gQ2FuJ3Qgd2UgZGVmaW5lIGFuZCBkb2N1bWVudCAKPj4gQ1JFQVRF
-X0RVTUIgbGlrZSB0aGlzOgo+Pgo+PiBJZiAoYnBwIDwgOCB8fCBpc19wb3dlcl9vZl90d28oYnBw
-KSkKPj4gwqDCoMKgwqBicHAgbWVhbnMgYml0c3BlcnBpeGVsCj4+IMKgwqDCoMKgcGl0Y2ggaXMg
-YXJncy0+d2lkdGggKiBhcmdzLT5icHAgLyA4LCBhbGlnbmVkIHVwIHRvIGRyaXZlci0gCj4+IHNw
-ZWNpZmljLWFsaWduCj4+IGVsc2UKPj4gwqDCoMKgwqBicHAgaXMgYSBsZWdhY3kgcGFyYW1ldGVy
-LCBhbmQgd2UgZGVhbCB3aXRoIGl0IGNhc2UgYnkgY2FzZS4KPj4gwqDCoMKgwqBsaXN0IHRoZSBj
-YXNlcyBhbmQgd2hhdCB0aGV5IG1lYW4KPj4KPj4gQW5kIGRlc2NyaWJlIHRoYXQgd2hlbiBhbGxv
-Y2F0aW5nIHN1YnNhbXBsZWQgYnVmZmVycywgdGhlIGNhbGxlciBtdXN0IAo+PiBhZGp1c3QgdGhl
-IHdpZHRoIGFuZCBoZWlnaHQgYWNjb3JkaW5nbHkuIEFuZCB0aGF0IHRoZSBicHAgYW5kIHdpZHRo
-IAo+PiBjYW4gYWxzbyByZWZlciB0byBwaXhlbCBncm91cHMuCj4+Cj4+IE9yIGlmIHRoZSBjdXJy
-ZW50bHkgZXhpc3RpbmcgY29kZSBwcmV2ZW50cyB0aGUgYWJvdmUgZm9yIDE2IGFuZCAzMiAKPj4g
-YnBwcywgaG93IGFib3V0IGRlZmluaW5nIHRoYXQgYW55IG5vbi1SR0Igb3Igbm90LXNpbXBsZSBi
-dWZmZXIgaGFzIHRvIAo+PiBiZSBhbGxvY2F0ZWQgd2l0aCBicHA9OCwgYW5kIHRoZSB1c2Vyc3Bh
-Y2UgaGFzIHRvIGFsaWduIHRoZSBwaXRjaCAKPj4gY29ycmVjdGx5IGFjY29yZGluZyB0byB0aGUg
-Zm9ybWF0IGFuZCBwbGF0Zm9ybSdzIGh3IHJlc3RyaWN0aW9ucz8KPiAKPiBXaGF0IGlmIGEgaGFy
-ZHdhcmUgcmVxdWlyZXMgY2VydGFpbiBwZXItZm9ybWF0IGFsaWdubWVudHM/IE9yIHJlcXVpcmVz
-IAo+IGNlcnRhaW4gYWxpZ25tZW50cyBmb3IgZWFjaCBwbGFuZT8gT3Igb25seSBzdXBwb3J0cyB0
-aWxlIG1vZGVzPyBPciBoYXMgCj4gc3RyaWN0IGxpbWl0cyBvbiB0aGUgbWF4aW11bSBidWZmZXIg
-c2l6ZT8KPiAKPiBJdCBpcyBub3QgcG9zc2libGUgdG8gZW5jb2RlIGFsbCB0aGlzIGluIGEgc2lt
-cGxlIDMyLWJpdCB2YWx1ZS4gU28gdXNlci0gCj4gc3BhY2UgY29kZSBoYXMgdG8gYmUgYXdhcmUg
-b2YgYWxsIHRoaXMgYW5kIHR3ZWFrIGJwcC1iYXNlZCBhbGxvY2F0aW9uIHRvIAo+IG1ha2UgaXQg
-d29yay4gT2J2aW91c2x5IHlvdSBjYW4gdXNlIHRoZSBjdXJyZW50IFVBUEkgZm9yIHlvdXIgdXNl
-IGNhc2UuIAo+IEl0J3MganVzdCBub3Qgb3B0aW1hbCBvciBmdXR1cmUgcHJvb2YuCgpObyBkaXNh
-Z3JlZW1lbnQgdGhlcmUsIHdlIG5lZWQgQ1JFQVRFX0RVTUIyLgoKTXkgcG9pbnQgaXMgdGhhdCB3
-ZSBoYXZlIHRoZSBjdXJyZW50IFVBUEksIGFuZCB3ZSBoYXZlIHVzZXJzcGFjZSB1c2luZyAKaXQs
-IGJ1dCB3ZSBkb24ndCBoYXZlIGNsZWFyIHJ1bGVzIHdoYXQgdGhlIGlvY3RsIGRvZXMgd2l0aCBz
-cGVjaWZpYyAKcGFyYW1ldGVycywgYW5kIHdlIGRvbid0IGRvY3VtZW50IGhvdyBpdCBoYXMgdG8g
-YmUgdXNlZC4KClBlcmhhcHMgdGhlIHNpdHVhdGlvbiBpcyBiYWQsIGFuZCBhbGwgd2UgY2FuIHJl
-YWxseSBzYXkgaXMgdGhhdCAKQ1JFQVRFX0RVTUIgb25seSB3b3JrcyBmb3IgdXNlIHdpdGggc2lt
-cGxlIFJHQiBmb3JtYXRzLCBhbmQgdGhlIGJlaGF2aW9yIApmb3IgYWxsIG90aGVyIGZvcm1hdHMg
-aXMgcGxhdGZvcm0gc3BlY2lmaWMuIEJ1dCBJIHRoaW5rIGV2ZW4gdGhhdCB3b3VsZCAKYmUgdmFs
-dWFibGUgaW4gdGhlIFVBUEkgZG9jcy4KClRoaW5raW5nIGFib3V0IHRoaXMsIEkgd29uZGVyIGlm
-IHRoaXMgY2hhbmdlIGlzIGdvb2QgZm9yIG9tYXBkcm0gb3IgCnhpbGlueCAocHJvYmFibHkgb3Ro
-ZXIgcGxhdGZvcm1zIHRvbyB0aGF0IHN1cHBvcnQgbm9uLXNpbXBsZSBub24tUkdCIApmb3JtYXRz
-IHZpYSBkdW1iIGJ1ZmZlcnMpOiB3aXRob3V0IHRoaXMgcGF0Y2gsIGluIGJvdGggZHJpdmVycywg
-dGhlIApwaXRjaCBjYWxjdWxhdGlvbnMganVzdCB0YWtlIHRoZSBicHAgYXMgYml0LXBlci1waXhl
-bHMsIGFsaWduIGl0IHVwLCBhbmQgCnRoYXQncyBpdC4KCldpdGggdGhpcyBwYXRjaCB3ZSBlbmQg
-dXAgdXNpbmcgZHJtX2RyaXZlcl9jb2xvcl9tb2RlX2Zvcm1hdCgpLCBhbmQgCmFsaWduaW5nIGJ1
-ZmZlcnMgYWNjb3JkaW5nIHRvIFJHQiBmb3JtYXRzIGZpZ3VyZWQgb3V0IHZpYSBoZXVyaXN0aWNz
-LiBJdCAKZG9lcyBoYXBwZW4gdG8gd29yaywgZm9yIHRoZSBmb3JtYXRzIEkgdGVzdGVkLCBidXQg
-aXQgc291bmRzIGxpa2UgCnNvbWV0aGluZyB0aGF0IG1pZ2h0IGVhc2lseSBub3Qgd29yaywgYXMg
-aXQncyBkb2luZyBhZGp1c3RtZW50cyBiYXNlZCBvbiAKd3JvbmcgZm9ybWF0LgoKU2hvdWxkIHdl
-IGhhdmUgYW5vdGhlciB2ZXJzaW9uIG9mIGRybV9tb2RlX3NpemVfZHVtYigpIHdoaWNoIGp1c3Qg
-CmNhbGN1bGF0ZXMgdXNpbmcgdGhlIGJwcCwgd2l0aG91dCB0aGUgZHJtX2RyaXZlcl9jb2xvcl9t
-b2RlX2Zvcm1hdCgpIApwYXRoPyBPciBkb2VzIHRoZSBkcm1fZHJpdmVyX2NvbG9yX21vZGVfZm9y
-bWF0KCkgcGF0aCBwcm92aWRlIHNvbWUgdmFsdWUgCmZvciB0aGUgZHJpdmVycyB0aGF0IGRvIG5v
-dCBjdXJyZW50bHkgZG8gYW55dGhpbmcgc2ltaWxhcj8KCiAgVG9taQoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen
+<tomi.valkeinen@ideasonboard.com> wrote:
+> No disagreement there, we need CREATE_DUMB2.
+>
+> My point is that we have the current UAPI, and we have userspace using
+> it, but we don't have clear rules what the ioctl does with specific
+> parameters, and we don't document how it has to be used.
+>
+> Perhaps the situation is bad, and all we can really say is that
+> CREATE_DUMB only works for use with simple RGB formats, and the behavior
+> for all other formats is platform specific. But I think even that would
+> be valuable in the UAPI docs.
+
+Yeah, CREATE_DUMB only works for use with simple RGB formats in a
+linear layout. Not monochrome or YUV or tiled or displayed rotated or
+whatever.
+
+If it happens to accidentally work for other uses, that's fine, but
+it's not generically reliable for anything other than simple linear
+RGB. It's intended to let you do splash screens, consoles, recovery
+password entries, and software-rendered compositors if you really
+want. Anything more than that isn't 'dumb'.
+
+Cheers,
+Daniel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
