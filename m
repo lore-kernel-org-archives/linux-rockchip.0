@@ -4,88 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0CC5C02180
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 06:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3851C02180
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jan 2025 07:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ikvaucjKr/CyVpKSR/KyqttCZugsLzLP0aKWLpk29EI=; b=zwB4Ao8tfNjr8B
-	Gus2JCsI/jiXqZBpCswTk6ktP+vLpMFiFgoOnBYisQ/mOtL7Zh+nZs8KZXsDcOIPT6290Gvr2kvji
-	ZXbc2v80TbZtnA2cPDmhNfDZeDj507qN8uzoJeucvbwl/XNkJv4WLWdPt/Y3/4nvBrAzwdqY24Bex
-	p0N0uGadqdmfK4YElBHW85r0pa3gdQQOecQbuh4g02512Gm2ciKHydu/Zb/b5nHqXWDW8mZNKzKOL
-	x1AQMUh9+AgheUV7loEiH4EDraHTZg0m8kABpQvsx8kQMhlhdxx1PCPh/MzgEqIKWyYCZDDF/mAp7
-	TvqubGe3JXOtzzhkGvLg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1EK1dQG/t4tcGz34sSNjVwO92ZZ+p18lqStEa2wEGK4=; b=UCo+cXAkGd38Kc
+	sZw2cW9bLMwMRLwpaVS8cTusDuqjUg7Pfrj6/gKn5qNPFYd+2cDonchQwG7KZB3DWxPLdKuI13zP5
+	f0IMgnyJvP3xWP4/Ib3qQvyV/mw2Y919SHUVnC3YkL+SFvQSVUNZU5b9z52LpGbNLd2JfZL2Y7Xly
+	uWrOYUGV0LhvP9358v6NKZAnBH8kvVqpEOjSwbwBWhyKvU/4xOuSzQmMWYfg9NKO8hDnlixgpT5xQ
+	PkduQ5e+yPrm4E3KzWzQDnBTjmQsib8EAIkTIKqmU2p2LqUDXZLDFcU5rkWLafRmwhtug55QYDz0h
+	thgXcN89bl1bDBmKXzIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXxHI-0000000Arfo-1GP1;
-	Wed, 15 Jan 2025 06:53:24 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1tXyBI-0000000Azyj-1FzV;
+	Wed, 15 Jan 2025 07:51:16 +0000
+Received: from mail-pl1-f181.google.com ([209.85.214.181])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tXxHG-0000000Arf6-2DOL
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Jan 2025 06:53:23 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5d0ac27b412so8528255a12.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 14 Jan 2025 22:53:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736924000; x=1737528800; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1jHKviSWbOJnThNL+BRNc29xaYnK5sB8qfkKjQ020pY=;
-        b=HrF+rjOL44vYhZ007+e8VeAOEn7RQgCQEru1DXDewAiMFXkZ5prB2iTIgpGHCwoGBc
-         3ciOxEbbT0SwGzp7ZK4JLRUV9ixsmaKUZxCQUUtUPuk3s+MrS7tiw7a37L2Djqh8VQe2
-         Bskt94neRyIlLqvd1rvxelEtFyGt1CbkjW58MvN7bB3CRS1dmRAPPAPch7tsBhYhro9R
-         O24mNxExiN5V9sGnSjeTBFPfpL44oSLdjGXXBUdEaq+gJQlVqCJjx2j1kjAsAS8+3YmA
-         noUc0Imh4IxNkYO8+7uwKnuTkbMCgmdmLLwRjFG8uFanFGc0YS0WPE16gEPQCeXA/TVu
-         z3TA==
+	id 1tXyBF-0000000AzxO-1n4W;
+	Wed, 15 Jan 2025 07:51:14 +0000
+Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-2165cb60719so114890945ad.0;
+        Tue, 14 Jan 2025 23:51:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736924000; x=1737528800;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1jHKviSWbOJnThNL+BRNc29xaYnK5sB8qfkKjQ020pY=;
-        b=ccidgpeaQmh9riHvtuQljgmlSUKvYQZXejvMBKhIYciv0fiRuTg4FdHZ3iJOOuFM55
-         qKWLwTEu5qnmmHjQ/rd7sVo4H2In4MKVKSr0MQLoYj6ehd6eWxL/MkWBzEYoRLZhbK70
-         URsLqyjteswmuyQc9rAzoGTaNpgniA5suH3/vUqSeKseW2jm7o5lbEgVNCZnB2R9N8rP
-         mY7zXiHCY9DUS7MTLodSoOtJXHf2Pa3eRzpmGD8jPrieEWulFtyv2gX2ndkVNDszY0j5
-         0LfwiKlbc8HrHo75wYktO6Jvkq1Z86yvenchKPUEWfC0m1B8FbWndX4XbdEhoE5LjgF5
-         ySZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVNntCLbGxP+z0eCMdCsfQnukBLmFKol1nyFhhXS3d2uRNTbXOYsx0pmLIpD5dZcbo97vD9d/Or4SRhToX9CQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyCL3SXPjOeCeVmimnzGDkc8r7CwDaFQajlHxeWxWiDoA/36+2W
-	xrQVHnSaCt2xFpitldL0di0nv3s7HGRr1Av7x7nNSNxKzIsEpTid3hK9Gz5cJGE=
-X-Gm-Gg: ASbGncsFpEHl4v/Qbj86oHgb4FkOAU4pJSkoGXuH83UOB+dlL3XitpuEoiDLWVEnMmL
-	ndi3qAZDXSD1M8CupgDw/7dSu+oYWxx97TJU2PB6WYhmqxvFv+uSHeP8QJx2sYOBWKjojSl1VRi
-	rYJ0MTvKKqoM3geSxssK0Yn8KHeEES6XJhXWGsx9vs9uTCy7H1uSCl4mP9D7YF0/ojzFEFQ5Mwm
-	kDBYH1X+w5um6HLz3Lukr9mErW9sJY2407k3xx8sE+ZJxzS8dlIFCIxdg0Zaw==
-X-Google-Smtp-Source: AGHT+IE9P5PDtBvyWPxhRNEsLiyx/nfhdVfXbwMkWhpN/F7zwvZlvMv1+220NOQBetuNrhffj43vww==
-X-Received: by 2002:a05:6402:518b:b0:5d3:baa3:29f with SMTP id 4fb4d7f45d1cf-5d972e06740mr26199332a12.9.1736924000495;
-        Tue, 14 Jan 2025 22:53:20 -0800 (PST)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d99008c371sm7145838a12.11.2025.01.14.22.53.19
+        d=1e100.net; s=20230601; t=1736927472; x=1737532272;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=drCh1pRCCuVVCI4fn8N9RmOugnbPrEsMkgW0vT+Cabs=;
+        b=lUbojXaDqvuAjDmMYDrPZRIsD1xnaHbwtoOUTXo+yS2COnIZV/UeChgjMRGAqe8dPo
+         U1EZhlZ4wfwD3Ks+0Kd9xXOb3ThzMxtCcxDXHiUjHqc9NQe8lALUR9ugHw+9vw8pHZaV
+         tiLA+ZDtIygKH48UwxXmicQnLbz2K66YyVC24aRGPdpc89t+A1UNTds20Ldpuk/nxXcM
+         0UnYrLl1fl5BeqpE2CuDwYlL2pbXNmQwC/YAvC8Loa4eLN4a054oQSOdAfRihUSxqowS
+         Z42DF8NcL7ACA0QJqp6lGVxHIyoOIPl52htv7KMklZ0gondAd+X5hw/WmbD2ov6bV5l/
+         zvSg==
+X-Forwarded-Encrypted: i=1; AJvYcCU1jbkvzodyXzodrlt9BN8jjESUmzHksTCCaSQ+967QnZ0zRc1QSOY8rXrKd3aZ8lStrZkJ3yESbeiLe38izVLO@lists.infradead.org, AJvYcCXxIRdS7d4qzjtYQuvthLAOuxvn3BQ9i6GE3wZ8N+3GILFw0WqfwJvnswMS4xd+a+0MiKpjtcURq0vMkngW6mI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzFeLCI9M1qJOV/COhS+36Sq95exoJAS/GIMPPFWbG/R4cQPI+p
+	U6b69nEFmRC5ak+H7Ot+4xS9SQwuooJG1vQvPANuE8r4lGC3x7mIXCQVQQBa
+X-Gm-Gg: ASbGncu4ljgsKFXatpBfT80/duaqgKvcx1i/amibxO1tE2cuJIcVoY00LzZB7xpolQM
+	gB70hKl6W42wKjUReyy0WhAUyL8q9uM9PLODasl9bThRE5qsv+yYiE9oGkpUieAjvjKYH5PNsHc
+	38AWtb1Czpjp9REEPgD5UQT0jgjUuDyn7ZaQShKgl0IzNBuUca/ubtNRF9wK0RwLDCcEcsH+y0O
+	I4nnHgMyyolqaxcUAHmz2lDAQDftSdMzGbJNyLXcGUg00y8mgm9gES12VJdGDwEsbojgkb0ttCJ
+	Cfmch3V1OIkroyw=
+X-Google-Smtp-Source: AGHT+IF9TnngdOrqXrmwB55byFeDNpcjUAho4KzCQx6WWCHOh/pLidGszCFWm7Pw0uVlfLtCKp9MvA==
+X-Received: by 2002:a17:902:f60e:b0:215:522d:72d6 with SMTP id d9443c01a7336-21a83fd2383mr432105685ad.38.1736927472073;
+        Tue, 14 Jan 2025 23:51:12 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21bb316b825sm48453045ad.237.2025.01.14.23.51.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 22:53:20 -0800 (PST)
-Date: Wed, 15 Jan 2025 09:53:16 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+        Tue, 14 Jan 2025 23:51:11 -0800 (PST)
+Date: Wed, 15 Jan 2025 16:51:09 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	kernel-janitors@vger.kernel.org
-Subject: [PATCH next] PCI: rockchip: Clean up on error in
+Subject: Re: [PATCH next] PCI: rockchip: Clean up on error in
  rockchip_pcie_init_port()
-Message-ID: <7da6ac56-af55-4436-9597-6af24df8122c@stanley.mountain>
+Message-ID: <20250115075109.GA2704262@rocinante>
+References: <7da6ac56-af55-4436-9597-6af24df8122c@stanley.mountain>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+In-Reply-To: <7da6ac56-af55-4436-9597-6af24df8122c@stanley.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250114_225322_565969_EB7E4EB9 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20250114_235113_463494_13D195B5 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,34 +94,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Call phy_exit() before returning on this error path.
+Hello,
 
-Fixes: 853c711e2caf ("PCI: rockchip: Simplify reset control handling by using reset_control_bulk*() function")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
----
- drivers/pci/controller/pcie-rockchip.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+> Call phy_exit() before returning on this error path.
+> 
+> Fixes: 853c711e2caf ("PCI: rockchip: Simplify reset control handling by using reset_control_bulk*() function")
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index fea867c24f75..35bfdf3e17a3 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -132,8 +132,10 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 
- 	err = reset_control_bulk_assert(ROCKCHIP_NUM_CORE_RSTS,
- 					rockchip->core_rsts);
--	if (err)
--		return dev_err_probe(dev, err, "Couldn't assert Core resets\n");
-+	if (err) {
-+		dev_err_probe(dev, err, "Couldn't assert Core resets\n");
-+		goto err_exit_phy;
-+	}
- 
- 	udelay(10);
- 
--- 
-2.45.2
+I squashed this together with the code this fixes.  Thank you a bunch!
 
+	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
