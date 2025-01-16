@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F920C02183
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 15:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E7AC02187
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 16:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GBxki0gsSuPUzltgcwolvhxZ8X6O0rvGBbjxYM3qZ5c=; b=m24heDqL+YpK4vE7Rl99ecor0f
-	beBfXampOa1YxtIrgaXRU2HsPX+5tqGcAjUl+TIyQ6hsjTyBhcOq1ok710tgGXDVUfnLMf9dcp6o0
-	P5E3qSbXtTVFNpAr//BUbyBxfADdBU1v8SzxRzOmkHUQhcpzCvOaEU7yWMjcmChXwvHKr0INgZQ8K
-	sXL/BUX8fPyQ2ir75C6l7XXcLG8N9AlK/E/TM19SWh457fcVUtQw2QrN+HMXaH1Mw0EUKxn8+DAfd
-	LuL+ETiDhfeGFo6gG2lkQLNIb634CNDvHTLWrolZmK63DRqNcqBvPxjMcpKYLRTYWKARfonW1KjYQ
-	qEpUgWzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XkFq8sbtN4qZqofNRGFuL84+awFt5p4l/RrBRm+gSqg=; b=ZzMJ5e6qa3gGnb
+	phktaT6EWSVBJWZ9/rAEdgFtMMScBb50gG1Rv70bu0F9yw5vWn9C1cOyKbVHljN0XWsVKUJAT091U
+	lwyuzQAO0G6KeCkfDatiKZp6OdmNa/PbbJHoABI5RjqPZ29eJXE/0M1SD8UgjCrWzdwyXAMbAzHkb
+	CSTnoCzqxvQgPbwXKCxC5bovdLTVG+WbHJ21AVq62pwHNv8nHnMYCboyygEe+VdidE6nFGzEQHGUt
+	0upWTnEZMC/CMABh8xFE0zTMpBlBmrWy+umd9RamDrLjyO45SqOgl76dIcd9vF2n+DlrT6JCR9JWo
+	85dWM4gIzIHfp/B0/SeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYRm6-0000000FKHV-2UDy;
-	Thu, 16 Jan 2025 15:27:14 +0000
-Received: from out-189.mta0.migadu.com ([91.218.175.189])
+	id 1tYSJH-0000000FRIp-0wFW;
+	Thu, 16 Jan 2025 16:01:31 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYRm1-0000000FKG7-2Qi4
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Jan 2025 15:27:13 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1737041220;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=i+N67Nc1SpxOx0pXod04KQzffWmBYIOW+NMblIJJJSY=;
-	b=Pe3YqDrlVldVGxnlPWzC4McsOxnx7KbVApbuDnX2/zsojE85c0ZkHic8srd/mTMAlVyUXq
-	7DeCmRdxa5BcW/xKZtAgjbLC6kwPYdmYWVRe1SVGkzGSkBiC7jOXHsSgyDA6Dy65/NeJ4c
-	/PcyIowqp9QonDGdCK6m/8165TXuy7VKfkMiMTON/VlyDV+CTNBY4AQ8osOutpShi4IZoq
-	OW3vRGy6SonQC92VYfMcqxOIACtHvzqYgM664PHapUTh51i1oJ6SqLh7/68ZqupPNBaSWV
-	3kuULG0P3UE/qQiGu1tzTJF2l4ZTHSVnCTah/5PO7ly3H9rDRv3FGlObNuoX1w==
-Date: Thu, 16 Jan 2025 16:26:46 +0100
-Message-Id: <D73LPTRK7A74.38A4OEKK37ZGV@cknow.org>
-Cc: "Kishon Vijay Abraham I" <kishon@kernel.org>, "Algea Cao"
- <algea.cao@rock-chips.com>, <linux-kernel@vger.kernel.org>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Arnd Bergmann" <arnd@arndb.de>,
- <frank.wang@rock-chips.com>, <william.wu@rock-chips.com>,
- <kever.yang@rock-chips.com>, <linux-phy@lists.infradead.org>, "Sebastian
- Reichel" <sebastian.reichel@collabora.com>,
- <linux-rockchip@lists.infradead.org>, "Vinod Koul" <vkoul@kernel.org>,
- "Zhang Yubing" <yubing.zhang@rock-chips.com>, <zyw@rock-chips.com>,
- <wulf@rock-chips.com>, <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [RFC PATCH v1 3/6] phy: rockchip: add driver for rk3328 usb3
- phy
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Peter Geis" <pgwipeout@gmail.com>, "Heiko Stuebner" <heiko@sntech.de>
-References: <20250115012628.1035928-1-pgwipeout@gmail.com>
- <20250115012628.1035928-4-pgwipeout@gmail.com>
-In-Reply-To: <20250115012628.1035928-4-pgwipeout@gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1tYSFz-0000000FPvt-2HLc;
+	Thu, 16 Jan 2025 15:58:08 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5d414b8af7bso1934104a12.0;
+        Thu, 16 Jan 2025 07:58:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737043086; x=1737647886; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AKBitB2sJtACt8fbBDO2i16EuaNYnZtmuWY5Ex3ISmY=;
+        b=cNzPDrpQe9D246hy1xxB01IlKweVEX/hRYDWdTZI79YIdiMZtylmCeGcG7pjP91zdt
+         R1LBGJ9s56H1vsB0iRINVCP+mnN6brVD8Do3SX+WOssv//ht6SKC31hxkKG3EtlaLOlF
+         BVsSLR8WYGMY4vLrUc4MIcgQrKj/5ZAhifKxSGAVf3uOY9UoJg/L68SrQIYw8ZwIdlpX
+         oyy2M1OBfuiYWyUmDmpGkDh5vR970KflDE5o3idsqlD7tgFpxhF3HrflfquzPBKomByx
+         He3kHOv+Cac61cZA0DVWQTgXKTS4EkWPB2kncJ+Qrf1gvAv/nuxpy/VvoQJKiDV3rFZf
+         me7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737043086; x=1737647886;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AKBitB2sJtACt8fbBDO2i16EuaNYnZtmuWY5Ex3ISmY=;
+        b=XDtI8GfT+sW/61NEWKppZe9LiJfLQ5kbwIAnCwEGeLzzboUWPQSIWVsTpsIyLYabD/
+         kiqJ+fRQJOtKOwrCP+z5lzrSYHIzmeKuG8RK+qUJeVA0/BCTiUzWdVjWv18wsdqV9gYn
+         /5N+v++ISaiWVH5UbvbXKCN2s24j1dOqRurM81cvJwwsp0U0Db54Ls/1ps69l226TX8l
+         7qidpaCBrnpfrM9wYgv3l92PM8oHidM6TNa16Sm1AYe42YYB6OMOIoB20bYk6sG5vKgy
+         TAMpTOobM8ylaihGNnhS4f34dQvrScqsJqgDxV3RsuLryOKNirKvejyavy648YPK3bk/
+         QLcw==
+X-Forwarded-Encrypted: i=1; AJvYcCUdJqGUzd9LFLUIwoQy7wTGoOx0t6EpkgsDy5LfNw9e8o67awff/eLUoGWY6VUSzMcl9XSDvVaM7q/q3ekP4fUy@lists.infradead.org, AJvYcCVTZ4KwElSGBbrUkQVuPeghUQQA9yquZLCzn5Cu3+/vC4dpOnPSxRT2CEV/oqiBAVovyJ8HZd0k73RKMcOITfk=@lists.infradead.org, AJvYcCVzuv3UrQroEK7Pkdfkr/317kkkBhM+33CuH68CKHBlxlh4P0t44J5MoUuglGif4A9AGlWIETMq2lFC@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRcZe9vAoBn9m4ejzE6pBRKyUo5WITuHB+RxyGJvHcKkBqOrPg
+	MuEBTsBTKfO83epF9kFovHflodE5zHxWrMDrEIYdHTclDNAw0YEjd3oEy2LjVZvajBHwY3r3suP
+	uwA2Qs4r4qcu7fNHYm6SenmPCBFzb02Ol
+X-Gm-Gg: ASbGncvjQ20FiZOWE20tH0d9XSaKBBZEAYoGou1gmPjKbOBmps4Q8lktAFPzBRAB5cF
+	6k+MsZmbDyxqj6CEVll4QMHMhBymKELoUFS4H7UU=
+X-Google-Smtp-Source: AGHT+IF6kdfwrwD2Gw5N7j4+mAfHkKXddC2MFGV3l/RFiEW+P7+9drJlkCV9fN+OboiVtb7ErE9EHd4tztg4oLmMeZ0=
+X-Received: by 2002:a05:6402:26c7:b0:5da:a78:4c8b with SMTP id
+ 4fb4d7f45d1cf-5da0a784f3amr6866036a12.2.1737043085695; Thu, 16 Jan 2025
+ 07:58:05 -0800 (PST)
+MIME-Version: 1.0
+References: <20250115012628.1035928-1-pgwipeout@gmail.com> <20250115012628.1035928-4-pgwipeout@gmail.com>
+ <D73LPTRK7A74.38A4OEKK37ZGV@cknow.org>
+In-Reply-To: <D73LPTRK7A74.38A4OEKK37ZGV@cknow.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Thu, 16 Jan 2025 10:57:54 -0500
+X-Gm-Features: AbW1kvbxmLOaQEaG1tWAxdSbHKoJpeY4I9dA6pBmv7t79CjzRmlwQWxOajhxE00
+Message-ID: <CAMdYzYpTU2YfNJTa3+sRe5hWgnR3pGOb_kmK_P85Ea_w2P9cRQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 3/6] phy: rockchip: add driver for rk3328 usb3 phy
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Algea Cao <algea.cao@rock-chips.com>, linux-kernel@vger.kernel.org, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Arnd Bergmann <arnd@arndb.de>, frank.wang@rock-chips.com, 
+	william.wu@rock-chips.com, kever.yang@rock-chips.com, 
+	linux-phy@lists.infradead.org, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, 
+	Vinod Koul <vkoul@kernel.org>, Zhang Yubing <yubing.zhang@rock-chips.com>, zyw@rock-chips.com, 
+	wulf@rock-chips.com, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_072711_877309_066C9EF6 
-X-CRM114-Status: GOOD (  28.90  )
+X-CRM114-CacheID: sfid-20250116_075807_608879_934E1756 
+X-CRM114-Status: GOOD (  31.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,343 +94,252 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4994634236463174800=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4994634236463174800==
-Content-Type: multipart/signed;
- boundary=5dbe4fbefd18baf2e565506f5d602f0566403373133cd6cf93eb9c582234;
- micalg=pgp-sha256; protocol="application/pgp-signature"
-
---5dbe4fbefd18baf2e565506f5d602f0566403373133cd6cf93eb9c582234
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-Hi Peter,
-
-Thanks for working on this :-)
-
-On Wed Jan 15, 2025 at 2:26 AM CET, Peter Geis wrote:
-> The rk3328 has a combined usb2 and usb3 phy block for the usb3 dwc
-> interface. The implementation up until now has been bugged, with
-> multiple issues ranging from disconnect detection failures to low
-> performance. This driver fixes the majority of the original issues and
-> allows better performance for the rk3328 usb3 port.
->
-> This driver sources data from multiple sources, including the rk3328
-> trm, the rk3228h trm, emails from Rockchip, and both the 4.4 and 5.10
-> downstream drivers. The current implementation allows for basic bring up
-> of the phy block and fixes the detection issues. Interrupts are enabled,
-> but currently only used for debugging. Features missing currently are
-> power management, OTG handling, board specific tuning, regulator control,
->
-> Currently the only known bugs are a AX88179 usb3 gigabit adapter crashes
-> when operating at usb3 speeds and transmitting large amounts of data and
-> full disconnection detections may be slower than expected (~5-10 seconds)=
-.
->
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
->
->  drivers/phy/rockchip/Kconfig                  |  10 +
->  drivers/phy/rockchip/Makefile                 |   1 +
->  drivers/phy/rockchip/phy-rockchip-inno-usb3.c | 869 ++++++++++++++++++
->  3 files changed, 880 insertions(+)
->  create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-usb3.c
->
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index 2f7a05f21dc5..aac623e84f96 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -48,6 +48,16 @@ config PHY_ROCKCHIP_INNO_USB2
->  	help
->  	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
-> =20
-> +config PHY_ROCKCHIP_INNO_USB3
-> +	tristate "Rockchip INNO USB3PHY Driver"
-> +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> +	depends on COMMON_CLK
-> +	depends on USB_SUPPORT
-> +	select GENERIC_PHY
-> +	select USB_COMMON
-> +	help
-> +	  Support for Rockchip USB3.0 PHY with Innosilicon IP block.
-> +
->  config PHY_ROCKCHIP_INNO_CSIDPHY
->  	tristate "Rockchip Innosilicon MIPI CSI PHY driver"
->  	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefil=
-e
-> index 010a824e32ce..ec15dcf37fba 100644
-> --- a/drivers/phy/rockchip/Makefile
-> +++ b/drivers/phy/rockchip/Makefile
-> @@ -6,6 +6,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY)	+=3D phy-rockchip=
--inno-csidphy.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+=3D phy-rockchip-inno-dsidphy.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+=3D phy-rockchip-inno-hdmi.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+=3D phy-rockchip-inno-usb2.o
-> +obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB3)	+=3D phy-rockchip-inno-usb3.o
->  obj-$(CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY)	+=3D phy-rockchip-naneng-com=
-bphy.o
->  obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+=3D phy-rockchip-pcie.o
->  obj-$(CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX)	+=3D phy-rockchip-samsung-hdptx=
-.o
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb3.c b/drivers/phy/=
-rockchip/phy-rockchip-inno-usb3.c
-> new file mode 100644
-> index 000000000000..51b9f3b7fbfa
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-> @@ -0,0 +1,869 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +
-> +/*
-> + * phy-rockchip-inno-usb3.c - USB3 PHY based on Innosilicon IP as
-> + * implemented on Rockchip rk3328. Tuning data magic bits are taken as i=
-s
-> + * from the downstream driver. Downstream driver is located at:
-> + * https://github.com/rockchip-linux/kernel/blob/240a5660d7c23841ccf7b7c=
-c489078bf521b9802/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-> + *
-> + * Author: Peter Geis <pgwipeout@gmail.com>
-> + * TODO:
-> + * - Find the rest of the register names / definitions.
-> + * - Implement pm functions.
-> + * - Implement board specific tuning from dts.
-> + * - Implement regulator control.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_device.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/usb/of.h>
-> +
-> +#define REG_WRITE_MASK		GENMASK(31, 16)
-> +#define REG_WRITE_SHIFT		16
-> +#define DISABLE_BITS		0x0
-> +
-> +/* USB3PHY GRF Registers */
-> +#define USB3PHY_WAKEUP_CON_REG	0x40
-> +#define USB3PHY_WAKEUP_STAT_REG	0x44
-> +#define USB3_LINESTATE_IRQ_EN	BIT(0)
-> +#define USB3_RXDET_IRQ_EN		BIT(1)
-> +#define USB3_BVALID_RISE_IRQ_EN	BIT(2)
-> +#define USB3_BVALID_FALL_IRQ_EN	BIT(3)
-> +#define USB3_BVALID_CLEAR_MASK	GENMASK(3, 2)
-> +#define USB3_ID_RISE_IRQ_EN		BIT(4)
-> +#define USB3_ID_FALL_IRQ_EN		BIT(5)
-> +#define USB3_ID_CLEAR_MASK		GENMASK(5, 4)
-> +#define USB3_RXDET_EN			BIT(6)
-> +
-> +/* PIPE registers */
-> +/* 0x08 for SSC, default 0x0e */
-> +#define UNKNOWN_PIPE_REG_000			0x000
-> +#define UNKNOWN_SSC_000_MASK			GENMASK(2, 1)
-> +#define UNKNOWN_SSC_000_ENABLE			(0x00 << 1)
-> +
-> +/* 0x83 for 24m, 0x01 for 25m, default 0x86 */
-> +#define PIPE_REG_020					0x020
-> +/* RX CDR multiplier high bits [7:6], as P, default 0x2, RX data rate =
-=3D (2*refclk*P)/Q */
-> +#define PIPE_RX_CDR_MULT_HIGH_MASK		GENMASK(7, 6)
-> +/* TX PLL divider bits [4:0], as N, default 0x6, TX data rate =3D (2*ref=
-clk*M)/N */
-> +#define PIPE_TX_PLL_DIV_MASK			GENMASK(4, 0)
-> +
-> +/* 0x71 for 24m, 0x64 for 25m, default 0x71 */
-> +#define PIPE_REG_028					0x028
-> +/* RX CDR multiplier low bits [7:0], as P, default 0x71, RX data rate =
-=3D (2*refclk*P)/Q */
-> +#define PIPE_RX_CDR_MULT_LOW_MASK		GENMASK(7, 0)
-> +
-> +/* 0x26 for 24m?, 0x21 for 25m, default 0x26 */
-> +#define PIPE_REG_030					0x030
-> +/* RX CDR divider bits [4:0], as Q, default 0x6, RX data rate =3D (2*ref=
-clk*P)/Q */
-> +#define PIPE_RX_CDR_DIV_MASK			GENMASK(4, 0)
-> +
-> +/* 1'b1 Disable bandgap power, default 0x00 */
-> +#define PIPE_REG_044					0x044
-> +#define BANDGAP_POWER_DISABLE			BIT(4)
-> +
-> +/* 0xe0 for rx tune?, default 0xe1 */
-> +#define PIPE_REG_060					0x060
-> +#define PIPE_TX_DETECT_BYPASS_DEBUG		BIT(4) /* enable to always force de=
-tection */
-> +/* RX CTLE frequency bandwidth response tuning bits [1:0], default 0x1 *=
-/
-> +#define PIPE_RX_CTLE_FREQ_BW_MASK		GENMASK(1, 0)
-> +#define PIPE_RX_CTLE_FREQ_BW_TUNE		0x0
-> +
-> +/* default 0x49 */
-> +#define PIPE_REG_064					0x064
-> +/* RX equalizer tail current control bits [6:4], default 0x4 */
-> +#define PIPE_RX_EQ_TAIL_CURR_MASK		GENMASK(6, 4)
-> +
-> +/* 0x08 for rx tune?, default 0x07 */
-> +#define PIPE_REG_068					0x068
-> +/* RX equalizer low frequency gain control bits [7:4], default 0x0 */
-> +#define PIPE_RX_EQ_LOW_GAIN_MASK		GENMASK(7, 4)
-> +#define PIPE_RX_EQ_LOW_GAIN_TUNE		(0x1 << 4)
-> +/* RX CTLE gain tuning bits [3:0], higher =3D more gain default 0x7 */
-> +#define PIPE_RX_CTLE_GAIN_MASK			GENMASK(3, 0)
-> +#define PIPE_RX_CTLE_GAIN_TUNE			0x7 /* 0x5 lowest functional value, 0xf=
- highest */
-> +
-> +/* RX ODT manual resistance config, higher =3D less resistance, depends =
-on REG_1C4 BIT(5) set */
-> +#define PIPE_REG_06C					0x06c
-> +/* RX ODT manual resistance high bits [3:0], default 0x0 */
-> +#define PIPE_RX_ODT_RES_HIGH_MASK		GENMASK(3, 0)
-> +#define PIPE_RX_ODT_RES_HIGH_TUNE		0xf
-> +
-> +#define PIPE_REG_070					0x070
-> +/* RX ODT manual resistance mid bits [7:0], default 0x03 */
-> +#define PIPE_RX_ODT_RES_MID_MASK		GENMASK(7, 0)
-> +#define PIPE_RX_ODT_RES_MID_TUNE		0xff
-> +
-> +#define PIPE_REG_074					0x074
-> +/* RX ODT manual resistance low bits [7:0], default 0xff */
-> +#define PIPE_RX_ODT_RES_LOW_MASK		GENMASK(7, 0)
-> +#define PIPE_RX_ODT_RES_LOW_TUNE		0xff
-> +
-> +/* default 0x08 */
-> +#define PIPE_REG_080					0x080
-> +#define PIPE_TX_COMMON_MODE_DIS			BIT(2)	/* 1'b1 disable TX common type =
-*/
-> +
-> +/* default 0x33 */
-> +#define PIPE_REG_088					0x088
-> +#define PIPE_TX_DRIVER_PREEMP_EN		BIT(4)	/* 1'b1 enable pre-emphasis */
-> +
-> +/* default 0x18 */
-> +#define PIPE_REG_0C0					0x0c0
-> +#define PIPE_RX_CM_EN					BIT(3)	/* 1'b1 enable RX CM */
-> +#define PIPE_TX_OBS_EN					BIT(4)	/* 1'b1 enable TX OBS */
-> +
-> +/* 0x12 for rx tune?, default 0x14 */
-> +#define PIPE_REG_0C8					0x0c8
-> +/* RX CDR charge pump current bits [3:1], default 0x2 */
-> +#define PIPE_RX_CDR_CHG_PUMP_MASK		GENMASK(3, 1)
-> +#define PIPE_RX_CDR_CHG_PUMP_TUNE		(0x2 << 1)
-> +
-> +/* 0x02 for 24m, 0x06 for 25m, default 0x06 */
-> +#define UNKNOWN_PIPE_REG_108			0x108
-> +#define UNKNOWN_REFCLK_108_24M			0x02
-> +
-> +/* 0x80 for 24m, default 0x00 */
-> +#define UNKNOWN_PIPE_REG_10C			0x10c
-> +#define UNKNOWN_REFCLK_10C_24M			BIT(7)
-> +
-> +/* 0x01 for 24m, 0x00 for 25m, default 0x02 */
-> +#define PIPE_REG_118					0x118
-> +/* TX PLL multiplier high bits [3:0], as M, default 0x2, TX data rate =
-=3D (2*refclk*M)/N */
-> +#define PIPE_TX_PLL_MUL_HIGH_MASK		GENMASK(3, 0)
-> +
-> +/* 0x38 for 24m, 0x64 for 25m, default 0x71 */
-> +#define PIPE_REG_11C					0x11c
-> +/* TX PLL multiplier low bits [7:0], as M, default 0x71, TX data rate =
-=3D (2*refclk*M)/N */
-> +#define PIPE_TX_PLL_MUL_LOW_MASK		GENMASK(7, 0)
-> +
-> +/* 0x0c for SSC, default 0x1c */
-> +#define UNKNOWN_PIPE_REG_120			0x120
-> +#define UNKNOWN_SSC_120_MASK			BIT(4)
-> +#define UNKNOWN_SSC_120_ENABLE			(0x0 << 4)
-> +
-> +/* default 0x40 */
-> +#define PIPE_REG_12C					0x12c
-> +#define PIPE_TX_PLL_ALWAYS_ON			BIT(0) /* disable for PLL control by pip=
-e_pd */
-> +
-> +/* 0x05 for rx tune, default 0x01 */
-> +#define PIPE_REG_148					0x148
-> +#define PIPE_RX_CHG_PUMP_DIV_2			BIT(2) /* RX CDR charge pump div/2, def=
-ault 0 */
-> +
-> +/* 0x70 for rx tune, default 0x72 */
-> +#define PIPE_REG_150					0x150
-> +#define PIPE_TX_BIAS_EN					BIT(6)	/* 1'b1 Enable TX Bias */
-> +/* RX CDR phase tracking speed bits [3:0], default 0x2 */
-> +#define PIPE_RX_CDR_SPEED_MASK			GENMASK(3, 0)
-> +#define PIPE_RX_CDR_SPEED_TUNE			0x00
-> +
-> +/* default 0xd4 */
-> +#define PIPE_REG_160
-> +/* RX common mode voltage strength bits [5:4], default 0x1 */
-> +#define PIPE_RX_CDR_COM_VOLT_MASK		GENMASK(5, 4)
-> +#define PIPE_RX_CDR_COM_VOLT_TUNE		(0x1 << 4)
-> +
-> +/* default 0x00 */
-> +#define PIPE_REG_180					0x180
-> +/* TX driver bias reference voltage bits [3:2], in mv */
-> +#define PIPE_TX_BIAS_REF_VOLT_MASK		GENMASK(3, 2)
-> +#define PIPE_TX_BIAS_REF_VOLT_200		(0x0 << 2)
-> +#define PIPE_TX_BIAS_REF_VOLT_175		(0x1 << 2)
-> +#define PIPE_TX_BIAS_REF_VOLT_225		(0x2 << 2) /* downstream 5.10 driver =
-setting */
-> +#define PIPE_TX_BIAS_REF_VOLT_250		(0x3 << 2)
-> +
-> +/* default 0x01 */
-> +#define PIPE_REG_1A8			0x1a8
-> +#define PIPE_LDO_POWER_DIS				BIT(4)	/* 1'b1 Disable LDO Power */
-> +
-> +/* default 0x07 */
-> +#define PIPE_REG_1AC			0x1ac
-> +/* TX driver output common voltage bits [5:4], in mv */
-> +#define PIPE_TX_COMMON_VOLT_MASK		GENMASK(5, 4)
-> +#define PIPE_TX_COMMON_VOLT_800			(0x0 << 4)
-> +#define PIPE_TX_COMMON_VOLT_750			(0x1 << 4)
-> +#define PIPE_TX_COMMON_VOLT_950			(0x2 << 4)
-> +#define PIPE_TX_COMMON_VOLT_1100		(0x3 << 4)
-
-Just a question:
-In this list as well as the one above it (PIPE_TX_BIAS_xyz) I noticed
-the values are not sequential (800, 750, 950, 1100) and (200, 175, 225,
-250). Is that correct?
-
-Cheers,
-  Diederik
-
---5dbe4fbefd18baf2e565506f5d602f0566403373133cd6cf93eb9c582234
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ4klPQAKCRDXblvOeH7b
-bg1RAP9zFJX5t1AruLZQcqPuMIcEt/PzmP/e9h8g/R41/nxWdgD/bedlqPxeb6xe
-7Z/Bq5c25F9LHpVnZCdTXsokxpvibA0=
-=ZkLU
------END PGP SIGNATURE-----
-
---5dbe4fbefd18baf2e565506f5d602f0566403373133cd6cf93eb9c582234--
-
-
---===============4994634236463174800==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4994634236463174800==--
-
+T24gVGh1LCBKYW4gMTYsIDIwMjUgYXQgMTA6MjfigK9BTSBEaWVkZXJpayBkZSBIYWFzIDxkaWRp
+LmRlYmlhbkBja25vdy5vcmc+IHdyb3RlOgo+Cj4gSGkgUGV0ZXIsCj4KPiBUaGFua3MgZm9yIHdv
+cmtpbmcgb24gdGhpcyA6LSkKPgo+IE9uIFdlZCBKYW4gMTUsIDIwMjUgYXQgMjoyNiBBTSBDRVQs
+IFBldGVyIEdlaXMgd3JvdGU6Cj4gPiBUaGUgcmszMzI4IGhhcyBhIGNvbWJpbmVkIHVzYjIgYW5k
+IHVzYjMgcGh5IGJsb2NrIGZvciB0aGUgdXNiMyBkd2MKPiA+IGludGVyZmFjZS4gVGhlIGltcGxl
+bWVudGF0aW9uIHVwIHVudGlsIG5vdyBoYXMgYmVlbiBidWdnZWQsIHdpdGgKPiA+IG11bHRpcGxl
+IGlzc3VlcyByYW5naW5nIGZyb20gZGlzY29ubmVjdCBkZXRlY3Rpb24gZmFpbHVyZXMgdG8gbG93
+Cj4gPiBwZXJmb3JtYW5jZS4gVGhpcyBkcml2ZXIgZml4ZXMgdGhlIG1ham9yaXR5IG9mIHRoZSBv
+cmlnaW5hbCBpc3N1ZXMgYW5kCj4gPiBhbGxvd3MgYmV0dGVyIHBlcmZvcm1hbmNlIGZvciB0aGUg
+cmszMzI4IHVzYjMgcG9ydC4KPiA+Cj4gPiBUaGlzIGRyaXZlciBzb3VyY2VzIGRhdGEgZnJvbSBt
+dWx0aXBsZSBzb3VyY2VzLCBpbmNsdWRpbmcgdGhlIHJrMzMyOAo+ID4gdHJtLCB0aGUgcmszMjI4
+aCB0cm0sIGVtYWlscyBmcm9tIFJvY2tjaGlwLCBhbmQgYm90aCB0aGUgNC40IGFuZCA1LjEwCj4g
+PiBkb3duc3RyZWFtIGRyaXZlcnMuIFRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIGFsbG93cyBm
+b3IgYmFzaWMgYnJpbmcgdXAKPiA+IG9mIHRoZSBwaHkgYmxvY2sgYW5kIGZpeGVzIHRoZSBkZXRl
+Y3Rpb24gaXNzdWVzLiBJbnRlcnJ1cHRzIGFyZSBlbmFibGVkLAo+ID4gYnV0IGN1cnJlbnRseSBv
+bmx5IHVzZWQgZm9yIGRlYnVnZ2luZy4gRmVhdHVyZXMgbWlzc2luZyBjdXJyZW50bHkgYXJlCj4g
+PiBwb3dlciBtYW5hZ2VtZW50LCBPVEcgaGFuZGxpbmcsIGJvYXJkIHNwZWNpZmljIHR1bmluZywg
+cmVndWxhdG9yIGNvbnRyb2wsCj4gPgo+ID4gQ3VycmVudGx5IHRoZSBvbmx5IGtub3duIGJ1Z3Mg
+YXJlIGEgQVg4ODE3OSB1c2IzIGdpZ2FiaXQgYWRhcHRlciBjcmFzaGVzCj4gPiB3aGVuIG9wZXJh
+dGluZyBhdCB1c2IzIHNwZWVkcyBhbmQgdHJhbnNtaXR0aW5nIGxhcmdlIGFtb3VudHMgb2YgZGF0
+YSBhbmQKPiA+IGZ1bGwgZGlzY29ubmVjdGlvbiBkZXRlY3Rpb25zIG1heSBiZSBzbG93ZXIgdGhh
+biBleHBlY3RlZCAofjUtMTAgc2Vjb25kcykuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogUGV0ZXIg
+R2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4KPiA+ICBkcml2ZXJzL3BoeS9y
+b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAgfCAgMTAgKwo+ID4gIGRyaXZlcnMvcGh5
+L3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICB8ICAgMSArCj4gPiAgZHJpdmVycy9w
+aHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMy5jIHwgODY5ICsrKysrKysrKysrKysr
+KysrKwo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgODgwIGluc2VydGlvbnMoKykKPiA+ICBjcmVhdGUg
+bW9kZSAxMDA2NDQgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMy5j
+Cj4gPgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL0tjb25maWcgYi9kcml2
+ZXJzL3BoeS9yb2NrY2hpcC9LY29uZmlnCj4gPiBpbmRleCAyZjdhMDVmMjFkYzUuLmFhYzYyM2U4
+NGY5NiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL0tjb25maWcKPiA+ICsr
+KyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlwL0tjb25maWcKPiA+IEBAIC00OCw2ICs0OCwxNiBAQCBj
+b25maWcgUEhZX1JPQ0tDSElQX0lOTk9fVVNCMgo+ID4gICAgICAgaGVscAo+ID4gICAgICAgICBT
+dXBwb3J0IGZvciBSb2NrY2hpcCBVU0IyLjAgUEhZIHdpdGggSW5ub3NpbGljb24gSVAgYmxvY2su
+Cj4gPgo+ID4gK2NvbmZpZyBQSFlfUk9DS0NISVBfSU5OT19VU0IzCj4gPiArICAgICB0cmlzdGF0
+ZSAiUm9ja2NoaXAgSU5OTyBVU0IzUEhZIERyaXZlciIKPiA+ICsgICAgIGRlcGVuZHMgb24gKEFS
+Q0hfUk9DS0NISVAgfHwgQ09NUElMRV9URVNUKSAmJiBPRgo+ID4gKyAgICAgZGVwZW5kcyBvbiBD
+T01NT05fQ0xLCj4gPiArICAgICBkZXBlbmRzIG9uIFVTQl9TVVBQT1JUCj4gPiArICAgICBzZWxl
+Y3QgR0VORVJJQ19QSFkKPiA+ICsgICAgIHNlbGVjdCBVU0JfQ09NTU9OCj4gPiArICAgICBoZWxw
+Cj4gPiArICAgICAgIFN1cHBvcnQgZm9yIFJvY2tjaGlwIFVTQjMuMCBQSFkgd2l0aCBJbm5vc2ls
+aWNvbiBJUCBibG9jay4KPiA+ICsKPiA+ICBjb25maWcgUEhZX1JPQ0tDSElQX0lOTk9fQ1NJRFBI
+WQo+ID4gICAgICAgdHJpc3RhdGUgIlJvY2tjaGlwIElubm9zaWxpY29uIE1JUEkgQ1NJIFBIWSBk
+cml2ZXIiCj4gPiAgICAgICBkZXBlbmRzIG9uIChBUkNIX1JPQ0tDSElQIHx8IENPTVBJTEVfVEVT
+VCkgJiYgT0YKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BoeS9yb2NrY2hpcC9NYWtlZmlsZSBi
+L2RyaXZlcnMvcGh5L3JvY2tjaGlwL01ha2VmaWxlCj4gPiBpbmRleCAwMTBhODI0ZTMyY2UuLmVj
+MTVkY2YzN2ZiYSAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL01ha2VmaWxl
+Cj4gPiArKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hpcC9NYWtlZmlsZQo+ID4gQEAgLTYsNiArNiw3
+IEBAIG9iai0kKENPTkZJR19QSFlfUk9DS0NISVBfSU5OT19DU0lEUEhZKSAgICAgICArPSBwaHkt
+cm9ja2NoaXAtaW5uby1jc2lkcGh5Lm8KPiA+ICBvYmotJChDT05GSUdfUEhZX1JPQ0tDSElQX0lO
+Tk9fRFNJRFBIWSkgICAgICArPSBwaHktcm9ja2NoaXAtaW5uby1kc2lkcGh5Lm8KPiA+ICBvYmot
+JChDT05GSUdfUEhZX1JPQ0tDSElQX0lOTk9fSERNSSkgKz0gcGh5LXJvY2tjaGlwLWlubm8taGRt
+aS5vCj4gPiAgb2JqLSQoQ09ORklHX1BIWV9ST0NLQ0hJUF9JTk5PX1VTQjIpICs9IHBoeS1yb2Nr
+Y2hpcC1pbm5vLXVzYjIubwo+ID4gK29iai0kKENPTkZJR19QSFlfUk9DS0NISVBfSU5OT19VU0Iz
+KSArPSBwaHktcm9ja2NoaXAtaW5uby11c2IzLm8KPiA+ICBvYmotJChDT05GSUdfUEhZX1JPQ0tD
+SElQX05BTkVOR19DT01CT19QSFkpICArPSBwaHktcm9ja2NoaXAtbmFuZW5nLWNvbWJwaHkubwo+
+ID4gIG9iai0kKENPTkZJR19QSFlfUk9DS0NISVBfUENJRSkgICAgICAgICAgICAgICs9IHBoeS1y
+b2NrY2hpcC1wY2llLm8KPiA+ICBvYmotJChDT05GSUdfUEhZX1JPQ0tDSElQX1NBTVNVTkdfSERQ
+VFgpICAgICArPSBwaHktcm9ja2NoaXAtc2Ftc3VuZy1oZHB0eC5vCj4gPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMy5jIGIvZHJpdmVycy9w
+aHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMy5jCj4gPiBuZXcgZmlsZSBtb2RlIDEw
+MDY0NAo+ID4gaW5kZXggMDAwMDAwMDAwMDAwLi41MWI5ZjNiN2ZiZmEKPiA+IC0tLSAvZGV2L251
+bGwKPiA+ICsrKyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMu
+Ywo+ID4gQEAgLTAsMCArMSw4NjkgQEAKPiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjog
+R1BMLTIuMCsKPiA+ICsKPiA+ICsvKgo+ID4gKyAqIHBoeS1yb2NrY2hpcC1pbm5vLXVzYjMuYyAt
+IFVTQjMgUEhZIGJhc2VkIG9uIElubm9zaWxpY29uIElQIGFzCj4gPiArICogaW1wbGVtZW50ZWQg
+b24gUm9ja2NoaXAgcmszMzI4LiBUdW5pbmcgZGF0YSBtYWdpYyBiaXRzIGFyZSB0YWtlbiBhcyBp
+cwo+ID4gKyAqIGZyb20gdGhlIGRvd25zdHJlYW0gZHJpdmVyLiBEb3duc3RyZWFtIGRyaXZlciBp
+cyBsb2NhdGVkIGF0Ogo+ID4gKyAqIGh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC9r
+ZXJuZWwvYmxvYi8yNDBhNTY2MGQ3YzIzODQxY2NmN2I3Y2M0ODkwNzhiZjUyMWI5ODAyL2RyaXZl
+cnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMuYwo+ID4gKyAqCj4gPiArICog
+QXV0aG9yOiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPgo+ID4gKyAqIFRPRE86Cj4g
+PiArICogLSBGaW5kIHRoZSByZXN0IG9mIHRoZSByZWdpc3RlciBuYW1lcyAvIGRlZmluaXRpb25z
+Lgo+ID4gKyAqIC0gSW1wbGVtZW50IHBtIGZ1bmN0aW9ucy4KPiA+ICsgKiAtIEltcGxlbWVudCBi
+b2FyZCBzcGVjaWZpYyB0dW5pbmcgZnJvbSBkdHMuCj4gPiArICogLSBJbXBsZW1lbnQgcmVndWxh
+dG9yIGNvbnRyb2wuCj4gPiArICovCj4gPiArCj4gPiArI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+
+ID4gKyNpbmNsdWRlIDxsaW51eC9kZWxheS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9pbnRlcnJ1
+cHQuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvaW8uaD4KPiA+ICsjaW5jbHVkZSA8bGludXgva2Vy
+bmVsLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51
+eC9vZi5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4gPiArI2luY2x1ZGUg
+PGxpbnV4L29mX2RldmljZS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4KPiA+ICsj
+aW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvcGh5L3Bo
+eS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiA+ICsjaW5jbHVk
+ZSA8bGludXgvcmVnbWFwLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+Cj4gPiArI2lu
+Y2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvdXNiL29mLmg+
+Cj4gPiArCj4gPiArI2RlZmluZSBSRUdfV1JJVEVfTUFTSyAgICAgICAgICAgICAgIEdFTk1BU0so
+MzEsIDE2KQo+ID4gKyNkZWZpbmUgUkVHX1dSSVRFX1NISUZUICAgICAgICAgICAgICAxNgo+ID4g
+KyNkZWZpbmUgRElTQUJMRV9CSVRTICAgICAgICAgMHgwCj4gPiArCj4gPiArLyogVVNCM1BIWSBH
+UkYgUmVnaXN0ZXJzICovCj4gPiArI2RlZmluZSBVU0IzUEhZX1dBS0VVUF9DT05fUkVHICAgICAg
+IDB4NDAKPiA+ICsjZGVmaW5lIFVTQjNQSFlfV0FLRVVQX1NUQVRfUkVHICAgICAgMHg0NAo+ID4g
+KyNkZWZpbmUgVVNCM19MSU5FU1RBVEVfSVJRX0VOICAgICAgICBCSVQoMCkKPiA+ICsjZGVmaW5l
+IFVTQjNfUlhERVRfSVJRX0VOICAgICAgICAgICAgQklUKDEpCj4gPiArI2RlZmluZSBVU0IzX0JW
+QUxJRF9SSVNFX0lSUV9FTiAgICAgIEJJVCgyKQo+ID4gKyNkZWZpbmUgVVNCM19CVkFMSURfRkFM
+TF9JUlFfRU4gICAgICBCSVQoMykKPiA+ICsjZGVmaW5lIFVTQjNfQlZBTElEX0NMRUFSX01BU0sg
+ICAgICAgR0VOTUFTSygzLCAyKQo+ID4gKyNkZWZpbmUgVVNCM19JRF9SSVNFX0lSUV9FTiAgICAg
+ICAgICBCSVQoNCkKPiA+ICsjZGVmaW5lIFVTQjNfSURfRkFMTF9JUlFfRU4gICAgICAgICAgQklU
+KDUpCj4gPiArI2RlZmluZSBVU0IzX0lEX0NMRUFSX01BU0sgICAgICAgICAgIEdFTk1BU0soNSwg
+NCkKPiA+ICsjZGVmaW5lIFVTQjNfUlhERVRfRU4gICAgICAgICAgICAgICAgICAgICAgICBCSVQo
+NikKPiA+ICsKPiA+ICsvKiBQSVBFIHJlZ2lzdGVycyAqLwo+ID4gKy8qIDB4MDggZm9yIFNTQywg
+ZGVmYXVsdCAweDBlICovCj4gPiArI2RlZmluZSBVTktOT1dOX1BJUEVfUkVHXzAwMCAgICAgICAg
+ICAgICAgICAgMHgwMDAKPiA+ICsjZGVmaW5lIFVOS05PV05fU1NDXzAwMF9NQVNLICAgICAgICAg
+ICAgICAgICBHRU5NQVNLKDIsIDEpCj4gPiArI2RlZmluZSBVTktOT1dOX1NTQ18wMDBfRU5BQkxF
+ICAgICAgICAgICAgICAgICAgICAgICAoMHgwMCA8PCAxKQo+ID4gKwo+ID4gKy8qIDB4ODMgZm9y
+IDI0bSwgMHgwMSBmb3IgMjVtLCBkZWZhdWx0IDB4ODYgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVH
+XzAyMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4MDIwCj4gPiArLyogUlggQ0RS
+IG11bHRpcGxpZXIgaGlnaCBiaXRzIFs3OjZdLCBhcyBQLCBkZWZhdWx0IDB4MiwgUlggZGF0YSBy
+YXRlID0gKDIqcmVmY2xrKlApL1EgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUlhfQ0RSX01VTFRfSElH
+SF9NQVNLICAgICAgICAgICBHRU5NQVNLKDcsIDYpCj4gPiArLyogVFggUExMIGRpdmlkZXIgYml0
+cyBbNDowXSwgYXMgTiwgZGVmYXVsdCAweDYsIFRYIGRhdGEgcmF0ZSA9ICgyKnJlZmNsaypNKS9O
+ICovCj4gPiArI2RlZmluZSBQSVBFX1RYX1BMTF9ESVZfTUFTSyAgICAgICAgICAgICAgICAgR0VO
+TUFTSyg0LCAwKQo+ID4gKwo+ID4gKy8qIDB4NzEgZm9yIDI0bSwgMHg2NCBmb3IgMjVtLCBkZWZh
+dWx0IDB4NzEgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzAyOCAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDB4MDI4Cj4gPiArLyogUlggQ0RSIG11bHRpcGxpZXIgbG93IGJpdHMgWzc6
+MF0sIGFzIFAsIGRlZmF1bHQgMHg3MSwgUlggZGF0YSByYXRlID0gKDIqcmVmY2xrKlApL1EgKi8K
+PiA+ICsjZGVmaW5lIFBJUEVfUlhfQ0RSX01VTFRfTE9XX01BU0sgICAgICAgICAgICBHRU5NQVNL
+KDcsIDApCj4gPiArCj4gPiArLyogMHgyNiBmb3IgMjRtPywgMHgyMSBmb3IgMjVtLCBkZWZhdWx0
+IDB4MjYgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzAzMCAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIDB4MDMwCj4gPiArLyogUlggQ0RSIGRpdmlkZXIgYml0cyBbNDowXSwgYXMgUSwg
+ZGVmYXVsdCAweDYsIFJYIGRhdGEgcmF0ZSA9ICgyKnJlZmNsaypQKS9RICovCj4gPiArI2RlZmlu
+ZSBQSVBFX1JYX0NEUl9ESVZfTUFTSyAgICAgICAgICAgICAgICAgR0VOTUFTSyg0LCAwKQo+ID4g
+Kwo+ID4gKy8qIDEnYjEgRGlzYWJsZSBiYW5kZ2FwIHBvd2VyLCBkZWZhdWx0IDB4MDAgKi8KPiA+
+ICsjZGVmaW5lIFBJUEVfUkVHXzA0NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4
+MDQ0Cj4gPiArI2RlZmluZSBCQU5ER0FQX1BPV0VSX0RJU0FCTEUgICAgICAgICAgICAgICAgICAg
+ICAgICBCSVQoNCkKPiA+ICsKPiA+ICsvKiAweGUwIGZvciByeCB0dW5lPywgZGVmYXVsdCAweGUx
+ICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18wNjAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAweDA2MAo+ID4gKyNkZWZpbmUgUElQRV9UWF9ERVRFQ1RfQllQQVNTX0RFQlVHICAgICAg
+ICAgIEJJVCg0KSAvKiBlbmFibGUgdG8gYWx3YXlzIGZvcmNlIGRldGVjdGlvbiAqLwo+ID4gKy8q
+IFJYIENUTEUgZnJlcXVlbmN5IGJhbmR3aWR0aCByZXNwb25zZSB0dW5pbmcgYml0cyBbMTowXSwg
+ZGVmYXVsdCAweDEgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUlhfQ1RMRV9GUkVRX0JXX01BU0sgICAg
+ICAgICAgICBHRU5NQVNLKDEsIDApCj4gPiArI2RlZmluZSBQSVBFX1JYX0NUTEVfRlJFUV9CV19U
+VU5FICAgICAgICAgICAgMHgwCj4gPiArCj4gPiArLyogZGVmYXVsdCAweDQ5ICovCj4gPiArI2Rl
+ZmluZSBQSVBFX1JFR18wNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDA2NAo+
+ID4gKy8qIFJYIGVxdWFsaXplciB0YWlsIGN1cnJlbnQgY29udHJvbCBiaXRzIFs2OjRdLCBkZWZh
+dWx0IDB4NCAqLwo+ID4gKyNkZWZpbmUgUElQRV9SWF9FUV9UQUlMX0NVUlJfTUFTSyAgICAgICAg
+ICAgIEdFTk1BU0soNiwgNCkKPiA+ICsKPiA+ICsvKiAweDA4IGZvciByeCB0dW5lPywgZGVmYXVs
+dCAweDA3ICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18wNjggICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAweDA2OAo+ID4gKy8qIFJYIGVxdWFsaXplciBsb3cgZnJlcXVlbmN5IGdhaW4g
+Y29udHJvbCBiaXRzIFs3OjRdLCBkZWZhdWx0IDB4MCAqLwo+ID4gKyNkZWZpbmUgUElQRV9SWF9F
+UV9MT1dfR0FJTl9NQVNLICAgICAgICAgICAgIEdFTk1BU0soNywgNCkKPiA+ICsjZGVmaW5lIFBJ
+UEVfUlhfRVFfTE9XX0dBSU5fVFVORSAgICAgICAgICAgICAoMHgxIDw8IDQpCj4gPiArLyogUlgg
+Q1RMRSBnYWluIHR1bmluZyBiaXRzIFszOjBdLCBoaWdoZXIgPSBtb3JlIGdhaW4gZGVmYXVsdCAw
+eDcgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUlhfQ1RMRV9HQUlOX01BU0sgICAgICAgICAgICAgICAg
+ICAgICAgIEdFTk1BU0soMywgMCkKPiA+ICsjZGVmaW5lIFBJUEVfUlhfQ1RMRV9HQUlOX1RVTkUg
+ICAgICAgICAgICAgICAgICAgICAgIDB4NyAvKiAweDUgbG93ZXN0IGZ1bmN0aW9uYWwgdmFsdWUs
+IDB4ZiBoaWdoZXN0ICovCj4gPiArCj4gPiArLyogUlggT0RUIG1hbnVhbCByZXNpc3RhbmNlIGNv
+bmZpZywgaGlnaGVyID0gbGVzcyByZXNpc3RhbmNlLCBkZXBlbmRzIG9uIFJFR18xQzQgQklUKDUp
+IHNldCAqLwo+ID4gKyNkZWZpbmUgUElQRV9SRUdfMDZDICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgMHgwNmMKPiA+ICsvKiBSWCBPRFQgbWFudWFsIHJlc2lzdGFuY2UgaGlnaCBiaXRz
+IFszOjBdLCBkZWZhdWx0IDB4MCAqLwo+ID4gKyNkZWZpbmUgUElQRV9SWF9PRFRfUkVTX0hJR0hf
+TUFTSyAgICAgICAgICAgIEdFTk1BU0soMywgMCkKPiA+ICsjZGVmaW5lIFBJUEVfUlhfT0RUX1JF
+U19ISUdIX1RVTkUgICAgICAgICAgICAweGYKPiA+ICsKPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzA3
+MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4MDcwCj4gPiArLyogUlggT0RUIG1h
+bnVhbCByZXNpc3RhbmNlIG1pZCBiaXRzIFs3OjBdLCBkZWZhdWx0IDB4MDMgKi8KPiA+ICsjZGVm
+aW5lIFBJUEVfUlhfT0RUX1JFU19NSURfTUFTSyAgICAgICAgICAgICBHRU5NQVNLKDcsIDApCj4g
+PiArI2RlZmluZSBQSVBFX1JYX09EVF9SRVNfTUlEX1RVTkUgICAgICAgICAgICAgMHhmZgo+ID4g
+Kwo+ID4gKyNkZWZpbmUgUElQRV9SRUdfMDc0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgMHgwNzQKPiA+ICsvKiBSWCBPRFQgbWFudWFsIHJlc2lzdGFuY2UgbG93IGJpdHMgWzc6MF0s
+IGRlZmF1bHQgMHhmZiAqLwo+ID4gKyNkZWZpbmUgUElQRV9SWF9PRFRfUkVTX0xPV19NQVNLICAg
+ICAgICAgICAgIEdFTk1BU0soNywgMCkKPiA+ICsjZGVmaW5lIFBJUEVfUlhfT0RUX1JFU19MT1df
+VFVORSAgICAgICAgICAgICAweGZmCj4gPiArCj4gPiArLyogZGVmYXVsdCAweDA4ICovCj4gPiAr
+I2RlZmluZSBQSVBFX1JFR18wODAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDA4
+MAo+ID4gKyNkZWZpbmUgUElQRV9UWF9DT01NT05fTU9ERV9ESVMgICAgICAgICAgICAgICAgICAg
+ICAgQklUKDIpICAvKiAxJ2IxIGRpc2FibGUgVFggY29tbW9uIHR5cGUgKi8KPiA+ICsKPiA+ICsv
+KiBkZWZhdWx0IDB4MzMgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzA4OCAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIDB4MDg4Cj4gPiArI2RlZmluZSBQSVBFX1RYX0RSSVZFUl9QUkVF
+TVBfRU4gICAgICAgICAgICAgQklUKDQpICAvKiAxJ2IxIGVuYWJsZSBwcmUtZW1waGFzaXMgKi8K
+PiA+ICsKPiA+ICsvKiBkZWZhdWx0IDB4MTggKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzBDMCAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4MGMwCj4gPiArI2RlZmluZSBQSVBFX1JY
+X0NNX0VOICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEJJVCgzKSAgLyog
+MSdiMSBlbmFibGUgUlggQ00gKi8KPiA+ICsjZGVmaW5lIFBJUEVfVFhfT0JTX0VOICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklUKDQpICAvKiAxJ2IxIGVuYWJsZSBUWCBP
+QlMgKi8KPiA+ICsKPiA+ICsvKiAweDEyIGZvciByeCB0dW5lPywgZGVmYXVsdCAweDE0ICovCj4g
+PiArI2RlZmluZSBQSVBFX1JFR18wQzggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAw
+eDBjOAo+ID4gKy8qIFJYIENEUiBjaGFyZ2UgcHVtcCBjdXJyZW50IGJpdHMgWzM6MV0sIGRlZmF1
+bHQgMHgyICovCj4gPiArI2RlZmluZSBQSVBFX1JYX0NEUl9DSEdfUFVNUF9NQVNLICAgICAgICAg
+ICAgR0VOTUFTSygzLCAxKQo+ID4gKyNkZWZpbmUgUElQRV9SWF9DRFJfQ0hHX1BVTVBfVFVORSAg
+ICAgICAgICAgICgweDIgPDwgMSkKPiA+ICsKPiA+ICsvKiAweDAyIGZvciAyNG0sIDB4MDYgZm9y
+IDI1bSwgZGVmYXVsdCAweDA2ICovCj4gPiArI2RlZmluZSBVTktOT1dOX1BJUEVfUkVHXzEwOCAg
+ICAgICAgICAgICAgICAgMHgxMDgKPiA+ICsjZGVmaW5lIFVOS05PV05fUkVGQ0xLXzEwOF8yNE0g
+ICAgICAgICAgICAgICAgICAgICAgIDB4MDIKPiA+ICsKPiA+ICsvKiAweDgwIGZvciAyNG0sIGRl
+ZmF1bHQgMHgwMCAqLwo+ID4gKyNkZWZpbmUgVU5LTk9XTl9QSVBFX1JFR18xMEMgICAgICAgICAg
+ICAgICAgIDB4MTBjCj4gPiArI2RlZmluZSBVTktOT1dOX1JFRkNMS18xMENfMjRNICAgICAgICAg
+ICAgICAgICAgICAgICBCSVQoNykKPiA+ICsKPiA+ICsvKiAweDAxIGZvciAyNG0sIDB4MDAgZm9y
+IDI1bSwgZGVmYXVsdCAweDAyICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18xMTggICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAweDExOAo+ID4gKy8qIFRYIFBMTCBtdWx0aXBsaWVyIGhp
+Z2ggYml0cyBbMzowXSwgYXMgTSwgZGVmYXVsdCAweDIsIFRYIGRhdGEgcmF0ZSA9ICgyKnJlZmNs
+aypNKS9OICovCj4gPiArI2RlZmluZSBQSVBFX1RYX1BMTF9NVUxfSElHSF9NQVNLICAgICAgICAg
+ICAgR0VOTUFTSygzLCAwKQo+ID4gKwo+ID4gKy8qIDB4MzggZm9yIDI0bSwgMHg2NCBmb3IgMjVt
+LCBkZWZhdWx0IDB4NzEgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzExQyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIDB4MTFjCj4gPiArLyogVFggUExMIG11bHRpcGxpZXIgbG93IGJp
+dHMgWzc6MF0sIGFzIE0sIGRlZmF1bHQgMHg3MSwgVFggZGF0YSByYXRlID0gKDIqcmVmY2xrKk0p
+L04gKi8KPiA+ICsjZGVmaW5lIFBJUEVfVFhfUExMX01VTF9MT1dfTUFTSyAgICAgICAgICAgICBH
+RU5NQVNLKDcsIDApCj4gPiArCj4gPiArLyogMHgwYyBmb3IgU1NDLCBkZWZhdWx0IDB4MWMgKi8K
+PiA+ICsjZGVmaW5lIFVOS05PV05fUElQRV9SRUdfMTIwICAgICAgICAgICAgICAgICAweDEyMAo+
+ID4gKyNkZWZpbmUgVU5LTk9XTl9TU0NfMTIwX01BU0sgICAgICAgICAgICAgICAgIEJJVCg0KQo+
+ID4gKyNkZWZpbmUgVU5LTk9XTl9TU0NfMTIwX0VOQUJMRSAgICAgICAgICAgICAgICAgICAgICAg
+KDB4MCA8PCA0KQo+ID4gKwo+ID4gKy8qIGRlZmF1bHQgMHg0MCAqLwo+ID4gKyNkZWZpbmUgUElQ
+RV9SRUdfMTJDICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMHgxMmMKPiA+ICsjZGVm
+aW5lIFBJUEVfVFhfUExMX0FMV0FZU19PTiAgICAgICAgICAgICAgICAgICAgICAgIEJJVCgwKSAv
+KiBkaXNhYmxlIGZvciBQTEwgY29udHJvbCBieSBwaXBlX3BkICovCj4gPiArCj4gPiArLyogMHgw
+NSBmb3IgcnggdHVuZSwgZGVmYXVsdCAweDAxICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18xNDgg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDE0OAo+ID4gKyNkZWZpbmUgUElQRV9S
+WF9DSEdfUFVNUF9ESVZfMiAgICAgICAgICAgICAgICAgICAgICAgQklUKDIpIC8qIFJYIENEUiBj
+aGFyZ2UgcHVtcCBkaXYvMiwgZGVmYXVsdCAwICovCj4gPiArCj4gPiArLyogMHg3MCBmb3Igcngg
+dHVuZSwgZGVmYXVsdCAweDcyICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18xNTAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAweDE1MAo+ID4gKyNkZWZpbmUgUElQRV9UWF9CSUFTX0VO
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCSVQoNikgIC8qIDEnYjEgRW5h
+YmxlIFRYIEJpYXMgKi8KPiA+ICsvKiBSWCBDRFIgcGhhc2UgdHJhY2tpbmcgc3BlZWQgYml0cyBb
+MzowXSwgZGVmYXVsdCAweDIgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUlhfQ0RSX1NQRUVEX01BU0sg
+ICAgICAgICAgICAgICAgICAgICAgIEdFTk1BU0soMywgMCkKPiA+ICsjZGVmaW5lIFBJUEVfUlhf
+Q0RSX1NQRUVEX1RVTkUgICAgICAgICAgICAgICAgICAgICAgIDB4MDAKPiA+ICsKPiA+ICsvKiBk
+ZWZhdWx0IDB4ZDQgKi8KPiA+ICsjZGVmaW5lIFBJUEVfUkVHXzE2MAo+ID4gKy8qIFJYIGNvbW1v
+biBtb2RlIHZvbHRhZ2Ugc3RyZW5ndGggYml0cyBbNTo0XSwgZGVmYXVsdCAweDEgKi8KPiA+ICsj
+ZGVmaW5lIFBJUEVfUlhfQ0RSX0NPTV9WT0xUX01BU0sgICAgICAgICAgICBHRU5NQVNLKDUsIDQp
+Cj4gPiArI2RlZmluZSBQSVBFX1JYX0NEUl9DT01fVk9MVF9UVU5FICAgICAgICAgICAgKDB4MSA8
+PCA0KQo+ID4gKwo+ID4gKy8qIGRlZmF1bHQgMHgwMCAqLwo+ID4gKyNkZWZpbmUgUElQRV9SRUdf
+MTgwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMHgxODAKPiA+ICsvKiBUWCBkcml2
+ZXIgYmlhcyByZWZlcmVuY2Ugdm9sdGFnZSBiaXRzIFszOjJdLCBpbiBtdiAqLwo+ID4gKyNkZWZp
+bmUgUElQRV9UWF9CSUFTX1JFRl9WT0xUX01BU0sgICAgICAgICAgIEdFTk1BU0soMywgMikKPiA+
+ICsjZGVmaW5lIFBJUEVfVFhfQklBU19SRUZfVk9MVF8yMDAgICAgICAgICAgICAoMHgwIDw8IDIp
+Cj4gPiArI2RlZmluZSBQSVBFX1RYX0JJQVNfUkVGX1ZPTFRfMTc1ICAgICAgICAgICAgKDB4MSA8
+PCAyKQo+ID4gKyNkZWZpbmUgUElQRV9UWF9CSUFTX1JFRl9WT0xUXzIyNSAgICAgICAgICAgICgw
+eDIgPDwgMikgLyogZG93bnN0cmVhbSA1LjEwIGRyaXZlciBzZXR0aW5nICovCj4gPiArI2RlZmlu
+ZSBQSVBFX1RYX0JJQVNfUkVGX1ZPTFRfMjUwICAgICAgICAgICAgKDB4MyA8PCAyKQo+ID4gKwo+
+ID4gKy8qIGRlZmF1bHQgMHgwMSAqLwo+ID4gKyNkZWZpbmUgUElQRV9SRUdfMUE4ICAgICAgICAg
+ICAgICAgICAweDFhOAo+ID4gKyNkZWZpbmUgUElQRV9MRE9fUE9XRVJfRElTICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgQklUKDQpICAvKiAxJ2IxIERpc2FibGUgTERPIFBvd2VyICovCj4gPiAr
+Cj4gPiArLyogZGVmYXVsdCAweDA3ICovCj4gPiArI2RlZmluZSBQSVBFX1JFR18xQUMgICAgICAg
+ICAgICAgICAgIDB4MWFjCj4gPiArLyogVFggZHJpdmVyIG91dHB1dCBjb21tb24gdm9sdGFnZSBi
+aXRzIFs1OjRdLCBpbiBtdiAqLwo+ID4gKyNkZWZpbmUgUElQRV9UWF9DT01NT05fVk9MVF9NQVNL
+ICAgICAgICAgICAgIEdFTk1BU0soNSwgNCkKPiA+ICsjZGVmaW5lIFBJUEVfVFhfQ09NTU9OX1ZP
+TFRfODAwICAgICAgICAgICAgICAgICAgICAgICgweDAgPDwgNCkKPiA+ICsjZGVmaW5lIFBJUEVf
+VFhfQ09NTU9OX1ZPTFRfNzUwICAgICAgICAgICAgICAgICAgICAgICgweDEgPDwgNCkKPiA+ICsj
+ZGVmaW5lIFBJUEVfVFhfQ09NTU9OX1ZPTFRfOTUwICAgICAgICAgICAgICAgICAgICAgICgweDIg
+PDwgNCkKPiA+ICsjZGVmaW5lIFBJUEVfVFhfQ09NTU9OX1ZPTFRfMTEwMCAgICAgICAgICAgICAo
+MHgzIDw8IDQpCj4KPiBKdXN0IGEgcXVlc3Rpb246Cj4gSW4gdGhpcyBsaXN0IGFzIHdlbGwgYXMg
+dGhlIG9uZSBhYm92ZSBpdCAoUElQRV9UWF9CSUFTX3h5eikgSSBub3RpY2VkCj4gdGhlIHZhbHVl
+cyBhcmUgbm90IHNlcXVlbnRpYWwgKDgwMCwgNzUwLCA5NTAsIDExMDApIGFuZCAoMjAwLCAxNzUs
+IDIyNSwKPiAyNTApLiBJcyB0aGF0IGNvcnJlY3Q/CgpBY2NvcmRpbmcgdG8gdGhlIHJrMzIyOGgg
+dHJtLCB0aGF0J3MgYWNjdXJhdGUuIEknbSBob3Bpbmcgc29tZW9uZSB3aXRoCmFjY2VzcyB0byBJ
+bm5vc2lsaWNvbidzIElQIGNhbiBjb25maXJtIHRoZSByZWdpc3RlcnMgSSd2ZSBmb3VuZCBhbmQK
+cHJvdmlkZSBpbnNpZ2h0IHRvIHRoZSByZXN0LgoKPgo+IENoZWVycywKPiAgIERpZWRlcmlrCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
