@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB84DC02180
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 08:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20E34C02183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 08:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z9+CPtK4kesP6MnDP5EhLDLbogClyymW8kRfrqq7heM=; b=hbGnHRWVEmaEtw
-	JwfezWAB8H09UgdOYWbVpDOI7LrK8GrkL26vOM0mIazrp9xQB3cGK0WQuLzryAWsASrH1VSW3s1X2
-	77rkdQUycDiFUmNO02Er/rj5x6WB4n7FHtL7zkhnEOF52ouJAvMZn8XG4A/Ii8Vm/KkJPyyQW9XVK
-	l5K7yBbXYOnE88jibGM424cDSAuEbISIwrakrpRSD59RqRQEuWdm7ldAXl6A87qLTsmkWINMSwdrU
-	LEVCIpgXEuIlHrC3aYauPgjDFLBTOUl5SRqzGs3yG+ydUvqGGfaQp6oSNDULT8iS0DV8F1JRK9WIj
-	vODl/pkfG7HsSS5mdhFQ==;
+	List-Owner; bh=UtGjlo9b7or5xS/AZWr6wC9Qe5aGlcx9KBLSU4xgE4E=; b=kiBaB+yHE/GUdq
+	hXmm8FWx+TfMdFWFnoAuCgg8J81K+GIRc8+6u2FWslMGq6IOUb7n281HilXsfcH8YuMGHvGQGRupE
+	KscVvayRt/smskBt2RcFtIEGvItnFZ1vGpy4iwxw/mjJNBLudqoRtFc3dVWNfa/Yr8qazRSzPFFqz
+	wfweO7GfT8pYTABoxXlEXVrlseQjJQZPCguX9pjyc1dV6kptRuRggTo2K4lPC7tsUU9JNy4aLaaUT
+	cGBbHBayEh6HrEHs2Gla1xqIO1qipHoSj0oDUDVx9GXOPKWMsETHM2/RChSHphnsYyG1Lc8R4N5j2
+	KGcOZtdslAHVJCy9iRWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYLH9-0000000EDXY-3xjN;
-	Thu, 16 Jan 2025 08:30:51 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYLFs-0000000EDGd-0V9A;
-	Thu, 16 Jan 2025 08:29:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=Jp2pRXZexydmXCI8/gUBpp2H+ifwmmcIHVvnsMZb7WQ=; b=E
-	LQKfR9zxZAtMMzT1A2dBhZXdQx/30olE98zDgaBrKpADjtLqAQVPQ8ZgpqEcWDCg
-	sfrZJAgBSczhHm7BztA++MFtdmc30BTWE7MH/403H2owp6PCk7uj7KwOrasjG6zj
-	iVbx27CiKttvDu+MoK+/28jEyjSIHUhQ5nHlCcgGHY=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-117 (Coremail) ; Thu, 16 Jan 2025 16:27:42 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 16 Jan 2025 16:27:42 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re:Re: [PATCH v11 10/11] dt-bindings: display: vop2: Add rk3576
- support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <3a93b0e3.1b0c.1945a1f4dbd.Coremail.andyshrk@163.com>
-References: <20250111112614.432247-1-andyshrk@163.com>
- <20250111112614.432247-11-andyshrk@163.com>
- <i5mp7wrogfc7w3fbmvqgqxsbgcx4xnfnjik4rpd35amdwgppan@fistrhikrrmd>
- <3a93b0e3.1b0c.1945a1f4dbd.Coremail.andyshrk@163.com>
-X-NTES-SC: AL_Qu2YBfyauUgt5CecZulS/DNQ2YpmHKvs4olgqcQkZd0qqTHPyz4QZ0BuLUbI3d7Zvc2YEN/kNIz7hm45G8K9
+	id 1tYLTk-0000000EFtj-3uWW;
+	Thu, 16 Jan 2025 08:43:52 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tYLTh-0000000EFsC-3qaU;
+	Thu, 16 Jan 2025 08:43:51 +0000
+Received: from pendragon.ideasonboard.com (unknown [193.209.96.36])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1CDD7169;
+	Thu, 16 Jan 2025 09:42:47 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1737016967;
+	bh=YBJYqGqQ2U3g/glMhqBtVA7c9PNcNKm2bF2hwWN3X/8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LEeZiJfRiaftp5JL3OuhSGJ31fbSk67YMrTfIULuryGPguJN8dhwOq+oPh23KD4oZ
+	 oDgG9Q7qiklC025s5e31jn5W8DZrWY3XLnKdac3TlZaKlReDu0jJF+McdlL4rZbfey
+	 vio2zbz4p7HYes9E+SH0Bj1kP+VRYA2cki8/bjIo=
+Date: Thu, 16 Jan 2025 10:43:40 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+	Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Message-ID: <20250116084340.GF6754@pendragon.ideasonboard.com>
+References: <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
+ <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
+ <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
+ <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
+ <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+ <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
 MIME-Version: 1.0
-Message-ID: <652ec3b0.6e7b.1946e39b31e.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: dSgvCgD3v47+wohnYKRYAA--.37488W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRXWXmeIvFiXEgADs5
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_002932_528392_837C67A3 
-X-CRM114-Status: UNSURE (   8.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250116_004350_089376_5543D6E2 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,140 +86,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jan 15, 2025 at 02:34:26PM +0000, Daniel Stone wrote:
+> On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen wrote:
+> > No disagreement there, we need CREATE_DUMB2.
+> >
+> > My point is that we have the current UAPI, and we have userspace using
+> > it, but we don't have clear rules what the ioctl does with specific
+> > parameters, and we don't document how it has to be used.
+> >
+> > Perhaps the situation is bad, and all we can really say is that
+> > CREATE_DUMB only works for use with simple RGB formats, and the behavior
+> > for all other formats is platform specific. But I think even that would
+> > be valuable in the UAPI docs.
+> 
+> Yeah, CREATE_DUMB only works for use with simple RGB formats in a
+> linear layout. Not monochrome or YUV or tiled or displayed rotated or
+> whatever.
+> 
+> If it happens to accidentally work for other uses, that's fine, but
+> it's not generically reliable for anything other than simple linear
+> RGB. It's intended to let you do splash screens, consoles, recovery
+> password entries, and software-rendered compositors if you really
+> want. Anything more than that isn't 'dumb'.
 
-Hi Krzysztof,
+We have lots of software out there that rely on CREATE_DUMB supporting
+YUV linear formats, and lots of drivers (mostly on Arm I suppose) that
+implement YUV support in CREATE_DUMB. I'm fine replacing it with
+something better, but I think we need a standard ioctl that can create
+linear YUV buffers. I've been told many times that DRM doesn't want to
+standardize buffer allocation further than what CREATE_DUMB is made for.
+Can we reconsider this rule then ?
 
-At 2025-01-12 18:46:28, "Andy Yan" <andyshrk@163.com> wrote:
->
->Hi Krzysztof,
->
->At 2025-01-12 17:27:18, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->>On Sat, Jan 11, 2025 at 07:26:08PM +0800, Andy Yan wrote:
->>>    # See compatible-specific constraints below.
->>>    clocks:
->>> @@ -120,43 +133,98 @@ allOf:
->>>        properties:
->>>          compatible:
->>>            contains:
->>> -            const: rockchip,rk3588-vop
->>> +            enum:
->>> +              - rockchip,rk3566-vop
->>> +              - rockchip,rk3568-vop
->>>      then:
->>>        properties:
->>>          clocks:
->>> -          minItems: 7
->>> +          minItems: 5
->>
->>That's wrong, why maxItems became minItems? How is this related to rk3576?
->>
->>> +
->>>          clock-names:
->>> -          minItems: 7
->>> +          minItems: 5
->>
->>You are doing here way too much. You need to split reorganizing, so we
->>will see what comes new.
->>
->>And of course you need to explain why you are changing EXISTING binding
->>(I am not talking about shuffling around - you change the binding).
->
->How about split this patch to two: One rework the existing binding,  make it
->more suitable for expanding to include new SoCs.
->Then add rk3576 in the second patch ?
+-- 
+Regards,
 
-Can you confirm whether this approach is acceptable?  I want to  clarify  with you
-before sending the next version.
+Laurent Pinchart
 
-
->
->
->>
->>
->>> +
->>> +        interrupts:
->>> +          maxItems: 1
->>> +
->>> +        interrupt-names: false
->>>  
->>>          ports:
->>>            required:
->>>              - port@0
->>>              - port@1
->>>              - port@2
->>> -            - port@3
->>> +
->>> +        rockchip,vo1-grf: false
->>> +        rockchip,vop-grf: false
->>> +        rockchip,pmu: false
->>>  
->>>        required:
->>>          - rockchip,grf
->>> -        - rockchip,vo1-grf
->>> -        - rockchip,vop-grf
->>> -        - rockchip,pmu
->>>  
->>> -    else:
->>> +  - if:
->>> +      properties:
->>> +        compatible:
->>> +          contains:
->>> +            enum:
->>> +              - rockchip,rk3576-vop
->>> +    then:
->>>        properties:
->>> +        clocks:
->>> +          minItems: 5
->>
->>
->>Why minItems? Nothing in this patch makes sense for me. Neither changing
->>existing binding nor new binding for rk3576.
->>
->>> +
->>> +        clock-names:
->>> +          minItems: 5
->>> +
->>> +        interrupts:
->>> +          minItems: 4
->>> +
->>> +        interrupt-names:
->>> +          minItems: 4
->>> +
->>> +        ports:
->>> +          required:
->>> +            - port@0
->>> +            - port@1
->>> +            - port@2
->>> +
->>>          rockchip,vo1-grf: false
->>>          rockchip,vop-grf: false
->>> -        rockchip,pmu: false
->>>  
->>> +      required:
->>> +        - rockchip,grf
->>> +        - rockchip,pmu
->>> +
->>> +  - if:
->>> +      properties:
->>> +        compatible:
->>> +          contains:
->>> +            const: rockchip,rk3588-vop
->>> +    then:
->>> +      properties:
->>>          clocks:
->>> -          maxItems: 5
->>> +          minItems: 7
->>
->>And again weird change to the binding.
->>
->>Best regards,
->>Krzysztof
->>
->>
->>_______________________________________________
->>Linux-rockchip mailing list
->>Linux-rockchip@lists.infradead.org
->>http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
