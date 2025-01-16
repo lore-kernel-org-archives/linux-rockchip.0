@@ -4,61 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CFE5C02187
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 14:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA620C02183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 14:48:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DayFnDAdiWrS9Manj8RS0uwz/6Mn0RWVHO4/dWapAUg=; b=GxAbIjVl7MQ1Ne
-	19Q/Is/+aNjk3klI29cIIL7I+crhI2Ro9fCpwJessDV11MCdha4DX/lubJse3YLMK08EbObIuKtBd
-	51kR5AfH80Mp1dHkTpLZBbSgK48uCRMXb466jQAhWkZX3zlTImGslV6KbspRdL49H3vjiwPGzsE2P
-	7Zk1nlTgJkniUh33v6ZKDfU1O4VlBcjxt1IA7Vj5dMSLM3MhJFmIJPGO0YpomnF7jM+zqJ7o0cFyp
-	WwVQhQ42lohjfwxOehtpr2txthYWm8DNUAloKO3CEQN1NlSdUU3/JCku4Sl/qr0PjMFsxTMnzfrW3
-	bor7i4NOk32LmePlHnvg==;
+	List-Owner; bh=ILcs1KTrl7sHdkeNIdSupZpAZQLzLC6b0Kqg+csiwek=; b=ADSgSIS1OiiBsy
+	FAnwD5QPRdbOPY3/Ro/EitNDXsvxBElxC6sYDBRS7B9RzsAGlRkz7fUHMRuLs099g1cDBMROltb/k
+	lfqG2wnaVnHlU2GwbZfo2eIP6AxaZaOlAokQRJ0TgCIxFN787iFRkgVk8vhnQmJOuSnHeR5GMPZdV
+	Ulodn1mCw43NBjxXZHns//OLRYaqy8Hd+JaQnalj0GouJAEoq72EgppAJy5yj5qFd2kol3t+IBWUf
+	5jhWMgXxtGxYotIPJggrXiL7IBQgX0kXgR0Cvah6kG64YAd3Ma6bpdtJ0ISGhP55LG5R9VF9SQAnE
+	tjKEeksl4fxJl50KXgHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQzN-0000000FC7K-1RUq;
-	Thu, 16 Jan 2025 14:36:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tYRAJ-0000000FDyv-3sGH;
+	Thu, 16 Jan 2025 14:48:11 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYQzL-0000000FC4x-0Tsw
+	id 1tYR93-0000000FDl3-1BEG
 	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Jan 2025 14:36:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=TUSywU3i5Rzbd7ciMwbZ+KIkpi9VHuENm6E64C1nyIY=; b=aAPrWFp/WLU1gQJc0mTUb44SZ2
-	ugxuYOOaUgHGgkVEZj0/TfhK0YIgDmfVIsLc1qMDrPHKegceKVx24q6rUtifIpLQdsUelorpLRqI0
-	frCPsuRQsLbtThdPdyA3rul/YlXQ6+urDs0+0Yeo+Dz2wD2G4TRrm6Ua7nQv5wY9RUG/VL7zoCajz
-	51o3Zrj24msCisFnu3hdaqlIs2n6qHu7R7qiaInW6TfWeB32Ztl3h4wgOUxu2GBITWUUaMpjCUAhc
-	XEWO2JQuQ0YVyxDN8X5iZFNsPrWcuiBE4HXXGyIOChbEX4MBMDxEIahKIPZCHIPu5bWWSi9I6JvYe
-	Ib8kXVmQ==;
-Received: from i53875b2c.versanet.de ([83.135.91.44] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tYQzI-0002va-4U; Thu, 16 Jan 2025 15:36:48 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: vicencb@gmail.com
-Cc: jbx6244@gmail.com,
-	linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] arm64: dts: rockchip: fix fixed-regulator renames on rk3399-gru devices
-Date: Thu, 16 Jan 2025 15:36:31 +0100
-Message-ID: <20250116143631.3650469-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <CAAMcf8A3Ehi=krZirpuFVpVuQ4T_wwQ5Ss29_o4-BiTaQqsoFw@mail.gmail.com>
-References: <CAAMcf8A3Ehi=krZirpuFVpVuQ4T_wwQ5Ss29_o4-BiTaQqsoFw@mail.gmail.com>
+	Thu, 16 Jan 2025 14:46:54 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e53a91756e5so1882713276.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jan 2025 06:46:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1737038812; x=1737643612; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=+m1G7PofLTIXji56NSz1j24b2b2T3MuG3/CntqxLBBw=;
+        b=EiGGEymabOEsk6Y15F+uHzMe6ZUiylM+016+khoOR6EHpvYL6dKZFL/7wKtBvC21pN
+         GZYwn0POG508kY1oKwx/Vt7Mqe+Pgwpq0Gt1bSFwW73se3jbByN/iiGpcrb1qsIWzNtT
+         xXDtfdqt2lt+ACZ9dyQTZvG2NuG4imrb2xDzBkTDnnhQIDcbFvMBvm/GNuJrZO45WHUr
+         J5bweJvwl+BPUyjIhBMEFdWswzZmOxCEVW0Sono+wQKMKuBshRMMF8P+F9Ys//ZZKbo8
+         gglhIF/IfyOSgK7tyoslNh7VNwSSfRBisEGnTTU8wSMunpkojRmqiEaUb+jnA1KrF96x
+         jpYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737038812; x=1737643612;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+m1G7PofLTIXji56NSz1j24b2b2T3MuG3/CntqxLBBw=;
+        b=O34EZYJ1+IcO7x0/f0nVXg5HlAszqkvQJTWC65OEJeyvR9ZxdMgVL1s84Zq+UNTGIp
+         ITBIo7PmdEtLztBPgrkThhidAaOKqs/FRKQaHOuDXxjyhayPi0Mc+0AvD+vx60Tfduza
+         CgAQMgckEKbE4vSoIPKAim/dDd4EndQGY1cVPYanpdq5TZM1zp7tzJSFZvOxOgdg8JPy
+         cJiEgf76/POqZTSRePIhkHJfJOBBVRf2bNG+Bogve7WKb8sYl8ORtuKmD0Hyt6bYgNFa
+         qBeEmbaK/Umnh4PKnxCZ0MXqABoGWDM3ZJHNdVPeifvaTKqzTnGaDj5rRpffqIeQ8d83
+         UKtA==
+X-Forwarded-Encrypted: i=1; AJvYcCUUCxO8HF7ZxXSSMVOh80ASquMxilg/3AN4ZqiFXlDerSRtlAVwi/dPMr0AI5Lzc1Qcstr1F5J2+uCdy3XaDQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxoUAWA4ZVibh1og0AgV8SYgCKE13xmH6adlFV32xYouLaZz63H
+	XaH3Wh6C0CJGjMCGh93oa7Cfv75BxagSDztGYM6phSOZRNsv4TpuU87gsNF7gFtFmVNLu6dO6bL
+	V5XB0604fGhO8u2g1Oz0W9uOVRgPfp9qtKgWC5A==
+X-Gm-Gg: ASbGnctE6oMxUCLK1RksYhfyU9PP8JO+FwccfZjdxN0HUQDXrg2aR8rfPHNWS4JkoYR
+	Wx3kX17tmW4cC+0nd2gdCm6y5AARzP5FF/O27Xro=
+X-Google-Smtp-Source: AGHT+IEgtTusJYrVZnLJqpkMnaQW6PKvqXaBdJ1qWB4u4sYFRvuNXZZiCbeAuzNh5mb57/Q5o/7WHYssJXuaOMTG558=
+X-Received: by 2002:a05:690c:4d81:b0:6ef:7f34:fe08 with SMTP id
+ 00721157ae682-6f531224a36mr294371267b3.18.1737038812063; Thu, 16 Jan 2025
+ 06:46:52 -0800 (PST)
 MIME-Version: 1.0
+References: <20241224093920.3816071-1-kever.yang@rock-chips.com> <20241224093920.3816071-2-kever.yang@rock-chips.com>
+In-Reply-To: <20241224093920.3816071-2-kever.yang@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 16 Jan 2025 15:46:16 +0100
+X-Gm-Features: AbW1kvahorrlWkjwCiv7wkTLlUP8_JyQ26Uq7qZus2JotVO1Pyr02DSo-fK3yF0
+Message-ID: <CAPDyKFqYjTsWsqf-C+iHJz3x-RKdsm2-2cPm-HMeH=WBNzcSLw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] soc: rockchip: power-domain: add power domain
+ support for rk3562
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	Finley Xiao <finley.xiao@rock-chips.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-pm@vger.kernel.org, 
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+	Detlev Casanova <detlev.casanova@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_063651_183220_C7B99C5E 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20250116_064653_324393_05C462CE 
+X-CRM114-Status: GOOD (  20.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,168 +97,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3399-gru chromebooks have a regulator chains where one named regulator
-supplies multiple regulators pp900-usb pp900_pcie that supply
-the named peripherals.
+On Tue, 24 Dec 2024 at 10:39, Kever Yang <kever.yang@rock-chips.com> wrote:
+>
+> This driver is modified to support RK3562 SoC.
+> Add support to ungate clk.
+> Add support to shut down memory for rk3562.
+>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+>
+> Changes in v2:
+> - update the header after rename
+>
+>  drivers/pmdomain/rockchip/pm-domains.c | 48 +++++++++++++++++++++++++-
+>  1 file changed, 47 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index cb0f93800138..d05ec0a009a0 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -2,7 +2,7 @@
+>  /*
+>   * Rockchip Generic power domain support.
+>   *
+> - * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
+> + * Copyright (c) 2015 Rockchip Electronics Co., Ltd.
+>   */
+>
+>  #include <linux/io.h>
+> @@ -32,6 +32,7 @@
+>  #include <dt-bindings/power/rk3366-power.h>
+>  #include <dt-bindings/power/rk3368-power.h>
+>  #include <dt-bindings/power/rk3399-power.h>
+> +#include <dt-bindings/power/rockchip,rk3562-power.h>
+>  #include <dt-bindings/power/rk3568-power.h>
+>  #include <dt-bindings/power/rockchip,rk3576-power.h>
+>  #include <dt-bindings/power/rk3588-power.h>
+> @@ -129,6 +130,20 @@ struct rockchip_pmu {
+>         .active_wakeup = wakeup,                        \
+>  }
+>
+> +#define DOMAIN_M_G_SD(_name, pwr, status, req, idle, ack, g_mask, mem, wakeup, keepon) \
+> +{                                                      \
+> +       .name = _name,                                  \
+> +       .pwr_w_mask = (pwr) << 16,                      \
+> +       .pwr_mask = (pwr),                              \
+> +       .status_mask = (status),                        \
+> +       .req_w_mask = (req) << 16,                      \
+> +       .req_mask = (req),                              \
+> +       .idle_mask = (idle),                            \
+> +       .ack_mask = (ack),                              \
+> +       .clk_ungate_mask = (g_mask),                    \
+> +       .active_wakeup = wakeup,                        \
+> +}
+> +
+>  #define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup)     \
+>  {                                                      \
+>         .name = _name,                                  \
+> @@ -194,6 +209,9 @@ struct rockchip_pmu {
+>  #define DOMAIN_RK3399(name, pwr, status, req, wakeup)          \
+>         DOMAIN(name, pwr, status, req, req, req, wakeup)
+>
+> +#define DOMAIN_RK3562(name, pwr, req, g_mask, mem, wakeup)             \
+> +       DOMAIN_M_G_SD(name, pwr, pwr, req, req, req, g_mask, mem, wakeup, false)
+> +
+>  #define DOMAIN_RK3568(name, pwr, req, wakeup)          \
+>         DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
+>
+> @@ -1130,6 +1148,18 @@ static const struct rockchip_domain_info rk3399_pm_domains[] = {
+>         [RK3399_PD_SDIOAUDIO]   = DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), BIT(29), true),
+>  };
+>
+> +static const struct rockchip_domain_info rk3562_pm_domains[] = {
+> +                                            /* name           pwr     req     g_mask  mem wakeup */
+> +       [RK3562_PD_GPU]         = DOMAIN_RK3562("gpu",         BIT(0), BIT(1), BIT(1), 0, false),
+> +       [RK3562_PD_NPU]         = DOMAIN_RK3562("npu",         BIT(1), BIT(2), BIT(2), 0, false),
+> +       [RK3562_PD_VDPU]        = DOMAIN_RK3562("vdpu",        BIT(2), BIT(6), BIT(6), 0, false),
+> +       [RK3562_PD_VEPU]        = DOMAIN_RK3562("vepu",        BIT(3), BIT(7), BIT(7) | BIT(3), 0, false),
+> +       [RK3562_PD_RGA]         = DOMAIN_RK3562("rga",         BIT(4), BIT(5), BIT(5) | BIT(4), 0, false),
+> +       [RK3562_PD_VI]          = DOMAIN_RK3562("vi",          BIT(5), BIT(3), BIT(3), 0, false),
+> +       [RK3562_PD_VO]          = DOMAIN_RK3562("vo",  BIT(6), BIT(4), BIT(4), 16, false),
+> +       [RK3562_PD_PHP]         = DOMAIN_RK3562("php",         BIT(7), BIT(8), BIT(8), 0, false),
+> +};
+> +
+>  static const struct rockchip_domain_info rk3568_pm_domains[] = {
+>         [RK3568_PD_NPU]         = DOMAIN_RK3568("npu",  BIT(1), BIT(2),  false),
+>         [RK3568_PD_GPU]         = DOMAIN_RK3568("gpu",  BIT(0), BIT(1),  false),
+> @@ -1331,6 +1361,18 @@ static const struct rockchip_pmu_info rk3399_pmu = {
+>         .domain_info = rk3399_pm_domains,
+>  };
+>
+> +static const struct rockchip_pmu_info rk3562_pmu = {
+> +       .pwr_offset = 0x210,
+> +       .status_offset = 0x230,
+> +       .req_offset = 0x110,
+> +       .idle_offset = 0x128,
+> +       .ack_offset = 0x120,
+> +       .clk_ungate_offset = 0x140,
+> +
+> +       .num_domains = ARRAY_SIZE(rk3562_pm_domains),
+> +       .domain_info = rk3562_pm_domains,
+> +};
+> +
+>  static const struct rockchip_pmu_info rk3568_pmu = {
+>         .pwr_offset = 0xa0,
+>         .status_offset = 0x98,
+> @@ -1429,6 +1471,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+>                 .compatible = "rockchip,rk3399-power-controller",
+>                 .data = (void *)&rk3399_pmu,
+>         },
+> +       {
+> +               .compatible = "rockchip,rk3562-power-controller",
 
-The dtsi used somewhat creative structure to describe that in creating
-the base node 3 times with different phandles and describing the EC
-dependency in a comment.
+I couldn't find the corresponding DT patch where this compatible is
+being documented. Can you please re-send and keep me posted for both
+the DT and pmdomain patch?
 
-This didn't register in the recent regulator-node renaming, as the
-additional nodes were empty, so adapt the missing node names for now.
+> +               .data = (void *)&rk3562_pmu,
+> +       },
+>         {
+>                 .compatible = "rockchip,rk3568-power-controller",
+>                 .data = (void *)&rk3568_pmu,
+> --
+> 2.25.1
+>
 
-Fixes: 5c96e6330197 ("arm64: dts: rockchip: adapt regulator nodenames to preferred form")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-Hi Vicente,
-
-in theory, this should fix your issue?
-
-While we may want to restructure those regulators in some way,
-this below should be the smaller change to include as a fix.
-
-
-Heiko
-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  8 +++----
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  6 ++---
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 22 +++++++++----------
- 3 files changed, 18 insertions(+), 18 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 988e6ca32fac..a9ea4b0daa04 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -22,11 +22,11 @@ pp900_ap: regulator-pp900-ap {
- 	};
- 
- 	/* EC turns on w/ pp900_usb_en */
--	pp900_usb: pp900-ap {
-+	pp900_usb: regulator-pp900-ap {
- 	};
- 
- 	/* EC turns on w/ pp900_pcie_en */
--	pp900_pcie: pp900-ap {
-+	pp900_pcie: regulator-pp900-ap {
- 	};
- 
- 	pp3000: regulator-pp3000 {
-@@ -126,7 +126,7 @@ pp1800_pcie: regulator-pp1800-pcie {
- 	};
- 
- 	/* Always on; plain and simple */
--	pp3000_ap: pp3000_emmc: pp3000 {
-+	pp3000_ap: pp3000_emmc: regulator-pp3000 {
- 	};
- 
- 	pp1500_ap_io: regulator-pp1500-ap-io {
-@@ -160,7 +160,7 @@ pp3300_disp: regulator-pp3300-disp {
- 	};
- 
- 	/* EC turns on w/ pp3300_usb_en_l */
--	pp3300_usb: pp3300 {
-+	pp3300_usb: regulator-pp3300 {
- 	};
- 
- 	/* gpio is shared with pp1800_pcie and pinctrl is set there */
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 19b23b438965..5e068377a0a2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -92,7 +92,7 @@ pp900_s3: regulator-pp900-s3 {
- 	};
- 
- 	/* EC turns on pp1800_s3_en */
--	pp1800_s3: pp1800 {
-+	pp1800_s3: regulator-pp1800 {
- 	};
- 
- 	/* pp3300 children, sorted by name */
-@@ -109,11 +109,11 @@ pp2800_cam: regulator-pp2800-avdd {
- 	};
- 
- 	/* EC turns on pp3300_s0_en */
--	pp3300_s0: pp3300 {
-+	pp3300_s0: regulator-pp3300 {
- 	};
- 
- 	/* EC turns on pp3300_s3_en */
--	pp3300_s3: pp3300 {
-+	pp3300_s3: regulator-pp3300 {
- 	};
- 
- 	/*
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 6d9e60b01225..7eca1da78cff 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -189,39 +189,39 @@ ppvar_gpu: ppvar-gpu {
- 	};
- 
- 	/* EC turns on w/ pp900_ddrpll_en */
--	pp900_ddrpll: pp900-ap {
-+	pp900_ddrpll: regulator-pp900-ap {
- 	};
- 
- 	/* EC turns on w/ pp900_pll_en */
--	pp900_pll: pp900-ap {
-+	pp900_pll: regulator-pp900-ap {
- 	};
- 
- 	/* EC turns on w/ pp900_pmu_en */
--	pp900_pmu: pp900-ap {
-+	pp900_pmu: regulator-pp900-ap {
- 	};
- 
- 	/* EC turns on w/ pp1800_s0_en_l */
--	pp1800_ap_io: pp1800_emmc: pp1800_nfc: pp1800_s0: pp1800 {
-+	pp1800_ap_io: pp1800_emmc: pp1800_nfc: pp1800_s0: regulator-pp1800 {
- 	};
- 
- 	/* EC turns on w/ pp1800_avdd_en_l */
--	pp1800_avdd: pp1800 {
-+	pp1800_avdd: regulator-pp1800 {
- 	};
- 
- 	/* EC turns on w/ pp1800_lid_en_l */
--	pp1800_lid: pp1800_mic: pp1800 {
-+	pp1800_lid: pp1800_mic: regulator-pp1800 {
- 	};
- 
- 	/* EC turns on w/ lpddr_pwr_en */
--	pp1800_lpddr: pp1800 {
-+	pp1800_lpddr: regulator-pp1800 {
- 	};
- 
- 	/* EC turns on w/ pp1800_pmu_en_l */
--	pp1800_pmu: pp1800 {
-+	pp1800_pmu: regulator-pp1800 {
- 	};
- 
- 	/* EC turns on w/ pp1800_usb_en_l */
--	pp1800_usb: pp1800 {
-+	pp1800_usb: regulator-pp1800 {
- 	};
- 
- 	pp3000_sd_slot: regulator-pp3000-sd-slot {
-@@ -259,11 +259,11 @@ ppvar_sd_card_io: ppvar-sd-card-io {
- 	};
- 
- 	/* EC turns on w/ pp3300_trackpad_en_l */
--	pp3300_trackpad: pp3300-trackpad {
-+	pp3300_trackpad: regulator-pp3300-trackpad {
- 	};
- 
- 	/* EC turns on w/ usb_a_en */
--	pp5000_usb_a_vbus: pp5000 {
-+	pp5000_usb_a_vbus: regulator-pp5000 {
- 	};
- 
- 	ap_rtc_clk: ap-rtc-clk {
--- 
-2.45.2
-
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
