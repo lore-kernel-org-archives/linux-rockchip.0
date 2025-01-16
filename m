@@ -4,93 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2E3DC02180
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 12:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2B47C02180
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jan 2025 13:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VcFpFKBgkeNftOYgWNERRBdz9SkCGC07aAPd0FrkP4s=; b=XTr0Rqt7lDaJ0f
-	T6O4esmTUmGMTPku7mCvzDuze/5kQea77TPrFV8ir1feUfjVzoyQou2Nq86z+PKLET8UkCSFB10un
-	Cvh3X0/I/u5qxZ9UBFvmSc7VI0fxh8Sn1tdbrG/wOi96tv6Jie5sFqM77vSWUNRvsGb17ioJuaJT5
-	TlAqJ2jWOyEg3tjRsqa69PNnBqIeOpKv6kgTYfBxha3ktRXycw78V6P4NTz+OTecDIoiW8p52Fikm
-	Vd0CBLHIlHWBsjlNsFQbFSP65e706+ba4bO1qE9WT6Gv9zUEmKFqbNWjFUccvOJ5mtD2kCWRfeVpy
-	w7ip4WHDs/D+UveJgU2Q==;
+	List-Owner; bh=+y7PV7x5E4Qw2SrK9dIACRzOqhcmV4kPRpD04s8iSrc=; b=2LOYjDFQX2Rcdh
+	N2lrzr4MgHQsOUgswwA7fe7DOdekR9bu+gbr4V1ua2k3PtukSStRGw3pX/KD8z6CxfXo8aghJn+LA
+	bxDSPwHGpP85BypCOJRdynJcgr5An9ejyu4kTJ3XlrVvLEd2iIYiMqQlLGOeWtMPjJyxeuFEp8+sl
+	xSg9dAYMJjxNPurwofh+M487Qytv7orszd+BInoT3NGbWOO5blnKmhZp3mm1HLJ/xhGTtuqes69wB
+	DvoCSJICEk8WNhZsnd2tUWXRjJH/2TonDNyDERCiQFUD6UIiGU4Vi+Skz6TBvaUAzcOJ/x6k0/YHX
+	HCxxnR9SzJnifSYjaong==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYOvn-0000000EsR7-392a;
-	Thu, 16 Jan 2025 12:25:03 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1tYPUg-0000000Ewt6-29f5;
+	Thu, 16 Jan 2025 13:01:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYOvk-0000000EsPM-02jt
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Jan 2025 12:25:01 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-7b6f95d2eafso84478985a.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jan 2025 04:24:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1737030299; x=1737635099; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GBwF2KOXlFDp1MGeRltem3iAJtpX3AYE0x8w+f0gonM=;
-        b=TH3qu3jbDnJ5uQVatWCb1Fr53DJvD9frVswtQzA13bCLFIJoyCe3f/xks6w+TBNszr
-         NvDxoBUM3mmljYcSf5AEP8AlHNMYB/lMVWu8HoN64CpoEKJTZNWq36qtJVvmiUjyprLg
-         xG7+b5sbL3qPkBqszLBcWMw32tgSw08J5vEPrv33eQ2rM2lcZnHnzAbRHeVPVP16lBWE
-         EmBUfc7jzbhg8sRQBtaynykER4efUUFan/K7DblZJiYiGrzswIOrLB3hGqkAtPAQynBF
-         RAUvgaSqgD92EE8/7iN9fARpJVnMIy6NQSMUNZrVNldwZE4KWrt47i5kzDMPuV+gGSGf
-         ONxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737030299; x=1737635099;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GBwF2KOXlFDp1MGeRltem3iAJtpX3AYE0x8w+f0gonM=;
-        b=mmVRjxoMOFtPpq25AYSkvkI6wJOk82EsZscBPBfiQQujoF2L6NAFNw4gMzHFlGr6hc
-         TUxeWjInWSWtj21DPOXkQdzqYAwXDLpQir6ImXdLDtKGhoUXkj0JhJyLhfa/JlWuSE+z
-         yGgm9z6AjfN+hdHOYFr42ln01HSKqdIOQiJ0elT4IfojhXRwZXrWNiurJ5mxwsImkGr+
-         txf9J5FvkY7VRTo2aqwAiXei0GGFJyBA10kO2CAmLJQBguBFWggBEv0lYAOc1uihcBha
-         i2y7jLOLVuvChoK4rJ/mCq7XesCwGdS1/VrQppkCa5zzT/SLHWEWsNhZuuP42dgUv5aC
-         4OxA==
-X-Forwarded-Encrypted: i=1; AJvYcCXRt0o0YxU9v4GQ7lDIDikSgjcDpMJBM0NsU1jtOFmzMEaL/hn7Y/S7ng/ttZO76/S0XVNYxO4XCyl3KKlxuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwS6Jrf7ujrrr4RmlR9cSSz9VJoiyBqpvGIZ9YszizEPnDC0SEc
-	Jim6tLshFh/ROEl8FeRH/glA72E0tAEyGMCYVQCIM8y4/ATWy9+hFQ2vVlU8xvdHSm37FN/9Dc9
-	Y3E2enj6E6U6iuy9Rer4Knev1H5pWwnUeOsCRBg==
-X-Gm-Gg: ASbGncsEc7FMWQd/5v44lRALt+HNgOyaKEMAtzt/KJZAuws27QjZGUdLywNyb+ZH3wS
-	O+ZykCxl3pudzQVihJsgTn9E99soHsDhU7OE=
-X-Google-Smtp-Source: AGHT+IHYPoThOqCGG0mIrocl9o1givl0D/RoYwWOKY0kUiZ64KPF9cSvP+6N1Rd6ke2PYtdS9xOibflODkJbaGvT990=
-X-Received: by 2002:a05:6214:528e:b0:6d9:3016:d0e7 with SMTP id
- 6a1803df08f44-6df9b2b1a21mr442378366d6.29.1737030298608; Thu, 16 Jan 2025
- 04:24:58 -0800 (PST)
+	id 1tYPTP-0000000EwhR-3Dl9;
+	Thu, 16 Jan 2025 12:59:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4BF7C5C55DB;
+	Thu, 16 Jan 2025 12:59:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2428FC4CED6;
+	Thu, 16 Jan 2025 12:59:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737032386;
+	bh=MUcj+PDJNAsNizlP5f4HUNqu0DmAOApn8fq/KkfE20M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=donLZCuAuLt7qZTSJuKlXrsZX1YcRyW5wodpHKP1Obb4+IlU3FRmTWWRgQM/HB7vw
+	 HEqwbkJ2Gns4i46ZW1gvHuqIXqc63qOKURGN+ezGfFrT+H2vOfg+9YH46EwBbBuTM2
+	 tsl1Ui/gQWfsyq1XGs1TNdbhPF/tSWnIJhC+1zCyTxOJWzFSMXHkAgPjUIOaWlO4ad
+	 9VNA2ivGJhzG24qLPx4L4RyCbdZcfP3jT8DnJzB4HKYS3t+QhbnHRHuAiZBFUFr/dz
+	 AlRb5iiR62ILeLO1z6A2/gEzPXCh+JCw/6Nh37Ad6rwBCM6U7y/AubnDlZ5EK2uXNP
+	 G9PF6mdc6vOcw==
+Message-ID: <87001334-5a37-4fba-b08c-3679fb556f83@kernel.org>
+Date: Thu, 16 Jan 2025 13:59:38 +0100
 MIME-Version: 1.0
-References: <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
- <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de> <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
- <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de> <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
- <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de> <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
- <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de> <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
- <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com> <xz5ncq67bgmdase2jg3cfvyaxpiwhol2eqpfzow6dqpauvslo5@2w3rw27lhnxo>
-In-Reply-To: <xz5ncq67bgmdase2jg3cfvyaxpiwhol2eqpfzow6dqpauvslo5@2w3rw27lhnxo>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 16 Jan 2025 12:24:47 +0000
-X-Gm-Features: AbW1kvarRJv1VyJjUo1t8ScK0brJ2o4-Qq6ABYK10edUo6rgOW2PAccCb4uQWlM
-Message-ID: <CAPj87rNS7quwfqDmxyrW8_vQ6tnrcfWUn=81aTduDXtmdVkkAg@mail.gmail.com>
-Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, 
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org, 
-	xen-devel@lists.xenproject.org, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Yan <andyshrk@163.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v1 3/6] phy: rockchip: add driver for rk3328 usb3 phy
+To: Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+References: <20250115012628.1035928-1-pgwipeout@gmail.com>
+ <20250115012628.1035928-4-pgwipeout@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250115012628.1035928-4-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_042500_148369_C49AA3F1 
-X-CRM114-Status: GOOD (  22.54  )
+X-CRM114-CacheID: sfid-20250116_045947_900476_212D2C30 
+X-CRM114-Status: GOOD (  24.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,41 +109,309 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Algea Cao <algea.cao@rock-chips.com>, linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, frank.wang@rock-chips.com, william.wu@rock-chips.com, kever.yang@rock-chips.com, linux-phy@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Zhang Yubing <yubing.zhang@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, zyw@rock-chips.com, wulf@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxNiBKYW4gMjAyNSBhdCAxMDozNSwgRG1pdHJ5IEJhcnlzaGtvdgo8ZG1pdHJ5LmJh
-cnlzaGtvdkBsaW5hcm8ub3JnPiB3cm90ZToKPiBPbiBUaHUsIEphbiAxNiwgMjAyNSBhdCAxMTox
-Nzo1MEFNICswMTAwLCBHZWVydCBVeXR0ZXJob2V2ZW4gd3JvdGU6Cj4gPiBPbiBUaHUsIEphbiAx
-NiwgMjAyNSBhdCAxMTowM+KAr0FNIFRvbWkgVmFsa2VpbmVuCj4gPiA8dG9taS52YWxrZWluZW5A
-aWRlYXNvbmJvYXJkLmNvbT4gd3JvdGU6Cj4gPiA+IE9uIHRoZSBwbGF0Zm9ybXMgSSBoYXZlIGJl
-ZW4gdXNpbmcgKG9tYXAsIHRpZHNzLCB4aWxpbngsIHJjYXIpIHRoZSBkdW1iCj4gPiA+IGJ1ZmZl
-cnMgYXJlIHRoZSBvbmx5IGJ1ZmZlcnMgeW91IGNhbiBnZXQgZnJvbSB0aGUgRFJNIGRyaXZlci4g
-VGhlIGR1bWIKPiA+ID4gYnVmZmVycyBoYXZlIGJlZW4gdXNlZCB0byBhbGxvY2F0ZSBsaW5lYXIg
-YW5kIG11bHRpcGxhbmFyIFlVViBidWZmZXJzCj4gPiA+IGZvciBhIHZlcnkgbG9uZyB0aW1lIG9u
-IHRob3NlIHBsYXRmb3Jtcy4KPiA+ID4KPiA+ID4gSSB0cmllZCB0byBsb29rIGFyb3VuZCwgYnV0
-IEkgZGlkIG5vdCBmaW5kIGFueSBtZW50aW9ucyB0aGF0IENSRUFURV9EVU1CCj4gPiA+IHNob3Vs
-ZCBvbmx5IGJlIHVzZWQgZm9yIFJHQiBidWZmZXJzLiBJcyBhbnlvbmUgb3V0c2lkZSB0aGUgY29y
-ZQo+ID4gPiBkZXZlbG9wZXJzIGV2ZW4gYXdhcmUgb2YgaXQ/Cj4gPiA+Cj4gPiA+IElmIHdlIGRv
-bid0IHVzZSBkdW1iIGJ1ZmZlcnMgdGhlcmUsIHdoZXJlIGRvIHdlIGdldCB0aGUgYnVmZmVycz8g
-TWF5YmUKPiA+ID4gZnJvbSBhIHY0bDIgZGV2aWNlIG9yIGZyb20gYSBncHUgZGV2aWNlLCBidXQg
-b2Z0ZW4geW91IGRvbid0IGhhdmUgdGhvc2UuCj4gPiA+IERNQV9IRUFQIGlzIHRoZXJlLCBvZiBj
-b3Vyc2UuCj4gPgo+ID4gV2h5IGNhbid0IHRoZXJlIGJlIGEgdmFyaWFudCB0aGF0IHRha2VzIGEg
-cHJvcGVyIGZvdXJjYyBmb3JtYXQgaW5zdGVhZCBvZgo+ID4gYW4gaW1wcmVjaXNlIGJwcCB2YWx1
-ZT8KPgo+IEJhY2t3YXJkcyBjb21wYXRpYmlsaXR5LiBXZSBjYW4gYWRkIGFuIElPQ1RMIGZvciBZ
-VVYgLyBldGMuIEJ1dAo+IHVzZXJzcGFjZSBtdXN0IGJlIGFibGUgdG8gY29udGludWUgYWxsb2Nh
-dGluZyBZVVYgYnVmZmVycyB0aHJvdWdoCj4gQ1JFQVRFX0RVTUIuCgpSaWdodC4gSWYgYWxsb2Nh
-dGluZyBZVVlWIGR1bWIgYnVmZmVycyB3b3JrcyBvbiBBTTY4IHRvZGF5LCB0aGVuIHdlCm5lZWQg
-dG8ga2VlcCB0aGF0IHdvcmtpbmcuIEJ1dCBpdCBkb2Vzbid0IG1lYW4gd2Ugc2hvdWxkIGdvIG91
-dCBvZiBvdXIKd2F5IHRvIG1ha2UgQ1JFQVRFX0RVTUIgd29yayBmb3IgZXZlcnkgWVVWIGZvcm1h
-dCBvbiBldmVyeSBkZXZpY2UuCgpDdXJyZW50bHksIGRyaXZlcnMgYXJlIGZyZWUgdG8gaW1wbGVt
-ZW50IHRoZWlyIG93biBpb2N0bHMgZm9yIGFueXRoaW5nCnNwZWNpZmljIHRoZXkgaGF2ZS4gQnV0
-IGxpa2UgTGF1cmVudCBzYWlkLCBzdGFuZGFyZGlzaW5nIG9uIGhlYXBzIGFuZApob3cgdG8gY29t
-bXVuaWNhdGUgcmVxdWlyZW1lbnRzIHRvIHVzZXJzcGFjZSB3cnQgaGVhcCBzZWxlY3Rpb24gLyBz
-aXplCi8gYWxpZ25tZW50IC8gZXRjIGlzIGltbyBhIGJldHRlciBwYXRoIGZvcndhcmQgZm9yIHNv
-bWV0aGluZyBnZW5lcmljLgoKQ2hlZXJzLApEYW5pZWwKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 15/01/2025 02:26, Peter Geis wrote:
+> The rk3328 has a combined usb2 and usb3 phy block for the usb3 dwc
+> interface. The implementation up until now has been bugged, with
+> multiple issues ranging from disconnect detection failures to low
+> performance. This driver fixes the majority of the original issues and
+> allows better performance for the rk3328 usb3 port.
+> 
+> This driver sources data from multiple sources, including the rk3328
+> trm, the rk3228h trm, emails from Rockchip, and both the 4.4 and 5.10
+> downstream drivers. The current implementation allows for basic bring up
+> of the phy block and fixes the detection issues. Interrupts are enabled,
+> but currently only used for debugging. Features missing currently are
+> power management, OTG handling, board specific tuning, regulator control,
+> 
+> Currently the only known bugs are a AX88179 usb3 gigabit adapter crashes
+> when operating at usb3 speeds and transmitting large amounts of data and
+> full disconnection detections may be slower than expected (~5-10 seconds).
+> 
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+
+
+...
+
+> +}
+> +
+> +static int rockchip_usb3phy_parse_dt(struct rockchip_usb3phy *usb3phy, struct device *dev)
+> +{
+> +	int ret;
+> +
+> +	usb3phy->clk_pipe = devm_clk_get(dev, "usb3phy-pipe");
+> +	if (IS_ERR(usb3phy->clk_pipe)) {
+> +		dev_err(dev, "could not get usb3phy pipe clock\n");
+
+Syntax is always:
+return dev_err_probe
+
+> +		return PTR_ERR(usb3phy->clk_pipe);
+> +	}
+> +
+> +	usb3phy->clk_otg = devm_clk_get(dev, "usb3phy-otg");
+> +	if (IS_ERR(usb3phy->clk_otg)) {
+> +		dev_err(dev, "could not get usb3phy otg clock\n");
+> +		return PTR_ERR(usb3phy->clk_otg);
+> +	}
+> +
+> +	usb3phy->clk_ref = devm_clk_get(dev, "refclk-usb3otg");
+> +	if (IS_ERR(usb3phy->clk_ref)) {
+> +		dev_err(dev, "could not get usb3phy ref clock\n");
+> +		return PTR_ERR(usb3phy->clk_ref);
+> +	}
+> +
+> +	usb3phy->u2por_rst = devm_reset_control_get(dev, "usb3phy-u2-por");
+> +	if (IS_ERR(usb3phy->u2por_rst)) {
+> +		dev_err(dev, "no usb3phy-u2-por reset control found\n");
+> +		return PTR_ERR(usb3phy->u2por_rst);
+> +	}
+> +
+> +	usb3phy->u3por_rst = devm_reset_control_get(dev, "usb3phy-u3-por");
+> +	if (IS_ERR(usb3phy->u3por_rst)) {
+> +		dev_err(dev, "no usb3phy-u3-por reset control found\n");
+> +		return PTR_ERR(usb3phy->u3por_rst);
+> +	}
+> +
+> +	usb3phy->pipe_rst = devm_reset_control_get(dev, "usb3phy-pipe-mac");
+> +	if (IS_ERR(usb3phy->pipe_rst)) {
+> +		dev_err(dev, "no usb3phy_pipe_mac reset control found\n");
+> +		return PTR_ERR(usb3phy->pipe_rst);
+> +	}
+> +
+> +	usb3phy->utmi_rst = devm_reset_control_get(dev, "usb3phy-utmi-mac");
+> +	if (IS_ERR(usb3phy->utmi_rst)) {
+> +		dev_err(dev, "no usb3phy-utmi-mac reset control found\n");
+> +		return PTR_ERR(usb3phy->utmi_rst);
+> +	}
+> +
+> +	usb3phy->pipe_apb_rst = devm_reset_control_get(dev, "usb3phy-pipe-apb");
+> +	if (IS_ERR(usb3phy->pipe_apb_rst)) {
+> +		dev_err(dev, "no usb3phy-pipe-apb reset control found\n");
+> +		return PTR_ERR(usb3phy->pipe_apb_rst);
+> +	}
+> +
+> +	usb3phy->utmi_apb_rst = devm_reset_control_get(dev, "usb3phy-utmi-apb");
+> +	if (IS_ERR(usb3phy->utmi_apb_rst)) {
+> +		dev_err(dev, "no usb3phy-utmi-apb reset control found\n");
+> +		return PTR_ERR(usb3phy->utmi_apb_rst);
+> +	}
+> +
+> +	usb3phy->ls_irq = of_irq_get_byname(dev->of_node, "linestate");
+> +	if (usb3phy->ls_irq < 0) {
+> +		dev_err(dev, "no linestate irq provided\n");
+> +		return usb3phy->ls_irq;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(dev, usb3phy->ls_irq, NULL, rockchip_usb3phy_linestate_irq,
+> +					IRQF_ONESHOT, "rockchip_usb3phy_ls", usb3phy);
+> +	if (ret) {
+> +		dev_err(dev, "failed to request linestate irq handle\n");
+> +		return ret;
+> +	}
+> +
+> +	usb3phy->bvalid_irq = of_irq_get_byname(dev->of_node, "bvalid");
+> +	if (usb3phy->bvalid_irq < 0) {
+> +		dev_err(dev, "no bvalid irq provided\n");
+> +		return usb3phy->bvalid_irq;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(dev, usb3phy->bvalid_irq, NULL, rockchip_usb3phy_bvalid_irq,
+> +					IRQF_ONESHOT, "rockchip_usb3phy_bvalid", usb3phy);
+> +	if (ret) {
+> +		dev_err(dev, "failed to request bvalid irq handle\n");
+> +		return ret;
+> +	}
+> +
+> +	usb3phy->id_irq = of_irq_get_byname(dev->of_node, "id");
+> +	if (usb3phy->id_irq < 0) {
+> +		dev_err(dev, "no id irq provided\n");
+> +		return usb3phy->id_irq;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(dev, usb3phy->id_irq, NULL, rockchip_usb3phy_id_irq,
+> +					IRQF_ONESHOT, "rockchip_usb3phy-id", usb3phy);
+> +	if (ret) {
+> +		dev_err(dev, "failed to request id irq handle\n");
+> +		return ret;
+> +	}
+> +
+> +		usb3phy->rxdet_irq = of_irq_get_byname(dev->of_node, "rxdet");
+> +	if (usb3phy->rxdet_irq < 0) {
+> +		dev_err(dev, "no rxdet irq provided\n");
+> +		return usb3phy->rxdet_irq;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(dev, usb3phy->rxdet_irq, NULL, rockchip_usb3phy_rxdet_irq,
+> +					IRQF_ONESHOT, "rockchip_usb3phy-rxdet", usb3phy);
+> +	if (ret) {
+> +		dev_err(dev, "failed to request rxdet irq handle\n");
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rockchip_usb3phy_exit(struct phy *phy)
+> +{
+> +	struct rockchip_usb3phy_port *port = phy_get_drvdata(phy);
+> +	struct rockchip_usb3phy *usb3phy = dev_get_drvdata(phy->dev.parent);
+> +
+> +	dev_dbg(usb3phy->dev, "usb3phy_shutdown\n");
+> +	rockchip_usb3phy_reset(usb3phy, true, port->type);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct phy_ops rockchip_usb3phy_ops = {
+> +	.init		= rockchip_usb3phy_init,
+> +	.exit		= rockchip_usb3phy_exit,
+> +	.owner		= THIS_MODULE,
+> +};
+> +
+> +static const struct regmap_config rockchip_usb3phy_utmi_port_regmap_config = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = 4,
+> +	.max_register = 0x400,
+> +	.cache_type = REGCACHE_NONE,
+> +	.fast_io = true,
+> +	.name = "utmi-port",
+> +};
+> +
+> +static const struct regmap_config rockchip_usb3phy_pipe_port_regmap_config = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = 4,
+> +	.max_register = 0x400,
+> +	.cache_type = REGCACHE_NONE,
+> +	.fast_io = true,
+> +	.name = "pipe-port",
+> +};
+> +
+> +static const struct regmap_config rockchip_usb3phy_regmap_config = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = 4,
+> +	.max_register = 0x400,
+> +	.write_flag_mask = REG_WRITE_MASK,
+> +	.cache_type = REGCACHE_NONE,
+> +	.fast_io = true,
+> +};
+> +
+> +static int rockchip_usb3phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev->of_node;
+> +	struct device_node *child_np;
+> +	struct phy_provider *provider;
+> +	struct rockchip_usb3phy *usb3phy;
+> +	const struct regmap_config regmap_config = rockchip_usb3phy_regmap_config;
+> +	void __iomem *base;
+> +	int i, ret;
+> +
+> +	dev_dbg(dev, "Probe usb3phy main block\n");
+> +	usb3phy = devm_kzalloc(dev, sizeof(*usb3phy), GFP_KERNEL);
+> +	if (!usb3phy)
+> +		return -ENOMEM;
+> +
+> +	ret = rockchip_usb3phy_parse_dt(usb3phy, dev);
+> +	if (ret) {
+> +		dev_err(dev, "parse dt failed %i\n", ret);
+
+return dev_err_probe()
+
+And do not print errors twice.
+
+> +		return ret;
+
+
+
+
+> +
+> +	/* take apb interface out of reset */
+> +	reset_control_deassert(usb3phy->utmi_apb_rst);
+> +	reset_control_deassert(usb3phy->pipe_apb_rst);
+> +
+> +	/* enable usb3phy rx detection to fix disconnection issues */
+> +	regmap_write(usb3phy->regmap, USB3PHY_WAKEUP_CON_REG,
+> +		     (USB3_RXDET_EN | (USB3_RXDET_EN << REG_WRITE_SHIFT)));
+> +
+> +	dev_dbg(dev, "Completed usb3phy core probe\n");
+
+Drop.
+
+> +
+> +	/* probe the actual ports */
+> +	i = 0;
+> +	for_each_available_child_of_node(np, child_np) {
+> +		const struct regmap_config *regmap_port_config;
+> +		struct rockchip_usb3phy_port *port = &usb3phy->ports[i];
+> +		struct phy *phy;
+> +
+> +		if (of_node_name_eq(child_np, "utmi-port")) {
+
+Why are you comparing node names, if you decided to put there compatibles?
+
+Decide on one method, but wait for full DT review.
+
+> +			port->type = USB3PHY_TYPE_USB2;
+> +			regmap_port_config = &rockchip_usb3phy_utmi_port_regmap_config;
+> +		} else if (of_node_name_eq(child_np, "pipe-port")) {
+> +			port->type	= USB3PHY_TYPE_USB3;
+> +			regmap_port_config = &rockchip_usb3phy_pipe_port_regmap_config;
+> +		} else {
+> +			dev_err(dev, "unknown child node port type %s\n", child_np->name);
+> +			goto err_port;
+> +		}
+> +
+> +		base = devm_of_iomap(dev, child_np, 0, NULL);
+> +		if (IS_ERR(base)) {
+> +			dev_err(dev, "failed port ioremap\n");
+> +			ret = PTR_ERR(base);
+> +			goto err_port;
+> +		}
+> +
+> +		port->regmap = devm_regmap_init_mmio(dev, base, regmap_port_config);
+> +		if (IS_ERR(port->regmap)) {
+> +			dev_err(dev, "regmap init failed\n");
+> +			ret = PTR_ERR(port->regmap);
+> +			goto err_port;
+> +		}
+> +
+> +		phy = devm_phy_create(dev, child_np, &rockchip_usb3phy_ops);
+> +		if (IS_ERR(phy)) {
+> +			dev_err_probe(dev, PTR_ERR(phy), "failed to create phy\n");
+> +			ret = PTR_ERR(phy);
+
+Just read how dev_err_probe() works. The syntax is:
+ret = dev_err_probe.
+
+> +			goto err_port;
+> +		}
+> +
+> +		port->phy = phy;
+> +		phy_set_drvdata(port->phy, port);
+> +
+> +		/* to prevent out of boundary */
+> +		if (++i >= USB3PHY_TYPE_MAX) {
+> +			of_node_put(child_np);
+> +			break;
+> +		}
+> +
+> +		dev_info(dev, "Completed usb3phy %s port init\n", child_np->name);
+Drop, not really helping.
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
