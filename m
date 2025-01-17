@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E49DC02185
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 04:11:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F37C02183
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 05:22:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0LXoNQGgJ80szUrCpbcK4AFIxaJnbjsYPImLvNDfHL8=; b=4sfBKTCewiYkeFFb5oNHNyqg7B
-	1fXNfVatqRd1nCxzN7AiV/evjlKIhiqUHdtA9W14p81Twi/JFIifqwOOoHO/MTb0hdQcR4Qw4+SWN
-	VjdlElLUowtR2paSLUIHwYgQjcjApGheGB+VDRb112HNEn1obm037TBEiTPhZzlIQ4fDJZLODMxnt
-	lO8zEYW3A1Vja61sx5d/FDl18gCTB+mCpi/spj5IIvcsjOWj/L8ubLTPNp4XKxM7An3Pr0H7R2MCL
-	zuNF5IdldAn47kiyZvRrTfOFXLGWrD/oOtIEIQb5AST12MOb6eDAFaxFfZ4ptMkjSD7xDUgx1rfaZ
-	Iwhp8iUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=kCpdRbY06YaR+nG2cQny/WeMCNtyfL9zRU9tZXu0wsE=; b=yG6sqB60CUZUREHvvCcr5eOLzq
+	EimQfvdpJ8ismQA01172k5EmbKMAMXwRNmTnSw49w1HXF/y6HixxyTpUt0iPQ3R3yCTX2mjfk7VHX
+	x5bTZWCwLi6avfSfJXd1TZegfZem7QyNobrSYrxj1ayiDLH9t1e1HJJ2wim8WH1aLNszKokTY5YZC
+	0H6ZoXgGPdVaw+3R8L7gMKnIlTPDDcze52TbIxonBrm20xg2C+A80Rdfajep1gl7v3eEaW7ulrLau
+	g7qZbHD47lwz4u3UgDN8szUFXUWl6M9zSlXhq3WV1SOa/Q8gw9S3gTrNceIQkgmpYQq8V8W0OgODA
+	4et5VuHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYdht-0000000GxxK-1eNR;
-	Fri, 17 Jan 2025 04:11:41 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tYeoC-0000000H2Qr-0tZx;
+	Fri, 17 Jan 2025 05:22:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYdgb-0000000Gxqh-2qXA;
-	Fri, 17 Jan 2025 04:10:23 +0000
+	id 1tYemu-0000000H2KT-1JED;
+	Fri, 17 Jan 2025 05:20:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 83FBDA426D0;
+	Fri, 17 Jan 2025 05:19:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E89D7C4CEE0;
+	Fri, 17 Jan 2025 05:20:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737091255;
+	bh=LHwHod7bdCR2grreCvjBjvMriFbkIIFPNOvzQK9auR8=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=g/ZyMZbRlK8ueBAnkYfQGeK7gVUOilexmC6Bpax6g+M1SflZYnFsFMO/Nftk/Qzkx
+	 VsfYCY9EZRbtij9ZaQs0LDweb1HB0oGCud/7Yb/qjfzsF4uS1wCzGNF9COL7bcjJRS
+	 3LMopu5/dFA1qVA6lrYo0Abl+p3AomwLopGsDemH0DnSpr6quCUIcitCGQnWYqIStm
+	 ikCVSGjuE+3eniYcwzc5/zGY/Cduyrlu/folE/pH5drR8wZCN917evQRWSVFmMHnob
+	 YkHh1PdhgXwp4pO2AMDpJVZIS7aGKBrcstdnQ6JcTNb6Nu9QzzQp/iUUs3rqFtZgWU
+	 JUqkbq1wTs+Kw==
+Date: Thu, 16 Jan 2025 23:20:53 -0600
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1737087017;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=XcDuxFeWzuXfTWafBcbG5fJTSAMGNQ34729FlOyIdY4=;
-	b=Ppd6h7TkOtUNwrw7j5Em7vty1G3E6oqLVmQ4l+GdT8GwrJuhj4pD+e+aM83VsRwswtSmXm
-	NqQTGul5fScMwP3HcGS/iRTFdfIddu83EYZY9LDquJAx0XzxE6GiA+gTsuEH5p6g0WuZM1
-	OpwY2xt1iH7RREbkitEwmYruQkomWXtKGpHf0YwurbtQVVUXBlEs55pcnYsCWbRGa191Mg
-	kTq4eX7Xv6/4PfgropdAjgmIsoUpFyBH8SZtE9SnkRo8TZok/N7fEFGszFu67+V5eKQ9XN
-	hX3E5OlHdqcHR36YKo6OTYKS2iPjTT+o1TCrfWc5fDLpAp/25ZHfVYirtxlhXQ==
-Date: Fri, 17 Jan 2025 05:10:15 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, zyw@rock-chips.com,
- kever.yang@rock-chips.com, frank.wang@rock-chips.com,
- william.wu@rock-chips.com, wulf@rock-chips.com,
- linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>, Conor
- Dooley <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>, Jonas
- Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob
- Herring <robh@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v1 4/6] arm64: dts: rockchip: add rk3328 usb3 phy node
-In-Reply-To: <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
-References: <20250115012628.1035928-1-pgwipeout@gmail.com>
- <20250115012628.1035928-5-pgwipeout@gmail.com>
- <7c7ce820-8a9b-46df-b143-f77835b7e5a0@kernel.org>
- <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
-Message-ID: <1bc91b4214a1099801aaed6b3ef81ef3@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, Simon Xue <xxm@rock-chips.com>, 
+ linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ linux-rockchip@lists.infradead.org, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, heiko@sntech.de, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-pci@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>
+To: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <20250117032742.2990779-1-kever.yang@rock-chips.com>
+References: <20250117032742.2990779-1-kever.yang@rock-chips.com>
+Message-Id: <173709125320.3991625.9909609495384701748.robh@kernel.org>
+Subject: Re: [PATCH v5 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576
+ support
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_201022_038692_758838B6 
-X-CRM114-Status: GOOD (  22.99  )
+X-CRM114-CacheID: sfid-20250116_212056_477856_23200558 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,63 +74,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
 
-On 2025-01-16 17:53, Diederik de Haas wrote:
-> On Thu Jan 16, 2025 at 2:01 PM CET, Krzysztof Kozlowski wrote:
->> On 15/01/2025 02:26, Peter Geis wrote:
->> > Add the node for the rk3328 usb3 phy. This node provides a combined usb2
->> > and usb3 phy which are permenantly tied to the dwc3 usb3 controller.
->> >
->> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
->> > ---
->> >
->> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 39 ++++++++++++++++++++++++
->> >  1 file changed, 39 insertions(+)
->> >
->> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> > index 7d992c3c01ce..181a900d41f9 100644
->> > --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> > +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> > @@ -903,6 +903,43 @@ u2phy_host: host-port {
->> >  		};
->> >  	};
->> >
->> > +	usb3phy: usb3-phy@ff460000 {
->> > +		compatible = "rockchip,rk3328-usb3phy";
->> > +		reg = <0x0 0xff460000 0x0 0x10000>;
->> > +		clocks = <&cru SCLK_REF_USB3OTG>, <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
->> 
->> Please wrap code according to coding style (checkpatch is not a coding
->> style description, but only a tool), so at 80.
+On Fri, 17 Jan 2025 11:27:41 +0800, Kever Yang wrote:
+> rk3576 is using dwc controller, with msi interrupt directly to gic instead
+> of to gic its, so
+> - no its support is required and the 'msi-map' is not need anymore,
+> - a new 'msi' interrupt is needed.
 > 
-> I'm confused: is it 80 or 100?
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
 > 
-> I always thought it was 80, but then I saw several patches/commits by
-> Dragan Simic which deliberately changed code to make use of 100.
-> Being fed up with my own confusion, I submitted a PR to
-> https://github.com/gregkh/kernel-coding-style/ which got accepted:
-> https://github.com/gregkh/kernel-coding-style/commit/5c21f99dc79883bd0efeba368193180275c9c77a
+> Changes in v5:
+> - Add constraints per device for interrupt-names due to the interrupt is
+> different from rk3588.
 > 
-> So now both the vim plugins code and README say 100.
-> But as noted in my commit message:
+> Changes in v4:
+> - Fix wrong indentation in dt_binding_check report by Rob
 > 
->   Note that the current upstream 'Linux kernel coding style' does NOT
->   mention the 100 char limit, but only mentions the preferred max 
-> length
->   of 80.
+> Changes in v3:
+> - Fix dtb check broken on rk3588
+> - Update commit message
 > 
-> Or is it 100 for code, but 80 for DeviceTree files and bindings?
+> Changes in v2:
+> - remove required 'msi-map'
+> - add interrupt name 'msi'
+> 
+>  .../bindings/pci/rockchip-dw-pcie-common.yaml | 53 +++++++++++++++----
+>  .../bindings/pci/rockchip-dw-pcie.yaml        |  4 +-
+>  2 files changed, 44 insertions(+), 13 deletions(-)
+> 
 
-I don't know about the DT files and bindings, but the 100-column limit
-for the kernel code has been in effect for years.  In this day and age,
-80 columns is really not much (for the record, I've been around when
-using 80x25 _physical_ CRT screens was the norm).
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: allOf:0:else:properties:interrupts: 'anyOf' conditional failed, one must be fixed:
+	'min-items' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: allOf:0:else:properties:interrupts: 'anyOf' conditional failed, one must be fixed:
+	'max-Items' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: allOf:0:if: 'anyOf' conditional failed, one must be fixed:
+	'compatible' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: allOf:0:then:properties:interrupts: 'anyOf' conditional failed, one must be fixed:
+	'min-items' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: allOf:0:then:properties:interrupts: 'anyOf' conditional failed, one must be fixed:
+	'max-Items' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: properties:interrupts: {'minItems': 5, 'maxItems': 9, 'items': [{'description': 'Combined system interrupt, which is used to signal the following interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme, hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi, edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app'}, {'description': 'Combined PM interrupt, which is used to signal the following interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2, linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2, linkst_out_l0s, pm_dstate_update'}, {'description': 'Combined message interrupt, which is used to signal the following interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi, pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active'}, {'description': 'Combined legacy interrupt, which is used to signal the following interrup
+ ts - inta, intb, intc, intd, tx_inta, tx_intb, tx_intc, tx_intd'}, {'description': 'Combined error interrupt, which is used to signal the following interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout, tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx, nf_err_rx, f_err_rx, radm_qoverflow'}, {'description': 'Combinded MSI line interrupt, which is to support MSI interrupts output to GIC controller via GIC SPI interrupt instead of GIC its interrupt.'}, {'description': 'eDMA write channel 0 interrupt'}, {'description': 'eDMA write channel 1 interrupt'}, {'description': 'eDMA read channel 0 interrupt'}, {'description': 'eDMA read channel 1 interrupt'}]} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dtb: pcie@fe280000: interrupt-names: ['sys', 'pmc', 'msg', 'legacy', 'err'] is too short
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dtb: pcie@fe280000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250117032742.2990779-1-kever.yang@rock-chips.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
 _______________________________________________
 Linux-rockchip mailing list
