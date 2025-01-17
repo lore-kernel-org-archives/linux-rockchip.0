@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF77EC02183
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 03:29:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E49DC02185
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 04:11:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hCHnFOrzv3jH9dK0iAljnkJSPvmo3iE9e8JLQ2JLgS8=; b=HfxufDn4Mxd0QR
-	Es27rlgo3o3ivZuCf6XQHUcaHIO546dl6M1A4cq9s11U2uiQKBLnuFk7Kn7BhV5umGigQsrEMBVRj
-	gmOkMbOg9KWWAZajVwls5HP5SKcDvvjUvXC/lkxY3DMmN6FUytZ8vMGsKhfHDvu+h/4qrLrQO/s64
-	Gyw9BDKJCZpYgOxcgBbdc/pnh8IONyv6tr/Rj8918/Bvns1WdowE61rnUQQVphMWOLne3/ihNP2hw
-	d6sBzmzKy0E6UPa/Bgeu6rMIrEv/Qw0BsEBHvzKozUmUF+Deb/bbQXI0SOXSsvdsTB3i2sgtZ5GId
-	b0qwbswjXW1sM0p0xVWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0LXoNQGgJ80szUrCpbcK4AFIxaJnbjsYPImLvNDfHL8=; b=4sfBKTCewiYkeFFb5oNHNyqg7B
+	1fXNfVatqRd1nCxzN7AiV/evjlKIhiqUHdtA9W14p81Twi/JFIifqwOOoHO/MTb0hdQcR4Qw4+SWN
+	VjdlElLUowtR2paSLUIHwYgQjcjApGheGB+VDRb112HNEn1obm037TBEiTPhZzlIQ4fDJZLODMxnt
+	lO8zEYW3A1Vja61sx5d/FDl18gCTB+mCpi/spj5IIvcsjOWj/L8ubLTPNp4XKxM7An3Pr0H7R2MCL
+	zuNF5IdldAn47kiyZvRrTfOFXLGWrD/oOtIEIQb5AST12MOb6eDAFaxFfZ4ptMkjSD7xDUgx1rfaZ
+	Iwhp8iUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYd2u-0000000Gv0G-2E5u;
-	Fri, 17 Jan 2025 03:29:20 +0000
-Received: from mail-m3290.qiye.163.com ([220.197.32.90])
+	id 1tYdht-0000000GxxK-1eNR;
+	Fri, 17 Jan 2025 04:11:41 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYd1b-0000000Gukl-0l3i;
-	Fri, 17 Jan 2025 03:28:01 +0000
-Received: from localhost.localdomain (unknown [103.29.142.67])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 8f223a01;
-	Fri, 17 Jan 2025 11:27:48 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Rob Herring <robh@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v5 2/2] arm64: dts: rockchip: Add rk3576 pcie nodes
-Date: Fri, 17 Jan 2025 11:27:42 +0800
-Message-Id: <20250117032742.2990779-2-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250117032742.2990779-1-kever.yang@rock-chips.com>
-References: <20250117032742.2990779-1-kever.yang@rock-chips.com>
+	id 1tYdgb-0000000Gxqh-2qXA;
+	Fri, 17 Jan 2025 04:10:23 +0000
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHRkeVkgYQkhKSUJLS0xIGVYVFAkWGhdVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09IVUpLS1
-	VKQktLWQY+
-X-HM-Tid: 0a94724d7c4d03afkunm8f223a01
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PxQ6SCo4SDIRTz8jPy9MCSMJ
-	SzEwCTBVSlVKTEhMS0NPT0xLSkhCVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQU9CSkg3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=HlDcy47P4XNOi+Vb5t3qZCIfM/lOXS+3+B4jMT0CQX2Yz1qVB160MQmavgVShWC54yq497STggBljOeE0URYofmQwOhNmWMIuGOe4I3e/r7YAfa9aFDuIwWWTFRYTNhm0HaOmQRmTrt2NHJS71X1i8Uk0x45X05TQGvUuYsBUfk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=K1IuG6+I4mT7BCuPIGO6UgL25sxMzGv7dQJPIqjJ9Jo=;
-	h=date:mime-version:subject:message-id:from;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1737087017;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XcDuxFeWzuXfTWafBcbG5fJTSAMGNQ34729FlOyIdY4=;
+	b=Ppd6h7TkOtUNwrw7j5Em7vty1G3E6oqLVmQ4l+GdT8GwrJuhj4pD+e+aM83VsRwswtSmXm
+	NqQTGul5fScMwP3HcGS/iRTFdfIddu83EYZY9LDquJAx0XzxE6GiA+gTsuEH5p6g0WuZM1
+	OpwY2xt1iH7RREbkitEwmYruQkomWXtKGpHf0YwurbtQVVUXBlEs55pcnYsCWbRGa191Mg
+	kTq4eX7Xv6/4PfgropdAjgmIsoUpFyBH8SZtE9SnkRo8TZok/N7fEFGszFu67+V5eKQ9XN
+	hX3E5OlHdqcHR36YKo6OTYKS2iPjTT+o1TCrfWc5fDLpAp/25ZHfVYirtxlhXQ==
+Date: Fri, 17 Jan 2025 05:10:15 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, zyw@rock-chips.com,
+ kever.yang@rock-chips.com, frank.wang@rock-chips.com,
+ william.wu@rock-chips.com, wulf@rock-chips.com,
+ linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>, Conor
+ Dooley <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>, Jonas
+ Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob
+ Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v1 4/6] arm64: dts: rockchip: add rk3328 usb3 phy node
+In-Reply-To: <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
+References: <20250115012628.1035928-1-pgwipeout@gmail.com>
+ <20250115012628.1035928-5-pgwipeout@gmail.com>
+ <7c7ce820-8a9b-46df-b143-f77835b7e5a0@kernel.org>
+ <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
+Message-ID: <1bc91b4214a1099801aaed6b3ef81ef3@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_192759_612777_58151BC6 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250116_201022_038692_758838B6 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,151 +75,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3576 has two pcie controllers, both are pcie2x1 work with
-naneng-combphy.
+Hello Diederik,
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
+On 2025-01-16 17:53, Diederik de Haas wrote:
+> On Thu Jan 16, 2025 at 2:01 PM CET, Krzysztof Kozlowski wrote:
+>> On 15/01/2025 02:26, Peter Geis wrote:
+>> > Add the node for the rk3328 usb3 phy. This node provides a combined usb2
+>> > and usb3 phy which are permenantly tied to the dwc3 usb3 controller.
+>> >
+>> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+>> > ---
+>> >
+>> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 39 ++++++++++++++++++++++++
+>> >  1 file changed, 39 insertions(+)
+>> >
+>> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> > index 7d992c3c01ce..181a900d41f9 100644
+>> > --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> > +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> > @@ -903,6 +903,43 @@ u2phy_host: host-port {
+>> >  		};
+>> >  	};
+>> >
+>> > +	usb3phy: usb3-phy@ff460000 {
+>> > +		compatible = "rockchip,rk3328-usb3phy";
+>> > +		reg = <0x0 0xff460000 0x0 0x10000>;
+>> > +		clocks = <&cru SCLK_REF_USB3OTG>, <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
+>> 
+>> Please wrap code according to coding style (checkpatch is not a coding
+>> style description, but only a tool), so at 80.
+> 
+> I'm confused: is it 80 or 100?
+> 
+> I always thought it was 80, but then I saw several patches/commits by
+> Dragan Simic which deliberately changed code to make use of 100.
+> Being fed up with my own confusion, I submitted a PR to
+> https://github.com/gregkh/kernel-coding-style/ which got accepted:
+> https://github.com/gregkh/kernel-coding-style/commit/5c21f99dc79883bd0efeba368193180275c9c77a
+> 
+> So now both the vim plugins code and README say 100.
+> But as noted in my commit message:
+> 
+>   Note that the current upstream 'Linux kernel coding style' does NOT
+>   mention the 100 char limit, but only mentions the preferred max 
+> length
+>   of 80.
+> 
+> Or is it 100 for code, but 80 for DeviceTree files and bindings?
 
-Changes in v5: None
-Changes in v4: None
-Changes in v3:
-- Update the subject
-
-Changes in v2:
-- Update clock and reset names and sequence to pass DTB check
-
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 109 +++++++++++++++++++++++
- 1 file changed, 109 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index a147879da501..0486525fe596 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1016,6 +1016,115 @@ qos_npu_m1ro: qos@27f22100 {
- 			reg = <0x0 0x27f22100 0x0 0x20>;
- 		};
- 
-+		pcie0: pcie@2a200000 {
-+			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			bus-range = <0x0 0xf>;
-+			clocks = <&cru ACLK_PCIE0_MST>, <&cru ACLK_PCIE0_SLV>,
-+				 <&cru ACLK_PCIE0_DBI>, <&cru PCLK_PCIE0>,
-+				 <&cru CLK_PCIE0_AUX>;
-+
-+			clock-names = "aclk_mst", "aclk_slv",
-+				      "aclk_dbi", "pclk",
-+				      "aux";
-+			device_type = "pci";
-+			interrupts = <GIC_SPI 281 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 282 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 279 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 280 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 278 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 283 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "sys", "pmc", "msg", "legacy", "err", "msi";
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie0_intc 0>,
-+					<0 0 0 2 &pcie0_intc 1>,
-+					<0 0 0 3 &pcie0_intc 2>,
-+					<0 0 0 4 &pcie0_intc 3>;
-+			linux,pci-domain = <0>;
-+			num-ib-windows = <8>;
-+			num-viewport = <8>;
-+			num-ob-windows = <2>;
-+			max-link-speed = <2>;
-+			num-lanes = <1>;
-+			phys = <&combphy0_ps PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&power RK3576_PD_PHP>;
-+			ranges = <0x01000000 0x0 0x20100000 0x0 0x20100000 0x0 0x00100000
-+				  0x02000000 0x0 0x20200000 0x0 0x20200000 0x0 0x00e00000
-+				  0x03000000 0x9 0x00000000 0x9 0x00000000 0x0 0x80000000>;
-+			reg = <0x0 0x22000000 0x0 0x00400000>,
-+			      <0x0 0x2a200000 0x0 0x00010000>,
-+			      <0x0 0x20000000 0x0 0x00100000>;
-+			reg-names = "dbi", "apb", "config";
-+			resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-+			reset-names = "pwr", "pipe";
-+			status = "disabled";
-+
-+			pcie0_intc: legacy-interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SPI 280 IRQ_TYPE_EDGE_RISING>;
-+			};
-+		};
-+
-+		pcie1: pcie@2a210000 {
-+			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			bus-range = <0x20 0x2f>;
-+			clocks = <&cru ACLK_PCIE1_MST>, <&cru ACLK_PCIE1_SLV>,
-+				 <&cru ACLK_PCIE1_DBI>, <&cru PCLK_PCIE1>,
-+				 <&cru CLK_PCIE1_AUX>;
-+			clock-names = "aclk_mst", "aclk_slv",
-+				      "aclk_dbi", "pclk",
-+				      "aux";
-+			device_type = "pci";
-+			interrupts = <GIC_SPI 267 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 268 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 264 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "sys", "pmc", "msg", "legacy", "err", "msi";
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie1_intc 0>,
-+					<0 0 0 2 &pcie1_intc 1>,
-+					<0 0 0 3 &pcie1_intc 2>,
-+					<0 0 0 4 &pcie1_intc 3>;
-+			linux,pci-domain = <0>;
-+			num-ib-windows = <8>;
-+			num-viewport = <8>;
-+			num-ob-windows = <2>;
-+			max-link-speed = <2>;
-+			num-lanes = <1>;
-+			phys = <&combphy1_psu PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&power RK3576_PD_SUBPHP>;
-+			ranges = <0x01000000 0x0 0x21100000 0x0 0x21100000 0x0 0x00100000
-+				  0x02000000 0x0 0x21200000 0x0 0x21200000 0x0 0x00e00000
-+				  0x03000000 0x9 0x80000000 0x9 0x80000000 0x0 0x80000000>;
-+			reg = <0x0 0x22400000 0x0 0x00400000>,
-+			      <0x0 0x2a210000 0x0 0x00010000>,
-+			      <0x0 0x21000000 0x0 0x00100000>;
-+			reg-names = "dbi", "apb", "config";
-+			resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
-+			reset-names = "pwr", "pipe";
-+			status = "disabled";
-+
-+			pcie1_intc: legacy-interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SPI 266 IRQ_TYPE_EDGE_RISING>;
-+			};
-+		};
-+
- 		gmac0: ethernet@2a220000 {
- 			compatible = "rockchip,rk3576-gmac", "snps,dwmac-4.20a";
- 			reg = <0x0 0x2a220000 0x0 0x10000>;
--- 
-2.25.1
-
+I don't know about the DT files and bindings, but the 100-column limit
+for the kernel code has been in effect for years.  In this day and age,
+80 columns is really not much (for the record, I've been around when
+using 80x25 _physical_ CRT screens was the norm).
 
 _______________________________________________
 Linux-rockchip mailing list
