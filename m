@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B49CC02183
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 07:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57060C02183
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 08:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2DhXsHC7Nb/fuZlN8kj0BBE2tO7ux5klHwT41yW1Cgc=; b=LrnF3cp7CGp7E8
-	3YDShORv1riHjqV2GEJxpnE5ilbLt2JQ2yI6hHBma29ZKbaDuGwS2mTJRycojKYfNxfA0o+OUjS4D
-	H+SgukNcsvVH+XnnQd8Hr2/YRlF62BG8V8cbaQ/U5u1uiIa2nVV79CC5i/ZOx7qxLAPaorRQVNYYo
-	hUnWNn/7kB5NyQgTtQ7I8ozeH9TC7UTA+xlRlqazwbkVkbdbL+4je41e4yDPaVNTYiNH6OLeMR+p/
-	ZA21SflYi/pudRMeb+jz+3hpCqVGSJkV716BCHbhu8kh40tf5kw63oivk4cyjZ8qBhUJExPmffM56
-	8VfXKS6S91SacWBVwfKA==;
+	List-Owner; bh=xf+8kkKzylXFIPJkJb+j0yKIxaoGoYBeEjrWaLoWmEw=; b=ENokWNZNRMDeKl
+	H2g00jvSEK3pDNZGmCfgEBJY9yaL3aNlMCqkNArPW4G8LWj05oW7hQR1M2szVuU6N9BxjcYakxBMT
+	Rck1YZcZDYWleneZpq0lLxOiBSOxW3iJGrJeRZcq6wv1rbqfEU6S6JlgFUcSQRmy/BNP3OMpNufpe
+	oPPrfO3FBWYGJSgDp/X44um0xoFWHze3hz4umiLxszdLDMzTGX+KCu9LMvI6wJh97BbEoZUgM1Zl+
+	FFfaUX/9i+iT6AR5UUE92B4B5iRbCfAUn/1E75wEP2Gi81kcrGb+wqJHnK4q2YO56n1bpgy6KQW0P
+	47PBl4OEwdr/vS6mDcsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYguy-0000000HDjh-1Rhi;
-	Fri, 17 Jan 2025 07:37:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYgtg-0000000HDdm-1Qcs;
-	Fri, 17 Jan 2025 07:36:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EFA5D5C5E12;
-	Fri, 17 Jan 2025 07:35:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75C6BC4CEDD;
-	Fri, 17 Jan 2025 07:36:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737099363;
-	bh=9rLx3+q2I7YhaRy+3wWC+fJ4u9j5KzJ/7HObezKZmEI=;
+	id 1tYhJe-0000000HHLe-1u8C;
+	Fri, 17 Jan 2025 08:02:54 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tYhID-0000000HGwv-2Dgf;
+	Fri, 17 Jan 2025 08:01:26 +0000
+Received: from 8bytes.org (p54921e31.dip0.t-ipconnect.de [84.146.30.49])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id DFE572E002E;
+	Fri, 17 Jan 2025 09:01:23 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1737100884;
+	bh=YniXUGeOea5s0/pHgde64c+kqGE6B07oghaN1d950FE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nvZWLzNVprCTnh5J+bcC85LIvSzBxCJDK0QtqenJSMSUw1lwJk5o8myPfMLb+xVmt
-	 qiTZ6rzKZ3tdrLat4HhHM6dMwO+uFpWQGF2MJsVjs34KuuEWZtzggchLrqZbMs3Wcp
-	 stG8PNylJglFFiOeMRqwC65kaSw1jLxm847ni7jQUWWQm9B2+Aap0L3JqGUYyLglws
-	 BhzqYn06JfXRkK7wUNx2vdLGMGWDSrmiYQlpPSgqDZeL8dQEeTnzqGsJlBkVZncSzT
-	 ZI0nmOX5JW4QVEv95+0l3ekYRfNZPSxUE0PT+qS2YM7ZgmPZx1VEWdnU3lzdNtZF9j
-	 pu4NI29O4yoJw==
-Date: Fri, 17 Jan 2025 08:36:00 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
-	Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, linux-kernel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576 support
-Message-ID: <20250117-gray-falcon-of-ampleness-03be68@krzk-bin>
-References: <20250117032742.2990779-1-kever.yang@rock-chips.com>
+	b=W3r5Fu9OKGEPvfivVZEcb8f/DZi2mMF12MYvsqFYcM/juUAXw3Y2YS25JF2WFEE6F
+	 e5MetfHYzk1jJWs0CTSBtphPsGgg6WXLly0vEomNkBGA9Y8ll46bFwazPpuFT7g0+T
+	 /lV9NCAGnL93FGazDxHRiBisggDo/Fq6buYGhP/R6HaNDM9b+rcKHd2vgO3ZrQW1qi
+	 PoEzBJEwXIFOKeW7gGQexDOZxqh9AUD102OjODMa6YfkOS68HrgyEV3pQJq8j95186
+	 8fmf2s10D+hqI/BLfwQhQM7mYVvFWF1nX8DC2nfM9zKVPAZYn/orbWLRMQvSjWsYNS
+	 ktSDE0O44nizw==
+Date: Fri, 17 Jan 2025 09:01:22 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] iommu: Use str_enable_disable-like helpers
+Message-ID: <Z4oOUvs-IicjGs66@8bytes.org>
+References: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250117032742.2990779-1-kever.yang@rock-chips.com>
+In-Reply-To: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250116_233604_425096_1169899E 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20250117_000125_806054_0B40E25D 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 17, 2025 at 11:27:41AM +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, with msi interrupt directly to gic instead
-> of to gic its, so
-> - no its support is required and the 'msi-map' is not need anymore,
-> - a new 'msi' interrupt is needed.
+On Tue, Jan 14, 2025 at 08:26:42PM +0100, Krzysztof Kozlowski wrote:
+> Replace ternary (condition ? "enable" : "disable") syntax with helpers
+> from string_choices.h because:
+> 1. Simple function call with one argument is easier to read.  Ternary
+>    operator has three arguments and with wrapping might lead to quite
+>    long code.
+> 2. Is slightly shorter thus also easier to read.
+> 3. It brings uniformity in the text - same string.
+> 4. Allows deduping by the linker, which results in a smaller binary
+>    file.
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
-> 
-> Changes in v5:
-> - Add constraints per device for interrupt-names due to the interrupt is
-> different from rk3588.
+>  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 3 ++-
+>  drivers/iommu/arm/arm-smmu/arm-smmu.c       | 3 ++-
+>  drivers/iommu/mtk_iommu.c                   | 9 +++++----
+>  drivers/iommu/mtk_iommu_v1.c                | 3 ++-
+>  drivers/iommu/rockchip-iommu.c              | 3 ++-
+>  5 files changed, 13 insertions(+), 8 deletions(-)
 
-
-Test your patches before sending. This one has obvious syntax errors, so
-you really never run a test. That's wasting our time.
-
-Best regards,
-Krzysztof
-
+Applied, thanks.
 
 _______________________________________________
 Linux-rockchip mailing list
