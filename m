@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57060C02183
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 08:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C334C02183
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jan 2025 10:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xf+8kkKzylXFIPJkJb+j0yKIxaoGoYBeEjrWaLoWmEw=; b=ENokWNZNRMDeKl
-	H2g00jvSEK3pDNZGmCfgEBJY9yaL3aNlMCqkNArPW4G8LWj05oW7hQR1M2szVuU6N9BxjcYakxBMT
-	Rck1YZcZDYWleneZpq0lLxOiBSOxW3iJGrJeRZcq6wv1rbqfEU6S6JlgFUcSQRmy/BNP3OMpNufpe
-	oPPrfO3FBWYGJSgDp/X44um0xoFWHze3hz4umiLxszdLDMzTGX+KCu9LMvI6wJh97BbEoZUgM1Zl+
-	FFfaUX/9i+iT6AR5UUE92B4B5iRbCfAUn/1E75wEP2Gi81kcrGb+wqJHnK4q2YO56n1bpgy6KQW0P
-	47PBl4OEwdr/vS6mDcsw==;
+	List-Owner; bh=MuyXmqZc7LDeW3vtAP/Tz90YZASEKFjlCVK8Ro4m6EI=; b=rtPYm6LThIZDyT
+	YDkgwCG4vpFv7vwnbnDz3uOVUF/VZEaK1pMsmFJpun3rBAOi7D9fvL055RwOf0yCFKNpDCnOA1dFO
+	LyvMPlumqBjAXnSD7cWakiXkchf0lxevHZlhf3yC/1oE01s4CiKl0Bf7HZVrf4OgNGCUjKElrKAr1
+	TsxnEz+NAhk3mm7xH9ZX2f16M0biPQBi8aKEbT0drOIuV02rmMfrntISm4i4d9PRA1SqkR9diYEIQ
+	wL3a1eGxBqViOd8/7FzaK9qeuqIIocPW7Hqg6cb3m+HLau7bJ/sZ6AqMUR7lfRXg2/GIiGsioBJI6
+	e8HgL/iJdVMcmJEznMxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYhJe-0000000HHLe-1u8C;
-	Fri, 17 Jan 2025 08:02:54 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYhID-0000000HGwv-2Dgf;
-	Fri, 17 Jan 2025 08:01:26 +0000
-Received: from 8bytes.org (p54921e31.dip0.t-ipconnect.de [84.146.30.49])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id DFE572E002E;
-	Fri, 17 Jan 2025 09:01:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1737100884;
-	bh=YniXUGeOea5s0/pHgde64c+kqGE6B07oghaN1d950FE=;
+	id 1tYk1W-000000005F0-171l;
+	Fri, 17 Jan 2025 10:56:22 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tYk0E-0000000054u-16Oe;
+	Fri, 17 Jan 2025 10:55:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id BACEBA42BD3;
+	Fri, 17 Jan 2025 10:53:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C02B4C4CEDD;
+	Fri, 17 Jan 2025 10:54:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737111300;
+	bh=mznmnvbqPaNzOEOTQeMYHdZ/QQ4aIM9FNbZ5f0Sk/jk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=W3r5Fu9OKGEPvfivVZEcb8f/DZi2mMF12MYvsqFYcM/juUAXw3Y2YS25JF2WFEE6F
-	 e5MetfHYzk1jJWs0CTSBtphPsGgg6WXLly0vEomNkBGA9Y8ll46bFwazPpuFT7g0+T
-	 /lV9NCAGnL93FGazDxHRiBisggDo/Fq6buYGhP/R6HaNDM9b+rcKHd2vgO3ZrQW1qi
-	 PoEzBJEwXIFOKeW7gGQexDOZxqh9AUD102OjODMa6YfkOS68HrgyEV3pQJq8j95186
-	 8fmf2s10D+hqI/BLfwQhQM7mYVvFWF1nX8DC2nfM9zKVPAZYn/orbWLRMQvSjWsYNS
-	 ktSDE0O44nizw==
-Date: Fri, 17 Jan 2025 09:01:22 +0100
-From: Joerg Roedel <joro@8bytes.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] iommu: Use str_enable_disable-like helpers
-Message-ID: <Z4oOUvs-IicjGs66@8bytes.org>
-References: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
+	b=q5fqfWtxk8NkHmnMlthkMG2gItGoTJd1zSdDoLCz6IjQlg9MWwugXDPLcBEp6TNm4
+	 RoyYb8f+1q5cpUrQv2TD4NA3fSe4yd3Le3I5l6DxcNNUcQcTNcAo4QRiosznafyMoL
+	 kqsOZjfigRXJZOuuDAmh9m0FirH6Ip7s7GIOhQKDNFLeY9vCmqDsZgvMKzNNARsn9v
+	 RW1W5+mweyjo9dCgIeM16TlByze+uh6PjkR4B9Sj7XTlWEeeZi2EGMGQBNEmMsR/HN
+	 GixNdIA+yH0BxwdVmB8I6bTEPIhaCCQST8TXMFptU6x1gszoiGpknoovd568WFUpoX
+	 kgWYQKiSkoDpw==
+Date: Fri, 17 Jan 2025 11:54:55 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@edgeble.ai>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Quentin Schulz <quentin.schulz@cherry.de>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: add overlay tests for Rock
+ 5B PCIe overlays
+Message-ID: <Z4o2_0yX-hq-DfCs@ryzen>
+References: <20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de>
+ <20250116-pre-ict-jaguar-v2-2-157d319004fc@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250114192642.912331-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250116-pre-ict-jaguar-v2-2-157d319004fc@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250117_000125_806054_0B40E25D 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20250117_025502_442356_1C034AA8 
+X-CRM114-Status: GOOD (  17.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,27 +78,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 14, 2025 at 08:26:42PM +0100, Krzysztof Kozlowski wrote:
-> Replace ternary (condition ? "enable" : "disable") syntax with helpers
-> from string_choices.h because:
-> 1. Simple function call with one argument is easier to read.  Ternary
->    operator has three arguments and with wrapping might lead to quite
->    long code.
-> 2. Is slightly shorter thus also easier to read.
-> 3. It brings uniformity in the text - same string.
-> 4. Allows deduping by the linker, which results in a smaller binary
->    file.
+On Thu, Jan 16, 2025 at 03:47:11PM +0100, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@cherry.de>
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 3 ++-
->  drivers/iommu/arm/arm-smmu/arm-smmu.c       | 3 ++-
->  drivers/iommu/mtk_iommu.c                   | 9 +++++----
->  drivers/iommu/mtk_iommu_v1.c                | 3 ++-
->  drivers/iommu/rockchip-iommu.c              | 3 ++-
->  5 files changed, 13 insertions(+), 8 deletions(-)
+> According to commit 40658534756f ("arm64: dts: rockchip: Add rock5b
+> overlays for PCIe endpoint mode"), Rock 5B can operate in PCIe endpoint
+> mode. For that to work, the rk3588-rock-5b-pcie-ep.dtbo overlay needs to
+> be applied on Rock 5B base Device Tree. If that Rock 5B is connected to
+> another Rock 5B, the latter needs to apply the
+> rk3588-rock-5b-pcie-srns.dtbo overlay.
+> 
+> In order to make sure the overlays are still valid in the future, let's
+> add a validation test by applying the overlays on top of the main base
+> at build time.
+> 
+> Fixes: 40658534756f ("arm64: dts: rockchip: Add rock5b overlays for PCIe endpoint mode")
 
-Applied, thanks.
+Not sure if I agree with the Fixes-tag.
+I don't think there is anything broken with that commit, but I definitely
+think that it is a good idea make sure that they don't break in the future.
+
+
+> @@ -145,8 +145,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5-itx.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+> @@ -165,5 +163,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
+>  
+>  # Overlays
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
+
+You moved these lines further down, but you changed the suffix from
+.dtbo to .dtb, why? It seems a little confusing, is that really needed?
+
+
+Kind regards,
+Niklas
+
+>  
+>  rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb rk3588-edgeble-neu6a-wifi.dtbo
+> +rk3588-rock-5b-pcie-ep-dtbs := rk3588-rock-5b.dtb rk3588-rock-5b-pcie-ep.dtbo
+> +rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb rk3588-rock-5b-pcie-srns.dtbo
+> 
+> -- 
+> 2.48.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
