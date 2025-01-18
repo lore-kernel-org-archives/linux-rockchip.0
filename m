@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A40CC02185
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jan 2025 09:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25553C02185
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jan 2025 10:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4YH/knuBipfPaQ5RFRbOc6QJ0+Fclr+FD4zxOfrzd6E=; b=g1hQcqGwIYJL23
-	D6V6csBazVamcBiVynoxIeGx+MYeR8VrDQPqsgh1cBB5KINxpQS/9mOJR8aplXP2dzu2rUqfPv0ZM
-	TzQXkJPE3TgJxdwBKyz4PWFAw7iVtYbKSVBeST0QMM3cvIHZZBeSMCbEd1SzEZCiXhpJQ1xNRobv8
-	FbHPE1bXNcPkcSZt4dIKig4U/pGK2D2oz7yMaX437DjfTUt54E/PDtT81cVpq8vixB/620sJ5WGB4
-	ukWTKVgZlKtfeuW06W4dviYQVr5vsqVqUhtHSefp8WW+VFIsdFCaoqeUhlLZ/Kl2BhRX3dwa5XOeB
-	jMAKZxA/bm3sPwEqih3w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mtcl4D454DmdAv/P7V3u4v7U8pUs/B8k5N9BJRi23hQ=; b=jHEiIIkKprqXGkGHF9d6qpl1X9
+	ZAmzyC1x4dJXIftChWQzURkoO5p6eS1uNFGyflysqu+Ss9eVwY/ixSQKfIZs/KnK0vMVvOXGnsQBl
+	jx+LfrYffJm/9gTtQgiaX01IvvvxZQXBdHvDLc0D8rl4dgAKvexxuPLzC6Gb61o/nMCyuQhfY7ydd
+	4SdP604MKdUwtZSs9FFOjhuQO8/6+OyfWg+Qgq2ZD8FinxdTpUQ/peLInIi5jReACP/qndrj6BwDI
+	pQv5Yk2M+Q6DqlXb6tU+lj4aHDjUC1Won+SAFqb0fah8p8I+WDZZtpL3VTVD7pVrzt9HygFhfYRno
+	0nwX28Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ5Ws-000000028Uz-1lHY;
-	Sat, 18 Jan 2025 09:54:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tZ5ns-00000002AO6-2GXj;
+	Sat, 18 Jan 2025 10:11:44 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZ5Va-000000028MA-46au;
-	Sat, 18 Jan 2025 09:52:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BB1775C101A;
-	Sat, 18 Jan 2025 09:52:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C98DC4CED1;
-	Sat, 18 Jan 2025 09:52:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737193970;
-	bh=WwfzJo2ceCJp3Mza0/ecOXbkhDBV3kYr+H0eJGyi5Ac=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OJdPRqjjJNyLsXw6hRROLgVmUCMK0HpbDB1Jz/OR83qcE2AyIOvN3XLG7CKESgTIz
-	 CY9GcVir+sn4jw2RBWipZl5k6uRohalUQNzid9j6G0jqiLowZ9nWkC/bEdOav/d6r/
-	 EHuorhqJ9zeigD0a8kkeyVKWhVf5SN4HomE/XM7etDz+stIqdaM3PCrQifKRRWlG4r
-	 Dht9U/X3FpXVVybp3FbW4kyQ56apRCpq4B+DUFlJyXS7cxwYrF50Q+Ma4NfG7lleHA
-	 CwISCVWC7sdzpga9li9KPK42LsgJAXcO5pfsA4Wu3lpMYptVTIuzy0pQfInA6VWl6v
-	 Qj2x0FeAUqh2w==
-Message-ID: <735d89df-9954-44bd-aca6-4bb165737626@kernel.org>
-Date: Sat, 18 Jan 2025 10:52:42 +0100
+	id 1tZ5mb-00000002AGb-1aHD;
+	Sat, 18 Jan 2025 10:10:26 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v1 4/6] arm64: dts: rockchip: add rk3328 usb3 phy node
-To: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1737195023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6ZZx2BEkDx4mW0pQwg2HX+RFPltv1/ykO1ohHF0qpcs=;
+	b=n47w4SEL5hoTEv9QUimAbbvOHXB2hSIap+8T0tpBPE1pkKAzl7r4Cw/6a1/1fxRKFQT6it
+	EpDgzKTAEzg7+tNCetXsdRE5vDHd8Y5O7Zh5A9dyFyNNo6HXSqkKJKOQ98PnXKtIQvbX8W
+	tCWpzKDOSw6Lzq61QqxO1dlVKVlJrivMlU/kEu2Xwl7eUWHuoK35q/D+3PHV5kH97GevNl
+	JBBS/FGOd38HRmaHOPGqxjOSuFKHK1j8alFGuDLn/xil1sONSz3eIvL/r3u7b7jcax2CM7
+	TOdDl39oyi09pGnSb5s7FB4fePyG+WWdRLdyV9NRLSsLujiqJ9RfaxY3NPz6Mw==
+Date: Sat, 18 Jan 2025 11:10:22 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Diederik de Haas <didi.debian@cknow.org>, Peter Geis
  <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>, zyw@rock-chips.com,
  kever.yang@rock-chips.com, frank.wang@rock-chips.com,
  william.wu@rock-chips.com, wulf@rock-chips.com,
- linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>,
- Conor Dooley <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>, Conor
+ Dooley <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>, Jonas
+ Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob
+ Herring <robh@kernel.org>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v1 4/6] arm64: dts: rockchip: add rk3328 usb3 phy node
+In-Reply-To: <735d89df-9954-44bd-aca6-4bb165737626@kernel.org>
 References: <20250115012628.1035928-1-pgwipeout@gmail.com>
  <20250115012628.1035928-5-pgwipeout@gmail.com>
  <7c7ce820-8a9b-46df-b143-f77835b7e5a0@kernel.org>
@@ -65,55 +62,14 @@ References: <20250115012628.1035928-1-pgwipeout@gmail.com>
  <60ced7df829e7c10e264627cc0947762@manjaro.org>
  <20b474be-301e-4dc3-9eb7-77e9ef075191@kernel.org>
  <3d9ce9fd9b6309553b5669e111bc4200@manjaro.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <3d9ce9fd9b6309553b5669e111bc4200@manjaro.org>
+ <735d89df-9954-44bd-aca6-4bb165737626@kernel.org>
+Message-ID: <7ab853de15e1c183ef184d2700a13d98@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250118_015251_119199_25A2C03F 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20250118_021025_736021_1A8CBEAF 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,65 +81,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/01/2025 10:43, Dragan Simic wrote:
->>>
->>> Please see the commit bdc48fa11e46 (checkpatch/coding-style: deprecate
->>> 80-column warning, 2020-05-29), which clearly shows that the 80-column
->>> rule is still _preferred_, but no longer _mandatory_.
->>
->> I brought that commit, but nice that you also found it.
->>
->> Still: read the coding style, not checkpatch tool.
->>
->>>>> 80 columns is really not much (for the record, I've been around when
->>>>> using 80x25 _physical_ CRT screens was the norm).
->>>>
->>>> You mistake agreement on dropping strong restriction in 2020 in
->>>> checkpatch, which is "not for years" and even read that commit: "Yes,
->>>> staying withing 80 columns is certainly still _preferred_."
->>>>
->>>> Checkpatch is not coding style. Since when it would be? It's just a
->>>> tool.
->>>>
->>>> And there were more talks and the 80-preference got relaxed yet still
->>>> "not for years" (last talk was 2022?) and sill kernel coding style is
->>>> here specific.
->>>
->>> It's perhaps again about the semantics, this time about the meaning
->>> of "for years".  I don't think there's some strict definition of that
->>> term, so perhaps different people see it differently.
->>>
->>> To get back to the above-mentioned commit bdc48fa11e46, the 80-column
->>> limit has obviously been lifted, putting the new 100-column limit as
->>
->> "Lifted" on *CHECKPATCH*, not on coding style. Do you see the
-
-Repeating myself about because you are not addressing the actual difference.
-
->> difference? One is a helper tool which people were using blindly and
->> wrapping lines without thinking, claiming that checkpatch told them to
->> do so. Other is the actual coding style.
->>
->> You claim that coding style was changed. This never happened.
+On 2025-01-18 10:52, Krzysztof Kozlowski wrote:
+> On 18/01/2025 10:43, Dragan Simic wrote:
+>>>> 
+>>>> Please see the commit bdc48fa11e46 (checkpatch/coding-style: 
+>>>> deprecate
+>>>> 80-column warning, 2020-05-29), which clearly shows that the 
+>>>> 80-column
+>>>> rule is still _preferred_, but no longer _mandatory_.
+>>> 
+>>> I brought that commit, but nice that you also found it.
+>>> 
+>>> Still: read the coding style, not checkpatch tool.
+>>> 
+>>>>>> 80 columns is really not much (for the record, I've been around 
+>>>>>> when
+>>>>>> using 80x25 _physical_ CRT screens was the norm).
+>>>>> 
+>>>>> You mistake agreement on dropping strong restriction in 2020 in
+>>>>> checkpatch, which is "not for years" and even read that commit: 
+>>>>> "Yes,
+>>>>> staying withing 80 columns is certainly still _preferred_."
+>>>>> 
+>>>>> Checkpatch is not coding style. Since when it would be? It's just a
+>>>>> tool.
+>>>>> 
+>>>>> And there were more talks and the 80-preference got relaxed yet 
+>>>>> still
+>>>>> "not for years" (last talk was 2022?) and sill kernel coding style 
+>>>>> is
+>>>>> here specific.
+>>>> 
+>>>> It's perhaps again about the semantics, this time about the meaning
+>>>> of "for years".  I don't think there's some strict definition of 
+>>>> that
+>>>> term, so perhaps different people see it differently.
+>>>> 
+>>>> To get back to the above-mentioned commit bdc48fa11e46, the 
+>>>> 80-column
+>>>> limit has obviously been lifted, putting the new 100-column limit as
+>>> 
+>>> "Lifted" on *CHECKPATCH*, not on coding style. Do you see the
 > 
-> It was obviously changed in the commit bdc48fa11e46, by making the
-> 80-column width preferred, instead of if being mandatory.  The way
-> I read the changes to the coding style introduced in that commit,
-> it's now possible to go over 80 columns, up to 100 columns, _if_
-> that actually improves the readability of the source code.
+> Repeating myself about because you are not addressing the actual 
+> difference.
 
-The commit is for checkpatch. Point to the change in coding style. You
-are bringing argument for checkpatch, so only a tool, as argument for
-coding style. Again, coding style did not change since years.
+Please see below.
 
+>>> difference? One is a helper tool which people were using blindly and
+>>> wrapping lines without thinking, claiming that checkpatch told them 
+>>> to
+>>> do so. Other is the actual coding style.
+>>> 
+>>> You claim that coding style was changed. This never happened.
+>> 
+>> It was obviously changed in the commit bdc48fa11e46, by making the
+>> 80-column width preferred, instead of if being mandatory.  The way
+>> I read the changes to the coding style introduced in that commit,
+>> it's now possible to go over 80 columns, up to 100 columns, _if_
+>> that actually improves the readability of the source code.
+> 
+> The commit is for checkpatch. Point to the change in coding style. You
+> are bringing argument for checkpatch, so only a tool, as argument for
+> coding style. Again, coding style did not change since years.
 
-Best regards,
-Krzysztof
+Commit bdc48fa11e46 obviously addresses 
+Documentation/process/coding-style.rst
+as well, as visible in the quotation from the commit below:
+
+   -The limit on the length of lines is 80 columns and this is a strongly
+   -preferred limit.
+   -
+   -Statements longer than 80 columns will be broken into sensible 
+chunks, unless
+   -exceeding 80 columns significantly increases readability and does not 
+hide
+   -information. Descendants are always substantially shorter than the 
+parent and
+   -are placed substantially to the right. The same applies to function 
+headers
+   -with a long argument list. However, never break user-visible strings 
+such as
+   -printk messages, because that breaks the ability to grep for them.
+   +The preferred limit on the length of a single line is 80 columns.
+   +
+   +Statements longer than 80 columns should be broken into sensible 
+chunks,
+   +unless exceeding 80 columns significantly increases readability and 
+does
+   +not hide information.
+   +
+   +Descendants are always substantially shorter than the parent and are
+   +are placed substantially to the right.  A very commonly used style
+   +is to align descendants to a function open parenthesis.
+   +
+   +These same rules are applied to function headers with a long argument 
+list.
+   +
+   +However, never break user-visible strings such as printk messages 
+because
+   +that breaks the ability to grep for them.
+
+I think it's obvious that the 80-column width is no longer _strongly_
+preferred, but has been demoted to some kind of a bit weaker preference.
+
+Also, please note that the coding style explicitly says that the 80-
+column rule is to be followed "unless exceeding 80 columns significantly
+increases readability and does not hide information".
+
+This just reinforces my opinion that the readability is what matters
+most when deciding on the column width, instead of following the rules
+blindly, both when deciding whether to wrap some lines at column 50,
+for example, or to wrap them at column 98.
 
 _______________________________________________
 Linux-rockchip mailing list
