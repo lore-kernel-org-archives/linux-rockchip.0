@@ -4,83 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E410C02185
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jan 2025 03:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA03C02187
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jan 2025 08:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XIjNkIWTR8Gp+SXcZDfLODMlIzcnSUBZEyzIVPRqJSM=; b=iXqQpYvkKOoJ/l
-	csd6zF5xs2mXKMSs7TSUqycfWRovOk493RzUg5enjLS5K+ujJD78tgbbk9E/fMGXL9yRkn7YyQr4g
-	AumTkyCPgpcSgON+KfiTCWqam08wf+ZB9jZ0uTvRW1tU9l4XkXzwpZo2x7kacea7mn+fhAtfGychU
-	wS2ZGxG0agQO9LRx9SO4SylITCpZ6fgN/0CXHFmQSblYV3cOPV6opKgYDR14kpZRFxbptycLLQcHF
-	0oY9xYa58V5gZXvXrceO9ED11szLPGYXHwLkgoBsVifw1YTAeUkHFXkK+r7d/eR/8YEOxR/YHEejP
-	FLkVpNB9XIFPc7Ul7nYQ==;
+	List-Owner; bh=gAE21ETXG2WOLInu+1+ys3kqLLj9BoaCzbwgwm3absM=; b=CsWrFdzYzxnV0j
+	rVpH5EleqbyPMu5JZ9zFJcFnXZDXVXr7OKbm7WVRCOBHlSkwl6gB/G9IR5kbAmd6RTRZsGExG2yHj
+	l1zM3tc3raosdJuwf+pTFzIHaPFwCxeG6+jxg1ThOxfiLqoVC9UdzfUJYNkUY44aMwSN4ptB/saVH
+	L53mExKoY0xkApDBDdD8WOuLi3Pui4ttOj13b9nqWD2Rmqtez383WecThHMkvYQg9jxPlcD8EMad1
+	8+8/gxWS1x1aqQsrrMZcv0b+cHCOKoSMvQssgi5stfW0fubjG2ehDZGcITJ3fOwaxPqeMWlbjET/3
+	0OvXInByhhQkCX0NosIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYzaP-00000001mm3-3tlH;
-	Sat, 18 Jan 2025 03:33:25 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1tZ4Py-00000002316-1CYh;
+	Sat, 18 Jan 2025 08:42:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tYzZ8-00000001mgi-1Jg5
-	for linux-rockchip@lists.infradead.org;
-	Sat, 18 Jan 2025 03:32:08 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-53f22fd6832so2908156e87.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jan 2025 19:32:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737171124; x=1737775924; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=hzhYcQ8TIQfms4jIUonylBO9hpxU9lIyBPmgiVcYCfA=;
-        b=c1OfykRN5o6zFkO1C4tfAOpgMIpRGIzmwjOvzqmMo3qyxehXGqglHT6WQy3YQLM9oz
-         vKJnbUsRRpFjbnxus7afo7dziQD3zTpGLrE4ot1wy3oeyfAu7TNZ2ATO/J7SOFWbG2Sd
-         l8hwJpOD4nYt8LzSgptecIFbu30t0AZB36qljiMHlBv92gpOfLukYBDz3vi891xXwPQz
-         rTPLrpClX7mhKjNxJEAn8hvVeZG3ofyUPntYodp1PLdTf/vGM3SLTGGMSs79HhKtpdeh
-         VXrOx0X62NQOySJOy5wIcVuMd77XzB63ZP+ZJlWH4GuEgnTmmBe54M6U23dLn90i88mj
-         6jtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737171124; x=1737775924;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hzhYcQ8TIQfms4jIUonylBO9hpxU9lIyBPmgiVcYCfA=;
-        b=XPMvZkfgoLPzmttZ31vFjkU5Il+zUB8NlFf4ZJT7071QHC6zmsFogp+XJnUvh80gDJ
-         cMrJJwGJDuopW2nw+U3eTK8aCdoL0i/S7UPcXriNlhrks/jnHpr3IJakhLStAyogcjNm
-         qp3nSEhgcC/yw0bENzOnPI4LY8lHaosSuUlHErh4GFNKFSJupXQJaorlFDiAz0BClUje
-         7YzSqRqK4b/4WkhCvAFTi2sg7UQjg/HOfECHRSPRVDIB8CV7BjULMVu7334K9anCQpFY
-         +EhTfrjNR/0FYZ+3LIQwS6hM0+D89hb3ytgB7vSCuMqLDvlumiTdbO835we7T5USjGWt
-         v2Fg==
-X-Forwarded-Encrypted: i=1; AJvYcCXDu0M6DXv8ZqTWgZDAiurqG3VRMXASX6bhdgqSqrmsmI6n1mtp1A52GofI26JtLZyOCDMXqkPb/1s16LejMA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzAt4ozMQthDj1a3TxSTwGf0lr8ojI3UZvtMlF6HaOxtyi0YQEF
-	+tw1UVL911Y/yqCRhtwPc18v61yEcerTG0etKAphAkFJIMhem9hL+yfy0Ca8y3w=
-X-Gm-Gg: ASbGncvD1irq0PN2XCFmBZN82KLV3R6RTSGwhn6do1P3P44xhIoIjqFJtpc/FHT6W9J
-	hrQFGGF9OwDv7U+nw7ZDZ2tDBBo+cmrt4O1n/h5732y0kN+4o6FSyfUjBFnmvJeyyF1eGMS9i2I
-	tk6Mxlj8eXTAN5pVFeRPzUipmdkWHBVjlAYYAEhyN3PwDoxneru/hYkfPU7Pm8L3VUC33vEgqrv
-	SRz9LIVV5LsqMQllBOQ4ZXx97oAnVQg9dKFR44bkdjidfKd3gKNvoxG5t1pGVcrCcAluY8dzVjl
-	RmmOhxE/BtmmRXnDFRnkWIV6SUEWNLfIv9XMsrxrBcl5+88NZQ==
-X-Google-Smtp-Source: AGHT+IEHCXhnR9Ifz788WfaTw8BC7iP0CpDRy+2jMi6d69znvkXj4Q2lQp7TuxJzYYy15v3Qpf7Fpg==
-X-Received: by 2002:a05:6512:e8d:b0:542:9883:263 with SMTP id 2adb3069b0e04-5439c246370mr1751170e87.14.1737171123682;
-        Fri, 17 Jan 2025 19:32:03 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5439af60970sm574860e87.116.2025.01.17.19.32.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Jan 2025 19:32:02 -0800 (PST)
-Date: Sat, 18 Jan 2025 05:31:59 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v1 1/2] drm/bridge: synopsys: Add audio support for
- dw-hdmi-qp
-Message-ID: <xtthbgdnyaevtcvjmkqsipje6ksxmbilkacbw5f4m4fvu62ggx@wm34iotb2a6d>
-References: <20250117164815.67253-1-detlev.casanova@collabora.com>
- <20250117164815.67253-2-detlev.casanova@collabora.com>
+	id 1tZ4Of-000000022uC-1Nk4;
+	Sat, 18 Jan 2025 08:41:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 69D875C4793;
+	Sat, 18 Jan 2025 08:40:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDE86C4CED1;
+	Sat, 18 Jan 2025 08:41:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737189695;
+	bh=H0mClrCLeMmyYyxViR1o0E5Nwmq+xaJQIf8RYD9zVYs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=O2gs5DxJ0qT8PGC390uBky2KJtryrn3RrdVYQB7Fk3Wyim7NdNVLeB1Lt4hdJOp16
+	 ZlnUM+icqsFMuoZaesuPYVdIPVqWPsvLQW1qf54xTiEvc9jhqJQKQKd/RYxsLGOpVv
+	 fumFcYB9ZTFgjDj324s2q/og4zMVMoNtc7fMbbQvq84nJfLjBhi/ray39GYF5vadhW
+	 TZdBmd8od2S6XjthXUP0PlXBioLcx4m+i6QRX1k/MmArBn45HN6fSVa+lHmBLsJfs9
+	 K3VuVnCbVqEE7aIzKJ7AsHd1bQkDKi0mSVWvT4rHGh7/GsxH6hInN9tKFVxD0kDjag
+	 9/zfY00Sh6OoA==
+Message-ID: <e1097f84-e40f-45ff-8b8d-125f7159ec1e@kernel.org>
+Date: Sat, 18 Jan 2025 09:41:27 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250117164815.67253-2-detlev.casanova@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v1 4/6] arm64: dts: rockchip: add rk3328 usb3 phy node
+To: Diederik de Haas <didi.debian@cknow.org>, Peter Geis
+ <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: zyw@rock-chips.com, kever.yang@rock-chips.com, frank.wang@rock-chips.com,
+ william.wu@rock-chips.com, wulf@rock-chips.com,
+ linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250115012628.1035928-1-pgwipeout@gmail.com>
+ <20250115012628.1035928-5-pgwipeout@gmail.com>
+ <7c7ce820-8a9b-46df-b143-f77835b7e5a0@kernel.org>
+ <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <D73NJYSP62XH.28CVZPNUE21H3@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250117_193206_417360_02A38523 
-X-CRM114-Status: GOOD (  30.34  )
+X-CRM114-CacheID: sfid-20250118_004137_464768_1F7D91A9 
+X-CRM114-Status: GOOD (  20.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,203 +120,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 17, 2025 at 11:46:57AM -0500, Detlev Casanova wrote:
-> From: Sugar Zhang <sugar.zhang@rock-chips.com>
+On 16/01/2025 17:53, Diederik de Haas wrote:
+> On Thu Jan 16, 2025 at 2:01 PM CET, Krzysztof Kozlowski wrote:
+>> On 15/01/2025 02:26, Peter Geis wrote:
+>>> Add the node for the rk3328 usb3 phy. This node provides a combined usb2
+>>> and usb3 phy which are permenantly tied to the dwc3 usb3 controller.
+>>>
+>>> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+>>> ---
+>>>
+>>>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 39 ++++++++++++++++++++++++
+>>>  1 file changed, 39 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>>> index 7d992c3c01ce..181a900d41f9 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>>> @@ -903,6 +903,43 @@ u2phy_host: host-port {
+>>>  		};
+>>>  	};
+>>>  
+>>> +	usb3phy: usb3-phy@ff460000 {
+>>> +		compatible = "rockchip,rk3328-usb3phy";
+>>> +		reg = <0x0 0xff460000 0x0 0x10000>;
+>>> +		clocks = <&cru SCLK_REF_USB3OTG>, <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
+>>
+>> Please wrap code according to coding style (checkpatch is not a coding
+>> style description, but only a tool), so at 80.
 > 
-> Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
+> I'm confused: is it 80 or 100?
 > 
-> The register values computation functions (for n) are based on the
-> downstream driver, as well as the register writing functions.
+> I always thought it was 80, but then I saw several patches/commits by
+
+Coding style is clear: it is 80. It also has caveat about code
+readability and several maintainers have their own preference.
+
+> Dragan Simic which deliberately changed code to make use of 100.
+> Being fed up with my own confusion, I submitted a PR to 
+> https://github.com/gregkh/kernel-coding-style/ which got accepted:
+> https://github.com/gregkh/kernel-coding-style/commit/5c21f99dc79883bd0efeba368193180275c9c77a
+
+That's not kernel. That's Greg...
+
 > 
-> The driver uses the generic HDMI Codec framework in order to implement
-> the HDMI audio support.
+> So now both the vim plugins code and README say 100.
+> But as noted in my commit message:
 > 
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 472 +++++++++++++++++++
->  1 file changed, 472 insertions(+)
+>   Note that the current upstream 'Linux kernel coding style' does NOT
+>   mention the 100 char limit, but only mentions the preferred max length
+>   of 80.
 > 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> index b281cabfe992..55ceeb180bc6 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -36,6 +36,66 @@
->  
->  #define SCRAMB_POLL_DELAY_MS	3000
->  
-> +/*
-> + * Unless otherwise noted, entries in this table are 100% optimization.
-> + * Values can be obtained from hdmi_compute_n() but that function is
-> + * slow so we pre-compute values we expect to see.
-> + *
-> + * All 32k and 48k values are expected to be the same (due to the way
-> + * the math works) for any rate that's an exact kHz.
-> + */
-> +static const struct dw_hdmi_audio_tmds_n {
-> +	unsigned long tmds;
-> +	unsigned int n_32k;
-> +	unsigned int n_44k1;
-> +	unsigned int n_48k;
-> +} common_tmds_n_table[] = {
-> +	{ .tmds = 25175000, .n_32k = 4096, .n_44k1 = 12854, .n_48k = 6144, },
-> +	{ .tmds = 25200000, .n_32k = 4096, .n_44k1 = 5656, .n_48k = 6144, },
-> +	{ .tmds = 27000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 28320000, .n_32k = 4096, .n_44k1 = 5586, .n_48k = 6144, },
-> +	{ .tmds = 30240000, .n_32k = 4096, .n_44k1 = 5642, .n_48k = 6144, },
-> +	{ .tmds = 31500000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> +	{ .tmds = 32000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> +	{ .tmds = 33750000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 36000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 40000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> +	{ .tmds = 49500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 50000000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> +	{ .tmds = 54000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 65000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 68250000, .n_32k = 4096, .n_44k1 = 5376, .n_48k = 6144, },
-> +	{ .tmds = 71000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 72000000, .n_32k = 4096, .n_44k1 = 5635, .n_48k = 6144, },
-> +	{ .tmds = 73250000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 74250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 75000000, .n_32k = 4096, .n_44k1 = 5880, .n_48k = 6144, },
-> +	{ .tmds = 78750000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> +	{ .tmds = 78800000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> +	{ .tmds = 79500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
-> +	{ .tmds = 83500000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 85500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 88750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 97750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 101000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 106500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
-> +	{ .tmds = 108000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 115500000, .n_32k = 4096, .n_44k1 = 5712, .n_48k = 6144, },
-> +	{ .tmds = 119000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
-> +	{ .tmds = 135000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 146250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 148500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 154000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
-> +	{ .tmds = 162000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +
-> +	/* For 297 MHz+ HDMI spec have some other rule for setting N */
-> +	{ .tmds = 297000000, .n_32k = 3073, .n_44k1 = 4704, .n_48k = 5120, },
-> +	{ .tmds = 594000000, .n_32k = 3073, .n_44k1 = 9408, .n_48k = 10240, },
-> +
-> +	/* End of table */
-> +	{ .tmds = 0,         .n_32k = 0,    .n_44k1 = 0,    .n_48k = 0, },
-> +};
-> +
->  struct dw_hdmi_qp_i2c {
->  	struct i2c_adapter	adap;
->  
-> @@ -59,6 +119,8 @@ struct dw_hdmi_qp {
->  		void *data;
->  	} phy;
->  
-> +	struct mutex audio_mutex;
+> Or is it 100 for code, but 80 for DeviceTree files and bindings?
 
-There should be a comment, what is being protected by this mutex.
+From where did you get 100? Checkpatch, right? Kernel coding style is
+clear, there is no discussion, no mentioning 100:
 
-> +
->  	struct regmap *regm;
->  };
->  
+"The preferred limit on the length of a single line is 80 columns. "
 
-[...]
+So to be clear: all DTS, all DT bindings, all code maintained by me and
+some maintainers follows above (and further - there is caveat)
+instruction from coding style. Some maintainers follow other rules and
+that's fine.
 
-> +static int dw_hdmi_qp_init_audio_infoframe(struct dw_hdmi_qp *hdmi)
-> +{
-> +	struct hdmi_audio_infoframe frame;
-> +	u8 infoframe_buf[HDMI_INFOFRAME_SIZE(AUDIO)];
-> +	int ret = 0;
-> +
-> +	hdmi_audio_infoframe_init(&frame);
-> +
-> +	frame.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
-> +	frame.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
-> +	frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
-> +	frame.channels = 2;
-> +
-> +	ret = hdmi_audio_infoframe_pack(&frame, infoframe_buf,
-> +					sizeof(infoframe_buf));
-> +	if (ret < 0) {
-> +		dev_err(hdmi->dev, "%s: Failed to pack audio infoframe: %d\n",
-> +			__func__, ret);
-> +		return ret;
-> +	}
-> +
-> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &infoframe_buf[3], 2);
-> +	dw_hdmi_qp_mod(hdmi,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN,
-> +		  PKTSCHED_PKT_EN);
-> +
-> +	return 0;
-> +}
-> +
-> +static void dw_hdmi_qp_set_audio_infoframe(struct dw_hdmi_qp *hdmi,
-> +				    struct hdmi_codec_params *hparms)
-> +{
-> +	u8 infoframe_buf[HDMI_INFOFRAME_SIZE(AUDIO)];
-> +	int ret = 0;
-> +
-> +	ret = hdmi_audio_infoframe_pack(&hparms->cea, infoframe_buf,
-> +					sizeof(infoframe_buf));
-
-Please use existing functions,
-drm_atomic_helper_connector_hdmi_update_audio_infoframe() and
-drm_atomic_helper_connector_hdmi_clear_audio_infoframe() to manage the
-infoframe. The drm_atomic_helper_connector_hdmi_update_infoframes()
-function will take care of updating the audio infoframe.
-
-> +	if (!ret) {
-> +		dev_err(hdmi->dev, "%s: Failed to pack audio infoframe: %d\n",
-> +			__func__, ret);
-> +		return;
-> +	}
-> +
-> +	/*
-> +	 * AUDI_CONTENTS0: { RSV, HB2, HB1, RSV }
-> +	 * AUDI_CONTENTS1: { PB3, PB2, PB1, PB0 }
-> +	 * AUDI_CONTENTS2: { PB7, PB6, PB5, PB4 }
-> +	 *
-> +	 * PB0: CheckSum
-> +	 * PB1: | CT3    | CT2  | CT1  | CT0  | F13  | CC2 | CC1 | CC0 |
-> +	 * PB2: | F27    | F26  | F25  | SF2  | SF1  | SF0 | SS1 | SS0 |
-> +	 * PB3: | F37    | F36  | F35  | F34  | F33  | F32 | F31 | F30 |
-> +	 * PB4: | CA7    | CA6  | CA5  | CA4  | CA3  | CA2 | CA1 | CA0 |
-> +	 * PB5: | DM_INH | LSV3 | LSV2 | LSV1 | LSV0 | F52 | F51 | F50 |
-> +	 * PB6~PB10: Reserved
-> +	 *
-> +	 * AUDI_CONTENTS0 default value defined by HDMI specification,
-> +	 * and shall only be changed for debug purposes.
-> +	 * So, we only configure payload byte from PB0~PB7(2 word total).
-> +	 */
-> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &infoframe_buf[3], 2);
-
-This should go to your dw_hdmi_qp_bridge_write_infoframe().
-
-> +
-> +	/* Enable ACR, AUDI, AMD */
-> +	dw_hdmi_qp_mod(hdmi,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> +		  PKTSCHED_PKT_EN);
-> +
-> +	/* Enable AUDS */
-> +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AUDS_TX_EN, PKTSCHED_AUDS_TX_EN, PKTSCHED_PKT_EN);
-> +	mutex_unlock(&hdmi->audio_mutex);
-> +}
-> +
-
--- 
-With best wishes
-Dmitry
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
