@@ -4,42 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211DAC02188
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jan 2025 17:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B1F3C02188
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jan 2025 20:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KC7ywAuOl6Whc2xofSFZs/Z8CVo3cjhqitj1vR5g1ik=; b=G2dbVfTnQF8mGq
-	ptRfb780NEctfz3fndxvk846X9+b6X/9dknuHcmcSC2wj6ZvDKJkEZyE0KC9u+brlApR6mGNSjQPf
-	wjKMbOs+TsVHxZP7pk4UsPdejYOM7nfzPOF5SHo441SfB3pnY/IY0onsebgPCiugCM7dtzsL91S4W
-	T4By1O3/u1tS2NhLJU6NKG6x3e+qRLdP49QKIlBKfdSX3tLpSUFll/CCMkx770C/8y08VIfJV84vS
-	0aTxrt3xPs6OGinRrHjpbZGDqzH87Scf/bngS5O4E3dsXjf8W078s8SzLjYGvFhThTRK2nunFxui+
-	xu27SZ/sMw9PMOLYpAtQ==;
+	List-Owner; bh=A5WwTxWKJtUGwDNL2YoeTdvbEEWbKsBnipf/z0ky3Hw=; b=hAJar1uXqYNObd
+	sYJGGePV4fV2EomsM1XPEaEZtQ/2WPkp6xdKkizZHUSPehOPf99GzzHIABXUp3fkbuXReZZYxNnSh
+	II75pWql3DzhqnkPJYNptpdixHCdEGW5Eidz04DzArhPL6fmHNWZ2L0oLqTk90qqoGcTme+YI8L0X
+	mMuzNm+PKJ4KUbHO6J+LKcLQYbFjsU8lIOWEha90ZXa2EtTyGoOW1zbtvmYM1txCU1NOO8EnFih4F
+	+FPN4xDIlUJYycyW2nEkkj2Vd4uC+TyLPFWYD+tADzO826VZMDxjfut6t2VwfFUPvxYlT5StqgOEf
+	cMAmilUQll0QcKwNz9/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZYnV-000000049x4-1vmN;
-	Sun, 19 Jan 2025 17:09:17 +0000
+	id 1tZbh9-00000004J2i-1vWo;
+	Sun, 19 Jan 2025 20:14:55 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZYnS-000000049qZ-3ypq;
-	Sun, 19 Jan 2025 17:09:16 +0000
+	id 1tZbh6-00000004J1H-1ugn;
+	Sun, 19 Jan 2025 20:14:53 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 89E37A44;
-	Sun, 19 Jan 2025 18:08:05 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 85456928;
+	Sun, 19 Jan 2025 21:13:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1737306485;
-	bh=aJRfXAoIvGiK3DbkqnVQeu1PiaXDKaiA9Gr69mpEeis=;
+	s=mail; t=1737317628;
+	bh=Ur5TiuDT0KV1E3ES7k+/3Zr4hEwwAAPuNmpmijHxcE0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OBw1pvsHcR2BweZX/KU1szcB/w7FtiRtRW7yb+DznyFivWl1EatIqP+ePhHYSjEzj
-	 woJcak3Nj+IU95kPpPRovUwkyjiuPwG5ekSoIX5uH93MQlfYfUlHPU6r5/ncEIxZV4
-	 QiCXHGtqYYzymRcOpqSQO1hNMGBl60pFLxpvCuJY=
-Date: Sun, 19 Jan 2025 19:08:59 +0200
+	b=SS+99s7tpuo+gPcxMER5jdDaof5TicjCpzG4c3b8L9QjuYGIwEIGNxOpvhm9TbJ1K
+	 WDQ8UU3Os41Ewzy+4kV7y7CeQXv55XGw/jZbTqWOQI9B6aQfo6jbIU+WwUmbNEjidS
+	 k9ILi43LKurT0oL3MNbHe4TD8sUVaA21oTrP0eCY=
+Date: Sun, 19 Jan 2025 22:14:43 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Daniel Stone <daniel@fooishbar.org>,
+To: Sui Jingfeng <sui.jingfeng@linux.dev>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
 	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
@@ -50,26 +52,26 @@ Cc: Daniel Stone <daniel@fooishbar.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
 	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
-	Andy Yan <andyshrk@163.com>
+	Andy Yan <andyshrk@163.com>, Daniel Stone <daniel@fooishbar.org>
 Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
  drm_mode_size_dumb()
-Message-ID: <20250119170859.GA2467@pendragon.ideasonboard.com>
-References: <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
- <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
- <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
- <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
- <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
- <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
- <CAPj87rOn=RQ615zyaEdFT2ADfPztU7+heVi0G34Rdg-=QO1cCw@mail.gmail.com>
- <20250116084340.GF6754@pendragon.ideasonboard.com>
- <20250116093854.GG6754@pendragon.ideasonboard.com>
- <e8125edc-928a-47b4-80a3-224c945f6d68@ideasonboard.com>
+Message-ID: <20250119201443.GB2467@pendragon.ideasonboard.com>
+References: <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+ <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+ <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+ <CAMuHMdXxYa+Na3XxpLTy=-eUL_zQ9kAiUKYu-E04u3KWApusSA@mail.gmail.com>
+ <xz5ncq67bgmdase2jg3cfvyaxpiwhol2eqpfzow6dqpauvslo5@2w3rw27lhnxo>
+ <b97fcd2f-516a-4172-aef3-631418564cfa@linux.dev>
+ <ef52dab0-058f-408f-a298-c4b2453a3d2f@ideasonboard.com>
+ <f4562dbf-b132-4cfd-8f7e-43cd69f2673f@linux.dev>
+ <cf34be39-ce92-4ea5-b548-03008c163d31@ideasonboard.com>
+ <8234927e-0d12-4655-813d-8ec94179b737@linux.dev>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <e8125edc-928a-47b4-80a3-224c945f6d68@ideasonboard.com>
+In-Reply-To: <8234927e-0d12-4655-813d-8ec94179b737@linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250119_090915_119771_AD6842D4 
-X-CRM114-Status: GOOD (  25.11  )
+X-CRM114-CacheID: sfid-20250119_121452_655237_91E71544 
+X-CRM114-Status: GOOD (  44.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +83,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 16, 2025 at 12:07:49PM +0200, Tomi Valkeinen wrote:
-> On 16/01/2025 11:38, Laurent Pinchart wrote:
-> > On Thu, Jan 16, 2025 at 10:43:40AM +0200, Laurent Pinchart wrote:
-> >> On Wed, Jan 15, 2025 at 02:34:26PM +0000, Daniel Stone wrote:
-> >>> On Wed, 15 Jan 2025 at 14:20, Tomi Valkeinen wrote:
-> >>>> No disagreement there, we need CREATE_DUMB2.
-> >>>>
-> >>>> My point is that we have the current UAPI, and we have userspace using
-> >>>> it, but we don't have clear rules what the ioctl does with specific
-> >>>> parameters, and we don't document how it has to be used.
-> >>>>
-> >>>> Perhaps the situation is bad, and all we can really say is that
-> >>>> CREATE_DUMB only works for use with simple RGB formats, and the behavior
-> >>>> for all other formats is platform specific. But I think even that would
-> >>>> be valuable in the UAPI docs.
-> >>>
-> >>> Yeah, CREATE_DUMB only works for use with simple RGB formats in a
-> >>> linear layout. Not monochrome or YUV or tiled or displayed rotated or
-> >>> whatever.
-> >>>
-> >>> If it happens to accidentally work for other uses, that's fine, but
-> >>> it's not generically reliable for anything other than simple linear
-> >>> RGB. It's intended to let you do splash screens, consoles, recovery
-> >>> password entries, and software-rendered compositors if you really
-> >>> want. Anything more than that isn't 'dumb'.
-> >>
-> >> We have lots of software out there that rely on CREATE_DUMB supporting
-> >> YUV linear formats, and lots of drivers (mostly on Arm I suppose) that
-> >> implement YUV support in CREATE_DUMB. I'm fine replacing it with
-> >> something better, but I think we need a standard ioctl that can create
-> >> linear YUV buffers. I've been told many times that DRM doesn't want to
-> >> standardize buffer allocation further than what CREATE_DUMB is made for.
-> >> Can we reconsider this rule then ?
-> > 
-> > Actually... Instead of adding a CREATE_DUMB2, it would be best on trying
-> > to leverage DMA heaps and deprecate allocating from the KMS device.
-> 
-> If we allocate from DMA heaps, I think we then need a DRM ioctl which 
-> will tell you how big buffer(s) you need, based on the size and format.
-
-We will at least a kernel API to expose constraints to userspace.
-Whether that should calculate the buffer size for a given format, or
-expose information to userspace to enable that calculation, I'm not
-sure. But regardless of which option we pick, I agree we likely need a
-new API to enable usage of DMA heaps as allocators.
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKYW4gMjAsIDIwMjUgYXQgMTI6MjY6MzBBTSArMDgwMCwgU3VpIEppbmdmZW5nIHdy
+b3RlOgo+IE9uIDIwMjUvMS8xOSAyMzoyMiwgVG9taSBWYWxrZWluZW4gd3JvdGU6Cj4gPiBPbiAx
+OS8wMS8yMDI1IDE2OjU5LCBTdWkgSmluZ2Zlbmcgd3JvdGU6Cj4gPgo+ID4+Pj4+IEJ1dCB1c2Vy
+c3BhY2UgbXVzdCBiZSBhYmxlIHRvIGNvbnRpbnVlIGFsbG9jYXRpbmcgWVVWIGJ1ZmZlcnMgdGhy
+b3VnaAo+ID4+Pj4+IENSRUFURV9EVU1CLgo+ID4+Pj4KPiA+Pj4+IEkgdGhpbmssIGFsbG9jYXRp
+bmcgWVVWIGJ1ZmZlcnMgdGhyb3VnaCBDUkVBVEVfRFVNQiBpbnRlcmZhY2UgaXMganVzdAo+ID4+
+Pj4gYW4gKmFidXNlKiBhbmQgKm1pc3VzZSogb2YgdGhpcyBBUEkgZm9yIG5vdy4KPiA+Pj4+Cj4g
+Pj4+PiBUYWtlIHRoZSBOVjEyIGZvcm1hdCBhcyBhbiBleGFtcGxlLCBOVjEyIGlzIFlVVjQyMCBw
+bGFuYXIgZm9ybWF0LCBoYXZlCj4gPj4+PiB0d28gcGxhbmFyOiB0aGUgWS1wbGFuYXIgYW5kIHRo
+ZSBVVi1wbGFuYXIuIFRoZSBZLXBsYW5hciBhcHBlYXIgZmlyc3QKPiA+Pj4+IGluIG1lbW9yeSBh
+cyBhbiBhcnJheSBvZiB1bnNpZ25lZCBjaGFyIHZhbHVlcy4gVGhlIFktcGxhbmFyIGlzIGZvbGxv
+d2VkCj4gPj4+PiBpbW1lZGlhdGVseSBieSB0aGUgVVYtcGxhbmFyLCB3aGljaCBpcyBhbHNvIGFu
+IGFycmF5IG9mIHVuc2lnbmVkIGNoYXIKPiA+Pj4+IHZhbHVlcyB0aGF0IGNvbnRhaW5zIHBhY2tl
+ZCBVIChDYikgYW5kIFYgKENyKSBzYW1wbGVzLgo+ID4+Pj4KPiA+Pj4+IEJ1dCB0aGUgJ2RybV9t
+b2RlX2NyZWF0ZV9kdW1iJyBzdHJ1Y3R1cmUgaXMgb25seSBpbnRlbmQgdG8gcHJvdmlkZQo+ID4+
+Pj4gZGVzY3JpcHRpb25zIGZvciAqb25lKiBwbGFuYXIuCj4gPj4+Pgo+ID4+Pj4gc3RydWN0IGRy
+bV9tb2RlX2NyZWF0ZV9kdW1iIHsKPiA+Pj4+IMKgwqDCoMKgIF9fdTMyIGhlaWdodDsKPiA+Pj4+
+IMKgwqDCoMKgIF9fdTMyIHdpZHRoOwo+ID4+Pj4gwqDCoMKgwqAgX191MzIgYnBwOwo+ID4+Pj4g
+wqDCoMKgwqAgX191MzIgZmxhZ3M7Cj4gPj4+PiDCoMKgwqDCoCBfX3UzMiBoYW5kbGU7Cj4gPj4+
+PiDCoMKgwqDCoCBfX3UzMiBwaXRjaDsKPiA+Pj4+IMKgwqDCoMKgIF9fdTY0IHNpemU7Cj4gPj4+
+PiB9Owo+ID4+Pj4KPiA+Pj4+IEFuIHdpZHRoIHggaGVpZ2h0IE5WMTIgaW1hZ2UgdGFrZXMgdXAg
+d2lkdGgqaGVpZ2h0KigxICsgMS80ICsgMS80KSAKPiA+Pj4+IGJ5dGVzLgo+ID4+Pj4KPiA+Pj4+
+IFNvIHdlIGNhbiBhbGxvY2F0ZSBhbiAqZXF1aXZhbGVudCogc2l6ZWQgYnVmZmVyIHRvIHN0b3Jl
+IHRoZSBOVjEyIAo+ID4+Pj4gcmF3IGRhdGEuCj4gPj4+Pgo+ID4+Pj4gRWl0aGVyICd3aWR0aCAq
+IChoZWlnaHQgKiAzLzIpJyB3aGVyZSBlYWNoIHBpeGVsIHRha2UgdXAgOCBiaXRzLAo+ID4+Pj4g
+b3IganVzdCAnd2l0aCAqIGhlaWdodCcgd2hlcmUgZWFjaCBwaXhlbHMgdGFrZSB1cCAxMiBiaXRz
+Lgo+ID4+Pj4KPiA+Pj4+IEhvd2V2ZXIsIGFsbCB0aG9zZSBtYXRoIGFyZSBqdXN0IGVxdWl2YWxl
+bnRzIGRlc2NyaXB0aW9uIHRvIHRoZSBvcmlnaW5hbAo+ID4+Pj4gTlYxMiBmb3JtYXQsIG5laXRo
+ZXIgYXJlIGNvbmNyZXRlIGNvcnJlY3QgcGh5c2ljYWwgZGVzY3JpcHRpb24uCj4gPj4+Cj4gPj4+
+IEkgZG9uJ3Qgc2VlIHRoZSBwcm9ibGVtLiBBbGxvY2F0aW5nIGR1bWIgYnVmZmVycywgaWYgd2Ug
+ZG9uJ3QgaGF2ZSAKPiA+Pj4gYW55IGhldXJpc3RpY3MgcmVsYXRlZCB0byBSR0IgYmVoaW5kIGl0
+LCBpcyBlc3NlbnRpYWxseSBqdXN0IAo+ID4+PiBhbGxvY2F0aW5nIGEgc3BlY2lmaWMgYW1vdW50
+IG9mIG1lbW9yeSwgZGVmaW5lZCBieSB3aWR0aCwgaGVpZ2h0IGFuZCAKPiA+Pj4gYml0c3BlcnBp
+eGVsLgo+ID4+Pgo+ID4+IEkgdGhpbmssIHRoZSBwcm9ibGVtIHdpbGwgYmUgdGhhdCB0aGUgJ3dp
+ZHRoJywgJ2hlaWdodCcgYW5kICdicHAnCj4gPj4gYXJlIG9yaWdpbmFsbHkgdXNlZCB0byBkZXNj
+cmliZSBvbmUgcGxhbmUuIFRob3NlIHRocmVlIHBhcmFtZXRlcnMKPiA+PiBoYXMgcGVyZmVjdGx5
+IGRlZmluZWQgcGh5c2ljYWwgc2VtYW50aWNzLgo+ID4+Cj4gPj4gQnV0IHdpdGggbXVsdGkgcGxh
+bmFyIGZvcm1hdHMsIHRha2UgTlYxMiBpbWFnZSBhcyBhbiBleGFtcGxlLAo+ID4+IGZvciBhIDLD
+lzIgc3F1YXJlIG9mIHBpeGVscywgdGhlcmUgYXJlIDQgWSBzYW1wbGVzIGJ1dCBvbmx5IDEgVQo+
+ID4+IHNhbXBsZSBhbmQgMSBWIHNhbXBsZS4gVGhpcyBmb3JtYXQgcmVxdWlyZXMgNHg4KzF4OCsx
+eDg9NDggYml0cwo+ID4+IHRvIHN0b3JlIHRoZSAyeDIgc3F1YXJlLgo+ID4+Cj4gPj4gU28gaXRz
+IGRlcHRoIGlzIDEyIGJpdHMgcGVyIHBpeGVsICg0OCAvICgyICogMikpLgo+ID4+Cj4gPj4gc28g
+bXkgcHJvYmxlbSBpcyB0aGF0IHRoZSBtZW50aW9uZWQgMTJicHAgaW4gdGhpcyBleGFtcGxlIG9u
+bHkKPiA+PiBtYWtlIHNlbnNlIGluIG1hdGhlbWF0aWNzLCBpdCBkb2Vzbid0IGhhcyBhIGdvb2Qg
+cGh5c2ljYWwKPiA+PiBpbnRlcnByZXQuIERvIHlvdSBhZ3JlZSB3aXRoIG1lIG9uIHRoaXMgdGVj
+aG5pcXVlIHBvaW50Pwo+ID4+Cj4gPj4+IElmIEkgd2FudCB0byBjcmVhdGUgYW4gTlYxMiBmcmFt
+ZWJ1ZmZlciwgSSBhbGxvY2F0ZSB0d28gZHVtYiAKPiA+Pj4gYnVmZmVycywgb25lIGZvciBZIGFu
+ZCBvbmUgZm9yIFVWIHBsYW5lcywgYW5kIHNpemUgdGhlbSBhY2NvcmRpbmdseS4gCj4gPj4+IEFu
+ZCB0aGVuIGNyZWF0ZSB0aGUgRFJNIGZyYW1lYnVmZmVyIHdpdGggdGhvc2UuCj4gPj4+Cj4gPj4g
+VGhlbiBob3cgeW91IGZpbGwgdGhlIHZhbHVlIG9mIHRoZSAnd2lkdGgnLCAnaGVpZ2h0JyBhbmQg
+J2JwcCcgb2YgCj4gPj4gZWFjaCBkdW1iIGJ1ZmZlcnM/Cj4gPgo+ID4gRm9yIDY0MHg0ODAtTlYx
+MjoKPiA+IHBsYW5lIDA6IHdpZHRoID0gNjQwLCBoZWlnaHQgPSA0ODAsIGJwcCA9IDgKPiA+IHBs
+YW5lIDE6IHdpZHRoID0gNjQwIC8gMiwgaGVpZ2h0ID0gNDgwIC8gMiwgYnBwID0gMTYKPgo+IEJ1
+dCBpIHRoaW5rIHRoaXMgc2hvdWxkIGJlIGhhcmR3YXJlIGRlcGVuZGVudC4gVGhlIGhhcmR3YXJl
+IEknbSB1c2luZwo+IGxvYWQgTlYxMiAgcmF3IGRhdGEgYXMgYSB3aG9sZS4gSSBvbmx5IG5lZWQg
+dG8gZmVlZCBncHV2YSBvZiB0aGUgYmFja2luZwo+IG1lbW9yeSB0byB0aGUgaGFyZHdhcmUgcmVn
+aXN0ZXIgb25jZS4KPiAKPiBOb3QgZmFtaWxpYXIgd2l0aCB5b3VyIGhhcmR3YXJlLCBzbyBJIGNh
+bid0IHRhbGsgbW9yZSBvbiB0aGlzIHNvZnR3YXJlCj4gZGVzaWduLiBQZXJoYXBzIHNvbWVvbmUg
+a25vdyBtb3JlIGNvdWxkIGhhdmUgYSBjb21tZW50IG9uIHRoaXMuCgpMYXlvdXQgb2YgcGxhbmVz
+IGluIG1lbW9yeSBpcyBqdXN0IG9uZSBoYXJkd2FyZSBjb25zdHJhaW50LCB0aGUgc2FtZSB3YXkK
+d2UgaGF2ZSBjb25zdHJhaW50cyBvbiBhbGlnbm1lbnQgYW5kIHN0cmlkZXMuIFNvbWUgZGV2aWNl
+cyByZXF1aXJlIHRoZQpwbGFuZXMgdG8gYmUgY29udGlndW91cyAobGlrZWx5IHdpdGggc29tZSBh
+bGlnbm1lbnQgY29uc3RyYWludHMpLCBzb21lCmNhbiB3b3JrIHdpdGggcGxhbmVzIGJlaW5nIGlu
+IGRpc2NvbnRpZ3VvdXMgcGllY2VzIG9mIG1lbW9yeSwgYW5kIGV2ZW4KcmVxdWlyZSB0aGVtIHRv
+IGJlIGRpc2NvbnRpZ3VvdXMgYW5kIGxvY2F0ZWQgaW4gc2VwYXJhdGUgRFJBTSBiYW5rcy4KCj4g
+Pj4gV2h5IG5vdCBhbGxvY2F0ZSBzdG9yYWdlIGZvciB0aGUgd2hvbGUgb24gb25lIHNob290Pwo+
+ID4KPiA+IFlvdSBjYW4sIGlmIHlvdSBhZGp1c3QgdGhlIHBhcmFtZXRlcnMgYWNjb3JkaW5nbHku
+IEhvd2V2ZXIsIGlmIHRoZSAKPiA+IHN0cmlkZXMgb2YgdGhlIHBsYW5lcyBhcmUgbm90IGVxdWFs
+LCBJIGd1ZXNzIGl0IG1pZ2h0IGNhdXNlIHByb2JsZW1zIAo+ID4gb24gc29tZSBwbGF0Zm9ybXMu
+Cj4gPgo+ID4gQnV0IEkgdGhpbmsgaXQncyB1c3VhbGx5IHNpbXBsZXIgdG8gYWxsb2NhdGUgb25l
+IGJ1ZmZlciBwZXIgcGxhbmUsIGFuZCAKPiA+IHBlcmhhcHMgZXZlbiBiZXR0ZXIgYXMgaXQgZG9l
+c24ndCByZXF1aXJlIGFzIGxhcmdlIGNvbnRpZ3VvdXMgbWVtb3J5IAo+ID4gYXJlYS4KPiA+Cj4g
+Pj4gVGhlIG1vZGV0ZXN0IGluIGxpYmRybSBjYW4gYmUgYW4gZ29vZCBleGFtcGxlLCBzZW5kIGl0
+WzFdIHRvIHlvdSBhcyAKPiA+PiBhbiByZWZlcmVuY2UuCj4gPgo+ID4gUmlnaHQsIHNvIG1vZGV0
+ZXN0IGFscmVhZHkgZG9lcyBpdCBzdWNjZXNzZnVsbHkuIFNvLi4uIFdoYXQgaXMgdGhlIGlzc3Vl
+Pwo+Cj4gQnV0IHRoZW4sIHRoZSBwcm9ibGVtIHdpbGwgYmVjb21lIHRoYXQgaXQgb3ZlcnJpZGUg
+dGhlICdoZWlnaHQnIHBhcmFtZXRlci4KPiBXaGF0J3MgdGhlIHBoeXNpY2FsIGludGVycHJldGF0
+aW9uIG9mIHRoZSAnaGVpZ2h0JyBwYXJhbWV0ZXIgd2hlbiBjcmVhdGluZwo+IGFuIE5WMTIgaW1h
+Z2Ugd2l0aCB0aGUgZHVtcCBBUEkgdGhlbj8KCkkgd291bGRuJ3QgYmUgdG9vIGNvbmNlcm5lZCBh
+Ym91dCBwaHlzaWNhbCBpbnRlcnByZXRhdGlvbnMuIFllcywgdGhlCmhlaWdodCwgd2lkdGggYW5k
+IGJwcCBwYXJhbWV0ZXJzIHdlcmUgbGlrZWx5IGRlc2lnbmVkIHdpdGggUkdCIGZvcm1hdHMKaW4g
+bWluZC4gWWVzLCB1c2luZyBEVU1CX0NSRUFURSBmb3IgWVVWIGZvcm1hdHMgaXMgcHJvYmFibHkg
+c29tZXRoaW5nCnRoYXQgdGhlIG9yaWdpbmFsIGF1dGhvcnMgZGlkbid0IGVudmlzaW9uLiBBbmQg
+eWVzLCBmcm9tIHRoYXQgcG9pbnQgb2YKdmlldywgaXQgY291bGQgYmUgc2VlbiBieSB0aGUgb3Jp
+Z2luYWwgYXV0aG9ycyBhcyBhbiBhYnVzZSBvZiB0aGUgQVBJLgpCdXQgSSBkb24ndCB0aGluayB0
+aGF0J3MgYSBwcm9ibGVtIGFzIHN1Y2guCgpBbiBBUEkgaXMganVzdCBhbiBBUEkuIFRydWUsIGl0
+IHdvdWxkIGJlIG5pY2VyIGlmIHRoZSB1c2FnZSBvZiB0aGUgaW9jdGwKcGFyYW1ldGVycyB3YXMg
+bW9yZSBpbnR1aXRpdmUgZm9yIFlVViBmb3JtYXRzLCBidXQgSSBiZWxpZXZlIHdlIGNvdWxkCnN0
+aWxsIHN0YW5kYXJkaXplIGhvdyB0aGUgZXhpc3RpbmcgcGFyYW1ldGVycyBtYXAgdG8gbGluZWFy
+IHNjYW5vdXQgWVVWCmZvcm1hdHMgd2l0aG91dCBjYXVzaW5nIHRoZSB3b3JsZCB0byBlbmQuIEFz
+IGhhcyBiZWVuIHNhaWQgYmVmb3JlLCBsb3RzCm9mIGRyaXZlcnMgYXJlIHVzaW5nIERVTUJfQ1JF
+QVRFIGZvciB0aGlzIHB1cnBvc2UsIGFuZCB3ZSBjYW4ndCBjaGFuZ2UKdGhhdC4KClRoaXMgZG9l
+c24ndCBtZWFuIHdlIHNob3VsZG4ndCB3b3JrIG9uIGltcHJvdmluZyBtZW1vcnkgYWxsb2NhdGlv
+biwgYnV0Ckkgc2VlIHRoYXQgYXMgYSBzZXBhcmF0ZSBpc3N1ZS4KCj4gSSBndWVzcywgc29sdmlu
+ZyBjb21wbGV4IHByb2JsZW1zIHdpdGggc2ltcGxlIEFQSXMgbWF5IHNlZSB0aGUgbGltaXRhdGlv
+biwKPiBzb29uZXIgb3IgbGF0ZXIuIEJ1dCBJIG5vdCB2ZXJ5IHN1cmUgYW5kIG1pZ2h0IGJlIHdy
+b25nLiBTbyBvdGhlciBwZW9wbGVzCj4gY2FuIG92ZXJyaWRlIG1lIHdvcmRzLgo+IAo+ID4gRXZl
+cnlvbmUgYWdyZWVzIHRoYXQgQ1JFQVRFX0RVTUIgaXMgbm90IHRoZSBiZXN0IGlvY3RsIHRvIGFs
+bG9jYXRlIAo+ID4gYnVmZmVycywgYW5kIG9uZSBjYW4ndCBjb25zaWRlciBpdCB0byB3b3JrIGlk
+ZW50aWNhbGx5IGFjcm9zcyB0aGUgCj4gPiBwbGF0Zm9ybXMuIEJ1dCBpdCdzIHdoYXQgd2UgaGF2
+ZSBhbmQgd2hhdCBoYXMgYmVlbiB1c2VkIGZvciBhZ2VzLgo+Cj4gWWVhaCwgeW91ciByZXF1ZXN0
+IGFyZSBub3QgdW5yZWFzb25hYmxlLiBJdCBjYW4gYmUgc2VlbiBhcyBhIGtpbmQgb2YgcmlnaWQg
+ZGVtYW5kLgo+IFNpbmNlIEdFTSBETUEgaGVscGVycyBkb2Vzbid0IGV4cG9ydCBhbiBtb3JlIGFk
+dmFuY2VkIGludGVyZmFjZSB0byB1c2Vyc3BhY2Ugc28gZmFyLgo+IEFzIGEgcmVzdWx0LCBkcml2
+ZXJzIHRoYXQgZW1wbG95aW5nIEdFTSBETUEgaGFzIG5vIG90aGVyIGNob2ljZSwgYnV0IHRvIGFi
+dXNlIHRoZQo+IGR1bWIgYnVmZmVyIEFQSSB0byBkbyBhbGxvY2F0aW9uIGZvciB0aGUgbW9yZSBj
+b21wbGV4IGZvcm1hdCBidWZmZXJzLgo+IAo+IFRoZSBkdW1iIGJ1ZmZlciBBUEkgZG9lc24ndCBz
+dXBwb3J0IHRvIHNwZWNpZnkgYnVmZmVyIGZvcm1hdCwgdGlsZSBzdGF0dXMgYW5kCj4gcGxhY2Vt
+ZW50IGV0Yy4gVGhlIG1vcmUgYWR2YW5jZSBkcml2ZXJzIGhhcyBiZWVuIGV4cG9zZWQgdGhlIHh4
+eF9jcmVhdGVfZ2VtKCkKPiB0byB1c2VyLXNwYWNlLiBJdCBzZWVtcyB0aGF0IGEgZmV3IG1vcmUg
+ZXhwZXJpZW5jZWQgcHJvZ3JhbW1lcnMgaGludCB1cyB0bwo+IGNyZWF0ZSBhbiBuZXcgaW9jdGwg
+YXQgYWJvdmUgdGhyZWFkLCBzbyB0aGF0IHdlIGNhbiBrZWVwIGVtcGxveWluZyBzaW1wbGUgQVBJ
+Cj4gdG8gZG8gc2ltcGxlIHRoaW5ncyBhbmQgdG8gc3VpdCBjb21wbGV4IG5lZWRzIHdpdGggdGhl
+IG1vcmUgYWR2YW5jZWQgQVBJcy4KCkknZCByZWFsbHkgbGlrZSB0byBleHBsb3JlIGFkZGluZyBu
+ZXcgaW9jdGxzIHRvIGV4cG9zdXJlIG1lbW9yeQphbGxvY2F0aW9uIGNvbnN0cmFpbnRzLCBhbmQg
+YWxsb2NhdGluZyB0aGUgbWVtb3J5IGl0c2VsZiBmcm9tIERNQSBoZWFwcy4KCi0tIApSZWdhcmRz
+LAoKTGF1cmVudCBQaW5jaGFydAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
