@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9357FC02181
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 19:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAFFBC02181
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 20:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kqLFc6CZHXT0v6fx3cSznJ0amfo/OSgxIq93A9UB/mg=; b=EE+Ir+MRykUUREAnc5hH+C3BQi
-	jIi29IiaImB65nXdkEe1JTvxLkZ69+IZdnAGBqbsQiguS9H1Oz5kQDoBevJAT4ak0CyWGzrCR9WoW
-	KeRztU7JgKzMxkxAsSAfXBJsOQGkRXtLzbVI6ZuA/0RD+bBiQUHIyMKQNrqugy8ZKg0w72oxuXECh
-	M/7qj1jAQnMpCNCdRe2URaV4ghunuaf3VD9L2ImTUtSVA5FhYM7boP+y0k6JY0QHEDeLP8N7G4tpv
-	pojRdY8qYs4ZOrLwFuso6oMXDD0APy8UQx26/8XdaK5jTUdCbAx0vFRtTw1msav+M3RNQuPSsoJSe
-	t22+VMew==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rbdrPCjjfC8kglY9/vm5voR2LUr5V5d41yteGIT0UjQ=; b=Y/wW/cSogDjXy6azMr/RjoeXWn
+	zoYdJQN2ei9xM4AMNttov/ABoBK58eEt2xAELXRF4DElBT7eZAp0TKpL5Ni0VmRQe8fcc/JfnpGng
+	ZKMQow120AOXx7vfRADz43CzHqlbh6k82EOkSPBkX1S44+40nTTpw3712XmY2UvkkJkhECinqRogp
+	YBRl7IM2S31xOdKaKzhcapuuYtkNLL4z90Z39ot/SDX0xl5P84iGkaJUIertiDA8ePNHBQhG42J6R
+	819IZERrel1Gd+2k0R1gZGSTT3TVQ2JSf0lKxyGZlEqs9yPk3FUhqdWjUM10aO1adoIxOf8b0oFx+
+	wfxZaFQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZxi6-00000006LMD-02Jm;
-	Mon, 20 Jan 2025 19:45:22 +0000
-Received: from out-172.mta1.migadu.com ([2001:41d0:203:375::ac])
+	id 1tZy6f-00000006NR1-018P;
+	Mon, 20 Jan 2025 20:10:45 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZxgo-00000006LBb-1Zmp
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Jan 2025 19:44:03 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1737402240;
+	id 1tZy4s-00000006NCJ-01Tv;
+	Mon, 20 Jan 2025 20:08:55 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1737403729;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5RLve09pHXyDwibCb60WvsnrRpSp359iWUXBWVIy1PI=;
-	b=Nv2DeSGiFIx4Z309t7HF/4zhQcgnLOsu0UfBrFN7wJt/JIoTB4p/3oDnyt5TeQzECeyuel
-	bgJUCWLa6ljUwXaw1Lf3O7znvOcsPTZ3uRU0XWOx5ez/NyxD+0UPENKbR3xszzfc6nWdhx
-	fLAktCxX4d2wzE/ZaHdTxrgiVn4lRKOWDb5EwEzsB/4xf+6hgDXsOjrALmYwehSciTdGln
-	t5jfzOUqfNeuoQpRLx0YLsu4GtE5faDd2zRIZNmQCCvl3HA8YxteRXLChw4AH7TAWJhPhO
-	K9Kv2TAa72/ISOjYMcRFSW+J6xJQ411uzxLnXXt7zbA2GrSXGLXh3WYPJn3eyA==
-Date: Mon, 20 Jan 2025 20:43:49 +0100
-Message-Id: <D775OTRW5PI5.331IHP40POB5Z@cknow.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Benjamin Gaignard" <benjamin.gaignard@collabora.com>,
- <nicolas.dufresne@collabora.com>, <p.zabel@pengutronix.de>,
- <mchehab@kernel.org>
-Cc: <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3] media: verisilicon: HEVC: Initialize start_bit field
-References: <20250120153555.404806-1-benjamin.gaignard@collabora.com>
-In-Reply-To: <20250120153555.404806-1-benjamin.gaignard@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	bh=B5LWDDl4PPvpx+DyyaGnR82rDJrKyrO2HYvJ/Dnc9Vg=;
+	b=BEEbpAmBNhrMLzjqxTQacisW+dgpo9N4pv0eow9Q5VAAlkfnChxlYyvcCnhktLK+S6PFHJ
+	MoaZx2s8G3Hj9Hh/A91BTi/XwxnYR4NmhnCB2/bnYSp4am8IOn+B+PUbseK2SLHCiNgQzP
+	dnkyQxGz1qscyExWgImDMEWUui2rpx/VDWJ4JlUJlKh1zUsaQH3EitrJp5dgoXHdKQciCo
+	e/8PO2alpHNuwpt7WEXpfRG5cR1Mx/C4Zj75nGZQ/p/Wtv/X/7VGhmF60+uteBfTTbVjzl
+	/EzofxCcemaJWy0hWKqSjeAyCo4Ezo5Tbc1wERume3U5P0bxioPKz4n9PJN3DA==
+Date: Mon, 20 Jan 2025 21:08:49 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Alexey Charkov <alchark@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add finer-grained PWM states
+ for the fan on Rock 5C
+In-Reply-To: <20250120-rock-5c-fan-v1-1-5fb8446c981b@gmail.com>
+References: <20250120-rock-5c-fan-v1-0-5fb8446c981b@gmail.com>
+ <20250120-rock-5c-fan-v1-1-5fb8446c981b@gmail.com>
+Message-ID: <f9c97005f74f906bc724ae8cda5f7ead@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_114402_554245_A1DE43A7 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250120_120854_203462_CCE4EA40 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,76 +69,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8252868994370901854=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8252868994370901854==
-Content-Type: multipart/signed;
- boundary=ca11871e295c846aed4751d9c823cec546d395094f287aeab8421f6af7ef;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+Hello Alexey,
 
---ca11871e295c846aed4751d9c823cec546d395094f287aeab8421f6af7ef
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On 2025-01-20 20:22, Alexey Charkov wrote:
+> Radxa Heatsink 6540B, which is the official cooling accessory for the
+> Rock 5C board, includes a small 5V fan, which in my testing spins up
+> reliably at a PWM setting of 24 (out of 255). It is also quite loud
+> at the current minimum setting of 64, and noticeably less so at 24.
+> 
+> Introduce two intermediate PWM states at the lower end of the fan's
+> operating range to enable better balance between noise and cooling.
+> 
+> Note further that, in my testing, having the fan run at 44 is enough
+> to keep the system from thermal throttling with sustained 100% load
+> on its 8 CPU cores (in 22C ambient temperature and no case)
+> 
+> Signed-off-by: Alexey Charkov <alchark@gmail.com>
 
-On Mon Jan 20, 2025 at 4:35 PM CET, Benjamin Gaignard wrote:
-> Always set start_bit field to 0, if not it could lead to corrupted frames
-> specially when decoding VP9 bitstreams at the same time since VP9 driver
-> set it for its own purpose.
->
-> Fixes: cb5dd5a0fa51 ("media: hantro: Introduce G2/HEVC decoder")
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Thanks for the patch, it's looking good to me and the explanations
+are fine.  Please, feel free to include
 
-In the mail that contained the Tested-by tag there was also a
-Reviewed-by tag (from Nicolas) further down below.
+Acked-by: Dragan Simic <dsimic@manjaro.org>
 
-(sorry about the other mail; sth went wrong)
 > ---
->  drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/dr=
-ivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-> index 85a44143b378..0e212198dd65 100644
-> --- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-> +++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-> @@ -518,6 +518,7 @@ static void set_buffers(struct hantro_ctx *ctx)
->  	hantro_reg_write(vpu, &g2_stream_len, src_len);
->  	hantro_reg_write(vpu, &g2_strm_buffer_len, src_buf_len);
->  	hantro_reg_write(vpu, &g2_strm_start_offset, 0);
-> +	hantro_reg_write(vpu, &g2_start_bit, 0);
->  	hantro_reg_write(vpu, &g2_write_mvs_e, 1);
-> =20
->  	hantro_write_addr(vpu, G2_TILE_SIZES_ADDR, ctx->hevc_dec.tile_sizes.dma=
-);
-
-
---ca11871e295c846aed4751d9c823cec546d395094f287aeab8421f6af7ef
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ46neAAKCRDXblvOeH7b
-bpKnAQC5dzfDBEJ+T/sVxmb4LBfT8d37/MjDvpBq72uvBqaJ5gEAtnbofxNYAnzJ
-Dej14FaOWZ/N+ZrZgFmVhoR6q/3G+wo=
-=RCze
------END PGP SIGNATURE-----
-
---ca11871e295c846aed4751d9c823cec546d395094f287aeab8421f6af7ef--
-
-
---===============8252868994370901854==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index
+> 9b14d5383cdc16947c955b1c6e2a32a50c5df3e6..1b66a69cf0f8795d7305852fa7fef3d0672ada7f
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -71,7 +71,7 @@ led-1 {
+>  	fan {
+>  		compatible = "pwm-fan";
+>  		#cooling-cells = <2>;
+> -		cooling-levels = <0 64 128 192 255>;
+> +		cooling-levels = <0 24 44 64 128 192 255>;
+>  		fan-supply = <&vcc_5v0>;
+>  		pwms = <&pwm3 0 10000 0>;
+>  	};
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8252868994370901854==--
-
