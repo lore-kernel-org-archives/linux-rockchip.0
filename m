@@ -4,168 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB123C02185
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 09:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC62C02185
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 09:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=F6Pq1N58lyRgjKFY4VMIfH4t8rUSgssnQgBfmr0y3dY=; b=Sieb87SGXmmy2LnI/M6aGG8Wjg
-	HnHNcMTCXqFXIdkh6fD2bNQ4RpjBMEBDD7RlPxgDXy+mtx+dBsIUjeL/UeQ8dg1GdZwgs1+qhqBfb
-	33jLvTi9QQEgtlD3Uvzg5HK5lBwsgamVkpw9q4iDiggY9lnTSZoEXLkEgm7iiPaXfjGYnRxMrge2f
-	gqvX1XtBWcb5/g08zVHvXBWRdcr6O4bFbPIOXaPLZnh83xOpufq6jRjg+T2K7S9S6A9eWNRIeWS40
-	/P7dEgBllj7vK6GQWfL1adMv5oMaCUi3gzIOTjE1Ei7dydUWjTuKo8OS8jRG6jDlkr4p5uQUEv/um
-	V5Q7feEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5zPlAnFRCLaXt28neIsxvXUuSKHsn/iakZniwvoBv+k=; b=WBfZ283zRwsTnxqhPbPo/TaRn3
+	w/GIOS/5Dzk4DCvkx7biU0Jqa5LxGrdsyzWAGsTa5KMke3yx+QOTto9GbgB/U3DqE37x0q9zTmdyQ
+	lVpdBZjFHQ0wUGvoK/79XaHEQiN+t627K69sDn1vC7LXKcOpipBDPMigilzUr+UF9U17n2QKtpiid
+	WiPl6V0PNA293g6Efay+EMddAREYeRYN07+zESFPDFHCTh0k7GTCb+sb28FHaw9jxYGeQW6K5LnEA
+	kxLuZCFVxtea2JYzTNLwAE4VV8M9yq+IHYG82gptas8eI72J955C6IIF6Yf2BvgQ5yNzCbiTQULPS
+	rmaNY9cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZnoL-0000000577Z-24Zj;
-	Mon, 20 Jan 2025 09:11:10 +0000
-Received: from mail-db5eur02on20713.outbound.protection.outlook.com ([2a01:111:f403:2608::713] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
+	id 1tZo7N-00000005C0y-2ZvD;
+	Mon, 20 Jan 2025 09:30:49 +0000
+Received: from mail-northeuropeazlp170130004.outbound.protection.outlook.com ([2a01:111:f403:c200::4] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZnlA-000000056f8-29Nn;
-	Mon, 20 Jan 2025 09:07:53 +0000
+	id 1tZnxv-000000058z9-3S1y;
+	Mon, 20 Jan 2025 09:21:09 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pd2DDH/9bJxiECiek9b5XZ2SyM45qVPwX2aCIdT+en9JIoR/sDFMc3pLTNsbByEQ6RexWMqRw9YmKLFRFGyTLxaYHSrnBmT6nQrIwU3XFo1jXu05fqvOizvClRw48pn5t7rk9cKGo3t1LWAe10JPE5ZrSuG3j7SXPMHTRfnOGo59ifho5JqoReWdZlA/yHR4EUMg5sgehjU9VU/gKKbjuMVKFWfCPmGI8Nao4Vmjt3uX9ClFJ3WHZEXNV1q5RUelXm8I6kvRWfywVeFCwAbi+q7xtMwkneW9ari+MByfr9iNAUhEniDjT00umfaHj2U7GL+bE7cJPIPrNxENPXlwVg==
+ b=ZYaqA6S2hZhvhIoOf0O63LfFJMDLDjhEK8iZInFTm3i+qR0aBHprkXfQf+6tLvtU3aq0aKdSL55tNKJxydaSdNoRZhfRmCX94H3vk5k+JO2POU00hzg1m4mC2R9dTVD5RHF2f8JbHiuLhOy4t+R+X0GHb05IoMmlf61ERXghT4LIrs2/c1muJkRvs8k5sBxxxNmisQ+lfmEnOQkfDCWtXt/ztY/EDy/bogvlmY7kanaiu5ADQOYQO0QeykFCbcd+lLRLnvdOfmgxjncRwbCzWbnClD+GG0CLK4RTK+ok67rUb773p3OZf80SlKe3zPj2Q4PU6XT+d/0F+zHvNVma3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Y2NSBgDrWcdFKNkg/1Kjoscrkx1TK+2VGkW0CbSJ7iM=;
- b=I4mH3Q9Pcgoqj8HdIRoqVFHN/G1KSZQC54dw8I8aEJG+9XJVpqeQZGDozVUKx9kmx04/y5x6ygXZXumMTjO3rGpIvOAf0wbhrLcGeqS3Ld2bJWARVVebyRPq3slAKqWLKQcuyAhZUHN/fZSphEXQt04Lh0bQX8EO7Kagsh4WyX4ejoGF9Z45+dwgkbQT04XJSv+DrPOYSoWGNomkFxDlPQJ9MLE3/C+Z4sxigXbey+Tn9wFsn9fT3wyanSKzNC6Yl+BGqoRoIXxLB4Kkk6aLz0A1SB+/FNtYTszBstS7XhIvd7jGGhafyJTnNM+L/xbtlAe7IqmUQXfj6x3/hnVsCg==
+ bh=ZFKbgHc4ZKww6L/QeoCSs0/aF+bGwme6OsoQAK98FK8=;
+ b=BzcY4O6mC4bsPHSxtEZQKCQ4Elk3O2q82knYKWRXULhxTQIaMJFDCbZHZvrVTui9b35cSZ+uNaNvN2R0SAnRRTQr5dn1fXaA/pHt2SIjYnnfam+EXdvzmHrFtItWM81cHc0OZjHzmGsddSBXco/OdncRC5VzLnUC22SYmxYs/drlAtBNk5hFedmGU150/gD5a7xdWhPrIWad+x98ChBxPnzMAnNHgkdnq4yr4DWXrYRlfrw7Y75OigqPBNh6Yz+zghr7VJVTf7tif+YoY8aLuy+ZLagQMP6a5ZXU96oJGMU5ZbAZD32NvRp8BMHFIgSfNnCu8fNae8JCUozvx9pwHA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Y2NSBgDrWcdFKNkg/1Kjoscrkx1TK+2VGkW0CbSJ7iM=;
- b=W3E63yo5Gp/Jy+GYZwWxLvH3mTq7SuAlSo100ThozNnonkLxvHpEWEFR7fyXq6CNtE4Ek0MfuPsOVg70/a1Gp8Af2NimJlViIAWXgWthmR+2T9jHw/nRRKGxeJBoRO6Sd5eYSTuvEkE7/Tm9UVpkgzRiHdxh0s0oaoxh5B8/cRg=
+ bh=ZFKbgHc4ZKww6L/QeoCSs0/aF+bGwme6OsoQAK98FK8=;
+ b=S+MZzFAEYH1N6OyrmWjLdKFZHC4bU3LCJz8eZPsF6bc2JWtmcqwtzCBfhtNsvd98qCcEixYPYyHaeXF7XYMxKLWbYZrcl7EmFin8MEFFv3BBD3O9S3764ZVS3il05cptH3eo9ryJxD2w8+7wNcQoqLWaA7WFVCfFZRZ3f0KEkIo=
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by AS8PR08MB6614.eurprd08.prod.outlook.com (2603:10a6:20b:338::7) with
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by AM0PR04MB7011.eurprd04.prod.outlook.com (2603:10a6:208:193::10) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8356.21; Mon, 20 Jan
- 2025 09:07:49 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8356.020; Mon, 20 Jan 2025
- 09:07:49 +0000
-Message-ID: <e492812f-11cb-42e3-ad0d-ae6df37c346b@wolfvision.net>
-Date: Mon, 20 Jan 2025 10:07:45 +0100
+ 2025 09:20:57 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%3]) with mapi id 15.20.8356.020; Mon, 20 Jan 2025
+ 09:20:56 +0000
+Message-ID: <82e64b27-d254-4fff-aa25-5b848f147ca2@cherry.de>
+Date: Mon, 20 Jan 2025 10:20:55 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] arm64: dts: rockchip: add overlay test for Edgeble
- NCM6A
-To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v2 0/3] arm64: dts: rockchip: minimal support for Pre-ICT
+ tester adapter for RK3588 Jaguar + add overlay tests
+To: Michael Riesch <michael.riesch@wolfvision.net>,
+ Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Quentin Schulz <quentin.schulz@cherry.de>
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de>
- <20250116-pre-ict-jaguar-v2-1-157d319004fc@cherry.de>
+ <49bfb4c5-12b5-447b-b08a-af0bb9fc304b@wolfvision.net>
 Content-Language: en-US
-From: Michael Riesch <michael.riesch@wolfvision.net>
-Organization: WolfVision GmbH
-In-Reply-To: <20250116-pre-ict-jaguar-v2-1-157d319004fc@cherry.de>
-X-ClientProxiedBy: VI1PR06CA0158.eurprd06.prod.outlook.com
- (2603:10a6:803:c8::15) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <49bfb4c5-12b5-447b-b08a-af0bb9fc304b@wolfvision.net>
+X-ClientProxiedBy: VI1PR07CA0301.eurprd07.prod.outlook.com
+ (2603:10a6:800:130::29) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS8PR08MB6614:EE_
-X-MS-Office365-Filtering-Correlation-Id: eca12993-bdf9-4613-7809-08dd3931e9d7
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|AM0PR04MB7011:EE_
+X-MS-Office365-Filtering-Correlation-Id: 20a27b51-6e6a-48bd-7f85-08dd3933beee
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|366016|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Kzl6czd3MmJ4T0FqenhRZmVkZGZSQUR3SWkyMEpLSEN2N0JCeWFHT0dueEc1?=
- =?utf-8?B?TU51R21tNldyMTlRWGdic0pBTmtJT2xzK29nR3c4WlB5VklSNFYvOG5jUllG?=
- =?utf-8?B?by9xZ2JIeW1aTEFzTjlNYVQ4dG1zYllhLy9EL01ZSmMzY1pCdjBWOW13MHJw?=
- =?utf-8?B?RjBCeWZ3NytPclc0bnZQNHlQc0JHOFN0REsxLzUvM1Jkc1hKVU1SaXplSldz?=
- =?utf-8?B?V3BpSDdpQy9xdFJMRnM4cWJlNEI2WkwxaTdlSllEc3NnNzNSVXg5UjFDeDlC?=
- =?utf-8?B?eVF4aTdoWXdicUMza0RUN0h2bEMvNkxQTGsyQzFuOGJKZ0xmWW1oSlEwVVlw?=
- =?utf-8?B?Zi92eHJ3WHo1OGtIeCtSTS95MWl3ZGhSV2lhWDloSnRvZ1FqclBzTXI3SXR6?=
- =?utf-8?B?WmtwYUN4L3N6cFlxbFhIMFlnM25sTTZ3Njcva3BkdWh5Wi9aUm1qOEZaQjBk?=
- =?utf-8?B?UFgxT2pMN3ZuWmo1SDJOUzJoWjZiZkNkcFFFNFFIeUozWG5lMXIxM2lkaVpk?=
- =?utf-8?B?ODV0aGlqZEpZZE5iaUFZN3FGNWJBQzNYWnBpZjVnd2JNRzJVdjE3SXYyMk5l?=
- =?utf-8?B?M0FvczkyTVRYQkNGcENGSXhkOHZlUytUYkdvUDBUNG00akdtWXVCaUROcDdN?=
- =?utf-8?B?U3ROUmN1Sk5DZjJsM1M0bTZ2Y0lIK2srTGE1TTgxU0hoeEM5NkJyc1FMTFVu?=
- =?utf-8?B?c3lrVTJLZ3MwbUpDZDRYcnZ4NmRISHVXRkd0STlST2YvQ003OFF0YTJiRFJW?=
- =?utf-8?B?S3puVTNVNzN6T1BYOXZSNGVRZEh3L01LYUNON1VqN3ExSzJESlFvbkdPZTg2?=
- =?utf-8?B?Vnp1ZHZZVTRXajdNVmxDdnNPM1Q4bmRLb2p0RENJTnJLYTkyUmhBM0k0b0t0?=
- =?utf-8?B?Q2o1Tlh3T09HRFNaRjBXVWNTeHJHaEZRdmRQQkRxY2RRcFoxV29XNkIvbXVn?=
- =?utf-8?B?cTJQdHRyTjI1QnhLRUQvdHE2UDgvWTFGQ21oSGJFbUpQQS90QXpvak1DdGd1?=
- =?utf-8?B?NXY1NWZDNy8vMGM2YUJ1WGR2bkZJcmdnWVpERDJ2QTNqTldpL2x5SzE2ek5I?=
- =?utf-8?B?MnM1L3N1TUNlZ3Z6Q0dVcjdGLzRPaVBmODcrUGppRFVXQ0ZmQVlsRnpwZnIz?=
- =?utf-8?B?ZGlmOTJHZE13anBTM2lmYjlCYjRKSWQ3REozM2JGOHUvTzhsNzZES3AyTml3?=
- =?utf-8?B?NGpqNDQ1WldnZVB6dXJxdEM4aHlJZHRrZUFQb3g4bmp3T3duRHU4K1JUYURy?=
- =?utf-8?B?aHFJbGswT0djK2cwY2J1VFRka1g3anYvWFRRbyt0ZUhmNHlsRitVZ1JzSFQz?=
- =?utf-8?B?N096MXJuZU9kcTU4YnlsTWRMR3plSks2UnhrNHBIUnF0OWFSMUNGMUwrL0lB?=
- =?utf-8?B?Rmd4MFJXZURrMDhQSHM3Nk1XajFhNDJLeWFGU1hMN1FNNlJlWWRzdmFpeUdI?=
- =?utf-8?B?WTVVTHo1NnpOK2JmRHFuZHNYNkcvTFZxbHIyWXBaVWQwdkhVSDZXLzVjQVQ1?=
- =?utf-8?B?ZVh4R2dsWVNqdXVaTlVYelNWeXRZZDFOZy93ak1iN2lsbGpIa3ZCc05ZUDhJ?=
- =?utf-8?B?ZnRYamFyRHpQalorYnZicGxIRUcxb2pWR0FReWNvVEQwWmc3WDVvZFE1Wjdt?=
- =?utf-8?B?S1V6VzczTWtoMHZ2dUpjVjJSZEs2S25lYmNKck01TjZObHNlZlgyaFhMb0hr?=
- =?utf-8?B?M2pxcnp2SW90M0ZScExLRThVU1o0NFVTZURDNklZMEN1OFZTOUlnWHpObHda?=
- =?utf-8?B?SStoa3E2eVVVRUI5M045N2pPV2pKclEyUUdPbVg3b3dSbzNjemx2c1psdmQy?=
- =?utf-8?B?bm5Ha3dtTWQ4ZlJBc1VQYmUvK3MwZzQ3K1ExQ0tRZmwrUjFqcUY0MFM1Mk5C?=
- =?utf-8?Q?OBy0NI7iCp39p?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(376014)(1800799024);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|10070799003;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?a1c4aHZjRWZhc01uMmVabVFkb1A0V1NXbVA0YXNDN2hnbVdsU2U1aTBCNSt1?=
+ =?utf-8?B?eFZBQ2N1YTlabDQ1NmZGdjRPblVrZHZJL3QvOE44T3RrL0xVTzhhTHRpL3cv?=
+ =?utf-8?B?STk0VWhjeTRSdVNMdThYSTRJUkg5SDJNSFpMNThELzRjbUhpbnNMNmcvV3RQ?=
+ =?utf-8?B?MDlZWlh3VElMVDhOblBlcmJ3cmtOYi9NcWdCOVdmbzNDdEtkeTREMDArd0U1?=
+ =?utf-8?B?QUNFQWxRZU9QaXZVZUVWMG80di9mQzNZazIySHFmMmFjb29oR2ZFdHpwS1NT?=
+ =?utf-8?B?blRaQmRUNkd6UElyRTdSR2FSWGJIVzR5QS93WnptRVhvY3JQWFo1cDZnc21p?=
+ =?utf-8?B?cnRqL0h0b1R5NHAzb3VQMEZPbWZWVGJvVnBUTWJWNXJvV1ZuVVBxWFBIMTV6?=
+ =?utf-8?B?SUlkdFZNdllsVERURGQxSjhrNTlrVG8waWpJck9lRzk5b2ZRdThxcndKTFdF?=
+ =?utf-8?B?NytJaXgvNkdSOU9mcENZaVlTYkZXK2s3ZEgrZFUyMXFVU2t1YkE0b2pPNFIr?=
+ =?utf-8?B?dkxEYTh2NzltTENEbnUwWE1oY1pENkU2UHZtNFNhQldnTy9uVDNTb2c4Q0hB?=
+ =?utf-8?B?bjZyUDhyR1p4N2JnV1FZVkUvOXlQd3liRWcrUlozWWp3cGJmcDkwUGk2MkV2?=
+ =?utf-8?B?blhLOTNxRmI1dGpwZlFBM0FjNENyOEY2N1N2WGVPS1JGa2FlaVErS2ZRQWIz?=
+ =?utf-8?B?WXYrUlBQQmZYVGVESDlOOVA0Z1ZQNWNNYXFmZnNWeXcrSzRHL1ZRMHJnTjEr?=
+ =?utf-8?B?SzRUYm8vZDhTamxLeGJZbVFHay9CbEREQi9seEs2NDBRa2E3K0tUZ0NmZ2pC?=
+ =?utf-8?B?YnNaMzByUzl1R0pHVXQwV2ZTcXZDYkRXd3lUbXNYWnNQbjBZMVlDdFQ3YUZu?=
+ =?utf-8?B?N1JMWml4UzBLNU5GdnJHYXFXUWl2dUZ5RDB4RVI3NjhiakxVaytMNklYWDQ2?=
+ =?utf-8?B?Ymx4Sk55eDZtOHNPS2hJenNYSTkwT2s3Qy9laE41dkNMTGpNbGhhTmowR2ZB?=
+ =?utf-8?B?UlZIZVV5T21XbkNtQzlXSEplbnRXeGlZak4wV1l1RVZrMi9WNE5pMkNHVFh1?=
+ =?utf-8?B?dFlwdFkzeStNdHoyeXlTWVA5cjE2NjBkaXEra2xDYlpuc2dlRlFnaUdPM0dT?=
+ =?utf-8?B?ZllseUYxSkY1SkRuNEdrYnlta2I5SXl3THlSbzVxbzZmbHhTTDdwYUdta2dF?=
+ =?utf-8?B?QmJUbUd3aXJIb2I3dWlRdEh1K2dWWW1FRkw0dVdvV3o3V2c4MWh6U3M3NU1G?=
+ =?utf-8?B?V3FoK0s0cytGMlNQRk13dkR4eVBpdzlCVTYwMkVQTXBuUENhQVFvRGFxRXN4?=
+ =?utf-8?B?Z09GSDVtOUVUOUIrcTE5VWhqK1JMQmpUZ05VM2dSajJ5NHN5eG9HQkpuQzdR?=
+ =?utf-8?B?UzhVWGVvR2tQL3VlbURkckZNTDNqQmxESG9pZXRXdzQ3NXBVc1VQclhSOG13?=
+ =?utf-8?B?Y2cwSjdKbHRhMXMzaUMwSlhLZy9FZUxxbm9SQkNhL0xJSE9BZlYyQWxiUllu?=
+ =?utf-8?B?MVIyZWpDa3pGRElOZXNPNXhBSEgvWmhqNElCNDVNM1ZIcFNWTzJlWmVvSlAy?=
+ =?utf-8?B?SGp0RU5kWUJFbHYvK3I3bEM1d0dNRkVVN1BoSkk2VGpUQXY1TkVsa1R3OWRE?=
+ =?utf-8?B?YTJ1Nis3T0pZYTNLVHJRMGc5OE9oZG1QM2cyVlpOWHRRN2NqYkJpcUx4N1Qr?=
+ =?utf-8?B?KytjdGYzVVR0Z1V4elFMMUVqNnRuSTg3ejZLYmxEQ3lRalJDMWhRMFlnMFow?=
+ =?utf-8?B?OVE3Zi85ekpxb3hWdGkwdHdmNmVKVWNBUmhiRjRWNTJUajRoaTJPS2tGWFZW?=
+ =?utf-8?B?d0kyUVhuUERlSkRQQ0p3QytmZXk4L1lpL1A3Q3dTYzhRTFY5MGFlRkd1S3BP?=
+ =?utf-8?Q?ODaXI/eM9mBv4?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(10070799003);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SVY4eGZaVHhtUmhuN3pLa3RxalQwYnpjVGhRNHZCSElhcjF6OTVYN1pSc1Nj?=
- =?utf-8?B?RTIrZXlXbnNHUFltUzhieG5Fd0didk9TbnRvKzVKZTZJdEY2c3EvbmFoTCto?=
- =?utf-8?B?M2VYSDg2dC9MelB1cmxlWTZabStYenZxVXNlYXZHL3J1bk9JZGtLR1M3bWpK?=
- =?utf-8?B?Z2N2Q1dFdUNBaXViOTQ3SWtYaXJYbi9BN0xXdk5SUTlGNlo5ZFJteVVySGox?=
- =?utf-8?B?Qm5yOW9NMFMxR2F6eEtMUnVsd1NHd2x2aWRYWktZQVpIdTRJR2p0ZEltOHY5?=
- =?utf-8?B?UnMyMENaOCtjbjBPWlRXQVBkaURHcHRlMmtyRFY3WjVBRXZTSUVFdk15RjVT?=
- =?utf-8?B?d1h2ZkhEa1hNSlhqQXZZMnVQWUpYV3hya3Flcng3Q2ZmMnB0QjBvZ00rVzJJ?=
- =?utf-8?B?QmZsR0h6dk42MEZiV2lQWlVRdWNlSnR6V2hHWjQvZlhsM2p2WUs1WlR6QXlo?=
- =?utf-8?B?L2ZPdHNhNkd2WmJKdlBJUmZqQkdZUG5GQlVuNmR1OW1LN1NCckNSQUl0S1hM?=
- =?utf-8?B?VXFFME52SDJ0Y1VPRjUzbkRGRmpOWHd0Yk40RFRWcnU5YTU3QTdEeFVQZ3FP?=
- =?utf-8?B?eUFOR0lQZHBKa2IvUGZXTEVOaDAxUnpEVnp6YVBXRUV3a1FVSmpKbXJlMDJ2?=
- =?utf-8?B?aWRQUStKTVd1ZDJjcVNTdERNeWhlS25YeFhEODU5THY3N3B4REZPT2FKR0Ra?=
- =?utf-8?B?RkRYTzhpSGtvd1REZkUzRFpBdHlpdFd4eWRESWJaNVlQdGwzWldXWE1wUENX?=
- =?utf-8?B?YXNZd0w2cVR4SXEyRHlQRTdIQkI2bUcyYVd6Y1FHc3dKeU13b0Rzd2ZmL2FT?=
- =?utf-8?B?VExOTW4zMUpJcW1QZVdJSDVydmRxTkd6TDRESEZPQ3g5b1FJWmtzSEVvdXNR?=
- =?utf-8?B?WHNSS3BoTWZkTjdWK2FOR3ZqMjFKS2VydXNITGNTcHlxSGtVbklySmliS2Y1?=
- =?utf-8?B?V3FTejJZKzljckEyTWNjZG9JcTFMVjhMYUdJbUoxY1U3dkJVN3NMR3FJWEpJ?=
- =?utf-8?B?bTNsdTZhb3B3ZmpTbDQ4UHErQkkxeDZyRmRCMXlNcjAxOU1ZTEtqNk5ORmkw?=
- =?utf-8?B?L1I5TDJNYjFOZUdkUUszYjlQUjc3Y2VWT1lvenRSV2c5UlRZQ1UxQzNQQU9h?=
- =?utf-8?B?RDFiN0dMbmhoSEdIMjZ5UXlDRXRGYmg4bUx0TEkvaStZMURJZUFuWWgrMjhU?=
- =?utf-8?B?N1VLaVBKZkp1NmlCS0JYd1VGYmhlUHdmU28zU0JFc2FtVitwRnU1U2xZY1Rr?=
- =?utf-8?B?TDlkVWVGOEx0cGhqWklRMzA4aTRCelVidFlMdVdmeG5abno1c3lHbUZKWk9J?=
- =?utf-8?B?OG4xM21vdFJJTktJSW1pSnRzS2E3dGJ4SWI2WHdqbTdaNjkram5zYzJaMXp6?=
- =?utf-8?B?a1h3RXA1MThJNnlnSmFjRmFVeURhaktxR3JaT0Mvb2hMSzdZZ1pMblZwWitN?=
- =?utf-8?B?N3AwVkdqQ0hvd0RnMkgxTlpqWko2QjNyWkpiZmdSbDJlR0xTbVRUenFhQVJq?=
- =?utf-8?B?ZVc1ck8zaTFIOXVocXMxdWFCbEJ6V20vdmI5WUx1a2UyN0tsUEY0KzZiTmVC?=
- =?utf-8?B?aEFBVUQvYWFYam10WC9KMk1SZ3paRTZiZjI2L1pKNjh5bURkZ3pNTFNWOXBU?=
- =?utf-8?B?Z2E3WFZ0cUJXU2VUbGhGUkpMYWdRNktPVUVkamhMRlk0djRlRGtJdjBkemwy?=
- =?utf-8?B?S0lORzBjNlg2THI5OVhOUTJ0NUx2ZGhFVDNIUUlBM0RrY3YrZERWQUI1cm9X?=
- =?utf-8?B?MDc3b1dtREwxSFQyK0ozS2p4TnZUaU40eXQ0WkdPcnA0SlVxdUxGaE9WYkVK?=
- =?utf-8?B?c2Voc2dmeDYydkJiNGVPTStEQTZPRWlVeGxWblZQS1BzeVYvWDJxZEdCN005?=
- =?utf-8?B?cE5jd01VeEZyWVpjWHZyVk9pNW1ycWhCQmU4V1JqN0NYb3hKYVZteTdOZ0F3?=
- =?utf-8?B?QjhMdVV0ZVhVaDE4Njd2Y3R0aUtJdENCcmZqMjJPVjhjTXAwczVCQlNLT0xZ?=
- =?utf-8?B?N3YrOG5oUzVQZ2FVRm5QK3pTRlNwV0greEhoME5lREpETVBvYzRSQXR2THFE?=
- =?utf-8?B?Vkd6bW9GbUJ4NjBSaldyR2QrcmFISjNTQWtTdnFJL0N5NnhQM0VzV0tXSlpp?=
- =?utf-8?B?TWJVSXFQWkpaenhuNEhpT3poTmJ4MVlEQVMrVkFMUXdHTDhzMzArV3RpTWtm?=
- =?utf-8?B?Q2c9PQ==?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: eca12993-bdf9-4613-7809-08dd3931e9d7
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YUcxMFdhSEtkSEhMUUJCZSt2OEJGU3pQNC9GSXpxbzY3a0MyNlorR3FPdkR1?=
+ =?utf-8?B?cjcyS1RHN1RmV0VPZzNaM2hJbmNEV3k0djFCa3NJTFo5OWZBOGNxSVFiWHhT?=
+ =?utf-8?B?L0k4U28rM3UySHJDNDEwckZYY0g2M3ZXQ3IzNmgzM2EybXlFSjBPSFB2Rmdu?=
+ =?utf-8?B?cWp1QndZcUkwZGt0V2VCVThuSlY5Nnh0enYwU3hMa0piaGYxZWN0dno3cmVn?=
+ =?utf-8?B?UG5wSWphOXQzU2IrZG9YSXAxTFZLcXZlM0NnVkttWGZqOEZPU0R3aVI0RkhQ?=
+ =?utf-8?B?U21zcHFrdUd4b3lqbDhjWnhsTlN2YnVmMFR0eXhpKzN3SEZrYkNTUkRuZ2Ja?=
+ =?utf-8?B?b2NxR0NvYWMvdlFZNmFZSEJwK2lyQU9IbEs0dUZ0cHNUMEFETURLN0x2WW82?=
+ =?utf-8?B?UFkxR3Zxa2E5NlpsUnFZSFlnTVA4dGprR3V5NjQ1V2Y0c3hPV3RsTjZVeEht?=
+ =?utf-8?B?ZlJQNWM4SWtDeHE3T0oyeE1Yby9WMDBOUFdJbGpQWkhTUHVHVjU1ZFRYcFMw?=
+ =?utf-8?B?RkZCUEVCY3IxK3ZaTVl3d2crT2hCNC9RSGw0OHlRYzJOUGErMlpBTUNhN1N3?=
+ =?utf-8?B?RDdZYnY2K2cwUytxckFHblZUenJKSnM1bm92cWpzb1d2R1BuK3VZK3k3Q1c4?=
+ =?utf-8?B?amFEOXpiZFYxZ0cvYUF5MWd2VDN4WmhySlVZSHcyN1JMeXZPUEpqdXlrUjJl?=
+ =?utf-8?B?NTdmUEpueHJ1ZmNkNFBsaERJaTJJVWMvTkcxVjhZcndDUmRJK0RHOEU1dU01?=
+ =?utf-8?B?T2xkK0NKbVhqY1ZOOE9VaTV1SUxPaDNVQVRwVEs0bXAwTGpaVTVmSURITGs0?=
+ =?utf-8?B?ZGFoc1l2NHMxTWIyNmZGa3ltNkdFR3IzSUhHZE5mMURTdHlyQ2QrZUtyVWI3?=
+ =?utf-8?B?YVdBS0YyMEU0ZUpuUTNSdFJtQVRHeStOMnpHN3ZDUEtZbGlGUkZHejJtYklp?=
+ =?utf-8?B?YkhiSUdjSU5aekIwSUFja0VhTFRpcmNKbDB1VGNQN2JpbEozbzlMNUdZc29Z?=
+ =?utf-8?B?dksvU1VXcE54a0c1a0JaUGNkeHRkQ3VGeVdHeitTd040bnRPbVFsWHZJVE50?=
+ =?utf-8?B?aGhKa1NnSUlhSWlwVHFaNGg0OFJIcER0ZmhuTzJmNUtUYTdpaUFRV25meUkx?=
+ =?utf-8?B?OTVEcExod3NDMFFWQzB1UTdPdjF5ZGkrZzhsTzFSQ21TeFBtMy9VbXJSakJD?=
+ =?utf-8?B?bVNvNUlxV0U2aEZGeEp6Y3NFa3ZadUZHTzRKVVQ4bnBPbGsrRWZEWEcxOEJp?=
+ =?utf-8?B?NWRpa2EvRHpXVDMwM2cvM2hLblVkcWUrMGp2ZWRBSHBGMGx1blFTWFNHQkZ3?=
+ =?utf-8?B?NHRLWWU1L0ZkVjFNNGhIaHRnRGRLRmFXempGUjdraXU4MldYK2poRVQ2S2xM?=
+ =?utf-8?B?UTB5MUc2eEk1dWRNcTZuUnR2enljekZQekRyMzlYZmZjZlJPa1lZVHo2NFFK?=
+ =?utf-8?B?a0JVR0NKSnNjZ0dyS2xVQ2hkWXhSNFJJUHh0L1JKZVIxYW9lRGtnZ0VTcWhW?=
+ =?utf-8?B?UkxKLzFrSDR3Q1JRRmpvMUFPMFE2cmxDTXFaSmcycWhtVXQwZElNMDlheHc2?=
+ =?utf-8?B?ZDhqcHJDeU5wRDI5NGxjQjFRblBRakRoZGRIWTMzL2dWNmljZTJwcWJHQlJh?=
+ =?utf-8?B?d1VsT3RyczVWVmxSUXdQS21YQkRnMlIzQUxkdTJiL2JueHMwazJwc3N1aFFq?=
+ =?utf-8?B?eHIzVldZMzMzVEU2emhsU2gyTll5SnBDU09PZDRDdThwcGpya3VKelRDcllP?=
+ =?utf-8?B?ZUJtTVc5bHJFUEsxOWJIWERJa2hZY0lDRHZnaTFpbkxkcURlSHdMbmgzVGlJ?=
+ =?utf-8?B?Qm1yeVd3WWtMdVRUYjl0WGlVQVVCSXY4ZU9RQloxb2RneDV0eHJ0bi85ZCtU?=
+ =?utf-8?B?c2lyd1JkbDBNZHBFTlppR2V1RW9uclc4TWc4MHpMMGdaUWh0eGVRTmVLRWpY?=
+ =?utf-8?B?S1hFTjJndFI2bkJDZEhwbGNaWVphajhmaTRpTkxOZmhUN0hYT1p6OGQvT0FU?=
+ =?utf-8?B?SjRaMVZubktsMGxZV05uMmJXSHY4TThNMFZsZS9TV0hzUkhzTlhrRDNHZnF0?=
+ =?utf-8?B?Z1lLSG1qV2JzS1ZnWWdLWnlBSHYvTHc0U2hXeGFMeGFRM050S1RERjhYTnVX?=
+ =?utf-8?B?UDErU1MxMExVdEIrcHRCRnB6UEZQcG9abVB5T2tFRzBOVUdCbDYxTEFHSG9u?=
+ =?utf-8?Q?wue/N8sDjjyMh/NbUxlMKAQ=3D?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 20a27b51-6e6a-48bd-7f85-08dd3933beee
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2025 09:07:49.7461
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2025 09:20:56.8101
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pDS6eTXBGjKFcCylKEoJ+T1B6QO04R23bKQr1Uj+xEMKA5yWf1QCFWGGWHT3zJru/Ijq5zdhJjCMFHGF7h67B9rs/c2aET+BkkRGD6gcWkM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6614
+X-MS-Exchange-CrossTenant-UserPrincipalName: AbE82UZosQbrlLsIWd8iARnrUI+WJtkYSNPnRiuqSM7xd8DzKRj0vOWHeKCueZGVuMQKZGzCRFWiDdy2dXh0Tjsx+2lwtHDtXCNw7lTXopI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB7011
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_010752_556411_A0FD54F8 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250120_012104_171233_B3DD329B 
+X-CRM114-Status: GOOD (  36.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,59 +175,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
+Hi Michael,
 
-On 1/16/25 15:47, Quentin Schulz wrote:
-> From: Quentin Schulz <quentin.schulz@cherry.de>
+On 1/20/25 10:06 AM, Michael Riesch wrote:
+> Hi Quentin,
 > 
-> The Edgeble NCM6A can have WiFi modules connected and this is handled
-> via an overlay (commit 951d6aaa37fe ("arm64: dts: rockchip: Add Edgeble
-> NCM6A WiFi6 Overlay")).
+> On 1/16/25 15:47, Quentin Schulz wrote:
+>> This adds minimal support for the Pre-ICT tester adapter for RK3588
+>> Jaguar.
+>> GPIO3A3, GPIO3A4, GPIO3B2 and GPIO3D2 to GPIO3D5 are all routed to power
+>> rails and can only be used as input and their bias are important to be
+>> able to properly detect soldering issues.
+>>
+>> Additionally, this adds build-time overlay application tests for (some)
+>> Rockchip overlays to try to avoid future regressions.
+>>
+>> Notably, the Device Trees from Wolfvision PF5 aren't migrated (but
+>> should) as I do not own the device and couldn't figure out from the
+>> introducing commit logs what the possible valid combinations are.
+>> +Cc Michael Riesch for awareness
 > 
-> In order to make sure the overlay is still valid in the future, let's
-> add a validation test by applying the overlay on top of the main base
-> at build time.
+> Thanks for the heads up!
 > 
-> Fixes: 951d6aaa37fe ("arm64: dts: rockchip: Add Edgeble NCM6A WiFi6 Overlay")
-> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 86cc418a2255cdc22f1d503e9519d2d9572d4e9d..3f92d1a9d0b6efeee46ad4aff8c2b8ed3cb83d73 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -134,7 +134,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-evb.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-genbook.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
-> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
-> @@ -163,3 +162,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
-> +
-> +# Overlays
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
-> +
-
-Maybe open a new section "# Compile time tests" or something like that?
-
-> +rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb rk3588-edgeble-neu6a-wifi.dtbo
+> Just to make sure I understood correctly: By migrated you mean that the
+> overlay entries are moved to a separate section in the Makefile and
+> there are explicit combinations of base DTS and overlays for
+> compile-time testing purposes? If so, I don't consider the PF5 migration
+> as *that* urgent. I don't think you can break anything on our side. Or
+> am I missing something?
 > 
 
-Thanks and regards,
-Michael
+I think it makes sense to backport the patches in this series (except 
+the one adding support for the Pre-ICT tester adapter on RK3588 Jaguar). 
+Because we cannot backport the patch for Pre-ICT tester adapter (it's an 
+addition, not a bug fix), any patch that is applied after that one will 
+result in a git conflict when backporting to stable releases.
 
+I believe it makes sense to backport build time overlay application tests.
+
+The git conflict will likely be no big deal but if we can avoid it, 
+better avoid it :)
+
+> Maybe you can move the lines
+> 
+>    dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
+>    dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+> 
+> to the overlay section as well? This should not cause any functional
+> changes.
+> 
+
+The overlay section would only support the syntax which allows build 
+time testing. I would like to avoid confusion around what to do when 
+adding a new overlay. Specifically note the missing o in the extension 
+with the build time tests.
+
+>> I'm wondering if we shouldn't backport patches 1 and 2 to stable? In
+>> which case, it would make sense to try to have the Wolfvision PF5
+>> overlay tests merged before the addition of the Pre-ICT tester adapter
+>> support for RK3588 Jaguar as that one won't be backported to stable and
+>> backporting the Wolfvision overlay test would incur an unnecessary
+>> (though not difficult) git conflict to resolve.
+>>
+>> I also do not know what kind of tests we should have when overlay
+>> combinations are possible (let's say there are A, B and C overlays that
+>> can all be applied, should we have base + A, base + B, base + C,
+>> base + A + B, base + A + C, base + B + C and base + A + B + C tests?
+>> maybe even base + B + A, base + C + B, base A + C + B, base + B + A + C,
+>> base + B + C + A, base + C + B + A and base + C + A + B tests?).
+> 
+> I have never been good at combinatorics, but I feel this has the
+> potential to explode :-) My two cents: The overlays *should* be
+> orthogonal to each other, i.e., no dependencies between them in the
+> sense that overlay A creates a node that is used by overlay B and that
+> sort of thing. Then
+
+I disagree. I can already tell you the following usecase:
+
+our Pre-ICT tester adapter for RK3588 Jaguar has two proprietary camera 
+connectors. We already have two camera modules working with it, so the 
+following would make sense:
+
+pre-ict-tester.dtbo
+pre-ict-tester-con1-camX.dtbo
+pre-ict-tester-con1-camY.dtbo
+pre-ict-tester-con2-camX.dtbo
+pre-ict-tester-con2-camY.dtbo
+
+You would then apply pre-ict-tester.dtbo followed by one or two cam 
+dtbos. The pre-ict-tester can be used without the camera modules (c.f. 
+this patch :) ).
+
+>   - Permutation can be ignored. (base + A + C = base + C + A)
+
+I think that's fair. It would anyway be an issue with dtso which are 
+using /delete-node/ or /delete-property/.
+
+>   - Composition (base + A + B + C) may be ignored in favor of individual
+>     tests.
+
+Not sure this is ideal either.
+
+Our RK3588 Jaguar main PCBA also has two proprietary camera connectors. 
+It would make sense to test that applying a dtso for main PCBA is not 
+messing with applying a dtso for the camera module on the adapter.
+
+This is a bit theoretical at the moment though since there's no camera 
+stack available for RK3588.
+
+>   - Individual tests may be ignored in favor of (a) composition(s) that
+>     cover(s) all individual tests.
+> 
+> But of course this is likely to vary from case to case. In our case, in
+> the composition
+> 
+>    rk3568-wolfvision-pf5-vz-2-uhd := rk3568-wolfvision-pf5.dtb \
+>      rk3568-wolfvision-pf5-io-expander.dtbo \
+>      rk3568-wolfvision-pf5-display-vz.dtbo
+> 
+> would do the trick.
+> 
+
+Thanks, will send a patch for that in v3.
+
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
