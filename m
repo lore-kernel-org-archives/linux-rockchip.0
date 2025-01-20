@@ -4,93 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208B3C02185
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 09:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0712C02185
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 09:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DAB4jn6WWWgK946R7lLs9x19X6HRjj+ZmjgT4yTxMmc=; b=N9ngDHwKF5en5a
-	S//mxd4TWIgRunB11ylhXP4OkuhtxNHnPX64xIi7QzYEDnVlVyuKvWeji1Uf0nEHMV5rXFr41/F4t
-	NvGzNee578te+aZ2hOyQy8rs1/MP2oQhRg8938OfckHRv2kJIeT7FrdaQkCFbLxrsBnnbe+sW6ybM
-	XxeF6vIxw5o60T/FJHWqKFZle/gGOUDCI2UKzgIZNIN3jkJLwYgffl+0O2rQmkx3x63X+VjWpsxkx
-	BlG/rxWUqA+1TRp7ojtbFjb2MhP6bX6t7EtrAxeJrn8ISSMqg0lTB/UROqWkRp42oFmmHqmdP7DN4
-	vTRPX4FzCZx5wdCxMo7A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=AvGdreGB0Dl9kN4fUaUTWP78TnGnOn1f7d1irxS2iiA=; b=VzeEOp5bw/7e1zQ0l6kRutb1Ib
+	X2ip4dxhz1SH2PJ8gs+PEVFe7HcNCXY5o1sSn6momB0mfnFljjl5xUayDwVGD1YdXMd67MoyvPyRR
+	PjDcyK9au3e97JmpfT9cy9KM2GnDJ+m3oCf0JG7s1jP7slTKDONzJPOg3ycM9EjJ+kZwzobnmWDDy
+	e0FeeEAyXR6wvXz65JwC8nCTzKF3CIDLgfW858c9hnxwPBkofwh+s/e5sbejbWvp3/UgaP3ypLedK
+	uDw2o5P7OB47284L49kytP2V+31DyYMsMD/kNuMrMPrMqbxQphfeC6pDdeMOUhZNSpTQM2Z6APFus
+	mdS7yBQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZnkS-000000056Wl-3sTG;
-	Mon, 20 Jan 2025 09:07:08 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1tZnn0-000000056vs-3jUU;
+	Mon, 20 Jan 2025 09:09:46 +0000
+Received: from mail-db5eur02on2070a.outbound.protection.outlook.com ([2a01:111:f403:2608::70a] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZnfd-000000055A9-0UKQ;
-	Mon, 20 Jan 2025 09:02:10 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5401c52000dso4500671e87.3;
-        Mon, 20 Jan 2025 01:02:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1737363727; x=1737968527; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ObQ7GdDi1GptsOmZqtnr/i0ThLMDmvsqiFg1PNnocMQ=;
-        b=Y7J+uSdak95JCdnbgcwWtQYs618s9KERcvMDDcJwJCa6xNyF1poZ2fegyT5ZiCov5r
-         c1lCP+vnhlALCa9HtshsKBmNhcG2sUwCmIWNJYoOud7EIOMO8F2vjSYtrQKIpzWDV8kF
-         q5veaLcp5CngnzxLRO7jEprqtBjsZnijNGfvmxt3I15gw7yCKJCyeN/5yFwOnW7O1bg6
-         GhjxdlAobc0JkbWIUtCMEFXoIhNxQ3Dn1txA67x++11ST4xsLAODUDbS+UPFPoutR9WE
-         KTeOKKt05IEqYabng4PO3Q7pUhwBskzeKKJozN4gwqwzYqcwRj2CWJDKbzRRc49x9vz0
-         dcNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737363727; x=1737968527;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ObQ7GdDi1GptsOmZqtnr/i0ThLMDmvsqiFg1PNnocMQ=;
-        b=wud0/2cETWehK9ljFmM0Z2d3oUursjcmreYafVEy71mBZCNXvM5DJy6SCtOSpq441F
-         MHMItkp8o2MeNlCRHof0f9Q1qmyQsXHRnqPOrQwQM6HlnZbtINCsQ0vWOWUTVGRon2Wc
-         1a9f6IR+JtUtJP7HKRnzSGC7DXuKWaIQoek4ppM35z261//ftgbZy5x8zRXUMCjg9J9T
-         YQgple2XnSfLFMPEb1xYgR42Bd3us6+Z6hgr30srL45Zot+PM06JfPTMsAMbzo9TX9Qi
-         JSgoN4GVHOKEuE+t5vzIpmF05K33ApsK043oXOSbJlVfrmURsj4QV2fZ+8448VGgPDqZ
-         OgRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVdvlJiXDrYFYNS7MEyRfN/8LbzAFrbqwyE8GnyGtOeXKKMHmzPtYd1BJDvh1JUmJQwgPAEYlMvgfyfAdowijo=@lists.infradead.org, AJvYcCXe4AKSRtMGG/oPjVg9QKnsVAo0oAfrM9RpC83PVmIAvCuWcFiCjITEt2nrnZzoA32CLafTn2koM5NAopMVqHAv@lists.infradead.org
-X-Gm-Message-State: AOJu0YzppOWBoen6IcNUXD5A1zUir/HnM9dgLNIz7AdrP6bgQJRTHBE3
-	xo84WBKYCTvqTgxmmxDLBSX4UH6kxti3P13hVSiPzIOfVdMswqIanz6jP2XpOKb3uw==
-X-Gm-Gg: ASbGncsjIKklvU3LnMwtKNdMq6PVFwz7OA7IKAt53cwKABxaVsG8FMItDSQa7SEybtW
-	0Y0uez90dKy+NdWuZPwVfzdKcY0eanBBohmdYdNLTe56gkqnKnUxBO+volFFRGt15Ys3+qQThGw
-	Kns3xQ84o+oOBb9PYMjiaZlc4RVWvjDuGT+FP/CJuLmCDW7XHHACwI2li2VfZ8+m/AN0KbsA1Cp
-	CBj/v0q0FkQbNfhPyGS06F3mT9NJXTgQPoqWe+YvcpivIUg/CVDZG0ARNmxDac3fbemcko=
-X-Google-Smtp-Source: AGHT+IG+uLtQwIY7ysUBBPpzDpbxHyy+W/cd6hfRub2H22c4oda2HhPrd0zg5OQqcxaq2LdygE+qDA==
-X-Received: by 2002:ac2:561b:0:b0:540:353a:5b1f with SMTP id 2adb3069b0e04-5439c1ba039mr3725344e87.0.1737363726847;
-        Mon, 20 Jan 2025 01:02:06 -0800 (PST)
-Received: from [172.30.32.150] ([185.204.1.212])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5439af0e90asm1224768e87.76.2025.01.20.01.02.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jan 2025 01:02:05 -0800 (PST)
-From: Alexey Charkov <alchark@gmail.com>
-Date: Mon, 20 Jan 2025 13:01:29 +0400
-Subject: [PATCH 3/3] arm64: dts: rockchip: Enable SPDIF output on H96 Max
- V58
+	id 1tZnjz-000000056OM-2A3E;
+	Mon, 20 Jan 2025 09:06:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=kI6WU16iBdKc4rGJO8gsNigK2+UZFr1BOOx1ADGPn9C4qhZ+oSWPJJCOSziyQr0Y547K+K/Bn8dESV8wkM9NJZ+EmDkfPXhSEYH0hqhd2HX6MjX9kfJlEf5hRQXA47xGxuozWKHFu7qxn1oLh9jbmcoRYhZ1pY6nWzT9JsYYtPzyhGxMeGuDmwnBH1Cn0Kz4odWAGGXHY/NzoZyq+a+Gp6cIMDspNFvBpjNqpSK2PpjkI47plaTPIfnbxziwio7VOF6L2OXyJxfePZFgjQWajvWibhjTKrUgKUgCLCp+KyCdGY67JoX2Bp2wTw2WW4ilWfHyt8e/+Wl/4ioKDIdVKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sIqNSLe4e4fcXyOeXF4no+Yvw8RI4XFtJcJmB8YslyE=;
+ b=xMkyVU3/v/cUH/eGNNi+8OHQ5sXndq+edq3Nu8UDMPNSiVSWGBSIZCP1Oi/fx5oSSp+DkjmpkNLOtWAr5+OglM+EwDv6F4+Fnb7vJH7515IUcWzQoftlq8qM5Z7vq+PjWUB25tSHsotq2QNNnjmY5w4aMxOWT38gHhVURuhUg3lU8FtrLzMEDIGyeBOjFnY1o6WbcSFrkGQvK+iuBDB+Cd4kl1MzbKNzpbrMu0BZuiNveLJQrErWyun7TVb+yKQc9fb5vuMrL80PNCvNiLuirP2KJkhGlMElcNMnZ1ZpDIy23CJk6lfIGzxivwvAxOPhVdcNyv8bb66DU+mMJrd6bA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sIqNSLe4e4fcXyOeXF4no+Yvw8RI4XFtJcJmB8YslyE=;
+ b=v1cXk6ZShBpzU+ZS83SK9oMaR7Fz7tgE9EiOmJ7DfYHNCZNlFK84BB8U6xlaCRsbiCmuSWKjkYZa7r+vjrSx5IVsTAkECltG1ySM7KGbtfQ8rIQ3SNmp7DpFQe/EKjYYAyRoKiFvcC6zwcmkQb325EdUT1b/miXXrMUgrmbGAVY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by AS8PR08MB6614.eurprd08.prod.outlook.com (2603:10a6:20b:338::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8356.21; Mon, 20 Jan
+ 2025 09:06:30 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8356.020; Mon, 20 Jan 2025
+ 09:06:29 +0000
+Message-ID: <49bfb4c5-12b5-447b-b08a-af0bb9fc304b@wolfvision.net>
+Date: Mon, 20 Jan 2025 10:06:22 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/3] arm64: dts: rockchip: minimal support for Pre-ICT
+ tester adapter for RK3588 Jaguar + add overlay tests
+To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Quentin Schulz <quentin.schulz@cherry.de>
+References: <20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+In-Reply-To: <20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de>
+X-ClientProxiedBy: VI1PR06CA0170.eurprd06.prod.outlook.com
+ (2603:10a6:803:c8::27) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-Message-Id: <20250120-rk3588-spdif-v1-3-1415f5871dc7@gmail.com>
-References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
-In-Reply-To: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1737363699; l=1420;
- i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=mhZBI52cSFUW4zmM+Wjfy5nZUWjEd1lQ47cgj8nn2a0=;
- b=3k0A0++kluCdKMCJzs9uffAyMkB9nN6XP5utWRzFrHkWnhbpcAKF4sZs6ezzWG8blnODh5R+g
- LPjSW5xBvA9BxjjtuEIwF1rkSlrUmbTqApiJoooeSrxu/HMNIP1fWfy
-X-Developer-Key: i=alchark@gmail.com; a=ed25519;
- pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS8PR08MB6614:EE_
+X-MS-Office365-Filtering-Correlation-Id: 67e04a0a-ccee-4711-a30e-08dd3931b9d8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|366016|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?U0d1OXhNdmpSTEtROCtya05xQk5KNVFjUmhreHF6L1lVM0FzMWpLZVFGajlx?=
+ =?utf-8?B?MllNai9DaHFkanZ2akwrRU8vWTI3VDFIZmxqK0hBU2VmenVHaEp4QmFpWHJY?=
+ =?utf-8?B?ckRvbTRnVWhlcUh5NFVkSVpYUjNhT2FHMjNVcHBoaFRocHBkdVRuc0lwTVBX?=
+ =?utf-8?B?bFFmbGgrVkJheUpMMnJPNWVWaDdLWDBjOFB2NDVURzNOUmFzd0VuY0M1TXVD?=
+ =?utf-8?B?QzkySWJyWjNSVHIxQXlJWm9nTzZiVG85MWtEQ2pyUmRlVDdPSVZmQkEzZ3d3?=
+ =?utf-8?B?dGJCbmdWZW00YkYrQ1VQOStyYmxER1hPc2xBRU5JWis2d2RFaWtubTRuRWpW?=
+ =?utf-8?B?NWcrYWtxdERSeDhUcFhia0hjbEc3dGdpZEd6V2EwbVFpK000RFJJMXNuUGZK?=
+ =?utf-8?B?c3BqZG1oSVNySTdqU2tHbDFlUHFKT2lydHFpRnZ5alY3WE5uZUVZMVg4RFJH?=
+ =?utf-8?B?TDliTlM0aEFXVWhQL2NJUG0rS29iZ0JOZjVCc3BnM0xBOGFVZWF2dGxIUkIz?=
+ =?utf-8?B?SWxFbXdzT0Z5blVrazhRS3RPK0F1RWtqeUZFYWJVOCswTkF6YmdoOHlzNG1D?=
+ =?utf-8?B?M21nbkFhWWVhWlNPTmMzZjI5REQ0YzYzQzdEOGoxL0xoU1BGNUE1SStldGNz?=
+ =?utf-8?B?eDNZY0wyQTdad3p4clhMSXFPdmZGdmJLQnVoanhhVlNMMXZQYlhtNW5JUGpw?=
+ =?utf-8?B?c3p4SzJtNXQ4dk9iZ1ZLQVN1T2x5c0FwUThTdk1HYU5KZUxSRCswVCtBZkV6?=
+ =?utf-8?B?T3RHbVZxNGQ1WjRwdExYK2N0VmVmUkRwcytFL3g1WlViS2d5KzFiY0l0bHVI?=
+ =?utf-8?B?NkZuejAzbTkwNmo2L1hKbEVoV1NXZFZJcXU4bUFOb0NyV3pGeStISUNUSitj?=
+ =?utf-8?B?OUErdXQ0N0t6dXRmbEExMlQ1NkRKM3J3ZVBQNGQ4dWpqbHFrUXlyT1lVTGtD?=
+ =?utf-8?B?c2h3M3NaS3A4NUo4cG1HZnJZRXdQaHNLNjJEWmFsNDdwbTJaeVVzL3p1eFJz?=
+ =?utf-8?B?UzBhS2VidTJLZHNncWNMbFhCQ1VnaVEraEgyQXkxUVlDbExSK25lUzF3SHhZ?=
+ =?utf-8?B?cFhBRmgrR0NzNWZVc05ZUktuZ1RXYTZ0eHV3UGU2NGRPRXMxYmpXYjdwNjFZ?=
+ =?utf-8?B?TDZab0pvZ005S2ZKK2MzOE8zUXJqYnpXTnhVTFU1WVZEZjFpdk1EKzlKUXo3?=
+ =?utf-8?B?NjE4SjFHWWpMWGxubFRmUUpLblpkWk1ndmc1VWVwcFRQVFlzS0dyTmJwcjdI?=
+ =?utf-8?B?em5EUUNVbVhVT2ZMajZhbS9NclFIMXJDZEI2ZlQxSXVCUDZFOXozTzdXOERu?=
+ =?utf-8?B?Ykxna29BWWx4SVZ5WHlFUUpCNXZJa1NVclZuY3VUSEg1MTFFdzVuR2twWVpz?=
+ =?utf-8?B?ZVdocmNpMFl2YlM0TW5pUmRlZm9INEcwT2FOWGdodGo4VVJiN2FtMW1RQnBM?=
+ =?utf-8?B?dlVTZHdtcG9XenF6Q1JJd3h3NVN3OUd6TkF5UHBvViszY29QU0Zsa0xzbmFj?=
+ =?utf-8?B?MzlVV2FoS3JGMXRtNWd3OHJybDJlbExWVVBLL1ZXTkVCK1RXOEswT09VUy8v?=
+ =?utf-8?B?eGVSWVBkdkNxOXp1eWs3VitRaWxsaklaZGpDMkN6aDJkdFpWaFp4Z0Yxai9l?=
+ =?utf-8?B?U0Q0TTBEMlhLaHBzN1pROUpsb0UzVmhjQzI0MWMwRXJtZktadEN2Mjdzak9l?=
+ =?utf-8?B?dXJGUGFGcldCaGVqdW0ya0grSXd6ajYza2o4cFVBVE5UREdQcm43RzJXNFhW?=
+ =?utf-8?B?NGduUGlQYWJ5dFNBVk01ditPWkV1Y3ZBVXkrbUxoSXNPUU81MW93b2NueGlG?=
+ =?utf-8?B?Wit6MW1kWlU5RElYa0hXeGFUcjgvTXFuL2Q3Zk5IVFVkdWM1SWdVT2hwcWFX?=
+ =?utf-8?Q?V3HP+k77aEGwe?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(376014)(1800799024);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?anY2MXBYY1NVaTc4bEl4SXhFcFhUN2s5NnBHNVBEMWFPZy9PVnl5N1RFQmcy?=
+ =?utf-8?B?dTJxV2hVQjNxSlBBaWFPbDc1aTU2dll6U0lpYlhXcjZzYytQZ3k4VGp4WnQ2?=
+ =?utf-8?B?RWlBVkhHZFlobkpzeUNZMFI2UEgrQ3RHZ2NGMWQxUkNENXRCbFVVTUNmc2JD?=
+ =?utf-8?B?WTVTeEk5WmprZFpYS3M3enowOVF0b2EvcjVsOCtIY2UxT2x2UHZOV0NGVTVE?=
+ =?utf-8?B?YjV0bXk3NlU4M1ZDZGZ2a0szTWJpSExiN3cxd0NrZEtNYVB5RUd5ZCtrOWds?=
+ =?utf-8?B?NzFnUG5NalhsSGFDUWp0YmVqZ0hCRnJHMFhheFRLQkhiMUJGcmplZUVxdlc5?=
+ =?utf-8?B?TUhEcWlaOWpLeW5qSXdzeW84cXJ0K1BzMkNjeWpiMHo4VFFIeFJRTE5MVlJL?=
+ =?utf-8?B?TlYrRm9kRUk3ZmpKNURNd09pd2tESGlUblNyRThsa2lVTDFlN3BDMHhUcngx?=
+ =?utf-8?B?VklaSHRZdEJtTU81eDRQOCt5VmVYT25WSlIrY21oVDRITm1tMC9iZ1QwT0E1?=
+ =?utf-8?B?Y2JjbWRKUUp6b0pMUXV3aFZLR0pHem8zd00xcnpWemFiaHRIMnYxd01kT1VQ?=
+ =?utf-8?B?YmF5ZElpQmNac2o5bCtmM1FiVnlpUE5ELzNqNWFwa01vaVdia0crUXVwV1FE?=
+ =?utf-8?B?akRpSk1vcSt5SU03U0NLbGtaNkNkVWh5RXpFVkIvdFdta0oxWFllVkpleHZX?=
+ =?utf-8?B?bGV6VW85dldQSjA2U1lvOWtWUkptUlRkNXQydTdOajRvcDdYYU10U0dmQVJI?=
+ =?utf-8?B?MjYyRWVvbm1aN0xGbDN0WXBMR3E2UjRWWm9qaHZNK0RTUm8veHpjb0JnZkVL?=
+ =?utf-8?B?Z25sNnFuYVdQRDJsdTN5NHhjOWhQcExnUDhZa3dIS2MzeHFvbE5uQUYrRkhE?=
+ =?utf-8?B?bTNPZkhkL1U0VUVrVnVoUXM1UTV6SkdweFRSSjd2bEdVaGgrby9GMi9NYUdY?=
+ =?utf-8?B?OXlFZkVPTGpRcjU4bmliQ3NRSWhrbk9qaWFEMUtEdHNtR0tzTWdocnpxZXk0?=
+ =?utf-8?B?c29BUzdLZTJkVFAzZ20vTWdZNGZCRHZDSFpaZmhzNHVGYlNZb2hoTSt3aUNq?=
+ =?utf-8?B?eXc1RnBpaWhrMEIwZ0V6RitJUXdZWGNUNXp3QW5HNTUvaEJYVXc2WkZ0YVdl?=
+ =?utf-8?B?OFNTOE56TFR4RUtOK2I4VlJOeGRxVDZvQXFMcVUxT3R4R1pXbnJOMmM1ZUho?=
+ =?utf-8?B?UkVSY3hUSnprZHU5TUJrTXFza1RpMkJGb0lXb3dtWHVRQ3RCQmsrd0UyVGM1?=
+ =?utf-8?B?b3U5cjE5OGtzeTBFSmFpTzkrNzlNZTUzYnF2QnpBU002ajFhZi8wZUZzcVc4?=
+ =?utf-8?B?ZW9Oc0crTWdLMWdFYjJKM0JVdVVIcERwcXlhTFkxaXRTd2N3ZHN6ajFScGJF?=
+ =?utf-8?B?YnhyVmJhazlBUjdrVk5oSXZtS3IraXJ5YktHOTgwcDlkNmtpWXRDRTRqeThs?=
+ =?utf-8?B?ZHlXOTh4cjl5eHpCTGdETHRjZkk5VTc4Wm10RXk4OTRjNEZSSEZWR1lhbmxX?=
+ =?utf-8?B?SVRYMGI0WStjOGVTYzdteHFPNHdCTG0yMXpkUmVPSE00SHBRdml4QkIvY1B2?=
+ =?utf-8?B?VFV6RVFKbGVjU2MrZFM0bi9zclN4Q0dNVyszekJsd1RzaS9qM0c5ZVJsTGFl?=
+ =?utf-8?B?RjhBQzl2eWdHNk9TMFNDcnBZNnFpblg2Q04yNnh0dHptRE1tRndjR2RJT1c0?=
+ =?utf-8?B?Ni9GRnlCMDRhQW1oQitCVmxIbzJ4Y1ZQaTZUWUE1WXJtS2xnVXRMSzNON3NJ?=
+ =?utf-8?B?UklhSDJ0YWhsSzJycFZaTFdETy8xUDl6TFBmRktZV1lMVnBsTFM1Q3A3WUY1?=
+ =?utf-8?B?aHlFZVpnT0IwTE5oRTE2L240Yjd5aFFZbHVXMi9RbWpWbSsvWUU1SHZMUGto?=
+ =?utf-8?B?USsrUVNvNXRYaEx3NVcyemFoQ0dGN3RMeXl6OG5FdE8vcjlla1FaengvQTNi?=
+ =?utf-8?B?RW5SaThxaDVsM0laWlM1Q0ZXZ0s5ZjQ0bjFXM3F0cVBFRkRIRUFKRndjTXFW?=
+ =?utf-8?B?emxZWjUzd0NZWWMxamd1SUhlMkoxdHU0TStyOGNRdTFGRDhaOXRML2Z4ZGly?=
+ =?utf-8?B?dXlyRU5ucFN2MlRSQlVLcnpRSXh0aWQ1UnRieFBIYVVDZ0hJbERmQmFrRFVX?=
+ =?utf-8?B?Z3V1RFcyLzJBNEZ4dmJkMGRMdUsxWDBJUFprSytWdEVzZzE2QnNaSUZ3b0lT?=
+ =?utf-8?B?WUE9PQ==?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 67e04a0a-ccee-4711-a30e-08dd3931b9d8
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2025 09:06:29.2434
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: up81CMwZiKJZioj4uDkZEGPBJBLqDPPM51DFz2SUeqiIpTiIuUP9Y8n1FOVSelkjd+dkggbpt+WTa35MOb/0TPB563I7pzF5VJT0n9DSpX8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6614
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_010209_162175_8303821C 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20250120_010639_590792_820E240E 
+X-CRM114-Status: GOOD (  26.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,60 +181,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-H96 Max V58 has its spdif_tx0 controller wired to a dedicated optical
-Toslink SPDIF socket, enable it in the device tree
+Hi Quentin,
 
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
- .../arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts | 24 ++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+On 1/16/25 15:47, Quentin Schulz wrote:
+> This adds minimal support for the Pre-ICT tester adapter for RK3588
+> Jaguar.
+> GPIO3A3, GPIO3A4, GPIO3B2 and GPIO3D2 to GPIO3D5 are all routed to power
+> rails and can only be used as input and their bias are important to be
+> able to properly detect soldering issues.
+> 
+> Additionally, this adds build-time overlay application tests for (some)
+> Rockchip overlays to try to avoid future regressions.
+> 
+> Notably, the Device Trees from Wolfvision PF5 aren't migrated (but
+> should) as I do not own the device and couldn't figure out from the
+> introducing commit logs what the possible valid combinations are.
+> +Cc Michael Riesch for awareness
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-index 4791b77f3571db3a888c015596b4cc1863fdc3f7..68dd7329de15d873f2a0df85fb84810f9c2907d8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-@@ -140,6 +140,24 @@ vcc5v0_sys: regulator-5v0-sys {
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 	};
-+
-+	spdif_dit: spdif-dit {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
-+	};
-+
-+	spdif_sound: spdif-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif_tx0>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&spdif_dit>;
-+		};
-+	};
- };
- 
- &combphy0_ps {
-@@ -400,6 +418,12 @@ &sdhci {
- 	status = "okay";
- };
- 
-+&spdif_tx0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spdif0m1_tx>;
-+	status = "okay";
-+};
-+
- &spi2 {
- 	assigned-clocks = <&cru CLK_SPI2>;
- 	assigned-clock-rates = <200000000>;
+Thanks for the heads up!
 
--- 
-2.48.1
+Just to make sure I understood correctly: By migrated you mean that the
+overlay entries are moved to a separate section in the Makefile and
+there are explicit combinations of base DTS and overlays for
+compile-time testing purposes? If so, I don't consider the PF5 migration
+as *that* urgent. I don't think you can break anything on our side. Or
+am I missing something?
 
+Maybe you can move the lines
+
+  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
+  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+
+to the overlay section as well? This should not cause any functional
+changes.
+
+> I'm wondering if we shouldn't backport patches 1 and 2 to stable? In
+> which case, it would make sense to try to have the Wolfvision PF5
+> overlay tests merged before the addition of the Pre-ICT tester adapter
+> support for RK3588 Jaguar as that one won't be backported to stable and
+> backporting the Wolfvision overlay test would incur an unnecessary
+> (though not difficult) git conflict to resolve.
+> 
+> I also do not know what kind of tests we should have when overlay
+> combinations are possible (let's say there are A, B and C overlays that
+> can all be applied, should we have base + A, base + B, base + C,
+> base + A + B, base + A + C, base + B + C and base + A + B + C tests?
+> maybe even base + B + A, base + C + B, base A + C + B, base + B + A + C,
+> base + B + C + A, base + C + B + A and base + C + A + B tests?).
+
+I have never been good at combinatorics, but I feel this has the
+potential to explode :-) My two cents: The overlays *should* be
+orthogonal to each other, i.e., no dependencies between them in the
+sense that overlay A creates a node that is used by overlay B and that
+sort of thing. Then
+ - Permutation can be ignored. (base + A + C = base + C + A)
+ - Composition (base + A + B + C) may be ignored in favor of individual
+   tests.
+ - Individual tests may be ignored in favor of (a) composition(s) that
+   cover(s) all individual tests.
+
+But of course this is likely to vary from case to case. In our case, in
+the composition
+
+  rk3568-wolfvision-pf5-vz-2-uhd := rk3568-wolfvision-pf5.dtb \
+    rk3568-wolfvision-pf5-io-expander.dtbo \
+    rk3568-wolfvision-pf5-display-vz.dtbo
+
+would do the trick.
+
+Thanks and regards,
+Michael
+
+> 
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+> ---
+> Changes in v2:
+> - add overlay application tests for Edgeble NCM6A WiFi and Rock 5B PCIe
+>   Endpoint+SNRS
+> - add overlay application test for RK3588 Jaguar + Pre-ICT tester
+>   adapter,
+> - Link to v1: https://lore.kernel.org/r/20241206-pre-ict-jaguar-v1-1-7f660bd4b70c@cherry.de
+> 
+> ---
+> Quentin Schulz (3):
+>       arm64: dts: rockchip: add overlay test for Edgeble NCM6A
+>       arm64: dts: rockchip: add overlay tests for Rock 5B PCIe overlays
+>       arm64: dts: rockchip: minimal support for Pre-ICT tester adapter for RK3588 Jaguar
+> 
+>  arch/arm64/boot/dts/rockchip/Makefile              |  14 +-
+>  .../dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso | 171 +++++++++++++++++++++
+>  2 files changed, 182 insertions(+), 3 deletions(-)
+> ---
+> base-commit: 619f0b6fad524f08d493a98d55bac9ab8895e3a6
+> change-id: 20241206-pre-ict-jaguar-b90fafee8bd8
+> 
+> Best regards,
 
 _______________________________________________
 Linux-rockchip mailing list
