@@ -4,62 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63CCCC02181
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 15:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD0BC02181
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 19:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gvI3KdRuWiWJn5hsTuf3rXOhj76e6YFRZIJUIXNg3/0=; b=HqI8k//X3EISVN
-	oM7CMFlUYJpVKZQKo13juUHQlcSeaBJzAts+0DBQFwe+JOw/zJ9xQHCS6mX143Vd522DJW8v7e03K
-	FfOxdMDDrP19titYollyE8uTHoCfU/PCpweh/I6Vvt7UEe53Piuc8rg0HfMlbdeCc2sb2g0vW3MWq
-	V0FtYPoHLisBlenTNR8zCMO9/i27CDFWrp1YqyXJVYmT4SKEIK/+aD/DuGw7PTYpyvft975EQWyMt
-	NdjwxyZgoVvx2oOvwcj6hc9nmGWuR61lFhmFKRG/V8Omxat7gIIF77jcZUwiySD9ReZxZe48iK4px
-	JKNhWiUvqkCkYZzqZCjg==;
+	List-Owner; bh=TWQX3Rd3WlEFmP3Wg0todre3k9KIuYWsBJMC6hu3hXc=; b=afMFyP7nXOT7Er
+	NLA/vl6Aqx6Ji/J5tfK4q9Q5jWll51/yEP2Xg5gRWaXqkXtxveLiEp6B9NCF8V3ADR56ZmR/IJNgP
+	zWG0xl6qrrRC6rRZZx17jOKB9D4V+Ilp6VFMVqCee+2aQwveose+sWBbNIL1tuWQGXnRS3vXdOUsW
+	jJ4UX386pMmbi6p3Qi0JWDLseCv7tYAcTwEK9D7PgvTnpZxPnHB2vD3WXVV6448eIeI9tR5BqR/L6
+	sSOZMjt6j40jJ7X1Py3hLAe0MRS9F+xW7YOsSEkCGVUcXLKXcnNnIONEdK3Js6QpQ8UdaZYNvCOmK
+	SZjTk4U5CisYgIZcXavw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZtos-00000005tZC-0N3U;
-	Mon, 20 Jan 2025 15:36:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tZxMZ-00000006JSy-2bbB;
+	Mon, 20 Jan 2025 19:23:07 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZtop-00000005tYg-0TOO
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Jan 2025 15:36:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1737387361;
-	bh=38XfVFiUzFZdoqYpFgHfA8U6CjXWamNPxamWEgmKX1Y=;
-	h=From:To:Cc:Subject:Date:From;
-	b=PASg49tDoF/izLzWasFK6zvrPpgngmGzpQkB4ulG2QT5pAsHQHlofw99jzYGrmZMD
-	 f83PlpOoivLp8TkVuxitz56CpfD7O1HwL3070uqrXpw0s5soYuwoJwhn/+o7CqoXhT
-	 8hCv8RL5ZzHrPVP8/9D+KEvKb3obN2mEDy3V+Cy0IAansOVI5vUALg9WrYRkST36ru
-	 8sRWUYFDUoft2cB1gGhwQS3BVmSfXRStlnz0ktn9F3sAYR3YEfE1asiF5BOriYzG3o
-	 NsV3TNYGh6iLn/StyGh5uKB+N+lp12CBj75C7loSZLVDpQDLnN/1xPl4a5UBFl9+Kn
-	 mEGtlOZW5aPqQ==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:fb75:b420:7f1c:508])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 07A9F17E0FAA;
-	Mon, 20 Jan 2025 16:36:01 +0100 (CET)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3] media: verisilicon: HEVC: Initialize start_bit field
-Date: Mon, 20 Jan 2025 16:35:55 +0100
-Message-ID: <20250120153555.404806-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tZxMW-00000006JSW-4AF9;
+	Mon, 20 Jan 2025 19:23:06 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-30613037309so48881011fa.3;
+        Mon, 20 Jan 2025 11:23:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737400983; x=1738005783; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=TbNRXkcRyF0tlmC6FGx5LqgTK6hjgJWXGfuNeKftOQ0=;
+        b=gPm1LrfSpJJ8U0Spn+KGbivewnplbVocvZAhTAa/quwPLKki5+q52pz/kBb9CJHFAE
+         lKOYaA8SG1aaV8JAW0QQvisnWBFKzdpK58Rn9ucDKBTVyf3nOMK9WE/T63jKW41CRFU8
+         eFycR+bG6GBeq2kWdz2CLEdkIoqblqmPhB7l/++I8sJ7fRW+gSMP1pfhc8UVZMi6UDST
+         RGAmAry75WwYDsgERNk2fOGHRpS9tHwWDjKu2fjo3KjuuPSmx82KKemmWSx//C9aJbLa
+         l9no8ZLNSI+m1W/81fd4gBdQ6rC1zo9rlEu3GaMkOs3/lJXslsZxLdwQOhdWp4GGBjPw
+         pYng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737400983; x=1738005783;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TbNRXkcRyF0tlmC6FGx5LqgTK6hjgJWXGfuNeKftOQ0=;
+        b=jdtNdIO095CY7Oyq8jsbDyzwTmTnwQlduOse+F0dJ0hqIYk48QVyNhgyQ/K4cKo+Fz
+         C62519FuL7MMqed6RrI2pFggvWWwRSO0m4OHLk7n3n9M4hWuBLTfJywLF5MkXTBiwBcM
+         iUgOjjqw4QTH6iMzUKQVt4Xb5v14mRZKqq4flT5+i2rOxiipTlPbGehFV1CYRMAXM7xN
+         XMyP+RXKU/T31UTNgaWGljzdMWcG0zwTApJxCfQO9ivr/mDt5d/p1JOb72gauoIs+Z7T
+         kOv/HgoGXMke0ynvr0FzHDGeEKd+USmxDg31v3tqonRYJWp/6R6lvhBfSbj3WawJ7u0N
+         1nJw==
+X-Forwarded-Encrypted: i=1; AJvYcCV3lvYWw2wSrrQHiUlqDqBFPPbXknxsnPsaDD1zij72Eof0s+qr0vT/DLBnAQt0qbs46JCiTyPu/Rhi18HuWLY=@lists.infradead.org, AJvYcCXohDDoeW0frl+s/hMr82N+UJpWUTztFuOm68x9m9SqcqpGDGI6lbEO04o/yUDpcXE3gCFqwmUORAsGjGpdtq3m@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzx4ZKPDpKnRYEXGqZKsh9UZ3bQs3HdShL6TZiqNiYxdPJ2SU9f
+	GCDjsUgzSeFdfFLY5FQ71wfrX2uOabpuiphamWmgXnD1A9Styzv8
+X-Gm-Gg: ASbGncuD2TmjiwX/ylAuLaTjVVW/42oaZUNLoNrCXYVakoALgXTpX7fkPN3TtUActGT
+	PI35xOZRkDhqnn0FXrxh9enLsE4a+YckkgaipOtURa1EeLJpWHRLhXDeSZi9B8aHdWoVA9wjPAy
+	9wkcDt3BPhqmzljq+7lRvqBF/uDJ+3Z8vx5yfX7Epd+zR0UV+czDg70avjE1OJaUXn64PAH562a
+	ByKsC/RxY/J4Qc+o7/laKokK2MHLMMwVux59TM756uIX40pUOolUB0IUh+c5ZuIwzOoMiY=
+X-Google-Smtp-Source: AGHT+IGr49WU9BhdIDFszJomy7IZC0MsVfpvVAJ7VOlKiHTdCZ06Qn8peWJsF+uAk6nP3W4Y1Yz8hg==
+X-Received: by 2002:a05:6512:aca:b0:53e:37e4:1457 with SMTP id 2adb3069b0e04-5439c280723mr5124215e87.33.1737400982537;
+        Mon, 20 Jan 2025 11:23:02 -0800 (PST)
+Received: from [172.30.32.150] ([185.204.1.212])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5439af78fb0sm1460156e87.247.2025.01.20.11.22.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Jan 2025 11:23:00 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+Subject: [PATCH 0/2] arm64: dts: rockchip: Fan updates for Radxa Rock 5C
+Date: Mon, 20 Jan 2025 23:22:45 +0400
+Message-Id: <20250120-rock-5c-fan-v1-0-5fb8446c981b@gmail.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAIaijmcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDQyMD3aL85Gxd02TdtMQ8XUOzFAvTJOPEpKRkcyWgjoKi1LTMCrBp0bG
+ 1tQAm5U7vXQAAAA==
+X-Change-ID: 20250120-rock-5c-fan-16d85b3abbc7
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1737400976; l=714;
+ i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
+ bh=UQf76tNPeFw670A+FDlUpizi4uK712nfyrh8vXWuH1k=;
+ b=TMyVo8vcwj2r4jcUALxh9vVoMsAPW3huM7SQAfS8P1HFA9A0nKAuIvCN78QKCOm9g3y22jqaE
+ eNRUxXEEAavBTNWy2VZkXXnPNhtcO7Fa2knTgzHr8o6ubnAbWXHtAq1
+X-Developer-Key: i=alchark@gmail.com; a=ed25519;
+ pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_073603_319528_327BF2A3 
-X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-CacheID: sfid-20250120_112305_037646_67C4E753 
+X-CRM114-Status: UNSURE (   7.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,31 +107,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Always set start_bit field to 0, if not it could lead to corrupted frames
-specially when decoding VP9 bitstreams at the same time since VP9 driver
-set it for its own purpose.
+Couple of small additions to the recently added Radxa Rock 5C device tree
+to improve cooling control using the onboard PWM fan, similar to other
+Radxa boards already in mainline
 
-Fixes: cb5dd5a0fa51 ("media: hantro: Introduce G2/HEVC decoder")
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c | 1 +
- 1 file changed, 1 insertion(+)
+Alexey Charkov (2):
+      arm64: dts: rockchip: Add finer-grained PWM states for the fan on Rock 5C
+      arm64: dts: rockchip: Enable automatic fan control on Radxa Rock 5C
 
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-index 85a44143b378..0e212198dd65 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-@@ -518,6 +518,7 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	hantro_reg_write(vpu, &g2_stream_len, src_len);
- 	hantro_reg_write(vpu, &g2_strm_buffer_len, src_buf_len);
- 	hantro_reg_write(vpu, &g2_strm_start_offset, 0);
-+	hantro_reg_write(vpu, &g2_start_bit, 0);
- 	hantro_reg_write(vpu, &g2_write_mvs_e, 1);
- 
- 	hantro_write_addr(vpu, G2_TILE_SIZES_ADDR, ctx->hevc_dec.tile_sizes.dma);
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 34 ++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
+---
+base-commit: 4ec376748558ba132a2a49513acd3b08774384e3
+change-id: 20250120-rock-5c-fan-16d85b3abbc7
+
+Best regards,
 -- 
-2.43.0
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
