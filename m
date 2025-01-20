@@ -4,59 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B481C02188
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 07:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2FDC0218A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jan 2025 07:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8WGZ6tlZzxnRBb+BMLwDrlmCPWCIp93pqNf7+Iy45m8=; b=GUuMuhJxwNhuXwRbAQRa3eVIHj
-	VwxTo2aZfb4nv0u4lmoApyuNpxeMelhLpt0Z+KdHH5BVlEFQI6PzKj15WGcZ+bW/pIC1OYOybjFhD
-	DhUBAwnUPXCY8t81cFKw6rKSKwSE0I8W5Tra/hEHiqoyh17hbyHg8j3UqKrq/hg7nhydxYbV8Xdfn
-	MHj66TMB8fCQ4shKcNI+jV02TSMnabgE/IJ/x1YJmcQGKTLJQeYLMqakj7vnKV3rQsoatwir0Nziv
-	rKaSs/iZLOyk+gv7E5BPMQt8pS9mTSZsQ5jdxUoC92EGPUupvwSMA9tpJ0/fiR6bgu/i3+hVfJ9ij
-	tFbAfNtA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dXwABwDV15gI/dBJHMC+Vq8QmiQKqVs7MuM/+3kax/c=; b=dUYjatWDTXmnSK
+	EQJod12PLvGg7UNW+Hj9vFbvJ3W88SpULuqWPJVbPTn2rjlxM1FzeYRQhXa+YhBaxBEqYDNRs8oxl
+	kCkbUcJQ91mAOTrhCJxfeI4zBiw9sY0x69/ixuQNDdcdMFtr0SrjBmkCK8oSM/1fB4pFGi7YDq1GW
+	rvsj2CvZBpCcrFGN0FYL2AhbX+hry8vP/Czs3QHJdfVVApF3DRKQjHQ7nt+P7Q4wcGCCIe+xaVbZ9
+	en1OJW1sw7oWjiHWXOOJ8XVyQAScNs0fJvj1WAAvSUAiB+IMoC75Et+8Q3fnQRjLfvKrTdyIGeElX
+	lBGhVl8nTZefC6fn+sZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZm62-00000004uPM-0OzK;
-	Mon, 20 Jan 2025 07:21:18 +0000
-Received: from mail-m3284.qiye.163.com ([220.197.32.84])
+	id 1tZmXE-00000004xbX-1Jm6;
+	Mon, 20 Jan 2025 07:49:24 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tZm3B-00000004tx6-2nPJ;
-	Mon, 20 Jan 2025 07:18:23 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 92b0fd19;
-	Mon, 20 Jan 2025 15:18:15 +0800 (GMT+08:00)
-Message-ID: <938a27aa-74dd-4fe2-8cdb-35e70aeba7f9@rock-chips.com>
-Date: Mon, 20 Jan 2025 15:18:13 +0800
+	id 1tZmXA-00000004xZp-0opf;
+	Mon, 20 Jan 2025 07:49:21 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id EFFAF1F7A0;
+	Mon, 20 Jan 2025 07:49:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1737359357; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
+	b=rxs81/qA+bqzO4BE/s58b3QnZ9ySonlik4XEccALctdyByQ0CfWLJZO4UVHI5jtBECf6RV
+	cmXxgS7mzJNeBldU+QkbCQ/JOHv3CD/IC3KG5cD+dcZ1XLmX81Q1qDPmwlkhuezC9c6J65
+	pXDSfpcuX4rUspcXjJZWoQzkUvEU8wM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1737359357;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
+	b=+Mr1oFFrBhsU+w8y11IF2x35dxiOsGhsMELD00UtG2qwMf7mYXoPuoXKDHLWyP5HflI4YR
+	KV4qljNpKhKcuHAA==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1737359356; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
+	b=2YEQodiuZ3UsPCWnqdQR5j65/V3LzIyTQOZmU+zah5ybLMPcCp2h8kDcRvxehKn20iQ/Xi
+	2P8iRS8l+8D8L4xJj9TGLESugE124kevxgeqjiUoW4bK3KbBS8TYObyw6uPets5WiVIFCv
+	2xtZw3gud2Zba+Nr9FAP5CT1rpKPbOI=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1737359356;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=RZvZ3OHRKadbpCzwXWAL9vLWOCTKT7oyU5vMn2WBlbQ=;
+	b=Y38vcmSMf3QLl1H/CftXf7wTfovn1ctCaZ2FOKCqx9I5f1sOR0jqGX7BJ+poBWrpS+flOa
+	IsIoNujSOz8vXSCg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 6B5AC1393E;
+	Mon, 20 Jan 2025 07:49:16 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id OWHAGPz/jWeMZgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 20 Jan 2025 07:49:16 +0000
+Message-ID: <156804a9-3095-4c93-888f-d9041f523da6@suse.de>
+Date: Mon, 20 Jan 2025 08:49:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/6] Add eDP mode support for Rockchip Samsung HDPTX
- PHY
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20250112090714.1564158-1-damon.ding@rock-chips.com>
- <ezoduel3qz5ihlhekry26cb7ace3bm4xmzsfrsqvbodtcl3gjq@xxo75h7uozei>
+Subject: Re: [PATCH v2 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andy Yan <andyshrk@163.com>, Daniel Stone <daniel@fooishbar.org>
+References: <20250109150310.219442-1-tzimmermann@suse.de>
+ <20250109150310.219442-26-tzimmermann@suse.de>
+ <cdbe483d-0895-47aa-8c83-1c28220f4a02@ideasonboard.com>
+ <bc97b92e-7f8a-4b92-af8a-20fa165ead55@suse.de>
+ <f3ba05c7-6e49-4641-a3f9-ba418ebdb7c3@ideasonboard.com>
+ <c6735280-7c32-4319-8ca9-a7305d8117c3@suse.de>
+ <d67adb03-5cd0-4ac9-af58-cf4446dacee3@ideasonboard.com>
+ <0ea6be58-0e04-4172-87cd-064a3e4a43bc@suse.de>
+ <f35cb350-6be9-48ca-ad7e-e9dd418281d5@ideasonboard.com>
+ <4af0b6a7-c16a-4187-bbf5-365a9c86de21@suse.de>
+ <e327ad84-b5c9-4480-b873-dc3aca605538@ideasonboard.com>
+ <a2bbeb47-2569-4ee0-9265-92bab139bdc6@suse.de>
+ <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
 Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <ezoduel3qz5ihlhekry26cb7ace3bm4xmzsfrsqvbodtcl3gjq@xxo75h7uozei>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhofSVZIQ0tIHx1IQkpMGBhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9482938cc103a3kunm92b0fd19
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRQ6CTo*QjILGjc0Ei1KIQtW
-	T0pPCzlVSlVKTEhMSE5MT0JMSE5OVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJSEhLNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=YlMVqCemoJ5IuGFcjnoZpmTM+woLwFi2wcAc4vBGThor+N1qtfA0YzV3z3iB62D4/0lEir2z/RSlG6qZu78nUvKHmCE7MY1tLK3ql+K4BzVU5YzuM9SKIlIYPOimiJMYFRsZ8FfrfjRSPfKNVynCqgXMukhM4D8CSqMl+w3Snhg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=LGzVX7k2FmqUfYRLqS7vwiYQh14m9/YvFN4qiCwdhQg=;
-	h=date:mime-version:subject:message-id:from;
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <f3833771-fcd7-45dc-9019-1525fef34429@ideasonboard.com>
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[99.99%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	FREEMAIL_TO(0.00)[ideasonboard.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch];
+	RCPT_COUNT_TWELVE(0.00)[22];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ARC_NA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[163.com,gmail.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,ideasonboard.com,163.com,fooishbar.org];
+	TO_DN_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250119_231822_223241_6A840D8D 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20250119_234920_478978_1A6E43E6 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,72 +175,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 2025/1/13 17:10, Dmitry Baryshkov wrote:
-> On Sun, Jan 12, 2025 at 05:07:08PM +0800, Damon Ding wrote:
->> Picked from:
->> https://patchwork.kernel.org/project/linux-rockchip/list/?series=923593
-> 
-> Then it should have been v6, not v1.
-> 
-
-I will update a patch series to fix it.
-
->>
->> These patchs have been tested with a 1536x2048p60 eDP panel on
->> RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
->> on RK3588 EVB1 board.
->>
->> Damon Ding (6):
->>    phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and
->>      ROPLL_REF
->>    phy: phy-rockchip-samsung-hdptx: Supplement some register names with
->>      their full version
->>    phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all
->>      registers
->>    phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
->>    dt-bindings: display: rockchip: Fix label name of hdptxphy for RK3588
->>      HDMI TX Controller
->>    arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
->>
->>   .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |   2 +-
->>   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   4 +-
->>   .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    |   2 +-
->>   .../rockchip/rk3588-coolpi-cm5-genbook.dts    |   2 +-
->>   .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   2 +-
->>   .../rk3588-friendlyelec-cm3588-nas.dts        |   2 +-
->>   .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   2 +-
->>   .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   2 +-
->>   .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   2 +-
->>   .../boot/dts/rockchip/rk3588-rock-5b.dts      |   2 +-
->>   .../boot/dts/rockchip/rk3588-tiger-haikou.dts |   2 +-
->>   .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   2 +-
->>   .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 +-
->>   .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  |   2 +-
->>   .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   2 +-
->>   .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |   2 +-
->>   .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   2 +-
->>   .../boot/dts/rockchip/rk3588s-rock-5c.dts     |   2 +-
->>   .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 971 +++++++++++++++++-
->>   19 files changed, 934 insertions(+), 75 deletions(-)
->>
->> -- 
->> 2.34.1
->>
-> 
-
-Best regards
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkKCgpBbSAxNi4wMS4yNSB1bSAxMTowMyBzY2hyaWViIFRvbWkgVmFsa2VpbmVuOgpbLi4uXQo+
+IEFsaWduaW5nIHZpZGVvPSBhbmQgZHVtYiBidWZmZXJzIGFsbW9zdCBzb3VuZHMgbGlrZSBnb2lu
+ZyBiYWNrd2FyZHMuIAo+IHZpZGVvPSBwYXJhbWV0ZXIgaXMgYmFkLAoKV2hvIHRvbGQgeW91IHRo
+YXQ/IFZpZGVvPSBpcyBzdGlsbCB0aGUgd2F5IHRvIHNwZWNpZnkgYW4gaW5pdGlhbCBkaXNwbGF5
+IAptb2RlIHRvIHRoZSBrZXJuZWwgYW5kIGl0IHdpbGwgcmVtYWluIHNvLgoKT2YgY291cnNlLCBp
+dCBpcyBiZXR0ZXIgdG8gYXV0by1kZXRlY3Qgc2V0dGluZ3MsIGJ1dCB0aGF0J3MgZm9yIGEgCmRp
+ZmZlcmVudCB1c2UgY2FzZS4KCkJlc3QgcmVnYXJkcwpUaG9tYXMKCj4KPiBIYXJtb25pemluZyBj
+b2RlIGlzIGZpbmUsIGJ1dCBJIHRoaW5rIHRoYXQgY2FuIGJlIGRvbmUgd2l0aCBhIGZ1bmN0aW9u
+IAo+IHRoYXQgb25seSBkb2VzIHRoZSBmYWxsYmFjay1jYXNlLgo+Cj4gU28uLi4gSSBjYW4gb25s
+eSBzcGVhayBmb3IgdGhlIHBsYXRmb3JtcyBJJ20gdXNpbmcgYW5kIG1haW50YWluaW5nLCAKPiBi
+dXQgSSdkIHJhdGhlciBrZWVwIHRoZSBvbGQgYmVoYXZpb3IgZm9yIENSRUFURV9EVU1CIHRoYXQg
+d2UndmUgaGFkIAo+IGZvciBhZ2VzLgo+Cj4gwqBUb21pCj4KCi0tIAotLQpUaG9tYXMgWmltbWVy
+bWFubgpHcmFwaGljcyBEcml2ZXIgRGV2ZWxvcGVyClNVU0UgU29mdHdhcmUgU29sdXRpb25zIEdl
+cm1hbnkgR21iSApGcmFua2Vuc3RyYXNzZSAxNDYsIDkwNDYxIE51ZXJuYmVyZywgR2VybWFueQpH
+RjogSXZvIFRvdGV2LCBBbmRyZXcgTXllcnMsIEFuZHJldyBNY0RvbmFsZCwgQm91ZGllbiBNb2Vy
+bWFuCkhSQiAzNjgwOSAoQUcgTnVlcm5iZXJnKQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
