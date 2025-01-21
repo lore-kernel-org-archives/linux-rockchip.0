@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6572FC02182
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 03:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02A5C02185
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 04:34:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7MeOmUhZ/uLiyAVQhNjjb8YlxbGKNlQZoJwHTfgh3rc=; b=yyF3jdP0U/WlYK
-	60JSQUFoJOKSi2vfhXBNVSCAmZLEkaYw6GdpSVtywS425Me7vLDzHnuKPCpbO4uKBdjqKnbpliJh/
-	vOYisxXSjAyN+vL5R6VeHiUrm66a0Sf8RhVgOjC2MS00qW9N2mraNG3AftZZbypOTnUTMnfDOZu/0
-	L8Z3p5SIl4kVE1YdF+l5a0v16gYB0tvr+2vDbr4ia1eykTWJLSpenKuLfgECkajdNUaqiohYXuSac
-	3uqYqztB49YoSsMUBOUDAb4PGbwjJXcBw1Jnr663Ngt1edTh5RDub/ss0aLuxdvp6uNoOgfeovkOD
-	SYiG7rKaE4ocsC2dVekg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Yuu+LgDMdfGmzSmrBjk+BFWEQ0i2vivqlykHIMP1mRM=; b=NcBEVW7g5qyVOeuYbM/hq1UH6w
+	aUlbsAny8MFa61rJ1ixQIXVGWnxjvY4oAqfXbEitcIRSsyIszNrVR7sdqO96cDIG2dSnOMAjHQOGE
+	rv1EsxZnBKPplE8OGba9/qJWMVFIVk1M2DVdEpxVqbVvU0gv0xFGC2pIUsqTIABqIVk3QtnYN2SIV
+	bdHup8wkYZILFPa4WRgYmJQK4gDWzTY2CrnM/E7yOJBa0WoDRjn9EnzOEE8yxxIKs8ennHovDRc5v
+	4bxspbifjXxMHZ02S710XZgc200IF2G41/HV+Zg60H1NiBesrLZGY/GV7VRNOW0G0cVpqDZThf2b4
+	5d/mgeoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta4X1-00000006m3Y-3qvM;
-	Tue, 21 Jan 2025 03:02:23 +0000
-Received: from mail-m3295.qiye.163.com ([220.197.32.95])
+	id 1ta5yT-00000006sAi-0iTT;
+	Tue, 21 Jan 2025 04:34:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta4Wz-00000006m1L-1kec
+	id 1ta5yR-00000006sAM-0XC3
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jan 2025 03:02:22 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 93fdd038;
-	Tue, 21 Jan 2025 11:02:17 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J . Wysocki" <rafael@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	YiFeng Zhao <zyf@rock-chips.com>,
-	Liang Chen <cl@rock-chips.com>,
-	linux-scsi@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v6 7/7] arm64: dts: rockchip: Add UFS support for RK3576 SoC
-Date: Tue, 21 Jan 2025 11:00:27 +0800
-Message-Id: <1737428427-32393-8-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1737428427-32393-1-git-send-email-shawn.lin@rock-chips.com>
+	Tue, 21 Jan 2025 04:34:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id F0ED35C495C;
+	Tue, 21 Jan 2025 04:34:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0496C4CEDF;
+	Tue, 21 Jan 2025 04:34:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737434086;
+	bh=ic2Vj9clbccTWpFYpYbpq3VVbXcpDTrMDm0/0NZg7Ug=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=RnuzQM3DXktPnklWQtlLdFDBZugcN+9yBDvezfwfwmkdmn8a9fLfmQpzGNvbpG2FG
+	 oAlnEMrh5/uweTxegEfC9uTTRmPP1D9Dn4rJjtqYGiKIZl4P9akOkzd2gbfi2HoWgz
+	 cwbmjXgG5Kc+pHgBLkXjHoyXl/TDwO52raTS89fNZnFbPCi1tjXuWtUhRqILIGQUI0
+	 mrfXK/dN6yibPywWcMXxEiQcGuBXcWcj7eJFChr7yZAuJ75+giOfTI822HouQs3gDY
+	 C7C5C6eeYic/Vv2hK5tBetF17tGaPY40p6WYcB39yymWfXwcW+1pFi3BmQaUbk2vIq
+	 iujUnx7lk6aug==
+Date: Mon, 20 Jan 2025 22:34:44 -0600
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+ devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
+ linux-pm@vger.kernel.org, 
+ "Martin K . Petersen" <martin.petersen@oracle.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Liang Chen <cl@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, 
+ linux-scsi@vger.kernel.org, YiFeng Zhao <zyf@rock-chips.com>, 
+ "Rafael J . Wysocki" <rafael@kernel.org>, 
+ "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
 References: <1737428427-32393-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUJDH1ZJSklMH0lLSkJLQkNWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9486cf8f9f09cckunm93fdd038
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PhQ6DCo6EzINFjUvDgIOMhQ1
-	ITYaFE1VSlVKTEhMT0lDTkhDTEpKVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpMQ0w3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=eVfzFqV9E89gb6hbrFGveVsdmK07EuQBxTSELGs4HI1ORIzRfw0rY7To1KMDye63FXWw7lh0Qb1Zz0PXKXaHhK8nVcYS9rNwR5ltyDvOVi/rvcstR9pAH0MUVcNmEvEsQcdn2cG3SnzAiofEgMIVKetA0UXWobahU3aVI2iQqJw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=wYMBbIgjK+XD69o+ifjptcWHfJAy3+cY5gYZs7J+pSU=;
-	h=date:mime-version:subject:message-id:from;
+ <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
+Message-Id: <173743408485.1359379.11212838152081459014.robh@kernel.org>
+Subject: Re: [PATCH v6 1/7] dt-bindings: ufs: Document Rockchip UFS host
+ controller
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_190221_605626_FF4254B1 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20250120_203447_259479_E7A27E80 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,67 +79,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add ufshc node to rk3576.dtsi, so the board using UFS could
-enable it.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+On Tue, 21 Jan 2025 11:00:21 +0800, Shawn Lin wrote:
+> Document Rockchip UFS host controller for RK3576 SoC.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> 
+> Changes in v6: None
+> Changes in v5:
+> - fix indentation to 4 spaces suggested by Krzysztof
+> - use ufshc for devicetree example suggested by Mani
+> 
+> Changes in v4:
+> - properly describe reset-gpios
+> 
+> Changes in v3:
+> - rename the file to rockchip,rk3576-ufshc.yaml
+> - add description for reset-gpios
+> - use rockchip,rk3576-ufshc as compatible
+> 
+> Changes in v2:
+> - rename the file
+> - add reset-gpios
+> 
+>  .../bindings/ufs/rockchip,rk3576-ufshc.yaml        | 105 +++++++++++++++++++++
+>  1 file changed, 105 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
+> 
 
----
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Changes in v6:
-- remove comments suggested by Mani
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml:91:1: [error] syntax error: found character '\t' that cannot start any token (syntax)
 
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml: ignoring, error parsing file
+./Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml:91:1: found character '\t' that cannot start any token
+make[2]: *** Deleting file 'Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.example.dts'
+Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml:91:1: found character '\t' that cannot start any token
+make[2]: *** [Documentation/devicetree/bindings/Makefile:26: Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.example.dts] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1506: dt_binding_check] Error 2
+make: *** [Makefile:251: __sub-make] Error 2
 
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+doc reference errors (make refcheckdocs):
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 4dde954..bb786bd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1221,6 +1221,30 @@
- 			};
- 		};
- 
-+		ufshc: ufshc@2a2d0000 {
-+			compatible = "rockchip,rk3576-ufshc";
-+			reg = <0x0 0x2a2d0000 0 0x10000>,
-+			      <0x0 0x2b040000 0 0x10000>,
-+			      <0x0 0x2601f000 0 0x1000>,
-+			      <0x0 0x2603c000 0 0x1000>,
-+			      <0x0 0x2a2e0000 0 0x10000>;
-+			reg-names = "hci", "mphy", "hci_grf", "mphy_grf", "hci_apb";
-+			clocks = <&cru ACLK_UFS_SYS>, <&cru PCLK_USB_ROOT>, <&cru PCLK_MPHY>,
-+				 <&cru CLK_REF_UFS_CLKOUT>;
-+			clock-names = "core", "pclk", "pclk_mphy", "ref_out";
-+			assigned-clocks = <&cru CLK_REF_OSC_MPHY>;
-+			assigned-clock-parents = <&cru CLK_REF_MPHY_26M>;
-+			interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
-+			power-domains = <&power RK3576_PD_USB>;
-+			pinctrl-0 = <&ufs_refclk>;
-+			pinctrl-names = "default";
-+			resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>,
-+				 <&cru SRST_A_UFS>, <&cru SRST_P_UFS_GRF>;
-+			reset-names = "biu", "sys", "ufs", "grf";
-+			reset-gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_LOW>;
-+			status = "disabled";
-+		};
-+
- 		sdmmc: mmc@2a310000 {
- 			compatible = "rockchip,rk3576-dw-mshc";
- 			reg = <0x0 0x2a310000 0x0 0x4000>;
--- 
-2.7.4
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
