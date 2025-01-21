@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B49C0218B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 10:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0EB3C0218B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 10:53:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yUZajMfGLJ367b2qsqA5UtjV6vi+DYFJuDbnvebgRto=; b=aabgrzSDPXy1zg
-	P0KmvIylGigIrt0/+QXC1XixNtBX8I2apOkZkMmlufsXTEkrZBN3dJrnDKeHd62KbcnQIzqpMtU/t
-	Xos+e61PwsMxlNEJ0mmIp9MpdgvHtiTdUVLUAX03+JHKeK4odQU4hRHdG5qvGGDY0w0sdSQqLatW4
-	CMnQx1DL0MKyG/1mDJ5QZa7XxrtOPWDAzIox7hKlNtEK/d1jkKmqWVStUZh98bA4rF4IMm8XHNmzw
-	OYAB5EhZGrP/Rwxcx/EjXb6OZdUXYu03aSxdx89IK8suIBAvvlPgI6tKJGtl9BDeGwKcpyY5GM4xP
-	uUKnKNr3RkteBTMsewaw==;
+	List-Owner; bh=mJ11qNdhxvUHGrATuf4w8xVNhn9yWVNu5emOOqCdMAA=; b=AIL0BFpGUXgxdF
+	5UnHjItUEEnR+l3Y1iCV5VeZIV7nvbCJ/APL6UQlznwdfZyujVX0GG+ZkL/QLqYC6QKgs6bYHKU6r
+	vUS4TCrxLJQUEzasmJEFCLGeM5xQ3Jb+vbo2r3EejzVsMKSVhSNn/SE1jjGBs8vLrxOJnW2VfvfdP
+	mKKso2kD6gGO+A8JB8BVJHkPX6T3ES39OTQ7UpfKJrWSMHU0rjbnCEdINzUM107MsxaqrRv+kPunG
+	cwco3wev+5kU8RnzJItrAYKq2KR4YX2MVJeK/eUWPStvNa66ujuYaznBcRZgJ8a0zbXE0eHqIV33z
+	lOHdB57+uQXN7jIcmwFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taBt1-00000007f1I-1myz;
-	Tue, 21 Jan 2025 10:53:35 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1taBtC-00000007f4G-0DqZ;
+	Tue, 21 Jan 2025 10:53:46 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taBbC-00000007bXH-0PKT;
-	Tue, 21 Jan 2025 10:35:11 +0000
+	id 1taBbL-00000007bbJ-3rUn;
+	Tue, 21 Jan 2025 10:35:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=rIdeV
-	1+pXq0QaKtzBsI6ANLMHSHhAqjh7JQhiSF7JzM=; b=M2ZGcCIgxmuY+dOCZstHE
-	iEv6LegmSeOgJ4xguxvbAPFnG+Qc2hPNxnzZNkK3S4nbQkUzQc0HMCoG6K2jUeVQ
-	6HEbcIRL04L/0FnBYnwbdRUPhSJxpMVxrQNBv5orjkR9nYODeb9pVv1FKWkUwWpZ
-	fMDooB+Cs4/pfYFWV63yXE=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzsmtp5 (Coremail) with SMTP id QCgvCgDHVyxIeI9nfog_LQ--.31266S2;
-	Tue, 21 Jan 2025 18:34:51 +0800 (CST)
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=uDIbt
+	AsW7Z+RHKfRE194nI3eRnrneMc4A7g7rnDUZbc=; b=iE6+hLWbjewHau/dVatSP
+	tgH1Ef9LQn9piHiYmNjVZ9icPJLnB4DgnHHgBBwDujNsjg4SPTCJhKsj9OEjiH0I
+	B76JnvGpkfaJwpahjswMkvq+4aedm1HrKtslMrQdiZuPTDjsKUuB+U2nagFemU+R
+	4LoU/3sQZ0wnLrvkPZmHUI=
+Received: from ProDesk.. (unknown [])
+	by gzsmtp4 (Coremail) with SMTP id PygvCgCXjRJVeI9nsMUzFg--.31618S2;
+	Tue, 21 Jan 2025 18:35:05 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -50,24 +50,23 @@ Cc: hjc@rock-chips.com,
 	robh@kernel.org,
 	sebastian.reichel@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v12 11/13] dt-bindings: display: vop2: Add missing rockchip,grf propertie for rk3566/8
-Date: Tue, 21 Jan 2025 18:34:44 +0800
-Message-ID: <20250121103446.2528212-1-andyshrk@163.com>
+Subject: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576 support
+Date: Tue, 21 Jan 2025 18:34:57 +0800
+Message-ID: <20250121103500.2528258-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250121103254.2528004-1-andyshrk@163.com>
 References: <20250121103254.2528004-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: QCgvCgDHVyxIeI9nfog_LQ--.31266S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrtFWxtw43Zr4UGrWxXF1kKrg_yoWDZFXEq3
-	yxuF1Y9rs5Xrn8Kw1DA3yxCrs8Za1Ikr4DCayqyF4qy3Z5A34v9F95Jw15CF18CF43uF4S
-	krs5urZrWanxGjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8RRRtUUUUU==
+X-CM-TRANSID: PygvCgCXjRJVeI9nsMUzFg--.31618S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWr1kWFWUuF4UtFW5trWkZwb_yoW5ZFWUpa
+	93C3Z8XrW8Gr1UWw1ktF1rCwn3tFn3Ar4akrn7ta17Kws8tr4UWw4agr98ZrnxWFy7ZayY
+	9FsYk347G3s2vrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UMSoAUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gDbXmePdPdBiAAAs1
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqB-bXmePcy1lIgAAsD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_023510_489609_D0843B9F 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250121_023520_289843_4B3A1BB3 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,7 +85,8 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-Propertie "rockchip,grf" is required for rk3566/8.
+Add vop found on rk3576, the main difference between rk3576 and the
+previous vop is that each VP has its own interrupt line.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
@@ -95,31 +95,136 @@ Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Changes in v12:
 - Split from patch 10/13
 
- .../devicetree/bindings/display/rockchip/rockchip-vop2.yaml   | 4 ++++
- 1 file changed, 4 insertions(+)
+Changes in v11:
+- Remove redundant min/maxItems constraint
+
+Changes in v10:
+- Move interrupt-names back to top level
+- Add constraint of interrupts for all platform
+- Add constraint for all grf phandles
+- Reorder some properties
+
+Changes in v9:
+- Drop 'vop-' prefix of interrupt-names.
+- Add blank line between DT properties
+- Remove list interrupt-names in top level
+
+Changes in v8:
+- Fix dt_binding_check errors
+- ordered by soc name
+- Link to the previous version:
+  https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+
+Changes in v4:
+- describe constraint SOC by SOC, as interrupts of rk3576 is very
+  different from others
+- Drop Krzysztof's Reviewed-by, as this version changed a lot.
+
+Changes in v3:
+- ordered by soc name
+- Add description for newly added interrupt
+
+Changes in v2:
+- Add dt bindings
+
+ .../display/rockchip/rockchip-vop2.yaml       | 55 ++++++++++++++++++-
+ 1 file changed, 52 insertions(+), 3 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-index f23939e67fd0..157a37ed84da 100644
+index 157a37ed84da..a2a6369c7b6f 100644
 --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
 +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-@@ -145,6 +145,9 @@ allOf:
-         rockchip,vop-grf: false
-         rockchip,pmu: false
+@@ -21,6 +21,7 @@ properties:
+     enum:
+       - rockchip,rk3566-vop
+       - rockchip,rk3568-vop
++      - rockchip,rk3576-vop
+       - rockchip,rk3588-vop
  
+   reg:
+@@ -38,10 +39,21 @@ properties:
+       - const: gamma-lut
+ 
+   interrupts:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 4
+     description:
+-      The VOP interrupt is shared by several interrupt sources, such as
+-      frame start (VSYNC), line flag and other status interrupts.
++      For VOP version under rk3576, the interrupt is shared by several interrupt
++      sources, such as frame start (VSYNC), line flag and other interrupt status.
++      For VOP version from rk3576 there is a system interrupt for bus error, and
++      every video port has it's independent interrupts for vsync and other video
++      port related error interrupts.
++
++  interrupt-names:
++    items:
++      - const: sys
++      - const: vp0
++      - const: vp1
++      - const: vp2
+ 
+   # See compatible-specific constraints below.
+   clocks:
+@@ -135,6 +147,8 @@ allOf:
+         interrupts:
+           maxItems: 1
+ 
++        interrupt-names: false
++
+         ports:
+           required:
+             - port@0
+@@ -148,6 +162,39 @@ allOf:
+       required:
+         - rockchip,grf
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3576-vop
++    then:
++      properties:
++        clocks:
++          minItems: 5
++
++        clock-names:
++          minItems: 5
++
++        interrupts:
++          minItems: 4
++
++        interrupt-names:
++          minItems: 4
++
++        ports:
++          required:
++            - port@0
++            - port@1
++            - port@2
++
++        rockchip,vo1-grf: false
++        rockchip,vop-grf: false
++
 +      required:
 +        - rockchip,grf
++        - rockchip,pmu
 +
    - if:
        properties:
          compatible:
-@@ -200,6 +203,7 @@ examples:
-                               "dclk_vp1",
-                               "dclk_vp2";
-                 power-domains = <&power RK3568_PD_VO>;
-+                rockchip,grf = <&grf>;
-                 iommus = <&vop_mmu>;
-                 vop_out: ports {
-                     #address-cells = <1>;
+@@ -164,6 +211,8 @@ allOf:
+         interrupts:
+           maxItems: 1
+ 
++        interrupt-names: false
++
+         ports:
+           required:
+             - port@0
 -- 
 2.34.1
 
