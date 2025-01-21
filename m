@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC216C02182
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 08:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63EDFC02182
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 10:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X/33/QTjWYIl16wQaOh8G1y4pTVjq/el2M7VCq8E/sU=; b=ismGTMAY13aOIb
-	RcbUIhJjE6dMlfGuuvwbMxKryOgiWdJeGeq2BlDQOo27IjjZiBS21VGIdUwYAQPT1U+JT2VzNLaBQ
-	o1dyRFbBjtZvotpGXWBSUw4hH1XO93/YqR4xRd9z+8gCMBn/y8akFOlBc1dux1p7Izfl0pp1osOgv
-	7nCE+c3xhtPtyq/ts2M4K3dc7Aet4KlszalD7QYMaFMbj0JIssZG2CiH2v7LtCtftPS/zlNoNmbcd
-	2MerMPi6vbI7KxR89Qv89r7y/0NbmnmvF/nM26QDBNAJTWrnxIL3vQyZcErZfsuSXEDvJH4LJUAbW
-	EgLqMxDOQUFo04P9iHIw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zrOSjBJVq2t5g7LzzCcHN630eqHgCRRvaGK5VYw/lJw=; b=wYTK+UsOdNrcOx
+	YIsFaX9IWM8qj2X5sXuQ89Dq88B4uUEDqtHvyQ35KF96a75Wk/cbXKVOkwedy0NgAmFK7B/H6KC1+
+	CgdINpo4popAWPIzf/joxhOmRQ0yIfueAJqy5PDzlMIwxT+Su5xM8yXgzUJGLCu6PP16rStG/x8fM
+	IrJXrOHpuO+NtG/nXE3BI+f/k35cWF41gurLujC2iLexBHNposw0kmnwgKgoBwzeKyfbe43xApyGl
+	XX5LYR73GkHKB5Kx3t49fxS/lDjpIy4D/KthO/R2aRNuyh0zR7ckVF5CKqnR0PMDiueeKosIB9jgo
+	r9rOGt2w6dWyATr7T82g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta9HH-00000007CxJ-2UOO;
-	Tue, 21 Jan 2025 08:06:27 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta9DP-00000007CLY-1iV8
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jan 2025 08:02:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 06744A4103F;
-	Tue, 21 Jan 2025 08:00:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69457C4CEDF;
-	Tue, 21 Jan 2025 08:02:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737446546;
-	bh=CxY3/wyeX6n2/22iDBxPz6jy7l55K+eh5I4tb5XZWMw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GgxjAwBYHJFoxx9+ryaP2BIRL3EgTEG8NjpXq36QrIFsVD9PopIErdonLQK63d/02
-	 dEQYVklmiGBSWrW++TrfN/c13vrxOpWL3dim1VsrzeX2u9PVFNfPjbNgR2ay/2lF0B
-	 mpbcbR17ayslhyfreW/p6wwkPok+E5QxQmQ7vyuTanE59DcQo3VJPBrmll5tXd0u2w
-	 lTflR1aj73vdlqL7/z+AFoKV+FyOMzFUr8ZiN1Xg4pX7QTQctN6j4ARM9VTliRkRHn
-	 5HwVBa68Jp8/8omiQgEz+8+Vo0IYk9iXDtnjIZSNikWqN/3ZJ9iMhHKs6RiFtm2o3j
-	 1Lmm4CL4tdoJw==
-Date: Tue, 21 Jan 2025 09:02:22 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, "Martin K . Petersen" <martin.petersen@oracle.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	"Rafael J . Wysocki" <rafael@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
-	Bart Van Assche <bvanassche@acm.org>, YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
-	linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-pm@vger.kernel.org
-Subject: Re: [PATCH v6 1/7] dt-bindings: ufs: Document Rockchip UFS host
- controller
-Message-ID: <20250121-organic-exotic-honeybee-e90be3@krzk-bin>
-References: <1737428427-32393-1-git-send-email-shawn.lin@rock-chips.com>
- <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
+	id 1taBef-00000007cUe-2Oky;
+	Tue, 21 Jan 2025 10:38:45 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1taBZR-00000007awe-1BOT;
+	Tue, 21 Jan 2025 10:33:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=X1Gpc
+	6jAmiWt4NOgfOBGl35hiI4zVeXF8FhcZ6Nthb8=; b=a1GskRCP3DarDE4hIVCmy
+	w6ScFQKVKJ72YF5IYlvMAlhE977vFLWPcRB6WgGHk1q+3FxmFl+cXjtRl99jo9QZ
+	FEAVpi2rQjtBUYkRjarPfvb1rRJeuYO/StwtSb3UCFH+S96lgXbN5aDIgz80L/aj
+	mowTypxd32jtTZipsFZCas=
+Received: from ProDesk.. (unknown [])
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgDHkqjYd49nreMjBg--.21590S2;
+	Tue, 21 Jan 2025 18:32:59 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	robh@kernel.org,
+	sebastian.reichel@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v12 00/13] VOP Support for rk3576
+Date: Tue, 21 Jan 2025 18:32:37 +0800
+Message-ID: <20250121103254.2528004-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
+X-CM-TRANSID: PCgvCgDHkqjYd49nreMjBg--.21590S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxXw1ftr47Xw1kCw48AF47urg_yoWrCr47pa
+	95C3sxXrW8GF1jqw4kJw1xCr1Sq3ZIyrWfG34fKw17Ga1qyF42krWa9r1Yvr9xGw1xZrWj
+	9F4Sya15KanFvF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UMv3nUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBPbXmePcy1bhgAAsV
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_000227_516433_17139B06 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250121_023321_639853_E7811224 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,17 +81,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 21, 2025 at 11:00:21AM +0800, Shawn Lin wrote:
-> Document Rockchip UFS host controller for RK3576 SoC.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+From: Andy Yan <andy.yan@rock-chips.com>
 
 
-Just because I gave review, does not mean you can send untested patches!
+Patches that have already been merged in drm-misc-next are dropped.
 
-Best regards,
-Krzysztof
+PATCH 1~9 are preparations for rk3576 support
+PATCH 10~13 are real support for rk376
+
+I test it with a 1080P/4K HDMI output with modetest and weston
+output.
+
+If there are some one want to have a try, I have a tree based on
+Linux 6.13-rc6 here[0]
+
+[0]https://github.com/andyshrk/linux/tree/rk3576-vop2-upstream-v10
+
+Links to V11:
+https://lore.kernel.org/linux-rockchip/20250111112614.432247-1-andyshrk@163.com/
+
+Changes in v12:
+- Split dt-binding patch
+
+Changes in v11:
+- Remove redundant min/maxItems constraint
+- Remove redundant min/maxItems constraint
+
+Changes in v10:
+- Move interrupt-names back to top level
+- Add constraint of interrupts for all platform
+- Add constraint for all grf phandles
+- Reorder some properties
+- Move interrupt-names back to top level
+- Add constraint of interrupts for all platform
+- Add constraint for all grf phandles
+- Reorder some properties
+
+Changes in v9:
+- Drop 'vop-' prefix of interrupt-names.
+- Add blank line between DT properties
+- Remove list interrupt-names in top level
+- Drop 'vop-' prefix of interrupt-names.
+- Add blank line between DT properties
+- Remove list interrupt-names in top level
+- Drop 'vop-' prefix of interrupt-names.
+
+Changes in v8:
+- Remove redundant blank line before drm_bus_format_enum_list
+- Add a blank line before DRM_ENUM_NAME_FN
+- Fix dt_binding_check errors
+- ordered by soc name
+- Link to the previous version:
+  https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+- Fix dt_binding_check errors
+- ordered by soc name
+- Link to the previous version:
+  https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+
+Changes in v7:
+- Fix rk3588 dp+dsi maxclk verification
+
+Changes in v6:
+- Add a blank line after hardware version check code
+-  More specific explanation about the AXI_BUS_ID register bit of
+   cluster window.
+
+Changes in v5:
+- Add axi id configuration
+- Remove the non-existent CBCR scale register.
+
+Changes in v4:
+- Typo fix: selet->select
+- describe constraint SOC by SOC, as interrupts of rk3576 is very
+  different from others
+- Drop Krzysztof's Reviewed-by, as this version changed a lot.
+- describe constraint SOC by SOC, as interrupts of rk3576 is very
+  different from others
+- Drop Krzysztof's Reviewed-by, as this version changed a lot.
+
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+- Add hardware version check
+- Add comments for why we should treat rk3566 with special care.
+- ordered by soc name
+- Add description for newly added interrupt
+- ordered by soc name
+- Add description for newly added interrupt
+- Share the alpha setup function with rk3568
+- recoder the code block by soc
+
+Changes in v2:
+- Add platform specific callback
+- Introduce vop hardware version
+- Add dt bindings
+- Add dt bindings
+- Add platform specific callback
+
+Andy Yan (12):
+  drm/rockchip: vop2: Rename TRANSFORM_OFFSET to TRANSFORM_OFFS
+  drm/rockchip: vop2: Add platform specific callback
+  drm/rockchip: vop2: Merge vop2_cluster/esmart_init function
+  drm/rockchip: vop2: Support for different layer select configuration
+    between VPs
+  drm/rockchip: vop2: Introduce vop hardware version
+  drm/rockchip: vop2: Register the primary plane and overlay plane
+    separately
+  drm/rockchip: vop2: Set plane possible crtcs by possible vp mask
+  drm/rockchip: vop2: Add uv swap for cluster window
+  dt-bindings: display: vop2: describe constraint SoC by SoC
+  dt-bindings: display: vop2: Add missing rockchip,grf propertie for
+    rk3566/8
+  dt-bindings: display: vop2: Add rk3576 support
+  drm/rockchip: vop2: Add support for rk3576
+
+Heiko Stuebner (1):
+  drm/rockchip: vop2: use devm_regmap_field_alloc for cluster-regs
+
+ .../display/rockchip/rockchip-vop2.yaml       |   97 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 1473 +++-----------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  275 ++-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 1798 ++++++++++++++++-
+ 4 files changed, 2377 insertions(+), 1266 deletions(-)
+
+-- 
+2.34.1
 
 
 _______________________________________________
