@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BD5C0218C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 17:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B84BCC0218C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 18:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2vLpsHP0PKw1/yfJY87aDe9sTq+8dVjZLYUtYvpflr0=; b=uZBGzimnn0wyNxErqAM/W/jzyo
-	wjZqQ104GtUb2rJh+iZNPUehi2KHxddRID8bBMQwiGKV5Luk7LGTQLWvOF4yMhwRX2kPgrDcDoPKl
-	G2ik9q8Tq0LBMq0zNbLEwGVxVPJhJpzSeUNym3wi+4sgDXixL+Gr0m4YaBwUV0HHwUV71z+nACyDo
-	a6cQPoLyHp3RU/ip6j4GZRQ/1eivJwkV0bwIqrK95Av+EkGeJxy5mbUpb22P9jYUFgGRD96P7I/WK
-	VMbsMj6p+58YtkKuJxGCZykDjT7Gg3AFoMTQWc1vb6H0NS36EOeEinf1SEnd91wprpkHlznXKopRF
-	+Pf9CtcQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=18ixwrhFku+6Nx858BFJqR7bknxg5d77xGIgybM+rvU=; b=iX/NHWcJBmmFtw
+	WyzLf7eHrxu8fQ7uS+DTEfrfhASsOzT857VGkMcmzRqR1i0nVmIDZje1IDhUk2KSkMwjnADFJb7SU
+	hlTVtTdVyLv2kzsYYx+NfKxKZ5cN9+xsYeBAnD1cqQ0J09MzdpzAXFfwJ+r+OmQLjoDwKTvnAuKR7
+	Cqiv1aHoV/RqcVvPAPEkF6Y8IOJ9sbR9MTjcESIaL94Y0nqMD19oki88X2vOEknf6C48G0VDpY4PF
+	d07HlMVhJcTYUHpoXI7UIe0ycR/4Fp6hbxRhS9LE6rQE3d7eoIuJo07CEI6QJDuPVU0bql2DXMIJf
+	2f1mYsKeK5Kc/8u48kaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taIEt-00000008VQe-3x5o;
-	Tue, 21 Jan 2025 17:40:35 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1taIl0-00000008ZT0-40zX;
+	Tue, 21 Jan 2025 18:13:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taICR-00000008V3u-0Dne;
-	Tue, 21 Jan 2025 17:38:04 +0000
+	id 1taIhR-00000008YpM-18DD;
+	Tue, 21 Jan 2025 18:10:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C3240A41E7D;
-	Tue, 21 Jan 2025 17:36:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4C7DC4CEE8;
-	Tue, 21 Jan 2025 17:37:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 431745C0156;
+	Tue, 21 Jan 2025 18:09:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B9F6C4CEE0;
+	Tue, 21 Jan 2025 18:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737481082;
-	bh=qxYcUeEcM4f/WwaTldAjO3e7nkHtWW2voiysZRTuWyY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BiqjL3468L/rV/VZWgzE7fFNVBAVmWixEgFEJuO/qHnWZz3k4gsJuoEJ5jKlM0Nmk
-	 5Lh4CPGnLppqeV3VxmOw3KGIfUtAGyiaUy2LGc/L9bIgsEQjvaPOo85ytwGEvSLwcR
-	 kMsroyU5/dJ7glmsEddr0q5Uiz5tiuNOT3Ux4lMkZT6/wjB8Pq/j+YtggxAFBPG2EA
-	 e6IQrHuiwYm7m2dmkipd/v8DUVpyIro7xQtpkcMkd7zPuux5Y0AViGthL3U+axMgT9
-	 +raz44MfTfWjRn2d8urRnVgfJ7oGhupX403TL+DzTLbZAEhhl68hpU0K3nJeR2IrU0
-	 5Oqp8/mF5j5OA==
-Date: Tue, 21 Jan 2025 17:37:57 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: ASoC: rockchip: Add compatible for
- RK3588 SPDIF
-Message-ID: <20250121-spruce-lushness-28295dd0c1ed@spud>
-References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
- <20250120-rk3588-spdif-v1-1-1415f5871dc7@gmail.com>
+	s=k20201202; t=1737483004;
+	bh=UdZ9afI6nCqNOL74I2jYwoxBKG9cTM3qEhqteNY0Xvw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=I3VGdnEXDqVWfBKW6NaMyQurjhYZwg26jWT4mb8obx2xq3dEbXHWT+hmDq0H9IYr0
+	 AOnKXtZJ4YyGic6SJ9x1U6LfQzhSOeVgvPtETbofPm3bv+to2enhqqt0jJWtboz1+c
+	 djHLiMYU++T6ZVO51Xk719Lsu6usSlETau/n+nPx82FJsQGhwMhSfBIF52ywMUzVxH
+	 ywrOlzj/c9Acd6k6YUFXpcs8e4E3a5WinOmEUr2gwkNgm2Ol815bkjyqidqGgz3XTm
+	 dGTriTLOeUYaTf8Mu4TSdKEVlEix2/GPIUKX5MM/OMXdR20XqZ9d8odIdY+arG4+np
+	 yMQ9j0U+xWVoA==
+From: Mark Brown <broonie@kernel.org>
+To: linux-kernel@vger.kernel.org, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+In-Reply-To: <20250117163102.65807-1-detlev.casanova@collabora.com>
+References: <20250117163102.65807-1-detlev.casanova@collabora.com>
+Subject: Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the set_sysclk
+ callback
+Message-Id: <173748300208.97954.15641423704093846884.b4-ty@kernel.org>
+Date: Tue, 21 Jan 2025 18:10:02 +0000
 MIME-Version: 1.0
-In-Reply-To: <20250120-rk3588-spdif-v1-1-1415f5871dc7@gmail.com>
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_093803_156839_48213C96 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20250121_101005_356975_3663ACA8 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,54 +71,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8069247626032303774=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, 17 Jan 2025 11:31:02 -0500, Detlev Casanova wrote:
+> In commit
+> 9e2ab4b18ebd ("ASoC: rockchip: i2s-tdm: Fix inaccurate sampling rates"),
+> the set_sysclk callback was removed as considered unused as the mclk rate
+> can be set in the hw_params callback.
+> The difference between hw_params and set_sysclk is that the former is
+> called with the audio sampling rate set in the params (e.g.: 48000 Hz)
+> while the latter is called with a clock rate already computed with
+>   sampling_rate * mclk-fs (e.g.: 48000 * 256)
+> 
+> [...]
 
---===============8069247626032303774==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="7Eg+/63bRy/+Kd9J"
-Content-Disposition: inline
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
---7Eg+/63bRy/+Kd9J
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks!
 
-On Mon, Jan 20, 2025 at 01:01:27PM +0400, Alexey Charkov wrote:
-> Add a compatible string for SPDIF on RK3588, which is similar to the
-> one on RK3568.
->=20
-> Signed-off-by: Alexey Charkov <alchark@gmail.com>
+[1/1] ASoC: rockchip: i2s_tdm: Re-add the set_sysclk callback
+      commit: 5323186e2e8d33c073fad51e24f18e2d6dbae2da
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
---7Eg+/63bRy/+Kd9J
-Content-Type: application/pgp-signature; name="signature.asc"
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
------BEGIN PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ4/bdQAKCRB4tDGHoIJi
-0v6dAQCdiL5ocP5h6iXJYNUPS5M6hVgkmbV3X0Xq5KqJOTTDFgD/WlsZAd3l0r8A
-u92LxGktYcLWsvIVxY2tyw5bxiafAQ0=
-=MnTB
------END PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
---7Eg+/63bRy/+Kd9J--
+Thanks,
+Mark
 
-
---===============8069247626032303774==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8069247626032303774==--
-
