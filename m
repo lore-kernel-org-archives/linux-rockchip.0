@@ -4,56 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1848BC02182
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 06:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC216C02182
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 08:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=haBNQH6hUBoxotb3EPL6XjXT0x7TwDT+H7wwOCBYj6U=; b=JPISHB2AeTvxad
-	PfrMx9ytOVj/xwa0rG5SBsuWjZLZFBjD0EKrTZ1Nzt9a/etlgaFArnULmskRXbG8T0Oil05lhLOEr
-	7D+iamlIoAcOgr8xSDGndWVKV8OZKxrJMlN3PFUvpi1RGWlGpMtabiGvA9ZelW7sBZnE06CHHlbMp
-	QAmMkYwf+M+f2riKbppd91CzEBEGcBAbYOD8wqXKSi8BxnRS8ovQ4myWVx+DZ62+vr2/U4APBX0ur
-	FKooyaVWod0RoSgw7aST6GvdrzWZ801UFG34t6RKmG8VTTvms+vULA3dSkOSm7LnLDCs9APCbghAu
-	beRYRg+j1DnMnlMWLU+A==;
+	List-Owner; bh=X/33/QTjWYIl16wQaOh8G1y4pTVjq/el2M7VCq8E/sU=; b=ismGTMAY13aOIb
+	RcbUIhJjE6dMlfGuuvwbMxKryOgiWdJeGeq2BlDQOo27IjjZiBS21VGIdUwYAQPT1U+JT2VzNLaBQ
+	o1dyRFbBjtZvotpGXWBSUw4hH1XO93/YqR4xRd9z+8gCMBn/y8akFOlBc1dux1p7Izfl0pp1osOgv
+	7nCE+c3xhtPtyq/ts2M4K3dc7Aet4KlszalD7QYMaFMbj0JIssZG2CiH2v7LtCtftPS/zlNoNmbcd
+	2MerMPi6vbI7KxR89Qv89r7y/0NbmnmvF/nM26QDBNAJTWrnxIL3vQyZcErZfsuSXEDvJH4LJUAbW
+	EgLqMxDOQUFo04P9iHIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta7nf-000000070Q0-0d55;
-	Tue, 21 Jan 2025 06:31:47 +0000
-Received: from mail-m1973180.qiye.163.com ([220.197.31.80])
+	id 1ta9HH-00000007CxJ-2UOO;
+	Tue, 21 Jan 2025 08:06:27 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ta7g6-00000006z4H-3jWn;
-	Tue, 21 Jan 2025 06:24:00 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 9456a34d;
-	Tue, 21 Jan 2025 14:23:54 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: heiko@sntech.de
-Subject: [PATCH v6 6/6] arm64: dts: rockchip: Fix label name of hdptxphy for RK3588
-Date: Tue, 21 Jan 2025 14:23:24 +0800
-Message-Id: <20250121062324.309592-7-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250121062324.309592-1-damon.ding@rock-chips.com>
-References: <20250121062324.309592-1-damon.ding@rock-chips.com>
+	id 1ta9DP-00000007CLY-1iV8
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Jan 2025 08:02:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 06744A4103F;
+	Tue, 21 Jan 2025 08:00:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69457C4CEDF;
+	Tue, 21 Jan 2025 08:02:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737446546;
+	bh=CxY3/wyeX6n2/22iDBxPz6jy7l55K+eh5I4tb5XZWMw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GgxjAwBYHJFoxx9+ryaP2BIRL3EgTEG8NjpXq36QrIFsVD9PopIErdonLQK63d/02
+	 dEQYVklmiGBSWrW++TrfN/c13vrxOpWL3dim1VsrzeX2u9PVFNfPjbNgR2ay/2lF0B
+	 mpbcbR17ayslhyfreW/p6wwkPok+E5QxQmQ7vyuTanE59DcQo3VJPBrmll5tXd0u2w
+	 lTflR1aj73vdlqL7/z+AFoKV+FyOMzFUr8ZiN1Xg4pX7QTQctN6j4ARM9VTliRkRHn
+	 5HwVBa68Jp8/8omiQgEz+8+Vo0IYk9iXDtnjIZSNikWqN/3ZJ9iMhHKs6RiFtm2o3j
+	 1Lmm4CL4tdoJw==
+Date: Tue, 21 Jan 2025 09:02:22 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, "Martin K . Petersen" <martin.petersen@oracle.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	"Rafael J . Wysocki" <rafael@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+	Bart Van Assche <bvanassche@acm.org>, YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
+	linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-pm@vger.kernel.org
+Subject: Re: [PATCH v6 1/7] dt-bindings: ufs: Document Rockchip UFS host
+ controller
+Message-ID: <20250121-organic-exotic-honeybee-e90be3@krzk-bin>
+References: <1737428427-32393-1-git-send-email-shawn.lin@rock-chips.com>
+ <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkxPTFZCHxkeTRhLGUJDGB5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a94878826d803a3kunm9456a34d
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NUk6ESo4CjIVTzQyCRxNDjAY
-	FEIKCQpVSlVKTEhMT09LTUhNT0JNVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFDQkJKNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=TZ32C3Hmymuk+1elG923gNWBz4ghv4gp2ZImp7rYeI6ZP7uZ5bMsmLzLlj7zFNgaVVSswExrDTxYJmzk5mXz4aLOzRQXzDE/0FpgE/RTEjcz3mCmEvf3/n1EFaQG0/7rO99CsrvDte2FfjS61u2M1MaEoxAASse9+TG3AcqP3I0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vCKXtzuwlhJUvr/Y/PPdwuxyKY7/Zwsu0NONuR9mcGo=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <1737428427-32393-2-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250120_222359_092099_59BB2E6C 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20250121_000227_516433_17139B06 
+X-CRM114-Status: UNSURE (   8.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,269 +77,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The hdptxphy is a combo transmit-PHY for HDMI2.1 TMDS Link, FRL Link, DP
-and eDP Link. Therefore, it is better to name it hdptxphy0 other than
-hdptxphy_hdmi0, which will be referenced by both hdmi0 and edp0 nodes.
+On Tue, Jan 21, 2025 at 11:00:21AM +0800, Shawn Lin wrote:
+> Document Rockchip UFS host controller for RK3576 SoC.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi                 | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts              | 2 +-
- .../boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts      | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts                | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts       | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts               | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts          | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts      | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi           | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi          | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts              | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts              | 2 +-
- 17 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index a337f3fb8377..7e125897b0cd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1386,7 +1386,7 @@ hdmi0: hdmi@fde80000 {
- 			     <GIC_SPI 172 IRQ_TYPE_LEVEL_HIGH 0>,
- 			     <GIC_SPI 360 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "avp", "cec", "earc", "main", "hpd";
--		phys = <&hdptxphy_hdmi0>;
-+		phys = <&hdptxphy0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hdmim0_tx0_cec &hdmim0_tx0_hpd
- 			     &hdmim0_tx0_scl &hdmim0_tx0_sda>;
-@@ -2806,7 +2806,7 @@ dmac2: dma-controller@fed10000 {
- 		#dma-cells = <1>;
- 	};
- 
--	hdptxphy_hdmi0: phy@fed60000 {
-+	hdptxphy0: phy@fed60000 {
- 		compatible = "rockchip,rk3588-hdptx-phy";
- 		reg = <0x0 0xfed60000 0x0 0x2000>;
- 		clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX0>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-index 9d525c8ff725..9eda69722665 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-@@ -129,7 +129,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-index 92f0ed83c990..d1be72eb63a4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-@@ -166,7 +166,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index d6e464cdc536..094235d22cd1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-@@ -328,7 +328,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-index b3a04ca370bb..8171fbfd819a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-@@ -335,7 +335,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 90f823b2c219..ef56380530f9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -303,7 +303,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index cb350727d116..0d9b5020acc0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -360,7 +360,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-index 9f5a38b290bf..f14e96d96207 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-@@ -296,7 +296,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index c44d001da169..a047c579c93d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -220,7 +220,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-index 3187b4918a30..795d8175e654 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-@@ -189,7 +189,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index 9c394f733bbf..f471baca6d31 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -236,7 +236,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 4a3aa80f2226..74a4f03e05e3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -278,7 +278,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index 76a6e8e517e9..482f5917043f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -251,7 +251,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-index 8f034c6d494c..1463bd36b1b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-@@ -264,7 +264,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-index d86aeacca238..9e16960b8705 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-@@ -197,7 +197,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 70a43432bdc5..676cc4fec269 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -334,7 +334,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 9b14d5383cdc..bf74789e3f51 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -278,7 +278,7 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
--&hdptxphy_hdmi0 {
-+&hdptxphy0 {
- 	status = "okay";
- };
- 
--- 
-2.34.1
+Just because I gave review, does not mean you can send untested patches!
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
