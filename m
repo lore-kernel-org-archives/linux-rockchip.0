@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E64C02182
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 10:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B49C0218B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jan 2025 10:53:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f7dFVIgMyhhJMT05l1ft8BA3+xtMgJT0BtrTvaxLIl8=; b=qWTsiSEFKp6XqY
-	9vNiW8+w7XtWk8OmeTRhaoq8DFWjGC532OVBi0WTXX3hI3PMNe8Ji/fRtyyNkhigZc/N8I/iolccW
-	soDVRUZkGbRECCEcXizQQ+hZpJ26kBa8e0yKwLztI6DoPONrpxqX9JWFJyuC97xH8i+wE5yheMi/K
-	fVH2nn2NNXjXoTQ2OPOuHDU8gu+zDSgm6L+bWdDWy5xocU8syBIj5UlkWhVoybu6qemGeS7A7tnK1
-	dpMWhHR3WwiRMpXGvW/zPo78g0z5ZjinIXw3VXqzq5ehJQLA2fQzjWjmBID2UTejGbEeI9NVEu8g6
-	I1997ny+U1MfwRVR6lBQ==;
+	List-Owner; bh=yUZajMfGLJ367b2qsqA5UtjV6vi+DYFJuDbnvebgRto=; b=aabgrzSDPXy1zg
+	P0KmvIylGigIrt0/+QXC1XixNtBX8I2apOkZkMmlufsXTEkrZBN3dJrnDKeHd62KbcnQIzqpMtU/t
+	Xos+e61PwsMxlNEJ0mmIp9MpdgvHtiTdUVLUAX03+JHKeK4odQU4hRHdG5qvGGDY0w0sdSQqLatW4
+	CMnQx1DL0MKyG/1mDJ5QZa7XxrtOPWDAzIox7hKlNtEK/d1jkKmqWVStUZh98bA4rF4IMm8XHNmzw
+	OYAB5EhZGrP/Rwxcx/EjXb6OZdUXYu03aSxdx89IK8suIBAvvlPgI6tKJGtl9BDeGwKcpyY5GM4xP
+	uUKnKNr3RkteBTMsewaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taBpF-00000007ePg-0XJy;
-	Tue, 21 Jan 2025 10:49:41 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1taBt1-00000007f1I-1myz;
+	Tue, 21 Jan 2025 10:53:35 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taBZo-00000007b7Q-44Iq;
-	Tue, 21 Jan 2025 10:33:47 +0000
+	id 1taBbC-00000007bXH-0PKT;
+	Tue, 21 Jan 2025 10:35:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=1tK63
-	p6E06ruoBhr4yP+6MI3hNsxARoiIZJBTFpZRnw=; b=X8Dr/gmG9eZPjurDFT025
-	EkVUXO1aw5QEtgZw4cNP42UDfdw1UzHSwLow3x929JowPh4Gcvj0zqs9CIeWlK9U
-	2dowHKU/q4Wl8E/7r7CUMcVqhzDUgpWK3rt/zqckwGE9QLFPFPnaDWy8k5LwDq/6
-	MGKDLc9UgweoMgc+mduTMI=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp1 (Coremail) with SMTP id PCgvCgDHkqjYd49nreMjBg--.21590S11;
-	Tue, 21 Jan 2025 18:33:08 +0800 (CST)
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=rIdeV
+	1+pXq0QaKtzBsI6ANLMHSHhAqjh7JQhiSF7JzM=; b=M2ZGcCIgxmuY+dOCZstHE
+	iEv6LegmSeOgJ4xguxvbAPFnG+Qc2hPNxnzZNkK3S4nbQkUzQc0HMCoG6K2jUeVQ
+	6HEbcIRL04L/0FnBYnwbdRUPhSJxpMVxrQNBv5orjkR9nYODeb9pVv1FKWkUwWpZ
+	fMDooB+Cs4/pfYFWV63yXE=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzsmtp5 (Coremail) with SMTP id QCgvCgDHVyxIeI9nfog_LQ--.31266S2;
+	Tue, 21 Jan 2025 18:34:51 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -49,25 +49,24 @@ Cc: hjc@rock-chips.com,
 	daniel@fooishbar.org,
 	robh@kernel.org,
 	sebastian.reichel@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v12 09/13] drm/rockchip: vop2: Add uv swap for cluster window
-Date: Tue, 21 Jan 2025 18:32:46 +0800
-Message-ID: <20250121103254.2528004-10-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v12 11/13] dt-bindings: display: vop2: Add missing rockchip,grf propertie for rk3566/8
+Date: Tue, 21 Jan 2025 18:34:44 +0800
+Message-ID: <20250121103446.2528212-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250121103254.2528004-1-andyshrk@163.com>
 References: <20250121103254.2528004-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PCgvCgDHkqjYd49nreMjBg--.21590S11
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW8Ww1kAF4UAw47JFy7ZFb_yoW8XrWfpa
-	13ArWqgw45Kw4Iq34kJFW5AFWSywnxKay7uws7tw1F9ry3KFyDG3Z0kFWUAr1qyFsFkF47
-	tF93JrW7Zr1jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jsOzsUUUUU=
+X-CM-TRANSID: QCgvCgDHVyxIeI9nfog_LQ--.31266S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtFWxtw43Zr4UGrWxXF1kKrg_yoWDZFXEq3
+	yxuF1Y9rs5Xrn8Kw1DA3yxCrs8Za1Ikr4DCayqyF4qy3Z5A34v9F95Jw15CF18CF43uF4S
+	krs5urZrWanxGjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8RRRtUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRjbXmePcVKFfQABsG
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gDbXmePdPdBiAAAs1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_023345_424674_A28868C6 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20250121_023510_489609_D0843B9F 
+X-CRM114-Status: UNSURE (   8.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,40 +86,40 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The Cluster windows of upcoming VOP on rk3576 also support
-linear YUV support, we need to set uv swap bit for it.
-
-As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
-0xffffffff, so this register will not be touched on these
-two platforms.
+Propertie "rockchip,grf" is required for rk3566/8.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+
 ---
 
-(no changes since v1)
+Changes in v12:
+- Split from patch 10/13
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ .../devicetree/bindings/display/rockchip/rockchip-vop2.yaml   | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 6040fd2388d3..3e9581e8adab 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1373,10 +1373,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index f23939e67fd0..157a37ed84da 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -145,6 +145,9 @@ allOf:
+         rockchip,vop-grf: false
+         rockchip,pmu: false
  
- 	rb_swap = vop2_win_rb_swap(fb->format->format);
- 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
--	if (!vop2_cluster_window(win)) {
--		uv_swap = vop2_win_uv_swap(fb->format->format);
--		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
--	}
-+	uv_swap = vop2_win_uv_swap(fb->format->format);
-+	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
- 
- 	if (fb->format->is_yuv) {
- 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
++      required:
++        - rockchip,grf
++
+   - if:
+       properties:
+         compatible:
+@@ -200,6 +203,7 @@ examples:
+                               "dclk_vp1",
+                               "dclk_vp2";
+                 power-domains = <&power RK3568_PD_VO>;
++                rockchip,grf = <&grf>;
+                 iommus = <&vop_mmu>;
+                 vop_out: ports {
+                     #address-cells = <1>;
 -- 
 2.34.1
 
