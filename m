@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3872C02182
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 09:48:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89838C02181
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 09:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
 	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0CPEIbvr1Fx+AGGkyGw4z8grdZaQVMdizRKyk/i6748=; b=aO37dv0tAKw0E0
-	CjCvZuVEE51LqPGEPmcHxA89T80XVWznXPZ/wFTaJcv9Dgfv1y34AcHNHo/G7D7z9SAogMBmE3jUs
-	JbTOQaehueM3UVKFhPxGXa9uY/ECbdi78toZBzYJW5GFZCEmW5uq3swa3pDuSPFoigJ0+zpLPwJzX
-	LEoQleyKqRUL/ZzheDa+DWg33igbRpTmgwVkC+R8AT18lHBZd0ilLV8mBY9nl+DSZlAzdXAUK/NK4
-	R/DKXVDjioG3HgIvDOJvywh0ia0Aq0pMSLdJtTCxL12aJNNNfSmU/bC/QWwPug/hfVMyrjk/JwMyV
-	1C9vUuZCHz/eP02Kawkw==;
+	List-Owner; bh=ojiRrA+mevJgVoKAeoz+Ft0bJZoZb3An5wnyVvckkvw=; b=oZAvwOGf0hNVMn
+	2je4aJoEG3IMgNTfazEbEaNcWiCXCDof455L8wiszVN23Ni6jiNw7At+5bPf0SCH2Sp3OBNeq5LK/
+	aqqKXyZykMvsEjldwrAzuZZh2RvkNu5kjbH8y/3l7FTIWJJeKbUQC0ADHjQO0OHaw6z1X0gQn29Tq
+	JN0AVFJ2zdmwpwBose3DlhcEwv9TP9edbbiDix3Ky7pJcaXW0qS3RX/nFOESZwHdpH43+TQmvpsc/
+	JdraHtztD/pprAr8cZyrufopHq33ZfcWQMT4+n/fIq7H8FU0UCSmLicmk7Ze94RLur6jayZnjwYEL
+	qcNUbJCrw21rNAbgF1Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXLY-00000009pfu-0QeF;
-	Wed, 22 Jan 2025 09:48:28 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1taXRW-00000009qs5-3b7V;
+	Wed, 22 Jan 2025 09:54:38 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXKE-00000009pSi-2Acv;
-	Wed, 22 Jan 2025 09:47:08 +0000
+	id 1taXQE-00000009qXi-0beZ;
+	Wed, 22 Jan 2025 09:53:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=yWAJhbS/Q4MdxkCcBp+SmWjdnLYTjbVw2yNkD6kRxTc=; b=m
-	iWC5lsm0JB7e8qPX/ddL0OKPtrrkSeIwIzLKvgnUSsRVh/Zg+YzrLPDF87BrHzDH
-	HrcZ9sFV3DRLYMBHFyOmmroWmPOOdZiBpGippY2wgq1G3SjetN6VGAfDSFsl6rmH
-	ku9VAl5yMiyEiQpl6AqFXNrs47lUSVAzVR9k7N6ECQ=
+	Message-ID; bh=PqQdaUqkdHlGiWWk3ENJJX61puJuMPc09OfIxsrMZEs=; b=T
+	1R5vCYt57r1hKOy3PId1QVHcS8cS+SzuQWsYZr3M3wYG5nvSSrH4PJ3A0O7YUa8s
+	ec3im7UzT3Yej69OE7rofptTY4lS6cc5Okd9LA8E+SCujnpa+PZVNI2wh9fUthX5
+	2BvrXZpYKH96vyZqByoAXhRnLi+7dnX0pX99MDKUTg=
 Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Wed, 22 Jan 2025 17:46:43 +0800
+ ajax-webmail-wmsvr-40-141 (Coremail) ; Wed, 22 Jan 2025 17:52:48 +0800
  (CST)
 X-Originating-IP: [58.22.7.114]
-Date: Wed, 22 Jan 2025 17:46:43 +0800 (CST)
+Date: Wed, 22 Jan 2025 17:52:48 +0800 (CST)
 From: "Andy Yan" <andyshrk@163.com>
 To: "Krzysztof Kozlowski" <krzk@kernel.org>
 Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
@@ -46,25 +46,28 @@ Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
 	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
 	sebastian.reichel@collabora.com,
 	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576
- support
+Subject: Re:Re: [PATCH v12 11/13] dt-bindings: display: vop2: Add missing
+ rockchip,grf propertie for rk3566/8
 X-Priority: 3
 X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
  Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
+In-Reply-To: <c6ee51bf-e264-44d6-8e22-f50a30848237@kernel.org>
 References: <20250121103254.2528004-1-andyshrk@163.com>
- <20250121103500.2528258-1-andyshrk@163.com>
- <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
-X-NTES-SC: AL_Qu2YBfmYtkor5SifbekfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5MbkJYlmVCGtvKvPsZd0ZQhuQ==
+ <20250121103446.2528212-1-andyshrk@163.com>
+ <20250122-quaint-heavenly-herring-c92c32@krzk-bin>
+ <6ccc6e2.6afc.1948d580c9c.Coremail.andyshrk@163.com>
+ <c6ee51bf-e264-44d6-8e22-f50a30848237@kernel.org>
+X-NTES-SC: AL_Qu2YBfmYtk0t7iWdZOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5Mb/2NnfBECzszXPSE30hsDtA==
 MIME-Version: 1.0
-Message-ID: <5eb4acaa.6df6.1948d68332d.Coremail.andyshrk@163.com>
+Message-ID: <7869aa80.6ec2.1948d6dc3ae.Coremail.andyshrk@163.com>
 X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgD3v_uDvpBnS8lcAA--.18343W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQvcXmeQtfafFwACse
+X-CM-TRANSID: jSgvCgDH7_Pwv5Bng8pcAA--.18456W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQPcXmeQtfaqlwAFsk
 X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_014706_879607_35019F30 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250122_015318_559266_3B0433F5 
+X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,152 +87,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi
 
-At 2025-01-22 16:04:59, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->On Tue, Jan 21, 2025 at 06:34:57PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
+At 2025-01-22 17:43:34, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
+>On 22/01/2025 10:29, Andy Yan wrote:
 >> 
->> Add vop found on rk3576, the main difference between rk3576 and the
->> previous vop is that each VP has its own interrupt line.
+>> Hi
+>> At 2025-01-22 16:03:00, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
+>>> On Tue, Jan 21, 2025 at 06:34:44PM +0800, Andy Yan wrote:
+>>>> From: Andy Yan <andy.yan@rock-chips.com>
+>>>>
+>>>> Propertie "rockchip,grf" is required for rk3566/8.
+>>>
+>>> Fix typos.
+>>>
+>>> Why? What we see from the diff...
 >> 
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> 
->> ---
->> 
->> Changes in v12:
->> - Split from patch 10/13
+>> This property is used in dts, see vop dt node in rk356x-base.dtsi,
 >
->Order your patches finally. It's v12 and you still send binding after
->the user. Read carefully submitting bindings/patches.
 >
->> 
->> Changes in v11:
->> - Remove redundant min/maxItems constraint
->> 
->> Changes in v10:
->> - Move interrupt-names back to top level
->> - Add constraint of interrupts for all platform
->> - Add constraint for all grf phandles
->> - Reorder some properties
->> 
->> Changes in v9:
->> - Drop 'vop-' prefix of interrupt-names.
->> - Add blank line between DT properties
->> - Remove list interrupt-names in top level
->> 
->> Changes in v8:
->> - Fix dt_binding_check errors
->> - ordered by soc name
->> - Link to the previous version:
->>   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
->> 
->> Changes in v4:
->> - describe constraint SOC by SOC, as interrupts of rk3576 is very
->>   different from others
->> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
->> 
->> Changes in v3:
->> - ordered by soc name
->> - Add description for newly added interrupt
->> 
->> Changes in v2:
->> - Add dt bindings
->> 
->>  .../display/rockchip/rockchip-vop2.yaml       | 55 ++++++++++++++++++-
->>  1 file changed, 52 insertions(+), 3 deletions(-)
->> 
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> index 157a37ed84da..a2a6369c7b6f 100644
->> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> @@ -21,6 +21,7 @@ properties:
->>      enum:
->>        - rockchip,rk3566-vop
->>        - rockchip,rk3568-vop
->> +      - rockchip,rk3576-vop
->>        - rockchip,rk3588-vop
->>  
->>    reg:
->> @@ -38,10 +39,21 @@ properties:
->>        - const: gamma-lut
->>  
->>    interrupts:
->> -    maxItems: 1
->> +    minItems: 1
->> +    maxItems: 4
->>      description:
->> -      The VOP interrupt is shared by several interrupt sources, such as
->> -      frame start (VSYNC), line flag and other status interrupts.
->> +      For VOP version under rk3576, the interrupt is shared by several interrupt
->> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
->> +      For VOP version from rk3576 there is a system interrupt for bus error, and
->> +      every video port has it's independent interrupts for vsync and other video
->> +      port related error interrupts.
->> +
->> +  interrupt-names:
->> +    items:
->> +      - const: sys
->> +      - const: vp0
->> +      - const: vp1
->> +      - const: vp2
->>  
->>    # See compatible-specific constraints below.
->>    clocks:
->> @@ -135,6 +147,8 @@ allOf:
->>          interrupts:
->>            maxItems: 1
->
->So this change moves to this patch.
->
->>  
->> +        interrupt-names: false
->> +
->>          ports:
->>            required:
->>              - port@0
->> @@ -148,6 +162,39 @@ allOf:
->>        required:
->>          - rockchip,grf
->>  
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3576-vop
->> +    then:
->> +      properties:
->> +        clocks:
->> +          minItems: 5
->
->No. You did not implement my comment at all.
->
->So again:
->"Why minItems? Nothing in this patch makes sense for me. Neither changing
->existing binding nor new binding for rk3576."
+>This is not the reason to make it a required property.
 
-Do you mean because I already defined minItems of clocks is 5 on the top, so 
-there is no need to redefine the same minItems here ?
-
->
->To address such comment, come with reasonable answer to "why". Not just
->send the same. It's a waste of my time to keep reviewing the same.
-
-Before sending this patch, I asked you what the next step should be, but you didn't respond.
-I might indeed have failed to grasp your main point, I'm indeed not  writing dt-schema. 
-Hope you can explain some of the specific issues in more detail to avoid wasting the time of both
-of us.
-
-
-
+The Clock Polarity of RGB signal output is controlled by GRF.
+ 
 >
 >Best regards,
 >Krzysztof
->
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
