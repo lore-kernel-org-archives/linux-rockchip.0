@@ -4,70 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89838C02181
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 09:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B3CC02181
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 10:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ojiRrA+mevJgVoKAeoz+Ft0bJZoZb3An5wnyVvckkvw=; b=oZAvwOGf0hNVMn
-	2je4aJoEG3IMgNTfazEbEaNcWiCXCDof455L8wiszVN23Ni6jiNw7At+5bPf0SCH2Sp3OBNeq5LK/
-	aqqKXyZykMvsEjldwrAzuZZh2RvkNu5kjbH8y/3l7FTIWJJeKbUQC0ADHjQO0OHaw6z1X0gQn29Tq
-	JN0AVFJ2zdmwpwBose3DlhcEwv9TP9edbbiDix3Ky7pJcaXW0qS3RX/nFOESZwHdpH43+TQmvpsc/
-	JdraHtztD/pprAr8cZyrufopHq33ZfcWQMT4+n/fIq7H8FU0UCSmLicmk7Ze94RLur6jayZnjwYEL
-	qcNUbJCrw21rNAbgF1Ag==;
+	List-Owner; bh=Cz2Q3qMgfyfLGZoZooCYaSofonNeOGOENnlju2e3O8E=; b=e2v7FAYDj9yU4p
+	Df+LAIlS/wb6vE82h/BhNvHG5ucGOIjHmZX2HcuBI13KlbnMyp7tov5aVl/o4h7rzRVPCmu0uAvA1
+	gcLU2g+qJvcpL70C5fumkuMdaiZXEINt4ZcvMIpUgh5izQ7vGc7wZ2UjZzTJVMOSCj4FhzHlLxkAm
+	r3+PkAeEG30l1yn4OOqojWQDw7VNRNHPdqkDsQ+gfRTehUwqUqVgLt3sM935gbJULCUxgvt8Rwc3U
+	wLdTVwbO2eIZAhiXYKhbFB9QLFdTAMMi+f0nmrun8QP6Jmo0HtUqNcmsAIRcWytjaMQGHk3+Szh8R
+	E3bJR839WtXlQhuAHFOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXRW-00000009qs5-3b7V;
-	Wed, 22 Jan 2025 09:54:38 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXQE-00000009qXi-0beZ;
-	Wed, 22 Jan 2025 09:53:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=PqQdaUqkdHlGiWWk3ENJJX61puJuMPc09OfIxsrMZEs=; b=T
-	1R5vCYt57r1hKOy3PId1QVHcS8cS+SzuQWsYZr3M3wYG5nvSSrH4PJ3A0O7YUa8s
-	ec3im7UzT3Yej69OE7rofptTY4lS6cc5Okd9LA8E+SCujnpa+PZVNI2wh9fUthX5
-	2BvrXZpYKH96vyZqByoAXhRnLi+7dnX0pX99MDKUTg=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Wed, 22 Jan 2025 17:52:48 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 22 Jan 2025 17:52:48 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v12 11/13] dt-bindings: display: vop2: Add missing
- rockchip,grf propertie for rk3566/8
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <c6ee51bf-e264-44d6-8e22-f50a30848237@kernel.org>
-References: <20250121103254.2528004-1-andyshrk@163.com>
- <20250121103446.2528212-1-andyshrk@163.com>
- <20250122-quaint-heavenly-herring-c92c32@krzk-bin>
- <6ccc6e2.6afc.1948d580c9c.Coremail.andyshrk@163.com>
- <c6ee51bf-e264-44d6-8e22-f50a30848237@kernel.org>
-X-NTES-SC: AL_Qu2YBfmYtk0t7iWdZOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5Mb/2NnfBECzszXPSE30hsDtA==
+	id 1taXYZ-00000009sAm-27in;
+	Wed, 22 Jan 2025 10:01:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1taXSY-00000009rD1-1lyz;
+	Wed, 22 Jan 2025 09:55:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7E11E5C5D9E;
+	Wed, 22 Jan 2025 09:55:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 990A2C4CEE2;
+	Wed, 22 Jan 2025 09:55:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737539741;
+	bh=oTek1JRLg1nABvU7rxwqx97/p8svej4w5YzkvNSofVM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NfEpP8H/5XTmmcZM7/Cd5HS0PZkfFZrX0bx2m/biDCf9WAieo928GjZM+jb7bfPOj
+	 NQoNDxN+DITenk9l2NF9vg1HcCYzaeWGNnbPpJQOmirG1fwXHTMqQMCuj2Nod9gFhO
+	 2Vyt0W62gA4arrEmNjbGCV+bCPoeUUyOWhOsmTkJIrTbb5HPJI2D+HvYMNNuibBjOM
+	 v0g3ybgwxPL80vY11fyiiqQJzQzsafHHEnl0lgVM7YDMuFrvxUY4u707pL8XBiAF82
+	 a+RREuSPSfa6o4FC1VPkTGgg2LXdfnyrfES6NT9xNypMM9G4p4Qppjq543WoIiB44R
+	 +Np3L9/uqYrEQ==
+Message-ID: <77ea5067-deb2-41d4-ab82-ce19ac018ba3@kernel.org>
+Date: Wed, 22 Jan 2025 10:55:34 +0100
 MIME-Version: 1.0
-Message-ID: <7869aa80.6ec2.1948d6dc3ae.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgDH7_Pwv5Bng8pcAA--.18456W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQPcXmeQtfaqlwAFsk
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576 support
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
+ detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
+ sebastian.reichel@collabora.com, Andy Yan <andy.yan@rock-chips.com>
+References: <20250121103254.2528004-1-andyshrk@163.com>
+ <20250121103500.2528258-1-andyshrk@163.com>
+ <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
+ <5eb4acaa.6df6.1948d68332d.Coremail.andyshrk@163.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <5eb4acaa.6df6.1948d68332d.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_015318_559266_3B0433F5 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250122_015542_554281_9B0F8384 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +122,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 22/01/2025 10:46, Andy Yan wrote:
+>>> -      The VOP interrupt is shared by several interrupt sources, such as
+>>> -      frame start (VSYNC), line flag and other status interrupts.
+>>> +      For VOP version under rk3576, the interrupt is shared by several interrupt
+>>> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
+>>> +      For VOP version from rk3576 there is a system interrupt for bus error, and
+>>> +      every video port has it's independent interrupts for vsync and other video
+>>> +      port related error interrupts.
+>>> +
+>>> +  interrupt-names:
+>>> +    items:
+>>> +      - const: sys
+>>> +      - const: vp0
+>>> +      - const: vp1
+>>> +      - const: vp2
+>>>  
+>>>    # See compatible-specific constraints below.
+>>>    clocks:
+>>> @@ -135,6 +147,8 @@ allOf:
+>>>          interrupts:
+>>>            maxItems: 1
+>>
+>> So this change moves to this patch.
+>>
+>>>  
+>>> +        interrupt-names: false
+>>> +
+>>>          ports:
+>>>            required:
+>>>              - port@0
+>>> @@ -148,6 +162,39 @@ allOf:
+>>>        required:
+>>>          - rockchip,grf
+>>>  
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            enum:
+>>> +              - rockchip,rk3576-vop
+>>> +    then:
+>>> +      properties:
+>>> +        clocks:
+>>> +          minItems: 5
+>>
+>> No. You did not implement my comment at all.
+>>
+>> So again:
+>> "Why minItems? Nothing in this patch makes sense for me. Neither changing
+>> existing binding nor new binding for rk3576."
+> 
+> Do you mean because I already defined minItems of clocks is 5 on the top, so 
+> there is no need to redefine the same minItems here ?
 
-Hi
+Lists must be constrained. This is not constrained from the max items
+and you repeat existing constrain.
 
-At 2025-01-22 17:43:34, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->On 22/01/2025 10:29, Andy Yan wrote:
->> 
->> Hi
->> At 2025-01-22 16:03:00, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->>> On Tue, Jan 21, 2025 at 06:34:44PM +0800, Andy Yan wrote:
->>>> From: Andy Yan <andy.yan@rock-chips.com>
->>>>
->>>> Propertie "rockchip,grf" is required for rk3566/8.
->>>
->>> Fix typos.
->>>
->>> Why? What we see from the diff...
->> 
->> This property is used in dts, see vop dt node in rk356x-base.dtsi,
->
->
->This is not the reason to make it a required property.
+For every variable list you need to provide min and maxItems, except the
+edge cases when dimension matches top level dimension.
 
-The Clock Polarity of RGB signal output is controlled by GRF.
- 
->
->Best regards,
->Krzysztof
+Standard example is:
+
+https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L127
+
+which I mention on mailing lists multiple times. Also described this
+case exactly on my two talks...
+
+> 
+>>
+>> To address such comment, come with reasonable answer to "why". Not just
+>> send the same. It's a waste of my time to keep reviewing the same.
+> 
+> Before sending this patch, I asked you what the next step should be, but you didn't respond.
+
+You asked whether splitting is correct and I did not object that. I
+already said: " You need to split reorganizing", then you asked if you
+can split, so sorry, I am not going to keep repeating the same multiple
+times.
+
+But anyway this is not about the split, so you did not question last
+time how to do it. You just skipped my paragraph asking for "Why?".
+
+
+
+Best regards,
+Krzysztof
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
