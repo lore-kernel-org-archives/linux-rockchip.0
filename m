@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C8FAC02181
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 06:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9582C02181
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 08:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6MIvyQ+zVaSlTV4Nqr4WI0IHOQcFbWGVmpa59Cz0RN0=; b=h4LVEUwyMsXkoa
-	SWDzc51qXjVCM9VjJku+PkbTRBzVI+X0Q39Y0jENg6+X6WieUn4EmZdJS6yaCbgXaNzYfzgCOAGjl
-	WXCQtVOE7AiRqKUS4e1zFS80DaeXzJ3aWoTXKEUrDFSv7PfzGYYsdBkdHTH1lXU5fifiBf2aEvJwI
-	20G3SMMOlyJv1w38VQyqpd1FXJ+P35w4kTiIBSpTxMBLwHCxWGgxeoG3hhZPRbJdAtypXhacNqeQ4
-	WE0MFuhFlR/qr2P25S+DnBSCanDgNlz3XUzArtcWsfLNo8hdX2HLVxsV2p/GDqi0NZtY0sAkh1A00
-	NIo9RfL4dfLd4cqM6UZQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mn0icordsxHYHwcrCZhEgOP0gzDqzkISxzcYDdRrp4E=; b=APYZ1p67ynnm71
+	TDexiHVlGMM40IdNhy1wTgWRM5FYExIX3kWsbhjBVYID58g02AI3n+uvsNAJ1/7hpjbe9OuouAqV9
+	a2+mFh1XeM/rIzXY/RfQwHS89ntY7dMb8/JqmOcep/lJVaGyds9XmAYjRkYnv8FcutRThkL17GYZx
+	dZaar4tnCUio2Kw3L8/KSUMnyOApz+xpxQ9jSuVPnRr4KK8umq6GwbG/pwc7lPJ77jda4f+TAkdFR
+	C8bfJWvZBBF57SZZUP2hko8am2L+1oQjYt1AVduOfvXjexauQSYkgk/nW7Ty/VMNasddUtrkASEn+
+	r5zaNJAd+EJPyIZOm+zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taUdf-00000009Y7e-2RPY;
-	Wed, 22 Jan 2025 06:54:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1taViJ-00000009f91-2lEu;
+	Wed, 22 Jan 2025 08:03:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taUbe-00000009Xvo-3ECz;
-	Wed, 22 Jan 2025 06:52:55 +0000
+	id 1taVh1-00000009ewv-0qOu;
+	Wed, 22 Jan 2025 08:02:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C67995C4AD0;
-	Wed, 22 Jan 2025 06:52:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA25EC4CED6;
-	Wed, 22 Jan 2025 06:52:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 13B1B5C5CC9;
+	Wed, 22 Jan 2025 08:01:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65541C4CED6;
+	Wed, 22 Jan 2025 08:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737528773;
-	bh=I763Oa/eMnsSlbkfcMXLpMoWKkAVbmdkHlpluk14S2U=;
-	h=From:To:Cc:Subject:Date:From;
-	b=sd47wlCr0vdUjmjxCSegDkO6VOc07MkgL79bE+w0NKECtY4aPCZU1g6CFGTqdfuAe
-	 SZvfwqXvGbdY7cIUSA9/Zo0ckUg+QJb0kxFnh2dCqPfejKLCvCn5HeHbXqdhZDMq87
-	 hD/fdQEGdoy1R5SadPhaNhHtTdTpvj162AaYvXh0uxRnKYUWldWKfRx8sysLUF60Fh
-	 PQNPV0F334lhpPeC041/0hnii0Y4G2AkwdwOFjsQuSYYBdbyx3ZNdvHeW9W9eF2D0M
-	 P7Z5EBHKMyq5jqZpZQofY8ELXCc4tdPCGw6SibbxjD41Tovte4uJhocGIhYFjDuurH
-	 empItcXx2e4gA==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] phy: rockchip: fix Kconfig dependency more
-Date: Wed, 22 Jan 2025 07:52:44 +0100
-Message-Id: <20250122065249.1390081-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	s=k20201202; t=1737532950;
+	bh=XspACQ/SeIuejKutebYI6GMThqDAj/TizHr7BbFXO7Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R/kZPNcSjiI/Ky3ZvFc/16EujczsfY9jiKFmxPVKYqXHbRZ9VdwGIhcIGF/CZ4PhP
+	 9C/JEFht/idis5hcpSGhoFjEaQPUxG5fPMHhkvJoLBae+iwtUu9O0EZeOWDNb0QIFW
+	 UFwvx5sSQt+CrtvwCNRwwjTaTPmZY6McNxNDNuKmbhbrFAUTkciATTqzTHHFN117/p
+	 GM75R50CvKz2W5JNtmuRgTJ+4TAL3AYiwvcoXsRiC2J9rlYiQK0Qi2vwDfzt3+4yyA
+	 vC9W1V9ppB9MiBcuz5GF2hcNCHP5e0zy+00nlCaKWr8yjK0ulqXfGxok5gQFFYJTXQ
+	 AOPAU878L6Z6w==
+Date: Wed, 22 Jan 2025 09:02:26 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	derek.foreman@collabora.com, detlev.casanova@collabora.com, daniel@fooishbar.org, 
+	robh@kernel.org, sebastian.reichel@collabora.com, 
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v12 10/13] dt-bindings: display: vop2: describe
+ constraint SoC by SoC
+Message-ID: <20250122-turquoise-condor-of-temperance-b8dfea@krzk-bin>
+References: <20250121103254.2528004-1-andyshrk@163.com>
+ <20250121103254.2528004-11-andyshrk@163.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250121103254.2528004-11-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250121_225254_853456_01E01C90 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20250122_000231_323418_5AD9349B 
+X-CRM114-Status: GOOD (  20.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,47 +72,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Zhang Yubing <yubing.zhang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Tue, Jan 21, 2025 at 06:32:47PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> As more SoCs variants are introduced, each SoC brings its own
+> unique set of constraints, describe this constraints SoC by
+> SoC will make things easier for adding new variant.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
 
-A previous patch ensured that USB Type C connector support is enabled,
-but it is still possible to build the phy driver without enabling
-CONFIG_USB (host support) or CONFIG_USB_GADGET (device support), and
-in that case the common helper functions are unavailable:
+> Changes in v12:
+> - Only change the description method for existing SoC.
+> 
+> Changes in v11:
+> - Remove redundant min/maxItems constraint
+> 
+> Changes in v10:
+> - Move interrupt-names back to top level
+> - Add constraint of interrupts for all platform
+> - Add constraint for all grf phandles
+> - Reorder some properties
+> 
+> Changes in v9:
+> - Drop 'vop-' prefix of interrupt-names.
+> - Add blank line between DT properties
+> - Remove list interrupt-names in top level
+> 
+> Changes in v8:
+> - Fix dt_binding_check errors
+> - ordered by soc name
+> - Link to the previous version:
+>   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
+> 
+> Changes in v4:
+> - describe constraint SOC by SOC, as interrupts of rk3576 is very
+>   different from others
+> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
+> 
+> Changes in v3:
+> - ordered by soc name
+> - Add description for newly added interrupt
+> 
+> Changes in v2:
+> - Add dt bindings
+> 
+>  .../display/rockchip/rockchip-vop2.yaml       | 44 +++++++++++++------
+>  1 file changed, 30 insertions(+), 14 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> index 2531726af306..f23939e67fd0 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> @@ -14,6 +14,7 @@ description:
+>  maintainers:
+>    - Sandy Huang <hjc@rock-chips.com>
+>    - Heiko Stuebner <heiko@sntech.de>
+> +  - Andy Yan <andyshrk@163.com>
+>  
+>  properties:
+>    compatible:
+> @@ -120,43 +121,58 @@ allOf:
+>        properties:
+>          compatible:
+>            contains:
+> -            const: rockchip,rk3588-vop
+> +            enum:
+> +              - rockchip,rk3566-vop
+> +              - rockchip,rk3568-vop
+>      then:
+>        properties:
+>          clocks:
+> -          minItems: 7
+> +          minItems: 5
 
-aarch64-linux-ld: drivers/phy/rockchip/phy-rockchip-usbdp.o: in function `rk_udphy_probe':
-phy-rockchip-usbdp.c:(.text+0xe74): undefined reference to `usb_get_maximum_speed'
+I don't see any changes comparing to original binding. At least not for
+clocks.
 
-Select CONFIG_USB_COMMON directly here, like we do in some other phy
-drivers, to make sure this is available even when actual USB support
-is disabled or in a loadable module that cannot be reached from a
-built-in phy driver.
+> +
+>          clock-names:
+> -          minItems: 7
+> +          minItems: 5
+> +
+> +        interrupts:
+> +          maxItems: 1
 
-Fixes: 9c79b779643e ("phy: rockchip: fix CONFIG_TYPEC dependency")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/phy/rockchip/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+This is useless and not explained.
 
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index 2f7a05f21dc5..dcb8e1628632 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -125,6 +125,7 @@ config PHY_ROCKCHIP_USBDP
- 	depends on ARCH_ROCKCHIP && OF
- 	depends on TYPEC
- 	select GENERIC_PHY
-+	select USB_COMMON
- 	help
- 	  Enable this to support the Rockchip USB3.0/DP combo PHY with
- 	  Samsung IP block. This is required for USB3 support on RK3588.
--- 
-2.39.5
+Best regards,
+Krzysztof
 
 
 _______________________________________________
