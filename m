@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1624EC02181
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 08:06:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DEEC0218C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 08:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qfNu04aIPllBpPaJ8EekhLGAEwIrmqAPwdWHbu0n95Y=; b=jFC6z7hnQqaYz4
-	MKsZBU5ncoKlRtNH3hKYGNIGZ+MFR3wlkhdHzgzjVmI/9tR600kNFj3XlBV3FQQEqvxfhlLUgkj+g
-	Yz0CMgFFfcHWzAe+lQRqzZzKdVjLu6XJqGIpwXZKeQOwefKORlOhjrNXl7w6zoaCUb0VxJQvbFytA
-	pZESkWPI0+KQ30Rcxyth5aR2KDG0jgZ6iu9adWgQpYLLjZWlIMZuSF9mlOGLhNKmHVGQN3nA42Ggv
-	i64hWcFW5ykN9URd00JrZ5xlPUAArQqWzzMlp6HI/5GZbiNWyUufkVFJzvMvjhyeDmmGNHlg6Jhj5
-	B0eeeN9hfn2JOJEqraLQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OV/VvMQQcYhrIV7CvRQpX4CA81znMAHCWO6TKF4F6oA=; b=TtxvGVZZjnGV+ZRqD/jKZ7+S5+
+	OCSUJLPr4sakwSJc4XOhOfKiXq7n60Fghay9ogjVIndtwmYy8M4vb+qmuakuQKLUmyEqn+Mm17HzM
+	PF+CltjIXN1zhuXC5G73/6gkIYNM5qK+sgnPS9JEFAtSY1RYvpVuFmojIlMc4iJ50H16rHBArH6WJ
+	OitVvZwA5q3afOJ5c/zuzsyyBh7kHS7zNf/6yv27MiQb5a7Wg1yMM3cf+iUDRJUPvD3UCPBWsNotI
+	KV5EYIx8FNWQ3Rn0UfykhjC8vumqcCksHp/ZGozn5RkTtvW6kiW0y2Vp4EvRQWWubGONNUMbI2Pww
+	/zfyaYQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taVkp-00000009faI-2heL;
-	Wed, 22 Jan 2025 08:06:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1taVm6-00000009fnl-2rrM;
+	Wed, 22 Jan 2025 08:07:46 +0000
+Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taVjT-00000009fKf-0ExK;
-	Wed, 22 Jan 2025 08:05:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 223CA5C06E8;
-	Wed, 22 Jan 2025 08:04:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 733C0C4CED6;
-	Wed, 22 Jan 2025 08:05:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1737533102;
-	bh=1/e0OSzJAkm9egv4lYiRA3flNXYIZL51hjzunRXP6Yw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uLKfsMmMhpnUUg6byVeYeaga1dPXE6WfDsDg3HAw127zk6NflkfKW4HaemNncVg5D
-	 6zOzAktmQZNYP51oC5GopHcrtC/AY2O3RfboDaQGrBHKwLoTMUx/UZE+t1lr5noVoI
-	 ge0S2i0NO9j2aFQ0oGFqE4IJrRrxG8jjKgsAKB5JVoYnbtOB38FDwmUAXXFcKNJLHR
-	 MAokw5APZMy+e9aLDtdb5ECzM9q9m12kRXRy7yr57fuin78poFhD7dDt6aoKA82jdB
-	 CEnHsZ+6Eq9NosSOPF6dlSHTeSuWSzS3Ceyb6un+maKhw3GpyuDxPJU2nYik9V8u32
-	 C+d5W+1HWP4Yw==
-Date: Wed, 22 Jan 2025 09:04:59 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org, 
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	derek.foreman@collabora.com, detlev.casanova@collabora.com, daniel@fooishbar.org, 
-	robh@kernel.org, sebastian.reichel@collabora.com, 
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576 support
-Message-ID: <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
-References: <20250121103254.2528004-1-andyshrk@163.com>
- <20250121103500.2528258-1-andyshrk@163.com>
+	id 1taVl7-00000009feu-04ff;
+	Wed, 22 Jan 2025 08:06:46 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 964587b0;
+	Wed, 22 Jan 2025 16:06:35 +0800 (GMT+08:00)
+Message-ID: <b028f794-bdc9-4414-a823-662ef2fd0ee1@rock-chips.com>
+Date: Wed, 22 Jan 2025 16:06:33 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250121103500.2528258-1-andyshrk@163.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 11/20] drm/bridge: analogix_dp: Add support to get
+ panel from the DP AUX bus
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
+ <20250109032725.1102465-12-damon.ding@rock-chips.com>
+ <v3is3v3fpx42i2eh2qrfkx3qx3z7iema3honi544qoc4j2whdo@h6ajv5h53gry>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <v3is3v3fpx42i2eh2qrfkx3qx3z7iema3honi544qoc4j2whdo@h6ajv5h53gry>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0xCQ1YfQx8dTRhISh1OHkNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a948d0c836b03a3kunm964587b0
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PzI6ERw5LjIKSyhDDRcpGD1O
+	Ci0wFEhVSlVKTEhMTkhISkJNQ0pMVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPT0NDNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=bnJZAh5BBBmw8nokE9qh77t/KlO2EKqf+idj1P8bY9hMXwPKDNSLKz471pF5oWCENK2VT8HFkVJWRI0TEa4GWYpboku9qdNsR1Xcl5/RuzyFuldu+cJjEB46cYrEe2FTx1FDspkHDllaOc0tcCo3JHw1svUDvWffGXUUF7HfzLY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=543GrCJapzJ907rzMydhOSlWrbQQBOk2iQARSOS3UE0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_000503_183644_AB7A9901 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20250122_000645_199723_72093F33 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,138 +69,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 21, 2025 at 06:34:57PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Add vop found on rk3576, the main difference between rk3576 and the
-> previous vop is that each VP has its own interrupt line.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v12:
-> - Split from patch 10/13
+Hi Dmitry,
 
-Order your patches finally. It's v12 and you still send binding after
-the user. Read carefully submitting bindings/patches.
+On 2025/1/9 20:45, Dmitry Baryshkov wrote:
+> On Thu, Jan 09, 2025 at 11:27:16AM +0800, Damon Ding wrote:
+>> The main modification is moving the DP AUX initialization from function
+>> analogix_dp_bind() to analogix_dp_probe(). In order to get the EDID of
+>> eDP panel during probing, it is also needed to advance PM operaions to
+>> ensure that eDP controller and phy are prepared for AUX transmission.
+>>
+>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v4:
+>> - Use done_probing() to call drm_of_find_panel_or_bridge() and
+>>    component_add() when getting panel from the DP AUX bus
+>>
+>> Changes in v5:
+>> - Advance PM operations to make eDP AUX work well
+>> ---
+>>   .../drm/bridge/analogix/analogix_dp_core.c    | 62 ++++++++++---------
+>>   1 file changed, 34 insertions(+), 28 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> index 8251adfce2f9..78e78fb474d3 100644
+>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> @@ -1548,6 +1548,18 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+>>   	return ret;
+>>   }
+>>   
+>> +static void analogix_dp_runtime_disable(void *data)
+>> +{
+>> +	struct analogix_dp_device *dp = (struct analogix_dp_device *)data;
+>> +
+>> +	if (IS_ENABLED(CONFIG_PM)) {
+>> +		pm_runtime_dont_use_autosuspend(dp->dev);
+>> +		pm_runtime_disable(dp->dev);
+>> +	} else {
+>> +		analogix_dp_suspend(dp);
+>> +	}
+>> +}
+>> +
+>>   struct analogix_dp_device *
+>>   analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+>>   {
+>> @@ -1658,8 +1670,29 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+>>   	}
+>>   	disable_irq(dp->irq);
+>>   
+>> +	dp->aux.name = "DP-AUX";
+>> +	dp->aux.transfer = analogix_dpaux_transfer;
+>> +	dp->aux.dev = dp->dev;
+>> +	drm_dp_aux_init(&dp->aux);
+>> +
+>> +	if (IS_ENABLED(CONFIG_PM)) {
+>> +		pm_runtime_use_autosuspend(dp->dev);
+>> +		pm_runtime_set_autosuspend_delay(dp->dev, 100);
+>> +		pm_runtime_enable(dp->dev);
+>> +	} else {
+>> +		ret = analogix_dp_resume(dp);
+>> +		if (ret)
+>> +			goto err_disable_clk;
+>> +	}
+>> +
+>> +	ret = devm_add_action_or_reset(dev, analogix_dp_runtime_disable, dp);
+> 
+> This looks like a local version of devm_pm_runtime_enable()
+> 
 
-> 
-> Changes in v11:
-> - Remove redundant min/maxItems constraint
-> 
-> Changes in v10:
-> - Move interrupt-names back to top level
-> - Add constraint of interrupts for all platform
-> - Add constraint for all grf phandles
-> - Reorder some properties
-> 
-> Changes in v9:
-> - Drop 'vop-' prefix of interrupt-names.
-> - Add blank line between DT properties
-> - Remove list interrupt-names in top level
-> 
-> Changes in v8:
-> - Fix dt_binding_check errors
-> - ordered by soc name
-> - Link to the previous version:
->   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
-> 
-> Changes in v4:
-> - describe constraint SOC by SOC, as interrupts of rk3576 is very
->   different from others
-> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
-> 
-> Changes in v3:
-> - ordered by soc name
-> - Add description for newly added interrupt
-> 
-> Changes in v2:
-> - Add dt bindings
-> 
->  .../display/rockchip/rockchip-vop2.yaml       | 55 ++++++++++++++++++-
->  1 file changed, 52 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> index 157a37ed84da..a2a6369c7b6f 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-> @@ -21,6 +21,7 @@ properties:
->      enum:
->        - rockchip,rk3566-vop
->        - rockchip,rk3568-vop
-> +      - rockchip,rk3576-vop
->        - rockchip,rk3588-vop
->  
->    reg:
-> @@ -38,10 +39,21 @@ properties:
->        - const: gamma-lut
->  
->    interrupts:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 4
->      description:
-> -      The VOP interrupt is shared by several interrupt sources, such as
-> -      frame start (VSYNC), line flag and other status interrupts.
-> +      For VOP version under rk3576, the interrupt is shared by several interrupt
-> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
-> +      For VOP version from rk3576 there is a system interrupt for bus error, and
-> +      every video port has it's independent interrupts for vsync and other video
-> +      port related error interrupts.
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: sys
-> +      - const: vp0
-> +      - const: vp1
-> +      - const: vp2
->  
->    # See compatible-specific constraints below.
->    clocks:
-> @@ -135,6 +147,8 @@ allOf:
->          interrupts:
->            maxItems: 1
+Indeed, it is better to use devm_pm_runtime_enable() instead.
 
-So this change moves to this patch.
-
->  
-> +        interrupt-names: false
-> +
->          ports:
->            required:
->              - port@0
-> @@ -148,6 +162,39 @@ allOf:
->        required:
->          - rockchip,grf
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3576-vop
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 5
-
-No. You did not implement my comment at all.
-
-So again:
-"Why minItems? Nothing in this patch makes sense for me. Neither changing
-existing binding nor new binding for rk3576."
-
-To address such comment, come with reasonable answer to "why". Not just
-send the same. It's a waste of my time to keep reviewing the same.
+>> +	if (ret)
+>> +		goto err_disable_pm_runtime;
+>> +
+>>   	return dp;
+>>   
+>> +err_disable_pm_runtime:
+>> +	analogix_dp_runtime_disable((void *)dp);
+>>   err_disable_clk:
+>>   	clk_disable_unprepare(dp->clock);
+>>   	return ERR_PTR(ret);
+>> @@ -1708,25 +1741,12 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>>   	dp->drm_dev = drm_dev;
+>>   	dp->encoder = dp->plat_data->encoder;
+>>   
+>> -	if (IS_ENABLED(CONFIG_PM)) {
+>> -		pm_runtime_use_autosuspend(dp->dev);
+>> -		pm_runtime_set_autosuspend_delay(dp->dev, 100);
+>> -		pm_runtime_enable(dp->dev);
+>> -	} else {
+>> -		ret = analogix_dp_resume(dp);
+>> -		if (ret)
+>> -			return ret;
+>> -	}
+>> -
+>> -	dp->aux.name = "DP-AUX";
+>> -	dp->aux.transfer = analogix_dpaux_transfer;
+>> -	dp->aux.dev = dp->dev;
+>>   	dp->aux.drm_dev = drm_dev;
+>>   
+>>   	ret = drm_dp_aux_register(&dp->aux);
+>>   	if (ret) {
+>>   		DRM_ERROR("failed to register AUX (%d)\n", ret);
+>> -		goto err_disable_pm_runtime;
+>> +		return ret;
+>>   	}
+>>   
+>>   	ret = analogix_dp_create_bridge(drm_dev, dp);
+>> @@ -1739,13 +1759,6 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>>   
+>>   err_unregister_aux:
+>>   	drm_dp_aux_unregister(&dp->aux);
+>> -err_disable_pm_runtime:
+>> -	if (IS_ENABLED(CONFIG_PM)) {
+>> -		pm_runtime_dont_use_autosuspend(dp->dev);
+>> -		pm_runtime_disable(dp->dev);
+>> -	} else {
+>> -		analogix_dp_suspend(dp);
+>> -	}
+>>   
+>>   	return ret;
+>>   }
+>> @@ -1762,13 +1775,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
+>>   	}
+>>   
+>>   	drm_dp_aux_unregister(&dp->aux);
+>> -
+>> -	if (IS_ENABLED(CONFIG_PM)) {
+>> -		pm_runtime_dont_use_autosuspend(dp->dev);
+>> -		pm_runtime_disable(dp->dev);
+>> -	} else {
+>> -		analogix_dp_suspend(dp);
+>> -	}
+>>   }
+>>   EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+>>   
+>> -- 
+>> 2.34.1
+>>
+> 
 
 Best regards,
-Krzysztof
+Damon
 
 
 _______________________________________________
