@@ -4,67 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E41AC02181
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 10:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9F6C02181
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jan 2025 10:34:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rrAYpWA4mrece9W9udOuWPu6xwML1AWWqzjOlK2qZSE=; b=Luw5F0kwKt/rlp
-	t8qEKkrTUkr07FeLntwDO3A4Bk+FWWFsLu5aU+9H+jTNbrtAa59TJo7G1MKKANiPUyATpSVq5bhx/
-	zIo2dSlRtL+EXlrC7ZstrDG5YhMy6Nd7mKF+mMsIuPPx6NhTUjqNdcxFY0qp3dqeIaP2fT9SrzeF5
-	O6K6KtHVuBDy9RCCy12qh0RVoZCRwl0iI3rEFn5YdyiWakkSiCDaB4iby2fWGT9xjdNk/fybshzGc
-	F+59CPrGb+Snp+lbjDo7ixE30eLuw3NFK+uJ2i88UakAQiSrAiBzGXjnXnFinSZxxciTnQ4CDJ6bO
-	vb4vYdgK5ZOI7szUUs1A==;
+	List-Owner; bh=jcMmAs8ad9fTo8XM8bEP577OSYviakX/rgXVA4U1CDA=; b=mPAwbP2WryaTql
+	DU5ALHroFDvh0oJcaTTVzj7VUlYtz+11kPpFZuvXFWSDDW60Qrk+w48Re0/gm4i8msY7Xp5WL7UrU
+	3xKW2xZvFidgoyF1SaZ6lnjhGCoi9GBIXMvMj/tR1zQsxi82ti4hlUlNzTFpPF5PQ3Y5E1FrxgEip
+	AZ7U3catSL5gJx/Tze1JDRFjSo2Eu3GzIMR2xj2cCphc2vTQMs4J555jfSRioO1ncH16hAjGqjMZE
+	tdbG6vVIWBL4o0ijhMLue2IOCuJWcUiADNj8dUiEd44PSYE5D0hE5DKV0P/RLaWj3ZAJtvO/BIWKa
+	cgxrpwLys3ZhOku6YBLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXmp-00000009unn-2IAI;
-	Wed, 22 Jan 2025 10:16:39 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1taXlX-00000009uf7-0nPe;
-	Wed, 22 Jan 2025 10:15:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=X8Jqip2+EUnxTzwkbxgRzDjMVQmyTYWY55G8IQGsnqg=; b=J
-	TFgnUhmPLhBtBzXJEpH/oTSefjxwCukLrU0bnmvK83Vru1gpCSVSzt2TC0c2VDzg
-	+/e223PumNREJ/j8rtEIkmIYkwTSJYQJf5sOdZJcGC8J7JWD4YGlSh5KmO5MaUHa
-	kt1nUKfRTXluNWH0tfzYCBZNfRtJfDEjqIxYA9fkaw=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Wed, 22 Jan 2025 18:14:38 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 22 Jan 2025 18:14:38 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
+	id 1taY3t-00000009xLS-1SkM;
+	Wed, 22 Jan 2025 10:34:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1taXz8-00000009wF1-2tMO;
+	Wed, 22 Jan 2025 10:29:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A2FAD5C5DFD;
+	Wed, 22 Jan 2025 10:28:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66B26C4CED6;
+	Wed, 22 Jan 2025 10:29:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737541761;
+	bh=um0lS4DsGQyE4fkosuc7MC9GnEa206XsxZ4NA+YNoZI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bOPvj/5FP7wJfcrNKqQaqUMuKUqRBgDrxM3mUrAAxQAc27DFuNzrUlTdVEcSdo8Nz
+	 RhMddUCj78+ct1xb/urJoGncjVYV4n/srB6KTUVxhUcpeUYRlOpNLybzv4HJ3FYwIV
+	 wc58hrgfeKkXGuUS9wI/Fj43JrludUVqdut4cPbK0aYRTgXT31AKNY8/t+l9cTZuBJ
+	 9vfMXQCQdVgI47dYJGPI3kCJRTMpizwZtwpVqNq22nOPx/PtNqyDgV1omcOY+cmAjp
+	 IQxF/JaXAONyW8Hn+iCSaRsDWY6ryYSxUqOtBbausdurK1vZqum+Ju0kzMe5imLQto
+	 1qLKYFdX0bafw==
+Message-ID: <09b3089b-bd44-4993-8377-f191c4a669c4@kernel.org>
+Date: Wed, 22 Jan 2025 11:29:14 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576 support
+To: Andy Yan <andyshrk@163.com>
 Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576
- support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
+ detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
+ sebastian.reichel@collabora.com, Andy Yan <andy.yan@rock-chips.com>
 References: <20250121103254.2528004-1-andyshrk@163.com>
  <20250121103500.2528258-1-andyshrk@163.com>
  <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
-X-NTES-SC: AL_Qu2YBfmfv0As7iibZekfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5MbUXGMFwQ7SUeIEvUXSRjajA==
-MIME-Version: 1.0
-Message-ID: <76fe64e1.7132.1948d81c1f4.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgD33_kOxZBn3c1cAA--.18436W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gHcXmeQv7FH9wACsa
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+ <76fe64e1.7132.1948d81c1f4.Coremail.andyshrk@163.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <76fe64e1.7132.1948d81c1f4.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250122_021519_601823_3114A374 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20250122_022922_821000_1E4C237E 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,142 +122,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi, 
+On 22/01/2025 11:14, Andy Yan wrote:
+> Hi, 
+> 
+> At 2025-01-22 16:04:59, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
+>> On Tue, Jan 21, 2025 at 06:34:57PM +0800, Andy Yan wrote:
+>>> From: Andy Yan <andy.yan@rock-chips.com>
+>>>
+>>> Add vop found on rk3576, the main difference between rk3576 and the
+>>> previous vop is that each VP has its own interrupt line.
+>>>
+>>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>>>
+>>> ---
+>>>
+>>> Changes in v12:
+>>> - Split from patch 10/13
+>>
+>> Order your patches finally. It's v12 and you still send binding after
+>> the user. Read carefully submitting bindings/patches.
+> 
+> What do you mean by "sending binding after user" here? 
+> I think PATCH 1~9 are fix and preparations, PATCH 13("drm/rockchip: vop2: Add support for rk3576")
+> is the user that uses the new binding.
 
-At 2025-01-22 16:04:59, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->On Tue, Jan 21, 2025 at 06:34:57PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->> 
->> Add vop found on rk3576, the main difference between rk3576 and the
->> previous vop is that each VP has its own interrupt line.
->> 
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> 
->> ---
->> 
->> Changes in v12:
->> - Split from patch 10/13
->
->Order your patches finally. It's v12 and you still send binding after
->the user. Read carefully submitting bindings/patches.
+Ah, my bad. I thought that's the last one.
 
-What do you mean by "sending binding after user" here? 
-I think PATCH 1~9 are fix and preparations, PATCH 13("drm/rockchip: vop2: Add support for rk3576")
-is the user that uses the new binding.
 
->
->> 
->> Changes in v11:
->> - Remove redundant min/maxItems constraint
->> 
->> Changes in v10:
->> - Move interrupt-names back to top level
->> - Add constraint of interrupts for all platform
->> - Add constraint for all grf phandles
->> - Reorder some properties
->> 
->> Changes in v9:
->> - Drop 'vop-' prefix of interrupt-names.
->> - Add blank line between DT properties
->> - Remove list interrupt-names in top level
->> 
->> Changes in v8:
->> - Fix dt_binding_check errors
->> - ordered by soc name
->> - Link to the previous version:
->>   https://lore.kernel.org/linux-rockchip/6pn3qjxotdtpzucpul24yro7ppddezwuizneovqvmgdwyv2j7p@ztg4mqyiqmjf/T/#u
->> 
->> Changes in v4:
->> - describe constraint SOC by SOC, as interrupts of rk3576 is very
->>   different from others
->> - Drop Krzysztof's Reviewed-by, as this version changed a lot.
->> 
->> Changes in v3:
->> - ordered by soc name
->> - Add description for newly added interrupt
->> 
->> Changes in v2:
->> - Add dt bindings
->> 
->>  .../display/rockchip/rockchip-vop2.yaml       | 55 ++++++++++++++++++-
->>  1 file changed, 52 insertions(+), 3 deletions(-)
->> 
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> index 157a37ed84da..a2a6369c7b6f 100644
->> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->> @@ -21,6 +21,7 @@ properties:
->>      enum:
->>        - rockchip,rk3566-vop
->>        - rockchip,rk3568-vop
->> +      - rockchip,rk3576-vop
->>        - rockchip,rk3588-vop
->>  
->>    reg:
->> @@ -38,10 +39,21 @@ properties:
->>        - const: gamma-lut
->>  
->>    interrupts:
->> -    maxItems: 1
->> +    minItems: 1
->> +    maxItems: 4
->>      description:
->> -      The VOP interrupt is shared by several interrupt sources, such as
->> -      frame start (VSYNC), line flag and other status interrupts.
->> +      For VOP version under rk3576, the interrupt is shared by several interrupt
->> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
->> +      For VOP version from rk3576 there is a system interrupt for bus error, and
->> +      every video port has it's independent interrupts for vsync and other video
->> +      port related error interrupts.
->> +
->> +  interrupt-names:
->> +    items:
->> +      - const: sys
->> +      - const: vp0
->> +      - const: vp1
->> +      - const: vp2
->>  
->>    # See compatible-specific constraints below.
->>    clocks:
->> @@ -135,6 +147,8 @@ allOf:
->>          interrupts:
->>            maxItems: 1
->
->So this change moves to this patch.
->
->>  
->> +        interrupt-names: false
->> +
->>          ports:
->>            required:
->>              - port@0
->> @@ -148,6 +162,39 @@ allOf:
->>        required:
->>          - rockchip,grf
->>  
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3576-vop
->> +    then:
->> +      properties:
->> +        clocks:
->> +          minItems: 5
->
->No. You did not implement my comment at all.
->
->So again:
->"Why minItems? Nothing in this patch makes sense for me. Neither changing
->existing binding nor new binding for rk3576."
->
->To address such comment, come with reasonable answer to "why". Not just
->send the same. It's a waste of my time to keep reviewing the same.
->
->Best regards,
->Krzysztof
->
+Best regards,
+Krzysztof
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
