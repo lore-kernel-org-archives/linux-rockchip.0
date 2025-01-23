@@ -4,70 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF0D3C02182
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 15:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE663C02182
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 22:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o2hy6RyQreuPtucsTIxbZx9AripXgNVT/m2c37WcUgs=; b=cbJ4AGe6XUBu+t
-	1FKi2IrN5MFhLsukM6s7EWS6Sp39GqY0IIlJVChVJOOfzVvvHV6I9S4kJc2o9rTJMcCOfICW/BA7f
-	OPxW7yD3WG4wkMSDM8XCOzhswxv6AZxpWPFVwDAgKxCOZv0c76CLvw5sXAojaf7eT9k/0NIoq766e
-	wae3Q/eGa6zqMy72IvJWgYBiMeKdu/BgHR6ZmHwjw8D+KTUfbP2bQSnQ6U6V8bwNx7yG2Ga8Ms4Px
-	vQXESF408ivWMHcPphmcXNVZ7sYsnf9bUyS9dkLjKBOPeL9oAvB2rhRUB1x+KfCe71IFdymXeve94
-	4hxsAnWgubFvjQs93sCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+AgZnigd1cyJ1Th66g34XZmhy/G7/2IVydNEKTfQbxg=; b=asL+BRW2d+Zkw5
+	id95PEMrO/fy4hboPT8pZtYwwD6OXTTbVFK5Up06sn8Xo9K25HSGfdXIZc2wtcSYC203TlhwH0YtU
+	TcXDgYWQ6zRtUi/tyTZDAMuh3uriJwCtNJskITjGHZlOPk77FYePmrxWt/5UA/JMlns7w8A3ArcZe
+	YaonaXzYgZJF6DjwptQGbG1bWcWw3hMU1WApIMriPP0w/OMyPZgvVka+vheJLcNgGXm61yOe5Wtz7
+	6aVdxqwojWWGVb2Jf1J9e3c2mq/ANaMRFi71yKBIA5+FkcUGgwX1CEoJjWwhmyptjPpk+MhfIFSIp
+	LiZTTRF7Oaf2j3MblcmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tayuh-0000000Cgc6-437f;
-	Thu, 23 Jan 2025 15:14:35 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1tb5ih-0000000DPeV-0U0r;
+	Thu, 23 Jan 2025 22:30:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1taytO-0000000CgTt-3vpL;
-	Thu, 23 Jan 2025 15:13:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1737645195; x=1769181195;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=PJ7aYCbtXYZu+NJO1JN2by/s67/mM6chwppH2LXXzu4=;
-  b=Oj8HRSQ3JKt9aq/VC+jaeYsJ9uAGfuuEuSvcpZHsx3WaWwGBTB3uFD7w
-   ds4Qqbe0FXyE9FKPDS0tUH0KwXpFct3GoeLsdPVPxmd9QYY6ExZf8CpXK
-   IQIw2zXILMfx679oDt9yQ/AT/xn3sYHmy1AjebVIfyqgM0wwSg63M5O2y
-   7qcyMUJIEhStGOV5scTOnHTyHQ89KEnO/f1zBNPcJFfCVuQfTb1jm57zB
-   W2QodRwTlg7VDlPBgw94bJhSFMMKGeLHR7EkqDKZd7zL5wt9IjPe8nyxS
-   5R7VW784BKHidfRdVRJ9OYZY6fRtjSDqPd68p0Ul1hgJ+kDOSfejcscSO
-   g==;
-X-CSE-ConnectionGUID: lP/wuiDdStqff8wh6Kislg==
-X-CSE-MsgGUID: o8++i65CSrOhkeX83zJyZw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11324"; a="48645065"
-X-IronPort-AV: E=Sophos;i="6.13,228,1732608000"; 
-   d="scan'208";a="48645065"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jan 2025 07:12:41 -0800
-X-CSE-ConnectionGUID: iA8pr0lGR2G7SnmEsAU9RQ==
-X-CSE-MsgGUID: pnYUQ/TcQBKbHiLGBBM+LQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,228,1732608000"; 
-   d="scan'208";a="107299297"
-Received: from unknown (HELO localhost) ([10.237.66.160])
-  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jan 2025 07:12:34 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Damon Ding <damon.ding@rock-chips.com>, heiko@sntech.de
-Subject: Re: [PATCH v6 01/14] drm/rockchip: analogix_dp: Replace DRM_...()
- functions with drm_...()
-In-Reply-To: <87ikq5n2di.fsf@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-2-damon.ding@rock-chips.com>
- <87ikq5n2di.fsf@intel.com>
-Date: Thu, 23 Jan 2025 17:12:31 +0200
-Message-ID: <875xm5mun4.fsf@intel.com>
+	id 1tb5hF-0000000DPHh-3jA0;
+	Thu, 23 Jan 2025 22:29:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1737671347;
+	bh=lhdPIRPV1EIPaxeK+CehOf2BLDHtI+qHEjmo6IGSujQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=g+TO+Qu+FchNW09ozcweoOY27PIzeRQd1sA61HjvjuFCx/jM185aHDLWgh9gukSNi
+	 xC8D2BkdWRpwvU4BXyBauf3BJFY9NBUufuJo9ADwI1ClcAQr4ywpZVdtLnV4bjOwU/
+	 Hfs997D977jAOKfXFmlUzkG3oARIjP1cTKzEMC7z1Fc2KB6XO550s5pPxV9ksoSc3g
+	 Rny3tN4RR5rp83L6cNNCJh94nZWODlOoxATUIop/zReHy/B+BgFJ2FHMLYFUmKAZV/
+	 HdghJU+ntrl52PF/M3Yq1IUKqwvOvpxMDCbQG5cAjhJdp2Xk7i1+H3JRpuADPLmrnO
+	 n7v9K6PKNHsNQ==
+Received: from earth.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9BD5017E0E9E;
+	Thu, 23 Jan 2025 23:29:03 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] Add HDMI audio on the Radxa ROCK 5B
+Date: Thu, 23 Jan 2025 17:28:05 -0500
+Message-ID: <20250123222850.223255-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_071315_021133_45430946 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20250123_142910_088577_AF8B0715 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +64,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Jan 2025, Jani Nikula <jani.nikula@linux.intel.com> wrote:
-> On Thu, 23 Jan 2025, Damon Ding <damon.ding@rock-chips.com> wrote:
->> According to the comments in include/drm/drm_print.h, the DRM_...()
->> functions are deprecated in favor of drm_...() or dev_...() functions.
->>
->> Use drm_err()/drm_dbg_core()/drm_dbg_kms() instead of
->> DRM_DEV_ERROR()/DRM_ERROR()/DRM_DEV_DEBUG()/DRM_DEBUG_KMS().
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v6:
->> - Use drm_...() uniformly rather than mixing drm_...() and dev_..()
->> - Pass 'dp' in drm_...() rather than 'dp->drm_dev'
->> ---
->>  .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 29 ++++++++++---------
->>  1 file changed, 15 insertions(+), 14 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index 0844175c37c5..dd33d7540e4b 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -100,13 +100,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
->>  
->>  	ret = clk_prepare_enable(dp->pclk);
->>  	if (ret < 0) {
->> -		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
->> +		drm_err(dp, "failed to enable pclk %d\n", ret);
->
-> Please don't do this.
->
-> You're supposed to pass struct drm_device to drm_err() and friends. Not
-> some random struct pointer that just happens to have a ->dev member.
->
-> The drm_* macros may change at any time to actually expect the correct
-> type.
+To support HDMI audio on the rk3588 based devices, the generic HDMI
+Codec framework is used in the dw-hdmi-qp DRM bridge driver.
 
-And with [1] I'm hoping "at any time" becomes "real soon now".
+The implementation is mainly based on the downstream driver, ported to the
+generic HDMI Codec framework [1] recently merged in the DRM tree.
+The parameters computation has been kept as is and the data stored in the
+dw_hdmi_qp struct as been cleaned up.
 
-BR,
-Jani.
+The downstream kernel also implements a machine driver for HDMI audio but
+it is doing exactly what the simple-audio-card driver does, so use that
+instead in the ROCK 5B device tree.
 
+Based on Linus' master branch.
 
-[1] https://lore.kernel.org/all/cover.1737644530.git.jani.nikula@intel.com
+Changes since v1:
+ - Remove useless audio_mutex (was used downstream for multiple drivers access
+   to audio functions)
+ - Let hdmi_codec build and setup audio infoframes
+ - Only access audio registers when connector is connected
+ - Rebased on master branch
 
+Detlev Casanova (1):
+  arm64: dts: rockchip: Add HDMI0 audio output on rock-5b
+
+Sugar Zhang (1):
+  drm/bridge: synopsys: Add audio support for dw-hdmi-qp
+
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   1 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |  19 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 424 ++++++++++++++++++
+ 3 files changed, 444 insertions(+)
 
 -- 
-Jani Nikula, Intel
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
