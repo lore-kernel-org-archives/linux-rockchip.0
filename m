@@ -4,70 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE65BC02182
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 08:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA64FC02182
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 10:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8U33iCUn7uR6crzeK5lz/niWMDaOGlA/VfwxRsnXCKc=; b=FLN1yKz830mFnw
-	Js7g6Hex+vQAZOzD1324K19EIE+wRofWHxlnIuZwEJQipjM7dfAtn764Zfs06fcd/y3X83JO3oKqB
-	6FhAI82OyN8xE8v6iLDnenqxfWfsYGpPrKmX8qHTx184PIsW4/PPHI0glIkalJ4wCD1zXyaOC4FnL
-	h22PAED4anV9vAFmtQRLJEOyj83HVqeeWjslqmn6PSyOpICiPvE8MpSaaDVPmTHv/0lMikRtL7h57
-	HGmsqulEIMIkdaZNrwiyaofoWkvNdy9wXKstm/MfNe8yKvkqKnNgfCeUVPg4S+pbb7kd2MHVyasGn
-	bsE7I49M+PXX4evj/9RA==;
+	List-Owner; bh=AgO7a8XrmlkIZh2auobEaH7bGwJllg2fbtnRyDkb9Sg=; b=2LoDc8bAFQBEAq
+	YNceITbB9qwV2PgXnDLRsTeG1sqtGcekue3nuFwJLFxBhjlgyWxg2OaByj16MRkrYI6obKcle+HjQ
+	ST4SLltYZEd0JCTnSsKc/5J87QJ732QioETZpyvu5q9CSOLnvqR1X+XOFVqrwFCK72spA8EgSa/p9
+	/ADy3kxpwJPoreR8Kn5871JDn9+1USnaoXpdKlsKbvqVaq3+511omtsOabjaYJt9rPDn17u9vlagw
+	LKttdxBj9NCGT2iAOI2ZW8sgmg83ujH4QlDIjZ5MvQJs8C9S4FudTV2eOBnMS02iUb7MkSIZ3xTKX
+	r/XEEekx3qC1FNUMT6bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tasK9-0000000Bx4u-0zAB;
-	Thu, 23 Jan 2025 08:12:25 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tasIp-0000000BwhX-1tSn;
-	Thu, 23 Jan 2025 08:11:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=BXyofrVnYuyYwzI7LGAdKQQArMh8Hu8gMywmqLa91A0=; b=q
-	VQqZvDR1/UJdOvpmORbgMSebNXA6d6tzM08WEiXHcHYkv7vXZCnCdjcvQgROPajY
-	vOGmjCEaNLw5yecn3zPAZrXLDrP68s/GZSbxhykBTBkSlGwh/P5YlrJQur0TSY2t
-	97pIlWyrILQiC0Md/0iCXyIyHqaZ3t3GL6Z7H6pcaw=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Thu, 23 Jan 2025 16:10:05 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 23 Jan 2025 16:10:05 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
-Cc: heiko@sntech.de, hjc@rock-chips.com, krzk+dt@kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v12 12/13] dt-bindings: display: vop2: Add rk3576
- support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <77ea5067-deb2-41d4-ab82-ce19ac018ba3@kernel.org>
-References: <20250121103254.2528004-1-andyshrk@163.com>
- <20250121103500.2528258-1-andyshrk@163.com>
- <20250122-amber-moth-of-upgrade-fa8331@krzk-bin>
- <5eb4acaa.6df6.1948d68332d.Coremail.andyshrk@163.com>
- <77ea5067-deb2-41d4-ab82-ce19ac018ba3@kernel.org>
-X-NTES-SC: AL_Qu2YBfqatkAr4yOZZOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5MbTaya5DqRSALoAlPBehXcjA==
+	id 1tau9M-0000000CA2I-3OCf;
+	Thu, 23 Jan 2025 10:09:24 +0000
+Received: from mail-m19731108.qiye.163.com ([220.197.31.108])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tau89-0000000C9XJ-3kmf;
+	Thu, 23 Jan 2025 10:08:11 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 9818ae52;
+	Thu, 23 Jan 2025 18:08:02 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH v6 02/14] drm/rockchip: analogix_dp: Use formalized struct definition for grf field
+Date: Thu, 23 Jan 2025 18:07:35 +0800
+Message-Id: <20250123100747.1841357-3-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250123100747.1841357-1-damon.ding@rock-chips.com>
+References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Message-ID: <11e72cc2.55fd.19492361487.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgCnbwNd+ZFnfWZdAA--.20373W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRPdXmeR6wnIewADsd
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhkYGVZPHUMYQ01IH0saQhpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a9492a2139d03a3kunm9818ae52
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mkk6Pio6LjIQDiwaNCowFDoS
+	LjdPFCpVSlVKTEhMTUlNQ0NPTEtDVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPTk9PNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=LUqhcaxbUMKInpM+eePxcbG39CHXsADDtXbWV5Um6GWwWsyh6rBZg2FHQxx94qOznDpJZ9l18F6iinKr8k18z/YR13bbdCE6QKzHghX+uVi1cA+xwmE/282eXxazD8J0Cx650oE9o68kpF/BAIMaKnxzQ76ZE0u/2xifXJYPpDI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Ze1MXnVg38016se3HUI1omMmPdGIWHiMBvKPC69oRFw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_001103_853081_4DF5B085 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250123_020810_459135_3B6E2E2C 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,108 +65,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The formalized struct definition will makes grf field operations more
+concise and easier to extend.
+
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
+---
+
+Changes in v2:
+- Initialize struct rockchip_dp_chip_data rk3399_edp/rk3288_dp in order
+  of its members
+
+Changes in v6:
+- Pass 'dp' in drm_...() rather than 'dp->drm_dev'
+---
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 77 +++++++++++--------
+ 1 file changed, 45 insertions(+), 32 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index dd33d7540e4b..648ea608cdf3 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -32,26 +32,29 @@
+ 
+ #include "rockchip_drm_drv.h"
+ 
+-#define RK3288_GRF_SOC_CON6		0x25c
+-#define RK3288_EDP_LCDC_SEL		BIT(5)
+-#define RK3399_GRF_SOC_CON20		0x6250
+-#define RK3399_EDP_LCDC_SEL		BIT(5)
+-
+-#define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
+-
+ #define PSR_WAIT_LINE_FLAG_TIMEOUT_MS	100
+ 
++#define GRF_REG_FIELD(_reg, _lsb, _msb) {	\
++				.reg = _reg,	\
++				.lsb = _lsb,	\
++				.msb = _msb,	\
++				.valid = true,	\
++				}
++
++struct rockchip_grf_reg_field {
++	u32 reg;
++	u32 lsb;
++	u32 msb;
++	bool valid;
++};
++
+ /**
+  * struct rockchip_dp_chip_data - splite the grf setting of kind of chips
+- * @lcdsel_grf_reg: grf register offset of lcdc select
+- * @lcdsel_big: reg value of selecting vop big for eDP
+- * @lcdsel_lit: reg value of selecting vop little for eDP
++ * @lcdc_sel: grf register field of lcdc_sel
+  * @chip_type: specific chip type
+  */
+ struct rockchip_dp_chip_data {
+-	u32	lcdsel_grf_reg;
+-	u32	lcdsel_big;
+-	u32	lcdsel_lit;
++	const struct rockchip_grf_reg_field lcdc_sel;
+ 	u32	chip_type;
+ };
+ 
+@@ -84,6 +87,26 @@ static struct rockchip_dp_device *pdata_encoder_to_dp(struct analogix_dp_plat_da
+ 	return container_of(plat_data, struct rockchip_dp_device, plat_data);
+ }
+ 
++static int rockchip_grf_write(struct regmap *grf, u32 reg, u32 mask, u32 val)
++{
++	return regmap_write(grf, reg, (mask << 16) | (val & mask));
++}
++
++static int rockchip_grf_field_write(struct regmap *grf,
++				    const struct rockchip_grf_reg_field *field,
++				    u32 val)
++{
++	u32 mask;
++
++	if (!field->valid)
++		return 0;
++
++	mask = GENMASK(field->msb, field->lsb);
++	val <<= field->lsb;
++
++	return rockchip_grf_write(grf, field->reg, mask, val);
++}
++
+ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
+ {
+ 	reset_control_assert(dp->rst);
+@@ -182,7 +205,6 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+ 	struct drm_crtc *crtc;
+ 	struct drm_crtc_state *old_crtc_state;
+ 	int ret;
+-	u32 val;
+ 
+ 	crtc = rockchip_dp_drm_get_new_crtc(encoder, state);
+ 	if (!crtc)
+@@ -193,24 +215,19 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+ 	if (old_crtc_state && old_crtc_state->self_refresh_active)
+ 		return;
+ 
+-	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
+-	if (ret < 0)
+-		return;
+-
+-	if (ret)
+-		val = dp->data->lcdsel_lit;
+-	else
+-		val = dp->data->lcdsel_big;
+-
+-	drm_dbg_core(dp, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
+-
+ 	ret = clk_prepare_enable(dp->grfclk);
+ 	if (ret < 0) {
+ 		drm_err(dp, "failed to enable grfclk %d\n", ret);
+ 		return;
+ 	}
+ 
+-	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
++	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
++	if (ret < 0)
++		return;
++
++	drm_dbg_core(dp, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
++
++	ret = rockchip_grf_field_write(dp->grf, &dp->data->lcdc_sel, ret);
+ 	if (ret != 0)
+ 		drm_err(dp, "Could not write to GRF: %d\n", ret);
+ 
+@@ -449,16 +466,12 @@ static DEFINE_RUNTIME_DEV_PM_OPS(rockchip_dp_pm_ops, rockchip_dp_suspend,
+ 		rockchip_dp_resume, NULL);
+ 
+ static const struct rockchip_dp_chip_data rk3399_edp = {
+-	.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
+-	.lcdsel_big = HIWORD_UPDATE(0, RK3399_EDP_LCDC_SEL),
+-	.lcdsel_lit = HIWORD_UPDATE(RK3399_EDP_LCDC_SEL, RK3399_EDP_LCDC_SEL),
++	.lcdc_sel = GRF_REG_FIELD(0x6250, 5, 5),
+ 	.chip_type = RK3399_EDP,
+ };
+ 
+ static const struct rockchip_dp_chip_data rk3288_dp = {
+-	.lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
+-	.lcdsel_big = HIWORD_UPDATE(0, RK3288_EDP_LCDC_SEL),
+-	.lcdsel_lit = HIWORD_UPDATE(RK3288_EDP_LCDC_SEL, RK3288_EDP_LCDC_SEL),
++	.lcdc_sel = GRF_REG_FIELD(0x025c, 5, 5),
+ 	.chip_type = RK3288_DP,
+ };
+ 
+-- 
+2.34.1
 
 
-Hi Krzysztof,
-At 2025-01-22 17:55:34, "Krzysztof Kozlowski" <krzk@kernel.org> wrote:
->On 22/01/2025 10:46, Andy Yan wrote:
->>>> -      The VOP interrupt is shared by several interrupt sources, such as
->>>> -      frame start (VSYNC), line flag and other status interrupts.
->>>> +      For VOP version under rk3576, the interrupt is shared by several interrupt
->>>> +      sources, such as frame start (VSYNC), line flag and other interrupt status.
->>>> +      For VOP version from rk3576 there is a system interrupt for bus error, and
->>>> +      every video port has it's independent interrupts for vsync and other video
->>>> +      port related error interrupts.
->>>> +
->>>> +  interrupt-names:
->>>> +    items:
->>>> +      - const: sys
->>>> +      - const: vp0
->>>> +      - const: vp1
->>>> +      - const: vp2
->>>>  
->>>>    # See compatible-specific constraints below.
->>>>    clocks:
->>>> @@ -135,6 +147,8 @@ allOf:
->>>>          interrupts:
->>>>            maxItems: 1
->>>
->>> So this change moves to this patch.
->>>
->>>>  
->>>> +        interrupt-names: false
->>>> +
->>>>          ports:
->>>>            required:
->>>>              - port@0
->>>> @@ -148,6 +162,39 @@ allOf:
->>>>        required:
->>>>          - rockchip,grf
->>>>  
->>>> +  - if:
->>>> +      properties:
->>>> +        compatible:
->>>> +          contains:
->>>> +            enum:
->>>> +              - rockchip,rk3576-vop
->>>> +    then:
->>>> +      properties:
->>>> +        clocks:
->>>> +          minItems: 5
->>>
->>> No. You did not implement my comment at all.
->>>
->>> So again:
->>> "Why minItems? Nothing in this patch makes sense for me. Neither changing
->>> existing binding nor new binding for rk3576."
->> 
->> Do you mean because I already defined minItems of clocks is 5 on the top, so 
->> there is no need to redefine the same minItems here ?
->
->Lists must be constrained. This is not constrained from the max items
->and you repeat existing constrain.
->
->For every variable list you need to provide min and maxItems, except the
->edge cases when dimension matches top level dimension.
->
->Standard example is:
->
->https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L127
->
->which I mention on mailing lists multiple times. Also described this
-
->case exactly on my two talks...
-
-
-Do you mean these two talks[0][1] ?
-[0] https://eoss24.sched.com/event/1aBEf/whack-a-mole-with-dts-validation-in-the-linux-kernel-krzysztof-kozlowski-linaro?linkback=grid
-[1] https://eoss2023.sched.com/event/1LcNo/how-to-get-your-dt-schema-bindings-accepted-in-less-than-10-iterations-krzysztof-kozlowski-linaro 
-
->
->> 
->>>
->>> To address such comment, come with reasonable answer to "why". Not just
->>> send the same. It's a waste of my time to keep reviewing the same.
->> 
->> Before sending this patch, I asked you what the next step should be, but you didn't respond.
->
->You asked whether splitting is correct and I did not object that. I
->already said: " You need to split reorganizing", then you asked if you
->can split, so sorry, I am not going to keep repeating the same multiple
->times.
->
->But anyway this is not about the split, so you did not question last
->time how to do it. You just skipped my paragraph asking for "Why?".
->
->
->
->Best regards,
->Krzysztof
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
