@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1C26C02182
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 11:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F082FC02182
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 11:33:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lwccdM32nybRQrqSE54H1JjGrN/E7FvVPsy0eM4xFyA=; b=fowZtsBl3DLWdX
-	ByhFU3HYXdR5wmo2dJbbmkAPGEwABB63zGd2NDQOxXv9kEzAaLoxK7rETNfd81HdeizSRwUuDgBa/
-	Y8ZMkSZRPC+KnU2Z/5wyrco3z/spAi3om8qJl7ywwInBu43JVYAEqoNCQ7DY2I9LoolPuYaJDpq2n
-	kf2UeMwEp25mTrrBKQPTmb0iGmZ8LVydY8lmntLnY76M7gJnlL/PToSho0hSxe27FuFh19eD6SMwb
-	+CrTjJLZZ5awZQ5Zn+MhaRgz6SFixarwBL5kwgg2Jziaikf5RcKVj2LL6B3DHO8GKOh8TH1ss276d
-	1X+vSauVqZbxf+oh09Zg==;
+	List-Owner; bh=4jmL6Wvr7VFltr2hzqYZ1BMw8hjtxsVrO1ZgYpUGrKo=; b=KS2phW7LMuTQSN
+	la+3kO/lV029YsjEWQGLBK3hE/JhROgSyWx394OINCKU5H5giooV+tR39Rzbe818NxbLD+7g20bfN
+	Ip19UadgSqfn2URh4+wvJMyxFyVR56sn/SIcq1+Ey9Np3gdddCmxAgOogAN7nKL3JHwQ0M5y777BD
+	Jalp4bzmJx55Ujr2J1wEfbRjPZDMah8+mjeArY5dETt+CRoi48vdogJeN67Jnz2LEj3dsRtGS/bhS
+	FND+/eT2Ia8Z7bwA+Xo5kxccJbBXxY1dp2JvDpt+pMiXxqoN0Ra00Kjr0C8/wmEBYFfT+JaSKNoGR
+	ZzFFvR1eMmcgYsM8bGJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tavP4-0000000CKTR-1YFa;
-	Thu, 23 Jan 2025 11:29:42 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1tavSH-0000000CLCq-1lj8;
+	Thu, 23 Jan 2025 11:33:01 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tavP2-0000000CKSK-1CKM
+	id 1tavQz-0000000CKrP-1miJ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jan 2025 11:29:41 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5401bd6cdb7so858333e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jan 2025 03:29:40 -0800 (PST)
+	Thu, 23 Jan 2025 11:31:43 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5401bd6ccadso877306e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jan 2025 03:31:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737631779; x=1738236579; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1737631900; x=1738236700; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ywUpj3PvGs7O6YC27wxHtXRfoNnEiXLhmb6FDXD8qK8=;
-        b=womIQ3GEQHk4zmZST5qmfjIOR/a/m3+zlu/o5zxUIBrCq6g3r1faRzfnEzwpbcKoM8
-         8EBpPSmLqxBPM+HT2I/WaZN1pir/gJkKJdeG8tUatxIMFCnPT0mM67f00jLI1cml6WtF
-         Uu6J6AlxH64AKCF0k2CDCKIhpi0ysf90Gy5pdB0diH5fzQHqezEOYcoaswB90thdNzBp
-         1rWPWt+JW/wuO4yd74um4J5GgNK+4Edm7omfRo5gX9PQuOZPB7UUpBW1ER3F8zRQYJbl
-         gjCZxO3yGjK08tiebtCHtcHvv/sKszUMi6qx08YbinIc4w1H5To6UG92jSneXeFr1VPr
-         +k2Q==
+        bh=6GV/GI1CAs1idJHC9goHRl9dRjKhZ5TZhhQYyHtO4m8=;
+        b=pyLdNqsyAMGUfYHBcaQNevOhU733kvPMGcO7RvAmNJC2aEu3TVNiYd+DzRBMa2CTEx
+         QfDgN9sT6KWpsrjU7AWX2CDFp1YrzBw5IU3O23GutAMYpPrzDK1eNjwpi+DSsEtIV2SQ
+         tff15H0xDOmTf/1p3BXDTyNdFZgQS1MsU8g4W9cSYqRbartNv4lRIHsilh67e6H1r+rM
+         g8pNh/C8fjltkVzd3Un2npfaVH+zwZ8jQxwMlufhRhMgX6pg3i3m0YnJuMFRl9ozE3Aj
+         2tzZrdVK61jKkks6vjxEN51YOkAijwU2Y2SvcPR7CPgabUoYpwNoCzNt9DCtWxb3hkJd
+         7zAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737631779; x=1738236579;
+        d=1e100.net; s=20230601; t=1737631900; x=1738236700;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ywUpj3PvGs7O6YC27wxHtXRfoNnEiXLhmb6FDXD8qK8=;
-        b=sY/vESahmASHVI9Us/U+/petX79WfaVudi/Pe7DjuAa9NfhbEtqq2V0Q6CsVCeuwW5
-         S4r3IzMUg5ozMGKuFBrAiDNh9RvymNpIB9MmR1ND8kA8t1zvCGdLk7ym9UU3c0BFX1PY
-         NEl0pYfdCrBG5OyxaBdaoKwpr7BARSvqK3Zf5l2cVf9U2N4bIh1AzvKJiraKR0JXxu0g
-         2WKvIwGOXkpZAxGMB7FVdtlX72B9zERPVXqgu/u3CUstI7oGZEYrwEec3E9vy+5fDgqZ
-         wPBekFysDWeItW3cblAeu3sGSO1HoEYrzgSRociZcLtBWHCvlnTZfFp3itt7+NPxq6K0
-         6CVg==
-X-Forwarded-Encrypted: i=1; AJvYcCV/W71irIkpXQiIBnPSwmIdi5ylZ0e3p1j380xWTer3b6+XaxWwBIFSNjP0lB1NIF7/Eif/Ddn8e2bUaipMdQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YynJrLVlxU8TUn9t99OvN/8nbsBavaS4BJ0+cHTh+6ithY5o/uY
-	TtalnLvhkJh/MfPaLd3jyh2BEa9cMFEfwSA9gR32Gvj9Ln9YuYBa8LB1BeOW0ew=
-X-Gm-Gg: ASbGnctts9I959S3EPLr9ESOR1L0OFwGTUosFX1+90HOgdbH9gPFOBetZNLPXDpD9O0
-	hVcUU8D7JVH67Q0Od+/SDYnPDQkuBIG2Hgq1zvZ2fOAP1xuSKSmh2s6vFWKZ0+LHmH9xH7Jnfbz
-	QxHYDjjB3W2hgKAX7IoRvGlrd/PhbZYJVkQ6ix9+iHFU9Jhaee+5icHCuoIsgCWW1t/ObCUnSgB
-	3oylXE574tNXaaJ4vCy8dllxghBNMXHPYyfIWsOiLWGrHJ6qSgM2hF42bpV7+uoGevZArF6I+3+
-	TWKG0b9Nf6Xfgqbdg+G7SGNV4/kT0gxjM15+RVkiG4Swz89tBJ1JSm43uXdP
-X-Google-Smtp-Source: AGHT+IH/IRIwigEV36zPfTMvutci/xM95ud1AjoiE5XvAxHbcLlm2/4wSeaGwe0S+EmSvBufcEVLsw==
-X-Received: by 2002:a05:6512:2346:b0:542:297f:4f64 with SMTP id 2adb3069b0e04-5439c280a83mr10948852e87.43.1737631778565;
-        Thu, 23 Jan 2025 03:29:38 -0800 (PST)
+        bh=6GV/GI1CAs1idJHC9goHRl9dRjKhZ5TZhhQYyHtO4m8=;
+        b=AbfZ3GvMd4IEOywslZItD9Tjl2l9ps0hMzUYN3BmPtfxFnBMYlUO8Yrk17Zp32VPDt
+         ZbU5M+nwRFpaLd69tf8QqUkw72RR0GPs9538BxD6OO3MpSXDMmVrPVTZQIJAPzEZyYHe
+         cAsIl0qybe1MnXgHRONSLswh4Cq9GFW0cWAGFmW7ypnG2Fy2Swv75jwDGAb/+/XfwBLm
+         zg8iRIsySQuAcCkmI35mWxtiGPM86PWSRw9Q8woQJcIOt3vIIw4/Rqd0t/+GPb3ok5S7
+         nT9Eeo6NrtU6MlpQxAfl1LJmD7GGDjXhdYyLJdLRR/iNeS0q1vL0fLWaQrj887BisXIJ
+         Noxg==
+X-Forwarded-Encrypted: i=1; AJvYcCUu9OB/GPned4n1SHu653FS29j6NnVJWW2dKqrhYgK68FqIM9b3AwKl4PlfWxU1icClHlkvNVagbz5NqmQjMA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAiJk8mOYU6JzqP9o4RmJHVvLpRklX94/jSggsYm/cJ6tSq6Kf
+	cy6lEoLtUGpFd9s7cgKAjpMGrPoobjQJMsBHRh0K+28d7mcKqB2WByELulmYaVo=
+X-Gm-Gg: ASbGncvWx9tW40Xbr1hTM1kVpx8B4+iwQpauBdM/+SUVDLYnkRGhYozfP5jAjxf80qC
+	8LkwCbLjBFemQh3X90AWLBnohWRGtJJ5Fa+k/tcFibEnVmmBvXAuG/ApqYP9J1Ia3aF8ZfPy3uK
+	ih1lu0WIm083wwET7gNtyCH5DZsrOb5NnpFv3CaHfCa/heoeCJULeEOU5jLHZ7FmuW7gu05zpiV
+	cordwYvogJjxqUmv+GCO34hc0nrXanQCy1mLfMEwcOujU3dYEBtyM1N+W3c882VIdcBlObRGdFl
+	Bkzr8f9yPjHsVq0Y6BNiTi12e8/juV58iNI9RT7fhI+lyZLTZcvNDeM0kaOy
+X-Google-Smtp-Source: AGHT+IHtXPZP5fXc+jx9qkDw8OG65Yz52T0nmfyDaHj9u5aH3nN5zjNMvgxVC7Tag6Djcezn71sacw==
+X-Received: by 2002:a05:6512:483:b0:540:1b2d:8ee1 with SMTP id 2adb3069b0e04-5439c21f2bfmr7480684e87.11.1737631899528;
+        Thu, 23 Jan 2025 03:31:39 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543bae0ba76sm771974e87.8.2025.01.23.03.29.37
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5439af7a281sm2612994e87.259.2025.01.23.03.31.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jan 2025 03:29:38 -0800 (PST)
-Date: Thu, 23 Jan 2025 13:29:35 +0200
+        Thu, 23 Jan 2025 03:31:38 -0800 (PST)
+Date: Thu, 23 Jan 2025 13:31:35 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v6 11/14] drm/rockchip: analogix_dp: Add support for
- RK3588
-Message-ID: <k4hno2c46ys3unusw4emhkevp3yezhtgyy566vfyfju3efyei2@twict2pypjug>
+To: Damon Ding <damon.ding@rock-chips.com>, 
+	Douglas Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v6 12/14] drm/edp-panel: Add LG Display panel model
+ LP079QX1-SP0V
+Message-ID: <rwn3g7tqgjnc525cjqtivgfgedhooiayn5nujng7bdzazgqhle@wfpuvoyr2tii>
 References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-12-damon.ding@rock-chips.com>
+ <20250123100747.1841357-13-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250123100747.1841357-12-damon.ding@rock-chips.com>
+In-Reply-To: <20250123100747.1841357-13-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_032940_325200_F819A3F0 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20250123_033141_457899_4D48111C 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +99,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 23, 2025 at 06:07:44PM +0800, Damon Ding wrote:
-> RK3588 integrates the Analogix eDP 1.3 TX controller IP and the HDMI/eDP
-> TX Combo PHY based on a Samsung IP block. There are also two independent
-> eDP display interface with different address on RK3588 Soc.
+On Thu, Jan 23, 2025 at 06:07:45PM +0800, Damon Ding wrote:
+> The raw edid for LP079QX1-SP0V panel model is:
 > 
-> The patch currently adds only the basic support, specifically RGB output
-> up to 4K@60Hz, without the tests for audio, PSR and other eDP 1.3 specific
-> features.
-> 
-> In additon, the above Analogix IP has always been utilized as eDP on
-> Rockchip platform, despite its capability to also support the DP v1.2.
-> Therefore, the newly added logs will contain the term 'edp' rather than
-> 'dp'. And the newly added 'apb' reset control is to ensure the APB bus
-> of eDP controller works well on the RK3588 SoC.
+> 00 ff ff ff ff ff ff 00 16 83 00 00 00 00 00 00
+> 04 17 01 00 a5 10 0c 78 06 ef 05 a3 54 4c 99 26
+> 0f 50 54 00 00 00 01 01 01 01 01 01 01 01 01 01
+> 01 01 01 01 01 01 ea 4e 00 4c 60 00 14 80 0c 10
+> 84 00 78 a0 00 00 00 18 00 00 00 10 00 00 00 00
+> 00 00 00 00 00 00 00 00 00 00 00 00 00 fe 00 4c
+> 50 30 37 39 51 58 31 2d 53 50 30 56 00 00 00 fc
+> 00 43 6f 6c 6f 72 20 4c 43 44 0a 20 20 20 00 3f
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> 
 > ---
-> 
+>  drivers/gpu/drm/panel/panel-edp.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 
-Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Please use get_maintainers.pl when compiling To/Cc lists. Added Douglas
+to CC manually.
+
+Or, better, split irrelevant patches to separate series.
+
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
+> index f8511fe5fb0d..77e3fd3ed160 100644
+> --- a/drivers/gpu/drm/panel/panel-edp.c
+> +++ b/drivers/gpu/drm/panel/panel-edp.c
+> @@ -1808,6 +1808,12 @@ static const struct panel_delay delay_200_150_e50 = {
+>  	.enable = 50,
+>  };
+>  
+> +static const struct panel_delay delay_50_500_e200 = {
+> +	.hpd_absent = 50,
+> +	.unprepare = 500,
+> +	.enable = 200,
+> +};
+> +
+>  #define EDP_PANEL_ENTRY(vend_chr_0, vend_chr_1, vend_chr_2, product_id, _delay, _name) \
+>  { \
+>  	.ident = { \
+> @@ -1955,6 +1961,8 @@ static const struct edp_panel_entry edp_panels[] = {
+>  	EDP_PANEL_ENTRY('C', 'S', 'W', 0x1100, &delay_200_500_e80_d50, "MNB601LS1-1"),
+>  	EDP_PANEL_ENTRY('C', 'S', 'W', 0x1104, &delay_200_500_e50, "MNB601LS1-4"),
+>  
+> +	EDP_PANEL_ENTRY('E', 'T', 'C', 0x0000, &delay_50_500_e200, "LP079QX1-SP0V"),
+> +
+>  	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d51, &delay_200_500_e200, "Unknown"),
+>  	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d5b, &delay_200_500_e200, "MB116AN01"),
+>  	EDP_PANEL_ENTRY('H', 'K', 'C', 0x2d5c, &delay_200_500_e200, "MB116AN01-2"),
+> -- 
+> 2.34.1
+> 
 
 -- 
 With best wishes
