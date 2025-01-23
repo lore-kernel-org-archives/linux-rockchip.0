@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B7BC0218C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 11:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1C26C02182
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jan 2025 11:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iKzKBhb8eFMoGDr1in1C7w/kkp0JsE7ASNWbaZ1/ZF8=; b=Lr/6BR7dKhhNIS
-	e4qqbDDwYE3lCjzD37CQtBoTpBMN2X66KTH/TKuO2TphgJGCqYaFDR2Wso2lXdD/YDEXbvfMoFaCd
-	B1gt2HA3bkPJX0F723ybBj6lIiIJ7Gbn/L4JKRR/bYij1P5PFAX6UP/VQaXKI2QqJgw398fhOR7/j
-	7s6x/mo50hG2n6JY6lefL9WCYFK1+Aw4WaX3RuAwL0vLolHoYykHfjfnzLCxCe7UQSojq5VhLl2Hu
-	4dx6y1y7WVYnrU56H4W6PvtGCt2t25o4wVt4vNi0tCrofeNk0F9k3BiY09QU1XnJuxc2bbB6VfKuD
-	KgW7xL0z8htElro7Lc9g==;
+	List-Owner; bh=lwccdM32nybRQrqSE54H1JjGrN/E7FvVPsy0eM4xFyA=; b=fowZtsBl3DLWdX
+	ByhFU3HYXdR5wmo2dJbbmkAPGEwABB63zGd2NDQOxXv9kEzAaLoxK7rETNfd81HdeizSRwUuDgBa/
+	Y8ZMkSZRPC+KnU2Z/5wyrco3z/spAi3om8qJl7ywwInBu43JVYAEqoNCQ7DY2I9LoolPuYaJDpq2n
+	kf2UeMwEp25mTrrBKQPTmb0iGmZ8LVydY8lmntLnY76M7gJnlL/PToSho0hSxe27FuFh19eD6SMwb
+	+CrTjJLZZ5awZQ5Zn+MhaRgz6SFixarwBL5kwgg2Jziaikf5RcKVj2LL6B3DHO8GKOh8TH1ss276d
+	1X+vSauVqZbxf+oh09Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tavMS-0000000CKAA-3iw8;
-	Thu, 23 Jan 2025 11:27:00 +0000
+	id 1tavP4-0000000CKTR-1YFa;
+	Thu, 23 Jan 2025 11:29:42 +0000
 Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tavML-0000000CK7L-41eJ
+	id 1tavP2-0000000CKSK-1CKM
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jan 2025 11:26:55 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-540215984f0so866768e87.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jan 2025 03:26:53 -0800 (PST)
+	Thu, 23 Jan 2025 11:29:41 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5401bd6cdb7so858333e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jan 2025 03:29:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737631612; x=1738236412; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1737631779; x=1738236579; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DFfpTSbOh8RvHyE6RIKYPSmJaoOLiJCGJd9BE4mSXsw=;
-        b=R7RCy18UNDWGNH+PQ2mVwKcnSM1955tBeejPzdfe654sPOSk1AhtQFnTwLEi87dgRn
-         QPrIRwSgR1FpLbzHq/7Q+tyotGrnlq9qvjkcGg3P94x/i9u9F19vTtM0IngfT5xJWyIr
-         uZguydu0dgarKYizk4Oz/ycFELOPfIijnnzbwADxgwxSeqVv6acuKRWTnkUYpJxtRto6
-         Y8YUSpIYHVGUuxRVbuJaCDq/7hTDBM/5Px6I5UiykhGvU4HtrzDX7/DXaZt0u5J28CoK
-         Zj3VcGiopfk0YfYn0fIx6+xYl+8sO0ewf+NJ5olacJcb2DbN2XLAe+e9xf/2tlDrBRYU
-         FVEg==
+        bh=ywUpj3PvGs7O6YC27wxHtXRfoNnEiXLhmb6FDXD8qK8=;
+        b=womIQ3GEQHk4zmZST5qmfjIOR/a/m3+zlu/o5zxUIBrCq6g3r1faRzfnEzwpbcKoM8
+         8EBpPSmLqxBPM+HT2I/WaZN1pir/gJkKJdeG8tUatxIMFCnPT0mM67f00jLI1cml6WtF
+         Uu6J6AlxH64AKCF0k2CDCKIhpi0ysf90Gy5pdB0diH5fzQHqezEOYcoaswB90thdNzBp
+         1rWPWt+JW/wuO4yd74um4J5GgNK+4Edm7omfRo5gX9PQuOZPB7UUpBW1ER3F8zRQYJbl
+         gjCZxO3yGjK08tiebtCHtcHvv/sKszUMi6qx08YbinIc4w1H5To6UG92jSneXeFr1VPr
+         +k2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737631612; x=1738236412;
+        d=1e100.net; s=20230601; t=1737631779; x=1738236579;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DFfpTSbOh8RvHyE6RIKYPSmJaoOLiJCGJd9BE4mSXsw=;
-        b=VAxKY2lmtQz9palS8Vhef+7YE6fUmEZNrqb8ea7H1CPEjoJvZ9yDM+14JJ5VNnpl1Q
-         Up3dOvcG6ed2eWiK0u/K6glanVakSggfsY26+XuLBltQ8rROmyNYMT9IEZMhzVLCPci0
-         ttG7WsAdeCE1p4yb9J/z1ar0sCeeD5bOMcbIveyMtNDkcCpfpfw7UumYw6lWOOoaalgs
-         l9oLTZRPE1Alz9r4UZQkAC/Q4KxhUWRlvM1kzyJdTl1ToGYHETrUFDHr8oHfQQGWIwix
-         eieF9S/CJzeIBQl58geIFTrYb3EUAeskFSTkTNdkkH41H70t0aWCbmHz3RSKwRXt4Ftn
-         uIbw==
-X-Forwarded-Encrypted: i=1; AJvYcCXKyrCexok7bU9a+xvAFzj9K70MJXqWGYc/pJPriSfc5lhB/632HACOI8jBy1+5s3UWrL9pB4YSl7VlQCaLTQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZhy7bC28GtyVXf1wHRGDKOW+ZK2QF8u0YaVoo9+vPRaorVcnh
-	qSfPzJQ+XpGujLe4iBC0FqYdhlqei9Hd8JQUb9Edak3AYrqhiIZQTdqoXqibyZw=
-X-Gm-Gg: ASbGncv5+6+1bJG9WDfkFP3JRWEC+oMK6FgJ6CxLrvEqek7ZGvzICv+qBvsBPrRyhsY
-	IMTH/gO01dIUu9CmfbKH9bjKxfJscuODi5C2bQyrvjIYgbKO0Tdl7SGtL5ribjElHvIm6cxE4RT
-	6ipHFCJybggS8HV6fMOBBrEKpKJVXTEtnjf7eUuD5ljTn1M9ywXq9iNYyvVQq7u0BzSVVQWnLoQ
-	qfRRRZQjj8eWEsssc19NNulf1SHIpa6iQOi4oEHtpgkYKgoDgmyAwKCsmuLgAJx60OPqaq8itbp
-	WvXHbcX1HmNisTWAe/PlnPwNzYjX+JDdyshTPe9DGZ/k0zwS2qb2AbyiT49x
-X-Google-Smtp-Source: AGHT+IGNOaD089OMXfqr3Dnm2V/eB8MHKGKnVwiIKkPGlQzS9RJucZ1gI7lV8A7Yejq/M0G2xCRCQQ==
-X-Received: by 2002:a05:6512:2346:b0:53e:335e:7756 with SMTP id 2adb3069b0e04-5439c287bf9mr8252435e87.46.1737631612246;
-        Thu, 23 Jan 2025 03:26:52 -0800 (PST)
+        bh=ywUpj3PvGs7O6YC27wxHtXRfoNnEiXLhmb6FDXD8qK8=;
+        b=sY/vESahmASHVI9Us/U+/petX79WfaVudi/Pe7DjuAa9NfhbEtqq2V0Q6CsVCeuwW5
+         S4r3IzMUg5ozMGKuFBrAiDNh9RvymNpIB9MmR1ND8kA8t1zvCGdLk7ym9UU3c0BFX1PY
+         NEl0pYfdCrBG5OyxaBdaoKwpr7BARSvqK3Zf5l2cVf9U2N4bIh1AzvKJiraKR0JXxu0g
+         2WKvIwGOXkpZAxGMB7FVdtlX72B9zERPVXqgu/u3CUstI7oGZEYrwEec3E9vy+5fDgqZ
+         wPBekFysDWeItW3cblAeu3sGSO1HoEYrzgSRociZcLtBWHCvlnTZfFp3itt7+NPxq6K0
+         6CVg==
+X-Forwarded-Encrypted: i=1; AJvYcCV/W71irIkpXQiIBnPSwmIdi5ylZ0e3p1j380xWTer3b6+XaxWwBIFSNjP0lB1NIF7/Eif/Ddn8e2bUaipMdQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YynJrLVlxU8TUn9t99OvN/8nbsBavaS4BJ0+cHTh+6ithY5o/uY
+	TtalnLvhkJh/MfPaLd3jyh2BEa9cMFEfwSA9gR32Gvj9Ln9YuYBa8LB1BeOW0ew=
+X-Gm-Gg: ASbGnctts9I959S3EPLr9ESOR1L0OFwGTUosFX1+90HOgdbH9gPFOBetZNLPXDpD9O0
+	hVcUU8D7JVH67Q0Od+/SDYnPDQkuBIG2Hgq1zvZ2fOAP1xuSKSmh2s6vFWKZ0+LHmH9xH7Jnfbz
+	QxHYDjjB3W2hgKAX7IoRvGlrd/PhbZYJVkQ6ix9+iHFU9Jhaee+5icHCuoIsgCWW1t/ObCUnSgB
+	3oylXE574tNXaaJ4vCy8dllxghBNMXHPYyfIWsOiLWGrHJ6qSgM2hF42bpV7+uoGevZArF6I+3+
+	TWKG0b9Nf6Xfgqbdg+G7SGNV4/kT0gxjM15+RVkiG4Swz89tBJ1JSm43uXdP
+X-Google-Smtp-Source: AGHT+IH/IRIwigEV36zPfTMvutci/xM95ud1AjoiE5XvAxHbcLlm2/4wSeaGwe0S+EmSvBufcEVLsw==
+X-Received: by 2002:a05:6512:2346:b0:542:297f:4f64 with SMTP id 2adb3069b0e04-5439c280a83mr10948852e87.43.1737631778565;
+        Thu, 23 Jan 2025 03:29:38 -0800 (PST)
 Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543a24d2237sm2273345e87.9.2025.01.23.03.26.50
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543bae0ba76sm771974e87.8.2025.01.23.03.29.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jan 2025 03:26:51 -0800 (PST)
-Date: Thu, 23 Jan 2025 13:26:49 +0200
+        Thu, 23 Jan 2025 03:29:38 -0800 (PST)
+Date: Thu, 23 Jan 2025 13:29:35 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v6 08/14] drm/rockchip: analogix_dp: Add support to get
- panel from the DP AUX bus
-Message-ID: <jhl5ae6wzydxmauvwlw7g6kqqdcanwfi6sgeenhczsbwzdzlym@n5pbe4jk6ult>
+Subject: Re: [PATCH v6 11/14] drm/rockchip: analogix_dp: Add support for
+ RK3588
+Message-ID: <k4hno2c46ys3unusw4emhkevp3yezhtgyy566vfyfju3efyei2@twict2pypjug>
 References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-9-damon.ding@rock-chips.com>
+ <20250123100747.1841357-12-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250123100747.1841357-9-damon.ding@rock-chips.com>
+In-Reply-To: <20250123100747.1841357-12-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_032653_994011_7493CCC5 
-X-CRM114-Status: GOOD (  28.00  )
+X-CRM114-CacheID: sfid-20250123_032940_325200_F819A3F0 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,119 +98,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 23, 2025 at 06:07:41PM +0800, Damon Ding wrote:
-> Move drm_of_find_panel_or_bridge() a little later and combine it with
-> component_add() into a new function rockchip_dp_link_panel(). The function
-> will serve as done_probing() callback of devm_of_dp_aux_populate_bus(),
-> aiding to support for obtaining the eDP panel via the DP AUX bus.
+On Thu, Jan 23, 2025 at 06:07:44PM +0800, Damon Ding wrote:
+> RK3588 integrates the Analogix eDP 1.3 TX controller IP and the HDMI/eDP
+> TX Combo PHY based on a Samsung IP block. There are also two independent
+> eDP display interface with different address on RK3588 Soc.
 > 
-> If failed to get the panel from the DP AUX bus, it will then try the other
-> way to get panel information through the platform bus.
+> The patch currently adds only the basic support, specifically RGB output
+> up to 4K@60Hz, without the tests for audio, PSR and other eDP 1.3 specific
+> features.
+> 
+> In additon, the above Analogix IP has always been utilized as eDP on
+> Rockchip platform, despite its capability to also support the DP v1.2.
+> Therefore, the newly added logs will contain the term 'edp' rather than
+> 'dp'. And the newly added 'apb' reset control is to ensure the APB bus
+> of eDP controller works well on the RK3588 SoC.
 > 
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 > 
 > ---
 > 
-> Changes in v4:
-> - Use done_probing() to call drm_of_find_panel_or_bridge() and
->   component_add() when getting panel from the DP AUX bus
-> 
-> Changes in v5:
-> - Use the functions exported by the Analogix side to get the pointers of
->   struct analogix_dp_plat_data and struct drm_dp_aux.
-> - Use dev_err() instead of drm_err() in rockchip_dp_poweron().
-> 
-> Changes in v6:
-> - Keep drm_err() in rockchip_dp_poweron()
-> - Pass 'dp' in drm_...() rather than 'dp->drm_dev'
-> ---
->  .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 37 ++++++++++++++-----
->  1 file changed, 28 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 13f32aeea7ca..004b1b68d1cf 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -393,11 +393,27 @@ static const struct component_ops rockchip_dp_component_ops = {
->  	.unbind = rockchip_dp_unbind,
->  };
->  
-> +static int rockchip_dp_link_panel(struct drm_dp_aux *aux)
-> +{
-> +	struct analogix_dp_plat_data *plat_data = analogix_dp_aux_to_plat_data(aux);
-> +	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
-> +	int ret;
-> +
-> +	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, 1, 0, &plat_data->panel, NULL);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = component_add(dp->dev, &rockchip_dp_component_ops);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return ret;
-> +}
-> +
->  static int rockchip_dp_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	const struct rockchip_dp_chip_data *dp_data;
-> -	struct drm_panel *panel = NULL;
->  	struct rockchip_dp_device *dp;
->  	struct resource *res;
->  	int i;
-> @@ -407,10 +423,6 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->  	if (!dp_data)
->  		return -ENODEV;
->  
-> -	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
-> -	if (ret < 0 && ret != -ENODEV)
-> -		return ret;
-> -
->  	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
->  	if (!dp)
->  		return -ENOMEM;
-> @@ -434,7 +446,6 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->  
->  	dp->dev = dev;
->  	dp->adp = ERR_PTR(-ENODEV);
-> -	dp->plat_data.panel = panel;
->  	dp->plat_data.dev_type = dp->data->chip_type;
->  	dp->plat_data.power_on = rockchip_dp_poweron;
->  	dp->plat_data.power_off = rockchip_dp_powerdown;
-> @@ -450,9 +461,17 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->  	if (IS_ERR(dp->adp))
->  		return PTR_ERR(dp->adp);
->  
-> -	ret = component_add(dev, &rockchip_dp_component_ops);
-> -	if (ret)
-> -		return ret;
-> +	ret = devm_of_dp_aux_populate_bus(analogix_dp_get_aux(dp->adp), rockchip_dp_link_panel);
-> +	if (ret) {
-> +		if (ret != -ENODEV) {
-> +			drm_err(dp, "failed to populate aux bus : %d\n", ret);
-> +			return ret;
 
-return dev_err_probe().
-
-With that fixed:
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
-
-> +		}
-> +
-> +		ret = rockchip_dp_link_panel(analogix_dp_get_aux(dp->adp));
-> +		if (ret)
-> +			return ret;
-> +	}
->  
->  	return 0;
->  }
-> -- 
-> 2.34.1
-> 
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
 -- 
 With best wishes
