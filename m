@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F13DEC0218B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 09:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64F8FC02181
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 09:55:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RayiCZpR9V/XxiCn/iCjCSJpIEfI4ILUV2SWbvkvysQ=; b=OVefssavJCvFzK
-	C0rrIXOSUy/8ArOgEwTPd48z9H6GBySEjEoN4zjXhlDqLTeO0Hz1RcAXAeLA8WT/IBC2V88eR3pMl
-	/6FVBtm4TVj2XuoF7jXn24qKOP7vIOJCfwegjNrW65h2GO8mnoC2YtZZkZVWh+RsE4MvaTN3FmH0U
-	CLtv8fiCa9j+RBEaGA2hakr0qRCaX89SqwHolI6WlB06cN2brj+7GWQ2cKon8cQlMHZaYcoNs637P
-	2bLxS7b/z32+uqtNyS1hpr0FB4sLOFMvPK0Blm2BTWzie+gzGiZoeS2h9agNwLklosg2womnljojk
-	haYzRJVGUYT6IOh8BZjQ==;
+	List-Owner; bh=CWWV+CH6s7zMSY4/y9XHY2vFF9TuC7W/W7yv3bOFNMQ=; b=yF2pw3f+2GVuiC
+	L1zUgqt0ae2Zj3admYZojV+VsrhbiFuvZHtF9OYghuxXWJX7E6lNiMcnxyyTb1kmMxVZ1cElvd47q
+	Al2g5MHOCJL3ePd7uvblOP2RfRRpYxHef2BiT8vHoPW2Ytud9HoJqscp/qLGdi8xPIP6R0cXn40XF
+	26JCJ2x+JESqmGPojUExO2nCidEnq8ofZdZxibrNV/ZYbZg8oMV0av2emuQieP9nnpEp/f0zIg7GK
+	FqAGSoU0McIJ6PbjiZf1gWpCy1RFnuPvkymSd+MKyghtm8QRvvNT8+VBFMrf98SMjBPxNOmlmYy2r
+	gruZO3vtPufhQh57abQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGFE-0000000EOGj-2Nzt;
-	Fri, 24 Jan 2025 09:44:56 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1tbGPH-0000000EPc4-3t1Q;
+	Fri, 24 Jan 2025 09:55:19 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGDd-0000000ENsV-23mm;
-	Fri, 24 Jan 2025 09:43:19 +0000
+	id 1tbGNt-0000000EPX0-0zKm;
+	Fri, 24 Jan 2025 09:53:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=LYzbzwYDYoKwztDPD6C/feKlYvHgUyz6eZNhruyqgMA=; b=o
-	2KQvA139ZZaXDHG8Qh0zBlrYw4wTb1LDBD8MQzlYqsqtQHxQqdUAQvl7jjPVpXWF
-	TI/YlfD3C3B0+RdfbVuPnroUQ5nD7ObPxNQNN7dSBSP3OSwgG8IJwCfe6CrYXviN
-	y17KJ+dX7vUio7RXAfzVdHIo2EfrQ4IWFcAZgT3wU4=
+	Message-ID; bh=hs5L4OGygStQe7OHoNkefT/tMFgW51GwAYzbcK2ttsE=; b=Y
+	F/UJtRU4x54Wka25W8F3b+ZnQt3yz+C2b+iiZd1v0ySkf81lRi0p7vYoQFWUzD5H
+	Zu7XAsap66cBnuDUDC0NCpx4jv2oMg1K3AyHu2dmPi5sY5Lfp6Se1yTQiJW2CJAF
+	wCOkr1d+tNPcjD1QqvLTEnV06Oc3gEBLEMCX3Pkw+k=
 Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Fri, 24 Jan 2025 17:41:58 +0800
+ ajax-webmail-wmsvr-40-141 (Coremail) ; Fri, 24 Jan 2025 17:53:39 +0800
  (CST)
 X-Originating-IP: [58.22.7.114]
-Date: Fri, 24 Jan 2025 17:41:58 +0800 (CST)
+Date: Fri, 24 Jan 2025 17:53:39 +0800 (CST)
 From: "Andy Yan" <andyshrk@163.com>
-To: "Jani Nikula" <jani.nikula@linux.intel.com>
-Subject: Re:Re: [PATCH v5 05/20] drm/rockchip: analogix_dp: Replace
- DRM_...() functions with drm_...() or dev_...()
+To: "Jani Nikula" <jani.nikula@intel.com>
+Subject: Re:[PATCH 2/5] drm/rockchip: stop passing non struct drm_device to
+ drm_err() and friends
 X-Priority: 3
 X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
  Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <87ed0tn29l.fsf@intel.com>
-References: <20250109032725.1102465-1-damon.ding@rock-chips.com>
- <20250109032725.1102465-6-damon.ding@rock-chips.com>
- <40b09942.533e.19449c023a1.Coremail.andyshrk@163.com>
- <a8bee693-cbde-469d-abcf-363311cfd904@rock-chips.com>
- <87ed0tn29l.fsf@intel.com>
-X-NTES-SC: AL_Qu2YBfuavk8q7iaYY+kfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5Mb80po9H52mNq8qQu8uCzI4A==
+In-Reply-To: <f42da4c9943a2f2a9de4272b7849e72236d4c3f9.1737644530.git.jani.nikula@intel.com>
+References: <cover.1737644530.git.jani.nikula@intel.com>
+ <f42da4c9943a2f2a9de4272b7849e72236d4c3f9.1737644530.git.jani.nikula@intel.com>
+X-NTES-SC: AL_Qu2YBfuavUwq7yaZbekfmkcVgOw9UcO5v/Qk3oZXOJF8jCrr+CUnVkFMJFbsweeONhCLrheYTj1O48h1bZN6b5MbiaK7Zc1eE4ijTZUsQjP0ag==
 MIME-Version: 1.0
-Message-ID: <6007b76a.6021.19497b090d4.Coremail.andyshrk@163.com>
+Message-ID: <2c0a76c3.618c.19497bb4329.Coremail.andyshrk@163.com>
 X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgCXn_RmYJNnEy9eAA--.22874W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAjeXmeTWj0-8QAEs5
+X-CM-TRANSID: jSgvCgD3n_UjY5NnLTFeAA--.22777W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQLeXmeTWhlxLwAEsG
 X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_014317_924090_BDA4ED47 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20250124_015353_588403_3D980E68 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,195 +68,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, Damon Ding <damon.ding@rock-chips.com>, hjc@rock-chips.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, intel-gfx@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-At 2025-01-23 20:27:50, "Jani Nikula" <jani.nikula@linux.intel.com> wrote:
->On Wed, 22 Jan 2025, Damon Ding <damon.ding@rock-chips.com> wrote:
->> Hi Andy,
->>
->> On 2025/1/9 14:28, Andy Yan wrote:
->>> 
->>> Hi Damon,
->>> 
->>> At 2025-01-09 11:27:10, "Damon Ding" <damon.ding@rock-chips.com> wrote:
->>>> According to the comments in include/drm/drm_print.h, the DRM_...()
->>>> functions are deprecated in favor of drm_...() or dev_...() functions.
->>>>
->>>> Use drm_err()/drm_dbg_core()/drm_dbg_kms() instead of
->>>> DRM_DEV_ERROR()/DRM_ERROR()/DRM_DEV_DEBUG()/DRM_DEBUG_KMS() after
->>>> rockchip_dp_bind() is called, and replace DRM_DEV_ERROR() with dev_err()
->>>> before calling it.
->>>>
->>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>>> ---
->>>> .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 29 ++++++++++---------
->>>> 1 file changed, 15 insertions(+), 14 deletions(-)
->>>>
->>>> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->>>> index 546d13f19f9b..8114c3238609 100644
->>>> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->>>> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->>>> @@ -100,13 +100,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
->>>>
->>>> 	ret = clk_prepare_enable(dp->pclk);
->>>> 	if (ret < 0) {
->>>> -		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
->>>> +		drm_err(dp->drm_dev, "failed to enable pclk %d\n", ret);
->>> 
->>>                 You just need to pass dp here:
->>>                  drm_err(dp, "failed to enable pclk %d\n", ret);
->>> 
->>
->> I see. It is really better to pass dp instead of dp->drm_dev. I will 
->> update all relevant logs in the next version.
->
->No, this was bad review feedback. You're absolutely expected to pass
->struct drm_device to drm_err() and friends.
-
-No, I didn't see how the drm_err macro and friends restrict/expect the passing of only the drm_device pointer.
-As for the platform device driver itself,  we hope that when an error occurs, the log clearly indicates
-the specific device that the log corresponds to, rather than a generic drm_device.
-The original code of this driver used the macro related to DRM_DEV_ERROR to do just that.
-And similar patches have been merged before
-
-Please also refer to the discussion here.[0]
-[0]https://lore.kernel.org/linux-rockchip/20250109032725.1102465-1-damon.ding@rock-chips.com/T/#m54bd842be660031773834cedea6c73a5033ca973
-
-
-
->
->BR,
->Jani.
->
->
->>
->>>> 		return ret;
->>>> 	}
->>>>
->>>> 	ret = rockchip_dp_pre_init(dp);
->>>> 	if (ret < 0) {
->>>> -		DRM_DEV_ERROR(dp->dev, "failed to dp pre init %d\n", ret);
->>>> +		drm_err(dp->drm_dev, "failed to dp pre init %d\n", ret);
->>>> 		clk_disable_unprepare(dp->pclk);
->>>> 		return ret;
->>>> 	}
->>>> @@ -126,12 +126,13 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
->>>> static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
->>>> 				 struct drm_connector *connector)
->>>> {
->>>> +	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
->>>> 	struct drm_display_info *di = &connector->display_info;
->>>> 	/* VOP couldn't output YUV video format for eDP rightly */
->>>> 	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
->>>>
->>>> 	if ((di->color_formats & mask)) {
->>>> -		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
->>>> +		drm_dbg_kms(dp->drm_dev, "Swapping display color format from YUV to RGB\n");
->>>> 		di->color_formats &= ~mask;
->>>> 		di->color_formats |= DRM_COLOR_FORMAT_RGB444;
->>>> 		di->bpc = 8;
->>>> @@ -201,17 +202,17 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
->>>> 	else
->>>> 		val = dp->data->lcdsel_big;
->>>>
->>>> -	DRM_DEV_DEBUG(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
->>>> +	drm_dbg_core(dp->drm_dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
->>>>
->>>> 	ret = clk_prepare_enable(dp->grfclk);
->>>> 	if (ret < 0) {
->>>> -		DRM_DEV_ERROR(dp->dev, "failed to enable grfclk %d\n", ret);
->>>> +		drm_err(dp->drm_dev, "failed to enable grfclk %d\n", ret);
->>>> 		return;
->>>> 	}
->>>>
->>>> 	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
->>>> 	if (ret != 0)
->>>> -		DRM_DEV_ERROR(dp->dev, "Could not write to GRF: %d\n", ret);
->>>> +		drm_err(dp->drm_dev, "Could not write to GRF: %d\n", ret);
->>>>
->>>> 	clk_disable_unprepare(dp->grfclk);
->>>> }
->>>> @@ -236,7 +237,7 @@ static void rockchip_dp_drm_encoder_disable(struct drm_encoder *encoder,
->>>>
->>>> 	ret = rockchip_drm_wait_vact_end(crtc, PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
->>>> 	if (ret)
->>>> -		DRM_DEV_ERROR(dp->dev, "line flag irq timed out\n");
->>>> +		drm_err(dp->drm_dev, "line flag irq timed out\n");
->>>> }
->>>>
->>>> static int
->>>> @@ -277,7 +278,7 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
->>>>
->>>> 	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
->>>> 	if (IS_ERR(dp->grf)) {
->>>> -		DRM_DEV_ERROR(dev, "failed to get rockchip,grf property\n");
->>>> +		dev_err(dev, "failed to get rockchip,grf property\n");
->>>> 		return PTR_ERR(dp->grf);
->>>> 	}
->>>>
->>>> @@ -287,19 +288,19 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
->>>> 	} else if (PTR_ERR(dp->grfclk) == -EPROBE_DEFER) {
->>>> 		return -EPROBE_DEFER;
->>>> 	} else if (IS_ERR(dp->grfclk)) {
->>>> -		DRM_DEV_ERROR(dev, "failed to get grf clock\n");
->>>> +		dev_err(dev, "failed to get grf clock\n");
->>>> 		return PTR_ERR(dp->grfclk);
->>>> 	}
->>>>
->>>> 	dp->pclk = devm_clk_get(dev, "pclk");
->>>> 	if (IS_ERR(dp->pclk)) {
->>>> -		DRM_DEV_ERROR(dev, "failed to get pclk property\n");
->>>> +		dev_err(dev, "failed to get pclk property\n");
->>>> 		return PTR_ERR(dp->pclk);
->>>> 	}
->>>>
->>>> 	dp->rst = devm_reset_control_get(dev, "dp");
->>>> 	if (IS_ERR(dp->rst)) {
->>>> -		DRM_DEV_ERROR(dev, "failed to get dp reset control\n");
->>>> +		dev_err(dev, "failed to get dp reset control\n");
->>>> 		return PTR_ERR(dp->rst);
->>>> 	}
->>>>
->>>> @@ -315,12 +316,12 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
->>>>
->>>> 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
->>>> 							     dev->of_node);
->>>> -	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
->>>> +	drm_dbg_kms(drm_dev, "possible_crtcs = 0x%x\n", encoder->possible_crtcs);
->>>>
->>>> 	ret = drm_simple_encoder_init(drm_dev, encoder,
->>>> 				      DRM_MODE_ENCODER_TMDS);
->>>> 	if (ret) {
->>>> -		DRM_ERROR("failed to initialize encoder with drm\n");
->>>> +		drm_err(drm_dev, "failed to initialize encoder with drm\n");
->>>> 		return ret;
->>>> 	}
->>>>
->>>> @@ -340,7 +341,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->>>>
->>>> 	ret = rockchip_dp_drm_create_encoder(dp);
->>>> 	if (ret) {
->>>> -		DRM_ERROR("failed to create drm encoder\n");
->>>> +		drm_err(drm_dev, "failed to create drm encoder\n");
->>>> 		return ret;
->>>> 	}
->>>>
->>>> -- 
->>>> 2.34.1
->>>>
->>
->> Best regards,
->> Damon
->
->-- 
->Jani Nikula, Intel
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ckhp77yMCgpBdCAyMDI1LTAxLTIzIDIzOjA5OjA5LCAiSmFuaSBOaWt1bGEiIDxqYW5pLm5pa3Vs
+YUBpbnRlbC5jb20+IHdyb3RlOgo+VGhlIGV4cGVjdGF0aW9uIGlzIHRoYXQgdGhlIHN0cnVjdCBk
+cm1fZGV2aWNlIGJhc2VkIGxvZ2dpbmcgaGVscGVycyBnZXQKPnBhc3NlZCBhbiBhY3R1YWwgc3Ry
+dWN0IGRybV9kZXZpY2UgcG9pbnRlciByYXRoZXIgdGhhbiBzb21lIHJhbmRvbQo+c3RydWN0IHBv
+aW50ZXIgd2hlcmUgeW91IGNhbiBkZXJlZmVyZW5jZSB0aGUgLT5kZXYgbWVtYmVyLgo+Cj5Db252
+ZXJ0IGRybV9lcnIoaGRtaSwgLi4uKSB0byBkZXZfZXJyKGhkbWktPmRldiwgLi4uKS4gVGhpcyBt
+YXRjaGVzCj5jdXJyZW50IHVzYWdlLCBidXQgZHJvcHMgIltkcm1dICpFUlJPUioiIHByZWZpeCBm
+cm9tIGxvZ2dpbmcuCgpGcmFua2x5LCBJIHByZWZlciB0aGUgb3JpZ2luYWwgdmVyc2lvbiBvZiB0
+aGUgbG9nLgpJdCBpcyBhIHBsYXRmb3JtIGRyaXZlciwgc28gaXQgc2hvdWxkIHVzZSBpdHMgb3du
+IGRldmljZS4KSXQgaXMgYSBkcml2ZXIgdGhhdCB3b3JrcyBpbiBkcm0gc3Vic3lzdGVtLCBzbyBp
+dCdzIGJldHRlciB0byB1c2UgIltkcm1dICpFUlJPUioiIHByZWZpeCB3aGVuIGxvZ2dpbmcKCj4K
+PlNpZ25lZC1vZmYtYnk6IEphbmkgTmlrdWxhIDxqYW5pLm5pa3VsYUBpbnRlbC5jb20+Cj4KPi0t
+LQo+Cj5Mb29rcyBsaWtlIGl0J3MgcG9zc2libGUgdG8gaHVudCBkb3duIHRoZSBzdHJ1Y3QgZHJt
+X2RldmljZSBpbiBtb3N0IG9mCj50aGVzZSBjYXNlcywgaWYgdGhhdCdzIGRlc2lyZWQuIFRoaXMg
+d2FzIHRoZSBzaW1wbGVzdCBjaGFuZ2UuCj4KPkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hp
+cHMuY29tPgo+Q2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KPkNjOiBBbmR5
+IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj5DYzogZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwo+Q2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Q2M6
+IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPi0tLQo+IGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgfCAxNiArKysrKysrKy0tLS0tLS0tCj4g
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYyB8IDE2ICsrKysr
+KysrLS0tLS0tLS0KPiAyIGZpbGVzIGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKyksIDE2IGRlbGV0
+aW9ucygtKQo+Cj5kaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWkt
+cm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMK
+PmluZGV4IGU3YTY2NjljNDZiMC4uZjczN2U3ZDQ2ZTY2IDEwMDY0NAo+LS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+KysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+QEAgLTIwMyw3ICsyMDMsNyBAQCBzdGF0aWMg
+aW50IHJvY2tjaGlwX2hkbWlfcGFyc2VfZHQoc3RydWN0IHJvY2tjaGlwX2hkbWkgKmhkbWkpCj4g
+Cj4gCWhkbWktPnJlZ21hcCA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUobnAsICJy
+b2NrY2hpcCxncmYiKTsKPiAJaWYgKElTX0VSUihoZG1pLT5yZWdtYXApKSB7Cj4tCQlkcm1fZXJy
+KGhkbWksICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4rCQlkZXZfZXJyKGhkbWkt
+PmRldiwgIlVuYWJsZSB0byBnZXQgcm9ja2NoaXAsZ3JmXG4iKTsKPiAJCXJldHVybiBQVFJfRVJS
+KGhkbWktPnJlZ21hcCk7Cj4gCX0KPiAKPkBAIC0yMTQsNyArMjE0LDcgQEAgc3RhdGljIGludCBy
+b2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pKQo+IAlpZiAo
+SVNfRVJSKGhkbWktPnJlZl9jbGspKSB7Cj4gCQlyZXQgPSBQVFJfRVJSKGhkbWktPnJlZl9jbGsp
+Owo+IAkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+LQkJCWRybV9lcnIoaGRtaSwgImZhaWxl
+ZCB0byBnZXQgcmVmZXJlbmNlIGNsb2NrXG4iKTsKPisJCQlkZXZfZXJyKGhkbWktPmRldiwgImZh
+aWxlZCB0byBnZXQgcmVmZXJlbmNlIGNsb2NrXG4iKTsKPiAJCXJldHVybiByZXQ7Cj4gCX0KPiAK
+PkBAIC0yMjIsNyArMjIyLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0
+cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pKQo+IAlpZiAoSVNfRVJSKGhkbWktPmdyZl9jbGspKSB7
+Cj4gCQlyZXQgPSBQVFJfRVJSKGhkbWktPmdyZl9jbGspOwo+IAkJaWYgKHJldCAhPSAtRVBST0JF
+X0RFRkVSKQo+LQkJCWRybV9lcnIoaGRtaSwgImZhaWxlZCB0byBnZXQgZ3JmIGNsb2NrXG4iKTsK
+PisJCQlkZXZfZXJyKGhkbWktPmRldiwgImZhaWxlZCB0byBnZXQgZ3JmIGNsb2NrXG4iKTsKPiAJ
+CXJldHVybiByZXQ7Cj4gCX0KPiAKPkBAIC0zMDIsMTYgKzMwMiwxNiBAQCBzdGF0aWMgdm9pZCBk
+d19oZG1pX3JvY2tjaGlwX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
+cikKPiAKPiAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGhkbWktPmdyZl9jbGspOwo+IAlpZiAo
+cmV0IDwgMCkgewo+LQkJZHJtX2VycihoZG1pLCAiZmFpbGVkIHRvIGVuYWJsZSBncmZjbGsgJWRc
+biIsIHJldCk7Cj4rCQlkZXZfZXJyKGhkbWktPmRldiwgImZhaWxlZCB0byBlbmFibGUgZ3JmY2xr
+ICVkXG4iLCByZXQpOwo+IAkJcmV0dXJuOwo+IAl9Cj4gCj4gCXJldCA9IHJlZ21hcF93cml0ZSho
+ZG1pLT5yZWdtYXAsIGhkbWktPmNoaXBfZGF0YS0+bGNkc2VsX2dyZl9yZWcsIHZhbCk7Cj4gCWlm
+IChyZXQgIT0gMCkKPi0JCWRybV9lcnIoaGRtaSwgIkNvdWxkIG5vdCB3cml0ZSB0byBHUkY6ICVk
+XG4iLCByZXQpOwo+KwkJZGV2X2VycihoZG1pLT5kZXYsICJDb3VsZCBub3Qgd3JpdGUgdG8gR1JG
+OiAlZFxuIiwgcmV0KTsKPiAKPiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPmdyZl9jbGsp
+Owo+LQlkcm1fZGJnKGhkbWksICJ2b3AgJXMgb3V0cHV0IHRvIGhkbWlcbiIsIHJldCA/ICJMSVQi
+IDogIkJJRyIpOwo+KwlkZXZfZGJnKGhkbWktPmRldiwgInZvcCAlcyBvdXRwdXQgdG8gaGRtaVxu
+IiwgcmV0ID8gIkxJVCIgOiAiQklHIik7Cj4gfQo+IAo+IHN0YXRpYyBpbnQKPkBAIC01NzQsNyAr
+NTc0LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmljZSAq
+ZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gCXJldCA9IHJvY2tjaGlwX2hkbWlfcGFyc2Vf
+ZHQoaGRtaSk7Cj4gCWlmIChyZXQpIHsKPiAJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPi0J
+CQlkcm1fZXJyKGhkbWksICJVbmFibGUgdG8gcGFyc2UgT0YgZGF0YVxuIik7Cj4rCQkJZGV2X2Vy
+cihoZG1pLT5kZXYsICJVbmFibGUgdG8gcGFyc2UgT0YgZGF0YVxuIik7Cj4gCQlyZXR1cm4gcmV0
+Owo+IAl9Cj4gCj5AQCAtNTgyLDcgKzU4Miw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hp
+cF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+IAlpZiAo
+SVNfRVJSKGhkbWktPnBoeSkpIHsKPiAJCXJldCA9IFBUUl9FUlIoaGRtaS0+cGh5KTsKPiAJCWlm
+IChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPi0JCQlkcm1fZXJyKGhkbWksICJmYWlsZWQgdG8gZ2V0
+IHBoeVxuIik7Cj4rCQkJZGV2X2VycihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBoeVxuIik7
+Cj4gCQlyZXR1cm4gcmV0Owo+IAl9Cj4gCj5kaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
+d19oZG1pX3FwLXJvY2tjaGlwLmMKPmluZGV4IGY0MTE1MWQ0OWZjYS4uM2QxZGRkYjM0NjAzIDEw
+MDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAu
+Ywo+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYwo+
+QEAgLTI0Miw3ICsyNDIsNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX3FwX3JrMzU4OF9ocGRfd29y
+ayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4gCWlmIChkcm0pIHsKPiAJCWNoYW5nZWQgPSBk
+cm1faGVscGVyX2hwZF9pcnFfZXZlbnQoZHJtKTsKPiAJCWlmIChjaGFuZ2VkKQo+LQkJCWRybV9k
+YmcoaGRtaSwgImNvbm5lY3RvciBzdGF0dXMgY2hhbmdlZFxuIik7Cj4rCQkJZGV2X2RiZyhoZG1p
+LT5kZXYsICJjb25uZWN0b3Igc3RhdHVzIGNoYW5nZWRcbiIpOwo+IAl9Cj4gfQo+IAo+QEAgLTQ3
+Miw3ICs0NzIsNyBAQCBzdGF0aWMgaW50IGR3X2hkbWlfcXBfcm9ja2NoaXBfYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAJCX0KPiAJfQo+IAlpZiAoaGRt
+aS0+cG9ydF9pZCA8IDApIHsKPi0JCWRybV9lcnIoaGRtaSwgIkZhaWxlZCB0byBtYXRjaCBIRE1J
+IHBvcnQgSURcbiIpOwo+KwkJZGV2X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8gbWF0Y2ggSERN
+SSBwb3J0IElEXG4iKTsKPiAJCXJldHVybiBoZG1pLT5wb3J0X2lkOwo+IAl9Cj4gCj5AQCAtNDk2
+LDIwICs0OTYsMjAgQEAgc3RhdGljIGludCBkd19oZG1pX3FwX3JvY2tjaGlwX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gCWhkbWktPnJlZ21hcCA9IHN5
+c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUoZGV2LT5vZl9ub2RlLAo+IAkJCQkJCSAgICAg
+ICAicm9ja2NoaXAsZ3JmIik7Cj4gCWlmIChJU19FUlIoaGRtaS0+cmVnbWFwKSkgewo+LQkJZHJt
+X2VycihoZG1pLCAiVW5hYmxlIHRvIGdldCByb2NrY2hpcCxncmZcbiIpOwo+KwkJZGV2X2Vyciho
+ZG1pLT5kZXYsICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4gCQlyZXR1cm4gUFRS
+X0VSUihoZG1pLT5yZWdtYXApOwo+IAl9Cj4gCj4gCWhkbWktPnZvX3JlZ21hcCA9IHN5c2Nvbl9y
+ZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUoZGV2LT5vZl9ub2RlLAo+IAkJCQkJCQkgICJyb2NrY2hp
+cCx2by1ncmYiKTsKPiAJaWYgKElTX0VSUihoZG1pLT52b19yZWdtYXApKSB7Cj4tCQlkcm1fZXJy
+KGhkbWksICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLHZvLWdyZlxuIik7Cj4rCQlkZXZfZXJyKGhk
+bWktPmRldiwgIlVuYWJsZSB0byBnZXQgcm9ja2NoaXAsdm8tZ3JmXG4iKTsKPiAJCXJldHVybiBQ
+VFJfRVJSKGhkbWktPnZvX3JlZ21hcCk7Cj4gCX0KPiAKPiAJcmV0ID0gZGV2bV9jbGtfYnVsa19n
+ZXRfYWxsX2VuYWJsZWQoaGRtaS0+ZGV2LCAmY2xrcyk7Cj4gCWlmIChyZXQgPCAwKSB7Cj4tCQlk
+cm1fZXJyKGhkbWksICJGYWlsZWQgdG8gZ2V0IGNsb2NrczogJWRcbiIsIHJldCk7Cj4rCQlkZXZf
+ZXJyKGhkbWktPmRldiwgIkZhaWxlZCB0byBnZXQgY2xvY2tzOiAlZFxuIiwgcmV0KTsKPiAJCXJl
+dHVybiByZXQ7Cj4gCX0KPiAKPkBAIC01MTcsNyArNTE3LDcgQEAgc3RhdGljIGludCBkd19oZG1p
+X3FwX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0
+ZXIsCj4gCQkJCQkJICAgIEdQSU9EX09VVF9ISUdIKTsKPiAJaWYgKElTX0VSUihoZG1pLT5lbmFi
+bGVfZ3BpbykpIHsKPiAJCXJldCA9IFBUUl9FUlIoaGRtaS0+ZW5hYmxlX2dwaW8pOwo+LQkJZHJt
+X2VycihoZG1pLCAiRmFpbGVkIHRvIHJlcXVlc3QgZW5hYmxlIEdQSU86ICVkXG4iLCByZXQpOwo+
+KwkJZGV2X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8gcmVxdWVzdCBlbmFibGUgR1BJTzogJWRc
+biIsIHJldCk7Cj4gCQlyZXR1cm4gcmV0Owo+IAl9Cj4gCj5AQCAtNTI1LDcgKzUyNSw3IEBAIHN0
+YXRpYyBpbnQgZHdfaGRtaV9xcF9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3Ry
+dWN0IGRldmljZSAqbWFzdGVyLAo+IAlpZiAoSVNfRVJSKGhkbWktPnBoeSkpIHsKPiAJCXJldCA9
+IFBUUl9FUlIoaGRtaS0+cGh5KTsKPiAJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikKPi0JCQlk
+cm1fZXJyKGhkbWksICJmYWlsZWQgdG8gZ2V0IHBoeTogJWRcbiIsIHJldCk7Cj4rCQkJZGV2X2Vy
+cihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBoeTogJWRcbiIsIHJldCk7Cj4gCQlyZXR1cm4g
+cmV0Owo+IAl9Cj4gCj5AQCAtNTY0LDcgKzU2NCw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9xcF9y
+b2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+
+IAljb25uZWN0b3IgPSBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9pbml0KGRybSwgZW5jb2Rlcik7Cj4g
+CWlmIChJU19FUlIoY29ubmVjdG9yKSkgewo+IAkJcmV0ID0gUFRSX0VSUihjb25uZWN0b3IpOwo+
+LQkJZHJtX2VycihoZG1pLCAiZmFpbGVkIHRvIGluaXQgYnJpZGdlIGNvbm5lY3RvcjogJWRcbiIs
+IHJldCk7Cj4rCQlkZXZfZXJyKGhkbWktPmRldiwgImZhaWxlZCB0byBpbml0IGJyaWRnZSBjb25u
+ZWN0b3I6ICVkXG4iLCByZXQpOwo+IAkJcmV0dXJuIHJldDsKPiAJfQo+IAo+LS0gCj4yLjM5LjUK
+Pgo+Cj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+TGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj5MaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCj5odHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
