@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9CA0C0218B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 05:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E71EC02181
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 05:26:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1vvcOCkNxVWFF6AaR73cWLdq8zi1zp04vnVLGnZ8ggI=; b=MqQFTWvu5WOGN3
-	lQmGIaCCEAWDCqcnab/mvW/2KRqVPDjelyk27afMNWAHezYB0L684tzdeafwsQgdCdHEVnE6VOm3y
-	B8FD4+NaIXw/UjG4dZ7/NFiqP/p6WrV0zKrPOK7GFhhkIla/cZKbyhW37A0gp6ZKSzrGue6KOUlvi
-	FNRmBZwFbijqJN3ARqCD/IAguMqHeeYxGTtQ55FMr3CRlRTDUApOpbtRTyU0NUNqAy9g9usC8InDg
-	H4xEkCN2LBq7gYoNBfQP5wD3ELwuvTY2qkI3CCxOe1K+HRhk9LHofXN6wTZSjFl9rEYMwvOELQEYP
-	A21JVaN+WKGKWZII4qeg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oldIg4Eqcb1d+/H4rzaEqiXitiRsXzBg1mwekpbIZ0M=; b=OJzM0HPPt0PfLc
+	aVZEqKBPEW8CRR2/ninj9PrDDsNTnKX/rN9N3XUHbsafVDy+FNHc9t+WYVLuFE1zCNNC2vWMjDbC6
+	1/xAKsJii2IOm34PXu1n5TEqS667Bimo0pcgD/XgJc4zl+ZEdpiQDyLdrubnLxARPvDF/5rNxBNYS
+	dlld0wrTGa/CsQ2bMGvYzuedhYx0Mj55AG1GmFUwop6bjzF2UL97N52bQZuU5ZzqbrxZhYBwb1L73
+	1qxvAev08tb9fxKmGB/J/SGdANzKD0ubu8Pk3Py9JIGTuNy3O6lb57AKFGYF369QwW7k4ktBeZSJm
+	UCNY9igmttUReIZHeAeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbBpD-0000000DvYg-0Lew;
-	Fri, 24 Jan 2025 05:01:47 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1tbCDH-0000000Dwpl-3Il6;
+	Fri, 24 Jan 2025 05:26:39 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbBpA-0000000DvY0-3zff
-	for linux-rockchip@lists.infradead.org;
-	Fri, 24 Jan 2025 05:01:46 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5439b0dd4bfso1301937e87.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jan 2025 21:01:44 -0800 (PST)
+	id 1tbCDF-0000000DwpN-36Du;
+	Fri, 24 Jan 2025 05:26:38 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-3003c0c43c0so17440721fa.1;
+        Thu, 23 Jan 2025 21:26:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737694903; x=1738299703; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0eYsDa3iowZle90PPKo5xgDvKG54lWztwuDRX2J8S4I=;
-        b=lY+SXgV7aRjjkvzufRjtRDhDCv3sofLJUc+B3Jl1WvToc4nl0YuHrR4GK1+8HKht+/
-         IsN+QMrO0G2vSsF6fPESuGNN8iPNsegLXa2+kzonrvc3DqwN2EgtL3dmzX9tKfO1R7pk
-         YahpU/OJ/GzznvPFD4Xl+VUHg3TnoiaPFH8ZPhx8wWTwSYcYhKxE0/Qg1mEvOQ2jnHyF
-         npxh4RHzYgUcQ32q9yLBx69gyk6I50C6AWlmGEwlysXn+P+9G3OoOiu23rMFKOAMajfN
-         2IeR0Wqp/tFRJcl7Tfb5plZvaExoAgXN40bauS2xCYfA8obTsCZITkLudCdTWxWiTKMh
-         2fZg==
+        d=gmail.com; s=20230601; t=1737696395; x=1738301195; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=p07sjty6xKqv6rCV4Fqi1eiP0EADaUe999Gk077M4nk=;
+        b=WTKOoh1SsohoUzOBsF8Qf1dPofkonCMpvrv2RT0Hp4Yuk6dvz/R/NI/t99R1lNhKIl
+         m8DPvhD1jLXOz7cKHfn62tffMWu/AcHxum+Ysx8kLUDRARd4UiFuNEquUoir2qnyLyS+
+         UW7JVd/Njyyx3ChqzM8fPgen4jLsegrW/Vjd9PC/lp0iq7OuaR28rkPP/a+qLNiO2jXu
+         a9Vn71bm2zHQMI06zIfG5HlXcLDC88E6Ayk8mt8N2N1/htre+K8t8f7l3QmVALbsfVwL
+         mRyKbJsHpIG5rwlwkBsOljcNuh7daCV9iqqbMU5K7aPieyHnzXclLpqZNuWKV8Tte3rL
+         BmuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737694903; x=1738299703;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0eYsDa3iowZle90PPKo5xgDvKG54lWztwuDRX2J8S4I=;
-        b=Pp7qmGMYX8oSMW8cksucidyNuJAq0IQ1GEjHQ+b0XPL1iruPAfFmZNXebS295n02t6
-         ALo9yCv6YmPRXG/8sTYF3dAfJyMeHvDca18oUqSRS6pNG4t8lTV31EhuuL7ox3iRnO5b
-         WBxu49fkkk3F5Ja1TJYC8+F9vE97ZB3WjbPswM/LvXuQKcavZln2ROpQE1Ph8qT3Pw4G
-         MG5n5VK2lRM90D2cfJJyPiEmflCBnVW+U321oeL0Cpz2Tjmg0Fq44BKsrjLOzkexJug0
-         NjO/Z6ZHSwl7hRelHbBlUdOm6Xj5nQvXR0BaEbIB0y9KwyScX+USROE1hE6YwM5pK8ac
-         f2RQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUSh9I6Qa6eXDHNHO+9l5VO7JAwAYYNPIaTI0x+O3fwUSutKoCW/4z+9F0rdf9DWUA0ebBGnI/5IJuVbUNFLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxqZkLDHWpYpFcTa/PxEPj/4e7Bd9NxMk0iGVsfNKU6zCh/WmoF
-	GlnBGIL5l4DqOWVnWQPBqi1ypcSyXNEthVj4qvFkEuZhir0E950zRLQzSdL20iI=
-X-Gm-Gg: ASbGncvRXyhOdp+I5YSAX3xsjThwxJcOnPugiYMyFkPnSUOwzr6sEr2VwlBn1N0Eo0r
-	BdLrN8WU41FPqCT3jupxCGibS/SltwVQKv3tVVFp1gm6sW4uMVD7m3Z1coQ5ot2TtTwFGMljjjF
-	555LHKqT9HhWLy7ufBAZzcHumqwPP2oyFVzyRaS3JyUlszztM+1mNXZlQ8XUhEKAXbD/FTtfg1I
-	yXwjUR2bmY+3FzOv5ecxlKj0xc/NX9EdOivh+BLs2jdMpO/784ed9Ke1Vg8naEKHKZaGT5tm2Zm
-	OsVv6OchMQp2nIEp4gIjSKMsupnrkO7tRzZdgulAYLysiGa1Wmii7m7xwsqA
-X-Google-Smtp-Source: AGHT+IFFQeosHAQK91/7knXdxvaokrMIpayWFtvTGFpLCdc3EM+chnPzHE/8v2OM0VCnxzJ7GQylfQ==
-X-Received: by 2002:ac2:44b3:0:b0:540:3561:969d with SMTP id 2adb3069b0e04-5439c287f06mr9522617e87.49.1737694902384;
-        Thu, 23 Jan 2025 21:01:42 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543c8368542sm160268e87.114.2025.01.23.21.01.39
+        d=1e100.net; s=20230601; t=1737696395; x=1738301195;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=p07sjty6xKqv6rCV4Fqi1eiP0EADaUe999Gk077M4nk=;
+        b=HcK+cnbYBD4aWm36n0WyE3QCLXBuwon4ls44qJ3Z7QP7nP5AGrTc3R7aahG9KarsjW
+         b04MzXy+dtX0bOE6A+6huXrXoCxt7/uPngslY+b549idUheEhG2jc7Q8FNY6N6PWi3ZJ
+         B8ViuXK+tAXytqCcUL11wCH4tjRApXVZUZDJF6T7UZgVQ+oixK/m/hkKgm49AiJgTOTD
+         21u333UwZ7hmZbyMaZtG+xIoBj6t05K464HG9lvVpLKLqvFJ47d/82BNeECTyzLKGlQ7
+         Dit78o3SsFY2djgO0KgxppHZjD7+hh7HIuvW1e4NqE+4HlxFh00cojOKZwSDtA9Q9KPZ
+         zU8w==
+X-Forwarded-Encrypted: i=1; AJvYcCUAVz/j1z9rM2SgtgDLQEnsdgFmhN4Xz8B9viHH3lAVS7xUCnusxLrfAmYFsbEpGb9VaYAEhWknk6Few1Rp2aNP@lists.infradead.org
+X-Gm-Message-State: AOJu0YzfNdizAOA9h1LOSuW3wQKyNxQcmjtnx0NH/uis/o4zC3Vs7Xpw
+	Jk0hhHqDGsV6mBVXQv5czDlX62J8ZO+qadcsKH+rjulkc74bkPHRIp0Q1yQP
+X-Gm-Gg: ASbGncu66p2WQilchZixdf/R7l7M1o74yKfktleB1+G24q5ZctHNnM3IszN+mRnXkIu
+	YwDlXLxT3LbbJS9XGOQRUw6B0DkXhyHChF+66i+dYdsh9Jgt1pWihy5lsWLCbPyGwAwtxnvpn67
+	ObtH1hiV/kek6Y68N4Krj1OF4J31auWesgwAWKwglTN1z+0EvmiUrtD3K5CmsV1qitfviYoh3ei
+	+7MBEdcPk/999GRT6PAu/GpxyfEICtKEQyysErhWPvUsw2u1OQO5qsimiYu12b+1oCTjr2xF36x
+	PDh9oWIyoBdeEsk/zGU2jetAEpWJ
+X-Google-Smtp-Source: AGHT+IFlqUx90XIioMXK3K5xnP0U9POjUttzeJEvX3ss+rSU2HenO99mLcexlPY8+ML+vDDZJVxQcA==
+X-Received: by 2002:a2e:a263:0:b0:302:3abc:d9e2 with SMTP id 38308e7fff4ca-3072cb21f67mr76745751fa.29.1737696394396;
+        Thu, 23 Jan 2025 21:26:34 -0800 (PST)
+Received: from localhost.localdomain ([188.243.23.53])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3076bc49f46sm2389441fa.105.2025.01.23.21.26.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jan 2025 21:01:40 -0800 (PST)
-Date: Fri, 24 Jan 2025 07:01:38 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 1/2] drm/bridge: synopsys: Add audio support for
- dw-hdmi-qp
-Message-ID: <mpj5o2kdadkwsutjdtmze6riycdan3w7mohgqdzxiwfpvlh7zx@eocnqikqwrwt>
-References: <20250123222850.223255-1-detlev.casanova@collabora.com>
- <20250123222850.223255-2-detlev.casanova@collabora.com>
+        Thu, 23 Jan 2025 21:26:32 -0800 (PST)
+From: Alexander Shiyan <eagle.alexander923@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: Fix broken tsadc pinctrl binding for rk3588
+Date: Fri, 24 Jan 2025 08:26:11 +0300
+Message-Id: <20250124052611.3705-1-eagle.alexander923@gmail.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250123222850.223255-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_210145_018357_145F59B9 
-X-CRM114-Status: GOOD (  36.84  )
+X-CRM114-CacheID: sfid-20250123_212637_787292_2F09FF73 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,289 +87,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Alexander Shiyan <eagle.alexander923@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 23, 2025 at 05:28:06PM -0500, Detlev Casanova wrote:
-> From: Sugar Zhang <sugar.zhang@rock-chips.com>
-> 
-> Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
-> 
-> The register values computation functions (for n) are based on the
-> downstream driver, as well as the register writing functions.
-> 
-> The driver uses the generic HDMI Codec framework in order to implement
-> the HDMI audio support.
-> 
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 424 +++++++++++++++++++
->  1 file changed, 424 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> index b281cabfe992e..f79d38de4c6c4 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -36,6 +36,66 @@
->  
->  #define SCRAMB_POLL_DELAY_MS	3000
->  
-> +/*
-> + * Unless otherwise noted, entries in this table are 100% optimization.
-> + * Values can be obtained from hdmi_compute_n() but that function is
-> + * slow so we pre-compute values we expect to see.
-> + *
-> + * All 32k and 48k values are expected to be the same (due to the way
-> + * the math works) for any rate that's an exact kHz.
-> + */
-> +static const struct dw_hdmi_audio_tmds_n {
-> +	unsigned long tmds;
-> +	unsigned int n_32k;
-> +	unsigned int n_44k1;
-> +	unsigned int n_48k;
-> +} common_tmds_n_table[] = {
-> +	{ .tmds = 25175000, .n_32k = 4096, .n_44k1 = 12854, .n_48k = 6144, },
-> +	{ .tmds = 25200000, .n_32k = 4096, .n_44k1 = 5656, .n_48k = 6144, },
+There is no pinctrl "gpio" and "otpout" (probably designed as "output")
+handling in the tsadc driver.
+Let's use proper binding "default" and "sleep".
 
-These values do not seem to match the tables in HDMI, Appendix D. Is
-there any reason for that?
+Fixes: 32641b8ab1a5 ("arm64: dts: rockchip: add rk3588 thermal sensor")
+Cc: stable@vger.kernel.org
+Signed-off-by: Alexander Shiyan <eagle.alexander923@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> +	{ .tmds = 27000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 28320000, .n_32k = 4096, .n_44k1 = 5586, .n_48k = 6144, },
-> +	{ .tmds = 30240000, .n_32k = 4096, .n_44k1 = 5642, .n_48k = 6144, },
-> +	{ .tmds = 31500000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> +	{ .tmds = 32000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> +	{ .tmds = 33750000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 36000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 40000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> +	{ .tmds = 49500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 50000000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> +	{ .tmds = 54000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 65000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 68250000, .n_32k = 4096, .n_44k1 = 5376, .n_48k = 6144, },
-> +	{ .tmds = 71000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 72000000, .n_32k = 4096, .n_44k1 = 5635, .n_48k = 6144, },
-> +	{ .tmds = 73250000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 74250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 75000000, .n_32k = 4096, .n_44k1 = 5880, .n_48k = 6144, },
-> +	{ .tmds = 78750000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> +	{ .tmds = 78800000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> +	{ .tmds = 79500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
-> +	{ .tmds = 83500000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 85500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 88750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 97750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
-> +	{ .tmds = 101000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> +	{ .tmds = 106500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
-> +	{ .tmds = 108000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +	{ .tmds = 115500000, .n_32k = 4096, .n_44k1 = 5712, .n_48k = 6144, },
-> +	{ .tmds = 119000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
-> +	{ .tmds = 135000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 146250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> +	{ .tmds = 148500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> +	{ .tmds = 154000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
-> +	{ .tmds = 162000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> +
-> +	/* For 297 MHz+ HDMI spec have some other rule for setting N */
-> +	{ .tmds = 297000000, .n_32k = 3073, .n_44k1 = 4704, .n_48k = 5120, },
-> +	{ .tmds = 594000000, .n_32k = 3073, .n_44k1 = 9408, .n_48k = 10240, },
-> +
-> +	/* End of table */
-> +	{ .tmds = 0,         .n_32k = 0,    .n_44k1 = 0,    .n_48k = 0, },
-> +};
-> +
->  struct dw_hdmi_qp_i2c {
->  	struct i2c_adapter	adap;
->  
-> @@ -83,6 +143,326 @@ static void dw_hdmi_qp_mod(struct dw_hdmi_qp *hdmi, unsigned int data,
->  	regmap_update_bits(hdmi->regm, reg, mask, data);
->  }
->  
-> +static struct dw_hdmi_qp *dw_hdmi_qp_from_bridge(struct drm_bridge *bridge)
-> +{
-> +	struct dw_hdmi_qp *hdmi = container_of(bridge, struct dw_hdmi_qp, bridge);
-> +
-> +	return hdmi;
-
-Just `return container_of(bridge, struct dw_hdmi_qp, bridge);`
-
-> +}
-> +
-
-[...]
-
-> +
-> +static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
-> +			    struct drm_bridge *bridge)
-> +{
-> +	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
-> +
-> +	if (connector->status == connector_status_connected)
-> +		dw_hdmi_qp_mod(hdmi, 0, AVP_DATAPATH_PACKET_AUDIO_SWDISABLE, GLOBAL_SWDISABLE);
-> +
-> +	return 0;
-> +}
-> +
-> +static int dw_hdmi_qp_audio_prepare(struct drm_connector *connector,
-> +			     struct drm_bridge *bridge,
-> +			     struct hdmi_codec_daifmt *fmt,
-> +			     struct hdmi_codec_params *hparms)
-> +{
-> +	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
-> +	struct drm_connector_state *conn_state =
-> +		drm_atomic_helper_connector_duplicate_state(connector);
-> +	bool ref2stream = false;
-> +	unsigned long long tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-> +
-> +	drm_atomic_helper_connector_destroy_state(connector, conn_state);
-
-This looks suspicious. I'd suggest storing tmds_char_rate to struct
-dw_hdmi_qp in .atomic_commit instead of playing with the state.
-
-> +
-> +	if (connector->status != connector_status_connected) {
-> +		dev_dbg(hdmi->dev, "connector status is not connected\n");
-> +		return 0;
-> +	}
-> +
-> +	if (fmt->bit_clk_provider | fmt->frame_clk_provider) {
-> +		dev_err(hdmi->dev, "unsupported clock settings\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (fmt->bit_fmt == SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE)
-> +		ref2stream = true;
-> +
-> +	dw_hdmi_qp_set_audio_interface(hdmi, fmt, hparms);
-> +	dw_hdmi_qp_set_sample_rate(hdmi, tmds_char_rate, hparms->sample_rate);
-> +	dw_hdmi_qp_set_channel_status(hdmi, hparms->iec.status, ref2stream);
-> +	drm_atomic_helper_connector_hdmi_update_audio_infoframe(connector, &hparms->cea);
-> +
-> +	return 0;
-> +}
-> +
-> +static void dw_hdmi_qp_audio_disable(struct drm_connector *connector,
-> +			      struct drm_bridge *bridge)
-> +{
-> +	struct dw_hdmi_qp *hdmi = container_of(bridge, struct dw_hdmi_qp, bridge);
-> +
-> +	if (connector->status != connector_status_connected) {
-> +		dev_dbg(hdmi->dev, "connector status is not connected\n");
-> +		return;
-> +	}
-
-Will audio stream be disabled on disconnect?
-
-And anyway the InfoFrame should be cleared by a call to
-drm_atomic_helper_connector_hdmi_clear_audio_infoframe().
-
-> +
-> +	/*
-> +	 * Keep ACR, AUDI, AUDS packet always on to make SINK device
-> +	 * active for better compatibility and user experience.
-> +	 *
-> +	 * This also fix POP sound on some SINK devices which wakeup
-> +	 * from suspend to active.
-> +	 */
-> +	dw_hdmi_qp_mod(hdmi, I2S_BPCUV_RCV_DIS, I2S_BPCUV_RCV_MSK,
-> +		  AUDIO_INTERFACE_CONFIG0);
-> +	dw_hdmi_qp_mod(hdmi, AUDPKT_PBIT_FORCE_EN | AUDPKT_CHSTATUS_OVR_EN,
-> +		  AUDPKT_PBIT_FORCE_EN_MASK | AUDPKT_CHSTATUS_OVR_EN_MASK,
-> +		  AUDPKT_CONTROL0);
-> +
-> +	dw_hdmi_qp_mod(hdmi, AVP_DATAPATH_PACKET_AUDIO_SWDISABLE,
-> +		  AVP_DATAPATH_PACKET_AUDIO_SWDISABLE, GLOBAL_SWDISABLE);
-> +}
-> +
->  static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
->  			       unsigned char *buf, unsigned int length)
->  {
-> @@ -361,6 +741,40 @@ static int dw_hdmi_qp_config_drm_infoframe(struct dw_hdmi_qp *hdmi,
->  	return 0;
->  }
->  
-> +static int dw_hdmi_qp_config_audio_infoframe(struct dw_hdmi_qp *hdmi,
-> +					     const u8 *buffer, size_t len)
-> +{
-> +	/*
-> +	 * AUDI_CONTENTS0: { RSV, HB2, HB1, RSV }
-> +	 * AUDI_CONTENTS1: { PB3, PB2, PB1, PB0 }
-> +	 * AUDI_CONTENTS2: { PB7, PB6, PB5, PB4 }
-> +	 *
-> +	 * PB0: CheckSum
-> +	 * PB1: | CT3    | CT2  | CT1  | CT0  | F13  | CC2 | CC1 | CC0 |
-> +	 * PB2: | F27    | F26  | F25  | SF2  | SF1  | SF0 | SS1 | SS0 |
-> +	 * PB3: | F37    | F36  | F35  | F34  | F33  | F32 | F31 | F30 |
-> +	 * PB4: | CA7    | CA6  | CA5  | CA4  | CA3  | CA2 | CA1 | CA0 |
-> +	 * PB5: | DM_INH | LSV3 | LSV2 | LSV1 | LSV0 | F52 | F51 | F50 |
-> +	 * PB6~PB10: Reserved
-> +	 *
-> +	 * AUDI_CONTENTS0 default value defined by HDMI specification,
-> +	 * and shall only be changed for debug purposes.
-> +	 * So, we only configure payload byte from PB0~PB7(2 word total).
-> +	 */
-> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &buffer[3], 2);
-
-Please also update PKT_AUDI_CONTENTS0, in case it gets damaged somehow.
-
-> +
-> +	/* Enable ACR, AUDI, AMD */
-> +	dw_hdmi_qp_mod(hdmi,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> +		  PKTSCHED_PKT_EN);
-> +
-> +	/* Enable AUDS */
-> +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AUDS_TX_EN, PKTSCHED_AUDS_TX_EN, PKTSCHED_PKT_EN);
-> +
-> +	return 0;
-> +}
-> +
->  static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
->  					    struct drm_bridge_state *old_state)
->  {
-> @@ -477,6 +891,9 @@ static int dw_hdmi_qp_bridge_write_infoframe(struct drm_bridge *bridge,
->  	case HDMI_INFOFRAME_TYPE_DRM:
->  		return dw_hdmi_qp_config_drm_infoframe(hdmi, buffer, len);
->  
-> +	case HDMI_INFOFRAME_TYPE_AUDIO:
-> +		return dw_hdmi_qp_config_audio_infoframe(hdmi, buffer, len);
-> +
->  	default:
->  		dev_dbg(hdmi->dev, "Unsupported infoframe type %x\n", type);
->  		return 0;
-> @@ -494,6 +911,9 @@ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
->  	.hdmi_tmds_char_rate_valid = dw_hdmi_qp_bridge_tmds_char_rate_valid,
->  	.hdmi_clear_infoframe = dw_hdmi_qp_bridge_clear_infoframe,
->  	.hdmi_write_infoframe = dw_hdmi_qp_bridge_write_infoframe,
-> +	.hdmi_audio_startup = dw_hdmi_qp_audio_enable,
-> +	.hdmi_audio_shutdown = dw_hdmi_qp_audio_disable,
-> +	.hdmi_audio_prepare = dw_hdmi_qp_audio_prepare,
->  };
->  
->  static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
-> @@ -603,6 +1023,10 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
->  	if (IS_ERR(hdmi->bridge.ddc))
->  		return ERR_CAST(hdmi->bridge.ddc);
->  
-> +	hdmi->bridge.hdmi_audio_max_i2s_playback_channels = 8;
-> +	hdmi->bridge.hdmi_audio_dev = dev;
-> +	hdmi->bridge.hdmi_audio_dai_port = 1;
-> +
->  	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
->  	if (ret)
->  		return ERR_PTR(ret);
-> -- 
-> 2.48.1
-> 
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index a337f3fb8377..f141065eb69d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2667,9 +2667,9 @@ tsadc: tsadc@fec00000 {
+ 		rockchip,hw-tshut-temp = <120000>;
+ 		rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
+ 		rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
+-		pinctrl-0 = <&tsadc_gpio_func>;
+-		pinctrl-1 = <&tsadc_shut>;
+-		pinctrl-names = "gpio", "otpout";
++		pinctrl-0 = <&tsadc_shut>;
++		pinctrl-1 = <&tsadc_gpio_func>;
++		pinctrl-names = "default", "sleep";
+ 		#thermal-sensor-cells = <1>;
+ 		status = "disabled";
+ 	};
 -- 
-With best wishes
-Dmitry
+2.39.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
