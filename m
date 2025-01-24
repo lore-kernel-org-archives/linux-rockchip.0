@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3BAC02181
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 06:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111D7C02181
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 06:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CBb81nM9dPC11eOgGkyyaxYXvApBevtgQ89aRFaqLSU=; b=OpDtgbA67t4tGp
-	CpXv+/2M56nH3hUmSrPlSiv89Sztn4gu/CwWEpghkTRoZRBqy+U9Vmg41yo72s86QOusF4xr60BKd
-	g39ZIJt6u71wrNG4iBqpnCkTD0+EL4WMqOUjMz2SSiQ+JX3xKIC94GF343OCaexxkuJNNUquLlIo4
-	I+U6qGjmr1H64VsMxYSc5WZBTPsjjFhCAdc7CAtb2oVZyU4hffO4MhpGdsOuPEKUkroJryMTyD0MQ
-	E6oY9HVV6LX1vtrd9MUcTtoWJfaApGfLjJzLh9sA2w0DHUfA91JmS2M4Uc8UONd6MOr8+xgnK2V4Q
-	dPwBij8DGOmMeYBff/qA==;
+	List-Owner; bh=twNXtInZE2WMQHPABzSoziyoMsHLzcJzJRDShwMUyrk=; b=cHlJy6ROAP9jf+
+	3TohdRsn+Uu61OYfG4t7s90cK21IeyWLT9bJtUGW4ikXxyQuCxZd4VPv1EEVS84MYrNFvbFL8RR2z
+	6W5kGd5IbyVAweJuCWc+U9qeNcTpIQtvDwXjB2JtEF+jClrsqgLNTLxID3RDxmtmy7NyQmQW+nkSi
+	3yZkxKq8qRhE76ky2tMosqkWK64ID/WSK+mMRelHoPdKyivLix5KVUWwOdT+zUhvDff7sXTIW5xqd
+	hM+QUhbLd+Q3VgHx8CGazvStV0YQVlh7L/s+bVYBNsrD3XWmlMX213RKldA5dYHro6Y4bPzL5d4jA
+	9PTN8OBFD+JJC6BTtnVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbDTz-0000000E295-1yki;
-	Fri, 24 Jan 2025 06:47:59 +0000
-Received: from mail-m49251.qiye.163.com ([45.254.49.251])
+	id 1tbDVL-0000000E2WO-2Tej;
+	Fri, 24 Jan 2025 06:49:23 +0000
+Received: from mail-m49248.qiye.163.com ([45.254.49.248])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbDSc-0000000E1hG-0PhF;
+	id 1tbDSc-0000000E1hH-0osQ;
 	Fri, 24 Jan 2025 06:46:36 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 994456f1;
-	Fri, 24 Jan 2025 14:46:25 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 994456e9;
+	Fri, 24 Jan 2025 14:46:24 +0800 (GMT+08:00)
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org,
@@ -44,29 +44,28 @@ Cc: linux-clk@vger.kernel.org,
 	huangtao@rock-chips.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v1 2/3] Revert "arm64: dts: rockchip: Increase VOP clk rate on RK3328"
-Date: Fri, 24 Jan 2025 14:46:18 +0800
-Message-Id: <20250124064619.13893-3-zhangqing@rock-chips.com>
+Subject: [PATCH v1 1/3] Revert "clk: rockchip: Set parent rate for DCLK_VOP clock on RK3228"
+Date: Fri, 24 Jan 2025 14:46:17 +0800
+Message-Id: <20250124064619.13893-2-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20250124064619.13893-1-zhangqing@rock-chips.com>
 References: <20250124064619.13893-1-zhangqing@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGklJQlZNS0wfSksZGE8ZHxlWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGklPSVYZQ0NCTR8YGk9KHRlWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a94970fd93d03a3kunm994456f1
+X-HM-Tid: 0a94970fd33703a3kunm994456e9
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PiI6LDo4DjIVPCENERIiDB8B
-	LUsKCj1VSlVKTEhMTEtKSkNMSkpDVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUJDSzcG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OhA6LCo6OjILNCEPLxIjDCk*
+	OFEaCUlVSlVKTEhMTEtKSkNOTEhPVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpJSUM3Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=M/D6kNNGvDab4mQZLgZ+1qvY209zaiG70aPm2+DyB9v13jgL7GYT1giZyxNgxkSYMCIYnZTZciSf/ITmhRURDVPp3SJotGsa8gJFkqCEJUmadhyPCtaZiuq7vKSDxTWaudMQlc7kK3L7sQ9u7hSDXLvnVVuznN5FTX6xYGYhyjg=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=4ioNYi1LZ2VVOSFcqdaBC9gwtOsuOjZpbh3YO049b9E=;
+	b=Q3AHsp8ZPf0u4T67+2WEdLl0ZeMtCIFJmcVsIVcJS6//9sW7npkSYDvORxz0jdb79/kL8wbrY5vEGCqM6kNKBgicq8R50+ZOHjxOC5GfnY6pIMoNwN5zk82tar3rK3px/X6iG3zGKF0yB3C6dt54IIdrZ2VMHMZN5O8CFK4AErM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=/anGkf2igP9SKOSzCFL/ChT8CaIIzLztcOi6KLOhh+8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250123_224634_609222_AF179044 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250123_224634_608779_4D17D25C 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,32 +83,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 0f2ddb128fa20f8441d903285632f2c69e90fae1.
+This reverts commit 1d34b9757523c1ad547bd6d040381f62d74a3189.
 
-Before changing the PLL frequency, in order to avoid overclocking the
-child clock, set the child clock to a large div first, and then set the
-CLK as required after the PLL is set.
+RK3228 Only GPLL and CPLL, GPLL is a common clock, does not allow
+dclk_vop to change its frequency, CPLL is used by GMAC,
+if dclk_vop use CLK_SET_RATE_PARENT and CLK_SET_RATE_NO_REPARENT flags will
+affect the GMAC function.
+
+If the client application does not use GMAC and CPLL is free, make this
+change on the local branch.
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk-rk3228.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 7d992c3c01ce..f3ef8cbfbdae 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -852,8 +852,8 @@
- 			<0>, <24000000>,
- 			<24000000>, <24000000>,
- 			<15000000>, <15000000>,
--			<300000000>, <100000000>,
--			<400000000>, <100000000>,
-+			<100000000>, <100000000>,
-+			<100000000>, <100000000>,
- 			<50000000>, <100000000>,
- 			<100000000>, <100000000>,
- 			<50000000>, <50000000>,
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index ed602c27b624..9c0284607766 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -409,7 +409,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
+ 			RK2928_CLKSEL_CON(29), 0, 3, DFLAGS),
+ 	DIV(0, "sclk_vop_pre", "sclk_vop_src", 0,
+ 			RK2928_CLKSEL_CON(27), 8, 8, DFLAGS),
+-	MUX(DCLK_VOP, "dclk_vop", mux_dclk_vop_p, CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT,
++	MUX(DCLK_VOP, "dclk_vop", mux_dclk_vop_p, 0,
+ 			RK2928_CLKSEL_CON(27), 1, 1, MFLAGS),
+ 
+ 	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
 -- 
 2.17.1
 
