@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45CE0C02181
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 08:28:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F27D8C02181
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 08:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b/vLhRpMfwJRvf50wuF62gYHZd4uG8ofs4PCA0jGAJk=; b=XEKagg6MFQ1OHQAqUlU3u3zjxh
-	1DZbNdsYfBPN0zOe0WLRsAau2C1/yeM1di8UOOdRgW1fv2f60Jd3yJa7vdZI9Yh/OScs1cGfIobfs
-	fFAVjPJtZzaRzzxEoCTZtZAtkWv+aOuCOHvZYIbmOqFMbuooWM4zofsTt1s9qW0QeE1M+xn3P7boC
-	zaqxTmyRLV5bTVhA2pL9EkgzFbePs3O28JZN1cQF0qINutYTKwr+KtkO/hRccWTn+ZYigRyJeFJ/x
-	A1+mRGo/numPIlcKwiV4V0wYr/QSX+G2xasUQA82pLtiy95HXCxRWSmkYCE/bqCgG61t454NOBtDB
-	cHIapeMQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3VpGx4OJefbIHsl+Dka9WlVCyVo6mg/7/MzC/0xiy2k=; b=NxuUDOZzCmcg1Z
+	wbpE+dcY02tWH4LHDC6109nGGR1XNHseciMIqpZ8xdCbQ2yOgu5eAi4g3H23EccOfcZ8enWr9Nrtj
+	LZdzAPL5nM9SbBJb26ITjcWDKSmEcLloCYlm6H7YDWUX9uEAUyvh2/52/JEo00dFroj2KqyMHmqqR
+	Qbq7CpxmHk3LQvXsEawJ6vM3Kmna76PXzdlrhjHHQthLgXNBhRAfGUCwfGURePyHIzTGd3T8c2P7W
+	lWyNSCFWFfPppeb5sjbQ06GBoieOXIBe/I9ZMTpCLsfXfa4QsGQo10QX4O3KQpxnmrI1tfyfyW4b0
+	ArNZFNUKyXg1mPvZCDpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbF2v-0000000EFNA-3Irg;
-	Fri, 24 Jan 2025 08:28:09 +0000
-Received: from mail-m3282.qiye.163.com ([220.197.32.82])
+	id 1tbF8i-0000000EGIl-3qRY;
+	Fri, 24 Jan 2025 08:34:08 +0000
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbF1k-0000000EEyB-1e7r;
-	Fri, 24 Jan 2025 08:26:58 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 996fdf6b;
-	Fri, 24 Jan 2025 16:26:49 +0800 (GMT+08:00)
-Message-ID: <c1718efc-85de-4356-aa15-2296a0780b2f@rock-chips.com>
-Date: Fri, 24 Jan 2025 16:26:48 +0800
+	id 1tbF8g-0000000EGII-19Yo;
+	Fri, 24 Jan 2025 08:34:07 +0000
+Received: by mail-qt1-x82d.google.com with SMTP id d75a77b69052e-46c7855df10so29566931cf.3;
+        Fri, 24 Jan 2025 00:34:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737707644; x=1738312444; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GZ0nIwGZcKWC9CI9oPaF+selKdSvdGUPn/XTMbdZTRM=;
+        b=JEjQ829sfy4miYbrJYRtS3hvh9Q5O781bVxpSRWoz+RxdEKQ6+ukC4Z9AjVumKccu1
+         dmP5UCW8ZT2WSqStTtscVrTfH7dxDVwXShPamaFM5YOFHl3rzydzVtnFuGlYAzvwgZFH
+         69XNMCVJ6tXkvSnKcaElLsFkY5JYtZCdNg8wEpgCsj03G+lKgJR2FyUb11uTb8DRi/Aa
+         1CZRWxyPQIJoM6CHkJ/m87pmXuo0+yU3neV78eM2ZwZxPVsH/1DkzBgSPpAY+gxyXPSR
+         lJTa8i0x24SP0qihdK7iI5mbk8SZWEfvQrsEcIkQGs/TYrPDUfA3UDkPSeeiOmRCo+BY
+         GmkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737707644; x=1738312444;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GZ0nIwGZcKWC9CI9oPaF+selKdSvdGUPn/XTMbdZTRM=;
+        b=BcE0pj8/ENEbRCg8FYpzTIF0dk63O3fAXtlQLdss/3k7xdhq8R7JlBWkXCZnKwThuD
+         gxVLjxfYGrzjiw+25y8BZ+FBp25+22nxAhi8BKhlPSL6v7ZKCM0jNIhDzN5NSL1XrTTV
+         dUxueQijxLrBPqa1nLgmpogHrHq0x0VSMRkHP+LFXcF9CizRJVt1M+sgIxkX0xc5rCGR
+         hzu0aHWZkOSpGK/Bd0Cx++Q/sropxP7PSUnyua5+bGryrL/YvqzmTEaLIYJLMMRsoFaw
+         xRuWUBqOtEW4IWj9dkRAcCl9ghmzgs6SBXCEHwyFjMcMWMUvWX/PStib5Imh07ASZVu2
+         74aw==
+X-Forwarded-Encrypted: i=1; AJvYcCVDPPU8bYcyONBoMcZPAIZAGN7WnddQGdJzOM6LRkU1RTu5PccWJY65c/YE8vbBSFfDiGytZu0m+Hxj/icSpWF6@lists.infradead.org
+X-Gm-Message-State: AOJu0YxMt0HIxeL+g9NIm644eM5vhQCp5sJEfutK6AsC/K2ZEI3EYwij
+	BOoHlTzc7PxtnyNwQdBstnryGXgQAAOExarPvjuVdFHz6XmCFxrDPVguFVk2Va4MiT9f2Kgs3Qg
+	OAQsPuHzYvyfrmHFHCO3zIs549Jo=
+X-Gm-Gg: ASbGnctvMR4rB/Y64XrAPz/9MmlMsa/SMIdVl95WLhGWn8aoLT7ZgScKogAC5nA73h8
+	F84COSahkep62OmDf1dnrSMstvZoRexrP8xf5uLw3HkeYGdxwFuXiOB2nJAr7d46DNhNAkmX9CI
+	cNEY0nhZ6heNmctEpeqsw=
+X-Google-Smtp-Source: AGHT+IFl2RBQvd/ETvziDYSlPrmT7mc177y845BPyOUXEov808xJd8TLaJbwsWABklQa7ECj77cxjS4eIL3qMRRl/jY=
+X-Received: by 2002:ac8:7e90:0:b0:46a:1932:b07f with SMTP id
+ d75a77b69052e-46e12b94a7emr491045021cf.39.1737707644511; Fri, 24 Jan 2025
+ 00:34:04 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 06/14] drm/bridge: analogix_dp: support to get
- &analogix_dp_device.plat_data and &analogix_dp_device.aux
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-7-damon.ding@rock-chips.com>
- <y4yzgkvcmvmphviuoroijaaotd2zdworbs5tfhdxh74kchirk6@dgoqwoksckiz>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <y4yzgkvcmvmphviuoroijaaotd2zdworbs5tfhdxh74kchirk6@dgoqwoksckiz>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklMHlZOSE9DSUxNGh9DQkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a94976bc3a103a3kunm996fdf6b
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MU06Mzo4OTIXHiFLMDBKCA82
-	F1YwCxZVSlVKTEhMTEtMSUpKT09CVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJQ0pLNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=OYTYvei2Jt0VQn6+xbTs8MyEcoB25VtrUR7lof7WSmjRXwxJEUCpdeds8/R8FPtylnCqhMnxEYfnwWe8lhF4tAhafN/OQ4GNnzOSdhxEy1abwkDbtmF4hEXF63QkK1mmAn5qGwbNW9EOHOAF24wqZRsOfWhLaNR2Zq2sBlFtpoM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=/8oAL6qTbQWJkj8r9VXN/YNw8cpkGC6GOUpg2XwzQs8=;
-	h=date:mime-version:subject:message-id:from;
+References: <20250124052611.3705-1-eagle.alexander923@gmail.com>
+In-Reply-To: <20250124052611.3705-1-eagle.alexander923@gmail.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Fri, 24 Jan 2025 12:33:55 +0400
+X-Gm-Features: AWEUYZmQaM4V6YVDY2n2Q6kv8IFnTIzybv59I_cdQvKs7jFSzvTBO42nz64fyqA
+Message-ID: <CABjd4YwA8P9LVuDviO6xydkHpuuOY7XT0pk1oa+FDqOo=uZN4A@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix broken tsadc pinctrl binding
+ for rk3588
+To: Alexander Shiyan <eagle.alexander923@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_002656_990026_6EF83DBA 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20250124_003406_319880_0C118726 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,91 +87,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 2025/1/23 19:19, Dmitry Baryshkov wrote:
-> On Thu, Jan 23, 2025 at 06:07:39PM +0800, Damon Ding wrote:
->> Add two new functions: one to find &analogix_dp_device.plat_data via
->> &drm_dp_aux, and the other to get &analogix_dp_device.aux. Both of them
->> serve for the function of getting panel from DP AUX bus, which is why
->> they are included in a single commit.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
->> ---
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 14 ++++++++++++++
->>   include/drm/bridge/analogix_dp.h                   |  4 ++++
->>   2 files changed, 18 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index b05f5b9f5258..8251adfce2f9 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -1794,6 +1794,20 @@ int analogix_dp_stop_crc(struct drm_connector *connector)
->>   }
->>   EXPORT_SYMBOL_GPL(analogix_dp_stop_crc);
->>   
->> +struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux)
->> +{
->> +	struct analogix_dp_device *dp = to_dp(aux);
->> +
->> +	return dp->plat_data;
->> +}
->> +EXPORT_SYMBOL_GPL(analogix_dp_aux_to_plat_data);
->> +
->> +struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
->> +{
->> +	return &dp->aux;
->> +}
->> +EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
->> +
->>   MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
->>   MODULE_DESCRIPTION("Analogix DP Core Driver");
->>   MODULE_LICENSE("GPL v2");
->> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
->> index 6002c5666031..1b119b547988 100644
->> --- a/include/drm/bridge/analogix_dp.h
->> +++ b/include/drm/bridge/analogix_dp.h
->> @@ -7,6 +7,7 @@
->>   #ifndef _ANALOGIX_DP_H_
->>   #define _ANALOGIX_DP_H_
->>   
->> +#include <drm/display/drm_dp_aux_bus.h>
-> 
-> Nit: it should be enough to just forward-declare struct drm_dp_aux
-> instead.
-> 
-
-I will move the header file to the driver of Rockchip Analogix DP and 
-just use the forward-declare here in the next version.
-
->>   #include <drm/drm_crtc.h>
->>   
->>   struct analogix_dp_device;
->> @@ -48,4 +49,7 @@ void analogix_dp_unbind(struct analogix_dp_device *dp);
->>   int analogix_dp_start_crc(struct drm_connector *connector);
->>   int analogix_dp_stop_crc(struct drm_connector *connector);
->>   
->> +struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
->> +struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
->> +
->>   #endif /* _ANALOGIX_DP_H_ */
->> -- 
->> 2.34.1
->>
-> 
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQWxleGFuZGVyLAoKT24gRnJpLCBKYW4gMjQsIDIwMjUgYXQgOToyNuKAr0FNIEFsZXhhbmRl
+ciBTaGl5YW4KPGVhZ2xlLmFsZXhhbmRlcjkyM0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4gVGhlcmUg
+aXMgbm8gcGluY3RybCAiZ3BpbyIgYW5kICJvdHBvdXQiIChwcm9iYWJseSBkZXNpZ25lZCBhcyAi
+b3V0cHV0IikKPiBoYW5kbGluZyBpbiB0aGUgdHNhZGMgZHJpdmVyLgo+IExldCdzIHVzZSBwcm9w
+ZXIgYmluZGluZyAiZGVmYXVsdCIgYW5kICJzbGVlcCIuCgpUaGlzIGxvb2tzIHJlYXNvbmFibGUs
+IGhvd2V2ZXIgSSd2ZSB0cmllZCBpdCBvbiBteSBSYWR4YSBSb2NrIDVDIGFuZAp0aGUgZHJpdmVy
+IHN0aWxsIGRvZXNuJ3QgY2xhaW0gR1BJTzAgUktfUEExIGV2ZW4gd2l0aCB0aGlzIGNoYW5nZS4g
+QXMKYSByZXN1bHQsIGEgc2ltdWxhdGVkIHRoZXJtYWwgcnVuYXdheSBjb25kaXRpb24gKEkndmUg
+Y2hhbmdlZCB0aGUKdHNodXQgdGVtcGVyYXR1cmUgdG8gNjUwMDAgYW5kIHRzaHV0IG1vZGUgdG8g
+MSkgZG9lc24ndCB0cmlnZ2VyIGEgUE1JQwpyZXNldCwgZXZlbiB0aG91Z2ggYSBkaXJlY3QgYGdw
+aW9zZXQgMCAxPTBgIGRvZXMuCgpBcmUgYW55IGFkZGl0aW9uYWwgY2hhbmdlcyBuZWVkZWQgdG8g
+dGhlIGRyaXZlciBpdHNlbGY/CgpCZXN0IHJlZ2FyZHMsCkFsZXhleQoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
