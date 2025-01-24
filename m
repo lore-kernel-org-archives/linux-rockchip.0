@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77957C0218B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 10:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7FF2C02181
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 10:23:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U+6nU847ZIl4OBDpIDEyFSxZVmmsHnpaqZpKWZzMa1c=; b=RahMKH9fnbwHyvJe6l+dFz4bPD
-	Fw6WkjUMul7kHK629YoAg0oL2FLY3bvVmHlVLyUxHld1yBY6q0JJUDEVWMvyniEIvZa0Vap64oXuf
-	LiyXzFWR7Ns6HwYoNZtn48OGmA0OQLg2J7zq0GRaxtSgI7XUxFyuPP/4/32GbOhU967XM+RTIZU7m
-	MWm1I6qOcoVdW417ygI/J6+sFGZgzK40sEHsEnakTpU4RnUIC057a+SVgmPV1BZvuAzyz+wChCbmP
-	KfxEDgpxj+yY7sIcL0zlKyCJMb6rOpHpH98s9nMSAfdNbPYwpUeSYWU+FAaDq8MScFUHSbqbg3q5T
-	s3IBbLzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=50h7sdYffaKfhljC8tuH8DcokhkMFztwEy3Q4nnQKI8=; b=c8dpukxRptOkfq
+	ztRS3wncmMXYl8MNzgpuClWZmR7DgDOznb9dmLCp3PjJcwFssHvoo2HMxr2isL0UpdOS087PCXPVG
+	xKWF04AeGat+UddYGO0fi4xO9xiDMsAPvi0l0YZTkFR74braeGEVKpkUDxfUgG8N1LHUbtY9AUMLw
+	CnkvUyPYhi4hqQKhpVcfbfVSouoTxIpMiumHHSBbmaHCEARjZ79kwIIDQLKmPb2oKhZxEvSro4U/F
+	kbafzuf16enna/cU7lCWhG869vCaMpS3FNXz1ibg9f3L+acSla8ZDMQvAHE5affDFpwkbPgzt7w4w
+	X7FY+gD6VBiveyCIR4Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGnk-0000000ERrh-0pA3;
-	Fri, 24 Jan 2025 10:20:36 +0000
-Received: from mail-m1973180.qiye.163.com ([220.197.31.80])
+	id 1tbGqQ-0000000ES6B-3ShW;
+	Fri, 24 Jan 2025 10:23:22 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGng-0000000ERqB-2jUt;
-	Fri, 24 Jan 2025 10:20:34 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 999d7bbb;
-	Fri, 24 Jan 2025 18:20:21 +0800 (GMT+08:00)
-Message-ID: <9199671c-f647-4c39-8618-f2d7fa28f081@rock-chips.com>
-Date: Fri, 24 Jan 2025 18:20:21 +0800
+	id 1tbGoF-0000000ERwa-23eF;
+	Fri, 24 Jan 2025 10:21:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 00B4BA4134C;
+	Fri, 24 Jan 2025 10:19:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71B10C4CED2;
+	Fri, 24 Jan 2025 10:21:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737714065;
+	bh=1rxi/IQFlqsCoGaYN4R4JXonbt8cWgjyvBPnXzr8SOc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=c9B89+1HAsf6XleKtnR0iRfZeUjw82iVnl2pDygJDF/EbvlmUJG5n2gdLbIlZPAET
+	 PYjnl+1k1X9jNR+/mC9b+3CGhXWb3ptRjjZApW1F/KNbZ7J8pCXsbRN3DvVDtKmldm
+	 QxjjIb9zfEU21WNePhsnAsANpXS9/K7luGGE7G0OTqaApBVwVBYkVSsusMctfOimPh
+	 PsD+0DzTPfcelGqZeG4VRKw+HkM784WmpVT7g+BEJ3VR7XoTswYwITGRiJdetmYfgu
+	 XmCOD+plmtdyCzuYmYcvMgBQgFRJ9lak0n1MD/QjImM3bRXgdSZnTzD8W5/QDa1Iju
+	 z/uqPD1EpEv+Q==
+Date: Fri, 24 Jan 2025 11:21:00 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: Quentin Schulz <quentin.schulz@cherry.de>,
+	Quentin Schulz <foss+kernel@0leil.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Jagan Teki <jagan@edgeble.ai>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/3] arm64: dts: rockchip: minimal support for Pre-ICT
+ tester adapter for RK3588 Jaguar + add overlay tests
+Message-ID: <Z5NpjAUFK_cMIWLj@ryzen>
+References: <20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de>
+ <6dd64754-fe72-4288-9724-b3cdaf193b3b@cherry.de>
+ <Z5EY6uMmDCgfOzGO@ryzen>
+ <3324197.aV6nBDHxoP@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 09/14] dt-bindings: display: rockchip: analogix-dp: Add
- support for RK3588
-To: "Rob Herring (Arm)" <robh@kernel.org>
-References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-10-damon.ding@rock-chips.com>
- <173763136187.3345079.11905359473404124812.robh@kernel.org>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <173763136187.3345079.11905359473404124812.robh@kernel.org>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk8dTFZLShpKTRgdGkhMTExWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	5VSktLVUpCS0tZBg++
-X-HM-Tid: 0a9497d3b59d03a3kunm999d7bbb
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NBg6Lyo5AzIKCho4Az0aKBw4
-	MC8KCh1VSlVKTEhMTEpPS0lIT01DVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFIS0lCNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=R9P1b2tY3AWKf5ZQ/2+nyS6ZvqpAcjzV+V0ScfM8eTSa/i9Jm7OY1vqqONpq6+DgOfkt6gctdO2lSxQme3D9eMmucV/8kGVoor85I9KlWdAqTsNwPPTY2EezB9MMB0cHYdCBnaRleqMhTFQriClr29J69Y0S/jfwE5Fq1TFS1S0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=u0BM50TZK/HIu82bsqWrUkagwGNI0D2aUJbSTJdHkTw=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <3324197.aV6nBDHxoP@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_022032_846093_4D82DAF9 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20250124_022107_659729_262BA7AF 
+X-CRM114-Status: GOOD (  34.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,89 +76,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, hjc@rock-chips.com, dmitry.baryshkov@linaro.org, linux-phy@lists.infradead.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-On 2025/1/23 19:22, Rob Herring (Arm) wrote:
-> 
-> On Thu, 23 Jan 2025 18:07:42 +0800, Damon Ding wrote:
->> Compared with RK3288/RK3399, the HBR2 link rate support is the main
->> improvement of RK3588 eDP TX controller, and there are also two
->> independent eDP display interfaces on RK3588 Soc.
->>
->> The newly added 'apb' reset is to ensure the APB bus of eDP controller
->> works well on the RK3588 SoC.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v2:
->> - Add the main defferences of the RK3588 eDP and the previous versions
->>    in commit message
->>
->> Changes in v3:
->> - Expand the property clock-names, resets and reset-names
->>
->> Changes in v4:
->> - Remove 'spdif' clock which added in v3
->> - Add the comment of newly added 'apb' reset in commit message
->>
->> Changes in v5:
->> - Put the differences between RK3288/RK3399 and RK3588 into 'allOf'
->>
->> Changes in v6:
->> - Keep the widest constraints and add only RK3588 related constraints
->>    into 'allOf'
->> ---
->>   .../rockchip/rockchip,analogix-dp.yaml        | 22 ++++++++++++++++++-
->>   1 file changed, 21 insertions(+), 1 deletion(-)
->>
-> 
-> My bot found errors running 'make dt_binding_check' on your patch:
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml: properties:reset-names: 'const' should not be valid under {'enum': ['const', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'minimum', 'maximum', 'multipleOf', 'pattern']}
-> 	hint: Scalar and array keywords cannot be mixed
-> 	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml: properties:reset-names: 'const' should not be valid under {'enum': ['const', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'minimum', 'maximum', 'multipleOf', 'pattern']}
-> 	hint: Scalar and array keywords cannot be mixed
-> 	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250123100747.1841357-10-damon.ding@rock-chips.com
-> 
-> The base for the series is generally the latest rc1. A different dependency
-> should be noted in *this* patch.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your schema.
-> 
-> 
-> 
-
-I have found these errors using dt_binding_check and will fix them in 
-the next version.
-
-Best regards
-Damon
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBKYW4gMjMsIDIwMjUgYXQgMDM6MTM6MDFQTSArMDEwMCwgSGVpa28gU3TDvGJuZXIg
+d3JvdGU6Cj4gQW0gTWl0dHdvY2gsIDIyLiBKYW51YXIgMjAyNSwgMTc6MTI6MjYgQ0VUIHNjaHJp
+ZWIgTmlrbGFzIENhc3NlbDoKPiA+IE9uIFdlZCwgSmFuIDIyLCAyMDI1IGF0IDA0OjM4OjE2UE0g
+KzAxMDAsIFF1ZW50aW4gU2NodWx6IHdyb3RlOgo+ID4gPiBTbyBlc3NlbnRpYWxseSwgaWYgU1BM
+X0FURl9OT19QTEFURk9STV9QQVJBTSBpcyBzZWxlY3RlZCAodGhlIGRlZmF1bHQgZm9yCj4gPiA+
+IFJLMzU2eCwgUkszNTg4LCBmb3JjZWQgb24gb24gUkszMzA4LCBlbmFibGVkIGZvciB0aGUgbWFq
+b3JpdHkgb2YgUkszMzk5Cj4gPiA+IGJvYXJkcywgZW5hYmxlZCBmb3IgYWxsIFJLMzMyOCBib2Fy
+ZHMpIHRoZSBEVCB3b24ndCBiZSBwYXNzZWQgdG8gVEYtQSBzbyBubwo+ID4gPiBpc3N1ZSBpbiB0
+ZXJtcyBvZiBzaXplIG9uIHRoYXQgc2lkZS4KPiA+ID4gSWYgaXQgaXMgbm90IHNlbGVjdGVkLCBm
+b3IgVEYtQSA8IDIuNCAocmVsZWFzZWQgMjAyMDExMTcsIDQgeWVhcnMgYWdvKSwgYQo+ID4gPiBE
+VEIgYmlnZ2VyIHRoYW4gNjRLaUIgd2lsbCBjcmFzaCBURi1BLgo+ID4gPiBJZiBpdCBpcyBub3Qg
+c2VsZWN0ZWQsIGZvciBURi1BID49IDIuNCwgYSBEVEIgYmlnZ2VyIHRoYW4gMTI4S2lCIHdpbGwg
+cmVzdWx0Cj4gPiA+IGluIFRGLUEgbm90IGJlaW5nIGFibGUgdG8gcmVhZCB0aGUgRFRCIChmb3Ig
+Um9ja2NoaXAsIHRoYXQgbWVhbnMgbm90IGJlaW5nCj4gPiA+IGFibGUgdG8gZGVyaXZlIHRoZSBV
+QVJUIHNldHRpbmdzIChjb250cm9sbGVyIGFuZCBiYXVkcmF0ZSkgdG8gdXNlLCBhbmQgd2lsbAo+
+ID4gPiB1c2UgdGhlIGNvbXBpbGUtdGltZSBkZWZhdWx0IGluc3RlYWQpLgo+ID4gCj4gPiBOb3Qg
+ZXZlcnlvbmUgaXMgdXNpbmcgYmluYXJ5IGJsb2JzIGZyb20gUm9ja2NoaXAuCj4gPiBPbiBteSBy
+b2NrNWIgKHJrMzU4OCksIEknbSBidWlsZGluZyB0aGUgYm9vdGxvYWRlciB1c2luZyBidWlsZHJv
+b3QsCj4gPiB3aGljaCBpcyB1c2luZyB1cHN0cmVhbSBUcnVzdGVkRmlybXdhcmUtQSAodjIuMTIp
+Lgo+ID4gCj4gPiAKPiA+ID4gSW4gc2hvcnQsIEkgZG9uJ3Qga25vdyB3aGVyZSB0byBnbyB3aXRo
+IHRoYXQgYWRkaXRpb25hbCBwaWVjZSBvZgo+ID4gPiBpbmZvcm1hdGlvbiwgYnV0IHRoaXMgaXMg
+YSBiaXQgYmlnZ2VyIHRoYW4gc2ltcGx5IG1vdmluZyB0aGluZ3MgYXJvdW5kIGFuZAo+ID4gPiBh
+ZGRpbmcgY29tcGlsZS10aW1lIHRlc3RzIGZvciBvdmVybGF5IGFwcGxpY2F0aW9uLgo+ID4gCj4g
+PiBUaGlzIGlzIHNpZ25pZmljYW50IGluZm9ybWF0aW9uIGluZGVlZC4KPiAKPiBJIGd1ZXNzIHRo
+ZSBxdWVzdGlvbiBpcywgY2FuIHRoaXMgaHVydCBleGlzdGluZyBkZXZpY2VzPwo+IAo+IEFzIFF1
+ZW50aW4gbWVudGlvbmVkLCB0aGlzIG9ubHkgYWZmZWN0cyBEVHMgdGhhdCBnZXQgaGFuZGVkIG92
+ZXIgZnJvbQo+IFUtQm9vdCB0byBURi1BIChhbmQgbWF5YmUgT1AtVEVFKS4KPiAKPiBTbyB0aGUg
+d2hvbGUgcmFuZ2Ugb2YgdGhpbmdzIGxvYWRpbmcgdGhlaXIgRFQgZnJvbSBleHRsaW51eC5jb25m
+IG9yCj4gd2hhdGV2ZXIgYXJlIG5vdCByZWFsbHkgYWZmZWN0ZWQuCj4gCj4gCj4gRFRzIFUtQm9v
+dCBjYW4gaGFuZCBvdmVyIGFyZSAyIHR5cGVzLAo+ICgxKSBidWlsdCBmcm9tIHdpdGhpbiB1LWJv
+b3QgYW5kCj4gKDIpIHN0b3JlZCBzb21ld2hlcmUgY2VudHJhbGx5IChTUEkgZmxhc2gpLgo+IAo+
+IAo+IENhc2UgKDEpIGlzIGFnYWluIG5vdCBhZmZlY3RlZCwgYXMgVS1Cb290IChhbmQgb3RoZXIg
+Ym9vdGxvYWRlcnMpIG1heQo+IHZlcnkgd2VsbCBzeW5jIHRoZSBEVFMgZmlsZXMsIGJ1dCBnZW5l
+cmFsbHkgbm90IHRoZSBidWlsZC1zeXN0ZW0sIHNvIGlmCj4gVS1Cb290IChvciBhbnkgb3RoZXIg
+Ym9vdGxvYWRlcikgY3JlYXRlcyBEVEJzIHdpdGggc3ltYm9scyBpcyBjb21wbGV0ZWx5Cj4gdGhl
+aXIgb3duIGNob2ljZS4KPiAKPiAKPiBBbmQgZm9yIGNhc2UgKDIpIEkgc2VlIHRoZSBtYW51ZmFj
+dHVyZXIgYmVpbmcgcmVzcG9uc2libGUuIEhhdmluZyB0aGUgRFQKPiBpbiBjZW50cmFsIHN0b3Jh
+Z2UgbWFrZXMgaXQgc29tZXdoYXQgcGFydCBvZiBhICJiaW9zIi1sZXZlbCBpbiB0aGUgaGlyYXJj
+aHkKPiBhbmQgdGhlIGdlbmVyYWwgZ3VhcmFudGVlIGlzIHRoYXQgbmV3IHNvZnR3YXJlIF93aWxs
+IHdvcmtfIHdpdGggb2xkZXIgRFRzLAo+IGJ1dCB0aGUgb3RoZXIgd2F5IGFyb3VuZCBpcyBtb3Jl
+IGEgbmljZSB0byBoYXZlIChvbGQgU1cgd2l0aCBuZXcgRFRCKS4KPiAKPiBTbyBpZiBzb21lIG1h
+bnVmYWN0dXJlciBoYXMgYSBjZW50cmFsbHkgbG9jYXRlZCBEVEIgdGhpcyBkb2VzIG5vdCBtYXR0
+ZXIKPiB1bnRpbCB0aGV5IHVwZ3JhZGUsIGFuZCB3aGVuIHRoYXQgaGFwcGVucyBJIGRvIGV4cGVj
+dCB0ZXN0aW5nIHRvIGhhcHBlbgo+IGF0IHRoZSBtYW51ZmFjdHVyZXJzIHNpZGUsIGJlZm9yZSBy
+b2xsaW5nIG91dCBhICJiaW9zIHVwZGF0ZSIKClBlcnNvbmFsbHksIEknbSBhbGwgZm9yIGxldHRp
+bmcgdGhlIGtlcm5lbCBidWlsZCB0aGUgRFRCcyB3aXRoIHN5bWJvbHMuCgooSSBoYXZlIGEgcGF0
+Y2ggdGhhdCBJIGtlZXAgcmViYXNpbmcgb24gbXkgdHJlZSBvbmx5IGZvciB0aGF0IHB1cnBvc2Uu
+ClN1cmUsIEkgY291bGQgbW9kaWZ5IG15IGJ1aWxkIHNjcmlwdHMgdG8gYnVpbGQgdGhlIERUQiBz
+ZXBhcmF0ZWx5LApidXQgd2l0aCB0aGlzIHBhdGNoLCBJIGRvIG5vdCBuZWVkIHRvIGRvIGFueXRo
+aW5nIHNpbmNlIHRoZSBrZXJuZWwKYnVpbGRzIHRoZSBEVEJzIGFscmVhZHkuKQoKT3RoZXIgcGxh
+dGZvcm1zLCBlLmcuIFRJIGFscmVhZHkgYnVpbGQgbWFueSBib2FyZHMgd2l0aCBzeW1ib2xzOgpo
+dHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi92Ni4xMy9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3RpL01ha2VmaWxlI0wyNDItTDI2MQoKCllvdSBzZWVtcyB0byBoYXZlIGJlZW4gYWdh
+aW5zdCBlbmFibGluZyBzeW1ib2xzIGJlZm9yZToKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGlu
+dXgtcm9ja2NoaXAvMTcxOTQxNTUzNDc1LjkyMTEyOC45NDY3NDY1NTM5Mjk5MjMzNzM1LmI0LXR5
+QHNudGVjaC5kZS8KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtcm9ja2NoaXAvMTk1MjQ3
+Mi42dGdjaEZXZHVNQGRpZWdvLwoKQnV0IGlmIHlvdSBoYXZlIGNoYW5nZWQgeW91IG1pbmQsIGFu
+ZCB5b3UgYXJlIG5vIGxvbmdlciBjb25jZXJuZWQgYWJvdXQKZG9pbmcgc28sIHRoZW4gaW4gbXkg
+b3duIHNlbGYtaW50ZXJlc3QgSSdtIGFsbCBmb3IgaXQgOikKCgpLaW5kIHJlZ2FyZHMsCk5pa2xh
+cwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
