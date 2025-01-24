@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F6DC02181
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 10:08:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77957C0218B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jan 2025 10:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j0FFlsqzGsgWOniyC9L+WXmaIJNDI+KZWvM5ma8Oha4=; b=xUOnte/hcxYhlwJJpZl9dFO0dJ
-	7UpzNRL03CdD1XN1MBiu803hFXotfTrHTnKM42BKObDzMO+W8P4iENKa0jAf+VdJLXNJldWxcHC1s
-	wW0Kx0Kt6ZoGvvD61oFByPE6+m8bAw2xVB0c+++jkYqOWyMjxWlhK8Hk4aygtWBp09BFv4qzWNbsv
-	LNMscCAqzJwPzOJnhqK3cgrXfVdFsGMFM9MzFdz+WXxAf6KvM3Z9MRUcLBhym4+LV4dkW/ltMxH0q
-	OYoycids9tRjIiNOsnzTH/WUeTMhF5XqVJjYj5BRePNPh2v4mTWIlDd+zUnCnmSL02tBVXnIuHb8a
-	G0Tbdq4Q==;
+	bh=U+6nU847ZIl4OBDpIDEyFSxZVmmsHnpaqZpKWZzMa1c=; b=RahMKH9fnbwHyvJe6l+dFz4bPD
+	Fw6WkjUMul7kHK629YoAg0oL2FLY3bvVmHlVLyUxHld1yBY6q0JJUDEVWMvyniEIvZa0Vap64oXuf
+	LiyXzFWR7Ns6HwYoNZtn48OGmA0OQLg2J7zq0GRaxtSgI7XUxFyuPP/4/32GbOhU967XM+RTIZU7m
+	MWm1I6qOcoVdW417ygI/J6+sFGZgzK40sEHsEnakTpU4RnUIC057a+SVgmPV1BZvuAzyz+wChCbmP
+	KfxEDgpxj+yY7sIcL0zlKyCJMb6rOpHpH98s9nMSAfdNbPYwpUeSYWU+FAaDq8MScFUHSbqbg3q5T
+	s3IBbLzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGbp-0000000EQnP-1bsa;
-	Fri, 24 Jan 2025 10:08:17 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tbGnk-0000000ERrh-0pA3;
+	Fri, 24 Jan 2025 10:20:36 +0000
+Received: from mail-m1973180.qiye.163.com ([220.197.31.80])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbGaQ-0000000EQgk-3dFA;
-	Fri, 24 Jan 2025 10:06:52 +0000
+	id 1tbGng-0000000ERqB-2jUt;
+	Fri, 24 Jan 2025 10:20:34 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 999d7bbb;
+	Fri, 24 Jan 2025 18:20:21 +0800 (GMT+08:00)
+Message-ID: <9199671c-f647-4c39-8618-f2d7fa28f081@rock-chips.com>
+Date: Fri, 24 Jan 2025 18:20:21 +0800
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1737713208;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=GKwdTEzM5lSaWxcEJQL3dOATIOQEUYkzh3DpFXffH58=;
-	b=TcGThC+GsdFJdZ4xP0tnYgTpMftKU8XSefORI5jxJhNQJJ4GvobaG+aC2S3tdNNGn8hrIJ
-	x/Mdi7Eqe7IILPSprRDF6ERrdTwuod+ApSMBhCxcYb50PhnjwzF4YnuDCLoY/F/u0IG/+v
-	5dxdcWnuPslFwrEH6o3YsCtYreBE3K23h1/WpoECGE/5t7wdWds6PqZXOPShJSffQ9b8gK
-	iaKsB85Ul3uglAtYsTDyhbibr7X1azgjlsuPuSTDuWPTnR2ZZKjM4wgHqB2ME0LxZUcm7h
-	7Udp5m5xw07iGmFXgwmHLG8EWdy/kR+i2OqaitqILv4u2cwZuD+JM6l8pqkbEg==
-Date: Fri, 24 Jan 2025 11:06:47 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Alexander Shiyan <eagle.alexander923@gmail.com>, Rob Herring
- <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, devicetree@vger.kernel.org, Sebastian Reichel
- <sebastian.reichel@collabora.com>, stable@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix broken tsadc pinctrl binding
- for rk3588
-In-Reply-To: <CABjd4YwA8P9LVuDviO6xydkHpuuOY7XT0pk1oa+FDqOo=uZN4A@mail.gmail.com>
-References: <20250124052611.3705-1-eagle.alexander923@gmail.com>
- <CABjd4YwA8P9LVuDviO6xydkHpuuOY7XT0pk1oa+FDqOo=uZN4A@mail.gmail.com>
-Message-ID: <a76f315f023a3f8f5435e0681119b4eb@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 09/14] dt-bindings: display: rockchip: analogix-dp: Add
+ support for RK3588
+To: "Rob Herring (Arm)" <robh@kernel.org>
+References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
+ <20250123100747.1841357-10-damon.ding@rock-chips.com>
+ <173763136187.3345079.11905359473404124812.robh@kernel.org>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <173763136187.3345079.11905359473404124812.robh@kernel.org>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk8dTFZLShpKTRgdGkhMTExWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	5VSktLVUpCS0tZBg++
+X-HM-Tid: 0a9497d3b59d03a3kunm999d7bbb
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NBg6Lyo5AzIKCho4Az0aKBw4
+	MC8KCh1VSlVKTEhMTEpPS0lIT01DVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFIS0lCNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=R9P1b2tY3AWKf5ZQ/2+nyS6ZvqpAcjzV+V0ScfM8eTSa/i9Jm7OY1vqqONpq6+DgOfkt6gctdO2lSxQme3D9eMmucV/8kGVoor85I9KlWdAqTsNwPPTY2EezB9MMB0cHYdCBnaRleqMhTFQriClr29J69Y0S/jfwE5Fq1TFS1S0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=u0BM50TZK/HIu82bsqWrUkagwGNI0D2aUJbSTJdHkTw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_020651_209739_AA739469 
-X-CRM114-Status: GOOD (  22.10  )
+X-CRM114-CacheID: sfid-20250124_022032_846093_4D82DAF9 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +69,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, vkoul@kernel.org, hjc@rock-chips.com, dmitry.baryshkov@linaro.org, linux-phy@lists.infradead.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQWxleGV5LAoKT24gMjAyNS0wMS0yNCAwOTozMywgQWxleGV5IENoYXJrb3Ygd3JvdGU6
-Cj4gT24gRnJpLCBKYW4gMjQsIDIwMjUgYXQgOToyNuKAr0FNIEFsZXhhbmRlciBTaGl5YW4KPiA8
-ZWFnbGUuYWxleGFuZGVyOTIzQGdtYWlsLmNvbT4gd3JvdGU6Cj4+IAo+PiBUaGVyZSBpcyBubyBw
-aW5jdHJsICJncGlvIiBhbmQgIm90cG91dCIgKHByb2JhYmx5IGRlc2lnbmVkIGFzIAo+PiAib3V0
-cHV0IikKPj4gaGFuZGxpbmcgaW4gdGhlIHRzYWRjIGRyaXZlci4KPj4gTGV0J3MgdXNlIHByb3Bl
-ciBiaW5kaW5nICJkZWZhdWx0IiBhbmQgInNsZWVwIi4KPiAKPiBUaGlzIGxvb2tzIHJlYXNvbmFi
-bGUsIGhvd2V2ZXIgSSd2ZSB0cmllZCBpdCBvbiBteSBSYWR4YSBSb2NrIDVDIGFuZAo+IHRoZSBk
-cml2ZXIgc3RpbGwgZG9lc24ndCBjbGFpbSBHUElPMCBSS19QQTEgZXZlbiB3aXRoIHRoaXMgY2hh
-bmdlLiBBcwo+IGEgcmVzdWx0LCBhIHNpbXVsYXRlZCB0aGVybWFsIHJ1bmF3YXkgY29uZGl0aW9u
-IChJJ3ZlIGNoYW5nZWQgdGhlCj4gdHNodXQgdGVtcGVyYXR1cmUgdG8gNjUwMDAgYW5kIHRzaHV0
-IG1vZGUgdG8gMSkgZG9lc24ndCB0cmlnZ2VyIGEgUE1JQwo+IHJlc2V0LCBldmVuIHRob3VnaCBh
-IGRpcmVjdCBgZ3Bpb3NldCAwIDE9MGAgZG9lcy4KPiAKPiBBcmUgYW55IGFkZGl0aW9uYWwgY2hh
-bmdlcyBuZWVkZWQgdG8gdGhlIGRyaXZlciBpdHNlbGY/CgpJJ3ZlIGJlZW4gZGlnZ2luZyB0aHJv
-dWdoIHRoaXMgcGF0Y2ggdGhlIHdob2xlIFRTQURDL09UUCB0aGluZyBpbiB0aGUKbGFzdCBjb3Vw
-bGUgb2YgaG91cnMsIGFuZCBBRkFJSyBzb21lIHBhcnRzIG9mIHRoZSB1cHN0cmVhbSBkcml2ZXIg
-YXJlCnN0aWxsIG1pc3NpbmcsIGluIGNvbXBhcmlzb24gd2l0aCB0aGUgZG93bnN0cmVhbSBkcml2
-ZXIuCgpJJ3ZlIGdvdCBzb21lIHNtYWxsIHN1Z2dlc3Rpb25zIGZvciB0aGUgcGF0Y2ggaXRzZWxm
-LCBidXQgdGhlIGlzc3VlCnlvdSBvYnNlcnZlZCBpcyBvYnZpb3VzbHkgb2YgaGlnaGVyIHByaW9y
-aXR5LCBhbmQgSSd2ZSBzaW5nbGVkIGl0IG91dAphcyB3ZWxsIHdoaWxlIGRpZ2dpbmcgdGhyb3Vn
-aCB0aGUgY29kZS4KCkNvdWxkIHlvdSwgcGxlYXNlLCB0cnkgdGhlIHBhdGNoIGJlbG93IHF1aWNr
-bHksIHRvIHNlZSBpcyBpdCBnb2luZyB0bwpmaXggdGhlIGlzc3VlIHlvdSBvYnNlcnZlZD8gIEkn
-dmUgZ290IHNvbWUgIklSTCBzdHVmZiIgdG8gdGFrZSBjYXJlIG9mCnRvZGF5LCBzbyBJIGNhbid0
-IHRlc3QgaXQgbXlzZWxmLCBhbmQgaXQgd291bGQgYmUgZ3JlYXQgdG8ga25vdyBpcyBpdAp0aGUg
-cmlnaHQgcGF0aCB0byB0aGUgcHJvcGVyIGZpeC4KCmRpZmYgLS1naXQgaS9kcml2ZXJzL3RoZXJt
-YWwvcm9ja2NoaXBfdGhlcm1hbC5jIAp3L2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFs
-LmMKaW5kZXggZjU1MWRmNDhlZWY5Li42MmYwZTE0YThkOTggMTAwNjQ0Ci0tLSBpL2RyaXZlcnMv
-dGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKKysrIHcvZHJpdmVycy90aGVybWFsL3JvY2tjaGlw
-X3RoZXJtYWwuYwpAQCAtMTU2OCw2ICsxNTY4LDExIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfdGhl
-cm1hbF9wcm9iZShzdHJ1Y3QgCnBsYXRmb3JtX2RldmljZSAqcGRldikKICAgICAgICAgdGhlcm1h
-bC0+Y2hpcC0+aW5pdGlhbGl6ZSh0aGVybWFsLT5ncmYsIHRoZXJtYWwtPnJlZ3MsCiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgdGhlcm1hbC0+dHNodXRfcG9sYXJpdHkpOwoKKyAg
-ICAgICBpZiAodGhlcm1hbC0+dHNodXRfbW9kZSA9PSBUU0hVVF9NT0RFX0dQSU8pCisgICAgICAg
-ICAgICAgICBwaW5jdHJsX3NlbGVjdF9kZWZhdWx0X3N0YXRlKGRldik7CisgICAgICAgZWxzZQor
-ICAgICAgICAgICAgICAgcGluY3RybF9zZWxlY3Rfc2xlZXBfc3RhdGUoZGV2KTsKKwogICAgICAg
-ICBmb3IgKGkgPSAwOyBpIDwgdGhlcm1hbC0+Y2hpcC0+Y2huX251bTsgaSsrKSB7CiAgICAgICAg
-ICAgICAgICAgZXJyb3IgPSByb2NrY2hpcF90aGVybWFsX3JlZ2lzdGVyX3NlbnNvcihwZGV2LCB0
-aGVybWFsLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-JnRoZXJtYWwtPnNlbnNvcnNbaV0sCgpJZiB5b3UgY291bGQgdGVzdCBpdCwgcGxlYXNlLCBpdCB3
-b3VsZCBiZSBncmVhdCwgYW5kIEknZCBwcmVwYXJlIHRoZQpwcm9wZXIgcGF0Y2ggdG9tb3Jyb3cg
-b3Igc28uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Rob,
+
+On 2025/1/23 19:22, Rob Herring (Arm) wrote:
+> 
+> On Thu, 23 Jan 2025 18:07:42 +0800, Damon Ding wrote:
+>> Compared with RK3288/RK3399, the HBR2 link rate support is the main
+>> improvement of RK3588 eDP TX controller, and there are also two
+>> independent eDP display interfaces on RK3588 Soc.
+>>
+>> The newly added 'apb' reset is to ensure the APB bus of eDP controller
+>> works well on the RK3588 SoC.
+>>
+>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Add the main defferences of the RK3588 eDP and the previous versions
+>>    in commit message
+>>
+>> Changes in v3:
+>> - Expand the property clock-names, resets and reset-names
+>>
+>> Changes in v4:
+>> - Remove 'spdif' clock which added in v3
+>> - Add the comment of newly added 'apb' reset in commit message
+>>
+>> Changes in v5:
+>> - Put the differences between RK3288/RK3399 and RK3588 into 'allOf'
+>>
+>> Changes in v6:
+>> - Keep the widest constraints and add only RK3588 related constraints
+>>    into 'allOf'
+>> ---
+>>   .../rockchip/rockchip,analogix-dp.yaml        | 22 ++++++++++++++++++-
+>>   1 file changed, 21 insertions(+), 1 deletion(-)
+>>
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml: properties:reset-names: 'const' should not be valid under {'enum': ['const', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'minimum', 'maximum', 'multipleOf', 'pattern']}
+> 	hint: Scalar and array keywords cannot be mixed
+> 	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml: properties:reset-names: 'const' should not be valid under {'enum': ['const', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'minimum', 'maximum', 'multipleOf', 'pattern']}
+> 	hint: Scalar and array keywords cannot be mixed
+> 	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+> 
+> doc reference errors (make refcheckdocs):
+> 
+> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250123100747.1841357-10-damon.ding@rock-chips.com
+> 
+> The base for the series is generally the latest rc1. A different dependency
+> should be noted in *this* patch.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit after running the above command yourself. Note
+> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+> your schema. However, it must be unset to test all examples with your schema.
+> 
+> 
+> 
+
+I have found these errors using dt_binding_check and will fix them in 
+the next version.
+
+Best regards
+Damon
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
