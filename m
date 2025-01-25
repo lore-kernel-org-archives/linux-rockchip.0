@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C86C0218B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jan 2025 04:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01DE6C02182
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jan 2025 05:38:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AQr0i3bpHK3mFezzk0DBMUrlAKyx/slFKQTGBsD/nK0=; b=kqlbxD0egOQnwDh8Uk59Yh5pkv
-	b64H6WtZTMpGBMzBjoZ04PXmckFxl55U5midEk/qz99xetVWKEPQXRM2b7l7/p9HBA0E3r8I8cqnQ
-	C9gd9sEHiKsP7pDv/0j69PGBA9hd2T0xWQkr+9XCB7Mfwq45SKzLY+EZQD63XD94bBr/4U5499wNt
-	nJV9EkCkB5JiORMV+S4Hg8MpdP9nYvvV+0EFu0wtWvnqNlleNyj13n6e25rncMHXDGgvOTmeG+PmB
-	0aNRuiLP5pEnHyyGrYuCf16fkHFntwCDhH475dWlbmc7Y/igh+yH4Ditx52roRM1qjjQ+IN1uS70T
-	02bpEDXA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TU/ThQTCiH63WSD0KP9nOn+xtxmH1B1Si/3O14o+eAc=; b=buExNBEVJhlBMZ
+	6PMqN4FOXzKMaCz2WnNTU9ZI02+3szE5uPplUHXlH8jWZacmTH+kST6U5EaQKWQcCaHBnqPKgdkk/
+	/WzuGOA+ZE1ge8A+bXcI1bk6QQ+6XJzuP76xOM8jQAXvZs94ARDHpiRhZIvHvJvZxiVfDAMBM4u6+
+	M7yLqcUX1Gnjfgcw/LmzAg9l5YeRjIEq3A8SOT9BjbI9nnEbhNQoxP7tZZ0nixgu95vkhYDMDSpeb
+	NfP4LM/irlciS70kUzrHad7vn6NOtO2lvw9+Yjw1Y94yQHQyjo3h1jrBPM+55ScEm7XWb9sCGCCnZ
+	wUQFKNp//vyItX67upHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbXch-0000000FzZe-3iqP;
-	Sat, 25 Jan 2025 04:18:19 +0000
-Received: from mail-m3282.qiye.163.com ([220.197.32.82])
+	id 1tbYsA-0000000G32V-2GpO;
+	Sat, 25 Jan 2025 05:38:22 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tbXce-0000000FzYy-2VgS;
-	Sat, 25 Jan 2025 04:18:18 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 9a494985;
-	Sat, 25 Jan 2025 12:18:10 +0800 (GMT+08:00)
-Message-ID: <7ef0454b-fddd-44c0-be4a-c81c443f08f6@rock-chips.com>
-Date: Sat, 25 Jan 2025 12:18:09 +0800
+	id 1tbYs7-0000000G31n-2Ufz;
+	Sat, 25 Jan 2025 05:38:21 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5d414b8af7bso6193159a12.0;
+        Fri, 24 Jan 2025 21:38:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1737783497; x=1738388297; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2wBlvQUhns2Fl5P0fg/DPPg45l3SQWGXjsshoQlChso=;
+        b=bQWt1ZG1vfAjr7VI2wwIb8qDAwK/hMG6DiKPk3RwCZKv+sbMANPy5scc2eWpmtfrRJ
+         f0kIp7b+zsj4zp81J63wPygcl1hFwQAZs52p/XZYVh2TIg76ntA2OB4xiFeQbwSzfine
+         J2xnS7QSSRx1HcRwRNnaOD+BFeh8D6OgfdXnhyHZTikfDzsb40GQj1nKNojBcHcT5nto
+         9MWPLLpB/zBkJrABim0W6fvIWYoUJnnLtpyy21hE9ouSuWQu7RfcRFXJ2bBIybhtXmSm
+         Bz1ZQ3OerrrA0+dIRat9fc0prysITibUH+6tO3xI7U+GO6PdNVx/WYDFqlQV+beAdYrK
+         vk1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737783497; x=1738388297;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2wBlvQUhns2Fl5P0fg/DPPg45l3SQWGXjsshoQlChso=;
+        b=LfrPoE1FDWGsrLpa+yZWc4gckVVK4eZrLEg3X/y4g3b7qD/Q2U57P8idlLcshe2o3m
+         gD2BhQAdCPZNvakz3FwXSTK3QRTT5xpjbTQqEqIIxBYccjqCNpoo8BE500R2JQ0zsua5
+         gLcSIhikODDP/mlz0pf73dcHvGNvEyTBy99MfUC9iLZ8qT56WAr8uPAfc1gdXuBGH6h7
+         e9n7AFOMsnD/L6QNspuAq0ArJiVdkD7SduwO82bg4cBidrLrB7t8zs2MtoFmwEGxFuSj
+         7S4CyufjWbQ3GODTcXf++MduUgARJIof9egzAgAp71Fx0wkEwld1CpUWTyw3jzVJW718
+         cLGg==
+X-Forwarded-Encrypted: i=1; AJvYcCXKYRb8rKWeVOZwoE3mOSNj6czgY9IibCi5ezGXH1XQzz1D2894fAYjqqPfTRbRGpnAYdoGJQU06P0G3pcgpTnU@lists.infradead.org, AJvYcCXUTA8GlwurIesWzNNeKuifMzHOJZ0oJW03yCLZZFzA7mZS/22zmPpJq0Fn6JHGMvHeImjDTSS8S6kDNLp8bFM=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxszsrm+eItyJ1/ajvLKU0gbbHbPg46Zyc516lDA2vZkVzggZt+
+	5PMMiCfkfrN3qpFlEGz6wnPpBBT6PL4X1v5HkTVWJv+/mZbZIbbBqxXe
+X-Gm-Gg: ASbGncvAltk0c7BwYgsKCCI4PTyp0rjqHINzRGzxmh+7koxQzm+Aj1OQ0m7kvmX1Ndk
+	qxeQfzMbv4L0lRXulhjvhWmXzyfoYsKUU2rMowaI5JD/lJaM27HKChnWrWsn/m8nPVJMa56BrPB
+	72MLbNt7A25iXucXSNaCIDDlbucpe7CcIyAL6zCplHNEbHLxnud78R74IqauS9sncqvReovt60N
+	qJJSPddmNQ7+qSpjDl1hw11A0lEprE8ob7LKQpzmNiUCRwTR8baNdp91coQRgBOYYQb72Qvrltd
+	TFYd0qdUZ7FmALdi3VFUO/5yIwxhMFRa1ibbunxYiI2YhAClg7N5ueh45YXCjw==
+X-Google-Smtp-Source: AGHT+IHAvNy64vq2AlNHzrqw8S9bi5DJ7yFZQfWAQC3Lt7zxz1sa1Y3OWNi5oA+jIVvNPXiO9gaMQQ==
+X-Received: by 2002:a05:6402:4416:b0:5d9:a84:d4b6 with SMTP id 4fb4d7f45d1cf-5db7d0e8a21mr31148865a12.0.1737783496938;
+        Fri, 24 Jan 2025 21:38:16 -0800 (PST)
+Received: from ?IPV6:2a02:810b:f13:8500:3620:7e8b:b241:a0c8? ([2a02:810b:f13:8500:3620:7e8b:b241:a0c8])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5dc18628282sm2071358a12.17.2025.01.24.21.38.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Jan 2025 21:38:15 -0800 (PST)
+Message-ID: <8752cfda-b90a-4296-a08b-054b177aa586@gmail.com>
+Date: Sat, 25 Jan 2025 06:38:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 12/14] drm/edp-panel: Add LG Display panel model
- LP079QX1-SP0V
-To: Doug Anderson <dianders@chromium.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
- <20250123100747.1841357-13-damon.ding@rock-chips.com>
- <rwn3g7tqgjnc525cjqtivgfgedhooiayn5nujng7bdzazgqhle@wfpuvoyr2tii>
- <CAD=FV=WKsA9fcq-LzGcYmgbMuMLUp5SMggpzBzZnvd3sxGf9BQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] Revert "clk: rockchip: Set parent rate for
+ DCLK_VOP clock on RK3228"
+To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20250125011545.15547-1-zhangqing@rock-chips.com>
+ <20250125011545.15547-2-zhangqing@rock-chips.com>
 Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <CAD=FV=WKsA9fcq-LzGcYmgbMuMLUp5SMggpzBzZnvd3sxGf9BQ@mail.gmail.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk9DH1YfHUxJT09CSU9CHU5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a949bae7a1d03a3kunm9a494985
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kyo6DTo*HjIWNBktLzE3F0sp
-	CzEwCzpVSlVKTEhMTExDTUJJSE5JVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPSU9KNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=KEMjxQrOrfEtKZzt6CYphQDs7eNUjjH8m8AWiodw6j70gQcFojna9y5+Fy0sONQ3/SEZtPD1VMuZKpejaV6BtqPVrmfQHyB2/HvVOpkGv/QGCiiQSO44oAVs8y3NeqvAXjLYhldpjhTostWKSR+CS4rVq2br+QqVb20XwbhKWRs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=LT1lOhEhh2VSdBgeTO1/jteMwTIRumP4Sm+3/Zt7qdA=;
-	h=date:mime-version:subject:message-id:from;
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <20250125011545.15547-2-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250124_201817_136043_C686CD41 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20250124_213819_661136_7127CBE4 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,85 +98,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRG91ZywKCk9uIDIwMjUvMS8yNCA4OjMwLCBEb3VnIEFuZGVyc29uIHdyb3RlOgo+IEhpLAo+
-IAo+IE9uIFRodSwgSmFuIDIzLCAyMDI1IGF0IDM6MzHigK9BTSBEbWl0cnkgQmFyeXNoa292Cj4g
-PGRtaXRyeS5iYXJ5c2hrb3ZAbGluYXJvLm9yZz4gd3JvdGU6Cj4+Cj4+IE9uIFRodSwgSmFuIDIz
-LCAyMDI1IGF0IDA2OjA3OjQ1UE0gKzA4MDAsIERhbW9uIERpbmcgd3JvdGU6Cj4+PiBUaGUgcmF3
-IGVkaWQgZm9yIExQMDc5UVgxLVNQMFYgcGFuZWwgbW9kZWwgaXM6Cj4+Pgo+Pj4gMDAgZmYgZmYg
-ZmYgZmYgZmYgZmYgMDAgMTYgODMgMDAgMDAgMDAgMDAgMDAgMDAKPj4+IDA0IDE3IDAxIDAwIGE1
-IDEwIDBjIDc4IDA2IGVmIDA1IGEzIDU0IDRjIDk5IDI2Cj4+PiAwZiA1MCA1NCAwMCAwMCAwMCAw
-MSAwMSAwMSAwMSAwMSAwMSAwMSAwMSAwMSAwMQo+Pj4gMDEgMDEgMDEgMDEgMDEgMDEgZWEgNGUg
-MDAgNGMgNjAgMDAgMTQgODAgMGMgMTAKPj4+IDg0IDAwIDc4IGEwIDAwIDAwIDAwIDE4IDAwIDAw
-IDAwIDEwIDAwIDAwIDAwIDAwCj4+PiAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAw
-MCAwMCBmZSAwMCA0Ywo+Pj4gNTAgMzAgMzcgMzkgNTEgNTggMzEgMmQgNTMgNTAgMzAgNTYgMDAg
-MDAgMDAgZmMKPj4+IDAwIDQzIDZmIDZjIDZmIDcyIDIwIDRjIDQzIDQ0IDBhIDIwIDIwIDIwIDAw
-IDNmCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogRGFtb24gRGluZyA8ZGFtb24uZGluZ0Byb2NrLWNo
-aXBzLmNvbT4KPj4+IC0tLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtZWRwLmMg
-fCA4ICsrKysrKysrCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPj4KPj4g
-UGxlYXNlIHVzZSBnZXRfbWFpbnRhaW5lcnMucGwgd2hlbiBjb21waWxpbmcgVG8vQ2MgbGlzdHMu
-IEFkZGVkIERvdWdsYXMKPj4gdG8gQ0MgbWFudWFsbHkuCj4+Cj4+IE9yLCBiZXR0ZXIsIHNwbGl0
-IGlycmVsZXZhbnQgcGF0Y2hlcyB0byBzZXBhcmF0ZSBzZXJpZXMuCj4+Cj4+Pgo+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1lZHAuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9wYW5lbC9wYW5lbC1lZHAuYwo+Pj4gaW5kZXggZjg1MTFmZTVmYjBkLi43N2UzZmQzZWQxNjAg
-MTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtZWRwLmMKPj4+ICsr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1lZHAuYwo+Pj4gQEAgLTE4MDgsNiArMTgw
-OCwxMiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2RlbGF5IGRlbGF5XzIwMF8xNTBfZTUw
-ID0gewo+Pj4gICAgICAgIC5lbmFibGUgPSA1MCwKPj4+ICAgfTsKPj4+Cj4+PiArc3RhdGljIGNv
-bnN0IHN0cnVjdCBwYW5lbF9kZWxheSBkZWxheV81MF81MDBfZTIwMCA9IHsKPj4+ICsgICAgIC5o
-cGRfYWJzZW50ID0gNTAsCj4+PiArICAgICAudW5wcmVwYXJlID0gNTAwLAo+Pj4gKyAgICAgLmVu
-YWJsZSA9IDIwMCwKPj4+ICt9Owo+IAo+IFdvdywgaHBkX2Fic2VudCBpcyA1MG1zLiBUaGF0J3Mg
-ZXhjZWxsZW50IQo+IAo+IEkgd2FzIGN1cmlvdXMgaWYgdGhpcyB3YXMgcmVhbGx5IGNvcnJlY3Qg
-c2luY2UgaXQncyB0aGUgbG93ZXN0IEkndmUKPiBzZWVuLCBidXQgSSBzZWFyY2hlZCB0aGUgaW50
-ZXJuZXQgYW5kIGZvdW5kIGEgZGF0YXNoZWV0IHRoYXQgY29uZmlybXMKPiBpdC4gQ3JhenkuIEFs
-dGhvdWdoIG15IGRhdGFzaGVldCBoYXMgdGhhdCB3aG9sZSBzZWN0aW9uIGdyYXllZCBvdXQgYW5k
-Cj4gc2F5cyAiTWVhc3VyZW1lbnQgbm90IGF2YWlsYWJsZSIuIEhvdyB3b3JyaWVkIHNob3VsZCBi
-ZSBhYm91dCB0aGF0PyBJCj4gZ3Vlc3MgaWYgImhwZF9hYnNlbnQiIG9mIDUwIGV2ZW50dWFsbHkg
-ZG9lc24ndCB3b3JrIGl0IGNhbiBhbHdheXMgYmUKPiBpbmNyZWFzZWQuCj4gCgpUaGUgZGF0YXNo
-ZWV0IEkgaGF2ZSBzaG91bGQgYmUgdGhlIHNhbWUgYXMgeW91cnMsIGFuZCB0aGUgVDMgaXMgIk1p
-bi4gCjJtcyB8IFR5cC4gMzBtcyB8IE1heC4gNTBtcyIgd2l0aCB0aGUgZ3JheSAiTWVhc3VyZW1l
-bnQgbm90IGF2YWlsYWJsZSIuCgo+IExvb2tpbmcgYXQgdGhhdCBkYXRhc2hlZXQgKGFzc3VtaW5n
-IHlvdSBjYW4gZmluZCB0aGUgc2FtZSBvbmUpLCBJCj4gd29uZGVyIGhvdyB5b3UgaGFuZGxlIHRo
-ZSBUNCAxMjBtcyByZXF1aXJlbWVudC4gSXQgbG9va3MgbGlrZSB0aGF0J3MKPiB0aGUgdGltZSBm
-cm9tIHRjb24gcmVzZXQgKHdoaWNoIGlzIG5lYXJseSBwb3dlciBvbikgdW50aWwgeW91J3JlCj4g
-YWxsb3dlZCB0byBwdXQgdmFsaWQgZGF0YSBvbiB0aGUgcGFuZWwuIEkgX3RoaW5rXyB5b3UgY291
-bGQgbWVldCB0aGUKPiByZXF1aXJlbWVudCB2aWEgc2V0dGluZyBgcG93ZXJlZF9vbl90b19lbmFi
-bGVgIHRvIDMyMCB0aG91Z2gsIHJpZ2h0Pwo+IC4uLm9yIG1heWJlIDMzNSB0byBoYW5kbGUgdGhl
-IG1heGltdW0gdmFsdWUgb2YgInRjb25fcmVzZXQiIChubyBpZGVhCj4gaG93IHlvdSBjb250cm9s
-IHRoaXMgc2lnbmFsKS4gSWYgSSByZW1lbWJlciBjb3JyZWN0bHkgKGl0J3MgYmVlbiBhCj4gd2hp
-bGUpLCB0aGluZ3Mgd2lsbCBhbHJlYWR5IGJlIGNsb2NraW5nIGJ1dCBvdXRwdXR0aW5nIGJsYWNr
-IHdoZW4gdGhlCj4gcGFuZWwncyAiZW5hYmxlIiBmdW5jdGlvbiBpcyBjYWxsZWQuIEFmdGVyIHRo
-ZSBmdW5jdGlvbiBpcyBjYWxsZWQgdGhlbgo+IHdlJ2xsIHR1cm4gb24gdGhlIGJhY2tsaWdodCAo
-YW5kIHN0aWxsIG91dHB1dHRpbmcgYmxhY2spIGFuZAo+IGV2ZW50dWFsbHkgd2UnbGwgcHV0IHZh
-bGlkIGRhdGEuIFNvIGFzIGxvbmcgYXMgeW91IGNvbnNpZGVyIHRoZQo+IGNvbnRpbnVlZCBvdXRw
-dXQgb2YgYmxhY2sgYXMgInZhbGlkIGRhdGEiIHRoZW4gdGhlIHRpbWluZyBkaWFncmFtIGlzCj4g
-c2F0aXNmaWVkLgo+IAoKWWVzLCBpdCBpcyBpbmRlZWQgYmV0dGVyIHRvIHNldCB0aGUgInBvd2Vy
-ZWRfb25fdG9fZW5hYmxlIiB0byAzMzVtcywgYXMgCnRoaXMgd2lsbCBoZWxwIHByZXZlbnQgdGhl
-IGRpc3BsYXkgZnJvbSBzaG93aW5nIGludmFsaWQgYmxhY2sgc2NyZWVucy4gSSAKd2lsbCBhZGQg
-aXQgaW4gdGhlIG5leHQgdmVyc2lvbi4KCj4gQlRXOiBkb24ndCB5b3UgYWxzbyBuZWVkIGEgMjAw
-IG1zICJkaXNhYmxlIj8KPiAKCkFjY29yZGluZyB0byB0aGUgZGF0YXNoZWV0LCBpdCBpcyBhIGdv
-b2QgaWRlYSB0byBzZXQgImRpc2FibGUiIHRvIDIwMG1zLgoKPiAKPj4+ICAgI2RlZmluZSBFRFBf
-UEFORUxfRU5UUlkodmVuZF9jaHJfMCwgdmVuZF9jaHJfMSwgdmVuZF9jaHJfMiwgcHJvZHVjdF9p
-ZCwgX2RlbGF5LCBfbmFtZSkgXAo+Pj4gICB7IFwKPj4+ICAgICAgICAuaWRlbnQgPSB7IFwKPj4+
-IEBAIC0xOTU1LDYgKzE5NjEsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGVkcF9wYW5lbF9lbnRy
-eSBlZHBfcGFuZWxzW10gPSB7Cj4+PiAgICAgICAgRURQX1BBTkVMX0VOVFJZKCdDJywgJ1MnLCAn
-VycsIDB4MTEwMCwgJmRlbGF5XzIwMF81MDBfZTgwX2Q1MCwgIk1OQjYwMUxTMS0xIiksCj4+PiAg
-ICAgICAgRURQX1BBTkVMX0VOVFJZKCdDJywgJ1MnLCAnVycsIDB4MTEwNCwgJmRlbGF5XzIwMF81
-MDBfZTUwLCAiTU5CNjAxTFMxLTQiKSwKPj4+Cj4+PiArICAgICBFRFBfUEFORUxfRU5UUlkoJ0Un
-LCAnVCcsICdDJywgMHgwMDAwLCAmZGVsYXlfNTBfNTAwX2UyMDAsICJMUDA3OVFYMS1TUDBWIiks
-Cj4gCj4gSSBkb24ndCBsb3ZlIHRoYXQgdGhlIElEIGlzIDB4MDAwMC4gVGhhdCBtYWtlcyBtZSBu
-ZXJ2b3VzIHRoYXQgdGhlCj4gcGFuZWwgdmVuZG9yIGlzbid0IHNldHRpbmcgdGhlIElEIHByb3Bl
-cmx5LiAuLi5idXQgYXQgbGVhc3QgdGhlIHN0cmluZwo+IG1hdGNoZXMgaW4gdGhlIEVESUQgc28g
-aG9wZWZ1bGx5IHRoYXQgd2lsbCBiZSBlbm91Z2ggdG8gdW5pcXVlbHkKPiBpZGVudGlmeSB0aGlu
-Z3MuCj4gCj4gCgpUaGUgSUQgIjB4MDAwMCIgbWFrZXMgbWUgbmVydm91cyB0b28sIGJ1dCB0aGUg
-RURJRCBvYnRhaW5lZCBmcm9tIHRoaXMgCnBhbmVsIGluZGVlZCBzaG93IGl0LCB3aGljaCBpcyBx
-dWl0ZSBzdXJwcmlzaW5nLiBNYXkgSSBzdGlsbCBzZXQgaXQgdG8gCiIweDAwMDAiIGFzIGl0IHJl
-YWxseSBpcz8KCkJlc3QgcmVnYXJkcywKRGFtb24KCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Elaine,
+
+Am 25.01.25 um 02:15 schrieb Elaine Zhang:
+> This reverts commit 1d34b9757523c1ad547bd6d040381f62d74a3189.
+> 
+> RK3228 Only GPLL and CPLL, GPLL is a common clock, does not allow
+> dclk_vop to change its frequency, CPLL is used by GMAC,
+> if dclk_vop use CLK_SET_RATE_PARENT and CLK_SET_RATE_NO_REPARENT flags will
+> affect the GMAC function.
+> 
+how do you come to this conclusion?
+
+On the RK3228, hdmiphy is the default parent of dclk_vop, a clock that is
+not even generated by the CRU but is the output of an external HDMI PHY.
+The CLK_SET_RATE_NO_REPARENT flag ensures that the parent of dclk_vop never
+changes to sclk_vop_pre (and thus never uses CPLL or GPLL). With
+CLK_SET_RATE_PARENT we only ensure that we can use all rates of [0] since
+there is no divider between dclk_vop and hdmiphy. Overall it is pretty much
+the same situation as for RK3328, which handles these clocks in the same
+way (see dclk_lcdc for RK3328).
+
+Regards,
+Alex
+
+[0] [1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c?h=v6.13#n293
+> If the client application does not use GMAC and CPLL is free, make this
+> change on the local branch.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>   drivers/clk/rockchip/clk-rk3228.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+> index ed602c27b624..9c0284607766 100644
+> --- a/drivers/clk/rockchip/clk-rk3228.c
+> +++ b/drivers/clk/rockchip/clk-rk3228.c
+> @@ -409,7 +409,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
+>   			RK2928_CLKSEL_CON(29), 0, 3, DFLAGS),
+>   	DIV(0, "sclk_vop_pre", "sclk_vop_src", 0,
+>   			RK2928_CLKSEL_CON(27), 8, 8, DFLAGS),
+> -	MUX(DCLK_VOP, "dclk_vop", mux_dclk_vop_p, CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT,
+> +	MUX(DCLK_VOP, "dclk_vop", mux_dclk_vop_p, 0,
+>   			RK2928_CLKSEL_CON(27), 1, 1, MFLAGS),
+>   
+>   	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
