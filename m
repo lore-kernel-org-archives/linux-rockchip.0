@@ -4,168 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2067C0218A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5992EC0218A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 20:39:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=ayxoZua/8oHyDDr70Gu4aF/innf1KD1W1bcVDSg8jig=; b=0ydVfhmqLUezcwqEQscSZvkkHb
-	WNAJU2edX/0S0swGYxYvDVcuTbTwnrxa01Q13w/JIOSq6vSdPkywtHHD3z6KcOaz9UMn28MxSkGBx
-	xLhvEkdXLtuTJrm2Nrw+m6jnd0JpL0NtYjzYtLU6tSrIdLII+83gwynlORHyP+HHXLlwMOuK+KqqN
-	pAym1jcQyHzRKe4M6ZnUwtopZD7Yixd8XZYrVhdnja83UYGHw8l9mPs/vV/DSb5s9jCoxHdoas/pZ
-	1o583sKPsi+3p12a4axSiRBkaWF1C/aRUgSAQoV9ig4a5qn7kxH2oNh0LaoFQGV66gtgc4PrDlVmU
-	e2TdZNIg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QiTGlxAgZu+SlpFWqlxaIUmr5lPh7Pynzo+M9dm2nOI=; b=bKQV+2KZ67aYQJ
+	prIuHzKF+zxCwrvJZsjmBt4mvE2D8nT9QM2Cqw9Sm/7nWLb7Op1KM1oKSovAtDQtxzpalfZfwrbW2
+	YNo85syPmYK3iOEqACVahI8z89nSPlJp4snamC3rMOkK6YVrMsJ3SynwGvfvFSl/y/m29pg1i9BQX
+	sWd1oYk0hmdyXibpDUhUvuyyCICUbB60ecHuNDBOfmALrQjjL/6oOYB8Yxtcu7H3T4tqzYK0Yryqz
+	oyPGo6qAtKf6lF7JBogRffCAxEL3Jws5UOUyrpH35+AqRIdsf7j5uCKohi8bPO8uXyJJ/5OWWNlDw
+	yF9YUTdqs4Z3Vqf36Miw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcm0Q-000000050EM-1ySo;
-	Tue, 28 Jan 2025 13:51:54 +0000
-Received: from mail-dbaeur03on20720.outbound.protection.outlook.com ([2a01:111:f403:260d::720] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
+	id 1tcsMV-00000005oEL-49gv;
+	Tue, 28 Jan 2025 20:39:07 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tclyV-00000004zz0-3YuJ;
-	Tue, 28 Jan 2025 13:49:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IUF/302JdVt/nUky7II5i2vmeuyz8DzLAkJ+oM+Nbo3mbFgeKmcTP72QWGqp1DpFDiay1lPcbs9maOAm7Q8DJe5EU2lShXi8vHiil93oi9rtRyoFg0iD/FEYqyfAZ4sRxLTi3oOKWc5p6nNCu2gHVWBOM1ZE/4/UbxbmWieBhQROtTBwFxohC9kVBo2XTStLoSHv4fqBn8ubiBmFRNzIJATCZrLa2LkQTrLVdWxEPo8bNLDmlyMJcSXonGS+ufSCg7+x9ft4ub6cqXwqxaXPBfG91pmWxbo6RxHVPLSRoItPt9VhGDJH+kqcDE2ZVYF4lycby+FSFeTDXy2XjicI+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=C8HVkUi0UPc3WDD/OQrHyMHWa9mmT1FZwUucYVnBAjM=;
- b=lmE8VFo7N8+JQqhQxp2JTqCwiwlgDaISk4deV0Z9ynchVcQu+CO7pU7GC4zXLHvajzbdGg6CNDVBgLclQbMX+RKog5TouI/U7aFVRm7z8iGWfadIZyqAoA/N319EJnEExOY/0XSWtr2SO4ZeeCNLzkapqt9hEOQtoLEL5faUj1Lfe0E2Cn5hnOp8A0umsbZBP8Wkev4uVsct+Vf5qZIxHS0BQPYbNdGrj4UTJNaxyuyZk+DhfDxm29/dNuX23Q6KJMiRNEoThstq11k7fGbpWbpfdhV9MjMDMpbqH7ZKLBpb96S+XoGj1JppUP3v2EZKRvbhPIAQhafLhIJcWHIdaA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=C8HVkUi0UPc3WDD/OQrHyMHWa9mmT1FZwUucYVnBAjM=;
- b=UtmZK4eixSYtpQ7sjPmxU6MO9bvlvdjMaIN1OvNl4CXbh2G6vIqvBluMti3Me9AY3QoDOV/sYJBgxsv/K6NkBuVz8WafVYO6AgQkxXy3KS21fwINtajToqjeyhk3ela8JUzFEDgZrIMfcv5KyGI5iac9IhafPaYuEqq4rLillGU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by DB8PR08MB5436.eurprd08.prod.outlook.com (2603:10a6:10:111::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8377.21; Tue, 28 Jan
- 2025 13:49:45 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d%4]) with mapi id 15.20.8377.021; Tue, 28 Jan 2025
- 13:49:45 +0000
-Message-ID: <8641ce0b-2f7e-462e-a88b-f71295529a91@wolfvision.net>
-Date: Tue, 28 Jan 2025 14:49:50 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/4] arm64: dts: rockchip: add overlay test for
- Wolfvision PF5
-To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Quentin Schulz <quentin.schulz@cherry.de>
-References: <20250128-pre-ict-jaguar-v3-0-7be2f09d390a@cherry.de>
- <20250128-pre-ict-jaguar-v3-1-7be2f09d390a@cherry.de>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@wolfvision.net>
-Organization: WolfVision GmbH
-In-Reply-To: <20250128-pre-ict-jaguar-v3-1-7be2f09d390a@cherry.de>
-X-ClientProxiedBy: VI1PR09CA0162.eurprd09.prod.outlook.com
- (2603:10a6:800:120::16) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1tcsJv-00000005o1z-2mBR;
+	Tue, 28 Jan 2025 20:36:29 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5401b7f7141so5446533e87.1;
+        Tue, 28 Jan 2025 12:36:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738096586; x=1738701386; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UOk1tpd1Scx8u9ygptTnBU+QUAeBmZsMjmcHaDde8t4=;
+        b=FNNVtJpfb4lFTgu9zkzD3b5socyldeJ/Y8+OvuxGp9i8sYFSIhwcz9+nXS5cTVNRVW
+         ocx9x8yPB11NyZwsRfkiDJTJjIdUpQR1Lo50vYL6Sj/Eog/6S1+igyqnqZ+aaTwrvYCY
+         wX3TkYEr9IGaPpeEpOVc7TiryDCeEfn4Eh5xgemJ0Xv9DwYNiYet91I3vUnoj1PJdPar
+         ICB1IGLYc78nGHDtz6Rx6TcXaip5vUmjyx4+mcYiW6ph8dOCyNPzzwKIoGaUKsTMmwqs
+         0U+3nzJjcUrO6VfaWwUXpvu4neacsdAxz5N/EW8VIuiNHOfUhkg6YA2pKwAiEK3qJoKH
+         VpGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738096586; x=1738701386;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UOk1tpd1Scx8u9ygptTnBU+QUAeBmZsMjmcHaDde8t4=;
+        b=UqabquubD19iPjpnd7JmGrlmDbTMfDgnKMpH8Uohp+EIcP+doWwi8oWHmduxbvdo4h
+         GsiVORzMcPfDSovj4p1hYLa2MTT+QFyW/C2box05bEMhXIOme3ro4AWQLBiHT2iXaBJg
+         bVyWEpYEknzNuGALiJHYejQ+cB37SKLAwn/ocJhb03pMA7cnbtzuRLqW1mjPRHBXXJnB
+         sI5Bsg9KCiOaNN/OZGklPFIJF0ZEveL/+BLHht1oK/kJUmrN9SMHor18UvfHZG3/qW6n
+         pQto9+WVKUIOKc8VQpyrFfGl0rozH6YQt/uBjWUd2SnH83UNicNJlb+Qm58eWB3RyqTQ
+         +c6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWi5yc3cReYda8upG7XgKSHxExYYzl8Ex/93ol54m95T7BfnsS+cuinTiCqtX8TpEFIcBtXM8NwJf0QqcbhMVM=@lists.infradead.org, AJvYcCXfZPpw+3XGqokCy9StxKOy5T8jyT3s22K/dMCGl3cGtMEHQJI0Fp4jY7zWSC4WEnbzp8vkkZhMPApWxtb75zV/@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz405TuY5RdvIaamJOA0b+fX5+YPlvmHd43KApqN/omxXK4HRb+
+	RbOZDi+PTxVNfAeIbgSbl+aCEg+hkHbREstpCdlVWzFLhKDuUiT+
+X-Gm-Gg: ASbGnctLGhzZs1FgWcSrMDX1QtZ5ZWrvY1mG9NznOYqEbkUbSo5GIG8RhK0SJszu+XK
+	zzgOohwbsnd9F+6zrCZMoDW69dfwTiqmOISlnvXEt/W4NdmVGj9c/NXfFIH4s6ckvB5Y58wzoV4
+	Jnx70aH+CnIEw/WbOwbrRbDWA0/e4iyQG1y4W3f0Jq+lcTHha+Nq2xL8lK7eha0OHyrk4LBan4M
+	Ll/RfW837CZjyg6bzwPGNU5KPX7hKJf8SoSKBh60jB9O4HothtCQxRHvZZSq1+4+tcODwCDwd75
+	lsmpKTDT3VVmUqe4DZn+MSSSV9AUx6UdXpI9WK/MenNIfkxLcDhy7839+EWzWbYwqlIvOQbYfwe
+	8q2OhA9R50as=
+X-Google-Smtp-Source: AGHT+IGMzL/80XBmn1eSfudDP9ZNpYqbMrbvgK9R+lJGhmNTKy7DW7XmzgqBK5JBk5vxw5I6MfuFfQ==
+X-Received: by 2002:a05:6512:b81:b0:540:17ac:b379 with SMTP id 2adb3069b0e04-543e4bf6192mr102601e87.25.1738096585531;
+        Tue, 28 Jan 2025 12:36:25 -0800 (PST)
+Received: from razdolb.local (static.248.157.217.95.clients.your-server.de. [95.217.157.248])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543c822fcb0sm1778361e87.55.2025.01.28.12.36.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Jan 2025 12:36:24 -0800 (PST)
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+Date: Tue, 28 Jan 2025 23:35:52 +0300
+Subject: [PATCH v3 2/2] media: rkisp1: Allow non-coherent video capture
+ buffers
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DB8PR08MB5436:EE_
-X-MS-Office365-Filtering-Correlation-Id: 61d2cbf8-fff1-4ef8-06ee-08dd3fa29f98
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZVBVZkswMDdzWFkrQzZjUmlzWmIvUDQwbHlMa3dCQVdxeHVacTBFbnNBL3o4?=
- =?utf-8?B?L29GUTZ1WEhyWGNDYnlHT0Vkckk5REdadm1uMFp0NHRBVE1MWmQ3QUttaWNr?=
- =?utf-8?B?SWFBcEJVYXZHQ2FvRmovVzBSbTNCNVpFRlFkNCtncjlQZFF1YWFlNkJySHdD?=
- =?utf-8?B?YkZrd2FZYU52OHRrdnM4Z05Sc2h5TGQ3eDRUSVVDUHcrK3NMZ01weE1TUmw5?=
- =?utf-8?B?cm5RSWw1dzhtLzRFSTJuUVp2OWFSeUF4Q0dFK3FxM1VnZzlEMmkwZnR2T2Jq?=
- =?utf-8?B?UnlFazVUdDVZUThrQml4a1laWXBpODk4WVBUcFVuRjUvME1oSG5TREN3dDRv?=
- =?utf-8?B?Q3pzNEsxV3RMb2dUejkrK3ppcmtqN1lhV0UwNFJKZU5PYzZEbXNZRXptL1pT?=
- =?utf-8?B?SjJSdXFPaXlBMzdwMlZ1aVc5L1JVMnIyL2M4MTMrZnJxNTg5VlE3NGQ0RjBp?=
- =?utf-8?B?cnpJd2crWVl1Z2pXQVJnSU9MRWZaL3NvWlM0T1ppbXhiVTk1Y1NnSVBDQm51?=
- =?utf-8?B?Z2dKd1NpZU5tbzdqMXVvcnR3U0EzMFhGY1lRWnAySkRJWnVHMmlwMnRLNE8w?=
- =?utf-8?B?V25POUVGbzYyR3BRMFdJeDRIT01yaSt3cEQ5a0N5eHM0WEhQTnhLaWpEZ3ZV?=
- =?utf-8?B?bGYzSVVCWStJeE1WVHE0a000NGdVZitBY2UxWU83T0FLS0NjajRPVi8xSDRT?=
- =?utf-8?B?dVJkU2JFREpOMFpDYm5qQ1RtK2VnbFh6UzlXTEVKbjR3N1hyUGpOUVp5ektE?=
- =?utf-8?B?b1F0WWU3OFc0cGI3MmZ4YTBCSVc0T1RreHBMOTBsVmlYUW5VTWtWbmQzQVpI?=
- =?utf-8?B?eGxFM1NBSmF5VWt3eWNQZGRkNFJEblNxMXFsS1R4YmZjR3lUcGFSVUFGRjR1?=
- =?utf-8?B?WVFtV29rSE1BbnNwRnNpZ01TaUUyaWptdUtqK0VuY29SRVpvQWsxQWNpWHRo?=
- =?utf-8?B?UTZyY2cwak9VWHNYZlBtUUt3SHZuZTlRbWllWmZGUDdPWi9xN2UvckRNY0RQ?=
- =?utf-8?B?OFF6YmxWRXRRV3FFNmE0SWxJLzE4UjR6K2JxSDlUbE5uVWg2ZElwRzdOeEs5?=
- =?utf-8?B?aEEycDcrM09WWnFVZVpuVVpSaWw0SlJMUTdpSXdRS1NMWC8rSW4wcnFkWlE2?=
- =?utf-8?B?R0VjRkh6ZnVucUNKME5OUE9hLzAzSlhrWlZqcG1udmR3VVRqNmRmRDkrcExU?=
- =?utf-8?B?L05DNnNYYU5NaTRLZWNYUXIvU1JRYlRuTnl0T1FreFhjV3ZBMW5Yd2NsMWsy?=
- =?utf-8?B?dXh5NkNrQ3F4Z2p0NnlqV0tXLzVrMTBRb0N1OXlkOHlTWkh3UTIwQUdxREVM?=
- =?utf-8?B?SGxtVWdSbnFJaG02M0psOTBjRTlFazJnN0lEZG5TU2RSWGVaVVk0WnR1UExz?=
- =?utf-8?B?U3VyZk9Ma0NuMHlYcXZQNGhxaXIvOXZDY09Rd2lURUZWK2cxN1JVZDlVNWtN?=
- =?utf-8?B?bXEzbUp2U3FVTitNUU9GeFhVYVJiMmpXMEpDaHJkMWtMUGRNaWpLNldXSUxL?=
- =?utf-8?B?UjlOdVhWeEV2VUEwM2VRYVVPRzZmU2NlYzRVdnJVZFBMb09yUjdIamNrNy9Y?=
- =?utf-8?B?Tm5zZTB0ZHZOUzhpOU51c0xLTTd6aFRVL1pkcDdMT2JOMmxKTGUzNmF2dlcv?=
- =?utf-8?B?Z3BqMVNGMGllbmZkSE5mUjRCMUVBSWxCYzFDRk5XTHJRejdkcll4RUZyaGhu?=
- =?utf-8?B?ZnRzNzBKK1FVSE45bHI5a0s1T2UzM0huZXd1b01SZTlQUy9MZHBEVDRsOXFl?=
- =?utf-8?B?UXVxRGFiaHpXSTlGQVROYitYMzk0MVNTRUdCcmh6WjEzaXU0Tk5FZXBFYVJX?=
- =?utf-8?B?QUdFRGEvNkxveU55aThZU0dwVGlWZDd1Znl6MThVdG9mRTcxcG0rayt3WFVt?=
- =?utf-8?Q?XQFtnOoImFpYG?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SzY0dURoNWsvQ21vUk40YlQwV202U3Rkd1pRbWxpMDNmeHhOc1Q3QWI1UnR6?=
- =?utf-8?B?K1ZidFVOaW1vWHdjUjJsdFRxemtMUVJySjZsRnZyNndieXYva2hBcmlFUmti?=
- =?utf-8?B?bEltQVppNXdkYUhrS0JrZkdBTnY2QmNkVjN2bFkxMFhab1hHTVM4R3NPanl4?=
- =?utf-8?B?MUZ0WnBQSXBwZk1FSXRwak9MNTIrRVpnQnQxWjhUYVFJTlBrWTRWSVR4QTl4?=
- =?utf-8?B?em8xcnd5Wm1leC81ME5aRUZnd1RKQ1J4czRCYVlhTGZENmQvMWVlMjVmUGg5?=
- =?utf-8?B?bjhrREp6emRiZzZQbnlBR21PTkJaUU1JdlJlYUZ2QU14WGVnUHh6c1YwZ3Bv?=
- =?utf-8?B?N2l6cG1XVzJBckZwczB5eW9IR0ZuK3g1c2VCdmFLRVNFNGxkTXU4eU94UGcv?=
- =?utf-8?B?Zms5NnRxMytNd2VaS1J1WWdTQ0hvcVhlamk1Z0ZlYmZBeGs0Y3hKT2dUT3Fq?=
- =?utf-8?B?di8wSG1ZOUtUdjZxdnVTeEJxSmxXejZTdmFNeVBmRVByMFFqdzhRcnhPOS8r?=
- =?utf-8?B?YkRtZnBNNWZ1NWFxODFWdEpVKzViZlh2MUo4RnFyUUZsYndBWTB5RktWSzVo?=
- =?utf-8?B?ZnlKcUdUZHZJNUpDcTk3ejdCR0hsdEZ2bmk1S081K0dxVVdEeUxsQzRnTmpS?=
- =?utf-8?B?TDRWV1ZMaXp2NGUwOUxNckorbmlJcW5lZTdxME5ZWVZxNy9Sei9oMVh2WkhO?=
- =?utf-8?B?N3h5NzV2Zzhzd1l0SEQyamNIWVFQaFV2cjBZVEo5MlRlVTZycWxPWjQxMVZs?=
- =?utf-8?B?ejdOTlpnRTRzL2J0UDVYdmVVeXNvWlZhOHVtbnhjUXJRSXQvTmxYQ1VGNDFD?=
- =?utf-8?B?c2huOGVDbDd1NGVuSFJ5eDk5MkhWOEpXMkNEUHAzd1l6VFVvaEVnaFdQajZh?=
- =?utf-8?B?RVN2a2JkT0d2SFFTaWdwTXlmREo5bCtremwySFNUbnVzczRlSzVtNHZGZnk4?=
- =?utf-8?B?VWdUOXkyMVdFQXd2TVZZSDlrZHlxUFJxbWJ2bU82cHhQNm5nMFNxMHVvOFgr?=
- =?utf-8?B?TXdrMy9wM3RBaGg3UnVKRkJQZ1lnMExmVkNDT3YvLzFNdEpNK1Jkc1B0Uld2?=
- =?utf-8?B?K3A1QnJaVWY0MHJLeHNRYnBmSGV2NUFMeEtYZEpMekFXdWE4c1R3SEFWMkQv?=
- =?utf-8?B?R3pwNXdqdEptd3E3UjAyNkI2elVvUCt2ei9VeDhaTjZ0SUV3d05wbVNhWkxu?=
- =?utf-8?B?UkxJeEx1UWN2OWh5S1FuQnRtN0dlaVUzQUQyVHdjc2xSbE5QTkJZNGg1R3VZ?=
- =?utf-8?B?NkNVU1l2MHRacXBuNUdlSEF2aTJqQlEvYnRDRHR4WXpEN0Z0R2N1cU93QnJ3?=
- =?utf-8?B?MlpDNUcrRUJuVlFvNkdaQ0JSZEE1RWlkc1YwUWRUSEpKOHI0STNCakcrRkxO?=
- =?utf-8?B?YmJhRXBWTytpUUsxU2xaQ056c2phK0pzeW5ZZXU0akZ5eGJ3WGxUWTZTczlL?=
- =?utf-8?B?dmV3Q3VSVTJjdGNIMGcxUWd6NGhZM21HREIyVTN4ZndMalZuTmM0VDlVNzd6?=
- =?utf-8?B?dndRV05rSXNOaGd0TUZGVTEvT21LZHJLRU9salU1RzVnYkFTNXRyTWVOd0Vk?=
- =?utf-8?B?MTFqdDhqZGRUaXhZNkZTVUlOdU1ZRnpYZTN2SzlpUmhMd2JIMXBpK0pFRmJ3?=
- =?utf-8?B?Mm1aK0lITXlVbGlYdjQ3elJocE9TVitSUGxTSE14QWRJUHViZnAxd0RacDg5?=
- =?utf-8?B?QkJnZnV5YTVOdnBQYWNINHdUQ2l1M1cvZk1aYWJXbnREMnFRVy9GYjRHb1FI?=
- =?utf-8?B?QmtTL3R4U1FPQmZlYTVTSjdaNGd1YmtKTG5GWWFpZ1JvUnVqSTZ3b0RIZ0xq?=
- =?utf-8?B?R2dKTjJ6MXpvb1dDR1FyYUxsSmh0VjdoRE9kKzYzdmI0VU1zYVVGeThPdStF?=
- =?utf-8?B?Q1hNU2hsMUVlM3JOTWJaakplUzJjZTlpMTR6Mm1ObGhRcTNhVDJLUlhya1ZQ?=
- =?utf-8?B?T1E1V01OSXFiRmJWMXNLUCs1d2NSS0Q1QkZrNkJCY2xuMmJ3QU1acnhROHJC?=
- =?utf-8?B?a2M4aXp6QWF1elpidEZScGhNcTRJVFAvNHlhS2pUVE1hbWg0akZzOVhBd3Bi?=
- =?utf-8?B?RVptQWh2bUQ1SGpyVXgxVHUzYlo3b3pJamg0Y3F3MktvSmdrbU9ZbGs2S0U3?=
- =?utf-8?B?SHMvOG4yTUV3SnRFNE1ucFhkWTVCMW5lQk9lOXB0RjNDL2wrZUdEYjI4bjdl?=
- =?utf-8?B?enc9PQ==?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 61d2cbf8-fff1-4ef8-06ee-08dd3fa29f98
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jan 2025 13:49:45.3009
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zlBBx+IyZDsMnlEq2xXMygTHxpOfGKfOmPoTTkb3JGzswS05AtHNMYTyoPquwzPontkU4f+0aXXXMTCQ3Uej005Kv11mGAQXIkDL9F9PBc4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5436
+Message-Id: <20250128-b4-rkisp-noncoherent-v3-2-baf39c997d2a@gmail.com>
+References: <20250128-b4-rkisp-noncoherent-v3-0-baf39c997d2a@gmail.com>
+In-Reply-To: <20250128-b4-rkisp-noncoherent-v3-0-baf39c997d2a@gmail.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Hans Verkuil <hverkuil@xs4all.nl>, 
+ Sergey Senozhatsky <senozhatsky@chromium.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
+ Mikhail Rudenko <mike.rudenko@gmail.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_054955_911010_C4BDF9B4 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20250128_123627_707974_4B15A4A4 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,68 +107,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
+Currently, the rkisp1 driver always uses coherent DMA allocations for
+video capture buffers. However, on some platforms, using non-coherent
+buffers can improve performance, especially when CPU processing of
+MMAP'ed video buffers is required.
 
-Thanks for your efforts!
+For example, on the Rockchip RK3399 running at maximum CPU frequency,
+the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
+malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
+non-coherent DMA allocation. When doing cache management with
+DMA_BUF_IOCTL_SYNC, DMA_BUF_SYNC_START and DMA_BUF_SYNC_END operations
+take around 270 us each.
 
-On 1/28/25 14:04, Quentin Schulz wrote:
-> From: Quentin Schulz <quentin.schulz@cherry.de>
-> 
-> The Wolfvision PF5 can have a PF5 Visualizer display and IO Expander
+This change allows userspace to request the allocation of non-coherent
+buffers. Note that the behavior for existing users will remain unchanged
+unless they explicitly set the V4L2_MEMORY_FLAG_NON_COHERENT flag when
+allocating buffers.
 
-Nitpicks:
+Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-s/Wolfvision/WolfVision
-s/IO Expander/PF5 IO Expander (for consistency)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 6dcefd144d5abe358323e37ac6133c6134ac636e..c94f7d1d73a92646457a27da20726ec6f92e7717 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1563,6 +1563,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
+ 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+ 	q->lock = &node->vlock;
+ 	q->dev = cap->rkisp1->dev;
++	q->allow_cache_hints = 1;
+ 	ret = vb2_queue_init(q);
+ 	if (ret) {
+ 		dev_err(cap->rkisp1->dev,
 
-> board connected to it. Therefore, let's generate an overlay test so the
-> application of the two overlays are validated against the base DTB.
-> 
-> Suggested-by: Michael Riesch <michael.riesch@wolfvision.net>
-> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+-- 
+2.47.1
 
-Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
-
-Thanks and regards,
-Michael
-
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile | 17 +++++++++++++++--
->  1 file changed, 15 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index def1222c1907eb16b23cff6d540174a4e897abc9..bba9b2f1c761040545bea561878e9b63f8c29488 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -128,8 +128,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
-> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
-> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
-> @@ -170,3 +168,18 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
-> +
-> +# Overlays
-> +## To build one or more overlays, overlay application tests must be added below.
-> +##
-> +## dtb-$(CONFIG_ARCH_ROCKCHIP) += <name of overlay application test>.dtb
-> +## <name of overlay application test>-dtbs := <base>.dtb <overlay-1>.dtbo [<overlay-2>.dtbo ...]
-> +##
-> +## This will generate each individual DTBO listed as a dependency of
-> +## <name of overlay application test>.dtb **AND** make <base>.dtb keep its
-> +## symbols (like when DTC_FLAGS has -@ passed).
-> +
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
-> +rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
-> +	rk3568-wolfvision-pf5-display-vz.dtbo \
-> +	rk3568-wolfvision-pf5-io-expander.dtbo
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
