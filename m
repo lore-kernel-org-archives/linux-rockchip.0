@@ -4,86 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8690C0218D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2067C0218A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:51:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zCxgmOAbDlqBCIdxHyq35K7RMFG1N17kzg4KOPnbJHY=; b=0zi8WZ1l9qo72e
-	Am1okfDijyhPLl67pyOjMp26YX0kkUWHb9P+meO8bx80MKQjdE/p4B+5bShVoGE0RrRLfWnPV7iEX
-	nFu6cQJr8DSZ2VGDhxgEugYFrQkBvlFECMxfkcRkGCkuoQpjm8UrdOU3E5/1ycERRHYgXUBoJV0ow
-	MrnQPjGEYfMt2PhhM8Bx+XXleeqCOMcHW8Wyw3Bna85KdxPVt72SEnLnWToiNP3a7egh5NduRZMsh
-	2XDqQ8c80/xCp+u4tcXzCXNssUNZ1Ey7MGYDfHj0/wuOXaHZR2sqz192UXNbf/UvmerzqI46vBgA0
-	9Da5fdV/WTdhtBtNR60w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=ayxoZua/8oHyDDr70Gu4aF/innf1KD1W1bcVDSg8jig=; b=0ydVfhmqLUezcwqEQscSZvkkHb
+	WNAJU2edX/0S0swGYxYvDVcuTbTwnrxa01Q13w/JIOSq6vSdPkywtHHD3z6KcOaz9UMn28MxSkGBx
+	xLhvEkdXLtuTJrm2Nrw+m6jnd0JpL0NtYjzYtLU6tSrIdLII+83gwynlORHyP+HHXLlwMOuK+KqqN
+	pAym1jcQyHzRKe4M6ZnUwtopZD7Yixd8XZYrVhdnja83UYGHw8l9mPs/vV/DSb5s9jCoxHdoas/pZ
+	1o583sKPsi+3p12a4axSiRBkaWF1C/aRUgSAQoV9ig4a5qn7kxH2oNh0LaoFQGV66gtgc4PrDlVmU
+	e2TdZNIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tclmH-00000004yci-2v3J;
-	Tue, 28 Jan 2025 13:37:17 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1tcm0Q-000000050EM-1ySo;
+	Tue, 28 Jan 2025 13:51:54 +0000
+Received: from mail-dbaeur03on20720.outbound.protection.outlook.com ([2a01:111:f403:260d::720] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tclmF-00000004yc2-0ASY
-	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jan 2025 13:37:16 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-54024ecc33dso5646743e87.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Jan 2025 05:37:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738071433; x=1738676233; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=zS5nSBGls353eF7nm6hUAd/AF7wru9U9pAkqvaCDEtk=;
-        b=BLOEIB/hQc0tSNbMZuQ+HvOqgCngpwx1M1+hfH/izuF6uM1Zm9VXpVMRJIZxLuaVuG
-         pTmMQ93VVYxzKCafpGRvfGl3eju4VTYQbQbubxWACeo5E4JXOvFVyQIrnTxmS+Twn0gM
-         3ykmBJf3svWHwJLwa1AV2VGckf2W1KinJkieoRhMHk4HttpugMkRFQO1CHvCOcqOWhfR
-         zUEugWkZzR1Pw7OEEl4MDvbFPGI6D3apoevWwXcVxy3FclQDlDnEpABtnGdi7AsSm4ce
-         FOv7VTsMykgPMpvl939PamAokPZRKwlmnLlUXUnBOkIy4aoEqwsnYidWkhEvrtQ0CNUN
-         3yzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738071433; x=1738676233;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zS5nSBGls353eF7nm6hUAd/AF7wru9U9pAkqvaCDEtk=;
-        b=KenoCs/HKfstpdB8QZAnNxUF/5BPN/V/gcU7HURCy7HJGtkQA7yghzL0AcJUIlCjO+
-         SZWOAuO6wt9coAKyRSsc8C8JlBv86vwp6hBzEhRsYS4iX/4t/djgthm+roh+9Ws0LNCc
-         Bm9+8UCmbh1lKYdFmwu6CZ93bJZLodgwIft3vs6mjdYJZxU/1oSORJbXhR5yys3yIQ31
-         7RMuj3topKkUJN2ZJuRL7HPtcj1IkSvFIREy7coKuuYhMl5PauZOcAoA0hWmt0RrUJ2u
-         GSfdxf5X9S4EG6VWDSvcrnu5r25g75A+GBUDbvIAtSfNv3XpVCmhIJnVoIukAo39omFl
-         qXkg==
-X-Forwarded-Encrypted: i=1; AJvYcCWm86McvH/Ygm8uzgTYu6rbrXpfulPe+X4rjfUrVwWU149mUdb5SHCOMspByYETfq9vYzI41NqlvOaymvrudg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxlBK2wpyBgJrF7RKUOMQS5fhkUv6SkAOM67J1guUfSq2KpQELX
-	qyOwpZyUb6KgZPKGD6htIXX+YM68lhPw+k4txyWD0p/05j7jxC7IKlqOET9N8RN+j17pteRlZnz
-	D7jo=
-X-Gm-Gg: ASbGnctDgLkMiqLwZM6zpLmzGCRsbBX9O82kqaoYkeF+UBYKZTseh0FgxXIYwp9mW+V
-	m4M4FQPaCJjrebna1Sx5DphF9sRJC0dgjBc78mhJKXZBWihp5Fd+FSeASK9zBaY/UDJWe+6wqZj
-	uWKWGwEjYRa6VnlIrcE94vfhrERQHxvQx/o6ZK6FLV5v+/2wstjaj7M6wvOP6RcIOcPHbbRTItU
-	Lsad9mfjeI56Cw7/k2fmeRZ9xfeTiJmgpe7nDRVfD45UWWkyb6hkaPzD923jnntSeH8F1Fn4rnR
-	Vu7b9fm4ANltMS2KRayi/uK/EsqU2cnusufK13gYqhetbehx0GxKAz/76PW7DeNTvSTOlcM=
-X-Google-Smtp-Source: AGHT+IHRQpvnMCwRGuG3jC7iKv4H2kfKHC2VD5D+BEBIB2Y39FraAj7yntP5uzpjjhvWy5YiAruoVg==
-X-Received: by 2002:ac2:485c:0:b0:540:1cb9:850b with SMTP id 2adb3069b0e04-5439c2483bemr14815595e87.31.1738071432753;
-        Tue, 28 Jan 2025 05:37:12 -0800 (PST)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543c837a139sm1659076e87.202.2025.01.28.05.37.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jan 2025 05:37:11 -0800 (PST)
-Date: Tue, 28 Jan 2025 15:37:08 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 1/2] drm/bridge: synopsys: Add audio support for
- dw-hdmi-qp
-Message-ID: <aniwulekagpuxcppo6qa2vfkov4xwby75oop4louywjhlksydu@rzd7px6qk67g>
-References: <20250123222850.223255-1-detlev.casanova@collabora.com>
- <20250123222850.223255-2-detlev.casanova@collabora.com>
- <mpj5o2kdadkwsutjdtmze6riycdan3w7mohgqdzxiwfpvlh7zx@eocnqikqwrwt>
- <4954567.GXAFRqVoOG@earth>
+	id 1tclyV-00000004zz0-3YuJ;
+	Tue, 28 Jan 2025 13:49:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=IUF/302JdVt/nUky7II5i2vmeuyz8DzLAkJ+oM+Nbo3mbFgeKmcTP72QWGqp1DpFDiay1lPcbs9maOAm7Q8DJe5EU2lShXi8vHiil93oi9rtRyoFg0iD/FEYqyfAZ4sRxLTi3oOKWc5p6nNCu2gHVWBOM1ZE/4/UbxbmWieBhQROtTBwFxohC9kVBo2XTStLoSHv4fqBn8ubiBmFRNzIJATCZrLa2LkQTrLVdWxEPo8bNLDmlyMJcSXonGS+ufSCg7+x9ft4ub6cqXwqxaXPBfG91pmWxbo6RxHVPLSRoItPt9VhGDJH+kqcDE2ZVYF4lycby+FSFeTDXy2XjicI+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=C8HVkUi0UPc3WDD/OQrHyMHWa9mmT1FZwUucYVnBAjM=;
+ b=lmE8VFo7N8+JQqhQxp2JTqCwiwlgDaISk4deV0Z9ynchVcQu+CO7pU7GC4zXLHvajzbdGg6CNDVBgLclQbMX+RKog5TouI/U7aFVRm7z8iGWfadIZyqAoA/N319EJnEExOY/0XSWtr2SO4ZeeCNLzkapqt9hEOQtoLEL5faUj1Lfe0E2Cn5hnOp8A0umsbZBP8Wkev4uVsct+Vf5qZIxHS0BQPYbNdGrj4UTJNaxyuyZk+DhfDxm29/dNuX23Q6KJMiRNEoThstq11k7fGbpWbpfdhV9MjMDMpbqH7ZKLBpb96S+XoGj1JppUP3v2EZKRvbhPIAQhafLhIJcWHIdaA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C8HVkUi0UPc3WDD/OQrHyMHWa9mmT1FZwUucYVnBAjM=;
+ b=UtmZK4eixSYtpQ7sjPmxU6MO9bvlvdjMaIN1OvNl4CXbh2G6vIqvBluMti3Me9AY3QoDOV/sYJBgxsv/K6NkBuVz8WafVYO6AgQkxXy3KS21fwINtajToqjeyhk3ela8JUzFEDgZrIMfcv5KyGI5iac9IhafPaYuEqq4rLillGU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by DB8PR08MB5436.eurprd08.prod.outlook.com (2603:10a6:10:111::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8377.21; Tue, 28 Jan
+ 2025 13:49:45 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d%4]) with mapi id 15.20.8377.021; Tue, 28 Jan 2025
+ 13:49:45 +0000
+Message-ID: <8641ce0b-2f7e-462e-a88b-f71295529a91@wolfvision.net>
+Date: Tue, 28 Jan 2025 14:49:50 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/4] arm64: dts: rockchip: add overlay test for
+ Wolfvision PF5
+To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Quentin Schulz <quentin.schulz@cherry.de>
+References: <20250128-pre-ict-jaguar-v3-0-7be2f09d390a@cherry.de>
+ <20250128-pre-ict-jaguar-v3-1-7be2f09d390a@cherry.de>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+In-Reply-To: <20250128-pre-ict-jaguar-v3-1-7be2f09d390a@cherry.de>
+X-ClientProxiedBy: VI1PR09CA0162.eurprd09.prod.outlook.com
+ (2603:10a6:800:120::16) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4954567.GXAFRqVoOG@earth>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DB8PR08MB5436:EE_
+X-MS-Office365-Filtering-Correlation-Id: 61d2cbf8-fff1-4ef8-06ee-08dd3fa29f98
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZVBVZkswMDdzWFkrQzZjUmlzWmIvUDQwbHlMa3dCQVdxeHVacTBFbnNBL3o4?=
+ =?utf-8?B?L29GUTZ1WEhyWGNDYnlHT0Vkckk5REdadm1uMFp0NHRBVE1MWmQ3QUttaWNr?=
+ =?utf-8?B?SWFBcEJVYXZHQ2FvRmovVzBSbTNCNVpFRlFkNCtncjlQZFF1YWFlNkJySHdD?=
+ =?utf-8?B?YkZrd2FZYU52OHRrdnM4Z05Sc2h5TGQ3eDRUSVVDUHcrK3NMZ01weE1TUmw5?=
+ =?utf-8?B?cm5RSWw1dzhtLzRFSTJuUVp2OWFSeUF4Q0dFK3FxM1VnZzlEMmkwZnR2T2Jq?=
+ =?utf-8?B?UnlFazVUdDVZUThrQml4a1laWXBpODk4WVBUcFVuRjUvME1oSG5TREN3dDRv?=
+ =?utf-8?B?Q3pzNEsxV3RMb2dUejkrK3ppcmtqN1lhV0UwNFJKZU5PYzZEbXNZRXptL1pT?=
+ =?utf-8?B?SjJSdXFPaXlBMzdwMlZ1aVc5L1JVMnIyL2M4MTMrZnJxNTg5VlE3NGQ0RjBp?=
+ =?utf-8?B?cnpJd2crWVl1Z2pXQVJnSU9MRWZaL3NvWlM0T1ppbXhiVTk1Y1NnSVBDQm51?=
+ =?utf-8?B?Z2dKd1NpZU5tbzdqMXVvcnR3U0EzMFhGY1lRWnAySkRJWnVHMmlwMnRLNE8w?=
+ =?utf-8?B?V25POUVGbzYyR3BRMFdJeDRIT01yaSt3cEQ5a0N5eHM0WEhQTnhLaWpEZ3ZV?=
+ =?utf-8?B?bGYzSVVCWStJeE1WVHE0a000NGdVZitBY2UxWU83T0FLS0NjajRPVi8xSDRT?=
+ =?utf-8?B?dVJkU2JFREpOMFpDYm5qQ1RtK2VnbFh6UzlXTEVKbjR3N1hyUGpOUVp5ektE?=
+ =?utf-8?B?b1F0WWU3OFc0cGI3MmZ4YTBCSVc0T1RreHBMOTBsVmlYUW5VTWtWbmQzQVpI?=
+ =?utf-8?B?eGxFM1NBSmF5VWt3eWNQZGRkNFJEblNxMXFsS1R4YmZjR3lUcGFSVUFGRjR1?=
+ =?utf-8?B?WVFtV29rSE1BbnNwRnNpZ01TaUUyaWptdUtqK0VuY29SRVpvQWsxQWNpWHRo?=
+ =?utf-8?B?UTZyY2cwak9VWHNYZlBtUUt3SHZuZTlRbWllWmZGUDdPWi9xN2UvckRNY0RQ?=
+ =?utf-8?B?OFF6YmxWRXRRV3FFNmE0SWxJLzE4UjR6K2JxSDlUbE5uVWg2ZElwRzdOeEs5?=
+ =?utf-8?B?aEEycDcrM09WWnFVZVpuVVpSaWw0SlJMUTdpSXdRS1NMWC8rSW4wcnFkWlE2?=
+ =?utf-8?B?R0VjRkh6ZnVucUNKME5OUE9hLzAzSlhrWlZqcG1udmR3VVRqNmRmRDkrcExU?=
+ =?utf-8?B?L05DNnNYYU5NaTRLZWNYUXIvU1JRYlRuTnl0T1FreFhjV3ZBMW5Yd2NsMWsy?=
+ =?utf-8?B?dXh5NkNrQ3F4Z2p0NnlqV0tXLzVrMTBRb0N1OXlkOHlTWkh3UTIwQUdxREVM?=
+ =?utf-8?B?SGxtVWdSbnFJaG02M0psOTBjRTlFazJnN0lEZG5TU2RSWGVaVVk0WnR1UExz?=
+ =?utf-8?B?U3VyZk9Ma0NuMHlYcXZQNGhxaXIvOXZDY09Rd2lURUZWK2cxN1JVZDlVNWtN?=
+ =?utf-8?B?bXEzbUp2U3FVTitNUU9GeFhVYVJiMmpXMEpDaHJkMWtMUGRNaWpLNldXSUxL?=
+ =?utf-8?B?UjlOdVhWeEV2VUEwM2VRYVVPRzZmU2NlYzRVdnJVZFBMb09yUjdIamNrNy9Y?=
+ =?utf-8?B?Tm5zZTB0ZHZOUzhpOU51c0xLTTd6aFRVL1pkcDdMT2JOMmxKTGUzNmF2dlcv?=
+ =?utf-8?B?Z3BqMVNGMGllbmZkSE5mUjRCMUVBSWxCYzFDRk5XTHJRejdkcll4RUZyaGhu?=
+ =?utf-8?B?ZnRzNzBKK1FVSE45bHI5a0s1T2UzM0huZXd1b01SZTlQUy9MZHBEVDRsOXFl?=
+ =?utf-8?B?UXVxRGFiaHpXSTlGQVROYitYMzk0MVNTRUdCcmh6WjEzaXU0Tk5FZXBFYVJX?=
+ =?utf-8?B?QUdFRGEvNkxveU55aThZU0dwVGlWZDd1Znl6MThVdG9mRTcxcG0rayt3WFVt?=
+ =?utf-8?Q?XQFtnOoImFpYG?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SzY0dURoNWsvQ21vUk40YlQwV202U3Rkd1pRbWxpMDNmeHhOc1Q3QWI1UnR6?=
+ =?utf-8?B?K1ZidFVOaW1vWHdjUjJsdFRxemtMUVJySjZsRnZyNndieXYva2hBcmlFUmti?=
+ =?utf-8?B?bEltQVppNXdkYUhrS0JrZkdBTnY2QmNkVjN2bFkxMFhab1hHTVM4R3NPanl4?=
+ =?utf-8?B?MUZ0WnBQSXBwZk1FSXRwak9MNTIrRVpnQnQxWjhUYVFJTlBrWTRWSVR4QTl4?=
+ =?utf-8?B?em8xcnd5Wm1leC81ME5aRUZnd1RKQ1J4czRCYVlhTGZENmQvMWVlMjVmUGg5?=
+ =?utf-8?B?bjhrREp6emRiZzZQbnlBR21PTkJaUU1JdlJlYUZ2QU14WGVnUHh6c1YwZ3Bv?=
+ =?utf-8?B?N2l6cG1XVzJBckZwczB5eW9IR0ZuK3g1c2VCdmFLRVNFNGxkTXU4eU94UGcv?=
+ =?utf-8?B?Zms5NnRxMytNd2VaS1J1WWdTQ0hvcVhlamk1Z0ZlYmZBeGs0Y3hKT2dUT3Fq?=
+ =?utf-8?B?di8wSG1ZOUtUdjZxdnVTeEJxSmxXejZTdmFNeVBmRVByMFFqdzhRcnhPOS8r?=
+ =?utf-8?B?YkRtZnBNNWZ1NWFxODFWdEpVKzViZlh2MUo4RnFyUUZsYndBWTB5RktWSzVo?=
+ =?utf-8?B?ZnlKcUdUZHZJNUpDcTk3ejdCR0hsdEZ2bmk1S081K0dxVVdEeUxsQzRnTmpS?=
+ =?utf-8?B?TDRWV1ZMaXp2NGUwOUxNckorbmlJcW5lZTdxME5ZWVZxNy9Sei9oMVh2WkhO?=
+ =?utf-8?B?N3h5NzV2Zzhzd1l0SEQyamNIWVFQaFV2cjBZVEo5MlRlVTZycWxPWjQxMVZs?=
+ =?utf-8?B?ejdOTlpnRTRzL2J0UDVYdmVVeXNvWlZhOHVtbnhjUXJRSXQvTmxYQ1VGNDFD?=
+ =?utf-8?B?c2huOGVDbDd1NGVuSFJ5eDk5MkhWOEpXMkNEUHAzd1l6VFVvaEVnaFdQajZh?=
+ =?utf-8?B?RVN2a2JkT0d2SFFTaWdwTXlmREo5bCtremwySFNUbnVzczRlSzVtNHZGZnk4?=
+ =?utf-8?B?VWdUOXkyMVdFQXd2TVZZSDlrZHlxUFJxbWJ2bU82cHhQNm5nMFNxMHVvOFgr?=
+ =?utf-8?B?TXdrMy9wM3RBaGg3UnVKRkJQZ1lnMExmVkNDT3YvLzFNdEpNK1Jkc1B0Uld2?=
+ =?utf-8?B?K3A1QnJaVWY0MHJLeHNRYnBmSGV2NUFMeEtYZEpMekFXdWE4c1R3SEFWMkQv?=
+ =?utf-8?B?R3pwNXdqdEptd3E3UjAyNkI2elVvUCt2ei9VeDhaTjZ0SUV3d05wbVNhWkxu?=
+ =?utf-8?B?UkxJeEx1UWN2OWh5S1FuQnRtN0dlaVUzQUQyVHdjc2xSbE5QTkJZNGg1R3VZ?=
+ =?utf-8?B?NkNVU1l2MHRacXBuNUdlSEF2aTJqQlEvYnRDRHR4WXpEN0Z0R2N1cU93QnJ3?=
+ =?utf-8?B?MlpDNUcrRUJuVlFvNkdaQ0JSZEE1RWlkc1YwUWRUSEpKOHI0STNCakcrRkxO?=
+ =?utf-8?B?YmJhRXBWTytpUUsxU2xaQ056c2phK0pzeW5ZZXU0akZ5eGJ3WGxUWTZTczlL?=
+ =?utf-8?B?dmV3Q3VSVTJjdGNIMGcxUWd6NGhZM21HREIyVTN4ZndMalZuTmM0VDlVNzd6?=
+ =?utf-8?B?dndRV05rSXNOaGd0TUZGVTEvT21LZHJLRU9salU1RzVnYkFTNXRyTWVOd0Vk?=
+ =?utf-8?B?MTFqdDhqZGRUaXhZNkZTVUlOdU1ZRnpYZTN2SzlpUmhMd2JIMXBpK0pFRmJ3?=
+ =?utf-8?B?Mm1aK0lITXlVbGlYdjQ3elJocE9TVitSUGxTSE14QWRJUHViZnAxd0RacDg5?=
+ =?utf-8?B?QkJnZnV5YTVOdnBQYWNINHdUQ2l1M1cvZk1aYWJXbnREMnFRVy9GYjRHb1FI?=
+ =?utf-8?B?QmtTL3R4U1FPQmZlYTVTSjdaNGd1YmtKTG5GWWFpZ1JvUnVqSTZ3b0RIZ0xq?=
+ =?utf-8?B?R2dKTjJ6MXpvb1dDR1FyYUxsSmh0VjdoRE9kKzYzdmI0VU1zYVVGeThPdStF?=
+ =?utf-8?B?Q1hNU2hsMUVlM3JOTWJaakplUzJjZTlpMTR6Mm1ObGhRcTNhVDJLUlhya1ZQ?=
+ =?utf-8?B?T1E1V01OSXFiRmJWMXNLUCs1d2NSS0Q1QkZrNkJCY2xuMmJ3QU1acnhROHJC?=
+ =?utf-8?B?a2M4aXp6QWF1elpidEZScGhNcTRJVFAvNHlhS2pUVE1hbWg0akZzOVhBd3Bi?=
+ =?utf-8?B?RVptQWh2bUQ1SGpyVXgxVHUzYlo3b3pJamg0Y3F3MktvSmdrbU9ZbGs2S0U3?=
+ =?utf-8?B?SHMvOG4yTUV3SnRFNE1ucFhkWTVCMW5lQk9lOXB0RjNDL2wrZUdEYjI4bjdl?=
+ =?utf-8?B?enc9PQ==?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 61d2cbf8-fff1-4ef8-06ee-08dd3fa29f98
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jan 2025 13:49:45.3009
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zlBBx+IyZDsMnlEq2xXMygTHxpOfGKfOmPoTTkb3JGzswS05AtHNMYTyoPquwzPontkU4f+0aXXXMTCQ3Uej005Kv11mGAQXIkDL9F9PBc4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5436
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_053715_092672_4C0686B1 
-X-CRM114-Status: GOOD (  48.03  )
+X-CRM114-CacheID: sfid-20250128_054955_911010_C4BDF9B4 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,378 +177,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 27, 2025 at 03:34:21PM -0500, Detlev Casanova wrote:
-> On Friday, 24 January 2025 00:01:38 EST Dmitry Baryshkov wrote:
-> > On Thu, Jan 23, 2025 at 05:28:06PM -0500, Detlev Casanova wrote:
-> > > From: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > > 
-> > > Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
-> > > 
-> > > The register values computation functions (for n) are based on the
-> > > downstream driver, as well as the register writing functions.
-> > > 
-> > > The driver uses the generic HDMI Codec framework in order to implement
-> > > the HDMI audio support.
-> > > 
-> > > Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > > ---
-> > > 
-> > >  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 424 +++++++++++++++++++
-> > >  1 file changed, 424 insertions(+)
-> > > 
-> > > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c index
-> > > b281cabfe992e..f79d38de4c6c4 100644
-> > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > > @@ -36,6 +36,66 @@
-> > > 
-> > >  #define SCRAMB_POLL_DELAY_MS	3000
-> > > 
-> > > +/*
-> > > + * Unless otherwise noted, entries in this table are 100% optimization.
-> > > + * Values can be obtained from hdmi_compute_n() but that function is
-> > > + * slow so we pre-compute values we expect to see.
-> > > + *
-> > > + * All 32k and 48k values are expected to be the same (due to the way
-> > > + * the math works) for any rate that's an exact kHz.
-> > > + */
-> > > +static const struct dw_hdmi_audio_tmds_n {
-> > > +	unsigned long tmds;
-> > > +	unsigned int n_32k;
-> > > +	unsigned int n_44k1;
-> > > +	unsigned int n_48k;
-> > > +} common_tmds_n_table[] = {
-> > > +	{ .tmds = 25175000, .n_32k = 4096, .n_44k1 = 12854, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 25200000, .n_32k = 4096, .n_44k1 = 5656, .n_48k = 6144, },
-> > 
-> > These values do not seem to match the tables in HDMI, Appendix D. Is
-> > there any reason for that?
-> 
-> From what I see, this seems to be because CTS is never set in the driver (same 
-> behavior as downstream driver, which overrides CTS).
-> So for values where CTS != TMDS/1000 in the recommendations table, N is 
-> different here to make up for it.
-> 
-> Do you think I should Improve the behavior to set CTS when needed ?
+Hi Quentin,
 
-I think that it's up to you (as a patch author). But the reason for
-deviation should be documented (ideally with something better than "done
-so by the downstream").
+Thanks for your efforts!
 
+On 1/28/25 14:04, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@cherry.de>
 > 
-> This also made me realize that in this patch set, a CTS value is used but 
-> never set to anything different to 0, which needs to be changed anyway.
-> 
-> > > +	{ .tmds = 27000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> > > +	{ .tmds = 28320000, .n_32k = 4096, .n_44k1 = 5586, .n_48k = 6144, },
-> > > +	{ .tmds = 30240000, .n_32k = 4096, .n_44k1 = 5642, .n_48k = 6144, },
-> > > +	{ .tmds = 31500000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> > > +	{ .tmds = 32000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> > > +	{ .tmds = 33750000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> > > +	{ .tmds = 36000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> > > +	{ .tmds = 40000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
-> > > +	{ .tmds = 49500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> > > +	{ .tmds = 50000000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> > > +	{ .tmds = 54000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
-> > > +	{ .tmds = 65000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> > > +	{ .tmds = 68250000, .n_32k = 4096, .n_44k1 = 5376, .n_48k = 6144, },
-> > > +	{ .tmds = 71000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> > > +	{ .tmds = 72000000, .n_32k = 4096, .n_44k1 = 5635, .n_48k = 6144, },
-> > > +	{ .tmds = 73250000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 74250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
-> > > +	{ .tmds = 75000000, .n_32k = 4096, .n_44k1 = 5880, .n_48k = 6144, },
-> > > +	{ .tmds = 78750000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
-> > > +	{ .tmds = 78800000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
-> > > +	{ .tmds = 79500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
-> > > +	{ .tmds = 83500000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
-> > > +	{ .tmds = 85500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
-> > > +	{ .tmds = 88750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 97750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 101000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 106500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 108000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 115500000, .n_32k = 4096, .n_44k1 = 5712, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 119000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 135000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 146250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 148500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 154000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, 
-> },
-> > > +	{ .tmds = 162000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, 
-> },
-> > > +
-> > > +	/* For 297 MHz+ HDMI spec have some other rule for setting N */
-> > > +	{ .tmds = 297000000, .n_32k = 3073, .n_44k1 = 4704, .n_48k = 5120, 
-> },
-> > > +	{ .tmds = 594000000, .n_32k = 3073, .n_44k1 = 9408, .n_48k = 10240, 
-> },
-> > > +
-> > > +	/* End of table */
-> > > +	{ .tmds = 0,         .n_32k = 0,    .n_44k1 = 0,    .n_48k = 0, },
-> > > +};
-> > > +
-> > > 
-> > >  struct dw_hdmi_qp_i2c {
-> > >  
-> > >  	struct i2c_adapter	adap;
-> > > 
-> > > @@ -83,6 +143,326 @@ static void dw_hdmi_qp_mod(struct dw_hdmi_qp *hdmi,
-> > > unsigned int data,> 
-> > >  	regmap_update_bits(hdmi->regm, reg, mask, data);
-> > >  
-> > >  }
-> > > 
-> > > +static struct dw_hdmi_qp *dw_hdmi_qp_from_bridge(struct drm_bridge
-> > > *bridge) +{
-> > > +	struct dw_hdmi_qp *hdmi = container_of(bridge, struct dw_hdmi_qp,
-> > > bridge); +
-> > > +	return hdmi;
-> > 
-> > Just `return container_of(bridge, struct dw_hdmi_qp, bridge);`
-> > 
-> > > +}
-> > > +
-> > 
-> > [...]
-> > 
-> > > +
-> > > +static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
-> > > +			    struct drm_bridge *bridge)
-> > > +{
-> > > +	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
-> > > +
-> > > +	if (connector->status == connector_status_connected)
-> > > +		dw_hdmi_qp_mod(hdmi, 0, 
-> AVP_DATAPATH_PACKET_AUDIO_SWDISABLE,
-> > > GLOBAL_SWDISABLE); +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int dw_hdmi_qp_audio_prepare(struct drm_connector *connector,
-> > > +			     struct drm_bridge *bridge,
-> > > +			     struct hdmi_codec_daifmt *fmt,
-> > > +			     struct hdmi_codec_params *hparms)
-> > > +{
-> > > +	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
-> > > +	struct drm_connector_state *conn_state =
-> > > +		drm_atomic_helper_connector_duplicate_state(connector);
-> > > +	bool ref2stream = false;
-> > > +	unsigned long long tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-> > > +
-> > > +	drm_atomic_helper_connector_destroy_state(connector, conn_state);
-> > 
-> > This looks suspicious. I'd suggest storing tmds_char_rate to struct
-> > dw_hdmi_qp in .atomic_commit instead of playing with the state.
-> 
-> It is destroyed because it was duplicated above. I could store the value in 
-> .atomic_enable (is that what you meant ?) indeed.
+> The Wolfvision PF5 can have a PF5 Visualizer display and IO Expander
 
-Yes, please. It's better than playing with the state.
+Nitpicks:
 
-> 
-> > > +
-> > > +	if (connector->status != connector_status_connected) {
-> > > +		dev_dbg(hdmi->dev, "connector status is not connected\n");
-> > > +		return 0;
-> > > +	}
-> > > +
-> > > +	if (fmt->bit_clk_provider | fmt->frame_clk_provider) {
-> > > +		dev_err(hdmi->dev, "unsupported clock settings\n");
-> > > +		return -EINVAL;
-> > > +	}
-> > > +
-> > > +	if (fmt->bit_fmt == SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE)
-> > > +		ref2stream = true;
-> > > +
-> > > +	dw_hdmi_qp_set_audio_interface(hdmi, fmt, hparms);
-> > > +	dw_hdmi_qp_set_sample_rate(hdmi, tmds_char_rate, hparms-
-> >sample_rate);
-> > > +	dw_hdmi_qp_set_channel_status(hdmi, hparms->iec.status, ref2stream);
-> > > +	drm_atomic_helper_connector_hdmi_update_audio_infoframe(connector,
-> > > &hparms->cea); +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static void dw_hdmi_qp_audio_disable(struct drm_connector *connector,
-> > > +			      struct drm_bridge *bridge)
-> > > +{
-> > > +	struct dw_hdmi_qp *hdmi = container_of(bridge, struct dw_hdmi_qp,
-> > > bridge); +
-> > > +	if (connector->status != connector_status_connected) {
-> > > +		dev_dbg(hdmi->dev, "connector status is not connected\n");
-> > > +		return;
-> > > +	}
-> > 
-> > Will audio stream be disabled on disconnect?
-> 
-> No, indeed, I need to review the disconnect sequence, as the HDMI audio 
-> registers cannot be accessed when the VOP has been disabled.
+s/Wolfvision/WolfVision
+s/IO Expander/PF5 IO Expander (for consistency)
 
-:-)
+> board connected to it. Therefore, let's generate an overlay test so the
+> application of the two overlays are validated against the base DTB.
+> 
+> Suggested-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Please note that we are sending the 'disconnected' even only when the
-monitor actually gets disconnected, but you might need to perform
-housekeeping in .atomic_disable().
+Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
 
-> 
-> > And anyway the InfoFrame should be cleared by a call to
-> > drm_atomic_helper_connector_hdmi_clear_audio_infoframe().
-> > 
-> > > +
-> > > +	/*
-> > > +	 * Keep ACR, AUDI, AUDS packet always on to make SINK device
-> > > +	 * active for better compatibility and user experience.
-> > > +	 *
-> > > +	 * This also fix POP sound on some SINK devices which wakeup
-> > > +	 * from suspend to active.
-> > > +	 */
-> > > +	dw_hdmi_qp_mod(hdmi, I2S_BPCUV_RCV_DIS, I2S_BPCUV_RCV_MSK,
-> > > +		  AUDIO_INTERFACE_CONFIG0);
-> > > +	dw_hdmi_qp_mod(hdmi, AUDPKT_PBIT_FORCE_EN | AUDPKT_CHSTATUS_OVR_EN,
-> > > +		  AUDPKT_PBIT_FORCE_EN_MASK | AUDPKT_CHSTATUS_OVR_EN_MASK,
-> > > +		  AUDPKT_CONTROL0);
-> > > +
-> > > +	dw_hdmi_qp_mod(hdmi, AVP_DATAPATH_PACKET_AUDIO_SWDISABLE,
-> > > +		  AVP_DATAPATH_PACKET_AUDIO_SWDISABLE, GLOBAL_SWDISABLE);
-> > > +}
-> > > +
-> > > 
-> > >  static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
-> > >  
-> > >  			       unsigned char *buf, unsigned int length)
-> > >  
-> > >  {
-> > > 
-> > > @@ -361,6 +741,40 @@ static int dw_hdmi_qp_config_drm_infoframe(struct
-> > > dw_hdmi_qp *hdmi,> 
-> > >  	return 0;
-> > >  
-> > >  }
-> > > 
-> > > +static int dw_hdmi_qp_config_audio_infoframe(struct dw_hdmi_qp *hdmi,
-> > > +					     const u8 *buffer, size_t 
-> len)
-> > > +{
-> > > +	/*
-> > > +	 * AUDI_CONTENTS0: { RSV, HB2, HB1, RSV }
-> > > +	 * AUDI_CONTENTS1: { PB3, PB2, PB1, PB0 }
-> > > +	 * AUDI_CONTENTS2: { PB7, PB6, PB5, PB4 }
-> > > +	 *
-> > > +	 * PB0: CheckSum
-> > > +	 * PB1: | CT3    | CT2  | CT1  | CT0  | F13  | CC2 | CC1 | CC0 |
-> > > +	 * PB2: | F27    | F26  | F25  | SF2  | SF1  | SF0 | SS1 | SS0 |
-> > > +	 * PB3: | F37    | F36  | F35  | F34  | F33  | F32 | F31 | F30 |
-> > > +	 * PB4: | CA7    | CA6  | CA5  | CA4  | CA3  | CA2 | CA1 | CA0 |
-> > > +	 * PB5: | DM_INH | LSV3 | LSV2 | LSV1 | LSV0 | F52 | F51 | F50 |
-> > > +	 * PB6~PB10: Reserved
-> > > +	 *
-> > > +	 * AUDI_CONTENTS0 default value defined by HDMI specification,
-> > > +	 * and shall only be changed for debug purposes.
-> > > +	 * So, we only configure payload byte from PB0~PB7(2 word total).
-> > > +	 */
-> > > +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &buffer[3], 2);
-> > 
-> > Please also update PKT_AUDI_CONTENTS0, in case it gets damaged somehow.
-> 
-> These are simply the values in the first 4 bytes of buffer then ?
-> 
-> > > +
-> > > +	/* Enable ACR, AUDI, AMD */
-> > > +	dw_hdmi_qp_mod(hdmi,
-> > > +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | 
-> PKTSCHED_AMD_TX_EN,
-> > > +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | 
-> PKTSCHED_AMD_TX_EN,
-> > > +		  PKTSCHED_PKT_EN);
-> > > +
-> > > +	/* Enable AUDS */
-> > > +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AUDS_TX_EN, PKTSCHED_AUDS_TX_EN,
-> > > PKTSCHED_PKT_EN); +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > 
-> > >  static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
-> > >  
-> > >  					    struct drm_bridge_state 
-> *old_state)
-> > >  
-> > >  {
-> > > 
-> > > @@ -477,6 +891,9 @@ static int dw_hdmi_qp_bridge_write_infoframe(struct
-> > > drm_bridge *bridge,> 
-> > >  	case HDMI_INFOFRAME_TYPE_DRM:
-> > >  		return dw_hdmi_qp_config_drm_infoframe(hdmi, buffer, len);
-> > > 
-> > > +	case HDMI_INFOFRAME_TYPE_AUDIO:
-> > > +		return dw_hdmi_qp_config_audio_infoframe(hdmi, buffer, len);
-> > > +
-> > > 
-> > >  	default:
-> > >  		dev_dbg(hdmi->dev, "Unsupported infoframe type %x\n", 
-> type);
-> > >  		return 0;
-> > > 
-> > > @@ -494,6 +911,9 @@ static const struct drm_bridge_funcs
-> > > dw_hdmi_qp_bridge_funcs = {> 
-> > >  	.hdmi_tmds_char_rate_valid = 
-> dw_hdmi_qp_bridge_tmds_char_rate_valid,
-> > >  	.hdmi_clear_infoframe = dw_hdmi_qp_bridge_clear_infoframe,
-> > >  	.hdmi_write_infoframe = dw_hdmi_qp_bridge_write_infoframe,
-> > > 
-> > > +	.hdmi_audio_startup = dw_hdmi_qp_audio_enable,
-> > > +	.hdmi_audio_shutdown = dw_hdmi_qp_audio_disable,
-> > > +	.hdmi_audio_prepare = dw_hdmi_qp_audio_prepare,
-> > > 
-> > >  };
-> > >  
-> > >  static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
-> > > 
-> > > @@ -603,6 +1023,10 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct
-> > > platform_device *pdev,> 
-> > >  	if (IS_ERR(hdmi->bridge.ddc))
-> > >  	
-> > >  		return ERR_CAST(hdmi->bridge.ddc);
-> > > 
-> > > +	hdmi->bridge.hdmi_audio_max_i2s_playback_channels = 8;
-> > > +	hdmi->bridge.hdmi_audio_dev = dev;
-> > > +	hdmi->bridge.hdmi_audio_dai_port = 1;
-> > > +
-> > > 
-> > >  	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
-> > >  	if (ret)
-> > >  	
-> > >  		return ERR_PTR(ret);
-> 
-> Regards,
-> 
-> Detlev.
-> 
-> 
+Thanks and regards,
+Michael
 
--- 
-With best wishes
-Dmitry
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile | 17 +++++++++++++++--
+>  1 file changed, 15 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index def1222c1907eb16b23cff6d540174a4e897abc9..bba9b2f1c761040545bea561878e9b63f8c29488 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -128,8 +128,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
+> @@ -170,3 +168,18 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
+> +
+> +# Overlays
+> +## To build one or more overlays, overlay application tests must be added below.
+> +##
+> +## dtb-$(CONFIG_ARCH_ROCKCHIP) += <name of overlay application test>.dtb
+> +## <name of overlay application test>-dtbs := <base>.dtb <overlay-1>.dtbo [<overlay-2>.dtbo ...]
+> +##
+> +## This will generate each individual DTBO listed as a dependency of
+> +## <name of overlay application test>.dtb **AND** make <base>.dtb keep its
+> +## symbols (like when DTC_FLAGS has -@ passed).
+> +
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
+> +rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
+> +	rk3568-wolfvision-pf5-display-vz.dtbo \
+> +	rk3568-wolfvision-pf5-io-expander.dtbo
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
