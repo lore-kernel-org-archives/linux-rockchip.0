@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17324C0218D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 10:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77C5C0218A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+OCjNMj3QqphuLuurChCPkIGaPBoLuQPP4e5ZGLwPqI=; b=V/AOE7TO3NxqcawzEv6ZBn29JS
-	1VGbNNTZdslsYF70WTt3n96n1IVG/64mUjdED/xborPkAJaiG6THWjAq5Klo1+rdXNhqgs7i1+ewe
-	2+tO/hT7ZthNzmXC1tci6PxjnMMjYn/UhSatabCbCC6w7oMaBCuYvTKG85QgbWHA+uM7Qj+atC1gf
-	7bIOpc4oe6FZ+sJFd4bAbLv6hzE09VCrjm7OR41howIQMPrzkoS4aJUtwnxBWwOqY5fQKI4w6EBnU
-	oW/Pu7CvTAKnIdvffWUiKNp6iiTbd+jyNgAkmmcPptG+o6Bu6mFRNZneK0LcWxi3naZ9bZdYaLUqo
-	SIqQU2jg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vUbumhnVber7pXR1ZsGSKVfqE5lAEXzYpzJc50IT7Kg=; b=1MVf0rUBXP4ZfO
+	1RgtLdlvqWVbvQSzlLuVD+usuocKvBUzEbIl8SM50q41I+BIhHPz2m1mt/VX4fcavqM7SeZb1DUov
+	KJktBthDl/9V4VrU8BMUjXh7SW+GBt6vcqGj8p7C25jA3fCDPw86rcSEg5m7k6zjOsgnF3yRD4HaB
+	ZfsvOxF7N/HXr4MOpxXa17GTmz9z59npCzoM44wKkrJ84/EkRfQsVZmw3nu39y1UfZ4c7WUJ8gGdJ
+	jQNT1vq4o7ExBuu6kumpxyj+Ul6vrZ3ma+AKMLbzQhjc4fjnWarashxvzISGm6EbMutu+p2jSIG5c
+	FZC77SWwMFk+OOfkKYwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcj6V-00000004gLQ-2bNM;
-	Tue, 28 Jan 2025 10:45:59 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tclI1-00000004vHk-3ZUg;
+	Tue, 28 Jan 2025 13:06:01 +0000
+Received: from smtp-190b.mail.infomaniak.ch ([185.125.25.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcj5A-00000004gCa-2OHh;
-	Tue, 28 Jan 2025 10:44:37 +0000
+	id 1tclGf-00000004v3K-3o9R
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Jan 2025 13:04:40 +0000
+Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Yj58w6jZkzYZd;
+	Tue, 28 Jan 2025 14:04:32 +0100 (CET)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4Yj58v4jkjzdbV;
+	Tue, 28 Jan 2025 14:04:31 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH v3 0/4] arm64: dts: rockchip: minimal support for Pre-ICT
+ tester adapter for RK3588 Jaguar + add overlay tests
+Date: Tue, 28 Jan 2025 14:04:12 +0100
+Message-Id: <20250128-pre-ict-jaguar-v3-0-7be2f09d390a@cherry.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1738061074;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QH2HlRrsM2GhBqfQeM842UlYrI8bH7FA97PniLkwhl0=;
-	b=WNFLx3YFReVPhS8mPLJ+8dWLkj7tr6Z5rlcSM2MBg2AlKXwjQwOYTyUZ7BuIy9cl88zSRg
-	9L7QNBrhJTIxbdft7iM1P+wPCvkXVvFBA0CDNbX9oKzXFYPKCPZVjzH+e9KVXAMRll4JG8
-	boKosHygywwhKQ7xIsa9MtIZVb8M9nk56NLhzf1qVSLLxENSJqyM6+dM5JV9JrBqhw5ESm
-	eqrdC+qqUJ7QOL5Wq8OY/pcLTF8jFTfl4/B92L6B0g2k10D3DUNLajEFHQpL67DMSYhIKV
-	knmDzwnuzqgJlPsEFmi/PuyL9iVg57bBwNfmLLkPTkT29wL164GeBWvft+kNEA==
-Date: Tue, 28 Jan 2025 11:44:34 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Alexander Shiyan <eagle.alexander923@gmail.com>, Rob Herring
- <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, devicetree@vger.kernel.org, Sebastian Reichel
- <sebastian.reichel@collabora.com>, stable@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix broken tsadc pinctrl binding
- for rk3588
-In-Reply-To: <CABjd4YwCH93-=Cqck5TiuJoTUkYbRh0495J6w=J8t93oHdt43g@mail.gmail.com>
-References: <20250124052611.3705-1-eagle.alexander923@gmail.com>
- <CABjd4YwA8P9LVuDviO6xydkHpuuOY7XT0pk1oa+FDqOo=uZN4A@mail.gmail.com>
- <a76f315f023a3f8f5435e0681119b4eb@manjaro.org>
- <CABjd4Ywh_AkbXHonx-8vL-hNY5LMLJge5e4oqxvUG+qe6OF-Og@mail.gmail.com>
- <61b494b209d7360d0f36adbf6d5443a4@manjaro.org>
- <CABjd4Yx0p0B=e00MjCpDDq8Z=0FtM0s9EN86WdvRimt-_+kh2w@mail.gmail.com>
- <CABjd4Yy14bpjzvFyc8et-=pmds5uwzfxNqcs7L=+XRXBogZEsQ@mail.gmail.com>
- <CAP1tNvTRER=QzC29Udw4ffOetVECWV+MfZ2o-mbUFvuZ0_i-Kw@mail.gmail.com>
- <b57d8a834f5c07e37e0e7ee74346c700@manjaro.org>
- <CABjd4YwCH93-=Cqck5TiuJoTUkYbRh0495J6w=J8t93oHdt43g@mail.gmail.com>
-Message-ID: <1498db1c6664b39b49cfc71d2e4eb5ef@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-B4-Tracking: v=1; b=H4sIAMzVmGcC/3WMOw7CMBAFr4Jcs2jX+VNxD0Th2OvEFAmyg0UU5
+ e44kSgQopz3NLOIwN5xEOfDIjxHF9w4JMiOB6F7NXQMziQWEmVOEkt4+DTpCe6qeyoPbYNWWea
+ 6NbVIUrqte+3B6y1x78I0+nnvR9rWv6lIQFDZssTW5G2F+qJ79n4+GRZbKsqPXiDRry4BgYrKZ
+ NQg5vZLX9f1DX5vCmHrAAAA
+X-Change-ID: 20241206-pre-ict-jaguar-b90fafee8bd8
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_024436_920035_3CD0DFF0 
-X-CRM114-Status: GOOD (  24.38  )
+X-CRM114-CacheID: sfid-20250128_050438_087552_0EC21FA8 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,52 +68,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQWxleGV5LAoKT24gMjAyNS0wMS0yOCAxMTozMCwgQWxleGV5IENoYXJrb3Ygd3JvdGU6
-Cj4gT24gVHVlLCBKYW4gMjgsIDIwMjUgYXQgMToyNOKAr1BNIERyYWdhbiBTaW1pYyA8ZHNpbWlj
-QG1hbmphcm8ub3JnPiAKPiB3cm90ZToKPj4gT24gMjAyNS0wMS0yNiAxNToyNSwgQWxleGFuZGVy
-IFNoaXlhbiB3cm90ZToKPj4gPj4gPiA+IEkgdGhpbmsgaXQncyBhY3R1YWxseSBiZXR0ZXIgdG8g
-YWNjZXB0IHRoZSBhcHByb2FjaCBpbiBBbGV4YW5kZXIncwo+PiA+PiA+ID4gcGF0Y2gsIGJlY2F1
-c2UgdGhlIHdob2xlIHRoaW5nIGFwcGxpZXMgdG8gb3RoZXIgUm9ja2NoaXAgU29DcyBhcyB3ZWxs
-LAo+PiA+PiA+ID4gbm90IGp1c3QgdG8gdGhlIFJLMzU4OChTKS4KPj4gPj4gPgo+PiA+PiA+IEFu
-eXdheSwgSSd2ZSBqdXN0IHRyaWVkIGl0IGFmdGVyIGluY2x1ZGluZyB0aGUgY2hhbmdlcyBiZWxv
-dywgYW5kCj4+ID4+ID4gd2hpbGUgL3N5cy9rZXJuZWwvZGVidWcvcGluY3RybC9waW5jdHJsLWhh
-bmRsZXMgc2hvd3MgdGhlIGV4cGVjdGVkCj4+ID4+ID4gcGluY3RybHMgdW5kZXIgdHNhZGMsIHRo
-ZSBkcml2ZXIgc3RpbGwgZG9lc24ndCBzZWVtIHRvIGJlIHRyaWdnZXJpbmcgYQo+PiA+PiA+IFBN
-SUMgcmVzZXQuIFdlaXJkLiBBbnkgdGhvdWdodHMgd2VsY29tZS4KPj4gPj4KPj4gPj4gSSBmb3Vu
-ZCB0aGUgY3VscHJpdC4gIm90cG91dCIgKG9yICJkZWZhdWx0IiBpZiB3ZSBmb2xsb3cgQWxleGFu
-ZGVyJ3MKPj4gPj4gc3VnZ2VzdGVkIGFwcHJvYWNoKSBwaW5jdHJsIHN0YXRlIHNob3VsZCByZWZl
-ciB0byB0aGUgJnRzYWRjX3NodXRfb3JnCj4+ID4+IGNvbmZpZyBpbnN0ZWFkIG9mICZ0c2FkY19z
-aHV0IC0gdGhlbiB0aGUgUE1JQyByZXNldCB3b3Jrcy4KPj4gPgo+PiA+IEdyZWF0LCBJJ2xsIHVz
-ZSB0aGlzIGluIHYyLgo+PiAKPj4gUGxlYXNlLCBsZXQncyB3YWl0IHdpdGggdGhlIHYyIHVudGls
-IEkgZ28gdGhyb3VnaCB0aGUgd2hvbGUgdGhpbmcgCj4+IGFnYWluCj4gCj4gSSwgZm9yIG9uZSwg
-d291bGQgd2VsY29tZSBhIHYyIHRoYXQgY291bGQgYmUgdGVzdGVkIGFuZCBjb25maXJtZWQKPiB3
-b3JraW5nIHdpdGggYW5kIHdpdGhvdXQgZHJpdmVyIGNoYW5nZXMuIEVzcGVjaWFsbHkgZ2l2ZW4g
-dGhhdDoKPiAgLSB0aGUgY2hhbmdlcyBhcmUgcHJldHR5IHNtYWxsCj4gIC0gaGFyZHdhcmUgZG9j
-cyBzYXkgbm90aGluZyBhYm91dCB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIFRTQURDX1NIVVQKPiB2
-cy4gVFNBRENfU0hVVF9PUkcsIGV4Y2VwdCB0aGF0IG9uZSBpcyBjb25maWcgIzIgYW5kIHRoZSBv
-dGhlciBpcwo+IGNvbmZpZyAjMQo+ICAtIG5vbmUgb2YgdGhlIHNvdXJjZSB0cmVlcyBJIGxvb2tl
-ZCBhdCBzZWVtIHRvIGVuYWJsZSBQTUlDIGJhc2VkCj4gcmVzZXRzIG9uIGFueSBSSzM1ODgtYmFz
-ZWQgYm9hcmRzLCBzbyB0aGVzZSBwaW5jdHJsIGNvbmZpZ3MgYXBwZWFyIHRvCj4gaGF2ZSBuZXZl
-ciBiZWVuIHRlc3RlZCBpbiB0aGUgd2lsZCBmb3IgUkszNTg4Kgo+IAo+IFNvIHRyeWluZyBhbmQg
-dGVzdGluZyBzZWVtcyB0byBiZSB0aGUgb25seSB3YXkgdG8gdW5kZXJzdGFuZCB0aGUgYmVzdAo+
-IHdheSBmb3J3YXJkLiBVbmxlc3MsIG9mIGNvdXJzZSwgc29tZW9uZSBmcm9tIFJvY2tjaGlwIGNh
-biBjb21tZW50IG9uCj4gaG93IHRoZSBoYXJkd2FyZSB3b3JrcyB3aXRoIFRTQURDX1NIVVQgdnMu
-IFRTQURDX1NIVVRfT1JHLgoKUGVyaGFwcyB0aGUgYmVzdCBhcHByb2FjaCB3b3VsZCBiZSB0byBo
-YXZlIHRoZSB2MiB0aGF0IHdvcmtzIHdpdGhvdXQKdGhlIGRyaXZlciBjaGFuZ2VzLCBzbyBpdCBj
-YW4gYmUgcHJvcGFnYXRlZCBpbnRvIHRoZSBzdGFibGUga2VybmVscy4KClRoZW4sIGEgc2VwYXJh
-dGUgc2VyaWVzLCB3aGljaCBJJ2xsIHZvbHVudGVlciBmb3IsIDopIHdvdWxkIGludHJvZHVjZQp0
-aGUgY2xlYW51cHMgYW5kIGFueSBuZWVkZWQgZHJpdmVyIGNoYW5nZXMsIHdoaWNoIHdvdWxkbid0
-IGJlIHByb3BhZ2F0ZWQKaW50byB0aGUgc3RhYmxlIGtlcm5lbHMuICBUaGF0IHdheSwgd2UnZCBo
-YXZlIHRoZSBtaW5pbWFsIGJ1Z2ZpeGVzIGluCnN0YWJsZSBrZXJuZWxzLCBhbmQgdGhlIG5pY2Ug
-Y2xlYW51cHMgaW4gdGhlIGxhdGVzdCBrZXJuZWwgdmVyc2lvbi4KCk9mIGNvdXJzZSwgZGV0YWls
-ZWQgdGVzdGluZyBpcyBtYW5kYXRvcnkuCgo+PiB3aGljaCBJIGV4cGVjdGVkIHRvIGhhdmUgZG9u
-ZSBhbHJlYWR5LCBidXQgaGFkIHNvbWUgb3RoZXIgIklSTCBzdHVmZiIKPj4gdGhhdCBpbnRyb2R1
-Y2VkIGEgZGVsYXkuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+This adds minimal support for the Pre-ICT tester adapter for RK3588
+Jaguar.
+GPIO3A3, GPIO3A4, GPIO3B2 and GPIO3D2 to GPIO3D5 are all routed to power
+rails and can only be used as input and their bias are important to be
+able to properly detect soldering issues.
+
+Additionally, this adds build-time overlay application tests for all
+Rockchip overlays to try to avoid future regressions.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+Changes in v3:
+- removed Fixes tag and intent to send to stable as this patch almost
+  doubles the size of the main DTB. Let's not potentially break users of
+  stable releases,
+- added Wolfvision PF5 overlay tests, thanks Michael,
+- added comment on how to add new overlays (via tests), and the side
+  effects,
+- grouped the overlay application test target with the definition of its
+  dependencies (DTB + DTBO(s)),
+- added trailers,
+- Link to v2: https://lore.kernel.org/r/20250116-pre-ict-jaguar-v2-0-157d319004fc@cherry.de
+
+Changes in v2:
+- add overlay application tests for Edgeble NCM6A WiFi and Rock 5B PCIe
+  Endpoint+SNRS
+- add overlay application test for RK3588 Jaguar + Pre-ICT tester
+  adapter,
+- Link to v1: https://lore.kernel.org/r/20241206-pre-ict-jaguar-v1-1-7f660bd4b70c@cherry.de
+
+---
+Quentin Schulz (4):
+      arm64: dts: rockchip: add overlay test for Wolfvision PF5
+      arm64: dts: rockchip: add overlay test for Edgeble NCM6A
+      arm64: dts: rockchip: add overlay tests for Rock 5B PCIe overlays
+      arm64: dts: rockchip: minimal support for Pre-ICT tester adapter for RK3588 Jaguar
+
+ arch/arm64/boot/dts/rockchip/Makefile              |  36 ++++-
+ .../dts/rockchip/rk3588-jaguar-pre-ict-tester.dtso | 171 +++++++++++++++++++++
+ 2 files changed, 202 insertions(+), 5 deletions(-)
+---
+base-commit: 6d61a53dd6f55405ebcaea6ee38d1ab5a8856c2c
+change-id: 20241206-pre-ict-jaguar-b90fafee8bd8
+
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@cherry.de>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
