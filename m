@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3463AC0218A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6371AC0218A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 13:11:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QwCKglCKxBV5v07npBNU2PD7QRICA0AQeqKWZ0mW9go=; b=O/JTdKcFxsiXqf
-	Wr1+iGA0kPWKXZZmSsHULZ4y//3451P4M+7zaYiesJpXH+sFE3C64ox4qNT/SxcKLjwVPmSRoEaJB
-	OsZXBD4AMaHYtogRCM3cHg9q2rJYC8EHdWehWKG3+xu+577nLlqe06k5jXCh/QPxnxJWYPEojmhnx
-	TJ3kxP/BfXE8OWKHWLgEDmkcwbDkCPHZmx1e+HMkr7uuz9pSkcL+zTbBzjf+dy1Dwe+9ZhjeCXen8
-	P3EIIs0n2zxTH9741kSCLpOko2j1pdjd5+WUH2P0RT0hXiGbxPN5CatSAIzi98OgyKUFsToWHJkmN
-	5bY94hS+nEte39DmLZ3g==;
+	List-Owner; bh=vZsw6ABWM0Ku5/9twV6yp6PGdhB+syoFzG/UyZNzhok=; b=XbcKbWCfCDoc6H
+	Xh19kNgLkPIlyveOEiWciRomPnKTis1kDuv2sKaeAOuSK+IGyPBswR0zczo5pLAE2rEOZmeMuCv9F
+	MJAao22wc+5PAcuDtDkvP5F98ursVCtMPnPamzHadhsw/tnWZa4OMRHLrkhjjKF0+UTpqmBkmpp3Q
+	x17s4kQUaqa43/trMu0oeSiu0RMI/OMTrig+UKSGyhxzeBLzmXR35t/4k/ijQrtH5572nt+m/FDRc
+	MJTZlDfXxSRApt0sDqBbMraysR4g/9ZG8T6dWax11RWVYqH3tV470Mc5x7s396XUn2ScvI+4WgO2K
+	06HS0iLFN440+4h8Uv6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tclKe-00000004vfw-0VGv;
-	Tue, 28 Jan 2025 13:08:44 +0000
-Received: from smtp-8fad.mail.infomaniak.ch ([2001:1600:7:10::8fad])
+	id 1tclNG-00000004wCc-1Y99;
+	Tue, 28 Jan 2025 13:11:26 +0000
+Received: from smtp-1909.mail.infomaniak.ch ([2001:1600:7:10::1909])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tclGf-00000004v3N-467b
+	id 1tclGg-00000004v3S-31Zr
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jan 2025 13:04:41 +0000
+	Tue, 28 Jan 2025 13:04:42 +0000
 Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Yj58x45VtzYZg;
-	Tue, 28 Jan 2025 14:04:33 +0100 (CET)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4Yj58w6chyzd4h;
-	Tue, 28 Jan 2025 14:04:32 +0100 (CET)
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Yj58y74jyzRZL;
+	Tue, 28 Jan 2025 14:04:34 +0100 (CET)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4Yj58y1nxZzcLQ;
+	Tue, 28 Jan 2025 14:04:34 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 28 Jan 2025 14:04:13 +0100
-Subject: [PATCH v3 1/4] arm64: dts: rockchip: add overlay test for
- Wolfvision PF5
+Date: Tue, 28 Jan 2025 14:04:15 +0100
+Subject: [PATCH v3 3/4] arm64: dts: rockchip: add overlay tests for Rock 5B
+ PCIe overlays
 MIME-Version: 1.0
-Message-Id: <20250128-pre-ict-jaguar-v3-1-7be2f09d390a@cherry.de>
+Message-Id: <20250128-pre-ict-jaguar-v3-3-7be2f09d390a@cherry.de>
 References: <20250128-pre-ict-jaguar-v3-0-7be2f09d390a@cherry.de>
 In-Reply-To: <20250128-pre-ict-jaguar-v3-0-7be2f09d390a@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -46,13 +46,13 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Michael Riesch <michael.riesch@wolfvision.net>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
+ Quentin Schulz <quentin.schulz@cherry.de>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_050438_151041_4CA93E19 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250128_050438_887232_F59E8315 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +71,49 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The Wolfvision PF5 can have a PF5 Visualizer display and IO Expander
-board connected to it. Therefore, let's generate an overlay test so the
-application of the two overlays are validated against the base DTB.
+According to commit 40658534756f ("arm64: dts: rockchip: Add rock5b
+overlays for PCIe endpoint mode"), Rock 5B can operate in PCIe endpoint
+mode. For that to work, the rk3588-rock-5b-pcie-ep.dtbo overlay needs to
+be applied on Rock 5B base Device Tree. If that Rock 5B is connected to
+another Rock 5B, the latter needs to apply the
+rk3588-rock-5b-pcie-srns.dtbo overlay.
 
-Suggested-by: Michael Riesch <michael.riesch@wolfvision.net>
+In order to make sure the overlays are still valid in the future, let's
+add a validation test by applying the overlays on top of the main base
+at build time.
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/Makefile | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/Makefile | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index def1222c1907eb16b23cff6d540174a4e897abc9..bba9b2f1c761040545bea561878e9b63f8c29488 100644
+index 267966ea69b194887d59e38a4220239a90a91306..ebcd16ce976ebe56a98d9685228980cd1f2f180a 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -128,8 +128,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
--dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
--dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
-@@ -170,3 +168,18 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
+@@ -150,8 +150,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5-itx.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+-dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
+-dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+@@ -186,3 +184,11 @@ rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+ rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+ 	rk3588-edgeble-neu6a-wifi.dtbo
 +
-+# Overlays
-+## To build one or more overlays, overlay application tests must be added below.
-+##
-+## dtb-$(CONFIG_ARCH_ROCKCHIP) += <name of overlay application test>.dtb
-+## <name of overlay application test>-dtbs := <base>.dtb <overlay-1>.dtbo [<overlay-2>.dtbo ...]
-+##
-+## This will generate each individual DTBO listed as a dependency of
-+## <name of overlay application test>.dtb **AND** make <base>.dtb keep its
-+## symbols (like when DTC_FLAGS has -@ passed).
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtb
++rk3588-rock-5b-pcie-ep-dtbs := rk3588-rock-5b.dtb \
++	rk3588-rock-5b-pcie-ep.dtbo
 +
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
-+rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
-+	rk3568-wolfvision-pf5-display-vz.dtbo \
-+	rk3568-wolfvision-pf5-io-expander.dtbo
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
++rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
++	rk3588-rock-5b-pcie-srns.dtbo
 
 -- 
 2.48.1
