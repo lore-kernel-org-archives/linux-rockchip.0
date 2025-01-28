@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 182C1C0218D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 22:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC052C02194
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 22:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tD9dIge791ESu/Nrv6sSc7ijoCGcZa7RaSc3nmN5AYQ=; b=QI2tbhQEo9B1im
-	ZYoIIz/mdNRO2/C6kmoZ54rBRKRE+D/HL+kLd0L/RkHWgs9Xnu4wvtMEOQ+5BO3/Zc2DD6a1AXOtF
-	k7Amxum1LDoR8mzU9l8rWHwUtP1bYXKh1g1OezNorfTn6oi7/j5xeHr16/09FVjNooK/V+7xza8H7
-	2KhsN9U2Yi+m1/nBGztz5thdY4v4bdmh+4tK2FQtJyufq/irWUJqi7H1wcTEvS6yTkRKYj4AsBmGS
-	RBwMBpxgChvQExlrWrhG2VavqJFnm/p1gmgeZuDjnayfSlbna5xH+9MHfgqGWYjMQv3PMN0o+CrB6
-	dziPufJT2mH1mhLiR2Bg==;
+	List-Owner; bh=dHcd7XylyCg4Yvmznul/mSxnxGt2ClFDQzkcxexNvEo=; b=SvGUpRTtTnU5HC
+	sdtsvZlNDqBpOGC0P36TerpLHVkttCzTeB1lCsGKk+6zTrWS3zHxjOcAJJl7mdwykNaGJkDprpEHJ
+	aj7FIsw+85ovR3P38tyloaaOtqTZAbyw8IDwLyKCB4fIpEuXki8yF58vtHpJA6ntg6blppO2LA/qr
+	VPRCIn6l0KSDqK3xMCerArpetRIvm3upJ0EgkN+fHQonZypxKa/Q6cEMglrtk85WxtChs1n3YdAqZ
+	CTRGK3V5Buv7dfpni8mm3tRuBajqceC9B5aF4xxp+yRxXl0xQKgzmggEqfA98l2UtfKtk4x4MVE7M
+	oRcYnl7ZXTm+GWsE+/yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu8v-00000005y54-3Wdk;
-	Tue, 28 Jan 2025 22:33:13 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1tcu97-00000005yFV-179U;
+	Tue, 28 Jan 2025 22:33:25 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu8t-00000005y1j-2ijE
+	id 1tcu94-00000005yBo-2wAr
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jan 2025 22:33:12 +0000
+	Tue, 28 Jan 2025 22:33:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738103590;
+	s=mimecast20190719; t=1738103601;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4eOh+r5POEBIZHTbq+nHznMj04j4TeTNMfqN9ncpUe8=;
-	b=LFsLAf3+RSy/McjcjBj3KBZMgbdXjP9t0lGRBYsQ/boZlOUSCbqsjQ7H31/PLWjL6YQyuI
-	pPcx8VbICkILcINOCy7QNm2UqI//fee6inH2cNt/VmRHPgCBkFWs+QoivSq4vWEue6+ScF
-	xm5tH+OtuPhIKPYqbBux4iW7i9/JOX4=
+	bh=LBt0xhKg/k6By/AvzZb28FkpDdmTA/WjeTTyuRHg9tA=;
+	b=FzjVrwFmFz7MEdY8Vm1/rlPjeQdmO+/MT5tZi9aGUOC/+TbCSnqrxaYMSHe8+NEHcJqUmn
+	T2hLzCP4Z6WqwG03drXouwl7j3n5a6ZL7yBpADXgY12kBauyGFnstNhY9s7y2JmLhu4nzX
+	XuPbtdK+goNPALPpujC1H9MZpQY5eu4=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-646-JJiTDf_rMPiltZe2Gtxs5w-1; Tue,
- 28 Jan 2025 17:33:07 -0500
-X-MC-Unique: JJiTDf_rMPiltZe2Gtxs5w-1
-X-Mimecast-MFC-AGG-ID: JJiTDf_rMPiltZe2Gtxs5w
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-677-yq4hKjUZNIiv1YzmZBLdbA-1; Tue,
+ 28 Jan 2025 17:33:18 -0500
+X-MC-Unique: yq4hKjUZNIiv1YzmZBLdbA-1
+X-Mimecast-MFC-AGG-ID: yq4hKjUZNIiv1YzmZBLdbA
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C65151800268;
-	Tue, 28 Jan 2025 22:33:01 +0000 (UTC)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 654161800360;
+	Tue, 28 Jan 2025 22:33:13 +0000 (UTC)
 Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.231])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 6E29418008C0;
-	Tue, 28 Jan 2025 22:32:50 +0000 (UTC)
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 1E61618008D4;
+	Tue, 28 Jan 2025 22:33:01 +0000 (UTC)
 From: Anusha Srivatsa <asrivats@redhat.com>
-Date: Tue, 28 Jan 2025 17:29:37 -0500
-Subject: [PATCH 13/14] drm/vc4: move to devm_platform_ioremap_resource()
- usage
+Date: Tue, 28 Jan 2025 17:29:38 -0500
+Subject: [PATCH 14/14] Documentation: Update the todo
 MIME-Version: 1.0
-Message-Id: <20250128-cocci-memory-api-v1-13-0d1609a29587@redhat.com>
+Message-Id: <20250128-cocci-memory-api-v1-14-0d1609a29587@redhat.com>
 References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
 In-Reply-To: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
 To: Joel Stanley <joel@jms.id.au>, 
@@ -107,20 +106,21 @@ Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
  imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
  linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
  linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=1689;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=1237;
  i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
- bh=4vxmIMCntNkLYWUXI5TlhVdnqmm2AsRbVZgcmO441nM=;
- b=5O8Ivj3HJZboc/7qkLN9ieN1tdgZ+256U7GLYJr170ZR/+aEj1nNMDOzAkFeg5anubD5oaxWF
- sGYOK3IPQARAgRjIsuLaaVG0kGOTrTsEWSIShMKxlngxbxGfGebRp+0
+ bh=1uza9zHT5KB2vg0jmKcDXlF6fg11a6R907qgLnhqIds=;
+ b=s5MVeYZLBGOWUc20PuIIuL9SunjfVvp7SriFVQzP3zS3xF7J9noCxYaIm5Y8I3dDRoMe/Vp1q
+ iFtY+RhL+bwCkiRRg25tfa75tUVeP5EtP7QOvWyFI7spHEbLcbYZPRL
 X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
  pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0eOxdMuwoFioRcumGZkEQAgznTlAYM7qFBUju2G6meg_1738103582
+X-Mimecast-MFC-PROC-ID: O1otfb4hVSfS-za1QeGnzYujU1OKcmxtGNFShkIDNwE_1738103593
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_143311_787030_31EDAC51 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20250128_143322_815900_0AFEF365 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,40 +132,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UmVwbGFjZSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2VfYnluYW1lICsgZGV2bV9pb3JlbWFwX3Jlc291
-cmNlCndpdGgganVzdCBkZXZtX3BsYXRmb3JtX2lvcmVtYXBfcmVzb3VyY2UoKQoKVXNlZCBDb2Nj
-aW5lbGxlIHRvIGRvIHRoaXMgY2hhbmdlLiBTbVBsIHBhdGNoOgovL3J1bGUgcy8oZGV2bV8pcGxh
-dGZvcm1fZ2V0X3Jlc291cmNlX2J5bmFtZSArCi8vKGRldm1fKWlvcmVtYXAvZGV2bV9wbGF0Zm9y
-bV9pb3JlbWFwX3Jlc291cmNlLgpAcnVsZV8zQAppZGVudGlmaWVyIHJlczsKZXhwcmVzc2lvbiBp
-b3JlbWFwOwppZGVudGlmaWVyIHBkZXY7CmNvbnN0YW50IG1lbTsKZXhwcmVzc2lvbiBuYW1lOwpA
-QAotc3RydWN0IHJlc291cmNlICpyZXM7Ci4uLgotcmVzID0gcGxhdGZvcm1fZ2V0X3Jlc291cmNl
-X2J5bmFtZShwZGV2LG1lbSxuYW1lKTsKPC4uLgotaWYgKCFyZXMpIHsKLS4uLgotfQouLi4+Ci1p
-b3JlbWFwID0gZGV2bV9pb3JlbWFwKC4uLik7Citpb3JlbWFwID0gZGV2bV9wbGF0Zm9ybV9pb3Jl
-bWFwX3Jlc291cmNlX2J5bmFtZShwZGV2LG5hbWUpOwoKQ2M6IE1heGltZSBSaXBhcmQgPG1yaXBh
-cmRAa2VybmVsLm9yZz4KQ2M6IERhdmUgU3RldmVuc29uIDxkYXZlLnN0ZXZlbnNvbkByYXNwYmVy
-cnlwaS5jb20+CkNjOiAiTWHDrXJhIENhbmFsIiA8bWNhbmFsQGlnYWxpYS5jb20+ClNpZ25lZC1v
-ZmYtYnk6IEFudXNoYSBTcml2YXRzYSA8YXNyaXZhdHNAcmVkaGF0LmNvbT4KLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vdmM0L3ZjNF9oZG1pLmMgfCA5ICsrLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDIg
-aW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vdmM0L3ZjNF9oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9oZG1pLmMKaW5kZXgg
-NDdkOWFkYTk4NDMwNjM0Y2ZkOGMxZTIxYzJhNGQwMGQ1MDFiYWI3ZS4uZTIyNzMzZjgxNTlhYTRi
-MjQ3YTkxNWUyNGEyMzZmNjIwYmFlOTMyYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Zj
-NC92YzRfaGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS92YzQvdmM0X2hkbWkuYwpAQCAtMjk1
-MSwxNSArMjk1MSwxMCBAQCBzdGF0aWMgaW50IHZjNV9oZG1pX2luaXRfcmVzb3VyY2VzKHN0cnVj
-dCBkcm1fZGV2aWNlICpkcm0sCiB7CiAJc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiA9IHZj
-NF9oZG1pLT5wZGV2OwogCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Ci0Jc3RydWN0
-IHJlc291cmNlICpyZXM7CiAJaW50IHJldDsKIAotCXJlcyA9IHBsYXRmb3JtX2dldF9yZXNvdXJj
-ZV9ieW5hbWUocGRldiwgSU9SRVNPVVJDRV9NRU0sICJoZG1pIik7Ci0JaWYgKCFyZXMpCi0JCXJl
-dHVybiAtRU5PREVWOwotCi0JdmM0X2hkbWktPmhkbWljb3JlX3JlZ3MgPSBkZXZtX2lvcmVtYXAo
-ZGV2LCByZXMtPnN0YXJ0LAotCQkJCQkgICAgICAgcmVzb3VyY2Vfc2l6ZShyZXMpKTsKKwl2YzRf
-aGRtaS0+aGRtaWNvcmVfcmVncyA9IGRldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZV9ieW5h
-bWUocGRldiwKKwkJCQkJCQkJCSJoZG1pIik7CiAJaWYgKCF2YzRfaGRtaS0+aGRtaWNvcmVfcmVn
-cykKIAkJcmV0dXJuIC1FTk9NRU07CiAKCi0tIAoyLjQ3LjAKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Remove the TODO now that this series addresses
+the changes needed.
+
+Cc: Thomas Zimmermann <tzimmermann@suse.de>
+Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+---
+ Documentation/gpu/todo.rst | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+index 256d0d1cb2164bd94f9b610a751b907834d96a21..b5aa5f776cfe0916b98bddf791c65abe974834cf 100644
+--- a/Documentation/gpu/todo.rst
++++ b/Documentation/gpu/todo.rst
+@@ -441,21 +441,6 @@ Contact: Thomas Zimmermann <tzimmermann@suse.de>
+ 
+ Level: Intermediate
+ 
+-Request memory regions in all drivers
+--------------------------------------
+-
+-Go through all drivers and add code to request the memory regions that the
+-driver uses. This requires adding calls to request_mem_region(),
+-pci_request_region() or similar functions. Use helpers for managed cleanup
+-where possible.
+-
+-Drivers are pretty bad at doing this and there used to be conflicts among
+-DRM and fbdev drivers. Still, it's the correct thing to do.
+-
+-Contact: Thomas Zimmermann <tzimmermann@suse.de>
+-
+-Level: Starter
+-
+ Remove driver dependencies on FB_DEVICE
+ ---------------------------------------
+ 
+
+-- 
+2.47.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
