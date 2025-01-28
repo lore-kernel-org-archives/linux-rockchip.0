@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4ABC02193
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 22:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AC9C0218A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jan 2025 22:32:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rcsQOWYcWe+ae+Apei1WebmfEoREKnCj0AxOcCdGNCw=; b=K0Y16P8H6iAF2d
-	2DK6ufb247usHrlnn5w+Gg+kBZY6O8HKSQajB6YG/ZZEpYK7Owu5UmGLI+MyRAG8ATRG7PiGgdj4G
-	S/pZpq3d4C8h3esIhJzR7zt+KEnk82GCSlQwZ6RAF18AM0YPgTuYttuYgnLJ6uLyQGnSQdAwajIBx
-	gMTS0McnKQ/a05/xY3h9rg0cgehBYvV2N7jSfnFDmnwzxxD+CLzuQHffKjYn8mgH1JkCgJVNU/rqr
-	/3MY4YOaROzkMmYpZAfe5msOF9vyNn0/hgLZ5GydNj1BlFFEkryhwfU/trYIoQBwTSdaBaMsB73by
-	rQaNm1Rm3cODxmWMxSgQ==;
+	List-Owner; bh=gdk9/nPHaYfR3/GCNPNUSx7o5R7nYCscuS1/hoZxHDA=; b=UwYqQup6WkQMZH
+	1+/uMyGwwEh9oj1ZSX6cyHF9MIpe8r618giWngUT5L3ySZEI8kG8YaVzNpE0VJNrzOvI937Y+ClYz
+	r/icHx0JFpsp8r+8dTJPlevz/ACoqLq048fgZASlpAp8RKf0uOsn+zJYzpA/mAW0DdqT5ecxqroB5
+	QxK1ppT0zpbe/fYwV2CZnwjL5qE1yy/wcaQKlgxyf8aogYRn6OaOsjVh2uQ3OgrLfsYh9oCwnv0QD
+	RC3y+Z+6KyWSk44jMZOoTay6p/k22i9ZGxO3R8GccpyNJV0IPfHrevM0LZGFIAz/jn/kQqe7gKFGq
+	7cURq7iASKv6YlK+0sgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu81-00000005wxk-0Pkt;
-	Tue, 28 Jan 2025 22:32:17 +0000
+	id 1tcu85-00000005x3P-1dwB;
+	Tue, 28 Jan 2025 22:32:21 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tcu7x-00000005wt9-3rDY
+	id 1tcu81-00000005wxN-1fmv
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jan 2025 22:32:15 +0000
+	Tue, 28 Jan 2025 22:32:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1738103533;
+	s=mimecast20190719; t=1738103536;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=vTQQyop+FvNGZGa2HymGI+zd4XYA6ac0SZNdQLlY4mQ=;
-	b=KYZrtux6ktZ4Padbcq+aXHoyBBsCox8JQgQPOsvdC7JuuvPdiLckVPfBJLV9prBJlqRl/e
-	9y6kjzhyeQiTZkjTUxEqThsbHmsduVLWw9FRMZF1KdNDTvpWXY50U/ht4r8OfkKgT0VJV3
-	kEIjCUVEhRHc26xxcPYQkDOIQntqKLw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+	bh=HmFvH9jnwWMHznPDF0lsUnIMS0zxQ0Cjj2cBONQ32e0=;
+	b=LPiTGQpJqSPCc6Y0zJs02W0o3CR1sJkMGtSjo4ZfGmrWueV+wrRcHdXhps5JqQg7fPszMr
+	dyNCVVX+kovcC5ThQFMS7hKksKdjg89BPZXVo8NCcH7CsIkIdBtCaYWU+8PWRUM4Qqw+AP
+	9582pbjWpPWC5SBKZfm0fBYjOc2DiEE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-675-XUqArcTLMuC2ZyQxOHv7Mw-1; Tue,
- 28 Jan 2025 17:32:10 -0500
-X-MC-Unique: XUqArcTLMuC2ZyQxOHv7Mw-1
-X-Mimecast-MFC-AGG-ID: XUqArcTLMuC2ZyQxOHv7Mw
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-76-dU-QctAoPsayneJunUncAg-1; Tue,
+ 28 Jan 2025 17:30:47 -0500
+X-MC-Unique: dU-QctAoPsayneJunUncAg-1
+X-Mimecast-MFC-AGG-ID: dU-QctAoPsayneJunUncAg
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 538281800373;
-	Tue, 28 Jan 2025 22:32:05 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D9444195608D;
+	Tue, 28 Jan 2025 22:30:40 +0000 (UTC)
 Received: from asrivats-na.rmtustx.csb (unknown [10.2.16.231])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 475BE180035E;
-	Tue, 28 Jan 2025 22:31:54 +0000 (UTC)
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id AC44018008D4;
+	Tue, 28 Jan 2025 22:30:27 +0000 (UTC)
 From: Anusha Srivatsa <asrivats@redhat.com>
-Date: Tue, 28 Jan 2025 17:29:32 -0500
-Subject: [PATCH 08/14] drm/sprd: move to devm_platform_ioremap_resource()
+Date: Tue, 28 Jan 2025 17:29:25 -0500
+Subject: [PATCH 01/14] drm/aspeed: move to devm_platform_ioremap_resource()
  usage
 MIME-Version: 1.0
-Message-Id: <20250128-cocci-memory-api-v1-8-0d1609a29587@redhat.com>
+Message-Id: <20250128-cocci-memory-api-v1-1-0d1609a29587@redhat.com>
 References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
 In-Reply-To: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
 To: Joel Stanley <joel@jms.id.au>, 
@@ -106,22 +106,21 @@ Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
  linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=2394;
+ linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738103410; l=1375;
  i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
- bh=xnOKo4d5zLC6SAtMuS91xcrNjPZ1X4hCGtOsaEUix3w=;
- b=XgsYJ66PhNrSwobzID2quJsO/E4TlQulcqJ0vDOaqNkS9r21x5hzmGgeEwFBj/9RpC8lljWPY
- VUfmqi45nPXBguhotnYxuL+j1ormJXYrHE4tEfU5gpBjGDi4cVT7ok6
+ bh=3yjjteo5TK5ux7t99sLxgYSvQl7c9hRZtBGpvh9qRJw=;
+ b=Z0V135r7CUwOl+nqJW1+aMVcuyTzYTXlZnu3ZGdK2yGuOHRHjYkUUmWJWB/NIJjSdbDVXuCkx
+ x1dguxptwSzBiYOX1BR+v9CcXE2W31YR+x4davqSB83Klo0RZbPR6OL
 X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
  pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5j19gb6OU-nknbl9khgesjtlNY5AnO_23o_ZqFT1T-I_1738103525
+X-Mimecast-MFC-PROC-ID: HzTvsLhOvh5mY7rb6MpQlS8mxT7kg9Of-ZMN3y68Tmk_1738103442
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250128_143214_057379_C92047DE 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20250128_143217_579309_A3B2ADA7 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,77 +137,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace platform_get_resource + devm_ioremap
+Replace platform_get_resource + devm_ioremap_resource
 with just devm_platform_ioremap_resource()
 
 Used Coccinelle to do this change. SmPl patch:
-@rule_2@
+@rule_1@
 identifier res;
-expression ioremap;
+expression ioremap_res;
 identifier pdev;
 @@
 -struct resource *res;
 ...
 -res = platform_get_resource(pdev,...);
-<...
--if (!res) {
--...
--}
-...>
--ioremap = devm_ioremap(...);
-+ioremap = devm_platform_ioremap_resource(pdev,0);
+-ioremap_res = devm_ioremap_resource(...);
++ioremap_res = devm_platform_ioremap_resource(pdev,0);
 
-Cc: Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Joel Stanley <joel@jms.id.au>
 Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
 ---
- drivers/gpu/drm/sprd/sprd_dpu.c | 9 +--------
- drivers/gpu/drm/sprd/sprd_dsi.c | 9 +--------
- 2 files changed, 2 insertions(+), 16 deletions(-)
+ drivers/gpu/drm/aspeed/aspeed_gfx_drv.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/sprd/sprd_dpu.c b/drivers/gpu/drm/sprd/sprd_dpu.c
-index cb2816985305fd19eac27413c214681a5a1e9ffa..65cd5aa1634eee5a6735ccffa4ee3979844d92ce 100644
---- a/drivers/gpu/drm/sprd/sprd_dpu.c
-+++ b/drivers/gpu/drm/sprd/sprd_dpu.c
-@@ -784,16 +784,9 @@ static int sprd_dpu_context_init(struct sprd_dpu *dpu,
- {
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct dpu_context *ctx = &dpu->ctx;
+diff --git a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
+index 397e677a691c2c6d199063f44358196a4569b389..46094cca297479d1cf19f6db99538c5e7a0fec92 100644
+--- a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
++++ b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
+@@ -144,11 +144,9 @@ static int aspeed_gfx_load(struct drm_device *drm)
+ 	struct aspeed_gfx *priv = to_aspeed_gfx(drm);
+ 	struct device_node *np = pdev->dev.of_node;
+ 	const struct aspeed_gfx_config *config;
 -	struct resource *res;
  	int ret;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!res) {
--		dev_err(dev, "failed to get I/O resource\n");
--		return -EINVAL;
--	}
--
--	ctx->base = devm_ioremap(dev, res->start, resource_size(res));
-+	ctx->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (!ctx->base) {
- 		dev_err(dev, "failed to map dpu registers\n");
- 		return -EFAULT;
-diff --git a/drivers/gpu/drm/sprd/sprd_dsi.c b/drivers/gpu/drm/sprd/sprd_dsi.c
-index 8fc26479bb6bce0aa94914f49d0986a7e19326c1..1668bb4166ab0ad3812c5654244544a9caf249a6 100644
---- a/drivers/gpu/drm/sprd/sprd_dsi.c
-+++ b/drivers/gpu/drm/sprd/sprd_dsi.c
-@@ -901,15 +901,8 @@ static int sprd_dsi_context_init(struct sprd_dsi *dsi,
- {
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct dsi_context *ctx = &dsi->ctx;
--	struct resource *res;
+-	priv->base = devm_ioremap_resource(drm->dev, res);
++	priv->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(priv->base))
+ 		return PTR_ERR(priv->base);
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!res) {
--		dev_err(dev, "failed to get I/O resource\n");
--		return -EINVAL;
--	}
--
--	ctx->base = devm_ioremap(dev, res->start, resource_size(res));
-+	ctx->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (!ctx->base) {
- 		drm_err(dsi->drm, "failed to map dsi host registers\n");
- 		return -ENXIO;
 
 -- 
 2.47.0
