@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 746E6C0218D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jan 2025 15:40:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22D9C02193
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jan 2025 15:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=98ql8JzUkQszeRJukq+Tkjo6UghZcdVfLJhy9uF1kwI=; b=4JFouDuX4pnZIEBVuWY9niejYu
-	n5lWkd7h5x9iZW2IJuaofO57sNVBuSyA4JdajVBiZIj0ZFYHa2atsoSkM6uJD3+Wsx9uHx375jnLU
-	cEGpTEP2KITQbi1EkD0s0akMmUjEm6EsJqB3p7y7NR+ct2eHDgMB95klKzYdL4+eHIO9vDVSzXhtB
-	qnrBRgftQY+kOyyOidEUIUy7eKNZBnd+8D3EDJKArFD98zYnbNWNYEhZoUwMqmhPU94qOpZZkNAjr
-	/VYb/lMaa+M/7C8VBhyygTY6R4DzQBFmSEv5gvsnKoPdEZvbV6NgDmTQf0/ytAe9V3bafOstiqVI2
-	m2O3e9wQ==;
+	bh=YsUfCsLXBJUK4cDQUX0P7/QcM0gy78Dwi8NY2sGj6Wk=; b=1/jBatqqMWqY7lPFuzIbrghlMD
+	tqicDg2Kl8HR3wGdNmRfVkOKw5uqLtsVHwT27F0nys6eX+ISgbS8wWLsAzcwXrwSI4DsFD7xDELUk
+	P/TDTnl1MXFHOylz+KLK0CXnCp3NemhwKb8m6R7FS4dGhx3Y/YJTzTMeT+/0TrY3Y+ZopqNsFWMu6
+	kJifbgtJWg5HXyfdmUyII7Hc3WEee5ApwCV80zNcG5yTbjFdMQncZHXe/XYR9J8Sf23uTj1oMNKGt
+	uN1FqxJn3mTfLKgL/MnRkOn02GK0d22fmshotnTz5nh13fpwpnknANUIJqREGrzmhiLVfSEdsgVmc
+	qAJorbrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdAAk-00000007HM7-3buO;
-	Wed, 29 Jan 2025 15:40:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tdABN-00000007Hcz-1rgc;
+	Wed, 29 Jan 2025 15:40:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdAAh-00000007HJx-1DQY;
-	Wed, 29 Jan 2025 15:40:08 +0000
+	id 1tdABK-00000007HbU-20Fo;
+	Wed, 29 Jan 2025 15:40:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9CE8C5C5DB8;
-	Wed, 29 Jan 2025 15:39:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B54A4C4CED3;
-	Wed, 29 Jan 2025 15:40:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9309E5C5DD2;
+	Wed, 29 Jan 2025 15:40:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 770ABC4CED3;
+	Wed, 29 Jan 2025 15:40:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738165205;
-	bh=H7Wno81VDmAC8LZxebVHqmFv78aV+GntC7UloBA6wQA=;
+	s=k20201202; t=1738165245;
+	bh=rtnZjFO/UfiH1j0rluxhcjeVmz12h1zDXZJJ3+0MvRc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=blVJU1tBuGlKF4p47SaFusm9eG5WZSgkALpUADxFuWuQiIFr9qF7DNpOhnbEUeXbs
-	 7viGrnwFOcJSwLPYI+Ehdw7eY23dv9mEQ7o9fqlXjrbnP3pst1omLXvrGlE1aBm30m
-	 Bi7pbYb1UPpMvMHUuyONufYRLOO7ZVEBsAkaSFoyED0QRRyozXtecJBokIiLtaVWOO
-	 q0djJLUSg4eE2yATE1o5zFnBrTEQd2LiyidKL5wQWTiQ5Taf9QVxZKqyI4HsxEX9wi
-	 K7GNZwBmVTPWfpazFvFm2ldBBFkDsVN11cDjiMvXt+chOhLgfReDoepEnSHIosPwoR
-	 O1uHFNJcIFiaA==
-Date: Wed, 29 Jan 2025 16:40:01 +0100
+	b=ZM+cZRtiXnmi0hHc4n40eYcHanFML/aIc6MX0XZhPdogHoKUulxVjPXm6RULnPVkC
+	 iX8Qospo0x/ND4+0f525c7Zu8xxc7Daz/PjoUL8HDbN4/QMLPeR65aHCueaEp1uWIU
+	 DurPDhK4SIaKCpip8GwEy8LkumP3/EdZeVc0QSWZOObMvQAc45nvMv2WpqBGHp6RxU
+	 EYpA95fiVbOw32agYO2Sfqvb3U5f/ACokeGKatfzJ+LRaXLQdUYJ/gCmPWhPOAFOAp
+	 Zr7OInp3vF/BKz0JLCt0vxcL0M2B+OHTkOofX3sauEdMMjc3170klpqg28aRYRHFvC
+	 +wc9LrlSw92yQ==
+Date: Wed, 29 Jan 2025 16:40:41 +0100
 From: Maxime Ripard <mripard@kernel.org>
 To: Anusha Srivatsa <asrivats@redhat.com>
 Cc: Joel Stanley <joel@jms.id.au>, 
@@ -72,16 +72,16 @@ Cc: Joel Stanley <joel@jms.id.au>,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
 	linux-amlogic@lists.infradead.org, imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH 06/14] drm/mxsfb: move to
+Subject: Re: [PATCH 05/14] drm/meson: move to
  devm_platform_ioremap_resource() usage
-Message-ID: <ivwhzbasvxnnnzoqpqd6w24d6wma6pufcrc6jl7b6gsyzrnup2@r36hiijgac7m>
+Message-ID: <ieknc4dm5ntnqaqz6zdlinphocm2omsn4ll34vlbrohqcddl43@kg35irldnkuw>
 References: <20250128-cocci-memory-api-v1-0-0d1609a29587@redhat.com>
- <20250128-cocci-memory-api-v1-6-0d1609a29587@redhat.com>
+ <20250128-cocci-memory-api-v1-5-0d1609a29587@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20250128-cocci-memory-api-v1-6-0d1609a29587@redhat.com>
+In-Reply-To: <20250128-cocci-memory-api-v1-5-0d1609a29587@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_074007_523308_55DFFBCD 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20250129_074046_618458_86EC78B0 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,65 +93,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1271586749204045963=="
+Content-Type: multipart/mixed; boundary="===============6203022108456943875=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1271586749204045963==
+--===============6203022108456943875==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="j6fxajocgelt3kwa"
+	protocol="application/pgp-signature"; boundary="wmuf2lutfjid5aqu"
 Content-Disposition: inline
 
 
---j6fxajocgelt3kwa
+--wmuf2lutfjid5aqu
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 06/14] drm/mxsfb: move to
+Subject: Re: [PATCH 05/14] drm/meson: move to
  devm_platform_ioremap_resource() usage
 MIME-Version: 1.0
 
-On Tue, Jan 28, 2025 at 05:29:30PM -0500, Anusha Srivatsa wrote:
-> Replace platform_get_resource + devm_ioremap_resource
+On Tue, Jan 28, 2025 at 05:29:29PM -0500, Anusha Srivatsa wrote:
+> Replace platform_get_resource_byname + devm_ioremap
 > with just devm_platform_ioremap_resource()
 >=20
 > Used Coccinelle to do this change. SmPl patch:
-> @rule_1@
+> @rule_3@
 > identifier res;
-> expression ioremap_res;
+> expression ioremap;
 > identifier pdev;
+> constant mem;
+> expression name;
 > @@
 > -struct resource *res;
 > ...
-> -res =3D platform_get_resource(pdev,...);
-> -ioremap_res =3D devm_ioremap_resource(...);
-> +ioremap_res =3D devm_platform_ioremap_resource(pdev,0);
+> -res =3D platform_get_resource_byname(pdev,mem,name);
+> <...
+> -if (!res) {
+> -...
+> -}
+> ...>
+> -ioremap =3D devm_ioremap(...);
+> +ioremap =3D devm_platform_ioremap_resource_byname(pdev,name);
 >=20
-> Cc: Marek Vasut <marex@denx.de>
-> Cc: Stefan Agner <stefan@agner.ch>
+> Cc: Neil Armstrong <neil.armstrong@linaro.org>
 > Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+> ---
+>  drivers/gpu/drm/meson/meson_drv.c | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/meson/meson_drv.c b/drivers/gpu/drm/meson/me=
+son_drv.c
+> index 81d2ee37e7732dca89d02347b9c972300b38771a..6c805805b7a7f675f8bb03944=
+318972eb4df864e 100644
+> --- a/drivers/gpu/drm/meson/meson_drv.c
+> +++ b/drivers/gpu/drm/meson/meson_drv.c
+> @@ -184,7 +184,6 @@ static int meson_drv_bind_master(struct device *dev, =
+bool has_components)
+>  	const struct meson_drm_match_data *match;
+>  	struct meson_drm *priv;
+>  	struct drm_device *drm;
+> -	struct resource *res;
+>  	void __iomem *regs;
+>  	int ret, i;
+> =20
+> @@ -220,14 +219,8 @@ static int meson_drv_bind_master(struct device *dev,=
+ bool has_components)
+>  	}
+> =20
+>  	priv->io_base =3D regs;
+> -
+> -	res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hhi");
+> -	if (!res) {
+> -		ret =3D -EINVAL;
+> -		goto free_drm;
+> -	}
+>  	/* Simply ioremap since it may be a shared register zone */
+> -	regs =3D devm_ioremap(dev, res->start, resource_size(res));
+> +	regs =3D devm_platform_ioremap_resource_byname(pdev, "hhi");
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Given the comment, this one should probably be skipped.
 
 Maxime
 
---j6fxajocgelt3kwa
+--wmuf2lutfjid5aqu
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ5pL0QAKCRAnX84Zoj2+
-dpu8AX92mKVtYr4NesUkaNaAZLgSW9h3CZMfohWW2Hi3OHXPAvC1LmJnp0Zowbq8
-4FFBL/wBf2VL8YqmcT3T9+XhphtMFWv/+85mR4/YE14rKn4brg9xZxj2nw0jIWJ5
-ZU3psZFZbg==
-=rMo6
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ5pL+QAKCRAnX84Zoj2+
+dpWQAYDuVxaraj2eKojNueyW+NChDy3YtnstWS0E/hE4JNegqss7vQXSWOthuO4R
+73qWnq0BfRFtK3i2Os+sXuDOS+LkWHx5AsRtEcQCCeX0wT3sQVfWN3Edu+Ky/NDa
+3DmrzReHUw==
+=Tstn
 -----END PGP SIGNATURE-----
 
---j6fxajocgelt3kwa--
+--wmuf2lutfjid5aqu--
 
 
---===============1271586749204045963==
+--===============6203022108456943875==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -162,5 +201,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1271586749204045963==--
+--===============6203022108456943875==--
 
