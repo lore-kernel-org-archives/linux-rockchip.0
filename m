@@ -4,55 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2B9C0218A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 15:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947C8C0218A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 16:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4BFI9U8FcBNWztkD7J2dpkGPQ7NBWtHhIc29TYC42x8=; b=gdGAo00MYhzsjX
-	TjUZhu75Ce40QqrycfWZfYAo5OeEkoWtJZmZz9ewodzlvqPrTi20wv7nIfKTLFoaZ5pvvQG+Nvvcb
-	YNVjKo2tw/sWFTdp3FXIFMA+oNLQpdx7qrXIsdut/ZHlB90l7bnE2nmsKYLgf+tOFOZDQNRj1MkfY
-	s27zLQQZ7igF2t3kX/4YydPD9csPHugiMHwfNoPlG0eF/yZvZ9cyiGCSZBWvLVA2kwMFS9MWZPq42
-	jDy1ZIbfAALgbrH8IGDSKI8mznyQsfU8wRVmGyXoah55aEOJNe+z+q6BNazYVRMmrWijMB5nvYjMS
-	XArsw3A9l/91sEnn+V0g==;
+	List-Owner; bh=CveGTonDwnLZJ9RxvwPEuqPO440d97otpATddiOitQ4=; b=f4QlgMDIHMLV1q
+	koqFd0A4LeOQkL2T+PQPfJbjNqaIt+FdWThJCm5s8fqyZn8kWIxFyoPz31pCycn7rBxC70efL9QyT
+	v4/H2J5XwOjwpeO31eKxqXwellRD8CjphWkaVfgGnpJ+8l0EmJJkT/uKqvmFLJ8rEcnoPt5Yox7jW
+	yBVrX4t5zo6L12iNkMnF03fF/9DD9F4V+L8sJV4q1FMDnc8o2gIdFjrBNmu7+fF3KgJYYDo+EzPJg
+	327RkB93Q99g7wAkRNAuxjq28BucnHOZSQyXLjmSqwyC6fra9SWy/IA0/r5MzbpyutlYg6N7HdHUV
+	MIv2UFAzKxKIr7s3VzaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdWFg-0000000930c-2d4u;
-	Thu, 30 Jan 2025 15:14:44 +0000
-Received: from smtp-190b.mail.infomaniak.ch ([2001:1600:7:10::190b])
+	id 1tdXTq-00000009AB1-3jEK;
+	Thu, 30 Jan 2025 16:33:26 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdWFc-000000092yl-2XYG
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Jan 2025 15:14:42 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YkMy33hq4zgqy;
-	Thu, 30 Jan 2025 16:14:35 +0100 (CET)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4YkMy25swpzvPg;
-	Thu, 30 Jan 2025 16:14:34 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Thu, 30 Jan 2025 16:14:25 +0100
-Subject: [PATCH] arm64: dts: rockchip: add support for sound output over
- HDMI on RK3399 Puma Haikou
+	id 1tdXSX-000000099vv-0Ag9;
+	Thu, 30 Jan 2025 16:32:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1738254702; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lravY/6Wl6bFOP4EmaFB4pFXffqm3rogMJLqrBS5x/JGS95L2CmAN2jlNjV0gEXketvyyIBQGH2KucsT01Y6GQBjrkUPgZ5qnQrxP30NRwUgl/d+RK8qdZxwjphqX/FmcXMILZ/TtCJ7+8mjf1LwDLQWBVP1cguj66xFAKUwUGk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1738254702; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=LVPLI6+c3jau3bRD8yp1Q2Hkp9hVE39g34stjXufaqs=; 
+	b=kY/vHYB63eY4CZqbBCJG6EwmrYBJ6KjPZZQuZMs1o0kzEEpM/qhlFjg5Ir4rYAcE3ebEXOd0wjprW5DlWjxHiKXFp8j2pNoxvXpHKEOzwRxkRbVKBGUF9St/LMyWiWkS90yEpN8y74lJCZ3LEmPbTkyGJ1Fu6Qns0QF27Hmkbr8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738254702;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=LVPLI6+c3jau3bRD8yp1Q2Hkp9hVE39g34stjXufaqs=;
+	b=Br3QZibMOVoXRRji3+2/pdH3aVwjEE7w2baX8S5TdLTzFedExDU9KXTGXWKKQl7i
+	u/Q+Q/D/K3D4fmeCZ2A+g+7O3C0ysGnTJ8UrgWyOJO0i/UItnFvN0ThofxakxuSHbJM
+	/7Acx630s1y1zvBqNrVbYKuJWbj/H0keXU8nTEHs=
+Received: by mx.zohomail.com with SMTPS id 1738254696264631.910358401036;
+	Thu, 30 Jan 2025 08:31:36 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/7] RK3588 Hardware Random Number Generator Driver
+Date: Thu, 30 Jan 2025 17:31:14 +0100
+Message-Id: <20250130-rk3588-trng-submission-v1-0-97ff76568e49@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250130-rk3399-hdmi-audio-v1-1-406244333111@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAFCXm2cC/x2MWwqAIBAAryL73YIPguoq0UfqVkukoRSBdPekz
- xmYKZApMWUYRIFEN2eOoYJqBLhtDish+8qgpW6lMhLTbkzf4+YPxvnyHNFW7bT1resU1O5MtPD
- zP8fpfT9W/cVVYwAAAA==
-X-Change-ID: 20250130-rk3399-hdmi-audio-b130c2bd5c81
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+X-B4-Tracking: v=1; b=H4sIAFKpm2cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDQ2MD3aJsY1MLC92Sorx03eLSpNzMYpAWXQNTUyNT02RLMzMLSyWg5oK
+ i1LTMCrDB0bG1tQCIRZyfaAAAAA==
+X-Change-ID: 20250130-rk3588-trng-submission-055255c96689
+To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Olivia Mackall <olivia@selenic.com>, 
+ Herbert Xu <herbert@gondor.apana.org.au>, 
+ Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
+ linux-crypto@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ XiaoDong Huang <derrick.huang@rock-chips.com>, 
+ Lin Jinhan <troy.lin@rock-chips.com>
 X-Mailer: b4 0.14.2
-X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_071440_776778_499967CA 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250130_083205_137275_A53B30B8 
+X-CRM114-Status: GOOD (  22.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,50 +88,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+This series adds support for the Rockchip RK3588's standalone hardware
+random number generator to the existing mainline rockchip-rng driver.
 
-The Haikou carrierboard exposes an HDMI connector and audio can also
-be output, therefore let's enable it on RK3399 Puma.
+The RK3588 has several hardware random number generators, one in each
+the secure-world and non-secure-world crypto accelerator, and one
+standalone one in each the secure-world and non-secure-world, so 4
+hwrngs in total. This series adds support for the standalone hwrng,
+which is an entirely new IP on this SoC and distinct from the one in the
+Crypto IP.
 
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+The decision to integrate this into the existing rockchip-rng driver was
+made based on a few factors:
+
+1. The driver is fairly small.
+2. While not much code is shared, some code is, specifically relating to
+   power management, the hwrng interface and the probe function.
+3. I don't want users to figure out why "CONFIG_HW_RANDOM_ROCKCHIP"
+   doesn't enable the RK3588 one, and I really don't see a reason to
+   build without both of them considering the other RK3588 TRNG (for
+   which there is not yet a driver iirc) *does* share code with the
+   existing rockchip-rng driver.
+
+Here are the rngtest5 results from this new driver on my board:
+
+  user@debian-rockchip-rock5b-rk3588:~$ cat /sys/class/misc/hw_random/rng_current 
+  rockchip-rng
+  user@debian-rockchip-rock5b-rk3588:~$ sudo cat /dev/hwrng | rngtest -c 10000 
+  [...]
+  rngtest: bits received from input: 200000032
+  rngtest: FIPS 140-2 successes: 9990
+  rngtest: FIPS 140-2 failures: 10
+  rngtest: FIPS 140-2(2001-10-10) Monobit: 1
+  rngtest: FIPS 140-2(2001-10-10) Poker: 0
+  rngtest: FIPS 140-2(2001-10-10) Runs: 5
+  rngtest: FIPS 140-2(2001-10-10) Long run: 4
+  rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
+  rngtest: input channel speed: (min=212.255; avg=29089.272; max=19531250.000)Kibits/s
+  rngtest: FIPS tests speed: (min=64.005; avg=102.494; max=153.818)Mibits/s
+  rngtest: Program run time: 11292340 microseconds
+
+As you can see, the quality of the entropy is quite good, and the
+throughput is an acceptable 29 Mibit/s.
+
+The series starts out with two patches for the bindings. The bindings
+are separate from the rockchip,rk3568-rng bindings, as the required
+properties differ. The SCMI reset ID numbers are needed because mainline
+uses a different reset numbering scheme, but TF-A uses the downstream
+numbering scheme as far as I know. The TRNG must be reset through SCMI.
+
+Next up are two cleanup patches for the existing driver. Even if a
+decision is made to split the drivers for whatever reason, these two
+patches should be used in the rk3568-rng driver as they get rid of small
+peculiarities in the code without meaningfully changing how the driver
+works.
+
+Next up is the main driver patch that adds support for the new TRNG. As
+the driver was developed by reading the downstream vendor code for this
+particular device and reworking it, I've included the downstream vendor
+developer who wrote the driver as a Co-developed-by tag with their
+existing downstream sign-off.
+
+The penultimate patch adds the node to the rk3588-base.dtsi, and enables
+it in the one device I've been testing it on (RADXA Rock 5B). Other
+devices may wish to enable it as well after verifying that the TRNG
+produces randomness of the expected quality on their particular flavour
+of the RK3588.* family.
+
+Last but not least, I'm adding myself to the mailmap, because I now work
+for Collabora.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Nicolas Frattaroli (7):
+      dt-bindings: reset: Add SCMI reset IDs for RK3588
+      dt-bindings: rng: add binding for Rockchip RK3588 RNG
+      hwrng: rockchip: store dev pointer in driver struct
+      hwrng: rockchip: eliminate some unnecessary dereferences
+      hwrng: rockchip: add support for rk3588's standalone TRNG
+      arm64: dts: rockchip: Add rng node to RK3588
+      mailmap: add entry for Nicolas Frattaroli
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index 947bbd62a6b09ce55320d0889ee8cf50ca59dfd4..a60779bbbaaa54ebc5060907ab876a4d679f7da3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -154,6 +154,10 @@ &hdmi {
- 	status = "okay";
- };
- 
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
- &i2c1 {
- 	status = "okay";
- 	clock-frequency = <400000>;
-@@ -191,6 +195,10 @@ &i2c6 {
- 	clock-frequency = <400000>;
- };
- 
-+&i2s2 {
-+	status = "okay";
-+};
-+
- &pcie_phy {
- 	status = "okay";
- };
-
+ .mailmap                                           |   1 +
+ .../bindings/rng/rockchip,rk3588-rng.yaml          |  61 +++++
+ MAINTAINERS                                        |   2 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   9 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   4 +
+ drivers/char/hw_random/Kconfig                     |   3 +-
+ drivers/char/hw_random/rockchip-rng.c              | 264 ++++++++++++++++++---
+ include/dt-bindings/reset/rockchip,rk3588-cru.h    |  41 +++-
+ 8 files changed, 349 insertions(+), 36 deletions(-)
 ---
 base-commit: 72deda0abee6e705ae71a93f69f55e33be5bca5c
-change-id: 20250130-rk3399-hdmi-audio-b130c2bd5c81
+change-id: 20250130-rk3588-trng-submission-055255c96689
 
 Best regards,
 -- 
-Quentin Schulz <quentin.schulz@cherry.de>
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
