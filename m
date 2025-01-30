@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 152F8C0218A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 05:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08BFC0218A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 10:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4+7i2nhp0t7/GzKnPxSgIL84MmZYWvzyHr/BPBN4n1Q=; b=1NXqiMexJkgZvw
-	Y9TEDoOPZ7Jf32sjrcdriQUMNZovYOP2Yd1XrvYQJC9iJFC+tYRdk6Ue2eg5ix886DrHRXw9Goxcx
-	HKL0a9JSscBVvnXjBvjpxo66s6x2BOo8/Usfpj94XL/ZrO1FUNQYel9wK9EcXvhMtGdQuSGSIa8zj
-	LKxs0BrD8MHZ2KWJrzyorPXn3QZ1CrqSx3m+vSYo0VX2DS3QGW3XBmyd43qmvRJ+AyQL7cUurZMIa
-	G6AQlufTTZO43PyMErWKigT62i6cpotOwuBWVndCAaQmeFTUKKGWMQDELajwncoimBrVi57AGHSA3
-	8FXRT0g7FNS6T2QP3FMg==;
+	List-Owner; bh=EnWkBw1q4qdRJ5pDdEIELV5evXZSafzGTqkTSiJwmoE=; b=BMzJELS3bSkN3s
+	rrFAT3kOdnoFH8l0AtxVBG8UG/lIes5ck7gv7YtpV0bnyC8chd2BVBwWaFiwiQGoeGulpDYEmt/H0
+	jrMKeTcLgouNauS5QURg6xDXpM35wnVfwCUKw3E/ZDxOTsFi0MMHD8Ez4dd5YUdGTl+AROeIR0M4F
+	WZIHm3OoBbWXVWyMPQIJgK8jYfiOhGAYZ3sK3X+OzFRxCc82uWpqRztMQuhtgTXTiEBMtZOYgbi6P
+	aUHnqt9REaRD0N55lkfhYJZ8aqhRJJb4x4G52M7j5BRPZI9GJXmXLuEEJipmlrrPGjR5EpQgvSQE7
+	N15yT9id7CBHB/Y5io6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdNZa-00000008Hu0-1yWp;
-	Thu, 30 Jan 2025 05:58:42 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tdRLU-00000008YtB-15OL;
+	Thu, 30 Jan 2025 10:00:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdNYF-00000008Hlj-3VL4;
-	Thu, 30 Jan 2025 05:57:20 +0000
+	id 1tdRKA-00000008YfB-2XUv;
+	Thu, 30 Jan 2025 09:59:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BBFB5A41B26;
-	Thu, 30 Jan 2025 05:55:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 934ADC4CED2;
-	Thu, 30 Jan 2025 05:57:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E0DE25C5FC3;
+	Thu, 30 Jan 2025 09:58:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD127C4CEE4;
+	Thu, 30 Jan 2025 09:59:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738216638;
-	bh=X24abUTAXgnJswQt6X0FZ/AXysH3Yn5qu50j+vpQ5ac=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XColdkuq70vFUPrtL8XBLp63hdV3wQvuWauVI4Q0yd6laj8xR6A9H5DkHEPYEb8FL
-	 Pcb5At1PLJ62NSqaUzn3ChTCFdypcHF+lSVywHGYz9bMFUGqC8J8kY1hb5+ImaqUb6
-	 KLZzecYOE/dx70u2lAFJm5vyvgQKjvaS/RxzwZHaC/PvR2XdKwdBS1wa8KjRJFTBW0
-	 bh+yZ/wofDtYsEz9KfVJIYQuCAVLuOxYtgOnmtnaadts1A+7F4zgGNMRJ+uvTpNbp9
-	 htgWVAlJu5nfgv1/dvz4ojg2PihPtDa1GAjwVc3ZFn1Dnzg7y6PqohU9E5ZyPl6Ri7
-	 CDOW5i8v+Q8OQ==
-Date: Thu, 30 Jan 2025 11:27:14 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/1] phy: rockchip: naneng-combphy: compatible reset
- with old DT
-Message-ID: <Z5sUusWDCfFFeh0f@vaman>
-References: <20250106100001.1344418-1-amadeus@jmu.edu.cn>
- <20250106100001.1344418-2-amadeus@jmu.edu.cn>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250106100001.1344418-2-amadeus@jmu.edu.cn>
+	s=k20201202; t=1738231141;
+	bh=X4O8RHC23bDLL4d0U/H61Gdzfi5M7BgXiXGvH6PLJJA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=kFUEQjKWgcsfHb+wdCn3LBnTSei0cOXdeLxglggqIwSewERj1TpC9Q4jkextL9SzK
+	 P8YdJ7G5ASCTbEOuN/c4DAFyaVwSPEFfKXEyQkBOOSRMsMhwGfYt1F1F+xHYZErdSy
+	 opZBMqw463Ybf1fMOX/I8UGe9236Ye2cf/7VZQyVyECyfMJfmyssH2N0H2Aglrq7Na
+	 WUfxWoi9oV88b+WjVaRsbyqb0QG30tckJT4UhqhmarRTZrZK8RdQegH+UBxZZnPMug
+	 pFn3PH3rDLo5cbyBIb0sxwm3WEFbjYMXQj8D9q+jUhduQwSdECCwGa6k5DXrc0XyFW
+	 lZhjbp7A99rZA==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tdRK7-00GZPZ-AP;
+	Thu, 30 Jan 2025 09:58:59 +0000
+Date: Thu, 30 Jan 2025 09:58:58 +0000
+Message-ID: <86a5b8vd0d.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: chf.fritz@googlemail.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+	Chen-Yu Tsai
+	 <wens@csie.org>,
+	KeverYang <kever.yang@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	stable <stable@vger.kernel.org>,
+	linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>
+Subject: Re: rk3399 fails to boot since v6.12.7
+In-Reply-To: <b1266652fb64857246e8babdf268d0df8f0c36d9.camel@googlemail.com>
+References: <b1266652fb64857246e8babdf268d0df8f0c36d9.camel@googlemail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: chf.fritz@googlemail.com, mark.rutland@arm.com, wens@csie.org, kever.yang@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_215719_939372_5E919F4B 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20250130_015902_729964_1F73F2FE 
+X-CRM114-Status: GOOD (  21.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +90,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06-01-25, 18:00, Chukun Pan wrote:
-> The device tree of RK3568 did not specify reset-names before.
-> So add fallback to old behaviour to be compatible with old DT.
-> 
-> Fixes: fbcbffbac994 ("phy: rockchip: naneng-combphy: fix phy reset")
-> Cc: Jianfeng Liu <liujianfeng1994@gmail.com>
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->  drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> index a1532ef8bbe9..8c3ce57f8915 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> @@ -324,7 +324,10 @@ static int rockchip_combphy_parse_dt(struct device *dev, struct rockchip_combphy
->  
->  	priv->ext_refclk = device_property_present(dev, "rockchip,ext-refclk");
->  
-> -	priv->phy_rst = devm_reset_control_get(dev, "phy");
-> +	priv->phy_rst = devm_reset_control_get_exclusive(dev, "phy");
-> +	/* fallback to old behaviour */
-> +	if (PTR_ERR(priv->phy_rst) == -ENOENT)
-> +		priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
+Hi Christoph,
 
-That is not *same* behaviour on fallback, why _exclusive() for the
-fallback?
+Thanks for reporting this.
 
->  	if (IS_ERR(priv->phy_rst))
->  		return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy reset\n");
->  
-> -- 
-> 2.25.1
+On Wed, 29 Jan 2025 21:31:53 +0000,
+Christoph Fritz <chf.fritz@googlemail.com> wrote:
+> 
+> Hello Marc,
+> 
+>  since 773c05f417fa1 ("irqchip/gic-v3: Work around insecure GIC
+> integrations") landed in stable v6.12.7 as 0bf32f482887, here the
+> rk3399 fails to boot (~4 out of 10 times) because OP-TEE panics (gets a
+> secure interrupt that it cannot handle).
+
+I think it may actually get a *non-secure* interrupt.
+
+> 
+> Setup is:
+>  - BL31 proprietary (since mainline TF-A has no DMA)
+>  - OP-TEE mainline version: 3.20
+>  - Kernel v6.12.7
+> 
+> <snip>
+> [    0.000000] GICv3: Broken GIC integration, security disabled
+> <snip>
+> E/TC:4 0 Panic 'Secure interrupt handler not defined' at core/kernel/interrupt.c:139 <itr_core_handler>
+> E/TC:4 0 TEE load address @ 0x30000000
+> E/TC:4 0 Call stack:
+> E/TC:4 0  0x300091f8
+> E/TC:4 0  0x30016664
+> E/TC:4 0  0x30015710
+> E/TC:4 0  0x30005714
+> [   26.087363] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+> [   26.087925] rcu:     (detected by 2, t=21002 jiffies, g=2233, q=2416 ncpus=6)
+> [   26.088530] rcu: All QSes seen, last rcu_preempt kthread activity 21002 (4294693363-4294672361), jiffies_till_next_fqs=3, root ->qsmask 0x0
+> [   26.089623] rcu: rcu_preempt kthread timer wakeup didn't happen for 20999 jiffies! g2233 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200
+> [   26.090617] rcu:     Possible timer handling issue on cpu=4 timer-softirq=293
+> [   26.091218] rcu: rcu_preempt kthread starved for 21002 jiffies! g2233 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200 ->cpu=4
+> [   26.092131] rcu:     Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+> [   26.092926] rcu: RCU grace-period kthread stack dump:
+> [   26.093369] task:rcu_preempt     state:R stack:0     pid:16    tgid:16    ppid:2      flags:0x00000008
+> [   26.094192] Call trace:
+> [   26.094409]  __switch_to+0xf0/0x14c
+> [   26.094728]  __schedule+0x264/0xa90
+> [   26.095040]  schedule+0x34/0x104
+> [   26.095329]  schedule_timeout+0x80/0xf4
+> [   26.095672]  rcu_gp_fqs_loop+0x14c/0x4a4
+> [   26.096027]  rcu_gp_kthread+0x138/0x164
+> [   26.096369]  kthread+0x114/0x118
+> [   26.096661]  ret_from_fork+0x10/0x20
+> [   26.096982] rcu: Stack dump where RCU GP kthread last ran:
+> [   26.097463] Sending NMI from CPU 2 to CPUs 4:
+> [   46.276364] sched: DL replenish lagged too much
+> 
+> Is it too late for the kernel to disable the "security" since OP-TEE
+> assumes it is enabled?
+
+Well, it was never effective security the first place, but clearly
+this effect is not expected (my own machine doesn't have anything
+running on the secure side).
+
+> Any ideas?
+
+I think this calls for a revert of this patch, potentially at the
+expense if NMI support on this machine. Could you show how SCR_EL3.FIQ
+is configured on this machine? Mine shows:
+
+[    0.000000] GICv3: GICD_CTRL.DS=0, SCR_EL3.FIQ=0
+
+and I suspect yours has FIQ=1. If that's the case, we could use that
+as the discriminant.
+
+However, this machine has a much bigger issues. For things to work as
+expected, the GIC driver must preserve all the secure configuration,
+and nothing does that today.
+
+So even before this patch, your secure payload won't get any
+interrupt, as we blindly configure everything to be Group-1NS.
+
+Thanks,
+
+	M.
 
 -- 
-~Vinod
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
