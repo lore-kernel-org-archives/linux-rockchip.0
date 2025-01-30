@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD7F6C0218A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 18:47:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 577A4C0218A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 20:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TSOFsiLpvYRiqMKgxOMqZrOjMzynQ2OD1JMSHdykWbE=; b=W9TNT2BLoZKZ2/lkkOgBkfnF+j
-	jS9s8M1gf8oBpUNoZGXZ0ezjJR67rOTfGvQIsE0SnkBghYzHLw1lmOdidhnO51YQgokAXeE4S2Wrj
-	LwbbK7wfvaYc7FVfy1WZ8cPMLVsHF5voeeUS3l5Mg66vguEYJt04/MDZtr5z7H7hiodtucXXaZXxg
-	wl1nXSpO7WlKluurybEkVaDFX5UTs18M7AA3UH1qrsDjdPPmOdFQ5JP0AnYVoUFpgNUuMj1qdPj3z
-	g2Og125EX6pGyLFPPzNeAeNvs8kVtKjIGeH5ntAr2oOWXaQPJHbOmx7BMg9KfDV+p7eVGL3Eptlse
-	X+8rjcag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8BQ7T/TCS12lW1MeP02JlgswdHziO1VcXjCov/z5gug=; b=RxB+iz7txwV5f/
+	U0NtD5bKogq1jPNJUP7LFmxknuRJFwfSlTCjc8kVVU0vyWjfmUj3fhUfDcxYF+0iGLjkbHOX/1pXR
+	g2thJG1r47ySaLtsZtbDIuyFV4FALaeYYCdF3vQkpHyOnjqT72+IRDnavMgqlqmfLRi4t2oCFa/Ch
+	5WVSVIrkyAtOzra/7gNtUStDcQJzwv+n8zjbyOHZzeD2mf4SGSvZjsEu+mjtRttUkrk27Psxs1Y8L
+	mrsFv4CGUQHpmc05AUtltwjejN+LgMoeMNGBGawXosG2YNE0ZQY4dTeSXiQl2R07KYbgvXLB1gaZo
+	jhvrSQSQp3mCpCHKucAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdZZk-00000009Q2U-2Uq2;
-	Thu, 30 Jan 2025 18:47:40 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tdbFv-00000009ZZE-4Aok;
+	Thu, 30 Jan 2025 20:35:19 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdZYQ-00000009Pra-3wAo;
-	Thu, 30 Jan 2025 18:46:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 74EB3A420D9;
-	Thu, 30 Jan 2025 18:44:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC740C4CED2;
-	Thu, 30 Jan 2025 18:46:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738262777;
-	bh=0K6s1LorKkA3vT94npzZne1s6vrmJojmi6fmu1jX3YI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k/25bg1cFe91uYNFaGP8OzA2csT7VrfCxQQ85vXieeatqHEH7TENfk6bozjSKXLK+
-	 wdDeOJY8kTahByo6G/XtWwAipPDysbPGOYMSWGMOdOC7npjNCO4sGEYCm6w22oUGGV
-	 nTu+pOrB+bsj2VM05owXPCSZYFhfIjImRr+5pdUrryjq19U/K2m6dI0bmM5N561tCz
-	 77GeQPRyxOkYK4z9r+vjIC2JGUh6PvvRZ02DlcIfSCNlRHfTqH2V8m5lOT5m5hJzP8
-	 oHE6TrpQVaN3P8IlOJw3fvoVK5gHZ0dPCbvr+XLNLMKABemI0SRuakb+KgJnYlToCQ
-	 FKpBhFimtXdtg==
-Date: Thu, 30 Jan 2025 18:46:12 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	XiaoDong Huang <derrick.huang@rock-chips.com>
-Subject: Re: [PATCH 1/7] dt-bindings: reset: Add SCMI reset IDs for RK3588
-Message-ID: <20250130-payment-carpentry-bf3898625c96@spud>
-References: <20250130-rk3588-trng-submission-v1-0-97ff76568e49@collabora.com>
- <20250130-rk3588-trng-submission-v1-1-97ff76568e49@collabora.com>
+	id 1tdbEb-00000009ZNU-32S4;
+	Thu, 30 Jan 2025 20:33:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=GDjyYngW/V8rZ/9s/V2isOq01Zq2IRay1Y1ld6/4IKA=; b=wsGxR3WotEAaoIbMjuMGP44tEV
+	h30tAbAt8BGPE+tBCGMkjfFLPpQbldEY68cX2M2Asp9fLBgbgU5FRpJQ0IDxBoGSMsTjqdq6oy5vU
+	gfldPf0af8xcnoO7be0Feo+EMaKxOprioif7Jr0WAbtsfZYFw25CqABkFVU4vwvL8uzz+yCl9OqOr
+	zMbEXrtT3trtJRQgoV/bJHlh2NZsZxyU5mb1VGJpi9MFs2e8tVeFGgzoXKAH47doMdvX1iSPRNVNy
+	QlzQu7E2NRD0ycPV8L/1GWI1wJ1DJYJy//Bh+u1sT9IfuucEfyUo1O6J6MuHEmd0yFmmUFLAjEGHE
+	YAJWXOOQ==;
+Received: from i53875b5c.versanet.de ([83.135.91.92] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tdbEM-0001gn-Po; Thu, 30 Jan 2025 21:33:42 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v6 08/14] drm/rockchip: analogix_dp: Add support to get panel from
+ the DP AUX bus
+Date: Thu, 30 Jan 2025 21:33:41 +0100
+Message-ID: <3340006.44csPzL39Z@diego>
+In-Reply-To: <20250123100747.1841357-9-damon.ding@rock-chips.com>
+References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
+ <20250123100747.1841357-9-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20250130-rk3588-trng-submission-v1-1-97ff76568e49@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_104619_042556_ACC01AF1 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20250130_123357_754481_956CF4D0 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,59 +67,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6149973641308413517=="
+Cc: robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, vkoul@kernel.org, Damon Ding <damon.ding@rock-chips.com>, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Damon,
 
---===============6149973641308413517==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="CXK8FdX5cD3efR4o"
-Content-Disposition: inline
+Am Donnerstag, 23. Januar 2025, 11:07:41 MEZ schrieb Damon Ding:
+> Move drm_of_find_panel_or_bridge() a little later and combine it with
+> component_add() into a new function rockchip_dp_link_panel(). The function
+> will serve as done_probing() callback of devm_of_dp_aux_populate_bus(),
+> aiding to support for obtaining the eDP panel via the DP AUX bus.
+> 
+> If failed to get the panel from the DP AUX bus, it will then try the other
+> way to get panel information through the platform bus.
+> 
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> 
+> ---
+
+> @@ -450,9 +461,17 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+>  	if (IS_ERR(dp->adp))
+>  		return PTR_ERR(dp->adp);
+>  
+> -	ret = component_add(dev, &rockchip_dp_component_ops);
+> -	if (ret)
+> -		return ret;
+> +	ret = devm_of_dp_aux_populate_bus(analogix_dp_get_aux(dp->adp), rockchip_dp_link_panel);
+
+This causes an undefined-reference error, so you probably need something like:
+
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index f9cbbb40b36f..fa946a809858 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -8,6 +8,7 @@ config DRM_ROCKCHIP
+        select DRM_PANEL
+        select VIDEOMODE_HELPERS
+        select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
++       select DRM_DISPLAY_DP_AUX_BUS if ROCKCHIP_ANALOGIX_DP
+        select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
+        select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
+        select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
 
 
---CXK8FdX5cD3efR4o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jan 30, 2025 at 05:31:15PM +0100, Nicolas Frattaroli wrote:
-> When TF-A is used to assert/deassert the resets through SCMI, the
-> IDs communicated to it are different than the ones mainline Linux uses.
->=20
-> Import the list of SCMI reset IDs from mainline TF-A so that devicetrees
-> can use these IDs more easily.
->=20
-> Co-developed-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Signed-off-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
---CXK8FdX5cD3efR4o
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ5vI9AAKCRB4tDGHoIJi
-0lvpAP9ygjEXGyo4J28BWq/27ynjo3PWvGqe6RcHCk0ZCC2LNQD/dyoBch31V1v3
-TlDQoD+rw5odXfpjDFjLOsA3O3ea8Qw=
-=y1Z6
------END PGP SIGNATURE-----
-
---CXK8FdX5cD3efR4o--
-
-
---===============6149973641308413517==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6149973641308413517==--
-
