@@ -4,57 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29733C02190
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 16:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A36C0218A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 18:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wbhqMiCdmf9q+6KmZxxwm6lnU1BfguKA5Rqvtx7XOQY=; b=B+wiudGCVqrjRT
-	8TjKolhH5iGKWfwFY8ikwcNo25+70tnx+KaGyCnjZR3byWZhgEiY+3hxMJjCh7Ezu6HN9sJ7nBjd3
-	DYai8mHyICIH0A/Dg329oh8krRsKPIRbsMMfGvwA+lLqIECkz04mr4LAkj5asUcamlp1So8AsUtfL
-	BWe5EkUTuPTwp8uoquKKtMwyqdW5yRgYQWqFFKvgiVBLc7V9ofcJDAvKuQuZfc8koVISQ/Ng7UeRx
-	JygFQQhJ8hI5DCdegjCo+Pt5Rwkl9w9yu+jT+jdJwFGA225AvPqTBB6cHI0Q4VbR6qeRyws90OGbv
-	JQVstElBkkOTCQ4BmLOw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/rYHpdlftqj7shcWhOXy4WVK8+oaQyghDa9obZuVr5M=; b=AHLgUuLsn4bhUe
+	d2vvxKC3FbciUh6+y8apb+FeAeVxE+CjUgQBKZ0qwawhhyZmSUOUIYmEdmjl32lFXfj9fqs581MKH
+	9K0PpK8f+pgILQrbfp7emqVGxITes7yZDR0sAFMLzU6KW0xmUDdRK+SLJNkOJxChBisdWV3AyjRt7
+	R8uMH6a06jTWTH5x0TgVLEepSKWt4dqoVrVh5lQPeOmXsboj0Cqzye9EbPlAlQCmGMf8UDUBlzL2U
+	R/KTKY7P42+B0B5GoIMS8Q8iOSpfr0hJKfsSIQ+xFE4ju2jY/5Q/NEcHdre9hq1nDsT+fk6mIf4pp
+	w4RyAIR1Pset9mzOHq9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdXpM-00000009DR5-2Biv;
-	Thu, 30 Jan 2025 16:55:40 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tdZ1r-00000009Moj-1UBe;
+	Thu, 30 Jan 2025 18:12:39 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdXla-00000009Cxn-3zZa;
-	Thu, 30 Jan 2025 16:51:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1738255905;
-	bh=jgBL2SB/ocuHszVnx0iYyXxLZskVjZaci4SLkHx3hxs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WUeY5OA7K+N8flw+8YqIB1LqXHRLrxN4LruVCvat+wjM6d/lhqcob+W2WkyIAVGzO
-	 t0Ye9RyUS1VuMsKuRSIjfj/2XRPizmOewVRyz4dAJSncH8InqvWLDfNB2HdjAdX6nk
-	 WkBE192/k29Rp/Tc4oz3Tujulo9PJVVRfIQD8APYzslQ51fxHiz8aQsVmkJLqJgt19
-	 IDB26GOSvMWnkEDMeqAOpgzea8AaugkLhFi6o59VlkO3mmKkkEHOsty9I1PIDkAG+q
-	 Toy1kZTXHkdRae4iAUTiBNAHPVAcK+l4KITsy09Iyu9SkMgjSt6Ok1zuEqj9o4lZFO
-	 w6z7RHMpH93LQ==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B65917E0B25;
-	Thu, 30 Jan 2025 17:51:41 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add HDMI0 audio output on rock-5b
-Date: Thu, 30 Jan 2025 11:45:18 -0500
-Message-ID: <20250130165126.2292107-3-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250130165126.2292107-1-detlev.casanova@collabora.com>
-References: <20250130165126.2292107-1-detlev.casanova@collabora.com>
+	id 1tdZ1o-00000009MoP-2IZM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jan 2025 18:12:37 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-3eb7edfa42dso601140b6e.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jan 2025 10:12:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738260755; x=1738865555; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YdgoRXrSyl0SwNYeJOkfBySm6H0lmfcmHgCdqCIPMvc=;
+        b=M12zw8TKm8mWGgSn3dSljgfrQkiU6PwqX9lcV94Ghb0clcf3MH790AwCPMZNTwJA57
+         iPeXDoHmN+Lo7S811hGn9G3WN4+K/P4jTk/EZHSyQCcew8SgGz3xly6k19tb+hA0mvFu
+         OSoQQEl+jbAh2s6kBBR2rmkRsNDclBX9/4BVxC4M7qtE/uTs6gobMvEDlYNxLNcO1JPX
+         EF+C6rDgiz/w5+qfqHiQon1zNdxfOW9NA6Srk+KCgiXIVQh9Xm7tNZE3z36wd0Yrk2uy
+         IhM/XqNZ7aA3iqYorv7vQ6wnFva4nTFyTsHibN9hDO+7N8gEh+AE+QHO/U2j8BXfu/YU
+         nDHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738260755; x=1738865555;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YdgoRXrSyl0SwNYeJOkfBySm6H0lmfcmHgCdqCIPMvc=;
+        b=EMCTa1LM0eteBMtjqFEf8Mbv8EuAuJbTCQiu7bLQW1lNt1wpgeqALvcQlhzOm1kh3u
+         G8Z0kW3Dfzg8Ynx6vo374Q0x3WvLk4uW1ahSrpWbb3I0FYxewom4M2DVQq2q+Gz1WIVK
+         kLF8xBrZbng8GFNUpYOSYOUt+7ZrbqY2EgXcUQeS5nfVGMwVaGSfOx2YjUi2lDaDT7TN
+         k3ll5knZolPd+x0W5UV2ofpj0ORDel2XyFLmRKQHzKbiP9qTEBl3xSMUunffY8mQhTaV
+         VrZIgbpBUKmzq1TYMsx12y1sc+pwXHw/DjSzOgTEqiBiYy7HTCaLXux/1eckMvgeafNk
+         oqDw==
+X-Gm-Message-State: AOJu0YwPVwT3STbIvwz9rHBKSP1asZqua2u328B4siEgPxNKk+tcKnot
+	K9fLl5jzYUSVK4MU5GhWNh6wsxYivn6ZupfGeyAD+bQECn/vyO2FcmaOLA==
+X-Gm-Gg: ASbGncuQ8ORYipUrbNsidvcyjNcLDcpMOWBEC/Z4sImAbUiQZUuI5J8mYumfh24jwox
+	eLp2FpDH8AN+RwYw7LlCRFjRe7obbNyzMzfYuhe/OaIj0DT9HHpinFjjkgE3Sxvn41ZVThtmZd9
+	iQfnMbEUFJgbNrNQEhMdR86xC6itSGpBCTDkGjm+fh91r6v3CiJoI+yjmxY/r9v0qTPpsJ8KTly
+	JI3WzLaxyxqtMejjSbChJyC/Texig8GhAYbCnUxlYN8jd9mEYVzsCYH5ArZi3fS9mSWb8YPU2JC
+	P6CT7Gfydhs6VTTmNiNw4W6w0wWdEwCRIQ==
+X-Google-Smtp-Source: AGHT+IG3X476Qe4ZhR3dKakKXmR/cepO4ChjuYZ8JVda/dOuLlEJ7k2TmI4+KjouWgpNJD/6WhP1bw==
+X-Received: by 2002:a05:6808:3307:b0:3eb:6dd3:12bf with SMTP id 5614622812f47-3f323aefb5amr5504069b6e.28.1738260754990;
+        Thu, 30 Jan 2025 10:12:34 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bcf:7478:d882:8d68:2fb])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-726617eb233sm427110a34.35.2025.01.30.10.12.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jan 2025 10:12:34 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: remove rk3588 optee node
+Date: Thu, 30 Jan 2025 12:10:04 -0600
+Message-ID: <20250130181005.6319-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_085147_130398_4FE2886D 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20250130_101236_610308_702490F4 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,78 +95,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Detlev Casanova <detlev.casanova@collabora.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the simple-audio-card driver with the hdmi0 QP node as CODEC and
-the i2s5 device as CPU.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-The simple-audio-card,mclk-fs value is set to 128 as it is done in
-the downstream driver.
+Remove Optee node from rk3588 devicetree. When Optee is present and
+used the node will be added automatically by U-Boot when
+CONFIG_OPTEE_LIB=y and CONFIG_SPL_ATF_NO_PLATFORM_PARAM is not set.
+When Optee is not present or used, the node will trigger a probe
+that generates a (harmless) message on the kernel log.
 
-The #sound-dai-cells value is set to 0 in the hdmi0 node so that it can be
-used as an audio codec node.
-
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  1 +
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 19 +++++++++++++++++++
- 2 files changed, 20 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 5 -----
+ 1 file changed, 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 8cfa30837ce72..790c1c25a3e41 100644
+index 8cfa30837ce7..245a6cabdc8e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1394,6 +1394,7 @@ hdmi0: hdmi@fde80000 {
- 		reset-names = "ref", "hdp";
- 		rockchip,grf = <&sys_grf>;
- 		rockchip,vo-grf = <&vo1_grf>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 
- 		ports {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d597112f1d5b8..1909078538367 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -49,6 +49,21 @@ hdmi0_con_in: endpoint {
- 		};
+@@ -358,11 +358,6 @@ display_subsystem: display-subsystem {
  	};
  
-+	hdmi0-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <128>;
-+		simple-audio-card,name = "hdmi0";
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&hdmi0>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s5_8ch>;
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -318,6 +333,10 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
- 
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
- &package_thermal {
- 	polling-delay = <1000>;
- 
+ 	firmware {
+-		optee: optee {
+-			compatible = "linaro,optee-tz";
+-			method = "smc";
+-		};
+-
+ 		scmi: scmi {
+ 			compatible = "arm,scmi-smc";
+ 			arm,smc-id = <0x82000010>;
 -- 
-2.48.1
+2.43.0
 
 
 _______________________________________________
