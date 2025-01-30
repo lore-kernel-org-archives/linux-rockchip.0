@@ -4,71 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BFB8C0218A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 16:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB2C6C0218A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 16:53:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7l2p7+lPfy1O6v+VFsLCiKWyE9NBImomHZhJkWlePXE=; b=NbIxb6RTvT1oHy
-	zSU8fDkIFsMQNQbu4Oo7cop4b6PnhiI8xt5hfRUnfJoVhKKOloamLt3/+vqzfHTcch1aq7tmQS9Vs
-	jvjespwyX8pkgkPkhyku2CirV0YiIIkgwJH0BUUe+IIGjcESLjVuHKk4qnzzV+14iXwI0jD6PZka1
-	QeQELWGij2C5BOp7BNF4C3uD6BOVAForkEu6jvtSZRe6+dibERZ1u65PMeVZLGBqmODo+tP8AVAC5
-	lX3VAhBp/+SFxhjz5JMwdJE/55CphOTbY2rFAfqYlvEFYu3e8lolzN9+573QFQVzkadY1u7R8LIxZ
-	vNKAVLG2ytIgmZ6O7eeQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UGnJLusMRSMckALEnu3VV34iC2FeHvoxBlwjh3DXR1A=; b=hmO0uBTHEkWxNC
+	KGazKvopQc880uEazlDgPuMGfvFlYqsiz75lphOoDLLr4mc4pDwKaXY17sevxQoNEfITNKsXWTBwj
+	TNbLZJGpWgDwJh3LNUUFlhDfLlEYl3Wg5TvMxd7XIP0IaTtA6ytnMzKP9Bg4YC3m4Kv+uwOj09gL2
+	3n/Hhur9NE4jPfMonvRLQbvPoS6CtKtBjAbtO8fTHoMyKal1bMl981U1ea1iSL0mRsGhE3d62kPIn
+	yxYdhZg4kp46fvDUy4KmIU0KXLJQUFgQ9A5TPwOXLsq7ba9QABXWgTcSXjWV4wFv13PeFsP9WrHL3
+	WMIH2qNAdPXqapyM2gUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdXco-00000009BmZ-1Vgo;
-	Thu, 30 Jan 2025 16:42:42 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1tdXmo-00000009DA3-18fL;
+	Thu, 30 Jan 2025 16:53:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdXTM-00000009A7W-1Z7n;
-	Thu, 30 Jan 2025 16:32:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738254761; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Afs9I66P4nPDOHHXiYSbFue8gfjFNvFdsY9Ez4F6h2G1pKI1oCAbFcGK9hP63OYYfW9bDL0NuJe1wi4WxvB/L3UreF2Vq/SRXk9dM8IKigtru9T+1dQ93H80EVX74NFDv2lnORKKoUG8xhl5RExjGa4U6lj8Jt9PulpcXNOdUhU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738254761; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4P85b1Yewhr0bG0AVZgypW6WQK0tyFtk1cdyI+K42D8=; 
-	b=PW63N3zADGMcw5WzavUGXAqwpDQ+FHjxDE7juX8eKXR08Mbe9ftY5y/djcypmTkICp82A0pMzSAA+bjExZTbPzFVFuh3vDx9RoPmSEU7auDBFHFFVWw5tmBQp3bS2b82BijXA1lwKB0Az1S9Ktwm+FmJorXVd7IO/hqsaaB21WQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738254761;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=4P85b1Yewhr0bG0AVZgypW6WQK0tyFtk1cdyI+K42D8=;
-	b=jLm1UI5rW3l+RWZAg/nN290f1ftUNWa4KyJwUIooqu+hquGkCsbfFP3H9ptklXB+
-	lm8MUSjF9awrkFDjNW2tpsDEkhgFPMlGSqyGx3MoImrycN9OF1z3OfCe3lzmQR701SF
-	vWf92AEaENaoVroKisWvWveuSQJMPtolkXMJ8Amc=
-Received: by mx.zohomail.com with SMTPS id 1738254731433421.4839172231101;
-	Thu, 30 Jan 2025 08:32:11 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 30 Jan 2025 17:31:21 +0100
-Subject: [PATCH 7/7] mailmap: add entry for Nicolas Frattaroli
+	id 1tdXlT-00000009Cvh-08bi;
+	Thu, 30 Jan 2025 16:51:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1738255896;
+	bh=mAQBhug8kTFaWXIgKrLg6ur+w+sEAPWP6vFltzVvb2s=;
+	h=From:To:Cc:Subject:Date:From;
+	b=nJFKBStsGoJaKDZBP2ke06ViAtAXjafy7Wr/ZyA9FrRNJS0Fovk6fMpdYTuzzuUHR
+	 /Ft0DMD83Vbh2MjUIyyakt+oMwWHCyDg8dd3G+LDC/E1CcPflSbknDtVKe9N+DHsVm
+	 40AlbgSw6/C3HwWf+83/hu0w4FeJWgh3gTBYFvpfZfiSBGAOTRP1ccKzi5v/A9ELPZ
+	 AyBB+FROG/9aI3x2BU7DMIBX6R8vuS8Cug3nHRPjMQ3+nkYDtmQWuKxsjQ/T2v86oS
+	 MxbiXnUW7pac0DGHLO0AMm4f4KVi/BzamMRgS2sqUKoIu1TZUB7k28tomZzm9VHEbS
+	 JeavKdJ7ZJI9Q==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 687E817E0147;
+	Thu, 30 Jan 2025 17:51:32 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/2] Add HDMI audio on the Radxa ROCK 5B
+Date: Thu, 30 Jan 2025 11:45:16 -0500
+Message-ID: <20250130165126.2292107-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Message-Id: <20250130-rk3588-trng-submission-v1-7-97ff76568e49@collabora.com>
-References: <20250130-rk3588-trng-submission-v1-0-97ff76568e49@collabora.com>
-In-Reply-To: <20250130-rk3588-trng-submission-v1-0-97ff76568e49@collabora.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Olivia Mackall <olivia@selenic.com>, 
- Herbert Xu <herbert@gondor.apana.org.au>, 
- Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-crypto@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_083256_478184_02E51A8C 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250130_085139_254080_C174BA45 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +64,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Detlev Casanova <detlev.casanova@collabora.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add my new Collabora E-Mail address as the main contact.
+To support HDMI audio on the rk3588 based devices, the generic HDMI
+Codec framework is used in the dw-hdmi-qp DRM bridge driver.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- .mailmap | 1 +
- 1 file changed, 1 insertion(+)
+The implementation is mainly based on the downstream driver, ported to the
+generic HDMI Codec framework [1] recently merged in the master branch.
+The parameters computation has been kept as is and the data stored in the
+dw_hdmi_qp struct as been cleaned up.
 
-diff --git a/.mailmap b/.mailmap
-index 17dd8eb2630e6216336047c36037a509beaa0731..07dc4846c451d0f36e27fe67e224791cd48bfef9 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -525,6 +525,7 @@ Nicholas Piggin <npiggin@gmail.com> <npiggin@suse.de>
- Nicholas Piggin <npiggin@gmail.com> <nickpiggin@yahoo.com.au>
- Nicholas Piggin <npiggin@gmail.com> <piggin@cyberone.com.au>
- Nicolas Ferre <nicolas.ferre@microchip.com> <nicolas.ferre@atmel.com>
-+Nicolas Frattaroli <nicolas.frattaroli@collabora.com> <frattaroli.nicolas@gmail.com>
- Nicolas Pitre <nico@fluxnic.net> <nicolas.pitre@linaro.org>
- Nicolas Pitre <nico@fluxnic.net> <nico@linaro.org>
- Nicolas Saenz Julienne <nsaenz@kernel.org> <nsaenzjulienne@suse.de>
+The table for the N values has been edited to reflect N recommended values
+as well as CTS recommended values.
+
+The downstream kernel also implements a machine driver for HDMI audio but
+it is doing exactly what the simple-audio-card driver does, so use that
+instead in the ROCK 5B device tree.
+
+Based on Linus' master branch.
+
+[1]: https://lore.kernel.org/all/20241224-drm-bridge-hdmi-connector-v10-0-dc89577cd438@linaro.org/
+
+Changes since v2:
+ - Also clear the audio infoframe
+ - Write AUDI_CONTENTS0 to its default value in case it gets overwritten.
+ - Store tmds_char_rate in the dw_hdmi_qp struct in atomic_enable
+ - Clear tmds_char_rate in atomic_disable and only write registers when
+   tmds_char_rate is not 0.
+ - Do not use connector_state duplicates
+
+Changes since v1:
+ - Remove useless audio_mutex (was used downstream for multiple drivers access
+   to audio functions)
+ - Let hdmi_codec build and setup audio infoframes
+ - Only access audio registers when connector is connected
+ - Rebased on master branch
+
+Detlev Casanova (1):
+  arm64: dts: rockchip: Add HDMI0 audio output on rock-5b
+
+Sugar Zhang (1):
+  drm/bridge: synopsys: Add audio support for dw-hdmi-qp
+
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   1 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |  19 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 497 ++++++++++++++++++
+ 3 files changed, 517 insertions(+)
 
 -- 
 2.48.1
