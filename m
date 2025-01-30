@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD0CC0218D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jan 2025 21:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA0AC0218F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 05:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:
-	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XwHjtsZhkcZgIXiGxNAXSnKOrfIsVJG7wxdzG7zgQWM=; b=bM6zbzKjNxoyOM
-	fW/cU7x7LDM+wuZEiRVFyx7Kc1nEAzyMHV+R+bxwmJLaVbbnREnh6iXFMP91CEdSsAPWsURM3S8uD
-	KelvKUGbNI4L7B6pgfhC9XA5csYAjB3DTf7GE/oltdXNWFGxxi2/MgSsYY1F6UG+K0FmpCqZJrCSN
-	QT00ZTxyJPmi2bTAc/86za092mnByCqNi5idOo2ZJRXSwCwcXjfYRuMU85hfcAaHcxrBU4u+p/lvb
-	+4TYl/Z7GbUvPlG6DBqpwLlIJo1tRTm91SQZq/ywjZ+zn6hrmZt0GhyzxZTfVx+UEVvz38Sszdu+D
-	1Z1PvASClirvUXq3stsw==;
+	List-Owner; bh=HWsufsgiVWHzNi+Mt0xsa8wug6sWZlUneqcLD32pe3I=; b=OjBlQlYvhNk78M
+	MnkK5vKWKjG+JwF3gEto409zIfJSw/ciIkP2ULrngvrIR+iber+7k9SmgvKfpOv3KHPwW7qGa5+FO
+	hM10qbjRWSKHx1pyuIJdstxa37bCCGew5s4jMiT+M2Gt9ndW5LoEnbT8UUFvd57QjgmPji5SSBaLn
+	bp9Vqlo44KhP/ODmYiGBLgZmKNfCJTdsZ3FulpQeDHaLuEinTy11uGywPDzgwG2k1ZdF/pLlp05OK
+	a+pOnpomjMLWDf44xVtlc+bhs2L+vHHlnFESp85PIe1k/VR3GqPYuu1xFWXezWeaULx6ebcGZEtx1
+	AWX1UmCk2I8p95Ci29vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdFfF-00000007pBL-0w2q;
-	Wed, 29 Jan 2025 21:32:01 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1tdNGj-00000008GqY-42c5;
+	Thu, 30 Jan 2025 05:39:13 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdFfC-00000007pB0-1v8R;
-	Wed, 29 Jan 2025 21:31:59 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-43635796b48so424295e9.0;
-        Wed, 29 Jan 2025 13:31:57 -0800 (PST)
+	id 1tdNGg-00000008Gq1-3XvS;
+	Thu, 30 Jan 2025 05:39:12 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-54020b0dcd2so1601299e87.1;
+        Wed, 29 Jan 2025 21:39:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1738186316; x=1738791116; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to
-         :reply-to:from:subject:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3mxRYzzqPEi81Yfzc+wDSZaiIM1NQOITOroGLR3jJeE=;
-        b=EXx424ZIzH5L5UTHtuZfMwNB9Ef282B3PMM84oxnw0uv6h4XK1t4rA4ZQg5wkq0MKS
-         f/k2fznK9hQBswyG07Z7QP7sOvaZz46vbLDHtntZ2fk4IHBXEKbrzYzH7aAYYQhYHDpn
-         Fan3xVStlg6U10zngkDvlbheNcQ0cdK8SvhJZPg92Lzd/b+EQ4N3kc+JvifjsO6JMaC4
-         SWM379TkoVN+Yg67RvFfYqqkPXkGAjPpc4Wrbc0W2v6lBmPTi1ifDk1oArheJPYC0cjI
-         vr8DrDSxDt0LaAC9Et1lRjs479b1XyPttnFrRed8rsX5JDpgIPW8Hm5STJllMloghT06
-         alXg==
+        d=gmail.com; s=20230601; t=1738215548; x=1738820348; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Yg6BBDLYoGyifIg9RVhTYdC6MChPe9nDARLhmJSgMKY=;
+        b=jsEgWmiN8wpGUiXfhsDwVK0Ohu8xJO9j4RIL3czUj/K81FjeaG3Vu1CfRKBK3y1gAN
+         xZ1OrYi30lyADwe+6v4M8gXQvFJfHlwlsl1loSC/epg44RhTsfAfSQruUuL66tDEz2TS
+         yVmozvJAiweN6czUNZ9S522+J01linSUzKuYqzDZbkFHkhejCEsyLhYblvj4PdtgszoS
+         38ew86D91KgEHyy8+pHHg7f4bRt/40dub+0/u5JdxM8ErwVFToOGJTb700O0zWIGiZDL
+         ztgphJA4qogUMekYvDGkEgoBMLnsHN5KoV+0YgVTYM3rNCuky03RtN5CCPOjEq9e/UU9
+         Ekag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738186316; x=1738791116;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to
-         :reply-to:from:subject:message-id:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3mxRYzzqPEi81Yfzc+wDSZaiIM1NQOITOroGLR3jJeE=;
-        b=QD1oUCFJSUrGKitFxucG+FNgjdZDt0V7Mh1KDzmWzI+wtJdo3NQ5YKeyJLU+19kYr7
-         aKl9X1N95ABxdyuGyEiCecMQYIm5KqQRxd5ecE0cLGdaeHQnRKUQ5QHFAkLucemqzOVT
-         epr7RgdBmSbTmQi/7kr3YLWzVXXQSZxglSlAbGPUw7X6whq7ORllXZp3KdjCcZAACPm8
-         jDUIqrP/ZCj4OQ2BVvWrTSyFknbJ8FZ6VGlO89knYxRBZLS7UFcsaJ/YvOxk0WFz/iPo
-         oQEY3WRAFrtquMjVsHEtaI/44eqCM7LLGk0sNNaEJ3Y/2b7AMMiZy/cvEuC91f7NpgC2
-         8qJw==
-X-Forwarded-Encrypted: i=1; AJvYcCWZgw0ETWWUgSNewkSiaj0B0ctbZ1t1ErNYi1l06ZLfEAhgwaR9ujWBfsZ/jdfrPzbvK6NSnkMq+QsbhCRvflQ=@lists.infradead.org, AJvYcCWkhzZgYFEaKjr0nNKlWi1DXbuZ4WGygrqJWUV4J1bW3vMq9lCu7La5BNJZeDcx9y/OjAy0DIjRcxXdw0bCfW0g@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4xY5bB09PA5Vw4IEVA+W/3ntqfNuG5IDwpkxSQ4PJPlOWa/hY
-	QHUDi/2WXL+X375bzYvm8/NKzAqoO9LgmWcioLW/qIYNNGDQ5ziR
-X-Gm-Gg: ASbGncv1CVmXG3iMAqXhUhEdICkM1NRh7d3oi4k2otrrsYlpWXgorr+kdpp1HPz60X3
-	4g6BVmz8iwpsjsupmyb3ORXUVRawf8sNW/R/JToY7qOyKkTwJaIt6AMrL3Umd2EDrjFtWVOstli
-	aqOf3hgclqkOlD6b7VKJSh/IlsItNTw29gjMyuak45D7PtRHbben3kzU+obmEfdXU9RIXGemmF+
-	p1m58yJ/j/yKDnwdx9mNfN5jx5JeMeBK8sgecQzdHWqJxx8pasNWK6aZ9+s8NXXCgKyY9xpeOJB
-	rT7joGASWrvOoGcPhZ2vIhCUGEXUTw==
-X-Google-Smtp-Source: AGHT+IGedQx8nJF0pB4rZnHrhu3PXTi+i9kN1ECPmuwLHVbiAK9j1q7WJRyCg7jJveT7M1cRft1Ahw==
-X-Received: by 2002:a05:600c:4445:b0:436:e3ea:64dd with SMTP id 5b1f17b1804b1-438e1709453mr7299525e9.11.1738186316020;
-        Wed, 29 Jan 2025 13:31:56 -0800 (PST)
-Received: from mars.fritz.box ([2a02:8071:7130:82c0:da34:bd1d:ae27:5be6])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438dcc51672sm34892865e9.36.2025.01.29.13.31.53
+        d=1e100.net; s=20230601; t=1738215548; x=1738820348;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Yg6BBDLYoGyifIg9RVhTYdC6MChPe9nDARLhmJSgMKY=;
+        b=VA5NT08Tc47y/MtJ7uoKEcMVqiN8bTFItpO4t8GKtIHZDUMcFybc+yzUXBVG8Kjdr6
+         jZufI7KcoFw0liF/hATJP8JXEeceRKNkZbksTFZ2TJqWabLxfzL9NpNr41o7WZ1IkI2/
+         ku+88WQG891no4/+TShWb6SNemx3Brn9EWcleYZVgiHBlTn/c84Kx/ggUuSDolfWA7Oh
+         6E2D05avWS9WZ0HQnPeanhSoOn0STpial7NAc7BvmZIkZpIDaW5EbAHJMoWzOx9dVuCV
+         rGUOfq/tKGV3djOF+LO0+abRBadxl7FFKAfTwFAwYoBG+rmlpUXQyEBHpJ9eJazpc3KQ
+         RwOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUxL9idqtHyWgUof7ZDU5Jsz5sNutyU+K7zIFG2cMqpzX4DIXsjI8YFya0HcfkDVechzuV6kMEr6pVo+DJqf3ov@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzv3uO5ggdhUTrJZhW8ENe7ZBVR3eWOkOpbp6ehMshTk4F/neKQ
+	NhyHBCToTBISBsOisSkeXA5mDaN5FK8UgEjWZeNxxodlhdJteRfdt2M2lsSc
+X-Gm-Gg: ASbGncvfVhCw9uDb0UwpLaSazXnz2w37H8kJhJWvhNmnADFPkE4/7pZzLCscO6VS/kJ
+	9GSWdzCIr9qFKWm4cH+tNhjZOF7JYH0XhRnT0DOAwLdhLw84Ia6gl+9ORO15eLJxCrkLZcavblN
+	2tLsvPrjEaRFevfHRWIXMJLCLdzE+Yo4OQXSHfR83JgPJuPjgKQ2ZYpMMiY32eKuygeF7OGXfOG
+	S0I0dakw49aOzWvASQFBTjpt4hIj80VmVCnwWTVRxjAIxFkovYIfmXK80/wHI2FqKyFldc8Bv4D
+	6lFMEdK7tJwwzjzJTIwI1YWroQujxAxARvuFhw==
+X-Google-Smtp-Source: AGHT+IHwPat51mTNEQD4tasyr+KPQCLz762K4muhG5MfppKqRTRitE6CB6EPNTp9yP7cvuJ670ntDA==
+X-Received: by 2002:a19:7007:0:b0:53e:3852:999c with SMTP id 2adb3069b0e04-543ea3d218dmr552015e87.12.1738215548145;
+        Wed, 29 Jan 2025 21:39:08 -0800 (PST)
+Received: from localhost.localdomain ([188.243.23.53])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-543ebeb77e4sm66749e87.163.2025.01.29.21.39.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jan 2025 13:31:53 -0800 (PST)
-Message-ID: <b1266652fb64857246e8babdf268d0df8f0c36d9.camel@googlemail.com>
-Subject: rk3399 fails to boot since v6.12.7
-From: Christoph Fritz <chf.fritz@googlemail.com>
-To: Marc Zyngier <maz@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
-	Chen-Yu Tsai
-	 <wens@csie.org>, KeverYang <kever.yang@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
- stable <stable@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 29 Jan 2025 22:31:53 +0100
-User-Agent: Evolution 3.46.4-2 
+        Wed, 29 Jan 2025 21:39:06 -0800 (PST)
+From: Alexander Shiyan <eagle.alexander923@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH v2] arm64: dts: rockchip: Fix broken tsadc pinctrl names for rk3588
+Date: Thu, 30 Jan 2025 08:38:49 +0300
+Message-Id: <20250130053849.4902-1-eagle.alexander923@gmail.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250129_133158_513605_64BE458C 
-X-CRM114-Status: UNSURE (   7.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250129_213910_881383_7854F23D 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,63 +87,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: chf.fritz@googlemail.com
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Alexander Shiyan <eagle.alexander923@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Marc,
+The tsadc driver does not handle pinctrl "gpio" and "otpout".
+Let's use the correct pinctrl names "default" and "sleep".
+Additionally, Alexey Charkov's testing [1] has established that
+it is necessary for pinctrl state to reference the &tsadc_shut_org
+configuration rather than &tsadc_shut for the driver to function correctly.
 
- since 773c05f417fa1 ("irqchip/gic-v3: Work around insecure GIC
-integrations") landed in stable v6.12.7 as 0bf32f482887, here the
-rk3399 fails to boot (~4 out of 10 times) because OP-TEE panics (gets a
-secure interrupt that it cannot handle).
+[1] https://lkml.org/lkml/2025/1/24/966
 
-Setup is:
- - BL31 proprietary (since mainline TF-A has no DMA)
- - OP-TEE mainline version: 3.20
- - Kernel v6.12.7
+Fixes: 32641b8ab1a5 ("arm64: dts: rockchip: add rk3588 thermal sensor")
+Cc: stable@vger.kernel.org
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+Signed-off-by: Alexander Shiyan <eagle.alexander923@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-<snip>
-[    0.000000] GICv3: Broken GIC integration, security disabled
-<snip>
-E/TC:4 0 Panic 'Secure interrupt handler not defined' at core/kernel/interrupt.c:139 <itr_core_handler>
-E/TC:4 0 TEE load address @ 0x30000000
-E/TC:4 0 Call stack:
-E/TC:4 0  0x300091f8
-E/TC:4 0  0x30016664
-E/TC:4 0  0x30015710
-E/TC:4 0  0x30005714
-[   26.087363] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   26.087925] rcu:     (detected by 2, t=21002 jiffies, g=2233, q=2416 ncpus=6)
-[   26.088530] rcu: All QSes seen, last rcu_preempt kthread activity 21002 (4294693363-4294672361), jiffies_till_next_fqs=3, root ->qsmask 0x0
-[   26.089623] rcu: rcu_preempt kthread timer wakeup didn't happen for 20999 jiffies! g2233 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200
-[   26.090617] rcu:     Possible timer handling issue on cpu=4 timer-softirq=293
-[   26.091218] rcu: rcu_preempt kthread starved for 21002 jiffies! g2233 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200 ->cpu=4
-[   26.092131] rcu:     Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
-[   26.092926] rcu: RCU grace-period kthread stack dump:
-[   26.093369] task:rcu_preempt     state:R stack:0     pid:16    tgid:16    ppid:2      flags:0x00000008
-[   26.094192] Call trace:
-[   26.094409]  __switch_to+0xf0/0x14c
-[   26.094728]  __schedule+0x264/0xa90
-[   26.095040]  schedule+0x34/0x104
-[   26.095329]  schedule_timeout+0x80/0xf4
-[   26.095672]  rcu_gp_fqs_loop+0x14c/0x4a4
-[   26.096027]  rcu_gp_kthread+0x138/0x164
-[   26.096369]  kthread+0x114/0x118
-[   26.096661]  ret_from_fork+0x10/0x20
-[   26.096982] rcu: Stack dump where RCU GP kthread last ran:
-[   26.097463] Sending NMI from CPU 2 to CPUs 4:
-[   46.276364] sched: DL replenish lagged too much
-
-Is it too late for the kernel to disable the "security" since OP-TEE
-assumes it is enabled?
-
-Any ideas?
-
-Thanks
-  -- Christoph
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 8cfa30837ce7..978de506d434 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2668,9 +2668,9 @@ tsadc: tsadc@fec00000 {
+ 		rockchip,hw-tshut-temp = <120000>;
+ 		rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
+ 		rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
+-		pinctrl-0 = <&tsadc_gpio_func>;
+-		pinctrl-1 = <&tsadc_shut>;
+-		pinctrl-names = "gpio", "otpout";
++		pinctrl-0 = <&tsadc_shut_org>;
++		pinctrl-1 = <&tsadc_gpio_func>;
++		pinctrl-names = "default", "sleep";
+ 		#thermal-sensor-cells = <1>;
+ 		status = "disabled";
+ 	};
+-- 
+2.39.1
 
 
 _______________________________________________
