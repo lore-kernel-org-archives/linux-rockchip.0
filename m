@@ -4,52 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A43C0218F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 18:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F13AC0218F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 18:33:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ADYkoWtBuANFcEtCX57nBko0y9JauwJ9EUdGr5OrOnU=; b=eMqOIoAMf4C1yH
-	kwTsH6Hp7u2tzvovtbCCWHwoLzajS5EX19/XfJAAzr+guHdy1/0ay/z9rOlnzjbuCu8LIlyBu2EK9
-	FZgUWGgRmXYwDJvhE1FIijTi6uOk4BMXa9b0phV5kFFbjIX3n4/SA2QkaSGrjTXX+lCv0oji1YCgC
-	BW0am5ytmYrjhg+QPlnxQhfkBVP0qsSGE1wJK747TZRjV0wtxAyABZEee1M6aAJN0a5lIyqVEtJ/K
-	f4j/ipF/Ku6X/FIhuckPNTVCsmcQF7wiH+KpzSEWwX1x4yn9kdmZ7pmRAh8TrR0cRxGL82UmZIoUL
-	555hk8rix+TFxrQlzoCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1bdSsxB/5JG1unJE7TWTzpBO2ux7bhRC024PyrWEUCs=; b=HAjCHIpQw63ym/
+	VX3nOQ30bS45f8A+ljmT1JgocV46FxbvgARrfRjdGYEIXKUSc8XywjSv3w/gm7442ekdCym8eG0N2
+	Dqey+VXJNHPhmrDNOb99OwE10I5+SGLlXwV7Fui5nWAzmD1wYK7VY6s8m5/EM3Aciffxt+H+FBeBx
+	SxO9A2LQY+uYzj5qCSX4p99KuDa8vhynCaPgxxgMW0d0tGAE+vaybX2JQV4a1960tvw2C6F5U/c4o
+	fAzXdNwm/YoZhcnmTKWbuP6tQZS3PyGJnkrBkWjLe7zgf1mRzXeopUUmIsnlgPdAd5HMzyLvj66yf
+	mfWcrbsifcwCl/BfgV4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdvnq-0000000BDPj-3eu4;
-	Fri, 31 Jan 2025 18:31:42 +0000
+	id 1tdvp7-0000000BDXB-3eGF;
+	Fri, 31 Jan 2025 18:33:01 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdvmV-0000000BD4N-0oLm;
-	Fri, 31 Jan 2025 18:30:21 +0000
+	id 1tdvmq-0000000BDDj-3bxe;
+	Fri, 31 Jan 2025 18:30:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5374F5C6367;
-	Fri, 31 Jan 2025 18:29:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC2D3C4CED3;
-	Fri, 31 Jan 2025 18:30:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 572E85C6383;
+	Fri, 31 Jan 2025 18:30:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48DE3C4CEE3;
+	Fri, 31 Jan 2025 18:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738348218;
-	bh=x1/ZVTQMmRVVIFw2D8Gr10vnmzAC84NLSgrZVeSMY4k=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dJEZSktz5FLTnjBKggCmDQ+cF20eNIvEicD8Qri2LrNwp1nBYz62AcoRip0qmZEUv
-	 g4mluErZ0wUSKrq328HmKOzJG4an0GZrkkSo2Kcs8iYlU+qwBUVM9niRd0FaDBp1Bf
-	 LNA8ci6vkIgu+RNXdak7ofjwTdwwe50KfVWw+AqxQgy40Gon9VsLqPhqK1nwvPGRec
-	 /TqOOnzceSs7rPhgY2NhdYLVAxy93nCLISjUcckTgQwal1gjDS9Ch55US3u6Ugsdof
-	 LtMNkvRR0G8xrRVtOi9fBszxeeEFeV+TlamXqIxMZAFCmlx4gRC4hoC0TpwQVBE3ZD
-	 njMF+arfTIrng==
+	s=k20201202; t=1738348240;
+	bh=8uxTceNWzYFB2l9AWmmadxYKBiMHIPtgLjKZiK55GQA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=NPjkBtf3Z+Va9MNfHHJ5iBM8ynQpSWaYrIsz7aRMuHfuBNn4tEjrrg5f3cZ995MZk
+	 GhIP87E9DbjRw83sOIO8nQFdYUy1lAZ9UQJR9GRTLGFrC/05qprvjyYY9pb0QUnG0N
+	 8Oq51XyUvTZVzbGNpmAsIdRZZSBMbnn7cv0vjH+BH4jnellZ6ujoroFGd8TbLh4n/k
+	 TPBn/bkKvKnqNHNffinvgH7BOfRdCD9cw0m7jWpyN91AMTNKXg9N32lje9GASYNB1O
+	 LzxPvvUcBZlOzxBETltdiRquh3P96ylkYt5SoDWhfwUKzRIuuaHJzVzJDn73XKx4b4
+	 BCvALBAR8A+UA==
 From: Niklas Cassel <cassel@kernel.org>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Rob Herring <robh@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>
+	Heiko Stuebner <heiko@sntech.de>
 Cc: Damien Le Moal <dlemoal@kernel.org>,
 	Siddharth Vadapalli <s-vadapalli@ti.com>,
 	Udit Kumar <u-kumar1@ti.com>,
@@ -58,16 +56,18 @@ Cc: Damien Le Moal <dlemoal@kernel.org>,
 	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 0/7] PCI: endpoint: Allow EPF drivers to configure the size of Resizable BARs
-Date: Fri, 31 Jan 2025 19:29:49 +0100
-Message-ID: <20250131182949.465530-9-cassel@kernel.org>
+Subject: [PATCH v4 7/7] PCI: dw-rockchip: Describe Resizable BARs as Resizable BARs
+Date: Fri, 31 Jan 2025 19:29:56 +0100
+Message-ID: <20250131182949.465530-16-cassel@kernel.org>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250131182949.465530-9-cassel@kernel.org>
+References: <20250131182949.465530-9-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2780; i=cassel@kernel.org; h=from:subject; bh=x1/ZVTQMmRVVIFw2D8Gr10vnmzAC84NLSgrZVeSMY4k=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLnis29v4317lKnK6de7N60dwaL4S0GWwuuaFPRWyVZV 51XdRnf6ChlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBEDu1k+Gcn8CNCyEhi58+e lFfb/0TKPDbQf1fpI7OSY/rywBalD84M/6sFGDnLJp+MWd926feOuZyZU6RvNZhvYmHadH/aHYv zT3kB
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2591; i=cassel@kernel.org; h=from:subject; bh=8uxTceNWzYFB2l9AWmmadxYKBiMHIPtgLjKZiK55GQA=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLniq1pa9vTviDSx3VmySXBn+WLMpglij8XeR1y6j62r ovp+MMlHaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZjIb3NGhof7lzHsYtnfGeL1 h4Or47r5Fja/u7v5j9j+VVvxKTUnsJKR4cLODVPXNL/qU508J/rJKc9ts16Uc7jIXFYwPuMgy3O igAUA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_103019_314290_5CD5B8F2 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20250131_103040_980620_60868DC5 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,69 +84,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PCI endpoint framework currently does not support resizable BARs.
+Looking at "11.4.4.29 USP_PCIE_RESBAR Registers Summary" in the rk3588 TRM,
+we can see that none of the BARs are Fixed BARs, but actually Resizable
+BARs.
 
-Add a new BAR type BAR_RESIZABLE, so that EPC drivers can support resizable
-BARs properly.
+I couldn't find any reference in the rk3568 TRM, but looking at the
+downstream PCIe endpoint driver, rk3568 and rk3588 are treated as the same,
+so the BARs on rk3568 must also be Resizable BARs.
 
-For a resizable BAR, we will only allow a single supported size.
-This is by design, as we do not need/want the complexity of the host side
-resizing our resizable BAR.
+Now when we actually have support for Resizable BARs, let's configure
+these BARs as such.
 
-In the DWC driver specifically, the DWC driver currently handles resizable
-BARs using an ugly hack where a resizable BAR is force set to a fixed size
-BAR with 1 MB size if detected. This is bogus, as a resizable BAR can be
-configured to sizes other than 1 MB.
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-With these changes, an EPF driver will be able to call pci_epc_set_bar()
-to configure a resizable BAR to an arbitrary size, just like for
-BAR_PROGRAMMABLE. Thus, DWC based EPF drivers will no longer be forced to
-a bogus 1 MB forced size for resizable BARs.
-
-
-Tested/verified on a Radxa Rock 5b (rk3588) by:
--Modifying pci-epf-test.c to request BAR sizes that are larger than 1 MB:
- -static size_t bar_size[] = { 512, 512, 1024, 16384, 131072, 1048576 };
- +static size_t bar_size[] = { SZ_1M, SZ_1M, SZ_2M, SZ_2M, SZ_4M, SZ_4M };
- (Make sure to set CONFIG_CMA_ALIGNMENT=10 such that dma_alloc_coherent()
-  calls are aligned even for allocations larger than 1 MB.)
--Rebooting the host to make sure that the DWC EP driver configures the BARs
- correctly after receiving a link down event.
--Modifying EPC features to configure a BAR as 64-bit, to make sure that we
- handle 64-bit BARs correctly.
--Modifying the DWC EP driver to set a size larger than 2 GB, to make sure
- we handle BAR sizes larger than 2 GB (for 64-bit BARs) correctly.
--Running the consecutive BAR test in pci_endpoint_test.c to make sure that
- the address translation works correctly.
-
-
-Changes since V3:
--Picked up tags.
--Addressed comments from Mani.
-
-
-Kind regards,
-Niklas
-
-Niklas Cassel (7):
-  PCI: endpoint: Allow EPF drivers to configure the size of Resizable
-    BARs
-  PCI: endpoint: Add pci_epc_bar_size_to_rebar_cap()
-  PCI: dwc: ep: Move dw_pcie_ep_find_ext_capability()
-  PCI: dwc: endpoint: Allow EPF drivers to configure the size of
-    Resizable BARs
-  PCI: keystone: Describe Resizable BARs as Resizable BARs
-  PCI: keystone: Specify correct alignment requirement
-  PCI: dw-rockchip: Describe Resizable BARs as Resizable BARs
-
- drivers/pci/controller/dwc/pci-keystone.c     |   6 +-
- .../pci/controller/dwc/pcie-designware-ep.c   | 218 +++++++++++++++---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c |  22 +-
- drivers/pci/endpoint/pci-epc-core.c           |  31 +++
- drivers/pci/endpoint/pci-epf-core.c           |   4 +
- include/linux/pci-epc.h                       |   5 +
- 6 files changed, 239 insertions(+), 47 deletions(-)
-
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 93698abff4d9..df2eaa35d045 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -273,12 +273,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
+ 	.msi_capable = true,
+ 	.msix_capable = true,
+ 	.align = SZ_64K,
+-	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_4] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
++	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_4] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+ };
+ 
+ /*
+@@ -293,12 +293,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
+ 	.msi_capable = true,
+ 	.msix_capable = true,
+ 	.align = SZ_64K,
+-	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
+-	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
++	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
++	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
+ 	.bar[BAR_4] = { .type = BAR_RESERVED, },
+-	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
++	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+ };
+ 
+ static const struct pci_epc_features *
 -- 
 2.48.1
 
