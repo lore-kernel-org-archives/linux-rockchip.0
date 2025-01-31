@@ -4,84 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC30FC0218F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 17:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65F6CC0218F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 18:27:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0NAADNtsDDsRbhBUQSh37OHAxmzibIQN5NI7gBy50TU=; b=CszcF75X0AOSUL
-	hX6wmNnJBG57qyoutFFz+/dvQYeNY6Vek4CFis+ui+lH3MYaiuVd4SL+UylHaAgsYYoc76loQamtS
-	g6yrSkQx/YbetzLPEElmqdXLRcsfkgAdAIRy3yupSoaUdnzGslTJ8E6EOyhjgKZBVWd3gzkKdElYc
-	bVbjM64CXFYiwKQDQVIxG2E68G6Jt+/WvNRtP0kf+HmW/xpraGuUDEUP/4J8slVUijgGm5uENgqS1
-	xuoAhFB3szx0kX2eC+PbREnbcv8snLlJa/HF4M8zAa9PaIB0xh3nqFPkfrOOKur48k9Yvz0zD/ghL
-	3XiOirrSS5IelXRFVMfA==;
+	List-Owner; bh=BFItNlPzP4aOI5oQjeDsabYloHBS5ppse30dsMZnbIw=; b=P5lRcTJfbz0PoE
+	2E7PYZza3NnhnyKicko/BufbY3aBUmgVLdf7FtgM8lCHpREaxKaC4iB42AOv3r2J6GHTyJK3qIDql
+	q0nlql2I8dN1HTTwNo6S+d5ZAFPBhzepAjnZ+hHmjD7e0P9DI4wUvYgf896U8jWuQYmhvD+fTVQAE
+	yAxgfQVmfr92V6KLeO6pWBjerzHWQjlFEd3ijWAoH79kE8MTQefR2xgrJzfhLGFLOGGnJWLTmKTXV
+	315NZ6SkDSQ4zOLMqTJH2c/YCh/cweYME9my0SbdUPAOtYeIFNz/hlynsHjps1gY7tgEsLtRUO5+c
+	iB4PBGLKPHTVxdpE8KOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdugr-0000000B6ax-0P3f;
-	Fri, 31 Jan 2025 17:20:25 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tdvjI-0000000BCbp-0GI9;
+	Fri, 31 Jan 2025 18:27:00 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdufz-0000000B6R4-03tI;
-	Fri, 31 Jan 2025 17:19:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738343913; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=f/iY1x4utYyIJED6fcvaaas089qhpFaxupg+RoEoMQeB+BTvtDqhYcOFQGdubiFfRuu84pFe08958yXNfTH9uHNIac2N8eBs1B+5fCbX7Hb1NXt+XHPPkAt/CXCw6PwVwzZkx0EHHi2oYdKbecHIpmdrujZBSFG3/S1jdlIawrc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738343913; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KxrVvNWFsLdjUGWz01VmAu7gb3IK9lnKuIig2vYIG3M=; 
-	b=aJZJy3fNsdSZ/j+Zi+T3eeHc0pOZqnKJPjdWRZKsWg6BnUXfeRrdr9h+BC0T+EZOBGLJ+CqYojzHJhepG9AZ9iy3YlFzTP+IhDZv/8PLxieD+p6HM3/4PLNlASm+7X16N0tpInXWdfHgxiAAl3pV4TXOfWNJyVzhEIHnjjRFHCk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738343913;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=KxrVvNWFsLdjUGWz01VmAu7gb3IK9lnKuIig2vYIG3M=;
-	b=eF7K20VpljQSTO45wK2hF3MA4A4e8+K7HQHEdei9dYVEu/VvFe36L9NjbJN5mSQ2
-	bN0MzTRmOaLuDdvsAVNf0ZljnKCKNn0WRyQfdh1d1zPpSyl78ht8ukpizB64YLhKyTK
-	bob/pDfCQQekFArnBL0P3dMu+HAX9UmZRxW+9h7A=
-Received: by mx.zohomail.com with SMTPS id 1738343906427960.6186911597109;
-	Fri, 31 Jan 2025 09:18:26 -0800 (PST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- dri-devel@lists.freedesktop.org,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com,
- David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>,
- Robert Foss <rfoss@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Johan Jonker <jbx6244@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>,
- linux-arm-kernel@lists.infradead.org,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Jianfeng Liu <liujianfeng1994@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add HDMI0 audio output on rock-5b
-Date: Fri, 31 Jan 2025 12:18:23 -0500
-Message-ID: <3668702.iIbC2pHGDl@trenzalore>
-In-Reply-To: <8ad30e14-e785-4e3a-ba92-644e7fb07759@cherry.de>
-References: <20250130165126.2292107-1-detlev.casanova@collabora.com>
- <20250130165126.2292107-3-detlev.casanova@collabora.com>
- <8ad30e14-e785-4e3a-ba92-644e7fb07759@cherry.de>
+	id 1tdvhy-0000000BCTM-0VX3;
+	Fri, 31 Jan 2025 18:25:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=DeK+E3UWXmeeQSfCZOJZEGlV6yQ1IUdoPqkRbHcneDM=; b=p8X2cw2ns3zjZjtrsxUeo9nQoD
+	83vokCjh7SElQcKs8UCOP/eQWs6bqwKgDNqvb6yVijFxP70eFHRLeGvaA0SRW8WQaoU6Joaj0pOy8
+	o5SirEuImqSVObFtolyc7TPjxMJFiIkn6E0dzdIe8pKrfcQBE2+dur7dLm1JQ+hDgjD6CKuoQCDvK
+	PdChZXnjMfKgHMUJAWg26EPJPmIUC+8Y+QNqHtj/ripyneN78T1L4X/rXUFl7s8tkjLISRaY+ouVM
+	C5nfn//sOeNx9KXt1htxesH8IzwE6LrKxZB/PKRAkrdvwI9oZLl3FieQ/nyrkOZ4bVuIQALNxt+ko
+	h0znrdaQ==;
+Received: from [86.39.10.178] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tdvhq-0001qj-9l; Fri, 31 Jan 2025 19:25:30 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: vkoul@kernel.org, kishon@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ quentin.schulz@cherry.de, sebastian.reichel@collabora.com,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dse@thaumatec.com
+Subject: Re: [PATCH v5 0/2] MIPI DSI phy for rk3588
+Date: Fri, 31 Jan 2025 19:25:28 +0100
+Message-ID: <2498993.ElGaqSPkdT@phil>
+In-Reply-To: <20241203164934.1500616-1-heiko@sntech.de>
+References: <20241203164934.1500616-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_091931_107360_099B1362 
-X-CRM114-Status: GOOD (  33.42  )
+X-CRM114-CacheID: sfid-20250131_102538_181202_E1584BDD 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,109 +75,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
+Hi phy-maintainers,
 
-On Friday, 31 January 2025 11:38:34 EST Quentin Schulz wrote:
-> Hi Detlev,
+Am Dienstag, 3. Dezember 2024, 17:49:30 MEZ schrieb Heiko Stuebner:
+> This adds the phy driver need for DSI output on rk3588.
 > 
-> On 1/30/25 5:45 PM, Detlev Casanova wrote:
-> > Use the simple-audio-card driver with the hdmi0 QP node as CODEC and
-> > the i2s5 device as CPU.
-> > 
-> > The simple-audio-card,mclk-fs value is set to 128 as it is done in
-> > the downstream driver.
-> > 
-> > The #sound-dai-cells value is set to 0 in the hdmi0 node so that it can be
-> > used as an audio codec node.
-> > 
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > 
-> >   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  1 +
-> >   .../boot/dts/rockchip/rk3588-rock-5b.dts      | 19 +++++++++++++++++++
-> >   2 files changed, 20 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> > b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi index
-> > 8cfa30837ce72..790c1c25a3e41 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> > @@ -1394,6 +1394,7 @@ hdmi0: hdmi@fde80000 {
-> > 
-> >   		reset-names = "ref", "hdp";
-> >   		rockchip,grf = <&sys_grf>;
-> >   		rockchip,vo-grf = <&vo1_grf>;
-> > 
-> > +		#sound-dai-cells = <0>;
-> > 
-> >   		status = "disabled";
-> >   		
-> >   		ports {
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts index
-> > d597112f1d5b8..1909078538367 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > @@ -49,6 +49,21 @@ hdmi0_con_in: endpoint {
-> > 
-> >   		};
-> >   	
-> >   	};
-> > 
-> > +	hdmi0-sound {
-> > +		compatible = "simple-audio-card";
-> > +		simple-audio-card,format = "i2s";
-> > +		simple-audio-card,mclk-fs = <128>;
-> > +		simple-audio-card,name = "hdmi0";
-> > +
-> > +		simple-audio-card,codec {
-> > +			sound-dai = <&hdmi0>;
-> > +		};
-> > +
-> > +		simple-audio-card,cpu {
-> > +			sound-dai = <&i2s5_8ch>;
-> > +		};
-> > +	};
-> > +
+> The phy itself is used for both DSI output and CSI input, though the
+> CSI part for the whole chain needs a lot more work, so is left out for
+> now and only the DSI part implemented.
 > 
-> This is SoC specific and not board specific I believe. I2S5 is not
-> usable anywhere else but with HDMI0 controller if I've read the TRM
-> properly.
+> This allows the rk3588 with its current VOP support to drive a DSI display
+> using the DSI2 controller driver I'll submit in a next step.
 > 
-> Therefore, I would suggest to move this to rk3588-base.dtsi (with
-> status=disabled; and when hdmi1-sound comes up, to rk3588-extra.dtsi),
-> the same way we've done for RK3399 for example.
+> Only generic phy interfaces are used, so the DSI part is pretty straight
+> forward.
 
-Indeed, I only could test on a Rock 5B, but I think it can be moved to the SoC 
-DTS.
+a tiny little ping :-)
 
-> The only hesitation I have is that HDMI0 can use either I2S or SPDIF for
-> audio, both audio controllers internal exclusive to HDMI0/1 controller.
-> But the user could anyway define their own simple audio card for spdif
-> or modify this one if they wanted to.
+Is this still in a queue, or did it fall through the cracks during xmas?
 
-So some boards will use I2S and some SPDIF ? Or any board can be used with one 
-or the other ?
-The disabled status makes sense as hdmi is disabled in the SoC tree as well. 
-So if a user wants to use SPDIF instead, they could keep hdmi0-sound disabled 
-and add their own simple-audio-card compatible node.
-
-> I've tested with my suggested change and same changes than for Rock 5B
-> DTS on RK3588 Tiger Haikou with speaker-test -c 2 -t wav, left is left,
-> right is right :)
-> 
-> I'm not giving my Tb here as the commit title is specifically about Rock
-> 5B and I haven't tested this series on it. If you had a separate patch
-> for the hdmi sound node and enabling it on Rock 5b, I would have given
-> my Tb on the former and not the latter.
-
-Thank you for testing anyway ! I will move the node and enable it in all board 
-dts that already enable hdmi0.
-
-
-Detlev.
-
+Thanks a lot
+Heiko
 
 
 
