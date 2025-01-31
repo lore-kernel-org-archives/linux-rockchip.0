@@ -4,57 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8213BC0218F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 15:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E66CC0218F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 16:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wbhqMiCdmf9q+6KmZxxwm6lnU1BfguKA5Rqvtx7XOQY=; b=fnMt3/BBwPgEK7
-	WAHR9Q0WMkaSb+4rOorfBaqdlOfH+7KpaVGMEh0K0Gv62La3hbRvx3jclCqC33d25L18yWxO8OShV
-	5MYmjkSpFWD69RjWoW8BdFNjzxjJpRNhS22UIOL8YxGiEK55rKrKL4T5pBJq1u86/KX7ErDChSyiJ
-	tK4Qv7fJU6VbzFuR0LKs1ppAiSOgUby+amWo60h96sMCZOfOJAPEGSpfiWQK9coSaW5gI5BX19xcg
-	ruAZBUmUaBNqATHZpx+7tr86GaSSSe5mZF2Z6eCo3Lxp62PXyf0bBkncDyDFygIPNXrtHtjh8rJSm
-	ukPepR/NUhkEdaR4nCWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lsxlTUzoxfjjzkgA0xaVLq0/BXWUOvy/pzvbGegcwfk=; b=Apdom6PZbVmEaB1FLXHPaMO3Xs
+	pZfQvCWvGU+QTCEPbSzV4EuUV9ghUYo2denGYRMjDUt7SwV2jHh63QsGzsjzPhJwipK5lB2cE2zkc
+	R0Pof1nz/8G5QoqETg9srup4hCFcma6p6AdjhU8RkwQSPDplf+n4ox6QSARutoZ5N9r4v4XYFEXiX
+	NZ92dasudZ1u/hn2EIGEm34s5CIO0cNDFKEWo65Xl9fGblNYQb+NglVhkUyWFEov5LfjqaSvj0bNg
+	XeEz7+JZThzsnhdYUZ41llPeLipYytzQQrwe3HB8i7jnafr4bVQP6uCSwloN3PUTkrOrUHylTcQSZ
+	oBMD1NKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdsxu-0000000Aqje-1cym;
-	Fri, 31 Jan 2025 15:29:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tdtUs-0000000AukT-3eBu;
+	Fri, 31 Jan 2025 16:03:58 +0000
+Received: from mail-am0eur02on2062e.outbound.protection.outlook.com ([2a01:111:f403:2606::62e] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdsu8-0000000ApzX-3uRZ;
-	Fri, 31 Jan 2025 15:26:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1738337159;
-	bh=jgBL2SB/ocuHszVnx0iYyXxLZskVjZaci4SLkHx3hxs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iMJ4FzvJZG5vIGe3vxqjf3l0foEdIcarr7iKJl/CrnkMf4CowcjTRMwDNIGXBIHkb
-	 VdMPzbcKfKSyz9cUxm+5L3/nBiLV4Xn/a5isVKS6tXsGkkQQ5ngAkUR4Gf1iak9y0T
-	 hDZzFNr6eWBM7/W6s5yv1sbo2iaclOtJmHE1xfnnTjLd+SvQgMGYXZZLb7WDSm7RcB
-	 +8jkuMMPJL056AWrfwyhKOaaJYzd8wAGHv350ZfZTiCcaEUOX948fK6PbIkV0v73ND
-	 dlsmJZgC4QQcND/GER6oLIk0sLDD7qAoOar+aYGXHrzMu3UjR3+abK9HhcYTRvshp6
-	 UMH7pNMnEiJRQ==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 09E9917E1067;
-	Fri, 31 Jan 2025 16:25:54 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 2/2] arm64: dts: rockchip: Add HDMI0 audio output on rock-5b
-Date: Fri, 31 Jan 2025 10:23:22 -0500
-Message-ID: <20250131152438.2891507-3-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250131152438.2891507-1-detlev.casanova@collabora.com>
-References: <20250131152438.2891507-1-detlev.casanova@collabora.com>
+	id 1tdtTY-0000000AuVu-0Qen;
+	Fri, 31 Jan 2025 16:02:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NvHYhzfQffyIFJ8Ol82Fddg3OsZfiO5u/nREoNdThBM/or+MrhaR2bgorX0+lXQjCzxE8quJMFtON5PeqF3cV1HGEQtEeKZv1nGO+h9RVwtOvVveGQg//2jhpqUJyMoykCIDLDQ3BbTD+1IhlV5RGnqwo9TOGwTl92ROdO1ZztgMrBAIxvbDJJgigauAiNISO+MJFZEEVpHAao9EaOsGLfKav6GDZQn+urqhX3in/YihLMZB3bgZG3ObTPEUv68dl9ahAFOmHSVM6ZX3T0An/YCiDpIXoJvFn2uaTeWU3C3sozPDHtwFID3x0GO1lfKeNm6QkmaXGCut9rvxtcaKHg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=73bDCSMDShfGI4fqn1G07bxp+d4a8Cz5WaXPwsVIZu4=;
+ b=MYoHltWf6WKyiP1sAFvpU9KLk49VStEbL37AwNCTiE+2joeE3uVfz/0SESOZL8wkMRTjo+vrI/sCq+KrxCDw2TD+nJJu3SMcsZQSefkqSOLDrQnirdw9lSZcyAwCg1LNNe39QJZZJO+QI3bSN99SXZyfeGHirRJnmvKOJHN6pgZV31IGrjLm/mtMh/FVfnQrZvgCRY0zyn1TGTMTPBwg+MLtsBael3AcGe19NF97CErrQbkwg20kRan/f8VtCiUomImEk86iwNEsyqbrG6Lx/q/bQQWJaNb/n8TRJCr0dcUK7w2jJSIZTZqu1X6Klg+3430b2NavG3Cv9sugtLHvlQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=73bDCSMDShfGI4fqn1G07bxp+d4a8Cz5WaXPwsVIZu4=;
+ b=MTWs+Y/xflZKlDi+UO/MAvReHNAQuPTMf8kGVojiiaEiOpb6/yb/YJ3vdKJ9zGKfB/h58BOR7DTZABPqfSSHML6vECBWG1FQP5f7Ki23q0lpdaybh+yVS8YTO4cOZUurqeIuqzmjbuZIy1mxBCQcWJTon0sq8ZX+NEycOFJOQVg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by DU2PR04MB9000.eurprd04.prod.outlook.com (2603:10a6:10:2e3::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.21; Fri, 31 Jan
+ 2025 16:02:26 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%3]) with mapi id 15.20.8398.018; Fri, 31 Jan 2025
+ 16:02:26 +0000
+Message-ID: <63cda072-3671-42c9-9650-7a3ece39dec6@cherry.de>
+Date: Fri, 31 Jan 2025 17:02:24 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/2] MIPI DSI phy for rk3588
+To: Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ sebastian.reichel@collabora.com, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dse@thaumatec.com
+References: <20241203164934.1500616-1-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20241203164934.1500616-1-heiko@sntech.de>
+X-ClientProxiedBy: VI1PR06CA0193.eurprd06.prod.outlook.com
+ (2603:10a6:802:2c::14) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DU2PR04MB9000:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4bd460c6-2754-43d1-4237-08dd4210a7c2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?c2Ywd0ZqOFZaMW9uYzc5SGlOWllkSDN3K2xIRHJjdnRBdk1USGMyK3dXdFgy?=
+ =?utf-8?B?YjlWbGhTendjb0lUTncxMFNHVlBvRlZJM2ZtQzE4OHo2UHFSdWFMR0Qwck8z?=
+ =?utf-8?B?NzFkK1prTTA2SVFRYTZVM293MllnTzJOZzdZQjdTMnpJRDhPcXh2TWIxa3g4?=
+ =?utf-8?B?aEdzbHNTYkdzQXRGcGZZdndHd2N2WUFLbTBhTU5NOEoyQy8wa0NMTTBHbWlM?=
+ =?utf-8?B?cEN1bU1laEZwSEYrRGhUd0VXK1VISmE2NFVCbm1XbFpLdmsrd0sxWjlFY1pM?=
+ =?utf-8?B?L09FQldHdzRzclFTQStiU0ZiMXV5WkJwaisvd3Z0ckcxdy9ucWpKS0l1eEpH?=
+ =?utf-8?B?WStjZDhRdEluV2R1QUloRUo4VkFvUDMrN0IxcXVnS0ZvSTNSeUdZcXhIb0lE?=
+ =?utf-8?B?dGFtZXhuT2huVW9RQUtyS3RBV2dnWWljeTduOU1tSDVLaHh2bkE1OEZHVkh5?=
+ =?utf-8?B?aFFEWFpJRjhLN1Bpa1ZnelJRTE1rSHJrZHpQdlErVmxQTHdYVWZscU8xTU5E?=
+ =?utf-8?B?TUtwQ3FsTGlDT2IwdVNJOVloQmtZSUZUYWE5ZVJxa2pOd3RySGZjaXA2bVJm?=
+ =?utf-8?B?MjA5NDcreGJVMVEyYXU0aGljdlhDN1VaajdXSUthSFNHSXNaQnA0TFFIeC9M?=
+ =?utf-8?B?Qjk1SDJ6aG1BczZWQStUN2VhMnIxUFpGeGl1czdiS20yOCtvS0VoV1JxNk5G?=
+ =?utf-8?B?d01oRWJ2NnhINkpoQXM1WDF4VjBqenNjNlliQTdkSEdUYjFHTGhIdWpFeEx4?=
+ =?utf-8?B?TU9FTnI3dldVQmVsWFZ0M2NFemFnREZWVU0yWkxsNTM5UEpzVkJnYTlZelYr?=
+ =?utf-8?B?ZW4rc2grZlpNTE9kWmgzSjVWeHg3bTJjQ3pyU3RQWHowL3dzenZmdTcxRVYr?=
+ =?utf-8?B?UFI1MFFWdytmdnpPOGN0R3E0ZnhsbU8wcmlYQkFqYjlzQkFmOWFtMU5nejQr?=
+ =?utf-8?B?aVl3WTdKNklMelZiM3dtd3RJYVR6dGJONUpSZjR3ZUZNQ3k3WUx2Ym5sUU1U?=
+ =?utf-8?B?bm9Hd1czakZVVEpvTTJSTEZUWGZ5QzBhMWpIb2R6dEtvSzM5TFBlaEgycGFs?=
+ =?utf-8?B?YWFreUhVcU1tcHFXYjZRUUpESzJvMHVPUHEvODYzcnVMRDFFYTZPdUJSa3V2?=
+ =?utf-8?B?aVh6bTVqZ3lhOTg2eS9RNW5WZHVBRHorRXViUE9ZQndBTm5xejhJcTg4NWh4?=
+ =?utf-8?B?dFJ2QW5yWFEzTGJUZW41dUZVVVlDV1Rtano3eXpFRkFDcS9EWWoveDJWVXpx?=
+ =?utf-8?B?b1BhTjBKOGxOWUswWENQd0s1R0pENkFEbVdyeXFhdVJnMkdiUnVodzZuRTUr?=
+ =?utf-8?B?MWJDWVZvbnhVQVVFdUNxV2x2WXJFYWVLTEJwTTBGeStSZkVJaU53bVdUY3Zw?=
+ =?utf-8?B?SURSM2VIQnFwWlRsY1lxVHUvekZmZ1lnQlYyeEo5Y0l4eDhrOTAxeDdGQmtx?=
+ =?utf-8?B?SlBGL2JIWHhMZy9OckVFM1lYejBUMlkzUDIySUpmdkdnekRJbjJUMXdoUW5t?=
+ =?utf-8?B?OTFJTU54OXdnbmNvY3ZnV1VjZzl1aTBiRVFXREx6RjhNNzZCV1k3SDF5d25v?=
+ =?utf-8?B?VzlLZHVCdWVqckpqSzRxcUxoVWZPZk5aMXR0eDR2SW5Bd2RGRGlic0gxN1Vz?=
+ =?utf-8?B?VXFmemFsbERhb1U1QXNiS1JKSW9kZXNMcVZlYUNKWGEvWjJFQmtXNzRYY2dv?=
+ =?utf-8?B?RS9acnJCMHBLQVVqYS9FdEloaHRMWlVoWkhod04vYkt3YTdHZFFqSDA3S3BF?=
+ =?utf-8?B?c2xGYW5ncC9SWmZBbzN1NGZKUFVSTWJ5K3RlL05hWGo1OWlHK09YNlQ1Qk9T?=
+ =?utf-8?B?TER3WWdJOVZMSlVURlZWSGJyMFpsQVNrU1ZPcnEralM1VnBsRG1GYVBldWpj?=
+ =?utf-8?Q?Sf4nqIPxYqx7l?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?STd2YTBCMEUzcnk3Rit3VWdCY1VXQ0NJSysrNXlWZmtYckFRTkEwSEIrWk95?=
+ =?utf-8?B?K05qR1paVElWZUVGNUgzV1VOVVRneWovRWE4d1dYT3VFVjlEMjBOcUQ3SFRu?=
+ =?utf-8?B?d01sMnBCUElFdGhsbi9KVTBuMnlyd3A0dTRlMTNtQVZ1U0E1K1FpMEhBcFpP?=
+ =?utf-8?B?a3pDVnFsQ3pOWGpPRVp5Vmh2U3Z5N25aSU14NTUxd29GS0dYUkJWZUxPZ0tV?=
+ =?utf-8?B?TTEwSTkzZVdTcllYUzZNMXZJL1cwdVBCQTJrWmlramprWG14LzQ3enlhTGxn?=
+ =?utf-8?B?d21yNjE4Zjd4OFVHVURXVk1Hdyt4QWx5TDY3QjE4QnJPT05RdVFJSk85dVBs?=
+ =?utf-8?B?VXNSRjJLS2FWa1VERE8vRzAvak5UcDNJYWF5N3ROeUtqYWVacldVMzRyWnFL?=
+ =?utf-8?B?eG9YRHVKb1VpNVlRbEFWWDBsK21TTHM4YllrZll5Sm9qQ0lpMUc3WUE2Smpl?=
+ =?utf-8?B?RFN5VktWZWptNHA0ZVhwZUZ3QzBCeGtJZUZHejVjL3dQV0NKRWRlUUVGSkln?=
+ =?utf-8?B?aEZNQ0cvakN2b2hlOUtrbmhIcG5XNlFqQ0VNdktoeW9KaUFxUVZBRDQyUkxG?=
+ =?utf-8?B?MEpTRm5hN1NMa1pITE9OSWIwMFhmVStZbWxNOE9qV2F2OEVhVlhkTENoeFdj?=
+ =?utf-8?B?S1lVcUlTem9yM1l0ajlpd1lLbmR2c2ZPTFU2am4vRDZ3b2FCamRKQTVSNFJM?=
+ =?utf-8?B?cGkrR1NrNHhTSk1wdXdrVDl5TFYvd21aUGRDQkVXS3lXUjBDZkE5UHRzT1lB?=
+ =?utf-8?B?SW80RFJXaE5QZkp5M0dEYStybjhuZDVwVUpwU1ZjVGVXL1pKWUg5UEhBMXhB?=
+ =?utf-8?B?L1VUVlZFWEdoVm1oVWpLRzB1Ly9YYVdOTGZQU3M0SEJBaklrSFNRdkZRZ3FZ?=
+ =?utf-8?B?S3BPYXJyVDduVEtqTFZrSXppNTdUUC9peDhWZnlHYWpEdUJQWWMvSW5hbEhl?=
+ =?utf-8?B?NGdDTnhpOVV3RWMwbjZpaVJDQ2NjSUlFVGxhWHVTeEdnN216KzgraUMyZ1I3?=
+ =?utf-8?B?Vk9sN3Z4aGhwU0xkdGxhY0IxZzk4REkvUDNVd2x1MllZeG41dVQrNDZjZjNp?=
+ =?utf-8?B?YUtlVEIramJuQU5nTGN3TzdhbW1vVlk4dmVFdjIrREVpWSs4b2dwSEh3OUpj?=
+ =?utf-8?B?NUFIVHEyckFET3BIajZ5dHNaVkJEM1hpaVBSMmNXTmoyNFdJL0Z2K1FlWXJj?=
+ =?utf-8?B?VTNNdEJmeDZDNDhHWnpUa2ZpK2RJV09XSmVXQXV6dEJLdFQzdWhZOVpvOGRI?=
+ =?utf-8?B?RG1aRG1GR3kzbDJhbk5HYzBtdnp3KzMyR1UwdlYvaTBBMVg5MDMySVI0ajJv?=
+ =?utf-8?B?R2QzcDNlM0l4S0hpeWc0cGd0RHM5TmR1VVc4Y01QdUlxYUd0a2FRYWxZaytL?=
+ =?utf-8?B?UmU2blVyMGsvczE0eXllRjlWVjczaGViRzVlOFgwWHcySkttOE0zUEZ5K0Fm?=
+ =?utf-8?B?Sys5bkUvRlRwcUVHdWgxUHdGb2N3SUVNSVR3a1pObHdGa2xsMmhzR0o1Vm45?=
+ =?utf-8?B?K2tWODVLUHFGaXFoSXZnZ0hFRHZyNzhyLzJJTmw3WEJOaXJvdVBlQTNPUm1q?=
+ =?utf-8?B?eHpPaWxZMitwREU1aFRONTNQTFhSWGtYNGVPbk5haDNkWGZzbkVDcmhPSUUy?=
+ =?utf-8?B?aWhjdGVxbXl4bXJNOGNZNUVsQWZXeTNwb294aDExT2p1SWZvQk5FdWdRRzFl?=
+ =?utf-8?B?VjVGWjhLTzRXWDhBQ0ZaQ3B0S0pUV1NKYzA2aWpiOEhZMmdRTVBQc1dmamZK?=
+ =?utf-8?B?a29zcFZ5dHc0SGEzb0FJZkxuYldBaHZla3ZiYnVZeWJ3WVdwNkcwaTJRZTk3?=
+ =?utf-8?B?RHYyYldJRktTU3ROcGM2Z2VlbkFDY2VYNk9GM0J2ZlVXMnBQRmJ4OWxSbE1y?=
+ =?utf-8?B?SEJmY3diNHE5cHN5YUwvdUR6UGhRQ2ZYaUNvbW5xK3o2bDdCenNJc21UNjd2?=
+ =?utf-8?B?K3Q4WlZHZVBTcFZzY29nT1RxK09oYlR6MW9HNzB3L0hJaURndGxESkpCdGE4?=
+ =?utf-8?B?RVhvOVFDaC9NQVJEclFLeUQ0dEdmaDR1L0NGMFhIYVIyTVFvMTJhcVNuUFVQ?=
+ =?utf-8?B?SjlsU2RNQXM5Y0lodDF1RDNhMEVmZFdpaUU4SFRZUE9ERjlUY3ZMdElKbUR3?=
+ =?utf-8?B?TGVDYjlDWW1BSU5rZW1FOUtlTjB0aWYwL1FWWWI5Z2Q0L2tTd2xzMVVObjZL?=
+ =?utf-8?B?ekE9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4bd460c6-2754-43d1-4237-08dd4210a7c2
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jan 2025 16:02:25.9828
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qPlidtXf0wgNlsHpgRpIGfUlE+jKlUfd94rQFHD7spzA/elD1s2Z0QwA9voxpC9bxItjEnC7IZl2LXYC2mj6m5tSSdXNkElW/4hEdPD6NlI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB9000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_072601_133274_1F28A3E5 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20250131_080236_309693_4E2872E8 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,79 +172,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Detlev Casanova <detlev.casanova@collabora.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the simple-audio-card driver with the hdmi0 QP node as CODEC and
-the i2s5 device as CPU.
+Hi Heiko,
 
-The simple-audio-card,mclk-fs value is set to 128 as it is done in
-the downstream driver.
+On 12/3/24 5:49 PM, Heiko Stuebner wrote:
+> This adds the phy driver need for DSI output on rk3588.
+> 
+> The phy itself is used for both DSI output and CSI input, though the
+> CSI part for the whole chain needs a lot more work, so is left out for
+> now and only the DSI part implemented.
+> 
+> This allows the rk3588 with its current VOP support to drive a DSI display
+> using the DSI2 controller driver I'll submit in a next step.
+> 
+> Only generic phy interfaces are used, so the DSI part is pretty straight
+> forward.
+> 
 
-The #sound-dai-cells value is set to 0 in the hdmi0 node so that it can be
-used as an audio codec node.
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # RK3588 Tiger with 
+Haikou Video Demo
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  1 +
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 19 +++++++++++++++++++
- 2 files changed, 20 insertions(+)
+I assume this is the same setup you tested this series with, but 
+confirmation doesn't hurt.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 8cfa30837ce72..790c1c25a3e41 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1394,6 +1394,7 @@ hdmi0: hdmi@fde80000 {
- 		reset-names = "ref", "hdp";
- 		rockchip,grf = <&sys_grf>;
- 		rockchip,vo-grf = <&vo1_grf>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 
- 		ports {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d597112f1d5b8..1909078538367 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -49,6 +49,21 @@ hdmi0_con_in: endpoint {
- 		};
- 	};
- 
-+	hdmi0-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <128>;
-+		simple-audio-card,name = "hdmi0";
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&hdmi0>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s5_8ch>;
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -318,6 +333,10 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
- 
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
- &package_thermal {
- 	polling-delay = <1000>;
- 
--- 
-2.48.1
+Tested with 
+https://lore.kernel.org/linux-rockchip/20241127143719.660658-4-heiko@sntech.de/ 
+applied on top.
 
+Thanks!
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
