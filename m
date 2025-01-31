@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F75C0218D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 09:11:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B76C0218D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 09:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+pWeUAF6N62dKw6CIKOPWrH9seKqxllcaVAtqrcnNF8=; b=y1kV0CJyF8TCjgP6NkEodvyrpm
-	voQzb1wKvC0V8nY7P382NLKAyMc41yi8Do7zNBpwWpjnCrGY3ahwVNl9ilWXfkzP/iS0MDHSMPPDH
-	dW01yGSmCLsfssh4wBR6LxFyTgbtnl6jcya2yLrPZt6GsnQ1EqRIZNkeHiAVtqkAWoSawCGXnaLZr
-	y4M/QV0QUEyJWZoj2tD5IkwX9BspptcuSndwAozV26RUY45GOqZiGYW/EhX0wC1UuCJjPAgjj7hHj
-	AJmfQR11EUYaDTYORiTu1ME6NNe5jsRnV9P13iOMqDnOPxDBKzfhFFxT3Dpqliuf1SOJhmiC0FtoV
-	1SciZ2Pw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=av7dM8eYUET3SbUIWBZAeX2RWa0xKCj8nFQ8eUmRZLc=; b=tIECVAKIir7vsH
+	O7F11GDxWJD/Q3AFNylB31icxzqUeJN+SgmQyBiiUSwHUwhXw78xGaqax0+1yZuLh/Ed79aCBkE46
+	iIkC/EpyreerZqSbk50StVEm1C7U10yS1kQn3j3o0oCClwnvqTJCJPfdjd3sBfyaXTGErnbGK63o7
+	JhuiRNmZ6lDKpfbRaMQWAdy1US3FiuFAsO52hqQ1IkNEtOVSssk4WJUE51S/CNo1UI71XXuq2sEIZ
+	GkydBKWyP70f3YE7p2PpfXzmUi1NfQtHlWXobxaiT57SJffXeG1QYGcqntrY4vbxkN7S/uy7DH1GN
+	+tgDJUm8T7NlpXUUUv5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdn3t-0000000AHWp-3TrL;
-	Fri, 31 Jan 2025 09:11:41 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tdnDR-0000000AI8c-3EkI;
+	Fri, 31 Jan 2025 09:21:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdn2X-0000000AHAA-1CmS;
-	Fri, 31 Jan 2025 09:10:18 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1738314613;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=w66nwBa+GHbxorNXdWjdWunCnuLe88jUElmyfHxjB78=;
-	b=ls3/hWsGrRsivnoaVnIbnPU1Uf9z93L4dfcm0vJAunbPNK7qG5fKxjGBSNBFijT7dwRS/a
-	bz5zyUjR9T69n04l9K6VWu6S05JU/Q2pI3Qu8UfwBcGAjPf9+EZ033YZTwxR7VqYWU29cT
-	Hw9iqepXFumcPBXREvGBz5CnlTIGAFcRPM+XPa41FiOqXfvEZ3l2rN+/cSsMSMJ/9hO0AY
-	ZdiwDDeJIg8e93wV1GJTfiymUPl7n81Pkslusc+Ffsxl1VkMOTgBHMnalLrKfmjrHXGEj8
-	mQOJdfKvuyGmffR87bZtmzrJ4TLKUFA6WfQV55kTHgiCE7oQQOHasdnoRoDFUA==
-Date: Fri, 31 Jan 2025 10:10:13 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Tianling Shen <cnsztl@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+	id 1tdnC5-0000000AI1t-2bRK;
+	Fri, 31 Jan 2025 09:20:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=0B7vxdS52txOQYr8MAUjOPGxnkb0yKArb/TqnTim/JE=; b=fO5N0AY6e9Fe7eGia4ydGVl/AS
+	U5f/5AQpGP2olKzC34QoHN1a2he0xkIe1t39UyugTbsuF0DaAMy4hwn9jxFduUIRVRtEYQXipSgjL
+	lcrYQ0CM0Lzx2V8ORCRr7JriJ4M5AMdoUpMjOpPQoM5w4cmWy/TxbvOArken6/B4lGgYrduzcJM7Q
+	SaXdPbZZjhVhyUnYfmmHnCvW/azD18jKc3IiupUbz/JuKTLqXZ+3T55naGCHmLvoIj2QxpluMUx5c
+	U0TBimeFUZaZSLUxwj6rHskipMgsQRG5sfccRnUvxhennAWMQi6skyE3UQ+eCLWDA8xpmqUwS2nT7
+	UPT5HCaQ==;
+Received: from [212.111.254.164] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tdnC4-0006Gx-0H; Fri, 31 Jan 2025 10:20:08 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Olivier Benjamin <olivier.benjamin@bootlin.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: change eth phy mode to rgmii-id for
- orangepi r1 plus lts
-In-Reply-To: <2910311.mvXUDI8C0e@phil>
-References: <20250119091154.1110762-1-cnsztl@gmail.com>
- <98387508-10de-4c2e-80ad-05d0d86b7006@gmail.com>
- <59e46b34e1c8f9197565fea917335d3f@manjaro.org> <2910311.mvXUDI8C0e@phil>
-Message-ID: <19d3590613746aef9af98361d8cda4bc@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ Olivier Benjamin <olivier.benjamin@bootlin.com>,
+ Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
+Subject: Re: [PATCH 0/2] Describe the cameras in the PinePhone Pro dts
+Date: Fri, 31 Jan 2025 10:20:06 +0100
+Message-ID: <5127541.31r3eYUQgx@phil>
+In-Reply-To: <20250119-camera-v1-0-320be4f0dc2b@bootlin.com>
+References: <20250119-camera-v1-0-320be4f0dc2b@bootlin.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_011017_636565_5C89468F 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20250131_012009_670288_3B92150C 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,86 +72,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
+Hi,
 
-On 2025-01-31 10:01, Heiko Stuebner wrote:
-> Am Freitag, 24. Januar 2025, 07:35:50 MEZ schrieb Dragan Simic:
->> On 2025-01-24 07:28, Tianling Shen wrote:
->> > On 2025/1/19 23:48, Tianling Shen wrote:
->> >> On 2025/1/19 19:36, Dragan Simic wrote:
->> >>> On 2025-01-19 12:15, Tianling Shen wrote:
->> >>>> On 2025/1/19 17:54, Dragan Simic wrote:
->> >>>>> Thanks for the patch.  Please, see a comment below.
->> >>>>>
->> >>>>> On 2025-01-19 10:11, Tianling Shen wrote:
->> >>>>>> In general the delay should be added by the PHY instead of the
->> >>>>>> MAC,
->> >>>>>> and this improves network stability on some boards which seem to
->> >>>>>> need different delay.
->> >>>>>>
->> >>>>>> Fixes: 387b3bbac5ea ("arm64: dts: rockchip: Add Xunlong OrangePi
->> >>>>>> R1 Plus LTS")
->> >>>>>> Cc: stable@vger.kernel.org # 6.6+
->> >>>>>> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
->> >>>>>> ---
->> >>>>>>  arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts | 3
->> >>>>>> +--
->> >>>>>>  arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts     | 1
->> >>>>>> +
->> >>>>>>  arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi    | 1
->> >>>>>> -
->> >>>>>>  3 files changed, 2 insertions(+), 3 deletions(-)
->> >>>>>>
->> >>>>>> diff --git
->> >>>>>> a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
->> >>>>>> b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
->> >>>>>> index 67c246ad8b8c..ec2ce894da1f 100644
->> >>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
->> >>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
->> >>>>>> @@ -17,8 +17,7 @@ / {
->> >>>>>>
->> >>>>>>  &gmac2io {
->> >>>>>>      phy-handle = <&yt8531c>;
->> >>>>>> -    tx_delay = <0x19>;
->> >>>>>> -    rx_delay = <0x05>;
->> >>>>>> +    phy-mode = "rgmii-id";
->> >>>>>
->> >>>>> Shouldn't the "tx_delay" and "rx_delay" DT parameters be converted
->> >>>>> into the "tx-internal-delay-ps" and "rx-internal-delay-ps"
->> >>>>> parameters,
->> >>>>> respectively, so the Motorcomm PHY driver can pick them up and
->> >>>>> actually configure the internal PHY delays?
->> >>>>
->> >>>> The documentation[1] says "{t,r}x-internal-delay-ps" default to 1950
->> >>>> and that value already works fine on my board.
->> >>>>
->> >>>> 1. https://www.kernel.org/doc/Documentation/devicetree/bindings/net/
->> >>>> motorcomm%2Cyt8xxx.yaml
->> >>>
->> >>> I see, but those values differ from the values found in the
->> >>> "tx_delay" and "rx_delay" DT parameters, so I think this patch
->> >>> should be tested with at least one more Orange Pi R1 Plus LTS
->> >>> board, to make sure it's all still fine.
->> >>
->> >> This patch has been tested on 2 boards, and we will do more tests in
->> >> next week.
->> >
->> > Managed to test on another board and looks so far so good.
->> > (Working network connection, no packet drop)
->> 
->> Sounds good to me, thanks for the additional testing.
+Am Sonntag, 19. Januar 2025, 23:56:58 MEZ schrieb Olivier Benjamin:
+> This series adds support for the Pine64 PinePhone Pro's rear and front
+> cameras in Device Tree.
+> This is based on some of Ondrej Jirman's patches hosted in his tree at
+> https://codeberg.org/megi/linux, but I have also fully reviewed and
+> re-written the code from the RK3399 datasheet, the PinePhone Pro
+> schematic, and the IMX258-0AQH5 software reference manual.
 > 
-> I assume that means there are no more open issues, right?
-> At least I got that impression from glancing at the thread :-)
+> I have tested these changes on my PinePhone Pro and am able to take
+> photos from both cameras using libcamera's cam.
+> 
+> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> ---
+> Olivier Benjamin (2):
+>       arm64: dts: PinePhone Pro: describe I2c Bus 1 and IMX258 world camera
+>       arm64: dts: PinePhone Pro: describe the OV8858 user camera
 
-Yes, Tianling performed the additional testing, and the
-introduced changes worked fine on three boards in total.
-To me, that sounds good. :)
+Patch subject should be
+"arm64: dts: rockchip: describe the OV8858 user camera on PinePhone Pro"
+
+patches need an update to accomodate
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5c96e63301978f4657c9082c55a066763c8db7b1
+
+And please name the new regulator nodes similarly
+(regulator-foo)
+
+Thanks a lot
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
