@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 746C7C0218A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jan 2025 23:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D82C0218D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 07:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=v99hHg2YaEFF/Ha3nlGZOb07bh+kCi500QI6+Gmoq5s=; b=bafpWzVdrsScXtK9wlgOt5Yl8B
-	broni3yKs9zTzaY3xDAxLcBDLInfvLKTgyU6VWa1jwHEzffYOLzCVvfQS6fO3FsHbya7hznOYEoyt
-	OnMBzf+6fdlwOR9V+WCfU+vTPYfhS0e13PZz9G9/5OakEH/AS948r2MNUknbTY8H11LYW73ym1uCq
-	PJCK9VJxai9obB0xVmekl0W1nKY6lq0BBW2mlrzVMqWlXu0VkJ6VXc1QRdoHQbvMx9mit+fdkuiEx
-	1+gmM9Nd3wDOvptXeA4YjXT5p7g0AzbRvsT4FROIzJHB/hcjVrp+Do/w3wKKdTlRGuz9na/aSwDXR
-	fgFKCJ7Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jUXBJqA2khgFYPYgr90WJ8dfxEq2dI0LE+GcNqQAa+s=; b=O/7MRt6VQTuHfS
+	89lwNQgifvqpg4DMONKE+VHURrAj7AvhwP6B2kmd0kA+cQdt7YTpJPRoG3y6qvuGbVNpL7dPmaKdZ
+	0UqP0HCiQeGoLsTwlhHtQ3ntgWj11UF+L6osxUE0y7XPs82nwsAvis0DTYjANrPAMzViMF8jfm3zq
+	BTsW1e8q57vkDGrOX7DiqjpqJbDHRmmGIEhsOJWgzMKk6HUIvyLTIF91bczVZZF6UNuoZpDVknwWy
+	jfq86sHvn2Wv40+rh9DSd63FULcMiW2l6spL2mwviXo+ppsuODQK7FXvL+pzNvP68yHEvtD++N8ax
+	4lWCcVLySzYXoG7fgWlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdeC0-00000009oOq-0779;
-	Thu, 30 Jan 2025 23:43:28 +0000
+	id 1tdlhM-0000000A8cX-0OLg;
+	Fri, 31 Jan 2025 07:44:20 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tde6r-00000009nj5-0UfU;
-	Thu, 30 Jan 2025 23:38:10 +0000
+	id 1tdlg0-0000000A8Y7-1rNO;
+	Fri, 31 Jan 2025 07:42:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C2E7AA42530;
-	Thu, 30 Jan 2025 23:36:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16BFFC4CEE1;
-	Thu, 30 Jan 2025 23:38:08 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id CF59AA419D9;
+	Fri, 31 Jan 2025 07:41:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41B99C4CED1;
+	Fri, 31 Jan 2025 07:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738280288;
-	bh=8yZNBiKUbE5MlUbaWMZLLsW0PfS5yFHCz4qlV3sF6NE=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=i4n146eY/eGPBqUTKrH5iQlVsQKVXhOUoINbo2AN1GSD04bIg06Y0FZ38ZgBmfla3
-	 Fpfobxkvkoc9aDBb5YYIDL2HXZSDE999v4CasK7XT0p17Z5nP3RsK5AqiiyH8Ai33c
-	 LHj21TkIRLBM+NVjWaMcV9QAQQ5bzLkmdzG9gp4iNOE4/yIjag46vmuX2o7Ei7+Q1H
-	 BqTA3qZkGZjKV3gyaZodzhSZR/oX2/59IMvuVgp0niqRJDJWeIYUzBaZHs2Cc8iwTT
-	 Y65z09AOZJ7WNZhFWIvebgxDCKXVH2gZ8S+62lRTmkpSVklZmqX1fiTfhPjA6THk05
-	 R+bHXX8yaJPxQ==
-Date: Thu, 30 Jan 2025 17:38:07 -0600
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>
+	s=k20201202; t=1738309375;
+	bh=SPBFBpCWkKZSpzr2brYa2XUK8RQPaG01XP0MShmREv8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Nka2Bv5tv1Zjlaxcfu+o/Zy0onHMpD+nc2OsUwyFP6KGvOGeqpxRVy9nLweUoQ1Ia
+	 Y5ZUXq9hgEBzUPwD6E22OiweV+BQEkEL7RRmec8SSoPlYUIDG7jC3lMdjJnGcxTGnW
+	 26SWC7Jrk0hGPI4LCNSQ3R2lIfWS9EbuwnMZmWtklQM0Z0bdYbKdxMWe8AXZX5FiWp
+	 QL6kVlUCvFsyslI1lsfqvmX9aIt9GnKrpH8N8fQo3JojgRrFuuCZIKlJ714TCxCCqG
+	 Vbfa2tep9VJn2cWZTuMGkj7W3l1EXMOwDxTkbzVObDi6SjNyTL10GeXoZCAuIP0WRl
+	 H/rt1vGeStoDw==
+Date: Fri, 31 Jan 2025 08:42:51 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Patrick Wildt <patrick@blueri.se>
-In-Reply-To: <Z5toOecuMiBXM6aF@windev.fritz.box>
+Cc: linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	Kever Yang <kever.yang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add MNT Reform 2 (RCORE)
+Message-ID: <20250131-purring-rousing-aardwark-4f1bf0@krzk-bin>
 References: <Z5toOecuMiBXM6aF@windev.fritz.box>
-Message-Id: <173828013372.1872573.10900756653547163550.robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add MNT Reform 2
- (RCORE)
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <Z5toOecuMiBXM6aF@windev.fritz.box>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250130_153809_285003_1E946A23 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20250130_234256_558040_3069D572 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +75,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 30 Jan 2025 12:53:29 +0100, Patrick Wildt wrote:
+On Thu, Jan 30, 2025 at 12:53:29PM +0100, Patrick Wildt wrote:
 > Document board compatible bindings.
 > 
 > Signed-off-by: Patrick Wildt <patrick@blueri.se>
 > ---
 >  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
 >  1 file changed, 5 insertions(+)
-> 
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for Z5toOecuMiBXM6aF@windev.fritz.box:
-
-arch/arm64/boot/dts/rockchip/rk3588-base.dtsi:355.39-358.4: Warning (clocks_property): /display-subsystem: Missing property '#clock-cells' in node /phy@fed60000 or bad phandle (referred from clocks[0])
-  also defined at arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dts:200.20-203.3
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: display-subsystem: 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-drm.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: rk8602@42: Unevaluated properties are not allowed ('regulator-compatible', 'rockchip,suspend-voltage-selector' were unexpected)
-	from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: rk8603@43: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk8602', 'rockchip,rk8603'] is too long
-	'rockchip,rk8601' was expected
-	'rockchip,rk8603' was expected
-	'rockchip,rk8600' was expected
-	'rockchip,rk8602' was expected
-	from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: rk8603@43: Unevaluated properties are not allowed ('compatible', 'regulator-compatible', 'rockchip,suspend-voltage-selector' were unexpected)
-	from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: hdmi@fde80000: Unevaluated properties are not allowed ('enable-gpios' was unexpected)
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: pmic@0: regulators:dcdc-reg4: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
-	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: pmic@0: Unevaluated properties are not allowed ('pmic-reset-func', 'regulators', 'rk806_dvs1_pwrdn', 'rk806_dvs1_rst', 'rk806_dvs1_slp', 'rk806_dvs2_dvs', 'rk806_dvs2_gpio', 'rk806_dvs2_null', 'rk806_dvs2_pwrdn', 'rk806_dvs2_rst', 'rk806_dvs2_slp', 'rk806_dvs3_dvs', 'rk806_dvs3_gpio', 'rk806_dvs3_null', 'rk806_dvs3_pwrdn', 'rk806_dvs3_rst', 'rk806_dvs3_slp' were unexpected)
-	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dtb: codec@1a: Unevaluated properties are not allowed ('port' was unexpected)
-	from schema $id: http://devicetree.org/schemas/sound/wlf,wm8960.yaml#
-
-
-
-
+Best regards,
+Krzysztof
 
 
 _______________________________________________
