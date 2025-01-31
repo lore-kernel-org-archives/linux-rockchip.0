@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F13AC0218F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 18:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BFE7C0218F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jan 2025 18:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1bdSsxB/5JG1unJE7TWTzpBO2ux7bhRC024PyrWEUCs=; b=HAjCHIpQw63ym/
-	VX3nOQ30bS45f8A+ljmT1JgocV46FxbvgARrfRjdGYEIXKUSc8XywjSv3w/gm7442ekdCym8eG0N2
-	Dqey+VXJNHPhmrDNOb99OwE10I5+SGLlXwV7Fui5nWAzmD1wYK7VY6s8m5/EM3Aciffxt+H+FBeBx
-	SxO9A2LQY+uYzj5qCSX4p99KuDa8vhynCaPgxxgMW0d0tGAE+vaybX2JQV4a1960tvw2C6F5U/c4o
-	fAzXdNwm/YoZhcnmTKWbuP6tQZS3PyGJnkrBkWjLe7zgf1mRzXeopUUmIsnlgPdAd5HMzyLvj66yf
-	mfWcrbsifcwCl/BfgV4Q==;
+	List-Owner; bh=vGQx/Cgxkr6ItqVlrAf2YHohzuHfH3cfxkfLYOo/46Q=; b=2CsaXCLZ1XCn4R
+	X+L1XJZ2WPK+3b3Zl1b+P/go6UnYtItKJw012e/EO0m6qUTbluMiW7ENgOqGOoqNZQaWrmvs/xM7j
+	tLPCCcKg0QnJtapyKUA3FSDIl4mlodN8D1dz2GyCaIFtofGYXmcrZ5K4ZB1jwviB7Hs6V2dZky6to
+	si90Duhlpc5gCpbuCoG93rwd+9ari/Nk4MgcniJhOu+AtoDLy5w6uFMP5SznAuGD9dc26yFPVhWkE
+	E2i/JOyWoW18Hl1wo6wGt7HWDvtWzsJocQZggQ/2Tohr73VVm5imioOXY8U9sd460MxZvz8pcqmkm
+	g7lmxVZkRlFHedkrpkEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdvp7-0000000BDXB-3eGF;
-	Fri, 31 Jan 2025 18:33:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tdwB8-0000000BFoe-34lE;
+	Fri, 31 Jan 2025 18:55:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tdvmq-0000000BDDj-3bxe;
-	Fri, 31 Jan 2025 18:30:41 +0000
+	id 1tdw9o-0000000BFhB-1qvK;
+	Fri, 31 Jan 2025 18:54:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 572E85C6383;
-	Fri, 31 Jan 2025 18:30:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48DE3C4CEE3;
-	Fri, 31 Jan 2025 18:30:37 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id F367CA411F9;
+	Fri, 31 Jan 2025 18:52:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33F7FC4CED1;
+	Fri, 31 Jan 2025 18:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738348240;
-	bh=8uxTceNWzYFB2l9AWmmadxYKBiMHIPtgLjKZiK55GQA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NPjkBtf3Z+Va9MNfHHJ5iBM8ynQpSWaYrIsz7aRMuHfuBNn4tEjrrg5f3cZ995MZk
-	 GhIP87E9DbjRw83sOIO8nQFdYUy1lAZ9UQJR9GRTLGFrC/05qprvjyYY9pb0QUnG0N
-	 8Oq51XyUvTZVzbGNpmAsIdRZZSBMbnn7cv0vjH+BH4jnellZ6ujoroFGd8TbLh4n/k
-	 TPBn/bkKvKnqNHNffinvgH7BOfRdCD9cw0m7jWpyN91AMTNKXg9N32lje9GASYNB1O
-	 LzxPvvUcBZlOzxBETltdiRquh3P96ylkYt5SoDWhfwUKzRIuuaHJzVzJDn73XKx4b4
-	 BCvALBAR8A+UA==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Udit Kumar <u-kumar1@ti.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 7/7] PCI: dw-rockchip: Describe Resizable BARs as Resizable BARs
-Date: Fri, 31 Jan 2025 19:29:56 +0100
-Message-ID: <20250131182949.465530-16-cassel@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250131182949.465530-9-cassel@kernel.org>
-References: <20250131182949.465530-9-cassel@kernel.org>
-MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2591; i=cassel@kernel.org; h=from:subject; bh=8uxTceNWzYFB2l9AWmmadxYKBiMHIPtgLjKZiK55GQA=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLniq1pa9vTviDSx3VmySXBn+WLMpglij8XeR1y6j62r ovp+MMlHaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZjIb3NGhof7lzHsYtnfGeL1 h4Or47r5Fja/u7v5j9j+VVvxKTUnsJKR4cLODVPXNL/qU508J/rJKc9ts16Uc7jIXFYwPuMgy3O igAUA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+	s=k20201202; t=1738349663;
+	bh=OC+LkHxqhasdvNF26CcNsdV74Q96hpWJ47A/VEZG9wI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=JBLXrva5oGkptnRA/+6GkqHZ6kW3FKz96Scfv5h5muBI5rpoMboIKJxABNy27l8vS
+	 Wtvf3ln8mP9K0kfmnRDyKL75WoT7P5lCfYEfiQKyigoUO2N6dlH5DdDAyK2P7wrQGO
+	 6SEax3JzqKM+GYgs8bhwMOP9VzivBkoTfeQT8n13HhfqweaHijJd9PUOSoL6JpIEv2
+	 Uikq57HFLL6XjpONcmupNUsW2MC4d1yuRf6tKfPhQrocbasvV7X85LdgNPF+VZqjK/
+	 EgSMyrRb4H26pLI/d9LGdqpEgV4nn9rE/Dkl93UuZcJ2nPwo8T7PzdOws8zq2QEAv1
+	 mqsItYnOser5w==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tdw9k-00GxME-RP;
+	Fri, 31 Jan 2025 18:54:21 +0000
+Date: Fri, 31 Jan 2025 18:54:19 +0000
+Message-ID: <865xluvmp0.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: chf.fritz@googlemail.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	KeverYang <kever.yang@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	stable <stable@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Subject: Re: rk3399 fails to boot since v6.12.7
+In-Reply-To: <fc0b65020f3376e5245a8f599a060fdca10ab61c.camel@googlemail.com>
+References: <b1266652fb64857246e8babdf268d0df8f0c36d9.camel@googlemail.com>
+	<86a5b8vd0d.wl-maz@kernel.org>
+	<fc0b65020f3376e5245a8f599a060fdca10ab61c.camel@googlemail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: chf.fritz@googlemail.com, mark.rutland@arm.com, wens@csie.org, kever.yang@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250131_103040_980620_60868DC5 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20250131_105424_622628_68D70DDB 
+X-CRM114-Status: GOOD (  30.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,67 +90,158 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Looking at "11.4.4.29 USP_PCIE_RESBAR Registers Summary" in the rk3588 TRM,
-we can see that none of the BARs are Fixed BARs, but actually Resizable
-BARs.
+On Thu, 30 Jan 2025 18:14:50 +0000,
+Christoph Fritz <chf.fritz@googlemail.com> wrote:
+> 
+> > 
+> > 
+> > > Any ideas?
+> > 
+> > I think this calls for a revert of this patch, potentially at the
+> > expense if NMI support on this machine. Could you show how SCR_EL3.FIQ
+> > is configured on this machine? Mine shows:
+> > 
+> > [    0.000000] GICv3: GICD_CTRL.DS=0, SCR_EL3.FIQ=0
+> > 
+> > and I suspect yours has FIQ=1.
+> 
+> yes it's 1:
+> 
+> [    0.000000] GICv3: GICv3 features: 16 PPIs
+> [    0.000000] GICv3: Broken GIC integration, security disabled
+> [    0.000000] GICv3: GICD_CTRL.DS=1, SCR_EL3.FIQ=1
+> [    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
+> 
+> The device is not closed (there is no docu) and OP-TEE is actually here
+> not used for anything. But I think I had the OP-TEE xtests running
+> successfully before.
 
-I couldn't find any reference in the rk3568 TRM, but looking at the
-downstream PCIe endpoint driver, rk3568 and rk3588 are treated as the same,
-so the BARs on rk3568 must also be Resizable BARs.
+I don't think OP-TEE *really* works, as it cannot take any interrupt
+after the kernel has booted. We blindly reconfigure everything to be
+non-secure, so unless you solely rely on services that do not interact
+with devices, it is absolutely dead.
 
-Now when we actually have support for Resizable BARs, let's configure
-these BARs as such.
+Anyway, can you try the hack below? it works on my own rk3399, but I
+don't have anything on the secure side. Please also try it by passing
+"irqchip.gicv3_pseudo_nmi=1" on the command-line.
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+Thanks,
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 93698abff4d9..df2eaa35d045 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -273,12 +273,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_4] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_4] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
+	M.
+
+diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
+index 79d8cc80693c3..f60d4d7e87639 100644
+--- a/drivers/irqchip/irq-gic-v3.c
++++ b/drivers/irqchip/irq-gic-v3.c
+@@ -44,6 +44,7 @@ static u8 dist_prio_nmi __ro_after_init = GICV3_PRIO_NMI;
+ #define FLAGS_WORKAROUND_GICR_WAKER_MSM8996	(1ULL << 0)
+ #define FLAGS_WORKAROUND_CAVIUM_ERRATUM_38539	(1ULL << 1)
+ #define FLAGS_WORKAROUND_ASR_ERRATUM_8601001	(1ULL << 2)
++#define FLAGS_WORKAROUND_INSECURE		(1ULL << 3)
  
+ #define GIC_IRQ_TYPE_PARTITION	(GIC_IRQ_TYPE_LPI + 1)
+ 
+@@ -83,6 +84,8 @@ static DEFINE_STATIC_KEY_TRUE(supports_deactivate_key);
+ #define GIC_LINE_NR	min(GICD_TYPER_SPIS(gic_data.rdists.gicd_typer), 1020U)
+ #define GIC_ESPI_NR	GICD_TYPER_ESPIS(gic_data.rdists.gicd_typer)
+ 
++static bool nmi_support_forbidden;
++
  /*
-@@ -293,12 +293,12 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.align = SZ_64K,
--	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_2] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
--	.bar[BAR_3] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
-+	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
- 	.bar[BAR_4] = { .type = BAR_RESERVED, },
--	.bar[BAR_5] = { .type = BAR_FIXED, .fixed_size = SZ_1M, },
-+	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
- };
+  * There are 16 SGIs, though we only actually use 8 in Linux. The other 8 SGIs
+  * are potentially stolen by the secure side. Some code, especially code dealing
+@@ -163,21 +166,27 @@ static void __init gic_prio_init(void)
+ {
+ 	bool ds;
  
- static const struct pci_epc_features *
--- 
-2.48.1
+-	ds = gic_dist_security_disabled();
+-	if (!ds) {
+-		u32 val;
+-
+-		val = readl_relaxed(gic_data.dist_base + GICD_CTLR);
+-		val |= GICD_CTLR_DS;
+-		writel_relaxed(val, gic_data.dist_base + GICD_CTLR);
++	cpus_have_group0 = gic_has_group0();
+ 
+-		ds = gic_dist_security_disabled();
+-		if (ds)
+-			pr_warn("Broken GIC integration, security disabled");
++	ds = gic_dist_security_disabled();
++	if ((gic_data.flags & FLAGS_WORKAROUND_INSECURE) && !ds) {
++		if (cpus_have_group0) {
++			u32 val;
++
++			val = readl_relaxed(gic_data.dist_base + GICD_CTLR);
++			val |= GICD_CTLR_DS;
++			writel_relaxed(val, gic_data.dist_base + GICD_CTLR);
++
++			ds = gic_dist_security_disabled();
++			if (ds)
++				pr_warn("Broken GIC integration, security disabled\n");
++		} else {
++			pr_warn("Broken GIC integration, pNMI forbidden\n");
++			nmi_support_forbidden = true;
++		}
+ 	}
+ 
+ 	cpus_have_security_disabled = ds;
+-	cpus_have_group0 = gic_has_group0();
+ 
+ 	/*
+ 	 * How priority values are used by the GIC depends on two things:
+@@ -209,7 +218,7 @@ static void __init gic_prio_init(void)
+ 	 * be in the non-secure range, we program the non-secure values into
+ 	 * the distributor to match the PMR values we want.
+ 	 */
+-	if (cpus_have_group0 & !cpus_have_security_disabled) {
++	if (cpus_have_group0 && !cpus_have_security_disabled) {
+ 		dist_prio_irq = __gicv3_prio_to_ns(dist_prio_irq);
+ 		dist_prio_nmi = __gicv3_prio_to_ns(dist_prio_nmi);
+ 	}
+@@ -1922,6 +1931,18 @@ static bool gic_enable_quirk_arm64_2941627(void *data)
+ 	return true;
+ }
+ 
++static bool gic_enable_quirk_rk3399(void *data)
++{
++	struct gic_chip_data *d = data;
++
++	if (of_machine_is_compatible("rockchip,rk3399")) {
++		d->flags |= FLAGS_WORKAROUND_INSECURE;
++		return true;
++	}
++
++	return false;
++}
++
+ static bool rd_set_non_coherent(void *data)
+ {
+ 	struct gic_chip_data *d = data;
+@@ -1996,6 +2017,12 @@ static const struct gic_quirk gic_quirks[] = {
+ 		.property = "dma-noncoherent",
+ 		.init   = rd_set_non_coherent,
+ 	},
++	{
++		.desc	= "GICv3: Insecure RK3399 integration",
++		.iidr	= 0x0000043b,
++		.mask	= 0xff000fff,
++		.init	= gic_enable_quirk_rk3399,
++	},
+ 	{
+ 	}
+ };
+@@ -2004,7 +2031,7 @@ static void gic_enable_nmi_support(void)
+ {
+ 	int i;
+ 
+-	if (!gic_prio_masking_enabled())
++	if (!gic_prio_masking_enabled() || nmi_support_forbidden)
+ 		return;
+ 
+ 	rdist_nmi_refs = kcalloc(gic_data.ppi_nr + SGI_NR,
 
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
