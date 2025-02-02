@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AAF1C0218F
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Feb 2025 23:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58D9AC0218F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Feb 2025 20:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y72ombIwjLSbKWlXzyPQFoqg6rWVbHohFiVfDSQhMY8=; b=zk0s71gi2Z+A35
-	yIL43n+8D7TNVTqGxQO78TXN8pWImKyUtRH6GB7EtVgwds+9m6Oyias2qiycJq5eliM+PoOdK3tYk
-	hBiHxKkCtssrqQAE8KBeD9QrPsd0dwNN60UyKX7H7NsNz3bjsmipO4HHA0t/tZBChXOmr0onCQyzO
-	25SCF3RWipuJa3IKD4gYilBvCvaruWQ9TZ7XKAM13FN9LeN2Gpjj0dTL/G+nB0WutEJYrgF0fCThH
-	HcoDYvz46GIWZPiSZ8ABpiTvSbxzZltyBvgKPSG8AuhiPpJUmOXrAvQLbBEqjA6QBZvnmQgQD2pyN
-	eT8DLoHuiw+xyqO83uQQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PIJkC5zyviXfuzzTsyZMWiFEK4l1+l2W+Tz5QIVsexo=; b=r0EeaCPE2xTeoP
+	3EP7Fs0eXhkfGS2zit4v2J3FzXFzFwRW0Pa5aCPxEU2NUfKHUQfvLE1U/16uoyhc01EqXPsdjOq1L
+	Bzub/ub37r3AxBhp10MJ+aN2YJxR2HSx09sYPcSoHoDv8sT1R09W7/sp0V0LbUDHJMN+Jk0z+Qy3n
+	LWPqLs8NHkJe8YI1B1SCARaO5pf6zg21jOt09AvrwNtxf9at3UeHgznUB4DFeJ3zCIEQWaDEILPFR
+	sbgtBC7O4Nf3e8WapBEDQD04yEZMxG/xcHl4QYHNdjk3jCCM0sSGusBHJmS5Os49ESgOO242ZFDnC
+	j1QR9p42PPIFZQ/Y3V7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teMak-0000000DCKa-3hQ7;
-	Sat, 01 Feb 2025 23:07:58 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1teghq-0000000E9iJ-1d5I;
+	Sun, 02 Feb 2025 20:36:38 +0000
+Received: from forward101d.mail.yandex.net ([178.154.239.212])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1teMai-0000000DCK0-3AaL;
-	Sat, 01 Feb 2025 23:07:57 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-436ce2ab251so21971155e9.1;
-        Sat, 01 Feb 2025 15:07:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1738451274; x=1739056074; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:reply-to:from:subject:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5q3DleDzpgD7EzF7P1DuXDyZxKtwf0/HFl5nJAaVslM=;
-        b=LNfG2TJHLtsY2SRt86wqjpsGG7CHe7fc1tdHJK7Ln/kou6L4QsSPHvbzLuYzhqQJLu
-         hxJJEfisx0ABR308LgPB4B/edXmCM92hF+sNeYmDo4sS18KHU+KkTJpasN4sLjg9bc98
-         KuFtveYmzh7zPTNYaBCml31Yq35T6AF0EYjZgGQ388k6nO2ET7ojXHMVMPaCXB33JQjq
-         rmN/DJXFlyRgkVsS/gHwWuK0cx2UduITmRxeFDaH/ofXYnOLc8ox0j83+L8w7Skwb96U
-         SRl89+eNBHpXBL/LI55Bk4Xagw+G6xCqUyEAsA7XpbmaY9RBsFmS+pzO3Ea1wwddufES
-         0EIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738451274; x=1739056074;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:reply-to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5q3DleDzpgD7EzF7P1DuXDyZxKtwf0/HFl5nJAaVslM=;
-        b=nsUu/Kx012rD1lNxrwHZZoukCqKAqmrfhBjlpm8ePETRMQDnzIOoFE+DJ6jnq0AxNc
-         RabX/18fsVZqN2CFSp36jYuRmmL8gE12kqy3nzr5yx2j3YC4WW50OPGR34APGl20g2L6
-         v4tzSlP0gCtiirpOE8azOIIV3IaqqovF78ZjbY91eQMM19ezQOtxF1bFuj2qDzH5kVCd
-         f4dF6JfwCg3FpAoDE6X/SmZzjtTf/x9m1ylvzXU22AU3sNMkkSi40HwdV4gWXXvUaKvI
-         JkkeljHexbowmi8fFAgiftyU5ljUXDesBMtXE87J51PxBUT2DE5tle1CVz61HV9k5tjF
-         10AQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVNriCqsD74bdtn7peznSV1G+LCXxxi0XxkAVSEd5PXOmdz56+87DJP+cwfaVS98AjdCuBnk7Hzsk6PQW8D2IPD@lists.infradead.org, AJvYcCXAg0wWHsoO6m93pqkdhF0hsg0Bi+HoDjH5t98PsL9s0bPFAnISPEovOLEu4/Ykezc77t4KpgHDKw2cysaMmWo=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yze88A0LUTrxjFphoTUo0j80HYyD6AVRUXSYbNAO3+Oe7+CzcSV
-	Iz7yuNo+P75igjRGOeEyKxvt054gfxr7wMzyuthVKL9DRScZzYvSEBT5lw==
-X-Gm-Gg: ASbGncuuEXTjW7vbl+RfKmtSLODAjUYnBdUYv031WOOSwtVnJ8GHwtxqLUn/NsBdxDm
-	RfsDya3dkeC4IxVxU0J8sdz7u8fjpq2tzLUsn5uU3KUBSpn/SWMS3caYVvpd3Tc8QL+GyrAxjHO
-	UM9Fi4V6AfWJ7dTtJUxoiphL2S3WbEvwY2V3DtYE/dxZSOEnHKNQ479W6xgOhiiriqcOBEYilkj
-	/t+qCVHyYHRovE3SeKVkOuRnalGJekaTWOEA3epOPl6PBZ6sb9vuMy8T0YB+OR8KS6u47xpAIcm
-	aCf+aJchM7q5dAiUevOcGYWqepstpg==
-X-Google-Smtp-Source: AGHT+IF1ijrf5GV3LAgJuIitt8CuxdpOYO8Z/Kf+YMgYFonfsxo1H9DKWlH1CP79/A3UyOHx3knK5g==
-X-Received: by 2002:a05:600c:a45:b0:434:f7e3:bfbd with SMTP id 5b1f17b1804b1-438dc40cf15mr130069765e9.23.1738451274253;
-        Sat, 01 Feb 2025 15:07:54 -0800 (PST)
-Received: from mars.fritz.box ([2a02:8071:7130:82c0:da34:bd1d:ae27:5be6])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c1b5780sm8487849f8f.67.2025.02.01.15.07.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 Feb 2025 15:07:53 -0800 (PST)
-Message-ID: <7a543bef6e096babdb4e8a02d86e0b68f4c92697.camel@googlemail.com>
-Subject: Re: rk3399 fails to boot since v6.12.7
-From: Christoph Fritz <chf.fritz@googlemail.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Chen-Yu Tsai <wens@csie.org>, 
-	KeverYang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-rockchip@lists.infradead.org, stable <stable@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
-Date: Sun, 02 Feb 2025 00:07:52 +0100
-In-Reply-To: <865xluvmp0.wl-maz@kernel.org>
-References: <b1266652fb64857246e8babdf268d0df8f0c36d9.camel@googlemail.com>
-	 <86a5b8vd0d.wl-maz@kernel.org>
-	 <fc0b65020f3376e5245a8f599a060fdca10ab61c.camel@googlemail.com>
-	 <865xluvmp0.wl-maz@kernel.org>
-User-Agent: Evolution 3.46.4-2 
+	id 1teggT-0000000E9cL-0fsV;
+	Sun, 02 Feb 2025 20:35:16 +0000
+Received: from mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:288:0:640:d35:0])
+	by forward101d.mail.yandex.net (Yandex) with ESMTPS id 477E460906;
+	Sun,  2 Feb 2025 23:35:05 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id wYpXeKDOhGk0-IOqKZa5Q;
+	Sun, 02 Feb 2025 23:35:03 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ya.ru; s=mail;
+	t=1738528503; bh=5rKcZJY29bNaWdT+17+7U8GuqPLJU4SRzpugbbuKOc4=;
+	h=Message-ID:Subject:References:To:From:In-Reply-To:Cc:Date;
+	b=CSQea95ybmKLeA1PZavBV28WAG6bh595O+y5TydwxmO5vuEEwbc9asjkzAomJiRR9
+	 Zwp4bZRK8g7J7CNrmC9uy17dbNQnmUu15CA2Hl8k++brc0cx4j5cENITKBEMggFXXa
+	 RKEKqWypjMgsS+z6U6GvoH1j477XHSs85BN6NbaU=
+Authentication-Results: mail-nwsmtp-smtp-production-main-90.myt.yp-c.yandex.net; dkim=pass header.i=@ya.ru
+Date: Sun, 2 Feb 2025 23:34:58 +0300
+From: Pavel Golikov <paullo612@ya.ru>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org, rfoss@kernel.org,
+	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+	jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Daniel Semkowicz <dse@thaumatec.com>,
+	Dmitry Yashin <dmt.yashin@gmail.com>,
+	Pavel Golikov <paullo612@ya.ru>
+Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: Add MIPI DSI2 host
+ controller bridge
+Message-ID: <20250202203458.GA52719@pgolikov-home-desktop>
+References: <20241209231021.2180582-1-heiko@sntech.de>
+ <20241209231021.2180582-2-heiko@sntech.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241209231021.2180582-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250201_150756_823468_94FCC884 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250202_123513_740037_CFAAF18D 
+X-CRM114-Status: GOOD (  31.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,22 +76,305 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: chf.fritz@googlemail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Anyway, can you try the hack below? it works on my own rk3399, but I
-> don't have anything on the secure side. Please also try it by passing
-> "irqchip.gicv3_pseudo_nmi=1" on the command-line.
+Hi,
 
-Done, works in both cases now for me. If you want you can add my
-Tested-by and/or Reported-by.
+On Tue, Dec 10, 2024 at 12:10:19AM +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> Add a Synopsys Designware MIPI DSI host DRM bridge driver for their
+> DSI2 host controller, based on the Rockchip version from the driver
+> rockchip/dw-mipi-dsi2.c in their vendor-kernel with phy & bridge APIs.
+> 
+> While the driver is heavily modelled after the previous IP, the register
+> set of this DSI2 controller is completely different and there are also
+> additional properties like the variable-width phy interface.
+> 
+> Tested-by: Daniel Semkowicz <dse@thaumatec.com>
+> Tested-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+[..]
+> +static void dw_mipi_dsi2_set_data_stream_mode(struct dw_mipi_dsi2 *dsi2)
+> +{
+> +	u32 mode;
+> +	int ret;
+> +
+> +	regmap_write(dsi2->regmap, DSI2_MODE_CTRL, DATA_STREAM_MODE);
+> +	ret = regmap_read_poll_timeout(dsi2->regmap, DSI2_MODE_STATUS,
+> +				       mode, mode & DATA_STREAM_MODE,
+> +				       1000, MODE_STATUS_TIMEOUT_US);
+> +	if (ret < 0)
+> +		dev_err(dsi2->dev, "failed to enter data stream mode\n");
+> +}
+> +
+> +static void dw_mipi_dsi2_set_cmd_mode(struct dw_mipi_dsi2 *dsi2)
+> +{
+> +	u32 mode;
+> +	int ret;
+> +
+> +	regmap_write(dsi2->regmap, DSI2_MODE_CTRL, COMMAND_MODE);
+> +	ret = regmap_read_poll_timeout(dsi2->regmap, DSI2_MODE_STATUS,
+> +				       mode, mode & COMMAND_MODE,
+> +				       1000, MODE_STATUS_TIMEOUT_US);
+> +	if (ret < 0)
+> +		dev_err(dsi2->dev, "failed to enter data stream mode\n");
 
-Thanks
-  -- Christoph
+We've failed to enter command mode, not stream mode. Wrong error message caused
+by copy and paste?
 
+> +}
+> +
+> +static void dw_mipi_dsi2_host_softrst(struct dw_mipi_dsi2 *dsi2)
+> +{
+
+Looks like it is necessary to also do apb reset here, like vendor kernel does.
+Without apb reset, panel sometimes does not properly come up after DPMS switch.
+
+Tested with
+
+modetest -M rockchip -w 83:DPMS:3
+
+I'm not sure whether it is Debian specific, but setting connector's DPMS property
+to OFF causes immediate panel reset. Something is restoring its value to ON
+immediately.
+
+> +	regmap_write(dsi2->regmap, DSI2_SOFT_RESET, 0x0);
+> +	usleep_range(50, 100);
+> +	regmap_write(dsi2->regmap, DSI2_SOFT_RESET,
+> +		   SYS_RSTN | PHY_RSTN | IPI_RSTN);
+> +}
+
+...
+
+> +static void dw_mipi_dsi2_phy_ratio_cfg(struct dw_mipi_dsi2 *dsi2)
+> +{
+> +	struct drm_display_mode *mode = &dsi2->mode;
+> +	u64 sys_clk = clk_get_rate(dsi2->sys_clk);
+> +	u64 pixel_clk, ipi_clk, phy_hsclk;
+> +	u64 tmp;
+> +
+> +	/*
+> +	 * in DPHY mode, the phy_hstx_clk is exactly 1/16 the Lane high-speed
+> +	 * data rate; In CPHY mode, the phy_hstx_clk is exactly 1/7 the trio
+> +	 * high speed symbol rate.
+> +	 */
+> +	phy_hsclk = DIV_ROUND_CLOSEST_ULL(dsi2->lane_mbps * USEC_PER_SEC, 16);
+> +
+> +	/* IPI_RATIO_MAN_CFG = PHY_HSTX_CLK / IPI_CLK */
+> +	pixel_clk = mode->crtc_clock * MSEC_PER_SEC;
+> +	ipi_clk = pixel_clk / 4;
+> +
+> +	tmp = DIV_ROUND_CLOSEST_ULL(phy_hsclk << 16, ipi_clk);
+> +	regmap_write(dsi2->regmap, DSI2_PHY_IPI_RATIO_MAN_CFG,
+> +		   PHY_IPI_RATIO(tmp));
+> +
+> +	/*
+> +	 * SYS_RATIO_MAN_CFG = MIPI_DCPHY_HSCLK_Freq / MIPI_DCPHY_HSCLK_Freq
+> +	 */
+
+According to TRM
+
+SYS_RATIO_MAN_CFG = MIPI_DCPHY_HSCLK_Freq / SYS_CLK_Freq
+
+So, this comment is simply wrong. Looks like a typo. Also, earlier comment does
+not mention _Freq part in frequency names. Maybe it would be better to make it
+consistent?
+
+> +	tmp = DIV_ROUND_CLOSEST_ULL(phy_hsclk << 16, sys_clk);
+> +	regmap_write(dsi2->regmap, DSI2_PHY_SYS_RATIO_MAN_CFG,
+> +		   PHY_SYS_RATIO(tmp));
+> +}
+> +
+> +static void dw_mipi_dsi2_lp2hs_or_hs2lp_cfg(struct dw_mipi_dsi2 *dsi2)
+> +{
+> +	const struct dw_mipi_dsi2_phy_ops *phy_ops = dsi2->plat_data->phy_ops;
+> +	struct dw_mipi_dsi2_phy_timing timing;
+> +	int ret;
+> +
+> +	ret = phy_ops->get_timing(dsi2->plat_data->priv_data,
+> +				  dsi2->lane_mbps, &timing);
+> +	if (ret)
+> +		dev_err(dsi2->dev, "Retrieving phy timings failed\n");
+> +
+> +	regmap_write(dsi2->regmap, DSI2_PHY_LP2HS_MAN_CFG, PHY_LP2HS_TIME(timing.data_lp2hs));
+> +	regmap_write(dsi2->regmap, DSI2_PHY_HS2LP_MAN_CFG, PHY_HS2LP_TIME(timing.data_hs2lp));
+
+I also had to set DSI2_PHY_MAX_RD_T_MAN_CFG to 10000 as it is done in
+dw-mipi-dsi (v1) driver to make my panel work properly in LPM mode.
+
+> +}
+
+...
+
+> +static const struct regmap_config dw_mipi_dsi2_regmap_config = {
+> +	.name = "dsi2-host",
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = 4,
+> +	.fast_io = true,
+
+Maybe it would be good to also set max_register here to make proper regmap
+available through debugfs? Or max_register_is_0 otherwise? Without this, only
+first register is available for dumping.
+
+Not quite relevant here, as this bridge is not currently used alone, but
+relevant for Rockchip specific glue driver.
+
+> +};
+
+...
+
+
+I've managed to successfully enable my DSI panel [0]. It has Lincoln Technology
+Solutions ZV070WUV-L50 board [1], which, in turn, is based on Focal Tech FT7250
+display controller.
+
+This panel works flawlessly with rk3568 (but at most at ~55 Hz refresh rate,
+because rk3568 does not support modes higher than 1920x1080@60, so, I had to
+lower refresh rate to make it work). But has some troubles with rk3588. It
+works fine with vendor kernel with LPM disabled and "auto-calculation-mode"
+device tree property set. As far as I can understand, auto calculation mode is
+not going to be supported by mainline, and disabling LPM is not an option to
+me.
+
+So, to make it work with this series I had to increase PHY_SYS_RATIO twice.
+
+Maybe Andy could shade the light on what automatic mode calculation algorithm
+does? Why in automatic mode PHY_SYS_RATIO value is twice larger than value
+computed by formula in DSI controller application note?
+
+Panel configuration:
+
+static const struct drm_display_mode default_mode_lincoln = {
+	.hdisplay    = 1200,
+	.hsync_start = 1200 + 20,
+	.hsync_end   = 1200 + 20 + 8,
+	.htotal      = 1200 + 20 + 8 + 22,
+	.vdisplay    = 1920,
+	.vsync_start = 1920 + 178,
+	.vsync_end   = 1920 + 178 + 8,
+	.vtotal      = 1920 + 178 + 8 + 32,
+	.clock       = 148500,
+	.width_mm    = 94,
+	.height_mm   = 151,
+};
+
+dsi->lanes = 4;
+dsi->format = MIPI_DSI_FMT_RGB888;
+dsi->mode_flags = MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_VIDEO |
+	MIPI_DSI_MODE_NO_EOT_PACKET | MIPI_DSI_MODE_VIDEO_BURST;
+
+Regmap diff between manual mode and automatic mode:
+
+diff --git a/root/regs_manual b/root/regs_auto
+index 117cb5b..5dce301 100644
+--- a/root/regs_manual
++++ b/root/regs_auto
+@@ -7,9 +7,9 @@
+ 018: 00000000
+ 01c: 00000003
+ 020: 00000303
+-024: 00000001
++024: 00000000
+ 028: 00000000
+-02c: 0161082c
++02c: 04b70728
+ 030: 00000000
+ 034: 00000000
+ 038: 00000000
+@@ -65,20 +65,20 @@
+ 100: 00000130
+ 104: 00000900
+ 108: 001f0000
+-10c: 000cb0b5
+-110: 00000000
+-114: 000ae64f
+-118: 00000000
++10c: 00000000
++110: 0013be38
++114: 00000000
++118: 00114671
+ 11c: 00000000
+-120: 00000000
++120: 000003d3
+ 124: 00000000
+-128: 00000000
++128: 00952167
+ 12c: 00000000
+-130: 00000000
+-134: 0001aaab
+-138: 00000000
+-13c: 00002d21
+-140: 00000000
++130: 00658920
++134: 00000000
++138: 0001aaad
++13c: 00000000
++140: 00005a41
+ 144: 00000000
+ 148: 00000000
+ 14c: 00000000
+@@ -129,7 +129,7 @@
+ 200: 00000002
+ 204: 00000000
+ 208: ffff0000
+-20c: 00100072
++20c: 00000072
+ 210: 00000000
+ 214: 00000000
+ 218: 00000000
+@@ -191,20 +191,20 @@
+ 2f8: 00000000
+ 2fc: 00000000
+ 300: 00000050
+-304: 00035555
+-308: 00000000
+-30c: 00092aab
+-310: 00000000
+-314: 01f40000
+-318: 00000000
+-31c: 0208d555
+-320: 00000000
+-324: 00000008
+-328: 00000000
+-32c: 00000020
+-330: 00000000
+-334: 00000780
+-338: 00000000
+-33c: 000000b2
+-340: 00000000
++304: 00000000
++308: 0003555a
++30c: 00000000
++310: 00092ab7
++314: 00000000
++318: 01f402bc
++31c: 00000000
++320: 0208d82e
++324: 00000000
++328: 00000008
++32c: 00000000
++330: 00000020
++334: 00000000
++338: 00000780
++33c: 00000000
++340: 000000b2
+ 344: 000004b0
+
+The only irrelevant difference here is LPM mode enable bit.
+
+Calculated hsclk is 61875000, sys clk is 351000000, MIPI lane speed is
+990 mbps. VOP pixel clock is 37125000 if it is relevant in any way.
+
+Thanks, Pavel
+
+[0] https://www.hello-lighting.com/product/7-0-ips-1200x1920/
+[1] http://www.microtech-lcd.cn/upfile/202109/2021092649634025.jpg
 
 _______________________________________________
 Linux-rockchip mailing list
