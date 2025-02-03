@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17EB1C02193
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Feb 2025 08:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D9DDC02193
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Feb 2025 08:23:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4eoBGzZENIKCIxXCZYyskWY9VUBHycA8evSvkMg4a7Q=; b=vCPTsqEMTBE8j8
-	Zi1pOvZpU1Sc+86m6So7lEmWBL7a8FtgEP3IXeWQVRuz7UYv0IXklg4Cp5naNu6ZTYeSbYulO6FZM
-	pJmGHJhsDs+k7ZT91o/UJX4MA3s4ep0V00T5L62HA+aMJVWcK/EvFmh8azraznJGXvTm8FEQWwLes
-	dE148cT8+AkS8+TRjnrIqr/hPgH5A1p/EbpRP3KyEhJiztCm6uzEYbiA/ok4tX7hb2FVhU/JJejwI
-	VlOTTmfqV1MJuBPxIaDTcYthcJ4ao4miOaFAf6PODJGSA3dqIsLpCzLoaTFkrVTgVAW/HOc6Y/krA
-	YTr76FGUe/3VDBu9vSMg==;
+	List-Owner; bh=KMcynwOymLKBqztYJBZrQeBAaxtqsAaYSzoRDp9qvQI=; b=Jc68VCKSVgOWRb
+	CYxuHJ9bAjY6hAyQtsUKTriL8/SFAJ8zInv1N8JksPEZOzSp57nKB17Lj4noFFCV1yiIab2IMuFd6
+	3Zomalq9FE+NfTRzKADb1qL1vAMEkUpGHHmiwVrvLtGV3FZ0w5g0rZiBkAnKGYROyFuLbc9Fkwu6a
+	UoMyprBgpmRuuAJGPt4nRryydArwhzrpysRDwSJ4ekktagFBOCXByu0hVW5d8hFiZfyq+b587nqrm
+	fFoagMRt2mz7IaVwFLqi34eBSa816KyOEL7QIllsZHKB0sxVz/SBSPoksrXr286LiQHy54XudSOpb
+	XeYdoOv4FXX0rF800j3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1teriK-0000000EoyA-30Q4;
-	Mon, 03 Feb 2025 08:21:52 +0000
+	id 1terjd-0000000EpC3-1YzB;
+	Mon, 03 Feb 2025 08:23:13 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1terco-0000000EnVP-2zRn
-	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Feb 2025 08:16:11 +0000
+	id 1terct-0000000EnZv-3HM0;
+	Mon, 03 Feb 2025 08:16:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Aze4aJnrz/2KocFF9cKwONK0uKp48/98fqoOynnEDLE=; b=UOWwfo932gRc9id64bCvCXRNMC
-	bqpRx66Sva+jYCjpAdQcH/j0h5bnGS7KAEhmT0Wxb561UamKfr8Osel0TQgSgKYW/+mrGPbYZ+sTT
-	QPCTAwWi6+0st1Rj7Ajbtdn23wlzNmthV5JHxMuVPbVze25+uiUm2/cfhiiAn6fydECW0K68kSdv3
-	GpGFlr+8hkvNtCEGuCtD8drHF5S7p4NFWl/SrBfsbzZoZyGXnj6W4sKJAhU4djxC6eYdditYIbYGc
-	7UGoEYwWvsvys+Z04Zko0GetrVzmNBbbmf7rufP1ruFyL8A9CIuSiBXybY6qPhngutEX2iiiDJECZ
-	eCY1ts5A==;
+	bh=93epfxqDvQkA4VstYuNsyHFiuxB63dG0Zy3P5Z6o61s=; b=sGBlaUI8ZjlKrnUPITkJHL/AMn
+	KyyeIUx/q14lm4YW+5pg1N/iPJYvZtJ5pJ59pW0qeKrHZ93/0xZjFLfQYlH3BFQOd++rXAPnv5zBT
+	0Z7sQqsqV9seYcVkur8UoAgB/HjVLHyJIo2MyON9y1kqhEyhNsVWLLkeAZPVwnc7UKDmECcK7EguJ
+	fwocgksbC/tCwDmdsiPbZQAWU8ozdjJBfANhMCpUHG/Jik1+asX5hTD3CBVpfJ+0Zjfvj3JtD+rqP
+	cxW6X3iW67WKYlgEZNUX+s5BalDrF1Apj01zh/Gwyw6kVpFzjJdOCos7AV21OrEnnw95NlsLbjX8A
+	ndHCvhlA==;
 Received: from i53875b5c.versanet.de ([83.135.91.92] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tercm-0005Vr-76; Mon, 03 Feb 2025 09:16:08 +0100
+	id 1terck-0005Vr-UI; Mon, 03 Feb 2025 09:16:07 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: vicencb@gmail.com,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: jbx6244@gmail.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix fixed-regulator renames on rk3399-gru devices
-Date: Mon,  3 Feb 2025 09:15:59 +0100
-Message-ID: <173857053621.78657.15997629060990557658.b4-ty@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Dragan Simic <dsimic@manjaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	maz@kernel.org,
+	tglx@linutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Use "dma-noncoherent" in base RK3588 SoC dtsi
+Date: Mon,  3 Feb 2025 09:15:56 +0100
+Message-ID: <173857053623.78657.5406481342048846452.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250116143631.3650469-1-heiko@sntech.de>
-References: <CAAMcf8A3Ehi=krZirpuFVpVuQ4T_wwQ5Ss29_o4-BiTaQqsoFw@mail.gmail.com> <20250116143631.3650469-1-heiko@sntech.de>
+In-Reply-To: <fa1a672dae3644bb3caa58f03216d0ca349db88b.1736279094.git.dsimic@manjaro.org>
+References: <fa1a672dae3644bb3caa58f03216d0ca349db88b.1736279094.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250203_001610_751216_ADA5738C 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250203_001615_815415_D6EC4989 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,21 +83,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 16 Jan 2025 15:36:31 +0100, Heiko Stuebner wrote:
-> rk3399-gru chromebooks have a regulator chains where one named regulator
-> supplies multiple regulators pp900-usb pp900_pcie that supply
-> the named peripherals.
+On Wed, 08 Jan 2025 05:26:45 +0100, Dragan Simic wrote:
+> The preferred way to denote hardware with non-coherent DMA is to use the
+> "dma-noncoherent" DT property, at both the GIC redistributor and the GIC ITS
+> levels, [1] instead of relying on the compatibles to handle hardware errata,
+> in this case the Rockchip 3588001 errata. [2]
 > 
-> The dtsi used somewhat creative structure to describe that in creating
-> the base node 3 times with different phandles and describing the EC
-> dependency in a comment.
+> Let's have the preferred way employed in the base Rockchip RK3588 SoC dtsi,
+> which also goes along with adding initial support for the Rockchip RK3582 SoC
+> variant, with its separate compatible. [2][3]
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix fixed-regulator renames on rk3399-gru devices
-      commit: f83e377977663fc3f04cf5bb444aa989311110dc
+[1/1] arm64: dts: rockchip: Use "dma-noncoherent" in base RK3588 SoC dtsi
+      commit: 33b561eb66f1e271f2899e103c857d20425076f4
 
 Best regards,
 -- 
