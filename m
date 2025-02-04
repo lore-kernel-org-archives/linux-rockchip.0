@@ -4,72 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE48C02193
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A32F5C02193
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 16:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DKKSrqM4riKOy3SjrfGmcE2cF++RBMZEoTjX7/NcANY=; b=f5reQEQTZU4i2M
-	T3dz9ChFCdD/tD2cBR7RLsSbk2O5/3f4Pv2vCaAWZcQNst5z+a94E0+UmBtouV3Y0wLNAR73uoR1Z
-	xJxtTEUS8X/GBhKC6y1/aFmGXJgugrmC0yNC9XIjOW7lz5Am7qcDX0XwG/NveNsbO6ot93cS7F/hS
-	Y7dhit5QZbvT48BuFnBjpqf29BgUFfUPn38HgiIcwR/18lWasNwARaBwpeKFhAtuDSWfNHk9TVEDS
-	zYf7676aLoRatFWFIuJ1z+FEH/X/66bTaDkEU0tjesoOx9SNuztkhtF67eRoBuEhNA+BNVkwlSE4i
-	21gJu79ucXvpqNbr9zCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=evOTKB2aNoA6R1XVaFNojaynkKHbmfbH3aezDbpAOXA=; b=d0Dhko+HOAPhzw
+	g/q/LdWa8BLlTXEFWDnwjF42TqTIPAaId7F9oHN3BZtmv+cpNxW4DoVi5h32L91c5E5+WUipf5E7Y
+	sMuWuqtMwFe25t5Hlo5R352PyE5033Wj78ccc8TcrDSiQcnQ1MK4+wFrNLl6qZ+jb7GJdX5E5UFeI
+	KnPfrzVOA+bOjWW/yyd2ANPOCMY0CsVU0FoNb+AEjZIwiNQFy1/0/KLHv/mVUmUpjh2GBkda2U4RY
+	gqmTpdICspC5Rh0ZixFG13evXJ3JzEv6ix/GtmTzN4skt4CW/0mcGz3dUNIVWusmM64L6MeB32sGx
+	UwkP++cVBPQtXe8DdLJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfLCB-00000000sSJ-3iYG;
-	Tue, 04 Feb 2025 15:50:39 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1tfLYU-00000000vgS-1CPC;
+	Tue, 04 Feb 2025 16:13:42 +0000
+Received: from mail-dm6nam11on20731.outbound.protection.outlook.com ([2a01:111:f403:2415::731] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfKz7-00000000qLm-1iem;
-	Tue, 04 Feb 2025 15:37:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738683404; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZZG2TR6Wtls3HySvymFj1BsUhnu2rAhYC+xGGTzTCUonkmhCyZsF7A+IXPbUdU0B55Chof9IOjG1doOLfw7pM33R9HE8QaTHNn3FRocPtGLsng9muAswESJ3sV6Ljp5wWN35S3fu8envGTV433kqterGaYupQUPbmB2u/DRnR8c=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738683404; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=GMURBDmDBfdswVNidc9LDRy5gTgNWKuMjT5j4qvld3U=; 
-	b=lgFnGuZxfjE3rcY4uaKrzhg1dj+HsIzPrI0MEhnRDado+fX3l5Isnvg8DqiA2XcBB0G61g4lf9iKRYk7CovXxPw9e/+5BoCuOnhkO2HF8/vNSuB1Nydv/TVhrqGBEO2+7mhWKDXkEn51ap7q9AdIseSGqVjnwQ32NRzfl9rFK2g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683404;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=GMURBDmDBfdswVNidc9LDRy5gTgNWKuMjT5j4qvld3U=;
-	b=cI2Q8Uf6dRjGJ1ApNF6zZJn/7/RNzFyI0MPIL8PsUmseR2ql7F4jycU8IIsoV02s
-	R6oIWBxO7ZYluRcEYLNDPQEHox8opPkqhFsnbzNc8mqE/Z9KE2itUyY5wQPFQSTmB4w
-	ZTI6hoYEXWplFMCFq2sSK2HzvleKtWDByrHeY2yo=
-Received: by mx.zohomail.com with SMTPS id 1738683402176488.16769815887005;
-	Tue, 4 Feb 2025 07:36:42 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 04 Feb 2025 16:35:50 +0100
-Subject: [PATCH v2 5/7] hwrng: rockchip: add support for rk3588's
- standalone TRNG
+	id 1tfLYR-00000000vg1-3c0m;
+	Tue, 04 Feb 2025 16:13:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=s3QMKVUcSyPjdR3KTNEvJh803zx0a4QkRJBxu9xE/sLZKtk2YtwEJRIC8Eq0FXHIwHWx8cvH2h2yvLSMlxkfB1ruq49WG2QvTxM4rdnY3Qn3XLtPXg4xCvFtP4XZKqsEfOgTKckZ3O/fRNcYjkixaNez5ly6b2izuhwhDxZY81KJ4pfoo9r5FYQOJ6JxDSFGUd9S7KYW5mGr31qPLPrxaDvCUgoV6VniVvbaRfUtNmsEnc9HhEBualOASgjhRRloIJd+gJ8QQYRhWtVF9VnIPRbEwlRtxba34xlk4FM0LootVl5mSjpxZML1iViL1xiey7A4WojMGktPbpltZqG/kQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5G+yIYu1GG+TDjFPSZ1tRTYwNmnlx5JgFpL4aUX+hqM=;
+ b=EloJBBArXmpB+pPtYpEFrpxsWDM1yJHeliPNUjl1PYjNYfM1oAVyT0Z4yt6VRuelhuj916OSXGnu7EDnnj0hnqO74OJ61Rry67SPeDWtbvOBjKf06cwSOR0AANoFVfgxU5QLYQdg/mzPyuVqXtOCtLs5D9mQBKXDr+Z8Ame8zFLpkCjrjLi8PJlolbzwF/jtsbjhFybDjY5lQ5pEAAfuEoVjVZuYhTgS85w+1WHaKVobKD3yyK5RqRk/w0qbUDTAFF9bocoxzcs1+EwWGGOoE1rmnZtmye7vZBNH/4an2l3OJMJEQh/djq8KepMuyO/3vaYoc3mACblPCOp0tWm91Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
+ header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5G+yIYu1GG+TDjFPSZ1tRTYwNmnlx5JgFpL4aUX+hqM=;
+ b=G5unYY62eC4b8fGu76UW5VsSoSf+akaanf1ooPYErP2Mg3HouInQuFtMpgxhxi+VxFQ2KBdKqa3wgMxZm1bqBJajRMNT3pIdyNyjC9+fXUgXMVdoVr7Yt03p0b5KtmQ6La1Bl2ejImQMuvByUNIy0mN9jmsNj05Jpv+rml44kOk=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
+Received: from MW4PR08MB8282.namprd08.prod.outlook.com (2603:10b6:303:1bd::18)
+ by LV3PR08MB9507.namprd08.prod.outlook.com (2603:10b6:408:213::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.25; Tue, 4 Feb
+ 2025 16:13:33 +0000
+Received: from MW4PR08MB8282.namprd08.prod.outlook.com
+ ([fe80::55b3:31f1:11c0:4401]) by MW4PR08MB8282.namprd08.prod.outlook.com
+ ([fe80::55b3:31f1:11c0:4401%3]) with mapi id 15.20.8398.025; Tue, 4 Feb 2025
+ 16:13:33 +0000
+From: John Keeping <jkeeping@inmusicbrands.com>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: John Keeping <jkeeping@inmusicbrands.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: rockchip: i2s-tdm: fix shift config for SND_SOC_DAIFMT_DSP_[AB]
+Date: Tue,  4 Feb 2025 16:13:10 +0000
+Message-ID: <20250204161311.2117240-1-jkeeping@inmusicbrands.com>
+X-Mailer: git-send-email 2.48.1
+X-ClientProxiedBy: LO4P123CA0150.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:188::11) To MW4PR08MB8282.namprd08.prod.outlook.com
+ (2603:10b6:303:1bd::18)
 MIME-Version: 1.0
-Message-Id: <20250204-rk3588-trng-submission-v2-5-608172b6fd91@collabora.com>
-References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
-In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Olivia Mackall <olivia@selenic.com>, 
- Herbert Xu <herbert@gondor.apana.org.au>, 
- Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Lin Jinhan <troy.lin@rock-chips.com>
-X-Mailer: b4 0.14.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW4PR08MB8282:EE_|LV3PR08MB9507:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8bb7991f-e51e-4c7c-608b-08dd4536def7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|52116014|366016|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5Ggq8l24BKDI3o5nCnycr4/sNBOkZOniPw2aLxrWute/9lit7oQY0dVxmcQg?=
+ =?us-ascii?Q?dAqZabybxk2kpGewQ9vHLV3u260ZSHpIuSySrG1ciEiS7Tp63vyxC2cemDpM?=
+ =?us-ascii?Q?Y2KfhXgN/bQ022u6sKmVf7X+xBekuBYyW9nfwHrviAIqbPp+z+oP1fOJxzWE?=
+ =?us-ascii?Q?0U1J8puJEJMbmH13Blf8+auWLgNlC32SyP0tH7BlM+KhK6nDCwEwClVvet7T?=
+ =?us-ascii?Q?DqSn4CFykbtq7hCzJOq/S0ppkgEfb0KHptvPuOQFa2dblVRqeAuw639MgV5z?=
+ =?us-ascii?Q?jBwF0GK1iu0W0O91P6Hglq6uiOtawrpVnoNnVYl1ezwNzDbDplOQBSaNd4Y8?=
+ =?us-ascii?Q?FOciaLWbOszt+Qj1xfElucJctWuzKdu/ybDGLsqPElF+Y2SdtGAxjunX6d5l?=
+ =?us-ascii?Q?ot/JHJSz9dfPATWjFm1yGa+K6Jrv2WD5sT4ScENKcPmtWkilDH7HkgtkjokQ?=
+ =?us-ascii?Q?DacthnPYJII/asLDhP6m8Sjb8Ag2R6rR1RbdMFweTCBhujdnew0YE3omlYda?=
+ =?us-ascii?Q?FXdOch0n/YVzCiZO39bz8UQDBnKHoVSxQ2bYkG6b2YxLtxJ8fldwm9F1SGrr?=
+ =?us-ascii?Q?sDdkdJtgFZ+LNBVH46bqLLqz9QDrJ69/tepRsDTZHjRWKnB74n4MDcwrxieB?=
+ =?us-ascii?Q?kTpvDWglDSQIcz+39Crnc8dq9NXDmu5xqeESNhHJkxGchuyTlNsaMLUw/PAP?=
+ =?us-ascii?Q?VX9EQ1s+KZVd8kICo6MNfIK2ZeOQ27lznbmM8j3VIzWFcJyMemI6LgAf8bhq?=
+ =?us-ascii?Q?dweBqWjftoYau+HnFdt+RC9taGuEhfo5fijvWNq/kGVDYmsYT/GM4AEHs4Zb?=
+ =?us-ascii?Q?Fl5/nwtuiZHzSbNf1okpPs2rwjRWk0cr9/GzKXJR+7CH6SUlt80tT+/T7Sac?=
+ =?us-ascii?Q?SFunk0XWGv4GP4wFWguuGgtNpz3+z+up29r1NVjdSI+fR1HJNfoGiyz/sw+w?=
+ =?us-ascii?Q?DvpFte0fuVx3e48t8oPneKLxyZLaNChUufNTcxUxpGP/karC/JyAOXGprzAm?=
+ =?us-ascii?Q?7BToZB9Zd/hPVcx8OEk+FK3OfYzDBd2LQsiawQ66V01ghf22MxbWyZDznLjZ?=
+ =?us-ascii?Q?oa8qol9sD1CJ291dsAQowu2soc/I9HKPEvBrzB/ZJZNBF370H4QXmSTeH1F8?=
+ =?us-ascii?Q?5ZgSVU5qoVUXbtKXbp4DhgrzVcWHMvOvrDEgbI4rlsCdP6eeJsfW2LdngWU4?=
+ =?us-ascii?Q?xefcESLur1GWMGSmX/6kle0fjsqHOMZMmQrR659T4W8iW9miRrOu5C9hJ5eQ?=
+ =?us-ascii?Q?B3DgShnnMZDyjis3eCs5yy247uotTBEQCH0+4yQHT44Cz2y4tjV7DokS5Ai/?=
+ =?us-ascii?Q?IILNXufjg9NBNLohmHh+iCAllinbR5J/283azW+OcC193edT5p7lmqk0drgj?=
+ =?us-ascii?Q?PFsSvkD6sRvaQllGCmb8SpsW3omOxhYDn6mtIMQxSTJNg7nTARtmKGu4Hx8k?=
+ =?us-ascii?Q?CEWJaT56B0hhJ++iM+6gjQRDifpbmqQn?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW4PR08MB8282.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(52116014)(366016)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+1NyI5p4XVgsiWOjAiubITRjT9S/bsLXRgWNL07VKuSxOSIozhsV/HeWsPWd?=
+ =?us-ascii?Q?kpszyrudccPzp7jFisEIAdTGk7GfluED1JdLuz7IrfoJg0UgGzJasa4FZuBn?=
+ =?us-ascii?Q?DKNfXT/FuXQ7blFwywg8hzg2Gu452Zif/O9ShXLgCAheFQmCZ+ZXqVavz6iQ?=
+ =?us-ascii?Q?reD2yh3bsKH3NgjqPbUA4JUlGcWTMRCwiDuJS5WHwY5YAFqVA/8PuLeD5EFi?=
+ =?us-ascii?Q?THiR0tAte+/QRoTvi3wSuNZL2cGfdGxRHEy5/q1e0ZF6Nt4Di0lp0saas3SM?=
+ =?us-ascii?Q?MYAiTJx99Z9ZnG/XFd8XLk5jJuf9raRunDBauJySdg3LL2Qm8b0zn6RKwRZk?=
+ =?us-ascii?Q?Y5BJFpZ2RwEcaIy+XAfWV3KL7Ww7etXaRZszYzWEKhoajGewksQbAD+yTjOj?=
+ =?us-ascii?Q?fpDCX0MUFel/VJIlCR88LESDDVROORSDrl+Rg9dxyoWAIuBQq5Dx5PnGNEYK?=
+ =?us-ascii?Q?eJCqHpTojyEYkEvd8XJkZx2Rbxwl/JbKdz2vr08yFSWk1HvGsUEcaTYorb73?=
+ =?us-ascii?Q?a/J5smTYKFvOxRtQzZvbbRWtk0Lzv7kUlTzIq2gqNY3PgRavIZ2hvonoRi/o?=
+ =?us-ascii?Q?EzIKKTVExR8DfBPbmIIVJr8FOMM3wugqfJVibdHPwkpgUWdnQsyUsyFb8/dK?=
+ =?us-ascii?Q?bNELYFNgpeE0vD2gjbgpV9LAhHOvFsffNXeiYJA57axzc8ECkSB08qAKq1dI?=
+ =?us-ascii?Q?+N7LE3Qyj4ptVlHRsunnNfjcJqffGccFyb7OLjuDZrJC3kjoFcWGSf6ZWSTf?=
+ =?us-ascii?Q?HZUZLxI1WtAswqsV3XRnGbgL1+HmEHnbR2/cn1g5V2eMCiKFSBB42t+P1127?=
+ =?us-ascii?Q?jU4fMKsoCGtG1VH6hpZoSOIB+xlg40NklwN1k/cT7sP80iacs8sStqgl6zHv?=
+ =?us-ascii?Q?hIqyikG4K6BFgOy7vCC7EVrrGY4zDdsjoVmLN6WAPQQHH5gd2VMpPSNXeWLM?=
+ =?us-ascii?Q?aYCweHMUk5G6kxt6ckzn8m5KtSb5lbcf7bDfIPqVWz0GSPw6oFjCOX2iMHG4?=
+ =?us-ascii?Q?BscmdhN4Qpn+1uYbX04Am8crIYRD+7f/5PqoWlqfC91Zqak3z/Z1GMDJMqUn?=
+ =?us-ascii?Q?MA5aCFQ0Noslp7ExdfKd/kqsmWVe2cC8lreXzbxDFREzZhqo+GeyVYjixd5F?=
+ =?us-ascii?Q?2P0Wf8rjAjk1gC4tfunlINF4zaBa4eQQ9dc7FKktQ7KIDFRcjKeoyzEY3Y+e?=
+ =?us-ascii?Q?BS8AhQv1+kjQvCoxzCNZAxt8SCDMUGB0bvUMtmMT5yyezHjWif3uMew4zTuV?=
+ =?us-ascii?Q?BjJoNzKL53RNi3yyDmf64MfjJIoTlIXsxvlLeBQczDgG27XMEWzHqdyM5Klo?=
+ =?us-ascii?Q?dncWdPscDC9zmxtPcbfCPCfE0S9ut0vKG7ewLecSyBfwWMsvn64DGH18miLB?=
+ =?us-ascii?Q?AgsQhPL8gCS6Z9IDcts6af9INPc6oOdpOunl6xKZ4h/IqvMt+wntKu/TNcu6?=
+ =?us-ascii?Q?pp8/CyzupZ2qRrviTsbbnuHY8WEJJQ1E+YMUZWUGYJGsVMCQVoq257WybMRl?=
+ =?us-ascii?Q?JKqPWYoCWkedOpa+iDlDFmLHVMyPXcNaIjoKqVKEPSjRbKNSZ77M+hz8943i?=
+ =?us-ascii?Q?eWnOIV9vT82IXrhCBRmuI/PquOLFWIKpG7FU6arCOy40LcodxIV5GVrjal+Y?=
+ =?us-ascii?Q?HQ=3D=3D?=
+X-OriginatorOrg: inmusicbrands.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8bb7991f-e51e-4c7c-608b-08dd4536def7
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR08MB8282.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Feb 2025 16:13:33.1419
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6ubPjOLFLx3vrjBKt1xTSqmZqTJU91odH/TOm5bK/Pd8+3Xrf4YRRE7Hvkwz+X8RTdhl/So7HhMyA4XQjwyrUbEGnIIAfvgtZ9+D41FuEBM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR08MB9507
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_073709_528008_6EE827C8 
-X-CRM114-Status: GOOD (  37.40  )
+X-CRM114-CacheID: sfid-20250204_081339_916369_C7EDEEB4 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,426 +163,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 SoC includes several TRNGs, one part of the Crypto IP block,
-and the other one (referred to as "trngv1") as a standalone new IP.
+Commit 2f45a4e289779 ("ASoC: rockchip: i2s_tdm: Fixup config for
+SND_SOC_DAIFMT_DSP_A/B") applied a partial change to fix the
+configuration for DSP A and DSP B formats.
 
-Add support for this new standalone TRNG to the driver by both
-generalising it to support multiple different rockchip RNGs and then
-implementing the required functionality for the new hardware.
+The shift control also needs updating to set the correct offset for
+frame data compared to LRCK.  Set the correct values.
 
-This work was partly based on the downstream vendor driver by Rockchip's
-Lin Jinhan, which is why they are listed as a Co-author.
-
-While the hardware does support notifying the CPU with an IRQ when the
-random data is ready, I've discovered while implementing the code to use
-this interrupt that this results in significantly slower throughput of
-the TRNG even when under heavy CPU load. I assume this is because with
-only 32 bytes of data per invocation, the overhead of reinitialising a
-completion, enabling the interrupt, sleeping and then triggering the
-completion in the IRQ handler is way more expensive than busylooping.
-
-Speaking of busylooping, the poll interval for reading the ISTAT is an
-atomic read with a delay of 0. In my testing, I've found that this gives
-us the largest throughput, and it appears the random data is ready
-pretty much the moment we begin polling, as increasing the poll delay
-leads to a drop in throughput significant enough to not just be due to
-the poll interval missing the ideal timing by a microsecond or two.
-
-According to downstream, the IP should take 1024 clock cycles to
-generate 56 bits of random data, which at 150MHz should work out to
-6.8us. I did not test whether the data really does take 256/56*6.8us
-to arrive, though changing the readl to a __raw_readl makes no
-difference in throughput, and this data does pass the rngtest FIPS
-checks, so I'm not entirely sure what's going on but I presume it's got
-something to do with the AHB bus speed and the memory barriers that
-mainline's readl/writel functions insert.
-
-The only other current SoC that uses this new IP is the Rockchip RV1106,
-but that SoC does not have mainline support as of the time of writing,
-so we make no effort to declare it as supported for now.
-
-Co-developed-by: Lin Jinhan <troy.lin@rock-chips.com>
-Signed-off-by: Lin Jinhan <troy.lin@rock-chips.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Fixes: 081068fd64140 ("ASoC: rockchip: add support for i2s-tdm controller")
+Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
 ---
- drivers/char/hw_random/Kconfig        |   3 +-
- drivers/char/hw_random/rockchip-rng.c | 234 +++++++++++++++++++++++++++++++---
- 2 files changed, 216 insertions(+), 21 deletions(-)
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index 17854f052386efa0cf3e4c83d60dd9d6d64755ea..6abf832abeba372d2152bd4905447f4b8fbfb6a0 100644
---- a/drivers/char/hw_random/Kconfig
-+++ b/drivers/char/hw_random/Kconfig
-@@ -606,7 +606,8 @@ config HW_RANDOM_ROCKCHIP
- 	default HW_RANDOM
- 	help
- 	  This driver provides kernel-side support for the True Random Number
--	  Generator hardware found on some Rockchip SoC like RK3566 or RK3568.
-+	  Generator hardware found on some Rockchip SoCs like RK3566, RK3568
-+	  or RK3588.
- 
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called rockchip-rng.
-diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-index 082daea27e937e147195070454f9511a71c8c67e..161050591663d9ed61ca013631c86f40db7d348f 100644
---- a/drivers/char/hw_random/rockchip-rng.c
-+++ b/drivers/char/hw_random/rockchip-rng.c
-@@ -1,12 +1,14 @@
- // SPDX-License-Identifier: GPL-2.0
- /*
-- * rockchip-rng.c True Random Number Generator driver for Rockchip RK3568 SoC
-+ * rockchip-rng.c True Random Number Generator driver for Rockchip SoCs
-  *
-  * Copyright (c) 2018, Fuzhou Rockchip Electronics Co., Ltd.
-  * Copyright (c) 2022, Aurelien Jarno
-+ * Copyright (c) 2025, Collabora Ltd.
-  * Authors:
-  *  Lin Jinhan <troy.lin@rock-chips.com>
-  *  Aurelien Jarno <aurelien@aurel32.net>
-+ *  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-  */
- #include <linux/clk.h>
- #include <linux/hw_random.h>
-@@ -32,6 +34,9 @@
-  */
- #define RK_RNG_SAMPLE_CNT		1000
- 
-+/* after how many bytes of output TRNGv1 implementations should be reseeded */
-+#define RK_TRNG_V1_AUTO_RESEED_CNT	16000
-+
- /* TRNG registers from RK3568 TRM-Part2, section 5.4.1 */
- #define TRNG_RST_CTL			0x0004
- #define TRNG_RNG_CTL			0x0400
-@@ -49,25 +54,85 @@
- #define TRNG_RNG_SAMPLE_CNT		0x0404
- #define TRNG_RNG_DOUT			0x0410
- 
-+/*
-+ * TRNG V1 register definitions
-+ * The TRNG V1 IP is a stand-alone TRNG implementation (not part of a crypto IP)
-+ * and can be found in the Rockchip RK3588 SoC
-+ */
-+#define TRNG_V1_CTRL				0x0000
-+#define TRNG_V1_CTRL_NOP			0x00
-+#define TRNG_V1_CTRL_RAND			0x01
-+#define TRNG_V1_CTRL_SEED			0x02
-+
-+#define TRNG_V1_STAT				0x0004
-+#define TRNG_V1_STAT_SEEDED			BIT(9)
-+#define TRNG_V1_STAT_GENERATING			BIT(30)
-+#define TRNG_V1_STAT_RESEEDING			BIT(31)
-+
-+#define TRNG_V1_MODE				0x0008
-+#define TRNG_V1_MODE_128_BIT			(0x00 << 3)
-+#define TRNG_V1_MODE_256_BIT			(0x01 << 3)
-+
-+/* Interrupt Enable register; unused because polling is faster */
-+#define TRNG_V1_IE				0x0010
-+#define TRNG_V1_IE_GLBL_EN			BIT(31)
-+#define TRNG_V1_IE_SEED_DONE_EN			BIT(1)
-+#define TRNG_V1_IE_RAND_RDY_EN			BIT(0)
-+
-+#define TRNG_V1_ISTAT				0x0014
-+#define TRNG_V1_ISTAT_RAND_RDY			BIT(0)
-+
-+/* RAND0 ~ RAND7 */
-+#define TRNG_V1_RAND0				0x0020
-+#define TRNG_V1_RAND7				0x003C
-+
-+/* Auto Reseed Register */
-+#define TRNG_V1_AUTO_RQSTS			0x0060
-+
-+#define TRNG_V1_VERSION				0x00F0
-+#define TRNG_v1_VERSION_CODE			0x46bc
-+/* end of TRNG_V1 register definitions */
-+
-+/* Before removing this assert, give rk3588_rng_read an upper bound of 32 */
-+static_assert(RK_RNG_MAX_BYTE <= (TRNG_V1_RAND7 + 4 - TRNG_V1_RAND0),
-+	      "You raised RK_RNG_MAX_BYTE and broke rk3588-rng, congrats.");
-+
- struct rk_rng {
- 	struct hwrng rng;
- 	void __iomem *base;
- 	int clk_num;
- 	struct clk_bulk_data *clk_bulks;
-+	const struct rk_rng_soc_data *soc_data;
- 	struct device *dev;
- };
- 
-+struct rk_rng_soc_data {
-+	int (*rk_rng_init)(struct hwrng *rng);
-+	int (*rk_rng_read)(struct hwrng *rng, void *buf, size_t max, bool wait);
-+	void (*rk_rng_cleanup)(struct hwrng *rng);
-+	unsigned short quality;
-+	bool reset_optional;
-+};
-+
- /* The mask in the upper 16 bits determines the bits that are updated */
- static void rk_rng_write_ctl(struct rk_rng *rng, u32 val, u32 mask)
- {
- 	writel((mask << 16) | val, rng->base + TRNG_RNG_CTL);
- }
- 
--static int rk_rng_init(struct hwrng *rng)
-+static inline void rk_rng_writel(struct rk_rng *rng, u32 val, u32 offset)
- {
--	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
--	int ret;
-+	writel(val, rng->base + offset);
-+}
- 
-+static inline u32 rk_rng_readl(struct rk_rng *rng, u32 offset)
-+{
-+	return readl(rng->base + offset);
-+}
-+
-+static int rk_rng_enable_clks(struct rk_rng *rk_rng)
-+{
-+	int ret;
- 	/* start clocks */
- 	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
- 	if (ret < 0) {
-@@ -75,6 +140,18 @@ static int rk_rng_init(struct hwrng *rng)
- 		return ret;
- 	}
- 
-+	return 0;
-+}
-+
-+static int rk3568_rng_init(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	int ret;
-+
-+	ret = rk_rng_enable_clks(rk_rng);
-+	if (ret < 0)
-+		return ret;
-+
- 	/* set the sample period */
- 	writel(RK_RNG_SAMPLE_CNT, rk_rng->base + TRNG_RNG_SAMPLE_CNT);
- 
-@@ -87,7 +164,7 @@ static int rk_rng_init(struct hwrng *rng)
- 	return 0;
- }
- 
--static void rk_rng_cleanup(struct hwrng *rng)
-+static void rk3568_rng_cleanup(struct hwrng *rng)
- {
- 	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
- 
-@@ -98,7 +175,7 @@ static void rk_rng_cleanup(struct hwrng *rng)
- 	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
- }
- 
--static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+static int rk3568_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- {
- 	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
- 	size_t to_read = min_t(size_t, max, RK_RNG_MAX_BYTE);
-@@ -128,6 +205,114 @@ static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	return (ret < 0) ? ret : to_read;
- }
- 
-+static int rk3588_rng_init(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	u32 version, status, mask, istat;
-+	int ret;
-+
-+	ret = rk_rng_enable_clks(rk_rng);
-+	if (ret < 0)
-+		return ret;
-+
-+	version = rk_rng_readl(rk_rng, TRNG_V1_VERSION);
-+	if (version != TRNG_v1_VERSION_CODE) {
-+		dev_err(rk_rng->dev,
-+			"wrong trng version, expected = %08x, actual = %08x\n",
-+			TRNG_V1_VERSION, version);
-+		ret = -EFAULT;
-+		goto err_disable_clk;
-+	}
-+
-+	mask = TRNG_V1_STAT_SEEDED | TRNG_V1_STAT_GENERATING |
-+	       TRNG_V1_STAT_RESEEDING;
-+	if (readl_poll_timeout(rk_rng->base + TRNG_V1_STAT, status,
-+			       (status & mask) == TRNG_V1_STAT_SEEDED,
-+			       RK_RNG_POLL_PERIOD_US, RK_RNG_POLL_TIMEOUT_US) < 0) {
-+		dev_err(rk_rng->dev, "timed out waiting for hwrng to reseed\n");
-+		ret = -ETIMEDOUT;
-+		goto err_disable_clk;
-+	}
-+
-+	/*
-+	 * clear ISTAT flag, downstream advises to do this to avoid
-+	 * auto-reseeding "on power on"
-+	 */
-+	istat = rk_rng_readl(rk_rng, TRNG_V1_ISTAT);
-+	rk_rng_writel(rk_rng, istat, TRNG_V1_ISTAT);
-+
-+	/* auto reseed after RK_TRNG_V1_AUTO_RESEED_CNT bytes */
-+	rk_rng_writel(rk_rng, RK_TRNG_V1_AUTO_RESEED_CNT / 16, TRNG_V1_AUTO_RQSTS);
-+
-+	return 0;
-+err_disable_clk:
-+	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
-+	return ret;
-+}
-+
-+static void rk3588_rng_cleanup(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+
-+	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
-+}
-+
-+static int rk3588_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	size_t to_read = min_t(size_t, max, RK_RNG_MAX_BYTE);
-+	int ret = 0;
-+	u32 reg;
-+
-+	ret = pm_runtime_resume_and_get(rk_rng->dev);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Clear ISTAT, even without interrupts enabled, this will be updated */
-+	reg = rk_rng_readl(rk_rng, TRNG_V1_ISTAT);
-+	rk_rng_writel(rk_rng, reg, TRNG_V1_ISTAT);
-+
-+	/* generate 256 bits of random data */
-+	rk_rng_writel(rk_rng, TRNG_V1_MODE_256_BIT, TRNG_V1_MODE);
-+	rk_rng_writel(rk_rng, TRNG_V1_CTRL_RAND, TRNG_V1_CTRL);
-+
-+	ret = readl_poll_timeout_atomic(rk_rng->base + TRNG_V1_ISTAT, reg,
-+					(reg & TRNG_V1_ISTAT_RAND_RDY), 0,
-+					RK_RNG_POLL_TIMEOUT_US);
-+	if (ret < 0)
-+		goto out;
-+
-+	/* Read random data that's in registers TRNG_V1_RAND0 through RAND7 */
-+	memcpy_fromio(buf, rk_rng->base + TRNG_V1_RAND0, to_read);
-+
-+out:
-+	/* Clear ISTAT */
-+	rk_rng_writel(rk_rng, reg, TRNG_V1_ISTAT);
-+	/* close the TRNG */
-+	rk_rng_writel(rk_rng, TRNG_V1_CTRL_NOP, TRNG_V1_CTRL);
-+
-+	pm_runtime_mark_last_busy(rk_rng->dev);
-+	pm_runtime_put_sync_autosuspend(rk_rng->dev);
-+
-+	return (ret < 0) ? ret : to_read;
-+}
-+
-+static const struct rk_rng_soc_data rk3568_soc_data = {
-+	.rk_rng_init = rk3568_rng_init,
-+	.rk_rng_read = rk3568_rng_read,
-+	.rk_rng_cleanup = rk3568_rng_cleanup,
-+	.quality = 900,
-+	.reset_optional = false,
-+};
-+
-+static const struct rk_rng_soc_data rk3588_soc_data = {
-+	.rk_rng_init = rk3588_rng_init,
-+	.rk_rng_read = rk3588_rng_read,
-+	.rk_rng_cleanup = rk3588_rng_cleanup,
-+	.quality = 999,		/* as determined by actual testing */
-+	.reset_optional = true,
-+};
-+
- static int rk_rng_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -139,6 +324,7 @@ static int rk_rng_probe(struct platform_device *pdev)
- 	if (!rk_rng)
- 		return -ENOMEM;
- 
-+	rk_rng->soc_data = of_device_get_match_data(dev);
- 	rk_rng->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(rk_rng->base))
- 		return PTR_ERR(rk_rng->base);
-@@ -148,24 +334,30 @@ static int rk_rng_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, rk_rng->clk_num,
- 				     "Failed to get clks property\n");
- 
--	rst = devm_reset_control_array_get_exclusive(dev);
--	if (IS_ERR(rst))
--		return dev_err_probe(dev, PTR_ERR(rst), "Failed to get reset property\n");
-+	if (rk_rng->soc_data->reset_optional)
-+		rst = devm_reset_control_array_get_optional_exclusive(dev);
-+	else
-+		rst = devm_reset_control_array_get_exclusive(dev);
- 
--	reset_control_assert(rst);
--	udelay(2);
--	reset_control_deassert(rst);
-+	if (rst) {
-+		if (IS_ERR(rst))
-+			return dev_err_probe(dev, PTR_ERR(rst), "Failed to get reset property\n");
-+
-+		reset_control_assert(rst);
-+		udelay(2);
-+		reset_control_deassert(rst);
-+	}
- 
- 	platform_set_drvdata(pdev, rk_rng);
- 
- 	rk_rng->rng.name = dev_driver_string(dev);
- 	if (!IS_ENABLED(CONFIG_PM)) {
--		rk_rng->rng.init = rk_rng_init;
--		rk_rng->rng.cleanup = rk_rng_cleanup;
-+		rk_rng->rng.init = rk_rng->soc_data->rk_rng_init;
-+		rk_rng->rng.cleanup = rk_rng->soc_data->rk_rng_cleanup;
- 	}
--	rk_rng->rng.read = rk_rng_read;
-+	rk_rng->rng.read = rk_rng->soc_data->rk_rng_read;
- 	rk_rng->dev = dev;
--	rk_rng->rng.quality = 900;
-+	rk_rng->rng.quality = rk_rng->soc_data->quality;
- 
- 	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
- 	pm_runtime_use_autosuspend(dev);
-@@ -184,7 +376,7 @@ static int __maybe_unused rk_rng_runtime_suspend(struct device *dev)
- {
- 	struct rk_rng *rk_rng = dev_get_drvdata(dev);
- 
--	rk_rng_cleanup(&rk_rng->rng);
-+	rk_rng->soc_data->rk_rng_cleanup(&rk_rng->rng);
- 
- 	return 0;
- }
-@@ -193,7 +385,7 @@ static int __maybe_unused rk_rng_runtime_resume(struct device *dev)
- {
- 	struct rk_rng *rk_rng = dev_get_drvdata(dev);
- 
--	return rk_rng_init(&rk_rng->rng);
-+	return rk_rng->soc_data->rk_rng_init(&rk_rng->rng);
- }
- 
- static const struct dev_pm_ops rk_rng_pm_ops = {
-@@ -204,7 +396,8 @@ static const struct dev_pm_ops rk_rng_pm_ops = {
- };
- 
- static const struct of_device_id rk_rng_dt_match[] = {
--	{ .compatible = "rockchip,rk3568-rng", },
-+	{ .compatible = "rockchip,rk3568-rng", .data = (void *)&rk3568_soc_data },
-+	{ .compatible = "rockchip,rk3588-rng", .data = (void *)&rk3588_soc_data },
- 	{ /* sentinel */ },
- };
- 
-@@ -221,8 +414,9 @@ static struct platform_driver rk_rng_driver = {
- 
- module_platform_driver(rk_rng_driver);
- 
--MODULE_DESCRIPTION("Rockchip RK3568 True Random Number Generator driver");
-+MODULE_DESCRIPTION("Rockchip True Random Number Generator driver");
- MODULE_AUTHOR("Lin Jinhan <troy.lin@rock-chips.com>");
- MODULE_AUTHOR("Aurelien Jarno <aurelien@aurel32.net>");
- MODULE_AUTHOR("Daniel Golle <daniel@makrotopia.org>");
-+MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
- MODULE_LICENSE("GPL");
-
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 7f5fcaecee4b6..78ab88843f861 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -451,11 +451,11 @@ static int rockchip_i2s_tdm_set_fmt(struct snd_soc_dai *cpu_dai,
+ 			break;
+ 		case SND_SOC_DAIFMT_DSP_A:
+ 			val = I2S_TXCR_TFS_TDM_PCM;
+-			tdm_val = TDM_SHIFT_CTRL(0);
++			tdm_val = TDM_SHIFT_CTRL(2);
+ 			break;
+ 		case SND_SOC_DAIFMT_DSP_B:
+ 			val = I2S_TXCR_TFS_TDM_PCM;
+-			tdm_val = TDM_SHIFT_CTRL(2);
++			tdm_val = TDM_SHIFT_CTRL(4);
+ 			break;
+ 		default:
+ 			ret = -EINVAL;
 -- 
 2.48.1
 
