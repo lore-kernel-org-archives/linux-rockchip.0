@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3540BC02193
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09072C02193
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:39:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Y4XFwbn9RN+la5VtehEDOo+p0Y02Gi99bDw2WCTyP+o=; b=DntB+jr70C0c1O
-	HFRNzl+zOcUN3K3j5ssSuoHohEW6ht/atpwD/wKPn/rgpzDlJQztaJqTstxTr/LFf1+BlDx/xnNIi
-	CupEjraaEKUa4efGRNpBhmXWviM/k3SnqUmVGgV1aWr4aRdQEUmnZXerjFLlGDvTn3tStFum2V+bl
-	kfdRYG7qdL7/JCZQvkthRVad22e4AcK6e9zYEGEyiYucUUECAcdUI+VWTm6l1PWmdovTYM1pqrQmu
-	2ZmT9lmqawwh8ZzqHWecIRqU0rUxIiYXUU6jRfcVrtMPfC8zCz5VBXSXXI6RHQ6p5mEyvxyHVUfT2
-	6OpxKRKfP7/wib8OL2zg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7qr7cyY2ltjBdPK5sfVw5tTRWJ8MA0Fc7Tu7pcrz82I=; b=DFLKZk/H7b+RVP
+	41LhJBS/bLWl1Mwwp07YdKL1bGGoWgqZkW6FmIGZtEv/wnHsAlCXt4ZPyYEu1xKpbzhDugZXO8aPb
+	vvE8MAxz3NDPjSi4KRFw+Cbbh/g3Vrpfsmz3Lr21JHyq1AvyRaDYiF460qZy/TZaDDl6GjEmHAx8v
+	qxe1RB/jO7W/CfT++ql90nQxjWAiWjl5RWZ5m4JQhvnrMicKo1sB6yhjH9BibeFE/7mgbK0NR+Xq0
+	FXz6rCkaWUqEeYfevYHXXe8aPwgk9XWX/PxvNoeFVZ+j2NkjK3YfxbU+aaiGFa74CvGOQvidZ/ran
+	ArTToof/2gxqTusypkKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfL0M-00000000qh5-0qG5;
-	Tue, 04 Feb 2025 15:38:26 +0000
+	id 1tfL1f-00000000r2R-2ByF;
+	Tue, 04 Feb 2025 15:39:47 +0000
 Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfKyz-00000000qHN-3NEZ;
-	Tue, 04 Feb 2025 15:37:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738683388; cv=none; 
+	id 1tfKz0-00000000qIV-3IdV;
+	Tue, 04 Feb 2025 15:37:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1738683398; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=k0lgcf1dvRGVLSzSiPJVLuQRIu+lEHgND/pww59nuxqUd0/lQn+LsTsRPZjQCfo5jHJLo7gLOo/zjoqWUVqnW/eVOJ5f3N/xTEk2WRM2JDTkZ0rstqXZtxgSZiinbFIHY3QNiYCs00P5Zp7kT4Z+Vdcjr5+/g7ft+cYUvR4w0Hc=
+	b=Zyt/HjfG+yTFPFCoPjfzW+BlsfazEKApAez9eCk9iAoCMH0V/cS0xCY8WIMTYLcxgMKGvLpggch4OyfN4fqjwOblENL6C3HxzrIPOYHkeXkSvZHixYq9cVdfSf7JBE3eNr8eu123yMP/TZIJX2H6MMW1tU9eGdxbUPlLyuDjnqo=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738683388; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8ujLKurGvDlQE7460495fVpBsgx7EB711zNkKXoYjcI=; 
-	b=H2HkuFYUt57HAPyC5c9ZYxe9rw0ZohIGkiA6SgqJ/xE4QHfSoRp7BVR8jx/5kqUA8gi+hKZ/BvpVaINmVhlGQKCwyr3PFyFjvnvIf80vAGgy2wPLA8ftzk1B+tlx7XsJPzVFJM0/4qW9PyUOogX0L9+7IkrPuKUI+byx2iNo/Gw=
+	t=1738683398; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=kVZIBsJ2ukDO0m/xIz1rl1s2choG2uPMysZ4azq+d4A=; 
+	b=Uzat8tJIuh0xrX25VHIn7B3SkrnZdjLyzJnNK5WGPu5FfdMZbe8IuqgodWZMpf+HKkqFp/vdGvchMPXatBSx/S95I+9EpGp7FMO55s8DidoeQ5QqkVXt5P0kZjHHrk/b7QtW6aMlf1Gb05zXeG6sVn5tzq74k0xpY+1Kaox1qMY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683388;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683398;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=8ujLKurGvDlQE7460495fVpBsgx7EB711zNkKXoYjcI=;
-	b=fYrbbgsj+lEyEKT5sYIq9OsndC4T4I9xa4kcOd2en8mHuqe3IdM6uQT8DwXwuuUW
-	dSrdojQi2q6hA0kEEE/mLC7+xpXfi2YblxwHv2AwB29Pd7PpeK4pbZdfub3++Xvn/Fe
-	dAlfLHY+w8jt+IKvbFgqFZjstUJMSVt0uCVTF1LA=
-Received: by mx.zohomail.com with SMTPS id 17386833845484.547279568763543;
-	Tue, 4 Feb 2025 07:36:24 -0800 (PST)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=kVZIBsJ2ukDO0m/xIz1rl1s2choG2uPMysZ4azq+d4A=;
+	b=gXYZ3MpeQTLxffZoid6o4agzOgQjiHL2ZDn+6EGgU2VkvVoDZGwcKtRzs5osCPEe
+	ef4oaLK/Qwm0IzDdxWdX1JcqbfBj/kf+P8Fmfl3KgRdO5ITfFRWB/9+dTqPcHyFzZb8
+	VK6SfnnbiBM6WI2yST8UYG1O/TQ55Uwb/ChKbWrI=
+Received: by mx.zohomail.com with SMTPS id 1738683395390506.65916958717594;
+	Tue, 4 Feb 2025 07:36:35 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: [PATCH v2 0/7] RK3588 Hardware Random Number Generator Driver
-Date: Tue, 04 Feb 2025 16:35:45 +0100
-Message-Id: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
+Date: Tue, 04 Feb 2025 16:35:48 +0100
+Subject: [PATCH v2 3/7] hwrng: rockchip: store dev pointer in driver struct
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIANEzomcC/4WNQQ6CMBBFr0K6dkwpTmldeQ/DAmqBiUDNFImGc
- HcLF3D5fvLeX0X0TD6Ka7YK9gtFClMCdcqE6+up80CPxEJJhTIvJPCzQGNg5qmD+G5GirsCElE
- hOqu1sSLJL/YtfY7wvUrcU5wDf4+fJd/Xv8klBwm2bNtSozb+Ym8uDEPdBK7PLoyi2rbtBzI5c
- OrAAAAA
-X-Change-ID: 20250130-rk3588-trng-submission-055255c96689
+Message-Id: <20250204-rk3588-trng-submission-v2-3-608172b6fd91@collabora.com>
+References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
+In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -66,14 +63,11 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- XiaoDong Huang <derrick.huang@rock-chips.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Lin Jinhan <troy.lin@rock-chips.com>
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_073701_888940_135EB654 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20250204_073702_895625_49118EF9 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,113 +84,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the Rockchip RK3588's standalone hardware
-random number generator to the existing mainline rockchip-rng driver.
-
-The RK3588 has several hardware random number generators, one in each
-the secure-world and non-secure-world crypto accelerator, and one
-standalone one in each the secure-world and non-secure-world, so 4
-hwrngs in total. This series adds support for the standalone hwrng,
-which is an entirely new IP on this SoC and distinct from the one in the
-Crypto IP.
-
-The decision to integrate this into the existing rockchip-rng driver was
-made based on a few factors:
-
-1. The driver is fairly small.
-2. While not much code is shared, some code is, specifically relating to
-   power management, the hwrng interface and the probe function.
-3. I don't want users to figure out why "CONFIG_HW_RANDOM_ROCKCHIP"
-   doesn't enable the RK3588 one, and I really don't see a reason to
-   build without both of them considering the other RK3588 TRNG (for
-   which there is not yet a driver iirc) *does* share code with the
-   existing rockchip-rng driver.
-
-Here are the rngtest5 results from this new driver on my board:
-
-  user@debian-rockchip-rock5b-rk3588:~$ cat /sys/class/misc/hw_random/rng_current 
-  rockchip-rng
-  user@debian-rockchip-rock5b-rk3588:~$ sudo cat /dev/hwrng | rngtest -c 10000 
-  [...]
-  rngtest: bits received from input: 200000032
-  rngtest: FIPS 140-2 successes: 9990
-  rngtest: FIPS 140-2 failures: 10
-  rngtest: FIPS 140-2(2001-10-10) Monobit: 1
-  rngtest: FIPS 140-2(2001-10-10) Poker: 0
-  rngtest: FIPS 140-2(2001-10-10) Runs: 5
-  rngtest: FIPS 140-2(2001-10-10) Long run: 4
-  rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
-  rngtest: input channel speed: (min=212.255; avg=29089.272; max=19531250.000)Kibits/s
-  rngtest: FIPS tests speed: (min=64.005; avg=102.494; max=153.818)Mibits/s
-  rngtest: Program run time: 11292340 microseconds
-
-As you can see, the quality of the entropy is quite good, and the
-throughput is an acceptable 29 Mibit/s.
-
-The series starts out with two patches for the bindings. The bindings
-are separate from the rockchip,rk3568-rng bindings, as the required
-properties differ. The SCMI reset ID numbers are needed because mainline
-uses a different reset numbering scheme, but TF-A uses the downstream
-numbering scheme as far as I know. The TRNG must be reset through SCMI.
-
-Next up are two cleanup patches for the existing driver. Even if a
-decision is made to split the drivers for whatever reason, these two
-patches should be used in the rk3568-rng driver as they get rid of small
-peculiarities in the code without meaningfully changing how the driver
-works.
-
-Next up is the main driver patch that adds support for the new TRNG. As
-the driver was developed by reading the downstream vendor code for this
-particular device and reworking it, I've included the downstream vendor
-developer who wrote the driver as a Co-developed-by tag with their
-existing downstream sign-off.
-
-The penultimate patch adds the node to the rk3588-base.dtsi, and
-enables it.
-
-The final patch adds myself to the MAINTAINERS of this driver and these
-bindings.
+The rockchip rng driver does a dance to store the dev pointer in the
+hwrng's unsigned long "priv" member. However, since the struct hwrng
+member of rk_rng is not a pointer, we can use container_of to get the
+struct rk_rng instance from just the struct hwrng*, which means we don't
+have to subvert what little there is in C of a type system and can
+instead store a pointer to the device struct in the rk_rng itself.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-Changes in v2:
-- Drop mailmap patch
-- driver: restore the OF matching to how it was, and change soc_data to
-  const
-- dts: get rid of the board specific DTS enablement and instead enable
-  it in rk3588-base
-- bindings: drop the change of adding myself to maintainers from the
-  bindings patch, make it a separate patch
-- bindings: get rid of the comments
-- bindings: set status = "okay" in the example
-- bindings: make interrupts property required
-- Add a patch to add me to the MAINTAINERS for this driver/binding
-- Link to v1: https://lore.kernel.org/r/20250130-rk3588-trng-submission-v1-0-97ff76568e49@collabora.com
+ drivers/char/hw_random/rockchip-rng.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
----
-Nicolas Frattaroli (7):
-      dt-bindings: reset: Add SCMI reset IDs for RK3588
-      dt-bindings: rng: add binding for Rockchip RK3588 RNG
-      hwrng: rockchip: store dev pointer in driver struct
-      hwrng: rockchip: eliminate some unnecessary dereferences
-      hwrng: rockchip: add support for rk3588's standalone TRNG
-      arm64: dts: rockchip: Add rng node to RK3588
-      MAINTAINERS: add Nicolas Frattaroli to rockchip-rng maintainers
+diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
+index 289b385bbf05e3c828b6e26feb2453db62f6b2a2..b1b510087e5862b3b2ed97cefbf10620bcf9b020 100644
+--- a/drivers/char/hw_random/rockchip-rng.c
++++ b/drivers/char/hw_random/rockchip-rng.c
+@@ -54,6 +54,7 @@ struct rk_rng {
+ 	void __iomem *base;
+ 	int clk_num;
+ 	struct clk_bulk_data *clk_bulks;
++	struct device *dev;
+ };
+ 
+ /* The mask in the upper 16 bits determines the bits that are updated */
+@@ -70,8 +71,7 @@ static int rk_rng_init(struct hwrng *rng)
+ 	/* start clocks */
+ 	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
+ 	if (ret < 0) {
+-		dev_err((struct device *) rk_rng->rng.priv,
+-			"Failed to enable clks %d\n", ret);
++		dev_err(rk_rng->dev, "Failed to enable clocks: %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -105,7 +105,7 @@ static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
+ 	u32 reg;
+ 	int ret = 0;
+ 
+-	ret = pm_runtime_resume_and_get((struct device *) rk_rng->rng.priv);
++	ret = pm_runtime_resume_and_get(rk_rng->dev);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -122,8 +122,8 @@ static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
+ 	/* Read random data stored in the registers */
+ 	memcpy_fromio(buf, rk_rng->base + TRNG_RNG_DOUT, to_read);
+ out:
+-	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
+-	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
++	pm_runtime_mark_last_busy(rk_rng->dev);
++	pm_runtime_put_sync_autosuspend(rk_rng->dev);
+ 
+ 	return (ret < 0) ? ret : to_read;
+ }
+@@ -164,7 +164,7 @@ static int rk_rng_probe(struct platform_device *pdev)
+ 		rk_rng->rng.cleanup = rk_rng_cleanup;
+ 	}
+ 	rk_rng->rng.read = rk_rng_read;
+-	rk_rng->rng.priv = (unsigned long) dev;
++	rk_rng->dev = dev;
+ 	rk_rng->rng.quality = 900;
+ 
+ 	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
 
- .../bindings/rng/rockchip,rk3588-rng.yaml          |  60 +++++
- MAINTAINERS                                        |   2 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   9 +
- drivers/char/hw_random/Kconfig                     |   3 +-
- drivers/char/hw_random/rockchip-rng.c              | 250 ++++++++++++++++++---
- include/dt-bindings/reset/rockchip,rk3588-cru.h    |  41 +++-
- 6 files changed, 335 insertions(+), 30 deletions(-)
----
-base-commit: 72deda0abee6e705ae71a93f69f55e33be5bca5c
-change-id: 20250130-rk3588-trng-submission-055255c96689
-
-Best regards,
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.48.1
 
 
 _______________________________________________
