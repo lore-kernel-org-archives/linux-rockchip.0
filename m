@@ -4,167 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FE9C02193
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 09:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BA82C02194
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 10:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:To:Subject:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uL7eGnZTvWR/fEQQAOIn7XblYrTYG4XVH65ycaqz/+Y=; b=nXwS7h1c+Y9cG50blBghJ81cVL
-	xzxGLZO7EGxAoMMkn0QPkWUTVm82morVZNmYSlKYUccBaLoyrifAVvtHNN9UqQ7BTGmZstUfdCSoI
-	ifdRtJATKTVaz+0RSzLhRda2hmNc27owT4tuBOUoNgFWGRV55K8ScEu0kutVXtzfi6UHl8ayMUMZ0
-	iiQnAtWwyeXC0Bl6hx9mb79HbusmoNn/Q1ZdO//Zz55X7FRtRCd/+5rffsA+6KR81aUSiob+TWmO7
-	ntKW5cynao6iMZSnIpb+KIU5lvCgRmtjj4VVznnqhTKkvBIJqciEO6i3mkjwmJdURGTeAMGPd8eWN
-	JJw+/OCw==;
+	bh=UeExbS8rNkpejprmbCDJkgfuLCByuvFw4BSUSFVpibY=; b=bosNsxDL+FrUvK71O/+DMathm7
+	5VDvlOIubRN+Yx+SY5ywHx1P+bjSrDRX90hgTMkSRBGq5LecCfnC+3VVLqJDUbBfRNqeSnGMtx7Z8
+	M3BzkpnxjiDi5vWdtT3eRNr/4FETTbv9UbhBhdOVDSHpJ4iFgLVh1d1S6A81YxnynrKWD6wFUHiIF
+	CxGDsTZjh8+kvlmBj1v7AusICHKwr/CNfD5T717HWksJm3iLg/rM+llu6iJQjKW/4eDdWRzNZPIfS
+	lbdgdfETdlkTpoiWjNse37c/p5pwKo4Hng2m56SspEtc4uATbrWqkdR6iDLTXQYz4bbtuyxbmoZLt
+	Old1/y5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfEz5-000000000O5-2DKH;
-	Tue, 04 Feb 2025 09:12:43 +0000
-Received: from mail-db8eur05on20615.outbound.protection.outlook.com ([2a01:111:f403:2614::615] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1tfFkD-000000006j6-2bzb;
+	Tue, 04 Feb 2025 10:01:25 +0000
+Received: from mail-db8eur05on20613.outbound.protection.outlook.com ([2a01:111:f403:2614::613] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfEz3-000000000NG-3Ov0
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Feb 2025 09:12:43 +0000
+	id 1tfFiJ-0000000065O-4ANu;
+	Tue, 04 Feb 2025 09:59:30 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=i05yuBfcE9RDPqaaCmn7YmtvxyOVCLN9qVg+bPKedEvgE4sOsXtVBR5QAiZ7TSoicPWByp/SNwPw/SLCXg04PcHHn2/rf1eR8HbucN/f51V5ACTYotCcDhdgmw3bpSX+s7ckGhtV01Y33T6hJP9ElI4/BZFe3W4u2B/s28UWv9o6HqDvIvuBYH2LizhCI/YyOFMaRqMlov4oN8wE/QE3d1LX6EDTwk+AsYykQbyGcwqcgv0st0I0CSPyaYy8l4MQfuvAm6zhiJzXLi5EWmzQYk65UdA4BRp6xpCC7cxB8jKilKwVouXkBplsO3h8Bpetzq5SA0c774WAYj9LHvPDKA==
+ b=Yc/hsvWe3YTr1bzcgKl8tAav61DtMPugN6SAmLWCvfvbNG5sbUisaxBWpTbPLPe/YGGw0TfYnriA7DkK+OrqDWSZwcDYbc4nTh2ExnERP7ln41YTE5lSKaypNVauT87OCNwW+H3T+P5E4WSNDg/eieEg6uIB7FEywZFZmp+cqYgnepxjYCJ9VLonhezRySuA5Io5XaNkV1NfXEm7Vp97fgHK/fUjnIBesJLqgfu4ybthGa/ssFYz9dCsbcB95WwLbCIUltE+QKKkXFoUPLm/LTkfaX/9Xz2SJ6y/PYpz6NmaTKu4l7WpaRhshz4MrkYKb/mQk7TWrMJz4FHMfnorZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HSAdwMvMBiOOPxArMpF7rCm1Q+NOaoaRx+A2hp31tfc=;
- b=k8r6xUJHzfloZNJNAYwegUbdHdhqXH5u7wU+dlnHIAIjEdjk8S1LS+KNUbae/Po5rdwBUqyF6mNEKyL8yuB/hMc1SVhHS4OfwJlY98AMeAvA8qbluNUZEt0uYhFW8wZuJ9Hy92Uv0POk06B1yFo1PxaQnkeXMB4SyqjYYzkSSNmbDq1Lsa8H3drjWJI+ra8quAygKv2urbsH1j8riCXa0+wR80+tO7Zoy+9czjWYKX4WdRvWh+Na+YHOkFnbFNW2rcPYn95ps9pr0UW3bb+YneYB4AupfCQMuuy7dY53nk9uQtpNw92/LlDn6WgCuchxT4+ZCz2qgAvoMPqtVQC9jA==
+ bh=0Dqo1UvCttRQtJ7cXeeAtV3YaRpdarXCIxZrEakjJ6s=;
+ b=UqJr4IVPRyVVcpFGPwPAR0kTu58IKUwrRCOP65h62HZXuUrAbiH1g7OSd6sLwkp3V4ZdEO1bkLtA7ax7rPIs8gZd32YaeWMFpxdYrvA3dtjbig2IQyKuEmZ+aIX7+0+zyyC5+sxAcvNKzSZilMgjMqC696ePaqWD1paojhsnkd3i1f2N2NjjrTrro+GdR/BHN7/h+PDxlLaSI9aSwxgkbv0SRb9gqIO/Tp/SSNoCbGyH05uvtBATJpn3V2EQ0n5L6Tpp1c1BzXHlGv4TIwDE1aZmRFaf/T8jiReFFNQB4GUGhfX5UumRM2wTy7VifQUNVPY/zMycGLfAtsthWFyHeg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
  dkim=pass header.d=cherry.de; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HSAdwMvMBiOOPxArMpF7rCm1Q+NOaoaRx+A2hp31tfc=;
- b=YFVFIA05tn3g2Z0u8VRG3vNZ9EbHBuqXE6F9QUdLnM6jyOTjw6wnW2Bqc3fR5CdcekRHO+SrX7VV76y1eJe0HSHnOUtUIRUgW1mqMHfrhnVayxGnOohgiGiWvGQbenm7Y/6vErv9vWAmBEiJOsYScsjv0wG1LGupIsgl8lQjpu0=
+ bh=0Dqo1UvCttRQtJ7cXeeAtV3YaRpdarXCIxZrEakjJ6s=;
+ b=iGCkCDVLlYL43ZX5QOlVCzAmUW0bvahwJHcSy5nh29meNerPdBmf5DFDAc9NvkLyd5AhPJKspkDcU6KfBUMYeYZBB63UBOCsKJj2K0tHhvVA91ekKKs4BkBMzbY0aGKmT26n5LHQWlcA4P6xCwXmU9jiL/oBFcA9FYeJO+Wnr8s=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=cherry.de;
 Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by GVXPR04MB10355.eurprd04.prod.outlook.com (2603:10a6:150:1db::20) with
+ by PA4PR04MB9294.eurprd04.prod.outlook.com (2603:10a6:102:2a5::20) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.25; Tue, 4 Feb
- 2025 09:12:28 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.26; Tue, 4 Feb
+ 2025 09:59:14 +0000
 Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
  ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
  ([fe80::35f6:bc7d:633:369a%3]) with mapi id 15.20.8398.021; Tue, 4 Feb 2025
- 09:12:28 +0000
-Message-ID: <40c37c4e-b98f-47bf-a4ad-b977be5a6d49@cherry.de>
-Date: Tue, 4 Feb 2025 10:12:26 +0100
+ 09:59:14 +0000
+Message-ID: <db29945e-565a-490f-8a8c-387ecd47a198@cherry.de>
+Date: Tue, 4 Feb 2025 10:59:12 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: remove rk3588 optee node
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- sebastian.reichel@collabora.com, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org
-References: <20250130181005.6319-1-macroalpha82@gmail.com>
- <5d0ae245-1ad3-4e3c-9c68-28babc7290a6@cherry.de>
- <DM6PR19MB3722A5CCBF3FBEAC59189642A5E82@DM6PR19MB3722.namprd19.prod.outlook.com>
- <7266daa9-b031-4c45-8711-c4e6e4be7095@cherry.de>
- <MN2PR19MB3728B870175A9568773D9BD0A5F52@MN2PR19MB3728.namprd19.prod.outlook.com>
+Subject: Re: [PATCH v5 1/3] drm/bridge: synopsys: Add audio support for
+ dw-hdmi-qp
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+References: <20250203171925.126309-1-detlev.casanova@collabora.com>
+ <20250203171925.126309-2-detlev.casanova@collabora.com>
 Content-Language: en-US
 From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <MN2PR19MB3728B870175A9568773D9BD0A5F52@MN2PR19MB3728.namprd19.prod.outlook.com>
-X-ClientProxiedBy: FR3P281CA0096.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a1::8) To AS8PR04MB8897.eurprd04.prod.outlook.com
+In-Reply-To: <20250203171925.126309-2-detlev.casanova@collabora.com>
+X-ClientProxiedBy: FR2P281CA0037.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:92::6) To AS8PR04MB8897.eurprd04.prod.outlook.com
  (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|GVXPR04MB10355:EE_
-X-MS-Office365-Filtering-Correlation-Id: c4f93b85-6a93-4f67-c357-08dd44fc0bb8
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA4PR04MB9294:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6b8fd139-9783-40da-c9e7-08dd45029494
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZGFLWG9qdGIxMm5XanZ2T2xST0lzTDk0dnhkK1BsdzBKMXpzVWo2M0dzdm9w?=
- =?utf-8?B?bFVyRTVTV3Q4RjBPUnJLZEI4T3lVRysvbkEzeU9la3ZndEJqVGR1a0wzc1lQ?=
- =?utf-8?B?bzF1dGVnZ3Y4UldrNDFoVmZ6V0pPeGRqZVZTQlBGTGRYRm9jNU1uN3N4UERY?=
- =?utf-8?B?Wm5JU2dmeFhDQ1NmVFRvQk9JZ2ZSQ2EwY0YwWU1zcEZuOC9YVExUWEx4bDVS?=
- =?utf-8?B?WU1oMTNHQlBmWk1iM0lFN1JCbG4yc0ZmRlRRNVRRUjQyUDhHbW1yaHhPRGts?=
- =?utf-8?B?L2xLSWp3S3Rqc3hRYktjcnRRMDhFa1REUXVGdUFPZzNFR3ovbDJtRjNzUXc0?=
- =?utf-8?B?a0IrZFN2NlY3K2xQSDljc0dvN09aSjVwU1hIVkFKWUFJUmFQWkh5UzNFOWpP?=
- =?utf-8?B?UzlVOUIxYWFkblNxZmR6UUxTY1BnQVJRMlNwNm9DVVNXTVM4YStwcjlad2Nr?=
- =?utf-8?B?VFMrT1RreDVpcTB0WEZWREVOa0xUTnN1czA0TjM5aTRlcXg5NllGenFMRUxP?=
- =?utf-8?B?Y21xcjArdTV1a1lUaGNiUTZaRkVraGJmT0pMNVBpTWgrTTZmM2ZuSWEzTkcr?=
- =?utf-8?B?b0d4M0o3S0ZsUlo4cjZVbU15QTAwUWRQWHE5Njk2aXo4L1BIOTlFZTFJR3Vo?=
- =?utf-8?B?TFg0VG51ajI0MGVieTVpeHo2VVhqNjdJVFFWTWU5NmZtaE5ya3BXZEV1UDFv?=
- =?utf-8?B?YjBVL3h4Um9QYkdvMkdQbkNZL2RRRkhXTEN1NDU5M3lXdmtSRDNqYnpzM0li?=
- =?utf-8?B?cGFWMEIyczBSdmJtZnBERG8wQnBwMVFZTlZMWjRiZUlMSWxVc2xCUlVuQjhy?=
- =?utf-8?B?bzhaREp2dng2SGVoSkJ3KzM2N1ArSjhlbnNmek1VSWxNNkVKcCtXWjZLaFho?=
- =?utf-8?B?WkpnUzFFN0NXRDJJVGM2T3RoMWRzaUN2U0QzMFQ5VGNZaVgyS3BMZFk3MkNC?=
- =?utf-8?B?QlU5a1hKdjByaUtxNW9RYUZyT0Z2NjJmRzJvcWVIZnVtbGU5YkVKdlVSdzdV?=
- =?utf-8?B?TXlOQjRweTdpbE9IMlRHajNwQlRma2FnM1lQYUxJWStxbzQzbi82T3lTQVBQ?=
- =?utf-8?B?NXNwczJHS2wxQlc0QVd6a0VGRWtFQldhbTgweW9tZzMyR3pMQnRqa0cxUjFI?=
- =?utf-8?B?bmlIdnJaK3lHNE44Y3ZKbjBJYTJ4NEx1LzUvSWhGbVdUd3d1VVFoTVRjRVZG?=
- =?utf-8?B?MXFaanNkYzRZbHNLRWNjU1NSazM5ZGJiT0o5d2cwSGY2aFpQZXpwdXJpVzBB?=
- =?utf-8?B?VTI4VjE5TlRrc2hGKyswcUtUZkZGWHU5ZWhsbFR1dmZoU0J0ZVBsb1dLMjU0?=
- =?utf-8?B?WG5CVzZrWFBseDZuN08wNmN5UmlCVEcxTGM4WE5wSGtQR0pWVUFmMHlPRENE?=
- =?utf-8?B?Rk5PeWJFVjJCT0NLcCszRGFWaDU5M2ExRmlTZ2JBbGtvZXVSdUw1VnJ6ZnNE?=
- =?utf-8?B?dEJBMlQ3bzNEN3k1dEhId1Z2Z2R5ZzBsSEJSTFhTcG9vQnZaTkJCbi94Ynho?=
- =?utf-8?B?b3ZJWDkxOEl0RkFpUUowbm5mWUhrZVVkdHF3RFZYY2lENXA2WmFNNVE1VEE5?=
- =?utf-8?B?MEhPd0Z1aG1LUGtvb3RkTFVpTG5vTGRkY0dPQllYcTh2VTdDbjJHQWJETGdO?=
- =?utf-8?B?eFFnQ0hSbmY0T3ZvL0ZETFJHOFhnM3BjemsyNFNFd3ozZmFjNVZqdkZrOURS?=
- =?utf-8?B?eS9jalQ2TFZuSVc1VjZtMTFzMHRXdjhFd2Q3dGN1N0t0dHFQYWhDU2QrcTM5?=
- =?utf-8?B?MjFLWndWUnZ4NFNCc2ZsVXhMMkxxRS96eFNMdXN4dzRLbzR0YzUzMXNmVnFO?=
- =?utf-8?B?aHZWZmprVW5rWHNnZjIra2JNSHZUc2JhYXZlNld5YU5ET1gyZGxDM1hjTkY1?=
- =?utf-8?Q?IrC67LPfDULsQ?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?dUQ5dFo3MXdoWDRTaG1hVCt6WTlpeWJQQ0ZLV3hKRlpMMDZTYXNTYzU5NG90?=
+ =?utf-8?B?YzhWUmNvR0ZOdUpCS1B4aXh6QTNnME1JR2NKMlcwS1dNVDFodVdvc2paMm5I?=
+ =?utf-8?B?UHE1dXhlVTViVTdhUU1GUUJpTkVDUU14NDNoUGx0Sm5XL1U5U0JFUGVnTGY1?=
+ =?utf-8?B?WkxoY05kQVJoQWUvdDlVK0Y1WmFWWnBlZVNham5zT0xVakU0NnY4Wjl3OU9o?=
+ =?utf-8?B?cFRQQXZKVmRIMy9MTGwrQjIrOTRSK1c5M2JYUWNGR1k3Vms5cVBiTVh3LzBk?=
+ =?utf-8?B?SS9wN1BTMVBmUnJMUUVyeDFQbkVmU1BuRUNBYXRCdERFazZqdUduTlFFc0tT?=
+ =?utf-8?B?bm9POFlKbVRwRFl5VW5OMStldDFqck1hN1g2NzZuaExNNm11bWpQUjdhWXky?=
+ =?utf-8?B?eW1nQ3prdXBBRUJDeUV2RzR1ZWJZSUMxVVRDZ0s4VkNWWU8yMXJQMy9Hd1VE?=
+ =?utf-8?B?dkVreG1BbERVZm1MaWRpUG0vSGIxNnNabk1mZXJhQ1krVEJmcnZTc0dwOGlu?=
+ =?utf-8?B?aW53OWJXWjcxak5qYVI3cFBrL3FrZGd5RzluZHZhVHQwSkZzRkgwTml5d2tF?=
+ =?utf-8?B?dHVySGVmL1lmVVlDUlYwL2ExeWZXMWwyVDJZdXFEUHRRa2V2WURsYTlTVGdN?=
+ =?utf-8?B?enZ0RXpWWUE2bXczOE5nSHJhbmUyTS9ORC8zc2c5SmlvK1hjSVE1dlZuR0dR?=
+ =?utf-8?B?bHQxb25KU0F2SkpkQW9xTnZENENwWE55c2t3cGZJNXRqZFdMN1N4SnhBaFNO?=
+ =?utf-8?B?OWFadTlJT2FaQWJOclB0dWpYaFk2b2dxYllrUjlUcFVJOEZiNEgrSDhpZG1z?=
+ =?utf-8?B?aCszVUdScFY4Uk05Y0pPQ3lEZ09GeVZwM0xMeGpGcHlYNnVxM3crUmRQUWsy?=
+ =?utf-8?B?WWVrb2VxeGNqbTVKd1BkMFN0NmNUZ09qZFJlQWVmTGRFMzVGWURRQXVQVjd3?=
+ =?utf-8?B?dXpwUXN4cVE1YzkwazAzM1ZueGdLS3BTY0pQSWEza0pIdTUzNURYTmZKbzhu?=
+ =?utf-8?B?TFc5cUVSYWxuVnhGM3VhczhFMkgwRmFMNmh1aElka0k3TE1WOEoyNDIzenBU?=
+ =?utf-8?B?MlM0VjA5eDQyR0lxWHhxUytlbmdyMHJTSjRpM0ZLY1FlZWEvYVNwOG1LTndI?=
+ =?utf-8?B?b2VQT2V5YUJORExZVktoUXh6YU5XbFltZU41eDRlanNQSHVybmJnU3RweUJG?=
+ =?utf-8?B?cXd6VHVJYTBkM1pZWDBqVDljeHhubW9wZ3JPL3NrUm5zVFpoc2hsdGp0aGky?=
+ =?utf-8?B?RFh1NXJHcFZFODBvZVRRSmNHZ0JaU05pY2hoOWkwVlZoOU4vM0g2RDVZMWZH?=
+ =?utf-8?B?azhDdEZSSkhrSjVNNWRJK3ZOeXhzeTIzTmxzS21FSitwWllCcXBndVA5NXNT?=
+ =?utf-8?B?SXJQYjVZTmxwbUxYd1g2MjJyYUE1Y1RkOTVCM0s3K01ISXo5V0ZIMGlHdVoy?=
+ =?utf-8?B?MTRadUQ3d245MGF6SjQ5cGQ1WjJYR0NhbWlhWVJVd1A4ZVY3dmZwUUc0eU91?=
+ =?utf-8?B?Rk55N3lZRGUzVGF0WmdMY1ExY2EwYnhiaFFaMDBNaS8vYnZOK1Q0QjQ0MTlO?=
+ =?utf-8?B?dCszd0JEZEVYZG5FeElKN0ZnQXZSU2xJU1pIZFlseVZJd3pEVmRMVG1raFpN?=
+ =?utf-8?B?OGJRK0t5T3VoRnVVK0R2ZHdlQkJKb1BUU0ZLRnhpNUJDamUyZ0tQVUxoSXVC?=
+ =?utf-8?B?V0JoKy9rNTViSHNSTnlaZ1ZXUEZLNlJxYm1hcVc1V1diTEsra1NqMVc2amx5?=
+ =?utf-8?B?cXhPWnpvY1EyenNCRExidHd3enVLMzJJOE5lSDdVODJkSHFOSEI2dXBFek4v?=
+ =?utf-8?B?R3pubFUvb3pqV1hKTEJtZkdic3ByY1BHTEplbmQyT0Q2aDJ1bERYMUZNODQr?=
+ =?utf-8?Q?it8MbHLTecgbd?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(7053199007);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YU1rNk03WElSNUZuaTE5NXNlR3dxZlB0dDVwV0o4UGtFN09GZFlxL3VVMXFX?=
- =?utf-8?B?eWdZa0FYczVuTFE1VTV0Nzdmd1Zqb3FOQ3cvK1ZYRUZNYUlIWDdIVU0yVk1m?=
- =?utf-8?B?SUtlU2R4KzZiTjhUbXJ3cnkzbTRTUldYOUw3dWdScXRqQ3BrbEhJSzVHNm84?=
- =?utf-8?B?QmhDZ0JYbzY5MG9aaU1pV2RDMXRzcmFHVUJqT3lWQ0ZHN3lGVlMrVzZJR25l?=
- =?utf-8?B?cTRKR0lENk9lcWNESUhJVDg5SjVkRk9BQVB2em4rM2cyVEo2VlVjR0R0Mm5u?=
- =?utf-8?B?OW5yWk9MRitocHFueWVFVjB3NHY1WVVTemVKVWFXR3NpUWxzQmQ1NU40cm1L?=
- =?utf-8?B?Z2tmVXhmNGJQeUNIR3A3YlA4b2dNbDRlaEYzVG5QeVk2NUFnRGFHSkVCckFW?=
- =?utf-8?B?RURGcnlsV3JoQlNORWszNXFtVTRZOTVEd3dRSTJ1K3l3eTZUQXZCdjNvdzhr?=
- =?utf-8?B?enA3NVhIZUZHZCtjdzdmeCtEQVllN0NweVBtYmNEdVVEdVVCU2ZkUUwzcytQ?=
- =?utf-8?B?OHN3WVJ1eTBuQUpFMGtGeGhPU0VIZnIzSUNVZHB1MndCR1dvT0l6RFZ5d2xP?=
- =?utf-8?B?YnoxMGE4K2pVWTVSSE15K2ErVU5wZ3hYVlhzOUxEZ3JYTFZ4R2JkK0ZHemt2?=
- =?utf-8?B?Mzd5dS82SDFGVjNLbUUxeXcxZkZMeElrMDNKOWdPM3FoWkJVa0NLM2JNVkxR?=
- =?utf-8?B?Q1RSZW04eFUvVHFlUnJ2UFRPYUcxd3RxajNtK2Z0WEh1YnZOeERsZDVLdVl6?=
- =?utf-8?B?Y1lLd2Q4Z2pYRWNac0JmVGUzU0VhSXptY0ZUQlJDWGNQTkNmNVBFRWdpZE5q?=
- =?utf-8?B?T0MvT0RBNFh4NVhMeDhvMHdubFBGSXBXSzg5QnlTMjBzYndkSTJibm9Ib1p6?=
- =?utf-8?B?am1zYTRIQWZBVXlHRmwxZGgyc2JWaENGOExiT3ZPYXBkR2RMbnB2USs5WHAr?=
- =?utf-8?B?QXJDbjhGMTJEdUp6ZDZnd0YyaEtSY2FBVDJ3U0pnM05vc21VNjhSRzJTM0ZN?=
- =?utf-8?B?Ym5sZmtrV2VTMFg2K0JyUUFVamVKK3F6SVZpZ2ZnT2JEaFN1aFZldWFGcDdh?=
- =?utf-8?B?SmlRVUVwV1pPVC9SbnIyRUdVcG56OThuOWptbWp2cjZBeG1CZW5valc3M0h2?=
- =?utf-8?B?Q0ZDOGpyeU9rbVNUUzc3WnczdXFxcnlnaTFubTRYejBxZWFaK0huV0VZc3E5?=
- =?utf-8?B?WXdlNlloVHFjZ3BTNWxmQ21HZjh0R2VSVmdReVZQYjBjNER6dWFSSTRlRU9C?=
- =?utf-8?B?QjRoNXd6TFhKcnpkL0puMmQyekhMZmlyUWpzcURSNTZCby9vZGEzTHhGTERT?=
- =?utf-8?B?MmlENXNlTCtOYkhvWVRQeUNxQXg0cDhDWnltVmtmTzAxakJXbTFpRSs0L1ZG?=
- =?utf-8?B?ZEl6YTNjYUE5cW5xS3dnYlZEb3hweHIrbkVKcE9UNVJON0t3L0JSb0MxT25R?=
- =?utf-8?B?bGtiWG1VSUFGdVdtdkR4WUsvQldiN3JUNE84MTBnNjV1UFdEQmlmYmU1bG5o?=
- =?utf-8?B?ejlhRHo3UTJHZlJobUZTK2IybUIycXdGMDFHTXVYVkdpSlAvWXlGSW9FQU5q?=
- =?utf-8?B?SEM1MUV2cWcxbzI3L1ZxZEUrc29XWlNTakZBdDNPVTEzaFRNK3BXeUYzamJ0?=
- =?utf-8?B?RUZCbHM1ZG1nTElJemMvakw2Ti9TcHQ1NzFHajRVRE5UT0dwZ0JkWjdEeERK?=
- =?utf-8?B?L0loVG9FVVVXVkpTRlgramxieHYveUxUbFFNUWM2UXRmZE9sSTF6Y1FxU2dU?=
- =?utf-8?B?Nld2V2NPOU9nNkN5cURNVG83dTAvZHZrbDkwdXpiSlErQkxXSmdpellmYVM5?=
- =?utf-8?B?ckk4TDdXZEJTV29QeWpZRGpNcVBGem1laG1YK2V2M1krVmlMTzVFaVFhb1Nu?=
- =?utf-8?B?cjBDWkZMcHJ0RUduTXIwSE1IM3JXZnVEdXpTN2M3TDJyT0Y0b1FVK3lWTDQx?=
- =?utf-8?B?T2JoSmRucVpjYTVVQWtPdVpscENUYndnZForbTNuVzZvWVdZR1NCQ0hUZElC?=
- =?utf-8?B?bFJtUzRkR29QZHJQMHg2YlJiM3dva1RiK2h0elVGY1hrQmdOWndUbjhibkl2?=
- =?utf-8?B?K0d2bTdUN01zaUdYd2RjWVVjVXlRUTA5SEVuMFRmc3FCRU9zQm1xcFdKYWVn?=
- =?utf-8?B?RWFoR0lCdnhFd1lIdDdoTTFCZk1jS2tvdXNMN1VxZ0FLS0piM1BqbmxxeU85?=
- =?utf-8?B?d2c9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VHlPN1A2TWs5YTdXelBONXlyZkdJeDR3ZG5NY3ZRbFFVQmg3M3AzWFpLenpP?=
+ =?utf-8?B?SlAwTytXVU9RY1VsLzl1T2t5emZNbCtzVWdIbG1DK2FmZFd6eFpXSC95Zndh?=
+ =?utf-8?B?ZGJyQytZOXdlTHdsU1BsUlhZaVRvNTVaL1ZpVzF4Zk1PNmV2UUcrYnNucmVp?=
+ =?utf-8?B?bVU4V3ZZZ2dURG9salNXY2EvSkRWTGlmQjY3QVZwbmYrcW9wR1JhVXZXdlRU?=
+ =?utf-8?B?V3J4R3A5VVFRRVlmWU1CQk1DQTZ1aitUYUZlbERaN3RRKzVyT1NZcjZkVVJo?=
+ =?utf-8?B?VDZsaE9HRmJjSlBnM05ZcXkvYlNJSVQzcHhVQU1VOHFhaksrcWRwbXpsSitC?=
+ =?utf-8?B?Z3A2UUN1U0l3bXJBRVB0eUlXMDdYMU5QeUVrVWtUbUFxekFBaS8zcFNwNFln?=
+ =?utf-8?B?TU0wVm15K3ZvRWROdkh3bWhIdDhHSU1veWRCcldkTzRtSVA4cmx2bDZJUFBv?=
+ =?utf-8?B?SVp5ZlFaTzBrM1ZIQ3FET0dqc1drdEJvczdvbjNwTUVLYnpseFFYcmtZTjJm?=
+ =?utf-8?B?cGc5bk9WYUp4aGtuRXdBQ1JoLzhaVDloRW13UTVFUkpvYURoem1mSE5ZNjBh?=
+ =?utf-8?B?VGVsSjF2WTJjbldQcGY1dXZDa0tsaUFNVUwyRDl2SjdpM3pRd1AwV0NCYXBx?=
+ =?utf-8?B?bFpEbnFVbW05RVc0YnpMWnR3WnhQVWpUeGo3WkJ3Z1BLWERPOU0xVDRCOHdn?=
+ =?utf-8?B?c0lNakNXcDkwWUhCOFVlQXh6ZVZ5VmZVaUZSSENpQnFNVzZkb1pDcEJlSE9u?=
+ =?utf-8?B?RnkzNnFnN2thbUVhNnA5cWFaVUJlWThueVZxZW5vdGZ2Qjl1N0pDcXBCeG9j?=
+ =?utf-8?B?bkMxNXhhKzV6UVJhakh6c0drUTM1TThmZ3F4YUV1eXFMMmwxcEQ0QnUzMXpR?=
+ =?utf-8?B?T0ZwMDVickhmdEpyaWc5Wk1BbjlXMDVjRE1XaG9zdXFnWGxNZHhHQ0RLU05k?=
+ =?utf-8?B?emdtamNFZ05yNjZOVlBld0ZsRHM2K0hqQzBNL3ZuZ3RvTDFheXNoRktucVhz?=
+ =?utf-8?B?QU1neXNpZkkvUGx0QkNoMWVxVmdZUUZaUS93dTUrUnlDVlA2VXNLVFMzc0o5?=
+ =?utf-8?B?cUx5U25VQWNlSTNtTzZqdjBUV05oTjYvMXFPY3JHTUVwTDFZdC9uR2xySUtR?=
+ =?utf-8?B?MmhwSXdYaUt5MElKT3Y5S0hrRk1sUTBVd1lqeEJZUlRJQURWVFE4RWNpc01Y?=
+ =?utf-8?B?MUducGdzbk41MWF5MUlncWhwc3JiVUQ2N1BvOE5yMmNEQ0VSMjEwQm9RYWNM?=
+ =?utf-8?B?bUliUWRtdHJXcnREcjdtTUpSOVZxNytqNUJza3pXTndyQXovRTBoa1ZDeWxl?=
+ =?utf-8?B?MVBrcTZTb0RCajdsVXhhbDQrKzFUOWxvdWpwN0lWeGYxRWJSang5USttQjUx?=
+ =?utf-8?B?U3ZDQm85STgyd3M4NmdqZDhCeVVaWjgvTHdvQXRhZmJybUFRdlRydEpnUWdP?=
+ =?utf-8?B?WTIwbTlxM040L3pXczV0Wk5pVDRmQU5kYW9iTnRpV1VDdndObjNrdUlkV1N6?=
+ =?utf-8?B?bmY2RkJPMktIa2tGaGR2NDBOYlVHa1NQYnVSQ2YzaFp5bTJGWDhMUU9jeXVR?=
+ =?utf-8?B?UURlMFVudk9LSk1YajVWOFhmcDN6NDdNSGhyc0NxcGRNS0p4ZVFCZkE3NWlT?=
+ =?utf-8?B?RldrR0NrMjNOa1RFZTc0NCtXZk1rcnZXZHhTUG03dHlwVDM3ZG5UM2h4L3NF?=
+ =?utf-8?B?emJDQnRaaDRtalJ1cThZaTZTZnY2Vk1pejIwc1FBTEUvN3JsWVd6anZwa1pE?=
+ =?utf-8?B?N1M4U0tULzJmSEd5aWNxK0tuS2MxL3RoTkNoZXVvT2I4eWFLZGZIZmRWd1Z6?=
+ =?utf-8?B?N3VWalBwYllBcG9Xd0diK2JXc2RPVHhkbGZsRDdyNi9sbU5GTFcvT2oxRW0v?=
+ =?utf-8?B?OVdiWThRMGx4SHE4cW5TMWRCM0YrVFJjL1pvc3lrb1pDWFVocVlEZ2FOc3kz?=
+ =?utf-8?B?RW42TkR2OUdDNW0xQTZtMjh4RnFmN3RNZGxZdG43UzZFMnpsek5mMHE2Wk5Q?=
+ =?utf-8?B?ZUs0ODBlbng1SEJQVXljSkZnd01yT0JjS3dDUm9MK2ZUNXAzbmNteVRWZlNv?=
+ =?utf-8?B?NHMzWUw5K2J5UzZ5dGhVb3JCSUN0UVYwL3VUT3dBb1RiUmRxTUxXeFArNVgv?=
+ =?utf-8?B?ODdqeXFlTVpNM2oxMmwrZEwvbElQUVJLYnRXNkJKQ3JyQVNNMmo0SGVUZGdm?=
+ =?utf-8?B?VEE9PQ==?=
 X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: c4f93b85-6a93-4f67-c357-08dd44fc0bb8
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6b8fd139-9783-40da-c9e7-08dd45029494
 X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Feb 2025 09:12:28.0057
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Feb 2025 09:59:14.3096
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u5NiKeX9yWUQzoEHPhnUW894z2CGrzPyqFuio4TVI9AApd+nedMqBn4AjV51ec8tK1K1fMtCJox7vx7aVD9r+JCo5nUAc+Wx0O28eBFkNf4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10355
+X-MS-Exchange-CrossTenant-UserPrincipalName: DdtemN/hh9+/3cwjig9FEbhnsQHATmMX8Z21aSnEhE2Xp81DaselHj1EtcazZfD+mngMJuJT1Icdna02XRxg44o4gJf3xLGpZqbOHsGP8cQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB9294
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_011241_869838_0296B8BD 
-X-CRM114-Status: GOOD (  30.15  )
+X-CRM114-CacheID: sfid-20250204_015928_241327_223A82A7 
+X-CRM114-Status: GOOD (  28.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,94 +170,183 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+Hi Detlev,
 
-On 2/3/25 10:27 PM, Chris Morgan wrote:
-> On Mon, Feb 03, 2025 at 05:32:53PM +0100, Quentin Schulz wrote:
->> Hi Chris,
->>
->> On 1/31/25 5:59 PM, Chris Morgan wrote:
->>> On Fri, Jan 31, 2025 at 05:46:20PM +0100, Quentin Schulz wrote:
->>>> Hi Chris,
->>>>
->>>> On 1/30/25 7:10 PM, Chris Morgan wrote:
->> [...]
->>>>> When Optee is not present or used, the node will trigger a probe
->>>>> that generates a (harmless) message on the kernel log.
->>>>>
->>>>
->>>> And what if we have OP-TEE without this node present, which would be
->>>> possible if we have CONFIG_SPL_ATF_NO_PLATFORM_PARAM set in U-Boot?
->>>>
->>>> I guess we could detect from U-Boot if a TEE is loaded as part of u-boot.itb
->>>> and fixup the DTB otherwise to mark this node as status = "disabled"?
->>>>
->>>
->>> Based on my understanding of how each of these projects communicate
->>> with each other, Optee can only work if you either include both the
->>> Optee node in the firmware AND the reserved memory nodes yourself, or
->>> if you have neither and let U-Boot do it (by including each of these
->>> patches as well as setting the CONFIG_SPL_ATF_NO_PLATFORM_PARAM). So
->>> basically just this node alone is insufficient for it to work today.
->>>
->>
->> Therefore I think we should either have this node defined + the
->> reserved-memory node (with hardcoded address and size if guaranteed to be
->> stable forever) added or nothing.
->>
->> Can we mark a reserved-memory node as "disabled"? If not, then we should
->> rather have nothing at all I believe.
+Just some drive-by comment inline.
+
+On 2/3/25 6:16 PM, Detlev Casanova wrote:
+> From: Sugar Zhang <sugar.zhang@rock-chips.com>
 > 
-> I honestly would just rather remove this node. The reason I say that is
-> while we support Optee with the RK3399, RK3228, the PX30, and the
-> RK3588; howver only the RK3588 has the node already populated in Linux.
+> Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
 > 
-
-And we have a product based on PX30 that has OP-TEE OS running without a 
-hardcoded node in the DTS, so that's a valid point of comparison to me. 
-That seems to justify the deletion to me!
-
->>
->>> The core issue is that Optee requires you to map the memory as
->>> reserved so that Linux doesn't try to use it. You can either do that
->>> yourself or you can have U-Boot do it automatically. Having the Optee
->>> node in the devicetree makes no sense today unless we also carve out
->>> the memory.
->>>
->>
->> We should patch U-boot to add these nodes to the DT if an OP-TEE OS is
->> passed and either SPL_ATF_NO_PLATFORM_PARAM=y or we cannot detect the OP-TEE
->> nodes in the kernel DT. What do you think?
->>
+> The register values computation functions (for n) are based on the
+> downstream driver, as well as the register writing functions.
 > 
-> We would have to assume some hard coded values in that event as I'm not
-> aware of a mechanism to grab them at runtime from Optee except when you
-> pass it a device tree. That said I think the concern above where you
-
-Yes, but that would be the same as BL31 for example and an expected side 
-effect of using CONFIG_SPL_ATF_NO_PLATFORM_PARAM except if there's a way 
-to provide information back from TEE to U-Boot without using the params 
-that would be passed by U-Boot to TF-A had we 
-CONFIG_SPL_ATF_NO_PLATFORM_PARAM disabled.
-
-> mention "guaranteed to be stable forever" is the problem, as even now
-> the current address in the Optee upstream project conflicts with the
-> kernel_comp_addr_r in upstream U-Boot, necessesitating one of them be
-> changed (I'm attempting to change the Optee one, for what it's worth).
+> The driver uses the generic HDMI Codec framework in order to implement
+> the HDMI audio support.
 > 
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 497 +++++++++++++++++++
+>   1 file changed, 497 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> index b281cabfe992e..ea5d8599cb56a 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+[...]
+> +static int dw_hdmi_qp_match_tmds_n_table(struct dw_hdmi_qp *hdmi,
+> +				   unsigned long pixel_clk,
+> +				   unsigned long freq)
+> +{
+> +	const struct dw_hdmi_audio_tmds_n *tmds_n = NULL;
+> +	int i;
+> +
+> +	for (i = 0; common_tmds_n_table[i].tmds != 0; i++) {
+> +		if (pixel_clk == common_tmds_n_table[i].tmds) {
+> +			tmds_n = &common_tmds_n_table[i];
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (tmds_n == NULL)
+> +		return -ENOENT;
+> +
+> +	switch (freq) {
+> +	case 32000:
+> +		return tmds_n->n_32k;
+> +	case 44100:
+> +	case 88200:
+> +	case 176400:
+> +		return (freq / 44100) * tmds_n->n_44k1;
+> +	case 48000:
+> +	case 96000:
+> +	case 192000:
+> +		return (freq / 48000) * tmds_n->n_48k;
+> +	default:
+> +		return -ENOENT;
+> +	}
+> +}
+> +
+> +static u64 dw_hdmi_qp_audio_math_diff(unsigned int freq, unsigned int n,
+> +				unsigned int pixel_clk)
+> +{
+> +	u64 final, diff;
+> +	u64 cts;
+> +
+> +	final = (u64)pixel_clk * n;
+> +
+> +	cts = final;
+> +	do_div(cts, 128 * freq);
+> +
+> +	diff = final - (u64)cts * (128 * freq);
+> +
+> +	return diff;
 
-I think it makes more sense to change the load addresses in U-Boot, 
-especially since those are just the default values for variables which 
-are configurable per board type, per board or even per boot, so it's 
-something one would be able to modify without necessarily rebuilding 
-anything. Essentially, it's easier to move that around than checking 
-which OP-TEE OS version one is booting before providing advice on where 
-to load the image? Up to you though, no strong opinion there.
+I believe
+
+final = (u64)pixel_clk * n;
+do_div(cts, 128 * freq);
+diff = final - (u64)cts * (128 * freq);
+
+is just an elaborate way of doing
+
+((u64)pixel_clk * n) % (128 * freq)
+
+? If that's the case, then I believe do_div(a, b) actually already 
+returns the remainder of a by b.
+
+If that's the case, isn't that function simply:
+
+return do_div(mul_u32_u32(pixel_clk, n), mul_u32_u32(freq, 128))
+
+?
+
+We could probably replace mul_u32_u32(freq, 128) with freq * 128 
+considering that dw_hdmi_qp_match_tmds_n_table expects freq to be < 
+192000, so we won't get an overflow with that.
+
+mul_u32_u32(pixel_clk, n) does the u32*u32->u64 without a temporary C 
+variable.
+
+[...]
+
+> +static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
+> +					   struct hdmi_codec_daifmt *fmt,
+> +					   struct hdmi_codec_params *hparms)
+> +{
+> +	u32 conf0 = 0;
+> +
+> +	/* Reset the audio data path of the AVP */
+> +	dw_hdmi_qp_write(hdmi, AVP_DATAPATH_PACKET_AUDIO_SWINIT_P, GLOBAL_SWRESET_REQUEST);
+> +
+> +	/* Disable AUDS, ACR, AUDI */
+> +	dw_hdmi_qp_mod(hdmi, 0,
+> +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDS_TX_EN | PKTSCHED_AUDI_TX_EN,
+> +		  PKTSCHED_PKT_EN);
+> +
+> +	/* Clear the audio FIFO */
+> +	dw_hdmi_qp_write(hdmi, AUDIO_FIFO_CLR_P, AUDIO_INTERFACE_CONTROL0);
+> +
+> +	/* Select I2S interface as the audio source */
+> +	dw_hdmi_qp_mod(hdmi, AUD_IF_I2S, AUD_IF_SEL_MSK, AUDIO_INTERFACE_CONFIG0);
+> +
+> +	/* Enable the active i2s lanes */
+> +	switch (hparms->channels) {
+> +	case 7 ... 8:
+> +		conf0 |= I2S_LINES_EN(3);
+> +		fallthrough;
+> +	case 5 ... 6:
+> +		conf0 |= I2S_LINES_EN(2);
+> +		fallthrough;
+> +	case 3 ... 4:
+> +		conf0 |= I2S_LINES_EN(1);
+> +		fallthrough;
+> +	default:
+> +		conf0 |= I2S_LINES_EN(0);
+> +		break;
+> +	}
+> +
+> +	dw_hdmi_qp_mod(hdmi, conf0, I2S_LINES_EN_MSK, AUDIO_INTERFACE_CONFIG0);
+> +
+> +	/*
+> +	 * Enable bpcuv generated internally for L-PCM, or received
+> +	 * from stream for NLPCM/HBR.
+> +	 */
+> +	switch (fmt->bit_fmt) {
+> +	case SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE:
+> +		conf0 = (hparms->channels == 8) ? AUD_HBR : AUD_ASP;
+> +		conf0 |= I2S_BPCUV_RCV_EN;
+> +		break;
+> +	default:
+> +		conf0 = AUD_ASP | I2S_BPCUV_RCV_DIS;
+> +		break;
+> +	}
+> +
+> +	dw_hdmi_qp_mod(hdmi, conf0, I2S_BPCUV_RCV_MSK | AUD_FORMAT_MSK,
+> +		  AUDIO_INTERFACE_CONFIG0);
+> +
+> +	/* Enable audio FIFO auto clear when overflow */
+> +	dw_hdmi_qp_mod(hdmi, AUD_FIFO_INIT_ON_OVF_EN, AUD_FIFO_INIT_ON_OVF_MSK,
+> +		  AUDIO_INTERFACE_CONFIG0);
+
+This is all very I2S-centric while the HDMI controllers on RK3588 do 
+have the ability (according to the TRM) to use S/PDIF instead of I2S. I 
+assume the driver should be able to know which format to use based on
+simple-audio-card,format property? Is that correct? Then current support 
+which doesn't even check for I2S would be fine and not conflict with a 
+later commit which would add support for S/PDIF? (Essentially asking if 
+we need another DT property for the HDMI controller node or elsewhere to 
+specify which mode to run in instead of expecting it to always be I2S).
 
 Cheers,
 Quentin
