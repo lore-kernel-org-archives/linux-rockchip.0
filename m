@@ -4,161 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F11F9C02194
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 10:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B674DC02194
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 11:23:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:To:Subject:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gUIRSAq9T08DXtnbmwjKsYYo5crpTaTTgNqDEpoUmNA=; b=lGkzVgHAnxQ3IEYB10ab5o0XS2
-	lIZyvPWUVI+6U6CZRz5yfVcXMnb9VqnqnFpz2D8KhMU0UiJe5YY+gfFrhYhepl6LPum+ctpBrLDhA
-	Y2bNaKsJUqwZA1J2hTF9DNdsJqEFSUXg0ViPJ7LqJJWir1B1yVGYBeUnY5+BUBQ70Mz1fEAWZoZGF
-	RexFQb2tY6phg8iAuV+R2ImNIhbIWbh//9Voqk9ry+oY9diqAgno7DIkXu31efQpyMPVWbr4HR33l
-	3+K/fOvGIGMQU0BtzMQuDC5D2GhUACu+WnZR5c18u0FXmacd2wEO8+SCpB322dpeMMy6gGNiwy2N5
-	xr03eO/Q==;
+	bh=6M4HbYMVadOFUHQKADcdlfFqS+LT5A4fPLNvxPUlwAs=; b=oVKUuvfP2X0v929O+3y27dYc1c
+	lBQU+hq1gXL6r+SqokODpjp1VkZZk3ZfF9sKbU08Kaa3TDax2+TpAntnvV4jOC07yqSp0XK9jrjZS
+	Dw9NdmetO8/Sf+ORn2hXMfp4ZoHsN9+8jS5OAMMT6MzfXzIT2pbQAIVIA0DBdNYYZNw6KKkQy91Nc
+	N4RBJTyPx1KXGQ7RbbNPD3EcsxFZNrXm5UVM0PFIOGdvRkFFQ95xvTWSjg59Fdux/b2Wx+XAJe84+
+	uPPTIYejHwc6gE6o5eYQ6q72DG2pi2Va9rpAHVkPmV8E9odxxf6HDSfua9z/WJ6xYjNnZs1vWvCFL
+	EvCwwr0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfFzo-000000008o2-1Ugs;
-	Tue, 04 Feb 2025 10:17:32 +0000
-Received: from mail-am6eur05on20616.outbound.protection.outlook.com ([2a01:111:f403:2612::616] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1tfH1f-00000000GId-46v7;
+	Tue, 04 Feb 2025 11:23:31 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfFyD-000000008Xj-3sY9;
-	Tue, 04 Feb 2025 10:15:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NC1NLhi1c8BRIlf7iVPjdd1q8F7NO1oVDJ/413x7T9h/g8WwT9Uj/it+2JvDLOaL0ofRzYdKsYLQyhpHZZPVmn5LecRdkrlP5HYfnEHSR1SPOZyNMbG07WwPa158uFSudusf87s+ODZH494dPFe3Otd0ZVChZYiEFNy2edkVj/h0T6l1jEyv3euevuUWxpNy9YWeA1O41pnM5C1lJvk414F6flecjoIX5F2oaNgHE5hy0DUwNUlWlFV/zCaXTV9bOpBG0atNFdQsPVCtFemgiWnt4/YU28KarvzV11ueSRAnykHDZ1YJ9W+XGyNpqyIJxm4CpOQ1FtVCFl8ekK7y9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=INao4iY1AKMX3axCoVuPM7vg9v0A4PUEBGQC9APCHvI=;
- b=B7sUrmoSM6+wGMpG0bTiZDNopa8I6HI89TS0YJhFj2S9YGwD808OsafNno/XfnnBBxSQ1DXSf3ug4lpwfUCFrtCBFUCZi2n8ynNQD2BXkXnvZ0uTZBz6nvLjCUGneer5yP/fb22cIFwCZGAgayb4P9VuZR7ytBqOYHBCs4AKx1xbDZTPoGZCYXw6n4ZhOxVwd9Nfzb1/EoAw1Cmr3yCGa+r0MMSZE9UyQOqT0w0Uyl7slo5nl4rjLYl4Q2rsyPqBWgape6MNmuqGNf/8UiWlX5Mi8n3qOeaZLkGKmuQ+866pvhqs3WwS2+cYL69UcAZVPLf9uIqUNFbPVosnGOYjrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=INao4iY1AKMX3axCoVuPM7vg9v0A4PUEBGQC9APCHvI=;
- b=gyoueOkSSEHIoJb5f3JrelPSXSuDrylyGIu6W0SdjDrkzA6X8QaJaq3wOPDn2H+QhO18MXN9uG6gziK4jlXL9WAtTxCF4lQEgs0kI/g+M8DsglYXvZyfqdgSnAFtzPpJl8X/NCBTJuRXi5oHv+sQiaDA4NBL2ivRj/D21oIdIA4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by DU4PR04MB10624.eurprd04.prod.outlook.com (2603:10a6:10:592::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.24; Tue, 4 Feb
- 2025 10:15:50 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%3]) with mapi id 15.20.8398.021; Tue, 4 Feb 2025
- 10:15:50 +0000
-Message-ID: <fdf9016e-5bde-4800-bdd6-02e159a63592@cherry.de>
-Date: Tue, 4 Feb 2025 11:15:48 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Enable HDMI0 audio output
- for Rock 5B
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org
-References: <20250203171925.126309-1-detlev.casanova@collabora.com>
- <20250203171925.126309-4-detlev.casanova@collabora.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20250203171925.126309-4-detlev.casanova@collabora.com>
-X-ClientProxiedBy: FR4P281CA0450.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:c6::11) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1tfH0L-00000000GCw-2dJF;
+	Tue, 04 Feb 2025 11:22:11 +0000
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DU4PR04MB10624:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7e6a5838-87c4-408e-6204-08dd4504e622
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?aS9jZ2ErQzJiV2JCK0NKakZKcUc1YnV0NFJSdVpKOFcyMExwQytoVENlaEJE?=
- =?utf-8?B?UnU3ZU9CeXJRUHkza3FPM3lMRHk1emxicnYzSXlMWTdxYlRHcGE5TURkM3Ja?=
- =?utf-8?B?Z09BYWhRUTVhV0M0dEcrVU9GZkRNR09Ca2d2MVpsM05TSTlhajdiVnM0OVM3?=
- =?utf-8?B?UDRwVEd4TVpQZ1BFeTE2eFVHenExRTJCU0hlVDNGNE56cUw3ZjJyb0graGZY?=
- =?utf-8?B?cFFxcGZHL0t2R1hSNUJrUWpnMlNvaFZsNFJFZVJaSUJBL0NZaU9tcnAzWDk5?=
- =?utf-8?B?bmZxNkxtd29OWUVJem5DUmp5VGNPV3N6VmxsWlNMTm9BdHRvUkEzTEtRTVc4?=
- =?utf-8?B?eHpMd2U1RDN1MUowT0xPVlFrRHhNK2Y5eHBLWmM1Y2RKb3lBT1BOWVFSNHl3?=
- =?utf-8?B?bjFJbEtna3N4djlFVXNzaHdnL2w2OGorMklhQm9zSFJhOHVHbk5ya2FwTC85?=
- =?utf-8?B?bjFOa2x4Q3c5TXhESnhSeDRucmNWN0FLUXZ6ZGJ0VUJNOWJBSEluSmpzQnRM?=
- =?utf-8?B?bFVzS2xPcS9JZTJveXRKUCtnMGs0UTdBcGZUOVM4RzBURkJQWmJscXlXdFpa?=
- =?utf-8?B?STBCcU9icWRNL2RQNVNTWGJzdkNyYWRNYVc2TU14VFVjWkFKRUM1K2x1RjFS?=
- =?utf-8?B?N1RBTDNKd2puWklKa3BPc1l0UzZ1M0ExelhYSFRRM1VjamVPamd1TWd3aENr?=
- =?utf-8?B?bnQ4LzgvNXcxNmFST0thRGZaNkJoT1c3dXpNTDR3Y2tEQW1kSWRrQnYra2t1?=
- =?utf-8?B?d3lKajBLS0VuWFFlWlhoYWFNNWRhVTM5TG42a1Bkb1hQUkpURGI2QXNCMmNk?=
- =?utf-8?B?YTJlK0l5QkxVcmVVQ1RSdWowQ1lpU0ltYmlkK3Q0L1hVZG90YkExTDE2b3V5?=
- =?utf-8?B?TjBrM0M2THpEQUhRQkdzZWpzUncxV1NrWjJwV2lSUC91cG1ZNjlvQ01kbWFY?=
- =?utf-8?B?Y1ZwamZVMmk5M2lxdnRmTW1zcjhkUUp0MTc2aUF6UGFpcjZvK2FWL1lhdUxE?=
- =?utf-8?B?N2RjT3p1NGtDUVlnaDVDTFRzSFhBMktZVDZvNW1TSXNzSThrQWJFc3Nka2Vn?=
- =?utf-8?B?djZHUlVtNDd6UllvSEk3RUREcUZHVW5vY1BFL2lUYnZ5dWRRMkE2S0xkWWdH?=
- =?utf-8?B?dnFQWDdVUWRuVHZhWkc2ZGt1K3Q4VzB2QXpObjNEaGxkVHdlazlUem5VL1Fi?=
- =?utf-8?B?T0g2RTBBSnZaTys2YytWSzhiOXlrQ1J4Q3hrNDJPTktqcURMQXRsbmRXbm9L?=
- =?utf-8?B?eXd5eGVmelU5Mng2Z0cvcVVaZ3p6ZVNINElneWQzNElENU83Nyt6Sy9YY0dC?=
- =?utf-8?B?c1RTZmxpL2R6akU1NXEvZjAxQ2lrWkhGSVdpOEJIUWlSRi9meUVBU2RkQmh4?=
- =?utf-8?B?MC8yQ1N3Z0w2dXY1d0xLNXlQSUZ6K1RYSmN5dEpzZ1pLR2d4aXN1SjNQQUNV?=
- =?utf-8?B?SjBYcHBVVTV0d0trQ0xrUWEwNDZmQk1TNmNLWHpucXMwNHR5eVlkMWJUSXZu?=
- =?utf-8?B?U000ZVVkUEMyR2xldVhMbDVxV0w4QjkvbDZRdzAzMEFySnZKN28yQUc1eXB3?=
- =?utf-8?B?ZWY1M0xJOTdGdEc0SkJoYytxdUxmaDJLU0ZFaVVCSmttL1NTbWN5RGxXNExI?=
- =?utf-8?B?dmdhNGY1WHBEbG5jUFYrMlRSMldpaU9wdWo4blcvRUJhVktPNDA0SFFSbXhW?=
- =?utf-8?B?Q3lGcHdsRkhIazBwK285M0o4MTdVV0NVM1hZenM5NzZkb1JsejI1azhobHo0?=
- =?utf-8?B?U3hZbHRUbjZzejFTOVhsaDdVWVl4Q2thRTBNMUNZS2lDeE5aUC85dDB1UGpH?=
- =?utf-8?B?cTY3NnhsdUlxekF2U2JOekpzdVI3MGRSblIrZFF1V3p0M2Y2V0xFanFtbUht?=
- =?utf-8?Q?eyGM+FIm/RK98?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c05aRXcvMUpYT1FxQ2VENjVwMC9RYkNZU0lOQUlpWC9WRlJEMDJjY1N5ODhE?=
- =?utf-8?B?NkIvZVgycmRGem9ia3NUUVk2dm0raHltVThpajZFS2xENUN0SE04clJWVjcw?=
- =?utf-8?B?ekZycmx0dFVoUlY4akxOMXBBVWg4cE1TYVhEMXZ0UGF2dXNKaEZZazQyMVVw?=
- =?utf-8?B?KzJDOTJoU2ozSk1mMXJPSjVhRC85WFhub3dlZGVCcGp6Z3N1MXAwaFBpcnBo?=
- =?utf-8?B?bUt5R1pJaXQ5enczVytJWXJtU2JoODM5Vk9mRTVaQnplRU1ua29UZFpiL0R2?=
- =?utf-8?B?dlRZamVnV25CR0NXRS9WWGpKRXUyZHZ3MFNYUFBUcE85N1A3NyszU3FlbmxQ?=
- =?utf-8?B?cFNWTDBRWCtFbWtnOEdhRENtV2FuMERCTG82S2g3YTBsSG5pS1doYXdsQzd4?=
- =?utf-8?B?LzNXbVAzVU91MlRkTTIycnNxY1h3WFZQbCtQcnJjbENRWmVLaUZIZ05DNWxU?=
- =?utf-8?B?dnBpeWE5emFtWkJiVzFjdW5ZR2M2ajNoUlJoNlJSVHJ5Z2VoNUJSSnRaNEFR?=
- =?utf-8?B?b1VUV2s3TVFDRm5ISVAzV2JhaVY0d3VpSGt2U2haRVhuUlBuTUQ0ZTJBeHRX?=
- =?utf-8?B?ZnNMVnJObE9iTFh0NVlFc1lFQjhjbytIdm1qd2VRVmdmZG42NCthek15OWJY?=
- =?utf-8?B?UWFOZDRPd29NdWtLZnRjZWZpNDVxa1FWL0M0Sk12UDg3SVpQMExWTmNoNURs?=
- =?utf-8?B?M1l6SHh6aWpZeHJiYUZ2cmNtVlN2ZGdtWmVCaVh5ZG1CYlovNTRXODZIYzkz?=
- =?utf-8?B?Y1c2SS9uY2YyY25JRDVvUW9Pay95WHE3RlNWMEpjaHpsQ1FGeThQaTE1SmVH?=
- =?utf-8?B?Zjd1TEYvNlRzT2RxcDNvK2tmcVJqdTgxUUxNTHBxZysxV2gzcnJxT3ZveTdY?=
- =?utf-8?B?THE0U3ZleDhEd0QvRmN2Q2wzZC96cmN3ditHVC9QU00rWkY0d0kxc3FmTXFr?=
- =?utf-8?B?ZnpNaVpEd3FieW5ldVo4a1VzK3l1cCtJZGQ1amEwVC9sOHJIK3VuczdZR1lu?=
- =?utf-8?B?MHdKSkh1dXdTYXJXT29KTkZDbVU3NVEvRTVQNzB1bWRkNmdDSkEwSkRtRkNs?=
- =?utf-8?B?Nzl4dFhuWWtnM0F5d1NXRDU2MUllNzh0OGpYWW1vQXhWVjEyUEJ4bGlTaGc3?=
- =?utf-8?B?OU5ybmVWZHdvYlNqOWFzaEdUa1pFNDRHQVR2REVBWFJvUUNxL0FqeUJSWmV3?=
- =?utf-8?B?azk4RHlHMHlBUWdkSFNhQXNJU2JRbVZ2c0p2bnh1VlhWcDdvbGxZRmxrQzBR?=
- =?utf-8?B?a1J5TkxwMmNvZVJsZ0RzL0xkdG5CTVdWU2I4ZU9laWlwd1BHMmEvb1ppeHR5?=
- =?utf-8?B?bkxyNS9iYk1mMzhCNkwyS3Vta2RnZGplTGtjRWQ3T3p0d0F6ZS8xaGV1cHVv?=
- =?utf-8?B?ZEVCdDQ5YTdQajd3dDN5dFJIK3J6TVp1S1dGYW9tZytwaXltSnBPWEY2NmF1?=
- =?utf-8?B?SjlLQnFmbTU0Zkw1S1kwWGdJUGlZRTlPR0NNdjc3MkhINTJWRERIY3hJZmpx?=
- =?utf-8?B?RVFxV2pVVmdGWHMzK0JNWER2LzVBOEFtTEpKRTcyMHdKV3RXZ216V08zY0dp?=
- =?utf-8?B?MjcxRDhXeW9qZ3JORjE3emhBVlFicTR4MkxxUTRzbkxZSE04aWZpUDlGbFhp?=
- =?utf-8?B?eG90TkpOYTdlMFJ3UWpsZkVobEc2SjlvNjd2czV1cXdtRTlRSis4aU9vdnAv?=
- =?utf-8?B?RVg3MzFZWG8zeUZKQzVPQXJlVDUyZjVoYTJOSlpLTmp3RnVFZ3JZblhxRUhH?=
- =?utf-8?B?Q1IxVnI4ei9BQmwvUE96dkgyZFVZeGpJNEYrL1JGN01naURvdGNCS1R0WlRv?=
- =?utf-8?B?VnBtb1BTcHFGNTlxMVlQbGttQXZ2YVAwazZNOEk0cUlJZnA0b2pXSm1GVmVt?=
- =?utf-8?B?Z1VLUGFUbEJiSW9RcVZ4YkJZZ0NnTGZJVTV5R1hrSTZ1eGl4UWFKMk5vV1NZ?=
- =?utf-8?B?NzZFSDMwZGViNmxDNEwvSklRRjFRalhzZTlDa3FuMytWVzhPYklUNVVOdnpm?=
- =?utf-8?B?UEYrWXhHZ2NNbEhOVWFzK25aVEZDeTVUMkFRekY3OUFrOGhPVHkzTHB2aGhQ?=
- =?utf-8?B?RzA0ZmNIalBSVHFhbTRPeEdvdlJzRnhNNUNKWDFvMGdlWm9TWiszZm5lQnM0?=
- =?utf-8?B?dnY4a2hSTjNaaTRBQ1NKYllYQTZCTDAyZS9BR2dyaE1OcXNmUHJwK2M2WS8r?=
- =?utf-8?B?ZlE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e6a5838-87c4-408e-6204-08dd4504e622
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Feb 2025 10:15:50.1019
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FVLYaMtDb5RlZOWPCa0RSiiDRkLsLwpzpTib67dUqD8jc6bmZQJVVewZqkIqJRXjRfANXL27ikGpa77nBCeQkR5jlxRWSE6SdIkWDvHAZXQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB10624
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1738668125;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LL6EynQq/CqLtTBz5TS778NAparj4/zu88pSMnCePWE=;
+	b=RzRMPyaljUx6qDqfChSH4IDeOvzTMlqJydPipK0cvuIfAsU/EzEm9K32gPRYYGIVcL22pz
+	fH2QDI4tSGOZeceUoxJv4J3ToL88I+BGM9uM14HcTYTutMVL+2WQ60A+YwJcwKJipD/Ufl
+	FBhB1rGmFY7t/f9V1wFpH2sGGpB1vxXBdCjHwQAMWD0TjrWL+2UE9HB3rr1j3F9m0Np82R
+	FUWh2qPaAOqkt6PRWKEI2mCBJ9OMRBMxZjxUO5r2qCBRW6V22S5FYWZcyBJB93DxmXmvOQ
+	1MSmkxgjhDCY65PUIKWFqhsBB3mPaaJmDwR3tMlh2ACO9x0wNkgX8eGtb2eJIA==
+Date: Tue, 04 Feb 2025 12:22:04 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jagan
+ Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>, Michael Riesch
+ <michael.riesch@wolfvision.net>, Jonas Karlman <jonas@kwiboo.se>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Quentin
+ Schulz <quentin.schulz@cherry.de>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 3/4] arm64: dts: rockchip: add overlay tests for Rock
+ 5B PCIe overlays
+In-Reply-To: <20250131-pre-ict-jaguar-v4-3-c971e2852e8d@cherry.de>
+References: <20250131-pre-ict-jaguar-v4-0-c971e2852e8d@cherry.de>
+ <20250131-pre-ict-jaguar-v4-3-c971e2852e8d@cherry.de>
+Message-ID: <77b5d0efa6e56bb391575aeeb4d1be80@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_021553_971157_ADB66144 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20250204_032210_035952_C4A253FE 
+X-CRM114-Status: GOOD (  27.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,59 +73,178 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+Hello all,
 
-On 2/3/25 6:16 PM, Detlev Casanova wrote:
-> HDMI audio is available on the Rock 5B HDMI TX port.
-> Enable it.
+I'm sorry for being late to the party.  Please, see some important
+notes below;  to sum it up, we'll need to rework this a bit.
+
+On 2025-01-31 11:40, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@cherry.de>
 > 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-
-Will try to remember to send patches for RK3588 Tiger Haikou and RK3588 
-Jaguar once those patches get merged :)
-
-Thanks!
-Quentin
-
+> According to commit 40658534756f ("arm64: dts: rockchip: Add rock5b
+> overlays for PCIe endpoint mode"), Rock 5B can operate in PCIe endpoint
+> mode. For that to work, the rk3588-rock-5b-pcie-ep.dtbo overlay needs 
+> to
+> be applied on Rock 5B base Device Tree. If that Rock 5B is connected to
+> another Rock 5B, the latter needs to apply the
+> rk3588-rock-5b-pcie-srns.dtbo overlay.
+> 
+> In order to make sure the overlays are still valid in the future, let's
+> add a validation test by applying the overlays on top of the main base
+> at build time.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 > ---
->   arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>  arch/arm64/boot/dts/rockchip/Makefile | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index d597112f1d5b8..88ff5d9db2817 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -204,6 +204,10 @@ &gpu {
->   	status = "okay";
->   };
->   
-> +&hdmi0_sound {
-> +	status = "okay";
-> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
+> b/arch/arm64/boot/dts/rockchip/Makefile
+> index
+> 267966ea69b194887d59e38a4220239a90a91306..ebcd16ce976ebe56a98d9685228980cd1f2f180a
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -150,8 +150,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += 
+> rk3588-orangepi-5-plus.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5-itx.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
+> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+> @@ -186,3 +184,11 @@ rk3568-wolfvision-pf5-vz-2-uhd-dtbs :=
+> rk3568-wolfvision-pf5.dtb \
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+>  rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+>  	rk3588-edgeble-neu6a-wifi.dtbo
 > +
->   &hdmi0 {
->   	status = "okay";
->   };
-> @@ -318,6 +322,10 @@ i2s0_8ch_p0_0: endpoint {
->   	};
->   };
->   
-> +&i2s5_8ch {
-> +	status = "okay";
-> +};
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtb
+> +rk3588-rock-5b-pcie-ep-dtbs := rk3588-rock-5b.dtb \
+> +	rk3588-rock-5b-pcie-ep.dtbo
 > +
->   &package_thermal {
->   	polling-delay = <1000>;
->   
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
+> +rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
+> +	rk3588-rock-5b-pcie-srns.dtbo
 
+After a quite lengthy excursion into the scripts/Makefile.dtbs and
+scripts/Makefile.lib files, I'm afraid that the approach taken in
+this patch isn't right.  Please allow me to explain.
+
+Let's have a look at arch/arm64/boot/dts/ti/Makefile first, as an
+example that provides already existing DT overlay checks.  Here's
+an excerpt from that Makefile, which also provides an important cue
+by mentioning CONFIG_OF_ALL_DTBS:
+
+   12 dtb-$(CONFIG_ARCH_K3) += k3-am625-beagleplay.dtb
+   13 dtb-$(CONFIG_ARCH_K3) += k3-am625-beagleplay-csi2-ov5640.dtbo
+   14 dtb-$(CONFIG_ARCH_K3) += k3-am625-beagleplay-csi2-tevi-ov5640.dtbo
+
+  135 # Build time test only, enabled by CONFIG_OF_ALL_DTBS
+  136 k3-am625-beagleplay-csi2-ov5640-dtbs := k3-am625-beagleplay.dtb \
+  137         k3-am625-beagleplay-csi2-ov5640.dtbo
+  138 k3-am625-beagleplay-csi2-tevi-ov5640-dtbs := 
+k3-am625-beagleplay.dtb \
+  139         k3-am625-beagleplay-csi2-tevi-ov5640.dtbo
+
+  213 dtb- += k3-am625-beagleplay-csi2-ov5640.dtb \
+  214         k3-am625-beagleplay-csi2-tevi-ov5640.dtb \
+
+As visible above, the DT overlays get added to dtb-$(CONFIG_ARCH_K3)
+as .dtbo files (not as .dtb files), while the build-time DT overlay
+tests specify the dependency chains for the overlays.
+
+Even more importantly, the build-time overlay tests aren't supposed
+to be executed until CONFIG_OF_ALL_DTBS is selected, which actually
+gets handled at the very start of scripts/Makefile.dtbs:
+
+    3 # If CONFIG_OF_ALL_DTBS is enabled, all DT blobs are built
+    4 dtb-$(CONFIG_OF_ALL_DTBS) += $(dtb-)
+
+The way this patch modifies arch/arm64/boot/dts/rockchip/Makefile
+actually isn't correct, despite apparently producing the desired
+outcome, because the way it adds rk3588-rock-5b-pcie-ep.dtb and
+rk3588-rock-5b-pcie-srns.dtb (instead of adding proper .dtbo names)
+to dtb-$(CONFIG_ARCH_ROCKCHIP) effectively creates some kind of
+"phony targets" that indeed "get the job done", but unfortunately
+in a wrong way.  The "phony targets" are handled by the following
+"magic" in scripts/Makefile.dtbs:
+
+    6 # Composite DTB (i.e. DTB constructed by overlay)
+    7 multi-dtb-y := $(call multi-search, $(dtb-y), .dtb, -dtbs)
+    8 # Primitive DTB compiled from *.dts
+    9 real-dtb-y := $(call real-search, $(dtb-y), .dtb, -dtbs)
+   10 # Base DTB that overlay is applied onto
+   11 base-dtb-y := $(filter %.dtb, $(call real-search, $(multi-dtb-y), 
+.dtb, -dtbs))
+
+   18 targets         += $(real-dtb-y)
+
+Let's have a look at the relevant part of the output produced when
+"make dtbs" is executed with this patch applied:
+
+   DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtbo
+   OVL     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtb
+   DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtbo
+   OVL     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtb
+
+Note the "OVL .*dtb" lines above, in which the ".*dtb" parts are
+the above-mentioned "phony targets".  The above-quoted "magic" in
+scripts/Makefile.dtbs is what "unfolds" those "phony targets" to
+make them apparently produce the desired outcome, by populating
+the $(real-dtb-y) variable with "rk3588-rock-5b-pcie-ep.dtbo
+rk3588-rock-5b.dtb rk3588-rock-5b-pcie-srns.dtbo", as the proper
+.dtbo names that get passed to the dtc utility.
+
+Even more "magic" in scripts/Makefile.dtbs "unfolds" the "phony
+targets" to have the build-time DT overlay tests performed in the
+apparently proper way, while they actually shouldn't be performed
+unless CONFIG_OF_ALL_DTBS is also selected.
+
+With all this is mind, this patch should be reworked to follow
+the right approach for defining build-time DT overlay tests, which
+is illustrated in arch/arm64/boot/dts/ti/Makefile.  In particular,
+we should just add the following DT overlay test definitions to
+arch/arm64/boot/dts/rockchip/Makefile:
+
+174 # Build-time tests only, enabled by CONFIG_OF_ALL_DTBS
+175 rk3588-rock-5b-pcie-ep-dtbs := rk3588-rock-5b.dtb \
+176         rk3588-rock-5b-pcie-ep.dtbo
+177 rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
+178         rk3588-rock-5b-pcie-srns.dtbo
+179 dtb- += rk3588-rock-5b-pcie-ep.dtb \
+180         rk3588-rock-5b-pcie-srns.dtb
+
+You'll notice that the $(dtb-) variable pretty much again contains
+the same "phony targets", but that's the way they should actually
+be used.  I'm not very happy with the way they're specified, but
+we should follow the approach from arch/arm64/boot/dts/ti/Makefile
+anyway, and possibly improve the whole thing later.
+
+I'd actually prefer to just have these test definitions added to the
+end of arch/arm64/boot/dts/ti/Makefile, without moving the .dtbo lines
+around.  That would keep the tests separate, which should be more
+readable when we get more of them defined.
+
+With the above-proposed changes in place, and with CONFIG_OF_ALL_DTBS
+selected, the relevant part of the "make dtbs" output looks like this:
+
+   DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb
+   DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtbo
+   DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtbo
+   OVL     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtb
+   OVL     arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtb
+
+No more "phony targets" in the produced output. :)
 
 _______________________________________________
 Linux-rockchip mailing list
