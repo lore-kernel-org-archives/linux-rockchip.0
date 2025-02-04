@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42A7BC0219C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FBFC3DA4A
 	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,27 +12,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xo5HUXa50+e5JArmhjj9wTXJkyytD4pioXy4LVvTpBI=; b=zJqToA9Io2buzr
-	3Tvlf9JGK0NORCCZjnhfDKI1PgYG7oer/uO4Yj20pe/fFR9g1kqnH0vz+2iufmbYBpnRXfU5ElIje
-	FiqUxoIupe39QiEqvXeW2vvTygDvOaTZC+6VhrLMkxmXliVVFlkuAwQlujmIDm8hIHNIlmlnhxThE
-	RodirVCC3KiOrp5AB8EVRX1+uXgE+WFBF6tZFBqmB6pza9Hmtv1mi9WwNT2zLKS3Wm1TChPJr0V/n
-	Ktck5TA5ceu5ZIp6lyNFK6B9JQtUp1bZgZWHsMRD4yqY1G/t+0egE/WmndsJFycfh688WkL7/DGM+
-	Y4Ri+BE0MylIkmu2D9Ew==;
+	List-Owner; bh=nURbKZbgJGMpV8SkaQBQmVjxIPmHUbz2tC93glGl61c=; b=LsEow9KpjNs1ud
+	/JVuOKZyVqdRT99CN8XQ1vb6KTMUw9C2rOIcfspyukyFZZvgZZLRopBwqAOiNPCGOzm0e4z9Qn6uu
+	2nR/dySiJaGK+GrEtKaqhyh/k0A2O3LupnNtSgidSk3+tsYpBvSGsJGH4jSfHvEGupdV1JK//SP9n
+	Y+bEEc+Ey4ivTXmoYjrwWk7h/HXAP0FBfk15TUg4t7wvPON3QbLlt8RupdEwG3wqymJIdjQbwt90H
+	LOc71nzlLxYVIiC3OqJNCXpZXLl32Rh4xDua0IJizHtHeWNEt3K4IT9cAPFcZ5cYlpAZppvTUp3Bl
+	n9vWS/DnjBufbXVXdsRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfLCB-00000000sRn-2EfH;
-	Tue, 04 Feb 2025 15:50:39 +0000
+	id 1tfLCA-00000000sRY-0aJ3;
+	Tue, 04 Feb 2025 15:50:38 +0000
 Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfKz5-00000000qKt-0t9M;
-	Tue, 04 Feb 2025 15:37:08 +0000
+	id 1tfKz4-00000000qKL-0Alb;
+	Tue, 04 Feb 2025 15:37:07 +0000
 ARC-Seal: i=1; a=rsa-sha256; t=1738683404; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Jlggb8fTFANjDZEgljs5b4UWgyLLGXCA65os1qnPJTI4UjSZ7/3K0cJyfFjdBPnQViD/yeJyzDfCpdsOWlcEnFc75dxBiQ56G5Zz7GIR4QK6EYI8L8nfkALouAeJKc3qhhvGOhDtQwtCWOIIso8ZbQfMhRKD4XCqsOFLIIi9RGs=
+	b=TruEShvCeSHdknqE2cfbwhaTTig5fKKWLc8uPb8qMY4tpNWEKIa+EUCEHc3skaB8ISWYoNQJr5+5ZBsdFvib/2HUejN+JNTFmfhJ24YhjzW+cClBeCyYfYxa0uFhtsbviearCG3uFFynS8wCwLB6ZILIi15dSZo28Qr9LBWxnNM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
 	t=1738683404; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=cLWASrFa29Q0aJ8RgvPnTlSszHSM+G/gv+i3GP4pQnU=; 
-	b=MV7YLv+0TwJ9R6MT1xauccgHlQL8T5q/8dt/svTxtsEvpIARIA1lvjjCfyp5bfC2nt/kntA6tbGx1llHOHRC1IUySfodxHqOG6jJHWkoZQ8X/fEIk6pJIBw9/EHBi67NYvn0hmzMS+7XIj5IOLlD7m0GkOvjoejyTpqxbUxK98Q=
+	bh=ee+aIEbx0Uoz73M7xvQb4aORnr+guJuf8bM3GRunjkY=; 
+	b=jgZdxD4Hu3jlizBylhq+Sb5yd7e/OxrnCHArwBbmvRfDE191dq4gCakLBCLoaLhCbRWUZvp7Tt2Osq6wHEmXR34Cbk6BzVAHFCXsLOU38hrD2b5U0qsl4CmehJ/fwIwzWL9CExnHLxm8nn/pyE9Z2+2LTfkQfpAAgd4ZzlrX58s=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
@@ -40,17 +40,18 @@ ARC-Authentication-Results: i=1; mx.zohomail.com;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683404;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=cLWASrFa29Q0aJ8RgvPnTlSszHSM+G/gv+i3GP4pQnU=;
-	b=VqiOQIoIx2bwtEZpqxAWpm4Jya7YhOXf3sPk6rS6DVGtAjTbA8YiZ8mjuB7TI/2x
-	zT4bxlSUPoWcSb1nvxc1+77RX+gGwO3awAIV4pfOoUA6GhXokcNDJlCG/VfoyuHSJtL
-	1hr8xwdmy2HB5vMpKKvW2BE5KKim0GogLvRpV2cU=
-Received: by mx.zohomail.com with SMTPS id 1738683388528327.5051525050993;
-	Tue, 4 Feb 2025 07:36:28 -0800 (PST)
+	bh=ee+aIEbx0Uoz73M7xvQb4aORnr+guJuf8bM3GRunjkY=;
+	b=IimQtL+ZEWbMj2SBAAlLGCUuG/5v9wS9pE+7QEmkTwvqkFo0rIGWnDGy4XKuP71G
+	ugoroqv0C9r8hU5WodBkO4gGbee4JalGujWSKhL66oWIjqeWj5c8vxcuBqCeXQULR85
+	oqmTsPLNzutcCMrPXLRDWYrLMXGVevWM/u3zugso=
+Received: by mx.zohomail.com with SMTPS id 1738683398844646.1655143013911;
+	Tue, 4 Feb 2025 07:36:38 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 04 Feb 2025 16:35:46 +0100
-Subject: [PATCH v2 1/7] dt-bindings: reset: Add SCMI reset IDs for RK3588
+Date: Tue, 04 Feb 2025 16:35:49 +0100
+Subject: [PATCH v2 4/7] hwrng: rockchip: eliminate some unnecessary
+ dereferences
 MIME-Version: 1.0
-Message-Id: <20250204-rk3588-trng-submission-v2-1-608172b6fd91@collabora.com>
+Message-Id: <20250204-rk3588-trng-submission-v2-4-608172b6fd91@collabora.com>
 References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
@@ -63,13 +64,11 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- XiaoDong Huang <derrick.huang@rock-chips.com>, 
- Conor Dooley <conor.dooley@microchip.com>
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_073707_331488_8748724D 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250204_073706_147282_8D1E7C9F 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,76 +85,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When TF-A is used to assert/deassert the resets through SCMI, the
-IDs communicated to it are different than the ones mainline Linux uses.
+Despite assigning a temporary variable the value of &pdev->dev early on
+in the probe function, the probe function then continues to use this
+construct when it could just use the local dev variable instead.
 
-Import the list of SCMI reset IDs from mainline TF-A so that devicetrees
-can use these IDs more easily.
+Simplify this by using the local dev variable directly.
 
-Co-developed-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-Signed-off-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- include/dt-bindings/reset/rockchip,rk3588-cru.h | 41 ++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+ drivers/char/hw_random/rockchip-rng.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/dt-bindings/reset/rockchip,rk3588-cru.h b/include/dt-bindings/reset/rockchip,rk3588-cru.h
-index e2fe4bd5f7f01569c804ae4ea87c7cf0433d2ae7..878beae6dc3baaa9a2eb46f7a81454d360968754 100644
---- a/include/dt-bindings/reset/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/reset/rockchip,rk3588-cru.h
-@@ -1,6 +1,6 @@
- /* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
- /*
-- * Copyright (c) 2021 Rockchip Electronics Co. Ltd.
-+ * Copyright (c) 2021, 2024 Rockchip Electronics Co. Ltd.
-  * Copyright (c) 2022 Collabora Ltd.
-  *
-  * Author: Elaine Zhang <zhangqing@rock-chips.com>
-@@ -753,4 +753,43 @@
+diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
+index b1b510087e5862b3b2ed97cefbf10620bcf9b020..082daea27e937e147195070454f9511a71c8c67e 100644
+--- a/drivers/char/hw_random/rockchip-rng.c
++++ b/drivers/char/hw_random/rockchip-rng.c
+@@ -148,7 +148,7 @@ static int rk_rng_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, rk_rng->clk_num,
+ 				     "Failed to get clks property\n");
  
- #define SRST_A_HDMIRX_BIU		660
+-	rst = devm_reset_control_array_get_exclusive(&pdev->dev);
++	rst = devm_reset_control_array_get_exclusive(dev);
+ 	if (IS_ERR(rst))
+ 		return dev_err_probe(dev, PTR_ERR(rst), "Failed to get reset property\n");
  
-+/* SCMI Secure Resets */
-+
-+/* Name=SECURE_SOFTRST_CON00,Offset=0xA00 */
-+#define SCMI_SRST_A_SECURE_NS_BIU	10
-+#define SCMI_SRST_H_SECURE_NS_BIU	11
-+#define SCMI_SRST_A_SECURE_S_BIU	12
-+#define SCMI_SRST_H_SECURE_S_BIU	13
-+#define SCMI_SRST_P_SECURE_S_BIU	14
-+#define SCMI_SRST_CRYPTO_CORE		15
-+/* Name=SECURE_SOFTRST_CON01,Offset=0xA04 */
-+#define SCMI_SRST_CRYPTO_PKA		16
-+#define SCMI_SRST_CRYPTO_RNG		17
-+#define SCMI_SRST_A_CRYPTO		18
-+#define SCMI_SRST_H_CRYPTO		19
-+#define SCMI_SRST_KEYLADDER_CORE	25
-+#define SCMI_SRST_KEYLADDER_RNG		26
-+#define SCMI_SRST_A_KEYLADDER		27
-+#define SCMI_SRST_H_KEYLADDER		28
-+#define SCMI_SRST_P_OTPC_S		29
-+#define SCMI_SRST_OTPC_S		30
-+#define SCMI_SRST_WDT_S			31
-+/* Name=SECURE_SOFTRST_CON02,Offset=0xA08 */
-+#define SCMI_SRST_T_WDT_S		32
-+#define SCMI_SRST_H_BOOTROM		33
-+#define SCMI_SRST_A_DCF			34
-+#define SCMI_SRST_P_DCF			35
-+#define SCMI_SRST_H_BOOTROM_NS		37
-+#define SCMI_SRST_P_KEYLADDER		46
-+#define SCMI_SRST_H_TRNG_S		47
-+/* Name=SECURE_SOFTRST_CON03,Offset=0xA0C */
-+#define SCMI_SRST_H_TRNG_NS		48
-+#define SCMI_SRST_D_SDMMC_BUFFER	49
-+#define SCMI_SRST_H_SDMMC		50
-+#define SCMI_SRST_H_SDMMC_BUFFER	51
-+#define SCMI_SRST_SDMMC			52
-+#define SCMI_SRST_P_TRNG_CHK		53
-+#define SCMI_SRST_TRNG_S		54
-+
-+
- #endif
+@@ -171,11 +171,11 @@ static int rk_rng_probe(struct platform_device *pdev)
+ 	pm_runtime_use_autosuspend(dev);
+ 	ret = devm_pm_runtime_enable(dev);
+ 	if (ret)
+-		return dev_err_probe(&pdev->dev, ret, "Runtime pm activation failed.\n");
++		return dev_err_probe(dev, ret, "Runtime pm activation failed.\n");
+ 
+ 	ret = devm_hwrng_register(dev, &rk_rng->rng);
+ 	if (ret)
+-		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip hwrng\n");
++		return dev_err_probe(dev, ret, "Failed to register Rockchip hwrng\n");
+ 
+ 	return 0;
+ }
 
 -- 
 2.48.1
