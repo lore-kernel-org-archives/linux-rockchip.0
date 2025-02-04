@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09072C02193
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42A7BC0219C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Feb 2025 15:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7qr7cyY2ltjBdPK5sfVw5tTRWJ8MA0Fc7Tu7pcrz82I=; b=DFLKZk/H7b+RVP
-	41LhJBS/bLWl1Mwwp07YdKL1bGGoWgqZkW6FmIGZtEv/wnHsAlCXt4ZPyYEu1xKpbzhDugZXO8aPb
-	vvE8MAxz3NDPjSi4KRFw+Cbbh/g3Vrpfsmz3Lr21JHyq1AvyRaDYiF460qZy/TZaDDl6GjEmHAx8v
-	qxe1RB/jO7W/CfT++ql90nQxjWAiWjl5RWZ5m4JQhvnrMicKo1sB6yhjH9BibeFE/7mgbK0NR+Xq0
-	FXz6rCkaWUqEeYfevYHXXe8aPwgk9XWX/PxvNoeFVZ+j2NkjK3YfxbU+aaiGFa74CvGOQvidZ/ran
-	ArTToof/2gxqTusypkKg==;
+	List-Owner; bh=xo5HUXa50+e5JArmhjj9wTXJkyytD4pioXy4LVvTpBI=; b=zJqToA9Io2buzr
+	3Tvlf9JGK0NORCCZjnhfDKI1PgYG7oer/uO4Yj20pe/fFR9g1kqnH0vz+2iufmbYBpnRXfU5ElIje
+	FiqUxoIupe39QiEqvXeW2vvTygDvOaTZC+6VhrLMkxmXliVVFlkuAwQlujmIDm8hIHNIlmlnhxThE
+	RodirVCC3KiOrp5AB8EVRX1+uXgE+WFBF6tZFBqmB6pza9Hmtv1mi9WwNT2zLKS3Wm1TChPJr0V/n
+	Ktck5TA5ceu5ZIp6lyNFK6B9JQtUp1bZgZWHsMRD4yqY1G/t+0egE/WmndsJFycfh688WkL7/DGM+
+	Y4Ri+BE0MylIkmu2D9Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfL1f-00000000r2R-2ByF;
-	Tue, 04 Feb 2025 15:39:47 +0000
+	id 1tfLCB-00000000sRn-2EfH;
+	Tue, 04 Feb 2025 15:50:39 +0000
 Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfKz0-00000000qIV-3IdV;
-	Tue, 04 Feb 2025 15:37:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738683398; cv=none; 
+	id 1tfKz5-00000000qKt-0t9M;
+	Tue, 04 Feb 2025 15:37:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1738683404; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Zyt/HjfG+yTFPFCoPjfzW+BlsfazEKApAez9eCk9iAoCMH0V/cS0xCY8WIMTYLcxgMKGvLpggch4OyfN4fqjwOblENL6C3HxzrIPOYHkeXkSvZHixYq9cVdfSf7JBE3eNr8eu123yMP/TZIJX2H6MMW1tU9eGdxbUPlLyuDjnqo=
+	b=Jlggb8fTFANjDZEgljs5b4UWgyLLGXCA65os1qnPJTI4UjSZ7/3K0cJyfFjdBPnQViD/yeJyzDfCpdsOWlcEnFc75dxBiQ56G5Zz7GIR4QK6EYI8L8nfkALouAeJKc3qhhvGOhDtQwtCWOIIso8ZbQfMhRKD4XCqsOFLIIi9RGs=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738683398; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kVZIBsJ2ukDO0m/xIz1rl1s2choG2uPMysZ4azq+d4A=; 
-	b=Uzat8tJIuh0xrX25VHIn7B3SkrnZdjLyzJnNK5WGPu5FfdMZbe8IuqgodWZMpf+HKkqFp/vdGvchMPXatBSx/S95I+9EpGp7FMO55s8DidoeQ5QqkVXt5P0kZjHHrk/b7QtW6aMlf1Gb05zXeG6sVn5tzq74k0xpY+1Kaox1qMY=
+	t=1738683404; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=cLWASrFa29Q0aJ8RgvPnTlSszHSM+G/gv+i3GP4pQnU=; 
+	b=MV7YLv+0TwJ9R6MT1xauccgHlQL8T5q/8dt/svTxtsEvpIARIA1lvjjCfyp5bfC2nt/kntA6tbGx1llHOHRC1IUySfodxHqOG6jJHWkoZQ8X/fEIk6pJIBw9/EHBi67NYvn0hmzMS+7XIj5IOLlD7m0GkOvjoejyTpqxbUxK98Q=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683398;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738683404;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=kVZIBsJ2ukDO0m/xIz1rl1s2choG2uPMysZ4azq+d4A=;
-	b=gXYZ3MpeQTLxffZoid6o4agzOgQjiHL2ZDn+6EGgU2VkvVoDZGwcKtRzs5osCPEe
-	ef4oaLK/Qwm0IzDdxWdX1JcqbfBj/kf+P8Fmfl3KgRdO5ITfFRWB/9+dTqPcHyFzZb8
-	VK6SfnnbiBM6WI2yST8UYG1O/TQ55Uwb/ChKbWrI=
-Received: by mx.zohomail.com with SMTPS id 1738683395390506.65916958717594;
-	Tue, 4 Feb 2025 07:36:35 -0800 (PST)
+	bh=cLWASrFa29Q0aJ8RgvPnTlSszHSM+G/gv+i3GP4pQnU=;
+	b=VqiOQIoIx2bwtEZpqxAWpm4Jya7YhOXf3sPk6rS6DVGtAjTbA8YiZ8mjuB7TI/2x
+	zT4bxlSUPoWcSb1nvxc1+77RX+gGwO3awAIV4pfOoUA6GhXokcNDJlCG/VfoyuHSJtL
+	1hr8xwdmy2HB5vMpKKvW2BE5KKim0GogLvRpV2cU=
+Received: by mx.zohomail.com with SMTPS id 1738683388528327.5051525050993;
+	Tue, 4 Feb 2025 07:36:28 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 04 Feb 2025 16:35:48 +0100
-Subject: [PATCH v2 3/7] hwrng: rockchip: store dev pointer in driver struct
+Date: Tue, 04 Feb 2025 16:35:46 +0100
+Subject: [PATCH v2 1/7] dt-bindings: reset: Add SCMI reset IDs for RK3588
 MIME-Version: 1.0
-Message-Id: <20250204-rk3588-trng-submission-v2-3-608172b6fd91@collabora.com>
+Message-Id: <20250204-rk3588-trng-submission-v2-1-608172b6fd91@collabora.com>
 References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
@@ -63,11 +63,13 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ XiaoDong Huang <derrick.huang@rock-chips.com>, 
+ Conor Dooley <conor.dooley@microchip.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_073702_895625_49118EF9 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20250204_073707_331488_8748724D 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,69 +86,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rockchip rng driver does a dance to store the dev pointer in the
-hwrng's unsigned long "priv" member. However, since the struct hwrng
-member of rk_rng is not a pointer, we can use container_of to get the
-struct rk_rng instance from just the struct hwrng*, which means we don't
-have to subvert what little there is in C of a type system and can
-instead store a pointer to the device struct in the rk_rng itself.
+When TF-A is used to assert/deassert the resets through SCMI, the
+IDs communicated to it are different than the ones mainline Linux uses.
 
+Import the list of SCMI reset IDs from mainline TF-A so that devicetrees
+can use these IDs more easily.
+
+Co-developed-by: XiaoDong Huang <derrick.huang@rock-chips.com>
+Signed-off-by: XiaoDong Huang <derrick.huang@rock-chips.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/char/hw_random/rockchip-rng.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ include/dt-bindings/reset/rockchip,rk3588-cru.h | 41 ++++++++++++++++++++++++-
+ 1 file changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-index 289b385bbf05e3c828b6e26feb2453db62f6b2a2..b1b510087e5862b3b2ed97cefbf10620bcf9b020 100644
---- a/drivers/char/hw_random/rockchip-rng.c
-+++ b/drivers/char/hw_random/rockchip-rng.c
-@@ -54,6 +54,7 @@ struct rk_rng {
- 	void __iomem *base;
- 	int clk_num;
- 	struct clk_bulk_data *clk_bulks;
-+	struct device *dev;
- };
+diff --git a/include/dt-bindings/reset/rockchip,rk3588-cru.h b/include/dt-bindings/reset/rockchip,rk3588-cru.h
+index e2fe4bd5f7f01569c804ae4ea87c7cf0433d2ae7..878beae6dc3baaa9a2eb46f7a81454d360968754 100644
+--- a/include/dt-bindings/reset/rockchip,rk3588-cru.h
++++ b/include/dt-bindings/reset/rockchip,rk3588-cru.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
+ /*
+- * Copyright (c) 2021 Rockchip Electronics Co. Ltd.
++ * Copyright (c) 2021, 2024 Rockchip Electronics Co. Ltd.
+  * Copyright (c) 2022 Collabora Ltd.
+  *
+  * Author: Elaine Zhang <zhangqing@rock-chips.com>
+@@ -753,4 +753,43 @@
  
- /* The mask in the upper 16 bits determines the bits that are updated */
-@@ -70,8 +71,7 @@ static int rk_rng_init(struct hwrng *rng)
- 	/* start clocks */
- 	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
- 	if (ret < 0) {
--		dev_err((struct device *) rk_rng->rng.priv,
--			"Failed to enable clks %d\n", ret);
-+		dev_err(rk_rng->dev, "Failed to enable clocks: %d\n", ret);
- 		return ret;
- 	}
+ #define SRST_A_HDMIRX_BIU		660
  
-@@ -105,7 +105,7 @@ static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	u32 reg;
- 	int ret = 0;
- 
--	ret = pm_runtime_resume_and_get((struct device *) rk_rng->rng.priv);
-+	ret = pm_runtime_resume_and_get(rk_rng->dev);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -122,8 +122,8 @@ static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	/* Read random data stored in the registers */
- 	memcpy_fromio(buf, rk_rng->base + TRNG_RNG_DOUT, to_read);
- out:
--	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
--	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
-+	pm_runtime_mark_last_busy(rk_rng->dev);
-+	pm_runtime_put_sync_autosuspend(rk_rng->dev);
- 
- 	return (ret < 0) ? ret : to_read;
- }
-@@ -164,7 +164,7 @@ static int rk_rng_probe(struct platform_device *pdev)
- 		rk_rng->rng.cleanup = rk_rng_cleanup;
- 	}
- 	rk_rng->rng.read = rk_rng_read;
--	rk_rng->rng.priv = (unsigned long) dev;
-+	rk_rng->dev = dev;
- 	rk_rng->rng.quality = 900;
- 
- 	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
++/* SCMI Secure Resets */
++
++/* Name=SECURE_SOFTRST_CON00,Offset=0xA00 */
++#define SCMI_SRST_A_SECURE_NS_BIU	10
++#define SCMI_SRST_H_SECURE_NS_BIU	11
++#define SCMI_SRST_A_SECURE_S_BIU	12
++#define SCMI_SRST_H_SECURE_S_BIU	13
++#define SCMI_SRST_P_SECURE_S_BIU	14
++#define SCMI_SRST_CRYPTO_CORE		15
++/* Name=SECURE_SOFTRST_CON01,Offset=0xA04 */
++#define SCMI_SRST_CRYPTO_PKA		16
++#define SCMI_SRST_CRYPTO_RNG		17
++#define SCMI_SRST_A_CRYPTO		18
++#define SCMI_SRST_H_CRYPTO		19
++#define SCMI_SRST_KEYLADDER_CORE	25
++#define SCMI_SRST_KEYLADDER_RNG		26
++#define SCMI_SRST_A_KEYLADDER		27
++#define SCMI_SRST_H_KEYLADDER		28
++#define SCMI_SRST_P_OTPC_S		29
++#define SCMI_SRST_OTPC_S		30
++#define SCMI_SRST_WDT_S			31
++/* Name=SECURE_SOFTRST_CON02,Offset=0xA08 */
++#define SCMI_SRST_T_WDT_S		32
++#define SCMI_SRST_H_BOOTROM		33
++#define SCMI_SRST_A_DCF			34
++#define SCMI_SRST_P_DCF			35
++#define SCMI_SRST_H_BOOTROM_NS		37
++#define SCMI_SRST_P_KEYLADDER		46
++#define SCMI_SRST_H_TRNG_S		47
++/* Name=SECURE_SOFTRST_CON03,Offset=0xA0C */
++#define SCMI_SRST_H_TRNG_NS		48
++#define SCMI_SRST_D_SDMMC_BUFFER	49
++#define SCMI_SRST_H_SDMMC		50
++#define SCMI_SRST_H_SDMMC_BUFFER	51
++#define SCMI_SRST_SDMMC			52
++#define SCMI_SRST_P_TRNG_CHK		53
++#define SCMI_SRST_TRNG_S		54
++
++
+ #endif
 
 -- 
 2.48.1
