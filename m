@@ -4,67 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A14C02199
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 19:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4BDC02192
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 20:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+dtw1cr8JDmt2oo6pWScdbfbB7TvQJ/dpbyLuMhgaAQ=; b=F7GGORxvEYLcHL
-	WLL3CnlrFKEXvzYcmn8tpLVy87RkpzKTJo5aPGThNbsyS2TOqbHzoJ3bYqg/pzwi9PulFaKiM7uXo
-	U62IIHng5cF5BMCZcKicPxTN4MaFdpDBMI9oq1p938zxq7HO5r4+A685rZ3+jciZhzU8cn1FYvrLv
-	KNgm0gtDZ2iHm8wfYHiOx4VgimgkzOZR4wjjbGLVzpAGHqBdr2Q4PetrluJB6jMK5yXsCbTV5Z5Jd
-	N9ZoV5YKWWuwgvZZgg4qJd/GPlQBy13VSw16RDWybzASMbpgCdhsbn71OUH1rYEdlC09IuOrr6O1w
-	ZwMZUCgMPBjDfJsFLDUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rKvEP/ASHH5PcWioBQCXeaaBoc9TuEKnwiSmCvjQD4I=; b=wD6MB5Xkl3TnDS
+	xFQWqpkxISMR7S9vslYpK3Nitx4AW/Xfeu1PglKxWeGs+6rWrUSfCNEDD4yLaGv2PxxyZ49PIa74B
+	reJMz3c9H/wsKwE8F9vVZCue37IZMgQGaQ7wQuf4kdRTRn3wQURuJ/siD2SIPi0KMwPufWg1mATf+
+	7f8rZAwSPCOu8Ld2HvZLs903sisYbBQIycH5xVxejzT3i/uO92JZ8OEk0DQ+4DpzvU9MJFt7yF/nB
+	4XhAeEseG+kaumoY+j18uFsibi2aj7h779JICNMQeHb3KwPU+JTJNJ9A2Oft6wqAcDFz1mCbz/oHE
+	r0YN2lL/kq9dcrjUQQTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfl6L-00000004PWO-1WjF;
-	Wed, 05 Feb 2025 19:30:21 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfl4w-00000004PPo-1VpB;
-	Wed, 05 Feb 2025 19:28:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A6FFB1063;
-	Wed,  5 Feb 2025 11:29:16 -0800 (PST)
-Received: from [10.57.35.21] (unknown [10.57.35.21])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B6D0C3F5A1;
-	Wed,  5 Feb 2025 11:28:38 -0800 (PST)
-Message-ID: <be153973-550c-4ea8-bf65-35b5ce28ac22@arm.com>
-Date: Wed, 5 Feb 2025 19:28:37 +0000
+	id 1tfliF-00000004UnQ-1kHR;
+	Wed, 05 Feb 2025 20:09:31 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tfliB-00000004Ulf-3rxi
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Feb 2025 20:09:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1738786166;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=FtyHp14quoZKfSwCwvs1IfBWioeKvvPDS6kPB6/O+SI=;
+	b=UwuPAdYq561TREFIbeHU8xLfe4GJEMl9nJw/s+2kJ5UOWS2X8bc4xqAU02vIhIWWcy0A/X
+	ZHrsHbO2rsr4HtK1mybYmwaOc3Hb/p9CQhir6evvwaMNshPTGYud4qsSa63FdHAZcYBjwq
+	iIruERvomxWye9imK18dWkhUssbNOWM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-225-CF1M26uSNJmCSR8ep_ZkTQ-1; Wed,
+ 05 Feb 2025 15:09:22 -0500
+X-MC-Unique: CF1M26uSNJmCSR8ep_ZkTQ-1
+X-Mimecast-MFC-AGG-ID: CF1M26uSNJmCSR8ep_ZkTQ
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 409D419560B6;
+	Wed,  5 Feb 2025 20:09:13 +0000 (UTC)
+Received: from asrivats-na.rmtustx.csb (unknown [10.2.17.21])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 957B919560A3;
+	Wed,  5 Feb 2025 20:08:57 +0000 (UTC)
+From: Anusha Srivatsa <asrivats@redhat.com>
+Subject: [PATCH 00/12] drm: Move to using devm_platform_ioremap_resource
+Date: Wed, 05 Feb 2025 15:07:56 -0500
+Message-Id: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/19] iommu/tegra: Do not use struct page as the handle
- for pts
-To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
- asahi@lists.linux.dev, Lu Baolu <baolu.lu@linux.intel.com>,
- David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
- Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
- Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
- Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
- David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <2-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <2-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+X-B4-Tracking: v=1; b=H4sIABzFo2cC/x3MQQqAIBBA0avErBtQSYmuEi1Sp5pFKgoVSHdPW
+ r7F/xUKZaYCU1ch08WFY2iQfQfuWMNOyL4ZlFBaKKHxpBNddI4x0L0mRuPtYEcpjTcELUuZNn7
+ +5by87we0aAeTYgAAAA==
+X-Change-ID: 20250205-mem-cocci-newapi-6db4b8116d6e
+To: Joel Stanley <joel@jms.id.au>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
+ Xinliang Liu <xinliang.liu@linaro.org>, Tian Tao <tiantao6@hisilicon.com>, 
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Alexey Brodkin <abrodkin@synopsys.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Jonathan Corbet <corbet@lwn.net>
+Cc: linux-aspeed@lists.ozlabs.org, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ linux-doc@vger.kernel.org, Anusha Srivatsa <asrivats@redhat.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738786137; l=4887;
+ i=asrivats@redhat.com; s=20250122; h=from:subject:message-id;
+ bh=JBXfstQaIVwQ4CElA5zFAPJmVat5vbPS8gLTRdPLuUI=;
+ b=kB2Ax15EIn2x59280nG+iYRJh3A8F3lI/vAFp/1S4keeM/8lC4ZnJc86pKPdqRuC7++JEqhWK
+ fKEzwCmQXKIDNwrIxS+ebvDgJC/rzBnDe6p36Nc05otkT/OeNyXMGX2
+X-Developer-Key: i=asrivats@redhat.com; a=ed25519;
+ pk=brnIHkBsUZEhyW6Zyn0U92AeIZ1psws/q8VFbIkf1AU=
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: AtBO7ocF0_b51XnHwLEZdNqCgsYiKghIHECIAVEimNg_1738786157
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_112854_499914_970E3A11 
-X-CRM114-Status: GOOD (  27.05  )
+X-CRM114-CacheID: sfid-20250205_120928_028902_15974195 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,223 +130,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-02-04 6:34 pm, Jason Gunthorpe wrote:
-> Instead use the virtual address and dma_map_single() like as->pd
-> uses. Introduce a small struct tegra_pt instead of void * to have some
-> clarity what is using this API and add compile safety during the
-> conversion.
+Start replacing the below occurences with the newer API:
+- (devm_)platform_get_resource + devm_ioremap_resource
+- (devm_)platform_get_resource + (devm_)ioremap
+- platform_get_resource_byname + devm_ioremap
+Move all these occurences to uses devm_platform_ioremap_resource
+instead.
 
-Hmm, I'm not sure it's all that clear to have a major discrepancy 
-between how different levels of pagetable are referenced - I'd say 
-either use an explicit type for both, or just rework this as a u32** 
-along the same lines as the current patch #1.
+This is v2 of the series. Changes from v1 [1]:
+- Mostly fix the compilation errors :( What had passed locally
+happened to be the wrong config with most drivers not enabled.
+- Clarify the TODO item in the GPU section of Documentation
+for anyone who wants to do it in future.
+- Drop meson patch from discussion in v1
+- Drop rockchip patch as well. Offline discussion with
+Maxime led to the conclusion that using
+devm_platform_get_and_ioremap_resource() would be a better
+approach in that source file. Not adding that change as part of
+this series, can be addressed separately.
 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/tegra-smmu.c | 68 ++++++++++++++++++++------------------
->   1 file changed, 36 insertions(+), 32 deletions(-)
-> 
-> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-> index 717bcd3b8de7dc..1e85141c80548d 100644
-> --- a/drivers/iommu/tegra-smmu.c
-> +++ b/drivers/iommu/tegra-smmu.c
-> @@ -51,13 +51,15 @@ struct tegra_smmu {
->   	struct iommu_device iommu;	/* IOMMU Core code handle */
->   };
->   
-> +struct tegra_pt;
-> +
->   struct tegra_smmu_as {
->   	struct iommu_domain domain;
->   	struct tegra_smmu *smmu;
->   	unsigned int use_count;
->   	spinlock_t lock;
->   	u32 *count;
-> -	struct page **pts;
-> +	struct tegra_pt **pts;
->   	u32 *pd;
->   	dma_addr_t pd_dma;
->   	unsigned id;
-> @@ -155,6 +157,10 @@ static inline u32 smmu_readl(struct tegra_smmu *smmu, unsigned long offset)
->   #define SMMU_PDE_ATTR		(SMMU_PDE_READABLE | SMMU_PDE_WRITABLE | \
->   				 SMMU_PDE_NONSECURE)
->   
-> +struct tegra_pt {
-> +	u32 val[SMMU_NUM_PTE];
-> +};
-> +
->   static unsigned int iova_pd_index(unsigned long iova)
->   {
->   	return (iova >> SMMU_PDE_SHIFT) & (SMMU_NUM_PDE - 1);
-> @@ -564,11 +570,9 @@ static void tegra_smmu_set_pde(struct tegra_smmu_as *as, unsigned long iova,
->   	smmu_flush(smmu);
->   }
->   
-> -static u32 *tegra_smmu_pte_offset(struct page *pt_page, unsigned long iova)
-> +static u32 *tegra_smmu_pte_offset(struct tegra_pt *pt, unsigned long iova)
->   {
-> -	u32 *pt = page_address(pt_page);
-> -
-> -	return pt + iova_pt_index(iova);
-> +	return &pt->val[iova_pt_index(iova)];
->   }
->   
->   static u32 *tegra_smmu_pte_lookup(struct tegra_smmu_as *as, unsigned long iova,
-> @@ -576,19 +580,19 @@ static u32 *tegra_smmu_pte_lookup(struct tegra_smmu_as *as, unsigned long iova,
->   {
->   	unsigned int pd_index = iova_pd_index(iova);
->   	struct tegra_smmu *smmu = as->smmu;
-> -	struct page *pt_page;
-> +	struct tegra_pt *pt;
->   
-> -	pt_page = as->pts[pd_index];
-> -	if (!pt_page)
-> +	pt = as->pts[pd_index];
-> +	if (!pt)
->   		return NULL;
->   
->   	*dmap = smmu_pde_to_dma(smmu, as->pd[pd_index]);
->   
-> -	return tegra_smmu_pte_offset(pt_page, iova);
-> +	return tegra_smmu_pte_offset(pt, iova);
->   }
->   
->   static u32 *as_get_pte(struct tegra_smmu_as *as, dma_addr_t iova,
-> -		       dma_addr_t *dmap, struct page *page)
-> +		       dma_addr_t *dmap, struct tegra_pt *pt)
->   {
->   	unsigned int pde = iova_pd_index(iova);
->   	struct tegra_smmu *smmu = as->smmu;
-> @@ -596,21 +600,21 @@ static u32 *as_get_pte(struct tegra_smmu_as *as, dma_addr_t iova,
->   	if (!as->pts[pde]) {
->   		dma_addr_t dma;
->   
-> -		dma = dma_map_page(smmu->dev, page, 0, SMMU_SIZE_PT,
-> -				   DMA_TO_DEVICE);
-> +		dma = dma_map_single(smmu->dev, pt, SMMU_SIZE_PD,
+[1] - https://patchwork.freedesktop.org/series/144073/
 
-SMMU_SIZE_PT (yeah they're numerically the same, but still...)
+Used Coccinelle to make the code changes.Semantic patch:
 
-> +				     DMA_TO_DEVICE);
->   		if (dma_mapping_error(smmu->dev, dma)) {
-> -			__iommu_free_pages(page, 0);
-> +			iommu_free_page(pt);
->   			return NULL;
->   		}
->   
->   		if (!smmu_dma_addr_valid(smmu, dma)) {
->   			dma_unmap_page(smmu->dev, dma, SMMU_SIZE_PT,
->   				       DMA_TO_DEVICE);
+//First Case
+//rule s/platform_get_resource + devm_ioremap_resource/devm_platform_ioremap_resource
+@rule_1@
+identifier res;
+expression ioremap_res;
+identifier pdev;
+@@
+-struct resource *res;
+...
+-res = platform_get_resource(pdev,...);
+-ioremap_res = devm_ioremap_resource(...);
++ioremap_res = devm_platform_ioremap_resource(pdev,0);
 
-All the unmaps should be converted to _single as well (and in patch #1) 
-- the APIs are not officially interchangeable.
+//Second case
+//rule s/(devm_)platform_get_resource + (devm_)ioremap/devm_platform_ioremap_resource.
+@rule_2@
+identifier res;
+expression ioremap;
+identifier pdev;
+@@
+-struct resource *res;
+...
+-res = platform_get_resource(pdev,...);
+<...
+-if (!res) {
+-...
+-}
+...>
+-ioremap = devm_ioremap(...);
++ioremap = devm_platform_ioremap_resource(pdev,0);
 
-Thanks,
-Robin.
+//Third case
+//rule s/(devm_)platform_get_resource_byname + (devm_)ioremap/devm_platform_ioremap_resource_byname.
+@rule_3@
+identifier res;
+expression ioremap;
+identifier pdev;
+constant mem;
+expression name;
+@@
+-struct resource *res;
+<+...
+-res = platform_get_resource_byname(pdev,mem,name);
+<...
+-if (!res) {
+-...
+-}
+...>
+-ioremap = devm_ioremap(...);
++ioremap = devm_platform_ioremap_resource_byname(pdev,name);
+...+>
 
-> -			__iommu_free_pages(page, 0);
-> +			iommu_free_page(pt);
->   			return NULL;
->   		}
->   
-> -		as->pts[pde] = page;
-> +		as->pts[pde] = pt;
->   
->   		tegra_smmu_set_pde(as, iova, SMMU_MK_PDE(dma, SMMU_PDE_ATTR |
->   							      SMMU_PDE_NEXT));
-> @@ -633,7 +637,7 @@ static void tegra_smmu_pte_get_use(struct tegra_smmu_as *as, unsigned long iova)
->   static void tegra_smmu_pte_put_use(struct tegra_smmu_as *as, unsigned long iova)
->   {
->   	unsigned int pde = iova_pd_index(iova);
-> -	struct page *page = as->pts[pde];
-> +	struct tegra_pt *pt = as->pts[pde];
->   
->   	/*
->   	 * When no entries in this page table are used anymore, return the
-> @@ -646,7 +650,7 @@ static void tegra_smmu_pte_put_use(struct tegra_smmu_as *as, unsigned long iova)
->   		tegra_smmu_set_pde(as, iova, 0);
->   
->   		dma_unmap_page(smmu->dev, pte_dma, SMMU_SIZE_PT, DMA_TO_DEVICE);
-> -		__iommu_free_pages(page, 0);
-> +		iommu_free_page(pt);
->   		as->pts[pde] = NULL;
->   	}
->   }
-> @@ -666,16 +670,16 @@ static void tegra_smmu_set_pte(struct tegra_smmu_as *as, unsigned long iova,
->   	smmu_flush(smmu);
->   }
->   
-> -static struct page *as_get_pde_page(struct tegra_smmu_as *as,
-> -				    unsigned long iova, gfp_t gfp,
-> -				    unsigned long *flags)
-> +static struct tegra_pt *as_get_pde_page(struct tegra_smmu_as *as,
-> +					unsigned long iova, gfp_t gfp,
-> +					unsigned long *flags)
->   {
->   	unsigned int pde = iova_pd_index(iova);
-> -	struct page *page = as->pts[pde];
-> +	struct tegra_pt *pt = as->pts[pde];
->   
->   	/* at first check whether allocation needs to be done at all */
-> -	if (page)
-> -		return page;
-> +	if (pt)
-> +		return pt;
->   
->   	/*
->   	 * In order to prevent exhaustion of the atomic memory pool, we
-> @@ -685,7 +689,7 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
->   	if (gfpflags_allow_blocking(gfp))
->   		spin_unlock_irqrestore(&as->lock, *flags);
->   
-> -	page = __iommu_alloc_pages(gfp | __GFP_DMA, 0);
-> +	pt = iommu_alloc_page(gfp | __GFP_DMA);
->   
->   	if (gfpflags_allow_blocking(gfp))
->   		spin_lock_irqsave(&as->lock, *flags);
-> @@ -696,13 +700,13 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
->   	 * if allocation succeeded and the allocation failure isn't fatal.
->   	 */
->   	if (as->pts[pde]) {
-> -		if (page)
-> -			__iommu_free_pages(page, 0);
-> +		if (pt)
-> +			iommu_free_page(pt);
->   
-> -		page = as->pts[pde];
-> +		pt = as->pts[pde];
->   	}
->   
-> -	return page;
-> +	return pt;
->   }
->   
->   static int
-> @@ -712,15 +716,15 @@ __tegra_smmu_map(struct iommu_domain *domain, unsigned long iova,
->   {
->   	struct tegra_smmu_as *as = to_smmu_as(domain);
->   	dma_addr_t pte_dma;
-> -	struct page *page;
-> +	struct tegra_pt *pt;
->   	u32 pte_attrs;
->   	u32 *pte;
->   
-> -	page = as_get_pde_page(as, iova, gfp, flags);
-> -	if (!page)
-> +	pt = as_get_pde_page(as, iova, gfp, flags);
-> +	if (!pt)
->   		return -ENOMEM;
->   
-> -	pte = as_get_pte(as, iova, &pte_dma, page);
-> +	pte = as_get_pte(as, iova, &pte_dma, pt);
->   	if (!pte)
->   		return -ENOMEM;
->   
+Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+---
+Anusha Srivatsa (12):
+      drm/aspeed: move to devm_platform_ioremap_resource() usage
+      drm/fsl-dcu: move to devm_platform_ioremap_resource() usage
+      drm/hisilicon: move to devm_platform_ioremap_resource() usage
+      drm/mediatek: move to devm_platform_ioremap_resource() usage
+      drm/mxsfb: move to devm_platform_ioremap_resource() usage
+      drm/sprd: move to devm_platform_ioremap_resource() usage
+      drm/sti: move to devm_platform_ioremap_resource() usage
+      drm/stm: move to devm_platform_ioremap_resource() usage
+      drm/tegra: move to devm_platform_ioremap_resource() usage
+      drm/tiny: move to devm_platform_ioremap_resource() usage
+      drm/vc4: move to devm_platform_ioremap_resource() usage
+      Documentation: Update the todo
+
+ Documentation/gpu/todo.rst                      | 12 +++---
+ drivers/gpu/drm/aspeed/aspeed_gfx_drv.c         |  4 +-
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c       |  4 +-
+ drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c    |  4 +-
+ drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_color.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c       |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |  4 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c        |  4 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c              |  4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c             |  4 +-
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         |  4 +-
+ drivers/gpu/drm/mxsfb/lcdif_drv.c               |  4 +-
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c               |  4 +-
+ drivers/gpu/drm/sprd/sprd_dpu.c                 |  9 +---
+ drivers/gpu/drm/sprd/sprd_dsi.c                 |  9 +---
+ drivers/gpu/drm/sti/sti_compositor.c            | 10 +----
+ drivers/gpu/drm/sti/sti_dvo.c                   | 10 +----
+ drivers/gpu/drm/sti/sti_hda.c                   |  9 +---
+ drivers/gpu/drm/sti/sti_hdmi.c                  | 11 +----
+ drivers/gpu/drm/sti/sti_hqvdp.c                 | 10 +----
+ drivers/gpu/drm/sti/sti_tvout.c                 | 10 +----
+ drivers/gpu/drm/sti/sti_vtg.c                   | 10 +----
+ drivers/gpu/drm/stm/ltdc.c                      |  4 +-
+ drivers/gpu/drm/tegra/dsi.c                     |  4 +-
+ drivers/gpu/drm/tiny/arcpgu.c                   |  4 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.c                  | 55 +++++++------------------
+ 28 files changed, 46 insertions(+), 177 deletions(-)
+---
+base-commit: 92514ef226f511f2ca1fb1b8752966097518edc0
+change-id: 20250205-mem-cocci-newapi-6db4b8116d6e
+
+Best regards,
+-- 
+Anusha Srivatsa <asrivats@redhat.com>
 
 
 _______________________________________________
