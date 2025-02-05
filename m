@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3750C02196
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 10:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8EF5C02198
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 15:48:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/CfvPQyft+wrf6A9B7y7HYU7C1O++7V0PJfRri6q/BA=; b=lc8JQnZX/Q1sVM
-	e+Dzcj4HnUNOvMd0Er+uYU91bZiKLkeyZPHkfrETQbYrW0oFoVFwFNPj9d/01snRxPW5cX0+BjSAz
-	bGKJ8m4pWVGQhPSb9WL4yUDCSPxQFsAeVw0ua9wwXAd+MROjPACWpzZ2L06v1DH4PGiwv8N6nVGtx
-	TqCIk9yZZtQz3jToImrEepVfDcV1hGHH7mfx0L4bUvVdCTQ0aRN9Xh+SYjb3J4DGdOQCF09BGt4Qo
-	DyJ65VJf4g+R0Wsu0v19AjW31zn+Tepc8CyEHe/nxwFKV61THgYZmfe5UVBmVE/YQKM1dnsa+pgCE
-	flRH02ecg/+EwFsTty6w==;
+	List-Owner; bh=qAsT5VbVoEzYuG4pZdFk0cB0aRE134YrC0Kmq8kYVNo=; b=eGsP5rLta5mD4y
+	9sHvU4+4PBwviHfJBpMoDZGhncnZfcCOsOJWrOO/Yv0BySRj4uasSRu7ufDVfA/V7tZOIccEFlfGX
+	r0NM1H4zoWh2yqQfi9bziyQbhD6NMvT92czsyZztOhzfSji0HNTPfCGfaYeIrd3zlrRlVR97zwdlh
+	sCAbL9VwhJbEVPQ2eRfbUa4EikH0OnnV4O/F+PNgp3ZxV37sxXWQeKeRfcuP43BRS5vtVhT5BVW1t
+	uKHWgkXj6vqkce9fqFf/4ogNUqJ99OiuKflW5BIgooqkWejwcSHqiMuaqD+SoGsC/U+SxXGtTZxKB
+	PqjxmTooN5Jpc4bxYwvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfd8L-00000002yyD-1BC1;
-	Wed, 05 Feb 2025 10:59:53 +0000
-Received: from mail-m19731117.qiye.163.com ([220.197.31.117])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfd1i-00000002xHs-3yWD;
-	Wed, 05 Feb 2025 10:53:05 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id a3bebbd2;
-	Wed, 5 Feb 2025 18:52:59 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
-	heiko@sntech.de
-Cc: dmitry.baryshkov@linaro.org,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v7 4/4] phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
-Date: Wed,  5 Feb 2025 18:51:57 +0800
-Message-Id: <20250205105157.580060-5-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250205105157.580060-1-damon.ding@rock-chips.com>
-References: <20250205105157.580060-1-damon.ding@rock-chips.com>
+	id 1tfhdr-00000003qXC-2LhZ;
+	Wed, 05 Feb 2025 15:48:43 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tfhcS-00000003q7z-1dAx;
+	Wed, 05 Feb 2025 15:47:17 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1A8AF1063;
+	Wed,  5 Feb 2025 07:47:37 -0800 (PST)
+Received: from [10.57.35.21] (unknown [10.57.35.21])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 03F493F5A1;
+	Wed,  5 Feb 2025 07:47:05 -0800 (PST)
+Message-ID: <23d4c47e-a00c-4f15-ab42-303bd2aca032@arm.com>
+Date: Wed, 5 Feb 2025 15:47:03 +0000
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRpJSFZCTU8eSR0aHx9MThhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a94d5bde4ca03a3kunma3bebbd2
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mio6Egw*MjIRKAoNOUwdGDwi
-	Ny8aCR5VSlVKTEhDTE5JTENLTEpNVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPS0NMTjcG
-DKIM-Signature: a=rsa-sha256;
-	b=NmSqdVmXHL6MoKmO4wMUh7lA1QkOc+xpgSndiJnyMr/KJ63Wj6/G5v/igTT7ZJiOK+w2m85FYofQi0SK2+5uNeedPjO2NEgdtEL5xZUJgmVupXYLb2uJMr96RyutxpRrn8qoUhBDPBCfGikuB2HLPDI09TU424PzZJU0KB8I27U=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=1Dy+GqkP+1dDbNnMaiWNvtOxMHp6HgbNJPZpAQHK7iA=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 18/19] iommu: Update various drivers to pass in lg2sz
+ instead of order to iommu pages
+To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
+ asahi@lists.linux.dev, Lu Baolu <baolu.lu@linux.intel.com>,
+ David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
+ Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
+ Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
+ David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
+References: <18-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <18-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_025303_366120_470AC870 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20250205_074716_522538_1506CC07 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,1143 +76,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PHY is based on a Samsung IP block that supports HDMI 2.1, and eDP
-1.4b. RK3588 integrates the Analogix eDP 1.3 TX controller IP and the
-HDMI/eDP TX Combo PHY to support eDP display.
+On 2025-02-04 6:34 pm, Jason Gunthorpe wrote:
+> Convert most of the places calling get_order() as an argument to the
+> iommu-pages allocator into order_base_2() or the _sz flavour
+> instead. These places already have an exact size, there is no particular
+> reason to use order here.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+[...]
+> @@ -826,7 +825,7 @@ void *__init iommu_alloc_4k_pages(struct amd_iommu *iommu, gfp_t gfp,
+>   				  size_t size)
+>   {
+>   	int order = get_order(size);
+> -	void *buf = iommu_alloc_pages(gfp, order);
+> +	void *buf = iommu_alloc_pages_lg2(gfp, order + PAGE_SHIFT);
 
-Add basic support for RBR/HBR/HBR2 link rates, and the voltage swing and
-pre-emphasis configurations of each link rate are set according to the
-eDP 1.3 requirements.
+This is a size, really - it's right there above.
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+(although alloc_cwwb_sem() passing 1 looks highly suspicious - judging 
+by other cmd_sem references that probably should be PAGE_SIZE...)
 
----
+Furthermore even the set_memory_4k() call doesn't really want an order 
+either, PAGE_ALIGN(size) >> PAGE_SHIFT would do.
 
-Changes in v2:
-- Add the module author
+>   
+>   	if (buf &&
+>   	    check_feature(FEATURE_SNP) &&
+[...]
+> @@ -1702,8 +1701,10 @@ int dmar_enable_qi(struct intel_iommu *iommu)
+>   	 * Need two pages to accommodate 256 descriptors of 256 bits each
+>   	 * if the remapping hardware supports scalable mode translation.
+>   	 */
+> -	order = ecap_smts(iommu->ecap) ? 1 : 0;
+> -	desc = iommu_alloc_pages_node(iommu->node, GFP_ATOMIC, order);
+> +	desc = iommu_alloc_pages_node_lg2(iommu->node, GFP_ATOMIC,
+> +					  ecap_smts(iommu->ecap) ?
+> +						  order_base_2(SZ_8K) :
+> +						  order_base_2(SZ_4K));
 
-Changes in v3:
-- Split this patch into two, one for correction and the other for
-  extension
+These are also clearly sizes.
 
-Changes in v4:
-- Add link_rate and lanes parameters in struct rk_hdptx_phy to store the
-  phy_configure() result for &phy_configure_opts.dp.link_rate and
-  &phy_configure_opts.dp.lanes
+>   	if (!desc) {
+>   		kfree(qi);
+>   		iommu->qi = NULL;
+> diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
+> index 8727d8e1e02f45..0e1dd519c3b9b3 100644
+> --- a/drivers/iommu/io-pgtable-arm.c
+> +++ b/drivers/iommu/io-pgtable-arm.c
+> @@ -263,14 +263,14 @@ static void *__arm_lpae_alloc_pages(size_t size, gfp_t gfp,
+>   				    void *cookie)
+>   {
+>   	struct device *dev = cfg->iommu_dev;
+> -	int order = get_order(size);
+>   	dma_addr_t dma;
+>   	void *pages;
+>   
+>   	if (cfg->alloc)
+>   		pages = cfg->alloc(cookie, size, gfp);
+>   	else
+> -		pages = iommu_alloc_pages_node(dev_to_node(dev), gfp, order);
+> +		pages = iommu_alloc_pages_node_lg2(dev_to_node(dev), gfp,
+> +						   order_base_2(size));
 
-Changes in v5:
-- Reuse the existing functions rk_hdptx_phy_consumer_get() and
-  rk_hdptx_phy_consumer_put()
-- Return 0 instead of -EINVAL in rk_hdptx_phy_configure()
-- Remove rk_hdptx_phy_lane_disable() and related check of 0 lanes
-- Mention the design details in the commit message
-- Remove unnecessary rk_hdptx_phy_set_mode()
----
- .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 879 +++++++++++++++++-
- 1 file changed, 869 insertions(+), 10 deletions(-)
+Another size. Same thing in patch #17 too. I don't see any need to have 
+the log2 stuff at all, I think we just switch iommu_alloc_pages{_node}() 
+to take a size and keep things simple.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 5aec854c74b5..e318a46b8be2 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -25,6 +25,7 @@
- #define HDPTX_I_PLL_EN			BIT(7)
- #define HDPTX_I_BIAS_EN			BIT(6)
- #define HDPTX_I_BGR_EN			BIT(5)
-+#define HDPTX_MODE_SEL			BIT(0)
- #define GRF_HDPTX_STATUS		0x80
- #define HDPTX_O_PLL_LOCK_DONE		BIT(3)
- #define HDPTX_O_PHY_CLK_RDY		BIT(2)
-@@ -44,6 +45,7 @@
- #define LANE_REG(n)			HDTPX_REG(n, 0300, 062d)
- 
- /* CMN_REG(0008) */
-+#define OVRD_LCPLL_EN_MASK		BIT(7)
- #define LCPLL_EN_MASK			BIT(6)
- #define LCPLL_LCVCO_MODE_EN_MASK	BIT(4)
- /* CMN_REG(001e) */
-@@ -61,28 +63,88 @@
- /* CMN_REG(002f) */
- #define LCPLL_SDC_DENOMINATOR_MASK	GENMASK(7, 2)
- #define LCPLL_SDC_NDIV_RSTN_MASK	BIT(0)
-+/* CMN_REG(003c) */
-+#define ANA_LCPLL_RESERVED7_MASK	BIT(7)
- /* CMN_REG(003d) */
-+#define OVRD_ROPLL_EN_MASK		BIT(7)
-+#define ROPLL_EN_MASK			BIT(6)
- #define ROPLL_LCVCO_EN_MASK		BIT(4)
-+/* CMN_REG(0046) */
-+#define ROPLL_ANA_CPP_CTRL_COARSE_MASK	GENMASK(7, 4)
-+#define ROPLL_ANA_CPP_CTRL_FINE_MASK	GENMASK(3, 0)
-+/* CMN_REG(0047) */
-+#define ROPLL_ANA_LPF_C_SEL_COARSE_MASK	GENMASK(5, 3)
-+#define ROPLL_ANA_LPF_C_SEL_FINE_MASK	GENMASK(2, 0)
- /* CMN_REG(004e) */
- #define ROPLL_PI_EN_MASK		BIT(5)
-+/* CMN_REG(0051) */
-+#define ROPLL_PMS_MDIV_MASK		GENMASK(7, 0)
-+/* CMN_REG(0055) */
-+#define ROPLL_PMS_MDIV_AFC_MASK		GENMASK(7, 0)
-+/* CMN_REG(0059) */
-+#define ANA_ROPLL_PMS_PDIV_MASK		GENMASK(7, 4)
-+#define ANA_ROPLL_PMS_REFDIV_MASK	GENMASK(3, 0)
-+/* CMN_REG(005a) */
-+#define ROPLL_PMS_SDIV_RBR_MASK		GENMASK(7, 4)
-+#define ROPLL_PMS_SDIV_HBR_MASK		GENMASK(3, 0)
-+/* CMN_REG(005b) */
-+#define ROPLL_PMS_SDIV_HBR2_MASK	GENMASK(7, 4)
- /* CMN_REG(005c) */
- #define ROPLL_PMS_IQDIV_RSTN_MASK	BIT(5)
- /* CMN_REG(005e) */
- #define ROPLL_SDM_EN_MASK		BIT(6)
-+#define OVRD_ROPLL_SDM_RSTN_MASK	BIT(5)
-+#define ROPLL_SDM_RSTN_MASK		BIT(4)
- #define ROPLL_SDC_FRAC_EN_RBR_MASK	BIT(3)
- #define ROPLL_SDC_FRAC_EN_HBR_MASK	BIT(2)
- #define ROPLL_SDC_FRAC_EN_HBR2_MASK	BIT(1)
- #define ROPLL_SDM_FRAC_EN_HBR3_MASK	BIT(0)
-+/* CMN_REG(005f) */
-+#define OVRD_ROPLL_SDC_RSTN_MASK	BIT(5)
-+#define ROPLL_SDC_RSTN_MASK		BIT(4)
-+/* CMN_REG(0060)  */
-+#define ROPLL_SDM_DENOMINATOR_MASK	GENMASK(7, 0)
- /* CMN_REG(0064) */
- #define ROPLL_SDM_NUM_SIGN_RBR_MASK	BIT(3)
-+#define ROPLL_SDM_NUM_SIGN_HBR_MASK	BIT(2)
-+#define ROPLL_SDM_NUM_SIGN_HBR2_MASK	BIT(1)
-+/* CMN_REG(0065) */
-+#define ROPLL_SDM_NUM_MASK		GENMASK(7, 0)
- /* CMN_REG(0069) */
- #define ROPLL_SDC_N_RBR_MASK		GENMASK(2, 0)
-+/* CMN_REG(006a) */
-+#define ROPLL_SDC_N_HBR_MASK		GENMASK(5, 3)
-+#define ROPLL_SDC_N_HBR2_MASK		GENMASK(2, 0)
-+/* CMN_REG(006b) */
-+#define ROPLL_SDC_N_HBR3_MASK		GENMASK(3, 1)
-+/* CMN_REG(006c) */
-+#define ROPLL_SDC_NUM_MASK		GENMASK(5, 0)
-+/* cmn_reg0070 */
-+#define ROPLL_SDC_DENO_MASK		GENMASK(5, 0)
- /* CMN_REG(0074) */
-+#define OVRD_ROPLL_SDC_NDIV_RSTN_MASK	BIT(3)
- #define ROPLL_SDC_NDIV_RSTN_MASK	BIT(2)
-+#define OVRD_ROPLL_SSC_EN_MASK		BIT(1)
- #define ROPLL_SSC_EN_MASK		BIT(0)
-+/* CMN_REG(0075) */
-+#define ANA_ROPLL_SSC_FM_DEVIATION_MASK	GENMASK(5, 0)
-+/* CMN_REG(0076) */
-+#define ANA_ROPLL_SSC_FM_FREQ_MASK	GENMASK(6, 2)
-+/* CMN_REG(0077) */
-+#define ANA_ROPLL_SSC_CLK_DIV_SEL_MASK	GENMASK(6, 3)
- /* CMN_REG(0081) */
- #define OVRD_PLL_CD_CLK_EN_MASK		BIT(8)
-+#define ANA_PLL_CD_TX_SER_RATE_SEL_MASK	BIT(3)
-+#define ANA_PLL_CD_HSCLK_WEST_EN_MASK	BIT(1)
- #define ANA_PLL_CD_HSCLK_EAST_EN_MASK	BIT(0)
-+/* CMN_REG(0082) */
-+#define ANA_PLL_CD_VREG_GAIN_CTRL_MASK	GENMASK(3, 0)
-+/* CMN_REG(0083) */
-+#define ANA_PLL_CD_VREG_ICTRL_MASK	GENMASK(6, 5)
-+/* CMN_REG(0084) */
-+#define PLL_LCRO_CLK_SEL_MASK		BIT(5)
-+/* CMN_REG(0085) */
-+#define ANA_PLL_SYNC_LOSS_DET_MODE_MASK	GENMASK(1, 0)
- /* CMN_REG(0086) */
- #define PLL_PCG_POSTDIV_SEL_MASK	GENMASK(7, 4)
- #define PLL_PCG_CLK_SEL_MASK		GENMASK(3, 1)
-@@ -92,11 +154,14 @@
- #define ANA_PLL_TX_HS_CLK_EN_MASK	BIT(2)
- /* CMN_REG(0089) */
- #define LCPLL_ALONE_MODE_MASK		BIT(1)
-+/* CMN_REG(0095) */
-+#define DP_TX_LINK_BW_MASK		GENMASK(1, 0)
- /* CMN_REG(0097) */
- #define DIG_CLK_SEL_MASK		BIT(1)
- #define LCPLL_REF			BIT(1)
- #define ROPLL_REF			0
- /* CMN_REG(0099) */
-+#define SSC_EN_MASK			GENMASK(7, 6)
- #define CMN_ROPLL_ALONE_MODE_MASK	BIT(2)
- #define ROPLL_ALONE_MODE		BIT(2)
- /* CMN_REG(009a) */
-@@ -118,6 +183,8 @@
- /* SB_REG(0104) */
- #define OVRD_SB_EN_MASK			BIT(5)
- #define SB_EN_MASK			BIT(4)
-+#define OVRD_SB_AUX_EN_MASK		BIT(1)
-+#define SB_AUX_EN_MASK			BIT(0)
- /* SB_REG(0105) */
- #define OVRD_SB_EARC_CMDC_EN_MASK	BIT(6)
- #define SB_EARC_CMDC_EN_MASK		BIT(5)
-@@ -126,6 +193,8 @@
- #define ANA_SB_TX_LLVL_PROG_MASK	GENMASK(6, 4)
- /* SB_REG(0109) */
- #define ANA_SB_DMRX_AFC_DIV_RATIO_MASK	GENMASK(2, 0)
-+/* SB_REG(010d) */
-+#define ANA_SB_DMRX_LPBK_DATA_MASK	BIT(4)
- /* SB_REG(010f) */
- #define OVRD_SB_VREG_EN_MASK		BIT(7)
- #define SB_VREG_EN_MASK			BIT(6)
-@@ -133,6 +202,7 @@
- #define SB_VREG_LPF_BYPASS_MASK		BIT(4)
- #define ANA_SB_VREG_GAIN_CTRL_MASK	GENMASK(3, 0)
- /* SB_REG(0110) */
-+#define ANA_SB_VREG_OUT_SEL_MASK	BIT(1)
- #define ANA_SB_VREG_REF_SEL_MASK	BIT(0)
- /* SB_REG(0113) */
- #define SB_RX_RCAL_OPT_CODE_MASK	GENMASK(5, 4)
-@@ -147,13 +217,24 @@
- #define AFC_RSTN_DELAY_TIME_MASK	GENMASK(6, 4)
- /* SB_REG(0117) */
- #define FAST_PULSE_TIME_MASK		GENMASK(3, 0)
-+/* SB_REG(0118) */
-+#define SB_TG_EARC_DMRX_RECVRD_CLK_CNT_MASK	GENMASK(7, 0)
-+/* SB_REG(011a) */
-+#define SB_TG_CNT_RUN_NO_7_0_MASK	GENMASK(7, 0)
- /* SB_REG(011b) */
- #define SB_EARC_SIG_DET_BYPASS_MASK	BIT(4)
- #define SB_AFC_TOL_MASK			GENMASK(3, 0)
-+/* SB_REG(011c) */
-+#define SB_AFC_STB_NUM_MASK		GENMASK(3, 0)
-+/* SB_REG(011d) */
-+#define SB_TG_OSC_CNT_MIN_MASK		GENMASK(7, 0)
-+/* SB_REG(011e) */
-+#define SB_TG_OSC_CNT_MAX_MASK		GENMASK(7, 0)
- /* SB_REG(011f) */
- #define SB_PWM_AFC_CTRL_MASK		GENMASK(7, 2)
- #define SB_RCAL_RSTN_MASK		BIT(1)
- /* SB_REG(0120) */
-+#define SB_AUX_EN_IN_MASK		BIT(7)
- #define SB_EARC_EN_MASK			BIT(1)
- #define SB_EARC_AFC_EN_MASK		BIT(2)
- /* SB_REG(0123) */
-@@ -165,27 +246,74 @@
- #define HDMI_MODE			BIT(2)
- #define HDMI_TMDS_FRL_SEL		BIT(1)
- /* LNTOP_REG(0206) */
-+#define DATA_BUS_WIDTH_MASK		GENMASK(2, 1)
- #define DATA_BUS_WIDTH_SEL_MASK		BIT(0)
- #define DATA_BUS_36_40			BIT(0)
- /* LNTOP_REG(0207) */
- #define LANE_EN_MASK			0xf
- #define ALL_LANE_EN			0xf
- 
-+/* LANE_REG(0301) */
-+#define OVRD_LN_TX_DRV_EI_EN_MASK	BIT(7)
-+#define LN_TX_DRV_EI_EN_MASK		BIT(6)
-+/* LANE_REG(0303) */
-+#define OVRD_LN_TX_DRV_LVL_CTRL_MASK	BIT(5)
-+#define LN_TX_DRV_LVL_CTRL_MASK		GENMASK(4, 0)
-+/* LANE_REG(0304)  */
-+#define OVRD_LN_TX_DRV_POST_LVL_CTRL_MASK	BIT(4)
-+#define LN_TX_DRV_POST_LVL_CTRL_MASK	GENMASK(3, 0)
-+/* LANE_REG(0305) */
-+#define OVRD_LN_TX_DRV_PRE_LVL_CTRL_MASK	BIT(6)
-+#define LN_TX_DRV_PRE_LVL_CTRL_MASK	GENMASK(5, 2)
-+/* LANE_REG(0306) */
-+#define LN_ANA_TX_DRV_IDRV_IDN_CTRL_MASK	GENMASK(7, 5)
-+#define LN_ANA_TX_DRV_IDRV_IUP_CTRL_MASK	GENMASK(4, 2)
-+#define LN_ANA_TX_DRV_ACCDRV_EN_MASK	BIT(0)
-+/* LANE_REG(0307) */
-+#define LN_ANA_TX_DRV_ACCDRV_POL_SEL_MASK	BIT(6)
-+#define LN_ANA_TX_DRV_ACCDRV_CTRL_MASK	GENMASK(5, 3)
-+/* LANE_REG(030a) */
-+#define LN_ANA_TX_JEQ_EN_MASK		BIT(4)
-+#define LN_TX_JEQ_EVEN_CTRL_RBR_MASK	GENMASK(3, 0)
-+/* LANE_REG(030b) */
-+#define LN_TX_JEQ_EVEN_CTRL_HBR_MASK	GENMASK(7, 4)
-+#define LN_TX_JEQ_EVEN_CTRL_HBR2_MASK	GENMASK(3, 0)
-+/* LANE_REG(030c) */
-+#define LN_TX_JEQ_ODD_CTRL_RBR_MASK	GENMASK(3, 0)
-+/* LANE_REG(030d) */
-+#define LN_TX_JEQ_ODD_CTRL_HBR_MASK	GENMASK(7, 4)
-+#define LN_TX_JEQ_ODD_CTRL_HBR2_MASK	GENMASK(3, 0)
-+/* LANE_REG(0310) */
-+#define LN_ANA_TX_SYNC_LOSS_DET_MODE_MASK	GENMASK(1, 0)
-+/* LANE_REG(0311) */
-+#define LN_TX_SER_40BIT_EN_RBR_MASK	BIT(3)
-+#define LN_TX_SER_40BIT_EN_HBR_MASK	BIT(2)
-+#define LN_TX_SER_40BIT_EN_HBR2_MASK	BIT(1)
- /* LANE_REG(0312) */
- #define LN0_TX_SER_RATE_SEL_RBR_MASK	BIT(5)
- #define LN0_TX_SER_RATE_SEL_HBR_MASK	BIT(4)
- #define LN0_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
- #define LN0_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
-+/* LANE_REG(0316) */
-+#define LN_ANA_TX_SER_VREG_GAIN_CTRL_MASK	GENMASK(3, 0)
-+/* LANE_REG(031B) */
-+#define LN_ANA_TX_RESERVED_MASK		GENMASK(7, 0)
-+/* LANE_REG(031e) */
-+#define LN_POLARITY_INV_MASK		BIT(2)
-+#define LN_LANE_MODE_MASK		BIT(1)
-+
- /* LANE_REG(0412) */
- #define LN1_TX_SER_RATE_SEL_RBR_MASK	BIT(5)
- #define LN1_TX_SER_RATE_SEL_HBR_MASK	BIT(4)
- #define LN1_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
- #define LN1_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
-+
- /* LANE_REG(0512) */
- #define LN2_TX_SER_RATE_SEL_RBR_MASK	BIT(5)
- #define LN2_TX_SER_RATE_SEL_HBR_MASK	BIT(4)
- #define LN2_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
- #define LN2_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
-+
- /* LANE_REG(0612) */
- #define LN3_TX_SER_RATE_SEL_RBR_MASK	BIT(5)
- #define LN3_TX_SER_RATE_SEL_HBR_MASK	BIT(4)
-@@ -194,6 +322,12 @@
- 
- #define HDMI20_MAX_RATE			600000000
- 
-+enum dp_link_rate {
-+	DP_BW_RBR,
-+	DP_BW_HBR,
-+	DP_BW_HBR2,
-+};
-+
- struct lcpll_config {
- 	u32 bit_rate;
- 	u8 lcvco_mode_en;
-@@ -255,6 +389,19 @@ struct ropll_config {
- 	u8 cd_tx_ser_rate_sel;
- };
- 
-+struct tx_drv_ctrl {
-+	u8 tx_drv_lvl_ctrl;
-+	u8 tx_drv_post_lvl_ctrl;
-+	u8 ana_tx_drv_idrv_idn_ctrl;
-+	u8 ana_tx_drv_idrv_iup_ctrl;
-+	u8 ana_tx_drv_accdrv_en;
-+	u8 ana_tx_drv_accdrv_ctrl;
-+	u8 tx_drv_pre_lvl_ctrl;
-+	u8 ana_tx_jeq_en;
-+	u8 tx_jeq_even_ctrl;
-+	u8 tx_jeq_odd_ctrl;
-+};
-+
- enum rk_hdptx_reset {
- 	RST_APB = 0,
- 	RST_INIT,
-@@ -279,6 +426,10 @@ struct rk_hdptx_phy {
- 	unsigned long rate;
- 
- 	atomic_t usage_count;
-+
-+	/* used for dp mode */
-+	unsigned int link_rate;
-+	unsigned int lanes;
- };
- 
- static const struct ropll_config ropll_tmds_cfg[] = {
-@@ -557,6 +708,90 @@ static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
- 	REG_SEQ0(LANE_REG(0606), 0x1c),
- };
- 
-+static struct tx_drv_ctrl tx_drv_ctrl_rbr[4][4] = {
-+	/* voltage swing 0, pre-emphasis 0->3 */
-+	{
-+		{ 0x2, 0x0, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0x4, 0x3, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0x7, 0x6, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xd, 0xc, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 1, pre-emphasis 0->2 */
-+	{
-+		{ 0x4, 0x0, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0x9, 0x5, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xc, 0x8, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 2, pre-emphasis 0->1 */
-+	{
-+		{ 0x8, 0x0, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0xc, 0x5, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 3, pre-emphasis 0 */
-+	{
-+		{ 0xb, 0x0, 0x7, 0x7, 0x1, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+	}
-+};
-+
-+static struct tx_drv_ctrl tx_drv_ctrl_hbr[4][4] = {
-+	/* voltage swing 0, pre-emphasis 0->3 */
-+	{
-+		{ 0x2, 0x0, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0x5, 0x4, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0x9, 0x8, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xd, 0xc, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 1, pre-emphasis 0->2 */
-+	{
-+		{ 0x6, 0x1, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0xa, 0x6, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xc, 0x8, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 2, pre-emphasis 0->1 */
-+	{
-+		{ 0x9, 0x1, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0xd, 0x6, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 3, pre-emphasis 0 */
-+	{
-+		{ 0xc, 0x1, 0x7, 0x7, 0x1, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+	}
-+};
-+
-+static struct tx_drv_ctrl tx_drv_ctrl_hbr2[4][4] = {
-+	/* voltage swing 0, pre-emphasis 0->3 */
-+	{
-+		{ 0x2, 0x1, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0x5, 0x4, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0x9, 0x8, 0x4, 0x6, 0x1, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xd, 0xc, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 1, pre-emphasis 0->2 */
-+	{
-+		{ 0x6, 0x1, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0xb, 0x7, 0x4, 0x6, 0x0, 0x4, 0x0, 0x1, 0x7, 0x7 },
-+		{ 0xd, 0x9, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 2, pre-emphasis 0->1 */
-+	{
-+		{ 0x8, 0x1, 0x4, 0x6, 0x0, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+		{ 0xc, 0x6, 0x7, 0x7, 0x1, 0x7, 0x0, 0x1, 0x7, 0x7 },
-+	},
-+
-+	/* voltage swing 3, pre-emphasis 0 */
-+	{
-+		{ 0xb, 0x0, 0x7, 0x7, 0x1, 0x4, 0x1, 0x1, 0x7, 0x7 },
-+	}
-+};
-+
- static bool rk_hdptx_phy_is_rw_reg(struct device *dev, unsigned int reg)
- {
- 	switch (reg) {
-@@ -843,9 +1078,45 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
- 	return rk_hdptx_post_enable_lane(hdptx);
- }
- 
-+static void rk_hdptx_dp_reset(struct rk_hdptx_phy *hdptx)
-+{
-+	reset_control_assert(hdptx->rsts[RST_LANE].rstc);
-+	reset_control_assert(hdptx->rsts[RST_CMN].rstc);
-+	reset_control_assert(hdptx->rsts[RST_INIT].rstc);
-+
-+	reset_control_assert(hdptx->rsts[RST_APB].rstc);
-+	udelay(10);
-+	reset_control_deassert(hdptx->rsts[RST_APB].rstc);
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0301),
-+			   OVRD_LN_TX_DRV_EI_EN_MASK | LN_TX_DRV_EI_EN_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_EI_EN_MASK, 1) |
-+			   FIELD_PREP(LN_TX_DRV_EI_EN_MASK, 0));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0401),
-+			   OVRD_LN_TX_DRV_EI_EN_MASK | LN_TX_DRV_EI_EN_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_EI_EN_MASK, 1) |
-+			   FIELD_PREP(LN_TX_DRV_EI_EN_MASK, 0));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0501),
-+			   OVRD_LN_TX_DRV_EI_EN_MASK | LN_TX_DRV_EI_EN_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_EI_EN_MASK, 1) |
-+			   FIELD_PREP(LN_TX_DRV_EI_EN_MASK, 0));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0601),
-+			   OVRD_LN_TX_DRV_EI_EN_MASK | LN_TX_DRV_EI_EN_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_EI_EN_MASK, 1) |
-+			   FIELD_PREP(LN_TX_DRV_EI_EN_MASK, 0));
-+
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x0));
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_BIAS_EN << 16 | FIELD_PREP(HDPTX_I_BIAS_EN, 0x0));
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_BGR_EN << 16 | FIELD_PREP(HDPTX_I_BGR_EN, 0x0));
-+}
-+
- static int rk_hdptx_phy_consumer_get(struct rk_hdptx_phy *hdptx,
- 				     unsigned int rate)
- {
-+	enum phy_mode mode = phy_get_mode(hdptx->phy);
- 	u32 status;
- 	int ret;
- 
-@@ -859,10 +1130,14 @@ static int rk_hdptx_phy_consumer_get(struct rk_hdptx_phy *hdptx,
- 	if (status & HDPTX_O_PLL_LOCK_DONE)
- 		dev_warn(hdptx->dev, "PLL locked by unknown consumer!\n");
- 
--	if (rate) {
--		ret = rk_hdptx_ropll_tmds_cmn_config(hdptx, rate);
--		if (ret)
--			goto dec_usage;
-+	if (mode == PHY_MODE_DP) {
-+		rk_hdptx_dp_reset(hdptx);
-+	} else {
-+		if (rate) {
-+			ret = rk_hdptx_ropll_tmds_cmn_config(hdptx, rate);
-+			if (ret)
-+				goto dec_usage;
-+		}
- 	}
- 
- 	return 0;
-@@ -874,6 +1149,7 @@ static int rk_hdptx_phy_consumer_get(struct rk_hdptx_phy *hdptx,
- 
- static int rk_hdptx_phy_consumer_put(struct rk_hdptx_phy *hdptx, bool force)
- {
-+	enum phy_mode mode = phy_get_mode(hdptx->phy);
- 	u32 status;
- 	int ret;
- 
-@@ -887,8 +1163,12 @@ static int rk_hdptx_phy_consumer_put(struct rk_hdptx_phy *hdptx, bool force)
- 	} else {
- 		ret = regmap_read(hdptx->grf, GRF_HDPTX_STATUS, &status);
- 		if (!ret) {
--			if (status & HDPTX_O_PLL_LOCK_DONE)
--				rk_hdptx_phy_disable(hdptx);
-+			if (status & HDPTX_O_PLL_LOCK_DONE) {
-+				if (mode == PHY_MODE_DP)
-+					rk_hdptx_dp_reset(hdptx);
-+				else
-+					rk_hdptx_phy_disable(hdptx);
-+			}
- 			return 0;
- 		} else if (force) {
- 			return 0;
-@@ -899,11 +1179,262 @@ static int rk_hdptx_phy_consumer_put(struct rk_hdptx_phy *hdptx, bool force)
- 	return ret;
- }
- 
-+static void rk_hdptx_dp_pll_init(struct rk_hdptx_phy *hdptx)
-+{
-+	regmap_update_bits(hdptx->regmap, CMN_REG(003c), ANA_LCPLL_RESERVED7_MASK,
-+			   FIELD_PREP(ANA_LCPLL_RESERVED7_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0046),
-+			   ROPLL_ANA_CPP_CTRL_COARSE_MASK | ROPLL_ANA_CPP_CTRL_FINE_MASK,
-+			   FIELD_PREP(ROPLL_ANA_CPP_CTRL_COARSE_MASK, 0xe) |
-+			   FIELD_PREP(ROPLL_ANA_CPP_CTRL_FINE_MASK, 0xe));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0047),
-+			   ROPLL_ANA_LPF_C_SEL_COARSE_MASK |
-+			   ROPLL_ANA_LPF_C_SEL_FINE_MASK,
-+			   FIELD_PREP(ROPLL_ANA_LPF_C_SEL_COARSE_MASK, 0x4) |
-+			   FIELD_PREP(ROPLL_ANA_LPF_C_SEL_FINE_MASK, 0x4));
-+
-+	regmap_write(hdptx->regmap, CMN_REG(0051), FIELD_PREP(ROPLL_PMS_MDIV_MASK, 0x87));
-+	regmap_write(hdptx->regmap, CMN_REG(0052), FIELD_PREP(ROPLL_PMS_MDIV_MASK, 0x71));
-+	regmap_write(hdptx->regmap, CMN_REG(0053), FIELD_PREP(ROPLL_PMS_MDIV_MASK, 0x71));
-+
-+	regmap_write(hdptx->regmap, CMN_REG(0055),
-+		     FIELD_PREP(ROPLL_PMS_MDIV_AFC_MASK, 0x87));
-+	regmap_write(hdptx->regmap, CMN_REG(0056),
-+		     FIELD_PREP(ROPLL_PMS_MDIV_AFC_MASK, 0x71));
-+	regmap_write(hdptx->regmap, CMN_REG(0057),
-+		     FIELD_PREP(ROPLL_PMS_MDIV_AFC_MASK, 0x71));
-+
-+	regmap_write(hdptx->regmap, CMN_REG(0059),
-+		     FIELD_PREP(ANA_ROPLL_PMS_PDIV_MASK, 0x1) |
-+		     FIELD_PREP(ANA_ROPLL_PMS_REFDIV_MASK, 0x1));
-+	regmap_write(hdptx->regmap, CMN_REG(005a),
-+		     FIELD_PREP(ROPLL_PMS_SDIV_RBR_MASK, 0x3) |
-+		     FIELD_PREP(ROPLL_PMS_SDIV_HBR_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005b), ROPLL_PMS_SDIV_HBR2_MASK,
-+			   FIELD_PREP(ROPLL_PMS_SDIV_HBR2_MASK, 0x0));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005e), ROPLL_SDM_EN_MASK,
-+			   FIELD_PREP(ROPLL_SDM_EN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005e),
-+			   OVRD_ROPLL_SDM_RSTN_MASK | ROPLL_SDM_RSTN_MASK,
-+			   FIELD_PREP(OVRD_ROPLL_SDM_RSTN_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_SDM_RSTN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005e), ROPLL_SDC_FRAC_EN_RBR_MASK,
-+			   FIELD_PREP(ROPLL_SDC_FRAC_EN_RBR_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005e), ROPLL_SDC_FRAC_EN_HBR_MASK,
-+			   FIELD_PREP(ROPLL_SDC_FRAC_EN_HBR_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005e), ROPLL_SDC_FRAC_EN_HBR2_MASK,
-+			   FIELD_PREP(ROPLL_SDC_FRAC_EN_HBR2_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(005f),
-+			   OVRD_ROPLL_SDC_RSTN_MASK | ROPLL_SDC_RSTN_MASK,
-+			   FIELD_PREP(OVRD_ROPLL_SDC_RSTN_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_SDC_RSTN_MASK, 0x1));
-+	regmap_write(hdptx->regmap, CMN_REG(0060),
-+		     FIELD_PREP(ROPLL_SDM_DENOMINATOR_MASK, 0x21));
-+	regmap_write(hdptx->regmap, CMN_REG(0061),
-+		     FIELD_PREP(ROPLL_SDM_DENOMINATOR_MASK, 0x27));
-+	regmap_write(hdptx->regmap, CMN_REG(0062),
-+		     FIELD_PREP(ROPLL_SDM_DENOMINATOR_MASK, 0x27));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0064),
-+			   ROPLL_SDM_NUM_SIGN_RBR_MASK |
-+			   ROPLL_SDM_NUM_SIGN_HBR_MASK |
-+			   ROPLL_SDM_NUM_SIGN_HBR2_MASK,
-+			   FIELD_PREP(ROPLL_SDM_NUM_SIGN_RBR_MASK, 0x0) |
-+			   FIELD_PREP(ROPLL_SDM_NUM_SIGN_HBR_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_SDM_NUM_SIGN_HBR2_MASK, 0x1));
-+	regmap_write(hdptx->regmap, CMN_REG(0065),
-+		     FIELD_PREP(ROPLL_SDM_NUM_MASK, 0x0));
-+	regmap_write(hdptx->regmap, CMN_REG(0066),
-+		     FIELD_PREP(ROPLL_SDM_NUM_MASK, 0xd));
-+	regmap_write(hdptx->regmap, CMN_REG(0067),
-+		     FIELD_PREP(ROPLL_SDM_NUM_MASK, 0xd));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0069), ROPLL_SDC_N_RBR_MASK,
-+			   FIELD_PREP(ROPLL_SDC_N_RBR_MASK, 0x2));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(006a),
-+			   ROPLL_SDC_N_HBR_MASK | ROPLL_SDC_N_HBR2_MASK,
-+			   FIELD_PREP(ROPLL_SDC_N_HBR_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_SDC_N_HBR2_MASK, 0x1));
-+
-+	regmap_write(hdptx->regmap, CMN_REG(006c),
-+		     FIELD_PREP(ROPLL_SDC_NUM_MASK, 0x3));
-+	regmap_write(hdptx->regmap, CMN_REG(006d),
-+		     FIELD_PREP(ROPLL_SDC_NUM_MASK, 0x7));
-+	regmap_write(hdptx->regmap, CMN_REG(006e),
-+		     FIELD_PREP(ROPLL_SDC_NUM_MASK, 0x7));
-+
-+	regmap_write(hdptx->regmap, CMN_REG(0070),
-+		     FIELD_PREP(ROPLL_SDC_DENO_MASK, 0x8));
-+	regmap_write(hdptx->regmap, CMN_REG(0071),
-+		     FIELD_PREP(ROPLL_SDC_DENO_MASK, 0x18));
-+	regmap_write(hdptx->regmap, CMN_REG(0072),
-+		     FIELD_PREP(ROPLL_SDC_DENO_MASK, 0x18));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0074),
-+			   OVRD_ROPLL_SDC_NDIV_RSTN_MASK | ROPLL_SDC_NDIV_RSTN_MASK,
-+			   FIELD_PREP(OVRD_ROPLL_SDC_NDIV_RSTN_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_SDC_NDIV_RSTN_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0077), ANA_ROPLL_SSC_CLK_DIV_SEL_MASK,
-+			   FIELD_PREP(ANA_ROPLL_SSC_CLK_DIV_SEL_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0081), ANA_PLL_CD_TX_SER_RATE_SEL_MASK,
-+			   FIELD_PREP(ANA_PLL_CD_TX_SER_RATE_SEL_MASK, 0x0));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0081),
-+			   ANA_PLL_CD_HSCLK_EAST_EN_MASK | ANA_PLL_CD_HSCLK_WEST_EN_MASK,
-+			   FIELD_PREP(ANA_PLL_CD_HSCLK_EAST_EN_MASK, 0x1) |
-+			   FIELD_PREP(ANA_PLL_CD_HSCLK_WEST_EN_MASK, 0x0));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0082), ANA_PLL_CD_VREG_GAIN_CTRL_MASK,
-+			   FIELD_PREP(ANA_PLL_CD_VREG_GAIN_CTRL_MASK, 0x4));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0083), ANA_PLL_CD_VREG_ICTRL_MASK,
-+			   FIELD_PREP(ANA_PLL_CD_VREG_ICTRL_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0084), PLL_LCRO_CLK_SEL_MASK,
-+			   FIELD_PREP(PLL_LCRO_CLK_SEL_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0085), ANA_PLL_SYNC_LOSS_DET_MODE_MASK,
-+			   FIELD_PREP(ANA_PLL_SYNC_LOSS_DET_MODE_MASK, 0x3));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0087), ANA_PLL_TX_HS_CLK_EN_MASK,
-+			   FIELD_PREP(ANA_PLL_TX_HS_CLK_EN_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0097), DIG_CLK_SEL_MASK,
-+			   FIELD_PREP(DIG_CLK_SEL_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0099), CMN_ROPLL_ALONE_MODE_MASK,
-+			   FIELD_PREP(CMN_ROPLL_ALONE_MODE_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(009a), HS_SPEED_SEL_MASK,
-+			   FIELD_PREP(HS_SPEED_SEL_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, CMN_REG(009b), LS_SPEED_SEL_MASK,
-+			   FIELD_PREP(LS_SPEED_SEL_MASK, 0x1));
-+}
-+
-+static int rk_hdptx_dp_aux_init(struct rk_hdptx_phy *hdptx)
-+{
-+	u32 status;
-+	int ret;
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(0102), ANA_SB_RXTERM_OFFSP_MASK,
-+			   FIELD_PREP(ANA_SB_RXTERM_OFFSP_MASK, 0x3));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0103), ANA_SB_RXTERM_OFFSN_MASK,
-+			   FIELD_PREP(ANA_SB_RXTERM_OFFSN_MASK, 0x3));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0104), SB_AUX_EN_MASK,
-+			   FIELD_PREP(SB_AUX_EN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0105), ANA_SB_TX_HLVL_PROG_MASK,
-+			   FIELD_PREP(ANA_SB_TX_HLVL_PROG_MASK, 0x7));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0106), ANA_SB_TX_LLVL_PROG_MASK,
-+			   FIELD_PREP(ANA_SB_TX_LLVL_PROG_MASK, 0x7));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(010d), ANA_SB_DMRX_LPBK_DATA_MASK,
-+			   FIELD_PREP(ANA_SB_DMRX_LPBK_DATA_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(010f), ANA_SB_VREG_GAIN_CTRL_MASK,
-+			   FIELD_PREP(ANA_SB_VREG_GAIN_CTRL_MASK, 0x0));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0110),
-+			   ANA_SB_VREG_OUT_SEL_MASK | ANA_SB_VREG_REF_SEL_MASK,
-+			   FIELD_PREP(ANA_SB_VREG_OUT_SEL_MASK, 0x1) |
-+			   FIELD_PREP(ANA_SB_VREG_REF_SEL_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(0113),
-+			   SB_RX_RCAL_OPT_CODE_MASK | SB_RX_RTERM_CTRL_MASK,
-+			   FIELD_PREP(SB_RX_RCAL_OPT_CODE_MASK, 0x1) |
-+			   FIELD_PREP(SB_RX_RTERM_CTRL_MASK, 0x3));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0114),
-+			   SB_TG_SB_EN_DELAY_TIME_MASK | SB_TG_RXTERM_EN_DELAY_TIME_MASK,
-+			   FIELD_PREP(SB_TG_SB_EN_DELAY_TIME_MASK, 0x2) |
-+			   FIELD_PREP(SB_TG_RXTERM_EN_DELAY_TIME_MASK, 0x2));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0115),
-+			   SB_READY_DELAY_TIME_MASK | SB_TG_OSC_EN_DELAY_TIME_MASK,
-+			   FIELD_PREP(SB_READY_DELAY_TIME_MASK, 0x2) |
-+			   FIELD_PREP(SB_TG_OSC_EN_DELAY_TIME_MASK, 0x2));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0116),
-+			   AFC_RSTN_DELAY_TIME_MASK,
-+			   FIELD_PREP(AFC_RSTN_DELAY_TIME_MASK, 0x2));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0117),
-+			   FAST_PULSE_TIME_MASK,
-+			   FIELD_PREP(FAST_PULSE_TIME_MASK, 0x4));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0118),
-+			   SB_TG_EARC_DMRX_RECVRD_CLK_CNT_MASK,
-+			   FIELD_PREP(SB_TG_EARC_DMRX_RECVRD_CLK_CNT_MASK, 0xa));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(011a), SB_TG_CNT_RUN_NO_7_0_MASK,
-+			   FIELD_PREP(SB_TG_CNT_RUN_NO_7_0_MASK, 0x3));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011b),
-+			   SB_EARC_SIG_DET_BYPASS_MASK | SB_AFC_TOL_MASK,
-+			   FIELD_PREP(SB_EARC_SIG_DET_BYPASS_MASK, 0x1) |
-+			   FIELD_PREP(SB_AFC_TOL_MASK, 0x3));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011c), SB_AFC_STB_NUM_MASK,
-+			   FIELD_PREP(SB_AFC_STB_NUM_MASK, 0x4));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011d), SB_TG_OSC_CNT_MIN_MASK,
-+			   FIELD_PREP(SB_TG_OSC_CNT_MIN_MASK, 0x67));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011e), SB_TG_OSC_CNT_MAX_MASK,
-+			   FIELD_PREP(SB_TG_OSC_CNT_MAX_MASK, 0x6a));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011f), SB_PWM_AFC_CTRL_MASK,
-+			   FIELD_PREP(SB_PWM_AFC_CTRL_MASK, 0x5));
-+	regmap_update_bits(hdptx->regmap, SB_REG(011f), SB_RCAL_RSTN_MASK,
-+			   FIELD_PREP(SB_RCAL_RSTN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0120), SB_AUX_EN_IN_MASK,
-+			   FIELD_PREP(SB_AUX_EN_IN_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(0102), OVRD_SB_RXTERM_EN_MASK,
-+			   FIELD_PREP(OVRD_SB_RXTERM_EN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0103), OVRD_SB_RX_RESCAL_DONE_MASK,
-+			   FIELD_PREP(OVRD_SB_RX_RESCAL_DONE_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0104), OVRD_SB_EN_MASK,
-+			   FIELD_PREP(OVRD_SB_EN_MASK, 0x1));
-+	regmap_update_bits(hdptx->regmap, SB_REG(0104), OVRD_SB_AUX_EN_MASK,
-+			   FIELD_PREP(OVRD_SB_AUX_EN_MASK, 0x1));
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(010f), OVRD_SB_VREG_EN_MASK,
-+			   FIELD_PREP(OVRD_SB_VREG_EN_MASK, 0x1));
-+
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_BGR_EN << 16 | FIELD_PREP(HDPTX_I_BGR_EN, 0x1));
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_BIAS_EN << 16 | FIELD_PREP(HDPTX_I_BIAS_EN, 0x1));
-+	usleep_range(20, 25);
-+
-+	reset_control_deassert(hdptx->rsts[RST_INIT].rstc);
-+	usleep_range(20, 25);
-+	reset_control_deassert(hdptx->rsts[RST_CMN].rstc);
-+	usleep_range(20, 25);
-+
-+	regmap_update_bits(hdptx->regmap, SB_REG(0103), OVRD_SB_RX_RESCAL_DONE_MASK,
-+			   FIELD_PREP(OVRD_SB_RX_RESCAL_DONE_MASK, 0x1));
-+	usleep_range(100, 110);
-+	regmap_update_bits(hdptx->regmap, SB_REG(0104), SB_EN_MASK,
-+			   FIELD_PREP(SB_EN_MASK, 0x1));
-+	usleep_range(100, 110);
-+	regmap_update_bits(hdptx->regmap, SB_REG(0102), SB_RXTERM_EN_MASK,
-+			   FIELD_PREP(SB_RXTERM_EN_MASK, 0x1));
-+	usleep_range(20, 25);
-+	regmap_update_bits(hdptx->regmap, SB_REG(010f), SB_VREG_EN_MASK,
-+			   FIELD_PREP(SB_VREG_EN_MASK, 0x1));
-+	usleep_range(20, 25);
-+	regmap_update_bits(hdptx->regmap, SB_REG(0104), SB_AUX_EN_MASK,
-+			   FIELD_PREP(SB_AUX_EN_MASK, 0x1));
-+	usleep_range(100, 110);
-+
-+	ret = regmap_read_poll_timeout(hdptx->grf, GRF_HDPTX_STATUS,
-+				       status, FIELD_GET(HDPTX_O_SB_RDY, status),
-+				       50, 1000);
-+	if (ret) {
-+		dev_err(hdptx->dev, "Failed to get phy sb ready: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static int rk_hdptx_phy_power_on(struct phy *phy)
- {
- 	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
- 	int bus_width = phy_get_bus_width(hdptx->phy);
--	int ret;
-+	enum phy_mode mode = phy_get_mode(phy);
-+	int ret, lane;
- 
- 	/*
- 	 * FIXME: Temporary workaround to pass pixel_clk_rate
-@@ -919,9 +1450,37 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 	if (ret)
- 		return ret;
- 
--	ret = rk_hdptx_ropll_tmds_mode_config(hdptx, rate);
--	if (ret)
--		rk_hdptx_phy_consumer_put(hdptx, true);
-+	if (mode == PHY_MODE_DP) {
-+		regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+			     HDPTX_MODE_SEL << 16 | FIELD_PREP(HDPTX_MODE_SEL, 0x1));
-+
-+		for (lane = 0; lane < 4; lane++) {
-+			regmap_update_bits(hdptx->regmap, LANE_REG(031e) + 0x400 * lane,
-+					   LN_POLARITY_INV_MASK | LN_LANE_MODE_MASK,
-+					   FIELD_PREP(LN_POLARITY_INV_MASK, 0) |
-+					   FIELD_PREP(LN_LANE_MODE_MASK, 1));
-+		}
-+
-+		regmap_update_bits(hdptx->regmap, LNTOP_REG(0200), PROTOCOL_SEL_MASK,
-+				   FIELD_PREP(PROTOCOL_SEL_MASK, 0x0));
-+		regmap_update_bits(hdptx->regmap, LNTOP_REG(0206), DATA_BUS_WIDTH_MASK,
-+				   FIELD_PREP(DATA_BUS_WIDTH_MASK, 0x1));
-+		regmap_update_bits(hdptx->regmap, LNTOP_REG(0206), DATA_BUS_WIDTH_SEL_MASK,
-+				   FIELD_PREP(DATA_BUS_WIDTH_SEL_MASK, 0x0));
-+
-+		rk_hdptx_dp_pll_init(hdptx);
-+
-+		ret = rk_hdptx_dp_aux_init(hdptx);
-+		if (ret)
-+			rk_hdptx_phy_consumer_put(hdptx, true);
-+	} else {
-+		regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+			     HDPTX_MODE_SEL << 16 | FIELD_PREP(HDPTX_MODE_SEL, 0x0));
-+
-+		ret = rk_hdptx_ropll_tmds_mode_config(hdptx, rate);
-+		if (ret)
-+			rk_hdptx_phy_consumer_put(hdptx, true);
-+	}
- 
- 	return ret;
- }
-@@ -933,9 +1492,308 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
- 	return rk_hdptx_phy_consumer_put(hdptx, false);
- }
- 
-+static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
-+				      struct phy_configure_opts_dp *dp)
-+{
-+	int i;
-+
-+	if (dp->set_rate) {
-+		switch (dp->link_rate) {
-+		case 1620:
-+		case 2700:
-+		case 5400:
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (dp->set_lanes) {
-+		switch (dp->lanes) {
-+		case 1:
-+		case 2:
-+		case 4:
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (dp->set_voltages) {
-+		for (i = 0; i < hdptx->lanes; i++) {
-+			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
-+				return -EINVAL;
-+
-+			if (dp->voltage[i] + dp->pre[i] > 3)
-+				return -EINVAL;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int rk_hdptx_phy_set_rate(struct rk_hdptx_phy *hdptx,
-+				 struct phy_configure_opts_dp *dp)
-+{
-+	u32 bw, status;
-+	int ret;
-+
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x0));
-+
-+	switch (dp->link_rate) {
-+	case 1620:
-+		bw = DP_BW_RBR;
-+		break;
-+	case 2700:
-+		bw = DP_BW_HBR;
-+		break;
-+	case 5400:
-+		bw = DP_BW_HBR2;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	hdptx->link_rate = dp->link_rate;
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0008), OVRD_LCPLL_EN_MASK | LCPLL_EN_MASK,
-+			   FIELD_PREP(OVRD_LCPLL_EN_MASK, 0x1) |
-+			   FIELD_PREP(LCPLL_EN_MASK, 0x0));
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(003d), OVRD_ROPLL_EN_MASK | ROPLL_EN_MASK,
-+			   FIELD_PREP(OVRD_ROPLL_EN_MASK, 0x1) |
-+			   FIELD_PREP(ROPLL_EN_MASK, 0x1));
-+
-+	if (dp->ssc) {
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0074),
-+				   OVRD_ROPLL_SSC_EN_MASK | ROPLL_SSC_EN_MASK,
-+				   FIELD_PREP(OVRD_ROPLL_SSC_EN_MASK, 0x1) |
-+				   FIELD_PREP(ROPLL_SSC_EN_MASK, 0x1));
-+		regmap_write(hdptx->regmap, CMN_REG(0075),
-+			     FIELD_PREP(ANA_ROPLL_SSC_FM_DEVIATION_MASK, 0xc));
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0076),
-+				   ANA_ROPLL_SSC_FM_FREQ_MASK,
-+				   FIELD_PREP(ANA_ROPLL_SSC_FM_FREQ_MASK, 0x1f));
-+
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0099), SSC_EN_MASK,
-+				   FIELD_PREP(SSC_EN_MASK, 0x2));
-+	} else {
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0074),
-+				   OVRD_ROPLL_SSC_EN_MASK | ROPLL_SSC_EN_MASK,
-+				   FIELD_PREP(OVRD_ROPLL_SSC_EN_MASK, 0x1) |
-+				   FIELD_PREP(ROPLL_SSC_EN_MASK, 0x0));
-+		regmap_write(hdptx->regmap, CMN_REG(0075),
-+			     FIELD_PREP(ANA_ROPLL_SSC_FM_DEVIATION_MASK, 0x20));
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0076),
-+				   ANA_ROPLL_SSC_FM_FREQ_MASK,
-+				   FIELD_PREP(ANA_ROPLL_SSC_FM_FREQ_MASK, 0xc));
-+
-+		regmap_update_bits(hdptx->regmap, CMN_REG(0099), SSC_EN_MASK,
-+				   FIELD_PREP(SSC_EN_MASK, 0x0));
-+	}
-+
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0095), DP_TX_LINK_BW_MASK,
-+			   FIELD_PREP(DP_TX_LINK_BW_MASK, bw));
-+
-+	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
-+		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x1));
-+
-+	ret = regmap_read_poll_timeout(hdptx->grf, GRF_HDPTX_STATUS,
-+				       status, FIELD_GET(HDPTX_O_PLL_LOCK_DONE, status),
-+				       50, 1000);
-+	if (ret) {
-+		dev_err(hdptx->dev, "Failed to get phy pll lock: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rk_hdptx_phy_set_lanes(struct rk_hdptx_phy *hdptx,
-+				  struct phy_configure_opts_dp *dp)
-+{
-+	hdptx->lanes = dp->lanes;
-+
-+	regmap_update_bits(hdptx->regmap, LNTOP_REG(0207), LANE_EN_MASK,
-+			   FIELD_PREP(LANE_EN_MASK, GENMASK(hdptx->lanes - 1, 0)));
-+
-+	return 0;
-+}
-+
-+static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
-+				     struct phy_configure_opts_dp *dp,
-+				     u8 lane)
-+{
-+	const struct tx_drv_ctrl *ctrl;
-+	u32 offset = lane * 0x400;
-+
-+	switch (hdptx->link_rate) {
-+	case 1620:
-+		ctrl = &tx_drv_ctrl_rbr[dp->voltage[lane]][dp->pre[lane]];
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030a) + offset,
-+				   LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
-+				   ctrl->tx_jeq_even_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030c) + offset,
-+				   LN_TX_JEQ_ODD_CTRL_RBR_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_RBR_MASK,
-+				   ctrl->tx_jeq_odd_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
-+				   LN_TX_SER_40BIT_EN_RBR_MASK,
-+				   FIELD_PREP(LN_TX_SER_40BIT_EN_RBR_MASK, 0x1));
-+		break;
-+	case 2700:
-+		ctrl = &tx_drv_ctrl_hbr[dp->voltage[lane]][dp->pre[lane]];
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
-+				   LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
-+				   ctrl->tx_jeq_even_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
-+				   LN_TX_JEQ_ODD_CTRL_HBR_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR_MASK,
-+				   ctrl->tx_jeq_odd_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
-+				   LN_TX_SER_40BIT_EN_HBR_MASK,
-+				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR_MASK, 0x1));
-+		break;
-+	case 5400:
-+	default:
-+		ctrl = &tx_drv_ctrl_hbr2[dp->voltage[lane]][dp->pre[lane]];
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
-+				   LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
-+				   ctrl->tx_jeq_even_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
-+				   LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
-+				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
-+				   ctrl->tx_jeq_odd_ctrl));
-+		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
-+				   LN_TX_SER_40BIT_EN_HBR2_MASK,
-+				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR2_MASK, 0x1));
-+		break;
-+	}
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0303) + offset,
-+			   OVRD_LN_TX_DRV_LVL_CTRL_MASK | LN_TX_DRV_LVL_CTRL_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_LVL_CTRL_MASK, 0x1) |
-+			   FIELD_PREP(LN_TX_DRV_LVL_CTRL_MASK,
-+				      ctrl->tx_drv_lvl_ctrl));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0304) + offset,
-+			   OVRD_LN_TX_DRV_POST_LVL_CTRL_MASK |
-+			   LN_TX_DRV_POST_LVL_CTRL_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_POST_LVL_CTRL_MASK, 0x1) |
-+			   FIELD_PREP(LN_TX_DRV_POST_LVL_CTRL_MASK,
-+				      ctrl->tx_drv_post_lvl_ctrl));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0305) + offset,
-+			   OVRD_LN_TX_DRV_PRE_LVL_CTRL_MASK |
-+			   LN_TX_DRV_PRE_LVL_CTRL_MASK,
-+			   FIELD_PREP(OVRD_LN_TX_DRV_PRE_LVL_CTRL_MASK, 0x1) |
-+			   FIELD_PREP(LN_TX_DRV_PRE_LVL_CTRL_MASK,
-+				      ctrl->tx_drv_pre_lvl_ctrl));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0306) + offset,
-+			   LN_ANA_TX_DRV_IDRV_IDN_CTRL_MASK |
-+			   LN_ANA_TX_DRV_IDRV_IUP_CTRL_MASK |
-+			   LN_ANA_TX_DRV_ACCDRV_EN_MASK,
-+			   FIELD_PREP(LN_ANA_TX_DRV_IDRV_IDN_CTRL_MASK,
-+				      ctrl->ana_tx_drv_idrv_idn_ctrl) |
-+			   FIELD_PREP(LN_ANA_TX_DRV_IDRV_IUP_CTRL_MASK,
-+				      ctrl->ana_tx_drv_idrv_iup_ctrl) |
-+			   FIELD_PREP(LN_ANA_TX_DRV_ACCDRV_EN_MASK,
-+				      ctrl->ana_tx_drv_accdrv_en));
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0307) + offset,
-+			   LN_ANA_TX_DRV_ACCDRV_POL_SEL_MASK |
-+			   LN_ANA_TX_DRV_ACCDRV_CTRL_MASK,
-+			   FIELD_PREP(LN_ANA_TX_DRV_ACCDRV_POL_SEL_MASK, 0x1) |
-+			   FIELD_PREP(LN_ANA_TX_DRV_ACCDRV_CTRL_MASK,
-+				      ctrl->ana_tx_drv_accdrv_ctrl));
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(030a) + offset,
-+			   LN_ANA_TX_JEQ_EN_MASK,
-+			   FIELD_PREP(LN_ANA_TX_JEQ_EN_MASK, ctrl->ana_tx_jeq_en));
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0310) + offset,
-+			   LN_ANA_TX_SYNC_LOSS_DET_MODE_MASK,
-+			   FIELD_PREP(LN_ANA_TX_SYNC_LOSS_DET_MODE_MASK, 0x3));
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(0316) + offset,
-+			   LN_ANA_TX_SER_VREG_GAIN_CTRL_MASK,
-+			   FIELD_PREP(LN_ANA_TX_SER_VREG_GAIN_CTRL_MASK, 0x2));
-+
-+	regmap_update_bits(hdptx->regmap, LANE_REG(031b) + offset,
-+			   LN_ANA_TX_RESERVED_MASK,
-+			   FIELD_PREP(LN_ANA_TX_RESERVED_MASK, 0x1));
-+}
-+
-+static int rk_hdptx_phy_set_voltages(struct rk_hdptx_phy *hdptx,
-+				     struct phy_configure_opts_dp *dp)
-+{
-+	u8 lane;
-+	u32 status;
-+	int ret;
-+
-+	for (lane = 0; lane < hdptx->lanes; lane++)
-+		rk_hdptx_phy_set_voltage(hdptx, dp, lane);
-+
-+	reset_control_deassert(hdptx->rsts[RST_LANE].rstc);
-+
-+	ret = regmap_read_poll_timeout(hdptx->grf, GRF_HDPTX_STATUS,
-+				       status, FIELD_GET(HDPTX_O_PHY_RDY, status),
-+				       50, 5000);
-+	if (ret) {
-+		dev_err(hdptx->dev, "Failed to get phy ready: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opts)
-+{
-+	struct rk_hdptx_phy *hdptx = phy_get_drvdata(phy);
-+	enum phy_mode mode = phy_get_mode(phy);
-+	int ret;
-+
-+	if (mode != PHY_MODE_DP)
-+		return 0;
-+
-+	ret = rk_hdptx_phy_verify_config(hdptx, &opts->dp);
-+	if (ret) {
-+		dev_err(hdptx->dev, "invalid params for phy configure\n");
-+		return ret;
-+	}
-+
-+	if (opts->dp.set_rate) {
-+		ret = rk_hdptx_phy_set_rate(hdptx, &opts->dp);
-+		if (ret) {
-+			dev_err(hdptx->dev, "failed to set rate: %d\n", ret);
-+			return ret;
-+		}
-+	}
-+
-+	if (opts->dp.set_lanes) {
-+		ret = rk_hdptx_phy_set_lanes(hdptx, &opts->dp);
-+		if (ret) {
-+			dev_err(hdptx->dev, "failed to set lanes: %d\n", ret);
-+			return ret;
-+		}
-+	}
-+
-+	if (opts->dp.set_voltages) {
-+		ret = rk_hdptx_phy_set_voltages(hdptx, &opts->dp);
-+		if (ret) {
-+			dev_err(hdptx->dev, "failed to set voltages: %d\n",
-+				ret);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static const struct phy_ops rk_hdptx_phy_ops = {
- 	.power_on  = rk_hdptx_phy_power_on,
- 	.power_off = rk_hdptx_phy_power_off,
-+	.configure = rk_hdptx_phy_configure,
- 	.owner	   = THIS_MODULE,
- };
- 
-@@ -1150,5 +2008,6 @@ module_platform_driver(rk_hdptx_phy_driver);
- 
- MODULE_AUTHOR("Algea Cao <algea.cao@rock-chips.com>");
- MODULE_AUTHOR("Cristian Ciocaltea <cristian.ciocaltea@collabora.com>");
-+MODULE_AUTHOR("Damon Ding <damon.ding@rock-chips.com>");
- MODULE_DESCRIPTION("Samsung HDMI/eDP Transmitter Combo PHY Driver");
- MODULE_LICENSE("GPL");
--- 
-2.34.1
+Thanks,
+Robin.
+
+>   
+>   	if (!pages)
+>   		return NULL;
+> diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
+> index a4cbd8a8a2976e..3b57d14baa9c1d 100644
+> --- a/drivers/iommu/io-pgtable-dart.c
+> +++ b/drivers/iommu/io-pgtable-dart.c
+> @@ -107,13 +107,6 @@ static phys_addr_t iopte_to_paddr(dart_iopte pte,
+>   	return paddr;
+>   }
+>   
+> -static void *__dart_alloc_pages(size_t size, gfp_t gfp)
+> -{
+> -	int order = get_order(size);
+> -
+> -	return iommu_alloc_pages(gfp, order);
+> -}
+> -
+>   static int dart_init_pte(struct dart_io_pgtable *data,
+>   			     unsigned long iova, phys_addr_t paddr,
+>   			     dart_iopte prot, int num_entries,
+> @@ -255,7 +248,7 @@ static int dart_map_pages(struct io_pgtable_ops *ops, unsigned long iova,
+>   
+>   	/* no L2 table present */
+>   	if (!pte) {
+> -		cptep = __dart_alloc_pages(tblsz, gfp);
+> +		cptep = iommu_alloc_pages_sz(gfp, tblsz);
+>   		if (!cptep)
+>   			return -ENOMEM;
+>   
+> @@ -412,7 +405,8 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
+>   	cfg->apple_dart_cfg.n_ttbrs = 1 << data->tbl_bits;
+>   
+>   	for (i = 0; i < cfg->apple_dart_cfg.n_ttbrs; ++i) {
+> -		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL);
+> +		data->pgd[i] =
+> +			iommu_alloc_pages_sz(GFP_KERNEL, DART_GRANULE(data));
+>   		if (!data->pgd[i])
+>   			goto out_free_data;
+>   		cfg->apple_dart_cfg.ttbr[i] = virt_to_phys(data->pgd[i]);
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index 3d77aed8507373..d0e515bf5dd1f6 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -690,8 +690,8 @@ sun50i_iommu_domain_alloc_paging(struct device *dev)
+>   	if (!sun50i_domain)
+>   		return NULL;
+>   
+> -	sun50i_domain->dt = iommu_alloc_pages(GFP_KERNEL | GFP_DMA32,
+> -					      get_order(DT_SIZE));
+> +	sun50i_domain->dt =
+> +		iommu_alloc_pages_sz(GFP_KERNEL | GFP_DMA32, DT_SIZE);
+>   	if (!sun50i_domain->dt)
+>   		goto err_free_domain;
+>   
 
 
 _______________________________________________
