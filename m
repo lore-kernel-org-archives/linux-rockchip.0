@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40C8C02192
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 03:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2664C02192
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Feb 2025 06:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
-	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=obtAJCD/T9XpHj4MRiLb9djjWmPX9pNDT/v6OwBo4CE=; b=bjLifOqzxFv+5M
-	vxelcKbUPGyZ3chX3cv2XTR3HZeJe/0MLLZU6f624wpWEn4PFbByzla+clQSBeRtV4Y6d5mhK/r5Y
-	J95hu80GZGhocu67WSld1ZuX8dvpdbSKcVkfnQmSuoHCJHyc/GYpYgtxNcrPhBOs0wveDPH2n9vz+
-	NEQzwQ1b7mXcAGwsGsruoF93raVuhboDPkbti3xN7PbcJi4El3P8Ld/hCbYoKjwnByEhP2gs+CLGs
-	TnAA/uVOZqpppY3kn2tLKgu+D3ebta9e/zMQq5Ebg+SYENU135BFY3ho6c7ywAvz3fDF8mxrurCDD
-	xErWJniKyR71Yxl0aw0w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yoNzAo5nTS6oOuNfj7Ya02Dg0O8+Xk5Gol5u5Ud+enk=; b=r4a+PJZXpu2nUp
+	CynzGXAYIaKPdoEjV5/CHtGd1rn+5SWZ7OHkM1Us0sfQvwaIyWGmQIL1SEaymaClwMEavoS4qoTEB
+	pi3x+UfFWCtQF8A9zvkYE1VHlYfJ29L65hnYvVshns3QSdxYadx0M46Z3tIF0dYMdqlUODvzEjGXK
+	uek/S/IwT4d7sGm3QVYLenPBcdtDNbyJKi7WBOJjdIws5+H60P91qCJF5hvo56bYdOQL1OAs6c86k
+	Vvj5dhK3no/Z+5qGXeD2oMZWlaSnNSbfZVOXhoQybnTHHXLYBbnJJIVynFmUuVPf1Jxj051g2PsR0
+	ClPJkad1CThyFdFqBsyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfWOg-00000002FDu-48GM;
-	Wed, 05 Feb 2025 03:48:18 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tfYiV-00000002OsJ-0ebi;
+	Wed, 05 Feb 2025 06:16:55 +0000
+Received: from mail-m49231.qiye.163.com ([45.254.49.231])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfWM0-00000002EpO-38je;
-	Wed, 05 Feb 2025 03:45:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CF139A42536;
-	Wed,  5 Feb 2025 03:43:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92B66C4CEE7;
-	Wed,  5 Feb 2025 03:45:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738727131;
-	bh=qT3uB6BFnXnuoNmO5ZICAMNYpk2rYRyb7Df6Uuc3yM4=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=pMbVHHZKs7P25UVROkPy0e8TaaRQkao/kjQBlVYOjxMxdnZKVKpnfPw73WfAYObhK
-	 TmYJoKrLJgF4y0gm/qS/tYKJk8rVr9TdlqWWlmLRjN16I9XT+om1a4rP2N5agr/iEf
-	 rPJrwrhrlNpiGX98R6ZwiVySLAZpgqhX7XnuR2SBzKGth6LJZzfYtzMffblRL34nAe
-	 kBQgrJgOg77v74XUFvNp3smUos2M++mJKHZ9utXGhAFqbCqrg7VCXse4GR1gFKiZmw
-	 Cya2bwsqJ6gegFg4MU1615gvJtSSw+d/oyAQ1SHOzdM3SfNr4IPMWNBn7zm7+h9MSl
-	 NGtinAJqKkzcw==
-Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-305d840926fso50426431fa.2;
-        Tue, 04 Feb 2025 19:45:31 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUt6LRlOtMH4yrOo7JUiE5CSTnGZFoTIT7200bz4No1tsLfH4HfWrYGkejuyq/Jqd4oxeJA64kjILAVnSaF0NhI@lists.infradead.org, AJvYcCW0d5aZrcn8Qwuax0S9B+mkwi+bO2LEZqdGUKKmkIsYMXCGKC7BGI6f+N4ROZRJboHIUAZxSNkv50akz1+pEZA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YynHidJKTIXcX2crYLbcj1d2Q7xvOXev09KGrQR3dv3JCL3z2SD
-	zVhQ2Ki9YK/9YpO1qWSHllapanf8J+fFNm7+YnNWhj3DeLOagS4wy1/AoR3X/cZlkwpuLgm1pu3
-	2sAOpZjpy3CDuPQQlsLhnXG4A7s8=
-X-Google-Smtp-Source: AGHT+IF/j4mjEmNMJlaOseMTc31MNVXclZ/WljET6VoPTchVI9nwi6yNBFx9ce6hMcBEMWkiJTzpYrsil92u3LJXWWw=
-X-Received: by 2002:a2e:bc8c:0:b0:300:33b1:f0bf with SMTP id
- 38308e7fff4ca-307cf23bdb9mr4600901fa.0.1738727129916; Tue, 04 Feb 2025
- 19:45:29 -0800 (PST)
-MIME-Version: 1.0
-References: <20250204161359.3335241-1-wens@kernel.org> <20250204134331.270d5c4e@kernel.org>
-In-Reply-To: <20250204134331.270d5c4e@kernel.org>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Wed, 5 Feb 2025 11:45:17 +0800
-X-Gmail-Original-Message-ID: <CAGb2v641vvtVKv8QbiEfHnMWngcKYTJZAgfH5k+G_nOvZcbC9g@mail.gmail.com>
-X-Gm-Features: AWEUYZlfZKNFERbjqveUEQnkoJAkV94srAWQ5Bo9GwhmHD8TgbxWwy-L79DYJGg
-Message-ID: <CAGb2v641vvtVKv8QbiEfHnMWngcKYTJZAgfH5k+G_nOvZcbC9g@mail.gmail.com>
-Subject: Re: [PATCH netdev] net: stmmac: dwmac-rk: Provide FIFO sizes for
- DWMAC 1000
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
-	Heiko Stuebner <heiko@sntech.de>, "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, 
-	Steven Price <steven.price@arm.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	stable@vger.kernel.org
+	id 1tfYiS-00000002Orj-17km
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Feb 2025 06:16:54 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id a34c45df;
+	Wed, 5 Feb 2025 14:16:41 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	"Rafael J . Wysocki" <rafael@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	YiFeng Zhao <zyf@rock-chips.com>,
+	Liang Chen <cl@rock-chips.com>,
+	linux-scsi@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v7 0/7] Initial support for RK3576 UFS controller
+Date: Wed,  5 Feb 2025 14:15:49 +0800
+Message-Id: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU9OHlYaS09LQhpOHUpNTE1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a94d4c0efd809cckunma34c45df
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nio6FAw4KzISEgsKAj8#SxdP
+	QxwwFDRVSlVKTEhDTEhNSUtISUtJVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhDQ0k3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=EyvtoPjnKvd2GCieDWWecf644Er9ayVEOwIBiJWqKu7sv27AO/U50GvCPfBrLfT0G9/WWVkGPYPXuEVXovhpvRf9UiZMDWkJasJYtA4IGhWkOQT3wu1O9ZMosHp7YUE4JBzEgDtXRDgshJ5DBfh4EwAFiyskk8/YEWFX16LRy7o=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=LvWGWQfFisDUe17eK1lZRK/TZq7bEeDm1pbtMWmlHfY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250204_194532_855290_81A84BDB 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20250204_221652_870532_7310A52B 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,21 +81,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBGZWIgNSwgMjAyNSBhdCA1OjQz4oCvQU0gSmFrdWIgS2ljaW5za2kgPGt1YmFAa2Vy
-bmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBXZWQsICA1IEZlYiAyMDI1IDAwOjEzOjU5ICswODAwIENo
-ZW4tWXUgVHNhaSB3cm90ZToKPiA+IFNpbmNlIGEgZml4IGZvciBzdG1tYWMgaW4gZ2VuZXJhbCBo
-YXMgYWxyZWFkeSBiZWVuIHNlbnQgWzFdIGFuZCBhIHJldmVydAo+ID4gd2FzIGFsc28gcHJvcG9z
-ZWQgWzJdLCBJJ2xsIHJlZnJhaW4gZnJvbSBzZW5kaW5nIG1pbmUuCj4KPiBObywgbm8sIHBsZWFz
-ZSBkby4gWW91IG5lZWQgdG8gX3N1Ym1pdF8gdGhlIHJldmVydCBsaWtlIGEgbm9ybWFsIHBhdGNo
-Lgo+IFdpdGggYWxsIHRoZSB1c3VhbCBkZXRhaWxzIGluIHRoZSBjb21taXQgbWVzc2FnZS4KCk1p
-bmUgaXNuJ3QgYSByZXZlcnQsIGJ1dCBzaW1wbHkgZG93bmdyYWRpbmcgdGhlIGVycm9yIHRvIGEg
-d2FybmluZy4KU28uLi4geWV0IGFub3RoZXIgd29ya2Fyb3VuZCBhcHByb2FjaC4KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+This patchset adds initial UFS controller supprt for RK3576 SoC.
+Patch 1 is the dt-bindings. Patch 2-4 deal with rpm and spm support
+in advanced suggested by Ulf. Patch 5 exports two new APIs for host
+driver. Patch 6 and 7 are the host driver and dtsi support.
+
+
+Changes in v7:
+- add definitions for all kinds of hex values if possible
+- Misc log and comment improvement
+- use udelay for less than 10us cases
+- other improvements suggested by Mani
+- Use 0x0 for consistency
+- Collect Mani's acked-by tag
+
+Changes in v6:
+- fix indentation to 4 spaces suggested by Krzysztof
+- export dev_pm_genpd_rpm_always_on()
+- replace host drivers with glue drivers suggested by Mani
+- add Main's review tag
+- remove UFS_MAX_CLKS
+- improve err log
+- remove hardcoded clocks
+- remove comment from ufs_rockchip_device_reset()
+- remove pm_runtime_* from ufs_rockchip_remove()
+- rebase to scsi/next
+- move ufs_rockchip_set_pm_lvl to ufs_rockchip_rk3576_init()
+- add comments about device_set_awake_path()
+- remove comments suggested by Mani
+
+Changes in v5:
+- use ufshc for devicetree example suggested by Mani
+- fix a compile warning
+- use device_set_awake_path() and disable ref_out_clk in suspend
+- remove pd_id from header
+- reconstruct ufs_rockchip_hce_enable_notify() to workaround hce enable
+  without using new quirk
+
+Changes in v4:
+- properly describe reset-gpios
+- deal with power domain of rpm and spm suggested by Ulf
+- Fix typo and disable clks in ufs_rockchip_remove
+- remove clk_disable_unprepare(host->ref_out_clk) from
+  ufs_rockchip_remove
+
+Changes in v3:
+- rename the file to rockchip,rk3576-ufshc.yaml
+- add description for reset-gpios
+- use rockchip,rk3576-ufshc as compatible
+- reword Kconfig description
+- elaborate more about controller in commit msg
+- use rockchip,rk3576-ufshc for compatible
+- remove useless header file
+- remove inline for ufshcd_is_device_present
+- use usleep_range instead
+- remove initialization, reverse Xmas order
+- remove useless varibles
+- check vops for null
+- other small fixes for err path
+- remove pm_runtime_set_active
+- fix the active and inactive reset-gpios logic
+- fix rpm_lvl and spm_lvl to 5 and move to end of probe path
+- remove unnecessary system PM callbacks
+- use UFSHCI_QUIRK_DME_RESET_ENABLE_AFTER_HCE instead
+  of UFSHCI_QUIRK_BROKEN_HCE
+
+Changes in v2:
+- rename the file
+- add reset-gpios
+
+Shawn Lin (6):
+  dt-bindings: ufs: Document Rockchip UFS host controller
+  soc: rockchip: add header for suspend mode SIP interface
+  pmdomain: rockchip: Add smc call to inform firmware
+  scsi: ufs: core: Export ufshcd_dme_reset() and ufshcd_dme_enable()
+  scsi: ufs: rockchip: initial support for UFS
+  arm64: dts: rockchip: Add UFS support for RK3576 SoC
+
+Ulf Hansson (1):
+  pmdomain: core: Introduce dev_pm_genpd_rpm_always_on()
+
+ .../bindings/ufs/rockchip,rk3576-ufshc.yaml        | 105 ++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  24 ++
+ drivers/pmdomain/core.c                            |  35 ++
+ drivers/pmdomain/rockchip/pm-domains.c             |   8 +
+ drivers/ufs/core/ufshcd.c                          |   6 +-
+ drivers/ufs/host/Kconfig                           |  12 +
+ drivers/ufs/host/Makefile                          |   1 +
+ drivers/ufs/host/ufs-rockchip.c                    | 353 +++++++++++++++++++++
+ drivers/ufs/host/ufs-rockchip.h                    |  90 ++++++
+ include/linux/pm_domain.h                          |   7 +
+ include/soc/rockchip/rockchip_sip.h                |   3 +
+ include/ufs/ufshcd.h                               |   2 +
+ 12 files changed, 644 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
+ create mode 100644 drivers/ufs/host/ufs-rockchip.c
+ create mode 100644 drivers/ufs/host/ufs-rockchip.h
+
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
