@@ -4,111 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18E6C02196
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 05:53:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 785A6C02196
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 06:48:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H6Alw3hAm/vAOcB2JQt9ZY1S3muUnODvd5MJo4O35sU=; b=Dy5iKrd7HlrsyS
-	08FGLxlxkCy7VLnnEZPBEIGP3kYDhDcXQnDBwgY3Xaspo5Q+S1DNG9i+P6jytzq1xBvnxuZ1BVWbn
-	ci2hcdFdILihptJc3LmBjpSsvst8BZDhc/EA3H0y6cg+eBX+/xIFkPjj3gFIn0oGCmvwRNyXJIl3t
-	qYL3bqsavKpEL24DV4SJmTMMQYPUFzVh3okwKM1UMKPdWBMi+2XBDaJ7hdu1NnMYBs50JQnLkaBQj
-	+AtTC1p4uDWXaVHk52KjGvWOqCkL5rNqKeoe9wHb8Ord23dvEVTKbHvSgSVRdxR8wWcDCuJ1js+nQ
-	7D3sfLVcXX1BuRv417Aw==;
+	List-Owner; bh=f7dFVIgMyhhJMT05l1ft8BA3+xtMgJT0BtrTvaxLIl8=; b=nbhA/97cHPj2Qw
+	MZz9wBpkgzbp9o2MzQf8ilbS4wA9rN5eHIJxVdguZnFVNECpVwmCTwHdV+zAcBgxzMMztA3rp/tAw
+	qT7kmjWdRkbGxQy8lvBv4tM2IEVSci9btTJliHrvA00N8XtNUg0jk6FWlYGVtKqQSnlbsySRmC/mx
+	NE0G9QxEjMN/i9iC4sMCxsgzfIzUMl+I3SD0EY4qfsjr9baeWBXuPR7cAhGBVLc8/qpEnm9Qj1/5k
+	RELPuqiiIIY6WtQ3y0wgKqoY57vuXhwJP7gJAA6FdsNUp+yHWAJLh23n9k9O+5sMsxsRLTkrpeGpM
+	TjxulKgWH9RDEEB1F1sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfup4-00000005K0G-0vSu;
-	Thu, 06 Feb 2025 05:53:10 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfup0-00000005JyV-3DVh
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Feb 2025 05:53:08 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-21ddab8800bso8017295ad.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 05 Feb 2025 21:53:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1738821186; x=1739425986; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=U5ldcxqakXbm8AP3lHPyZs0Noc32OWjVSFhOYUYpAno=;
-        b=0Mo/hnrRL9Gva56NBKALw640MJLrMj/l2ptBc8G+TkoyMxQ8tYpGk5wyXk/hFNGxYS
-         PBTlmmL4enYAqaJ3lbqcNp5VrXTf/3qOPzFbHlA0+Cjh3R/omiGenpK/BoeC6mBohq9j
-         E7voT5pDTzyieH31GvzPSB0Fv+wLtRTHO7mnp7PtUVI+d70+pF+UJTao0xzMHRLXJSE/
-         Nn3JDPJ8jK9GtZnszhVoA65p+BlQLAu+1VTwVTSXvOPNeXCEeJuRDPJ1GCPfnpxI2Oft
-         hL4nDM/gP8MyLnKWAlHUI67Nk6kIo3NIXrPXHMvkYo9rTsSmXlwHboHPo2DUpesAHpUi
-         Musw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738821186; x=1739425986;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=U5ldcxqakXbm8AP3lHPyZs0Noc32OWjVSFhOYUYpAno=;
-        b=K31ahTwWQsTdtkfvE+kXqnLf0sURbn1tH02PpVz4gA86Cy0yCrK20hiAYpt62cfi0r
-         ycuDBLSAlNuoxeUQn//ltk441m9PWgW9SrCiUt/Pa+F1jF6Nc5vCeai0jGJ4iLN8iLlq
-         iP4hMeIgeLZEBdx5xz4K3TV3BsCQLiXB6BDHFnacv9rEFfAi3AsZP6qgatJ74EOgi//5
-         PphsJ7DfxGogRiR9Pvwb9FqkShBeFAUwQ3mbvg9uysQTTtLQ8yDTnAwsdGLYKWyeaq1J
-         0vN6qLbuFfPX9o64ELGhJrtKkT27LOX5amH1Mx5ya29mcx5QEpkk41oO0Pxe1Jx1/S1w
-         1Akg==
-X-Forwarded-Encrypted: i=1; AJvYcCXKqF3qaeGU8Ad4cbU1QyUV2pf4G1gmpzSi0dPXOudoEV/FkOxXCeVCsXaw7XbCCprnlJOfVbfoedkyN9WLbQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzLloyglGIicU8ksfF+stnP2EsIvY7SiKn2LFARV0oRKLmsDOOu
-	qjhhKSUtluqjOuY+e5hlQxvELQGFDaEPOBISB9RDLtb1NB9weKedXh+D8KVlLX4=
-X-Gm-Gg: ASbGncuXntBGDkcpyqAGJ59dz79aLWXmoNG3QjhVk6W/AZXObrDQfoAg+se5Am/pZzU
-	LVw2W3a/FwjQOAQk7Pv///cIdgWLC3UsjHkWiL3jnzybmXdk7NhEtRnL6JCNDMcbXAprn6Ut8IB
-	hCDAv+OYJ1E61NAiWKsAZ+lh5GrjVIALzLvkByJv/s8BZMuq15Fl+Q4vhHC9+GrWSLQ9mVOidJY
-	gojPWkY2cF0H4DXSEY6LPv2pSQRCSbcpAYfqtmBZpFA7XCWUbb3liuCE66MXn2ybsPUWtDMinns
-	BqK+2q9onjug2wcrY98YODZExtBo1sC31Q==
-X-Google-Smtp-Source: AGHT+IGCr9xd2Dhw5KUTmjMsz2hIPxrdWNp4ze88e5FpvAsB5Znxk1UOOvf/vmpixanfPva87r8KEw==
-X-Received: by 2002:a17:902:c403:b0:21f:35fd:1b6a with SMTP id d9443c01a7336-21f35fd2116mr20176495ad.51.1738821185899;
-        Wed, 05 Feb 2025 21:53:05 -0800 (PST)
-Received: from tjeznach.ba.rivosinc.com ([64.71.180.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21f3687c746sm3841885ad.180.2025.02.05.21.53.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2025 21:53:05 -0800 (PST)
-Date: Wed, 5 Feb 2025 21:53:02 -0800
-From: Tomasz Jeznach <tjeznach@rivosinc.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1tfvga-00000005RFc-2XW6;
+	Thu, 06 Feb 2025 06:48:28 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tfvdo-00000005Q8b-1OGE;
+	Thu, 06 Feb 2025 06:45:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=1tK63
+	p6E06ruoBhr4yP+6MI3hNsxARoiIZJBTFpZRnw=; b=mh+Z0NbsIZEIqC8Im+oyF
+	GDifm766HvFE6fJUkAt0btjpq9g8S4OaK/sLwa7Ma5ETOcIeRzqLWmpubFAPAlSV
+	clRLrdKdklgw4DDoy2+CD4Jw9Ja6b2fULmLzR4vw070rwTShSPAOOuWRJb9j3eH3
+	o6FoNPOydtpbIyYo3S0jaA=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3fyNsWqRnb3bDKQ--.52146S11;
+	Thu, 06 Feb 2025 14:45:13 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH 09/19] iommu/riscv: Convert to use struct iommu_pages_list
-Message-ID: <Z6ROPsbXHYlQ0TgF@tjeznach.ba.rivosinc.com>
-References: <0-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
- <9-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	robh@kernel.org,
+	sebastian.reichel@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v13 09/13] drm/rockchip: vop2: Add uv swap for cluster window
+Date: Thu,  6 Feb 2025 14:44:37 +0800
+Message-ID: <20250206064457.11396-10-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250206064457.11396-1-andyshrk@163.com>
+References: <20250206064457.11396-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+X-CM-TRANSID: _____wD3fyNsWqRnb3bDKQ--.52146S11
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW8Ww1kAF4UAw47JFy7ZFb_yoW8XrWfpa
+	13ArWqgw45Kw4Iq34kJFW5AFWSywnxKay7uws7tw1F9ry3KFyDG3Z0kFWUAr1qyFsFkF47
+	tF93JrW7Zr1jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jx0eQUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAXrXmekT+DQ4AAAsE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_215306_798939_E67E1B19 
-X-CRM114-Status: GOOD (  20.49  )
+X-CRM114-CacheID: sfid-20250205_224536_681183_488F28DB 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,66 +85,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 04, 2025 at 02:34:50PM -0400, Jason Gunthorpe wrote:
-> Change the internal freelist to use struct iommu_pages_list.
-> 
-> riscv uses this page list to free page table levels that are replaced
-> with leaf ptes.
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/iommu/riscv/iommu.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/iommu/riscv/iommu.c b/drivers/iommu/riscv/iommu.c
-> index 6e7df7273426da..549bd8d0615d75 100644
-> --- a/drivers/iommu/riscv/iommu.c
-> +++ b/drivers/iommu/riscv/iommu.c
-> @@ -1085,7 +1085,8 @@ static void riscv_iommu_iotlb_sync(struct iommu_domain *iommu_domain,
->  #define _io_pte_entry(pn, prot)	((_PAGE_PFN_MASK & ((pn) << _PAGE_PFN_SHIFT)) | (prot))
->  
->  static void riscv_iommu_pte_free(struct riscv_iommu_domain *domain,
-> -				 unsigned long pte, struct list_head *freelist)
-> +				 unsigned long pte,
-> +				 struct iommu_pages_list *freelist)
->  {
->  	unsigned long *ptr;
->  	int i;
-> @@ -1103,7 +1104,7 @@ static void riscv_iommu_pte_free(struct riscv_iommu_domain *domain,
->  	}
->  
->  	if (freelist)
-> -		list_add_tail(&virt_to_page(ptr)->lru, freelist);
-> +		iommu_pages_list_add(freelist, ptr);
->  	else
->  		iommu_free_page(ptr);
->  }
-> @@ -1192,7 +1193,7 @@ static int riscv_iommu_map_pages(struct iommu_domain *iommu_domain,
->  	unsigned long *ptr;
->  	unsigned long pte, old, pte_prot;
->  	int rc = 0;
-> -	LIST_HEAD(freelist);
-> +	struct iommu_pages_list freelist = IOMMU_PAGES_LIST_INIT(freelist);
->  
->  	if (!(prot & IOMMU_WRITE))
->  		pte_prot = _PAGE_BASE | _PAGE_READ;
-> @@ -1223,7 +1224,7 @@ static int riscv_iommu_map_pages(struct iommu_domain *iommu_domain,
->  
->  	*mapped = size;
->  
-> -	if (!list_empty(&freelist)) {
-> +	if (!iommu_pages_list_empty(&freelist)) {
->  		/*
->  		 * In 1.0 spec version, the smallest scope we can use to
->  		 * invalidate all levels of page table (i.e. leaf and non-leaf)
-> -- 
-> 2.43.0
-> 
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com>
+The Cluster windows of upcoming VOP on rk3576 also support
+linear YUV support, we need to set uv swap bit for it.
 
-Thanks,
-- Tomasz
+As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
+0xffffffff, so this register will not be touched on these
+two platforms.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+
+(no changes since v1)
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 6040fd2388d3..3e9581e8adab 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1373,10 +1373,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 
+ 	rb_swap = vop2_win_rb_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
+-	if (!vop2_cluster_window(win)) {
+-		uv_swap = vop2_win_uv_swap(fb->format->format);
+-		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+-	}
++	uv_swap = vop2_win_uv_swap(fb->format->format);
++	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+ 
+ 	if (fb->format->is_yuv) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
