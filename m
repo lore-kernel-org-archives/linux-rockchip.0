@@ -4,82 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B351BC02194
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 16:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 814ACC02194
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 17:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Id0jAa1L2s0YzRv4DyIwzOGRPdvJfm1meExAQkhrZ0Y=; b=440U7ou+K2aR12BlTSfNj/soR9
-	ZZmo/fYqJzOsITDPvimh8KQtWIRWafTpDtq3D8DT3MVw4TtHr0U/+NjcSpiT4yXxrXWWsJ9uayOJn
-	XyS9hfL4hoIkJpsdxF/YblMcZxt9KpeoQTjOFJHJOCdAYoJl87J27HGNznopxMxRw/O9+9e7//ChB
-	8LWP1QXuTL4Fg9AlfaWdcZ058H0AdzLPzJGZ4pVLHygi+LyZQWqBnMJAi5qUc1ugTsTZ4p9Gb4dH8
-	XBCW2hYe+kN+ATEE6kIJb46B6TNl/SqUcWDS9JR9At/NqI8JqSnTHdVRyo5wkT5EfpY6VfDcCAFR+
-	gLvknnvg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=edshSqMVHNlNxCREzR6+5CUIrCFPFT0r522CDvJtIOs=; b=y2XTT2vqS04fwR
+	S9j0PzbVDg7/9iFMFhGYxgy0IELcCZjY/+eYWsd70yKVzchfQ7ziCjjo0KT8lr7ReR+5g5MmQo+JV
+	t4Q3ylYnc/ktCognkxzZpsQvBWwt23B0chvHu+zBsIxoin9Qf2HOUoy5Y02pJppw+y5MmfRkhIZpU
+	sJHc4JE9s6m5Kd67H0Fs1OTPU0jsOUu9dXrHGGhbb0Y4BeERC9rBQykewWlCmtPNXKyUWZPKzVXBK
+	xCaDiQNMC1uNxSYERluUGinj5depPETS3aZRu45MDFjc6tXyIZcf84emMj+EmyP8syNGqW+b9vR5n
+	ZN2QxlLWx7y9Wlq4GrVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg4ai-00000006pY3-3Ut0;
-	Thu, 06 Feb 2025 16:19:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tg5Xw-00000006yXV-3Zso;
+	Thu, 06 Feb 2025 17:20:12 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg4Vf-00000006oW3-2Nao;
-	Thu, 06 Feb 2025 16:13:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 23F095C64A4;
-	Thu,  6 Feb 2025 16:13:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F07F8C4CEDD;
-	Thu,  6 Feb 2025 16:13:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738858425;
-	bh=yugtap81E+1XEiUSlot9N/ao/3tXx/zIxbLqkf5yQ2s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dYCFPFSLLiDASvYd4s42uud1DtC2OYpyDgEeLT35r+DrvE2jij76XmTWQ9G67IkkY
-	 GXlKlZixxwv1mXchRyKAC2XLHInGz7nXltb/sepWggEKQB2TlbKf/zl7RmfFuI/bgH
-	 POQtLfiwx3vOBe+qHPtYDAHCNvMvnzxOt413CP2Ky6rkPlhy2ILdMwAJlRvRLqD0vj
-	 Zr7POyxFiXm5+iQmgkdVq1+ZtMEZUnmtN8vK+HRSG+ejF6wz2rbhMHSIENz/QYTel5
-	 LTPtPbUTgV8Ae2h5Vlge1PtDZVU6vqHxlAMGJQmuO06gQkxOszYi8GtT6wvI2wkZns
-	 f+nG5+ZFP0G5A==
-Date: Thu, 6 Feb 2025 17:13:43 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Anusha Srivatsa <asrivats@redhat.com>
-Cc: Joel Stanley <joel@jms.id.au>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Stefan Agner <stefan@agner.ch>, 
-	Alison Wang <alison.wang@nxp.com>, Xinliang Liu <xinliang.liu@linaro.org>, 
-	Tian Tao <tiantao6@hisilicon.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu <yongqin.liu@linaro.org>, 
-	John Stultz <jstultz@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Raphael Gallais-Pou <rgallaispou@gmail.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jonathan Corbet <corbet@lwn.net>, linux-aspeed@lists.ozlabs.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
- usage
-Message-ID: <20250206-hallowed-ultra-tiger-cfec8e@houat>
-References: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
- <20250205-mem-cocci-newapi-v1-11-aebf2b0e2300@redhat.com>
+	id 1tg5WY-00000006yNF-3Onh;
+	Thu, 06 Feb 2025 17:18:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1738862280; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=PPCYLM87aFcVCAfMPQQ0yXcTyrsvnyTkKS+eEJWcy9cBCCuvU9Z/z8+pzbkYFtSX/1MtKPTSysfLFbXWsfEn4byj3fWbAOF50Y5tLH18AvdCZkKxLHaumA6PPi+w7cpbrzAW/zHZKRqAzxiN4l2puMicJGcIhAlDALNZ/b9YfU8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1738862280; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=HVIqXYzlOehlZiy0ALlRjz1XQBncBUDd5NT43WUTgZ8=; 
+	b=lPCdyF7Zdv6I6M84wss5fyglm2/LO3RG4Et3v4lfGLGQtmGbCACYz2VhVdDLcJWcdkQycgDbkuk4ZGGxHhKk3iAeh8IIV+awP5nEJB6tY9fg6a7T5kzzIZdXZPuU8y+dOu74c75bQ/v04kDe4qTY+pxoFi38JCRIwNMDaaZrC74=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738862280;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=HVIqXYzlOehlZiy0ALlRjz1XQBncBUDd5NT43WUTgZ8=;
+	b=Xnnm+nO0wx4RBQFTK/tSarsm6Bq5OMFkZ+7cIhAlPgfpa8rlnBCfdv+urPIUC2vV
+	cVB821xhg1vXmN291QFqArQSM1Jav3BdpYYLbFovhHAs0as6IBcrW3FP/nqYb12ynyh
+	Wy1JW0YmE72r82iNQ0hiaJt67LjAQrKfsPFHG18w=
+Received: by mx.zohomail.com with SMTPS id 173886227382959.44952550211565;
+	Thu, 6 Feb 2025 09:17:53 -0800 (PST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
+Subject: Re: [PATCH v5 2/3] arm64: dts: rockchip: Add HDMI0 audio output for rk3588
+ SoC
+Date: Thu, 06 Feb 2025 12:17:51 -0500
+Message-ID: <2781606.mvXUDI8C0e@earth>
+In-Reply-To: <bfe9cb98-12ba-484c-95af-e5842edaab76@cherry.de>
+References: <20250203171925.126309-1-detlev.casanova@collabora.com>
+ <20250203171925.126309-3-detlev.casanova@collabora.com>
+ <bfe9cb98-12ba-484c-95af-e5842edaab76@cherry.de>
 MIME-Version: 1.0
-In-Reply-To: <20250205-mem-cocci-newapi-v1-11-aebf2b0e2300@redhat.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_081347_700895_CAE910CA 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20250206_091846_903757_22CA49EC 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,130 +72,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6201796111945756862=="
+Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tuesday, 4 February 2025 05:14:37 EST Quentin Schulz wrote:
+> Hi Detlev,
+> 
+> On 2/3/25 6:16 PM, Detlev Casanova wrote:
+> > Use the simple-audio-card driver with the hdmi0 QP node as CODEC and
+> > the i2s5 device as CPU.
+> > 
+> > The simple-audio-card,mclk-fs value is set to 128 as it is done in
+> > the downstream driver.
+> > 
+> > The #sound-dai-cells value is set to 0 in the hdmi0 node so that it can be
+> > used as an audio codec node.
+> > 
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> > 
+> >   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 17 +++++++++++++++++
+> >   1 file changed, 17 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> > b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi index
+> > 8cfa30837ce72..767bdfc06b7ec 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> > @@ -1369,6 +1369,22 @@ i2s9_8ch: i2s@fddfc000 {
+> > 
+> >   		status = "disabled";
+> >   	
+> >   	};
+> > 
+> > +	hdmi0_sound: hdmi0-sound {
+> > +		compatible = "simple-audio-card";
+> > +		simple-audio-card,format = "i2s";
+> > +		simple-audio-card,mclk-fs = <128>;
+> > +		simple-audio-card,name = "hdmi0";
+> > +		status = "disabled";
+> > +
+> > +		simple-audio-card,codec {
+> > +			sound-dai = <&hdmi0>;
+> > +		};
+> > +
+> > +		simple-audio-card,cpu {
+> > +			sound-dai = <&i2s5_8ch>;
+> > +		};
+> > +	};
+> > +
+> 
+> This is an address/bus-less device, so I believe it needs to be put
+> among other address/bus-less devices, which for Rockchip SoCs is at the
+> top of the DT? c.f.
+> https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.
+> html
+> 
+> **I** would put it between the firmware and the pmu-a55 nodes.
 
---===============6201796111945756862==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="nds2ddkwji5fimma"
-Content-Disposition: inline
+I wasn't sure about this. It makes sense to move it with address-less devices, 
+but the rk3399 device tree has it above the hdmi node, so I wanted to stay 
+consistent with that.
 
-
---nds2ddkwji5fimma
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
- usage
-MIME-Version: 1.0
-
-On Wed, Feb 05, 2025 at 03:08:07PM -0500, Anusha Srivatsa wrote:
-> Replace platform_get_resource_byname + devm_ioremap_resource
-> with just devm_platform_ioremap_resource()
->=20
-> Used Coccinelle to do this change. SmPl patch:
-> //rule s/(devm_)platform_get_resource_byname +
-> //(devm_)ioremap/devm_platform_ioremap_resource.
-> @rule_3@
-> identifier res;
-> expression ioremap;
-> identifier pdev;
-> constant mem;
-> expression name;
-> @@
-> -struct resource *res;
-> <+...
-> -res =3D platform_get_resource_byname(pdev,mem,name);
-> <...
-> -if (!res) {
-> -...
-> -}
-> ...>
-> -ioremap =3D devm_ioremap(...);
-> +ioremap =3D devm_platform_ioremap_resource_byname(pdev,name);
-> ...+>
->=20
-> v2: Change the SmPl patch to work on multiple occurences of
-> the pattern. This also fixes the compilation error.
->=20
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> Cc: Ma=EDra Canal <mcanal@igalia.com>
-> Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
-> ---
->  drivers/gpu/drm/vc4/vc4_hdmi.c | 55 +++++++++++-------------------------=
-------
->  1 file changed, 14 insertions(+), 41 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdm=
-i.c
-> index 47d9ada98430634cfd8c1e21c2a4d00d501bab7e..066f1246dab420ee889845b0c=
-573d80ce7c88595 100644
-> --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> @@ -2951,71 +2951,44 @@ static int vc5_hdmi_init_resources(struct drm_dev=
-ice *drm,
->  {
->  	struct platform_device *pdev =3D vc4_hdmi->pdev;
->  	struct device *dev =3D &pdev->dev;
-> -	struct resource *res;
->  	int ret;
-> =20
-> -	res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hdmi");
-> -	if (!res)
-> -		return -ENODEV;
-> -
-> -	vc4_hdmi->hdmicore_regs =3D devm_ioremap(dev, res->start,
-> -					       resource_size(res));
-> +	vc4_hdmi->hdmicore_regs =3D devm_platform_ioremap_resource_byname(pdev,
-> +									"hdmi");
->  	if (!vc4_hdmi->hdmicore_regs)
->  		return -ENOMEM;
-> =20
-> -	res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hd");
-> -	if (!res)
-> -		return -ENODEV;
-> -
-> -	vc4_hdmi->hd_regs =3D devm_ioremap(dev, res->start, resource_size(res));
-> +	vc4_hdmi->hd_regs =3D devm_platform_ioremap_resource_byname(pdev, "hd");
->  	if (!vc4_hdmi->hd_regs)
->  		return -ENOMEM;
-
-I *think* that one is shared between both HDMI controllers on the
-RaspberryPi4, so we can't claim them from both instances. We should add
-a comment there to document that it's on purpose.
-
-The rest looks good.
-
-Maxime
-
---nds2ddkwji5fimma
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ6TftgAKCRAnX84Zoj2+
-drfXAYDBINKHBSckIuo/kq/HoUvq16io0SUMaLB/CVkeidnE3EXaDz9M3WhZ60Ha
-n8d4HmABf0i2bHqp4iPr3Cr3YiSEnV9zX0sFLdFl/FejJMglsT19c+7lwsGMwuaH
-8nnPGZ1q6A==
-=1kXI
------END PGP SIGNATURE-----
-
---nds2ddkwji5fimma--
+> Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # RK3588 Tiger Haikou
+> 
+> Thanks!
+> Quentin
 
 
---===============6201796111945756862==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6201796111945756862==--
-
