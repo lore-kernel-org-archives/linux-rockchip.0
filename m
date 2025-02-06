@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E586C0219B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 06:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F18C8C02196
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 06:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5wzySRwqK43x9ga7ur+M7JsUyZ0yuK1o5lgtUR9iUCw=; b=Jxh6lhn1l5GJtm
-	SV5vRbqoZyLPA2xbDftDrTgAt/mt5eEzkVSQXsonD+QJSpMAlh9J9aQqY5Lpxgoa2pF+2KMjEVGsG
-	OZhrABFDwaADeiMUxCD4pMy39Lz4rjJGMXnM96SgeICSfizFxQpvsJ1LIuSdCKeqYuSQHJaJayxNW
-	eH8nKEGkeCCs/aIFeUrUiFQ9ByWzicbbDM/iRjmo9WxfcX59ldeQrJNe8Gtgz6R3tR1Gp6VqYytpt
-	NpyPgzaOXQYiBJ0Wot5FFUCR4zYEBhE13w82Qn0ZKiOtiLsXbFgEqO9hA92/13qtsDkWliJRI8cWS
-	dwqDpaAhgNqAX2tT1vEA==;
+	List-Owner; bh=oqeczOxeM1qS41Eod55ic07HK9dzmMuIhlbCGGomaOc=; b=JLQLNQxbiqzyFq
+	KdGweV+aX3cjJGpnCY+WTY/xzdjOw4+vnkDDDoOBpjIZgU59CSniI+wp/orlPyjrWxa1rz9ewzVps
+	6g1e37+2sj/jCGpV4XGh4fvfCSusD+Zz/gvTtxvx1s0t+k3ADlVKkI3Q7syT3WeN0tooblkdo1PX4
+	EVtF179JBmojqhC8wLpQKQ+W6JM2jPUZiFGRvrWho73GR+1aVUmGGx7/oXmQvV17JJZMg28j50GE9
+	vaY6TsUIerkVnqKpqM3CISvVAsZSOO1wRm/SeH0fCDJh0MAd2pDr55PjPdRa4F6TXs/YAOgxEFi9k
+	7MW1l+H0IG2n1vyIFv7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfvga-00000005RFT-16qz;
-	Thu, 06 Feb 2025 06:48:28 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1tfvjJ-00000005S6b-43s9;
+	Thu, 06 Feb 2025 06:51:17 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfvdo-00000005Q8T-1qVJ;
-	Thu, 06 Feb 2025 06:45:37 +0000
+	id 1tfvdo-00000005Q8Y-194f;
+	Thu, 06 Feb 2025 06:45:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=Aj3p5
-	YEkL2Je1AnEdaQQ2QACpF4/wWQgDcT/1GT+BA4=; b=CPKIGk+Plw5na6v3mt06O
-	2UPPckbUxCBkKaVYL6zoa0SQqfUhdHKAPa2EcwoKac0jqWrJy+sznRkESXi9Hxf8
-	qUKArOqp1fDINFe9fGtr/bZyqYlFPR7agtltexLen63GU8y38UyFyseBebraW4pZ
-	Yp7LSvPi1V7AbYx0KlRJPA=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=vx4b9
+	04GoBOQPZxPkHCVqjXWtg+tthn2HPth/upQ9wQ=; b=B3mmsJ14PIy3npz4/mcPx
+	y1MrNGyMUmF73io7Qx7w7+qGDcXmdRRzX7g/F5/JJcGBXLoEJS77i6XtXdZiz3nZ
+	GV+tV8xXuuOkExMjRFEHh7d5o5eLJfnimGhHtSPRwh9Ce8gr6JFcCdI7hdhX3B1W
+	znyZ1PVu2ZWq9gchod8eag=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3fyNsWqRnb3bDKQ--.52146S4;
-	Thu, 06 Feb 2025 14:45:06 +0800 (CST)
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3fyNsWqRnb3bDKQ--.52146S9;
+	Thu, 06 Feb 2025 14:45:11 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -49,24 +49,25 @@ Cc: hjc@rock-chips.com,
 	daniel@fooishbar.org,
 	robh@kernel.org,
 	sebastian.reichel@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v13 02/13] drm/rockchip: vop2: Rename TRANSFORM_OFFSET to TRANSFORM_OFFS
-Date: Thu,  6 Feb 2025 14:44:30 +0800
-Message-ID: <20250206064457.11396-3-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v13 07/13] drm/rockchip: vop2: Register the primary plane and overlay plane separately
+Date: Thu,  6 Feb 2025 14:44:35 +0800
+Message-ID: <20250206064457.11396-8-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250206064457.11396-1-andyshrk@163.com>
 References: <20250206064457.11396-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3fyNsWqRnb3bDKQ--.52146S4
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCrWxKw4rJw15Jr18uw17Wrg_yoWrCr18pr
-	W3JayDWF4UKFs2gFWkAr15AF48Xan2y3yfGa9xJrnIqFyaga4DWwnFka4UJr4Uta4I9FZ2
-	q3saqrW7urW3tr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jYtC7UUUUU=
+X-CM-TRANSID: _____wD3fyNsWqRnb3bDKQ--.52146S9
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGFWxtw4kKr43tFyrKryxuFg_yoWrZrW3pa
+	13ta90qr4xWrsFgry8JF4jyFWYyan2kay7Crn8Gw1a934Sgr93ur48KF1DAF15uFnrWFya
+	kFW3K39Y9FWj9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jx0eQUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRnrXmekUdSnkAAAs0
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRrrXmekUdSn9gAAsR
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250205_224536_863313_5DAF8309 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20250205_224536_667144_0E859E8F 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,79 +86,163 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This help avoid "exceeds 100 columns" warning from checkpatch
+In the upcoming VOP of rk3576, a Window cannot attach to all Video Ports,
+so make sure all VP find it's suitable primary plane, then register the
+remain windows as overlay plane will make code easier.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+
 ---
 
-(no changes since v1)
+(no changes since v3)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 4 ++--
- 2 files changed, 6 insertions(+), 6 deletions(-)
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 100 +++++++++++--------
+ 1 file changed, 61 insertions(+), 39 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 03248ac4ba4a..5ee8a7b86d0b 100644
+index a1a0383713b5..d3e21fb00225 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1517,7 +1517,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
- 		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
--		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, transform_offset);
-+		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, transform_offset);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_OFFSET, ((src->x1 >> 16) | src->y1));
- 		vop2_win_write(win, VOP2_WIN_AFBC_DSP_OFFSET, (dest->x1 | (dest->y1 << 16)));
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_VIR_WIDTH, stride);
-@@ -1528,7 +1528,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	} else {
- 		if (vop2_cluster_window(win)) {
- 			vop2_win_write(win, VOP2_WIN_AFBC_ENABLE, 0);
--			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, 0);
-+			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, 0);
- 		}
+@@ -2222,22 +2222,29 @@ static int vop2_plane_init(struct vop2 *vop2, struct vop2_win *win,
+ 	return 0;
+ }
  
- 		vop2_win_write(win, VOP2_WIN_YRGB_VIR, DIV_ROUND_UP(fb->pitches[0], 4));
-@@ -3420,7 +3420,7 @@ static const struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_AFBC_TILE_NUM] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_VIR_WIDTH, 16, 31),
- 	[VOP2_WIN_AFBC_PIC_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_PIC_OFFSET, 0, 31),
- 	[VOP2_WIN_AFBC_DSP_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_DSP_OFFSET, 0, 31),
--	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET, 0, 31),
-+	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS, 0, 31),
- 	[VOP2_WIN_AFBC_ROTATE_90] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 0, 0),
- 	[VOP2_WIN_AFBC_ROTATE_270] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 1, 1),
- 	[VOP2_WIN_XMIRROR] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 2, 2),
-@@ -3519,7 +3519,7 @@ static const struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_AFBC_PIC_OFFSET] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_PIC_SIZE] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_DSP_OFFSET] = { .reg = 0xffffffff },
--	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = { .reg = 0xffffffff },
-+	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_HDR_PTR] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_HALF_BLOCK_EN] = { .reg = 0xffffffff },
- 	[VOP2_WIN_AFBC_ROTATE_270] = { .reg = 0xffffffff },
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 29cc7fb8f6d8..8510140b0869 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -118,7 +118,7 @@ enum vop2_win_regs {
- 	VOP2_WIN_AFBC_PIC_OFFSET,
- 	VOP2_WIN_AFBC_PIC_SIZE,
- 	VOP2_WIN_AFBC_DSP_OFFSET,
--	VOP2_WIN_AFBC_TRANSFORM_OFFSET,
-+	VOP2_WIN_AFBC_TRANSFORM_OFFS,
- 	VOP2_WIN_AFBC_HDR_PTR,
- 	VOP2_WIN_AFBC_HALF_BLOCK_EN,
- 	VOP2_WIN_AFBC_ROTATE_270,
-@@ -335,7 +335,7 @@ enum dst_factor_mode {
- #define RK3568_CLUSTER_WIN_DSP_INFO		0x24
- #define RK3568_CLUSTER_WIN_DSP_ST		0x28
- #define RK3568_CLUSTER_WIN_SCL_FACTOR_YRGB	0x30
--#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET	0x3C
-+#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS	0x3C
- #define RK3568_CLUSTER_WIN_AFBCD_OUTPUT_CTRL	0x50
- #define RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE	0x54
- #define RK3568_CLUSTER_WIN_AFBCD_HDR_PTR	0x58
+-static struct vop2_video_port *find_vp_without_primary(struct vop2 *vop2)
++/*
++ * On RK3566 these windows don't have an independent
++ * framebuffer. They can only share/mirror the framebuffer
++ * with smart0, esmart0 and cluster0 respectively.
++ * And RK3566 share the same vop version with Rk3568, so we
++ * need to use soc_id for identification here.
++ */
++static bool vop2_is_mirror_win(struct vop2_win *win)
+ {
+-	int i;
+-
+-	for (i = 0; i < vop2->data->nr_vps; i++) {
+-		struct vop2_video_port *vp = &vop2->vps[i];
+-
+-		if (!vp->crtc.port)
+-			continue;
+-		if (vp->primary_plane)
+-			continue;
++	struct vop2 *vop2 = win->vop2;
+ 
+-		return vp;
++	if (vop2->data->soc_id == 3566) {
++		switch (win->data->phys_id) {
++		case ROCKCHIP_VOP2_SMART1:
++		case ROCKCHIP_VOP2_ESMART1:
++		case ROCKCHIP_VOP2_CLUSTER1:
++			return true;
++		default:
++			return false;
++		}
++	} else {
++		return false;
+ 	}
+-
+-	return NULL;
+ }
+ 
+ static int vop2_create_crtcs(struct vop2 *vop2)
+@@ -2248,7 +2255,9 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 	struct drm_plane *plane;
+ 	struct device_node *port;
+ 	struct vop2_video_port *vp;
+-	int i, nvp, nvps = 0;
++	struct vop2_win *win;
++	u32 possible_crtcs;
++	int i, j, nvp, nvps = 0;
+ 	int ret;
+ 
+ 	for (i = 0; i < vop2_data->nr_vps; i++) {
+@@ -2287,42 +2296,55 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 	}
+ 
+ 	nvp = 0;
+-	for (i = 0; i < vop2->registered_num_wins; i++) {
+-		struct vop2_win *win = &vop2->win[i];
+-		u32 possible_crtcs = 0;
+-
+-		if (vop2->data->soc_id == 3566) {
+-			/*
+-			 * On RK3566 these windows don't have an independent
+-			 * framebuffer. They share the framebuffer with smart0,
+-			 * esmart0 and cluster0 respectively.
+-			 */
+-			switch (win->data->phys_id) {
+-			case ROCKCHIP_VOP2_SMART1:
+-			case ROCKCHIP_VOP2_ESMART1:
+-			case ROCKCHIP_VOP2_CLUSTER1:
++	/* Register a primary plane for every crtc */
++	for (i = 0; i < vop2_data->nr_vps; i++) {
++		vp = &vop2->vps[i];
++
++		if (!vp->crtc.port)
++			continue;
++
++		for (j = 0; j < vop2->registered_num_wins; j++) {
++			win = &vop2->win[j];
++
++			/* Aready registered as primary plane */
++			if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
++				continue;
++
++			if (vop2_is_mirror_win(win))
+ 				continue;
+-			}
+-		}
+ 
+-		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
+-			vp = find_vp_without_primary(vop2);
+-			if (vp) {
++			if (win->type == DRM_PLANE_TYPE_PRIMARY) {
+ 				possible_crtcs = BIT(nvp);
+ 				vp->primary_plane = win;
++				ret = vop2_plane_init(vop2, win, possible_crtcs);
++				if (ret) {
++					drm_err(vop2->drm, "failed to init primary plane %s: %d\n",
++						win->data->name, ret);
++					return ret;
++				}
+ 				nvp++;
+-			} else {
+-				/* change the unused primary window to overlay window */
+-				win->type = DRM_PLANE_TYPE_OVERLAY;
++				break;
+ 			}
+ 		}
++	}
++
++	/* Register all unused window as overlay plane */
++	for (i = 0; i < vop2->registered_num_wins; i++) {
++		win = &vop2->win[i];
++
++		/* Aready registered as primary plane */
++		if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
++			continue;
++
++		if (vop2_is_mirror_win(win))
++			continue;
+ 
+-		if (win->type == DRM_PLANE_TYPE_OVERLAY)
+-			possible_crtcs = (1 << nvps) - 1;
++		win->type = DRM_PLANE_TYPE_OVERLAY;
+ 
++		possible_crtcs = (1 << nvps) - 1;
+ 		ret = vop2_plane_init(vop2, win, possible_crtcs);
+ 		if (ret) {
+-			drm_err(vop2->drm, "failed to init plane %s: %d\n",
++			drm_err(vop2->drm, "failed to init overlay plane %s: %d\n",
+ 				win->data->name, ret);
+ 			return ret;
+ 		}
 -- 
 2.34.1
 
