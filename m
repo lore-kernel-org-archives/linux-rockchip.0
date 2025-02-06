@@ -4,78 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DF8AC02196
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 11:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D29AFC0219D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 13:21:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=dbiMZYHbishLAZcca0NmafYk75JSRHvVIxPWS9Sn1qo=; b=q0VXMqEYize5nN3i1ZWqPx2Olb
-	QkDpQi7JlC7kEz+lY05Yrl0IhxoejqPlxAYZ2xYqV7lJNNpvXZaSjuBTHhhgzvAFmj6P/f+W+yory
-	AMpR4mZWKYkJP9oqaxVub016j9xj8+0CzQcSbqGJk1Z+Noaa8uRdal78WS5rqVVfOrgLxKGEx233/
-	XTDGpgp+aGye/arjz297lH9hkVKVAkvBL5O0C9W7tZKu2jLs8cMYTK7t4lASeA4L1B3GMnjxcM9oA
-	dkWBRTm0Nz7ZxWGFF5KTFDvsiQ9Re0WTaE4uGG73WLIuJmYeKMhxsY/+4dNwni6H87K0UCD2JmSgX
-	P0aI1e5Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=abUxiNpLx8BonFNU/jRK75OlF5YYVshJgw/9ajI1GaU=; b=cwlQzqKH+bW6Al
+	EwByoR9Bq/SJv3s0EEBbCmBJGEOUHTibFrzIPo0yvQmgiTElB2+VlDDLcX8Z7wXJu/uluzdCaR/dZ
+	blUTwvbv/8XonTESwlNX1U6jNnfF4/GdMIo+/eiHjBxFtlLJlMMHAZrWKQPI+b5Jlut1qbWJ8q62r
+	rG59eKp3Wn04QGBYDqNSD4JGSGl0GuX+b2AW2vsXhTYjxFlKuYGY8zNoqWV9stI0zcQCguBm0K0q8
+	goh1NMyy/FXJHUSSs13rrQDrii3oP3vblgkwlIQmUgY3zVGov1rfiKIbzpaTlYL8MHVJYrIh9JvjM
+	MA4LIniLw0Aqn9JR6Frw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg0QI-00000006Cgs-0Iu2;
-	Thu, 06 Feb 2025 11:51:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tg1ou-00000006OuM-2VB7;
+	Thu, 06 Feb 2025 13:21:28 +0000
+Received: from mail-dm3nam02on20606.outbound.protection.outlook.com ([2a01:111:f403:2405::606] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg00P-0000000680S-2R4o;
-	Thu, 06 Feb 2025 11:25:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 388E65C0398;
-	Thu,  6 Feb 2025 11:24:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6843CC4CEDD;
-	Thu,  6 Feb 2025 11:25:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738841112;
-	bh=3QenPFoiIxwYoHLxjpQR+89yGAMCqcwZRL9xqsJbz4s=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=QRKYoQ7qDIl0na9wnb7PijB/8D4fHcvdZUU4SQ8mwDb+jZ15mRpttChVLKFDhsxna
-	 FiEvmQi2FKMDRXKO18sF0fAkWrohSVBSqEmLPlwKI6E0vv+tuw/yrz26sskPAHCL0x
-	 OtLlVS9wTnIuRdJa4rOiMY/O9BYAz5UMK4WsutiZYTMeL+MzcuXa5RQKtd+aR8K2an
-	 oQxbfQiCF9POYSLrZxyR++BhL6VxUSpmiMB9Y7EHwSp51XAbkmGG228DfUJmw4AmCX
-	 UrXxazfw9WocXcErgNUM8tbSy8XcrMSjaUDmnLazJhZJeJFR35QWvM/g5FqRnAFM91
-	 7r9X67UNyUY/Q==
-Date: Thu, 06 Feb 2025 05:25:11 -0600
+	id 1tg1l5-00000006OBM-2hsy;
+	Thu, 06 Feb 2025 13:17:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ixnV4QBUa8pN9kOn+mHE9LCNxca+perCs/9wrFM4gyWpgkLs1hL7kXMRKeBfzLMioQ1yje7HUYBYMNCtucfSIFYu0Hr211G1qXn/G9iPr8Gncir3nQu5qfYMWdyI+kBbJ6PlXqDWRMnakX2jtUATJ5qxPXf+goETkPArh5LUJ2Vto+tvZygcW5Jf3sez6Hlcgqx00OmB4OUxnFVXQtfZN7lI1zsSrPJFaWs4EbwjsPEJ0du4dHQOqA3AeUbnkb4XCz7LzfnwyXOsrMAOGZJxIHlZdyBLCMHBjAbrbkneQYCSQJOx3CVJqPALWYLaPrGKe01R6kX1liUIxQ3OrKa5/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bvGBtO1g0Tf10DP3Tmh3PU4BulQZrk+/hjd9Hhf3IuE=;
+ b=wn0xk/Z5CapK5PD7TZMtKOTSBpG01mpS2ZPfmPLpQCED+aSi4+S4iZS4JzH7rrJT/cktsmyAuv6vN2SIXWHhS19qc/39YNlY3hN6DPh6obd/nesWdJWZQEz2+b7sJnJJ2JLoNQwFHDPmqYSGEQEk+nlCP+pTnIbnzyBDAYFBPzx531gJY0WAhSH7tVXBzBHlTU25rLozxPG3ls+7yzquz20+fKfCuwIfj5xNp/TacBbVwloH+9w0tjFEjpdZxUlx5QH3grOJeVYU2O4bpYGfFgeTgB6+siSbfLqStpJS2OMnRabMLhSZgYlzCqf3Hs0C3M1D5HJS05KNKmnOz1brng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bvGBtO1g0Tf10DP3Tmh3PU4BulQZrk+/hjd9Hhf3IuE=;
+ b=cdhXOGvCShpbEy4/E+rs09HnzaRUVgpkJPomhTnpaPMFJmhr03NZElo1RBduByTopsMr2bwnHQl6NIj+qMkPAbdMblUSg0OzpcbMmglNiWJiVD/o/HC9gwOqa7JeMOP0V+9q+sy2NmtcBy8IJz6bl7jlQFI9+TPPMZvatHl53/gQvxWyoL8WxDoUeEtK2tV5aD76YKN8g0+nONaHuqa/MF6EFoASsscwJLqEPV+bso2DZN9kMr3W5kEqbCH0mfSHF+5a6VCEt5ZSjSTw4sr8tlef4Utzf1gaFoOtCiNHMfwBzglp3FI2n/ZSiWV/FBTSsjBOgZnddxoqI6VNHreN7g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by MW4PR12MB7239.namprd12.prod.outlook.com (2603:10b6:303:228::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.11; Thu, 6 Feb
+ 2025 13:17:22 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%6]) with mapi id 15.20.8398.025; Thu, 6 Feb 2025
+ 13:17:22 +0000
+Date: Thu, 6 Feb 2025 09:17:21 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Tomasz Jeznach <tjeznach@rivosinc.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Hector Martin <marcan@marcan.st>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
+	Joerg Roedel <jroedel@suse.de>,
+	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
+	David Rientjes <rientjes@google.com>,
+	Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH 17/19] iommu/riscv: Update to use
+ iommu_alloc_pages_node_lg2()
+Message-ID: <20250206131721.GF2960738@nvidia.com>
+References: <0-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+ <17-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
+ <Z6RI3ftJTrm3UxoO@tjeznach.ba.rivosinc.com>
+Content-Disposition: inline
+In-Reply-To: <Z6RI3ftJTrm3UxoO@tjeznach.ba.rivosinc.com>
+X-ClientProxiedBy: BN0PR04CA0160.namprd04.prod.outlook.com
+ (2603:10b6:408:eb::15) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Rob Herring <robh+dt@kernel.org>, linux-media@vger.kernel.org, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>, 
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- linux-rockchip@lists.infradead.org, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Val Packett <val@packett.cool>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, devicetree@vger.kernel.org
-To: Michael Riesch <michael.riesch@wolfvision.net>
-In-Reply-To: <20250206-v6-8-topic-rk3568-vicap-v3-3-69d1f19e5c40@wolfvision.net>
-References: <20250206-v6-8-topic-rk3568-vicap-v3-0-69d1f19e5c40@wolfvision.net>
- <20250206-v6-8-topic-rk3568-vicap-v3-3-69d1f19e5c40@wolfvision.net>
-Message-Id: <173884111130.679176.4491485161610037414.robh@kernel.org>
-Subject: Re: [PATCH v3 3/7] media: dt-bindings: media: add bindings for
- rockchip rk3568 vicap
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|MW4PR12MB7239:EE_
+X-MS-Office365-Filtering-Correlation-Id: 241bfcde-e9cf-488a-9919-08dd46b0976b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?tcoh6BLfTNYQrUurNmQX5dcHc8PRyHGEyjJmuHEYO9AjV98Xz4Xl4+f7Plrv?=
+ =?us-ascii?Q?N4mFgEblZ/PD5/UwbrFZX8wL9IV7QjBa58IBfSsESybpAF5tIfKyqfWQ7YGO?=
+ =?us-ascii?Q?5A3C6ryJ50nRTP9yCx/oL6JyJgRAHbVJx8Ez+TY/3SgCw3MMyPZJvi6rMcuy?=
+ =?us-ascii?Q?1elziEbGk/Hxb8sm8gKIibr8xg0jN3CgcS/7Th0XfanzsIsyMGltOEnVdVnt?=
+ =?us-ascii?Q?MTWIedDQylfhIeVuykIja8Ku3v5a6bc+0YekhWPzDXsaAiM/0BT8bb6TLNFO?=
+ =?us-ascii?Q?C4e3ww506Q8cLDQ1WIS3CgzL5EhjCpGAEEzLHSyYHSm0GAinNBZD091odrVm?=
+ =?us-ascii?Q?pZSNM1Z1t9huK9jjuns/KST3jDnzKf6S+50En1eH5xVMOBR2W0rKQaiPASPn?=
+ =?us-ascii?Q?J0T1oacst8ctH7/OEq1CQhvsp5wL5QAANGz/bwMUnsIezK5YeSb0Q5hsGSM6?=
+ =?us-ascii?Q?aEnTLa7tC33fkoY/l5bQkEP7E5ElIp/3J/zzLXlBECAbNHsAJDLJyebgw5ge?=
+ =?us-ascii?Q?EcO4TiC82t+uhuHywKR4TWQABGqqfKXs+cvXXKBRljzvqF4SZ6xXw+3htr0Q?=
+ =?us-ascii?Q?AI7QF7ShcSTjxNvT9bmSusK/4A4vIEavZ9tjXwC+5gt3xOXLWBkGQbfZZsIa?=
+ =?us-ascii?Q?YFXHY4tGl+p0arpC3QgERo78wN3Dkg8BkUM7e+WQdsavZIttS94LPSh8geyM?=
+ =?us-ascii?Q?lNWpOTMmQszRfXLYcdNY2stqZUQNzx3/bP55l0iTPwroTw52cfLkejbklAN8?=
+ =?us-ascii?Q?JEcA0zDuei+Abe8r/hp0xk45cCLjQUT0uUBL956NWAZiaQPpEPTsGvkp9P75?=
+ =?us-ascii?Q?kbq6cMORMSCfkyywL7Ff4tgAxXctoGEp2AEB25FrPAEHjTXM4pgWa6WZEneb?=
+ =?us-ascii?Q?DqxIQBU8yi66VT0zr4hnijyR7jZZnM2wuHdeQkIQvMQI8Sch2Zk/7wqYq7kq?=
+ =?us-ascii?Q?OmBY2AnJq2v27KZbQCYqQPDdFOR9wCdWT+O+dsUPfZniyfOEJZpVtD2yrLM/?=
+ =?us-ascii?Q?4Npdrr9mpAzzF2dyiqL1uHu3olAPp92qEy/cv/wFWDDs7OLcIZqD5I+RlCmA?=
+ =?us-ascii?Q?PaaXFCKbLaWZ/RyfGQuyXnVg8srb27X8ImHC3aaiM1pLcS/kbql5pu/TpeYQ?=
+ =?us-ascii?Q?OVrTxJg90WFbPbXT0b9wpXqvhhj2lMtaeZ5JX5Z4CHWo086hfnnHuxgo6kP+?=
+ =?us-ascii?Q?3FqugN7tK+r/qdpcP9KTqssmw5D9/0tmlVFwWjAAGQI20n+Qv7UAYnc8V8Uc?=
+ =?us-ascii?Q?nQwg00aicNbZ/LT14ydJEdRKBT2v+aIv2X3ss7N4WszuJb+TAucvPqDmYC+s?=
+ =?us-ascii?Q?aBSqXUk1uPOTwJhSo7E2MUQDNP+cPxKjjrLR22u0l0Gv/wIHzH/rmFTh423u?=
+ =?us-ascii?Q?cKDDNVqxRymZRZDfHhuPpfAKf3me?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KRkj07ZxtVvtzA1Gc1po/3FHX8h8zowcRgPicr44lisU//1R9GYEMKwQtfRo?=
+ =?us-ascii?Q?c7XCSfOzhmhGPbyL/JK5C5hp2+VZIL0CDsk6oHvWtPw2K6suI/RBkB/iasBM?=
+ =?us-ascii?Q?kx2Q0lDgMNtmRcRze7/ytzDZ+3sZMX/DQVUitb4AlhtvVmj3qn7FNCpD6OCf?=
+ =?us-ascii?Q?+rX9IY7hFjiVBJcqvV+0r1M2Q0viAa0C3Av3sVPvRPlhIhgZuYA0cgp/khGz?=
+ =?us-ascii?Q?WdxTCghdpmaMIOQSJLrnQZKIShJSyii5sCDw+8DqvNaOOiZmYq4xiS5LSR/q?=
+ =?us-ascii?Q?J3F8ZqcG0HLlMh/uM92K5hF+zlT+eKxoofZ2Tkt6Svt1zz4sCAfUiq1qWQkJ?=
+ =?us-ascii?Q?83sCLVR2hsza0z/DmOY4TeBXCaFo29Ufsd1tT1j+FRaTOVUUaknXYg+7TJVY?=
+ =?us-ascii?Q?+PFMc0MaueD2xEk7K0n+T78e+gGWadSNJq+WFTen8rQ0mLv2soWDyxYjBx8k?=
+ =?us-ascii?Q?50huEt/9R2/q58qFvOZTz/ZpjrQx0eaB9GrFaHxa9cm4cdAUXXP5qTiBEdon?=
+ =?us-ascii?Q?C1v2ZqOG3vKz8gLTFy2ZPfwq6NFOGPelf6QaVrTShuo1VioxHTiyyCgVzrt2?=
+ =?us-ascii?Q?OFbLupdMFZNYz5MfFpJToGoBvvk/jpUiSFxg0WZr3sBz832VgcO3OBtzdNnb?=
+ =?us-ascii?Q?NuwGcooW58nZOtpoDh862mUI5so0+NdsYalO4Mj+NmLEwnR3rIotKXtnH4WD?=
+ =?us-ascii?Q?GlaRQ+tpEA9O4JyC+r1kJwkfPCnRuMIKorjhcai2PfvYv3VH6rtpzBb1sS/1?=
+ =?us-ascii?Q?PWyqVXjI2IH0uQ+iWuffCFONE6NG9Qbrp8K80cxn6Uqtz40tUf/fImeIwu+d?=
+ =?us-ascii?Q?Ry36rVuxoXYl1+iO6/2Lc+A5UZFsh5VkdSFITi1+iSMbdqIIGWbNCWNdP/l2?=
+ =?us-ascii?Q?mkRIuZwhyyNp+6YPNrpAv1k/wKwsxyVPwcXbWqPGM+QshWQHLaLbYXN5sC/I?=
+ =?us-ascii?Q?I6yTSamZctYDK7U3sbxokg76jL6oFE7Sq5Qgh3FLhRCRdp0xii7Yk+M9P3LM?=
+ =?us-ascii?Q?WFbmgNmd88N+dnJQ6xhAuKYfOZhXakHuzBtY+50fEQYjsA0AIxqz87deWdF0?=
+ =?us-ascii?Q?aeTZTYeepKU4qWbmrHGfZcqcEa2Y5IA03d7KIAMpQKNXaNLlCKQQlGWAf8YA?=
+ =?us-ascii?Q?y4JMvsQD+3bsw39PEH1i0s3LRgw+JXQSSwKK3o3f2CampaKcCUprEMqSHKyD?=
+ =?us-ascii?Q?9OUiUPaDhCUQud858eFj2dOE7LPAbj2CVY8yz7dFi0sj9qqNmjgEpKQcFd/5?=
+ =?us-ascii?Q?xHmAWrfzn9e5avZp1BTe61WeIGYlC9XA84y7o3El2qAREuiodeb6piNzS+N+?=
+ =?us-ascii?Q?/DzzZZcHqZphtfwdr2Ajb9wuyz6J/R8AVGzhktI+RmNpAJ85UcrY+DnEq35e?=
+ =?us-ascii?Q?A/C2jD57VRDizRlMEK/3uNJ1sIAuVfmC6ISpZR25ErV/VYEWUkf8zjGFO1y9?=
+ =?us-ascii?Q?Ef8FAf4t7607ztY8t4GHbdgalUZ/ZF71hToPd845HWRNkgNw9jrb6RbxSn8J?=
+ =?us-ascii?Q?HHhJqzwBo4aQ1ng6tT0b2iHjpK1RNEE4Yhrrv0LUWR3Z+YZO2fXUHXYXQTff?=
+ =?us-ascii?Q?IKk8bvb5IETlB8dSbD4=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 241bfcde-e9cf-488a-9919-08dd46b0976b
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2025 13:17:22.7420
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: owwSbsaBEmQ+2p1T3qr2auAT11+Z8FarXRqrFwaA8vOXs0wlzvOg7JxL+2vsCzjm
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7239
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_032513_713494_566EA101 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20250206_051731_679660_60EF823E 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,46 +185,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 06 Feb 2025 10:57:41 +0100, Michael Riesch wrote:
-> Add documentation for the Rockchip RK3568 Video Capture (VICAP) unit.
+On Wed, Feb 05, 2025 at 09:30:05PM -0800, Tomasz Jeznach wrote:
+> > @@ -161,9 +163,8 @@ static int riscv_iommu_queue_alloc(struct riscv_iommu_device *iommu,
+> >  	} else {
+> >  		do {
+> >  			const size_t queue_size = entry_size << (logsz + 1);
+> > -			const int order = get_order(queue_size);
+> >  
+> > -			queue->base = riscv_iommu_get_pages(iommu, order);
+> > +			queue->base = riscv_iommu_get_pages(iommu, queue_size);
+> >  			queue->phys = __pa(queue->base);
 > 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->  .../bindings/media/rockchip,rk3568-vicap.yaml      | 167 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  2 files changed, 168 insertions(+)
-> 
+> All allocations must be 4k aligned, including sub-page allocs.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Oh weird, so it requires 4k alignment but the HW can refuse to support
+a 4k queue length?
 
-yamllint warnings/errors:
+I changed it to this:
 
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.example.dts:73.3-74.1 syntax error
-FATAL ERROR: Unable to parse input tree
-make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1511: dt_binding_check] Error 2
-make: *** [Makefile:251: __sub-make] Error 2
++                       queue->base = riscv_iommu_get_pages(
++                               iommu, max(queue_size, SZ_4K));
 
-doc reference errors (make refcheckdocs):
+> >  		} while (!queue->base && logsz-- > 0);
+> >  	}
+> > @@ -618,7 +619,7 @@ static struct riscv_iommu_dc *riscv_iommu_get_dc(struct riscv_iommu_device *iomm
+> >  				break;
+> >  			}
+> >  
+> > -			ptr = riscv_iommu_get_pages(iommu, 0);
+> > +			ptr = riscv_iommu_get_pages(iommu, PAGE_SIZE);
+> >  			if (!ptr)
+> >  				return NULL;
+> >  
+> > @@ -698,7 +699,7 @@ static int riscv_iommu_iodir_alloc(struct riscv_iommu_device *iommu)
+> >  	}
+> >  
+> >  	if (!iommu->ddt_root) {
+> > -		iommu->ddt_root = riscv_iommu_get_pages(iommu, 0);
+> > +		iommu->ddt_root = riscv_iommu_get_pages(iommu, PAGE_SIZE);
+> >  		iommu->ddt_phys = __pa(iommu->ddt_root);
+> >  	}
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250206-v6-8-topic-rk3568-vicap-v3-3-69d1f19e5c40@wolfvision.net
+Should these be SZ_4K as well or PAGE_SIZE?
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Thanks,
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
