@@ -4,70 +4,190 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 893A7C02196
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 09:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB9EC02194
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 09:59:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UI/gT94GEcNQ5LukMg9vOYFEFB9pn/cBXyx0HcICoN4=; b=2wx3iJi0YncrBg
-	f3HX/vdeGtDVLtn5hFJ3vdyhvrM8IrpHbIp2UApv1d+U+2T9xt4suYSLtyEgp+WtJ/ue56XU1VrvM
-	eJGL/wa0oWRnzvt5fM6vZRfk4hS5E4ythcazDPBHRAUrdRsfNxI0ZCEsLto2dauqucq6c3tDZ3tHc
-	s4ZuFxorppxex3UZ3zp3E+j0ZgylQk9bkVmZf0XH9P2k8rcWq4aLDNSsTxmpidhAwLcpNWrxylcHl
-	dau6R9PqQxDXPL39giFxOg2bgzJ8CNvkPlvinI9ZCLJzVy3OmsmQ2+RE0cuj4CS3CMUhIZAoMwxD1
-	U17pUjyXTIY5/U3u0UZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=OK0ZHGv707atdPoyxbIiNPtql8j7H6On2KtejcSB/EY=; b=LSQ6lKY1QepZ5LPJ9bSlPZ9ksU
+	oZf5uOI20LIvwv2qUbRBNEF8j9iKRQj8AGaPnlolS31Y2t3nHN544EXHsAfZWbyvcCrm1njjB7vUB
+	gQms/QLPK69KIHJX6xj0xf845VJJgCEnpZaBGGKzKiK3ktWyjiHtGq6J3ITq1bvCpruKM56EJi6Fv
+	VLDR83hufuHqdTGt08QzNnHTYTmccIoGiSic4P/5fZtwyB0Kc1yWt8dOUWflG9UBe/PqUisy30o1b
+	XQ5je948QhV5qR6UZZu38FVsyZCKtIlnLPjrkewhOGg191AMe06kNVCZ6na8X8McdNsbukk+wQF7E
+	uMTq573Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfyJK-00000005rZF-43pr;
-	Thu, 06 Feb 2025 09:36:38 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tfyfS-00000005ufN-1hTU;
+	Thu, 06 Feb 2025 09:59:30 +0000
+Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfyHy-00000005rJh-1Yue;
-	Thu, 06 Feb 2025 09:35:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=J7AJ1kUiUbtxdovmqHjIzlfZsiH8tB6kpGPRFSbHPqc=; b=Dv7Q/tZ1j+y7GeMqHaU5fMqaNL
-	nrN8Xj18QQGynKlgCGkgdoUEeB60cs+s7oKgGSuHa9xaYK1mBetVShnpB23jxvTQVaaqxdlvntYeI
-	2r5LxZnOh0iG+aQ6iNxc6NclCcElDIk2gyoxn7oOb+nAoMwR+CZ18WBTVutZR3u9OkMx+uP5+xmyU
-	TX4/hi/djiTpaCC+cAmbr0cz/GHijzwNeL2/T58srS4GEodr7yEDszzWl2PvqbvB99gsBPBYR7snn
-	QGcz2PLiVKqa4jRSOpZTi4mdNYZhDpaceoiY+iwzkS0CWNc1L/5DULGYPwQWFvnAv4ackObGOqs5/
-	Bln36sUA==;
-Received: from foss.arm.com ([217.140.110.172])
-	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tfyHu-0000000Gttz-1wqR;
-	Thu, 06 Feb 2025 09:35:12 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 19E8F12FC;
-	Thu,  6 Feb 2025 01:35:31 -0800 (PST)
-Received: from [10.1.30.52] (e122027.cambridge.arm.com [10.1.30.52])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 71C553F63F;
-	Thu,  6 Feb 2025 01:35:05 -0800 (PST)
-Message-ID: <de9aa254-dcfc-4a7d-b89d-79b41649a6b2@arm.com>
-Date: Thu, 6 Feb 2025 09:35:03 +0000
+	id 1tfye3-00000005uKZ-2oTQ;
+	Thu, 06 Feb 2025 09:58:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ofhvfod16IhNxYjfkskVhCjoR7+Bpp+kGT1FTXN6smGemw6OfbvryxqUYlOJVJ6WQr2mxSxjrXkuefnlaXmrJ7UzbSZ5FeEyyHxtsh3YFHW5aGez7eOeh8SerSTwkjuNocelYomDKTQiUM86XAXUBH8KCsVuJwkH1bSrIo/bxJfimvQhW3KlLM/a3F8/rS8XrqrKzBoYT3venYosobYPL40IbIakil4+4V88051xEvcqHGj4/XQdoteg3fvsu+fY69Uw0CVs7xZUN93vpIO0TowWFHRKBlLiLEs9vHYS2Y5RsvHB0qYk15qPuixw3EqMdOmNKQFjqIvUNhaymIX+Mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tj6BxCl9fpw5Pry04iUoEkwcUhf418Q3mJRPppiteaU=;
+ b=lwTUzIgGNtvFoQx+q3T9DpCzGeP2btzvw5pBJqHIfKgk4RZnsUJyVSJcirT+cbVfpUwp4rVzjGEeJ7YfRcgPponKweEk/ZSE+wcOGpNZQbAqDnClMRE74NfxkEHsSWgja+b73dkESBYhjJ5TDT1ZG1GKSytB61iD0m9/yYq5zn6ZnyPqaqBKGH5r2qvS7pyPqGIC5C4RK9flQBx1+J71SFvXET6aqbBOEbkCRPQRr7in5FWYmv0IQ0dgwyK8M4HvZ8gmsepPRfFE6vzHLT6cyYQHPygGiuIYIuM1AxilZpJcW7lPspJ6y9ZN1pByn5tyWtimBXq9f8y7EFbB9FVYJg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tj6BxCl9fpw5Pry04iUoEkwcUhf418Q3mJRPppiteaU=;
+ b=wSj3OMpLht3DUJGlrWXM6iDulbIvMiMXby1BzTXrRzAiYVkokTy1CeZQrGMZ1Y56dJKZhKUYDjSoVRD3ugp1nKe11zAgMV0gV7SYYGO1+AZz7YYNT+acezi/gu1WmBgcDnfpwNenEKWIccRfc7MRguqiLh17bH2f7IOfQJ5yHJY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by AS8PR08MB10170.eurprd08.prod.outlook.com (2603:10a6:20b:63f::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.24; Thu, 6 Feb
+ 2025 09:57:57 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8398.025; Thu, 6 Feb 2025
+ 09:57:57 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Date: Thu, 06 Feb 2025 10:57:39 +0100
+Subject: [PATCH v3 1/7] media: dt-bindings: media: video-interfaces: add
+ defines for sampling modes
+Message-Id: <20250206-v6-8-topic-rk3568-vicap-v3-1-69d1f19e5c40@wolfvision.net>
+References: <20250206-v6-8-topic-rk3568-vicap-v3-0-69d1f19e5c40@wolfvision.net>
+In-Reply-To: <20250206-v6-8-topic-rk3568-vicap-v3-0-69d1f19e5c40@wolfvision.net>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1738835873; l=948;
+ i=michael.riesch@wolfvision.net; s=20240405; h=from:subject:message-id;
+ bh=Jwfb9ka7Co1QU4YFQj1bP68YHW3VZLAiB9reUK6eW8Q=;
+ b=FvtZqmG6ZoB/lNG/Jbh5+3EZqtcxtn/DAsJit+MfhM3rNebNrr1Vt2WE0MHlWGm0TwLiUDWvT
+ Md+0y2DAnoxDMxdG/uI6g+VZiovS0VoLDDF5/Xxlq7zAZ0BUXmM5t+o
+X-Developer-Key: i=michael.riesch@wolfvision.net; a=ed25519;
+ pk=cSJmgKSH3B6kdCIDCl+IYDW1Pw/Ybc6g9rmnUd/G7Ck=
+X-ClientProxiedBy: FR0P281CA0158.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:b3::16) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH netdev] net: stmmac: dwmac-rk: Provide FIFO sizes for
- DWMAC 1000
-To: Chen-Yu Tsai <wens@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Chen-Yu Tsai <wens@csie.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-References: <20250204161359.3335241-1-wens@kernel.org>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250204161359.3335241-1-wens@kernel.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS8PR08MB10170:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0fcddba5-ff62-4f9f-c053-08dd4694bb5f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|52116014|7416014|376014|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TzBLYW92ZFNVUkxhdGs2clRRU2JRMVBuRUU3bFZHaVZkZXFlTzltRXFDZXNy?=
+ =?utf-8?B?czhRV3g3Q2JqU0E1ckRpRE0xbno3STl2SnRXZ1ZVTHF3a1k5Zk9UbVNGYlFU?=
+ =?utf-8?B?WG5kdmRsQ3hPQjl2dTdacmJIWVM2RTRDY2dGZmF1VEs1cGsvY3pGWkRIUTlY?=
+ =?utf-8?B?WFNHY252S0lTR3pSYURVeWp5MnRZMzAyanlVTDNjM29aTUVlbDM4ZXZSQWpK?=
+ =?utf-8?B?cHpuTDZpM0NvTnJiSkpITGJKSWk3anl5c052VGpRdTE5cVgraVJ1MW9zQ0Qx?=
+ =?utf-8?B?bzEwRXJlZ3dpa1BiMjhRME83OXBXWXVRZUg5cThLWTh2R0FZMkZRdTVpWjlm?=
+ =?utf-8?B?elhYalY5L2l1bzhrSkFMTlg4NEV5WmdjelN2RHZXV0VadDU0dnIra2N3OTJs?=
+ =?utf-8?B?VUdXWmU3azZCcVFCRXlLNlRsL1JmakhqMnhkRUlWNUdyYTFEaUlEdGdPUmky?=
+ =?utf-8?B?b2lDemlDelUwRSs1dGRzZC9pVnJQZHQ1VHVMZElQL2p2dko4LzB3bjM5OGY4?=
+ =?utf-8?B?YU5SVVJFbGFJdVlHOE4ycjlIUXJTUWJidjdNWlUvOVlWT3g1MTU1N1NUbDNY?=
+ =?utf-8?B?UVVoSlk1TldxM0RVTk55d09rcko3T2FybUphQWR1OHhjN2lJcGRoYmJ5bU1q?=
+ =?utf-8?B?ZmdPVzlnb3FxQ2Vzd1BYaHFYNHViZTJQMk9UVW5iUjZFdVpLR1RHMjBkek82?=
+ =?utf-8?B?NnpPNGxxYTNYZTMxdVZTRlRNUlhVVytoTlhPK3dDNkJGc2sxRmRqWEgzWWg0?=
+ =?utf-8?B?aWR5RHNwc1ZUSVpEeWZLdm5xMW4zcU1SREtaSUVyS09FS0p3c3BxbkdGa1Nu?=
+ =?utf-8?B?d0pFS0twcFZJNHBjS0ZRU0xiNkdFZVUxWWZpdHFQNkwveHhwVElONVllRFU3?=
+ =?utf-8?B?SkVvMHhLM1JGTlp1aTgyejhUOTVHY3NMYWJKMmlvNkVDZExqbXJNUklad08w?=
+ =?utf-8?B?Z2svalZGK0kwb0RoQ0E2M0kvVjdhclZuYk1QR0sxZDBEZUVkcGczSW53b0dj?=
+ =?utf-8?B?SllPa2d5RU9qSUV2VWkrbkVrRm94TWIrSyswS2JaZmIzVDBsM2ovZU5IZ2NR?=
+ =?utf-8?B?emNBOEVKVnBUeGpIbGV6dTg5cDNCaGNCZFprUXRWTTFkT3lMYWFtcWhWV0gx?=
+ =?utf-8?B?UVJjOVgxTmlwaEFDcUE5cm10SHEwNFN1bmZ6SHR6aVM4K04yZzlERWFGN0VK?=
+ =?utf-8?B?SEJVVUt1eXVuV0ZXZTd6bVN0YXR3Vk02dENMZlU2NzFCMzQ0dytndnVlSVpW?=
+ =?utf-8?B?dVR6aHlyOEZPS1FqZWpUSlhhaTJOb1NLUHgyQ3dvT01FUjVxR3dMVTFiV0xK?=
+ =?utf-8?B?dlFpQkV5dkJqWWtaOWo0U2tSNm5hbTJ6Z1kwc3lyNGRuUmhhOWxSUlpIbG1y?=
+ =?utf-8?B?V25GRVhKTUViYjBwWW5xOXd0K3dQMHNPLytWWWNrdHB2bUpYVmc1SzdLU1ov?=
+ =?utf-8?B?aXRoc2FXZDNNellyUlljdWQwNnM4UWlra1QvNy9PK0ZmcXZhVzhqYWFEUnZt?=
+ =?utf-8?B?cTNFZGYzVGdta2FqRDZ4bXhWSVFTc1R5emRiQWViMFFDZkIwQitwVGdaa2F2?=
+ =?utf-8?B?RE5Sdnd6ZmZZNTFOSEFGNjVVczdoampVWXB1NUNUS0dWaGw3bHF6MGZUaSt3?=
+ =?utf-8?B?ckRKbDlVOEllbUNlbCtUT2ZTM1RhZDNIUml1bEIycGpJL2l2dG1SQXVJY0Z0?=
+ =?utf-8?B?ZGtLYlFhWng1b0J2Mi8xRmhaUmZVSEQyeUhRVmVYajlhK3l0Z1BNWi9UMnJY?=
+ =?utf-8?B?ZHFSS2h2VUZneDdiVzQ1RURUV3J2QWYrZGgzaU1JT1VneS9BYy94NFpHRmdx?=
+ =?utf-8?B?Z1U2WXM5MjYxQ2Z6c3VuaW52dUpHQjZRYkVoQjdHTm1aL3U3OWpqaWl0c0ox?=
+ =?utf-8?B?SnJkL1dYUFBINWFLWldDVlU5NDd3ZXgxSmdWMnRVd1RzL1Evc3o3aGRlVTM1?=
+ =?utf-8?B?YnR1cWUvWFBBR2wvVXg4QTZxVFlBNkx2YUQ5RExIaDVxUGJWdU0zUW5GMW5u?=
+ =?utf-8?B?bTBKQVMyd3BRPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(52116014)(7416014)(376014)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d254elBKb0hnMWg1K1ZWcWJZcnBHRlpCblJQWW54YUhCTzdmVHJUc2MxL0RU?=
+ =?utf-8?B?NkZyMjV3L1JDRk9lQmFYcW1aSDBWb2hYWW9nM3lyUGphZ2xiSmd6ZVR2YlRL?=
+ =?utf-8?B?emRNMUlXSnB2ZlNqdFBIMEcxdnNBNlRnM1dacnNxRy9XejZPLzB1Vmw1R3Vv?=
+ =?utf-8?B?UWRncXVrY3BxVjAwcWpIak40dTBiaU1LWU5FcVVaMnlDZ2JmZktkbnhOWGE4?=
+ =?utf-8?B?SjFBS1pzbXJQYzlxYzdCZTY4VUdpV0RMaG1KQ3BtK1VOMVJvL0JTUXMyR2tL?=
+ =?utf-8?B?QWptcDdMQ1pVMmk4UVdVVTg3RndSenZIdzZtVUg4ZEk5R3gySTNZaXc1WWlp?=
+ =?utf-8?B?VzVPNUpROWRjNHlkd21EOW92OHNreTZzOGlCMWlsNTJTYUZkRHNvWHVPOFVk?=
+ =?utf-8?B?K0N1REsvY2hiYS9lTEVKbnhqYlNsOUFLa1lkWnd3dmc0R3pmOWl1eGxGbmsy?=
+ =?utf-8?B?dDk3N2NWamc4ZDBRVm9penBGaytwd2pMZWh3MUJveHE2blZ6QTNhaHJxOWYw?=
+ =?utf-8?B?cHVwbjFPWUpid0JaNno3NzRPeWEzdTZjUC92RjAzYWo0NDQ5UWw2bkF0Tlo1?=
+ =?utf-8?B?eG11ZzdWNGZQUXJBQm5OR1VjVFBQaHU5RFZDeXhxamJRbmpYYlJ4aHdGTGEy?=
+ =?utf-8?B?aGE3SmZDVmZPMnlpTVVLKzl6QndmZjFmMGRCM0tOaXhTSkhhRzJBOUs2cFNG?=
+ =?utf-8?B?V3J6ZTh2SDZVSWxiQ2d2L2hOakcvWU5ZUFpYellCNnM3Rm85Z1NlNy9QZzg1?=
+ =?utf-8?B?WE9aMFBPUFlKRFFmZ2NlNXNvQTI1aDczNThVNmx0U2UrZjVyOTNRc2hUT211?=
+ =?utf-8?B?ZE9ibFE3WUZtbmJDdnJ3akc5YllWRjJpa1BOYXRlMUVkZTI5dC9CWFlxZVdH?=
+ =?utf-8?B?VEVnMUhLRWVKWGZTdmRNR2NSN1Iwblk4WVM5Vkp4Yi9EcDM5emxsdGZlZGw5?=
+ =?utf-8?B?STNSb0VhS0FTK09DZTg2a3huVWNQVlJORVZkd0NjWmRSL2Y3U3B2M3NIR0VL?=
+ =?utf-8?B?RXoxQ3Z6UEtIbCtZODM0K1RRZnN0MzVwQmVNTXVubVhiMWVTN1BjOVd2aUd6?=
+ =?utf-8?B?bWw5NDVKWFhSZm0wWlFydFcvZjBvQVFkaGZyR09nYjJOQm1YSHZIbkk1RnhG?=
+ =?utf-8?B?ckFBK0FsbGdjVjdUZU9QbzRObndsYUhDOWphOXVWUnlBTENBeTgwYTA0eUNv?=
+ =?utf-8?B?dVMvY29nOUJPRUhEMUQvd2x1MFcwdk92bHdibVNMQThLRDVDdXpUN095bDZT?=
+ =?utf-8?B?aXgzaDNXR0xNeVZpbDh2MDIzbU9DRXZXczJJbDVodTArc0JLWW15eHBoQ2gy?=
+ =?utf-8?B?amtBYXFMUHlyTllhbG9URnVGRGxTK085WUlNWlAvTTFRejB5KzNoR0ZLWUZk?=
+ =?utf-8?B?aTkySzQ3WkdTYy9tSW5hSW50SDhvdU8yQ1NkajkxSzBlZUZ1WG8xazVVV0li?=
+ =?utf-8?B?Z0JRV0xiT2ZWQU1VaU16LzRlQTBGN1Rwb0FYRkh1WndCNHdVUDZEblB2NkJx?=
+ =?utf-8?B?QWZvbUxoWHVRRzBiMkdCcTY1Tmg1N2hiek9iYmVhbGt6dmVDWEoyV2RvQUZY?=
+ =?utf-8?B?dVhTMjRyRFBzMkJHUGN1Z3RFM2JPazZVOHZ6Q3FtaytGRkpoeXlGKy8xR21E?=
+ =?utf-8?B?NEtQM202aFkvUXR3by8vRHBjMDB2T05GYWJxMUlLZFF3SkxrYndiRURLK0t6?=
+ =?utf-8?B?a3ArR0RuRnBMT0pCL3BlNDkzbUZrb2d5S25pWFAxWWdRdGdmTk5MejR1UkNP?=
+ =?utf-8?B?RHQweFdvSXZXcXVmSFErNG90SEhYYUVQUHd5QU96SmJ1a0V1V1M4RXRNdXo3?=
+ =?utf-8?B?OUxvbFQ1SWRVNjl6Q2x6Vldha01nbkFQWUEwMytZYWJaN3ZOSCtQSS8rSS95?=
+ =?utf-8?B?NmViYWV0MG1ic1ZFY1dGSG5pL01Rb0dmOTVBME1pVXBqMWRSR2ZWNUUyaW1U?=
+ =?utf-8?B?K1Axdml6T1ZTSTZtRUhHSjFrYUt5RXJPVU9vcGFaWDRXOVg0RnhNUkJ1UUZ2?=
+ =?utf-8?B?VS92NlVWdERMWHNrcXB3dkZWTi9QZ3M1MVp2TkJxQUNDNjRENW9CYmRGQkIz?=
+ =?utf-8?B?Z2U2dk4wRm9mb3o3Ly9YTlZFbmZndXFmaHRoVDVvZk1aaXhtbzkrZjIvalZT?=
+ =?utf-8?B?VHRsOS9taVdPZG1ERlRYTnZRazJvVjNjWmQ4U0FndHo1MjcvclhvWVFZcVNy?=
+ =?utf-8?B?TlE9PQ==?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0fcddba5-ff62-4f9f-c053-08dd4694bb5f
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2025 09:57:57.0461
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: g5NqKRTgithUrNmQ6SX1UuX5yama3y+gX9Dxj19YrLijLtra3WC/RR8SlCSu6YSaB1KEHL4T2en1DuUxI0IKvvMYfVbkSreOflbgNMZ4fos=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB10170
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_093510_885769_3EE0129A 
-X-CRM114-Status: GOOD (  26.78  )
+X-CRM114-CacheID: sfid-20250206_015803_736434_767D20AD 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,71 +204,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/02/2025 16:13, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
-> 
-> The DWMAC 1000 DMA capabilities register does not provide actual
-> FIFO sizes, nor does the driver really care. If they are not
-> provided via some other means, the driver will work fine, only
-> disallowing changing the MTU setting.
-> 
-> The recent commit 8865d22656b4 ("net: stmmac: Specify hardware
-> capability value when FIFO size isn't specified") changed this by
-> requiring the FIFO sizes to be provided, breaking devices that were
-> working just fine.
-> 
-> Provide the FIFO sizes through the driver's platform data, to not
-> only fix the breakage, but also enable MTU changes. The FIFO sizes
-> are confirmed to be the same across RK3288, RK3328, RK3399 and PX30,
-> based on their respective manuals. It is likely that Rockchip
-> synthesized their DWMAC 1000 with the same parameters on all their
-> chips that have it.
-> 
-> Fixes: eaf4fac47807 ("net: stmmac: Do not accept invalid MTU values")
-> Fixes: 8865d22656b4 ("net: stmmac: Specify hardware capability value when FIFO size isn't specified")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+Add defines for the pixel clock sampling modes (rising edge, falling edge,
+dual edge) for parallel video interfaces.
+This avoids hardcoded constants in device tree sources.
 
-I think it's better at this stage to apply the revert first. However
-I've run this on my board (Firefly RK3288) and it works, so when rebased
-onto the (reverted) revert:
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ include/dt-bindings/media/video-interfaces.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Tested-by: Steven Price <steven.price@arm.com>
+diff --git a/include/dt-bindings/media/video-interfaces.h b/include/dt-bindings/media/video-interfaces.h
+index 88b9d05d8075..0b19c9b2e627 100644
+--- a/include/dt-bindings/media/video-interfaces.h
++++ b/include/dt-bindings/media/video-interfaces.h
+@@ -20,4 +20,8 @@
+ #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CAB	4
+ #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CBA	5
+ 
++#define MEDIA_PCLK_SAMPLE_FALLING_EDGE		0
++#define MEDIA_PCLK_SAMPLE_RISING_EDGE		1
++#define MEDIA_PCLK_SAMPLE_DUAL_EDGE		2
++
+ #endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACES_H__ */
 
-Thanks,
-Steve
-
-> ---
-> The reason for stable inclusion is not to fix the device breakage
-> (which only broke in v6.14-rc1), but to provide the values so that MTU
-> changes can work in older kernels.
-> 
-> Since a fix for stmmac in general has already been sent [1] and a revert
-> was also proposed [2], I'll refrain from sending mine.
-> 
-> [1] https://lore.kernel.org/all/20250203093419.25804-1-steven.price@arm.com/
-> [2] https://lore.kernel.org/all/Z6Clkh44QgdNJu_O@shell.armlinux.org.uk/
-> 
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index a4dc89e23a68..71a4c4967467 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -1966,8 +1966,11 @@ static int rk_gmac_probe(struct platform_device *pdev)
->  	/* If the stmmac is not already selected as gmac4,
->  	 * then make sure we fallback to gmac.
->  	 */
-> -	if (!plat_dat->has_gmac4)
-> +	if (!plat_dat->has_gmac4) {
->  		plat_dat->has_gmac = true;
-> +		plat_dat->rx_fifo_size = 4096;
-> +		plat_dat->tx_fifo_size = 2048;
-> +	}
->  	plat_dat->fix_mac_speed = rk_fix_speed;
->  
->  	plat_dat->bsp_priv = rk_gmac_setup(pdev, plat_dat, data);
+-- 
+2.34.1
 
 
 _______________________________________________
