@@ -4,114 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D45F3C02199
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 17:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B65F1C02194
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 20:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dO+d6NVl32q4nV9fO+cBG9atKrJxlRkzBOEz+2IhwKk=; b=tGGd6tDR7P7RhA
-	rZ4guj1FDDRACtCOvNjr4Px8cSXUUff9vkVpguJoPt10Kk+cdWEZiVQQOZQsnmVUcolvrJDwEJzjo
-	qXXyzTeoE7OlJZGDYzmySS/Fp9NoDyFnzkJ1yYHCGOfeZ1i+FYqhRXWOYw0qeeGG8Ro8rqt5M0L5d
-	Ty3dBUl7ZIWZOdOrfUQOxEgVqpMlO1jwBUeWnEvc/aOC5R6fGywTB59Z1DvROmI5AnzRHjLZwpFET
-	RKgYMSWqCl6EDlkWo+g8rvq/abl5u2WKbE3GNcD3nG+852TfceLBiyoBPxqLF6c2sWlVeqEIYTXy5
-	wDWtAK9JpZunE92MzmFg==;
+	List-Owner; bh=Hx8AS0PaUeJ/mbEU1wV85YWa4trJT/fRO1tft+lbdN4=; b=Y5kZDFfNsyiemH
+	Dlwk6R5cYSENrGXdy3V+1cm6USnB6VoSJeJeUh73X7d2Y9cr9J+41LpHLIOVwGuEHjfR1bAOFyj3y
+	TNo/UtUdRuz1iqh1Oup9sBm7ucbvKd1e/PRRM4BiIxtUNpFfWnW1YkaHLnDyPJQLY8tcf+0rNtXqx
+	/Wo+0rejxPI28/RJ2pM4+fm3y1yzwy/RQH91KKslAq7lCUeeG/TGDwRrFzS4R09eyN0xUE1MdI/eo
+	D5VdRkR0BmRlWqQYOo8digs/CmxIg8b3cDERPmp+FU08q6zs1WuIwgkpwkTeRRFW3lV0iMXOiNk4h
+	GIVvAeLZfNodopOjQXow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg66U-000000073gw-2II0;
-	Thu, 06 Feb 2025 17:55:54 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1tg8hi-00000007Vbs-2IFg;
+	Thu, 06 Feb 2025 20:42:30 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg656-000000073O4-0ibz
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Feb 2025 17:54:29 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-21f200014f1so18119945ad.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 06 Feb 2025 09:54:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1738864467; x=1739469267; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2Mn+sK8nChOIpeYLnv6IHwIsGNBT4gzyG/mIRD8yp0k=;
-        b=fdIP9j/U6JiM1FaxmDWsn4cKPxef2k+nmAnWy/M4LPDZcqxw0QMQAgw2hrPAfVN4b8
-         FCNKhg9JzASYazczM3NiqwM9MOPwXGnM7gWgAg42lFLuesaVO3julEznfR2wHpCynSD8
-         gVyidPEiIAsQ75BY70e40L9kzmxduvWUXx5WTv1tAU/cpeSx8Nv/TfnWl1vNeHSansFs
-         /Ag3dSC7wsvXA+6dkbOSIQ7S1+RAM8TD526ReWSJxLGuXcClHa6GGYuBbpeYF1SLJ5uV
-         0YQX59RMSpDc4O7ftrUL+Nl+Uuwi+2koWOnX1zlJS/f6vV8UzJDYyp7DtjzIqEC/iqcE
-         jYqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738864467; x=1739469267;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2Mn+sK8nChOIpeYLnv6IHwIsGNBT4gzyG/mIRD8yp0k=;
-        b=B9YJF0RPAxIR/oabxNslAP3YXp2t+97yUvNDsAxAPDJjKP+66C636zFiF6f261SAdg
-         QjswjtGsmnCOXmkVpDvNWBAiH7CZ/oWIl6vjpA4UbD9opAt9bvfCDVGV0g+GuIToD6LA
-         8c2a2lB8IZJHwA7V2iutyUwCXF/LvRz2RlDKBQEHc+xATTggzlgzD7HfN+gkWSLxWxgw
-         V+r8inz00S344qcrGfnOlxyRwMUGkGo5VtlnTZtsVAZqdKvSCOnMClP72iRJsuFQK/vO
-         1kDIDn6Ae4TFxA8jau2FQRHb9SRB7mHQvfZBVfrvAwBtyWhlHlDS30QtygIrO9Nri25P
-         6OFA==
-X-Forwarded-Encrypted: i=1; AJvYcCXMGcaoswJWviZWb8lL4pCpQR6w1OJe2GRwI2PyGZ0lcAt3+F0QFE+KcLqzpRiz7UURjmjmqCt+CUknkyYgDA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzONFPPx3/+ldCRulEyE9psPnYA5iLo8tvQVtwQBJeYnAklQZ/S
-	7rYBKD9aB93NuVgirV5C1jqGxnggqlZnnXWngHVqpWjMGseChNoFTojgaGtmKUY=
-X-Gm-Gg: ASbGncvDr53oLIGjtIrdUlAhZ731xj5sT5Yr8JFwMLAqiqEu43zYgyHbVosXdBLb48F
-	zv9k+z2g/MzlDgW2/1vCXD2fymM1jZjAEGxlDQNojwi68MbuA8rEL4BkwVXoBVccTuJDUI8g1sx
-	65GDWVhdfjAXHph3uDoM1dM5SU6cmZoBq7Fu9fMJh+U9AMTaCuxDDKL9sWcVozboA5qSm5s13JP
-	GMBw7byV+H85xtTZGFfedwUfDzKtSvVLlaPtlyNaGshzNSajndF+ALtA0Jt6eJz0Z+oUQ9t9R+w
-	r3EeD8S7LPDHPuugVELquMOI8ytsylMgRQ==
-X-Google-Smtp-Source: AGHT+IEz4awpqkJi/c9nNKxcLNj0HJ/bkNdjww1eQVi1trMS3Hp0zWEssHNhp45gp9A4Jt7vw68l1Q==
-X-Received: by 2002:a05:6a00:882:b0:725:c8ea:b320 with SMTP id d2e1a72fcca58-7305d498d3amr215704b3a.14.1738864467255;
-        Thu, 06 Feb 2025 09:54:27 -0800 (PST)
-Received: from tjeznach.ba.rivosinc.com ([64.71.180.162])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73048adb10csm1636427b3a.66.2025.02.06.09.54.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Feb 2025 09:54:26 -0800 (PST)
-Date: Thu, 6 Feb 2025 09:54:24 -0800
-From: Tomasz Jeznach <tjeznach@rivosinc.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH 17/19] iommu/riscv: Update to use
- iommu_alloc_pages_node_lg2()
-Message-ID: <Z6T3UCK1FI44pg7z@tjeznach.ba.rivosinc.com>
-References: <0-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
- <17-v1-416f64558c7c+2a5-iommu_pages_jgg@nvidia.com>
- <Z6RI3ftJTrm3UxoO@tjeznach.ba.rivosinc.com>
- <20250206131721.GF2960738@nvidia.com>
+	id 1tg8gL-00000007VVC-1RYq;
+	Thu, 06 Feb 2025 20:41:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1738874421; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CEFH29ZszeHLlTPnHhnLcSDNF95+9xVJ7xSm5+gUM++gmmyT+xzZZRHncrFKg0cbc7zWOPxMYJaOqDAaUKtM0sooaYJMSwEeDpeYH4c35NSuyfY1NM4ceVa+5DblHIgfLrW1yo8z7J0YxFWPYdaQaHwKcXLoMaglEyyXTjzD5Rw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1738874421; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=kACVQDpqq9CudHavl6P9Sm6lVRImK08+cDYq9z8OiAE=; 
+	b=DfQdeOyA1fDWl4xo9Q5gwbYCFfsWBLF8x/yN+k7RQc7HttKYrqJGXHMv5+sxcXN2LAHSlUUd18RBqp84g10nt+ODk4Og3QRItuTh+dtG0hL1JbGKxmJsZ5jIHDyCIFVcsGELasfCJcVf3UVPVZiBJ2Dy2bjtsFUZfcnej/zzX1k=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738874421;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=kACVQDpqq9CudHavl6P9Sm6lVRImK08+cDYq9z8OiAE=;
+	b=iNPRurgj5kX2Ur4Ui6vWaTf1fuT8rxX1mPSoq1Lc4+q0QbBpQC2yEoyvVg5+xjOF
+	4Ic+KI4+JFku2+MGafvCzDZ3KmZAS0fY2I4DNgAuiTYEb3QTme+a6pQVTNt6Y8VDkYe
+	KO7sDGxlhAQD83KvzJ1SeulGqhzz+spi60YqoxmA=
+Received: by mx.zohomail.com with SMTPS id 173887441820050.268923216844996;
+	Thu, 6 Feb 2025 12:40:18 -0800 (PST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
+Subject: Re: [PATCH v5 1/3] drm/bridge: synopsys: Add audio support for dw-hdmi-qp
+Date: Thu, 06 Feb 2025 15:40:15 -0500
+Message-ID: <13709044.uLZWGnKmhe@earth>
+In-Reply-To: <db29945e-565a-490f-8a8c-387ecd47a198@cherry.de>
+References: <20250203171925.126309-1-detlev.casanova@collabora.com>
+ <20250203171925.126309-2-detlev.casanova@collabora.com>
+ <db29945e-565a-490f-8a8c-387ecd47a198@cherry.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250206131721.GF2960738@nvidia.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_095428_303063_90DF5413 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250206_124105_449172_7CEBA5F4 
+X-CRM114-Status: GOOD (  45.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,70 +71,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 06, 2025 at 09:17:21AM -0400, Jason Gunthorpe wrote:
-> On Wed, Feb 05, 2025 at 09:30:05PM -0800, Tomasz Jeznach wrote:
-> > > @@ -161,9 +163,8 @@ static int riscv_iommu_queue_alloc(struct riscv_iommu_device *iommu,
-> > >  	} else {
-> > >  		do {
-> > >  			const size_t queue_size = entry_size << (logsz + 1);
-> > > -			const int order = get_order(queue_size);
-> > >  
-> > > -			queue->base = riscv_iommu_get_pages(iommu, order);
-> > > +			queue->base = riscv_iommu_get_pages(iommu, queue_size);
-> > >  			queue->phys = __pa(queue->base);
+Hi Quentin,
+
+On Tuesday, 4 February 2025 04:59:12 EST Quentin Schulz wrote:
+> Hi Detlev,
+> 
+> Just some drive-by comment inline.
+> 
+> On 2/3/25 6:16 PM, Detlev Casanova wrote:
+> > From: Sugar Zhang <sugar.zhang@rock-chips.com>
 > > 
-> > All allocations must be 4k aligned, including sub-page allocs.
+> > Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
+> > 
+> > The register values computation functions (for n) are based on the
+> > downstream driver, as well as the register writing functions.
+> > 
+> > The driver uses the generic HDMI Codec framework in order to implement
+> > the HDMI audio support.
+> > 
+> > Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> > Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> > 
+> >   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 497 +++++++++++++++++++
+> >   1 file changed, 497 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c index
+> > b281cabfe992e..ea5d8599cb56a 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
 > 
-> Oh weird, so it requires 4k alignment but the HW can refuse to support
-> a 4k queue length?
+> [...]
 > 
-
-Spec allows that. Also, hardware accepts only physical page number (so far PAGE_SIZE == 4K
-for riscv) of the base address, ignoring page offset.
-
-> I changed it to this:
+> > +static int dw_hdmi_qp_match_tmds_n_table(struct dw_hdmi_qp *hdmi,
+> > +				   unsigned long pixel_clk,
+> > +				   unsigned long freq)
+> > +{
+> > +	const struct dw_hdmi_audio_tmds_n *tmds_n = NULL;
+> > +	int i;
+> > +
+> > +	for (i = 0; common_tmds_n_table[i].tmds != 0; i++) {
+> > +		if (pixel_clk == common_tmds_n_table[i].tmds) {
+> > +			tmds_n = &common_tmds_n_table[i];
+> > +			break;
+> > +		}
+> > +	}
+> > +
+> > +	if (tmds_n == NULL)
+> > +		return -ENOENT;
+> > +
+> > +	switch (freq) {
+> > +	case 32000:
+> > +		return tmds_n->n_32k;
+> > +	case 44100:
+> > +	case 88200:
+> > +	case 176400:
+> > +		return (freq / 44100) * tmds_n->n_44k1;
+> > +	case 48000:
+> > +	case 96000:
+> > +	case 192000:
+> > +		return (freq / 48000) * tmds_n->n_48k;
+> > +	default:
+> > +		return -ENOENT;
+> > +	}
+> > +}
+> > +
+> > +static u64 dw_hdmi_qp_audio_math_diff(unsigned int freq, unsigned int n,
+> > +				unsigned int pixel_clk)
+> > +{
+> > +	u64 final, diff;
+> > +	u64 cts;
+> > +
+> > +	final = (u64)pixel_clk * n;
+> > +
+> > +	cts = final;
+> > +	do_div(cts, 128 * freq);
+> > +
+> > +	diff = final - (u64)cts * (128 * freq);
+> > +
+> > +	return diff;
 > 
-> +                       queue->base = riscv_iommu_get_pages(
-> +                               iommu, max(queue_size, SZ_4K));
+> I believe
 > 
-
-LGTM
-
-> > >  		} while (!queue->base && logsz-- > 0);
-> > >  	}
-> > > @@ -618,7 +619,7 @@ static struct riscv_iommu_dc *riscv_iommu_get_dc(struct riscv_iommu_device *iomm
-> > >  				break;
-> > >  			}
-> > >  
-> > > -			ptr = riscv_iommu_get_pages(iommu, 0);
-> > > +			ptr = riscv_iommu_get_pages(iommu, PAGE_SIZE);
-> > >  			if (!ptr)
-> > >  				return NULL;
-> > >  
-> > > @@ -698,7 +699,7 @@ static int riscv_iommu_iodir_alloc(struct riscv_iommu_device *iommu)
-> > >  	}
-> > >  
-> > >  	if (!iommu->ddt_root) {
-> > > -		iommu->ddt_root = riscv_iommu_get_pages(iommu, 0);
-> > > +		iommu->ddt_root = riscv_iommu_get_pages(iommu, PAGE_SIZE);
-> > >  		iommu->ddt_phys = __pa(iommu->ddt_root);
-> > >  	}
+> final = (u64)pixel_clk * n;
+> do_div(cts, 128 * freq);
+> diff = final - (u64)cts * (128 * freq);
 > 
-> Should these be SZ_4K as well or PAGE_SIZE?
+> is just an elaborate way of doing
 > 
+> ((u64)pixel_clk * n) % (128 * freq)
+> 
+> ? If that's the case, then I believe do_div(a, b) actually already
+> returns the remainder of a by b.
+> 
+> If that's the case, isn't that function simply:
+> 
+> return do_div(mul_u32_u32(pixel_clk, n), mul_u32_u32(freq, 128))
+> 
+> ?
+> 
+> We could probably replace mul_u32_u32(freq, 128) with freq * 128
+> considering that dw_hdmi_qp_match_tmds_n_table expects freq to be <
+> 192000, so we won't get an overflow with that.
+> 
+> mul_u32_u32(pixel_clk, n) does the u32*u32->u64 without a temporary C
+> variable.
 
-SZ_4K. For now iommu/risc-v hardware always assumes PAGE_SIZE == 4K.
+I tested this and it is indeed doing the same. I'll change it and also change 
+the function return type to u32 as that is what do_div() returns.
+That makes sense as the reminder of a/b can't be wider than the size of b.
 
-> Thanks,
-> Jason
+We just need one variable as the first argument of do_div() is used to store 
+the integer division result.
 
-Thanks,
-- Tomasz
+> [...]
+> 
+> > +static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
+> > +					   struct hdmi_codec_daifmt 
+*fmt,
+> > +					   struct hdmi_codec_params 
+*hparms)
+> > +{
+> > +	u32 conf0 = 0;
+> > +
+> > +	/* Reset the audio data path of the AVP */
+> > +	dw_hdmi_qp_write(hdmi, AVP_DATAPATH_PACKET_AUDIO_SWINIT_P,
+> > GLOBAL_SWRESET_REQUEST); +
+> > +	/* Disable AUDS, ACR, AUDI */
+> > +	dw_hdmi_qp_mod(hdmi, 0,
+> > +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDS_TX_EN | 
+PKTSCHED_AUDI_TX_EN,
+> > +		  PKTSCHED_PKT_EN);
+> > +
+> > +	/* Clear the audio FIFO */
+> > +	dw_hdmi_qp_write(hdmi, AUDIO_FIFO_CLR_P, AUDIO_INTERFACE_CONTROL0);
+> > +
+> > +	/* Select I2S interface as the audio source */
+> > +	dw_hdmi_qp_mod(hdmi, AUD_IF_I2S, AUD_IF_SEL_MSK,
+> > AUDIO_INTERFACE_CONFIG0); +
+> > +	/* Enable the active i2s lanes */
+> > +	switch (hparms->channels) {
+> > +	case 7 ... 8:
+> > +		conf0 |= I2S_LINES_EN(3);
+> > +		fallthrough;
+> > +	case 5 ... 6:
+> > +		conf0 |= I2S_LINES_EN(2);
+> > +		fallthrough;
+> > +	case 3 ... 4:
+> > +		conf0 |= I2S_LINES_EN(1);
+> > +		fallthrough;
+> > +	default:
+> > +		conf0 |= I2S_LINES_EN(0);
+> > +		break;
+> > +	}
+> > +
+> > +	dw_hdmi_qp_mod(hdmi, conf0, I2S_LINES_EN_MSK, 
+AUDIO_INTERFACE_CONFIG0);
+> > +
+> > +	/*
+> > +	 * Enable bpcuv generated internally for L-PCM, or received
+> > +	 * from stream for NLPCM/HBR.
+> > +	 */
+> > +	switch (fmt->bit_fmt) {
+> > +	case SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE:
+> > +		conf0 = (hparms->channels == 8) ? AUD_HBR : AUD_ASP;
+> > +		conf0 |= I2S_BPCUV_RCV_EN;
+> > +		break;
+> > +	default:
+> > +		conf0 = AUD_ASP | I2S_BPCUV_RCV_DIS;
+> > +		break;
+> > +	}
+> > +
+> > +	dw_hdmi_qp_mod(hdmi, conf0, I2S_BPCUV_RCV_MSK | AUD_FORMAT_MSK,
+> > +		  AUDIO_INTERFACE_CONFIG0);
+> > +
+> > +	/* Enable audio FIFO auto clear when overflow */
+> > +	dw_hdmi_qp_mod(hdmi, AUD_FIFO_INIT_ON_OVF_EN, 
+AUD_FIFO_INIT_ON_OVF_MSK,
+> > +		  AUDIO_INTERFACE_CONFIG0);
+> 
+> This is all very I2S-centric while the HDMI controllers on RK3588 do
+> have the ability (according to the TRM) to use S/PDIF instead of I2S. I
+> assume the driver should be able to know which format to use based on
+> simple-audio-card,format property? Is that correct? Then current support
+> which doesn't even check for I2S would be fine and not conflict with a
+> later commit which would add support for S/PDIF? (Essentially asking if
+> we need another DT property for the HDMI controller node or elsewhere to
+> specify which mode to run in instead of expecting it to always be I2S).
+
+The hdmi_codec_daifmt::fmt field already has this information, based on the 
+simple-audio-card,format = "i2s"; field in the device tree.
+
+I could add a condition in dw_hdmi_qp_audio_prepare() to fail with -EINVAL if 
+the devicetree specifies anything else than "i2s" for now.
+
+I'm not willing to implement support for the SPDIF path for now, mainly 
+because there's no need for that yet (I2S works well) and the downstream 
+kernel doesn't implemented it, meaning it hasn't been tested a lot anyway.
+
+Regards,
+Detlev.
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
