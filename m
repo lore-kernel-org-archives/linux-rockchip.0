@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 967E7C0219C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 09:59:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E30BC02196
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 10:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0a9xgXGgh3nMMT7JudYlbgGP+15P6gU7ETV/38saBX4=; b=LEihEo6Elf9R9x
-	nqaBHGQj99valrKDFH9B3MBkSKVztTulW8G1xee5LPm+KeAHRRrOMrvI1kp6rHe1+o97zb8v8+h5+
-	7maA0R5kjJhfIXSXC6FPb9/y7yBPtHgBG8TOt6rwBV9nXBtaVuZHCUCO5HRpSW15zUuXvsXUOxmMK
-	//uYZgHxRNNq6O1oPbkQ/3AOTi5vsaGSlYvKqcbpUeP6INt2tr2uXEVn0897Pn7QpZpFYCcCCiB34
-	GV8PRL7PnjMWJkdBtDM8Sobe06Lg9zlpIbGy42fzMGMxpd8LICW9d/L7fWMsR71NUxzW6p1PwJQjZ
-	3/TQO4KRkPZhfvUrE4Mw==;
+	List-Owner; bh=EYCtUwe0+AVlVhEj6cURanmqvAg6+fHLUpq3GFFy9sE=; b=TO+EZZWW9y9Gf7
+	NBICvrbsqpP+XSSuZAeF9lTz7ADaMXa32/JmUNX3l3r9PgRVw74Utv8ceJ4+aNLdOm99VAwvytT5y
+	eNRtcuJqSSyNdfC0xfbyYKzcHkAPaWssT7ilq4K4Gh6ahOQnvrJzdyGkFvICpeZvd5JPIvpvEdsHO
+	DXFD1LDdpXPs4R5S+yIHa4LtRJIq/uPaOAFS/aZ59zyXbqwWOkfRI7qe1BRDumG5XdZ+F9rP10A/Q
+	SpwCR6Stn1AXrUjaoixoCJEMOEXt45hyiy7+OqbYi40O2x22bBEaMiBsxyNv3NRiUg/4YMU6ii6pG
+	hElVSUJzt9wAteFNrezg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgL8n-0000000982j-0gwN;
-	Fri, 07 Feb 2025 09:59:17 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1tgLJ9-000000099mf-2aYW;
+	Fri, 07 Feb 2025 10:09:59 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgL8k-0000000982E-3QrO
+	id 1tgLJ7-000000099lJ-36oA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Feb 2025 09:59:16 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-e5b41ee3065so1108810276.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Feb 2025 01:59:14 -0800 (PST)
+	Fri, 07 Feb 2025 10:09:59 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id 3f1490d57ef6-e479e529ebcso1398340276.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 07 Feb 2025 02:09:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1738922353; x=1739527153; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1738922997; x=1739527797; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Gf0LrvYcosKWDvDGgr597DQ1T7Qoy8G5hPn243hyGLY=;
-        b=OATXnEdu6fXDJH09b2jEJE4frFlvYStX7JfWbvBR6tZkby7bgKR7HuPyELX7Il97BG
-         XmJEkOq2/l3+HfTM+sj2PHz9DviOe05Iku+edL7vKB3KZP6qSyOKjv7KTfxDMmwHYcQv
-         OCKaAvGrjso34Go4zfiRePvL/1l+Qzr585xGyN7PqGDqNJrYcWLJi8q3ep3CEHxngOdj
-         ZyYcCkMwb41DU0TH5z8cVYgPjKsDYGtuz1uN1e5Lgt7Ewlo57NONxccbXjQx/AeNh+qZ
-         jR2a5HN0uSRbRX34SG+XcHnFQrmmpsuW2LqZHomg/T9anBivsDnsYml+p2hJDCFJ6FTV
-         gHMw==
+        bh=aMlnBxSr88oKxJqvSdzTpvP2j51w5II8vu4/hm//nuA=;
+        b=OKUqr25nAk46HxThKKQ5WcwXGHDJKdY1fuLmb8FEFWVff4hQ8+mQjk7aUNaKMFBQvo
+         /bqXQk9yT0laXHOfWru6BCuzSZk8omg6E2xkK5qDuA+QImM7yOnuUrHxCWqkLSPNMgsI
+         b/1fsWnRbzmgYpNiTsoQuyyR6Ob4pNcaZzt0KXQaVNmJaJSKfyqV14QF8kL3NHWno/oE
+         B5wDBr4uJrodp6MF3PBYkOqTLveo142Q2i4qhxBNw3csTD7G2nR0+LWAzL86xnEVDTuw
+         dRtovHfapRZZXwT0gpkIQVkYptCs1ixI9zmw8qYnbEYTAygWMGJJYjMCYAUqN0ug3b/q
+         6Arw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1738922353; x=1739527153;
+        d=1e100.net; s=20230601; t=1738922997; x=1739527797;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Gf0LrvYcosKWDvDGgr597DQ1T7Qoy8G5hPn243hyGLY=;
-        b=sZ3zxsuGzLFk1oEN1MS9zs93fBt4dKXPhCGAC5I35QI4GtyqpWlXiBieKKvdW508yV
-         RSOrfKQzbgkRU7ZEWXlqN3rg8oGJjDpse4fn+fQ6u3sLebk4U8mRLQe8SMNt7n3+PU8M
-         cpKUSgUAGkt/DMUvub0o5h6bxEWbnMXjFhpAqHdSOooF5V2DBKl0sxP96kNzPIBsTbYr
-         EhP+H08GAmbDvxR8MBLIV7nISyKtl1Z9BieHMQWdhVMaKZGv+1lAomxcOpUlfBMxj8sQ
-         eAXwbmHv+MFEavHDSywLs+7ml5szyl4KmbRKqbFGg5XF0+C8klodmjA+NoMgoy/eeEmc
-         XcBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXcPozhskITkpthogo/0t9atgtG+srlZnRVUW4a5EzufnA04Q3R9HWgjwiHPSJTLo3qVPQHd06/gTwKJaZX7A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxToIQ1lVzz9bA3n2gSw1/tJkzxbJ5x22ui+1H9aYXA9UVw/Njw
-	6LjwGmy+OZ61zex+lDitVxjBi8UFDN5WMLTB0CeXUt0JddJALHaduyOohaSyVVrgN9a3dm7YQor
-	xlxZurXHJ3u17fflt+TFEbmE50rkHBxeAuqT5hQ==
-X-Gm-Gg: ASbGnctL2B2QIwzq4giyIXNX54uIk+nOCk/kiVwRA/k889y3JpwXPgr3QenHheuBKBs
-	LyMPbIzwtQixIyngCP3IbE1IvFYrn8V9LjIYS8sDiTdaWDnwB0BEBeN//I18TEI7IOPhxXexP2g
+        bh=aMlnBxSr88oKxJqvSdzTpvP2j51w5II8vu4/hm//nuA=;
+        b=J9hB7skhpc8mv6b7FuPpY8oRFZ/hyrzyTiDedqcECZKYinEKcqx2wjmddj1i5MhqOo
+         yrZvJe/jYpOdkWo2FFe1juGaK4Aa4IwnCKOrQ3XXpud+iLSgGgVekssFQJnNydQ5VbW1
+         lxWDjH26fxwFRXyhmVMY6C/NPO+HPFo3QYAy385w0peGCuO2YGxjsMXlsUXexAthSWv4
+         j3x7/83/SdWra2WjZ0mMPmq3t4wD/rTbQZq7G2bYMZbNeZ9r8Z72m7mv8ujWNXEgJhPj
+         /axws2m3EN1DK0QqvjSK3acU03pR04kfjdKwz4YpuK6txMNEnluTjDZPYySpvAcGLdBj
+         fySQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVt3esd8U6qKL4OdPrDjtBuf76O5l9M1xWViLMdxGcQ3UVZU3mA3SYkLijxQ9Sg/TerzLfJirgqI8rfw57JTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBzzKeaBMGuGTEVYcDv88pno3PFAVNHbWNtTQDsgFz4/Oy9SX/
+	eF1mSr1BSr86PcKOktMBNV4TDY6UviK7cGqrefCvhQ2qDz2nbxLxlYv1vM+/haZ0hl7/jaYsLdI
+	5H62BL1VYuQIYJrtadK4CpXlmmTXYIYMlTDlSng==
+X-Gm-Gg: ASbGncvV7rUSWd6e+71CVO/3StyLuLreGZ0B/7/JP6aMe9JifWgWjNa7qGeDBfL36Tp
+	nrBdA6IcbQYrTKIUyw3nbwXhoie8R7k5ItGm7m27BgkHM9yQCRTSxXVpvpu15ktcMMLN1Mjbd+A
 	==
-X-Google-Smtp-Source: AGHT+IH5KSvolicRfu4qOrJsdB4fniYks3xqRvcTzEfp0JhqQeemLBX3Vf8Ymk/fgFqeo0ozvHmgtS8YxYLWOpq57BU=
-X-Received: by 2002:a05:6902:2843:b0:e57:442a:befd with SMTP id
- 3f1490d57ef6-e5b4626d7b2mr1976472276.32.1738922353648; Fri, 07 Feb 2025
- 01:59:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHoiInh1hUMnE6qERiHNS3cS8CKAY9eNIzyp9FkL/HZJzjp42lBKNL5doKpGdV1ysL98ISo0TrNPBDVJXuqONw=
+X-Received: by 2002:a05:6902:1147:b0:e5b:44a6:6a49 with SMTP id
+ 3f1490d57ef6-e5b461e3b73mr2069997276.27.1738922996853; Fri, 07 Feb 2025
+ 02:09:56 -0800 (PST)
 MIME-Version: 1.0
-References: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com> <1738736156-119203-5-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1738736156-119203-5-git-send-email-shawn.lin@rock-chips.com>
+References: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com> <1738736156-119203-7-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1738736156-119203-7-git-send-email-shawn.lin@rock-chips.com>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 7 Feb 2025 10:58:37 +0100
-X-Gm-Features: AWEUYZl9lFG-fTMV-hDb24r-jQPgTOeukyKtawA9RdKYwhSFpnLRSC7wetD3j4A
-Message-ID: <CAPDyKFrHtB=986QicwCLbRYRmwZg9fT+cYxCYgwRN37w=D4nPw@mail.gmail.com>
-Subject: Re: [PATCH v7 4/7] pmdomain: rockchip: Add smc call to inform firmware
+Date: Fri, 7 Feb 2025 11:09:20 +0100
+X-Gm-Features: AWEUYZlh5I7dXTfcGIsd-Bb5BhscOMYbYEdqLf2ekINZFP8SE-lE7AuxpmHbrEo
+Message-ID: <CAPDyKFpzfyacXidTwU1ec9L4058k3Mrx43MS0JTnukgwqci6BA@mail.gmail.com>
+Subject: Re: [PATCH v7 6/7] scsi: ufs: rockchip: initial support for UFS
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Rob Herring <robh+dt@kernel.org>, 
 	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, 
@@ -83,8 +83,8 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-pm@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_015914_865058_3AA66E23 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20250207_020957_784733_793B8710 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,73 +103,85 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Wed, 5 Feb 2025 at 07:18, Shawn Lin <shawn.lin@rock-chips.com> wrote:
 >
-> Inform firmware to keep the power domain on or off.
+> RK3576 SoC contains a UFS controller, add initial support for it.
+> The features are:
+> (1) support UFS 2.0 features
+> (2) High speed up to HS-G3
+> (3) 2RX-2TX lanes
+> (4) auto H8 entry and exit
 >
-> Suggested-by: Ulf Hansson <ulf.hansson@linaro.org>
+> Software limitation:
+> (1) HCE procedure: enable controller->enable intr->dme_reset->dme_enable
+> (2) disable unipro timeout values before power mode change
+>
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+One minor comment, see below. Nevertheless, feel free to add:
 
 Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
+[...]
+
+> +#ifdef CONFIG_PM_SLEEP
+> +static int ufs_rockchip_system_suspend(struct device *dev)
+> +{
+> +       struct ufs_hba *hba = dev_get_drvdata(dev);
+> +       struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
+> +       int err;
+> +
+
+The below code seems to require that the device is runtime resumed.
+Maybe that is guaranteed by the upper UFS layer, I don't know. If not,
+we need a pm_runtime_get_sync() here - and thus a corresponding
+pm_runtime_put_noidle() in ufs_rockchip_system_resume().
+
+> +       /*
+> +        * If spm_lvl is less than level 5, it means we need to keep the host
+> +        * controller in powered-on state. So device_set_awake_path() is
+> +        * calling pm core to notify the genpd provider to meet this requirement
+> +        */
+> +       if (hba->spm_lvl < UFS_PM_LVL_5)
+> +               device_set_awake_path(dev);
+> +
+> +       err = ufshcd_system_suspend(dev);
+> +       if (err) {
+> +               dev_err(hba->dev, "UFSHCD system susped failed %d\n", err);
+> +               return err;
+> +       }
+> +
+> +       clk_disable_unprepare(host->ref_out_clk);
+> +
+> +       return 0;
+> +}
+> +
+> +static int ufs_rockchip_system_resume(struct device *dev)
+> +{
+> +       struct ufs_hba *hba = dev_get_drvdata(dev);
+> +       struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
+> +       int err;
+> +
+> +       err = clk_prepare_enable(host->ref_out_clk);
+> +       if (err) {
+> +               dev_err(hba->dev, "failed to enable ref_out clock %d\n", err);
+> +               return err;
+> +       }
+> +
+> +       return ufshcd_system_resume(dev);
+> +}
+> +#endif
+> +
+> +static const struct dev_pm_ops ufs_rockchip_pm_ops = {
+> +       SET_SYSTEM_SLEEP_PM_OPS(ufs_rockchip_system_suspend, ufs_rockchip_system_resume)
+> +       SET_RUNTIME_PM_OPS(ufs_rockchip_runtime_suspend, ufs_rockchip_runtime_resume, NULL)
+> +       .prepare         = ufshcd_suspend_prepare,
+> +       .complete        = ufshcd_resume_complete,
+> +};
+> +
+
+[...]
+
 Kind regards
 Uffe
-
-> ---
->
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5:
-> - fix a compile warning
->
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
->
->  drivers/pmdomain/rockchip/pm-domains.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index cb0f938..49842f1 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -5,6 +5,7 @@
->   * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
->   */
->
-> +#include <linux/arm-smccc.h>
->  #include <linux/io.h>
->  #include <linux/iopoll.h>
->  #include <linux/err.h>
-> @@ -20,6 +21,7 @@
->  #include <linux/regmap.h>
->  #include <linux/mfd/syscon.h>
->  #include <soc/rockchip/pm_domains.h>
-> +#include <soc/rockchip/rockchip_sip.h>
->  #include <dt-bindings/power/px30-power.h>
->  #include <dt-bindings/power/rockchip,rv1126-power.h>
->  #include <dt-bindings/power/rk3036-power.h>
-> @@ -540,6 +542,7 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
->         struct generic_pm_domain *genpd = &pd->genpd;
->         u32 pd_pwr_offset = pd->info->pwr_offset;
->         bool is_on, is_mem_on = false;
-> +       struct arm_smccc_res res;
->
->         if (pd->info->pwr_mask == 0)
->                 return;
-> @@ -567,6 +570,11 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
->                         genpd->name, is_on);
->                 return;
->         }
-> +
-> +       /* Inform firmware to keep this pd on or off */
-> +       arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
-> +                       pmu->info->pwr_offset + pd_pwr_offset,
-> +                       pd->info->pwr_mask, on, 0, 0, 0, &res);
->  }
->
->  static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
-> --
-> 2.7.4
->
 
 _______________________________________________
 Linux-rockchip mailing list
