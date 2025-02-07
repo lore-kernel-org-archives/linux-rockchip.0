@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818EDC02194
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 14:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC541C02194
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=relsfhYadzmebUsxQMkAueSO1JiaygYaoI+z3cmPoBM=; b=lL5usSbwFDt2au
-	AxJcTbQTm94RGG5lTfZ/gdEarepp9gvowj01c/n3uTKotjIH8iIb8fnaq19E+DaYw0d+v+d+U/cvg
-	5GHgUnFTLy2EUlT7tobcvWRsQHGylsuYwQpGfn5A396TO50WThDqN+GLUferUKdzEcu22iSTK1gIE
-	QK+J4n4FSGDZnNvVoa1kHUNlS4LRV/NMi+P3AcTxu82XruRmPyx3gFZOAwS7gNojqidKwKTFzYZiU
-	0Z5fnLRMG2+NDwxkgGVHnWAH1x6UK3PGYMFpxI5laYQb1/7Y3YFbYf/6O4vWmbFyaWvWXL98Fd6op
-	+2FIA1s3d8ma0T4fsgRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EiJLCqjpKA5+jp+gx92l9YO/GbDQuYRB75en2f8yI8I=; b=GYWd/jGjZsr10GUzWLwtDKrnAd
+	xRXlCx8E5GaLhbXmEyblcl4OgBiWPPh3b2NG2nigb0oQcojDxFVXamp/niOMesJ1cNvWElfuXt9sL
+	MMB1G4d6i56vkoe/xSfl8xaWspighMrQUFMbKj5h+NKoOBcQmaS9R1KxWt9p0yNo7xAMTBagmDD3L
+	eS2LDXgyhD9veQpbKX0hUEfHyNd7DNgySA0fJ9rlPpjFB1gKyFaWiN8j4S7uhJD5L3TJ2a+QdGHZ2
+	pI+++A/5SOPmRH6GFVg+s5lq9n1G6O53ty19JXRZcf1s+jsPJnOzlj/alR52Rqv7mq3zbvkNWiaVA
+	wleafcRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgPX1-00000009typ-3NbL;
-	Fri, 07 Feb 2025 14:40:35 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tgPsJ-00000009zUP-2WSa;
+	Fri, 07 Feb 2025 15:02:35 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgPVc-00000009tjJ-1cNx;
-	Fri, 07 Feb 2025 14:39:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5FAC5A43565;
-	Fri,  7 Feb 2025 14:37:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19682C4CED1;
-	Fri,  7 Feb 2025 14:39:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1738939146;
-	bh=M+Hy65/SS+oURgcqCZr+Z443JfLpEZaU5/hVEXAJagI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=h7sgOyVc6O+HddlDp7gD44CwMMMl1vCAgJ/RCeC1d7HyvCY4nvqvDaIMEtrJyF17p
-	 aLgdqsohYS/OYxLwxJBjCEoasCq6Mi9l8L2TfyUrnKFO1RU0tjmw3CNlods3W+vvu9
-	 A2ZlCZeN+HylWM8RUvUI5B07Bne/BdO+RUe3QM9b0vvgmC72rZMRQBxEolLbwRISLY
-	 GPfWIAWgvpqXevZlMbqAfcwCKWMfQ4ahX0+lHaQ+AWkfkVGka/RjtejKLxc9LaL86E
-	 SQKT3l8KFQkAGmOYO9iokvZf8756SCKMo7RPFtmBCYkFeHt9JQtnsOp6SvUsFLT/NP
-	 8Z+nVrkv1eVUA==
-From: Niklas Cassel <cassel@kernel.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Niklas Cassel <cassel@kernel.org>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588 in PCIe endpoint mode
-Date: Fri,  7 Feb 2025 15:39:01 +0100
-Message-ID: <20250207143900.2047949-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.48.1
+	id 1tgPqu-00000009z90-23AZ;
+	Fri, 07 Feb 2025 15:01:09 +0000
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3209; i=cassel@kernel.org; h=from:subject; bh=M+Hy65/SS+oURgcqCZr+Z443JfLpEZaU5/hVEXAJagI=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNKXSbMI/dg9RUe1+YdRhaHjg9BZ2w+556eU1M+oYJK5m vBsNpNCRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACYizsDwV74qNP7RafYnK+Uz X5VYCfAfDfv257FWzqdbM81lPLJ3L2f4pz/t6s9VYS69nBVOxyZoB4QcPKISli77ccrG6dlfHxm J8wMA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1738940465;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MdSSRS0zzr9cmqiYQNz4jFGUuLv5U2TbTEH1JId0mac=;
+	b=ppTUSEKX3LFAhWXfNk5cTq9naAAmq9H2bVF8nkbmNHXync3pnwkkaahMU2MdwxSBVoWVx7
+	x+xtYB6tlHlhrsl0Xx1AxkpI69AN554BVqZ74zzB9x9Vq90G/hfYDI9uUDhuFaSuzZ0MAc
+	5QFeVCzpDuudDqP5kPv2+xQL8hY+f0cjYZRnNvThfYLstaGKLWMO2OT49tgV040RwkrAFT
+	zj0E9wxOM+kXqEaMznZgJPj+BIXezfy7lpRjyF6m4/Fj8djCGBDGR7ayj0FIkipg8kDm+r
+	3ycofI0/ZtA4oWwRYwIkkoHlEff5CqhLIgc7erzVsbE8go9n7PrzmAUSP2gm2w==
+Date: Fri, 07 Feb 2025 16:01:04 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Maximilian Weigand <mweigand@mweigand.net>, Marek Kraus <gamiee@pine64.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] arm64: dts: rockchip: add 'chassis-type' property on
+ PineNote
+In-Reply-To: <20250207111157.297276-1-didi.debian@cknow.org>
+References: <20250207111157.297276-1-didi.debian@cknow.org>
+Message-ID: <502523554b482a2e10d85d37761932a0@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_063908_549997_1C30D572 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20250207_070108_706948_C5350A1D 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,81 +69,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
-on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
-(when all PCIe controllers are running in Root Complex mode) and in the
-case when running the pcie3x4 PCIe controller in Endpoint mode.
+Hello Diederik,
 
-There have been no issues detected when running the PCIe controllers in
-Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
-for each PCI device enumerated on the bus, including the root port itself.
+On 2025-02-07 12:11, Diederik de Haas wrote:
+> Add the recommended chassis-type root node property so userspace can
+> request the form factor and adjust their behavior accordingly.
+> 
+> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+> Link: 
+> https://github.com/devicetree-org/devicetree-specification/blob/main/source/chapter3-devicenodes.rst#root-node
 
-However, when running the pcie3x4 PCIe controller in Endpoint mode, we
-will only add a single SID to the IOMMU (the SID specified in the iommus
-DT property).
+Maybe the Link tag should be converted into a "[1]" reference?
+To me, this is more like a reference for this DT addition.
 
-The enablement of IOMMU in endpoint mode was verified on setup with two
-Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
+In general, references can also be placed closer to the contents
+they back up, which isn't possible with Link tags, but of course
+that doesn't matter much in this case.
 
-A Root Complex sending a TLP to the Endpoint will have Requester ID set
-to the BDF of the initiator. On the EP side, the Requester ID will then
-be used as the SID. This works fine if the Root Complex has a BDF that
-matches the iommus DT property, however, if the Root Complex has any other
-BDF, we will see something like:
-arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
-on the endpoint side.
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> index 2d3ae1544822..3613661417b2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> @@ -9,6 +9,8 @@
+>  #include "rk3566.dtsi"
+> 
+>  / {
+> +	chassis-type = "tablet";
+> +
+>  	aliases {
+>  		mmc0 = &sdhci;
+>  	};
 
-For PCIe controllers running in endpoint mode that always uses the
-incoming Requester ID as the SID, the iommus DT property simply isn't
-a viable solution. (Neither is iommu-map a viable solution, as there is
-no enumeration done on the endpoint side.)
+The patch is obviously fine.  Thanks for the patch, and please feel
+free to include, regardless of the note above, my:
 
-Thus, partly revert commit da92d3dfc871 ("arm64: dts: rockchip: enable the
-mmu600_pcie IOMMU on the rk3588 SoC") by disabling the PCI IOMMU when
-running the pcie3x4 PCIe controller in Endpoint mode.
-
-Since the PCI IOMMU is working as expected in the normal case, keep it
-enabled when running all PCIe controllers in Root Complex mode.
-
-Fixes: da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC")
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi           | 1 -
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso | 4 ++++
- 2 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 42b57e27ee4c..b5feefda9d2d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -215,7 +215,6 @@ pcie3x4_ep: pcie-ep@fe150000 {
- 		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
- 				  "dma0", "dma1", "dma2", "dma3";
- 		max-link-speed = <3>;
--		iommus = <&mmu600_pcie 0x0000>;
- 		num-lanes = <4>;
- 		phys = <&pcie30phy>;
- 		phy-names = "pcie-phy";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
-index 672d748fcc67..f229cb49da68 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
-@@ -23,3 +23,7 @@ &pcie3x4_ep {
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
- };
-+
-+&mmu600_pcie {
-+	status = "disabled";
-+};
--- 
-2.48.1
-
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
