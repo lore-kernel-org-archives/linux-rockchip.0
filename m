@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1221BC02194
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 18:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A5EC0219D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 18:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Wwica3EzrVh/bjhosB1f/h8KIm1ZNY4dqkI1H3aRWJw=; b=XYdL9uIGCZdy4K
-	kQP8IGGWlaOAvs1dsqwmIbX3I96BJ7DJ7aYof8ky0WPjulSd6+njRjceCf0YPnpPASfsLRNHLFEN2
-	m4JBjqisu627pcPALWT6msnxRqZeQNQTPvdFVMsQtg3uyYtb7jlScFwcpdnaX0r+7rxVP31dN3u8B
-	J81WW/QEV5DiXLAb+61nsWsDVXVnl1v5CgBqDkOOWETmu1iEZwNBjVVP0DEGZhjPio5OvuSlHX4Uq
-	q0EOnHMN2ozNbz7cqP6bh/9Yjbs5vMaqh/D004OT7tIX71tgEoVY0rj4jGdgmSKoSieBhe+II32WO
-	sciL7DgUu0j842130gBw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tJUCj8SLUzApMOJ4rKz5U12xNNDQJEVu/fQd+0tlXV0=; b=uvz9uFyaxEoaOMGyGc4yrKES8m
+	lgkxTAu+kwCibZj6MdgFlwCtR1LeONfMypxvcbprTbyxC2+Sz3EVmEOPtruq1IYDsBV/lQ6+dWB1a
+	9+a0zJ8gmlVdYj7RQlejNF8F1NHDsHtLqIRSkLcLduA7LCkW6EjYOdPmwedWjCbnykOKv9R+BQcc/
+	ctsfybn3P1HWuVBZt3Z8F3T6FxtyY95+HAdQ9spZfM+wAgqJG5mJ3J/mjqIOy+/HiPdk1PBnM2JQx
+	NDd+pmTy6ia/r0HLpoIw9AS/wEdL+YA1tFaJXaZ2ne46dHhLU7HN2EwbDLFqwifAlxTa4ScekodXd
+	ZSwxxRlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgT30-0000000AgxK-4BxE;
-	Fri, 07 Feb 2025 18:25:51 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([185.203.201.7])
+	id 1tgTN1-0000000AmAX-3iSn;
+	Fri, 07 Feb 2025 18:46:31 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgT0F-0000000AgC1-3iO2
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Feb 2025 18:23:01 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <l.stach@pengutronix.de>)
-	id 1tgT05-0006i3-Ft; Fri, 07 Feb 2025 19:22:49 +0100
-Received: from dude02.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::28])
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.96)
-	(envelope-from <l.stach@pengutronix.de>)
-	id 1tgT03-00418A-2d;
-	Fri, 07 Feb 2025 19:22:47 +0100
-From: Lucas Stach <l.stach@pengutronix.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Damon Ding <damon.ding@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de,
-	patchwork-lst@pengutronix.de
-Subject: [PATCH 1/2] drm/rockchip: vop: remove redundant condition check
-Date: Fri,  7 Feb 2025 19:22:46 +0100
-Message-Id: <20250207182247.215537-1-l.stach@pengutronix.de>
-X-Mailer: git-send-email 2.39.5
+	id 1tgRtl-0000000ARZZ-1pCx;
+	Fri, 07 Feb 2025 17:12:14 +0000
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: l.stach@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1738948331;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TJez20VszaxXxj16JRKu4nw9gm00N8RRdq6k9u0AALs=;
+	b=V5/suE0s6oboVud4LDBpamVYDrXqsi8RJPxWLTE2+OK9RWMpYDTiGsmDcSVqaI3eWFAz4h
+	4gKGUmUH0lriTYz6mztqG53hyQadYcUVIBq2OfILB90liak70DL9Rk2OiSI6CNflipScd4
+	PPtIqyvwPkfP1Zuioojr8i7tFgGcbscIdQubYhwO5xrQRUH5PnZ9BI4/15+h4fJgqKGn0R
+	Pumgn53Y2HSZ5pOkiIZTp0SEz3u2zWAcnMMpru4gbCFn3V9mEpMCoZobzcoZuq8ETUuAyQ
+	1BoJc/fDRKh6YHfHIUmZ0NvUcRB1pep8rK/8vX/P6b7ICZdmZVXZMjqq8Bzq6A==
+Date: Fri, 07 Feb 2025 18:12:10 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Maximilian Weigand <mweigand@mweigand.net>, Marek Kraus <gamiee@pine64.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] arm64: dts: rockchip: add 'chassis-type' property on
+ PineNote
+In-Reply-To: <D7MD194WS7UL.FT324IUB9BIA@cknow.org>
+References: <20250207111157.297276-1-didi.debian@cknow.org>
+ <502523554b482a2e10d85d37761932a0@manjaro.org>
+ <D7MD194WS7UL.FT324IUB9BIA@cknow.org>
+Message-ID: <97df4fc0db4bf43a2a3f2d4d110e3105@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_102259_924360_C18E7E84 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250207_091213_636150_B7374344 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,42 +71,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of checking the same thing twice in a row, fold the second
-condition into the first clause.
+On 2025-02-07 17:39, Diederik de Haas wrote:
+> On Fri Feb 7, 2025 at 4:01 PM CET, Dragan Simic wrote:
+>> On 2025-02-07 12:11, Diederik de Haas wrote:
+>>> Add the recommended chassis-type root node property so userspace can
+>>> request the form factor and adjust their behavior accordingly.
+>>> 
+>>> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+>>> Link:
+>>> https://github.com/devicetree-org/devicetree-specification/blob/main/source/chapter3-devicenodes.rst#root-node
+>> 
+>> Maybe the Link tag should be converted into a "[1]" reference?
+>> To me, this is more like a reference for this DT addition.
+>> 
+>> In general, references can also be placed closer to the contents
+>> they back up, which isn't possible with Link tags, but of course
+>> that doesn't matter much in this case.
+> 
+> I generally use the "[1]" format when linking to specific claims, which
+> I could've done wrt the "recommended". But I considered this a general
+> background link and then I prefer to do it via a Link tag.
+> 
+> If requested by a maintainer I'll change it ofc, but otherwise I prefer
+> to keep it as is.
 
-Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Indeed, in this case it's pretty much irrelevant which format is used.
+In fact, it may look nicer to use a Link tag, because there are only
+a few lines in the patch description in total. :)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 57747f1cff26..7f5fbea34951 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -733,11 +733,10 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	WARN_ON(vop->event);
- 
--	if (crtc->state->self_refresh_active)
-+	if (crtc->state->self_refresh_active) {
- 		rockchip_drm_set_win_enabled(crtc, false);
--
--	if (crtc->state->self_refresh_active)
- 		goto out;
-+	}
- 
- 	mutex_lock(&vop->vop_lock);
- 
-
-base-commit: 2014c95afecee3e76ca4a56956a936e23283f05b
--- 
-2.48.1
-
+My comment was more about longer commit/patch descriptions with multiple
+references, which should benefit from placing references closer to the
+backed-up contents using the "[*]" layout, instead of relying on Link
+tags to bunch it all together at the end of the description.
 
 _______________________________________________
 Linux-rockchip mailing list
