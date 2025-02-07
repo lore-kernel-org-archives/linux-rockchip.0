@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC541C02194
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB465C02194
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EiJLCqjpKA5+jp+gx92l9YO/GbDQuYRB75en2f8yI8I=; b=GYWd/jGjZsr10GUzWLwtDKrnAd
-	xRXlCx8E5GaLhbXmEyblcl4OgBiWPPh3b2NG2nigb0oQcojDxFVXamp/niOMesJ1cNvWElfuXt9sL
-	MMB1G4d6i56vkoe/xSfl8xaWspighMrQUFMbKj5h+NKoOBcQmaS9R1KxWt9p0yNo7xAMTBagmDD3L
-	eS2LDXgyhD9veQpbKX0hUEfHyNd7DNgySA0fJ9rlPpjFB1gKyFaWiN8j4S7uhJD5L3TJ2a+QdGHZ2
-	pI+++A/5SOPmRH6GFVg+s5lq9n1G6O53ty19JXRZcf1s+jsPJnOzlj/alR52Rqv7mq3zbvkNWiaVA
-	wleafcRA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=COptEGBxrrstn9UZ3cWGh67K/xk1rRmwkTL0hI2YrAE=; b=mNFwgLQR0WtRSE
+	xSbFeHgdbCe8OdqZcuzcl1ZfaasQwQzcO0nqJPYqpYsaa8VZf+7CwPMGX4W5Hw2boBNFvgXEf5Xm3
+	GQ53l81nfTZfvSTmhazvKTTNDUH+lDSQZAGg6LfE8NJYW3D14wMq60aSeUjT4/lzZAXw8aAYlMpeY
+	biV++bAnOswSqPfZ0benpcYM2jL765qNYznmYsD86TUpA7sTmPGN2BdOHN/TXxDgd2b64hbiNimGj
+	g4iIssZo9carEXi2D+Uu9HgQ5OskIu4d/6gSRNMoqlQAq+vOaxV5WYqUdUCsXnVQ8jcE76pjm6AiO
+	ahUPO0qqqt0nsAWB4M9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgPsJ-00000009zUP-2WSa;
-	Fri, 07 Feb 2025 15:02:35 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tgQG4-0000000A4Bb-3wxS;
+	Fri, 07 Feb 2025 15:27:08 +0000
+Received: from smtp-8fab.mail.infomaniak.ch ([83.166.143.171])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgPqu-00000009z90-23AZ;
-	Fri, 07 Feb 2025 15:01:09 +0000
+	id 1tgQ9Q-0000000A2Kb-0LUs
+	for linux-rockchip@lists.infradead.org;
+	Fri, 07 Feb 2025 15:20:18 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YqHhs2yJGzPtl;
+	Fri,  7 Feb 2025 16:20:13 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YqHhr27xPznW7;
+	Fri,  7 Feb 2025 16:20:12 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 07 Feb 2025 16:19:59 +0100
+Subject: [PATCH v5 2/4] arm64: dts: rockchip: add overlay test for Edgeble
+ NCM6A
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1738940465;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MdSSRS0zzr9cmqiYQNz4jFGUuLv5U2TbTEH1JId0mac=;
-	b=ppTUSEKX3LFAhWXfNk5cTq9naAAmq9H2bVF8nkbmNHXync3pnwkkaahMU2MdwxSBVoWVx7
-	x+xtYB6tlHlhrsl0Xx1AxkpI69AN554BVqZ74zzB9x9Vq90G/hfYDI9uUDhuFaSuzZ0MAc
-	5QFeVCzpDuudDqP5kPv2+xQL8hY+f0cjYZRnNvThfYLstaGKLWMO2OT49tgV040RwkrAFT
-	zj0E9wxOM+kXqEaMznZgJPj+BIXezfy7lpRjyF6m4/Fj8djCGBDGR7ayj0FIkipg8kDm+r
-	3ycofI0/ZtA4oWwRYwIkkoHlEff5CqhLIgc7erzVsbE8go9n7PrzmAUSP2gm2w==
-Date: Fri, 07 Feb 2025 16:01:04 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Maximilian Weigand <mweigand@mweigand.net>, Marek Kraus <gamiee@pine64.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] arm64: dts: rockchip: add 'chassis-type' property on
- PineNote
-In-Reply-To: <20250207111157.297276-1-didi.debian@cknow.org>
-References: <20250207111157.297276-1-didi.debian@cknow.org>
-Message-ID: <502523554b482a2e10d85d37761932a0@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Message-Id: <20250207-pre-ict-jaguar-v5-2-a70819ea0692@cherry.de>
+References: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
+In-Reply-To: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jagan Teki <jagan@edgeble.ai>, Niklas Cassel <cassel@kernel.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Dragan Simic <dsimic@manjaro.org>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_070108_706948_C5350A1D 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20250207_072016_250989_9EDBC643 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,51 +66,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-On 2025-02-07 12:11, Diederik de Haas wrote:
-> Add the recommended chassis-type root node property so userspace can
-> request the form factor and adjust their behavior accordingly.
-> 
-> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> Link: 
-> https://github.com/devicetree-org/devicetree-specification/blob/main/source/chapter3-devicenodes.rst#root-node
+The Edgeble NCM6A can have WiFi modules connected and this is handled
+via an overlay (commit 951d6aaa37fe ("arm64: dts: rockchip: Add Edgeble
+NCM6A WiFi6 Overlay")).
 
-Maybe the Link tag should be converted into a "[1]" reference?
-To me, this is more like a reference for this DT addition.
+In order to make sure the overlay is still valid in the future, let's
+add a validation test by applying the overlay on top of the main base
+at build time.
 
-In general, references can also be placed closer to the contents
-they back up, which isn't possible with Link tags, but of course
-that doesn't matter much in this case.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/Makefile | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> ---
->  arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> index 2d3ae1544822..3613661417b2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> @@ -9,6 +9,8 @@
->  #include "rk3566.dtsi"
-> 
->  / {
-> +	chassis-type = "tablet";
-> +
->  	aliases {
->  		mmc0 = &sdhci;
->  	};
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 534e70a649eeada7f9b6f12596b83f5c47b184b4..02f98abe1df10f44f2ac27ea5f6c6e6c6334724e 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -192,3 +192,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
+ rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
+ 	rk3568-wolfvision-pf5-display-vz.dtbo \
+ 	rk3568-wolfvision-pf5-io-expander.dtbo
++
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
++rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
++	rk3588-edgeble-neu6a-wifi.dtbo
 
-The patch is obviously fine.  Thanks for the patch, and please feel
-free to include, regardless of the note above, my:
+-- 
+2.48.1
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
