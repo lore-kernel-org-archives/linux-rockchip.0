@@ -4,97 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165AAC02194
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E12BEC0219C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 16:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zBmvYyUQ8ro53/0HVSN5dz0xRJTC06qRt7F0jiFEVIE=; b=k95s7gk8nTi+mY
-	+jB6drCDh0lZmqvGde5T03v6Q9cmetsRjw5XTTxf5pFaufrOBEoTqb6xR4VDUd3lfk+rnd5ATX6qh
-	Zk03HFp+n2gBKpo1FJgaWeYFCUUg900YK079g5UWot71pNZwcd7qJn4qqYJxqMEJGfTV9PLp6HubZ
-	xu6HLe66dZUtg/8v62JVEImfyc/cNhj0yHNfaISSdrcb1D7QpcvmJ3JsAg58K01RpBEuPveT4nfMg
-	IO5GZWwfPhOkcE38nfAINHD9k8ADedh8yRRzqBWoSUADpTc5VhdaAOH1G2vk1feYy/6ZWcxjtw8u+
-	EwIKs2+oIUVMyOGeBiJw==;
+	List-Owner; bh=zdJ597LFw9n1OvQs7wo6be4fJNTtKx0kNoeD7D9sKh8=; b=qZjWgHr1isvwbe
+	USVRHQTOS4Kd7i3FSQj9dPUoG8csFOqJq1ei4pvyjKxItDdMmbjEb5UnWjOM9dulckYGKDX9hcQ8z
+	AArdjTHRnK5amIn9q93BDVsJbs6jVtj+9BBmg8/brbL5rdKnaX1if5p9uKi9TRQAtSJWCTcQDNs/r
+	sHrxYf6U5m6vUJ4RyY+EOYr2ERg6zpJXRKgfw5IL2Uv0CtdSAyGDKJAkpuX6lh1ZXoNP4SF+CyIu9
+	udMWXLEIC0gsNAJUP2bHSH5RuIzrPzcvYwpN9cX3w3ttc57e2tT1HzQ+tCnK7zkSAhjMBbpj14cib
+	vRSvgXPMaag/ddrd7x+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQUv-0000000A7oz-1qZC;
-	Fri, 07 Feb 2025 15:42:29 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1tgQtl-0000000ADk4-0QAo;
+	Fri, 07 Feb 2025 16:08:09 +0000
+Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQGR-0000000A4NN-16hF;
-	Fri, 07 Feb 2025 15:27:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1738942051; x=1770478051;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=6GE9Dr6wuDcMJE5qZBlWMnYEgJHzTHm8FhWdCrRJ3Gs=;
-  b=W7MwL0Dj+hB2ChFDCCj9fh74l8avilohF5itG0F7PhH6wGZRMjbwRL/S
-   S97M4titlUb2yMCSBw65v+MPfr6VgriWZDqClmLFR5liPa16NuUnBSQwm
-   Cw24CJD5B1k7gyLzQYT18eDz+aQrXMys4USBHmNcb1mImZaefFOPBgOkg
-   EqFu2lsu2VM67Q3mBzEZ1fSh7gwNMaVMglCE75BPdIJwcOD5VZcRVJB2E
-   khIHT+WqaXFnDdhaDYbcfOAueKe0gZ2rZjFerz7wQ7mJNHfDPSIe4f784
-   BmD1ljs2uGkJC7N1ATivYcrQBR4S2NUo++6nOqz9VRgEkfE7/vhanAMwr
-   g==;
-X-CSE-ConnectionGUID: POTIAYVzSfe5usv5kPH0/Q==
-X-CSE-MsgGUID: UColjF/zT8ipKqd4vddTew==
-X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="42426787"
-X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; 
-   d="scan'208";a="42426787"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Feb 2025 07:27:26 -0800
-X-CSE-ConnectionGUID: 0SbW1BpCT1KUK1j159TXaQ==
-X-CSE-MsgGUID: dTs5T6O9TJ6I7nDWk0GB7g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; 
-   d="scan'208";a="116556719"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 07 Feb 2025 07:27:21 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tgQGD-000yWJ-2O;
-	Fri, 07 Feb 2025 15:27:17 +0000
-Date: Fri, 7 Feb 2025 23:27:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1tgQqj-0000000AD8U-2NLl;
+	Fri, 07 Feb 2025 16:05:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cF064I3pfa2T0dVSWmKSVgw1xN21ux40bYKvn0KA9pqpeXBDa1ZZd6WNUahSSrwJ2TsnrIH+xK2MN3wHGgDfr6NfkJotICOYumcQRgPDR1qWNDx1dRyPFbFRyUBCfHf2OKcqoCv6RbZO7yos5gB402XKymjmRnE2FrVyDRviQCk8WGWxv2KH7X0YL8O4ffn6qb/YcIlcCJ6x7SFklyBq9JAhYxvxoQZpRe03mlIx8L0MXALBeyYpygxc3LVi3z5ZWfgpfuMKsClxAy7NThkhasUGNnfnNEJzawL4Kpw09ZebGanOTzNaZy+WfGcaDWiMKt9ranpVw21sNs8HNAfEOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+oLQeMbJifdne4SBDc1v0kcVsA3kayRbQPRLmAZmH6g=;
+ b=JTev3BWAg6FmTnwkOXP5m6WzbOhVstjB9NLJ7yKwJBMmKmG8f5JoOrz9laGye+qEXIpBlOJjZfQIoiyWsnidrNlYSnP5o8sTarOhGd5aMHNBt0e/zRAqBB0+69KSdJBuOgKolg7k19kQXDngdMKJCITPsSczR8hIhDTUxBnUiaOcywYGKS4LG9RwFRYVU6uu/3L/tAwFuo4x2eiTsUatQIPtd+cxZuEgdF1UIKaaY45kjsQ9t0GfLEKKR0VslxNggaQdykl8CgMYjETJ+9SvKrN+i5HYHshq3mpUcFhkic+Pnxi+qOUIB44AVuteHdvLN3EPd6N5HiUv26FVIl4fpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+oLQeMbJifdne4SBDc1v0kcVsA3kayRbQPRLmAZmH6g=;
+ b=CuS4COOjFY9COKdLxfXb3gERXUdQtJ0wEpxW3sTUAgPAj1op8ahSoP4U6LABL9FD5IamZvHsOzks0ZmAwztiD2Gb8ZE1PpfdbkdNKZVrcJ4Qz0lurVki5yyGJQv/fAAz7WCdqVDZvWd4mA9RQ4z2ylFXdO6bX2dTAoxe9NR4QKqBG0so/P+W1BaT5qpnAf9SktqJp3idecb6Gd8AUfFcV9iGDwFNtwtH3s3vYoqdVJxgEI2j6ZNjpy8UJ0YaesfIgf8ZdbMLHWmNJYqQjkqu7PouJho46gOeQSSfFHpf9YhfzDRDaNfy8m3np/Wi1BRTHtcip/X4G+nPxTaj/u4fww==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com (2603:10a6:102:240::14)
+ by VI0PR04MB10173.eurprd04.prod.outlook.com (2603:10a6:800:245::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.11; Fri, 7 Feb
+ 2025 16:04:52 +0000
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::9126:a61e:341d:4b06]) by PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::9126:a61e:341d:4b06%6]) with mapi id 15.20.8422.012; Fri, 7 Feb 2025
+ 16:04:51 +0000
+Date: Fri, 7 Feb 2025 11:04:44 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Alexander Shiyan <eagle.alexander923@gmail.com>,
-	Val Packett <val@packett.cool>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v3 4/7] media: rockchip: add a driver for the rockchip
- camera interface
-Message-ID: <202502072356.crcHKSbX-lkp@intel.com>
-References: <20250206-v6-8-topic-rk3568-vicap-v3-4-69d1f19e5c40@wolfvision.net>
-MIME-Version: 1.0
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588
+ in PCIe endpoint mode
+Message-ID: <Z6YvHCT51CQxlqkL@lizhi-Precision-Tower-5810>
+References: <20250207143900.2047949-2-cassel@kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20250206-v6-8-topic-rk3568-vicap-v3-4-69d1f19e5c40@wolfvision.net>
+In-Reply-To: <20250207143900.2047949-2-cassel@kernel.org>
+X-ClientProxiedBy: SJ0PR13CA0209.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c3::34) To PAXPR04MB9642.eurprd04.prod.outlook.com
+ (2603:10a6:102:240::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXPR04MB9642:EE_|VI0PR04MB10173:EE_
+X-MS-Office365-Filtering-Correlation-Id: c8bafec7-72f6-48d0-a5e0-08dd47912798
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|52116014|376014|366016|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?i3bMA8t3QQZsO22gc40yZWO/UPBSWW6kbkZNvDb7qMv3wSpWL5TLSe3bM6f0?=
+ =?us-ascii?Q?xYeYmavmbdFmMmYadWXhNJQVDy04nno4OGP8ZU6WR2DtUpBxHWqZ/Ifvtnto?=
+ =?us-ascii?Q?alGKAkXcAyu6WVhqoqhgdBtaAw2sgOp2JWKZ0I6rrpp5ISikYat0cU4ipS3t?=
+ =?us-ascii?Q?k/s5zWkTvOy+b3iJ1J3ZNDdGZPBuqxKOO1ZIVeOQmUCzunB01uPCAVyT7CGM?=
+ =?us-ascii?Q?i1deyzxbQ3Rw71ZI7lTppn4ik20/gFRL7Vo+VUUdEtTb0jk2qalf+570JAaP?=
+ =?us-ascii?Q?F5GKP8nkNZwYF7E2UzWp8quOlIPO+Hqjx+5c5MWJsF19QA5pd1YWCgjG7did?=
+ =?us-ascii?Q?Zy41xRABPxw41qyzI8FhFkytj8BrlgQ07X8t9ry0JNIYLHHtDhuAGMZJWs5x?=
+ =?us-ascii?Q?4pSBEiBRjdwMcqXArr9Lj38U8y9eU7Ae6BBLMqhRiPdvZCKf72StlExpzWqR?=
+ =?us-ascii?Q?2FULqnmeifYoSYdIfQQSwXsRbEcZI01oJyk82YcutZOiHw1VaytZDd2xAa7e?=
+ =?us-ascii?Q?i8VoStvrHtBEKdxAztQkWjFx3QU1fRyYpkFTscUoVTXN8AaqgtWm2g0yAb0k?=
+ =?us-ascii?Q?pswqnSKq/Fl0NxW31VGSTA7hv9XAyPYgTsN2pY/1esIwbUf3dhIeSEdNpdEz?=
+ =?us-ascii?Q?gr04yQFwp9Nsbq7bBm1vAWbmxHQ2mMSkRovbqtIDa4TMZCg25DLlR+jvoulU?=
+ =?us-ascii?Q?BITYWhBHAiMqFc7xHCE6nFFYpVcDEo1inP7iPArAm3xbeWymR9DzLqwnJ/6T?=
+ =?us-ascii?Q?Uf8ARyayEiExFNOOKstb9XcFLGXTXeKlF6n8QZ/8hfflmKvouUMEr/2LWpWF?=
+ =?us-ascii?Q?EX74TCsAV7SerklQB9CIoabNuylwUYg9OCMil0+czG/9H8pWMsVpOT86DKBS?=
+ =?us-ascii?Q?tjHsM/jMlS3fJ7hFhksJZ8qES7qmR0fYkN9291hIcs3CdxhtjxnM1AId16tj?=
+ =?us-ascii?Q?OCDv/AckaCG7V2aHn9QiwuuvRIm2zGpU+Z2xfw3LSpdMsd8ZCTWWyLcSWCv8?=
+ =?us-ascii?Q?/akSGuJwjV537hZbW/DdstIUVfoRGxM9cbuX4lMlbQAZbXubyjZV6A4LTccS?=
+ =?us-ascii?Q?tnaXWYphgSqhqL9UWKpKfVzFB7JwqXRHO/FLZunGosvEshcuIKlY8S5+5P67?=
+ =?us-ascii?Q?48N8nnO7/bUuJFfq7h7sc1UlMsYtJxZWqy/Yl9XwWqet87rEkhjPlG4RjfUZ?=
+ =?us-ascii?Q?O2eAGhoqkRBPIS3cB+W1ySSWAW9bke6JrwGSjfkdAyiYX1ByODy2LwpYCgIs?=
+ =?us-ascii?Q?3G23LRkNQ8ZOF6CoEq6D3WnmhczC0NVavKK9FGJWWiyf22qWsz5KUL5e06nF?=
+ =?us-ascii?Q?nr0FuBAgEN16HV9xkkMUr0VZY4lTqCyZ/47oUh5OX08sQ7w3cazQ7lZTPKxo?=
+ =?us-ascii?Q?r0j5fiy1XgioaFLy6Sc83e8mCvRxfoLtXz+NxtYm8ObCeZEatHreD1k3qb4w?=
+ =?us-ascii?Q?NH/XZ1S8m6nIjnbe91ASp230n0+82MKx?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB9642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(52116014)(376014)(366016)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?W5aRn0U81RIV1fIDOUnHWdjKWYTyTXQrXJPdFf2bey/stbnB991yUygmelbn?=
+ =?us-ascii?Q?bZHa0h72djb42tlKsTpuBmD36nrj6MxNAQXhTHll6w59VCjh+30SJQh1c8WD?=
+ =?us-ascii?Q?PYLDRrAZ5/nrglscRL/sP/SHQ/gXzabTNHEk9qeFmxtYlLX8AVYcoWRzviA3?=
+ =?us-ascii?Q?zfzRoiwv+cP5DLzMInT1F+dbYBMWGJxQjm+62EYQVTJM5kKihEfO9ryaj+rh?=
+ =?us-ascii?Q?SYvpQgg/K/OGjsz2OOLxyrNri5g41RME7oIBvFGTf83ozH6ygfE+Gvqczkw6?=
+ =?us-ascii?Q?Ld9AzNvWtgJig1ydcFe3GLii6xUW/YtW5GHHNa+1kbjRQqm7zAe/N9Xrzpgj?=
+ =?us-ascii?Q?TzvBhKYoJjr6FD4srMHoxVVvAHf84H3PRxqkGmZ8mNSg4WKzn9TfwnVlIEJY?=
+ =?us-ascii?Q?RAA52aZQxHHR9/FBFudhJkyZTNFgBsMdN8MeZ5hvA1xcTQqcCN9bq0DW7HU/?=
+ =?us-ascii?Q?lx2lmTddVW1WAjcAL6KmURoCpeFmK+/PNwz6ATDo8CmCp36V7+mP8PoxFNy2?=
+ =?us-ascii?Q?RTFGyGP5B2Yy9/3H6qyJRlMCBx9oZheRuIRM245/4UQdvgKqkrmzC3qaiG3T?=
+ =?us-ascii?Q?Zd1Z0T7AWQ9g/64YwGcz+6auetnzyQ2LtY4BPJuAFrPRjDtf+rkNEwQKU+RA?=
+ =?us-ascii?Q?HoW7oISAYY9ixyk6MXAFuPyRcgHClOanHf6aEl95LsoBbUapEG8Yjdzhdy9t?=
+ =?us-ascii?Q?hATRG5r9bjTWfIIBrDHINaTXsTmFX53y6PenVOBCzYFGfbM//rLWw8TnWls7?=
+ =?us-ascii?Q?FhBjDDONe+GQMbSD/HEyuOWiBcYxuWtIS1cj7PpI0X6uvHxoCFu1/VAVOHtD?=
+ =?us-ascii?Q?risPB0jl/P8xHwDVEB1Hjk7V9zFYQVI/ndzuW3tnwLVYX1mJRubzZ/F2oWeb?=
+ =?us-ascii?Q?kh98HblOuooO+VekVNTOYkdwyZpLTFiiJlzn5+F2w32QvZjE+UYkU9va3aam?=
+ =?us-ascii?Q?wJaQvgugnzOykEk7jkHY/xDVmLZ6X6ajVkhXflpO/LNH+ORQy8kU2U5ftq16?=
+ =?us-ascii?Q?bwOyCEbUwNSlTdxZ+o20m4dfjW1oNBxUV7z1SihykyHSMN6ZnGkpFalaewIO?=
+ =?us-ascii?Q?YnbRAEGlfr8XR8SWbwt+AKDQ5HPP/Nhmlh0U4IZLmFpVOrpkpZcFS4ao2sfV?=
+ =?us-ascii?Q?JEBi+/lOmIHpFL5unxf2Jd/QPkfBNWmszhBxlRfqa69EXN59X32JJX5zwYBq?=
+ =?us-ascii?Q?NCnMIQyusCbk3jsIXxhpvnUbxnaMLAEHq4Fr+dkyd27jyYbqoYkqjt56rNCd?=
+ =?us-ascii?Q?7NLXb1gy+fL2StyPjFD/YDRwEYFEOZONPjqYIsntbMvbFYI5e+j9CiJf1fQK?=
+ =?us-ascii?Q?tGBZJOS2nLCTpSj0+XQ9BsJavDrVNfCourAHfXNjf/S11e+ErFR+9n7vO0+B?=
+ =?us-ascii?Q?/M5DGnenK0Z7h95uVGPxN/Z/ilC8Kyb9GQreMQFaLWzk05tshzioqGXaoJhG?=
+ =?us-ascii?Q?wGdaDBkjeu48CEIbA5RFbjowsqnrE9624ZmQHotqNKBmQBL+7laNUIMEetMq?=
+ =?us-ascii?Q?CVZdcEr7RgPXlPPHa1sUEwlmbXwNvHtt/Ylg3oqxS90rEsMItrr0RGRVcraq?=
+ =?us-ascii?Q?XPRw2qUdlFnG5KxywtU=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8bafec7-72f6-48d0-a5e0-08dd47912798
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB9642.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2025 16:04:51.7789
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: UZRw3eqz98mjzKYlZyKvroVYr2nDEWhLFyZU9kvQtjCoE6gSislbuWnvCYMOuWjRww6Lsvdyf3RH34o9BTcpZg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10173
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_072731_318701_AEE43D5D 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20250207_080501_608588_F88E9C7B 
+X-CRM114-Status: GOOD (  29.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,89 +160,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+On Fri, Feb 07, 2025 at 03:39:01PM +0100, Niklas Cassel wrote:
+> Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
+> on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
+> (when all PCIe controllers are running in Root Complex mode) and in the
+> case when running the pcie3x4 PCIe controller in Endpoint mode.
+>
+> There have been no issues detected when running the PCIe controllers in
+> Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
+> for each PCI device enumerated on the bus, including the root port itself.
+>
+> However, when running the pcie3x4 PCIe controller in Endpoint mode, we
+> will only add a single SID to the IOMMU (the SID specified in the iommus
+> DT property).
+>
+> The enablement of IOMMU in endpoint mode was verified on setup with two
+> Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
+>
+> A Root Complex sending a TLP to the Endpoint will have Requester ID set
+> to the BDF of the initiator. On the EP side, the Requester ID will then
+> be used as the SID. This works fine if the Root Complex has a BDF that
+> matches the iommus DT property, however, if the Root Complex has any other
+> BDF, we will see something like:
+> arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+> on the endpoint side.
+>
+> For PCIe controllers running in endpoint mode that always uses the
+> incoming Requester ID as the SID, the iommus DT property simply isn't
+> a viable solution. (Neither is iommu-map a viable solution, as there is
+> no enumeration done on the endpoint side.)
+>
+> Thus, partly revert commit da92d3dfc871 ("arm64: dts: rockchip: enable the
+> mmu600_pcie IOMMU on the rk3588 SoC") by disabling the PCI IOMMU when
+> running the pcie3x4 PCIe controller in Endpoint mode.
+>
+> Since the PCI IOMMU is working as expected in the normal case, keep it
+> enabled when running all PCIe controllers in Root Complex mode.
+>
+> Fixes: da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC")
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
 
-kernel test robot noticed the following build warnings:
+I notify this problem when try to enable msi doorbell problem. Some system
+(may most sysystem simple use PCIe Requester ID (BDF) as stream ID. BDF is
+variances depend on host system's configuration.
 
-[auto build test WARNING on 2014c95afecee3e76ca4a56956a936e23283f05b]
+Some platform supports mask BD. The key EP don't known request ID before
+recieve a request from PCI RC.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Michael-Riesch/media-dt-bindings-media-video-interfaces-add-defines-for-sampling-modes/20250206-180041
-base:   2014c95afecee3e76ca4a56956a936e23283f05b
-patch link:    https://lore.kernel.org/r/20250206-v6-8-topic-rk3568-vicap-v3-4-69d1f19e5c40%40wolfvision.net
-patch subject: [PATCH v3 4/7] media: rockchip: add a driver for the rockchip camera interface
-config: loongarch-allmodconfig (https://download.01.org/0day-ci/archive/20250207/202502072356.crcHKSbX-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250207/202502072356.crcHKSbX-lkp@intel.com/reproduce)
+May we need discuss at PCI mail list to figure out how to resolve this
+problem.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202502072356.crcHKSbX-lkp@intel.com/
+Frank
 
-All warnings (new ones prefixed by >>):
-
-   drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c: In function 'rkcif_dvp_isr':
->> drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c:759:32: warning: variable 'ctl' set but not used [-Wunused-but-set-variable]
-     759 |         u32 lastline, lastpix, ctl, cif_frmst;
-         |                                ^~~
-
-
-vim +/ctl +759 drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c
-
-   752	
-   753	irqreturn_t rkcif_dvp_isr(int irq, void *ctx)
-   754	{
-   755		struct device *dev = ctx;
-   756		struct rkcif_device *rkcif = dev_get_drvdata(dev);
-   757		struct rkcif_stream *stream;
-   758		unsigned int intstat;
- > 759		u32 lastline, lastpix, ctl, cif_frmst;
-   760		irqreturn_t ret = IRQ_NONE;
-   761	
-   762		if (!rkcif->match_data->dvp)
-   763			return ret;
-   764	
-   765		intstat = cif_dvp_read(rkcif, RKCIF_DVP_INTSTAT);
-   766		cif_frmst = cif_dvp_read(rkcif, RKCIF_DVP_FRAME_STATUS);
-   767		lastline = RKCIF_FETCH_Y_LAST_LINE(
-   768			cif_dvp_read(rkcif, RKCIF_DVP_LAST_LINE));
-   769		lastpix = RKCIF_FETCH_Y_LAST_LINE(
-   770			cif_dvp_read(rkcif, RKCIF_DVP_LAST_PIX));
-   771		ctl = cif_dvp_read(rkcif, RKCIF_DVP_CTRL);
-   772	
-   773		if (intstat & RKCIF_INTSTAT_FRAME_END) {
-   774			cif_dvp_write(rkcif, RKCIF_DVP_INTSTAT,
-   775				      RKCIF_INTSTAT_FRAME_END_CLR |
-   776					      RKCIF_INTSTAT_LINE_END_CLR);
-   777	
-   778			stream = &rkcif->interfaces[RKCIF_DVP].streams[RKCIF_ID0];
-   779	
-   780			if (stream->stopping) {
-   781				cif_dvp_stop_streaming(stream);
-   782				wake_up(&stream->wq_stopped);
-   783				return IRQ_HANDLED;
-   784			}
-   785	
-   786			if (lastline != stream->pix.height) {
-   787				v4l2_err(&rkcif->v4l2_dev,
-   788					 "bad frame, irq:%#x frmst:%#x size:%dx%d\n",
-   789					 intstat, cif_frmst, lastpix, lastline);
-   790	
-   791				cif_dvp_reset_stream(rkcif);
-   792			}
-   793	
-   794			rkcif_stream_pingpong(stream);
-   795	
-   796			ret = IRQ_HANDLED;
-   797		}
-   798	
-   799		return ret;
-   800	}
-   801	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi           | 1 -
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso | 4 ++++
+>  2 files changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> index 42b57e27ee4c..b5feefda9d2d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> @@ -215,7 +215,6 @@ pcie3x4_ep: pcie-ep@fe150000 {
+>  		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
+>  				  "dma0", "dma1", "dma2", "dma3";
+>  		max-link-speed = <3>;
+> -		iommus = <&mmu600_pcie 0x0000>;
+>  		num-lanes = <4>;
+>  		phys = <&pcie30phy>;
+>  		phy-names = "pcie-phy";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> index 672d748fcc67..f229cb49da68 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> @@ -23,3 +23,7 @@ &pcie3x4_ep {
+>  	vpcie3v3-supply = <&vcc3v3_pcie30>;
+>  	status = "okay";
+>  };
+> +
+> +&mmu600_pcie {
+> +	status = "disabled";
+> +};
+> --
+> 2.48.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
