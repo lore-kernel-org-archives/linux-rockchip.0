@@ -4,62 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B65F1C02194
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Feb 2025 20:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5216BC02194
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 00:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hx8AS0PaUeJ/mbEU1wV85YWa4trJT/fRO1tft+lbdN4=; b=Y5kZDFfNsyiemH
-	Dlwk6R5cYSENrGXdy3V+1cm6USnB6VoSJeJeUh73X7d2Y9cr9J+41LpHLIOVwGuEHjfR1bAOFyj3y
-	TNo/UtUdRuz1iqh1Oup9sBm7ucbvKd1e/PRRM4BiIxtUNpFfWnW1YkaHLnDyPJQLY8tcf+0rNtXqx
-	/Wo+0rejxPI28/RJ2pM4+fm3y1yzwy/RQH91KKslAq7lCUeeG/TGDwRrFzS4R09eyN0xUE1MdI/eo
-	D5VdRkR0BmRlWqQYOo8digs/CmxIg8b3cDERPmp+FU08q6zs1WuIwgkpwkTeRRFW3lV0iMXOiNk4h
-	GIVvAeLZfNodopOjQXow==;
+	List-Owner; bh=98R9zNKWImQcsMKWOMHtN+e7dfQKc/Vy6s5ZyCkpp+g=; b=tUp81cYlCgwLgv
+	qFzpt1IULBcrjBqDCO1rdHH0UwixWQ1G3uGDf1nyRsoqCgr675Yl//rKVIzGAy4JkJPZ5Fq78xbiD
+	jwdSx1TVtlK/gfo5cM2L+TbcjvLbyr1l3yaeaPZpacLK+LYuFU89HbQ6akrYWvouBqajiNQHIF1k2
+	4ILF9KG5dM8pphIw4tTs4snyJvdglZ0shtr4MDODtXFbn7mnjSn2EHhoezJaNvNasLgpLuWpWdpjR
+	9HsfRzfqHLdBCNhVmkVfGqcjHn0LcGbvENSBsz82XZuIHBIVM1n8AO71+eLnHJ6Tj8BouHJDh46ei
+	NvEtV6lBgzC1jTC6pEHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg8hi-00000007Vbs-2IFg;
-	Thu, 06 Feb 2025 20:42:30 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tgC4C-00000007rkU-2oGr;
+	Fri, 07 Feb 2025 00:17:56 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tg8gL-00000007VVC-1RYq;
-	Thu, 06 Feb 2025 20:41:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1738874421; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CEFH29ZszeHLlTPnHhnLcSDNF95+9xVJ7xSm5+gUM++gmmyT+xzZZRHncrFKg0cbc7zWOPxMYJaOqDAaUKtM0sooaYJMSwEeDpeYH4c35NSuyfY1NM4ceVa+5DblHIgfLrW1yo8z7J0YxFWPYdaQaHwKcXLoMaglEyyXTjzD5Rw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1738874421; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kACVQDpqq9CudHavl6P9Sm6lVRImK08+cDYq9z8OiAE=; 
-	b=DfQdeOyA1fDWl4xo9Q5gwbYCFfsWBLF8x/yN+k7RQc7HttKYrqJGXHMv5+sxcXN2LAHSlUUd18RBqp84g10nt+ODk4Og3QRItuTh+dtG0hL1JbGKxmJsZ5jIHDyCIFVcsGELasfCJcVf3UVPVZiBJ2Dy2bjtsFUZfcnej/zzX1k=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1738874421;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=kACVQDpqq9CudHavl6P9Sm6lVRImK08+cDYq9z8OiAE=;
-	b=iNPRurgj5kX2Ur4Ui6vWaTf1fuT8rxX1mPSoq1Lc4+q0QbBpQC2yEoyvVg5+xjOF
-	4Ic+KI4+JFku2+MGafvCzDZ3KmZAS0fY2I4DNgAuiTYEb3QTme+a6pQVTNt6Y8VDkYe
-	KO7sDGxlhAQD83KvzJ1SeulGqhzz+spi60YqoxmA=
-Received: by mx.zohomail.com with SMTPS id 173887441820050.268923216844996;
-	Thu, 6 Feb 2025 12:40:18 -0800 (PST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v5 1/3] drm/bridge: synopsys: Add audio support for dw-hdmi-qp
-Date: Thu, 06 Feb 2025 15:40:15 -0500
-Message-ID: <13709044.uLZWGnKmhe@earth>
-In-Reply-To: <db29945e-565a-490f-8a8c-387ecd47a198@cherry.de>
-References: <20250203171925.126309-1-detlev.casanova@collabora.com>
- <20250203171925.126309-2-detlev.casanova@collabora.com>
- <db29945e-565a-490f-8a8c-387ecd47a198@cherry.de>
+	id 1tgC49-00000007rjl-3mrJ
+	for linux-rockchip@lists.infradead.org;
+	Fri, 07 Feb 2025 00:17:55 +0000
+Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-7b6e5c74cb7so131908585a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 06 Feb 2025 16:17:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738887472; x=1739492272; darn=lists.infradead.org;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sfFEPXCRct3oZMDg8r+rNLMZRhUWHMu8nowY+ihMm2Q=;
+        b=VVz4pqR01IzWC/PvRXZ6NkBng+g+zuI/TpwJnvOZTXjQVye1bknCAWeGDjxewQplIp
+         l2Apv7AVokOxnCvTXo7HgcSB0M/pvnUslluQ7cpF/fF+9eS0MDL3h1AknTeYXTDcowsZ
+         jx4dx/TpBK2rCHJyVeReH4nEWBKfrdYiKBzTF8RUs4vrVSlz7X8xz2hfd7upwnL4xJdc
+         c+fKmR365q4mlLLc2ZX/U0kKHtlquQYd9Ojrn7JrSYxNP4S3kUuIVeojSFPbFMHUuO26
+         rLZSBQAa1txcFN4MCYPuEwRmCnZGzhgrz9+MaJvLDJhjs4TtsBqgPjX2eR2TbY2pQ+5M
+         67NQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738887472; x=1739492272;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sfFEPXCRct3oZMDg8r+rNLMZRhUWHMu8nowY+ihMm2Q=;
+        b=JqiTrNGWpHoSGG1gyGqpgH53ChDhi8XIyda941J7jFNLIQ9LtVGpdaZpo2UziGQfbg
+         0snetParZH6BV9ZJ2JyuehSHRUnDq2C+keZ/xICMS3B5OMxXyQLmTeoFkUTU4eprxUpO
+         gKPFtsC+sXRBaYFzu9G7hkgLe8RLvS7FuJ/Ss7AqQURHf6tlFaQUfpLGWqeQMSMPlPPm
+         V2cl4ZEsGGZ0STcmLIsI8wuRnjDoS1BICG6ooI+Cn8Sg2kjdueaGQMK2Emmm1z7689xW
+         UIqAxlzxlfE7BFYTZiLhu0uXd8hEzI79WHDVx6HJNhtyl1DA2jZugspsM9Kt59oH2KxR
+         m5Fg==
+X-Forwarded-Encrypted: i=1; AJvYcCVoDoZ5iyBwLuvnwoaCn+Ua9+j9EOThnft0kS4V18bHkHe7sRAbMtASL9ioI6BkaRQObpHnSdv5tqyLv1TJ+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywhr+Hq0XgRPXtT32JlfO3VY933tqEfGYh/mKbSz8Aa+c9R8JX6
+	1UTj5WDUJpLeU6Qner8ix1Vmsf1qwU0odSwo8OjM6F3dciSEoPMc
+X-Gm-Gg: ASbGncvOjWeVV22oNvqdS1fIsf4LEzqPHd5wjCDdLCrnL2fyCra/+1gwxdDkPwvw4lu
+	YNXYW1uGWXA5a7dWhyd8z3lURLOS2CyKG55lwBdtoll1LWURz+TtugFwHndNo3/U78isvIRisaG
+	sK1DvXd7Kx6vH6HaPM95N8dhp7yXIiCxkqDZ+N0Cvw7nYbwgY9gc8qp0wP1ITS3tvrwf9bGWBmK
+	gFgcnBk76xF/0lmAeh9SSSmcTeFLKU2nC7FEqh0qimq418O83wRz2oLGyNimqQINh7OeBkag1pK
+	fLd3a4hkjgpVNjJs42L2a2eydmvvOfbR4+ivFaSJfZY=
+X-Google-Smtp-Source: AGHT+IESBK0CIOWfDUugdHFsJxYTxI9WVOyTljg+fdL7KG3nSsZBNEMXdD0qHrSmjrkXpFvxTEiEog==
+X-Received: by 2002:a05:620a:3192:b0:7bf:ff64:336e with SMTP id af79cd13be357-7c047c97879mr162292285a.51.1738887472123;
+        Thu, 06 Feb 2025 16:17:52 -0800 (PST)
+Received: from localhost (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c041dedba2sm121543285a.16.2025.02.06.16.17.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Feb 2025 16:17:51 -0800 (PST)
+Date: Thu, 6 Feb 2025 19:17:49 -0500
+From: Trevor Woerner <twoerner@gmail.com>
+To: Vicente Bergas <vicencb@gmail.com>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: Re: PCIe missing on RK3399
+Message-ID: <20250207001749.GA33513@localhost>
+References: <CAAMcf8DL27-PYdEJ4eX1-PJnQDWB0osgHR0gbHAcr_oRniWOOg@mail.gmail.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <CAAMcf8DL27-PYdEJ4eX1-PJnQDWB0osgHR0gbHAcr_oRniWOOg@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250206_124105_449172_7CEBA5F4 
-X-CRM114-Status: GOOD (  45.66  )
+X-CRM114-CacheID: sfid-20250206_161753_959652_525B1613 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,217 +94,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
+Hi,
 
-On Tuesday, 4 February 2025 04:59:12 EST Quentin Schulz wrote:
-> Hi Detlev,
+On Wed 2024-12-11 @ 01:55:01 PM, Vicente Bergas wrote:
+> Hi,
+> i've tested the Linux kernel 6.13-rc1 and rc2 and in both cases PCIe
+> is not detected on the RK3399 platform (rk3399-gru-kevin), whereas the
+> kernel version 6.12.3 works fine.
 > 
-> Just some drive-by comment inline.
+> 6.13 configuration is based on the same one as 6.12 and there aren't
+> any significant PCI-related differences.
 > 
-> On 2/3/25 6:16 PM, Detlev Casanova wrote:
-> > From: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > 
-> > Register the dw-hdmi-qp bridge driver as an HDMI audio codec.
-> > 
-> > The register values computation functions (for n) are based on the
-> > downstream driver, as well as the register writing functions.
-> > 
-> > The driver uses the generic HDMI Codec framework in order to implement
-> > the HDMI audio support.
-> > 
-> > Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> > Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > 
-> >   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 497 +++++++++++++++++++
-> >   1 file changed, 497 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c index
-> > b281cabfe992e..ea5d8599cb56a 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> The messages from dmesg on 6.13 don't show any PCI-related errors.
 > 
-> [...]
-> 
-> > +static int dw_hdmi_qp_match_tmds_n_table(struct dw_hdmi_qp *hdmi,
-> > +				   unsigned long pixel_clk,
-> > +				   unsigned long freq)
-> > +{
-> > +	const struct dw_hdmi_audio_tmds_n *tmds_n = NULL;
-> > +	int i;
-> > +
-> > +	for (i = 0; common_tmds_n_table[i].tmds != 0; i++) {
-> > +		if (pixel_clk == common_tmds_n_table[i].tmds) {
-> > +			tmds_n = &common_tmds_n_table[i];
-> > +			break;
-> > +		}
-> > +	}
-> > +
-> > +	if (tmds_n == NULL)
-> > +		return -ENOENT;
-> > +
-> > +	switch (freq) {
-> > +	case 32000:
-> > +		return tmds_n->n_32k;
-> > +	case 44100:
-> > +	case 88200:
-> > +	case 176400:
-> > +		return (freq / 44100) * tmds_n->n_44k1;
-> > +	case 48000:
-> > +	case 96000:
-> > +	case 192000:
-> > +		return (freq / 48000) * tmds_n->n_48k;
-> > +	default:
-> > +		return -ENOENT;
-> > +	}
-> > +}
-> > +
-> > +static u64 dw_hdmi_qp_audio_math_diff(unsigned int freq, unsigned int n,
-> > +				unsigned int pixel_clk)
-> > +{
-> > +	u64 final, diff;
-> > +	u64 cts;
-> > +
-> > +	final = (u64)pixel_clk * n;
-> > +
-> > +	cts = final;
-> > +	do_div(cts, 128 * freq);
-> > +
-> > +	diff = final - (u64)cts * (128 * freq);
-> > +
-> > +	return diff;
-> 
-> I believe
-> 
-> final = (u64)pixel_clk * n;
-> do_div(cts, 128 * freq);
-> diff = final - (u64)cts * (128 * freq);
-> 
-> is just an elaborate way of doing
-> 
-> ((u64)pixel_clk * n) % (128 * freq)
-> 
-> ? If that's the case, then I believe do_div(a, b) actually already
-> returns the remainder of a by b.
-> 
-> If that's the case, isn't that function simply:
-> 
-> return do_div(mul_u32_u32(pixel_clk, n), mul_u32_u32(freq, 128))
-> 
-> ?
-> 
-> We could probably replace mul_u32_u32(freq, 128) with freq * 128
-> considering that dw_hdmi_qp_match_tmds_n_table expects freq to be <
-> 192000, so we won't get an overflow with that.
-> 
-> mul_u32_u32(pixel_clk, n) does the u32*u32->u64 without a temporary C
-> variable.
+> Does somebody know what is going on?
 
-I tested this and it is indeed doing the same. I'll change it and also change 
-the function return type to u32 as that is what do_div() returns.
-That makes sense as the reminder of a/b can't be wider than the size of b.
+I'm seeing something very similar on a different RK3399-based device. As such
+the proposed patch won't work in my case.
 
-We just need one variable as the first argument of do_div() is used to store 
-the integer division result.
+I have the "Penta SATA HAT for Rock 4"[1] on a rock-pi-4a device running a
+bunch of disks for me. When Yocto (master) switched from 6.6.y to 6.12.y this
+HAT stopped working. Currently Yocto master carries recipes for both 6.6.y and
+6.12.y so I'm able to pin the kernel to 6.6.y, but it would be nice to get
+this fixed.
 
-> [...]
-> 
-> > +static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
-> > +					   struct hdmi_codec_daifmt 
-*fmt,
-> > +					   struct hdmi_codec_params 
-*hparms)
-> > +{
-> > +	u32 conf0 = 0;
-> > +
-> > +	/* Reset the audio data path of the AVP */
-> > +	dw_hdmi_qp_write(hdmi, AVP_DATAPATH_PACKET_AUDIO_SWINIT_P,
-> > GLOBAL_SWRESET_REQUEST); +
-> > +	/* Disable AUDS, ACR, AUDI */
-> > +	dw_hdmi_qp_mod(hdmi, 0,
-> > +		  PKTSCHED_ACR_TX_EN | PKTSCHED_AUDS_TX_EN | 
-PKTSCHED_AUDI_TX_EN,
-> > +		  PKTSCHED_PKT_EN);
-> > +
-> > +	/* Clear the audio FIFO */
-> > +	dw_hdmi_qp_write(hdmi, AUDIO_FIFO_CLR_P, AUDIO_INTERFACE_CONTROL0);
-> > +
-> > +	/* Select I2S interface as the audio source */
-> > +	dw_hdmi_qp_mod(hdmi, AUD_IF_I2S, AUD_IF_SEL_MSK,
-> > AUDIO_INTERFACE_CONFIG0); +
-> > +	/* Enable the active i2s lanes */
-> > +	switch (hparms->channels) {
-> > +	case 7 ... 8:
-> > +		conf0 |= I2S_LINES_EN(3);
-> > +		fallthrough;
-> > +	case 5 ... 6:
-> > +		conf0 |= I2S_LINES_EN(2);
-> > +		fallthrough;
-> > +	case 3 ... 4:
-> > +		conf0 |= I2S_LINES_EN(1);
-> > +		fallthrough;
-> > +	default:
-> > +		conf0 |= I2S_LINES_EN(0);
-> > +		break;
-> > +	}
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, conf0, I2S_LINES_EN_MSK, 
-AUDIO_INTERFACE_CONFIG0);
-> > +
-> > +	/*
-> > +	 * Enable bpcuv generated internally for L-PCM, or received
-> > +	 * from stream for NLPCM/HBR.
-> > +	 */
-> > +	switch (fmt->bit_fmt) {
-> > +	case SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE:
-> > +		conf0 = (hparms->channels == 8) ? AUD_HBR : AUD_ASP;
-> > +		conf0 |= I2S_BPCUV_RCV_EN;
-> > +		break;
-> > +	default:
-> > +		conf0 = AUD_ASP | I2S_BPCUV_RCV_DIS;
-> > +		break;
-> > +	}
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, conf0, I2S_BPCUV_RCV_MSK | AUD_FORMAT_MSK,
-> > +		  AUDIO_INTERFACE_CONFIG0);
-> > +
-> > +	/* Enable audio FIFO auto clear when overflow */
-> > +	dw_hdmi_qp_mod(hdmi, AUD_FIFO_INIT_ON_OVF_EN, 
-AUD_FIFO_INIT_ON_OVF_MSK,
-> > +		  AUDIO_INTERFACE_CONFIG0);
-> 
-> This is all very I2S-centric while the HDMI controllers on RK3588 do
-> have the ability (according to the TRM) to use S/PDIF instead of I2S. I
-> assume the driver should be able to know which format to use based on
-> simple-audio-card,format property? Is that correct? Then current support
-> which doesn't even check for I2S would be fine and not conflict with a
-> later commit which would add support for S/PDIF? (Essentially asking if
-> we need another DT property for the HDMI controller node or elsewhere to
-> specify which mode to run in instead of expecting it to always be I2S).
+I only have one such setup, and it's running in "production", so I'm not
+overly keen to take it offline for long periods for testing. But I'm willing
+to do some investigation if there are suggestions to try.
 
-The hdmi_codec_daifmt::fmt field already has this information, based on the 
-simple-audio-card,format = "i2s"; field in the device tree.
+Currently Yocto supports 6.6.74 and 6.12.11.
 
-I could add a condition in dw_hdmi_qp_audio_prepare() to fail with -EINVAL if 
-the devicetree specifies anything else than "i2s" for now.
-
-I'm not willing to implement support for the SPDIF path for now, mainly 
-because there's no need for that yet (I2S works well) and the downstream 
-kernel doesn't implemented it, meaning it hasn't been tested a lot anyway.
-
-Regards,
-Detlev.
-
-
+[1] https://shop.allnetchina.cn/products/penta-sata-hat-for-rock-pi-4
 
 _______________________________________________
 Linux-rockchip mailing list
