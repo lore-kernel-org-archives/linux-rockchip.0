@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBD9C02199
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEAEFC02194
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Feb 2025 15:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uYuB4Cl28dyR8wvJmxfgZ/z0uRjQUWEj33/llgumC88=; b=U7HJ5XWwr4QGyh
-	vfT0p1aaTqdtEEz/mS4r93woVPf1VyQGLuehEhBq/fPyqqJA+Yo2cHCjUer/WjQm/KI5tQtW8wp+P
-	elavtRtdT0gDtKXmmu/rqC85GKcjQ4umRgeKJQjGXXewEFOYiwepETwDyaPyYuROMcFhP/9PnDkrf
-	URW46+ZQzFNQ0+dTnogINjldHHjB4Ywq888nePe+NqZDm1Z3wTbIUNRrUBgALFZpEg1gAXLlLI/RU
-	YOnBiGoRTob0Ch5ky/OG2upj4jnzZk14ozeE2eU5MdF+3AVhok9tXECeIWnOBtX90m8ldRTdvO+9l
-	9RHU829E7p2pjeSlX/CA==;
+	List-Owner; bh=J/QFwo3tkjhvTtUOOSxheEjq9X9SqIuw2zp1Ut2ywMI=; b=cGRrDgyq+o871w
+	0Iq+U/ho3PPHUJTIMPtd/tdx3aREB3GrnWvtTqVs/FgIr+6/RuWFl/49P2Ih4psmJQDyZypXUtOOG
+	wpWQB4Pq4o2RB5YkOMHKeWmmripO+9gkwhFqd1Bv0p+M5omLrRmVm9cT9JEPKj4BqjBHdaJ8dsdit
+	cjGIR1SGLxvSW6bjDrZhCPvEvIQSg1QAT6JosdAJv0cGuE2bgFfTFwqfJTxeWXhsy1BKIUgxDem3S
+	kQFvLgUvAzd8FLFsfnhTeamYfQx2l+TOZ5FOaI1lETlP4iJWFcdbHArvGb7VKvl31RCu6hJ/5hxIn
+	08kT9gk+pxvXgGvTAqxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQG4-0000000A4BM-2UdQ;
-	Fri, 07 Feb 2025 15:27:08 +0000
-Received: from smtp-8fab.mail.infomaniak.ch ([83.166.143.171])
+	id 1tgQIm-0000000A56O-09SN;
+	Fri, 07 Feb 2025 15:29:56 +0000
+Received: from smtp-bc0f.mail.infomaniak.ch ([2001:1600:7:10::bc0f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tgQ9P-0000000A2LH-2soU
+	id 1tgQ9Q-0000000A2Jw-0tbM
 	for linux-rockchip@lists.infradead.org;
 	Fri, 07 Feb 2025 15:20:18 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YqHht46zjzR6d;
-	Fri,  7 Feb 2025 16:20:14 +0100 (CET)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YqHhs3J5xzr2l;
-	Fri,  7 Feb 2025 16:20:13 +0100 (CET)
+Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10:40ca:feff:fe05:0])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YqHhr1w0vzQKs;
+	Fri,  7 Feb 2025 16:20:12 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YqHhp4yhMzpRh;
+	Fri,  7 Feb 2025 16:20:10 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 07 Feb 2025 16:20:00 +0100
-Subject: [PATCH v5 3/4] arm64: dts: rockchip: add overlay tests for Rock 5B
- PCIe overlays
+Date: Fri, 07 Feb 2025 16:19:58 +0100
+Subject: [PATCH v5 1/4] arm64: dts: rockchip: add overlay test for
+ WolfVision PF5
 MIME-Version: 1.0
-Message-Id: <20250207-pre-ict-jaguar-v5-3-a70819ea0692@cherry.de>
+Message-Id: <20250207-pre-ict-jaguar-v5-1-a70819ea0692@cherry.de>
 References: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
 In-Reply-To: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -47,13 +47,12 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: Jonas Karlman <jonas@kwiboo.se>, Dragan Simic <dsimic@manjaro.org>, 
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250207_072015_887818_9C5D376F 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20250207_072016_383340_65263353 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,40 +72,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-According to commit 40658534756f ("arm64: dts: rockchip: Add rock5b
-overlays for PCIe endpoint mode"), Rock 5B can operate in PCIe endpoint
-mode. For that to work, the rk3588-rock-5b-pcie-ep.dtbo overlay needs to
-be applied on Rock 5B base Device Tree. If that Rock 5B is connected to
-another Rock 5B, the latter needs to apply the
-rk3588-rock-5b-pcie-srns.dtbo overlay.
+The WolfVision PF5 can have a PF5 Visualizer display and PF5 IO Expander
+board connected to it. Therefore, let's generate an overlay test so the
+application of the two overlays are validated against the base DTB.
 
-In order to make sure the overlays are still valid in the future, let's
-add a validation test by applying the overlays on top of the main base
-at build time.
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: Niklas Cassel <cassel@kernel.org>
+Suggested-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/Makefile | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 02f98abe1df10f44f2ac27ea5f6c6e6c6334724e..8f93e0c4d6032d0ca2d93f44384c027e53aa5efb 100644
+index def1222c1907eb16b23cff6d540174a4e897abc9..534e70a649eeada7f9b6f12596b83f5c47b184b4 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -196,3 +196,11 @@ rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
- rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
- 	rk3588-edgeble-neu6a-wifi.dtbo
+@@ -170,3 +170,25 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5c.dtb
 +
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtb
-+rk3588-rock-5b-pcie-ep-dtbs := rk3588-rock-5b.dtb \
-+	rk3588-rock-5b-pcie-ep.dtbo
++# Overlay application tests
++#
++# A .dtbo must have its own
++#
++#  dtb-$(CONFIG_ARCH_ROCKCHIP) += <overlay>.dtbo
++#
++# entry, and at least one overlay application test - ideally reflecting how it
++# will be used in real life -:
++#
++#  dtb-$(CONFIG_ARCH_ROCKCHIP) += <name of overlay application test>.dtb
++#  <name of overlay application test>-dtbs := <base>.dtb <overlay-1>.dtbo [<overlay-2>.dtbo ...]
++#
++# This will make the <base>.dtb have symbols (like when DTC_FLAGS has -@ passed)
++# and generate a new DTB (<name of overlay application test>.dtb) which is the
++# result of the application of <overlay-1>.dtbo and other listed overlays on top
++# of <base>.dtb.
 +
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
-+rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
-+	rk3588-rock-5b-pcie-srns.dtbo
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
++rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
++	rk3568-wolfvision-pf5-display-vz.dtbo \
++	rk3568-wolfvision-pf5-io-expander.dtbo
 
 -- 
 2.48.1
