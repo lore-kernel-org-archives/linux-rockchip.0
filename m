@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53D46C021A4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 23:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BA3C021A3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 23:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fsBsOwOXvoLcqM7/4nlbBsjblT0Ac3KQhTH3vSLKtrI=; b=jncpimwHWZnjxh
-	eHDH7sp4XSnC4bb3fkKymbwWePpABbCkpYi+7Qsp7LQ8Uyo9cssxK5Z1wDr5QQXCYUYHHJcGsgmQ6
-	DKSZkeRtU/aVJSaFsrs6fa6T1ZltGroKpxZn+IPI18UdMrD5nDtSoETmdIeNKjU6e8F5Bib809tbq
-	HqcMGZUeiPWmGk9TQT/gmbQLdxu/f6mBafLetGgZ80dNqKDFQTn8Q5oVpVfnqxQsYLONX7zCYjC3Z
-	HuvG+9yeXIvDw+sdqyuh3Ug0niwJX0V9u20xIs9ZzPu0lhRDBMlS5d7Udtkz+FRucIcXcJYkE+atT
-	/3PLSYoBvZDYL2orC5kw==;
+	List-Owner; bh=kWJfQ/JmW9MUF/wIoYHRoR6EoNSZWbXkNIeTs2Qh35c=; b=qoEI9Luv3qflu1
+	7yWKxxL3TIubPHk73wL2sjxrfQP27z9+S3feUsiUroSJ5Kwo8DxkLUVc8THCzbm+Zu6QrQpykCKPF
+	BjYPFvSdKs7L/cXJaXTdXsWBLLs3WlU4D36AzUbOFY67QyMh+dz/Odpc+ZJEPzeKz51zL8qGrnpSf
+	zmOXv+eKC3qbkwJKHOngZVKxtFlG42Ob7sehET8VX2z8CX1RsE+JBR1rhZUoqUiyHrfDXGTK+Nzp5
+	YxfagTkEW+IDRPjZIyFTrw68jK1/BIA0Y6FzwsReWN6bM6Jexz1Qa2bQKUlMWdSzzh/Fsin0D7bnt
+	5E/8jJfe5MEHLog/lSJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thdd3-00000001u5b-1KFB;
-	Mon, 10 Feb 2025 23:55:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcKe-00000001fNg-05so;
-	Mon, 10 Feb 2025 22:32:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=gScTzSF5SmDK0ItX+9bERNg9WxTsYpnT5wGwYZDdZ9I=; b=I+KJTZ72axCzrHqTNn4iHtTi+k
-	nbuQAVbHt2lmbsB0EMD2ivKUCsamWQLJkdAhtZjvoDklpT0X16YkXWtkF03L1l1lKWtyUoyx5JyKK
-	JZ/KNCbcy656nJLkYxbfcryOHZs2fyqt7tEgYVT+J59vvcN9AkC9DZCnIMayCj7pRkOl5PDWPlnCE
-	XOK9G7xIpE5PCDXnx+iUaY4k3oQXe5iRWLDEMB7eR2K4LVoefkn4JvOnYgNDQojhJttoUsqORcSht
-	aFNjVo6BK55DhCZQMYG8TwUOmh2uWncmyXiXhAnqlhMADE464yuylTnp9rDkin9Z/d+nMj7Cpn6qX
-	Kg75SZig==;
+	id 1thdd4-00000001u6Y-18NH;
+	Mon, 10 Feb 2025 23:55:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcKa-00000000K5k-2GTN;
-	Mon, 10 Feb 2025 22:32:46 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thcKe-00000001fNZ-0r65;
+	Mon, 10 Feb 2025 22:32:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gScTzSF5SmDK0ItX+9bERNg9WxTsYpnT5wGwYZDdZ9I=; b=jVJznroLLXwS8UOrupccZJB2qf
-	I/0LaWZxs6cLc7Kq98/Tjiwa7wOp3fA83fF5CaEUrPu0JfMgT9MnqGnGy9ELf7W0T1bJLwFT947dQ
-	afkAXNPRg0XFX7fd723sV5o45i9UiUwA0UFtOTEpi/VrcRemR/tFsoCSVxgpoutYFw+WAhpgqmw7a
-	v70K7hWD9b8vR0cGGxlKq3ms/Mx6Vx+USZyPH7fT3u4Su8924fO43e8Jg4MpAQZftVSFq66acwcL3
-	Dac+q5Nr/fg0YEVB0EMRbio4L1WPlbvyBmYqLD9J3DOTZ39PEFUOTbtvPKiLTEDb03EiQyUO9HzgK
-	d19LYBVA==;
+	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=g8JbVn06in3CsSgeZfLbC23vca
+	H3wAw6hD4sPz61gVFfM5IKTZRQ6LFVtHH/ifww9jx0eJIvrL7sflISIFSUnhhzIyZ/CUo9G8sjj7y
+	lBk2Ws8I1AfI5lxp7v0r/0+tsLDLn7iKX9yN+Z3AF3n7e7VxUUR0sQVXPJJ+rgib1rVIrLRWMS0QK
+	EtSwIfRDkCYSXFzw2fFYna5prQV96CYA/du9dziDPUCJPSNreNtx9nJA+w8MhWcGoTn0uxmNsDjed
+	3bnwB1OBKKraiMjz5hYLh9vFkg+F4gX+66rHv5rOSSIN6GeiDtotIoxNmqUVffOX2wnlcldLqLH8Z
+	oXiKlCTQ==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1thcKZ-0008Cw-CH; Mon, 10 Feb 2025 23:32:43 +0100
+	id 1thcKa-0008Cw-TR; Mon, 10 Feb 2025 23:32:44 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -69,18 +55,17 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	detlev.casanova@collabora.com,
-	sebastian.reichel@collabora.com,
-	Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v2 3/6] dt-bindings: nvmem: rockchip,otp: add missing limits for clock-names
-Date: Mon, 10 Feb 2025 23:32:09 +0100
-Message-ID: <20250210223219.1193346-4-heiko@sntech.de>
+	sebastian.reichel@collabora.com
+Subject: [PATCH v2 6/6] arm64: dts: rockchip: add rk3576 otp node
+Date: Mon, 10 Feb 2025 23:32:12 +0100
+Message-ID: <20250210223219.1193346-7-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250210223219.1193346-1-heiko@sntech.de>
 References: <20250210223219.1193346-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_223245_058190_56DB1BF0 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20250210_143248_247886_5299A735 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,38 +82,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clocks property correctly declares minItems and maxItems for its
-variants, but clock-names does not. Both properties are always used
-together, so should declare the same limits.
+This adds the otp node to the rk3576 soc devicetree including the
+individual fields we know about.
 
-Suggested-by: Krzysztof Kozlowski <krzk@kernel.org>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 39 ++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-index a44d44b32809..3201ff8f9334 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-@@ -62,6 +62,8 @@ allOf:
-       properties:
-         clocks:
-           maxItems: 3
-+        clock-names:
-+          maxItems: 3
-         resets:
-           maxItems: 1
-         reset-names:
-@@ -78,6 +80,8 @@ allOf:
-       properties:
-         clocks:
-           minItems: 4
-+        clock-names:
-+          minItems: 4
-         resets:
-           minItems: 3
-         reset-names:
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 4dde954043ef..29b47799849a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1260,6 +1260,45 @@ sdhci: mmc@2a330000 {
+ 			status = "disabled";
+ 		};
+ 
++		otp: otp@2a580000 {
++			compatible = "rockchip,rk3576-otp";
++			reg = <0x0 0x2a580000 0x0 0x400>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			clocks = <&cru CLK_OTPC_NS>, <&cru PCLK_OTPC_NS>,
++				 <&cru CLK_OTP_PHY_G>;
++			clock-names = "otp", "apb_pclk", "phy";
++			resets = <&cru SRST_OTPC_NS>, <&cru SRST_P_OTPC_NS>;
++			reset-names = "otp", "apb";
++
++			/* Data cells */
++			cpu_code: cpu-code@2 {
++				reg = <0x02 0x2>;
++			};
++			otp_cpu_version: cpu-version@5 {
++				reg = <0x05 0x1>;
++				bits = <3 3>;
++			};
++			otp_id: id@a {
++				reg = <0x0a 0x10>;
++			};
++			cpub_leakage: cpub-leakage@1e {
++				reg = <0x1e 0x1>;
++			};
++			cpul_leakage: cpul-leakage@1f {
++				reg = <0x1f 0x1>;
++			};
++			npu_leakage: npu-leakage@20 {
++				reg = <0x20 0x1>;
++			};
++			gpu_leakage: gpu-leakage@21 {
++				reg = <0x21 0x1>;
++			};
++			log_leakage: log-leakage@22 {
++				reg = <0x22 0x1>;
++			};
++		};
++
+ 		gic: interrupt-controller@2a701000 {
+ 			compatible = "arm,gic-400";
+ 			reg = <0x0 0x2a701000 0 0x10000>,
 -- 
 2.47.2
 
