@@ -4,58 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9ABC02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 20:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123B7C02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 20:54:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dTP0W85xClRyqKNvBoBk+cuWz8PiH3UAZmQgSlJGTsw=; b=MEoC6JhTzhUr+F
-	uimxclqXp2BlDgjPi0IDUu7H/7VRETQNtJO2FNLp8Mw4UK9wZnEHmbyXXAFjCFFuXDPaMNzs2O52/
-	0/bbcskvwn1voeMTLj7aYW7vhl5MGi1i0XZ8gPd2anj2IlXDNJNkgPnKAHOqsPLvLGI+L3N1JrSF6
-	YgDPkxAxTbBcW8qrLXJPb/f1G5CQc8CzPwwyPxT7tptY+6ozRuw3n2inCkNwxBgpoQMcDjSdlDAAU
-	cItFI/OExj+Bnz05vhQ7PLD4BPRmnMDkYdTShNXymLkjlzVvU2pdjJIwv+x0GIxladyOkeYMwbYfv
-	iY4S6XKT4Fg14O04LNuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=152MvKI+izYStWybZzhEp/vM+F0EkrOJAKnRxGkpxp8=; b=DYSBzrsPKAsDYW
+	4fPfQ0OPn2wwpKKLHsCVQ839gFwkCRDo+VHGqt6Q0qcRI3Y9q9038rtAexX9sYdZqNYmCX8ZsKj9y
+	qoSIgXVuv6lTjwORVZN8BgoKjuWtjZBDFp8hdJryRtwwA6W6MJbwA3hL2t5FAUmJxuXVRY1WXkg/U
+	dQbbshJMIZR98dao5jM0LMpwHwV/TRy73GOl8Uw2v9GblXn/yItSZR38vnyjHpU8m6oFChRHDSJT0
+	oGfZxcW5Hl6bg/v2zxLFppNyR/EUINIIao1nwAiEC8jBiGO9C0USbyM5FDgqVfLa4dFuVphIf7Pw9
+	lfpmyBiwrYF6dTVZTBiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thaEk-00000001I5F-1c1y;
-	Mon, 10 Feb 2025 20:18:34 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1thand-00000001Pig-3MWV;
+	Mon, 10 Feb 2025 20:54:37 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thaDL-00000001HuV-0B7e;
-	Mon, 10 Feb 2025 20:17:08 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1739218624;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=dV5w3UHBCGcbAsXZRRMC2zTxiPj8XCL5iTAd+5Q6CJ4=;
-	b=IhlLpxqkJJL6dNK5E2+EUEooDerJiXSj4mLQXWRdr0ETtimSMCE4KJG+5yj9mTjaibyXAF
-	ZEt0pv07TsKdBhIgJq5dygzn0OiFol+k2u9hmEyGYIYRO7RIcK6k+fgBcJYyhUSG0THH8/
-	iQeme1JgJEjtopGYntiKfb6y/SWkc2FkEpSeFm+8i28Oz9iGdyEfnl6Ji622oiuq0Pb7fP
-	VZPP7IufmFL9olgINwvyi1pdOZ5woL49uvSwrbP15qu7lajvdexo6K8e4BIIFOOCKTnlC4
-	va9EgM1TlIc5j7rl8dPrHqXTkK210GfgVtl6CXBpIULxNAnPZ5c+J+HaJ8pYAg==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
+	id 1thakt-00000001PRj-1V5p;
+	Mon, 10 Feb 2025 20:51:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=xaDZZ3S+Vjprvw3VoZJyJ+LtDoigFQjXYIj4Wx2Yy4Y=; b=Jx6XVD4Iy8N4+52uTGGQEdzQB+
+	jLTKpT0ic6HxdRNDBMXPCGtemNlLXz54+kQ5DICSiPGlrYiqGoMfsKv+2VFP2QDqbuoLCnUgd34eQ
+	uXz0y4zoWyZVafixPtFggYYn5ZvZFTKzE/x6H2pgUuhH0lNGAJagfP+gWXPbjoihpSA1eKweCguGO
+	dsNtaNoDoMi0xblxemtfWhGcH7gEoaNpSPnOMFweCd1AmXST3tK21+sUmUBLNMvqoXby9Vhck/MGT
+	9IPx/dZEFWjTmOZaoPoY5G7P3UExlbjn1IsWbzkwSzOrJAwUJy0sGRB7i4OWas2jG7umJjVe458yX
+	jLs83qsw==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thakp-00000000Fyf-3oAI;
+	Mon, 10 Feb 2025 20:51:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=xaDZZ3S+Vjprvw3VoZJyJ+LtDoigFQjXYIj4Wx2Yy4Y=; b=xqaIEgokoVRUiW1SZglA7fZNJd
+	YHo+F/BTbdqXrteNgfOVhLwG5ZyZZ4uvy3F9flDomG1YFoMS+nXlsr5r3rdIb2xLtUr7zG3HXOHdr
+	m28tKOzjDdsd1mqw89YK3nwVUJoc/9DA4RLp2/iM9ouYBfcg/Bms3FNoXpnDvFkidOjpPIs48Mv1h
+	4TL+7uUUxaTbR2W7kd+c9EoEOKVyVMCR0urLn0+HMqpMvgY2/LAheqI8AHzwX41t9NZ60WWSSACjm
+	p/U2C1eS/+NLSQbtB3zDlsFq4COEnSBXDhlWt2FktvtvB8EKqMkPWKh5Lj4ZPcHW9hP4nkawsVnxw
+	oklbeRUQ==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1thakm-0007Ka-1a; Mon, 10 Feb 2025 21:51:40 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
-	conor+dt@kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Reflow Quartz64 Model A/B board dts files a bit
-Date: Mon, 10 Feb 2025 21:17:00 +0100
-Message-Id: <7eea4ebdb19d5f43d24074a166e6c46bb5424d46.1739218324.git.dsimic@manjaro.org>
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	jonas@kwiboo.se
+Subject: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3576-PC binding
+Date: Mon, 10 Feb 2025 21:51:25 +0100
+Message-ID: <20250210205126.1173631-2-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250210205126.1173631-1-heiko@sntech.de>
+References: <20250210205126.1173631-1-heiko@sntech.de>
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_121707_235593_3A64D415 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250210_205144_144159_C4CC13D7 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,57 +93,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Going over the 80-column width limit, and using all 100 columns, is intended
-for improving code readability.  This wasn't the case in a few places in the
-Quartz64 Model A/B board dts files, so let's reflow them a bit, to both obey
-the 80-column limit and make them a bit more readable.
+Add devicetree binding for the ROC-RK3576-PC SBC.
 
-No intended functional changes are introduced by these changes.
+The board is based on the RK3576 SoC (4*Cortex-A72 + 4*Cortex-A53).
 
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts | 8 ++++++--
- 2 files changed, 12 insertions(+), 4 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 98e75df8b158..3c127c5c2607 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -265,8 +265,12 @@ map1 {
- };
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 522a6f0450ea..0f4ca08d9ae9 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -236,6 +236,11 @@ properties:
+               - firefly,roc-rk3399-pc-plus
+           - const: rockchip,rk3399
  
- &gmac1 {
--	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>;
--	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>;
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>,
-+			  <&cru SCLK_GMAC1_RGMII_SPEED>,
-+			  <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>,
-+				 <&cru SCLK_GMAC1>,
-+				 <&gmac1_clkin>;
- 	clock_in_out = "input";
- 	phy-supply = <&vcc_3v3>;
- 	phy-mode = "rgmii";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-index 24928a129446..5707321a1144 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-@@ -173,8 +173,12 @@ &cpu3 {
- };
- 
- &gmac1 {
--	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>;
--	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>;
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>,
-+			  <&cru SCLK_GMAC1_RGMII_SPEED>,
-+			  <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>,
-+				 <&cru SCLK_GMAC1>,
-+				 <&gmac1_clkin>;
- 	clock_in_out = "input";
- 	phy-mode = "rgmii";
- 	phy-supply = <&vcc_3v3>;
++      - description: Firefly ROC-RK3576-PC
++        items:
++          - const: firefly,roc-rk3576-pc
++          - const: rockchip,rk3576
++
+       - description: Firefly Station M2
+         items:
+           - const: firefly,rk3566-roc-pc
+-- 
+2.47.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
