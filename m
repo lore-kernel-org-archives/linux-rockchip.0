@@ -4,183 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 664ECC02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 17:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3C1C02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 18:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9zcaWyMA1TjD9obQDsAqWvf/BpCCXEDkB2F4YvaJb7Q=; b=RWKww0vrj/ukM2JyLkQXY+e2QX
-	DdZjtruJJO0B6qHO27P/SMaXVylEeRcf9GsbdveilD/FTirzrsGgUjePsq5b4ORLAL+f0aIeaRB5K
-	okAR4rdg7s347Rg9H+x5AzG+G6VRqE2H9KiGFMcMjtI9N63E1Zt7lifRm4UKeCy+plernnhiUA++g
-	ib45yrAM2FvdFbymgIPMOJjm4Ze4i0jS5y9kXIjRtmPkIv4wZLhmJtjO+NrJ3qsSu7RIBhkQ/Y2wH
-	+4v7K5y8rgKFphU4uztm/LMHnC0X82GsYfwd7CjaM5WhB6cIMRuyqtz+04AGOc6mgO+HNNgW/sRMQ
-	ocH6Ba8w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kMwNPufjal5+6CcU5VGyjCf+UAfs7XgZmsE+c9jN1c4=; b=uSEMKydex2JRuA
+	bCvh8DiNefMjAQB8LqRj2wxF4h0fn9xEudfxxdCH1ySv/IMFQ//VtA9ThXSw4HQPslGSRSjJT2OJO
+	oMyQuhXAms2g3Ry9I3FxOhVDJiiGcu7uhmV2/SQL2B3+HYJIOriXNlmvDIbHn1B0s3NRrG50E4UT3
+	eINq58ZqMa6iYhVkBV78fXEkdEwv7pAYFQKwnMikeETbNKWmG3u184vaRnwe+oxRbD4RikuuYj0aF
+	3fW0H0ndq5SX4IV9qg75onYp0H48caEVyyVVSNphvXqySME0Jv1HFCmKlG5V5YbSdJovdo/fZYAcK
+	IcvPDTScln0SODYvV0sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thY4S-00000000pYv-3jIV;
-	Mon, 10 Feb 2025 17:59:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1thYDw-00000000rNc-2tZE;
+	Mon, 10 Feb 2025 18:09:36 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thY2k-00000000p9H-0BMO;
-	Mon, 10 Feb 2025 17:58:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:From:References:Cc:To:Subject:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=CCZ6SvZWN2qCFsqqdaxjH/tBOjWkFM244wFrtz1cLTs=; b=C+Tu9sQJGaso5Xe2qOZGobOIaz
-	DnNYEgMtKuQ6fNm7xJVoWOqeNpy6vNRkuSV5nCEuAKYv9w47Oqok6NG6imSIIYHuGSt66qycRCCbf
-	TaNVPi2zLXWtGEn6lhm8K4XP14A1AWERiGANsouLlf4UUnlw/l6MOrGN2Rt2KlbP1kXgareYqkAbS
-	/5bClw+4rA7bmi4oAUjLlLy4fk2Me+az9KYYjykekDpkLtWcPEsbSwkQGnvxkTDZ8220EDl7Sfj6Y
-	DltPDBNIgqG4CK42S4+vjzCp/U3bH8yWSj4xtUTa/wyiiuRA+b19bBTKXDqXNuSZuq8cSmjf2R/nI
-	MihyfiNA==;
-Received: from mail-db8eur05on2060f.outbound.protection.outlook.com ([2a01:111:f403:2614::60f] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thY2g-00000000CEx-3czO;
-	Mon, 10 Feb 2025 17:58:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=J+LgbF0Yib6/vVKp5rTT1IIX7M2Z7oaWSiRsBOe7YxdRU5OdK5mdsGR1xb53PXMYJdaabxUaGQTvuh1OFmj80HNKVYvlb8IF0chwW1XFsvpThdPQB4qFL0ntTAAqe6hM+JPA3R57w3o9KMc+B0EuvVC9zO1wChWk9hjXNRmmF5gh2NqZ1QKMVLrEdrjMTdc3NXRGbYH21i07PZKe3fKjAMqxX/n3w4ANpoZCnXRREhO0CQnSXe3o0CVzz+pv+aS4LUVAjW2mY01Q0mCg1DauVWKgIMkWbFcBRFsR2Hesl4+rDu3bSmiXJbSXEcf4cwfzfIqnPiQBMeBJPBUO8xoUiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CCZ6SvZWN2qCFsqqdaxjH/tBOjWkFM244wFrtz1cLTs=;
- b=W0e5WEf2g1oGafKDPLvm4b1xQxnCv8un0v3m1iMb8hAkwaWdaMQ51+KaOSKhzezLO85l9qSDV0aZ/ct/5azEy6SBV4a8q7Dn19/3eg23jaCH0vIYu4Z0r509hMGH6Mb/T2rhv3pO9G21j/fYnOuECIIrLletXbhTZcXWhLFHxMo99NKl08Pl0vTE9Z5i1mfb4TMkb0PPa/1fMaKmDhHAtMOuVaON5QTBrPHXPMWWAWVjCel4ICUXPvyaQFHaGZxRriXjbZWrwpOF0vEQ5h/2KqNy7aGORX1ors2mraXHYcMDWS5byaMEJixGDCqSzxru3eVFF9eM0GFejzHyPyDfjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CCZ6SvZWN2qCFsqqdaxjH/tBOjWkFM244wFrtz1cLTs=;
- b=G901+8mMeszjvf78/fQ55U2pX6dEFGcw6PBPD6BF1cpcMrJZsxt6g5BHjV24TdHh5bKzCOYxsCGt5KQNwAshAKGVDT/PVOP+n3gRm/p7ydBhA8fegS2rE3jt9S9U4qcHxOkWl5PWKSVi4wAhbGaz0GM730/B3XIQV7z1g5U0DSE=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by DU4PR04MB11029.eurprd04.prod.outlook.com (2603:10a6:10:590::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.18; Mon, 10 Feb
- 2025 17:57:55 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%5]) with mapi id 15.20.8422.012; Mon, 10 Feb 2025
- 17:57:55 +0000
-Message-ID: <8d830c2c-6268-4c70-ae8a-47183b8cbace@cherry.de>
-Date: Mon, 10 Feb 2025 18:57:53 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/4] arm64: dts: rockchip: add overlay test for Edgeble
- NCM6A
-To: Jagan Teki <jagan@edgeble.ai>, Quentin Schulz <foss+kernel@0leil.net>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Niklas Cassel <cassel@kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Jonas Karlman <jonas@kwiboo.se>, Dragan Simic <dsimic@manjaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
- <20250207-pre-ict-jaguar-v5-2-a70819ea0692@cherry.de>
- <CA+VMnFyom=2BmJ_nt-At6hTQP0v+Auaw-DkCVbT9mjndMmLKtQ@mail.gmail.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <CA+VMnFyom=2BmJ_nt-At6hTQP0v+Auaw-DkCVbT9mjndMmLKtQ@mail.gmail.com>
-X-ClientProxiedBy: VI1PR04CA0082.eurprd04.prod.outlook.com
- (2603:10a6:803:64::17) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1thYBM-00000000qwy-1UzG;
+	Mon, 10 Feb 2025 18:06:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0C672A41DE4;
+	Mon, 10 Feb 2025 18:05:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 318ECC4CEE8;
+	Mon, 10 Feb 2025 18:06:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739210815;
+	bh=9exn/4ZsF5vuvnX6J4sI+LMbw0QAxfbaUGw2qKxET7s=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=bMzbYXU7pAqM8vaN+LfTd+RHouNCUWylspD71+355yoGwmaqVxbZL12NJ5ABmgfny
+	 OjA5s/GjFxGA2nmlceA4IoJBJANqaHtJkqZGpzT9JumSEi5699kTFaOQM/bHzKd7fG
+	 0lNRB1TTWq4JqCJZoxtwQUUIF1+CqUln35kgfB8cVaOHyPfcbugv+0zfCJ0tEZqNoM
+	 8IHIhgwex9NPAyOyINexrKA+vVE63tPIgVS+ihcUB9tv1dMPnnZYtyac/SVZUhVFnh
+	 lHTZA6D7saT8qrqcKn/7fBQUsj71e9i4HFlwQZdMtySeYXTLZZqFbD7ugEq1pw5+MB
+	 c6+tMrgm5ydcQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Alexey Charkov <alchark@gmail.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
+References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
+Subject: Re: (subset) [PATCH 0/3] arm64: dts: rockchip: Add SPDIF on RK3588
+Message-Id: <173921081291.95415.12801821205911755480.b4-ty@kernel.org>
+Date: Mon, 10 Feb 2025 18:06:52 +0000
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DU4PR04MB11029:EE_
-X-MS-Office365-Filtering-Correlation-Id: fdab3d83-d14f-4964-33b6-08dd49fc71f6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|10070799003|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?cnZBVkV0SE5INkE5cXNpMVM2bkkxZHdBcXVXUjV3Qkh3TUZGYlBFSG41aXZR?=
- =?utf-8?B?YnRxbVBIODFLNUJJR2R3eG5kakJEVVBBZmgwNlhRL1haYlNkanlMZGxvV0JV?=
- =?utf-8?B?ck9MMG5TV1hlRnptWHk5Q0YrM2JBRHltOWdwTHBVZ1F2Z204cWtZaDNUT2V4?=
- =?utf-8?B?MWhUc3lyZzIwRUJPVldvQmQ2U241ZVZ5WDFqUkpRNGZKYm5jVmJrYzIxMXZK?=
- =?utf-8?B?VHgzZ2tLQ3ZxU2FTM1hqaEwrUk5UN3lIam44N3BnYW4yZm92ZUU2ZGNHYVFn?=
- =?utf-8?B?SDZMMU5GREJ0YzlaUkVsck1XaEFYUCsyK0RBQlRVSWlpeUxHQWZ2b0NROThK?=
- =?utf-8?B?ME5sdDBaUmNLVTQ5cTc3bmhMTWxZZDc3dE9rS3NJSisvcTBwakJuYjFKMkpC?=
- =?utf-8?B?VUJGTnV2L3NFcFVxajZLd2dFSytKWFhMVmxXV2pBaGc2TTJkaCtjVjM1czFF?=
- =?utf-8?B?TXA1WmpGSUY2bjlaaitKZlo5OFBpTVJTbHJVVGlpZ3c3QVRNK3NlY0Zrd2RV?=
- =?utf-8?B?VDcwVGtWK3RIZWpyVUp1TTZ0TFlBQW1HWmVGOUQ2d1lSTGlPa291WjJwdmdv?=
- =?utf-8?B?ZGVBMmZEc3FIeFdUZWY3WEt1MXhzSlE0S083ZEluTm5pVCsrODljM0F1SktU?=
- =?utf-8?B?dWtoU3hNZHRzYmlIZ2VCd1FuanJxaHRWK1puQ3RjMENGbmFHNlRkaWQ5WFJT?=
- =?utf-8?B?cWUveXJPVkZPU0c1ajhnSklpZ3JXWWJsVXJ3Z0gwSFhldWFNM1dBY2VrajlO?=
- =?utf-8?B?cUNrS0lsT2p5MHhKd3NFMDNTUW1Cb0J0QWVqU1JvcHhnMVJ3QVhRS1lSa0dQ?=
- =?utf-8?B?S0tPN3dFYXFBTElkWjJ3dVhvRHJTYUNHcGtTVzNENlNvOEtKaStrVkw2cFZE?=
- =?utf-8?B?ZGZaaXZlMk5UTSt6REp1RkNRSmh6SHR5WlZWQjZnWTl4OUVGV2w1T1hIeEdU?=
- =?utf-8?B?K015a0ZoNFR0dVRLVkFsYlNKODJjZ3RnenMrVkR3UGpIbDFxcHIrT1M0STNX?=
- =?utf-8?B?bG1vWjJkL2ROZG5ZNDZEdVlBK1gwNVM0Z3pMZG1CMXcrSWRkaDM1WkFqUkZB?=
- =?utf-8?B?Q29xQW85V2NwV21Ed21wMXkwY0NmaTZtOHAraWt5cWN4eUN6WUZwMzZCSkIy?=
- =?utf-8?B?RTNLT0VNNXpNMUNhZ00rNS8vTTNtQXRMSUhyVGpSWXRha1JxZ09ZV1BEdndM?=
- =?utf-8?B?VkQ2a1FtSXhRNU9YZzJ3ZlpFaUg2SjhRZXpiU00zWkZBaVdSZUhTY3l6OS92?=
- =?utf-8?B?WUptcEd4cXNEZEVJKzlJQjBJR1hJNThFbzF0dXBzR2ttRDBnT1ZCbGVld29j?=
- =?utf-8?B?THdBeTFOeEpnb3BwUHoxeFVKWHNVaG1iZlV5cm0yd2tqbk5iTWlDUy9McTdJ?=
- =?utf-8?B?YXNxQTdZenV4dW1kSmxmOFR1cjlxM1lhbnpvYlZzcTdEUm5QOTFTNlBZYVVF?=
- =?utf-8?B?dkwwTFhXUzN5RC9XamJzVjhBQVZzK2hGVmR3QkxaVHlCekM5SktNcVZKYWV0?=
- =?utf-8?B?KzVBN3QwQksyMXcxSVNPNXlvY2ZvTGgrNkwreVNxaXFhSnExMytqTUpIR1FJ?=
- =?utf-8?B?NFZEQmFvWVc2YllEN1hOa1N6Zm56ZDBuWWNUTDIrWE9RSDhmOGFnd3VyNGFj?=
- =?utf-8?B?bGVEbW1JamZPRXNxSzAzQVIxSW51S3JSYVZEZXVzVEV5ZFphdWR1UEl4SnZo?=
- =?utf-8?B?OUF3aEFLVWt4azRBWGlxQ2drNVhLaTNKUEp6Wk81UDhFaE0rOHpxL3JkdXM5?=
- =?utf-8?B?alBTVmJ6V0tDSkdZcG5mNGpJdUd2Yk0rQVlSN2ROYXY0aW4zMnJxRVM1OVVt?=
- =?utf-8?B?MGpNNlFwRFR2UGlUc25RamYrSG8zOHhoNi91SzdZMkFGWmx2dklOZEdpUzda?=
- =?utf-8?Q?GwGiHNhIOF+IV?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(10070799003)(1800799024);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?azVpZUJoYVlieitjcjVIbFFpR2RKY2paZkRkVlNaWTAvWFJIanpEM2UzMkpm?=
- =?utf-8?B?aW1yd3NXU1VuT0Q1ZjRFeGVIMkxESWd5ejluT0QwN0VwU3d3dkJpZ3ZJU3BY?=
- =?utf-8?B?NFU0dDVQSlRoOUpndlpIN29hdGdVS09IaU5MeTQvSFRaRFZtZGw5NVdYdTlI?=
- =?utf-8?B?MkkrT3lmOTFIdWN6NitNNDYyKzVkK3dSZW5UcnNVNjdhcTVIbGlPL0RQTFdm?=
- =?utf-8?B?ZjNoRXdqSmtJUkxxMnF4cGorTHBwRmR2ek9Pa0tLVFRONXZ4NmFiZVdnOGY2?=
- =?utf-8?B?NXQrY2RITThqczZ2OHNGYTBRLzhaOXIybGwvMmVGZSt5NFhaRTRKTGlJdmxT?=
- =?utf-8?B?bGJ5M1dGblhROWpoZkR0WEdPL2YzNGRYcFkwL0RWdXBqQmRscFd5Q2lBTlZi?=
- =?utf-8?B?M0V2Q1FLL1I5RGNNS2F0aWFRd1R5OXRzdmpFaXF2TGZBRWZFT2gxSlRuUlBD?=
- =?utf-8?B?aGp5dGp6VHRmNmF2VlNQeVIyZkhHSXIrQkNMajdFWFdpVk5GNDNmcmtqN2NC?=
- =?utf-8?B?U2xadnM5alI4RHNwN1I3ckEzTnVzZkJxTUZuTlVrVU90RGJzZjd5b2R0dU9N?=
- =?utf-8?B?ais3WUlPcjNXVjVhMHpoQ1FSYkpxbkRDRGUzbDZMckNUS0tlOCtOWnRxTGxN?=
- =?utf-8?B?YzIzV08wZSt3Znl6ZkJUbmpmRnI3S1Z1VkFSUmhOVTlZcktveUFGU3NyUEpn?=
- =?utf-8?B?YVVXY2FrYjRIQW9PT3hlVi9yQ0FyaXBDZjQ0N29mbXRFaEh0OG5kME5VZ2JM?=
- =?utf-8?B?N0VFR0VncllIUnA2emxFNlpHQTRVZTZBVzNScXh3MkVLaW1FUGs2SWg3R002?=
- =?utf-8?B?WHMyU1JLWWE1d1QxbUlSWmhFWWFxanNmMWVuZXR5eS9aenlYTDdTQ2NMRlJ3?=
- =?utf-8?B?VG5pRHhnSGIya0tONjV0S2kwVSttS2MzTmZuV0ZGOWJ5QmprVWpnT2loLzlP?=
- =?utf-8?B?Rk85VHMyZldvSVBtR3AvdklrSmFpek1MRC9iS29iUm1maThERDlOVnBQS1Nh?=
- =?utf-8?B?SVNBSk5wNnZBVTh2VmQyTXFDTm80QWREellHcTJJVlhXcldsR21ZQXQyOHRY?=
- =?utf-8?B?WlBKaWh2SDJ3OEhpRUZNUDg1QnJlVVc3L2RFQjVTSjdMTklWdGIwRTFCVEw0?=
- =?utf-8?B?eDBXdGdxSldRb3J6NnZyNmRGdkV6bmZOMXpsS0tVTjQxNTh4RGZyaTVZZWp0?=
- =?utf-8?B?aUlEbVh4Yi84L2ZleThLNFd3N1RXbnNiajgyeUVSbnhZUnZHTWxxZXord05i?=
- =?utf-8?B?M3NJdkFENGpodG5PcXR1WEdiMkpqNUFGSXhBMVhnNXE4a2ZvTkpDbEl5bDJW?=
- =?utf-8?B?UERqcy81WGhXazg0SUhZTEpEOVhha3NpS3hOQkFzK0E0ZE1MRTNRbWoyVzBB?=
- =?utf-8?B?WWZNQUpFVU5TTit2VkxENkFabitFR1Y0VzFNV0xrSzJTd2ZKZDZxU0dSVGFG?=
- =?utf-8?B?WUUxQVNIT0s4dXU0QzdGKzNPaUZBcGZza2xmUTZOT1dIME9YbEpQZ1d4QXlQ?=
- =?utf-8?B?THdXaCtVMk44RDJwcG5kaWszZFZWWUFud3hlaWxJRDY4MUUxVDhFZmhOaUxt?=
- =?utf-8?B?Y0s0b2YzNDROb3pqU1NzQktUNCtGeHNmQUVKOEpXYXZOR1UwaFdtOGtnRStw?=
- =?utf-8?B?ZXpCdVdlQnFQdkhYWnpYN0ZHMXlQeVRTWkpJbGdCa25QRHg4TlJqVjhBcEs3?=
- =?utf-8?B?UnZHRkdRTkZVS0xHcmE1L004SXZ6ZWdaR3haVm96bXA5KzVVakltMWNHMThZ?=
- =?utf-8?B?Zm80MjhhR2JCU1dmSmZTSWthazE1K2hDeFBLYk1Xc0xkNkhiUG40cnY2dXpa?=
- =?utf-8?B?U1JWNnVaRHFmWU11a3k2UmQremc3ZVFxUm43TkV3MGEzbklobDlxZE05WXVC?=
- =?utf-8?B?RWR5V0NCTmY3aVkzZXdwazh5MHg4MzlMMHA5RHB1d3ZsUmh3NWE1bjBENmFh?=
- =?utf-8?B?WWZSOHRwV1A3RHN6MHRxTUg0SEJFemJnSnRpaTRSa3NxTmMyakFtUGFWd1Rp?=
- =?utf-8?B?L1MyMlVza0lZTTd1T0Z4SnBxTmRjaFFaazZiOVduQWJ2S0tGc0VsaG51a3k3?=
- =?utf-8?B?MmlXc2VJd0luWmwrRWUydlp4cDYxZ1cvTUZQc1RNMktOOGUrZllhdTNqS2l5?=
- =?utf-8?B?TjlMR1ByZmpXMVlSODd3eEgva0hFT2VTUUxJK0NLd1NIWXl1VDVhYlAxd051?=
- =?utf-8?Q?Jjuc7SfPmE3rVCsVH2yODpw=3D?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: fdab3d83-d14f-4964-33b6-08dd49fc71f6
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Feb 2025 17:57:55.0283
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: e0sZ9xFY0SCkwopghyxAD02cvY9wnb1L5TwyHgVvomnZmIXAV7LjHmdkegdHgIBBUDSlmkyd6dV/TMI7Rh58PD7TSKmYNi4jqghlG87jeOY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB11029
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_175759_157333_940A3F14 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20250210_100656_469569_6985DB11 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -192,55 +70,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jagan,
-
-On 2/10/25 3:11 PM, Jagan Teki wrote:
-> On Fri, 7 Feb 2025 at 20:50, Quentin Schulz <foss+kernel@0leil.net> wrote:
->>
->> From: Quentin Schulz <quentin.schulz@cherry.de>
->>
->> The Edgeble NCM6A can have WiFi modules connected and this is handled
->> via an overlay (commit 951d6aaa37fe ("arm64: dts: rockchip: Add Edgeble
->> NCM6A WiFi6 Overlay")).
->>
->> In order to make sure the overlay is still valid in the future, let's
->> add a validation test by applying the overlay on top of the main base
->> at build time.
->>
->> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
->> ---
->>   arch/arm64/boot/dts/rockchip/Makefile | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
->> index 534e70a649eeada7f9b6f12596b83f5c47b184b4..02f98abe1df10f44f2ac27ea5f6c6e6c6334724e 100644
->> --- a/arch/arm64/boot/dts/rockchip/Makefile
->> +++ b/arch/arm64/boot/dts/rockchip/Makefile
->> @@ -192,3 +192,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
->>   rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
->>          rk3568-wolfvision-pf5-display-vz.dtbo \
->>          rk3568-wolfvision-pf5-io-expander.dtbo
->> +
->> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
->> +rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
->> +       rk3588-edgeble-neu6a-wifi.dtbo
+On Mon, 20 Jan 2025 13:01:26 +0400, Alexey Charkov wrote:
+> RK3588(s) uses a several SPDIF transmitters which are software
+> compatible with those found in RK3568. This series adds the required
+> device tree nodes in SoC .dtsi and enables the dedicated optical
+> SPDIF output on the H96 Max V58.
 > 
-> Please add neu6b-io as well, wifi dtbo is similar for it as well.
+> Note that only SPDIF 0/1 are meant as externally connected outputs,
+> while SPDIF 2/3/4/5 are internally routed to the various display
+> encoders inside the SoC. Thus, using SPDIF 0/1 only requires their
+> device tree nodes to be enabled (provided that the signal is routed
+> somewhere usable on the board itself), while the rest rely on driver
+> support on the display connector side and are therefore not touched
+> here.
 > 
+> [...]
 
-Similar or identical :)?
+Applied to
 
-Should the overlay be renamed if it applies to neu6b AND neu6a instead 
-of implying it's only for neu6a based on the name of the overlay?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Cheers,
-Quentin
+Thanks!
+
+[1/3] dt-bindings: ASoC: rockchip: Add compatible for RK3588 SPDIF
+      commit: 330cbb40bb3664a18a19760bd6dc6003d6624041
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
