@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B353C0219D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 00:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D8EBC021A2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 00:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kWJfQ/JmW9MUF/wIoYHRoR6EoNSZWbXkNIeTs2Qh35c=; b=xukv8drrTPmBH3
-	sqTldCBN6I1p8BxDcl/+oT1phr83JlPmO/HEFNoE3QznKeBDRnXWfUDnBuQVoH+/cbGO2Pf0v7tZZ
-	ydfx6HodgzZkaHv/WayxJV0aiRyBl4/25QmwEdeB31efCLbxX0nIjdWIsfT3yFD5q8koLCgq9WkqS
-	+izCGSo8enyuyWRDcJiRHKQRIJyvRHZTjZjMGcqQL4XPKHz/CQPbIDuRibrgTWXKaUx8EE1YbTBG5
-	cIMM40Fv0oAEf1ySdCFBHbAx+5uPxT+F3z9l6GxbwbWPNVuwBefZ5yu9DW7xrTRmZwhaJ74xDVnEE
-	ofHX0WF57bHA8BH2be4w==;
+	List-Owner; bh=fsBsOwOXvoLcqM7/4nlbBsjblT0Ac3KQhTH3vSLKtrI=; b=G+lAqaAjbHQsKA
+	2i87gq5ukogdz1L3J4ji0s8dYWUVoXZAf1Vw9cx26zqkPmuEKRhsMdtpzZi1N6ijnsRg1KDC3UBj9
+	AAA0URWyfvVnTxldJhSVl5DYkSgo1EACSHdX0SKnkmMio/KleNCmFCLAdR2MNO4NyrVAoeeetm++Y
+	K42ycyx71blNJ/Wd3h3jv/UY1NAM0MSEcS2JOfmXYU1LY9up7RwissvQ3q/f+YQc20CMyeogXg22P
+	m6NcFRq3c6tolc20NkCiM0Ro45dJ5f3AwzZ1lqcME0qEuQoGW/F3S3O7+eQI36SOCObiucG5CY/pK
+	kzYeVjQhJGZiG3xqDNPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thdra-00000001w4S-3MWk;
-	Tue, 11 Feb 2025 00:10:54 +0000
+	id 1thdrb-00000001w5r-47cT;
+	Tue, 11 Feb 2025 00:10:55 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcRX-00000001gtg-3W6G;
-	Mon, 10 Feb 2025 22:39:55 +0000
+	id 1thcRi-00000001gyP-2pwz;
+	Mon, 10 Feb 2025 22:40:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=kvS9DqP0zmqax3SyP00Sw9GS2I
-	Uo92gP0M8UPaXdSmzgrjGYHXuHLC7a7E22ruRMd4I3dNFyLRg09s9ftUfW0lDHTjmT/ktg4kmNpx/
-	emplAT2M8ajyOp/GopbDtr6sWPYg1BOhsLjPTGShkdOlN5WP5ncNz3ZrAs7xD2RvGOLPmfCb0BOYg
-	UXhekBo46Y+DG8hCkL4YPqX65yZ6qTb/rD9Vcr09W2nKEqbI8mjWaacEymLr9jVaN8fL19jmpkP67
-	Wg1i2gOhxExEUZM6m4wNr8lpW3ItlgTbsOkWZ+mmtuTN9LMJgIQPaRJ7+yk9jSjYWK4qzHUwE1y8w
-	OJc47Lzw==;
+	bh=gScTzSF5SmDK0ItX+9bERNg9WxTsYpnT5wGwYZDdZ9I=; b=XCC1xDDdvYyc6lwEh97dksD5qK
+	Gz2nlLCAOjx1zgIp3+lBm70jOg2s7sBC9XDJve4ippUvKM9WOGivNj0EYWOTc1794+oZ2Z62klTYT
+	XAlaFDsH2R/yd452SUs2DnBfDFUCq3keKf41yMKHtKkwb7Jlsj4h/YhAMEA4Kj7v06Dy6Egs1cZ9i
+	9rZvkKBmuGuS3AHirwRS4y19SqDSYzEmQRdOxXzvo7q3uGliJ2IyKYjb+1aENAN6hbc7msKmOKvNI
+	+WBjt7M3RDAt2HKVDHRogMwAkDmRKPJuRbCm0jXn5VO+iR456QWYX2QgHfjQQYUeY6+in75Id02ir
+	MFtZy8kA==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcRS-00000000Kaq-37Ax;
-	Mon, 10 Feb 2025 22:39:53 +0000
+	id 1thcRf-00000000KcE-1uMM;
+	Mon, 10 Feb 2025 22:40:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=vz9QGDTtxm2pH7WNpUnco3aKFP
-	45VuVhIFJxmM0zxWcaqz4tKnYriuvIPUDywQhhgA0NnMnq7m4oceeOlA7DDh7CK3hVLoyfpSvjbaN
-	h2a2sneibS79NieSwNjnn2WvL4uGzdDKARkCGauHTNWwVXnS/Lj+JrLnQ2gORBcPLXbQl/qoLV9xK
-	c/ymuiEIaan5fgFoPD9OTjCvNn074oBaZgdpatcjEpIvA5o2VgF9JizZl5EnTeaFrmhY9Z+b/YAJC
-	K/ywni3cBV8CQYjPVl8q7hd74Z8+eGxhSuXvYgTsqMN6sW+IKIlZo2uTO5tTa93yUdtbyT1db2tw3
-	whJ8sCrg==;
+	bh=gScTzSF5SmDK0ItX+9bERNg9WxTsYpnT5wGwYZDdZ9I=; b=oJ0JHXkE7TVR/IUDGFwKNeI/sD
+	mG4q1HpllgYfpklOgYi3M8OvVd8odOMeYCCpTRlnppuqFvdkL9ULod0fQgCrcaxQRBOPTmEzRkgyr
+	uEKAUcyu/cijniZStr8pCC9+1RwkdK9niCffAZnbBPAKVYw3KUoi6mHqqatbe+DAZfNw70St5M9b8
+	8Kum7Gj3oYJsbm96A4286h/Qp3t4O+foRoxYDzD1LhTatDDyKAea2xAa9KG9G8X90+sK0tFegrIfv
+	xt5GXGoxCUaAMhr6XozoL/RpaZ4vlHrmBbyrKGXNX6mc/QEqHWGUapkVW2KbQIAhouVuMUYv1BZGr
+	laD9CE1w==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1thcKe-0008Cw-Ei; Mon, 10 Feb 2025 23:32:48 +0100
+	id 1thcKc-0008Cw-Uu; Mon, 10 Feb 2025 23:32:47 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -69,17 +69,18 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	detlev.casanova@collabora.com,
-	sebastian.reichel@collabora.com
-Subject: [PATCH v2 6/6] arm64: dts: rockchip: add rk3576 otp node
-Date: Mon, 10 Feb 2025 23:32:19 +0100
-Message-ID: <20250210223219.1193346-14-heiko@sntech.de>
+	sebastian.reichel@collabora.com,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH v2 3/6] dt-bindings: nvmem: rockchip,otp: add missing limits for clock-names
+Date: Mon, 10 Feb 2025 23:32:16 +0100
+Message-ID: <20250210223219.1193346-11-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250210223219.1193346-1-heiko@sntech.de>
 References: <20250210223219.1193346-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_223950_987481_B5ABBD5C 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20250210_224003_620295_29D230D0 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,64 +97,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the otp node to the rk3576 soc devicetree including the
-individual fields we know about.
+The clocks property correctly declares minItems and maxItems for its
+variants, but clock-names does not. Both properties are always used
+together, so should declare the same limits.
 
+Suggested-by: Krzysztof Kozlowski <krzk@kernel.org>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 39 ++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 4dde954043ef..29b47799849a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1260,6 +1260,45 @@ sdhci: mmc@2a330000 {
- 			status = "disabled";
- 		};
- 
-+		otp: otp@2a580000 {
-+			compatible = "rockchip,rk3576-otp";
-+			reg = <0x0 0x2a580000 0x0 0x400>;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			clocks = <&cru CLK_OTPC_NS>, <&cru PCLK_OTPC_NS>,
-+				 <&cru CLK_OTP_PHY_G>;
-+			clock-names = "otp", "apb_pclk", "phy";
-+			resets = <&cru SRST_OTPC_NS>, <&cru SRST_P_OTPC_NS>;
-+			reset-names = "otp", "apb";
-+
-+			/* Data cells */
-+			cpu_code: cpu-code@2 {
-+				reg = <0x02 0x2>;
-+			};
-+			otp_cpu_version: cpu-version@5 {
-+				reg = <0x05 0x1>;
-+				bits = <3 3>;
-+			};
-+			otp_id: id@a {
-+				reg = <0x0a 0x10>;
-+			};
-+			cpub_leakage: cpub-leakage@1e {
-+				reg = <0x1e 0x1>;
-+			};
-+			cpul_leakage: cpul-leakage@1f {
-+				reg = <0x1f 0x1>;
-+			};
-+			npu_leakage: npu-leakage@20 {
-+				reg = <0x20 0x1>;
-+			};
-+			gpu_leakage: gpu-leakage@21 {
-+				reg = <0x21 0x1>;
-+			};
-+			log_leakage: log-leakage@22 {
-+				reg = <0x22 0x1>;
-+			};
-+		};
-+
- 		gic: interrupt-controller@2a701000 {
- 			compatible = "arm,gic-400";
- 			reg = <0x0 0x2a701000 0 0x10000>,
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+index a44d44b32809..3201ff8f9334 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+@@ -62,6 +62,8 @@ allOf:
+       properties:
+         clocks:
+           maxItems: 3
++        clock-names:
++          maxItems: 3
+         resets:
+           maxItems: 1
+         reset-names:
+@@ -78,6 +80,8 @@ allOf:
+       properties:
+         clocks:
+           minItems: 4
++        clock-names:
++          minItems: 4
+         resets:
+           minItems: 3
+         reset-names:
 -- 
 2.47.2
 
