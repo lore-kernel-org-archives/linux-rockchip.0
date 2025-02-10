@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BA3C021A3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 23:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B353C0219D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 00:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kWJfQ/JmW9MUF/wIoYHRoR6EoNSZWbXkNIeTs2Qh35c=; b=qoEI9Luv3qflu1
-	7yWKxxL3TIubPHk73wL2sjxrfQP27z9+S3feUsiUroSJ5Kwo8DxkLUVc8THCzbm+Zu6QrQpykCKPF
-	BjYPFvSdKs7L/cXJaXTdXsWBLLs3WlU4D36AzUbOFY67QyMh+dz/Odpc+ZJEPzeKz51zL8qGrnpSf
-	zmOXv+eKC3qbkwJKHOngZVKxtFlG42Ob7sehET8VX2z8CX1RsE+JBR1rhZUoqUiyHrfDXGTK+Nzp5
-	YxfagTkEW+IDRPjZIyFTrw68jK1/BIA0Y6FzwsReWN6bM6Jexz1Qa2bQKUlMWdSzzh/Fsin0D7bnt
-	5E/8jJfe5MEHLog/lSJg==;
+	List-Owner; bh=kWJfQ/JmW9MUF/wIoYHRoR6EoNSZWbXkNIeTs2Qh35c=; b=xukv8drrTPmBH3
+	sqTldCBN6I1p8BxDcl/+oT1phr83JlPmO/HEFNoE3QznKeBDRnXWfUDnBuQVoH+/cbGO2Pf0v7tZZ
+	ydfx6HodgzZkaHv/WayxJV0aiRyBl4/25QmwEdeB31efCLbxX0nIjdWIsfT3yFD5q8koLCgq9WkqS
+	+izCGSo8enyuyWRDcJiRHKQRIJyvRHZTjZjMGcqQL4XPKHz/CQPbIDuRibrgTWXKaUx8EE1YbTBG5
+	cIMM40Fv0oAEf1ySdCFBHbAx+5uPxT+F3z9l6GxbwbWPNVuwBefZ5yu9DW7xrTRmZwhaJ74xDVnEE
+	ofHX0WF57bHA8BH2be4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thdd4-00000001u6Y-18NH;
-	Mon, 10 Feb 2025 23:55:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1thdra-00000001w4S-3MWk;
+	Tue, 11 Feb 2025 00:10:54 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcKe-00000001fNZ-0r65;
-	Mon, 10 Feb 2025 22:32:49 +0000
+	id 1thcRX-00000001gtg-3W6G;
+	Mon, 10 Feb 2025 22:39:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=kvS9DqP0zmqax3SyP00Sw9GS2I
+	Uo92gP0M8UPaXdSmzgrjGYHXuHLC7a7E22ruRMd4I3dNFyLRg09s9ftUfW0lDHTjmT/ktg4kmNpx/
+	emplAT2M8ajyOp/GopbDtr6sWPYg1BOhsLjPTGShkdOlN5WP5ncNz3ZrAs7xD2RvGOLPmfCb0BOYg
+	UXhekBo46Y+DG8hCkL4YPqX65yZ6qTb/rD9Vcr09W2nKEqbI8mjWaacEymLr9jVaN8fL19jmpkP67
+	Wg1i2gOhxExEUZM6m4wNr8lpW3ItlgTbsOkWZ+mmtuTN9LMJgIQPaRJ7+yk9jSjYWK4qzHUwE1y8w
+	OJc47Lzw==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thcRS-00000000Kaq-37Ax;
+	Mon, 10 Feb 2025 22:39:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=g8JbVn06in3CsSgeZfLbC23vca
-	H3wAw6hD4sPz61gVFfM5IKTZRQ6LFVtHH/ifww9jx0eJIvrL7sflISIFSUnhhzIyZ/CUo9G8sjj7y
-	lBk2Ws8I1AfI5lxp7v0r/0+tsLDLn7iKX9yN+Z3AF3n7e7VxUUR0sQVXPJJ+rgib1rVIrLRWMS0QK
-	EtSwIfRDkCYSXFzw2fFYna5prQV96CYA/du9dziDPUCJPSNreNtx9nJA+w8MhWcGoTn0uxmNsDjed
-	3bnwB1OBKKraiMjz5hYLh9vFkg+F4gX+66rHv5rOSSIN6GeiDtotIoxNmqUVffOX2wnlcldLqLH8Z
-	oXiKlCTQ==;
+	bh=q4Sl4j7z0914oZOToKd009OuMMVWZTH/qa7XeAPVimQ=; b=vz9QGDTtxm2pH7WNpUnco3aKFP
+	45VuVhIFJxmM0zxWcaqz4tKnYriuvIPUDywQhhgA0NnMnq7m4oceeOlA7DDh7CK3hVLoyfpSvjbaN
+	h2a2sneibS79NieSwNjnn2WvL4uGzdDKARkCGauHTNWwVXnS/Lj+JrLnQ2gORBcPLXbQl/qoLV9xK
+	c/ymuiEIaan5fgFoPD9OTjCvNn074oBaZgdpatcjEpIvA5o2VgF9JizZl5EnTeaFrmhY9Z+b/YAJC
+	K/ywni3cBV8CQYjPVl8q7hd74Z8+eGxhSuXvYgTsqMN6sW+IKIlZo2uTO5tTa93yUdtbyT1db2tw3
+	whJ8sCrg==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1thcKa-0008Cw-TR; Mon, 10 Feb 2025 23:32:44 +0100
+	id 1thcKe-0008Cw-Ei; Mon, 10 Feb 2025 23:32:48 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -57,15 +71,15 @@ Cc: robh@kernel.org,
 	detlev.casanova@collabora.com,
 	sebastian.reichel@collabora.com
 Subject: [PATCH v2 6/6] arm64: dts: rockchip: add rk3576 otp node
-Date: Mon, 10 Feb 2025 23:32:12 +0100
-Message-ID: <20250210223219.1193346-7-heiko@sntech.de>
+Date: Mon, 10 Feb 2025 23:32:19 +0100
+Message-ID: <20250210223219.1193346-14-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250210223219.1193346-1-heiko@sntech.de>
 References: <20250210223219.1193346-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_143248_247886_5299A735 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20250210_223950_987481_B5ABBD5C 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
