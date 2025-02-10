@@ -4,58 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D32C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 13:13:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB18C02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 13:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PW+07AnDjJMQ/W6cgWw5rcdTWbez+2/RgF1qRVlpvRM=; b=NmOn9TKRX/YZUB
-	4LqXDGXSBHBAKKwqTO1mWC8WPt4evJuo5kcbMUS4dg9/NaZJ6ldFXvvPXmuZApc7/8cMgjciZqPU7
-	K4WkD/yLJTAHLa1eHXpSx+/xSz8lyNbmIBqTtG5qBZS/rFmCsrtiL9ilmXcyYZ6C2A3j2v8ThNmPj
-	VByQFTbh/ZzbFH3egk90ebKiM9WuQUUdEfTuYcOK4gQpFL+NCggZMifwUaErVBY1tF2Ztzd2WXYyR
-	TNGwzoYq1IBaFJPUooEdDTLF2pBLH3TtjDjnX/qCSgcnWZVAmjz8Uva3H2isxm0PUazU3rQZG+EI/
-	i3lTmPb0U9s7viEIin8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KN0Z/lGl9wtnfa7fwDzKK+PDOLo2A0EdrPIcOld7HDw=; b=lmPrA/4QeXPm/xA8SeKLJMVuEG
+	D2Mho3zZydID01DlRtoCVpsgmtbXwaCUCuKbvpVeGNrCcmrrsc9cSCFs5JbyBvUd+XUZE1sbrN5AU
+	ztyOnmdntsN05kzW4fnhv+RRDzPZiRuEfcrckSMvA8H5MW2iGt2Wnovx78Zdaj8TYePuqyCQ3wit0
+	HgPZf0X0wnIJecXzalkxMXpkOt5fBxthd2lE2wgLDCs9gZ74gkt1LqklsMSAis3QGzWujMWko8U2T
+	VAnrKC5ob+e943O4BndfbjvGLetgJCLpQw4/MQzqdlFmNDaNbZTiEGDyBNfUXp8MeKUwE1k2qzwQ8
+	hWuiVYAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTao-0000000HVKZ-3mA3;
-	Mon, 10 Feb 2025 13:12:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1thTlg-0000000HX7u-1M2w;
+	Mon, 10 Feb 2025 13:24:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thTam-0000000HVK3-3B0J;
-	Mon, 10 Feb 2025 13:12:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ciWRVZkQ9j2tyd4uX+oemeWAvXhKk4+4yp01dpYdRZA=; b=RAV9hxnjvFFmJpnvDXAaLc7cvc
-	D1+sixqRRZYRhNw6BXb4RXQz1s00EyeV0zz+wgQsvReL39hoRcoRK9IsZ7z9TJ3jR76vIN5YM+C0p
-	wDjt0GHSHoVsdrOBC3J4dH/zqJE5kMJHZbJ0+Uow2M5m5yU4x64/772J5uNZI3xxH95hkIPlvIQ3E
-	VK0oW1JlR6Hz7AZ2zZRFJhlHz5Q+YGlQhKCIdGvLwiDlpgBt/Tv5CtjbNR5NpeCi+uFDuavZGWP+D
-	vnzjZAZpbDm0DrWinjUL6llQcUVAtDHawKtVpFCZdw55bbbmC+rzs1thcgtcEG5BYAutYK/GcvVSu
-	/3PdCOgw==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1thTah-0002q6-Oy; Mon, 10 Feb 2025 14:12:47 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, Jagan Teki <jagan@edgeble.ai>
-Subject: Re: [PATCH V2] arm64: dts: rockchip: Enable HDMI1 out for Edgeble-6TOPS
- Modules
-Date: Mon, 10 Feb 2025 14:12:47 +0100
-Message-ID: <2928143.Icojqenx9y@diego>
-In-Reply-To: <CA+VMnFwHEXWP=d_X0T0E9fHFDCkXHxpvgML6jAHNfh9ikXTZWw@mail.gmail.com>
-References: <20241227132936.168100-1-jagan@edgeble.ai>
- <CA+VMnFwHEXWP=d_X0T0E9fHFDCkXHxpvgML6jAHNfh9ikXTZWw@mail.gmail.com>
+	id 1thTii-0000000HWHA-2xAF;
+	Mon, 10 Feb 2025 13:21:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5F1075C566F;
+	Mon, 10 Feb 2025 13:20:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E68AC4CED1;
+	Mon, 10 Feb 2025 13:21:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739193663;
+	bh=lbvK+R1S0to4+sFyhCiUUSM/9FdVL8vJT6v3dpUi7Tw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=j4AESBWgPJM5RvSJTGIHU0D2oc2AIw6rs1zeVJykHsy5YANen2b1FheVdgalp7tNv
+	 6qZvfth7GK8vEabaQRhJM83TGlkw2klGjo3wm0NKdjRxyo5WTzDSKAQ2bwGgabUOX1
+	 tTC+I6tyWiqEnc3SaAoyLwOt7x5HAaBl879+fk1IwRmsz0qsz1jTeNNr2We3xkRtnr
+	 kpYw2VFkiB+e3EB0T9wRS4HEpQkkWbeL/hrizEDfFeLOl3PuXe6RR30yThrHvvGZBv
+	 R6KEpvmiyTUQYjyedx8LNofbDxbZCG2B0mqh09dE1kQ+PAJKvjZOmI9r5Rr7gIgqAb
+	 02RLkMRZ5kwfw==
+Date: Mon, 10 Feb 2025 13:20:58 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: ASoC: rockchip: Add compatible for
+ RK3588 SPDIF
+Message-ID: <56d128d7-c4bd-48de-b823-0b88147220e1@sirena.org.uk>
+References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
+ <20250120-rk3588-spdif-v1-1-1415f5871dc7@gmail.com>
+ <4315116.iIbC2pHGDl@diego>
 MIME-Version: 1.0
+In-Reply-To: <4315116.iIbC2pHGDl@diego>
+X-Cookie: A beer delayed is a beer denied.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_051252_822041_8AEA2AB0 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20250210_052104_788118_95B6AD1E 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,45 +73,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8298800478091378003=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jagan,
 
-Am Montag, 10. Februar 2025, 13:51:07 MEZ schrieb Jagan Teki:
-> On Fri, 27 Dec 2024 at 18:59, Jagan Teki <jagan@edgeble.ai> wrote:
-> >
-> > Edgeble-6TOPS modules configure HDMI1 for HDMI Out from RK3588.
-> >
-> > Enable it on Edgeble-6TOPS IO Board dtsi.
-> >
-> > Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> > ---
-> > Changes for v2:
-> > - Rebase on top of Cristian's series
-> > https://patchwork.kernel.org/project/linux-rockchip/cover/20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com/
-> > - Update hdptxphy1
-> 
-> Cristian's seems merged, please queue this as well.
-
-only partially, i.e. I merged patch 1 of 4, because actually enabling the
-hdmi1 controller needs the alias-removal from the phy driver, see
-Cristian's link "[1]" in his cover letter.
-
-And phy maintainers seem to still be otherwise occupied [2].
-
-Heiko
-
-[1] https://lore.kernel.org/lkml/20241206103401.1780416-3-heiko@sntech.de/
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/log/?h=next
+--===============8298800478091378003==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="eAhunf2YJnuAvrBB"
+Content-Disposition: inline
 
 
+--eAhunf2YJnuAvrBB
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Feb 09, 2025 at 10:10:47PM +0100, Heiko St=FCbner wrote:
+> Am Montag, 20. Januar 2025, 10:01:27 MEZ schrieb Alexey Charkov:
+> > Add a compatible string for SPDIF on RK3588, which is similar to the
+> > one on RK3568.
+
+> as the binding is more in the driver-realm, is this patch still
+> somewhere on your radar?
+
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so=20
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  If there have been
+review comments then people may be waiting for those to be addressed.
+
+Sending content free pings adds to the mail volume (if they are seen at
+all) which is often the problem and since they can't be reviewed
+directly if something has gone wrong you'll have to resend the patches
+anyway, so sending again is generally a better approach though there are
+some other maintainers who like them - if in doubt look at how patches
+for the subsystem are normally handled.
+
+--eAhunf2YJnuAvrBB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmep/TkACgkQJNaLcl1U
+h9AzqAf/T2ZOQi4K9XfreabaTdPLm81THw5/XTKa/58i7z3jL11ZII9/Ysaw3CiW
+YnuvbkR4j45WfM2AeD5BDn16fc9h+DDbNAqYefOwFO/tr98gejqkWblnx/rFpF9D
+fNI/hH0hv+8unMp08sB+jdTjf48MtQHASTCqR0+MO15cT1pdgIvsz/ylNbkXo/c5
+xrcpltcyDN/xa3QFa0WCIVcDQCRRUAdHuZt1dICCy7dRD7Jac+4PclQEYxMblt24
+GkCkLXIUE80m/HlOcLqS2lJAELD/hV/aGFCLeo3PCaxKovKT8vj/6JKdhPvweZik
+OOKsJg5hIinmNvYGZELSgMat3B6BbA==
+=h/Aj
+-----END PGP SIGNATURE-----
+
+--eAhunf2YJnuAvrBB--
+
+
+--===============8298800478091378003==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8298800478091378003==--
+
