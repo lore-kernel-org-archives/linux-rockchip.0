@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE260C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 22:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 238B5C0219E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 22:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZHeVTfP6ecmSnhduiSua3K+HyOvcvxWEWFHoDvNZoYw=; b=e1DM+6cFWtSS7H
-	nXalShmzy6TUPjzupy84S0xixPijb6RwOzKyaofde92t4IDz3hOpx8tczT/3BnxB1rmuz7zpgN4nY
-	sg/w6QthbzyFE7N1zDtdodlOOqRZnRXdoioGZJ0HWc/pnIVGtdrZeP10t/9rJ/X1IRbFCfTTbD00Q
-	GvvjTsAv9JNnRPgi6uP0Fes9+us0XsCORb0zwQE6ncN9MrKeqzcAn/BtKNeax1B80nNY0Fq5aZKqk
-	Laib0fLe9SN6BtpT5K5x5UA7alInUb7JRBS+eVHCb+kffVXFjc1qQOKyLh/P5IRgTLR3PVfeahGPe
-	i1fPnzsMEiQfPZLgJQJQ==;
+	List-Owner; bh=KFh+r9fG5+DCKMH9juFTNGkFNBLJ0DIDL+XSDUqKHyw=; b=sa9yBDTD/Y6VuI
+	tmIcaxbXmixJVQey8r2ym68a2HAl8Ih9ASNlZutqYoHm4gMdoDsSZyBcxm1x1qAQojM8Cd9nPac3r
+	DygYvteMOAmHoebZGNmia7zYm1ymFuK8/PgMg4kTF7IrdIYrppgwHMh2MVxf5EWdXeQzMcYwlvWNp
+	nZWdPKO7vMQa5Q66nywoQ2tLmWALC0etC4FWQTPOm2rNLqbzml3FU+VokVOcEkVECiNrmtP92taNU
+	4Y1txea2/hvwbzcv8paZz4NvIDHiOz+ITsKMDc+y10/pFfIJDtFfmOAnY0FmIqEbVEHeVwQ0PAYrM
+	eVo2Ob+AdUyjALI9WbbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcdz-00000001jlh-2lsN;
-	Mon, 10 Feb 2025 22:52:47 +0000
+	id 1thcdy-00000001jlD-3s6R;
+	Mon, 10 Feb 2025 22:52:46 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcKg-00000001fOn-1WRQ;
+	id 1thcKg-00000001fOl-1EPf;
 	Mon, 10 Feb 2025 22:32:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=GidM2RkVPSnp2I62eKw/eMu8qqKqT/4Si7o7i4IuzDE=; b=miCr2qbdGNKk0Zt0U7BGPWXpas
-	tfFsW0Ad0pVgTR5kcYndyYrEsCinZM9B26Nt+4Hp4P+MNG7uk1MSFGTY8ZZD4TV5T5aTBP/jy4/1N
-	NK42DlmVPONmTCH02LOygu84XNi7OzEq4SoQKXLv4Xn6H4obnvcsU5CdJV8lMdGrU+AOPV7lnHdan
-	RKLhN5Goy795Jvgj6umXKpX1u7fadHyxvB4kFm1V2cO0vtdG5/73xum2ovkZ4dj/4qKv4MMxSvOaD
-	u2oxk8AQjxqlTlsK1ow0poD7IrLCxcgUYG9q7Us34nJWsizJxl3WT6i6T4rIXEcCtMAqQmsHEFmp2
-	PLxk4wjg==;
+	bh=GpXTu8Jl9+ElR55rXNmhyGQY8Q6lpRd3ddRiifaA3MA=; b=EHLRYq9E9U0ANs60KSFlyIT8iu
+	GxtsEx77NL7g6eV/yTmupKLov7N0Prr0LV59pdtHiKGDsvV4pVn+DAnajKgYq4eXtaqNjJ802EEMo
+	vBrEhlddGxS+XY0IeI7cIZbQ9sKA9icqIOLSHjS9c+TWfgAW3GwhKv6yYs/b1xlio/h+6WrJK+TDt
+	pkuTCpZiSCMpyx6ZYBCbIsRjKFwx63NW+eqxHj26u4RliNRnZ8ZId3bpkEXcLyB1ocaPQym25O+gb
+	1AYcm7wKmoqU9wrxe9E6tVlBhLf7GwywKk0kcTwSYanMXlW+qKWe4B30GWoMpuB8RisDGHinHVQLI
+	7GM23SXg==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcKa-00000000K5j-2GGx;
+	id 1thcKb-00000000K6S-1HP9;
 	Mon, 10 Feb 2025 22:32:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -46,17 +46,17 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GidM2RkVPSnp2I62eKw/eMu8qqKqT/4Si7o7i4IuzDE=; b=GfnF3P8bhvS9jzHK42chkWADiE
-	WuuLSjKiarYcW4+B1VCieQyy0/LmG3Ar5FjU6MUPDcDisJAO4osHCiLu1vPZ2zXe3r6ZMh2E6xB+i
-	Exj6wCLJ/cvLo2/InQzd7/MTSwPaS1U5azHVeFM6D9wGJSxehZeZkM2RIyxh3dRBTKMvBWW7wiVzm
-	DDRrNb72vs+hztUiYA7cjR53RBFJnrH66HhR++kxyLBUsVeamyVRu/P4LmafAKA9Uge/2pOiT6nan
-	ZILSW+7AirKurunsweT+U7UXjPtpq3euE+y6Q7JYsECR/z7BHCXwSBamwfZgUdq4smJGII2+3S0T5
-	sgDquNvg==;
+	bh=GpXTu8Jl9+ElR55rXNmhyGQY8Q6lpRd3ddRiifaA3MA=; b=CNVDhRiuVFz4HaYiB42Rf9J1Tb
+	PapWjRIMClwgYxNo5dcOZ1vx+SqIFLiNCE7dNHbb49VIfjH7w390FEKt6Vd/AgtH0ujBtxydPNhBl
+	vdgi91fphzxk1pxXt0e0Nf2b1o2ojjP4pntFBz8QCvqWpw/OL4ApZOZcbuWKzcf2FIqWmLAFXqTtJ
+	8dNnfoJgCWzedSmOUfWh4Hv+laNQubzMqa34+ebXiGuyPF/0ZOIpQzpHjOgKrD37OHBeoboYqQVpD
+	Vrb8qvEfTsexlXA/Zo0AvgDeCtdGaaUGXhbUsFWhv3vFmAogHo8VwpHNeXzhNutuLAaYAtcWGMlKX
+	OwR3TUDA==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1thcKY-0008Cw-Qn; Mon, 10 Feb 2025 23:32:42 +0100
+	id 1thcKZ-0008Cw-SL; Mon, 10 Feb 2025 23:32:43 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -70,16 +70,16 @@ Cc: robh@kernel.org,
 	linux-clk@vger.kernel.org,
 	detlev.casanova@collabora.com,
 	sebastian.reichel@collabora.com
-Subject: [PATCH v2 2/6] nvmem: rockchip-otp: Move read-offset into variant-data
-Date: Mon, 10 Feb 2025 23:32:08 +0100
-Message-ID: <20250210223219.1193346-3-heiko@sntech.de>
+Subject: [PATCH v2 4/6] dt-bindings: nvmem: rockchip,otp: Add compatible for RK3576
+Date: Mon, 10 Feb 2025 23:32:10 +0100
+Message-ID: <20250210223219.1193346-5-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250210223219.1193346-1-heiko@sntech.de>
 References: <20250210223219.1193346-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_223245_103333_172574A5 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20250210_223245_545239_4FD63473 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,56 +96,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 has an offset into the OTP area where the readable area begins
-and automatically adds this to the start address.
-Other variants are very much similar to rk3588, just with a different
-offset, so move that value into variant-data.
+Document the OTP memory found on Rockchip RK3576 SoC.
 
-To match the size in bytes, store this value also in bytes and not in
-number of blocks.
+The RK3576 uses the same set of clocks as the px30/rk3308
+but has one reset more, so adapt the binding to handle this
+variant as well.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/nvmem/rockchip-otp.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../bindings/nvmem/rockchip,otp.yaml          | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index ebc3f0b24166..3edfbfc2d722 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -59,7 +59,6 @@
- #define RK3588_OTPC_AUTO_EN		0x08
- #define RK3588_OTPC_INT_ST		0x84
- #define RK3588_OTPC_DOUT0		0x20
--#define RK3588_NO_SECURE_OFFSET		0x300
- #define RK3588_NBYTES			4
- #define RK3588_BURST_NUM		1
- #define RK3588_BURST_SHIFT		8
-@@ -69,6 +68,7 @@
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+index 3201ff8f9334..dc89020b0950 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+@@ -14,6 +14,7 @@ properties:
+     enum:
+       - rockchip,px30-otp
+       - rockchip,rk3308-otp
++      - rockchip,rk3576-otp
+       - rockchip,rk3588-otp
  
- struct rockchip_data {
- 	int size;
-+	int read_offset;
- 	const char * const *clks;
- 	int num_clks;
- 	nvmem_reg_read_t reg_read;
-@@ -196,7 +196,7 @@ static int rk3588_otp_read(void *context, unsigned int offset,
- 	addr_start = round_down(offset, RK3588_NBYTES) / RK3588_NBYTES;
- 	addr_end = round_up(offset + bytes, RK3588_NBYTES) / RK3588_NBYTES;
- 	addr_len = addr_end - addr_start;
--	addr_start += RK3588_NO_SECURE_OFFSET;
-+	addr_start += otp->data->read_offset / RK3588_NBYTES;
+   reg:
+@@ -70,6 +71,26 @@ allOf:
+           items:
+             - const: phy
  
- 	buf = kzalloc(array_size(addr_len, RK3588_NBYTES), GFP_KERNEL);
- 	if (!buf)
-@@ -280,6 +280,7 @@ static const char * const rk3588_otp_clocks[] = {
- 
- static const struct rockchip_data rk3588_data = {
- 	.size = 0x400,
-+	.read_offset = 0xc00,
- 	.clks = rk3588_otp_clocks,
- 	.num_clks = ARRAY_SIZE(rk3588_otp_clocks),
- 	.reg_read = rk3588_otp_read,
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3576-otp
++    then:
++      properties:
++        clocks:
++          maxItems: 3
++        clock-names:
++          maxItems: 3
++        resets:
++          minItems: 2
++          maxItems: 2
++        reset-names:
++          items:
++            - const: otp
++            - const: apb
++
+   - if:
+       properties:
+         compatible:
 -- 
 2.47.2
 
