@@ -4,77 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC27C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 21:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46A6C02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 22:23:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pCMODv79FecyINAyRA7niKFNTS0r3xUAAC7RffJM0Hk=; b=P9SZgIaaegXjki
-	ZtLkRiR66fLQ8hVr6RTjc1J8nORGC2D1WUMFi4a8Ey47aaVptUn0JbtNbUYGBOVu7wNfY4AEYAeDu
-	l6tj52+nsM4hdsTupKLaRtsQcKtsdmUGWPLotqidV8R8AONCp87Tb+2qdFxAKwEMw/ohx473Mafa4
-	V6t1ok9ONcfmYjo5ujnXgQfSCR+QWzwyAhy9jxecJ6LI6pX7PIbugeUh4/5oK7PQkqGvRsDqukqIb
-	YB10c+v2qipVoxDkMIFes2aGKVYxOvzQE6wlt0qMgPsSxdMeCByuQ+yA31hQMMdq+TS+z03d30eQQ
-	sYbT7WvvKN55C00ZE0TA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5n8XQbmoKJnKYXlMylqm9MuMpxwUpPkOKUQVOVi1w8c=; b=MXBfVei84vanhJ
+	dIqX6OjHaU73ZDL9ieE7VsrxCD8yReMhA4O6k/j0a2iJUuwkOCPLgLyR7/10lXtn+oSaj4SFvS5df
+	+RNGMgDJePrRsefIXNvx8EoSONkI1aGVEmOqBdfzNQ0sHFkUvIAePKG1ic14wmnuQaGxwRpFeUVmT
+	8WTxAkfedcFx5LKIft1YiyvVxgCb4qrfh12vkRbYyHmEGwxZHUq+pfa+PNYDUgmsgRPou1hhHTFsU
+	pSdeJvXypOVkqDEKoKoBWhgK6roYT+Hn7LHYtE2oiHiQG0DE8hlEVMfBr1nGZHXehBAtRHoC8ZM+C
+	9V9CZN3OOwe9y5wAMO0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thbkt-00000001ZnT-2Ywh;
-	Mon, 10 Feb 2025 21:55:51 +0000
+	id 1thcB8-00000001dm5-3dM4;
+	Mon, 10 Feb 2025 22:22:58 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thaks-00000001PRe-2wYB;
-	Mon, 10 Feb 2025 20:51:46 +0000
+	id 1thc2z-00000001cEm-39uJ
+	for linux-rockchip@bombadil.infradead.org;
+	Mon, 10 Feb 2025 22:14:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=z5oKt3XXLHGHJrEW0fq5xJQ0956ey9sHyzc1yPBS9mo=; b=F/4OTP0gpsUH+jW2VonLYlDq01
-	VFmt17gsW8orpUTtLmIGcdYV+akCrfPzjQp657D3UKF/CGdeBr16YyXeqU+e+nNgl8EdKVNb23wDm
-	Tt5v3aArOPY0D4yrhCZ5MCwxs9vWxW/vc/F7Rj0hO48AogyGlk0utti3FG8DxdgkdjAovoklrKbcf
-	2mDwoPQUOMn/kxDuq9g1Qm5NewIWGiY41TvzFefGyvHmFPE/xzPi16ykWzIiZ8y4zRkTE5kWpzVQM
-	QU/rkNEAS4PW6mz4JrAhxLfThA/b9I4A4J8INnWoSurgqUsoO9gwSCcc4fmmdtuUZyjYvwHO7ZY1U
-	Tc2n4vrA==;
-Received: from gloria.sntech.de ([185.11.138.130])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Ozhv3Vnu4lRs9Pkbjl4o5rRMNwS9TWIXe5qbazgH48Y=; b=NQQbSo5JcWTaGu4dqCyUb+KRo1
+	H+ec0dDXpRfeo0HZgLtwFRpBgnmrlq2Dwev9ep8MQJVLzYLeVmUrKLpTLsWx+J+XV3G1O3TYcMgTI
+	f5Sf8rd64MizLeQCuyU+aDx//1Gp2SwY35naG0xDmZ5ICKkFmJ7iOx/gbq6TyJfXw7L5atxPRlcQr
+	qNNhg8gwjMFTFN5HAnJGJMoMYIECZJ/+W9qCYrOtmYTm+ZR5mJxoYMSOjY8gT1nyr9r/0lMGEg4a0
+	rpWsrSEeGFpus9DhBWXQjHyxlPtfAcA3yhzdezu5dkMBUjI02gyGGjvWjtnoGABYToxlv6NinpBZ7
+	vHNFdMig==;
+Received: from mail-wm1-x362.google.com ([2a00:1450:4864:20::362])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thakp-00000000Fyg-3nVu;
-	Mon, 10 Feb 2025 20:51:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=z5oKt3XXLHGHJrEW0fq5xJQ0956ey9sHyzc1yPBS9mo=; b=DhQgYNuegMfRUdP6y+pJ7b0F/p
-	hvXTQ3yf3WsjmvC1T5fTdnFP8Zyu4/wR1MV+QZ/pS5lbskN3TcRF/YcWhQ01JbHfkq02fM5+bg5ZL
-	MW9TtwP9/fMVaOIvBvkT5hYKQzo/KCjj7cOmS8lZtjrZtHI45iT3dvsKXiqkfODAuno0qf9DwKT1d
-	cLSGup0x1PK3sDOeXcmCK5ChAlhXErijQLUd/syNHP13CQbXUi9IDtm4YEETofliQLdNrj6nAn7+6
-	0iYS8704BbaFro8wdfdjknpqqwF7/VgzsgKoMubZ0UmEVCtM2unxY+Wv2erP93WnTkzXUQkrdBk+i
-	GagVWZdw==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1thakl-0007Ka-IT; Mon, 10 Feb 2025 21:51:39 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	jonas@kwiboo.se
-Subject: [PATCH v2 0/2] Rockchip - add Firefly ROC-RK3576-PC board
-Date: Mon, 10 Feb 2025 21:51:24 +0100
-Message-ID: <20250210205126.1173631-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1thc2v-00000000JR3-48fv
+	for linux-rockchip@lists.infradead.org;
+	Mon, 10 Feb 2025 22:14:32 +0000
+Received: by mail-wm1-x362.google.com with SMTP id 5b1f17b1804b1-436281c8a38so32391175e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 10 Feb 2025 14:14:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=patrick-wildt-de.20230601.gappssmtp.com; s=20230601; t=1739225666; x=1739830466; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ozhv3Vnu4lRs9Pkbjl4o5rRMNwS9TWIXe5qbazgH48Y=;
+        b=OK1pBOpFbu30VUjjsE3rY9yrXHx2UDdyFBCRM/rblV/AUOtbp9ibJewfcE2SB6U3Eu
+         5z7IE007kMRza91eyLuMvCM/+BbZqXknR2Y3fGtRMYRlzwSuRfqlVeGIjKNIuJpE0k9S
+         na6wSEguOze4R6KImLcTCbvK9ScFTi6wTUErXFSIPnoW9vS7fx74oUDAtm8oPvmxF2wd
+         cg2/opDYg/o46W8A/Ha9WP3e2AqaNfws2qAnPbQlxGMJEitn/wBTJTGA26e6z7b4xARO
+         8lioH/4fuGAiG2qaDWNv4WA57SAUmkgVA1256nAKZcbnnxSoEZRhLtDoYxcKEf0oBZez
+         4Jjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739225666; x=1739830466;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ozhv3Vnu4lRs9Pkbjl4o5rRMNwS9TWIXe5qbazgH48Y=;
+        b=KWkVJFgG/ewA3sQVtS6pWBFawx9dlUXqhjNeNMb9JrkI6k70pWW+4w9SNVnjnIqsEp
+         dpfDODkPz5ERX2RaY4y5oWDebrMKDV7GEIxX1YM8ygJjuDCHW5HmFxGAEwG39mSRWOps
+         +GJUykRdJXrXqirdL0L4n5QHzjW2elXPTW9dKRMkqA43qNJZZVmzQTIJf7aTpLNWC3QO
+         oN+1m9wH2speymMXeOdR1V5/dMmA2YC6Ym4pCsutYU25iSbah9AI2Z+KaMS2QDC4jRYy
+         fsNdk6/7kXdrF/0GN3444lHdRuwxAzV10pS4bMruiB4LHpVHwyL1jK/jI+76wGxkktG3
+         dZIw==
+X-Gm-Message-State: AOJu0YxnTmr7a0O6FD3/fIqJjZ1htEM3hTj+kWes8WiOxzF/F08QeFhd
+	ufC++ZglYn5bNYa0Tt+1J+oOFZ+7Ict+AMM5V/2AoIN8sAd08WRUt6rg5LZB4l++iYE9pUdA8Wb
+	++l3pTqxC3+UfESVTxyDEbUHTfO8kQB4V
+X-Gm-Gg: ASbGncuTDuuo+Ylh0lAiftLCFQFI6yWKD1WPN1DtnCTQOCPoLfNMouv6a9wQ2Fcnbwg
+	TBderPmdFzfdDQHcQrVpre4FjfhaFPVi06zy0Kej5EPQPkKHkUJOx6ikPzyYKlSbMzz2vbkbaNN
+	wkz+BQ32FdiTTN9PA8uRWc1QYwCaGPDX/VPKYiwE9IqfqOQ3+pFuPaj5qiHV62BGzG46JmTRmt9
+	RQsFlMY8AFXqprKvHKyYIu9+MBYLzg1eI3KDWDrYFKWlcM0n2CcwijL+SmlLUmdpPdu5KrC7Wr/
+	KSDnoPVkCDSbwOZgi+6KAFsN7V538MsE
+X-Google-Smtp-Source: AGHT+IEtVEvJBTL7NTyIlWVziNX5ymcX1eXzKuEmInRMi/mZ4WjeAQ95vMBKEwBIFHdMmikZVxvQOGgC0ZpM
+X-Received: by 2002:a05:600c:8706:b0:439:350a:ab52 with SMTP id 5b1f17b1804b1-439350aacbemr93761305e9.30.1739225666202;
+        Mon, 10 Feb 2025 14:14:26 -0800 (PST)
+Received: from windev.fritz.box (pc19f8e2d.dip0.t-ipconnect.de. [193.159.142.45])
+        by smtp-relay.gmail.com with ESMTPS id 5b1f17b1804b1-4391dfd4ef0sm9443255e9.37.2025.02.10.14.14.25
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 10 Feb 2025 14:14:26 -0800 (PST)
+X-Relaying-Domain: blueri.se
+Date: Mon, 10 Feb 2025 23:14:23 +0100
+From: Patrick Wildt <patrick@blueri.se>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add MNT Reform 2
+Message-ID: <Z6p6Pw34JsEa06Gc@windev.fritz.box>
+References: <Z5toOecuMiBXM6aF@windev.fritz.box>
+ <Z5tobRnjXmr4dl7j@windev.fritz.box>
+ <cd6edfed-08a8-44de-9bfb-5199fd2813fd@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cd6edfed-08a8-44de-9bfb-5199fd2813fd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_205144_110466_71840E96 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250210_221430_356831_108363CD 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,26 +120,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds a second board based around the rk3576 SoC.
+On Thu, Jan 30, 2025 at 01:05:45PM +0100, Krzysztof Kozlowski wrote:
+> On 30/01/2025 12:54, Patrick Wildt wrote:
+> > +		rk806_dvs1_slp: rk806_dvs1_slp {
+> 
+> No underscores in node names. Missing suffix also suggests this fails
+> tests, so standard disclaimer:
+> 
+> It does not look like you tested the DTS against bindings. Please run
+> `make dtbs_check W=1` (see
+> Documentation/devicetree/bindings/writing-schema.rst or
+> https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+> for instructions).
+> Maybe you need to update your dtschema and yamllint. Don't rely on
+> distro packages for dtschema and be sure you are using the latest
+> released dtschema.
 
-changes in v2:
-- add Rob's Ack on the binding
-- move ethernet-phy-reset control into the phy-node (Jonas)
-- some sorting cleanups
+Hi Krzysztof,
 
-Heiko Stuebner (2):
-  dt-bindings: arm: rockchip: Add Firefly ROC-RK3576-PC binding
-  arm64: dts: rockchip: Add devicetree for the ROC-RK3576-PC
+You were right, I did not know about that; thanks for bringing that to
+my attention!  I've prepared a v2 that I'll send out now which does seem
+to be happy with the schema, and hope fix those issues plus a few more.
 
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../arm64/boot/dts/rockchip/rk3576-roc-pc.dts | 736 ++++++++++++++++++
- 3 files changed, 742 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts
+Please let me know if there's anything else that I might have missed.
 
--- 
-2.47.2
-
+Thanks,
+Patrick
 
 _______________________________________________
 Linux-rockchip mailing list
