@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EDB6C0219E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 16:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE67DC02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 17:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/7aEjBtEroYwdXfTIDNyI8g8FXgt49LlDjhWGxAl9RA=; b=jjYUPOqraU6Bs9lHho5Z5iiX3E
-	cU0BgaQP56LVZFxFVPaZ24RiB7OFiiOZwf+3vbVDjvKycl1KUOhkYCwstxtAWVxCqa2Wq6w3JCmKH
-	jS1QMT1RSrtnjSic3BFfYtoF0DdL+RcutXnv2ILdgp6xfcKlk4KBoFEJ3qy8YR75N7Sjr0OZQjunJ
-	nSMq/wlW1bw6nUkaOiHrrEx9viG29EcYU2W9DmFcu3JwPPdLOzlFOSnaRsLFXMiiggHlcKFoDBpPm
-	WGTcwVucvyDDWLFC99LgV5NH48RmLyoHHaK7YAy76R9xehz3EKslYfSley8KWqowSu12f0yaazBK9
-	1atUdTWw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=szafhjoXPle5uEC8FhD0QUOCMqKT7qraQFNZhIEWhZ4=; b=fYLD20dsKRE3gW
+	dDT/qdPklN/zhyZofhxFNnOlCvr0VK651EyDwxXbpdgb/X4GrNaZ17QJ/REKg2nhewPAAoqm9yAbv
+	/GYgHb/l5ykL/XdfQMF7nn33nbS1fj7q70Wnt0nh4v3xBesYMdYmxxH+P/u0p+ZdV3qZUv1vBbw5R
+	O/DQUPdrRVkUNcRj0BuFNxjajRrUkw5Ic8zrEiyG9fokxjsAdNtPM4iw5e8h+7S+m03n5KS7/uqbC
+	IU6fHC4BXU4CWxb0STeqoNMqxO5wVr0FtBe6X1Dr2jSQuz5GGr2V5cyZWOp+kcCaT1pI36XMniPLu
+	gt90JAeruz1vefRQjEPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thWbG-00000000VUN-0Z93;
-	Mon, 10 Feb 2025 16:25:34 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1thXjv-00000000l3k-1VCX;
+	Mon, 10 Feb 2025 17:38:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thWYU-00000000Uop-0j8L;
-	Mon, 10 Feb 2025 16:22:43 +0000
+	id 1thXT1-00000000hP7-0FeI;
+	Mon, 10 Feb 2025 17:21:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E1B11A41971;
-	Mon, 10 Feb 2025 16:20:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15A98C4CED1;
-	Mon, 10 Feb 2025 16:22:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id EA3CE5C5D34;
+	Mon, 10 Feb 2025 17:20:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF717C4CEE5;
+	Mon, 10 Feb 2025 17:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739204561;
-	bh=kXnRrtpV39SwJ3fcBvjLSZwpqpYLRosn3Kr11L23x3o=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=hWAtW1hLKsWoLontOWKvHpdOmEO2IITitGT0NfFAEuB4r47VAG76FSqoR2ZWk8vN3
-	 P9SyUYgzsYXdvUBdZzbZMFyTTDYvyVnoQzWhAyFfu8Qn+jtCLqgnrfxP2A2xdbyb7u
-	 nP6mhR18xxVbTAItzJtEWFVAsRcmqDBejL8nVr+KfFfNgCShUAzPTPbJEYE00yJsWk
-	 JW76XLb0f0jt+vhg+Fk7owtwAOZ/YQ+ZM3mN6H4/66bm5/1bJfn5zjr/TKMoHeV0mW
-	 /vndejKtUWHaAb4H9QL+O9LcV6VjnAAYCp4xjLALP6CG9ZtmDclPjaXwdzoANNPiOK
-	 xBDMskEjK8Xng==
-Date: Mon, 10 Feb 2025 10:22:40 -0600
+	s=k20201202; t=1739208066;
+	bh=RMFU5GP39FFSVcqZoZvFhdL1KLNkmqLG2J7nHXa6xMY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=tH6XojV9s+UfBiBEnH9I7otR7gB4HdR0bp9RO9MTROrdGlsjDOhzpDlB/mPw+WBY/
+	 rvRqDLS3sMxirNQsjLfrM9bsHqgY9gnl2MaovP8VmGiTP/7tt6iijTcacL3qaKZgiX
+	 6aGhstltDRzXSpk4pO9t+t2ZvloPN16d9h9zvi/B3uGuK/JFNwtN9Zvvb0q3nEiAnm
+	 uMD7ikemWxQyAre448kmWWsZHAJA//fcHpjMQMzoecg/PWFpfwAKoyrykgGdEBaCCW
+	 lAm+r+H8Msu/YLK0YkuUFgs8I8P6TZi2jiijLhO/SVMXXyhePLdkWwNVvSqDeCOYnS
+	 GrShqsgHmWTpQ==
+From: Vinod Koul <vkoul@kernel.org>
+To: kishon@kernel.org, Heiko Stuebner <heiko@sntech.de>
+In-Reply-To: <20241206103401.1780416-1-heiko@sntech.de>
+References: <20241206103401.1780416-1-heiko@sntech.de>
+Subject: Re: [PATCH 0/2] phy: phy-rockchip-samsung-hdptx: don't use
+ of-alias
+Message-Id: <173920806342.103786.14726518410674851410.b4-ty@kernel.org>
+Date: Mon, 10 Feb 2025 22:51:03 +0530
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: krzk+dt@kernel.org, huangtao@rock-chips.com, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, kever.yang@rock-chips.com, 
- devicetree@vger.kernel.org, jonas@kwiboo.se, heiko@sntech.de, 
- conor+dt@kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-In-Reply-To: <20250208015757.27594-1-zhangqing@rock-chips.com>
-References: <20250208015757.27594-1-zhangqing@rock-chips.com>
-Message-Id: <173920411678.476525.17114471153567549022.robh@kernel.org>
-Subject: Re: [PATCH v3 0/2] clk: rockchip: Fixed some incorrect commits
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_082242_343189_58BA1ACF 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20250210_092107_154210_60B8A8DB 
+X-CRM114-Status: UNSURE (   4.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,69 +66,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 08 Feb 2025 09:57:55 +0800, Elaine Zhang wrote:
-> Change in V3:
-> [PATCH v3 0/2]: As discussed in the email, assigned-clock-parents in DT.
-> [PATCH v3 1/2]: Merge patches into one.
+On Fri, 06 Dec 2024 11:33:59 +0100, Heiko Stuebner wrote:
+> One nice comment addition and removal of of_alias usage for core
+> device functionality.
 > 
-> Change in V2:
-> [PATCH v2 0/3]: NO change
-> [PATCH v2 1/3]: Update commit message
-> [PATCH v2 2/3]: Update commit message
+> Heiko Stuebner (2):
+>   phy: phy-rockchip-samsung-hdptx: annotate regmap register-callback
+>   phy: phy-rockchip-samsung-hdptx: Don't use dt aliases to determine
+>     phy-id
 > 
-> Elaine Zhang (2):
->   ARM: dts: rockchip: assigned-clock-parents to SCLK_HDMI_PHY for
->     DCLK_VOP
->   arm64: dts: rockchip: Increase VOP clk rate on RK3328
-> 
->  arch/arm/boot/dts/rockchip/rk322x.dtsi   |  2 ++
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++----
->  2 files changed, 8 insertions(+), 4 deletions(-)
-> 
-> --
-> 2.17.1
-> 
-> 
-> 
+> [...]
 
+Applied, thanks!
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+[1/2] phy: phy-rockchip-samsung-hdptx: annotate regmap register-callback
+      commit: c8f7d65cac565cacf0420acf8b54c855dd7b4484
+[2/2] phy: phy-rockchip-samsung-hdptx: Don't use dt aliases to determine phy-id
+      commit: f08d1c08563846f9be79a4859e912c8795d690fd
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/rockchip/' for 20250208015757.27594-1-zhangqing@rock-chips.com:
-
-arch/arm/boot/dts/rockchip/rk3228-evb.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-arch/arm/boot/dts/rockchip/rk3228-evb.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-arch/arm/boot/dts/rockchip/rk3229-xms6.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-arch/arm/boot/dts/rockchip/rk3229-xms6.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-arch/arm/boot/dts/rockchip/rk3229-evb.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-arch/arm/boot/dts/rockchip/rk3229-evb.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-
-
-
+Best regards,
+-- 
+~Vinod
 
 
 
