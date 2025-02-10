@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30803C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 22:58:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F102C02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 23:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jeW1XOWycRQEg2SqZC+0nEKlQd3HWzetI3nzGGL7qxA=; b=OMCX0AXSKP8N48
-	JQSDxtcgrA8S81dAmimh1XDofnlQGX4a91gJl00C0eP2nqvikDZDvp/BJztglYqAT3bEzg0e6gFyM
-	ck9m5c0iLM6llXTn1ipoBnwP3W8eiWG5FULaFpGXf1QzrZNIIordQ52h1gTtf1spudAz77o4rDbpI
-	2Nvez1AmAej0LeXSgMC8SQ8NL6wpXvRbn53M+0X3eTkyqhL6iN9yhpdg6AmO/YVz7dsbxayYAHlRL
-	8KE+GXxEprvJaRm12rJACR74GVM+AKoH7J9XtvsSpi33v+2hvHyNSx4/Ps1LMA3UvfoX/Z6pZWuTx
-	wCEilNBFCuv/DC2AnTIQ==;
+	List-Owner; bh=VELxpcNeq/UczLSj06hMulFifvo9/Wk9zbil3antYSo=; b=WuQCiP95fRfJSt
+	5lIBTzBA8XdS/ZjYQ0IwXiYbFTKwLvN0owsQTIcDSUoMje/MOq8FMkdrNrahpaStgSy5LkRYYyzwT
+	wtE5hghK9Q5ksd6NV3hoJTwuMcf7xnhmf6XTYCtBr24vXAiEjU5q6himfwio+Un3U64j1BsJl8/TQ
+	whcgMAgrXbkkou9vYgGKauamXlqh7GNhSXOO42ctQr2OjsLvi3NSLVKyV6PD3fsv3EMzXvtI7Xw3K
+	xwbFFlzMDOYDDa7IhvaZG8qSbV2wDNkWA1sy9R3z2hzZtpnTHbs5NJeBj+Cot9bgwZInyhfDOGACo
+	s3JwFggaf/nIRceVrwBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcjV-00000001lSP-2Mds;
-	Mon, 10 Feb 2025 22:58:29 +0000
+	id 1thcrh-00000001mp3-2RJi;
+	Mon, 10 Feb 2025 23:06:57 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcRc-00000001gv2-2gkt;
-	Mon, 10 Feb 2025 22:40:00 +0000
+	id 1thcWy-00000001iXK-0jYW;
+	Mon, 10 Feb 2025 22:45:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=x62ijsNCPVrYm4nC3upourBy1Fy9pOeygf/DPMb93sY=; b=VLBEdzS5o0b3I9RoPIVTp3v5Yj
-	C1e4/V4IFxXfIgdWzTG1xirYqtvP/YwkBZHIePJ7IOSr68nuB4HwTuqCBcgg/O9OeIJn7AzG64FG5
-	e5CvJX0BFjvOrVkr1uZEdyZyri9jouW/7+w++1jGt+yScAAQ74Tpv7vJtFxxBINy5gAGvHLCF/FNB
-	k7TMjnl9pJdyVWocv90miTnVIli80X4adqX9nTjrjJlNWTBKPsMxEZxvcNS3JNGR2vzx+Kx02suid
-	j74Hev9ei1qA0Mdz8auAefkazH/Aqikyv4qwyeNE0TeSNRmFLsKW7URF2vTTimktF2NAzjIBZB0VF
-	ej7qv6Jw==;
+	bh=KitIcVEYndUt0qKINu8fYIcAiotv9Fme79WSrud1zmI=; b=N5fMkU+pz3ILRci8svhdb3fVNJ
+	kDk1AqzFn4XJHReDf3dxsHZ6OzpiZEwO+160KCE8g54q5Heyo89XNnaM6d3gxYYS7ie0bd/snVDiX
+	3uv1yo5baB+b26Ph6/3FeIgF4lfd8BIcfdznspiv1njOVH0CWMG2w0juMnMrsH8/QXAJv4DCjxyqF
+	G6afPWKYQ2qGVbEAxqi7dkZuiVwTM5EfzKQgtZ5nE4a990zij1XfX/tvbAs9mDJUgeqASUJUXnnMF
+	oh4S0qj5GScMK+0onxhKGKYPJMKiTTHl8kJ6dJ2KosZbshPi1wayq3JfSWwWTRfJHmH4LXR/BjUWI
+	xEyhsr5g==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thcRZ-00000000KbN-3NST;
-	Mon, 10 Feb 2025 22:39:59 +0000
+	id 1thcWq-00000000L3N-03A8;
+	Mon, 10 Feb 2025 22:45:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=x62ijsNCPVrYm4nC3upourBy1Fy9pOeygf/DPMb93sY=; b=U2sG+i3fszrTFjXKD4v7fanvsT
-	m0ezMugZ9dsBmqhprndlHrr7g6flKayDcXnq77XGUJkY+WTU5n9Mve7X1RKSY4Yl5TX0bIQmeX6Fz
-	FdIIS1Yti6wrMKWPzY/OxXrEqoLIyMrlRwcy8wGOVMec/4P4j8woe4svpldm4kRzACuqINmuOTXAT
-	gRCMIZG6nFu5ZahWhMCmQmqERaVKy5+hIVqMY8d7FtmEhPE46D7aai6zTEj2N3x/FW9lE7l8ydbkq
-	jGBOj4Uab83YxANmT9jUYw45A/1HNChk+quRP9GRr2/l1ykKJAgC+8WJ3y0KefHScjEcLSoPbaylk
-	sriO5auQ==;
+	bh=KitIcVEYndUt0qKINu8fYIcAiotv9Fme79WSrud1zmI=; b=MaRvBaPspzAMBrdvUdA2uLvM4e
+	OMlgEHhophLvF5uuYjtFIHCf080tgx77Xl0L1X6FdhqE1iGd0f/QGJC5SCzzE3ddfJackaAYBpbIS
+	ygSLtO2ixCvx2GEs459zzzQDjPw4CQecM4EUA/M+buP4ADfg2c3Jl1t8dsezEPF4h/QcGIESmsC4W
+	b5iv5ij2DzPFeFB05uTkHRThiqPFYaAhJUTNhciK9jO7fAyXw8aSMPXe85voSRxAykKif2fJ/K0ej
+	JyrFD8sMj7iWJvlFAebAo8jBoYv+nC9SH1jGJfmRg15rU0RjzHnmsYg9DYlyfmQ222P/Qdso5dntA
+	QE+Imv+Q==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1thcKd-0008Cw-Um; Mon, 10 Feb 2025 23:32:48 +0100
+	id 1thcWo-0008Re-SH; Mon, 10 Feb 2025 23:45:22 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srinivas.kandagatla@linaro.org
 Cc: robh@kernel.org,
@@ -70,16 +70,16 @@ Cc: robh@kernel.org,
 	linux-clk@vger.kernel.org,
 	detlev.casanova@collabora.com,
 	sebastian.reichel@collabora.com
-Subject: [PATCH v2 5/6] nvmem: rockchip-otp: add rk3576 variant data
-Date: Mon, 10 Feb 2025 23:32:18 +0100
-Message-ID: <20250210223219.1193346-13-heiko@sntech.de>
+Subject: [PATCH RESEND v2 1/6] clk: rockchip: rk3576: define clk_otp_phy_g
+Date: Mon, 10 Feb 2025 23:45:05 +0100
+Message-ID: <20250210224510.1194963-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250210223219.1193346-1-heiko@sntech.de>
-References: <20250210223219.1193346-1-heiko@sntech.de>
+In-Reply-To: <20250210224510.1194963-1-heiko@sntech.de>
+References: <20250210224510.1194963-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_223957_917390_6D0A9935 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20250210_224524_497289_A56A97CC 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +96,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The variant works very similar to the rk3588, just with a different
-read-offset and size.
+The phy clock of the OTP block is also present, but was not defined
+so far. Though its clk-id already existed, so just define its location.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/nvmem/rockchip-otp.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/clk/rockchip/clk-rk3576.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index 3edfbfc2d722..d88f12c53242 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -274,6 +274,14 @@ static const struct rockchip_data px30_data = {
- 	.reg_read = px30_otp_read,
- };
- 
-+static const struct rockchip_data rk3576_data = {
-+	.size = 0x100,
-+	.read_offset = 0x700,
-+	.clks = px30_otp_clocks,
-+	.num_clks = ARRAY_SIZE(px30_otp_clocks),
-+	.reg_read = rk3588_otp_read,
-+};
-+
- static const char * const rk3588_otp_clocks[] = {
- 	"otp", "apb_pclk", "phy", "arb",
- };
-@@ -295,6 +303,10 @@ static const struct of_device_id rockchip_otp_match[] = {
- 		.compatible = "rockchip,rk3308-otp",
- 		.data = &px30_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3576-otp",
-+		.data = &rk3576_data,
-+	},
- 	{
- 		.compatible = "rockchip,rk3588-otp",
- 		.data = &rk3588_data,
+diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
+index 595e010341f7..be703f250197 100644
+--- a/drivers/clk/rockchip/clk-rk3576.c
++++ b/drivers/clk/rockchip/clk-rk3576.c
+@@ -541,6 +541,8 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
+ 			RK3576_CLKGATE_CON(5), 14, GFLAGS),
+ 	GATE(CLK_OTPC_AUTO_RD_G, "clk_otpc_auto_rd_g", "xin24m", 0,
+ 			RK3576_CLKGATE_CON(5), 15, GFLAGS),
++	GATE(CLK_OTP_PHY_G, "clk_otp_phy_g", "xin24m", 0,
++			RK3576_CLKGATE_CON(6), 0, GFLAGS),
+ 	COMPOSITE(CLK_MIPI_CAMERAOUT_M0, "clk_mipi_cameraout_m0", mux_24m_spll_gpll_cpll_p, 0,
+ 			RK3576_CLKSEL_CON(38), 8, 2, MFLAGS, 0, 8, DFLAGS,
+ 			RK3576_CLKGATE_CON(6), 3, GFLAGS),
 -- 
 2.47.2
 
