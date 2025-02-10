@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1670BC02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 14:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EDB6C0219E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 16:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tCwY9LwLvnM5d/12l3WuRkeowv0jseSvUvkrp2CtBB4=; b=yFDHgNXBtkFmS7Hfhi6KuuFgaZ
-	wNvZ545aZ8aQyJCh6QMz6yoItOuJcg0XYTA/bY28xvZRIG5aoWZW72H6YAR4aCJIR15lp+KRAV6CC
-	AGtE5h9zRKl+Lch6GA0R8w1wJ2+CIHIGQQ8aGGRaNxzYM4bQBtht3VGxrhaBOLe0Lc8aDKZxl5V56
-	Xw+7+cgOGA3WitvcKaUwyf4SAvGUUbQj5QxR1D6muLzbmCrNp15s3sytRXCCjb4M34UbtF0k4W4vm
-	pffUXP+awctqKiLQ13cUNyB+eh4iaGD4ghdmAlXit2JQmEKTbYp/FtR8qIItBctuhwO7FlCWVo7gZ
-	GmqbdnFQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=/7aEjBtEroYwdXfTIDNyI8g8FXgt49LlDjhWGxAl9RA=; b=jjYUPOqraU6Bs9lHho5Z5iiX3E
+	cU0BgaQP56LVZFxFVPaZ24RiB7OFiiOZwf+3vbVDjvKycl1KUOhkYCwstxtAWVxCqa2Wq6w3JCmKH
+	jS1QMT1RSrtnjSic3BFfYtoF0DdL+RcutXnv2ILdgp6xfcKlk4KBoFEJ3qy8YR75N7Sjr0OZQjunJ
+	nSMq/wlW1bw6nUkaOiHrrEx9viG29EcYU2W9DmFcu3JwPPdLOzlFOSnaRsLFXMiiggHlcKFoDBpPm
+	WGTcwVucvyDDWLFC99LgV5NH48RmLyoHHaK7YAy76R9xehz3EKslYfSley8KWqowSu12f0yaazBK9
+	1atUdTWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUoU-000000008NJ-0372;
-	Mon, 10 Feb 2025 14:31:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1thWbG-00000000VUN-0Z93;
+	Mon, 10 Feb 2025 16:25:34 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUlg-000000007sX-3VLh;
-	Mon, 10 Feb 2025 14:28:13 +0000
+	id 1thWYU-00000000Uop-0j8L;
+	Mon, 10 Feb 2025 16:22:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AC7145C55FF;
-	Mon, 10 Feb 2025 14:27:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBC10C4CED1;
-	Mon, 10 Feb 2025 14:28:09 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E1B11A41971;
+	Mon, 10 Feb 2025 16:20:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15A98C4CED1;
+	Mon, 10 Feb 2025 16:22:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739197692;
-	bh=EzTEtZ2myVnXIZ24uN49qpBxcFhB3crO0seUCyVpGfg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gxhUTaXTUTI0ugvO7xoYJDKeCLEmCREUQUP3GJlmw5KdTweB6j//oBqZ6cHQ9rIAw
-	 9UfOC3wxNTGAM0k2lEW1pooVxXV9xZn8W6Y7dxLMBlQaykFOgpErO/3UCKZKpgjrJ2
-	 VNElSthIfeY8dlps7TTYEVs6Gc+Xoh0K7ppTy1e+Nn3gYY0QLFhx3tg6CGxtA5qA4w
-	 v39MplyLaqteTE4/HZ6ey8QxgOGe2RSZZzPnVYNArnh9vTtBlA59DefOJplt/2FZC7
-	 J2NkyN9EJYxl6Pm9qw34agxIXtL7EMzk58DD6QGuTbQhH+MTuLabA+uyWNhUbwXPfq
-	 +LPEYEwxynUlg==
-Date: Mon, 10 Feb 2025 14:28:06 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: ASoC: rockchip: Add compatible for
- RK3588 SPDIF
-Message-ID: <8cf5071c-0f3e-4a5c-8866-571aff717974@sirena.org.uk>
-References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
- <4315116.iIbC2pHGDl@diego>
- <56d128d7-c4bd-48de-b823-0b88147220e1@sirena.org.uk>
- <870305083.0ifERbkFSE@diego>
+	s=k20201202; t=1739204561;
+	bh=kXnRrtpV39SwJ3fcBvjLSZwpqpYLRosn3Kr11L23x3o=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=hWAtW1hLKsWoLontOWKvHpdOmEO2IITitGT0NfFAEuB4r47VAG76FSqoR2ZWk8vN3
+	 P9SyUYgzsYXdvUBdZzbZMFyTTDYvyVnoQzWhAyFfu8Qn+jtCLqgnrfxP2A2xdbyb7u
+	 nP6mhR18xxVbTAItzJtEWFVAsRcmqDBejL8nVr+KfFfNgCShUAzPTPbJEYE00yJsWk
+	 JW76XLb0f0jt+vhg+Fk7owtwAOZ/YQ+ZM3mN6H4/66bm5/1bJfn5zjr/TKMoHeV0mW
+	 /vndejKtUWHaAb4H9QL+O9LcV6VjnAAYCp4xjLALP6CG9ZtmDclPjaXwdzoANNPiOK
+	 xBDMskEjK8Xng==
+Date: Mon, 10 Feb 2025 10:22:40 -0600
 MIME-Version: 1.0
-In-Reply-To: <870305083.0ifERbkFSE@diego>
-X-Cookie: A beer delayed is a beer denied.
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: krzk+dt@kernel.org, huangtao@rock-chips.com, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, kever.yang@rock-chips.com, 
+ devicetree@vger.kernel.org, jonas@kwiboo.se, heiko@sntech.de, 
+ conor+dt@kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+In-Reply-To: <20250208015757.27594-1-zhangqing@rock-chips.com>
+References: <20250208015757.27594-1-zhangqing@rock-chips.com>
+Message-Id: <173920411678.476525.17114471153567549022.robh@kernel.org>
+Subject: Re: [PATCH v3 0/2] clk: rockchip: Fixed some incorrect commits
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_062812_915366_F0FA8EEA 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20250210_082242_343189_58BA1ACF 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,71 +69,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7644893731788962348=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7644893731788962348==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="npqY4rgAKF91WSV9"
-Content-Disposition: inline
+On Sat, 08 Feb 2025 09:57:55 +0800, Elaine Zhang wrote:
+> Change in V3:
+> [PATCH v3 0/2]: As discussed in the email, assigned-clock-parents in DT.
+> [PATCH v3 1/2]: Merge patches into one.
+> 
+> Change in V2:
+> [PATCH v2 0/3]: NO change
+> [PATCH v2 1/3]: Update commit message
+> [PATCH v2 2/3]: Update commit message
+> 
+> Elaine Zhang (2):
+>   ARM: dts: rockchip: assigned-clock-parents to SCLK_HDMI_PHY for
+>     DCLK_VOP
+>   arm64: dts: rockchip: Increase VOP clk rate on RK3328
+> 
+>  arch/arm/boot/dts/rockchip/rk322x.dtsi   |  2 ++
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++----
+>  2 files changed, 8 insertions(+), 4 deletions(-)
+> 
+> --
+> 2.17.1
+> 
+> 
+> 
 
 
---npqY4rgAKF91WSV9
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-On Mon, Feb 10, 2025 at 03:04:22PM +0100, Heiko St=FCbner wrote:
-> Am Montag, 10. Februar 2025, 14:20:58 MEZ schrieb Mark Brown:
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-> > directly if something has gone wrong you'll have to resend the patches
-> > anyway, so sending again is generally a better approach though there are
-> > some other maintainers who like them - if in doubt look at how patches
-> > for the subsystem are normally handled.
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
-> With it being 3 weeks since the patch was originally posted, I thought
-> it might be the time to ask if the binding-patch was still around.
-
-> I vaguely do remember you saying in the past that if a patch hasn't
-> been applied/handled after X time-units, it wouldn't be in your inbox
-> anymore, but am not sure anymore ;-) .
-
-A big part of what that form letter is saying is that it's better to
-chase by resending since that ensures that if things have been lost the
-actual thing that you're looking for action on is right here.  If you
-just send a ping either it'll get buried along with the original patch
-or there won't be information to hand.
-
---npqY4rgAKF91WSV9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmeqDPYACgkQJNaLcl1U
-h9DVogf7BPOYta+bQCVLrNNjoe5Z+7pVxkJCieo659XYOA1nbkym8aIQTdh6RVn4
-QalKJ98JYC34XWtZ6bM3+0En7DmjQ3lBRfW5VGl96k/DEvcLiPnMw1X1X3hD/txP
-qimrvrIY+V0TxuZD/EBMt6PyqJLu4nJLi4hKkk9NQUK5ElDEnt0gwsx9h0nZpVdC
-4iTXpm95j8QJ8eQq039hpMfyYUqsBUSaSAmePzHtecpWk3u5Md3nNRdNVUSGyGU9
-uSLO/rY4MbagswLBqq7LDdVF78VSPFuRH0IoEioVXvFuKFLhnn3KfO/LwXL1cYzh
-pNCEp+G/XfFXmu6jahMCuiTOjKIOKA==
-=0+At
------END PGP SIGNATURE-----
-
---npqY4rgAKF91WSV9--
+  pip3 install dtschema --upgrade
 
 
---===============7644893731788962348==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/rockchip/' for 20250208015757.27594-1-zhangqing@rock-chips.com:
+
+arch/arm/boot/dts/rockchip/rk3228-evb.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+arch/arm/boot/dts/rockchip/rk3228-evb.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+arch/arm/boot/dts/rockchip/rk3229-xms6.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+arch/arm/boot/dts/rockchip/rk3229-xms6.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+arch/arm/boot/dts/rockchip/rk3229-evb.dtb: vop@20050000: assigned-clocks: [[2, 190]] is too short
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+arch/arm/boot/dts/rockchip/rk3229-evb.dtb: vop@20050000: 'assigned-clock-parents' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7644893731788962348==--
-
