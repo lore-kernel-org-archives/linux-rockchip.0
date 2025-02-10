@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C70C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 14:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB5DFC02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 14:12:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0FybCpemG7bHzGf0/vlKX1IXJffn4vqNGgpf3tjRQ30=; b=vylNbGpz2SB+s8
-	xoM+TN8Fc6e4kMJZyNwAlGr/eOGDpudYSS+ZiPe9szWp2Mq8D+EqIJfXDwZS4yr/BdmaaQKd4ehOh
-	dRpKcbLQEPP/hLnehEvNd4u61IOkR1SS+YAS8nmRon5l7RBFND7+gRjXw1ESSOZoS3f2mtMk2beQt
-	ZycUhvNz95HpJzJ9Hx42ytk+BualyXmIWDqF24Y4xroEqRRLQBlYN2ahnuJAOWi22OQIaE9GMySvp
-	cvfy35s8+BlQFOlq3wGoRqp2k/g0wDzdjbQ7e7qc6px+Jzkvj3L0tQxq8ggszh4+B6smlF9wPd8vd
-	6hhMjZ1eZB8xzwibzhxA==;
+	List-Owner; bh=7Vy4CkATuSpI9xROF596AG35mdEKD9i1kOkQlrhwS+g=; b=j0dC0mjm3fqoPN
+	yddH6+yYwW4ezMmo2iIfEjXu31TgOYD5+zgiYy+XGRuJPxy5/bgPD5gCSYJw9YCabVicE+2sNXrsK
+	W6ZGIngILMofneLYSD3QcTeYgUHiq7CzXke7emARHMZEwVMCG40szBoHEVDvpqpipmXiVhAQHYqmu
+	JNYS8NvdI/IPzOIa65Hc0XcnVqf8zoONI5jc1BLelK2ITN5KL98/7eS9ToFHMO2YXUImWGqFq/h8R
+	1VvmhuoGPN3fBTcRjjHnu7mJtHGsn8OerMxxUkEXcQoli/MYXJfagaXfEcUpvF37ORqahYD53mp49
+	TLdkQ/dv6DkQRHIO9+WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUQ4-0000000042f-2eAz;
-	Mon, 10 Feb 2025 14:05:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1thUVx-000000005LH-40aN;
+	Mon, 10 Feb 2025 14:11:57 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thUOf-000000003sg-0TdX;
-	Mon, 10 Feb 2025 14:04:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=UfuBIcq6o6pd5Lky7KHDHxvpQdqj4uIwbsrsWkRv4y8=; b=2y259NvN7jKxSqKZofA185dq2o
-	enK8KcFyHAimIMTX0cygzP3gW5BXHU98khsVCAAw3cZXywfXhHFuWS+YT+2SNZkIzZqjD1NDdnjxD
-	XC5fezOqRRhoBDtwcb0zf1mYK2yET2BrphLt10XNzKUTtBYqI6PvzSLJr0kUHwACeXPPESMAlqHbx
-	wdX6eR7HNTChazp8xGXMXgXK4Cdfb5wIKTe8dU1DeHp8DUhFyWcFKh5QCVpvjvY1KxH6GXhJ7Y9Uj
-	5Vs0G2alSTwv+Hlg17R1mh1SgdKIrd9D8HLgETiH6QQBnQ4AbNQaV2mkJbLnU1zMcYMhwZRiNcnWY
-	OPNU8jHQ==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1thUOc-0003Qo-V6; Mon, 10 Feb 2025 15:04:22 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: ASoC: rockchip: Add compatible for RK3588 SPDIF
-Date: Mon, 10 Feb 2025 15:04:22 +0100
-Message-ID: <870305083.0ifERbkFSE@diego>
-In-Reply-To: <56d128d7-c4bd-48de-b823-0b88147220e1@sirena.org.uk>
-References: <20250120-rk3588-spdif-v1-0-1415f5871dc7@gmail.com>
- <4315116.iIbC2pHGDl@diego>
- <56d128d7-c4bd-48de-b823-0b88147220e1@sirena.org.uk>
+	id 1thUVv-000000005Jj-0Idl
+	for linux-rockchip@lists.infradead.org;
+	Mon, 10 Feb 2025 14:11:56 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-2fa1c093d6eso4972323a91.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 10 Feb 2025 06:11:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1739196714; x=1739801514; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=+U+cJ54sadwbAEEQ1XMnFeXEpukGhrX3NXgbMiqSEdc=;
+        b=faQdOe9VFq6AnbmBoAHHHphU+ICfXJAimgeWeZhHp5WdPppci1evYgA+5ZA3urRA2d
+         /PpfLS+wg5Ao2pMjWv6sWvd1WBL5z8p+cIPfLvfa+cIbZ+1gT9LlvAQKJ0su0xY5BsEo
+         Q2HoAJMpNSsWMXTfr8e/zLJtIF+BT2x9j/t/dsojjD9guQbDMxJFClxGKuRGgdg50ClM
+         ewu31YeJCCtn3ewE4CECbQPM9THMrcniWugRcRzN6+f3K2YTKbWyEcHkukBMhzZQJwCV
+         yHwga2coWOta8mHaaRwtPFCPzpudQHjR9cRIfJe168Nc27g0Ec/1qZVCqboklb1Tlwzd
+         ADzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739196714; x=1739801514;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+U+cJ54sadwbAEEQ1XMnFeXEpukGhrX3NXgbMiqSEdc=;
+        b=RrNCBEcoKBtt1sQ9WqRrZYpUxqjwbq3iUakFJ3zl7il8GtQxct9dCmE0FlS0umVg1r
+         ZeDz5KfRu19ZoaFqNtYluj1mZEyo1Pow4eXrP4mo3oy82vRPrVN92m4QgcqhhUyNnLn0
+         nVxLJxQLBV9576dCIMGH/6kxjb9zNyb08NiJikKlohDdabzL5bopj4BOSCpVV5ilmOYO
+         8id3S/4cfgcobKjKEQaI3F51OD/FlRPQHh/QmBOCBM2rYRZ6TyQvi+HQN+B3mBq24IGa
+         WrYXBD+kDHv1YwopTDHDyMTNz5ZN3+kFabfbWEa0vbOWoAWia8hBxWwQRmuYRL4EDl7J
+         igqw==
+X-Forwarded-Encrypted: i=1; AJvYcCVpC2RSXN1LQbP2xuVc9+1cYX/p16ZDtZFTr8Y/2+ctkBu+VatODJEhZ8okhv/t/zrkPykv9II5jZnAz8Rs4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzXB02JwJr0WOpbgmBCVk1wPvL5gZQxCQiAy5Ip9YTQURNIfmEs
+	2QwCxCgjhx1HoSq+qASUEVMfAvGxnxRPF/hZ0cWPbZPliTB0q3sVkaE8ml7rzgwsPahk8PmPqbM
+	w8czb+kFo2N3QZwruRfDhUsWxdvoSFT7USEli5w==
+X-Gm-Gg: ASbGncvjsha94wMruMobPoUczNh9j0NroR/+4wzw0BBiXisDRYuZMo/MqgTw2TkMRUt
+	F7Obrbj7tKlYHRYXRDSbaPuNi7fNfHd85VgpE/RKZWRUEW3xXfgOhgA3UhObStGnZ294YxoI=
+X-Google-Smtp-Source: AGHT+IF1+dEqoORyKXu66dB2Rg8beCQhSwmnjjgQuD2ZBI10xzxpJ4Y1Rzbu+lgFq2AzogQw2HBplK2cVN2+wBMuIPk=
+X-Received: by 2002:a17:90b:368c:b0:2ee:ee77:227c with SMTP id
+ 98e67ed59e1d1-2fa23f55e0cmr18756882a91.3.1739196714411; Mon, 10 Feb 2025
+ 06:11:54 -0800 (PST)
 MIME-Version: 1.0
+References: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de> <20250207-pre-ict-jaguar-v5-2-a70819ea0692@cherry.de>
+In-Reply-To: <20250207-pre-ict-jaguar-v5-2-a70819ea0692@cherry.de>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Mon, 10 Feb 2025 19:41:43 +0530
+X-Gm-Features: AWEUYZk9JtE8zrOo2lYnBOq7Su2RsFQcHGdiZcrSSTPxmQcqmii1TNFikv1yH9o
+Message-ID: <CA+VMnFyom=2BmJ_nt-At6hTQP0v+Auaw-DkCVbT9mjndMmLKtQ@mail.gmail.com>
+Subject: Re: [PATCH v5 2/4] arm64: dts: rockchip: add overlay test for Edgeble NCM6A
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Jonas Karlman <jonas@kwiboo.se>, 
+	Dragan Simic <dsimic@manjaro.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_060425_152743_FD45C696 
-X-CRM114-Status: GOOD (  25.07  )
+X-CRM114-CacheID: sfid-20250210_061155_297017_7806E2A6 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,38 +92,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFyaywKCkFtIE1vbnRhZywgMTAuIEZlYnJ1YXIgMjAyNSwgMTQ6MjA6NTggTUVaIHNjaHJp
-ZWIgTWFyayBCcm93bjoKPiBPbiBTdW4sIEZlYiAwOSwgMjAyNSBhdCAxMDoxMDo0N1BNICswMTAw
-LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiA+IEFtIE1vbnRhZywgMjAuIEphbnVhciAyMDI1LCAx
-MDowMToyNyBNRVogc2NocmllYiBBbGV4ZXkgQ2hhcmtvdjoKPiA+ID4gQWRkIGEgY29tcGF0aWJs
-ZSBzdHJpbmcgZm9yIFNQRElGIG9uIFJLMzU4OCwgd2hpY2ggaXMgc2ltaWxhciB0byB0aGUKPiA+
-ID4gb25lIG9uIFJLMzU2OC4KPiAKPiA+IGFzIHRoZSBiaW5kaW5nIGlzIG1vcmUgaW4gdGhlIGRy
-aXZlci1yZWFsbSwgaXMgdGhpcyBwYXRjaCBzdGlsbAo+ID4gc29tZXdoZXJlIG9uIHlvdXIgcmFk
-YXI/Cj4gCj4gUGxlYXNlIGRvbid0IHNlbmQgY29udGVudCBmcmVlIHBpbmdzIGFuZCBwbGVhc2Ug
-YWxsb3cgYSByZWFzb25hYmxlIHRpbWUKPiBmb3IgcmV2aWV3LiAgUGVvcGxlIGdldCBidXN5LCBn
-byBvbiBob2xpZGF5LCBhdHRlbmQgY29uZmVyZW5jZXMgYW5kIHNvIAo+IG9uIHNvIHVubGVzcyB0
-aGVyZSBpcyBzb21lIHJlYXNvbiBmb3IgdXJnZW5jeSAobGlrZSBjcml0aWNhbCBidWcgZml4ZXMp
-Cj4gcGxlYXNlIGFsbG93IGF0IGxlYXN0IGEgY291cGxlIG9mIHdlZWtzIGZvciByZXZpZXcuICBJ
-ZiB0aGVyZSBoYXZlIGJlZW4KPiByZXZpZXcgY29tbWVudHMgdGhlbiBwZW9wbGUgbWF5IGJlIHdh
-aXRpbmcgZm9yIHRob3NlIHRvIGJlIGFkZHJlc3NlZC4KPgo+IFNlbmRpbmcgY29udGVudCBmcmVl
-IHBpbmdzIGFkZHMgdG8gdGhlIG1haWwgdm9sdW1lIChpZiB0aGV5IGFyZSBzZWVuIGF0Cj4gYWxs
-KSB3aGljaCBpcyBvZnRlbiB0aGUgcHJvYmxlbSBhbmQgc2luY2UgdGhleSBjYW4ndCBiZSByZXZp
-ZXdlZAo+IGRpcmVjdGx5IGlmIHNvbWV0aGluZyBoYXMgZ29uZSB3cm9uZyB5b3UnbGwgaGF2ZSB0
-byByZXNlbmQgdGhlIHBhdGNoZXMKPiBhbnl3YXksIHNvIHNlbmRpbmcgYWdhaW4gaXMgZ2VuZXJh
-bGx5IGEgYmV0dGVyIGFwcHJvYWNoIHRob3VnaCB0aGVyZSBhcmUKPiBzb21lIG90aGVyIG1haW50
-YWluZXJzIHdobyBsaWtlIHRoZW0gLSBpZiBpbiBkb3VidCBsb29rIGF0IGhvdyBwYXRjaGVzCj4g
-Zm9yIHRoZSBzdWJzeXN0ZW0gYXJlIG5vcm1hbGx5IGhhbmRsZWQuCgpXaXRoIGl0IGJlaW5nIDMg
-d2Vla3Mgc2luY2UgdGhlIHBhdGNoIHdhcyBvcmlnaW5hbGx5IHBvc3RlZCwgSSB0aG91Z2h0Cml0
-IG1pZ2h0IGJlIHRoZSB0aW1lIHRvIGFzayBpZiB0aGUgYmluZGluZy1wYXRjaCB3YXMgc3RpbGwg
-YXJvdW5kLgoKSSB2YWd1ZWx5IGRvIHJlbWVtYmVyIHlvdSBzYXlpbmcgaW4gdGhlIHBhc3QgdGhh
-dCBpZiBhIHBhdGNoIGhhc24ndApiZWVuIGFwcGxpZWQvaGFuZGxlZCBhZnRlciBYIHRpbWUtdW5p
-dHMsIGl0IHdvdWxkbid0IGJlIGluIHlvdXIgaW5ib3gKYW55bW9yZSwgYnV0IGFtIG5vdCBzdXJl
-IGFueW1vcmUgOy0pIC4KCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On Fri, 7 Feb 2025 at 20:50, Quentin Schulz <foss+kernel@0leil.net> wrote:
+>
+> From: Quentin Schulz <quentin.schulz@cherry.de>
+>
+> The Edgeble NCM6A can have WiFi modules connected and this is handled
+> via an overlay (commit 951d6aaa37fe ("arm64: dts: rockchip: Add Edgeble
+> NCM6A WiFi6 Overlay")).
+>
+> In order to make sure the overlay is still valid in the future, let's
+> add a validation test by applying the overlay on top of the main base
+> at build time.
+>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 534e70a649eeada7f9b6f12596b83f5c47b184b4..02f98abe1df10f44f2ac27ea5f6c6e6c6334724e 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -192,3 +192,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
+>  rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
+>         rk3568-wolfvision-pf5-display-vz.dtbo \
+>         rk3568-wolfvision-pf5-io-expander.dtbo
+> +
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+> +rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+> +       rk3588-edgeble-neu6a-wifi.dtbo
+
+Please add neu6b-io as well, wifi dtbo is similar for it as well.
+
+Thanks,
+Jagan.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
