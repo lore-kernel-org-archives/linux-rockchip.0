@@ -4,107 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CB1C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 11:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A14FC021A4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Feb 2025 12:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RTVwCXV99+ASZdHGEaQWZDxnAVPN7PQ695UmpopZLUE=; b=ErlafhYnX6KBFc
-	HFQcAauYzP3V2G2JiOX6vW2RqTQs5+Wp8dw4Inm/90JvS6hR2jVGAEvbtGWYkw/2EQEMzmCzHyg7C
-	u7gowmtuM4uVn6RcGXEHTyQEWmTqOEk0dxgVhXnJcl6aRlcTBphqOsuq6LMhfTFyfdxB6jXLA2GbU
-	IrGrn3n+pf4UFkf2xQ8AEv8MY7F1811rqyCnWIXVXP9fj5LFYUP0wzzBvTPHbQ+a/ibz4R/YcE256
-	pOMNBpnkEeLVOw7QvOc10bWnCR/2ys9dTiXc/76RFxfCSiRqOK7iAbjbEUOpJFFMGAJ6vC8f8BuBJ
-	QK/9HMgaprRKwSW5wRug==;
+	List-Owner; bh=lIb+iLLHkQtjIglIyY+dF9eZDUq4JbcL9dcuQmM/M6Q=; b=nlk4F6YI9GyrkH
+	p9mD4uXJSo+H/C44QpnilXZphMW2Zo5nDAa2WWh7UvsrvS/bJGN6NYdICyLngTmNW/0qpUU1pruH3
+	J+F9X6MxRhwMQqy9TUuEUyTRmhYvZdfTLcCsXj4nBK1bueSiNQwGDXFiUFczdAcVozqy1OTUEM2XU
+	zNj9qwcSWLELXJdWaVwLxpmK51hq1uM+dx+Bi0RDccc4srBE+Cjpe9tUUSA7MeW/SkIzw45xTkH3H
+	yMeGxZ1lFPOAcOWU63dF+0P0/i10uyYabzXnxepWbGErfCIZuukD+UAmwi2IBgkMlayrkYHugwOnf
+	P+sqQl29Eh2bDWPMKuQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thRxy-0000000HDUQ-0Rad;
-	Mon, 10 Feb 2025 11:28:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1thSjN-0000000HN2o-09SG;
+	Mon, 10 Feb 2025 12:17:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thRcO-0000000H97f-23F7;
-	Mon, 10 Feb 2025 11:06:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DEADCA410F7;
-	Mon, 10 Feb 2025 11:04:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 136DFC4CEE7;
-	Mon, 10 Feb 2025 11:06:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739185583;
-	bh=+U52iscgj0DgfzCXP6At0Z/PJ6gY7Nd2JM797fk8XqE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KC5+zsf5S9LYOM/XI92k9lAcjRCHdtuPBsCRJoZZOdTzoJkaxttuWIiUBYI8eWp6q
-	 /q9MHp1i+XD3QvsNVgJZsStc/uSuL9l8imLnvOWeRJW5nKaWnMaxt1mWOhBvLK3gn9
-	 ubLYkFPC6PQ8SIzCkX6Nb6ir/+5TqzjS/Mbut5syIdvyPWe7p+JOkEX7GsxtXcxd1H
-	 f2xp7HJ3ouN1GmC8OXNJort61MSN27dS9gvXCZtFNtDpfyMiojf/Ym6QENPcGg2qxp
-	 Iu/oK53ecA2eFeojeHTpIQuMRnST+Gyy9VShb9J7Zs8x2tWt8SZeUi5vVJeZpOpcEy
-	 wrsJD1oQV7TMg==
-Message-ID: <87a29b78-5fab-48eb-9a86-f12c41369dfa@kernel.org>
-Date: Mon, 10 Feb 2025 12:06:15 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] arm64: dts: rockchip: add 'chassis-type' property on
- PineNote
+	id 1thSYn-0000000HLWw-0OIG;
+	Mon, 10 Feb 2025 12:06:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8Kcu6XE1Pl2R37OZwgbkQSGdnaUlnMNddlRe2ugSH6Q=; b=s+Nok+jkiSksrF0Bg8qUzmTpKu
+	xHzZe3Tay4sGEcE78uh5thldvZIPOOLd56Rf0IB8HIN8lwYbeMXvkDJqkkcibBnP6731vJffpPPU4
+	Glmm4XjmZhBcaxLZBtm6CU0al0HDQ1DSlfWivGsUf0wqRX8zBkdUn+lfJQupDdGPisqD3/KKitJ+Z
+	prM9X2NVoNJscwzMUO1srUEPptaktuLkdnSyDciNZuxrgi5PxBIIQca9S9A1yA5YoruhNCAjkpuY3
+	6bQcMMIyEENL/8Rm3ZqytQoigwr0tPbFygC7YW96js1te25raJPaNpwA2m/QH8IJnx0UsnMHUUYbJ
+	nvKBJ/OA==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1thSYJ-00025C-EW; Mon, 10 Feb 2025 13:06:15 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Dragan Simic <dsimic@manjaro.org>,
  Maximilian Weigand <mweigand@mweigand.net>, Marek Kraus <gamiee@pine64.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] arm64: dts: rockchip: add 'chassis-type' property on PineNote
+Date: Mon, 10 Feb 2025 13:06:14 +0100
+Message-ID: <2663295.taCxCBeP46@diego>
+In-Reply-To: <87a29b78-5fab-48eb-9a86-f12c41369dfa@kernel.org>
 References: <20250207111157.297276-1-didi.debian@cknow.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250207111157.297276-1-didi.debian@cknow.org>
+ <87a29b78-5fab-48eb-9a86-f12c41369dfa@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_030624_680653_EA321964 
-X-CRM114-Status: UNSURE (   6.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250210_040645_138389_08FDE652 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,22 +77,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/02/2025 12:11, Diederik de Haas wrote:
-> Add the recommended chassis-type root node property so userspace can
-> request the form factor and adjust their behavior accordingly.
+Am Montag, 10. Februar 2025, 12:06:15 MEZ schrieb Krzysztof Kozlowski:
+> On 07/02/2025 12:11, Diederik de Haas wrote:
+> > Add the recommended chassis-type root node property so userspace can
+> > request the form factor and adjust their behavior accordingly.
+> > 
+> > Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+> > Link: https://github.com/devicetree-org/devicetree-specification/blob/main/source/chapter3-devicenodes.rst#root-node
 > 
-> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> Link: https://github.com/devicetree-org/devicetree-specification/blob/main/source/chapter3-devicenodes.rst#root-node
+> Drop link, no need to point to source of every property. You don't do it
+> for aliases, compatible, model etc, right?
+> 
+> With link dropped:
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Drop link, no need to point to source of every property. You don't do it
-for aliases, compatible, model etc, right?
+I've amended the patch [0] by dropping the Link and adding Krzysztof's
+Reviewed-by.
 
-With link dropped:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Heiko
 
-Best regards,
-Krzysztof
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=for-next&id=aba881f30e0294a58c0cb076918d366e39801185
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
