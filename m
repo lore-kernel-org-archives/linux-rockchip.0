@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FC1C0219E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 15:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED4B7C0219B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 16:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/+tJwCOwPpXeEmbtHCKlnMDCNb5kTkXIF71LQ5tTVk0=; b=F332Hfkaktb4brgL2OjfU/edc6
-	IU2DWj5zdQ6g4/qJ44/QVhFYtPavSxEMxsgyd2Aa+AwLD9oRebOXLAx1HfotWJkeyUY+awB6TLdzM
-	Je2NNuYClg/7Vl/bA6iiESdOC+Ee1E5IW/qvwX+LsE+a9STWPVN6fKD72nVnfrzm0rMAsQdDNKzuZ
-	DZDTDeC0dWvkUdv4PWu5Rp8iz3dNuX3e0JWAvMiNEbdp+r7pVvjR6QNlIh2m9GlSmWeY44yuRcWDb
-	iIkRlk+O5/IusXT8YzuqeDNG05hfdlzgT1fwAzGGNf3ftPbUCHbjSOmlZyXfpK93wAjg4sgg1Ti3U
-	2t0YTHqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yL/pxO447xFKXHK4ugtf/1pXJKHRbYpS7OpSwCP7L9U=; b=1HZ1jr83jzbbdr
+	RLZJvLm7JBJMCGnwdLjgqK7gSmz1oGvlsMeH3qFPdn+Z5kGSkhkiuD5VecOhJQ7TPyTh+Qjh3DPjJ
+	gwWHLfqztES5/Irn1gp3uvuqXwLoeEdX19Lay61oC0IlIwg9Thu/2fRsDZADl3T7laIb6wVW0c/bE
+	Z4hLDDDRlH6vut1QV2wdVWa4CO1FIA/V8wgAbBuesbXw7BclFNzsqnYKunQv5ZnNjZTrSDpDf3d/j
+	PzwkdaSowCTKLDmPMIK7XoeG1pSbaSwrahETNELaj6/BPAiz+ocynE+U6GS//o9iIA/bv4OdQTtV0
+	tMZnXBNalGZYiSe8OrIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thruc-00000004F5T-0aw0;
-	Tue, 11 Feb 2025 15:10:58 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1thskg-00000004Ppg-4ANi;
+	Tue, 11 Feb 2025 16:04:46 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thqk3-000000041fd-1mdv;
-	Tue, 11 Feb 2025 13:56:01 +0000
+	id 1thsjG-00000004PZ3-0xKX;
+	Tue, 11 Feb 2025 16:03:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739289784; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QSjSAVX2EjM0Zkd4t3XxNiDwxfY5+9s3grENOIXcAKKTLAAxTSULL7cYBGYfuyA++2l/A6ei0G3wEAi2TARhCscUM8HGLD0zz0bM5g8U2fohtTwiUeqdUKUAisprotOTwjl0Vz/PCHmI+tZWhXfiIKXsocXABnSZBYp2v6/puKM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1739289784; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=681ubr2yNewIQqxC054xPg8+eBAOGYYdn+NBIKKdGdE=; 
+	b=CxXWXC+2+CoQDHM1+VTzIrn1O48zJzrD1fTy+um0LKvljz6PnSsQnF0xh4RP+m/SxuGWo2ZvGoP1mH2ux/6jf2ZGCQHAALMShnu1sB0PpP2v0KmmHWUpGdMWV8DmK5dEkJkEp/6Cz0Nnezcb2tREb9tFudIOlN58e6dPv8LHQBs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739289784;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=681ubr2yNewIQqxC054xPg8+eBAOGYYdn+NBIKKdGdE=;
+	b=iQxBb7tCOEFCGiOuMrO42BS2uKeduRpsKygpLIiaenhuke650/Qi/ZWm7c5LX7jU
+	2WQ01zzgqpxtNFAiGZYptUkqrcriCKHetHsE4xX07j+hg+W9RQCfE0nq/H2GcKd2Guu
+	bxYbJBVrawrKFxk2nyBLcobTb0yW++773DNvtIlU=
+Received: by mx.zohomail.com with SMTPS id 1739289781881942.8989499803911;
+	Tue, 11 Feb 2025 08:03:01 -0800 (PST)
+Message-ID: <dd41b33d-e73a-4ff8-803f-00a3ab7c9c4b@collabora.com>
+Date: Tue, 11 Feb 2025 19:02:55 +0300
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1739282154;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mifodZnx+GAT8j3y7LTSrIDDb3fyeuMJi7Lz1TWQoWg=;
-	b=NM7NzNok5uOfeVIliUUYXIjdfRtVgvDGaH9gru/W/Z2DSizT9jGyeohS7f/+9/x41Hh+UO
-	AasxnZ7X27daRD2cLPsFWyH4C5MfdLr8955ZuZ32LOOHz+IybYOnKka8tHUOM4TSGUSqox
-	U2Ypmvd8oWnSgL1tSLduD7ltV9sqTxa4xPID6osBCAwssPuMKt9QuFvJjtvRDkZj5rxb5J
-	XTTqUZjNlZylDn+t9EcfUVemavXzxOS1BWBM/NTKgJpYSZIFuUvaAkQn4Ydxw9BzRv2Tlj
-	tVlJ0mhoiALwBGSmZXcVVfsWwXNaDVsaImIoxOLJwBqjxCnFqlapMEjkR+mZ+g==
-Date: Tue, 11 Feb 2025 14:55:53 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Jagan Teki <jagan@edgeble.ai>, Quentin Schulz <foss+kernel@0leil.net>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Niklas
- Cassel <cassel@kernel.org>, Michael Riesch <michael.riesch@wolfvision.net>,
- Jonas Karlman <jonas@kwiboo.se>, devicetree@vger.kernel.org,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH v5 4/4] media: platform: synopsys: Add support for
+ HDMI input driver
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v5 2/4] arm64: dts: rockchip: add overlay test for Edgeble
- NCM6A
-In-Reply-To: <06f1f9f4-8a79-4505-98b8-992accf1fb87@cherry.de>
-References: <20250207-pre-ict-jaguar-v5-0-a70819ea0692@cherry.de>
- <20250207-pre-ict-jaguar-v5-2-a70819ea0692@cherry.de>
- <CA+VMnFyom=2BmJ_nt-At6hTQP0v+Auaw-DkCVbT9mjndMmLKtQ@mail.gmail.com>
- <8d830c2c-6268-4c70-ae8a-47183b8cbace@cherry.de>
- <74502f5556584ee7378c63d4971f2a66@manjaro.org>
- <06f1f9f4-8a79-4505-98b8-992accf1fb87@cherry.de>
-Message-ID: <a9a023233f9a096cc215203bb6ef41d7@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
+ mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil-cisco@xs4all.nl
+References: <20241210193904.883225-1-shreeya.patel@collabora.com>
+ <20241210193904.883225-5-shreeya.patel@collabora.com>
+ <b6ee761c-6941-473b-aa5e-2dadb69767f2@xs4all.nl>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <b6ee761c-6941-473b-aa5e-2dadb69767f2@xs4all.nl>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_055559_773400_10DE6892 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20250211_080318_337713_1E998FDE 
+X-CRM114-Status: GOOD (  20.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +83,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gUXVlbnRpbiwKCk9uIDIwMjUtMDItMTEgMTM6NTksIFF1ZW50aW4gU2NodWx6IHdyb3Rl
-Ogo+IE9uIDIvMTAvMjUgNzoyOSBQTSwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+PiBPbiAyMDI1LTAy
-LTEwIDE4OjU3LCBRdWVudGluIFNjaHVseiB3cm90ZToKPj4+IE9uIDIvMTAvMjUgMzoxMSBQTSwg
-SmFnYW4gVGVraSB3cm90ZToKPj4+PiBPbiBGcmksIDcgRmViIDIwMjUgYXQgMjA6NTAsIFF1ZW50
-aW4gU2NodWx6IDxmb3NzK2tlcm5lbEAwbGVpbC5uZXQ+IAo+Pj4+IHdyb3RlOgo+Pj4+PiAKPj4+
-Pj4gRnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGNoZXJyeS5kZT4KPj4+Pj4g
-Cj4+Pj4+IFRoZSBFZGdlYmxlIE5DTTZBIGNhbiBoYXZlIFdpRmkgbW9kdWxlcyBjb25uZWN0ZWQg
-YW5kIHRoaXMgaXMgCj4+Pj4+IGhhbmRsZWQKPj4+Pj4gdmlhIGFuIG92ZXJsYXkgKGNvbW1pdCA5
-NTFkNmFhYTM3ZmUgKCJhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIAo+Pj4+PiBFZGdlYmxlCj4+
-Pj4+IE5DTTZBIFdpRmk2IE92ZXJsYXkiKSkuCj4+Pj4+IAo+Pj4+PiBJbiBvcmRlciB0byBtYWtl
-IHN1cmUgdGhlIG92ZXJsYXkgaXMgc3RpbGwgdmFsaWQgaW4gdGhlIGZ1dHVyZSwgCj4+Pj4+IGxl
-dCdzCj4+Pj4+IGFkZCBhIHZhbGlkYXRpb24gdGVzdCBieSBhcHBseWluZyB0aGUgb3ZlcmxheSBv
-biB0b3Agb2YgdGhlIG1haW4gCj4+Pj4+IGJhc2UKPj4+Pj4gYXQgYnVpbGQgdGltZS4KPj4+Pj4g
-Cj4+Pj4+IFJldmlld2VkLWJ5OiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnp5c3p0b2Yua296bG93
-c2tpQGxpbmFyby5vcmc+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFF1ZW50aW4gU2NodWx6IDxxdWVu
-dGluLnNjaHVsekBjaGVycnkuZGU+Cj4+Pj4+IC0tLQo+Pj4+PiDCoCBhcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL01ha2VmaWxlIHwgNCArKysrCj4+Pj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCA0
-IGluc2VydGlvbnMoKykKPj4+Pj4gCj4+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL01ha2VmaWxlIGIvYXJjaC9hcm02NC8gCj4+Pj4+IGJvb3QvZHRzL3JvY2tj
-aGlwL01ha2VmaWxlCj4+Pj4+IGluZGV4IAo+Pj4+PiA1MzRlNzBhNjQ5ZWVhZGE3ZjliNmYxMjU5
-NmI4M2Y1YzQ3YjE4NGI0Li4wMmY5OGFiZTFkZjEwZjQ0ZjJhYzI3ZWE1ZjZjNmU2YzYzMzQ3MjRl
-IAo+Pj4+PiAxMDA2NDQKPj4+Pj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9N
-YWtlZmlsZQo+Pj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxl
-Cj4+Pj4+IEBAIC0xOTIsMyArMTkyLDcgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9
-IHJrMzU2OC0gCj4+Pj4+IHdvbGZ2aXNpb24tcGY1LXZ6LTItdWhkLmR0Ygo+Pj4+PiDCoCByazM1
-Njgtd29sZnZpc2lvbi1wZjUtdnotMi11aGQtZHRicyA6PSByazM1Njgtd29sZnZpc2lvbi1wZjUu
-ZHRiIAo+Pj4+PiBcCj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgcmszNTY4LXdvbGZ2aXNpb24tcGY1
-LWRpc3BsYXktdnouZHRibyBcCj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgcmszNTY4LXdvbGZ2aXNp
-b24tcGY1LWlvLWV4cGFuZGVyLmR0Ym8KPj4+Pj4gKwo+Pj4+PiArZHRiLSQoQ09ORklHX0FSQ0hf
-Uk9DS0NISVApICs9IHJrMzU4OC1lZGdlYmxlLW5ldTZhLXdpZmkuZHRiCj4+Pj4+ICtyazM1ODgt
-ZWRnZWJsZS1uZXU2YS13aWZpLWR0YnMgOj0gcmszNTg4LWVkZ2VibGUtbmV1NmEtaW8uZHRiIFwK
-Pj4+Pj4gK8KgwqDCoMKgwqDCoCByazM1ODgtZWRnZWJsZS1uZXU2YS13aWZpLmR0Ym8KPj4+PiAK
-Pj4+PiBQbGVhc2UgYWRkIG5ldTZiLWlvIGFzIHdlbGwsIHdpZmkgZHRibyBpcyBzaW1pbGFyIGZv
-ciBpdCBhcyB3ZWxsLgo+Pj4gCj4+PiBTaW1pbGFyIG9yIGlkZW50aWNhbCA6KT8KPj4+IAo+Pj4g
-U2hvdWxkIHRoZSBvdmVybGF5IGJlIHJlbmFtZWQgaWYgaXQgYXBwbGllcyB0byBuZXU2YiBBTkQg
-bmV1NmEgCj4+PiBpbnN0ZWFkCj4+PiBvZiBpbXBseWluZyBpdCdzIG9ubHkgZm9yIG5ldTZhIGJh
-c2VkIG9uIHRoZSBuYW1lIG9mIHRoZSBvdmVybGF5Pwo+PiAKPj4gSSdtIGFmcmFpZCBpdCdzIGEg
-Yml0IHRvbyBsYXRlIGZvciByZW5hbWluZyB0aGUgLmR0c28gZmlsZS4gOi8KPiAKPiBIb3cgaXMg
-aXQgdG9vIGxhdGU/IElzIHRoZXJlIHNvbWUgcnVsZSBzb21ld2hlcmUgYWJvdXQgcmVuYW1pbmcg
-SSAKPiBtaXNzZWQ/CgpUaGUgd2F5IEkgc2VlIGl0LCBuYW1lcyBvZiB0aGUgLmR0cyBhbmQgLmR0
-c28gZmlsZXMgYmVjb21lIHBhcnQgb2YKdGhlICJleHRlbmRlZCBBQkkiLCBzbyB0byBzcGVhaywg
-b25jZSB0aGV5J3ZlIGJlZW4gYWNjZXB0ZWQgdXBzdHJlYW0KZm9yIGEgd2hpbGUsIGJlY2F1c2Ug
-cmVuYW1pbmcgdGhlbSBtYXkgYnJlYWsgYm9vdCBjb25maWd1cmF0aW9ucy4KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 2/10/25 16:46, Hans Verkuil wrote:
+...
+>> +static bool hdmirx_check_timing_valid(struct v4l2_bt_timings *bt)
+>> +{
+>> +	if (bt->width < 100 || bt->width > 5000 ||
+>> +	    bt->height < 100 || bt->height > 5000)
+>> +		return false;
+>> +
+>> +	if (!bt->hsync || bt->hsync > 200 ||
+>> +	    !bt->vsync || bt->vsync > 100)
+>> +		return false;
+>> +
+>> +	if (!bt->hbackporch || bt->hbackporch > 2000 ||
+>> +	    !bt->vbackporch || bt->vbackporch > 2000)
+>> +		return false;
+>> +
+>> +	if (!bt->hfrontporch || bt->hfrontporch > 2000 ||
+>> +	    !bt->vfrontporch || bt->vfrontporch > 2000)
+>> +		return false;
+> 
+> I asked before, but are these hardware limitations or just sanity checks?
+> Please document.
+
+These should be sanity checks. We added comment explaining what this
+code does, telling that we need to repeat checking the timing values
+until they become valid. This is borrowed from downstream driver,
+whether these values are tied to hw limits is unknown, we couldn't find
+the exact limits documented in TRM.
+
+...
+>> +static int hdmirx_set_edid(struct file *file, void *fh, struct v4l2_edid *edid)
+>> +{
+>> +	struct hdmirx_stream *stream = video_drvdata(file);
+>> +	struct snps_hdmirx_dev *hdmirx_dev = stream->hdmirx_dev;
+>> +	u16 phys_addr;
+>> +	int ret;
+>> +
+>> +	if (edid->pad)
+>> +		return -EINVAL;
+>> +
+>> +	if (edid->start_block)
+>> +		return -EINVAL;
+>> +
+>> +	if (edid->blocks > EDID_NUM_BLOCKS_MAX) {
+>> +		edid->blocks = EDID_NUM_BLOCKS_MAX;
+>> +		return -E2BIG;
+>> +	}
+>> +
+>> +	if (!edid->blocks) {
+>> +		cec_phys_addr_invalidate(hdmirx_dev->cec->adap);
+>> +		hdmirx_dev->edid_blocks_written = 0;
+> 
+> This must pull the HPD low, but that doesn't happen.
+
+Good catch, will fix.
+
+...
+>> +static void hdmirx_get_avi_infoframe(struct snps_hdmirx_dev *hdmirx_dev)
+>> +{
+>> +	struct v4l2_device *v4l2_dev = &hdmirx_dev->v4l2_dev;
+>> +	union hdmi_infoframe frame = {};
+>> +	int err, i, b, itr = 0;
+>> +	u8 aviif[3 + 7 * 4];
+>> +	u32 val;
+>> +
+>> +	aviif[itr++] = HDMI_INFOFRAME_TYPE_AVI;
+>> +	val = hdmirx_readl(hdmirx_dev, PKTDEC_AVIIF_PH2_1);
+>> +	aviif[itr++] = val & 0xff;
+>> +	aviif[itr++] = (val >> 8) & 0xff;
+>> +
+>> +	for (i = 0; i < 7; i++) {
+>> +		val = hdmirx_readl(hdmirx_dev, PKTDEC_AVIIF_PB3_0 + 4 * i);
+>> +
+>> +		for (b = 0; b < 4; b++)
+>> +			aviif[itr++] = (val >> (8 * b)) & 0xff;
+>> +	}
+>> +
+>> +	err = hdmi_infoframe_unpack(&frame, aviif, sizeof(aviif));
+>> +	if (err) {
+>> +		v4l2_err(v4l2_dev, "failed to unpack AVI infoframe\n");
+>> +		return;
+>> +	}
+>> +
+>> +	v4l2_ctrl_s_ctrl(hdmirx_dev->rgb_range, frame.avi.quantization_range);
+>> +
+>> +	if (frame.avi.itc)
+>> +		v4l2_ctrl_s_ctrl(hdmirx_dev->content_type,
+>> +				 frame.avi.content_type);
+>> +	else
+>> +		v4l2_ctrl_s_ctrl(hdmirx_dev->content_type,
+>> +				 V4L2_DV_IT_CONTENT_TYPE_NO_ITC);
+> 
+> InfoFrames must now also be exported to debugfs. See e.g. drivers/media/i2c/tc358743.c
+> and include/media/v4l2-dv-timings.h (search for V4L2_DEBUGFS_IF_MAX_LEN).
+> 
+> This is a recent change: both drm and v4l2 can now export InfoFrames to debugfs,
+> and this is handy for debugging issues.
+> 
+> The edid-decode utility (part of v4l-utils) can parse these InfoFrames.
+
+Ack, will add the InfoFrame debugfs.
+
+...
+>> +static void hdmirx_load_default_edid(struct snps_hdmirx_dev *hdmirx_dev)
+>> +{
+>> +	struct v4l2_edid def_edid;
+>> +
+>> +	hdmirx_hpd_ctrl(hdmirx_dev, false);
+>> +
+>> +	/* disable hpd and write edid */
+>> +	def_edid.pad = 0;
+>> +	def_edid.start_block = 0;
+>> +	def_edid.blocks = EDID_NUM_BLOCKS_MAX;
+>> +
+>> +	if (IS_ENABLED(CONFIG_VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID))
+>> +		def_edid.edid = edid_default;
+>> +	else
+>> +		def_edid.edid = hdmirx_dev->edid;
+> 
+> So if you are not loading the default EDID, then you load a zeroed EDID?
+> 
+> This is much too complicated: if there is no default EDID, then just
+> pull the HPD low (you do that already at the start) and return.
+> 
+> BTW, please check with CONFIG_VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID set
+> and unset and make sure there are no compile warnings/errors relating to that.
+
+Now I see what you meant previously. Keeping HPD pulled low if there is
+no valid EDID will work. Will change it in the next iteration.
+
+Thanks for the review!
+
+-- 
+Best regards,
+Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
