@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73712C02198
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 01:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F2CC021A1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 04:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HJOavvIW9MW4faGDFtXrKJdE/lqKlJlZy7qASNsBRE4=; b=pQKyfSuI/pThbIJcaMNc4rpRp7
-	yW9tgEXIHjexrXHwmgVMlBsdehyE5/LTUD9kDjnzLpbA+QtdRHF3LWkSd0qoHe+ECFLs9E33QsRPV
-	fUAj9nCnEZOHePRQcSBSehSOmPkz0W2gsCU/VL0Nq8nWlqoZqoYKpHFS9Ovewoqim4OJj7WOGchVt
-	h/v0kzniO+Bfu6nH/GRWt2+h/9R2Ui8ABKu22YCF5WZaNlKJ79R/g34+il1aCdqRGoIJouBvzUoUV
-	O/eRSrhMaa5aYSmoHmyBxr8VF6yhYYyb8tCDo5MG4hmoVn/BNrV47EtOtkeM1vGzsFdasnEZ8C4hl
-	BvlYEYtw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3MEWmQKEW3rAmDXOwFems7mw2lwiuTpDl4S9y8Ea+Pk=; b=jEIZLRYHzk9bZq
+	pf7z0qQSEiKeOHwi9huzRAlhGFzqLWeYZ4kbEaPUK+/FrhSDpgAmvMlIMd1D3KGMjRnDZs78JFVOq
+	0oHes+xfq0J20mAl4ubRu2tX5ckQzIDIPDfFE/jhIKA081hspQ1xa1L8zuErc94qP1OmDH/z75uIo
+	+9kDgMGbihecWHwSg+3X7d76gLEoi3Wzz1NyIgSfhvzRL9UQp/bSdUH0/ZX5Y99HGgcmf9QaimUVE
+	0iR8bUwldRfauM7NG5G8iS738idbfY6HFb/KgDqX1KCHOHOxvbjDgp+f2lrsJEfcsjFI+nBFebZMO
+	DuHYdmpkrGu5GsPXX6cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thfHq-00000002Ahf-3nrh;
-	Tue, 11 Feb 2025 01:42:06 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1thhWB-00000002SbP-2FML;
+	Tue, 11 Feb 2025 04:05:03 +0000
+Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thfGP-00000002AMc-1WUH;
-	Tue, 11 Feb 2025 01:40:39 +0000
+	id 1thhUk-00000002SSN-3Skl;
+	Tue, 11 Feb 2025 04:03:36 +0000
+Received: by mail-oo1-xc34.google.com with SMTP id 006d021491bc7-5fc0c06e1deso2671553eaf.1;
+        Mon, 10 Feb 2025 20:03:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739246613; x=1739851413; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xoJ5mElxKk9yvVUb0i6F/KwQgRj0dudGNWq8IqQblk8=;
+        b=EJfeuO4u/O+0GyOj5JCpw1Ovp8ir3lJnXGs2DX5BeGTzobpi8etTJ5YKwyAZQYpHr1
+         /PYUdVyR25CB2GZ2E08ktZFSINhxuyOxrqpzddu6ESAiySlKTe4Ak1KxggIscF6RMHrr
+         kxYDikgFNMK/JWd+W8Qs5GPhgK6wCoyOA/kMsfvKPZy+ws1MlgIxv6G19JjxPq13on6e
+         v9xQOj5E9jeYXe1Dl7UfU8ERNimON7qwdRsFDRC/hoOYLN4Gsj0Edy93Gt2E77AS4Y2N
+         hsZH2ldsnIh1xRndhIuIpWK9RA4nezkWb3HohWxABh1jSJ6m1dkPvZnoQRF7OJSJ7OpX
+         XhjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739246613; x=1739851413;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xoJ5mElxKk9yvVUb0i6F/KwQgRj0dudGNWq8IqQblk8=;
+        b=tfC4vDbR8R/3fV7o6GhEX5efVtbvzNPB4V91iJwnaXvBj5ikyB6m9BtBfd7OdBPSdI
+         R2DYsN8TodvefKJieVoM9eDTHDdzFBA/ugYxjY+NS1XiFxsnioZfm5hV3m90HxA4XhD3
+         Y9GtwoSUwhvNZJ6I9eTTB1SkWcbR3n0yfSxoRWusX3hA650OXvxTLKo4Wy1QfM+66uou
+         liNgFk8eMELKd9QBgEjpXUGiHxjRHIcjZdzO29KRYuPnIn+7MNVl7Muv3xj7SiQnufsk
+         1oKbOBnvnrbaTj7dAXFv0nyeI+RRd5NUhQLuVoAulGd6Zh5oF9ObhQFbobY7XBOygr27
+         xHIg==
+X-Forwarded-Encrypted: i=1; AJvYcCWoIKF0DiVR6WVoQd7nRlKsKy9aBO3D+oC3P3bBGeNQNpWDhIGsZlXgUv2xaC2TQClTLjHhpteeFiJU+eFFaDHw@lists.infradead.org, AJvYcCXQ+Kxvv/1+cMXyckuFZ5IUVo/LM7rJic5wjKyZiST+gHGcqQfgZbvnya5rvN3HDq/K5GQK7ThZqPfxUEYM0oM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCH0Re9gP9Cky+GSrfxngfeVfG1sSWuhQ1UcbHa+XP42NW1KYX
+	Iw8TOEe7TxqdU7F6lHJ8I7teWwQE6Up76rLLhx4KXwNjTWw89hU9/CN6xHSn
+X-Gm-Gg: ASbGncsnRo+ttfe/7TAj4SQE0bXYTL5LiJ+YI0merjW4IGvTJ15PCYRAwMNzNAz+qCg
+	N74RZBu4j/6sVR2j9KyvvC7PvNGB76IgJSRVwZtHmDn9BVcZ3XpHNkBJPXcdivlxYBcJbqv6meX
+	Y7Z8q1P3tjB6FETiyXgJyxzKHU8dRvYntcPzhLMMgPjB2QCRaWXxHk22K9Zdt7rW1KV2D+vSRDP
+	sSmzP8Wyj0hmMK7cnTK/48IAiLUe4TiMOiFD1DUrxDJPueM6c8grZ38h80AhKFrAxvi4vQYf550
+	FfRmJW7igGu6XVzxCLotRg==
+X-Google-Smtp-Source: AGHT+IENrTWZ1c0wp2TPerlNKzvAOVlUwQI7xND1PGvNe4mKp3oVwD++MKmG+bBpbEQqclu2AFkjQw==
+X-Received: by 2002:a05:6870:d14e:b0:29e:76c8:be2e with SMTP id 586e51a60fabf-2b8b5956561mr1541389fac.28.1739246613240;
+        Mon, 10 Feb 2025 20:03:33 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:4b2:23d:64fe:f3dc])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2b825ff504bsm3081397fac.26.2025.02.10.20.03.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Feb 2025 20:03:32 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: patrick@blueri.se
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	kever.yang@rock-chips.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: RE: [PATCH v2 2/2] arm64: dts: rockchip: add MNT Reform 2
+Date: Mon, 10 Feb 2025 22:03:00 -0600
+Message-ID: <20250211040300.1905-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <Z6p68brg5itgYdO1@windev.fritz.box>
+References: <Z6p68brg5itgYdO1@windev.fritz.box>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1739238034;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=59d5DCmTv0tcVe/lLttR0UbGP6r3tAFEV70fpHz4iEE=;
-	b=FChz8yT/sCzvZpcb9Y6uCUI5b+dSKm4yzDwWaNUwL9UXG8DeR2W2gsIOeAINStfcmoKgSX
-	sfiX2wotwRPsz2j/DBMOamYY7oJQ2XK2yjuyDZvMqWDetYoXnKhAnGWCJDrsfHAtHXAgAJ
-	jtZbsFW5Rwl4gnTM6vTrDv5azgAVpKLYeFpJpnmaSKhiT5uFSNfFvMnGOPQ9je2r8rtGS2
-	/3DcwHEaqDSM38lnwWxYhLivzGeB5r9NnmJjZPeWA8mYdr5isFJkCtYsULAQiwIRssE1M5
-	mjjY6t+F/C3yAq7TdoghYKQZyS0OudDiNquHZdKQl6vvHLTP+1uJkxUENyFXFA==
-Date: Tue, 11 Feb 2025 02:40:33 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Trevor Woerner <twoerner@gmail.com>
-Cc: linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar
- Wang <wxt@rock-chips.com>, Rocky Hao <rocky.hao@rock-chips.com>,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v2] thermal/drivers/rockchip: add missing rk3328 mapping
- entry
-In-Reply-To: <20250207175048.35959-1-twoerner@gmail.com>
-References: <20250207175048.35959-1-twoerner@gmail.com>
-Message-ID: <5f9cf65221690452d7e842ee98535192@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250210_174037_694252_374EA2A7 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20250210_200334_865160_D1E74BD2 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,80 +99,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Trevor,
+The RCORE looks like a carrier board for the Firefly iCore RK3588Q SoM [1].
+So it would be better to restructure the DTS as a dtsi for the SoM and
+a board DTS which includes the SoM dtsi.
 
-On 2025-02-07 18:50, Trevor Woerner wrote:
-> The mapping table for the rk3328 is missing the entry for -25C which is
-> found in the TRM section 9.5.2 "Temperature-to-code mapping".
-> 
-> NOTE: the kernel uses the tsadc_q_sel=1'b1 mode which is defined as:
->       4096-<code in table>. Whereas the table in the TRM gives the code
->       "3774" for -25C, the kernel uses 4096-3774=322.
+That's similar to the structure of the Firefly ITX-RK3558J board which 
+uses the rk3588-firefly-core-3588j.dtsi. [2]
 
-After going through the RK3308 and RK3328 TRMs, as well as through the
-downstream kernel code, it seems we may have some troubles at our hands.
-Let me explain, please.
-
-To sum it up, part 1 of the RK3308 TRM v1.1 says on page 538 that the
-equation for the output when tsadc_q_sel equals 1 is (4096 - tsadc_q),
-while part 1 of the RK3328 TRM v1.2 says that the output equation is
-(1024 - tsadc_q) in that case.
-
-The downstream kernel code, however, treats the RK3308 and RK3328
-tables and their values as being the same.  It even mentions 1024 as
-the "offset" value in a comment block for the rk_tsadcv3_control()
-function, just like the upstream code does, which is obviously wrong
-"offset" value when correlated with the table on page 544 of part 1
-of the RK3308 TRM v1.1.
-
-With all this in mind, it's obvious that more work is needed to make
-it clear where's the actual mistake (it could be that the TRM is wrong),
-which I'll volunteer for as part of the SoC binning project.  In the
-meantime, this patch looks fine as-is to me, by offering what's a clear
-improvement to the current state of the upstream code, so please feel
-free to include:
-
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-
-However, it would be good to include some additional notes into the
-patch description in the v3, which would briefly sum up the above-
-described issues and discrepancies, for future reference.
-
-> Link:
-> https://opensource.rock-chips.com/images/9/97/Rockchip_RK3328TRM_V1.1-Part1-20170321.pdf
-> Cc: stable@vger.kernel.org
-> Fixes: eda519d5f73e ("thermal: rockchip: Support the RK3328 SOC in
-> thermal driver")
-> Signed-off-by: Trevor Woerner <twoerner@gmail.com>
-> ---
-> changes in v2:
-> - remove non-ascii characters in commit message
-> - remove dangling [1] reference in commit message
-> - include "Fixes:"
-> - add request for stable backport
-> ---
->  drivers/thermal/rockchip_thermal.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c
-> b/drivers/thermal/rockchip_thermal.c
-> index f551df48eef9..a8ad85feb68f 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -386,6 +386,7 @@ static const struct tsadc_table rk3328_code_table[] 
-> = {
->  	{296, -40000},
->  	{304, -35000},
->  	{313, -30000},
-> +	{322, -25000},
->  	{331, -20000},
->  	{340, -15000},
->  	{349, -10000},
+[1] https://source.mnt.re/reform/mnt-reform-rk3588-som
+[2] https://lore.kernel.org/linux-rockchip/20241216214152.58387-1-shimrrashai@gmail.com/#t
 
 _______________________________________________
 Linux-rockchip mailing list
