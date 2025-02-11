@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCFAC0219E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 19:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB921C0219B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 20:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZeqrxzlhdtiMTSoiFe23sRKtI4To+z5Y/frw+WneqVE=; b=NbfSoEJKtAxfNC
-	oyIQ/yZ5HL7CGyNjzdCWxXh3SncCnfETa/Mm+S2q+mFp72pyKksuuG/DjJyOsbonv8v+QST3NQpQm
-	HV6hPoFRiP7Tj3q/GW0ccOBJFah5XDfB4Bjyvdkhr9PgOlwtLLpa2WyueOIuwdj8wdbQ9OCD4j9Rc
-	s8CjAt96RtMFpLNZ+aUIfSC/AV3SsR/KLJLvkZ8CcvC1DIigER2ex9Hgkdfcf62wiIzvfL2ohgC9T
-	e5HvC3NquWXSjGAsjjhulFxDtkV5MbUJkN+DBqWa38QF9ELLjjyshvAW+4UKk+dhnz0po729zNppG
-	htaKSj1QZt3BgWms3/Zg==;
+	List-Owner; bh=n8RjO2R3krDO5d7C90ZTJGcBPNkAeSsAtQJSzbNlQus=; b=FFHhcOmp3RKFEs
+	jwuVcFCASG8XcW1vw8ORbH7f/orvbthpG6EXsXnP9TeOz0rumxGiMU20IW59rVjwJOMCnLh32PFmn
+	6qlNURKC/zQgedhVooW5RTAWy2t1l4uSvBgWwwZbk793mCjA+8aVHxtdTmMqetGNZjjOIbbXnxb4h
+	FE4fvqp27cfZpchz3MVOOwjzctHP8lpv1S/+FBVnX9lAqlB4D6yOCwGwewSv04JJGRPxm0FSYZGe2
+	Dxuo4QMy8XolaWu0JV/8q8LDPVJ8cuJwlTx/FjgZTgiqlJfF3P7SvUt6uhksqd2ujsi2EwJn2dWLM
+	TUazhYC5noIXleLM7ndw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thwJ4-000000056Wx-1Bla;
-	Tue, 11 Feb 2025 19:52:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thwBL-000000054u3-2gHn;
-	Tue, 11 Feb 2025 19:44:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 34341A40C5F;
-	Tue, 11 Feb 2025 19:42:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 506C6C4CEDD;
-	Tue, 11 Feb 2025 19:44:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739303070;
-	bh=Hp0BPTzPwZpSHR+vJEd78ilDWWyWdLyiF/01sHFuRLM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mM6CREdIS+9n2HJ1vw6TatQgM+uxQtpr9Vz9BNoLvEhP4Zj0/hR8kl5xchyKha2Uk
-	 y+RlxOAS25/A/99+ZQzI3s5m6D/u3Iag96aQatQnlXPlrtsBLbNZTdCUmrs2aBBlR9
-	 e1tavxR0OQSz1rCmLCEemgxuXp8CqjgsB/uzbtxJ2FdazYm1JskgU6IvXAgbLYxidP
-	 q9udWokBedjCHBWSI5BxQZqNOt8ZzOR7GljcOKvv1EWYWWgloBvmjYMWAXCJB7B7Cy
-	 c7swNbK2KWTinMcD0GInZhoHfawzoZlNKcCPaLFkDTEyMWy5W17h3/vPdeN72jurEA
-	 LLTtwgTOcNMvg==
-Date: Tue, 11 Feb 2025 20:44:26 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+	id 1thwZ7-000000059KC-17tC;
+	Tue, 11 Feb 2025 20:09:05 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1thwTR-000000058a7-1FqK;
+	Tue, 11 Feb 2025 20:03:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 284F513D5;
+	Tue, 11 Feb 2025 12:03:33 -0800 (PST)
+Received: from [10.57.35.63] (unknown [10.57.35.63])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EC8EA3F5A1;
+	Tue, 11 Feb 2025 12:03:09 -0800 (PST)
+Message-ID: <c9f1eced-679b-491e-9014-a1ea14120081@arm.com>
+Date: Tue, 11 Feb 2025 20:03:07 +0000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588
  in PCIe endpoint mode
-Message-ID: <Z6uomtzSVTOmAB8X@ryzen>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 References: <20250207143900.2047949-2-cassel@kernel.org>
- <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com>
+ <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com> <Z6uomtzSVTOmAB8X@ryzen>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <Z6uomtzSVTOmAB8X@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_114431_806980_EBE5444F 
-X-CRM114-Status: GOOD (  28.10  )
+X-CRM114-CacheID: sfid-20250211_120313_433949_CCD98B1E 
+X-CRM114-Status: GOOD (  27.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,82 +63,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Robin,
-
-On Tue, Feb 11, 2025 at 05:49:29PM +0000, Robin Murphy wrote:
-> On 2025-02-07 2:39 pm, Niklas Cassel wrote:
-> > Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
-> > on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
-> > (when all PCIe controllers are running in Root Complex mode) and in the
-> > case when running the pcie3x4 PCIe controller in Endpoint mode.
-> > 
-> > There have been no issues detected when running the PCIe controllers in
-> > Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
-> > for each PCI device enumerated on the bus, including the root port itself.
-> > 
-> > However, when running the pcie3x4 PCIe controller in Endpoint mode, we
-> > will only add a single SID to the IOMMU (the SID specified in the iommus
-> > DT property).
-> > 
-> > The enablement of IOMMU in endpoint mode was verified on setup with two
-> > Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
-> > 
-> > A Root Complex sending a TLP to the Endpoint will have Requester ID set
-> > to the BDF of the initiator. On the EP side, the Requester ID will then
-> > be used as the SID. This works fine if the Root Complex has a BDF that
-> > matches the iommus DT property, however, if the Root Complex has any other
-> > BDF, we will see something like:
-> > arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
-> > on the endpoint side.
-> > 
-> > For PCIe controllers running in endpoint mode that always uses the
-> > incoming Requester ID as the SID, the iommus DT property simply isn't
-> > a viable solution. (Neither is iommu-map a viable solution, as there is
-> > no enumeration done on the endpoint side.)
+On 2025-02-11 7:44 pm, Niklas Cassel wrote:
+> Hello Robin,
 > 
-> Well, strictly the controller should own all the StreamIDs it's capable of
-> emitting - if that's just one per possible bus number (as the iATU
-> FUNC_NUM/FUNC_BYPASS stuff appears to suggest?) then 256 "iommus" entries
-> isn't *entirely* unmanageable. If it were to support being arbitrary (or
-> multiple) devices/functions, though, then we probably would want to look for
-> a different solution, because nobody wants a 512KB DT property... :)
+> On Tue, Feb 11, 2025 at 05:49:29PM +0000, Robin Murphy wrote:
+>> On 2025-02-07 2:39 pm, Niklas Cassel wrote:
+>>> Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
+>>> on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
+>>> (when all PCIe controllers are running in Root Complex mode) and in the
+>>> case when running the pcie3x4 PCIe controller in Endpoint mode.
+>>>
+>>> There have been no issues detected when running the PCIe controllers in
+>>> Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
+>>> for each PCI device enumerated on the bus, including the root port itself.
+>>>
+>>> However, when running the pcie3x4 PCIe controller in Endpoint mode, we
+>>> will only add a single SID to the IOMMU (the SID specified in the iommus
+>>> DT property).
+>>>
+>>> The enablement of IOMMU in endpoint mode was verified on setup with two
+>>> Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
+>>>
+>>> A Root Complex sending a TLP to the Endpoint will have Requester ID set
+>>> to the BDF of the initiator. On the EP side, the Requester ID will then
+>>> be used as the SID. This works fine if the Root Complex has a BDF that
+>>> matches the iommus DT property, however, if the Root Complex has any other
+>>> BDF, we will see something like:
+>>> arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+>>> on the endpoint side.
+>>>
+>>> For PCIe controllers running in endpoint mode that always uses the
+>>> incoming Requester ID as the SID, the iommus DT property simply isn't
+>>> a viable solution. (Neither is iommu-map a viable solution, as there is
+>>> no enumeration done on the endpoint side.)
+>>
+>> Well, strictly the controller should own all the StreamIDs it's capable of
+>> emitting - if that's just one per possible bus number (as the iATU
+>> FUNC_NUM/FUNC_BYPASS stuff appears to suggest?) then 256 "iommus" entries
+>> isn't *entirely* unmanageable. If it were to support being arbitrary (or
+>> multiple) devices/functions, though, then we probably would want to look for
+>> a different solution, because nobody wants a 512KB DT property... :)
+> 
+> Well, FUNC_BYPASS and FUNC_NUM is in the IATU_REGION_CTRL_1_OFF_OUTBOUND_i
+> register, so it is for outbound PCI TLPs, not inbound PCI TLPs.
+> (Only inbound PCI TLPs will get sent to the IOMMU after passing the iATU).
+> 
+> There is FUNC_NUM in IATU_REGION_CTRL_1_OFF_INBOUND_i register, but it has
+> a different meaning. (An inbound PCI TLP will only get translated if the
+> FUNC_NUM matches the value in this register).
+> (This check is only performed if the "Function Number Match Enable" bit
+> of the "iATU Region Control 2 Register" is set.)
 
-Well, FUNC_BYPASS and FUNC_NUM is in the IATU_REGION_CTRL_1_OFF_OUTBOUND_i
-register, so it is for outbound PCI TLPs, not inbound PCI TLPs.
-(Only inbound PCI TLPs will get sent to the IOMMU after passing the iATU).
+Sigh, the "i" in iATU doesn't stand for "inbound", does it... major 
+brain fart there.
 
-There is FUNC_NUM in IATU_REGION_CTRL_1_OFF_INBOUND_i register, but it has
-a different meaning. (An inbound PCI TLP will only get translated if the
-FUNC_NUM matches the value in this register).
-(This check is only performed if the "Function Number Match Enable" bit
-of the "iATU Region Control 2 Register" is set.)
+> The SMMU on the rock5b, when running the PCIe controller in endpoint mode,
+> has printed the following:
+> arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+> but also:
+> arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x20 ssid: 0x0
 
+Yeah, that one pretty much settles it - we can certainly expect host 
+root ports with nonzero device numbers, so that's at least 13 bits of 
+the StreamID space to cover, which isn't going to fly.
 
-The SMMU on the rock5b, when running the PCIe controller in endpoint mode,
-has printed the following:
-arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
-but also:
-arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x20 ssid: 0x0
+> depending on which host system we had connected to it.
+> 
+> So I'm a bit worried that 256 "iommus" entries will not be enough.
+> 
+> I don't have any idea on how to solve this, but right now I don't see any
+> other option but to disable the IOMMU when running the PCIe controller in
+> endpoint mode.
 
-depending on which host system we had connected to it.
+Agreed; FWIW, for the patch as it is:
 
-So I'm a bit worried that 256 "iommus" entries will not be enough.
+Acked-by: Robin Murphy <robin.murphy@arm.com>
 
-I don't have any idea on how to solve this, but right now I don't see any
-other option but to disable the IOMMU when running the PCIe controller in
-endpoint mode.
+> (We have no issues when running with the iommu enabled when running the PCIe
+> controller(s) in Root Complex mode.)
+> 
+> 
+> Kind regards,
+> Niklas
 
-(We have no issues when running with the iommu enabled when running the PCIe
-controller(s) in Root Complex mode.)
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
