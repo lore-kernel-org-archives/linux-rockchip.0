@@ -4,53 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A39C0219B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 19:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCFAC0219E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 19:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SSNQN+Zz19r1o84w6hV+TPmpHHBVjX9Eg8QSbBd2HqI=; b=rabaCFC6lARMmY
-	7cZZWk3y+Mn0vypPV/JVIlrB5nI0ipxSZ36gazD7P256bDiusQrEqNPzuQM83Fu7ZDkBzq8g2FqV1
-	k15wpbkyH8XYMS6KasF/d0M6YazYxgYsBAn8TTGxSGdSiNX5KdoNs+mW+2t9IXZX1ede1A9TwhfDT
-	MGW/LGk2j2NlQPGiENEz3fmGB9+od8lj3v8tSlj0fKQ2wdNGv5uKJBJKYwchA+vOYSIo1XpPZrcGs
-	926mCMHpqMck9PncKFRuWFweA5CquQSY0iIMZuF2NfoN2srHdbGHpOeSVhM0Xj/nTDurv5hdCzgDN
-	mfexQnPToKo+0a37Xipw==;
+	List-Owner; bh=ZeqrxzlhdtiMTSoiFe23sRKtI4To+z5Y/frw+WneqVE=; b=NbfSoEJKtAxfNC
+	oyIQ/yZ5HL7CGyNjzdCWxXh3SncCnfETa/Mm+S2q+mFp72pyKksuuG/DjJyOsbonv8v+QST3NQpQm
+	HV6hPoFRiP7Tj3q/GW0ccOBJFah5XDfB4Bjyvdkhr9PgOlwtLLpa2WyueOIuwdj8wdbQ9OCD4j9Rc
+	s8CjAt96RtMFpLNZ+aUIfSC/AV3SsR/KLJLvkZ8CcvC1DIigER2ex9Hgkdfcf62wiIzvfL2ohgC9T
+	e5HvC3NquWXSjGAsjjhulFxDtkV5MbUJkN+DBqWa38QF9ELLjjyshvAW+4UKk+dhnz0po729zNppG
+	htaKSj1QZt3BgWms3/Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thvtQ-000000050nI-38Rg;
-	Tue, 11 Feb 2025 19:26:00 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thupg-00000004onC-3kqL;
-	Tue, 11 Feb 2025 18:18:06 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 87C9C13D5;
-	Tue, 11 Feb 2025 10:18:22 -0800 (PST)
-Received: from [10.57.35.63] (unknown [10.57.35.63])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4906B3F58B;
-	Tue, 11 Feb 2025 10:17:59 -0800 (PST)
-Message-ID: <4005a054-0bb7-4e1b-9c52-fa18aa2b0959@arm.com>
-Date: Tue, 11 Feb 2025 18:17:56 +0000
+	id 1thwJ4-000000056Wx-1Bla;
+	Tue, 11 Feb 2025 19:52:30 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1thwBL-000000054u3-2gHn;
+	Tue, 11 Feb 2025 19:44:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 34341A40C5F;
+	Tue, 11 Feb 2025 19:42:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 506C6C4CEDD;
+	Tue, 11 Feb 2025 19:44:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739303070;
+	bh=Hp0BPTzPwZpSHR+vJEd78ilDWWyWdLyiF/01sHFuRLM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mM6CREdIS+9n2HJ1vw6TatQgM+uxQtpr9Vz9BNoLvEhP4Zj0/hR8kl5xchyKha2Uk
+	 y+RlxOAS25/A/99+ZQzI3s5m6D/u3Iag96aQatQnlXPlrtsBLbNZTdCUmrs2aBBlR9
+	 e1tavxR0OQSz1rCmLCEemgxuXp8CqjgsB/uzbtxJ2FdazYm1JskgU6IvXAgbLYxidP
+	 q9udWokBedjCHBWSI5BxQZqNOt8ZzOR7GljcOKvv1EWYWWgloBvmjYMWAXCJB7B7Cy
+	 c7swNbK2KWTinMcD0GInZhoHfawzoZlNKcCPaLFkDTEyMWy5W17h3/vPdeN72jurEA
+	 LLTtwgTOcNMvg==
+Date: Tue, 11 Feb 2025 20:44:26 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588
+ in PCIe endpoint mode
+Message-ID: <Z6uomtzSVTOmAB8X@ryzen>
+References: <20250207143900.2047949-2-cassel@kernel.org>
+ <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: adjust SMMU interrupt type
-To: Niklas Cassel <cassel@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Patrick Wildt <patrick@blueri.se>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- Kever Yang <kever.yang@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-References: <Z6pxme2Chmf3d3uK@windev.fritz.box> <25203566.ouqheUzb2q@diego>
- <Z6tBElUDaPNgkaIf@ryzen>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <Z6tBElUDaPNgkaIf@ryzen>
+Content-Disposition: inline
+In-Reply-To: <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_101805_024473_4AFC77D0 
-X-CRM114-Status: GOOD (  20.65  )
+X-CRM114-CacheID: sfid-20250211_114431_806980_EBE5444F 
+X-CRM114-Status: GOOD (  28.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,78 +73,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNS0wMi0xMSAxMjoyMiBwbSwgTmlrbGFzIENhc3NlbCB3cm90ZToKPiBPbiBUdWUsIEZl
-YiAxMSwgMjAyNSBhdCAwODo0MDoyNUFNICswMTAwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4g
-QW0gTW9udGFnLCAxMC4gRmVicnVhciAyMDI1LCAyMjozNzoyOSBNRVogc2NocmllYiBQYXRyaWNr
-IFdpbGR0Ogo+Pj4gVGhlIFNNTVUgYXJjaGl0ZWN0dXJlIHJlcXVpcmVzIHdpcmVkIGludGVycnVw
-dHMgdG8gYmUgZWRnZSB0cmlnZ2VyZWQsCj4+PiB3aGljaCBkb2VzIG5vdCBhbGlnbiB3aXRoIHRo
-ZSBEVCBkZXNjcmlwdGlvbiBmb3IgdGhlIFJLMzU4OC4gIFRoaXMgbGVhZHMKPj4+IHRvIGludGVy
-cnVwdCBzdG9ybXMsIGFzIHRoZSBTTU1VIGNvbnRpbnVlcyB0byBob2xkIHRoZSBwaW4gaGlnaCBh
-bmQgb25seQo+Pj4gcHVsbHMgaXQgZG93biBmb3IgYSBzaG9ydCBhbW91bnQgd2hlbiBpc3N1aW5n
-IGFuIElSUS4gIFVwZGF0ZSB0aGUgRFQKPj4+IGRlc2NyaXB0aW9uIHRvIGJlIGluIGxpbmUgd2l0
-aCB0aGUgc3BlYyBhbmQgcGVyY2VpdmVkIHJlYWxpdHkuCj4+Pgo+Pgo+PiBDYydlZCBOaWtsYXMK
-Pj4KPj4gVGhpcyBzaG91bGQgcHJvYmFibHkgYWxzbyBnZXQgYQo+Pgo+PiBGaXhlczogY2Q4MWQz
-YTA2OTVjICgiYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCByazM1ODggcGNpZSBhbmQgcGhwIElP
-TU1VcyIpCj4gCj4gQWdyZWVkLgo+IAo+IAo+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogUGF0cmljayBX
-aWxkdCA8cGF0cmlja0BibHVlcmkuc2U+Cj4+PiAtLS0KPj4+ICAgYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1ODgtYmFzZS5kdHNpIHwgMTYgKysrKysrKystLS0tLS0tLQo+Pj4gICAx
-IGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1iYXNlLmR0c2kg
-Yi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1iYXNlLmR0c2kKPj4+IGluZGV4
-IDhjZmEzMDgzN2NlNy4uNTIwZDA4MTRhNGRlIDEwMDY0NAo+Pj4gLS0tIGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1ODgtYmFzZS5kdHNpCj4+PiArKysgYi9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1iYXNlLmR0c2kKPj4+IEBAIC01NDksMTAgKzU0OSwxMCBA
-QCB1c2JfaG9zdDJfeGhjaTogdXNiQGZjZDAwMDAwIHsKPj4+ICAgCW1tdTYwMF9wY2llOiBpb21t
-dUBmYzkwMDAwMCB7Cj4+PiAgIAkJY29tcGF0aWJsZSA9ICJhcm0sc21tdS12MyI7Cj4+PiAgIAkJ
-cmVnID0gPDB4MCAweGZjOTAwMDAwIDB4MCAweDIwMDAwMD47Cj4+PiAtCQlpbnRlcnJ1cHRzID0g
-PEdJQ19TUEkgMzY5IElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4+PiAtCQkJICAgICA8R0lDX1NQ
-SSAzNzEgSVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPj4+IC0JCQkgICAgIDxHSUNfU1BJIDM3NCBJ
-UlFfVFlQRV9MRVZFTF9ISUdIIDA+LAo+Pj4gLQkJCSAgICAgPEdJQ19TUEkgMzY3IElSUV9UWVBF
-X0xFVkVMX0hJR0ggMD47Cj4+PiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMzY5IElSUV9UWVBF
-X0VER0VfUklTSU5HIDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzcxIElSUV9UWVBFX0VER0Vf
-UklTSU5HIDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzc0IElSUV9UWVBFX0VER0VfUklTSU5H
-IDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzY3IElSUV9UWVBFX0VER0VfUklTSU5HIDA+Owo+
-Pj4gICAJCWludGVycnVwdC1uYW1lcyA9ICJldmVudHEiLCAiZ2Vycm9yIiwgInByaXEiLCAiY21k
-cS1zeW5jIjsKPj4+ICAgCQkjaW9tbXUtY2VsbHMgPSA8MT47Cj4+PiAgIAl9Owo+Pj4gQEAgLTU2
-MCwxMCArNTYwLDEwIEBAIG1tdTYwMF9wY2llOiBpb21tdUBmYzkwMDAwMCB7Cj4+PiAgIAltbXU2
-MDBfcGhwOiBpb21tdUBmY2IwMDAwMCB7Cj4+PiAgIAkJY29tcGF0aWJsZSA9ICJhcm0sc21tdS12
-MyI7Cj4+PiAgIAkJcmVnID0gPDB4MCAweGZjYjAwMDAwIDB4MCAweDIwMDAwMD47Cj4+PiAtCQlp
-bnRlcnJ1cHRzID0gPEdJQ19TUEkgMzgxIElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4+PiAtCQkJ
-ICAgICA8R0lDX1NQSSAzODMgSVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPj4+IC0JCQkgICAgIDxH
-SUNfU1BJIDM4NiBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+LAo+Pj4gLQkJCSAgICAgPEdJQ19TUEkg
-Mzc5IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Cj4+PiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkg
-MzgxIElSUV9UWVBFX0VER0VfUklTSU5HIDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzgzIElS
-UV9UWVBFX0VER0VfUklTSU5HIDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzg2IElSUV9UWVBF
-X0VER0VfUklTSU5HIDA+LAo+Pj4gKwkJCSAgICAgPEdJQ19TUEkgMzc5IElSUV9UWVBFX0VER0Vf
-UklTSU5HIDA+Owo+Pj4gICAJCWludGVycnVwdC1uYW1lcyA9ICJldmVudHEiLCAiZ2Vycm9yIiwg
-InByaXEiLCAiY21kcS1zeW5jIjsKPj4+ICAgCQkjaW9tbXUtY2VsbHMgPSA8MT47Cj4+PiAgIAkJ
-c3RhdHVzID0gImRpc2FibGVkIjsKPj4+Cj4gCj4gUGF0cmljaywgdGhhbmsgeW91IGZvciB0aGUg
-cGF0Y2ghCj4gCj4gRldJVywgdGhleSBoYXZlIHRoZSBzYW1lIGJ1ZyBpbiBkb3duc3RyZWFtOgo+
-IGh0dHBzOi8vZ2l0aHViLmNvbS9yYWR4YS9rZXJuZWwvYmxvYi9saW51eC02LjEtc3Rhbi1ya3I0
-LjEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kjTDI3NjEtTDI3ODMK
-PiAKPiBIb3dldmVyLCB0aGUgUm9ja2NoaXAgUENJZSBWaXJ0dWFsaXphdGlvbiBEZXZlbG9wZXIg
-R3VpZGUgY29ycmVjdGx5IGRlZmluZQo+IHRoZSBJUlFzIGFzIGVkZ2UgdHJpZ2dlcmVkOgo+IGh0
-dHBzOi8vZGwucmFkeGEuY29tL3VzZXJzL2Rldi9Sb2NrY2hpcF9QQ0llX1ZpcnR1YWxpemF0aW9u
-X0RldmVsb3Blcl9HdWlkZV9DTi5wZGYKPiAKPiBMb29raW5nIGF0IHRoZSBBUk0gU01NVXYzIGFy
-Y2hpdGVjdHVyZSBzcGVjaWZpY2F0aW9uOgo+ICJBbiBpbXBsZW1lbnRhdGlvbiBtdXN0IHN1cHBv
-cnQgb25lIG9mLCBvciBvcHRpb25hbGx5IGJvdGggb2YsIHdpcmVkCj4gaW50ZXJydXB0cyBhbmQg
-TVNJcy4gV2hldGhlciBhbiBpbXBsZW1lbnRhdGlvbiBzdXBwb3J0cyBNU0lzIGlzIGRpc2NvdmVy
-YWJsZQo+IGZyb20gU01NVV9JRFIwLk1TSSBhbmQgU01NVV9TX0lEUjAuTVNJLiBBbiBpbXBsZW1l
-bnRhdGlvbiBtaWdodCBzdXBwb3J0IHdpcmVkCj4gaW50ZXJydXB0IG91dHB1dHMgdGhhdCBhcmUg
-ZWRnZS10cmlnZ2VyZWQuIFRoZSBkaXNjb3Zlcnkgb2Ygc3VwcG9ydCBmb3Igd2lyZWQKPiBpbnRl
-cnJ1cHRzIGlzIElNUExFTUVOVEFUSU9OIERFRklORUQuIgoKWXVwLCByaXNpbmcgZWRnZSBpcyBj
-ZXJ0YWlubHkgd2hhdCBNTVUtNjAwIHNwaXRzIG91dC4KClRoYW5rcywKUm9iaW4uCgo+IAo+IFRo
-dXM6Cj4gUmV2aWV3ZWQtYnk6IE5pa2xhcyBDYXNzZWwgPGNhc3NlbEBrZXJuZWwub3JnPgo+IAo+
-IAo+IEhlaWtvLCB0aGlzIHBhdGNoIHNob3VsZCBnbyB0byA2LjE0Lgo+IAo+IFNpZGUgbm90ZTog
-V2UgYWxzbyBoYXZlIGFub3RoZXIgU01NVSBwYXRjaCB0aGF0IHNob3VsZCBnbyB0byA2LjE0Ogo+
-IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjUwMjA3MTQzOTAwLjIw
-NDc5NDktMi1jYXNzZWxAa2VybmVsLm9yZy8KPiAKPiAKPiBLaW5kIHJlZ2FyZHMsCj4gTmlrbGFz
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Hello Robin,
+
+On Tue, Feb 11, 2025 at 05:49:29PM +0000, Robin Murphy wrote:
+> On 2025-02-07 2:39 pm, Niklas Cassel wrote:
+> > Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
+> > on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
+> > (when all PCIe controllers are running in Root Complex mode) and in the
+> > case when running the pcie3x4 PCIe controller in Endpoint mode.
+> > 
+> > There have been no issues detected when running the PCIe controllers in
+> > Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
+> > for each PCI device enumerated on the bus, including the root port itself.
+> > 
+> > However, when running the pcie3x4 PCIe controller in Endpoint mode, we
+> > will only add a single SID to the IOMMU (the SID specified in the iommus
+> > DT property).
+> > 
+> > The enablement of IOMMU in endpoint mode was verified on setup with two
+> > Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
+> > 
+> > A Root Complex sending a TLP to the Endpoint will have Requester ID set
+> > to the BDF of the initiator. On the EP side, the Requester ID will then
+> > be used as the SID. This works fine if the Root Complex has a BDF that
+> > matches the iommus DT property, however, if the Root Complex has any other
+> > BDF, we will see something like:
+> > arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+> > on the endpoint side.
+> > 
+> > For PCIe controllers running in endpoint mode that always uses the
+> > incoming Requester ID as the SID, the iommus DT property simply isn't
+> > a viable solution. (Neither is iommu-map a viable solution, as there is
+> > no enumeration done on the endpoint side.)
+> 
+> Well, strictly the controller should own all the StreamIDs it's capable of
+> emitting - if that's just one per possible bus number (as the iATU
+> FUNC_NUM/FUNC_BYPASS stuff appears to suggest?) then 256 "iommus" entries
+> isn't *entirely* unmanageable. If it were to support being arbitrary (or
+> multiple) devices/functions, though, then we probably would want to look for
+> a different solution, because nobody wants a 512KB DT property... :)
+
+Well, FUNC_BYPASS and FUNC_NUM is in the IATU_REGION_CTRL_1_OFF_OUTBOUND_i
+register, so it is for outbound PCI TLPs, not inbound PCI TLPs.
+(Only inbound PCI TLPs will get sent to the IOMMU after passing the iATU).
+
+There is FUNC_NUM in IATU_REGION_CTRL_1_OFF_INBOUND_i register, but it has
+a different meaning. (An inbound PCI TLP will only get translated if the
+FUNC_NUM matches the value in this register).
+(This check is only performed if the "Function Number Match Enable" bit
+of the "iATU Region Control 2 Register" is set.)
+
+
+The SMMU on the rock5b, when running the PCIe controller in endpoint mode,
+has printed the following:
+arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+but also:
+arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x20 ssid: 0x0
+
+depending on which host system we had connected to it.
+
+So I'm a bit worried that 256 "iommus" entries will not be enough.
+
+I don't have any idea on how to solve this, but right now I don't see any
+other option but to disable the IOMMU when running the PCIe controller in
+endpoint mode.
+
+(We have no issues when running with the iommu enabled when running the PCIe
+controller(s) in Root Complex mode.)
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
