@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED4B7C0219B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 16:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FAEC0219B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 17:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yL/pxO447xFKXHK4ugtf/1pXJKHRbYpS7OpSwCP7L9U=; b=1HZ1jr83jzbbdr
-	RLZJvLm7JBJMCGnwdLjgqK7gSmz1oGvlsMeH3qFPdn+Z5kGSkhkiuD5VecOhJQ7TPyTh+Qjh3DPjJ
-	gwWHLfqztES5/Irn1gp3uvuqXwLoeEdX19Lay61oC0IlIwg9Thu/2fRsDZADl3T7laIb6wVW0c/bE
-	Z4hLDDDRlH6vut1QV2wdVWa4CO1FIA/V8wgAbBuesbXw7BclFNzsqnYKunQv5ZnNjZTrSDpDf3d/j
-	PzwkdaSowCTKLDmPMIK7XoeG1pSbaSwrahETNELaj6/BPAiz+ocynE+U6GS//o9iIA/bv4OdQTtV0
-	tMZnXBNalGZYiSe8OrIg==;
+	List-Owner; bh=F43ciz18ItFMKGdrEt6hLeHOM/YSbR5EdJhRnjqsxJQ=; b=Y9Ao4uC99Rui1S
+	OWJDHwIoRQgJW7syNXQrDoaqURbh2nLNwJrpGf6rO8fx+RU+afF74K48lOa0Na2+1tNKgkBDC6oTk
+	oBHk3mAj9/ln1h0V6su5Dhr3pNvne6KyStmnn6chl1pvw9Mfnr2Mkih7w7hoAw+T2lPn8hVhOmj9+
+	iCplUhnS96Ob4Ah8rg/jZL0683IJg/UQzJ3mhyBQnsgQr4OV5OqfYZnNtBWEPPB95NZpnoPdZrCsA
+	ZuvWdLjzaV3jFMF2QQqQ/zmKB8bEEenvUWHK2kDuEyqXeqtDQlXzpMEQFT4du+UGZTSt9KT1po0k7
+	f62+tsl0QduoJRGYxk0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thskg-00000004Ppg-4ANi;
-	Tue, 11 Feb 2025 16:04:46 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1thuQC-00000004kvj-3JLK;
+	Tue, 11 Feb 2025 17:51:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thsjG-00000004PZ3-0xKX;
-	Tue, 11 Feb 2025 16:03:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739289784; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QSjSAVX2EjM0Zkd4t3XxNiDwxfY5+9s3grENOIXcAKKTLAAxTSULL7cYBGYfuyA++2l/A6ei0G3wEAi2TARhCscUM8HGLD0zz0bM5g8U2fohtTwiUeqdUKUAisprotOTwjl0Vz/PCHmI+tZWhXfiIKXsocXABnSZBYp2v6/puKM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739289784; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=681ubr2yNewIQqxC054xPg8+eBAOGYYdn+NBIKKdGdE=; 
-	b=CxXWXC+2+CoQDHM1+VTzIrn1O48zJzrD1fTy+um0LKvljz6PnSsQnF0xh4RP+m/SxuGWo2ZvGoP1mH2ux/6jf2ZGCQHAALMShnu1sB0PpP2v0KmmHWUpGdMWV8DmK5dEkJkEp/6Cz0Nnezcb2tREb9tFudIOlN58e6dPv8LHQBs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739289784;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=681ubr2yNewIQqxC054xPg8+eBAOGYYdn+NBIKKdGdE=;
-	b=iQxBb7tCOEFCGiOuMrO42BS2uKeduRpsKygpLIiaenhuke650/Qi/ZWm7c5LX7jU
-	2WQ01zzgqpxtNFAiGZYptUkqrcriCKHetHsE4xX07j+hg+W9RQCfE0nq/H2GcKd2Guu
-	bxYbJBVrawrKFxk2nyBLcobTb0yW++773DNvtIlU=
-Received: by mx.zohomail.com with SMTPS id 1739289781881942.8989499803911;
-	Tue, 11 Feb 2025 08:03:01 -0800 (PST)
-Message-ID: <dd41b33d-e73a-4ff8-803f-00a3ab7c9c4b@collabora.com>
-Date: Tue, 11 Feb 2025 19:02:55 +0300
+	id 1thuOB-00000004kbD-3qCS;
+	Tue, 11 Feb 2025 17:49:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Ux51PGVpKLgsu5rDot4gbKTPI/0fh9hiFHDixCmncKE=; b=VfIdK6G+oQZWb8jG7sTDpP3P1+
+	fX+uwOH2ihorYY5fKoPuf5/o+47YhEISBdyamkzxakNUMdISH4AKe6P2cwUhNlX2A+Cfef4TDejEl
+	FEJq936ohIohKTCsgVhSp26iSAam1SXLpIPlFh/II7e4axoFSanLqZr1S0D+1jXzKs8AJ6VGGmdhT
+	1xP+EsTETZqkH/+BcLND7EypV2+I2/fOp+qCWI3od7dB9Cpxh8DVLS0541j15pD2K2g91SWnJKKmZ
+	Klt23qL7GjpW9n4puz/ASkP3jkCIKwnxTf51tEhfIm/+yZ5T/sp4wG0c+MWQKqMpr2ExjkcfCT3IF
+	0NHaHHbw==;
+Received: from foss.arm.com ([217.140.110.172])
+	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1thuO8-00000000evL-0mJu;
+	Tue, 11 Feb 2025 17:49:38 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 393EC13D5;
+	Tue, 11 Feb 2025 09:49:55 -0800 (PST)
+Received: from [10.57.35.63] (unknown [10.57.35.63])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 085D83F5A1;
+	Tue, 11 Feb 2025 09:49:31 -0800 (PST)
+Message-ID: <7996d1ec-6ceb-4d8a-bf03-1911ac5f8f0c@arm.com>
+Date: Tue, 11 Feb 2025 17:49:29 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v5 4/4] media: platform: synopsys: Add support for
- HDMI input driver
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
- mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
- p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
- hverkuil-cisco@xs4all.nl
-References: <20241210193904.883225-1-shreeya.patel@collabora.com>
- <20241210193904.883225-5-shreeya.patel@collabora.com>
- <b6ee761c-6941-473b-aa5e-2dadb69767f2@xs4all.nl>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <b6ee761c-6941-473b-aa5e-2dadb69767f2@xs4all.nl>
-X-ZohoMailClient: External
+Subject: Re: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588
+ in PCIe endpoint mode
+To: Niklas Cassel <cassel@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250207143900.2047949-2-cassel@kernel.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250207143900.2047949-2-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_080318_337713_1E998FDE 
-X-CRM114-Status: GOOD (  20.55  )
+X-CRM114-CacheID: sfid-20250211_174936_678304_F8E97826 
+X-CRM114-Status: GOOD (  26.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,146 +75,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/10/25 16:46, Hans Verkuil wrote:
-...
->> +static bool hdmirx_check_timing_valid(struct v4l2_bt_timings *bt)
->> +{
->> +	if (bt->width < 100 || bt->width > 5000 ||
->> +	    bt->height < 100 || bt->height > 5000)
->> +		return false;
->> +
->> +	if (!bt->hsync || bt->hsync > 200 ||
->> +	    !bt->vsync || bt->vsync > 100)
->> +		return false;
->> +
->> +	if (!bt->hbackporch || bt->hbackporch > 2000 ||
->> +	    !bt->vbackporch || bt->vbackporch > 2000)
->> +		return false;
->> +
->> +	if (!bt->hfrontporch || bt->hfrontporch > 2000 ||
->> +	    !bt->vfrontporch || bt->vfrontporch > 2000)
->> +		return false;
+On 2025-02-07 2:39 pm, Niklas Cassel wrote:
+> Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
+> on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
+> (when all PCIe controllers are running in Root Complex mode) and in the
+> case when running the pcie3x4 PCIe controller in Endpoint mode.
 > 
-> I asked before, but are these hardware limitations or just sanity checks?
-> Please document.
-
-These should be sanity checks. We added comment explaining what this
-code does, telling that we need to repeat checking the timing values
-until they become valid. This is borrowed from downstream driver,
-whether these values are tied to hw limits is unknown, we couldn't find
-the exact limits documented in TRM.
-
-...
->> +static int hdmirx_set_edid(struct file *file, void *fh, struct v4l2_edid *edid)
->> +{
->> +	struct hdmirx_stream *stream = video_drvdata(file);
->> +	struct snps_hdmirx_dev *hdmirx_dev = stream->hdmirx_dev;
->> +	u16 phys_addr;
->> +	int ret;
->> +
->> +	if (edid->pad)
->> +		return -EINVAL;
->> +
->> +	if (edid->start_block)
->> +		return -EINVAL;
->> +
->> +	if (edid->blocks > EDID_NUM_BLOCKS_MAX) {
->> +		edid->blocks = EDID_NUM_BLOCKS_MAX;
->> +		return -E2BIG;
->> +	}
->> +
->> +	if (!edid->blocks) {
->> +		cec_phys_addr_invalidate(hdmirx_dev->cec->adap);
->> +		hdmirx_dev->edid_blocks_written = 0;
+> There have been no issues detected when running the PCIe controllers in
+> Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
+> for each PCI device enumerated on the bus, including the root port itself.
 > 
-> This must pull the HPD low, but that doesn't happen.
-
-Good catch, will fix.
-
-...
->> +static void hdmirx_get_avi_infoframe(struct snps_hdmirx_dev *hdmirx_dev)
->> +{
->> +	struct v4l2_device *v4l2_dev = &hdmirx_dev->v4l2_dev;
->> +	union hdmi_infoframe frame = {};
->> +	int err, i, b, itr = 0;
->> +	u8 aviif[3 + 7 * 4];
->> +	u32 val;
->> +
->> +	aviif[itr++] = HDMI_INFOFRAME_TYPE_AVI;
->> +	val = hdmirx_readl(hdmirx_dev, PKTDEC_AVIIF_PH2_1);
->> +	aviif[itr++] = val & 0xff;
->> +	aviif[itr++] = (val >> 8) & 0xff;
->> +
->> +	for (i = 0; i < 7; i++) {
->> +		val = hdmirx_readl(hdmirx_dev, PKTDEC_AVIIF_PB3_0 + 4 * i);
->> +
->> +		for (b = 0; b < 4; b++)
->> +			aviif[itr++] = (val >> (8 * b)) & 0xff;
->> +	}
->> +
->> +	err = hdmi_infoframe_unpack(&frame, aviif, sizeof(aviif));
->> +	if (err) {
->> +		v4l2_err(v4l2_dev, "failed to unpack AVI infoframe\n");
->> +		return;
->> +	}
->> +
->> +	v4l2_ctrl_s_ctrl(hdmirx_dev->rgb_range, frame.avi.quantization_range);
->> +
->> +	if (frame.avi.itc)
->> +		v4l2_ctrl_s_ctrl(hdmirx_dev->content_type,
->> +				 frame.avi.content_type);
->> +	else
->> +		v4l2_ctrl_s_ctrl(hdmirx_dev->content_type,
->> +				 V4L2_DV_IT_CONTENT_TYPE_NO_ITC);
+> However, when running the pcie3x4 PCIe controller in Endpoint mode, we
+> will only add a single SID to the IOMMU (the SID specified in the iommus
+> DT property).
 > 
-> InfoFrames must now also be exported to debugfs. See e.g. drivers/media/i2c/tc358743.c
-> and include/media/v4l2-dv-timings.h (search for V4L2_DEBUGFS_IF_MAX_LEN).
+> The enablement of IOMMU in endpoint mode was verified on setup with two
+> Rock 5b:s, where the BDF of the Root Complex has BDF (00:00.0).
 > 
-> This is a recent change: both drm and v4l2 can now export InfoFrames to debugfs,
-> and this is handy for debugging issues.
+> A Root Complex sending a TLP to the Endpoint will have Requester ID set
+> to the BDF of the initiator. On the EP side, the Requester ID will then
+> be used as the SID. This works fine if the Root Complex has a BDF that
+> matches the iommus DT property, however, if the Root Complex has any other
+> BDF, we will see something like:
+> arm-smmu-v3 fc900000.iommu: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x1600 ssid: 0x0
+> on the endpoint side.
 > 
-> The edid-decode utility (part of v4l-utils) can parse these InfoFrames.
+> For PCIe controllers running in endpoint mode that always uses the
+> incoming Requester ID as the SID, the iommus DT property simply isn't
+> a viable solution. (Neither is iommu-map a viable solution, as there is
+> no enumeration done on the endpoint side.)
 
-Ack, will add the InfoFrame debugfs.
+Well, strictly the controller should own all the StreamIDs it's capable 
+of emitting - if that's just one per possible bus number (as the iATU 
+FUNC_NUM/FUNC_BYPASS stuff appears to suggest?) then 256 "iommus" 
+entries isn't *entirely* unmanageable. If it were to support being 
+arbitrary (or multiple) devices/functions, though, then we probably 
+would want to look for a different solution, because nobody wants a 
+512KB DT property... :)
 
-...
->> +static void hdmirx_load_default_edid(struct snps_hdmirx_dev *hdmirx_dev)
->> +{
->> +	struct v4l2_edid def_edid;
->> +
->> +	hdmirx_hpd_ctrl(hdmirx_dev, false);
->> +
->> +	/* disable hpd and write edid */
->> +	def_edid.pad = 0;
->> +	def_edid.start_block = 0;
->> +	def_edid.blocks = EDID_NUM_BLOCKS_MAX;
->> +
->> +	if (IS_ENABLED(CONFIG_VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID))
->> +		def_edid.edid = edid_default;
->> +	else
->> +		def_edid.edid = hdmirx_dev->edid;
+Thanks,
+Robin.
+
+> Thus, partly revert commit da92d3dfc871 ("arm64: dts: rockchip: enable the
+> mmu600_pcie IOMMU on the rk3588 SoC") by disabling the PCI IOMMU when
+> running the pcie3x4 PCIe controller in Endpoint mode.
 > 
-> So if you are not loading the default EDID, then you load a zeroed EDID?
+> Since the PCI IOMMU is working as expected in the normal case, keep it
+> enabled when running all PCIe controllers in Root Complex mode.
 > 
-> This is much too complicated: if there is no default EDID, then just
-> pull the HPD low (you do that already at the start) and return.
+> Fixes: da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC")
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi           | 1 -
+>   arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso | 4 ++++
+>   2 files changed, 4 insertions(+), 1 deletion(-)
 > 
-> BTW, please check with CONFIG_VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID set
-> and unset and make sure there are no compile warnings/errors relating to that.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> index 42b57e27ee4c..b5feefda9d2d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+> @@ -215,7 +215,6 @@ pcie3x4_ep: pcie-ep@fe150000 {
+>   		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
+>   				  "dma0", "dma1", "dma2", "dma3";
+>   		max-link-speed = <3>;
+> -		iommus = <&mmu600_pcie 0x0000>;
+>   		num-lanes = <4>;
+>   		phys = <&pcie30phy>;
+>   		phy-names = "pcie-phy";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> index 672d748fcc67..f229cb49da68 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+> @@ -23,3 +23,7 @@ &pcie3x4_ep {
+>   	vpcie3v3-supply = <&vcc3v3_pcie30>;
+>   	status = "okay";
+>   };
+> +
+> +&mmu600_pcie {
+> +	status = "disabled";
+> +};
 
-Now I see what you meant previously. Keeping HPD pulled low if there is
-no valid EDID will work. Will change it in the next iteration.
-
-Thanks for the review!
-
--- 
-Best regards,
-Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
