@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F00C02198
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 11:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D21E0C02198
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 12:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k1iI6aSYa4nKqH87MgYqzOvxkEp33rKAkbO6kDL15r8=; b=OoRtBufLiaZ3Ql
-	1mtAb6++7Y8pZTlfTpcrxp6F1kYgWvE3THac7Qr4AeV329oB7/radds95UpzzRTjFeEUO5D8qbZYg
-	gYEESaC4WvzD/TTvFb92SeffB9R5axvcwWvZtB1LVq5S8sQswnrZjvd6Hp6wn+du7s6Q94XZJ/fja
-	ocPSt5IiC99lMqjeO/g0v+0lT9NrvMe1rLuFrQ1LSds/AMjDbTs1506+OCsEG8xjtoaqptRuzDqqe
-	9YLi8VL1Ysr672F9yY8VciIRfoNOP2kcl8iAwvORTPGYqopaPUE/dv+84QX3W0vuuKn4oLU6PIzDR
-	wSx5+KKSiet7tJpHwE4w==;
+	List-Owner; bh=ip088P3kgFRGYgz70T/PhkrvIXGOCRlc6rkgHwoXX/A=; b=AkSjozVFnGctpt
+	U+vHJZBpLs9GpcjuNZxrsOGIURAAeJS3BXlnjMaWm+n3XCW9aFyqoq84h9TVwi6IXHTMaYtzafi+F
+	K+QJYLw/bK+1DABTkEmHSQh92VKSQc0e72jWEf3wU4jTaTWlRjTVJ6abP4vEqiyBoj1udN2aX5MH8
+	ckLj6CrC7UaVX6zInYnsbARqUqeGoPNGNFKdPR+81lJnUNXYfSU0kihNkcxSMd65xItjt95ZC5tJu
+	uRSsoln1E6ruEFNo4ivGbJLJeQgiAO2K2HqhT/ieDV/z+AMXN1qcungfQR5/BEiyOKQHIfCCusJKm
+	Y8CrY0x+hevLusNX3NjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiAZ0-000000076Tk-1VRR;
-	Wed, 12 Feb 2025 11:05:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tiC6U-00000007ODX-0jIp;
+	Wed, 12 Feb 2025 12:44:34 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiATH-000000075Rv-3mVi;
-	Wed, 12 Feb 2025 11:00:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=cMbXNzmQOH8F+1fl7QOJ8vHQpv6KHpW1bwAT7N9Q6cI=; b=zp/YQrkUlM3VKBJk7sx3RuhGte
-	ESyz5mnvx4yt+lVEggZQ2bVDJCW6SIJZ5FeYFX3r4TZ7LlGV6oz6k5sCGy9L19In/4Wjm3jEEfrgx
-	ej0uvffJTtniZjtVY35RINvOV0tLffeNuCvNdw/PNJb6S9SLszQs/bM4SIhcAvwJKeZqIj9LC6SP1
-	5lPjf3g2n6XN2kAcuBgtfyn/WnpLJhb1Pakn4wXesAcI6PslxC6v5RxDNF3rc6vTXwqtjcAuPCc4Q
-	uv7P3vKr0mtLEpfTDpfV3MZ27eItr7qbSkFyOiqKpUCKbjaxmIizNDA7iC1OE1zgjxle/5Q6/jTtX
-	DWvRXEHg==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tiAT9-0003GU-5b; Wed, 12 Feb 2025 11:59:51 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- derek.foreman@collabora.com, detlev.casanova@collabora.com,
- daniel@fooishbar.org, robh@kernel.org, sebastian.reichel@collabora.com,
- Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v14 02/13] drm/rockchip: vop2: Rename TRANSFORM_OFFSET to
- TRANSFORM_OFFS
-Date: Wed, 12 Feb 2025 11:59:50 +0100
-Message-ID: <4064785.VqM8IeB0Os@diego>
-In-Reply-To: <20250212093530.52961-3-andyshrk@163.com>
-References: <20250212093530.52961-1-andyshrk@163.com>
- <20250212093530.52961-3-andyshrk@163.com>
+	id 1tiC6Q-00000007OD3-3hpU;
+	Wed, 12 Feb 2025 12:44:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739364264; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=mhTek3LMOXWwE7inMGdFBQrsJZznqdEbQDauKdZXlGwi+Z9MfxqqTNkuHAcqwwYCDxnV0OG+NVNWOmAJNe3ZTxx0FgUVdwAggVNMkDGmmTrTWv61fR9qzmbcuE2iSJ8837Uhmy+oBFxF/9JpQCQJlTsODE+Z0ubmulW2P0qxMBM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1739364264; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=k0u7MCkVugkCYytrZIZnLSDOJ7P6+i9SZvRkCovv5zU=; 
+	b=ACA9jmkQalqYV3VPWJ07o8K0WZJpck8qONiPpOHlxLC9EQdGe+FwSaDn2g/7DmX9GLqCRFfkwlY6G2tUU/LycXHcUbjNxmisOKulgmG8/LCIKmcatAYvnyDlxhekL5/iyMarYWHVfjWSo455Zdb11lq6+qqBN1a/wHX0Y9wHDd4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739364263;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=k0u7MCkVugkCYytrZIZnLSDOJ7P6+i9SZvRkCovv5zU=;
+	b=KFDIojn1akvvSLIMtBtS1j/gY6cML0WKSgoRHfeomaqwixBDGRWuFchtvI/GL5aB
+	KFl2p63f+Y8wIG9/MErZmEYc1IbDoGL1bs/sXhr9Rx2Vb6+10JW4a3dM6uSV5ry2Nij
+	jOnTZh89SkxlPkYr/fKxBSsT1UfvNsyfdB4psLKo=
+Received: by mx.zohomail.com with SMTPS id 1739364260281358.8015360119805;
+	Wed, 12 Feb 2025 04:44:20 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: srinivas.kandagatla@linaro.org, linux-rockchip@lists.infradead.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, detlev.casanova@collabora.com,
+ sebastian.reichel@collabora.com, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH RESEND v2 0/6] RK3576 OTP support
+Date: Wed, 12 Feb 2025 13:44:15 +0100
+Message-ID: <5943191.DvuYhMxLoT@workhorse>
+In-Reply-To: <20250210224510.1194963-1-heiko@sntech.de>
+References: <20250210224510.1194963-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_025959_932528_A6660396 
-X-CRM114-Status: GOOD (  22.25  )
+X-CRM114-CacheID: sfid-20250212_044430_998654_EDD003A4 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,106 +78,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-
-Am Mittwoch, 12. Februar 2025, 10:34:57 MEZ schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Monday, 10 February 2025 23:45:04 Central European Standard Time Heiko 
+Stuebner wrote:
+> This enables OTP support in the nvmem driver for rk3576.
 > 
-> This help avoid "exceeds 100 columns" warning from checkpatch
+> I expect to pick the clock patch (patch1) and the arm64-dts patch (patch6)
+> myself, after the nvmem-driver and -binding patches have been applied
+> (patches 2-5).
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
-I'm not much of a fan of "randomly" renaming individual constants
-(especially when one is now named OFFS, while the rest stay at OFFSET)
-
-- on rk3568 VOP2_CLUSTER_WIN0_TRANSFORMED_OFFSET = WIN0 transformed offset
-- on rk3588 VOP2_CLUSTER0_WIN0_TRANSFORMED_OFFSET = WIN0 transform offset
-- on rk3576 "someone" sadly decided to not provide the 2nd TRM part anymore
-  but I guess it'll be the same.
-
-So instead of just dropping parts from the end, you could also follow
-the TRM naming and drop the "_AFBC" from the register name instead?
-
-So going to VOP2_WIN_TRANSFORM_OFFSET, this would also reduce the line
-length accordingly, and moving the naming closer to the TRM too.
-
-Alternatively, just add a linebreak at the appropriate position instead.
-
-Heiko
-
-
-> ---
+> But kept them together for people wanting to try this series.
 > 
-> (no changes since v1)
+> changes in v2:
+> - fix register constant in clock definition (Diederik)
+> - add patch to set limits on variant-specific clock-names
+> - use correct limits for clocks + resets on rk3576 binding
 > 
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++----
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 4 ++--
->  2 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index ebc9cb93073c..8e1b742a7550 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1524,7 +1524,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
->  		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
->  		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
->  		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
-> -		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, transform_offset);
-> +		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, transform_offset);
->  		vop2_win_write(win, VOP2_WIN_AFBC_PIC_OFFSET, ((src->x1 >> 16) | src->y1));
->  		vop2_win_write(win, VOP2_WIN_AFBC_DSP_OFFSET, (dest->x1 | (dest->y1 << 16)));
->  		vop2_win_write(win, VOP2_WIN_AFBC_PIC_VIR_WIDTH, stride);
-> @@ -1535,7 +1535,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
->  	} else {
->  		if (vop2_cluster_window(win)) {
->  			vop2_win_write(win, VOP2_WIN_AFBC_ENABLE, 0);
-> -			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, 0);
-> +			vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFS, 0);
->  		}
->  
->  		vop2_win_write(win, VOP2_WIN_YRGB_VIR, DIV_ROUND_UP(fb->pitches[0], 4));
-> @@ -3448,7 +3448,7 @@ static const struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
->  	[VOP2_WIN_AFBC_TILE_NUM] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_VIR_WIDTH, 16, 31),
->  	[VOP2_WIN_AFBC_PIC_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_PIC_OFFSET, 0, 31),
->  	[VOP2_WIN_AFBC_DSP_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_DSP_OFFSET, 0, 31),
-> -	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET, 0, 31),
-> +	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS, 0, 31),
->  	[VOP2_WIN_AFBC_ROTATE_90] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 0, 0),
->  	[VOP2_WIN_AFBC_ROTATE_270] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 1, 1),
->  	[VOP2_WIN_XMIRROR] = REG_FIELD(RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE, 2, 2),
-> @@ -3547,7 +3547,7 @@ static const struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
->  	[VOP2_WIN_AFBC_PIC_OFFSET] = { .reg = 0xffffffff },
->  	[VOP2_WIN_AFBC_PIC_SIZE] = { .reg = 0xffffffff },
->  	[VOP2_WIN_AFBC_DSP_OFFSET] = { .reg = 0xffffffff },
-> -	[VOP2_WIN_AFBC_TRANSFORM_OFFSET] = { .reg = 0xffffffff },
-> +	[VOP2_WIN_AFBC_TRANSFORM_OFFS] = { .reg = 0xffffffff },
->  	[VOP2_WIN_AFBC_HDR_PTR] = { .reg = 0xffffffff },
->  	[VOP2_WIN_AFBC_HALF_BLOCK_EN] = { .reg = 0xffffffff },
->  	[VOP2_WIN_AFBC_ROTATE_270] = { .reg = 0xffffffff },
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> index 29cc7fb8f6d8..8510140b0869 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> @@ -118,7 +118,7 @@ enum vop2_win_regs {
->  	VOP2_WIN_AFBC_PIC_OFFSET,
->  	VOP2_WIN_AFBC_PIC_SIZE,
->  	VOP2_WIN_AFBC_DSP_OFFSET,
-> -	VOP2_WIN_AFBC_TRANSFORM_OFFSET,
-> +	VOP2_WIN_AFBC_TRANSFORM_OFFS,
->  	VOP2_WIN_AFBC_HDR_PTR,
->  	VOP2_WIN_AFBC_HALF_BLOCK_EN,
->  	VOP2_WIN_AFBC_ROTATE_270,
-> @@ -335,7 +335,7 @@ enum dst_factor_mode {
->  #define RK3568_CLUSTER_WIN_DSP_INFO		0x24
->  #define RK3568_CLUSTER_WIN_DSP_ST		0x28
->  #define RK3568_CLUSTER_WIN_SCL_FACTOR_YRGB	0x30
-> -#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFSET	0x3C
-> +#define RK3568_CLUSTER_WIN_AFBCD_TRANSFORM_OFFS	0x3C
->  #define RK3568_CLUSTER_WIN_AFBCD_OUTPUT_CTRL	0x50
->  #define RK3568_CLUSTER_WIN_AFBCD_ROTATE_MODE	0x54
->  #define RK3568_CLUSTER_WIN_AFBCD_HDR_PTR	0x58
+> RESEND, because I messed up my git-send-email which caused it to include
+> the list of patches 2 times, duplicating everything :-( .
 > 
+> Heiko Stuebner (6):
+>   clk: rockchip: rk3576: define clk_otp_phy_g
+>   nvmem: rockchip-otp: Move read-offset into variant-data
+>   dt-bindings: nvmem: rockchip,otp: add missing limits for clock-names
+>   dt-bindings: nvmem: rockchip,otp: Add compatible for RK3576
+>   nvmem: rockchip-otp: add rk3576 variant data
+>   arm64: dts: rockchip: add rk3576 otp node
+> 
+>  .../bindings/nvmem/rockchip,otp.yaml          | 25 ++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 39 +++++++++++++++++++
+>  drivers/clk/rockchip/clk-rk3576.c             |  2 +
+>  drivers/nvmem/rockchip-otp.c                  | 17 +++++++-
+>  4 files changed, 81 insertions(+), 2 deletions(-)
 
+Hi Heiko,
+
+for the entire series:
+
+Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+OTPs show up on my Sige5 RK3576 board and read fine. Also compared the OTP 
+nodes to downstream and the values look consistent with that. The OTPs aren't 
+documented in the TRM I have, so unfortunately I can't cross-reference that.
+
+NB: patchwork's "Series" download for this series somehow lacks patch 2/6, 
+which tripped me up at first. Not sure if that's a problem with patchwork or 
+with how you sent the series out, but I thought I'd let others know who run 
+into this.
+
+Regards,
+Nicolas Frattaroli
 
 
 
