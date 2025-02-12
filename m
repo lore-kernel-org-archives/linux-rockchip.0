@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A44C0219E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 09:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF50C02198
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 09:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a5T8HFLl7sIWEfi6f6/5GvwrQREuzTN5EVNj4AR2eR4=; b=W6t2qxQrsLrvRX
-	HdZFDDDHTD0cOQkZ5H0MsaAnzVswJtp6pNVp7MQBUVP1x7Pa5d7NJ5mg3Rskjtbf0tZ17I8AL0jlp
-	w0aO6e7DmNHDpgEhtuJdvZt9wTxjRnR8v1IlII6o9WmtntLddWsZpipVv7r31lyINGSsvweKszRJN
-	RBHG0gXMh54ANISK9t3d2stbjNCRmQiLfo6xXb+lduTlO2gNiJJPpgdb1tAlD6TvBqI2CiETAqfH8
-	P4UDxkX7uCPhtU6Tx2FADGI2ChjqKMaQrxljmWlvHUFQiaOzcvXC1smQ3sUIZmEa7rv+Sgfj9W5IH
-	ReKJb56qXugirVwaq4gA==;
+	List-Owner; bh=F2nNWKMZjZZ9eLmQeAiexQP9nqh9z6ILC++4y8G7Q5g=; b=djPwM3y8vJDu3b
+	yYCiLesaAViDhdcqCi7RQzXjVqCgC/hDh1XK0vwEQvDHH03llZOoE/3nbIVX6UGGMibn3SqeTopfd
+	j2SHU2HndhFHGENyJnQ3CzCuCs29FSpmzXIGxdKtqO9P55LX7SKsCRxd21AZcZMKvVra8IgoTybMF
+	SUCXrK+48cKBUFquKMoZEyHE2m5+C5wzpjmyowsD8ou/JMKjf51Wav8gS2ZJZNq9y2DKWeqQuiUHe
+	wWnIA6yrnRVrwbGigLiomgHnoOuIkvUxSackNtH1MdVEHSQ8YeXagPS0u6wal1fuwSc2+lxzO4jTg
+	jd70a38Nwxz39bJ/+4iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9Eg-00000006pPo-16GL;
-	Wed, 12 Feb 2025 09:40:50 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1ti9Ir-00000006qEb-0RjN;
+	Wed, 12 Feb 2025 09:45:09 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ti9A6-00000006npb-3WIY;
-	Wed, 12 Feb 2025 09:36:08 +0000
+	id 1ti9A8-00000006npw-0LCv;
+	Wed, 12 Feb 2025 09:36:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=l6drU
-	h2vkH8RFHOt/j1F+EFHKFzeB3WYinyBTPKLRVM=; b=R1e0waUINkeu1t+TME29x
-	E7wim2L2w4DbmO5N68XLALovPgsE0pJGrzV/vqNvFRaTclSTulCOsg0tBZIklQtc
-	QdqHg7rUNULf8eq5NsDR1uIaAYPr8jP4Fdc5Q72l0yO6b0mHpC3aC0JZ0plG7+3m
-	lMNpfRbTitAkTPJRROolO0=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=Ung3T
+	E5+Pw1IVFWddIyTCDXDUdff897UQnrStYM2ux8=; b=WTcmYjZ+Vrb5oHurO+c4M
+	ZHfE6sa+zx76HinDujuxWAnalvgZX79SSQGVjBU+Oq5KJolJI/kMJzKyEMXS5v9f
+	iVDoxNlnjO8Q955FDF7nId0DPsNQ0RpeclBP0AAZuim/5OhmmaFwzlr84tOpY+NV
+	hZfc7D3QPeF8M3Tuq+kFQY=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wBnG9Fja6xn14FuLQ--.33700S3;
-	Wed, 12 Feb 2025 17:35:36 +0800 (CST)
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wBnG9Fja6xn14FuLQ--.33700S8;
+	Wed, 12 Feb 2025 17:35:41 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -49,24 +49,25 @@ Cc: hjc@rock-chips.com,
 	daniel@fooishbar.org,
 	robh@kernel.org,
 	sebastian.reichel@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v14 01/13] drm/rockchip: vop2: use devm_regmap_field_alloc for cluster-regs
-Date: Wed, 12 Feb 2025 17:34:56 +0800
-Message-ID: <20250212093530.52961-2-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v14 06/13] drm/rockchip: vop2: Introduce vop hardware version
+Date: Wed, 12 Feb 2025 17:35:01 +0800
+Message-ID: <20250212093530.52961-7-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250212093530.52961-1-andyshrk@163.com>
 References: <20250212093530.52961-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wBnG9Fja6xn14FuLQ--.33700S3
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGFW7GFWUWrykJr4fGF17Wrg_yoWrZr4xpF
-	4rCwnxuF45Grn29rWkArn8AF1Fk39rta1rCFn7uwnI9r1qgr97C3Wqk3Wjyrs0kryv9FZr
-	tFs8t3y3ua4Ygr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uu6wtUUUUU=
+X-CM-TRANSID: _____wBnG9Fja6xn14FuLQ--.33700S8
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Xry3tF47Cry8WF4fWF1xXwb_yoWxKw1xpF
+	W7Aay5WrW8Ga1qgw4kAFW3ZF4aywn2yayxJanrGw1ft3sxKryDG3Z0qF1ayFZ8tr92kr4j
+	yFs7ArW5Wr42yr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jFFALUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQjxXmesZ5VJpgABsZ
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqA-xXmesZw5T5AAAsd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_013607_275621_F90A81E6 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20250212_013608_425150_50046C0B 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,131 +84,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko@sntech.de>
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Right now vop2_cluster_init() copies the base vop2_cluster_regs
-and adapts the reg value with the current window's offset before
-adding the fields to the regmap.
+There is a version number hardcoded in the VOP VERSION_INFO
+register, and the version number increments sequentially based
+on the production order of the SOC.
 
-This conflicts with the notion of reg_fields being const, see
-https://lore.kernel.org/all/20240706-regmap-const-structs-v1-1-d08c776da787@weissschuh.net/
-for reference, which now causes checkpatch to actually warn about that.
+So using this version number to distinguish different VOP features
+will simplify the code.
 
-So instead of creating one big copy and changing it afterwards,
-add the reg_fields individually using devm_regmap_field_alloc().
-
-Functional it is the same, just that the reg_field we're handling
-can stay const.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
 
 ---
 
-(no changes since v1)
+(no changes since v6)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 66 +++++++++-----------
- 1 file changed, 31 insertions(+), 35 deletions(-)
+Changes in v6:
+- Add a blank line after hardware version check code
+
+Changes in v3:
+- Add comments for why we should treat rk3566 with special care.
+- Add hardware version check
+
+Changes in v2:
+- Introduce vop hardware version
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 26 ++++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 11 +++++++++
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  3 +++
+ 3 files changed, 33 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index afc946ead870..ebc9cb93073c 100644
+index 844df4001159..a7c26ef18b85 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -3400,7 +3400,7 @@ static int vop2_find_rgb_encoder(struct vop2 *vop2)
- 	return -ENOENT;
+@@ -356,7 +356,7 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
+ 
+ static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
+ {
+-	if (vop2->data->soc_id == 3588) {
++	if (vop2->version == VOP_VERSION_RK3588) {
+ 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
+ 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
+ 			return true;
+@@ -409,7 +409,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 	if (modifier == DRM_FORMAT_MOD_INVALID)
+ 		return false;
+ 
+-	if (vop2->data->soc_id == 3568 || vop2->data->soc_id == 3566) {
++	if (vop2->version == VOP_VERSION_RK3568) {
+ 		if (vop2_cluster_window(win)) {
+ 			if (modifier == DRM_FORMAT_MOD_LINEAR) {
+ 				drm_dbg_kms(vop2->drm,
+@@ -420,7 +420,7 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 	}
+ 
+ 	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
+-		if (vop2->data->soc_id == 3588) {
++		if (vop2->version == VOP_VERSION_RK3588) {
+ 			if (!rockchip_afbc(plane, modifier)) {
+ 				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
+ 				return false;
+@@ -819,6 +819,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+ static void vop2_enable(struct vop2 *vop2)
+ {
+ 	int ret;
++	u32 version;
+ 
+ 	ret = pm_runtime_resume_and_get(vop2->dev);
+ 	if (ret < 0) {
+@@ -838,10 +839,20 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
+ 	}
+ 
++	version = vop2_readl(vop2, RK3568_VERSION_INFO);
++	if (version != vop2->version) {
++		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
++		return;
++	}
++
++	/*
++	 * rk3566 share the same vop version with rk3568, so
++	 * wen need to use soc_id for identification here.
++	 */
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+ 
+-	if (vop2->data->soc_id == 3588)
++	if (vop2->version == VOP_VERSION_RK3588)
+ 		rk3588_vop2_power_domain_enable_all(vop2);
+ 
+ 	vop2_writel(vop2, RK3568_REG_CFG_DONE, RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
+@@ -922,7 +933,7 @@ static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
+ 
+ static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
+ {
+-	return (vop2->data->soc_id != 3566 && vop2->data->soc_id != 3568);
++	return vop2->version != VOP_VERSION_RK3568;
  }
  
--static struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
-+static const struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_ENABLE] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 0, 0),
- 	[VOP2_WIN_FORMAT] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 1, 5),
- 	[VOP2_WIN_RB_SWAP] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 14, 14),
-@@ -3471,28 +3471,26 @@ static struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
- static int vop2_cluster_init(struct vop2_win *win)
- {
- 	struct vop2 *vop2 = win->vop2;
--	struct reg_field *cluster_regs;
--	int ret, i;
--
--	cluster_regs = kmemdup(vop2_cluster_regs, sizeof(vop2_cluster_regs),
--			       GFP_KERNEL);
--	if (!cluster_regs)
--		return -ENOMEM;
--
--	for (i = 0; i < ARRAY_SIZE(vop2_cluster_regs); i++)
--		if (cluster_regs[i].reg != 0xffffffff)
--			cluster_regs[i].reg += win->offset;
-+	int i;
+ static bool vop2_gamma_lut_in_use(struct vop2 *vop2, struct vop2_video_port *vp)
+@@ -1264,7 +1275,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		&fb->format->format,
+ 		afbc_en ? "AFBC" : "", &yrgb_mst);
  
--	ret = devm_regmap_field_bulk_alloc(vop2->dev, vop2->map, win->reg,
--					   cluster_regs,
--					   ARRAY_SIZE(vop2_cluster_regs));
-+	for (i = 0; i < ARRAY_SIZE(vop2_cluster_regs); i++) {
-+		const struct reg_field field = {
-+			.reg = (vop2_cluster_regs[i].reg != 0xffffffff) ?
-+					vop2_cluster_regs[i].reg + win->offset :
-+					vop2_cluster_regs[i].reg,
-+			.lsb = vop2_cluster_regs[i].lsb,
-+			.msb = vop2_cluster_regs[i].msb
-+		};
+-	if (vop2->data->soc_id > 3568) {
++	if (vop2->version > VOP_VERSION_RK3568) {
+ 		vop2_win_write(win, VOP2_WIN_AXI_BUS_ID, win->data->axi_bus_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_YRGB_R_ID, win->data->axi_yrgb_r_id);
+ 		vop2_win_write(win, VOP2_WIN_AXI_UV_R_ID, win->data->axi_uv_r_id);
+@@ -1324,7 +1335,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		 * this bit is gating disable, we should write 1 to
+ 		 * disable gating when enable afbc.
+ 		 */
+-		if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
++		if (vop2->version == VOP_VERSION_RK3568)
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+ 		else
+ 			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 1);
+@@ -2524,6 +2535,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 	vop2->dev = dev;
+ 	vop2->data = vop2_data;
+ 	vop2->ops = vop2_data->ops;
++	vop2->version = vop2_data->version;
+ 	vop2->drm = drm;
  
--	kfree(cluster_regs);
-+		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
-+		if (IS_ERR(win->reg[i]))
-+			return PTR_ERR(win->reg[i]);
-+	}
+ 	dev_set_drvdata(dev, vop2);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 9e2cf1ab869d..a9bcaa6e27f6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -13,6 +13,15 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
  
--	return ret;
-+	return 0;
++#define VOP2_VERSION(major, minor, build)	((major) << 24 | (minor) << 16 | (build))
++
++/* The new SOC VOP version is bigger than the old */
++#define VOP_VERSION_RK3568	VOP2_VERSION(0x40, 0x15, 0x8023)
++#define VOP_VERSION_RK3588	VOP2_VERSION(0x40, 0x17, 0x6786)
++#define VOP_VERSION_RK3528	VOP2_VERSION(0x50, 0x17, 0x1263)
++#define VOP_VERSION_RK3562	VOP2_VERSION(0x50, 0x17, 0x4350)
++#define VOP_VERSION_RK3576	VOP2_VERSION(0x50, 0x19, 0x9765)
++
+ #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
+ 
+ #define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
+@@ -243,6 +252,7 @@ struct vop2_ops {
+ struct vop2_data {
+ 	u8 nr_vps;
+ 	u64 feature;
++	u32 version;
+ 	const struct vop2_ops *ops;
+ 	const struct vop2_win_data *win;
+ 	const struct vop2_video_port_data *vp;
+@@ -260,6 +270,7 @@ struct vop2_data {
  };
  
--static struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
-+static const struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
- 	[VOP2_WIN_ENABLE] = REG_FIELD(RK3568_SMART_REGION0_CTRL, 0, 0),
- 	[VOP2_WIN_FORMAT] = REG_FIELD(RK3568_SMART_REGION0_CTRL, 1, 5),
- 	[VOP2_WIN_DITHER_UP] = REG_FIELD(RK3568_SMART_REGION0_CTRL, 12, 12),
-@@ -3559,26 +3557,24 @@ static struct reg_field vop2_esmart_regs[VOP2_WIN_MAX_REG] = {
- static int vop2_esmart_init(struct vop2_win *win)
- {
- 	struct vop2 *vop2 = win->vop2;
--	struct reg_field *esmart_regs;
--	int ret, i;
--
--	esmart_regs = kmemdup(vop2_esmart_regs, sizeof(vop2_esmart_regs),
--			      GFP_KERNEL);
--	if (!esmart_regs)
--		return -ENOMEM;
--
--	for (i = 0; i < ARRAY_SIZE(vop2_esmart_regs); i++)
--		if (esmart_regs[i].reg != 0xffffffff)
--			esmart_regs[i].reg += win->offset;
-+	int i;
+ struct vop2 {
++	u32 version;
+ 	struct device *dev;
+ 	struct drm_device *drm;
+ 	struct vop2_video_port vps[ROCKCHIP_MAX_CRTC];
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index c1b49a01a2ba..68bcd50c9af4 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1627,6 +1627,7 @@ static const struct vop2_ops rk3588_vop_ops = {
+ };
  
--	ret = devm_regmap_field_bulk_alloc(vop2->dev, vop2->map, win->reg,
--					   esmart_regs,
--					   ARRAY_SIZE(vop2_esmart_regs));
-+	for (i = 0; i < ARRAY_SIZE(vop2_esmart_regs); i++) {
-+		const struct reg_field field = {
-+			.reg = (vop2_esmart_regs[i].reg != 0xffffffff) ?
-+				vop2_esmart_regs[i].reg + win->offset :
-+				vop2_esmart_regs[i].reg,
-+			.lsb = vop2_esmart_regs[i].lsb,
-+			.msb = vop2_esmart_regs[i].msb
-+		};
+ static const struct vop2_data rk3566_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1645,6 +1646,7 @@ static const struct vop2_data rk3566_vop = {
+ };
  
--	kfree(esmart_regs);
-+		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
-+		if (IS_ERR(win->reg[i]))
-+			return PTR_ERR(win->reg[i]);
-+	}
+ static const struct vop2_data rk3568_vop = {
++	.version = VOP_VERSION_RK3568,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+ 	.nr_vps = 3,
+ 	.max_input = { 4096, 2304 },
+@@ -1663,6 +1665,7 @@ static const struct vop2_data rk3568_vop = {
+ };
  
--	return ret;
--};
-+	return 0;
-+}
- 
- static int vop2_win_init(struct vop2 *vop2)
- {
+ static const struct vop2_data rk3588_vop = {
++	.version = VOP_VERSION_RK3588,
+ 	.feature = VOP2_FEATURE_HAS_SYS_GRF | VOP2_FEATURE_HAS_VO1_GRF |
+ 		   VOP2_FEATURE_HAS_VOP_GRF | VOP2_FEATURE_HAS_SYS_PMU,
+ 	.nr_vps = 4,
 -- 
 2.34.1
 
