@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 658A7C0219B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Feb 2025 20:40:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC8AC02198
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 09:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iTFxO2RmuZ7t2Tl8wDki2WBV4CKERAE8EoEoXg3Yw8E=; b=w0paSxBvoRVqEz
-	VzHMo3TFzc8zPhqwEySkN0tV0Qr5cj430hu1eXJ5ZXwxBU6gBcQbrg0hA4G7uzBY0Gj+4g7EHO10s
-	FJDP0IAnyrMq0K28dfjf+g6S43ykKfV6/glKAVyO2c6rlQu6JcrpGRAY4SnmtVyUUqI7clrOxql52
-	doRRN3aQqhoETV6Kdny9Ktsb8vrpGBINU2DqcfCHrBvN4s5UVPUOoRvpcYJoKa8wCHgTMJVpehNVe
-	b3eATVduv727pGQLWRBVeyEBNmNMzKx4Whx3+2Ze6E+jdd58I7r7cfsBjqKT7V2TBRkBe87MU5EZP
-	dkZsjCq+CwiVGS8QCU7w==;
+	List-Owner; bh=DsPYfcDL62HYCYPLUhecKJFhkPwvlxWg1b7VqDhsIRc=; b=DBjcKqG1ihxBgl
+	qdlCQ6lIlG96bV+hWH/h4vrJbyoSjsRWjrA+pIY2EQR84FwRgBOjH0Y0QCcEuFUPYtxi49sVadC24
+	LAhtKjTTRpED2YZ63kltAk+WojR4EBfas8zcNvb1SAChFggdNB7MR2+ya2iF0AkvBdMEWo8DW4xjF
+	zUs7plAYQvDj14AkDJ2MAjpRJqzoftCETZGLWQQhGuc7M1nUQXI+/MIFlQZcIqQyGn7Xa9sOgBw8q
+	XagnEON5WfLMVNHun1+EX1CSzW6M6VGiQA0m0gN8qYxFMte7EHJy7I6SReLYtLLPLQtkiOuv2bToa
+	wr5b8b/mmonrciXDGKGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1thx3D-00000005EFH-3ZUD;
-	Tue, 11 Feb 2025 20:40:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1thwz5-00000005DWQ-3vej;
-	Tue, 11 Feb 2025 20:35:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gglx4zAvfkLMpQ1XOKMrFKuCVcehZElgoQp6Brx/pAs=; b=H7MrS9De4hPowMUdCH9oefcgN6
-	kCXtVpn13LcqwiIJn9sFpI4Vuzc5k7aviykPLir6QP3xYxebYCzuVSYXtBioMeHpF+jw53rpj5dCY
-	/hBLBXl2L5oSqTgBJy03681mS07NlmSQfxNa1MH+wcPf349BzjjZNr7prx1Zes2JZ9ep9qaX/sj3E
-	jdO7yFhnwdNiTLFAEdQhP1AuV610dcsio0uA+vmo4/4ZS2zFk0mlZGgggfgNe05BNRanaRVf8DX0M
-	aFYiR00RE6FS4Wg5KXbh8ElPYQr2ECj0B+AL4EP996tB8Hm1s7XC081OiMCpus98It123U1Q+L/ew
-	N4EfNxJw==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1thwz0-0003OL-Ao; Tue, 11 Feb 2025 21:35:50 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>,
+	id 1ti9DH-00000006p0c-41KE;
+	Wed, 12 Feb 2025 09:39:23 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1ti9A6-00000006npM-3XLp;
+	Wed, 12 Feb 2025 09:36:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=URKKB
+	59F/q0mF1SZHAnHb3HC+RFEwqYwuY5f1Lrg/6M=; b=W/U9ojoUFD0Ezbx44WQ/c
+	fKXXxs2TX+q25TzBRH44cdTzvhaA/Am+offgB53//E35EP1B1IMmj84wXor7DtIT
+	FiXioG43/NdbFBT/jpkhk5IUB+T8WyYjZlr2nWgpYak9cknqUP++SEShDrUSVfk7
+	7tMAa8HZ8n++HHv5NK5cEQ=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wBnG9Fja6xn14FuLQ--.33700S6;
+	Wed, 12 Feb 2025 17:35:39 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: disable IOMMU when running rk3588 in PCIe endpoint mode
-Date: Tue, 11 Feb 2025 21:35:36 +0100
-Message-ID: <173930613280.1358259.14632106493042428046.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250207143900.2047949-2-cassel@kernel.org>
-References: <20250207143900.2047949-2-cassel@kernel.org>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	daniel@fooishbar.org,
+	robh@kernel.org,
+	sebastian.reichel@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v14 04/13] drm/rockchip: vop2: Merge vop2_cluster/esmart_init function
+Date: Wed, 12 Feb 2025 17:34:59 +0800
+Message-ID: <20250212093530.52961-5-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250212093530.52961-1-andyshrk@163.com>
+References: <20250212093530.52961-1-andyshrk@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: _____wBnG9Fja6xn14FuLQ--.33700S6
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWw4UKF17CrWktr18AFykAFb_yoW5Xr1DpF
+	W3Gr43Wr4UGrsFgr4kJrn8uF1Fkr12yaykAa48KwnIkwnrKF9FkFn5JF10yr90krWv9Fy2
+	yFs5K3y5ua4j9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UZ6pPUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAHxXmesZw5TqAABse
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250211_123555_973441_1330AE60 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20250212_013607_264471_AAACF679 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,27 +83,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Andy Yan <andy.yan@rock-chips.com>
 
-On Fri, 07 Feb 2025 15:39:01 +0100, Niklas Cassel wrote:
-> Commit da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU
-> on the rk3588 SoC") enabled the mmu600_pcie IOMMU, both in the normal case
-> (when all PCIe controllers are running in Root Complex mode) and in the
-> case when running the pcie3x4 PCIe controller in Endpoint mode.
-> 
-> There have been no issues detected when running the PCIe controllers in
-> Root Complex mode. During PCI probe time, we will add a SID to the IOMMU
-> for each PCI device enumerated on the bus, including the root port itself.
-> 
-> [...]
+Now these two function share the same logic, the can
+be merged as one.
 
-Applied, thanks!
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-[1/1] arm64: dts: rockchip: disable IOMMU when running rk3588 in PCIe endpoint mode
-      commit: 7d1163fc08936fcb5cf5d9daf366c322c3b4e882
+(no changes since v1)
 
-Best regards,
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 42 +++++---------------
+ 1 file changed, 11 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index a0d961cb5d21..844df4001159 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2424,18 +2424,18 @@ static int vop2_find_rgb_encoder(struct vop2 *vop2)
+ 	return -ENOENT;
+ }
+ 
+-static int vop2_cluster_init(struct vop2_win *win)
++static int vop2_regmap_init(struct vop2_win *win, const struct reg_field *regs,
++			    int nr_regs)
+ {
+ 	struct vop2 *vop2 = win->vop2;
+ 	int i;
+ 
+-	for (i = 0; i < vop2->data->nr_cluster_regs; i++) {
++	for (i = 0; i < nr_regs; i++) {
+ 		const struct reg_field field = {
+-			.reg = (vop2->data->cluster_reg[i].reg != 0xffffffff) ?
+-				vop2->data->cluster_reg[i].reg + win->offset :
+-				vop2->data->cluster_reg[i].reg,
+-			.lsb = vop2->data->cluster_reg[i].lsb,
+-			.msb = vop2->data->cluster_reg[i].msb
++			.reg = (regs[i].reg != 0xffffffff) ?
++				regs[i].reg + win->offset : regs[i].reg,
++			.lsb = regs[i].lsb,
++			.msb = regs[i].msb
+ 		};
+ 
+ 		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+@@ -2446,28 +2446,6 @@ static int vop2_cluster_init(struct vop2_win *win)
+ 	return 0;
+ };
+ 
+-static int vop2_esmart_init(struct vop2_win *win)
+-{
+-	struct vop2 *vop2 = win->vop2;
+-	int i;
+-
+-	for (i = 0; i < vop2->data->nr_smart_regs; i++) {
+-		const struct reg_field field = {
+-			.reg = (vop2->data->smart_reg[i].reg != 0xffffffff) ?
+-				vop2->data->smart_reg[i].reg + win->offset :
+-				vop2->data->smart_reg[i].reg,
+-			.lsb = vop2->data->smart_reg[i].lsb,
+-			.msb = vop2->data->smart_reg[i].msb
+-		};
+-
+-		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+-		if (IS_ERR(win->reg[i]))
+-			return PTR_ERR(win->reg[i]);
+-	}
+-
+-	return 0;
+-}
+-
+ static int vop2_win_init(struct vop2 *vop2)
+ {
+ 	const struct vop2_data *vop2_data = vop2->data;
+@@ -2484,9 +2462,11 @@ static int vop2_win_init(struct vop2 *vop2)
+ 		win->win_id = i;
+ 		win->vop2 = vop2;
+ 		if (vop2_cluster_window(win))
+-			ret = vop2_cluster_init(win);
++			ret = vop2_regmap_init(win, vop2->data->cluster_reg,
++					       vop2->data->nr_cluster_regs);
+ 		else
+-			ret = vop2_esmart_init(win);
++			ret = vop2_regmap_init(win, vop2->data->smart_reg,
++					       vop2->data->nr_cluster_regs);
+ 		if (ret)
+ 			return ret;
+ 	}
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
