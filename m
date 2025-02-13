@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B67C021A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 16:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D9D4C021A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 17:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lk6c4e/gjRmyjCuBX0Or+i1gyg6JMe+9TL1OIG6pIlo=; b=tdx/RRY13wKz25
-	wo2GUKkJmrO02WvEmF/T4Taw+6JvRxcs+aeczrl+tgsy+LRTAP5NLEcxxY0PHU+PhKI5tKts7yq3H
-	bCOlQt76u0NSQBC0DE4CniC40qfaMgN3lJNinm6Nob8oVlpp0R2s3DjU5TA4yeet4eq+KC8E/k45p
-	UCtw3X1G8taoE7A0rnb4L3hEnu+hFmD264h322/sIHFeuvp+MYXQHzjDk8WFnHB8+mUpA9k30yVoW
-	mhrHAQuZofJXVccF6IqKp9YEA0GPCAvptxSRnNoyQL2vCkEqAtlUnbBY6Gsl2RV4uX0RYBykX3zPq
-	E4p8fn3cEPnRQewbb7Ew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CHhBJTdp0sFUPk0KfDEl8qZJJ4VQ/pI/XfxafCGNolE=; b=tGbdl2Phr5OkwM
+	y/tG6S1vaSv5VVJuN0LNcgVy5paBwFIFhPTlz8CYz21fQKLQ6iIM5L6Ovqcafx1kbJnzrHW6oN/em
+	NmNBz5y3RjEIMe9lk4SOp75P+objP0YMaU56Pf6FBdTipWBwLaTcR73mACAlahanul+LYJSy6/Q2N
+	OlKb6hLHY0shJThlQhqWoGut6VJzHDAKWpdiSkwiOeRM66hywABtoOl3e5XxAycyoYcyXNzkCXjrQ
+	Nlro7J8aLTkTxLuc1cGHtAKwXAf12Fqo3nhZvFR9kR8EuwwCIXKJ4/jOJfJkD787GehwRq0zqgf/i
+	/jrPDz4Pn/vJ9DJzPaXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tibee-0000000Bf6S-2oQP;
-	Thu, 13 Feb 2025 16:01:32 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1tidNX-0000000C5Ch-06sC;
+	Thu, 13 Feb 2025 17:51:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tibSE-0000000BcD4-04AR
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Feb 2025 15:48:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1739461719;
- bh=OSqEFJEPXbKrFf4UCRw4Rj9UNsiFiIqusumOACEFv68=;
- b=qCks0rqWXqq7S8CWwKJQS1u/SkL4gvsgOysaDHTxzRLN+wYib36rYT5twLdUC1lkGUfTCzQ7R
- EcqvT2OlzchDVOu6PRtcJ3H33J14mS9MlAJ+7PStONOx30NcRujc5mZXlk/vKU4fvEttgcsEv/R
- 9OZOAch8m5tseNruRmuejtMy+KuIx5glttD20dcEmgNpdo7402MqFQsu/MJG6mGbHrxgZuD2XIf
- 67WLYPiHwRS6pyHxAK53hqJymsX1vmT7amASc19G7mAzAyOTAeXhEomzLowA1Cs+k6JJx2E7sFM
- DFTES00oYLc4QsqRyaFBvzto58Ryyz0BYySP+YbpDolg==
-X-Forward-Email-ID: 67ae1441eeea92be259cebf3
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <b5977d21-aa39-4e91-863b-cc7f9dc6938c@kwiboo.se>
-Date: Thu, 13 Feb 2025 16:48:10 +0100
+	id 1tic6c-0000000BmCc-2UpV;
+	Thu, 13 Feb 2025 16:30:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=MNMDnKXII92afWHhH4RWZCjxwftjZXkXdjE1exG0TPY=; b=uMF6tyMHrDtDZmzYEsUM6TiN6a
+	B7J+wLSoaIctHizwPTfwt/IN/8YkHFjVLnzP6ujA2Yp+Y9LmhmndovbrGI6pWtveKtcMVdVWW98ND
+	MYgtTv+nJOB5ej8lsP0v/3RlZKRDWhLgXYCpJPBqqhqHyXsOP1EAqS8gfUt2nCYy9MgzghiqlLc5+
+	q+G1B9E72QQd7mBBZ6Hfc1VFxFcXVhqxEY+/Fv1fyLVzQVzbHBl1RlGsayIyEJQO7Wl83iMm45kw9
+	OH1pUcUSe95K4Z0CzhGgV5UPfkAWUhSACiNRHw+qA4MhUqCH2utD0D//SE5cZ1qXgTh/ejnTFFJ0U
+	ntTudkIg==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tic6Z-0004lW-34; Thu, 13 Feb 2025 17:30:23 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@cherry.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH] arm64: dts: rockchip: add usb typec host support to rk3588-jaguar
+Date: Thu, 13 Feb 2025 17:30:13 +0100
+Message-ID: <20250213163013.1616467-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device
- tree
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Dragan Simic <dsimic@manjaro.org>, Chris Morgan <macromorgan@hotmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>,
- FUKAUMI Naoki <naoki@radxa.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Weizhao Ouyang <weizhao.ouyang@arm.com>, Elon Zhang
- <zhangzj@rock-chips.com>, Alexey Charkov <alchark@gmail.com>,
- Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20250213145921.133412-1-detlev.casanova@collabora.com>
- <20250213145921.133412-3-detlev.casanova@collabora.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250213145921.133412-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_074842_397630_5462B945 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20250213_083026_656547_F49C6C7D 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,103 +74,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-On 2025-02-13 15:57, Detlev Casanova wrote:
-> From: Stephen Chen <stephen@radxa.com>
-> 
-> The Radxa ROCK 4D board is based on the Rockchip rk3576 SoC.
-> 
-> The device tree adds support for basic devices:
->  - UART
->  - SD Card
->  - Ethernet
->  - USB
->  - RTC
-> 
-> It has 4 USB ports but only 3 are usable as the top left one is used
-> for maskrom.
-> 
-> It has a USB-C port that is only used for powering the board.
-> 
-> Signed-off-by: Stephen Chen <stephen@radxa.com>
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3576-rock-4d.dts      | 651 ++++++++++++++++++
->  2 files changed, 652 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index def1222c1907e..a112aeb37948a 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -132,6 +132,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> new file mode 100644
-> index 0000000000000..f356742f9d643
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> @@ -0,0 +1,651 @@
+Jaguar has two type-c ports connected to fusb302 controllers that can
+work both in host and device mode and can also run in display-port
+altmode.
 
-[snip]
+While these ports can work in dual-role data mode, they do not support
+powering the device itself as power-sink. This causes issues because
+the current infrastructure does not cope well with dual-role data
+without dual-role power.
 
-> +&gmac0 {
-> +	phy-mode = "rgmii-id";
-> +	clock_in_out = "output";
-> +
-> +	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 20000 100000>;
+So add the necessary nodes for the type-c controllers as well
+as enable the relevant core usb nodes, but limit the mode to host-mode
+for now until we figure out device mode.
 
-The snps,reset- props are deprecated and should be changed to reset-
-props in the phy node.
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 178 ++++++++++++++++++
+ 1 file changed, 178 insertions(+)
 
-> +
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&eth0m0_miim
-> +		     &eth0m0_tx_bus2
-> +		     &eth0m0_rx_bus2
-> +		     &eth0m0_rgmii_clk
-> +		     &eth0m0_rgmii_bus
-> +		     &ethm0_clk0_25m_out>;
-> +
-> +	phy-handle = <&rgmii_phy0>;
-> +	status = "okay";
-> +};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index 90f823b2c219..329d98011c60 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+@@ -333,6 +333,52 @@ rtc_twi: rtc@6f {
+ 		};
+ 	};
+ 
++	usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
++		vbus-supply = <&vcc_5v0_usb_c1>;
++
++		connector {
++			compatible = "usb-c-connector";
++			data-role = "dual";
++			label = "USBC-1 P11";
++			power-role = "source";
++			source-pdos =
++				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc0_hs: endpoint {
++						remote-endpoint = <&usb_host0_xhci_drd_sw>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					usbc0_ss: endpoint {
++						remote-endpoint = <&usbdp_phy0_typec_ss>;
++					};
++				};
++
++				port@2 {
++					reg = <2>;
++
++					usbc0_sbu: endpoint {
++						remote-endpoint = <&usbdp_phy0_typec_sbu>;
++					};
++				};
++			};
++		};
++	};
++
+ 	vdd_npu_s0: regulator@42 {
+ 		compatible = "rockchip,rk8602";
+ 		reg = <0x42>;
+@@ -394,6 +440,52 @@ &i2c8 {
+ 	pinctrl-0 = <&i2c8m2_xfer>;
+ 	status = "okay";
+ 
++	usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
++		vbus-supply = <&vcc_5v0_usb_c2>;
++
++		connector {
++			compatible = "usb-c-connector";
++			data-role = "dual";
++			label = "USBC-2 P12";
++			power-role = "source";
++			source-pdos =
++				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc1_hs: endpoint {
++						remote-endpoint = <&usb_host1_xhci_drd_sw>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					usbc1_ss: endpoint {
++						remote-endpoint = <&usbdp_phy1_typec_ss>;
++					};
++				};
++
++				port@2 {
++					reg = <2>;
++
++					usbc1_sbu: endpoint {
++						remote-endpoint = <&usbdp_phy1_typec_sbu>;
++					};
++				};
++			};
++		};
++	};
++
+ 	vdd_cpu_big0_s0: regulator@42 {
+ 		compatible = "rockchip,rk8602";
+ 		reg = <0x42>;
+@@ -851,6 +943,24 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
++&u2phy0 {
++	status = "okay";
++};
++
++&u2phy0_otg {
++	phy-supply = <&vcc_5v0_usb_c1>;
++	status = "okay";
++};
++
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	phy-supply = <&vcc_5v0_usb_c2>;
++	status = "okay";
++};
++
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -893,6 +1003,46 @@ &uart7 {
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
++	orientation-switch;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usbdp_phy0_typec_ss: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_ss>;
++		};
++
++		usbdp_phy0_typec_sbu: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&usbc0_sbu>;
++		};
++	};
++};
++
++&usbdp_phy1 {
++	orientation-switch;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usbdp_phy1_typec_ss: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc1_ss>;
++		};
++
++		usbdp_phy1_typec_sbu: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&usbc1_sbu>;
++		};
++	};
++};
++
+ /* host0 on P10 USB-A */
+ &usb_host0_ehci {
+ 	status = "okay";
+@@ -903,6 +1053,34 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
++&usb_host0_xhci {
++	dr_mode = "host";
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usb_host0_xhci_drd_sw: endpoint {
++			remote-endpoint = <&usbc0_hs>;
++		};
++	};
++};
++
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usb_host1_xhci_drd_sw: endpoint {
++			remote-endpoint = <&usbc1_hs>;
++		};
++	};
++};
++
+ /* host1 on M.2 E-key */
+ &usb_host1_ehci {
+ 	status = "okay";
+-- 
+2.47.2
 
-[snip]
-
-> +&mdio0 {
-> +	rgmii_phy0: phy@1 {
-
-Maybe ethernet-phy@1 ?
-
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0x1>;
-> +		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
-
-Please add reset- props here.
-
-Changing to use reset- props may cause issue if a RTL8211F PHY is used
-on the board. Use a ethernet-phy-id compatible or mainline U-Boot to
-ensure the Ethernet PHY can be discovered during probe.
-
-Regards,
-Jonas
-
-> +	};
-> +};
-> +
-
-[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
