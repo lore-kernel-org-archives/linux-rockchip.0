@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E90AC021A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 20:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10CADC021A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 20:21:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5te7loJSx3crCFCfb7JO7FIPYAsf6BQNwt82k/9WofA=; b=sPKJnK0zUjB9HRkVbp+tvVicwN
-	5A5B0jIu0MkKZmvOJmM50mcpedXo61qOUryNtGbeyy8H8cE5XFnZh6Wy2172TcPhGpik/mo7tQcK1
-	jZiQuiySmePEhEdo8/154NJjnclMmFzq1cbGYfE3LhFXnbZ36wMyxkOaIpU/e6JB9T39M6m0+JGoy
-	M9DotL70xPSar9ROR0YcPjGJl7e9d6leZWkJmtYpgP3LDRzsj2ToP8oHIu87VOV7LJzGb7zxx6Ccl
-	pjcWziOf1WfukBo7L8d572wT5szinM3G4290lLMDDS5eo15IG/hQ7f6exXh/JsRy2+btMzCLOvfeA
-	Y7/9cyXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f3sJmqDMOKxFF6qhcnesV0pU+uE//jSxMvAk39XtKpA=; b=DFHn5t45Ngznc4
+	hH4j3DqEmAGAytrD/BxXE4/HQ4iHcW/T+eh9PyPiNo9FXIw5f+BXlhqu+bR4d2LCmfsEcJj8rZAQK
+	/ydy1kSogFxEFWUBu3tMoO2tUi3HXtRboq4rMVOnc9S+85mkLfPmeYyEM33Mkk0HIOgUXkjhlQLGs
+	pEMLh3Y3inBvYQTEWi+4KeONC6UoqP+MtO52hqlwEeXD7ybHX0UmwXsRIvJmWhkahyH0pBV7m4JER
+	xqR68vh5cxv6EGAm35hJe/b3+bVeBIYrbkkynlWRu0oGx0tX8vAHquqV1OeLqboZ4Q6dG+RNf74u1
+	1DjC2MegVZByaz7lcbiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tifUg-0000000CUyH-44zc;
-	Thu, 13 Feb 2025 20:07:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tifho-0000000CWlo-2lU7;
+	Thu, 13 Feb 2025 20:21:04 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tifTE-0000000CUoA-3Ape;
-	Thu, 13 Feb 2025 20:06:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EE1E25C5729;
-	Thu, 13 Feb 2025 20:05:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB8B6C4CED1;
-	Thu, 13 Feb 2025 20:05:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739477159;
-	bh=NACchtxeonADU5GQJHVdhJAYs1NUCFnsjx8N1JQdRrU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O/JH8jfV1QVq1uasHTsNeuvpUp+d/jj3Sxg0GxQKCVk7MJyvAD+eV7i506He6qDkk
-	 CgczH1mXZqmixuHsk0D/2KtFkSCe/Wmi8P9wl7zCIUczWtl3sD9Vq+H2A5cpdDdnQF
-	 qNGJnP9y/5CtGu9vhXYx1B8p7h+0KKFG7NvnxjfzY6NPNfHSqEgpjg6KZXdcGWsLa9
-	 aw79CG0LR2+U1fZ2shFOmgWKUurnvnCGkvfOKwv3xXZMFivGXD6G8/TJk9OItg0FuJ
-	 zk2HZ3DJcceF9gUMbY0NZul7L33XU3Emvw5VLBcspBPrQFTtCjH/OY7sZFLz2zeqsk
-	 MyoYXycWED0Ew==
-Date: Thu, 13 Feb 2025 20:05:53 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
-	Dinh Nguyen <dinguyen@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	WANG Xuerui <kernel@xen0n.name>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, imx@lists.linux.dev,
-	loongarch@lists.linux.dev
-Subject: Re: (subset) [PATCH v1 0/4] Removal of non-existent DAC nodes
-Message-ID: <20250213-calamity-smuggler-5d606993be32@spud>
-References: <20240717-anvil-ashy-544e80a1317c@spud>
- <173939339997.59416.11108011581545463665.b4-ty@linaro.org>
+	id 1tifgM-0000000CWYb-1Pmg
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Feb 2025 20:19:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1739477974;
+ bh=S+N8QktHLziteDHKc6l89RJnsEypWQF7J2Pqb6k3fjQ=;
+ b=UVLOqjpcCb1xCOeppwHJxs+DofPCgOLW+7xTcvaGTKB8OUDe++qExIpre7+NmklJMcIP/wBbM
+ sAzKCfJ5ZiYa53UhurF9mVI04AkMRAXr8uq825HuftnSqpkrU7tamjYG1qQx3kPR2J7N/cDtSeT
+ PKghOQniMfwRKz4CGHn1y46h7vsEX+aXqbTK1GZ/x9+3f975SA9nQAM31YB99wcI/mULI9qcyxz
+ P75Y6hM+lsV1VcdAhwkfbmGbEQr1V8zwQN9L0ARSMuWjpjfidtMNmaZm3qJmDK8YL9Lk2cMFRCb
+ Zj4I4MZleRq1MdZrL//gnYm0+YaXDPlTSdp/KeJ//WGw==
+X-Forward-Email-ID: 67ae53c49555f68eb8805aed
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <3da8e680-1f36-473d-b51a-6c77a6ea8cc1@kwiboo.se>
+Date: Thu, 13 Feb 2025 21:19:11 +0100
 MIME-Version: 1.0
-In-Reply-To: <173939339997.59416.11108011581545463665.b4-ty@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device
+ tree
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Dragan Simic <dsimic@manjaro.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>,
+ FUKAUMI Naoki <naoki@radxa.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Weizhao Ouyang <weizhao.ouyang@arm.com>, Elon Zhang
+ <zhangzj@rock-chips.com>, Alexey Charkov <alchark@gmail.com>,
+ Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20250213145921.133412-1-detlev.casanova@collabora.com>
+ <20250213145921.133412-3-detlev.casanova@collabora.com>
+ <b5977d21-aa39-4e91-863b-cc7f9dc6938c@kwiboo.se>
+ <5973630.DvuYhMxLoT@trenzalore>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <5973630.DvuYhMxLoT@trenzalore>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_120600_836739_0063AE96 
-X-CRM114-Status: GOOD (  17.51  )
+X-CRM114-CacheID: sfid-20250213_121934_412013_22B405D4 
+X-CRM114-Status: GOOD (  26.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +85,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0470880246976576125=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Detlev,
 
---===============0470880246976576125==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="t2TI/qcM7Hcs5rgZ"
-Content-Disposition: inline
+On 2025-02-13 20:56, Detlev Casanova wrote:
+> Hi Jonas,
+> 
+> On Thursday, 13 February 2025 10:48:10 EST Jonas Karlman wrote:
+>> Hi Detlev,
+>>
+>> On 2025-02-13 15:57, Detlev Casanova wrote:
+>>> From: Stephen Chen <stephen@radxa.com>
+>>>
+>>> The Radxa ROCK 4D board is based on the Rockchip rk3576 SoC.
+>>>
+>>> The device tree adds support for basic devices:
+>>>  - UART
+>>>  - SD Card
+>>>  - Ethernet
+>>>  - USB
+>>>  - RTC
+>>>
+>>> It has 4 USB ports but only 3 are usable as the top left one is used
+>>> for maskrom.
+>>>
+>>> It has a USB-C port that is only used for powering the board.
+>>>
+>>> Signed-off-by: Stephen Chen <stephen@radxa.com>
+>>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>>> ---
+>>>
+>>>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>>>  .../boot/dts/rockchip/rk3576-rock-4d.dts      | 651 ++++++++++++++++++
+>>>  2 files changed, 652 insertions(+)
+>>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
+>>> b/arch/arm64/boot/dts/rockchip/Makefile index
+>>> def1222c1907e..a112aeb37948a 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+>>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+>>> @@ -132,6 +132,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=
+>>> rk3568-wolfvision-pf5-display-vz.dtbo> 
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
+>>>
+>>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
+>>>
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
+>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+>>> b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts new file mode 100644
+>>> index 0000000000000..f356742f9d643
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+>>> @@ -0,0 +1,651 @@
+>>
+>> [snip]
+>>
+>>> +&gmac0 {
+>>> +	phy-mode = "rgmii-id";
+>>> +	clock_in_out = "output";
+>>> +
+>>> +	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
+>>> +	snps,reset-active-low;
+>>> +	snps,reset-delays-us = <0 20000 100000>;
+>>
+>> The snps,reset- props are deprecated and should be changed to reset-
+>> props in the phy node.
+> 
+> Arg, second time I use deprectated props on new things. Are there plans or 
+> ways to make dtbs_check warn about those ?
 
+Agree, would be nice if dtbs_check could be a little bit more verbose
+about use of deprecated props :-)
 
---t2TI/qcM7Hcs5rgZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> 
+>>> +
+>>> +	pinctrl-names = "default";
+>>> +	pinctrl-0 = <&eth0m0_miim
+>>> +		     &eth0m0_tx_bus2
+>>> +		     &eth0m0_rx_bus2
+>>> +		     &eth0m0_rgmii_clk
+>>> +		     &eth0m0_rgmii_bus
+>>> +		     &ethm0_clk0_25m_out>;
+>>> +
+>>> +	phy-handle = <&rgmii_phy0>;
+>>> +	status = "okay";
+>>> +};
+>>
+>> [snip]
+>>
+>>> +&mdio0 {
+>>> +	rgmii_phy0: phy@1 {
+>>
+>> Maybe ethernet-phy@1 ?
+> 
+> Indeed.
+> 
+>>> +		compatible = "ethernet-phy-ieee802.3-c22";
+>>> +		reg = <0x1>;
+>>> +		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
+>>
+>> Please add reset- props here.
+>>
+>> Changing to use reset- props may cause issue if a RTL8211F PHY is used
+>> on the board. Use a ethernet-phy-id compatible or mainline U-Boot to
+>> ensure the Ethernet PHY can be discovered during probe.
+> 
+> Using downstream u-boot, with the RTL8211F PHY, linux can still detect the PHY 
+> and use it correctly, even with reset-* props at the PHY level.
+> 
+> I guess I can keep those there then, unless the issues you mention are more 
+> subtle than that ?
+> 
 
-On Wed, Feb 12, 2025 at 09:49:59PM +0100, Krzysztof Kozlowski wrote:
->=20
-> On Wed, 17 Jul 2024 10:37:52 +0100, Conor Dooley wrote:
-> > From: Conor Dooley <conor.dooley@microchip.com>
-> >=20
-> > Recently I've been getting triggered by abuse of the Rohm dh2228fv
-> > compatible to get the spidev driver probing in Linux on development
-> > kits by employees of various silicon vendors (like NXP or my own
-> > employer). I had a look around the kernel and all users other than the
-> > original Clearfontz board added by Maxime appear to be similar abuse.
-> > Drop the non-existent nodes from all of these devices :)
-> >=20
-> > [...]
->=20
-> Applied, thanks!
->=20
-> [3/4] loongarch: dts: remove non-existent DAC from 2k1000-ref
->       https://git.kernel.org/krzk/linux-dt/c/854a080f0b73ff966a813ec2dc53=
-891831daa28d
+Ohh, typically there has been issues for Linux to find the Ethernet PHY unless
+it has first been reset by boot firmware. Something like:
 
-Heh, funny that you picked this up yesterday - I noticed that it was
-there while poking at spidev doing some debugging yesterday and was
-going to grab the patch myself. Thanks.
-Noticed also that there's a user of it in riscv that I hadn't included
-in my original patch. No clue why I didn't include that, but I've sent
-out a patch for it now.
+  rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+  rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
 
---t2TI/qcM7Hcs5rgZ
-Content-Type: application/pgp-signature; name="signature.asc"
+There was a chicken-and-egg issue related to detecting ethernet phy:
+- phy needs to be reset or phy_id read back as 0xffffffff on mdio bus
+- phy device is not created because a valid phy_id is not read back
+- phy device needs to be created before it can be reset
 
------BEGIN PGP SIGNATURE-----
+See [1] for more details on the ethernet phy issue that typically have
+affected multiple Rockchip boards with RTL8211F PHYs. Maybe it has been
+fixed in v6.13+.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ65QoQAKCRB4tDGHoIJi
-0hJOAP9qWBg0rjsbzm7opAMArAFEycQu0lJBHYdR+tfeeXkkhAEArfJdGry0AYEf
-b8lHjUhG8iocKhPAo6JWSZBlm8Sn4w8=
-=cxBE
------END PGP SIGNATURE-----
+[1] https://lore.kernel.org/all/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
 
---t2TI/qcM7Hcs5rgZ--
+Regards,
+Jonas
 
+> 
+> Detlev.
+> 
+> 
+> 
 
---===============0470880246976576125==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0470880246976576125==--
-
