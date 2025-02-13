@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB0A9C021A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 15:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B67C021A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 16:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LNHrYl5b9cUMD0f77FBaNFguaRJ1YfRuTAr7qP6on44=; b=K3fYzDa+Nez015
-	/sRH48wiEaLi+uyrm4GPfIb2R5tFmUemh372YSBm+etj9IZXNw0mTNQlLG9jLIHFeHwGYESwRpWx3
-	Ds0GipylXs0dvNxg7KN3NGBcT0/yG1kGbrfem+RZpCgNCSUZC8BBeeunRnC/XgUwch9mW1zNJM0N3
-	cAxdUFDBtZbGm8OvkJkoyyxHBOlgEy6UcEiur6gy8nBI5ThhC0M6BbtVKt6irmoyM0TJ7pd3j77mE
-	cVPknSQka1QIJ05Yjm8BZdKJ6MiAqcqPTiyT5Siwh7X4Bk1V07WN/RW68LOEoCt7iuSMUZAP/fvJ0
-	AvdpZ9ObZijxcma6vI2g==;
+	List-Owner; bh=Lk6c4e/gjRmyjCuBX0Or+i1gyg6JMe+9TL1OIG6pIlo=; b=tdx/RRY13wKz25
+	wo2GUKkJmrO02WvEmF/T4Taw+6JvRxcs+aeczrl+tgsy+LRTAP5NLEcxxY0PHU+PhKI5tKts7yq3H
+	bCOlQt76u0NSQBC0DE4CniC40qfaMgN3lJNinm6Nob8oVlpp0R2s3DjU5TA4yeet4eq+KC8E/k45p
+	UCtw3X1G8taoE7A0rnb4L3hEnu+hFmD264h322/sIHFeuvp+MYXQHzjDk8WFnHB8+mUpA9k30yVoW
+	mhrHAQuZofJXVccF6IqKp9YEA0GPCAvptxSRnNoyQL2vCkEqAtlUnbBY6Gsl2RV4uX0RYBykX3zPq
+	E4p8fn3cEPnRQewbb7Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tib8k-0000000BXB1-3fZ5;
-	Thu, 13 Feb 2025 15:28:34 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tibee-0000000Bf6S-2oQP;
+	Thu, 13 Feb 2025 16:01:32 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tib6S-0000000BWgW-4Biz;
-	Thu, 13 Feb 2025 15:26:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 00142A4253D;
-	Thu, 13 Feb 2025 15:24:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FDB7C4CEE4;
-	Thu, 13 Feb 2025 15:26:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1739460372;
-	bh=uSCLKXuUFkv8xNfCz6j+uSy/iCvKrKUs3L7ibwEF+fI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=c+8aK0F6DeUXphO+tciKBjQMtXvWPyiYnPZ2a+qpsV/LPQ3qFGLBC0ui6S0Mn9PaS
-	 eGHhcRQXDzbu0aRY4AMaVZJ2SPI+HvBk8ocVI8m6G9bLjrs/oXkgKYOdCEA9CPSco9
-	 PfrM0KEhknlo/DNC0kVbhONz7YyfJOctACqILkTE=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: stable@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	patches@lists.linux.dev,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Guenter Roeck <groeck@chromium.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 6.6 092/273] drm/rockchip: cdn-dp: Use drm_connector_helper_hpd_irq_event()
-Date: Thu, 13 Feb 2025 15:27:44 +0100
-Message-ID: <20250213142410.977858295@linuxfoundation.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250213142407.354217048@linuxfoundation.org>
-References: <20250213142407.354217048@linuxfoundation.org>
-User-Agent: quilt/0.68
-X-stable: review
-X-Patchwork-Hint: ignore
+	id 1tibSE-0000000BcD4-04AR
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Feb 2025 15:48:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1739461719;
+ bh=OSqEFJEPXbKrFf4UCRw4Rj9UNsiFiIqusumOACEFv68=;
+ b=qCks0rqWXqq7S8CWwKJQS1u/SkL4gvsgOysaDHTxzRLN+wYib36rYT5twLdUC1lkGUfTCzQ7R
+ EcqvT2OlzchDVOu6PRtcJ3H33J14mS9MlAJ+7PStONOx30NcRujc5mZXlk/vKU4fvEttgcsEv/R
+ 9OZOAch8m5tseNruRmuejtMy+KuIx5glttD20dcEmgNpdo7402MqFQsu/MJG6mGbHrxgZuD2XIf
+ 67WLYPiHwRS6pyHxAK53hqJymsX1vmT7amASc19G7mAzAyOTAeXhEomzLowA1Cs+k6JJx2E7sFM
+ DFTES00oYLc4QsqRyaFBvzto58Ryyz0BYySP+YbpDolg==
+X-Forward-Email-ID: 67ae1441eeea92be259cebf3
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <b5977d21-aa39-4e91-863b-cc7f9dc6938c@kwiboo.se>
+Date: Thu, 13 Feb 2025 16:48:10 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device
+ tree
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Dragan Simic <dsimic@manjaro.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>,
+ FUKAUMI Naoki <naoki@radxa.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Weizhao Ouyang <weizhao.ouyang@arm.com>, Elon Zhang
+ <zhangzj@rock-chips.com>, Alexey Charkov <alchark@gmail.com>,
+ Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20250213145921.133412-1-detlev.casanova@collabora.com>
+ <20250213145921.133412-3-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250213145921.133412-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_072613_159255_C176B81B 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20250213_074842_397630_5462B945 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,55 +83,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ni42LXN0YWJsZSByZXZpZXcgcGF0Y2guICBJZiBhbnlvbmUgaGFzIGFueSBvYmplY3Rpb25zLCBw
-bGVhc2UgbGV0IG1lIGtub3cuCgotLS0tLS0tLS0tLS0tLS0tLS0KCkZyb206IFRob21hcyBaaW1t
-ZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgoKY29tbWl0IDY2NmUxOTYwNDY0MTQwY2M0YmM5
-MjAzYzIwMzA5N2U3MGI1NGM5NWEgdXBzdHJlYW0uCgpUaGUgY29kZSBmb3IgZGV0ZWN0aW5nIGFu
-ZCB1cGRhdGluZyB0aGUgY29ubmVjdG9yIHN0YXR1cyBpbgpjZG5fZHBfcGRfZXZlbnRfd29yaygp
-IGhhcyBhIG51bWJlciBvZiBwcm9ibGVtcy4KCi0gSXQgZG9lcyBub3QgYXF1aXJlIHRoZSBsb2Nr
-cyB0byBjYWxsIHRoZSBkZXRlY3QgaGVscGVyIGFuZCB1cGRhdGUKdGhlIGNvbm5lY3RvciBzdGF0
-dXMuIFRoZXNlIGFyZSBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnLmNvbm5lY3Rpb25fbXV0ZXgKYW5k
-IHN0cnVjdCBkcm1fbW9kZV9jb25maWcubXV0ZXguCgotIEl0IGRvZXMgbm90IHVzZSBkcm1faGVs
-cGVyX3Byb2JlX2RldGVjdCgpLCB3aGljaCBoZWxwcyB3aXRoIHRoZQpkZXRhaWxzIG9mIGxvY2tp
-bmcgYW5kIGRldGVjdGlvbi4KCi0gSXQgdXNlcyB0aGUgY29ubmVjdG9yJ3Mgc3RhdHVzIGZpZWxk
-IHRvIGRldGVybWluZSBhIGNoYW5nZSB0bwp0aGUgY29ubmVjdG9yIHN0YXR1cy4gVGhlIGVwb2No
-X2NvdW50ZXIgZmllbGQgaXMgdGhlIGNvcnJlY3Qgb25lLiBUaGUKZmllbGQgc2lnbmFscyBhIGNo
-YW5nZSBldmVuIGlmIHRoZSBjb25uZWN0b3Igc3RhdHVzJyB2YWx1ZSBkaWQgbm90CmNoYW5nZS4K
-ClJlcGxhY2UgdGhlIGNvZGUgd2l0aCBhIGNhbGwgdG8gZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfaHBk
-X2lycV9ldmVudCgpLAp3aGljaCBmaXhlcyBhbGwgdGhlc2UgcHJvYmxlbXMuCgpTaWduZWQtb2Zm
-LWJ5OiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KRml4ZXM6IDgxNjMy
-ZGY2OTc3MiAoImRybS9yb2NrY2hpcDogY2RuLWRwOiBkbyBub3QgdXNlIGRybV9oZWxwZXJfaHBk
-X2lycV9ldmVudCIpCkNjOiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgpDYzogR3Vl
-bnRlciBSb2VjayA8Z3JvZWNrQGNocm9taXVtLm9yZz4KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9j
-ay1jaGlwcy5jb20+CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBB
-bmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+CkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6
-IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IDxzdGFibGVAdmdlci5rZXJu
-ZWwub3JnPiAjIHY0LjExKwpTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250
-ZWNoLmRlPgpMaW5rOiBodHRwczovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvbXNn
-aWQvMjAyNDExMDUxMzM4NDguNDgwNDA3LTEtdHppbW1lcm1hbm5Ac3VzZS5kZQpTaWduZWQtb2Zm
-LWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgotLS0K
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgICAgOSArLS0tLS0tLS0K
-IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgOCBkZWxldGlvbnMoLSkKCi0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCkBAIC05NDYsOSArOTQ2LDYgQEAgc3RhdGljIHZvaWQg
-Y2RuX2RwX3BkX2V2ZW50X3dvcmsoc3RydWN0CiB7CiAJc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
-ID0gY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCBjZG5fZHBfZGV2aWNlLAogCQkJCQkJZXZlbnRf
-d29yayk7Ci0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9ICZkcC0+Y29ubmVjdG9y
-OwotCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMgb2xkX3N0YXR1czsKLQogCWludCByZXQ7CiAK
-IAltdXRleF9sb2NrKCZkcC0+bG9jayk7CkBAIC0xMDEwLDExICsxMDA3LDcgQEAgc3RhdGljIHZv
-aWQgY2RuX2RwX3BkX2V2ZW50X3dvcmsoc3RydWN0CiAKIG91dDoKIAltdXRleF91bmxvY2soJmRw
-LT5sb2NrKTsKLQotCW9sZF9zdGF0dXMgPSBjb25uZWN0b3ItPnN0YXR1czsKLQljb25uZWN0b3It
-PnN0YXR1cyA9IGNvbm5lY3Rvci0+ZnVuY3MtPmRldGVjdChjb25uZWN0b3IsIGZhbHNlKTsKLQlp
-ZiAob2xkX3N0YXR1cyAhPSBjb25uZWN0b3ItPnN0YXR1cykKLQkJZHJtX2ttc19oZWxwZXJfaG90
-cGx1Z19ldmVudChkcC0+ZHJtX2Rldik7CisJZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfaHBkX2lycV9l
-dmVudCgmZHAtPmNvbm5lY3Rvcik7CiB9CiAKIHN0YXRpYyBpbnQgY2RuX2RwX3BkX2V2ZW50KHN0
-cnVjdCBub3RpZmllcl9ibG9jayAqbmIsCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Detlev,
+
+On 2025-02-13 15:57, Detlev Casanova wrote:
+> From: Stephen Chen <stephen@radxa.com>
+> 
+> The Radxa ROCK 4D board is based on the Rockchip rk3576 SoC.
+> 
+> The device tree adds support for basic devices:
+>  - UART
+>  - SD Card
+>  - Ethernet
+>  - USB
+>  - RTC
+> 
+> It has 4 USB ports but only 3 are usable as the top left one is used
+> for maskrom.
+> 
+> It has a USB-C port that is only used for powering the board.
+> 
+> Signed-off-by: Stephen Chen <stephen@radxa.com>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3576-rock-4d.dts      | 651 ++++++++++++++++++
+>  2 files changed, 652 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index def1222c1907e..a112aeb37948a 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -132,6 +132,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> new file mode 100644
+> index 0000000000000..f356742f9d643
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> @@ -0,0 +1,651 @@
+
+[snip]
+
+> +&gmac0 {
+> +	phy-mode = "rgmii-id";
+> +	clock_in_out = "output";
+> +
+> +	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 20000 100000>;
+
+The snps,reset- props are deprecated and should be changed to reset-
+props in the phy node.
+
+> +
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&eth0m0_miim
+> +		     &eth0m0_tx_bus2
+> +		     &eth0m0_rx_bus2
+> +		     &eth0m0_rgmii_clk
+> +		     &eth0m0_rgmii_bus
+> +		     &ethm0_clk0_25m_out>;
+> +
+> +	phy-handle = <&rgmii_phy0>;
+> +	status = "okay";
+> +};
+
+[snip]
+
+> +&mdio0 {
+> +	rgmii_phy0: phy@1 {
+
+Maybe ethernet-phy@1 ?
+
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+> +		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
+
+Please add reset- props here.
+
+Changing to use reset- props may cause issue if a RTL8211F PHY is used
+on the board. Use a ethernet-phy-id compatible or mainline U-Boot to
+ensure the Ethernet PHY can be discovered during probe.
+
+Regards,
+Jonas
+
+> +	};
+> +};
+> +
+
+[snip]
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
