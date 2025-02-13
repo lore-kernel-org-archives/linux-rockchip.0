@@ -4,73 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC937C021A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 21:11:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD02EC021A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 21:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dQtuZyN0cTN87nAdMy8BYRDNZMFJ88zpvvVSQrhOG7A=; b=3JEqgeaDmWuipN
-	UyztgCAE+4xdKAOhl9LHqBIw2/aOhHhUmRRrRnYE4IlmkfyYB8FsEqz7cSwSfif60osb8q8hGxfyk
-	0kEWyI7DnPwJPeRnIXEW8ibpJ+FTNHNXsPfRajtUSmjg0zZPjhQbm0Pk/nYxF3UlLy6VvFB9RAfZP
-	EEhgambx1WtfjDq4Uup7yNUMZdPuVeSzvpMaAMpG9D+mA6MiuG4XeW2tr5bySgdtYkj1gy5tjvrjk
-	c849pMo7/7gF0XfHAFfFyFYCwd7k5nPvzsTTW3OEbhmkaJGxXCBpwptZe2aJ9b35dLyaOni+V8kq5
-	ztRVWru1AdUdDyjFjHuw==;
+	List-Owner; bh=DQtkFPSXRWSV0mxTdwHezp+mvvSCAwLjvXkWu4XRCzM=; b=RB131sYulOSINB
+	Xe6f/g/07nLlI+ZmP/HJmk2eXcqVKoV9ApgFv1HQMXmMizzs5QRZvw6rAvAPnxrH01/5hDnvYGV/M
+	ccuuMuB8QvSGPKAc2KTcJghrEz7kWaPWoT2h/5ClSGZNsSBL8GOT6XBG4sa5CtPSpud5wcxuha+Gi
+	o17ndBd5PGf40oH2p4/1g8jQWwhTvjmHclYEB4aH+t47O5HRhNGDj9cHOJwMRgywhrEO2hvbjjGEb
+	jStn8w2j/k25cK1TJQIexaaTgXve14wC2Y1PslFF5hbEVRxDZEZIT2NJgVUu4ymar+jz1ugfNFhCX
+	yNbWjnE2OvbeSns1DjvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tigUR-0000000Cf5V-2XAH;
-	Thu, 13 Feb 2025 21:11:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tigWk-0000000Cffl-0GBK;
+	Thu, 13 Feb 2025 21:13:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tifL6-0000000CTXg-3sMP;
-	Thu, 13 Feb 2025 19:57:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739476614; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=esEGgr+Zc+tPVkIqhiCRV6/3ZsxDc/b/7YtkV3+NUknz0FJERHv4WjoZqgMDr0iDTIxSacyj5IPlCpt8EstN0ogUpvFHCO6Ksp0+hnliTj7wgOIMrvQdvM58YdUb1EBBZDXO2aeKLvNS2t5IrlANkgPMrKZlEmuKcOaOeJOaMv4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739476614; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=O9GUvvUpHX6LI0qZKWX7RNV6qQdN4u6UV5/FG212X8k=; 
-	b=UBUcN6htqFck41lfia/orvBJrZzH5gpvWL+MwUU7ojHmx+66zbMewaJEXL/ZRJyWve49TjgYNRjL2P0vaAdPK2OYYJgowrz0ZFKSyBDU4zl/aH4Konvn2RGJLFn2VQxYQEZY8au4FdJ9Et/985IvHoaa7AOjOSVVPHPx7dX1MR8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739476614;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=O9GUvvUpHX6LI0qZKWX7RNV6qQdN4u6UV5/FG212X8k=;
-	b=Q8JxXioJ4lXs0iSCkgZYzAYIWz6Xdvv38+VFAq1AWFxHY2R8ItKJ6JvNt55lWScE
-	bpnnMnehSwgma3fPFQvuLapE7XTGq1PPmnWWSzq/gNM0A7aBnTrD2ix6ArooKh8Cw+X
-	dB7WkHBWQz34nQuKkmOdnyO8Fk0bPKmBcNhiK1XE=
-Received: by mx.zohomail.com with SMTPS id 1739476611230565.2581804087819;
-	Thu, 13 Feb 2025 11:56:51 -0800 (PST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>,
- Chris Morgan <macromorgan@hotmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>,
- FUKAUMI Naoki <naoki@radxa.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Weizhao Ouyang <weizhao.ouyang@arm.com>, Elon Zhang <zhangzj@rock-chips.com>,
- Alexey Charkov <alchark@gmail.com>, Stephen Chen <stephen@radxa.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device tree
-Date: Thu, 13 Feb 2025 14:56:48 -0500
-Message-ID: <5973630.DvuYhMxLoT@trenzalore>
-In-Reply-To: <b5977d21-aa39-4e91-863b-cc7f9dc6938c@kwiboo.se>
-References: <20250213145921.133412-1-detlev.casanova@collabora.com>
- <20250213145921.133412-3-detlev.casanova@collabora.com>
- <b5977d21-aa39-4e91-863b-cc7f9dc6938c@kwiboo.se>
+	id 1tigSK-0000000Cecl-39RS;
+	Thu, 13 Feb 2025 21:09:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=DJwimBcRqLSyXYEID3ttBpVRmf268sK2AExRPEHgOEI=; b=JLMjc8xXqVS83EWPH15sVxIbDP
+	yKlFs7JwlHERsFF56d6h2cSeXBzC7u//NenkcNAvdYiQ09DmQCviukCuQM/igm0UvDRTKpmheit5t
+	ZZ+4f4+YcJRNI8Of8AwaytmsdhARr6vLIAGwNYEqPODpOr8SDOK3lkYJzZC9bEzjw4wheLGZjKMRL
+	g9dzDWyWxS2pBHaEXZ4EmIzOBz3NmWsueePys4hMtwR4ARF1wBDn/eOYFK0PjlzG3GheAc2LHoodc
+	ZOhad2aju/3KBddc2lo3HnKSIBFzMau2WgSWDjSQAeIA8nldPw1xHWU9+zmP/uk3Se9MfxZFg4a/c
+	+Dgof7Sg==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tigSG-0006a0-Mn; Thu, 13 Feb 2025 22:09:04 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: vkoul@kernel.org, kishon@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ quentin.schulz@cherry.de, sebastian.reichel@collabora.com,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dse@thaumatec.com
+Subject: Re: [PATCH v6 0/2] MIPI DSI phy for rk3588
+Date: Thu, 13 Feb 2025 22:09:03 +0100
+Message-ID: <6831884.31tnzDBltd@diego>
+In-Reply-To: <20250213210554.1645755-1-heiko@sntech.de>
+References: <20250213210554.1645755-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_115737_010080_24692501 
-X-CRM114-Status: GOOD (  25.75  )
+X-CRM114-CacheID: sfid-20250213_130908_793784_5288D005 
+X-CRM114-Status: GOOD (  24.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,117 +75,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+Am Donnerstag, 13. Februar 2025, 22:05:46 MEZ schrieb Heiko Stuebner:
+> This adds the phy driver need for DSI output on rk3588.
+> 
+> The phy itself is used for both DSI output and CSI input, though the
+> CSI part for the whole chain needs a lot more work, so is left out for
+> now and only the DSI part implemented.
+> 
+> This allows the rk3588 with its current VOP support to drive a DSI display
+> using the DSI2 controller driver I'll submit in a next step.
+> 
+> Only generic phy interfaces are used, so the DSI part is pretty straight
+> forward.
+> 
+> changes in v6:
+> - rebase onto 6.14-rc1
+> - add Krzysztof binding review
+> - v5 was sent at the beginning of december '24, so probably has been lost
+> 
+> changes in v5:
+> - add bitfield.h for the FIELD_PROP definition
+>   (reported by kernel-test-robot)
+> - add Sebastian's Reviewed-by
+> - add Conor's Ack to the dt-binding
+> 
+> changes in v4:
+> - moved to #phy-cells = 1 as suggested by Sebastian, with the argument
+>   denoting the requested phy-type (C-PHY, D-PHY). This works similarly
+>   how the Mediatek C/D-PHY already implements this, see mails around:
+>   https://lore.kernel.org/all/20230608200552.GA3303349-robh@kernel.org/
+> - dropped Krzysztof's review tag from the binding because of this
+> - dropped custom UPDATE macro and use FIELD_PREP instead
+> - build a FIELD_PREP_HIWORD macro for the GRF settings
+> - add received Tested-by tags
+> 
+> changes in v3:
+> - add Krzysztof review tag to the binding
+> - address Sebastian's review comments
+>   - better error handling
+>   - dropping empty function
+>   - headers
+>   - not using of_match_ptr - this should also make the
+>     test-robot happier
+> 
+> changes in v2:
+> - fix error in dt-binding example
+> - drop unused frequency table
+> - pull in some more recent improvements from the vendor-kernel
+>   which includes a lot less magic values
+> - already include the support for rk3576
+> - use dev_err_probe
+> 
+> Heiko Stuebner (2):
+>   dt-bindings: phy: Add Rockchip MIPI C-/D-PHY schema
+>   phy: rockchip: Add Samsung MIPI D-/C-PHY driver
+> 
+>  .../phy/rockchip,rk3588-mipi-dcphy.yaml       |   87 +
+>  drivers/phy/rockchip/Kconfig                  |   12 +
+>  drivers/phy/rockchip/Makefile                 |    1 +
+>  .../phy/rockchip/phy-rockchip-samsung-dcphy.c | 1604 +++++++++++++++++
+>  4 files changed, 1704 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
 
-On Thursday, 13 February 2025 10:48:10 EST Jonas Karlman wrote:
-> Hi Detlev,
-> 
-> On 2025-02-13 15:57, Detlev Casanova wrote:
-> > From: Stephen Chen <stephen@radxa.com>
-> > 
-> > The Radxa ROCK 4D board is based on the Rockchip rk3576 SoC.
-> > 
-> > The device tree adds support for basic devices:
-> >  - UART
-> >  - SD Card
-> >  - Ethernet
-> >  - USB
-> >  - RTC
-> > 
-> > It has 4 USB ports but only 3 are usable as the top left one is used
-> > for maskrom.
-> > 
-> > It has a USB-C port that is only used for powering the board.
-> > 
-> > Signed-off-by: Stephen Chen <stephen@radxa.com>
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > 
-> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> >  .../boot/dts/rockchip/rk3576-rock-4d.dts      | 651 ++++++++++++++++++
-> >  2 files changed, 652 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile
-> > b/arch/arm64/boot/dts/rockchip/Makefile index
-> > def1222c1907e..a112aeb37948a 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -132,6 +132,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=
-> > rk3568-wolfvision-pf5-display-vz.dtbo> 
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
-> > 
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
-> > 
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> > b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts new file mode 100644
-> > index 0000000000000..f356742f9d643
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> > @@ -0,0 +1,651 @@
-> 
-> [snip]
-> 
-> > +&gmac0 {
-> > +	phy-mode = "rgmii-id";
-> > +	clock_in_out = "output";
-> > +
-> > +	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
-> > +	snps,reset-active-low;
-> > +	snps,reset-delays-us = <0 20000 100000>;
-> 
-> The snps,reset- props are deprecated and should be changed to reset-
-> props in the phy node.
+Forgot to transplant from the v5 cover-letter - the series got a 
 
-Arg, second time I use deprectated props on new things. Are there plans or 
-ways to make dtbs_check warn about those ?
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&eth0m0_miim
-> > +		     &eth0m0_tx_bus2
-> > +		     &eth0m0_rx_bus2
-> > +		     &eth0m0_rgmii_clk
-> > +		     &eth0m0_rgmii_bus
-> > +		     &ethm0_clk0_25m_out>;
-> > +
-> > +	phy-handle = <&rgmii_phy0>;
-> > +	status = "okay";
-> > +};
-> 
-> [snip]
-> 
-> > +&mdio0 {
-> > +	rgmii_phy0: phy@1 {
-> 
-> Maybe ethernet-phy@1 ?
-
-Indeed.
-
-> > +		compatible = "ethernet-phy-ieee802.3-c22";
-> > +		reg = <0x1>;
-> > +		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
-> 
-> Please add reset- props here.
-> 
-> Changing to use reset- props may cause issue if a RTL8211F PHY is used
-> on the board. Use a ethernet-phy-id compatible or mainline U-Boot to
-> ensure the Ethernet PHY can be discovered during probe.
-
-Using downstream u-boot, with the RTL8211F PHY, linux can still detect the PHY 
-and use it correctly, even with reset-* props at the PHY level.
-
-I guess I can keep those there then, unless the issues you mention are more 
-subtle than that ?
+on RK3588 Tiger with Haikou Video Demo in [0]
 
 
-Detlev.
+[0] https://lore.kernel.org/r/63cda072-3671-42c9-9650-7a3ece39dec6@cherry.de
 
 
 
