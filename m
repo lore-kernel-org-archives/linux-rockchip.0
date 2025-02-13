@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B554C02198
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Feb 2025 22:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CA3C021A4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 04:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V7Y4fOniTHzPXsBIALpiJBp6AHoUhm44g4IEOqdRYV4=; b=xR/tc2q3CN6tkD
-	1IQkX0jIhwuf4M/xW2ktazPIKrSMMpHGVt7pdgnCroSKnRfUIKuSEjPurIBDEFgkH7pZyyn/wcbEz
-	EeD6F/UpzQa0l284mahAx3sOsxTaqBydbLKRUe3yvSoMUaBHt30Fq621YOMuzCTa2WAp9YGcGBTFT
-	WcJtmWjvrqaqin36EfgqHPoVorlX1O70X5seg9d2CnMonR3XBW8u6cGkRDum5mEx9SvbxOneBDlMh
-	EnBE4Q7tdDLiL1LNEUgkhqOIbGttAIP24WTrz04drtkKkWZfjRBoy6pLjdZccyg9OtJMJzBUrHnsJ
-	c33ltxAu9V7LQZwFVUjw==;
+	List-Owner; bh=gAf0wXFg7A3V6c3S9z9Ccxcjs4zNow0TH5DoRacRKgk=; b=3EH5QSOzl+taIi
+	L2fhfozEf2aE7ajmbg0RJ/wkKCrGsNYHrUgmN9vPc0/Qs23s0SYqNJg9twQ2vV3SckMi2TPJUhkIm
+	WZOkypZSa1gYxnxs7xvYZYU0xwUfhz9imrZAkwMwJaFHW6xQiN6fBvhW052b2ZYeZYTjw9ubG7XS3
+	Q4isw1UFdNSwqSeWtFEnHwvjZm8vntBYIK25tiofrfvc7chZc4UYxyeQnO9E3g8Safw8S172klUpT
+	NaiEu9OVj47svbwrp6arsUAsx54D6MktC3cMIp9++hS3U7h/kxFtJY+OB4uAk/1swxyx3NBfVYGFt
+	w75RfHZMX/xEKn8mRjAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiLFQ-000000092iE-20Qd;
-	Wed, 12 Feb 2025 22:30:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tiQqh-00000009iaf-1IFZ;
+	Thu, 13 Feb 2025 04:29:15 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiLDy-000000092Il-3G27;
-	Wed, 12 Feb 2025 22:28:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pgP2P2s0bKk8vLZ5KHTO+UkvCszavZHV8wdbaiCNwEM=; b=lTQYg2xD/RhTQBHrmhLorBk+zx
-	KkDrZA3NEtGLhYqBUeWV2ZiZfmN4u4q6Q8XeSz0a/TNL2UJbAalDpnsd7uUtwI/C44GlQpGPUoi5e
-	nMp4Vq18UTEkhKfk8ZX/MCi5jptNd0JI33e9uDxpSKfZCALgAXwNSUuNV2VT3iwdKj0rkvaPtCg4P
-	akufR2hyWaKU9Yy+4hetOlWnKyWmzJ1BQXIJPIJ7amHh6EXUoncRefpPBDSNzuw66eYVV+XRc186+
-	iXBjSa1/7uL1CpdG33vdwqVcB3t87cSaLyPyhM8F3i/TGH3/NjT7GH5Jopv75MYK49O+VNp6/VvBH
-	BNXvLOCw==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tiLDh-0001kz-0K; Wed, 12 Feb 2025 23:28:37 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
- Chris Morgan <macromorgan@hotmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- FUKAUMI Naoki <naoki@radxa.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Stephen Chen <stephen@radxa.com>, Weizhao Ouyang <weizhao.ouyang@arm.com>,
- Alexey Charkov <alchark@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 0/1] Add Radxa Rock 4D support
-Date: Wed, 12 Feb 2025 23:28:35 +0100
-Message-ID: <3934037.fEcJ0Lxnt5@diego>
-In-Reply-To: <20250212220236.116383-1-detlev.casanova@collabora.com>
-References: <20250212220236.116383-1-detlev.casanova@collabora.com>
+	id 1tiQqe-00000009iZr-1T8C;
+	Thu, 13 Feb 2025 04:29:14 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4395a06cf43so2381285e9.2;
+        Wed, 12 Feb 2025 20:29:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739420950; x=1740025750; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=mpG/X92CWnMdpmxP4abdXtAgCygQA19P9d/qpK5HzEo=;
+        b=UW3QcAr0rjGmDC58kEzsb8tHWWgA6fZimpQVtM4s3x3IvHWC9pgFG/zmqmT+4rTwFR
+         ZtpaT1hfAMPh/f/91gXKlwoBI+h2rfPxZZiFVE0kZD1a8syyu10tNVTNhYzs2r//egsb
+         ynB55FzN9N7nE8GaAUY08HU99pfoxWNaplpn9oa7Lt4OAr9EsRNzbnQHe1Dyu87YG6Di
+         8SzT/MshXuvJE/R+Fw2bLHHV4TclgIx3ZgjTec8aEkeYkdSUUgnYO3V1W5tJU+4bf7QE
+         c6OEgcLPWe6a1w5U67F1p+FheALlnGL0MG4RyQesY7oWyAJJQFaI+/Cbe/247D5hal4g
+         Lyjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739420950; x=1740025750;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mpG/X92CWnMdpmxP4abdXtAgCygQA19P9d/qpK5HzEo=;
+        b=HvPI2agqOhTfB804PJiXx5PLpp/JcFf6oOjgBC6IOsEX4ZgpT417OSg+n+1ZeQKcqM
+         A0Yaa/EWTttfKvfnN1RCFUcBBPbzyFg8+Yquq8BwOgBnKlvcx9lEBxLImi1W9ogRWEQv
+         Z5DUxQcU7bW0UMYX6bzbcZZXJcNpTQAgiLoZOpdNS+THvEmqjoBPyG9RqGyhCr3kRr3J
+         sK/5fI1PA7kgoGimXRp3Td9qmRbgDXkCiVmEBOqnW7m4E113cdY0CE907XA+6TqtC95N
+         6EycX4mJb5hU/zWlg8XSkFw8ExK7aaUCg6JUOB/tV0SOUrcwzTp077YAM3XNw/FPUF46
+         O0bA==
+X-Forwarded-Encrypted: i=1; AJvYcCWUFFcAlREE1Yr2P1e58Nsmxw+0B+44MyVsZTdK77Bcb7OJaPqYFvF2sNonMpkshKNxdyWWnbuTWus6q2bG6/ML@lists.infradead.org
+X-Gm-Message-State: AOJu0YypK2JF2WYgFTtAeGxh4tRl37nuNX5O1y1vMJtGSA4QE5dGWm/9
+	JTZ4Qvw3HUze5+TOHYbEM52Llphoosi2pnze0Ah553SPTL/GunqF09E0K7TMP+9FvXZvY/1Cb+E
+	+XxjzTXQkXneeA/NyolaAw4Kc0co=
+X-Gm-Gg: ASbGncvTXh6BN4RAUOmS/8k+xolqconzrnO46+V43ABaPiw1adx2BdYD22ax9aUly5Y
+	24v6y2ieNmn87APN56ePFhTrbfj0h4N+3lUO8liYpbbv6qf5W9qbQlWWQTiUi8xeDJNu0xiZV4u
+	+/8oIA8giC6Av2paTrRFyX9ngSHVS7
+X-Google-Smtp-Source: AGHT+IF3MLudSFVnNY7klY1SEt5ogElGI4HfqObuRC7k5kXvKAxlXf08Y0jTlDnCHx2XzTyWFmqcq9hbMH/xhQHroM0=
+X-Received: by 2002:a05:600c:8509:b0:439:4858:3c77 with SMTP id
+ 5b1f17b1804b1-439601a12b0mr15576355e9.19.1739420949976; Wed, 12 Feb 2025
+ 20:29:09 -0800 (PST)
 MIME-Version: 1.0
+References: <Z60MU05JLtI9VzuU@windev.fritz.box> <Z60MiujaPpWNYmBE@windev.fritz.box>
+In-Reply-To: <Z60MiujaPpWNYmBE@windev.fritz.box>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Wed, 12 Feb 2025 22:28:59 -0600
+X-Gm-Features: AWEUYZl_RV7h_eBDUzo5-bNaWEOJWWryUGI0L0oblCDcfiOMUP1xSlcFRXyIMWg
+Message-ID: <CALWfF7KHagN=ef1C01PmmpfumdthBy6PKPi3U+9K+rgP8sNrOQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: add MNT Reform 2
+To: Patrick Wildt <patrick@blueri.se>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	devicetree@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250212_142854_835864_F9B30CCC 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20250212_202912_418923_72778B81 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +93,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+Hi,
 
-Am Mittwoch, 12. Februar 2025, 22:56:48 MEZ schrieb Detlev Casanova:
-> Add the basic support for the board. (Not officially released yet)
-> It is based on the Rockchip rk3576 SoC, so I haven't added the
-> following devices yet:
->  - VOP/HDMI
->  - UFS
-> as the support for those has not been merged yet, but are close to be
-> and I already validated that they work.
-> It will come with another patch set.
-> 
-> The following devices are supported and working:
->  - UART
->  - SD Card
->  - Ethernet
->  - USB
->  - RTC
-> 
-> Stephen Chen (1):
->   arm64: dts: rockchip: Add Radxa ROCK 4D device tree
-> 
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3576-rock-4d.dts      | 649 ++++++++++++++++++
+A few questions below.
 
-it seems you're missing a separate patch adding an entry to
-Documentation/devicetree/bindings/arm/rockchip.yaml
+[ snip ]
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi
+> new file mode 100644
+> index 000000000000..898a7b29692f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi
 
-Heiko
+That's interesting, the Firefly Core 3588Q SoM's dtsi is more than 95%
+the same as the Core 3588J SoM's dtsi.
 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi?h=v6.14-rc1
 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dts b/arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dts
+> new file mode 100644
+> index 000000000000..cd7a82a3b0de
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-mnt-reform2.dts
+> @@ -0,0 +1,348 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+> + * Copyright (c) 2024 MNT Research GmbH
+> + *
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+> +#include <dt-bindings/usb/pd.h>
+> +
+> +#include "rk3588-firefly-icore-3588q.dtsi"
+> +
+> +/ {
+> +       model = "MNT Reform 2 with RCORE RK3588 Module";
+> +       compatible = "mntre,reform2-rcore", "firefly,icore-3588q", "rockchip,rk3588";
+Will you be adding "chassis-type"?
 
+> +
+> +       aliases {
+> +               ethernet0 = &gmac0;
+> +               mmc1 = &sdmmc;
+> +       };
+> +
+> +       chosen {
+> +               stdout-path = "serial2:1500000n8";
+> +       };
+> +
+> +       backlight: backlight {
+> +               compatible = "pwm-backlight";
+> +               pwms = <&pwm8 0 10000 0>;
+> +               enable-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
+> +               brightness-levels = <0 8 16 32 64 128 160 200 255>;
+> +               default-brightness-level = <128>;
+Interestingly, the brightness curve is more fine-grained than one used
+for the IMX8MQ SoM and the A311D SoM. Should those be updated
+eventually?
+
+brightness-levels = <0 32 64 128 160 200 255>;
+default-brightness-level = <6>;
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/freescale/imx8mq-mnt-reform2.dts?h=v6.14-rc1#n24
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/amlogic/meson-g12b-bananapi-cm4-mnt-reform2.dts?h=v6.14-rc1#n198
+
+[ snip ]
+> +
+> +&combphy1_ps {
+> +       status = "okay";
+> +};
+Should this be left out? It doesn't look like pcie2x1l0 or sata1 is being used.
+
+> +
+> +&combphy2_psu {
+> +       status = "okay";
+> +};
+Should this be left out? It doesn't look like pcie2x1l1, sata2, or
+usb_host2_xhci is being used.
+
+> +
+> +&saradc {
+> +       vref-supply = <&avcc_1v8_s0>;
+> +       status = "okay";
+> +};
+> +
+> +&tsadc {
+> +       status = "okay";
+> +};
+These nodes should be sorted alphabetically
+
+> +
+> +&sdmmc {
+> +       bus-width = <4>;
+> +       max-frequency = <40000000>;
+> +       no-sdio;
+> +       no-mmc;
+> +       no-1-8-v;
+> +       cap-sd-highspeed;
+> +       vqmmc-supply = <&vcc3v3_pcie30>;
+> +       vmmc-supply = <&vcc3v3_pcie30>;
+> +       cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+> +       disable-wp;
+> +       status = "okay";
+> +};
+> +
+> +&mdio0 {
+> +       rgmii_phy: ethernet-phy@0 {
+> +               compatible = "ethernet-phy-ieee802.3-c22";
+> +               reg = <0x0>;
+> +       };
+> +};
+
+Jimmy
 
 _______________________________________________
 Linux-rockchip mailing list
