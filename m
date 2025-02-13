@@ -4,103 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D17C021A4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 18:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5287DC021A4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 18:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2bOTLhZw0mnFdJ7NctQLAQNjQnQtw3d3HJ4EGTvfmVM=; b=sCYLPcwQoSQXL1
-	ZlED4xQ6YeFS0ADvAov41fHJtIBqWVV81szeDg4fTgtxjGlcz4LePPeRNuM287CJqwEQfEaJQfMce
-	bmLuNjTauGd2wqjsCj8SsUKzWlEabRiF7Cz3WG8Od3v+w8bwzFjwJ2aZT+96sw0mnU8kdWMiVxUDV
-	F6c9VdoJ31S9AqZD7697cF5/nmVWKijmPCu//AxhIC2mu0eGcep3ANkk4qEgCXpVvjEXgzGy60YBG
-	ah3+H0l29iHiHBbaPNeqLH4kVa/DMOWS72/vviGCSlidHLOlVTHTaqRZ4z55CrCI7W5pfMatLTgMP
-	5HjlZjSfkFM7zN9UMfJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J33IVacD9qDzNQb2Ro0pX0hWPen8f1Jz1UFn/BU3aEs=; b=CbtJe3jMJSf1xYGeh1sZydWCUe
+	4RXNcYpCH+iZT2cqGg6eaKoDGU3IkHVzPUqyB9hqv10rwR9CXL6xcGOocH+9rRttqVEvS1b2PTi1i
+	s6K6/W3vbOyWuTotvgvlTcS2fkNqemqojlX/LDYfpJx6pwdwvisPAmQvq7aPBhzpkbhliTszy4y84
+	jBCd9EkMekYfsdGkoI3BbwXRd3UoaU2y5VuiE38yu97zEhi00ssSKK/z4HlefksHiI8NfcDBd6xLH
+	czOhRvD+fhyvc3x9qoEE4Reltme9mLHm4I6q/XWWycFjcQc0tL6Jw0HWJL6+UH3pn4l6JglG7V7C7
+	W6tLkuQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tidjL-0000000CBE5-2paN;
-	Thu, 13 Feb 2025 18:14:31 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1tidqO-0000000CD3I-1znp;
+	Thu, 13 Feb 2025 18:21:48 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tictj-0000000BzMQ-2YCr;
-	Thu, 13 Feb 2025 17:21:12 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5dec996069aso1942143a12.2;
-        Thu, 13 Feb 2025 09:21:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739467270; x=1740072070; darn=lists.infradead.org;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/L8X4e7idHOInm1E1NvmDqFmI3f3xIs3AaNrbgOvVqo=;
-        b=BogrwheX1lsWxFKIf2vDsJUYb3i3WghCblo44997I2w3mtOOaL4RWqSHvMKvpiUoDt
-         16nx5TeDYaLnoG38+kKZjoHS7nOwdzk6TPq2RklQEZDeTmhWBzEPmhJSFVJ+jd04cHPh
-         7LiIaJfJvoHdR05xlipNGEoAqiHVvWf7ejh4UsTDIgGRCpbzWnjd4iHtIwU35Qqh0JbZ
-         5813rhieHC/cPdZ4og7lsj4iR7IYWVrViVx3PX2Rs1JSkreuqjlwEm/XWp2XE3gNp5hi
-         vUWUlhLVjcyC+O8PL0qDRnQ13xs3PLqX55B2niY4zelT//y2uoLywfuDPghN+MdGXjCS
-         /ZHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739467270; x=1740072070;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/L8X4e7idHOInm1E1NvmDqFmI3f3xIs3AaNrbgOvVqo=;
-        b=Tg0kAAY516iQkNSZwzYSTzKzy4g5bCKQUp+nT2dpqKoRFa1g0CRe6BAcUuUBb5YFAb
-         cB/YntjIa+rHMjrtJYmw/p2zM8dI+s/oIAHPtLWvgPe2Xf4jgzMVhKJ+QmoIukxoL6GY
-         lOy5GMVuN2H+57uDnN8ZPZOSDOa+x2tX8EXPC5SVmf4wAHgUpmjWgqsdNnuthe2Qcufw
-         rtf8oEsmDbOkUrlsAoaENRIMdaQWXLJNuZoNuhzfaCW+uqpWDr1BCW2TG6CijOH5vrCl
-         ILBB57WeeXCBJE6HoNzFmEmwDENYq2x/tqvqTieN2xODrjtm/XqvZvWnYS3qMNjYRkoq
-         tfHg==
-X-Forwarded-Encrypted: i=1; AJvYcCVAcBXpO8Ky4d29EZ0ymq3f2zw81EK9aqaygEkiZtJzlGOjVTBCxT5k68WMPB/ESkfHZRgi2JVY0WaBQAMwJYJM@lists.infradead.org, AJvYcCW6gQu7MQ/qyC4cwOakrddNvPHFtkcaUafLbqEmzz28oeXQEpBanSbwrDSYUcJ85Q8oVg5wMQhbBTr6Rxc0tWc=@lists.infradead.org, AJvYcCWxxfa36YLzL7LiFIRZerGPSjWCNYJkKD/HgG0MsIZ4bpFgzQMvmdFiQGbKce5n4+O1MXniOIKzbu+I@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOXXGkHhqb9sh2q2514aUhQqcIOwVFA5SjqG5oaKaFEgNSCOfM
-	UIxdXA+xrsRzPHFQcUbj8V35zy/39nEPybDet1F5GCOj4SU0EP7jLCufObw4
-X-Gm-Gg: ASbGnctpdtlzhCvZOzjeurbmxO+JxYjOsAqK75WJXhcgncL1wnx4A76mt+I2lhrlRVw
-	68Jqft9PuyIFgzfeDpjDOIU33KLW4l7agH4ltzYI1kLvM/AyxpMVW088d6VU6X+59QmGe26l1RY
-	3DRclZbsB6vsJyOQYkUQvMG71vHquOA2069ljXYUJB+2Ut7adp31x7Bhe4MKSQAq7hfd6+sdGwp
-	ZflMM5cRrYbo5fo8m7ww1n7c8aB9m/JTGo1ztN8NTZmJt4UEviXVYAdhT8l3t55gkOgWpBQ5vaH
-	nV3dl5s/DOvWbKoc2hPNSF31wQMlFjvXXtwl3aJbRB/3fwLytUfNu2LgcwCfRPeUqUuvXGX9
-X-Google-Smtp-Source: AGHT+IErHbsUtfgzkzhuHG33dvhjaZL2J0Jo8G6oOoESna+1j7QGmuOo4G7y0Y6m+8a3iiqQL9uH6g==
-X-Received: by 2002:a05:6402:3553:b0:5d9:82bc:ad06 with SMTP id 4fb4d7f45d1cf-5deadd7b8b8mr7475158a12.3.1739467269631;
-        Thu, 13 Feb 2025 09:21:09 -0800 (PST)
-Received: from smtpclient.apple (89-66-237-154.dynamic.chello.pl. [89.66.237.154])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5dece1d349esm1490025a12.33.2025.02.13.09.21.08
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Feb 2025 09:21:09 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.400.131.1.6\))
+	id 1ticzJ-0000000C0Ym-3XQl;
+	Thu, 13 Feb 2025 17:26:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739467611; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=DBi2zEpYnKy4XuIgWkaFTscHZ7nB/Yg9TWfeiuiqUtEh568pSlCHcprWV131jLiyNkPrV0PgXxkXOJF+7/joCDKC38TqYAzrCGxvzkMLV61uE0Cy2Cwlt0NXSVaWUu1C8LJGg9BVDEm9IeAAEWyTtJSM2Co8i4iQRkugciWGig0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1739467611; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=M5hWV7zpzfxrkj20JGXs36bIgvWN+f1eZBOfQY7SIjM=; 
+	b=H0UaH685Fnf6T5gMeeM3s5UsaIRb+Y9jD6hk4aLgNe8A/HDjoAfNj3RgTEr/Ns0Ic1/pqf25ULiccEHjw+hz1YVZWFRt3ym5UmhNWh9KuCsdH1zQlXoXByMo2ZcWskNHcK8jc1AROJSMHLG/aY76r7gaZ/wj/4twi58HWGWV70s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739467611;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=M5hWV7zpzfxrkj20JGXs36bIgvWN+f1eZBOfQY7SIjM=;
+	b=Ws91bnDMeBkWP5IXglfIKxIRozeYMM8MzNL39X6Jq2/pVSfbuX7EarFMbKklR5mw
+	dd0tn8C8fZF4DPbhVIEG9+xawrfjR7jTOJWby3nlBp6hy7bDlg7VSU5flovBjG3uei0
+	tgMsDOs+DMRcUp6k8/mTn4NIl9WKVT5S3z6qjrNw=
+Received: by mx.zohomail.com with SMTPS id 1739467608754665.7670786696585;
+	Thu, 13 Feb 2025 09:26:48 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 785651806DE; Thu, 13 Feb 2025 18:26:43 +0100 (CET)
+Date: Thu, 13 Feb 2025 18:26:43 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Damon Ding <damon.ding@rock-chips.com>, heiko@sntech.de, 
+	robh@kernel.org, conor+dt@kernel.org, algea.cao@rock-chips.com, rfoss@kernel.org, 
+	devicetree@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	hjc@rock-chips.com, kever.yang@rock-chips.com, dmitry.baryshkov@linaro.org, 
+	vkoul@kernel.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Subject: Re: [PATCH v6 00/14] Add eDP support for RK3588
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <D7RH63Z1VBBD.1AIOQJIWPZIXS@cknow.org>
-Date: Thu, 13 Feb 2025 18:20:57 +0100
-Cc: Damon Ding <damon.ding@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Algea Cao <algea.cao@rock-chips.com>,
- Robert Foss <rfoss@kernel.org>,
- devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- sebastian.reichel@collabora.com,
- dri-devel@lists.freedesktop.org,
- hjc@rock-chips.com,
- kever.yang@rock-chips.com,
- dmitry.baryshkov@linaro.org,
- vkoul@kernel.org,
- andy.yan@rock-chips.com,
- krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org,
- l.stach@pengutronix.de
-Message-Id: <59278550-BD6E-454C-AB31-084E13C19409@gmail.com>
+Message-ID: <tg6eyew4qahuxqakmmejne7xx2rkouj6htp55acun4ajz2irz2@vlmvqv3zc5vc>
 References: <20250123100747.1841357-1-damon.ding@rock-chips.com>
  <5044FFCB-B325-40D0-BA82-03AF64EAF029@gmail.com>
- <D7RH63Z1VBBD.1AIOQJIWPZIXS@cknow.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-X-Mailer: Apple Mail (2.3826.400.131.1.6)
+MIME-Version: 1.0
+In-Reply-To: <5044FFCB-B325-40D0-BA82-03AF64EAF029@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/239.417.30
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_092111_651220_B78CDD39 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20250213_092657_961176_83742A7D 
+X-CRM114-Status: GOOD (  27.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,33 +81,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8108171458418676333=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IERpZWRlcmlrIGRlIEhhYXMgPGRpZGkuZGVi
-aWFuQGNrbm93Lm9yZz4gdyBkbml1IDEzIGx1dCAyMDI1LCBvIGdvZHouIDE3OjU2Ogo+IAo+IE9u
-IFRodSBGZWIgMTMsIDIwMjUgYXQgMzo1NCBQTSBDRVQsIFBpb3RyIE9uaXN6Y3p1ayB3cm90ZToK
-Pj4gCj4+IAo+IAo+IEkgZG9uJ3Qga25vdyBpZiBpdCdzIHJlbGV2YW50LCBidXQgd2hpbGUgSERN
-STAgZ290IGVuYWJsZWQgZm9yIHF1aXRlIGEKPiBmZXcgZGV2aWNlcyBpbiA2LjEzLCBpdCBkaWQg
-Tk9UIGdldCBlbmFibGVkIGZvciBSb2NrIDUgSVRYLgo+IEkgbWFkZSBhIGxvY2FsIHBhdGNoICh3
-aGljaCBkb2VzIHRoZSBzYW1lIHRoaW5nIGFzIHdhcyBkb25lIGZvciBSb2NrIDVCKQo+IGJ1dCBJ
-IGhhdmUgbm8gaWRlYSBpZiBpdCBhY3R1YWxseSB3b3JrcyAoSSBkb24ndCBoYXZlIHRoZSBib2Fy
-ZCkuCj4gCj4gTWF5YmUgeW91IG5lZWQgdGhhdCBmb3IgZURQIHRvIHdvcms/Cj4gCj4gQ2hlZXJz
-LAo+ICBEaWVkZXJpawo+IDwwMDAxLWFybTY0LWR0cy1yb2NrY2hpcC1FbmFibGUtSERNSTAtb24t
-Uk9DSy01LUlUWC5wYXRjaD4KCkRpZWRlcmlrLApUaHggZm9yIGxvb2tpbmcgb24gdGhpcy4KCklt
-IGFmcmFpZCBwYXRjaCB3aWxsIG5vdCBtYWtlIGhkbWkwIHdvcmtpbmcgYXMgcm9jazUgaXR4IGJv
-YXJkIGhhcyBoZG1pMCBkZXNpZ25lZCB0byB1c2UgMzU4OCBlRFAxICsgZURQLT5IRE1JIGNvbnZl
-cnRlciAoaW4taG91c2UgZGV2ZWxvcGVkIHJrNjIwIGNoaXApLgoKSSBzdXNwZWN0IHdlIG5lZWQ6
-IAotZW5hYmxlIGVEUDEgc3VwcG9ydCAoaG9wZSBEYW1vbiBjb2RlIGNhbiBkbyB0aGlzIGVhc2ls
-eSkKLW1hcCBlRFAgdG8gcG9ydDAgaW4gdm9wMiAocG9ydDEgc2hvdWxkIGJlIG1hcHBlZCB0byBl
-RFAvSERNSSB0eDEpCi1zZXQgdHlwZUMxL2VEUDEgbXV4IHRvIGVEUDEKVGhlbiBtYXliZSB3ZSBz
-aG91bGQgaGF2ZSBoZG1pMCB3b3JraW5nPwoKSW0gY3VyaW91cyBhIGJpdCBhYm91dCB2b3AgcG9y
-dCBtYXBwaW5nczogbWF5YmUgd2UgY2FuIGdvIHdpdGggZ2VuZXJpYyBhcHByb2FjaCBsaWtlOgoK
-ZURQL0hETUkgdHgwIC0+IHBvcnQwICAgCmVEUC9IRE1JIHR4MSAtPiBwb3J0MSAgIAp0eXBlQzAv
-ZURQMCAtPiBwb3J0MiAoKyBleGNlcHRpb24gZm9yIGZvciByb2NrNSBpdHg6IHR5cGVDMS9lRFAx
-IC0+IHBvcnQyKQoKCgogICAgCgogCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============8108171458418676333==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jnxis7mvi3ww4bac"
+Content-Disposition: inline
+
+
+--jnxis7mvi3ww4bac
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 00/14] Add eDP support for RK3588
+MIME-Version: 1.0
+
+Hello Piotr,
+
+On Thu, Feb 13, 2025 at 03:54:00PM +0100, Piotr Oniszczuk wrote:
+> > Wiadomo=C5=9B=C4=87 napisana przez Damon Ding <damon.ding@rock-chips.co=
+m> w dniu 23 sty 2025, o godz. 11:07:
+> >=20
+> > Picked from:
+> > https://patchwork.kernel.org/project/linux-rockchip/list/?series=3D9235=
+93
+> >=20
+> > These patchs have been tested with a 1536x2048p60 eDP panel on
+> > RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
+> > on RK3588 EVB1 board. Furthermore, the eDP display has been rechecked
+> > on RK3399 sapphire excavator board.
+> >=20
+> > Patch 1~4   are preparations for the RK3588 eDP support on both Analogix
+> >            side and Rockchip side.
+> > Patch 5~8  are to support to get panel from the DP AUX bus.
+> > Patch 9~11 are the RK3588 Analogix DP driver support.
+> > Patch 12    is to add the power sequencing delays for panel model
+> >            LP079QX1-SP0V.
+> > Patch 13    is the addition of RK3588 eDP0 node.
+> > Patch 14    is to enable the eDP0 display on RK3588S EVB1 board.
+> >=20
+> > Damon Ding (14):
+> >  drm/rockchip: analogix_dp: Replace DRM_...() functions with drm_...()
+> >  drm/rockchip: analogix_dp: Use formalized struct definition for grf
+> >    field
+> >  drm/rockchip: analogix_dp: Expand device data to support multiple edp
+> >    display
+> >  drm/bridge: analogix_dp: Add support for phy configuration.
+> >  dt-bindings: display: rockchip: analogix-dp: Add support to get panel
+> >    from the DP AUX bus
+> >  drm/bridge: analogix_dp: support to get &analogix_dp_device.plat_data
+> >    and &analogix_dp_device.aux
+> >  drm/bridge: analogix_dp: Add support to get panel from the DP AUX bus
+> >  drm/rockchip: analogix_dp: Add support to get panel from the DP AUX
+> >    bus
+> >  dt-bindings: display: rockchip: analogix-dp: Add support for RK3588
+> >  drm/bridge: analogix_dp: Add support for RK3588
+> >  drm/rockchip: analogix_dp: Add support for RK3588
+> >  drm/edp-panel: Add LG Display panel model LP079QX1-SP0V
+> >  arm64: dts: rockchip: Add eDP0 node for RK3588
+> >  arm64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
+> >=20
+> > .../rockchip/rockchip,analogix-dp.yaml        |  25 +-
+> > arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  28 +++
+> > .../boot/dts/rockchip/rk3588s-evb1-v10.dts    |  54 ++++
+> > .../drm/bridge/analogix/analogix_dp_core.c    |  76 +++---
+> > .../drm/bridge/analogix/analogix_dp_core.h    |   1 +
+> > .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  52 ++++
+> > drivers/gpu/drm/panel/panel-edp.c             |   8 +
+> > .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 238 +++++++++++++-----
+> > include/drm/bridge/analogix_dp.h              |   8 +-
+> > 9 files changed, 401 insertions(+), 89 deletions(-)
+> >=20
+> > --=20
+> > 2.34.1
+> >=20
+>=20
+> Damon,
+>=20
+> I=E2=80=99m playing with hdmi0 port enablement on radxa rock5 itx board w=
+ith 6.14 mainline.
+>=20
+> rock5 itx has 2 hdmi ports: hdmi0 is wired to rk3588 typeC1/eDP1
+> eDP with ra620 eDP->HDMI converter and hdmi1 from hdmi/edp tx1
+> (see page3 & page29 at
+> https://dl.radxa.com/rock5/5itx/v1110/radxa_rock_5itx_v1110_schematic.pdf)
+
+The RK3588 has two different DP controllers. The one handled in this
+series should get the eDP port running, which is routed to the
+"eDP Panel" in the block diagram on page 3 of the Rock 5 ITX schematics.
+So this series adds support for using "HDMI/eDP TX0" and "HDMI/eDP TX1"
+in DP mode.
+
+The port routed to HDMI0 via RA620 is the other DP controller, which
+also exists twice: "TYPEC0/DP0" and "TYPEC1/DP1". This DP controller
+is not yet supported upstream and there is no pending patchset. As far
+as I know Rockchip plans to work on preparing upstream support for that
+soon.
+
+Note, that the two DisplayPort controllers are completely different.
+The HDMI/eDP controller is a design from Analogix and the TypeC/DP
+controller is a design from Synopsys.
+
+P.S.: Heiko merged support for HDMI1 (RK3588 SoC level) recently. So you
+should be able to get that running by some DT additions to the Rock 5
+ITX board DT with the latest linux-next code :)
+
+Greetings,
+
+-- Sebastian
+
+--jnxis7mvi3ww4bac
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmeuK0wACgkQ2O7X88g7
++prlexAApJeFewv/JsqSV3wCoT23yhvxdlzYKIVVL/yo98r9WQPC4i1qmYmKRBI4
+vzvIr65JV41ReaTQs/q/BoIL0rHdfgn0ZkatJ0H7wbNbH2IztSS2VukNrAz9DwT4
+TvyUoo10hpaHiFTfKKSzDkL5/NI3d9pvi6AmUs+SmWMD7f2eXmyav5L2WHTZ0Nzl
+kLA4FPpSVS/3NQ5qTlhHsyM0kDVsL7R6G7ObMrQ9gAp9qkp6BJ353pHWEWtXgagu
+Dj4iMS5wfJ1VXYyQDJSFgeiibznIzIMlOR83c7AG7IMvowXL7IniG2Q8vUz1nPgC
+syKJOH3btyQzxkc9AYqXYXr7NUldDWhK84iqzsA0E+imxauPhXgfeQxQOR63uTXG
+fvZKtmVjM2gyqGp0ro5rEXSczzcnKj8tSC42AZm0d/ACS/TsCi8CcOKEsgtkCM+L
+7HhI7qlJUNihK6x90i+R9i2k7Ar9STYe+lUqxybSkZnNymp3nZwpkDVYLkuf53Ot
+pwrWkcRYXOhEggDrQNTe6xq3W1C+w/sNPflgnA33KAL2+xFCyt3RQq++BrLN4Aa/
+ECjWYGebnHLh+hFA8FToTF3KG6CjTNiyIvAsFBsjRoF9x/uLrZt+davDhGf1D3fP
+l/jfGWpAOhK6VBdKArybnrr6GEUTvZtb25x6f9eTbsVVTEGORmk=
+=iYP4
+-----END PGP SIGNATURE-----
+
+--jnxis7mvi3ww4bac--
+
+
+--===============8108171458418676333==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8108171458418676333==--
+
