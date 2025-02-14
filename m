@@ -4,175 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A714FC02198
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 18:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92107C02198
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 19:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m2Gif3VsxelXADFMyy99+mKdHkRXrlbVLqmA9KSxt4E=; b=PuSFwDpLLWWmtE
-	gvzQxIAygwtdD6vf04/JfZUR0G/jiTjdT8AS+0oY81Z+lHYX+F8xayrcGK+PJnR+S/A8NKjNHZWCB
-	vtl3PHb3s/89Kwwt11WItBFF0agE2vEZw6Iw56aSztzGnzAtQr6zPfGwoJPc4XvKmD71y05zHsvIS
-	T2l8OI2gfpS/1jym/SgE5+zMQAD2r6rS1U7fuFZKnRAF9DH2i0ESOHCtfF2wwBaK8sDRwJJT59Vx1
-	PmyyshqU16mTOsY2oz46TEIq8CUy+m7Ra3AHd5fct24jZOVsV8znNw0O109NMoOGPNN7/ZwHbUYdt
-	gNZiNZ6zsSJf5+UP68rg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=cWqAJDb5ET5s1L8a+ydSBH2W/+XUtAcwvBOe01b8P+E=; b=cef
+	a5vlcBplLc9jAo0BVzJ2qsRxkhrxpXeUp53rIflmBm5/yTdwtqGONE03nHCZgSJU4uUeswCgC1vJT
+	widFMp2eA77+KPSjGDH3PVagE9cqEIwyCQMXbvNyPb4XDBC5hv1Wpog7ky1LWv596K+woPtqxRVyT
+	hpz9zr1hH/OFJ0gsWcu+vS/YGFUvjA+o0nQzOWEa1fZp643CfRjdgBi8YtwyrhnWH1ZIpP8MR3oUr
+	fCDxuQrtySjT1JTEI7e/Lyd+bmyYAMoKXuqnX/hMpCUwVTsHk00MI2d+LtXZ1zdQfAjUSU4Mn9J8F
+	lNs6EKsvfm7sCFUc0YX35lC5i8uONGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0d3-0000000Fubq-2ddS;
-	Fri, 14 Feb 2025 18:41:33 +0000
-Received: from mail-mw2nam12on20600.outbound.protection.outlook.com ([2a01:111:f403:200a::600] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1tj12P-0000000FyzV-3Gsf;
+	Fri, 14 Feb 2025 19:07:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tizAu-0000000Fcpb-1WbU;
-	Fri, 14 Feb 2025 17:08:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uXDrHegDsd1bGlzukQs6kS2Pg0dAneWtzNI7BzPaqQL047JCYnWz29C4r78L/HcUiVDpI5b/Xx4+afIsYXi4PXfvhY4AbD1Ym4Mt9Yt4pBV7jt4v8794wxaNVLxHaSgaL/bN2icTzWJ8FYBbTAYDy0bVW29AnrQ8V+j4gJqYIFon/OC4io/5I9VcvkIvUsq+a4CNWrQm97HeCfXfKaZHRMS5maUNiVX7kcHsgDaQyaIPV/gyvImb2B3yxG26CBLt3P0SHHS517E2WGT/PFbZKUOY8amyn9fThkuJTQjCftdls0TpvSUIVAdnA0mDB31cERAtlBCrelF1oqtr/54HFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=svzcsAcPURNMvNzUrcJqS1csKa8sqow9qtq28cPI8dA=;
- b=AWBo/ZNcPPm45GssBZyirz5mZ+01Fx8wbxQE3Re+lwQCZnq/qkqL4B9BrAsI78vV6rPbiJgo3MCpMplZKXQhKPvV2qSuYBgW466FZd77kOlOvBjkZs5TmhLqicLDjZO1K025YpLBFfcsuTBu0/GIFLxWwcegvA5O+0XwUmdnooUBuMg+fpBrc98+kwgrehhKffSaFEDcux1qvdz6cbWxLsNaFDixkURNp0MG1V6TjjH2m9yb8rCaopMnRNR7IXwnq6ERWVscMT1vQImyq5SSpzRx7xZet4mSkB10oX4lzT3MciAdCFEqbNUshoNBSsFEqucSaT7z5ShHZvUhIX403A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=svzcsAcPURNMvNzUrcJqS1csKa8sqow9qtq28cPI8dA=;
- b=PZa0cKDG8LaLnpYhWTU3IJOAhiXDcsO1WN+tKo7gcdOFofa+mybhIZKCh2sdfXpSplZPxtRiciUbdCmrjFS8NDmSjArrn3PjMHIXMAqFwFt4bgQ43T70cCwwBzSlo1v+vqqFmC6IKeuwKHwjcVXIYVIqRBbRfHw2HG/2Q14bXmmQQl3ia+rL5zY9Y0DfWIw3uaGPNLGpv9me2U3w0tZ1LA5/rx4DJZC0iIPAA8xVQM9d4CggCqLsytrG95Igxbo+DKZzbBNoCjdN73OEfw/VjzzUieszEifrOrqOLzB4ZC18cUEYBIUhkQUlc1tL6ZhTSK+egSUXL1xulzKoQdwhLA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by PH7PR12MB9175.namprd12.prod.outlook.com (2603:10b6:510:2e6::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.15; Fri, 14 Feb
- 2025 17:08:17 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%6]) with mapi id 15.20.8445.013; Fri, 14 Feb 2025
- 17:08:16 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	asahi@lists.linux.dev,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>,
-	patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: [PATCH v2 17/23] iommu/amd: Change rlookup, irq_lookup, and alias to use kvalloc()
-Date: Fri, 14 Feb 2025 13:07:50 -0400
-Message-ID: <17-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
-In-Reply-To: <0-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
-References: 
-X-ClientProxiedBy: BL6PEPF00013DFA.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:22e:400:0:1001:0:d) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1tj0cj-0000000FuT7-1gJz
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 14 Feb 2025 18:41:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:To:Subject:Message-ID:
+	Date:From:MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=; b=N0B0dOQ5ZxKUVhjxGsFwx4VOwL
+	5ojqylONpUsHEvFfdMyNx+wgMfL7NQ0ufUxbFc77zznApfL4siWkzrBtb09pPb/hRYiIM5uZth7qZ
+	y1xIY7PymmrCIvQ4TSs7PTxXGNN4bLLlCfrLx0p/k2LSk8wA1rPCmL9HkSXpzwCz5L9ELlXsAPtA3
+	79UFSR+S1V82ze0V91gD3IJUm9ZG/R/RbDhau9nMHQvL1ko3Sp9sFQS2HG7Ae2HqkR8B+t2lB4RF1
+	arScVWALuztOyUSdFfeY448dEiadZD/X780pu9fISzaWHqW9aBt9iLu+5cvwJ+JMJWmk9QBj+LsiA
+	eKJqtNxw==;
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tj0cf-00000001JcC-3yvj
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Feb 2025 18:41:12 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-220c665ef4cso36182515ad.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 14 Feb 2025 10:41:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739558467; x=1740163267; darn=lists.infradead.org;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=;
+        b=hF7g3YqAW0sEwMWbWHUbZv6j6sVjCBRQ2PgjTN99mBcX184IK20x5Tlw1xuC1UF/qW
+         xxMK6BiRRbsQetR7wVoLaVREVi0xJkUDA2/x20I/k+XqXWUjMrhR8b5jBcq0FRnF017Y
+         Y1osWxmyvvEePS9MevwNua6ZtWDdNXeD5tbPNeyNihVp/3CwNLoAgbYJWFxXlVaxXCaj
+         dzSWd8Nf/9MKVEoMF1gyiU4+YmbwhA6Oun7BGBzYS1FrKQhhZJENROGshpSuOGw+mv+8
+         AjbrHVyqqu9dEUQeooszWcdDmdfLHvbbXcuF3OM5SAnQjrYxkUUYOrKCk7L44UmWaaHQ
+         FyLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739558467; x=1740163267;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=;
+        b=JRNblPcKHnsnPKAnPMxmOOFJVhE9dCsxMCPqWHM7KaJHcdbU3/1PMXPPFhI1VXJEHv
+         JTh+matjEwsZpWYwa19F75Zo09xnTemW+BhHamqxvXSM2dV1PpogA+8G2u1wbi8ylSGE
+         32yeCxsOmDkBeSq+TI78xL78Rr3eSAN7yk1QzRhlQOCOD/tVI4qUt2+P7VST+lCEnP+I
+         920CbbwmRRK4EGf9z/4Y3QyY0AKiZAuAYcYoZnpmFwdI3/Xh5KXHtaMWTIeH/E6HeONm
+         1grsVfi4uMa2jkgMj1scMDuWCGllVlKqzzXWdADoG0oSg6WRz0DncBoCuERSlZUg2gnM
+         TdcA==
+X-Gm-Message-State: AOJu0YwZ+SRRpUA48y+t8wP+7SKU0N9BC80qBpZqkKP2sdfc8O7IN9yd
+	C5jYus+kxaMl/A+1PGQuJOwt8VdJwzTVa/cb2zrnACxOft22oxzGeJkXwnenpT9J6tYbarSKA94
+	FeQMaXKX9LwIdI1YKej6Cq49mlpjflDXt
+X-Gm-Gg: ASbGncszuIzrvCuUsJZUnHHO/nh+eVMXcBz8k07ccDbhPaT64R+QHwEyAUChB05ZDv3
+	snOGZcqLdgQXcrSp4V/wmzJpSw57ObOZJTqOxAd7Ff+/GidbgIkTfHP+JexbbqkxhQ9ViSuTr
+X-Google-Smtp-Source: AGHT+IFPD1/KCMZbS9HCdzF4XslJe0bB50PWlvWJ3XBFfmtUnyvzOD63F74MgSZy4Rs36ET2I9Cv/y6Fp0VwGixCzr8=
+X-Received: by 2002:a05:6a00:3c84:b0:730:98ef:30b5 with SMTP id
+ d2e1a72fcca58-732617741a4mr718556b3a.5.1739558466878; Fri, 14 Feb 2025
+ 10:41:06 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|PH7PR12MB9175:EE_
-X-MS-Office365-Filtering-Correlation-Id: 942f1c51-192c-4877-0a3e-08dd4d1a238c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024|7416014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?rCrdom5Znt9/iY6UAI9gckQszFlWN6VaeoVLGxp5bZmK6D2X18GG6JmU55f1?=
- =?us-ascii?Q?vrghYniOiIGM70UN2h7L4iXlvUzJEW8JAFXaA+Q6BSxNAEIf0/WKeKtzrfhK?=
- =?us-ascii?Q?IAJpA8W2W/2Xvj015RRHDZfTWRzIMdef2Qa7RJnkXl5YHTofFmR4zGmIEkrz?=
- =?us-ascii?Q?EhQ8tQRxli0x60gy3ROt3LHlr1bCcr5uMtmT7/CPomKD2Fo5NIIXUu9sl/+x?=
- =?us-ascii?Q?ZrNsvkXkJnVtHtUGTydr+gHaIKjcYqrMM7tKOfdhdzO2p119a+UA4FYQzbyv?=
- =?us-ascii?Q?NA5fY/ERyYPMZkLs6M1wiJw6+NAsFmpW4csAqSDfeyQ1Z5/fXWud5Niq1MGY?=
- =?us-ascii?Q?EUjx6CnHZKpAbIDPT4vOamzKi18vBOE0MER6LVtwyGmjSH277I6EqTJeqEuk?=
- =?us-ascii?Q?ZgGP5j7UgdqLgTg3lYdRnXTivREXREqmAtaK0wLZgqO5JGSTye09k0PiZA/4?=
- =?us-ascii?Q?+NsgJs78X1wgkZ6x4DkckU3ADIifawObdTysseQyBC7Tyy6/3wxyiJMIYBU/?=
- =?us-ascii?Q?LkapFLe1YRQkSyosl4ORfVFl99Qu1kDojVo0FR070daPwN7SiTzaOIqftjsc?=
- =?us-ascii?Q?DreClNNd6v3tGBIq/Q1RfZgg4IS6hW+FWd6Vd5f1coYQptAPjIq8JW2F1flb?=
- =?us-ascii?Q?9opx4sNbWLjx5Uq64f85lcAISN4MUYahXt+KgnVLzJtI36lzBP2uUePvr2cI?=
- =?us-ascii?Q?aLpTetW4fUrHen1orvCgIh0QMYoylfjCXSBs+EN5uYyT/k6Fbc97WIUqCXrz?=
- =?us-ascii?Q?iuBmHwzG6l89QL542XsaY7kKXpoZ3WecQV30oAiY/TmiSc1W9HOnRKF1+sC4?=
- =?us-ascii?Q?CdZujpQGdROM6TaNoDG3caH38O1EduRtRhXgLS0fIcVYxLHKJxgDMTUDMwe/?=
- =?us-ascii?Q?NUV/ZaQESOqUdYt/7lOZSJioNvn1bcnQ4QlChs9RxTnCwR0QXfqIj86ECicn?=
- =?us-ascii?Q?pKLbDonxDh3Rv4tcC37860q0UHjaFVZ7HxrekFIOpZccTQ2B8yqdLNx7sUjw?=
- =?us-ascii?Q?LsxjprBYCdfHdd4qUnv+6WeArITj2RAp/2Zu/JddovrICiyi3DMxC75gVoeM?=
- =?us-ascii?Q?Ey7aP6QURpJouFnfKW0n+G/A3H7K317uHabHPZXj61D6EFOfs/zzqu8RW1Js?=
- =?us-ascii?Q?+zSWJZZFt+28i3GYS1BwCxsTcR+myUyPRMtWDNBDjvtX8Y1vp+U7KCkOKOyZ?=
- =?us-ascii?Q?0/SH0UztIXSEOhl2K4mwAsgttZ0q/YnK6IaBBGdFSVXIOQ0yYkUzW7Rd/hNr?=
- =?us-ascii?Q?BFjnOIME/qA0GAl3HoB5IBGr0pmM6h/9zCaU8pXZSPaymfTIYihArF02MVfN?=
- =?us-ascii?Q?i0EhTRPRf6PLtYs9DQoJctwcAg2d6lbgdbwYjZlF6Guw4U3Iy+H4KsedhAvZ?=
- =?us-ascii?Q?ATq/Y4wgf8kYmK8gGfrRmwKsgnhey/Ido1L01Hnf3yL1SsbYT+dhUhrVm/HX?=
- =?us-ascii?Q?yigp1HBSRAI=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(7416014)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?P4TsEv0ceTBq1CfzEkeMd6G0G4XhSCjT8ZPt6sansojS44bx/CBA2inRhnfq?=
- =?us-ascii?Q?K4SWYrJ4Tr9+GscaXY6TPQuYyNkKk1THmq2u8maGrSxw14GvClM1/08wJRjb?=
- =?us-ascii?Q?FR+kquMSCPQkk8tNd/pj0ADFwJM149R9Hd+I/oDZ+MRXQAmZhVxi/HtWa23/?=
- =?us-ascii?Q?8dCtiuAbpqY8M2BLuKLLKRzraDjeKWV4F46iXjENEzyJYu9BbQSrjo+7Wa+J?=
- =?us-ascii?Q?qOhOp0/FDxZo300jRx8l4g3FTi29ong2v5jc00g881Hjp5YRmcWZ8IIheEzX?=
- =?us-ascii?Q?shcqCVonGpgPuRc47dVZW5+9J/0f+Ho+Rq8WW3oRTAGQFUq+RowwylJjNMc1?=
- =?us-ascii?Q?ReKcfp7eV+u5SxutnqsCGxZqeXRW3Vdjw+YV64tntSRXGZhT2vd3tAImIslS?=
- =?us-ascii?Q?6JL6bTGfYgqp7HdIJihV0Of7eGZzxlFfkq36dP9BxLiTYD/++5BcC9WPVKg9?=
- =?us-ascii?Q?tN0Qr0qw8u7CPS9Qygc0hRHFJw7OOk0VBxrA4A3Z9/u5gYq9elW+c4jTcFpm?=
- =?us-ascii?Q?2zcCW2QfC9t8mS4Ay2jGESXiEBMRd8gP5/hXZGV1pRPa9Fm0AL4X2V4G1AtG?=
- =?us-ascii?Q?E9X8Jl5sntaha6ij5ouc/e/eE0evQpKjuQH5FLtd3eNai2Cy4OCE0Gd9y869?=
- =?us-ascii?Q?nwQyMOGed+7EmpoSGOWsVR4uVA/InlwAa7SJvIpkfTiNif6tLiEOTmOMJKu8?=
- =?us-ascii?Q?RJPB12h3aObxFTy2eGDNsgvhm2AGr18P0qSXYS5yCf3FhwwipDvM9UJ3JUY6?=
- =?us-ascii?Q?pfFadZF3a1kM7gREkiX3IneDzaBHJ7xnRshpMFL1Ain81vWxTmB6VPJZAkGL?=
- =?us-ascii?Q?DUlZvdHmxsTDJS+OCyIkSvBTEqwl08x8jIkzYPudtPWGKhK6DoqZESvVooeT?=
- =?us-ascii?Q?Tjjch6RapxxQiQ6iewA8aXbp2rpKOTocTJaM6C6lextsx8hLRFbt/u0s1tm6?=
- =?us-ascii?Q?vqnGA8s2N7b6gw3jJbDBLEWs9uJSYQTJvEh8FPvV3edzTVoLZcRfH52/yAv+?=
- =?us-ascii?Q?AkUQA+FxL/2+VFJ3mGYUU+445EgzyDaFeZcqXsSmdtBv5u5KlvLhSA7stloI?=
- =?us-ascii?Q?AzD9XdKasDbF0r0/bxqo82yZlq9yp5itpXY75pZdPjk14Loli9fvSP7Tgiw7?=
- =?us-ascii?Q?AyNynyExVH6n1FrBRrNP1KumvZnyUDk6F0j7IlHECfJqB7mSKFtvZdkrCTVz?=
- =?us-ascii?Q?u+vh2dtmp+l/xKCP6RsRQNSjURlzFKoB8WB6E9dr+xqG3uGo47+SYnZ4tDo2?=
- =?us-ascii?Q?Mwl2xyGoz//OMEcHtTGITw+feh0XxMNruuS6nqzLRgRarTa0iB54gJL63MAF?=
- =?us-ascii?Q?kEMbojJiZKaH0wlyRR1oLwia7valnCFGcSIg7pFu7KZZ9pEWdCF1UrTWAWJU?=
- =?us-ascii?Q?hZBFrCQmeoHUhdi6LG0obWk9sXrl+PAoT/P/tX+SUeVP7kVwHdUqUE4yLPRp?=
- =?us-ascii?Q?NfbNTodpA6RuwkHctuowqswYq+OLLL+jjJOIf5nbCgScUhR5j3INocif5bUn?=
- =?us-ascii?Q?8Rszo+ZDZi0yo8dI/Vx8wHvJRJoJ6I/ye1PICyppi9jVGPLYKMkW/62zNitv?=
- =?us-ascii?Q?AjmIh5nGz0NxK44WVig=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 942f1c51-192c-4877-0a3e-08dd4d1a238c
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2025 17:08:01.9269
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Tnr9QKSDM3wD8uqI3TtK0Zmco36YQxEM16tUDt4sZ81x2kHu75+cJhVfLBdQ0wAD
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB9175
+From: Ramon0000 <ramon00c00@gmail.com>
+Date: Fri, 14 Feb 2025 19:40:55 +0100
+X-Gm-Features: AWEUYZkdQTHz0_gsSCDfMx7XK1O2im4uxcRGJLn0K_tmpmXXa4pUpGM8SVXfXvw
+Message-ID: <CAG-UM5EbD7eJPO7+rRnZsV4mPfeFbtGmz18+23P1ZJgdqpFdAg@mail.gmail.com>
+Subject: rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
+To: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_090824_409043_F1294BDA 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20250214_184110_161294_F1DF161C 
+X-CRM114-Status: UNSURE (   3.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,127 +102,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is just CPU memory used by the driver to track things, it doesn't
-need to use iommu-pages. All of them are indexed by devid and devid is
-bounded by pci_seg->last_bdf or we are already out of bounds on the page
-allocation.
+As originally reported here: https://github.com/openwrt/openwrt/issues/17923
 
-Switch them to use some version of kvmalloc_array() and drop the now
-unused constants and remove the tbl_size() round up to PAGE_SIZE multiples
-logic.
+I own a NanoPi R4S - FriendlyELEC WiKi with RK3399 SoC and recently
+update to  OpenWRT 24.10.0 (kernel 6.6.73).. However now if I do a
+reboot it generates:
+[ 0.936433] rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
+while with the previous 23.05.7 (kernel 5.15.xx) it rebooted fine.
+Power cycling clears the error.
 
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/iommu/amd/amd_iommu_types.h |  8 --------
- drivers/iommu/amd/init.c            | 26 ++++++++++++--------------
- 2 files changed, 12 insertions(+), 22 deletions(-)
+Seems like a reboot does not reset the state then subsequently the
+training fails.
 
-diff --git a/drivers/iommu/amd/amd_iommu_types.h b/drivers/iommu/amd/amd_iommu_types.h
-index 0bbda60d3cdc7d..9704edf5cc26e0 100644
---- a/drivers/iommu/amd/amd_iommu_types.h
-+++ b/drivers/iommu/amd/amd_iommu_types.h
-@@ -29,8 +29,6 @@
-  * some size calculation constants
-  */
- #define DEV_TABLE_ENTRY_SIZE		32
--#define ALIAS_TABLE_ENTRY_SIZE		2
--#define RLOOKUP_TABLE_ENTRY_SIZE	(sizeof(void *))
- 
- /* Capability offsets used by the driver */
- #define MMIO_CAP_HDR_OFFSET	0x00
-@@ -613,12 +611,6 @@ struct amd_iommu_pci_seg {
- 	/* Size of the device table */
- 	u32 dev_table_size;
- 
--	/* Size of the alias table */
--	u32 alias_table_size;
--
--	/* Size of the rlookup table */
--	u32 rlookup_table_size;
--
- 	/*
- 	 * device table virtual address
- 	 *
-diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
-index 73ebcb958ad864..fb3c3d17efc167 100644
---- a/drivers/iommu/amd/init.c
-+++ b/drivers/iommu/amd/init.c
-@@ -660,8 +660,9 @@ static inline void free_dev_table(struct amd_iommu_pci_seg *pci_seg)
- /* Allocate per PCI segment IOMMU rlookup table. */
- static inline int __init alloc_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
- {
--	pci_seg->rlookup_table = iommu_alloc_pages(GFP_KERNEL,
--						   get_order(pci_seg->rlookup_table_size));
-+	pci_seg->rlookup_table = kvcalloc(pci_seg->last_bdf + 1,
-+					  sizeof(*pci_seg->rlookup_table),
-+					  GFP_KERNEL);
- 	if (pci_seg->rlookup_table == NULL)
- 		return -ENOMEM;
- 
-@@ -670,16 +671,15 @@ static inline int __init alloc_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
- 
- static inline void free_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
- {
--	iommu_free_pages(pci_seg->rlookup_table);
-+	kvfree(pci_seg->rlookup_table);
- 	pci_seg->rlookup_table = NULL;
- }
- 
- static inline int __init alloc_irq_lookup_table(struct amd_iommu_pci_seg *pci_seg)
- {
--	pci_seg->irq_lookup_table = iommu_alloc_pages(GFP_KERNEL,
--						      get_order(pci_seg->rlookup_table_size));
--	kmemleak_alloc(pci_seg->irq_lookup_table,
--		       pci_seg->rlookup_table_size, 1, GFP_KERNEL);
-+	pci_seg->irq_lookup_table = kvcalloc(pci_seg->last_bdf + 1,
-+					     sizeof(*pci_seg->irq_lookup_table),
-+					     GFP_KERNEL);
- 	if (pci_seg->irq_lookup_table == NULL)
- 		return -ENOMEM;
- 
-@@ -688,8 +688,7 @@ static inline int __init alloc_irq_lookup_table(struct amd_iommu_pci_seg *pci_se
- 
- static inline void free_irq_lookup_table(struct amd_iommu_pci_seg *pci_seg)
- {
--	kmemleak_free(pci_seg->irq_lookup_table);
--	iommu_free_pages(pci_seg->irq_lookup_table);
-+	kvfree(pci_seg->irq_lookup_table);
- 	pci_seg->irq_lookup_table = NULL;
- }
- 
-@@ -697,8 +696,9 @@ static int __init alloc_alias_table(struct amd_iommu_pci_seg *pci_seg)
- {
- 	int i;
- 
--	pci_seg->alias_table = iommu_alloc_pages(GFP_KERNEL,
--						 get_order(pci_seg->alias_table_size));
-+	pci_seg->alias_table = kvmalloc_array(pci_seg->last_bdf + 1,
-+					      sizeof(*pci_seg->alias_table),
-+					      GFP_KERNEL);
- 	if (!pci_seg->alias_table)
- 		return -ENOMEM;
- 
-@@ -713,7 +713,7 @@ static int __init alloc_alias_table(struct amd_iommu_pci_seg *pci_seg)
- 
- static void __init free_alias_table(struct amd_iommu_pci_seg *pci_seg)
- {
--	iommu_free_pages(pci_seg->alias_table);
-+	kvfree(pci_seg->alias_table);
- 	pci_seg->alias_table = NULL;
- }
- 
-@@ -1604,8 +1604,6 @@ static struct amd_iommu_pci_seg *__init alloc_pci_segment(u16 id,
- 	pci_seg->last_bdf = last_bdf;
- 	DUMP_printk("PCI segment : 0x%0x, last bdf : 0x%04x\n", id, last_bdf);
- 	pci_seg->dev_table_size     = tbl_size(DEV_TABLE_ENTRY_SIZE, last_bdf);
--	pci_seg->alias_table_size   = tbl_size(ALIAS_TABLE_ENTRY_SIZE, last_bdf);
--	pci_seg->rlookup_table_size = tbl_size(RLOOKUP_TABLE_ENTRY_SIZE, last_bdf);
- 
- 	pci_seg->id = id;
- 	init_llist_head(&pci_seg->dev_data_list);
--- 
-2.43.0
+It does seem a patch is already available:
+https://github.com/armbian/build/pull/6057
 
+Can this be included in kernel?
+
+Ty
 
 _______________________________________________
 Linux-rockchip mailing list
