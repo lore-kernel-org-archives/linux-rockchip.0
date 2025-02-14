@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13C63C02198
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 20:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2CCAC02198
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 22:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FIzBPt7bd8LK7xjwVngNauJcgteHEUqATWiVyZuzdNY=; b=kyby9yYZd40pdF
-	ZAfniN78yOOen4jlXmkZnQmUC1Rk+EEXyLdbpLmGLZ+XkE5g6ZlXh1PKPz5gj5Sl1rtph237QF6rR
-	ZqLhK9LSjpMgM7GpJwVGpD5wKGHMKt5tvvjZXGqiXuWOm0NLF+9Pi8mrUzmFWbiLQVB+FOq/pVUWq
-	xLwCbqiHhPM6PWMIQcVy4pP5bYXEGpFipEdFMN+jWONG8R98GL+SCiBY7xVXoHPF++/ieN7+uIzsb
-	UsKUSAA4PK8gKt7tG/3pqDon0eqK4AmtoakebwkBJByZwSoHU+ghNkXJipOQLM249BDSyQF5OsiRd
-	BD3CHyN0uzjJWFDyZOww==;
+	List-Owner; bh=n5XA5t29wqs4D6llkr9AiFEF209m2ilo423X9QFcJgQ=; b=YXfxyAUVTnjCNz
+	kYRJVwYziBpJjT2dftrT+Gyhg7hMZ1xPC//aQUMAt8oBIS6ZapM0JJJiAJ/Kn/6/3MTCde/RhZjZ2
+	Tnp+HUx13ngue+DnQZadg5+m3gRy9UZsoWoWyauDU5V2uhqlmB3vor2pZRvwkjUEqdFqvdGz2mWuv
+	590bgoIQc8b6F/+9IbUWZO+7/1v12YvkJv6QTLqI3hF0TjwRADoa6wow7nBKB6fTPdGVVaByq+xA6
+	QczqCsfx2gcUfZuxwfDjupwF0tJw33i1TrwDNI2YgFx/lF4kyA9Xmh+mJ47I1DabKKD0GiQOZWksU
+	mByEGn3LYOqDEOnn6E6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj1zq-0000000G7wS-38P9;
-	Fri, 14 Feb 2025 20:09:10 +0000
+	id 1tj48D-0000000GNj2-3uz2;
+	Fri, 14 Feb 2025 22:25:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj1yO-0000000G7mn-3RKl;
-	Fri, 14 Feb 2025 20:07:41 +0000
+	id 1tj46l-0000000GNYU-3jwR;
+	Fri, 14 Feb 2025 22:24:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3gA+i0CmP9DnNBxjfP0Se+gQOkkXX1tuBuCnmXo7jZk=; b=h2oPIxc5LSQ9HrqIpwYraIWK2d
-	OVZnGGtUhj1zTYD3LrBiEDjWwkR36EKaperNnbYz9XKgtflB4ct53f7MvAUPjNtySI0+yXdYXgcbY
-	g+16clC//0zdgygviKbeJkmU0asTKPLnMGeCNhAP5MKNFGHgJXuqBziRG9q3u+/pHVO+59fNPbZ4n
-	eraqJTdMJyI62Zb6EE28ucaE/YHoxiUHijc5KzLiDu2mVn8MjlZCBeQxda/5fqqNO44ps1ppPPDBd
-	OTnibedW2U6c6ESyD5jKyBA2I+RuplsWZU26A/ORoPDNb/w1oyRZkZZRlVe9iewvru+SRalFMYpRh
-	o1Fw296Q==;
+	bh=k2vnMCPQOojSTe6uMJg0l2Vez2CaiS93NKFlwUuMrgA=; b=J+H356ae4zUnjMOSGBw1B3YZL7
+	/T2/TQgh82Y03mrVH7Xlc4/P5f+G6nyffpsQd00bKp+zPTdNie2VrURG+797OKSxdjvDum5eiC+bs
+	qHMk3BxdEHul+ZH7et+bTP4Y+o5gcsLi4SbnU0vuUSF8E7sEBNoQQzIRom+monEH+SLBayf15MBme
+	2oMBHqCtLJkrptfSyladSdfbK3AvTfIvTdXdoi5VcHinbIQInl+jGlF+jW/0BesYnZSp4+lrQVfkJ
+	IEAHmyvio8ATJxeWo2hzwsGIkT5/AgfdQ1OTp+p/BKxLIAeibHgUhXlnrzFD3LZY8cLnX8IzN/aDf
+	oAE+TReg==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tj1y0-00026P-Tb; Fri, 14 Feb 2025 21:07:16 +0100
+	id 1tj46c-0003Go-2m; Fri, 14 Feb 2025 23:24:18 +0100
 From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
- Chris Morgan <macromorgan@hotmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>,
- Tim Lunn <tim@feathertop.org>, FUKAUMI Naoki <naoki@radxa.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Stephen Chen <stephen@radxa.com>, Elon Zhang <zhangzj@rock-chips.com>,
- Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device tree
-Date: Fri, 14 Feb 2025 21:07:15 +0100
-Message-ID: <2629121.1xdlsreqCQ@diego>
-In-Reply-To: <20250214152119.405803-3-detlev.casanova@collabora.com>
-References: <20250214152119.405803-1-detlev.casanova@collabora.com>
- <20250214152119.405803-3-detlev.casanova@collabora.com>
+To: Andy Yan <andyshrk@163.com>
+Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ derek.foreman@collabora.com, detlev.casanova@collabora.com,
+ daniel@fooishbar.org, robh@kernel.org, sebastian.reichel@collabora.com,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v14 04/13] drm/rockchip: vop2: Merge vop2_cluster/esmart_init
+ function
+Date: Fri, 14 Feb 2025 23:24:17 +0100
+Message-ID: <8686639.gsGJI6kyIV@diego>
+In-Reply-To: <20250212093530.52961-5-andyshrk@163.com>
+References: <20250212093530.52961-1-andyshrk@163.com>
+ <20250212093530.52961-5-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_120740_884732_8086B25B 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20250214_142427_921021_9D640610 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,148 +78,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+Am Mittwoch, 12. Februar 2025, 10:34:59 MEZ schrieb Andy Yan:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Now these two function share the same logic, the can
+> be merged as one.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+> 
+> (no changes since v1)
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 42 +++++---------------
+>  1 file changed, 11 insertions(+), 31 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index a0d961cb5d21..844df4001159 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -2424,18 +2424,18 @@ static int vop2_find_rgb_encoder(struct vop2 *vop2)
+>  	return -ENOENT;
+>  }
+>  
+> -static int vop2_cluster_init(struct vop2_win *win)
+> +static int vop2_regmap_init(struct vop2_win *win, const struct reg_field *regs,
+> +			    int nr_regs)
+>  {
+>  	struct vop2 *vop2 = win->vop2;
+>  	int i;
+>  
+> -	for (i = 0; i < vop2->data->nr_cluster_regs; i++) {
+> +	for (i = 0; i < nr_regs; i++) {
+>  		const struct reg_field field = {
+> -			.reg = (vop2->data->cluster_reg[i].reg != 0xffffffff) ?
+> -				vop2->data->cluster_reg[i].reg + win->offset :
+> -				vop2->data->cluster_reg[i].reg,
+> -			.lsb = vop2->data->cluster_reg[i].lsb,
+> -			.msb = vop2->data->cluster_reg[i].msb
+> +			.reg = (regs[i].reg != 0xffffffff) ?
+> +				regs[i].reg + win->offset : regs[i].reg,
+> +			.lsb = regs[i].lsb,
+> +			.msb = regs[i].msb
+>  		};
+>  
+>  		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+> @@ -2446,28 +2446,6 @@ static int vop2_cluster_init(struct vop2_win *win)
+>  	return 0;
+>  };
+>  
+> -static int vop2_esmart_init(struct vop2_win *win)
+> -{
+> -	struct vop2 *vop2 = win->vop2;
+> -	int i;
+> -
+> -	for (i = 0; i < vop2->data->nr_smart_regs; i++) {
+> -		const struct reg_field field = {
+> -			.reg = (vop2->data->smart_reg[i].reg != 0xffffffff) ?
+> -				vop2->data->smart_reg[i].reg + win->offset :
+> -				vop2->data->smart_reg[i].reg,
+> -			.lsb = vop2->data->smart_reg[i].lsb,
+> -			.msb = vop2->data->smart_reg[i].msb
+> -		};
+> -
+> -		win->reg[i] = devm_regmap_field_alloc(vop2->dev, vop2->map, field);
+> -		if (IS_ERR(win->reg[i]))
+> -			return PTR_ERR(win->reg[i]);
+> -	}
+> -
+> -	return 0;
+> -}
+> -
+>  static int vop2_win_init(struct vop2 *vop2)
+>  {
+>  	const struct vop2_data *vop2_data = vop2->data;
+> @@ -2484,9 +2462,11 @@ static int vop2_win_init(struct vop2 *vop2)
+>  		win->win_id = i;
+>  		win->vop2 = vop2;
+>  		if (vop2_cluster_window(win))
+> -			ret = vop2_cluster_init(win);
+> +			ret = vop2_regmap_init(win, vop2->data->cluster_reg,
+> +					       vop2->data->nr_cluster_regs);
+>  		else
+> -			ret = vop2_esmart_init(win);
+> +			ret = vop2_regmap_init(win, vop2->data->smart_reg,
+> +					       vop2->data->nr_cluster_regs);
 
-all the style nitpick I'd changed myself, but the cpu-supplies did throw me
-off, see below.
+						^^ nr_smart_regs
+I think
 
-
-Am Freitag, 14. Februar 2025, 16:19:34 MEZ schrieb Detlev Casanova:
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> new file mode 100644
-> index 0000000000000..822abb82fae40
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-> @@ -0,0 +1,650 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2024 Radxa Computer (Shenzhen) Co., Ltd.
-> + *
-
-empty comment line can probably go away
-
-> +	vcc_12v0_dcin: regulator-vcc-12v0-dcin {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_12v0_dcin";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +	};
-> +
-> +	vcc_5v0_sys: regulator-vcc-5v0-sys {
-
-alphabetical sorting, by node-name please, so
-regulator-vcc-3v3* comes before regulator-vcc-5v0* etc
-
-Goes for all regulator-* nodes of course.
-
-> +	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_3v3_pcie";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		enable-active-high;
-> +		gpio = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-> +		startup-delay-us = <5000>;
-> +		vin-supply = <&vcc_5v0_sys>;
-> +	};
-> +
-> +	vcc_5v0_host: regulator-vcc-5v0-host {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_host";
-> +		regulator-boot-on;
-> +		regulator-always-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		enable-active-high;
-> +		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&vcc_5v0_device>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&usb_host_pwren>;
-
-both of the above, alphabetical sorting of properties please
-
-> +	};
-> +};
-> +
-> +&cpu_l0 {
-> +	cpu-supply = <&vdd_cpu_lit_s0>;
-> +};
-
-What happened to the supplies of the other cores?
-cpu_l1 - cpu_l3 probably need the same reference as above.
-
-Who is powering the cpu_b* cores?
-
-
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	pmic@23 {
-> +		compatible = "rockchip,rk806";
-> +		reg = <0x23>;
-> +
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_pins
-> +			     &rk806_dvs1_null
-> +			     &rk806_dvs2_null
-> +			     &rk806_dvs3_null>;
-> +
-> +		system-power-controller;
-> +
-> +		vcc1-supply = <&vcc_5v0_sys>;
-> +		vcc2-supply = <&vcc_5v0_sys>;
-> +		vcc3-supply = <&vcc_5v0_sys>;
-> +		vcc4-supply = <&vcc_5v0_sys>;
-> +		vcc5-supply = <&vcc_5v0_sys>;
-> +		vcc6-supply = <&vcc_5v0_sys>;
-> +		vcc7-supply = <&vcc_5v0_sys>;
-> +		vcc8-supply = <&vcc_5v0_sys>;
-> +		vcc9-supply = <&vcc_5v0_sys>;
-> +		vcc10-supply = <&vcc_5v0_sys>;
-> +		vcc11-supply = <&vcc_2v0_pldo_s3>;
-> +		vcc12-supply = <&vcc_5v0_sys>;
-> +		vcc13-supply = <&vcc_1v1_nldo_s3>;
-> +		vcc14-supply = <&vcc_1v1_nldo_s3>;
-> +		vcca-supply = <&vcc_5v0_sys>;
-> +
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-
-alphabetical sorting ... gpio* farther up please.
-
-
-> +&uart0 {
-> +	pinctrl-0 = <&uart0m0_xfer>;
-> +	status = "okay";
-> +};
-> +
-> +&combphy1_psu {
-> +	status = "okay";
-> +};
-
-phandles also sorted alphabetical please
-
-> +
-> +&u2phy0 {
-> +	status = "okay";
-> +};
-> +
-> +&u2phy1 {
-> +	status = "okay";
-> +};
-> +
-> +&usb_drd1_dwc3 {
-> +	dr_mode = "host";
-> +	status = "okay";
-> +};
-
-Thanks a lot
-Heiko
 
 
 
