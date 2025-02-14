@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D6C1C021A4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 12:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D4BC021A4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 13:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ePLefQPX/9/LMz+rjX8mue7y0kPArO+Ie9a8EjCEphs=; b=allKRaCWs3cmXr
-	c4fjf8GEqqIX+wkxDtbUb8gZyEZZsHHYwtcRSoAas09FXJU9PhwTPE9iwGmVtg6M0M5XHyXx7blQS
-	/5vt7ae7gKA8NPo4It0RrGDe/8pz3YfoFih3FrQu4KsGNmbpYIA6jzA5wKzxZBzzbiicJK6CUUkyY
-	mRNFbO7BMiuJJ7OyPSGjzA1keu/50nnZkB4yA+7hFLjvFqxvZT0WYCk/FckuAhiYacULBJIMnTnRp
-	ldf02APk4V2814cK7mYehZGp0aqpxfHAxXVJ9Jyv7Ui2EKBmEVhwmZeuKJH96UZD76yLK2P+dEXcH
-	fqcHEDrciG4PQFBgS7Zw==;
+	List-Owner; bh=HvyDASrp1DtPJMRllpcEWjSyUyhJ445WAgyKTn9VptQ=; b=JZHcQfDXYgCKVL
+	XdrOHVt5u2W72iS6Yu2lNkjFDLDGsP2Z6JGAKY0EgRLxQ32EhXU3Qfhjh1OWNsu4cM6gF91KxbmRa
+	VI8q6OPGuFdgZExm4Z8hpZqAZHAFNcUSFdXu5YIFklXtCR3pRYvmni2uwo27+lsLwjQqeZ0Vp/3/r
+	AQQK0OxSriplutLpvckCTQa4rgTlJS+L9nKs/HxV0AFscJbc3aCufFznmOLkK+CYSOtEm6RTbxNFP
+	ohSPdSesENHFmdw68lak4a2d8UhO7JYXEyDVq944Qlzvs2EgvMyoaF9N0sWLprKS0ppo1iLqDA249
+	POajFEcUoGrR+6P7UE8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiubF-0000000Eo5L-0IFM;
-	Fri, 14 Feb 2025 12:15:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tivmo-0000000F1Ri-0N8m;
+	Fri, 14 Feb 2025 13:31:18 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiuZn-0000000EnxH-15EE;
-	Fri, 14 Feb 2025 12:13:48 +0000
+	id 1tivZp-0000000EyB0-0R3y;
+	Fri, 14 Feb 2025 13:17:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 33B145C25AE;
-	Fri, 14 Feb 2025 12:13:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A632DC4CED1;
-	Fri, 14 Feb 2025 12:13:45 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2F42DA42A49;
+	Fri, 14 Feb 2025 13:16:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 734BCC4CED1;
+	Fri, 14 Feb 2025 13:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739535226;
-	bh=iBts8iIQtzQel9dZiL97eiLaLFzBf2jp89FOZmsjRrE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cxR3U64x0UbHv7UIXxJIeRLfMqYvQizaIEArf05g6aIFOfETi5Tr+hBTOo3Ngj/Ix
-	 4SBmwsQBt8+uCGHIiDXfieBYV+wKiVfW45YgidsnbAH8+BIsNJcDJkf5NfLGbHASCE
-	 1vz7YWuLbzYqyYTONU9XuSQjvvYiezcMvAuAvtOxD8lxxWzEBLW/lDAPA8DGyqfDlB
-	 1SzaOkh9vIwdp+NsSmG3+kT3OHJb/0cuffvEtzsF3F1fUqHGFJm3gsH6UZvAEmFzTQ
-	 UXN21RC8JeGZR6/tAFUzJ9kirpiAExQMo0uTeM+CZ9claceVIivDg0FTH6glU8pl/j
-	 tscqRblX7As8Q==
-Date: Fri, 14 Feb 2025 17:43:42 +0530
+	s=k20201202; t=1739539072;
+	bh=jqUXucE5Y4nnB+VCTZkmpXrxMC8l+mi2tGy84H4NNcY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=TA6GhCrkdeoyZ5SzBg9K1++CCYtZopNSkfoJKp5TVTl43wxm4RcZRUW7L4mc9XA4j
+	 Cvp7r53ipc1n8369y0LS7agRgFAKbncFPfWorj3pja+EVgr36Ze+ihNdpuBLo3YnZz
+	 t7lwQkzNHaYJnJNTV6DQ7BFsjhIGh+Qitu8Wx2SiAQCL2i8XzEG5w6G/SfPN+6rv0I
+	 0YszU2thKURbZ0BWZABEOxx0FFkThvpXD8q3o//j9vRt/8B9A5jfPk9P8X5XJZTJfw
+	 hln7ZL23ICgjtu+/k1+9/3W8VtJXeIMWSMgkRmF2803s2sCs9f7lLNK1YIPPxn0jOU
+	 xqkI0KWRLUzdw==
 From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, quentin.schulz@cherry.de,
-	sebastian.reichel@collabora.com, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dse@thaumatec.com, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v6 2/2] phy: rockchip: Add Samsung MIPI D-/C-PHY driver
-Message-ID: <Z68zdiIl75k2Vv9i@vaman>
-References: <20250213210554.1645755-1-heiko@sntech.de>
- <20250213210554.1645755-3-heiko@sntech.de>
+To: kishon@kernel.org, heiko@sntech.de, 
+ Damon Ding <damon.ding@rock-chips.com>
+Cc: dmitry.baryshkov@linaro.org, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20250205105157.580060-1-damon.ding@rock-chips.com>
+References: <20250205105157.580060-1-damon.ding@rock-chips.com>
+Subject: Re: [PATCH v7 0/4] Add eDP mode support for Rockchip Samsung HDPTX
+ PHY
+Message-Id: <173953906904.3648.15167583228887227483.b4-ty@kernel.org>
+Date: Fri, 14 Feb 2025 18:47:49 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250213210554.1645755-3-heiko@sntech.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_041347_386025_8FDBE320 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20250214_051753_199055_F5A25DC7 
+X-CRM114-Status: UNSURE (   5.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,128 +75,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13-02-25, 22:05, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-> +#define PLL_CON0		0x0100
-> +#define PLL_EN			BIT(12)
-> +#define S_MASK			GENMASK(10, 8)
-> +#define S(x)			FIELD_PREP(S_MASK, x)
-> +#define P_MASK			GENMASK(5, 0)
-> +#define P(x)			FIELD_PREP(P_MASK, x)
-> +#define PLL_CON1		0x0104
-> +#define PLL_CON2		0x0108
-> +#define M_MASK			GENMASK(9, 0)
-> +#define M(x)			FIELD_PREP(M_MASK, x)
-> +#define PLL_CON3		0x010c
+On Wed, 05 Feb 2025 18:51:53 +0800, Damon Ding wrote:
+> Picked from:
+> https://patchwork.kernel.org/project/linux-rockchip/list/?series=927102
+> 
+> Damon Ding (4):
+>   phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and
+>     ROPLL_REF
+>   phy: phy-rockchip-samsung-hdptx: Supplement some register names with
+>     their full version
+>   phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all
+>     registers
+>   phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
+> 
+> [...]
 
-lower case, nice.
+Applied, thanks!
 
-...
+[1/4] phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and ROPLL_REF
+      commit: 2947c8065e9efdd3b6434d2817dc8896234a3fc0
+[2/4] phy: phy-rockchip-samsung-hdptx: Supplement some register names with their full version
+      commit: f706024107204cb0b640bac35ea47e7b91b8c71f
+[3/4] phy: phy-rockchip-samsung-hdptx: Add the '_MASK' suffix to all registers
+      commit: 2dc8224e3758c5d6387786ea1d74d2d510149b1a
+[4/4] phy: phy-rockchip-samsung-hdptx: Add eDP mode support for RK3588
+      commit: 8f831f272b4c89aa13b45bd010c2c18ad97a3f1b
 
-> +#define COMBO_MD0_GNR_CON0	0x0400
-> +#define COMBO_MD0_GNR_CON1	0x0404
-> +#define COMBO_MD0_ANA_CON0	0x0408
-> +#define COMBO_MD0_ANA_CON1      0x040C
-
-upper one!
-
-> +#define COMBO_MD0_ANA_CON2	0x0410
-> +
-> +#define COMBO_MD0_TIME_CON0	0x0430
-> +#define COMBO_MD0_TIME_CON1	0x0434
-> +#define COMBO_MD0_TIME_CON2	0x0438
-> +#define COMBO_MD0_TIME_CON3	0x043C
-
-and few more, lets be lower case everywhere please?
-
-> +	{ 200,  7,   1,  0, 33,  9,  0, 26,  5,  0, 11},
-> +	{ 190,  7,   1,  0, 32,  9,  0, 25,  5,  0, 11},
-> +	{ 180,  6,   1,  0, 32,  8,  0, 25,  5,  0, 10},
-> +	{ 170,  6,   0,  0, 32,  8,  0, 25,  5,  0, 10},
-> +	{ 160,  5,   0,  0, 31,  8,  0, 24,  4,  0,  9},
-> +	{ 150,  5,   0,  0, 31,  8,  0, 24,  5,  0,  9},
-> +	{ 140,  5,   0,  0, 31,  8,  0, 24,  5,  0,  8},
-> +	{ 130,  4,   0,  0, 30,  6,  0, 23,  3,  0,  8},
-> +	{ 120,  4,   0,  0, 30,  6,  0, 23,  3,  0,  7},
-> +	{ 110,  3,   0,  0, 30,  6,  0, 23,  3,  0,  7},
-> +	{ 100,  3,   0,  0, 29,  5,  0, 22,  2,  0,  6},
-> +	{  90,  3,   0,  0, 29,  5,  0, 22,  2,  0,  6},
-> +	{  80,  2,   0,  0, 28,  5,  0, 22,  2,  0,  5},
-> +};
-
-any word on where this table came from, maybe worth documenting that
-part
-
-> +
-> +static void samsung_mipi_dcphy_bias_block_enable(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	u32 bias_con2 = 0x3223;
-
-magic value?
-
-> +static void samsung_mipi_dphy_lane_disable(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	regmap_update_bits(samsung->regmap, DPHY_MC_GNR_CON0, PHY_ENABLE, 0);
-> +	regmap_update_bits(samsung->regmap, COMBO_MD0_GNR_CON0, PHY_ENABLE, 0);
-> +	regmap_update_bits(samsung->regmap, COMBO_MD1_GNR_CON0, PHY_ENABLE, 0);
-> +	regmap_update_bits(samsung->regmap, COMBO_MD2_GNR_CON0, PHY_ENABLE, 0);
-> +	regmap_update_bits(samsung->regmap, DPHY_MD3_GNR_CON0, PHY_ENABLE, 0);
-
-Is writing to a register (mmio) faster than a switch case for checking
-lane count and disabling specific lanes?
-
-> +static void samsung_mipi_dcphy_pll_configure(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	regmap_update_bits(samsung->regmap, PLL_CON0, S_MASK | P_MASK,
-> +			   S(samsung->pll.scaler) | P(samsung->pll.prediv));
-> +
-> +	if (samsung->pll.dsm < 0) {
-> +		u16 dsm_tmp;
-> +
-> +		/* Using opposite number subtraction to find complement */
-> +		dsm_tmp = abs(samsung->pll.dsm);
-> +		dsm_tmp = dsm_tmp - 1;
-> +		dsm_tmp ^= 0xffff;
-> +		regmap_write(samsung->regmap, PLL_CON1, dsm_tmp);
-> +	} else {
-> +		regmap_write(samsung->regmap, PLL_CON1, samsung->pll.dsm);
-> +	}
-> +
-> +	regmap_update_bits(samsung->regmap, PLL_CON2,
-> +			   M_MASK, M(samsung->pll.fbdiv));
-> +
-> +	if (samsung->pll.ssc_en) {
-> +		regmap_write(samsung->regmap, PLL_CON3,
-> +			     MRR(samsung->pll.mrr) | MFR(samsung->pll.mfr));
-> +		regmap_update_bits(samsung->regmap, PLL_CON4, SSCG_EN, SSCG_EN);
-> +	}
-> +
-> +	regmap_write(samsung->regmap, PLL_CON5, RESET_N_SEL | PLL_ENABLE_SEL);
-> +	regmap_write(samsung->regmap, PLL_CON7, PLL_LOCK_CNT(0xf000));
-> +	regmap_write(samsung->regmap, PLL_CON8, PLL_STB_CNT(0xf000));
-
-I guess you are writing to upper nibble, maybe define that, if we can
-
-> +static __maybe_unused int samsung_mipi_dcphy_runtime_resume(struct device *dev)
-> +{
-> +	struct samsung_mipi_dcphy *samsung = dev_get_drvdata(dev);
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(samsung->pclk);
-> +	if (ret) {
-> +		dev_err(samsung->dev, "Failed to enable pclk, %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	clk_prepare_enable(samsung->ref_clk);
-> +	if (ret) {
-> +		dev_err(samsung->dev, "Failed to enable reference clock, %d\n", ret);
-
-No rollback of pclk here?
-
+Best regards,
 -- 
 ~Vinod
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
