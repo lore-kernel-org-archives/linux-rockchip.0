@@ -4,58 +4,175 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77363C021A4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 16:55:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185D6C021A6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 17:09:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e4+ipTcUEiqN7BY0dO5v3NrAqTuoq5Mn/Oc1I6TSXok=; b=LTan+tIsdUj89M
-	uQZCWrr5lpABUnAETl1cJ0KV+neX/T8Y2okr8sFKh8HxCA2UleYKBhGxCHBq7ZbLSDiCKD9NNeK+g
-	NEf2HmySqSxI/cClh3SINgI/b0WiUBh84679pcoh/A2EKvGt75UciU2AE7rp+/iVtSzk6NXMl8h/S
-	vyOgLYP6aRzuN108ZFpFmGUu2c1zR6qqusRFdr4dVkmXtJjw07eP1AISxbaL0+rzZ9KSvzHWAOYNA
-	k3XX0MQgoefl0fif1tk8SM/ow89sYmKJ7FuNQEMwzGDz8tWcDavyW0jzix1Y0NgM3kNAGUrE2LJ3P
-	uSUAqY9wLXL3KxQHXPQA==;
+	List-Owner; bh=yIbaToFucEDKB7WGE0TqQRNZYZHjOhTtoWQpd/1Cehw=; b=zQobIpkn83OPHD
+	1iGvYMKr2vUPQ4DHa60XpeOUOfoXds9XOmoElhu4pY+KhoXWsqzI3wy6qvBIOezvgxZOXOH3mTfsu
+	pynoJQeyrsYCqih6L/RMPTgSTXBu08nth7xb99itNIZI/dT8D7Z4a5sPB0u4rWlToWMsEq/ToKTgM
+	m6tinS3PXozA784Lk8VOR0UPfGm0KSoyPwfIQEjEBC2Q5CyF+9MDCVBaGPVZCjZR+vzCe5vLl9YRI
+	ZLt3RTP1aC1DHB/BdVAcRwhHO8ZwJCxLM004fkP87ZP4JfRvsKpcTrszhlkWbbielgoy/PWWDpWRB
+	eqxTW/gCjAs+zD+ncVgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiyy5-0000000Fann-3mec;
-	Fri, 14 Feb 2025 16:55:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tizC7-0000000FdP2-0reJ;
+	Fri, 14 Feb 2025 17:09:39 +0000
+Received: from mail-mw2nam04on20602.outbound.protection.outlook.com ([2a01:111:f403:240a::602] helo=NAM04-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiyqX-0000000FZDZ-24d4;
-	Fri, 14 Feb 2025 16:47:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1739551639;
-	bh=Ul8bJcoa1UeRoq+WHpkzGXrCHhO6mwX+QQKOAmstXYE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bnWnExxMRlY8WBeMoWVE9HFeXHHiITdgfr4YGf5kE8U/s4Q7NUuT1tR2upLnzkpNe
-	 KYo2UHQwYKpDq1SPQy0Dx7+slz8mQhkb6BRbCPGSO6oLGIFSbU5M95Liq5WtllmSoL
-	 +kD9QZes8d4zjWGp4QrWTNOapeU1rFr5YxEhVcyiLJXNvkDkwYEYNtJjGWTlIUBYHN
-	 cfuyWStd3ujy9KLNr70yKimu4EqNgZxIXldRwlHDTuyLBFf7FjXE1041ahsjYQpS1I
-	 DEIStI+3QdqCzFURAc3U20Ix6CNXVw2zJoPCT9dqmctGoE68fKe9K+qqd5KE/jECzE
-	 Cvgk3EfgtzU2A==
-Received: from earth.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25AE617E0FBA;
-	Fri, 14 Feb 2025 17:47:16 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND v6 3/3] arm64: dts: rockchip: Enable HDMI0 audio output for Rock 5B
-Date: Fri, 14 Feb 2025 11:44:02 -0500
-Message-ID: <20250214164528.534278-4-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250214164528.534278-1-detlev.casanova@collabora.com>
-References: <20250214164528.534278-1-detlev.casanova@collabora.com>
+	id 1tizAc-0000000FcpZ-10QU;
+	Fri, 14 Feb 2025 17:08:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KS8AFPdY9sIRzysey+W9JEvwpKUORZf+Xp/oKyT18ggygwas20TBqHrfy+8M++lvru8IOpR2G+mLEE/74OIOgFukrGmlSIrlAIDbE0hO0IgtneenVFkQ966XQjF5Q6Wi0WrhZSUzzc1PNRz6vg0GxhEsbAzdd/LUPCGizroJc/UY0tjKplyZ8dQgZrZe3R0yY6EvT793f/wXhTiDD0ulSv95F2kv6SOOvMCMddTbjx2SnRVf75EspDqmn22kjhAeaAv1jggPHyHbffSLtolAITLT4hukcAWcVmVYsnU3yr/ltdOiJbPm9s/93BQUzZeiz0a0eEJox2P/s6w/GajUfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=crLoqiiF/9UUXAPwMK3+epJ8tOtusmUpUxeQoMMsbz0=;
+ b=S16BA44gqc54ALYi7NNAW8ml3zjk7VuZMF+uFbWGBcpxM2bclv3Pb+C2cPRel5aBYHRFFq6I/FpN45VIhXFpLnqs9WDbnf4dbto1Fbjxg3gl7iaxNuejEIa69wbJsJq9OPHB8N9jTHNHQzWrnvfE5IamUKiWUQXGBNYAP00dfVDutWJFmqi46QC6JgwHqFPisaN41pyxkc+8/5nntozS75laSan3vST2Sg+2RhQ8G4EavqBz0fXzBbsFI5G1R6w8y1gdmiwwsgKmkzTEQxWgD+Tv/fJjUxDRXzAmrASAY3+qSYEzmpE97sl02+vz8AEr6iKHw8e/2qZaxlConHsstw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=crLoqiiF/9UUXAPwMK3+epJ8tOtusmUpUxeQoMMsbz0=;
+ b=kQIlAAovwRSXyriddp0FwAoMrnW/VZ+ScWUwojuMqSg4v0chSS5euEA+w0R27HmqaOcGVXk4YwJ8y8GdggI4ZAmwTKclOgLGO3mbsW/gzgLMIaDponwEc5Mz182JlkSiHaxuTR9yhzyqPpPVahue3zWuJyTc83MRV1U/1XodpBozLNDUerWwnE/AjWYYv9ytFtZzzqbrztFhITfz7ieu3gz4njElXxQF/oNDR3aQg7gRp0Ap562yWk3ORrCACN/TpX3ranKVQJwqD6k+IBXmG1WzccBrjyTdLSrVcNAb+hJiZn5vIv2CkuA72THvtHxJJ6PMY49g41rn/IEjwxg0+A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by DS7PR12MB5768.namprd12.prod.outlook.com (2603:10b6:8:77::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.12; Fri, 14 Feb
+ 2025 17:07:58 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%6]) with mapi id 15.20.8445.013; Fri, 14 Feb 2025
+ 17:07:58 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	asahi@lists.linux.dev,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Hector Martin <marcan@marcan.st>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tomasz Jeznach <tjeznach@rivosinc.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>,
+	Joerg Roedel <jroedel@suse.de>,
+	Pasha Tatashin <pasha.tatashin@soleen.com>,
+	patches@lists.linux.dev,
+	David Rientjes <rientjes@google.com>,
+	Matthew Wilcox <willy@infradead.org>
+Subject: [PATCH v2 03/23] iommu/pages: Remove __iommu_alloc_pages()/__iommu_free_pages()
+Date: Fri, 14 Feb 2025 13:07:36 -0400
+Message-ID: <3-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <0-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: MN2PR15CA0012.namprd15.prod.outlook.com
+ (2603:10b6:208:1b4::25) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|DS7PR12MB5768:EE_
+X-MS-Office365-Filtering-Correlation-Id: 640bd7c3-0f82-4dfa-23f2-08dd4d1a212f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/cZFPzpMiUn665erE/ezDsHLV3088rp99R4Js7tNsroQp3AE9d7kDVgkffX4?=
+ =?us-ascii?Q?vg1vSvG9ZBxl/25pbvsHG1c4x8pOymDGuSqfzejJhjtI4DIjmQ/LIYFDwBnQ?=
+ =?us-ascii?Q?tXwJhAdDwUhLpkmmXWCdHubTwYHCnvqtr80xDPOBzzeMItUugTFbU5anLmAS?=
+ =?us-ascii?Q?IVQ+D/a5IIVJZm395Wm7W6e6CNWsycSeOsPCUjFYp4UCnq6x9Kua4VvOkp+6?=
+ =?us-ascii?Q?VeiaBadIs0RsgbvCJgTgZasUaHZVs/PcOneGErT5MwBiHGCPAHnqtNQhnJN6?=
+ =?us-ascii?Q?aTIx2i89FYUcQslrwqkkdUezKg4BQ2uryU2dWF00GRoxyFoti6Q/7V6tnvDD?=
+ =?us-ascii?Q?Es9NbBZAhonzSHovyGhBxdR5FnIt4q4wuWApdCtxKwz1UXCYw5CD+/Coy0Z0?=
+ =?us-ascii?Q?v1cE0cn5S+PfJu0LbvQupiuzKRJWYxs3eceJ7RhVviWbj64edo8H2L10GLJJ?=
+ =?us-ascii?Q?6NdesWeJh8sldSa4R84kEVVOk7hA+iHXV2T2H5rcuVHu8aisydJzJLUJlxBI?=
+ =?us-ascii?Q?huqb1vgr0Yu32gOQN8h9Db/6j1YdGyEiMoFoX6CB9+zJeIoCxpn0FLKTknPU?=
+ =?us-ascii?Q?dRIGWCua63KmhbyNqQjTJHUf1BWWwKOaEyrVrcy7HZ0PPbcSEPeABFoA8+QA?=
+ =?us-ascii?Q?Db6jTyRpDlihvfsrGG9t62I0GcBtNAFVeO+93oRqBgpCksO5zx0sZe4NS3Zw?=
+ =?us-ascii?Q?6uAKvrF1gGliZ2+q0CQd5lhjbpBxl01ZX1sBFS2RiAw/mecV9iqrgxB5b0ER?=
+ =?us-ascii?Q?ZNAKodTlK0OIWNDWQVTt53C19yKYZK+J5eqYS3FMtIyk38GiJZ8Q+yGpMWUy?=
+ =?us-ascii?Q?eHRYvQVkxgYvetIJ4qMjdccn6bzMOYQ7dRUXXru5qItTVeTcfeqQUsYXGKI+?=
+ =?us-ascii?Q?90mzTEEoobk0eyKXfUc5d2DoXH9f10V2j90HdqrzeIXVpmqN5zPNMP5fa7uk?=
+ =?us-ascii?Q?76pFhxTIuX9t/4+T6cs8giCfsLTNwZWWVOyfgJDuM8PyyhfMlG2NZViGf+bT?=
+ =?us-ascii?Q?CX282JUFCm0Fj2EhNfs+AnYsWlQhuXY0YmOCUkifaG/Rw/PXe7DK9HL4km7Q?=
+ =?us-ascii?Q?HdODp97vNTRCPjDd0XDITFEtc/V0TKnAtS5+VRpjKRjD3bXDuseZCed4RsKr?=
+ =?us-ascii?Q?IwXUpz0Wlln1mb+LkcPv/QpIq3pzV9eyfTEiKvWooVvWQeZo4InzospRWRTx?=
+ =?us-ascii?Q?yFKEEAWnZZF12y9GlKy3B8oFOTGPKgldTuT2t/h1+N/bCUegov1FNpoVyb2d?=
+ =?us-ascii?Q?OsdJRTpFX6gHGHLZrbcvKSDsomVDrOgzoGCZtkNLV3UfcV8cZqihorA/qIGR?=
+ =?us-ascii?Q?3lj75QzVcHlyPSVx1gj5/NA2Hux8mKb5YYbHCIgyUdt94HFiRLPI5jJBUsAE?=
+ =?us-ascii?Q?ugyrZaG3yZjnzUNplAqW9T4Q9l2oeQrRbwR8PV4T/mt9ZNl+YtyceHKwKPsc?=
+ =?us-ascii?Q?rt7KrujLzPI=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XDRFb6+BdSXytbS5fFwRPEzZXKITa85tIdTIRVrEqMihV6sixBz1vAIq/Oke?=
+ =?us-ascii?Q?tna9ort2HTEb09y7wyNhh7rKXS50+Nd15hParWIdYOtE757tb3RxhCj6YAAD?=
+ =?us-ascii?Q?U4MG6liZq/CONd5Ln9hrkAMtz5tDLRGmzIjiqeMPZI9d8e3PB19+tyNcAuo0?=
+ =?us-ascii?Q?ByAE5lXOKnfgeSOvmlAR9sx+zS62i31JoIWrChAOrHrd3TBWMjRuCRs1DRka?=
+ =?us-ascii?Q?7g9B9c5r33xEWRHqUDSCx3sl2iusMJ0WrIgTL24BvJgPHAHxB5yLacSLPIGg?=
+ =?us-ascii?Q?mXyWtkfXiZQca+rh9w0JiyHCkuPiue8uBa+8m8ec1o551VdznlD4xrS9jhTf?=
+ =?us-ascii?Q?kWRSTgTH2fyvKhG5AcrI2TWXENqBmlnUi6mK4Hl3t5lDWOyHTxtEs6DT9WZM?=
+ =?us-ascii?Q?TSSDbtOKz5stTX1zF1Diav+NzNfRbqsuhU/KfIfnZtbR1yGwbkfJlswevzEm?=
+ =?us-ascii?Q?k7c7A2iqXRVAZ/i/MJ9bdEGMnO0hpZM9qS1rUIAEStddxh6z64hAcOkui1B9?=
+ =?us-ascii?Q?lU5BTmQ16S4YL1dYDN4VH4iWCAZGdzgSX2BC+N4AXVp8QCTUiwKPpuaDZF4y?=
+ =?us-ascii?Q?5CDkBz8BKbJuC4T6ca4bQjF95B/4Bl4E38Hwt/B6hUQOf3MQgNe5xCAbhZ+x?=
+ =?us-ascii?Q?XOqxdl/ZzRFsNTDSEudmGOqDTMj7WKZn0x0Fj8357iPuVnTWa2iQ+DmOmmwK?=
+ =?us-ascii?Q?Der64UrVap/v216BZtIeIOBy2pFdPw+anz/Zr5U4E7gmnWZwTlB7aD9Nj5jh?=
+ =?us-ascii?Q?M8jLqMMAju+eZ6WxJyTZEONARqStOZUtSMRKsizox8G0jozXND8Fi34vMfRS?=
+ =?us-ascii?Q?VS6XWaavD8k25zjzhV6/Ut7JTLU/z0AJsheaS3gqu2ygmr9Vf8bBrMjXDGru?=
+ =?us-ascii?Q?xcWvd95TptltEOZQMhcZECY8PL1QUYZtbbZAKiGLUQEsnf5AzjARded1zlQZ?=
+ =?us-ascii?Q?erXkNC8ERK1svrN/O3laeRxgDwyTscNwhnUnXdgID7Ey/QQjpbrRmB1JFwh5?=
+ =?us-ascii?Q?8LksSUrWsvMSO+5xFaIjuxAPf4UoIT9i1PsiD5rTdUoJUDjsw/XXaVkWXe/s?=
+ =?us-ascii?Q?ivXnD5hkX83hSe0VylLWX5HHgjmcdsMjq8O8vPxcKAf/wBRfFrupTVjOHxKY?=
+ =?us-ascii?Q?oSuJCiPL7saXsRMy4qSHktSNCkN7MhgLV3UUX6SyMkXo8oOjMMKuoC/DYYaN?=
+ =?us-ascii?Q?ymnaZUZPeKM0sKMLhujcxNtTLYMpn39Ed51VDYERBJkct3ZG14q3DAJByhLX?=
+ =?us-ascii?Q?Lw6BlcUTw57khfebA+D3qKwqbzxqx8ceU+yyWAiXDesL8jqb7j+uC5gLSY2e?=
+ =?us-ascii?Q?1PLR1aZQZT65av+WyabJoH5YDAG2QO3R/uKGx5rURUbtWSSIUDj6jTwpYOpu?=
+ =?us-ascii?Q?cSNug6H4z98XyGWlrkJZQtn7RE33zMCyTbr4rfchlVjJrfwcOUlxkD2+uwK8?=
+ =?us-ascii?Q?bdnwVxpOnjdiAu2TNAdBQX2xq9m+ITu+uRKpqYIPnigfBzGa6/KIw3lAgWkW?=
+ =?us-ascii?Q?eMWYLqUftMYHlSQquav3PHwGgXBvE9Wg6kCi2k80Fa+mLt9H3bd4ML8wE1G7?=
+ =?us-ascii?Q?EgRwjRzkUjioWVKsJuc=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 640bd7c3-0f82-4dfa-23f2-08dd4d1a212f
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2025 17:07:58.0114
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: kOKdJuFSbqDuzjLH/sdawxVGcxf57kcyfAGJ0wkYhz6hxLgLBbX35GajK5KgowLr
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5768
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_084721_702937_6248B674 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_090806_281038_B6470C1E 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,49 +184,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Quentin Schulz <quentin.schulz@cherry.de>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-HDMI audio is available on the Rock 5B HDMI TX port.
-Enable it.
+These were only used by tegra-smmu and leaked the struct page out of the
+API. Delete them since tega-smmu has been converted to the other APIs.
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+In the process flatten the call tree so we have fewer one line functions
+calling other one line functions.. iommu_alloc_pages_node() is the real
+allocator and everything else can just call it directly.
+
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/iommu/iommu-pages.h | 49 ++++++-------------------------------
+ 1 file changed, 7 insertions(+), 42 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d597112f1d5b8..88ff5d9db2817 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -204,6 +204,10 @@ &gpu {
- 	status = "okay";
- };
+diff --git a/drivers/iommu/iommu-pages.h b/drivers/iommu/iommu-pages.h
+index 82ebf00330811c..0ca2437989a0e1 100644
+--- a/drivers/iommu/iommu-pages.h
++++ b/drivers/iommu/iommu-pages.h
+@@ -46,40 +46,6 @@ static inline void __iommu_free_account(struct page *page, int order)
+ 	mod_lruvec_page_state(page, NR_SECONDARY_PAGETABLE, -pgcnt);
+ }
  
-+&hdmi0_sound {
-+	status = "okay";
-+};
+-/**
+- * __iommu_alloc_pages - allocate a zeroed page of a given order.
+- * @gfp: buddy allocator flags
+- * @order: page order
+- *
+- * returns the head struct page of the allocated page.
+- */
+-static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
+-{
+-	struct page *page;
+-
+-	page = alloc_pages(gfp | __GFP_ZERO, order);
+-	if (unlikely(!page))
+-		return NULL;
+-
+-	__iommu_alloc_account(page, order);
+-
+-	return page;
+-}
+-
+-/**
+- * __iommu_free_pages - free page of a given order
+- * @page: head struct page of the page
+- * @order: page order
+- */
+-static inline void __iommu_free_pages(struct page *page, int order)
+-{
+-	if (!page)
+-		return;
+-
+-	__iommu_free_account(page, order);
+-	__free_pages(page, order);
+-}
+-
+ /**
+  * iommu_alloc_pages_node - allocate a zeroed page of a given order from
+  * specific NUMA node.
+@@ -110,12 +76,7 @@ static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp, int order)
+  */
+ static inline void *iommu_alloc_pages(gfp_t gfp, int order)
+ {
+-	struct page *page = __iommu_alloc_pages(gfp, order);
+-
+-	if (unlikely(!page))
+-		return NULL;
+-
+-	return page_address(page);
++	return iommu_alloc_pages_node(numa_node_id(), gfp, order);
+ }
+ 
+ /**
+@@ -138,7 +99,7 @@ static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
+  */
+ static inline void *iommu_alloc_page(gfp_t gfp)
+ {
+-	return iommu_alloc_pages(gfp, 0);
++	return iommu_alloc_pages_node(numa_node_id(), gfp, 0);
+ }
+ 
+ /**
+@@ -148,10 +109,14 @@ static inline void *iommu_alloc_page(gfp_t gfp)
+  */
+ static inline void iommu_free_pages(void *virt, int order)
+ {
++	struct page *page;
 +
- &hdmi0 {
- 	status = "okay";
- };
-@@ -318,6 +322,10 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
+ 	if (!virt)
+ 		return;
  
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
- &package_thermal {
- 	polling-delay = <1000>;
+-	__iommu_free_pages(virt_to_page(virt), order);
++	page = virt_to_page(virt);
++	__iommu_free_account(page, order);
++	__free_pages(page, order);
+ }
  
+ /**
 -- 
-2.48.1
+2.43.0
 
 
 _______________________________________________
