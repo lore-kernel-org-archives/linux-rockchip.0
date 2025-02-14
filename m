@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD0B2C021A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Feb 2025 21:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2BBC02198
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 08:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=c2jJZFboTmdMfyIahDVLb2WrFKXMC5vHguJlGRDSVFM=; b=TL+h7lZut74q8c
-	nY664myUt8JP3ZunIxw46FOCT8ZS1hw/+kx+/s0k4GCUjOZcyDfzs1Iw2ykBjK9tRthoLufSeOnau
-	SQz44V8FvvR4DjzGRmEDiupnvLuDEXdhg56EyyWWRaBOud2HoGFdAABV4s+s8P1P3SGdLZaJ/ENkX
-	0xgfNBNTVzbVLhdEFdyaR57sOJtdw6tuWGJ4NXI+NKy7813a4MuYFFhACoJZBqp4SKFdExkDqHVkL
-	FANPWpGD69LjUrReOhtbrLBwJLpsAKwbI8zQ1kCAjJJJH2JqsiCWia2RGWzCsyIiwequjfNolXsDS
-	MyJaFSGB3Z7W9heozwPA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FdMXNz9+E3Gmm7KEidUJsUgWP+fVSgidTCUULd9GIOQ=; b=itqmFXG8y3NvA0
+	6HhDrITMepwjnPjMdgzbayEzQkVGCjycm1KHjR3ELcdXHtYGuT0sQYCYbAUW8D0ZVDp7YJSJIPsjn
+	8s5MxlIhI9IP1c7nFDI4XkWCtyqxoP+XT//lDLJ7+XO1JwosysD3x81ZpJf3bt72k8aJbFL//aeog
+	jBU70d0a+/G4UVIeXPN3U8khGzD4bZo0tPgggB5SYcuY3EN+Oc3KeTFOKf8j2kefu7G1JN5fXHTqY
+	bsWNdW7o2Jd8JLk8ANnvPK30jkdiaM+BpliYbAOOkqA4n87USW27QgJvszg+OK9glPVD9bAup6Igp
+	89loyulhYsem83z3OjVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tiged-0000000CghN-3KQ3;
-	Thu, 13 Feb 2025 21:21:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tirBJ-0000000E952-3Nks;
+	Fri, 14 Feb 2025 08:36:17 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tigec-0000000CghD-0QHx;
-	Thu, 13 Feb 2025 21:21:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=AAzGpmQaLH7sVclaZm3nGvic6C3AJbqc+WlMSefsOAw=; b=Qx4W4KWKiwfCjJV3G2gWh6xBO1
-	uNKN7ZuqHeYNmJCUOBbE4p/93XLSvKJDnO4HI/vSZ1C29cNg8jADZM17m2lHuHeRk2ZCA2Ycd7CKK
-	uYUe0Q8oEHBCaETuc60d0JswnfipZGigk4m/GIZBlOjlB+f4UUvB3kAEJB+EYsp+jaWUSJ5MNkQQC
-	4U4dzIRFcGh6QcTeVsP+u+YsOghGJhNwyo51Izyh1XbZCAYv3uLxBaEC4Tfe1tLjJdcGkMDJBmIpo
-	y6T755N0XuKqQKqUN7UV5jvMmAoYH+AA6qB9cB8dcigD1w1GLy8qlbvjvXLPk7drzfboHRIICxvfj
-	AjsnBBtw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tigeX-000000016fm-1ssf;
-	Thu, 13 Feb 2025 21:21:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=AAzGpmQaLH7sVclaZm3nGvic6C3AJbqc+WlMSefsOAw=; b=vyZw3DCpxWNkwL091vItEM+22M
-	UXlSTnznfZkHIUA0IPp4tLhY0gTIaiwFIcxizxaDmumUHi9rKvSfJRJAp5C9xbscr5WNCg7Tjkc83
-	Ii79BJBYzDa8oZ0Sv9j6c26DQJ4hMoqL63fwBTrTy7g72EPPq9WazoU8+eI/1iCc4VYxCnO6DAR/c
-	rLZuFmlc7GNtQ4Rsiqgyf8hto/shVd8fmmpaHVP6sPNf93Z17wIrOt48qKGn41Zxqz6zSTF0wbyHV
-	mUWtnYOuQtsNLWE3nWOrsfF8w3z9t9w+7GWTZglJUf7U8suVFNcqr4yZFUlyZ7s6LqTT8+SAquz02
-	hHi/C91w==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tigeT-0006eG-VR; Thu, 13 Feb 2025 22:21:42 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 6.14 #1
-Date: Thu, 13 Feb 2025 22:21:41 +0100
-Message-ID: <3004814.3ZeAukHxDK@diego>
+	id 1tir7Q-0000000E8Qz-0De8;
+	Fri, 14 Feb 2025 08:32:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1B612A40DF2;
+	Fri, 14 Feb 2025 08:30:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FBABC4CEE2;
+	Fri, 14 Feb 2025 08:32:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739521935;
+	bh=tN0i1b2Ryo0EmqvdxJO9z1k6BEAOIIN5zWxqbfV8Kcs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SfSACwOFvN5KyJiGTJqktnaWcX+SReQU4KYs6iAqH4s+/mrv+SSAVc1pK1U7lNkti
+	 gWukz6DpiK91mpEqJ75i9hS2rm6AnQ/RK4ktEz9MlGk8uO7JgX5G9NjtJa9/gV2yPp
+	 YK95AGwC0zTSpwC0woI2ZVPHjWqoMGhPrKaABi108etXJ43b71cLsZzDpe0Bp4WbKw
+	 58XIztO7Z3y1+lnF2yoYdszq2HMaxd1zPPvlYO0iKDcgEamFah14e+1CT+S8mWnOVo
+	 3StLEcFoeUgDPDt5pOmJRl1m7DMK4Ndspc72aN8efgaqqRgaxusNPv/fruSjqXv/27
+	 vMJH8H2MTcboA==
+Date: Fri, 14 Feb 2025 09:32:11 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>, 
+	Jonas Karlman <jonas@kwiboo.se>, Chris Morgan <macromorgan@hotmail.com>, 
+	Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>, FUKAUMI Naoki <naoki@radxa.com>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Weizhao Ouyang <weizhao.ouyang@arm.com>, 
+	Elon Zhang <zhangzj@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, 
+	Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa ROCK 4D
+ board
+Message-ID: <20250214-sophisticated-toad-of-cleaning-e9c359@krzk-bin>
+References: <20250213145921.133412-1-detlev.casanova@collabora.com>
+ <20250213145921.133412-2-detlev.casanova@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250213145921.133412-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250213_212147_029394_0FCC8DFF 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20250214_003216_152550_A4E25CF8 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +81,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+On Thu, Feb 13, 2025 at 09:57:15AM -0500, Detlev Casanova wrote:
+> The board is based on the Rockchip rk3576 SoC.
+> 
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 
-please find a below some fixes for the current release 6.14 cycle.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Please pull
-
-Thanks
-Heiko
-
-
-The following changes since commit 2014c95afecee3e76ca4a56956a936e23283f05b:
-
-  Linux 6.14-rc1 (2025-02-02 15:39:26 -0800)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.14-rockchip-dtsfixes1
-
-for you to fetch changes up to 8546cfd08aa4b982acd2357403a1f15495d622ec:
-
-  arm64: dts: rockchip: adjust SMMU interrupt type on rk3588 (2025-02-11 21:28:13 +0100)
-
-----------------------------------------------------------------
-Fixes for the IOMMU used together with the PCIe controllers on rk3588,
-some board-level fixes for wrong pins, pinctrl and regulators, and
-disabling DMA on a board where the DMA+uart causes the dma controller to
-hang, as well as improved network stability for the OrangePi R1.
-
-----------------------------------------------------------------
-Alexander Shiyan (1):
-      arm64: dts: rockchip: Fix broken tsadc pinctrl names for rk3588
-
-Andy Yan (1):
-      arm64: dts: rockchip: Fix lcdpwr_en pin for Cool Pi GenBook
-
-Heiko Stuebner (1):
-      arm64: dts: rockchip: fix fixed-regulator renames on rk3399-gru devices
-
-Lukasz Czechowski (2):
-      arm64: dts: rockchip: Move uart5 pin configuration to px30 ringneck SoM
-      arm64: dts: rockchip: Disable DMA for uart5 on px30-ringneck
-
-Niklas Cassel (1):
-      arm64: dts: rockchip: disable IOMMU when running rk3588 in PCIe endpoint mode
-
-Patrick Wildt (1):
-      arm64: dts: rockchip: adjust SMMU interrupt type on rk3588
-
-Rob Herring (Arm) (1):
-      dt-bindings: rockchip: pmu: Ensure all properties are defined
-
-Tianling Shen (1):
-      arm64: dts: rockchip: change eth phy mode to rgmii-id for orangepi r1 plus lts
-
- .../devicetree/bindings/arm/rockchip/pmu.yaml      |  8 +++++++-
- .../boot/dts/rockchip/px30-ringneck-haikou.dts     |  1 -
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |  6 ++++++
- .../dts/rockchip/rk3328-orangepi-r1-plus-lts.dts   |  3 +--
- .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dts  |  1 +
- .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi |  1 -
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |  8 ++++----
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi      |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 22 +++++++++++-----------
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 22 +++++++++++-----------
- .../dts/rockchip/rk3588-coolpi-cm5-genbook.dts     |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |  1 -
- .../boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso  |  4 ++++
- 13 files changed, 50 insertions(+), 37 deletions(-)
-
-
+Best regards,
+Krzysztof
 
 
 _______________________________________________
