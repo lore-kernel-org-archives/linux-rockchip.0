@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92107C02198
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 19:07:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13C63C02198
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 20:09:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=cWqAJDb5ET5s1L8a+ydSBH2W/+XUtAcwvBOe01b8P+E=; b=cef
-	a5vlcBplLc9jAo0BVzJ2qsRxkhrxpXeUp53rIflmBm5/yTdwtqGONE03nHCZgSJU4uUeswCgC1vJT
-	widFMp2eA77+KPSjGDH3PVagE9cqEIwyCQMXbvNyPb4XDBC5hv1Wpog7ky1LWv596K+woPtqxRVyT
-	hpz9zr1hH/OFJ0gsWcu+vS/YGFUvjA+o0nQzOWEa1fZp643CfRjdgBi8YtwyrhnWH1ZIpP8MR3oUr
-	fCDxuQrtySjT1JTEI7e/Lyd+bmyYAMoKXuqnX/hMpCUwVTsHk00MI2d+LtXZ1zdQfAjUSU4Mn9J8F
-	lNs6EKsvfm7sCFUc0YX35lC5i8uONGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FIzBPt7bd8LK7xjwVngNauJcgteHEUqATWiVyZuzdNY=; b=kyby9yYZd40pdF
+	ZAfniN78yOOen4jlXmkZnQmUC1Rk+EEXyLdbpLmGLZ+XkE5g6ZlXh1PKPz5gj5Sl1rtph237QF6rR
+	ZqLhK9LSjpMgM7GpJwVGpD5wKGHMKt5tvvjZXGqiXuWOm0NLF+9Pi8mrUzmFWbiLQVB+FOq/pVUWq
+	xLwCbqiHhPM6PWMIQcVy4pP5bYXEGpFipEdFMN+jWONG8R98GL+SCiBY7xVXoHPF++/ieN7+uIzsb
+	UsKUSAA4PK8gKt7tG/3pqDon0eqK4AmtoakebwkBJByZwSoHU+ghNkXJipOQLM249BDSyQF5OsiRd
+	BD3CHyN0uzjJWFDyZOww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj12P-0000000FyzV-3Gsf;
-	Fri, 14 Feb 2025 19:07:45 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tj1zq-0000000G7wS-38P9;
+	Fri, 14 Feb 2025 20:09:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0cj-0000000FuT7-1gJz
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 14 Feb 2025 18:41:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:To:Subject:Message-ID:
-	Date:From:MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=; b=N0B0dOQ5ZxKUVhjxGsFwx4VOwL
-	5ojqylONpUsHEvFfdMyNx+wgMfL7NQ0ufUxbFc77zznApfL4siWkzrBtb09pPb/hRYiIM5uZth7qZ
-	y1xIY7PymmrCIvQ4TSs7PTxXGNN4bLLlCfrLx0p/k2LSk8wA1rPCmL9HkSXpzwCz5L9ELlXsAPtA3
-	79UFSR+S1V82ze0V91gD3IJUm9ZG/R/RbDhau9nMHQvL1ko3Sp9sFQS2HG7Ae2HqkR8B+t2lB4RF1
-	arScVWALuztOyUSdFfeY448dEiadZD/X780pu9fISzaWHqW9aBt9iLu+5cvwJ+JMJWmk9QBj+LsiA
-	eKJqtNxw==;
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj0cf-00000001JcC-3yvj
-	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Feb 2025 18:41:12 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-220c665ef4cso36182515ad.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 14 Feb 2025 10:41:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739558467; x=1740163267; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=;
-        b=hF7g3YqAW0sEwMWbWHUbZv6j6sVjCBRQ2PgjTN99mBcX184IK20x5Tlw1xuC1UF/qW
-         xxMK6BiRRbsQetR7wVoLaVREVi0xJkUDA2/x20I/k+XqXWUjMrhR8b5jBcq0FRnF017Y
-         Y1osWxmyvvEePS9MevwNua6ZtWDdNXeD5tbPNeyNihVp/3CwNLoAgbYJWFxXlVaxXCaj
-         dzSWd8Nf/9MKVEoMF1gyiU4+YmbwhA6Oun7BGBzYS1FrKQhhZJENROGshpSuOGw+mv+8
-         AjbrHVyqqu9dEUQeooszWcdDmdfLHvbbXcuF3OM5SAnQjrYxkUUYOrKCk7L44UmWaaHQ
-         FyLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739558467; x=1740163267;
-        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=m6cf5PVfeCpsAcYvQDR4LO/T0BQBmqx32cHSY4EQyQ4=;
-        b=JRNblPcKHnsnPKAnPMxmOOFJVhE9dCsxMCPqWHM7KaJHcdbU3/1PMXPPFhI1VXJEHv
-         JTh+matjEwsZpWYwa19F75Zo09xnTemW+BhHamqxvXSM2dV1PpogA+8G2u1wbi8ylSGE
-         32yeCxsOmDkBeSq+TI78xL78Rr3eSAN7yk1QzRhlQOCOD/tVI4qUt2+P7VST+lCEnP+I
-         920CbbwmRRK4EGf9z/4Y3QyY0AKiZAuAYcYoZnpmFwdI3/Xh5KXHtaMWTIeH/E6HeONm
-         1grsVfi4uMa2jkgMj1scMDuWCGllVlKqzzXWdADoG0oSg6WRz0DncBoCuERSlZUg2gnM
-         TdcA==
-X-Gm-Message-State: AOJu0YwZ+SRRpUA48y+t8wP+7SKU0N9BC80qBpZqkKP2sdfc8O7IN9yd
-	C5jYus+kxaMl/A+1PGQuJOwt8VdJwzTVa/cb2zrnACxOft22oxzGeJkXwnenpT9J6tYbarSKA94
-	FeQMaXKX9LwIdI1YKej6Cq49mlpjflDXt
-X-Gm-Gg: ASbGncszuIzrvCuUsJZUnHHO/nh+eVMXcBz8k07ccDbhPaT64R+QHwEyAUChB05ZDv3
-	snOGZcqLdgQXcrSp4V/wmzJpSw57ObOZJTqOxAd7Ff+/GidbgIkTfHP+JexbbqkxhQ9ViSuTr
-X-Google-Smtp-Source: AGHT+IFPD1/KCMZbS9HCdzF4XslJe0bB50PWlvWJ3XBFfmtUnyvzOD63F74MgSZy4Rs36ET2I9Cv/y6Fp0VwGixCzr8=
-X-Received: by 2002:a05:6a00:3c84:b0:730:98ef:30b5 with SMTP id
- d2e1a72fcca58-732617741a4mr718556b3a.5.1739558466878; Fri, 14 Feb 2025
- 10:41:06 -0800 (PST)
+	id 1tj1yO-0000000G7mn-3RKl;
+	Fri, 14 Feb 2025 20:07:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=3gA+i0CmP9DnNBxjfP0Se+gQOkkXX1tuBuCnmXo7jZk=; b=h2oPIxc5LSQ9HrqIpwYraIWK2d
+	OVZnGGtUhj1zTYD3LrBiEDjWwkR36EKaperNnbYz9XKgtflB4ct53f7MvAUPjNtySI0+yXdYXgcbY
+	g+16clC//0zdgygviKbeJkmU0asTKPLnMGeCNhAP5MKNFGHgJXuqBziRG9q3u+/pHVO+59fNPbZ4n
+	eraqJTdMJyI62Zb6EE28ucaE/YHoxiUHijc5KzLiDu2mVn8MjlZCBeQxda/5fqqNO44ps1ppPPDBd
+	OTnibedW2U6c6ESyD5jKyBA2I+RuplsWZU26A/ORoPDNb/w1oyRZkZZRlVe9iewvru+SRalFMYpRh
+	o1Fw296Q==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tj1y0-00026P-Tb; Fri, 14 Feb 2025 21:07:16 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>,
+ Tim Lunn <tim@feathertop.org>, FUKAUMI Naoki <naoki@radxa.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Stephen Chen <stephen@radxa.com>, Elon Zhang <zhangzj@rock-chips.com>,
+ Alexey Charkov <alchark@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ROCK 4D device tree
+Date: Fri, 14 Feb 2025 21:07:15 +0100
+Message-ID: <2629121.1xdlsreqCQ@diego>
+In-Reply-To: <20250214152119.405803-3-detlev.casanova@collabora.com>
+References: <20250214152119.405803-1-detlev.casanova@collabora.com>
+ <20250214152119.405803-3-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-From: Ramon0000 <ramon00c00@gmail.com>
-Date: Fri, 14 Feb 2025 19:40:55 +0100
-X-Gm-Features: AWEUYZkdQTHz0_gsSCDfMx7XK1O2im4uxcRGJLn0K_tmpmXXa4pUpGM8SVXfXvw
-Message-ID: <CAG-UM5EbD7eJPO7+rRnZsV4mPfeFbtGmz18+23P1ZJgdqpFdAg@mail.gmail.com>
-Subject: rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
-To: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_184110_161294_F1DF161C 
-X-CRM114-Status: UNSURE (   3.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_120740_884732_8086B25B 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +83,151 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As originally reported here: https://github.com/openwrt/openwrt/issues/17923
+Hi Detlev,
 
-I own a NanoPi R4S - FriendlyELEC WiKi with RK3399 SoC and recently
-update to  OpenWRT 24.10.0 (kernel 6.6.73).. However now if I do a
-reboot it generates:
-[ 0.936433] rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
-while with the previous 23.05.7 (kernel 5.15.xx) it rebooted fine.
-Power cycling clears the error.
+all the style nitpick I'd changed myself, but the cpu-supplies did throw me
+off, see below.
 
-Seems like a reboot does not reset the state then subsequently the
-training fails.
 
-It does seem a patch is already available:
-https://github.com/armbian/build/pull/6057
+Am Freitag, 14. Februar 2025, 16:19:34 MEZ schrieb Detlev Casanova:
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> new file mode 100644
+> index 0000000000000..822abb82fae40
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> @@ -0,0 +1,650 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2024 Radxa Computer (Shenzhen) Co., Ltd.
+> + *
 
-Can this be included in kernel?
+empty comment line can probably go away
 
-Ty
+> +	vcc_12v0_dcin: regulator-vcc-12v0-dcin {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_12v0_dcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
+> +
+> +	vcc_5v0_sys: regulator-vcc-5v0-sys {
+
+alphabetical sorting, by node-name please, so
+regulator-vcc-3v3* comes before regulator-vcc-5v0* etc
+
+Goes for all regulator-* nodes of course.
+
+> +	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_3v3_pcie";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		enable-active-high;
+> +		gpio = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
+> +		startup-delay-us = <5000>;
+> +		vin-supply = <&vcc_5v0_sys>;
+> +	};
+> +
+> +	vcc_5v0_host: regulator-vcc-5v0-host {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_host";
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		enable-active-high;
+> +		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&vcc_5v0_device>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb_host_pwren>;
+
+both of the above, alphabetical sorting of properties please
+
+> +	};
+> +};
+> +
+> +&cpu_l0 {
+> +	cpu-supply = <&vdd_cpu_lit_s0>;
+> +};
+
+What happened to the supplies of the other cores?
+cpu_l1 - cpu_l3 probably need the same reference as above.
+
+Who is powering the cpu_b* cores?
+
+
+> +&i2c1 {
+> +	status = "okay";
+> +
+> +	pmic@23 {
+> +		compatible = "rockchip,rk806";
+> +		reg = <0x23>;
+> +
+> +		interrupt-parent = <&gpio0>;
+> +		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
+> +
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pmic_pins
+> +			     &rk806_dvs1_null
+> +			     &rk806_dvs2_null
+> +			     &rk806_dvs3_null>;
+> +
+> +		system-power-controller;
+> +
+> +		vcc1-supply = <&vcc_5v0_sys>;
+> +		vcc2-supply = <&vcc_5v0_sys>;
+> +		vcc3-supply = <&vcc_5v0_sys>;
+> +		vcc4-supply = <&vcc_5v0_sys>;
+> +		vcc5-supply = <&vcc_5v0_sys>;
+> +		vcc6-supply = <&vcc_5v0_sys>;
+> +		vcc7-supply = <&vcc_5v0_sys>;
+> +		vcc8-supply = <&vcc_5v0_sys>;
+> +		vcc9-supply = <&vcc_5v0_sys>;
+> +		vcc10-supply = <&vcc_5v0_sys>;
+> +		vcc11-supply = <&vcc_2v0_pldo_s3>;
+> +		vcc12-supply = <&vcc_5v0_sys>;
+> +		vcc13-supply = <&vcc_1v1_nldo_s3>;
+> +		vcc14-supply = <&vcc_1v1_nldo_s3>;
+> +		vcca-supply = <&vcc_5v0_sys>;
+> +
+> +		gpio-controller;
+> +		#gpio-cells = <2>;
+
+alphabetical sorting ... gpio* farther up please.
+
+
+> +&uart0 {
+> +	pinctrl-0 = <&uart0m0_xfer>;
+> +	status = "okay";
+> +};
+> +
+> +&combphy1_psu {
+> +	status = "okay";
+> +};
+
+phandles also sorted alphabetical please
+
+> +
+> +&u2phy0 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy1 {
+> +	status = "okay";
+> +};
+> +
+> +&usb_drd1_dwc3 {
+> +	dr_mode = "host";
+> +	status = "okay";
+> +};
+
+Thanks a lot
+Heiko
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
