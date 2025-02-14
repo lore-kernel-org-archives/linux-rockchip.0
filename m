@@ -4,67 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2BBC02198
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 08:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E1CC021A4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 09:48:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FdMXNz9+E3Gmm7KEidUJsUgWP+fVSgidTCUULd9GIOQ=; b=itqmFXG8y3NvA0
-	6HhDrITMepwjnPjMdgzbayEzQkVGCjycm1KHjR3ELcdXHtYGuT0sQYCYbAUW8D0ZVDp7YJSJIPsjn
-	8s5MxlIhI9IP1c7nFDI4XkWCtyqxoP+XT//lDLJ7+XO1JwosysD3x81ZpJf3bt72k8aJbFL//aeog
-	jBU70d0a+/G4UVIeXPN3U8khGzD4bZo0tPgggB5SYcuY3EN+Oc3KeTFOKf8j2kefu7G1JN5fXHTqY
-	bsWNdW7o2Jd8JLk8ANnvPK30jkdiaM+BpliYbAOOkqA4n87USW27QgJvszg+OK9glPVD9bAup6Igp
-	89loyulhYsem83z3OjVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zy/b5jnFXdEFc0wyxqPkKY6/8thgzruAgbXrXtFZftI=; b=zvcZ7LC9R0cXZ55/LSYCcYQD/S
+	GjsAujmrlPV3tGO2CxcyI9comVGP6R0lKbT3s+CwbEuhwt8G5vaYKwPn7U+wIknBId942Par+IOh3
+	WcX5/y/4z2Sm/Fb2bK6HKN8INYGoGnhtRXW8MM74Bs8+0kXxLuyPdO7zNpWRpufQ2T3WL0sHwmQTc
+	XnSkZfD3HYDeo5o08/dEzedzucru33X95Z3JP5r3ZlkjE+tx44SmEROIPyjSFrLRqsSoob/R7YjAA
+	hLA6GkEEPU8NYW1r8d8AunxLSw+1kTY2oLB9Rc7rgLwLKOsXfoPju7cznxAxnJldvNzhTRnEgWG9r
+	47SzTB4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tirBJ-0000000E952-3Nks;
-	Fri, 14 Feb 2025 08:36:17 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tisIv-0000000ENsk-1By4;
+	Fri, 14 Feb 2025 09:48:13 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tir7Q-0000000E8Qz-0De8;
-	Fri, 14 Feb 2025 08:32:17 +0000
+	id 1tisF4-0000000EN8w-3lDZ;
+	Fri, 14 Feb 2025 09:44:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=21tqIdPM7MMDZGQ0+y3MH3C18hS595+a3Ckf07v6s8I=; b=JrcY/XRilv/uUzypMM6YdfMSYF
+	gKmESuduTIXmtw4Ir1//AHOhUFAnRxxofjyhrwKKTthJhqx6M5Uj6plOEyvh5EJErkpn0wbQZX958
+	xAdrd5lqiHaDJud+POwxQi3hXt9xI8OulV9NQRtP3wNUh17tgq2vGH9knJepBPANO6Q6gOQ6qRbiO
+	DdC9mhoePJW9c7m/VjaJda/qR+kYyI8jS9+BO9iASrgslN0e+URoAMAYnL9aN5VvZs61WZ1jA0kNX
+	btnwckiICgHGKH+mJyjnISJvbWuhfPGsA4XYWSwuA8bpVjYO+XNGyw0yq7AAiyvE60QgJB/5YQ9TG
+	ccKQOuUw==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tisF1-00000001DYb-3Q8K;
+	Fri, 14 Feb 2025 09:44:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1B612A40DF2;
-	Fri, 14 Feb 2025 08:30:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FBABC4CEE2;
-	Fri, 14 Feb 2025 08:32:14 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 334F5A42555;
+	Fri, 14 Feb 2025 09:42:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C057C4CED1;
+	Fri, 14 Feb 2025 09:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739521935;
-	bh=tN0i1b2Ryo0EmqvdxJO9z1k6BEAOIIN5zWxqbfV8Kcs=;
+	s=k20201202; t=1739526247;
+	bh=euxH5xTB3npndNEOhGf9KR+p/1GlHm5dq8S6R5vtFvg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SfSACwOFvN5KyJiGTJqktnaWcX+SReQU4KYs6iAqH4s+/mrv+SSAVc1pK1U7lNkti
-	 gWukz6DpiK91mpEqJ75i9hS2rm6AnQ/RK4ktEz9MlGk8uO7JgX5G9NjtJa9/gV2yPp
-	 YK95AGwC0zTSpwC0woI2ZVPHjWqoMGhPrKaABi108etXJ43b71cLsZzDpe0Bp4WbKw
-	 58XIztO7Z3y1+lnF2yoYdszq2HMaxd1zPPvlYO0iKDcgEamFah14e+1CT+S8mWnOVo
-	 3StLEcFoeUgDPDt5pOmJRl1m7DMK4Ndspc72aN8efgaqqRgaxusNPv/fruSjqXv/27
-	 vMJH8H2MTcboA==
-Date: Fri, 14 Feb 2025 09:32:11 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>, 
-	Jonas Karlman <jonas@kwiboo.se>, Chris Morgan <macromorgan@hotmail.com>, 
-	Kever Yang <kever.yang@rock-chips.com>, Tim Lunn <tim@feathertop.org>, FUKAUMI Naoki <naoki@radxa.com>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Weizhao Ouyang <weizhao.ouyang@arm.com>, 
-	Elon Zhang <zhangzj@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, 
-	Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Radxa ROCK 4D
- board
-Message-ID: <20250214-sophisticated-toad-of-cleaning-e9c359@krzk-bin>
-References: <20250213145921.133412-1-detlev.casanova@collabora.com>
- <20250213145921.133412-2-detlev.casanova@collabora.com>
+	b=QKgThIZQsDXvHi250nXVACftNulY+hDA56lG4gV0mWDqpQmEI/IeByxEkZ30VumCF
+	 L+r2W1g/8OTElc/khx4mIaSFrKtauo7k7wzOS5jT9SBbtUlYjgOkI86coP9+s3NYwT
+	 y3Pkf0q3FPGmXw9gDN2jBCwdfFjlwHIM6NMKxRNfAHvOj6MfdWa4J64sZrCZ+2mWp8
+	 rvLAPOGA4lz6JczHmcz0aTOHczOZk73pBCHAN90DCEiXiuHnMIe8lrWw5JBzcFdPvS
+	 NBKHdwztH01NncybK/yA9xE55/oALEeW+VtQObpTVt07tlkncpFvbP/wa1DsJj+6au
+	 giWDWVolgoUpA==
+Date: Fri, 14 Feb 2025 10:44:04 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Anusha Srivatsa <asrivats@redhat.com>
+Cc: Joel Stanley <joel@jms.id.au>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Stefan Agner <stefan@agner.ch>, 
+	Alison Wang <alison.wang@nxp.com>, Xinliang Liu <xinliang.liu@linaro.org>, 
+	Tian Tao <tiantao6@hisilicon.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu <yongqin.liu@linaro.org>, 
+	John Stultz <jstultz@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Marek Vasut <marex@denx.de>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+	Raphael Gallais-Pou <rgallaispou@gmail.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
+	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Jonathan Corbet <corbet@lwn.net>, linux-aspeed@lists.ozlabs.org, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
+	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
+ usage
+Message-ID: <20250214-quixotic-fossa-of-art-b8bb9f@houat>
+References: <20250205-mem-cocci-newapi-v1-0-aebf2b0e2300@redhat.com>
+ <20250205-mem-cocci-newapi-v1-11-aebf2b0e2300@redhat.com>
+ <20250206-hallowed-ultra-tiger-cfec8e@houat>
+ <CAN9Xe3SpTG7r2UkN7_pH0uMXhU5u+dkWhaM9+w5VyOQZp9byNg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250213145921.133412-2-detlev.casanova@collabora.com>
+In-Reply-To: <CAN9Xe3SpTG7r2UkN7_pH0uMXhU5u+dkWhaM9+w5VyOQZp9byNg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_003216_152550_A4E25CF8 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250214_094412_150736_7649A034 
+X-CRM114-Status: GOOD (  26.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +107,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6164643290238556236=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2025 at 09:57:15AM -0500, Detlev Casanova wrote:
-> The board is based on the Rockchip rk3576 SoC.
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--===============6164643290238556236==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="tmymxs4x7znmvcxa"
+Content-Disposition: inline
 
-Best regards,
-Krzysztof
 
+--tmymxs4x7znmvcxa
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 11/12] drm/vc4: move to devm_platform_ioremap_resource()
+ usage
+MIME-Version: 1.0
+
+On Tue, Feb 11, 2025 at 12:08:57PM -0500, Anusha Srivatsa wrote:
+> On Thu, Feb 6, 2025 at 11:13=E2=80=AFAM Maxime Ripard <mripard@kernel.org=
+> wrote:
+>=20
+> > On Wed, Feb 05, 2025 at 03:08:07PM -0500, Anusha Srivatsa wrote:
+> > > Replace platform_get_resource_byname + devm_ioremap_resource
+> > > with just devm_platform_ioremap_resource()
+> > >
+> > > Used Coccinelle to do this change. SmPl patch:
+> > > //rule s/(devm_)platform_get_resource_byname +
+> > > //(devm_)ioremap/devm_platform_ioremap_resource.
+> > > @rule_3@
+> > > identifier res;
+> > > expression ioremap;
+> > > identifier pdev;
+> > > constant mem;
+> > > expression name;
+> > > @@
+> > > -struct resource *res;
+> > > <+...
+> > > -res =3D platform_get_resource_byname(pdev,mem,name);
+> > > <...
+> > > -if (!res) {
+> > > -...
+> > > -}
+> > > ...>
+> > > -ioremap =3D devm_ioremap(...);
+> > > +ioremap =3D devm_platform_ioremap_resource_byname(pdev,name);
+> > > ...+>
+> > >
+> > > v2: Change the SmPl patch to work on multiple occurences of
+> > > the pattern. This also fixes the compilation error.
+> > >
+> > > Cc: Maxime Ripard <mripard@kernel.org>
+> > > Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
+> > > Cc: Ma=C3=ADra Canal <mcanal@igalia.com>
+> > > Signed-off-by: Anusha Srivatsa <asrivats@redhat.com>
+> > > ---
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.c | 55
+> > +++++++++++-------------------------------
+> > >  1 file changed, 14 insertions(+), 41 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > index
+> > 47d9ada98430634cfd8c1e21c2a4d00d501bab7e..066f1246dab420ee889845b0c573d=
+80ce7c88595
+> > 100644
+> > > --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+> > > @@ -2951,71 +2951,44 @@ static int vc5_hdmi_init_resources(struct
+> > drm_device *drm,
+> > >  {
+> > >       struct platform_device *pdev =3D vc4_hdmi->pdev;
+> > >       struct device *dev =3D &pdev->dev;
+> > > -     struct resource *res;
+> > >       int ret;
+> > >
+> > > -     res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hdm=
+i");
+> > > -     if (!res)
+> > > -             return -ENODEV;
+> > > -
+> > > -     vc4_hdmi->hdmicore_regs =3D devm_ioremap(dev, res->start,
+> > > -                                            resource_size(res));
+> > > +     vc4_hdmi->hdmicore_regs =3D
+> > devm_platform_ioremap_resource_byname(pdev,
+> > > +
+> >  "hdmi");
+> > >       if (!vc4_hdmi->hdmicore_regs)
+> > >               return -ENOMEM;
+> > >
+> > > -     res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "hd"=
+);
+> > > -     if (!res)
+> > > -             return -ENODEV;
+> > > -
+> > > -     vc4_hdmi->hd_regs =3D devm_ioremap(dev, res->start,
+> > resource_size(res));
+> > > +     vc4_hdmi->hd_regs =3D devm_platform_ioremap_resource_byname(pde=
+v,
+> > "hd");
+> > >       if (!vc4_hdmi->hd_regs)
+> > >               return -ENOMEM;
+> >
+> > I *think* that one is shared between both HDMI controllers on the
+> > RaspberryPi4, so we can't claim them from both instances. We should add
+> > a comment there to document that it's on purpose.
+>
+> How about vc4_hdmi->hdmicore_regs? It also has another instance
+> vc4_hdmi_init_resources(). Looks like that also doesnt need any converting
+> and shold be left as is.
+
+No, each controller will have its own set of registers there, so it can
+be converted.
+
+Maxime
+
+--tmymxs4x7znmvcxa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ68QXwAKCRAnX84Zoj2+
+dnJFAX44qxSqH4/9r1lPWe6YsBKR9clH1sZQRZaWBdRICp0iE+/MJiNA/tJghQgy
+Xb2262kBgMGvJFpuBmHvz9HJegWf00i39I2+ctkME/qrOcHQhoIwF07ezVrQyZOZ
+z9Q+kadHOg==
+=d/Gf
+-----END PGP SIGNATURE-----
+
+--tmymxs4x7znmvcxa--
+
+
+--===============6164643290238556236==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6164643290238556236==--
+
