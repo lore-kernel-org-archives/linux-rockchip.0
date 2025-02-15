@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1AB8C021A4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 10:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF330C021A6
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 15:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=22cU+e0DHmT5jPhtmN7QUulJiNKoBNxz7E+VGgw6tkM=; b=Ofi8m/WshSAZ0C
-	rSrTffzvMOEld0NYOtF4bfUBIShV3MUJ/ojvTqSdX5Fbx3PU2PJBtI9Kei1/vyE35hR/SOwsHI/Sj
-	1wKxXTDNMK2L7gCupcQTI+ETJ3ggDMvVcMaroQLghQOmxpyhhXBrMm16FHjAGzQGdWrR5eHkfM2ki
-	PT9Ql9+5fsXendmAt9e8u1yDvxwfh6ZhfsFoqtQ9kqQgWIq0mZwvc/gb0knR1MkG6+eVtzbOEyWkH
-	GzQngWV3Zy9kb+m6c59QaJWxu6VyEN4HPCb81m+M52AalNNpsEP0TYy7gO396kBXtAq3NM8KqWSLC
-	01VoYUdxFWDmYzSKyOHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dZT8DFWsz+EMAoKk3eWfOXh1sTITjsaw6ZpDY1pQkU4=; b=3QA/SpaWao7ueD
+	MZMPkyCMT/TKX2ZoDf3C5Uh5ft5y4yDPpXDV/48n7SYnmWxV09H/14TTK1LPRf1vrvPMoqifnv8e7
+	2zQvZzPYbZdyZSspnU/zCxfGKlKVPJCVL9lNsif49erm11xxn6pahqTWG3l6Kj0UFELL0R3f1DWyv
+	EKn8JKV6XoW1EKAS3dIZZMEG1ryj5s5yIk46GrMCEXQNOk5fwsCqnvheqt0D4mE/YUqlYLkvQguLH
+	CwIJ4WTKeH+lH+nsYMzz4PZWsn8SX3SYwq5D55W4jWaeMPppfVOo2efMnfdhGabtbHPc+lfTfWy9x
+	eyh4c3g9QT289Ws84SGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjEyH-0000000HOXQ-1qjq;
-	Sat, 15 Feb 2025 10:00:25 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1tjK3q-00000000JzE-02y6;
+	Sat, 15 Feb 2025 15:26:30 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjEpA-0000000HNLG-1yDh;
-	Sat, 15 Feb 2025 09:51:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1739613060; x=1771149060;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=MYtye3mXOSgmjNVwAdiLAWnVTAT6ccam/tc+AZHY5DU=;
-  b=mjhbU+GTzvDhJAr1978ue7rsM8wxVYVYEiZptbfarIZQl9Po+D3uA6md
-   oneL6qXUBvlig5eqlZUlNBh64vA8SuE3cACb3YfCLHx8pVMvGzvYXjups
-   WjJbERIdRjzySQjZPaon/5dMzdO3xN8XsVETpcy5c/DG2AT1x1TGcvO27
-   PbRxFPKtiR/UQROTfyw4iYAbXSYpsjQb8wpi6HDE+M/eQ4YGbR4FlKsID
-   MzVDSmu9qHWqEu8jolUNnGAkfTEpDu4ctZM7IVY1Eo6nwAhzOyEGve052
-   Ad9M87Qha2Jg/aDfnsEf5Fp3YhQJ7L0kIvFI37hChRzFDgSSD2DMiWLR8
-   w==;
-X-CSE-ConnectionGUID: CKjC3y4bSguxWC484j4fXA==
-X-CSE-MsgGUID: YiTkGTiVSiyo9wycb3v2cg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="62830874"
-X-IronPort-AV: E=Sophos;i="6.13,288,1732608000"; 
-   d="scan'208";a="62830874"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:50:56 -0800
-X-CSE-ConnectionGUID: Wx9nhBKeSyWUiDCwEGa+UA==
-X-CSE-MsgGUID: tBrnDxKzSJ2qq/G5C/lSng==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,288,1732608000"; 
-   d="scan'208";a="113858921"
-Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:50:48 -0800
-Message-ID: <d66e555b-8054-4f73-8077-201b51139773@linux.intel.com>
-Date: Sat, 15 Feb 2025 17:47:51 +0800
+	id 1tjK3M-00000000JtM-3gT3;
+	Sat, 15 Feb 2025 15:26:01 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2162b5d2e1fso7061725ad.3;
+        Sat, 15 Feb 2025 07:26:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739633159; x=1740237959; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=MbZtBYfPPawE8o+lOlR32EHg0wh4Zt+mD8hZTHKftD0=;
+        b=SeFkrVaKe4WB01NCeCEopgX/QzOvj8vhStStSA2PZYn1/E750kRZ2pYJH38pUbYQjU
+         H+tK+gaRJUAeC2o0CfEpKbpmrqDTy0T7y0KIonSZtuIrsAUtvAYE0yIkoiJZYoECRrGP
+         kRLMjoiaTqVancpRe8I11uIGKjew/zl9Wku/oWwpuPvU3tC6OK4kZFN0q9eHfIRjjb8Y
+         1pIvG7B2d/hNJkuXL134FkEzIaxtSiPjXrkKc5AkYM7+ToF0JXfd3UWYA1RlApWCxGzF
+         EEDNOmINp4y06BKp1b7CbZznVnZsiP5ySEz/J27g1ppOUt3X23NVDAhECdzTpKdURHcf
+         1ISA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739633159; x=1740237959;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MbZtBYfPPawE8o+lOlR32EHg0wh4Zt+mD8hZTHKftD0=;
+        b=kWCdwhtKfqudtQEYdPeMTFM4/7G1LyiBzYjgMpg1uLBpRJ27F2AwRu/+V/03Q9bAbA
+         ypVr2SALzBJ/tGRzUNE8H/fisao32DesFoWv0EmrAHiBAJ61uuZnpSmuc/zGiTjTy+3F
+         GCGn92P34kBJnjysin+FxJdh+zHkiq3ty/xeMogdbBqroKN7/PCQhrL4ry90+uzFyNoQ
+         rgjOw+k+LWI7hPwnxS3mA1jH1amkFJG3yu5NnYTg2NwA7RzNUDZxwE+ic6m/eWKiBuhN
+         PInvPVfPPr3RAtqsT4ta3tXfr6bSznx9YyY1mri0Smtgcm32Nvwp+QdbNQMnXxoiiGej
+         X60g==
+X-Forwarded-Encrypted: i=1; AJvYcCWmUJ+0JRffB//YdI20sDoYojVLtrBmUaiV8iiYLvFYB1aCJqSN0LJdo2oiEGWdqBTHzyMC+GrwyTyD7TLO0I+7@lists.infradead.org
+X-Gm-Message-State: AOJu0YwmBxM+wsE0EjSYvu78ns05aTzsScqIge8pHHe5x7oDVRzlKVrn
+	mt1ctcJIJtbUoXI0ejjupmMKh7GXdGQxGSrGHMLTaVNSQW1dcdpG8MsytSbO
+X-Gm-Gg: ASbGnctPuZRvmeePp3oB+i//Ari/byXwqyt+VmsplwYVmJB+h1Co5XU8VN8pGguXMIZ
+	6PyiGgdA5H4+so9xgsXdMqKFIDaBFrePkxAF119Y7Ap2ggJTMaOWWiFM8YL+q1DKLd2GwR/MKci
+	KelnGYj6UKwBKgOYTt580YtLbWypQpCYhEJO+bOl1zBk17q5xbzMbh0ecnfoja40Vy4ZgThAclR
+	nu8qHTb1nX58Ktti44kYjugNzhAqtx9raVV/vxAPXvQBhC3RCaLiSbzuqxr1v7EIogwKOk8COVp
+	jqTpSezjZsUAwsQ/fKrv
+X-Google-Smtp-Source: AGHT+IEvXhWy6/gs2I2nQXXUem/BKTSxc+vCPMgz6fxtKjGYy29KOuDEBVg/Uyb7DlOuXSsE0vui7Q==
+X-Received: by 2002:a17:902:da8c:b0:220:dae5:34b5 with SMTP id d9443c01a7336-22104042218mr19131705ad.7.1739633159298;
+        Sat, 15 Feb 2025 07:25:59 -0800 (PST)
+Received: from rock-5b.. ([221.220.131.19])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-220d558fe3asm44747405ad.234.2025.02.15.07.25.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 15 Feb 2025 07:25:58 -0800 (PST)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: add hdmi1 support to ROCK 5 ITX
+Date: Sat, 15 Feb 2025 23:25:45 +0800
+Message-ID: <20250215152550.3975614-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 23/23] iommu/pages: Remove iommu_alloc_pages_node()
-To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
- asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
- Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Robin Murphy
- <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
- Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
- Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
- David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <23-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
-Content-Language: en-US
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <23-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250215_015100_543037_C795768E 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20250215_072600_917401_EEBD284F 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,63 +96,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/15/25 01:07, Jason Gunthorpe wrote:
-> diff --git a/drivers/iommu/intel/iommu.h b/drivers/iommu/intel/iommu.h
-> index dd980808998da9..1036ed0d899472 100644
-> --- a/drivers/iommu/intel/iommu.h
-> +++ b/drivers/iommu/intel/iommu.h
-> @@ -493,14 +493,13 @@ struct q_inval {
->   
->   /* Page Request Queue depth */
->   #define PRQ_ORDER	4
-> -#define PRQ_RING_MASK	((0x1000 << PRQ_ORDER) - 0x20)
-> -#define PRQ_DEPTH	((0x1000 << PRQ_ORDER) >> 5)
-> +#define PRQ_SIZE	(SZ_4K << PRQ_ORDER)
-> +#define PRQ_RING_MASK	(PRQ_SIZE - 0x20)
-> +#define PRQ_DEPTH	(PRQ_SIZE >> 5)
->   
->   struct dmar_pci_notify_info;
->   
->   #ifdef CONFIG_IRQ_REMAP
-> -/* 1MB - maximum possible interrupt remapping table size */
+Enable the HDMI port next to ethernet port.
 
-Can we keep this line of comment,
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+---
 
-and move it ...
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-> -#define INTR_REMAP_PAGE_ORDER	8
->   #define INTR_REMAP_TABLE_REG_SIZE	0xf
->   #define INTR_REMAP_TABLE_REG_SIZE_MASK  0xf
->   
-> diff --git a/drivers/iommu/intel/irq_remapping.c b/drivers/iommu/intel/irq_remapping.c
-> index d6b796f8f100cd..735e26498ee9f2 100644
-> --- a/drivers/iommu/intel/irq_remapping.c
-> +++ b/drivers/iommu/intel/irq_remapping.c
-> @@ -538,11 +538,10 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
->   	if (!ir_table)
->   		return -ENOMEM;
->   
-> -	ir_table_base = iommu_alloc_pages_node(iommu->node, GFP_KERNEL,
-> -					       INTR_REMAP_PAGE_ORDER);
-> +	ir_table_base =
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+index 6d68f70284e..a4fdced052c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+@@ -11,6 +11,7 @@
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/pwm/pwm.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "dt-bindings/usb/pd.h"
+ #include "rk3588.dtsi"
+ 
+@@ -89,6 +90,17 @@ fan0: pwm-fan {
+ 		pwms = <&pwm14 0 10000 0>;
+ 	};
+ 
++	hdmi1-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi1_con_in: endpoint {
++				remote-endpoint = <&hdmi1_out_con>;
++			};
++		};
++	};
++
+ 	/* M.2 E-KEY */
+ 	sdio_pwrseq: sdio-pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+@@ -261,6 +273,32 @@ &gpu {
+ 	status = "okay";
+ };
+ 
++&hdmi1 {
++	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
++		     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
++	status = "okay";
++};
++
++&hdmi1_in {
++	hdmi1_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_hdmi1>;
++	};
++};
++
++&hdmi1_out {
++	hdmi1_out_con: endpoint {
++		remote-endpoint = <&hdmi1_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
++	status = "okay";
++};
++
++&hdptxphy1 {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+@@ -1209,3 +1247,18 @@ &usbdp_phy1 {
+ 	rockchip,dp-lane-mux = <2 3>;
+ 	status = "okay";
+ };
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp1 {
++	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
++		remote-endpoint = <&hdmi1_in_vp1>;
++	};
++};
+-- 
+2.43.0
 
-... here?
-
-> +		iommu_alloc_pages_node_sz(iommu->node, GFP_KERNEL, SZ_1M);
->   	if (!ir_table_base) {
-> -		pr_err("IR%d: failed to allocate pages of order %d\n",
-> -		       iommu->seq_id, INTR_REMAP_PAGE_ORDER);
-> +		pr_err("IR%d: failed to allocate 1M of pages\n", iommu->seq_id);
->   		goto out_free_table;
->   	}
-
-Thanks,
-baolu
 
 _______________________________________________
 Linux-rockchip mailing list
