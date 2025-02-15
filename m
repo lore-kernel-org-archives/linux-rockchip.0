@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6201C021A4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 044AFC021A0
 	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 21:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,41 +12,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cQ43TWKU/E6YyXfmhCZnefwJPsEMU3zc3R6McGiKtXc=; b=4Ua+ikMQMvjB5E
-	QBsP1TLjBw+n+gQP5dAh9YC4UHFQxQDoS5S30LNNmpX9bHXYUtJJq/Ox+c3DZGNKBCQ9LLMNc/YmY
-	1+we4NyRW3alXoSVQaSGCTZLzJ+0Iut3dScHgsERL27hf5m8evnGKmcWazd5Kpe4wdY2wDapJfjNh
-	kjztLApnnSsKr68k1uCo6jGtp2H6Lfn5YBiUVPKo8mp7ybsSI7T90E+kFqvsrGeqj6k7209yvBRNt
-	VjOuTsAprg5A0Qsai+sSCo0yUjFtC8XMI0RXl52tEXPOJ+dBEdlx8yUL19+Ua7zi7JHleAKTq0WSB
-	1eI/fwbP/JPb7S+EB+fw==;
+	List-Owner; bh=LsffL5WxfCdxcJXNng0I3SrkXNLEoRjwCSA4BuzPuVA=; b=4u0fkJ/Oy5yTUP
+	kaI1I37n0WsFkiBF0HpGWvMa0ds9wVKbSRA7/iZO7+gI81AVTM2GndjRwawPvn1EP4Y7nFzbX3K76
+	6WOHzh21cghbZcpFwVBOFHcm2tyIbiGfNhskhGG3jccxWIxiUBSCgDRr2sOXy8DntQumrsJHfr1sp
+	YSrcZfZ11IAIgQQyACXreWfY6O8b/IKPEg6bMrTA3HwymVqc9eaeqlTJsJuOhvUGYQdJz3i8+Oin0
+	fHyxhUXw5jtmTfm0sHU3dltPUnFgcZNZj9jKFk0mCk22FHWke/t59Wlp1NFqlR2GLWBA0MxrpFFfQ
+	UzcQOt8+nWvBB34nhv+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjPMM-00000000ke8-0EDx;
-	Sat, 15 Feb 2025 21:05:58 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tjPMJ-00000000kd2-2aIB;
+	Sat, 15 Feb 2025 21:05:55 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjPMH-00000000kcH-3Nex
+	id 1tjPMG-00000000kbi-3zR1
 	for linux-rockchip@lists.infradead.org;
 	Sat, 15 Feb 2025 21:05:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739653543; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1739653537; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=im+++1FCZGXGGcMqwUuTqhD3+gFNHa1gjKpktZj5fIDoitulyCfmGLokCID1OMdJtUbLD5yP+Xl3gBFHIFTCSHY9W78nIDIX0mLCJ0Q3xWadBpwF8IMaTwz92pVkOVp6zA9+5VFLvOiX+E6qhNPabKfR7Hw5UQ8/F6eUaHWdd08=
+	b=TK31rQlDQcvJ+gCBMtaFWixiwKEqNPhHfhwlShpcdPAHDdkfe6J8GlALL1XBsKUUxc1/aHxXmIbwtRxLDAY6Av6DjLl0Ajx/eVFtWW12WUT0h4RZB+8iRk7xSag6ab/SYnXJlqMuiQ+7iomoKVuHoRd66fw/SDB3gv6m0fDo2Qg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739653543; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=iIPCjPu2+AmsIf/cCFUaH7Ayf0dQa1TgmFz1djm75zk=; 
-	b=h6w41c+Kwo54XuFsSrNCmm9mpAQqBqDsQfcnb91bIU66t7nF9dp7s+8lPJkQuD3ATvG/QpN9UnrxBJaKFM/XE9rsCkEL0Ou2a0BpPFdzgycNxAuM+29vTLy1H1ONvPHqisruS9y3VJvEzYzIB/5lOKX62rjh8Xdh5DnHVy5GRXM=
+	t=1739653537; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=; 
+	b=ICBxfWfA0y6u/OzIVrqbedtr7Mx48wTz/G+WxpoGy5QzSrd3953WKDuWl3SFpgDM9uo+ExMmPzmywcwxF22YGh8kx6y9P7P1IkqXGcgzR/vsSAC9Hv9j+mMMVFsVLZv+fqWAxpGIQxvsD9nL8LY1AHt0vjXoZmHaHt3xN3ZAHZk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739653543;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739653537;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=iIPCjPu2+AmsIf/cCFUaH7Ayf0dQa1TgmFz1djm75zk=;
-	b=Hwf8dBlPahcqIT00T6xoM5QwWA5iic4yw38V3vCe4skgbVehpmeX0mk+shS5Nnme
-	ZRw0umP0oU6/ZK7AtWFc8DZ3XbOXs7hqRgjYnY6tbOeEHKMKDddDzWwnRvTOlWQDcqb
-	BMNCy0s6rdofWpBuXpoBdP4PSAwdQmZZmKKq+fUc=
-Received: by mx.zohomail.com with SMTPS id 1739653540909749.457708852657;
-	Sat, 15 Feb 2025 13:05:40 -0800 (PST)
+	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=;
+	b=K6h45jE2roxt0u1qD1BYZ4KQvs/SV93g1V1kVwg7Z/j/ObWaxMUVErytjlglHF3n
+	WOEVIBwhiXdcSL6PFU0f9OI+Zr9gIwAp4sW9J/2H1KwcQ90yGOc3JnUvrjcc8dr6nMl
+	IW6ZFjVGDFV1Pp66o9+62IhxoxcmtwTGV6gnta2o=
+Received: by mx.zohomail.com with SMTPS id 1739653536055263.24103824599933;
+	Sat, 15 Feb 2025 13:05:36 -0800 (PST)
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 To: Shreeya Patel <shreeya.patel@collabora.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -66,17 +66,17 @@ Cc: kernel@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Tim Surber <me@timsurber.de>
-Subject: [PATCH v6 6/6] arm64: dts: rockchip: Enable HDMI receiver on rock-5b
-Date: Sun, 16 Feb 2025 00:04:17 +0300
-Message-ID: <20250215210417.60074-7-dmitry.osipenko@collabora.com>
+Subject: [PATCH v6 5/6] arm64: defconfig: Enable Synopsys HDMI receiver
+Date: Sun, 16 Feb 2025 00:04:16 +0300
+Message-ID: <20250215210417.60074-6-dmitry.osipenko@collabora.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250215210417.60074-1-dmitry.osipenko@collabora.com>
 References: <20250215210417.60074-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250215_130553_905725_AD8C92BA 
-X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-CacheID: sfid-20250215_130553_030798_0A09CAC4 
+X-CRM114-Status: UNSURE (   7.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,51 +96,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-The Rock 5B has a Micro HDMI port, which can be used for receiving
-HDMI data. This enables support for it.
+The Rockchip RK3588 has a built-in HDMI receiver block from
+Synopsys. Let's enable the driver for it.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 ---
- .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d597112f1d5b..377824e69e20 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -220,6 +220,18 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+&hdmi_receiver_cma {
-+	status = "okay";
-+};
-+
-+&hdmi_receiver {
-+	status = "okay";
-+	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
-+	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
-+	pinctrl-names = "default";
-+	memory-region = <&hdmi_receiver_cma>;
-+};
-+
- &hdptxphy_hdmi0 {
- 	status = "okay";
- };
-@@ -377,6 +389,12 @@ &pcie3x4 {
- };
- 
- &pinctrl {
-+	hdmirx {
-+		hdmirx_hpd: hdmirx-5v-detection {
-+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	hym8563 {
- 		hym8563_int: hym8563-int {
- 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index cb7da4415599..6ed1ad3c0055 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -859,6 +859,7 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+ CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
+ CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
+ CONFIG_VIDEO_SUN6I_CSI=m
++CONFIG_VIDEO_SYNOPSYS_HDMIRX=m
+ CONFIG_VIDEO_TI_J721E_CSI2RX=m
+ CONFIG_VIDEO_HANTRO=m
+ CONFIG_VIDEO_IMX219=m
 -- 
 2.48.1
 
