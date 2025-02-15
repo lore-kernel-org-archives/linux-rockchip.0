@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD892C021A6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Feb 2025 22:48:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E398C02198
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 00:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9bWbWhg8fIF6KeHpKTtgDYVZXjaBgfItxiTfs+sYOFo=; b=avkBWSZ6CKNTGx
-	alIWBfgQo2k1FpPKy+EEv1cWX6EAHGO5+fefEfBfSLF3RgwUGOmjg50yXp/cA1PjZMkeu4Krtf+lO
-	a7tX1+3nBag6Aahf2U7rw3lne73RkK9hZrlyoGMWHfXXFy0I7sQDIPOKw8yeRvoGeqQAAWxcvbLYV
-	+z2vhxruruh0dGuWzqkmytW4rzZjJZqNf/XPl7hnrYi7AnrXMfzwFiktBaYMkYIdE7NL6jugz/IBB
-	0KQDJ/TORdZyglg7cASciLver1GX80NdB0cXf4foq8F+KzMO6C4WZqMOPegoTM7Tz+62mJY5FmrVn
-	aQIatJuysnedxvHqjEeA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yhRqxE4GEFlDhRdEAz96qElIYvMhaVS9uCRto0USJ+4=; b=K1o87a1yJuhnD0
+	8TjoKECoLLjxuCE+xHtCGP8I1vqUAXUfKWD3ZOwYF6xsqCdxRe9fgU9CqfWYj0i/vybelepNkhHAI
+	K86cb1y1goMVgfoVRHcd1ZuW/xq33rKGs+02+ZKaRC2omcb1xskneuTAuE5WJKOYCZCRVhQhrYIQQ
+	HXNXw+0NVwwkfqvmz13yrmVoNVAup23Oexo7hdon9nAKOR3EC2C4dXQD8bI01gRC3MF3fh9VDCxFN
+	w/oCAu5jCu5EfRoCz4smZ9YidOacz9+pkXV354YP+xrd2H7PJyDCvc4Je1AEMrWJQo7yyHIGV2IwE
+	iucDkTofXOlkMhvKLVCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj4Ty-0000000GR7J-2YKd;
-	Fri, 14 Feb 2025 22:48:26 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tj6Uo-0000000GfTq-2CZ5;
+	Sat, 15 Feb 2025 00:57:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tj4RC-0000000GQe7-0Gbo;
-	Fri, 14 Feb 2025 22:45:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=LEAXvMzFV1FVFVMZ3IfVMsNAWfHuN1F5zT0O6OvjfE8=; b=xH39de91My2e970+JCQmw54UlN
-	03DzwjTEVPEofRCZWVPBtGZvNnVvrvOiU1SHRxjWe15O8eLee0sgEhFFJcPRPfLsXUnkA92UV9cux
-	8eS988mLty8sBhj+RhIKD9IBosm9DlCjm0uDZlyaJvYdlaVzSQFn9ivi3+c5pLzy1zPyN9+TMZIAF
-	HVo92OusmjAXW51WvGxFsXnMNx5XghsbwZQemZ6dPMURosY2/ayCmaEe37Q1t2OOZ0L4yLnKUK9cl
-	gmfwyO6fAVBgK8+Z13qGaCR3mgSIQJ08S3CwAmq85LAPdRUcdW6jY1PntfLHe6BqSRWpTllqSx2hP
-	sfrw26+w==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tj4R5-0003TH-Mj; Fri, 14 Feb 2025 23:45:27 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Niklas Cassel <cassel@kernel.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Quentin Schulz <foss+kernel@0leil.net>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Dragan Simic <dsimic@manjaro.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v6 0/4] arm64: dts: rockchip: minimal support for Pre-ICT tester adapter for RK3588 Jaguar + add overlay tests
-Date: Fri, 14 Feb 2025 23:45:15 +0100
-Message-ID: <173957310723.1747676.16443023437911911043.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250211-pre-ict-jaguar-v6-0-4484b0f88cfc@cherry.de>
-References: <20250211-pre-ict-jaguar-v6-0-4484b0f88cfc@cherry.de>
+	id 1tj6TM-0000000Gf1a-0VL1;
+	Sat, 15 Feb 2025 00:55:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1739580953;
+	bh=nIXcpxIUSKHDj4yKjrFu8Z6Y37bAcj6b8+fVzwIrLgY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=QWYreGa/6yH2TXVLCawRPa35+LxXk1hZym5F2VlQ/OyTS+GV8svkU/rjrS39UK8Mk
+	 4Sq7DqMdekxG1Cthb89kmnzRgRt3PJ6CHaVPKm3sQ1+gI/0/svXob35j6BFjADRuEx
+	 1B5+KfOda3u2ens8t/F5O7sxoeq/ZPrmGk7cCLon8fhAOjx9jHqgse+d9EWZWs6kuw
+	 GYymbHStNxvxdHakffxSE3+dSlIkI4iyEaks1mH6x7GBI7BcFopC/Qx4oRXZuCtDKa
+	 Hbj8/d+5Q2XxFvx7kMX9sRLCN9B+9J46DlleRinvN1d7u5/DEUUXi+KcqGhkmnSUWk
+	 PlqX7CTWZxZ/g==
+Received: from localhost (144.232.221.87.dynamic.jazztel.es [87.221.232.144])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 613E817E0239;
+	Sat, 15 Feb 2025 01:55:53 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH 0/4] Improve Rockchip VOP2 display modes handling on RK3588
+ HDMI1
+Date: Sat, 15 Feb 2025 02:55:36 +0200
+Message-Id: <20250215-vop2-hdmi1-disp-modes-v1-0-81962a7151d6@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAjmr2cC/x3MMQqAMAxA0atIZgM2KBSvIg7VRM2gLQ2IIL27x
+ fEN/79gklUMxuaFLLeaxqvCtQ2sR7h2QeVqoI6GjtyAd0yEB5/qkNUSnpHFUILn0JNfVi9Q25R
+ l0+f/TnMpH1L0CLVnAAAA
+X-Change-ID: 20250215-vop2-hdmi1-disp-modes-ea8da428bc8e
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250214_144534_099090_9B6DA899 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20250214_165556_327062_3AE235CD 
+X-CRM114-Status: UNSURE (   5.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,33 +85,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+As a followup to getting basic HDMI1 output support [1] merged upstream,
+make use of the HDMI1 PHY PLL to provide better VOP2 display modes
+handling for the second HDMI output port on RK3588 SoC, similarly to
+what has been achieved recently for HDMI0 [2].
 
-On Tue, 11 Feb 2025 15:02:49 +0100, Quentin Schulz wrote:
-> This adds minimal support for the Pre-ICT tester adapter for RK3588
-> Jaguar.
-> GPIO3A3, GPIO3A4, GPIO3B2 and GPIO3D2 to GPIO3D5 are all routed to power
-> rails and can only be used as input and their bias are important to be
-> able to properly detect soldering issues.
-> 
-> Additionally, this adds build-time overlay application tests for all
-> Rockchip overlays to try to avoid future regressions.
-> 
-> [...]
+Additionally, enable HDMI1 output on Rockchip RK3588 EVB1.
 
-Applied, thanks!
+[1] https://lore.kernel.org/lkml/20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com/
+[2] https://lore.kernel.org/lkml/20250204-vop2-hdmi0-disp-modes-v3-0-d71c6a196e58@collabora.com/
 
-[1/4] arm64: dts: rockchip: add overlay test for WolfVision PF5
-      commit: eb439f16861a8f1fca2c6d021cf7fce0a7a0ca8d
-[2/4] arm64: dts: rockchip: add overlay test for Edgeble NCM6A/NCM6B
-      commit: 91abdc6b36e12a2c3a477bde90e9f1dd8c2413bf
-[3/4] arm64: dts: rockchip: add overlay tests for Rock 5B PCIe overlays
-      commit: e95b72390886f5b4127417e4732cae57c8d89b14
-[4/4] arm64: dts: rockchip: minimal support for Pre-ICT tester adapter for RK3588 Jaguar
-      commit: 920ceeedeb00eef0c3c4f5f0276882b4666dc770
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Cristian Ciocaltea (4):
+      drm/rockchip: vop2: Improve display modes handling on RK3588 HDMI1
+      arm64: dts: rockchip: Enable HDMI1 PHY clk provider on RK3588
+      arm64: dts: rockchip: Add HDMI1 PHY PLL clock source to VOP2 on RK3588
+      arm64: dts: rockchip: Enable HDMI1 on rk3588-evb1
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 42 ++++++++++++++++++++++--
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi   | 22 +++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c     | 26 ++++++++++++++-
+ 3 files changed, 87 insertions(+), 3 deletions(-)
+---
+base-commit: 0ae0fa3bf0b44c8611d114a9f69985bf451010c3
+change-id: 20250215-vop2-hdmi1-disp-modes-ea8da428bc8e
+
 
 _______________________________________________
 Linux-rockchip mailing list
