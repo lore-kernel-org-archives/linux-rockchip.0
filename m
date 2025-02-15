@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E27C4C021A6
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 09:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1AB8C021A4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Feb 2025 10:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G16bXn4X4ow4Meee9/PvjiFA/cBCEL1wV8yv3H0Y+gM=; b=SyNvvJy4BDote4
-	L18Ce6g6cgVf+ZUytY8wSnt+SoeQrRbQQUg6nPysn2n9kxqOpUqWXyf+tVpsxuVAolUCfDDGdDNca
-	cgr6T0QEXMUsBAVTQufLGyXaAxEZ1a41KJ4Tp2IZkpYiX/dd8BMZmcr25mRZfqlPZYtIfBuohGl1D
-	9HnNAtOGQg+qZo3sXD598nb87h+/FwHB8w6gihJZlIwJ+bD59XX5LRgZ9TqtKm+gG93nxzQ3QrQEy
-	qPfY49WmB0Xe2fTbJr+vFe2NW7zfgkGz2FJlT4Z7qicefELb6c+IFu5+SCpyJ+Zkpf8eMStt/MFPX
-	XTt/Qb3HUNMIsWzYWiTw==;
+	List-Owner; bh=22cU+e0DHmT5jPhtmN7QUulJiNKoBNxz7E+VGgw6tkM=; b=Ofi8m/WshSAZ0C
+	rSrTffzvMOEld0NYOtF4bfUBIShV3MUJ/ojvTqSdX5Fbx3PU2PJBtI9Kei1/vyE35hR/SOwsHI/Sj
+	1wKxXTDNMK2L7gCupcQTI+ETJ3ggDMvVcMaroQLghQOmxpyhhXBrMm16FHjAGzQGdWrR5eHkfM2ki
+	PT9Ql9+5fsXendmAt9e8u1yDvxwfh6ZhfsFoqtQ9kqQgWIq0mZwvc/gb0knR1MkG6+eVtzbOEyWkH
+	GzQngWV3Zy9kb+m6c59QaJWxu6VyEN4HPCb81m+M52AalNNpsEP0TYy7gO396kBXtAq3NM8KqWSLC
+	01VoYUdxFWDmYzSKyOHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjEGU-0000000HJBn-0ZGa;
-	Sat, 15 Feb 2025 09:15:10 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1tjEyH-0000000HOXQ-1qjq;
+	Sat, 15 Feb 2025 10:00:25 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjEF0-0000000HJ4Q-36Wh;
-	Sat, 15 Feb 2025 09:13:39 +0000
+	id 1tjEpA-0000000HNLG-1yDh;
+	Sat, 15 Feb 2025 09:51:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1739610819; x=1771146819;
+  t=1739613060; x=1771149060;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=G/Qt6dZjMBOmDsbuyaRv6OzX+guIhg98BM2jS68/vTk=;
-  b=Qv98iGa3Y9zr4aR4fpPl0wexW5ru5/dms2Zm423yU6QiRMk9wMrVFCIU
-   uFHIufxA4NHBElr7eXsYKnNFjsv1e2SeHJzxKbHLL3WslVJsT8Bb8Amxm
-   l40hNRisNx+LxVdI1fIZGl151NreZC29EUhp+KXvwoKJRv0b0kFmtmiOr
-   etsCLD9mnlU9BQ17FUGYXgoB5KvE2Rsa+0rz3QO7x5hR5miv6COvY4aQ4
-   4YjERsopDzxQitOwKEOcal3pqXhKKb1lZjTzJYBRtVgfPWI0gfTHWNUft
-   5nE98cDMffmrMkrE9v0ws0GjcC4568vADlISMHZhJFDcxKe51EGHvIEuN
-   g==;
-X-CSE-ConnectionGUID: JlIeXyIkReaTKuFboXk0sQ==
-X-CSE-MsgGUID: DL66fkfIQxG9HablFwo6BA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="40279523"
+  bh=MYtye3mXOSgmjNVwAdiLAWnVTAT6ccam/tc+AZHY5DU=;
+  b=mjhbU+GTzvDhJAr1978ue7rsM8wxVYVYEiZptbfarIZQl9Po+D3uA6md
+   oneL6qXUBvlig5eqlZUlNBh64vA8SuE3cACb3YfCLHx8pVMvGzvYXjups
+   WjJbERIdRjzySQjZPaon/5dMzdO3xN8XsVETpcy5c/DG2AT1x1TGcvO27
+   PbRxFPKtiR/UQROTfyw4iYAbXSYpsjQb8wpi6HDE+M/eQ4YGbR4FlKsID
+   MzVDSmu9qHWqEu8jolUNnGAkfTEpDu4ctZM7IVY1Eo6nwAhzOyEGve052
+   Ad9M87Qha2Jg/aDfnsEf5Fp3YhQJ7L0kIvFI37hChRzFDgSSD2DMiWLR8
+   w==;
+X-CSE-ConnectionGUID: CKjC3y4bSguxWC484j4fXA==
+X-CSE-MsgGUID: YiTkGTiVSiyo9wycb3v2cg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="62830874"
 X-IronPort-AV: E=Sophos;i="6.13,288,1732608000"; 
-   d="scan'208";a="40279523"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:13:37 -0800
-X-CSE-ConnectionGUID: OjCkaXbcS1WOq7oKO+qQrA==
-X-CSE-MsgGUID: ncWbRhG0QRqp+uOwSydKkQ==
+   d="scan'208";a="62830874"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:50:56 -0800
+X-CSE-ConnectionGUID: Wx9nhBKeSyWUiDCwEGa+UA==
+X-CSE-MsgGUID: tBrnDxKzSJ2qq/G5C/lSng==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.13,288,1732608000"; 
-   d="scan'208";a="118688305"
+   d="scan'208";a="113858921"
 Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:13:28 -0800
-Message-ID: <d68dd230-96c1-44c2-b8f5-59f87fcca25a@linux.intel.com>
-Date: Sat, 15 Feb 2025 17:10:32 +0800
+  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Feb 2025 01:50:48 -0800
+Message-ID: <d66e555b-8054-4f73-8077-201b51139773@linux.intel.com>
+Date: Sat, 15 Feb 2025 17:47:51 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/23] iommu/pages: Move the __GFP_HIGHMEM checks into
- the common code
+Subject: Re: [PATCH v2 23/23] iommu/pages: Remove iommu_alloc_pages_node()
 To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
  asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
@@ -79,14 +78,13 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
 Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
  Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
  David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <15-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+References: <23-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <15-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <23-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250215_011338_837748_534733A9 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250215_015100_543037_C795768E 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,18 +102,57 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2/15/25 01:07, Jason Gunthorpe wrote:
-> The entire allocator API is built around using the kernel virtual address,
-> it is illegal to pass GFP_HIGHMEM in as a GFP flag. Block it in the common
-> code. Remove the duplicated checks from drivers.
-> 
-> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-> ---
->   drivers/iommu/io-pgtable-arm.c  | 2 --
->   drivers/iommu/io-pgtable-dart.c | 1 -
->   drivers/iommu/iommu-pages.c     | 4 ++++
->   3 files changed, 4 insertions(+), 3 deletions(-)
+> diff --git a/drivers/iommu/intel/iommu.h b/drivers/iommu/intel/iommu.h
+> index dd980808998da9..1036ed0d899472 100644
+> --- a/drivers/iommu/intel/iommu.h
+> +++ b/drivers/iommu/intel/iommu.h
+> @@ -493,14 +493,13 @@ struct q_inval {
+>   
+>   /* Page Request Queue depth */
+>   #define PRQ_ORDER	4
+> -#define PRQ_RING_MASK	((0x1000 << PRQ_ORDER) - 0x20)
+> -#define PRQ_DEPTH	((0x1000 << PRQ_ORDER) >> 5)
+> +#define PRQ_SIZE	(SZ_4K << PRQ_ORDER)
+> +#define PRQ_RING_MASK	(PRQ_SIZE - 0x20)
+> +#define PRQ_DEPTH	(PRQ_SIZE >> 5)
+>   
+>   struct dmar_pci_notify_info;
+>   
+>   #ifdef CONFIG_IRQ_REMAP
+> -/* 1MB - maximum possible interrupt remapping table size */
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+Can we keep this line of comment,
+
+and move it ...
+
+> -#define INTR_REMAP_PAGE_ORDER	8
+>   #define INTR_REMAP_TABLE_REG_SIZE	0xf
+>   #define INTR_REMAP_TABLE_REG_SIZE_MASK  0xf
+>   
+> diff --git a/drivers/iommu/intel/irq_remapping.c b/drivers/iommu/intel/irq_remapping.c
+> index d6b796f8f100cd..735e26498ee9f2 100644
+> --- a/drivers/iommu/intel/irq_remapping.c
+> +++ b/drivers/iommu/intel/irq_remapping.c
+> @@ -538,11 +538,10 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
+>   	if (!ir_table)
+>   		return -ENOMEM;
+>   
+> -	ir_table_base = iommu_alloc_pages_node(iommu->node, GFP_KERNEL,
+> -					       INTR_REMAP_PAGE_ORDER);
+> +	ir_table_base =
+
+... here?
+
+> +		iommu_alloc_pages_node_sz(iommu->node, GFP_KERNEL, SZ_1M);
+>   	if (!ir_table_base) {
+> -		pr_err("IR%d: failed to allocate pages of order %d\n",
+> -		       iommu->seq_id, INTR_REMAP_PAGE_ORDER);
+> +		pr_err("IR%d: failed to allocate 1M of pages\n", iommu->seq_id);
+>   		goto out_free_table;
+>   	}
+
+Thanks,
+baolu
 
 _______________________________________________
 Linux-rockchip mailing list
