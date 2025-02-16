@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6DA4C02198
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 09:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87915C02198
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 10:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o2hISmsL7G1DyO18+OYyLDGbZT5ObySDAhenQLD28n8=; b=dvQqHxIRzA0Uop
-	OOzTfHtUopHAgH7b4USIF17EYOVWlT9MKTs0pQYJdi35d7E3E+yiALygg7Lg7Wc5royWepbQjAfKk
-	3q52H4YbS8HraEvtStL4P6qM7HultAAMwkAleBlgw0z0Skbanx9yM6mXCmOBicxAuuevqRKMI9po2
-	3cWexSJghtEgO+hTwh/EZH2VgwzizsnDI0WMoVuUpsI9kUoksZp+cAC6tqNzVqddkeg8jvt8PzRKY
-	WQOok4wR0f7TqOlVN606fci4JcC1U/KhPwoInipKXQIS0ysL+sJt/E4dwmqTpqqZlx8FGTwQGd0fE
-	BNE1gChJQiboPhdhBfww==;
+	List-Owner; bh=7KbAdSIlJtf6sGFQJPY6bOjBZzg+pC5C1iovcnvKGfw=; b=234B6NmQPbqZ2N
+	In/4i6I/y4jQWxYGSPeCrzYgF1hi/s52ZLz/Zk67nck5zZeMfRkayIgsQtSi6Q5Uks4vCDozh6Fdw
+	qzCrlhG73soWMk7L/F1x2uqoW87skQQfe9ExwIxnO5AxDSmkyTCmCfpptnWlycHPuW+d4vDgjoUM0
+	Rng1r4ma4WIVNd9nYG/odYHOdFgNy6BvOCrXDFoQLpb2fMagqJpP60SAoKsG5e35onhqopeL1yg3R
+	c/qBGi1wuU8impp0r8utJMRdv7x9eZsYC7MLR/UbIxitqtAzom67/iA3psXgdZnKmZX9C55MhnaGN
+	DkiR6k1g5+GvthIRlCXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjbQ5-00000001bXj-06Ui;
-	Sun, 16 Feb 2025 09:58:37 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tjbaR-00000001chG-0BmH;
+	Sun, 16 Feb 2025 10:09:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjbN0-00000001bDG-2pPf
+	id 1tjbRS-00000001bhN-3V9U
 	for linux-rockchip@lists.infradead.org;
-	Sun, 16 Feb 2025 09:55:27 +0000
+	Sun, 16 Feb 2025 10:00:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C2DE7A40240;
-	Sun, 16 Feb 2025 09:53:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A565C4CEDD;
-	Sun, 16 Feb 2025 09:55:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AC48D5C5610;
+	Sun, 16 Feb 2025 09:59:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B172FC4CEDD;
+	Sun, 16 Feb 2025 10:00:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1739699725;
-	bh=uxeXeJ6bnFjUDM2/tZeOi6I4UpOhwNCOUpFKYkaIesA=;
+	s=k20201202; t=1739700001;
+	bh=gVeX3dBdYmZQsryIB7Wq4wt/LHImRZlGSznWXeC+bdQ=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=cFVxLyceRo6lO/Cu3nvm5w6ePc2RI5vfYAL6WD2CPnRNex1Zpb+xxt/Qt8EuEEwk/
-	 sNY0RXPqF1tDkhjwQd3Tgm78ZpkaUZ+rDDKRczTvoBaJei1wZCN9aG/9sT9xKyB3/K
-	 WPVlAcSI6htO7ka9iuk7+g9CWLvLXyhbOhbEmUXJ4PsaFudRpvEIoAsfY/v4e4zNqN
-	 B/9rhR/e6wc+JAKaEHwZG9kPWMARHnXdlduMUMDp7CJncS2dDTh4ggYO0y20InxGsW
-	 +RmuJKrbpoHgj+82Dbk8OZO1cri6E+8EO5OdRlWo2EQPtP4y0kk0P5ptKdKbmL9vAe
-	 6zpKHXX7iKgfw==
+	b=eEGjhidvFztftvpNvYUBUCPEIHS4fTn9lXgf8jDC2vKsbpB6MK5zjnxZIWIegh3bM
+	 ZpGU/kTh9YqM84sssA7R+vGmQrOhGaxWisZbLmfoKgu1TV/KsgwsHnoWPUCk4LxMr8
+	 Y3DaKX464/DBmfY8c/dGY+3XF7UKO73kbUG9OF4av0aqJoR/cLga3E5hqJWV7OiiTb
+	 DMW3fsavmlFLPpmwR63oMikDdLSE4pUBKBPUeEYsgKMVISVhSBKWnANzdnHI48Kpln
+	 UFPlwKR/XK/w5je/zZQh7RvcfY7RrJxrjwj8iXcoKnO6Bsg4/txasKViAbUMX6ox+h
+	 auUuwfdWbMGrA==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=wait-a-minute.misterjones.org)
 	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.95)
 	(envelope-from <maz@kernel.org>)
-	id 1tjbMx-004WpP-4V;
-	Sun, 16 Feb 2025 09:55:23 +0000
-Date: Sun, 16 Feb 2025 09:55:21 +0000
-Message-ID: <87seoe1aeu.wl-maz@kernel.org>
+	id 1tjbRP-004WsE-AG;
+	Sun, 16 Feb 2025 09:59:59 +0000
+Date: Sun, 16 Feb 2025 09:59:58 +0000
+Message-ID: <87r03y1a75.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -64,10 +64,10 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Peter Geis <pgwipeout@gmail.com>,
 	Robin Murphy <robin.murphy@arm.com>,
 	kernel@collabora.com
-Subject: Re: [PATCH v1 1/4] irqchip/gic-v3: Add Rockchip 3568002 erratum workaround
-In-Reply-To: <20250215235431.143138-2-dmitry.osipenko@collabora.com>
+Subject: Re: [PATCH v1 3/4] arm64: dts: rockchip: rk356x: Add MSI controller node
+In-Reply-To: <20250215235431.143138-4-dmitry.osipenko@collabora.com>
 References: <20250215235431.143138-1-dmitry.osipenko@collabora.com>
-	<20250215235431.143138-2-dmitry.osipenko@collabora.com>
+	<20250215235431.143138-4-dmitry.osipenko@collabora.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -77,8 +77,8 @@ X-SA-Exim-Rcpt-To: dmitry.osipenko@collabora.com, heiko@sntech.de, robh@kernel.o
 X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_015526_844376_75D13E88 
-X-CRM114-Status: GOOD (  34.66  )
+X-CRM114-CacheID: sfid-20250216_020002_986245_A632BB52 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,138 +95,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 15 Feb 2025 23:54:28 +0000,
+On Sat, 15 Feb 2025 23:54:30 +0000,
 Dmitry Osipenko <dmitry.osipenko@collabora.com> wrote:
 > 
-> Rockchip RK3566/RK3568 GIC600 integration has DDR addressing
-> limited to first 4GB of DRAM. Rockchip assigned Erratum ID #3568002
-> for this issue. Add driver quirk for this Rockchip GIC Erratum.
-
-Thanks for taking the time to submit this. It only took 5 years for
-this erratum to be published...
-
-However, my understanding of this issue is that the integration is
-limited to the first 32bit of physical address space, not the first
-32bit of RAM. If the memory is placed as physical address 0, then they
-represent the same space. But this is still an important distinction.
-
+> Rockchip 356x SoC's GIC has two hardware integration issues that
+> affect MSI functionality of the GIC. Previously, both these GIC
+> limitations were worked around by using MBI for MSI instead of ITS
+> because kernel GIC driver didn't have necessary quirks.
 > 
-> Note, that the 0x0201743b ID is not Rockchip 356x specific and thus
-> there is an extra of_machine_is_compatible() check. Rockchip 3588 uses
-> same ID and it is not affected by this errata.
-
-This ID is that of ARM's GIC600, which is a very common GICv3
-implementation, and is not Rockchip-specific. Please capture this in
-the commit message.
-
+> The first limitation is about RK356x GIC not supporting programmable
+> shareability. Rockchip assigned Errata ID #3568001 for this issue.
+> 
+> Second limitation is about GIC AXI master interface addressing only
+> first 4GB of DRAM. Rockchip assigned Errata ID #3568002 for this issue.
+> 
+> Now that kernel supports quirks for both of the erratums, add
+> MSI controller node to RK356x device-tree.
 > 
 > Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 > ---
->  Documentation/arch/arm64/silicon-errata.rst |  2 ++
->  arch/arm64/Kconfig                          |  9 ++++++++
->  drivers/irqchip/irq-gic-v3-its.c            | 23 ++++++++++++++++++++-
->  3 files changed, 33 insertions(+), 1 deletion(-)
+>  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> diff --git a/Documentation/arch/arm64/silicon-errata.rst b/Documentation/arch/arm64/silicon-errata.rst
-> index f074f6219f5c..f968c13b46a7 100644
-> --- a/Documentation/arch/arm64/silicon-errata.rst
-> +++ b/Documentation/arch/arm64/silicon-errata.rst
-> @@ -284,6 +284,8 @@ stable kernels.
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Rockchip       | RK3588          | #3588001        | ROCKCHIP_ERRATUM_3588001    |
->  +----------------+-----------------+-----------------+-----------------------------+
-> +| Rockchip       | RK3568          | #3568002        | ROCKCHIP_ERRATUM_3568002    |
-> ++----------------+-----------------+-----------------+-----------------------------+
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
->  +----------------+-----------------+-----------------+-----------------------------+
-> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-> index c997b27b7da1..0428ad8f324d 100644
-> --- a/arch/arm64/Kconfig
-> +++ b/arch/arm64/Kconfig
-> @@ -1302,6 +1302,15 @@ config NVIDIA_CARMEL_CNP_ERRATUM
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+> index 28be38b7182e..423185686600 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+> @@ -284,7 +284,18 @@ gic: interrupt-controller@fd400000 {
+>  		mbi-alias = <0x0 0xfd410000>;
+>  		mbi-ranges = <296 24>;
+>  		msi-controller;
+> +		ranges;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+>  		dma-noncoherent;
+> +
+> +		its: msi-controller@fd440000 {
+> +			compatible = "arm,gic-v3-its";
+> +			reg = <0x0 0xfd440000 0 0x20000>;
+> +			dma-noncoherent;
+> +			msi-controller;
+> +			#msi-cells = <1>;
+> +		};
+>  	};
 >  
->  	  If unsure, say Y.
->  
-> +config ROCKCHIP_ERRATUM_3568002
-> +	bool "Rockchip 3568002: can not support DDR addresses higher than 4G"
-> +	default y
-> +	help
-> +	  The Rockchip RK3566 and RK3568 GIC600 SoC integrations have DDR
-> +	  addressing limited to first 4GB.
-> +
-> +	  If unsure, say Y.
-> +
+>  	usb_host0_ehci: usb@fd800000 {
 
-s/DDR addresses/physical addresses/
+You can merge this patch with the previous one. Marking the GIC
+non-coherent is pointless if no ITS is available, because there is no
+point in allocating memory for them.
 
->  config ROCKCHIP_ERRATUM_3588001
->  	bool "Rockchip 3588001: GIC600 can not support shareability attributes"
->  	default y
-> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-> index 8c3ec5734f1e..f30ed281882f 100644
-> --- a/drivers/irqchip/irq-gic-v3-its.c
-> +++ b/drivers/irqchip/irq-gic-v3-its.c
-> @@ -205,13 +205,15 @@ static DEFINE_IDA(its_vpeid_ida);
->  #define gic_data_rdist_rd_base()	(gic_data_rdist()->rd_base)
->  #define gic_data_rdist_vlpi_base()	(gic_data_rdist_rd_base() + SZ_128K)
->  
-> +static gfp_t gfp_flags_quirk;
-> +
->  static struct page *its_alloc_pages_node(int node, gfp_t gfp,
->  					 unsigned int order)
->  {
->  	struct page *page;
->  	int ret = 0;
->  
-> -	page = alloc_pages_node(node, gfp, order);
-> +	page = alloc_pages_node(node, gfp | gfp_flags_quirk, order);
->
->  	if (!page)
->  		return NULL;
-> @@ -4887,6 +4889,17 @@ static bool __maybe_unused its_enable_quirk_hip09_162100801(void *data)
->  	return true;
->  }
->  
-> +static bool __maybe_unused its_enable_rk3568002(void *data)
-> +{
-> +	if (!of_machine_is_compatible("rockchip,rk3566") &&
-> +	    !of_machine_is_compatible("rockchip,rk3568"))
-> +		return false;
-> +
-> +	gfp_flags_quirk |= GFP_DMA32;
-> +
-> +	return true;
-> +}
-> +
->  static const struct gic_quirk its_quirks[] = {
->  #ifdef CONFIG_CAVIUM_ERRATUM_22375
->  	{
-> @@ -4954,6 +4967,14 @@ static const struct gic_quirk its_quirks[] = {
->  		.property = "dma-noncoherent",
->  		.init   = its_set_non_coherent,
->  	},
-> +#ifdef CONFIG_ROCKCHIP_ERRATUM_3568002
-> +	{
-> +		.desc   = "ITS: Rockchip erratum RK3568002",
-> +		.iidr   = 0x0201743b,
-> +		.mask   = 0xffffffff,
-> +		.init   = its_enable_rk3568002,
-> +	},
-> +#endif
->  	{
->  	}
->  };
-
-Another thing is that this patch conflates ITS and redistributors. As
-it turns out, we use the same allocator for both, but they are
-distinct architectural concepts, even if GIC600 is a monolithic
-implementation. It is OK for now, but it will have to be revisited if
-we ever move the redistributor management outside of the ITS driver.
-
-With the other comments addressed:
-
-Acked-by: Marc Zyngier <maz@kernel.org>
+Thanks,
 
 	M.
 
