@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 283B7C02198
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 15:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FF49C021A4
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 15:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lic1h8cmvapo4SpKH1KUEZHd7F7IIW73NWZ3hJrImj0=; b=Oe3LtUdz/7bGo/
-	VuFZEV6yVezD1dtoW/dKlUJAMX77qBI2OGKBTpNhOSyK0Sp5zIoz79AA47gQZa1L2WHMDNKSxQ+AK
-	io73TnOsN3rW5zH0t4xfglgfPkoBi+WRXP+YaYIV+usW1KAM/OcoFPpBRd4hZ8htPTs4QC9uM2Jc/
-	YEfPUqeJsRjHIGNkGGBTJlqpLQa83rF4p1hsKxHKCSbGaYsGkbJAVFU5kNUjlZNMTxTj9waujUlGH
-	oLRQDphfysNXhG4b/Hj13GHmr22Ykwb+y8ozkJnNFsEvHfzAXaYv+D//IgFApWy90JyNL9KdJdC8o
-	rWf+BkpuO3NWyC2U5k2w==;
+	List-Owner; bh=pRDFue44UXv1U/o4fp3JJ+gIYFEaecSraAfflAgGzBI=; b=ph/QqKEwlRXuO6
+	ciY24oV03Sm8pv/TeQ37b518Pn9QF3KN7BiBtt12tcOFJzqoqUjVnJxvLtKQSK3unYFLNEfvBRHNQ
+	/jpVDMy3dKqO1v5l+rdlDlPLZFj99wc3spQfT7yYRw8pizfggt7hTpE5odwePllfsK0YHxzRnqbtB
+	s0a6/6TJcROmOdS7OlIYxbKzGV3IuE+MzM7XmiOrb/697J0OhJx9BTSNL+0+wvYVyrJ5KakV6j3Jm
+	/DddHqACAvrRNsNvS/UmHLalgfWxBpQbt1Gg8qE9tAq2C69j0xgevfmkcUl9pvw146v52/imuaxt+
+	JmIWwKpDU3azmH3H8StA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjgXW-000000020zq-2YwP;
-	Sun, 16 Feb 2025 15:26:38 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tjggO-000000021sh-2gvJ;
+	Sun, 16 Feb 2025 15:35:48 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjgXU-000000020zF-0rm0
-	for linux-rockchip@lists.infradead.org;
-	Sun, 16 Feb 2025 15:26:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739719582; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lUhEfBRVSo79Huwj+wzJXrPk5x+fk3E/WKGITPucvjJqsA9W28bDmDYVIJV5OtFAzZeiVpgvZPaVBL0jA2EZlDpwAJwHH9YYg2PUUYKyNt01rrEr3hbg9a+dPEq0rW0iyLQDZMJ8tkEy0GxUX31+9P0heIbOShMCEwNL8d5xrfw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739719582; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nGRt15avi2VNEMTjVMkiOHeiNiOp/BakzHpL53Qa5IE=; 
-	b=U9YsfwGHz31g0HHvFlwd3Ll2mrkoeK5MGiFIJng82FZjicNRTv862tyKmTmh5OhEUNTocN9QrCZIiZh0SGOBfnBzbZx2P/uVVTZnLLccxOmR3hvfnfNaP3x24xhDsBYoGVY/sd+S8hhIHwCCSGhzx+eIOwNA5WZOyeIxZvyUjAo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739719582;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=nGRt15avi2VNEMTjVMkiOHeiNiOp/BakzHpL53Qa5IE=;
-	b=kgAy8grO7hkyPy96FKPI4UObo/yrWIeiiaBNuy7Tc950wRdugBlFZpr/ZONvD7Ah
-	ULiiPIxBSZs4lF8cvqP6J3Jlduftn7FOEMoRpzuwUIvxgREIecs7vZbTc28F07I9i8F
-	Nd7mJq4SelsxoZ2nib+Oh6mugQdlM/n37qoawp2M=
-Received: by mx.zohomail.com with SMTPS id 1739719580093298.8599431071333;
-	Sun, 16 Feb 2025 07:26:20 -0800 (PST)
-Message-ID: <68b4a5bb-79df-425a-af66-fa8973866729@collabora.com>
-Date: Sun, 16 Feb 2025 18:26:15 +0300
+	id 1tjgew-000000021hL-2C4l;
+	Sun, 16 Feb 2025 15:34:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=X3B5AHta8iT81vmhTEO3/fEUlWSWkvof26s+ONKqoy0=; b=sfEtQBKPCi+F28t1DCWdgzr+rS
+	ZT0m+CgsJ/TAjHBJfAkL6XIWqlm/gAVG5gbA+jSKTjOdO4i+LUPw8dt/+bBPYbwrK+2wI6wbshOA/
+	7ctZhdsbaEuwtMXbdPxMLmdres3KxLyF2I6nJM6A4TDFXXnCUDGTSCIVhFFIlmCdG7y4wfDkhb4aA
+	VJExjfyLn6B5NmvNQz9hctvZyUeAeZZlLH+MU4Q5n5T5fYy0Af+9kKZHwBvzvxbkGp5RwRHvzh6or
+	rxb/WfRFI1i1xanjQxM9Vq0db8NSVOTLPSg0IbP8dpaVtkm6oyWhGbW3OEAEni1qpbRoV7NwtiIOi
+	Xqwl+HNA==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tjgeS-0007m6-5F; Sun, 16 Feb 2025 16:33:48 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-crypto@vger.kernel.org,
+	XiaoDong Huang <derrick.huang@rock-chips.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Lin Jinhan <troy.lin@rock-chips.com>
+Subject: Re: (subset) [PATCH v2 0/7] RK3588 Hardware Random Number Generator Driver
+Date: Sun, 16 Feb 2025 16:33:37 +0100
+Message-ID: <173971983108.1865604.1801020506672691939.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
+References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/4] arm64: dts: rockchip: rk356x: Add MSI controller
- node
-To: Marc Zyngier <maz@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Kever Yang <kever.yang@rock-chips.com>,
- XiaoDong Huang <derrick.huang@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- kernel@collabora.com
-References: <20250215235431.143138-1-dmitry.osipenko@collabora.com>
- <20250215235431.143138-4-dmitry.osipenko@collabora.com>
- <87r03y1a75.wl-maz@kernel.org>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <87r03y1a75.wl-maz@kernel.org>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_072636_314469_2E82C3B8 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20250216_073418_615016_B53214D2 
+X-CRM114-Status: GOOD (  19.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,62 +90,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/16/25 12:59, Marc Zyngier wrote:
-> On Sat, 15 Feb 2025 23:54:30 +0000,
-> Dmitry Osipenko <dmitry.osipenko@collabora.com> wrote:
->>
->> Rockchip 356x SoC's GIC has two hardware integration issues that
->> affect MSI functionality of the GIC. Previously, both these GIC
->> limitations were worked around by using MBI for MSI instead of ITS
->> because kernel GIC driver didn't have necessary quirks.
->>
->> The first limitation is about RK356x GIC not supporting programmable
->> shareability. Rockchip assigned Errata ID #3568001 for this issue.
->>
->> Second limitation is about GIC AXI master interface addressing only
->> first 4GB of DRAM. Rockchip assigned Errata ID #3568002 for this issue.
->>
->> Now that kernel supports quirks for both of the erratums, add
->> MSI controller node to RK356x device-tree.
->>
->> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 11 +++++++++++
->>  1 file changed, 11 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
->> index 28be38b7182e..423185686600 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
->> @@ -284,7 +284,18 @@ gic: interrupt-controller@fd400000 {
->>  		mbi-alias = <0x0 0xfd410000>;
->>  		mbi-ranges = <296 24>;
->>  		msi-controller;
->> +		ranges;
->> +		#address-cells = <2>;
->> +		#size-cells = <2>;
->>  		dma-noncoherent;
->> +
->> +		its: msi-controller@fd440000 {
->> +			compatible = "arm,gic-v3-its";
->> +			reg = <0x0 0xfd440000 0 0x20000>;
->> +			dma-noncoherent;
->> +			msi-controller;
->> +			#msi-cells = <1>;
->> +		};
->>  	};
->>  
->>  	usb_host0_ehci: usb@fd800000 {
+
+On Tue, 04 Feb 2025 16:35:45 +0100, Nicolas Frattaroli wrote:
+> This series adds support for the Rockchip RK3588's standalone hardware
+> random number generator to the existing mainline rockchip-rng driver.
 > 
-> You can merge this patch with the previous one. Marking the GIC
-> non-coherent is pointless if no ITS is available, because there is no
-> point in allocating memory for them.
+> The RK3588 has several hardware random number generators, one in each
+> the secure-world and non-secure-world crypto accelerator, and one
+> standalone one in each the secure-world and non-secure-world, so 4
+> hwrngs in total. This series adds support for the standalone hwrng,
+> which is an entirely new IP on this SoC and distinct from the one in the
+> Crypto IP.
+> 
+> [...]
 
-Ack
+Applied, thanks!
 
--- 
+[6/7] arm64: dts: rockchip: Add rng node to RK3588
+      commit: 6ee0b9ad3995ee5fa229035c69013b7dd0d3634b
+
+I've dropped the status=okay - this is the default so not needed
+on always-on blocks
+
+Also dropped the rng phandle, as boards should not need to change
+the rng.
+
+And I've changed the reset-id constant to its "48" numeric equivalent.
+The reset-id change is making its way through the crypto tree
+(needed by the binding-example).
+I've also queued a patch for 6.16 to change that back once the
+header is available to everything after 6.15-rc1.
+
+
 Best regards,
-Dmitry
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
