@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FF49C021A4
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 15:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1612AC02198
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 18:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pRDFue44UXv1U/o4fp3JJ+gIYFEaecSraAfflAgGzBI=; b=ph/QqKEwlRXuO6
-	ciY24oV03Sm8pv/TeQ37b518Pn9QF3KN7BiBtt12tcOFJzqoqUjVnJxvLtKQSK3unYFLNEfvBRHNQ
-	/jpVDMy3dKqO1v5l+rdlDlPLZFj99wc3spQfT7yYRw8pizfggt7hTpE5odwePllfsK0YHxzRnqbtB
-	s0a6/6TJcROmOdS7OlIYxbKzGV3IuE+MzM7XmiOrb/697J0OhJx9BTSNL+0+wvYVyrJ5KakV6j3Jm
-	/DddHqACAvrRNsNvS/UmHLalgfWxBpQbt1Gg8qE9tAq2C69j0xgevfmkcUl9pvw146v52/imuaxt+
-	JmIWwKpDU3azmH3H8StA==;
+	List-Owner; bh=aSR8G/2E08JDvTy18EbK6qu7iwhssk7TudkoM2PZSM4=; b=pWAbj0CC5SiDYr
+	X0Zy/hz3GUWyuRiRVaTaMWqUh7vUgFc8p2s3g4rw0KS71/gQReJdzj3ClNGXxs/K9BK8xIip2mgyF
+	tHwLTktpb5NrAh4YnqUIK+2fvJq4C/3v6+ihqujRQ0sBUlbeljF0Kqnxkrif841uFrdgBwt7gWjkx
+	cJxzT8DMDicfMVv6j2Q97qlvQdgr6olIMLPLoBq0IcybLW3MN9EnleyAYUo1NTlrE7gZk3YuN1yfd
+	asvvpgQm/rIZeHlii2GWqnkVuhylpmShBRHBvnD27OasQ/xxp2apDo5QtcQPDMcij5XtwaSVB7N+6
+	EaFFblpCRUcSRm1tvd5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjggO-000000021sh-2gvJ;
-	Sun, 16 Feb 2025 15:35:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tjjGX-00000002Jy6-3IZi;
+	Sun, 16 Feb 2025 18:21:17 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjgew-000000021hL-2C4l;
-	Sun, 16 Feb 2025 15:34:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=X3B5AHta8iT81vmhTEO3/fEUlWSWkvof26s+ONKqoy0=; b=sfEtQBKPCi+F28t1DCWdgzr+rS
-	ZT0m+CgsJ/TAjHBJfAkL6XIWqlm/gAVG5gbA+jSKTjOdO4i+LUPw8dt/+bBPYbwrK+2wI6wbshOA/
-	7ctZhdsbaEuwtMXbdPxMLmdres3KxLyF2I6nJM6A4TDFXXnCUDGTSCIVhFFIlmCdG7y4wfDkhb4aA
-	VJExjfyLn6B5NmvNQz9hctvZyUeAeZZlLH+MU4Q5n5T5fYy0Af+9kKZHwBvzvxbkGp5RwRHvzh6or
-	rxb/WfRFI1i1xanjQxM9Vq0db8NSVOTLPSg0IbP8dpaVtkm6oyWhGbW3OEAEni1qpbRoV7NwtiIOi
-	Xqwl+HNA==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tjgeS-0007m6-5F; Sun, 16 Feb 2025 16:33:48 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1tjjGV-00000002Jxg-3prt
+	for linux-rockchip@lists.infradead.org;
+	Sun, 16 Feb 2025 18:21:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 05D1AA40424;
+	Sun, 16 Feb 2025 18:19:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3AFB6C4CEDD;
+	Sun, 16 Feb 2025 18:21:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1739730074;
+	bh=iT7RkO2CCHiOUnzQAXrW2nBT25Icnok0W558wVUTTBU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=fXGG9reUQ/BpKUNmvhgyt+U6oWzw0iVZfJlJxFVHOKuWGbZdmee3mijN4bNPTHTTm
+	 3SkMLQ4DZUeLszWZDz96wIQv3zuUJh5Hpa6vjgJa7zNDC6n1NL18co0JZV7o5+O3b6
+	 lZWnuV6UdCcwCNFeLhee5XnnN1/1ghNcaUEJ9TJ9r3h/L3gAQDZZDGIG7jPbgEf2G1
+	 37vYBucmxT/PBmW/GBlNxjy9d61Y2+U71/fpoWNUSEhIbXgvFqnYO88G1mUEsxKU41
+	 MYWL80HzR18sRtrcXtsYVRcqnqrLH/es0z8Jj70XgGWGzjADMoxsBW2L9KxW3eTSbO
+	 UlRI1qA8k1q3Q==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1tjjGR-004bCu-Sa;
+	Sun, 16 Feb 2025 18:21:11 +0000
+Date: Sun, 16 Feb 2025 18:21:11 +0000
+Message-ID: <86ikp9sqco.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
+	Thomas Gleixner <tglx@linutronix.de>,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
 	XiaoDong Huang <derrick.huang@rock-chips.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Lin Jinhan <troy.lin@rock-chips.com>
-Subject: Re: (subset) [PATCH v2 0/7] RK3588 Hardware Random Number Generator Driver
-Date: Sun, 16 Feb 2025 16:33:37 +0100
-Message-ID: <173971983108.1865604.1801020506672691939.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
-References: <20250204-rk3588-trng-submission-v2-0-608172b6fd91@collabora.com>
-MIME-Version: 1.0
+	Peter Geis <pgwipeout@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	kernel@collabora.com
+Subject: Re: [PATCH v1 1/4] irqchip/gic-v3: Add Rockchip 3568002 erratum workaround
+In-Reply-To: <ac4afb67-9ec7-405a-acf9-6287b30320d4@collabora.com>
+References: <20250215235431.143138-1-dmitry.osipenko@collabora.com>
+	<20250215235431.143138-2-dmitry.osipenko@collabora.com>
+	<87seoe1aeu.wl-maz@kernel.org>
+	<ac4afb67-9ec7-405a-acf9-6287b30320d4@collabora.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: dmitry.osipenko@collabora.com, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, tglx@linutronix.de, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, derrick.huang@rock-chips.com, pgwipeout@gmail.com, robin.murphy@arm.com, kernel@collabora.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_073418_615016_B53214D2 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20250216_102116_089089_85A6A50E 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,41 +97,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 04 Feb 2025 16:35:45 +0100, Nicolas Frattaroli wrote:
-> This series adds support for the Rockchip RK3588's standalone hardware
-> random number generator to the existing mainline rockchip-rng driver.
+On Sun, 16 Feb 2025 15:25:53 +0000,
+Dmitry Osipenko <dmitry.osipenko@collabora.com> wrote:
 > 
-> The RK3588 has several hardware random number generators, one in each
-> the secure-world and non-secure-world crypto accelerator, and one
-> standalone one in each the secure-world and non-secure-world, so 4
-> hwrngs in total. This series adds support for the standalone hwrng,
-> which is an entirely new IP on this SoC and distinct from the one in the
-> Crypto IP.
+> On 2/16/25 12:55, Marc Zyngier wrote:
+> > On Sat, 15 Feb 2025 23:54:28 +0000,
+> > Dmitry Osipenko <dmitry.osipenko@collabora.com> wrote:
+> >>
+> >> Rockchip RK3566/RK3568 GIC600 integration has DDR addressing
+> >> limited to first 4GB of DRAM. Rockchip assigned Erratum ID #3568002
+> >> for this issue. Add driver quirk for this Rockchip GIC Erratum.
+> > 
+> > Thanks for taking the time to submit this. It only took 5 years for
+> > this erratum to be published...
 > 
-> [...]
+> The erratum document itself actually is dated by 5 years ago. Only wish
+> the doc was made publicly available, which would've accelerated the
+> upstreaming process.
 
-Applied, thanks!
+The funny thing is that RockChip was very public about the issue in
+2019, but refused to acknowledge that it was a bug (see the list
+archives). 5 years lost with bad performance and bad upstream support,
+only to finally admit the bleeding obvious.
 
-[6/7] arm64: dts: rockchip: Add rng node to RK3588
-      commit: 6ee0b9ad3995ee5fa229035c69013b7dd0d3634b
+On the other hand, we're getting close to 10 years of rk3399, and the
+botched integration of GIC500 still hasn't been officially disclosed.
+I guess this counts as progress ;-).
 
-I've dropped the status=okay - this is the default so not needed
-on always-on blocks
+	M.
 
-Also dropped the rng phandle, as boards should not need to change
-the rng.
-
-And I've changed the reset-id constant to its "48" numeric equivalent.
-The reset-id change is making its way through the crypto tree
-(needed by the binding-example).
-I've also queued a patch for 6.16 to change that back once the
-header is available to everything after 6.15-rc1.
-
-
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
