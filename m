@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D97DC02198
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Feb 2025 22:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3226DC02198
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Feb 2025 02:37:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e493BKT4wAYfurWsLxk3UHkkKZ7G2EZcODQBQKPdqoc=; b=xA2bVaSAIxVl9p
-	nc8XqEIX9950k8YYTz1pmnPt5WR8gHzr7x5JTbS75//nzVjcZdjQY+VfelS/ZPCms/JKXiqgUcv8V
-	EI4HL/sjjvURySV+7UL6tRZkHfY3NqqPihDJpmLPcPiaIBQRWC/z98/MrxnM309eu+ZA+NJ3anXus
-	/NwMgwTgtoYU70Tq0We3Tx255xT+J0hFcM7wra0STp9FmRuv68LYoet1QdfMeu/Zi9/J8OmhU9Cfc
-	vSuZnOTUhAvXluJlSBRSaicE6IPCiBPBcn8GP0aCPWCw1cQPtG6yx3BSvNqOEHFIUrP8Nl4Ks2kS6
-	TBnlwpod5rw8mKk0Ioaw==;
+	List-Owner; bh=4tnMFymCeRPo0oxRV3NAeqYMaJgx0j+LhANpPUxoidg=; b=w6Xh003gR5JuGt
+	BgXOkQGSWcq/FUfP6LR0Zfn+rnJrnLtkDLXCPKe8LTd57DMcEFUwiuEUMfl2x4Mv80nT0cGiD79Or
+	EfNUbpwn68zkFib2sjhn2DdCLNCs8qK1nhtP9w7EteQL6+ntZpgsjIKvUrFvpJcLFcEvkhOTLgdc+
+	0RWtziKlzR7ry8B1aQ5XJ9dNpv+BcnlpsYl7JfeaAfottalcl++5ORViezdR3kADRVlRFKqPUvtxR
+	fAj4Cm33QBU6JgoNHo6oSZEkWby/r0MWSVf1l2lVrKBthCKbPhP09QTsNSeV4KzjJDrx/PfuiPqy8
+	yoE1hdyImtqA+JmVzkOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjmxk-00000002hCS-3VLL;
-	Sun, 16 Feb 2025 22:18:08 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tjr0H-000000033Qp-2ikK;
+	Mon, 17 Feb 2025 02:37:01 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjmxi-00000002hBT-0BDV
-	for linux-rockchip@lists.infradead.org;
-	Sun, 16 Feb 2025 22:18:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739744265; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ORzp7KlFNwkmQr+kQmhUVilbBN+qZ6IqFC6CHZ0o2nLGkTc+hVGIln8pVXFgUxcEFWxUVsdYRiFF/I6ufcaP2iNx5gqId3a9Sz1mmbNSBXPI321ABv8z3RA9TpdM4iARjkTSSep+i5RsrMndffyVw1Rm104pLgB93/ga0unezOs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739744265; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Q75cQOfZzNd7YlqQXzBT5khX7N9EAQ92SxJwQnSbgUI=; 
-	b=YrhlRu+um52z9zAwgD3vgjV/uvTORo2k708xnoSJnmucCg+HbqdR0tVlcn0m50OVJEMmfMO6NKw8/+2cDk8xazbVON77LSnQU9CCizzB6/TexwRr2KYvT//dfOKX+fW34z0R4ps6dAD+rM+icUfyMWkV/AXwZDfLAUkoUARnUBA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739744264;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Q75cQOfZzNd7YlqQXzBT5khX7N9EAQ92SxJwQnSbgUI=;
-	b=ApLuwNHvry5nFXi/B16ix2LRwBxS4+Qouiq2uYtYTTWz4YQQVc4JF4lpe5eu7pdr
-	Pm8TVJhq734FL+kPueFXNUGdsYFRyzcDvYjp1vBbSKV9F0FImAfrcIFtr7eZ/PXRw4B
-	d7PDPIHH3hBKyzp1xEhmfqhoh4fR+awPYjJrCZV0=
-Received: by mx.zohomail.com with SMTPS id 1739744262024296.6829777439069;
-	Sun, 16 Feb 2025 14:17:42 -0800 (PST)
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Marc Zyngier <maz@kernel.org>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
+	id 1tjqyn-000000033F3-3TT8;
+	Mon, 17 Feb 2025 02:35:31 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-21f8f3bd828so7240285ad.2;
+        Sun, 16 Feb 2025 18:35:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1739759728; x=1740364528; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jd4HwW3C0GzbkZ4o5YXYERwcRmz2KQTD3y8I//0WkKo=;
+        b=fSwzAcNtqV77zaVivPzWkobZ3XNa4E1SIjewWtIe0ictxhhZel6zYKH/ZxLuvTpIEu
+         +IYvPWhqBqWze+/PxcONi7/mEQmoH4kLffuqQ3VrgAR2jT+Z9Fu3heItii75G1d8Rajj
+         t4AfFJNMqOsWEJG30DcEX0y8Vs48ZXSiK7PWjs8twJ+IIxKcsCI2bT77IU4M8ajVcxvC
+         Xn56wiT5qbopyejBsxa00Tben7/58KluZQOKy5/zcqIQvmiVNilP3L/RaPVm/FRLKL68
+         RMypKcTPmUoMb2u8uommqmoS/4CcDtwZ2WJuZ0BqqRWN17jaV6QsEpBxfAjbO+AQQxEf
+         Y9mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1739759728; x=1740364528;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jd4HwW3C0GzbkZ4o5YXYERwcRmz2KQTD3y8I//0WkKo=;
+        b=VGYuL40Ejpi5h+ApeUVVIxZXa3QuoyuoxQANX3QiUQq+V0DiTR5UiyaK7Aw1YsBSIl
+         jU/xQsrzy9u2+h7Pneg3+mNkFdsA/92jJfckBzC+UlmQQVfnGhwxTsxwMohkNElw31Ag
+         nRgMLfBkgf1RgRIjGtoNmgsW6kGrXJ9gO7Iit9QmAMygdsPm+E6LMdh43VmCpd8TMcZG
+         UKY4FnyB6KNSe962ZDLD8Aio+T95tUXjkcotxs7TUyVjWUksHZjoKnA5m1lHLWjPu3YC
+         9h7xTOYmOdyjAIDspVpp9KekuN04b3krLowUxqlYrwEhuDW4vuAPnX5g9INNyCN2U8dw
+         KzQQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVOg0322zNI2+wzBk43z6znKb+kWb93c0+Owcaj1ZeDt1fsrNcH+ux0aVd0VT4ZO/5laZ3h3xMfYdFSrTKoX5o=@lists.infradead.org, AJvYcCW1Hg2ZrMfEN3YYOXiXnyPYeQLGIszwN1RS5jq3u0SO1gJO/Hni9IMNaSe0Jbq/ldREkMsPu+nWVV/318fLkv7K@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUiYlKyF6a+R/bSGKr509q1DSfqyCAFmZNWAQkBqc1gsMH6Bu3
+	Pn4SgywCZOzpvfCtqEovW8atFMUXoT3GFf+nxcAGoNRWsrM1EdeS4Cj2Owkw
+X-Gm-Gg: ASbGnct21/MoSJwS0zZ1uCCZCpz1d3VMSYaZUBh7U2h4kDYx75wPlV+4HXZ+dE/VMdl
+	uDXwmKJ2tS17e8Z431jp3EE0ne+niPmdX6drA0n7XMjLgGQojf/haJmk8lKEev2CRE0EsOg40n1
+	HQQBsNFMcpidgIPNmzLQZ7wxu7OhQxOS3WejEiXhNyYO3vjVzxW8H8Zw3WKZyOZ7/7LUfNjovP7
+	BCS5XCvwzr1BpA0WEidQYfA4NoUT5Ebfy9vs5NAcyYs2hcXIGvceLHdqmQsF06u7GPiqyB1rbPV
+	Cw4Ln4JTdUdvE3yyTVL8
+X-Google-Smtp-Source: AGHT+IGNbbo7ikAW7Im+6gY74ZetG4o01fHwxCYPD6wtGVa+4XQqxJ9KfHcssadTuHK692BYrU0wVA==
+X-Received: by 2002:a05:6a21:78a1:b0:1ea:ddd1:2fe4 with SMTP id adf61e73a8af0-1ee8c9aa127mr5494706637.0.1739759728075;
+        Sun, 16 Feb 2025 18:35:28 -0800 (PST)
+Received: from rock-5b.. ([221.220.131.19])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73260f9e6e2sm3702199b3a.79.2025.02.16.18.35.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Feb 2025 18:35:27 -0800 (PST)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: piotr.oniszczuk@gmail.com
+Cc: conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	XiaoDong Huang <derrick.huang@rock-chips.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	kernel@collabora.com
-Subject: [PATCH v2 1/3] irqchip/gic-v3: Add Rockchip 3568002 erratum workaround
-Date: Mon, 17 Feb 2025 01:16:32 +0300
-Message-ID: <20250216221634.364158-2-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250216221634.364158-1-dmitry.osipenko@collabora.com>
-References: <20250216221634.364158-1-dmitry.osipenko@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	liujianfeng1994@gmail.com,
+	robh@kernel.org,
+	sfr@canb.auug.org.au
+Subject: Re: [PATCH] arm64: dts: rockchip: add hdmi1 support to ROCK 5 ITX
+Date: Mon, 17 Feb 2025 10:35:21 +0800
+Message-ID: <20250217023521.35071-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <2FE649E5-61FE-4299-81D1-F838298A04A5@gmail.com>
+References: <2FE649E5-61FE-4299-81D1-F838298A04A5@gmail.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_141806_161464_0BCFA238 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20250216_183529_866426_B38DCA68 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,113 +106,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3566/RK3568 GIC600 integration has DDR addressing
-limited to the first 32bit of physical address space. Rockchip
-assigned Erratum ID #3568002 for this issue. Add driver quirk for
-this Rockchip GIC Erratum.
+Hi,
 
-Note, that the 0x0201743b GIC600 ID is not Rockchip-specific and is
-common for many ARM GICv3 implementations. Hence, there is an extra
-of_machine_is_compatible() check.
+On Sun, 16 Feb 2025 20:53:27 +0100, Piotr Oniszczuk wrote:
+>[    0.531139] rockchip-drm display-subsystem: bound fdea0000.hdmi (ops dw_hdmi_qp_rockchip_ops)
 
-Acked-by: Marc Zyngier <maz@kernel.org>
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
- Documentation/arch/arm64/silicon-errata.rst |  2 ++
- arch/arm64/Kconfig                          |  9 ++++++++
- drivers/irqchip/irq-gic-v3-its.c            | 23 ++++++++++++++++++++-
- 3 files changed, 33 insertions(+), 1 deletion(-)
+It seems that hdmi qp driver is built in kernel, while armbian builds it
+as module. I don't know if this is related. And here is the dmesg output
+of drm on armbian:
 
-diff --git a/Documentation/arch/arm64/silicon-errata.rst b/Documentation/arch/arm64/silicon-errata.rst
-index f074f6219f5c..f968c13b46a7 100644
---- a/Documentation/arch/arm64/silicon-errata.rst
-+++ b/Documentation/arch/arm64/silicon-errata.rst
-@@ -284,6 +284,8 @@ stable kernels.
- +----------------+-----------------+-----------------+-----------------------------+
- | Rockchip       | RK3588          | #3588001        | ROCKCHIP_ERRATUM_3588001    |
- +----------------+-----------------+-----------------+-----------------------------+
-+| Rockchip       | RK3568          | #3568002        | ROCKCHIP_ERRATUM_3568002    |
-++----------------+-----------------+-----------------+-----------------------------+
- +----------------+-----------------+-----------------+-----------------------------+
- | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
- +----------------+-----------------+-----------------+-----------------------------+
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index c997b27b7da1..3619eca185f9 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -1302,6 +1302,15 @@ config NVIDIA_CARMEL_CNP_ERRATUM
- 
- 	  If unsure, say Y.
- 
-+config ROCKCHIP_ERRATUM_3568002
-+	bool "Rockchip 3568002: GIC600 can not access physical addresses higher than 4GB"
-+	default y
-+	help
-+	  The Rockchip RK3566 and RK3568 GIC600 SoC integrations have AXI
-+	  addressing limited to the first 32bit of physical address space.
-+
-+	  If unsure, say Y.
-+
- config ROCKCHIP_ERRATUM_3588001
- 	bool "Rockchip 3588001: GIC600 can not support shareability attributes"
- 	default y
-diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-index 8c3ec5734f1e..f30ed281882f 100644
---- a/drivers/irqchip/irq-gic-v3-its.c
-+++ b/drivers/irqchip/irq-gic-v3-its.c
-@@ -205,13 +205,15 @@ static DEFINE_IDA(its_vpeid_ida);
- #define gic_data_rdist_rd_base()	(gic_data_rdist()->rd_base)
- #define gic_data_rdist_vlpi_base()	(gic_data_rdist_rd_base() + SZ_128K)
- 
-+static gfp_t gfp_flags_quirk;
-+
- static struct page *its_alloc_pages_node(int node, gfp_t gfp,
- 					 unsigned int order)
- {
- 	struct page *page;
- 	int ret = 0;
- 
--	page = alloc_pages_node(node, gfp, order);
-+	page = alloc_pages_node(node, gfp | gfp_flags_quirk, order);
- 
- 	if (!page)
- 		return NULL;
-@@ -4887,6 +4889,17 @@ static bool __maybe_unused its_enable_quirk_hip09_162100801(void *data)
- 	return true;
- }
- 
-+static bool __maybe_unused its_enable_rk3568002(void *data)
-+{
-+	if (!of_machine_is_compatible("rockchip,rk3566") &&
-+	    !of_machine_is_compatible("rockchip,rk3568"))
-+		return false;
-+
-+	gfp_flags_quirk |= GFP_DMA32;
-+
-+	return true;
-+}
-+
- static const struct gic_quirk its_quirks[] = {
- #ifdef CONFIG_CAVIUM_ERRATUM_22375
- 	{
-@@ -4954,6 +4967,14 @@ static const struct gic_quirk its_quirks[] = {
- 		.property = "dma-noncoherent",
- 		.init   = its_set_non_coherent,
- 	},
-+#ifdef CONFIG_ROCKCHIP_ERRATUM_3568002
-+	{
-+		.desc   = "ITS: Rockchip erratum RK3568002",
-+		.iidr   = 0x0201743b,
-+		.mask   = 0xffffffff,
-+		.init   = its_enable_rk3568002,
-+	},
-+#endif
- 	{
- 	}
- };
--- 
-2.48.1
+jfliu@rock-5-itx:~$ sudo dmesg |grep drm
+[    2.190256] panthor fb000000.gpu: [drm] clock rate = 198000000
+[    2.191470] panthor fb000000.gpu: [drm] mali-g610 id 0xa867 major 0x0 minor 0x0 status 0x5
+[    2.191478] panthor fb000000.gpu: [drm] Features: L2:0x7120306 Tiler:0x809 Mem:0x301 MMU:0x2830 AS:0xff
+[    2.191482] panthor fb000000.gpu: [drm] shader_present=0x50005 l2_present=0x1 tiler_present=0x1
+[    2.195853] panthor fb000000.gpu: [drm] Firmware protected mode entry not be supported, ignoring
+[    2.196019] panthor fb000000.gpu: [drm] Firmware git sha: 814b47b551159067b67a37c4e9adda458ad9d852
+[    2.196407] panthor fb000000.gpu: [drm] CSF FW using interface v1.1.0, Features 0x0 Instrumentation features 0x71
+[    2.221006] [drm] Initialized panthor 1.3.0 for fb000000.gpu on minor 0
+[    2.566800] rockchip-drm display-subsystem: bound fdd90000.vop (ops rockchip_drm_fini [rockchipdrm])
+[    2.567523] rockchip-drm display-subsystem: bound fdea0000.hdmi (ops rockchip_drm_fini [rockchipdrm])
+[    2.567882] [drm] Initialized rockchip 1.0.0 for display-subsystem on minor 1
+[    2.740995] rockchip-drm display-subsystem: [drm] fb0: rockchipdrmfb frame buffer device
 
+>Is it possible to provide me url with kernel package you are using (wich works ok for you)?
+
+I'm working on 6.14-rc2 now and this patch is included in this armbian pr:
+https://github.com/armbian/build/pull/7835
+
+And here is the kernel deb I built, which is confirmed working:
+https://cdn.haguro.top/share/kernel-rockchip64-edge_6.14-rc2-rock5itx-hdmi1_arm64.tar
+
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
