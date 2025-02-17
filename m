@@ -4,99 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1F4C02198
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Feb 2025 02:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE2B1C021A0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Feb 2025 06:16:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PXbYjh3reoCFGkKCCZbn0w7B3TWlAl6D3vWQFASPgRA=; b=gOza+4TmwSdwq2
-	MXPUCpIJAyB1BPNrQ3eKTRq3IBPIKG1dgzpE5/KCWv7wde/BJjMnSO8kKCVMHvCExrzgX+rNcOW7V
-	6S9lxRr7lkFKzwQPK/8q63fM+WG1XJYhzAc8NUi38madhm8TviHIXnxrXtwBcu+RcDA2GL+n5l95Y
-	Gfba68V6R92B7XcmHZMt+rhygShz307E0xORAo6itVRT0wSrJFjB0XgdYFfYLgiljLixLHvDDViHI
-	Cgzx/hXCbuApQyZYrD8kh+Jrq6jYIPMejdRUS/G83jiWsBlhqZB1yqIP53e6/GUTN3O/rJABdfhNH
-	t79671/WxjzHd+p6BKJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2N3RNtdPn4G+JsFKa/OAWiqzEEzd5uy7ZJ9vub12MyI=; b=sMxcFaGiX9m1+B
+	oAYdfExaE4lnDXXbOZJNAKkD88Bxd02T0nCmr8PGKkIqGeMXB7LbrfoM5YX85+atzIotxCS3yqFxy
+	jMzPhdZM7Pk04aYNV+9QaDySZzV5tw/Kh4GPPOAWYOzPM0duZnpgFIVUGQyy7qmn6eQytoG7L+7OU
+	l+oip/eZo3l9zm8pF6YW3RRksO+5LLLkGyJ0xFvBsbYWAu87OGD9nJxFMPOovToZkLueFzN0Gen6X
+	0BRFwSOpDH2DalksSDzRKD8cyNc3KH/Wl02VAxMtTSh7EL8Z1zCIwCSo5iEJisaCbOzPcktLfYBPB
+	YjZuZPu15EBGnQQ3V1Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjr9G-000000034Tk-17WW;
-	Mon, 17 Feb 2025 02:46:18 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1tjuQK-00000003Rzg-3QlT;
+	Mon, 17 Feb 2025 06:16:08 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tjr7n-000000034Mc-0S5o;
-	Mon, 17 Feb 2025 02:44:48 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2fc8482c62dso54316a91.3;
-        Sun, 16 Feb 2025 18:44:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739760286; x=1740365086; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AER0Zup4p13T8PV8KU9Nywbmtgf/uR0O/WZpg95sLMw=;
-        b=UjpnLZk0tJdbWW9PzCLeGt79qjOwf20476GQhHXsF1iJTxz/IL1MCV+aioXJkOFpWz
-         HkLX0A1Eorufc0NPoMnvqIx0uRxrNtqOuKNGuwPnssl/UTMHWDSYgaVI7+dHWdG/1QbZ
-         pWz0XkoVwd2Yb2lMqqFp3nphYnQ6/YuCf0UeOYYknl8ORSbi5f+CO0P3JfHLy1cXZkM/
-         wLS2r4XqmXUVzJNrX0oxIwl93EnktcN4s04EByrlJ5s+1SyxiXgf1oKVVe8c2AOy5Gva
-         BVv4gnAjunxOvYjQ8Ewa6UjdPyFKTqiwnXRBzXSLuI7nY7JBFfkNbGub5RfpqNr8ypGD
-         AkZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739760286; x=1740365086;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=AER0Zup4p13T8PV8KU9Nywbmtgf/uR0O/WZpg95sLMw=;
-        b=SuCQkh03hBYpcEOcqH2MeYOg+t73JmEZX4RKt8g5R6yfZnEYIVkKmtSLBby9y1Svp1
-         fuAKnF8ric/DWaF5qOTwuAccdlDZN9zc1E8pNT2HOsixepeZuxcotorA1uHpr8tNMUOB
-         Sk2gmb+SfgavWguoytXiJqdVfW0madKlY+3NPhGQ1qndOLMsvXnsNISVyaxuTQfcnClR
-         cR6fzdBzyAC2jRIqjnYVKgbY2khQo0spZZ6oOi7h38u/JsOVxB6l6/vZS4R2eR0SDwUz
-         OWXDkFtAfqVRdmbFqGX/roLHah1F4cT7rDj0nJ9vC0RO9xRzpY5Y+pCvxIGDTfUxh/u1
-         igwg==
-X-Forwarded-Encrypted: i=1; AJvYcCUxwj4K3ne6DHXQ4A7i+IUGbhQ1j7cxGkfYQDhXqpwqh6De/fIHnoAMt7N7+JgBojvSIR95SScrqC1AvhlUdwk=@lists.infradead.org, AJvYcCWR2vpSxWC4rSKrAkeKnPQb1we1DG/+FXIcsj2mnRNwQofyVg4AA29B+S6YzbuHBz+FuwVO8hY46uUdFsXsZnF7@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw08eJr/b6gGcv1wa9LfijgLmkb/5XvjVGK4OMjECs4ntYMfhEI
-	NpjKhn01u07vO6/yrUAxPjE5UpG0YyZf+YiN5kA9L+pmi1S1+PA/
-X-Gm-Gg: ASbGncuJS/rTHGQRS5BH3M+uVFRY0qWqDSZf16Kn4AleLf8ZiDp+n5db1JcGXiHPUKu
-	UCRAsHPauKzIWlVLH/nlN9kvBjIxQTlUsSayZKSKE7bFogM/xXb7MwfH9DnoLrqXgq8UqQEwPBu
-	kBp21s/5Uap8uAr9RquIo9yWdNI0zsW2Q9mPwq2rcpODcDmn5OqRPISW1kRyVpigUOnEAtZq6D3
-	t3fzgp0M/dm7Z+M3GjmrIPjG+kZdGyiDaUokS597EigAOn9vKkFa+R8RFj5KwDmMJGng5DyCIJE
-	aLveE8AM3OjQ/X5i50IF
-X-Google-Smtp-Source: AGHT+IFFkuRjjsUfRuK1JlJi9Y9I+z5IPJ8tmFVOzZ4eyJmlUKG0o/RiAA34cdX7ng6bdHkr98gAvw==
-X-Received: by 2002:a05:6a00:2d8f:b0:730:9467:b4b8 with SMTP id d2e1a72fcca58-732618d705dmr4381994b3a.4.1739760286043;
-        Sun, 16 Feb 2025 18:44:46 -0800 (PST)
-Received: from rock-5b.. ([221.220.131.19])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7324278011dsm7014915b3a.180.2025.02.16.18.44.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 16 Feb 2025 18:44:45 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: cristian.ciocaltea@collabora.com
-Cc: airlied@gmail.com,
-	andy.yan@rock-chips.com,
-	conor+dt@kernel.org,
+	id 1tjuNT-00000003RR6-4Atb;
+	Mon, 17 Feb 2025 06:13:13 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 9029C25B74;
+	Mon, 17 Feb 2025 07:13:03 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IRIx5wKWMOLU; Mon, 17 Feb 2025 07:13:02 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1739772782; bh=HHMbgpNeEzDZ7ORYxSAbQ1Gijr8bxwEMUpfHHov6srE=;
+	h=From:To:Cc:Subject:Date;
+	b=cSrwkAd9nQ9/f7hytK2sLC/Yq52BOidLYDL4/zjPakiRnY+Ko8IGseGBqzrEWGTmg
+	 /YubN+MdiNjAsYaRpDlTNFxP4MPkMrbAZ8+hGVCxrKh/RS5SX1uB2kihn2WLd9eMB6
+	 wRzYsY+PSPRlkSQngYnlp0QbahuNvqgQdJY4vMx3TzIFVQq6LtQSYq7wR5X5tLZy8N
+	 v7OyD+nf0xfigG1RXhlSXn3w/aeB5nPgC0CuJWOW23IGj3O3D1QAhfo8PHDrLfMk2r
+	 8YrzORKjnAPpk1ukkWaRWzcHueLFzFaoyvGcWTI8QHG4nyzCLrhZlWmOuwzVBHVAWZ
+	 2z03ghVdwzV/A==
+From: Yao Zi <ziyao@disroot.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	hjc@rock-chips.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	robh@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re:[PATCH 3/4] arm64: dts: rockchip: Add HDMI1 PHY PLL clock source to VOP2 on RK3588
-Date: Mon, 17 Feb 2025 10:44:37 +0800
-Message-ID: <20250217024437.35155-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250215-vop2-hdmi1-disp-modes-v1-3-81962a7151d6@collabora.com>
-References: <20250215-vop2-hdmi1-disp-modes-v1-3-81962a7151d6@collabora.com>
+	linux-kernel@vger.kernel.org,
+	Yao Zi <ziyao@disroot.org>
+Subject: [PATCH v3 0/5] Support clock and reset unit of Rockchip RK3528
+Date: Mon, 17 Feb 2025 06:11:41 +0000
+Message-ID: <20250217061142.38480-5-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250216_184447_165261_EF816E54 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250216_221312_432235_6E0A31B7 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,46 +79,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+Similar to previous Rockchip SoCs, reset controller on RK3528 shares
+MMIO region with clock controller, combined as CRU. They're represented
+as a single node in dt.
 
-On Sat, 15 Feb 2025 02:55:39 +0200, Cristian Ciocaltea wrote:
->The HDMI1 PHY PLL clock source cannot be added directly to vop node in
->rk3588-base.dtsi, along with the HDMI0 related one, because HDMI1 is an
->optional feature and its PHY node belongs to a separate (extra) DT file.
->
->Therefore, add the HDMI1 PHY PLL clock source to VOP2 by overwriting its
->clocks & clock-names properties in the extra DT file.
+For the reset controller, only bindings are included in this series
+because it's hard to test the reset controller without support for some
+peripherals (e.g. pinctrl). I'd like to first make dt and basic
+peripherals available, then submit the driver.
 
-There are boards that only use hdmi1 such as ROCK 5 ITX. So there are two
-choices for this board:
+This is tested on Radxa E20C board. With some out-of-tree drivers, I've
+successfully brouhgt up UART, pinctrl/gpio and I2C. A clock dump could
+be obtained from [1].
 
-1, Enable hdptxphy0 as dependency of vop although it is not really used.
+[1]: https://gist.github.com/ziyao233/032961d1eebeecb9a41fea2d690e8351
 
-2, Overwrite vop node at board dts to make it only use hdptxphy1 like:
+Changed from v2
+- dt-bindings:
+  - drop redundant assigned-clocks and assigned-clock-rates properties
+  - improve description of input clock gmac0
+- Link to v2: https://lore.kernel.org/all/20250108114605.1960-2-ziyao@disroot.org/
 
-&vop {
-	clocks = <&cru ACLK_VOP>,
-		 <&cru HCLK_VOP>,
-		 <&cru DCLK_VOP0>,
-		 <&cru DCLK_VOP1>,
-		 <&cru DCLK_VOP2>,
-		 <&cru DCLK_VOP3>,
-		 <&cru PCLK_VOP_ROOT>,
-		 <&hdptxphy1>;
-	clock-names = "aclk",
-		      "hclk",
-		      "dclk_vp0",
-		      "dclk_vp1",
-		      "dclk_vp2",
-		      "dclk_vp3",
-		      "pclk_vop",
-		      "pll_hdmiphy1";
-};
+Changed from v1
+- dt-bindings:
+  - relicense binding headers as GPL-2.0-only OR MIT
+  - use gapless integers starting from 0 for binding IDs
+  - make input clocks essential, add corresponding description
+  - rename the input clock that is generated by phy module as "gmac0"
+  - style fixes
+- driver:
+  - format in the common Rockchip driver style
+  - drop initializing code of the reset controller, as it'll not be
+    supported in this series
+- Link to v1: https://lore.kernel.org/linux-rockchip/20241001042401.31903-2-ziyao@disroot.org/
 
-What do you think of these two method?
+Yao Zi (5):
+  dt-bindings: clock: Document clock and reset unit of RK3528
+  clk: rockchip: Add PLL flag ROCKCHIP_PLL_FIXED_MODE
+  clk: rockchip: Add clock controller driver for RK3528 SoC
+  arm64: dts: rockchip: Add clock generators for RK3528 SoC
+  arm64: dts: rockchip: Add UART clocks for RK3528 SoC
 
-Best regards,
-Jianfeng
+ .../bindings/clock/rockchip,rk3528-cru.yaml   |   64 +
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      |   68 +-
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-pll.c                |   10 +-
+ drivers/clk/rockchip/clk-rk3528.c             | 1114 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   22 +
+ .../dt-bindings/clock/rockchip,rk3528-cru.h   |  453 +++++++
+ .../dt-bindings/reset/rockchip,rk3528-cru.h   |  241 ++++
+ 9 files changed, 1975 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3528.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
+
+-- 
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
