@@ -4,69 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E19D5C021A9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Feb 2025 18:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F86EC021AA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Feb 2025 18:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lPNcBGjpP+dkUjAs7SUm2JWCpWm6YxRwVvNSputSrhk=; b=IDV5Wh8N2Wzm6p
-	UdjcD6mgRy/wP7A+ONiekPTQHwl/2J/jv1WAaIDX+7liQx3pqvNb4579cvmP1RcE1Id8mMD2hO+2U
-	rjUkVpTsyJlNaZgABmrNoRBWOCANwn4upKNAZqM4Mj4Jd2t7xL7Scsdqtsz+8e5ynsDv5ZLOZxVMd
-	I84AlEYCoKbPSJSxrYe5cjrtfubPq5SjZghwxqxXhvU7XSNIsLjPGxqpI2J3pWAkr3PCwQi2GMRct
-	fXbCF4nz8I4JatHTv1btW+ass/PEEn4qE2wZ1OKPSEkj9f/JjxkE4260KkNBoMjeKoblUF474aD6G
-	zgJeIiVtlhrwYPDw6niA==;
+	List-Owner; bh=iOG62KwiXOkUPPQRKCrLKp8JBzmXfYKjw8MYThxhSNI=; b=aID02h/7ZRoOOt
+	wwDfxtwUv6kcS4wFh9A7EEKry2JPgpFBdKIgiRkHi0DMyIDh7RXRbQi3TiO85eIvH8r3V4/NXsSF2
+	v3yN5zxw31FQifFTTHOUJW6B0qZ/PcdjhSHZPIBaeMzSJ/Hgp044MYiWxqGpQ3slPqM9r4RSZ+fyf
+	398lsRcmYBo/14U8ozDhqdMD2Z9SRoQ+R0S85J7Ob50f4VfZ4bIBA29ORv24lR5v9oW2Paf5sBORN
+	j8n+09d54D4nWoanuCzDxBfRxBz/QVGVxIuFq5tnxyr7AuU/poJLFxk36DazGh7VkDVGV5kMccUuv
+	x41CYx0cauHVX/WfGY1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk5lR-00000005ajc-1qUs;
-	Mon, 17 Feb 2025 18:22:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk5fY-00000005a1P-19sO
-	for linux-rockchip@bombadil.infradead.org;
-	Mon, 17 Feb 2025 18:16:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=dW0tidsgp/Ub4s++qsOhA6oRQ1/t0kgWfjgFSGuKGjs=; b=YghUxx9B3yzGs5DQdm2xkiQjLK
-	q84wDeDOL0I6snJTUELmP1t+dIrLa2QsC9BT8gK/Fq2YDXTPtn7Hqe0ieUSqzdKcHUGJ9dsjQ+6uZ
-	dPkfrsTW67lGxhSSLnKONVk+/XklVt6bNbW9OxKN9VmSRpN/ah6gwjh5uICrs7W2am8+tPJkXvub3
-	MBtgypRRk1d2lN4qGzjrsYIWsZkqS0C7XaJDVQF9wYRCpyOJqIq8TIUUKcrEceSIvWjktVBWhrFd+
-	bjuYJSonWctZXQw9PWml/ey9ON4YQl8UOhaIfp1OCll+YXSpRQYHtu0tZgZKo7dYiNYT7SjjuCIrS
-	+5Gvd5og==;
+	id 1tk5lV-00000005asF-2qfr;
+	Mon, 17 Feb 2025 18:22:45 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tk5fV-00000001rtM-0Vjz
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tk5kP-00000005aS8-0guW
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Feb 2025 18:16:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1739816173; cv=none; 
+	Mon, 17 Feb 2025 18:21:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739816483; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=ijxtj4U8Q8R7wF2cKrBvAlztwsF7BHKE9ppJN+H5P+dWjGidAuFnAINvHWu1ugpr1KKFjNOgD/BL58cpHHg++bIB3cgTGtd+138I0XmM/pVkAuBePh6asJxzZZMGGMoyhMupfIuxXSd/uLFYhu5zZvFe8thfq19iLR86rB7HSy4=
+	b=FSDI6hvzppjHNfMqf1bT2xk8SDepDX6IlhW1DlUnW+L4T120jQc2hxnAcGk9fmBtj/cqvOW5wzeHuL9dWN1o9PjFGK2pTWnVnRE/NihBgclGYJ1lMrlZuzPBraxUvmxYK+ouYnirdRegEbpiMvj4WgYqZuHZXjfHr88CtnUydHk=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1739816173; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=dW0tidsgp/Ub4s++qsOhA6oRQ1/t0kgWfjgFSGuKGjs=; 
-	b=VWX3H4OTkoH1XaxjU+7vO6RIlxGvOjomnJz7kotKI1KEc0niNqCmLO+6ZU3/FRYcWsEPh1MFGezrCeZCWkkI0kHDH8Ri/Dd39HFKoKhZDdiT9/iFRNqKihl3JLRPEOdW3P4yIC2RNb4XD9pLIy6+810nBWMZQZicB/G9SR0mRQQ=
+	t=1739816483; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=I4gPtRebb+yuMWszCxvF8QdrCp+aDjd19oW25HRljLU=; 
+	b=QvDl393MFB0XSQnZisbMFl2vSE/PM+NI1ufAQi+ZRhABgJDY/9R7lQ4RLryknIjHfWW/90k49PS54cMti9svHV0iwmV/KhYoNi4HK1tu2noDHJ2Kb48pff7XIOyXnxv3YevMfSi82bs/Ci37sPV938GnDREMXFQT+2k/ZT0lEeQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739816173;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739816483;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=dW0tidsgp/Ub4s++qsOhA6oRQ1/t0kgWfjgFSGuKGjs=;
-	b=gbWOKyv05QL9Uq1RX9ObrSEFjSLUUYqJL4UkEvlwp9CkWJ0/PcKYAAYsm3/0jTeq
-	QCuyxQNT+HnCsGpH5M8FTziAhyx0CZ9H4Skf6c8CzlGWVneXBUkOCtOgEHE+KW8ITKN
-	vhrnDpCyr+AuRER+kPYRZehu6lb+gDzTSWXIDSmA=
-Received: by mx.zohomail.com with SMTPS id 1739816172379218.1983866353495;
-	Mon, 17 Feb 2025 10:16:12 -0800 (PST)
-Message-ID: <6638b286-2e5e-4861-bb85-2e29556b0b02@collabora.com>
-Date: Mon, 17 Feb 2025 21:16:06 +0300
+	bh=I4gPtRebb+yuMWszCxvF8QdrCp+aDjd19oW25HRljLU=;
+	b=hUUIdwp3y/ZuPBUCyoodXLwxupQoyW0nbKs1vaVl6D8xA65ZRQ4oJbly2oQnOtL+
+	7TyIvhi99nyGGgUtWPmbi6JvVk2rNsEix8U6/nK9wVZK3gl2qSx7MyAo38afKgsOf8S
+	apP+nZkViFrgoiT8W6WR9bTqtlKT6fFo5QverGoQ=
+Received: by mx.zohomail.com with SMTPS id 1739816481776736.929364556648;
+	Mon, 17 Feb 2025 10:21:21 -0800 (PST)
+Message-ID: <398cffa8-5463-47ff-bdeb-3f3167b72312@collabora.com>
+Date: Mon, 17 Feb 2025 21:21:16 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/6] Add Synopsys DesignWare HDMI RX Controller
+Subject: Re: [PATCH v6 4/6] media: platform: synopsys: Add support for HDMI
+ input driver
 To: Hans Verkuil <hverkuil@xs4all.nl>,
  Shreeya Patel <shreeya.patel@collabora.com>, Heiko Stuebner
  <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -79,14 +65,17 @@ Cc: kernel@collabora.com, linux-media@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>
 References: <20250215210417.60074-1-dmitry.osipenko@collabora.com>
- <0218c59c-ed97-4315-9306-041636462293@xs4all.nl>
+ <20250215210417.60074-5-dmitry.osipenko@collabora.com>
+ <110db742-25a0-4f0c-9620-1af8885d6e1c@xs4all.nl>
+ <3d4b1c45-cc00-4714-8582-0848e38c2ec4@collabora.com>
+ <23eacfe3-cf94-45d3-a405-43185ef32512@xs4all.nl>
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 Content-Language: en-US
-In-Reply-To: <0218c59c-ed97-4315-9306-041636462293@xs4all.nl>
+In-Reply-To: <23eacfe3-cf94-45d3-a405-43185ef32512@xs4all.nl>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_181633_639547_D6F039DA 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20250217_102137_278742_3695541B 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +92,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/17/25 11:34, Hans Verkuil wrote:
-> Hi Dmitry,
-> 
-> On 15/02/2025 22:04, Dmitry Osipenko wrote:
->> This series implements support for the Synopsys DesignWare
->> HDMI RX Controller, being compliant with standard HDMI 1.4b
->> and HDMI 2.0.
+On 2/17/25 18:44, Hans Verkuil wrote:
+> On 2/17/25 16:36, Dmitry Osipenko wrote:
+>> On 2/17/25 11:31, Hans Verkuil wrote:
+>>> On 15/02/2025 22:04, Dmitry Osipenko wrote:
+>>>> From: Shreeya Patel <shreeya.patel@collabora.com>
+>>>>
+>>>> Add initial support for the Synopsys DesignWare HDMI RX
+>>>> Controller Driver used by Rockchip RK3588. The driver
+>>>> supports:
+>>>>  - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
+>>>>  - RGB888, YUV422, YUV444 and YCC420 pixel formats
+>>>>  - CEC
+>>>>  - EDID configuration
+>>>>
+>>>> The hardware also has Audio and HDCP capabilities, but these are
+>>>> not yet supported by the driver.
+>>>>
+>>>> Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
+>>>> Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
+>>>> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+>>>> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>>>> ---
+>>>>  drivers/media/platform/Kconfig                |    1 +
+>>>>  drivers/media/platform/Makefile               |    1 +
+>>>>  drivers/media/platform/synopsys/Kconfig       |    3 +
+>>>>  drivers/media/platform/synopsys/Makefile      |    2 +
+>>>>  .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
+>>>>  .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+>>>>  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2715 +++++++++++++++++
+>>>>  .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+>>>>  .../synopsys/hdmirx/snps_hdmirx_cec.c         |  284 ++
+>>>>  .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
+>>>>  10 files changed, 3475 insertions(+)
+>>>>  create mode 100644 drivers/media/platform/synopsys/Kconfig
+>>>>  create mode 100644 drivers/media/platform/synopsys/Makefile
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+>>>>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+>>>>
+>>>
+>>> <snip>
+>>>
+>>>> +static ssize_t
+>>>> +hdmirx_debugfs_if_read(u32 type, void *priv, struct file *filp,
+>>>> +		       char __user *ubuf, size_t count, loff_t *ppos)
+>>>> +{
+>>>> +	struct snps_hdmirx_dev *hdmirx_dev = priv;
+>>>> +	u8 aviif[3 + 7 * 4];
+>>>> +	int len;
+>>>> +
+>>>> +	if (type != V4L2_DEBUGFS_IF_AVI)
+>>>> +		return 0;
+>>>> +
+>>>> +	hdmirx_read_avi_infoframe(hdmirx_dev, aviif);
+>>>> +
+>>>> +	len = simple_read_from_buffer(ubuf, count, ppos,
+>>>> +				      aviif, ARRAY_SIZE(aviif));
+>>>> +
+>>>> +	return len < 0 ? 0 : len;
+>>>> +}
+>>>
+>>> Have you tested this with 'edid-decode -c -I /path/to/avi'? Also test that it is
+>>> empty if there is no AVI InfoFrame (e.g. when there is no incoming video). I don't see
+>>> a test for that in the code.
+>>>
+>>> I also see no sanity check regarding the length of the InfoFrame, it just outputs
+>>> the full array, meaning you get padding as well since the AVI InfoFrame is smaller
+>>> than ARRAY_SIZE(aviif). In fact, edid-decode will fail about that if the -c option
+>>> is used.
+>>>
+>>> See tc358743_debugfs_if_read of how this is typically handled.
 >>
->> Features that are currently supported by the HDMI RX driver
->> have been tested on rock5b board using a HDMI to micro-HDMI cable.
->> It is recommended to use a good quality cable as there were
->> multiple issues seen during testing the driver.
->>
->> Please note the below information :-
->> * HDMIRX driver now only works with the opensource TF-A.
->> * We have tested the working of OBS studio with HDMIRX driver and
->> there were no issues seen.
->> * We tested and verified the support for interlaced video.
->> * We tested capturing of YUV formats.
->>
->> To test the HDMI RX Controller driver, following example commands can be used :-
->>
->> root@debian-rockchip-rock5b-rk3588:~# v4l2-ctl --verbose -d /dev/video0 \
->> --set-fmt-video=width=1920,height=1080,pixelformat='BGR3' --stream-mmap=4 \
->> --stream-skip=3 --stream-count=100 --stream-to=/home/hdmiin4k.raw --stream-poll
+>> I've tested with 'edid-decode -I /path/to/avi', including the empty AVI
+>> InfoFrame. But without the '-c option'. I'd expect that debugfs should
+>> provide a full-sized raw InfoFrame data, rather than a parsed version.
+>> The parsed data isn't much useful for debugging purposes, IMO. I
+>> intentionally removed the size check that tc358743_debugfs_if_read does
+>> because it appeared wrong to me. Will re-check with '-c option', thanks!
 > 
-> This looks a bit odd. This commandline should work just as well:
+> The HDMI header contains the actual length that was received. So debugfs should
+> export the actual payload, not the maximum possible payload.
 > 
-> v4l2-ctl --stream-mmap --stream-count=100 --stream-to=/home/hdmiin4k.raw
-> 
-> v4l2-ctl will call QUERY_DV_TIMINGS, then (if a valid signal is found) S_DV_TIMINGS.
-> That in turn updates the v4l2_format. So there is no need to set the video format,
-> it should happen automatically.
+> It is common for hardware to reserve room in the register map for the maximum
+> payload, but you only want to export what was actually received.
 
-Your cmdline works fine, setting format isn't necessary.
-
-> Also, why skip the first three frames? And why select --stream-poll?
-> 
-> It could be that these are just left-overs from previous attempts, but it's
-> weird.
-
-It's indeed the left-overs, will edit the cover letter in v7.
-
-> I also commented on the debugfs InfoFrame code in patch 4/6, that's not
-> correct.
-
-Thanks for the thorough review! :)
-
-Additional note: I'm going to finish upstreaming of the driver because
-Shreeya is currently busy. She will be maintaining driver afterwards.
+If payload is corrupted, it should be handy to see a full payload.
+Otherwise you won't be able to debug anything because driver returns
+zero payload to userspace since it can't parse the header :)
 
 -- 
 Best regards,
