@@ -4,39 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0836EC021AA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC53FC02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=12g4N/noc/hsG3HPFTZhFLe+GXga0Ctlij5IFF0saFU=; b=InIGCQsMp/Dqb4
-	9hFSPUj42Fbm2UnvBn/H24lsTmMGW0g0X6Xg58d/ufLbySw5+WjFYU0d1zvV8+Lai2QKbOb9kEUzh
-	e9GgdFsJMdeAbENjJT6mHqMeFGofYmLDpItY7Nrr53ye1rq7ImrwGduDSnGBp/pzDYDcwbGAiYRK+
-	pnUr1U86VQE80Z4wm0tCW//w/xAtBsMIDTvJ0vrisJkVht6bquyaMI5EURn3ho+uG6fD2L5YOLQtN
-	WBFXEqSa9Y3rW4h3bSJufYWzSynwojHhr6vk6FcFgSy15syOadQEw8BxCSKs3aa2vio3V6LcPc8Tq
-	ELWt6Myqln3k6Spzs0Xg==;
+	List-Owner; bh=GBVlqV/Tv0iZcZptEzrZE5bb/DU5jh78Ec/ksggA8y8=; b=Q2Wk/DVUoQy1tz
+	mrKRV/2cD9aQR4osyq4FT4A6aerIehKPMFsn1G/L8XlKLa2Yk0SvbNHTrC+UbssTewr7i0eragU3d
+	YC5zj4/G+A5xazw2oCYoi9rWO0P0Iv5AarH0DYadJz4VdukTYTPaw2geJVIg53W4CsyVt/mVDUj+1
+	vkLSZHwXfCw/jfRAiQu+OGUYLhqNyR3fyF08L+XjNxr+vAo754f6j/W3PMxOaZF69rQi7uH0totmV
+	8RF8kQ5ORgGDWPPbevKX6TZPAIFKBqhoQafOZbilm1LVBq6FWtVBntO045U9uOZBxqmji+41ZpQAy
+	LdoswvBMk9OWmh4h7gbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkML5-000000084ej-2CsR;
-	Tue, 18 Feb 2025 12:04:35 +0000
-Received: from smtp-8fa8.mail.infomaniak.ch ([83.166.143.168])
+	id 1tkMLP-000000084ld-3iCK;
+	Tue, 18 Feb 2025 12:04:55 +0000
+Received: from smtp-8fac.mail.infomaniak.ch ([83.166.143.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkM6X-000000081WC-2gSz
+	id 1tkM6Y-000000081WF-05mG
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Feb 2025 11:49:36 +0000
+	Tue, 18 Feb 2025 11:49:38 +0000
 Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVg2sRSz6J3;
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVg6P1Hz79m;
 	Tue, 18 Feb 2025 12:49:31 +0100 (CET)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVf6L2mzkNs;
-	Tue, 18 Feb 2025 12:49:30 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVg2l5Zzk6M;
+	Tue, 18 Feb 2025 12:49:31 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 18 Feb 2025 12:49:15 +0100
-Subject: [PATCH 4/9] arm64: dts: rockchip: disable I2C6 on Puma DTSI
+Date: Tue, 18 Feb 2025 12:49:16 +0100
+Subject: [PATCH 5/9] arm64: dts: rockchip: enable I2S0 in Haikou
+ carrierboard, not Puma DTSI
 MIME-Version: 1.0
-Message-Id: <20250218-tsd-align-haikou-v1-4-5c44d1dd8658@cherry.de>
+Message-Id: <20250218-tsd-align-haikou-v1-5-5c44d1dd8658@cherry.de>
 References: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 In-Reply-To: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -47,9 +48,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_034933_858463_A35AF148 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250218_034934_202153_093B1FB3 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,29 +68,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The bus is only exposed on Q7 Camera FFC connector which accepts
-external adapters such as Q7 Camera Demo.
+I2S0 is routed to the Q7 golden fingers and, on Haikou carrierboard, to
+an I2S codec. Nothing aside from signal routing is done on the SoM,
+therefore it's the duty of the carrierboard to enable I2S0 whenever an
+I2S codec is present.
 
-The enabling of I2C6 should therefore be done in the adapter Device Tree
-Overlay and not in the SoM DTSI, so let's disable it by default.
+Such is the case of the Haikou carrierboard, therefore let's migrate the
+enabling of this controller to the carrierboard DTS instead of the SoM
+DTSI.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 3 +++
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi       | 1 -
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 327fbc0a56655d5e544a99cedbfb1bcd39ad769a..df8a8ec582ecc6830ef11be372f204057759d1f3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -185,6 +185,9 @@ sgtl5000: codec@a {
+ 	};
+ };
+ 
++&i2s0 {
++	status = "okay";
++};
+ 
+ &pcie_phy {
+ 	status = "okay";
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index f398a55408ee2c8259085cf2325da97cdce3e4de..548bd7b486c185c80be87d433f149c3fac65ae8a 100644
+index 548bd7b486c185c80be87d433f149c3fac65ae8a..399c86bcbfefa5c667f11f31b3491eb693cfae76 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -395,7 +395,6 @@ &hdmi {
- 
- &i2c6 {
- 	clock-frequency = <400000>;
+@@ -447,7 +447,6 @@ &i2s0 {
+ 	pinctrl-1 = <&i2s0_2ch_bus_bclk_off>;
+ 	rockchip,playback-channels = <2>;
+ 	rockchip,capture-channels = <2>;
 -	status = "okay";
  };
  
- &i2c7 {
+ /*
 
 -- 
 2.48.1
