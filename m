@@ -4,90 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF54EC02198
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 11:07:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B07BDC02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 11:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3G/ubse8RaryhBCWt633bI0ZQe4BlO168NWT2EwLdNc=; b=lBikeLg1aAs9h2
-	zPW3egskLSzm0QDwsxPoxoVSa+ibNpe1pvIN6a3kQ/OG1nxXjBJU9G6KQUJFJdsU+5tGlNraii5hd
-	rAj5YNccEqBszGgzMMiDqq2gee9vZXVl+mg53+oworYJSOdQaFzJKSbPFqZgr2j0hSyn+Z8KbBWCR
-	ehvocn1lsX2BgmExwLHnXMCfMUTona4mg7nPFTsKj+JtKLTWzOaN0YEdbOYGdlFG5QISpTn/q5DvX
-	/StRu7+3NB/IYzH8rGrnQCGkugUdkLUF/2wddjnDPsb3DmpMoGpQQC+HZh9WbLS0z3Os0Rqx35u3W
-	Gg8fWqAHgaWbCNy0C3BA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n/5l93aqQeSaTuH7gBAnqfAIJ1V1klvXjh66lFz5p6c=; b=iTGVNRqFm2xwhFmbN6kDtSupZj
+	nZMpG6rN4UNxa1+70rPE1EwNYEs1sGNJ/n0vqnj9R8AZwuVk4gJ2KvcY4TAKzChyMzpwI9N6LWZgK
+	Em6DRLyXPkyzqTYe9iRQJeGNDEzx//2h7c3r8PLR3TnVX3N974HIKr50LzGBHZ8R9wWN3Zoo+Zwgd
+	r9F+pIIPceOG66d0U1VwwKRFzzFKhIgedZG1vgcw2EhqT/tdbaDDcN0qquNbdsESW/jwn98dIr1Bd
+	lA7deIg2HLl6EyFSIsCZo3QsVh0Fi0bd0b4Eb0egFnziCbs14uOCM0cNlz4iKaPeG1YewYWyYnM+y
+	NyosaUhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkLRf-00000007seQ-0OE1;
-	Tue, 18 Feb 2025 11:07:19 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1tkLov-00000007yCv-2msG;
+	Tue, 18 Feb 2025 11:31:21 +0000
+Received: from mail-westeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c201::5] helo=AS8PR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkLQz-00000007sZf-3v9W
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Feb 2025 11:06:39 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-6f7031ea11cso47277917b3.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Feb 2025 03:06:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739876797; x=1740481597; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZxBzcG+1RCPRksrqYQsyAhoS4ssC4QSuiEWJmIW8two=;
-        b=lakbIhGMdb7Ya4WuLcIUc8kEZr4pxk0Nf5x6pqdSbTrj8lh6x10janMAOU43fqJOjr
-         2A89QgXv0D+HNfj8LfMiZ8rSQQZm0EMDbIliVWdztoOSCutc+ViMk3pUy6D0qsq4zc/6
-         pH4nH7RlimRh9L4X5HtqJtLLecyrS8Xa40XzPyzwz68qiSuMOxPqrfMWlcBqm1D6HhBH
-         95E9CN8n5/5OGhT8WkC7HvajjCpvmlekgs3hECjWFW2vAtuu7pPAN4wtPpPi/8uLwtOX
-         JPo5B3z1jv8eW60DLLP+Q/t5aCFixkOh2S2v4q9M/sWKdfAPD4rZShkZ4q7Q/HK0O7bE
-         WtQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739876797; x=1740481597;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZxBzcG+1RCPRksrqYQsyAhoS4ssC4QSuiEWJmIW8two=;
-        b=j6fT+AFkVRPdmRVKlmLEMrpSscsKEoN+PcguRcTYvVtHlY/fsthr4q2eqLsq3HMzqp
-         OYO0TZNFrYwy0spgjgJNEpeFqs4sk8P0u5c42KRwCsuzdkG/DS/Xqp8WwVQpSCxblqNS
-         iciHR7V9ahXSjlynK/bYy0eHyDcG3vAblcduCg4YxPf/fUu7mbx0WCCMyFZEo8WDovZ9
-         uXb9vDzGBjuuF+4sL6e/scBfaoF+DCBAeNulZw6lvslbnf8MCuL3lFM7kapmQxSdJK8L
-         AvpJsUjtuL/iJBtwPgxyHdPBAoS/6IKHmudqNKJpE4cd2T2PsJnWTgdAP2SKoZPfKz82
-         /XpA==
-X-Forwarded-Encrypted: i=1; AJvYcCVUF3s3o6ltud6ntF5oj1I9XM8e/42VnoEensGE0uSxpOdxOC+r0N08Lnq73IKFPpqKL+TrB2+p+vB6Ef7aPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YztmEiWsXXYkqk7PP2QFh72VID1suSgcIodeZ/bXejGr31An45O
-	FI9rimaqFNHrbJkzGFgVyj5C5f6h8RVGnIUCqag5l4DhdDUJhfalIeMFJ3UpclRLJjeFdEue0dG
-	xklRKViFZAX7dDANBPGXlfMeI/gUmrcpQB9FBxg==
-X-Gm-Gg: ASbGncsCN5J+rG3n5ZMgKJ5hAad3N0xD1aNxelZC2GNdIwHwPp3rLD13eZ199ZVCl5j
-	KGyoyeFnxSvA2b7dV/sGTR7qlr7D1iwWwFH8oI7AJBeqNlyzqg8bNEtYmXUs8cMlGk4CnFNApxQ
-	==
-X-Google-Smtp-Source: AGHT+IHLwVd8/FJ71sPKuZozOz3hvT7H8xMZqgkAwVXdbgbT08OeRrY0+2kxMfjx0SKdM7rJ6iJnri3ipFwnGN4coNk=
-X-Received: by 2002:a05:6902:2506:b0:e3c:7c3f:253a with SMTP id
- 3f1490d57ef6-e5dc91dd54amr9391445276.36.1739876796754; Tue, 18 Feb 2025
- 03:06:36 -0800 (PST)
+	id 1tkLiZ-00000007wg9-2rXh;
+	Tue, 18 Feb 2025 11:24:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fdOfiDm9IkyfihSYQ3O9+mNHaoAV7ID4lcj6TGNNYevVLAVY9hi+5eW2qrLOE4LFYyFtjxYMlXd40ATXhxwv4C/Fi8+FoBrEKvfsz3WCwRauUBzIDwaMvuaq7SHW/NkdvmtCJ3Xmi5LtsDPBd3CkY7PST1gm1/oWL/uP6rA2vkBqojffHGljafw4w40NwrqGFygQA3Q8Jd0/0M95sOKpjB4IbMcbWO9DQUqkIKgMmFSP5Sr3t8L6UWVjqBCxFtq1Z8ASkIfHcQf1s0fWjuRyBjPFibJ4g18DAjoyHc6XyGxWrxkcnn1hr437PlNdlSOVMMRnhq2NsqYYDv/Of9wdmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=GTDk8bCKNwh3ddNA4q5rvPFoDnOSbLGiIfQ+3VuSKEM=;
+ b=rfHh27qfhAv6d4OBzDAKA/jIXAMXlhvDIulrOEB+GG+QyFPAvWoLWljIJS0SYg90/e0yd9IrJvbTKE9xigmMQ7luQe1Kw9ZWErM8VrYPhcCfUZZRCIx9hCHOvmvBa3Q+cQEHArld8tSaMUBsqJ4ZJsBAcdieM3iDY/VqTxNsxu2aQzmb1uSaRhA06+/xoZh2HuVBnSBotyi4b40GK7i7EqRQl8OEghhHKz911lw324wC3PcAaKHi+xyDVmDku0gkq6MTiSX9+pDwZxua0792p53W6k5T4HDj8u2/RQCFV76cYWU+FkXLarE2PyLKkTXIpbfjSFE8hfDUn4Vh3mUFyw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GTDk8bCKNwh3ddNA4q5rvPFoDnOSbLGiIfQ+3VuSKEM=;
+ b=RGKyiD8iw29a5W0f/pcCqpzqHQVnX3CC3Rpe2RXFcuMCjNN+oR3OAo9DEmgTVO1qWols52BPb6g9ydAvbQSypJmlOxH4o1ZsBX/Z+BpqtnfeqWL+RA+syAm6NE0oAybB9u6FkJIb7XBo+yVFb5dq1SfOvs9f3Bhv6khnz8SSPWI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by DB8PR04MB7115.eurprd04.prod.outlook.com (2603:10a6:10:128::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.19; Tue, 18 Feb
+ 2025 11:24:39 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%6]) with mapi id 15.20.8445.016; Tue, 18 Feb 2025
+ 11:24:39 +0000
+Message-ID: <6cac5ab1-0b76-4f28-b8e1-72760464b3d1@cherry.de>
+Date: Tue, 18 Feb 2025 12:24:38 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: add usb typec host support to
+ rk3588-jaguar
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20250213163013.1616467-1-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20250213163013.1616467-1-heiko@sntech.de>
+X-ClientProxiedBy: FR0P281CA0148.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:96::9) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-References: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com>
- <2579724.BzM5BlMlMQ@diego> <321804ef-f852-47cf-afd7-723666ec8f62@arm.com>
- <5649637.F8r316W7xa@diego> <fa184920-e1f5-4eee-894a-f617e6d8e817@rock-chips.com>
-In-Reply-To: <fa184920-e1f5-4eee-894a-f617e6d8e817@rock-chips.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 18 Feb 2025 12:05:59 +0100
-X-Gm-Features: AWEUYZl62zD8xYisGrHF_NbsDrxarZMOFP8pvEVYVbnRWAYdlQmrw0kY_HrKSt8
-Message-ID: <CAPDyKFqPZcQOqEbyfy8uC-SO8vx1f=Ck-fPSqvXqiS1H-JJsrA@mail.gmail.com>
-Subject: Re: [PATCH v7 4/7] pmdomain: rockchip: Add smc call to inform firmware
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Steven Price <steven.price@arm.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
-	YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, linux-scsi@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, "Rafael J . Wysocki" <rafael@kernel.org>, 
-	"Martin K . Petersen" <martin.petersen@oracle.com>, 
-	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, Rob Herring <robh+dt@kernel.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DB8PR04MB7115:EE_
+X-MS-Office365-Filtering-Correlation-Id: f240a84e-b818-41e8-c911-08dd500ed531
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?MUhZbUxyTjhMbEl4SkI4Zm5IYkRxQThYeHhzQjY1ZkIrWnpnVXBMVytCM0Vw?=
+ =?utf-8?B?Y0lCcmNId0FUaE9MZWh5YXNMWUJYMTRtOU9RVmd2TnhFd1REZTgrVWtYcEYr?=
+ =?utf-8?B?Zzkyem1SY0RBWHJSOU9GaTY0VDc5N0RtSUc0OWplVDJqRHVoVEpHeUdKUUZi?=
+ =?utf-8?B?elJwbTEwOWpiUGJXQ2xWMjNqZE9jMmdlaWdlV3p2ak40bVAzMkk5MnhHWVlp?=
+ =?utf-8?B?bVBSb1BLNmpEYVJaRVM1RUxtK0tDRDN6VXhiUXpkYVFDNEJZdkRma09Kc0NJ?=
+ =?utf-8?B?Wk9iNks4SjhWQ0VPSTVuRXQ0M3dWR3ZraW93Slg1MjhURGMxT1ZiZHdpYjN2?=
+ =?utf-8?B?VjZTV0xWY1VCTjVRbzJqYnhraWV4dWxWb21TeUpRSjZ0cXJURGhHQWRUQjVj?=
+ =?utf-8?B?dFF1VmRwNHFKOUlFQzhvVnZucEQ2ZzZ3MVpiYWYxV2QwSFBWWDNTUThXbkRk?=
+ =?utf-8?B?RzRxQU5tdXN0KzV1VXZyV2RXT3BCTlhFSVplV1hNam5xNlpQTEFGNE1uQVBH?=
+ =?utf-8?B?SG9LZ1IvUzk2Q3NVOFI0Q2d5RFg0TFlkcFUxcnBvRHVKcmZpQWdmZEkyVlJj?=
+ =?utf-8?B?RHo5RU5DVzU4dG13cFhKN2daZHJKRU9SNTJPSWVlUWw3cEtaQVNHY2FZQ0Nq?=
+ =?utf-8?B?cGQ4anhNTlJSd0VmbURYdGU1OURYWHFEd1hwRzJDazJSaHRWbk0vNk85a29q?=
+ =?utf-8?B?Qmd4aFVrdzBzWHRwM09SOGVzZ1BzTDdEVGhWSzV5dE8rYlFKYlkwZnpQUFZq?=
+ =?utf-8?B?Q0RyZVRYQm1WaW55bnpIUWxyMUJ6a1VIZlhjeTVDdEZHZXhxcmZsTldqK28x?=
+ =?utf-8?B?aThXUHl0TmdqZ2g4VHZva01oVHNxMHI2M3ZBQlBXZFhqZ3B2RXJwWEJlUHps?=
+ =?utf-8?B?eXlsMXRpalRRS3NTSXBRWmxQTmRlUFBoRUZzYkVkYzRGM1BzY3hmWUxoY1ZF?=
+ =?utf-8?B?djFaUUc0SUxzUUs2d0JUaTJOWlJwQmcxdTR6b3dsNU5ZNkVCQ0MrQWthdnFO?=
+ =?utf-8?B?QUtXa1FLeDJ1TTlGeFNYcVg3V21MdWpuOE02MDkvYUhNR2l5cGgwMXVIMUkr?=
+ =?utf-8?B?ZmNxNkJhTXY1K3Q5YWRnZjJtS1RENG9IMzNWNUYvVWVYQlk0ZzVaZmNySEZF?=
+ =?utf-8?B?RFRISXRpZTN6cStwYjVQblFxMkt6czhwUlpDR1VBeis0U2xOdDRXdTlEWjJP?=
+ =?utf-8?B?YndyaSt4alhXcENucTJPSFUzNXJ6NzhlK1kxblZzNUF4bmZ5ampRNERjeGM1?=
+ =?utf-8?B?dlF0bzFQMFBRWU5yVWdNQ1l2WElGQVZRbGZlSDZ6Sll3ZXU0UTlObVNMR2lL?=
+ =?utf-8?B?WFd5WUdUWW5WR0EzdEU4ZTVpclNhNXhndVJCcDNMaGpHVGE2d3V2ZE1Xcm45?=
+ =?utf-8?B?M09xZ3JOWTh5VjgvUVRuVnhybHJiNzVReUhZSFNUUWJnWEJ5QXd6SzJVSmpW?=
+ =?utf-8?B?OHl1bEtKVGRXUU13WnFJVG4rNXE5K20yQ29yaitvVGYwbkxXSHZKVnZQNDc0?=
+ =?utf-8?B?Qmw4bzFtVXFiY2c5L29saDVicWc0UXhYaW12ZHI2U0NmTnhuTjRTb1YvUUFz?=
+ =?utf-8?B?a0tGN1NGTjIwNkJMTHh5Y2R4SE9QSkpMWTdYaWswOEVCSEdaR211czdybE13?=
+ =?utf-8?B?L2pTa0RwSHZYQTFDVzNBc0JqN2c5NUI2NG9PcjRwN0VZVmN3c2xPSFBlaHJI?=
+ =?utf-8?B?N0R4R0tWNGliNXJkdGp1cXY2bHoyR1R2L3FlRFplTDJ1MFNqajZWRVJZWHdS?=
+ =?utf-8?B?R2R2Vzl3VGttTjhLdytUbld1d1BybXJrRWF3LzMzczVnQTZPa1h0alhZV3NB?=
+ =?utf-8?B?T0ZUUi9jbUhhTGl5cFd2Z1RGTHlWL2tVbllXZ0NrSWlTdmV4a0Z4K0VJTWpP?=
+ =?utf-8?Q?8Xkq1Q/eBIvlS?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RVQ3bndhSktnSHFGMG53WDJtQnFFSjBJK2ZuZVhLQy90MXJpaXQ1UlJ5QXM3?=
+ =?utf-8?B?Z1dzakRXa2YwSVRDNE9LUlAxRG1PK0xoZDhPODRyZEVyNTF6bkJhU3d2b21Q?=
+ =?utf-8?B?Z0pCNVB5R2l3YXJsZmhtQ2tqb3ZIUk8yd1FBZDJSMFRzeVNzRUtIQ0ZReFVM?=
+ =?utf-8?B?M0cyRnpUN2pqZUhJU0hVck13ZFk4Y2VHUENQaUpmcU51anlqQ0ZDcE5HSG02?=
+ =?utf-8?B?TDEvZlprWUNobGhzV2czaGM5a2l4UTR2ZCsyVkJPWkkrUnZNWTdSeUQ3dUR5?=
+ =?utf-8?B?RmMyYTlKeDh5QVV3OFl0b0Y3OE9wTG5rUU44aXlWVkd2ZW01ZGgySFpYMzQx?=
+ =?utf-8?B?TjVocG1JY2lkVVkyVkpUeVVULzFFa3R3WDRJbXpETmllL3RDRDd2VllzUXBR?=
+ =?utf-8?B?dkp3VWYya1Jtd0xPaHZZQlpwb1BxWG12VmxSMllsVDkwZFFGdFdVVUhzMlRB?=
+ =?utf-8?B?QUtzcHdYb0JnQVdyaG9CRmZNWmNqM01heGtTa0NSaS9pc2FJV3F1MGcvM1Ns?=
+ =?utf-8?B?RWw4cnFIRGRhTm1xUmM3aFJpbU9kTVJDaEJxOHlMeFowU0IwaXU4ZHJvNWVn?=
+ =?utf-8?B?L1kzbXJvdThscDNLR1ltTFhmOHRDNGdKclU0UmEyTGQ5QW5HUVRKZkdXdTF5?=
+ =?utf-8?B?blgzSTJoWnNnTFV5bGFDR1dJcG5YTmwvNXdEdGRWYitFdjY1VFB0YzJYd1py?=
+ =?utf-8?B?ZU93Vno0RzR3Uk5MMlpHeGtnTHNRZEdYOUYyc2lVT2M1Z1BGUExmMjBmZ3hH?=
+ =?utf-8?B?WUpsWjBhRmYzQSs5UWdubVQ5VEhCYm9tYjloVkFXRTJVOXBVbFNOdUhLYU80?=
+ =?utf-8?B?REJ0NXZ2UkdReS9qMW04Sk95R3o2UDJqNVllaGtoRTU0S3dDYUpaM1VNa0kz?=
+ =?utf-8?B?K05uR3BUNEdyNU1SSUNSb05WOTQxdnplRzYxRVBGNG1aU1hUSVRxT0l4aDlI?=
+ =?utf-8?B?Y0hiV2RlOFlmT3BGUC9UbGZaeVdqS1BhUU0wSGxIdVZvSzNvQkJFVjFJR091?=
+ =?utf-8?B?SnBKRkdhTlplWFJFUld2ZEFZTFExUU12KytUWThUTFdZdm16YWwrSEtib3lm?=
+ =?utf-8?B?RFF0Szd5ZnVaUGw0WjNRU2oxeTBEUEpRVnAwcmQ3RmhScjBXbmhpZHI0ZTdM?=
+ =?utf-8?B?VFdxaUlmck9tVTBYd1I2UWt5elk1Y2JPR053MUJldlRKS2FCUTRVTndiTGI3?=
+ =?utf-8?B?STBqR3lBamFFeW5oTjkrd2FpdkZ3Z0NISGtCYndHUnJ6SHJOVVFaR0o2K21Q?=
+ =?utf-8?B?emE3Z1FFVW45dU5BRGFOUnFOdEZjdkZGRzRDcW83OUhmd2JMaitiajJMQlVt?=
+ =?utf-8?B?YmlyTEVZaWxNLzd1bzBXSFlaTkZ2ZXRDdG1SdDRxVzJqYWpCREw3bUlQZk83?=
+ =?utf-8?B?VjNrZkJKRGd5UWpCdzMvZDM5aGFJRlU4ZUhTSnpoaDQzVm1JNFdPa1ZPc0Fi?=
+ =?utf-8?B?OHAxWDQyTGlYVXM0TmdvWENQMGtWa3hQTDNXdXU3aWpqbWR2bTh3NjN4SlBG?=
+ =?utf-8?B?d0s5QUJqL1ZzSFZER3BtM0p4YkxRWm5FcjBaM3YxWnVaY0Vyd3F2ZHNjUm1v?=
+ =?utf-8?B?T0JIeU5xWlRFRUtDM2xpMEdtUVh0dkRUOXZwUEUvOWV3VWxQTjhsaXJsNDZx?=
+ =?utf-8?B?c1RoNHN2aWVOelJJRmgyc0tveEROOWVNWVd3a3NXOVl1Ym80bEVkWTdlcEwv?=
+ =?utf-8?B?NkJYaXpVeHArSHp2V2dZVmw5NitkRzNUVEp4aVJDOFNLemJxZHE5Q1RSMElH?=
+ =?utf-8?B?WHpNbmNWR0RkN3ZlaWcvOTlYUWZDRFVHY1dKMDBIcUFyM2VFd0xEMndMR3pE?=
+ =?utf-8?B?WDJpZHJnVFUyY1N3eGxhNGFXeXk0MEtDb1FSclNSUlhPek1YMlBvM0tvMlor?=
+ =?utf-8?B?bzJHWndUZGl2VkxiUXRnaFBuVkFXU0syd2VnVm9CR1RJS0VWWW1xdWlxV3hV?=
+ =?utf-8?B?Sk9pMFVkRisrYXlrekZTcnJERzZXN0RjNk5ITy9MQUdIK3o3L0cwOTFOSEJa?=
+ =?utf-8?B?czZvWksrNkdFT3BEQlBNOUJtUHR3MUpKSGV4Qnp6Q0tZVS9LaUpqdnhtQjh2?=
+ =?utf-8?B?Z2kySWxWN3FDSUViQ05sMWhnL1Jldi9yL25wZkE1bkltOWN5d0JzWWhOSE5B?=
+ =?utf-8?B?THdlak9hWTBUOUwxbkVkVVdDSFZENFkvKzlEV3RGUXNVVlBYWGxxVVR5YWll?=
+ =?utf-8?B?TUE9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: f240a84e-b818-41e8-c911-08dd500ed531
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Feb 2025 11:24:39.6785
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VlV58xiMoq6dMkTJ9nI7Sw+7FQiyfWSqAPDgfLcnKSKj45DqVMJTjzNZoG9hszL6DTRKDDmAbQOyAGFT8gI/pQk1lFcHTzT5aZqkmc1FSwQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB7115
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_030637_995708_1092F009 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20250218_032447_891974_9D5D9CC4 
+X-CRM114-Status: GOOD (  28.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,63 +170,327 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAxOCBGZWIgMjAyNSBhdCAwMTo1MywgU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1j
-aGlwcy5jb20+IHdyb3RlOgo+Cj4gSGkgSGVpa28sIFN0ZXZlbgo+Cj4g5ZyoIDIwMjUvMi8xOCA0
-OjUwLCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4gPiBBbSBNb250YWcsIDE3LiBGZWJydWFyIDIw
-MjUsIDE4OjEwOjMyIE1FWiBzY2hyaWViIFN0ZXZlbiBQcmljZToKPiA+PiBPbiAxNy8wMi8yMDI1
-IDE1OjE2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiA+Pj4gSGkgU3RldmVuLAo+ID4+Pgo+ID4+
-PiBBbSBNb250YWcsIDE3LiBGZWJydWFyIDIwMjUsIDE1OjQ3OjIxIE1FWiBzY2hyaWViIFN0ZXZl
-biBQcmljZToKPiA+Pj4+IE9uIDA1LzAyLzIwMjUgMDY6MTUsIFNoYXduIExpbiB3cm90ZToKPiA+
-Pj4+PiBJbmZvcm0gZmlybXdhcmUgdG8ga2VlcCB0aGUgcG93ZXIgZG9tYWluIG9uIG9yIG9mZi4K
-PiA+Pj4+Pgo+ID4+Pj4+IFN1Z2dlc3RlZC1ieTogVWxmIEhhbnNzb24gPHVsZi5oYW5zc29uQGxp
-bmFyby5vcmc+Cj4gPj4+Pj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
-ay1jaGlwcy5jb20+Cj4gPj4+Pj4gLS0tCj4gPj4+Pgo+ID4+Pj4gVGhpcyBwYXRjaCBpcyBjYXVz
-aW5nIG15IEZpcmVmbHkgUkszMjg4IHRvIGZhaWwgdG8gYm9vdCwgaXQgaGFuZ3MKPiA+Pj4+IHNo
-b3J0bHkgYWZ0ZXIgcmVhY2hpbmcgdXNlciBzcGFjZSwgYnV0IHRoZSBib290dXAgbWVzc2FnZXMg
-aW5jbHVkZSB0aGUKPiA+Pj4+IHN1c3BpY2lvdXMgbGluZSAiQmFkIG1vZGUgaW4gcHJlZmV0Y2gg
-YWJvcnQgaGFuZGxlciBkZXRlY3RlZCIuCj4gPj4+PiBJIHN1c3BlY3QgdGhlIGZpcm13YXJlIG9u
-IHRoaXMgYm9hcmQgZG9lc24ndCBzdXBwb3J0IHRoaXMgbmV3IFNNQwo+ID4+Pj4gY29ycmVjdGx5
-LiBSZXZlcnRpbmcgdGhpcyBwYXRjaCBvbiB0b3Agb2YgbGludXgtbmV4dCBnZXRzIGV2ZXJ5dGhp
-bmcKPiA+Pj4+IHdvcmtpbmcgYWdhaW4uCj4gPj4+Cj4gPj4+IElzIHlvdXIgYm9hcmQgYWN0dWFs
-bHkgcnVubmluZyBzb21lIHRydXN0ZWQgZmlybXdhcmU/Cj4gPj4KPiA+PiBOb3QgYXMgZmFyIGFz
-IEkga25vdy4KPiA+Pgo+ID4+PiBTdG9jayByazMyODggbmV2ZXIgaGFkIHRmLWEgLyBwc2NpIFsw
-XSwgSSBkaWQgd29yayBvbiB0aGF0IGZvciBhIHdoaWxlLAo+ID4+PiBidXQgZG9uJ3QgdGhpbmsg
-dGhhdCBldmVyIHRvb2sgb2ZmLgo+ID4+Pgo+ID4+PiBJJ20gd29uZGVyaW5nIHdobyB0aGUgc21j
-YyBjYWxsIGlzIGNhbGxpbmcsIGJ1dCBkb24ndCBrbm93IGFib3V0Cj4gPj4+IGFib3V0IHNtY2Mg
-c3R1ZmYuCj4gPj4KPiA+PiBHb29kIHF1ZXN0aW9uIC0gaXQncyBxdWl0ZSBwb3NzaWJsZSB0aGlu
-Z3MgYXJlIGJsb3dpbmcgdXAganVzdCBiZWNhdXNlCj4gPj4gdGhlcmUncyBub3RoaW5nIHRoZXJl
-IHRvIGhhbmRsZSB0aGUgU01DLiBNeSBEVEIgaXMgYXMgdXBzdHJlYW06Cj4gPj4KPiA+PiAgICAg
-ICAgICBjcHVzIHsKPiA+PiAgICAgICAgICAgICAgICAgICNhZGRyZXNzLWNlbGxzID0gPDB4MDE+
-Owo+ID4+ICAgICAgICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MHgwMD47Cj4gPj4gICAgICAg
-ICAgICAgICAgICBlbmFibGUtbWV0aG9kID0gInJvY2tjaGlwLHJrMzA2Ni1zbXAiOwo+ID4+ICAg
-ICAgICAgICAgICAgICAgcm9ja2NoaXAscG11ID0gPDB4MDY+Owo+ID4+Cj4gPj4gSSBoYXZlbid0
-IGludmVzdGlnYXRlZCB3aHkgdGhpcyBjb2RlIGlzIGF0dGVtcHRpbmcgdG8gY2FsbCBhbiBTTUMg
-b24KPiA+PiB0aGlzIGJvYXJkLgo+ID4KPiA+IEkgZ3Vlc3MgdGhlIHdoeSBpcyBlYXN5LCBzb21l
-dGhpbmcgdG8gZG8gd2l0aCBzdXNwZW5kIDotKSAuCj4gPgo+ID4gSSBkaWQgZ28gdGVzdGluZyBh
-IGJpdCwgYm9vdGluZyBhIHJrMzI4OC12ZXlyb24gcHJvZHVjZXMgdGhlIHNhbWUgaXNzdWUKPiA+
-IHlvdSBzYXcsIGxpa2VseSBkdWUgdG8gdGhlIG5vbi1leGlzdGVudCB0cnVzdGVkLWZpcm13YXJl
-Lgo+ID4KPiA+IE9uIHRoZSBhcm02NC1zaWRlLCBJIHRyaWVkIGEgcGxldGhvcmEgb2Ygc29jcyAr
-IHRmYS12ZXJzaW9ucywKPiA+Cj4gPiAgICByazMzMjg6IHYyLjUgdXBzdHJlYW0oPyktdGYtYQo+
-ID4gICAgcmszMzk5OiB2Mi45IHVwc3RyZWFtLXRmLWEKPiA+ICAgIHB4MzA6IHYyLjQrdjIuOSB1
-cHN0cmVhbS10Zi1hCj4gPiAgICByazM1Njg6IHYyLjMgdmVuZG9yLXRmLWEKPiA+ICAgIHJrMzU4
-ODogdjIuMyB2ZW5kb3ItdGYtYQo+ID4KPiA+IGFuZCBhbGwgcmFuIGp1c3QgZmluZS4KPiA+IFNv
-IGl0IHJlYWxseSBsb29rcyBsaWtlIHRoZSBzbWNjIGNhbGwgZ29pbmcgdG8gc29tZSB1bnNldCBs
-b2NhdGlvbiBpcwo+ID4gdGhlIGN1bHByaXQuCj4gPgo+ID4gTG9va2luZyBhdCBvdGhlciB1c2Vy
-cyBvZiBhcm1fc21jY19zbWMsIG1vc3Qgb2YgdGhlbSBzZWVtIHRvIGJlIGhhbmRsZWQKPiA+IHVu
-Z3VhcmRlZCwgYnV0IHNvbWUgb2xkZXIoPykgYXJtMzIgYm9hcmRzIGFjdHVhbGx5IGNoZWNrIHRo
-ZWlyIERUcyBmb3IgYW4KPiA+IG9wdGVlIG5vZGUgYmVmb3JlIHRyeWluZyB0aGVpciBzbWMtY2Fs
-bC4KPiA+Cj4gPiBJIGd1ZXNzIGluIHRoZSBwbS1kb21haW4gY2FzZSwgd2UgY291bGQganVzdCB3
-cmFwIHRoZSBjYWxsIHdpdGg6Cj4gPiAgICAgICBpZihhcm1fc21jY2NfMV8xX2dldF9jb25kdWl0
-KCkgIT0gU01DQ0NfQ09ORFVJVF9OT05FKQo+ID4KPgo+IFRoYW5rcyBmb3IgdGhlIHJlcG9ydCBh
-bmQgaGVscGluZyBmaW5kIG91dCB0aGUgY2F1c2UhCj4KPiBAVWxmLCBpZiB0aGUgc29sdXRpb24g
-YWJvdmUgc2VlbXMgcmVhc29uYWJsZSB0byB5b3UsIEkgY2FuIGNvb2sgYSBmaXgtdXAKPiBwYXRj
-aC4KClNlZW1zIHJlYXNvbmFibGUgdG8gbWUsIHRoYW5rcyEKClsuLi5dCgpLaW5kIHJlZ2FyZHMK
-VWZmZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Hi Heiko,
+
+On 2/13/25 5:30 PM, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> Jaguar has two type-c ports connected to fusb302 controllers that can
+> work both in host and device mode and can also run in display-port
+> altmode.
+> 
+> While these ports can work in dual-role data mode, they do not support
+> powering the device itself as power-sink. This causes issues because
+> the current infrastructure does not cope well with dual-role data
+> without dual-role power.
+> 
+> So add the necessary nodes for the type-c controllers as well
+> as enable the relevant core usb nodes, but limit the mode to host-mode
+> for now until we figure out device mode.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>   .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 178 ++++++++++++++++++
+>   1 file changed, 178 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> index 90f823b2c219..329d98011c60 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> @@ -333,6 +333,52 @@ rtc_twi: rtc@6f {
+>   		};
+>   	};
+>   
+> +	usb-typec@22 {
+
+We have a mix of node names in the Rockchip tree, some call it usb-typec 
+some call it typec-portc, including the device tree binding.
+
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio4>;
+> +		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
+
+Should we have a pinmux for the interrupt line in GPIO mode maybe?
+
+> +		vbus-supply = <&vcc_5v0_usb_c1>;
+> +
+> +		connector {
+> +			compatible = "usb-c-connector";
+
+Reading the binding, I'm wondering if we shouldn't set self-powered 
+property in there as well? Jaguar cannot be powered (or at least wasn't 
+designed for being powered) via USB-C and I think self-powered means 
+that? Not sure to be honest.
+
+> +			data-role = "dual";
+> +			label = "USBC-1 P11";
+> +			power-role = "source";
+> +			source-pdos =
+> +				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
+> +
+
+Should we have vbus-supply = <&vcc_5v0_usb_c1>; here too?
+
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				port@0 {
+> +					reg = <0>;
+> +
+> +					usbc0_hs: endpoint {
+> +						remote-endpoint = <&usb_host0_xhci_drd_sw>;
+> +					};
+> +				};
+> +
+> +				port@1 {
+> +					reg = <1>;
+> +
+> +					usbc0_ss: endpoint {
+> +						remote-endpoint = <&usbdp_phy0_typec_ss>;
+> +					};
+> +				};
+> +
+> +				port@2 {
+> +					reg = <2>;
+> +
+> +					usbc0_sbu: endpoint {
+> +						remote-endpoint = <&usbdp_phy0_typec_sbu>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>   	vdd_npu_s0: regulator@42 {
+>   		compatible = "rockchip,rk8602";
+>   		reg = <0x42>;
+> @@ -394,6 +440,52 @@ &i2c8 {
+>   	pinctrl-0 = <&i2c8m2_xfer>;
+>   	status = "okay";
+>   
+> +	usb-typec@22 {
+
+All the same remarks as for P11 above.
+
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio4>;
+> +		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
+> +		vbus-supply = <&vcc_5v0_usb_c2>;
+> +
+> +		connector {
+> +			compatible = "usb-c-connector";
+> +			data-role = "dual";
+> +			label = "USBC-2 P12";
+> +			power-role = "source";
+> +			source-pdos =
+> +				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
+> +
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				port@0 {
+> +					reg = <0>;
+> +
+> +					usbc1_hs: endpoint {
+> +						remote-endpoint = <&usb_host1_xhci_drd_sw>;
+> +					};
+> +				};
+> +
+> +				port@1 {
+> +					reg = <1>;
+> +
+> +					usbc1_ss: endpoint {
+> +						remote-endpoint = <&usbdp_phy1_typec_ss>;
+> +					};
+> +				};
+> +
+> +				port@2 {
+> +					reg = <2>;
+> +
+> +					usbc1_sbu: endpoint {
+> +						remote-endpoint = <&usbdp_phy1_typec_sbu>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>   	vdd_cpu_big0_s0: regulator@42 {
+>   		compatible = "rockchip,rk8602";
+>   		reg = <0x42>;
+> @@ -851,6 +943,24 @@ &tsadc {
+>   	status = "okay";
+>   };
+>   
+
+Please add a comment here that this is for USB-C P11 connector so it 
+gets easier to figure out what's for what.
+
+> +&u2phy0 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy0_otg {
+> +	phy-supply = <&vcc_5v0_usb_c1>;
+
+This is a bit confusing at we have the OTG port needing to specify the 
+VBUS supply on the port, while the FUSB also specifies it and the 
+usb-c-connector node can as well.
+
+> +	status = "okay";
+> +};
+> +
+
+Comment for USB-C P12 connector.
+
+> +&u2phy1 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy1_otg {
+> +	phy-supply = <&vcc_5v0_usb_c2>;
+> +	status = "okay";
+> +};
+> +
+>   &u2phy2 {
+>   	status = "okay";
+>   };
+> @@ -893,6 +1003,46 @@ &uart7 {
+>   	status = "okay";
+>   };
+>   
+
+Comment for USB-C P11 connector.
+
+> +&usbdp_phy0 {
+> +	orientation-switch;
+
+It seems like we have SBU1 and SBU2 GPIOs as well. So I guess we want 
+something like:
+
+sbu1-dc-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>; /* Q7_USB_C0_SBU1_DC */
+sbu2-dc-gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>; /* Q7_USB_C0_SBU2_DC */
+
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		usbdp_phy0_typec_ss: endpoint@0 {
+> +			reg = <0>;
+> +			remote-endpoint = <&usbc0_ss>;
+> +		};
+> +
+> +		usbdp_phy0_typec_sbu: endpoint@1 {
+> +			reg = <1>;
+> +			remote-endpoint = <&usbc0_sbu>;
+> +		};
+
+Something's wrong with the dt-binding here as it only lists one possible 
+port, for the orientation.
+
+> +	};
+> +};
+> +
+> +&usbdp_phy1 {
+> +	orientation-switch;
+
+It seems like we have SBU1 and SBU2 GPIOs as well. So I guess we want 
+something like:
+
+sbu1-dc-gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>; /* Q7_USB_C1_SBU1_DC */
+sbu2-dc-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>; /* Q7_USB_C1_SBU2_DC */
+
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		usbdp_phy1_typec_ss: endpoint@0 {
+> +			reg = <0>;
+> +			remote-endpoint = <&usbc1_ss>;
+> +		};
+> +
+> +		usbdp_phy1_typec_sbu: endpoint@1 {
+> +			reg = <1>;
+> +			remote-endpoint = <&usbc1_sbu>;
+> +		};
+
+Something's wrong with the dt-binding here as it only lists one possible 
+port, for the orientation.
+
+> +	};
+> +};
+> +
+>   /* host0 on P10 USB-A */
+>   &usb_host0_ehci {
+>   	status = "okay";
+> @@ -903,6 +1053,34 @@ &usb_host0_ohci {
+>   	status = "okay";
+>   };
+>   
+
+Comment for USB-C P11 connector.
+
+> +&usb_host0_xhci {
+
+Add a comment for highlighting it supports DRD, just that we aren't 
+ready to support it just yet.
+
+> +	dr_mode = "host";
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		usb_host0_xhci_drd_sw: endpoint {
+> +			remote-endpoint = <&usbc0_hs>;
+> +		};
+
+Does this actually make sense without usb-role-switch; set? The binding 
+seems to indicate port is only useful when that is set.
+
+> +	};
+> +};
+> +
+
+Comment for USB-C P12 connector.
+
+> +&usb_host1_xhci {
+
+Add a comment for highlighting it supports DRD, just that we aren't 
+ready to support it just yet.
+
+> +	dr_mode = "host";
+> +	status = "okay";
+> +
+> +	port {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		usb_host1_xhci_drd_sw: endpoint {
+> +			remote-endpoint = <&usbc1_hs>;
+> +		};
+
+Does this actually make sense without usb-role-switch; set? The binding 
+seems to indicate port is only useful when that is set.
+
+Cheers,
+Quentin
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
