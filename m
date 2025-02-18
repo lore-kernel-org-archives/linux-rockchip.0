@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A476C02198
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 11:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D05C02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uIdFRZF7O865oHzihQT5Vf5sYbOV6dK8RHi12WsCC88=; b=UMW2PKF7dT1U1P
-	cltqcgRYTqIe7oLYeivkYmvvU2gjaqLv4qrzQ2UVQ7oqAK4WtakvjqYQLGDV1lpi9JljByt+J0str
-	KxYlHitUPwGaNNJ6Oy0oMUFeqYukNBjykN659UVSWxMvfZSy6tsTfaKypEQJoUurChAbbIz+FsMN6
-	kOw+s71wTkJDkhJzGJJ8ezul2u8Cm+zySGtufMZrIea13MhkJF818JkTIYGK/KuyglJdBGBt5N6gJ
-	jGo5EGekyZE6rhhfHekrxAedSE8GW+zA90kD+zBpBn8nDwmzmaeE03POg18SbYIxRsbLDBxujMGfr
-	e+j7YCFXhl+5opo88fdw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QE4XQqKZCtaFT2mh158bMSRV6R9SP/STUOgWVk6j9P4=; b=vTh9r1V2+Kl9Lonwbwaygzzqgs
+	TFG5HY0ZbpIq1Tf0kHGucpNB5ZD/3rA6ArgoncRcTXEUzVFod6YfmOvT7pnZ3zas5pZ5wN/hdRtAf
+	ynn/p7r5rrvxA7z0LsBCDR+kDq2P98/6Vk+69O8v/hmQVwLMNmVxa95DqxwQq0XfQhreAqXg25H4S
+	Y1rrZ7pg11RhrDuyt5JXvl9WGcgZhjSUlizjCcJbQal1Y6BBovNFOy3tF9K6j56xjlotx737snlQf
+	msNTAt/tTXByQGM2Kla3w0OwNDE25dYdcBj4EPYF4RCKU3mOkvkhB4K6Ld7sr+qj00u8+Y/mUOfsw
+	3uEzcUcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkMBw-000000082V4-3ivs;
-	Tue, 18 Feb 2025 11:55:08 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkLo7-00000007xyh-2Fs9;
-	Tue, 18 Feb 2025 11:30:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=4FvOm
-	NvXTI1y5cNIJEHJDIZaYnjl0e5T3+nNxyHVq0c=; b=OQv4z9WH+tSTkMu9/lOmA
-	x+7K18jmw7bjdYk8/p9fhSOaGQvI51JXsV/kjlqWmleObHG9XmIQNvYcBbwTOZL6
-	gCsFIvSRCWOBaiZll3pzIptyDdkML25aU+iT4m6JDDoPVtVsPdP83RP75SdZcD1N
-	9sgPVPAsAlxPA5zbSH2htU=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wD333uybrRnLIPUMQ--.34107S9;
-	Tue, 18 Feb 2025 19:27:57 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	krzk+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	derek.foreman@collabora.com,
-	detlev.casanova@collabora.com,
-	daniel@fooishbar.org,
-	robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v15 07/13] drm/rockchip: vop2: Register the primary plane and overlay plane separately
-Date: Tue, 18 Feb 2025 19:27:34 +0800
-Message-ID: <20250218112744.34433-8-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250218112744.34433-1-andyshrk@163.com>
-References: <20250218112744.34433-1-andyshrk@163.com>
-MIME-Version: 1.0
-X-CM-TRANSID: _____wD333uybrRnLIPUMQ--.34107S9
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGFWxtw4kKr43tFyrKryxuFg_yoWrZrW3pa
-	13ta98tr47Wr42gry8JF4UAFWYyan2kay7Crn8Jw1a934Sgr93ur4UKF1DAF1ruFnrWFya
-	kFW7K39Y9FWj9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jOgAwUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hb3Xme0ZO2u0gAAsL
+	id 1tkMKk-000000084Y3-3NPG;
+	Tue, 18 Feb 2025 12:04:14 +0000
+Received: from out-172.mta0.migadu.com ([91.218.175.172])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tkM31-000000080w8-4APs
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Feb 2025 11:45:57 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1739879143;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iRTNT+VF0BGjlKwvapjWppDo17j+1iwhkQPE23/uMVo=;
+	b=ZX3Yoy1hXUuD/+bt2TDsEfH9YNFyiuE1hX3gIbcpAC9o8USRJ5Li6rm7ZNk+R4Dw4VMfNU
+	DlJIFuiVnBIa4sM2wBQ3W8Sh8uesjMI6rq244GrrMuk/nJNQqPNgie1HPW0D0iUHs12vQU
+	lq2FCMy6RLxs0eyyGg90bKfbW7E0c6RPyyiEcjRbTvuhHs3GNK1GOX+z3p31ueTyqvMcAd
+	ERpiUk7Cmbii1XDuH/YkYQfPOaZ0vILGoTEEtoAxLZ2+gg+x4zjhV28MnyIJWihL1HbvRe
+	R5194W54/SZCartzQcvVv6CRKHnhrrBo//MnCxCqcUXt9Td1E/LRcwRaH2XRGw==
+Date: Tue, 18 Feb 2025 12:45:34 +0100
+Message-Id: <D7VJOFXU540M.2PAC1RFXAH19B@cknow.org>
+To: "Valentin Kleibel" <valentin@vrvis.at>, "Vinod Koul" <vkoul@kernel.org>,
+ "Chukun Pan" <amadeus@jmu.edu.cn>
+Cc: "Heiko Stuebner" <heiko@sntech.de>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Kishon Vijay Abraham I" <kishon@kernel.org>,
+ "Jianfeng Liu" <liujianfeng1994@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, "Jonas Karlman" <jonas@kwiboo.se>
+Subject: Re: [PATCH v2 0/1] phy: rockchip: naneng-combphy: compatible reset
+ with old DT
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+References: <20250106100001.1344418-1-amadeus@jmu.edu.cn>
+ <173831716590.670164.5196739962949646746.b4-ty@kernel.org>
+ <f64ee4ee-7e56-4423-813e-b87e023e893d@vrvis.at>
+In-Reply-To: <f64ee4ee-7e56-4423-813e-b87e023e893d@vrvis.at>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_033032_002934_7982DA4A 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20250218_034556_174055_EC11DB04 
+X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,175 +73,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6827637585583563797=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+--===============6827637585583563797==
+Content-Type: multipart/signed;
+ boundary=f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-In the upcoming VOP of rk3576, a Window cannot attach to all Video Ports,
-so make sure all VP find it's suitable primary plane, then register the
-remain windows as overlay plane will make code easier.
+--f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+On Tue Feb 11, 2025 at 2:03 PM CET, Valentin Kleibel wrote:
+>>> Chukun Pan (1):
+>>>    phy: rockchip: naneng-combphy: compatible reset with old DT
+>>=20
+>> Applied, thanks!
+>>=20
+>> [1/1] phy: rockchip: naneng-combphy: compatible reset with old DT
+>>        commit: bff68d44135ce6714107e2f72069a79476c8073d
+>
+> Thanks for your work!
+> We found your patch after NVMes stopped working on a rock 3A with newer=
+=20
+> kernels and successfully applied it to kernel 6.1.128 (currently in debia=
+n).
 
----
+FTR: I've reported it in Debian here: https://bugs.debian.org/1098250
 
-(no changes since v3)
+I confirmed it (also) broke on kernel 6.12.8-1.
 
-Changes in v3:
-- Add comments for why we should treat rk3566 with special care.
+Cheers,
+  Diederik
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 100 +++++++++++--------
- 1 file changed, 61 insertions(+), 39 deletions(-)
+--f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index c8c8da63db0f..2c84bac9d88a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2247,22 +2247,29 @@ static int vop2_plane_init(struct vop2 *vop2, struct vop2_win *win,
- 	return 0;
- }
- 
--static struct vop2_video_port *find_vp_without_primary(struct vop2 *vop2)
-+/*
-+ * On RK3566 these windows don't have an independent
-+ * framebuffer. They can only share/mirror the framebuffer
-+ * with smart0, esmart0 and cluster0 respectively.
-+ * And RK3566 share the same vop version with Rk3568, so we
-+ * need to use soc_id for identification here.
-+ */
-+static bool vop2_is_mirror_win(struct vop2_win *win)
- {
--	int i;
--
--	for (i = 0; i < vop2->data->nr_vps; i++) {
--		struct vop2_video_port *vp = &vop2->vps[i];
--
--		if (!vp->crtc.port)
--			continue;
--		if (vp->primary_plane)
--			continue;
-+	struct vop2 *vop2 = win->vop2;
- 
--		return vp;
-+	if (vop2->data->soc_id == 3566) {
-+		switch (win->data->phys_id) {
-+		case ROCKCHIP_VOP2_SMART1:
-+		case ROCKCHIP_VOP2_ESMART1:
-+		case ROCKCHIP_VOP2_CLUSTER1:
-+			return true;
-+		default:
-+			return false;
-+		}
-+	} else {
-+		return false;
- 	}
--
--	return NULL;
- }
- 
- static int vop2_create_crtcs(struct vop2 *vop2)
-@@ -2273,7 +2280,9 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	struct drm_plane *plane;
- 	struct device_node *port;
- 	struct vop2_video_port *vp;
--	int i, nvp, nvps = 0;
-+	struct vop2_win *win;
-+	u32 possible_crtcs;
-+	int i, j, nvp, nvps = 0;
- 	int ret;
- 
- 	for (i = 0; i < vop2_data->nr_vps; i++) {
-@@ -2312,42 +2321,55 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	}
- 
- 	nvp = 0;
--	for (i = 0; i < vop2->registered_num_wins; i++) {
--		struct vop2_win *win = &vop2->win[i];
--		u32 possible_crtcs = 0;
--
--		if (vop2->data->soc_id == 3566) {
--			/*
--			 * On RK3566 these windows don't have an independent
--			 * framebuffer. They share the framebuffer with smart0,
--			 * esmart0 and cluster0 respectively.
--			 */
--			switch (win->data->phys_id) {
--			case ROCKCHIP_VOP2_SMART1:
--			case ROCKCHIP_VOP2_ESMART1:
--			case ROCKCHIP_VOP2_CLUSTER1:
-+	/* Register a primary plane for every crtc */
-+	for (i = 0; i < vop2_data->nr_vps; i++) {
-+		vp = &vop2->vps[i];
-+
-+		if (!vp->crtc.port)
-+			continue;
-+
-+		for (j = 0; j < vop2->registered_num_wins; j++) {
-+			win = &vop2->win[j];
-+
-+			/* Aready registered as primary plane */
-+			if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
- 				continue;
--			}
--		}
- 
--		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
--			vp = find_vp_without_primary(vop2);
--			if (vp) {
-+			if (vop2_is_mirror_win(win))
-+				continue;
-+
-+			if (win->type == DRM_PLANE_TYPE_PRIMARY) {
- 				possible_crtcs = BIT(nvp);
- 				vp->primary_plane = win;
-+				ret = vop2_plane_init(vop2, win, possible_crtcs);
-+				if (ret) {
-+					drm_err(vop2->drm, "failed to init primary plane %s: %d\n",
-+						win->data->name, ret);
-+					return ret;
-+				}
- 				nvp++;
--			} else {
--				/* change the unused primary window to overlay window */
--				win->type = DRM_PLANE_TYPE_OVERLAY;
-+				break;
- 			}
- 		}
-+	}
-+
-+	/* Register all unused window as overlay plane */
-+	for (i = 0; i < vop2->registered_num_wins; i++) {
-+		win = &vop2->win[i];
-+
-+		/* Aready registered as primary plane */
-+		if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
-+			continue;
-+
-+		if (vop2_is_mirror_win(win))
-+			continue;
- 
--		if (win->type == DRM_PLANE_TYPE_OVERLAY)
--			possible_crtcs = (1 << nvps) - 1;
-+		win->type = DRM_PLANE_TYPE_OVERLAY;
- 
-+		possible_crtcs = (1 << nvps) - 1;
- 		ret = vop2_plane_init(vop2, win, possible_crtcs);
- 		if (ret) {
--			drm_err(vop2->drm, "failed to init plane %s: %d\n",
-+			drm_err(vop2->drm, "failed to init overlay plane %s: %d\n",
- 				win->data->name, ret);
- 			return ret;
- 		}
--- 
-2.34.1
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ7Ry4AAKCRDXblvOeH7b
+bhFLAQC1JglGt4aR9lUVkEV0fmRuMzSi31E8LahoJr3zdw31DAD+P5bkgVowQQlh
+kiTJtgRPL9URTebUfZf6ug/4nSIEOgo=
+=FLpA
+-----END PGP SIGNATURE-----
+
+--f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d--
+
+
+--===============6827637585583563797==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6827637585583563797==--
+
