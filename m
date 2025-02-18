@@ -4,40 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C88C021AE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:05:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B193C02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+fzbjzFYS+cw8ddRLDQjFJQdYxRKzDHpzQS70bxTbvo=; b=hBUeY/UOuXjPyr
-	2LjuqW3TBKhoHthJR0KKamRJ4wwLjY12X1mlmq7x2LMP/U6i46vj2F0398BIPhMBmwN0bmaa0Cylr
-	76N5Zc5ootdfM1XkET/sX8+1qErDB72ECSbrMv4r3C39NQGSPGs/ml9IusZVmfwwv3AgrbQAX7+c+
-	ipJUjkd2ZGTXqpG+3my5uOvTPvRR0gkWjUcr3Zfe9g6iH/7HmLNIMVTetcdudzRwY/hoPPbCZLZ+F
-	9wZanBdZ/aAM3iJduEWIT8o9QhMp6vFMVIIG0JKcHwv5ZM4LkyaAZkzEPme0EJ/ZuNXpentO1N89f
-	t/cFIshWjksq9w/1kyIQ==;
+	List-Owner; bh=kcDo1YTw4a4kU/r3SD9JOzHnLZZlRdwz+nTO4q+7EL8=; b=bkTvGcJugPfaN/
+	2GZOYbkeLNLQFvxujEoEOgUv8+GH1i4kFnXD8XrugAggK8eLom9zdR57jgHxR4aJfOwn7BIBddCze
+	gv3BPGEAwWQCI7d6I2y1GXG3zwnYnXtesPs50ALAqtT+wMDW+RbrmBRianUk+fLhPh/fYHUc+ws8W
+	GkHMtkVIbReWjQg1EqgRpSSLyJhvrhKuxO4LCZrXRksCy3AGxNiPr5DuZ4n1sjvnbCbIpwayHgm73
+	5D95gaT67Ea01GY6aesn1k2tzPUStyoo/0HAv/TWgpQ2LZCFDR7VL9EbbXNEQOWjU3A7BV/JtFTAb
+	VGNwNSmV4She31Na8PBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkMLP-000000084lM-2HdX;
-	Tue, 18 Feb 2025 12:04:55 +0000
-Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:4:17::42ae])
+	id 1tkMLk-000000084sS-2fZX;
+	Tue, 18 Feb 2025 12:05:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkM6X-000000081W4-3czB
+	id 1tkM6e-000000081bV-2p2z
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 18 Feb 2025 11:49:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=c+ftn8jkbitWUtsbEAaJmABpvum9lNkKn+UCCsMOLhc=; b=TJSkdbMElVsn5KQVXbJl9G9ml/
+	KdXPcBsZOUlb6803jeIa0+n1cYSnbul+k0ioVe8TTUW8E8kI6I01KSyiaFOv1lStmJxLR/v0gr01S
+	P1CTutpl7K59tSaZTLctJRWprUNx2oWJ/I6LjIjHaxNZSnGsG38p/OnCtYPTBmbPp6ZYdoYBj6nPH
+	ptmVBqFToYOHJjji6qdwns7U1jCzjzjKG42zRMdiP/dYeenhmfs6kwHRr2UqUXX07/GwyjPBctWmN
+	DdCUaqPyC+boPJjwBqjyKilEROJzCe4W+dPOqQT4qZUke8dTRYp3upewUk+bYopBtwKwd071s1C7F
+	dUMHqKlw==;
+Received: from smtp-bc08.mail.infomaniak.ch ([2001:1600:4:17::bc08])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tkM6a-00000001zRt-3e88
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Feb 2025 11:49:37 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVf6QLBz7Gv;
-	Tue, 18 Feb 2025 12:49:30 +0100 (CET)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVf32JtzmXD;
-	Tue, 18 Feb 2025 12:49:30 +0100 (CET)
+	Tue, 18 Feb 2025 11:49:39 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVj6m9wz79p;
+	Tue, 18 Feb 2025 12:49:33 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVj3DxqzmC2;
+	Tue, 18 Feb 2025 12:49:33 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 18 Feb 2025 12:49:14 +0100
-Subject: [PATCH 3/9] arm64: dts: rockchip: move I2C6 from Haikou
- carrierboard to Puma DTSI
+Date: Tue, 18 Feb 2025 12:49:20 +0100
+Subject: [PATCH 9/9] arm64: dts: rockchip: disable I2C2 bus by default on
+ RK3588 Tiger
 MIME-Version: 1.0
-Message-Id: <20250218-tsd-align-haikou-v1-3-5c44d1dd8658@cherry.de>
+Message-Id: <20250218-tsd-align-haikou-v1-9-5c44d1dd8658@cherry.de>
 References: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 In-Reply-To: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -48,8 +63,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_034934_047172_270D05D5 
-X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-CacheID: sfid-20250218_114937_266792_3171826C 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,49 +84,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-I2C6 is not exposed on Q7 golden fingers which is for routing signals to
-the carrierboard but on Q7 Camera connector, for routing signals to an
-additional adapter (e.g. Q7 Camera Demo adapter).
+RK3588 Tiger routes I2C2 signals to the Q7 Camera FFC connector (P2) but
+nothing on the SoM itself is on that bus, therefore it'll be up to the
+adapter connected to the Q7 Camera FFC connector (P2) to enable the I2C2
+controller, if need be.
 
-Therefore, let's move the modification of I2C6 bus to Puma DTSI.
+Thus, disable it by default.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 4 ----
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi       | 5 +++++
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index 4a1a71995bf5da65d59214711671d87c9ea2de62..327fbc0a56655d5e544a99cedbfb1bcd39ad769a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -185,10 +185,6 @@ sgtl5000: codec@a {
- 	};
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index 81a6a05ce13b68a93e381f7051c1f861c1f11a25..0ab7032924cf60768f848e0d5ecbe32c189dbdfe 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -173,7 +173,6 @@ &i2c1m0_xfer {
  
--&i2c6 {
+ &i2c2 {
+ 	pinctrl-0 = <&i2c2m3_xfer>;
 -	status = "okay";
--	clock-frequency = <400000>;
--};
- 
- &pcie_phy {
- 	status = "okay";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index f7548613ac46e190972d549271ec0bbc0c8a9b92..f398a55408ee2c8259085cf2325da97cdce3e4de 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -393,6 +393,11 @@ &hdmi {
- 	ddc-i2c-bus = <&i2c3>;
  };
  
-+&i2c6 {
-+	clock-frequency = <400000>;
-+	status = "okay";
-+};
-+
- &i2c7 {
- 	status = "okay";
- 	clock-frequency = <400000>;
+ &i2c2m3_xfer {
 
 -- 
 2.48.1
