@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0731CC021AD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C88C021AE
 	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,32 +12,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bmIfKCJz0y3NZ+GGfYXbU1aKfsezlWA1mqA+ytjjQ0Q=; b=XDASldFjFeWQ7Z
-	z/m4W8wPugVFjAxhXyE6hkVc9RB6NawWqiIDDiLnVS8hoEa/arjCHnRmtOVcKaRNjyMGuOBc/ivY5
-	ISunStFOHBnQpPWmMD2iCuLv6QwmIAZcaZSYVhI9RsBvotHKKswU7/KYt00+mppHirNa0S35ykE4O
-	S7NPmsTwyAtoP2FoUkilkP/oPIAwoP4DHcRdGa4apNQdm7Qq7ZmZ7i6/BtrmozCo3CxemNyDGHuDt
-	GGaVSmvKM/kc5gPKHe3S+ZCtE5d9X5Kw5rcVOmjtgUJWDKHCwrCwWBaSC6LARaGh0GAfWEzbHqzU2
-	IqHHVt2L0J+EkyALYpSw==;
+	List-Owner; bh=+fzbjzFYS+cw8ddRLDQjFJQdYxRKzDHpzQS70bxTbvo=; b=hBUeY/UOuXjPyr
+	2LjuqW3TBKhoHthJR0KKamRJ4wwLjY12X1mlmq7x2LMP/U6i46vj2F0398BIPhMBmwN0bmaa0Cylr
+	76N5Zc5ootdfM1XkET/sX8+1qErDB72ECSbrMv4r3C39NQGSPGs/ml9IusZVmfwwv3AgrbQAX7+c+
+	ipJUjkd2ZGTXqpG+3my5uOvTPvRR0gkWjUcr3Zfe9g6iH/7HmLNIMVTetcdudzRwY/hoPPbCZLZ+F
+	9wZanBdZ/aAM3iJduEWIT8o9QhMp6vFMVIIG0JKcHwv5ZM4LkyaAZkzEPme0EJ/ZuNXpentO1N89f
+	t/cFIshWjksq9w/1kyIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkMLQ-000000084m2-11G2;
-	Tue, 18 Feb 2025 12:04:56 +0000
-Received: from smtp-8faa.mail.infomaniak.ch ([83.166.143.170])
+	id 1tkMLP-000000084lM-2HdX;
+	Tue, 18 Feb 2025 12:04:55 +0000
+Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:4:17::42ae])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkM6Y-000000081Vy-0goU
+	id 1tkM6X-000000081W4-3czB
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Feb 2025 11:49:38 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVf36t1z37b;
+	Tue, 18 Feb 2025 11:49:37 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVf6QLBz7Gv;
 	Tue, 18 Feb 2025 12:49:30 +0100 (CET)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVd6W9NzknF;
-	Tue, 18 Feb 2025 12:49:29 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVf32JtzmXD;
+	Tue, 18 Feb 2025 12:49:30 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 18 Feb 2025 12:49:13 +0100
-Subject: [PATCH 2/9] arm64: dts: rockchip: move DDC bus from Haikou
- carrierboard to RK3399 Puma DTSI
+Date: Tue, 18 Feb 2025 12:49:14 +0100
+Subject: [PATCH 3/9] arm64: dts: rockchip: move I2C6 from Haikou
+ carrierboard to Puma DTSI
 MIME-Version: 1.0
-Message-Id: <20250218-tsd-align-haikou-v1-2-5c44d1dd8658@cherry.de>
+Message-Id: <20250218-tsd-align-haikou-v1-3-5c44d1dd8658@cherry.de>
 References: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 In-Reply-To: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -48,8 +48,9 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_034934_330896_F380ACBC 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20250218_034934_047172_270D05D5 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,40 +69,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The DDC bus is necessarily on I2C3, that's how it's exposed by RK3399
-Puma on the Q7 golden fingers, so let's move it to the SoM DTSI instead.
+I2C6 is not exposed on Q7 golden fingers which is for routing signals to
+the carrierboard but on Q7 Camera connector, for routing signals to an
+additional adapter (e.g. Q7 Camera Demo adapter).
 
-If the carrierboard doesn't route it for some reason, /delete-property/
-can be used to remove it.
+Therefore, let's move the modification of I2C6 bus to Puma DTSI.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi       | 4 ++++
- 2 files changed, 4 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 4 ----
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi       | 5 +++++
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index 947bbd62a6b09ce55320d0889ee8cf50ca59dfd4..4a1a71995bf5da65d59214711671d87c9ea2de62 100644
+index 4a1a71995bf5da65d59214711671d87c9ea2de62..327fbc0a56655d5e544a99cedbfb1bcd39ad769a 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -150,7 +150,6 @@ vddd_codec: regulator-vddd-codec {
- };
- 
- &hdmi {
--	ddc-i2c-bus = <&i2c3>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 995b30a7aae01a0326e9f80d6be930f227968539..f7548613ac46e190972d549271ec0bbc0c8a9b92 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -389,6 +389,10 @@ vdd_gpu: regulator@60 {
+@@ -185,10 +185,6 @@ sgtl5000: codec@a {
  	};
  };
  
-+&hdmi {
-+	ddc-i2c-bus = <&i2c3>;
+-&i2c6 {
+-	status = "okay";
+-	clock-frequency = <400000>;
+-};
+ 
+ &pcie_phy {
+ 	status = "okay";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index f7548613ac46e190972d549271ec0bbc0c8a9b92..f398a55408ee2c8259085cf2325da97cdce3e4de 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -393,6 +393,11 @@ &hdmi {
+ 	ddc-i2c-bus = <&i2c3>;
+ };
+ 
++&i2c6 {
++	clock-frequency = <400000>;
++	status = "okay";
 +};
 +
  &i2c7 {
