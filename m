@@ -4,100 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B83EBC02198
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 10:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3DA1C02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 10:14:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/sm45O0zzA614qHqdS+/0xcQcKU5KjqDIwNKulDjr8I=; b=VwnROXr5MggUR3
-	KIvqkl7BR2dukoFk7X88c/p0jFubFPnh8R+kTJi5R+BDH62Buz70NaD63MisNPfy2FF45L1GBsVXm
-	2aF0MwkzUFQ/IgCm0M1vWA9k0/IxXgMEVgaCAvx7cWIFvAgQabnc+j3id5IMxB0bvS5ApzS99H3Gf
-	qzSmCl5BTf6lvuw0776m0L2mcgC5DbCcWjCXrb7M8rjbnDizc3a8jCtSDB2dGXbQIi4lfWQnVyDsO
-	dyFMG+DEcAdtzBMmrjF+BZpyXfDxzyyqjWy+QkdMg4EAJEpJ+T4/dsuO/QgeVhI3Y0nmXem1tDBq/
-	OAbjtPsot0Ju0bk4PB+w==;
+	List-Owner; bh=emNLdOkaqluLUBuw5ywCYpgQtEkddCm/3mc/f+8ohco=; b=rq5wL9QHOkX+L5
+	QGC/LNFFRpkn4K+z11btOU5k39JvpQzy8wNsVF21dH4mEjizOT5jarRUjKVqDSj8Bd+WZAmYt7yv7
+	3Ls+6+WjZqMLoPl0A+627JS/w6MTiqpxKcHrZ9vH6/E+d5kXuQusheWMpLWCgageOpfh+kEo7nc5R
+	Xl9as7a+SZDEh8kIxKVkDzi45mMbBlktl+hjZVcPKs7EG1AROoqtPqf+RjgZJgl35RKIIA13NEgQ3
+	wtdcL+KgtjQpjudNryYVMnH2igIhe+ieJDBHqTBBHzUV9D6GIAvLTW1CDwSsKEqwpx2cnQLolmdQ/
+	HIOwglWAdvys/N2t4Pgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkKTv-00000007fAz-3db7;
-	Tue, 18 Feb 2025 10:05:35 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1tkKcb-00000007hc0-05XT;
+	Tue, 18 Feb 2025 10:14:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkKHA-00000007bkp-3Ndo;
-	Tue, 18 Feb 2025 09:52:25 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-216513f8104so11345385ad.2;
-        Tue, 18 Feb 2025 01:52:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739872344; x=1740477144; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kXE7lzO8tAK+W+95G0EGctHj7HaDXe4ZOUjtDp40SHU=;
-        b=MgX7vsIt0XXvMQlvfubgJ/YDdX9vo+yF537yrHrD6BTFnmDZW3PN0uZxBIZQXs+0z5
-         HGcYLJIXwIJRJvUMtfIQxkOkxCzq2/Y1ZMswWYoaC/uDwAwk6DY3RKa3CWUwsxDcSRzU
-         SdswNohlC0wgBpV8Pk+85BPbmWWiGK9pgg68NV6oyVoDjkP/KmyJfWc6jduGR6V6EGtZ
-         JQHJb825jCwl0tnwORFrOBeXIjnzef2+BmflYHFdyRjbu+Hao3AaT6aQh3xdwTpFUErK
-         AgyHPXNblBESvvJI2nPG8DX89krXF439IccGZbejoajE2IDss4UZIpmowoBolE33wfsX
-         HDXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739872344; x=1740477144;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kXE7lzO8tAK+W+95G0EGctHj7HaDXe4ZOUjtDp40SHU=;
-        b=BxLmQhraUaw84YqXBHRomrDUlwwv4Fbor3RTWi8LUwPn/cmk+qlwZFz2JMC5FFJ3d9
-         tMpq0Ulrn/LpihiHVyK61B9Kw0p55AqwX8YNF7NRa25RxnaIfZn1G5F88pZuyXtyFoCy
-         5dI5Tw+UYlES2JfSaoRxToZk+lBJZpclB7OkMNOIrEj8mh1wuKUrjAKMCIfWe0UCfMBh
-         opz24C3RhG4w387j2EV4hsYh/sTYyZTAP4EvdudsobPh+LcGfyq4dHZQ0AGyugG91xqq
-         0R+ZfDPcIPL3ly2c1hDUnJUPhAjmtN0ZN7egjlep4Mm0ZKa7tS1gJkwTTVqTLsK/ZQcb
-         W4VA==
-X-Forwarded-Encrypted: i=1; AJvYcCWr/x63/g/DHntAUNOzUj9CTCmjhvIEiBeXwiRngBSFMtLaD41pczNMFN7IrTd28g+OObbIIlI6l1ecNFMmTSs=@lists.infradead.org, AJvYcCXwX0aIPOexFxlJ2mtb/yMtKiuM+ztYo4vt+L8lGvik/yBWS2JA8Ed+WJFobnvk+CUSoLCgJKwM8cTogJlYi5Ks@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHuvYbUfsvJNdGLgT2N5F+lUnzpd85LoVeZ4R6WXuMNZq8RE8q
-	ZM/4o930YJEybh7cevjX46TIs8vHPwyC9vX8KQHQlgrY+fV+fYbe
-X-Gm-Gg: ASbGncsJeDkMiy01PQ1U913QAlOxZ8NtRFp3LyOIZ3ruCsQ4KX3VTLCKsd0GZi5fUtI
-	gVe6ygcgHtJ6U6hOn5+n1WxZEBejoTs6Ft+hghUo3DvBDTolpuvHAiU9ksLuphllAHJLUxLclZE
-	zzZC91C4YcGU7+IoZG0KtNVYqcoMkg1xMj+gPZy/Vwl8eZCN9Qey/gKZHn/mePFNZ0+NH7vEt+0
-	CMNzhb7IBFXntAzewAL4qD5dEMaKtSRCA7MLe0IcOAKhTvHYcHPPKHPHl4V5ZUZgYHV9eTBjCA1
-	Gy3uHK8m3w628XfB9n/N
-X-Google-Smtp-Source: AGHT+IHMok0RZ+xEpPKwmA/x6p5MJpbMNsZxQZEpx8+bc1wEOXS9InOWhw+MuPI9x2Y6TY782k+mrw==
-X-Received: by 2002:a05:6a21:998d:b0:1ed:ac86:8f94 with SMTP id adf61e73a8af0-1ee8caac786mr8600343637.1.1739872343886;
-        Tue, 18 Feb 2025 01:52:23 -0800 (PST)
-Received: from rock-5b.. ([221.220.131.19])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7324276171fsm10031640b3a.144.2025.02.18.01.52.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Feb 2025 01:52:23 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: cristian.ciocaltea@collabora.com
-Cc: airlied@gmail.com,
-	andy.yan@rock-chips.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	hjc@rock-chips.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	liujianfeng1994@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	robh@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HDMI1 PHY PLL clock source to VOP2 on RK3588
-Date: Tue, 18 Feb 2025 17:52:16 +0800
-Message-ID: <20250218095216.1253498-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <1b3234ce-4526-4735-b9c0-c242e6cc3cf0@collabora.com>
+	id 1tkKPa-00000007e1f-1suB;
+	Tue, 18 Feb 2025 10:01:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XqV/29FN8TAKwZ9jAVPZuJgB96iWFCzrBQyx4X5GjRI=; b=NxiIsn1b7FykEg6OCLh5DpDtTw
+	RDjum5Qx4uV2nMLbl4A6rKayYGAtYmRYhAH5mPNiqN74w7AOyScXoApT0M3CIAtB5pfTCduRV84jd
+	8Y9wbfTlYPWDx+tG8n52sNCelLFypuJUEOv8RXNXELnwatmIl5F2DkL7iHY8TDhbx8bWA+EMZkzWV
+	awy1oAO/ET4dDzpyQfTxmlkpCH5DD/0t5BSkPOJVNP06R7088+J5tbrXKad7fHL5iEhgRrswiU0aD
+	P/xjDk3UO+AdXFAGXt0t8pbE8CJWS6djYfLefPC+snPPRg5SpASruOXsCRX6Fcqmmj6HbjXD424EU
+	wvqiQjNA==;
+Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tkKPS-0003jc-4g; Tue, 18 Feb 2025 11:00:58 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: cristian.ciocaltea@collabora.com, Jianfeng Liu <liujianfeng1994@gmail.com>
+Cc: airlied@gmail.com, andy.yan@rock-chips.com, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ hjc@rock-chips.com, kernel@collabora.com, krzk+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, liujianfeng1994@gmail.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, robh@kernel.org,
+ simona@ffwll.ch, tzimmermann@suse.de
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HDMI1 PHY PLL clock source to VOP2
+ on RK3588
+Date: Tue, 18 Feb 2025 11:00:57 +0100
+Message-ID: <1919367.CQOukoFCf9@diego>
+In-Reply-To: <20250218095216.1253498-1-liujianfeng1994@gmail.com>
 References: <1b3234ce-4526-4735-b9c0-c242e6cc3cf0@collabora.com>
+ <20250218095216.1253498-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_015224_842606_E3A660D6 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250218_020106_479886_8E90A530 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,19 +79,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+Am Dienstag, 18. Februar 2025, 10:52:16 MEZ schrieb Jianfeng Liu:
+> Hi Cristian,
+> 
+> No matter one or two hdmi ports the rk3588 boards have, most of
+> devicetrees in mainline kernel only have hdmi0 supported. After applying
+> this patch their hdmi0 support is broken.
+> 
+> So I recommend moving the vop clk part to board level devicetree.
+> Then support of hdmi0 won't be broken, and board maintainers can add
+> HDMI1 PHY PLL clk when they are adding hdmi1 support. I can add support
+> for orangepi 5 max and armsom w3 for reference by other developers.
 
-No matter one or two hdmi ports the rk3588 boards have, most of
-devicetrees in mainline kernel only have hdmi0 supported. After applying
-this patch their hdmi0 support is broken.
+better, fix the VOP2 driver - both for the existing hdmi0 + this hdmi1
+please.
 
-So I recommend moving the vop clk part to board level devicetree.
-Then support of hdmi0 won't be broken, and board maintainers can add
-HDMI1 PHY PLL clk when they are adding hdmi1 support. I can add support
-for orangepi 5 max and armsom w3 for reference by other developers.
+I.e. the clock is optional, and the error you are seeing comes from the
 
-Best regards,
-Jianfeng
+       vop2->pll_hdmiphy1 = devm_clk_get_optional(vop2->dev, "pll_hdmiphy1");
+       if (IS_ERR(vop2->pll_hdmiphy1)) {
+               drm_err(vop2->drm, "failed to get pll_hdmiphy1\n");
+               return PTR_ERR(vop2->pll_hdmiphy1);
+       }
+
+part. clk_get_optional is supposed to return NULL when clock-retrieval
+causes a ENOENT error. Seemingly going to a clock controller in a disabled
+node returns a different error?
+
+So I guess step1, check what error is actually returned.
+Step2 check if clk_get_optional need to be adapted or alternatively
+catch the error in the vop2 and set the clock to NULL ourself in that case.
+
+
+hdptxphy0 + hdpxphy1 _are_ valid supplies for the vop, so their reference
+should be in the soc-dtsi and the kernel code should just figure things out
+correctly. Wiggling with clocks in each board will cause headaches down
+the road.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
