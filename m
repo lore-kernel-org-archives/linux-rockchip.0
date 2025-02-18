@@ -4,63 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D05C02198
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360E9C02198
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 12:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QE4XQqKZCtaFT2mh158bMSRV6R9SP/STUOgWVk6j9P4=; b=vTh9r1V2+Kl9Lonwbwaygzzqgs
-	TFG5HY0ZbpIq1Tf0kHGucpNB5ZD/3rA6ArgoncRcTXEUzVFod6YfmOvT7pnZ3zas5pZ5wN/hdRtAf
-	ynn/p7r5rrvxA7z0LsBCDR+kDq2P98/6Vk+69O8v/hmQVwLMNmVxa95DqxwQq0XfQhreAqXg25H4S
-	Y1rrZ7pg11RhrDuyt5JXvl9WGcgZhjSUlizjCcJbQal1Y6BBovNFOy3tF9K6j56xjlotx737snlQf
-	msNTAt/tTXByQGM2Kla3w0OwNDE25dYdcBj4EPYF4RCKU3mOkvkhB4K6Ld7sr+qj00u8+Y/mUOfsw
-	3uEzcUcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=V6f1NYO91mH76DAGAeznsHuqssHMozjAHaIWx1cj9pY=; b=SJNEIWwUm7NFGY
+	CIzqz52UzbIzH9nRv+kCobV2xoHRkjUHJLwCi1MfWfZ5roaTtkawCyrkILDauWsGTP7qt4R7LKQku
+	vzXv5K+KLIIkPdIeerhCY58Et0KvHQs0yuIpyyRyunRDkIJRxDEkKh8wetvdXA1IQCmx3+DPX+p+6
+	CgvhSD8QBbGbukoThk0aFTcbPxxfvFPQeJxgDZ75Bt61tycFel0ylk8iDOuzS3VHFYp8VsyXL767N
+	zKI4O7qNqNYewSVEipal5Qet2G6HAshvkHTqsy6gPptgkRqUNG2kPVNL6Ol4n4Brzre6c0WSgLqYr
+	mtcEPTshfaELMjYAb50A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkMKk-000000084Y3-3NPG;
-	Tue, 18 Feb 2025 12:04:14 +0000
-Received: from out-172.mta0.migadu.com ([91.218.175.172])
+	id 1tkML5-000000084eQ-0jcn;
+	Tue, 18 Feb 2025 12:04:35 +0000
+Received: from smtp-190e.mail.infomaniak.ch ([185.125.25.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkM31-000000080w8-4APs
+	id 1tkM6X-000000081VV-2WBA
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Feb 2025 11:45:57 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1739879143;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iRTNT+VF0BGjlKwvapjWppDo17j+1iwhkQPE23/uMVo=;
-	b=ZX3Yoy1hXUuD/+bt2TDsEfH9YNFyiuE1hX3gIbcpAC9o8USRJ5Li6rm7ZNk+R4Dw4VMfNU
-	DlJIFuiVnBIa4sM2wBQ3W8Sh8uesjMI6rq244GrrMuk/nJNQqPNgie1HPW0D0iUHs12vQU
-	lq2FCMy6RLxs0eyyGg90bKfbW7E0c6RPyyiEcjRbTvuhHs3GNK1GOX+z3p31ueTyqvMcAd
-	ERpiUk7Cmbii1XDuH/YkYQfPOaZ0vILGoTEEtoAxLZ2+gg+x4zjhV28MnyIJWihL1HbvRe
-	R5194W54/SZCartzQcvVv6CRKHnhrrBo//MnCxCqcUXt9Td1E/LRcwRaH2XRGw==
-Date: Tue, 18 Feb 2025 12:45:34 +0100
-Message-Id: <D7VJOFXU540M.2PAC1RFXAH19B@cknow.org>
-To: "Valentin Kleibel" <valentin@vrvis.at>, "Vinod Koul" <vkoul@kernel.org>,
- "Chukun Pan" <amadeus@jmu.edu.cn>
-Cc: "Heiko Stuebner" <heiko@sntech.de>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Kishon Vijay Abraham I" <kishon@kernel.org>,
- "Jianfeng Liu" <liujianfeng1994@gmail.com>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, "Jonas Karlman" <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 0/1] phy: rockchip: naneng-combphy: compatible reset
- with old DT
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-References: <20250106100001.1344418-1-amadeus@jmu.edu.cn>
- <173831716590.670164.5196739962949646746.b4-ty@kernel.org>
- <f64ee4ee-7e56-4423-813e-b87e023e893d@vrvis.at>
-In-Reply-To: <f64ee4ee-7e56-4423-813e-b87e023e893d@vrvis.at>
-X-Migadu-Flow: FLOW_OUT
+	Tue, 18 Feb 2025 11:49:36 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YxyVd2gHPz4FR;
+	Tue, 18 Feb 2025 12:49:29 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YxyVc59ZGzkyq;
+	Tue, 18 Feb 2025 12:49:28 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH 0/9] arm64: dts: rockchip: align and reorganize Theobroma
+ DTS(I)
+Date: Tue, 18 Feb 2025 12:49:11 +0100
+Message-Id: <20250218-tsd-align-haikou-v1-0-5c44d1dd8658@cherry.de>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIALdztGcC/x3MQQqAIBBA0avErBvQIZO6SrSQmmwoLLQiiO6et
+ HyL/x9IHIUTtMUDkS9JsoUMXRYwzC54RhmzgRQZRVrjkUZ0q/iAs5NlO9FSRbqyytamgZztkSe
+ 5/2XXv+8HVPcwi2IAAAA=
+X-Change-ID: 20250211-tsd-align-haikou-724214707659
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_034556_174055_EC11DB04 
-X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-CacheID: sfid-20250218_034933_780676_69480E99 
+X-CRM114-Status: UNSURE (   9.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,65 +64,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6827637585583563797=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6827637585583563797==
-Content-Type: multipart/signed;
- boundary=f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+We have three SoMs that can use Haikou as their carrierboard so it'd be
+nice to have consistency across SoMs on what's enabled by default. To
+that end, Tiger Haikou now has UART5 enabled and Puma Haikou now has the
+EEPROM found on Haikou specified.
 
---f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Additionally, some devices were configured or enabled in the wrong
+places (either SoM DTSI when they needed to be configured in
+carrierboard DTS or vice-versa). This moves things around to better
+match actual HW definition and make it easier to reuse the SoM DTSI
+without having to undo carrierboard-specific changes. While at it,
+disable devices/buses exposed on connectors which do not have overlays.
+They need to be enabled in the appropriate overlays whenever they will
+be added.
 
-On Tue Feb 11, 2025 at 2:03 PM CET, Valentin Kleibel wrote:
->>> Chukun Pan (1):
->>>    phy: rockchip: naneng-combphy: compatible reset with old DT
->>=20
->> Applied, thanks!
->>=20
->> [1/1] phy: rockchip: naneng-combphy: compatible reset with old DT
->>        commit: bff68d44135ce6714107e2f72069a79476c8073d
->
-> Thanks for your work!
-> We found your patch after NVMes stopped working on a rock 3A with newer=
-=20
-> kernels and successfully applied it to kernel 6.1.128 (currently in debia=
-n).
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+Quentin Schulz (9):
+      arm64: dts: rockchip: enable UART5 on RK3588 Tiger Haikou
+      arm64: dts: rockchip: move DDC bus from Haikou carrierboard to RK3399 Puma DTSI
+      arm64: dts: rockchip: move I2C6 from Haikou carrierboard to Puma DTSI
+      arm64: dts: rockchip: disable I2C6 on Puma DTSI
+      arm64: dts: rockchip: enable I2S0 in Haikou carrierboard, not Puma DTSI
+      arm64: dts: rockchip: add EEPROM found on RK3399 Puma Haikou
+      arm64: dts: rockchip: enable Ethernet in Haikou carrierboard, not Puma DTSI
+      arm64: dts: rockchip: enable I2C3 in Haikou carrierboard, not Ringneck DTSI
+      arm64: dts: rockchip: disable I2C2 bus by default on RK3588 Tiger
 
-FTR: I've reported it in Debian here: https://bugs.debian.org/1098250
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts |  2 ++
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi       |  4 ----
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts   | 18 +++++++++++++++---
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi         | 10 ++++++++--
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts  |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi        |  1 -
+ 6 files changed, 27 insertions(+), 10 deletions(-)
+---
+base-commit: 2408a807bfc3f738850ef5ad5e3fd59d66168996
+change-id: 20250211-tsd-align-haikou-724214707659
 
-I confirmed it (also) broke on kernel 6.12.8-1.
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@cherry.de>
 
-Cheers,
-  Diederik
-
---f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ7Ry4AAKCRDXblvOeH7b
-bhFLAQC1JglGt4aR9lUVkEV0fmRuMzSi31E8LahoJr3zdw31DAD+P5bkgVowQQlh
-kiTJtgRPL9URTebUfZf6ug/4nSIEOgo=
-=FLpA
------END PGP SIGNATURE-----
-
---f698ee32381bf21d68a66030e7e7436323d6482d1504fe3e32b177e1a04d--
-
-
---===============6827637585583563797==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6827637585583563797==--
-
