@@ -4,100 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44AE9C021AA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 03:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D00EDC021A9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Feb 2025 09:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e0wmJq1yLBzxhOATvpANqlTC945yngujnKO5NsO1jYY=; b=ajdxSvKG6nOnGA
-	maY3gBkbj98aFrAPQe0mT1O0A315/GbwgARnBeo5/GBsiOQ3sm4uy06ozxg18R4RxUorK9dvLOXh/
-	7WjywaWAJ15EO2oxcybGfU6d9XHOrzo7hyKgD3qCFJaXF5D7INLXJ7CKsfJBx0+gU8Eh/6uePVT7v
-	U3wJ8NKGAF/gl3dtsgQD+suzoZklhhlGz4HvctxeeQQIZP6fpXTxTs1GvzwQH4A9Ga4luSIJ6SxIJ
-	4YQjtNQFPD5TdpuNLJZYOAPBB5KzzecmKtEog286FAZMupzkjztK6dSDWHjrNIpXg+EKMKapVOdWB
-	vD60zlnxBwEx2h28K5kQ==;
+	List-Owner; bh=QteSyTZyXNFOy5aTM/jebwvbQjf08P5JZCHTJVJhnzA=; b=P98yBjrnGO0qrM
+	pGMgSeBIpGvpHUuzlulqir7QzKE7EFcal/6TIxy1GD326dKyEvBzt1hIiLNe2+YvRDKz24Yk1rw8K
+	yCtlTJeXcijJkQ0mRB3iqsVADZDV59TQJokv43r1z17tVmg7il9iWpAnvF1Gqj0MST8nrfyeCN5rQ
+	g77/TXrmHkV5Hn3ml4hjYq3KswV/XI3Rq9eTBBRDxNL7gUJsJ7JpFttKwep8iJqx5lQ+Zs/1KH0Hc
+	SY/vlC5RHOQ9YWGBWHHU5s8h6FcpsAAJV88cJ3Nvy59VlCJ+mg1WY4XfBxlyrL2PRaSVvvxjZsT2b
+	06TGF4nhF4A68BrklK3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkETE-00000006dUy-3gVt;
-	Tue, 18 Feb 2025 03:40:28 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1tkJh1-00000007SSw-1gRI;
+	Tue, 18 Feb 2025 09:15:03 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkERk-00000006dJs-439A;
-	Tue, 18 Feb 2025 03:38:58 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-2fc383a11cdso830424a91.2;
-        Mon, 17 Feb 2025 19:38:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1739849935; x=1740454735; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BpIhM0zsF5MRaXYqddzsaHiNvWZ/pZsLy5qS/qUhHO0=;
-        b=iL/iSeeJPp8DgwtvIhiFF5ccz4F4udtmFF2zxBufUtA//VJyxFOuxyS76LPkjCRXz/
-         vGfoiHnuFmGQgQlaliB4gy5s2r0orpQji9MB9PVU4N/fuOqqeRVSe07QO2LNzSX1Tjvb
-         SFlSdIkG4HE6wW5ffu65e/MbCDbgAoXOfggx7JGWVHWVSYLQCGpa7JDXLXmN7Bec9vGx
-         knr1bjkhHpZNjma1PPrUIN6877XNZzHMcRvfdlhUtk1bQn51ziDaTSEJoMoKug4QyjFZ
-         wmSMJFcVKw/yTe8zqSkf9skekBgshT0jkv/tw1FQ8b/yqWhp5evmxNFUa4jfSY4OuW0k
-         vWxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739849935; x=1740454735;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BpIhM0zsF5MRaXYqddzsaHiNvWZ/pZsLy5qS/qUhHO0=;
-        b=EQdjrcyaGLAniG3F2F+dzCZgv1dpclE3786FZdqNHQIAUFP4t/tgmzwL9cFIlH16mA
-         N9O3LH+hnUAIgtuEB7tX8QwMB1oCVBwbKhICVZgwTR+QHuVwhaAU7mh2ULYFp8w2rzWz
-         yPMkxSNnBfDBrEcLN0j8Ya7k2lID+BJo5o5CMKJ8WA3eP4Pkvd/003DNvlZWvjmiMYx6
-         fJe5Cw7A8Zue0zmANVPrjLjXYsn9xiUyf1xDvYaIPWUL3K+22TZoQeCwq1jNu5mY5Eul
-         4ct7Z9JnlGWUbb747wE8BC2y/TKOUzb2Si3AedZh/2skcWHkbCeo1i62DupyUc7LzOAr
-         u+8g==
-X-Forwarded-Encrypted: i=1; AJvYcCWiJXvKeA3maTk5oBlFX278YGLVQInB3OPpVjUzdmqsayj2Le3s3j0HxFnbHGxBGK5IvLZPLMAvsf9gFWgn+LgJ@lists.infradead.org, AJvYcCWuGmd2Q0ZtIcd1nuHW4+9JkXs5aQPXvbCqaNQ4C3V8fiyoThWHzKa26oaYBMTlQnx2moheFutboJbqg8KMFY8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLlyEgnMi6RgdXmF9kBQhT+sjkArkwJAZzracsAqcamfYsmMlp
-	JajgHjrVNxruwmM+IuYLOzb/Uh2NjXVem/IxhsLwCIhSF/h/izAt
-X-Gm-Gg: ASbGncv0UZPQwKcR+jL/LoL3brsINKfKK8h/ljFkBV1zpNGJyD1d1PQk5gwJJYdLLhO
-	lkKwihJf0lNXy5+1GKtOnyuD72MZ1MuF2xZg0iKZiP2DJbV0CQjPHYwHeqZe43Dj4Zvt0X9g0IM
-	zWaiDc4kVWsUv98mPPWHHmjwWzKiI6D/zgQmeWjWWIFDsXT8ynUTrcUZrE/j0HF9DDPBiYNCiOJ
-	nkkjUr6SZyJM4nOwICvENAmT+bSxJKnoHH/vsKuHvf8v+2eB5iy+ZF+x7iljZKkDFA4/aixLcO6
-	0In2RqtQZlzgXYXzhhNy
-X-Google-Smtp-Source: AGHT+IHp51ZpR11Xenf1xc5xrATpU2b9pYP8ziEHbXQ3EXKCqj44fPEbRUBGOVevxEXu+GXioUS4wg==
-X-Received: by 2002:a05:6a00:198c:b0:732:2923:b70e with SMTP id d2e1a72fcca58-73261446955mr7067310b3a.0.1739849935459;
-        Mon, 17 Feb 2025 19:38:55 -0800 (PST)
-Received: from rock-5b.. ([221.220.131.19])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73271b4a8b6sm3947699b3a.2.2025.02.17.19.38.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Feb 2025 19:38:54 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: cristian.ciocaltea@collabora.com
-Cc: airlied@gmail.com,
-	andy.yan@rock-chips.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	hjc@rock-chips.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	liujianfeng1994@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	robh@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HDMI1 PHY PLL clock source to VOP2 on RK3588
-Date: Tue, 18 Feb 2025 11:38:46 +0800
-Message-ID: <20250218033846.1251897-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <1b3234ce-4526-4735-b9c0-c242e6cc3cf0@collabora.com>
-References: <1b3234ce-4526-4735-b9c0-c242e6cc3cf0@collabora.com>
+	id 1tkJW1-00000007PSY-09IT
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Feb 2025 09:03:42 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tkJVw-0005iJ-9J; Tue, 18 Feb 2025 10:03:36 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tkJVv-001YXQ-2k;
+	Tue, 18 Feb 2025 10:03:35 +0100
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tkJVv-0002g6-2W;
+	Tue, 18 Feb 2025 10:03:35 +0100
+Message-ID: <15bbca6567ff640fdcfbe1a9525989887a94732c.camel@pengutronix.de>
+Subject: Re: [PATCH v2] media: verisilicon: Fix AV1 decoder clock frequency
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Heiko Stuebner <heiko@sntech.de>, Hans Verkuil
+ <hverkuil@xs4all.nl>
+Cc: linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, kernel@collabora.com,  stable@vger.kernel.org
+Date: Tue, 18 Feb 2025 10:03:35 +0100
+In-Reply-To: <20250217-b4-hantro-av1-clock-rate-v2-1-e179fad52641@collabora.com>
+References: <20250217-b4-hantro-av1-clock-rate-v2-1-e179fad52641@collabora.com>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250217_193857_005561_7B781A07 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250218_010341_071216_77108F20 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,23 +80,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mo, 2025-02-17 at 16:46 -0500, Nicolas Dufresne wrote:
+> The desired clock frequency was correctly set to 400MHz in the device tree
+> but was lowered by the driver to 300MHz breaking 4K 60Hz content playback.
+> Fix the issue by removing the driver call to clk_set_rate(), which reduce
+> the amount of board specific code.
+> 
+> Fixes: 003afda97c65 ("media: verisilicon: Enable AV1 decoder on rk3588")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-On Tue, 18 Feb 2025 01:33:34 +0200, Cristian Ciocaltea wrote:
->@Jianfeng: Did you encounter any particular issue with the current approach?
+I was going to ask whether there might be any device trees without the
+assigned-clock-rates around that this patch could break, but the DT
+node was introduced with 400 MHz clock setting in the initial commit
+dd6dc0c4c126 ("arm64: dts: rockchip: Add AV1 decoder node to rk3588s").
 
-This patch is adding a dependency of hdptxphy1 to vop for all rk3588
-boards, but not all rk3588 boards have dual hdmi, armsom sige7 is an
-example. At runtime I will get errors because there is no hdptxphy1
-enabled in devicetree:
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-[    2.945675] rockchip-drm display-subsystem: [drm] *ERROR* failed to get pll_hdmiphy1
-
-Overwrting vop node at board level to remove the dependency of hdptxphy1
-can fix the issue.
-
-Best regards,
-Jianfeng
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
