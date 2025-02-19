@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ACECC021AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 16:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09BDC021AA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 18:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UwbC1GC3jcw9CX98TNfvVMJDoImkRNTGXhLXCT93PsQ=; b=SkQTxWKFeFUDFD
-	dNfprL9AuzcVZz9zqbTUPstfLUYYlJrYJML+i0fqmQTv79oyVHPsm1LyYrdvTTCrmAXjAaEPIrVNR
-	AyoyATR6eQ9ufhqy2KTyo9Xyoz+omgTJkr5OPiLusqPHLQUob+xAOmziHaQ+6e4uH9SGYXrZuilYg
-	2vlyHIfsXSBnMSshAZrqBNHcbnrR+/yrpngxpYhUPb9JKUBexGXG9LhDDUQAzSFgoO1avdeZN45vG
-	Mg+962W8GwklvkUTFegcxAtHXdNIWejgz5S02oOKyWxkQ3sFQXvYCWlYkTqzqirUeKwJSIk8ZRUR6
-	SgHHMUGenyq0oeUHLKig==;
+	List-Owner; bh=FYjkW8T6Y2y8BD22GzAvSm+UMhGs2UYZMzY798plbWs=; b=Or+C8LxKf/V7dm
+	dEsBCl1UMgCmK45fFXtOVBVg3rZ4mAeoF8i2WxV8D1I6YbFzRdh2gIV5OKpD4L5EBPqpVwQcD7QVv
+	myW9fqgKAJltuBOfNafkmauMtJ5pkAX3DHmzeWAwNTEoWJKd1WVUt+aUoaeCD70YKd/FSYo+ZFvHX
+	J/YrY6mvTUZEDX8tei4MasaxWVcafAgzdCQO8c5XVW/sLmRXSEUI3pbbgTsax1VvrvlVDnSdgL1bv
+	VDEWARwyzgkmKnLSGJxJ75NQZjOBNmkBLJxbCOdepf8cnJLPz8wQX56cu4kUdXqYbMQWSHP7ZrWli
+	Co1nthyWJBL5wUCqjXsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tknOU-0000000DyHs-1c23;
-	Wed, 19 Feb 2025 16:57:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tkovT-0000000EOvx-1bwp;
+	Wed, 19 Feb 2025 18:36:03 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tknMz-0000000Dxkh-0ols;
-	Wed, 19 Feb 2025 16:56:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mMql8KYiWH+c+lYpthTy/7Bw8ahN0iWeZq/Ll0qDnnA=; b=Sl9gdCQPtE9cOUeQU9r7dWbN8o
-	YTHvDfTnCZe/KEl59VvE/dFnVzlajwC7x3Z5g8RIb/ptrYNa5U6l+BpauUQlAypuaqBOkkRGwzjW6
-	jej6ACZoJci1jlZyUzqpCS30dgWQyOX2OoBenOajS2587k/NGvvjAuoJ6s8QIoUmSEC3aG89DBHov
-	s836CjytoPGmyyo09QN9trvwp7Crmo/hpkQC/UqivJO+RSQe0mvN7TAU+AEmSiuijYsT2IvxPbJj2
-	tDl/uNbvqT7E9JY6J77y9PPEdh0L6HdVdtxVFDO5MM7USXbFRYU/Ugr5Lnlu1HkUdHfRcxgsCxkA+
-	SMkJKC0w==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tknMw-00037a-0c; Wed, 19 Feb 2025 17:56:18 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, lukasz.czechowski@thaumatec.com,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: remove supports-cqe from rk3588 jaguar
-Date: Wed, 19 Feb 2025 17:56:17 +0100
-Message-ID: <17063984.geO5KgaWL5@diego>
-In-Reply-To: <da11da79-11f1-4251-8fb1-3079c3b0da64@cherry.de>
-References: <20250219093303.2320517-1-heiko@sntech.de>
- <da11da79-11f1-4251-8fb1-3079c3b0da64@cherry.de>
+	id 1tkovR-0000000EOuo-0hHp
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Feb 2025 18:36:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1739990144; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gYnkSY7/jVSezHnWDffS2tNP3fqZwhApKxOUK0q6i6dOUFv72iitGi1VcQLsiEjlPwv4dcJJiXf6UNyjLA7PXXIyAnsA2jJeyAbBoCMzrupFutLd7IWeE5iJVBmMXnd6q8CWtUha8EgN6EJl6fkPX1TIZZnppjp6DhLc8hw5Ols=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1739990144; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tIsfIrSG8Z3x+sFuGOSs6OyFacOIgUXadmEso+KA17k=; 
+	b=XgC2wxMT1phAWHbJ30TF4r2eoSbncZRC2RE8KS/xwZXFpbfmb7jN1kfk5EMECDmjXQbaq9LBvgkiEYV8hF8CIidoz+a8qSI6p9juN3HaXUsdFHUOc9yFJwYsCp2MjirCTghH2cn7wsrplGS23LEAS61alKEHFyJEerDwkQn+7x0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1739990144;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=tIsfIrSG8Z3x+sFuGOSs6OyFacOIgUXadmEso+KA17k=;
+	b=KOunV8esVfnnMFXE3vjufoybEmlveiO6sMy+CNBOSH2/IYxmExzPNKNUYjx2Rt92
+	C8snIxuIISrZZCgFE5O800gUgQxwHQNz2sfwz/PBaHaOwstqaHTTPAJPIdyybgEht36
+	Bv1Sn1LqB7v+teUCxMWrY7xOpXf1v2ehaFKravvo=
+Received: by mx.zohomail.com with SMTPS id 1739990142683136.66201924766733;
+	Wed, 19 Feb 2025 10:35:42 -0800 (PST)
+Message-ID: <3fcdbd35-9ff2-4159-8076-98eefd6ed8c7@collabora.com>
+Date: Wed, 19 Feb 2025 21:35:36 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 4/6] media: platform: synopsys: Add support for HDMI
+ input driver
+To: Hans Verkuil <hverkuil@xs4all.nl>,
+ Shreeya Patel <shreeya.patel@collabora.com>, Heiko Stuebner
+ <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, jose.abreu@synopsys.com,
+ nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>
+References: <20250218184439.28648-1-dmitry.osipenko@collabora.com>
+ <20250218184439.28648-5-dmitry.osipenko@collabora.com>
+ <f32a0011-1653-48dd-9061-047f9009310b@xs4all.nl>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <f32a0011-1653-48dd-9061-047f9009310b@xs4all.nl>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_085621_259122_B1886249 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20250219_103601_287193_856C8494 
+X-CRM114-Status: GOOD (  42.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,72 +90,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 19. Februar 2025, 17:06:52 MEZ schrieb Quentin Schulz:
-> Hi Heiko,
-> 
-> On 2/19/25 10:33 AM, Heiko Stuebner wrote:
-> > From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> > 
-> > The sdhci controller supports cqe it seems and necessary code also is in
-> > place - in theory.
-> > 
-> > At this point Jaguar and Tiger are the only boards enabling cqe support
-> > on the rk3588 and we are seeing reliability issues under load.
-> > 
-> > This can be caused by either a controller-, hw- or driver-issue and
-> > definitly needs more investigation to work properly it seems.
-> > 
-> > So disable cqe support on Jaguar for now.
-> > 
-> 
-> Seems more reasonable to me for the time being.
-> 
-> Aside from the reliability issues, I could also trigger a stack trace with:
-> 
-> $ mmc rpmb read-counter /dev/mmcblk0rpmb
-> [ 1119.647435] mmc0: Timeout waiting for hardware interrupt.
-> [ 1119.653480] mmc0: sdhci: ============ SDHCI REGISTER DUMP ===========
-> [ 1119.660676] mmc0: sdhci: Sys addr:  0x00000001 | Version:  0x00000005
-> [ 1119.667871] mmc0: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000000
-> [ 1119.675066] mmc0: sdhci: Argument:  0x00000000 | Trn mode: 0x0000002b
-> [ 1119.682261] mmc0: sdhci: Present:   0x03f701f6 | Host ctl: 0x00000035
-> [ 1119.689455] mmc0: sdhci: Power:     0x00000001 | Blk gap:  0x00000000
-> [ 1119.696649] mmc0: sdhci: Wake-up:   0x00000000 | Clock:    0x00000407
-> [ 1119.703845] mmc0: sdhci: Timeout:   0x0000000e | Int stat: 0x00000000
-> [ 1119.711039] mmc0: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
-> [ 1119.718235] mmc0: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> [ 1119.725429] mmc0: sdhci: Caps:      0x226dc881 | Caps_1:   0x08000007
-> [ 1119.732624] mmc0: sdhci: Cmd:       0x0000193a | Max curr: 0x00000000
-> [ 1119.739819] mmc0: sdhci: Resp[0]:   0x00000900 | Resp[1]:  0x00000000
-> [ 1119.747014] mmc0: sdhci: Resp[2]:   0x328f5903 | Resp[3]:  0x000007d9
-> [ 1119.754209] mmc0: sdhci: Host ctl2: 0x0000000f
-> [ 1119.759169] mmc0: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0x0057b200
-> [ 1119.766363] mmc0: sdhci: ============================================
-> [ 1119.773595] sdhci-dwcmshc fe2e0000.mmc: __mmc_blk_ioctl_cmd: data 
-> error -110
+Hi Hans,
 
-I can reproduce this timeout with CQE enabled.
+Thank you very much for the review!
 
-After disabling CQE, this goes away to the regularly expected response.
-
-
-> FWIW, the changes that Rockchip seems to have done on top of that driver 
-> in their 6.1 vendor fork are the following commits:
+On 2/19/25 12:11, Hans Verkuil wrote:
+> Hi Dmitry,
 > 
-> https://git.theobroma-systems.com/jaguar-linux.git/commit/drivers/mmc/host/sdhci-of-dwcmshc.c?id=2ef0767967138d333360ec0f399f1d68646741c3&h=linux-6.1-stan-rkr3.2-jaguar
-> https://git.theobroma-systems.com/jaguar-linux.git/commit/drivers/mmc/host/sdhci-of-dwcmshc.c?id=75dfde714bbe81e938190142d07307fa864fda34&h=linux-6.1-stan-rkr3.2-jaguar
+> More review comments. Some are trivial, but the real problem is that the 5V/HPD
+> handling is really confusing and, from what I can tell, incorrect in places.
 > 
-> Maybe something worth having a look at some time in the future.
+> I suspect that there are some misunderstandings on how this is supposed to
+> work. I've tried to explain it in my comments, but feel free to contact me if
+> anything is still unclear.
 > 
-> Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+...
+>> +#define EDID_NUM_BLOCKS_MAX				2
 > 
-> Thanks!
-> Quentin
+> Is this indeed the maximum number of supported EDID blocks?
+> These days 4 EDID blocks is typically the maximum. If the hardware
+> supports it, then I recommend implementing support for 4 EDID blocks.
 > 
+> If it really only supports 2 blocks, then add a comment stating that
+> this is a HW limitation.
 
+Good catch. Hardware supports 4 EDID blocks, will change in v8.
 
+...
+>> +static int hdmirx_subscribe_event(struct v4l2_fh *fh,
+>> +				  const struct v4l2_event_subscription *sub)
+>> +{
+>> +	switch (sub->type) {
+>> +	case V4L2_EVENT_SOURCE_CHANGE:
+>> +		if (fh->vdev->vfl_dir == VFL_DIR_RX)
+> 
+> This is weird, the direction is always RX, so can't you just drop this test?
 
+Suppose this code was copied from another driver, will drop.
 
+...
+>> +static int hdmirx_set_edid(struct file *file, void *fh, struct v4l2_edid *edid)
+>> +{
+>> +	struct hdmirx_stream *stream = video_drvdata(file);
+>> +	struct snps_hdmirx_dev *hdmirx_dev = stream->hdmirx_dev;
+>> +	u16 phys_addr;
+>> +	int ret = 0;
+>> +
+>> +	if (edid->pad)
+>> +		return -EINVAL;
+>> +
+>> +	if (edid->start_block)
+>> +		return -EINVAL;
+>> +
+>> +	if (edid->blocks > EDID_NUM_BLOCKS_MAX) {
+>> +		edid->blocks = EDID_NUM_BLOCKS_MAX;
+>> +		return -E2BIG;
+>> +	}
+>> +
+>> +	hdmirx_disable_irq(hdmirx_dev->dev);
+>> +
+>> +	if (!edid->blocks) {
+>> +		cec_phys_addr_invalidate(hdmirx_dev->cec->adap);
+>> +		hdmirx_dev->edid_blocks_written = 0;
+>> +
+>> +		hdmirx_dev->hpd_pull_low = true;
+>> +
+>> +		if (tx_5v_power_present(hdmirx_dev))
+>> +			hdmirx_plugout(hdmirx_dev);
+>> +		else
+>> +			hdmirx_hpd_ctrl(hdmirx_dev, false);
+>> +	} else {
+>> +		phys_addr = cec_get_edid_phys_addr(edid->edid,
+>> +						   edid->blocks * 128, NULL);
+>> +		ret = v4l2_phys_addr_validate(phys_addr, &phys_addr, NULL);
+>> +		if (ret)
+>> +			goto out;
+>> +
+>> +		if (tx_5v_power_present(hdmirx_dev))
+>> +			hdmirx_plugout(hdmirx_dev);
+>> +
+>> +		hdmirx_dev->hpd_pull_low = false;
+>> +		hdmirx_hpd_ctrl(hdmirx_dev, false);
+>> +		hdmirx_write_edid(hdmirx_dev, edid);
+>> +	}
+>> +out:
+>> +	hdmirx_enable_irq(hdmirx_dev->dev);
+> 
+> The way the HPD is handled is really confusing in the code. I had to dig through
+> the driver code to discover that the HPD is enabled via hdmirx_enable_irq(). But
+> normally interrupts have nothing to do with the HPD.
+> 
+> The HPD is really only controlled by whether there is an EDID or not, and optionally
+> whether 5V is high or not. The only reason for pulling the HPD low if 5V is low is
+> to save a bit of power: if nothing is connected, then there is no need to pull the HPD
+> high, after all, nobody is listening to it.
+> 
+> But this is typically entirely separate from interrupts.
+> 
+> The 5V decides whether there is a video source or not, so if it goes low, then you
+> stop streaming. The HPD tells the video source if there is an EDID or not. But that
+> is independent of video streaming. Updating the EDID while the source is sending
+> video shouldn't interrupt video capture. Most likely the source will detect an EDID
+> change, parse the new EDID and then it might decide to stop streaming and reconfigure,
+> or just continue streaming.
+> 
+> The code feels like you are trying to be smart, when it is really just a fairly
+> dumb mechanism.
+> 
+> I think this should be rewritten, unless there are some odd hardware constraints.
+> In which case that should be documented.
+
+Thanks a lot for the clarification! The HPD logic was borrowed from the downstream driver, will try to change it for v8. I'm not aware about hardware constraints and TRM suggests that driving HPD seprately from 5v should work fine, will see how it will work in practice.
+
+...
+>> +static int hdmirx_g_parm(struct file *file, void *priv,
+>> +			 struct v4l2_streamparm *parm)
+>> +{
+>> +	struct hdmirx_stream *stream = video_drvdata(file);
+>> +	struct snps_hdmirx_dev *hdmirx_dev = stream->hdmirx_dev;
+>> +	struct v4l2_fract fps;
+>> +
+>> +	if (parm->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
+>> +		return -EINVAL;
+>> +
+>> +	fps = v4l2_calc_timeperframe(&hdmirx_dev->timings);
+>> +	parm->parm.capture.timeperframe.numerator = fps.numerator;
+>> +	parm->parm.capture.timeperframe.denominator = fps.denominator;
+> 
+> You can just write:
+> 
+> 	parm->parm.capture.timeperframe = v4l2_calc_timeperframe(&hdmirx_dev->timings);
+
+Ack
+
+...
+>> +static void hdmirx_plugin(struct snps_hdmirx_dev *hdmirx_dev)
+>> +{
+>> +	hdmirx_submodule_init(hdmirx_dev);
+>> +	hdmirx_update_bits(hdmirx_dev, SCDC_CONFIG, POWERPROVIDED,
+>> +			   POWERPROVIDED);
+>> +	hdmirx_hpd_ctrl(hdmirx_dev, true);
+> 
+> Just because the 5V appeared, it doesn't mean that the HPD should
+> go high. That depends on whether there is an EDID or not.
+> 
+> As I said above, the whole 5V/HPD handling seems confused in this driver.
+
+In v6 I added 'hpd_pull_low' variable that force-disables HPD if there is no EDID. Hence, this hdmirx_hpd_ctrl() call doesn't enable HPD without EDID. I'll remove this call in v8 if driving HPD independently from 5v status will work fine.
+
+static void hdmirx_hpd_ctrl(struct snps_hdmirx_dev *hdmirx_dev, bool en)
+{
+...
+	if (hdmirx_dev->hpd_pull_low && en)
+		return;
+        ^^^^
+
+...
+>> +static void hdmirx_delayed_work_res_change(struct work_struct *work)
+>> +{
+>> +	struct snps_hdmirx_dev *hdmirx_dev;
+>> +	bool plugin;
+>> +
+>> +	hdmirx_dev = container_of(work, struct snps_hdmirx_dev,
+>> +				  delayed_work_res_change.work);
+>> +
+>> +	mutex_lock(&hdmirx_dev->work_lock);
+>> +	plugin = tx_5v_power_present(hdmirx_dev);
+>> +	v4l2_dbg(1, debug, &hdmirx_dev->v4l2_dev, "%s: plugin:%d\n",
+>> +		 __func__, plugin);
+>> +	if (plugin) {
+>> +		hdmirx_interrupts_setup(hdmirx_dev, false);
+>> +		hdmirx_submodule_init(hdmirx_dev);
+>> +		hdmirx_update_bits(hdmirx_dev, SCDC_CONFIG, POWERPROVIDED,
+>> +				   POWERPROVIDED);
+>> +		hdmirx_hpd_ctrl(hdmirx_dev, true);
+>> +		hdmirx_phy_config(hdmirx_dev);
+>> +
+>> +		if (hdmirx_wait_signal_lock(hdmirx_dev)) {
+>> +			hdmirx_plugout(hdmirx_dev);
+> 
+> plugout() pulls the HPD low, but why? That has nothing to do with the signal lock.
+> 
+> You need to take a good look at the 5V/HPD handling, this isn't right.
+> 
+> Feel free to ask questions if you are not clear on how it should behave.
+
+Again thanks a lot for the review, very appreciate! Will contact you if will become necessary.
+
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
