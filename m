@@ -4,52 +4,189 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD8DC021AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 10:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79B8BC021B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 10:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ybsH7pbPOQiwKi8UMPeVuedCo3A87nyWntSoORIldyQ=; b=hAg9lqm5LATffs
-	s7cTNVafibyO+Kc4Tt40WQ5BEFou8mUgvVQSnto5kGcH85OhPS5k7K1O5HOLAWLuWBKqpma3cl7zF
-	WbvEJHwI4YTRcGgEIQiQwkQzg0Rl7+iLxAdZQcJE9AlcN14AV6xYAp7NTHuZT6/soiKLaleBiFSQc
-	MKU/SQ+Bito9kmUVOhJzWxtj2YpPrdS5A3df2RsVWYRhfJC6ZXeMjGis1c5wjnib+jYtb4AvMvFUM
-	ijTwDtz9Lv50R+mF0s0D4DcjRUpmjolAa8bdql/7EaBVU+HuyjPsSzL9W0NAGvej7yunVmjZPZK0M
-	cxcSaieUmz15x0tQvfvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=OK0ZHGv707atdPoyxbIiNPtql8j7H6On2KtejcSB/EY=; b=LaJTfybcV5c/GFfMWyJqtqtz/S
+	Ttz8/r71rtgo7wn3qTXAhshAMOYHVhIMfWw86H4RcXUUeq1MLPjYvIWUnp/uvsy0TG/UTq4wNvvv6
+	Ft8eRS3S0P/5EQch9LphUCoPibIMLdPTaMMw0ylKyngGx78WOutRVbNLef2DJi+u3XHOB0vfwfhQO
+	+WbI3j9bWef1TFMmEyD3K+nbHQ9ADsk+qYDp85Sa0ggiIxoch20OFpdYXQms+2m6DG8UyVqfAx625
+	oFfEWkC6Kck7htptYOuZ8t0GsdninGjEVfTxMIyctcgt8rGtitxpYiNGiFUAeng+87v21uBplWO6t
+	ZCvq0VSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkhZZ-0000000CCgh-04YL;
-	Wed, 19 Feb 2025 10:44:57 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkgvi-0000000C2Yf-2Jx8
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Feb 2025 10:03:47 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 511E61682;
-	Wed, 19 Feb 2025 02:04:04 -0800 (PST)
-Received: from bogus (e133711.arm.com [10.1.196.55])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 57BBB3F6A8;
-	Wed, 19 Feb 2025 02:03:44 -0800 (PST)
-Date: Wed, 19 Feb 2025 10:03:41 +0000
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	<linux-rockchip@lists.infradead.org>, <linux-pm@vger.kernel.org>,
-	Steven Price <steven.price@arm.com>
-Subject: Re: [PATCH] pmdomain: rockchip: Check if smcc could be handled by TA
-Message-ID: <Z7WsfWq1dC71uls0@bogus>
-References: <1739926689-151827-1-git-send-email-shawn.lin@rock-chips.com>
+	id 1tkhZe-0000000CCmf-1mlh;
+	Wed, 19 Feb 2025 10:45:02 +0000
+Received: from mail-db8eur05on20721.outbound.protection.outlook.com ([2a01:111:f403:2614::721] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tkh8Q-0000000C5yY-17hC;
+	Wed, 19 Feb 2025 10:16:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mWQD5bO2EnSloBtvW7a5K+V4bkk2XJdyfS8o4SoDW5st5IT+uTAqyLmyT1/Tb6MhJdqAf4eRPW31+94geD0ceuASV821who2ipWBfIHasSfuHClLo+ngvaebdAeejONGj6zxE98ftP7pClW4CV494e2ND1CJdWDuELyuACOQD5S+y/vdz43noyI+Kl1DGAf17/W5itFk2Yj1uuC7l4DUApDxNoUg+446YSVUxvdll5mcVgDdYo5D0SY/Oi/86utXtPyCotsuKG1OsjKNcNbvxwje69sxLtai9YmG6WeIAGGgtMXVq1uJoXGRyJ9Tdr2WZyEI/ttCie+hW4dfVoV55g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tj6BxCl9fpw5Pry04iUoEkwcUhf418Q3mJRPppiteaU=;
+ b=Vx9cfGeSfI845iFnjzqi+dCixmrdlYhT8OPay1q6iYiWjawpnUmjMOTZlmCfAJXgvPFxs46vixs/aFrCzcjQe/t+/DypTSCe6n7xwGVBv6TciFLv5UudKW3g3DMMzV8hjngA2E31YdPD2pHuVhV5ijKvYe7LneRBB8F46tXrRKEd9MCckAH0b49607fccRL8Ey67ZPnaGYxczCuXKx9ZT7oH6RvlBOl255E11UL+MtpTN/mJE6VV3C+v4L5TIDad0U8RGwctEf1SeDsDjCrmPLMF2pjDYI6IRNYyK9hJxJvGgVnXlFO1onXb7AtlbNs9zZelXQqqMItJebx7AA+wVw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tj6BxCl9fpw5Pry04iUoEkwcUhf418Q3mJRPppiteaU=;
+ b=JiXN2kMHesBs1WQDKr8sh8G9JWU6f1UQI1VSeESMK0AwsAOVJiQd7DO5ueJ9gB09jwp2RHdx0srwym3I5/Hb6t6JDXwvQp8C0eJJQ23PJQ4rHerejJdADyiGHchEk2mvnd+NOHxQCpxzXq8wKv4VOVv06L3JzoA/xIVHR1zOvU4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by DU0PR08MB8138.eurprd08.prod.outlook.com (2603:10a6:10:3ed::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.18; Wed, 19 Feb
+ 2025 10:16:41 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8466.015; Wed, 19 Feb 2025
+ 10:16:41 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Date: Wed, 19 Feb 2025 11:16:32 +0100
+Subject: [PATCH v4 01/11] media: dt-bindings: media: video-interfaces: add
+ defines for sampling modes
+Message-Id: <20250219-v6-8-topic-rk3568-vicap-v4-1-e906600ae3b0@wolfvision.net>
+References: <20250219-v6-8-topic-rk3568-vicap-v4-0-e906600ae3b0@wolfvision.net>
+In-Reply-To: <20250219-v6-8-topic-rk3568-vicap-v4-0-e906600ae3b0@wolfvision.net>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1739960197; l=948;
+ i=michael.riesch@wolfvision.net; s=20240405; h=from:subject:message-id;
+ bh=Jwfb9ka7Co1QU4YFQj1bP68YHW3VZLAiB9reUK6eW8Q=;
+ b=OKhYHz4+QCzaXpSdhkorEkpRvpMtP7MzvcayswcXTbosjQAFqmTdmVSfnZh39E6A7SLSS54HX
+ wGMIQoRGVvpDjepRQWBQNRU59+9+h1B4jpLr6wDZGwXxqwd3NoDapEq
+X-Developer-Key: i=michael.riesch@wolfvision.net; a=ed25519;
+ pk=cSJmgKSH3B6kdCIDCl+IYDW1Pw/Ybc6g9rmnUd/G7Ck=
+X-ClientProxiedBy: VI1P190CA0041.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:800:1bb::8) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1739926689-151827-1-git-send-email-shawn.lin@rock-chips.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DU0PR08MB8138:EE_
+X-MS-Office365-Filtering-Correlation-Id: cd10669d-50a8-45fb-0666-08dd50ce80b1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|376014|7416014|1800799024|366016|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?cTEvUThXaS9ycGMwTXUrdUk2UG9DK0tGUkxBemEyRzg0T1hGWW9QS1d4Mm5S?=
+ =?utf-8?B?bWIwdEppM3pwNHQrMDVKSEY2Y0tlT3d1eHBFYkF2SHc1S3dzVmgvYS82YUlt?=
+ =?utf-8?B?azBtOWRCS2pLR0M2Znpxc0E5NHA5aHYxeVFXd1VmQlRCTE1vcmRqMEhPbGJa?=
+ =?utf-8?B?ZGFyNUVhWCtLWlR3aXNJaU1QcnREN2JzOUl4aTB6dVRqRDJjdlZRRWtzakRB?=
+ =?utf-8?B?RHNhZzhlN2k2aENlQVN3aDZLZUJZKzQ5Ti9aR1ZUbTJ0aFI4TTdaU0duZExO?=
+ =?utf-8?B?Z3dKQ0x5V2puVEF4S0tpVW8yYVM4bW16TzZxMUdUbUlYbWU1cXlMUlhvbkt0?=
+ =?utf-8?B?cmg5NVVCTE9kSzl4cXFTbGZEQ0RKckRuYTVzeGVJdjAyVWhpZEQ3TkRITVZT?=
+ =?utf-8?B?WURmUHd0NEpNRW11dmFsMi9xUGQ5djlhV3FrWVdCOUZXT04rNENIemRrOGxy?=
+ =?utf-8?B?Y0doU3ArVHlzaUlnSG9CbVhicC85UWxsTi92MnJWdXRYaTJzYU00Ukk4NDBI?=
+ =?utf-8?B?REFldzVIenB0dnh3dTlRYjlXbXVxRk82dkU0UUhOeHRqRjQvUmtKdDNNY0tt?=
+ =?utf-8?B?ZWk1RUNtVE1ITjJha0wwUlRTMHFpbWxoWFZnbEhqYzQ1Yk00Y0hPZHFFQlgr?=
+ =?utf-8?B?R3ZiVUxMZlBSbVNyUC93SDNtbFVnd08vcEQvZXZvb1Fld1dzMk5HcU5iREpk?=
+ =?utf-8?B?RmRwY1ExZnV0S2Q4ZHVLbDZXYzFCdHJ4U3l3aTFRK2w5K2RnVm9rWkRhVkRP?=
+ =?utf-8?B?RUZOV1REblgreEtnR0c3MEo5d2pmNElvdDZYVXdlamFET2xuSExLZVVEcjdy?=
+ =?utf-8?B?RnIrcWlQSXFTbXN3QVhWYVRheG5JWmo5NjRkS2trK05QZG5laWZoYmFMUFoy?=
+ =?utf-8?B?UnZrUUkvaHdCVFBUOW1yemZPazFnZmVUZ1V0dExaR1hhNnRwS3VpNTVpc3Fa?=
+ =?utf-8?B?YkRod0tLUksrcWJFMnJoVVFScTQxTUFKUGxadnIweFlCUldyM1J0NjR3b3Fv?=
+ =?utf-8?B?L0JHcGQyOVRWR1FNMUtGeTdqN1h3UTNYMzVIdHFmVkFrWUpUclpNa2hoVCs2?=
+ =?utf-8?B?N0RIT3QvaDc1Qmova0x4QVVIcXhzaHhTa0VNbU53L3lqeWo0NUo2SEptWVB0?=
+ =?utf-8?B?dU9pY3B2TmFETTBUSE9EKzZDUGFDbWpGdy9BUy94emlUUVNva0xVc0pCR1BJ?=
+ =?utf-8?B?clBzbk5oVjlmUlI3bCtmcG1uc3BuZXh3ZW1RcVB5SFJ0aGJBSEFHWW0vWERO?=
+ =?utf-8?B?dlhqM29mVkU5dG0rTHd1ZDA0UWg2ejlyZkVkQWNqb0FvL3ovSGpVckdidXBi?=
+ =?utf-8?B?QXEwZXc1VWVoTEpqajZiVk5Hc1BNcGVWamZzWXBVU1FrVFRhQUd3djBpV3NX?=
+ =?utf-8?B?QTdUVXNpSGJ5Q0dXd3hyOXorUmJyQW8yVGJWNEVNSnZUZWdyUzJLVDd0bG5Q?=
+ =?utf-8?B?RUpTZnRnMkgvTWsrTUJpa1h3Q2RDbjFJNmFsS0NtZ1U2WFdpK3FXTFRiN1ZS?=
+ =?utf-8?B?S2ZKaDlPTnpqeExwQ3lOOVhwTGhCSEdCbFJqUnk4UXNrWnd4Q2VMYlhHck9O?=
+ =?utf-8?B?NmdvY0pJb2NQVTlnblcwVkhIUkdQRFpuakVMdGpWMy9TVnBNeDhNOGJVaTdl?=
+ =?utf-8?B?Vzc1SHBmTW5FYnRodkdiWi9rbGM3bURsRWZINUlyTWJsQjEyWFBuQlhqekFu?=
+ =?utf-8?B?N0RMbVlQcFFabTJaTEdZZ1ltdG42QjliNGtvWWpEUEg2NTdqZjI5WEpyTXA1?=
+ =?utf-8?B?K3hGaFEzdkdQOXJEV29pdTJqUGdJRE9pZGE0UXZNN1dNcitNRHd6MHNlMHhM?=
+ =?utf-8?B?cHdHVUxLdGc4VUV0aGFhRDh0RFBEbnRxbjNsbUFYelNnS0Y0L00yNk5UMzV1?=
+ =?utf-8?B?Y0hsa0pTajU3bTdHNnBYQ1lJdW15ZFR5R1NlcTNyT0M5WWhLc2xDaXdRQVgr?=
+ =?utf-8?B?VTNxY2s2UjI1OHpQNmRjcEkxSUVPSTlRNTRzeU5NeUduME5ZTVpLTEhxOGVT?=
+ =?utf-8?B?T0piWFZSeW13PT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(376014)(7416014)(1800799024)(366016)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZG56SDRvdGVlejAzMVB2UU10cmhlcHBRcGNSdXltZHB6MXIrd3g5TmdQSkgy?=
+ =?utf-8?B?YkJreFQ0RjZYRk1ib0pTTzVqMm90ZUYxMVluVnVQWU1jeXpTSmltYmIzRjhX?=
+ =?utf-8?B?SWxHMXMzeFhmczh6QWdnNFVPaWJaT1ZKRlJpc1doWmN6ZnNKT1BjcWxLeWZR?=
+ =?utf-8?B?MlpoRHRKbjRFQ2JMK3NJMGZseVE4MVlkclJkU0FKb2YwNVlOWjV5MlNxLzhy?=
+ =?utf-8?B?TVB2cjBJZW51Yzg0L0hxR09uSEdoU2FEMFphQllzRVNnd24yUXhaUXI5S3RQ?=
+ =?utf-8?B?bXFyV3lZdy9IeUlDWlMvZjNUY0VlQzRCclJodnR2OStrbFUzQ2NHdldYWTBw?=
+ =?utf-8?B?ekhzL0tzSU5YR3o3dUpZSVE1b1pEQUl1OTBRN3ZiZW0xbENwb21JU1piZ0hC?=
+ =?utf-8?B?L0VrQjNoRVBlTGt4ZWN0cGdrK05wa2gycXdSakdXekZBUnBncUc1TFlGbnN5?=
+ =?utf-8?B?b1pYZzdNMTFmdjZ3YlgyT2FucXVMUG5wZWR1Y25pLy9HRFNuV0hySllvSHNp?=
+ =?utf-8?B?MExkeGFpKy9iT09CcFVCd3JkL3VnZW1sTUMvNVF0QSttRTlINDNGeEx5VnJS?=
+ =?utf-8?B?OEdYLzdGQlNuY3JlNnFOWE5QR212TFh5L0RWTFVOU0luN1VGWlpuKzBiWk1K?=
+ =?utf-8?B?Z0psd3dNb2RRZkxsZTBkQXpqeERZcElraDFBcS9MNkd5M0pIT213S25ZaFFV?=
+ =?utf-8?B?VDhoNUpsUTFIRGcyZ2tvWVpNcVFySGNlZzRnZWx1RHFuditmaHVMblhqQjFt?=
+ =?utf-8?B?aU9sMEljWmh6THF0d0w0eFhpZlkzbys3R29jMXpLeWsyKzhQOGYzejI1WUdX?=
+ =?utf-8?B?ZXF1aW1sMWt0Q3YzdDlEVU54V0xhWnVGSUliV2ROMGd1M0tDalZ3KzBmU1gw?=
+ =?utf-8?B?T05TYVlaQVdCNUJtVUVtWE90TjlXTVpwbW9iNWkxa3pJNjdoSVplMmM3cEZG?=
+ =?utf-8?B?aDBITzlGS21CZm5GeVQzQTNOZnp0VGVnSU1NalUvaUtwUXQzQ2FtM0dNdG1Z?=
+ =?utf-8?B?dno0YVZKa3dCZUQrdmkxb1h0RHdjdTAzZFhuaTgzK2VzOElrSkNqcXNIZ2pk?=
+ =?utf-8?B?UDdJdjFYVmhhTUJEeUhqSWJKK0hRRWc0MW1XRzA2MHpOMWIvZ0ZMZVA5Z0gv?=
+ =?utf-8?B?b21TVUEyUVdab0tISXJnQTRrVll6Ni8ra2hLL3prbXhIZzJFd1p2bVhMZmJR?=
+ =?utf-8?B?RXRBMWdyNDZqZWFzdS90VTBQeHFCa0lzcEIvSFRrTnY2SlFuTXh2YWxxcDQ3?=
+ =?utf-8?B?WHZXaG1FMTN4UlhUVGRieVV6SWlmS0duU2VVR2xSRVdTTVY5QXhxZzc5WkpP?=
+ =?utf-8?B?ZERHWE5GRHdDZHVvSzZPL1JUUFFuUjdjNHlteUpudTRtZHY5RTMrSXJRUVJQ?=
+ =?utf-8?B?ZXBkM3BmWk56b0RGYUZNdVFGaWdzRzI1dC9wYjRMMjhNUG84c1BpcDBoTWxP?=
+ =?utf-8?B?VnhCZG5HYVU4Z2kzdUljZzlFalNmMHRvRm9HTXViTFIwNS9na3Z6bExBZXpD?=
+ =?utf-8?B?cUNtazR3dU5NeUNwNWk2ZzVxRlBMTVh6TU1UTXVaRlIrNGpwaHUrMk5OL2dz?=
+ =?utf-8?B?RVBKVStYM05sSzJoVk16M1Rud2l6L3hJOWZsS3NmMmlURzNpSEo4TjdxcG5h?=
+ =?utf-8?B?QzVNb1hwOVN2NkRoWTU2amExNUlIV3lIWEpnMEhMaytkSEVGQ0FadDBsZzhu?=
+ =?utf-8?B?Vk9VeXJoM3pwcGU3RmRNNWpGM0MvbUJQSjRBNkE0WVBpR3duTkt6RU1talRv?=
+ =?utf-8?B?N1FSemxsdmhVbUxUNEQvbVF2V0FwYm9tR1Y3Sy8xUmowejJQNHkyRlNRMjdR?=
+ =?utf-8?B?R3lFcFltZDhSQi85Y2dScFVwbWZNYjVYemo3RCtkZ0NYSmlMaDhVTW5QRVBN?=
+ =?utf-8?B?ZTFXeDc0SWNKeFdBMVdLaVpjWGpSV0F0d3ZqSGNKVnJHdzhveWVicUVLaHg2?=
+ =?utf-8?B?V2hLUWpNSmFSQVo4NnhWT2hpSmdKaUpXcFdOamN6OHBrTlVXN0hFQjlMVmUv?=
+ =?utf-8?B?OWtZSGhQc1hnM29hRkQxS1JCOCtvMlZsTXR6YzZpWjc0a3JSa2tvTVJzbHlV?=
+ =?utf-8?B?YU96TC9zMzNjYWtBYm1LY2lwOXQ4WVpyOWEwVkgwOTl2T0diSnFVUEpmRzRQ?=
+ =?utf-8?B?ZHZXajl5d28yQ05tbVVXK25oSTFZU1JTUU5Eb2N6Vi9vUDdUWTVJL1hROEh3?=
+ =?utf-8?B?dFE9PQ==?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: cd10669d-50a8-45fb-0666-08dd50ce80b1
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2025 10:16:41.0825
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AFsZOZPSfaXxjVVrDer6Y/FQewzXkbNmLQOy38ATNHHAd/xDoX9rzRO/aI39GK/bXOYyixb096Eq0b5V83Giib8Ua/0QNEUu2EKpsK3NLgM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR08MB8138
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_020346_630512_98F4C905 
-X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-CacheID: sfid-20250219_021654_310046_835D0E73 
+X-CRM114-Status: UNSURE (   9.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,16 +204,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 19, 2025 at 08:58:09AM +0800, Shawn Lin wrote:
-> Non-existent trusted-firmware could lead smcc calls into some
-> unset location which breaks the system.
->
+Add defines for the pixel clock sampling modes (rising edge, falling edge,
+dual edge) for parallel video interfaces.
+This avoids hardcoded constants in device tree sources.
 
-s/smcc/SMC or s/smcc/SMCCC please. There is nothing called smcc
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ include/dt-bindings/media/video-interfaces.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
---
-Regards,
-Sudeep
+diff --git a/include/dt-bindings/media/video-interfaces.h b/include/dt-bindings/media/video-interfaces.h
+index 88b9d05d8075..0b19c9b2e627 100644
+--- a/include/dt-bindings/media/video-interfaces.h
++++ b/include/dt-bindings/media/video-interfaces.h
+@@ -20,4 +20,8 @@
+ #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CAB	4
+ #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CBA	5
+ 
++#define MEDIA_PCLK_SAMPLE_FALLING_EDGE		0
++#define MEDIA_PCLK_SAMPLE_RISING_EDGE		1
++#define MEDIA_PCLK_SAMPLE_DUAL_EDGE		2
++
+ #endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACES_H__ */
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
