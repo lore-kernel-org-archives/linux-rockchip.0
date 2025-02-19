@@ -4,61 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F993C021AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 10:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D12C021AA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 10:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HexgnrxPn2qKkj+wjVirH1193IFF9aDEtFQ3Wztu3ZY=; b=hEhm6eI/FHVP/n
-	oClRNTTgHFjwQFr9QTx8MJxGgB9te6+6ukEMpWVhOCSMcN4lIm/7uaA26NUs0UKUSwWP5XzHFGfyk
-	uB61tGa/Z7N/wEa78Tj4fy6cn8OTPpconBUAXp4L33Cm80WaB1e+nRj0xtMDwocI1xi7LCdZxHvU1
-	Y1zkgHUVPMpN/NCt/U0juWFtPN0hcxiqpChE/Be6S42tllOFfisBf3bMwMFqgPgoVuUq3Zw83WoFL
-	Q3hZ45I/pdQ42H+kGDBClBPNRkG84+mhyHLJb6tAkGbNLkDkqKHJ2orVKxzUbpqTUmLVHa8L0CVYs
-	peUFPkFcJ8/DXndR3B8A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tXUwWOqXuU5GQQ3KNVeq3Q/23xu3PydfyCV7QWmeRJ0=; b=49DJGs9aWFEY8e
+	YtTvvYAy5oEjSpHsBtD/QAgQwvsiM5G4HmeEwGKBdrTEIJEp9/4+mbO5V7r6eCwWT50RNdohjCBWL
+	qqthyz27Cqw3w16X5+r3V3NcURg6GenFieFP65vaQVug6dAoxDCgfvTeF865EmjnhUzAA26ry3Mlt
+	M1NKypCKRZEMGh5bcBKKpctJp//blqiIYHvc5z+zo79k0J0ONk9ddD8cnrkYZEYDBesqA81S5JuvF
+	1qhn3m8SqReyrNlx0utQ0428NgX47Hmq9Z97CT5+ov7hPXh4IMQdG8L+ANQNI2HBI3o4PN1YghJwl
+	WaFY63z+lNavt/LY02iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkgxi-0000000C363-3ewj;
-	Wed, 19 Feb 2025 10:05:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkgSS-0000000BtWC-2EGx;
-	Wed, 19 Feb 2025 09:33:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=MCzguZ2VgyYgHmOIRQ6dYHRDQlMI99iWe+pm1t5HaZc=; b=ZMxTfHK3LL/374MHiPUzZPlx2F
-	barGkQnwynwgyHGyPaj4UB5v+4Rl0RtTPzjh0uqUFZsfjlo9Pu6Ym3yQmKFyBQMmddcGRFnRAT9Vm
-	145fXiC3iPRUsoDS2AN/6pgfpBO5WpdSRKhYXmtSjHmgVqnkAuU1v8D7hepw7pAfOoSRG1afZTIQA
-	IaNdimQxhxP25KxKaEIUd0xTzj35xKKlPVN+0WdC+FfaEpExyr3zOy6CPcCuibnOO35Nue//zmLS6
-	ZzD21JwJQuNm8TNgg2b1HGP+SX/Faf1/Y8XUEVOio63b8fwW4YgQL+cIQAhCwvGmINCsSDMScBnPq
-	qgQr7Y7w==;
-Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tkgSQ-0007nl-Qz; Wed, 19 Feb 2025 10:33:30 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	lukasz.czechowski@thaumatec.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/2] arm64: dts: rockchip: remove supports-cqe from rk3588 jaguar
-Date: Wed, 19 Feb 2025 10:33:02 +0100
-Message-ID: <20250219093303.2320517-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1tkh0d-0000000C3to-0RUZ;
+	Wed, 19 Feb 2025 10:08:51 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tkgTl-0000000Bu46-29Wr
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Feb 2025 09:34:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7202312FC;
+	Wed, 19 Feb 2025 01:35:09 -0800 (PST)
+Received: from [10.57.84.90] (unknown [10.57.84.90])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D3F423F59E;
+	Wed, 19 Feb 2025 01:34:49 -0800 (PST)
+Message-ID: <a0b41ce7-4ab8-4baa-adee-8b5717326729@arm.com>
+Date: Wed, 19 Feb 2025 09:34:47 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pmdomain: rockchip: Check if smcc could be handled by TA
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ "Rafael J . Wysocki" <rafael@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org
+References: <1739926689-151827-1-git-send-email-shawn.lin@rock-chips.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <1739926689-151827-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_013332_595321_41FBD845 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20250219_013453_599708_938DA46D 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +65,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On 19/02/2025 00:58, Shawn Lin wrote:
+> Non-existent trusted-firmware could lead smcc calls into some
+> unset location which breaks the system.
+> 
+> Reported-by: Steven Price <steven.price@arm.com>
+> Cc: Steven Price <steven.price@arm.com>
+> Suggested-by: Heiko Stuebner <heiko@sntech.de>
+> Fixes: 58ebba35ddab ("pmdomain: rockchip: Add smc call to inform firmware")
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-The sdhci controller supports cqe it seems and necessary code also is in
-place - in theory.
+Tested-by: Steven Price <steven.price@arm.com>
 
-At this point Jaguar and Tiger are the only boards enabling cqe support
-on the rk3588 and we are seeing reliability issues under load.
+Although one note below...
 
-This can be caused by either a controller-, hw- or driver-issue and
-definitly needs more investigation to work properly it seems.
+> ---
+> Hi Ulf, this's a follow-up patch fixing the issue Steven saw.
+> 
+>  drivers/pmdomain/rockchip/pm-domains.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index 49842f1..27a5c68 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -572,9 +572,10 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+>  	}
+>  
+>  	/* Inform firmware to keep this pd on or off */
+> -	arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
+> -			pmu->info->pwr_offset + pd_pwr_offset,
+> -			pd->info->pwr_mask, on, 0, 0, 0, &res);
+> +	if (arm_smccc_1_1_get_conduit() != SMCCC_CONDUIT_NONE)
+> +		arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
+> +				pmu->info->pwr_offset + pd_pwr_offset,
+> +				pd->info->pwr_mask, on, 0, 0, 0, &res);
 
-So disable cqe support on Jaguar for now.
+Note that if the conduit is SMCCC_CONDUIT_HVC then this will still
+attempt an SMC. I'm not sure if this situation can happen in practice.
 
-Fixes: d1b8b36a2cc5 ("arm64: dts: rockchip: add Theobroma Jaguar SBC")
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 1 -
- 1 file changed, 1 deletion(-)
+There is a (horrifyingly complex) macro arm_smccc_1_1_invoke() which
+will automatically use the correct conduit, and even copes with the
+SMCCC_CONDUIT_NONE case (by simply failing the call).
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 7e8f0a452ca0..be5426b61cac 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -613,7 +613,6 @@ &sdhci {
- 	non-removable;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&emmc_bus8 &emmc_cmd &emmc_clk &emmc_data_strobe>;
--	supports-cqe;
- 	vmmc-supply = <&vcc_3v3_s3>;
- 	vqmmc-supply = <&vcc_1v8_s3>;
- 	status = "okay";
--- 
-2.47.2
+Steve
+
+>  }
+>  
+>  static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
 
 
 _______________________________________________
