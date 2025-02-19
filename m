@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 040EAC021AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 01:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61180C021AF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 03:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SqlJTBmAI/bugYpQgggzDUUHVsC8DGk6YGWCgB2mGWo=; b=qpYnIYFnj05PG8
-	Bxj3DGSGzs2KnKp1GvGDaN93Im4CceLnI1jSg5z4vD6fXl99zsoEzavi7YYsXHrCe+bzfWGyM2OiR
-	1P71h50GiQLI0zfO9F9jdzNcBW5/RJOtg6cc9x2pWYU9s4mfD5MtQdma1Gd0hY+zMhDQ09+u4MOLT
-	OGXLQWyMoaSEe6InsFLvjvs7rqFEEvzgjdjcCvettqT43NqIHpGMM4bZ+VbXaKPupxpETdZbO+Kzg
-	r3p7kKFNRZ6M8ZqlDPyPjWITsTCcdONALN3J3v9bCg6+HhY5iI7Jfj/I4P7RYdAAPBnINpwzWDwDb
-	J5oNt04sgwrw7GvTwPhQ==;
+	List-Owner; bh=GKGoxd2hdVii0dxlr6ONdWmF5DKLfAQURJesLTR92LQ=; b=ZuMToYxZ3jS31W
+	EX+SY4JGLYLmbn95BoFo9MhNGaVQBfrP6uFVNl2XsQFDkbyRFdv6dw7BLnosnNFiqmqNOQhyqnjmR
+	/uNrolaT7KNJiZpgj7DM0Nq8ypT0yBlxtKd0NLPfik+XoubySHgguWhSWqEz4iHY7uxix3Aa3h/Fz
+	dFenvzk58bVQOjrdVUKYjohOKuAKCbrx6CwHf8/BIjHRuL1pqP+lioExp4VY52qqgUHgh8M0N6d3H
+	PN8eesfxuh3SDBUnfBBc93hv4vJADLqex748Xo3StXWtAycL02mtt2oZ3TVyfBgu1DcoTvxFru02q
+	X03fqYIX4bwhpQo4o3kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkYUH-0000000ASfM-3cto;
-	Wed, 19 Feb 2025 01:02:53 +0000
-Received: from mail-m1973183.qiye.163.com ([220.197.31.83])
+	id 1tkaKd-0000000Ai8b-1bKt;
+	Wed, 19 Feb 2025 03:01:03 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkYRq-0000000ARxk-1WIu
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Feb 2025 01:00:23 +0000
-Received: from [172.16.12.45] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id b77902a0;
-	Wed, 19 Feb 2025 09:00:17 +0800 (GMT+08:00)
-Message-ID: <08a7b3ab-3e2d-4d69-8f8d-4dbd5a26fd3e@rock-chips.com>
-Date: Wed, 19 Feb 2025 09:00:17 +0800
+	id 1tkaJ9-0000000Ai0L-0Oqn;
+	Wed, 19 Feb 2025 02:59:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1739933971; x=1771469971;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=rOMFbl3z2EdNZq26KKAZFNR9PZtZbOBVCWnC4y2z5Us=;
+  b=JVJL4d8+Wpq+RGvwBkbN5os6UU4C1hyPhC1ixWhMypvic3qwUjMGZOfl
+   eQcjh0lBTV3kvoe/rxWTSj4lPPn9GPLZhkjn0uB4HRkFgNaOkMIXMS6/R
+   9Pt3hhvMAd/OGfleZteI2aQ0jHsqKjrspqIoFB00Ec9gy7jkvpVD43CVQ
+   syDUTm1fg7Zk4bWEcRHDeXOdln5KyylV/47md8/hqax1jtTvwmq+pohaJ
+   3BHt/ZB2u7qJdaFk7+KhyOreRbnrglFHkSGJFewcyEc/2vBJJFw4JbX5I
+   fqiECPiMFwPaI3gDfec+zXXLllca5emvzjwOJiTkwf39i8DWz/efzy1OF
+   g==;
+X-CSE-ConnectionGUID: QscKp2A/RLeG1LDZXYgI7Q==
+X-CSE-MsgGUID: pCYuGqZVRAyuDYS+x4N6yA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11348"; a="40515889"
+X-IronPort-AV: E=Sophos;i="6.13,296,1732608000"; 
+   d="scan'208";a="40515889"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Feb 2025 18:59:29 -0800
+X-CSE-ConnectionGUID: TBYZGMlXQXKSyTkYi9M/6A==
+X-CSE-MsgGUID: 7HleMqibRqa4OaCc6SPD+g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,296,1732608000"; 
+   d="scan'208";a="114437430"
+Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Feb 2025 18:59:21 -0800
+Message-ID: <25d9f6de-5cc0-41ec-bdbc-0cf5f66743cf@linux.intel.com>
+Date: Wed, 19 Feb 2025 10:56:18 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Steven Price <steven.price@arm.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Bart Van Assche <bvanassche@acm.org>, YiFeng Zhao <zyf@rock-chips.com>,
- Liang Chen <cl@rock-chips.com>, linux-scsi@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, "Rafael J . Wysocki"
- <rafael@kernel.org>, "Martin K . Petersen" <martin.petersen@oracle.com>,
- "James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>,
- Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v7 4/7] pmdomain: rockchip: Add smc call to inform
- firmware
-To: Ulf Hansson <ulf.hansson@linaro.org>
-References: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com>
- <2579724.BzM5BlMlMQ@diego> <321804ef-f852-47cf-afd7-723666ec8f62@arm.com>
- <5649637.F8r316W7xa@diego>
- <fa184920-e1f5-4eee-894a-f617e6d8e817@rock-chips.com>
- <CAPDyKFqPZcQOqEbyfy8uC-SO8vx1f=Ck-fPSqvXqiS1H-JJsrA@mail.gmail.com>
-Content-Language: en-GB
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <CAPDyKFqPZcQOqEbyfy8uC-SO8vx1f=Ck-fPSqvXqiS1H-JJsrA@mail.gmail.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk5JQlZOHkgfQkhITk5CSRpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a951bb84ac409cckunmb77902a0
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NTI6DBw4OTIQESoINR9KLz1R
-	LTQwFExVSlVKTEhCQklNQ0pCT0tLVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhKSE83Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=OBVW2tm2D14VPgSiPRBJ/M2WRg/7HyhOBYNUlzM54xUxZ0kavmmKUKojM8uWWCsCC2smCjEROfQSp+zvSwGJLRg9jNoVoN5FewFncUgkz1LMzBIa09sBRbUzL5AXQOD9EwwPWfoBEW7hLSvuGJW/R+nBMI4ydsZOpALPlbud8RE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=/2XJbqtRuXbaGBHrU7SLlVzjvIwfrBq5BanTrFmG6AU=;
-	h=date:mime-version:subject:message-id:from;
+Subject: Re: [PATCH v2 07/23] iommu/pages: De-inline the substantial functions
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
+ asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Robin Murphy
+ <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
+ Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
+ Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
+ David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
+References: <7-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+ <84fd4500-a12c-40d6-a532-e2956ed1c35e@linux.intel.com>
+ <20250218201924.GJ4183890@nvidia.com>
+Content-Language: en-US
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <20250218201924.GJ4183890@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250218_170022_559738_CC18CC81 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20250218_185931_186648_DA005E13 
+X-CRM114-Status: GOOD (  21.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,65 +99,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMi8xOCAxOTowNSwgVWxmIEhhbnNzb24g5YaZ6YGTOgo+IE9uIFR1ZSwgMTggRmVi
-IDIwMjUgYXQgMDE6NTMsIFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPiB3cm90
-ZToKPj4KPj4gSGkgSGVpa28sIFN0ZXZlbgo+Pgo+PiDlnKggMjAyNS8yLzE4IDQ6NTAsIEhlaWtv
-IFN0w7xibmVyIOWGmemBkzoKPj4+IEFtIE1vbnRhZywgMTcuIEZlYnJ1YXIgMjAyNSwgMTg6MTA6
-MzIgTUVaIHNjaHJpZWIgU3RldmVuIFByaWNlOgo+Pj4+IE9uIDE3LzAyLzIwMjUgMTU6MTYsIEhl
-aWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4+PiBIaSBTdGV2ZW4sCj4+Pj4+Cj4+Pj4+IEFtIE1vbnRh
-ZywgMTcuIEZlYnJ1YXIgMjAyNSwgMTU6NDc6MjEgTUVaIHNjaHJpZWIgU3RldmVuIFByaWNlOgo+
-Pj4+Pj4gT24gMDUvMDIvMjAyNSAwNjoxNSwgU2hhd24gTGluIHdyb3RlOgo+Pj4+Pj4+IEluZm9y
-bSBmaXJtd2FyZSB0byBrZWVwIHRoZSBwb3dlciBkb21haW4gb24gb3Igb2ZmLgo+Pj4+Pj4+Cj4+
-Pj4+Pj4gU3VnZ2VzdGVkLWJ5OiBVbGYgSGFuc3NvbiA8dWxmLmhhbnNzb25AbGluYXJvLm9yZz4K
-Pj4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNv
-bT4KPj4+Pj4+PiAtLS0KPj4+Pj4+Cj4+Pj4+PiBUaGlzIHBhdGNoIGlzIGNhdXNpbmcgbXkgRmly
-ZWZseSBSSzMyODggdG8gZmFpbCB0byBib290LCBpdCBoYW5ncwo+Pj4+Pj4gc2hvcnRseSBhZnRl
-ciByZWFjaGluZyB1c2VyIHNwYWNlLCBidXQgdGhlIGJvb3R1cCBtZXNzYWdlcyBpbmNsdWRlIHRo
-ZQo+Pj4+Pj4gc3VzcGljaW91cyBsaW5lICJCYWQgbW9kZSBpbiBwcmVmZXRjaCBhYm9ydCBoYW5k
-bGVyIGRldGVjdGVkIi4KPj4+Pj4+IEkgc3VzcGVjdCB0aGUgZmlybXdhcmUgb24gdGhpcyBib2Fy
-ZCBkb2Vzbid0IHN1cHBvcnQgdGhpcyBuZXcgU01DCj4+Pj4+PiBjb3JyZWN0bHkuIFJldmVydGlu
-ZyB0aGlzIHBhdGNoIG9uIHRvcCBvZiBsaW51eC1uZXh0IGdldHMgZXZlcnl0aGluZwo+Pj4+Pj4g
-d29ya2luZyBhZ2Fpbi4KPj4+Pj4KPj4+Pj4gSXMgeW91ciBib2FyZCBhY3R1YWxseSBydW5uaW5n
-IHNvbWUgdHJ1c3RlZCBmaXJtd2FyZT8KPj4+Pgo+Pj4+IE5vdCBhcyBmYXIgYXMgSSBrbm93Lgo+
-Pj4+Cj4+Pj4+IFN0b2NrIHJrMzI4OCBuZXZlciBoYWQgdGYtYSAvIHBzY2kgWzBdLCBJIGRpZCB3
-b3JrIG9uIHRoYXQgZm9yIGEgd2hpbGUsCj4+Pj4+IGJ1dCBkb24ndCB0aGluayB0aGF0IGV2ZXIg
-dG9vayBvZmYuCj4+Pj4+Cj4+Pj4+IEknbSB3b25kZXJpbmcgd2hvIHRoZSBzbWNjIGNhbGwgaXMg
-Y2FsbGluZywgYnV0IGRvbid0IGtub3cgYWJvdXQKPj4+Pj4gYWJvdXQgc21jYyBzdHVmZi4KPj4+
-Pgo+Pj4+IEdvb2QgcXVlc3Rpb24gLSBpdCdzIHF1aXRlIHBvc3NpYmxlIHRoaW5ncyBhcmUgYmxv
-d2luZyB1cCBqdXN0IGJlY2F1c2UKPj4+PiB0aGVyZSdzIG5vdGhpbmcgdGhlcmUgdG8gaGFuZGxl
-IHRoZSBTTUMuIE15IERUQiBpcyBhcyB1cHN0cmVhbToKPj4+Pgo+Pj4+ICAgICAgICAgICBjcHVz
-IHsKPj4+PiAgICAgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwweDAxPjsKPj4+PiAg
-ICAgICAgICAgICAgICAgICAjc2l6ZS1jZWxscyA9IDwweDAwPjsKPj4+PiAgICAgICAgICAgICAg
-ICAgICBlbmFibGUtbWV0aG9kID0gInJvY2tjaGlwLHJrMzA2Ni1zbXAiOwo+Pj4+ICAgICAgICAg
-ICAgICAgICAgIHJvY2tjaGlwLHBtdSA9IDwweDA2PjsKPj4+Pgo+Pj4+IEkgaGF2ZW4ndCBpbnZl
-c3RpZ2F0ZWQgd2h5IHRoaXMgY29kZSBpcyBhdHRlbXB0aW5nIHRvIGNhbGwgYW4gU01DIG9uCj4+
-Pj4gdGhpcyBib2FyZC4KPj4+Cj4+PiBJIGd1ZXNzIHRoZSB3aHkgaXMgZWFzeSwgc29tZXRoaW5n
-IHRvIGRvIHdpdGggc3VzcGVuZCA6LSkgLgo+Pj4KPj4+IEkgZGlkIGdvIHRlc3RpbmcgYSBiaXQs
-IGJvb3RpbmcgYSByazMyODgtdmV5cm9uIHByb2R1Y2VzIHRoZSBzYW1lIGlzc3VlCj4+PiB5b3Ug
-c2F3LCBsaWtlbHkgZHVlIHRvIHRoZSBub24tZXhpc3RlbnQgdHJ1c3RlZC1maXJtd2FyZS4KPj4+
-Cj4+PiBPbiB0aGUgYXJtNjQtc2lkZSwgSSB0cmllZCBhIHBsZXRob3JhIG9mIHNvY3MgKyB0ZmEt
-dmVyc2lvbnMsCj4+Pgo+Pj4gICAgIHJrMzMyODogdjIuNSB1cHN0cmVhbSg/KS10Zi1hCj4+PiAg
-ICAgcmszMzk5OiB2Mi45IHVwc3RyZWFtLXRmLWEKPj4+ICAgICBweDMwOiB2Mi40K3YyLjkgdXBz
-dHJlYW0tdGYtYQo+Pj4gICAgIHJrMzU2ODogdjIuMyB2ZW5kb3ItdGYtYQo+Pj4gICAgIHJrMzU4
-ODogdjIuMyB2ZW5kb3ItdGYtYQo+Pj4KPj4+IGFuZCBhbGwgcmFuIGp1c3QgZmluZS4KPj4+IFNv
-IGl0IHJlYWxseSBsb29rcyBsaWtlIHRoZSBzbWNjIGNhbGwgZ29pbmcgdG8gc29tZSB1bnNldCBs
-b2NhdGlvbiBpcwo+Pj4gdGhlIGN1bHByaXQuCj4+Pgo+Pj4gTG9va2luZyBhdCBvdGhlciB1c2Vy
-cyBvZiBhcm1fc21jY19zbWMsIG1vc3Qgb2YgdGhlbSBzZWVtIHRvIGJlIGhhbmRsZWQKPj4+IHVu
-Z3VhcmRlZCwgYnV0IHNvbWUgb2xkZXIoPykgYXJtMzIgYm9hcmRzIGFjdHVhbGx5IGNoZWNrIHRo
-ZWlyIERUcyBmb3IgYW4KPj4+IG9wdGVlIG5vZGUgYmVmb3JlIHRyeWluZyB0aGVpciBzbWMtY2Fs
-bC4KPj4+Cj4+PiBJIGd1ZXNzIGluIHRoZSBwbS1kb21haW4gY2FzZSwgd2UgY291bGQganVzdCB3
-cmFwIHRoZSBjYWxsIHdpdGg6Cj4+PiAgICAgICAgaWYoYXJtX3NtY2NjXzFfMV9nZXRfY29uZHVp
-dCgpICE9IFNNQ0NDX0NPTkRVSVRfTk9ORSkKPj4+Cj4+Cj4+IFRoYW5rcyBmb3IgdGhlIHJlcG9y
-dCBhbmQgaGVscGluZyBmaW5kIG91dCB0aGUgY2F1c2UhCj4+Cj4+IEBVbGYsIGlmIHRoZSBzb2x1
-dGlvbiBhYm92ZSBzZWVtcyByZWFzb25hYmxlIHRvIHlvdSwgSSBjYW4gY29vayBhIGZpeC11cAo+
-PiBwYXRjaC4KPiAKPiBTZWVtcyByZWFzb25hYmxlIHRvIG1lLCB0aGFua3MhCgpUaGFua3MgVWxm
-LCBJIGhhdmUgc2VudCBhIGluZGl2aWR1YWwgZml4LXVwIHBhdGNoLgoKPiAKPiBbLi4uXQo+IAo+
-IEtpbmQgcmVnYXJkcwo+IFVmZmUKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 2/19/25 04:19, Jason Gunthorpe wrote:
+> On Sat, Feb 15, 2025 at 04:48:04PM +0800, Baolu Lu wrote:
+> 
+>>> +#include <linux/gfp.h>
+>>> +#include <linux/mm.h>
+>>> +
+>>> +/**
+>>> + * iommu_alloc_pages_node - Allocate a zeroed page of a given order from
+>>> + *                          specific NUMA node
+>>> + * @nid: memory NUMA node id
+>>> + * @gfp: buddy allocator flags
+>>> + * @order: page order
+>>> + *
+>>> + * Returns the virtual address of the allocated page. The page must be
+>>> + * freed either by calling iommu_free_page() or via iommu_put_pages_list().
+>> nit: ... by calling iommu_free_pages() ...
+> Got it
+> 
+>> and
+>>
+>>   s/page/pages/g in above comments?
+> There is alot of historical confusion here because it was all designed
+> around alloc_pages() which allocated a list of contiguous pages that
+> could be subdivided. When this moved to GFP_COMP and later to
+> folio_alloc() the subdivision is no longer possible. So it is not
+> "pages" at all anymore, but a single "[compound] page".
+> 
+> So the module name is called "iommu-pages" but aside from the free
+> list functions everything else acts on a single [compound] page only.
+> 
+> If you think about it too much it makes no sense but I didn't want to
+> rename every function. I tried to keep it so that "iommu pages" was
+> part of othe module name, and function designators, but the comments
+> talk about a singular [compound] page
+> 
+>>> +static void __iommu_free_page(struct page *page)
+>> It's more readable if renaming it to __iommu_free_pages()?
+> Ah.. Well, it captures the module name but nothing it does acts on
+> multiple things, since it is internal I used the other name
+> 
+> How about I rename it later on to:
+> 
+> static void __iommu_free_desc(struct ioptdesc *iopt)
+> 
+> ?
+
+No problem. It actually depends on you. Since this is only used locally,
+the iommu drivers won't use it. So, anything that helps understand what
+it does is okay. :-)
+
+Thanks,
+baolu
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
