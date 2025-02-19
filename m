@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94CEC021AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 11:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3215C021AA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 11:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qwrgdEQeidIihrUhBUkKVuz3+AiYLuW30bndxNCoFBE=; b=HEVDorAbApY7H2
-	lxV2tDxlks1EVwpqJjBawWgBj766l+xGiPe25kcvU8QOBCrG6UGDaEwhSVCs2U4Z/VdEtQfhuXqXk
-	1DDqcmVedHdu9hsGiszctguMoy9Ym1wj+Oy0j4EBbi4jIBKsCcsOUpFbHVV4puv4KDe01RcNZ9iHJ
-	6dsdOTlc8RmjriFTcrQuG1pLXHY0wd+wZCE5Ab7CbD/4Nq+ep8tU8QRMTkxmZ7bqCsleC2vXAmKjl
-	j0TyMzLPBnEEgNCCoiKjeWZ5esWa7NJU9ukzMR1Y8w13+PD0ABCFieISVuX3o/peOLqIlZWdKkt4P
-	qqDOhzvw1GsCtABqEW/Q==;
+	List-Owner; bh=G/7mUphdG6JKga+8tmHCcB5cGL2qpRWpsKkOZJZ1PwA=; b=VW1Apdx4AvAfYQ
+	akf5OuHayQFCyNj4ZBMy+UzifSRDeS5m6e98yyBfqqmVdsZONm6hJHVDbvCi+lCA2TBBpSyQhL9pm
+	cuBpUnlCrMs04VpdvbiiXBoZ0XCM1qzdgXySRgEOsjBA4Eloy3TrqJMMFks9L1Xf4NIMPI3n4kKsG
+	kdmV/b9VGE7n+byY+L9bl2Y8F8RSTq5AlMlnxTedzy93HAwdrShGCuiavKrWRcFGjnhrk67RKgTbn
+	svQtrU93b3Qsd1LIZ6NkM9ANPLWx5EF29FncoBbNo6f3Q761+q2Svw4UA4EWTAqO4zPWCvDJ7l+Id
+	YIgrVN+4Bbg6ZReku8Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkicO-0000000CWV2-2zEm;
-	Wed, 19 Feb 2025 11:51:56 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1tkijR-0000000CYH1-0JPf;
+	Wed, 19 Feb 2025 11:59:13 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkicM-0000000CWUL-2b4X
+	id 1tkihx-0000000CXq7-2GTS
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Feb 2025 11:51:55 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-e4930eca0d4so4698388276.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Feb 2025 03:51:54 -0800 (PST)
+	Wed, 19 Feb 2025 11:57:42 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e5dcc3b0c77so3468816276.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Feb 2025 03:57:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1739965913; x=1740570713; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1739966260; x=1740571060; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=R46i4neiPPtDwdv3LQifChV+vLwO3rJdmLscnT0rln8=;
-        b=Dng8v76ck8WhhS3i4F9pQ3E7/9VjJqxJzbreESPojRgYT+cyFnE0MQc5m+/yKtOF4y
-         ArUgV35G/HVFDSzMczY88V+QEtoHhZ2LYFFNQ+8Z2Kd/PiXCRnf0xw9EfFh/0v0lDvV3
-         LFtVjIR66g3L26lIiIP64pxImucGO2uCD4U6Vv9tN8Zl9P4e0J+MncHB0NVDz+hrL8Ej
-         GFndJJG9GYNUVmyfcagRnLFh4oAQx+Zu3rnWKDkcVZ7DOHgRMrVX6d3Rt+Z28bEDCcii
-         s7E5x0JfmrbdoAuylk9zENKZinXPogWd7f65fwsmwVSPxcVK/Tnfz6kgzqN8989lIfVr
-         0vNQ==
+        bh=mKPuqkaO5/tQYVpdTMpg9OTc7P54WtoXIuwWQ6pX94g=;
+        b=FCZajvwqorS5PzVMY/Wk+o2CtUss6I3V57/oAyhoLvjXtJfKmkZNV2UzJUaxvhvO+V
+         MucYB7eRjuGkLrGU8xAcSX7namUmvAsMuMYdF4DMYytYbrqzuGRLY37aRj5hJmeY1x3Y
+         k8TndvTiVIY+q9YqdimbalGz2XZ/6+vJ4koBb3p/vNXi9JImoEBpKjibpLw6BOInmlz/
+         o2tqXz1vWLnTAAWSOXEJn7Nwk8BJCyTbedYRhUaH6AyKSqpFDdJRbnwiZUEmkg05L1bN
+         MguLmAK1nx5E47J4JGGaHfx1oPvksKQXncmSf5mXYSIV0dRaWCPXbAfS8x411cyeeXr1
+         eSQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1739965913; x=1740570713;
+        d=1e100.net; s=20230601; t=1739966260; x=1740571060;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=R46i4neiPPtDwdv3LQifChV+vLwO3rJdmLscnT0rln8=;
-        b=gvBXOZmnC5E44hU8aYb8EZeUMEWymz2Oa1qUPaBozwappmSSJ5TKMor7SyJuHMgA7h
-         Y8gs+tmRMDk43oCKvOjb+pVFnxFTi/k4KwIqP/+wDtDF9lHCpwwGmThgKKfHR6Df2adB
-         hV10EhJH2wT9Fb1sc0PDcf5qSMHmj29StBmo2NLVYT0vvedMSpgV0GoMkhMT3CHeAqDo
-         LTenjTNDCbBNV2j2ezrQp4l6p3dsndM2hdk3Zen1+vf0LkQoIp758ce74xL9pc98H9rz
-         TqbVeVh4ogZdO80Ec9GRX0TKZcg0Wvh/KKWq6PHAetnL4jdrAOekwC7oCtUjTtyHuFHH
-         XeXA==
-X-Forwarded-Encrypted: i=1; AJvYcCUofahHIcA5awqrBb4q9YnRWsI0CvNaLlaAnIn7VvVeGCJr93/6S+xoFyikCWzvvNbkcXuzpJrh/nIQmA7NNg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzvFKfmnZEcr7U9hErI7E6W07TBOzHMp/L5AR2o8F5h4G5yEU7k
-	cUAx98ObbMXEXIJlQIre2qz/Kby0z/UlNEp9+/McAQrtBeEhwq+bGJ4nAWAlmV7EkMJGV4Rk0/s
-	wc2WCDoaIMxGeqrdnDapkGcpsU25zwrQN8YvHSQ==
-X-Gm-Gg: ASbGncsoj04nY2tK+i37jb3NgmDmkdOsCrdbCmnoUbwKctMb8a2nUmrybZw5X3Bm6MX
-	sBtlHepAkgx9d854a8vMlKlFRpRyLKPx6qdQZM1d5t9/82iKlebQ6B0eQOGDFOKKRU5i+gvt9BQ
+        bh=mKPuqkaO5/tQYVpdTMpg9OTc7P54WtoXIuwWQ6pX94g=;
+        b=OEpJtLR5QjFGb6qncfgt30ZQBWFU2MrAel8oK/d0u0i7HxIUuGKEfMunWHPY3nu93c
+         W6FZ93rZyCrOAsoX80s3XQSzaja5oHekgYeE4OEkyBMA1Vb1dLwBB8k9v56t5+ljWM+l
+         rTcXc3OQwWk1WHLQUE7mK2zfRVxVmA2NKUm3bbOe3F5iLQvWec/JyPvTVFzvle3gmsPX
+         Khod6w73SM4MTxdMt2zA17Wsxj7RXxJkcYi5VJeqwLBxUgEoHqA57kF+u1OWr2c9Ty0l
+         ohK9cGXJmmy/m86S1qeuGb/fi/pEnSld/h7Z2KlG/bvUw32umWDSqcDShTzDKUo/Bx1C
+         UxTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWQwXLzxOfH8S0ARGb+7gvKm6pHhDpn5h68FRy2/0gjBvfq9hpqSFncXJjtYrMdgpBnKiDG07Tycv/Eb6kmpQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUD6xrPYgH4D2gRFXCWySmsItt7encPxX9BaYGZCT4X9Ekk5vq
+	fCU/LRkU6OGsZo+vOZYvkZvDfZg93HsVFpiuImbSqVOkpMO6IL0t9r7MS95OUVakoWrV8eF5TCW
+	M4kU2/2EU7yuwvPrSXoo/5di94cNKoOuddVmS8Q==
+X-Gm-Gg: ASbGncuLlBJhlOqhK0hZamIDERhdsi+IQPEQGc/zwR7n51A23DYaupWzhch3Ei7ZyTI
+	KEjuqomulyqXsho1nQCIrSYXMwH6qdYyTEF0LPTE0pNw4zPlHV4MftXd26Za0325DojPWn/YjNQ
 	==
-X-Google-Smtp-Source: AGHT+IF336n6iz9MKaV4OlZuLX65CGYiKzqQpe2IHd1yE/zIFjichwdqnXiqfBQCF3WNembgFV6LWh1J7NEVULKdLeg=
-X-Received: by 2002:a05:6902:161c:b0:e5d:b9a0:a14a with SMTP id
- 3f1490d57ef6-e5e0a0c07famr2649054276.24.1739965913150; Wed, 19 Feb 2025
- 03:51:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHmLjRjhz37Ix+o6XyPakdzY6Uu3F+3kxUa8H2huII1zroZajXD9MVDQwO7EqR3XOK/hrhvfu283vamhduicEA=
+X-Received: by 2002:a05:6902:d49:b0:e5e:1062:bcf7 with SMTP id
+ 3f1490d57ef6-e5e1062c055mr980483276.13.1739966260274; Wed, 19 Feb 2025
+ 03:57:40 -0800 (PST)
 MIME-Version: 1.0
-References: <1739926689-151827-1-git-send-email-shawn.lin@rock-chips.com> <a0b41ce7-4ab8-4baa-adee-8b5717326729@arm.com>
-In-Reply-To: <a0b41ce7-4ab8-4baa-adee-8b5717326729@arm.com>
+References: <1738736156-119203-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFq+pWXq75xEtfkeCkmkdZtfp9dAFej4M+6rO6EAUULf=w@mail.gmail.com>
+ <yq14j0y25hd.fsf@ca-mkp.ca.oracle.com> <CAPDyKFqsiBaSV--a_SvJ1n0733XXjSoONztf0e=jsGTZhKxQJw@mail.gmail.com>
+In-Reply-To: <CAPDyKFqsiBaSV--a_SvJ1n0733XXjSoONztf0e=jsGTZhKxQJw@mail.gmail.com>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 19 Feb 2025 12:51:15 +0100
-X-Gm-Features: AWEUYZkoxtEGbbZwqqZGnxCLVjqAx-yQQXpJMgP8dLv4LTOLDOVvgXG75zeBKTo
-Message-ID: <CAPDyKFr6CLzXjXW3SiiE0y4kf6nDgfLppexFtAZds=jOyqtWHg@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: rockchip: Check if smcc could be handled by TA
-To: Shawn Lin <shawn.lin@rock-chips.com>, Steven Price <steven.price@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
-	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
-	Sudeep Holla <sudeep.holla@arm.com>
+Date: Wed, 19 Feb 2025 12:57:04 +0100
+X-Gm-Features: AWEUYZm5qq0kCFH5BGU-KOAykNEjhYZd727rd8VcRiDAXDF4w-LfbABoCwlPr4U
+Message-ID: <CAPDyKFqMJRXRYymhijyWD-e=ScvEc_qbAmJBi--WsJd+zkQu6A@mail.gmail.com>
+Subject: Re: [PATCH v7 0/7] Initial support for RK3576 UFS controller
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
+	"James E . J . Bottomley" <james.bottomley@hansenpartnership.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+	YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, linux-scsi@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-pm@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_035154_659352_1826AC2B 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20250219_035741_578919_5B974A5A 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +102,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-+ Sudeep
-
-On Wed, 19 Feb 2025 at 10:34, Steven Price <steven.price@arm.com> wrote:
+On Thu, 13 Feb 2025 at 16:20, Ulf Hansson <ulf.hansson@linaro.org> wrote:
 >
-> On 19/02/2025 00:58, Shawn Lin wrote:
-> > Non-existent trusted-firmware could lead smcc calls into some
-> > unset location which breaks the system.
+> On Wed, 12 Feb 2025 at 22:56, Martin K. Petersen
+> <martin.petersen@oracle.com> wrote:
 > >
-> > Reported-by: Steven Price <steven.price@arm.com>
-> > Cc: Steven Price <steven.price@arm.com>
-> > Suggested-by: Heiko Stuebner <heiko@sntech.de>
-> > Fixes: 58ebba35ddab ("pmdomain: rockchip: Add smc call to inform firmware")
-> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> Tested-by: Steven Price <steven.price@arm.com>
->
-> Although one note below...
->
-> > ---
-> > Hi Ulf, this's a follow-up patch fixing the issue Steven saw.
 > >
-> >  drivers/pmdomain/rockchip/pm-domains.c | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
+> > Ulf,
 > >
-> > diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> > index 49842f1..27a5c68 100644
-> > --- a/drivers/pmdomain/rockchip/pm-domains.c
-> > +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> > @@ -572,9 +572,10 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
-> >       }
+> > > If so, may I suggest that I pick patch2, patch3 and patch4 via my
+> > > pmdomain tree and share them via an immutable branch, so they can be
+> > > pulled into James/Martin's scsi tree?
 > >
-> >       /* Inform firmware to keep this pd on or off */
-> > -     arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
-> > -                     pmu->info->pwr_offset + pd_pwr_offset,
-> > -                     pd->info->pwr_mask, on, 0, 0, 0, &res);
-> > +     if (arm_smccc_1_1_get_conduit() != SMCCC_CONDUIT_NONE)
-> > +             arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
-> > +                             pmu->info->pwr_offset + pd_pwr_offset,
-> > +                             pd->info->pwr_mask, on, 0, 0, 0, &res);
+> > Sure, that's fine with me.
 >
-> Note that if the conduit is SMCCC_CONDUIT_HVC then this will still
-> attempt an SMC. I'm not sure if this situation can happen in practice.
+> Okay, great! I have picked up the patches and pushed them to the below
+> immutable branch, which is based upon rc2.
 >
-> There is a (horrifyingly complex) macro arm_smccc_1_1_invoke() which
-> will automatically use the correct conduit, and even copes with the
-> SMCCC_CONDUIT_NONE case (by simply failing the call).
->
-> Steve
+> git.kernel.org/pub/scm/linux/kernel/git/ulfh/linux-pm.git rockchip
 
-Thanks for letting us know!
+Hi Martin,
 
-Note that, arm_smccc_1_1_invoke() is also a bit problematic, as it
-doesn't compile with Clang-20 and Thumb2 mode. See commit
-885f5669f2ab.
+We got a report about an issue in the branch above a couple of days
+ago. The problem has been fixed and I have just published it to the
+branch above.
 
-[...]
-
-As the current approach seems fine too, I decided to pick up the
-$patch as is and by updating the commit message, according to Sudeep's
-comment.
+If you already pulled-in the branch to your tree, please pull again to
+get the fix too.
 
 Kind regards
 Uffe
