@@ -4,190 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B40C021B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 10:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C68C021AA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 11:18:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
-	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=z6sliKZw+fVMxL0bGQZZfav1S+WFBh3XQj0UHuaoJ90=; b=ZiaGrsVNV10CI+Ls0l/wilg3Z5
-	sP8qg/8r3SbdPj3RWf0uyGTQ1zHbcfQO13QLcJKOXuW3vTSs+KJxm0hL27L9EJ5Wy3rnD5fMMucXb
-	f1ZZDgME5RCDyqAGqYv9vcRrNOnkrshOgKx3eGFUKgC9DW0bn/8UQply6pSoH9z4R59i/0HiiJLES
-	j0WP4x9atd9qrTkfZ1iBHePfvPm+6KBWQXwWjY5YstTKcv3gncb06BeZ1voeQrttQDkX80N/JjSVC
-	KzpA1895R99wltRLmqYxceyTbNzOeorkWxGbv3RPYO/8x6r+CAsUdxemI/oa8UOlht8fW6Z//p5WW
-	Ox73BKOA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IA9sYW7eaVHT/PXub9hcKVN8fcPmbmMM3CN0b3+3HOw=; b=x/ySbQ1Mv+s2ax
+	5eGyx7FQF0lacEuc4i2UvUNv3tIp3lwhW5b7KpVwxA+cNZw1DLY85B2gal/ArTt3huqakD+SbdAiv
+	LKEWJV3HTZFgFTboIl4vUJTLBsuGVW7mad958n7l9l/kdELf62MAqgjIAkdhoHCujBx1Js3WWz114
+	M9xHB1J0a6AqpqI3WeT3Y2RA3XJmH7M7cOoiCRkuWnD7/3vOxTLmL/s/EcHnlKqlSWpn7Pa8pyHQP
+	VU18+uR9zhTnO3y29H6s4ouCqsOL46fMf4bKvDLGZ2MpJnOsf7GeiQ7S8WYsteRM/v/q3RAq83L3n
+	iBZkQD1EfGaoduUPmpOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkhZq-0000000CDBQ-2Xp9;
-	Wed, 19 Feb 2025 10:45:14 +0000
-Received: from mail-northeuropeazlp170130004.outbound.protection.outlook.com ([2a01:111:f403:c200::4] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1tki5x-0000000CM9N-0VaE;
+	Wed, 19 Feb 2025 11:18:25 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkh8Y-0000000C64X-2Ztx;
-	Wed, 19 Feb 2025 10:17:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wuJ0cdhGv0qmKGW6HNhe65GMksE7jZaomEldPNglTaV2on4WdYxS/Imh+UXYI3LEWDrb1SYccc2omzjxjoMc5dsur7/M25le6V9AuUo0JzMBb9lOVwmbFW5WQ96qgb+wvxPNU9Hu1ktI8NTjvyMQvDjfq347R20xsJol/8XrGbSJfn7RgFD9hzi41tEJM4eO88jxYnZnPR7auJZEHl757pl9WwItRMahFNAmmATj3lBeZ7bS2qNFj7OgbPM6LWTD9tJ1tFJtJhR+V9eKT00LCx0z69No368ui/Mo/phwwYNWwOfHtP9R38yZLf0IkfZXVAUfem0lwzt6nnVH2sSByg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZFyoioX6467zwq6ZGo9ejTrdS8/9Ksz8xL2PAfJ8Pi0=;
- b=rK2gB4nKbmQE90M9jOqcSGT1aHtvdkn2lJzehcAghfrgfS8joAb29k4j0MGug7Xl06tr4f8/9ELvQKAnV8hhFg8XE3j6oBpj2SJ6sunvUDRlIOmERxNdR0o9ZllykUGIQi1PGuzJEZBGUuolzvJ04aR3kN/ylI0CssdHkASmfpxpePaD3tvd+UbaWD7V50Chp0aMz3ErdD81IpK+0shEpY0zauRoBdgZCHymXA8wdDf2gSmtrR4Q6DH+9wXWE4M7FDgPni3a19gJ6yJ8ZCTSa70LrE7MMh0+T4ZeRs9mZYtkntjWts46bh0E9akc/+NsRazzdCOBJ/QsQk5UzW63qQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZFyoioX6467zwq6ZGo9ejTrdS8/9Ksz8xL2PAfJ8Pi0=;
- b=L7sg80PVh5HTq1ISUsLvL0avxRV4hm+L9I875KUjGYLC+A4ugrpfVlEEyp831vZaMgbt4fFxR7Aymz+I0fAQSmYotpamnWVW3+67ar8JtNNDrWxRZk3l8MOhb5/0zDz1ZalRU5+sv5dMUOkALiqYprtBkj4DnjQHs7C6qDabuv4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by AS2PR08MB8384.eurprd08.prod.outlook.com (2603:10a6:20b:55b::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.19; Wed, 19 Feb
- 2025 10:16:56 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4e72:c5d4:488e:f16d%5]) with mapi id 15.20.8466.015; Wed, 19 Feb 2025
- 10:16:56 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-Date: Wed, 19 Feb 2025 11:16:41 +0100
-Subject: [PATCH v4 10/11] arm64: dts: rockchip: add mipi csi host node to
- rk356x
-Message-Id: <20250219-v6-8-topic-rk3568-vicap-v4-10-e906600ae3b0@wolfvision.net>
-References: <20250219-v6-8-topic-rk3568-vicap-v4-0-e906600ae3b0@wolfvision.net>
-In-Reply-To: <20250219-v6-8-topic-rk3568-vicap-v4-0-e906600ae3b0@wolfvision.net>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, 
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Michael Riesch <michael.riesch@wolfvision.net>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1739960197; l=1478;
- i=michael.riesch@wolfvision.net; s=20240405; h=from:subject:message-id;
- bh=0rHJn8xavEahuQRZGeeiAOQU7fRc2kjaBfHUQLOe/bI=;
- b=PUTH8k/Etcu0yH3aM/0kAAY5BE+evSiPf8VY4SjgYBz/iQz6VYoHk+RdmRPsg81pO2PfNeOvu
- N6hutZjVbBjAR8u0/ZXfho0iXqs4SDPd7LCHyOXDc16gFDxDmAP36Es
-X-Developer-Key: i=michael.riesch@wolfvision.net; a=ed25519;
- pk=cSJmgKSH3B6kdCIDCl+IYDW1Pw/Ybc6g9rmnUd/G7Ck=
-X-ClientProxiedBy: VI1P190CA0041.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:800:1bb::8) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1tki3U-0000000CLVX-0LMY
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Feb 2025 11:15:53 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tki3R-0007iF-L8
+	for linux-rockchip@lists.infradead.org; Wed, 19 Feb 2025 12:15:49 +0100
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1tki3R-001kv2-1S
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Feb 2025 12:15:49 +0100
+Received: from dspam.blackshift.org (localhost [127.0.0.1])
+	by bjornoya.blackshift.org (Postfix) with SMTP id 0DD033C68B3
+	for <linux-rockchip@lists.infradead.org>; Wed, 19 Feb 2025 11:15:49 +0000 (UTC)
+Received: from hardanger.blackshift.org (unknown [172.20.34.65])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 8761B3C68B1;
+	Wed, 19 Feb 2025 11:15:48 +0000 (UTC)
+Received: from [172.20.34.65] (localhost [::1])
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 6b31c62b;
+	Wed, 19 Feb 2025 11:15:47 +0000 (UTC)
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+Date: Wed, 19 Feb 2025 12:15:43 +0100
+Subject: [PATCH] can: rockchip_canfd: rkcanfd_chip_fifo_setup(): remove
+ duplicated setup of RX FIFO
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS2PR08MB8384:EE_
-X-MS-Office365-Filtering-Correlation-Id: a54725f0-d47f-4f30-00a7-08dd50ce89e2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|1800799024|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?allyZUlxdTcwbDZSbUhFRS92WlZJSFNER2pGeHpnZ01xRGNBdGduYk5hYzdB?=
- =?utf-8?B?QXkvSVF1TjY1TEdkM24yWjhubkhJbVcxdWw3NUlYY3F1Wi9COHpGeGpCSjBF?=
- =?utf-8?B?R3NaWWkzbGRrbml6ZlVPT2IvOXdLYTB0QlVZNmlrckJlZHlCT0VoanlpU21a?=
- =?utf-8?B?OVpUeXVFRlFEcWYyMGliREhlaHp6RjhtVjF3NVY2dFRnMnYrWGU2YmRxTllq?=
- =?utf-8?B?UDkydkMxL0tVMkYwd1NISlRnOU1JMlp4OWQ3VDhCYUh3Qy9CNUxIWjUwR09I?=
- =?utf-8?B?dGRkWEE5ZEllZEY3Y0hMN29YWTV5dUMxQkVNQkVQZzN1S2JZZDdVdkVQWkc0?=
- =?utf-8?B?bTZsT1BrTERIM3RybGtzYTZkbUEzVTRYR2F2aUhMMlMyV2tlaW9wbnQwcFVh?=
- =?utf-8?B?dGx0bFN3cTJsd1NtQkpkYkdJc0FiVmpqNEllVVk4cFcwYjZodnVDTmtSbm42?=
- =?utf-8?B?TEI5QjFsUUJiUHNpNUw1VG1UbEc2dTVoRDhoUGYranJWbkVNYUZHUEEvYU9l?=
- =?utf-8?B?Qi9mcTlRRGt0L3g1ek1Pa1FKZnNIUmxJQjB1RCtCUlQ0TTZhRFB6b0RwU0pT?=
- =?utf-8?B?ZEtTYWg0V1kwOGx0eldHbWZwbEw2aldJcFB5YlJkMEgvZWpKaUh4N2F4U1dx?=
- =?utf-8?B?WXJZVUJFZmtaQXI1akUwZkdaVDB3bnJSR1phU2xkbTlsdzlwOTEzcnU1RENJ?=
- =?utf-8?B?ZUJXQlkvQWYyRHJZd1haenVMQ1oxUUsveU1NS3Myc3VFekZLT1BjZ282ZnR4?=
- =?utf-8?B?Y0ZtVk12alQwQ2pIUktZN001aGZIRS83eWR1K3d5d1UzTFBValhXcHNkajNT?=
- =?utf-8?B?SldtTjRTS0tSN0NmQ0J4dWREcmVVUDA5dDg1M3FodHJvUkVVcTg5K21zMEFZ?=
- =?utf-8?B?bHkyVGRHRFdQSzdyZjBhVzVtdGJLSWxRVG14NGd2WXJsbEZiVWIxRmZZWjAx?=
- =?utf-8?B?Qkl4V1d5Z1VWM2RxSFNQRnNUV0xxTTZJb1hiZXprZkIrM3hmV1dMSWxmdUxO?=
- =?utf-8?B?cGd6a1hZemtYbURxQVZ0UjlBOEtCcVR1ZFFOTWZaNDE1d08rYmtsdEdtNUZ0?=
- =?utf-8?B?YWJibElDOTFXejBsaXJnclVEVDh2OXFHQWl1NE5Ka3RWMzl6d08xaVI3d3Bz?=
- =?utf-8?B?QUhHTUY0UEY0RVVEVTZsbVl1UzcwbFowVERDUWxDYy9JZU1lVU5HL3dkVWlO?=
- =?utf-8?B?b0ZkTldlZVBvcUJzdkQxVUFSa3hSTnpUZ3RXWWs0R0NUSGtCdDBPSzJnMk50?=
- =?utf-8?B?QUZJZEN2Qy9nY0dNaE1xT0JuTDhWM0IzMW9KSFhwbWRQYlFuZUJpS2hRak9k?=
- =?utf-8?B?Q3RxTFNwcGUyckJFUVFGWkgyOE44YVZKRGVOdExrQTdJMXBjUVk3c001bVBo?=
- =?utf-8?B?Q3Q2OUM4ckhBRGlLVnllQUlYUlR6NFpYK0VmV3lYandQNjBmUXhPNmNCRUhz?=
- =?utf-8?B?TUJoV21XN1BMUnJycjF6azlKM0NIODViTzZsNU5xT241ZXZ3aEMwdGNLUnFq?=
- =?utf-8?B?RmJzY2hESnpZZ0pMYXJIeDJrbXZSTVgrNGkzVVRPZ2lmSmZnZVNjbjF0dmx0?=
- =?utf-8?B?WWpRVFYxQUdvNGxSbVdLUk1kWktZQ2phUlZkMldRWk90NXdvUFA3N1c1eUdN?=
- =?utf-8?B?Qkk1ZEdHUDdOOWNqODUxVUp6b08wZGtoT3pvaDR0WmFlTThTQ0dHbWRVandl?=
- =?utf-8?B?czJEcThvalBYUkVLN2RyRThrV2lMU1pDVjE4bEF4Nm1ISFFFOFhTa0IvV0lJ?=
- =?utf-8?B?Wm5KRGo3cjBXcC9yWm9FbTBSbjdrSk9GUHVzcjN6QWdKN1lLN2hvdnlDalVj?=
- =?utf-8?B?MmRtTXdBcUtSY3RtazJ0dVpQUTU3T3B2clBFMGI1OUEvMXNOa04vazlWdUlI?=
- =?utf-8?B?ZUxPNy9QU3ZoU0lGdTlCWmVxOVBiTi9sOU85ZzB2Ym4vb2VVV095RVlzMTRj?=
- =?utf-8?B?NGVsbXJJa3JYdmVEZTJ1MVVGTmxyWStJNHp6YS9DV2ZRWGlFZnMwa3Y5eHhZ?=
- =?utf-8?B?VGgwSGdsbkRBPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(1800799024)(921020)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bU56VlpJYi9NaTIwZ3lCdlJNelkvcGMwR2p1Q0lFc0toWDIvRGdLR2xmQ08v?=
- =?utf-8?B?dlJwMWNvV2VuVUppR05WaUpzWnBqSDRSTFJ5bXd5VldZNGYxOUNRWDVlTEhT?=
- =?utf-8?B?TENvR1lKS0RzbGNpSm9SZ2QyQ29QcmRxSzRqTGFiSlMrSTJLMHozQWxVV0J5?=
- =?utf-8?B?OVF1TVoxdmQram5aK0pjZHlndWx0R2FSd0Q2Y1R1U2dDek5Vc1dnM1YreEhi?=
- =?utf-8?B?ZUhUTThhNjdtTGlkcG1VZmQ3dDZTU1ZvQ0EzUCtTVWIzYXoyYW1CdlA0T2NZ?=
- =?utf-8?B?a3hCd3VUWFZNdE5TRUJqa0VjOHBiUW1weHVLaTBIRzdTclMwWmd0OHUwN2xI?=
- =?utf-8?B?TCtRclE2cjZveDhaTW1Dc1B1d3hCcWZYWm9qMi9ibDBmRk96Y0w2ZjBjYk9u?=
- =?utf-8?B?OTFCcnhvTStjQ2p6QXdvYVZ5UnBIV29oSWRvMVllWFNGdCsxbjZWZTJnL01H?=
- =?utf-8?B?OXMrUHBNdXN4TU1ZOHYxOE9PbEZ3elB6RElIOTFoajB1WENTaEdZVHRqeFFj?=
- =?utf-8?B?THBFNC81QWpKL256QStwb0dCcHF4ZDNQaEJJZmkxYXJ5bmdpUVZlb2dtcXQ2?=
- =?utf-8?B?bCsrVHQrZFFLZWRzOTBKZ0h6L0tXTjdGcE9nbjltejViY1NmdUY3dFg4ditm?=
- =?utf-8?B?Y1FMTVhaNys1c1M5OVBpSUJ3aytId0dRb2MxanNhekNPWFBwVXd6c2xQQ2I5?=
- =?utf-8?B?cnlldnk4WnRuK3NnU1FQOWgwTGV4SmY0M0thc2h1Sk91TjBwQU05bWdUWUJG?=
- =?utf-8?B?UTBHNFNzWWcvUm0ydjhNSFBRQ2I1WkJVcU9Wb3RySng1Wnp5dEZNdkpzb3Jp?=
- =?utf-8?B?THdpdTg5MHp5cTVtN0dBQy9zRURBOEJYRVFaQTErOWZuSytCdWprOVFmVDha?=
- =?utf-8?B?RXZReXNaeHZNUmU0SWZmWC8xMXlEL200SEtlczFDMDNRb0ltTFFDUTJkNjll?=
- =?utf-8?B?TXJtbEZCbEhxcCtaZUVEa2REaDlGUUY0VU05Vm9lcFEzYURacjl0M3lUd2Vz?=
- =?utf-8?B?dGxPZXNlTjZsUnZxbzhnNldxTTY1c282N1cvTHNzMFFTcFBZVnRTWVJCZmZu?=
- =?utf-8?B?WUI4VktuRnZpWnladTQvcnM3OGtMOWtiMHpydXhsbXNnbHRLSjJSRHd2QWtC?=
- =?utf-8?B?ZkYrT2UrdTAwelVSTDdGc3MrNEVKRWRiNHB2WGM4bDc0eld4bEN1N2J2aHFE?=
- =?utf-8?B?TmE2STlVTUd4MDhRbWNveXI3YUV5K2M5Z0lqQ3M0aHVkUDhpd3VnNDBtQVNo?=
- =?utf-8?B?dEpVN09UUmI3aDF6dWw0aDAwRDZ3UHljQzdDNmplRVlpbmw2eHRoWVZwVjRm?=
- =?utf-8?B?ZXVwejNsWnd5UzZrU2NKVHhPQ1lrdGJrTHhGalZBMFhMdThXYTRiZlNpQnJM?=
- =?utf-8?B?YVZMSFVxNTMzMUM0WHVaS2NwOCtrOEFIRkFHWnJYOHNDZFFDWlkzOFQyQ2xX?=
- =?utf-8?B?WkI1RngzdWRic1pxdTNyMFdMNFZoV3dIcjhNQ0pkc2tHeFVNei9Kd3pkRWEy?=
- =?utf-8?B?bFdmc2k0YzZOc3NOczRuQXBZOCtqY25KN3lKbkIxQ3ZGVnllTit0eHdEdU5E?=
- =?utf-8?B?TVI3ZkZGSWVqZkZMZ2x4eGZ1MjdDRkg3SzNSbGkzdFkzSHVsaW1wV0FUc0xV?=
- =?utf-8?B?TDQ4Z1pzd2d6RDVTTWxDWjMrdTVGS0ROSEhlVy9DL09MODU4dFF5ZVM4a2FZ?=
- =?utf-8?B?anNqcG9JV29ZTTU0V3YxZm5sd2ZUaW5xa3hkY2FEZWxVZFdta1pwNU1ac0pK?=
- =?utf-8?B?MnNNenE0TjZIWnB3NmYxMFBxYlFnR3MycEVvZG01dFA4S3A5djU3OTVWMHl5?=
- =?utf-8?B?SzdjNytEUkxLMVVCY2RBUW91MHo3T0VZTHlOVUgyQWtQWkdnbjhBN0xPMGN0?=
- =?utf-8?B?bXZmWWpIMjZQK05BYlFiNzBSbFp2a0ZYWmRabkQ0Y3RwMHlVL2dBdFpCbVJr?=
- =?utf-8?B?K2lrWHRRUExaS0pucGN4VWNiODQvRmF2K0tvMU5VOHpLWEp5KzJDVGFObzcr?=
- =?utf-8?B?NGdkY1c5dWNmVFRUZW1TWnRFOExzNXhxTnp2b1J1OTBSTnhtZEFoTWpBS2s4?=
- =?utf-8?B?OXF4dmRWZTgvK3NXdkpwRmRIQzlCY1pGUGdtbzZMWkZMTE5kVlFaTEtES2FP?=
- =?utf-8?B?cllRd1VKcktocDh2djh0N0ZXY1BUN0hnNUFVOWQyMHdFMndSTkZxNjlucDJu?=
- =?utf-8?B?QkE9PQ==?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: a54725f0-d47f-4f30-00a7-08dd50ce89e2
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2025 10:16:56.4502
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: p9ABLrPCNONbLQ5WV28FyKv6JyeTLvqV6RymAqBokKCC4LhQFNg8GfyCf/XDhvJ/cKDRmaT8DjV/52WihAUEyg7dt22zO6xp7ymzpUsVm1k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB8384
+Message-Id: <20250219-rk3568-canfd-v1-1-453869358c72@pengutronix.de>
+X-B4-Tracking: v=1; b=H4sIAF69tWcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1MDI0NL3aJsY1MzC93kxLy0FN1EgzTLZEMDY3NTw1QloJaCotS0zAqwcdG
+ xtbUAoxA+Ql4AAAA=
+X-Change-ID: 20250219-rk3568-canfd-a0f9c103751e
+To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Robin van der Gracht <robin@protonic.nl>, 
+ Marc Kleine-Budde <mkl@pengutronix.de>
+X-Mailer: b4 0.15-dev-42535
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1388; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=0jv/61mY47TiBPd7dSSwJFiyxZt74jw07+buK5Y0ayc=;
+ b=owEBbQGS/pANAwAKAQx0Zd/5kJGcAcsmYgBntb1hbnXZkPMz9MY3Cfse6k0cP85QCzJJp31vP
+ upyoPxOHZOJATMEAAEKAB0WIQSf+wzYr2eoX/wVbPMMdGXf+ZCRnAUCZ7W9YQAKCRAMdGXf+ZCR
+ nDx2B/wMkgexjMLtIBIpBULLQeVoO4zztTTxqk7ktd02LkxjPIUwI38QEVc3Vz6jtzX3glN8l5L
+ pJz15GesciFTiuy1BokVMkOHy0Lb7psPmunMBM/MdUSMMRVSh1Nu/Yt653ADtd5mkMi2WrsxndT
+ 3TCUtUbeHBSeiMwzcs82KOIMnxM06R035C6mOl7B2rL+k2qya2j44KHM9RxOiF4gkla0EeB/MIw
+ CygC8fSuYPNLojiahS8Ql9FOEiUlluPhEFivU4g8UBmiEDnXNSyFC77J+PDWUKahmw3RrguWKt5
+ 5CervoNvuD7w/YeofUArG6ySVl8qwad6AeaB/RnWVt8QusTt
+X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
+ fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_021702_681817_D28FE896 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250219_031552_115874_BF24CB04 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -204,66 +103,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the device tree node for the RK356x MIPI CSI-2 Host unit.
+From: Robin van der Gracht <robin@protonic.nl>
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+The rockchip_canfd driver doesn't make use of the TXE FIFO.
+
+Although the comment states that the TXE FIFO is setup, it's actually
+a setup of the RX FIFO. The regular setup of the RX FIFO follows.
+
+Remove the duplicated setup of the RX FIFO.
+
+Fixes: ff60bfbaf67f ("can: rockchip_canfd: add driver for Rockchip CAN-FD controller")
+Signed-off-by: Robin van der Gracht <robin@protonic.nl>
+Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 32 +++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ drivers/net/can/rockchip/rockchip_canfd-core.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index cba5092dbcea..5957349ca865 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -553,6 +553,34 @@ gpu: gpu@fde60000 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index d9a937ba126c..46201c126703 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -236,11 +236,6 @@ static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
+ {
+ 	u32 reg;
  
-+	csi: csi@fdfb0000 {
-+		compatible = "rockchip,rk3568-mipi-csi";
-+		reg = <0x0 0xfdfb0000 0x0 0x10000>;
-+		clocks = <&cru PCLK_CSI2HOST1>;
-+		phys = <&csi_dphy>;
-+		phy-names = "csiphy";
-+		power-domains = <&power RK3568_PD_VI>;
-+		resets = <&cru SRST_P_CSI2HOST1>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi_out: port@1 {
-+				reg = <1>;
-+
-+				csi_output: endpoint {
-+					remote-endpoint = <&vicap_mipi_input>;
-+				};
-+			};
-+		};
-+	};
-+
- 	vicap: video-capture@fdfe0000 {
- 		compatible = "rockchip,rk3568-vicap";
- 		reg = <0x0 0xfdfe0000 0x0 0x200>;
-@@ -581,6 +609,10 @@ vicap_dvp: port@0 {
- 
- 			vicap_mipi: port@1 {
- 				reg = <1>;
-+
-+				vicap_mipi_input: endpoint {
-+					remote-endpoint = <&csi_output>;
-+				};
- 			};
- 		};
- 	};
+-	/* TXE FIFO */
+-	reg = rkcanfd_read(priv, RKCANFD_REG_RX_FIFO_CTRL);
+-	reg |= RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_ENABLE;
+-	rkcanfd_write(priv, RKCANFD_REG_RX_FIFO_CTRL, reg);
+-
+ 	/* RX FIFO */
+ 	reg = rkcanfd_read(priv, RKCANFD_REG_RX_FIFO_CTRL);
+ 	reg |= RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_ENABLE;
 
+---
+base-commit: aefd232de5eb2e77e3fc58c56486c7fe7426a228
+change-id: 20250219-rk3568-canfd-a0f9c103751e
+
+Best regards,
 -- 
-2.34.1
+Marc Kleine-Budde <mkl@pengutronix.de>
+
 
 
 _______________________________________________
