@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24445C021B2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB64C021B4
 	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 23:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y+kXshqLb6P0coeAHlY5EHJi97YvTN/aJji6vv/33nA=; b=x+P0UINpvO3jEa
-	zbjoG25dp/LakA52pw6UxD07rkKQHOX0fQndfdSdsV/XIHgOZlIAZI7yT/kmN7hpBkQTg1Dmf6F0t
-	Xtt2SFpo1duyFoFljGEKDHCjM5r3WEUJS9Z4o3x3KjKN2Hu7NH6b5zDKXWcRWhCv96PgykPc8mkK7
-	aGZEcP77iYmS+8uoTzq5ojx7dKLl2BhAo7G5IrD6XGQQm66uV9095aeu3zihnQu5U92usvmT4HXl5
-	Opbx2E9uU+6cHNc1nJuFj1/YABF674q6qIoGhUO3J6YcYWCl79EKkViUwWxpFydRKaWkNFUS45OlS
-	HSjHeCIF+YC/xQ7GKStA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bxqiegU2KekmWyVAxGyov6vX29wkMP8nnt6MGRdOSc0=; b=GV+1lUPub5r4sf
+	YYNQJDIFrNGkMYuzAWxQQMEpmRsoAE0mU6VrsAK03D5/MtpKGROUebe7r6XG5NlJGJF2RjO1Y2pc9
+	v27FcBrHvRx5tct0qo48KAVOPW/iNHcP3bXvH/LrXCnbAEHrB3utyjRm2X020mPX5Tglx7SHCsPbK
+	4S2XOOFwcAb7wRPuI+0T9N3ybRUpUh3E6CYlkCDW01EkviTP4SQFhbg6Xf76iTbAUWyH+pu/nQBX0
+	5C5p/ZSVni1kQd1XXbr34Gg7R7xOsQhIFFtYI2peM7/T7pXbOUnx+xkvaDKNOlhNATzp+WfigaMYM
+	GOgr4MpQvNmo2niC/Oaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlGEF-00000003NVJ-3p8h;
-	Thu, 20 Feb 2025 23:45:15 +0000
+	id 1tlGEG-00000003NVS-15wp;
+	Thu, 20 Feb 2025 23:45:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlGBH-00000003MjO-3gRE;
+	id 1tlGBH-00000003MjX-47bS;
 	Thu, 20 Feb 2025 23:42:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=eK4Q+gaIL/QDz6EnUoiKhEYDORlBBBWA6cwM5FTMJWU=; b=DHfx1VNRaazraKTN/FWLVGZCpy
-	z1l/UskSBoxSdyWKGdBQIVOxFWCazo8EgM97zvh7yvzc9gXxO1gnzbWer374BOM4qps/DO9rh/eAo
-	tjVLhlHI7+mTC0xa11E6zThVmfY2rFinw600vsJjzVQvd8YgGb1UWT8Ka69GegAuWLkVJ+zSwC8Ug
-	GCFu0SoGzA2cI8yZFJA6rzI1m+NLAWzsJxg+mI1S/jV6jUcTMhjhk5d0+We6BO574D7HqRLjzyvJ0
-	9tI5+05x6oJdn5AI4r538D6/N0gdMCU8dltkviQm0Ogs5H8BFYz3580Fee2CFTJ2V51Pkjk/dQWTe
-	7phMiwFw==;
+	bh=pAp6aTU3MDvbZXbMddmb4brUtJ96X0DNMEe6D505W3o=; b=zCqaZdRKtbRWquJ7RUr0725Q8Z
+	I/iBTPCptWUcH5wEXytEHhz2afiedCNckgIwT9zaXryJoyr6p5yqlkSKt6t7ZaPjLao9BP51innAv
+	KfCeUfpKW77sGdUEAkra71ijEsmWnLUeMtbDOBZGIKDHokiS4v9zSuTaGwly0JC2Z71j8wk8wPXTN
+	Ov/jv/6j1h6jje4W6XGmZnoXwgI/oSXjaziHOAs1o03piA/GsPqRHhhEqHU3TN43AUEF/ZPDpSWt6
+	KwojoeoLXNvEVPucII/ufJtPBqkD41ArbWRd7O4ovDSm4+oRpbay9AIX/1QBwsCuPJfCfv2dIF0Hk
+	ktE/4Vlw==;
 Received: from i53875bc0.versanet.de ([83.135.91.192] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tlGAz-0004Wc-0R; Fri, 21 Feb 2025 00:41:53 +0100
+	id 1tlGAx-0004Wc-Q9; Fri, 21 Feb 2025 00:41:51 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: gregkh@linuxfoundation.org,
 	heiko@sntech.de
@@ -58,16 +58,15 @@ Cc: rafael@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	quentin.schulz@cherry.de
-Subject: [PATCH 2/2] drm/rockchip: Fix shutdown when no drm-device is set up
-Date: Fri, 21 Feb 2025 00:41:41 +0100
-Message-ID: <20250220234141.2788785-3-heiko@sntech.de>
+Subject: [PATCH 0/2] Fix the shutdown callback of a drm component device
+Date: Fri, 21 Feb 2025 00:41:39 +0100
+Message-ID: <20250220234141.2788785-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250220234141.2788785-1-heiko@sntech.de>
-References: <20250220234141.2788785-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_154211_913320_79489ECF 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20250220_154212_010778_61D1B5C5 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +83,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When the drm-driver probes, it mainly creates the component device, where
-all the sub-drivers (vops, hdmi, etc) hook into.
+Probe deferral can cause the platform-data we access to be freed already
+causing ugly splats on system shutdown.
 
-This will cause the shutdown handler to get called on shutdown, even
-though the drm-device might not have been set up, or the component bind
-might have failed.
+Fix this via a small component-helper and adapting the rockchip-drm
+shutdown handler.
 
-So use the new component helper to check whether the drm-device is up
-and only then call the drm-atomic helper to release all the drm magic.
+Heiko Stuebner (2):
+  drivers: base: component: add function to query the bound status
+  drm/rockchip: Fix shutdown when no drm-device is set up
 
-This prevents failures when the drm-device is never set, or has been
-freed up already for example by a probe-defer during the component bind.
+ drivers/base/component.c                    | 14 ++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  6 ++++--
+ include/linux/component.h                   |  4 +++-
+ 3 files changed, 21 insertions(+), 3 deletions(-)
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 439edc165ff6..285b721ff28a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -484,9 +484,11 @@ static void rockchip_drm_platform_remove(struct platform_device *pdev)
- 
- static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
- {
--	struct drm_device *drm = platform_get_drvdata(pdev);
-+	if (component_master_is_bound(&pdev->dev, &rockchip_drm_ops)) {
-+		struct drm_device *drm = platform_get_drvdata(pdev);
- 
--	drm_atomic_helper_shutdown(drm);
-+		drm_atomic_helper_shutdown(drm);
-+	}
- }
- 
- static const struct of_device_id rockchip_drm_dt_ids[] = {
 -- 
 2.47.2
 
