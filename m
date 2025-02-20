@@ -4,73 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E50C021AA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 01:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 079A3C021AD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 04:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mNPsQF4UpYBZZu7Sy5c5jJhK4RUDwbsxz4W5qU+A3J0=; b=a5Ioqyv3jocFElW9lBEovM0z7T
-	sZpJbu2yi93h3js6DPMfBCAFfyYU42oZ76wrgctAUGIA8MxYVubJR+y1+utnD08g83WDWwznTp051
-	wb76QMRjW5fUIrAGAN6I/zife04D8HWsA2VBax6hI60NPUSGavDJShSpoVzNO2dVRK+HU4RjibNd3
-	mC6S/ajvSkyNmRMVuT5ffTfq0N/yV7iHQqmcmbjzfwN62VyvFnL5CRth2W48LKUjdKvrMz5MXbb6Y
-	E9VgiwqcDUhKs/kmGXuiNAVyDPnkeDE9wBtiMX0p+pmpA/EnBlAaKYpOXkjNg1lQ0VeBaWE2rJmKJ
-	zmxYVXhA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ITgSohEBOiIRTiHX3VMonOKqeiSNY3aqfZHUreJ4c44=; b=O5H8P7gWkSp+m/
+	uD1AXfWlS+vjIdZN6dNGKC9Lkwnm0cZfhlr6OR6rlesvD+ksaK3zwdXHSZ77nNDVmhmO7MzNbFqIA
+	I26PUOvSo04dgULGgnXm33QLXvWyy1ZGggJM+Pa8dLrCmxyvyyYS16JvLWZPTfjZCdklMIlFc/wWZ
+	MhXez0TGyZttLLY962ugdbMGAxyDFGZyGhgKNbjvoByIVz5+fQL4Ax4MFinx24nxsKxyfMj7z+elm
+	b1QE4fCdBzJtzFkK7OHJcjHI/9GDrY+4Gmhi/7VMPlvsXWISD5pq20ruYNGgfneZVczJ11pTzP/A/
+	TIbFmHlUreeCuFYYDcZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkvAX-0000000G3uG-28Nx;
-	Thu, 20 Feb 2025 01:16:01 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tkxvJ-0000000Gg3v-48aG;
+	Thu, 20 Feb 2025 04:12:29 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tkv92-0000000G3bs-2tI6;
-	Thu, 20 Feb 2025 01:14:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740014055; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FKE4DGPHfK3pSQzOrAVcQPJnHlLrjRyU52MeQX2NJ6KXFkZyf+7vVUyqf3F9A4uiILCGtyVvcr+KIuL5yTKAdGomO81lWjikOr8kh4F1YdJqbOFs7WAoPf9emwpua2KetQZZ9+LuSCqeULTfdAUCSfKS93sZYM3FawTTyuWT3Zk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740014055; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=fy3eZlkZDiRooYkfeOXa4T84dJQafoGp21goOeYujS8=; 
-	b=I3rZCuLAukzm9+YE2+9Nwon/NUu4uGLAJ5wKfu2nW6afjYD717VqIwMTCYJWks5aoinyguIpmqyowo7aO3GmG5ARHbrgQR9Sx1+NLNOEawI4MJt3aUNorvzF6uiwiWcBhqd/xJTotxX5IeCsKQyyBwEEzxNB0hlHLHNM7Ig2GjI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740014055;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=fy3eZlkZDiRooYkfeOXa4T84dJQafoGp21goOeYujS8=;
-	b=jINtxwQIQmq3LfzRcCQ34frj++Sy3H73y5Hg5Yfa/3sF59RBGJ+cI+ANG4G/QeD/
-	fJC2Lyyb4+X2JUvXGqZbyY3DCUkF2oEjgBBG2X09X8U1PP2IQJu+f+p8Wz6vq0XBYtH
-	boEN1WNFQHYayKEPTHdrPMQoZxQ5foPJvbqGIEcs=
-Received: by mx.zohomail.com with SMTPS id 1740014052769796.8629411328841;
-	Wed, 19 Feb 2025 17:14:12 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 44A8F180608; Thu, 20 Feb 2025 02:14:08 +0100 (CET)
-Date: Thu, 20 Feb 2025 02:14:08 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, kernel@collabora.com, linux-pm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Add thermal trim OTP and tsadc
- nodes
-Message-ID: <p3pddbmqyairfuqubvbjrsdi3s6m5w6etcfyevyatwlevetra6@5daaqilf7ve5>
-References: <20250216-rk3576-tsadc-upstream-v1-0-6ec969322a14@collabora.com>
- <20250216-rk3576-tsadc-upstream-v1-5-6ec969322a14@collabora.com>
+	id 1tkxtn-0000000Gfsd-3hZk;
+	Thu, 20 Feb 2025 04:10:57 +0000
+Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-7272f9b4132so359051a34.0;
+        Wed, 19 Feb 2025 20:10:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740024654; x=1740629454; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9SOmEHKtxnt/FjMNuH1uNatxTpKuGKSJFXtnrbflUGQ=;
+        b=efxJtY/IxEbc3uIN/W1LrrX7nTS+6HAD0IJlgZX1oaqciq9aXUH2y6OyFRTrPw6nfJ
+         JFXzpHI5RCcqW+FCVSP+RNL9TfdVWHzUj+gfRfjYoH2gAam8stuYUB71Bs83bKtACL+k
+         WWLwCcUgMvbGKdR1cokTUUckO003yrtC0WP7+j44ofbDjYLA1qozyZZcSpmiMwgjzlJh
+         H26oFZKyYW/8Vghk/5q+8xj3y+fINeNHwufJb6EQGAkrg3DUjrJmInpaZ6AvnY8C//pv
+         Ec4SO1BjdKIKh7fPo265GlAbnCSauUEAlAry65nBsVaCXizS1RXDBPIPr2eEuw+bI54y
+         k7vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740024654; x=1740629454;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9SOmEHKtxnt/FjMNuH1uNatxTpKuGKSJFXtnrbflUGQ=;
+        b=tFiEIsMU3PuzKLiyIGiUEIza/Ey/A5zjiEultdzhHdnSustpbVIZM+GZVJyiFFPqpC
+         xoGmOOZLSVLHAlLko4TJ3W4ue726tMmf5W9Hzd8Ebpx13I6oQ4145+FhazfsSXO35WNe
+         NNIr6vGU4jjK7lnQNH5Ts0/L9D9XMB4HgkjxuTLXMSXhSgF7inREcBgYMZRac0buEC5C
+         ntR3vR3w9tAHwWhESo9P6Hp8KLYIkMey007Coh2I0QcRjaeG1TpHo9sP/NJF7lclp5Ya
+         IlS5Esp297C/1Dh11/HRHkBctNaEEqRNyi+O7nJQccuBQWBJBatDkRWs841hLl8AhnmX
+         kfVg==
+X-Forwarded-Encrypted: i=1; AJvYcCUgtmDB+mf2D1CaDqsekcMVcSu5bmFh47xHCMQ/e57GmwQ6z76OetApXTEo7ZjRVSfjjcNbvP1QZ5I7I/Md5N0M@lists.infradead.org, AJvYcCWX9uPb5YIcHytesbsSYqzYFNMWjMwgUfaCzQ3uNaB7V1AqzI5fIbtLLUfOb7uF9yygk6qfVb8z1LuAugqp120=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjzcVAwNHOpez6EYy7qJ+Cu9gPn+t7aWFIk0UVc8BBaKSCRQwu
+	N7w+Jp0MGnvzXYS1DvbMR3KK+99D+xeR2HjS+1/PM57wenU10rL8
+X-Gm-Gg: ASbGnctvqabV5aeGCmZjalopWLRtJNC7M8uFl37bawNS7Y5GlZzMvkCjjYocO07mH/f
+	4gaT9GeyqPoZxq5VsbtaTWdn/DJCRfW6xBi/IRoBJO4IMyQMNR2r2wN9+BEzDd7eH6kfQViQdPK
+	T1KQsEgLNQaK99wmbBrb/uWm4aINWZF+0PmqqvaQd6Te7yurkGJFqHbE0WGsN4Xi2Z/Cg9ajQ6Q
+	S1HaEKoX8pIeGZIY27PS0i/ObuPMR8DdXHpzpr8F5bXUO1TfjjLq00M2Ge17/0300B5dGsRIeVK
+	/wLQvXnSy9ovOFFBj4ZxBU3q
+X-Google-Smtp-Source: AGHT+IHCvbgOiUNK4JM990pKQOaGt/m682yZIACl+zliSAkxtTUBeduDoCl/w2cP2mdXDUodQ14SeA==
+X-Received: by 2002:a05:6830:6a8a:b0:727:2c98:4b1c with SMTP id 46e09a7af769-727377694bdmr5641466a34.8.1740024654424;
+        Wed, 19 Feb 2025 20:10:54 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:20f3:777f:5ae9:b018])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-727378237e4sm1025875a34.47.2025.02.19.20.10.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Feb 2025 20:10:53 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH UNTESTED v5 0/4] Orange Pi 5 Ultra
+Date: Wed, 19 Feb 2025 22:10:06 -0600
+Message-ID: <20250220041010.3801-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-In-Reply-To: <20250216-rk3576-tsadc-upstream-v1-5-6ec969322a14@collabora.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.2/239.939.29
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_171428_803131_41855E2C 
-X-CRM114-Status: GOOD (  21.25  )
+X-CRM114-CacheID: sfid-20250219_201055_922609_61FDB0F9 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,190 +94,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2431977562852266814=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add device-tree for Orange Pi 5 Ultra
 
---===============2431977562852266814==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="f2oqydbedyoledmw"
-Content-Disposition: inline
+This patchset is looking for testers. I do not have the hardware to test.
 
+The schematic has been published for the Orange 5 Ultra. [1]
 
---f2oqydbedyoledmw
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Add thermal trim OTP and tsadc
- nodes
-MIME-Version: 1.0
+It's a sibling of the Orange Pi 5 Max [2] with the HDMI0 switched out 
+for the HDMI RX. As a side affect the pin for USB_OTG_PWREN [3][4] has 
+changed.
 
-Hi,
+Patch 1 and 2 can be used on 6.14-rc1
+Patch 3 can be used with 6.15-rc1
+Patch 4 is waiting for HDMI audio patchset [5]
 
-On Sun, Feb 16, 2025 at 12:34:54AM +0100, Nicolas Frattaroli wrote:
-> Thanks to Heiko's work getting OTP working on the RK3576, we can specify
-> the thermal sensor trim values which are stored there now, and with my
-> driver addition to rockchip_thermal, we can make use of these.
->=20
-> Add them to the devicetree for the SoC.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 75 ++++++++++++++++++++++++++=
-++++++
->  1 file changed, 75 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/d=
-ts/rockchip/rk3576.dtsi
-> index 73df515a3937414d89515b4ddccf71f33f6a4fe7..c55d7096a3e985d48240c2cab=
-3de572b9ece2b23 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> @@ -1441,6 +1441,48 @@ gpu_leakage: gpu-leakage@21 {
->  			log_leakage: log-leakage@22 {
->  				reg =3D <0x22 0x1>;
->  			};
-> +			bigcore_tsadc_trim_l: bigcore-tsadc-trim-l@24 {
-> +				reg =3D <0x24 0x1>;
-> +			};
-> +			bigcore_tsadc_trim_h: bigcore-tsadc-trim-h@25 {
-> +				reg =3D <0x25 0x1>;
-> +				bits =3D <0 2>;
-> +			};
+My testing branch with dependent patchsets is on github [6].
 
-Looks like TRIM-L and TRIM-H are always consecutive and even for
-Rockchip it would be weird to change that in the future. So I
-think you can simplify this:
+[1] http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-Ultra.html
+[2] http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-Max.html
+[3] https://github.com/orangepi-xunlong/linux-orangepi/blob/orange-pi-6.1-rk35xx/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts#L306
+[4] https://github.com/orangepi-xunlong/linux-orangepi/blob/orange-pi-6.1-rk35xx/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts#L321
+[5] https://lore.kernel.org/linux-rockchip/20250217215641.372723-1-detlev.casanova@collabora.com/
+[6] https://github.com/jimmyhon/linux/tree/integrate-6.15
 
-bigcore_tsadc_trim: bigcore-tsadc-trim@24 {
-    reg =3D <0x24 0x2>;
-    bits =3D <0 10>;
-};
+Changes in v5:
+- add USB 3.0
+- add HDMI1
+- add HDMI audio
+Link to v4: https://lore.kernel.org/linux-rockchip/20241229184256.1870-10-honyuenkwun@gmail.com/
 
-That looks much cleaner IMHO and should also simplify the driver and
-the binding a bit :)
+Jimmy Hon (4):
+  dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Ultra
+  arm64: dts: rockchip: Add Orange Pi 5 Ultra board
+  arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Ultra
+  arm64: dts: rockchip: Enable HDMI1 audio output for Orange Pi 5 Ultra
 
-Greetings,
+ .../devicetree/bindings/arm/rockchip.yaml     |  3 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3588-orangepi-5-ultra.dts  | 75 +++++++++++++++++++
+ 3 files changed, 78 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
 
--- Sebastian
+base-commit: fa15cc73121279f93757ec76312b0d0b73f7462a
+prerequisite-patch-id: e7cb3b62d173506d38a10a8e71eedd62ba6a1bc0
+-- 
+2.48.1
 
-> +			litcore_tsadc_trim_l: litcore-tsadc-trim-l@26 {
-> +				reg =3D <0x26 0x1>;
-> +			};
-> +			litcore_tsadc_trim_h: litcore-tsadc-trim-h@27 {
-> +				reg =3D <0x27 0x1>;
-> +				bits =3D <0 2>;
-> +			};
-> +			ddr_tsadc_trim_l: ddr-tsadc-trim-l@28 {
-> +				reg =3D <0x28 0x1>;
-> +			};
-> +			ddr_tsadc_trim_h: ddr-tsadc-trim-h@29 {
-> +				reg =3D <0x29 0x1>;
-> +				bits =3D <0 2>;
-> +			};
-> +			npu_tsadc_trim_l: npu-tsadc-trim-l@2a {
-> +				reg =3D <0x2a 0x1>;
-> +			};
-> +			npu_tsadc_trim_h: npu-tsadc-trim-h@2b {
-> +				reg =3D <0x2b 0x1>;
-> +				bits =3D <0 2>;
-> +			};
-> +			gpu_tsadc_trim_l: gpu-tsadc-trim-l@2c {
-> +				reg =3D <0x2c 0x1>;
-> +			};
-> +			gpu_tsadc_trim_h: gpu-tsadc-trim-h@2d {
-> +				reg =3D <0x2d 0x1>;
-> +				bits =3D <0 2>;
-> +			};
-> +			soc_tsadc_trim_l: soc-tsadc-trim-l@64 {
-> +				reg =3D <0x64 0x1>;
-> +			};
-> +			soc_tsadc_trim_h: soc-tsadc-trim-h@65 {
-> +				reg =3D <0x65 0x1>;
-> +				bits =3D <0 2>;
-> +			};
->  		};
-> =20
->  		gic: interrupt-controller@2a701000 {
-> @@ -1852,6 +1894,39 @@ tsadc: tsadc@2ae70000 {
->  			rockchip,hw-tshut-temp =3D <120000>;
->  			rockchip,hw-tshut-mode =3D <0>; /* tshut mode 0:CRU 1:GPIO */
->  			rockchip,hw-tshut-polarity =3D <0>; /* tshut polarity 0:LOW 1:HIGH */
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +
-> +			tsadc@0 {
-> +				reg =3D <0>;
-> +				nvmem-cells =3D <&soc_tsadc_trim_l>, <&soc_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
-> +			tsadc@1 {
-> +				reg =3D <1>;
-> +				nvmem-cells =3D <&bigcore_tsadc_trim_l>, <&bigcore_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
-> +			tsadc@2 {
-> +				reg =3D <2>;
-> +				nvmem-cells =3D <&litcore_tsadc_trim_l>, <&litcore_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
-> +			tsadc@3 {
-> +				reg =3D <3>;
-> +				nvmem-cells =3D <&ddr_tsadc_trim_l>, <&ddr_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
-> +			tsadc@4 {
-> +				reg =3D <4>;
-> +				nvmem-cells =3D <&npu_tsadc_trim_l>, <&npu_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
-> +			tsadc@5 {
-> +				reg =3D <5>;
-> +				nvmem-cells =3D <&gpu_tsadc_trim_l>, <&gpu_tsadc_trim_h>;
-> +				nvmem-cell-names =3D "trim_l", "trim_h";
-> +			};
->  		};
-> =20
->  		i2c9: i2c@2ae80000 {
->=20
-> --=20
-> 2.48.1
->=20
-
---f2oqydbedyoledmw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAme2gdwACgkQ2O7X88g7
-+pqOnw/7BJwL3Y6HgC9xGEeFk3FYRXVxo1LmATjJX1xSRdUBgELTq/qwrW4CGzjO
-zJYnXdbr5Ywvsdg1V4TjFEHSLLu5VHZcPXWFn1um2fFFZP6RAZqY7jKNsiMXP5dA
-JUcvuELX2Ns44BkKyoYUX9rOZOcIHOjseh6S15CVOxa/eOuxFlV0Iqs5KcY4HnZ7
-RveVjnwB29MLsGA81zAfJ53RASCMt3jtmojdqG1P2/qk/CI53Hv9oTCl9bF82yiq
-tRoCXHyyWutOOmJvG2ZUfQOZc2KADwzL2MpWaEIQV3WeZmvF35yAzxk3d9JnyKwR
-5w6SisxKXuwMp3PUGCTjAR4YVPucC3UqRBtQx+3gSkpNm4Kc8gON9vIvmJMjQgGN
-ve+nX2Uzu7yaQqOsHzARgyZ5k0Yc4P5XOkQTo0t3hqXX1Tt0Y7jlkI+wG2HoZrLi
-vKtVOBar3wq3TGQA0IVpWPNENbAtURVwB7e3zLQMlwobqmqTwUsg2VrpQKAGNuTq
-sGvCUievEwSEzSdoPVjWBzRCqKFo2hq+zdOOlBH32w+tLNU9NXGuoRmDnwH2icvk
-+3a3T2+jarvpvcA0PkkuTrUVPkp7GAjtlJusEtrKjNnqhQ5GhUMKY4FsA+N5YipZ
-4xafMEzXk43Z+4jbGJlVH0I7uSbk8sEjI5ddTd8BypmMb2dzSgE=
-=gZfm
------END PGP SIGNATURE-----
-
---f2oqydbedyoledmw--
-
-
---===============2431977562852266814==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2431977562852266814==--
-
