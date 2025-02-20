@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3609C021B1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 16:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF02BC021B1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 16:40:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oY+QEH0JC6qWVngsNxmlxjtW3d94uUqM1A47NCbYbCk=; b=2bfjZzr8auOUk5
-	kslgTMcxR9C85l0zcKf2FQltv/rt1440a7NlSuSDZLmU7mdl5nrnBCykDHmXDCmnsalzTsOuFmnVa
-	83FjmotLyOcjNmyARYqZxUggCJKRfWJKeHM0FRndpn3Js+6vdZJ0cjhOEnPF1/W16vNLSx0AzRWsm
-	GwkMpif/VusUKLnJVJx6VJNAgTAxeHk2QtWVhP2SLZfx9/oAmhobSQe2D3sojkEAW/WUQi5UI+uQs
-	i4za53NG1MQ7b1BO/g4ptKFeucxYFbkZh+3CEOhQfABmuFyD8u6SWiJwyDNZzrUkKFik25r2yaCeK
-	Nyjdukt271VlKZN8pX0g==;
+	List-Owner; bh=UJVOfh/pGaxNB+E32j2G2pVwHdrKyTjPF7Q1SJz9Fb4=; b=2NojToPj03Kg78
+	JtN9upvZsK9PmCImBvbdROajnIe1OreJZuX1triKfgNRYLsXsOfIEsVs6kb4ZCHaB/BeIgpCjHpVE
+	hXkW1he2QvSX06sc9paYG5CM2vtblArWBT3Ut/57T7W9Q4wjF3ad2aHBRSbDctSaDHdTb5q0mWnw6
+	lXyzQsixUHenlBBqVdHdgsKeNq/l6bcHYqHOshIeQcL0tn/vGbG4lJEYY2TvGZtoF6/GCKTyn7Qmp
+	1qeNg6BKJCWYHhiCKyajzR1aD4uP8G5fiabQrMncQTnOwc3X/G6eWerpfHO+3f9sDT6J29dcg7Ff/
+	mNdLGrhF2Du1d/l4f9Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl9XP-00000001tlv-1V9g;
-	Thu, 20 Feb 2025 16:36:35 +0000
+	id 1tl9ak-00000001ue3-2frd;
+	Thu, 20 Feb 2025 16:40:02 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl9Vw-00000001tUl-0gCr
+	id 1tl9Zl-00000001uPb-1fRT
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Feb 2025 16:35:05 +0000
+	Thu, 20 Feb 2025 16:39:02 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 638AE74C;
-	Thu, 20 Feb 2025 17:33:38 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 953EC1193;
+	Thu, 20 Feb 2025 17:37:36 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740069218;
-	bh=zYvZFtJYuH7jTAvD2LyhcQ+co++hJOau6r0M1ch8Q08=;
+	s=mail; t=1740069456;
+	bh=NpVgzpSt57PVSSkjzpDrh/DNf40mgZQJo1PiwYskYnU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=B/UqhAKmvfhxwvp95BRvU1owLQ3VVZA0zxdPG/dzpbs0vBrVKI7PqGN5wZxbt3Akp
-	 idyPF2Lmz2diXiQP0P7D95XbKRV0w/0Sm0OFqFZwuGPL+741xAa1omWAm43qeiueYa
-	 HO+6NHb3oB7DhgRXlFA0wdOJN5aYSqAd3eLHiZOI=
-Date: Thu, 20 Feb 2025 18:34:46 +0200
+	b=thGJhTqpVso78UUSwsWxI3jeLjd1QKzweP9dbUPIc/pZo6sbf4MsyA+VeBGnVMUes
+	 ei9Z6MzF6dMOhJwa3/+tQjMueCtvudqzmsS8/NnMLA7pyQu1aoeOLVQGwl8pAldMqz
+	 VE8mHbA9Y4abWBgVTohhqAIwSQZ7mf5dnfmRhUMM=
+Date: Thu, 20 Feb 2025 18:38:44 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Hans Verkuil <hverkuil@xs4all.nl>
 Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
@@ -49,16 +49,16 @@ Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
 	"open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>,
 	Adam Pigg <adam@piggz.co.uk>
 Subject: Re: [PATCH v3] media: rkisp1: Remove min_queued_buffers
-Message-ID: <20250220163446.GH20111@pendragon.ideasonboard.com>
+Message-ID: <20250220163844.GI20111@pendragon.ideasonboard.com>
 References: <20241029082117.55385-1-jacopo.mondi@ideasonboard.com>
  <tpdzxkug5gtive7h4tvl6jn5r7ybb3dby7ajfuwmzigphhlkin@geirq67p6dww>
- <67af5601-922b-4683-9e5f-ccf4fd757dbb@xs4all.nl>
+ <0d8d204f-c9b1-4152-a041-10d21f94af56@xs4all.nl>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <67af5601-922b-4683-9e5f-ccf4fd757dbb@xs4all.nl>
+In-Reply-To: <0d8d204f-c9b1-4152-a041-10d21f94af56@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_083504_340100_2498BD55 
-X-CRM114-Status: GOOD (  50.92  )
+X-CRM114-CacheID: sfid-20250220_083901_583427_4670D573 
+X-CRM114-Status: GOOD (  45.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +75,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 20, 2025 at 04:39:59PM +0100, Hans Verkuil wrote:
+On Thu, Feb 20, 2025 at 04:33:28PM +0100, Hans Verkuil wrote:
 > On 2/20/25 15:22, Jacopo Mondi wrote:
 > > On Tue, Oct 29, 2024 at 09:21:16AM +0100, Jacopo Mondi wrote:
 > >> There apparently is no reason to require 3 queued buffers for RkISP1,
@@ -97,36 +97,7 @@ On Thu, Feb 20, 2025 at 04:39:59PM +0100, Hans Verkuil wrote:
 > > media: rkisp1: Reduce min_queued_buffers to 1
 > > 
 > > has been collected instead of this v3.
-> 
-> Did you mark your v2 as Superseded in patchwork when you posted the v3?
-> I marked your v1 and v2 as Superseded today when I was cleaning up patchwork,
-> so I know you didn't :-)
-> 
-> When I post a new version I always mark the old one as Superseded, exactly
-> to prevent such things from happening.
-
-That won't be possible in all cases, not all patch submitters have
-patchwork accounts.
-
-In libcamera we use a patchwork bot to automatically mark series as
-superseded. It doesn't do a perfect job, but it considerably reduces the
-maintenance work. Could we do the same ?
-
-> Also, more people should help keep patchwork clean. I think I am usually the
-> person who is doing this, but this is a collective responsibility.
-> 
-> Part of the job description for someone with commit rights is actually to
-> keep patchwork clean.
-
-I think that requiring committers to update the patchwork state of
-patches they merge is fine, the additional work is offset by the ability
-to commit patches directly.
-
-I don't think it would have helped in the case of patches submitted by
-non-committers. Even if I had merged this change myself, I missed
-Jacopo's v3 on the list, and I would have probably equally missed it in
-patchwork without v2 being marked as superseded.
-
+> > 
 > > And I noticed because a user complained to me about this.
 > > 
 > > Now, I can provide an update based on the now merged v2, not a big
@@ -153,7 +124,28 @@ patchwork without v2 being marked as superseded.
 > > is the reviewers scarcity and the limited maintainers bandwidth, now
 > > that we have everything in place to reduce the system clogginess
 > > it still seems we're not all sold for it. I really don't get it, sorry.
-> > 
+> 
+> The main gitlab blocker is that we need a merge bot. Ricardo said in the
+> last meeting that he hopes to have that in a month. The other blocker is
+> of course the gitlab freedesktop migration to another provider.
+> 
+> Without a merge bot even with just two committers Mauro and myself are
+> frequently stepping on each others toes, so that really is needed. Heck, if
+> I have two CI pipelines in flight, I'm stepping on my own toes! Hopefully a
+> merge bot should fix this issue.
+> 
+> Otherwise it is going quite well on the gitlab front.
+> 
+> The other is the "Document the new media-committer's model" series. I
+> think Laurent scared Mauro off with his last set of comments.
+
+I think there may be less fundamental disagreements that one may fear,
+and that part of the trouble is caused by misunderstandings. E-mail
+communication makes it worse, I'd like to reiterate an invitation to
+discuss this in a video call. Decisions will still be made on the list,
+with everybody involved, but explaining our positions live will I think
+improve mutual understanding.
+
 > >> ---
 > >> v2->v3:
 > >> - Remove min_queued_buffers initialization
