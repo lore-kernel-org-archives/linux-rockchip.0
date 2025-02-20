@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9361EC021B1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Feb 2025 23:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E50C021AA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 01:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E8H2RUP5g6pxnQPrcxT4iaWrx4/R1sFTintvbBwTGT4=; b=VtYFoROkXhfo8M
-	LXDuxRpxG/e7fTuu4k9Y9nOX1P/xyFWcrsXWejjuLWbRbpI5NI2RicFSPJYUQKuIod1+dCOeZxvGb
-	qBn4inpUIKLDL68z3OPExjrAOshzT1B5EBZQ4Cr1KqAyWnY6nlSuSEfkCmVq8PSbMJNtJttFmxER8
-	GBnbV7x/ksa3yvgZfEnxe7Yf0p2iWpTej4CbXGtlSpk34QdYCqCZfLsIyBtZQCNuXHzxTJgg7Hd7B
-	8sv9qtiwT5S5LK7LEDgumUnp4zumylc8WrqzlzZGLSne9YPqumU72hg6UUPVWnTiPvZ8/Qml8yclz
-	yUHgPBQGEubjECtgi+qA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mNPsQF4UpYBZZu7Sy5c5jJhK4RUDwbsxz4W5qU+A3J0=; b=a5Ioqyv3jocFElW9lBEovM0z7T
+	sZpJbu2yi93h3js6DPMfBCAFfyYU42oZ76wrgctAUGIA8MxYVubJR+y1+utnD08g83WDWwznTp051
+	wb76QMRjW5fUIrAGAN6I/zife04D8HWsA2VBax6hI60NPUSGavDJShSpoVzNO2dVRK+HU4RjibNd3
+	mC6S/ajvSkyNmRMVuT5ffTfq0N/yV7iHQqmcmbjzfwN62VyvFnL5CRth2W48LKUjdKvrMz5MXbb6Y
+	E9VgiwqcDUhKs/kmGXuiNAVyDPnkeDE9wBtiMX0p+pmpA/EnBlAaKYpOXkjNg1lQ0VeBaWE2rJmKJ
+	zmxYVXhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tktHh-0000000Fdnd-1pBc;
-	Wed, 19 Feb 2025 23:15:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tkvAX-0000000G3uG-28Nx;
+	Thu, 20 Feb 2025 01:16:01 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tktDC-0000000FcUP-2Fi4;
-	Wed, 19 Feb 2025 23:10:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6D35161147;
-	Wed, 19 Feb 2025 23:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EA85C4CED1;
-	Wed, 19 Feb 2025 23:10:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740006637;
-	bh=CYLczoHD6qvbYSNlRY5igolvyzZvd2e9ewBvJXOSbIw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ssGYmnJ9qxwuROAsGnBlSTwZir7tTkewQhMyWzapIUf0BfmMOI2Ju3oj8Vr49jREA
-	 lUF4QK8E0rZiO07qAKQLe0etXjkWtMS5tNUHq8pqqbknRdEIOnVI8XmdBSfze0riaJ
-	 QmWNOZmUeyzjZtAbiLv7WJLTu+X/breMLqPTt1Z563RcmmbjqUJMTPzpZcTuICsr13
-	 gyJYadZesKuK9+AnT7OrceSijZnMd92ubLhHUpUhSN+5jkVVB0NW1sZeFsyqGDr2Qb
-	 IxULEIJhGfskmfeCtB9KknZYkDsKvA6jpYULrSeRQ3CnTcVFr4P9ETmWiUq39Zt9+b
-	 AU2rl7Sggwogw==
-Date: Wed, 19 Feb 2025 17:10:36 -0600
-From: Rob Herring <robh@kernel.org>
+	id 1tkv92-0000000G3bs-2tI6;
+	Thu, 20 Feb 2025 01:14:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740014055; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=FKE4DGPHfK3pSQzOrAVcQPJnHlLrjRyU52MeQX2NJ6KXFkZyf+7vVUyqf3F9A4uiILCGtyVvcr+KIuL5yTKAdGomO81lWjikOr8kh4F1YdJqbOFs7WAoPf9emwpua2KetQZZ9+LuSCqeULTfdAUCSfKS93sZYM3FawTTyuWT3Zk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740014055; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=fy3eZlkZDiRooYkfeOXa4T84dJQafoGp21goOeYujS8=; 
+	b=I3rZCuLAukzm9+YE2+9Nwon/NUu4uGLAJ5wKfu2nW6afjYD717VqIwMTCYJWks5aoinyguIpmqyowo7aO3GmG5ARHbrgQR9Sx1+NLNOEawI4MJt3aUNorvzF6uiwiWcBhqd/xJTotxX5IeCsKQyyBwEEzxNB0hlHLHNM7Ig2GjI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740014055;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=fy3eZlkZDiRooYkfeOXa4T84dJQafoGp21goOeYujS8=;
+	b=jINtxwQIQmq3LfzRcCQ34frj++Sy3H73y5Hg5Yfa/3sF59RBGJ+cI+ANG4G/QeD/
+	fJC2Lyyb4+X2JUvXGqZbyY3DCUkF2oEjgBBG2X09X8U1PP2IQJu+f+p8Wz6vq0XBYtH
+	boEN1WNFQHYayKEPTHdrPMQoZxQ5foPJvbqGIEcs=
+Received: by mx.zohomail.com with SMTPS id 1740014052769796.8629411328841;
+	Wed, 19 Feb 2025 17:14:12 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 44A8F180608; Thu, 20 Feb 2025 02:14:08 +0100 (CET)
+Date: Thu, 20 Feb 2025 02:14:08 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, kernel@collabora.com, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 4/6] dt-bindings: thermal: rockchip: document otp thermal
- trim
-Message-ID: <20250219231036.GA3137058-robh@kernel.org>
+Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Add thermal trim OTP and tsadc
+ nodes
+Message-ID: <p3pddbmqyairfuqubvbjrsdi3s6m5w6etcfyevyatwlevetra6@5daaqilf7ve5>
 References: <20250216-rk3576-tsadc-upstream-v1-0-6ec969322a14@collabora.com>
- <20250216-rk3576-tsadc-upstream-v1-4-6ec969322a14@collabora.com>
+ <20250216-rk3576-tsadc-upstream-v1-5-6ec969322a14@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250216-rk3576-tsadc-upstream-v1-4-6ec969322a14@collabora.com>
+In-Reply-To: <20250216-rk3576-tsadc-upstream-v1-5-6ec969322a14@collabora.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/239.939.29
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250219_151038_687306_7A2846CD 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20250219_171428_803131_41855E2C 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,111 +82,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2431977562852266814=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 16, 2025 at 12:34:53AM +0100, Nicolas Frattaroli wrote:
-> Several Rockchip SoCs, such as the RK3576, can store calibration trim
-> data for thermal sensors in OTP cells. This capability should be
-> documented.
 
-Is several most or a minority as this change is enabled for everyone.
+--===============2431977562852266814==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="f2oqydbedyoledmw"
+Content-Disposition: inline
 
-> 
-> Such a rockchip thermal sensor may reference cell handles that store
-> both a chip-wide trim for all the sensors, as well as cell handles
-> for each individual sensor channel pointing to that specific sensor's
-> trim value.
-> 
-> Additionally, the thermal sensor may optionally reference cells which
-> store the base in terms of degrees celsius and decicelsius that the trim
-> is relative to.
-> 
+
+--f2oqydbedyoledmw
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Add thermal trim OTP and tsadc
+ nodes
+MIME-Version: 1.0
+
+Hi,
+
+On Sun, Feb 16, 2025 at 12:34:54AM +0100, Nicolas Frattaroli wrote:
+> Thanks to Heiko's work getting OTP working on the RK3576, we can specify
+> the thermal sensor trim values which are stored there now, and with my
+> driver addition to rockchip_thermal, we can make use of these.
+>=20
+> Add them to the devicetree for the SoC.
+>=20
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  .../bindings/thermal/rockchip-thermal.yaml         | 44 ++++++++++++++++++++++
->  1 file changed, 44 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> index 49ceed68c92ce5a32ed8d4f39bd88fd052de0e80..8d27ddefcc64e29f0faab059888805802c948b41 100644
-> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> @@ -40,6 +40,21 @@ properties:
->        - const: tsadc
->        - const: apb_pclk
->  
-> +  nvmem-cells:
-> +    items:
-> +      - description: cell handle of the low byte of the chip fallback trim value
-> +      - description: cell handle of the high byte of the chip fallback trim value
-> +      - description: cell handle to where the trim's base temperature is stored
-> +      - description:
-> +          cell handle to where the trim's tenths of Celsius base value is stored
-> +
-> +  nvmem-cell-names:
-> +    enum:
-> +      - trim_l
-> +      - trim_h
-> +      - trim_base
-> +      - trim_base_frac
-> +
->    resets:
->      minItems: 1
->      maxItems: 3
-> @@ -51,6 +66,12 @@ properties:
->        - const: tsadc
->        - const: tsadc-phy
->  
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
->    "#thermal-sensor-cells":
->      const: 1
->  
-> @@ -72,6 +93,29 @@ properties:
->      $ref: /schemas/types.yaml#/definitions/uint32
->      enum: [0, 1]
->  
-> +patternProperties:
-> +  "^([a-z]+)@[0-9]+$":
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 75 ++++++++++++++++++++++++++=
+++++++
+>  1 file changed, 75 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3576.dtsi
+> index 73df515a3937414d89515b4ddccf71f33f6a4fe7..c55d7096a3e985d48240c2cab=
+3de572b9ece2b23 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1441,6 +1441,48 @@ gpu_leakage: gpu-leakage@21 {
+>  			log_leakage: log-leakage@22 {
+>  				reg =3D <0x22 0x1>;
+>  			};
+> +			bigcore_tsadc_trim_l: bigcore-tsadc-trim-l@24 {
+> +				reg =3D <0x24 0x1>;
+> +			};
+> +			bigcore_tsadc_trim_h: bigcore-tsadc-trim-h@25 {
+> +				reg =3D <0x25 0x1>;
+> +				bits =3D <0 2>;
+> +			};
 
-If each node is a sensor or channel, then make that the node name.
+Looks like TRIM-L and TRIM-H are always consecutive and even for
+Rockchip it would be weird to change that in the future. So I
+think you can simplify this:
 
-> +    type: object
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-> +        description: sensor ID, a.k.a. channel number
+bigcore_tsadc_trim: bigcore-tsadc-trim@24 {
+    reg =3D <0x24 0x2>;
+    bits =3D <0 10>;
+};
+
+That looks much cleaner IMHO and should also simplify the driver and
+the binding a bit :)
+
+Greetings,
+
+-- Sebastian
+
+> +			litcore_tsadc_trim_l: litcore-tsadc-trim-l@26 {
+> +				reg =3D <0x26 0x1>;
+> +			};
+> +			litcore_tsadc_trim_h: litcore-tsadc-trim-h@27 {
+> +				reg =3D <0x27 0x1>;
+> +				bits =3D <0 2>;
+> +			};
+> +			ddr_tsadc_trim_l: ddr-tsadc-trim-l@28 {
+> +				reg =3D <0x28 0x1>;
+> +			};
+> +			ddr_tsadc_trim_h: ddr-tsadc-trim-h@29 {
+> +				reg =3D <0x29 0x1>;
+> +				bits =3D <0 2>;
+> +			};
+> +			npu_tsadc_trim_l: npu-tsadc-trim-l@2a {
+> +				reg =3D <0x2a 0x1>;
+> +			};
+> +			npu_tsadc_trim_h: npu-tsadc-trim-h@2b {
+> +				reg =3D <0x2b 0x1>;
+> +				bits =3D <0 2>;
+> +			};
+> +			gpu_tsadc_trim_l: gpu-tsadc-trim-l@2c {
+> +				reg =3D <0x2c 0x1>;
+> +			};
+> +			gpu_tsadc_trim_h: gpu-tsadc-trim-h@2d {
+> +				reg =3D <0x2d 0x1>;
+> +				bits =3D <0 2>;
+> +			};
+> +			soc_tsadc_trim_l: soc-tsadc-trim-l@64 {
+> +				reg =3D <0x64 0x1>;
+> +			};
+> +			soc_tsadc_trim_h: soc-tsadc-trim-h@65 {
+> +				reg =3D <0x65 0x1>;
+> +				bits =3D <0 2>;
+> +			};
+>  		};
+> =20
+>  		gic: interrupt-controller@2a701000 {
+> @@ -1852,6 +1894,39 @@ tsadc: tsadc@2ae70000 {
+>  			rockchip,hw-tshut-temp =3D <120000>;
+>  			rockchip,hw-tshut-mode =3D <0>; /* tshut mode 0:CRU 1:GPIO */
+>  			rockchip,hw-tshut-polarity =3D <0>; /* tshut polarity 0:LOW 1:HIGH */
+> +			#address-cells =3D <1>;
+> +			#size-cells =3D <0>;
 > +
-> +      nvmem-cells:
-> +        items:
-> +          - description: handle of cell containing low byte of calibration data
-> +          - description: handle of cell containing high byte of calibration data
-> +
-> +      nvmem-cell-names:
-> +        items:
-> +          - const: trim_l
-> +          - const: trim_h
-> +
-> +    required:
-> +      - reg
-> +
-> +    unevaluatedProperties: false
-> +
->  required:
->    - compatible
->    - reg
-> 
-> -- 
+> +			tsadc@0 {
+> +				reg =3D <0>;
+> +				nvmem-cells =3D <&soc_tsadc_trim_l>, <&soc_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+> +			tsadc@1 {
+> +				reg =3D <1>;
+> +				nvmem-cells =3D <&bigcore_tsadc_trim_l>, <&bigcore_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+> +			tsadc@2 {
+> +				reg =3D <2>;
+> +				nvmem-cells =3D <&litcore_tsadc_trim_l>, <&litcore_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+> +			tsadc@3 {
+> +				reg =3D <3>;
+> +				nvmem-cells =3D <&ddr_tsadc_trim_l>, <&ddr_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+> +			tsadc@4 {
+> +				reg =3D <4>;
+> +				nvmem-cells =3D <&npu_tsadc_trim_l>, <&npu_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+> +			tsadc@5 {
+> +				reg =3D <5>;
+> +				nvmem-cells =3D <&gpu_tsadc_trim_l>, <&gpu_tsadc_trim_h>;
+> +				nvmem-cell-names =3D "trim_l", "trim_h";
+> +			};
+>  		};
+> =20
+>  		i2c9: i2c@2ae80000 {
+>=20
+> --=20
 > 2.48.1
-> 
+>=20
+
+--f2oqydbedyoledmw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAme2gdwACgkQ2O7X88g7
++pqOnw/7BJwL3Y6HgC9xGEeFk3FYRXVxo1LmATjJX1xSRdUBgELTq/qwrW4CGzjO
+zJYnXdbr5Ywvsdg1V4TjFEHSLLu5VHZcPXWFn1um2fFFZP6RAZqY7jKNsiMXP5dA
+JUcvuELX2Ns44BkKyoYUX9rOZOcIHOjseh6S15CVOxa/eOuxFlV0Iqs5KcY4HnZ7
+RveVjnwB29MLsGA81zAfJ53RASCMt3jtmojdqG1P2/qk/CI53Hv9oTCl9bF82yiq
+tRoCXHyyWutOOmJvG2ZUfQOZc2KADwzL2MpWaEIQV3WeZmvF35yAzxk3d9JnyKwR
+5w6SisxKXuwMp3PUGCTjAR4YVPucC3UqRBtQx+3gSkpNm4Kc8gON9vIvmJMjQgGN
+ve+nX2Uzu7yaQqOsHzARgyZ5k0Yc4P5XOkQTo0t3hqXX1Tt0Y7jlkI+wG2HoZrLi
+vKtVOBar3wq3TGQA0IVpWPNENbAtURVwB7e3zLQMlwobqmqTwUsg2VrpQKAGNuTq
+sGvCUievEwSEzSdoPVjWBzRCqKFo2hq+zdOOlBH32w+tLNU9NXGuoRmDnwH2icvk
++3a3T2+jarvpvcA0PkkuTrUVPkp7GAjtlJusEtrKjNnqhQ5GhUMKY4FsA+N5YipZ
+4xafMEzXk43Z+4jbGJlVH0I7uSbk8sEjI5ddTd8BypmMb2dzSgE=
+=gZfm
+-----END PGP SIGNATURE-----
+
+--f2oqydbedyoledmw--
+
+
+--===============2431977562852266814==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2431977562852266814==--
+
