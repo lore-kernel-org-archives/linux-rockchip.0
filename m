@@ -4,61 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A982BC021B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 10:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45D47C021B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 10:53:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=98qFwfCwCIwCfzRXsGVe7TXdrHQ9KpZ2iD7GjTSs5to=; b=nHCc7uexi9hStY
-	a/z0Mch2Y+D+qwHphqsu/nOurXNnOuI+JbWBFrsQ+BmtQkhafQ39aDvsnXuJSr6coxUBeccwD1xMV
-	T0VdkTzw2NuN3WYspicH2FLuorkpBp9YviM1S2AN7O4jltBb/Nnhletkuj1jLXfQgacsjNxjyCPtA
-	j8+KM3XwevCLF9eeFsbbMSkg6KBPBVvxtnpi1loIcR8o6MvyXSzWPCEpDL0M/S9EcJS5sWvYkxKLk
-	nI5rMZBgwu8j9/lPCa8sm1lcyM/vwDmvRlHr/Ag14Hg/1o3QTn1a7Edlwmk6bwXlnIKCi2svl7dtv
-	XdBC7471ruMuU8IlHZdA==;
+	List-Owner; bh=1dtYoAqAgz9kAU35ZP38Rq1qq3hMyjZM2KrTK3fx5xw=; b=E313U3pNlffMw3
+	beAgYIuX/uFlNS99bAVk31i6S0Sf+iyfRzvOthhVZ9viUtF/pJf/HMeppiY2Fc7l32HTPJxkgIVH+
+	OEvlpl7lNniD6yUusn6x3BpP3yiCn8yzICLvS/qDYOJcGCML0RzsbMO5pdZX1jFoikxKpQ82PhB5p
+	37CYUVw//HVB+1tuY2wSSDeS1uhLeiA+U71Qbs8kO110ca3xd6RYZ1F42aTlncZgwum84O8mRAGc5
+	5wexbsBQ9XVctniMjJCrg3Zv7coGbieP9ksWW4J0j3KLoeC6LxhEKkgoWSm3A/io3PoOvgUfzk477
+	e7l6hDcAqZj5/T7AGroQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl3U5-00000000DVf-3kdu;
-	Thu, 20 Feb 2025 10:08:45 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1tl4B8-00000000OSs-1E7w;
+	Thu, 20 Feb 2025 10:53:14 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl3U3-00000000DTT-28tE;
-	Thu, 20 Feb 2025 10:08:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1740046124; x=1771582124;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=qEEkaGFEKdByIXhxlRz4s/blmxr0i3FKT7WWs7RYcVE=;
-  b=JjH7fQ3zl2KHGFYf9gNOL5hrsis6bu1Hyb3zZDBnLrflpHGo0Y2+kltV
-   TzXXZxJLLH+a52oq2ubTf89YbCa2uzY4EJFicxf35+Df9qtysFUIwS4Yw
-   slBRGT0Uo4UHah7HubrnW2pU5DnOpc/L2oh3bdmshNmMdhnr9d4jsgwG0
-   MAzG1lKT8Pddo708yhziBYm34yiFX1qf4bL+hqDO/07MWUGu3IfM9mRnk
-   ZSp9RTUf0U047IgdQHDTafNMbfdrYrOCBx2rExoxVq1umdN65DjODKvhw
-   al5BUKcgEscuL+Q5nN3aB10KTVQrzuCPO25NusmCp6IkC4R6p2b1GAbyP
-   A==;
-X-CSE-ConnectionGUID: WfjmW+mWRBeUJ8zhDUs4iw==
-X-CSE-MsgGUID: nlSxkwuoRC+uC0pjHDW+wQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11350"; a="44734928"
-X-IronPort-AV: E=Sophos;i="6.13,301,1732608000"; 
-   d="scan'208";a="44734928"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 02:08:40 -0800
-X-CSE-ConnectionGUID: UUemawqKTUWXKRiDeorKDQ==
-X-CSE-MsgGUID: hc9L0Du1SByRgSK2VuJbDQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
-   d="scan'208";a="120221268"
-Received: from dhhellew-desk2.ger.corp.intel.com (HELO [10.245.244.161]) ([10.245.244.161])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2025 02:08:36 -0800
-Message-ID: <92c1b182-5a0b-4d13-9b16-172ac970b62e@intel.com>
-Date: Thu, 20 Feb 2025 10:08:33 +0000
+	id 1tl4B4-00000000OQV-2nej;
+	Thu, 20 Feb 2025 10:53:12 +0000
+Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C69249FC;
+	Thu, 20 Feb 2025 11:51:42 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740048703;
+	bh=cGmqrMQrzQNKvOYoVbXWr6Lo7FskS49XuKpEvHODBjA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=wF6C4CGDoP+/HkpCLJaEAJQ5SUDGi9n0fFlEojmHm56G4KxPszUsR/q+aXtSRtihR
+	 AQoXwkJ+zXwR8f+vg71cO6pL6HL787yGlQcQZD3c6z5sRdwltXCONK8mS2/SPW2eEM
+	 lzKYZgKG0aXbNUjO1esnvXLsAJsX44MVKluFgT40=
+Message-ID: <596b960e-71f8-4c2c-9abe-058206df1dfb@ideasonboard.com>
+Date: Thu, 20 Feb 2025 12:53:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 23/25] drm/xe: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
+Subject: Re: [PATCH v3 02/25] drm/dumb-buffers: Provide helper to set pitch
+ and size
 To: Thomas Zimmermann <tzimmermann@suse.de>,
  maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
  simona@ffwll.ch
@@ -69,17 +52,60 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
  intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- Lucas De Marchi <lucas.demarchi@intel.com>,
- =?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-24-tzimmermann@suse.de>
-Content-Language: en-GB
-From: Matthew Auld <matthew.auld@intel.com>
-In-Reply-To: <20250218142542.438557-24-tzimmermann@suse.de>
+ <20250218142542.438557-3-tzimmermann@suse.de>
+ <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com>
+ <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
+Content-Language: en-US
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
+ 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
+In-Reply-To: <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_020843_552235_1472B798 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20250220_025310_860930_8988D9D2 
+X-CRM114-Status: GOOD (  24.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,46 +117,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTgvMDIvMjAyNSAxNDoyMywgVGhvbWFzIFppbW1lcm1hbm4gd3JvdGU6Cj4gQ2FsbCBkcm1f
-bW9kZV9zaXplX2R1bWIoKSB0byBjb21wdXRlIGR1bWItYnVmZmVyIHNjYW5saW5lIHBpdGNoCj4g
-YW5kIGJ1ZmZlciBzaXplLiBBbGlnbiB0aGUgcGl0Y2ggdG8gYSBtdWx0aXBsZSBvZiA4LiBBbGln
-biB0aGUKPiBidWZmZXIgc2l6ZSBhY2NvcmRpbmcgdG8gaGFyZHdhcmUgcmVxdWlyZW1lbnRzLgo+
-IAo+IFhlJ3MgaW50ZXJuYWwgY2FsY3VsYXRpb24gYWxsb3dlZCBmb3IgNjQtYml0IHdpZGUgYnVm
-ZmVyIHNpemVzLCBidXQKPiB0aGUgaW9jdGwncyBpbnRlcm5hbCBjaGVja3MgYWx3YXlzIHZlcmlm
-aWVkIGFnYWluc3QgMzItYml0IHdpZGUgbGltaXRzLgo+IEhhbmNlLCBpdCBpcyBzYWZlIHRvIGxp
-bWl0IHRoZSBkcml2ZXIgY29kZSB0byAzMi1iaXQgY2FsY3VsYXRpb25zIGFzCj4gd2VsbC4KPiAK
-PiB2MzoKPiAtIG1lbnRpb24gMzItYml0IGNhbGN1bGF0aW9uIGluIGNvbW1pdCBkZXNjcmlwdGlv
-biAoTWF0dGhldykKPiAKPiBTaWduZWQtb2ZmLWJ5OiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1l
-cm1hbm5Ac3VzZS5kZT4KPiBDYzogTHVjYXMgRGUgTWFyY2hpIDxsdWNhcy5kZW1hcmNoaUBpbnRl
-bC5jb20+Cj4gQ2M6ICJUaG9tYXMgSGVsbHN0csO2bSIgPHRob21hcy5oZWxsc3Ryb21AbGludXgu
-aW50ZWwuY29tPgo+IENjOiBSb2RyaWdvIFZpdmkgPHJvZHJpZ28udml2aUBpbnRlbC5jb20+ClJl
-dmlld2VkLWJ5OiBNYXR0aGV3IEF1bGQgPG1hdHRoZXcuYXVsZEBpbnRlbC5jb20+CgoKPiAtLS0K
-PiAgIGRyaXZlcnMvZ3B1L2RybS94ZS94ZV9iby5jIHwgOCArKysrLS0tLQo+ICAgMSBmaWxlIGNo
-YW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3hlL3hlX2JvLmMgYi9kcml2ZXJzL2dwdS9kcm0veGUveGVfYm8uYwo+
-IGluZGV4IDc4ZDA5YzVlZDI2ZC4uYjM0ZjQ0NmFkNTdkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS94ZS94ZV9iby5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3hlL3hlX2JvLmMKPiBA
-QCAtOSw2ICs5LDcgQEAKPiAgICNpbmNsdWRlIDxsaW51eC9ub3NwZWMuaD4KPiAgIAo+ICAgI2lu
-Y2x1ZGUgPGRybS9kcm1fZHJ2Lmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2R1bWJfYnVmZmVycy5o
-Pgo+ICAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtX3R0bV9oZWxwZXIuaD4KPiAgICNpbmNsdWRlIDxk
-cm0vZHJtX21hbmFnZWQuaD4KPiAgICNpbmNsdWRlIDxkcm0vdHRtL3R0bV9kZXZpY2UuaD4KPiBA
-QCAtMjY3MiwxNCArMjY3MywxMyBAQCBpbnQgeGVfYm9fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9m
-aWxlICpmaWxlX3ByaXYsCj4gICAJc3RydWN0IHhlX2RldmljZSAqeGUgPSB0b194ZV9kZXZpY2Uo
-ZGV2KTsKPiAgIAlzdHJ1Y3QgeGVfYm8gKmJvOwo+ICAgCXVpbnQzMl90IGhhbmRsZTsKPiAtCWlu
-dCBjcHAgPSBESVZfUk9VTkRfVVAoYXJncy0+YnBwLCA4KTsKPiAgIAlpbnQgZXJyOwo+ICAgCXUz
-MiBwYWdlX3NpemUgPSBtYXhfdCh1MzIsIFBBR0VfU0laRSwKPiAgIAkJeGUtPmluZm8udnJhbV9m
-bGFncyAmIFhFX1ZSQU1fRkxBR1NfTkVFRDY0SyA/IFNaXzY0SyA6IFNaXzRLKTsKPiAgIAo+IC0J
-YXJncy0+cGl0Y2ggPSBBTElHTihhcmdzLT53aWR0aCAqIGNwcCwgNjQpOwo+IC0JYXJncy0+c2l6
-ZSA9IEFMSUdOKG11bF91MzJfdTMyKGFyZ3MtPnBpdGNoLCBhcmdzLT5oZWlnaHQpLAo+IC0JCQkg
-ICBwYWdlX3NpemUpOwo+ICsJZXJyID0gZHJtX21vZGVfc2l6ZV9kdW1iKGRldiwgYXJncywgU1pf
-NjQsIHBhZ2Vfc2l6ZSk7Cj4gKwlpZiAoZXJyKQo+ICsJCXJldHVybiBlcnI7Cj4gICAKPiAgIAli
-byA9IHhlX2JvX2NyZWF0ZV91c2VyKHhlLCBOVUxMLCBOVUxMLCBhcmdzLT5zaXplLAo+ICAgCQkJ
-ICAgICAgIERSTV9YRV9HRU1fQ1BVX0NBQ0hJTkdfV0MsCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+On 20/02/2025 12:05, Thomas Zimmermann wrote:
+> Hi
+> 
+> Am 20.02.25 um 10:18 schrieb Tomi Valkeinen:
+> [...]
+>>> + * Color modes of 10, 12, 15, 30 and 64 are only supported for use by
+>>> + * legacy user space. Please don't use them in new code. Other modes
+>>> + * are not support.
+>>> + *
+>>> + * Do not attempt to allocate anything but linear framebuffer memory
+>>> + * with single-plane RGB data. Allocation of other framebuffer
+>>> + * layouts requires dedicated ioctls in the respective DRM driver.
+>>
+>> According to this, every driver that supports, say, NV12, should 
+>> implement their own custom ioctl to do the exact same thing? And, of 
+>> course, every userspace app that uses, say, NV12, should then add code 
+>> for all these platforms to call the custom ioctls?
+> 
+> Yes, that's exactly the current status.
+> 
+> There has been discussion about a new dumb-create ioctl that takes a DRM 
+> format as parameter. I'm all for it, but it's out of the scope for this 
+> series.
+> 
+>>
+>> As libdrm's modetest currently supports YUV formats with dumb buffers, 
+>> should we remove that code, as it's not correct and I'm sure people 
+>> use libdrm code as a reference?
+> 
+> Of course not.
+> 
+>>
+>> Well, I'm not serious above, but I think all my points from the 
+>> earlier version are still valid. I don't like this. It changes the 
+>> parameters of the ioctl (bpp used to be bits-per-pixel, not it's 
+>> "color mode"), and the behavior of the ioctl, behavior that we've had 
+>> for a very long time, and we have no idea how many users there are 
+>> that will break (could be none, of course). And the documentation 
+>> changes make the current behavior and uses wrong or legacy.
+> 
+> Before I go into details about this statement, what use case exactly are 
+> you referring to when you say that behavior changes?
+
+For every dumb_buffer allocation with bpp that is not divisible by 8, 
+the result is different, i.e. instead of DIV_ROUND_UP(width * bpp, 8), 
+we now have width * DIV_ROUND_UP(bpp, 8). This, of course, depends on 
+the driver implementation. Some already do the latter.
+
+This change also first calls the drm_driver_color_mode_format(), which 
+could change the behavior even more, but afaics at the moment does not. 
+Although, maybe some platform does width * DIV_ROUND_UP(bpp, 8) even for 
+bpp < 8, and then this series changes it for 1, 2 and 4 bpps (but not 
+for 3, 5, 6, 7, if I'm not mistaken).
+
+However, as the bpp is getting rounded up, this probably won't break any 
+user. But it _is_ a change in the behavior of a uapi, and every time we 
+change a uapi that's been out there for a long time, I'm getting 
+slightly uncomfortable.
+
+So, as a summary, I have a feeling that nothing will break, but I can't 
+say for sure. And as I'm having trouble seeing the benefit of this 
+change for the user, I get even more uncomfortable.
+
+  Tomi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
