@@ -4,112 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F999C021B1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 19:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56E31C021B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 21:37:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yY0xaz9qUzTlf2pJS1ujRiDcSpBZrzEk8X+s4uofLHs=; b=HVn6EdXJeetrsQ
-	QIgTsqLLlhFz4LBc5bwV/yqbrU0rpS+rFpfiNOUwP/ZnHgFDI0CoAENpPwPCXE8+fJLv6ALJRMkG6
-	3hU8kXAYYoxX9WhyMkvU9PsBPAJ0pbei1zZcGmsXIoTyPvZsaPPPoYzO6Fqd4qCPKvDaoDmFEc2CT
-	2fcxasQgfc7KlGf/LAeyhkEEupBj0vUOM9IEN2KZ8ph7RDTladZiryy/8GXJ/K6quz6nuO35LJEci
-	gDe+4TrnYb7JViQ6kIQD78IOrj57fCzLEV47ORdprXH9BPrafnsmZNQeN5GTyi2eqbttZHHWcE/jE
-	MNnqZ4iMI6fQSZ7lIzRg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=PF7Ntg872SZ3aQnSWvzVeHtgEgRrh//rXxQ2UUCPDzk=; b=zrDxJDCZtyyj77hnKt2f5EAKaa
+	w4ZiO4GjswYxllwXvFtyIgWyubB/T/n3o1g+GEn2gykx/T0PvcphTABw0KZzUzj/3BJmk3+49OkhE
+	LhPLxGxe6PwKqeuFTdjMQk185bAT+Q4w8AXTSKeyJ49dFLoclY68DNXnn2G5XLwCJq9KXZs1torAe
+	5hf58dJex5BvL2K2fVRYtHOBWXxY+a8WU+vIdZJGimvf5Wc4VVedUwwLZH/H2ka5zxvFYx9XFDumQ
+	Q/fx0LSlbekuSeeDZ7ENCfJCF3ekzWDEkhuIJGhPNZbt+KBKCvDAydBx19jqWEpd2t+yrF2nQ+xDZ
+	IrmfqgCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlCKy-00000002d1v-3qXc;
-	Thu, 20 Feb 2025 19:35:56 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1tlEEG-00000002z5r-1yQ3;
+	Thu, 20 Feb 2025 21:37:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlCKv-00000002czE-3Mso
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Feb 2025 19:35:55 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2210d92292eso38628275ad.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Feb 2025 11:35:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1740080152; x=1740684952; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2bN/NPVn1vKfJddb+/MWowQ/DYT7KXXiFwwxB/L9OIQ=;
-        b=phkHUGHpmNi6EAti1FZolmPgoOj6+IYkHoWDq6bgm+TVXxhbRmKghUSU0ZN9MgDszc
-         gjaW0PttvvLwb5SU9sZGPoVSydezmxodMoLUnPE+ZF/c08LaueDG/GSwoNm0Ay5GouQQ
-         O+TAu++Gw8+5Ys4t3ILn3X/GwR/CLoqOYgRHQjn5h3r9EsmpkVx5jV1Zm206yxphAOZL
-         jE7KHbrlUHdiOGE+WnbExigwXB/z+Q4/nLkCFCvxnPZ0D8R7+l/5CupWP1NmLaM7UrR+
-         igLHE77ibqCIEvVoAsnZwt127nofKnFA7IZ9NSeIMdL20z84vo9L4fv9TSICzdOWL8YQ
-         0kJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740080152; x=1740684952;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2bN/NPVn1vKfJddb+/MWowQ/DYT7KXXiFwwxB/L9OIQ=;
-        b=UPZxqj6D/U97xGay14VO0mXv9xA6qug8tdFmro0ZHMkPph+yjp/IAySJejxmWG5yeq
-         +rnQNM751vRe2Nqwmj/O4bUf6tV6ohUBh6ZPicOcanC/rVswwEHdjuDo/AizAWSDa0CU
-         C/6TRhFvRorYURSwFZeQqh0MEonBneinO52utPxQxFULlEoYEITOyYwTNjSfqqA3RNBN
-         huCIxds4NfQw/nggBQ6FhJHA6A29xllEkUr1cxhiVnmDJGrSbkFyd1T95EMcXRfHyZ8W
-         IBaQFas50V2//1E3GLLkDHT3HmV57gWBsU6MYsAmZ2eEVoWBBZ+sSwSXOuA+8zqPHl3y
-         iLDw==
-X-Forwarded-Encrypted: i=1; AJvYcCUOtPrK4MZmFvAlb12YmhDgzxEAcvX8WZY1aJqnDrrkGimyQxlLA/dSoh63ABus1ie4Mg9n54BuquAUpI232w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJd5Wq0auU2WfY4HhNhiobVIjdAYJz7jAC8t66sMgp9/pxg6wi
-	LUqFs6WrDVD1Ihlc2SE6Ua7s4h/s7vpUWSPaDgU4rSVki/IG4+Jlu7m9BEdnt0E=
-X-Gm-Gg: ASbGncsTNeM7K6L2ffYVdJ2dFuvKGq0Tkh3h4AlVv3XWoT0eH21h5FTIJ6zqcn1n1jz
-	4gNhCM1zzTyppQPlNeJJse5fPJvq4tsWLxyHomdhQ0cxVAIS+Ch6k4WWO0Ct9JFqbHTSQ5WwPkY
-	M422OjmHr6HbTZmPFMp6iTHlLjFNsnPBHg4dvKugcMicfQZ9QE3xW/K1sspZp/Wzij4XdHdnFcQ
-	y9FFN3QD88PdYsA6hIH3uTKYN5El4Wg23+IzY7KthNY6og09yjfgozH6GMp6DzirY66R7m80nV0
-	ihwcohVAcnD2LqAWyty2vwvT4pAbalukDg==
-X-Google-Smtp-Source: AGHT+IFLUZkJqTzzZT+I/M3yqbHhvCV9FHZfFsSF+/uPg4tVfA/GlpswgR4SI57hCH58PcrddckVtQ==
-X-Received: by 2002:a17:902:db07:b0:216:73f0:ef63 with SMTP id d9443c01a7336-2219fff4377mr5157465ad.49.1740080152564;
-        Thu, 20 Feb 2025 11:35:52 -0800 (PST)
-Received: from tjeznach.ba.rivosinc.com ([64.71.180.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-220d545c9bbsm123012805ad.127.2025.02.20.11.35.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2025 11:35:52 -0800 (PST)
-Date: Thu, 20 Feb 2025 11:35:49 -0800
-From: Tomasz Jeznach <tjeznach@rivosinc.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v2 19/23] iommu/riscv: Update to use
- iommu_alloc_pages_node_lg2()
-Message-ID: <Z7eEFagK3xugrkKH@tjeznach.ba.rivosinc.com>
-References: <0-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
- <19-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
+	id 1tlE6m-00000002xDB-2eRw;
+	Thu, 20 Feb 2025 21:29:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6147768301;
+	Thu, 20 Feb 2025 21:29:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D8E1C4CED1;
+	Thu, 20 Feb 2025 21:29:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740086963;
+	bh=cPMXfJ5EEJSFIc6bQSSqwz/jzpiRbId88b5OIXw7akI=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=WCETpwfuWJO0JWuzIGZRF7sywIRaqSi8e4WpC6+MQMO4xknZ5pLQgbxGDP9+o0I50
+	 0R1myaQWgX2sy4QgviPM15qOeoc8s/lRu4+LK+KZsrDJoQFOrp0Tr3Y5aP2DoIhxQW
+	 IOgax0/wXj9l4oYTD170yWmsniSod59ztndBZYgi1mrT/Wk0m07vx5Y10j9Kw4+WmI
+	 aajGDGqdE/I2TYy/8uRorPwWQHSw5Y3PhcfsV8GvRraFJaw476eCd7j6EL+reXmbJX
+	 4jXTaGQvwbwlqZlwak86fcxhfnVkZGK9PsZsHb1vy5gKnsB9pZyUnTzsOte6E8gqWm
+	 38VW7E2NpUOzw==
+Date: Thu, 20 Feb 2025 15:29:21 -0600
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <19-v2-545d29711869+a76b5-iommu_pages_jgg@nvidia.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_113553_887861_3BFB6EB3 
-X-CRM114-Status: GOOD (  20.48  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+ Farouk Bouabid <farouk.bouabid@theobroma-systems.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ stable@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
+To: Quentin Schulz <foss+kernel@0leil.net>
+In-Reply-To: <20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de>
+References: <20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de>
+Message-Id: <174008661935.4046882.3221866764998287397.robh@kernel.org>
+Subject: Re: [PATCH 0/5] arm64: dts: rockchip: pinmux fixes and support for
+ 2 adapters for Theobroma boards
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,76 +74,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 14, 2025 at 01:07:52PM -0400, Jason Gunthorpe wrote:
-> One part of RISCV already has a computed size, however the queue
-> allocation must be aligned to 4k. The other objects are 4k by spec.
+
+On Thu, 20 Feb 2025 13:20:09 +0100, Quentin Schulz wrote:
+> This is based on top of
+> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v6.15-armsoc/dts64
+> 6ee0b9ad3995 ("arm64: dts: rockchip: Add rng node to RK3588") as it
+> depends on the (merged) series from
+> https://lore.kernel.org/all/20250211-pre-ict-jaguar-v6-0-4484b0f88cfc@cherry.de/
 > 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Patches for Haikou Video Demo adapter for PX30 Ringneck and RK3399 Puma
+> (patches 4 and 5) also depend on the following patch series:
+> https://lore.kernel.org/linux-devicetree/20250220-pca976x-reset-driver-v1-0-6abbf043050e@cherry.de/
+> 
+> This fixes incorrect pinmux on UART0 and UART5 for PX30 Ringneck on
+> Haikou.
+> 
+> This adds support for the HAIKOU-LVDS-9904379 adapter for PX30 Ringneck
+> fitted on a Haikou carrierboard.
+> 
+> Additionally, this adds support for Haikou Video Demo adapter on PX30
+> Ringneck and RK3399 Puma fitted on a Haikou carrierboard. Notably
+> missing from the overlay is the OV5675 camera module which expects
+> 19.2MHz which we cannot exactly feed right now. Modifications to the
+> OV5675 drivers will be made so it's more flexible and then support for
+> the camera module will be added. This adapter has a 720x1280 DSI display
+> with a GT911 touchscreen, a GPIO-controllable LED and an I2C GPIO
+> expander. Support for this adapter on RK3588 Tiger is being added in a
+> separate patch series[1].
+> 
+> Note that the DSI panel currently is glitchy on both PX30 Ringneck and
+> RK3399 Puma but this is being tackled in another series[2]. Since this
+> will not be fixed through DT properties for the panel, adding the DT
+> nodes for the DSI panel even if not perfect right now seems acceptable
+> to me.
+> 
+> [1] https://lore.kernel.org/linux-rockchip/20241127143719.660658-1-heiko@sntech.de/
+> [2] https://lore.kernel.org/r/20240626084722.832763-1-heiko@sntech.de
+> 
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 > ---
->  drivers/iommu/riscv/iommu.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
+> Quentin Schulz (5):
+>       arm64: dts: rockchip: fix pinmux of UART0 for PX30 Ringneck on Haikou
+>       arm64: dts: rockchip: fix pinmux of UART5 for PX30 Ringneck on Haikou
+>       arm64: dts: rockchip: add support for HAIKOU-LVDS-9904379 adapter for PX30 Ringneck
+>       arm64: dts: rockchip: add overlay for PX30 Ringneck Haikou Video Demo adapter
+>       arm64: dts: rockchip: add overlay for RK3399 Puma Haikou Video Demo adapter
 > 
-> diff --git a/drivers/iommu/riscv/iommu.c b/drivers/iommu/riscv/iommu.c
-> index 2750f2e6e01a2b..8835c82f118db4 100644
-> --- a/drivers/iommu/riscv/iommu.c
-> +++ b/drivers/iommu/riscv/iommu.c
-> @@ -65,13 +65,14 @@ static int riscv_iommu_devres_pages_match(struct device *dev, void *res, void *p
->  	return devres->addr == target->addr;
->  }
->  
-> -static void *riscv_iommu_get_pages(struct riscv_iommu_device *iommu, int order)
-> +static void *riscv_iommu_get_pages(struct riscv_iommu_device *iommu,
-> +				   unsigned int size)
->  {
->  	struct riscv_iommu_devres *devres;
->  	void *addr;
->  
-> -	addr = iommu_alloc_pages_node(dev_to_node(iommu->dev),
-> -				      GFP_KERNEL_ACCOUNT, order);
-> +	addr = iommu_alloc_pages_node_sz(dev_to_node(iommu->dev),
-> +					 GFP_KERNEL_ACCOUNT, size);
->  	if (unlikely(!addr))
->  		return NULL;
->  
-> @@ -161,9 +162,9 @@ static int riscv_iommu_queue_alloc(struct riscv_iommu_device *iommu,
->  	} else {
->  		do {
->  			const size_t queue_size = entry_size << (logsz + 1);
-> -			const int order = get_order(queue_size);
->  
-> -			queue->base = riscv_iommu_get_pages(iommu, order);
-> +			queue->base = riscv_iommu_get_pages(
-> +				iommu, max(queue_size, SZ_4K));
->  			queue->phys = __pa(queue->base);
->  		} while (!queue->base && logsz-- > 0);
->  	}
-> @@ -618,7 +619,7 @@ static struct riscv_iommu_dc *riscv_iommu_get_dc(struct riscv_iommu_device *iomm
->  				break;
->  			}
->  
-> -			ptr = riscv_iommu_get_pages(iommu, 0);
-> +			ptr = riscv_iommu_get_pages(iommu, SZ_4K);
->  			if (!ptr)
->  				return NULL;
->  
-> @@ -698,7 +699,7 @@ static int riscv_iommu_iodir_alloc(struct riscv_iommu_device *iommu)
->  	}
->  
->  	if (!iommu->ddt_root) {
-> -		iommu->ddt_root = riscv_iommu_get_pages(iommu, 0);
-> +		iommu->ddt_root = riscv_iommu_get_pages(iommu, SZ_4K);
->  		iommu->ddt_phys = __pa(iommu->ddt_root);
->  	}
->  
-> -- 
-> 2.43.0
+>  arch/arm64/boot/dts/rockchip/Makefile              |  15 ++
+>  .../px30-ringneck-haikou-lvds-9904379.dtso         | 130 ++++++++++++++
+>  .../rockchip/px30-ringneck-haikou-video-demo.dtso  | 190 +++++++++++++++++++++
+>  .../boot/dts/rockchip/px30-ringneck-haikou.dts     |  10 +-
+>  .../rockchip/rk3399-puma-haikou-video-demo.dtso    | 166 ++++++++++++++++++
+>  5 files changed, 510 insertions(+), 1 deletion(-)
+> ---
+> base-commit: 6ee0b9ad3995ee5fa229035c69013b7dd0d3634b
+> change-id: 20250128-ringneck-dtbos-98064839355e
+> prerequisite-change-id: 20250219-pca976x-reset-driver-c9aa95869426:v1
+> prerequisite-patch-id: 24af74693654b4a456aca0a1399ec8509e141c01
+> prerequisite-patch-id: df17910ec117317f2f456f679a77ed60e9168fa3
+> 
+> Best regards,
+> --
+> Quentin Schulz <quentin.schulz@cherry.de>
+> 
+> 
 > 
 
-Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com>
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
 
 
-Thanks,
-- Tomasz
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de:
+
+arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dtb: uart: uart5-rts-gpio: {'rockchip,pins': [[0, 13, 0, 147]], 'phandle': 70} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
