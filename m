@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC94C021B1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 15:33:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4FF7C021B1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Feb 2025 15:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=reERS+JTUuE+P+S2pCoeEyKCWPdumSaW4vJV/3nvDKM=; b=No2Vn8ESzPMWFs
-	a5q3ste6a2ugAvqzxoNK+9c00Q/X/TfT2BsLtWJbqBpqP88EfiDmCfc4h4CAlq5WkmLxuhS7Lrelp
-	UBkYxAUc3vVM/LM9lLCcHWLTnoMgH4Ptx15J79vCGuoL0ZZzRz+40mQWfha9OMzVohDQUWqmwi2Lt
-	cXfvpMBlqK10YgpL7fyEN19UEj4NaXJjesQw6j4VAb6I88fJ8R8aldPrggB9lFKm+IWa8qw/ObU41
-	snVJUDQ84gwjnwNiHyqfekTPu+VUNLE9uSE6OeJXkzp76tIdBVUk62KmH/MNGVfaPUF4PXZUHB9+s
-	JpeT9lAcUQvoxgd9vu3Q==;
+	List-Owner; bh=UbKt9sgLgN04yd4ADa99tE1Nq2KhKAJGKsBGUryp6sY=; b=k7obA3sHM7LTVc
+	XOXoWAqtDzNmFDBcKUMdfs0YVkjMSMClosqBmr2gVzrJo7kb/dqZhySQvgMot8vWe23CzdqMvRfL2
+	JkHM3zgOQYEGrk5UvGV3H4pUkO093sL1/pkdXTGjOmlTyVwfwlBMQRUY6UYE3x6tJoMO0g0tx+JgS
+	ZSjdlkfrNSa7iLbROq9G0kDT18r4gzET/XHYUNrRMlPYOVdUSE/7SU9l06PDutgakZdgtJu1Yl/RP
+	L7ds6A9U6omcClh44xuSSD0MIEKy9JS11V6Z/vDz83t6LZRjYUcfWTmXiywdwjNKxQWCQVtW263ii
+	XBhieZhy0TTkD8WEiExw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl8YR-00000001b9V-2bKi;
-	Thu, 20 Feb 2025 15:33:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tl8ej-00000001cdi-33k0;
+	Thu, 20 Feb 2025 15:40:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tl8YO-00000001b8h-3evB
+	id 1tl8eh-00000001ccj-1erR
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Feb 2025 15:33:34 +0000
+	Thu, 20 Feb 2025 15:40:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83BD461506;
-	Thu, 20 Feb 2025 15:33:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F6E8C4CED1;
-	Thu, 20 Feb 2025 15:33:29 +0000 (UTC)
-Message-ID: <0d8d204f-c9b1-4152-a041-10d21f94af56@xs4all.nl>
-Date: Thu, 20 Feb 2025 16:33:28 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTP id A7B0B5C5B4C;
+	Thu, 20 Feb 2025 15:39:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B536DC4CED1;
+	Thu, 20 Feb 2025 15:40:00 +0000 (UTC)
+Message-ID: <67af5601-922b-4683-9e5f-ccf4fd757dbb@xs4all.nl>
+Date: Thu, 20 Feb 2025 16:39:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] media: rkisp1: Remove min_queued_buffers
@@ -52,8 +52,8 @@ References: <20241029082117.55385-1-jacopo.mondi@ideasonboard.com>
 From: Hans Verkuil <hverkuil@xs4all.nl>
 In-Reply-To: <tpdzxkug5gtive7h4tvl6jn5r7ybb3dby7ajfuwmzigphhlkin@geirq67p6dww>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_073333_030911_5FF203A4 
-X-CRM114-Status: GOOD (  34.97  )
+X-CRM114-CacheID: sfid-20250220_074003_553200_F4A5D0F0 
+X-CRM114-Status: GOOD (  35.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,6 +93,24 @@ On 2/20/25 15:22, Jacopo Mondi wrote:
 > media: rkisp1: Reduce min_queued_buffers to 1
 > 
 > has been collected instead of this v3.
+
+Did you mark your v2 as Superseded in patchwork when you posted the v3?
+I marked your v1 and v2 as Superseded today when I was cleaning up patchwork,
+so I know you didn't :-)
+
+When I post a new version I always mark the old one as Superseded, exactly
+to prevent such things from happening.
+
+Also, more people should help keep patchwork clean. I think I am usually the
+person who is doing this, but this is a collective responsibility.
+
+Part of the job description for someone with commit rights is actually to
+keep patchwork clean.
+
+Regards,
+
+	Hans
+
 > 
 > And I noticed because a user complained to me about this.
 > 
@@ -120,25 +138,6 @@ On 2/20/25 15:22, Jacopo Mondi wrote:
 > is the reviewers scarcity and the limited maintainers bandwidth, now
 > that we have everything in place to reduce the system clogginess
 > it still seems we're not all sold for it. I really don't get it, sorry.
-
-The main gitlab blocker is that we need a merge bot. Ricardo said in the
-last meeting that he hopes to have that in a month. The other blocker is
-of course the gitlab freedesktop migration to another provider.
-
-Without a merge bot even with just two committers Mauro and myself are
-frequently stepping on each others toes, so that really is needed. Heck, if
-I have two CI pipelines in flight, I'm stepping on my own toes! Hopefully a
-merge bot should fix this issue.
-
-Otherwise it is going quite well on the gitlab front.
-
-The other is the "Document the new media-committer's model" series. I
-think Laurent scared Mauro off with his last set of comments.
-
-Regards,
-
-	Hans
-
 > 
 > 
 >> ---
