@@ -4,117 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4681C021AA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 11:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2D8C021AA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 12:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d4sU/f1FpUDuRWY3TeKeMDdJyLlYftnMcUxDdon4Vk0=; b=YVq3lRbtcAks1F
-	Qj85W1oDw6yAwGOk5xkXo8RWjN5n2Z3jlD1LVzCdWCZOw1E2amxVtkAuJ4MAJg4qxpTQlFdlDTG3Y
-	rR14HBGBlGWhADG2UdBUN0fjUgEC4e2XG8kPhlNnvSkfv46BTzELo7WTgFz8SE15AulH8MdKH1ncg
-	50bmQWtjbO0bXZtzaV6CP8G7yKQuh40RVyxy2K3wtv5yHmthafqIm6aJm2O/LcVQ7BMfrJr2V7XyE
-	Z+8XFWHDfT5SnDYdqGIYrq3Ur9D0q5ZFeWmVtvxCzvbp2FqtzAkPLbgvttcr+AhUND8HDjgk1F0xL
-	0D3/UXnrQeloT6pCrn3Q==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=1r2iiNlcdISpLIrL2bknezBvUMOOoDGc1At/rBUoL0s=; b=e6E/cPNJ+1X1P6vY/Ay7YPE91C
+	ZK4FMRVX87PKkmD93Q1AH+EfhWNJtAjQ0bYo2J085fotNfno92omyteEra28z0gYdhtQ0MviceeR7
+	m+DeYGQmVqxiEl7Soqn4W8dVeXGkBjArVd1BMLqdGD2rtcaV1N7U0VYIf9qZ9D8z5hA6mnNyqOACd
+	vsjgnIf9vAboJquIckIwz5lcXm1kgOFwTy397jBLBF4vsBjy6UwoOqCNJrjhWWwTxJwkCQ612+7eT
+	S5VbYJ2g87uzOJw9+o4npOH5qSMaWxAAg0shfqHGPADePH9/G6yB5NYVlniG8DIObIEntq+gQWNgI
+	iYWNdVog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlRVW-00000005Nfl-44y3;
-	Fri, 21 Feb 2025 11:47:50 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1tlSBI-00000005TnI-2xvB;
+	Fri, 21 Feb 2025 12:31:00 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlRQf-00000005Mcy-47op;
-	Fri, 21 Feb 2025 11:42:51 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-abbdc4a0b5aso379087566b.0;
-        Fri, 21 Feb 2025 03:42:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740138168; x=1740742968; darn=lists.infradead.org;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XkLj3L4dQlpMsdIQhF3lEl4OZRGB90PZA1PEkLCsjsA=;
-        b=eks3Ubs87rsq8aP6At2b2YaGR712kzZBqBjW7zYGCLZDiGOADYo4TxuiuQPnq6X7Oc
-         biddRsLqMzz7HemL+CyVrX3EL82LWGZtn9zXkNdYbWikDYl7EHi7hu+xuyf71GOI8gYo
-         44yODTWsA/TRHMEmwQJGhJeNWQnYPYQyZGBLVSshLYjKfY3lmShQygrxWiYMnc2S06Cd
-         VdVEKeucxvlmyel+KGKsNtDqu8T0IHxXEJzrmUg8Ti0u5JxBy6n+Yc7ay0pKirTN7oV9
-         TiTGkawmVhejg0i1hobnzYqM93vS+xnAXoClz87pixyLrIgnnBaJEmRM15EELhNCALVv
-         Dl+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740138168; x=1740742968;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XkLj3L4dQlpMsdIQhF3lEl4OZRGB90PZA1PEkLCsjsA=;
-        b=n4Ni9uWopcht8GOYXC4f5D+WqxdLy6bmeqRbhxPI4h7q8RzXIsQhN5QwfJ/VnQHO+e
-         4PgDrcozwaRjLsZ5P4KuiXyO1UAoNxTUJfMpVcoeXQ2ICaHrvbp2KduZ/DDrWClzFSsI
-         U73OLnvQrSFTard+nD45mFKvuAMgi8zOY/wZtHIekq00BgwnGq6F1sQwl3ZAbn6Z07AF
-         6H2bA4uGRI1cXb4W89zwEmp39SxSkWpBHQjEg4y5GJh1rsGCrwmWP8YqU0Rf5FZ0pdbT
-         BVfzwqWbfBuzMIf58JNTV5TSJ6PF6vh6WT95jNKo/p9YGM8F6CpeKjED/L9ExtWDsrTD
-         C77g==
-X-Forwarded-Encrypted: i=1; AJvYcCU2Ll8eheXUU+eGEmbO00r9hGAM9hk7wPvZxHS2ohDKw1nAFx3ftoZ5SLSBMJLsp0O6APPveyQFjTz8mOfPmbg=@lists.infradead.org, AJvYcCVjCDBCnjwx2Rw0aD3LWQdDe3i9WoSnFQKPoS8z+xAlWChxUyejzI3T8XurmFOa0H42V9eb9t3RDwI7C9pmVT1E@lists.infradead.org
-X-Gm-Message-State: AOJu0YwY8lN99+vTSWbEccOyS8bjtFIpX5tk8z5Uo5ulRFgQUHTtzbEr
-	ZpxknpJG1DZ9E3zPUbYERRFUN2btKGcXuQSHiRZljOW6cBIFmgOj
-X-Gm-Gg: ASbGncuNb5GhtsAvJgme/igvsbnZMt81SmR5fvIJxcQz/0jDUe/Ky9kiGbOAV4EiCt/
-	s+b68y6xnC/t34Xe9j5DZa3MN2zYcKm/TqpUyuT74NiVFdNqG7I7cWIa8qtUaZcNeTaljnmatfu
-	mydL9PhflU/EwiCwHFwEPBUp5ZstbnYYGCiKlk5O/DCw5VWgemRWP/CJQB6cOIHz98SwuIKGaje
-	CE37yh4TKihuLv2poD8WUpc1YwbCaUCXj2JYlgan4sej747MS8/JfBp+fHsULLDZyCwtHsYYd3v
-	zMwh+NB7Dl3hJN16PefkurgfycJmlJTjzVwHoBniq1hUJBqbNVoDteWewMDKJn1IvOJ3aMjUQ22
-	SGs6zvdo=
-X-Google-Smtp-Source: AGHT+IGqnd85Z6uUbc80gi8ICKJ1IHVsX+dg/Mm+5UiTzJwBP7TGxu1s6WSYqAFeYjWEnu0FlWu8JQ==
-X-Received: by 2002:a17:907:7e8e:b0:abb:b411:5e02 with SMTP id a640c23a62f3a-abc0aea5253mr285729366b.18.1740138167711;
-        Fri, 21 Feb 2025 03:42:47 -0800 (PST)
-Received: from smtpclient.apple (89-66-237-154.dynamic.chello.pl. [89.66.237.154])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abbad879b26sm789563166b.44.2025.02.21.03.42.45
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 Feb 2025 03:42:47 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.400.131.1.6\))
-Subject: Re: [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <BA73C4A1-C680-4748-9CE1-4B3B19A14261@gmail.com>
-Date: Fri, 21 Feb 2025 12:42:31 +0100
-Cc: linux-kernel@vger.kernel.org,
- Algea Cao <algea.cao@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- dri-devel@lists.freedesktop.org,
- Niklas Cassel <cassel@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- kernel@collabora.com,
- David Airlie <airlied@gmail.com>,
- Dragan Simic <dsimic@manjaro.org>,
- Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>,
- Robert Foss <rfoss@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sugar Zhang <sugar.zhang@rock-chips.com>,
- linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>,
- FUKAUMI Naoki <naoki@radxa.com>,
- devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Johan Jonker <jbx6244@gmail.com>,
- linux-arm-kernel@lists.infradead.org,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Alexey Charkov <alchark@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-Message-Id: <5E535D58-AEFF-45A4-A1EA-1FA282F366AE@gmail.com>
-References: <20250217215641.372723-1-detlev.casanova@collabora.com>
- <B8EF5196-55FB-44EC-B93C-E327C791225B@gmail.com> <2357838.ElGaqSPkdT@earth>
- <BA73C4A1-C680-4748-9CE1-4B3B19A14261@gmail.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-X-Mailer: Apple Mail (2.3826.400.131.1.6)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_034250_018182_D1B3485A 
-X-CRM114-Status: UNSURE (   6.48  )
-X-CRM114-Notice: Please train this message.
+	id 1tlS9q-00000005TZy-0dfe;
+	Fri, 21 Feb 2025 12:29:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4FDCB6128A;
+	Fri, 21 Feb 2025 12:29:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E56EC4CEDD;
+	Fri, 21 Feb 2025 12:29:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740140969;
+	bh=yeXSTli4MjZbx7FP0/Y3On8xKZiLQ1Wgmzdq+wGSUmg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=KDWs/cKwawUW6RUJpFTguLvs6ax6RrAFU9bAFB2Om9yvjH2i/1RXMvDs1s8x4ilad
+	 VpGg8HGVR3Aq6NUzjMe9PdYjkvcf7chFBOkkGIM99T+MV2ena0gM+qXFq40b0Z/way
+	 IdZKWm58LDy9pIWGoEU7LHLhRbcJO5xmQ9gekIP1+tsqH24cS5RZaaSg8XXbiqxkhc
+	 oyJolu1DDUQ3jl54N+KARxpfxIE/NO3bSe9tVeI9uSdMF6kJLz1reojsuHsawo3Jt1
+	 AWNg7/t7+UsgL4Od+JmS96abev+jaYpMT6Tj9EESw7hyvV/G3n3fw4ax2x7DGMBnA8
+	 G7F9/Hy1W1leg==
+Date: Fri, 21 Feb 2025 06:29:27 -0600
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ devicetree@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+ Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Simon Xue <xxm@rock-chips.com>
+To: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <20250221104357.1514128-2-kever.yang@rock-chips.com>
+References: <20250221104357.1514128-1-kever.yang@rock-chips.com>
+ <20250221104357.1514128-2-kever.yang@rock-chips.com>
+Message-Id: <174014096734.2508114.17981034112064393929.robh@kernel.org>
+Subject: Re: [RFC PATCH v6 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576
+ support
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,17 +71,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ClNtYWxsIGRhdGEgcG9pbnQ6IG9uIHJvY2s1YiBzd2l0Y2hpbmcgaW4gZHRzIGFuYWxvZyBhdWRp
-bzogZnJvbSBhdWRpby1ncmFwaC1jYXJkIHRvIHNpbXBsZS1hdWRpby1jYXJkIChzbyBkdHMgaXM6
-IGh0dHBzOi8vZ2lzdC5naXRodWIuY29tL3dhcnBtZS8zNDliMjdlNDliYzZmNjE3ZWYxMDQxMDQ3
-ZTc1YWRhYiApIG1ha2VzIGtlcm5lbCBvb3BzIGdvIGF3YXkgd2l0aCBhbmFsb2cgYXVkaW8gc3Rp
-bGwgd29ya2luZ+KApgoKc28gbWF5YmUgaXNzdWUgaXMgaW4gYXVkaW8tZ3JhcGgtY2FyZCBjb2Rl
-IChvciBpdHMgZHRzIGZyYWdtZW50cyk/CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+On Fri, 21 Feb 2025 18:43:56 +0800, Kever Yang wrote:
+> rk3576 is using dwc controller, with msi interrupt directly to gic instead
+> of to gic its, so
+> - no its support is required and the 'msi-map' is not need anymore,
+> - a new 'msi' interrupt is needed.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+> Changes in v6:
+> - Fix make dt_binding_check and make CHECK_DTBS=y
+> 
+> Changes in v5:
+> - Add constraints per device for interrupt-names due to the interrupt is
+> different from rk3588.
+> 
+> Changes in v4:
+> - Fix wrong indentation in dt_binding_check report by Rob
+> 
+> Changes in v3:
+> - Fix dtb check broken on rk3588
+> - Update commit message
+> 
+> Changes in v2:
+> - remove required 'msi-map'
+> - add interrupt name 'msi'
+> 
+>  .../bindings/pci/rockchip-dw-pcie-common.yaml | 59 +++++++++++++++----
+>  .../bindings/pci/rockchip-dw-pcie.yaml        |  4 +-
+>  2 files changed, 50 insertions(+), 13 deletions(-)
+> 
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: anyOf:1:then:properties:interrupt-names: {'type': 'array', 'items': [{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}], 'minItems': 6, 'maxItems': 6} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: anyOf:1:then:properties:interrupt-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}] is too long
+	[{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}] is too short
+	False schema does not allow 6
+	1 was expected
+	6 is greater than the maximum of 2
+	6 is greater than the maximum of 3
+	6 is greater than the maximum of 4
+	6 is greater than the maximum of 5
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names: ['sys', 'pmc', 'msg', 'legacy', 'err', 'dma0', 'dma1', 'dma2', 'dma3'] is too long
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250221104357.1514128-2-kever.yang@rock-chips.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
