@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22155C021B6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 18:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 021D3C021B3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 20:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HTbVigzVDuPnKaUe67BzOLG73XYPUc7wHrAoL78Pnkw=; b=NS+Isd3PgFsDms
-	EFcBoueBRdoliLMds1LCToP72mLhhKWsmxoviEfeemYfraGPF4qZVc8dp0Jhtsg0QkwGGOEtQWISe
-	1vSd+5qEPllitDN+F3r+VBEXIFYwqdKUifsNe7JBR3ogX9tRMcXXua3BD/8zoujA+m2BBtpPwSKHV
-	Uy1Bz6gkwdyAGX/69/ujNN1Yk+m63qQahJv1yVS5m1+Z9TlP4k/kE81GRdS95/DXwzSMiMRAb9iwZ
-	2C5M9EV5YRInuHkkTlgVcFfIonkmkMEUB9JfJ7IoaqWhPHDATYET9rRRpsc4Clb5L/bs2PElXADtA
-	Tb0VSTeBkG73Y3nQlfkA==;
+	List-Owner; bh=Yi7966yc3m4dmRjITmQvnjex84kNj2D0UHrVU8+NFWA=; b=BlCfpHWh6O5qh+
+	8E7vYw76LRV9jY9VpwCoa5JwVLuo6RMNKW1dMWdn1M4CCaAyOXEmM2sIIszIK0Ltsvq56Bia+WJrm
+	bHpk7bXNHrG8aQejd4ZduMJR3YXF03gsB2DFSTYnfGfvXXMtjQ1euJwvFoRclEwuP1YPHCSepS1mt
+	iy2qsSRC4rKquunahOWX94hYsBkXXuiCqQiNmv84GEivLkBUW0wh4l6jxmYjX/nMFLd9HR5zEXjHD
+	g3CQn4Z0orH53ufU/KhZCyFCsAfPbcRsnw++gwpdv2KOVcdl3lPLi9b9HzINih2dGkqBZ/TUrDDVx
+	FCmt8s7E++7nU5K+v1lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlXfB-00000006VfS-1TFe;
-	Fri, 21 Feb 2025 18:22:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tlZhi-00000006nuE-1ZfC;
+	Fri, 21 Feb 2025 20:32:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlXSw-00000006TRa-285w;
-	Fri, 21 Feb 2025 18:09:35 +0000
+	id 1tlZby-00000006mk9-3ksN;
+	Fri, 21 Feb 2025 20:27:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C50B85C6C96;
-	Fri, 21 Feb 2025 18:08:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53646C4CED6;
-	Fri, 21 Feb 2025 18:09:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9E2DC5C6D9F;
+	Fri, 21 Feb 2025 20:26:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D844EC4CED6;
+	Fri, 21 Feb 2025 20:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740161373;
-	bh=aVbsiWoZIxApCz2+QDbMVPPTpsz8VI9s1WvBplvWgnY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i3iEDAtAb3sWgbFkRzw96L67Iy7ScCx9rrNiXjqM+kl7dui2AxBQK1D8jJbcqp2BJ
-	 Msy21ZxDF47a7kXRcIMrl5FLUx8l+0iJ6zkZ5zIvjHQ7bC//lzYKvl8dwrFsYgqS6a
-	 gG1lsP0GqJwR4WCnDDg1zHtz0sfAJbO9K3NW6aLjJrE4u4l2CgjMbrc77LCgw+4wcq
-	 CC5wtXQG0JaUjjcZr0SVfK27iWMVpFesAUAD1Vun2i2pXphUs/shbORkFMaYyrVYBF
-	 j+FbQY6EmwJxTTLCTzrqffQMngRENy64bvxpA4JT+De3KmmibK+HEQoH+1weKxb7g5
-	 VXa9EpXJI+vjA==
-Date: Fri, 21 Feb 2025 12:09:30 -0600
-From: Rob Herring <robh@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
-	Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
+	s=k20201202; t=1740169621;
+	bh=omw9Xk2GUaGYZHJp+OWs2mQdBQfQtllVg5cCAlRAdds=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=M5hM/b07D9l80ndsPjYbtELZE2g50mcX+dAdsf/sfl3e0kFXuvm9uC613fwKV4iM/
+	 BnCJrBS869sxmwm8jsClTDKTZPiV28auojHMmQY7LEgrd2v5z5JBbGSnbzgKvoOWEB
+	 OepChQ01pzcRGEASdBlbh/Vt60oEwZqA6ZgGy9kOieIgzzl7jEO2BtNsfqTXvA/SFv
+	 YgSoBNEy8L0lf2gzdvjY3HWM7cCnDURSDIAuWEGOlF9BcVYvdjfHw3ge4nKKqulS6w
+	 vXAUN46JDUWzsKhPW6ldDS4GnUJ3bJ/KEdJJlwB5UNkZuYfilJazrStPKC78sefkfR
+	 yEzRa2nWk021w==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [RFC PATCH v6 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576
- support
-Message-ID: <20250221180930.GA3486559-robh@kernel.org>
-References: <20250221104357.1514128-1-kever.yang@rock-chips.com>
- <20250221104357.1514128-2-kever.yang@rock-chips.com>
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 2/2] PCI: dw-rockchip: hide broken ATS capability
+Date: Fri, 21 Feb 2025 21:26:48 +0100
+Message-ID: <20250221202646.395252-4-cassel@kernel.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250221202646.395252-3-cassel@kernel.org>
+References: <20250221202646.395252-3-cassel@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250221104357.1514128-2-kever.yang@rock-chips.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3476; i=cassel@kernel.org; h=from:subject; bh=omw9Xk2GUaGYZHJp+OWs2mQdBQfQtllVg5cCAlRAdds=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJ3POyKVZ34w/sUT7mY3k2T0PXW5QGfb+XFipRJexolF 0ZFTjfrKGVhEONikBVTZPH94bK/uNt9ynHFOzYwc1iZQIYwcHEKwET6TzH84bgu1Ni7NPzq2/8z 1uzOEnpYo68jGuUkEBWedmVvQiPHd0aGb2ucr/3+Nc1/wc9nfVv3XnkQe3X39YdaVp3b5s/5Zb9 9HRcA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_100934_657717_AB7428FB 
-X-CRM114-Status: GOOD (  23.46  )
+X-CRM114-CacheID: sfid-20250221_122703_039429_7C9953C0 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,179 +82,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 21, 2025 at 06:43:56PM +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, with msi interrupt directly to gic instead
-> of to gic its, so
-> - no its support is required and the 'msi-map' is not need anymore,
-> - a new 'msi' interrupt is needed.
-> 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
-> 
-> Changes in v6:
-> - Fix make dt_binding_check and make CHECK_DTBS=y
-> 
-> Changes in v5:
-> - Add constraints per device for interrupt-names due to the interrupt is
-> different from rk3588.
-> 
-> Changes in v4:
-> - Fix wrong indentation in dt_binding_check report by Rob
-> 
-> Changes in v3:
-> - Fix dtb check broken on rk3588
-> - Update commit message
-> 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../bindings/pci/rockchip-dw-pcie-common.yaml | 59 +++++++++++++++----
->  .../bindings/pci/rockchip-dw-pcie.yaml        |  4 +-
->  2 files changed, 50 insertions(+), 13 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> index cc9adfc7611c..069eb267c0bb 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> @@ -64,6 +64,10 @@ properties:
->            interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
->            tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
->            nf_err_rx, f_err_rx, radm_qoverflow
-> +      - description:
-> +          Combinded MSI line interrupt, which is to support MSI interrupts
-> +          output to GIC controller via GIC SPI interrupt instead of GIC its
-> +          interrupt.
->        - description:
->            eDMA write channel 0 interrupt
->        - description:
-> @@ -75,16 +79,6 @@ properties:
->  
->    interrupt-names:
->      minItems: 5
-> -    items:
+When running the rk3588 in endpoint mode, with an Intel host with IOMMU
+enabled, the host side prints:
+DMAR: VT-d detected Invalidation Time-out Error: SID 0
 
-You just made the max 5 by dropping this.
+When running the rk3588 in endpoint mode, with an AMD host with IOMMU
+enabled, the host side prints:
+iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
 
-> -      - const: sys
-> -      - const: pmc
-> -      - const: msg
-> -      - const: legacy
-> -      - const: err
-> -      - const: dma0
+Usually, to handle these issues, we add a quirk for the PCI vendor and
+device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
+we cannot usually modify the capabilities on the EP side.
 
-Make this 'enum: [ dma0, msi ]'
+In this case, we can modify the capabilties on the EP side. Thus, hide the
+broken ATS capability on rk3588 when running in EP mode. That way,
+we don't need any quirk on the host side, and we see no errors on the host
+side, and we can run pci_endpoint_test successfully, with the IOMMU
+enabled on the host side.
 
-Yeah, that would allow the wrong one to be used, but I prefer that over 
-duplicating the names.
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 46 +++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-> -      - const: dma1
-> -      - const: dma2
-> -      - const: dma3
->  
->    num-lanes: true
->  
-> @@ -123,4 +117,49 @@ required:
->  
->  additionalProperties: true
->  
-> +anyOf:
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 836ea10eafbb..2be005c1a161 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -242,6 +242,51 @@ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
+ 	.init = rockchip_pcie_host_init,
+ };
+ 
++/*
++ * ATS does not work on rk3588 when running in EP mode.
++ * After a host has enabled ATS on the EP side, it will send an IOTLB
++ * invalidation request to the EP side. The rk3588 will never send a completion
++ * back and eventually the host will print an IOTLB_INV_TIMEOUT error, and the
++ * EP will not be operational. If we hide the ATS cap, things work as expected.
++ */
++static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
++	struct device *dev = pci->dev;
++	unsigned int spcie_cap_offset, next_cap_offset;
++	u32 spcie_cap_header, next_cap_header;
++
++	/* only hide the ATS cap for rk3588 running in EP mode */
++	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
++		return;
++
++	spcie_cap_offset = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI);
++	if (!spcie_cap_offset)
++		return;
++
++	spcie_cap_header = dw_pcie_readl_dbi(pci, spcie_cap_offset);
++	next_cap_offset = PCI_EXT_CAP_NEXT(spcie_cap_header);
++
++	next_cap_header = dw_pcie_readl_dbi(pci, next_cap_offset);
++	if (PCI_EXT_CAP_ID(next_cap_header) != PCI_EXT_CAP_ID_ATS)
++		return;
++
++	/* clear next ptr */
++	spcie_cap_header &= ~GENMASK(31, 20);
++
++	/* set next ptr to next ptr of ATS_CAP */
++	spcie_cap_header |= next_cap_header & GENMASK(31, 20);
++
++	dw_pcie_dbi_ro_wr_en(pci);
++	dw_pcie_writel_dbi(pci, spcie_cap_offset, spcie_cap_header);
++	dw_pcie_dbi_ro_wr_dis(pci);
++}
++
++static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
++{
++	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
++}
++
+ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+@@ -314,6 +359,7 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
+ 
+ static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
+ 	.init = rockchip_pcie_ep_init,
++	.pre_init = rockchip_pcie_ep_pre_init,
+ 	.raise_irq = rockchip_pcie_raise_irq,
+ 	.get_features = rockchip_pcie_get_features,
+ };
+-- 
+2.48.1
 
-allOf
-
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3568-pcie
-> +              - rockchip,rk3588-pcie
-> +              - rockchip,rk3588-pcie-ep
-> +    then:
-> +      properties:
-> +        interrupt-names:
-> +          minItems: 5
-
-That's already the min.
-
-> +          type: array
-
-Don't need type. Do you see any schema use 'type: array' outside of the 
-core? 
-
-> +          items:
-> +            - const: sys
-> +            - const: pmc
-> +            - const: msg
-> +            - const: legacy
-> +            - const: err
-> +            - const: dma0
-> +            - const: dma1
-> +            - const: dma2
-> +            - const: dma3
-
-The whole if/then can be dropped.
-
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3576-pcie
-> +    then:
-> +      properties:
-> +        interrupt-names:
-> +          type: array
-> +          items:
-> +            - const: sys
-> +            - const: pmc
-> +            - const: msg
-> +            - const: legacy
-> +            - const: err
-> +            - const: msi
-
-Don't need type or items. Just this is enough to ensure 'msi' is used:
-
-contains:
-  const: msi
-
-> +          minItems: 6
-> +          maxItems: 6
-
-This part is correct.
-
-> +
->  ...
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> index 550d8a684af3..9a464731fa4a 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> @@ -26,6 +26,7 @@ properties:
->        - const: rockchip,rk3568-pcie
->        - items:
->            - enum:
-> +              - rockchip,rk3576-pcie
->                - rockchip,rk3588-pcie
->            - const: rockchip,rk3568-pcie
->  
-> @@ -71,9 +72,6 @@ properties:
->  
->    vpcie3v3-supply: true
->  
-> -required:
-> -  - msi-map
-
-This should be moved to an if/then schema, not just dropped. Unless it 
-was wrong for the existing users. If so, then that's a separate patch.
-
-> -
->  unevaluatedProperties: false
->  
->  examples:
-> -- 
-> 2.25.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
