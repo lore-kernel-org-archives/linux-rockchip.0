@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 021D3C021B3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 20:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A42CC021B3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 21:55:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yi7966yc3m4dmRjITmQvnjex84kNj2D0UHrVU8+NFWA=; b=BlCfpHWh6O5qh+
-	8E7vYw76LRV9jY9VpwCoa5JwVLuo6RMNKW1dMWdn1M4CCaAyOXEmM2sIIszIK0Ltsvq56Bia+WJrm
-	bHpk7bXNHrG8aQejd4ZduMJR3YXF03gsB2DFSTYnfGfvXXMtjQ1euJwvFoRclEwuP1YPHCSepS1mt
-	iy2qsSRC4rKquunahOWX94hYsBkXXuiCqQiNmv84GEivLkBUW0wh4l6jxmYjX/nMFLd9HR5zEXjHD
-	g3CQn4Z0orH53ufU/KhZCyFCsAfPbcRsnw++gwpdv2KOVcdl3lPLi9b9HzINih2dGkqBZ/TUrDDVx
-	FCmt8s7E++7nU5K+v1lw==;
+	List-Owner; bh=7TuBLshErEhYBIsB81G3zk7hdJWlYu4HDD23STQHdkw=; b=XhSrbdkkkeMU0t
+	0W+Hs5fh62gKBWdkFWcGs9hUahFzEBnN61DtWOjHuI0L/GBc7tBO+5MERJd9PrlVfpCgzaQdEsz8/
+	Q3nro7kWIgotF7bmZ6syI/gLoAsQZjUqGk02C0VxJZBIXZWffkvUlOaMJctw0YkiQcNJj50OrUlMJ
+	zG++IZAhhJzPbLrygVFHb0rsZ1GOTeKT6tZeRBxOHUnrfPrOAczBygWv1rkEIMQLExPpbcQy5SL7q
+	2NyuQi6hZRCd8epfkZpRWlYvoVddtZfQEgcnZeWQM7jszpNlxfvt8cXmCAdzYUlW1mZMIe7xw5/af
+	VWHu1tCn2YR1Ilmq4sFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlZhi-00000006nuE-1ZfC;
-	Fri, 21 Feb 2025 20:32:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tlaz2-00000006xbc-0QTq;
+	Fri, 21 Feb 2025 21:54:56 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlZby-00000006mk9-3ksN;
-	Fri, 21 Feb 2025 20:27:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9E2DC5C6D9F;
-	Fri, 21 Feb 2025 20:26:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D844EC4CED6;
-	Fri, 21 Feb 2025 20:26:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740169621;
-	bh=omw9Xk2GUaGYZHJp+OWs2mQdBQfQtllVg5cCAlRAdds=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=M5hM/b07D9l80ndsPjYbtELZE2g50mcX+dAdsf/sfl3e0kFXuvm9uC613fwKV4iM/
-	 BnCJrBS869sxmwm8jsClTDKTZPiV28auojHMmQY7LEgrd2v5z5JBbGSnbzgKvoOWEB
-	 OepChQ01pzcRGEASdBlbh/Vt60oEwZqA6ZgGy9kOieIgzzl7jEO2BtNsfqTXvA/SFv
-	 YgSoBNEy8L0lf2gzdvjY3HWM7cCnDURSDIAuWEGOlF9BcVYvdjfHw3ge4nKKqulS6w
-	 vXAUN46JDUWzsKhPW6ldDS4GnUJ3bJ/KEdJJlwB5UNkZuYfilJazrStPKC78sefkfR
-	 yEzRa2nWk021w==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 2/2] PCI: dw-rockchip: hide broken ATS capability
-Date: Fri, 21 Feb 2025 21:26:48 +0100
-Message-ID: <20250221202646.395252-4-cassel@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250221202646.395252-3-cassel@kernel.org>
-References: <20250221202646.395252-3-cassel@kernel.org>
+	id 1tlaxY-00000006xL5-2Bq0;
+	Fri, 21 Feb 2025 21:53:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=kAP8eop3O7GR+A6CqIyEeQtqDRTGSTC0Z9XT4Ce5THE=; b=aLBk2VrcsBJW7jnMYXuwVda+aV
+	Hbzk6iKeWjoj80LZKAtwRv/tgEfohDTqbwsOClXGFp/7UGhfjYsi1SHSgrhFQqVP9++C+G19KjSNE
+	GHBlk4BVHMJvenE1hStXZzQl4bELedpgC1H8YUihOjRNBbh32PQ+EnUf5aT9l7Z44qCXdi0lN8L5k
+	rLHEVQb8v/+vV9urCzb3lpKzoUSs5BHvmgyK6DrMElRx9SeO7Pudy3M3tumYD/iGsLwDPVrF6k19R
+	o92lBFDg/k7amU0VBayeEhFsoSA/d40ueZw0doZpAG08hEDwmWCyTwyTl1Iv3AauZfATN23ITONN2
+	7I1iMFxQ==;
+Received: from i53875a87.versanet.de ([83.135.90.135] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tlaxV-0000xw-Ha; Fri, 21 Feb 2025 22:53:21 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add usb typec host support to
+ rk3588-jaguar
+Date: Fri, 21 Feb 2025 22:53:20 +0100
+Message-ID: <18716872.sWSEgdgrri@diego>
+In-Reply-To: <c50c6053-4569-44b0-943d-5450960be147@cherry.de>
+References: <20250218211044.2256762-1-heiko@sntech.de>
+ <c50c6053-4569-44b0-943d-5450960be147@cherry.de>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3476; i=cassel@kernel.org; h=from:subject; bh=omw9Xk2GUaGYZHJp+OWs2mQdBQfQtllVg5cCAlRAdds=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJ3POyKVZ34w/sUT7mY3k2T0PXW5QGfb+XFipRJexolF 0ZFTjfrKGVhEONikBVTZPH94bK/uNt9ynHFOzYwc1iZQIYwcHEKwET6TzH84bgu1Ni7NPzq2/8z 1uzOEnpYo68jGuUkEBWedmVvQiPHd0aGb2ucr/3+Nc1/wc9nfVv3XnkQe3X39YdaVp3b5s/5Zb9 9HRcA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_122703_039429_7C9953C0 
-X-CRM114-Status: GOOD (  18.06  )
+X-CRM114-CacheID: sfid-20250221_135324_586414_3B802063 
+X-CRM114-Status: GOOD (  27.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,95 +75,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When running the rk3588 in endpoint mode, with an Intel host with IOMMU
-enabled, the host side prints:
-DMAR: VT-d detected Invalidation Time-out Error: SID 0
+Am Freitag, 21. Februar 2025, 17:43:08 MEZ schrieb Quentin Schulz:
+> Hi Heiko,
+> 
+> On 2/18/25 10:10 PM, Heiko Stuebner wrote:
+> > From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> > 
+> > Jaguar has two type-c ports connected to fusb302 controllers that can
+> > work both in host and device mode and can also run in display-port
+> > altmode.
+> > 
+> > While these ports can work in dual-role data mode, they do not support
+> > powering the device itself as power-sink. This causes issues because
+> > the current infrastructure does not cope well with dual-role data
+> > without dual-role power.
+> > 
+> > So add the necessary nodes for the type-c controllers as well
+> > as enable the relevant core usb nodes, but limit the mode to host-mode
+> > for now until we figure out device mode.
+> > 
+> > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> While the USB functionality does work for both ports, and the 
+> orientation is properly reported, it seems like there may be some issue 
+> with how the PHY or controller interacts with that info because I do not 
+> get USB3 speeds when the device is inserted in reverse orientation, 
+> while I do when it's in normal orientation.
 
-When running the rk3588 in endpoint mode, with an AMD host with IOMMU
-enabled, the host side prints:
-iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
+I've tested both ports and saw the issue too.
+Interestingly on the usbdp-phy side, orientation detection seems correct
+and also the sbu pins are set accordingly.
 
-Usually, to handle these issues, we add a quirk for the PCI vendor and
-device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
-we cannot usually modify the capabilities on the EP side.
 
-In this case, we can modify the capabilties on the EP side. Thus, hide the
-broken ATS capability on rk3588 when running in EP mode. That way,
-we don't need any quirk on the host side, and we see no errors on the host
-side, and we can run pci_endpoint_test successfully, with the IOMMU
-enabled on the host side.
+> I assume that's the case for the Rock 5 ITX and Orange Pi 5+ as well and 
+> probably has nothing to do with the DT?
+> 
+> Should we go still go on with trying to merge this patch knowing that? I 
+> mean USB2 is still better than no USB at all :)
+> 
+> +Cc Chen-Yu, owner of an Orange Pi 5+, who may be able to confirm the 
+> issue is widespread.
+> 
+> Cheers,
+> Quentin
+> 
 
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 46 +++++++++++++++++++
- 1 file changed, 46 insertions(+)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 836ea10eafbb..2be005c1a161 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -242,6 +242,51 @@ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
- 	.init = rockchip_pcie_host_init,
- };
- 
-+/*
-+ * ATS does not work on rk3588 when running in EP mode.
-+ * After a host has enabled ATS on the EP side, it will send an IOTLB
-+ * invalidation request to the EP side. The rk3588 will never send a completion
-+ * back and eventually the host will print an IOTLB_INV_TIMEOUT error, and the
-+ * EP will not be operational. If we hide the ATS cap, things work as expected.
-+ */
-+static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
-+{
-+	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-+	struct device *dev = pci->dev;
-+	unsigned int spcie_cap_offset, next_cap_offset;
-+	u32 spcie_cap_header, next_cap_header;
-+
-+	/* only hide the ATS cap for rk3588 running in EP mode */
-+	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
-+		return;
-+
-+	spcie_cap_offset = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI);
-+	if (!spcie_cap_offset)
-+		return;
-+
-+	spcie_cap_header = dw_pcie_readl_dbi(pci, spcie_cap_offset);
-+	next_cap_offset = PCI_EXT_CAP_NEXT(spcie_cap_header);
-+
-+	next_cap_header = dw_pcie_readl_dbi(pci, next_cap_offset);
-+	if (PCI_EXT_CAP_ID(next_cap_header) != PCI_EXT_CAP_ID_ATS)
-+		return;
-+
-+	/* clear next ptr */
-+	spcie_cap_header &= ~GENMASK(31, 20);
-+
-+	/* set next ptr to next ptr of ATS_CAP */
-+	spcie_cap_header |= next_cap_header & GENMASK(31, 20);
-+
-+	dw_pcie_dbi_ro_wr_en(pci);
-+	dw_pcie_writel_dbi(pci, spcie_cap_offset, spcie_cap_header);
-+	dw_pcie_dbi_ro_wr_dis(pci);
-+}
-+
-+static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
-+{
-+	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
-+}
-+
- static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-@@ -314,6 +359,7 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
- 
- static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
- 	.init = rockchip_pcie_ep_init,
-+	.pre_init = rockchip_pcie_ep_pre_init,
- 	.raise_irq = rockchip_pcie_raise_irq,
- 	.get_features = rockchip_pcie_get_features,
- };
--- 
-2.48.1
+
 
 
 _______________________________________________
