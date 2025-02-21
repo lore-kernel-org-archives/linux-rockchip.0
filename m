@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF0FAC021B3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1921AC021B5
 	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 11:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JgcY/p9lT8B4Wxa2BCxVnuJT6JlOBlgqy8mvm9Ct5Fw=; b=UmCBZwOMgA38Sn
-	i8w9PzbKVVFoXeGoO9vR/gK5wq4WA86Q/9bwp9+rLSn/sXGkOJU9VAeLGdE8KwroJM8rlu6mgmBBs
-	5+tnIOPz8mzwOarmLAW4Y7FDHhD+aWcGfKgt4GiSlptiiBqDzQ/2IClrY3yPdZ+od2/pW31QRJQsw
-	AQT3iZG4yqAfL9PEZtXCJH32Vkocqp0ajCNODbui1tvEVcADIgdV7LGir8Ce5rQem0Sn9a4jnyhtc
-	S8GDe4ODcaJ0ZxVMfp5+2+D/3qkOcUEzMHlpMeY5rHj3ricf5SM9zELYP4CWc7zOlZsNjWDW3fwtc
-	Jo5DsIhfsCYxcgPF2/Vg==;
+	List-Owner; bh=GGG0Mn73IzBm2EPH0jfLqrNn3rXQSnRu1k94VrlnAfQ=; b=zq5IPxXmFQ2dtu
+	UCTisfM3MLhoK87MSDuGDX0gb7QQKfmKr3Z6EN5fnlc7zWFDYslA66psRi6pAIWDgBsB+B9X3LdrB
+	T/d1usw2ONttJQ+xkxzpIV238OEmDuCdXfeyKTqyuBJP+5ngXZbTb4l3evbKzoysr5HeuAvL+BlFp
+	i2jdO+tn23jOVcFV5jJVR03vrcC0d6xVvD0tERCC7l8FXzPFCQn6l2vHOsVccI71aqAlr0tXLtKuc
+	FZi6FC2NgHHf/NBLeM9QqVLvY0NRxLAv9wJ4ChokzNqn/bZsQU8l7V9D2XigAYieME8v9QtheiXXp
+	1wHzo13SyLbXjLiiDyfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlQwJ-00000005I6V-198G;
-	Fri, 21 Feb 2025 11:11:27 +0000
-Received: from mail-vs1-f52.google.com ([209.85.217.52])
+	id 1tlQwK-00000005I7D-02D3;
+	Fri, 21 Feb 2025 11:11:28 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlPn3-000000052jb-2p6h;
-	Fri, 21 Feb 2025 09:57:50 +0000
-Received: by mail-vs1-f52.google.com with SMTP id ada2fe7eead31-4be5033a2cbso864413137.1;
-        Fri, 21 Feb 2025 01:57:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740131866; x=1740736666;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VRmDUg88sJqiPwLbbhmS638djtZJpa1TX+xwhTJhivE=;
-        b=utjiu9HdUWt/f74YvghaetCPcel7DZkI3oXSVnvTRKrp0Mulsol+fWfiI1VAn34bpP
-         7zAIj4r3HA5ragywH+7gKaXo0V61R2kxpinHvzv5pxaltKW7VelQvcijNGnpxY0KFaVC
-         g2L2a89c+etbTEytC5Xi+gCYtT+ph9POfrPlg1R+V/jDBjb3L5p4OK+D5rfgtN8nmZQs
-         1Yw+chpGysh5jxTLzvDwAaCaxmHLTBkAUHfcUFb45VQ/cIMB0NqobsCEWZrUT5LD4ilG
-         j1a4vIAGE/Emt0tz/+oxdsaFXFxa176Wx/23IPgoqWrwnPC166fOdmS8oqdOZRFY11vz
-         V8aQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU22QpExskcOqYn0bbiv7fD/rhCqdZuxxbdmGeuAeTkCT3qrNE2nP5rBoLqIyyCj9gTpSRzAcfhq/JPvDsJeA==@lists.infradead.org, AJvYcCWuvg0ZzsNcSGIn0w6LnCWTG/RtMVhyv9xIEtE32BisiU/5Oa9oK8X5vCT69j3XJ/MxH5lmVNL1dJnLGXiwDPo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxNatNPviZrM2fApor97lu2cYgqaPLN1Ek5SlSBX2ezbOxvO3NO
-	XjHwwGbS3YNXtXgnyrI8bzaFTR0IEYyBD20O180jYJBuUqIz2Tbn0unB3SdZ
-X-Gm-Gg: ASbGncunLWeEZkVjJMgpDXxlKsZMf/RYAPDHQZjMjMlCbnfSlByZ8iMFMMz281gzZ0D
-	yxv3hSPI4WWWR/APf2CgSI0S87FY6KyeDN3Y6J2SVKVVl78oNC1PPtrg6Hz/6RY0HSEPChft930
-	G8xBcInMXDhwpiNsW6gwrWnYsaKND7DHxTY7ZP+xRErPRKqGHNED5Wm/QkgbkIGnvtbhyP4VRrc
-	RqKCdNDdPbsi4oVtMgdOzZpzAoCO8W9xpk6aJRAQJmQg82Xx/g1GwexGeLzZA72UlbP118tcT5m
-	w9gVBhieL7rX1i3lIMYZEEWY9rWSUF2zf4Om+volvVAtUh+DMmHgUmRRk1/JSYVk
-X-Google-Smtp-Source: AGHT+IGxH1iGmvLQBtbV6fLBU9gA6nXc/4fRJCH9i0Zy1Ejju98yeWz86+GKpHG/IyTdnBUPKimuXg==
-X-Received: by 2002:a05:6102:2acb:b0:4bb:d062:43e with SMTP id ada2fe7eead31-4bfbfdc459emr1766236137.0.1740131866452;
-        Fri, 21 Feb 2025 01:57:46 -0800 (PST)
-Received: from mail-ua1-f47.google.com (mail-ua1-f47.google.com. [209.85.222.47])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4bc18de1d31sm3433419137.1.2025.02.21.01.57.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Feb 2025 01:57:45 -0800 (PST)
-Received: by mail-ua1-f47.google.com with SMTP id a1e0cc1a2514c-8622c3be2f4so467764241.1;
-        Fri, 21 Feb 2025 01:57:45 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCV98qZsJiLUNXKsf53ApVSsPDcSeS1+B3eyoxSsrXeioZvnBPeAXOBfMhlpNgJbYKchNRhZEdKLCUN/ItwPVQ==@lists.infradead.org, AJvYcCVNwkmWzXAmGVMZwTRRnLgIqX/bq3EuKNX7++sF47wXEC/1I4bVdjM0Nxje57Q61+DjxVPrF6THEpZFtfll+OI=@lists.infradead.org
-X-Received: by 2002:a05:6102:441c:b0:4b1:1eb5:8ee3 with SMTP id
- ada2fe7eead31-4bfc0277734mr1360564137.22.1740131865660; Fri, 21 Feb 2025
- 01:57:45 -0800 (PST)
+	id 1tlPwb-000000054fY-1txm;
+	Fri, 21 Feb 2025 10:07:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=W+26npf18RRwsCWtDsEbmc9w9HSuCv1j/NyTX3JxquE=; b=pmmMCG9jXqbiNJJ6GmtbO6FRsX
+	ARRLZAhlhtPCOl5SKYYH4jzI1WMpRYPi6B1VK779IhlgPgm+3uGz6H4K2RPVVjx1umDTQT7ILSz6Q
+	XmtkEsJfEImhk5hZqrVA6r7EYi35xg+iF2SyPsl/HufSuWsG94G+LPV6Fg3438zjO7i/67O7waij3
+	s7Y5zZiwO3U4cbLFzbwFr9ot77cTfKdduSXt+hMQ4A5j2c0TJ8YNNPxy/PLCBHadHN2Ix21ZQL+ic
+	J53yrW+4bSLBNJ9jlGXesT0oS65Idbf8QOmu3v6R5BKtVhbD9u4p25ThBL1hN30pHrUM0MIjzaugN
+	KgsC6gYw==;
+Received: from i53875a87.versanet.de ([83.135.90.135] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tlPwY-0002cL-4E; Fri, 21 Feb 2025 11:07:38 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Quentin Schulz <foss+kernel@0leil.net>,
+ Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+ devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ stable@vger.kernel.org
+Subject: Re: [PATCH 0/5] arm64: dts: rockchip: pinmux fixes and support for 2 adapters
+ for Theobroma boards
+Date: Fri, 21 Feb 2025 11:07:37 +0100
+Message-ID: <3771836.RUnXabflUD@diego>
+In-Reply-To: <f9b40055-bcb0-4245-b899-4c7890e81b20@cherry.de>
+References: <20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de>
+ <174008661935.4046882.3221866764998287397.robh@kernel.org>
+ <f9b40055-bcb0-4245-b899-4c7890e81b20@cherry.de>
 MIME-Version: 1.0
-References: <20250218142542.438557-1-tzimmermann@suse.de> <20250218142542.438557-3-tzimmermann@suse.de>
- <dcd59a75-7945-4a2e-99f9-3abbb3e9de14@ideasonboard.com> <355ed315-61fa-4a9d-b72b-8d5bc7b5a16c@suse.de>
- <596b960e-71f8-4c2c-9abe-058206df1dfb@ideasonboard.com> <87ca2b81-a67a-468b-ae2b-30d02a3a64bc@suse.de>
-In-Reply-To: <87ca2b81-a67a-468b-ae2b-30d02a3a64bc@suse.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 21 Feb 2025 10:57:34 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdVnZTj-8bqsbbZdhp0H7Bwib8GkEuXPcKNZjdo_jRRXgg@mail.gmail.com>
-X-Gm-Features: AWEUYZnV-ULUCYHgs2rYqHTa6wPlfKvTAAqMyxRQ0em_d1IVN8Mw0n8NQD9eWqI
-Message-ID: <CAMuHMdVnZTj-8bqsbbZdhp0H7Bwib8GkEuXPcKNZjdo_jRRXgg@mail.gmail.com>
-Subject: Re: [PATCH v3 02/25] drm/dumb-buffers: Provide helper to set pitch
- and size
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
-	nouveau@lists.freedesktop.org, virtualization@lists.linux.dev, 
-	spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_015749_710358_7CEB716F 
-X-CRM114-Status: GOOD (  32.57  )
+X-CRM114-CacheID: sfid-20250221_020741_523265_625AF26E 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,65 +81,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
+Hi Quentin,
 
-On Fri, 21 Feb 2025 at 10:19, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> Am 20.02.25 um 11:53 schrieb Tomi Valkeinen:
-> > This change also first calls the drm_driver_color_mode_format(), which
-> > could change the behavior even more, but afaics at the moment does not.
->
-> Because currently each driver does its own thing, it can be hard to
-> write user space that reliably allocates on all drivers. That's why it's
-> important that parameters are not just raw numbers, but have
-> well-defined semantics. The raw bpp is meaningless; it's also important
-> to know which formats are associated with each value. Otherwise, you
-> might get a dumb buffer with a bpp of 15, but it will be displayed
-> incorrectly. This patch series finally implements this and clearly
-> documents the assumptions behind the interfaces. The assumptions
-> themselves have always existed.
->
-> The color modes in drm_driver_color_mode_format() are set in stone and
-> will not change incompatibly. It's already a user interface. I've taken
-> care that the results do not change incompatibly compared to what the
-> dumb-buffer ioctl currently assumes. (C1-C4 are special, see below.)
->
-> > Although, maybe some platform does width * DIV_ROUND_UP(bpp, 8) even
-> > for bpp < 8, and then this series changes it for 1, 2 and 4 bpps (but
-> > not for 3, 5, 6, 7, if I'm not mistaken).
->
-> True. 1, 2 and 4 would currently over-allocate significantly on some
-> drivers and the series will reduce this to actual requirements. Yet our
-> most common memory managers, gem-dma and gem-shmem, compute the sizes
-> correctly.
->
-> But there are currently no drivers that support C4, C2 or C1 formats;
-> hence there's likely no user space either. I know that Geert is
-> interested in making a driver that uses these formats on very low-end
-> hardware (something Atari or Amiga IIRC). Over-allocating on such
-> hardware is likely not an option.
+Am Freitag, 21. Februar 2025, 11:01:44 MEZ schrieb Quentin Schulz:
+> On 2/20/25 10:29 PM, Rob Herring (Arm) wrote:
+> > On Thu, 20 Feb 2025 13:20:09 +0100, Quentin Schulz wrote:
+> I believe this is a false positive due to the node suffix being -gpio? 
+> If I change -gpio suffix to -pin, it doesn't complain anymore.
+> 
+> """
+> diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts 
+> b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+> index 08a11e4758413..249e50d64791e 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+> +++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+> @@ -196,7 +196,7 @@ sd_card_led_pin: sd-card-led-pin {
+>   	};
+> 
+>   	uart {
+> -		uart5_rts_gpio: uart5-rts-gpio {
+> +		uart5_rts_pin: uart5-rts-pin {
+>   			rockchip,pins =
+>   			  <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
+>   		};
+> @@ -234,7 +234,7 @@ &uart0 {
+>   };
+> 
+>   &uart5 {
+> -	pinctrl-0 = <&uart5_xfer &uart5_rts_gpio>;
+> +	pinctrl-0 = <&uart5_xfer &uart5_rts_pin>;
+>   	rts-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+>   	status = "okay";
+>   };
+> """
+> 
+> @Heiko, I guess you would like a warning-less DT :) I can send a v2 with 
+> that change then if that works for you? I can wait a few days for other 
+> reviews :)
 
-Note that the gud and ssd130x drivers do support R1, and I believe
-work is underway to add grayscale formats to ssd130x.
+that would be great - the v2.
 
-> The other values (3, 5, 6, 7) have no meaning I know of. 6 could be
-> XRGB2222, but I not aware of anything using that. We don't even have a
-> format constant for this.
+We already had patches addressing the -gpio thing for other boards in the
+past, so going to "-pin" is the preferred solution here.
 
-Yeah, e.g. Amiga supports 3, 5, 6, and 7 bpp, but that is using
-bitplanes.  There is already some sort of consensus to not expose
-bitplanes to userspace in DRM, so limiting to 1, 2, 4, and 8 bpp
-(which can be converted from C[1248]) is fine.
+Also, your patches are totally specific to Theobroma-boards, so just send
+your v2 at your convenience - I don't really expect that much additional
+outside review comments ;-) .
 
-Gr{oetje,eeting}s,
 
-                        Geert
+Heiko
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
