@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2D8C021AA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 12:31:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE03C021AA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 13:30:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1r2iiNlcdISpLIrL2bknezBvUMOOoDGc1At/rBUoL0s=; b=e6E/cPNJ+1X1P6vY/Ay7YPE91C
-	ZK4FMRVX87PKkmD93Q1AH+EfhWNJtAjQ0bYo2J085fotNfno92omyteEra28z0gYdhtQ0MviceeR7
-	m+DeYGQmVqxiEl7Soqn4W8dVeXGkBjArVd1BMLqdGD2rtcaV1N7U0VYIf9qZ9D8z5hA6mnNyqOACd
-	vsjgnIf9vAboJquIckIwz5lcXm1kgOFwTy397jBLBF4vsBjy6UwoOqCNJrjhWWwTxJwkCQ612+7eT
-	S5VbYJ2g87uzOJw9+o4npOH5qSMaWxAAg0shfqHGPADePH9/G6yB5NYVlniG8DIObIEntq+gQWNgI
-	iYWNdVog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N6kxwOH6hSmk027GT/Xn/VwyKyRc42HBxbn5MFpoEfc=; b=T6NwvY1nb2rXcM
+	vMYfum3/4VsQl10JiT/MhOq/C0el6e3IlP1x4HDxEU1+VAcMLXIZ/G3GfvvdgLsdyyZbNZNfyLhJI
+	WtLaIz23/SuWVBRNZ0H0rRP46umv5fMIOZLar9EassHUus/o1/l3pNT/V16N+1hORH3dE9D2OgYfc
+	IG4TcNDZ+B1kPazn+4SYMGbijAl+bnGwaU5Rj6kP0N4ak09vZBBoJfa6TyG5eazolaSFu9+ZpT7iF
+	ewMVFIjAylqfmCoZfqpLF6Ok/SD2yA0ucYSNDQgocEl4tsnIZDnG4s6byL2pVnGDajuc3Rjj7tI94
+	+byA+PjiS0MZ7lhzam+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlSBI-00000005TnI-2xvB;
-	Fri, 21 Feb 2025 12:31:00 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tlT6H-00000005eQK-1s4J;
+	Fri, 21 Feb 2025 13:29:53 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlS9q-00000005TZy-0dfe;
-	Fri, 21 Feb 2025 12:29:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4FDCB6128A;
-	Fri, 21 Feb 2025 12:29:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E56EC4CEDD;
-	Fri, 21 Feb 2025 12:29:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740140969;
-	bh=yeXSTli4MjZbx7FP0/Y3On8xKZiLQ1Wgmzdq+wGSUmg=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=KDWs/cKwawUW6RUJpFTguLvs6ax6RrAFU9bAFB2Om9yvjH2i/1RXMvDs1s8x4ilad
-	 VpGg8HGVR3Aq6NUzjMe9PdYjkvcf7chFBOkkGIM99T+MV2ena0gM+qXFq40b0Z/way
-	 IdZKWm58LDy9pIWGoEU7LHLhRbcJO5xmQ9gekIP1+tsqH24cS5RZaaSg8XXbiqxkhc
-	 oyJolu1DDUQ3jl54N+KARxpfxIE/NO3bSe9tVeI9uSdMF6kJLz1reojsuHsawo3Jt1
-	 AWNg7/t7+UsgL4Od+JmS96abev+jaYpMT6Tj9EESw7hyvV/G3n3fw4ax2x7DGMBnA8
-	 G7F9/Hy1W1leg==
-Date: Fri, 21 Feb 2025 06:29:27 -0600
+	id 1tlT4m-00000005eDX-3bJ7;
+	Fri, 21 Feb 2025 13:28:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740144486; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CEWSyxZxoMOT30Lbo9c/GiuYjoKB6lCUpiX7XU0G/Y8ZiqpYqf3rBOyRZg3p3EUHlznUdn9nMDEklLTGSPhLqIzU8Fw5lc1z/YH4ZKY275MvVMGDDuDJOs4OAL56SOjQw6gy15xh3hALazhelUqafcJiGmIfSvjSzKVmIYXvHXA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740144486; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=1NT+BJtGmQPBJxVdJtnETf4Hylev5huwZTuiokcMHso=; 
+	b=S86mae6WsnRg2XGXkrPfCqE7h05p93U6+lmxxLm0OXhnJTkS6Rhukhuh593E5UqWtXkx7hw4QWFuZTTKBP2RnjA0JR6eJ7Vc2a+6OagTK0+GThs8xkkz1FB1urqkF6uZyFCJyGWNITTVXqqU/Wl5MGfsjUMiyYIgTDB9nW9Xbpo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740144486;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=1NT+BJtGmQPBJxVdJtnETf4Hylev5huwZTuiokcMHso=;
+	b=PuMLlOuWX0TxQ7RVYJKBcIdAjCg5FCDYgvjVenaUwWadc3X2osGRNo0qF+mSfFFc
+	0aRd4Yf/iuxWI2wuedtZqG4B4iO1GCl234AiT4Jo3X7gIjX2PjbTlxyfKlQ0aUGXcTC
+	p0CPmV3tSgS/1YUJxLKWsjScJ0XdjN/ekszEukDw=
+Received: by mx.zohomail.com with SMTPS id 1740144484347820.7261259225404;
+	Fri, 21 Feb 2025 05:28:04 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/6] dt-bindings: thermal: rockchip: document otp thermal trim
+Date: Fri, 21 Feb 2025 14:27:58 +0100
+Message-ID: <4631308.LvFx2qVVIh@workhorse>
+In-Reply-To: <20250219231036.GA3137058-robh@kernel.org>
+References: <20250216-rk3576-tsadc-upstream-v1-0-6ec969322a14@collabora.com>
+ <20250216-rk3576-tsadc-upstream-v1-4-6ec969322a14@collabora.com>
+ <20250219231036.GA3137058-robh@kernel.org>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- devicetree@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- heiko@sntech.de, linux-rockchip@lists.infradead.org, 
- Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Simon Xue <xxm@rock-chips.com>
-To: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20250221104357.1514128-2-kever.yang@rock-chips.com>
-References: <20250221104357.1514128-1-kever.yang@rock-chips.com>
- <20250221104357.1514128-2-kever.yang@rock-chips.com>
-Message-Id: <174014096734.2508114.17981034112064393929.robh@kernel.org>
-Subject: Re: [RFC PATCH v6 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576
- support
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250221_052820_963984_421A42EB 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,79 +83,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 21 Feb 2025 18:43:56 +0800, Kever Yang wrote:
-> rk3576 is using dwc controller, with msi interrupt directly to gic instead
-> of to gic its, so
-> - no its support is required and the 'msi-map' is not need anymore,
-> - a new 'msi' interrupt is needed.
+On Thursday, 20 February 2025 00:10:36 Central European Standard Time Rob 
+Herring wrote:
+> On Sun, Feb 16, 2025 at 12:34:53AM +0100, Nicolas Frattaroli wrote:
+> > Several Rockchip SoCs, such as the RK3576, can store calibration trim
+> > data for thermal sensors in OTP cells. This capability should be
+> > documented.
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
+> Is several most or a minority as this change is enabled for everyone.
+
+Downstream has trim_h/trim_l nodes for the following SoCs:
+- RK3502
+- RK3528
+- RK3562
+- RK3566
+- RK3568
+- RK3576
+- RV1126
+
+If you'd prefer I split the bindings or add a conditional to only enable this 
+on those specific compatibles, let me know. It is worth noting that all of 
+these SoCs are fairly new, so I assume this is the design that Rockchip is 
+using going forward.
+
+Additionally, trim_base/trim_base_frac seem to only be set in downstream DTs 
+for RK3562, RK3566, RK3568 and RV1126, so while I'm at it I'd add those to a 
+separate conditional as well.
+
+> > Such a rockchip thermal sensor may reference cell handles that store
+> > both a chip-wide trim for all the sensors, as well as cell handles
+> > for each individual sensor channel pointing to that specific sensor's
+> > trim value.
+> > 
+> > Additionally, the thermal sensor may optionally reference cells which
+> > store the base in terms of degrees celsius and decicelsius that the trim
+> > is relative to.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> > 
+> >  .../bindings/thermal/rockchip-thermal.yaml         | 44
+> >  ++++++++++++++++++++++ 1 file changed, 44 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
+> > b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml index
+> > 49ceed68c92ce5a32ed8d4f39bd88fd052de0e80..8d27ddefcc64e29f0faab0598888058
+> > 02c948b41 100644 ---
+> > a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml +++
+> > b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml> 
+> > @@ -40,6 +40,21 @@ properties:
+> >        - const: tsadc
+> >        - const: apb_pclk
+> > 
+> > +  nvmem-cells:
+> > +    items:
+> > +      - description: cell handle of the low byte of the chip fallback
+> > trim value +      - description: cell handle of the high byte of the chip
+> > fallback trim value +      - description: cell handle to where the trim's
+> > base temperature is stored +      - description:
+> > +          cell handle to where the trim's tenths of Celsius base value is
+> > stored +
+> > +  nvmem-cell-names:
+> > +    enum:
+> > +      - trim_l
+> > +      - trim_h
+> > +      - trim_base
+> > +      - trim_base_frac
+> > +
+> > 
+> >    resets:
+> >      minItems: 1
+> >      maxItems: 3
+> > 
+> > @@ -51,6 +66,12 @@ properties:
+> >        - const: tsadc
+> >        - const: tsadc-phy
+> > 
+> > +  "#address-cells":
+> > +    const: 1
+> > +
+> > +  "#size-cells":
+> > +    const: 0
+> > +
+> > 
+> >    "#thermal-sensor-cells":
+> >      const: 1
+> > 
+> > @@ -72,6 +93,29 @@ properties:
+> >      $ref: /schemas/types.yaml#/definitions/uint32
+> >      enum: [0, 1]
+> > 
+> > +patternProperties:
 > 
-> Changes in v6:
-> - Fix make dt_binding_check and make CHECK_DTBS=y
+> > +  "^([a-z]+)@[0-9]+$":
+> If each node is a sensor or channel, then make that the node name.
+
+Will do in V2. Should the node name be something like e.g. `gpu` for the GPU 
+thermal sensor/channel? Maybe suffixed with e.g. `-tsadc` or something, to 
+disambiguate it from other mentions of the GPU, or is disambiguation 
+unnecessary noise because it's evident from it being a child of tsadc anyway, 
+much like cpu and codec aren't suffixed with anything in simple-audio-card's 
+dai-link?
+
 > 
-> Changes in v5:
-> - Add constraints per device for interrupt-names due to the interrupt is
-> different from rk3588.
-> 
-> Changes in v4:
-> - Fix wrong indentation in dt_binding_check report by Rob
-> 
-> Changes in v3:
-> - Fix dtb check broken on rk3588
-> - Update commit message
-> 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../bindings/pci/rockchip-dw-pcie-common.yaml | 59 +++++++++++++++----
->  .../bindings/pci/rockchip-dw-pcie.yaml        |  4 +-
->  2 files changed, 50 insertions(+), 13 deletions(-)
-> 
+> > +    type: object
+> > +    properties:
+> > +      reg:
+> > +        maxItems: 1
+> > +        description: sensor ID, a.k.a. channel number
+> > +
+> > +      nvmem-cells:
+> > +        items:
+> > +          - description: handle of cell containing low byte of
+> > calibration data +          - description: handle of cell containing high
+> > byte of calibration data +
+> > +      nvmem-cell-names:
+> > +        items:
+> > +          - const: trim_l
+> > +          - const: trim_h
+> > +
+> > +    required:
+> > +      - reg
+> > +
+> > +    unevaluatedProperties: false
+> > +
+> > 
+> >  required:
+> >    - compatible
+> >    - reg
 
-My bot found errors running 'make dt_binding_check' on your patch:
 
-yamllint warnings/errors:
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: anyOf:1:then:properties:interrupt-names: {'type': 'array', 'items': [{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}], 'minItems': 6, 'maxItems': 6} should not be valid under {'required': ['maxItems']}
-	hint: "maxItems" is not needed with an "items" list
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml: anyOf:1:then:properties:interrupt-names: 'oneOf' conditional failed, one must be fixed:
-	[{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}] is too long
-	[{'const': 'sys'}, {'const': 'pmc'}, {'const': 'msg'}, {'const': 'legacy'}, {'const': 'err'}, {'const': 'msi'}] is too short
-	False schema does not allow 6
-	1 was expected
-	6 is greater than the maximum of 2
-	6 is greater than the maximum of 3
-	6 is greater than the maximum of 4
-	6 is greater than the maximum of 5
-	hint: "minItems" is only needed if less than the "items" list length
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: interrupt-names: ['sys', 'pmc', 'msg', 'legacy', 'err', 'dma0', 'dma1', 'dma2', 'dma3'] is too long
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.example.dtb: pcie-ep@fe150000: Unevaluated properties are not allowed ('power-domains' was unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250221104357.1514128-2-kever.yang@rock-chips.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
