@@ -4,95 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE1F5C021B3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 14:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5528EC021B3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 14:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/69vRmRwOMl9il+ynJYcre917SJ0Z+ZYs5s1L4AQ/9o=; b=BOgKoMSB0lQD/a
-	ay8LeouSZbIQ+89L3irLt6JoM5j9e1wnCM8Rb3z8fwyPU9rUyC9OY9p+95gT0LbjMU7EHnDoiobQd
-	dV009ZsmBj/RZKf0MOfKX/x0AoS8+K2h5tQqdUsoj42V3Y8log4NLF1qQhxo5oqrJJqIS/ieFyrbT
-	h0ulQVFL7dDwpto4CFWadqN+oJFHvoQO6eBpsOMa5AVsKyak5tHQsP6lgIwEJUTsF2AbZZpJP4in3
-	15y3oH31Bqhz/6EIfbVtGaorWOvG6tBF+WtU7v4VM3Fm9uPrCLgFp5QqbQzWThoeWB1Yiz7NDJfEh
-	TrksSV0G8dg4qWyu7zBg==;
+	List-Owner; bh=Mz+ubhK0GNbgZQ9/K6uM5xYCfTUKnDs1AQGFCFSm9W4=; b=LE+A4S666NFI4u
+	I9bEM9N8O7UGAZfrXTAC3J8okkde7nGUxASpVhZKDTqxR8FUvZDTi1AuqGMCojt9smVqIaYpf17uF
+	3BzfAAgQKZpFOvaFU8LuCLkuZ1P2SDfobGTVNqko5qh4gPpevdO0esIeG+PjgZhlgvBbaW/2cPOoi
+	QGkJGzaq2ye6QIjT9Hz9BXhAqS5NwuoRqYQXA5nTQAAtajFT4vO8+0dZzaz4iNLCmQUDYlZid9cEG
+	mrDsw48H9lP6K78Ycc944NyL4fb1kP3xh21j8k8zbexcaMmGbujRHgKXsT+/6oYigoSZE2yW2b3PW
+	+mQlUfZ772k1ftaWXAWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlU4V-00000005pX4-2ej9;
-	Fri, 21 Feb 2025 14:32:07 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1tlUJL-00000005sPO-47wl;
+	Fri, 21 Feb 2025 14:47:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlTmN-00000005ma1-2tVz;
-	Fri, 21 Feb 2025 14:13:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1740147204; x=1771683204;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Rdw7VcsQXfPz8ijFFRK9pCO/RD7kMR5M0Z/uSgEDHcs=;
-  b=E4V+FGgMeFEMoyeauFsbzatVvwZo9rI0kc6cYtZLdZtp/7+AXeqpG+G4
-   QPdQxvKOIlD1dbU03pAq4gs/xMlGOObnnz1qhl7BzHBHdiqKZ49znveVC
-   a/XzjliS8a0lzODEXZk32XoNpJaVgw6NxKihKyZdVVESua+SM2eOOHMo9
-   P9tUp2qWvXyVBCM7AFXgGbN2/8Vuo9ZCH2V2pUzee3i8g6AgX3s+OSXu7
-   HuMyRDXj78WzfH2CEKwO+5vvagu9AjbjUvFWiBZJh9AfYKmIz1g+hMZ5L
-   7rXllncBj/NLeiUAsh9ij/7FlMiPoyQ7y+sp3b16O9PBtLdfcpUzn0EwJ
-   Q==;
-X-CSE-ConnectionGUID: p+JQDVbURuCMEZdhd5CCMQ==
-X-CSE-MsgGUID: h/mUdpj5TgmDdOgPSpTL6w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11352"; a="41105526"
-X-IronPort-AV: E=Sophos;i="6.13,305,1732608000"; 
-   d="scan'208";a="41105526"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Feb 2025 06:13:23 -0800
-X-CSE-ConnectionGUID: kuWEpc3JQdWW113ZADD5WQ==
-X-CSE-MsgGUID: r9mxKPfoREW6/MVEd3c6sQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,305,1732608000"; 
-   d="scan'208";a="115099483"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Feb 2025 06:13:16 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id E5D12120289;
-	Fri, 21 Feb 2025 16:13:13 +0200 (EET)
-Date: Fri, 21 Feb 2025 14:13:13 +0000
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Alexander Shiyan <eagle.alexander923@gmail.com>,
-	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 04/11] media: dt-bindings: media: add bindings for
- rockchip mipi csi host
-Message-ID: <Z7iJ-UaLabqK4ZhY@kekkonen.localdomain>
-References: <20250219-v6-8-topic-rk3568-vicap-v4-0-e906600ae3b0@wolfvision.net>
- <20250219-v6-8-topic-rk3568-vicap-v4-4-e906600ae3b0@wolfvision.net>
+	id 1tlUGU-00000005rzL-31si;
+	Fri, 21 Feb 2025 14:44:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=gA8mn4fOHoGECCHqYXtlx2zwyQnjDL6NNJx/mEGL37k=; b=BIsxXJF05y1o+enNn9I9aK2SZw
+	WROBymDU4IJFrbCw0/LLvFC70u8XBY9dDuh9x0w0erwBooFo0C0UxoB+1Mugg2bma4VoZXEF4m2q/
+	NKsi8wUJEg2JDYbFiMxJXiW6MWuS3d85nUEc51xZYlgOIh5QhcPdFf+YBFfj0g4oIK7SJ5tJufyS/
+	CJrNM6sFg0NMVOqYR5ar3f5dQNJEnKv2jRt5BKSU0xaFcirKM1N3leU83k61uwfUjXj6A7Luv0Ti5
+	3Ysb27KzAT9dGGkdvtM2+kuK1v+dVkhdYq/aOM5NKh/NfRgZ2+ow+krTYOpd0SWx/aTMx/PaeHqhr
+	e+4bQIlw==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tlUGR-00000002eik-16U5;
+	Fri, 21 Feb 2025 14:44:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740149018; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LlJGyGMRQMGa7d1hiq5ol+5x17hrNEGOITinBxi2RfLVUmuqWFvWwvZraOoEpi4OYi1YoOLNyqvnuoBhJv5NjSBAknykKoIDBYOOujNCSffFzetkfrbLL99wcmnReve0li94vUEnRp/md2vSGDu2zRk6o3mUwB3ZXFwJScQUKxg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740149018; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gA8mn4fOHoGECCHqYXtlx2zwyQnjDL6NNJx/mEGL37k=; 
+	b=SS5CeWfivsYuXpFsx/0MPvpuxMWFRxte1/ddDomWFSwswVstzSnzPNvljfY4htomab7qaxtT3qI+cXo+9mA4ytBNiy2AqaiXhG+Y0rBgX6bKYRLZeo5xmTxEYemz2Kg0vt+8tTa5BgxPqXvk6GWwPr1ADZQqOXGt1rrKGMkXUmQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740149018;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=gA8mn4fOHoGECCHqYXtlx2zwyQnjDL6NNJx/mEGL37k=;
+	b=Oqd6dpyxZY9ouCf7T8Ku9XIIh2lKIO7kgmqL3aRYfciczdjFa77sxZ12CaQ/izzJ
+	3eUDdaUsKGpAhc87xv6+Ln8RjEH0POVBgunMSnnqLqqH0XNLvDk09FnQIz0S1CHOx2t
+	l0fX5qeyonfxOLsyVYaCaZsUIY5ALfsn9B5l3MNg=
+Received: by mx.zohomail.com with SMTPS id 1740149014815682.0553532876535;
+	Fri, 21 Feb 2025 06:43:34 -0800 (PST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Cc: linux-kernel@vger.kernel.org, Algea Cao <algea.cao@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com,
+ David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
+ Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>,
+ Robert Foss <rfoss@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>,
+ devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
+Date: Fri, 21 Feb 2025 09:43:31 -0500
+Message-ID: <4988041.31r3eYUQgx@trenzalore>
+In-Reply-To: <5E535D58-AEFF-45A4-A1EA-1FA282F366AE@gmail.com>
+References: <20250217215641.372723-1-detlev.casanova@collabora.com>
+ <BA73C4A1-C680-4748-9CE1-4B3B19A14261@gmail.com>
+ <5E535D58-AEFF-45A4-A1EA-1FA282F366AE@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250219-v6-8-topic-rk3568-vicap-v4-4-e906600ae3b0@wolfvision.net>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_061323_738705_4F8D1196 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20250221_144427_750270_B30E1549 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,174 +109,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Wed, Feb 19, 2025 at 11:16:35AM +0100, Michael Riesch wrote:
-> Add documentation for the Rockchip RK3568 MIPI CSI-2 Host unit.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->  .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 123 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  2 files changed, 124 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
-> new file mode 100644
-> index 000000000000..288941686e96
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
-> @@ -0,0 +1,123 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3568 MIPI CSI-2 Host
-> +
-> +maintainers:
-> +  - Michael Riesch <michael.riesch@wolfvision.net>
-> +
-> +description:
-> +  The Rockchip RK3568 MIPI CSI-2 Host is a CSI-2 bridge with one input port
-> +  and one output port. It receives the data with the help of an external
-> +  MIPI PHY (C-PHY or D-PHY) and passes it to the Rockchip RK3568 Video Capture
-> +  (VICAP) block.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3568-mipi-csi
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  phys:
-> +    maxItems: 1
-> +    description: MIPI C-PHY or D-PHY.
-> +
-> +  phy-names:
-> +    items:
-> +      - const: csiphy
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description:
-> +          Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              bus-type:
-> +                enum: [1, 4]
-> +
-> +            required:
-> +              - bus-type
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description:
-> +          Output port node. Connect to RK3568 VICAP MIPI CSI-2 port.
-
-What's the purpose of a port node without an endpoint?
-
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - phys
-> +  - phy-names
-> +  - ports
-> +  - power-domains
-> +  - resets
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3568-cru.h>
-> +    #include <dt-bindings/power/rk3568-power.h>
-> +
-> +    parent {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        csi: csi@fdfb0000 {
-> +            compatible = "rockchip,rk3568-mipi-csi";
-> +            reg = <0x0 0xfdfb0000 0x0 0x10000>;
-> +            clocks = <&cru PCLK_CSI2HOST1>;
-> +            phys = <&csi_dphy>;
-> +            phy-names = "csiphy";
-> +            power-domains = <&power RK3568_PD_VI>;
-> +            resets = <&cru SRST_P_CSI2HOST1>;
-> +            status = "disabled";
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                csi_in: port@0 {
-> +                    reg = <0>;
-> +                };
-> +
-> +                csi_out: port@1 {
-> +                    reg = <1>;
-> +
-> +                    csi_output: endpoint {
-> +                        remote-endpoint = <&vicap_mipi_input>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cd8fa1afe5eb..d83a7762dbe3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -20407,6 +20407,7 @@ M:	Michael Riesch <michael.riesch@wolfvision.net>
->  L:	linux-media@vger.kernel.org
->  S:	Maintained
->  F:	Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
-> +F:	Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
->  F:	Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
->  
->  ROCKCHIP CRYPTO DRIVERS
-> 
-
--- 
-Kind regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpZGF5LCAyMSBGZWJydWFyeSAyMDI1IDA2OjQyOjMxIEVTVCBQaW90ciBPbmlzemN6dWsg
+d3JvdGU6Cj4gU21hbGwgZGF0YSBwb2ludDogb24gcm9jazViIHN3aXRjaGluZyBpbiBkdHMgYW5h
+bG9nIGF1ZGlvOiBmcm9tCj4gYXVkaW8tZ3JhcGgtY2FyZCB0byBzaW1wbGUtYXVkaW8tY2FyZCAo
+c28gZHRzIGlzOgo+IGh0dHBzOi8vZ2lzdC5naXRodWIuY29tL3dhcnBtZS8zNDliMjdlNDliYzZm
+NjE3ZWYxMDQxMDQ3ZTc1YWRhYiApIG1ha2VzCj4ga2VybmVsIG9vcHMgZ28gYXdheSB3aXRoIGFu
+YWxvZyBhdWRpbyBzdGlsbCB3b3JraW5n4oCmCj4gCj4gc28gbWF5YmUgaXNzdWUgaXMgaW4gYXVk
+aW8tZ3JhcGgtY2FyZCBjb2RlIChvciBpdHMgZHRzIGZyYWdtZW50cyk/CgpJIGNhbiByZXByb2R1
+Y2Ugd2l0aCB5b3VyIGNvbmZpZyAoSSBndWVzcyB0aGF0IHJlbW92aW5nIHRoZSBkcml2ZXIgZm9y
+IGFuYWxvZyAKYXVkaW8gaGlkZXMgdGhlIGlzc3VlKQoKSSdtIHJlYWxseSBmZWVsIGxpa2Ugc2lt
+cGxlX3V0aWxfY2xlYW5fcmVmZXJlbmNlKGNhcmQpIGluIHNpbXBsZV9wcm9iZSgpIAplcnJvcnMg
+cGF0aCBzaG91bGQgbm90IGJlIGNhbGxlZCBhbnltb3JlLCBzaW5jZQpodHRwczovL2xvcmUua2Vy
+bmVsLm9yZy9hbGwvODd6Zms0bzVsMi53bC1rdW5pbm9yaS5tb3JpbW90by5neEByZW5lc2FzLmNv
+bS8KCkknbSBhZGRpbmcgS3VuaW5vcmkgTW9yaW1vdG8gaW4gdGhlIHRvIGxpc3Qgb2YgdGhpcyB0
+aHJlYWQgZm9yIGV4dHJhIGlucHV0IAooU2VlIHRocmVhZCBhdCBodHRwczovL2xvcmUua2VybmVs
+Lm9yZy9hbGwvQjhFRjUxOTYtNTVGQi00NEVDLUI5M0MtRTMyN0M3OTEyMjVCQGdtYWlsLmNvbS8p
+IGFzIHRoZXkgbWFkZSB0aGF0IGNoYW5nZS4KRXNwZWNpYWxseSB0aG9zZSBjb21taXRzOgogICAg
+ICBBU29DOiBhdWRpby1ncmFwaC1jYXJkMjogdXNlIF9fZnJlZShkZXZpY2Vfbm9kZSkgZm9yIGRl
+dmljZSBub2RlCiAgICAgIEFTb0M6IGF1ZGlvLWdyYXBoLWNhcmQ6IHVzZSBfX2ZyZWUoZGV2aWNl
+X25vZGUpIGZvciBkZXZpY2Ugbm9kZQogICAgICBBU29DOiBzaW1wbGUtY2FyZDogdXNlIF9fZnJl
+ZShkZXZpY2Vfbm9kZSkgZm9yIGRldmljZSBub2RlCgpEZXRsZXYuCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
