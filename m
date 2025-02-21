@@ -4,60 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 842C9C021AA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 06:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2737DC021B3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 07:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hFp32I/mPvkevhVmKkGitzb5090F8UxveUN/9hc3/Eo=; b=206JvZWnGR1ax0
-	9uZWt7OXmkVTT6M7+LVJgGpYYx5jrzrHgMi0/I8UupKIwS/IGE8+o4CIRhG1HjiurbkdqEcm1GjvX
-	thNcQFa+TAShlvLH9SWCEClSs3hc2YqqQEbpJ1dTF4TzHCc+kjwtFIfeYgKkQnV/UXgxaFii7eBMG
-	ASNbPDRbKHFJYzurK2yoYeKCi0YcvjWRfpsIOqG0ZeIn90zANyLifyzWcKCqBs5NSZHfhHlIxov4I
-	U/fwRLNzUfysBUx3OU5AVqVm63FBNWNmkileCfQNmI1pXYurXJk8Svotyoario1p1vEdv9RA3n1Yp
-	1Yxe8W2MO4YQqKMz4TAw==;
+	List-Owner; bh=2kcXjWSOoAHc0uhTjjlE71lGoFBI1KH/7y96kO2OjMU=; b=IL6sy6ftsZpWYr
+	5+VfqkRcx6BGkkjRB3RX3RTaXQM21JGj4RKqcOH5XMKEeemGL1E7l61B2/seA31XzAKF+4fxz/8rH
+	v/FGuc6jwe1SeyROgohDGluld87VcgXMA/YKX6jd4SVCs6j0bQjTBvbLf3tb2zRgnsgNJ4BrmhHBG
+	RIzhmk9yBkCFl5pT3IEemVXeZvf2tT9cSFwF+ONW5CjiTZJXjjWHK1Wgd8SwRIG/wbf8x4gFgaz7h
+	RbIWN4kBukDFZPcfNhAI0IthTSupCei4uRUN/qfsEiJpO8sh067np4F8Iu4ivc0OQRPSXXFYldf2F
+	3JviBEg7QL1EuxWfNCIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlMO2-00000004MN1-0r8J;
-	Fri, 21 Feb 2025 06:19:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tlNK6-00000004Ui5-3t0m;
+	Fri, 21 Feb 2025 07:19:46 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlMJf-00000004LYI-238R;
-	Fri, 21 Feb 2025 06:15:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9FF465C4B05;
-	Fri, 21 Feb 2025 06:14:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD440C4CEE2;
-	Fri, 21 Feb 2025 06:15:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1740118514;
-	bh=TNEPPBEWgJ1Kqz7U9WT5DXUrTiqsvq3N42p4JeVhfvo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gVifSG+f0bxi6tkq9WGtsxqoZkGLInTFdg5jmOduZAx8ebkuCQdysZekvfztvFCm3
-	 QB02DbBzyg2CPIaIg1SK04s/BUyG/Cj/reO6qE+B+WHJqYimvryS3TjuxutXp08Nnw
-	 +eePKs2csULAR6GdtygHf6F5aUAjxUkVuqL7aoAE=
-Date: Fri, 21 Feb 2025 07:14:07 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: rafael@kernel.org, dakr@kernel.org, hjc@rock-chips.com,
-	andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	id 1tlNIc-00000004UPj-0moX;
+	Fri, 21 Feb 2025 07:18:15 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-439a4fc2d65so14892005e9.3;
+        Thu, 20 Feb 2025 23:18:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740122292; x=1740727092; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=VA1ZRNBjqp7yscOTi3r/FHvrtvUImlYVVtC0tQYvbJ0=;
+        b=jWM6eSv5E5Ba9FodcTsniwQhNthHXYCR4FKjyZxHUM+6GgsSO067tFZwvfqsNwM4ck
+         chAX+m89byVjAdzhAyfyW5B0feLtGioEcKXvqqPbVRYoE1YTTQyuPUxrulqAjOHsQcn7
+         8Vn6jIIYfeJAUsfMTFHwHPCYF8cMqtGUe8r/0V5zdarvnZn+gQ7QRx9pq5Ig961yN92M
+         j+ZRax1Ru9xmfSvhoGVkAXdt81Y/eCcphvQy/yfvhRjJuNYIlwQLv90X+hyBlVho4AYh
+         HDrz+aljSok8NzUynUOT2iH9V+27GUSeCz2qFH+U7CfpMQbn8mOUiEnWkPcz+QEXBhu4
+         p9hQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740122292; x=1740727092;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VA1ZRNBjqp7yscOTi3r/FHvrtvUImlYVVtC0tQYvbJ0=;
+        b=eyQZOi2+MMKpDtQ3L/3eJdz9V1z9E2gh6ZQP7JVLS9ZZN7SzbakgHq63fD9P6BAwkj
+         l1G1eTlgB59OD/bpI6uowM7V61R2q8Kdk7PLx+uvVq1zq0LrXwPv3ODNh9pUxyYfz0VN
+         8/oz432nz34T8zSPyVKw2vbVdo7JhVtDqjNe6fnr7ksMgGJRQVc+7B5HASHqD7DnAddP
+         Rdqw+dOzTGauPHY1a3i5Lt3QWuQl1W73hheckjK0SRQ9eHQxXHoQ6upmHzXOS0Uql7dA
+         Hwhb44PIqtld6Y+az6k1JlNRW5LGD+3SWDE61gbPFgFiph4SbIDoLGoyKm8jG8iy31mr
+         ujVg==
+X-Forwarded-Encrypted: i=1; AJvYcCWkTDSyNMoAaiLOqTDykftk+9minNzS42zTsw1tL0PnB6nWcupD5D+FsvTZsYB3Q2XAO29ludtloLju5qM34OHu@lists.infradead.org, AJvYcCXhZfXDowufoC8MIFhFSAws3KvZEYnYOH3s1nUGzlM9Xswc8SBn0P95cULhXvq4zHeCtSsmGqL3gN2O@lists.infradead.org, AJvYcCXwUy2bjKHLsnHNcfYiSHPTgO2q5b7Qt4zzx4+zDArPbSHCiqY2+n4qQpyz2KJLzM87bRg61cdth9vEhiZZT0Y=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxnu16ULjbAWOc3GHclnR5iQE3RRwXP7eTaN121UFR3ciP2sCTg
+	PfbkwNKAsyw/81ujaSy4XsWVVe468mJ2cFkKrc2jcbzamVUZE58U
+X-Gm-Gg: ASbGncst0PbjdXnV7w94AZrRMhz9RJxUsHknkXetYwRFxJ+NapXC4CMBA7ZlhK4wJ0j
+	oQgT7H2ScdeaesZskWBUkHhiMtuAUqvuB7zZdhqE87TtfL5mrXW9VVBMIWJVknp71azhjOBt0Ny
+	ywa8jfiaLd6Zt2keU5bx63hGshJ+g4kYBFVsmCizksvON6sFap73UEVg/kVj3+uOgZgBAhAgvlo
+	ApeVZOIt9C7jYEVlBxCYxGoMMHR8U+nIvNdhO5kcbjSxmq/21oCq0qtcBwfgM5XJgcquuyWryoP
+	kDXP42pe9NkBsKks1loMGVBEmscMo1NKKj43TMlfZw2nQTyGflCbSJJbOZQ=
+X-Google-Smtp-Source: AGHT+IGcmqoZKLItFnykBoAs00PCywkh0iIfnYdOfG5YsRkDoJu949fdzfkiJ6sY4SF/q78XHllfvw==
+X-Received: by 2002:a05:600c:1991:b0:439:9dec:b7a2 with SMTP id 5b1f17b1804b1-439ae1d7505mr15992725e9.2.1740122291572;
+        Thu, 20 Feb 2025 23:18:11 -0800 (PST)
+Received: from eldamar.lan (c-82-192-244-13.customer.ggaweb.ch. [82.192.244.13])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-439b02f3e15sm8427205e9.22.2025.02.20.23.18.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Feb 2025 23:18:10 -0800 (PST)
+Received: by eldamar.lan (Postfix, from userid 1000)
+	id 0F09FBE2EE7; Fri, 21 Feb 2025 08:18:10 +0100 (CET)
+Date: Fri, 21 Feb 2025 08:18:10 +0100
+From: Salvatore Bonaccorso <carnil@debian.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Valentin Kleibel <valentin@vrvis.at>, Vinod Koul <vkoul@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de
-Subject: Re: [PATCH 1/2] drivers: base: component: add function to query the
- bound status
-Message-ID: <2025022153-outdoors-snugly-3967@gregkh>
-References: <20250220234141.2788785-1-heiko@sntech.de>
- <20250220234141.2788785-2-heiko@sntech.de>
+	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v2 0/1] phy: rockchip: naneng-combphy: compatible reset
+ with old DT
+Message-ID: <Z7gosm7PJMR0zCg4@eldamar.lan>
+References: <20250106100001.1344418-1-amadeus@jmu.edu.cn>
+ <173831716590.670164.5196739962949646746.b4-ty@kernel.org>
+ <f64ee4ee-7e56-4423-813e-b87e023e893d@vrvis.at>
+ <D7VJOFXU540M.2PAC1RFXAH19B@cknow.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250220234141.2788785-2-heiko@sntech.de>
+In-Reply-To: <D7VJOFXU540M.2PAC1RFXAH19B@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250220_221515_597126_2861A742 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20250220_231814_226378_C6B8FAB2 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,26 +109,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 21, 2025 at 12:41:40AM +0100, Heiko Stuebner wrote:
-> The component helpers already expose the bound status in debugfs, but at
-> times it might be necessary to also check that state in the kernel and
-> act differently depending on the result.
-> 
-> For example the shutdown handler of a drm-driver might need to stop
-> a whole output pipeline if the drm device is up and running, but may
-> run into problems if that drm-device has never been set up before,
-> for example because the binding deferred.
-> 
-> So add a little helper that returns the bound status for a componet
-> device.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  drivers/base/component.c  | 14 ++++++++++++++
->  include/linux/component.h |  4 +++-
->  2 files changed, 17 insertions(+), 1 deletion(-)
+Hi,
 
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+On Tue, Feb 18, 2025 at 12:45:34PM +0100, Diederik de Haas wrote:
+> On Tue Feb 11, 2025 at 2:03 PM CET, Valentin Kleibel wrote:
+> >>> Chukun Pan (1):
+> >>>    phy: rockchip: naneng-combphy: compatible reset with old DT
+> >> 
+> >> Applied, thanks!
+> >> 
+> >> [1/1] phy: rockchip: naneng-combphy: compatible reset with old DT
+> >>        commit: bff68d44135ce6714107e2f72069a79476c8073d
+> >
+> > Thanks for your work!
+> > We found your patch after NVMes stopped working on a rock 3A with newer 
+> > kernels and successfully applied it to kernel 6.1.128 (currently in debian).
+> 
+> FTR: I've reported it in Debian here: https://bugs.debian.org/1098250
+> 
+> I confirmed it (also) broke on kernel 6.12.8-1.
+
+FWIW, we have several users in Debian reporting the problem, so if it
+can be applied to mainline and then flow down to one of the next round
+of stable series down to 6.1.y that would be highly appreicated.
+
+Diederik, if you were able to test the fix, you might contribute a
+Tested-by (although as I undestsand its not strictly needed at this
+point as commit should be on way to mainline and stable series)?
+
+Regards,
+Salvatore
 
 _______________________________________________
 Linux-rockchip mailing list
