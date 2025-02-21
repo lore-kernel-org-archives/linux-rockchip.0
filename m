@@ -4,69 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE03C021AA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 13:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D89BCC021B5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 14:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N6kxwOH6hSmk027GT/Xn/VwyKyRc42HBxbn5MFpoEfc=; b=T6NwvY1nb2rXcM
-	vMYfum3/4VsQl10JiT/MhOq/C0el6e3IlP1x4HDxEU1+VAcMLXIZ/G3GfvvdgLsdyyZbNZNfyLhJI
-	WtLaIz23/SuWVBRNZ0H0rRP46umv5fMIOZLar9EassHUus/o1/l3pNT/V16N+1hORH3dE9D2OgYfc
-	IG4TcNDZ+B1kPazn+4SYMGbijAl+bnGwaU5Rj6kP0N4ak09vZBBoJfa6TyG5eazolaSFu9+ZpT7iF
-	ewMVFIjAylqfmCoZfqpLF6Ok/SD2yA0ucYSNDQgocEl4tsnIZDnG4s6byL2pVnGDajuc3Rjj7tI94
-	+byA+PjiS0MZ7lhzam+g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NBW4YhnUpBO77Uh9zFV6GEMCfoZrJpxb2r8bpWikwTA=; b=CnmAUedXqdC3ga
+	xtbtrw8WuBeNwmz1sTA/gSRlzHPGxR7MlGRv/lICkgSh9Ye4UjFPG7+RhVid1vlcsibpP8yUd1yWa
+	fKo6v5Wc7IGD5/JgJr3ac3fjUVmSNu7eff2ExMscnYbwzcgD6fxSgk3wq6QYsBle8GDoHUsx16kbc
+	NPA/EKIEGrSnGddcIPmezDExz2ggfDAzgeCIf1eCKv0i0GNStZwOsvtH431BfCS9twj7Lp2sJZ3rm
+	kQH3GXBgcZ9irDGA2P7HdTfGxFt9P9gHj6/JBSnVKnUK6FJBfdL80WnE2kiemdzfc3Lr8SnQF4C7y
+	HCUbkc6bw/7y7dGx/yfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlT6H-00000005eQK-1s4J;
-	Fri, 21 Feb 2025 13:29:53 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1tlTeP-00000005kRF-2GKr;
+	Fri, 21 Feb 2025 14:05:09 +0000
+Received: from smtp-bc0b.mail.infomaniak.ch ([45.157.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlT4m-00000005eDX-3bJ7;
-	Fri, 21 Feb 2025 13:28:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740144486; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CEWSyxZxoMOT30Lbo9c/GiuYjoKB6lCUpiX7XU0G/Y8ZiqpYqf3rBOyRZg3p3EUHlznUdn9nMDEklLTGSPhLqIzU8Fw5lc1z/YH4ZKY275MvVMGDDuDJOs4OAL56SOjQw6gy15xh3hALazhelUqafcJiGmIfSvjSzKVmIYXvHXA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740144486; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1NT+BJtGmQPBJxVdJtnETf4Hylev5huwZTuiokcMHso=; 
-	b=S86mae6WsnRg2XGXkrPfCqE7h05p93U6+lmxxLm0OXhnJTkS6Rhukhuh593E5UqWtXkx7hw4QWFuZTTKBP2RnjA0JR6eJ7Vc2a+6OagTK0+GThs8xkkz1FB1urqkF6uZyFCJyGWNITTVXqqU/Wl5MGfsjUMiyYIgTDB9nW9Xbpo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740144486;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=1NT+BJtGmQPBJxVdJtnETf4Hylev5huwZTuiokcMHso=;
-	b=PuMLlOuWX0TxQ7RVYJKBcIdAjCg5FCDYgvjVenaUwWadc3X2osGRNo0qF+mSfFFc
-	0aRd4Yf/iuxWI2wuedtZqG4B4iO1GCl234AiT4Jo3X7gIjX2PjbTlxyfKlQ0aUGXcTC
-	p0CPmV3tSgS/1YUJxLKWsjScJ0XdjN/ekszEukDw=
-Received: by mx.zohomail.com with SMTPS id 1740144484347820.7261259225404;
-	Fri, 21 Feb 2025 05:28:04 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 4/6] dt-bindings: thermal: rockchip: document otp thermal trim
-Date: Fri, 21 Feb 2025 14:27:58 +0100
-Message-ID: <4631308.LvFx2qVVIh@workhorse>
-In-Reply-To: <20250219231036.GA3137058-robh@kernel.org>
-References: <20250216-rk3576-tsadc-upstream-v1-0-6ec969322a14@collabora.com>
- <20250216-rk3576-tsadc-upstream-v1-4-6ec969322a14@collabora.com>
- <20250219231036.GA3137058-robh@kernel.org>
+	id 1tlTeK-00000005kMJ-23jP
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Feb 2025 14:05:07 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4YzsMb73YXzCBl;
+	Fri, 21 Feb 2025 15:04:59 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4YzsMb1kxCzQ1x;
+	Fri, 21 Feb 2025 15:04:59 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH v2 0/5] arm64: dts: rockchip: pinmux fixes and support for
+ 2 adapters for Theobroma boards
+Date: Fri, 21 Feb 2025 15:04:32 +0100
+Message-Id: <20250221-ringneck-dtbos-v2-0-310c0b9a3909@cherry.de>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAPCHuGcC/12Py26EMAxFfwVlXVfBIQGz6n9UswiJGaJqYOpQN
+ KMR/14ei0pdHks+996XyiyJs2qLlxJeUk7TuAG+FSoMfrwypLixQo1Wl9iApPE6cviCOHdTBmq
+ 0qxpDxlpW29NduE+PQ/h5OVn4+2fzzufxT7ul7FIsCe7BU+0eIJx5hihpYYFA3pNtHFXo2gV3e
+ +czQ5hutzS3hWPWHfloiCyz7T0iaWODI12aro5RR+NM1am9x5DyPMnz2LmUR5EzHfX/SUsJGtA
+ Gqns0jWX3EQYWeb5HVpd1XX8BWRURDTQBAAA=
+X-Change-ID: 20250128-ringneck-dtbos-98064839355e
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_052820_963984_421A42EB 
-X-CRM114-Status: GOOD (  24.03  )
+X-CRM114-CacheID: sfid-20250221_060504_678035_A56D9438 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,138 +72,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 20 February 2025 00:10:36 Central European Standard Time Rob 
-Herring wrote:
-> On Sun, Feb 16, 2025 at 12:34:53AM +0100, Nicolas Frattaroli wrote:
-> > Several Rockchip SoCs, such as the RK3576, can store calibration trim
-> > data for thermal sensors in OTP cells. This capability should be
-> > documented.
-> 
-> Is several most or a minority as this change is enabled for everyone.
+This is based on top of
+https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v6.15-armsoc/dts64
+6ee0b9ad3995 ("arm64: dts: rockchip: Add rng node to RK3588") as it
+depends on the (merged) series from
+https://lore.kernel.org/all/20250211-pre-ict-jaguar-v6-0-4484b0f88cfc@cherry.de/
 
-Downstream has trim_h/trim_l nodes for the following SoCs:
-- RK3502
-- RK3528
-- RK3562
-- RK3566
-- RK3568
-- RK3576
-- RV1126
+Patches for Haikou Video Demo adapter for PX30 Ringneck and RK3399 Puma
+(patches 4 and 5) also depend on the following patch series:
+https://lore.kernel.org/linux-devicetree/20250220-pca976x-reset-driver-v1-0-6abbf043050e@cherry.de/
 
-If you'd prefer I split the bindings or add a conditional to only enable this 
-on those specific compatibles, let me know. It is worth noting that all of 
-these SoCs are fairly new, so I assume this is the design that Rockchip is 
-using going forward.
+This fixes incorrect pinmux on UART0 and UART5 for PX30 Ringneck on
+Haikou.
 
-Additionally, trim_base/trim_base_frac seem to only be set in downstream DTs 
-for RK3562, RK3566, RK3568 and RV1126, so while I'm at it I'd add those to a 
-separate conditional as well.
+This adds support for the HAIKOU-LVDS-9904379 adapter for PX30 Ringneck
+fitted on a Haikou carrierboard.
 
-> > Such a rockchip thermal sensor may reference cell handles that store
-> > both a chip-wide trim for all the sensors, as well as cell handles
-> > for each individual sensor channel pointing to that specific sensor's
-> > trim value.
-> > 
-> > Additionally, the thermal sensor may optionally reference cells which
-> > store the base in terms of degrees celsius and decicelsius that the trim
-> > is relative to.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> > 
-> >  .../bindings/thermal/rockchip-thermal.yaml         | 44
-> >  ++++++++++++++++++++++ 1 file changed, 44 insertions(+)
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> > b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml index
-> > 49ceed68c92ce5a32ed8d4f39bd88fd052de0e80..8d27ddefcc64e29f0faab0598888058
-> > 02c948b41 100644 ---
-> > a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml +++
-> > b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml> 
-> > @@ -40,6 +40,21 @@ properties:
-> >        - const: tsadc
-> >        - const: apb_pclk
-> > 
-> > +  nvmem-cells:
-> > +    items:
-> > +      - description: cell handle of the low byte of the chip fallback
-> > trim value +      - description: cell handle of the high byte of the chip
-> > fallback trim value +      - description: cell handle to where the trim's
-> > base temperature is stored +      - description:
-> > +          cell handle to where the trim's tenths of Celsius base value is
-> > stored +
-> > +  nvmem-cell-names:
-> > +    enum:
-> > +      - trim_l
-> > +      - trim_h
-> > +      - trim_base
-> > +      - trim_base_frac
-> > +
-> > 
-> >    resets:
-> >      minItems: 1
-> >      maxItems: 3
-> > 
-> > @@ -51,6 +66,12 @@ properties:
-> >        - const: tsadc
-> >        - const: tsadc-phy
-> > 
-> > +  "#address-cells":
-> > +    const: 1
-> > +
-> > +  "#size-cells":
-> > +    const: 0
-> > +
-> > 
-> >    "#thermal-sensor-cells":
-> >      const: 1
-> > 
-> > @@ -72,6 +93,29 @@ properties:
-> >      $ref: /schemas/types.yaml#/definitions/uint32
-> >      enum: [0, 1]
-> > 
-> > +patternProperties:
-> 
-> > +  "^([a-z]+)@[0-9]+$":
-> If each node is a sensor or channel, then make that the node name.
+Additionally, this adds support for Haikou Video Demo adapter on PX30
+Ringneck and RK3399 Puma fitted on a Haikou carrierboard. Notably
+missing from the overlay is the OV5675 camera module which expects
+19.2MHz which we cannot exactly feed right now. Modifications to the
+OV5675 drivers will be made so it's more flexible and then support for
+the camera module will be added. This adapter has a 720x1280 DSI display
+with a GT911 touchscreen, a GPIO-controllable LED and an I2C GPIO
+expander. Support for this adapter on RK3588 Tiger is being added in a
+separate patch series[1].
 
-Will do in V2. Should the node name be something like e.g. `gpu` for the GPU 
-thermal sensor/channel? Maybe suffixed with e.g. `-tsadc` or something, to 
-disambiguate it from other mentions of the GPU, or is disambiguation 
-unnecessary noise because it's evident from it being a child of tsadc anyway, 
-much like cpu and codec aren't suffixed with anything in simple-audio-card's 
-dai-link?
+Note that the DSI panel currently is glitchy on both PX30 Ringneck and
+RK3399 Puma but this is being tackled in another series[2]. Since this
+will not be fixed through DT properties for the panel, adding the DT
+nodes for the DSI panel even if not perfect right now seems acceptable
+to me.
 
-> 
-> > +    type: object
-> > +    properties:
-> > +      reg:
-> > +        maxItems: 1
-> > +        description: sensor ID, a.k.a. channel number
-> > +
-> > +      nvmem-cells:
-> > +        items:
-> > +          - description: handle of cell containing low byte of
-> > calibration data +          - description: handle of cell containing high
-> > byte of calibration data +
-> > +      nvmem-cell-names:
-> > +        items:
-> > +          - const: trim_l
-> > +          - const: trim_h
-> > +
-> > +    required:
-> > +      - reg
-> > +
-> > +    unevaluatedProperties: false
-> > +
-> > 
-> >  required:
-> >    - compatible
-> >    - reg
+[1] https://lore.kernel.org/linux-rockchip/20241127143719.660658-1-heiko@sntech.de/
+[2] https://lore.kernel.org/r/20240626084722.832763-1-heiko@sntech.de
 
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+Changes in v2:
+- rename uart5_rts_gpio to uart5_rts_pin to stop triggering a false
+  positive of the dtschema checker,
+- remove PU from uart5_rts_pin,
+- Link to v1: https://lore.kernel.org/r/20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de
 
+---
+Quentin Schulz (5):
+      arm64: dts: rockchip: fix pinmux of UART0 for PX30 Ringneck on Haikou
+      arm64: dts: rockchip: fix pinmux of UART5 for PX30 Ringneck on Haikou
+      arm64: dts: rockchip: add support for HAIKOU-LVDS-9904379 adapter for PX30 Ringneck
+      arm64: dts: rockchip: add overlay for PX30 Ringneck Haikou Video Demo adapter
+      arm64: dts: rockchip: add overlay for RK3399 Puma Haikou Video Demo adapter
 
+ arch/arm64/boot/dts/rockchip/Makefile              |  15 ++
+ .../px30-ringneck-haikou-lvds-9904379.dtso         | 130 ++++++++++++++
+ .../rockchip/px30-ringneck-haikou-video-demo.dtso  | 190 +++++++++++++++++++++
+ .../boot/dts/rockchip/px30-ringneck-haikou.dts     |  10 +-
+ .../rockchip/rk3399-puma-haikou-video-demo.dtso    | 166 ++++++++++++++++++
+ 5 files changed, 510 insertions(+), 1 deletion(-)
+---
+base-commit: 6ee0b9ad3995ee5fa229035c69013b7dd0d3634b
+change-id: 20250128-ringneck-dtbos-98064839355e
+prerequisite-change-id: 20250219-pca976x-reset-driver-c9aa95869426:v2
+prerequisite-patch-id: 25c49bae002eb11bc6fec479f49f5e3b28b8f403
+prerequisite-patch-id: 58e9acffbbd052710bfe672c99ef05f59b1978a6
+
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
