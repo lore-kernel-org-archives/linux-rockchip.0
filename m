@@ -4,80 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EDCC021B2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 05:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 910B1C021B2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 06:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZcZPjrUdLah1h/oTt4+HbexlyRtZsxWYr2LJQEscCHQ=; b=BS9SobWoXcAINa
-	sLqVwr2OlSubAJS2xKk8kQkrGPWJnQZbnpxqNfh1mzfw56SFsF6frCLOt4W4nFSjFzv77pVjpjTlq
-	6YOpLKoRh/coApnZOLVy4X2hMQ+AOE5ZA3kU5XFz8cnix48KfvVMogV+RPqnEtiQijsFQxWlohStN
-	TWCkyMeoeFWehwscJwTAg360xh6PQMsvefgG63YSg6pbPaAe7B7Uf0GFlYO7C89geJkLgpyc5vNIx
-	EFOTToyGtb4cAlMjnoBwHf55fhvssfLyhGTeHQryWUgm4w/Q6B3Bf7SOFqMVkmb01A091XlCL3bPA
-	KmEPneG6uGVfeHSwlHcw==;
+	List-Owner; bh=OaPRp9JJIYIKqkzEPxIYcYM2vwN++SadBpIZDqdLMPA=; b=omkdn/fRvGTj3S
+	K8bIwxXBEqi/tnCOW42i1p9xUQamkGbOMK7V9Tct5k4cmu8W4hyUFM7UMhrDf+g3j0v+FkJR6sL+/
+	XhQfykcRSXXtHxZ67VD/s8eBYBsHfte7NPDg+MxzhUfH5gjVmz/ZvF+IUOauYGduqF4zsryTdCO9o
+	WIvCG5lW0gWGVSF6YGNC34ierK2lKN7zhRTk2Nj/0E8MWwNO3Yt9VPnEsl01fKWwSo0UbAnh1OX7G
+	RyXU3SeFfLd0XUWHAKfJ1sYRIW4yZz6y+anArYMSrwEvh/m8meIrK58HKkKYBPnN9s80fP8gRRkRl
+	i7KHQgc58rI0Yzu4yAxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tli7B-00000007U8K-32pl;
-	Sat, 22 Feb 2025 05:31:49 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tli5h-00000007U3F-2nVL;
-	Sat, 22 Feb 2025 05:30:19 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-38f265c6cb0so1423391f8f.2;
-        Fri, 21 Feb 2025 21:30:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740202216; x=1740807016; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=iY9X8GUgAarcymLQklO62zjT4lj8QHO11p4V9XKDp+8=;
-        b=fAY8QimV4PLIKaRAII7lD9MRapHcwwqDRZwCp3a88vdX48WODKgqi/fYpDOEzUAwZ5
-         uX7gbkV8JuFh2qfuw/sjnYlqPEGsG633eH9Yq59+LT4sO2fzz0ft9NKWObzYwUCv8tBy
-         RTvtM4zJCY81ku3+RyHfee17qJvhmCya3fM2MYW4GzNLrm19I+bJoyXu+9LpJC+uhaLD
-         mBn64huDSBpygkHltTqr62F51Djdg4GDwth4g7GQ2D8/l7xniyf4OJRpLWt8HNObdcVd
-         yM6mo2+PmmO11+bu+w73wYIpzwAI/hY7POz4CZYXo0ehWrv6LA/XIVSAcdlLa6dKgRNa
-         ifxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740202216; x=1740807016;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iY9X8GUgAarcymLQklO62zjT4lj8QHO11p4V9XKDp+8=;
-        b=nZRvgs1tXSvS4BFxxw6HwO6PxXpGiLOc2QWO3WsPoaEPjvU7PmVhYaAuM+UxS3cFS8
-         2Bs08M9vxqHDO/sowdL/UFi0HN3tMZUvSZ9u5dhwcMbtWfzExRMXc7OHCXBhuPJj62Nu
-         MAvfrvOGxt8k7Nis2P+Dmq5alTFxBPZHjKY55/Fg0LT90wmbbm4ObTh03Cf6NPeT6F5Z
-         NsGHxB6kDb8CIRyjdpJYt5o0oW32ItX959G5VbSOyZWcnKZKv2Yh3ACrfjQpptNxIdN5
-         offuJuDfJ/+W+4FVVxGGa7Ngw2OpGXqPO9B04BHyefXAcgbpDYLn+QpC55p7Fj8irpTD
-         gVKA==
-X-Forwarded-Encrypted: i=1; AJvYcCUxXShkQt392FCWmtXUazBdLR28r+s1F7xpSDEduRKDaB/6TvVaMuG4MgMD8Yu9PRvq3f5N/zhiBGM2qjne3+bd@lists.infradead.org, AJvYcCWXbujNRmFatJjjhcIiNxBCzekGae8ng7ToyDuJKOpBBbeGaN1jt4F6ma15/2L/rGvLJwBAn3K/MJvqAArXRqE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJSMctMz0sAICkOSimLlGToQM6aKbu0OhXNvRBi7uCa2X3HCH1
-	7hvTq+6I8Vi3W/znSWj07WVfERuv5ieO+9u1ECt+Dd2dZrqWAZZrNttjYG5ECMU7+MPslqz7M40
-	aU8PsD97VCyh8WRfizudY4ni7I4Y=
-X-Gm-Gg: ASbGncujVPF6btTddB7VtJmMp2DD0thg9fuoCRJZkNRbyTyx634LFgx6D3wVbxksXjr
-	aaMJVxj6fMHDSef9d12oGNouw8Gn1My65MGXOSJZcJth5sWYp+be3klfhExsZbFJX7CT+pBJJaz
-	gpiSO3YnKXEij3eHBoEmD9MzrDux8SX0z9jEwJ4fE=
-X-Google-Smtp-Source: AGHT+IFeammiil5a9/1noeru+vi9TIuhuA9Es3u+CYHbT+oSSUHqUhnPVFbUi/71Tubxqhu8oNgM/z1QU2UQ5xLfYG0=
-X-Received: by 2002:a05:6000:1a87:b0:38f:3344:361e with SMTP id
- ffacd0b85a97d-38f7079ec17mr4703850f8f.23.1740202215997; Fri, 21 Feb 2025
- 21:30:15 -0800 (PST)
-MIME-Version: 1.0
-References: <20250220041010.3801-1-honyuenkwun@gmail.com> <20250221231340.GS16911@sventech.com>
- <CALWfF7KW8_vAx49nNygKpLHNJQVpjvVdVpzYiTAWgQvSopHikw@mail.gmail.com> <20250222043138.GT16911@sventech.com>
-In-Reply-To: <20250222043138.GT16911@sventech.com>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Fri, 21 Feb 2025 23:30:05 -0600
-X-Gm-Features: AWEUYZkvqmomvYYIvOfXxjg1nDhP9wZ1v_lMYrm-8oH8rdZjoXBX0pnZPrVaYz4
-Message-ID: <CALWfF7+uXEh0=VhnqE+dgDww8etuOBKmXUsPcnDNCUW8KKn1jw@mail.gmail.com>
+	id 1tlikC-00000007VpC-2H1p;
+	Sat, 22 Feb 2025 06:12:08 +0000
+Received: from out.bound.email ([141.193.244.10])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tliii-00000007VYS-0J1B;
+	Sat, 22 Feb 2025 06:10:37 +0000
+Received: from mail.sventech.com (localhost [127.0.0.1])
+	by out.bound.email (Postfix) with ESMTP id 946298A0A03;
+	Fri, 21 Feb 2025 22:05:33 -0800 (PST)
+Received: by mail.sventech.com (Postfix, from userid 1000)
+	id 7AF37160036F; Fri, 21 Feb 2025 22:05:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=erdfelt.com;
+	s=default; t=1740204333;
+	bh=Yd5waWu6Z02b7lT2L3RgwjYEybluLidOKnWnRtbDL2Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XMr+mxnGFLr8vi+1LmKsgBNc4ydYXyV9PROuwVCoPciB/ZQwaaeFxmgklS+4/1T6L
+	 KGatAo5ZdYNb31wh0xYSNmngvMN2Y3XzEozbhSjnBo9hoFAWjk69GKNO50xAys2hIO
+	 CyVrqbznGhvSyM5a/zKNURg7cz1vcjCyONQSrNEk=
+Date: Fri, 21 Feb 2025 22:05:33 -0800
+From: Johannes Erdfelt <johannes@erdfelt.com>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH UNTESTED v5 0/4] Orange Pi 5 Ultra
-To: Johannes Erdfelt <johannes@erdfelt.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Message-ID: <20250222060533.GV16911@sventech.com>
+References: <20250220041010.3801-1-honyuenkwun@gmail.com>
+ <20250221231340.GS16911@sventech.com>
+ <CALWfF7KW8_vAx49nNygKpLHNJQVpjvVdVpzYiTAWgQvSopHikw@mail.gmail.com>
+ <20250222043632.GU16911@sventech.com>
+ <CALWfF7JWiZnqJCAqCK4-TjVuUTqv96+=u2pC2iNvTbCBOCLuqw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CALWfF7JWiZnqJCAqCK4-TjVuUTqv96+=u2pC2iNvTbCBOCLuqw@mail.gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_213017_725959_B608DCAB 
-X-CRM114-Status: GOOD (  22.72  )
+X-CRM114-CacheID: sfid-20250221_221036_232986_4B31110D 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,77 +71,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > > Also, the green LED is constantly lit even when the trigger is set to
-> > > none and the brightness is set to 0. This made is a bit harder to
-> > > confirm that the blue LED was working. I haven't ruled out a mistake on
-> > > my end for this one yet either.
-> >
-> > Checking the schematic for the Max and the Ultra, they both use
-> > PWM4_M0 and PWM5_M1 to control the blue and green LEDs.
->
-> Some brief testing makes it seem like the LEDs are inverted.
->
-> If I set the trigger for each LED to "default-on", then they turn off.
-> If both are set to "default-on", then only the red LED is lit.
->
-> Also, "heartbeat" appears to be inverted.
->
-> I tried a new DT with this patch and it appears to work correctly on the
-> Ultra I have. However, it raises the question why the Max behaves
-> differently from the Ultra.
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-> index 87090cb98020..ed51a4763318 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-> @@ -4,6 +4,7 @@
->
->  #include <dt-bindings/gpio/gpio.h>
->  #include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/pwm/pwm.h>
->  #include "rk3588-orangepi-5.dtsi"
->
->  / {
-> @@ -62,13 +63,13 @@ &hym8563 {
->
->  &led_blue_pwm {
->         /* PWM_LED1 */
-> -       pwms = <&pwm4 0 25000 0>;
-> +       pwms = <&pwm4 0 25000 PWM_POLARITY_INVERTED>;
-Oh, there is a difference in the vendor BSP. The Max has
-GPIO_ACTIVE_HIGH while the Ultra uses GPIO_ACTIVE_LOW.
-https://github.com/orangepi-xunlong/linux-orangepi/blob/orange-pi-6.1-rk35xx/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts#L401
-https://github.com/orangepi-xunlong/linux-orangepi/blob/orange-pi-6.1-rk35xx/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts#L416
-
-On the schematic, the 5 Plus and the 5 Max have 2SK3018s on the LED,
-but the 5 Ultra does not have it.
-
-I will separate them out in v2.
-
-Thanks for debugging it.
-
->         status = "okay";
->  };
->
->  &led_green_pwm {
->         /* PWM_LED2 */
-> -       pwms = <&pwm5 0 25000 0>;
-> +       pwms = <&pwm5 0 25000 PWM_POLARITY_INVERTED>;
->  };
->
->  /* phy2 */
->
-> JE
->
-
-Jimmy
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBGZWIgMjEsIDIwMjUsIEppbW15IEhvbiA8aG9ueXVlbmt3dW5AZ21haWwuY29tPiB3
+cm90ZToKPiA+IE9uIEZyaSwgRmViIDIxLCAyMDI1LCBKaW1teSBIb24gPGhvbnl1ZW5rd3VuQGdt
+YWlsLmNvbT4gd3JvdGU6Cj4gPiA+IE9uIEZyaSwgRmViIDIxLCAyMDI1IGF0IDU6MTPigK9QTSBK
+b2hhbm5lcyBFcmRmZWx0IDxqb2hhbm5lc0BlcmRmZWx0LmNvbT4gd3JvdGU6Cj4gPiA+ID4gSSds
+bCBhbHNvIHNlZSBpZiBJIGNhbiBnaXZlIEhETUkgYSB0ZXN0Lgo+ID4gPgo+ID4gPiBQbGVhc2Ug
+cmVwb3J0IHlvdXIgcmVzdWx0cyB3aGVuIHlvdSBkby4gVGhpcyBpcyBvbmUgb2YgdGhlIGRpZmZl
+cmVuY2VzCj4gPiA+IGZyb20gdGhlIE9yYW5nZSBQaSA1IE1heC4gVGhlIEhETUkxIHBpbmN0cmxz
+IGRvZXMgbm90IHVzZSB0aGUgZGVmYXVsdAo+ID4gPiBwaW5jdHJscyBsaWtlIG90aGVyIFJLMzU4
+OCBib2FyZHMgKGluY2x1ZGluZyB0aGUgT3JhbmdlIFBpIDUgUGx1cykuCj4gPgo+ID4gTm8gbHVj
+ayB5ZXQuIEkgZG8gc2VlIHRoaXMgbWVzc2FnZSBpbiB0aGUga2VybmVsIGxvZ3MgOCB0aW1lcyBh
+dCBib290Ogo+ID4KPiA+IFsgICA0MS41NTI3NTFdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5
+c3RlbTogW2RybV0gKkVSUk9SKiBmYWlsZWQgdG8KPiA+IGdldCBwbGxfaGRtaXBoeTAKPiBPaCwg
+SSBiZWxpZXZlIHlvdSdyZSBoaXR0aW5nIHRoaXMuCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+bGludXgtcm9ja2NoaXAvMGRkNDg1OTktNDQ4Zi00NDcyLTlhOGEtNTRiN2YwMzc5YzEzQGNvbGxh
+Ym9yYS5jb20vVC8jbWE0ZWI0MjdkZTc3YjVhNDgwNmEyYzJiNWJlZjJmYzhkNDAwM2Y4MDEKPiAK
+PiBJIGluY2x1ZGVkIHRoYXQgcGF0Y2hzZXQgaW4gdGhlIGludGVncmF0ZS02LjE1IGJyYW5jaC4g
+SSBkb24ndCBoYXZlCj4gdGhlIHByb2JsZW0gb24gdGhlIE1heCBiZWNhdXNlIGl0IGhhcyBib3Ro
+IHRoZSBIRE1JMCBhbmQgSERNSTEKPiBlbmFibGVkLiBIb3dldmVyLCB3aXRoIG9ubHkgSERNSTEg
+b24gdGhlIFVsdHJhLCBpdCdzIG5vdCBoYW5kbGluZyB0aGUKPiBkaXNhYmxlZCBoZHB0eHBoeTAu
+IEEgcXVpY2sgaGFjayBpcyB0byBhbHNvIGVuYWJsZSBoZHB0eHBoeTAgYWxzbyBpbgo+IHRoZSBV
+bHRyYSBkdHMuCgpUaGF0IHdhcyBpdC4gV2l0aCB0aGUgbGFzdCBwYXRjaCBpbiB0aGF0IHRocmVh
+ZCBhcHBsaWVkLCBJIGdldCBIRE1JCm91dHB1dC4KCkknbGwgc2VlIGlmIEkgY2FuIGZpZ3VyZSBv
+dXQgYSBzZXR1cCB0byB0ZXN0IHRoZSBIRE1JIFJYIHBvcnQgYXMgd2VsbC4KCkpFCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
