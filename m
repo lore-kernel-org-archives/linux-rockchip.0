@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53DAC021B2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 21:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F09C021B2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 22:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hO5QvmDQO2pk+kU0gRMMXZ+sKb43QX+trqdv6y3Xq3c=; b=jkzqhALb/WLvx0
-	ggt0HVFQTz/aMBW7N2O+BzCUE7jdBGZUrKjfpTZwKo69aKu4dLmRklpTj38+WDVFAAg+9ffIx3Dm/
-	vwvpVsCEGs4YYYXytdSEgptBXx25DEo0bFSoarT0LWbTmvfxb47pMC9JBoe2zIMCgaJgjKeM2vKjy
-	/9U8ZpkhNwY9sj4wQv6IonUifLsqULshiZ/x/VAAt2dpMBnPzkjRGEcqLBIukGx9fW2oCg2X6+jWL
-	k1b7YYx3o69u7n/n8pghIWtQBNI7X71uG3uY2jvZc0M909IBOuLajS8h4oKndI4ZQnKLpJoj9Wwbk
-	vkpaw++yyOqUNyXll0Tw==;
+	List-Owner; bh=YBnfPNBnu9AeBm1df6u0BCeExjzVBBIVYmTN6+gXZT8=; b=2ilF4xd62W/e0I
+	VIxvBcM1GI5H4uevXHGKz/v5+14U3Fpsn0rEHvr6FPG/N1u+KMG7cif85vU5/5hp5iXRTWk2ndb+I
+	KGSXl1VqcMVIwh38h+lY05iGe4IwI6jwHrJJW5Eg0h+pK32y1RdbRKiBKp5L2m3nHTSE5qdg8ZW1J
+	6thtddkXFNZEZhSTYJXElTFAc3/JSbwa/NZ833jfhVrSpUFXj9PVQhE1OtJILjsBw9dYlHdBUWiz9
+	H8UWK0TutD+B1HH01bsJRg84y+WrOTUXAroC1vHWDX9IA10WyLnzJ19buDsfhYrFQLI93z5nVjuQI
+	z24NitGZWEBe/udV7WIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlx0Q-00000008otC-1XfP;
-	Sat, 22 Feb 2025 21:25:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tly8q-000000093cy-0Qyr;
+	Sat, 22 Feb 2025 22:38:36 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlx0N-00000008osH-0QBQ
-	for linux-rockchip@lists.infradead.org;
-	Sat, 22 Feb 2025 21:25:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740259531; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=kahvBBzC/sE5LzO7udW6on5iWQY6boAaWgpShXdSq3ZopHjNleUp5y/noGK051JyO29yFaUhLQ00F9gITZjlOzCkVySoTpuJ0fN2BfS8iGKp6CheJoZmQLWbnwnvyUW/jYJtTEcu9QoHRFnNIRgZclMNLHoXnCYh0ym51yzHKDY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740259531; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=HHhVwOm8XCVyTGfKeefhbmzIfD+mbGXuyzinCDr/k+8=; 
-	b=lhwJVlRdv79ql3NhjmhU0772ptdonzIUfRZbzoqBBqJKjMc+/G9mbVp8oqqsAAebIp03wX2hWOoEuLOTUNplLKJIXw4F+c+9NSstsy7bWjU6B2qtereggchIA/v0dGEdc/f6lbig3wvhPezr3tb8250YE2b7SdYfMAe2qLQifJY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740259531;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=HHhVwOm8XCVyTGfKeefhbmzIfD+mbGXuyzinCDr/k+8=;
-	b=OLJCMGjEEoSmAKmRUvUvA00/1MMQFy9EED6VKygTYzduAjvSSeNVrm7uSj2rQKv2
-	+QtQnzqoyeeE9ieDueRneNoL0uG/mfc+Cl4p89cY7JivNFBXpyiTNwRQJ+SKCNoPnHj
-	UV6qWYJehOaweRPxe/dHUfzh0ptkPInR9jZgKMpw=
-Received: by mx.zohomail.com with SMTPS id 1740259529876548.7189453271194;
-	Sat, 22 Feb 2025 13:25:29 -0800 (PST)
-Message-ID: <dfb0ef63-8867-4d00-abdd-8280623c3405@collabora.com>
-Date: Sun, 23 Feb 2025 00:25:18 +0300
+	id 1tly7K-000000093KH-3nYo;
+	Sat, 22 Feb 2025 22:37:04 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-439a1e8ba83so31255405e9.3;
+        Sat, 22 Feb 2025 14:37:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740263821; x=1740868621; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2/GVEbxQ97fbkhIcJUEnqr5o5JOI8aPTh6cyD4iHKT0=;
+        b=f/4ndnN6ZKZ2GvdGgprE3cicEpiGwt56E2DTQjMNYj150pY37FOeYGts2jasBvbgl8
+         KDQpwcRbGcsaCtPwFcIxy+Fqv3IIR1r/EiUym/SvmJHHehB7H4LDZX4OV7+iSTTNuVkf
+         rgtWHTFhIxvX/zZ6jYvFG2vJN5hEFP0XvaN6YRGf/eU46EAbdF4fL9N5nfEkBaqFGHLe
+         wpFz5tNh8Uby9vwwL1J95NFulFYQEjmCsnukQ/3hj7CSZ/zNogs0016L26+oWbK/xRJP
+         ETKY85lvFZmwVGPNkktmNCrSfCE4SuoME4dxouaKU61R9n4EsKvgCSyreq+k0w/l+Ute
+         tFcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740263821; x=1740868621;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2/GVEbxQ97fbkhIcJUEnqr5o5JOI8aPTh6cyD4iHKT0=;
+        b=YizL4sj9+FPGnwRpLV4tJIvIbBVqs5KE1LiIOYzQCByDIWR40uPM+00s9WCFT0nXSq
+         qFIYP8glvlK8y5bKUiZ2jJdkSoyAy5RYKN3o3JqIr1xXY9vd8Dss8Eud8kwCXMRYOpnZ
+         LfLLD8e+qMQMPqS5ojZDRd/4Qi9sS2U+JxAnZlGBD8tkcq6ZXjzbXpEC4YacXxG1/jsJ
+         bg6g+lY+dSyXcSUF08/WNntGZtC/EwCnSWP2w8eOCa5q7l326yfeWbolcKvJ1lnjqSuJ
+         G2RGL85oI+x4IiBXZYZlY0Q6cqz0VLdh8pt9r7WVHuLllGHdNixM7OYHzOkYOlgm6vJi
+         sqUA==
+X-Forwarded-Encrypted: i=1; AJvYcCUj+0q07qJTTdpdkwspJwuv5rDGX0qhLn8j7ooW91XH+KftNsn1QXlgZVGfYAlbYeYzWkq4mWtbjbOD7no0wVQU@lists.infradead.org, AJvYcCVcCwpa61ufTUOAWSaL2eqy14JNEGatk6dwjwE/zxHldMDPKHb0+DkNCfZuR9XwI26kpnRC5KqLR0MzyYJTkCk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxObbUqX1UG1xzgFZJpVMCkHOaUM+cTC4TORsgrn2DJo6B/LmXM
+	nPsqcTuevb2pO+Ahk8ga161EsL1/L7q+3pLxi/Jmgbol7tLKgasy5m22KacLMQV5fU2K7Zf+318
+	bw0YoA+lO/fIm9No/UXTYSH3nNBM=
+X-Gm-Gg: ASbGnctKj7Bg2YhsOJMKOGjUmwN9tevRiR/qe+oiWxkBfJpWm4XpTKdDkp8uosTQn+/
+	EHGHEdmjKBcS0rTqQXZ0FJGEj5Us6E3k1hjqZDuVtorPLrdnXF0lilLzXqQaxEm9pv1Kv3aTRV1
+	2liBCacQpTvtvf7g79Nzst3Vj9ti7O1MiaZd7IYz8=
+X-Google-Smtp-Source: AGHT+IGHmpDWi6/WtmtOBhBVoA+cMa1qycvf3lB7IeXFUX1UY4PKgFEcR3pytfVzteR2rj111qNX0UWQpuYrewIJGhQ=
+X-Received: by 2002:a05:600c:5489:b0:439:86fb:7326 with SMTP id
+ 5b1f17b1804b1-439aebb5558mr53829545e9.22.1740263820918; Sat, 22 Feb 2025
+ 14:37:00 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 4/6] media: platform: synopsys: Add support for HDMI
- input driver
-To: Markus Elfring <Markus.Elfring@web.de>,
- Dingxian Wen <shawn.wen@rock-chips.com>,
- Shreeya Patel <shreeya.patel@collabora.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Conor Dooley <conor+dt@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Jose Abreu <Jose.Abreu@synopsys.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nelson Costa <Nelson.Costa@synopsys.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Rob Herring <robh@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel@collabora.com,
- Tim Surber <me@timsurber.de>
-References: <20250218184439.28648-5-dmitry.osipenko@collabora.com>
- <9e46e0f9-ef0d-406f-9fa9-9c4464a8db88@web.de>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <9e46e0f9-ef0d-406f-9fa9-9c4464a8db88@web.de>
-X-ZohoMailClient: External
+References: <20250222193332.1761-1-honyuenkwun@gmail.com> <20250222193332.1761-5-honyuenkwun@gmail.com>
+ <20250222211820.GY16911@sventech.com>
+In-Reply-To: <20250222211820.GY16911@sventech.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Sat, 22 Feb 2025 16:36:50 -0600
+X-Gm-Features: AWEUYZl7mqFGT6hL26BmUv2bUvBOH_-pwsfvZ96RvVOY1DCUAzUtL_VvJwDEiN0
+Message-ID: <CALWfF7+82pkOhqpRxCzPMhvdV6_e9o4UGixWMvwj2gStQ9PgLw@mail.gmail.com>
+Subject: Re: [PATCH v7 4/5] arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Ultra
+To: Johannes Erdfelt <johannes@erdfelt.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250222_132547_213634_6E93A1CD 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250222_143703_092743_78A55218 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,27 +95,15 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMi8xOS8yNSAyMzo1NiwgTWFya3VzIEVsZnJpbmcgd3JvdGU6Cj4g4oCmCj4+ICsrKyBiL2Ry
-aXZlcnMvbWVkaWEvcGxhdGZvcm0vc3lub3BzeXMvaGRtaXJ4L3NucHNfaGRtaXJ4LmMKPj4gQEAg
-LTAsMCArMSwyNzE4IEBACj4g4oCmCj4+ICtzdGF0aWMgdTMyIGhkbWlyeF9yZWFkbChzdHJ1Y3Qg
-c25wc19oZG1pcnhfZGV2ICpoZG1pcnhfZGV2LCBpbnQgcmVnKQo+PiArewo+PiArCXUzMiB2YWw7
-Cj4+ICsKPj4gKwlndWFyZChzcGlubG9ja19pcnFzYXZlKSgmaGRtaXJ4X2Rldi0+cnN0X2xvY2sp
-Owo+PiArCj4+ICsJdmFsID0gcmVhZGwoaGRtaXJ4X2Rldi0+cmVncyArIHJlZyk7Cj4+ICsKPj4g
-KwlyZXR1cm4gdmFsOwo+PiArfQo+IAo+IE1heSBzdWNoIGEgZnVuY3Rpb24gaW1wbGVtZW50YXRp
-b24gYmUgc2ltcGxpZmllZD8KPiAKPiB7Cj4gCWd1YXJkKHNwaW5sb2NrX2lycXNhdmUpKCZoZG1p
-cnhfZGV2LT5yc3RfbG9jayk7Cj4gCXJldHVybiByZWFkbChoZG1pcnhfZGV2LT5yZWdzICsgcmVn
-KTsKPiB9CgpUaGF0IHdpbGwgd29yaywgdGhhbmtzLgoKPiDigKYKPj4gK3N0YXRpYyBpbnQgaGRt
-aXJ4X2dldF9kZXRlY3RlZF90aW1pbmdzKHN0cnVjdCBzbnBzX2hkbWlyeF9kZXYgKmhkbWlyeF9k
-ZXYsCj4+ICsJCQkJICAgICAgIHN0cnVjdCB2NGwyX2R2X3RpbWluZ3MgKnRpbWluZ3MpCj4+ICt7
-Cj4g4oCmCj4+ICsJbXV0ZXhfbG9jaygmaGRtaXJ4X2Rldi0+d29ya19sb2NrKTsKPj4gK3JldHJ5
-Ogo+PiArCW1lbXNldCh0aW1pbmdzLCAwLCBzaXplb2Yoc3RydWN0IHY0bDJfZHZfdGltaW5ncykp
-Owo+IOKApgo+PiArCW11dGV4X3VubG9jaygmaGRtaXJ4X2Rldi0+d29ya19sb2NrKTsKPj4gKwo+
-PiArCXJldHVybiByZXQ7Cj4+ICt9Cj4g4oCmCj4gCj4gV291bGQgeW91IGJlY29tZSBpbnRlcmVz
-dGVkIHRvIGFwcGx5IGEgc3RhdGVtZW50IGxpa2Ug4oCcZ3VhcmQobXV0ZXgpKCZoZG1pcnhfZGV2
-LT53b3JrX2xvY2spO+KAnT8KPiBodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC92Ni4x
-NC1yYzMvc291cmNlL2luY2x1ZGUvbGludXgvbXV0ZXguaCNMMjAxCgpUaGF0IHdpbGwgbWFrZSBj
-b2RlIGxlc3MgY29uc2lzdGVudCBhbmQgbGVzcyBpbnR1aXRpdmUgdG8gbWUuIEFueXdheXMsCnRo
-YW5rcyBmb3IgdGhlIHN1Z2dlc3Rpb24uCgotLSAKQmVzdCByZWdhcmRzLApEbWl0cnkKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+T24gU2F0LCBGZWIgMjIsIDIwMjUgYXQgMzoxOOKAr1BNIEpvaGFubmVzIEVyZGZlbHQgPGpvaGFu
+bmVzQGVyZGZlbHQuY29tPiB3cm90ZToKPgo+IEkndmUgdGVzdGVkIHRoaXMgcGF0Y2hzZXQgdXAg
+dG8gdGhpcyBwYXRjaC4gSSB1bmZvcnR1bmF0ZWx5IGRvbid0IGhhdmUgYQo+IHdheSB0byB0ZXN0
+IGF1ZGlvIG9uIHRoZSBIRE1JIHBvcnQgY3VycmVudGx5Lgo+Cj4gQWxsIG9mIHRoZSBpc3N1ZXMg
+SSBoYWQgcHJldmlvdXNseSBhcmUgZml4ZWQgaW4gdGhpcyBwYXRjaHNldC4KVGhhbmtzIGZvciB0
+aGUgdmVyaWZpY2F0aW9uLiBXaWxsIHlvdSBiZSBzZW5kaW5nIHlvdXIgVGVzdGVkLUJ5OiBmb3IK
+cGF0Y2ggMyBhbmQgNCB0aGVuPwoKSmltbXkKCj4KPiBUaGFua3MgZm9yIHRoZSB3b3JrIGluIHB1
+dHRpbmcgdGhpcyB0b2dldGhlciwgZXNwZWNpYWxseSB3aXRob3V0IGFjY2Vzcwo+IHRvIGhhcmR3
+YXJlLgo+Cj4gSkUKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
