@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE94DC021B2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 06:17:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2776EC021B2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 07:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gd9IX9savCwQ18z1WecupDm+zjpB+2sYRgcWGmN6Z+o=; b=qb2g99IBItW07h
-	Po/p0jXzm28aOf4Zef8LSUgNiKN1+KpLx+TN/HD6QmVixhCLGluP/k+4v8gdqZHlC8trWsmrv6iYN
-	Vs/05aolZDmcK7Db9ZJuTVOpdegNgEfHEwmx8fyoZg7e0RfwQV7GZ5Kzx6ziddSHkZ1HJpiFLLb4N
-	DjeJUz/5BJsiSksbVgHOwyLl1wUsC8/OGdNfzsJLAQzguZk/oHmK3C7CejC4DTMHH29CetYK3Ezwi
-	wdvunMdpUrsU1LnInB7nPD/h4opu47+NkSRA90epSUxNJbEReNgBAf+ZStfKU7oEeEigzrq50DZhn
-	bMFAnxCqWjuAa4ywLJtw==;
+	List-Owner; bh=RCeW8j62Glzfn7v7nhI8OE+Y3Y03U8T3yJkItQqDGRU=; b=VSwbLEjMKSdiqK
+	ll2cSrFp6nJuZeWXAh46acRHnhJHpqVglGKYkoFAcn64xI01pW+gb18GuXd8zheUHCtIWa5pnqnJe
+	ncUc3lgFz1oVWMMRrqEUACJEnyaZX9HcAQAN9piI48W0IhM86mcgG6xu7s+sSdhE1cHYARtXPSyCg
+	eWU2RxjSt1kdbk4qHTtVrJ8Q4cuyb8Gztr6HLhSPddUWVkyd+92c8ZNf0u8rQ73GtoOGZHvyO4zT+
+	KnjZYoGUgcUzovCHWtum3vhSI9JnA2c5lkJWVs2etK3kEr8uLTU1shYTbRnbO8DTOgrrNoI0VEog6
+	MUbJBlwUWiMzesr8AcWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlipB-00000007WJi-3vHx;
-	Sat, 22 Feb 2025 06:17:17 +0000
-Received: from out.bound.email ([141.193.244.10])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlinh-00000007WBo-20Sp;
-	Sat, 22 Feb 2025 06:15:46 +0000
-Received: from mail.sventech.com (localhost [127.0.0.1])
-	by out.bound.email (Postfix) with ESMTP id 9DDFA8A0A03;
-	Fri, 21 Feb 2025 22:10:43 -0800 (PST)
-Received: by mail.sventech.com (Postfix, from userid 1000)
-	id 8445F160036F; Fri, 21 Feb 2025 22:10:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=erdfelt.com;
-	s=default; t=1740204643;
-	bh=ipBg/kh10xlLbTfqW90iojp94rB9+YUQQbr3OHMLVXY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uV73Vx4sYe6+zf3jjzrwt+ECW446OAMMZzdBgrfnLwS0sg+2CL30u2R73aA5DxYnl
-	 7zGJFwOIa47n8pyBbaz2HQA4i+QHZtwNJYfU2M9GMUIDBsUNddjp4oUf+mneWRdxff
-	 SK+LnfDuirmuLBci97mXWUpZILvcPoCSkgWk7tu0=
-Date: Fri, 21 Feb 2025 22:10:43 -0800
-From: Johannes Erdfelt <johannes@erdfelt.com>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	simona@ffwll.ch, devicetree@vger.kernel.org, conor+dt@kernel.org,
-	robh@kernel.org, maarten.lankhorst@linux.intel.com,
-	hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	mripard@kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com,
-	krzk+dt@kernel.org, kernel@collabora.com, airlied@gmail.com,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HDMI1 PHY PLL clock source
- to VOP2 on RK3588
-Message-ID: <20250222061043.GW16911@sventech.com>
-References: <1919367.CQOukoFCf9@diego>
- <20250218121749.1382322-1-liujianfeng1994@gmail.com>
- <lnuceofdwm6lgibworaghcujp6rrncvn4e2xc2vzltimjw3rqu@jur7x5cxt5ue>
- <2425191.NG923GbCHz@diego>
+	id 1tlk7J-00000007aGl-25GM;
+	Sat, 22 Feb 2025 07:40:05 +0000
+Received: from mail-pj1-f46.google.com ([209.85.216.46])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tlk5p-00000007aCC-2v18;
+	Sat, 22 Feb 2025 07:38:34 +0000
+Received: by mail-pj1-f46.google.com with SMTP id 98e67ed59e1d1-2fc0d44a876so4690850a91.3;
+        Fri, 21 Feb 2025 23:38:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740209912; x=1740814712;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iQ0UFW2pdjOoWqROlGDZphwMQ2EIio94ZLPWcsQImvI=;
+        b=roNB1ivLWz32a8hzlzWk1GYhjNEOilNZm07ALv3Sc4e3iUrrs+1ok4RhbqK2Jq2A2z
+         XXww/HG+24w2x7jiSia/nzh3nsIC8r5iwPCASdj/QwSRh+IIxG/J8BgY5sjCN5uw8R4B
+         Le3OObEFQwVSdU1izQJUZzzKBpuT1GKMFLek6OBEHJCo09JwTK4BPLqjLBY8WTdbJBJu
+         CPzZhYDcvExiyhs4XV0Yv/x7y7z21RpGvm8CfQGKQUr5McjuR2BNmzBZPVuccnxqwAg6
+         wwcHVo/StgjTa5N5SKXF/Xq2Klj0XlBlnPVjj8QJvgl7CLUdtoPWaKLOnFNbt8+yXNnA
+         EkoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWZ3VD/W5jZ3ym2cZkcJVq1vzVy5rR5+QF/7kA1kKa1x05efC3WcYTwtttaKmgPZjtm1IidQTBvKVWNlFHBnJo=@lists.infradead.org, AJvYcCXZxITqfiqnh42vUacYnXWlk+7uDXWB/TuxWEKHGQBKHNFseMshnHotXHpuat4+1+BEJN8J2H5bULh4Uw/98d/j@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/SpKg8YxNxhiywAimXhFEDA7gC+Nldo8PdrLCBhvDlrl1BuTL
+	D+Y7KMHuyTzE7MgWfFMc9M12XhczZMVQm+rQk4YSWMTg2mhxfd9Z
+X-Gm-Gg: ASbGncuRArS/9zqXAd4J2DU80zIE1gvIUT+fNhU6mC75lSwHkQ3q9IwhucsNTXf/gMf
+	zAsq1c/7TNe128x3MXN95mw9eFoDZ70sqL1/sXjirQN3ngjkh5P4k8FS0KKwhNGXbQSATpLBG5+
+	9fpvDTQKbeHGJTi0RHYuN+42qvP9W9acbcnCZHsElVokpdqDExFllN+SWm8xbnJNC5F/ehcxfmU
+	NFxJXfty3fzcyDPpCL4GBJ0SOEVBprtwjpTG18zAZvl7Z9z8e6c5RBNrAt9aLa3V0dZhzZ+17oE
+	6AGUXHg0hz+OaYgM5WDmYpPNhnhJ3n2vJoo6QPFP3RH/R22WpAnwRfIk9Aip
+X-Google-Smtp-Source: AGHT+IFThR433LcObShHk7gSPjGjLSI8AWlZ6U2G2AIgjEbAQv5VuI5xA/i3kLqSjTt2eyUi9Bp6Sg==
+X-Received: by 2002:a05:6a00:22d6:b0:730:94e5:1ea2 with SMTP id d2e1a72fcca58-73426c8d91bmr9220237b3a.4.1740209912568;
+        Fri, 21 Feb 2025 23:38:32 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with UTF8SMTPSA id d2e1a72fcca58-73242568acesm17390081b3a.56.2025.02.21.23.38.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Feb 2025 23:38:31 -0800 (PST)
+Date: Sat, 22 Feb 2025 16:38:29 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/2] PCI: dw-rockchip: hide broken ATS capability
+Message-ID: <20250222073829.GA1158377@rocinante>
+References: <20250221202646.395252-3-cassel@kernel.org>
+ <20250221202646.395252-4-cassel@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <2425191.NG923GbCHz@diego>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20250221202646.395252-4-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_221545_638442_6BA6F6AA 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20250221_233833_771181_553A996E 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,32 +87,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBGZWIgMTgsIDIwMjUsIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdy
-b3RlOgo+IEkgd2FzIG1vcmUgdGhpbmtpbmcgYWJvdXQgZml4aW5nIHRoZSBjb3JyZWN0IHRoaW5n
-LCB3aXRoIHNvbWV0aGluZyBsaWtlOgo+IAo+IC0tLS0tLS0tLS0tIDg8IC0tLS0tLS0tLS0KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvY2xrLmMgYi9kcml2ZXJzL2Nsay9jbGsuYwo+IGluZGV4
-IGNmNzcyMGI5MTcyZi4uNTBmYWFmYmY1ZGRhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL2Ns
-ay5jCj4gKysrIGIvZHJpdmVycy9jbGsvY2xrLmMKPiBAQCAtNTI1OCw2ICs1MjU4LDEwIEBAIG9m
-X2Nsa19nZXRfaHdfZnJvbV9jbGtzcGVjKHN0cnVjdCBvZl9waGFuZGxlX2FyZ3MgKmNsa3NwZWMp
-Cj4gICAgICAgICBpZiAoIWNsa3NwZWMpCj4gICAgICAgICAgICAgICAgIHJldHVybiBFUlJfUFRS
-KC1FSU5WQUwpOwo+IAo+ICsgICAgICAgLyogQ2hlY2sgaWYgbm9kZSBpbiBjbGtzcGVjIGlzIGlu
-IGRpc2FibGVkL2ZhaWwgc3RhdGUgKi8KPiArICAgICAgIGlmICghb2ZfZGV2aWNlX2lzX2F2YWls
-YWJsZShjbGtzcGVjLT5ucCkpCj4gKyAgICAgICAgICAgICAgIHJldHVybiBFUlJfUFRSKC1FTk9F
-TlQpOwo+ICsKPiAgICAgICAgIG11dGV4X2xvY2soJm9mX2Nsa19tdXRleCk7Cj4gICAgICAgICBs
-aXN0X2Zvcl9lYWNoX2VudHJ5KHByb3ZpZGVyLCAmb2ZfY2xrX3Byb3ZpZGVycywgbGluaykgewo+
-ICAgICAgICAgICAgICAgICBpZiAocHJvdmlkZXItPm5vZGUgPT0gY2xrc3BlYy0+bnApIHsKPiAt
-LS0tLS0tLS0tLSA4PCAtLS0tLS0tLS0tCj4gCj4gQmVjYXVzZSByaWdodCBub3cgdGhlIGNsayBm
-cmFtZXdvcmsgZG9lcyBub3QgaGFuZGxlIG5vZGVzIGluCj4gZmFpbGVkL2Rpc2FibGVkIHN0YXRl
-IGFuZCB3b3VsZCBkZWZlciBpbmRlZmluaXRseS4KCkkndmUgYmVlbiB0ZXN0aW5nIHRoZSByZWNl
-bnQgcGF0Y2hlcyBKaW1teSBIb24gaGFzIHBvc3RlZCB0byBhZGQgdGhlCk9yYW5nZSBQaSA1IFVs
-dHJhIERUIGFuZCBJIHJhbiBpbnRvIHRoaXMgYnVnLiBUaGUgVWx0cmEgdXNlcyBIRE1JMSBmb3IK
-dGhlIEhETUkgVFguCgpUaGlzIHBhdGNoIHN1Y2Nlc3NmdWxseSBmaXhlcyB0aGUgaXNzdWUgSSB3
-YXMgc2VlaW5nLgoKSkUKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+Hello,
+
+> + * ATS does not work on rk3588 when running in EP mode.
+
+Would it be OK if we started to style "rk3588" as "RK3588", unless the
+lower-case is preferred?  I had a look at Rockchip's own datasheet, and the
+product code names seem to be styled with upper-case.  That said, I am not
+a Rockchip expert.  Just curious for the sake of consistency.
+
+> +static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
+> +{
+> +	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+> +	struct device *dev = pci->dev;
+> +	unsigned int spcie_cap_offset, next_cap_offset;
+> +	u32 spcie_cap_header, next_cap_header;
+> +
+> +	/* only hide the ATS cap for rk3588 running in EP mode */
+> +	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
+> +		return;
+> +
+> +	spcie_cap_offset = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI);
+> +	if (!spcie_cap_offset)
+> +		return;
+> +
+> +	spcie_cap_header = dw_pcie_readl_dbi(pci, spcie_cap_offset);
+> +	next_cap_offset = PCI_EXT_CAP_NEXT(spcie_cap_header);
+> +
+> +	next_cap_header = dw_pcie_readl_dbi(pci, next_cap_offset);
+> +	if (PCI_EXT_CAP_ID(next_cap_header) != PCI_EXT_CAP_ID_ATS)
+> +		return;
+> +
+> +	/* clear next ptr */
+> +	spcie_cap_header &= ~GENMASK(31, 20);
+> +
+> +	/* set next ptr to next ptr of ATS_CAP */
+> +	spcie_cap_header |= next_cap_header & GENMASK(31, 20);
+> +
+> +	dw_pcie_dbi_ro_wr_en(pci);
+> +	dw_pcie_writel_dbi(pci, spcie_cap_offset, spcie_cap_header);
+> +	dw_pcie_dbi_ro_wr_dis(pci);
+> +}
+
+To keep things consistent, it would be nice to capitalise sentences in code
+comments, and end them with a full-stop where appropriate (e.g., longer
+sentences, etc.).  That said, this is something I can after applying, to
+save you the hassle of sending another versions.
+
+Thank you!
+
+	Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
