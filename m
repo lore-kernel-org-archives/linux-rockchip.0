@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4FF6C021B3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Feb 2025 23:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A27C021B3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 00:02:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XWjVPC7G8f1/y9xzvpDyaJ3CfdPpBcK46KSIiaRbV0g=; b=Kas/qBND//w6Q5
-	6mFav3HcusM16r/sIwGf0n68ZCDOfNoQu/WmBn3Ap1Zitj6QVq2jbK4ECgT1RTbRITUKjLb2MEY2Q
-	a3R01N9/oR5tTqsVJy4ntvYXkbsaEt/Es2xE65nq2x+W6t0AM8tE/eePmB+ShbjauKp1JkVS1Sk8h
-	0ZinShmnblMhbepM55ahVtWiFbxHM2knLO/ElZRU6RebDfwfwFqJhZ7EaWNuSMedP5h2XsI4wIhPI
-	jjZ2S27WXRmoWzr3YELwVyIhAEH+1iTqTI2sDrhdg5b7zY0RiHaTHehEfy+fyoQLqFuzFGV2TUJEQ
-	enEkNjabmdNJVVN31dwQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ZplBcNS75mA/82PlL4m10sra2dMd7DM4bf3pnSKOlbc=; b=sSUxyl88yDp9SV
+	riJ2dgGH69NX0P2SWmk6WAuN6QCy4c+jn4WAbR8AcHwFOCMgBo+CW+4Hy2OaAAWsX3wWVXGgxNetC
+	hi8LQegVkcoG7K+e092xpOVE0e2n27SkoRPvvB+EOYx0jnBFVXGZyiTFijoZiXGdSv/bl1zKJMj+4
+	CcLI6WoJDB9C669jFMhfKVV4BYcBp3V3A//Oz3g2+Jhso4XvVCYLBToCMC1Z+nN8af/HvFVbBbaAc
+	rv71iKuyMVE5F2O7FxZK1ud6uiFLQrobxBb9uFxdUW3Aueo/s4aQXnw8qK//IRz087z/HNJMATSGE
+	1icyxQCp9Huvor5EmpnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlcJc-0000000783Z-0bMr;
-	Fri, 21 Feb 2025 23:20:16 +0000
-Received: from out.bound.email ([141.193.244.10])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tlcI8-000000077xk-2meW;
-	Fri, 21 Feb 2025 23:18:46 +0000
-Received: from mail.sventech.com (localhost [127.0.0.1])
-	by out.bound.email (Postfix) with ESMTP id C15528A0A03;
-	Fri, 21 Feb 2025 15:13:40 -0800 (PST)
-Received: by mail.sventech.com (Postfix, from userid 1000)
-	id AA9A3160036F; Fri, 21 Feb 2025 15:13:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=erdfelt.com;
-	s=default; t=1740179620;
-	bh=vyhNgeOrYGbDnImKc/jEWBJHmyIIcC5LBYoCURsL4I8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vocGKBdt41/eCeMu4YU+CArZ78x0+Z6/Yq+IyO5iYGUXepO/opn0ydttE0nRqJZqx
-	 t3RJJtpU/sTaXAiB73iUozN03MYw6M53uRcz9x9RcmFOuzrmx9nK21+UHD5VRbdSAF
-	 KU/zTDvmuJLrpyrpf8w4fS5xqipCkBBwSrI+TOZ8=
-Date: Fri, 21 Feb 2025 15:13:40 -0800
-From: Johannes Erdfelt <johannes@erdfelt.com>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	id 1tlcy5-00000007BIl-2xE2;
+	Sat, 22 Feb 2025 00:02:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tlcwb-00000007BF1-0Hgc;
+	Sat, 22 Feb 2025 00:00:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A5E015C545D;
+	Fri, 21 Feb 2025 23:59:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30A97C4CED6;
+	Sat, 22 Feb 2025 00:00:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740182431;
+	bh=IaOPCrH3kw57a9AP/P15cOXKdwI6oMqM5L5tl5C6SV0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=YdNT/KjSojaK2abE6rwyi+ctzkbBJ2TWp3tMtGCwMJH3FcdT4TgNwiMQ9SodstG8l
+	 TgNed1ktruibdiLre7E481mfQsMmowjwPIgogVtq2rbWVCWB4B/cfYN/kYryIhSzjp
+	 4cchOH+1fNZtfVDPVNs69hhUnolEbEW+Q1mxineVn5L2w44CNWyl1G61AOmyPG6q3Z
+	 Sbt9z0I2Hihntk7vsbgdtFMzIPrvUYYckp0CJ9+A4ljinEOGOqh5wfk3G8/1DC1VMs
+	 6YqH8QjgH7vuLxaNpVYgmb+ZdqC27cykI3MgJQvfNzb2lcrTSR8M8rx2PQWsiI2O8a
+	 Bxkfe8BLpcRsw==
+Date: Fri, 21 Feb 2025 18:00:29 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH UNTESTED v5 0/4] Orange Pi 5 Ultra
-Message-ID: <20250221231340.GS16911@sventech.com>
-References: <20250220041010.3801-1-honyuenkwun@gmail.com>
+Subject: Re: [PATCH 2/2] PCI: dw-rockchip: hide broken ATS capability
+Message-ID: <20250222000029.GA373377@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250220041010.3801-1-honyuenkwun@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20250221202646.395252-4-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250221_151844_959913_328B462E 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20250221_160033_167015_323C06A4 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,45 +77,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 19, 2025, Jimmy Hon <honyuenkwun@gmail.com> wrote:
-> This patchset is looking for testers. I do not have the hardware to test.
+On Fri, Feb 21, 2025 at 09:26:48PM +0100, Niklas Cassel wrote:
+> When running the rk3588 in endpoint mode, with an Intel host with IOMMU
+> enabled, the host side prints:
+> DMAR: VT-d detected Invalidation Time-out Error: SID 0
+> 
+> When running the rk3588 in endpoint mode, with an AMD host with IOMMU
+> enabled, the host side prints:
+> iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
 
-I do have hardware and I gave your branch[1] a test.
+Maybe add a blank line and indent the message since it's quoted
+material?  E.g.,
 
-The following things tested successfully for me:
-- Kernel boots
-- Ethernet
-- SPI NOR
-- Micro SD card
-- eMMC
-- Bottom M.2 M-key slot (using an NVME drive)
-- USB 2.0 ports
-- Blue LED (using heartbeat trigger at least)
+  When running the rk3588 in endpoint mode, with an Intel IOMMU, the
+  host side prints:
 
-I did not test:
-- RTC
-- UART
-- HDMI1
-- HDMI IN
-- Analog audio
-- Mali GPU
-- Heat sink fan
+    DMAR: VT-d detected Invalidation Time-out Error: SID 0
 
-However, neither of the USB 3.0 ports work. There are no XHCI messages
-during boot. I confirmed my kernel config does build XHCI. I haven't
-ruled out a mistake on my end yet.
+  When running the rk3588 in endpoint mode, with an AMD ...
 
-Also, the green LED is constantly lit even when the trigger is set to
-none and the brightness is set to 0. This made is a bit harder to
-confirm that the blue LED was working. I haven't ruled out a mistake on
-my end for this one yet either.
+    iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
 
-I'll also see if I can give HDMI a test.
+Too bad DMAR isn't smart enough to include a device ID in its message ;)
 
-JE
+Can you include something here about what the issue is?  Based on the
+subject line and the patch, I assume something is wrong with the ATS
+Capability?  I guess this is some kind of rk3588 defect, right?
 
-[1] https://github.com/jimmyhon/linux/tree/integrate-6.15
+> Usually, to handle these issues, we add a quirk for the PCI vendor and
+> device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
+> we cannot usually modify the capabilities on the EP side.
+> 
+> In this case, we can modify the capabilties on the EP side. Thus, hide the
+> broken ATS capability on rk3588 when running in EP mode. That way,
+> we don't need any quirk on the host side, and we see no errors on the host
+> side, and we can run pci_endpoint_test successfully, with the IOMMU
+> enabled on the host side.
 
+s/capabilties/capabilities/
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
