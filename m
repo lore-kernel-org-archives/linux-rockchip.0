@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7038FC021B5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 17:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EECC021B5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Feb 2025 17:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZpfFCfLVE8NyL5uIo+peo+u27yL4lob2Gjfzs7+ToPI=; b=wz4ySgRfcYgAa7
-	oUBe3mK89C7SC6LJHMLHfmNSp8ZoqKNhdkEziZ6P/p1EmbZLgBOo+KsRXj6hp8rjH88pjjgFZmCnU
-	3YxyzXkuvpN136pQRHmCBTYbiloIrj/fDLEi4FAf/5kOmGlzH1GXsPxhZyiV9cEGM7RS+DqqfoaPY
-	YXSsFfvvyRpsIQBb0x6X9VSB1TpmlOW+htUbBVqwz6Ej1JHd6J6CT0mtJuBq83RvGawxoXSGT4Mu0
-	M+p2kllqT+3G8b2Kxp6e0y8GgQbNZAA3yQ4bsQFTcT/UyMCT9uhIipfvkokcM1OcJ9paOLvTyvkBD
-	BJppfc59fK0KWjcCD0Gw==;
+	List-Owner; bh=wdmsc7aZNqqEIfrZnjvlIuh0RI7bE0g/NoAkYK7Y5Vo=; b=d7QqDog2r7e73c
+	YJIsYCaroPdh6u2fknFivg1oYBxLqZ/RTlH9K/cO8oNykDb6pZlzxXqoOmPz7mptXs5ltug9baFxY
+	HRohgsFnDmwRn1KQnVQZadBwx58X41WYq5TlHVFhqIjNSR4DfWY+2ZGgqpa727jgNmzVGzwTcss5S
+	dPccyYWHgVa9ljNmxcwcOz/CYkuRmHAbmWWY1T5JZ/ziatikFey0srZv1+bVh+BuwcfSrk5V4u0jm
+	bUs3ZKmhkUtjG4k2eY/Rk38BWAHFeQ0Hx1Xh+PTJq8XqZZv9bNYAbFCqKUS8gGl9b33zEKlXAWrBH
+	3onq/6ycUHJQZVOwZJXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tltNF-00000008SIR-0gNC;
-	Sat, 22 Feb 2025 17:33:09 +0000
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
+	id 1tltNP-00000008SMA-3NKO;
+	Sat, 22 Feb 2025 17:33:19 +0000
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tltJ3-00000008Rk5-2n20;
-	Sat, 22 Feb 2025 17:28:50 +0000
-Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-5fc447b03f2so766045eaf.0;
-        Sat, 22 Feb 2025 09:28:49 -0800 (PST)
+	id 1tltJ6-00000008Rkn-07aW;
+	Sat, 22 Feb 2025 17:28:53 +0000
+Received: by mail-oo1-xc29.google.com with SMTP id 006d021491bc7-5f6b65c89c4so1052688eaf.2;
+        Sat, 22 Feb 2025 09:28:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740245328; x=1740850128; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1740245331; x=1740850131; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jPcfkurtbMpldzDsTGUmb4ViHTY8bVGf8RoBJkJSMuc=;
-        b=esUqb286PcEHxQnAjdqNIHKNJL4CVJ9/NMHr1sum/awauRedqHrkGJ/2o3MVEL3/sE
-         NvOgl0SJ2aM8549hmM/Roc0+ajQomrrFYdutuwVCeXuAJJ74mzTXwJ9lSJtBIZSu0l+o
-         5RSZ24DorHdWwbS3YX6Uo1gxKIb/SCw66sZefaTfh3xW8x33k/0e90+XiaRfeBkBZB6H
-         GR1tg88J0u41KoX7wvNHmk2FyZRI5UvHkgu6obReZeaXfSrpCkBy/GL5mAHSJwfk700O
-         caj6XkHq5wsEpOot8Uu5YmLdBws9NA3flwR2Qzp3IXQHR5AWX2bni7maCjDGHfZhZ2zT
-         xTfA==
+        bh=9HB2300uflqiIiUndQgHCnMwg6h8dJJ3C2ou+rEx6MQ=;
+        b=GCfWOA037djl/1NFEF6xVxjn4bNtYQYRUpen8Je0Fdm7lvLyrDaGyCeFIrXN0mRpMw
+         2NJVY2ceYwajvWRKDqRBtvTtGI6GU9YdIdlgTliJzY7G5vG7SzdQXCKjdpRWpB76qbHQ
+         Qym6sobIQk7dVRoiuwxqdgB9fGLkriHHUNpfEiXxtbARGrIN1rQdHchNoArARB7cbq7Q
+         SXWUB2U/8zdGAj/GiZEN8HrdrlwgN4ZNF6u1TZxkhSjg+T8AxTCdiNv8kTLPCgrNsK5E
+         K3/CNK23zPPOCIGSyDuUMONew97torh8NSzH8N1IlqwV1qwra8If96YAvXaiK2j2UmAf
+         TLAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740245328; x=1740850128;
+        d=1e100.net; s=20230601; t=1740245331; x=1740850131;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jPcfkurtbMpldzDsTGUmb4ViHTY8bVGf8RoBJkJSMuc=;
-        b=UgJ+gwTLaDLITy6JxdQ9fQTyPesNVNWyi/Qiz1a3YI6CsXp1lhjHf775Ze5+/DD1QB
-         5oGR6WUPS5EQSMwr5bn2GXSzFAwTIMgmGhv3RPXroO9HRWW2cGTosH2CvE8rdbScnbg+
-         tZfNh3rkliBfj7uT8/5T95mFKDuDmZVFQ4uVjaF/3T53CVTyxd3Mm5FWQOuNAdgt0WMX
-         E4ChoR6I0iV19GxfzNCk7MlhEFm3CzBie41InriFthf8Xj7Hfm+AHP9V/gN3EdkgOLG0
-         aARQyp9pGywQMgKgI61faDE4W3wQOvZnmK2tqzEFu+Ii5iXy8cIMnORxzgEqleC2sIz7
-         P1Tg==
-X-Forwarded-Encrypted: i=1; AJvYcCU79BtfVHOk3UP5HBf8e41NDQQtTegEXyoPcJc6e+O4W7vVaZhkylsBdfDHi9tQJigmoyTuPTmpdY2FFpa276jz@lists.infradead.org, AJvYcCWWr1kpRVfpcInfrdGuWZ6ESxrtLetaFigjZ7kEACGMU/p/DcPz4oeWvLUhXXDPYIvERIb7b3KYCnMiUqIv1iM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXJSyy8wlJ83HqmcpEH6rgnorlHU6cKrEq4aLhSNlqFFbJOopU
-	zwG7lBgHjbAgqdjVqnMFSSIqQzj8YqnFX7mn8TGodbij1vm7NPyf
-X-Gm-Gg: ASbGnct76CnD+c59jScaTFbr/I5QbtNH/zh/doIhV9z6TuP1BpgjK7PPoQ0EYJ62aId
-	WmXgd7JLopSehdixWx/9IAO/j0ADpVZpoXPkN3TiejHy5OgN/Zp5scY+4W8Nb8DwEm/f40GHlWv
-	Fcxjo0lTgjY8i6gmpjMUGqh6blCOfdby+f+J1+SG22Nv0YIS/uLB4sGb2AZLo8dTvJigdVxuL7u
-	TjKcstJY/PQjiQci4WiTMU84PV4r7/mFewKrf5O47kxOdI7wornQp6zWzapYnhzhYA2xa5rbf8a
-	AiKl5nj2/T16c3axPxEm1+nmhn4mDL3+Vvo=
-X-Google-Smtp-Source: AGHT+IE5vkPsaaulzdFkWGm4Q5tVKjSsDlLUDZVTraSy9IbqB1tgml5CpkXqxPPTBT4De/+93snqRg==
-X-Received: by 2002:a05:6871:7b02:b0:29e:6bdb:e362 with SMTP id 586e51a60fabf-2bd50d6bca5mr5576474fac.17.1740245328373;
-        Sat, 22 Feb 2025 09:28:48 -0800 (PST)
+        bh=9HB2300uflqiIiUndQgHCnMwg6h8dJJ3C2ou+rEx6MQ=;
+        b=XlgcKaAtk3aB7RWWDMKWT3s6+mkQcqLAcZf5X58tAtxsurwQhTF7nj0nCEt8Ideyq2
+         xf39vJp1FHS2WuS9gkKPM/nj5+1yyyqiYYTj3Ha/Q2tnyyZ6D2MoJqop6Ebh7OGXhQ9C
+         vU3yPZHt3z5zFPsQiFpjQ1SyvqhJBbb55d/wG6T/QyPKMTYgln1fm62kDjxuN4xkR69K
+         fwh6K3HtCshygPPYA6BYo0aHJXbarcLPgl1EgZ4sTMO/3ZcEj/3dZ7eQJw/gB5ZCkSoS
+         leuLJCEvUxAQYr6FpNQ550hFLU5851+m5zvvbYFmhMxkePKJkU+/qfD8aziq7DMYixJV
+         rVug==
+X-Forwarded-Encrypted: i=1; AJvYcCXgUTGgLLG+OCVQfhO0fvX/uIz1gJdizPqceciuD8L30kPGrm0fCb3FbEVK7yxdc6G00iMeXrt5rnA1rmRcbhQ=@lists.infradead.org, AJvYcCXvo4SiPf9ing3/U3HuRdKrvn/VtcBVXXDKeN9mWYwFMQnOvhF7k183g1n+k3tm0z/Pmu0VyyW9S1h+4ncrr1t1@lists.infradead.org
+X-Gm-Message-State: AOJu0YyEJFGmPX5eHTvi7waE4O+vJtev4i7+AXdWXUZGrHMpUmx3vPOJ
+	YvVLIm0V/E/mwFKFMdZEHHkT/RzseBhZInLZ0fTE741wtgMmZ1Lk
+X-Gm-Gg: ASbGncuC2zF/wNZWLVf1a3Yibexot0mTXXVR3PbIDeUHpbe9XwWy/c4A4KpBoIxMMh7
+	k27/rT5UhakMx+rE6IN/ctSiZPxuOw9xLHxcn3jjlrLv90AkwnKUVz+VNGQi/h2/NNV5g+qZFf1
+	XqUlWBIVO3xmDoVJV9AyayFwwOmvjizkwtd6Bh9PKgP2cItaG0e5cAG+lG2Vz7p6NLbZf544G/3
+	y8jBFYiRisEHN9PLTUMOJZnlID1dCnd9hNrbVz50aF0S+BVe167H1Qha0zqNRrdT2SinrXg/6N1
+	OX6efm0eWh0Dk3lDoahBrQuTeUHISU63hA4=
+X-Google-Smtp-Source: AGHT+IEMFe+lFEc+YZNmIjaRNRS/0ZWidVHYiCpGOSiTppW75wd8bhABpnWA2+7PGawx6yD39ANwfA==
+X-Received: by 2002:a05:6871:710:b0:29e:255e:9551 with SMTP id 586e51a60fabf-2bd50c5a460mr5930657fac.2.1740245331000;
+        Sat, 22 Feb 2025 09:28:51 -0800 (PST)
 Received: from tower.cjhon.com ([2603:8081:ad00:4a:996a:132b:43a2:f7b0])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2b963a0ac4bsm7244238fac.47.2025.02.22.09.28.45
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2b963a0ac4bsm7244238fac.47.2025.02.22.09.28.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Feb 2025 09:28:47 -0800 (PST)
+        Sat, 22 Feb 2025 09:28:49 -0800 (PST)
 From: Jimmy Hon <honyuenkwun@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Johannes Erdfelt <johannes@erdfelt.com>
@@ -77,17 +77,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH v6 2/5] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5 Ultra
-Date: Sat, 22 Feb 2025 11:27:49 -0600
-Message-ID: <20250222172752.6254-3-honyuenkwun@gmail.com>
+Subject: [PATCH v6 3/5] arm64: dts: rockchip: Add Orange Pi 5 Ultra board
+Date: Sat, 22 Feb 2025 11:27:50 -0600
+Message-ID: <20250222172752.6254-4-honyuenkwun@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250222172752.6254-1-honyuenkwun@gmail.com>
 References: <20250222172752.6254-1-honyuenkwun@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250222_092849_718124_9AE08312 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250222_092852_092733_9DB5A20C 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,36 +103,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding for the Xunlong Orange Pi 5 Ultra board.
+The RK3588 Single Board Computer includes
+- eMMC
+- microSD
+- UART
+- 2 PWM LEDs
+- RTC
+- RTL8125 network controller on PCIe 2.0x1.
+- M.2 M-key connector routed to PCIe 3.0x4
+- PWM controlled heat sink fan.
+- 2 USB2 ports
+- lower USB3 port
+- upper USB3 port with OTG capability
+- Mali GPU
+- SPI NOR flash
+- Mask Rom button
+- Analog audio using es8388 codec via the headset jack and onboard mic
+- HDMI1
+- HDMI IN
+
+the vcc5v0_usb30 regulator shares the same enable gpio pin as the
+vcc5v0_usb20 regulator.
 
 The Orange Pi 5 Ultra is a single board computer powered by the Rockchip
 RK3588 with similar board layout as the 5 Max but with the HDMI0 swapped
 for HDMI IN.
 
 Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3588-orangepi-5-ultra.dts  | 33 +++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 23293344d8eb..c9914725264a 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -1141,11 +1141,12 @@ properties:
-           - const: xunlong,orangepi-3b
-           - const: rockchip,rk3566
- 
--      - description: Xunlong Orange Pi 5 Max/Plus
-+      - description: Xunlong Orange Pi 5 Max/Plus/Ultra
-         items:
-           - enum:
-               - xunlong,orangepi-5-max
-               - xunlong,orangepi-5-plus
-+              - xunlong,orangepi-5-ultra
-           - const: rockchip,rk3588
- 
-       - description: Xunlong Orange Pi R1 Plus / LTS
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 57c5c013cc08..d068b9018cf4 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -151,6 +151,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-lts.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-max.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-ultra.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5-itx.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
+new file mode 100644
+index 000000000000..fa975c5db0ae
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
+@@ -0,0 +1,33 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include "rk3588-orangepi-5-compact.dtsi"
++
++/ {
++	model = "Xunlong Orange Pi 5 Ultra";
++	compatible = "xunlong,orangepi-5-ultra", "rockchip,rk3588";
++};
++
++&led_blue_pwm {
++	pwms = <&pwm4 0 25000 PWM_POLARITY_INVERTED>;
++};
++
++&led_green_pwm {
++	pwms = <&pwm5 0 25000 PWM_POLARITY_INVERTED>;
++};
++
++&pinctrl {
++
++	usb {
++		usb_otg_pwren: usb-otg-pwren {
++			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&vcc5v0_usb30_otg {
++	gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
++};
 -- 
 2.48.1
 
