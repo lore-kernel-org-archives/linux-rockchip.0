@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 214F8C021B3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Feb 2025 10:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED56BC021B3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Feb 2025 11:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Q0KEesQVf55WGe8QhTWMxghAt1HRMke73u1dC0fnf5g=; b=CRbtiR0hDFxVpJ
-	GlNIO+nFlops+FamorWrSl9Xk+P/p3z3JXgUp97DzN6psaH6d1a9Mts8L0gjKKpZcwlCL0IG8j+hB
-	l2rh2AsXmFfZKYD/vpeN9q8b/1Euc/bZ2Sn2Aia8prM/RDQS08wHJ7RtYj/st5o0pniL++TokGvhw
-	o7NF6j/irHMlrChqn8Tu6bVqg1Gt2rMueTxkKm3fJGGtJv7W9ziKvliabo7c7O2oHmnxDtFn0Kl4y
-	xOsOBzhMfzxK+/nCqSZFR5za+mr/gdO2/IGxqtusIs4NgLFm5MdwfcYkQVmhiNHMTn4VzrG1NoS+Y
-	QBYWEGkGK0OB9O/X1w7g==;
+	List-Owner; bh=DKJMm0C6lI9IOCtNvxsaCuY6k6hnwDvNIWJSeolXLgw=; b=AUhnuiA1RJHeoV
+	+7VuT3a2uxki/wRqE8Kah2RnW2Qhy8F4UWvCa7rMX5/niyYsd2hH2vZHNerMegTk2i0w0M9SVMLpa
+	TeL6oPPWKoa4JMw5/YR/b3m/rqsKMh93oWjdBO0B/8j3AyJobTdl8jPYys+z4l27fHT/wO5btD4MW
+	FOkrhgGorSgAdH1y8gYcjoHq6cTGpjjO+EoUcUTeVT8L80qCGCMANm7jimpJMsktBVbYBrogYI8Ot
+	zfhb1FzoSVFPu2TchAgsYI0gv7NbWSzS6z9/M3E3Xa4vKEz2aTeSDCCv94ziytsn+Oq9/h/FbAUSu
+	sGmKTie/oXmK6FMHgwAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tm8vp-0000000Aq0q-3Wn4;
-	Sun, 23 Feb 2025 10:09:53 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tm8uJ-0000000ApsJ-3jR1;
-	Sun, 23 Feb 2025 10:08:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=qjFPs
-	7F+XO2HKOCjLIfMrNdfI+E1rn21TAwcThQVHuY=; b=Sx0V7dpmMVrZUXv0rakZC
-	zIjXW0B/u+sl4ab7/wRyY0E+JnewWZ9IHAjKHMth5x5pw41DM2iEbSvmgfgamvar
-	srJxuEXRvzGGY8c7yocIc5e2ZiiYsFtPi3c+08riuylQIDzkFZ1pisAftAy7dmkz
-	KMi+uoOquINEinH7G2tfq4=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDnX7t+87pn0ncQOA--.33463S2;
-	Sun, 23 Feb 2025 18:08:02 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH] arm64: dts: rockchip: Enable USB3 OTG on rk3588s Cool Pi 4B
-Date: Sun, 23 Feb 2025 18:07:46 +0800
-Message-ID: <20250223100757.73531-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tm9ne-0000000Avc8-3GrD;
+	Sun, 23 Feb 2025 11:05:30 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tm9kh-0000000AuoL-3pgH;
+	Sun, 23 Feb 2025 11:02:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1740308545;
+	bh=ujHLAB81bLDG1rFjYTdk8D4Cj+5uJUkDjmnklWgTiik=;
+	h=From:Subject:Date:To:Cc:From;
+	b=J/V4EFkj7fkhmQYQbOzNAV2yL40vgJCy4A2toGa8Q/dE3HefV2Yyu4ydtHlls222Y
+	 3Fs1BNuUnL19atnl1HV96ZSmRtBwCm4v8xGz4eEW848feY5gauMhm1bmTuLlzh4lAs
+	 bxair9Nf1NxHuRETdf/bpvRzqVo4mvR95wJElcdU3eshtZ8QQfXirv0vp4eiOg8oXH
+	 jtFNoB9X2QyU0nb5AXZKAMIOnjHzSpZ/VzknIdCZsVjtfI888FtZ0w5ah8+VnLxnPd
+	 DnyfsxN2+EDTLSrseGM5neMhExRo215BSXqjapmxB1CyA9rk0MGqohrQJ3jlxfiJoO
+	 +CFpWGy4TxVEA==
+Received: from localhost (unknown [188.27.58.83])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 8FB6717E0199;
+	Sun, 23 Feb 2025 12:02:25 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v3 0/8] phy: rockchip: samsung-hdptx: Support high color
+ depth management
+Date: Sun, 23 Feb 2025 13:02:07 +0200
+Message-Id: <20250223-phy-sam-hdptx-bpc-v3-0-66a5c8e68327@collabora.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnX7t+87pn0ncQOA--.33463S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWrtryrKr47KF1rZryUtFy3CFg_yoW8JF1fp3
-	srCrW3Jrs3Wr4rAas8tr1Skrs3Aws5JFWfArn3A3ZIyF42g34kZr1rG3s3Zr4YqrW3Gayr
-	CF1vgFy2gF4DtF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pi7KIdUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBj8Xme65IDlCwABsE
+X-B4-Tracking: v=1; b=H4sIAC8Au2cC/23NUQuDIBDA8a8SPu+GXaVsT/seYw+mNoVK0ZAi+
+ u6zYDBG3NP/4H63kqiD1ZHci5UEnWy0bsxRXQoijRjfGqzKTZBiXSJl4M0CUQxglJ9maL2EqqW
+ NZMhZpzjJdz7ozs6H+XzlNjZOLizHi1Tu26/GT7RUAgVaSdS1Yorf+EO6vhetC+Iq3UB2MeGPU
+ uKZgllpuGYcJc9T/yvbtn0A3SXvX/wAAAA=
+X-Change-ID: 20241206-phy-sam-hdptx-bpc-3b05c6276fd7
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+ Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250223_020820_284481_687B4780 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20250223_030228_148527_4D567680 
+X-CRM114-Status: UNSURE (   6.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,65 +83,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable USB3 OTG and it's related PHY node. And the PHY will
-also be shared with the upcoming DisplayPort controller.
+This series relies on the new HDMI PHY configuration options [1] (patch
+included here for convenience) to provide high color depth management
+for rockchip-samsung-hdptx, and to introduce a proper solution to setup
+the TMDS character rate on this PHY.
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
+[1] https://lore.kernel.org/lkml/d1cff6c03ec3732d2244022029245ab2d954d997.1734340233.git.Sandor.yu@nxp.com/
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
+Changes in v3:
+- Rebased series onto next-20250221 and fixed several conflicts due to
+  the recently introduced eDP support
+- Link to v2: https://lore.kernel.org/r/20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com
 
- .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 23 +++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Changes in v2:
+- Added new patches providing a bug fix and several driver cleanups and
+  improvements
+- Link to v1: https://lore.kernel.org/r/20241207-phy-sam-hdptx-bpc-v1-0-03c2e4d6d797@collabora.com
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index 9c394f733bbf..7faf189c4776 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -803,6 +803,14 @@ &tsadc {
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
- &u2phy2 {
- 	status = "okay";
- };
-@@ -832,6 +840,16 @@ &uart9 {
- 	pinctrl-0 = <&uart9m2_xfer &uart9m2_ctsn>;
- };
- 
-+&usbdp_phy0 {
-+	/*
-+	 * USBDP PHY0 is wired to a USB3 Type-A OTG connector. Additionally
-+	 * the differential pairs 0+1 and the aux channel are wired to a
-+	 * mini DP connector.
-+	 */
-+	rockchip,dp-lane-mux = <0 1>;
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
-@@ -840,6 +858,11 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	extcon = <&u2phy0>;
-+	status = "okay";
-+};
-+
- &usb_host1_ehci {
- 	status = "okay";
- };
--- 
-2.43.0
+---
+Cristian Ciocaltea (7):
+      phy: hdmi: Add color depth configuration
+      phy: rockchip: samsung-hdptx: Fix clock ratio setup
+      phy: rockchip: samsung-hdptx: Drop unused lcpll_config
+      phy: rockchip: samsung-hdptx: Setup TMDS char rate via phy_configure_opts_hdmi
+      phy: rockchip: samsung-hdptx: Add high color depth management
+      phy: rockchip: samsung-hdptx: Cleanup internal rate handling
+      phy: rockchip: samsung-hdptx: Avoid Hz-hHz unit conversion overhead
+
+Sandor Yu (1):
+      phy: Add HDMI configuration options
+
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 163 +++++++++++-----------
+ include/linux/phy/phy-hdmi.h                      |  21 +++
+ include/linux/phy/phy.h                           |   7 +-
+ 3 files changed, 111 insertions(+), 80 deletions(-)
+---
+base-commit: d4b0fd87ff0d4338b259dc79b2b3c6f7e70e8afa
+change-id: 20241206-phy-sam-hdptx-bpc-3b05c6276fd7
 
 
 _______________________________________________
