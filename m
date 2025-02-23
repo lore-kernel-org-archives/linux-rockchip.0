@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E44C021B3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Feb 2025 17:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACDAC021B3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Feb 2025 17:33:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LsffL5WxfCdxcJXNng0I3SrkXNLEoRjwCSA4BuzPuVA=; b=3Unzpt2BQTmWUg
-	EQZVKutNrSDGAENGUSXKPi7eT7lGVDo4ChpnMYs3RjVVbe/JGzLLD3bUAJW1M0RUK57AWUNctmj2u
-	miKGHhhLay8x/6hj2RWo2JYp3t0YlAJ9J9oWWXyUpKnX+Odjb9sOeMf+vo0vjbFjF6gPZaV63VwAu
-	OLhOR1OVujXe41GbC8uqYf+dQdqGjAaUm5RYHCVPrb7Xc0QpHRek/aNGV1J6dh+aEU2nrNlKXB6M8
-	CmlLF6nf/622nTuOaf+L7cmWDst4YBHbGqqQGvtT2Dh/lbwYFbihlLxq/mvJdCP3jKpRFjty+E+Ik
-	rpSG+McLc2eTMu6tufJA==;
+	List-Owner; bh=cQ43TWKU/E6YyXfmhCZnefwJPsEMU3zc3R6McGiKtXc=; b=eqMDqBxqKIPvzl
+	ROwZBKAyg9jfnxoRyxKcGpCkl5miVqndm/hdBTm+V0iyfKy1CsrQLmu1IIp2TKMKotR8IEOxsO5sp
+	qOtCin/cl4g3D5N5DAvBfyJ7rWf4FIstv6HgXaeXJOVT3d139GUtCve2O8f39EsY3P/dto4ojaap+
+	m+q4P8KnaacGdpakcjKPYmdAPy+qReu3+dX6TYV1nPSBSZxIgrgJdTdPkqTHq2whBgCj5DCBfmitS
+	ncAzKY4BDiDdhfugV9OjZou5/hPE0ug8T17wwzNFc7Z2uJJ+GRULEsPPTAXaCZ0GZe5NHVnr86Ubk
+	oXvZtm2pF6mOX3aJsgGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmFr1-0000000BVrt-3LJK;
-	Sun, 23 Feb 2025 17:33:23 +0000
+	id 1tmFr6-0000000BVuF-0oDe;
+	Sun, 23 Feb 2025 17:33:28 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmFr0-0000000BVqH-0EGD
+	id 1tmFr4-0000000BVt6-0uSx
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Feb 2025 17:33:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740331991; cv=none; 
+	Sun, 23 Feb 2025 17:33:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740331995; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=GpDUpFYUa9gxPOiUlU6z1KVWLybSFnCFr+6FitWMUYbMHQXODDN/dTmhU9SjrZEKKg/BAa3Os+ITVmYoqSB9d1jrfVfzEEBQx5JPRB+842/P+fTArk17Jcb9X6RYh4LgQmdAW18skW0CcX8736XyPpS8Bj8QgFG3FbVSwVhfSro=
+	b=GV71px/iMtYpz1fgoqWPtAUFHFgH6bMWXkyCPwKgRpUT7nr07DNRsA8mAM38B6Q7HdZZQGKZyFQ+2efUfcgVLIyDyr1VGrlYiOriOR7pHEMFuRwdvRa7qrClkYVTkxYnQU5tJmweb9YP0PiaN/QuxSvY6ye2xzYLHysmDuZKyOk=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740331991; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=; 
-	b=IRAVXWQUEQpqkDPLTi0vIIS8+q80qud4pbkxyeayBffs0c2tQloBcg2wgbfLw/IXDI8k7p8YMuQAw58X53IkUFhg2pnkDIWDsJFAFlwB5b8w+2qT+SsK4c7wmZM/zBWFeqgmrWX0cHF5IIJdLoK1ksDHS61zmDV0omqxtm/RzYc=
+	t=1740331995; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=iIPCjPu2+AmsIf/cCFUaH7Ayf0dQa1TgmFz1djm75zk=; 
+	b=BSyfbf3GB65cWAV4fisJfbpZGMl2Xh4TnWz1AyjBgBYzQ9EX38LNlI0wf0cz0BZILi7ERKXRR4BIvcTtvCcYiRDdTpdSsB9YuiOcugRt9MQ/dnIXQO4eUseA3UZU2OxLwGHr7edkSVA5HfgXXpjoy7QsdnwG4L4048+hn0Fpjmo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740331991;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740331995;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=;
-	b=WMH3k6MdoOJbifHHTh1XhQPdg2vcQKGPo11Wuf89A/7ygFlADg7FnGfLde8DIQos
-	f5Tg2HqyvXKZcvDSuVpeLGGJu6wh+2Io4p/VX58+Y8PM27zvkY1+f6UyKlPwT91OBH9
-	sn74+x9sApLmvYMqZAL1pLEPyzARPqrglDpTVKRY=
-Received: by mx.zohomail.com with SMTPS id 1740331990357465.19994245620387;
-	Sun, 23 Feb 2025 09:33:10 -0800 (PST)
+	bh=iIPCjPu2+AmsIf/cCFUaH7Ayf0dQa1TgmFz1djm75zk=;
+	b=TGDv9LfbbRPyY8nX2VtbtTGpDgTE4lIbdW8M26iAETvejqQjr4k1BUU/P5vUj59s
+	fB2Rr04I507sSirguQhVXPla3ehZIfRZ9VGIa0Gab+Dk4lOlvqLoGaKojiGEunU0a3U
+	M1svlHLdg7nnA3CohGQmLznBPo9tfRkeYpx3YDtM=
+Received: by mx.zohomail.com with SMTPS id 1740331994974877.7597302947063;
+	Sun, 23 Feb 2025 09:33:14 -0800 (PST)
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 To: Shreeya Patel <shreeya.patel@collabora.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -66,17 +66,17 @@ Cc: kernel@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Tim Surber <me@timsurber.de>
-Subject: [PATCH v8 5/6] arm64: defconfig: Enable Synopsys HDMI receiver
-Date: Sun, 23 Feb 2025 20:30:18 +0300
-Message-ID: <20250223173019.303518-6-dmitry.osipenko@collabora.com>
+Subject: [PATCH v8 6/6] arm64: dts: rockchip: Enable HDMI receiver on rock-5b
+Date: Sun, 23 Feb 2025 20:30:19 +0300
+Message-ID: <20250223173019.303518-7-dmitry.osipenko@collabora.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250223173019.303518-1-dmitry.osipenko@collabora.com>
 References: <20250223173019.303518-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250223_093322_174370_30DDB3BF 
-X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-CacheID: sfid-20250223_093326_320046_7E474E21 
+X-CRM114-Status: UNSURE (   8.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,27 +96,51 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-The Rockchip RK3588 has a built-in HDMI receiver block from
-Synopsys. Let's enable the driver for it.
+The Rock 5B has a Micro HDMI port, which can be used for receiving
+HDMI data. This enables support for it.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 ---
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index cb7da4415599..6ed1ad3c0055 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -859,6 +859,7 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
- CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
- CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
- CONFIG_VIDEO_SUN6I_CSI=m
-+CONFIG_VIDEO_SYNOPSYS_HDMIRX=m
- CONFIG_VIDEO_TI_J721E_CSI2RX=m
- CONFIG_VIDEO_HANTRO=m
- CONFIG_VIDEO_IMX219=m
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index d597112f1d5b..377824e69e20 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -220,6 +220,18 @@ hdmi0_out_con: endpoint {
+ 	};
+ };
+ 
++&hdmi_receiver_cma {
++	status = "okay";
++};
++
++&hdmi_receiver {
++	status = "okay";
++	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
++	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
++	pinctrl-names = "default";
++	memory-region = <&hdmi_receiver_cma>;
++};
++
+ &hdptxphy_hdmi0 {
+ 	status = "okay";
+ };
+@@ -377,6 +389,12 @@ &pcie3x4 {
+ };
+ 
+ &pinctrl {
++	hdmirx {
++		hdmirx_hpd: hdmirx-5v-detection {
++			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
 2.48.1
 
