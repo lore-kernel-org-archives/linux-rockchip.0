@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68DA7C021B3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 09:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA2AC021B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 09:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=66qTda8DiTKZucgZIuzEwF1zXoRzY5Dr9UJCyd+veGk=; b=Tfc6IZSzs1mopT
-	EH1jhcMbwR6B2N3ujX6g9/vkj1g51HrKWU1Ae09jUiFCsiOvCuYuERk7/UPmqWqFeJAsgpFvrPBTU
-	u/0OI/8Qwd93/3OGuJ0EmJw2dt1rjRRbTa3qPOMctBMwKxDDA/Qevrn9o21nCCzbdmSpvhIZH99Q9
-	MbyYlfcnTMP4ElDzOgcuSzof91JcF0Mbiqrb2moVlLf8yEP0f5pIPoP5P3mnMsWo0qySoXXaKUCDr
-	Tg4ec1ijZczybbVamzdXWsbcA/8JCvhC6tz3kFcnYO+URLCIB9vO9O7EckB/9bET2YNiFRbUz8z9Z
-	ziTf30F0uxuQtBMp6liA==;
+	List-Owner; bh=edLEgxt0mppQzDXdPOyTK4+7xHYFXZgeD4bSkFtYdQY=; b=U+QsISLIWyHSMp
+	GBYLat8BaWxCoGr2JXfM1huBi1h4XADy/KwMZC+Dc9uRIAHzrDZMZ2atsog6gu0/wWFApm0CrpV8/
+	CWfYzwwK5OKtdCXEf8FMOGuadINyFizn6uHlqtRUex/FJrKFUDNtM0qT3xy03CBtmPsaNtIb8LP2W
+	62WI5FEedQSxYg97TPHN4uYWaBup9ZlrnX0C/Xb5Yc7bi9rMNFhXhD+4XT+FLnfE/PoV58gZzftMe
+	RhaYa8ExojdM89EFGWjUM488FRH4UTMP7J/4+2KfwutaNz/TJi0yw0fpVocDyGuHUVzSK0JwVjSU4
+	we8iEgkcnz7MWDIs1xVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUoM-0000000CviK-37ia;
-	Mon, 24 Feb 2025 09:31:38 +0000
+	id 1tmUva-0000000Cx5X-1i8V;
+	Mon, 24 Feb 2025 09:39:06 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUT0-0000000CpYT-054y;
-	Mon, 24 Feb 2025 09:09:35 +0000
+	id 1tmUXv-0000000CrEm-0GgV;
+	Mon, 24 Feb 2025 09:14:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=5M7Vwq3vPNXFx3Y80ZtwPFH+1emkyTe/+TzCV6/qris=; b=R+QVTnMSw7oi9Bpt0LYcT9UKq4
-	S6qh/hExWGY2MjGrAJXZ/UJskhRHgBhj7NUc8YCb3yyXdogA+XM46XRTwGYtaqlpzCddUycQ8lzsc
-	sEzsEzeaR1HNprpcfA6U1gcWl0A4r2udHsy5rky6or/YSAao6UgyyY10qEc8ZFiX1IPVFvpAWy7qE
-	EOBGQxYwKIh4P4TOHMiTHxf24QgzXBFZQWRYKsdUsFQZZBbe9X3WuP+FDdIivF+dF/rYq7QkMdHcV
-	zwgrnMRfH8orgTr+O/6F04Xv+AyGhBl178+B/g5mZgDJXW1U9WCwepbxYIHlhJIE0X69qJ/C9JGKR
-	lmKWR6uA==;
+	bh=XWEADniHRGWcnzqbekRTv6/vtyL/MFZqYvazyCcPL/Y=; b=C2Fa0CsgkZ2/azdEMvlOzuYSf7
+	k3nUPkbtzi80jhqlddLODTZArqrjOaDbkhu6v27OfN1fu15qYrE1R7QEaDmBLvJTpwOZuImxSCdlv
+	PT7OHUIEehio+7EhaWCLkC5l2t1hnzwI3nK3xiD5mN1WzY9Ka+RgqS0uWK29Azt0pT4VxziiuCJYS
+	3+2l23UyPbiwiiGCJJ2j0ecmxMejx0hIixnJwUe4ao8qPsil05p4lQCEFfZyV9tyVszURLYogUaFm
+	F4EZIRXEQXn/DnoDqOooXtpsFYdHDBnzKB+LhJ2uBs5gGKOt+rhPaMwyRhRKK9AWlvUvhOiODeSmY
+	AsSi5PrQ==;
 Received: from i53875a0d.versanet.de ([83.135.90.13] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tmUSw-0006ts-IJ; Mon, 24 Feb 2025 10:09:30 +0100
+	id 1tmUXo-0006wL-ID; Mon, 24 Feb 2025 10:14:32 +0100
 From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Yao Zi <ziyao@disroot.org>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yao Zi <ziyao@disroot.org>
-Subject: Re: [PATCH v3 1/5] dt-bindings: clock: Document clock and reset unit of
- RK3528
-Date: Mon, 24 Feb 2025 10:09:29 +0100
-Message-ID: <49730692.MN2xkq1pzW@diego>
-In-Reply-To: <20250217061142.38480-6-ziyao@disroot.org>
-References: <20250217061142.38480-5-ziyao@disroot.org>
- <20250217061142.38480-6-ziyao@disroot.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+ devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/3] dt-bindings: clock,
+ reset: rockchip: Add support for rk3562
+Date: Mon, 24 Feb 2025 10:14:31 +0100
+Message-ID: <2920539.yaVYbkx8dN@diego>
+In-Reply-To: <28dcac28-9060-4f65-8167-64f6a0e4532d@rock-chips.com>
+References: <20241224092310.3814460-1-kever.yang@rock-chips.com>
+ <z7jb32foci6bamqqddkkp34hazi2itp6uclarsoi5pkrgso2go@bxflagkaciq6>
+ <28dcac28-9060-4f65-8167-64f6a0e4532d@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_010934_060266_4375CFFE 
-X-CRM114-Status: GOOD (  20.96  )
+X-CRM114-CacheID: sfid-20250224_011439_104452_0C9E5152 
+X-CRM114-Status: GOOD (  26.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,72 +81,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 17. Februar 2025, 07:11:42 MEZ schrieb Yao Zi:
-> There are two types of clocks in RK3528 SoC, CRU-managed and
-> SCMI-managed. Independent IDs are assigned to them.
+Am Montag, 24. Februar 2025, 09:47:40 MEZ schrieb Kever Yang:
+> Hi Krzysztof,
 > 
-> For the reset part, differing from previous Rockchip SoCs and
-> downstream bindings which embeds register offsets into the IDs, gapless
-> numbers starting from zero are used.
+> On 2024/12/27 16:28, Krzysztof Kozlowski wrote:
+> > On Tue, Dec 24, 2024 at 05:23:09PM +0800, Kever Yang wrote:
+> >> From: Finley Xiao <finley.xiao@rock-chips.com>
+> >>
+> >> Add the dt-bindings header for the rk3562, that gets shared between
+> >> the clock controller and the clock references in the dts.
+> >> Add softreset ID for rk3562.
+> >>
+> >> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> >> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> >> ---
+> >>
+> >> Changes in v2:
+> >> - rename the file to rockchip,rk3562-cru.h
+> >> - remove CLK_NR_CLKS
+> >> - add new file for reset ID
+> >> - update to use dual license
+> >>
+> >>   .../dt-bindings/clock/rockchip,rk3562-cru.h   | 377 ++++++++++++++++++
+> >>   .../dt-bindings/reset/rockchip,rk3562-cru.h   | 360 +++++++++++++++++
+> >
+> > No, that's not a separate patch. Headers *ALWAYS* go with the bindings
+> > patch.
+> Will fix.
+> >>   2 files changed, 737 insertions(+)
+> >>   create mode 100644 include/dt-bindings/clock/rockchip,rk3562-cru.h
+> >>   create mode 100644 include/dt-bindings/reset/rockchip,rk3562-cru.h
+> >>
+> >> diff --git a/include/dt-bindings/clock/rockchip,rk3562-cru.h b/include/dt-bindings/clock/rockchip,rk3562-cru.h
+> >> new file mode 100644
+> >> index 000000000000..ad07ad3a12ad
+> >> --- /dev/null
+> >> +++ b/include/dt-bindings/clock/rockchip,rk3562-cru.h
+> >> @@ -0,0 +1,377 @@
+> >> +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
+> > Why not using license requested by checkpatch?
 > 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  .../bindings/clock/rockchip,rk3528-cru.yaml   |  64 +++
->  .../dt-bindings/clock/rockchip,rk3528-cru.h   | 453 ++++++++++++++++++
->  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 241 ++++++++++
->  3 files changed, 758 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rk3528-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
+> The checkpatch does not report error/warning for this license, and this 
+> is the same as many other SoCs.
 > 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> new file mode 100644
-> index 000000000000..5a3ec902351c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3528-cru.yaml
-> @@ -0,0 +1,64 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3528-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3528 Clock and Reset Controller
-> +
-> +maintainers:
-> +  - Yao Zi <ziyao@disroot.org>
-> +
-> +description: |
-> +  The RK3528 clock controller generates the clock and also implements a reset
-> +  controller for SoC peripherals. For example, it provides SCLK_UART0 and
-> +  PCLK_UART0 as well as SRST_P_UART0 and SRST_S_UART0 for the first UART
-> +  module.
-> +  Each clock is assigned an identifier, consumer nodes can use it to specify
-> +  the clock. All available clock and reset IDs are defined in dt-binding
-> +  headers.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3528-cru
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
+> Which license is recommend in the header file?
 
-I do think this needs a
-    minItems: 1
-    maxItems: 2
-or similar.
+I suppose
 
-xin24m is the main oscillator everything else is supplied from, so is
-absolutely required, but that gmac0 supply comes from an (probably)
-optional clock supply from a mac phy?
+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
 
-So is possibly not available on a system without ethernet hardware?
+According to [0] "GPL-2.0" and "GPL-2.0-only" are equivalent, but I guess
+"GPL-2.0-only" simply makes the "only" part more visible.
 
 
 Heiko
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/LICENSES/preferred/GPL-2.0
+
 
 
 
