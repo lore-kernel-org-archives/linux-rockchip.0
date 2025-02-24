@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA2AC021B5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 09:39:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E493C021B3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 09:43:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=edLEgxt0mppQzDXdPOyTK4+7xHYFXZgeD4bSkFtYdQY=; b=U+QsISLIWyHSMp
-	GBYLat8BaWxCoGr2JXfM1huBi1h4XADy/KwMZC+Dc9uRIAHzrDZMZ2atsog6gu0/wWFApm0CrpV8/
-	CWfYzwwK5OKtdCXEf8FMOGuadINyFizn6uHlqtRUex/FJrKFUDNtM0qT3xy03CBtmPsaNtIb8LP2W
-	62WI5FEedQSxYg97TPHN4uYWaBup9ZlrnX0C/Xb5Yc7bi9rMNFhXhD+4XT+FLnfE/PoV58gZzftMe
-	RhaYa8ExojdM89EFGWjUM488FRH4UTMP7J/4+2KfwutaNz/TJi0yw0fpVocDyGuHUVzSK0JwVjSU4
-	we8iEgkcnz7MWDIs1xVA==;
+	List-Owner; bh=67DpNy2D1AGT2EYX8nS6MgPBTssMYnpBjHowYjdUano=; b=zeCsE+Djn7zCAD
+	vHcrHrwgwNHWhcFtOBzXMS+3Dl5u+8PJBLLopk936HgFPbED4TSWqfE4wWilwPGAa/h5UBAl7OELl
+	fGuDPcr7PPAZTnzm596R9vPnQNOvfOQLjA8cE+s8H8s39d5XVXbv2OEDjhOkYFYtioEpWN/iK/IFT
+	6K7vKFuYG+GtxXKriz16lKwVKh63RKt3dozdp2vtMlVTvHsi/FDTGqOcdG8qX/v1I79ZFyAlDHeb8
+	dhAgfGYIlKWOqweW607HeW0rGhFhc/t0euBU0wLGPszxXwxuJSpL0XM9C85EXz7juOBUzh3le7EJX
+	acT7gYTHoVyJTla6PNmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUva-0000000Cx5X-1i8V;
-	Mon, 24 Feb 2025 09:39:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tmUzv-0000000Cy2D-19hH;
+	Mon, 24 Feb 2025 09:43:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmUXv-0000000CrEm-0GgV;
-	Mon, 24 Feb 2025 09:14:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=XWEADniHRGWcnzqbekRTv6/vtyL/MFZqYvazyCcPL/Y=; b=C2Fa0CsgkZ2/azdEMvlOzuYSf7
-	k3nUPkbtzi80jhqlddLODTZArqrjOaDbkhu6v27OfN1fu15qYrE1R7QEaDmBLvJTpwOZuImxSCdlv
-	PT7OHUIEehio+7EhaWCLkC5l2t1hnzwI3nK3xiD5mN1WzY9Ka+RgqS0uWK29Azt0pT4VxziiuCJYS
-	3+2l23UyPbiwiiGCJJ2j0ecmxMejx0hIixnJwUe4ao8qPsil05p4lQCEFfZyV9tyVszURLYogUaFm
-	F4EZIRXEQXn/DnoDqOooXtpsFYdHDBnzKB+LhJ2uBs5gGKOt+rhPaMwyRhRKK9AWlvUvhOiODeSmY
-	AsSi5PrQ==;
-Received: from i53875a0d.versanet.de ([83.135.90.13] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tmUXo-0006wL-ID; Mon, 24 Feb 2025 10:14:32 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org,
- Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: clock,
- reset: rockchip: Add support for rk3562
-Date: Mon, 24 Feb 2025 10:14:31 +0100
-Message-ID: <2920539.yaVYbkx8dN@diego>
-In-Reply-To: <28dcac28-9060-4f65-8167-64f6a0e4532d@rock-chips.com>
-References: <20241224092310.3814460-1-kever.yang@rock-chips.com>
- <z7jb32foci6bamqqddkkp34hazi2itp6uclarsoi5pkrgso2go@bxflagkaciq6>
- <28dcac28-9060-4f65-8167-64f6a0e4532d@rock-chips.com>
+	id 1tmUlO-0000000Cuww-0VP4;
+	Mon, 24 Feb 2025 09:28:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8D03C5C5679;
+	Mon, 24 Feb 2025 09:27:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86498C4CEE8;
+	Mon, 24 Feb 2025 09:28:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740389313;
+	bh=aMQo00Bw8GVTaJOzwAkgnTY3DGHFCoHqKBTGnM3Nqnk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CNHwsTSPhRtUDIeanKBFmigKrR5ixtkJusf+tCsGrZTe19jvOEoe84JN8S1/8fv3C
+	 iJKe7W9jzNmFkxPTNsI1jVfDf3VbJdq2jBwv3pxAnceNsfAyKd4/V59kj8ZiCYGGWK
+	 D9Mgiyul9Zh4ziIlA9fPHwiRWIUb4omZZZgNqOEoVFkir2hUY67DuQCIjlCdTtHuBZ
+	 vu8ZkTW49WbzoL37HIJUcvwwcFa2W3biZPhK4vJK3f8+xdfd3AXOC5bEF1Yb7F64Gr
+	 9ij553I2lVVnIPczGWTx60+lWuTiJLDWxach7DVHbU81ZMcxB7FRZo9xUdu124A9G1
+	 dbxh8GMGFuKIQ==
+Date: Mon, 24 Feb 2025 10:28:30 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Simon Xue <xxm@rock-chips.com>, 
+	Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, linux-kernel@vger.kernel.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v6 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576 support
+Message-ID: <20250224-gifted-piculet-of-amplitude-a91ecd@krzk-bin>
+References: <20250224074928.2005744-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250224074928.2005744-1-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_011439_104452_0C9E5152 
-X-CRM114-Status: GOOD (  26.32  )
+X-CRM114-CacheID: sfid-20250224_012834_298098_1683024A 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,65 +77,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 24. Februar 2025, 09:47:40 MEZ schrieb Kever Yang:
-> Hi Krzysztof,
+On Mon, Feb 24, 2025 at 03:49:27PM +0800, Kever Yang wrote:
+> rk3576 is using DWC PCIe controller, with msi interrupt directly to GIC
+> instead of using GIC ITS, so
+> - no ITS support is required and the 'msi-map' is not required,
+> - a new 'msi' interrupt is needed.
 > 
-> On 2024/12/27 16:28, Krzysztof Kozlowski wrote:
-> > On Tue, Dec 24, 2024 at 05:23:09PM +0800, Kever Yang wrote:
-> >> From: Finley Xiao <finley.xiao@rock-chips.com>
-> >>
-> >> Add the dt-bindings header for the rk3562, that gets shared between
-> >> the clock controller and the clock references in the dts.
-> >> Add softreset ID for rk3562.
-> >>
-> >> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> >> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> >> ---
-> >>
-> >> Changes in v2:
-> >> - rename the file to rockchip,rk3562-cru.h
-> >> - remove CLK_NR_CLKS
-> >> - add new file for reset ID
-> >> - update to use dual license
-> >>
-> >>   .../dt-bindings/clock/rockchip,rk3562-cru.h   | 377 ++++++++++++++++++
-> >>   .../dt-bindings/reset/rockchip,rk3562-cru.h   | 360 +++++++++++++++++
-> >
-> > No, that's not a separate patch. Headers *ALWAYS* go with the bindings
-> > patch.
-> Will fix.
-> >>   2 files changed, 737 insertions(+)
-> >>   create mode 100644 include/dt-bindings/clock/rockchip,rk3562-cru.h
-> >>   create mode 100644 include/dt-bindings/reset/rockchip,rk3562-cru.h
-> >>
-> >> diff --git a/include/dt-bindings/clock/rockchip,rk3562-cru.h b/include/dt-bindings/clock/rockchip,rk3562-cru.h
-> >> new file mode 100644
-> >> index 000000000000..ad07ad3a12ad
-> >> --- /dev/null
-> >> +++ b/include/dt-bindings/clock/rockchip,rk3562-cru.h
-> >> @@ -0,0 +1,377 @@
-> >> +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-> > Why not using license requested by checkpatch?
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
 > 
-> The checkpatch does not report error/warning for this license, and this 
-> is the same as many other SoCs.
+> Changes in v6:
+> - Fix make dt_binding_check and make CHECK_DTBS=y
 > 
-> Which license is recommend in the header file?
+> Changes in v5:
+> - Add constraints per device for interrupt-names due to the interrupt is
+> different from rk3588.
+> 
+> Changes in v4:
+> - Fix wrong indentation in dt_binding_check report by Rob
+> 
+> Changes in v3:
+> - Fix dtb check broken on rk3588
+> - Update commit message
+> 
+> Changes in v2:
+> - remove required 'msi-map'
+> - add interrupt name 'msi'
+> 
+>  .../bindings/pci/rockchip-dw-pcie-common.yaml | 41 ++++++++++++++++++-
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 19 ++++++---
+>  2 files changed, 52 insertions(+), 8 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+> index cc9adfc7611c..e1ca8e2f35fe 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
+> @@ -65,7 +65,11 @@ properties:
+>            tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
+>            nf_err_rx, f_err_rx, radm_qoverflow
+>        - description:
+> -          eDMA write channel 0 interrupt
+> +          If the matching interrupt name is "msi", then this is the combinded
+> +          MSI line interrupt, which is to support MSI interrupts output to GIC
+> +          controller via GIC SPI interrupt instead of GIC its interrupt.
+> +          If the matching interrupt name is "dma0", then this is the eDMA write
+> +          channel 0 interrupt.
+>        - description:
+>            eDMA write channel 1 interrupt
+>        - description:
+> @@ -81,7 +85,9 @@ properties:
+>        - const: msg
+>        - const: legacy
+>        - const: err
+> -      - const: dma0
+> +      - enum:
+> +          - msi
+> +          - dma0
+>        - const: dma1
+>        - const: dma2
+>        - const: dma3
+> @@ -123,4 +129,35 @@ required:
+>  
+>  additionalProperties: true
+>  
+> +anyOf:
 
-I suppose
+There is never syntax like that. Where did you find it (so we can fix
+it)?
 
-/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3576-pcie
 
-According to [0] "GPL-2.0" and "GPL-2.0-only" are equivalent, but I guess
-"GPL-2.0-only" simply makes the "only" part more visible.
+This does not belong to common schema, but to device specific. I don't
+see this compatible in this common schema at all.
 
 
-Heiko
+> +    then:
+> +      properties:
 
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/LICENSES/preferred/GPL-2.0
+interrupts:
+  minItems: 6
+  maxItems: 6
 
+> +        interrupt-names:
+> +          items:
+> +            - const: sys
+> +            - const: pmc
+> +            - const: msg
+> +            - const: legacy
+> +            - const: err
 
+Best regards,
+Krzysztof
 
 
 _______________________________________________
