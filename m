@@ -4,71 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3202C021A4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 15:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DFAEC021A4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 17:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EfpOd78uKw9c8YK+hZ1kGlnK/LhUFrOQkFL+T1OSQIc=; b=4/Pd/tuTSjiy5k
-	Lj8e1VCRFkHI54tFwKXuvZ/k8hx8/zgeaqzImAbd7FfEPxR7iGgSIjZ9d9UJeTGrHw1onV1uFIO+l
-	oxmlAWob4MqEsJES8gLfPVs5NJhPuoxNuQHxSJWhuNDdDSv26bUNow5HeuQUiXovzctPxJ4cJUtSB
-	Zo0T/4+YVC4Ok5+ThxMEX1d63kTpzH0lyhzFkpkVdvIct7Td7ngcJ3HVFLCfy6T1VMINq1EFXcesN
-	RvzqVxDZgTtnOPwKQlLX6k4hYIUOxqqPdbzDTQXapDs1YxvStUBlF39oSF8nKJ77HMstlU8J3U33b
-	zYVnAzOyVPb2CH8hGbFQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VS+IeJlIESVSv/t+f5XRDnP8hgcjaX8GRxPW4rt+au8=; b=omS7poCtRAogD/
+	qRVg+3eCWTggHxh+eNihXj+xJf/8UrvqT36oavIv1g4Gav84UhOCk4BuX13NOPoVwjCIb57+EU4gw
+	6ox/s4bg+l2zNaSN31oGadyEG+s0yzP7CbC0/tKOtAKnIUveKKEl/agvA8mQycVQubf98wgqY7H8o
+	dE/cJSIlqW7dV09vyOImDgPfOoIX8HqNgh0y0T+j5hMnb7iQPaIe0ab6ZzKN5NO2lKJ9SfQSHx5JL
+	0wslsPUmTGnFhvUm7+4wcS2TlnM4RjGmE7LutoM/ZdoEWuDL2ePGwf5BwppOtKLD8yDWlCyR6UpQR
+	h3GzbxIUk7m01dMhUgwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmaBw-0000000EFhN-3bE5;
-	Mon, 24 Feb 2025 15:16:20 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1tmc0p-0000000EZo6-3B8B;
+	Mon, 24 Feb 2025 17:12:59 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmZss-0000000EBse-0kTJ;
-	Mon, 24 Feb 2025 14:56:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1740408998; x=1771944998;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=kLvQSsfByF9witrbdeJo0ttxnE3VKPGq/3+vWTmXkgc=;
-  b=CSoNhnvUb1j1QlIAvBfxwdTIOvrwBTvIUMNnC+0w8R90QA4jqd5d9I0M
-   rd9rxCdorz9sR+u7gWmLg+v1g5DZvKmmkOYcMdb2i4tV/dSi/OzbdnPo1
-   Lwjj2j9V0AS7Qh68rHgryHd8KyKBXiAZL592zI7B3Volid7gISA2XZbQq
-   7vuLO9h1s35pGJj7ZwTyginUkHTeaMrWEOtVFyMkJkQDh+jdNsyNrN4XX
-   tGLJTYDZ2S8emYFt9JNHcJw8rQT9VB5x/KZqEp75TKFi70y0edl3kzqxn
-   59wnWwFng7UOzOjrTJtRDPyYD2Mxynpes6pzs1+KakwfxmkuVS8bFc4lx
-   A==;
-X-CSE-ConnectionGUID: 9XbxVSBpTIWnaWJWZQ7sYw==
-X-CSE-MsgGUID: XZrGshyNS0G5SpJ5oZswWg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="40353115"
-X-IronPort-AV: E=Sophos;i="6.13,309,1732608000"; 
-   d="scan'208";a="40353115"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2025 06:56:37 -0800
-X-CSE-ConnectionGUID: xQ/AlRxeSYueNaOP2pPq3w==
-X-CSE-MsgGUID: xlXwXB39RReif3MX5BGDRQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,309,1732608000"; 
-   d="scan'208";a="115873701"
-Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
-  by fmviesa006.fm.intel.com with ESMTP; 24 Feb 2025 06:56:29 -0800
-Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tmZsh-0008eZ-1E;
-	Mon, 24 Feb 2025 14:56:27 +0000
-Date: Mon, 24 Feb 2025 22:56:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
-Subject: Re: [PATCH 3/6] drm/rockchip: Add RK3588 DPTX output support
-Message-ID: <202502242201.3fE7QpMy-lkp@intel.com>
-References: <20250223113036.74252-4-andyshrk@163.com>
+	id 1tmbyc-0000000EZG0-0KHz
+	for linux-rockchip@lists.infradead.org;
+	Mon, 24 Feb 2025 17:10:43 +0000
+DKIM-Signature: a=rsa-sha256; b=ZzIPgZNULnbX1w+n3o8dprtM/Kqd2iWJd78UtC7LNQShoNXLTD3xjgvrGFlpjD+PQqeXkJxImXBfvoK+J3N5T4RtfDR2yvf3/684PTF9hsLnwLkBAzguysybT3YrOXd+0GYh8uLUkAfIDQUR3ydk7ONrFX/6B22MoWISYAGLDxE72R9RLTG3s3yx52JIpz+kjRDPiC38TpXewHPjsKLuWDY40ikxmHq3J5p2yk0fox3ZFG85UqQJ9cxGtTvMDnhr4108FU+lNmJ7NedXffxzsS2zdr6ReHAnmOU4YRmaQrRbVJp9OsPvw5Y4wi47OesdoZbM6fve6Vv59aVOQa4anA==; s=purelymail1; d=tidylabs.net; v=1; bh=PIuf9WUHbdR0oDHD3UfUqjwbtLdy6WEiW9F2eJXTuuU=; h=Received:From:To:Subject:Date;
+DKIM-Signature: a=rsa-sha256; b=L0it4tZoj3QVHfn5Jt37tIzkZQEWjq/CrioyiY3sDq8Na/84DnDEKDQPccyirDWh8yKpWBoo3Tf2/6TLggfNbkb/F8fMAXGUF7i9BOVjcn2j8/U3Vb9BzO7c9pZ2He/iaNoYJ5aAT5VrWR/M0rhY2UMz0aBF1zVYGKuRSKLN5vw/QbUttRM42TFzGCELHAk7UGOOchsNe4qh4+Dcvz4XN4XFt5qgZxfEDhHw7KvftqYS/jXQozUC4AxxPySQrGdzvnU5zrFs+Z1/Xbp2us2Z2iJxgVQqZ+/08gk20LVzuWP6QY08rZZ/TAQPXbg3cSldqWKX1PcvJ/wkGlnaB0pRmQ==; s=purelymail1; d=purelymail.com; v=1; bh=PIuf9WUHbdR0oDHD3UfUqjwbtLdy6WEiW9F2eJXTuuU=; h=Feedback-ID:Received:From:To:Subject:Date;
+Feedback-ID: 81901:11097:null:purelymail
+X-Pm-Original-To: linux-rockchip@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1560088192;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Mon, 24 Feb 2025 17:09:59 +0000 (UTC)
+From: Justin Klaassen <justin@tidylabs.net>
+To: Tianling Shen <cnsztl@gmail.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Justin Klaassen <justin@tidylabs.net>
+Subject: [PATCH] arm64: dts: rockchip: fix u2phy1_host status for NanoPi R4S
+Date: Mon, 24 Feb 2025 17:09:24 +0000
+Message-ID: <20250224170925.39126-1-justin@tidylabs.net>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250223113036.74252-4-andyshrk@163.com>
+X-MIME-Autoconverted: from 8bit to quoted-printable by Purelymail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_065638_225611_B6A7B682 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20250224_091042_187391_36A9289E 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,43 +69,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, devicetree@vger.kernel.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com, dri-devel@lists.freedesktop.org, oe-kbuild-all@lists.linux.dev, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+The u2phy1_host should always have the same status as usb_host1_ehci,
+otherwise the ehci driver may be initialized for a disabled usb port.
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Justin Klaassen <justin@tidylabs.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.14-rc4]
-[cannot apply to rockchip/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Yan/dt-bindings-display-rockchip-Add-schema-for-RK3588-DPTX-Controller/20250223-193323
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20250223113036.74252-4-andyshrk%40163.com
-patch subject: [PATCH 3/6] drm/rockchip: Add RK3588 DPTX output support
-config: sparc-allmodconfig (https://download.01.org/0day-ci/archive/20250224/202502242201.3fE7QpMy-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250224/202502242201.3fE7QpMy-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202502242201.3fE7QpMy-lkp@intel.com/
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "dw_dp_bind" [drivers/gpu/drm/rockchip/rockchipdrm.ko] undefined!
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+index b1c9bd0e63ef..8d94d9f91a5c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+@@ -115,7 +115,7 @@ &u2phy0_host {
+ };
+ 
+ &u2phy1_host {
+-	status = "disabled";
++	phy-supply = <&vdd_5v>;
+ };
+ 
+ &uart0 {
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.47.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
