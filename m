@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A53C021B3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 08:26:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21081C021B3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Feb 2025 08:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=umxLhNctD7SHb6LxaAW6FFYucOBRi2v8HJ8YDv9fc0k=; b=FArLSdEF6cEZlX
-	bOeZE8roxcsLii1mrk4Ln90CQE0qQAtPLzOoa9OKC7GYe38goxVJy5VHIAo5uNxBadZPxocgVoDIs
-	nJVCQmID4W5v+2c6yjfbpeAKyALrToj3CvyXwWHK0LPwXRSI2C8EFNOICzGFDgIIIVAPG08OPKfVF
-	mcpbhgGW0R+gSh+gDYfms0FEUjjvWn7gt0GR5c077ozL5usTOd7SjVd8ejzRDLxT0P1uTW7B22XKU
-	jNkWJeJQu6medrXKyC6r4yNyKK3DAg48QucQ9zM0YwahwUhHgylMi6kVjusULL1dFYfUzophLchx0
-	s2fjI1znoszYZp6s2T3w==;
+	List-Owner; bh=cDB2UMTskdy0klN+QdyA39S7vBKGEftdz7XvLWr2ioA=; b=u/hu3d9S4BBFlV
+	WwU8LhNXdiniUzbC0Uo43BW3GMlqpK1HSwvZbz3RqKQjkFbMxsahx+xi8hxwD1nhk2zl2KS+ARdOS
+	2h2kmiB7wANJRqegr7KwwoSSkZp01EpApiUAYcW8A68cRCDQHLnZ3LIrpY8nwit3vr8yZWAyTzBF9
+	gJr1KJVULifiWczMmpsGv13pVfS1qsiKwUaysDpccVq5lAB9YT/lwPQD66+BMtdZnFvcSgOB7SYP3
+	rkUqHXuHG3RXygbPqGn9Uprmi/hk0/oGHKNnjaZABG0OLrHQsq83VyMKsxE9JwcMIUTLeVs7BY7Lm
+	x5Sje48MgzyTqmH+ZWAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmTms-0000000CgcC-2xYs;
-	Mon, 24 Feb 2025 08:26:02 +0000
-Received: from mail-m3299.qiye.163.com ([220.197.32.99])
+	id 1tmToN-0000000CgsP-3D46;
+	Mon, 24 Feb 2025 08:27:35 +0000
+Received: from mail-m15598.qiye.163.com ([101.71.155.98])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmTbS-0000000Ce9X-3wO9;
-	Mon, 24 Feb 2025 08:14:16 +0000
+	id 1tmTbU-0000000CeAK-1vao;
+	Mon, 24 Feb 2025 08:14:19 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id bfd287eb;
-	Mon, 24 Feb 2025 16:14:09 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id bfd287fc;
+	Mon, 24 Feb 2025 16:14:12 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: heiko@sntech.de
-Subject: [PATCH v7 07/15] dt-bindings: display: rockchip: analogix-dp: Add support to get panel from the DP AUX bus
-Date: Mon, 24 Feb 2025 16:13:17 +0800
-Message-Id: <20250224081325.96724-8-damon.ding@rock-chips.com>
+Subject: [PATCH v7 08/15] drm/bridge: analogix_dp: Support to get &analogix_dp_device.plat_data and &analogix_dp_device.aux
+Date: Mon, 24 Feb 2025 16:13:18 +0800
+Message-Id: <20250224081325.96724-9-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250224081325.96724-1-damon.ding@rock-chips.com>
 References: <20250224081325.96724-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0waHVZIH00YGhhJTUwYQ0pWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhJTFZMQx4ZTxgaGEJOHx5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9537054f9203a3kunmbfd287eb
+X-HM-Tid: 0a95370558a503a3kunmbfd287fc
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OAg6DDo4MzIUGRM#GD0QESgT
-	LwIaCUJVSlVKTE9LSENPQ05KQkNPVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSkpINwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mk06Txw5CDIIPxMINjNCERox
+	FjVPCRFVSlVKTE9LSENPQ05PS05KVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJSEhJNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=WBWsdCS51vKxRjMcUKogW6UEWLVBRTrEe0IthqKba8sh8dRbXFfo5AN1uSu9IATZVeo0RZFaWW7q2cNv+aOmLPoXggiKBaZ1Ebkc8LRJkHikFI9pAhHtzNOFa7PZcqSy9kIGM+/YWk6qBLbl5nZxFWrwUw+ieODyj45S34aKrNI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=MCo0uAKS6QHvo55swHDZpLkV/TNxwwhILy3rryJVjxs=;
+	b=GLgr6nkctNPu6INmn0kVer+brXnHibm00sEcyimMp8MrovnOBm3BJiULkrn/nOmoIKE0Hv46T82XVvSBC+Yjvo/TV2p/Th8GSSp8WWUKFQrrv5t7xQ9GB2ElQS99NEbJ1pR2oRWOO+Ldetplkt/QPY+rLTs9qasKl2vBoHYYPZQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=vFNLx3mVJkNrtpnLRfymjsE7a21su2k2qmf8fwmsfeE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_001415_135457_DD9E82C3 
-X-CRM114-Status: UNSURE (   7.16  )
+X-CRM114-CacheID: sfid-20250224_001416_665051_9BC1CC79 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,43 +66,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dianders@chromium.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, dmitry.baryshkov@linaro.org, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, boris.brezillon@collabora.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, l.stach@pengutronix.de
+Cc: dianders@chromium.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, dmitry.baryshkov@linaro.org, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, boris.brezillon@collabora.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to Documentation/devicetree/bindings/display/dp-aux-bus.yaml,
-it is a good way to get panel through the DP AUX bus.
+Add two new functions: one to find &analogix_dp_device.plat_data via
+&drm_dp_aux, and the other to get &analogix_dp_device.aux. Both of them
+serve for the function of getting panel from DP AUX bus, which is why
+they are included in a single commit.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
 ---
 
-Changes in v4:
-- Move the dt-bindings commit before related driver commits
-
-Changes in v5:
-- Remove the unexpected change logs in commit message
+Changes in v7:
+- Use the forward-declare struct drm_dp_aux instead of including the
+  relevant header file.
 ---
- .../bindings/display/rockchip/rockchip,analogix-dp.yaml        | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 14 ++++++++++++++
+ include/drm/bridge/analogix_dp.h                   |  4 ++++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-index 60dedf9b2be7..eaf4e67e232e 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-@@ -41,6 +41,9 @@ properties:
-     description:
-       This SoC makes use of GRF regs.
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 2c94f77c1d4c..a57e06d303a1 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1767,6 +1767,20 @@ int analogix_dp_stop_crc(struct drm_connector *connector)
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_stop_crc);
  
-+  aux-bus:
-+    $ref: /schemas/display/dp-aux-bus.yaml#
++struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux)
++{
++	struct analogix_dp_device *dp = to_dp(aux);
 +
- required:
-   - compatible
-   - clocks
++	return dp->plat_data;
++}
++EXPORT_SYMBOL_GPL(analogix_dp_aux_to_plat_data);
++
++struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
++{
++	return &dp->aux;
++}
++EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
++
+ MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
+ MODULE_DESCRIPTION("Analogix DP Core Driver");
+ MODULE_LICENSE("GPL v2");
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index 6002c5666031..e19b0bbc57d6 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -10,6 +10,7 @@
+ #include <drm/drm_crtc.h>
+ 
+ struct analogix_dp_device;
++struct drm_dp_aux;
+ 
+ enum analogix_dp_devtype {
+ 	EXYNOS_DP,
+@@ -48,4 +49,7 @@ void analogix_dp_unbind(struct analogix_dp_device *dp);
+ int analogix_dp_start_crc(struct drm_connector *connector);
+ int analogix_dp_stop_crc(struct drm_connector *connector);
+ 
++struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
++struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
++
+ #endif /* _ANALOGIX_DP_H_ */
 -- 
 2.34.1
 
