@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F532C021B2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 16:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0989C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 17:18:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JlioqQtioyTBudT9HlZTjjLM4nAPQkghPjoyLCzjzX0=; b=27B7zwFdOJI9Kn
-	77A+kDSQteLtSSrRSPyOOhq6KLYRhZB+KV0UGnlt7+jvuGvbxijzRm3N1+sjZmM4FfndFtle2Szjq
-	gh33COcRPRc4el0xnKtbCEloUb3Jy5Atl3GvdIk5NH0dRvXQmocY2cUtdb0gVthtcmUWjKNlN8mWZ
-	E7TarhaXH6BufwvO8+5A0vnNIaYKgWxelffuy2a63h7zxzOrqoKdeVm7DbQdKyD+Gmd+Ug+eeUDaE
-	gRyk/YFd+kYiyAFNSQdsdDZjumJhFYE6/UCCFG5p17fobmnmFdYy43muRTARPjdkSFLaowoSyda7C
-	lAsj5sjwqOYu+wB1oavA==;
+	List-Owner; bh=rVtYuOcjnmWzZ8+B9M9eas+xoIF59wkqSWFCY67VfcM=; b=TPCt+JEmfmL1EU
+	6ZG1BFZaeX43hqzqzFL/a7InK8cvQQxogorpgaFZ1kzlC5t5EYlrrIOspdTXyR0DGImBSny+N6vcM
+	abBhbhUXM/tShYXrdrqDJjNZ4cvcRPSoKZpODi8XJ7yMYdb3Jf2Byb7rAJD4KFtQeN674CTma9KlP
+	38VL0RIrMASuaaIU+Uw7YxhEpCWNxBtc1TQhVFclaTgZWc6cIPwpJax1Y0Cqg5ASvpVBZLfuwT3kN
+	mc88ThJzKneA7gKSQCDpZcae6/0CFZfnxiTBOBryw1xcVkEGKI9sNfmL9rCT4wrfd//pwvavhPKqp
+	3bZZ6ybml5sj3y6uSP2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmy37-00000000OsN-0wUy;
-	Tue, 25 Feb 2025 16:44:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tmyZQ-00000000Zzy-2ZsH;
+	Tue, 25 Feb 2025 17:18:12 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmxOW-0000000098p-2xIn;
-	Tue, 25 Feb 2025 16:02:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 21FF65C7228;
-	Tue, 25 Feb 2025 16:02:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 263E1C4CEDD;
-	Tue, 25 Feb 2025 16:02:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740499371;
-	bh=NKncxX/f4OhZjM586JgqScppgEm06MohF+FhDmQBvJA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aayJ+tLxA6sG7cTVHHP4hUNez7LShHiaUnSSJzHetMr0TTsIqSW1PvC+ZUJ9IylE7
-	 XlWq5aGz/7ZLsFiIKCGQ+pWmDERxvEmBdfgcQNT73hLMRjK/aWv1nxDQ9Be+WUtb/9
-	 IxLLTAq02Rm+/M6N3AyMn3uwkw/UY1hMjCSoMBjMSIaePE/L+Qt01+v17wK+HsdLta
-	 yuvJmFvmc3hkC+asYqMSqPc7TAUKOm/snWXAHGGLreTeuo2+hfnTYI6e9APTZJVd+T
-	 8oKTWtP4n5A+GLUUHGhO38M0u90xZ/OY0/wrimn3qWuhSur6TavIPSH36oLHQA9CbG
-	 WLKmVFAGQ+l4A==
-Date: Tue, 25 Feb 2025 10:02:48 -0600
-From: Rob Herring <robh@kernel.org>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1tmyMf-00000000XAy-0NKA
+	for linux-rockchip@lists.infradead.org;
+	Tue, 25 Feb 2025 17:05:02 +0000
+DKIM-Signature: a=rsa-sha256; b=My/Ik8yQXNApV1SCoUvMv/++qdBQ8pG74OekpLZgHMUC2V6KGYr7n+RXw8f9YulbQoIer0bWzY3zdFfJoGYplwqTPwzY4AStkYxHa1jLoy8NBOPpPLg+WV2EhqhRUYE5R+im1U7PK7W9QrTZyxlt8OXrv+Jht1n4IlGt65cCazMxgfZdnDLJmm0cMboMztI89zXmf5VW2ItrnnJC0pblrCWWUuCA1GOWTd/Bd4Wlyf0o1Hqe34ROXaFejQdDjTCFzdaft/MP7DURmLJqBMd6iy49F7knj1RO7K/Z4Pi5qDDoZSApJfIXLR5y7UUT3zKP5p9ycmv2wxawE9/VwrqNqw==; s=purelymail2; d=tidylabs.net; v=1; bh=DNXWRytIBbFeyPrIFkAaBq4o0JbNSGPn9DG6QfsZ6tE=; h=Received:From:To:Subject:Date;
+DKIM-Signature: a=rsa-sha256; b=v2j+qGVgbCn4uxsEoPb+dkK1Eg89ymYijpb+93nCXlovjwyJ4TUQFDZOIxS4m9cmpSXKLKqeYGKglZSJwyf7nasa+QHw2ojpNbgRDfGCld3dLsQYcKIpOibih4K8lKIMVhIFAFYYaI2c51scKP5WJOKy51O6zgbzsnHSekWBvFC/wecleZF/I1pT+Z8SiB3T5pUOjtRQ2oKzvAXPLIRh84aUVvCyWL0dyZvMNsvNqXA3Kp0HO6pNGWflDt076pUAO8B9MQNkPSOI6wXDcc3S7VFA2mpIIF+QDHh40VnMyG64lxBPuQXsH7Iy1Tdjeg4057gy979ZmAl81bL8flGY2A==; s=purelymail2; d=purelymail.com; v=1; bh=DNXWRytIBbFeyPrIFkAaBq4o0JbNSGPn9DG6QfsZ6tE=; h=Feedback-ID:Received:From:To:Subject:Date;
+Feedback-ID: 81901:11097:null:purelymail
+X-Pm-Original-To: linux-rockchip@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 594455725;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Tue, 25 Feb 2025 17:04:31 +0000 (UTC)
+From: Justin Klaassen <justin@tidylabs.net>
+To: Tianling Shen <cnsztl@gmail.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Oded Gabbay <ogabbay@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jeffrey Hugo <quic_jhugo@quicinc.com>, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
-Subject: Re: [PATCH v2 1/7] dt-bindings: npu: rockchip,rknn: Add bindings
-Message-ID: <20250225160248.GA2563229-robh@kernel.org>
-References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
- <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Justin Klaassen <justin@tidylabs.net>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: fix u2phy1_host status for NanoPi R4S
+Date: Tue, 25 Feb 2025 17:03:58 +0000
+Message-ID: <20250225170420.3898-1-justin@tidylabs.net>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <48c705e65cc8e8d4716b41a4a87170e3@manjaro.org>
+References: <48c705e65cc8e8d4716b41a4a87170e3@manjaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
+X-MIME-Autoconverted: from 8bit to quoted-printable by Purelymail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_080252_827515_3733D65A 
-X-CRM114-Status: GOOD (  21.23  )
+X-CRM114-CacheID: sfid-20250225_090501_198422_091594FF 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,201 +76,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 25, 2025 at 08:55:47AM +0100, Tomeu Vizoso wrote:
-> Add the bindings for the Neural Processing Unit IP from Rockchip.
-> 
-> v2:
-> - Adapt to new node structure (one node per core, each with its own
->   IOMMU)
-> - Several misc. fixes from Sebastian Reichel
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/npu/rockchip,rknn-core.yaml           | 152 +++++++++++++++++++++
->  1 file changed, 152 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..e8d0afe4a7d1c4f166cf13a9f4aa7c1901362a3f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
-> @@ -0,0 +1,152 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Neural Processing Unit IP from Rockchip
-> +
-> +maintainers:
-> +  - Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> +
-> +description:
-> +  Rockchip IP for accelerating inference of neural networks, based on NVIDIA's
-> +  open source NVDLA IP.
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: '^npu-core@[a-f0-9]+$'
-> +
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - rockchip,rk3588-rknn-core-top
-> +          - const: rockchip,rknn-core-top
+The u2phy1_host should always have the same status as usb_host1_ehci
+and usb_host1_ohci, otherwise the EHCI and OHCI drivers may be
+initialized for a disabled usb port.
 
-Drop the fallbacks unless you have some evidence that the IP is the 
-same across a lot of SoCs. If you don't, then 
-rockchip,rk3588-rknn-core-top can be the fallback whenever there are 
-more compatible SoCs.
+Per the NanoPi R4S schematic, the phy-supply for u2phy1_host is set to
+the vdd_5v regulator.
 
-Or if there's version/feature registers that otherwise make it 
-discoverable, then a common compatible is fine.
+Fixes: db792e9adbf8 ("rockchip: rk3399: Add support for FriendlyARM NanoPi R4S")
+Cc: stable@vger.kernel.org
+Signed-off-by: Justin Klaassen <justin@tidylabs.net>
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+---
+v1 -> v2: Updated commit message, added Fixes: and Cc: stable tags
 
-> +      - items:
-> +          - enum:
-> +              - rockchip,rk3588-rknn-core
-> +          - const: rockchip,rknn-core
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I don't understand the difference between core and core-top. That needs 
-to be explained in the top-level description.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+index b1c9bd0e63ef..8d94d9f91a5c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+@@ -115,7 +115,7 @@ &u2phy0_host {
+ };
+ 
+ &u2phy1_host {
+-	status = "disabled";
++	phy-supply = <&vdd_5v>;
+ };
+ 
+ &uart0 {
+-- 
+2.47.1
 
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 2
-> +    maxItems: 4
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: hclk
-> +      - const: npu
-> +      - const: pclk
-> +    minItems: 2
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  npu-supply: true
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 2
-> +
-> +  reset-names:
-> +    items:
-> +      - const: srst_a
-> +      - const: srst_h
-> +
-> +  sram-supply: true
-
-Group supply properties together
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - interrupts
-> +  - iommus
-> +  - npu-supply
-> +  - power-domains
-> +  - resets
-> +  - reset-names
-> +  - sram-supply
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rknn-core-top
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 4
-> +
-> +        clock-names:
-> +          minItems: 4
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rknn-core
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 2
-> +        clock-names:
-> +          maxItems: 2
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/power/rk3588-power.h>
-> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-> +
-> +    bus {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +
-> +      rknn_core_top: npu-core@fdab0000 {
-
-npu@...
-
-> +        compatible = "rockchip,rk3588-rknn-core-top", "rockchip,rknn-core-top";
-> +        reg = <0x0 0xfdab0000 0x0 0x9000>;
-> +        assigned-clocks = <&scmi_clk SCMI_CLK_NPU>;
-> +        assigned-clock-rates = <200000000>;
-> +        clocks = <&cru ACLK_NPU0>, <&cru HCLK_NPU0>,
-> +                 <&scmi_clk SCMI_CLK_NPU>, <&cru PCLK_NPU_ROOT>;
-> +        clock-names = "aclk", "hclk", "npu", "pclk";
-> +        interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        iommus = <&rknn_mmu_top>;
-> +        npu-supply = <&vdd_npu_s0>;
-> +        power-domains = <&power RK3588_PD_NPUTOP>;
-> +        resets = <&cru SRST_A_RKNN0>, <&cru SRST_H_RKNN0>;
-> +        reset-names = "srst_a", "srst_h";
-> +        sram-supply = <&vdd_npu_mem_s0>;
-> +      };
-> +
-> +      rknn_core_1: npu-core@fdac0000 {
-> +        compatible = "rockchip,rk3588-rknn-core", "rockchip,rknn-core";
-> +        reg = <0x0 0xfdac0000 0x0 0x9000>;
-> +        clocks = <&cru ACLK_NPU1>, <&cru HCLK_NPU1>;
-> +        clock-names = "aclk", "hclk";
-> +        interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        iommus = <&rknn_mmu_1>;
-> +        npu-supply = <&vdd_npu_s0>;
-> +        power-domains = <&power RK3588_PD_NPU1>;
-> +        resets = <&cru SRST_A_RKNN1>, <&cru SRST_H_RKNN1>;
-> +        reset-names = "srst_a", "srst_h";
-> +        sram-supply = <&vdd_npu_mem_s0>;
-> +      };
-> +    };
-> +...
-> 
-> -- 
-> 2.48.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
