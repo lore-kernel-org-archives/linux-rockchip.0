@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C55C19778
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830AAC19F2F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AdzqoYr/SkmBdrtXxGudSCMvVPisEancAcwzgSVj5gU=; b=DRmRmInNRlJ9Re
-	MSVYrlGJpSAtLTZqqdw2Au26Koixy0/c0Ek8DMjQzi30YgJADsVgJrOAqPWZJwLW9VuxAifRx9R5u
-	j2vUWLLbXe+fDDhmlmRSKhXpbtEzx3E6yKuATJGCoDbW7pajHFBDrvJIdbiE/MOm7NWz/x33+6kBp
-	bEMK2+khV/g7rAMHOWri6VefLKids280KsXPX3OkFanFvHktMz9jVwgU0l4pKGsE7tf4GdS383bUX
-	7hGy2z/96dgPRt1jlTl199wLK3mwv5rMvHZri6amZyBh3sPgNPxHdvsubOr/IKGD6uipmwt2Iz+gH
-	XHEOLC5cO21sGhu4Ih2A==;
+	List-Owner; bh=7hPk/HOKudLYImB+9dLUEbXLMxxvoPXgyOtOlnHiKDs=; b=4lz5sjjmXo+nI3
+	AIFzUvKyqIPhvdN13FITjwppJTUBMXQD/HS8CTIyBJZma3KwLmrpIaSijIGLSxuIErQ0hMDscGzoT
+	I4RQKv3LHdxk/xgdKIE5pvl0vk2h314wPUTVX8yPcZhDfRPzGXkUu6uX22D9T4DXIBBw0bpyJU+rX
+	tc1907yUii4XUH/iihhXbPxmqxcrNioYrFqvy1ncPTJG2CplgJPV/xnEOoVCkpRR2P/yP4z2HYBxe
+	CvnGzJplzczTSm93ZSzn6p3Z3Sp+m87GpU6rvufho7YPHYqxR0Txu/y9k+LCkUPZCRA2Qnd/hFD/b
+	UBQB3nffzqDcsbiZOE4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlJ-0000000GjNx-32z9;
-	Tue, 25 Feb 2025 10:02:01 +0000
+	id 1tmrlH-0000000GjJz-0qgv;
+	Tue, 25 Feb 2025 10:01:59 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrS7-0000000GenE-3azQ
+	id 1tmrR8-0000000GePM-31Kf
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:42:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476525; cv=none; 
+	Tue, 25 Feb 2025 09:41:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476466; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=JRPh2GjDWAO2fHDTXCKrg2XHm1aLHxXNuoCZC6jQHx/JlFyW7xz0x+uXBTww738NA37iSNX1TeX0wct1pzf024CiIdYA3KNnR9ftX/c35Ri3ZIzMgY6CRmIW+EKq53HtJrMxfE8gtqRSLZE5v1jlP9zssnLBvyB4ScCfYURQeXk=
+	b=YYfAzepUWYGd3GDzpwbLkuBhJ9JZVRKI/QdrojcVj7uz2bJQsmJOAeFzNRPHGloqH7WJfDo8UUAwuvlIH2ruqXJkPdnglKE6Jr6MNbK/TFeXBaFkTBZGqryq+w/j9vjN650ieE3oIswVkIptd2ggMWmAImO7ULQkyEzQ0O4TarQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476525; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=S0sxJFI1bH3KxDQTvtFRWN2MDkAURhhW924XCePaWDY=; 
-	b=bLClTj12zSJDkyKhl/D0o1WsxZUPoNht/DuunGz4fbpVPk79bBRDTwgQiP+6Oc6iNp0esf7i+XOO8KNypvwwWTJW+PCrMsO3fEZ6+65JUmh1YV08LI9TUHkO10nsrrd2T9VPI92qBK9LW9xFSc/dJqNbbPtanbDTsU4QCp8oNwY=
+	t=1740476466; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=b9ilxX5CFJsfRD+3HmHdIwTNigrE5DvjKvpEvlNxk8s=; 
+	b=MFGHlP6nkeR8OIH4iO+JFGmisqawsJVJsBlYv3emYX5AJpRBxPvGB/qI/akv3hJwvm2L5H4a0bbDGBrG9yE8cGGYMsEQd1FYyBAU/SPq4u78eg0jjrOFXQSzG4ARJgD0zDsbLRD5SUkXbOcX2GOhJTmEqo7/c644AAVdL5JO40I=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476525;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476466;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=S0sxJFI1bH3KxDQTvtFRWN2MDkAURhhW924XCePaWDY=;
-	b=Ay/z6qGG00coZ8wRXD7EWsl2hKKyAA9xajocU3NZLM0ifxT0Djj7RZmi9RoVT6H6
-	87Qky1wRUqHgAKBzNKNacz5axdProPNiKYn/TFJNiBYiDdN12nT+jK5TzVzdR0NWui3
-	wFp9NOcqNjdQjgpiNufeGXeLPj7WCy+ZsEQKS2IE=
-Received: by mx.zohomail.com with SMTPS id 1740476518674704.0450656494468;
-	Tue, 25 Feb 2025 01:41:58 -0800 (PST)
+	bh=b9ilxX5CFJsfRD+3HmHdIwTNigrE5DvjKvpEvlNxk8s=;
+	b=A1YEbXxXw2BB34v4PyvXiqLwNs2O+3dcrFYUv2VB34oEHm+ko9CBmLRgkvPuSpMB
+	1WGw86CToMPs/6CSaWtAzLMBxrLDepz0Re0TpcqgbNV3YXXhkKy1j0fJA3TbhakBt8+
+	BIogmxgnlUGqVcyhRpSEAH+07X3U55/be9iyOEBk=
+Received: by mx.zohomail.com with SMTPS id 1740476464618491.75863387985737;
+	Tue, 25 Feb 2025 01:41:04 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:29 +0100
-Subject: [PATCH v7 08/12] media: rkvdec: Add image format concept
+Date: Tue, 25 Feb 2025 10:40:24 +0100
+Subject: [PATCH v7 03/12] media: rkvdec: h264: Use bytesperline and buffer
+ height as virstride
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-8-7992a68a4910@collabora.com>
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-3-7992a68a4910@collabora.com>
 References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -69,17 +70,18 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
  Christopher Obbard <christopher.obbard@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=5595;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=2074;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=4fSWhjWrNnKAtK/QGnqiaXp/3jVTX5rQYfD23O4rpOw=;
- b=zChUTOa06TKwnafPQiYfUW5b0rhcvWPk3WQNtnVFkpU4gqJShulGx6UrrB+2wauWFQVNTUdjziwz
- GPLuB7fDDMoE3ySdSpyQOpS2eHuzgPQ/SwHEMUrJraCYa7cL/OyU
+ bh=KYB4ZNR5ZL8Q48yfgLX5D28TL6rugHy3+KYd/Y+Czgw=;
+ b=96DCcJFZ52Npt4SoE+iyLByVAi7kr9VEE1tiDAYgbAeEurqnDyAzMNRddjVIAzltK/Wpc/rqS5PH
+ NRz21k+eCKoeeqaD3wLttjbrcy6sXBQepwVRJgQ4+619MYWDMm8Z
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014211_943461_00681EA4 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20250225_014110_827327_F57C0D7D 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,166 +100,58 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-Add an enum rkvdec_image_fmt used to signal an image format, e.g.
-4:2:0 8-bit, 4:2:0 10-bit or any.
+Use bytesperline and buffer height to calculate the strides configured.
 
-Tag each supported CAPUTRE format with an image format and use this tag
-to filter out unsupported CAPTURE formats.
+This does not really change anything other than ensuring the
+bytesperline that is signaled to userspace matches what is configured
+in HW.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 48 ++++++++++++++++++++++++++---------
- drivers/staging/media/rkvdec/rkvdec.h | 13 +++++++++-
- 2 files changed, 48 insertions(+), 13 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 52e64b399dcc4a0c028cac908c0b1ceb49956c5f..70154948b4e32e2c439f259b0f1e1bbc8b52b063 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -27,26 +27,45 @@
- #include "rkvdec.h"
- #include "rkvdec-regs.h"
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 4fc167b42cf0c74fcc7adad5b867d9d7cd8af29b..7a1e76d423df55bd01c1ff26ff2c6d1b81ee7169 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 	dma_addr_t rlc_addr;
+ 	dma_addr_t refer_addr;
+ 	u32 rlc_len;
+-	u32 hor_virstride = 0;
+-	u32 ver_virstride = 0;
+-	u32 y_virstride = 0;
++	u32 hor_virstride;
++	u32 ver_virstride;
++	u32 y_virstride;
+ 	u32 yuv_virstride = 0;
+ 	u32 offset;
+ 	dma_addr_t dst_addr;
+@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
  
--static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index)
-+static bool rkvdec_image_fmt_match(enum rkvdec_image_fmt fmt1,
-+				   enum rkvdec_image_fmt fmt2)
-+{
-+	return fmt1 == fmt2 || fmt2 == RKVDEC_IMG_FMT_ANY ||
-+	       fmt1 == RKVDEC_IMG_FMT_ANY;
-+}
-+
-+static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index,
-+				   enum rkvdec_image_fmt image_fmt)
- {
- 	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-+	int fmt_idx = -1;
-+	unsigned int i;
+ 	f = &ctx->decoded_fmt;
+ 	dst_fmt = &f->fmt.pix_mp;
+-	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
+-	ver_virstride = round_up(dst_fmt->height, 16);
++	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
++	ver_virstride = dst_fmt->height;
+ 	y_virstride = hor_virstride * ver_virstride;
  
- 	if (WARN_ON(!desc))
- 		return 0;
+ 	if (sps->chroma_format_idc == 0)
+ 		yuv_virstride = y_virstride;
+ 	else if (sps->chroma_format_idc == 1)
+-		yuv_virstride += y_virstride + y_virstride / 2;
++		yuv_virstride = y_virstride + y_virstride / 2;
+ 	else if (sps->chroma_format_idc == 2)
+-		yuv_virstride += 2 * y_virstride;
++		yuv_virstride = 2 * y_virstride;
  
--	if (index >= desc->num_decoded_fmts)
--		return 0;
-+	for (i = 0; i < desc->num_decoded_fmts; i++) {
-+		if (!rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
-+					    image_fmt))
-+			continue;
-+		fmt_idx++;
-+		if (index == fmt_idx)
-+			return desc->decoded_fmts[i].fourcc;
-+	}
- 
--	return desc->decoded_fmts[index];
-+	return 0;
- }
- 
--static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc)
-+static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc,
-+				enum rkvdec_image_fmt image_fmt)
- {
- 	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
- 	unsigned int i;
- 
- 	for (i = 0; i < desc->num_decoded_fmts; i++) {
--		if (desc->decoded_fmts[i] == fourcc)
-+		if (rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
-+					   image_fmt) &&
-+		    desc->decoded_fmts[i].fourcc == fourcc)
- 			return true;
- 	}
- 
-@@ -80,7 +99,7 @@ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
- 	struct v4l2_format *f = &ctx->decoded_fmt;
- 	u32 fourcc;
- 
--	fourcc = rkvdec_enum_decoded_fmt(ctx, 0);
-+	fourcc = rkvdec_enum_decoded_fmt(ctx, 0, ctx->image_fmt);
- 	rkvdec_reset_fmt(ctx, f, fourcc);
- 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
-@@ -149,8 +168,11 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
- };
- 
--static const u32 rkvdec_h264_vp9_decoded_fmts[] = {
--	V4L2_PIX_FMT_NV12,
-+static const struct rkvdec_decoded_fmt_desc rkvdec_h264_vp9_decoded_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
-+	},
- };
- 
- static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
-@@ -282,8 +304,9 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
- 	if (WARN_ON(!coded_desc))
- 		return -EINVAL;
- 
--	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat))
--		pix_mp->pixelformat = rkvdec_enum_decoded_fmt(ctx, 0);
-+	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat, ctx->image_fmt))
-+		pix_mp->pixelformat = rkvdec_enum_decoded_fmt(ctx, 0,
-+							      ctx->image_fmt);
- 
- 	/* Always apply the frmsize constraint of the coded end. */
- 	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
-@@ -400,6 +423,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
- 	 *
- 	 * Note that this will propagates any size changes to the decoded format.
- 	 */
-+	ctx->image_fmt = RKVDEC_IMG_FMT_ANY;
- 	rkvdec_reset_decoded_fmt(ctx);
- 
- 	/* Propagate colorspace information to capture. */
-@@ -449,7 +473,7 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
- 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
- 	u32 fourcc;
- 
--	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index);
-+	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index, ctx->image_fmt);
- 	if (!fourcc)
- 		return -EINVAL;
- 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index 633335ebb9c498bb69ae4072b772f30858a89e48..6f8cf50c5d99aad2f52e321f54f3ca17166ddf98 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -75,13 +75,23 @@ struct rkvdec_coded_fmt_ops {
- 	int (*try_ctrl)(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl);
- };
- 
-+enum rkvdec_image_fmt {
-+	RKVDEC_IMG_FMT_ANY = 0,
-+	RKVDEC_IMG_FMT_420_8BIT,
-+};
-+
-+struct rkvdec_decoded_fmt_desc {
-+	u32 fourcc;
-+	enum rkvdec_image_fmt image_fmt;
-+};
-+
- struct rkvdec_coded_fmt_desc {
- 	u32 fourcc;
- 	struct v4l2_frmsize_stepwise frmsize;
- 	const struct rkvdec_ctrls *ctrls;
- 	const struct rkvdec_coded_fmt_ops *ops;
- 	unsigned int num_decoded_fmts;
--	const u32 *decoded_fmts;
-+	const struct rkvdec_decoded_fmt_desc *decoded_fmts;
- 	u32 subsystem_flags;
- };
- 
-@@ -104,6 +114,7 @@ struct rkvdec_ctx {
- 	const struct rkvdec_coded_fmt_desc *coded_fmt_desc;
- 	struct v4l2_ctrl_handler ctrl_hdl;
- 	struct rkvdec_dev *dev;
-+	enum rkvdec_image_fmt image_fmt;
- 	void *priv;
- };
- 
+ 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
+ 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
 
 -- 
 2.25.1
