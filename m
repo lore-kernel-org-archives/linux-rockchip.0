@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58162C021BB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 16:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C281C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 16:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/54QnTtHOaTV/6E21tKCVzq/zjsEApq8BRZ6Zwkl840=; b=Sosr1+qTPTTbu5/Z6oziG6Cfof
-	bJ4vDN+eI/sJq34P4PTDCcHfiWGd3JEkIOC6fTy2wt2Ltvv57oOviUxrc/FSm0VxyED+DmHb5gF2d
-	pYwwIXXCR1J/QmFSyva7wXFYVVXSEUSXiSCa/gy7jywTAKSplJPlWPv6YtL9ks2WGW98to81py2tJ
-	QcdTS6axD4QH09nToQChOtVQZxK78YBLVnlY7y4RNG2rUWdO/OxaUtEIvHtFvDsCFZwbYFFC0dHdv
-	tPTkZmZ9B5sfvKs1Hxqmg245fGQj3enI/B3+TB1BS7p+URyN/szRYYccfkNZwx+h/46PE3Hy5V393
-	4pKXCQDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9ltx0FV7zVojsnMbfQ0L5e1SyD78hlBUTNtTpGcob+E=; b=IOiJTrqYaO+9Am
+	MeO7ZqJOroCwHQ3tLZrHkn2zxs7Ka2XhbsaJBxri+gp43+h80hu+WNkeGmeyJqv50MyT/52OAb0wn
+	CYVf60hzwvv3X6F999u0lAtxh26O2y/abTGzzbTcT4eikLb7qOPlQHRCMb5uBiDdJe7yIGOEDjkAj
+	J0+xIssC2IyrLBtEZsQWrV7CAC2F+ZYEMmW/OKHcpRozSru8x9OovfLrFvP4QILXTFWJUeynPPQN3
+	MOheh4qmPn1XtU6Q9nO2i+DZc1PiVqqiyTDJxpk8SJU6o5NO/ulF/yvN5Kf0bv9lpa4Kn05iCuRRu
+	csMJwgAzRu5Tyy3vrzpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmxyn-00000000IX0-3txP;
-	Tue, 25 Feb 2025 16:40:21 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tmy0h-00000000L66-0uFe;
+	Tue, 25 Feb 2025 16:42:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmvsj-0000000HWVp-3qVx;
-	Tue, 25 Feb 2025 14:25:59 +0000
+	id 1tmwCY-0000000HZgj-0Q7q
+	for linux-rockchip@lists.infradead.org;
+	Tue, 25 Feb 2025 14:46:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B28286126B;
+	Tue, 25 Feb 2025 14:46:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8A07C4CEDD;
+	Tue, 25 Feb 2025 14:46:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740494785;
+	bh=6ZThMx3yk5s32UwJseFaT+0LfZxbEk9CwJs9at/sz4o=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=JBngrPUB7/i1+yjFpBp9I9OvqFFITb4P6hFYqyz+5W3iuG/l83/RgnZFIQroM4OrC
+	 YaKdAQ8NMAL01KLJKlB93BVlGXMIFs8RiE8uxS2iJ01lILFP3WCMwnnqRRf+MGqxWt
+	 0U8nRcEY0hNM5MIuxYghPIraxG6uFjF0jL/2VkW7PDXgCwsFxE7JbqEGL+FqUfQvMT
+	 o7z0blAKwjG+kEN08spkJTBd6roI64NzBumphKDGBkvIHn1Gjl2vVFE6svS3q915xH
+	 HPftpzYJtBQoSTGGYNnGKtq8R8lwuM3m/VH7vyxidZOLNRhW8/r9UfTjBOwNdjeRFu
+	 pg6bRqLdMN6+A==
+From: Mark Brown <broonie@kernel.org>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ =?utf-8?q?Adri=C3=A1n_Mart=C3=ADnez_Larumbe?= <adrian.larumbe@collabora.com>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Peter Geis <pgwipeout@gmail.com>, Tomeu Vizoso <tomeu@tomeuvizoso.net>, 
+ Vignesh Raman <vignesh.raman@collabora.com>, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org
+In-Reply-To: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
+References: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
+Subject: Re: (subset) [PATCH v6 0/8] Fix RK3588 power domain problems
+Message-Id: <174049478169.62098.16182863254035343977.b4-ty@kernel.org>
+Date: Tue, 25 Feb 2025 14:46:21 +0000
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1740493553;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WyyxfZ8er5WqZOvIZ6mxo74JK7+5Nk5jVOc6g/QyEzY=;
-	b=Z1X26bi7ygLBS3+YP89D2JR7/QWR7eXXN3q1RGtCQ3+EEEyHxoYQpXbp52wPDrgNXaWacW
-	Ounh1eXsGBBwxBLd/7Di5n93VbT9HhQvf9jl6Vim2qNKGD88nD/ML295fQfTRkhorE6Uh1
-	y9/DreYBRT9Ekl/916EWFharGXpsOWZAg8lKC7+bIk95ZpLm9A2QquEqUmFbsIvtuqNN1C
-	4ZcGeWx8hn/TuKWiLzmG9cjzglaqrwc+FI0Mp947mgR3+gwUWye4wIzhBT3xLoaC/9pm3l
-	jLiZSSPJRpbr5cs+7oCYYjNE6rHgNRvYE+JeSFarEusZ3TABB7gKfJhq1GWuSg==
-Date: Tue, 25 Feb 2025 15:25:52 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Justin Klaassen <justin@tidylabs.net>
-Cc: Tianling Shen <cnsztl@gmail.com>, Kever Yang
- <kever.yang@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, Heiko
- Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix u2phy1_host status for NanoPi
- R4S
-In-Reply-To: <20250224170925.39126-1-justin@tidylabs.net>
-References: <20250224170925.39126-1-justin@tidylabs.net>
-Message-ID: <48c705e65cc8e8d4716b41a4a87170e3@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_062558_109142_A48429DA 
-X-CRM114-Status: GOOD (  17.42  )
+X-Mailer: b4 0.15-dev-1b0d6
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,52 +73,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Justin,
-
-Thanks for the patch!  Please, see a few comments below.
-
-On 2025-02-24 18:09, Justin Klaassen wrote:
-> The u2phy1_host should always have the same status as usb_host1_ehci,
-> otherwise the ehci driver may be initialized for a disabled usb port.
+On Thu, 20 Feb 2025 19:58:03 +0100, Sebastian Reichel wrote:
+> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+> driver is loaded late after booting. The crash starts with the following
+> shortened error print:
 > 
-> Signed-off-by: Justin Klaassen <justin@tidylabs.net>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-> index b1c9bd0e63ef..8d94d9f91a5c 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-> @@ -115,7 +115,7 @@ &u2phy0_host {
->  };
-> 
->  &u2phy1_host {
-> -	status = "disabled";
-> +	phy-supply = <&vdd_5v>;
->  };
-> 
->  &uart0 {
+> [...]
 
-Indeed, the rk3399-nanopi4.dtsi file, which rk3399-nanopi-r4s.dtsi
-extends, enables u2phy1_host, usb_host1_ehci and usb_host1_ohci,
-so disabling u2phy1_host in rk3399-nanopi-r4s.dtsi makes no sense.
+Applied to
 
-After checking the NanoPi R4S schematic, I can confirm that the
-phy-supply references the right regulator.  There are some strange
-things in the schematic, but they're unrelated to this patch.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
-However, there should be a v2 of this patch with the proper Fixes
-and CC: stable tags, so this bugfix also gets propagated into the
-long-term kernels.  Please, feel free to also include
+Thanks!
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+[1/8] regulator: Add (devm_)of_regulator_get()
+      commit: 0dffacbbf8d044456d50c893adb9499775c489f4
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
