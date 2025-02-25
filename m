@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83437C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 19:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4042C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 19:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ROzKwD7JTKVKEsKYiBfFbqFiilkPsiy/UFycz2xp01A=; b=vUPgF/A81hUPmv
-	3gihMXpQjzJT/Yvr8smhFE9aLEFfAaxqCjQEwLrfZSYq++e86SajOseZRGvv4LHo5i2Zxv5276SuG
-	NxfDyQh3O5JExk0I3vo7QZPgtAEVgVCrI3LuHUX3BISSR3cFht1ZQwaNu3NVy6auw5kJKLbANKzym
-	G9VOH0JaCyJvg5Q4vHQD+2hAtcEBntCtkhg3I6mqFFCufnmtA5qtdSf+mPULPt3jdfHYpAzNl6cbb
-	h9r9HVcbPiJu0kx7B9dLVRj/6omym+/sv0lrhqiN/kZA5j3bMhFahgIRBxJni2A2R1kiVUEPgRxO9
-	3IMuDM/zUxHHEyF5lBjg==;
+	List-Owner; bh=4r0e/gyaTKjPGTNqjf+L/vFIAtpFTGYsA5l6ZUUvNEU=; b=zsoZLwPYrHX8q7
+	+0PMFPfCnLP3t8LpgYORIKT2PN6MyMITI+ySbOD7X0oNeqZ67XqZ0MxzX0pfQM2b/XQm/cAFJU2ex
+	ibOoVIqXxBtm0jsc+t9cb6uE9rqvhqfwwEpTYZ32/1ivys4pU5giFRf/wsNDQtT3wQjTNlNiXF2kN
+	ll0zXYrO37ksZYNePuSegnU67Si/WpNhn1GVOZyLuddrjVsQMWSrc0U0MXNl8qsx8pqQ9Gosl08nC
+	zBqToT91ofHcwLpkXmlXEDw86ateeWeGzzZakloKSqnc01L7KuLKiX1wjvC+FHMJaJlm99p3xCbHV
+	fvrr8Zl49x0OaxegUTDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn0ed-000000019I2-2ob0;
-	Tue, 25 Feb 2025 19:31:43 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tn0jR-00000001B80-3pyl;
+	Tue, 25 Feb 2025 19:36:41 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmzwA-000000010tT-2HHC;
-	Tue, 25 Feb 2025 18:45:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=XeSCoetpG/SJX3eWF6c3URGWyxwIKqpjVdjc1wvJfqo=; b=G4w/ryyC1YyWT1pGEHP6owKkVE
-	depvliKv+XPgjl87c5JJ4ue/1Z4D2aPKOMq09HYD1brPFC4dHBjx1h/8d/RMq1BW/t6u1xqoFqZPn
-	vkrUc9wHNZ1FHjGG1CTjtLVu1Bf3Mdr1UWd+N3EnyoAoBQBHyvW/oFTc1VxnVblbTuQINrunJAEe4
-	s86KeXChNghQEjzUNnlitV/7pPRDQliYA2Yu0FaTZdjGhs2VL99JV3/nHCDt8gvaS7zEQ01uThRn5
-	ATS70U7MIUnTHmJP52jVa9TQxw6z1Y1ohqwEPY5QVlxgczlQppPZ5/AEc2y3sMU5S6/8eKnrcCj21
-	O0s5wTVA==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tmzw7-0006r3-PJ; Tue, 25 Feb 2025 19:45:43 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: vkoul@kernel.org,
-	kishon@kernel.org
-Cc: heiko@sntech.de,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	quentin.schulz@cherry.de,
-	sebastian.reichel@collabora.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/2] phy: rockchip: usbdp: move type-orientation-switch further down
-Date: Tue, 25 Feb 2025 19:45:18 +0100
-Message-ID: <20250225184519.3586926-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250225184519.3586926-1-heiko@sntech.de>
-References: <20250225184519.3586926-1-heiko@sntech.de>
+	id 1tn0hu-00000001Auc-0yXJ;
+	Tue, 25 Feb 2025 19:35:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740512106; x=1772048106;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version:content-transfer-encoding;
+  bh=Y0dgq02rrgg6GhOsq8ZPtCl2ibf+lqJ5X0BUAPIsTbA=;
+  b=lWmlG+t9fdtlkAOpfDuy4z4+RroUJ/XOeZg6oTUT8NTJaMXn4oZfvOx8
+   9zNJkqB4jCNnNidFudhuxLIe3bGJ90yPqxGS1pQno6R0K5+VNiU7iy5I0
+   y/lwDAaFsOPZq78MNmZYpKCTF5rgVsYZthMMtcEeBvjV9D4Yw8ah8+XYT
+   ezf6aVBhvFDGA201mpjw2WF4o7la+XDjiC/SZzofOcYuDOMAUTtvmgBu5
+   9HhILWIA0hxVuVmQTaY9GS8TxJNHsSMkCFo+iFm0AuTdPJLIOSZHKWxUr
+   vQSOmk1uerSqGl3F4+2S+BrSMnYoGWJmWTj0SXXzK/ae1Cse01OABhted
+   g==;
+X-CSE-ConnectionGUID: 8K2J5sagSgGnCHocpj1TQg==
+X-CSE-MsgGUID: AIuYiKbJTSy5sQ5YwMOQ0w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11356"; a="41465288"
+X-IronPort-AV: E=Sophos;i="6.13,314,1732608000"; 
+   d="scan'208";a="41465288"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 11:35:05 -0800
+X-CSE-ConnectionGUID: qrC/vWxRRZ2hkAfLY3GMYA==
+X-CSE-MsgGUID: rpKIiapzTxKqUpXFTcgExw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,314,1732608000"; 
+   d="scan'208";a="116263364"
+Received: from monicael-mobl3 (HELO localhost) ([10.245.246.246])
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 11:35:02 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re:Re:[PATCH 2/5] drm/rockchip: stop passing non struct drm_device
+ to drm_err() and friends
+In-Reply-To: <730ee1d4.f63.1949b97fc99.Coremail.andyshrk@163.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <cover.1737644530.git.jani.nikula@intel.com>
+ <f42da4c9943a2f2a9de4272b7849e72236d4c3f9.1737644530.git.jani.nikula@intel.com>
+ <2c0a76c3.618c.19497bb4329.Coremail.andyshrk@163.com>
+ <87plkcbfp0.fsf@intel.com>
+ <730ee1d4.f63.1949b97fc99.Coremail.andyshrk@163.com>
+Date: Tue, 25 Feb 2025 21:34:58 +0200
+Message-ID: <87wmdd4y3h.fsf@intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_104546_745398_0EE2D4AA 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20250225_113506_370753_74C50F83 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,214 +81,169 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, intel-gfx@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, sam@ravnborg.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
-
-Move the typec-orientation-switch functionality further down, next to
-the typec-mux code. Not only brings this the typec-related functionality
-closer together, but also the following change needs access to other
-driver functions, that are below the current position.
-
-No functional change.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 166 +++++++++++-----------
- 1 file changed, 83 insertions(+), 83 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 5b1e8a3806ed..7b17c82ebcfc 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -616,89 +616,6 @@ static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
- 	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
- }
- 
--static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
--{
--	if (udphy->flip) {
--		udphy->dp_lane_sel[0] = 0;
--		udphy->dp_lane_sel[1] = 1;
--		udphy->dp_lane_sel[2] = 3;
--		udphy->dp_lane_sel[3] = 2;
--		udphy->lane_mux_sel[0] = PHY_LANE_MUX_DP;
--		udphy->lane_mux_sel[1] = PHY_LANE_MUX_DP;
--		udphy->lane_mux_sel[2] = PHY_LANE_MUX_USB;
--		udphy->lane_mux_sel[3] = PHY_LANE_MUX_USB;
--		udphy->dp_aux_dout_sel = PHY_AUX_DP_DATA_POL_INVERT;
--		udphy->dp_aux_din_sel = PHY_AUX_DP_DATA_POL_INVERT;
--		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 1);
--		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
--	} else {
--		udphy->dp_lane_sel[0] = 2;
--		udphy->dp_lane_sel[1] = 3;
--		udphy->dp_lane_sel[2] = 1;
--		udphy->dp_lane_sel[3] = 0;
--		udphy->lane_mux_sel[0] = PHY_LANE_MUX_USB;
--		udphy->lane_mux_sel[1] = PHY_LANE_MUX_USB;
--		udphy->lane_mux_sel[2] = PHY_LANE_MUX_DP;
--		udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
--		udphy->dp_aux_dout_sel = PHY_AUX_DP_DATA_POL_NORMAL;
--		udphy->dp_aux_din_sel = PHY_AUX_DP_DATA_POL_NORMAL;
--		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
--		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 1);
--	}
--
--	udphy->mode = UDPHY_MODE_DP_USB;
--}
--
--static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
--				 enum typec_orientation orien)
--{
--	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
--
--	mutex_lock(&udphy->mutex);
--
--	if (orien == TYPEC_ORIENTATION_NONE) {
--		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
--		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
--		/* unattached */
--		rk_udphy_usb_bvalid_enable(udphy, false);
--		goto unlock_ret;
--	}
--
--	udphy->flip = (orien == TYPEC_ORIENTATION_REVERSE) ? true : false;
--	rk_udphy_set_typec_default_mapping(udphy);
--	rk_udphy_usb_bvalid_enable(udphy, true);
--
--unlock_ret:
--	mutex_unlock(&udphy->mutex);
--	return 0;
--}
--
--static void rk_udphy_orien_switch_unregister(void *data)
--{
--	struct rk_udphy *udphy = data;
--
--	typec_switch_unregister(udphy->sw);
--}
--
--static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
--{
--	struct typec_switch_desc sw_desc = { };
--
--	sw_desc.drvdata = udphy;
--	sw_desc.fwnode = dev_fwnode(udphy->dev);
--	sw_desc.set = rk_udphy_orien_sw_set;
--
--	udphy->sw = typec_switch_register(udphy->dev, &sw_desc);
--	if (IS_ERR(udphy->sw)) {
--		dev_err(udphy->dev, "Error register typec orientation switch: %ld\n",
--			PTR_ERR(udphy->sw));
--		return PTR_ERR(udphy->sw);
--	}
--
--	return devm_add_action_or_reset(udphy->dev,
--					rk_udphy_orien_switch_unregister, udphy);
--}
--
- static int rk_udphy_refclk_set(struct rk_udphy *udphy)
- {
- 	unsigned long rate;
-@@ -1323,6 +1240,89 @@ static const struct phy_ops rk_udphy_usb3_phy_ops = {
- 	.owner		= THIS_MODULE,
- };
- 
-+static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
-+{
-+	if (udphy->flip) {
-+		udphy->dp_lane_sel[0] = 0;
-+		udphy->dp_lane_sel[1] = 1;
-+		udphy->dp_lane_sel[2] = 3;
-+		udphy->dp_lane_sel[3] = 2;
-+		udphy->lane_mux_sel[0] = PHY_LANE_MUX_DP;
-+		udphy->lane_mux_sel[1] = PHY_LANE_MUX_DP;
-+		udphy->lane_mux_sel[2] = PHY_LANE_MUX_USB;
-+		udphy->lane_mux_sel[3] = PHY_LANE_MUX_USB;
-+		udphy->dp_aux_dout_sel = PHY_AUX_DP_DATA_POL_INVERT;
-+		udphy->dp_aux_din_sel = PHY_AUX_DP_DATA_POL_INVERT;
-+		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 1);
-+		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
-+	} else {
-+		udphy->dp_lane_sel[0] = 2;
-+		udphy->dp_lane_sel[1] = 3;
-+		udphy->dp_lane_sel[2] = 1;
-+		udphy->dp_lane_sel[3] = 0;
-+		udphy->lane_mux_sel[0] = PHY_LANE_MUX_USB;
-+		udphy->lane_mux_sel[1] = PHY_LANE_MUX_USB;
-+		udphy->lane_mux_sel[2] = PHY_LANE_MUX_DP;
-+		udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
-+		udphy->dp_aux_dout_sel = PHY_AUX_DP_DATA_POL_NORMAL;
-+		udphy->dp_aux_din_sel = PHY_AUX_DP_DATA_POL_NORMAL;
-+		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
-+		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 1);
-+	}
-+
-+	udphy->mode = UDPHY_MODE_DP_USB;
-+}
-+
-+static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-+				 enum typec_orientation orien)
-+{
-+	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
-+
-+	mutex_lock(&udphy->mutex);
-+
-+	if (orien == TYPEC_ORIENTATION_NONE) {
-+		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
-+		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
-+		/* unattached */
-+		rk_udphy_usb_bvalid_enable(udphy, false);
-+		goto unlock_ret;
-+	}
-+
-+	udphy->flip = (orien == TYPEC_ORIENTATION_REVERSE) ? true : false;
-+	rk_udphy_set_typec_default_mapping(udphy);
-+	rk_udphy_usb_bvalid_enable(udphy, true);
-+
-+unlock_ret:
-+	mutex_unlock(&udphy->mutex);
-+	return ret;
-+}
-+
-+static void rk_udphy_orien_switch_unregister(void *data)
-+{
-+	struct rk_udphy *udphy = data;
-+
-+	typec_switch_unregister(udphy->sw);
-+}
-+
-+static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
-+{
-+	struct typec_switch_desc sw_desc = { };
-+
-+	sw_desc.drvdata = udphy;
-+	sw_desc.fwnode = dev_fwnode(udphy->dev);
-+	sw_desc.set = rk_udphy_orien_sw_set;
-+
-+	udphy->sw = typec_switch_register(udphy->dev, &sw_desc);
-+	if (IS_ERR(udphy->sw)) {
-+		dev_err(udphy->dev, "Error register typec orientation switch: %ld\n",
-+			PTR_ERR(udphy->sw));
-+		return PTR_ERR(udphy->sw);
-+	}
-+
-+	return devm_add_action_or_reset(udphy->dev,
-+					rk_udphy_orien_switch_unregister, udphy);
-+}
-+
- static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
- 				  struct typec_mux_state *state)
- {
--- 
-2.47.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCAyNSBKYW4gMjAyNSwgIkFuZHkgWWFuIiA8YW5keXNocmtAMTYzLmNvbT4gd3JvdGU6
+Cj4g5ZyoIDIwMjUtMDEtMjQgMTk6NDM6MDfvvIwiSmFuaSBOaWt1bGEiIDxqYW5pLm5pa3VsYUBp
+bnRlbC5jb20+IOWGmemBk++8mgo+Pk9uIEZyaSwgMjQgSmFuIDIwMjUsICJBbmR5IFlhbiIgPGFu
+ZHlzaHJrQDE2My5jb20+IHdyb3RlOgo+Pj4gSGnvvIwKPj4+Cj4+PiBBdCAyMDI1LTAxLTIzIDIz
+OjA5OjA5LCAiSmFuaSBOaWt1bGEiIDxqYW5pLm5pa3VsYUBpbnRlbC5jb20+IHdyb3RlOgo+Pj4+
+VGhlIGV4cGVjdGF0aW9uIGlzIHRoYXQgdGhlIHN0cnVjdCBkcm1fZGV2aWNlIGJhc2VkIGxvZ2dp
+bmcgaGVscGVycyBnZXQKPj4+PnBhc3NlZCBhbiBhY3R1YWwgc3RydWN0IGRybV9kZXZpY2UgcG9p
+bnRlciByYXRoZXIgdGhhbiBzb21lIHJhbmRvbQo+Pj4+c3RydWN0IHBvaW50ZXIgd2hlcmUgeW91
+IGNhbiBkZXJlZmVyZW5jZSB0aGUgLT5kZXYgbWVtYmVyLgo+Pj4+Cj4+Pj5Db252ZXJ0IGRybV9l
+cnIoaGRtaSwgLi4uKSB0byBkZXZfZXJyKGhkbWktPmRldiwgLi4uKS4gVGhpcyBtYXRjaGVzCj4+
+Pj5jdXJyZW50IHVzYWdlLCBidXQgZHJvcHMgIltkcm1dICpFUlJPUioiIHByZWZpeCBmcm9tIGxv
+Z2dpbmcuCj4+Pgo+Pj4gRnJhbmtseSwgSSBwcmVmZXIgdGhlIG9yaWdpbmFsIHZlcnNpb24gb2Yg
+dGhlIGxvZy4KPj4+IEl0IGlzIGEgcGxhdGZvcm0gZHJpdmVyLCBzbyBpdCBzaG91bGQgdXNlIGl0
+cyBvd24gZGV2aWNlLgo+Pj4gSXQgaXMgYSBkcml2ZXIgdGhhdCB3b3JrcyBpbiBkcm0gc3Vic3lz
+dGVtLCBzbyBpdCdzIGJldHRlciB0byB1c2UgIltkcm1dICpFUlJPUioiIHByZWZpeCB3aGVuIGxv
+Z2dpbmcKPj4KPj5JZiB5b3UgbmVlZCB0byBkbyBzdHJ1Y3QgZGV2aWNlIGJhc2VkIGxvZ2dpbmcg
+dGhhdCBpcyBub3QgdGhlIHNhbWUKPj5kZXZpY2UgYXMgdGhlIHN0cnVjdCBkcm1fZGV2aWNlIGRl
+diBtZW1iZXIsIHlvdSBuZWVkIHRvIHVzZSBkZXZfZXJyKCkKPj5hbmQgZnJpZW5kcy4gWW91IGNh
+bid0IGFuZCBtdXN0IG5vdCB1c2UgZHJtX2VycigpIGFuZCBmcmllbmRzLgo+Pgo+Pkl0J3MgYXMg
+c2ltcGxlIGFzIHRoYXQuCj4+Cj4+VGhlIGN1cnJlbnQgZHJtX2VycihoZG1pLCAuLi4pIHVzYWdl
+IGlzIHNpbXBseSBhYnVzZSBvZiB0aGUgbWFjcm9zLCBhbmQKPj5tdXN0IHN0b3AuCj4KPiBQZXJo
+YXBzIHdoZW4geW91IGluaXRpYWxseSBkZXNpZ25lZCB0aGlzIG1hY3JvcywgeW91IGludGVuZGVk
+IGl0IHRvIGFjY2VwdCBvbmx5IGRybV9kZXZpY2UsIAo+IGJ1dCB5b3VyIGNvZGUgaW1wbGVtZW50
+YXRpb24gZGlkbid0IGVuZm9yY2UgdGhpcyByZXN0cmljdGlvbiBhdCB0aGUgYmVnaW5uaW5nLgo+
+IElmIHRoYXQncyB0cnVseSB3aGF0IHlvdSBpbnRlbmRlZCwgSSBzdWdnZXN0IGp1c3QgcmV2ZXJ0
+aW5nIHRoaXMgY29tbWl0IHRoYXQgY29udmVydGluZyB0byB1c2UgdGhlc2UgbWFjcm9zWzBdLCAK
+PiBhcyBuZWl0aGVyIGRybV9lcnIgbm9yIGRldl9lcnIgY2FuIG1haW50YWluIGNvbnNpc3RlbmN5
+IHdpdGggdGhlIG9yaWdpbmFsIGxvZyBvZiB0aGlzIGRyaXZlci4KPiBBbHRlcm5hdGl2ZWx5LCBh
+cyBzdWdnZXN0ZWQgYnkgU2FtICBpbiB0aGUgaW5pdGlhbCBzdWJtaXNzaW9uIG9mIHlvdXIgcGF0
+Y2ggNSB5ZWFycyBhZ28sIAo+IHRoZXJlIHNob3VsZCBhbHNvIGJlIGEgbWFjcm8gc2ltaWxhciB0
+byBkcm1fZGV2X2luZm8oZGV2aWNlICosIC4uKS5bMV0KCkNvbW1pdCAxYjhmNTc2YzY5NTggKCJk
+cm0vcm9ja2NoaXA6IGR3X2hkbWk6IFVzZSBtb2Rlcm4gZHJtX2RldmljZSBiYXNlZApsb2dnaW5n
+IikgZG9lcyBub3QgcmV2ZXJ0IGNsZWFubHksIGFuZCBldmVuIGlmIGl0IGRpZCwgRFJNX0RFVl9F
+UlJPUigpCmlzIGRlcHJlY2F0ZWQgaW4gZmF2b3VyIG9mIGRybV9lcnIoKSBvciBkZXZfZXJyKCku
+IEknbSB1c2luZyB0aGUgbGF0dGVyLgoKQWNrIGZvciBhcHBseWluZyB0aGUgcGF0Y2ggYXQgaGFu
+ZCBhcy1pcz8KCkJSLApKYW5pLgoKCgoKPgo+Cj4gWzBdaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+bGludXgtcm9ja2NoaXAvMjAyNDA4MTMtZHctaGRtaS1yb2NrY2hpcC1jbGVhbnVwLXYxLTEtYjNl
+NzNiNWY0ZmQ2QGNvbGxhYm9yYS5jb20vCj4gWzFdaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJp
+LWRldmVsLzIwMTkxMjEyMjE1MzAzLkdBMTE1MjBAcmF2bmJvcmcub3JnLwo+Cj4+Cj4+Cj4+QlIs
+Cj4+SmFuaS4KPj4KPj4KPj4+Cj4+Pj4KPj4+PlNpZ25lZC1vZmYtYnk6IEphbmkgTmlrdWxhIDxq
+YW5pLm5pa3VsYUBpbnRlbC5jb20+Cj4+Pj4KPj4+Pi0tLQo+Pj4+Cj4+Pj5Mb29rcyBsaWtlIGl0
+J3MgcG9zc2libGUgdG8gaHVudCBkb3duIHRoZSBzdHJ1Y3QgZHJtX2RldmljZSBpbiBtb3N0IG9m
+Cj4+Pj50aGVzZSBjYXNlcywgaWYgdGhhdCdzIGRlc2lyZWQuIFRoaXMgd2FzIHRoZSBzaW1wbGVz
+dCBjaGFuZ2UuCj4+Pj4KPj4+PkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+
+Pj4+Q2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KPj4+PkNjOiBBbmR5IFlh
+biA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+Pj5DYzogZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwo+Pj4+Q2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+
+Pj4+Q2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4+Pi0tLQo+Pj4+IGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgfCAxNiArKysrKysr
+Ky0tLS0tLS0tCj4+Pj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2No
+aXAuYyB8IDE2ICsrKysrKysrLS0tLS0tLS0KPj4+PiAyIGZpbGVzIGNoYW5nZWQsIDE2IGluc2Vy
+dGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj5kaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPj4+PmluZGV4IGU3YTY2NjljNDZiMC4uZjczN2U3ZDQ2
+ZTY2IDEwMDY0NAo+Pj4+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9j
+a2NoaXAuYwo+Pj4+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2No
+aXAuYwo+Pj4+QEAgLTIwMyw3ICsyMDMsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2hkbWlfcGFy
+c2VfZHQoc3RydWN0IHJvY2tjaGlwX2hkbWkgKmhkbWkpCj4+Pj4gCj4+Pj4gCWhkbWktPnJlZ21h
+cCA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsK
+Pj4+PiAJaWYgKElTX0VSUihoZG1pLT5yZWdtYXApKSB7Cj4+Pj4tCQlkcm1fZXJyKGhkbWksICJV
+bmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4+Pj4rCQlkZXZfZXJyKGhkbWktPmRldiwg
+IlVuYWJsZSB0byBnZXQgcm9ja2NoaXAsZ3JmXG4iKTsKPj4+PiAJCXJldHVybiBQVFJfRVJSKGhk
+bWktPnJlZ21hcCk7Cj4+Pj4gCX0KPj4+PiAKPj4+PkBAIC0yMTQsNyArMjE0LDcgQEAgc3RhdGlj
+IGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pKQo+
+Pj4+IAlpZiAoSVNfRVJSKGhkbWktPnJlZl9jbGspKSB7Cj4+Pj4gCQlyZXQgPSBQVFJfRVJSKGhk
+bWktPnJlZl9jbGspOwo+Pj4+IAkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+Pj4+LQkJCWRy
+bV9lcnIoaGRtaSwgImZhaWxlZCB0byBnZXQgcmVmZXJlbmNlIGNsb2NrXG4iKTsKPj4+PisJCQlk
+ZXZfZXJyKGhkbWktPmRldiwgImZhaWxlZCB0byBnZXQgcmVmZXJlbmNlIGNsb2NrXG4iKTsKPj4+
+PiAJCXJldHVybiByZXQ7Cj4+Pj4gCX0KPj4+PiAKPj4+PkBAIC0yMjIsNyArMjIyLDcgQEAgc3Rh
+dGljIGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1p
+KQo+Pj4+IAlpZiAoSVNfRVJSKGhkbWktPmdyZl9jbGspKSB7Cj4+Pj4gCQlyZXQgPSBQVFJfRVJS
+KGhkbWktPmdyZl9jbGspOwo+Pj4+IAkJaWYgKHJldCAhPSAtRVBST0JFX0RFRkVSKQo+Pj4+LQkJ
+CWRybV9lcnIoaGRtaSwgImZhaWxlZCB0byBnZXQgZ3JmIGNsb2NrXG4iKTsKPj4+PisJCQlkZXZf
+ZXJyKGhkbWktPmRldiwgImZhaWxlZCB0byBnZXQgZ3JmIGNsb2NrXG4iKTsKPj4+PiAJCXJldHVy
+biByZXQ7Cj4+Pj4gCX0KPj4+PiAKPj4+PkBAIC0zMDIsMTYgKzMwMiwxNiBAQCBzdGF0aWMgdm9p
+ZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5j
+b2RlcikKPj4+PiAKPj4+PiAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGhkbWktPmdyZl9jbGsp
+Owo+Pj4+IAlpZiAocmV0IDwgMCkgewo+Pj4+LQkJZHJtX2VycihoZG1pLCAiZmFpbGVkIHRvIGVu
+YWJsZSBncmZjbGsgJWRcbiIsIHJldCk7Cj4+Pj4rCQlkZXZfZXJyKGhkbWktPmRldiwgImZhaWxl
+ZCB0byBlbmFibGUgZ3JmY2xrICVkXG4iLCByZXQpOwo+Pj4+IAkJcmV0dXJuOwo+Pj4+IAl9Cj4+
+Pj4gCj4+Pj4gCXJldCA9IHJlZ21hcF93cml0ZShoZG1pLT5yZWdtYXAsIGhkbWktPmNoaXBfZGF0
+YS0+bGNkc2VsX2dyZl9yZWcsIHZhbCk7Cj4+Pj4gCWlmIChyZXQgIT0gMCkKPj4+Pi0JCWRybV9l
+cnIoaGRtaSwgIkNvdWxkIG5vdCB3cml0ZSB0byBHUkY6ICVkXG4iLCByZXQpOwo+Pj4+KwkJZGV2
+X2VycihoZG1pLT5kZXYsICJDb3VsZCBub3Qgd3JpdGUgdG8gR1JGOiAlZFxuIiwgcmV0KTsKPj4+
+PiAKPj4+PiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPmdyZl9jbGspOwo+Pj4+LQlkcm1f
+ZGJnKGhkbWksICJ2b3AgJXMgb3V0cHV0IHRvIGhkbWlcbiIsIHJldCA/ICJMSVQiIDogIkJJRyIp
+Owo+Pj4+KwlkZXZfZGJnKGhkbWktPmRldiwgInZvcCAlcyBvdXRwdXQgdG8gaGRtaVxuIiwgcmV0
+ID8gIkxJVCIgOiAiQklHIik7Cj4+Pj4gfQo+Pj4+IAo+Pj4+IHN0YXRpYyBpbnQKPj4+PkBAIC01
+NzQsNyArNTc0LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRl
+dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+Pj4gCXJldCA9IHJvY2tjaGlwX2hk
+bWlfcGFyc2VfZHQoaGRtaSk7Cj4+Pj4gCWlmIChyZXQpIHsKPj4+PiAJCWlmIChyZXQgIT0gLUVQ
+Uk9CRV9ERUZFUikKPj4+Pi0JCQlkcm1fZXJyKGhkbWksICJVbmFibGUgdG8gcGFyc2UgT0YgZGF0
+YVxuIik7Cj4+Pj4rCQkJZGV2X2VycihoZG1pLT5kZXYsICJVbmFibGUgdG8gcGFyc2UgT0YgZGF0
+YVxuIik7Cj4+Pj4gCQlyZXR1cm4gcmV0Owo+Pj4+IAl9Cj4+Pj4gCj4+Pj5AQCAtNTgyLDcgKzU4
+Miw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRl
+diwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+Pj4+IAlpZiAoSVNfRVJSKGhkbWktPnBoeSkpIHsK
+Pj4+PiAJCXJldCA9IFBUUl9FUlIoaGRtaS0+cGh5KTsKPj4+PiAJCWlmIChyZXQgIT0gLUVQUk9C
+RV9ERUZFUikKPj4+Pi0JCQlkcm1fZXJyKGhkbWksICJmYWlsZWQgdG8gZ2V0IHBoeVxuIik7Cj4+
+Pj4rCQkJZGV2X2VycihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBoeVxuIik7Cj4+Pj4gCQly
+ZXR1cm4gcmV0Owo+Pj4+IAl9Cj4+Pj4gCj4+Pj5kaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kd19oZG1pX3FwLXJvY2tjaGlwLmMKPj4+PmluZGV4IGY0MTE1MWQ0OWZjYS4uM2QxZGRkYjM0
+NjAzIDEwMDY0NAo+Pj4+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAt
+cm9ja2NoaXAuYwo+Pj4+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAt
+cm9ja2NoaXAuYwo+Pj4+QEAgLTI0Miw3ICsyNDIsNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX3Fw
+X3JrMzU4OF9ocGRfd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4+Pj4gCWlmIChkcm0p
+IHsKPj4+PiAJCWNoYW5nZWQgPSBkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQoZHJtKTsKPj4+PiAJ
+CWlmIChjaGFuZ2VkKQo+Pj4+LQkJCWRybV9kYmcoaGRtaSwgImNvbm5lY3RvciBzdGF0dXMgY2hh
+bmdlZFxuIik7Cj4+Pj4rCQkJZGV2X2RiZyhoZG1pLT5kZXYsICJjb25uZWN0b3Igc3RhdHVzIGNo
+YW5nZWRcbiIpOwo+Pj4+IAl9Cj4+Pj4gfQo+Pj4+IAo+Pj4+QEAgLTQ3Miw3ICs0NzIsNyBAQCBz
+dGF0aWMgaW50IGR3X2hkbWlfcXBfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0
+cnVjdCBkZXZpY2UgKm1hc3RlciwKPj4+PiAJCX0KPj4+PiAJfQo+Pj4+IAlpZiAoaGRtaS0+cG9y
+dF9pZCA8IDApIHsKPj4+Pi0JCWRybV9lcnIoaGRtaSwgIkZhaWxlZCB0byBtYXRjaCBIRE1JIHBv
+cnQgSURcbiIpOwo+Pj4+KwkJZGV2X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8gbWF0Y2ggSERN
+SSBwb3J0IElEXG4iKTsKPj4+PiAJCXJldHVybiBoZG1pLT5wb3J0X2lkOwo+Pj4+IAl9Cj4+Pj4g
+Cj4+Pj5AQCAtNDk2LDIwICs0OTYsMjAgQEAgc3RhdGljIGludCBkd19oZG1pX3FwX3JvY2tjaGlw
+X2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+Pj4gCWhk
+bWktPnJlZ21hcCA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUoZGV2LT5vZl9ub2Rl
+LAo+Pj4+IAkJCQkJCSAgICAgICAicm9ja2NoaXAsZ3JmIik7Cj4+Pj4gCWlmIChJU19FUlIoaGRt
+aS0+cmVnbWFwKSkgewo+Pj4+LQkJZHJtX2VycihoZG1pLCAiVW5hYmxlIHRvIGdldCByb2NrY2hp
+cCxncmZcbiIpOwo+Pj4+KwkJZGV2X2VycihoZG1pLT5kZXYsICJVbmFibGUgdG8gZ2V0IHJvY2tj
+aGlwLGdyZlxuIik7Cj4+Pj4gCQlyZXR1cm4gUFRSX0VSUihoZG1pLT5yZWdtYXApOwo+Pj4+IAl9
+Cj4+Pj4gCj4+Pj4gCWhkbWktPnZvX3JlZ21hcCA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3Bo
+YW5kbGUoZGV2LT5vZl9ub2RlLAo+Pj4+IAkJCQkJCQkgICJyb2NrY2hpcCx2by1ncmYiKTsKPj4+
+PiAJaWYgKElTX0VSUihoZG1pLT52b19yZWdtYXApKSB7Cj4+Pj4tCQlkcm1fZXJyKGhkbWksICJV
+bmFibGUgdG8gZ2V0IHJvY2tjaGlwLHZvLWdyZlxuIik7Cj4+Pj4rCQlkZXZfZXJyKGhkbWktPmRl
+diwgIlVuYWJsZSB0byBnZXQgcm9ja2NoaXAsdm8tZ3JmXG4iKTsKPj4+PiAJCXJldHVybiBQVFJf
+RVJSKGhkbWktPnZvX3JlZ21hcCk7Cj4+Pj4gCX0KPj4+PiAKPj4+PiAJcmV0ID0gZGV2bV9jbGtf
+YnVsa19nZXRfYWxsX2VuYWJsZWQoaGRtaS0+ZGV2LCAmY2xrcyk7Cj4+Pj4gCWlmIChyZXQgPCAw
+KSB7Cj4+Pj4tCQlkcm1fZXJyKGhkbWksICJGYWlsZWQgdG8gZ2V0IGNsb2NrczogJWRcbiIsIHJl
+dCk7Cj4+Pj4rCQlkZXZfZXJyKGhkbWktPmRldiwgIkZhaWxlZCB0byBnZXQgY2xvY2tzOiAlZFxu
+IiwgcmV0KTsKPj4+PiAJCXJldHVybiByZXQ7Cj4+Pj4gCX0KPj4+PiAKPj4+PkBAIC01MTcsNyAr
+NTE3LDcgQEAgc3RhdGljIGludCBkd19oZG1pX3FwX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmlj
+ZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+Pj4gCQkJCQkJICAgIEdQSU9EX09VVF9I
+SUdIKTsKPj4+PiAJaWYgKElTX0VSUihoZG1pLT5lbmFibGVfZ3BpbykpIHsKPj4+PiAJCXJldCA9
+IFBUUl9FUlIoaGRtaS0+ZW5hYmxlX2dwaW8pOwo+Pj4+LQkJZHJtX2VycihoZG1pLCAiRmFpbGVk
+IHRvIHJlcXVlc3QgZW5hYmxlIEdQSU86ICVkXG4iLCByZXQpOwo+Pj4+KwkJZGV2X2VycihoZG1p
+LT5kZXYsICJGYWlsZWQgdG8gcmVxdWVzdCBlbmFibGUgR1BJTzogJWRcbiIsIHJldCk7Cj4+Pj4g
+CQlyZXR1cm4gcmV0Owo+Pj4+IAl9Cj4+Pj4gCj4+Pj5AQCAtNTI1LDcgKzUyNSw3IEBAIHN0YXRp
+YyBpbnQgZHdfaGRtaV9xcF9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
+IGRldmljZSAqbWFzdGVyLAo+Pj4+IAlpZiAoSVNfRVJSKGhkbWktPnBoeSkpIHsKPj4+PiAJCXJl
+dCA9IFBUUl9FUlIoaGRtaS0+cGh5KTsKPj4+PiAJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZFUikK
+Pj4+Pi0JCQlkcm1fZXJyKGhkbWksICJmYWlsZWQgdG8gZ2V0IHBoeTogJWRcbiIsIHJldCk7Cj4+
+Pj4rCQkJZGV2X2VycihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBoeTogJWRcbiIsIHJldCk7
+Cj4+Pj4gCQlyZXR1cm4gcmV0Owo+Pj4+IAl9Cj4+Pj4gCj4+Pj5AQCAtNTY0LDcgKzU2NCw3IEBA
+IHN0YXRpYyBpbnQgZHdfaGRtaV9xcF9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwg
+c3RydWN0IGRldmljZSAqbWFzdGVyLAo+Pj4+IAljb25uZWN0b3IgPSBkcm1fYnJpZGdlX2Nvbm5l
+Y3Rvcl9pbml0KGRybSwgZW5jb2Rlcik7Cj4+Pj4gCWlmIChJU19FUlIoY29ubmVjdG9yKSkgewo+
+Pj4+IAkJcmV0ID0gUFRSX0VSUihjb25uZWN0b3IpOwo+Pj4+LQkJZHJtX2VycihoZG1pLCAiZmFp
+bGVkIHRvIGluaXQgYnJpZGdlIGNvbm5lY3RvcjogJWRcbiIsIHJldCk7Cj4+Pj4rCQlkZXZfZXJy
+KGhkbWktPmRldiwgImZhaWxlZCB0byBpbml0IGJyaWRnZSBjb25uZWN0b3I6ICVkXG4iLCByZXQp
+Owo+Pj4+IAkJcmV0dXJuIHJldDsKPj4+PiAJfQo+Pj4+IAo+Pj4+LS0gCj4+Pj4yLjM5LjUKPj4+
+Pgo+Pj4+Cj4+Pj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+Pj4+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4+Pj5MaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCj4+Pj5odHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4+Cj4+LS0gCj4+SmFuaSBOaWt1bGEsIEludGVsCgotLSAK
+SmFuaSBOaWt1bGEsIEludGVsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
