@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 726F4C021B2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BACBC021BF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RhH7P9JKtvhwysYy2VMDRw/ATLJ8vnacCgmgLHZr8Xs=; b=LGGaWcq1BT92Hg
-	Ol3I7CMjPbhiK9lfMrAysNbhByYqFGznkn+g8CEGbnWDswGXzI+QSP93KRUZtjmowb25b+c6RWJSW
-	syWb3X25RvO61pKBbV7olBbpkXiA69W01bDbERHP6zsPOyqFG6SkWoDArM27g8NcELwf9eHZ3FV1I
-	zjlSyS7xN74bzfMvqi2EqjlDsTFn7TZ++OJ2NvFM6u+e9QLIhax5zhDNqfbLlZtWl5oB36mgjHvcl
-	mTeUG+B8TQjujrkppqNUQlVwWu5tVn8k8MMZvrHDoMrBv/jJyWBW+pYRnsuk3jxoHXcEBEQQAL7oL
-	peIUHp8X1YyzRDgJQ9BQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ETEyBZVOfJMhKDTlrmjMUw85GqDwPGSKkfYdaoGNpcw=; b=VIMKXMM+vVTVXW
+	6u9FwcLkhv8690FkbFrB0c9tJrW1jQ514XZqMGEbMqKcDc+AK3lCrxkZeob2OtcQ304Rr/RRXJMTp
+	j/QoAND0Xh8yJVxQRo3OfojubX3143NX/3Cha3GpridTpC7CWK6WeHajm5phtzEg6BK12MHmTUTIR
+	f70qdLQoAjpUkvKE5Z9vR6tIkQ6Ko9VBmTVDBwpb7ICLFKb/9b+34iDG+R6OaU2LecJoTo83/w6rr
+	iU4ce7x6Z94K7vFy06HOpRy0CvNsalCJzkrIh19E6+q5iwWgGtUzFctjuv1YyUHSuFq1lCfddtloy
+	ZipTzoIMdKdgNssGp8NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlG-0000000GjJT-04kw;
-	Tue, 25 Feb 2025 10:01:58 +0000
+	id 1tmrlI-0000000GjL0-06R0;
+	Tue, 25 Feb 2025 10:02:00 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrQi-0000000GeGE-2EAR
+	id 1tmrRY-0000000GeaC-0RkD
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:40:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476438; cv=none; 
+	Tue, 25 Feb 2025 09:41:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476490; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=nhN3Rt+pUbXhrV5nTGDXRMtP2Ar3cg1wHU3cPNr1J4ofqZZXDo9z2s/WvKBjqzwJVvW3u12Zno2mh9bXoh19QFXjnneu9h3divVcwLOEc5lchxdikJKkAmoDPjhqVTYN6DN5fqI1u/OuvAp1F3S2uq8syRRdd+MCCuKu4CCgmwA=
+	b=JhLOqeuFXnKZMj2rD9nXOmFkznlC5b19ET3bqj2g/LuQN1XksBtYT4w3a96ePCOkCwwpHbj5LxlYe7GUzxc3baLJ8/GquyQUsWwdwZLyAbwNVX5AI9aJh5tyyIInXwfAIDWvyrTFysB2FSha/0OylIO77tvNm9g1C5OBptWprbg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476438; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=6KHN1scQcppw8pT0cPhUgdCDwEZk4zFF85SfonaTG9o=; 
-	b=Ko7lqHOuIqf7mRVBVVTH+NDyMfZVwbPrU64AUBvQqJY2WAroSPAE2UIfngczqtdQs0H26kr5TUKbxbFJ+NsFYTCL9zPtm3WyVifywDUrspexgHXZ9v7xxNE9DdgV+iQSExRetvPQMTWC7irVjsJ9ij+RX5KDg8YwvzueFjNti/I=
+	t=1740476490; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=PyXzFAnSQaYFyXOwZuHcTzIPanIxLt2OaFJApPYWtf0=; 
+	b=WNevAdJm1/W0x7hWwvZxLfD6IVpHApb1klWbmZDQeQPSyi1615M/keo6hjeFL2wArZYXzPU+eWn7PbiVN7HXlPUDvsdPBS5yhqSd7r3NqJANE0oDnqRCKwAKD5jhdn/vWx/Q0F7LyFD4t5fPB1l53rSzJgVKmas8sC618ysacTw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476438;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476490;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=6KHN1scQcppw8pT0cPhUgdCDwEZk4zFF85SfonaTG9o=;
-	b=HkPBfRBnlt3LKckhrQ11wmHPMx03H0Ew+5pfzKOQHU2MKRyktJj0SvAB2PwDvl4f
-	lNAxwLUMxzydQlNK6Uqy8E5prEX5Kc7wXDvrsCXSaaNRenDv1GH4Wv8CE+UH5LSVsQU
-	2ziF2HXMfDmM+6ivvyLIe07nzajc0GspRVEv1eNU=
-Received: by mx.zohomail.com with SMTPS id 174047643563359.41477366289905;
-	Tue, 25 Feb 2025 01:40:35 -0800 (PST)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=PyXzFAnSQaYFyXOwZuHcTzIPanIxLt2OaFJApPYWtf0=;
+	b=HdCkfLMPSUzZM6YFRpWJ3IEAEalPzzz7DP5NjyyyI/0Td1fPU00RCuLlkKJwDAr2
+	SQKhiHYYAUoBHPMK6sjf3HgfWne8JszLUVtWk06HGjaU6AlcKxCR3mfd2shCcXAqV6y
+	8ofrUTiiANxHEnj975m8IyAngAP4Gy8rvhE5xyMk=
+Received: by mx.zohomail.com with SMTPS id 1740476488070578.0276658322202;
+	Tue, 25 Feb 2025 01:41:28 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Subject: [PATCH v7 00/12] media: rkvdec: Add H.264 High 10 and 4:2:2
- profile support
-Date: Tue, 25 Feb 2025 10:40:21 +0100
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
+Date: Tue, 25 Feb 2025 10:40:26 +0100
+Subject: [PATCH v7 05/12] media: rkvdec: Extract rkvdec_fill_decoded_pixfmt
+ into helper
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAWQvWcC/zXNTQrDIBBA4asE1zWMg/mxq96jFLFxEm2oBk3TQ
- sjdK4Uuv817O8uUPGV2rnaWaPPZx1DQnSo2OBMm4t4WMwRsQIiWp3mzNGiHrdTOT06ANsFqiaj
- za1liWrnpR7SmN6CoZSW0JBr95ze53orHFJ98dYnMPy1BgRIKG8RaQNd2IDnyRwwmX+a3v8dYZ
- 2LH8QVHx3ZArwAAAA==
-X-Change-ID: 20250116-rkvdec_h264_high10_and_422_support-a8f2da8a09e6
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-5-7992a68a4910@collabora.com>
+References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
+In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -71,20 +68,19 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Detlev Casanova <detlev.casanova@collabora.com>, 
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>, 
  Christopher Obbard <christopher.obbard@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476425; l=6209;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=2573;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=Ums4+YJ6/mdB6OJJs/VVAlfEGxXlqH5U5JaUczjzwVo=;
- b=vHLchJj5VFzCe3N1yVf2hTKmia00n+p0wa99spFFYTcCB83QjeVgz6KVy4LcQatYwa4YdY9IlKrO
- 9SOEYGMvB+tQ5oNpE+8h+aHSldt930GVc1n3iPKgxlH7ZJ2es86j
+ bh=gOBDVDAsV9VKnb0HLH+du/+hR99gKUsl0D8BUoTDXz4=;
+ b=9C8Iecm1IxnOeOqZwUDfahA/UDWeue/VkjdEQ3Y63UPo6LOEq4pTlUHkb1MVPx2NDKtaezxTGdX0
+ Yqft9IORC5MXRD7Z+IbEVrQtXSaFZgecW1dFJU9O1BkLZu5AX83m
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014044_628079_3D2B1C73 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20250225_014136_183597_1D7D0872 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,148 +97,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series add H.264 High 10 and 4:2:2 profile support to the Rockchip
-Video Decoder driver.
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Patch 1 add helpers for calculating plane bytesperline and sizeimage.
-Patch 2 add two new pixelformats for semi-planer 10-bit 4:2:0/4:2:2 YUV.
+Extract call to v4l2_fill_pixfmt_mp() and ajusting of sizeimage into a
+helper. Replace current code with a call to the new helper.
 
-Patch 3 change to use bytesperline and buffer height to configure strides.
-Patch 4 change to use values from SPS/PPS control to configure the HW.
-
-Patch 5-9 refactor code to support filtering of CAPUTRE formats based
-on the image format returned from a get_image_fmt ops.
-
-Patch 10 add final bits to support H.264 High 10 and 4:2:2 profiles.
-
-Patch 11 Limit minimum profile to constrained baseline due to
-unsupported features in the full baseline profile
-
-Patch 12 add a fix for enumerated frame sizes returned to userspace.
-
-Tested with Fluster on a ROCK Pi 4 (RK3399)
-
-129/135 on JVT-AVC_V1
-44/69 on JVT-FR-EXT
-
-Changes in v7:
-- Split out the change with the minimum profile
-- s/v4l2_format_plane_width/v4l2_format_plane_stride/
-- Move V4L2_PIX_FMT_NV15/V4L2_PIX_FMT_NV20 documentation as suggested
-- Change return value from int to bool on rkvdec_image_fmt_match
-- Add reviewed-by tags
-Link to v6: https://lore.kernel.org/linux-media/20240909192522.1076704-1-jonas@kwiboo.se/
-
-Changes in v6:
-- Change to use fmt_idx instead of j++ tucked inside a condition (Dan)
-- Add patch to fix enumerated frame sizes returned to userspace (Alex)
-- Fluster test score is same as v4 and v5, see [4] and [5]
-Link to v5: https://lore.kernel.org/linux-media/20240618194647.742037-1-jonas@kwiboo.se/
-
-Changes in v5:
-- Drop Remove SPS validation at streaming start patch
-- Move buffer align from rkvdec_fill_decoded_pixfmt to min/step_width
-- Use correct profiles for V4L2_CID_MPEG_VIDEO_H264_PROFILE
-- Collect r-b and t-b tags
-- Fluster test score is same as v4, see [4] and [5]
-Link to v4: https://lore.kernel.org/linux-media/20231105165521.3592037-1-jonas@kwiboo.se/
-
-Changes in v4:
-- Fix failed v4l2-compliance tests related to CAPTURE queue
-- Rework CAPTURE format filter anv validate to use an image format
-- Run fluster test suite JVT-FR-EXT [4] and JVT-AVC_V1 [5]
-Link to v3: https://lore.kernel.org/linux-media/20231029183427.1781554-1-jonas@kwiboo.se/
-
-Changes in v3:
-- Drop merged patches
-- Use bpp and bpp_div instead of prior misuse of block_w/block_h
-- New patch to use values from SPS/PPS control to configure the HW
-- New patch to remove an unnecessary call to validate sps at streaming start
-- Reworked pixel format validation
-Link to v2: https://lore.kernel.org/linux-media/20200706215430.22859-1-jonas@kwiboo.se/
-
-Changes in v2:
-- Collect r-b tags
-- SPS pic width and height in mbs validation moved to rkvdec_try_ctrl
-- New patch to not override output buffer sizeimage
-- Reworked pixel format validation
-- Only align decoded buffer instead of changing frmsize step_width
-Link to v1: https://lore.kernel.org/linux-media/20200701215616.30874-1-jonas@kwiboo.se/
-
-To fully runtime test this series you may need FFmpeg patches from [1]
-and fluster patches from [2], this series is also available at [3].
-
-[1] https://github.com/Kwiboo/FFmpeg/commits/v4l2request-2024-v2-rkvdec/
-[2] https://github.com/Kwiboo/fluster/commits/ffmpeg-v4l2request-rkvdec/
-[3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v6/
-[4] https://gist.github.com/Kwiboo/f4ac15576b2c72887ae2bc5d58b5c865
-[5] https://gist.github.com/Kwiboo/459a1c8f1dcb56e45dc7a7a29cc28adf
-
-Regards,
-Jonas
-
-Alex Bee (1):
-  media: rkvdec: h264: Don't hardcode SPS/PPS parameters
-
-Jonas Karlman (10):
-  media: v4l2-common: Add helpers to calculate bytesperline and
-    sizeimage
-  media: v4l2: Add NV15 and NV20 pixel formats
-  media: rkvdec: h264: Use bytesperline and buffer height as virstride
-  media: rkvdec: Extract rkvdec_fill_decoded_pixfmt into helper
-  media: rkvdec: Move rkvdec_reset_decoded_fmt helper
-  media: rkvdec: Extract decoded format enumeration into helper
-  media: rkvdec: Add image format concept
-  media: rkvdec: Add get_image_fmt ops
-  media: rkvdec: h264: Support High 10 and 4:2:2 profiles
-  media: rkvdec: Fix enumerate frame sizes
-
- .../media/v4l/pixfmt-yuv-planar.rst           | 128 ++++++++++
- drivers/media/v4l2-core/v4l2-common.c         |  80 +++---
- drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
- drivers/staging/media/rkvdec/rkvdec-h264.c    |  64 +++--
- drivers/staging/media/rkvdec/rkvdec.c         | 239 +++++++++++++-----
- drivers/staging/media/rkvdec/rkvdec.h         |  18 +-
- include/uapi/linux/videodev2.h                |   2 +
- 7 files changed, 410 insertions(+), 123 deletions(-)
-
---
-2.46.0
-
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
-Alex Bee (1):
-      media: rkvdec: h264: Don't hardcode SPS/PPS parameters
+ drivers/staging/media/rkvdec/rkvdec.c | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
 
-Jonas Karlman (10):
-      media: v4l2-common: Add helpers to calculate bytesperline and sizeimage
-      media: v4l2: Add NV15 and NV20 pixel formats
-      media: rkvdec: h264: Use bytesperline and buffer height as virstride
-      media: rkvdec: Extract rkvdec_fill_decoded_pixfmt into helper
-      media: rkvdec: Move rkvdec_reset_decoded_fmt helper
-      media: rkvdec: Extract decoded format enumeration into helper
-      media: rkvdec: Add image format concept
-      media: rkvdec: Add get_image_fmt ops
-      media: rkvdec: h264: Support High 10 and 4:2:2 profiles
-      media: rkvdec: Fix frame size enumeration
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index f9bef5173bf25c0cd6b09d2b253d36aa78d7b0c4..e354360f4acc1fe9b7c4b90745f0a818fa2b7cab 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -27,6 +27,16 @@
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+ 
++static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
++				       struct v4l2_pix_format_mplane *pix_mp)
++{
++	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
++			    pix_mp->width, pix_mp->height);
++	pix_mp->plane_fmt[0].sizeimage += 128 *
++		DIV_ROUND_UP(pix_mp->width, 16) *
++		DIV_ROUND_UP(pix_mp->height, 16);
++}
++
+ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
+@@ -192,13 +202,9 @@ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
+ 
+ 	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
+ 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+-	v4l2_fill_pixfmt_mp(&f->fmt.pix_mp,
+-			    ctx->coded_fmt_desc->decoded_fmts[0],
+-			    ctx->coded_fmt.fmt.pix_mp.width,
+-			    ctx->coded_fmt.fmt.pix_mp.height);
+-	f->fmt.pix_mp.plane_fmt[0].sizeimage += 128 *
+-		DIV_ROUND_UP(f->fmt.pix_mp.width, 16) *
+-		DIV_ROUND_UP(f->fmt.pix_mp.height, 16);
++	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
++	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
++	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
+ }
+ 
+ static int rkvdec_enum_framesizes(struct file *file, void *priv,
+@@ -264,12 +270,7 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 				       &pix_mp->height,
+ 				       &coded_desc->frmsize);
+ 
+-	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
+-			    pix_mp->width, pix_mp->height);
+-	pix_mp->plane_fmt[0].sizeimage +=
+-		128 *
+-		DIV_ROUND_UP(pix_mp->width, 16) *
+-		DIV_ROUND_UP(pix_mp->height, 16);
++	rkvdec_fill_decoded_pixfmt(ctx, pix_mp);
+ 	pix_mp->field = V4L2_FIELD_NONE;
+ 
+ 	return 0;
 
-Sebastian Fricke (1):
-      media: rkvdec: h264: Limit minimum profile to constrained baseline
-
- .../userspace-api/media/v4l/pixfmt-yuv-planar.rst  | 128 +++++++++++
- drivers/media/v4l2-core/v4l2-common.c              |  80 +++----
- drivers/media/v4l2-core/v4l2-ioctl.c               |   2 +
- drivers/staging/media/rkvdec/rkvdec-h264.c         |  64 ++++--
- drivers/staging/media/rkvdec/rkvdec.c              | 239 +++++++++++++++------
- drivers/staging/media/rkvdec/rkvdec.h              |  18 +-
- include/uapi/linux/videodev2.h                     |   2 +
- 7 files changed, 410 insertions(+), 123 deletions(-)
----
-base-commit: c2b96a6818159fba8a3bcc38262da9e77f9b3ec7
-change-id: 20250116-rkvdec_h264_high10_and_422_support-a8f2da8a09e6
-
-Best regards,
 -- 
-Sebastian Fricke <sebastian.fricke@collabora.com>
+2.25.1
 
 
 _______________________________________________
