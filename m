@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 776CBC021B2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 18:40:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 124B8C021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 18:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3NC+tmt9rA8YBHl8puRdqBrUWv6xyiaGYExOXeYEU3c=; b=TCkg7SWoXnTPUAE6TRx6FvJaV1
-	SpGc1XSPX61wGSmkQCshUQHrLOgE7du1W+qkEDRsUzeDMY7qD78JqQyEqldxt7//hL079adicMlAO
-	HiskC5yABH5O/2NBWan0h+HsDyq3C36SfTEwzezK3Z1Hc/N4gIzB0/jkLlDlGfw/Dh2hYcSM3aOt5
-	7Ucji3t3ZLHQFJ8sUs6r3zTmcGeoI1tXIyCvS2gmHYkS9ATpT7dacAhqUzL168Qfu9CGjXSsQw2SR
-	wJtgH/pVm/5MgzPRoNAH0mha1ZRVXfb3eJR5eW4EryT1XOwvzrIddGe03RKS9vQ5ijcS/6LZZI6GC
-	EH3Axn/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MZiG2ztYbCzL5RZ9Nb4A/6WFvkV4WR48oMcoOY2QBos=; b=mT5eBzgwJkyxNm
+	oS1PsqBI/T0m9Vcd8HRuNZEtgGvSsaZn7q/y01+X0oLQ/VuUp7UPJymsRNynLbbyoDrUxc3I8d/u/
+	Qs+NJuT0hkG1bFxUHbsh367fRXhmW74Mt/bKS7zEl2gG9GAdKXWYwk1MLQNO32+hbtZk4DbkgkTHm
+	V5JyW2VuNkuftv3FjQkdoL0rMpoUkXVaLBrY6fULki21iR76o50uk5JxjjrZeMjFatzOuIrl/a+iW
+	qXJw3F0nWbeJopBfk4yOIjLcnPOWkUWSUKR/xMnwJyrOvwtvSH89gDzjIDGatQ70Xxyc77EB6u2za
+	qY7iwLrFSTubGogDGIuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmzqu-00000000zUu-0gfp;
-	Tue, 25 Feb 2025 18:40:20 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tmzsf-0000000101O-0Tyg;
+	Tue, 25 Feb 2025 18:42:09 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmzDG-00000000nHn-0WrP
+	id 1tmzio-00000000wuc-46ye
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 17:59:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9CD3A612AA;
-	Tue, 25 Feb 2025 17:59:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C258C4CEE2;
-	Tue, 25 Feb 2025 17:59:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740506361;
-	bh=yBULEnieTf/nQ04VsVNsRxbU8OeMLTkbgocf2i5ZY0M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qWkp5SfVATCU6JXaCE4TayPuVL+eCHSYSxbJ3H1xQhC0vAS40u98f1WrKObFiVBgh
-	 yqVqMjhZ/YO18OlGgUp0l5NDa/hkbIklidIn82bUP2vJTvJp6yw+73Dh7bHNfqYjHN
-	 +ZQr73CANA2OvIk1XXw4dx2S4aewx69rt6eH3fnc9wALnp3bpQewmBdza28ubI06dG
-	 1dYTu+HfjsJ0i+/DbEsJBcrK1PTDJ/jtaWtpE34VPnAVeQ6EtNFG1BJ+KBYu3uGvnt
-	 MW7NV3+F74bLsP96vaa9QMsK8x6t2brZChzW3h0j/0Us4zQdbR1ruz1320aM+dyxlC
-	 EbdtbJ99OKDAQ==
-Date: Tue, 25 Feb 2025 17:59:15 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+	Tue, 25 Feb 2025 18:32:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740508307; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=U5/FaTdndwqBqtD9yWOtXXRHdXPcxIt3WDJFh+QTJnSfhF04JyOKCkd7INXoolX9zGxy8xpLmU73JAjDqfzMudJ+dh5x8xE32T5hlYZr54+Apu51XAdIlu7hysEoyuSv+U9dFOVbI/5IoMPZ8l4cQ3CN44PAfNqDudNY51Fh+fo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740508307; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ksDagsXbRnqXqY/SM85Of5WqOjgwoOYDeKarCY0Qk/4=; 
+	b=A19J2CSy2PXC8n57nLGry+yxSGPeI7/o8ffwCvbIAtiIW0tF87NgqAlnXWThmF8co63x6oUpf53H7QLYUNtGOebyRbea5hKwn7exX6OGitF7QZRMr7LZNJq3Dr29t0WFzoSjldgIp9SuQHfuYgHiE1GOH/oLdjQWRDhtpgfP9wI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740508307;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ksDagsXbRnqXqY/SM85Of5WqOjgwoOYDeKarCY0Qk/4=;
+	b=L89/9lwfPNFmZT77ZLk1sI1z3DwLwa/md/fKhnFCaPQThuwgN5OtJDW9koDXr1bU
+	13QhwOHcml1llK/Tb34S0ro7ugxQ5GUStYSwIh/eDI3ft1eEvyb6H2Unt6R1kFFt2MD
+	Oogl9IaxNvhzRulnO88m4K5aeGy51H10SSeOHCNo=
+Received: by mx.zohomail.com with SMTPS id 1740508306356520.2415660523628;
+	Tue, 25 Feb 2025 10:31:46 -0800 (PST)
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+To: Shreeya Patel <shreeya.patel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	=?iso-8859-1?Q?Adri=E1n_Mart=EDnez?= Larumbe <adrian.larumbe@collabora.com>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Vignesh Raman <vignesh.raman@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v6 1/8] regulator: Add (devm_)of_regulator_get()
-Message-ID: <3360051d-1699-46cc-a4c9-0f379fcf8de0@sirena.org.uk>
-References: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
- <20250220-rk3588-gpu-pwr-domain-regulator-v6-1-a4f9c24e5b81@kernel.org>
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Tim Surber <me@timsurber.de>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH v10 1/6] MAINTAINERS: Add entry for Synopsys DesignWare HDMI RX Driver
+Date: Tue, 25 Feb 2025 21:30:53 +0300
+Message-ID: <20250225183058.607047-2-dmitry.osipenko@collabora.com>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250225183058.607047-1-dmitry.osipenko@collabora.com>
+References: <20250225183058.607047-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20250220-rk3588-gpu-pwr-domain-regulator-v6-1-a4f9c24e5b81@kernel.org>
-X-Cookie: I'm not available for comment..
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250225_103159_083414_6CDFD81C 
+X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,83 +90,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2862937805407654694=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Shreeya Patel <shreeya.patel@collabora.com>
 
---===============2862937805407654694==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6DahNsJj491Prgx/"
-Content-Disposition: inline
+Add an entry for Synopsys DesignWare HDMI Receiver Controller
+Driver.
 
+Reviewed-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+---
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
---6DahNsJj491Prgx/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2286200b355b..1bb6a54e41c6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -22952,6 +22952,14 @@ F:	drivers/net/pcs/pcs-xpcs.c
+ F:	drivers/net/pcs/pcs-xpcs.h
+ F:	include/linux/pcs/pcs-xpcs.h
+ 
++SYNOPSYS DESIGNWARE HDMI RX CONTROLLER DRIVER
++M:	Shreeya Patel <shreeya.patel@collabora.com>
++L:	linux-media@vger.kernel.org
++L:	kernel@collabora.com
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
++F:	drivers/media/platform/synopsys/hdmirx/*
++
+ SYNOPSYS DESIGNWARE I2C DRIVER
+ M:	Jarkko Nikula <jarkko.nikula@linux.intel.com>
+ R:	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+-- 
+2.48.1
 
-On Thu, Feb 20, 2025 at 07:58:04PM +0100, Sebastian Reichel wrote:
-> The Rockchip power-domain controller also plans to make use of
-> per-domain regulators similar to the MediaTek power-domain controller.
-> Since existing DTs are missing the regulator information, the kernel
-> should fallback to the automatically created dummy regulator if
-> necessary. Thus the version without the _optional suffix is needed.
-
-The following changes since commit 0ad2507d5d93f39619fc42372c347d6006b64319:
-
-  Linux 6.14-rc3 (2025-02-16 14:02:44 -0800)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git tags/regulator-devm-of-get
-
-for you to fetch changes up to 0dffacbbf8d044456d50c893adb9499775c489f4:
-
-  regulator: Add (devm_)of_regulator_get() (2025-02-24 15:26:08 +0000)
-
-----------------------------------------------------------------
-regulator: Add (devm_)of_regulator_get()
-
-This introduces devm_of_regulator_get without the _optional suffix, since
-that is more sensible for the Rockchip usecase.
-
-----------------------------------------------------------------
-Sebastian Reichel (1):
-      regulator: Add (devm_)of_regulator_get()
-
- drivers/regulator/devres.c         | 17 +++++++++++++++++
- drivers/regulator/of_regulator.c   | 21 +++++++++++++++++++++
- include/linux/regulator/consumer.h |  6 ++++++
- 3 files changed, 44 insertions(+)
-
---6DahNsJj491Prgx/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAme+BPIACgkQJNaLcl1U
-h9A55wf/defOMhqJG1AXSmf7/jp/1X3vDIPMsTOOh0tDNUJtT8RdlyJ/1G15zthm
-Ox921lEC1kReTUTejPD2nPrh+9WGu66Fcsm9T61U1q6bAZeAMclhcM6guiw66nXp
-Dx7seGYTztQQY3PdtZmGK7jouFWjKA9f8CPEIENafSPzm6VMuQ50i/+snwRKcsKU
-aM8r9w6ordMdNXq1ZG8lb7Y+gQuwpBBQ2/yELkpoLg/ONyGeR2YikE9Vm5h8jXEE
-LpZh0x1iCwDVWgAJT+bE8g5u8IboaG8D8slK3sUb4f0VN9IiZSDcVOh9yKt4DZR5
-oSNOuTmiEVVNTswy+nw3QdpvMLDTbg==
-=rB2k
------END PGP SIGNATURE-----
-
---6DahNsJj491Prgx/--
-
-
---===============2862937805407654694==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2862937805407654694==--
-
