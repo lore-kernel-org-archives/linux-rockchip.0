@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EC5C021B2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 21:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9531C021BB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 22:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0GohDynIpHY/X2QrvMu+l6TotjKYrC0BdZBiwr1AVQI=; b=b3te4Lfgq4R+9V
-	IHME3jYxcqGEwE/dDFfbZMI6AjcfTgI1JsC9uweRVLdN1jTfi/jKLJV5FP3qpt/VEtvMhOWmcB3mF
-	+WJNEuN22Xkcehud5/oPuHPnykY1lpaMrKtYHOoBizxzpJ3q2S1UpfwM+MNpb1Xb2l9ptMVyTURT9
-	cIBdfaNHK0K5CcRm6J9PBHNKNQhFWKwA5nDV7fMUvL4aWtKuhMzN3jHLfDr5f9yKOEQk1xuCMqcHQ
-	KU5cVG44W7+vrRC62tXc0vdW0yJK4HQzrvlUb49i9Rb80Gq1em21/t2p9kwwniEqfUlTEjfikDkaC
-	uiO5F03CKF7z7b97NmHw==;
+	List-Owner; bh=LG1YhiB6Goj+E0Q0GedkWc4wOWyV4zf+3psb8HxG8s8=; b=QCZnSX4Y6Jp0/Q
+	tgePPvIChj9RhwzE+GwlhqZYBNXKG3RF3lY5CmKoIZ1c2lMHoft5srI6sFlft1+CsjM7kh8XdKxKT
+	s8iNMr9zfpedlSrTLC+avn0gtyslZYEfyhRlfYkxyVX+pGVjj7pZ/EYkFVVSgglFT0eFNepcWmkKe
+	6aAvd5bC+9+l/D0tVbhZD0w0oGjuhySV+sZ0/00V4+q0H9DoVtrQb/eDWk55jbB2GaSUM0J+FBN7H
+	zvZP0/qKbUtsXad9YzBpb+oWVCtiNTmoTxyqGAuap506EoVAVWDlQPh4bLiT7Fx0jWWxVttAslpom
+	qpg/lkQGCi1evTxATjUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn2tZ-00000001cPF-0eGg;
-	Tue, 25 Feb 2025 21:55:17 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tn37C-00000001e8I-2PN9;
+	Tue, 25 Feb 2025 22:09:22 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn2q8-00000001bmK-3p1v;
-	Tue, 25 Feb 2025 21:51:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740520299; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=kKpnwqL23qM255LDU7Kavm53nW5Sfsv/fiQCAMwjmhozGaXDh7gBbsN9XV69BvD6VHGdGdEkZkeyFYWoLaP4atl3j/FIjpWs0d+lVnOCAwEc97uub9MJN/I09m+xxNzZTY0OmJl9BPrCczZa0ZXqPP0PcgCitsOKJgySg89juXg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740520299; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gRvAwLbNIssG674AaLjZhtPbGgHizEjSnBjeusKXP4A=; 
-	b=fs+RxRi3Dx1sHjH3ffMThzrKwCOhtPiwvTQivQx2+Z529hEKvHYDy1jDf8rhm+BcGKExafSCqrYxWUro1u56H5MN6hR8SSq1ODuVrMyiULEfAuS4tJ3HQubuICV12icDr8GlxDsAqkjm2e66Q59TtH3YEDH6hgds9JIAR/cIBhc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740520299;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=gRvAwLbNIssG674AaLjZhtPbGgHizEjSnBjeusKXP4A=;
-	b=UPaipt5FnYaXKMPGeTGt2rQC6zrZWqvGss4ZULEqjqnAGwnkZnI2V6v1+As+pYHY
-	bIzMtKbGkmY9HBgFN8HH10TVpf2bd8I28HVXoAOVgEQsJfe+arrBfO/8ThHTptes9KD
-	aufIe8euQL5DeFgPEduRo4PN+0vzMvozv1VVFIdk=
-Received: by mx.zohomail.com with SMTPS id 1740520296039872.1712499063477;
-	Tue, 25 Feb 2025 13:51:36 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 040DF18040A; Tue, 25 Feb 2025 22:51:31 +0100 (CET)
-Date: Tue, 25 Feb 2025 22:51:30 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
-	Simon Xue <xxm@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, linux-kernel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v7 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576 support
-Message-ID: <jzxf7a7xm4xm5yjgim2sqmxuvmtjrqupps3mnwvhbzimsu6zdk@75fyzct43n3e>
-References: <20250225102611.2096462-1-kever.yang@rock-chips.com>
+	id 1tn35f-00000001dwO-0bh7;
+	Tue, 25 Feb 2025 22:07:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=9y5sTKYEXLQagcrQ08sowh0qtFj8xpcMz2E6G6v/6/w=; b=mYYa5x6nqhBuI09Hs4BwIXoyme
+	BEl+PH9xRCyB3e6jQJu2QydrZ6WGmEeLV29u7ZUKGy9aErUM8gIQTLHJZl2JzfPCMatot48tIF9MZ
+	TqGoegyZqDL6BgKJekpCqJyCq+AItqpL1WUrBYyMaXhqhA1vxJvR2bkONd5LzuML6iJj2LplatPok
+	XYfWpaewm0Ovlg6pXQvkTNsjuKvSYg9VXKxfyg6hgRuiZkUDQ/PfHGuhxBkFnBeNGs313a/p7EZW2
+	CyELE4ZinuHnn2toOFlBM8b7i30e2U/n6DfMvlDztb1JF4Wi4w9YKlJXqd49kkjnMjEUqGAGIiZci
+	G6B68apQ==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tn35c-0008Bd-Ut; Tue, 25 Feb 2025 23:07:44 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: vkoul@kernel.org, kishon@kernel.org
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ quentin.schulz@cherry.de, sebastian.reichel@collabora.com,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 2/2] phy: rockchip: usbdp: re-init the phy on orientation-change
+Date: Tue, 25 Feb 2025 23:07:44 +0100
+Message-ID: <10951990.zapYfy813O@diego>
+In-Reply-To: <20250225184519.3586926-3-heiko@sntech.de>
+References: <20250225184519.3586926-1-heiko@sntech.de>
+ <20250225184519.3586926-3-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250225102611.2096462-1-kever.yang@rock-chips.com>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_135144_987257_435AF9EC 
-X-CRM114-Status: GOOD (  22.48  )
+X-CRM114-CacheID: sfid-20250225_140747_204502_25EFD280 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,166 +75,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Kever,
-
-On Tue, Feb 25, 2025 at 06:26:10PM +0800, Kever Yang wrote:
-> rk3576 is using DWC PCIe controller, with msi interrupt directly to GIC
-> instead of using GIC ITS, so
-> - no ITS support is required and the 'msi-map' is not required,
-> - a new 'msi' interrupt is needed.
-> 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
-
-You should either drop my Signed-off-by or add
-
-Co-developed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Both options are fine with me, but the current one does not make
-much sense :)
-
-Greetings,
-
--- Sebastian
-
-> 
-> Changes in v7:
-> - Move the rk3576 device specific schema out of common.yaml
-> 
-> Changes in v6:
-> - Fix make dt_binding_check and make CHECK_DTBS=y
-> 
-> Changes in v5:
-> - Add constraints per device for interrupt-names due to the interrupt is
-> different from rk3588.
-> 
-> Changes in v4:
-> - Fix wrong indentation in dt_binding_check report by Rob
-> 
-> Changes in v3:
-> - Fix dtb check broken on rk3588
-> - Update commit message
-> 
-> Changes in v2:
-> - remove required 'msi-map'
-> - add interrupt name 'msi'
-> 
->  .../bindings/pci/rockchip-dw-pcie-common.yaml | 10 +++-
->  .../bindings/pci/rockchip-dw-pcie.yaml        | 55 +++++++++++++++++--
->  2 files changed, 57 insertions(+), 8 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> index cc9adfc7611c..2150bd8b5fc2 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-> @@ -65,7 +65,11 @@ properties:
->            tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
->            nf_err_rx, f_err_rx, radm_qoverflow
->        - description:
-> -          eDMA write channel 0 interrupt
-> +          If the matching interrupt name is "msi", then this is the combinded
-> +          MSI line interrupt, which is to support MSI interrupts output to GIC
-> +          controller via GIC SPI interrupt instead of GIC its interrupt.
-> +          If the matching interrupt name is "dma0", then this is the eDMA write
-> +          channel 0 interrupt.
->        - description:
->            eDMA write channel 1 interrupt
->        - description:
-> @@ -81,7 +85,9 @@ properties:
->        - const: msg
->        - const: legacy
->        - const: err
-> -      - const: dma0
-> +      - enum:
-> +          - msi
-> +          - dma0
->        - const: dma1
->        - const: dma2
->        - const: dma3
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> index 550d8a684af3..4764a0173ae4 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> @@ -16,16 +16,13 @@ description: |+
->    PCIe IP and thus inherits all the common properties defined in
->    snps,dw-pcie.yaml.
+Am Dienstag, 25. Februar 2025, 19:45:19 MEZ schrieb Heiko Stuebner:
+> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> index 7b17c82ebcfc..b63259a90d85 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> @@ -1277,6 +1277,7 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>  				 enum typec_orientation orien)
+>  {
+>  	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
+> +	int ret = 0;
 >  
-> -allOf:
-> -  - $ref: /schemas/pci/snps,dw-pcie.yaml#
-> -  - $ref: /schemas/pci/rockchip-dw-pcie-common.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
->        - const: rockchip,rk3568-pcie
->        - items:
->            - enum:
-> +              - rockchip,rk3576-pcie
->                - rockchip,rk3588-pcie
->            - const: rockchip,rk3568-pcie
+>  	mutex_lock(&udphy->mutex);
 >  
-> @@ -71,8 +68,54 @@ properties:
+> @@ -1292,6 +1293,12 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>  	rk_udphy_set_typec_default_mapping(udphy);
+>  	rk_udphy_usb_bvalid_enable(udphy, true);
 >  
->    vpcie3v3-supply: true
->  
-> -required:
-> -  - msi-map
-> +allOf:
-> +  - $ref: /schemas/pci/snps,dw-pcie.yaml#
-> +  - $ref: /schemas/pci/rockchip-dw-pcie-common.yaml#
-> +  - if:
-> +      not:
-> +        properties:
-> +          compatible:
-> +            contains:
-> +              const: rockchip,rk3576-pcie
-> +    then:
-> +      required:
-> +        - msi-map
+> +	/* re-init the phy if already on */
+> +	if (udphy->status != UDPHY_MODE_NONE) {
+> +		rk_udphy_disable(udphy);
+> +		ret = rk_udphy_setup(udphy);
+> +	}
 > +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-pcie
-> +    then:
-> +      properties:
-> +        interrupts:
-> +          minItems: 6
-> +          maxItems: 6
-> +        interrupt-names:
-> +          items:
-> +            - const: sys
-> +            - const: pmc
-> +            - const: msg
-> +            - const: legacy
-> +            - const: err
-> +            - const: msi
-> +    else:
-> +      properties:
-> +        interrupts:
-> +          minItems: 5
-> +        interrupt-names:
-> +          minItems: 5
-> +          items:
-> +            - const: sys
-> +            - const: pmc
-> +            - const: msg
-> +            - const: legacy
-> +            - const: err
-> +            - const: dma0
-> +            - const: dma1
-> +            - const: dma2
-> +            - const: dma3
-> +
->  
->  unevaluatedProperties: false
->  
-> -- 
-> 2.25.1
-> 
-> 
+
+just realized that 
+
+	if (udphy->status != UDPHY_MODE_NONE)
+		ret = rk_udphy_init(udphy);
+
+does the same, and we really don't need to disable and re-enable the
+phy's clocks that are the added via rk_udphy_disable and _setup.
+
+So will give it a day and send a v2 then.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
