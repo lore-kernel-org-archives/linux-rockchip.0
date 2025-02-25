@@ -4,55 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F6BC021BB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 12:32:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32E1CC021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 13:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EdfqpTHzm+XeL8i06OPdl3q4EtqwSAho/TOS5pC4x7E=; b=X17eP7EXRq1a+k
-	JY2orS8/QZ9vgDTs7dc491d2hX37aa9NWL0w+JkqdgXjP54CnAMsmdjU8rhrZsI2NzbIOGpz1IoXd
-	NNs/r9fddHF5ttx+w+HNS7eIYWU4/gwlLIwtt1xRaTp7oR1Wa6MJJYtXHyGV9DnurozQWShvohIk9
-	Hb5oGXg8kzotfsVGnvOnowT7U5zlBUy6Ml6BBoXaNw8QTPTT4Y7M+1SpBbErX+Q/nwWD0rgUxNulq
-	R1AhYNx+NwECO7EIoJ54eLtFWKvrsw1vGVpazTuyngsOUSiL7JDUxN+rNYJ3qpyvUSon/BGptjM08
-	5JP0bQ8As8JgJhRsNjAQ==;
+	List-Owner; bh=ZFV2lNt5U0YXb+smV7LkAmYtvH9uN2M41Ww6xOnPH9A=; b=kd76QZzQQKl/oT
+	J6+VGksYmyjPr13p98g9RZ/i105FY8v7m0N/hVJKvDEUOAmzludr3i5a1SMhcf1mB/BZAnLBtw+G/
+	BKXM8QAavzFw1TjXLAa61bGJGkAL20J3QGE3jUwfI9cljlRbYikR2UDLnj4Ui+/7Jiz34UNX/iVtK
+	npcoK3Gb3AjuSTAVd6PMQpONjy8jTDezIMoEPqjSYwd7gp9mf5ea9+406eMDopiyugzhsK/yenc4Q
+	TjeOe6eaWgLk5YfZ+xz1QGjoryN6OOIlTWBPHLVJu52qztAN+bjkzXHkDEOOd95JDYQlqc4rhFBD3
+	/Ofi3j+fejfQiJ1mebfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmu6q-0000000HDgz-2O57;
-	Tue, 25 Feb 2025 12:32:24 +0000
-Received: from smtp-1908.mail.infomaniak.ch ([185.125.25.8])
+	id 1tmuYE-0000000HHmv-0Uov;
+	Tue, 25 Feb 2025 13:00:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmtVY-0000000H6c5-2cMa
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 11:53:55 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Z2GGN1zmGzPp2;
-	Tue, 25 Feb 2025 12:53:48 +0100 (CET)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Z2GGM4bc9zCcj;
-	Tue, 25 Feb 2025 12:53:47 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 25 Feb 2025 12:53:29 +0100
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: fix pinmux of UART0 for PX30
- Ringneck on Haikou
+	id 1tmu2U-0000000HD7w-28PX;
+	Tue, 25 Feb 2025 12:27:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F0F85C661C;
+	Tue, 25 Feb 2025 12:27:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3E52C4CEDD;
+	Tue, 25 Feb 2025 12:27:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740486473;
+	bh=2ncFbmwvUgcbSappvhge9nJXN6LJwl6EsNRd1xDptck=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=u6/PcmnM0ttEbTSsdffPDQRNk95br50C45yPJLrv44lgxoyS89N6KrJTnU+hdEVny
+	 Gglujib8J6ld8Esi7AubTzFM2cz/2mTZ2Z4Ye9Et64G+bUBW9iaWl9z1Ms7kNtqEhD
+	 v3i1Oz8Gde7IBiGBcsRm6a9UpaRLs3lYbdbTLAiXFUqbdPQjOoOm/ROHYmLT8UrSKa
+	 oMreYhsCZgbAYQ0z9hWhBQ6v3SvoaW0w97yfwCHutoIa4T0fqQI+2v7CyYaRBac6Zh
+	 axoAN6V4Xa4VSQRn87pHDcHDNA/wk4821aRwXHfr7Rhqj8GZq8ZOfLfqGTZbjyvd0k
+	 DKTkcnrcsrcag==
+Date: Tue, 25 Feb 2025 13:27:48 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/2] PCI: dw-rockchip: hide broken ATS capability
+Message-ID: <Z723RNjC2pYYqAHn@ryzen>
+References: <20250221202646.395252-3-cassel@kernel.org>
+ <20250221202646.395252-4-cassel@kernel.org>
+ <93cdce39-1ae6-4939-a3fc-db10be7564e5@rock-chips.com>
 MIME-Version: 1.0
-Message-Id: <20250225-ringneck-dtbos-v3-1-853a9a6dd597@cherry.de>
-References: <20250225-ringneck-dtbos-v3-0-853a9a6dd597@cherry.de>
-In-Reply-To: <20250225-ringneck-dtbos-v3-0-853a9a6dd597@cherry.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
- Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
-X-Mailer: b4 0.14.2
-X-Infomaniak-Routing: alpha
+Content-Disposition: inline
+In-Reply-To: <93cdce39-1ae6-4939-a3fc-db10be7564e5@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_035352_824327_28C1CCD5 
-X-CRM114-Status: UNSURE (   8.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250225_042754_664365_F5C820AD 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,30 +74,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGNoZXJyeS5kZT4KClVBUlQwIHBp
-bm11eCBieSBkZWZhdWx0IGNvbmZpZ3VyZXMgR1BJTzBfQjUgaW4gaXRzIFVBUlQgUlRTIGZ1bmN0
-aW9uIGZvcgpVQVJUMC4gSG93ZXZlciwgYnkgZGVmYXVsdCBvbiBIYWlrb3UsIGl0IGlzIHVzZWQg
-YXMgR1BJTyBhcyBVQVJUIFJUUyBmb3IKVUFSVDUuCgpUaGVyZWZvcmUsIGxldCdzIHVwZGF0ZSBV
-QVJUMCBwaW5tdXggdG8gbm90IGNvbmZpZ3VyZSB0aGUgcGluIGluIHRoYXQKbW9kZSwgYSBsYXRl
-ciBjb21taXQgd2lsbCBtYWtlIFVBUlQ1IHJlcXVlc3QgdGhlIEdQSU8gcGlubXV4LgoKRml4ZXM6
-IGM0ODRjZjkzZjYxYiAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgUFgzMC3CtVE3IChSaW5n
-bmVjaykgU29NIHdpdGggSGFpa291IGJhc2Vib2FyZCIpCkNjOiBzdGFibGVAdmdlci5rZXJuZWwu
-b3JnClNpZ25lZC1vZmYtYnk6IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNjaHVsekBjaGVycnku
-ZGU+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLXJpbmduZWNrLWhhaWtv
-dS5kdHMgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBh
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcHgzMC1yaW5nbmVjay1oYWlrb3UuZHRzIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLXJpbmduZWNrLWhhaWtvdS5kdHMKaW5k
-ZXggZWI5NDcwYTAwZTU0OWZjMTA3NjAzYmUyMTZhNWY3MTQ5MTRlN2EyYy4uOWE1NjhmM2QwYTk5
-MTZkZmYyMjIyMmM1OWU1ZTBjOTRjZTIyNjg1OCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9weDMwLXJpbmduZWNrLWhhaWtvdS5kdHMKKysrIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9weDMwLXJpbmduZWNrLWhhaWtvdS5kdHMKQEAgLTIyMiw2ICsyMjIs
-NyBAQCAmdTJwaHlfb3RnIHsKIH07CiAKICZ1YXJ0MCB7CisJcGluY3RybC0wID0gPCZ1YXJ0MF94
-ZmVyPjsKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCgotLSAKMi40OC4xCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello Shawn,
+
+On Tue, Feb 25, 2025 at 09:35:22AM +0800, Shawn Lin wrote:
+> On 2025/2/22 4:26, Niklas Cassel wrote:
+> > When running the rk3588 in endpoint mode, with an Intel host with IOMMU
+> > enabled, the host side prints:
+> > DMAR: VT-d detected Invalidation Time-out Error: SID 0
+> > 
+> > When running the rk3588 in endpoint mode, with an AMD host with IOMMU
+> > enabled, the host side prints:
+> > iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
+> > 
+> > Usually, to handle these issues, we add a quirk for the PCI vendor and
+> > device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
+> > we cannot usually modify the capabilities on the EP side.
+> > 
+> > In this case, we can modify the capabilties on the EP side. Thus, hide the
+> > broken ATS capability on rk3588 when running in EP mode. That way,
+> 
+> Niklas, Thanks for reporting this issue. It's been a while before
+> getting confirmation from the design team. Now I can confirm the ATS support
+> for RK3588 is only available running as RC but I'm still
+> requesting erratum about this issue if possible.
+> 
+> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Thank you for confirming!
+
+Considering that rock5b running in RC mode:
+# lspci -vvvs 0000:00:00.0 | grep Capa
+        Capabilities: [40] Power Management version 3
+        Capabilities: [50] MSI: Enable+ Count=16/32 Maskable+ 64bit+
+        Capabilities: [70] Express (v2) Root Port (Slot-), IntMsgNum 8
+        Capabilities: [b0] MSI-X: Enable- Count=128 Masked-
+        Capabilities: [100 v2] Advanced Error Reporting
+        Capabilities: [148 v1] Secondary PCI Express
+        Capabilities: [190 v1] L1 PM Substates
+        Capabilities: [1d0 v1] Vendor Specific Information: ID=0002 Rev=4 Len=100 <?>
+        Capabilities: [2d0 v1] Vendor Specific Information: ID=0006 Rev=0 Len=018 <?>
+
+and rock5b running in EP mode:
+# lspci -vvvs 0000:01:00.0 | grep Capa
+        Capabilities: [40] Power Management version 3
+        Capabilities: [50] MSI: Enable+ Count=32/32 Maskable+ 64bit+
+        Capabilities: [70] Express (v2) Endpoint, IntMsgNum 8
+        Capabilities: [b0] MSI-X: Enable- Count=2048 Masked-
+        Capabilities: [100 v2] Advanced Error Reporting
+        Capabilities: [148 v1] Secondary PCI Express
+        Capabilities: [178 v1] Page Request Interface (PRI)
+                Page Request Capacity: 00000001, Page Request Allocation: 00000000
+        Capabilities: [188 v1] Latency Tolerance Reporting
+        Capabilities: [190 v1] L1 PM Substates
+        Capabilities: [1a0 v1] Dynamic Power Allocation <?>
+        Capabilities: [1d0 v1] Vendor Specific Information: ID=0002 Rev=4 Len=100 <?>
+        Capabilities: [2d0 v1] Vendor Specific Information: ID=0006 Rev=0 Len=018 <?>
+        Capabilities: [2e8 v1] Physical Resizable BAR
+
+already exposes different Capabilities (depending on the mode the PCIe
+controller is running in), I would say that it slightly confusing that
+Synopsys chose not to hide the ATS Capability when the PCIe controller
+is running in EP mode.
+So, I would guess that there is an errata for this.
+
+But I think that your confirmation is enough.
+Will take a while before I can send out a V2 though, but quite confident
+that we can get something merged in time for 6.15.
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
