@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2E6C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 16:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F532C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 16:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=koW+Lzv5TwdR3bs3YbFCypbEMxVZhQN8x3XzxkpUwQI=; b=DxBkbmZbnolEk7
-	UER1sDLamAKQTUx+3TBBAAmI9mhhi8N2jefgl5tBY2HytVmA3Pt1Tg8pQZVWcoTpIaog25MvM2OmC
-	1IbVMvvxGmYkJHv3Ea8YH2MDDLAWRo/ywgmAjMHfgJW3G7vdY1e1lGelDyjTZSsltlzSwnmlYq4/+
-	CokPjDrTaRifY50ANvpI5mDgyetO10eQskTnBu+7maIPaqG/dOHem4QdYdIiKy5Rbty9joPY6P8fM
-	5Syqz85HlI5tUAXpzv2ARTbbSgG1olIzyJtQ9R9zsjX2mIInyIOA8i3YojGIqDDNuqk2Fe8dy+YMe
-	HrbXAvPeO5f2IUhXbAgg==;
+	List-Owner; bh=JlioqQtioyTBudT9HlZTjjLM4nAPQkghPjoyLCzjzX0=; b=27B7zwFdOJI9Kn
+	77A+kDSQteLtSSrRSPyOOhq6KLYRhZB+KV0UGnlt7+jvuGvbxijzRm3N1+sjZmM4FfndFtle2Szjq
+	gh33COcRPRc4el0xnKtbCEloUb3Jy5Atl3GvdIk5NH0dRvXQmocY2cUtdb0gVthtcmUWjKNlN8mWZ
+	E7TarhaXH6BufwvO8+5A0vnNIaYKgWxelffuy2a63h7zxzOrqoKdeVm7DbQdKyD+Gmd+Ug+eeUDaE
+	gRyk/YFd+kYiyAFNSQdsdDZjumJhFYE6/UCCFG5p17fobmnmFdYy43muRTARPjdkSFLaowoSyda7C
+	lAsj5sjwqOYu+wB1oavA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmy0u-00000000LRa-3e4f;
-	Tue, 25 Feb 2025 16:42:32 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tmy37-00000000OsN-0wUy;
+	Tue, 25 Feb 2025 16:44:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmwP1-000000000Rp-1BMH;
-	Tue, 25 Feb 2025 14:59:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740495509; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=mQbs+nNywvchZFCL9JymH2C8Mfwg6UtxLkIBKFfXH+OgT3Er9z92reIXwwZDlCaXzBFGSqFUCB99RUbDPDI/jH3WgyxTy4695bkfa6stVdnU5tJI0DQqp40daOjUrBm7+EtUQ3nTgFTVt+I2k4fZ4NVcdvFExsYLShEv9OZYZV0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740495509; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=UPm7l3RiX1WuCB7tMXcd8twnqxK37m3RDu2nnogmkfY=; 
-	b=Z1XR4CWew3aD4t4Sl2nhyLbmcHwGn6emwSBsGnQO4/8UYJ4FvFwU/i0mQtXSRjC2zqlZvgUcmqM6KxF++fN8GPX/3fB0QueOEHTN8xQy/KcMO9+qDfo/VPaTs6w43L6R8BNnjGZbfA8KpgHrTuH/6H4kZvUtNffCy0svlZDWdkY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740495509;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=UPm7l3RiX1WuCB7tMXcd8twnqxK37m3RDu2nnogmkfY=;
-	b=VAtgprLNucRCs34k6jFRYcQYth7SSrgIubTX93w+NZ99KalCH1glGXW/gwR57Tvb
-	0xUz4CDDIKPg8yiKI5lCp8PLmGSnz7UYqMxGjLOaAnvcLRKb6TWugknX5lkX+zvm6K8
-	yMWQOyM3tOBj57i8GNs9LywGwbqDneKv9XS995cQ=
-Received: by mx.zohomail.com with SMTPS id 1740495506960426.84058732469487;
-	Tue, 25 Feb 2025 06:58:26 -0800 (PST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Cc: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>, linux-kernel@vger.kernel.org,
- Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com,
- David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>,
- Robert Foss <rfoss@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
-Date: Tue, 25 Feb 2025 09:58:23 -0500
-Message-ID: <3337030.aeNJFYEL58@trenzalore>
-In-Reply-To: <8734g2sg4t.wl-kuninori.morimoto.gx@renesas.com>
-References: <20250217215641.372723-1-detlev.casanova@collabora.com>
- <87frk2sumw.wl-kuninori.morimoto.gx@renesas.com>
- <8734g2sg4t.wl-kuninori.morimoto.gx@renesas.com>
+	id 1tmxOW-0000000098p-2xIn;
+	Tue, 25 Feb 2025 16:02:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 21FF65C7228;
+	Tue, 25 Feb 2025 16:02:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 263E1C4CEDD;
+	Tue, 25 Feb 2025 16:02:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740499371;
+	bh=NKncxX/f4OhZjM586JgqScppgEm06MohF+FhDmQBvJA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aayJ+tLxA6sG7cTVHHP4hUNez7LShHiaUnSSJzHetMr0TTsIqSW1PvC+ZUJ9IylE7
+	 XlWq5aGz/7ZLsFiIKCGQ+pWmDERxvEmBdfgcQNT73hLMRjK/aWv1nxDQ9Be+WUtb/9
+	 IxLLTAq02Rm+/M6N3AyMn3uwkw/UY1hMjCSoMBjMSIaePE/L+Qt01+v17wK+HsdLta
+	 yuvJmFvmc3hkC+asYqMSqPc7TAUKOm/snWXAHGGLreTeuo2+hfnTYI6e9APTZJVd+T
+	 8oKTWtP4n5A+GLUUHGhO38M0u90xZ/OY0/wrimn3qWuhSur6TavIPSH36oLHQA9CbG
+	 WLKmVFAGQ+l4A==
+Date: Tue, 25 Feb 2025 10:02:48 -0600
+From: Rob Herring <robh@kernel.org>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Oded Gabbay <ogabbay@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Jeffrey Hugo <quic_jhugo@quicinc.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
+Subject: Re: [PATCH v2 1/7] dt-bindings: npu: rockchip,rknn: Add bindings
+Message-ID: <20250225160248.GA2563229-robh@kernel.org>
+References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
+ <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_065919_379597_B9703610 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20250225_080252_827515_3733D65A 
+X-CRM114-Status: GOOD (  21.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +86,201 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Morimoto-san,
-
-On Tuesday, 25 February 2025 01:16:50 EST Kuninori Morimoto wrote:
-> Hi Detlev, again
+On Tue, Feb 25, 2025 at 08:55:47AM +0100, Tomeu Vizoso wrote:
+> Add the bindings for the Neural Processing Unit IP from Rockchip.
 > 
-> > > Especially those commits:
-> > >       ASoC: audio-graph-card2: use __free(device_node) for device node
-> > >       ASoC: audio-graph-card: use __free(device_node) for device node
-> > >       ASoC: simple-card: use __free(device_node) for device node
-> > 
-> > I got same report from our test team. I'm now tring to solve it.
+> v2:
+> - Adapt to new node structure (one node per core, each with its own
+>   IOMMU)
+> - Several misc. fixes from Sebastian Reichel
 > 
-> Unfortunately, I can't reproduce the issue on my environment,
-> but I guess I found the root cause. Does attached patch can solve
-> your issue ?
-
-From what I see, the error is not present anymore on linux 6.14-rc4. I tried 
-reverting your patch "ASoC: simple-card-utils.c: add missing dlc->of_node" 
-(dabbd325b25edb5cdd99c94391817202dd54b651) and the error reappears.
-
-On 6.14-rc3, any of your patches (dabbd325b25e, or the one you attached here) 
-will fix the issue and on 6.14-rc4, there is already a patch that fixes the 
-issue.
-
-Also, since dabbd325b25e, the node indeed should be kept while the driver is 
-used. So even though the issue reported here is fixed by another patch, both 
-are likely needed.
-
-That being said, I'm not sure I completely understand why that extra line fixes 
-the issue. Is the __free() attribute smart enough to know that the pointer has 
-been copied and not free it at the end of scope ?
-
-> I will officially post the patch to ML, but want to confirm it before it.
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/npu/rockchip,rknn-core.yaml           | 152 +++++++++++++++++++++
+>  1 file changed, 152 insertions(+)
 > 
-> Thank you for your help !!
+> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..e8d0afe4a7d1c4f166cf13a9f4aa7c1901362a3f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
+> @@ -0,0 +1,152 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Neural Processing Unit IP from Rockchip
+> +
+> +maintainers:
+> +  - Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> +
+> +description:
+> +  Rockchip IP for accelerating inference of neural networks, based on NVIDIA's
+> +  open source NVDLA IP.
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: '^npu-core@[a-f0-9]+$'
+> +
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-rknn-core-top
+> +          - const: rockchip,rknn-core-top
 
-Thank you for looking into this too :)
+Drop the fallbacks unless you have some evidence that the IP is the 
+same across a lot of SoCs. If you don't, then 
+rockchip,rk3588-rknn-core-top can be the fallback whenever there are 
+more compatible SoCs.
 
-Detlev.
+Or if there's version/feature registers that otherwise make it 
+discoverable, then a common compatible is fine.
 
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-rknn-core
+> +          - const: rockchip,rknn-core
 
+I don't understand the difference between core and core-top. That needs 
+to be explained in the top-level description.
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 2
+> +    maxItems: 4
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aclk
+> +      - const: hclk
+> +      - const: npu
+> +      - const: pclk
+> +    minItems: 2
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +  npu-supply: true
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 2
+> +
+> +  reset-names:
+> +    items:
+> +      - const: srst_a
+> +      - const: srst_h
+> +
+> +  sram-supply: true
 
+Group supply properties together
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - interrupts
+> +  - iommus
+> +  - npu-supply
+> +  - power-domains
+> +  - resets
+> +  - reset-names
+> +  - sram-supply
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rknn-core-top
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 4
+> +
+> +        clock-names:
+> +          minItems: 4
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rknn-core
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 2
+> +        clock-names:
+> +          maxItems: 2
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/power/rk3588-power.h>
+> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> +
+> +    bus {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      rknn_core_top: npu-core@fdab0000 {
+
+npu@...
+
+> +        compatible = "rockchip,rk3588-rknn-core-top", "rockchip,rknn-core-top";
+> +        reg = <0x0 0xfdab0000 0x0 0x9000>;
+> +        assigned-clocks = <&scmi_clk SCMI_CLK_NPU>;
+> +        assigned-clock-rates = <200000000>;
+> +        clocks = <&cru ACLK_NPU0>, <&cru HCLK_NPU0>,
+> +                 <&scmi_clk SCMI_CLK_NPU>, <&cru PCLK_NPU_ROOT>;
+> +        clock-names = "aclk", "hclk", "npu", "pclk";
+> +        interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        iommus = <&rknn_mmu_top>;
+> +        npu-supply = <&vdd_npu_s0>;
+> +        power-domains = <&power RK3588_PD_NPUTOP>;
+> +        resets = <&cru SRST_A_RKNN0>, <&cru SRST_H_RKNN0>;
+> +        reset-names = "srst_a", "srst_h";
+> +        sram-supply = <&vdd_npu_mem_s0>;
+> +      };
+> +
+> +      rknn_core_1: npu-core@fdac0000 {
+> +        compatible = "rockchip,rk3588-rknn-core", "rockchip,rknn-core";
+> +        reg = <0x0 0xfdac0000 0x0 0x9000>;
+> +        clocks = <&cru ACLK_NPU1>, <&cru HCLK_NPU1>;
+> +        clock-names = "aclk", "hclk";
+> +        interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        iommus = <&rknn_mmu_1>;
+> +        npu-supply = <&vdd_npu_s0>;
+> +        power-domains = <&power RK3588_PD_NPU1>;
+> +        resets = <&cru SRST_A_RKNN1>, <&cru SRST_H_RKNN1>;
+> +        reset-names = "srst_a", "srst_h";
+> +        sram-supply = <&vdd_npu_mem_s0>;
+> +      };
+> +    };
+> +...
+> 
+> -- 
+> 2.48.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
