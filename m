@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54CC6C18E7C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99063C197BF
 	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=91/qsts4uiRh8FfbLd87AKmcTx3fOQvi/llO4stEMkQ=; b=anA3ygRRy1BSrE
-	vgs8J0Ci8RXWV51g5EmBHAh2g/p2epxoM+ML8SZqpnoaAw6TqBUemp/9UwNZUloUD2krXdCcRxiFl
-	untOxQJSc3ynYK/r3tvViDKh5x4oeqJFQRKnWndQUVrdK09CLdTZyrmNMLT5OO1ecCwQwnDj+If2q
-	/W0tvxaR/URN3LAf7J8/KnBHXAUgRrVx6ZZOhfJ64Y+eEsiJiNQOgP3HeH+7lxo7ww4zyXFhNl/E6
-	IDWjJ3eZL/WrgPDVuFa0VhE9V4uD063Bmg64YSQXq6BQMip06MLcg0vDESHBUKiQa/bRVUCE7rtbB
-	Pa29WUNUguFoBFEIvyBw==;
+	List-Owner; bh=Tzq7LoAGwn8w5hEo8oY6vuQwJRi13EiUbbftDwIAL3g=; b=chdgyqZLAGlC5V
+	Ek23uyvkATOitgTKAmoz7nNeFWoM0E7u6PmATzM7Rej2I70v+98N3aFK5nHn2lSML+fVrSGsQkDpa
+	cXC1DgiTzyNQ4tDh3QObawO6tU6JQDUg5biiQe6EgCGIYbpAvWhfkYQ1FB5UpZ7Mo0X8NLq1MnTGg
+	duSr28tn0G4wgMyRE53yUeGeuP+348A6e/a3KjKP1+pelJVxLnOlC6aS7e0YR5O4NAoWWlcep7Npn
+	aIIs8WzorQ4vSCJgOZurTPERYNVPnTYEyIraBLeYOqNFiM9Jqkzv5I913WabQWG+GK28CrBc/DYXp
+	7PUNlyhLf6wlq3OPm8Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlK-0000000GjPr-2ehE;
-	Tue, 25 Feb 2025 10:02:02 +0000
+	id 1tmrlI-0000000GjMs-4205;
+	Tue, 25 Feb 2025 10:02:00 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrSO-0000000GerZ-3jA4
+	id 1tmrRs-0000000Gegy-153d
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:42:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476543; cv=none; 
+	Tue, 25 Feb 2025 09:41:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476511; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=RPm4bHwfB43th3aY5Z6sysfrtQvh0HxN01A4EngJLDqsZul+a7vQ9EXIML0hqIGka7JALzwzw4bIyLQ3ND1xt5v2JauZP1BJXprNJ0P4D89dn3mM/WCISti0pO8qC+h402u2m0YVkbF+U5yMDlZV7QvF+l9S8oz1XfrW7I2hWCY=
+	b=DGdk2GJrDFkoqvDfsUsLvzL1IltRpKTGufxgRf1CV/yn+Z5HL9Ug59pZLXZHFe9FLvlvU8wKWeseKb9pfeCepo4Ahv02phLK3dUkhUfZAkGmhU8gLSBtpUA0ujaGBz5lA2uD9P3Pl2y4lMfHSAhDanwPM2de6d68clXYPqc67eQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476543; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=daDCeDVNN4yrlJzaT+dmMaCsQB40Og3yKIlcRSlt2wA=; 
-	b=igxpvshb0EcXbOZWgioIeSejFpOsMl+OrqeGQu4ykUYO8a3KhsTAblhXmUlY4DwvZH160eIZmCgAIAA9GbQjtKO8/ElT0GMxUBTIjGQxaPe4vbmIExnDcrbx9+mEk4iw0ejzA6t6EP8bK5VaOyXs4TZ45mR0nSLgrxNKEuvjOl0=
+	t=1740476511; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=f813he9CIjQ1Ioaz2tbittxRpzX26TEh6AGlGCMqNmI=; 
+	b=CNCFPSGtUq4Mi0w4jeCu25aBm45YMrvRF4Mjau/PxUlwXhStzH0JYUjE0UbmtAm0HGkxoLY35YRFu5+NSJfDdB2I4vnkbCZg+v+6fdkG1/c7AmZ4mTdPFx3O3leIBKl8MF2B91pLYbO0ipB5mP1I1XlQoVXqa0iV7syrC2BUinE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476543;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476511;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=daDCeDVNN4yrlJzaT+dmMaCsQB40Og3yKIlcRSlt2wA=;
-	b=hNaQdtJL1URSaukOm/6LdpI9P4XQoT2NCyr/YiZQ8+uytAnzzhfEc2eXz/4FdrMf
-	MAxmKNQxGrOETZ78zw+FF+oY4Fk2FTuNA7d6wiaomQxJop09NahV7iqZWhyNzh9HxBs
-	oIJIfl8ODVSvTutETJUml95ML9kNaYYl1F9Ti9w8=
-Received: by mx.zohomail.com with SMTPS id 1740476541110603.6926615012392;
-	Tue, 25 Feb 2025 01:42:21 -0800 (PST)
+	bh=f813he9CIjQ1Ioaz2tbittxRpzX26TEh6AGlGCMqNmI=;
+	b=I5YRzBa7NwjWTmk1SrKuHZby0NGCcO6Ht4j8OsxotMESFWA1b0zjFtdvPdPWcQC9
+	ajybQeth5P4M9C3VmpL2DmyPDdR2J0KxQCy8MoT5pOt8Z0ty4PvsVX/kxgfqKtZwzL/
+	HuXonthNdqOZOLBCP0a0VQOTh2bbctWpdeEBKMdo=
+Received: by mx.zohomail.com with SMTPS id 1740476508950172.31338096378624;
+	Tue, 25 Feb 2025 01:41:48 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:31 +0100
-Subject: [PATCH v7 10/12] media: rkvdec: h264: Support High 10 and 4:2:2
- profiles
+Date: Tue, 25 Feb 2025 10:40:28 +0100
+Subject: [PATCH v7 07/12] media: rkvdec: Extract decoded format enumeration
+ into helper
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-10-7992a68a4910@collabora.com>
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-7-7992a68a4910@collabora.com>
 References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -70,17 +70,17 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
  Christopher Obbard <christopher.obbard@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=6652;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=3784;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=/r1gSEsOE7qcDtD05dsVTqxMProeXY2AMaYuA//i0Ng=;
- b=Gg0Ip8FQGabAhkPuzmqFphEz3ZJyNMdhkDuQ7aI4b1ora3Jw9sGpNghJcOeJbQvryBtSz1+qtogX
- atVeryTEAA1p1Z4lOAOCV8fpcdh3HecOWeO8GN2MWFrCqP5NuIXT
+ bh=RSQZQqZZVnoCe1gog6U2AiCd3QpQqZlEPDJjUoDLNn4=;
+ b=yLSOBoJ0o4imr0nBKyr3dC4VXh9atoi5XaaWVL/0JiE8WIq58cpMc9E9kAydULjGFYSRZnpkppfs
+ Rz5Hz9jvDlKXxgx8/4qoqdbeyKYID1YxzTdITFyRlGuysv4jnu/4
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014228_994476_4EC8B9B7 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20250225_014156_371131_EA5A5CAD 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,195 +99,113 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-Add support and enable decoding of H264 High 10 and 4:2:2 profiles.
+Add a rkvdec_is_valid_fmt() helper that check if a fourcc is a supported
+CAPTURE format, and a rkvdec_enum_decoded_fmt() helper that enumerates
+valid formats.
 
-Decoded CAPTURE buffer width is aligned to 64 pixels to accommodate HW
-requirement of 10-bit format buffers, fixes decoding of:
-
-- Hi422FR13_SONY_A
-- Hi422FR14_SONY_A
-- Hi422FR15_SONY_A
-- Hi422FR6_SONY_A
-- Hi422FR7_SONY_A
-- Hi422FR8_SONY_A
-- Hi422FR9_SONY_A
-- Hi422FREXT18_SONY_A
-
-The get_image_fmt() ops is implemented to select an image format
-required for the provided SPS control.
+This moves current code into helper functions in preparation for adding
+CAPTURE format filtering and validation in next patch.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 37 ++++++++++++++++++++++-------
- drivers/staging/media/rkvdec/rkvdec.c      | 38 +++++++++++++++++++++++-------
- drivers/staging/media/rkvdec/rkvdec.h      |  3 +++
- 3 files changed, 60 insertions(+), 18 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 49 +++++++++++++++++++++++++----------
+ 1 file changed, 35 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 8bce8902b8dda39bb2058c8504bd52ccae6b4204..d14b4d173448dbcce4ab978a83806064b100ca24 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -1027,24 +1027,42 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 1f8f98cf91dc205f4a9da2712c81e90b726a6e57..52e64b399dcc4a0c028cac908c0b1ceb49956c5f 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -27,6 +27,32 @@
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+ 
++static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index)
++{
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++
++	if (WARN_ON(!desc))
++		return 0;
++
++	if (index >= desc->num_decoded_fmts)
++		return 0;
++
++	return desc->decoded_fmts[index];
++}
++
++static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc)
++{
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++	unsigned int i;
++
++	for (i = 0; i < desc->num_decoded_fmts; i++) {
++		if (desc->decoded_fmts[i] == fourcc)
++			return true;
++	}
++
++	return false;
++}
++
+ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
+ 				       struct v4l2_pix_format_mplane *pix_mp)
+ {
+@@ -52,8 +78,10 @@ static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
+ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
+ {
+ 	struct v4l2_format *f = &ctx->decoded_fmt;
++	u32 fourcc;
+ 
+-	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
++	fourcc = rkvdec_enum_decoded_fmt(ctx, 0);
++	rkvdec_reset_fmt(ctx, f, fourcc);
+ 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
+ 	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
+@@ -244,7 +272,6 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
+ 	const struct rkvdec_coded_fmt_desc *coded_desc;
+-	unsigned int i;
+ 
+ 	/*
+ 	 * The codec context should point to a coded format desc, if the format
+@@ -255,13 +282,8 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	if (WARN_ON(!coded_desc))
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+-		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+-			break;
+-	}
+-
+-	if (i == coded_desc->num_decoded_fmts)
+-		pix_mp->pixelformat = coded_desc->decoded_fmts[0];
++	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat))
++		pix_mp->pixelformat = rkvdec_enum_decoded_fmt(ctx, 0);
+ 
+ 	/* Always apply the frmsize constraint of the coded end. */
+ 	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
+@@ -425,14 +447,13 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	u32 fourcc;
+ 
+-	if (WARN_ON(!ctx->coded_fmt_desc))
+-		return -EINVAL;
+-
+-	if (f->index >= ctx->coded_fmt_desc->num_decoded_fmts)
++	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index);
++	if (!fourcc)
+ 		return -EINVAL;
+ 
+-	f->pixelformat = ctx->coded_fmt_desc->decoded_fmts[f->index];
++	f->pixelformat = fourcc;
  	return 0;
  }
  
-+static enum rkvdec_image_fmt rkvdec_h264_get_image_fmt(struct rkvdec_ctx *ctx,
-+						       struct v4l2_ctrl *ctrl)
-+{
-+	const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
-+
-+	if (ctrl->id != V4L2_CID_STATELESS_H264_SPS)
-+		return RKVDEC_IMG_FMT_ANY;
-+
-+	if (sps->bit_depth_luma_minus8 == 0) {
-+		if (sps->chroma_format_idc == 2)
-+			return RKVDEC_IMG_FMT_422_8BIT;
-+		else
-+			return RKVDEC_IMG_FMT_420_8BIT;
-+	} else if (sps->bit_depth_luma_minus8 == 2) {
-+		if (sps->chroma_format_idc == 2)
-+			return RKVDEC_IMG_FMT_422_10BIT;
-+		else
-+			return RKVDEC_IMG_FMT_420_10BIT;
-+	}
-+
-+	return RKVDEC_IMG_FMT_ANY;
-+}
-+
- static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx,
- 				    const struct v4l2_ctrl_h264_sps *sps)
- {
- 	unsigned int width, height;
- 
--	/*
--	 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
--	 * but it's currently broken in the driver.
--	 * Reject them for now, until it's fixed.
--	 */
--	if (sps->chroma_format_idc > 1)
--		/* Only 4:0:0 and 4:2:0 are supported */
-+	if (sps->chroma_format_idc > 2)
-+		/* Only 4:0:0, 4:2:0 and 4:2:2 are supported */
- 		return -EINVAL;
- 	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
- 		/* Luma and chroma bit depth mismatch */
- 		return -EINVAL;
--	if (sps->bit_depth_luma_minus8 != 0)
--		/* Only 8-bit is supported */
-+	if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
-+		/* Only 8-bit and 10-bit is supported */
- 		return -EINVAL;
- 
- 	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
-@@ -1190,4 +1208,5 @@ const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
- 	.stop = rkvdec_h264_stop,
- 	.run = rkvdec_h264_run,
- 	.try_ctrl = rkvdec_h264_try_ctrl,
-+	.get_image_fmt = rkvdec_h264_get_image_fmt,
- };
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 5394079509305c619f1d0c1f542bfc409317c3b7..351444d569316cf52850a1831710fb5c1aceaa70 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -196,9 +196,10 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
- 	{
- 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
- 		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
--		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
-+		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422_INTRA,
- 		.cfg.menu_skip_mask =
--			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
-+			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED) |
-+			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_444_PREDICTIVE),
- 		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
- 	},
- 	{
-@@ -213,11 +214,23 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
- };
- 
--static const struct rkvdec_decoded_fmt_desc rkvdec_h264_vp9_decoded_fmts[] = {
-+static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV15,
-+		.image_fmt = RKVDEC_IMG_FMT_420_10BIT,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV16,
-+		.image_fmt = RKVDEC_IMG_FMT_422_8BIT,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV20,
-+		.image_fmt = RKVDEC_IMG_FMT_422_10BIT,
-+	},
- };
- 
- static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
-@@ -240,21 +253,28 @@ static const struct rkvdec_ctrls rkvdec_vp9_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_vp9_ctrl_descs),
- };
- 
-+static const struct rkvdec_decoded_fmt_desc rkvdec_vp9_decoded_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
-+	},
-+};
-+
- static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
- 		.frmsize = {
--			.min_width = 48,
-+			.min_width = 64,
- 			.max_width = 4096,
--			.step_width = 16,
-+			.step_width = 64,
- 			.min_height = 48,
- 			.max_height = 2560,
- 			.step_height = 16,
- 		},
- 		.ctrls = &rkvdec_h264_ctrls,
- 		.ops = &rkvdec_h264_fmt_ops,
--		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
--		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-+		.decoded_fmts = rkvdec_h264_decoded_fmts,
- 		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
- 	},
- 	{
-@@ -269,8 +289,8 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		},
- 		.ctrls = &rkvdec_vp9_ctrls,
- 		.ops = &rkvdec_vp9_fmt_ops,
--		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
--		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
-+		.decoded_fmts = rkvdec_vp9_decoded_fmts,
- 	}
- };
- 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index e466a2753ccfc13738e0a672bc578e521af2c3f2..9a9f4fced7a184b952d341d75c7faedaa75163d6 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -80,6 +80,9 @@ struct rkvdec_coded_fmt_ops {
- enum rkvdec_image_fmt {
- 	RKVDEC_IMG_FMT_ANY = 0,
- 	RKVDEC_IMG_FMT_420_8BIT,
-+	RKVDEC_IMG_FMT_420_10BIT,
-+	RKVDEC_IMG_FMT_422_8BIT,
-+	RKVDEC_IMG_FMT_422_10BIT,
- };
- 
- struct rkvdec_decoded_fmt_desc {
 
 -- 
 2.25.1
