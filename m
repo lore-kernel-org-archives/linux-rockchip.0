@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38DEC197BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 19:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E042FC18E7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 19:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=G+M0D5kNZGqtSaVxtT96ISku2o+Ez8OK9vIeqIfzZ1Y=; b=Dm4QxgSkrtCw7w
-	dGcwGDcdrfFbRc1BAbDYpYLGb2JNxvPI8GZBy1yxb7Dlpu4YKziuYeREcuvyftLZDcxtXDC7p1cql
-	GAJw7QHnTwtsqc4uIw5Z0POurCT71fTszMqzG4secDD7cEhj/nXto3iwL+socqfiezwa3mLOnI/QQ
-	StUO8K8sZJRiojGb3GYksS6HWyRFZyMR70vmpCvnRefQV54O+6zJsDqtnSH6x1bFYuRwsvw0696jE
-	p8XJm0qmicyTeaV79aCU8fZXj9D7QDhmPVWaPNeaZ5vulJDIEGyNJWXFHDqJVIuA2ZomO6OJp/ECi
-	EGWRGlsoIPA7fbP5WBuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=myit03pZ/KAliFr5urZaNkIaEXjnZZ2Y38nse8orgEE=; b=bNfMWZIhw2fTMs
+	62n8aAIaPtkS/iIk1+NPj/FqgQcnqdr6JdjAsdf7ZDp1aEHuYLdRRxRJv85AzXSsiT/EtI6+ID3cC
+	9nny7KJAgMAkQdAjMyRn1mfPDeH2xeJ02K935o+o5X1K6gF3Nut9lfKxX30TSbCC2sMC0cI/Juj0u
+	Kgqc3iQkJlRDLIMmL0m2NVlo/AjjKzn+NhgOBJ9EJJtugzEN4cKEuGfxM6rqmNNPP197TjMwCzA8H
+	NBXY3QVZtOWkdJeqWfAD499c5AJRpUYpreIRa2XyIY7AHSAs7VQhE4yyv1xknCJz0ifJjgewOpADZ
+	+oLPRwNiePlBldVB8Y5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tn0ec-000000019G3-1AUa;
-	Tue, 25 Feb 2025 19:31:42 +0000
+	id 1tn0ef-000000019Km-0N1w;
+	Tue, 25 Feb 2025 19:31:45 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmzwA-000000010tR-2H5V;
-	Tue, 25 Feb 2025 18:45:47 +0000
+	id 1tmzwA-000000010tV-32uO;
+	Tue, 25 Feb 2025 18:45:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=R66Myrb815a2WZP3G5g/ewvPF3fMxnEmoDEZgjpJrTg=; b=G9OtWPrLluyK+WuGj3VYHd03s3
-	li6/pRdI8d8UAw4ZSnrwZP21VlE5jNT27KKQ0TIA4gekQmSCB/2Bo+oY8AbOodS93wDstP054jpqA
-	0lVscOWVWCpVRCFEhu+GmteTSxkdhHi6s6eZFzwQEb6vn/QgBRhE2gj6ueXBSEMjpxUjqglpfa/Pf
-	O1f0dSQ8qV/A5jncHQlSbLteg7bDVtdWYOb6oN8t5T5SYNRfzxaMl2OpJJt29ssRhq0Vr5TNcz5VN
-	D5xdCu9CJEFqU2zFYjB0Zo9yJxZLtncpwejbN9rGjRu4xBBDC1l4wlMbdKt45LbN9T4FpSaX5kumd
-	dRZIIahg==;
+	bh=/+beY3V9/dsi/eMagTUtxWvMmsE568RPkT0UJ+9W24k=; b=waLc+/pzfueh2JBlw6t6cI5SrM
+	OSmvOm0bhEWmdDHaP9/XmcmztaOdGrkcmpyRwMBj9O5QDN1gFz99v0szxP3InL9jW6vxCSmAhNk/f
+	MsttMJ+Grp6AIklxFpjYvzYxNyGr9vvU6mnc0wwNK849+O671VRSV0yfgLfrL+bl6Py7enDpA0fW9
+	OdEbxCDPH5WehSBT7haFOLNsOzHJUD4tRZQKf80VYVJDl+FGCslchjPkVBLBZNp0Q1tAdoGxOPQGo
+	ezwa6XjOZ29LWfJF9mQ9fXLjPC6VU/sZtJSKYJPfP/Q7cWudAaRfXMMRJM2J2zcBdfTjeIsUhIBG1
+	MMSHBHXg==;
 Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tmzw7-0006r3-Ar; Tue, 25 Feb 2025 19:45:43 +0100
+	id 1tmzw8-0006r3-7b; Tue, 25 Feb 2025 19:45:44 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: vkoul@kernel.org,
 	kishon@kernel.org
@@ -52,16 +52,18 @@ Cc: heiko@sntech.de,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	quentin.schulz@cherry.de,
-	sebastian.reichel@collabora.com
-Subject: [PATCH 0/2] phy: rockchip: usbdp: improve typec orientation handling
-Date: Tue, 25 Feb 2025 19:45:17 +0100
-Message-ID: <20250225184519.3586926-1-heiko@sntech.de>
+	sebastian.reichel@collabora.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH 2/2] phy: rockchip: usbdp: re-init the phy on orientation-change
+Date: Tue, 25 Feb 2025 19:45:19 +0100
+Message-ID: <20250225184519.3586926-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250225184519.3586926-1-heiko@sntech.de>
+References: <20250225184519.3586926-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_104546_614963_09E4D111 
-X-CRM114-Status: UNSURE (   7.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250225_104546_780067_5802821C 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,16 +80,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reinit the phy if it's already running when a type-orientation
-event happens.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Heiko Stuebner (2):
-  phy: rockchip: usbdp: move type-orientation-switch further down
-  phy: rockchip: usbdp: re-init the phy on orientation-change
+Until now the usbdp in the orientation-handler set the new lane setup in
+its internal state variables and adapted the sbu gpios as needed.
+It never actually updated the phy itself though, but relied on the
+controlling usb-controller to disable and re-enable the phy.
 
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 173 +++++++++++-----------
- 1 file changed, 90 insertions(+), 83 deletions(-)
+And while on the vendor-kernel, I could see that on every unplug the dwc3
+did go to its suspend and woke up on the next device plug-in event,
+thus toggling the phy as needed, this does not happen in all cases and we
+should not rely on that behaviour.
 
+This results in the usb2 always working, as it's not affected by the
+orientation, but usb3 only working in one direction right now.
+
+So similar to how the update works in the power-on callback, just re-init
+the phy if it's already running when the orientation-event happens.
+
+Both the power-on/-off functions as well as the orientation-set callback
+work with the usbdp-mutex held, so can't conflict.
+
+The behaviour is similar to how the qcom qmp phys handle the orientaton
+re-init - by re-initting the phy.
+
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 7b17c82ebcfc..b63259a90d85 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -1277,6 +1277,7 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 				 enum typec_orientation orien)
+ {
+ 	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
++	int ret = 0;
+ 
+ 	mutex_lock(&udphy->mutex);
+ 
+@@ -1292,6 +1293,12 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 	rk_udphy_set_typec_default_mapping(udphy);
+ 	rk_udphy_usb_bvalid_enable(udphy, true);
+ 
++	/* re-init the phy if already on */
++	if (udphy->status != UDPHY_MODE_NONE) {
++		rk_udphy_disable(udphy);
++		ret = rk_udphy_setup(udphy);
++	}
++
+ unlock_ret:
+ 	mutex_unlock(&udphy->mutex);
+ 	return ret;
 -- 
 2.47.2
 
