@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830AAC19F2F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1972DC19F2E
 	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7hPk/HOKudLYImB+9dLUEbXLMxxvoPXgyOtOlnHiKDs=; b=4lz5sjjmXo+nI3
-	AIFzUvKyqIPhvdN13FITjwppJTUBMXQD/HS8CTIyBJZma3KwLmrpIaSijIGLSxuIErQ0hMDscGzoT
-	I4RQKv3LHdxk/xgdKIE5pvl0vk2h314wPUTVX8yPcZhDfRPzGXkUu6uX22D9T4DXIBBw0bpyJU+rX
-	tc1907yUii4XUH/iihhXbPxmqxcrNioYrFqvy1ncPTJG2CplgJPV/xnEOoVCkpRR2P/yP4z2HYBxe
-	CvnGzJplzczTSm93ZSzn6p3Z3Sp+m87GpU6rvufho7YPHYqxR0Txu/y9k+LCkUPZCRA2Qnd/hFD/b
-	UBQB3nffzqDcsbiZOE4g==;
+	List-Owner; bh=HhTxUnirrXn7Mvd07wB46TAp87tImdvOIALf+/f2yq8=; b=5FXfGU+Js7JFU0
+	lO54IqBA7HrOq3PX0zZNGVPpB5DzF2OHsnn3A60Dvuez6ckQICEZAYUxJsNIJZBrYazib09OH51Gi
+	DWRHXDf+iQjCbMt5BW6aSE0DVgWZguafYXVgyhGbNHHqCNrOWN/hs48Ekg4moPv5+nOSgJ0N81dvS
+	dNA5L3KFk4JE7RG49PK9Wj5rOtpMY5+njasxLyn7Pm8BX+Ri1bgn1B6i0FFhRRolZKL3CUZKQBDDG
+	WjghX7uj02Gya2nK9ZRSPZWdvYPwhZPGoT+EG7fO/5oXB2O7X7MUaYpNaWLnQyoKuax8GNWpSid6o
+	bxDvVnHL2mUHEcFLgmqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlH-0000000GjJz-0qgv;
-	Tue, 25 Feb 2025 10:01:59 +0000
+	id 1tmrlL-0000000GjQe-0KsS;
+	Tue, 25 Feb 2025 10:02:03 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrR8-0000000GePM-31Kf
+	id 1tmrSX-0000000Gett-0rm0
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:41:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476466; cv=none; 
+	Tue, 25 Feb 2025 09:42:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476551; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YYfAzepUWYGd3GDzpwbLkuBhJ9JZVRKI/QdrojcVj7uz2bJQsmJOAeFzNRPHGloqH7WJfDo8UUAwuvlIH2ruqXJkPdnglKE6Jr6MNbK/TFeXBaFkTBZGqryq+w/j9vjN650ieE3oIswVkIptd2ggMWmAImO7ULQkyEzQ0O4TarQ=
+	b=XcKkwdx9WAj/+w3pEg9D1riD9Ej2y49bwpT5CVEQOJRLWnd9j2xE7/epKX1Fd9E525SzUdH1zZy1+FsdVLbGw88lRkfEWxr74wRkDveXzl2pDHLiLiWP+hLYPvKPzPVe4rppkw50D/7yiAjQhlOiNUNDN6XSmMGCoYUlveewJyc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476466; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=b9ilxX5CFJsfRD+3HmHdIwTNigrE5DvjKvpEvlNxk8s=; 
-	b=MFGHlP6nkeR8OIH4iO+JFGmisqawsJVJsBlYv3emYX5AJpRBxPvGB/qI/akv3hJwvm2L5H4a0bbDGBrG9yE8cGGYMsEQd1FYyBAU/SPq4u78eg0jjrOFXQSzG4ARJgD0zDsbLRD5SUkXbOcX2GOhJTmEqo7/c644AAVdL5JO40I=
+	t=1740476551; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=98NKcVOP3m83E8hgMre8aUN2HOMmw9MEKVvfDL7Tcc8=; 
+	b=DlD+jrIoHeXj3b1Rwemq2gusKxNVIUQ4VyVHrQM0a6rs7LRPLYzU8hSmuKRZ9Aq72aOXLT2f0IO+YFVsrbe/qS9IFil0AD/HTt9RIN1DGBz8e+uGAxsjAC8L3yEKWWvnaS2gT2LiGgml8bGUwgax8B4ZXcmOvKjmlMxAXYEFCHA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476466;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476551;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=b9ilxX5CFJsfRD+3HmHdIwTNigrE5DvjKvpEvlNxk8s=;
-	b=A1YEbXxXw2BB34v4PyvXiqLwNs2O+3dcrFYUv2VB34oEHm+ko9CBmLRgkvPuSpMB
-	1WGw86CToMPs/6CSaWtAzLMBxrLDepz0Re0TpcqgbNV3YXXhkKy1j0fJA3TbhakBt8+
-	BIogmxgnlUGqVcyhRpSEAH+07X3U55/be9iyOEBk=
-Received: by mx.zohomail.com with SMTPS id 1740476464618491.75863387985737;
-	Tue, 25 Feb 2025 01:41:04 -0800 (PST)
+	bh=98NKcVOP3m83E8hgMre8aUN2HOMmw9MEKVvfDL7Tcc8=;
+	b=J2HBSLG9tEeaR5etzB/5j2NnH+69/VFx1w27JFQKpKfN2dJJ5q3TOpGEW0CHpCQC
+	2FBrh6nYYaYeAbhnzqU1mJYi/ebCtOQswTF2x90jkJvzfkxjTYnEL2ay8G+N1K2aScW
+	zHP+wa0FhISfT8dBJRLHf6QYiqOGWn8fybovzRx0=
+Received: by mx.zohomail.com with SMTPS id 1740476550430177.37442835818695;
+	Tue, 25 Feb 2025 01:42:30 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:24 +0100
-Subject: [PATCH v7 03/12] media: rkvdec: h264: Use bytesperline and buffer
- height as virstride
+Date: Tue, 25 Feb 2025 10:40:32 +0100
+Subject: [PATCH v7 11/12] media: rkvdec: h264: Limit minimum profile to
+ constrained baseline
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-3-7992a68a4910@collabora.com>
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-11-7992a68a4910@collabora.com>
 References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -68,20 +68,19 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Detlev Casanova <detlev.casanova@collabora.com>, 
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
- Christopher Obbard <christopher.obbard@linaro.org>
+ Sebastian Fricke <sebastian.fricke@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=2074;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=1122;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=KYB4ZNR5ZL8Q48yfgLX5D28TL6rugHy3+KYd/Y+Czgw=;
- b=96DCcJFZ52Npt4SoE+iyLByVAi7kr9VEE1tiDAYgbAeEurqnDyAzMNRddjVIAzltK/Wpc/rqS5PH
- NRz21k+eCKoeeqaD3wLttjbrcy6sXBQepwVRJgQ4+619MYWDMm8Z
+ bh=Ja1ASVEnylkVDPrnaxfL7Gu8Auz2+lAQasPZ0WLJwiQ=;
+ b=4vOCbtcqOkYByVo62A8sEoTu4EZtDldVj+O7DdsEOGtQgEmOM1EC0Zx+6aLDY/FGgAPmZmrp7hxs
+ u7G3NTenB+Oto3zQbZdnya5Y+xgoAiN1tsdce1NRp4GPFMZS5Twg
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014110_827327_F57C0D7D 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250225_014237_317139_4E53C433 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,60 +97,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+Neither the hardware nor the kernel API support FMO/ASO features
+required by the full baseline profile. Therefore limit the minimum
+profile to the constrained baseline profile explicitly.
 
-Use bytesperline and buffer height to calculate the strides configured.
-
-This does not really change anything other than ensuring the
-bytesperline that is signaled to userspace matches what is configured
-in HW.
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+Suggested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 4fc167b42cf0c74fcc7adad5b867d9d7cd8af29b..7a1e76d423df55bd01c1ff26ff2c6d1b81ee7169 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	dma_addr_t rlc_addr;
- 	dma_addr_t refer_addr;
- 	u32 rlc_len;
--	u32 hor_virstride = 0;
--	u32 ver_virstride = 0;
--	u32 y_virstride = 0;
-+	u32 hor_virstride;
-+	u32 ver_virstride;
-+	u32 y_virstride;
- 	u32 yuv_virstride = 0;
- 	u32 offset;
- 	dma_addr_t dst_addr;
-@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
--	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
--	ver_virstride = round_up(dst_fmt->height, 16);
-+	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-+	ver_virstride = dst_fmt->height;
- 	y_virstride = hor_virstride * ver_virstride;
- 
- 	if (sps->chroma_format_idc == 0)
- 		yuv_virstride = y_virstride;
- 	else if (sps->chroma_format_idc == 1)
--		yuv_virstride += y_virstride + y_virstride / 2;
-+		yuv_virstride = y_virstride + y_virstride / 2;
- 	else if (sps->chroma_format_idc == 2)
--		yuv_virstride += 2 * y_virstride;
-+		yuv_virstride = 2 * y_virstride;
- 
- 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
- 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 351444d569316cf52850a1831710fb5c1aceaa70..2859041bcc932bd638b4288bb8eba6b1443a08e3 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -195,7 +195,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 	},
+ 	{
+ 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+-		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
++		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE,
+ 		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422_INTRA,
+ 		.cfg.menu_skip_mask =
+ 			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED) |
 
 -- 
 2.25.1
