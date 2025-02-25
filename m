@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1972DC19F2E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B6A8C021B6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HhTxUnirrXn7Mvd07wB46TAp87tImdvOIALf+/f2yq8=; b=5FXfGU+Js7JFU0
-	lO54IqBA7HrOq3PX0zZNGVPpB5DzF2OHsnn3A60Dvuez6ckQICEZAYUxJsNIJZBrYazib09OH51Gi
-	DWRHXDf+iQjCbMt5BW6aSE0DVgWZguafYXVgyhGbNHHqCNrOWN/hs48Ekg4moPv5+nOSgJ0N81dvS
-	dNA5L3KFk4JE7RG49PK9Wj5rOtpMY5+njasxLyn7Pm8BX+Ri1bgn1B6i0FFhRRolZKL3CUZKQBDDG
-	WjghX7uj02Gya2nK9ZRSPZWdvYPwhZPGoT+EG7fO/5oXB2O7X7MUaYpNaWLnQyoKuax8GNWpSid6o
-	bxDvVnHL2mUHEcFLgmqA==;
+	List-Owner; bh=ZlRLFji/VLY3CQtu3mtWdd9OBz2j73y6If7q2sxWcxU=; b=bYH/3PBt0zc2kr
+	6ok7FH/8BMsBwlXaE6QY/Z26nokzDezrarfSUB7JuFpC02tLrfz5qvQ3AJpnPd9f4V0VHzD+QsMTn
+	Upcu0yrr6GJTSkEK6WxUaox0k3FQjKziidXGheuxificp6axT85ZZlHcS17PlguD7+cBkaFSifvOG
+	yxNjmRwlC4WhN8DLxyp39uodKQrhDX9yPtC9/im1mchjQjTrSLDakNpgrxqO6NRYpykf2A2TcWu4i
+	dPvoyT2b8WofenP16UOw9toO9iSiuINe1/EgQfLDA+gcNJ6bBRWS9Zu2342jxLsIV+dN9YVDSsbQC
+	jLROCrLVzNXIswGVfH2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlL-0000000GjQe-0KsS;
-	Tue, 25 Feb 2025 10:02:03 +0000
+	id 1tmrlK-0000000GjPC-0kZc;
+	Tue, 25 Feb 2025 10:02:02 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrSX-0000000Gett-0rm0
+	id 1tmrSG-0000000GepY-1u9q
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:42:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476551; cv=none; 
+	Tue, 25 Feb 2025 09:42:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476535; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=XcKkwdx9WAj/+w3pEg9D1riD9Ej2y49bwpT5CVEQOJRLWnd9j2xE7/epKX1Fd9E525SzUdH1zZy1+FsdVLbGw88lRkfEWxr74wRkDveXzl2pDHLiLiWP+hLYPvKPzPVe4rppkw50D/7yiAjQhlOiNUNDN6XSmMGCoYUlveewJyc=
+	b=kjhfYKacagn7OGxW8vpe/RG0uXAvLFpqOQaKXPdyVrRlUpCCXXHE3EiRgDQ8BLGY10IpGXZ1kP3Jrgg8g8ylbwwDZbDNpbU1gywQlEI/O5p+mm+qBc12b4eShdFtfN7vOoqRzZLEMd+Nd52mHpY7Rg7HFcBXUBzc3j3Y/2QGTF4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476551; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=98NKcVOP3m83E8hgMre8aUN2HOMmw9MEKVvfDL7Tcc8=; 
-	b=DlD+jrIoHeXj3b1Rwemq2gusKxNVIUQ4VyVHrQM0a6rs7LRPLYzU8hSmuKRZ9Aq72aOXLT2f0IO+YFVsrbe/qS9IFil0AD/HTt9RIN1DGBz8e+uGAxsjAC8L3yEKWWvnaS2gT2LiGgml8bGUwgax8B4ZXcmOvKjmlMxAXYEFCHA=
+	t=1740476535; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=/8A7cEnXp8nqZSIzTdM5HSiUNLhttee1lozg4tIvdoc=; 
+	b=khpuzu4WJBh+Mj3Q5udxNj1IG6RTdbRCILPFQEYO3AnYbcya6C2AnjeHQFIOP3ut4sdobi073FbDjVHAdvxVEDbb1i6EHV3QFG6ybcnG1ZhC6ql2SOpHjepwsmVVH5tfIeU6SRHyJFtvSlW0YbAPyeOJJA9R6PM5ovD6zu3gWzQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476551;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476535;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=98NKcVOP3m83E8hgMre8aUN2HOMmw9MEKVvfDL7Tcc8=;
-	b=J2HBSLG9tEeaR5etzB/5j2NnH+69/VFx1w27JFQKpKfN2dJJ5q3TOpGEW0CHpCQC
-	2FBrh6nYYaYeAbhnzqU1mJYi/ebCtOQswTF2x90jkJvzfkxjTYnEL2ay8G+N1K2aScW
-	zHP+wa0FhISfT8dBJRLHf6QYiqOGWn8fybovzRx0=
-Received: by mx.zohomail.com with SMTPS id 1740476550430177.37442835818695;
-	Tue, 25 Feb 2025 01:42:30 -0800 (PST)
+	bh=/8A7cEnXp8nqZSIzTdM5HSiUNLhttee1lozg4tIvdoc=;
+	b=gAezVFRb2JnB0sDbHuthPK6vunPim94elYStVh3Kq2pKUnpQQqNSfvGQtMkwroU5
+	A8nGJPaTtDO1a9Y9zSpdg+jjb489ZbE8frMECgC23A7MSuM8laIRJmeQvbGjXIOR3jA
+	K59++doc6/tqaDGuiaco32J6UomIyyrq5VBPtdUA=
+Received: by mx.zohomail.com with SMTPS id 1740476532125542.1938108427083;
+	Tue, 25 Feb 2025 01:42:12 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:32 +0100
-Subject: [PATCH v7 11/12] media: rkvdec: h264: Limit minimum profile to
- constrained baseline
+Date: Tue, 25 Feb 2025 10:40:30 +0100
+Subject: [PATCH v7 09/12] media: rkvdec: Add get_image_fmt ops
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-11-7992a68a4910@collabora.com>
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-9-7992a68a4910@collabora.com>
 References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -68,19 +67,19 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Detlev Casanova <detlev.casanova@collabora.com>, 
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>
+ Christopher Obbard <christopher.obbard@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=1122;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=3356;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=Ja1ASVEnylkVDPrnaxfL7Gu8Auz2+lAQasPZ0WLJwiQ=;
- b=4vOCbtcqOkYByVo62A8sEoTu4EZtDldVj+O7DdsEOGtQgEmOM1EC0Zx+6aLDY/FGgAPmZmrp7hxs
- u7G3NTenB+Oto3zQbZdnya5Y+xgoAiN1tsdce1NRp4GPFMZS5Twg
+ bh=CwMixnkIZ/allNwX4Kc5noJDx3ycu+QFQATghvvWml8=;
+ b=b5AtoQiu6u0MbqANEjQWro6j75NOwil1ENlDIZbECq7Y4f1q04MKnytzZ0Kx30msXVMaTilUUvBZ
+ b1oGeS91ADoc0uU6FIwmBaKnVu4A5YEfX0DVu78SKzsaehqyyU6P
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014237_317139_4E53C433 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20250225_014220_534924_9DCD52B2 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,29 +96,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Neither the hardware nor the kernel API support FMO/ASO features
-required by the full baseline profile. Therefore limit the minimum
-profile to the constrained baseline profile explicitly.
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Suggested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Add support for a get_image_fmt() ops that returns the required image
+format.
+
+The CAPTURE format is reset when the required image format changes and
+the buffer queue is not busy.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 49 +++++++++++++++++++++++++++++++++--
+ drivers/staging/media/rkvdec/rkvdec.h |  2 ++
+ 2 files changed, 49 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 351444d569316cf52850a1831710fb5c1aceaa70..2859041bcc932bd638b4288bb8eba6b1443a08e3 100644
+index 70154948b4e32e2c439f259b0f1e1bbc8b52b063..5394079509305c619f1d0c1f542bfc409317c3b7 100644
 --- a/drivers/staging/media/rkvdec/rkvdec.c
 +++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -195,7 +195,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
- 	},
- 	{
- 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
--		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
-+		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE,
- 		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422_INTRA,
- 		.cfg.menu_skip_mask =
- 			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED) |
+@@ -111,15 +111,60 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
+ 	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++	struct v4l2_pix_format_mplane *pix_mp = &ctx->decoded_fmt.fmt.pix_mp;
++	enum rkvdec_image_fmt image_fmt;
++	struct vb2_queue *vq;
++	int ret;
++
++	if (desc->ops->try_ctrl) {
++		ret = desc->ops->try_ctrl(ctx, ctrl);
++		if (ret)
++			return ret;
++	}
++
++	if (!desc->ops->get_image_fmt)
++		return 0;
+ 
+-	if (desc->ops->try_ctrl)
+-		return desc->ops->try_ctrl(ctx, ctrl);
++	image_fmt = desc->ops->get_image_fmt(ctx, ctrl);
++	if (ctx->image_fmt == image_fmt)
++		return 0;
++
++	if (rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat, image_fmt))
++		return 0;
++
++	/* format change not allowed when queue is busy */
++	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
++			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++	if (vb2_is_busy(vq))
++		return -EINVAL;
++
++	return 0;
++}
++
++static int rkvdec_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++	struct v4l2_pix_format_mplane *pix_mp = &ctx->decoded_fmt.fmt.pix_mp;
++	enum rkvdec_image_fmt image_fmt;
++
++	if (!desc->ops->get_image_fmt)
++		return 0;
++
++	image_fmt = desc->ops->get_image_fmt(ctx, ctrl);
++	if (ctx->image_fmt == image_fmt)
++		return 0;
++
++	ctx->image_fmt = image_fmt;
++	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat, ctx->image_fmt))
++		rkvdec_reset_decoded_fmt(ctx);
+ 
+ 	return 0;
+ }
+ 
+ static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
+ 	.try_ctrl = rkvdec_try_ctrl,
++	.s_ctrl = rkvdec_s_ctrl,
+ };
+ 
+ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index 6f8cf50c5d99aad2f52e321f54f3ca17166ddf98..e466a2753ccfc13738e0a672bc578e521af2c3f2 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -73,6 +73,8 @@ struct rkvdec_coded_fmt_ops {
+ 		     struct vb2_v4l2_buffer *dst_buf,
+ 		     enum vb2_buffer_state result);
+ 	int (*try_ctrl)(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl);
++	enum rkvdec_image_fmt (*get_image_fmt)(struct rkvdec_ctx *ctx,
++					       struct v4l2_ctrl *ctrl);
+ };
+ 
+ enum rkvdec_image_fmt {
 
 -- 
 2.25.1
