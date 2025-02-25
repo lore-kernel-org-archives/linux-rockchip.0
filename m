@@ -4,181 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2C2C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 06:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 020A4C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 07:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
-	Content-Type:References:In-Reply-To:Subject:Cc:To:From:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iOS3I+C6G49dXlanaRGmUuyk1Xmc4iTRv3FNobpdFE4=; b=Y0eVK2OFw/Dv824sshYIZxCBj4
-	UsRP2AEziCC6WyxG3MN4njc2EWZd4rLgXTjkKxLSAg9XtHdZoZkJvsXfxXtmjnr8NNtIrmRW1yBmS
-	WW9TQRDRLyS8qHMBOWepISAAm2KgdYcQvMtRh5wYmi+R/d/9r+JCp6ZTqKrgXmjwSGBIQJLPiFIlI
-	Uverr+uvlrRBFsS+9RzCrgx+ncN/oMj6KjzltFTFR22/CrJRrdSFMAzJ10wW44G9+HjkOMlUg0VMR
-	EoXBWiKa0bClHbo7c0w2dobubz1WiS6Mk1W3udFPCFa/bQ34giCzmx+JvfQB3KpCqDdFPXqBMem05
-	S6BjED7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TeT631REB7vIHXrWlg2UxRWqG16+y0+9gCoU/DT/ZkU=; b=G12m6QFMpGYWAj
+	owz6Id7tBFDXvzMtjUrYgfuH9ImSuMidVK18yJyv7AQVImzNFMlPC7OXGrT29CGj5DRPqgMWdQdDV
+	jY9JIVihv9/wiwqjC+qd4bloORFeoyJ7Kn4hgdOckX8/Tc15dG0TNyMKkUhNUpPjnJ6rmXHe/15kJ
+	hh3zpnSyiJjgoYQb4MZOar/qiJxhgbWXRp5E0aKktEGJNxiT2cKi9Naru+1A6RlKz0wbv6FD4o3wR
+	4nKmxQL6GseO5WdXBjPm1DpLNvTfJfEwdtWWbtJ5PY3rWWPicn5BkTNZnUrBUBVtOtooxKF5D3nW3
+	Oj87W8l9HXwSGEsQETsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmoJS-0000000G51G-2Yp5;
-	Tue, 25 Feb 2025 06:21:02 +0000
-Received: from mail-japaneastazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c405::1] helo=TY3P286CU002.outbound.protection.outlook.com)
+	id 1tmpou-0000000GI9n-462b;
+	Tue, 25 Feb 2025 07:57:36 +0000
+Received: from mail-wm1-f46.google.com ([209.85.128.46])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmoFc-0000000G4UL-2hQt;
-	Tue, 25 Feb 2025 06:17:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=B0KgGv0wZER0pmsA/d+z8b2QjusKDkm3hiBhIQUz7oezZTPMVy976W2qQzi+gLmhH8/FcLwsCNsN88yMhCi0BhZpKZjsvYi/XiUPK7WCQJwqmY1TI785vC3wLUmPGJJBPIBgeBW3w7zbu8u2jsf9ajRhiuKygVQFrARO6mSPVidJqyBerr4D6Z+aU+h0KqGE1PidZrpOwrh3iBLQ5yvUkvcR8R/3IviLfqWroMpRKx6OO1ZMeBzlRnFxNeUHD6IIpwi13nD/tqPICNY/e73fM/0fe+IWrCbvO4PlgmDbIEHwJEa5UBSy2cW2k6ODGGf8czA+BMxR78M/1rLuUdL85Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uMltxy1/wD4qM0oWoxUkpsuo7IE2Iho7RFUOlhu7mi4=;
- b=iiV58X3H/IMv9VZidvRgjG23EiraKvYvuwFEkkqaxxoiR4B59Po13D0DlJw7pdx/gGY81oURpvs9gEN6hTtLPbtQGRoXFAik9AGUGbgXUUr7UiYkLANGe3w7ijOpVomJqmFoAXUfiv5jK3yGrHTaK04MoN/L6LOUbI1WfMudg9vzhb4VuNwtKrq3PyB8uVX/FbFByFJbzWYOzrxyjJ3z7M7maBO5+apezCtpNFMtd+U02TAPot93V7abRv36umgKKfebmBD7wCfAL7Wa3ERE48XQL62HfEVtlI/qllS4mmHEtu3putlOrAoLAMDSksEFw0DtyZxRJAozVAfNcZvoAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
- dkim=pass header.d=renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uMltxy1/wD4qM0oWoxUkpsuo7IE2Iho7RFUOlhu7mi4=;
- b=AlskJxWhyaQicu3QLSFUJ7qdUegt/Ph2MyrORqMQQ+lUbLx3I0s6BASGkeNtJJYvSkXViC5Krlq3Swx37QFlpCaWEdJfbjRI5COE6gQqtdIrlWb+QnzooZD6Jhp+BhQDMGOOOIBgZHWCJDgiuSh/XUp8b1p7ABzX93Jno6MQ+To=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=renesas.com;
-Received: from TYCPR01MB10914.jpnprd01.prod.outlook.com
- (2603:1096:400:3a9::11) by TYWPR01MB12125.jpnprd01.prod.outlook.com
- (2603:1096:400:440::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.22; Tue, 25 Feb
- 2025 06:16:51 +0000
-Received: from TYCPR01MB10914.jpnprd01.prod.outlook.com
- ([fe80::c568:1028:2fd1:6e11]) by TYCPR01MB10914.jpnprd01.prod.outlook.com
- ([fe80::c568:1028:2fd1:6e11%5]) with mapi id 15.20.8466.020; Tue, 25 Feb 2025
- 06:16:51 +0000
-Message-ID: <8734g2sg4t.wl-kuninori.morimoto.gx@renesas.com>
-From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	dri-devel@lists.freedesktop.org,
-	Niklas Cassel <cassel@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	kernel@collabora.com,
-	David Airlie <airlied@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Simona Vetter <simona@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Sugar Zhang <sugar.zhang@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	Chen-Yu Tsai <wens@csie.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
-In-Reply-To: <87frk2sumw.wl-kuninori.morimoto.gx@renesas.com>
-References: <20250217215641.372723-1-detlev.casanova@collabora.com>
-	<BA73C4A1-C680-4748-9CE1-4B3B19A14261@gmail.com>
-	<5E535D58-AEFF-45A4-A1EA-1FA282F366AE@gmail.com>
-	<4988041.31r3eYUQgx@trenzalore>
-	<87frk2sumw.wl-kuninori.morimoto.gx@renesas.com>
-User-Agent: Wanderlust/2.15.9 Emacs/29.3 Mule/6.0
-Content-Type: multipart/mixed;
- boundary="Multipart_Tue_Feb_25_15:16:50_2025-1"
-Date: Tue, 25 Feb 2025 06:16:50 +0000
-X-ClientProxiedBy: TYAPR01CA0119.jpnprd01.prod.outlook.com
- (2603:1096:404:2a::35) To TYCPR01MB10914.jpnprd01.prod.outlook.com
- (2603:1096:400:3a9::11)
+	id 1tmpnM-0000000GHbo-1HLa;
+	Tue, 25 Feb 2025 07:56:01 +0000
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-439a2780b44so32702435e9.1;
+        Mon, 24 Feb 2025 23:55:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740470158; x=1741074958;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CKWfJnlIU/VwviwhZqgb3CnRb75dZOnMnqdVJJtv9ws=;
+        b=c+Hh4fR37+iuWMUoEryLw/oxdORGTlpjD1hyuul5TtKCE6fkfQ+htAWreWewVVI7XP
+         ZRnt0qzwN7jm91pEHmXAhuuicgi7pyW+TeMnI+0KcnFJOgYM5lZ6/UAv8hSx/M7erDOH
+         LGs8Ioa7SBD351kXkqtmk9rTDAeEMU0uAS1qQCQBzQ+0OIINjQaFogKRonLfveMGUfXp
+         WkMyvTnL3ANvbnrhHgbc1DnfbhByqSB2MWhQZx5UisncSbyjUtBWd8nNXM84mvK96weP
+         DZXx6nQ8bgmpJOchO6yac6YymGpqVhvHrHouWjb45ak8mAgLsvTRhcAhDz7Tvn8fQWw6
+         D4sg==
+X-Forwarded-Encrypted: i=1; AJvYcCVA8otVdICb081s7tFgmefvbepgwkVeYxM/abgFZEtIxQYSllCSBHLxMxIxgnAs0EW6IS4ApCPKjM5945QpMEaV@lists.infradead.org, AJvYcCVedVQsYbTmCHaB3Uh1Gw/h1hvAYyKby8Zih0xdD31BOYFzm1bOhR6AIMdKL+8751phwNUI2+Pr4A3qa86aEBo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyD74XEnNP3Dzh4psbUD+fTYZI+06cLijphG9CqX/urzphL6rdq
+	WqsoBG8iFrhnsMSR1FWZLbt6bMyk2bMqQme8kjf7zZMVtiDIEQSf
+X-Gm-Gg: ASbGncuHuQ379NJ7nnfl7V+BdIt7WlzhKLUy2xZmFbg3kaA27OcULtzi08II0c9OypI
+	zE+NQ1482iGOzOcD/+lHkBhrRXAoHwRyF6O4DNDUgIvEKw9k87hp7SCL73AJkbls3u5SAAYxny2
+	EZ1Gp++CwcV/ISfvt1NjL282KdikFZhEKfD3YW/nVqvvsmCPZMEB/ychSpuN4HZ4cJWPpiasjT9
+	La7UMFtuLROhaNbUBT2Kpews7qvs8dbDyEyGbOwOf4PhxKkWZrBZ+N65qbW1rm8cKCYYg+XE6wi
+	Fo+03mwjUUCk2OEYFueSc3XqYC8N4+p2YvZiofPGMR4D9sN/7jzM8fv9fQ==
+X-Google-Smtp-Source: AGHT+IGyKE9ou1PLve6oe1JIwGuGEar++UthHGMcf8nHUEw8AgRnWz/gHdtZb9HVpd+SBEqA45A1bg==
+X-Received: by 2002:a05:600c:5115:b0:439:7b5e:820a with SMTP id 5b1f17b1804b1-439ae1e670emr149646185e9.11.1740470158037;
+        Mon, 24 Feb 2025 23:55:58 -0800 (PST)
+Received: from [10.42.0.1] (cst-prg-37-50.cust.vodafone.cz. [46.135.37.50])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-439b02f2475sm130299475e9.20.2025.02.24.23.55.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Feb 2025 23:55:56 -0800 (PST)
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: [PATCH v2 0/7] New DRM accel driver for Rockchip's RKNN NPU
+Date: Tue, 25 Feb 2025 08:55:46 +0100
+Message-Id: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYCPR01MB10914:EE_|TYWPR01MB12125:EE_
-X-MS-Office365-Filtering-Correlation-Id: 080264aa-e0d9-4319-9e4c-08dd5563fe07
-X-LD-Processed: 53d82571-da19-47e4-9cb4-625a166a4a2a,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|376014|7416014|4053099003|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?kKQyU7LMz2MhAkHZTpDnjYV2r+m9ywc7DbrI/oSLQrZVaLlZtZ9tVuj8TDiq?=
- =?us-ascii?Q?w8geinNYz8NWT5u+SQMHpQd7j1jNiJa9X9n5INqtzerAAlpgvq+4t7tP7+/z?=
- =?us-ascii?Q?2FxZSLxm+oArkEotuqtBZsYRxVD3B3oI/L0RM6nW9DeqOHTdf1dFAli80BQY?=
- =?us-ascii?Q?Vhz0qVlwS6FZIABXbOuhK0HMIWeW/s0rzIay9GXSv32Dz6pf+/dBfqrf8kwl?=
- =?us-ascii?Q?+/UhU98aVM1fakIoPkK/9KZlSqr22pE1yr8EggHNbaIKd1cN+dlDaO8lQEUH?=
- =?us-ascii?Q?RgU6XB9OoBq4rVoW7rV6BLMWZoFY4hkaX8CkHhXIX1Y793fVcCmiKIOLsEB/?=
- =?us-ascii?Q?4xudl/tNrPX0njVcs3g/zDZkx9dUEWWtq8i9qz0JX5t4Veva8UUrtEg3tstd?=
- =?us-ascii?Q?rqSVcaVWZtiAch70xcYkACv4ZBWw4GaG4V38QS9XLczpWwjAYvVsAhKwtumV?=
- =?us-ascii?Q?YPvJiWJDPfzjPXLGVmw7nSPSLKFQHtXwdBIKJlolIAkxevV35DQeTnKr/5Iu?=
- =?us-ascii?Q?nqbRpbtXNn+G+VmpyLgUFgr9RIrevTttC3xlFJV22iIq/bWya5PVcJk7/oX8?=
- =?us-ascii?Q?kA1c0xCme4AH9AX7P2Hwx1iGlF+lTudj0O7zm8KaLYFKYqRoN6vn7wH8qsgr?=
- =?us-ascii?Q?cPb+7m/aaPD7zl7zxTTEkvSksgkQBjNwWSfj088pShcbv+ipFwciu7hN5Rd4?=
- =?us-ascii?Q?C+TQ77v+kKEkmso/25AX6UuKgbtVRfYNnRc/0Deon7Qif/g12V+XjXfkvBRI?=
- =?us-ascii?Q?5raLclg8QsRTWSFkHcgRDzHerqJGZbpB6Gf1quP7uq6gcxcBkLtAaLzsnMpz?=
- =?us-ascii?Q?q5IKAgp52PM5RJ8NG4vE+1SZ0Cow5BCJ7L/WYborpZaWxQLFhi1kWEyRHD5w?=
- =?us-ascii?Q?hilmWJ757gUbb59HxFPwovDrckwX3Kb5RA20AgQBbiefw1jHv5bOPn6Jw1d2?=
- =?us-ascii?Q?Rc64bUa/g5chGDOeVM0T2zJer2cCVk81hoZ4BewbYeMTRo3wVwTdcZfWemdh?=
- =?us-ascii?Q?VQn2JvZExc7F6Fb3xm6cUq+3VpKhWnwBQAXzt1CMx2JSWH0r3AErcYDum//Z?=
- =?us-ascii?Q?ReF7E/Dt0kbJocqNUjLYR9MWwLllG4oquv/b9h3AyHFvac9Yt3XgEJPAvGeb?=
- =?us-ascii?Q?29XA6bQXKk9cb9UGoY4YwyULfKRDMnjAgO9dbY2184SraQmfjYT4hEcqTj0k?=
- =?us-ascii?Q?ws1eQ+yzo36zrqTJSOXKL4BmbxwoZPs4B9RrAEVCxRpJ9VLi2+BKtulthL6t?=
- =?us-ascii?Q?JlPhtaRohx9Wx0RimPA/0ZLi9z06XnUC0Ad+mk/NDOS58vkg9iB6pcPx4vcU?=
- =?us-ascii?Q?I3k2OkmQckj3BH6mosophYCDhDHH9h3FiNa8I6zRYSLkHRIrU8dFMpbwCXyR?=
- =?us-ascii?Q?dT8GYINvbBuU5d44REvl0YPXX+qq/dwCmHo7pOFZP4IPYqVIVxbQohD8dQKe?=
- =?us-ascii?Q?LyBgeCmvGL9ze9f8Z+adVyzWW03VhpNE?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYCPR01MB10914.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(376014)(7416014)(4053099003)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wTcJvlWc0845cS0tHUwhTmH0sngYljf0TMXizr9RCsmk/REt09y+iiiqgaor?=
- =?us-ascii?Q?AYhKF+4JrsSlt4ZEy/QINZ7HHm97aJTgW8joIHIMssUnHcoXPx52mqQYXJ7w?=
- =?us-ascii?Q?TCBGVKQA6lp4w5BqMYJ0a9JgNpStISk76cAgddKSRM4V9QeTe21L2uqEpJKO?=
- =?us-ascii?Q?rksbzLbnU0aCCW1TCYx69lYmuSfxuvliLOvTR9GZr68Mt9uptcARdC4Bh6lD?=
- =?us-ascii?Q?o+dzdKv+sg9QAOnt9fdreKfYd+V/f57NNOd/MbVP2ifo/zYVT97Izkv+EFsu?=
- =?us-ascii?Q?zE2sW1Vwp0+oAQ1DcnTbAxWbrPKtlfe5OgIcxTXEKHSZ3jqI8E6fx1JA3+X2?=
- =?us-ascii?Q?EkW7fkvm9SShdmDnMD5f+ky9pDSMSQjCnCM2o30cXrfmSFAw5lf9ouCRB4YK?=
- =?us-ascii?Q?XwXTmferjHZm7mFVnc/rL+wzSA6RujDhceEXyyjP20PlkFsqDa50GO51ZJFg?=
- =?us-ascii?Q?JUZYlbaBabffP3yRxVaQabJs8UQTErvwZf8dQY0L5l0/seGOQtexofzeciWB?=
- =?us-ascii?Q?KjGLQIlMLp9G/pZjptxvNpRyd4JIB0WX4HsfpKoU8AA665Bq0bt2nuNcTYYV?=
- =?us-ascii?Q?UR9jwP9kgHqgiX7sYIdA4P9bZcnf7y86d70JH9mEaA6BFSfbMTr8gzWutd1V?=
- =?us-ascii?Q?6Vglbdn4UOHNwrFMiRJY5IfngXGq/SKnE6let87xR2nnnQwMxgcuAgNo56KC?=
- =?us-ascii?Q?Sw4qazvZVcqE3BLEQwO1xTwY56D/ba8z26WOb736zwRIA339BBPrAbvZCOz5?=
- =?us-ascii?Q?Y6b3lJDjI5ziDFjaKt49GBODwOUrymTtWLHRBdLtz/9FDOxZHJkaFyqqoPe5?=
- =?us-ascii?Q?33L6ErxsGea2P/RZv0gMQMaWkIOpSVbDOcHyHwz7utTuD32mQ8rM42UM6Izp?=
- =?us-ascii?Q?i2uIDvE7ZgBcWMUshK9dEinqQMrJBFPJDy143JOUi/ijRZv7IuPPwncd+w4C?=
- =?us-ascii?Q?x5oBeBnQzZZSJ1a6jaoOFCh5mnen+suskiPeuGq60EtGv+CKDM6CsD2YOAPs?=
- =?us-ascii?Q?bMLQGnz4zz1Xw1ki/EZON758PY4VKZb5ujPYotePcCAD5v7XmI9tsiMuPT7D?=
- =?us-ascii?Q?9hQzWpSQonj4mhCAVjthD6TMZ3PQTvFMTxajFpZYHswA/lyOX7T2T/Jk0Tak?=
- =?us-ascii?Q?y0ppt2CDIk6+IfstapaU5mfzbSun2dKcHxY6PiMz/xrRlSHle45KkHNs9LRp?=
- =?us-ascii?Q?TvzpB4U8TvIifvKWXTAyWxnfkwZJvIltsdVby3Jw+2tWpyfsgkfG5qkcWcDQ?=
- =?us-ascii?Q?OHIYRfX5sj+v6GXFFbAoA64TMVxD1YKZEI5EQfjb+BH7NbcOSOK00rwAJF6w?=
- =?us-ascii?Q?+YUThvRYon4hWTliMOG5Wjqt5kaO4nyjUxeup3DJx8VB/KQKhvIHwn9EvSXi?=
- =?us-ascii?Q?TjTCPRics1mn9yVWCbXXD32oiKdG26fBDntXATyf0SOHh44Yl1XIzwBoTmhb?=
- =?us-ascii?Q?NUSLbjnN1s7Z8XeKfHkY9fNinSyuv7lILA6fcwVDSNL4bODTY3kjQWsLfTMg?=
- =?us-ascii?Q?FMNduY69srMiBuFT1/XVun/EotVH+M+GQSOfEy8fDgFvErDuBuzmpWzYcbka?=
- =?us-ascii?Q?zM04hZcwxJKIehrA8OuHWUrDlccs8nhImXdQmVttSgSDRPly4CwH72VxCx8I?=
- =?us-ascii?Q?IF7y70rT5BQoaHcIdnd7eYE=3D?=
-X-OriginatorOrg: renesas.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 080264aa-e0d9-4319-9e4c-08dd5563fe07
-X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB10914.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2025 06:16:51.0277
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jg/rd4ddVhsMEu9rrwaPdU8qXQxZdGIuWFTIgOw8ibWDXfMQwyCvtkq7SNRkHYUc6IIiWKKrPzaHO9ALZa2tly9u1c2aiOIer0Q8OXAUgch9t2J45oJNoTj5duVwhVhY
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWPR01MB12125
+X-B4-Tracking: v=1; b=H4sIAIJ3vWcC/23Myw7CIBCF4VdpZu2YAREvK9/DdNHQqZ0YSwNI1
+ IZ3F7t2+Z/kfAtEDsIRzs0CgbNE8VMNvWnAjd10Y5S+NmjShqzSaFERBu/unPC0U7bnwSnjDlA
+ fc+BBXqt2bWuPEpMP7xXP6rf+d7JCQrLE5sjc6T1dkn/wM8vHR7+dOEFbSvkC3oBjFawAAAA=
+X-Change-ID: 20240612-6-10-rocket-9316defc14c7
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Jeffrey Hugo <quic_jhugo@quicinc.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250224_221704_678048_3661B2A2 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20250224_235600_347292_D3D2D141 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,84 +94,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---Multipart_Tue_Feb_25_15:16:50_2025-1
-Content-Type: text/plain; charset=US-ASCII
+This series adds a new driver for the NPU that Rockchip includes in its
+newer SoCs, developed by them on the NVDLA base.
 
+In its current form, it supports the specific NPU in the RK3588 SoC.
 
-Hi Detlev, again
+The userspace driver is part of Mesa and an initial draft can be found at:
 
-> > Especially those commits:
-> >       ASoC: audio-graph-card2: use __free(device_node) for device node
-> >       ASoC: audio-graph-card: use __free(device_node) for device node
-> >       ASoC: simple-card: use __free(device_node) for device node
-> 
-> I got same report from our test team. I'm now tring to solve it.
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29698
 
-Unfortunately, I can't reproduce the issue on my environment,
-but I guess I found the root cause. Does attached patch can solve
-your issue ?
-I will officially post the patch to ML, but want to confirm it before it.
-
-Thank you for your help !!
-
-Best regards
+Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
 ---
-Kuninori Morimoto
+Changes in v2:
+- Drop patch adding the rk3588 compatible to rockchip-iommu (Sebastian Reichel)
+- Drop patch adding support for multiple power domains to rockchip-iommu (Sebastian Reichel)
+- Link to v1: https://lore.kernel.org/r/20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net
 
---Multipart_Tue_Feb_25_15:16:50_2025-1
-Content-Type: text/plain; type=patch; name="0001-ASoC-simple-card-utils-Don-t-use-__free-device_node-.patch"; charset=US-ASCII
-Content-Disposition: attachment; filename="0001-ASoC-simple-card-utils-Don-t-use-__free-device_node-.patch"
-Content-Transfer-Encoding: base64
+---
+Tomeu Vizoso (7):
+      dt-bindings: npu: rockchip,rknn: Add bindings
+      arm64: dts: rockchip: Add nodes for NPU and its MMU to rk3588s
+      arm64: dts: rockchip: Enable the NPU on quartzpro64
+      accel/rocket: Add a new driver for Rockchip's NPU
+      accel/rocket: Add IOCTL for BO creation
+      accel/rocket: Add job submission IOCTL
+      accel/rocket: Add IOCTLs for synchronizing memory accesses
 
-RnJvbSAzOTk1NDc4YWU4NDI0MGIyNDk2NGE0NThlY2JlZmU5ZmI2ZGMyMjcyIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBLdW5pbm9yaSBNb3JpbW90byA8a3VuaW5vcmkubW9yaW1vdG8u
-Z3hAcmVuZXNhcy5jb20+CkRhdGU6IFR1ZSwgMjUgRmViIDIwMjUgMDk6NTQ6NDcgKzA5MDAKU3Vi
-amVjdDogW1BBVENIXSBBU29DOiBzaW1wbGUtY2FyZC11dGlsczogRG9uJ3QgdXNlIF9fZnJlZShk
-ZXZpY2Vfbm9kZSkgYXQKIGdyYXBoX3V0aWxfcGFyc2VfZGFpKCkKCmNvbW1pdCA0MTlkMTkxODEw
-NWUgKCJBU29DOiBzaW1wbGUtY2FyZC11dGlsczogdXNlIF9fZnJlZShkZXZpY2Vfbm9kZSkgZm9y
-CmRldmljZSBub2RlIikgdXNlcyBfX2ZyZWUoZGV2aWNlX25vZGUpIGZvciBkbGMtPm9mX25vZGUs
-IGJ1dCB3ZSBuZWVkIHRvCmtlZXAgaXQgd2hpbGUgZHJpdmVyIGlzIGluIHVzZS4KCkRvbid0IHVz
-ZSBfX2ZyZWUoZGV2aWNlX25vZGUpIGluIGdyYXBoX3V0aWxfcGFyc2VfZGFpKCkuCgpGaXhlczog
-NDE5ZDE5MTgxMDVlICgiQVNvQzogc2ltcGxlLWNhcmQtdXRpbHM6IHVzZSBfX2ZyZWUoZGV2aWNl
-X25vZGUpIGZvciBkZXZpY2Ugbm9kZSIpClNpZ25lZC1vZmYtYnk6IEt1bmlub3JpIE1vcmltb3Rv
-IDxrdW5pbm9yaS5tb3JpbW90by5neEByZW5lc2FzLmNvbT4KLS0tCiBzb3VuZC9zb2MvZ2VuZXJp
-Yy9zaW1wbGUtY2FyZC11dGlscy5jIHwgNyArKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNl
-cnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL3NvdW5kL3NvYy9nZW5lcmlj
-L3NpbXBsZS1jYXJkLXV0aWxzLmMgYi9zb3VuZC9zb2MvZ2VuZXJpYy9zaW1wbGUtY2FyZC11dGls
-cy5jCmluZGV4IDUxZTBlNDM0NTE0ZC4uNzlmZGQ1N2E0NzBjIDEwMDY0NAotLS0gYS9zb3VuZC9z
-b2MvZ2VuZXJpYy9zaW1wbGUtY2FyZC11dGlscy5jCisrKyBiL3NvdW5kL3NvYy9nZW5lcmljL3Np
-bXBsZS1jYXJkLXV0aWxzLmMKQEAgLTExMDIsNiArMTEwMiw3IEBAIHN0YXRpYyBpbnQgZ3JhcGhf
-Z2V0X2RhaV9pZChzdHJ1Y3QgZGV2aWNlX25vZGUgKmVwKQogaW50IGdyYXBoX3V0aWxfcGFyc2Vf
-ZGFpKHN0cnVjdCBzaW1wbGVfdXRpbF9wcml2ICpwcml2LCBzdHJ1Y3QgZGV2aWNlX25vZGUgKmVw
-LAogCQkJIHN0cnVjdCBzbmRfc29jX2RhaV9saW5rX2NvbXBvbmVudCAqZGxjLCBpbnQgKmlzX3Np
-bmdsZV9saW5rKQogeworCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZTsKIAlzdHJ1Y3QgZGV2aWNl
-ICpkZXYgPSBzaW1wbGVfcHJpdl90b19kZXYocHJpdik7CiAJc3RydWN0IG9mX3BoYW5kbGVfYXJn
-cyBhcmdzID0ge307CiAJc3RydWN0IHNuZF9zb2NfZGFpICpkYWk7CkBAIC0xMTEwLDcgKzExMTEs
-NyBAQCBpbnQgZ3JhcGhfdXRpbF9wYXJzZV9kYWkoc3RydWN0IHNpbXBsZV91dGlsX3ByaXYgKnBy
-aXYsIHN0cnVjdCBkZXZpY2Vfbm9kZSAqZXAsCiAJaWYgKCFlcCkKIAkJcmV0dXJuIDA7CiAKLQlz
-dHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUgX19mcmVlKGRldmljZV9ub2RlKSA9IG9mX2dyYXBoX2dl
-dF9wb3J0X3BhcmVudChlcCk7CisJbm9kZSA9IG9mX2dyYXBoX2dldF9wb3J0X3BhcmVudChlcCk7
-CiAKIAkvKgogCSAqIFRyeSB0byBmaW5kIGZyb20gREFJIG5vZGUKQEAgLTExNTMsOCArMTE1NCwx
-MCBAQCBpbnQgZ3JhcGhfdXRpbF9wYXJzZV9kYWkoc3RydWN0IHNpbXBsZV91dGlsX3ByaXYgKnBy
-aXYsIHN0cnVjdCBkZXZpY2Vfbm9kZSAqZXAsCiAJICogICAgaWYgaGUgdW5iaW5kZWQgQ1BVIG9y
-IENvZGVjLgogCSAqLwogCXJldCA9IHNuZF9zb2NfZ2V0X2RsYygmYXJncywgZGxjKTsKLQlpZiAo
-cmV0IDwgMCkKKwlpZiAocmV0IDwgMCkgeworCQlvZl9ub2RlX3B1dChub2RlKTsKIAkJZ290byBl
-bmQ7CisJfQogCiBwYXJzZV9kYWlfZW5kOgogCWlmIChpc19zaW5nbGVfbGluaykKLS0gCjIuNDMu
-MAoK
+ Documentation/accel/index.rst                      |    1 +
+ Documentation/accel/rocket/index.rst               |   19 +
+ .../bindings/npu/rockchip,rknn-core.yaml           |  152 +
+ MAINTAINERS                                        |    8 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   76 +
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   30 +
+ drivers/accel/Kconfig                              |    1 +
+ drivers/accel/Makefile                             |    1 +
+ drivers/accel/rocket/Kconfig                       |   25 +
+ drivers/accel/rocket/Makefile                      |   10 +
+ drivers/accel/rocket/rocket_core.c                 |   77 +
+ drivers/accel/rocket/rocket_core.h                 |   43 +
+ drivers/accel/rocket/rocket_device.c               |   35 +
+ drivers/accel/rocket/rocket_device.h               |   33 +
+ drivers/accel/rocket/rocket_drv.c                  |  295 ++
+ drivers/accel/rocket/rocket_drv.h                  |   17 +
+ drivers/accel/rocket/rocket_gem.c                  |  216 +
+ drivers/accel/rocket/rocket_gem.h                  |   32 +
+ drivers/accel/rocket/rocket_job.c                  |  710 ++++
+ drivers/accel/rocket/rocket_job.h                  |   50 +
+ drivers/accel/rocket/rocket_registers.h            | 4425 ++++++++++++++++++++
+ include/uapi/drm/rocket_accel.h                    |  116 +
+ 22 files changed, 6372 insertions(+)
+---
+base-commit: 585e191534efe95712df88a22eaa8d51228bcb43
+change-id: 20240612-6-10-rocket-9316defc14c7
 
---Multipart_Tue_Feb_25_15:16:50_2025-1
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+-- 
+Tomeu Vizoso <tomeu@tomeuvizoso.net>
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---Multipart_Tue_Feb_25_15:16:50_2025-1--
-
