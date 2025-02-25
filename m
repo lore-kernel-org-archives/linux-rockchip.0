@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F90C021BC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AABFC021BB
 	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OPdQ74SClAk/DTPKvjLJyKPB8g8qvyefgBZDTCICpLE=; b=xYEwPLKcD+jFNp
-	Bj211HzTiJcgVuigThGmH1wkWvyWBST8AWalzQ4Q6zVw3Se+iBWvplVW1vgz9IdSdi9Opgp1rI1/J
-	yrJL6Qd8BGFKboQxsM2v9chYFo6Mtc5cfyeTS48nvRGGGKzDHuceLb210++bD1VyX07UDYImpFoYC
-	YZJj0Q6TpP5NrJpfQimxGk6jF6U3SzrRIWiYcXNsnUNjMj7S+VyhEZ29vXzH1b6f8xugjMUy4EGcb
-	ooujemDec9trSsEuz8AoCOexQZLsX/DOb61splb4nC1LkOoUCM1nDfioOxfFxy918gT5K9GtiaIrM
-	vk8F12Tl/XlFhVNGUikg==;
+	List-Owner; bh=+y92BkLGV+XzvMNUKiRRCe/3tdYmj/kq7+h7YOyySJ0=; b=oprgpQ5QuT5LuL
+	dxL2L6ZMPCDTRljJ+R+fqmUtb0FUWqI6NzfzyOyLQXqxXSQPt6HPdgoUKybvkqOfmKZSwXA3PPtzU
+	QTz/NIruu03H7ymBzozSBNXCwKgxOAYiIXeqAapxuxDFc59KXgNLY/9LSI9c9P3vmp2QClUDeU8Ip
+	uKQDlrA3jJKYakxHiaXqeCjB3lb1GFAI8py8AxpAWFHL/M88IIY9Mn15foxUT/E20o47YrXdcmhK3
+	YphIvt0/MmVy+avCQv5v42LkULCSnxCSDobfKgFUbjsTksr8xwTdYOxof/TIM5Z4MToWLvqIBjf3Y
+	ONqS18Jk2WOgT83jCUAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrlI-0000000GjLk-1xsj;
-	Tue, 25 Feb 2025 10:02:00 +0000
+	id 1tmrlH-0000000GjKd-2RSp;
+	Tue, 25 Feb 2025 10:01:59 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrRi-0000000GedP-40b4
+	id 1tmrRO-0000000GeWo-3krW
 	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:41:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476500; cv=none; 
+	Tue, 25 Feb 2025 09:41:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740476480; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=b1G1tij8w9MUsFuZwjNJ2J996DTQsiE+sqDZkt6emWKQQcTxdDElrRqQD93BXmpaejD3XFoIkvUqJWx0gPkTpWOHVzGXDUB0DLoueJduBhG2b6/S6gbNxF+cTW1GBULUliUoO/GO19LFENaXFUu4zmXK1clpRKdLUYzD6QHrpHQ=
+	b=FpIAXatxbkP6A6pNhrKSgWAyx7jisDzhS271q3zEfE2c0MrVbbH3dOki0MepARwXWRwOfzj3ijm0om/Pd6EvieT+/gv0JJ6vBHWISZXDzJrBVdSNdzT7Niuf1MozohhAWf7fDevsJB9NOpgMgzYmA+eigQoQAcC3pA+ojkZcoA4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476500; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ydaNwD+QExLtqdUUDLYZNGa0VEDDTPQCaGJLdokEAl8=; 
-	b=lYIHbqz5b0p065bgzQCedV9SAqeadHViTVIb66AavBKPjrPHu5v90Mhurv14ZjSW5X/SHGFTvdmk9EfXsKE/hY/2Grwf2fQGnIRjmeC1YBVbYLqU8/YdI0Z/s5UVLHT2SqNUb+uoP+O6nt/6X3M2cLqMLXQ5G2LxYRG90TuI9XE=
+	t=1740476480; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=hxN3jzC16EMS8sC831bVLnOP4XuP4WpSvwKW+swAeco=; 
+	b=FvoSTEalzaqDz42jKY6zVXlgTAQiJWN2sjtKXjiIPinUvU7L3OuGXInX0Ir7T9BHHCj8cjZlrpCe7kIU8mOIu6BVFPQoQ79sWedaV6bowkB9GPZITlsFTDzQ1Fm6/YA2HIaCp5vUPirFmIFZApLzWcvcsMvB5mPXbPscFOj30kM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476500;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476480;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=ydaNwD+QExLtqdUUDLYZNGa0VEDDTPQCaGJLdokEAl8=;
-	b=F3o+DmJzzUuoHQJvR+212nn/N36QFIbvz0s2vkUamjcegnRsrNYJlbIcJ310YW7b
-	pzGVCV78y09/X2IGae2SoqXF8e5suUoeHbOgK67sjknwjqYn3p6+/eWozOc1CbnFL6i
-	VcbbAvG9YgcjrJY1vr245UnpsPddenW9CpiCTV/A=
-Received: by mx.zohomail.com with SMTPS id 1740476498610405.11605187345197;
-	Tue, 25 Feb 2025 01:41:38 -0800 (PST)
+	bh=hxN3jzC16EMS8sC831bVLnOP4XuP4WpSvwKW+swAeco=;
+	b=FjytpZCGsif3QEOHQ1KASwaCleYZdav6scWUhWRD+yPE1noWyGQLDrShlahM4A0b
+	OaC4qhMQR8THggrduhzeu2bMctboZ+dCr04saTCOyQGicYqNdUB7OQSekF0qM+tULHr
+	52q+RqJ+Sck52423LxGh6dkpAHc/iXGONdTEfYFE=
+Received: by mx.zohomail.com with SMTPS id 1740476475018610.7472651019332;
+	Tue, 25 Feb 2025 01:41:15 -0800 (PST)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:27 +0100
-Subject: [PATCH v7 06/12] media: rkvdec: Move rkvdec_reset_decoded_fmt
- helper
+Date: Tue, 25 Feb 2025 10:40:25 +0100
+Subject: [PATCH v7 04/12] media: rkvdec: h264: Don't hardcode SPS/PPS
+ parameters
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-6-7992a68a4910@collabora.com>
+Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-4-7992a68a4910@collabora.com>
 References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -70,17 +70,18 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
  Christopher Obbard <christopher.obbard@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=3227;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=2525;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=3QFkEuQGNgb1BZvE0V8lmT5neA542UdT7PYjbWxjjM0=;
- b=aC/0vaGnjPQBM1T6M3cY3P/gToBjWStjuLJeKQunm2wkhfMBoiQg9BM9aJnfQp32y+eAp4LoDQ7h
- 6+sRSJLTALU1rBfMC9AqMOR+CqJr9kvf/UMR5cwomBwr/NCHTlTf
+ bh=VqNk0668C4194kJOyR2Z8yV5w4cuXj1PlaUvbKsk8pY=;
+ b=m1UyqA38qOz+K7beTtpG/BBwcRC3/ZrfgZq7IzC2iRe/7+kLH5bN57ni0aT6Y07PnuvxdkmHZzSx
+ 00c1GEF0A1IKqsVEKSIqDJzcejgqo6gWgS5HCbrQYQXWp3/Mg32y
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014147_115913_F592C138 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20250225_014127_040226_5973DE15 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,90 +98,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: Alex Bee <knaerzche@gmail.com>
 
-Move rkvdec_reset_decoded_fmt() and the called rkvdec_reset_fmt() helper
-functions in preparation for adding a new caller in an upcoming patch.
+Some SPS/PPS parameters are currently hardcoded in the driver even
+though they exist in the stable uapi controls.
 
+Use values from SPS/PPS controls instead of hardcoding them.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+[jonas@kwiboo.se: constraint_set_flags condition, commit message]
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 46 +++++++++++++++++------------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index e354360f4acc1fe9b7c4b90745f0a818fa2b7cab..1f8f98cf91dc205f4a9da2712c81e90b726a6e57 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -37,6 +37,29 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
- 		DIV_ROUND_UP(pix_mp->height, 16);
- }
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 7a1e76d423df55bd01c1ff26ff2c6d1b81ee7169..8bce8902b8dda39bb2058c8504bd52ccae6b4204 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -655,13 +655,14 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
  
-+static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
-+			     u32 fourcc)
-+{
-+	memset(f, 0, sizeof(*f));
-+	f->fmt.pix_mp.pixelformat = fourcc;
-+	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
-+	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
-+	f->fmt.pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-+	f->fmt.pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
-+	f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
-+}
-+
-+static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
-+{
-+	struct v4l2_format *f = &ctx->decoded_fmt;
-+
-+	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
-+	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-+	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
-+	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
-+	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
-+}
-+
- static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
- {
- 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-@@ -169,18 +192,6 @@ rkvdec_find_coded_fmt_desc(u32 fourcc)
- 	return NULL;
- }
+ #define WRITE_PPS(value, field) set_ps_field(hw_ps->info, field, value)
+ 	/* write sps */
+-	WRITE_PPS(0xf, SEQ_PARAMETER_SET_ID);
+-	WRITE_PPS(0xff, PROFILE_IDC);
+-	WRITE_PPS(1, CONSTRAINT_SET3_FLAG);
++	WRITE_PPS(sps->seq_parameter_set_id, SEQ_PARAMETER_SET_ID);
++	WRITE_PPS(sps->profile_idc, PROFILE_IDC);
++	WRITE_PPS(!!(sps->constraint_set_flags & (1 << 3)), CONSTRAINT_SET3_FLAG);
+ 	WRITE_PPS(sps->chroma_format_idc, CHROMA_FORMAT_IDC);
+ 	WRITE_PPS(sps->bit_depth_luma_minus8, BIT_DEPTH_LUMA);
+ 	WRITE_PPS(sps->bit_depth_chroma_minus8, BIT_DEPTH_CHROMA);
+-	WRITE_PPS(0, QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
++	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_QPPRIME_Y_ZERO_TRANSFORM_BYPASS),
++		  QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
+ 	WRITE_PPS(sps->log2_max_frame_num_minus4, LOG2_MAX_FRAME_NUM_MINUS4);
+ 	WRITE_PPS(sps->max_num_ref_frames, MAX_NUM_REF_FRAMES);
+ 	WRITE_PPS(sps->pic_order_cnt_type, PIC_ORDER_CNT_TYPE);
+@@ -688,8 +689,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 		  DIRECT_8X8_INFERENCE_FLAG);
  
--static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
--			     u32 fourcc)
--{
--	memset(f, 0, sizeof(*f));
--	f->fmt.pix_mp.pixelformat = fourcc;
--	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
--	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
--	f->fmt.pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	f->fmt.pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
--	f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
--}
--
- static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- {
- 	struct v4l2_format *f = &ctx->coded_fmt;
-@@ -196,17 +207,6 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- 		ctx->coded_fmt_desc->ops->adjust_fmt(ctx, f);
- }
- 
--static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
--{
--	struct v4l2_format *f = &ctx->decoded_fmt;
--
--	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
--	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
--	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
--	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
--	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
--}
--
- static int rkvdec_enum_framesizes(struct file *file, void *priv,
- 				  struct v4l2_frmsizeenum *fsize)
- {
+ 	/* write pps */
+-	WRITE_PPS(0xff, PIC_PARAMETER_SET_ID);
+-	WRITE_PPS(0x1f, PPS_SEQ_PARAMETER_SET_ID);
++	WRITE_PPS(pps->pic_parameter_set_id, PIC_PARAMETER_SET_ID);
++	WRITE_PPS(pps->seq_parameter_set_id, PPS_SEQ_PARAMETER_SET_ID);
+ 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE),
+ 		  ENTROPY_CODING_MODE_FLAG);
+ 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_BOTTOM_FIELD_PIC_ORDER_IN_FRAME_PRESENT),
 
 -- 
 2.25.1
