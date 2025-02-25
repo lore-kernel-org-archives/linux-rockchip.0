@@ -4,69 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32CDC021B6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FFAC021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 12:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aC0SfE53AERpsdaNuU/lN+Cbzf7aeDMDCt3pS5Hmgfs=; b=t6N/70+cokRwc/
-	Di3Rwlw6O9pBeW7p1PlQuP0ImuIQKZJYMZE8Rf0sSAdsuxOfc3cLVe2YBct5S+5LEfqeSySD5OiHS
-	jN9G57S4IHajKiNaM3po6wTf7JkiX9HtZPmshOXCCXJiyaN7ptcBpHHYRSQPw3Yxs9ohC+5G6pNWU
-	TPrv9AqCjUgr4LwdPbfRIuE/KnPCJfiaVHHSX8bCXtae+ThLTXQY4LaWbh8hSYfqD2pJhuFvuY0IN
-	CHaDqQuKnZ6DcimYbGPL9cw/m45WJ5YiuXKrbr2M4ME/B5EnRs8fSwRtbiP0Clq3FGx/cNDcE5WYR
-	gjFKmVXzYT/E3qM4YBfw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=y8nm0G9DHgUsTOVtKCVGJ1T78M++/AVAyTbxPqp5M4A=; b=xSHG5Xvi5ni9pZ
+	kHzcIAq/8GXLSWp2qPXtFZxJfR8po7D0mSM6P/rgXcrC1FjxjIZ/8iVDkR6V6vo6FSa15mfl/QLfv
+	plHWnUYj4Icfd5S/7u+n9Z7icTbQJ9lHYqZgLHqQrsuwOCPpCbMHq3uAFuetZesz3pctRZR3Zx3KI
+	AIrB8sIW/pnvZwVAKLN2EG66q2mRtxZ43elxXBwtF6+pfcVDh7JpL74RhK91hUYX2bIXpjTDwHMMx
+	0IyJMKRjRrkKV5ol7LVmk4yBh1UbRg1wkMIyOeaDpqVRnXjWFrHjp1fYNpQBoDDIhlOxie42LKMxb
+	hrfvfEC7fwVuT6UYqH+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmseh-0000000Gvl4-3XFE;
-	Tue, 25 Feb 2025 10:59:15 +0000
-Received: from mail-m1973181.qiye.163.com ([220.197.31.81])
+	id 1tmu5K-0000000HDQy-2IH6;
+	Tue, 25 Feb 2025 12:30:50 +0000
+Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:4:17::42ae])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tms8r-0000000GowB-0iUm;
-	Tue, 25 Feb 2025 10:26:22 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id c22892d4;
-	Tue, 25 Feb 2025 18:26:16 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Rob Herring <robh@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v7 2/2] arm64: dts: rockchip: Add rk3576 pcie nodes
-Date: Tue, 25 Feb 2025 18:26:11 +0800
-Message-Id: <20250225102611.2096462-2-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250225102611.2096462-1-kever.yang@rock-chips.com>
-References: <20250225102611.2096462-1-kever.yang@rock-chips.com>
+	id 1tmtVY-0000000H6c3-2PR6
+	for linux-rockchip@lists.infradead.org;
+	Tue, 25 Feb 2025 11:53:54 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Z2GGM4jjDzRm0;
+	Tue, 25 Feb 2025 12:53:47 +0100 (CET)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Z2GGM06hSzC3b;
+	Tue, 25 Feb 2025 12:53:46 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: pinmux fixes for PX30
+ Ringneck
+Date: Tue, 25 Feb 2025 12:53:28 +0100
+Message-Id: <20250225-ringneck-dtbos-v3-0-853a9a6dd597@cherry.de>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0JIHVZMSkpPTkhIT0gZTkNWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a953ca49f4903afkunmc22892d4
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PBA6Mxw5EDIPFRZMSD85Mw0q
-	SUoKFAlVSlVKTE9LT0xCSkxMQ0NMVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPQkxMNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=EGy/dRrY80vj82Tvyrn2DPHIFxLxBg4BVpU0q5iGos1VHJS3PjwEh/1jRM8IFKiYudemir50dsHU0kEvDI4evgpAJIPddLdhFKOn/kuD1G2bs6Dlv9guQb2liszvR4a3ahA7x3ewpbHDapeN3OR1BjRR1A64RhEu8LvV5QujXUU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=/wGkIil3QoXz7AbdiUATvQCPYUHaF23rXlPjZE2ix3o=;
-	h=date:mime-version:subject:message-id:from;
+X-B4-Tracking: v=1; b=H4sIADivvWcC/2WNwQ6CMBAFf8X0bE27tdh68j+MBygLNCagW2wkh
+ H+3wEGix3nJzBtZQPIY2Hk3MsLog+/aBGq/Y67J2xq5LxMzEKCFBMPJt3WL7s7LvugCt0ZkR6O
+ s0hpZkh6ElX8vwettZcLnK3X779j40Hc0LKdRzuvaBxC//Si54KCdPVWgjMbs4hokGg4lsjkVY
+ avLPx2SrqRworC5ssJu9WmaPp8lAkcAAQAA
+X-Change-ID: 20250128-ringneck-dtbos-98064839355e
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_022621_386723_3C3F5581 
-X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-CacheID: sfid-20250225_035352_755037_16232573 
+X-CRM114-Status: UNSURE (   7.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,148 +72,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3576 has two pcie controllers, both are pcie2x1 work with
-naneng-combphy.
+This fixes incorrect pinmux on UART0 and UART5 for PX30 Ringneck on
+Haikou.
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
-
-Changes in v7:
-- re-order the properties.
-
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
 Changes in v3:
-- Update the subject
+- removed already merged patches (Device Tree overlays),
+- rebased on top of master to avoid conflicts,
+- added comment above pinctrl-0 in uart5 to explain we are only adding a
+  pinmux and not modifying anything else,
+- Link to v2: https://lore.kernel.org/r/20250221-ringneck-dtbos-v2-0-310c0b9a3909@cherry.de
 
 Changes in v2:
-- Update clock and reset names and sequence to pass DTB check
+- rename uart5_rts_gpio to uart5_rts_pin to stop triggering a false
+  positive of the dtschema checker,
+- remove PU from uart5_rts_pin,
+- Link to v1: https://lore.kernel.org/r/20250220-ringneck-dtbos-v1-0-25c97f2385e6@cherry.de
 
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 108 +++++++++++++++++++++++
- 1 file changed, 108 insertions(+)
+---
+Quentin Schulz (2):
+      arm64: dts: rockchip: fix pinmux of UART0 for PX30 Ringneck on Haikou
+      arm64: dts: rockchip: fix pinmux of UART5 for PX30 Ringneck on Haikou
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 4dde954043ef..79e24b2c3c60 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1127,6 +1127,114 @@ qos_npu_m1ro: qos@27f22100 {
- 			reg = <0x0 0x27f22100 0x0 0x20>;
- 		};
- 
-+		pcie0: pcie@2a200000 {
-+			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
-+			reg = <0x0 0x22000000 0x0 0x00400000>,
-+			      <0x0 0x2a200000 0x0 0x00010000>,
-+			      <0x0 0x20000000 0x0 0x00100000>;
-+			reg-names = "dbi", "apb", "config";
-+			bus-range = <0x0 0xf>;
-+			clocks = <&cru ACLK_PCIE0_MST>, <&cru ACLK_PCIE0_SLV>,
-+				 <&cru ACLK_PCIE0_DBI>, <&cru PCLK_PCIE0>,
-+				 <&cru CLK_PCIE0_AUX>;
-+			clock-names = "aclk_mst", "aclk_slv",
-+				      "aclk_dbi", "pclk",
-+				      "aux";
-+			device_type = "pci";
-+			interrupts = <GIC_SPI 281 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 282 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 279 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 280 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 278 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 283 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "sys", "pmc", "msg", "legacy", "err", "msi";
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie0_intc 0>,
-+					<0 0 0 2 &pcie0_intc 1>,
-+					<0 0 0 3 &pcie0_intc 2>,
-+					<0 0 0 4 &pcie0_intc 3>;
-+			linux,pci-domain = <0>;
-+			max-link-speed = <2>;
-+			num-ib-windows = <8>;
-+			num-viewport = <8>;
-+			num-ob-windows = <2>;
-+			num-lanes = <1>;
-+			phys = <&combphy0_ps PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&power RK3576_PD_PHP>;
-+			ranges = <0x01000000 0x0 0x20100000 0x0 0x20100000 0x0 0x00100000
-+				  0x02000000 0x0 0x20200000 0x0 0x20200000 0x0 0x00e00000
-+				  0x03000000 0x9 0x00000000 0x9 0x00000000 0x0 0x80000000>;
-+			resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-+			reset-names = "pwr", "pipe";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			status = "disabled";
-+
-+			pcie0_intc: legacy-interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SPI 280 IRQ_TYPE_EDGE_RISING>;
-+			};
-+		};
-+
-+		pcie1: pcie@2a210000 {
-+			compatible = "rockchip,rk3576-pcie", "rockchip,rk3568-pcie";
-+			reg = <0x0 0x22400000 0x0 0x00400000>,
-+			      <0x0 0x2a210000 0x0 0x00010000>,
-+			      <0x0 0x21000000 0x0 0x00100000>;
-+			reg-names = "dbi", "apb", "config";
-+			bus-range = <0x20 0x2f>;
-+			clocks = <&cru ACLK_PCIE1_MST>, <&cru ACLK_PCIE1_SLV>,
-+				 <&cru ACLK_PCIE1_DBI>, <&cru PCLK_PCIE1>,
-+				 <&cru CLK_PCIE1_AUX>;
-+			clock-names = "aclk_mst", "aclk_slv",
-+				      "aclk_dbi", "pclk",
-+				      "aux";
-+			device_type = "pci";
-+			interrupts = <GIC_SPI 267 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 268 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 264 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "sys", "pmc", "msg", "legacy", "err", "msi";
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie1_intc 0>,
-+					<0 0 0 2 &pcie1_intc 1>,
-+					<0 0 0 3 &pcie1_intc 2>,
-+					<0 0 0 4 &pcie1_intc 3>;
-+			linux,pci-domain = <0>;
-+			max-link-speed = <2>;
-+			num-ib-windows = <8>;
-+			num-viewport = <8>;
-+			num-ob-windows = <2>;
-+			num-lanes = <1>;
-+			phys = <&combphy1_psu PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&power RK3576_PD_SUBPHP>;
-+			ranges = <0x01000000 0x0 0x21100000 0x0 0x21100000 0x0 0x00100000
-+				  0x02000000 0x0 0x21200000 0x0 0x21200000 0x0 0x00e00000
-+				  0x03000000 0x9 0x80000000 0x9 0x80000000 0x0 0x80000000>;
-+			resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
-+			reset-names = "pwr", "pipe";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			status = "disabled";
-+
-+			pcie1_intc: legacy-interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SPI 266 IRQ_TYPE_EDGE_RISING>;
-+			};
-+		};
-+
- 		gmac0: ethernet@2a220000 {
- 			compatible = "rockchip,rk3576-gmac", "snps,dwmac-4.20a";
- 			reg = <0x0 0x2a220000 0x0 0x10000>;
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+---
+base-commit: d082ecbc71e9e0bf49883ee4afd435a77a5101b6
+change-id: 20250128-ringneck-dtbos-98064839355e
+
+Best regards,
 -- 
-2.25.1
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
