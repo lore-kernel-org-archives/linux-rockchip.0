@@ -4,64 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7DC7C021BC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 13:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CB7C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 13:13:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8s34aJtUr9ZxFKeGymPn3k3sk2PovWQunXm49AulG94=; b=nNy9luot0nOZ3O
-	4ZCz4ZOjwR7XGcNNq5Mt72RxDo2nhoyVKW0LcwTqBhMhb0RWxAZYwCcLoJP/+psw4CI3SBx2Pj/kT
-	IbIlFiXwN6DUswfvJNVWszbCwbUyCAZaByLhWd3SrnKS0H4C1kaMwrV1x0c22JMLqomBbsSTAQs4v
-	i3vi71hlwW6YCgMIZ5Hf3XNslWnGSQFZuk97kAPUvjgyYSaqUMhUuH8l8VEueWLYh6t0/2U5C2NiM
-	GwyYm8ySvPboOsHIzk8i1/DP2lWggcAonXmk5bGORSOgBtGOb4QBuBPn0EENlV4+CT72+FeVXEMKY
-	naLw8S1KkrWvnPL8kqYg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T5Zp+FxZ2m8k3xvI41X/GBdKDJ31YZCePSjKFo3r0kA=; b=yvxeG8b3ilGSRD
+	B44Y1CKmou2WVy5uUcuYdld0KRwlxoexXvUbC3dxWXiU3TaeJEbZLWZ1VM+1htvZ0yF3eo9g+g9V/
+	2bbyy1hKxfsO/q6VbJ8oU6DjJe3j6yhTqkjcrh4wCpefQajZvpczicP0kMGAolUGJO2FrWg9CiL0R
+	b3mftXY0AAVmClrrwjqkqARM/dDFm4qqSNOGcNjD6pxEByTJw3hnnXNI2JVVRIXHC6KhqB36QEqlM
+	bMgmm8hXlhbHNhkjTS7yPfMvzOQzS1SLHFe1Xjztvp817REZYJhQkIKiCTwZXtp7bIKBKNZMkOp5M
+	qO9yq+Rn79ElxhE8oC7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmuhL-0000000HJZN-3pWG;
-	Tue, 25 Feb 2025 13:10:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tmukQ-0000000HKCe-0yk9;
+	Tue, 25 Feb 2025 13:13:18 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmuO6-0000000HG0c-1Zgu
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 12:50:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AB1265C6C31;
-	Tue, 25 Feb 2025 12:49:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 367A8C4CEE6;
-	Tue, 25 Feb 2025 12:50:10 +0000 (UTC)
-Message-ID: <795082c4-499f-4935-b580-72b01d82fe1b@xs4all.nl>
-Date: Tue, 25 Feb 2025 13:50:08 +0100
+	id 1tmuSX-0000000HGrJ-0IrU;
+	Tue, 25 Feb 2025 12:54:50 +0000
+Received: from mail.ideasonboard.com (unknown [223.190.81.179])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8778EA30;
+	Tue, 25 Feb 2025 13:53:15 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740487996;
+	bh=K8hIYu68rnMk8PuN3JrllsDdE9qN2sKwvnV/8hDc6p0=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ClrOZbsTTH3DFN6wyn7XRIdWSNmRUQOenqTON8mDFWaaecoAKayo7wfkldy88kzIj
+	 +WkWCtf8F38ZoVrUeXhdADCYcYlhNeTg0os08ccJIlpsq5+u3obe/gt3LTU9xM5fgM
+	 knG0E664+BWc1QyCxotQVOnTuCWl6MMMqLwTWSX4=
+From: Jai Luthra <jai.luthra@ideasonboard.com>
+Subject: [PATCH v3 0/2] media: rockchip: rkisp1: Add support for WDR and
+ AWB64
+Date: Tue, 25 Feb 2025 18:23:03 +0530
+Message-Id: <20250225-awb64-v3-0-af29b1201e48@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] fixup! media: v4l2-common: Add helpers to calculate
- bytesperline and sizeimage
-Content-Language: en-US
-To: Sebastian Fricke <sebastian.fricke@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- linux-media <linux-media@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-rockchip <linux-rockchip@lists.infradead.org>,
- linux-staging <linux-staging@lists.linux.dev>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Alex Bee <knaerzche@gmail.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>
-References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
- <20250225124008.195405-1-sebastian.fricke@collabora.com>
- <1953d249c3c.d1d6678f34821.5333341344528638254@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <1953d249c3c.d1d6678f34821.5333341344528638254@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAC+9vWcC/22MQQ7CIBBFr9LMWgxDoagr72FcQDu1s7AYMKhpe
+ ndpE10Yl+/nvzdBosiU4FBNEClz4jAWqDcVtIMbLyS4KwxKKo2qlsI9fKOF3Ssr5X5HaAjK9xa
+ p5+faOZ0LD5zuIb7WbMZl/S1kFCiU9ZKoMb0xeOSOXAqjDy522zZcYQll9ZGNRPzKqsgSve29t
+ qgb80ee5/kNj7Bkud4AAAA=
+X-Change-ID: 20241230-awb64-79270098e15e
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Stefan Klug <stefan.klug@ideasonboard.com>, 
+ Jai Luthra <jai.luthra@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2127;
+ i=jai.luthra@ideasonboard.com; h=from:subject:message-id;
+ bh=K8hIYu68rnMk8PuN3JrllsDdE9qN2sKwvnV/8hDc6p0=;
+ b=owEBbQKS/ZANAwAIAUPekfkkmnFFAcsmYgBnvb2C0Sz5JW3o1cB9kaxxMhz3Co6XvCbcwa+yt
+ ERkLN8E8KOJAjMEAAEIAB0WIQRN4NgY5dV16NRar8VD3pH5JJpxRQUCZ729ggAKCRBD3pH5JJpx
+ RSEOEACmkSF2j1EvX0tKWSiVJJoKSMR1M3KwyauCfPpS8pNOq3ZDvdopd9//jpCoXQH3UBdfiXZ
+ bpJR50h+tmP6PL8T3Ce28lxyJMbxW2iHQwXpw2kJf7SNwj7j5k4QwE+pG/Et74MpvLSZUi+ObHw
+ YhpjpacxX7bhQP5weDBxEYQRZ0rPJbyS3/4zfIudidmYqYGCVrCqShBXvBwbVUaw+qA2tPSfneW
+ AwLW5d9u7TTFklxU7jnj5DnqY9OITUfDb+4WxZ75so/21DGCaQXWOd+RVsLOyZuWwX6xCeQxvss
+ ncCcofForN6WSIewgNBntA+aTify6GzJGXvYgsHZdm7u6f0Wt9Oa7Hp2bfaZJ4aG65iOHBRP/L4
+ Ogx6ixXEKfEqiTffFtSSnZ2PTLq0Sb//+DI33+eozLu9DiQwtz3h8ceO63uYMWJ8o84GnXGCeBF
+ FGyZlKQ5Eq5jBgq3EGohhoiFtgdj7rRWJ+tdI/Vd6K3dLflxbGGz8h76LlOkKg3ATrVfSH8kn13
+ FF0PfQq60+Z08TNJGlkTYB/UL+NRaro3Ah8L/vP9ginucPo/o5oY7aqOhWzaXoLnYvLMMn6zhod
+ sO7vraJbSIUF8l31zrUrsYJe5KmeWjFjyjmi/z75I1QPM58/ZFei353LSzYNabYxx6TjT8FTQ6t
+ LoywyKrqHaKfWjg==
+X-Developer-Key: i=jai.luthra@ideasonboard.com; a=openpgp;
+ fpr=4DE0D818E5D575E8D45AAFC543DE91F9249A7145
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_045014_459433_08967A0F 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20250225_045449_256096_5A506280 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +92,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/25/25 13:46, Sebastian Fricke wrote:
-> Hey,
-> 
-> sorry about missing this in the patch series, if you don't like the fixup path, then I can send a new patch series as well.
-> I just thought the change was minor enough and addressed the final comments.
+Add support for Wide Dynamic Range and Auto White Balance 64 modules of
+the ISP.
 
-Ah, this relates to patch 01/12 of this patch series:
+This series is in continuation of the v2 posted earlier that enabled
+only AWB64. We add a new patch enabling WDR, and rebase the AWB64
+patch on top of it, as WDR is a simpler module which is present across
+different variants of the ISP.
 
-https://patchwork.linuxtv.org/project/linux-media/list/?series=14577
+Signed-off-by: Jai Luthra <jai.luthra@ideasonboard.com>
+---
+Changes in v3:
+- Add a new patch that enables support for WDR module, and rebase AWB64
+  support on top of it
+- Document the fractional bits used for AWB64 configuration parameters
+- Link to v2: https://lore.kernel.org/r/20250110-awb64-v2-1-01b7fb471465@ideasonboard.com
 
-Next time it might be better to just reply to the offending patch with the fixup.
+Changes in v2:
+- Fix register offsets
+- Drop the _v10 suffix from awb64 functions
+- Combine the min and max for R, G, B components into a single value in
+  the struct
+- Move all the configuration except IRQ and module enable in the
+  meas_config() routine, making sure the bool bits are cleared if
+  userspace updates the struct
+- Fix documentation and indent at various places
+- Create a single function for getting both AWB and AWB64 stats for
+  IMX8MP
+- Rename accumulator fields to only specify RGB and not YUV, as AWB64
+  block does not operate on YUV colorspace
+- Link to v1: https://lore.kernel.org/r/20241230-awb64-v1-1-27b0ee65f551@ideasonboard.com
 
-That way it is clear for the maintainer what the fixup is for.
+---
+Jai Luthra (2):
+      media: rockchip: rkisp1: Add support for Wide Dynamic Range
+      media: rockchip: rkisp1: Add support for AWB64
 
-Regards,
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |   2 +
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    |   3 +-
+ .../media/platform/rockchip/rkisp1/rkisp1-params.c | 215 +++++++++++++++++++++
+ .../media/platform/rockchip/rkisp1/rkisp1-regs.h   | 140 +++++++-------
+ .../media/platform/rockchip/rkisp1/rkisp1-stats.c  |  40 ++++
+ include/uapi/linux/rkisp1-config.h                 | 208 ++++++++++++++++++++
+ 6 files changed, 533 insertions(+), 75 deletions(-)
+---
+base-commit: d082ecbc71e9e0bf49883ee4afd435a77a5101b6
+change-id: 20241230-awb64-79270098e15e
 
-	Hans
-
-> 
-> Regards,
-> Sebastian
-> 
->  ---- On Tue, 25 Feb 2025 13:40:08 +0100  Sebastian Fricke <sebastian.fricke@collabora.com> wrote --- 
->  > ---
->  >  drivers/media/v4l2-core/v4l2-common.c | 2 +-
->  >  1 file changed, 1 insertion(+), 1 deletion(-)
->  > 
->  > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
->  > index 07a999f75755..aa86b8c6aa75 100644
->  > --- a/drivers/media/v4l2-core/v4l2-common.c
->  > +++ b/drivers/media/v4l2-core/v4l2-common.c
->  > @@ -360,7 +360,7 @@ static inline unsigned int v4l2_format_block_height(const struct v4l2_format_inf
->  >  }
->  >  
->  >  static inline unsigned int v4l2_format_plane_stride(const struct v4l2_format_info *info, int plane,
->  > -                           unsigned int width)
->  > +                            unsigned int width)
->  >  {
->  >      unsigned int hdiv = plane ? info->hdiv : 1;
->  >      unsigned int aligned_width =
->  > -- 
->  > 2.25.1
->  > 
->  > 
-> 
+Best regards,
+-- 
+Jai Luthra <jai.luthra@ideasonboard.com>
 
 
 _______________________________________________
