@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2828C021B2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACC4C021B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Feb 2025 10:55:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nF5VEa5Y81pZnEA3g3kJFpw0OoXoT2KwDqlrqRxmk9w=; b=H373iufyGCrMya
-	a4UuXB1+yOwl9m3oTspJqLrpPzVHfpHb/CYE8F2lGdMn38291gjEV7Y+jZhhGnB0BDguMhIFjT+iT
-	dQpCHI3URYO76KrF/j53HeQW7nQa6HzUqYBjEwZ8DsjQi56PSUl9pbxKg0nHj8EmrkNTX/+tDfKqh
-	vHFwBYzicJ5Vvchhk6fJnqd8K2NqEin9aZetJ0lT9DsncMotVWfTnZx8t4WQRu+pm+FNWC2Llj/uX
-	7PcPB7HDvV45iscZzxkXtkPCn55mghZ3g/FBborIWItbV+csBpGWmYM4s3SqpM98dI1V4+bfPfWYB
-	/E6gbUyZnIjMiE2+ikLQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4UO4AqFSEKG5bBcN4aDezh++ob5EcJalqsCovuK0MtQ=; b=DK4uGntuOlMA6b
+	rMgRQVS+d4zwLxyhEvK6iVHTx1usk32lr9F5Tfj9dYXDUr4a5UNE+m14T7hahmpaqSH0cYNrc+pXL
+	IaWcmzCI3DOSbmLCsLFSezlb7e2OjwW5jP6XZ01lWZ6Pz6Sv0fN5QMXTNiX8LKD/4+n1aaXMLrd5G
+	iwiMJ7yMKmYK1AMF4NkzQIVAX9fDLWau91n82oiSIuqDFIJLXS+07tAOVNokIAh6hnpsacDdzcAFx
+	uItNaHXfz4iIrbSEmePTrRdbHXo6+X0OOcQOXiDTtVp6mA6CwmuSXCcTx3i/+F1OsXOcNjcNAhjQ2
+	9jU/baeAeoj30hUA4JSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrmp-0000000Gk3L-3HPt;
-	Tue, 25 Feb 2025 10:03:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tmsav-0000000Guiz-1zwv;
+	Tue, 25 Feb 2025 10:55:21 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tmrSh-0000000Geyo-0EdC
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Feb 2025 09:42:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740476561; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZWUJALE3X+EXUeuC2EHLQZNFqyFdh0NyYCe1oJLHcFinI5O1gqcZwIuo8zzBTELcLU/U55QeGCcAI4g5ZBV6vX/sFX7Hkah1yxdCN0R7W9Wmy7XXNT6wWUXxKUKYg1t0nLYPw5tnsfiC1cKh3dzFcoPEQDnLLgGwCErkhDCbDWA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740476561; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PhcqlwF/W6SeudJ8/ZbUsIGtxuzwWHoYjUaWleuL8+I=; 
-	b=TA3afxHgC71oyjPZoqoTxcGG3fe5GS22oaYJI6oa/b0s8LbNxX7KfG85qGUb7ipfnFfn4MM2nc6U60+CfMTHIMa0/4AlttB1/OD6zi01EO4FftTDb4SCLulgIBNLUquRbfdnMdDsnPrkaKLrHrky3+2Ut55aaqH61rZILxBLdJ8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740476561;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=PhcqlwF/W6SeudJ8/ZbUsIGtxuzwWHoYjUaWleuL8+I=;
-	b=SwTZhSUSS07oCVYZ7P8zHNLwJATsEosEOvICiwuAzESDn4DYfSTXFpIXdr9S+xQC
-	6D8v8KR197526XXRCrYmO+CHelHCXvScBaZvkScaXl4QJeXbqfvn2k9GWnpPBNYc4P9
-	IMZLAegHQE3sh0zbiE9W81ETWhT0qqSAIDQPnfWs=
-Received: by mx.zohomail.com with SMTPS id 1740476559938497.44456290913297;
-	Tue, 25 Feb 2025 01:42:39 -0800 (PST)
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 25 Feb 2025 10:40:33 +0100
-Subject: [PATCH v7 12/12] media: rkvdec: Fix frame size enumeration
+	id 1tmrvG-0000000GlrR-4B1w;
+	Tue, 25 Feb 2025 10:12:20 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4397dff185fso47060355e9.2;
+        Tue, 25 Feb 2025 02:12:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740478337; x=1741083137; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8f50ReeNO2ewLKOc+m/ce/otGU09DrlDIWdxnZUlcMA=;
+        b=DLODRFEGFO99xTP/2lUHUylvomPPGX3yH8AnrsebirrngU8ZaTtMPHsjfTtNVGtFC5
+         rGCFwOO5XoNTaSCsBptNU8g0hXRuFJJA/OtDVHFHhrAotf5O2IFZOY6GXFUYw58UI+gx
+         4L8vJk7KsrmHV6jYaXCB5pDetZK66nBNcJQoDikWw1T92XQ5nACHDknWclEXAZse+hCl
+         jR5oU04eJ4kgwqtPCAO4i87d/qvIwHatKoBJmvaTeKGmFVKFIXmy6XlqY5JSdKiRkxsT
+         T36AC7gksdKbKnjw9kbLolhQ/ACOauIEHBlbFdUM2GMQVJSEWPYbWU2nAYY2KAz0/6hh
+         C6xA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740478337; x=1741083137;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8f50ReeNO2ewLKOc+m/ce/otGU09DrlDIWdxnZUlcMA=;
+        b=TBN6QIJG7pXEP3iQBv6wSaMg5/iGW+KxAMjLCY6NSlTjrJtUmEPbIJrsIVT6iIvqBf
+         rQ/yTuXLR+b7J6/yF8nwwmhySDP64Ms8ktByUlfgRvP/B3jqrGjwsYlA3xTnRtKEhujA
+         zetf9JAnG6eAqT0zG9h8xfcD+tFFX8cTFlXeOx567Vai4XxmgY1mEriQ5GvVSoLFHvSm
+         urXGvHW1KW0iDEQ3I5fgcZJQN+GZSUSiE9jzKgXB3VHZpt/kYs30pl36oawBBwUmtTt8
+         aw8I3B98wOhCNMSMOMVylcTeUZpOLPBzwRTy/V1R4ZTDnMl283Z1+T7axvYWGwZfGxsE
+         aSUw==
+X-Forwarded-Encrypted: i=1; AJvYcCUQe3HsPR2StAHIPWHRTeP8WO1mNx9eJj5bOq+MVJLyoou94g9YePT1vb4nZ7TBqxxrvz+oWpGQiKqTyG02kBA=@lists.infradead.org, AJvYcCX9lUlubF+j5crgxnhJ06akIef/UVZ/Miu6I+WBlVzvs/4nxBXzEX9/Y05gU2AQIDKGdPWcOJCpwd6e17N20ZON@lists.infradead.org
+X-Gm-Message-State: AOJu0YzCIn2djccCh+P9kYaUteEYykxTJTySiUvZmoJj6sfrZK0gz2UW
+	18DIU6rElXYZzS+Bd2EAcBJeG6uVzv5aSh0u3wpXt8haRjG7FJps
+X-Gm-Gg: ASbGnctNDY6b9jlLMEM1HbDnaQJGIcmOxggIFQ3p2NtwQlafpEvKcklhtzCj23dffRg
+	BglgZ7PvEW8fVGqz2kiXMZVq5n/oALcpnkvz9Wq8TPvTi5zmOkLghldmZYnawuPXU2PLMw7b7fz
+	K/6PxPt7VGfFKmV/l+WgbHNizI1KHy627ib6iLxAOtJ7mtIzwamULTN95aMbpNyTz0fzFbcYiMU
+	Z3c6/1pjRNKdNkSWPTBgudTPU55raBwOb1whlNpJWp/uLRw5m+9SSw53qYFIPq7hHmUJ5Zg+eMe
+	mKUOE0g+bJO7cIRt9drz10S9A+c=
+X-Google-Smtp-Source: AGHT+IH3M1TCXeGQjPYelk3PO2DOrAA7RTWE9FnFRNNtZ+SU4MlPMarj5Sh4XgmPSVxXCUY6AifVTA==
+X-Received: by 2002:a05:600c:1390:b0:439:9274:81dd with SMTP id 5b1f17b1804b1-439ae1d7b20mr113737095e9.1.1740478336758;
+        Tue, 25 Feb 2025 02:12:16 -0800 (PST)
+Received: from localhost ([194.120.133.72])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-439b0367577sm134605925e9.25.2025.02.25.02.12.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Feb 2025 02:12:16 -0800 (PST)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] scsi: ufs: rockchip: Fix spelling mistake "susped" -> "suspend"
+Date: Tue, 25 Feb 2025 10:11:42 +0000
+Message-ID: <20250225101142.161474-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Message-Id: <20250225-rkvdec_h264_high10_and_422_support-v7-12-7992a68a4910@collabora.com>
-References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
-In-Reply-To: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Hans Verkuil <hverkuil@xs4all.nl>, 
- Boris Brezillon <boris.brezillon@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Alex Bee <knaerzche@gmail.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Dan Carpenter <dan.carpenter@linaro.org>, Jonas Karlman <jonas@kwiboo.se>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1740476426; l=1653;
- i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=XlwiKB1TZIfyBLPYonxnSRa0aWPI3tSsmicak1dzrfc=;
- b=q/95JUmsPUkLNHHlVioAh4sQTO1NQQiDcwSphBb+wKl6MvHs3vchivIK17RMr3pyksypC7hAwrpN
- iaWY0pKgCJzs8UZvgM6oJzdXtbl5LzubPtqBjgNQy6OtSPsbiUoj
-X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
- pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_014247_169043_29907700 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20250225_021219_035343_2FCA535C 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,52 +99,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+There is a spelling mistake in a dev_err message. Fix it.
 
-The VIDIOC_ENUM_FRAMESIZES ioctl should return all frame sizes (i.e.
-width and height in pixels) that the device supports for the given pixel
-format.
-
-It doesn't make a lot of sense to return the frame-sizes in a stepwise
-manner, which is used to enforce hardware alignments requirements for
-CAPTURE buffers, for coded formats.
-
-Instead, applications should receive an indication, about the maximum
-supported frame size for that hardware decoder, via a continuous
-frame-size enumeration.
-
-Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
-Suggested-by: Alex Bee <knaerzche@gmail.com>
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/ufs/host/ufs-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 2859041bcc932bd638b4288bb8eba6b1443a08e3..619031b8cadc8d7185712ec6121a895e6ab89046 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -334,8 +334,14 @@ static int rkvdec_enum_framesizes(struct file *file, void *priv,
- 	if (!fmt)
- 		return -EINVAL;
+diff --git a/drivers/ufs/host/ufs-rockchip.c b/drivers/ufs/host/ufs-rockchip.c
+index 5b0ea9820767..dddff5f538b9 100644
+--- a/drivers/ufs/host/ufs-rockchip.c
++++ b/drivers/ufs/host/ufs-rockchip.c
+@@ -307,7 +307,7 @@ static int ufs_rockchip_system_suspend(struct device *dev)
  
--	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
--	fsize->stepwise = fmt->frmsize;
-+	fsize->type = V4L2_FRMSIZE_TYPE_CONTINUOUS;
-+	fsize->stepwise.min_width = 1;
-+	fsize->stepwise.max_width = fmt->frmsize.max_width;
-+	fsize->stepwise.step_width = 1;
-+	fsize->stepwise.min_height = 1;
-+	fsize->stepwise.max_height = fmt->frmsize.max_height;
-+	fsize->stepwise.step_height = 1;
-+
- 	return 0;
- }
+ 	err = ufshcd_system_suspend(dev);
+ 	if (err) {
+-		dev_err(hba->dev, "UFSHCD system susped failed %d\n", err);
++		dev_err(hba->dev, "UFSHCD system suspend failed %d\n", err);
+ 		return err;
+ 	}
  
-
 -- 
-2.25.1
+2.47.2
 
 
 _______________________________________________
