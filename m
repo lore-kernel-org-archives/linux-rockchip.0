@@ -4,61 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F40C021B8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 06:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE817C021BC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 07:01:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UOtBKRsjrBOPVc6DANfmCbfmuC+B6XQijtjJFeq8LZQ=; b=X6fUqNd6KZiGbt
-	fITzvZN8CqibMJEAHy0cyunxoCy7DXHtN8karL1n5qXdeV4HXFYNzMU8e6E+0C0rBKCNycMEowL2Q
-	7m3UckBNqO9/hdc7ZqPMEto43PPdaA7bPLlpZQOZy8t9MegX+ugo5i/eSaHV3BpRlIg0HpqB9EsPR
-	lHIfPKubIqkQc46HmQVRE9FxJmtj1VCGMFVik7mxUZIucekHV2s7sojyhluEB5zFxV3LR2ul5U6Tj
-	OKdqxk8whjlBChV0Geol2NSeuaoEcUdiuPmJLOz8ZEuL4/OBnjqG+w4MqhlPk9V60zMH20RgvPnkE
-	Gmt7cdOH0xgMO7bfIzOA==;
+	List-Owner; bh=G947preJvfstwYfwXlp52mL89Vkt499H+moNhSqkX7g=; b=DSx9S+Lmncejs+
+	U4o0rOQVm3KnO4ZVmZDVRgyt7I6i21/01HsJw1hynKyd3EtWCSATB1OhuFkRR2PSx8iN6f3rm9Ayy
+	eKkFyywR4PKZeWkcl1muDfL3ua1qtC4HwbGXfyjnzxYj4mgp5kXCLcchORzXWJFiPwLeFNei/umWx
+	8h0nThMvzkUUHsxXdNivh3hekTf6i5vzAdupSyatuGinXOf3vJ5msp5mR8k3vPKUTlCB4x0Pn7Qis
+	gXKqfuKe0BHJxgIMQ/VXKXN3e9XHfCYQgYnF+D2h3lutzRdqiU8v1n9Eem9VHFQ7bXnV7OjJUkEe5
+	b3AgWhIfOMDnUTAzyNOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnBMm-00000002c6j-0n1b;
-	Wed, 26 Feb 2025 06:58:00 +0000
-Received: from mail-m1973180.qiye.163.com ([220.197.31.80])
+	id 1tnBQJ-00000002ceO-2wtp;
+	Wed, 26 Feb 2025 07:01:39 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnBEn-00000002arX-27jG;
-	Wed, 26 Feb 2025 06:49:47 +0000
-Received: from [172.16.12.45] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id c3c47c7b;
-	Wed, 26 Feb 2025 14:49:41 +0800 (GMT+08:00)
-Message-ID: <a18fb035-3e7f-443a-8b24-9a51cba5604a@rock-chips.com>
-Date: Wed, 26 Feb 2025 14:49:42 +0800
+	id 1tnBOa-00000002cNC-0AI7;
+	Wed, 26 Feb 2025 06:59:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740553192; x=1772089192;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=qpSxoD9rlSgkQH/htkteQeAZ4TqZJLdpOv+rX9TDkNo=;
+  b=eKrBksxETGmj1EewkXS89AmkxqkegYLPwOPxZLOazAsfjFolAvbxyqGQ
+   S/+kcjbRK1U+qIwacgNfKP+rlG3PitcOQpG1jCXF5F2ClNEfS5cNKDC2v
+   6CyDh25dL5h8cykjvJmOQY49h9Yx/V4mJcPqXleX+3ZEQidaQBN69MIFg
+   pRYNYsDdqRt9HpgigblRIYajaGS/K8FKzLgYCLCYTwp417QMSTe8sm3cO
+   fL2iAOAOAofvUFzcbEcZCtP45pl4ZPXJPPVo+UDvis4LhwiozW7aqEzUs
+   eQ9zhmOUKezMpK0FUKxkJ3u4eS0BHZD1BiVFpZ8D4r+R4NGm1K5qLkrCx
+   A==;
+X-CSE-ConnectionGUID: ftEe/tgKQh6NFVWSL88F6w==
+X-CSE-MsgGUID: huzg653cSRyL8c/GXZFLcw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11356"; a="51596081"
+X-IronPort-AV: E=Sophos;i="6.13,316,1732608000"; 
+   d="scan'208";a="51596081"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:59:52 -0800
+X-CSE-ConnectionGUID: gU9ME5xMS/Sg/5K4xpwzVw==
+X-CSE-MsgGUID: pqpzR+GkRgCwrPW8n3kWtw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,316,1732608000"; 
+   d="scan'208";a="116621933"
+Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
+  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:59:43 -0800
+Message-ID: <6d9ceeb5-581e-48e8-a5cc-100a9699a9e8@linux.intel.com>
+Date: Wed, 26 Feb 2025 14:56:29 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, martin.petersen@oracle.com, heiko@sntech.de,
- linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Abaci Robot <abaci@linux.alibaba.com>, James.Bottomley@HansenPartnership.com
-Subject: Re: [PATCH -next] scsi: ufs: rockchip: Simplify bool conversion
-To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-References: <20250226021157.77934-1-jiapeng.chong@linux.alibaba.com>
-Content-Language: en-GB
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20250226021157.77934-1-jiapeng.chong@linux.alibaba.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0NNT1ZKH0hOS0NKHx8ZHkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	5VSktLVUpCS0tZBg++
-X-HM-Tid: 0a954104b35509cckunmc3c47c7b
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kz46Fjo*GDIKMwsDTh4qMxwW
-	VktPCRxVSlVKTE9LTk5JTkNISEtJVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpKSU03Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=GDaQiCWDoYocllNU6WqKHl5m9xRxpcznUkUedTxHBomfvOO/UfsHDYxKuNmU/5Vl7SAtbkmy79QcfIew8C3GU5v5i1+sB1KHMHcsG7KO2GgLXUbCoUht9ILjVM/mZW3hwIRmTlkOljc6BudXvicBkuIWTqQ54c2maLyOufFlvqQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=cvkxqloIlTXo9JLh9EsUKKF24vwSjOiMeRjag/XPRuc=;
-	h=date:mime-version:subject:message-id:from;
+Subject: Re: [PATCH v3 09/23] iommu/pages: Formalize the freelist API
+To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
+ asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Robin Murphy
+ <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
+ Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
+ Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
+ David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
+References: <9-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+Content-Language: en-US
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <9-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_224945_748516_639067CE 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20250225_225952_124753_8408FA8D 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,31 +96,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMi8yNiAxMDoxMSwgSmlhcGVuZyBDaG9uZyDlhpnpgZM6Cj4gLi9kcml2ZXJzL3Vm
-cy9ob3N0L3Vmcy1yb2NrY2hpcC5jOjI2ODo3MC03NTogV0FSTklORzogY29udmVyc2lvbiB0byBi
-b29sIG5vdCBuZWVkZWQgaGVyZS4KPiAKPiBSZXBvcnRlZC1ieTogQWJhY2kgUm9ib3QgPGFiYWNp
-QGxpbnV4LmFsaWJhYmEuY29tPgo+IENsb3NlczogaHR0cHM6Ly9idWd6aWxsYS5vcGVuYW5vbGlz
-LmNuL3Nob3dfYnVnLmNnaT9pZD0xOTA1NQo+IFNpZ25lZC1vZmYtYnk6IEppYXBlbmcgQ2hvbmcg
-PGppYXBlbmcuY2hvbmdAbGludXguYWxpYmFiYS5jb20+CgpBY2tlZC1ieTogU2hhd24gTGluIDxz
-aGF3bi5saW5Acm9jay1jaGlwcy5jb20+CgpUaGFua3MgSmlhcGVuZy4KCgo+IC0tLQo+ICAgZHJp
-dmVycy91ZnMvaG9zdC91ZnMtcm9ja2NoaXAuYyB8IDIgKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAx
-IGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3Vm
-cy9ob3N0L3Vmcy1yb2NrY2hpcC5jIGIvZHJpdmVycy91ZnMvaG9zdC91ZnMtcm9ja2NoaXAuYwo+
-IGluZGV4IDViMGVhOTgyMDc2Ny4uMzUwY2IwZjhkMGMyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-dWZzL2hvc3QvdWZzLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL3Vmcy9ob3N0L3Vmcy1yb2Nr
-Y2hpcC5jCj4gQEAgLTI2NSw3ICsyNjUsNyBAQCBzdGF0aWMgaW50IHVmc19yb2NrY2hpcF9ydW50
-aW1lX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFy
-ZShob3N0LT5yZWZfb3V0X2Nsayk7Cj4gICAKPiAgIAkvKiBEbyBub3QgcG93ZXIgZG93biB0aGUg
-Z2VucGQgaWYgcnBtX2x2bCBpcyBsZXNzIHRoYW4gbGV2ZWwgNSAqLwo+IC0JZGV2X3BtX2dlbnBk
-X3JwbV9hbHdheXNfb24oZGV2LCBoYmEtPnJwbV9sdmwgPCBVRlNfUE1fTFZMXzUgPyB0cnVlIDog
-ZmFsc2UpOwo+ICsJZGV2X3BtX2dlbnBkX3JwbV9hbHdheXNfb24oZGV2LCBoYmEtPnJwbV9sdmwg
-PCBVRlNfUE1fTFZMXzUpOwo+ICAgCj4gICAJcmV0dXJuIHVmc2hjZF9ydW50aW1lX3N1c3BlbmQo
-ZGV2KTsKPiAgIH0KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+On 2/26/25 03:39, Jason Gunthorpe wrote:
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index 38c65e92ecd091..e414951c0af83f 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -326,6 +326,18 @@ typedef unsigned int ioasid_t;
+>   /* Read but do not clear any dirty bits */
+>   #define IOMMU_DIRTY_NO_CLEAR (1 << 0)
+>   
+> +/*
+> + * Pages allocated through iommu_alloc_pages_node() can be placed on this list
+> + * using iommu_pages_list_add(). Note: ONLY pages from iommu_alloc_pages_node()
+> + * can be used this way!
+> + */
+> +struct iommu_pages_list {
+> +	struct list_head pages;
+> +};
+> +
+> +#define IOMMU_PAGES_LIST_INIT(name) \
+> +	((struct iommu_pages_list){ .pages = LIST_HEAD_INIT(name.pages) })
+> +
+>   #ifdef CONFIG_IOMMU_API
+
+Any reason why the above cannot be placed in the iommu-pages.h header
+file? My understanding is that iommu-pages is only for the iommu drivers
+and should not be accessible for external subsystems.
+
+Thanks,
+baolu
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
