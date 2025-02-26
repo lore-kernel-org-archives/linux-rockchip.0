@@ -4,66 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD862C021B8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 20:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7CDC19776
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 20:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oesYwxyrQumIKpHW0eUqgOjX7l3IJPjQb7wCTOjfcKQ=; b=HODwYTocMAEjNF
-	D/6l4L6H2ZbkWot6lrjrA3TWdvFNQ55k2/GmWbZYJZJRr8oDWnabLR4tSBW7mgD1gOc3kLFojK3At
-	ZPrlRXj9y5I2qOpkJleAznqbZW9c66K5HV9KRYJg42JUmH/WnBUNO4WMIfVHyWOR0L9FIzGOozR7J
-	TdFrpYjd0zXyiu+S78OTytR0Tk8k3DyCnju3bt581gIh2qW4u64rdN6k4tNK5i4vGQiOI5cleR7B4
-	ktawXopaQuCxDSP/zf06wjn32mTJLHNsmYoMSINcbqU7l9E8y3c1uFx3/FYVTMVACUT+VbuECdSsF
-	nJPUrnjLGfx8oXNylntQ==;
+	List-Owner; bh=tMS3yn5HGFkV4LOswebdxfVkNcKn2hzKGgTC0Non8VU=; b=x3dJhxF4+xrjFx
+	w7Qh/AlnaR1ws1wm+ovG/nur22foiZ2fUiQtckSq4hh35RSqtqbvVu45KuZR2U+VvbOwwOyF+XYRq
+	YPO+JOEc2N0lQNnoZaz8zgxpK71YJxeqV8vGcrsLX/lDIDjXEoHhRSW3A8ypWYBUm3v/GEEC5dzFR
+	xRIhvMJqTkhtgNuDOPPJ+m9ITYh9cQyozg24NB6Y7waJXYyqhT8G0x5qTJj0e7bpx80HMsGtzT2Ef
+	sWnxavYeuHEXIf5inugvaACehT3QjYHjlPA96jBTAhk9Jght6skHWRwuSTe8C9FDcmqsutV1IaKm2
+	csiZXvY/zq65dXE9po2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnO3D-00000005LsY-0WGJ;
-	Wed, 26 Feb 2025 20:30:39 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1tnOF5-00000005NFJ-3cD0;
+	Wed, 26 Feb 2025 20:42:55 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnO1d-00000005LUz-2MIy;
-	Wed, 26 Feb 2025 20:29:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740601729; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=GVF/BSCub2+zBPrelX6QxOCzA6j14zubYhJusOy8/L3BcUmI1dHU7V2o5KH68vuMPc1c4u4DnZAlo1cqcrtoGPu8EcmwgGlqCr83q5q3Mg4fVWk06nppeDgSr48o/ussH5jrk3uHheyQ/kuaWrjWE1D8aQvl6N9rDTZqLKFZBZM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740601729; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nv1QFAqtfqaqDbLhbRbCHva2+HnRXTxPb+vZqOfAZjA=; 
-	b=mWnTSCQnaR75mR9PSqKhB7CWvDuHAnr7MUd0tT8N1UrxrKKCZVLFzBgQkTS1+gBVq/2v9dGREbIrPjOSarhbzXujGyfTpqBD7MEhDMd7bwlpVNyq3dxtyKjuFHi5fz85sIqrweiuqXB8cOIjVuTO1C7WSSXbk+e7wAKb6F/Vrng=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740601729;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=nv1QFAqtfqaqDbLhbRbCHva2+HnRXTxPb+vZqOfAZjA=;
-	b=EpnFP73DnbDwgqaUK9s87UEyOsRDqapehD3/cFxf7CIe2QSghghMO49MwLQHJf4+
-	XC1uf0zhA00Ux2q5mlnu6UPlEGNCidbk8fGEUtSwPhCU0ldqwFu/i4aRtErmwNmUGUT
-	9/rvVlzbtgYn16dLZWvNX4llR6VPIlq8nopcjqbQ=
-Received: by mx.zohomail.com with SMTPS id 1740601727996641.1431143933187;
-	Wed, 26 Feb 2025 12:28:47 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: gregkh@linuxfoundation.org, heiko@sntech.de,
- Heiko Stuebner <heiko@sntech.de>
-Cc: rafael@kernel.org, dakr@kernel.org, hjc@rock-chips.com,
- andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de
-Subject: Re: [PATCH 2/2] drm/rockchip: Fix shutdown when no drm-device is set up
-Date: Wed, 26 Feb 2025 21:28:42 +0100
-Message-ID: <5271432.LvFx2qVVIh@workhorse>
-In-Reply-To: <20250220234141.2788785-3-heiko@sntech.de>
-References: <20250220234141.2788785-1-heiko@sntech.de>
- <20250220234141.2788785-3-heiko@sntech.de>
+	id 1tnOCW-00000005MxI-1Umj;
+	Wed, 26 Feb 2025 20:40:18 +0000
+Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:2b29:76dc:a5a9:647c])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C9C1949E;
+	Wed, 26 Feb 2025 21:38:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740602325;
+	bh=TXJqXbK1vX8NmA7FEpqCUeP7RrAU0Ywxmcnb5iP26BM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uUJUF/yQUab2QYU+TOwjAEATLWKwxseYippfVXxx28KOGRWekBNjBD6MfnddV6k/Q
+	 4gVA6WRE24YhBqVeORCByYnjzVTex42lX0ZP7k+K1/hHsN4pS+c27Q3Xs0KL/K6EGR
+	 gZx/e9/4UfYTtyXwXjnFKsKeG8hj7yWf5VE0LxPo=
+Date: Wed, 26 Feb 2025 21:40:11 +0100
+From: Stefan Klug <stefan.klug@ideasonboard.com>
+To: libcamera-devel@lists.libcamera.org, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Paul Elder <paul.elder@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] media: rkisp1: Apply full quantization when color space
+ JPEG is requested
+Message-ID: <zgs5b6fuyzuihrvsgkm3xxrv4gr6g2umw6lvafqetzsnizmxc5@6jvux4xfnyep>
+References: <20250226192413.2903243-1-stefan.klug@ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250226192413.2903243-1-stefan.klug@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_122901_671634_8F453790 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20250226_124016_541566_B43E7C26 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +70,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 21 February 2025 00:41:41 Central European Standard Time Heiko 
-Stuebner wrote:
-> When the drm-driver probes, it mainly creates the component device, where
-> all the sub-drivers (vops, hdmi, etc) hook into.
+Hi all,
+
+unfortunately I was tricked by my own observations and this patch
+doesn't actually fix the problem. So please ignore. I'll post a proper
+fix soon.
+
+Sorry for the noise.
+
+Best regards,
+Stefan
+
+On Wed, Feb 26, 2025 at 08:23:53PM +0100, Stefan Klug wrote:
+> When color space V4L2_COLORSPACE_JPEG is requested the ISP incorrectly
+> sets the output quantization to V4L2_QUANTIZATION_LIM_RANGE. Fix that by
+> applying the default quantization for the requested color space.
 > 
-> This will cause the shutdown handler to get called on shutdown, even
-> though the drm-device might not have been set up, or the component bind
-> might have failed.
-> 
-> So use the new component helper to check whether the drm-device is up
-> and only then call the drm-atomic helper to release all the drm magic.
-> 
-> This prevents failures when the drm-device is never set, or has been
-> freed up already for example by a probe-defer during the component bind.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Fixes: c1ec5efba080 ("media: rkisp1: Allow setting all color space fields on ISP source pad")
+> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Tested on a RK3588 ROCK5B by adding a `return -EPROBE_DEFER` into the middle 
-of `rockchip_drm_bind` after `component_bind_all` already ran. Without the 
-patch, I get a stacktrace in `drm_atomic_helper_shutdown`. With the patch, I 
-don't get one.
-
-
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index d94917211828..98635d875ac4 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -646,7 +646,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+>  
+>  	/*
+>  	 * Copy the color space for the sink pad. When converting from Bayer to
+> -	 * YUV, default to a limited quantization range.
+> +	 * YUV, default to the default quantization range of the color space.
+>  	 */
+>  	src_fmt->colorspace = sink_fmt->colorspace;
+>  	src_fmt->xfer_func = sink_fmt->xfer_func;
+> @@ -654,7 +654,8 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+>  
+>  	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
+>  	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
+> -		src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
+> +		src_fmt->quantization = V4L2_MAP_QUANTIZATION_DEFAULT(
+> +			false, sink_fmt->colorspace, sink_fmt->ycbcr_enc);
+>  	else
+>  		src_fmt->quantization = sink_fmt->quantization;
+>  
+> -- 
+> 2.43.0
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
