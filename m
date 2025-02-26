@@ -4,64 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58180C19F2E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 22:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC2CC021B8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 22:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f+GKWBJ/UO7Z1jlv/a5JT+kehvCYF8yAk2OlxPb8uzs=; b=POU4i/Kv9JF/g/
-	mECI0oqtjCQiVjbbOFnIig3wGKr80HqosvqE7VXdNpyAUwQS6rqft+cJJhLHGqysixYwDu/qAN+Ff
-	023qe06jSpoVj9aWOogI1gbDWMLssgW9z3iVpCCSkiv19NVQ6NDK4jbcE8t2xhaGo7FQ5lkBt06cC
-	RechYRBXOEBR6eg8MduI/GvEmdRnO+L22xGyZFP16rKim10UlJQyYRcY3SsNxYKP9M7c+0uiu0IOO
-	L7gUf014co2or9b59BIovI8VHjGI0leYIpj0rN6YT0qZr8S1x0m8pIJQB/t2gmFnOfNTsubVzt8hV
-	EOZ9X7CVN0cqisE/bPsA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=chgYHEMBHQ/JL1acrZPg0SDdAE1mC1dm4sJHqDCoshk=; b=CJvusFCIcO4rKHxYs2TCfPKgV7
+	2/IOpJrKXul3mGtLdR1Pjnq8lCka9Vlja5fqcRZJDOTXn1Woekj8OzSrJNIcUopsx3y2oMBQLX3g1
+	F5EsGqaxZVXD1B8XBHeiUS01svvqrx2P/wCo0yxaq11sYmvJjIPs5LhZDuxJWNOIypkb1DApjLkoa
+	tcXcuVVSR4s7Ucip4r9dJu4SeoMyJB/DNE3/SzMOEzn8EBT4cpAHT1IH00NTnEJduK2h0qhXeHdzW
+	cvlHU7r8Shc6BPnSfOKFVyQ/FFdoukZ6s9KC4KXj7AgOv5NXB5uTi+3U2UaQEHgGtpwdeZGhyEvBh
+	8dl9XEyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnPSG-00000005Xce-3XZu;
-	Wed, 26 Feb 2025 22:00:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tnPu1-00000005buY-0GxT;
+	Wed, 26 Feb 2025 22:29:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnPJ6-00000005WfR-1f7p;
-	Wed, 26 Feb 2025 21:51:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Zep892YhHBeGu7ypgTlnqdKmeYJIyeAfXkPBma9xeg8=; b=uD2QzNBNUdgc+W5pUpIdlglnZz
-	zhL3oa7szuzzcK1onL81vEN9qB2pSWeo8xMhSHV/5mGZG5OwkvbCSmBmJlgNAl0mtEd+l1CZXOTaK
-	gPnlwd4j+tm8yaAk38y2+QtTi2XgcTdzJeijKCc7ihPRcu/H+IsaUHEsHr22nNs972E99dcBa3cX+
-	/ZdtMlbplq14g6GXoGP9E2uCoLXcgrXuxxaC0DtQCp86OT4eC6teXQiqPBrXeq+WQUvXMRBx4a7tB
-	6Prvnht3tJzYDNtc7YVkE1T8+Gu/2NwvIiFX1Wvlz2Fr4Pg/hshZsZC1ByULP3076QGPUcqQfNSjb
-	HqPeCNbw==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tnPIv-0003pQ-C1; Wed, 26 Feb 2025 22:50:57 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable USB3 OTG on rk3588s Cool Pi 4B
-Date: Wed, 26 Feb 2025 22:50:47 +0100
-Message-ID: <174060663654.4032178.11014498458940806402.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250223100757.73531-1-andyshrk@163.com>
-References: <20250223100757.73531-1-andyshrk@163.com>
+	id 1tnPsN-00000005bZD-0bcP;
+	Wed, 26 Feb 2025 22:27:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 446CA6129B;
+	Wed, 26 Feb 2025 22:27:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1805C4CEE8;
+	Wed, 26 Feb 2025 22:27:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740608853;
+	bh=AMx61XALp2FEuAdeMecmgRnxgBFCljzPkNPpDr86dSY=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=ZbuFegJumpqOvGH2jx67wwB3Wfh7G2SlGqP1HRwp59P8fEjY3ZBwOg2trBPtaHFwt
+	 1IBDa/ggIr3A7hFw4yCfR10XtjrtTo30i8zORcJsXnDggtM2LDG3Y4LAxbiKYbnm9Z
+	 VFdZIXcaYIZH1Gtzbm9cjtYy9zAwj1cC3SuV3q9Z1K2fYh94uNEnczm84mKR8N6nPL
+	 CrbRVsz8A/VIpbv0I+XuPpQHbIdJsq34l90ZxraA7ghHbNGxebocn2OvrUxMOzLNV4
+	 c60gN+TT+JewJ862zNsa9do5TVTSxSdLeV+Ezp505jVI5PjKXByjHwfATn2ZeoL+wH
+	 jqo81rsFhH6Xw==
+Date: Wed, 26 Feb 2025 16:27:32 -0600
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_135108_455318_49D221FB 
-X-CRM114-Status: GOOD (  10.39  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, dse@thaumatec.com, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ quentin.schulz@cherry.de
+To: Heiko Stuebner <heiko@sntech.de>
+In-Reply-To: <20250226140942.3825223-1-heiko@sntech.de>
+References: <20250226140942.3825223-1-heiko@sntech.de>
+Message-Id: <174060863425.3856982.10076124904973654575.robh@kernel.org>
+Subject: Re: [PATCH v3 0/3] arm64: dts: rockchip: add and enable DSI2 on
+ rk3588
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +72,131 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 23 Feb 2025 18:07:46 +0800, Andy Yan wrote:
-> Enable USB3 OTG and it's related PHY node. And the PHY will
-> also be shared with the upcoming DisplayPort controller.
+On Wed, 26 Feb 2025 15:09:39 +0100, Heiko Stuebner wrote:
+> This adds the dcphy and dsi2 controller nodes and adds an overlay
+> for the Tiger-Haikou Video-Demo adapter that provides a DSI display.
+> 
+> changes in v3:
+> - rebase on newly added overlay-test-infrastructure
+> - add reset-gpio to gpio expander
+> 
+> changes in v2:
+> - adapt to changed dcphy binding (phy-cells = 1)
+> - tiger-overlay changes (Quentin):
+>   - drop forgotten hdmi-connector node
+>   - improve description
+>   - fix node sorting
+>   - drop unnecessary pwm-pinctrl (set in tiger.dtsi)
+> 
+> Heiko Stuebner (3):
+>   arm64: dts: rockchip: add mipi dcphy nodes to rk3588
+>   arm64: dts: rockchip: add dsi controller nodes on rk3588
+>   arm64: dts: rockchip: add overlay for tiger-haikou video-demo adapter
+> 
+>  arch/arm64/boot/dts/rockchip/Makefile         |   5 +
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  99 ++++++++++++
+>  .../rk3588-tiger-haikou-video-demo.dtso       | 153 ++++++++++++++++++
+>  3 files changed, 257 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
+> 
+> --
+> 2.47.2
 > 
 > 
+> 
 
-Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable USB3 OTG on rk3588s Cool Pi 4B
-      commit: a3b3b57ec92f46237b2478973aec65270f457bc2
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250226140942.3825223-1-heiko@sntech.de:
+
+arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-jaguar.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-jaguar.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-firefly-itx-3588j.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dtb: /phy@feda0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dtb: /phy@fedb0000: failed to match any schema with compatible: ['rockchip,rk3588-mipi-dcphy']
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
