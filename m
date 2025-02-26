@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7CDC19776
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 20:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58180C19F2E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 22:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tMS3yn5HGFkV4LOswebdxfVkNcKn2hzKGgTC0Non8VU=; b=x3dJhxF4+xrjFx
-	w7Qh/AlnaR1ws1wm+ovG/nur22foiZ2fUiQtckSq4hh35RSqtqbvVu45KuZR2U+VvbOwwOyF+XYRq
-	YPO+JOEc2N0lQNnoZaz8zgxpK71YJxeqV8vGcrsLX/lDIDjXEoHhRSW3A8ypWYBUm3v/GEEC5dzFR
-	xRIhvMJqTkhtgNuDOPPJ+m9ITYh9cQyozg24NB6Y7waJXYyqhT8G0x5qTJj0e7bpx80HMsGtzT2Ef
-	sWnxavYeuHEXIf5inugvaACehT3QjYHjlPA96jBTAhk9Jght6skHWRwuSTe8C9FDcmqsutV1IaKm2
-	csiZXvY/zq65dXE9po2Q==;
+	List-Owner; bh=f+GKWBJ/UO7Z1jlv/a5JT+kehvCYF8yAk2OlxPb8uzs=; b=POU4i/Kv9JF/g/
+	mECI0oqtjCQiVjbbOFnIig3wGKr80HqosvqE7VXdNpyAUwQS6rqft+cJJhLHGqysixYwDu/qAN+Ff
+	023qe06jSpoVj9aWOogI1gbDWMLssgW9z3iVpCCSkiv19NVQ6NDK4jbcE8t2xhaGo7FQ5lkBt06cC
+	RechYRBXOEBR6eg8MduI/GvEmdRnO+L22xGyZFP16rKim10UlJQyYRcY3SsNxYKP9M7c+0uiu0IOO
+	L7gUf014co2or9b59BIovI8VHjGI0leYIpj0rN6YT0qZr8S1x0m8pIJQB/t2gmFnOfNTsubVzt8hV
+	EOZ9X7CVN0cqisE/bPsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnOF5-00000005NFJ-3cD0;
-	Wed, 26 Feb 2025 20:42:55 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tnPSG-00000005Xce-3XZu;
+	Wed, 26 Feb 2025 22:00:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnOCW-00000005MxI-1Umj;
-	Wed, 26 Feb 2025 20:40:18 +0000
-Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:2b29:76dc:a5a9:647c])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C9C1949E;
-	Wed, 26 Feb 2025 21:38:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740602325;
-	bh=TXJqXbK1vX8NmA7FEpqCUeP7RrAU0Ywxmcnb5iP26BM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uUJUF/yQUab2QYU+TOwjAEATLWKwxseYippfVXxx28KOGRWekBNjBD6MfnddV6k/Q
-	 4gVA6WRE24YhBqVeORCByYnjzVTex42lX0ZP7k+K1/hHsN4pS+c27Q3Xs0KL/K6EGR
-	 gZx/e9/4UfYTtyXwXjnFKsKeG8hj7yWf5VE0LxPo=
-Date: Wed, 26 Feb 2025 21:40:11 +0100
-From: Stefan Klug <stefan.klug@ideasonboard.com>
-To: libcamera-devel@lists.libcamera.org, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Paul Elder <paul.elder@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] media: rkisp1: Apply full quantization when color space
- JPEG is requested
-Message-ID: <zgs5b6fuyzuihrvsgkm3xxrv4gr6g2umw6lvafqetzsnizmxc5@6jvux4xfnyep>
-References: <20250226192413.2903243-1-stefan.klug@ideasonboard.com>
+	id 1tnPJ6-00000005WfR-1f7p;
+	Wed, 26 Feb 2025 21:51:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Zep892YhHBeGu7ypgTlnqdKmeYJIyeAfXkPBma9xeg8=; b=uD2QzNBNUdgc+W5pUpIdlglnZz
+	zhL3oa7szuzzcK1onL81vEN9qB2pSWeo8xMhSHV/5mGZG5OwkvbCSmBmJlgNAl0mtEd+l1CZXOTaK
+	gPnlwd4j+tm8yaAk38y2+QtTi2XgcTdzJeijKCc7ihPRcu/H+IsaUHEsHr22nNs972E99dcBa3cX+
+	/ZdtMlbplq14g6GXoGP9E2uCoLXcgrXuxxaC0DtQCp86OT4eC6teXQiqPBrXeq+WQUvXMRBx4a7tB
+	6Prvnht3tJzYDNtc7YVkE1T8+Gu/2NwvIiFX1Wvlz2Fr4Pg/hshZsZC1ByULP3076QGPUcqQfNSjb
+	HqPeCNbw==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tnPIv-0003pQ-C1; Wed, 26 Feb 2025 22:50:57 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable USB3 OTG on rk3588s Cool Pi 4B
+Date: Wed, 26 Feb 2025 22:50:47 +0100
+Message-ID: <174060663654.4032178.11014498458940806402.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250223100757.73531-1-andyshrk@163.com>
+References: <20250223100757.73531-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250226192413.2903243-1-stefan.klug@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_124016_541566_B43E7C26 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20250226_135108_455318_49D221FB 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,55 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
 
-unfortunately I was tricked by my own observations and this patch
-doesn't actually fix the problem. So please ignore. I'll post a proper
-fix soon.
+On Sun, 23 Feb 2025 18:07:46 +0800, Andy Yan wrote:
+> Enable USB3 OTG and it's related PHY node. And the PHY will
+> also be shared with the upcoming DisplayPort controller.
+> 
+> 
 
-Sorry for the noise.
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: Enable USB3 OTG on rk3588s Cool Pi 4B
+      commit: a3b3b57ec92f46237b2478973aec65270f457bc2
 
 Best regards,
-Stefan
-
-On Wed, Feb 26, 2025 at 08:23:53PM +0100, Stefan Klug wrote:
-> When color space V4L2_COLORSPACE_JPEG is requested the ISP incorrectly
-> sets the output quantization to V4L2_QUANTIZATION_LIM_RANGE. Fix that by
-> applying the default quantization for the requested color space.
-> 
-> Fixes: c1ec5efba080 ("media: rkisp1: Allow setting all color space fields on ISP source pad")
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index d94917211828..98635d875ac4 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -646,7 +646,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  
->  	/*
->  	 * Copy the color space for the sink pad. When converting from Bayer to
-> -	 * YUV, default to a limited quantization range.
-> +	 * YUV, default to the default quantization range of the color space.
->  	 */
->  	src_fmt->colorspace = sink_fmt->colorspace;
->  	src_fmt->xfer_func = sink_fmt->xfer_func;
-> @@ -654,7 +654,8 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  
->  	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
->  	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
-> -		src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
-> +		src_fmt->quantization = V4L2_MAP_QUANTIZATION_DEFAULT(
-> +			false, sink_fmt->colorspace, sink_fmt->ycbcr_enc);
->  	else
->  		src_fmt->quantization = sink_fmt->quantization;
->  
-> -- 
-> 2.43.0
-> 
-> 
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
