@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CD5C19F32
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E9EC021B8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 15:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P8eYIDpzEAZjQ3We1vIeLwfyBQhE5ZV1NS0bjWXNwX4=; b=og+iCn+lISSEWt
-	ZlSC6BAA88C0fly6tMBJzSR/Ze9IvXQx4UgFkBCf87VuqC2ZfLY1poDNpGpkYEKiXzD3GlK0porO1
-	ywC2EcfsCLEdPHIWuqVbVSaNqYGKULCq3YxmgGs++l56O1PMYwN8BIkGXE9Zfti7YRgrvNElnqIVL
-	GFPMKaJzDbTD3KuRGmfx+liBnUzK+SWLqTBjJ0b22WKxbS+rQTuuWHztg+oG1VIgUIXdVxaQmYKOF
-	uNR47CjX/N4333kI4XwWMg7Td22AG8HGeZ0Vo6oJG6M+P5Omel8qvNAtlv1J04Gs4vJfnO1hxJMT5
-	QuvcXB3FGzASDwfqxELQ==;
+	List-Owner; bh=pR8kP0qwlr4SMhZeVbXldwTuzEX4q39Z4OUMs9USsac=; b=EoPmzjOldY39Hx
+	BIOGzN91n1TKH+jTW9OGdNkmmUs07QdNfS5ntxpPdeomY4jUBydPRTRxh0oS9G7cPmcFMcSmnqfiX
+	qB30gPNA4lzdTOnVoXxaiR5j++6X0rRajvfS99bpGQsu7MYqRUq+n1RtaD1+rplSRt6B6Nk3bZlEq
+	+aSAWAbGXDpk1//Oa7MZMXn60CWJnhrCnEf0X7AzzwycunPYwASum5iQojltfHyIg/9z5j9b/Jy/u
+	jCXWXGIK9IathbwiW4bWae/G5j+8S8WMzcNHELpZ35aH3e27or63g9RQ/TcrKqWOBqlrto4+7hU+I
+	zaLCiI8aO+8uw36JkWmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnJFG-00000004GAT-0Bqa;
-	Wed, 26 Feb 2025 15:22:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tnJFI-00000004GFd-16so;
+	Wed, 26 Feb 2025 15:22:48 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIfX-000000049pk-2pTI;
-	Wed, 26 Feb 2025 14:45:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 326B9612F6;
-	Wed, 26 Feb 2025 14:45:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9932AC4AF0B;
-	Wed, 26 Feb 2025 14:45:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740581150;
-	bh=2e8y34nF3WAvOI36M9xs1+jJDib5lSf6jroS4lJKWRw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=L7TO8yXxQmiYV0e978xp7cwfIDefmJ7wdXKZEKaEo7couphnmeePegIiWh7rHgAes
-	 yi6PFABiCw0C6OnVizzoqwFj1Y+r4yOaPdqWynd0DSSPzQrZQvRC3yOjjyJuTqLWaS
-	 X4UNy3p+thTfBpcYIf4iwD14hMFT+Ty9KNpydCaHtMpIzgr3TDoE9kUs66v7opDFWg
-	 oplQ8iqVFvQ9CUI6aL7+JfIhPm/vs3pfSN459q0AtlP1xmpXUga85qgQP7CQEBO+2I
-	 7Rr1SDzlaQke0cDyIDA8a4JiXHva92wkVVAL7u9MTHNVoT/utxi17F/MZatXawLLWL
-	 vEAdgOgR53OLw==
-Date: Wed, 26 Feb 2025 08:45:48 -0600
-From: Rob Herring <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 4/6] dt-bindings: thermal: rockchip: document otp
- thermal trim
-Message-ID: <20250226144548.GA2299551-robh@kernel.org>
-References: <20250225-rk3576-tsadc-upstream-v2-0-6eb7b00de89c@collabora.com>
- <20250225-rk3576-tsadc-upstream-v2-4-6eb7b00de89c@collabora.com>
+	id 1tnIfw-000000049u3-19ME;
+	Wed, 26 Feb 2025 14:46:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1740581171; bh=3QcCZ3g5LBqlswQyOTHsTqpCneXCRv2OoVnlOv3oPv4=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=v/IsNpPFIOzWQD/T+IHiEI77aY4ktraWpQGcNLc7spGOY+CDRZmMBH+fNvgB/vCRK
+	 BILi59vxqqww/FgA9XEXDd+BECmNspLBfb83dvKeUnSRa1kmV74gKYKXQFW3EpIbnD
+	 kitp3E7X/H24Er3ooOjuv2kJC9O9mEvp5Tks2b7I=
+Date: Wed, 26 Feb 2025 15:46:11 +0100
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: vkoul@kernel.org, kishon@kernel.org, linux-phy@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	quentin.schulz@cherry.de, sebastian.reichel@collabora.com, 
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 2/2] phy: rockchip: usbdp: re-init the phy on
+ orientation-change
+Message-ID: <7q5yn466xd7emebhjze4ixkswgyxjjjt5rwvyww2hwbts6bamd@i5vwvegy2os6>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, quentin.schulz@cherry.de, 
+	sebastian.reichel@collabora.com, Heiko Stuebner <heiko.stuebner@cherry.de>
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20250225184519.3586926-1-heiko@sntech.de>
+ <20250225184519.3586926-3-heiko@sntech.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250225-rk3576-tsadc-upstream-v2-4-6eb7b00de89c@collabora.com>
+In-Reply-To: <20250225184519.3586926-3-heiko@sntech.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250226_064616_750740_4596048F 
+X-CRM114-Status: GOOD (  37.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,140 +73,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 25, 2025 at 01:56:47PM +0100, Nicolas Frattaroli wrote:
-> Several Rockchip SoCs, such as the RK3576, can store calibration trim
-> data for thermal sensors in OTP cells. This capability should be
-> documented.
+Hi Heiko,
+
+On Tue, Feb 25, 2025 at 07:45:19PM +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
 > 
-> Such a rockchip thermal sensor may reference cell handles that store
-> both a chip-wide trim for all the sensors, as well as cell handles
-> for each individual sensor channel pointing to that specific sensor's
-> trim value.
+> Until now the usbdp in the orientation-handler set the new lane setup in
+> its internal state variables and adapted the sbu gpios as needed.
+> It never actually updated the phy itself though, but relied on the
+> controlling usb-controller to disable and re-enable the phy.
 > 
-> Additionally, the thermal sensor may optionally reference cells which
-> store the base in terms of degrees celsius and decicelsius that the trim
-> is relative to.
+> And while on the vendor-kernel, I could see that on every unplug the dwc3
+> did go to its suspend and woke up on the next device plug-in event,
+> thus toggling the phy as needed, this does not happen in all cases and we
+> should not rely on that behaviour.
+
+On RK3399 there's a similar issue with the equivalent type-c PHY driver.
+The TRM (part 2) states that:
+
+4.6.1 Some Special Settings before Initialization
+
+- Set USB3.0 OTG controller AXI master setting.
+- Clear USB2.0 only mode setting (bit 3 of register GRF_USB3PHY0/1_CON0 in Chapter GRF)
+- USB3.0 OTG controller should be hold in reset during the initialization of the corresponding
+  TypeC PHY until TypeC PHY is ready for USB operation.
+- Set PHYIF to 1 to use 16-bit UTMI+ interface (see register GUSB2PHYCFG0)
+- Clear ENBLSLPM to 0 to disable sleep and l1 suspend (see register GUSB2PHYCFG0)
+  ...
+
+The PHY for Superspeed signals is expected to be set up while the USB
+controller is held in reset, which makes sense HW wise, and it's what downstream
+kernel efectivelly does, via its RPM based hack.
+
+RK3588 TRM doesn't have very detailed notes on this, but I expect it will be
+similar.
+
+So reconfiguring the phy here, while it's actively linked to the USB controller
+without the controller driver driving the process so it reliably happens while
+it's in reset, or at least so that USB controller reset happens afterwards, may
+not be correct way to approach this.
+
+Also moving this to the USB controller driver would fix the issue on both RK3399
+and RK3588 and maybe elsewhere.
+
+My own shot at this is:
+
+https://codeberg.org/megi/linux/commit/2fee801eae4ca6c0e90e52f6a01caa3e6db28d7d
+
+I turned out to be a bit too complicated, so I didn't submit that yet upstream,
+hoping I could simplify it in the future.
+
+I basically abused current_dr_role a bit to add a disconnected state, to get
+__dwc3_set_mode() called when type-c controller updates the port state from
+disconnected to connected with some orientation, and trigger phy reconfig from
+there, while USB is in reset:
+
+https://elixir.bootlin.com/linux/v6.13.4/source/drivers/usb/dwc3/core.c#L197
+
+Kind regards,
+	o.
+
+> This results in the usb2 always working, as it's not affected by the
+> orientation, but usb3 only working in one direction right now.
 > 
-> Each SoC that implements this appears to have a slightly different
-> combination of chip-wide trim, base, base fractional part and
-> per-channel trim, so which ones do which is documented in the bindings.
+> So similar to how the update works in the power-on callback, just re-init
+> the phy if it's already running when the orientation-event happens.
 > 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Both the power-on/-off functions as well as the orientation-set callback
+> work with the usbdp-mutex held, so can't conflict.
+> 
+> The behaviour is similar to how the qcom qmp phys handle the orientaton
+> re-init - by re-initting the phy.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 > ---
->  .../bindings/thermal/rockchip-thermal.yaml         | 64 ++++++++++++++++++++++
->  1 file changed, 64 insertions(+)
+>  drivers/phy/rockchip/phy-rockchip-usbdp.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> index 49ceed68c92ce5a32ed8d4f39bd88fd052de0e80..eef8d2620b675fe2f871a03aebdaed13278e0884 100644
-> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> @@ -11,6 +11,23 @@ maintainers:
+> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> index 7b17c82ebcfc..b63259a90d85 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> @@ -1277,6 +1277,7 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>  				 enum typec_orientation orien)
+>  {
+>  	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
+> +	int ret = 0;
 >  
->  $ref: thermal-sensor.yaml#
+>  	mutex_lock(&udphy->mutex);
 >  
-> +definitions:
-
-'$defs' is preferred over 'definitions'. However, I don't think you need 
-either.
-
-> +  channel:
-
-Just make this a pattern property:
-
-'@[0-5]$'
-
-Really, node names should be generic and the type of thing they are, not 
-what instance they are. So something like 'sensor' for all the child 
-nodes. IOW, node names is not how you should identify what each sensor 
-is associated with.
-
-> +    type: object
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-> +        description: sensor ID, a.k.a. channel number
-> +      nvmem-cells:
-> +        items:
-> +          - description: handle of cell containing the calibration data
-> +      nvmem-cell-names:
-> +        items:
-> +          - const: trim
-> +    required:
-> +      - reg
-> +    unevaluatedProperties: false
+> @@ -1292,6 +1293,12 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>  	rk_udphy_set_typec_default_mapping(udphy);
+>  	rk_udphy_usb_bvalid_enable(udphy, true);
+>  
+> +	/* re-init the phy if already on */
+> +	if (udphy->status != UDPHY_MODE_NONE) {
+> +		rk_udphy_disable(udphy);
+> +		ret = rk_udphy_setup(udphy);
+> +	}
 > +
->  properties:
->    compatible:
->      enum:
-> @@ -51,6 +68,12 @@ properties:
->        - const: tsadc
->        - const: tsadc-phy
->  
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
->    "#thermal-sensor-cells":
->      const: 1
->  
-> @@ -80,6 +103,47 @@ required:
->    - clock-names
->    - resets
->  
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3568-tsadc
-> +    then:
-> +      properties:
-> +        nvmem-cells:
-> +          items:
-> +            - description: cell handle to where the trim's base temperature is stored
-> +            - description:
-> +                cell handle to where the trim's tenths of Celsius base value is stored
-> +        nvmem-cell-names:
-> +          items:
-> +            - const: trim_base
-> +            - const: trim_base_frac
-
-Define all properties at the top-level and then restrict their presence 
-in the if/then schema.
-
-> +        cpu@0:
-> +          $ref: "#/definitions/channel"
-> +        gpu@1:
-> +          $ref: "#/definitions/channel"
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-tsadc
-> +    then:
-> +      properties:
-> +        soc@0:
-> +          $ref: "#/definitions/channel"
-> +        bigcores@1:
-> +          $ref: "#/definitions/channel"
-> +        littlecores@2:
-> +          $ref: "#/definitions/channel"
-> +        ddr@3:
-> +          $ref: "#/definitions/channel"
-> +        npu@4:
-> +          $ref: "#/definitions/channel"
-> +        gpu@5:
-> +          $ref: "#/definitions/channel"
-> +
->  unevaluatedProperties: false
->  
->  examples:
-> 
+>  unlock_ret:
+>  	mutex_unlock(&udphy->mutex);
+>  	return ret;
 > -- 
-> 2.48.1
+> 2.47.2
 > 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
