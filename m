@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2201C021B8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 14:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C42C19F32
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 14:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a/5hqzXLd1mZIPwPZTlJENcq8ntbhCclwc68FwJSbvg=; b=UE5FJ0MZjOPe6O
-	RBMf9gyXSG4he49TGcvSbSQcKZd/rdGSY9OtApUfaMkF69ue4EIymKODLm6ZasHirPPY1yzM95GSj
-	uc6ZQhxU4BCXAsz280zoarul2hvOT8d7qzvmQEhrE4SXWDJ+P88hxD4BKyUIwsmUthXiop/eErMBE
-	bM+i7rbrAwGEX+dVaoj3zqtKg8ns5dYDfervpg8+gOt6xexLACE8rpxooGcOn22mMQvKgVit8lJ7z
-	IECA1rrw5zx/8Kw6B7YBCVF2bBkmJJI8nciPZ+j/4LNv1S7Svyal8Y442/cU1KdnOLJlL3THCDTlc
-	8zBf/fxuaF0zUWCKLvlw==;
+	List-Owner; bh=rRyH/IAcSzw1tvYYZkOy+a8W+2Rashw7mxjWiu40d6E=; b=Z5/9SywnTZ54rz
+	R1elMLVMByK+M9og2M8HLbAhVDU7cm5vnHrjNmKYeoxTIMq6745pv32eB0PHK61LN+WaDpXEhuZOD
+	B/PsHFYF+/Iwf8Y0MvSjgsAQ9nM3VVxNeq6cY6XEC+KDPq6oYfCHPP/Fa6zwnGvXtygpC9FB+rnMH
+	qEJyUyQmrGgtureDRjzypW3xI+L3sidDGF1Anv4q3qN5LieDQncg7+C2I4yHp7HubaX4yHWJ9MPJK
+	sgmLyUTbNqoKGE/5wk/kqxJjZhL4y+mWN0n8OW0aonTr9gXWLpv6VSNKvAeIpOdJcD4/TQDMwMPUb
+	9w/8sNFui7VpdccFuzAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIEO-000000042dc-0slc;
-	Wed, 26 Feb 2025 14:17:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tnIY7-000000047nZ-1iAK;
+	Wed, 26 Feb 2025 14:38:11 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIBJ-0000000421D-0PYq;
-	Wed, 26 Feb 2025 14:14:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=KvJGAbyWkcvedoLLc4FaW3JqrKOaqT7oAs2HApM74cQ=; b=KP+ssduJCcCljk3HCk1xztnkk3
-	zS+GF9pbhbYxs31tkIc2o1qgOvBu73G6nQzg79jNujH4QtrV/x03B5kel06GZxwVlF4zqtsEz59p4
-	ru+ycq0C3F+HcU8HRvffn8jqfbXLhQYlB/evrA589kvVMPsgnBKDNt5w82GcGfGRkMy8PdsroOFSz
-	636143j44zLKs98WFAY6XFV11DqeZmGi/Z8eYumMznOW+xAbNtzwH0fzumWX2A8TB+ZXJi5AIUW14
-	0UawrXNqsHTNcbdTLvHAIJ0D5AOQF89jh8mWGN1MckA15++rkbSjCzJ4fntz5Op3XSfGPuwfEgOUO
-	oRwePrdA==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tnIBH-0000Xq-P2; Wed, 26 Feb 2025 15:14:35 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: quentin.schulz@cherry.de, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, dse@thaumatec.com,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add overlay for tiger-haikou
- video-demo adapter
-Date: Wed, 26 Feb 2025 15:14:35 +0100
-Message-ID: <12349849.zAa99ISigo@diego>
-In-Reply-To: <20250226140942.3825223-4-heiko@sntech.de>
-References: <20250226140942.3825223-1-heiko@sntech.de>
- <20250226140942.3825223-4-heiko@sntech.de>
+	id 1tnGkE-00000003jKY-3pDT;
+	Wed, 26 Feb 2025 12:42:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740573755; x=1772109755;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=WkXc7BocQbpip7ciVHNFAiTeTqJtNYIch4zaYSdoITI=;
+  b=GdDlRf/XjPticAJwwgcqbdBEQ5Te2mca7GqASFuXGS1goojPEH0Tl+o4
+   MEdviSXqHTj8Tc93z4vC8Xm8swYScjQoGAtX2Mx5xATHkOsotl5i26uGj
+   br92FvPj+USmO8e1O1RhLtfm3raFGw6kjYXfbTmp5S6pHPVjZh9ya3wx8
+   O8vBaBT70jJN0VOM10JxDV1n/PkXCutmqZsV1DFV17oCGfNk9/swkrrZ1
+   VWw8BD5WFVctU1jGxPUVmoKX7vtCfMmvNLRiNkIegC3wXLAbProZRiFRU
+   la582XF9fDZ4iE08PGIbO7gOTtuoQfEE8k+3DlyqRv7Zh5LxkYUyDixeM
+   A==;
+X-CSE-ConnectionGUID: g2P7rt1pQS202zQr5oS10A==
+X-CSE-MsgGUID: msFMLmvUTRCqCbKC13i9VQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="41543465"
+X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; 
+   d="scan'208";a="41543465"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:42:34 -0800
+X-CSE-ConnectionGUID: qzXgd/NORXi327/S3f15AA==
+X-CSE-MsgGUID: bn1g+MruTuG+TRPKXFaDnA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; 
+   d="scan'208";a="139911002"
+Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.124.240.105]) ([10.124.240.105])
+  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:42:26 -0800
+Message-ID: <fafdcc71-b246-4855-a088-24854b124b21@linux.intel.com>
+Date: Wed, 26 Feb 2025 20:42:23 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: baolu.lu@linux.intel.com, Bagas Sanjaya <bagasdotme@gmail.com>,
+ Joerg Roedel <jroedel@suse.de>, Pasha Tatashin <pasha.tatashin@soleen.com>,
+ patches@lists.linux.dev, David Rientjes <rientjes@google.com>,
+ Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH v3 14/23] iommu/pages: Move from struct page to struct
+ ioptdesc and folio
+To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
+ asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Robin Murphy
+ <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
+ Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
+References: <14-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+Content-Language: en-US
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <14-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_061437_142608_31EDFE8F 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250226_044234_984076_EDE4BE21 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,59 +98,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 26. Februar 2025, 15:09:42 MEZ schrieb Heiko Stuebner:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On 2025/2/26 3:39, Jason Gunthorpe wrote:
+> This brings the iommu page table allocator into the modern world of having
+> its own private page descriptor and not re-using fields from struct page
+> for its own purpose. It follows the basic pattern of struct ptdesc which
+> did this transformation for the CPU page table allocator.
 > 
-> This adds support for the video-demo-adapter DEVKIT ADDON CAM-TS-A01
-> (https://embedded.cherry.de/product/development-kit/) for the Haikou
-> devkit with Tiger RK3588 SoM.
+> Currently iommu-pages is pretty basic so this isn't a huge benefit,
+> however I see a coming need for features that CPU allocator has, like sub
+> PAGE_SIZE allocations, and RCU freeing. This provides the base
+> infrastructure to implement those cleanly.
+
+I understand that this is intended as the start point of having private
+descriptors for folios allocated to iommu drivers. But I don't believe
+this is currently the case after this patch, as the underlying memory
+remains a struct folio. This patch merely uses an iommu-pages specific
+structure pointer to reference it.
+
+Could you please elaborate a bit on the future plans that would make it
+a true implementation of iommu private page descriptors?
+
 > 
-> The Video Demo adapter is an adapter connected to the fake PCIe slot
-> labeled "Video Connector" on the Haikou devkit.
+> Remove numa_node_id() calls from the inlines and instead use NUMA_NO_NODE
+> which will get switched to numa_mem_id(), which seems to be the right ID
+> to use for memory allocations.
 > 
-> It's main feature is a Leadtek DSI-display with touchscreen and a camera
-> (that is not supported yet). To drive these components a number of
-> additional regulators are grouped on the adapter as well as a PCA9670
-> gpio-expander to provide the needed additional gpio-lines.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
+> ---
+>   drivers/iommu/iommu-pages.c | 54 ++++++++++++++++++++++++++-----------
+>   drivers/iommu/iommu-pages.h | 43 ++++++++++++++++++++++++++---
+>   2 files changed, 78 insertions(+), 19 deletions(-)
 
-in v2 Quentin commented with a (which I forgot to add)
-
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
-
-
-> +	vcc1v8_video: regulator-vcc1v8-video {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc1v8-video";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		vin-supply = <&vcc3v3_baseboard>;
-> +	};
-> +
-> +	vcc2v8_video: regulator-vcc2v8-video {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc2v8-video";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <2800000>;
-> +		regulator-max-microvolt = <2800000>;
-> +		vin-supply = <&vcc3v3_baseboard>;
-> +	};
-
-and suggested to add the additional regulators on that board, that are used
-for the camera part that is unsupported right now.
-
-If there is a v4, I'll probably add those.
-
-
+Thanks,
+baolu
 
 _______________________________________________
 Linux-rockchip mailing list
