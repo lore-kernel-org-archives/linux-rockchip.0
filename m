@@ -4,169 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84F5C021B8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 17:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D38C021B8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 19:29:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4GWQrUYaPXk3EcCBqomoezZcTp0aJ2r3DCayjyspmf0=; b=sr+0r7HPfXyeDk
-	iaqRnLG+kwE8zsmDBy01kqH/wr/8DpPAwes8gdt69p+rvUa43zKgdbPkRHhGEjHyJF7WKZpEbuM7p
-	ztvYHveNuyAVHvzq0fsTh5suFwE4ANiXQwaJkzecv5cBY9dv0FQdvB1/S+kL5fUL/AtVgLjibMXAp
-	p1kNpwZDaIvu8dqUQoQwskluiWU0KyA/KY7YHyt58dPclfLbAIJqG6pm6I7P7DKl6BIiAmPs96Jh3
-	XuWK3DJxWrRqGCzhB7so2jMKufob9YEmeOKOZNn7p7tUkAImI1L69gervn7YRfVpaLVRGMvJ3BWVY
-	y3RFNCmnSPS4Qv7XqGuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wXCbC3hthkec/nU1r30FsTkPb3FTXH82HDHeOQ3S7k0=; b=k79F2ffu7jwzbl
+	scmlYJcvhm/RtupVf7ALPTZUbGgM9snh5uhSungtvbjGScw2+ZbYjwWBWN4pC+71of6Uu4N0IPIX8
+	2BXFtx7ZD0BkKljLtGGCK87baOWhW2TKhDo7cCg20ncdfKRo0vnkVdXKM7zg7N63g/WGyI62etI3m
+	QXRE1GoaUIr/Yy0aGYBlg5ugcq3pquybb3NNG5mGlEsi2XtYKFhW5zBiOqoXG46mnlXS2/RJ+ONHl
+	MOAoG6ycAWGve2kX5iKpzdrBFvYwOcxlWgwWQzghDhTep+F7PK1c71oVNicccGGkbRpSLAIAv4reK
+	CQZmrXT3AdQS2SjWtOSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnLHN-00000004jjw-1Gwu;
-	Wed, 26 Feb 2025 17:33:05 +0000
-Received: from mail-mw2nam12on20624.outbound.protection.outlook.com ([2a01:111:f403:200a::624] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1tnN5p-000000059ej-2eMB;
+	Wed, 26 Feb 2025 19:29:17 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnLFo-00000004jaZ-1lsu;
-	Wed, 26 Feb 2025 17:31:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BdRpkyTAxt8cy9294cNCDXczftj8owXylu3PdCuccf73FRo0A5zxuyCgbY0W7ur4zEnnm+ojQ4gLY7kRlTmA2e10mTtzEbauwiU5xnVxpHcQ4EInB6rZEjKk//TWdaxKHph0gquMDNExfF1e7AhjZBx5Mo0BcmH7iXS3tCefWVPWIJRxT1YaQ/RoXDM0IiAmgVRvlJfzKv7zv5fuD0ApFnoy1UbOYfSTtw4i+mLMPmEIox1VawXJmGmzPsTT2M/yEEeu77apAtY7K3UksPUBMVGirGIOywAJNSE6uRLNk/yzqXU5YCeN/KuFmDzWeuRaNl3vesODkTPYHlJjy0pFBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jH1gbJqdnymjOjrMZc2TwOxvlhempEA0Xp3dfPhfhv4=;
- b=S13NBL71mFkpys/ZN4NpKPcN5LfnAGzYhw+iOoTmAfTi4NbggpjrESwZY3vn4BqHIXIMy05k7OkAWdw+REmYiB+KwWHLwRh3PA2EpWWFBfTiTGkD0O5OFPZF8S8DqKc8paYAWWViRx7HwkXAFTiAJAxkG8jXG6DXCzpKFTTPq92XIKFfHlYvKWCS6xMVRNFmVOXqoChxUmKFRCP1s7xAyjjnIr/wkScjbi43pCduKZ/CT9E06vL41nP7bqV6qGaEuVs0KLhgBsUB90fZBvDr27iIkglAiYiNlSNl0GZfxQ/S1+LG56rnJxmnqkW9lFyeB0TEUnPlf1wXX/5JEm0i3A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jH1gbJqdnymjOjrMZc2TwOxvlhempEA0Xp3dfPhfhv4=;
- b=uCI2GgceAF65vZ2DaZBlzP+u9gwHNhc88gJ0PnhD14fYu6jRNEDZV0uacWbt4WgHgAr7J1gyH0Xo3oXGcAbqW5/un88kA4bRomkUa72nlWdA8WV+qirq1a+dNxUUofaxpBBdxIvP4fVfcaJwVSvWk97T5cps9NFSbCgdibrIDVxRRGVjOpb/7wPwswmYwlp4GmilfqBrPOxQHmRjlvlVC/YXRn2u/c01elfIaqh6oelmG2WDooeW1zyxgcDIyFfPSSb8wcRErcqaMqx1qPE5CShe7TNPa6CojZzgQ3MFkbLVdnQq42CVw2eMMXjZ4iCOmFY/bYJU3fV8zJHw8J6qPQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by MN0PR12MB5762.namprd12.prod.outlook.com (2603:10b6:208:375::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.21; Wed, 26 Feb
- 2025 17:31:22 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8466.016; Wed, 26 Feb 2025
- 17:31:21 +0000
-Date: Wed, 26 Feb 2025 13:31:20 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1tnN4H-000000059JL-0TXF;
+	Wed, 26 Feb 2025 19:27:42 +0000
+Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:2b29:76dc:a5a9:647c])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 92A9C49E;
+	Wed, 26 Feb 2025 20:26:08 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740597968;
+	bh=TR7F1RtqVngJgjrbPnHgmwGaX8T2VMKYSMSpMKAAPlE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=NW8lxxvDmzfPYMXpgDSCd6IHHfUuXIIuesoKkEjM/CbPFSewuNBLXD2Ac6G4j/+ew
+	 Hg/pFr74tx67Rjt5r7WVNu3NLh/jjThLjdQ/lqtCRYThnm5hfSExf/UFMyKHXBAHNY
+	 RlF/Q/CmwML/jQGYJLlZPFuU7l/PlcwhAfIYdI9Q=
+From: Stefan Klug <stefan.klug@ideasonboard.com>
+To: libcamera-devel@lists.libcamera.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v3 09/23] iommu/pages: Formalize the freelist API
-Message-ID: <20250226173120.GA37280@nvidia.com>
-References: <9-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
- <6d9ceeb5-581e-48e8-a5cc-100a9699a9e8@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <6d9ceeb5-581e-48e8-a5cc-100a9699a9e8@linux.intel.com>
-X-ClientProxiedBy: BL1PR13CA0159.namprd13.prod.outlook.com
- (2603:10b6:208:2bd::14) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	linux-kernel@vger.kernel.org
+Cc: Stefan Klug <stefan.klug@ideasonboard.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] media: rkisp1: Apply full quantization when color space JPEG is requested
+Date: Wed, 26 Feb 2025 20:23:53 +0100
+Message-ID: <20250226192413.2903243-1-stefan.klug@ideasonboard.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|MN0PR12MB5762:EE_
-X-MS-Office365-Filtering-Correlation-Id: 43d944ab-c2da-48a0-2007-08dd568b62e1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?NXHHgZiJbrp1gMHqoEBXavAIUOF1eQl9ydqmE34+bsL/W2ny5ynsi7qllCeA?=
- =?us-ascii?Q?GtWjbjYp9R6LVeuvO1e2VQZ+JkOIQhp/YxJgb3ZMAjh2QPfpqKUphFKxvXes?=
- =?us-ascii?Q?71SwQ1apZQTydisMk/4Zm075F42Jckg2zgj52QkpHRMV1Lx+Tewq4wSTnRpo?=
- =?us-ascii?Q?tHmzCzqP72Olueh+5lqIJ24MWgdcbVReBWGidWr//e46XGCgXY6eMlaid2MW?=
- =?us-ascii?Q?0y8CCOjGwzVcGHfbLR8jNVeInKk9aRzDpSYE0GHyOFVSNWYcdpyaefuPOBsI?=
- =?us-ascii?Q?1Puj2JVq3Te8y50g6BqLSa0+WWZ5sK+BPUt+fLEwD1KqP2RwUSo6gdolLw7L?=
- =?us-ascii?Q?WhwRzr/cGPJRM0PybIRwWIBIUHz7qQnoUVFQgloIwif2Jdww9EdEUMdo4rK7?=
- =?us-ascii?Q?M2S6/I2LTu/KbDpG+Wys8PZ9gRzF1hNM9JcTI1VcRSyUU8nP5FjhleH8+AIR?=
- =?us-ascii?Q?zAmSCBYmvFAnIGPfCnFxRWDz3L5BYuAq+ZuW7IVm9O2P7kiTGLhLxrt8m/jW?=
- =?us-ascii?Q?tZkuAjhkviC/6JZrhU4JVkEH4uCCeU39iz/VT+qhwCU2rGSq7GGdNeutSkwA?=
- =?us-ascii?Q?pkIubFaBeJ/2ZjJBbK4Qy+j4GXC061aRIe/g1gsHpqMbx2/qkwC3YtXAAOCJ?=
- =?us-ascii?Q?L74pBSLI98HZOdafJUh7VEUSGaJa79DiBdFBfpYoAn+bBYbC+hC5PZaQo3+c?=
- =?us-ascii?Q?qhi+IX2doWDDa6+aZhn1x136x0LQVpaN1UmwzT4JvrHABvqdlyMyD+E7o2bG?=
- =?us-ascii?Q?t2Zq0bkkNxrGLmYUPhG0SOcXkGlWh2Hcues06UTTPIiYtvzkldKGx6Tot85d?=
- =?us-ascii?Q?386Pyo7LzkH4vB9OLqtQXYMGWVSVMPiS4QcnyURipykoEj/dJzgEXQoI14XE?=
- =?us-ascii?Q?/YVISMBriD1HQUEwxW1ctLTxYvQRD6KQQPqg4NMQx/G6X7Arc7LEeev1fmsx?=
- =?us-ascii?Q?n7mZAUGSeFxdsCQcC6IeSNHkzhQuE43GlLDvFZFcl4Nb7xGDtNVEk/nXMVz9?=
- =?us-ascii?Q?C41hizLedaE6Ga5GF9R+HdQW+GvpVanREV+xvzHlo8CA0f1MGjDQDK9O/FgR?=
- =?us-ascii?Q?K4of376yZgd3TV90No7L5e/Gh+x7P8zVas1DKRF9XuAQ/blij06HBjH6IJd5?=
- =?us-ascii?Q?rCWX7k8nuCvsi9A8orS2uNCW7DYzhyjEg6E3N3JlkMsx9oErqqH2zVc0+93a?=
- =?us-ascii?Q?1bMBc8oIYxb3wDLg6sOvz88YH15fcM5OlDF+CDtg68D8prmVIMVpNR6U5oRN?=
- =?us-ascii?Q?5L8n8qd3rqrV4PYuO7dMCrPrcamztmMAW+dEgpLewhHE5i0/ZSmbBECj7dMC?=
- =?us-ascii?Q?4c26OIH/IveHZ992TKYOUDubaLCvGLSVxKnAZCSLt31sHqN47OZinEv1LpOC?=
- =?us-ascii?Q?lU4xVSfJlJbW3LEDWZ8VqqLQaUZ8?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aN0ougez7Ze2RQ2ThsiCBuQw5RdF9ZFQ9g30OaznUov4X/frKUSPlGFZ7wYd?=
- =?us-ascii?Q?tR/5P+cIle34ejYphsimlFSXPFi4/M9WQYou9v0fuHIfcf+l+QRdCz7qrMSF?=
- =?us-ascii?Q?QcbTRC+M24nItlKBGUuLtvwCwswPmDGOVImVyyzF/Qyp149BUtlsN5mTHfY5?=
- =?us-ascii?Q?DN7YjmnPTdCCrAUUeJWf02U/ZBOLzRklY1YzXZVFLXEjks9GV1Mz3EJNdJRg?=
- =?us-ascii?Q?JczfjJdqAagBxQrynOZGcHFGt4Lwz6SOg2u+5jzkElFqbOiLXblvVB8P9Oxy?=
- =?us-ascii?Q?6sz5WlJm9rVCyJzBdD6ydwO68XozDqEIL9kZgNHyLxI5gLzciI8Y1VOzN80e?=
- =?us-ascii?Q?zCB3AeMS6S8Qwbd37XodEgfU03I4QcipvAFs18g8zLu5G3M3Aup2PNZzNGWu?=
- =?us-ascii?Q?UEGAOv80Kt1epZoJlWg7ujOr1wfX4He2eHRcuRUwA4cmnfh7tfV3fMUszM+a?=
- =?us-ascii?Q?S6XGOYMvpc8N656Xkp5gO9QqUX6QepDTuZvT4jFVb+trN+/K2NZHk9vcFAFf?=
- =?us-ascii?Q?fV845FWBb+bHHqFrUpe7mjS5NdoqVZjHD8t7VbaSKOi6LPGASBzVaEEEWOxA?=
- =?us-ascii?Q?lAA9z4Lthz97SCmfXUrufSQondt2+YDcCajXdgHIgKrAQyNab9ajzuRiGQ1Y?=
- =?us-ascii?Q?LezjoKivaNa5aVeNSSymptidXrNbYaLLXCmPS2nyWc1BYg4pALKyKboPjrEu?=
- =?us-ascii?Q?ZRaSIEkKRZB+4fA0kOcX4en3K4HbMfqj58QUEfZWPpzWE4wf0OOOGAFVQfFH?=
- =?us-ascii?Q?HCVsfOIIJJI3larWOy8tJz/fTR8o4tJ45mXd5pls/v1G8B0iiF5TBoc+OEZX?=
- =?us-ascii?Q?WC9d5MEhViCaoOb1swBYapNUvIeYV1CO29s7hfoZC1nZLyzotYtCCW+TwCHu?=
- =?us-ascii?Q?BHllmdkcMDeqyH8WO/jrgbfkr9J+nO7Bial8YUZr3ahNauBCq6CqTMX5wPnl?=
- =?us-ascii?Q?cDlIDj3Z3Q5WSQDmunhma0h6uyQ2NFNWh3XU5otu3KlQFVkbZ6SpJmmag5gF?=
- =?us-ascii?Q?G3rvLcGemUzJuljncg/U4cgL/YraQwvdnYYaa1GsXcGBz2JmPkzZpq8qruk+?=
- =?us-ascii?Q?q5f6H5kxb1AqXuJQciDcIMXC/t3fpZ9NLje/Y4jNhDwfAAlu3rJNOss3aGbj?=
- =?us-ascii?Q?zSY5yrRQf2LSLUrEnfH6cdCahMA4n/hwejKUxQBnQZMXSDVm4WUoB2Ekawwd?=
- =?us-ascii?Q?V59anBYa58F4CkZJVbu3begvnSYNDWH5dUDQrCulr0VQLvFG3H/d/BXEmihw?=
- =?us-ascii?Q?x9fk18/l2jz3Dehz8NdPIgbyfda+LUBsuWDhQ9pFViA7XY6qAaVc1M6TSTRs?=
- =?us-ascii?Q?TxoZQ447poPgjT0Tvl9DwHy0zqIdJfKiSVBXWQaSxWLYq70TaIEXuvuA4Dai?=
- =?us-ascii?Q?YGuHDqr8n7tPx6VE993tzZG9d77ws5hEm/4q3sUHlIJslVFtejWVKGDPD1fC?=
- =?us-ascii?Q?T+EOipP8I5lQY3jJvU+n4lLlrJrGIL1596IjzgHdL3UHgvT7KlHSZl4Xx/ul?=
- =?us-ascii?Q?uekdZ9tCoi4onQCVU+5xHSt68pYwVUeOjeld0b7PRhmWtz1bqPk+LC2Yfo/w?=
- =?us-ascii?Q?KKFkGZpBb05q7JtYA9oGXLqEGs99g7POH2VInV4S?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 43d944ab-c2da-48a0-2007-08dd568b62e1
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2025 17:31:21.8251
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BwtldxbYbGJuzpMfqCYLz2rsybrv5Ayk1HZYrB8m6PRQI9h1ZIJPG1+rOQqDlNMq
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5762
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_093128_463172_EA6CBE23 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20250226_112741_468895_AF0EE5A6 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -183,51 +72,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2025 at 02:56:29PM +0800, Baolu Lu wrote:
-> On 2/26/25 03:39, Jason Gunthorpe wrote:
-> > diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-> > index 38c65e92ecd091..e414951c0af83f 100644
-> > --- a/include/linux/iommu.h
-> > +++ b/include/linux/iommu.h
-> > @@ -326,6 +326,18 @@ typedef unsigned int ioasid_t;
-> >   /* Read but do not clear any dirty bits */
-> >   #define IOMMU_DIRTY_NO_CLEAR (1 << 0)
-> > +/*
-> > + * Pages allocated through iommu_alloc_pages_node() can be placed on this list
-> > + * using iommu_pages_list_add(). Note: ONLY pages from iommu_alloc_pages_node()
-> > + * can be used this way!
-> > + */
-> > +struct iommu_pages_list {
-> > +	struct list_head pages;
-> > +};
-> > +
-> > +#define IOMMU_PAGES_LIST_INIT(name) \
-> > +	((struct iommu_pages_list){ .pages = LIST_HEAD_INIT(name.pages) })
-> > +
-> >   #ifdef CONFIG_IOMMU_API
-> 
-> Any reason why the above cannot be placed in the iommu-pages.h header
-> file? My understanding is that iommu-pages is only for the iommu drivers
-> and should not be accessible for external subsystems.
+When color space V4L2_COLORSPACE_JPEG is requested the ISP incorrectly
+sets the output quantization to V4L2_QUANTIZATION_LIM_RANGE. Fix that by
+applying the default quantization for the requested color space.
 
-I wanted to do that, but the issue is the gather:
+Fixes: c1ec5efba080 ("media: rkisp1: Allow setting all color space fields on ISP source pad")
+Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-struct iommu_iotlb_gather {
-	unsigned long		start;
-	unsigned long		end;
-	size_t			pgsize;
-	struct iommu_pages_list	freelist;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index d94917211828..98635d875ac4 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -646,7 +646,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 
+ 	/*
+ 	 * Copy the color space for the sink pad. When converting from Bayer to
+-	 * YUV, default to a limited quantization range.
++	 * YUV, default to the default quantization range of the color space.
+ 	 */
+ 	src_fmt->colorspace = sink_fmt->colorspace;
+ 	src_fmt->xfer_func = sink_fmt->xfer_func;
+@@ -654,7 +654,8 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 
+ 	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
+ 	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
+-		src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
++		src_fmt->quantization = V4L2_MAP_QUANTIZATION_DEFAULT(
++			false, sink_fmt->colorspace, sink_fmt->ycbcr_enc);
+ 	else
+ 		src_fmt->quantization = sink_fmt->quantization;
+ 
+-- 
+2.43.0
 
-The struct is inlined so it must be declared. I do not want to include
-iommu-pages.h in this header.
-
-Once the struct itself is there it made sense to include the INIT too.
-
-FWIW I have a longstanding desire to split iommu.h into
-internal-driver-facing and external-user-facing files..
-
-Thanks,
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
