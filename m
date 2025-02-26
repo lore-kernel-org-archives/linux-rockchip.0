@@ -4,170 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ABE6C18E7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 13:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C562FC021B8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 14:13:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rn8NyQRK0ec8M+8Ux8RCKgCFNH/rh+wqBWEDAPVytOc=; b=f9FHivF04XqtLG
-	yOS2ZhQDZNLKJTyHh2NYdvHwSec1bq6z7A4INmU/kHbOUc3OCnFCOsJMoY4sHHi6TbAFseh1O9vl+
-	kQvKYtmU5ZWeY96htlWJP191zPk2ZMeNee4PBQCYXszyhOL+XCH16l73AmrTT4H7w+kR+EvBfxf1N
-	LLfZML7U45C3xbI/FX+axC3dKgI/Mh73+mLLYqektINDlHhTj9dVJ3el9vKhjSbnEqi3SR6BKAc+b
-	Wrz85jRxffJUcuInHc3/QmYVUPN4reVYvqbbzah+GGac7W0dBynTs/1+Q0uR9pT1ugClKuABWjAkJ
-	uVGWtMpHz/EKRCPEf0OQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ypFpKoAbu1qlOwg9rIyNmqPnJLz03/vbbBbhBGFAaoA=; b=WvQYx/QfsEb+/u
+	eVouxOWqedDIy75LRNIt8M4joUZ3LXHObj5kxAg2KMu37Gn8r+lcz6m+doylW0SJOfsG1UcHQOvRh
+	7QPBVAydSEMal79NSNNYv+pg7ldAYbj8c2PY8Egd6EOqMdWkiPnwqZ5Tel5lHrXnEtr04UfI/KxVW
+	5lH8TVpZzC6GU2AVRb5Wjr7zf6kv3Fsd+PmMcgXCzcw3Li73+QWqtcRggWefp9qyfla4phS9GQcTB
+	g70RGIwt+IZw5uKbwXM6t3jeZzBaFH/nc6si02h/8tfPyuP0RrfOFnNC7Nof/fTYUNlkLCybRbkdl
+	XZw1SpT1cQdid3PzsvdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHqI-00000003yPM-0c8V;
-	Wed, 26 Feb 2025 13:52:54 +0000
-Received: from mail-sn1nam02on20621.outbound.protection.outlook.com ([2a01:111:f403:2406::621] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1tnI9s-000000041mU-1cou;
+	Wed, 26 Feb 2025 14:13:08 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnHok-00000003yFa-1WRo;
-	Wed, 26 Feb 2025 13:51:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hIaTE0ZfvP6s0uN9Uq9x6MRZFRIWI04QaznQZN6gX3WwdTQt4o1qoCHrVz7zeTjYW214VorNcIhiV/1Dq6LIGJenyw0zk5rvFY2Ang/mQXIWzKZr71a4EWrVH0rnYcr+B81sOvEmq1TduwXIKTaXerJEoodYZbHZEy8p7B6gzhIYw26I+H12yRgtOB5xe5jeELosKfHNbz2hbBdyFFifdPsKW6e3AIM6xLmQBfeprZLYAhQEcKPpq5xwCIg1aatBYC47EmW4t/9w3lrR/k9a6B8TFsvKl4h3pg05dN3ZrNqXznfUkuBfyRTZ9GchZdS+JaPCjsCs/ShgBVZCuE9sGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Xas6iO23/lUhq3wdmU85vP9pe8qViP/58nGydjOwJEE=;
- b=galxrB2Nh1F+6IllYLYBWuLPVGQBrwKzEsC3V+XvJjsSWmc5FLpjkKGuVF+zt3m23UGaHAhDjTogBEjlGtWokpfvuOjazK/rFB4tisO7wf7XNUS+w59eltbrokoOJm51lrsZU1lyU+02UJCAlT/Yu/6bwfzTBqlBmS88+oHCeWE9vQqfIKhEpiXWt32A5gOaHCmxg4Tl/q/yk99HbjJpKTfosHvnDxWbKqgJ986kkYVwFL+1SLayjOYiWz6F+mPXPw0RcGeuxe/ZKB1YJa6PDQLwKsaoi4cYgHPOvKdaL2+MnrHDeySTd2lvp36j3Q3y/NqpdGghlwb1Gx4tnCMyKg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Xas6iO23/lUhq3wdmU85vP9pe8qViP/58nGydjOwJEE=;
- b=eaLKI5ZK5k1w7CgAGdGbaFWO7uh+sb4q8KNRo7Fh4pBsdqU+71TCIgeS/XtJ9nBmcTypJ82eim+EOOQ9uM/Ze9RwKbpr7/MyfhfkHXOjjmxaqqWTFGIeAo2xSkLZZ3RSZFoXFCs2irX+/71B5vO/3gP6gQyf2aSk6iSfx7Cp4cKUJoL9sxxBBy7GUIQ61aetDOfaI0cL+ZnnyWLDl99/aklb//oXdqFZhcxPMWud56cQBEyqMeouLXCmLe01ex32iZ/bPOk+Zuaz9Ilwp7J6AJ4/64S2yOSt2R1q59P2JosesWLuLR3bIt8XDxf2mFPMEPeOu8Y8n2+m0/H0z3zkaQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by MN2PR12MB4439.namprd12.prod.outlook.com (2603:10b6:208:262::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.21; Wed, 26 Feb
- 2025 13:51:14 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8466.016; Wed, 26 Feb 2025
- 13:51:14 +0000
-Date: Wed, 26 Feb 2025 09:51:12 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1tnI6p-000000041Da-3Iek;
+	Wed, 26 Feb 2025 14:10:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=NrrAahS7bAG/932u+TcE7E528I9KC3f3lzOfCirWNaM=; b=pnBAVSEDSzEMElEtScfsFC/55k
+	D/TOiSf3GMdySfss1K2a1FHUo8e2EotucbNlIDOBGi3MDK42Hmt5NjpGyy2y7J1WUJQdzYdzqbWFF
+	T4kBSH4MmYpfE2VtlnfM0TS9zndb7xw/9BGVY4LHxmcAM23Zs4mCBVXBpO590Tok/STtE09FothpL
+	PpG/oxQfdFltGVbe1pqZ+ADiVWLfRZrCDlscFTFauuxV3HwFiPLxzSB/F5YaqFYunuSERWygPAvs7
+	F45oFD3trJ3cWwwYhs9i6iqgb13Gd7tz+V4SiDmPYAD7fTjY/w9muLNDONmDCQpmib5M7gYN/+RW0
+	ONui82iQ==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tnI6o-0000V2-6w; Wed, 26 Feb 2025 15:09:58 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@cherry.de,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Hector Martin <marcan@marcan.st>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Bagas Sanjaya <bagasdotme@gmail.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v3 14/23] iommu/pages: Move from struct page to struct
- ioptdesc and folio
-Message-ID: <20250226135112.GB28425@nvidia.com>
-References: <14-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
- <fafdcc71-b246-4855-a088-24854b124b21@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <fafdcc71-b246-4855-a088-24854b124b21@linux.intel.com>
-X-ClientProxiedBy: MN2PR15CA0044.namprd15.prod.outlook.com
- (2603:10b6:208:237::13) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	dse@thaumatec.com
+Subject: [PATCH v3 0/3] arm64: dts: rockchip: add and enable DSI2 on rk3588
+Date: Wed, 26 Feb 2025 15:09:39 +0100
+Message-ID: <20250226140942.3825223-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|MN2PR12MB4439:EE_
-X-MS-Office365-Filtering-Correlation-Id: 42b39f81-e0f5-48d0-b091-08dd566ca25a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?it7M4mTIz56cbn2ha7LApI+RYJhQZ8NaTuf71DNeW9mfVoHDz5ir9cV9fZA+?=
- =?us-ascii?Q?YvP+pD1DlJiIGxgfSL5IyiLgSlsaFmRhtw7tmKEhAJNcWKwG1jQwG801Ylqk?=
- =?us-ascii?Q?UoblQ9ihz7skQEPeAXrk5Ndqg/u0FOvM9Lj32lgMlE3JBDCjpzopa4UFv5Cr?=
- =?us-ascii?Q?fKwY0SdOj1ZDYzv17mrFemNTLsqXngDtUOwYCiqyUethsVQY9/59Gmhtydgy?=
- =?us-ascii?Q?+tSTT8q2MSBmBI7iXgTtpDExxEH03FXy5gvA3idwfZVRITEEMDH+s1x8shb5?=
- =?us-ascii?Q?gbZStdd1+YCH5y0/0Elfmax/yw5vcH2w2F7jO0xNgM/GCHSc4Vmkpj8o1YOW?=
- =?us-ascii?Q?w7g3pNtYMUr2zaS3lVDfaoBu9/cy8OAKUCCaZkR9jUZCxYq3TyQb7cbdQEP4?=
- =?us-ascii?Q?SK1OnEwN5KhkH5eTKPnIRzgF3C6bRMIuz8qPX27B/HaAa1y7V6oTcIWzPGbP?=
- =?us-ascii?Q?4w8X0QjdXjymkpALlcGvFcD1Tpwp6GcLe59wk7Zd1OShap5STEV+PbfO1rHe?=
- =?us-ascii?Q?RKGHdcNu5AMI6XiiVKFnNVT64O799b1URzkgMYCAap1lKJNT6RfyRr7IRDPk?=
- =?us-ascii?Q?iAjHpprjRAQIWM0ZNGuoP5QJK7uKs8EftbLarcjk1+Yof9AHcDxmX67tOwRP?=
- =?us-ascii?Q?7gn/rF5Op9rWgBEBYS50Ku8aNQhK3DY36FH3VzFK3Z9X1lFe3Sd8n7RLNhOW?=
- =?us-ascii?Q?r1lMtRfcq6TcZoKD5c8BDSn0XML87uhEJzdEEmbOa+9f7TCPrX8xVesULl3G?=
- =?us-ascii?Q?zDwZWlbpiSs8ndUWA15VEQraQHv8lQ9PLguq28+X5Cue6OOyaUV56hNJ3/UN?=
- =?us-ascii?Q?+iSa/04RAeRqz0saN+cH/1z6C/laVSp8jOZlgLN/G6GQTDfizJnelCWUeTxK?=
- =?us-ascii?Q?nWanpPy7SxQ2KFNbxB1Y52G3lUzadJ7oPFtTj7X/2GOyxT8dGkXyddWUbPQ9?=
- =?us-ascii?Q?yC7wgZSerMWoSACiz7WW1yq12TWB80TjA+c5XTYjc2Olu+hHWyIqOVYBrjb9?=
- =?us-ascii?Q?2dobNkpMKYiZICm7OSOzZ7WgrKBIDmOytkb+qh9PoaGnWj6xdDhH3ExAeTSA?=
- =?us-ascii?Q?zZxCSGdfLRm5GINIF/uC+th0+qi4NR1iiqMLzPiFG2beMCQx8F0QNoKpkTDv?=
- =?us-ascii?Q?SEOOVm1/3hNdGSQty5/ydJaZ3pPzFn/7t7PUh52VnopvYXnJYcmmKlDr0TZ8?=
- =?us-ascii?Q?yaNT11ZnjkQQ/wEMYqQfB6hiXOzDpOhtRcGI5CirK9deoW9lwaAuarBDfmNB?=
- =?us-ascii?Q?OBWLnXB3RUkuU9srsz/aJuMtNwZLE3OKpawc6zGZWnb1Qq02us87ZYqDH+/O?=
- =?us-ascii?Q?BJ1UVQmt9UYEJeZlnyjjSkbhkjwEC4RM8q0LccdI5DCP4rt03ex9yz2OCrFy?=
- =?us-ascii?Q?LlLIKMeddhNr7EDNaWubqg7FO3Tc?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6Ll87GCTOeiYocLkY0KrQOeIXPjLuh+H8ki1bY8BqxZ47ujWEWX8jGT6XKJ+?=
- =?us-ascii?Q?Qmdf9meRxZnPqTiiy1qVorarxFXF/7v1zxdxauCGAYjewUDmQ+5A2DMRNuvt?=
- =?us-ascii?Q?HnV8kSpnxn1rxBLkb9dF4fKr2mFRIBmvEEu53FtjQbC41pldc27PD38lj9LN?=
- =?us-ascii?Q?33UmgV0ttY5wQuscQzl2iYeONtlqPrPdvD/3VqSP9M3RtHx4bA4Cv2Tonaf/?=
- =?us-ascii?Q?oXgLfW4Ex8T+XoJbEy11Yvb4QRwPOjQrJ7KOm3fgEWxtl3CvDtaVxwW9bB4X?=
- =?us-ascii?Q?GcHGmpQkt1VwEnTRAy/DPKmeNd1dhm6lbpjL5ruZTmeMmA3dAmoi9CwTwQN4?=
- =?us-ascii?Q?Bj9oQDFTJiIY4U0lASQEKp7I0jXIMg79I0bPNHHlQ6g/5YvhRk4hHYepWkia?=
- =?us-ascii?Q?VvClj5qPL3QbtPMEGnUZK7QRtdTWUys/GVvN8KQS35qN+yHYipfk/eNC7M8y?=
- =?us-ascii?Q?Tzggg4mODFU6smdLJQfD5LQ4V/izCo2BPtVul8ti9V8bQrzkoOiAKlALxTfw?=
- =?us-ascii?Q?d3eqwJ0BrjIuPvX1VRYQJCk9WJBitu0j8AWvse4ZJwWjVqOR1UMTix1d4vp7?=
- =?us-ascii?Q?AS6nwfsSk1x8ppeFsNj8NXp6H0vFQadJkVBVw3h9s0o3N1mDoptAthXb4E8b?=
- =?us-ascii?Q?eMpRMnnDmY3DueCkjnup0SWVG0aRbXgDG4RbMUZ6jVzFspStEyWb29GSywtQ?=
- =?us-ascii?Q?qo7GyMh0B5aLOU+47TY0/81gFePQD0e1uSuDp/Ri33x8rQI82zog1q1Tl7sa?=
- =?us-ascii?Q?VVb1aQKva9Xn46v5lbVivJaHUfyVYyPjLtGAryhWeseCdYNcIMjw7H0adeuA?=
- =?us-ascii?Q?0e/SIpgkhrdS2Qz2COoR2UGZjbmLQSNR7ShB/nAKBtv4AzpRoGr/+w39lgX2?=
- =?us-ascii?Q?z6nSmTBTxoDwd9iu7SHXa+lTWXNtJVVyhPl1nA2eDQRlIOLbjNFJgARyEw3z?=
- =?us-ascii?Q?774dp9V1sqcF1CFLrTWD21GveWUd/IqiZWljwEgbFIW+in9OER9UCx0wF1H2?=
- =?us-ascii?Q?GFUPAlOZuFsMVrc5S4jllXr0Z15UG5xB1OHjufyGGGQ2pG5K5NizdberVmpD?=
- =?us-ascii?Q?G4y3dA57FOlAOrfzxXxXlCZa8oCgiSrljAKQkiIGvMdIQ8jFvKvs5dq31MUh?=
- =?us-ascii?Q?4QzuoznDRsa7twelo1U+ESLS62kWDkCJckBbx1Ckn8Bf1I3H6Q57/2o2gPk2?=
- =?us-ascii?Q?QqGeaNzST/C+6vwvKJtGPu0wSoJQVj32OpaXi2qVXXGfyvgET89Ur8XwBIaC?=
- =?us-ascii?Q?6H9CovefnuGrstR5SjfBu0lx9FVt9WAoSBoQIKKHnN0lUkXxscLLRKs3JxTP?=
- =?us-ascii?Q?t8h1QVwlrTqa6OK9Hx9hkwiZfdMxR41Ece5X524S1qIKsIW84AY2dSKjCQwU?=
- =?us-ascii?Q?FYOzdwinsklJg45x+anDBJ9MJaPKxqgUYbQGbaisQItDnquUl27AC8Ht/J4J?=
- =?us-ascii?Q?6TrhyTUaa4w6YQ/4dLB3ddiX7HI41bY2Ys+ykIspgq0lm5j9EpPFS1vfPZji?=
- =?us-ascii?Q?qqMo3AFIUPTB5sT7jA4u8ui9N9xIS7SP04AiqilM6YXigrzSE/t4bjA3JiLJ?=
- =?us-ascii?Q?0Aup9346hZYwWEdJV90=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 42b39f81-e0f5-48d0-b091-08dd566ca25a
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2025 13:51:13.8939
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ggLQQgYxfnlJdwIQ/09STl5oY4JZTSXrKAffC48Ay64Jjw6vkYPImZx7uwxXoOjj
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4439
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_055118_404091_E8BEE860 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20250226_060959_825571_118CC107 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,57 +75,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2025 at 08:42:23PM +0800, Baolu Lu wrote:
-> On 2025/2/26 3:39, Jason Gunthorpe wrote:
-> > This brings the iommu page table allocator into the modern world of having
-> > its own private page descriptor and not re-using fields from struct page
-> > for its own purpose. It follows the basic pattern of struct ptdesc which
-> > did this transformation for the CPU page table allocator.
-> > 
-> > Currently iommu-pages is pretty basic so this isn't a huge benefit,
-> > however I see a coming need for features that CPU allocator has, like sub
-> > PAGE_SIZE allocations, and RCU freeing. This provides the base
-> > infrastructure to implement those cleanly.
-> 
-> I understand that this is intended as the start point of having private
-> descriptors for folios allocated to iommu drivers. But I don't believe
-> this is currently the case after this patch, as the underlying memory
-> remains a struct folio. This patch merely uses an iommu-pages specific
-> structure pointer to reference it.
+This adds the dcphy and dsi2 controller nodes and adds an overlay
+for the Tiger-Haikou Video-Demo adapter that provides a DSI display.
 
-Right now the mm provides 64 bytes of per-page memory that is a struct
-page.
+changes in v3:
+- rebase on newly added overlay-test-infrastructure
+- add reset-gpio to gpio expander
 
-You can call that 64 bytes a struct folio sometimes, and we have now
-been also calling those bytes a struct XXdesc like this patch does.
+changes in v2:
+- adapt to changed dcphy binding (phy-cells = 1)
+- tiger-overlay changes (Quentin):
+  - drop forgotten hdmi-connector node
+  - improve description
+  - fix node sorting
+  - drop unnecessary pwm-pinctrl (set in tiger.dtsi)
 
-This is all a slow incremental evolution toward giving each user of
-the per-page memory its own unique type and understanding of what it
-needs while removing use of of the highly overloaded struct page.
+Heiko Stuebner (3):
+  arm64: dts: rockchip: add mipi dcphy nodes to rk3588
+  arm64: dts: rockchip: add dsi controller nodes on rk3588
+  arm64: dts: rockchip: add overlay for tiger-haikou video-demo adapter
 
-Eventually Matthew wants to drop the 64 bytes down to 8 bytes and
-allocate the per-page memory directly. This would allow each user to
-use more/less memory depending on their need.
+ arch/arm64/boot/dts/rockchip/Makefile         |   5 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  99 ++++++++++++
+ .../rk3588-tiger-haikou-video-demo.dtso       | 153 ++++++++++++++++++
+ 3 files changed, 257 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
 
-https://kernelnewbies.org/MatthewWilcox/Memdescs
+-- 
+2.47.2
 
-When that happens the 
-
-	folio = __folio_alloc_node(gfp | __GFP_ZERO, order, nid);
-
-Will turn into something maybe more like:
-
-   ioptdesc = memdesc_alloc_node(gfp, order, nid, sizeof(struct ioptdesc));
-
-And then the folio word would disappear from this code.
-
-Right now things are going down Matthew's list:
-
-https://kernelnewbies.org/MatthewWilcox/Memdescs/Path
-
-This series is part of "Remove page->lru uses"
-
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
