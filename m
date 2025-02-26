@@ -4,139 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBBB7C19777
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 09:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5604AC021BC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 09:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yS+hD6H58Ud0IFiEVc8ttrD6+J37FtbTzxrOdWpxh1U=; b=phb8JE6g1pnaUj
-	VhYF8IWdkXEryKk0xj8h+niFdMgBHLkKyFgbhJVDblTyAloynLo+Il9CzBZnQz21YrUG81+jHYDQC
-	idSOE/xlNszHAyjT+qbGD+KfnEBdXxYapZp5HH+S6OZHkuxCQaWnw++FLLICStdKrRG0lfmNqNvkz
-	qzHHVdRwuWToVD2eRnnOhYNXKVqA18mMEgPeVgMsofStopxLXE/BgBEjcPh1w7XkteVUuILCi8W4P
-	sYAHr7YnnM7t9t4VBVLVyFwFyDkYdPIuy0oRqKFpEIyArUMkk8cNZ/CwoN7embkzaIKKofPvpdSyQ
-	57OhPv0Vq3n34dMnOC3g==;
+	List-Owner; bh=XlLkT5WFbbeEB3aI0glcAUQinudBmgaC4WtBEOgTglo=; b=Vm/ST+UG6YYtB+
+	dIzEJkDkgHaA8vm+VB0cqnMGOTHLJErzkVfYlvDrm8QA2qxUnrqbF8wwhvPU+2wc+l6sY3jqiiDzr
+	a4u58JsBKUNTS8nO/2+c7xGqj38rMBucGMi7i72GMbPmg87KDF7t+ERy0jCsIft4KkitmqVuxDptk
+	ivTqF/VgMaMj6h5FkUhch5pMsrmjmx+gfOVZAaOUeMuEzbItDRk4HROUPOIGSeJN9eMT9qAXFrH30
+	00i/7hvYB9R0diOAjIL8ARwikfgFuxgS1+7wA87HvUqnCQmeUZj+j1i8z4geGbVu+tLjtV2Vats8p
+	kG2m4LlwLsdH19206Wtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnDdC-00000003432-2ltD;
-	Wed, 26 Feb 2025 09:23:06 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1tnDgA-000000035YF-38zj;
+	Wed, 26 Feb 2025 09:26:10 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnDWM-000000032yU-40P3;
-	Wed, 26 Feb 2025 09:16:08 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20250226091557euoutp0161733e589313a5d360143bf659ed2ac4~nt1UUMSFJ0235702357euoutp018;
-	Wed, 26 Feb 2025 09:15:57 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20250226091557euoutp0161733e589313a5d360143bf659ed2ac4~nt1UUMSFJ0235702357euoutp018
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1740561357;
-	bh=jfJCJyoMIpaltaIU+7lWbslcg8FIPqfxsGd8Aa/3U4g=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=pd0qKB6SEv3qSWA5608B8oO2iGWR7WjfUjY2eZgAJKutotBUbf09dxzRJ6HokEIfl
-	 SENoGO7kGj+s5+5W9pcnL1jlx+tZjJeceP8qzzOTwn25j197LEY2e5ro61VeUURHeg
-	 tpP39Yc9WB7YuWNRDkkxYYqX3jPJHhQLSkY8WSSc=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20250226091556eucas1p29db20e03f1f9ea1782103d1167564e1b~nt1T3fxAv0815308153eucas1p2U;
-	Wed, 26 Feb 2025 09:15:56 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
-	eusmges3new.samsung.com (EUCPMTA) with SMTP id B1.88.20397.CCBDEB76; Wed, 26
-	Feb 2025 09:15:56 +0000 (GMT)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20250226091555eucas1p1320cf0ed08b514c5259710476a930e60~nt1TNvpGD1197611976eucas1p1P;
-	Wed, 26 Feb 2025 09:15:55 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
-	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20250226091555eusmtrp1d211ba6163f39cbff93c4ff3e854775d~nt1TMYUVW3155431554eusmtrp1P;
-	Wed, 26 Feb 2025 09:15:55 +0000 (GMT)
-X-AuditID: cbfec7f5-e59c770000004fad-b0-67bedbccae7f
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
-	eusmgms1.samsung.com (EUCPMTA) with SMTP id 40.E0.19920.BCBDEB76; Wed, 26
-	Feb 2025 09:15:55 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20250226091552eusmtip1c4c7761f98c6c76160fa00aed2a5042b~nt1QGGXF83166531665eusmtip1L;
-	Wed, 26 Feb 2025 09:15:52 +0000 (GMT)
-Message-ID: <1a6f693d-5ebe-46f5-be89-5edc0e77e316@samsung.com>
-Date: Wed, 26 Feb 2025 10:15:51 +0100
+	id 1tnDem-000000035HV-26R1
+	for linux-rockchip@lists.infradead.org;
+	Wed, 26 Feb 2025 09:24:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740561869; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=KCb4NYylXhPLcCtlRcYxc2+z9bebyyP+zFAmiQalFIagup8Quw7gnJKP7jTHxQU0+lpnQpUUro5KDs6MencGDmVmi2qdR9RrEVud6II6I2Sc3RbV0dZg31zeZ9iZ+zLVrGHVmAWXAxrknuXh3tdASgc58XBSmcQdbRTHYC75PiU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1740561869; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=v64rHJTOh+QwNJ4+f9WHe2WqRnNhrh1i028ev/E/4UA=; 
+	b=G2Ue4d+GAqNUqs+LcfxCg245SIt8MpZIeoxf+Ao0FHlqh7Tfrk7AhRyyOUGzbdbXK2iG0T6OLTK/Tg9pjtxghwb/Q/Hlw907glvdm12sPETGLSIyA8vAxH/iBNN4j69vkW6aMy7Gx63Ow27lP4LNwGdEqkYIcVrXNA2ysQyl+RY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740561869;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=v64rHJTOh+QwNJ4+f9WHe2WqRnNhrh1i028ev/E/4UA=;
+	b=IPc116QAWR1v4ByKA2qDn3rrCNPzPMDE1INUy2HtcYZsytOJAiXcMSxkS1qvbAe3
+	c7yw7et10rmf3w5cr1Ihh6OzuPn5h7dyhIfPJw/lAIyJA15tChzlM25geymHHHLPasO
+	9fSNIQEPGHuLV+PFltoL0k0hxW1zwFXYd7VXPssI=
+Received: by mx.zohomail.com with SMTPS id 1740561867817714.6694770539592;
+	Wed, 26 Feb 2025 01:24:27 -0800 (PST)
+Message-ID: <ba3bafcc-b7b4-4237-bbeb-b81c0c9328d0@collabora.com>
+Date: Wed, 26 Feb 2025 12:24:20 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 21/23] iommu/pages: Remove iommu_alloc_page/pages()
-To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
-	asahi@lists.linux.dev, Lu Baolu <baolu.lu@linux.intel.com>, David Woodhouse
-	<dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, Jonathan
-	Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, Krzysztof
-	Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Hector Martin <marcan@marcan.st>, Palmer
-	Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>, Sven Peter
-	<sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>, Tomasz
-	Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu
-	Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev, David
-	Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH v10 6/6] arm64: defconfig: Enable Synopsys HDMI receiver
+To: Hans Verkuil <hverkuil@xs4all.nl>,
+ Shreeya Patel <shreeya.patel@collabora.com>, Heiko Stuebner
+ <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, jose.abreu@synopsys.com,
+ nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+References: <20250225183058.607047-1-dmitry.osipenko@collabora.com>
+ <20250225183058.607047-7-dmitry.osipenko@collabora.com>
+ <a8a6c8c8-ee3b-422a-8573-a2cbb61fc3aa@xs4all.nl>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <21-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA02TfVBUVRjGO/fevbsws3BlKY5Wg22YxQRCinMaya9JvUMzGs1kTM0oK1wX
-	AlbbZROKmdD4WlAEwYKLLjvm8CEbrCxugYTthrBAgkAZ8hFfWwQIhECwLLKxXCz++z3v+5zz
-	vO+ZOQLcbYjcJIiUxTJymSRaTDoThgZrq8/PPXVSv3N5G9GA2kCiqpZMgG7ZWD6y/uqCLp8F
-	SJ99i0TZpTk4sg+N89DiLEIjheUA/bJcC1ASe41AqgIdH+U0X8VQW9sKVQ4/4CHDTBKJHg/Y
-	cZTXVoeh3LoaEqlmWRK1PNDw0WjneRw1WxNQp7kDoBTWFaVcv4kh498WHhoZUq3kLWgAWuqx
-	Y8haoybQbFEqQJk/vIespjYMJfUGINvCFXLvFtpiVGN0cscTktaqtYDWDZXx6EejowT9U9os
-	n65m+/i0plJJ60u86cobKpJWNwXT+utf0H/p8wH9TVE1SV/4cpKku9iQdzd+6BwYzkRHfsrI
-	t+0OdY4wTzwEp9u3xjWNDfISQfLmdOAkgNQOqG9IxNOBs8CNKgGwbzIHcGIWwLQ7lXxOzACo
-	q1nkPT1iaDWuuYoBNKdp18Q0gAU1D/kOl5DaDTPU7atMUFugyngb5+obYFO+hXDws5Qn7O/O
-	W/WIqCCoKrBjjovcKZsADo2WrzZwqg/AcZU3xx6w21KIOZik/GH6RDrpYCdqPzSXZGKcxxN+
-	N3FldSNILTjD5OoLODf327CvW7fGIjjWWMXn+AXYknOe4A6kAqix9WOcyAIwcaQbcK5dsLd1
-	cSVOsBLxGqyo2caV98Hi0mrMUYaUC+ya2MAN4QIvGb7GubIQpqW4ce5XINtY/l+s8X4HngXE
-	7Lp3Ydetya5bh/0/VwOIG8CDUSpipIxiu4w546uQxCiUMqlv2KmYSrDyDVqWG+e+ByVj074m
-	gAmACUABLnYXOkXWSt2E4ZL4zxj5qeNyZTSjMIHnBYTYQ3jtTrLUjZJKYpkohjnNyJ92MYHT
-	pkRMlHD74uay6SP5J94kXpW9tEBdMvZOZsyFNptkP0Lvk4qLuQcihkVhHTfvBum3nhz+pP+P
-	R74fHTv3VsjH/kvyg/mHXvynwbCdbfxgyis8v6Ki+J7yeNbv0aHio7Ga4GH7y/cfl9aH7Aya
-	yhApc+Ldz8abeDqZX2B7SsBcqDbsOXNQXPAOs6g06mjC8J9qS175VOoemesRUS6e0aWNzD4s
-	sN39bXDc6/CMPevqt4EZFwP2uN7r8fCMTjzIjyt8Y2R/lnC+VqeNaqvau9PPph4QaZrGijo/
-	T0ga/KrlgNd81644TeSJqqVn6oURRv93fLqMGt/3LcfOzE+yh163Lvvsq39SNiAVE4oIib83
-	LldI/gU/varkdQQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrMKsWRmVeSWpSXmKPExsVy+t/xu7qnb+9LNzi3StfiwbxtbBZbTvcx
-	Wmz9PYvd4udVPoupjYwWmyduZbOYuHIys8X/R69ZLX59sbB4Pn8do8WVf3sYLVpmLWKx6Jy9
-	gd1i8qm5TBbnzwNZmx5fY7XY9rmFzeLTg//MFjPO72OymLJvF5tF55dZbBanry1gt3h5uYfZ
-	4tTPGovLJy4xWrTN4rdoW7KRyeLghyesFs8fdQLt+7GA0eLP7f9MFj93zWOx+LKsndGib2+Q
-	xc9D55ksWu6YWvz+MYfNQdXjycF5TB6tl/6yeayZt4bRY8Oj1aweb16+ZPE43PGF3WPnrLvs
-	Hgs2lXpsXqHlsWlVJ5vHvJOBHpuX1Hu82DyT0WPxsp1sHr3N79g8bsyKCJCM0rMpyi8tSVXI
-	yC8usVWKNrQw0jO0tNAzMrHUMzQ2j7UyMlXSt7NJSc3JLEst0rdL0Ms48fYmY8FF9YqTrx6y
-	NjC2KnQxcnJICJhIbDt3kLGLkYtDSGApo0T/l8vsEAkZiZPTGlghbGGJP9e62CCK3jNKLLw8
-	nQUkwStgJ9E97yJYA4uAqkTnwd3MEHFBiZMzn4DViArIS9y/NQOsRljAS6Jz9n8mEFtE4C+H
-	xMR+b5ChzAJ3GSUOLV7PBpIQEpjKKHFslQ+IzSwgLnHryXywBjYBQ4mut11gNZwCThInVvQx
-	QdSYSXRt7WKEsOUltr+dwzyBUWgWkjtmIRk1C0nLLCQtCxhZVjGKpJYW56bnFhvqFSfmFpfm
-	pesl5+duYgSmvm3Hfm7ewTjv1Ue9Q4xMHIyHGCU4mJVEeDkz96QL8aYkVlalFuXHF5XmpBYf
-	YjQFBsZEZinR5Hxg8s0riTc0MzA1NDGzNDC1NDNWEud1u3w+TUggPbEkNTs1tSC1CKaPiYNT
-	qoFpXur+pXc6TXhT/bYZpk0InGB9IsTsWvpbcd5APuNKY8XdpYqxy5mNlbWz12b3d7e+k19p
-	122ov7wzeJZ7k5jY0+vafy7qLDWZrPbX2VNdL2X9dt/WZ+/aP2Y5GNXynNZmaF5UUaMT717x
-	x+1sn6iJl987u/dO8QzW0Q/chWOyVv5rdziy5/jmKtmTd86xBtwN1rG8slGg40SSzZsbS2d/
-	S7jv5fn8WCFv08TYphK3SYaC3IvfddqdmSN2VrdNONatdf/9n8s/KU7SOh65djPjDTWuGT7C
-	Da1igRmrC5b/9me7vDX/7Skdmx3pZQZbZPz2nNXaHrJ7donPvNAYafP3J0vXRH8+t/yUsMIi
-	ayWW4oxEQy3mouJEAGWS78wGBAAA
-X-CMS-MailID: 20250226091555eucas1p1320cf0ed08b514c5259710476a930e60
-X-Msg-Generator: CA
-X-RootMTR: 20250225194054eucas1p14df0adad570f01d8a8f93a0042555a51
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20250225194054eucas1p14df0adad570f01d8a8f93a0042555a51
-References: <CGME20250225194054eucas1p14df0adad570f01d8a8f93a0042555a51@eucas1p1.samsung.com>
-	<21-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <a8a6c8c8-ee3b-422a-8573-a2cbb61fc3aa@xs4all.nl>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_011604_378538_B5283CDF 
-X-CRM114-Status: GOOD (  22.10  )
+X-CRM114-CacheID: sfid-20250226_012444_626521_A6F2BB66 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,137 +90,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25.02.2025 20:39, Jason Gunthorpe wrote:
-> A few small changes to the remaining drivers using these will allow
-> them to be removed:
->
-> - Exynos wants to allocate fixed 16K/8K allocations
-> - Rockchip already has a define SPAGE_SIZE which is used by the
->    dma_map immediately following, using SPAGE_ORDER which is a lg2size
-> - tegra has size constants already for its two allocations
->
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-For exynos-iommu:
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
->   drivers/iommu/exynos-iommu.c   |  4 ++--
->   drivers/iommu/iommu-pages.h    | 26 --------------------------
->   drivers/iommu/rockchip-iommu.c |  6 ++++--
->   drivers/iommu/tegra-smmu.c     |  4 ++--
->   4 files changed, 8 insertions(+), 32 deletions(-)
->
-> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-> index 1019e08b43b71c..74337081278551 100644
-> --- a/drivers/iommu/exynos-iommu.c
-> +++ b/drivers/iommu/exynos-iommu.c
-> @@ -902,11 +902,11 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
->   	if (!domain)
->   		return NULL;
->   
-> -	domain->pgtable = iommu_alloc_pages(GFP_KERNEL, 2);
-> +	domain->pgtable = iommu_alloc_pages_sz(GFP_KERNEL, SZ_16K);
->   	if (!domain->pgtable)
->   		goto err_pgtable;
->   
-> -	domain->lv2entcnt = iommu_alloc_pages(GFP_KERNEL, 1);
-> +	domain->lv2entcnt = iommu_alloc_pages_sz(GFP_KERNEL, SZ_8K);
->   	if (!domain->lv2entcnt)
->   		goto err_counter;
->   
-> diff --git a/drivers/iommu/iommu-pages.h b/drivers/iommu/iommu-pages.h
-> index 3c4575d637da6d..4513fbc76260cd 100644
-> --- a/drivers/iommu/iommu-pages.h
-> +++ b/drivers/iommu/iommu-pages.h
-> @@ -100,20 +100,6 @@ static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp,
->   	return iommu_alloc_pages_node_sz(nid, gfp, 1 << (order + PAGE_SHIFT));
->   }
->   
-> -/**
-> - * iommu_alloc_pages - allocate a zeroed page of a given order
-> - * @gfp: buddy allocator flags
-> - * @order: page order
-> - *
-> - * returns the virtual address of the allocated page
-> - * Prefer to use iommu_alloc_pages_lg2()
-> - */
-> -static inline void *iommu_alloc_pages(gfp_t gfp, int order)
-> -{
-> -	return iommu_alloc_pages_node_sz(NUMA_NO_NODE, gfp,
-> -					 1 << (order + PAGE_SHIFT));
-> -}
-> -
->   /**
->    * iommu_alloc_pages_sz - Allocate a zeroed page of a given size from
->    *                          specific NUMA node
-> @@ -141,16 +127,4 @@ static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
->   	return iommu_alloc_pages_node_sz(nid, gfp, PAGE_SIZE);
->   }
->   
-> -/**
-> - * iommu_alloc_page - allocate a zeroed page
-> - * @gfp: buddy allocator flags
-> - *
-> - * returns the virtual address of the allocated page
-> - * Prefer to use iommu_alloc_pages_lg2()
-> - */
-> -static inline void *iommu_alloc_page(gfp_t gfp)
-> -{
-> -	return iommu_alloc_pages_node_sz(NUMA_NO_NODE, gfp, PAGE_SIZE);
-> -}
-> -
->   #endif	/* __IOMMU_PAGES_H */
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 798e85bd994d56..5af82072b03a17 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -730,7 +730,8 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
->   	if (rk_dte_is_pt_valid(dte))
->   		goto done;
->   
-> -	page_table = iommu_alloc_page(GFP_ATOMIC | rk_ops->gfp_flags);
-> +	page_table = iommu_alloc_pages_sz(GFP_ATOMIC | rk_ops->gfp_flags,
-> +					  SPAGE_SIZE);
->   	if (!page_table)
->   		return ERR_PTR(-ENOMEM);
->   
-> @@ -1064,7 +1065,8 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
->   	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
->   	 * Allocate one 4 KiB page for each table.
->   	 */
-> -	rk_domain->dt = iommu_alloc_page(GFP_KERNEL | rk_ops->gfp_flags);
-> +	rk_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | rk_ops->gfp_flags,
-> +					     SPAGE_SIZE);
->   	if (!rk_domain->dt)
->   		goto err_free_domain;
->   
-> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-> index 844682a41afa66..a9c35efde56969 100644
-> --- a/drivers/iommu/tegra-smmu.c
-> +++ b/drivers/iommu/tegra-smmu.c
-> @@ -295,7 +295,7 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
->   
->   	as->attr = SMMU_PD_READABLE | SMMU_PD_WRITABLE | SMMU_PD_NONSECURE;
->   
-> -	as->pd = iommu_alloc_page(GFP_KERNEL | __GFP_DMA);
-> +	as->pd = iommu_alloc_pages_sz(GFP_KERNEL | __GFP_DMA, SMMU_SIZE_PD);
->   	if (!as->pd) {
->   		kfree(as);
->   		return NULL;
-> @@ -695,7 +695,7 @@ static struct tegra_pt *as_get_pde_page(struct tegra_smmu_as *as,
->   	if (gfpflags_allow_blocking(gfp))
->   		spin_unlock_irqrestore(&as->lock, *flags);
->   
-> -	pt = iommu_alloc_page(gfp | __GFP_DMA);
-> +	pt = iommu_alloc_pages_sz(gfp | __GFP_DMA, SMMU_SIZE_PT);
->   
->   	if (gfpflags_allow_blocking(gfp))
->   		spin_lock_irqsave(&as->lock, *flags);
+On 2/26/25 11:31, Hans Verkuil wrote:
+> On 25/02/2025 19:30, Dmitry Osipenko wrote:
+>> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+>>
+>> The Rockchip RK3588 has a built-in HDMI receiver block from
+>> Synopsys. Let's enable the driver for it.
+>>
+>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>> ---
+>>  arch/arm64/configs/defconfig | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+>> index cb7da4415599..3dccc9e1c4aa 100644
+>> --- a/arch/arm64/configs/defconfig
+>> +++ b/arch/arm64/configs/defconfig
+>> @@ -859,6 +859,8 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+>>  CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
+>>  CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
+>>  CONFIG_VIDEO_SUN6I_CSI=m
+>> +CONFIG_VIDEO_SYNOPSYS_HDMIRX=m
+>> +CONFIG_VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID=y
+> 
+> I do not believe it is a good idea to default to y for this option.
+> 
+> The EDID depends on the specific device you make, and you should
+> think carefully about whether the default EDID fits the needs of the
+> device.
+> 
+> So if you want the default EDID, then you should manually select it
+> and not have it autoselected.
 
-Best regards
+Ack
+
 -- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
-
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
