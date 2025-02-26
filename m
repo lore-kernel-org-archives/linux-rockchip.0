@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C42C19F32
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 910B6C1B0FF
 	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 14:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -12,57 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rRyH/IAcSzw1tvYYZkOy+a8W+2Rashw7mxjWiu40d6E=; b=Z5/9SywnTZ54rz
-	R1elMLVMByK+M9og2M8HLbAhVDU7cm5vnHrjNmKYeoxTIMq6745pv32eB0PHK61LN+WaDpXEhuZOD
-	B/PsHFYF+/Iwf8Y0MvSjgsAQ9nM3VVxNeq6cY6XEC+KDPq6oYfCHPP/Fa6zwnGvXtygpC9FB+rnMH
-	qEJyUyQmrGgtureDRjzypW3xI+L3sidDGF1Anv4q3qN5LieDQncg7+C2I4yHp7HubaX4yHWJ9MPJK
-	sgmLyUTbNqoKGE/5wk/kqxJjZhL4y+mWN0n8OW0aonTr9gXWLpv6VSNKvAeIpOdJcD4/TQDMwMPUb
-	9w/8sNFui7VpdccFuzAQ==;
+	List-Owner; bh=s/6E20i9JoBS7pKzFrfg0q0S4ywQ6FjyJ8t/4MLTF/U=; b=Skq6OLlV8KfW3M
+	TOvz29QrW65JXBGq7QjbElsHgO82nMPI99TLBBShwABhKWMGSQeYssNKZaEaAOtNPFJbbD0SxmQd2
+	3kmQtwLpy/CQnufWqCswwRvSLUB4fu3SQggU/DfyhLzUq5gqvRu8fLAd4oSEkCC6aPv/HkPcTOCyu
+	tvZJpCUrUfy249fY2HdlTn35Uz57R3b6mcyoe6AWTwlazeZ6jsnIscCyXA635ZRnF6OIEx7gx2arS
+	AkGp9EaT8bMiaKqw6B/HFNAk9cQQGKzvFfXgqkZ5AgkXY/W5QtPTAWuqfQDX/Tg1wRNrc9Efx//I2
+	LpEDMfgAAAcHQTbHLZLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnIY7-000000047nZ-1iAK;
-	Wed, 26 Feb 2025 14:38:11 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1tnIY3-000000047j7-1CFg;
+	Wed, 26 Feb 2025 14:38:07 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnGkE-00000003jKY-3pDT;
-	Wed, 26 Feb 2025 12:42:36 +0000
+	id 1tnGZh-00000003h3V-0uDd;
+	Wed, 26 Feb 2025 12:31:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1740573755; x=1772109755;
+  t=1740573101; x=1772109101;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=WkXc7BocQbpip7ciVHNFAiTeTqJtNYIch4zaYSdoITI=;
-  b=GdDlRf/XjPticAJwwgcqbdBEQ5Te2mca7GqASFuXGS1goojPEH0Tl+o4
-   MEdviSXqHTj8Tc93z4vC8Xm8swYScjQoGAtX2Mx5xATHkOsotl5i26uGj
-   br92FvPj+USmO8e1O1RhLtfm3raFGw6kjYXfbTmp5S6pHPVjZh9ya3wx8
-   O8vBaBT70jJN0VOM10JxDV1n/PkXCutmqZsV1DFV17oCGfNk9/swkrrZ1
-   VWw8BD5WFVctU1jGxPUVmoKX7vtCfMmvNLRiNkIegC3wXLAbProZRiFRU
-   la582XF9fDZ4iE08PGIbO7gOTtuoQfEE8k+3DlyqRv7Zh5LxkYUyDixeM
-   A==;
-X-CSE-ConnectionGUID: g2P7rt1pQS202zQr5oS10A==
-X-CSE-MsgGUID: msFMLmvUTRCqCbKC13i9VQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="41543465"
+  bh=afc2o7ByS+Aq4HwtiZsVeJaJLJlUP9V4slrBeXFjQn8=;
+  b=R8r4/QwL0MfUo5FYxYCI4qcXqDIwykUhJ5kT8bbiA8X1Rsanf/Q0cM2m
+   pV9/Q0xnEL64KR8KOynEebBzYKaIvgpHIg3d4M/ytDLgn8g/FsvutiADY
+   MuRwXSBFUkVnOHB9CRIwpvL7HSWbuwDVy9kYTZqUkZd3iq8LjMAIwYmTt
+   7T0TJeHu0ivE5i/7MyvRuUKxaao79YLj0BM0rRghSrHRse2/mhtBXRWzW
+   ri+OHzihf/Q5WeAozwY9NN+lgUDY82A2s5lb7TSsCbS/Zw0cVkYpN8ikz
+   xuGyvogImOxBjRJjTcuTWPYdCLLOs67ufRqkBGoMGowl3XcePOJDqnPLv
+   g==;
+X-CSE-ConnectionGUID: TVDVemLjSc68e5Od1dF4pg==
+X-CSE-MsgGUID: ju+kUWL2S+KwaB2S24IMqQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="41431978"
 X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; 
-   d="scan'208";a="41543465"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:42:34 -0800
-X-CSE-ConnectionGUID: qzXgd/NORXi327/S3f15AA==
-X-CSE-MsgGUID: bn1g+MruTuG+TRPKXFaDnA==
+   d="scan'208";a="41431978"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:30:18 -0800
+X-CSE-ConnectionGUID: +jUAibbHQkiSW9UiaTJzYw==
+X-CSE-MsgGUID: JhiilTP7RRS5yHYOUzdzYA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; 
-   d="scan'208";a="139911002"
+   d="scan'208";a="117310467"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.124.240.105]) ([10.124.240.105])
-  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:42:26 -0800
-Message-ID: <fafdcc71-b246-4855-a088-24854b124b21@linux.intel.com>
-Date: Wed, 26 Feb 2025 20:42:23 +0800
+  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Feb 2025 04:30:10 -0800
+Message-ID: <a339ee09-4b12-4c05-a39d-7af5deb9ffaf@linux.intel.com>
+Date: Wed, 26 Feb 2025 20:30:08 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Cc: baolu.lu@linux.intel.com, Bagas Sanjaya <bagasdotme@gmail.com>,
  Joerg Roedel <jroedel@suse.de>, Pasha Tatashin <pasha.tatashin@soleen.com>,
  patches@lists.linux.dev, David Rientjes <rientjes@google.com>,
  Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v3 14/23] iommu/pages: Move from struct page to struct
- ioptdesc and folio
+Subject: Re: [PATCH v3 23/23] iommu/pages: Remove iommu_alloc_pages_node()
 To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
  asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
@@ -80,13 +79,14 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
  Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
  Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
  Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
-References: <14-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+References: <23-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <14-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <23-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_044234_984076_EDE4BE21 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20250226_043141_288137_E1C5C4C5 
+X-CRM114-Status: UNSURE (   6.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,38 +104,12 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2025/2/26 3:39, Jason Gunthorpe wrote:
-> This brings the iommu page table allocator into the modern world of having
-> its own private page descriptor and not re-using fields from struct page
-> for its own purpose. It follows the basic pattern of struct ptdesc which
-> did this transformation for the CPU page table allocator.
-> 
-> Currently iommu-pages is pretty basic so this isn't a huge benefit,
-> however I see a coming need for features that CPU allocator has, like sub
-> PAGE_SIZE allocations, and RCU freeing. This provides the base
-> infrastructure to implement those cleanly.
-
-I understand that this is intended as the start point of having private
-descriptors for folios allocated to iommu drivers. But I don't believe
-this is currently the case after this patch, as the underlying memory
-remains a struct folio. This patch merely uses an iommu-pages specific
-structure pointer to reference it.
-
-Could you please elaborate a bit on the future plans that would make it
-a true implementation of iommu private page descriptors?
-
-> 
-> Remove numa_node_id() calls from the inlines and instead use NUMA_NO_NODE
-> which will get switched to numa_mem_id(), which seems to be the right ID
-> to use for memory allocations.
+> Intel is the only thing that uses this now, convert to the size versions,
+> trying to avoid PAGE_SHIFT.
 > 
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-> ---
->   drivers/iommu/iommu-pages.c | 54 ++++++++++++++++++++++++++-----------
->   drivers/iommu/iommu-pages.h | 43 ++++++++++++++++++++++++++---
->   2 files changed, 78 insertions(+), 19 deletions(-)
 
-Thanks,
-baolu
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
 _______________________________________________
 Linux-rockchip mailing list
