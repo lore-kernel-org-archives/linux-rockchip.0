@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CD2FC021BC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 06:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 477D6C021B8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Feb 2025 06:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nUxlHmny58fAReLvV89e+qvk+51Wbuf4WoyeDd8eVoI=; b=j5nVpjwdgPbAA1
-	WZYnUVL94ITdpB0aRXwtRvrW0mnzvpEv6k2u+QAyxZ0Oc8TXx/7+a8cxtqyJ0Ey3eU+fZv25iR5Yf
-	BQewc4ZVDHERNy92uowlDzhcF4mgAU9NxLIHWzjhKiXSzRXx5tn/z493Zpz9u4sAHorOMeb0Y8wXP
-	AmdzqVMTD0p9RYKPzXQs81Y/Z49wWGrdDfg04ayylUKfWlBuvQe0sEy59rknDmti6bF1zjSb/boUm
-	/QHTje5ECKxm75duqYso5qfRT4FHBl9iTOmCPh+ECk+NrFcdTh5ubAjKwghl5pPd3wupPBB5rLXxm
-	+Dbwa+9fuwoTldlc/QBQ==;
+	List-Owner; bh=E3hGX1w6L+oyraKaMWyv3cVb5jwUSQW43SKZ4pyMmFI=; b=AXRlgnQr/jvE1c
+	RrVSsnaLn3D4MkVABSfRDiIV/wtQx/foWgR8VvJjLC6vGqw/ODgn5u9zV1wz4Ks9Ne2wrSFPtPe4B
+	e+bNqUeT5eK99hS2OdyVpbYfO+87BnwPoDiNfKFZ47QSaDapGJkTjIyJ18bGtjSWnrzeuzeBHrmx9
+	W6x0H2jaahDdfKwSU03xUg5WBb7k9DPaihAmPu5kh+tDc8kMxJcfzugwqWhfoG5Z4m51Gv0yHnRcq
+	u1/L2NY2e+UL1pd1joUo1eJGeYmUqtIBpxmamOr/y8C5N3c6g0VhrEbLpOCkfBZVGwWwpI1klmUss
+	xYITAy8bg9xonb7Tzwyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnB7i-00000002ZUQ-2FEk;
-	Wed, 26 Feb 2025 06:42:26 +0000
+	id 1tnB9F-00000002ZrE-16BS;
+	Wed, 26 Feb 2025 06:44:01 +0000
 Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnB5A-00000002YwY-3j5u;
-	Wed, 26 Feb 2025 06:39:50 +0000
+	id 1tnB5b-00000002Z3b-3aC4;
+	Wed, 26 Feb 2025 06:40:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1740551989; x=1772087989;
+  t=1740552016; x=1772088016;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=wEZYyMMMYY0p/InDFAWstpwiUT9Y8kIbFfE8GirQgHM=;
-  b=Z2J7sN5T+Pm5D4SEJxAaShuQZnjiWtCS6PGYa7AChH4yoUvXJRPwNaMH
-   9N2Ft8BKQAZcFMu4kBtG27EubQiev5S2482dex9NmO5PhiS29kxvgEX+a
-   +M2xhdAnwomCApiyrOsv6OiG5PqAvTHj/gZORnx2vzOxr2uiosOFyRmGO
-   5+omYyfSSt/oh2Qb2V7tWHaHLbwKtyeACE9QFdRM2/4dKVZyNlcSFIynb
-   0HSxbXwS91ptyTQQhHivj/7kULrIonsfUVArQBi4d6mbNesmJHMim9DWf
-   p0WgMdEAJOKPsiHjmmnZkzmqwh0V3/UnSeU+o0Wvj7+wLPf0nnDUSR1Zs
-   Q==;
-X-CSE-ConnectionGUID: 5Inct43XSseA1G7mellnPw==
-X-CSE-MsgGUID: RHb15ktxRxejt5jO25n1vg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11356"; a="41088229"
+  bh=LhlJYnqquo1shJKupI/Fa8GBn0+W1Px9NHZAejazzu4=;
+  b=gXM3CcYqEA/+eQWDOaanJXEMkeYc4oFExxF0GGpuJ9q+R8DY15OalFyi
+   fqwCZJKoMJnc9wnAQrS5GEN0ckIMsT9sCHk5Obvkk7xou3cgSxyETUBt6
+   NluJGkw96zC0ytwRagQrU0e1+QawesAVx1cAiuzlDZsFGG5fA1rdDv+QO
+   ly5rQtyTH8Y9I2DgQi9JRebFXM2REyDfzWVJkD6VOzjAjEv2aVgSUlY+P
+   A+IH1Ya5FkqHQBxTrTOGdnhS2e7WzAhmpwDPhVxRBxD0BdVZQa10zXvxD
+   P4540cvBrDomeINROtuiiw1a7ZMuQyZCrpQ9ysVhMcI5jNDUIXlkNW5KF
+   w==;
+X-CSE-ConnectionGUID: F96HoINoR4W3BjRsHMGOWQ==
+X-CSE-MsgGUID: OR/s9/dETkCPVwOE69Juig==
+X-IronPort-AV: E=McAfee;i="6700,10204,11356"; a="41088309"
 X-IronPort-AV: E=Sophos;i="6.13,316,1732608000"; 
-   d="scan'208";a="41088229"
+   d="scan'208";a="41088309"
 Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:39:48 -0800
-X-CSE-ConnectionGUID: gk0tSm0GSMuWy8te+oesQA==
-X-CSE-MsgGUID: B4sm4s2nRNO85JsKQGxg/g==
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:40:15 -0800
+X-CSE-ConnectionGUID: BfdrDOJVTkOUWSLCJpkdNQ==
+X-CSE-MsgGUID: 9n2T3c9ATAi3EHRCb1cr8g==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.13,316,1732608000"; 
-   d="scan'208";a="116810017"
+   d="scan'208";a="116810796"
 Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:35:53 -0800
-Message-ID: <a60cb386-0387-4889-8f9b-88f01cf9408a@linux.intel.com>
-Date: Wed, 26 Feb 2025 14:32:38 +0800
+  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2025 22:37:27 -0800
+Message-ID: <94b38478-9ec7-4d42-b989-cbcfb65927eb@linux.intel.com>
+Date: Wed, 26 Feb 2025 14:34:12 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/23] iommu/pages: Remove the order argument to
- iommu_free_pages()
+Subject: Re: [PATCH v3 06/23] iommu/pages: Remove iommu_free_page()
 To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
  asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
@@ -79,13 +78,13 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
 Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
  Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
  David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <5-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+References: <6-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <5-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <6-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250225_223949_011720_9F79F7EB 
-X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-CacheID: sfid-20250225_224015_946313_11E562FD 
+X-CRM114-Status: UNSURE (   5.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,15 +103,9 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2/26/25 03:39, Jason Gunthorpe wrote:
-> Now that we have a folio under the allocation iommu_free_pages() can know
-> the order of the original allocation and do the correct thing to free it.
-> 
-> The next patch will rename iommu_free_page() to iommu_free_pages() so we
-> have naming consistency with iommu_alloc_pages_node().
+> Use iommu_free_pages() instead.
 > 
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-
-For changes in intel iommu driver,
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
