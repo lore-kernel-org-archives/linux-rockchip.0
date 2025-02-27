@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA0CC19F32
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F26C1B0FF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nml8Xz5EH0YRjDsJrT79w1qEkaNLUrkCNruFdxkfKt0=; b=UAQb+9hVpGyftV
-	zvg2uV8tRht0dtSiPvxaJoyKX9sOgowKQFzhUIn91QNWeHx4FZQk581bRa6lSHzH05C1ylnhnkbpa
-	CIkp+aWSvgqHrnKEPCtB8FUQZDWmQCERsvOxBg5CYo57REGy2Vs4z8wBzMASoS4UudmuxVQvMDVVS
-	3Jke4qxxNvaHroTnSibt2EAga1tGDEY4FNeuBX1r+nImyCI5EVHghxFtYso6nWBBWcEgI1q7w10cS
-	4UJtqY7c281qulMmRHJE12hCf3XtUXTMzHNWgK9wECFz3yBqfl5dGwsPq0hyisPo21+mq6GgEcb1C
-	0lKFI4x99RGGonRsdMJQ==;
+	List-Owner; bh=0NPYc/rwz7ocRW/danH1j/hKHn197jyfL+UmwL7XzOc=; b=vY+6euW7VfuKQS
+	BV1xGthPQyfVfzMvLu89zzZYpyCUNcZNCMi+6yrFSTCwYTXXlzGupEzhKE7hf2WtpMgdCjs3Uc4mF
+	auOMkLS0Mg4ShuLuWUE6l5Zwuwp19V3wjdA56skBnzycyvRtu5XBjW0i9QyDbbjvi+PWGThCBVhWv
+	K2a+APi9nuAgS3tAp9C2vi/k2Tgmt94EQbWO+AZoad1e5UegvQVo0pXhnpZC752CncfgPB/ypvLmL
+	aNCExdGQbDX80ZqXqmgFEu+DRo3QFTEkfu01cR2Xwtx8Tt6Jc0SeDt6CNkQHR8Ech3D91L72b/cjA
+	fD+pAP9yU1tKB7GV0Hcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tneOk-00000007cUf-3X4l;
-	Thu, 27 Feb 2025 13:57:58 +0000
-Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
+	id 1tneQD-00000007d0r-0OLu;
+	Thu, 27 Feb 2025 13:59:29 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tneFU-00000007b0l-1TAj;
-	Thu, 27 Feb 2025 13:48:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 42E7761F30;
-	Thu, 27 Feb 2025 13:48:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E80BC4CEDD;
-	Thu, 27 Feb 2025 13:48:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740664103;
-	bh=+0o56Rl9c9XlxO66ciG8cF7751qtwRokbDOXu3oKKI4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=u7PEQG2j83U1EUgccAsv7ZZeyzoXGP5E3eyEnhw4NoElI1P1PQduAFpk3Aw26XQga
-	 MU1FsSM2xWeVk3888IvozG2rU0czOy6ksHQKL+ms88vEKd69Oz3Wn/JfI5RXTFTwNk
-	 wfGNc/kEM3DNOFtXZ34ZRYeTDGKQ9rq2QA/8JJ070MZrbICKSyOueWiZTR8CewZk/4
-	 YNa2OgN5lkcQjeMyprtE571tUFUuQFiRLywSCD55mJu1bl6w3MNEN7o1f2vw9759LK
-	 TWM2LHQPLAcDuMVzwA6GP/6GMrZpDf8H3uZGfG3Gq2L3gj60l5E8fYaRb6MO8wqJWV
-	 z16TlfgV2NvRQ==
-From: Mark Brown <broonie@kernel.org>
-To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20250227111913.2344207-1-kever.yang@rock-chips.com>
-References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
-Subject: Re: (subset) [PATCH v3 00/15] rockchip: Add rk3562 SoC and evb
- support
-Message-Id: <174066409262.43847.18143301735398340521.b4-ty@kernel.org>
-Date: Thu, 27 Feb 2025 13:48:12 +0000
+	id 1tneKw-00000007bpY-3GfK;
+	Thu, 27 Feb 2025 13:54:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=+7p+whL+y2ixszcQ8G1Y9xt2LHqMnZq6hXYHzWoyza0=; b=ZEwSO2rCiGPMOuBHO8x1SYughN
+	fgqx5F8nB+leOGzlDnAeTvXiV5RenBG4RfJroRdp+uK1TO3ZTSPLA79yHFN4qIn3wk+X8V37Tz7Au
+	Nz68ETmYRp+jludadMpYqCvj0FvHQ+eNtTGDIwaBQqpQYUWRSFPKFIA6F8t08MlPB/WU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tneKs-000bj1-01; Thu, 27 Feb 2025 14:53:58 +0100
+Date: Thu, 27 Feb 2025 14:53:57 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+	David Wu <david.wu@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	netdev@vger.kernel.org,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-kernel@vger.kernel.org,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	"Jan Petrous (OSS)" <jan.petrous@oss.nxp.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Eric Dumazet <edumazet@google.com>
+Subject: Re: [PATCH v2 3/3] ethernet: stmmac: dwmac-rk: Make the phy clock
+ could be used for external phy
+Message-ID: <c523a7a8-34db-4902-bfc2-b8207ce4f4a0@lunn.ch>
+References: <20250227110652.2342729-1-kever.yang@rock-chips.com>
+ <20250227110652.2342729-3-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-1b0d6
+Content-Disposition: inline
+In-Reply-To: <20250227110652.2342729-3-kever.yang@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250227_055402_818103_836E297C 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,52 +79,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, dri-devel@lists.freedesktop.org, Finley Xiao <finley.xiao@rock-chips.com>, linux-i2c@vger.kernel.org, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Simon Xue <xxm@rock-chips.com>, Jiri Slaby <jirislaby@kernel.org>, Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org, linux-serial@vger.kernel.org, Rob Herring <robh@kernel.org>, Guenter Roeck <linux@roeck-us.net>, linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Riesch <michael.riesch@wolfvision.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Feb 2025 19:18:58 +0800, Kever Yang wrote:
-> This patch set adds rk3562 SoC and its evb support.
+On Thu, Feb 27, 2025 at 07:06:52PM +0800, Kever Yang wrote:
+> From: David Wu <david.wu@rock-chips.com>
 > 
-> I have split out patches need driver change for different subsystem.
-> And all the modules with dt-binding document update in this patch set
-> do not need any driver change. I put them together to make it clear we
-> have a new SoC and board to use the new compatible. Please pick up the
-> patch for your subsystem, or please let me know if the patch has to
-> send separate.
+> Use the phy_clk to prepare_enable and unprepare_disable related phy clock.
 > 
-> [...]
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+> Changes in v2: None
+> 
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> index ccf4ecdffad3..cc90c74ec70c 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> @@ -1867,12 +1867,14 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+>  		clk_set_rate(bsp_priv->clk_mac, 50000000);
+>  	}
+>  
+> -	if (plat->phy_node && bsp_priv->integrated_phy) {
+> +	if (plat->phy_node) {
+>  		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
+>  		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
+>  		if (ret)
+>  			return dev_err_probe(dev, ret, "Cannot get PHY clock\n");
+> -		clk_set_rate(bsp_priv->clk_phy, 50000000);
+> +		/* If it is not integrated_phy, clk_phy is optional */
+> +		if (bsp_priv->integrated_phy)
+> +			clk_set_rate(bsp_priv->clk_phy, 50000000);
 
-Applied to
+That does not look backwards compatible. Older DT blobs which don't
+have an integrated PHY won't have a clock in the node, so of_clk_get()
+will return an error, and this function then exits with an error code.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Thanks!
+    Andrew
 
-[07/15] dt-bindings: spi: Add rk3562 support
-        commit: 825687c1662c53ecda991adf0ecfd8dd3d864043
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+---
+pw-bot: cr
 
 _______________________________________________
 Linux-rockchip mailing list
