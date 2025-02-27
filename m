@@ -4,69 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAE59C19F2E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA0CC19F32
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:58:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HxAMkSVdNv5S1v0+pzsTg0BOlyI+NvWn4nyz7ymSFn4=; b=kdnKnEvmV9SFJ4
-	nIWn6LRonpuU4ZogzgkN6mPNzVItU8jmHyhInSdHj7RB/azeorXYClRetYYheZJBDdP6BEccYsM5Q
-	sYyvvG0Zys2Ki46gR7lbDbIakDdWheTEGad0Ldb2IC1k+RHAGZOf4Hk+rOtiJWkUA/z+SSzIn1N5z
-	igZ5rmU7vilmy0cTRchVjGIHSfhnlgpIFfPb/YY/nyYByq51woA0Ip8w959q5ro63rTIy779W2gGW
-	3RzTEN2rh9pexiCTsoip2QBQiPZnNdWxmUT+vu97O8+LG/Wf1cR8XtVKb08VH5sM1CD8K5jKsqOgt
-	36WPg1GGxsbf3HJ8OePA==;
+	List-Owner; bh=Nml8Xz5EH0YRjDsJrT79w1qEkaNLUrkCNruFdxkfKt0=; b=UAQb+9hVpGyftV
+	zvg2uV8tRht0dtSiPvxaJoyKX9sOgowKQFzhUIn91QNWeHx4FZQk581bRa6lSHzH05C1ylnhnkbpa
+	CIkp+aWSvgqHrnKEPCtB8FUQZDWmQCERsvOxBg5CYo57REGy2Vs4z8wBzMASoS4UudmuxVQvMDVVS
+	3Jke4qxxNvaHroTnSibt2EAga1tGDEY4FNeuBX1r+nImyCI5EVHghxFtYso6nWBBWcEgI1q7w10cS
+	4UJtqY7c281qulMmRHJE12hCf3XtUXTMzHNWgK9wECFz3yBqfl5dGwsPq0hyisPo21+mq6GgEcb1C
+	0lKFI4x99RGGonRsdMJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tneOj-00000007cTw-3mdI;
-	Thu, 27 Feb 2025 13:57:57 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1tneOk-00000007cUf-3X4l;
+	Thu, 27 Feb 2025 13:57:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tneF3-00000007av5-0Gac;
-	Thu, 27 Feb 2025 13:47:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=z2VNcrufiCKj7eFAmSfO6YQZUc/4GuUjSOvR4L9XN8o=; b=VjM/TY+MXccsyzI6ksj8zDo9In
-	yFoyfRsMmdidwKCGMPw1blkR3xTStw1bxHGpgycjtHDOsEnqExtNS3RQIudklQ8ucmhjj/B4S1SWP
-	XZsbM1ax1tchMRmjs0fXdGMprPgX+3Ab2pssCBqoQkjazkJQI0GjsRlxtyc69Y/C4pOw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1tneEx-000bcT-JT; Thu, 27 Feb 2025 14:47:51 +0100
-Date: Thu, 27 Feb 2025 14:47:51 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
-	David Wu <david.wu@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	"Jan Petrous (OSS)" <jan.petrous@oss.nxp.com>,
-	netdev@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-kernel@vger.kernel.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v2 2/3] ethernet: stmmac: dwmac-rk: Add gmac support for
- rk3562
-Message-ID: <f7146c95-85dd-4e5f-99b4-83a5d1b6fbd1@lunn.ch>
-References: <20250227110652.2342729-1-kever.yang@rock-chips.com>
- <20250227110652.2342729-2-kever.yang@rock-chips.com>
+	id 1tneFU-00000007b0l-1TAj;
+	Thu, 27 Feb 2025 13:48:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 42E7761F30;
+	Thu, 27 Feb 2025 13:48:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E80BC4CEDD;
+	Thu, 27 Feb 2025 13:48:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740664103;
+	bh=+0o56Rl9c9XlxO66ciG8cF7751qtwRokbDOXu3oKKI4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=u7PEQG2j83U1EUgccAsv7ZZeyzoXGP5E3eyEnhw4NoElI1P1PQduAFpk3Aw26XQga
+	 MU1FsSM2xWeVk3888IvozG2rU0czOy6ksHQKL+ms88vEKd69Oz3Wn/JfI5RXTFTwNk
+	 wfGNc/kEM3DNOFtXZ34ZRYeTDGKQ9rq2QA/8JJ070MZrbICKSyOueWiZTR8CewZk/4
+	 YNa2OgN5lkcQjeMyprtE571tUFUuQFiRLywSCD55mJu1bl6w3MNEN7o1f2vw9759LK
+	 TWM2LHQPLAcDuMVzwA6GP/6GMrZpDf8H3uZGfG3Gq2L3gj60l5E8fYaRb6MO8wqJWV
+	 z16TlfgV2NvRQ==
+From: Mark Brown <broonie@kernel.org>
+To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <20250227111913.2344207-1-kever.yang@rock-chips.com>
+References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
+Subject: Re: (subset) [PATCH v3 00/15] rockchip: Add rk3562 SoC and evb
+ support
+Message-Id: <174066409262.43847.18143301735398340521.b4-ty@kernel.org>
+Date: Thu, 27 Feb 2025 13:48:12 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250227110652.2342729-2-kever.yang@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_054757_105072_CC83A4E0 
-X-CRM114-Status: GOOD (  23.17  )
+X-Mailer: b4 0.15-dev-1b0d6
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,97 +62,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, ulf.hansson@linaro.org, devicetree@vger.kernel.org, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, dri-devel@lists.freedesktop.org, Finley Xiao <finley.xiao@rock-chips.com>, linux-i2c@vger.kernel.org, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Simon Xue <xxm@rock-chips.com>, Jiri Slaby <jirislaby@kernel.org>, Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org, linux-serial@vger.kernel.org, Rob Herring <robh@kernel.org>, Guenter Roeck <linux@roeck-us.net>, linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Riesch <michael.riesch@wolfvision.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 27, 2025 at 07:06:51PM +0800, Kever Yang wrote:
-> From: David Wu <david.wu@rock-chips.com>
+On Thu, 27 Feb 2025 19:18:58 +0800, Kever Yang wrote:
+> This patch set adds rk3562 SoC and its evb support.
 > 
-> Add constants and callback functions for the dwmac on RK3562 soc.
-> As can be seen, the base structure is the same.
+> I have split out patches need driver change for different subsystem.
+> And all the modules with dt-binding document update in this patch set
+> do not need any driver change. I put them together to make it clear we
+> have a new SoC and board to use the new compatible. Please pick up the
+> patch for your subsystem, or please let me know if the patch has to
+> send separate.
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> 
-> Changes in v2:
-> - Collect review tag
-> 
->  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 207 +++++++++++++++++-
->  1 file changed, 205 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index a4dc89e23a68..ccf4ecdffad3 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -2,8 +2,7 @@
->  /**
->   * DOC: dwmac-rk.c - Rockchip RK3288 DWMAC specific glue layer
->   *
-> - * Copyright (C) 2014 Chen-Zhi (Roger Chen)
-> - *
-> + * Copyright (c) 2014 Rockchip Electronics Co., Ltd.
->   * Chen-Zhi (Roger Chen)  <roger.chen@rock-chips.com>
->   */
+> [...]
 
-IANAL, but generally, you add additional copyright notices, not
-replace them.
+Applied to
 
-> +#define DELAY_VALUE(soc, tx, rx) \
-> +	((((tx) >= 0) ? soc##_GMAC_CLK_TX_DL_CFG(tx) : 0) | \
-> +	 (((rx) >= 0) ? soc##_GMAC_CLK_RX_DL_CFG(rx) : 0))
-> +
-> +#define GMAC_RGMII_CLK_DIV_BY_ID(soc, id, div) \
-> +		(soc##_GMAC##id##_CLK_RGMII_DIV##div)
-> +
-> +#define GMAC_RMII_CLK_DIV_BY_ID(soc, id, div) \
-> +		(soc##_GMAC##id##_CLK_RMII_DIV##div)
-> +
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-This macro magic is pretty unreadable. Please consider another way to
-do this. Some wise developer once said, code is written once, read 100
-times. So please make code readable by default, unless it is hot path.
+Thanks!
 
-> +static void rk3562_set_gmac_speed(struct rk_priv_data *bsp_priv, int speed)
-> +{
-> +	struct device *dev = &bsp_priv->pdev->dev;
-> +	unsigned int val = 0, offset, id = bsp_priv->id;
-> +
-> +	switch (speed) {
-> +	case 10:
-> +		if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII) {
-> +			if (id > 0) {
-> +				val = GMAC_RMII_CLK_DIV_BY_ID(RK3562, 1, 20);
-> +				regmap_write(bsp_priv->grf, RK3562_GRF_SYS_SOC_CON0,
-> +					     RK3562_GMAC1_RMII_SPEED10);
-> +			} else {
-> +				val = GMAC_RMII_CLK_DIV_BY_ID(RK3562, 0, 20);
-> +			}
-> +		} else {
-> +			val = GMAC_RGMII_CLK_DIV_BY_ID(RK3562, 0, 50);
-> +		}
-> +		break;
+[07/15] dt-bindings: spi: Add rk3562 support
+        commit: 825687c1662c53ecda991adf0ecfd8dd3d864043
 
-It seems like this function would be a lot more readable if it was
-split into two, one dealing with RMII and another with RGMII.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> +static void rk3562_set_clock_selection(struct rk_priv_data *bsp_priv, bool input,
-> +				       bool enable)
-> +{
-> +	struct device *dev = &bsp_priv->pdev->dev;
-> +	unsigned int value;
-> +
-> +	if (IS_ERR(bsp_priv->grf) || IS_ERR(bsp_priv->php_grf)) {
-> +		dev_err(dev, "Missing rockchip,grf or rockchip,php_grf property\n");
-> +		return;
-> +	}
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-That should of been checked much earlier, at probe.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-	Andrew
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
