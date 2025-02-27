@@ -4,74 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68982C197BF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7705AC197BF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 20:54:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
+	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZms5ofVjOqDp16QB1hJ/9UzOP+v3FKzU4VGPPuoQUk=; b=oVaUZBrOW2s+Zb
-	hb0ue/mfQpDC8zgY4mY5Csyp2gdANdsYVMeHz+yVH6JG4MbXkMFmKjg+ejHDYS6JLPck8nTWn8RA9
-	Jq3CIL5gVNl42AQZmQxPLPWkD+HKzoRNkKI5PMnD7EzuQCNdx1j92RPPbszh9+zSCY7dIzTYID/3j
-	SngQphwb6+rcy111sevdxiidVNrIE5pENcxcw9+R0N1vxAr8fzDmjfd7iad3DTl7jx22+NjLGqJ3r
-	rxyQduCYb0RYYrA4Ps3KzMtvhl00TmnB3eRQTOSpbbvu0SyMmWFSwZDViqizQf042kAVOezGGJT6q
-	5rulwwZYDuC1Wf+ZUilw==;
+	List-Owner; bh=lT8KJZ+MbAwMtApGARiwsibrnNoqwF28DhanYAcLl4A=; b=dA9izL4C/ANQqz
+	UygBZlTzEaZX5KJNtGk4cgJDmR8Uc78PCrSs3B0dDnyllu+TJHAIsHTbQXBL988BLvAMVqLrkAQ9l
+	pf5XyFWVfwzPJuQs9UTWZHHWROiOhf9ixfGSHUA12DNdGxMqNYBPhk1UxgEFp5jjzfmf0P+Ez3OXr
+	0snOMf14FpV4zWDgzLoM9ZGJyrZ7D5uei0R91cdGmwhUOilFlYDmzNORxqhXC/6R6bIYoTi7Z0c6Y
+	G31dmaPZV8Ztgub6NQZ99W4U+HNRVkA1DKW8vAlx9tToGtyDteSrLNgvuPTE8QKXkmXUKDZM6jrEq
+	iwO6X9xotT6FORvS261Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjq6-00000008gWr-2h8b;
-	Thu, 27 Feb 2025 19:46:34 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tnktK-00000008pyo-3hyV;
+	Thu, 27 Feb 2025 20:53:58 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjjz-00000008ZGI-0s76
-	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Feb 2025 19:40:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1740685212;
-	bh=NkAwTqksSU4AEzN7KRQ2MeSnIOrOPp2KKDZRrChKYu4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=L1YFfwMDat/2mPLCqAj3/mY1YakblrZsc/IW/+gaVrJ4FF7e4hybBdd50L4HTgQKI
-	 +wwGqt3OvggdFOFARvtz1oB/tIporOks6DYCLhOZmefbhPfKCcN4TlApRK/UsIkJCC
-	 yBXJ08NyE0Jhe0OkyNzehXOgyfp0fQlxZLNepiQPbzUEmLJIz4XmjIJ8vh7hQwfGQs
-	 uHlmbOl+KtAxrshZYbABjLBZ+Atw6voYxV6dhp6jBhH7gWDwix64tmdRhaL3ZNQw+B
-	 nk+sZd3aBCE0ABPVl1wo5camBn7rWm14xKhsKUShzC32284Oni3GvlNqK2o3Qeqicw
-	 YeY15ZSc0cjBA==
-Received: from [IPv6:2606:6d00:11:e976::5ac] (unknown [IPv6:2606:6d00:11:e976::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C54C17E068B;
-	Thu, 27 Feb 2025 20:40:08 +0100 (CET)
-Message-ID: <3872267b32d1386827635f15eda99d2709b44a96.camel@collabora.com>
-Subject: Re: [PATCH v10 3/6] media: platform: synopsys: Add support for HDMI
- input driver
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>, Diederik de Haas	
- <didi.debian@cknow.org>, Shreeya Patel <shreeya.patel@collabora.com>, Heiko
- Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil	 <hverkuil@xs4all.nl>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, 	jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com,  Sebastian Reichel
- <sebastian.reichel@collabora.com>
-Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Date: Thu, 27 Feb 2025 14:40:06 -0500
-In-Reply-To: <f0c3a16e-c4a2-4cd9-9afa-a21a975a45c9@collabora.com>
-References: <20250225183058.607047-1-dmitry.osipenko@collabora.com>
-	 <20250225183058.607047-4-dmitry.osipenko@collabora.com>
-	 <D82H4F6J4V4V.2BLHVUVD3BVX9@cknow.org>
-	 <f0c3a16e-c4a2-4cd9-9afa-a21a975a45c9@collabora.com>
-Organization: Collabora Canada
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1tnkrk-00000008plR-23El;
+	Thu, 27 Feb 2025 20:52:22 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5494bc4d796so385550e87.3;
+        Thu, 27 Feb 2025 12:52:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740689538; x=1741294338; darn=lists.infradead.org;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
+        bh=ORq9jkRCIXj2zv20dBQ5aH6mM2s+q06FC9H+4PepyX8=;
+        b=inMj4pYClzrKx54wz626bj6gKVqPSArmboFN8Uk00nl7iod+o/oIJPMaV90/OFhzcX
+         MW8wdGMLF7qCHhchwoLcvXhTcCVtmhwyBccUwOrkmkfpWp4cdms5gTFtLGZjOK6V1XOa
+         LZap8QkQjmnKJtX3z9F7LT5KVnqAoD8fVQNAjUcoBtDmuKJ51AShmu+AIavqvZ1zGNUs
+         rB1hKLztx/eIuWfsvEogAxB/2S2CyxCf4/+4bRlRXq77LOTiiM/YRem4mlBSSPhIv95P
+         5OujRVvQCQp7WgR2/p+ZE7AmW/0sL6BO8fKSk86kyABhURise1lhEu+8NyKhNLxtrmcr
+         Wdng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740689538; x=1741294338;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ORq9jkRCIXj2zv20dBQ5aH6mM2s+q06FC9H+4PepyX8=;
+        b=jjAvbZ/E8nG7lhoQjaXoFPzvTMR5BWAkL8QW0jfQ3kqJwRelUP7QBOOyltrRhZJjjQ
+         3UEXYqpWxo6H8NwIZy81G2OHvipx4FGLihPCXAyQD8BmwU/78yFbqZkeB9WPETFrbmu9
+         coLuNrQsj6XPbVVAJcJtr7SEL4+VrZZUmHjXJ6Sh9z37h0CjuUNJR5GFyCR3Lx0k+XWG
+         H1f+5tCzoOEXepcj4VaTh+peYUwcrJNKFN7fbBQovyMzMvSoCfljZ7+qmf3BrMX10S/P
+         YVUmdI4ZSYwbJTIEdzAL0D7wQsEGcN73vrtih130ERUN3Y4mkoBr29+n16v9DeGbApWm
+         dFXg==
+X-Forwarded-Encrypted: i=1; AJvYcCVBmYf23gGJx7/bEL23+usyrwQixjfaSyW2lh9HtWm8vP1jPF+b9KcC0kBPRsaLBDEf6vBm04iJ+FvxWmlqPDs=@lists.infradead.org, AJvYcCWUzoBYPxd/HrTH6m8pS2dXTe2e7igCE/dwqxmM5kwXVvlzGKzOp7olQNCVnNT2uUWEV5NCo9Y9zn68LvIzD82c@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWXC1VZ+jtt7wB5k2xvRby8BwGfllwNec5s71axK5vql49RGFG
+	mb8JttqycbsK7zOU25lsiDbW9g7rYvPNiXgMQI61tIgRGRBVGCIhbHFHMlnu
+X-Gm-Gg: ASbGncuh9uk2NZKSYnQDXt/+w79IQfHLZC/wYC0Wd0bEBobUVqv7xOllTvJqj4fzX1A
+	XavvxJL+PN/EwwU8nErD519GpJN8FFPmZ0Ykih7otxBi1K9vH+4Dslk+Y8LQ6L43zRGRCqo/4Fd
+	8p5sRCNV9TGo65Rpfu+gBYSTSK8E7klZjTXyv+J9JiD+JsBXhAWMouvsFsyhlQU2Hjf8DnRJn2U
+	cUiED2Xb7QBPDRgQ+/tZgNflsPG5gHg+SrOYNfHgDFQuEoUuti2Jp8YnzqH1CVrR7bW0AFpXkVa
+	3olVrkWgFegY
+X-Google-Smtp-Source: AGHT+IGihLlnXop/m8uLi6YA+JiEFOKQNSYL2eLkoXrXYoArVJ7ew7FmuX17wQiiXQfECok7M8pYyw==
+X-Received: by 2002:ac2:411a:0:b0:549:4e7f:24af with SMTP id 2adb3069b0e04-5494e7f274cmr57045e87.0.1740689537881;
+        Thu, 27 Feb 2025 12:52:17 -0800 (PST)
+Received: from razdolb ([77.220.204.220])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5494a149b07sm105767e87.157.2025.02.27.12.52.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Feb 2025 12:52:17 -0800 (PST)
+References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
+ <20250103152326.GP554@pendragon.ideasonboard.com>
+ <87bjw9s4s3.fsf@gmail.com>
+ <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
+User-agent: mu4e 1.10.9; emacs 29.4.50
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Dafna Hirschfeld
+ <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
+Date: Thu, 27 Feb 2025 23:46:44 +0300
+In-reply-to: <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
+Message-ID: <87ldtraz5v.fsf@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_114015_442515_9F7706B9 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20250227_125220_530108_74132D5C 
+X-CRM114-Status: GOOD (  28.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,52 +97,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgamV1ZGkgMjcgZsOpdnJpZXIgMjAyNSDDoCAwODoyOCArMDMwMCwgRG1pdHJ5IE9zaXBlbmtv
-IGEgw6ljcml0wqA6Cj4gT24gMi8yNi8yNSAxODoxNCwgRGllZGVyaWsgZGUgSGFhcyB3cm90ZToK
-PiA+ID4gK2NvbmZpZyBWSURFT19TWU5PUFNZU19IRE1JUlhfTE9BRF9ERUZBVUxUX0VESUQKPiA+
-ID4gKwlib29sICJMb2FkIGRlZmF1bHQgRURJRCIKPiA+ID4gKwlkZXBlbmRzIG9uIFZJREVPX1NZ
-Tk9QU1lTX0hETUlSWAo+ID4gPiArCWhlbHAKPiA+ID4gKwnCoCBQcmVsb2FkIGRlZmF1bHQgRURJ
-RCAoRXh0ZW5kZWQgRGlzcGxheSBJZGVudGlmaWNhdGlvbiBEYXRhKS4KPiA+IEkgc2VlIHNvbWUg
-dmFsdWUgaW4gbWFraW5nIGV4cGxpY2l0IHdoYXQgeW91IG1lYW4gYnkgRURJRCAuLi4KPiA+IAo+
-ID4gPiArCcKgIEVESUQgY29udGFpbnMgaW5mb3JtYXRpb24gYWJvdXQgdGhlIGNhcGFiaWxpdGll
-cyBvZiB0aGUgZGlzcGxheSwKPiA+ID4gKwnCoCBzdWNoIGFzIHN1cHBvcnRlZCByZXNvbHV0aW9u
-cywgcmVmcmVzaCByYXRlcywgYW5kIGF1ZGlvIGZvcm1hdHMuCj4gPiAuLi4gSSBkbyBub3QgdGhp
-bmsgYS90aGlzIEtjb25maWcgbmVlZHMgdG8gZXhwbGFpbiBpdC4KPiA+IAo+ID4gPiArCj4gPiA+
-ICsJwqAgRW5hYmxpbmcgdGhpcyBvcHRpb24gaXMgcmVjb21tZW5kZWQgZm9yIGEgbm9uLXByb2R1
-Y3Rpb24gdXNlLWNhc2VzLgo+ID4gTXkgZ3Vlc3MgaXMgdGhhdCBpdCBjb3VsZCBiZSB1c2VmdWwg
-Zm9yIGRldmVsb3BtZW50L2RlYnVnZ2luZy9DSSB3b3JrCj4gPiB3aGljaCBwb3NzaWJseSBkbyBu
-b3QgaGF2ZSBhbiBhY3R1YWwgZGV2aWNlIChtb25pdG9yKSB3aGljaCBwcm92aWRlcwo+ID4gYWN0
-dWFsIEVESUQgZGF0YT8gSXMgQ0kgd29yayB0aGUgcmVhc29uIHdoeSB5b3UgKGluaXRpYWxseSkg
-ZW5hYmxlZCBpdAo+ID4gaW4gdGhlIGRlZmNvbmZpZz8KPiA+IEJ1dCB3aGVuIHlvdSBoYXZlIGFu
-IGFjdHVhbCBtb25pdG9yICg9cHJvZHVjdGlvbiB1c2UtY2FzZT8pLCB5b3UKPiA+IChyZWFsbHkp
-IGRvIG5vdCB3YW50IGl0PyBXb3VsZCBpdCBiZSBoYXJtbGVzcyBpZiAnc3RpbGwnIGVuYWJsZWQ/
-Cj4gCj4gRGlzYWJsaW5nIHRoaXMgb3B0aW9uIGlzIG9ubHkgcmVsZXZhbnQgaWYgeW91J3JlIG1h
-a2luZyBhIGNvbW1lcmNpYWwKPiBwcm9kdWN0IHVzaW5nIHRoaXMgZHJpdmVyLiBJdCdzIGEgcXVp
-dGUgd2lkZXNwcmVhZCBpc3N1ZSB0aGF0IEhETUkKPiBwcm9qZWN0b3JzIHV0aWxpemUgZGVmYXVs
-dCBFRElEIHRoYXQgY29tZXMgZnJvbSBCU1AgZHJpdmVyIHRoZXkgdXNlLAo+IHdoaWxlIGEgcmVi
-cmFuZCBFRElEIHNob3VsZCBiZSB1c2VkLiBLZWVwaW5nIHRoaXMgb3B0aW9uIGVuYWJsZWQgaXMK
-PiBoYXJtbGVzcywgYnV0IHlvdSBkb24ndCB3YW50IHRvIGRvIGl0IGluIGEgcHJvZHVjdC4KPiAK
-PiBGb3IgYWxsIG90aGVyIHVzZS1jYXNlcyB5b3Ugd291bGQgd2FudCB0byBlbmFibGUgdGhpcyBv
-cHRpb24sIG90aGVyd2lzZQo+IGRyaXZlciB3b24ndCBiZSB1c2FibGUgdW50aWwgeW91IHdpbGwg
-bG9hZCBFRElEIGZyb20gdXNlcnNwYWNlLgo+IAo+IEhhbnMgaGFzIHN0cm9uZyBvcGluaW9uIFJF
-IHRoaXMgb3B0aW9uIGFuZCB3YW50cyB0byBoYXZlIGl0IGRpc2FibGVkIGJ5Cj4gZGVmYXVsdC4K
-CkhhbnMsIGNhbiB5b3UgZGV0YWlsIHlvdXIgcmVhc29ucyA/IFdlIHBlcnNvbmFsbHkgbWFrZSBk
-ZWZhdWx0IGNvbmZpZwp0b3dhcmQgZ2VuZXJpYyBMaW51eCBkaXN0cmlidXRpb25zLiBJZiB5b3Ug
-ZG9uJ3QgdHVybiB0aGlzIG9uLCB0aGUKZHJpdmVyIHdvbid0IHdvcmsgd2l0aCBhbnkgZXhpc3Rp
-bmcgdXNlcnNwYWNlIChPQlMsIEdTdHJlYW1lciwgV2ViCmJyb3dzZXJzLCBldGMpLiBXaGlsZSBo
-YXZpbmcgaXQgZGlzYWJsZWQsIHRvIGF2b2lkIG5vdCBoYXZpbmcgeW91cgpicmFuZCBvciBzcGVj
-aWZpYyBjaG9pY2VzIG9uIHRoZSBmaXJzdCBnbyBpcyBjbGVhcmx5IHRoZSAic3BlY2lhbGl6ZWQi
-CnVzYWdlIGFuZCBjb25maWd1cmF0aW9uLgoKPiAKPiA+IFRodXMgYSBtb3JlIGV4dGVuc2l2ZSBk
-ZXNjcmlwdGlvbiB3aGF0IHRoaXMgS2NvbmZpZyBpdGVtIGRvZXMgYW5kIHdoeQo+ID4gYW5kIHdo
-ZW4gSSB3YW50IHRvIGVuYWJsZSBpdCBvciBub3QsIHNlZW1zIG1vcmUgdXNlZnVsIHRvIG1lLgo+
-IAo+IFdpbGwgdXBkYXRlIGFuZCBleHBhbmQgdGhlIGRlc2NyaXB0aW9uIHdpdGggbW9yZSBjbGFy
-aWZpY2F0aW9uLiBUaGFua3MKPiBmb3Igc3VnZ2VzdGlvbi4KPiAKCnJlZ2FyZHMsCgotLSAKTmlj
-b2xhcyBEdWZyZXNuZQpQcmluY2lwYWwgRW5naW5lZXIgYXQgQ29sbGFib3JhCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Jacopo,
+
+On 2025-02-27 at 18:05 +01, Jacopo Mondi <jacopo.mondi@ideasonboard.com> wrote:
+
+> Hi Mikhail
+>
+> On Tue, Jan 14, 2025 at 07:00:39PM +0300, Mikhail Rudenko wrote:
+>>
+>> Hi Laurent,
+>>
+>> On 2025-01-03 at 17:23 +02, Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
+>>
+>> > On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
+>> >> Currently, the rkisp1 driver always uses coherent DMA allocations for
+>> >> video capture buffers. However, on some platforms, using non-coherent
+>> >> buffers can improve performance, especially when CPU processing of
+>> >> MMAP'ed video buffers is required.
+>> >>
+>> >> For example, on the Rockchip RK3399 running at maximum CPU frequency,
+>> >> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
+>> >> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
+>> >> non-coherent DMA allocation. CPU usage also decreases accordingly.
+>> >
+>> > What's the time taken by the cache management operations ?
+>>
+>> Sorry for the late reply, your question turned out a little more
+>> interesting than I expected initially. :)
+>>
+>> When capturing using Yavta with MMAP buffers under the conditions mentioned
+>> in the commit message, ftrace gives 437.6 +- 1.1 us for
+>> dma_sync_sgtable_for_cpu and 409 +- 14 us for
+>> dma_sync_sgtable_for_device. Thus, it looks like using non-coherent
+>> buffers in this case is more CPU-efficient even when considering cache
+>> management overhead.
+>>
+>> When trying to do the same measurements with libcamera, I failed. In a
+>> typical libcamera use case when MMAP buffers are allocated from a
+>> device, exported as dmabufs and then used for capture on the same device
+>> with DMABUF memory type, cache management in kernel is skipped [1]
+>> [2]. Also, vb2_dc_dmabuf_ops_{begin,end}_cpu_access are no-ops [3], so
+>> DMA_BUF_IOCTL_SYNC from userspace does not work either.
+>>
+>> So it looks like to make this change really useful, the above issue of
+>> cache management for libcamera/DMABUF/videobuf2-dma-contig has to be
+>> solved. I'm not an expert in this area, so any advice is kindly welcome. :)
+>
+> It would be shame if we let this discussion drop dead.. cache
+> management policies are relevant for performances, specifically for
+> cpu access, and your above 7.7ms vs 1.1 ms test clearly shows that.
+>
+>>
+>> [1] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n411
+>
+> I would like to know from Hans if the decision to disallow cache-hints
+> for dmabuf importers is a design choice or is deeply rooted in other
+> reasons I might be missing.
+>
+> I'm asking because the idea is for libcamera to act solely as dma-buf
+> importer, the current alloc-export-then-import trick is an helper for
+> applications to work around the absence of a system allocator.
+>
+> If the requirement to disable cache-hints for importers cannot be
+> lifted, for libcamera it means we would not be able to use it.
+
+Meanwhile, I have posted a patch, which re-enables cache management ops
+for non-coherent dmabufs exported from dma-contig allocator [1]. It is
+currently waiting for review.
+
+[1] https://lore.kernel.org/all/20250128-b4-rkisp-noncoherent-v3-1-baf39c997d2a@gmail.com/
+
+>
+>> [2] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n829
+>> [3] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-dma-contig.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n426
+>>
+>> --
+>> Best regards,
+>> Mikhail Rudenko
+>>
+
+
+--
+Best regards,
+Mikhail Rudenko
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
