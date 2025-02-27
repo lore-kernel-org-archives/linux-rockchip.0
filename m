@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0843BC19F32
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9FDC282C9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=566oAa0korMdmLxDgVzEZCQU47mHb50UEIpSH8dLMCM=; b=zC/WSIS9n66ewj
-	Q97M9Joew1LwWMuA0b3KswbLtMfg28U9wvcq23CiaC2Qqy241DwaYbvpCMlhzchTmjp6sJsnVQKWN
-	VmVDBnm0Ad+6djnX9oJEKzpR5CFVJqJjgmmgCUTxyaBqLGmTQhZQVH0gFewSY9LqBBg6rxkvOIaMC
-	tpVN7NBOouDUR1H/wFstFYcvTvx3R1bmy5dJhQgs0s7YimbZOM51tCjlziNV3wRDiddikcikVkUpQ
-	laAdwpKAYa0KVQgBPUu7MFGw3ClVqiryofOOZa6pE++h7+Svj1QISdR7yrs7ILafymiSNWTEnoute
-	ltuLxSckF39eD22rKQxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iqdSW0QtadQZuD7UUzpGJ5dWcYL03fqItplzny070K4=; b=EPEMHq1OaLxfrw
+	CY/W1IViYhmsiLCm2CmgB/wYpnZL2rQxSS1j82eyynSUpuQTn9dEjkmD2hZDKrU8ogHW/DQW7s/G2
+	p/8WYNcsyxnVBs7CpiH3/RFe9GWVYV7NJwbwrCf4cHfboMpZK0BFitRoszTy+m/D6Rd9och6Z7ZX3
+	WGS/GiPGTFGfvKSbvP2GnGuB+jHVUHT6gBEQfJorR3OCzdH8S+A5xfhxB7yJN3Zs7l2u25cnnB8Ay
+	WZH6Gr6G/mLtpbjWadenXRseDh2tLWP2kpVaKJE1YxodEYHciuAXHA0iEDAJnjndGU5hEQxbjlgTZ
+	5kWIsDfUl0WYe/OOOBpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjmW-00000008dYp-3AcC;
-	Thu, 27 Feb 2025 19:42:52 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tnjmY-00000008ddB-3aU8;
+	Thu, 27 Feb 2025 19:42:54 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tniox-00000008LOy-1oFK
+	id 1tnioy-00000008LPi-32s1
 	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Feb 2025 18:41:21 +0000
+	Thu, 27 Feb 2025 18:41:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1740681678;
- bh=r6E0ijl99dglGUtzxVKRHRyEXc5SE/61O6khRNhDT7Q=;
- b=BHxdprZ5FVRytbppPNtqHiM+lZniBdcwVbOe0a4seftHq6ZEnULwt6bDQqOq5Ej2aAp0VrdOU
- v+8FTBvgvt+bQhRtZGt5LcJ4QT6zpO+261wQ7rSHCAnEs8UNiSyDWpNgjqPG7G83oPsyrdT4dQ9
- Vkvf6OBsnVuOFK5QrQPKZ03zOu5ilTEMj7f/GZ2QFcKU9KqS80EXG6cu10xuFwV5f3yl8a84dzR
- uicdlkK6ZqL9nXFMLAuXm/xMUVoPIjx8Ia2ruhtSvUoyrYArEYozIty83zZWojTtQGVz6N94bXz
- ykf4ECvEKFU2KknD/KgxIqBYWmlnyaIwtA2l3nNq04TA==
-X-Forward-Email-ID: 67c0b1c9bf572996e8621452
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1740681679; bh=eS8EdvGPaOo7zCDoFD9uMhkn/FUO+ddnyL9qkYr6zIE=;
+ b=M4jYh9QPs2bi8h6AzjOE1Y16h/kSJy9kozyAplPXfLiGiau+k5NH7trUwRNfnX/bJEvqKS0Rp
+ N8KrezfuP/cOl9rQ0NygRaYnxUxnP5XYRZ0nx6r6UP3GRCFP5H4Bjagw3ZWYX5iFRiLVBtP3jLe
+ Dr9gEQ+AktAAFMQ8gkTh1vNB3N8G/BQIsWTrAPpFfST32rIJ1AWipszhXaycxRdaDnWSte1U7Qk
+ 4Sh+zp8awBrCOgTgXLnkLZUrHf+hjbjcpPmio7M9pTxuwm8dyM8lBQXhC6nCIvTDHhIP8tCCiCU
+ I56Wpr6ZorvbxqNkUDhhAsAT+cNkArKACqhCzTQIFyXw==
+X-Forward-Email-ID: 67c0b1cebf572996e8621467
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
+ 121.127.44.73
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+To: Heiko Stuebner <heiko@sntech.de>,
 	Jonathan Cameron <jic23@kernel.org>,
 	Lars-Peter Clausen <lars@metafoo.de>,
-	Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-iio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 0/4] rockchip: Add support for maskrom button on Radxa E20C
-Date: Thu, 27 Feb 2025 18:40:49 +0000
-Message-ID: <20250227184058.2964204-1-jonas@kwiboo.se>
+Subject: [PATCH 1/4] dt-bindings: iio: adc: Add rockchip,rk3528-saradc variant
+Date: Thu, 27 Feb 2025 18:40:50 +0000
+Message-ID: <20250227184058.2964204-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250227184058.2964204-1-jonas@kwiboo.se>
+References: <20250227184058.2964204-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_104119_559176_33F42190 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20250227_104120_862154_D806CA9B 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,24 +85,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Radxa E20C has two buttons, one SARADC maskrom button and one GPIO
-user button.
+The Successive Approximation ADC (SARADC) in RK3528 uses the v2
+controller and support:
+- 10-bit resolution
+- Up to 1MS/s sampling rate
+- 4 single-ended input channels
+- Current consumption: 0.5mA @ 1MS/s
 
-This series adds dt-binding, driver support, DT node in SoC .dtsi and
-adc-keys node in board DT to support the maskrom button.
+Add a rockchip,rk3562-saradc compatible string for the 4 channels of
+10-bit resolution supported by SARADC in RK3528.
 
-Jonas Karlman (4):
-  dt-bindings: iio: adc: Add rockchip,rk3528-saradc variant
-  iio: adc: rockchip_saradc: Add support for RK3528
-  arm64: dts: rockchip: Add SARADC node for RK3528
-  arm64: dts: rockchip: Add adc-keys node to Radxa E20C
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
- .../bindings/iio/adc/rockchip-saradc.yaml     |  1 +
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 50 +++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 13 +++++
- drivers/iio/adc/rockchip_saradc.c             | 18 +++++++
- 4 files changed, 82 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+index fd93ed3991e0..86eae9672c04 100644
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+@@ -15,6 +15,7 @@ properties:
+       - const: rockchip,saradc
+       - const: rockchip,rk3066-tsadc
+       - const: rockchip,rk3399-saradc
++      - const: rockchip,rk3528-saradc
+       - const: rockchip,rk3588-saradc
+       - items:
+           - const: rockchip,rk3576-saradc
 -- 
 2.48.1
 
