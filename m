@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EE54C021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC70C19F32
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H9bVN7Gb/+RMePPlok3Ma38Djk3JVAoTz4wiJVHM0pY=; b=LFScVojtOkofmy
-	eNrXP72Y4n9z+QnFmRgV2ubV3NfXJsJ/X0/Bzj+hsbOugnqV8DNv2Qt0g1sKaoAkE1h7wIp3tZMr5
-	lD7u6fnByJ+Nmj4AGu3QFu9ICbkk4GHxwKI3rtmwguxLZC193r7zz4o2KU2hp7sim0yb6tjma4b8Z
-	1G1vXUv1hsEKOpse8AWcHT7+liU7HUFz40Oe2nuuAAG2iu9cu6sDb3NWObB5XPR6fxs409enC3mlK
-	d6XNYawj83/Td9h8eaPwJKqYGsA8Q5D/lmuAELqBoSIjj1q+RehrdtbU3SWv2wxn3o9/8nCyk8lPi
-	Nhs1aLXCnhr4yE17rBwA==;
+	List-Owner; bh=+OHqFygk0O4hdGXiZ/LwMmiT7QO7dhGj1tinA0IjhYE=; b=AGBdKJYdFam3yH
+	pjDSGcyQW+4bQwSZLGWTS3HlljJVDV59GpjkLRGXMWH/61qSIWHut4ABtohvLbWdKDojeoA6nCP4v
+	lwWX1smUcoCtUw6x9RU189m4CzZ+kJwn+dezvayb/jrXbrfpbEXgNYbeeGhu+QQ5u5GZNW4chenEt
+	LIhn57ClqtO5S8DHo/OztrWEm/NVMiD7AXDpcHK7/qY6RXJMhzxf1pje3fkQAEnv+xWhgRsdgK3KY
+	GCmB+Bx6FXjs1CSkjRWCJytwk/tmsXdepIeT06uP3iLR9HDO532/b8yCsIsdbmzh9M+OfmUh3G6WJ
+	LhQnTpXLf9s++H8Cks1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndwH-00000007X94-0Lh3;
-	Thu, 27 Feb 2025 13:28:33 +0000
+	id 1tneB7-00000007a2b-1fgB;
+	Thu, 27 Feb 2025 13:43:53 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tndny-00000007V0k-1HWW;
-	Thu, 27 Feb 2025 13:19:59 +0000
+	id 1tne5i-00000007Yo7-1tNU;
+	Thu, 27 Feb 2025 13:38:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=zjjw7JOmUhRXjBZyb6Bvgigsi+ztWFQm+GvGLe901ak=; b=dqRuIPdTeFWHjBfK0767I0MAYe
-	MnycsZx+FzO1ncp3G+LLW036SoUDmnB6W/akxuV799LCV6ebS/e9HZOfkojIYzMwCILQ4snttzf7F
-	yhf5+lVHoai+a8ZhIM7vNZjKkrsxotZ1qLDyPL1e8m7RnWtFjgzIEbz2+n+FG1ZDmLkWBZjiL+pBV
-	1vLDS3SA7dYUDtcuufbZpd5FuGK6dem7xBqPWskOXFPVDMoMrCJvbPwIKQYKd8tc91tj2VDO2l09W
-	mt2zQcVIofdfrNdp88A0nxbmY6RxP0WP8IaJwlI3tnOfL28ZNMD82slWLu/tpOE1vDrJgJ+RH5/BW
-	Wvhsq7Yg==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
+	bh=EqrpVcukWiPJHZAYarKFFVSdPnEDo55grdH2sUNNyGU=; b=aZ3vtivB+XgSXInEOjW01ujZzv
+	L5CT2fPsvG8DkgwlFzHlgNaCpePMzTvbxuvMSP4LvayGKg8k0dh0aCmGnqkM4XCGtiZEcVfjgREiv
+	xZRQPa/vXFQ/MX4SLyKHr6lAGrDJCcA28V3g7xNW1jhuPgzw8FMnKV0lFs+9xnlHfVirfCqflteRW
+	PQo7XyklEH5JkHwFqT+gNB+vAkA2spnvszkITg6J4R+PavD5t3zxiVrb+hhk+PUdINu3SN2+/ZWPA
+	Rthh9I/Imy7oNe+TycnWKm1U4I7Dxz2M0nYUyWLbbedGa5RL4bQgqvBKS66C77FQVyoZkPdJhhmie
+	+9WcH+8g==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tndnp-00013Q-Rf; Thu, 27 Feb 2025 14:19:49 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org,
- Kever Yang <kever.yang@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-pm@vger.kernel.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 2/2] soc: rockchip: power-domain: add power domain support for
- rk3562
-Date: Thu, 27 Feb 2025 14:19:49 +0100
-Message-ID: <2307779.KTMopqUuYO@diego>
-In-Reply-To: <20250227105957.2341107-3-kever.yang@rock-chips.com>
-References: <20250227105957.2341107-1-kever.yang@rock-chips.com>
- <20250227105957.2341107-3-kever.yang@rock-chips.com>
+	id 1tne5a-00018T-D8; Thu, 27 Feb 2025 14:38:10 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Tianling Shen <cnsztl@gmail.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Justin Klaassen <justin@tidylabs.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix u2phy1_host status for NanoPi R4S
+Date: Thu, 27 Feb 2025 14:37:55 +0100
+Message-ID: <174066344876.4164500.4889326027410145249.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250225170420.3898-1-justin@tidylabs.net>
+References: <48c705e65cc8e8d4716b41a4a87170e3@manjaro.org> <20250225170420.3898-1-justin@tidylabs.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_051958_345030_ACF15CA9 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20250227_053818_489202_7ADA547A 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,23 +84,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 27. Februar 2025, 11:59:57 MEZ schrieb Kever Yang:
-> This driver is modified to support RK3562 SoC.
-> Add support to ungate clk.
-> Add support to shut down memory for rk3562.
+
+On Tue, 25 Feb 2025 17:03:58 +0000, Justin Klaassen wrote:
+> The u2phy1_host should always have the same status as usb_host1_ehci
+> and usb_host1_ohci, otherwise the EHCI and OHCI drivers may be
+> initialized for a disabled usb port.
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Per the NanoPi R4S schematic, the phy-supply for u2phy1_host is set to
+> the vdd_5v regulator.
+> 
+> [...]
 
-forgot one thing, patch author doesn't match.
+Applied, thanks!
 
-You have a first Signed-off-by from Finley, so the patch author
-should be the same - similar to how the binding patch already is?
+[1/1] arm64: dts: rockchip: fix u2phy1_host status for NanoPi R4S
+      commit: 38f4aa34a5f737ea8588dac320d884cc2e762c03
 
-
-Heiko
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
