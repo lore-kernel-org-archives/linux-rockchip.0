@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4825C19F2E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 077BEC021BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5dvZpfWAfv2gkuLHKFTSpFvOfyIQOIMGKkuM9OKgf+M=; b=QAb4YY9KazPNFd
-	lPcD9+8JXs0YcwwFImoSBTEvf36S8fjq4QCrKSdE4+UN5BwPPtYV759v5G0dpK+K+ivWlaQvvI649
-	iYDI7QxbjPyvkrobJM0zCtGv4FD7Fjc2PlOoxedu4Z4krgCCQzJlQ+5m7Gv/xLrV/p8+wMM72+w2l
-	DZn9b2pUoGJd/o/4tcIK5hlgrQduu856YMJhwQ4Qvm4jwVR0wiMXw0OFefIm2IWKpby/cEHa/mv4x
-	qIPpy5CntQU7EbjQSIhZBn7VSUXACigQVzW72SLNGzJ7YtkCrQJql/eqHXLqyiPU8wKN9rYYzpc3X
-	bAZda3Kgcp2WpZlGi8Zg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WqGI+mBlIKRq9X/d75KCWJY+M4D6CzqAXZ0xSHd59VE=; b=EA/ZuuTdKNKQtB
+	bGpoC6i814p6ISoyzdp52V7gay/291dnweW/pnA1GEYaXJ2fA1cMESO5Pa+Rry6HSe13SIsIJnV5k
+	LfQUAr4OyzL6MGJTmDwMW4KbA97jLxbySz3b4O38bRGtA8TLgQAvz5ODhY3DGIN30h86QeMARaSCT
+	0CYV8dmK7hI9tqodIhyG2IP0483gaHCpAk8yedQhIvFx2+pxp1PdOZy2/MdI+fA5NNVWAFso4gz9a
+	MuuV+qzWEXQ/4NUCNFtI1TD0HoMaHabWq0M6fVQjxr7P02Iui45aSQfmJbPy+u716Kkl5l3iohrCT
+	5B6vAE5c9qt7V1uCoHAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbrN-0000000789u-1mZZ;
-	Thu, 27 Feb 2025 11:15:21 +0000
-Received: from mail-m15590.qiye.163.com ([101.71.155.90])
+	id 1tnbuZ-00000007900-1MWy;
+	Thu, 27 Feb 2025 11:18:39 +0000
+Received: from mail-m32117.qiye.163.com ([220.197.32.117])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbjK-0000000765f-1hCD;
-	Thu, 27 Feb 2025 11:07:03 +0000
+	id 1tnbkO-000000076L6-27gv;
+	Thu, 27 Feb 2025 11:08:09 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id c65b3758;
-	Thu, 27 Feb 2025 19:06:58 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id c65b37d9;
+	Thu, 27 Feb 2025 19:08:05 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
-	David Wu <david.wu@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	netdev@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 	linux-kernel@vger.kernel.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	"Jan Petrous (OSS)" <jan.petrous@oss.nxp.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Eric Dumazet <edumazet@google.com>
-Subject: [PATCH v2 3/3] ethernet: stmmac: dwmac-rk: Make the phy clock could be used for external phy
-Date: Thu, 27 Feb 2025 19:06:52 +0800
-Message-Id: <20250227110652.2342729-3-kever.yang@rock-chips.com>
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2 1/3] dt-bindings: nvmem: rockchip,otp: Add support for rk3562 and rk3568
+Date: Thu, 27 Feb 2025 19:08:02 +0800
+Message-Id: <20250227110804.2342976-1-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250227110652.2342729-1-kever.yang@rock-chips.com>
-References: <20250227110652.2342729-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUwfSFZLQ0sfSUweSUpIHktWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-X-HM-Tid: 0a954716998c03afkunmc65b3758
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0aH1ZOHUwZGkhNGUNOTR9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a9547179f2b03afkunmc65b37d9
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OCo6TDo*NDIQQg0KEhQ4L05K
-	Hi8aChFVSlVKTE9LTU5PT0pCQk9OVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSU5KNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PBQ6TAw5MjIWNw1JEhQxLilN
+	CQIaCjFVSlVKTE9LTU5PT0NNSENNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTEtPNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=SDzKw6O1ad1HTN56DBqdOpnbD7IMM+V26Hprp/qQctw4Cq814Ew4vphHWMvo41Uo9IMcW2QvJHtUuP2ioVhdBgeWTgdGcKx0grhhKovB11Ggb6cYv5x0U0Pz235kKKtt8REWDYLndDhLkQduFSLlfMP1UWfQMEOuVzGN9GhTROc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=jrwDkuFUXUDj9MICD8KUchO+3GWZ8SbQ7JyWrq5N/Ck=;
+	b=hspV/toZNKfN8Mbx1pRYGbdIchgyFEK23TYRO89SrNo6eUGZZ9ZjFplwfLsJsKzcdU9px4owG7jeGH9ZGJgDarEPrIEjE4BSA0XGr75HULNHQ+jfsjBMF3Pe5bZARBaiENe2VtHIcYtPulKO5eqsgqLZjlLN+PAzDcbKE1xdA2A=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=qPdG0uqXJNCLpi+c8n+pbqoC1a0sWOgDfdz7/HqC6dE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_030702_637764_22AA2CB2 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20250227_030808_692903_B8766E77 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +78,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Wu <david.wu@rock-chips.com>
+Add compatible entry for the otp controller in rk3562 and rk3568, add schema
+for different clock names for new entry.
 
-Use the phy_clk to prepare_enable and unprepare_disable related phy clock.
-
-Signed-off-by: David Wu <david.wu@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
-Changes in v2: None
+Changes in v2:
+- Update the commit message and add maxItems in schema.
 
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ .../bindings/nvmem/rockchip,otp.yaml          | 53 ++++++++++++++++---
+ 1 file changed, 46 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index ccf4ecdffad3..cc90c74ec70c 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1867,12 +1867,14 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
- 		clk_set_rate(bsp_priv->clk_mac, 50000000);
- 	}
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+index a44d44b32809..7572f4a1d73b 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+@@ -14,6 +14,8 @@ properties:
+     enum:
+       - rockchip,px30-otp
+       - rockchip,rk3308-otp
++      - rockchip,rk3562-otp
++      - rockchip,rk3568-otp
+       - rockchip,rk3588-otp
  
--	if (plat->phy_node && bsp_priv->integrated_phy) {
-+	if (plat->phy_node) {
- 		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
- 		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
- 		if (ret)
- 			return dev_err_probe(dev, ret, "Cannot get PHY clock\n");
--		clk_set_rate(bsp_priv->clk_phy, 50000000);
-+		/* If it is not integrated_phy, clk_phy is optional */
-+		if (bsp_priv->integrated_phy)
-+			clk_set_rate(bsp_priv->clk_phy, 50000000);
- 	}
+   reg:
+@@ -25,19 +27,15 @@ properties:
  
- 	return 0;
+   clock-names:
+     minItems: 3
+-    items:
+-      - const: otp
+-      - const: apb_pclk
+-      - const: phy
+-      - const: arb
++    maxItems: 4
+ 
+   resets:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 4
+ 
+   reset-names:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 4
+ 
+ required:
+   - compatible
+@@ -62,12 +60,45 @@ allOf:
+       properties:
+         clocks:
+           maxItems: 3
++        clock-names:
++          items:
++            - const: otp
++            - const: apb_pclk
++            - const: phy
+         resets:
+           maxItems: 1
+         reset-names:
+           items:
+             - const: phy
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3562-otp
++              - rockchip,rk3568-otp
++    then:
++      properties:
++        clocks:
++          minItems: 4
++          maxItems: 4
++        clock-names:
++          items:
++            - const: usr
++            - const: sbpi
++            - const: apb_pclk
++            - const: phy
++        resets:
++          minItems: 4
++          maxItems: 4
++        reset-names:
++          items:
++            - const: usr
++            - const: sbpi
++            - const: apb
++            - const: phy
++
+   - if:
+       properties:
+         compatible:
+@@ -78,8 +109,16 @@ allOf:
+       properties:
+         clocks:
+           minItems: 4
++          maxItems: 4
++        clock-names:
++          items:
++            - const: otp
++            - const: apb_pclk
++            - const: phy
++            - const: arb
+         resets:
+           minItems: 3
++          maxItems: 3
+         reset-names:
+           items:
+             - const: otp
 -- 
 2.25.1
 
