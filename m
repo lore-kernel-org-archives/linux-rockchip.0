@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95127C021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76DAC19F2E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RXHEv786gNCievYkgYfnSIg2Mo4vD08Xomgs89iI/G0=; b=TY/CCB8rxX/LUM
-	xrzmerMATYSeXfwpqBwigMQ4BA4lUg0WZ5g4nz+bAijnL7jEZdy9ybCMcCncwVogFPRIfI4LkZTV5
-	Scyhy+HGXU/FoNGrtCsr2D0ORtrMYSTaw/Ka25YwY68uQuzCy5e4ItiHpGxXN4P9Is4H3qnbhqx34
-	4vrsUyFMJh9TLaMtPmRFjBLkbXeHiLXpA4mzxYG6SRkuLI0AJ6KoEnYAT+x1YyInvj2Taj8QrFCaR
-	mz1vlW7VxjlAIPH5bdjbkmKU8s4xNHJA1uwGR633mHryYg69xR0CjBYD5HtoD4wjLXaOl215WMdDl
-	97MCy7WJ5ojz6BWJ/gkA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VTQM5+ywZUTb3uMH9Chd8mvHZFryWEDe1BcUhfHx8yI=; b=qKQXCQ4m9Zcp66
+	2/wtSjmgBz0EZYpTX8Uh/OQNiBKMwFmWhZTjQLqe6z7I7MExKYp7CVqqkhA2jvsN9iaUBwcgbiiSa
+	3ewmtxtEZwxBka1SzNWUHxTuUz8fMKWRTyRJhEMWkj2vXabIc4h+0PrW+3LOVA5XjJISsZOwNSQEU
+	wIFCU7Bh7wF5ZJx80H1DCPl4vGUNN8xNld/pTgymcTD412wSBvZHhr/HqbWlPzfqSC/uI9O/UkwiT
+	geBKnBazg5e6wVZhiNF5LYdxV2ZI0la/wMJfppPR9WTaCtUQl+3nE6lQJfkoMAWdFtmr/7TBn75tp
+	6jGp0ReehjU466aZtYqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbqs-00000007800-0KQF;
-	Thu, 27 Feb 2025 11:14:50 +0000
-Received: from mail-m21471.qiye.163.com ([117.135.214.71])
+	id 1tnbr2-0000000782U-1py3;
+	Thu, 27 Feb 2025 11:15:00 +0000
+Received: from mail-m49204.qiye.163.com ([45.254.49.204])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbgE-0000000759T-45fN;
-	Thu, 27 Feb 2025 11:03:52 +0000
+	id 1tnbjG-0000000764z-2jC7;
+	Thu, 27 Feb 2025 11:06:59 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id c65b3593;
-	Thu, 27 Feb 2025 19:03:45 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id c65b3753;
+	Thu, 27 Feb 2025 19:06:54 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
-	Simon Xue <xxm@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>,
-	linux-iio@vger.kernel.org,
+	Jose Abreu <joabreu@synopsys.com>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Rob Herring <robh@kernel.org>,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	David Wu <david.wu@rock-chips.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 2/2] iio: adc: rockchip_saradc: add rk3562
-Date: Thu, 27 Feb 2025 19:03:43 +0800
-Message-Id: <20250227110343.2342017-2-kever.yang@rock-chips.com>
+Subject: [PATCH v2 1/3] dt-bindings: net: Add support for rk3562 dwmac
+Date: Thu, 27 Feb 2025 19:06:50 +0800
+Message-Id: <20250227110652.2342729-1-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250227110343.2342017-1-kever.yang@rock-chips.com>
-References: <20250227110343.2342017-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQksfGlZDSkgdHR5DHx0eGEpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUMdTFYaGB0fTkgYQkwYTB5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a954713a96603afkunmc65b3593
+X-HM-Tid: 0a9547168b4f03afkunmc65b3753
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PhQ6Pio5SDIcEQ0hKB1KMk4U
-	HTQaCTNVSlVKTE9LTU5PSUlNQ0NNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJSktINwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NBA6CQw6LTINIw0LKBISDCwI
+	GkMwFDNVSlVKTE9LTU5PT0pNSUxMVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTUpNNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=d14/TOtjg9Yv9IjbpxXKPiLx6J8K3jXLTfVGaC3MteGr+YUR1nakxXWmFC7YaspoSIZyajxEvl5bHRL7Dm33sLHHrc1OYfS1Z+sYcm6DqbJmhmBy05Pa3BVKUuK7DmPzkOp1MNqsg3X71TBqy1/l9tvrp21dafzoC//1S3mkqXE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=v2NdId1ozjR949P6fBcdgfhadjWxpSqZ7R8aXjvMQIE=;
+	b=j9uRAdCLAZBHyRBM1IUi9c3b2iIQOdTnuvJYVQRSibTDS2vPxDZgM9Kh5jNR7JJhEOVr6gv0fcG8RyEpo1XI1DybHcqnXSDVGdsAQod763cpywfJrLJvxipXeODZZVgniCX3amL7w9YMfU01llaOFXSsf4SwYRnFxIFkO7z45Ow=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=xV+WNQl8ROCA2e9xUBpBg/FLDkWJ/IRVuqOd98DcSZE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_030351_293322_E9E4F012 
-X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-CacheID: sfid-20250227_030658_863869_C806C023 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,68 +87,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Simon Xue <xxm@rock-chips.com>
+Add a rockchip,rk3562-gmac compatible for supporting the 2 gmac
+devices on the rk3562.
+rk3562 only has 4 clocks availabl for gmac module.
 
-rk3562 is using v2 saradc with 8 channels.
-
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
-Changes in v2: None
+Changes in v2:
+- Fix schema entry and add clocks minItem change
 
- drivers/iio/adc/rockchip_saradc.c | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+ .../bindings/net/rockchip-dwmac.yaml          | 23 +++++++++++++++----
+ .../devicetree/bindings/net/snps,dwmac.yaml   |  1 +
+ 2 files changed, 20 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index a29e54754c8f..9995f95bafe0 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -1,7 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0-or-later
- /*
-  * Rockchip Successive Approximation Register (SAR) A/D Converter
-- * Copyright (C) 2014 ROCKCHIP, Inc.
-+ * Copyright (C) 2014 Rockchip Electronics Co., Ltd.
-  */
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index f8a576611d6c..81ddad924e35 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -24,6 +24,7 @@ select:
+           - rockchip,rk3366-gmac
+           - rockchip,rk3368-gmac
+           - rockchip,rk3399-gmac
++          - rockchip,rk3562-gmac
+           - rockchip,rk3568-gmac
+           - rockchip,rk3576-gmac
+           - rockchip,rk3588-gmac
+@@ -32,9 +33,6 @@ select:
+   required:
+     - compatible
  
- #include <linux/bitfield.h>
-@@ -275,6 +275,25 @@ static const struct rockchip_saradc_data rk3399_saradc_data = {
- 	.power_down = rockchip_saradc_power_down_v1,
- };
+-allOf:
+-  - $ref: snps,dwmac.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -52,6 +50,7 @@ properties:
+               - rockchip,rv1108-gmac
+       - items:
+           - enum:
++              - rockchip,rk3562-gmac
+               - rockchip,rk3568-gmac
+               - rockchip,rk3576-gmac
+               - rockchip,rk3588-gmac
+@@ -59,7 +58,7 @@ properties:
+           - const: snps,dwmac-4.20a
  
-+static const struct iio_chan_spec rockchip_rk3562_saradc_iio_channels[] = {
-+	SARADC_CHANNEL(0, "adc0", 10),
-+	SARADC_CHANNEL(1, "adc1", 10),
-+	SARADC_CHANNEL(2, "adc2", 10),
-+	SARADC_CHANNEL(3, "adc3", 10),
-+	SARADC_CHANNEL(4, "adc4", 10),
-+	SARADC_CHANNEL(5, "adc5", 10),
-+	SARADC_CHANNEL(6, "adc6", 10),
-+	SARADC_CHANNEL(7, "adc7", 10),
-+};
+   clocks:
+-    minItems: 5
++    minItems: 4
+     maxItems: 8
+ 
+   clock-names:
+@@ -117,6 +116,22 @@ required:
+ 
+ unevaluatedProperties: false
+ 
++allOf:
++  - $ref: snps,dwmac.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3562-gmac
++    then:
++      properties:
++        clocks:
++          minItems: 4
++    else:
++      properties:
++        clocks:
++          minItems: 5
 +
-+static const struct rockchip_saradc_data rk3562_saradc_data = {
-+	.channels = rockchip_rk3562_saradc_iio_channels,
-+	.num_channels = ARRAY_SIZE(rockchip_rk3562_saradc_iio_channels),
-+	.clk_rate = 1000000,
-+	.start = rockchip_saradc_start_v2,
-+	.read = rockchip_saradc_read_v2,
-+};
-+
- static const struct iio_chan_spec rockchip_rk3568_saradc_iio_channels[] = {
- 	SARADC_CHANNEL(0, "adc0", 10),
- 	SARADC_CHANNEL(1, "adc1", 10),
-@@ -324,6 +343,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
- 	}, {
- 		.compatible = "rockchip,rk3399-saradc",
- 		.data = &rk3399_saradc_data,
-+	}, {
-+		.compatible = "rockchip,rk3562-saradc",
-+		.data = &rk3562_saradc_data,
- 	}, {
- 		.compatible = "rockchip,rk3568-saradc",
- 		.data = &rk3568_saradc_data,
+ examples:
+   - |
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+index 91e75eb3f329..97d42ab8d374 100644
+--- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+@@ -82,6 +82,7 @@ properties:
+         - rockchip,rk3328-gmac
+         - rockchip,rk3366-gmac
+         - rockchip,rk3368-gmac
++        - rockchip,rk3562-gmac
+         - rockchip,rk3576-gmac
+         - rockchip,rk3588-gmac
+         - rockchip,rk3399-gmac
 -- 
 2.25.1
 
