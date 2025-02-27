@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7705AC197BF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 20:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8219C282C5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 23:58:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lT8KJZ+MbAwMtApGARiwsibrnNoqwF28DhanYAcLl4A=; b=dA9izL4C/ANQqz
-	UygBZlTzEaZX5KJNtGk4cgJDmR8Uc78PCrSs3B0dDnyllu+TJHAIsHTbQXBL988BLvAMVqLrkAQ9l
-	pf5XyFWVfwzPJuQs9UTWZHHWROiOhf9ixfGSHUA12DNdGxMqNYBPhk1UxgEFp5jjzfmf0P+Ez3OXr
-	0snOMf14FpV4zWDgzLoM9ZGJyrZ7D5uei0R91cdGmwhUOilFlYDmzNORxqhXC/6R6bIYoTi7Z0c6Y
-	G31dmaPZV8Ztgub6NQZ99W4U+HNRVkA1DKW8vAlx9tToGtyDteSrLNgvuPTE8QKXkmXUKDZM6jrEq
-	iwO6X9xotT6FORvS261Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FqOyV314Zn7B+DOWp6mpi97pFWNdodXbZMkLzeVemhE=; b=fwm66gPqCbcoeL
+	K0Xfljz2ih22xkXsH9YHt3n17vPgAftpg5JCaMlUoZfibunNdIJqKfVOGV1QWMB3G4+o1+Szwmsyk
+	h+QuJXYIGkunQqIwN8sgL/GHr4ucdphgpUGZWe4GhuC/W2c1PEmhzQA4I/nca4SF2nwKedZwyTE5+
+	5Wdid4aOgL8asiydetxvAfAQSUR/oVgvpXwMQnBcpuxIk9cz/X3Ya6/x9q4nzsF1mgzziyFkVhdUA
+	mwhaIElY7NtqbsYp6FvAKF7ckK2YwgB5vakR/tzhUqX3zxaY93pWeoqollqh2Q1Ma91OPqSN9q/X/
+	ORMGa47OtTFcJKktu1DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnktK-00000008pyo-3hyV;
-	Thu, 27 Feb 2025 20:53:58 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1tnnm8-00000009Djc-2DQ7;
+	Thu, 27 Feb 2025 23:58:44 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnkrk-00000008plR-23El;
-	Thu, 27 Feb 2025 20:52:22 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5494bc4d796so385550e87.3;
-        Thu, 27 Feb 2025 12:52:19 -0800 (PST)
+	id 1tnnkU-00000009DYn-0Wng;
+	Thu, 27 Feb 2025 23:57:07 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-7273b01fe35so888824a34.2;
+        Thu, 27 Feb 2025 15:57:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1740689538; x=1741294338; darn=lists.infradead.org;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
-        bh=ORq9jkRCIXj2zv20dBQ5aH6mM2s+q06FC9H+4PepyX8=;
-        b=inMj4pYClzrKx54wz626bj6gKVqPSArmboFN8Uk00nl7iod+o/oIJPMaV90/OFhzcX
-         MW8wdGMLF7qCHhchwoLcvXhTcCVtmhwyBccUwOrkmkfpWp4cdms5gTFtLGZjOK6V1XOa
-         LZap8QkQjmnKJtX3z9F7LT5KVnqAoD8fVQNAjUcoBtDmuKJ51AShmu+AIavqvZ1zGNUs
-         rB1hKLztx/eIuWfsvEogAxB/2S2CyxCf4/+4bRlRXq77LOTiiM/YRem4mlBSSPhIv95P
-         5OujRVvQCQp7WgR2/p+ZE7AmW/0sL6BO8fKSk86kyABhURise1lhEu+8NyKhNLxtrmcr
-         Wdng==
+        d=gmail.com; s=20230601; t=1740700620; x=1741305420; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=D9SSAA5SUZ0CJogIz5q0cDzB1Ecy5N6mhChS1/7HJEM=;
+        b=HIBke2HS0Egk8cUmA7wZD25ofY68JU5MUfUMqWPJQTLIlEwZMQBTVcBbZVMKiSDVnA
+         FUkMdFlI0LJMd1iPK0eZh0sygNyK1F2Yrd7jYeqLxVbcQqRyIBJcMj7gMsP00kqs7zVi
+         OSGEU5Ymw2M+iaCt7R85LNA0D/33cyEJmGBusamLf17N6h58q+c2IzC/jSo9MAQ1SIje
+         1noMDQ4CwzoidcVUCl1bOGZ0QeAUOvU+LCwpBpNsZV2cTOVh9fZaQzUDapoYWs3FnxfK
+         +dRg/WKmB/7bFsuEur7OsvKQRH9iZyS3uQEyx440sC5mcoThQ8iFcfKjpZ8AS4UGlsL8
+         L4tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1740689538; x=1741294338;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ORq9jkRCIXj2zv20dBQ5aH6mM2s+q06FC9H+4PepyX8=;
-        b=jjAvbZ/E8nG7lhoQjaXoFPzvTMR5BWAkL8QW0jfQ3kqJwRelUP7QBOOyltrRhZJjjQ
-         3UEXYqpWxo6H8NwIZy81G2OHvipx4FGLihPCXAyQD8BmwU/78yFbqZkeB9WPETFrbmu9
-         coLuNrQsj6XPbVVAJcJtr7SEL4+VrZZUmHjXJ6Sh9z37h0CjuUNJR5GFyCR3Lx0k+XWG
-         H1f+5tCzoOEXepcj4VaTh+peYUwcrJNKFN7fbBQovyMzMvSoCfljZ7+qmf3BrMX10S/P
-         YVUmdI4ZSYwbJTIEdzAL0D7wQsEGcN73vrtih130ERUN3Y4mkoBr29+n16v9DeGbApWm
-         dFXg==
-X-Forwarded-Encrypted: i=1; AJvYcCVBmYf23gGJx7/bEL23+usyrwQixjfaSyW2lh9HtWm8vP1jPF+b9KcC0kBPRsaLBDEf6vBm04iJ+FvxWmlqPDs=@lists.infradead.org, AJvYcCWUzoBYPxd/HrTH6m8pS2dXTe2e7igCE/dwqxmM5kwXVvlzGKzOp7olQNCVnNT2uUWEV5NCo9Y9zn68LvIzD82c@lists.infradead.org
-X-Gm-Message-State: AOJu0YyWXC1VZ+jtt7wB5k2xvRby8BwGfllwNec5s71axK5vql49RGFG
-	mb8JttqycbsK7zOU25lsiDbW9g7rYvPNiXgMQI61tIgRGRBVGCIhbHFHMlnu
-X-Gm-Gg: ASbGncuh9uk2NZKSYnQDXt/+w79IQfHLZC/wYC0Wd0bEBobUVqv7xOllTvJqj4fzX1A
-	XavvxJL+PN/EwwU8nErD519GpJN8FFPmZ0Ykih7otxBi1K9vH+4Dslk+Y8LQ6L43zRGRCqo/4Fd
-	8p5sRCNV9TGo65Rpfu+gBYSTSK8E7klZjTXyv+J9JiD+JsBXhAWMouvsFsyhlQU2Hjf8DnRJn2U
-	cUiED2Xb7QBPDRgQ+/tZgNflsPG5gHg+SrOYNfHgDFQuEoUuti2Jp8YnzqH1CVrR7bW0AFpXkVa
-	3olVrkWgFegY
-X-Google-Smtp-Source: AGHT+IGihLlnXop/m8uLi6YA+JiEFOKQNSYL2eLkoXrXYoArVJ7ew7FmuX17wQiiXQfECok7M8pYyw==
-X-Received: by 2002:ac2:411a:0:b0:549:4e7f:24af with SMTP id 2adb3069b0e04-5494e7f274cmr57045e87.0.1740689537881;
-        Thu, 27 Feb 2025 12:52:17 -0800 (PST)
-Received: from razdolb ([77.220.204.220])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5494a149b07sm105767e87.157.2025.02.27.12.52.15
+        d=1e100.net; s=20230601; t=1740700620; x=1741305420;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=D9SSAA5SUZ0CJogIz5q0cDzB1Ecy5N6mhChS1/7HJEM=;
+        b=Zt/vNt+mYm4Kj34N/HxBh+ZH8Zjhd+DxjG+ZkLBbcZM/D1DJilRjabO04XYxdxqyrS
+         y5sjIow+SCcE+Wx2s4vGrKXo/fxZSTxlFCVKbibgwhffOER2bHFjPtlRBp5mh+BHiqhf
+         f+QLOGl6bVj7kbYnOZsA36c/Ei4Y//D86c6NAgPz+WrT/a5Hy7Bh/cm1EkqwZnUNsBYl
+         TtWHNCvhxBca4IUlmNBMRvzallRCn8T59INV9e8kKC0zxFomJYAICsmLF0BpjVkd3qOZ
+         lhDqVU/ZPmTtd3hcCktu3wHzL9Kc67KlZfy1dQqW7mPkzVJJP3PjMsF046sxDqb8mN6N
+         Vo6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVG5BRigD0Q8d5/ndY1A0TfzhfZWHWoGh9VZg4hZMEvIxSaAY/pjSRzAxgrpaSvxPFvRkdmo2B4iQ3hZH43x/JI@lists.infradead.org, AJvYcCVlmOjyCq3Z5T6S3RgL2XnASF3WTzFqkNuQy3uB+0+XKUOuPKMQ5DX0wa+So0iR8V9mRdfCno5Xs8xQFsTrEks=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy6QuWx/v6E7w1U4vjxU5emQvUMkHsvJteVMF4+2odiBKgrzB6O
+	QRMVJ/AG/BoOoXk+N5LlYtsueFyoE3SBwA19mN2KvruROX9DpNUm
+X-Gm-Gg: ASbGncsg1YlPEBuJNCp/VVgEn0NKiXRyCmtLj8+hQuNPxaZV29DJcwUWqiAi13rY5SK
+	EPJFDbbjw31IEj3oMoZEkhsv4HjpKAv7yRMpOImGJjSCVGNq/++ebdvel5dVvepvF3Mjglq66fb
+	Q5EE3Dy8L8aRa8/C5BCkw0NfEA184JsxnkSfwy8GkgWXJ2vqR0QAXHBVCS1pRyqH+fPYdAX7vDy
+	/AIrFYBqGMoQS4AgT9j8WiMIuvKInJrDChrZPIL0BDGdqXMmiJkjSQvz/lYCTD3QetS4ugpT3w+
+	wk9c75Iu26HLzlKQZvMkRAvQL82/Eqy+25k=
+X-Google-Smtp-Source: AGHT+IEzxJ3/aDFJMSIXRCVTUCYikYwc7MbgxdmygO8C6wM+9nFe1yFcfZ8GaoUVZ69BjdiyQVU/uw==
+X-Received: by 2002:a05:6830:370f:b0:727:42e0:be96 with SMTP id 46e09a7af769-728b82670a9mr820001a34.2.1740700620481;
+        Thu, 27 Feb 2025 15:57:00 -0800 (PST)
+Received: from tower.cjhon.com ([2603:8081:ad00:4a:87c8:8ae4:f338:6188])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-728afd7694fsm443893a34.50.2025.02.27.15.56.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Feb 2025 12:52:17 -0800 (PST)
-References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
- <20250103152326.GP554@pendragon.ideasonboard.com>
- <87bjw9s4s3.fsf@gmail.com>
- <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
-User-agent: mu4e 1.10.9; emacs 29.4.50
-From: Mikhail Rudenko <mike.rudenko@gmail.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Dafna Hirschfeld
- <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
-Date: Thu, 27 Feb 2025 23:46:44 +0300
-In-reply-to: <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
-Message-ID: <87ldtraz5v.fsf@gmail.com>
+        Thu, 27 Feb 2025 15:57:00 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Florian Klink <flokli@flokli.de>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Ondrej Jirman <megi@xff.cz>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH 0/4] Orange Pi 5 series HDMI extras
+Date: Thu, 27 Feb 2025 17:56:19 -0600
+Message-ID: <20250227235623.1624-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_125220_530108_74132D5C 
-X-CRM114-Status: GOOD (  28.14  )
+X-CRM114-CacheID: sfid-20250227_155702_164264_9BEF03A9 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,89 +105,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+HDMI Audio and HDMI1
 
-On 2025-02-27 at 18:05 +01, Jacopo Mondi <jacopo.mondi@ideasonboard.com> wrote:
+Need testers for Orange Pi 5 Plus
 
-> Hi Mikhail
->
-> On Tue, Jan 14, 2025 at 07:00:39PM +0300, Mikhail Rudenko wrote:
->>
->> Hi Laurent,
->>
->> On 2025-01-03 at 17:23 +02, Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
->>
->> > On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
->> >> Currently, the rkisp1 driver always uses coherent DMA allocations for
->> >> video capture buffers. However, on some platforms, using non-coherent
->> >> buffers can improve performance, especially when CPU processing of
->> >> MMAP'ed video buffers is required.
->> >>
->> >> For example, on the Rockchip RK3399 running at maximum CPU frequency,
->> >> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
->> >> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
->> >> non-coherent DMA allocation. CPU usage also decreases accordingly.
->> >
->> > What's the time taken by the cache management operations ?
->>
->> Sorry for the late reply, your question turned out a little more
->> interesting than I expected initially. :)
->>
->> When capturing using Yavta with MMAP buffers under the conditions mentioned
->> in the commit message, ftrace gives 437.6 +- 1.1 us for
->> dma_sync_sgtable_for_cpu and 409 +- 14 us for
->> dma_sync_sgtable_for_device. Thus, it looks like using non-coherent
->> buffers in this case is more CPU-efficient even when considering cache
->> management overhead.
->>
->> When trying to do the same measurements with libcamera, I failed. In a
->> typical libcamera use case when MMAP buffers are allocated from a
->> device, exported as dmabufs and then used for capture on the same device
->> with DMABUF memory type, cache management in kernel is skipped [1]
->> [2]. Also, vb2_dc_dmabuf_ops_{begin,end}_cpu_access are no-ops [3], so
->> DMA_BUF_IOCTL_SYNC from userspace does not work either.
->>
->> So it looks like to make this change really useful, the above issue of
->> cache management for libcamera/DMABUF/videobuf2-dma-contig has to be
->> solved. I'm not an expert in this area, so any advice is kindly welcome. :)
->
-> It would be shame if we let this discussion drop dead.. cache
-> management policies are relevant for performances, specifically for
-> cpu access, and your above 7.7ms vs 1.1 ms test clearly shows that.
->
->>
->> [1] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n411
->
-> I would like to know from Hans if the decision to disallow cache-hints
-> for dmabuf importers is a design choice or is deeply rooted in other
-> reasons I might be missing.
->
-> I'm asking because the idea is for libcamera to act solely as dma-buf
-> importer, the current alloc-export-then-import trick is an helper for
-> applications to work around the absence of a system allocator.
->
-> If the requirement to disable cache-hints for importers cannot be
-> lifted, for libcamera it means we would not be able to use it.
+Jimmy Hon (4):
+  arm64: dts: rockchip: Enable HDMI0 audio output for Orange Pi 5/5B
+  arm64: dts: rockchip: Enable HDMI audio outputs for Orange Pi 5 Max
+  arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Plus
+  arm64: dts: rockchip: Enable HDMI audio outputs for Orange Pi 5 Plus
 
-Meanwhile, I have posted a patch, which re-enables cache management ops
-for non-coherent dmabufs exported from dma-contig allocator [1]. It is
-currently waiting for review.
+ .../dts/rockchip/rk3588-orangepi-5-max.dts    | 16 ++++++
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 54 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi |  8 +++
+ 3 files changed, 78 insertions(+)
 
-[1] https://lore.kernel.org/all/20250128-b4-rkisp-noncoherent-v3-1-baf39c997d2a@gmail.com/
+-- 
+2.48.1
 
->
->> [2] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n829
->> [3] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-dma-contig.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n426
->>
->> --
->> Best regards,
->> Mikhail Rudenko
->>
-
-
---
-Best regards,
-Mikhail Rudenko
 
 _______________________________________________
 Linux-rockchip mailing list
