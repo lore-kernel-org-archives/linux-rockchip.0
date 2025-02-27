@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 115E0C021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 12:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15BAC021BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 13:25:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+w87rgYKKjVIliGM69xu15/QBfnpASM5KQYDAUj2rxE=; b=qk1M+Z/kXvf91r
-	KjvgTQwhLRl8/jNM+lyTKLQK/2en1PIe24XXm9NYIihcWPQmGEDoDXIIKcFXuWEV2IAvdpsKzsKN+
-	gqbZz3Shj7BIhSB4WLHJ879+tisxoqEhkrxuFhngmj1FBqXRPx7WX+jSd9MCNEsFo1ijgEbS/Yypm
-	nuGrbRvATEpjt8d81agWOI6g1FCYDQhpGPYnxMtlkuwDfpOcgarBL37TZyKPL4nnt3cpcYzugGg2c
-	GwYZ6tS8AytlDuoM+/w3h2bNwFPlH6yZzNrINkQgl4pAdoyCh9V/AcEUiiu79g6Ko03yoQl0LO1Hu
-	BYN+fAGPfGvcT8BpeCnA==;
+	List-Owner; bh=G0oxAukzbA304R1k1/khSnb7qMUxXkBc+4Yumy79L3E=; b=MO9dGawoHYNhG/
+	sm2FNPAUNq1rlA2rBdSLIfg1r8Fy1rNjyLBfIouaswgzDYEkJ3WfHy2Qk6YT7wGh1aVf7AYrH3m1X
+	UOM5nPdbQprlIfgc6047wnXFU5xv+43S4E1Rot3kFe6dEfDrVcaERfFnpFu0v8QaEfgfSsREIt9V6
+	1ZvdZWmq+k7lMYHTe6UylTdQwEF6AZNUO+NQbz0P/RT/S6NZdEodhuvIBCJtEy/PxTxl5fu/IQ2YX
+	2oCUwWN0N5Y7tgZIP8AF01hkx/0qNpUIXvXhzxQuGBO1opPytQObPUQztcPOmY5ZZN8NZiRAPFfck
+	LOeHIGd3FHnEHAF0D4ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tncrs-00000007L4a-0ShU;
-	Thu, 27 Feb 2025 12:19:56 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tndtE-00000007WZB-2VPD;
+	Thu, 27 Feb 2025 13:25:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tncMW-00000007EYe-3Kgp;
-	Thu, 27 Feb 2025 11:47:34 +0000
-Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:a3f5:6799:2ce9:5b66])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5DFD27F5;
-	Thu, 27 Feb 2025 12:46:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740656763;
-	bh=P9xqUjKbHM5Je+UfdaKgLXkxGRlIAHd1iEy80IGgQXE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TCN0cIHzr1IRMzTI7bhy1uuEj1SRVAB00NAagrYvtrsx4PI91VFfxUNlIEg/EzI02
-	 1Hl0d4eE73DYpypXFuli6Yj27dkq5nre2BNTyUIHQf9DIlWA0JJ6PKtP6jd6RpWBRF
-	 CZKearkxFmOjwsNV9nLve8me29659QOwH6R21HdQ=
-From: Stefan Klug <stefan.klug@ideasonboard.com>
-To: linux-media@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Stefan Klug <stefan.klug@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/3] media: rkisp1: Remove unnecessary defines
-Date: Thu, 27 Feb 2025 12:45:01 +0100
-Message-ID: <20250227114558.3097101-4-stefan.klug@ideasonboard.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
-References: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
+	id 1tndmi-00000007UnG-2ymU;
+	Thu, 27 Feb 2025 13:18:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=odRe86wbBsQkcjq+MlDDcHZ1ydHEZEkP/u4cZxHpKl8=; b=I/ckulVENplgJLCSPkpinMhiHF
+	cya+hcSVQSocal22jUocKva6Y3YPPggHj7N8rUMd6sxpwPiQysYVQV4QX9YftUu9UwxqVX/+7yCNZ
+	h9Ey4lCbqJOfcVi1d/L6Pz4jKJBTnQ3j7pGN7HDT5e3kB8wsPqwtK9JJdCGkNYuUr1xY2MUBAPW6A
+	zmsr6Qh1i6iT1iog0K00WDYJmA8LtkJdEEG4a25Mt0yFwo0Z/F+GnNl/7AmJK6pv0ZpQR9xKNHOPn
+	Hd8DfmcCmhPB7AXbHCsRyIy1gyD5m/K2nFDz9iR9mIHev3WHc/CBz9/jxvbpPvAu6h1EkEvFCI9Jj
+	v1KAeXGg==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tndmV-00012t-UU; Thu, 27 Feb 2025 14:18:27 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Finley Xiao <finley.xiao@rock-chips.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-pm@vger.kernel.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 2/2] soc: rockchip: power-domain: add power domain support for
+ rk3562
+Date: Thu, 27 Feb 2025 14:18:27 +0100
+Message-ID: <3210955.TQGk6oTFT5@diego>
+In-Reply-To: <20250227105957.2341107-3-kever.yang@rock-chips.com>
+References: <20250227105957.2341107-1-kever.yang@rock-chips.com>
+ <20250227105957.2341107-3-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_034732_967524_A4B978D8 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250227_051840_749573_72B5D1DB 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,34 +80,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The effect modes are not shifts but numbers which are already defined a
-few lines above. Remove the misleading defines.
+Am Donnerstag, 27. Februar 2025, 11:59:57 MEZ schrieb Kever Yang:
+> This driver is modified to support RK3562 SoC.
+> Add support to ungate clk.
+> Add support to shut down memory for rk3562.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 
-Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h | 7 -------
- 1 file changed, 7 deletions(-)
+After the move to the pmdomains subsystem patch subject should be
+	pmdomain: rockchip: add power domain support for rk3562
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-index bf0260600a19..139177db9c6d 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-@@ -327,13 +327,6 @@
- #define RKISP1_CIF_IMG_EFF_CTRL_CFG_UPD			BIT(4)
- #define RKISP1_CIF_IMG_EFF_CTRL_YCBCR_FULL		BIT(5)
- 
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_BLACKWHITE_SHIFT	0
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_NEGATIVE_SHIFT	1
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_SEPIA_SHIFT	2
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_COLOR_SEL_SHIFT	3
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_EMBOSS_SHIFT	4
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_SKETCH_SHIFT	5
--#define RKISP1_CIF_IMG_EFF_CTRL_MODE_SHARPEN_SHIFT	6
- #define RKISP1_CIF_IMG_EFF_CTRL_MODE_MASK		0xe
- 
- /* IMG_EFF_COLOR_SEL */
--- 
-2.43.0
+with that change
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
 
 
 _______________________________________________
