@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33054C197BF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B664C1B087
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PgnW9kgKI+oD9KpZcvjNo1gH8bOsebjsJrKkoLQgnJA=; b=COJHCVAsZx0UDu+tA4WmyD1PX/
-	hgSiz1PFm3MBmZ5TyecTy0gauLP4fkoH9/HxrbxOKWO/bbLEaG/mBhmUu/aKvntrtn+E1DmE90ZYW
-	fVYn/OV2YqkEGDFFumA3rU6RT1FEF/dFNpUlR5Z2tA/OSvIyukFNplpiQ+fd/1j+jfsMO8hR9CH2y
-	EAD83I5Be2MNzhAJkrIJ90ZYxFTDrgXIebvpBaMjkQiqk/8JLrDoSTZyV4M9uweo3nyutITavgvTZ
-	ZoNdqy238vW45Z+CtNitSv3Q5/BzgTktXA58w2nRcEq9hRJMWSvvl19JCVutIwK3iLZ+ZR19CZL06
-	S58ZY8nA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UwtOl9jSb6wCV/f3Ik/ryLiw1g0sfQHmJdLpJEJIl6Q=; b=YNocEIGpRaurv6
+	fKID9hMaocoLqlXf1R+vXmge+GWKLvareu9eRSx6cZ3Sk17eIkSETil8sBJQ3dHMu3u5JpmFuqz0R
+	YJQV7CwMFRUvgnnCnJ/3RkPuBjVDUECp+n2u4vX1O93pH1USjp8R5ZFfha9eWFZG7nz1uDpvez1hK
+	Scv5gLJqkiJXYUzc9+VTlBtXOzRCfXjgnpoGp4VST96oNG3ImsyE3tHySVk1kA8t5VtUCD4FPRpxp
+	8/jFBl9cDHSodwYM/MGYWUuWDgFkJhM+QVFNe2WVpi/Rl+UUIt+iGZGQvig9bUJ8sn32SQ0tz87Ap
+	ihpIQdw/Ab6g+hxP0mkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjk7-00000008ZYn-0aKW;
-	Thu, 27 Feb 2025 19:40:23 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tnjkS-00000008a1W-0inG;
+	Thu, 27 Feb 2025 19:40:44 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnhFw-000000089pH-1alb;
-	Thu, 27 Feb 2025 17:01:08 +0000
+	id 1tnhKM-00000008AaN-3kWp;
+	Thu, 27 Feb 2025 17:05:40 +0000
+Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 206AF6A6;
+	Thu, 27 Feb 2025 18:04:06 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740675846;
+	bh=6K6RMuFqw/0yA8o+/CTvB3vW+m44k9m9LPe8/wSzQGA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bCxsA/uBn8Roii7nvPfKx5n6xPZL7bvOmsR03e6MYuo5F1rEuUaT/IQcgdIergUH2
+	 fSoNdeEwoNdwohz6Bhze9Yd9195IU04lOE1YT8YByG/hjsK46/0iL4n4NuxECjDjq+
+	 tJiXr1m4A1pCk/YO9xgQnI8Wz31UosUIgtoGWbJ0=
+Date: Thu, 27 Feb 2025 18:05:31 +0100
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Mikhail Rudenko <mike.rudenko@gmail.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
+Message-ID: <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
+References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
+ <20250103152326.GP554@pendragon.ideasonboard.com>
+ <87bjw9s4s3.fsf@gmail.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1740675661;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t3GT2Q59z7jRgJeDRmMHoLHVswcssOZ7ZZ/HLhh5BeQ=;
-	b=qrJ9xGeRk+ZoCCKaNXMPs6xQlPX39ci0CumbybmMrC6mVweHQH5PlKL2yj8BheOaIHOcB+
-	+hzhs3pexdg3aZotFFKWOuVzAJxkvGnNkrBJCTebjkY75j0bkdK1V0Lu617yzD7ilnGPR7
-	i0B4Wz8JrDWwn0UbWL2eipuZtE/JJNjPA3D+YyFFRPAdON/aM2VBiRDYUFZTb4ER8XcswK
-	SxrOvHM9owPT8JX7pPnBznvCtOWsTC48wicoLtxgmd8kcQRUYFg3wocSb34Z4fZ9wovthg
-	YXH+fP/2PHByu/Yxjffx8F/sGJW1fBQhdgHVJrRdUkhDQ87a8tMRawdv5G7Meg==
-Date: Thu, 27 Feb 2025 18:01:00 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Lukasz Luba <lukasz.luba@arm.com>
-Cc: rafael@kernel.org, daniel.lezcano@linaro.org,
- linux-rockchip@lists.infradead.org, rui.zhang@intel.com, heiko@sntech.de,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kever
- Yang <kever.yang@rock-chips.com>, Diederik de Haas <didi.debian@cknow.org>,
- linux-pm@vger.kernel.org
-Subject: Re: [PATCH] thermal: rockchip: Extract TSADC conversion tables into a
- header file
-In-Reply-To: <8fcb202f-d1b3-4989-9777-5bafd6fed59e@arm.com>
-References: <08d2fc6e1972f1f90c900542bf66945d6dc6db63.1740577122.git.dsimic@manjaro.org>
- <8fcb202f-d1b3-4989-9777-5bafd6fed59e@arm.com>
-Message-ID: <f13f480aae41e7d893bc6b285e3ad95c@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <87bjw9s4s3.fsf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_090104_712660_FC31E217 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20250227_090539_072471_69A08D31 
+X-CRM114-Status: GOOD (  28.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,67 +65,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Lukasz,
+Hi Mikhail
 
-On 2025-02-27 15:42, Lukasz Luba wrote:
-> On 2/26/25 13:42, Dragan Simic wrote:
->> Move the TSADC code-to-temperature mapping tables from the Rockchip 
->> thermal
->> driver to a separate header file, to no longer have the somewhat 
->> cluttering
->> mapping data as part of the driver itself. [1]
->> 
->> These mapping tables come verbatim from the SoC technical reference 
->> manuals
->> (TRMs) and the downstream kernel code, [2] and may be updated at some 
->> point
->> in the future, according to the manufacturer test results, [3] so 
->> extracting
->> the tables into a separate header file not just improves the 
->> readability of
->> the driver code, but introduces a clear separation.
->> 
->> Improve the wording of the moved comment block, sprinkle a few short 
->> comments
->> over the newly introduced header file, and move the already existing 
->> single
->> stray #include directive in the driver code to its beginning.
->> 
->> [1] 
->> https://lore.kernel.org/linux-rockchip/7f17cc55-a741-4bb8-9513-0580ca6fedd3@linaro.org/T/#u
->> [2] 
->> https://raw.githubusercontent.com/rockchip-linux/kernel/f8b9431ee38ed561650be7092ab93f564598daa9/drivers/thermal/rockchip_thermal.c
->> [3] 
->> https://lore.kernel.org/linux-rockchip/b4ab86b56177a234f3738c477693e858@manjaro.org/T/#u
-> 
-> I think Daniel was more thinking something about saving the
-> memory in the kernel. I see how this patch can help the readability
-> of the driver code, but that doesn't help much to not occupy the kernel
-> data. The driver will be built with that memory and the distro would
-> run on some platform with particular chip. The other chips data won't
-> be needed.
+On Tue, Jan 14, 2025 at 07:00:39PM +0300, Mikhail Rudenko wrote:
+>
+> Hi Laurent,
+>
+> On 2025-01-03 at 17:23 +02, Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
+>
+> > On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
+> >> Currently, the rkisp1 driver always uses coherent DMA allocations for
+> >> video capture buffers. However, on some platforms, using non-coherent
+> >> buffers can improve performance, especially when CPU processing of
+> >> MMAP'ed video buffers is required.
+> >>
+> >> For example, on the Rockchip RK3399 running at maximum CPU frequency,
+> >> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
+> >> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
+> >> non-coherent DMA allocation. CPU usage also decreases accordingly.
+> >
+> > What's the time taken by the cache management operations ?
+>
+> Sorry for the late reply, your question turned out a little more
+> interesting than I expected initially. :)
+>
+> When capturing using Yavta with MMAP buffers under the conditions mentioned
+> in the commit message, ftrace gives 437.6 +- 1.1 us for
+> dma_sync_sgtable_for_cpu and 409 +- 14 us for
+> dma_sync_sgtable_for_device. Thus, it looks like using non-coherent
+> buffers in this case is more CPU-efficient even when considering cache
+> management overhead.
+>
+> When trying to do the same measurements with libcamera, I failed. In a
+> typical libcamera use case when MMAP buffers are allocated from a
+> device, exported as dmabufs and then used for capture on the same device
+> with DMABUF memory type, cache management in kernel is skipped [1]
+> [2]. Also, vb2_dc_dmabuf_ops_{begin,end}_cpu_access are no-ops [3], so
+> DMA_BUF_IOCTL_SYNC from userspace does not work either.
+>
+> So it looks like to make this change really useful, the above issue of
+> cache management for libcamera/DMABUF/videobuf2-dma-contig has to be
+> solved. I'm not an expert in this area, so any advice is kindly welcome. :)
 
-Thanks for your response!  Yes, carrying all that data in the kernel
-memory, out of which only one variant actually gets used at runtime,
-is far from optimal.
+It would be shame if we let this discussion drop dead.. cache
+management policies are relevant for performances, specifically for
+cpu access, and your above 7.7ms vs 1.1 ms test clearly shows that.
 
-> Why not to have that information in the DT?
-> That would save the memory and be configurable for only needed 
-> platform.
-> Please have a look into the generic thermal ADC driver and related
-> DT entry, which is used e.g. here [1].
-> That table looks similar to your info.
+>
+> [1] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n411
 
-Let me have a detailed look into all that, please, and I'll come back
-with some further thoughts.
+I would like to know from Hans if the decision to disallow cache-hints
+for dmabuf importers is a design choice or is deeply rooted in other
+reasons I might be missing.
 
-> [1] 
-> https://elixir.bootlin.com/linux/v6.13.4/source/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi#L136
+I'm asking because the idea is for libcamera to act solely as dma-buf
+importer, the current alloc-export-then-import trick is an helper for
+applications to work around the absence of a system allocator.
+
+If the requirement to disable cache-hints for importers cannot be
+lifted, for libcamera it means we would not be able to use it.
+
+
+> [2] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n829
+> [3] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-dma-contig.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n426
+>
+> --
+> Best regards,
+> Mikhail Rudenko
+>
 
 _______________________________________________
 Linux-rockchip mailing list
