@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B664C1B087
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7037C19F32
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:41:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UwtOl9jSb6wCV/f3Ik/ryLiw1g0sfQHmJdLpJEJIl6Q=; b=YNocEIGpRaurv6
-	fKID9hMaocoLqlXf1R+vXmge+GWKLvareu9eRSx6cZ3Sk17eIkSETil8sBJQ3dHMu3u5JpmFuqz0R
-	YJQV7CwMFRUvgnnCnJ/3RkPuBjVDUECp+n2u4vX1O93pH1USjp8R5ZFfha9eWFZG7nz1uDpvez1hK
-	Scv5gLJqkiJXYUzc9+VTlBtXOzRCfXjgnpoGp4VST96oNG3ImsyE3tHySVk1kA8t5VtUCD4FPRpxp
-	8/jFBl9cDHSodwYM/MGYWUuWDgFkJhM+QVFNe2WVpi/Rl+UUIt+iGZGQvig9bUJ8sn32SQ0tz87Ap
-	ihpIQdw/Ab6g+hxP0mkw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bDARFJ9lzlC8usqVzSs4GKkva3LNa60bhw5/u3cc33I=; b=BYUGKvkyU3Hf0Z
+	Gk5Y4OK/yhEITWKk5yxE5pRqfnKtpqB5t5RYSdIv3wZ1e2LQ0Y8KT/1u0TxLTje58x3XPCCyFatBt
+	cijlY1Ur7JAzrmR+yF+FPf7yp5raN5S4lNT3KCatjQBUSZCI7VGM0sETCyqLQLlPkN+k/CK+rdPbz
+	0vnRn7oTNNQBFy7M7001R8Dgc90VlZzRZ1FUMkYPWJpkdxTmn/211tynL1tm0XJzhbIdACKtRLRpM
+	6qeMcVF1bKPo+RZiQ9fiC/W0yoTjlCXI4Ew2DgZkVlxfagXp5sQc3xKbWHK1gorI0nRtVAyIdMGQf
+	TF4wH5vloHqeAM4N5Dgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjkS-00000008a1W-0inG;
-	Thu, 27 Feb 2025 19:40:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tnjlT-00000008bkK-0tqE;
+	Thu, 27 Feb 2025 19:41:48 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnhKM-00000008AaN-3kWp;
-	Thu, 27 Feb 2025 17:05:40 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 206AF6A6;
-	Thu, 27 Feb 2025 18:04:06 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740675846;
-	bh=6K6RMuFqw/0yA8o+/CTvB3vW+m44k9m9LPe8/wSzQGA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bCxsA/uBn8Roii7nvPfKx5n6xPZL7bvOmsR03e6MYuo5F1rEuUaT/IQcgdIergUH2
-	 fSoNdeEwoNdwohz6Bhze9Yd9195IU04lOE1YT8YByG/hjsK46/0iL4n4NuxECjDjq+
-	 tJiXr1m4A1pCk/YO9xgQnI8Wz31UosUIgtoGWbJ0=
-Date: Thu, 27 Feb 2025 18:05:31 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
-Message-ID: <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
-References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
- <20250103152326.GP554@pendragon.ideasonboard.com>
- <87bjw9s4s3.fsf@gmail.com>
+	id 1tni4U-00000008FoK-1kT7
+	for linux-rockchip@lists.infradead.org;
+	Thu, 27 Feb 2025 17:53:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1740678794;
+ bh=9ty4e/zSrNHaCJk0SFQt9vg6rC5/YneZMYB2JJ3Fd6c=;
+ b=PkNtol+/GbeD8GMeWL/i5Wnr/5Y1vI9PeWScFjYnPkTFyp7MDSiLYA3QuABZDMmpPIr1mROIL
+ kWqvS+kWQNGbHIIGjmKvGh/U6pht/0umms1yq6IgbViE1yLK64dZkFez5ICqm37aFvTRPPyAUGT
+ cuthp1bLdSablKL06SysGTHjYSWHJed++cFiOrauzNHEFfyAioOnZXn4hmkF+WVQQRgv64DXDuG
+ 32/pMdlgzG5eHM+mEeekC43L9CMxqC2E5gEqOuhYYsbzF0GNcxWs0Thgaco5CgCs9ghrl2hNMDd
+ 1vUv9rj0o9sjGfUrR4k+2/Ahf307o6qlphT5uEAtj2Ww==
+X-Forward-Email-ID: 67c0a6845ef5224158d0c2d5
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.59
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Yao Zi <ziyao@disroot.org>
+Cc: Jonas Karlman <jonas@kwiboo.se>,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] clk: rockchip: Add reset lookup table for RK3528
+Date: Thu, 27 Feb 2025 17:52:57 +0000
+Message-ID: <20250227175302.2950788-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87bjw9s4s3.fsf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_090539_072471_69A08D31 
-X-CRM114-Status: GOOD (  28.03  )
+X-CRM114-CacheID: sfid-20250227_095318_511113_9BA13904 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,74 +78,376 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mikhail
+In the commit 5d0eb375e685 ("clk: rockchip: Add clock controller driver
+for RK3528 SoC") only the dt-binding header was added for the reset
+controller for the RK3528 SoC.
 
-On Tue, Jan 14, 2025 at 07:00:39PM +0300, Mikhail Rudenko wrote:
->
-> Hi Laurent,
->
-> On 2025-01-03 at 17:23 +02, Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
->
-> > On Thu, Jan 02, 2025 at 06:35:00PM +0300, Mikhail Rudenko wrote:
-> >> Currently, the rkisp1 driver always uses coherent DMA allocations for
-> >> video capture buffers. However, on some platforms, using non-coherent
-> >> buffers can improve performance, especially when CPU processing of
-> >> MMAP'ed video buffers is required.
-> >>
-> >> For example, on the Rockchip RK3399 running at maximum CPU frequency,
-> >> the time to memcpy a frame from a 1280x720 XRGB32 MMAP'ed buffer to a
-> >> malloc'ed userspace buffer decreases from 7.7 ms to 1.1 ms when using
-> >> non-coherent DMA allocation. CPU usage also decreases accordingly.
-> >
-> > What's the time taken by the cache management operations ?
->
-> Sorry for the late reply, your question turned out a little more
-> interesting than I expected initially. :)
->
-> When capturing using Yavta with MMAP buffers under the conditions mentioned
-> in the commit message, ftrace gives 437.6 +- 1.1 us for
-> dma_sync_sgtable_for_cpu and 409 +- 14 us for
-> dma_sync_sgtable_for_device. Thus, it looks like using non-coherent
-> buffers in this case is more CPU-efficient even when considering cache
-> management overhead.
->
-> When trying to do the same measurements with libcamera, I failed. In a
-> typical libcamera use case when MMAP buffers are allocated from a
-> device, exported as dmabufs and then used for capture on the same device
-> with DMABUF memory type, cache management in kernel is skipped [1]
-> [2]. Also, vb2_dc_dmabuf_ops_{begin,end}_cpu_access are no-ops [3], so
-> DMA_BUF_IOCTL_SYNC from userspace does not work either.
->
-> So it looks like to make this change really useful, the above issue of
-> cache management for libcamera/DMABUF/videobuf2-dma-contig has to be
-> solved. I'm not an expert in this area, so any advice is kindly welcome. :)
+Add a reset lookup table generated from the SRST symbols used by vendor
+linux-6.1-stan-rkr5 kernel to complete support for the reset controller.
 
-It would be shame if we let this discussion drop dead.. cache
-management policies are relevant for performances, specifically for
-cpu access, and your above 7.7ms vs 1.1 ms test clearly shows that.
+Fixes: 5d0eb375e685 ("clk: rockchip: Add clock controller driver for RK3528 SoC")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ drivers/clk/rockchip/Makefile     |   2 +-
+ drivers/clk/rockchip/clk-rk3528.c |   2 +
+ drivers/clk/rockchip/clk.h        |   1 +
+ drivers/clk/rockchip/rst-rk3528.c | 306 ++++++++++++++++++++++++++++++
+ 4 files changed, 310 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/rockchip/rst-rk3528.c
 
->
-> [1] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n411
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 0b07fd4a226f..3329b64f7616 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -28,7 +28,7 @@ obj-$(CONFIG_CLK_RK3308)        += clk-rk3308.o
+ obj-$(CONFIG_CLK_RK3328)        += clk-rk3328.o
+ obj-$(CONFIG_CLK_RK3368)        += clk-rk3368.o
+ obj-$(CONFIG_CLK_RK3399)        += clk-rk3399.o
+-obj-$(CONFIG_CLK_RK3528)	+= clk-rk3528.o
++obj-$(CONFIG_CLK_RK3528)	+= clk-rk3528.o rst-rk3528.o
+ obj-$(CONFIG_CLK_RK3568)	+= clk-rk3568.o
+ obj-$(CONFIG_CLK_RK3576)	+= clk-rk3576.o rst-rk3576.o
+ obj-$(CONFIG_CLK_RK3588)	+= clk-rk3588.o rst-rk3588.o
+diff --git a/drivers/clk/rockchip/clk-rk3528.c b/drivers/clk/rockchip/clk-rk3528.c
+index 00caf277d844..b8b577b902a0 100644
+--- a/drivers/clk/rockchip/clk-rk3528.c
++++ b/drivers/clk/rockchip/clk-rk3528.c
+@@ -1092,6 +1092,8 @@ static int __init clk_rk3528_probe(struct platform_device *pdev)
+ 				     ARRAY_SIZE(rk3528_cpuclk_rates));
+ 	rockchip_clk_register_branches(ctx, rk3528_clk_branches, nr_branches);
+ 
++	rk3528_rst_init(np, reg_base);
++
+ 	rockchip_register_restart_notifier(ctx, RK3528_GLB_SRST_FST, NULL);
+ 
+ 	rockchip_clk_of_add_provider(np, ctx);
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index b2973b76aa2c..b322d42dc879 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -1140,6 +1140,7 @@ static inline void rockchip_register_softrst(struct device_node *np,
+ 	return rockchip_register_softrst_lut(np, NULL, num_regs, base, flags);
+ }
+ 
++void rk3528_rst_init(struct device_node *np, void __iomem *reg_base);
+ void rk3576_rst_init(struct device_node *np, void __iomem *reg_base);
+ void rk3588_rst_init(struct device_node *np, void __iomem *reg_base);
+ 
+diff --git a/drivers/clk/rockchip/rst-rk3528.c b/drivers/clk/rockchip/rst-rk3528.c
+new file mode 100644
+index 000000000000..b24f2c367929
+--- /dev/null
++++ b/drivers/clk/rockchip/rst-rk3528.c
+@@ -0,0 +1,306 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
++ * Based on Sebastian Reichel's implementation for RK3588
++ */
++
++#include <linux/module.h>
++#include <linux/of.h>
++#include <dt-bindings/reset/rockchip,rk3528-cru.h>
++#include "clk.h"
++
++/* 0xFF4A0000 + 0x0A00 */
++#define RK3528_CRU_RESET_OFFSET(id, reg, bit) [id] = (0 + reg * 16 + bit)
++
++/* mapping table for reset ID to register offset */
++static const int rk3528_register_offset[] = {
++	/* CRU_SOFTRST_CON03 */
++	RK3528_CRU_RESET_OFFSET(SRST_CORE0_PO, 3, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE1_PO, 3, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE2_PO, 3, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE3_PO, 3, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE0, 3, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE1, 3, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE2, 3, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE3, 3, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_NL2, 3, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE_BIU, 3, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE_CRYPTO, 3, 10),
++
++	/* CRU_SOFTRST_CON05 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_DBG, 5, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_POT_DBG, 5, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_NT_DBG, 5, 15),
++
++	/* CRU_SOFTRST_CON06 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_CORE_GRF, 6, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DAPLITE_BIU, 6, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CPU_BIU, 6, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_REF_PVTPLL_CORE, 6, 7),
++
++	/* CRU_SOFTRST_CON08 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_BUS_VOPGL_BIU, 8, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_A_BUS_H_BIU, 8, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_A_SYSMEM_BIU, 8, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_A_BUS_BIU, 8, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_H_BUS_BIU, 8, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_P_BUS_BIU, 8, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DFT2APB, 8, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_P_BUS_GRF, 8, 15),
++
++	/* CRU_SOFTRST_CON09 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_BUS_M_BIU, 9, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_A_GIC, 9, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_A_SPINLOCK, 9, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_A_DMAC, 9, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_P_TIMER, 9, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER0, 9, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER1, 9, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER2, 9, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER3, 9, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER4, 9, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER5, 9, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_P_JDBCK_DAP, 9, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_JDBCK_DAP, 9, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_P_WDT_NS, 9, 15),
++
++	/* CRU_SOFTRST_CON10 */
++	RK3528_CRU_RESET_OFFSET(SRST_T_WDT_NS, 10, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_H_TRNG_NS, 10, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART0, 10, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART0, 10, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_PKA_CRYPTO, 10, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_A_CRYPTO, 10, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_H_CRYPTO, 10, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DMA2DDR, 10, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_A_DMA2DDR, 10, 14),
++
++	/* CRU_SOFTRST_CON11 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_PWM0, 11, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_PWM0, 11, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_P_PWM1, 11, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_PWM1, 11, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_SCR, 11, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_A_DCF, 11, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_P_INTMUX, 11, 12),
++
++	/* CRU_SOFTRST_CON25 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_VPU_BIU, 25, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_H_VPU_BIU, 25, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VPU_BIU, 25, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_A_VPU, 25, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_H_VPU, 25, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CRU_PCIE, 25, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VPU_GRF, 25, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SFC, 25, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_S_SFC, 25, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_C_EMMC, 25, 15),
++
++	/* CRU_SOFTRST_CON26 */
++	RK3528_CRU_RESET_OFFSET(SRST_H_EMMC, 26, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_A_EMMC, 26, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_B_EMMC, 26, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_T_EMMC, 26, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_GPIO1, 26, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_DB_GPIO1, 26, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_A_VPU_L_BIU, 26, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VPU_IOC, 26, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SAI_I2S0, 26, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_M_SAI_I2S0, 26, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SAI_I2S2, 26, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_M_SAI_I2S2, 26, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_ACODEC, 26, 13),
++
++	/* CRU_SOFTRST_CON27 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_GPIO3, 27, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_DB_GPIO3, 27, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_P_SPI1, 27, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_SPI1, 27, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART2, 27, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART2, 27, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART5, 27, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART5, 27, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART6, 27, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART6, 27, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART7, 27, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART7, 27, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C3, 27, 15),
++
++	/* CRU_SOFTRST_CON28 */
++	RK3528_CRU_RESET_OFFSET(SRST_I2C3, 28, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C5, 28, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C5, 28, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C6, 28, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C6, 28, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_A_MAC, 28, 5),
++
++	/* CRU_SOFTRST_CON30 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_PCIE, 30, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_PCIE_PIPE_PHY, 30, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_PCIE_POWER_UP, 30, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_PCIE_PHY, 30, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_PIPE_GRF, 30, 7),
++
++	/* CRU_SOFTRST_CON32 */
++	RK3528_CRU_RESET_OFFSET(SRST_H_SDIO0, 32, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SDIO1, 32, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_TS_0, 32, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_TS_1, 32, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CAN2, 32, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_CAN2, 32, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CAN3, 32, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_CAN3, 32, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_P_SARADC, 32, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_SARADC, 32, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_SARADC_PHY, 32, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_P_TSADC, 32, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_TSADC, 32, 15),
++
++	/* CRU_SOFTRST_CON33 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_USB3OTG, 33, 1),
++
++	/* CRU_SOFTRST_CON34 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_GPU_BIU, 34, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_GPU_BIU, 34, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_A_GPU, 34, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_REF_PVTPLL_GPU, 34, 9),
++
++	/* CRU_SOFTRST_CON36 */
++	RK3528_CRU_RESET_OFFSET(SRST_H_RKVENC_BIU, 36, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_A_RKVENC_BIU, 36, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_P_RKVENC_BIU, 36, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_H_RKVENC, 36, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_A_RKVENC, 36, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE_RKVENC, 36, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SAI_I2S1, 36, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_M_SAI_I2S1, 36, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C1, 36, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C1, 36, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C0, 36, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C0, 36, 14),
++
++	/* CRU_SOFTRST_CON37 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_SPI0, 37, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_SPI0, 37, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_GPIO4, 37, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_DB_GPIO4, 37, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_P_RKVENC_IOC, 37, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SPDIF, 37, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_M_SPDIF, 37, 15),
++
++	/* CRU_SOFTRST_CON38 */
++	RK3528_CRU_RESET_OFFSET(SRST_H_PDM, 38, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_M_PDM, 38, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART1, 38, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART1, 38, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART3, 38, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART3, 38, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_P_RKVENC_GRF, 38, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CAN0, 38, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_CAN0, 38, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CAN1, 38, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_CAN1, 38, 10),
++
++	/* CRU_SOFTRST_CON39 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_VO_BIU, 39, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_H_VO_BIU, 39, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VO_BIU, 39, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_H_RGA2E, 39, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_A_RGA2E, 39, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE_RGA2E, 39, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_H_VDPP, 39, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_A_VDPP, 39, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_CORE_VDPP, 39, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VO_GRF, 39, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_P_CRU, 39, 15),
++
++	/* CRU_SOFTRST_CON40 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_VOP_BIU, 40, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_H_VOP, 40, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_D_VOP0, 40, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_D_VOP1, 40, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_A_VOP, 40, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_P_HDMI, 40, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_HDMI, 40, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_P_HDMIPHY, 40, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_H_HDCP_KEY, 40, 15),
++
++	/* CRU_SOFTRST_CON41 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_HDCP, 41, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_H_HDCP, 41, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_P_HDCP, 41, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_H_CVBS, 41, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_D_CVBS_VOP, 41, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_D_4X_CVBS_VOP, 41, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_A_JPEG_DECODER, 41, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_H_JPEG_DECODER, 41, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_A_VO_L_BIU, 41, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_A_MAC_VO, 41, 10),
++
++	/* CRU_SOFTRST_CON42 */
++	RK3528_CRU_RESET_OFFSET(SRST_A_JPEG_BIU, 42, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SAI_I2S3, 42, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_M_SAI_I2S3, 42, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_MACPHY, 42, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VCDCPHY, 42, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_P_GPIO2, 42, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_DB_GPIO2, 42, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_VO_IOC, 42, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_H_SDMMC0, 42, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_P_OTPC_NS, 42, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_SBPI_OTPC_NS, 42, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_USER_OTPC_NS, 42, 13),
++
++	/* CRU_SOFTRST_CON43 */
++	RK3528_CRU_RESET_OFFSET(SRST_HDMIHDP0, 43, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_H_USBHOST, 43, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_H_USBHOST_ARB, 43, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_HOST_UTMI, 43, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_UART4, 43, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_S_UART4, 43, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C4, 43, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C4, 43, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_P_I2C7, 43, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_I2C7, 43, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_P_USBPHY, 43, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_USBPHY_POR, 43, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_USBPHY_OTG, 43, 15),
++
++	/* CRU_SOFTRST_CON44 */
++	RK3528_CRU_RESET_OFFSET(SRST_USBPHY_HOST, 44, 0),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDRPHY_CRU, 44, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_H_RKVDEC_BIU, 44, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_A_RKVDEC_BIU, 44, 7),
++	RK3528_CRU_RESET_OFFSET(SRST_A_RKVDEC, 44, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_H_RKVDEC, 44, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_HEVC_CA_RKVDEC, 44, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_REF_PVTPLL_RKVDEC, 44, 12),
++
++	/* CRU_SOFTRST_CON45 */
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDR_BIU, 45, 1),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDRC, 45, 2),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDRMON, 45, 3),
++	RK3528_CRU_RESET_OFFSET(SRST_TIMER_DDRMON, 45, 4),
++	RK3528_CRU_RESET_OFFSET(SRST_P_MSCH_BIU, 45, 5),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDR_GRF, 45, 6),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDR_HWLP, 45, 8),
++	RK3528_CRU_RESET_OFFSET(SRST_P_DDRPHY, 45, 9),
++	RK3528_CRU_RESET_OFFSET(SRST_MSCH_BIU, 45, 10),
++	RK3528_CRU_RESET_OFFSET(SRST_A_DDR_UPCTL, 45, 11),
++	RK3528_CRU_RESET_OFFSET(SRST_DDR_UPCTL, 45, 12),
++	RK3528_CRU_RESET_OFFSET(SRST_DDRMON, 45, 13),
++	RK3528_CRU_RESET_OFFSET(SRST_A_DDR_SCRAMBLE, 45, 14),
++	RK3528_CRU_RESET_OFFSET(SRST_A_SPLIT, 45, 15),
++
++	/* CRU_SOFTRST_CON46 */
++	RK3528_CRU_RESET_OFFSET(SRST_DDR_PHY, 46, 0),
++};
++
++void rk3528_rst_init(struct device_node *np, void __iomem *reg_base)
++{
++	rockchip_register_softrst_lut(np,
++				      rk3528_register_offset,
++				      ARRAY_SIZE(rk3528_register_offset),
++				      reg_base + RK3528_SOFTRST_CON(0),
++				      ROCKCHIP_SOFTRST_HIWORD_MASK);
++}
+-- 
+2.48.1
 
-I would like to know from Hans if the decision to disallow cache-hints
-for dmabuf importers is a design choice or is deeply rooted in other
-reasons I might be missing.
-
-I'm asking because the idea is for libcamera to act solely as dma-buf
-importer, the current alloc-export-then-import trick is an helper for
-applications to work around the absence of a system allocator.
-
-If the requirement to disable cache-hints for importers cannot be
-lifted, for libcamera it means we would not be able to use it.
-
-
-> [2] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-core.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n829
-> [3] https://git.linuxtv.org/media.git/tree/drivers/media/common/videobuf2/videobuf2-dma-contig.c?id=94794b5ce4d90ab134b0b101a02fddf6e74c437d#n426
->
-> --
-> Best regards,
-> Mikhail Rudenko
->
 
 _______________________________________________
 Linux-rockchip mailing list
