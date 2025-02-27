@@ -4,82 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74EAC021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 05:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F157C021BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 06:20:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LsffL5WxfCdxcJXNng0I3SrkXNLEoRjwCSA4BuzPuVA=; b=rJiR0sSJpTpO5R
-	sxtCMpdFDa++53zyQYSKZhVu5FCIWUFUnbBn/WbXfGqqJ6t6BRL4XifLYyCbXTOtO79quykGNXUnR
-	tVcdEPD75p0k410yj8pbwmGg5rSnDhQ2MFKa4P0Y0TShdxSIwXV2Udf5adNzX8EqjMDDyMCL36683
-	4Wg4GfrDE/8EB47qbtRG1P/LUrm8b61xAxCiMyMNjhJy94jruC+3l0VlxUF4yZAuDiR+3OSGyPbGh
-	AdZPLWzR12zSpIXKGFd+3K6l7tHPLKFesWvPXXxnQ9fip3f/v6za9ro3FcCY3vGUCr9uJ6N6Aa9q0
-	EyjIYq0ff/OascufBMAA==;
+	List-Owner; bh=xWiFyj4tWUkcjqDfkVR89+6Q0w6XDckfWCvRo61AzSo=; b=mMMxY7kFEIHaa0
+	l2gJ5EhzeXFe2LbMCCId5ML/kuNYy+q2P2owJLbFqwelug+sd7vWmlAGr5mjhl3sU3IbFEyx94UNs
+	L8/GC0ozlTCL5bj3Qobq0lm4UHeJGs+ppxAioBeYoM35b9a3fjNDf43EZPayJr/Sz11eG//BB6M1T
+	ITnZVFnEQy8fONZuF2t2Jv26GyzasNLJGNbjzymOmxzkLd4vCubvMpVOCsPpiZmcmAx++jDRg3Y60
+	jiF5PjzcfLnlaMoJdG7Gs4OFLOho+Gck0XIVIlz952QtTVh6xYUPuf9mFnC1fu6jNUB7ljQHp/hlo
+	vpFr+bkPUUbEhvFdlhIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnWod-00000006Peb-17zx;
-	Thu, 27 Feb 2025 05:52:11 +0000
+	id 1tnXG3-00000006SlC-3WHX;
+	Thu, 27 Feb 2025 06:20:31 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnWoa-00000006Pdc-34Bt
+	id 1tnXG0-00000006Ski-2hHk
 	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Feb 2025 05:52:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740635517; cv=none; 
+	Thu, 27 Feb 2025 06:20:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1740637213; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YoQrY2jJXdi0enWYwfObzk+TuGIE90Pef0UhW0UTu7FXPYiqPclPUW11WifToXd5b0HizSq/ZfS/HigWWawqwxqI+PjWnY8EyEH2krGh647K48oenoDVS7PNSsVZQz9BsSU+RSnZKmZJKJhVIRgQ7UgmhnpjxaZytJwiWzMc+rA=
+	b=CBj+2u58FaLlfXUL5r4ElOi/IpxDJUdL5DLsNEHNk0+UdTf0KDAKmpQs29KN2wHLP9/UUsQgiHaFf2mLEtRXdtkxAOFjk5p7D77egssavIxWXcksgod1qfC2e6z2J999I8dM2W7bPgdcWUTxk0toEcEOpEB0gdkCyyGg9VlroKU=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740635517; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=; 
-	b=jGnLyROSPJZ6k++3w8Sp2hgp0l1uW5VcafAkjnKrF1sHzmf32Pxud7UByUGVP11ERIcqwZuLKWlhcHMYKJ5f2tlIzs3d4YQgWimkzy01BZwFC2DXtiNP3gH4RG7aSLviiZobugrpqx7w0O8dvsRcOIZZnOJa5GQy4MjdCTb3lPk=
+	t=1740637213; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ESKAXw1Tt8hbvdnODg8HBJ11zlfZzK9vXWlIshKQpnM=; 
+	b=eyor/mD0YxxN/+q0uTnIbXdi7xJWvjgNigMgz8rS5ydyCPMv7a3KBmIsu7MBqRtIkI7mdjiR8uUqRA0dE/B/r3/YCZy4LUrU0muqSyeh93ziWKJoboj4caNWqbmFxTL7Z6APJZeNKyWwAtzNqkvQBx4hAmhFqpnGSEGmX3vGkzg=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740635516;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740637213;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=v6XdBeWdF3ROCU+Lkd505Ci9024pYHmhBHgplZExxHU=;
-	b=Nk/AA9MzRtpTOmVJPIv6ZYeeM3VkX+OhI7nfUNdbi8/sSU3Udr/Lv1tY4CTioGaj
-	qNMy543jC0YJ4otuSR2v60Hdvi3unr/2W3k6iUgYI0pFjl2vN1/Y0VE5owgTYWcqwBc
-	VyZbC7iFF1dMcfxiOqHkkK9aGvhOLPdDOudDLSgM=
-Received: by mx.zohomail.com with SMTPS id 174063551581345.48698581088945;
-	Wed, 26 Feb 2025 21:51:55 -0800 (PST)
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ESKAXw1Tt8hbvdnODg8HBJ11zlfZzK9vXWlIshKQpnM=;
+	b=I6T6DoQyMwenD8Jj/4OugRF2aKDRyqQsd/tTY6GcNUy4pt7BKeT4PEW00BiaVpz9
+	fh+sT/lcbefoqcFBM6TegVOlcc3bkxh+DPX1SeXTVMpgetIWzaLT7nsc9ycU3ep1hw8
+	GzLi3NENYsWzsPypocvxxDRm88OXIufDY7H8cSoo=
+Received: by mx.zohomail.com with SMTPS id 1740637210671337.5440148916407;
+	Wed, 26 Feb 2025 22:20:10 -0800 (PST)
+Message-ID: <82e5a342-c82e-40c4-88a9-645a70420aa0@collabora.com>
+Date: Thu, 27 Feb 2025 09:20:03 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 3/6] media: platform: synopsys: Add support for HDMI
+ input driver
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 To: Shreeya Patel <shreeya.patel@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	jose.abreu@synopsys.com,
-	nelson.costa@synopsys.com,
-	shawn.wen@rock-chips.com,
-	nicolas.dufresne@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: kernel@collabora.com,
-	linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Tim Surber <me@timsurber.de>,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v12 6/6] arm64: defconfig: Enable Synopsys HDMI receiver
-Date: Thu, 27 Feb 2025 08:50:25 +0300
-Message-ID: <20250227055025.766018-7-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250227055025.766018-1-dmitry.osipenko@collabora.com>
+ Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, jose.abreu@synopsys.com,
+ nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Diederik de Haas <didi.debian@cknow.org>
 References: <20250227055025.766018-1-dmitry.osipenko@collabora.com>
-MIME-Version: 1.0
+ <20250227055025.766018-4-dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250227055025.766018-4-dmitry.osipenko@collabora.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250226_215208_823986_70D8AD6C 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250226_222028_759922_453FDB76 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,32 +91,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
+On 2/27/25 08:50, Dmitry Osipenko wrote:
+> +struct hdmirx_cec *snps_hdmirx_cec_register(struct hdmirx_cec_data *data)
+> +{
+> +	struct hdmirx_cec *cec;
+> +	unsigned int irqs;
+> +	int ret;
+> +
+> +	/*
+> +	 * Our device is just a convenience - we want to link to the real
+> +	 * hardware device here, so that userspace can see the association
+> +	 * between the HDMI hardware and its associated CEC chardev.
+> +	 */
+> +	cec = devm_kzalloc(data->dev, sizeof(*cec), GFP_KERNEL);
+> +	if (!cec)
+> +		return ERR_PTR(-ENOMEM);
+> +
+> +	cec->dev = data->dev;
+> +	cec->irq = data->irq;
+> +	cec->ops = data->ops;
+> +	cec->hdmirx = data->hdmirx;
+> +
+> +	hdmirx_cec_update_bits(cec, GLOBAL_SWENABLE, CEC_ENABLE, CEC_ENABLE);
+> +	hdmirx_cec_update_bits(cec, CEC_CONFIG, RX_AUTO_DRIVE_ACKNOWLEDGE,
+> +			       RX_AUTO_DRIVE_ACKNOWLEDGE);
+> +
+> +	hdmirx_cec_write(cec, CEC_TX_COUNT, 0);
+> +	hdmirx_cec_write(cec, CEC_INT_MASK_N, 0);
+> +	hdmirx_cec_write(cec, CEC_INT_CLEAR, ~0);
+> +
+> +	cec->adap = cec_allocate_adapter(&hdmirx_cec_ops, cec, "snps-hdmirx",
+> +					 CEC_CAP_DEFAULTS | CEC_CAP_MONITOR_ALL,
+> +					 CEC_MAX_LOG_ADDRS);
+> +	if (IS_ERR(cec->adap)) {
+> +		dev_err(cec->dev, "cec adapter allocation failed\n");
+> +		return ERR_CAST(cec->adap);
+> +	}
+> +
+> +	/* override the module pointer */
+> +	cec->adap->owner = THIS_MODULE;
+> +
+> +	ret = devm_add_action(cec->dev, hdmirx_cec_del, cec);
+> +	if (ret) {
+> +		cec_delete_adapter(cec->adap);
+> +		return ERR_PTR(ret);
+> +	}
+> +
+> +	irq_set_status_flags(cec->irq, IRQ_NOAUTOEN);
+> +
+> +	ret = devm_request_threaded_irq(cec->dev, cec->irq,
+> +					hdmirx_cec_hardirq,
+> +					hdmirx_cec_thread, IRQF_ONESHOT,
+> +					"rk_hdmirx_cec", cec->adap);
+> +	if (ret) {
+> +		dev_err(cec->dev, "cec irq request failed\n");
+> +		return ERR_PTR(ret);
+> +	}
+> +
+> +	cec->notify = cec_notifier_cec_adap_register(cec->dev,
+> +						     NULL, cec->adap);
 
-The Rockchip RK3588 has a built-in HDMI receiver block from
-Synopsys. Let's enable the driver for it.
+It now occurred to me that this cec->notify also should be not needed
+for this driver and *everything* related to CEC notifiers should be
+removed. Hans, is this correct or I'm missing something?
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index cb7da4415599..6ed1ad3c0055 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -859,6 +859,7 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
- CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
- CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
- CONFIG_VIDEO_SUN6I_CSI=m
-+CONFIG_VIDEO_SYNOPSYS_HDMIRX=m
- CONFIG_VIDEO_TI_J721E_CSI2RX=m
- CONFIG_VIDEO_HANTRO=m
- CONFIG_VIDEO_IMX219=m
 -- 
-2.48.1
-
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
