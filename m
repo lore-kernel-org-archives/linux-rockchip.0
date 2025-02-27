@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48F6C19F32
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD953C197BF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bs0/8CkYnOMaDIfMICccKOROPyS0zo75stA71OOpfUo=; b=06ve/ga0AXMm0Q
-	xwnbYwp8Z9p+cmIozx0e3sKmRojXRvBGQwANVq5O4WuDQqBHDn8ghnjx1vhq4lkZNGSWaENBl+Tn3
-	QGQQVH5woWyU4GzrDzGKlIVjLnEAl9tOrDjzplYZg4DJFqUlKJXRdnzNYVMF/64GGZp0gOVXxlP0m
-	VcbQjYmTXZaGnbheyJL7wSESc20FpAswtZbzxfDIjRVGIrzMugmD25VJX7pzE2W5VeQhJmYhu1PhH
-	Mjt08iCQFuawJLT0FEi0lj8dUh4MLevzXqDg4L4WDVZfvn+0xGGQM4yy7b87pY/ykQSFDcttHXwZb
-	hAsKIB4hf3KjKSApecfw==;
+	List-Owner; bh=URmBeZStv8fimia+EmgCgildvwCBqPKudJtdC4xlQrY=; b=oU/k5i8T07H9/A
+	pL/US/ahXuHA3MsMrXPg/rkyoKMXOl1XHho/RnCuhp96sw+uMNIc260dxmTg2ZC71zFkmXS6MYJ7H
+	lRBeQe9H/kZhgNXMMtdBJhf6ElHI7E+fm6TFJOdwdlH0iQP/clccVwocp/NvvRG8Jw/eGpJCzkHCZ
+	AqDhQcB6TeQAFh/aAXjJACYblzi+GeIQLGHjtw25vYRoQy8YOHxtHuRZOkcwBxm/RUJ+jRmZycfQB
+	UCdriWH5qOUuqIjC0mG/fr+j6n/dSyWG3L0oTSNIBm+hazZ5XMJFPc2Qilm//uGm/XVVwkF2ev9UO
+	frxRsnEG5Ivdk7wvmF2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjmf-00000008dqL-0VG9;
-	Thu, 27 Feb 2025 19:43:01 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tnjmk-00000008e2v-43CY;
+	Thu, 27 Feb 2025 19:43:06 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnip6-00000008LSH-2Qoe
-	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Feb 2025 18:41:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1740681688; bh=3nn1xUu8T7htvWtlrcfnf3CgZu7iBFZUrInzdEheFlw=;
- b=fJNR3S8iXkAhWfq4vOEDVTLkgc+FvVFb3Y0mhCiNEDhG61uIZ/vWW3EmSLugH/yTkWIJXFLh1
- iXOiSQh+MbOJa/BylxDgEt2h1lAkNx4D/GwO2L3Cl/hZ5t4fwShPknnNDtq5uJcIZyaD5U/rtSX
- W0ALh5mvYeHOj9RRCv3+AVuPLxLnUaBv/KGVW5t+CmkabVr8YVGnneqBpqDkR0i3KAseOec+KFQ
- Rt24IVXNd8pOuKro/Ksa6E5OwAA2yE2eTM0SP3QdpMRyDfD0PlnbuHwJc0ffLeONF5uzoPiRYB+
- aaSSxBKllVLzuPruOKd9Ps1aP7o+VlxgiVO5qc9GNgmA==
-X-Forward-Email-ID: 67c0b1d6bf572996e86214ae
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Yao Zi <ziyao@disroot.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-iio@vger.kernel.org,
+	id 1tniv4-00000008MKL-0w9r;
+	Thu, 27 Feb 2025 18:47:39 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id DFBD225A3E;
+	Thu, 27 Feb 2025 19:47:30 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NeJMdeaV9PgI; Thu, 27 Feb 2025 19:47:30 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1740682050; bh=tNxufyEmqvelo58l5TdexlWiSdxOsHppCDLg7M4W79s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=R06d9cIO2xlwenccd6afG9XhP6C1IMj8IPLlXGO2KvKAHnpKzXfum2DQz+NcuTWN0
+	 eKaJSBCJKrnbfQQgvtFqZPEN+i7v3DGl8C684Z8qWwcqPcbW3DfBXne0RuN0Zye6c7
+	 vNBvlgZfE8Cgz5bOGrDF0Ymao6CA+y1aPGAVom1Jc2wJNEOrukHwqR+wEmNT9sEYKp
+	 GovGi0gZqWlwIc/+oF4wO6g3RJLP7UgCqg2RYctlfK6ddTayjeqBPi8cZfGb4Mo3Lz
+	 pG3qtSfHwL78PCjTxzK/CfA7qWPDwVcwPtyZXS4sGKx/B43qXN/LIPPzUATLbb4GyF
+	 hSMehDccy9T1A==
+Date: Thu, 27 Feb 2025 18:47:12 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 3/4] arm64: dts: rockchip: Add SARADC node for RK3528
-Date: Thu, 27 Feb 2025 18:40:52 +0000
-Message-ID: <20250227184058.2964204-4-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250227184058.2964204-1-jonas@kwiboo.se>
-References: <20250227184058.2964204-1-jonas@kwiboo.se>
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] clk: rockchip: Add reset lookup table for RK3528
+Message-ID: <Z8CzMNI_1CjUgSrl@pie.lan>
+References: <20250227175302.2950788-1-jonas@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250227175302.2950788-1-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_104128_709598_B5FD01C1 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20250227_104738_673622_E89D109E 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,46 +75,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a device tree node for the SARADC controller used by RK3528.
+On Thu, Feb 27, 2025 at 05:52:57PM +0000, Jonas Karlman wrote:
+> In the commit 5d0eb375e685 ("clk: rockchip: Add clock controller driver
+> for RK3528 SoC") only the dt-binding header was added for the reset
+> controller for the RK3528 SoC.
+> 
+> Add a reset lookup table generated from the SRST symbols used by vendor
+> linux-6.1-stan-rkr5 kernel to complete support for the reset controller.
+> 
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Thanks for completing the reset part! The patch looks good to me, but
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 5b334690356a..0fb90f5c291c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/clock/rockchip,rk3528-cru.h>
-+#include <dt-bindings/reset/rockchip,rk3528-cru.h>
- 
- / {
- 	compatible = "rockchip,rk3528";
-@@ -251,5 +252,17 @@ uart7: serial@ffa28000 {
- 			reg-shift = <2>;
- 			status = "disabled";
- 		};
-+
-+		saradc: adc@ffae0000 {
-+			compatible = "rockchip,rk3528-saradc";
-+			reg = <0x0 0xffae0000 0x0 0x10000>;
-+			clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
-+			clock-names = "saradc", "apb_pclk";
-+			interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
-+			resets = <&cru SRST_P_SARADC>;
-+			reset-names = "saradc-apb";
-+			#io-channel-cells = <1>;
-+			status = "disabled";
-+		};
- 	};
- };
--- 
-2.48.1
+> Fixes: 5d0eb375e685 ("clk: rockchip: Add clock controller driver for RK3528 SoC")
 
+I wonder whether it deserves a Fix tag: to me it's more like a new
+feature. Please correct me if I'm wrong.
+
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+>  drivers/clk/rockchip/Makefile     |   2 +-
+>  drivers/clk/rockchip/clk-rk3528.c |   2 +
+>  drivers/clk/rockchip/clk.h        |   1 +
+>  drivers/clk/rockchip/rst-rk3528.c | 306 ++++++++++++++++++++++++++++++
+>  4 files changed, 310 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/clk/rockchip/rst-rk3528.c
+> 
+
+Thanks,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
