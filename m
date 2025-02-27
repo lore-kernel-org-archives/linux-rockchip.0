@@ -4,58 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D73C1C021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF20CC19F2E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p5xWcihcZntFMSzaCRlsfcS+JGD20G+w2dV7kcxsLls=; b=jCIEMtUTZe0DWd
-	Gc7oGVNS5w5KFrmATmz0NSlP6UcMphKArEkAqYqo7pNFfsvuzgLH+rePCUY6+YJbUt14kE6poS+JS
-	1VieQPSQf36CNLxb/pXdSwJ44dPBdedqsxeNNSc/sIu9C1x+YI0O9GqLS7fqHaliMIMXVFtuFwqou
-	3Cl22XBfnFLz9llICQZ0KqtlQSYDcR6LiwhtFwWPuRtE4zpf8VAoOzZWibVQgm6K3X35vXvlrlmT1
-	gAN+8nVRB4ALmcgfo5JeJA+/H1UFqg7sgNlW0HQZfosRX7YFl/QtDkO6SgGhl4/QhmP2E0j/K7BL8
-	hj+wlvYYOpVuJNAaAtdQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xF/ZArcWbLQBdhCoMk6hrGnLbvwEcDfaQroFpoYB/Nc=; b=W8yo7zNYFCG+PN
+	ze3G3J3fGeVEA2nOotTVJzKhii5kHZRMFMcmS5lHFRkLBzfdxNkMnbaWdDLr1ySGwBU/1N+fIIvve
+	E9PPHkmFkPhx59XuEyd/Pf1+fVIMB/Nq4xE2nlqt94oqE3Zm/rXDfqXpvAvImx7207GhJ6Grl7Eqa
+	f63N31BvjN2/ixK77SJxYf/y/p+BJT1kmxziCshQos0Rm9XR3EpJtv5TQGrRhefw0NjDxcz9+Qdrw
+	FbD6Muz90M7pBEXDdd6ellqm33JkXoUKMeFgRl9OFarGTYNS0cN/rPtNGTHpU2nG3kaszsBJxSdlV
+	4f7SbmeNuwE3fxPSPpTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbeG-000000074wg-2gUP;
-	Thu, 27 Feb 2025 11:01:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tnbhI-000000075SY-1i7s;
+	Thu, 27 Feb 2025 11:04:56 +0000
+Received: from mail-m19731120.qiye.163.com ([220.197.31.120])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbYx-000000073lT-1VWa;
-	Thu, 27 Feb 2025 10:56:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=PiGv4eKvzFP8GKMacfTTM7wI8HoQk+tFnB/wXXe8oC8=; b=HUfv/1krv0CyQhz1z4QDZFRZsv
-	Ew44NpgikJfUrQxB7Vc9O1guk+n0kGcoRVa3acgN5p4v7hrCMY4/+ExEqYKbjsInQnS2MEgy9SbDN
-	vvtcJZ/t9l9TeDcTFOdoMLxj+G4kfePEb4mjrm5yjzhTCPGVo3aqHLqj05FzGtZZKxITpaA+RcdzU
-	Ja7FlvKQV5aYI1OgyS9nYWgYNp3ligoqMqnKyX0VtRehMtrO5VBaMxJUEcIquKyDIy1qs5ndZRvsA
-	Itcz9Rl9q0cJAwZ5CIQU7c0F+8DFBBZq3VDzB+cksbXm3HPO4WTxQfWzvKW5Nql2qg2UzdCwHOLhr
-	+ckAx6zQ==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tnbY9-00008f-Av; Thu, 27 Feb 2025 11:55:29 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: (subset) [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
-Date: Thu, 27 Feb 2025 11:55:16 +0100
-Message-ID: <174065370894.4124124.10616312809882779303.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250217215641.372723-1-detlev.casanova@collabora.com>
-References: <20250217215641.372723-1-detlev.casanova@collabora.com>
+	id 1tnbc6-000000074S9-1gXv;
+	Thu, 27 Feb 2025 10:59:36 +0000
+Received: from localhost.localdomain (unknown [103.29.142.67])
+	by smtp.qiye.163.com (Hmail) with ESMTP id c6596a3c;
+	Thu, 27 Feb 2025 18:59:24 +0800 (GMT+08:00)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v3 0/2] rockchip: Add rk3562 clock support
+Date: Thu, 27 Feb 2025 18:59:13 +0800
+Message-Id: <20250227105916.2340856-1-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCTxoeVkxCHR4YTEtCSEtNH1YVFAkWGhdVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09IVUpLS1
+	VKQktLWQY+
+X-HM-Tid: 0a95470fab6903afkunmc6596a3c
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NVE6Pio6KzIOQg0uAhpOOhc5
+	LzcKCTpVSlVKTE9LTU5IQk1OQk1DVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQUpITk83Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=R8kC9d33Z9g4FYnESeaM5DTtFcaYpcAcra30dOEJFu4VTNO5NqvT0oPGH/4dvNmMoT0B9GLdB8Rhrvu6Op6MEU+5stY0nOLVGHwGM+lg9oYCoWTFmuD4JbdXBa/Fes+0PSlRoCTeQ2uUu4Br9H6H+q9hUNwvmKW2acI+s9gMnEk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=VFwR9bSonAWb+2pGDDc10fYLnCw/mDANOeUPNgJEuBE=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_025619_394582_4A45FD36 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20250227_025935_008581_FD3C080D 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,32 +77,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, dri-devel@lists.freedesktop.org, Niklas Cassel <cassel@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 17 Feb 2025 16:47:39 -0500, Detlev Casanova wrote:
-> To support HDMI audio on the rk3588 based devices, the generic HDMI
-> Codec framework is used in the dw-hdmi-qp DRM bridge driver.
-> 
-> The implementation is mainly based on the downstream driver, ported to the
-> generic HDMI Codec framework [1] recently merged in the master branch.
-> The parameters computation has been kept as is and the data stored in the
-> dw_hdmi_qp struct as been cleaned up.
-> 
-> [...]
+This patch set add cru driver for a new SoC rk3562, the SoC DT will be sent as
+a separate patch set and the new compatible will be used in the DT.
 
-Applied, thanks!
+Changes in v3:
+- remove rk3562_cru_base and MODULE_ALIAS
 
-[1/3] drm/bridge: synopsys: Add audio support for dw-hdmi-qp
-      commit: fd0141d1a8a2a26675ee88df75615c05a55044de
+Changes in v2:
+- remove rockchip,grf info
+- Update file license
+- Update the reset ID with rst-rk3562.c
+- remove CLK_NR_CLKS
 
-Best regards,
+Finley Xiao (1):
+  clk: rockchip: Add clock controller for the RK3562
+
+Kever Yang (1):
+  dt-bindings: clock: Add RK3562 cru
+
+ .../bindings/clock/rockchip,rk3562-cru.yaml   |   55 +
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-rk3562.c             | 1108 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   40 +
+ drivers/clk/rockchip/rst-rk3562.c             |  429 +++++++
+ .../dt-bindings/clock/rockchip,rk3562-cru.h   |  379 ++++++
+ .../dt-bindings/reset/rockchip,rk3562-cru.h   |  358 ++++++
+ 8 files changed, 2377 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3562-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3562.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3562.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3562-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3562-cru.h
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
