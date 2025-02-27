@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD953C197BF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAB93C197BF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 19:43:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=URmBeZStv8fimia+EmgCgildvwCBqPKudJtdC4xlQrY=; b=oU/k5i8T07H9/A
-	pL/US/ahXuHA3MsMrXPg/rkyoKMXOl1XHho/RnCuhp96sw+uMNIc260dxmTg2ZC71zFkmXS6MYJ7H
-	lRBeQe9H/kZhgNXMMtdBJhf6ElHI7E+fm6TFJOdwdlH0iQP/clccVwocp/NvvRG8Jw/eGpJCzkHCZ
-	AqDhQcB6TeQAFh/aAXjJACYblzi+GeIQLGHjtw25vYRoQy8YOHxtHuRZOkcwBxm/RUJ+jRmZycfQB
-	UCdriWH5qOUuqIjC0mG/fr+j6n/dSyWG3L0oTSNIBm+hazZ5XMJFPc2Qilm//uGm/XVVwkF2ev9UO
-	frxRsnEG5Ivdk7wvmF2Q==;
+	List-Owner; bh=UU17ofgfKUfS8pDVo3Oj56dNAaFcxc7sCnsDKedyw9c=; b=LOvKhjQGZdUhLj
+	jfH84PLump3wHJG+D7Z7qpDUwB+lUDEzigxO+usKljr1qsnqByhImHLo7HgapqpMNrKXz40Ow+zcY
+	PXMWZhJlo4qO+J/Yx/Zv89cUL9rKrk3TygoveaSGcvRgIlsTBDnAMZtROLgZweKPZZKk6EwMtI007
+	Xaq5cZzQRLH9g1TejcMzOfrGtMgBG7g0ZqVPy7T9Ffw17HUfr3q8WfoC+f1EcI7ZIfeWjC8sODiSc
+	HMdPO1AhQfEcPYD+nHTpReGvh+a14D2mvEzq5xXIb687HyXJnZJwS49qTIfNYR6+QVIeF42J41ZXr
+	A/yK4GQhOVHOhiqSaf4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnjmk-00000008e2v-43CY;
-	Thu, 27 Feb 2025 19:43:06 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tnjnK-00000008f6N-12Hy;
+	Thu, 27 Feb 2025 19:43:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tniv4-00000008MKL-0w9r;
-	Thu, 27 Feb 2025 18:47:39 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id DFBD225A3E;
-	Thu, 27 Feb 2025 19:47:30 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NeJMdeaV9PgI; Thu, 27 Feb 2025 19:47:30 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1740682050; bh=tNxufyEmqvelo58l5TdexlWiSdxOsHppCDLg7M4W79s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=R06d9cIO2xlwenccd6afG9XhP6C1IMj8IPLlXGO2KvKAHnpKzXfum2DQz+NcuTWN0
-	 eKaJSBCJKrnbfQQgvtFqZPEN+i7v3DGl8C684Z8qWwcqPcbW3DfBXne0RuN0Zye6c7
-	 vNBvlgZfE8Cgz5bOGrDF0Ymao6CA+y1aPGAVom1Jc2wJNEOrukHwqR+wEmNT9sEYKp
-	 GovGi0gZqWlwIc/+oF4wO6g3RJLP7UgCqg2RYctlfK6ddTayjeqBPi8cZfGb4Mo3Lz
-	 pG3qtSfHwL78PCjTxzK/CfA7qWPDwVcwPtyZXS4sGKx/B43qXN/LIPPzUATLbb4GyF
-	 hSMehDccy9T1A==
-Date: Thu, 27 Feb 2025 18:47:12 +0000
-From: Yao Zi <ziyao@disroot.org>
+	id 1tnjRM-00000008RSJ-3YKM;
+	Thu, 27 Feb 2025 19:21:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=2nIp4OdR2z6qhnWaz8PyWS7YQAJ1zv2iXHLQMFhsuG0=; b=nVizH7JBdfpOazpQiOrbNj8tAP
+	j9rufvbQMJimYcjaEfKd77ViNwf0qSPWJOVH/yUqtMt+OxFUXhRZdXrJFbvIce5YlwPsZvKu2zjO8
+	99uDyEjVdQo8q22Fz6W8v53xISBjS7lLqlMMkCpt1fR2r6o1imVUbzETr0FvZbIShSwGIyLc5elOq
+	taaaNJuET4c7R95LkGIsad9vPH8/FP69c5jd6+kcYfsLiGSrgqvvMcLV8lwt5GiiSUwEs4CDM9zMY
+	Rw13ZGBkkl57hbmB3fYm4LoT616yaZRZcmW+RIGdc2fpaahZHFxpCVQ9FJnAPmZswk9NdYxSeLihd
+	OwLQF5DA==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tnjRF-0003cw-He; Thu, 27 Feb 2025 20:20:53 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Jonas Karlman <jonas@kwiboo.se>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Yao Zi <ziyao@disroot.org>
 Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH] clk: rockchip: Add reset lookup table for RK3528
-Message-ID: <Z8CzMNI_1CjUgSrl@pie.lan>
-References: <20250227175302.2950788-1-jonas@kwiboo.se>
+Date: Thu, 27 Feb 2025 20:20:52 +0100
+Message-ID: <3022099.BaHzMo0RvP@diego>
+In-Reply-To: <Z8CzMNI_1CjUgSrl@pie.lan>
+References: <20250227175302.2950788-1-jonas@kwiboo.se> <Z8CzMNI_1CjUgSrl@pie.lan>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250227175302.2950788-1-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_104738_673622_E89D109E 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20250227_112100_909483_79A6ABB1 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +74,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 27, 2025 at 05:52:57PM +0000, Jonas Karlman wrote:
-> In the commit 5d0eb375e685 ("clk: rockchip: Add clock controller driver
-> for RK3528 SoC") only the dt-binding header was added for the reset
-> controller for the RK3528 SoC.
+Am Donnerstag, 27. Februar 2025, 19:47:12 MEZ schrieb Yao Zi:
+> On Thu, Feb 27, 2025 at 05:52:57PM +0000, Jonas Karlman wrote:
+> > In the commit 5d0eb375e685 ("clk: rockchip: Add clock controller driver
+> > for RK3528 SoC") only the dt-binding header was added for the reset
+> > controller for the RK3528 SoC.
+> > 
+> > Add a reset lookup table generated from the SRST symbols used by vendor
+> > linux-6.1-stan-rkr5 kernel to complete support for the reset controller.
+> > 
 > 
-> Add a reset lookup table generated from the SRST symbols used by vendor
-> linux-6.1-stan-rkr5 kernel to complete support for the reset controller.
+> Thanks for completing the reset part! The patch looks good to me, but
 > 
-
-Thanks for completing the reset part! The patch looks good to me, but
-
-> Fixes: 5d0eb375e685 ("clk: rockchip: Add clock controller driver for RK3528 SoC")
-
-I wonder whether it deserves a Fix tag: to me it's more like a new
-feature. Please correct me if I'm wrong.
-
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  drivers/clk/rockchip/Makefile     |   2 +-
->  drivers/clk/rockchip/clk-rk3528.c |   2 +
->  drivers/clk/rockchip/clk.h        |   1 +
->  drivers/clk/rockchip/rst-rk3528.c | 306 ++++++++++++++++++++++++++++++
->  4 files changed, 310 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/clk/rockchip/rst-rk3528.c
+> > Fixes: 5d0eb375e685 ("clk: rockchip: Add clock controller driver for RK3528 SoC")
 > 
+> I wonder whether it deserves a Fix tag: to me it's more like a new
+> feature. Please correct me if I'm wrong.
 
-Thanks,
-Yao Zi
+while one can see both sides, I agree that the Fixes is unnecessary in
+this case. I've applied the clock controller mere hours ago and it was
+not broken, just missing functionality ;-)
+
+I've applied the patch now, and removed the Fixes line.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
