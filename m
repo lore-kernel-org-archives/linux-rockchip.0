@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591D6C021BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F2CC021BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Feb 2025 11:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gm+08HeU9G1IbTiZFYp5wV4kgPXEpRbT3sVAK423dl8=; b=4zM9hzI2Lh8KZm
-	387KQR8il3y3EOfayAEfY2aPIZZT/KqHC6hMv8rPKnOwAW4BXzOCMybRciJ57N1663v8bOlZz+fb/
-	ZQwLUNgdkeFpVboxUhHwaIsSqLJiwf7Zm6bGUu2iBs1pNNZNEOuwXe7UfBvtAfPxSZ2P8YfD0QCnn
-	afQBLz6mgcApcGv6TgYIKrwrc2LGShY+5WQSyHs0DzIt3TahZqObVb18nZbf9qkhVJ9X9h8fxUQIB
-	KNCM7D8rIBobog+2rdJ1uUt3qq5RfhWQAxqtn/2C2u3Pefwz4rH/+y1kXawuoxTZejJeMguvgzIjr
-	X+xZStGirpgUJsIUf4Ow==;
+	List-Owner; bh=4IkTnDTIU6pUk6KRZkcgeDPhhFIsfBsGfmAajootPiI=; b=JHZbbVIy1d32bC
+	7I4HuN5xgh59qEhGRxxhEwY289fQ+R5H3tzoZbVxY6MVDQZt9VRf2rCxFIzmfcmPqfDRGz2xwmua2
+	a2HpG0oJ6R3hOREYGWp1UBKxP9a3O76/Wixw+cEtN4gmqZ1dG7fsqhAH+IZrJcWq4SXSOnXobk3sO
+	7j3IgSYrlo4P425SHWN3sBGgsxZiOkvV1VFDgoLxk7VsI1BqsEWkL5RMDQG23D08bzdip7kQnj62h
+	fJDlgUtCx86oHFJ6vA7Dlg2WMGSsF528qdIPOT4fj8q4zd78xPhp8mVSt29WgzqCIkAmnwDvqYbzK
+	oq87zzvicHidD20u+7Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tncOk-00000007F0G-3sVL;
-	Thu, 27 Feb 2025 11:49:50 +0000
-Received: from mail-m3278.qiye.163.com ([220.197.32.78])
+	id 1tncQH-00000007FFA-1kh6;
+	Thu, 27 Feb 2025 11:51:25 +0000
+Received: from mail-m1973174.qiye.163.com ([220.197.31.74])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnbvY-000000079II-3EXo;
-	Thu, 27 Feb 2025 11:19:42 +0000
+	id 1tnbvX-000000079GL-0w3K;
+	Thu, 27 Feb 2025 11:19:40 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id c65f97ee;
-	Thu, 27 Feb 2025 19:19:37 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id c65f97e6;
+	Thu, 27 Feb 2025 19:19:34 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
@@ -36,34 +36,34 @@ Cc: linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Conor Dooley <conor+dt@kernel.org>,
 	Rob Herring <robh@kernel.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-usb@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 11/15] dt-bindings: rockchip: pmu: Add rk3562 compatible
-Date: Thu, 27 Feb 2025 19:19:09 +0800
-Message-Id: <20250227111913.2344207-12-kever.yang@rock-chips.com>
+Subject: [PATCH v3 09/15] dt-bindings: usb: dwc3: Add support for rk3562
+Date: Thu, 27 Feb 2025 19:19:07 +0800
+Message-Id: <20250227111913.2344207-10-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250227111913.2344207-1-kever.yang@rock-chips.com>
 References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxoaTlYdSh5DSUoaQkwdS0tWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-X-HM-Tid: 0a9547222d6a03afkunmc65f97ee
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUxMSVYZQxlMTBgdGEgYQ0hWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a95472221ca03afkunmc65f97e6
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PQw6Vgw6IjINGQ0pKE0hHkIe
-	LVFPChdVSlVKTE9LTU5OSkxDT0tCVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKSktLNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6P006Dww6AzIKAQ0dEkIUHkg8
+	PQkKChxVSlVKTE9LTU5OSkxOT0tOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJS05KNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=fEdLJ4x5HQA3FnCbyYmtLwifAt7Lu0K2jEi1z8fDYnFyH1+lzLf8qpNG+6b9Cj5MBqPvM2G/SwBHBPvI8Vu64Bd73M0Zwts0uqmAzo5AmcSpgEC6DcxUjPGT6vyS775PiWLgKbux5A+p73X+fjxt8XvcdR2o4ykUwQ2LzcReL9o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=3fktVaFKovjecxV81xIAXyNMJaQRx8m47zFV33JrqbE=;
+	b=e+iDDjl/x7ZbXubeWx1k4MgxsD6ndE8Nfe363mzseOFU6ybbxCcSFdet+kRoEGwGGRwG1KyXrXzNGRzlhuYNpP74UoFkxX9H4fJtFpbd4xNwwxEB+k1WjTUqkwn59t2BWG88fUmo9P1Iwy+B3CLwx8aDLlhw7ddd2c2vVH63rG4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=uBdOgROO7htXLJg3uHYGlDDd8v+5cdQZJyOdo4kszRw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_031940_991253_AF0C25C3 
-X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-CacheID: sfid-20250227_031939_444699_BA70A577 
+X-CRM114-Status: UNSURE (   8.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,37 +81,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the compatible for the pmu mfd on rk3562.
+The USB dwc3 core on Rockchip's RK3562 is the same as the one already
+included in generic snps,dwc3. Extend the binding accordingly to allow
+
+	compatible = "rockchip,rk3562-dwc3", "snps,dwc3";
+
+There are 4 clocks with different name sequency, add schema for it.
 
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
-Changes in v3: None
+Changes in v3:
+- Update commit message and add per device schema for clock name change
+
 Changes in v2: None
 
- Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ .../bindings/usb/rockchip,dwc3.yaml           | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-index 932f981265cc..9b1919fc5598 100644
---- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-@@ -25,6 +25,7 @@ select:
-           - rockchip,rk3288-pmu
-           - rockchip,rk3368-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3562-pmu
-           - rockchip,rk3568-pmu
-           - rockchip,rk3576-pmu
-           - rockchip,rk3588-pmu
-@@ -43,6 +44,7 @@ properties:
-           - rockchip,rk3288-pmu
-           - rockchip,rk3368-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3562-pmu
-           - rockchip,rk3568-pmu
-           - rockchip,rk3576-pmu
-           - rockchip,rk3588-pmu
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+index a21cc098542d..fba2cb05ecba 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+@@ -26,6 +26,7 @@ select:
+       contains:
+         enum:
+           - rockchip,rk3328-dwc3
++          - rockchip,rk3562-dwc3
+           - rockchip,rk3568-dwc3
+           - rockchip,rk3576-dwc3
+           - rockchip,rk3588-dwc3
+@@ -37,6 +38,7 @@ properties:
+     items:
+       - enum:
+           - rockchip,rk3328-dwc3
++          - rockchip,rk3562-dwc3
+           - rockchip,rk3568-dwc3
+           - rockchip,rk3576-dwc3
+           - rockchip,rk3588-dwc3
+@@ -72,6 +74,7 @@ properties:
+       - enum:
+           - grf_clk
+           - utmi
++          - pipe
+       - const: pipe
+ 
+   power-domains:
+@@ -111,6 +114,22 @@ allOf:
+             - const: suspend_clk
+             - const: bus_clk
+             - const: grf_clk
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3562-dwc3
++    then:
++      properties:
++        clocks:
++          minItems: 4
++          maxItems: 4
++        clock-names:
++          items:
++            - const: ref_clk
++            - const: suspend_clk
++            - const: bus_clk
++            - const: pipe
+   - if:
+       properties:
+         compatible:
 -- 
 2.25.1
 
