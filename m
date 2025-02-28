@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA31C282C5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB9DC19776
 	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 06:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,31 +12,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WpEYCmzOAOOCc4jlwIBM/hkUvpRijT27KGl7PiXt3HA=; b=imVU3bEefUjfbL
-	0hPZtDpJpIAKCSRquOGyiWcX0N7C2VC8JjYfzcLyU+sG+3Ptxao1IoRnuepTzZ3kZEbGcuLb3p58Q
-	n3ecxe1b5guxs2/Kgb7G285KrUC+BRDDMns5RUXyJocnI/8lz1yi6gfxnJQByf4Rx6GQhVtu8DK8l
-	1bQ9s/PsbvDOcBu0c5oGrwb7bICpLMTUPjKnhGi+J34RMy2HyH/fQw5L/L6cxSPNdjltx+iyHqYjH
-	CDgncfqG61uBODMIMygs8NzmLOQ1q2flDaZwD0Rf9S24Qc/TJYtH8y4ROH3L76vlBkCgv4xAuc1qk
-	VIG23lCGK61Kt8rPmUpg==;
+	List-Owner; bh=Rl2la8loJ7H9HoO5qmdI9X29L01dW3pPsD0wDNEXJ0I=; b=YE3bkYz2U8aguw
+	686tpWVVT+Z/1AxzILhhEC3uOPy8dqhS+PCiUQisOJXZpnYgoxRuRU60WkNMyXibamNUrpTHjauwK
+	ZZl/YpCAq8o31jypPWnZILGfq6rG4hKXOzfY3LIcTPItWbKagQ9v58fouEoJQDczy8osCAWoSTmeE
+	AIFXDScHneRpSHUVI0Cnn+X79EZcq0jOorHMqylygW+Z1JxfoHsA6cl6ztpqcEj5dXbi1Rj88ggXR
+	r8ppbC/sg+D9NPQxlfCu6kb8udutMtOjUPM97nZRZn5Wf/6GZt2FeroNk9lCjv+4LBFDe8hmSGb9o
+	30ugGwFI64el/vq9ghYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnu6A-00000009tX1-3GcO;
-	Fri, 28 Feb 2025 06:43:50 +0000
+	id 1tnu6B-00000009tX9-0cPY;
+	Fri, 28 Feb 2025 06:43:51 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnu34-00000009swv-3Lv2
+	id 1tnu39-00000009syV-3c1E
 	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 06:40:40 +0000
+	Fri, 28 Feb 2025 06:40:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1740724838; bh=eKK5gcU7iw9sg/whyDQpOqDhR8eB9S7j3gxl7nSXvtc=;
- b=Wy1kafNtaP/ffQPWrNJWJlHC8E2K6Sjo6HaNCUuur5B6/NWoDuDCcZG9bdunsTu1ZxBKrWsGY
- vhCgLWRl0h+pQS9SSxvEeKe6KF9n/kIpL/OZuCFofkJhwyMWK6Ow8INACK9Bdp4OoMrKwI8U62q
- r3lh0DWe7RHmj2/Ul38gJHwPxXVScf+NOiIZZ4j/G4Nwwjtf+/zra0XJxQKoxtJX0ZimcVXq9X9
- XkoDTf8hMPppUea9l9D4iAuDJ/n9xoj3Cw2sTM5HIHGg40CCRdkhOTvyU8DPkPBN1j+vUNGKHRc
- 8jeeEREfXHzpqoV3sOjFS17YSUjGWAIF8PEtJg/hsAgg==
-X-Forward-Email-ID: 67c15a62bcf1d1bd23db01a6
+ t=1740724843; bh=7NB3P0f6RdiFdh3drg6WLnXPDL2oA0XzIxfpKl6Tzgc=;
+ b=uh7G+/Ch4QINZxAeggR8yk6Pqk9ygO39muCS+U2qykR43YFYQC3Boy7jaHjNLFYUFVMhIYlCa
+ x26cT8VRgHk2bHEv2k0hfNoqyR4H7Kd4ZKoWKe24QIAitoVh3ZfZ4S4YqUo7S7+mUzAMxuhky2u
+ i3FGtdfaTvOnH46xP2nuv4K6l9nTNj0vWk598QUJA8iKpctPiUqBCszr6LcUsZJqJTnxqtljqCV
+ ExW7Lgx1B7af2WVzYvJMTNr05UL6kqhCjxSHuAtKBfpA/ABP5Ov5xz9riWCrt0cPPpS/jUdfK8+
+ bEqEedjQUMucCepd9QdJLQbCZHROxgi8dS7iXFbnhxQg==
+X-Forward-Email-ID: 67c15a66bcf1d1bd23db01bb
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 0.4.40
@@ -46,27 +46,27 @@ X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Yao Zi <ziyao@disroot.org>,
+Cc: Yao Zi <ziyao@disroot.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 1/7] dt-bindings: soc: rockchip: Add RK3528 ioc grf syscon
-Date: Fri, 28 Feb 2025 06:40:07 +0000
-Message-ID: <20250228064024.3200000-2-jonas@kwiboo.se>
+Subject: [PATCH 2/7] dt-bindings: pinctrl: Add pinctrl support for RK3528
+Date: Fri, 28 Feb 2025 06:40:08 +0000
+Message-ID: <20250228064024.3200000-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250228064024.3200000-1-jonas@kwiboo.se>
 References: <20250228064024.3200000-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_224038_929242_4322CB27 
-X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-CacheID: sfid-20250227_224043_989732_2F4C7CD6 
+X-CRM114-Status: UNSURE (   7.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,27 +84,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The GPIO is accessible via ioc grf syscon registers on RK3528.
-
-Add compatible string for RK3528 ioc grf syscon.
+Add compatible string for RK3528 pin controller.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
+ Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 61f38b68a4a3..b4ed4cb555bd 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -15,6 +15,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3288-sgrf
-+              - rockchip,rk3528-ioc-grf
-               - rockchip,rk3566-pipe-grf
-               - rockchip,rk3568-pcie3-phy-grf
-               - rockchip,rk3568-pipe-grf
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+index 80a2b1934849..960758dc417f 100644
+--- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+@@ -44,6 +44,7 @@ properties:
+       - rockchip,rk3328-pinctrl
+       - rockchip,rk3368-pinctrl
+       - rockchip,rk3399-pinctrl
++      - rockchip,rk3528-pinctrl
+       - rockchip,rk3562-pinctrl
+       - rockchip,rk3568-pinctrl
+       - rockchip,rk3576-pinctrl
 -- 
 2.48.1
 
