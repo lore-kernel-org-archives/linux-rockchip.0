@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03AA0C282C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 20:44:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469E0C282CD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 20:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z7nxzU1J+69k39NHew5xzt5VqpldT2TAOjBsvadWtkg=; b=sZAzZoRrS0gB6a
-	4ydGBZloHTs6Fdqti3xcedA0urEZ4x7E3uQVZZ913+Pj9oAENPAcBL0rd5XMlR1oGkIIWYQdD+x30
-	/VRL4f35RkDIcFZ5UGUcYf++r0zt4F1rtq1KUqZIdEcMF696pk3TKYq3mc9ZFyN9hCdh7eQAFg3Y0
-	83oM4jKwt+NpgJTC/JS54tU+FwTYZTeZnttHtqwekN0WCugtAjaVElY9GK9qGmzeeSlUybN703eXa
-	5tuhwddXWki2Oxd4Rxj11E6JA74HGUxLmOrGna499put2/uf2YGGk6M6B3uYF1FG9XAs2YUkGLRlK
-	J52BV9psKa8IIrttgl0A==;
+	List-Owner; bh=goLjqPvq8zku25z7XFcCUEvv6BL85sf6g9DqBLiaFG8=; b=jGzVXSgQv2Yu9g
+	86SkC1Sf+nIGYdUzUJkNmqMypvA4dxVSYuxUPbBA8Aucye62lifBOCu+dVfvAzf/qcV8I+EPjvsq0
+	Sbi+diqPujLfVxuEGl51bYE3JoNNXLp0SHUP2SaWI4jI0fhSlfy5OKayMWGFIYTh3te9NrZlZq2uJ
+	yTY8JlAhhK1Kthrl5QZrU7PlWasjGbJQEK2jzIEH8pDtazX6IdIr69RegcWdo5nC5eX886QSq1/v4
+	u8nDfHRxIlCDpoJN+NlbWIju2wf9TBAHjmh1GjBPNaf6pe37wYcTWtydxDbCtMTyZRf3G6CLRlPkN
+	CT3A5J8uG/3fixB3KOnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to7Dz-0000000Ce1w-1gl3;
+	id 1to7Dz-0000000Ce20-38k3;
 	Fri, 28 Feb 2025 20:44:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6n2-0000000CYaV-2fZp
+	id 1to6ni-0000000CYl1-4690
 	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 20:16:56 +0000
+	Fri, 28 Feb 2025 20:17:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 602D26127F;
-	Fri, 28 Feb 2025 20:16:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55366C4CED6;
-	Fri, 28 Feb 2025 20:16:55 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 859DE5C63B2;
+	Fri, 28 Feb 2025 20:15:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C244AC4CED6;
+	Fri, 28 Feb 2025 20:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740773815;
-	bh=8TFtmmo8Cj/1mL9CXXBf+fIuueDZSkXfv+2WvtbbpDo=;
+	s=k20201202; t=1740773858;
+	bh=6KGthV4tzaFDj3AdVqt3lZ1JPdgm3iYGLTVOdGvXUYI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dEKk3fjwrOLQ2ZdEJn6sLVv2phon3voA3UhAbVtZ0MzIS79r0ke/YsbpLpEr+Lunw
-	 a56B0uXYVEtxmwwB3CqG7XPJPAYJ0AoQL5fUGVMUoGwrISCk1dO81Mr1Eah8RwsN8N
-	 p0VGImGK3qlmR5ohnOhO3zUKv0fiBvwg07mUlSrao97lLbGnx3d/7L8+arvyRTlJxg
-	 MYcc1ZQeyFxi7ZDvM1CIma2iy/Lt6Gv8YRSDyax5DOa7TQqM/v4czDzbSXDo3sHjgn
-	 9wBVeNPdHwNQEncrPoUig4EUSNgRDfAV+qI0iNiYFFkapQd0auNrxBTCKLv99Wkz1T
-	 wHT8S78eQTqXA==
-Date: Fri, 28 Feb 2025 14:16:53 -0600
+	b=qtrc9H1okaLzbmE+Rjqt7C4BwGX3P+5Ap7QSNqcPCpTVO3cGrwapLhVDlA+sySqSe
+	 lifzYGJ1SCGvJvnVRr24cd8sMoVShLXfXILXyxgkiqyd690AnE7kyeTC3Wjz31FOfX
+	 BkrvjYcGJfwl+Idhtf6RkSU5ahN1LBVIYdZXeUjW7L27pgV7mpbAQ71XgEvoRM9BHa
+	 8SJkdzueATLWi9GSZr4bjH7ZhIQWikm1vFxMTVr+NvL6VXjFCeadzbJE6EnDq7azor
+	 p6oM2bzkQL8h0NJVyHLdKcIhwzlAPbExatE7LnHk6LIRhGdu2KRqXdS11i+AXfkFX2
+	 /ddNC85ZfVEMQ==
+Date: Fri, 28 Feb 2025 14:17:30 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Kever Yang <kever.yang@rock-chips.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
-	Simona Vetter <simona@ffwll.ch>, David Airlie <airlied@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org,
+	Jamie Iles <jamie@jamieiles.com>, linux-watchdog@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, heiko@sntech.de,
-	Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v3 05/15] dt-bindings: gpu: Add rockchip,rk3562-mali
- compatible
-Message-ID: <174077381343.3590059.11657408912105758197.robh@kernel.org>
+	devicetree@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v3 06/15] dt-bindings: watchdog: Add rk3562 compatible
+Message-ID: <174077384995.3598768.385877979363043345.robh@kernel.org>
 References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
- <20250227111913.2344207-6-kever.yang@rock-chips.com>
+ <20250227111913.2344207-7-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250227111913.2344207-6-kever.yang@rock-chips.com>
+In-Reply-To: <20250227111913.2344207-7-kever.yang@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250228_121739_054235_A13FC6BF 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +80,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 27 Feb 2025 19:19:03 +0800, Kever Yang wrote:
-> The Rockchip RK3562 GPU is ARM Mali-G52, use the same driver with
-> "arm,mali-bifrost". Extend the binding accordingly to allow
-> 
-> 	compatible = "rockchip,rk3562-mali", "arm,mali-bifrost";
+On Thu, 27 Feb 2025 19:19:04 +0800, Kever Yang wrote:
+> Add rockchip,rk3562-wdt for rk3562.
 > 
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 > ---
 > 
 > Changes in v3:
-> - Update the commit message,
-> - remove the change for clock maxItems
+> - Collect reveiw tag
 > 
 > Changes in v2: None
 > 
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
+>  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
