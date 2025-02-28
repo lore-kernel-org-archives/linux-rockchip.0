@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36664C282C6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 18:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC6EC282C6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 18:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ydZ/g4g0R4Twrjsr8VWSX2ubPIuznRpLhNDk9G015JI=; b=YZP3wjJrE74s356qucvxFtTgWV
-	fXUFrAtCAyhQFOygvrm13jQQfPXYeTcElfpCfgfXT5M3kM2vFXeOfRJepsqrAF2E+9Uq6q0pfnpkl
-	HHQtRRIU31TCNSXLvVsC9ysigfsBOLLj1GxQrlGvV/tLidrgxRrE0/+X/Y+qVM+QDw2oXo/VArlZ6
-	0PxbRuZmdtCaJ18wAhfxjPiqZ//jOn8wG9qXGVAWm03Hk3o64sJe000i2psN5egvgoGsyY1uodqj/
-	jDX61Igy2eWZiU411P2DS/yTsSofVz9WIPXo0d5H1lisiJBAErZeY+t+3ZP/VUFL/zfathNtrE2Ec
-	iFUxg1/g==;
+	bh=T4FEU54QhjTKMNYdPM5gz1p55IFhbkLBquEkv7NpR7w=; b=tckUkKapSWiAh0AwBWy5d2htMr
+	UlrJlvTpQEKjD/EcBCifXVLpYO++EeYwHc+fbsFnpH3K71nZwiG3H91mNdmtsOsUIO4l9XHdz+hoI
+	O6TeKMCdN44Ck2g9Mjvl/31udQF/HZDzMjmr+LQNzkLo9mLPX2bFKyFjRuFhRUsXnPDSYs7ao889B
+	UkQAv7P2iuEh5qV7WF5wucdmgtPSXP91Q3/3VncMnDwC6r16kDGYgo6jpFcctFmpVFlMH8nLSYVhi
+	4DUnf9o+d8AZ+do5Vcpjv7e6ZSU1QbY9D0v3cpZe5s3osMiz8MjkvYn/VZL+MgWo7N/LJ/pgI8FrX
+	u+faghQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to5US-0000000CFXN-3bBx;
-	Fri, 28 Feb 2025 18:53:40 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1to5Vy-0000000CFth-3mzn;
+	Fri, 28 Feb 2025 18:55:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to5Ga-0000000CBkP-3QiX;
-	Fri, 28 Feb 2025 18:39:20 +0000
+	id 1to5Gm-0000000CBmT-0LVq;
+	Fri, 28 Feb 2025 18:39:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5CC3C6115C;
-	Fri, 28 Feb 2025 18:39:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50378C4CED6;
-	Fri, 28 Feb 2025 18:39:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B5BB65C691A;
+	Fri, 28 Feb 2025 18:37:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00130C4CED6;
+	Fri, 28 Feb 2025 18:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740767959;
-	bh=AuBv0dI0/7mGcCyImiY+YF7W4pXWyjFanOGgVtp4H/U=;
+	s=k20201202; t=1740767971;
+	bh=zZI9rjd7uFt389AwkuF5r2/izRTAFMFoplFVfmfKAC0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f1gKP1tGmO9TCsk0ojlDHgr7t6xSqubmNlFaFN0Zcjf1EuVDzyjAk3oTvXU6e9Jw1
-	 W7jVhZXcLOmbIq5P50+yAmazxWvz/R7piauRNjADNHxPKVmhbVTs8TgtE+LzJdYFYe
-	 xxK0pPSnpmJSrMNTZ1x21jqdLlZTCAVcil98FmAb+HeMPSwDXxePWr1HBx6F3mqP+j
-	 VEqaObXKSs7/Tkly1YB5VUejsSHz22GCU0PNONVdY7T6EKqgfVRFAv5aijBPSuNb6Y
-	 6o2mT5pe0I7Se913Szspc84oA3zbmsMwfqkPdGrlMWHrpcePLCVsVXYEH4BFe2PilP
-	 z/MKA2lEywZwg==
-Date: Fri, 28 Feb 2025 18:39:15 +0000
+	b=QvpNiSROll1L4yzr7VWtKDBpdU7IF01alBfp/v31DyoYWBZ69PbUkgIbvF9XuuHAi
+	 R+ubejEHutBJILnjI+PewG8FaNFZybdFXMQCcGH3QFHkBkAtLtcFsNL2ko9CZWSYTY
+	 o64HDFIiyBUHWNPC5sS358ZNYGvHkUr6PL5+conUt2fUXAHE9tuUc/Lv7c77axstu/
+	 loVQJ5wxspxtfX8Ije4MpYaA9HfajEynEMeebg+6j6qXHkSCKM70g6W9NXePWgiv2i
+	 5Lpvloh1c7r6M+dI0JxiUEeG0UOKLYKrI9vDqoXAy7wSKuojG5GRKkft5mAYmmgqDX
+	 hYnGBERcDu2JA==
+Date: Fri, 28 Feb 2025 18:39:26 +0000
 From: Conor Dooley <conor@kernel.org>
 To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	Linus Walleij <linus.walleij@linaro.org>,
-	Yao Zi <ziyao@disroot.org>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/7] dt-bindings: soc: rockchip: Add RK3528 ioc grf syscon
-Message-ID: <20250228-gloomy-revolving-f56eea5ab8ca@spud>
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/7] dt-bindings: pinctrl: Add pinctrl support for RK3528
+Message-ID: <20250228-emote-phonics-4337256dcd01@spud>
 References: <20250228064024.3200000-1-jonas@kwiboo.se>
- <20250228064024.3200000-2-jonas@kwiboo.se>
+ <20250228064024.3200000-3-jonas@kwiboo.se>
 MIME-Version: 1.0
-In-Reply-To: <20250228064024.3200000-2-jonas@kwiboo.se>
+In-Reply-To: <20250228064024.3200000-3-jonas@kwiboo.se>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250228_103932_161098_2AEFE15C 
+X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,46 +73,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2773943913527478756=="
+Content-Type: multipart/mixed; boundary="===============5916978337162868853=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2773943913527478756==
+--===============5916978337162868853==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/leG0Q2y3eS4Gkis"
+	protocol="application/pgp-signature"; boundary="+XM8zBTCiCN/RDO6"
 Content-Disposition: inline
 
 
---/leG0Q2y3eS4Gkis
+--+XM8zBTCiCN/RDO6
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Feb 28, 2025 at 06:40:07AM +0000, Jonas Karlman wrote:
-> The GPIO is accessible via ioc grf syscon registers on RK3528.
->=20
-> Add compatible string for RK3528 ioc grf syscon.
->=20
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
---/leG0Q2y3eS4Gkis
+--+XM8zBTCiCN/RDO6
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8IC0wAKCRB4tDGHoIJi
-0jdtAQDGvTMV164jPUzRBKHwNEW+vXfylxVnqteojSFn8YFqRgEA92nhRCxirp16
-sRP2GIrG/z+LYbF1tzPyGfKyIy4hpAM=
-=njOY
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8IC3gAKCRB4tDGHoIJi
+0oF6AQD04gkxbT5D/tutvF48f6Ph5soAOs7BZjA42GTVsU5hEwD+PXfXiY8H6ff1
+M+6/WjcD4+qAvoHAVXSblGC4qoCm5AM=
+=Id+X
 -----END PGP SIGNATURE-----
 
---/leG0Q2y3eS4Gkis--
+--+XM8zBTCiCN/RDO6--
 
 
---===============2773943913527478756==
+--===============5916978337162868853==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -118,5 +115,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2773943913527478756==--
+--===============5916978337162868853==--
 
