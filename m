@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523DCC19776
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 11:21:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159C2C19776
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 12:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I7vyPzUNFlT3Ia+z/ifaNt+c3BN7QNWoxRxcY6xQe4o=; b=s2Dj9jGyEIm4gV
-	SN6kTYi4PtJrqdgYQ5RMylW65gQ3i7IJx6mGKkSJQBBqRmmVcTVKkyx0SU4SjstxaeuY4cLu8AMHD
-	Tq96uZOOoBIeNBoIAsiHIInbze1fH1Q8hM4wtkimiR1LNmMpeNg5EI1HxS3ChkXdFPfkZWjy47lAh
-	dXB+B6o60m1upaBz4lRrtmBlgywf7c+WbLFXBOd6W55/vC4TTBz+pfBlheMMsI2UNeOh1nb6SC1hz
-	O6gWUi0a64/kkC8SHEJ4EOfKFsDZ5R4lYLqydk4mNibj3jOvowWSFMULMj58xpq0G22YcuLed3Xoc
-	9HxM6KTAxXhMD3FnIarA==;
+	List-Owner; bh=tOtjS0JRzQtQ1OAmwKh4gx+HVJ+eDQO5me6JA2APZJA=; b=A6oaayI7LiZPHy
+	4xFDqhOltALPiPMiByjdS2bEbQwun2xR/EwfU1qaxjYgL5xy59y44cCHa+Jw1BCoWqamZ5KUU1H2D
+	gx5bxob8nVY0Q24HF4g+hkiNqRwByYWSw952oiU1WzPKdcRplDKaeqbwsPWsAercLijaBNW8SeCtO
+	8l37ITzgmIhgmu/C/N73J3s575i1UgTGHDUu1gWyinzMeutSQYnu3IbhsfFXlt/s8fR4GFULPZke/
+	86IrIeqVBdu/zjrYYodQufqU3/4lhGv0Ybx5ziKdjotpU2zJCEzM2iD9z9VbInY/MijisogfpCVnr
+	ZccG5my/uRN+k9tCxzgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnyRB-0000000Ajo9-08xf;
-	Fri, 28 Feb 2025 11:21:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tnz4w-0000000ApsR-3UrR;
+	Fri, 28 Feb 2025 12:02:54 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnxvI-0000000AeLy-12rD;
-	Fri, 28 Feb 2025 10:48:53 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5B036A2;
-	Fri, 28 Feb 2025 11:47:21 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740739641;
-	bh=2nu/Y6+cz0NMSSixySPG8CnuznbZo4tBIamdzIavqDQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cwbqZ2LkeytLOt2OeEt1HSLjyELIcA+L1HAVjtkn/caZVs7ulBfwHffeI4q7P9piZ
-	 zZx0gVUgQzgzC8kptFXRvvOrj9EjzMYxC1ajQF6xHc+NRI+9ViMA+X3lqsiY+L1qqX
-	 feNJ1RE8DDiyHYPWRM7ytbaYQlFJREwRP/mywSAQ=
-Date: Fri, 28 Feb 2025 11:48:47 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Mikhail Rudenko <mike.rudenko@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: allow non-coherent video capture buffers
-Message-ID: <aw6hhc5x7lycbmckbc57ke5whksem5lasfkufcxrcuou5vhoyo@ylggg6tdzcnq>
-References: <20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com>
- <20250103152326.GP554@pendragon.ideasonboard.com>
- <87bjw9s4s3.fsf@gmail.com>
- <dtfv2slbtj3ar2wvlcnd74p3xtlvggebkk3fj5ocm3eil7kyqw@al3brwf4y5dw>
- <CAAFQd5DS2x3sX59EdkTEMuO=eXc=Q0jD44EUwMisP6ocWz11qg@mail.gmail.com>
- <bgnkzjpegpmif7gohoijt42rku6jruovjsxscg75dprdz5ek2i@ntfh2yyjyiry>
- <CAAFQd5BihpFYgqvKta7ULMAVSMTy3kd6iR6Mo4ea9Ci935EFMA@mail.gmail.com>
+	id 1tnyKh-0000000AieW-25mI;
+	Fri, 28 Feb 2025 11:15:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1740741302; bh=isHbY/IQxLptRIvosa0pjZEubSG4kQQCkajcw2CB5gI=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=IrXbWTDt42YWW0LfUD6JRUzdY30YbkSXYXfEjbBQvSh5oqGzgCG9/B0KsLLNdchIZ
+	 lX04oNsne8r+Azz+kmHDH5/Hb5ZfaTLc2WAtKoctfQhgf8UqqCjBx4hqYV/CZT6zPj
+	 4EQUlYQfEAf4nGoU9ZHqQaaeLzDl17phtaILEnYw=
+Date: Fri, 28 Feb 2025 12:15:02 +0100
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Cenk Uluisik <cenk.uluisik@googlemail.com>, Chen-Yu Tsai <wens@csie.org>, Florian Klink <flokli@flokli.de>, 
+	Muhammed Efe Cetin <efectn@protonmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH UNTESTED 3/4] arm64: dts: rockchip: Enable HDMI1 on
+ Orange Pi 5 Plus
+Message-ID: <5qi24bxuamu3agtldyxhrnlefao6zy2mw2qmx62ycsdg3v6sbz@2jeawstukcyd>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Jimmy Hon <honyuenkwun@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Cenk Uluisik <cenk.uluisik@googlemail.com>, Chen-Yu Tsai <wens@csie.org>, Florian Klink <flokli@flokli.de>, 
+	Muhammed Efe Cetin <efectn@protonmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20250227235623.1624-1-honyuenkwun@gmail.com>
+ <20250227235623.1624-4-honyuenkwun@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAAFQd5BihpFYgqvKta7ULMAVSMTy3kd6iR6Mo4ea9Ci935EFMA@mail.gmail.com>
+In-Reply-To: <20250227235623.1624-4-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_024852_427897_68C8B055 
-X-CRM114-Status: GOOD (  52.56  )
+X-CRM114-CacheID: sfid-20250228_031507_990143_6E4EDE01 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,124 +70,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVG9tYXN6CgpPbiBGcmksIEZlYiAyOCwgMjAyNSBhdCAwNzoyODo0M1BNICswOTAwLCBUb21h
-c3ogRmlnYSB3cm90ZToKPiBPbiBGcmksIEZlYiAyOCwgMjAyNSBhdCA3OjE44oCvUE0gSmFjb3Bv
-IE1vbmRpCj4gPGphY29wby5tb25kaUBpZGVhc29uYm9hcmQuY29tPiB3cm90ZToKPiA+Cj4gPiBI
-aSBUb21hc3oKPiA+Cj4gPiBPbiBGcmksIEZlYiAyOCwgMjAyNSBhdCAwNzowMDo1N1BNICswOTAw
-LCBUb21hc3ogRmlnYSB3cm90ZToKPiA+ID4gSGkgSmFjb3BvLAo+ID4gPgo+ID4gPiBPbiBGcmks
-IEZlYiAyOCwgMjAyNSBhdCAyOjEx4oCvQU0gSmFjb3BvIE1vbmRpCj4gPiA+IDxqYWNvcG8ubW9u
-ZGlAaWRlYXNvbmJvYXJkLmNvbT4gd3JvdGU6Cj4gPiA+ID4KPiA+ID4gPiBIaSBNaWtoYWlsCj4g
-PiA+ID4KPiA+ID4gPiBPbiBUdWUsIEphbiAxNCwgMjAyNSBhdCAwNzowMDozOVBNICswMzAwLCBN
-aWtoYWlsIFJ1ZGVua28gd3JvdGU6Cj4gPiA+ID4gPgo+ID4gPiA+ID4gSGkgTGF1cmVudCwKPiA+
-ID4gPiA+Cj4gPiA+ID4gPiBPbiAyMDI1LTAxLTAzIGF0IDE3OjIzICswMiwgTGF1cmVudCBQaW5j
-aGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPiB3cm90ZToKPiA+ID4gPiA+
-Cj4gPiA+ID4gPiA+IE9uIFRodSwgSmFuIDAyLCAyMDI1IGF0IDA2OjM1OjAwUE0gKzAzMDAsIE1p
-a2hhaWwgUnVkZW5rbyB3cm90ZToKPiA+ID4gPiA+ID4+IEN1cnJlbnRseSwgdGhlIHJraXNwMSBk
-cml2ZXIgYWx3YXlzIHVzZXMgY29oZXJlbnQgRE1BIGFsbG9jYXRpb25zIGZvcgo+ID4gPiA+ID4g
-Pj4gdmlkZW8gY2FwdHVyZSBidWZmZXJzLiBIb3dldmVyLCBvbiBzb21lIHBsYXRmb3JtcywgdXNp
-bmcgbm9uLWNvaGVyZW50Cj4gPiA+ID4gPiA+PiBidWZmZXJzIGNhbiBpbXByb3ZlIHBlcmZvcm1h
-bmNlLCBlc3BlY2lhbGx5IHdoZW4gQ1BVIHByb2Nlc3Npbmcgb2YKPiA+ID4gPiA+ID4+IE1NQVAn
-ZWQgdmlkZW8gYnVmZmVycyBpcyByZXF1aXJlZC4KPiA+ID4gPiA+ID4+Cj4gPiA+ID4gPiA+PiBG
-b3IgZXhhbXBsZSwgb24gdGhlIFJvY2tjaGlwIFJLMzM5OSBydW5uaW5nIGF0IG1heGltdW0gQ1BV
-IGZyZXF1ZW5jeSwKPiA+ID4gPiA+ID4+IHRoZSB0aW1lIHRvIG1lbWNweSBhIGZyYW1lIGZyb20g
-YSAxMjgweDcyMCBYUkdCMzIgTU1BUCdlZCBidWZmZXIgdG8gYQo+ID4gPiA+ID4gPj4gbWFsbG9j
-J2VkIHVzZXJzcGFjZSBidWZmZXIgZGVjcmVhc2VzIGZyb20gNy43IG1zIHRvIDEuMSBtcyB3aGVu
-IHVzaW5nCj4gPiA+ID4gPiA+PiBub24tY29oZXJlbnQgRE1BIGFsbG9jYXRpb24uIENQVSB1c2Fn
-ZSBhbHNvIGRlY3JlYXNlcyBhY2NvcmRpbmdseS4KPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gV2hh
-dCdzIHRoZSB0aW1lIHRha2VuIGJ5IHRoZSBjYWNoZSBtYW5hZ2VtZW50IG9wZXJhdGlvbnMgPwo+
-ID4gPiA+ID4KPiA+ID4gPiA+IFNvcnJ5IGZvciB0aGUgbGF0ZSByZXBseSwgeW91ciBxdWVzdGlv
-biB0dXJuZWQgb3V0IGEgbGl0dGxlIG1vcmUKPiA+ID4gPiA+IGludGVyZXN0aW5nIHRoYW4gSSBl
-eHBlY3RlZCBpbml0aWFsbHkuIDopCj4gPiA+ID4gPgo+ID4gPiA+ID4gV2hlbiBjYXB0dXJpbmcg
-dXNpbmcgWWF2dGEgd2l0aCBNTUFQIGJ1ZmZlcnMgdW5kZXIgdGhlIGNvbmRpdGlvbnMgbWVudGlv
-bmVkCj4gPiA+ID4gPiBpbiB0aGUgY29tbWl0IG1lc3NhZ2UsIGZ0cmFjZSBnaXZlcyA0MzcuNiAr
-LSAxLjEgdXMgZm9yCj4gPiA+ID4gPiBkbWFfc3luY19zZ3RhYmxlX2Zvcl9jcHUgYW5kIDQwOSAr
-LSAxNCB1cyBmb3IKPiA+ID4gPiA+IGRtYV9zeW5jX3NndGFibGVfZm9yX2RldmljZS4gVGh1cywg
-aXQgbG9va3MgbGlrZSB1c2luZyBub24tY29oZXJlbnQKPiA+ID4gPiA+IGJ1ZmZlcnMgaW4gdGhp
-cyBjYXNlIGlzIG1vcmUgQ1BVLWVmZmljaWVudCBldmVuIHdoZW4gY29uc2lkZXJpbmcgY2FjaGUK
-PiA+ID4gPiA+IG1hbmFnZW1lbnQgb3ZlcmhlYWQuCj4gPiA+ID4gPgo+ID4gPiA+ID4gV2hlbiB0
-cnlpbmcgdG8gZG8gdGhlIHNhbWUgbWVhc3VyZW1lbnRzIHdpdGggbGliY2FtZXJhLCBJIGZhaWxl
-ZC4gSW4gYQo+ID4gPiA+ID4gdHlwaWNhbCBsaWJjYW1lcmEgdXNlIGNhc2Ugd2hlbiBNTUFQIGJ1
-ZmZlcnMgYXJlIGFsbG9jYXRlZCBmcm9tIGEKPiA+ID4gPiA+IGRldmljZSwgZXhwb3J0ZWQgYXMg
-ZG1hYnVmcyBhbmQgdGhlbiB1c2VkIGZvciBjYXB0dXJlIG9uIHRoZSBzYW1lIGRldmljZQo+ID4g
-PiA+ID4gd2l0aCBETUFCVUYgbWVtb3J5IHR5cGUsIGNhY2hlIG1hbmFnZW1lbnQgaW4ga2VybmVs
-IGlzIHNraXBwZWQgWzFdCj4gPiA+ID4gPiBbMl0uIEFsc28sIHZiMl9kY19kbWFidWZfb3BzX3ti
-ZWdpbixlbmR9X2NwdV9hY2Nlc3MgYXJlIG5vLW9wcyBbM10sIHNvCj4gPiA+ID4gPiBETUFfQlVG
-X0lPQ1RMX1NZTkMgZnJvbSB1c2Vyc3BhY2UgZG9lcyBub3Qgd29yayBlaXRoZXIuCj4gPiA+ID4g
-Pgo+ID4gPiA+ID4gU28gaXQgbG9va3MgbGlrZSB0byBtYWtlIHRoaXMgY2hhbmdlIHJlYWxseSB1
-c2VmdWwsIHRoZSBhYm92ZSBpc3N1ZSBvZgo+ID4gPiA+ID4gY2FjaGUgbWFuYWdlbWVudCBmb3Ig
-bGliY2FtZXJhL0RNQUJVRi92aWRlb2J1ZjItZG1hLWNvbnRpZyBoYXMgdG8gYmUKPiA+ID4gPiA+
-IHNvbHZlZC4gSSdtIG5vdCBhbiBleHBlcnQgaW4gdGhpcyBhcmVhLCBzbyBhbnkgYWR2aWNlIGlz
-IGtpbmRseSB3ZWxjb21lLiA6KQo+ID4gPiA+Cj4gPiA+ID4gSXQgd291bGQgYmUgc2hhbWUgaWYg
-d2UgbGV0IHRoaXMgZGlzY3Vzc2lvbiBkcm9wIGRlYWQuLiBjYWNoZQo+ID4gPiA+IG1hbmFnZW1l
-bnQgcG9saWNpZXMgYXJlIHJlbGV2YW50IGZvciBwZXJmb3JtYW5jZXMsIHNwZWNpZmljYWxseSBm
-b3IKPiA+ID4gPiBjcHUgYWNjZXNzLCBhbmQgeW91ciBhYm92ZSA3LjdtcyB2cyAxLjEgbXMgdGVz
-dCBjbGVhcmx5IHNob3dzIHRoYXQuCj4gPiA+ID4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBbMV0gaHR0
-cHM6Ly9naXQubGludXh0di5vcmcvbWVkaWEuZ2l0L3RyZWUvZHJpdmVycy9tZWRpYS9jb21tb24v
-dmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmM/aWQ9OTQ3OTRiNWNlNGQ5MGFiMTM0YjBiMTAxYTAy
-ZmRkZjZlNzRjNDM3ZCNuNDExCj4gPiA+ID4KPiA+ID4gPiBJIHdvdWxkIGxpa2UgdG8ga25vdyBm
-cm9tIEhhbnMgaWYgdGhlIGRlY2lzaW9uIHRvIGRpc2FsbG93IGNhY2hlLWhpbnRzCj4gPiA+ID4g
-Zm9yIGRtYWJ1ZiBpbXBvcnRlcnMgaXMgYSBkZXNpZ24gY2hvaWNlIG9yIGlzIGRlZXBseSByb290
-ZWQgaW4gb3RoZXIKPiA+ID4gPiByZWFzb25zIEkgbWlnaHQgYmUgbWlzc2luZy4KPiA+ID4KPiA+
-ID4gV2hlbiBETUEtYnVmIGlzIHVzZWQsIHRoZSByZXNwb25zaWJpbGl0eSBmb3IgY2FjaGUgbWFu
-YWdlbWVudCBpcwo+ID4gPiBzb2xlbHkgb24gdGhlIENQVSB1c2Vycycgc2lkZSwgc28gY2FjaGUt
-aGludHMgZG9uJ3QgcmVhbGx5IGFwcGx5LiBJdCdzCj4gPiA+IHRoZSBleHBvcnRlciAoPWFsbG9j
-YXRvcikgd2hvIGRldGVybWluZXMgdGhlIG1hcHBpbmcgcG9saWN5IG9mIHRoZQo+ID4gPiBidWZm
-ZXIgYW5kIHByb3ZpZGVzIG5lY2Vzc2FyeSBETUFfQlVGX1NZTkMgb3BlcmF0aW9ucyAoY2FuIGJl
-IG5vLW9wIGlmCj4gPiA+IHRoZSBidWZmZXIgaXMgY29oZXJlbnQpLgo+ID4KPiA+IFRoaXMgYWxs
-IG1ha2VzIHNlbnNlLgo+ID4KPiA+IEkgdGFrZSBpdCBhcywgZm9yIGxpYmNhbWVyYSwgdXNlcnMg
-b2YgdGhlIEZyYW1lQnVmZmVyQWxsb2NhdG9yIGhlbHBlcgo+ID4gKHdoaWNoIGZpcnN0IGV4cG9y
-dHMgTU1BUCBidWZmZXJzIGZyb20gdGhlIHZpZGVvIGRldmljZSBhbmQgdGhlCj4gPiBpbXBvcnRz
-IHRoZW0gYmFjayBhcyBETUFCVUYpIHdvbid0IGJlIGFibGUgdG8gY29udHJvbCB0aGUgY2FjaGUK
-PiA+IHBvbGljaWVzLgo+ID4KPiA+IE5vdywgaW4gdGhlIGxvbmcgdGVybSwgd2Ugd2FudCBGcmFt
-ZUJ1ZmZlckFsbG9jYXRvciB0byBnbyBhd2F5IGFuZAo+ID4gaGF2ZSBlaXRoZXIgYnVmZmVycyBl
-eHBvcnRlZCBieSB0aGUgY29uc3VtZXIgKGxpa2VseSBEUk0pIG9yIGJ5IGEKPiA+IHN5c3RlbSB3
-aWRlIGJ1ZmZlciBhbGxvY2F0b3IgKHdoZW4gd2UnbGwgaGF2ZSBvbmUpIGFuZCBoYXZlIHRoZSB2
-aWRlbwo+ID4gZGV2aWNlcyBvcGVyYXRlIGFzIHB1cmUgaW1wb3J0ZXJzLiBCdXQgZm9yIHRoZSB0
-aW1lIGJlaW5nIHRoZQo+ID4gImZpcnN0IGV4cG9ydCB0aGVuIGltcG9ydCIgdXNlIGNhc2UgaXMg
-cG9zc2liaWxlIGFuZCB2YWxpZCBzbyBJIHdvbmRlcgo+ID4gaWYgd2Ugc2hvdWxkIGNvbnNpZGVy
-IG1lYXN1cmVzIHRvIGFsbG93IGNvbnRyb2xsaW5nIGNhY2hpbmcgcG9saWNpZXMKPiA+IGZvciB0
-aGlzIHVzZSBjYXNlIHRvby4KPgo+IEhtbSwgSSBtYXkgYmUgbWlzc2luZyBzb21ldGhpbmcsIGJ1
-dCBpZiBGcmFtZUJ1ZmZlckFsbG9jYXRvciBkb2VzIHRoZQo+IGFsbG9jYXRpb24gaW50ZXJuYWxs
-eSBpbiBsaWJjYW1lcmEsIHdoeSBjb3VsZG4ndCBpdCB1c2UgdGhlCj4gVjRMMl9NRU1PUllfRkxB
-R19OT05fQ09IRVJFTlQgUkVRQlVGUy9DUkVBVEVfQlVGUyBmbGFnPwoKLUktIG1pZ2h0IGJlIG1p
-c3Npbmcgc29tZXRoaW5nLCBidXQgcmVhZGluZyB0aGUgYmVsb3cgbGlua3MgdGhhdApNaWtoYWls
-IHJlcG9ydGVkIGluIGEgcHJldmlvdXMgZW1haWwKWzFdIGh0dHBzOi8vZ2l0LmxpbnV4dHYub3Jn
-L21lZGlhLmdpdC90cmVlL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjIt
-Y29yZS5jP2lkPTk0Nzk0YjVjZTRkOTBhYjEzNGIwYjEwMWEwMmZkZGY2ZTc0YzQzN2QjbjQxMQpb
-Ml0gaHR0cHM6Ly9naXQubGludXh0di5vcmcvbWVkaWEuZ2l0L3RyZWUvZHJpdmVycy9tZWRpYS9j
-b21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmM/aWQ9OTQ3OTRiNWNlNGQ5MGFiMTM0YjBi
-MTAxYTAyZmRkZjZlNzRjNDM3ZCNuODI5CgppdCBzZWVtcyB0byBtZSB0aGF0IHllcywgd2hlbiBm
-aXJzdCBleHBvcnRpbmcgeW91IGNhbiBoaW50IHRvIHRlbGwKdmIyIHRvIGFsbG9jYXRlIGZyb20g
-bm9uLWNvaGVyZW50L25vbi1jb250aWd1b3VzIG1lbW9yeSwgYnV0IHRoZW4gd2hlbgpzd2l0Y2hp
-bmcgdGhlIGRldmljZSB0byBpbXBvcnRlciBtb2RlIChhbmQgaW1wb3J0IHRoZSBzYW1lIGJ1ZmZl
-cnMgaXQKcHJldmlvdXNseSBleHBvcnRlZCkgdGhlIGNhY2hlIHN5bmMgcG9pbnQgd291bGQgdGhl
-bgpiZSBza2lwcGVkLCBsZWFkaW5nIHRvIHBvc3NpYmxlIHN5bmNocm9uaXphdGlvbiBpc3N1ZXMg
-YmV0d2VlbiB0aGUgY3B1CmNvbnN1bWVyIGFuZCB0aGUgZGV2aWNlLgoKPgo+IE5vdGUgdGhhdCBo
-b3dldmVyLCBvbmNlIHRoZSBidWZmZXIgaXMgYWxsb2NhdGVkIGFuZCBtYXBwZWQgb25jZSwgb24K
-PiBtYW55IGFyY2hpdGVjdHVyZXMgaXQgbXVzdCBrZWVwIHRoZSBzYW1lIG1hcHBpbmcgYXR0cmli
-dXRlcyBhY3Jvc3MgdGhlCj4gZGlmZmVyZW50IG1hcHBpbmdzLCBkdWUgdG8gaG93IHRoZSBtZW1v
-cnkgaGllcmFyY2h5IHdvcmtzLiAoTm90IHN1cmUKPiBpZiB0aGlzIGlzIHdoYXQgeW91IGFyZSBh
-c2tpbmcgZm9yIGhlcmUsIHRob3VnaC4pCj4KPiA+Cj4gPiA+Cj4gPiA+IEJlc3QgcmVnYXJkcywK
-PiA+ID4gVG9tYXN6Cj4gPiA+Cj4gPiA+ID4KPiA+ID4gPiBJJ20gYXNraW5nIGJlY2F1c2UgdGhl
-IGlkZWEgaXMgZm9yIGxpYmNhbWVyYSB0byBhY3Qgc29sZWx5IGFzIGRtYS1idWYKPiA+ID4gPiBp
-bXBvcnRlciwgdGhlIGN1cnJlbnQgYWxsb2MtZXhwb3J0LXRoZW4taW1wb3J0IHRyaWNrIGlzIGFu
-IGhlbHBlciBmb3IKPiA+ID4gPiBhcHBsaWNhdGlvbnMgdG8gd29yayBhcm91bmQgdGhlIGFic2Vu
-Y2Ugb2YgYSBzeXN0ZW0gYWxsb2NhdG9yLgo+ID4gPiA+Cj4gPiA+ID4gSWYgdGhlIHJlcXVpcmVt
-ZW50IHRvIGRpc2FibGUgY2FjaGUtaGludHMgZm9yIGltcG9ydGVycyBjYW5ub3QgYmUKPiA+ID4g
-PiBsaWZ0ZWQsIGZvciBsaWJjYW1lcmEgaXQgbWVhbnMgd2Ugd291bGQgbm90IGJlIGFibGUgdG8g
-dXNlIGl0Lgo+ID4gPiA+Cj4gPiA+ID4KPiA+ID4gPiA+IFsyXSBodHRwczovL2dpdC5saW51eHR2
-Lm9yZy9tZWRpYS5naXQvdHJlZS9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9i
-dWYyLWNvcmUuYz9pZD05NDc5NGI1Y2U0ZDkwYWIxMzRiMGIxMDFhMDJmZGRmNmU3NGM0MzdkI244
-MjkKPiA+ID4gPiA+IFszXSBodHRwczovL2dpdC5saW51eHR2Lm9yZy9tZWRpYS5naXQvdHJlZS9k
-cml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWRtYS1jb250aWcuYz9pZD05
-NDc5NGI1Y2U0ZDkwYWIxMzRiMGIxMDFhMDJmZGRmNmU3NGM0MzdkI240MjYKPiA+ID4gPiA+Cj4g
-PiA+ID4gPiAtLQo+ID4gPiA+ID4gQmVzdCByZWdhcmRzLAo+ID4gPiA+ID4gTWlraGFpbCBSdWRl
-bmtvCj4gPiA+ID4gPgo+ID4gPiA+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello Jimmy,
+
+On Thu, Feb 27, 2025 at 05:56:22PM -0600, Jimmy Hon wrote:
+> Enable the second HDMI output port on the Orange Pi 5 Plus
+
+RK3588 hardware design guide states that:
+
+  - When working in HDMI2.1 mode, HDMI0_TX_ON_H is configured as low level,
+    Q1700, Q1701, Q1702, and Q1703 are not turned on.
+  
+  - When working in HDMI2.0 and below modes, HDMI0_TX_ON_H is configured as high
+    level, Q5007, Q5004, Q5005, and Q5006 are turned on, and the 499ohm resistor
+    to ground and the 50ohm pull-up resistor at the Sink end form a DC bias of
+    about 3V.
+  
+  If you only need to support HDMI2.0 and below modes, Q5007, Q5004, Q5005, and
+  Q5006 cannot be omitted. It is necessary to ensure that the tube is not turned
+  on when the machine is not turned on, because the HDMI CTS Test ID 7-3 TMDS
+  Voff test item requires that the Voff voltage must be within AVcc+-10mV when
+  the DUT is not powered on, otherwise this test item cannot pass. 2: The Coss
+  of the control MOS tube cannot be too large, otherwise it will affect the
+  signal quality. It is recommended to follow the reference figure model or the
+  corresponding Coss value.
+
+And Orange Pi 5 schematic (which has almost the same circuit as Plus variant)
+states this explicitely too:
+
+  https://megous.com/dl/tmp/5dc98e91dfee3b5a.png
+
+The same applies to HDMI1.
+
+Maybe it would be better to pull up HDMI1_TX_ON_H more explicitely for now via:
+
+&hdmi1 {
++ pinctrl-0 = <&hdmim2_tx1_cec &hdmim0_tx1_hpd
++              &hdmim1_tx1_scl &hdmim1_tx1_sda
++              &hdmi1_tx_on_h>;
+};
+
+&pinctrl {
+...
++ hdmi {
++         hdmi1_tx_on_h: hdmi1-tx-on-h {
++                 rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
++         };
++ };
+...
+};
+
+AFAIK FRL is not supported, yet, so this may be a better default for HDMI1_TX_ON_H.
+
+In any case,
+
+Reviewed-by: Ondrej Jirman <megi@xff.cz>
+
+
+And I've also tested and used identical patch for a few weeks already on my
+Orange Pi 5+. :)
+
+Kind regards,
+	o.
+
+> Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+> ---
+>  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> index 0f874b87b47e..53797f633d3a 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> @@ -26,6 +26,17 @@ hdmi0_con_in: endpoint {
+>  		};
+>  	};
+>  
+> +	hdmi1-con {
+> +		compatible = "hdmi-connector";
+> +		type = "a";
+> +
+> +		port {
+> +			hdmi1_con_in: endpoint {
+> +				remote-endpoint = <&hdmi1_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+>  	ir-receiver {
+>  		compatible = "gpio-ir-receiver";
+>  		gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
+> @@ -125,10 +136,30 @@ hdmi0_out_con: endpoint {
+>  	};
+>  };
+>  
+> +&hdmi1 {
+> +	status = "okay";
+> +};
+> +
+> +&hdmi1_in {
+> +	hdmi1_in_vp1: endpoint {
+> +		remote-endpoint = <&vp1_out_hdmi1>;
+> +	};
+> +};
+> +
+> +&hdmi1_out {
+> +	hdmi1_out_con: endpoint {
+> +		remote-endpoint = <&hdmi1_con_in>;
+> +	};
+> +};
+> +
+>  &hdptxphy0 {
+>  	status = "okay";
+>  };
+>  
+> +&hdptxphy1 {
+> +	status = "okay";
+> +};
+> +
+>  &hym8563 {
+>  	interrupt-parent = <&gpio0>;
+>  	interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
+> @@ -342,3 +373,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+>  		remote-endpoint = <&hdmi0_in_vp0>;
+>  	};
+>  };
+> +
+> +&vp1 {
+> +	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
+> +		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
+> +		remote-endpoint = <&hdmi1_in_vp1>;
+> +	};
+> +};
+> -- 
+> 2.48.1
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
