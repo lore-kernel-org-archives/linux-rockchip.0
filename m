@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469E0C282CD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FC7EC282D0
 	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 20:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,57 +12,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=goLjqPvq8zku25z7XFcCUEvv6BL85sf6g9DqBLiaFG8=; b=jGzVXSgQv2Yu9g
-	86SkC1Sf+nIGYdUzUJkNmqMypvA4dxVSYuxUPbBA8Aucye62lifBOCu+dVfvAzf/qcV8I+EPjvsq0
-	Sbi+diqPujLfVxuEGl51bYE3JoNNXLp0SHUP2SaWI4jI0fhSlfy5OKayMWGFIYTh3te9NrZlZq2uJ
-	yTY8JlAhhK1Kthrl5QZrU7PlWasjGbJQEK2jzIEH8pDtazX6IdIr69RegcWdo5nC5eX886QSq1/v4
-	u8nDfHRxIlCDpoJN+NlbWIju2wf9TBAHjmh1GjBPNaf6pe37wYcTWtydxDbCtMTyZRf3G6CLRlPkN
-	CT3A5J8uG/3fixB3KOnQ==;
+	List-Owner; bh=pRFYIunw+u/KVVnZnquwjtCrCfIBoa6Y7MCzSby86bk=; b=uXyGi7brAwnsYX
+	/rINDXQbylYqySoi0P529jOhu5q8Vc500qspxgCi9SGadfGvU0A04BaN5wG7dK2I6wMPyZhvQLMof
+	C6or6aSTFL0uSX2Jkx9Gv+1nokEBtcjmx6sT+DnA7uxyyh11cJQdY5X1Vw7QTOjgfQ+tN5h1s5Ljm
+	dUcAYIzhSRJDTiWFeBl404oIyJxxKdrL9E73urhOXSEwX+IJirbamOvK7te5lLIlYvnMtpP0UM8GE
+	k1fJerMEZex7Q8fx+NDG9nZMQApmUvDXdRt+4ByAoyX0MBxj/WRnkb4MtadTe9YYf38nsvJfCr7PV
+	S9bNHahdMQ37gpxMwzsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to7Dz-0000000Ce20-38k3;
+	id 1to7Dz-0000000Ce1n-0JG8;
 	Fri, 28 Feb 2025 20:44:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6ni-0000000CYl1-4690
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 20:17:40 +0000
+	id 1to6mo-0000000CYU7-00A6;
+	Fri, 28 Feb 2025 20:16:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 859DE5C63B2;
-	Fri, 28 Feb 2025 20:15:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C244AC4CED6;
-	Fri, 28 Feb 2025 20:17:37 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C18AE61FF4;
+	Fri, 28 Feb 2025 20:16:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0823C4CEE2;
+	Fri, 28 Feb 2025 20:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740773858;
-	bh=6KGthV4tzaFDj3AdVqt3lZ1JPdgm3iYGLTVOdGvXUYI=;
+	s=k20201202; t=1740773801;
+	bh=082XE8EtV16kXCGx5pMhPt6eqzhKH8L0hxga2Z++y8Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qtrc9H1okaLzbmE+Rjqt7C4BwGX3P+5Ap7QSNqcPCpTVO3cGrwapLhVDlA+sySqSe
-	 lifzYGJ1SCGvJvnVRr24cd8sMoVShLXfXILXyxgkiqyd690AnE7kyeTC3Wjz31FOfX
-	 BkrvjYcGJfwl+Idhtf6RkSU5ahN1LBVIYdZXeUjW7L27pgV7mpbAQ71XgEvoRM9BHa
-	 8SJkdzueATLWi9GSZr4bjH7ZhIQWikm1vFxMTVr+NvL6VXjFCeadzbJE6EnDq7azor
-	 p6oM2bzkQL8h0NJVyHLdKcIhwzlAPbExatE7LnHk6LIRhGdu2KRqXdS11i+AXfkFX2
-	 /ddNC85ZfVEMQ==
-Date: Fri, 28 Feb 2025 14:17:30 -0600
+	b=YYGOir2hYbW0RMZuK4Q+icdavzLYVBTAX9Kgxo/XQWeXUGuud2lOqMt8xs1iyiEqf
+	 A2kfWLLc24JCkcIqf+Y7z0irChDWjGsGz3FLTtAIHqzZt73W1QZocn/PPLCbMrYw9E
+	 Q9qMIt054bxKGubE+PuNvJYr/mptQvvM9JVdJz04r2oc7sB3jA+NsIWB31CJ4DAWXW
+	 1vp6hkzzCkuUPiKgCBOrxubIsow8/EEiJtktnnFQpaC0HIWh69p+8NcSoTCG5uxoba
+	 2nRPiFaFVMw3CCrK4puo7MEFMztlEkvRl3TQt4pm08WTSOVxXDB3qZ2/Y6fgITNKON
+	 HG5l5uh3hgNdA==
+Date: Fri, 28 Feb 2025 14:16:38 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Kever Yang <kever.yang@rock-chips.com>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org,
-	Jamie Iles <jamie@jamieiles.com>, linux-watchdog@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v3 06/15] dt-bindings: watchdog: Add rk3562 compatible
-Message-ID: <174077384995.3598768.385877979363043345.robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org,
+	heiko@sntech.de, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v3 04/15] dt-bindings: i2c: i2c-rk3x: Add rk3562 support
+Message-ID: <174077379803.3586340.1454205623159814222.robh@kernel.org>
 References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
- <20250227111913.2344207-7-kever.yang@rock-chips.com>
+ <20250227111913.2344207-5-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250227111913.2344207-7-kever.yang@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_121739_054235_A13FC6BF 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20250227111913.2344207-5-kever.yang@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +73,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 27 Feb 2025 19:19:04 +0800, Kever Yang wrote:
-> Add rockchip,rk3562-wdt for rk3562.
+On Thu, 27 Feb 2025 19:19:02 +0800, Kever Yang wrote:
+> rk3562 i2c compatible to the existing rk3399 binding.
 > 
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 > ---
 > 
 > Changes in v3:
-> - Collect reveiw tag
+> - Collect review tag
 > 
 > Changes in v2: None
 > 
->  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+>  Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
