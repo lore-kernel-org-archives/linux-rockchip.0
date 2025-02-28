@@ -4,67 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 607BCC282C1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 15:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97157C282D0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 15:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=m3Cj62gY9u+TzTjRxKfeZEpi0gdW2ZIhgcFH+eNwrt4=; b=e1H0ElysjYDdlY
-	S2VZbeKgbkHKdq8Of3wWWIOMsIcMOQmDc4gD8OSql3zPfYa6sOnNapYiXkxD2Rmcr4BdkmUXK7Sc0
-	iCwwmWFM032OQSdFvIQ6R/Sthuv/FJyqRXuirjbW1cm0aPGNzKZuY3IiUtDKETxex+GN2SqnUKPLY
-	dgDbgYcU/h9/idpHXxid96cnteoT0jFcfT9LD2tTUoU8fGIlyBxpFhfs8mPRzZrlBr9f1xLTV4ye9
-	79BJkSvdUb2J+v/dcBV4yb52k1y38o1OYLMxVVc2HXDz7F3PrRPOrzmDLl49ZSgMkkqXHdT+iguqm
-	XDWiiVDBrF95S+RvVgNg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5I+dHIuprTACS+G44YAYvJb8mkzdwoeiuLQPX4hW/dY=; b=Mu7vVc5cW3DF4ggL+Yp/5FNDk0
+	XQBNpD8OS/By6OFmQTGuq4uiZAd1FOXdy6m27kc+KXAeRWpPy+tNkDe9w1mIJCsaFcGt0jM/y9B3O
+	DlVg9Okfhe3El4+CoXNWfvwjPrAad9OdjcxpiNBWyq9eeEMQAr3peFZdWdsF0vh2yJiLerwxfIrM/
+	hLLmRNcbh3yV0QZCu90ROVJr4n00NSRhhdyRDLM8UFGHPmswD236mrsXcgAkjhzyL37Lu+musvAFf
+	52dM/k1rkrj2lvVY0sTBa0wK2QuDU/ELOgxH8D/y7Rf0djwrejMK4RjJU4Yqdn09gvu6yJPhzQFeo
+	Bga1dF4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to2XP-0000000BWK5-2gjB;
-	Fri, 28 Feb 2025 15:44:31 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1to2dZ-0000000BXxl-2m3I;
+	Fri, 28 Feb 2025 15:50:53 +0000
+Received: from mail-northeuropeazlp170110001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to29z-0000000BRSQ-2VmR;
-	Fri, 28 Feb 2025 15:20:21 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3989842E77;
-	Fri, 28 Feb 2025 15:20:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1740756013;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=QZu5jeody6oxpz4x8MYrbb46BHii47kNRlyxqpDsps4=;
-	b=bJiCRjWHZaWuUlBYSiq0+u2M0Z5xY07jCE2o+h06fGeLVT/KsWyS2TADB8ycuM2dmyDtPg
-	7iVkMAmvQgajkEa79ecSw8hdMFuKKJtszx9CAwhN9CDtfHQB7HvuDj8UOOHIfeE6topG6V
-	5gXQWLbEowc+E6BkPkYJwNTf1dvP/a9E7DN6ps6OuVuHPSlVj3Z1Jg6eDj4BMOHqvWo9jm
-	NG1qZs4S42NAKRjv1xSp6yF10nY3SCf7WkJsGsGkq6NqNE5guiUAnIo6/hJ1IOgIDR0hbK
-	W0sKiprwmDsz5kdl13CONymdvpNQnh7qJ+lgce5SGGKa2ArnPXCjh5o5thhGdg==
-From: Olivier Benjamin <olivier.benjamin@bootlin.com>
-Subject: [PATCH 0/2] Describe the cameras in the PinePhone Pro dts
-Date: Fri, 28 Feb 2025 16:19:49 +0100
-Message-Id: <20250228-camera-v1-0-c51869f94e97@bootlin.com>
+	id 1to2Kw-0000000BTmu-3RGz;
+	Fri, 28 Feb 2025 15:31:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yhzxLOl4HOVO0zhry4UODPOpiLONBUH8Ty3z3ofJtQFRocHpOAhSezz3pVynfjNqm5H4kW/EUn2FV36DFw2uY8ffQvn/Z2f06k6OK21KZJKht5WfymulUtyRwpWdVHA+mdLCp6eI3056dnKaU82uFLwrl9Agd6LeEzVUknodmy1vCLg4bR+nSgdx/BRCIc+ihID3ABVtIBwhn7G53B6G5uD029/32+u5sdnK+DXDKi0teYO9/uHZGN4iuJc87Gf6wnhhbrLFlhVi/CoZVkU5n1NBD1K4dI14Hp2ry1hKg75x5t9ZQ6i2Ntc/qFTGTGh+xZEVw7hWne3+3lC2tHPDmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PeXL6NbCujU/VIBDRPcf7aMcGEY88x5uiWAKVGDSbTI=;
+ b=gUTnkrKlKbRdPTPaqJMplayDtJaLy/YNpRPknyguTrESTX3BG+7PB32llSZMLevey01Y0TW12283JQnuCo+iXb1lAHCGDaj1SuQxF2ma8+TbE8BllxU8n7WemixgjPr2hAKLk62ijnvmLmB3G0kUHawjSDzbP+JkmhMFT9vNXuSuZdbtI3IDsuo7z5W/3460M1WB5ZLlMbMG3fLrvDwbLxja1IbXXD4yK+draEumocyLJkXekWRHsJS8QbnbQIQGxNPCL4peeLz/mYAyiN66vmiBB40B94VEFk0lkqULdA5l3Zx+bxl5ZFhz2IFVh834O0Y1LQNMqQEE0wyRCftJbQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PeXL6NbCujU/VIBDRPcf7aMcGEY88x5uiWAKVGDSbTI=;
+ b=HUM7ZBGDGLLis8mIicGF4Qwz89+R2jfvHt4f19uHAhM6GSW1hPVd2RrnkzY1GzBInksZI5igif2V+qY4ABetl+EFYM3lz6+dgrWJSRbzounsPbKvKVqAYmA10WY69vSvVoXmxoofCU7D9BKGgFvSd7JSya1Ek/uo/2iYHdGwu2c=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by PR3PR04MB7450.eurprd04.prod.outlook.com (2603:10a6:102:8a::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.19; Fri, 28 Feb
+ 2025 15:31:27 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%6]) with mapi id 15.20.8489.021; Fri, 28 Feb 2025
+ 15:31:26 +0000
+Message-ID: <c44c06ef-8a21-4e2f-9230-f30cea024baf@cherry.de>
+Date: Fri, 28 Feb 2025 16:31:24 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] arm64: dts: rockchip: add usb typec host support to
+ rk3588-jaguar
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dse@thaumatec.com, Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20250228150853.329175-1-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20250228150853.329175-1-heiko@sntech.de>
+X-ClientProxiedBy: GV2PEPF0000452C.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:401::352) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIABXUwWcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDIyML3eTE3NSiRF3zRAtLk6TUtMS0RHMloOKCotS0zAqwQdGxtbUAQP/
- KrlgAAAA=
-X-Change-ID: 20250228-camera-7a894befafa7
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Olivier Benjamin <olivier.benjamin@bootlin.com>, oren@taumoda.com, 
- Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
-X-Mailer: b4 0.14.2
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdeltdejfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffufffkgggtgffvvefosehtjeertdertdejnecuhfhrohhmpefqlhhivhhivghruceuvghnjhgrmhhinhcuoeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepjeevgfduhefhhfekheeileejieehueevkeffieeiteeluddtheelkeffhffhiefgnecuffhomhgrihhnpegtohguvggsvghrghdrohhrghenucfkphepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeipdhhvghloheplgduledvrdduieekrddurddvtdgnpdhmrghilhhfrhhomhepohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedufedprhgtphhtthhopeguvghvihgtvghtrhgvvgesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehrohgshheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhin
- hhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepkhhriihkodgutheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepughsihhmihgtsehmrghnjhgrrhhordhorhhgpdhrtghpthhtohepmhgvghhiseigfhhfrdgtii
-X-GND-Sasl: olivier.benjamin@bootlin.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PR3PR04MB7450:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0a9d2719-c2de-473e-033e-08dd580cf738
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TGN6d2pUdkVVQzl1TUhKbjI0cU9lZ0JLRXRXK3pHWG1JTjZoVFZUZC9Ea0tP?=
+ =?utf-8?B?UjVsaUVUVjFTeGlpNll4RjRVVlJCaVdGNW5lRjdDSDgwM2U5OGh0VngvVCtu?=
+ =?utf-8?B?d1Q5azZoU2ZHb1FKR0hLWjRQd0ljRHBWN0FSSDBMaVZCWDRtNjlKTmIxZ01y?=
+ =?utf-8?B?bU5RTHJTN0ZCMnBIYktMeXdBWk40SWQvLzVBa0xpRXNjNzlRdExFMFNzeDVM?=
+ =?utf-8?B?OExlWUpYd3JDemVuYWdxRlVMQWM1c3h4SHRRbS9qMFcwWTh5UCtLaGhDdEhS?=
+ =?utf-8?B?VzFrQ0pWUVhDamdscng5aWRONmlXUTFrZExxeks2c1NGNHBYOGNOYk1ORU9U?=
+ =?utf-8?B?UjVVS2U2UHhhK2k4cHdlMER0L294bk1DTnJRRlJ4WXp5T0VmOFlMMnQ0dkNp?=
+ =?utf-8?B?alQrRGt0aUoxa2ZBR1dLMndQS0lyM3gzdUlNZGJlL0tBeGdXTFJzOFl0ME5I?=
+ =?utf-8?B?N0NPOVBVQ21EMTNQelpoTEY2aGZ0VGdTQmx4NUxNYzdDRkFTVldPMWFFbGVu?=
+ =?utf-8?B?K2Y0bGJtcEwxc3ZyVmF1aWxxNUhYdFcwcW9pN1lHSTA0WEZPc1l3V1hsZmhP?=
+ =?utf-8?B?UjEwZkNSK3N1S053SU1UbjcycGlrRWJFNk9VZVpLQ2hRMTdsT0laaVVUakQz?=
+ =?utf-8?B?TDdWalA5eERjREJ5LzhlWGtOWTUyajJQQnhwaGlBVk1tZ2VIdE5YU1FWN0Nx?=
+ =?utf-8?B?OXRIbHNsaktDNjRlaGw2WmFRdUhPanRUMnNoMERkLytNUm54WmdJRjNyR3Rv?=
+ =?utf-8?B?b253UktISUVNSk1jYXlISUZaY2VrVSsvTW52aHpyZzBGb2o4ZWpZdW85RGJt?=
+ =?utf-8?B?Q3huTXdjU3pSMEFvYml3NHh1RytTZFYrUUR6Z2tUUkJySjhMckg3djdnZnZP?=
+ =?utf-8?B?WDN6N1dBK1BJOUpKOFVpTVJpT0lXaDE1dnJ6Zk4zOCtJTW1vTDZ4SlpnekVq?=
+ =?utf-8?B?UzZqQ1pSSjdiRHJab2hzY0NiSnV5bUd3ODJMU0FCdW55QkQyVVNmOVlSajV2?=
+ =?utf-8?B?YUFFNnIyV1NpZjhtVTYrU0I4ZVZyOWc4MzVLeHZXZWFnVThFY3RDNlJ3Tmxw?=
+ =?utf-8?B?aWJzVGZ4RzloNGpFS0Z3ZTlFNldVUGJyNzMrQlZSNndkenYySjFrQUxxTXVj?=
+ =?utf-8?B?UHRqMFRoTVJ3RkFmSTJBazVSdmhjRXYrc05qYTZaUkRkaUw0Z09xQmFJM1U5?=
+ =?utf-8?B?UitnMGlPVkppQitENmlaN2xiTEd6U1NDNXpCUXJpWUV4Wm0xVGlhUHJNdGV2?=
+ =?utf-8?B?c1ZqMVUzUXluUjFBNTVzam5Yb3R3SkRaOUo4bm9ET1VuVTNRcXpKdHRUbm5w?=
+ =?utf-8?B?VVA5aUlDNFJNaXdLOTVCVHYrZnAyL09jRjZXbWJqTEswWlh5cmZubmx3T3BO?=
+ =?utf-8?B?N3ZzUUtxa0ZrUVE5UkFaNm9venBicmExaW1LT3ppODJXSFcvK2N1WW04c254?=
+ =?utf-8?B?MEo3YUlFajVaTTVuWjJCMEs2a0treCtxS3hBaVNzWUdiVkUvWVVmNDhhTU54?=
+ =?utf-8?B?bDM2WmJ2eVExUUxGMW5xK0kzQmJPNUlweDhwQ3daaGlaOEJjVTkxZllTQlpM?=
+ =?utf-8?B?UkhJY3F4OUM2QUZhbDBGS0FzaFN0WmtBZFJtdG0wS0JDUjBnZ2hYNS8wSGtV?=
+ =?utf-8?B?ZVF0cnpoekpQd0Q2U2tpdksveFNIeEhvVlhQRy9QQ2t2dmxmK0l0ZzdxOWpu?=
+ =?utf-8?B?SVN2WVhyemdja0NCTE0yYUlFOFdMZ3pHNDNPRWhHMTZLY2wrd0pJNjdEV2VD?=
+ =?utf-8?B?NWJHZ25PbURlRXptblk4YUZoblNGa0JSUndLd1AxREY0NzQ3TFhsTmRjYjVt?=
+ =?utf-8?B?SnMxQlM1bXIvZHdhbE1LOTRzdW85MlFjNUxMTFFmRVMxMFpzcmx1d01GWk9Y?=
+ =?utf-8?Q?SlPU8rUn7eSOg?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cDNwWGZjY2JJSGNCNnVVUVBtSTVKZjNBT2JQME1MUFJaQkQ0UVJLbFZ0aFFL?=
+ =?utf-8?B?bmM4RnVxZnkvOGhlVU4yRHVpR1ZjNmVXYWVnYlcyTHNnK2FyV3FBbnJ6c0FO?=
+ =?utf-8?B?TThqSHN4NnFkTnZmODRPamhMUjZUR3YrRExuT080VVMwUXNPYmdWVjZBY2xp?=
+ =?utf-8?B?RnljYUtKekZKYndVTVlzMnk4M0VTbXJIK3JTZ01pdTFtNDB1UmFLZnl3UnJy?=
+ =?utf-8?B?UE5HSGY3RlY3RXRYZ3lkd1pZMHFOeGVjSnFJbXJHS3RDSVRuWXdOOUk2ektV?=
+ =?utf-8?B?b3ZnenpleFBlS3NQSHNyeHRlNktIMzBoTDBpMFlLU1RQRmM4bUNrMHllaVls?=
+ =?utf-8?B?TGV4enhvNlkzczdMektwU3ZYYkFHTHl3azJGYTV4UjM4VEE5aFg0SGhrdXJo?=
+ =?utf-8?B?dGFSOFd1OUhQditLUnlBUE9KSFc3VytIMWJOdFJWMjdzVTVyTGY2bTNFbG1u?=
+ =?utf-8?B?Z0RxeEYwMVlGQm1mQTAwZVJpQ3hQQlVGRjVRTERVYUJnRERRbkRjTGhWMEdt?=
+ =?utf-8?B?Q1VsR0hEQjhtQmFjRG9RQzNkeHUzWEkweDQ5MFViZVFyc1k1SXlHYmtLeFZ3?=
+ =?utf-8?B?bVJJM1hzbHdUbWIyTGdoNHZaUGwzRHljR3Z2ZHN6TGQ5QWJSUVBvVVVaRFFO?=
+ =?utf-8?B?TzZhenhZUkhzYVRhdFc4dG1aR1Z4V0pra3N4U1FSZER0b2ViWmY2bStmZWh0?=
+ =?utf-8?B?N1BTUjdnQ1kvVEc0ejFDalZGNE51ci9pY2piMHlEWmxQVzdoS0NTN0xsVkhZ?=
+ =?utf-8?B?YWVrWExmRmQ2M3NZZGZyZFpsLzdIblNPeUtJZGFDVTVJd2tzRHR0QVB0RjRB?=
+ =?utf-8?B?ODIrdGxsanBHUUp1R25UQWYrVm8wK3ltWGQyMFBTZE8xNEFhQk1MSytMSDM4?=
+ =?utf-8?B?eVB3RkRyZkVITlY1YkJnTFl2dDZhVUg1VmhZbjlkS1hhTUJxYjlhU3NPZEln?=
+ =?utf-8?B?VW1iOS9PZ1B2NDJuanNoRVpaRkdMMGJTNjNMM0I5Y2JmMjAxYWkyWUw4MjVx?=
+ =?utf-8?B?ZmZxdkpQUE5zWUpKRHFVR21kMFVRa2Z6V3M1TlVZbTRjTkRYMUxVUzRrd3Bz?=
+ =?utf-8?B?MDdMQm1kRkxtN1NvTUFlNys1SThCTThIS2tRYzNjakVLNEYzeW1ncjd2QUNr?=
+ =?utf-8?B?N3JEUk5PSlllT0lZMUJERTgwL1ptUS9Qa1lVS1RrVGE5Y0ViRVMzNHg3WGFK?=
+ =?utf-8?B?bW5SREUvbmNxTkhzQ3g2MGp6NG5CMlFic1FTU09HREJJd3hvMmVPa2hnWjJ6?=
+ =?utf-8?B?Vklsa0VZd2hrTGtlZEdGL0NGdVJNVnJEdnRWd2dMVmluV1RJQkJ4K1hGRTZ5?=
+ =?utf-8?B?c2JWN25kNVlSdFE4QnNwdkpFQ0YwOUFmR0R3QmtaS29RRG4rbzlZUW4zQ0Rw?=
+ =?utf-8?B?QlFpMitpdVBuT1lrMnpXTzl6c0dvOHQvU3M0RUxuejNpZ0NlTXhUa1BDcTR4?=
+ =?utf-8?B?clFkdzhvcTJqeWoxSGREWGxFeHRIb1FKamljN2ovOXFmWXp5NDVobjdzcTdt?=
+ =?utf-8?B?ajN5QWZ0TjJISTNlb2pQeUdRQlVLRVBSaTROY2JHd2ZxNFZmQ25vTXBaTTha?=
+ =?utf-8?B?S1Q4SEN5SDFZbmNpTkNRcHpWQ0krdWRlQjhJUG9SMm41c0hnWitWUFVTVEdt?=
+ =?utf-8?B?dFp6bm9OS3VvKzBMbFlyMWNCcmgrbmwzSXdtQ2pNVE5Dak5OeXBtTjRFMCtJ?=
+ =?utf-8?B?ZGxUd3FVaER4d1V4MzBHUUZ6OWNQbWswUlgvY3ZNYWc3OUV4MzlMeE9TYVFr?=
+ =?utf-8?B?LzlLMHkwempFQTJObWNuRmgxSnEwc3d3MjlpWGxVY25rZGpFR3dEeDJOQm03?=
+ =?utf-8?B?YitkeWpISFJJZEZjODVBNytOdFNSQ1pDN0F0K0VzdUZXemVpWmRKRXIrY3hX?=
+ =?utf-8?B?Q0hySE0xWk84ejBGYXdFNk9XczN6YWhCWWtnOFZ2emt4TERGYVJPRWN4Tm5R?=
+ =?utf-8?B?WFMvYnBYR05nSTc0MGJyRXEzOGNJU3ZvS2gwMkN2V1gxR2cxN25OeCtSaUk3?=
+ =?utf-8?B?N0ZFd1RiYlpQbFpGTHFKNjRDeTBoOEhDSWNFWGx0b0tOdVFHWTgxMXRCWUtI?=
+ =?utf-8?B?ZGdpdnducWZ5ZnJBR0djSC9JSW1wR0hpVFgzcGtNaXVhRzE2VStpaGx2aFow?=
+ =?utf-8?B?TXdOZHZ2WVR5bFZ3SEZSVDM4RGlTRzh6NlF0WEFnODJ1MW9jOEZ3RlFuLzZC?=
+ =?utf-8?B?WlE9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0a9d2719-c2de-473e-033e-08dd580cf738
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2025 15:31:26.9008
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xQ8RHeJRToldFTBLvYJcXWnsKcHw3GE+Et4eL164PIbHZMVq9pEbiZEocef+gV9lrcWoDeO8YKpwe9g4xF5e9dPCuFGr1ET75aMZATlm564=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR04MB7450
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_072019_795855_C1CE0A01 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250228_073138_875207_07E92366 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,33 +171,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the Pine64 PinePhone Pro's rear and front
-cameras in Device Tree.
-This is based on some of Ondrej Jirman's patches hosted in his tree at
-https://codeberg.org/megi/linux, but I have also fully reviewed and
-re-written the code from the RK3399 datasheet, the PinePhone Pro
-schematic, and the IMX258-0AQH5 software reference manual.
+Hi Heiko,
 
-I have tested these changes on my PinePhone Pro and am able to take
-photos from both cameras using libcamera's cam.
+On 2/28/25 4:08 PM, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> Jaguar has two type-c ports connected to fusb302 controllers that can
+> work both in host and device mode and can also run in display-port
+> altmode.
+> 
+> While these ports can work in dual-role data mode, they do not support
+> powering the device itself as power-sink. This causes issues because
+> the current infrastructure does not cope well with dual-role data
+> without dual-role power.
+> 
+> So add the necessary nodes for the type-c controllers as well as enable
+> the relevant core usb nodes. So far host modes works reliably, but
+> device-mode does not. So devicemode needs more investigation.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
----
-Olivier Benjamin (2):
-      arm64: dts: PinePhone Pro: describe I2c Bus 1 and IMX258 world camera
-      arm64: dts: PinePhone Pro: describe the OV8858 user camera
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
 
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 138 +++++++++++++++++++++
- 1 file changed, 138 insertions(+)
----
--- 
-Olivier Benjamin <olivier.benjamin@bootlin.com>
-
+Thanks!
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
