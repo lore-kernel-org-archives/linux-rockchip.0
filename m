@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B78C282C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 20:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E014C282C6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 20:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GWrq0WhlytKWC4+mFciahjrp99Yr3yfJtlpiI12xiPk=; b=HIbOSXqHnbFuo7
-	CJSor27xDBn+rCdQgdoFf5iWRFXOvJTdiGE7hQPFHD+fKpdC5rzKZCI8ApHgeun6hkFZqQ/656oYA
-	5lSrSj/3Iqc+9uACxJHoTLskURO6+kcgcF5uQ4nSxv7qMWP7n6Xs3phcn0Y/gmGf1UDcWfoNbMu5h
-	0t2SgdGPRuOKWQl6Qz4MFZOVXC9GLh7JSoS6RH8nYIWpDhPiJePPmX1pEWwEGWHbRW3OHpzGtCwsA
-	IYdxwJBz6MecJx/QREcnRnFYNv6r0k8/KYIsMkp4DZYPmk33+WtmCRT9cswDLkVnIlAAvpRtmblMk
-	XGFWcQgV++HL7V3LQtGQ==;
+	List-Owner; bh=dEHwyUEr+cvEhND2p6TcP6dUGi79cRPcpzG+ams+J3w=; b=U2P5EegwkksBHG
+	7+rtssESAcHeJSU5M9jWnrQLSLCaCScNm7BQx/Uvn4B0QYMcf5hm85xw/Fq3YAWLijV0bP6x5A/1c
+	EFIMsXh/+4qz0MYON3GrUssMecfH5XiVtfILWRIgO35w21YWUNj9GRq/9o1erCBs+pnhkeVcQwnff
+	P67Za3TtSbxemB4XHbk2mpld56p3TjWcYiZ1IIOgfHs/ePWk3OPyt6Ti7npesu6jIXHxoCLc9OT+n
+	dBQHFFl1EaWev4xpevQO60+MHE1nNFzaXeNJWI3/TRcoJTl3HCzbSLAEq9kntOAyedctFXo+LyA6e
+	mCmeYC/cQgp/3DyKUQhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6yU-0000000Cbjg-2tXC;
-	Fri, 28 Feb 2025 20:28:46 +0000
+	id 1to7E0-0000000Ce28-0QOw;
+	Fri, 28 Feb 2025 20:44:48 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to6mY-0000000CYKO-3HSd;
-	Fri, 28 Feb 2025 20:16:26 +0000
+	id 1to6o2-0000000CYp5-2CDE
+	for linux-rockchip@lists.infradead.org;
+	Fri, 28 Feb 2025 20:17:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 522B061FC1;
-	Fri, 28 Feb 2025 20:16:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43D6DC4CEE2;
-	Fri, 28 Feb 2025 20:16:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5C3EB60008;
+	Fri, 28 Feb 2025 20:17:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70BB6C4CED6;
+	Fri, 28 Feb 2025 20:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1740773785;
-	bh=dzQqklMAZNYfmJATCpqkIwNah5vVcjjWwjEhWtWubkA=;
+	s=k20201202; t=1740773877;
+	bh=gAs0/3F2geXV4YNTqhdtOdKytR/TAZyfSsX8wnGYoSw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HAOczFQgs9pBBiUISu0r0SWsVgu8kYFsY1Wkng27PTVXjsNLrFM7brOWj9h2K5+z7
-	 IE7lz9pyqKTcPGkYBJKlxQgqBK2Qd5MP2jPW69WbuACJMaF/EySaL66jtXvIROUsx1
-	 qmb/k9JWxWdx9ICyNsdG5DfAJ39wV7RAYskskh7MR9Xz7weoEi9ZXHXyjBm2avwal5
-	 fehpSl3krSm+3b97qnTzeeRGOCEy+Q6nR5rXWuaAI3x/zwJX+xJxfowN+4LU4v0e1d
-	 asTr+0t4kYHl6HvBtRPJtWX8y8b8y5dQe0HFgml3UzRZX4/zWBQGVLY5SoUlf9MiaG
-	 QW9ONIim5XFsw==
-Date: Fri, 28 Feb 2025 14:16:23 -0600
+	b=YbN7TGkOGRl6dt6bcyOVqjt/hdC+EO3hzNKaj9yB06GRKqtAo0lwhxxDC4U65SATz
+	 Dk1sBmojt5+Wjmh82NE4rf6wQABwwqYDZXcp8kbBVXzZlreRDWWXnXakEcL7cDjBAA
+	 EoU2eKiGkyai+l6RQScwyCjRxSJudBsCptCZ04vE3/7hU/nG4w2eFHCaj9j99vIhLJ
+	 FRsiRQ1RLJE1OF7dB3OW/kfMA94l0MdxstVMiCFvYCV7NkxPBrIy74Dl9vluHLv+0g
+	 pv5UMqbSticRLuVyXroK824tKnjcX3na3XSRjOM1CobP+l5iwwhuGsV0FdYqMlauXs
+	 4DszI7cHkJl+w==
+Date: Fri, 28 Feb 2025 14:17:55 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+Cc: linux-serial@vger.kernel.org, heiko@sntech.de,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 03/15] dt-bindings: mmc: rockchip-dw-mshc: Add support
- for rk3562
-Message-ID: <174077378239.3585541.5147136924937452066.robh@kernel.org>
+	linux-kernel@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-rockchip@lists.infradead.org,
+	Jiri Slaby <jirislaby@kernel.org>, devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v3 08/15] dt-bindings: serial: snps-dw-apb-uart: Add
+ support for rk3562
+Message-ID: <174077386802.3599396.5797329350683510790.robh@kernel.org>
 References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
- <20250227111913.2344207-4-kever.yang@rock-chips.com>
+ <20250227111913.2344207-9-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250227111913.2344207-4-kever.yang@rock-chips.com>
+In-Reply-To: <20250227111913.2344207-9-kever.yang@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,21 +77,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 27 Feb 2025 19:19:01 +0800, Kever Yang wrote:
-> The dw-mshc core on Rockchip's RK3562 is the same as the one already
-> included in RK3288. Extend the binding accordingly to allow
+On Thu, 27 Feb 2025 19:19:06 +0800, Kever Yang wrote:
+> The UART core on Rockchip's RK3562 is the same as the one already
+> included in generic dw-apb-uart. Extend the binding accordingly to allow
 > 
-> 	compatible = "rockchip,rk3562-dw-mshc", "rockchip,rk3288-dw-mshc";
+> 	compatible = "rockchip,rk3562-uart", "snps,dw-apb-uart";
 > 
 > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 > ---
 > 
 > Changes in v3:
-> - update commit msg
+> - Update the commit message
 > 
 > Changes in v2: None
 > 
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
+>  Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
