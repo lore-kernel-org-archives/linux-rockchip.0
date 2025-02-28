@@ -4,61 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71513C19776
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 13:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C1BBC282C5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 13:48:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xkSrMPV8vbydKqHYDxAYCKdEoHl06xZeeLKdM9jr2xY=; b=a972u2YhCCnFLc
-	G0QoNJXFsXaTwX7F9f6hcCzbX+ptdDpUezjBwHJ3U08vL76/bHOdHILEkhi9vdg2Rjy9LBmKhKikO
-	J3S7CgvIlo7pMCW1rs+v26n4DxteQqXCK1BdkYuDohxsd9pRf7VoZeDkO1Aijipv1FcWI8fngAU2f
-	bgx2OSQGAeIe4Og7PeHO86k1RpQc7LsGb8jQ0C1GWJEbIm2F756xFWqvcPTr8nFI1I44cnkfDbtyH
-	Qvgjln9563G9JMb2aeKYC3hm+fBnG/SDzjyl8o+V88T2bn/ILSilB1p4xPOgJRIRL2/5nvfvh7dZA
-	hajjE0M/jEKobxABbReA==;
+	List-Owner; bh=CcC/BXcWDVbUoHMsu3hAtCG5B3SE5YeetXMaFkDFHOs=; b=JJ6hDcEACHu3Js
+	GsYWGB6Dz2KeMC+jbR4o8dxEXiV+OvsYDkWMERzCqe8v31LL0ebGfAO/xu35rAJt55gD43y65MDzr
+	0DvFOVBeoCCAhCCtTUuRd/8og8n64NG1m9OrkKPHoIxARzfxx55lYTxVfv2KpOn7aBqOwXXxtkO+F
+	0UX3WPQ1gNzcQDlqiY36hJ9Ck8cy1P1V5daioDB1FT946MH+NjApz4flXT9dRR8CHoEVVj1MQ1E+s
+	NBqzZtilkt/Hv4ghgIEIvmuSouFkwoBSFBLAegABwhcgZGyDacoATKVdBYla9rYQq7gSl3w70ezNh
+	ksTLHMC9Pg3J2hE9YLmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0Je-0000000B40R-1h6d;
-	Fri, 28 Feb 2025 13:22:10 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1to0ik-0000000B815-2U8a;
+	Fri, 28 Feb 2025 13:48:06 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0DP-0000000B2qF-07lB;
-	Fri, 28 Feb 2025 13:15:45 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1740748540;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=olCRpjYr4qsqRXFdIM/b3JCKLN2vd78BQaVxj7nrTLE=;
-	b=kCaYDqlg6pG/DvdWMsiG0vQHMiW09HzgzCV6Qz5Z4bMbRSx/crMZzxA1K+YvfdN+aXZcE0
-	babArb1z2kp1on3hQ2n5AZyQKSybp4UPmzrT6U/8w54oL+mA0wW9RFF0cvfEehePrRaauz
-	B+M+C6IFFZmG3cD9kedNv3lW+kmAVvYm06MSyIow3SZ6WR680DTcAPSQLhYe+ZQBv7Lnph
-	ma9UcCyjt1VhWNRwNSGqdpW4e5ta3pKofGpvaQ7d02IyufA5B9mlXzfw8CT7jY/G5mHcB7
-	6BvUtrCSWcEOZt6h1hmtV9nNR8p2aD1TTZkl9zzyOPL0ZNK/Q/tCwPmPBWHFeg==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
+	id 1to0hK-0000000B7cL-3nyy
+	for linux-rockchip@lists.infradead.org;
+	Fri, 28 Feb 2025 13:46:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=ZmbzHfuFGxMO/tUQLPQhCYSmxmQclsCq7HjjPDZTRLo=; b=M0mtWwSSXf5AxhHuLJS9gFksqw
+	eAs8epReVMAXpLMykhMSsggIt3/IEvN0OLRRwPmjuJX8+cVhiG3el3nzXZ3chisBzRv0LXOWCHWbS
+	Cmw+rNiMy3/oFYVPst8s5ohyV4n7NbLE08Tv3fBH/rD4qCfkU3sPGi5pW6ZdBrlXcFuNprylOr/aK
+	nMg0YBEv+qLNpJaqV2qBBah5gZq8iVaIk/c/82QrHtBI6P2b4dINkJcAtkAFlaBJedZPQkBxKxkyF
+	DHvgrxcy2eF373uVIHkhrRjkSeTHk7mnkcM810S/anTLny13IEeZMh7oagdJRyGTGOIkEHB2CxzMr
+	ZMXBxjfg==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1to0hB-00018u-Dt; Fri, 28 Feb 2025 14:46:29 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Mark Brown <broonie@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	=?UTF-8?q?Adri=C3=A1n=20Mart=C3=ADnez=20Larumbe?= <adrian.larumbe@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Vignesh Raman <vignesh.raman@collabora.com>,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add missing PCIe supplies to RockPro64 board dtsi
-Date: Fri, 28 Feb 2025 14:15:29 +0100
-Message-Id: <83f2938bdd4ba49c1e840537d6ede0f8219b7b90.1740748439.git.dsimic@manjaro.org>
-In-Reply-To: <cover.1740748439.git.dsimic@manjaro.org>
-References: <cover.1740748439.git.dsimic@manjaro.org>
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v6 0/8] Fix RK3588 power domain problems
+Date: Fri, 28 Feb 2025 14:46:18 +0100
+Message-ID: <174075035003.278101.1580632706000540174.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
+References: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_051543_350055_1BE3F41E 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20250228_054638_962918_F011BF3D 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,76 +89,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing "vpcie0v9-supply" and "vpcie1v8-supply" properties to the "pcie0"
-node in the Pine64 RockPro64 board dtsi file.  This eliminates the following
-warnings from the kernel log:
 
-  rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy regulator
-  rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy regulator
+On Thu, 20 Feb 2025 19:58:03 +0100, Sebastian Reichel wrote:
+> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+> driver is loaded late after booting. The crash starts with the following
+> shortened error print:
+> 
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+> 
+> [...]
 
-There are no functional changes to the way board works after these changes,
-because the "vcca_0v9" and "vcca_1v8" regulators are always enabled, [1][2]
-but these additions improve the accuracy of hardware description.
+Applied, thanks!
 
-Shuffle and reorder the "vpcie*-supply" properties a bit, so they're sorted
-alphanumerically, which is a bit more logical and more useful than having
-these properties listed in their strict alphabetical order.
+[8/8] arm64: dts: rockchip: Add GPU power domain regulator dependency for RK3588
+      commit: f94500eb7328b35f3d0927635b1aba26c85ea4b0
 
-These changes apply to the both supported hardware revisions of the Pine64
-RockPro64, i.e. to the production-run revisions 2.0 and 2.1. [1][2]
 
-[1] https://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
-[2] https://files.pine64.org/doc/rockpro64/rockpro64_v20-SCH.pdf
-
-Reported-by: Diederik de Haas <didi.debian@cknow.org>
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
-
-Notes:
-    Actually, these additions to the DT _might_ improve the way RockPro64
-    works a bit, by _possibly_ resolving the longstanding issues with PCI
-    Express enumeration, which have been observed with certain PCI Express
-    cards only.  This was mentioned in the commit 43853e843aa6 (arm64: dts:
-    rockchip: Remove unsupported node from the Pinebook Pro dts, 2024-04-01),
-    together with a brief description of the out-of-tree enumeration delay
-    that reportedly resolves those issues.
-    
-    Symptomatically enough, AFAIK only the RockPro64 has been reported to
-    suffer from the PCI Express issues, and it's only the RockPro64 that has
-    the missing supplies in its DT, so maybe there's something that causes
-    issues when the PCI Express is probed before the RK808 PMIC, which the
-    "vcca_1v8" regulator comes from.  The above-mentioned enumeration delay
-    might actually be just a workaround for those underlying issues.
-    
-    Admittedly, the RockPro64 is a bit specific board by having a standard
-    PCI Express slot, allowing use of various standard cards, but pretty much
-    standard PCI Express cards have been attached to other RK3399 boards as
-    well, and I can't recall similar issues being reported for them.
-    
-    The required reliability testing will be performed as the time permits,
-    so we'll hopefully see are these assumptions valid.  In the meantime,
-    this patch remains perfectly safe, from the standpoint of being unable
-    to do any harm or cause some unforeseen regressions.
-
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index 47dc198706c8..41ee381ff81f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -673,8 +673,10 @@ &pcie0 {
- 	num-lanes = <4>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie_perst>;
--	vpcie12v-supply = <&vcc12v_dcin>;
-+	vpcie0v9-supply = <&vcca_0v9>;
-+	vpcie1v8-supply = <&vcca_1v8>;
- 	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	vpcie12v-supply = <&vcc12v_dcin>;
- 	status = "okay";
- };
- 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
