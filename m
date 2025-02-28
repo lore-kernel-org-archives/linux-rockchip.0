@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C1BBC282C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 13:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2290AC19776
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 14:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CcC/BXcWDVbUoHMsu3hAtCG5B3SE5YeetXMaFkDFHOs=; b=JJ6hDcEACHu3Js
-	GsYWGB6Dz2KeMC+jbR4o8dxEXiV+OvsYDkWMERzCqe8v31LL0ebGfAO/xu35rAJt55gD43y65MDzr
-	0DvFOVBeoCCAhCCtTUuRd/8og8n64NG1m9OrkKPHoIxARzfxx55lYTxVfv2KpOn7aBqOwXXxtkO+F
-	0UX3WPQ1gNzcQDlqiY36hJ9Ck8cy1P1V5daioDB1FT946MH+NjApz4flXT9dRR8CHoEVVj1MQ1E+s
-	NBqzZtilkt/Hv4ghgIEIvmuSouFkwoBSFBLAegABwhcgZGyDacoATKVdBYla9rYQq7gSl3w70ezNh
-	ksTLHMC9Pg3J2hE9YLmQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cMuo62bHUGsF30SU4oHAZyIF8TtM2jJeWkY3jJyISlA=; b=wOMDgewuBB9kCk
+	/J9eUsigxdKbd5LDMEknyUntC9iRChCmc8cFkup8Y/wSi7LUWvftBn1uN4YG1v0ZVG29Z9bBvy1iI
+	gPeMB388ugKzry7s2yxzIx0XcDqj+iQAMjyt0gHwlCL1yCAbtyNgwJxXVkVQe3zhEj/0l1SIM7S8G
+	ZDSm9dPl0+nQYQwUQ8BtELTVce4SlMy0adAJbKhUO/TZ90GqoCqmjilLflkWy86pMmzkQyI28Q3RY
+	1NFov6y1EnkXNQNG+nGdxq5EuotSUFKcu3CFP219eTvKanXeBJkudmAEInbYB9MmJDCjYE23kJY5j
+	fPcB+nGSaIanBDHmbDGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0ik-0000000B815-2U8a;
-	Fri, 28 Feb 2025 13:48:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1to1hA-0000000BKq2-2aR3;
+	Fri, 28 Feb 2025 14:50:32 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to0hK-0000000B7cL-3nyy
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 13:46:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ZmbzHfuFGxMO/tUQLPQhCYSmxmQclsCq7HjjPDZTRLo=; b=M0mtWwSSXf5AxhHuLJS9gFksqw
-	eAs8epReVMAXpLMykhMSsggIt3/IEvN0OLRRwPmjuJX8+cVhiG3el3nzXZ3chisBzRv0LXOWCHWbS
-	Cmw+rNiMy3/oFYVPst8s5ohyV4n7NbLE08Tv3fBH/rD4qCfkU3sPGi5pW6ZdBrlXcFuNprylOr/aK
-	nMg0YBEv+qLNpJaqV2qBBah5gZq8iVaIk/c/82QrHtBI6P2b4dINkJcAtkAFlaBJedZPQkBxKxkyF
-	DHvgrxcy2eF373uVIHkhrRjkSeTHk7mnkcM810S/anTLny13IEeZMh7oagdJRyGTGOIkEHB2CxzMr
-	ZMXBxjfg==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1to0hB-00018u-Dt; Fri, 28 Feb 2025 14:46:29 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Mark Brown <broonie@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1to1R3-0000000BHWz-2G2M;
+	Fri, 28 Feb 2025 14:33:55 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-2f2f5e91393so592225a91.0;
+        Fri, 28 Feb 2025 06:33:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740753232; x=1741358032; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+z/hwD0xv70WB1DfpskxcfEOph0OOPc6FfcNrtz55wA=;
+        b=ZuutSxUJSdNAzdhdPbOhO6mQIiZkVWy3VKR2R0aqAsIpwt2ZiRkrJJRh4+ZT2G22fl
+         f5hZC0ov2MzthmG1QbIb8LAf0FBH+WmTMlOHI1KNymF+W/T5ucP/21NdHv5moCh2yMPp
+         uOUDm/nK1etIbYAuOR03AjEVsqu+4KQNnK8MuTKmYgufE+GthYEyHdnR2n0+OFtMUK8t
+         DiqT5Nii06fTkR/4cdsNgGPdFqQOEl5cEVgsJ67pENIkPLjuGXpK2qvIae2qTUXG+pnm
+         I6lodQ0quyjVLV0CBF/EmfZ3U/oDsK9GSV9kO+BVI4uXYeHv/vEk5s7D1Ri8uUEN8Kuo
+         PesQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740753232; x=1741358032;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+z/hwD0xv70WB1DfpskxcfEOph0OOPc6FfcNrtz55wA=;
+        b=nqKkoePqlt1jrXjXrUUaI+b3RRYc9gyz0jfgR8Q2qE0rkdoWUxbHhovolRxVqv5QKh
+         MJp/f4NyCys1+yfy/3F0+t6xmNB7mXTWMBKvdZFjLAizKfLXt2769hgXKdA5iWq+Od8B
+         Xsw0M+DfDEqKgAF4pPqULYHet7BOFCCdn4RDgazB7I6GomqrFRaR1Hpw0VP9cS69I35U
+         VOlA/qrH3N6KzM+n2jpmVtW6JXjymvvY1PG+PM1vvgbaH/IXanxEhuFWs3NJgiZ9m1IH
+         3sDVBOznKWEpTOTNTN/VjP7NaSQLa4L9K2E1L2RENl/SfV1urXGjpmh5l/ozveYExgdl
+         qn3A==
+X-Forwarded-Encrypted: i=1; AJvYcCUsYoPHfZD6QLwRmSozmBAnyakssdzmAGZUyd0JLFXdvVd0eGtP+Zpu47Wkv+jDAoeB9V2cNAE9I09g0fZR6Fee@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw0kt5rKLfLC3qhjlHgL956vZ9vgJ/t1TXZ3iHQ2NM2EiCjhSw6
+	5l92tI+9/gLNOcgCbJipEKCQO2irernyE9ilShXf2+y7rVUyKc0jK45Ro/Ak
+X-Gm-Gg: ASbGncs5IwgEawZWlQLvcvhcJ7c+0DFtaLEiHDcl84YIF3dqTyA8j0tMdE+9V7aHPCb
+	V+vqvcBBiqBWDr7cuHivQnw1sEWjEChnDR2eV+gc9hxyXpvG6KUpIzwdyr9tApbSp68npQKydL4
+	eHtQDakOJkPuUGGbqE/VW7dqH9IPoLYNOYXRbhBalcbw/c037t0wA9WY5KzfwSm3ohIn4YjmRgg
+	YSg0QH5EhnkbO+dYxVmwUcQcG+YP37CCgmLPUa7zi1BMsLlzhXxWgSduStMzqZZRDdGn3EB6ERo
+	4HdK8nYOIRDWB6QbLDQvlAyyYkNbNhY=
+X-Google-Smtp-Source: AGHT+IFFK8iGt2zkzJRfvygeL6oG1AvM9o6uoiJiWNbIcylOAd9HzZ8vKfhy7zWgRggSdl3wMWsPWg==
+X-Received: by 2002:a17:90b:1b48:b0:2fe:7f51:d2ec with SMTP id 98e67ed59e1d1-2febaa8d1e9mr2349075a91.0.1740753230444;
+        Fri, 28 Feb 2025 06:33:50 -0800 (PST)
+Received: from rock-5b.. ([221.220.131.19])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2fea6752095sm3807148a91.1.2025.02.28.06.33.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Feb 2025 06:33:49 -0800 (PST)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	=?UTF-8?q?Adri=C3=A1n=20Mart=C3=ADnez=20Larumbe?= <adrian.larumbe@collabora.com>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Vignesh Raman <vignesh.raman@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH v6 0/8] Fix RK3588 power domain problems
-Date: Fri, 28 Feb 2025 14:46:18 +0100
-Message-ID: <174075035003.278101.1580632706000540174.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
-References: <20250220-rk3588-gpu-pwr-domain-regulator-v6-0-a4f9c24e5b81@kernel.org>
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: slow down emmc freq for rock 5 itx
+Date: Fri, 28 Feb 2025 22:33:08 +0800
+Message-ID: <20250228143341.70244-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_054638_962918_F011BF3D 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20250228_063353_593985_886AEA35 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,27 +101,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The current max-frequency 200000000 of emmc is not stable. When doing
+heavy write there will be I/O Error. After setting max-frequency to
+150000000 the emmc is stable under write.
 
-On Thu, 20 Feb 2025 19:58:03 +0100, Sebastian Reichel wrote:
-> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
-> driver is loaded late after booting. The crash starts with the following
-> shortened error print:
-> 
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
-> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
-> 
-> [...]
+Also remove property mmc-hs200-1_8v because we are already running at
+HS400 mode.
 
-Applied, thanks!
+Tested with fio command:
+fio -filename=./test_randread -direct=1 -iodepth 1 -thread \
+-rw=randwrite -ioengine=psync -bs=16k -size=1G -numjobs=10 \
+-runtime=600 -group_reporting -name=mytest
 
-[8/8] arm64: dts: rockchip: Add GPU power domain regulator dependency for RK3588
-      commit: f94500eb7328b35f3d0927635b1aba26c85ea4b0
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+---
 
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+index 253b23ea9fba..bcefe5356936 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+@@ -724,10 +724,9 @@ &saradc {
+ 
+ &sdhci {
+ 	bus-width = <8>;
+-	max-frequency = <200000000>;
++	max-frequency = <150000000>;
+ 	mmc-hs400-1_8v;
+ 	mmc-hs400-enhanced-strobe;
+-	mmc-hs200-1_8v;
+ 	no-sdio;
+ 	no-sd;
+ 	non-removable;
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
