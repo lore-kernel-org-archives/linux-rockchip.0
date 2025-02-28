@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F73C282C1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 16:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6118C282C1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 17:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NbbGLXuuWmU97K+YW+kwS2DOzH9OfKXt0Xax9sp3t6s=; b=4gigBA1f4PkuoHthKnSJ2ZitcI
-	r7W3tAHVaLfKyyKqEtMv1IE2FHl+5ByFXLNXc48N3WJ1rDtBPyl4/SsqT9q7rvjSO7sln/TzK17lx
-	6xy9cACCUprjYERQuxGDq9CrplbIm0lgbFCJrlfoAMuyh7JYoZCIXpBZfHykqHZNWlie2P2cAPK9A
-	71R223ar3dkMQGtr2R44eEH737ML7d91E00rqGj7+D8gpkSjA7USPHZ8/Zu+829lCe5urUOaFcAiV
-	MW0vIjtBucNNDmhitu45Lzbq6ohUjD07I5o//7dFZlLoKeya8Uqr7y3lh2BEfQxATRmHqPe0Uw0o/
-	0m+M4ltw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8dUzzAUbZIe4sdvRxsUPxmQ45DrjRbvNacYeThNFogI=; b=NmQBYhVwCNkg90
+	j9aPAhwkHFpPVCbeaUIMbnNfbniG2L5cpFL0E/Po74HpiyxSi+oOoXlCvWgjthNuRdCB1hGw9WIvM
+	QpkQYIld0S3MWTvj+yUp2qgKjJ1z7SiIHpsuPuskA78waZRKNGXGuMNXppsBoGfcH3Y/bJWZgQy7i
+	9lUwv0eoPuXOnKG9r7QNXJd7IpXwWmv7UUBlICFt8okIAxYasCW+6Hr+TrRGMc482PATGhzotk1E1
+	7TCh9GITe7DEqZIdgGoxbfs3fPUFKpVRVf78+uz0wex9g/pcMkY70VpGXUi7qyPCG6V5NRc/hD9SM
+	GjTebCfKk71CrEFKe0ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to3el-0000000BnOX-0fxP;
-	Fri, 28 Feb 2025 16:56:11 +0000
-Received: from out-186.mta0.migadu.com ([91.218.175.186])
+	id 1to3k3-0000000Bp57-0AFk;
+	Fri, 28 Feb 2025 17:01:39 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to3ee-0000000BnLM-3Ywl
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 16:56:09 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1740761759;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CK2+2eTKEOuhyBSMGk3107aiSfJh4IB6MZYp2fX2orA=;
-	b=YnP5ml4lSpqZvZxXgRMBOB/tXJezBC6B6VFzwlj9SWokVPcyO2HSn0JrITrq3scrHkWXu8
-	P2NlPxV4wh2Snwo8S/3TIX7B3S2tlkZ08AymOj//GP3SX1QbQtvC5ZDvEyRAooPgUoeE64
-	j9eoZQB1dqHlTMSUJR458UWPER81onHKg512NWLcZyq3TV78EYMKPnnZn/z/TtccALiS/4
-	FgMyo5ZC4U2AtDv3xw/k0ZMOmSg7xa2IFYFVk+Wk4Zij2dFBBQmzZrsFy9PWe1nl4NWeYK
-	QE+jt2V+SrPhMP4k1JT3W3EAYP09vjRoBDLFCADQPhfmDZhD0jJuawYHjtvfqg==
-Date: Fri, 28 Feb 2025 17:55:47 +0100
-Message-Id: <D848JET5TDL6.2L4ZQR0YHYQU6@cknow.org>
-Cc: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Remove undocumented sdmmc
- property from lubancat-1
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Yao Zi" <ziyao@disroot.org>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Dragan Simic"
- <dsimic@manjaro.org>, "Johan Jonker" <jbx6244@gmail.com>, "Wenhao Cui"
- <lasstp5011@gmail.com>, "Yuteng Zhong" <zonyitoo@gmail.com>
-References: <20250228163117.47318-2-ziyao@disroot.org>
-In-Reply-To: <20250228163117.47318-2-ziyao@disroot.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1to3gv-0000000Bo9W-3dYX;
+	Fri, 28 Feb 2025 16:58:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=E7/z05/BU1Ot4Goq15zsDNcp3gCxqZhQV/gnnMd27D4=; b=EYpjfiEUhuPorDZ9Z8iDd4iRO4
+	Tyf2KtjoTHIo4JAszuhJI5mle5dTaVWG5qcCWGMcWsqRdsTPF6JQITZI6JjOsrXRq2LL7wOnDBITb
+	sTksxrkUsqY2xWryMCQ1/2MYukJ8g9Ork6wAK5wg+NBS746cQlZfeC6ZwPr7X7cgl5iCRR4yGXajc
+	V9BVvu9PPegbMSUMrwg/ukvTy57SitmArFR+hivsoYu7AT1JfbclzCB70Tmpp1GtG8oeQ3jKmT4WW
+	DJC9sitKkwVFOc06dn2ASo5u4byDKTlAj1t4bZSXE0P4p6HS1Q3C1H+4MgXBu1LghQUVjZFWIo5NO
+	5RNmn2Nw==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1to3gg-00029i-Nz; Fri, 28 Feb 2025 17:58:10 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	quentin.schulz@cherry.de
+Subject: [PATCH 0/2] drm/rockchip: lvds: probe logging improvements
+Date: Fri, 28 Feb 2025 17:57:53 +0100
+Message-ID: <20250228165755.405138-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_085606_556357_7794F071 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20250228_085825_930690_9FC4C5D0 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,79 +74,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1370152653825200099=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1370152653825200099==
-Content-Type: multipart/signed;
- boundary=9db44123ad8e24452ea89acc1d1803313fb749feac7e1c6887c874175b10;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+Getting the panel already uses dev_err_probe to stay silent, when
+the panel just probes later, and the lvds defers.
 
---9db44123ad8e24452ea89acc1d1803313fb749feac7e1c6887c874175b10
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+But the phy needed on px30, also has the capability to probe after
+the lvds. So make the rest of the lvds probe/bind logic also use
+more modern logging than DRM_DEV_ERR, that is deprecated anyway.
 
-On Fri Feb 28, 2025 at 5:31 PM CET, Yao Zi wrote:
-> Property "supports-cd" isn't documented anywhere and is unnecessary for
+Heiko Stuebner (2):
+  drm/rockchip: lvds: move pclk preparation in with clk_get
+  drm/rockchip: lvds: Hide scary error messages on probe deferral
 
-s/supports-cd/supports-sd/ ?
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 76 +++++++++---------------
+ 1 file changed, 28 insertions(+), 48 deletions(-)
 
-Cheers,
-  Diederik
+-- 
+2.47.2
 
-> mainline driver to function. It seems a property used by downstream
-> kernel was brought into mainline.
->
-> This should be reported by dtbs_check, but mmc-controller-common.yaml
-> defaults additionalProperties to true thus allows it. Remove the
-> property to clean the devicetree up and avoid possible confusion.
->
-> Fixes: 8d94da58de53 ("arm64: dts: rockchip: Add EmbedFire LubanCat 1")
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/ar=
-m64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> index 61dd71c259aa..ddf84c2a19cf 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> @@ -512,7 +512,6 @@ &sdhci {
-> =20
->  &sdmmc0 {
->  	max-frequency =3D <150000000>;
-> -	supports-sd;
->  	bus-width =3D <4>;
->  	cap-mmc-highspeed;
->  	cap-sd-highspeed;
-
-
---9db44123ad8e24452ea89acc1d1803313fb749feac7e1c6887c874175b10
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ8HqmAAKCRDXblvOeH7b
-brBnAQDYQlWpCi07tRhXA4WUv7ubZmIyzqkjeaOSH8mLwC7m9wEAhEKazw8l4USI
-CuStlAfbvqiFxfbuBJrPLhrrU8ag6A0=
-=EyJp
------END PGP SIGNATURE-----
-
---9db44123ad8e24452ea89acc1d1803313fb749feac7e1c6887c874175b10--
-
-
---===============1370152653825200099==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1370152653825200099==--
-
