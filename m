@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E1FC282C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 22:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A80AC282C5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 22:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jksp6i+UlgIbXaFON/r2faEMPdJ6xSu1VBQedQ8hTk8=; b=MKI3HcqLbs+8L6
-	1ydF4gPboAIFuXh2LrroTqMSlrg2tnfFHc94YJ4tMFdll6AWHQndqBgpQXW7/InRcvxvsOXE/ADX9
-	GylKMNP5mEh72Vi5Q5LqmYlsB0S8r1r88lBuXMKKdlRnHcQBRtDSYb8A5A1b7Dr7Xc0gC/lpTCcPG
-	KK4NHDo6vUnxRdJQ0M/kKIRUELrSST5E29jR191Dm1QBxBo+Ue1ewaVtnk+xuNm4kBQX+vBqT/0m4
-	kFDYCNjx6DCxo5tBUaJv+pDRX34gwyy+puvEVxhgXCOfjGxFEmY2l4la/PZtee9RbyHXpBQQRNYg6
-	KhEPNBCxMNOxZOZlPqwA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BiXslrJc52KNxCyHK2znOKFSzTDiOHcCntIK2IjrdqE=; b=x9k5yTw5t5ewGv/HqgOaUTUJBx
+	VCjJ9z4akN2b+m1c0j/LN3UbH2lqC+t52oxOy9GVu8yIQwCQp3ePDF/OHfJZyW10Opf/VEb+MNHmL
+	+27qIkgR1bDpSeVwyAefGQXKs+A/gTI/eJcG5cJn+I0pH34CrIHDJd/hh3APloSrArvagOyCeUNFp
+	1bJN2kg5QXDLOEoIZWdcD5rmNBO0LEjXQYVEl0kb8vlo5r6g8XqCZo3UJEuWiBzyVe+y277saWctW
+	szdMhImUax0XT0nL/04wbg3rctRtmdObcMNjxgO5iG+0sO3ToFDaug19wDKvf53dVXcWx591E0mk1
+	ImUq8aDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1to8aL-0000000CpVh-0KHv;
-	Fri, 28 Feb 2025 22:11:57 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1to9HG-0000000Cuc6-2JXN;
+	Fri, 28 Feb 2025 22:56:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1to8aJ-0000000CpV1-1AIH;
-	Fri, 28 Feb 2025 22:11:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=VZfcm07W8RwEaBy9lSmqnHo6WL11ba796zrsT4TrXJI=; b=TyCXX+0Y4INx6O+beYAL/qfnpw
-	xrOw0ZkMweR/I6PkMC5d1ncuABaxrCMZo/JxoY7hyf68suXi20D9bp/o5Jog748TyIWhA5xTtfdhJ
-	N/9WXodyRsorIeLIQ9+zLGNTYFHVsdtiPcbsloZD0vCvQINbv/s67+lmDR7NQnuJUO/+ETU16Om6R
-	1HlG2XdFsLUUWvKRrskWKV9dYBOCOtVuiwOaOjEGed51G+ukhAj1rBpT5OxC8+BgQa35paN0TGDQr
-	4hOOmhezcDXfbRRCWzsWXdkF0cebcaY93q/VeB5g6WxSIRp5W7DnHlnEvuEUKFlAL6zEGHxplPFXS
-	kAZzc4mQ==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1to8Zk-00040X-Sb; Fri, 28 Feb 2025 23:11:20 +0100
-From: Heiko Stuebner <heiko@sntech.de>
+	id 1to9Fi-0000000CuOt-1LmW;
+	Fri, 28 Feb 2025 22:54:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1DFCD5C0095;
+	Fri, 28 Feb 2025 22:52:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 365D4C4CEE5;
+	Fri, 28 Feb 2025 22:54:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1740783280;
+	bh=9/BEXh6bZ8n930l+zITwwGD3TVUqcE/AjCK/PLv0gB0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nX/j+gbKMT3qpqycuWs1FLkNZM513VJA/ubbB3ELLAIas2x/UEUSHjmElCnSZJM+3
+	 /foNfRWpibRmmI3jmjSJc/yiXsDYGs9ECi4XlrIOly7Pbrfoahe/tpjpPy6tJafgbB
+	 CtwoIvOOl4cpjJrRGp/q/nmvxdj85NIeDRMwGEZvU64I3sgYW7+O4tihMU4aVJ5Y3O
+	 UU0VxqFdtTGot5sUZKk0BX/4EQx59SwSTYP3i74aIEHCT6RSeoa6kxI2leO3AGhSKY
+	 74+5nSVfV6Rh7RsE+AI5kEI1cFEQ2gOGKz6Ors36uE92f9osGZlLU/utjaXgBx5/Bw
+	 tGDKtrPA5UAxg==
+Date: Fri, 28 Feb 2025 23:54:37 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
 To: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: (subset) [PATCH v3 00/15] rockchip: Add rk3562 SoC and evb support
-Date: Fri, 28 Feb 2025 23:10:48 +0100
-Message-ID: <174078063579.504376.4763347846550378295.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250227111913.2344207-1-kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+	Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 10/15] dt-bindings: pwm: rockchip: Add
+ rockchip,rk3562-pwm
+Message-ID: <hmqehlztyrudpdkc46afqvgwg2jpanaprru25qxacnmna7tkha@ifz73s2oiqiq>
 References: <20250227111913.2344207-1-kever.yang@rock-chips.com>
+ <20250227111913.2344207-11-kever.yang@rock-chips.com>
 MIME-Version: 1.0
+In-Reply-To: <20250227111913.2344207-11-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_141155_310920_4160A52C 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20250228_145442_403155_4FB8C8C8 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,35 +69,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, ulf.hansson@linaro.org, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, dri-devel@lists.freedesktop.org, Finley Xiao <finley.xiao@rock-chips.com>, linux-i2c@vger.kernel.org, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, Dragan Simic <dsimic@manjaro.org>, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Simon Xue <xxm@rock-chips.com>, Jiri Slaby <jirislaby@kernel.org>, Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org, linux-serial@vger.kernel.org, Rob Herring <robh@kernel.org>, Guenter Roeck <linux@roeck-us.net>, linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Mark Brown <broonie@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Riesch <michael.riesch@wolfvision.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1387787322849181957=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 27 Feb 2025 19:18:58 +0800, Kever Yang wrote:
-> This patch set adds rk3562 SoC and its evb support.
-> 
-> I have split out patches need driver change for different subsystem.
-> And all the modules with dt-binding document update in this patch set
-> do not need any driver change. I put them together to make it clear we
-> have a new SoC and board to use the new compatible. Please pick up the
-> patch for your subsystem, or please let me know if the patch has to
-> send separate.
-> 
-> [...]
+--===============1387787322849181957==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7eve6skvx3pjfnjm"
+Content-Disposition: inline
 
-Applied, thanks!
 
-[05/15] dt-bindings: gpu: Add rockchip,rk3562-mali compatible
-        commit: 049e7ac203d51fdc3a739f5f28906788e8eeea03
+--7eve6skvx3pjfnjm
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 10/15] dt-bindings: pwm: rockchip: Add
+ rockchip,rk3562-pwm
+MIME-Version: 1.0
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Hello,
+
+On Thu, Feb 27, 2025 at 07:19:08PM +0800, Kever Yang wrote:
+> The PWM core on Rockchip's RK3562 is the same as the one already
+> included in RK3328. Extend the binding accordingly to allow
+>=20
+> 	compatible =3D "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+>=20
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Acked-by: Uwe Kleine-K=F6nig <ukleinek@kernel.org>
+> ---
+>=20
+> Changes in v3:
+> - Update the commit message and collect the Acked-by tag.
+>=20
+> Changes in v2: None
+>=20
+>  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Do=
+cumentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> index 65bfb492b3a4..e4e1976c542d 100644
+> --- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> @@ -30,6 +30,7 @@ properties:
+>            - enum:
+>                - rockchip,px30-pwm
+>                - rockchip,rk3308-pwm
+> +              - rockchip,rk3562-pwm
+>                - rockchip,rk3568-pwm
+>                - rockchip,rk3588-pwm
+>                - rockchip,rv1126-pwm
+
+Applied with Rob's Ack to
+https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
+next
+=2E
+
+Best regards
+Uwe
+
+--7eve6skvx3pjfnjm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmfCPqsACgkQj4D7WH0S
+/k5fwQf/bAS8biZKL+kTke5xko1/gSdfFCKIQh8hFMMkR1nephPx57Secam01izM
+4hWWBXkLtnA/4WZXDXftApK2+vParfljyN43aL1aX7ZVEYJAofAHo/VgnA5B36dR
+SJgT3Pj4I10+iF3mtX0miBBxT6GpSY+wbYnscXeU/V1iAt9SuF21MsSXBHYaKd12
+RS1XdmCD9FskxIx67EqE4Uee7nlRAxlmYHRLrLc0RTHABK/hWPJstx3yPDqh57TS
+xFMXo643/mz0yJzWSmEJ6wGtDv6YkK59WUbzZSUBXfODP6qMJmYu0MzOodI02qsQ
+WnrZme04x/XgtigQkvtigVEy8JNqyw==
+=8SAG
+-----END PGP SIGNATURE-----
+
+--7eve6skvx3pjfnjm--
+
+
+--===============1387787322849181957==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1387787322849181957==--
+
