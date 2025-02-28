@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B40C282C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 06:53:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCC6C19776
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Feb 2025 07:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ehzmUw+kRDy2bxTNsP3iJx1WrAPetXm2Tc+LrLCEXE8=; b=1+Ra/NIl2tGiuK
-	sSXaj0R/S6Fy2LvKUIUOo+/9I4aijtmSRGlgGDTfvfSV/k3vXskXne+2Ayff+CuN+SeEEYgCkfYyj
-	PKz8ftJXY94DoOrJqLS+wK7i5BEsEJjQsCFvteKEjiypS4kbvA3BQqYJi70S/jbQ+1Fw3n61VOMoX
-	ftvzNaDsqWB2YIHvu83PPB4qWAnRgI3/AmXhgC9XFpfF+PfLdieO02wPB6NB9bSub97VX9RaKqdHD
-	/OgLVsfiBftgMoNNpB4A880EEubAyIcc6SM/jB6qfpPMn1tSiTNjqP9XGmnL27DCq2pWZ1eWNvVB9
-	WFRh0oiNt7xTWbcbbfjQ==;
+	List-Owner; bh=aTTUhqhBkUc8FOrCz/ClrznTPDD8Lio1ucQ5e1UX5Ws=; b=muiknXbjIlfoOE
+	S8lN4OuSIGGRkM25XUn8TV72P+bYaPfp46zwCBwxXvkaKxCJ3upTQ82Qc+Gz0Dgz848Oyz6HHYhzl
+	QRKAhfgRMCUfbffsB62NFMUct7AE8Tddklon4Aog8jy06Exg9aY56gCmeR9WViooMMitk4iHModbG
+	K0DF/nE+1t7+zgnaqeSYFc82jQy1SucNWYVnSGRhWtcZ+L8zAFC7gDRDDcPk+QH9qr7nuYqyA0FXl
+	aycj8KShyTudFI89w3vGtXKFFwxxg9Xl68seOOh4snCJ+zKSGBOqSnPX2vETlMEyDbyzI5Mnh14hB
+	bI2THikKj1IVpVK524QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnuFK-00000009uYK-1cfM;
-	Fri, 28 Feb 2025 06:53:18 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1tnvBe-0000000A3VM-0SLD;
+	Fri, 28 Feb 2025 07:53:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tnu3U-00000009t5q-0UY1
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Feb 2025 06:41:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1740724863; bh=5Jo9yXuPRKn/9jusZJeonZA0HEr47rkDIZi25HF2beM=;
- b=AU8pBJ53gaedy5wbK+5PO1U5IhUCnRz4NQDy11w84lUiGkeWs2+3VATDx2H6RsvW1lsvsunR6
- AAHzIq1Vdidm9mUB+HYIgh1AKTSQ6plLZfdtgmcYLYVCDu24q4YbippHtbPjsVYP3dui6HUnODG
- NydKNjgAvb/RN2VerjysOQWBSQXr9jL54/3kjy4Iz4qR+O5iKekXpceUXcJmQRiXa+9lsSmFIiL
- /I56FF7sXBMh9C4RGg8knMNdhW/GVuPtDN/xo+Bu2D+Enb3GygkIfCfhiv5oUleZh1OZD57pP0j
- P8tbKbcqnl/0cHmp9WhWc9aM7iU0u5JhIh9Srsf9knVQ==
-X-Forward-Email-ID: 67c15a7dbcf1d1bd23db022f
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Yao Zi <ziyao@disroot.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 7/7] arm64: dts: rockchip: Add gpio-leds node to Radxa E20C
-Date: Fri, 28 Feb 2025 06:40:13 +0000
-Message-ID: <20250228064024.3200000-8-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250228064024.3200000-1-jonas@kwiboo.se>
+	id 1tnvBa-0000000A3TQ-3lQS;
+	Fri, 28 Feb 2025 07:53:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=F+JzjQxRNFL6yDNf9+7cJLcCGEom5mmTMhziYT1IXJM=; b=M36+h/1W2S0DYGTc6rbsLXw8jq
+	EcXI1tKGOGxAGW/eebzYTorjwGwTrVzsOwSQQNsB+MJAnd7xsE0MDjzel/cbK3ppft++P2TZJnk6O
+	xy56vOwsKsAWvTL4+fc9nNidH2IZw7Lmy7dv/U1Akb6mSfd9yS4O7i/p+GvXe6CaiPB9wPYMtd8h3
+	et4xXv5E88NOCku21rX1X8T1HBxLFcwud4y26eqbvpRFYCOqSEN6nAtd5H7hEgM5X47IcsyuLcXp8
+	28S3ByUVbsOWLtZPjqiitBwZifc1sOrQn2AYTn4X5HXphmjgpBLnjOclGxts8TACa8FIsYnHTX5d1
+	8DPgpYLw==;
+Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tnvBV-0007Zk-Qn; Fri, 28 Feb 2025 08:53:25 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>
+Cc: Yao Zi <ziyao@disroot.org>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 2/7] dt-bindings: pinctrl: Add pinctrl support for RK3528
+Date: Fri, 28 Feb 2025 08:53:24 +0100
+Message-ID: <13293325.ZYm5mLc6kN@diego>
+In-Reply-To: <20250228064024.3200000-3-jonas@kwiboo.se>
 References: <20250228064024.3200000-1-jonas@kwiboo.se>
+ <20250228064024.3200000-3-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250227_224104_248218_5053D71A 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250227_235330_958124_833F7F37 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,88 +77,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Radxa E20C has three gpio controlled leds (sys, wan and lan).
+Am Freitag, 28. Februar 2025, 07:40:08 MEZ schrieb Jonas Karlman:
+> Add compatible string for RK3528 pin controller.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-Add a gpio-leds node and set default trigger to heartbeat for the sys
-led and netdev for the lan and wan leds.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 45 +++++++++++++++++++
- 1 file changed, 45 insertions(+)
+> ---
+>  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> index 80a2b1934849..960758dc417f 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> @@ -44,6 +44,7 @@ properties:
+>        - rockchip,rk3328-pinctrl
+>        - rockchip,rk3368-pinctrl
+>        - rockchip,rk3399-pinctrl
+> +      - rockchip,rk3528-pinctrl
+>        - rockchip,rk3562-pinctrl
+>        - rockchip,rk3568-pinctrl
+>        - rockchip,rk3576-pinctrl
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-index d19e319b4100..7a14f8d5d601 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-@@ -8,6 +8,7 @@
- /dts-v1/;
- 
- #include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
- #include "rk3528.dtsi"
- 
- / {
-@@ -45,6 +46,36 @@ button-user {
- 		};
- 	};
- 
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lan_led_g>, <&sys_led_g>, <&wan_led_g>;
-+
-+		led-lan {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "off";
-+			function = LED_FUNCTION_LAN;
-+			gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "netdev";
-+		};
-+
-+		led-sys {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
-+			function = LED_FUNCTION_HEARTBEAT;
-+			gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+
-+		led-wan {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "off";
-+			function = LED_FUNCTION_WAN;
-+			gpios = <&gpio4 RK_PC0 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "netdev";
-+		};
-+	};
-+
- 	vcc_1v8: regulator-1v8-vcc {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_1v8";
-@@ -81,6 +112,20 @@ user_key: user-key {
- 			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	gpio-leds {
-+		lan_led_g: lan-led-g {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		sys_led_g: sys-led-g {
-+			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wan_led_g: wan-led-g {
-+			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &saradc {
--- 
-2.48.1
+
+
 
 
 _______________________________________________
