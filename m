@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E33C282CD
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 21:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06418C021B8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 21:59:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nISGji4Gwl3yAHjOeU7fATVtDdeG5R1m5WNYZZJpHrg=; b=t75C6cA1OwfqC7x4j2UM2QvqC9
-	hZrroBT++49Y4iob2ijLN1CNsnFE3QXedksfZtvRZOFu8xgHOnfP23hsFaT26fPxHJd1TGDoziU19
-	8KnL30SrjJminsOmgdw5gC/2Q7zvkWxfclr4eysk7dkFMZGcQ5SmSmAm6jNs6e7B3Tmg9BBM4grRD
-	Etft11ePgJ4i5PMdjr1YjD/fK2qwK5BGzzzYMN9l5HPIRc18gyJWmvn/6skeFKx00SjK1olzIV4o+
-	jX2/qr9beubzgvCA9SpszdZTmWHXnDpDxoU11g2XfQm7nEXmY4cYc7T6X0keIgePFbtOJmp9rwnuJ
-	bPO7KuiA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Go5xf4qYCNwdpmaBOPs2cVUxY/QFYv/hfrxgA9Kz4RQ=; b=bLoO3peBidGQj9
+	2Fyf0UD4ajhHm6HL91x6UtN9faaLfERYx1DiA5HnjAC2hHtBSGeFFFtzFUaDvHb4xm8U3Ul3ep+FY
+	fI5W6e2E6PS0CBxqYy//JITfEYTYSiv3ZZU3D63zQxdtSxY0njFY771ega8B8NQ7BUyjWstZ7jNBf
+	rnWzBPRIumAkASoM8SRy1Eb2lQtZaZuBxDwNpBNICZlNrL0cxuPtyn4nQSyZ+e215K+0prswBZvdq
+	yJYl6YwPCohn56cSjUfSPvKknwaSyzoWZPqjN5RHLeAECklE/QmG8zFj9D0lyNTNrqkRfdzUpwpOg
+	+px3Dsa+Ay+s4knFA7nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toUGs-0000000Ey6S-1nDu;
-	Sat, 01 Mar 2025 21:21:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1toUs6-0000000F0lw-3Wcr;
+	Sat, 01 Mar 2025 21:59:46 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toUFK-0000000ExyG-2lt9;
-	Sat, 01 Mar 2025 21:19:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1740863974; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JvNY9li9MKQNIVqh5YEVHVYfZj9Is0hV5BsrCAUBI7lHP9z+U8mF2RIUcLUStlqdCtTMAVCl6U1j89Sk5G1MaoPCf5qosBp05WdLbbq3Gs0xV4hkFeMlZ14Tk4s13nMkguhleoUtSO0Dpj9doIes/a4L7zmj+QEpH53zkJBd0nE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1740863974; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=DiBsetxv/W6ON55bF1Fy2sUWrQIdKNTGci0bZBHTxGQ=; 
-	b=aF/WsvSwyRIxFvd8jUS4ijrunje55nfeKoWlFlfPr4lNZOpFmpnBs1xJz22RW3bsgBFd0U80vCIn1QoRrbF+JVZwU4cDUGT3HNK0KC4UDlWR5iQpzgh8VeyFX4KBV5NJEyVj+pbNMG0VSNBWqxHOAtPktx1nwxir/iagRCBXCeQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1740863974;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=DiBsetxv/W6ON55bF1Fy2sUWrQIdKNTGci0bZBHTxGQ=;
-	b=bpnWkhbrTRYhxpm40pXBs6bMBb5UqeqHWZKNswZ7cscZ6QsnIPyW+9gPMNL13nBU
-	PKe7mz93oHi84P/d3tNLFrZLwCpNROTDNcABCrCEEfZCiGPZuzDHQJqvIQxFvFwD567
-	ojxK800IEhXFl4GW/0Oj4RmioxhKgTmdz9lHmHEI=
-Received: by mx.zohomail.com with SMTPS id 1740863972988230.42996635404586;
-	Sat, 1 Mar 2025 13:19:32 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 4037118361F; Sat, 01 Mar 2025 22:19:28 +0100 (CET)
-Date: Sat, 1 Mar 2025 22:19:28 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, christophe.jaillet@wanadoo.fr, 
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v2 2/2] phy: rockchip: usbdp: re-init the phy on
- orientation-change
-Message-ID: <dkjpudmzuuxvaotz4mx46yx7iacof7q6ck746j3rrqvlgbq3hk@6vtvy3gy3kff>
-References: <20250226103810.3746018-1-heiko@sntech.de>
- <20250226103810.3746018-3-heiko@sntech.de>
- <02757b21-7599-4ee7-9f97-247b04ba646a@cherry.de>
+	id 1toUqS-0000000F0ij-1oDV;
+	Sat, 01 Mar 2025 21:58:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1740866285; x=1772402285;
+  h=date:from:to:cc:subject:message-id:mime-version;
+  bh=ojFzulCXDEMly9qyeJY7C4BCPM7vNvCVev0pov5Clfo=;
+  b=UTMCwYovEJMN4hMYNxiu4eGfo4/trRo7QnSlebqSBrFAAirrFnCjCgzT
+   /kz4rfj0btGoGxtwe2aH5JgNrMrJrRuObE7pk0EVDcMif2/9ov3I7boRH
+   xhA3F1e6p2nPPLl3CAPiIgDIMhhkiprnaAR8NQpJlWLgLDZg8TQd7LsTs
+   D9X9Hiq38E4NKCKmMx1Z9RE2TzGIdCsA0sORQ+mLAdTQIsEdyPU5Va1nh
+   8Mkux6rZDA3C4kbI9E2yPGExV3zWQonjUudcsGu4begcvEY7S7u5UlYwZ
+   mjv7YFpJ0uUUybSYVdfGUcHQ/mzBvbTSKbLf3JAzssk949bAbFi/iUrvF
+   w==;
+X-CSE-ConnectionGUID: UqRgQtPDQ+6Z0arzCul31Q==
+X-CSE-MsgGUID: HGkHH+i0TnSRJlgUHfWFmw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11360"; a="41799352"
+X-IronPort-AV: E=Sophos;i="6.13,326,1732608000"; 
+   d="scan'208";a="41799352"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Mar 2025 13:57:59 -0800
+X-CSE-ConnectionGUID: 6vw+F3jjQqmaKPZdwK/CGQ==
+X-CSE-MsgGUID: r7mjrjYOR2aeNdzhepfSww==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="118543134"
+Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
+  by orviesa008.jf.intel.com with ESMTP; 01 Mar 2025 13:57:57 -0800
+Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1toUqC-000GkQ-2k;
+	Sat, 01 Mar 2025 21:57:50 +0000
+Date: Sun, 2 Mar 2025 05:56:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: Finley Xiao <finley.xiao@rock-chips.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Tao Huang <huangtao@rock-chips.com>,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>
+Subject: [rockchip:v6.15-clk/next 10/10]
+ drivers/clk/rockchip/clk-rk3562.c:1081:38: error: invalid use of undefined
+ type 'struct platform_device'
+Message-ID: <202503020525.AVLjosKr-lkp@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <02757b21-7599-4ee7-9f97-247b04ba646a@cherry.de>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.2/240.839.39
-X-ZohoMailClient: External
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_131942_786077_E864F9EA 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20250301_135804_520335_D476902C 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,84 +85,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3716380818467958829=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git v6.15-clk/next
+head:   36c7fdc8f585acbf11c8e5bc112fa9d8ef75146a
+commit: 36c7fdc8f585acbf11c8e5bc112fa9d8ef75146a [10/10] clk: rockchip: Add clock controller for the RK3562
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20250302/202503020525.AVLjosKr-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250302/202503020525.AVLjosKr-lkp@intel.com/reproduce)
 
---===============3716380818467958829==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xtfa7lnnqa7aoiia"
-Content-Disposition: inline
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503020525.AVLjosKr-lkp@intel.com/
 
+All error/warnings (new ones prefixed by >>):
 
---xtfa7lnnqa7aoiia
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 2/2] phy: rockchip: usbdp: re-init the phy on
- orientation-change
-MIME-Version: 1.0
-
-Hello Quentin,
-
-On Wed, Feb 26, 2025 at 01:38:10PM +0100, Quentin Schulz wrote:
-> Unrelated to this patch (but may be triggered by this patch?), I'm wonder=
-ing
-> how flip is really handled.
->=20
-> It seems like we have flip store the orientation of the cable, but also if
-> rockchip,dp-lane-mux is set to <0 1>. But wouldn't that break if we ignore
-> that initial flipped lane-mux whenever a USB-C cable is inserted in rever=
-se?
-> Basically, shouldn't a reserve orientation of the cable when
-> rockchip,dp-lane-mux is set to <0 1> mean "normal mux"?
-
-If a USB-C connector is involved, the TypeC controller is supposed to
-setup the lane muxing based on the connector orientation. This
-happens via the typec API and in this hardware setup the PHY should
-not have the rockchip,dp-lane-mux DT property set.
-
-The rockchip,dp-lane-mux property is required if no USB-C connector
-is involved. For example if the lanes are routed to a Displayport
-connector. In that case the lane setup is fixed in hardware and
-there is no TypeC controller involved, which could do any setup ;)
-
--- Sebastian
-
---xtfa7lnnqa7aoiia
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfDedUACgkQ2O7X88g7
-+poznA//SMzDIpD1hxgbwfDNoKyme+1D1x5wcO9dBkilNby+zQ5rkx37r6ZuO1o2
-ZiQYGRi2EFS7S41Ow5UF5Xc1venVA20Y9Rb/dPMn8HET80HDQPvWrAq5NawLq2s1
-wNc/O8vh0ztjBIL4oTiy+YnV1UnY3YApoyu2ZCh9KkkilOkiquB4I82VVQ8GOFI8
-y/dbgrOk+4b/2e+6o2libH4vQROza/VLGThae6yi54GfYF1+d70wpyyevEDcQ7Qj
-KKybjoooO+O9IjF+Kfpr0wMzP4mQIeEsYMiAko46iOPPAApsQVxZ8yPnhUw21PEe
-F8ZQ+lvewwsUijUZz8hM+hW9rLCoxQ42s/9EVb5vgeKERphkA22SFj2H0PDPMokj
-vvMvSTTr/84P/F2r+29UfQdB1eebo8sSiFDc+EGG099VFWVlzdLPkKVxsmyRjbXW
-YA8sVFh3PkewDgoJ6nxuJo5UkuJVepX7Xq4bGW2j1DE28oB7IgKBXdXUHOMQajvW
-EuLQl60ndqcDI0TinZYVcI3z/Z+KiuaZtWNAsnQP7fP6o7vHhmDjDi+mfZ+yN+7v
-0oCBpqHk15G/yGHeKj87Yk/hBX19xc11TFSEu6/vG3gAKrVZrlzMHZXqfrEOsnWv
-xxxAsMnKW34k0fD9gFk84UWIxAHC3HoEyYAYWDPfFElS4uCN0Zg=
-=JFVB
------END PGP SIGNATURE-----
-
---xtfa7lnnqa7aoiia--
+>> drivers/clk/rockchip/clk-rk3562.c:1079:36: warning: 'struct platform_device' declared inside parameter list will not be visible outside of this definition or declaration
+    1079 | static int clk_rk3562_probe(struct platform_device *pdev)
+         |                                    ^~~~~~~~~~~~~~~
+   drivers/clk/rockchip/clk-rk3562.c: In function 'clk_rk3562_probe':
+>> drivers/clk/rockchip/clk-rk3562.c:1081:38: error: invalid use of undefined type 'struct platform_device'
+    1081 |         struct device_node *np = pdev->dev.of_node;
+         |                                      ^~
+   drivers/clk/rockchip/clk-rk3562.c:1085:62: error: invalid use of undefined type 'struct platform_device'
+    1085 |         match = of_match_device(clk_rk3562_match_table, &pdev->dev);
+         |                                                              ^~
+   drivers/clk/rockchip/clk-rk3562.c: At top level:
+>> drivers/clk/rockchip/clk-rk3562.c:1096:15: error: variable 'clk_rk3562_driver' has initializer but incomplete type
+    1096 | static struct platform_driver clk_rk3562_driver = {
+         |               ^~~~~~~~~~~~~~~
+>> drivers/clk/rockchip/clk-rk3562.c:1097:10: error: 'struct platform_driver' has no member named 'probe'
+    1097 |         .probe          = clk_rk3562_probe,
+         |          ^~~~~
+>> drivers/clk/rockchip/clk-rk3562.c:1097:27: warning: excess elements in struct initializer
+    1097 |         .probe          = clk_rk3562_probe,
+         |                           ^~~~~~~~~~~~~~~~
+   drivers/clk/rockchip/clk-rk3562.c:1097:27: note: (near initialization for 'clk_rk3562_driver')
+>> drivers/clk/rockchip/clk-rk3562.c:1098:10: error: 'struct platform_driver' has no member named 'driver'
+    1098 |         .driver         = {
+         |          ^~~~~~
+>> drivers/clk/rockchip/clk-rk3562.c:1098:27: error: extra brace group at end of initializer
+    1098 |         .driver         = {
+         |                           ^
+   drivers/clk/rockchip/clk-rk3562.c:1098:27: note: (near initialization for 'clk_rk3562_driver')
+   drivers/clk/rockchip/clk-rk3562.c:1098:27: warning: excess elements in struct initializer
+   drivers/clk/rockchip/clk-rk3562.c:1098:27: note: (near initialization for 'clk_rk3562_driver')
+>> drivers/clk/rockchip/clk-rk3562.c:1104:1: warning: data definition has no type or storage class
+    1104 | module_platform_driver(clk_rk3562_driver);
+         | ^~~~~~~~~~~~~~~~~~~~~~
+>> drivers/clk/rockchip/clk-rk3562.c:1104:1: error: type defaults to 'int' in declaration of 'module_platform_driver' [-Wimplicit-int]
+>> drivers/clk/rockchip/clk-rk3562.c:1104:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+>> drivers/clk/rockchip/clk-rk3562.c:1096:31: error: storage size of 'clk_rk3562_driver' isn't known
+    1096 | static struct platform_driver clk_rk3562_driver = {
+         |                               ^~~~~~~~~~~~~~~~~
+>> drivers/clk/rockchip/clk-rk3562.c:1096:31: warning: 'clk_rk3562_driver' defined but not used [-Wunused-variable]
 
 
---===============3716380818467958829==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+vim +1081 drivers/clk/rockchip/clk-rk3562.c
+
+  1078	
+> 1079	static int clk_rk3562_probe(struct platform_device *pdev)
+  1080	{
+> 1081		struct device_node *np = pdev->dev.of_node;
+  1082		const struct of_device_id *match;
+  1083		const struct clk_rk3562_inits *init_data;
+  1084	
+> 1085		match = of_match_device(clk_rk3562_match_table, &pdev->dev);
+  1086		if (!match || !match->data)
+  1087			return -EINVAL;
+  1088	
+  1089		init_data = match->data;
+  1090		if (init_data->inits)
+  1091			init_data->inits(np);
+  1092	
+  1093		return 0;
+  1094	}
+  1095	
+> 1096	static struct platform_driver clk_rk3562_driver = {
+> 1097		.probe		= clk_rk3562_probe,
+> 1098		.driver		= {
+  1099			.name	= "clk-rk3562",
+  1100			.of_match_table = clk_rk3562_match_table,
+  1101			.suppress_bind_attrs = true,
+  1102		},
+  1103	};
+> 1104	module_platform_driver(clk_rk3562_driver);
+  1105	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3716380818467958829==--
-
