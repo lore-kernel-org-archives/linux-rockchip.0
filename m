@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 272C6C021B8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 12:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5736CC282D1
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 13:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AI8J2PFyqLdpbRSOmdUEGbC/pIm7eJ/LLzUCsX/Sl5o=; b=XCAUPGN0gkBREn
-	BmyErhtkJFa8Q8Ya1xojEhWuvfAnL3xUY28QH8hdd0pwKSEaBGCkQzoO8HIFK1EVaZEZwSa6fRJ2o
-	sav9LFHZxBx859a+1bZsmfoBijqxolXnsz0E8DrkhBSbgkWsmteyxv7aaHKqZfsMjbsUdW8kIepKJ
-	8IHRmCoEO8KpZJ2/NOwR9twQN/aIVuWTUlq+dDq/2QB4gCPMfb3dQxIcNp7O66OuBbw/mczJZpJgR
-	MRSKYN1V0+Ao+sAQPG4v86EizPosc6uCYb3IaA/LJBgsVLmdyeNLnawIl4G65OgQOW6NWcjP0rMM7
-	nDQkM3i77FF51iQJKAoA==;
+	List-Owner; bh=oSiy6JJxz+s7evuZwZphXmhpWTqKYtAt43r3ztAk3lk=; b=fkytvaK1ss13Xj
+	0nWhSupP0OauPK58eK2yDBskM2jLueRYqd2f/nDLhnUqctVEkdppppiJfSrTOznUj3ZDZ9KlggelC
+	nXRrI3rQlV7u3rMnUNivg/c7Bw3IxSjrVy/eutxMnPH5r2mcpFleuRKYdHT+t83BOSoe84xSNakVT
+	/GGkMCqvKcKA5JSYhOt/0WDdVkmal5PVxP1UUf4bOrDY9tAe5uaza0Dl8pg1lz6gxEqgPHSlsi2wH
+	cME7gXhaBVoPxk4Rk1VZmUQ8ygmAtkvP4TUBBV2OvPVdk14Nvwtr1yQ0C8T4n1m+09V5/ra43fquB
+	sbJH+kukRd7DNixFKr6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toMPX-0000000DxCZ-1Xsw;
-	Sat, 01 Mar 2025 12:57:43 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1toMuc-0000000EKPu-2lYY;
+	Sat, 01 Mar 2025 13:29:50 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toMNw-0000000Dx2y-2hG3;
-	Sat, 01 Mar 2025 12:56:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QQbVUX9DGectl4cZrWM+928q6CAZcLW6ZWeZi0G8Co0=; b=yrqnQ9n8A3aSrv/NYvybjVGf10
-	ts1rw/5eQKEt40caJ4d+/dnSv5q4UHtWYEnHaUjswye8w0xjrMQOvq1E+6Sqg1as1RA0jOK1Mfmyk
-	rj1pt6cCZJQzHUf3kAuQ6ngCUWaLVl6EOn8dY5P/b6rrJPXbV70H38nAyAZaE0Crv9hNoRA9msWZc
-	9MOL5/Tcv3jQR/Xceg5I8sINY48k0koIl1W4wQ7syhBdlYbfB8LmVvMYMZqCU0cuyQPI5qJNdQglR
-	994u4Xh9A8I0AO3O4X65sHENstTs9ALMWwoh6wdMspFTG/MIgKVU3sUl9eC+vMd/0DTkaIvwisBVU
-	sa0ITHTw==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1toMNm-0008HZ-Vb; Sat, 01 Mar 2025 13:55:55 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Yao Zi <ziyao@disroot.org>, Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers for RK3528
-Date: Sat, 01 Mar 2025 13:55:53 +0100
-Message-ID: <3574922.QJadu78ljV@diego>
-In-Reply-To: <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
-References: <20250301104250.36295-1-ziyao@disroot.org>
- <20250301104749.36423-1-ziyao@disroot.org>
- <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
+	id 1toMSy-0000000DyG1-2k8x
+	for linux-rockchip@lists.infradead.org;
+	Sat, 01 Mar 2025 13:01:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1740834076;
+ bh=9mCWNbcP5IQDd/FsJf4daDu5xuhSLsVfWH9gMluMv00=;
+ b=Ud61ydg6nwqf6IVa6xyhnNlmMmWDm1TRLi3enPAWcyWyQnJ7y3lFhgUPi6JZdVKf27V5Sc1hj
+ 1BFX6gNX4aBIuD89zUw7Slfl2Y4NQJIC9+lBNkortvZgVyE3VkE3wvAludNa2uugLJxIxQ5mBPp
+ lXjrAmhQEqwnaM3OlU5wnmvXFmmwTTeKPceILT6aeUK7kIrzL7x9ZQjzQ31A8B6ViBKpokLqS/N
+ bfawMRk+xoeDrRWeBP5TgwUwHKZVzsPYopWCWJ/l9Vb6rDEartxyImC5JRdES2eBtJmLWw6UeEa
+ 7HHjCauO+fx9YJtcDkUaUfnkz1wOQIylp9nSzrsN/MEw==
+X-Forward-Email-ID: 67c3051690cf55d47dbe9027
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.59
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <0aefd292-7980-434d-9c18-4ab9f6a0b40e@kwiboo.se>
+Date: Sat, 1 Mar 2025 14:01:05 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
+ Radxa E20C
+To: Yao Zi <ziyao@disroot.org>
+References: <20250301104250.36295-1-ziyao@disroot.org>
+ <20250301104835.36439-1-ziyao@disroot.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250301104835.36439-1-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_045604_698195_15903536 
-X-CRM114-Status: GOOD (  22.38  )
+X-CRM114-CacheID: sfid-20250301_050116_778695_81C0344A 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,49 +71,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, devicetree@vger.kernel.org, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, devicetree@vger.kernel.org, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGV5IEpvYXMsCgpBbSBTYW1zdGFnLCAxLiBNw6RyeiAyMDI1LCAxMzo0Nzo0NyBNRVogc2Nocmll
-YiBKb25hcyBLYXJsbWFuOgo+IE9uIDIwMjUtMDMtMDEgMTE6NDcsIFlhbyBaaSB3cm90ZToKPiA+
-IFJLMzUyOCBmZWF0dXJlcyB0d28gU0RJTyBjb250cm9sbGVycyBhbmQgb25lIFNEL01NQyBjb250
-cm9sbGVyLCBkZXNjcmliZQo+ID4gdGhlbSBpbiBkZXZpY2V0cmVlLiBTaW5jZSB0aGVpciBzYW1w
-bGUgYW5kIGRyaXZlIGNsb2NrcyBhcmUgbG9jYXRlZCBpbgo+ID4gdGhlIFZPIGFuZCBWUFUgR1JG
-cywgY29ycmVzcG9uZGluZyBzeXNjb25zIGFyZSBhZGRlZCB0byBtYWtlIHRoZXNlCj4gPiBjbG9j
-a3MgYXZhaWxhYmxlLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBZYW8gWmkgPHppeWFvQGRpc3Jv
-b3Qub3JnPgo+ID4gLS0tCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Mjgu
-ZHRzaSB8IDYyICsrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA2
-MiBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzUyOC5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-MjguZHRzaQo+ID4gaW5kZXggNWIzMzQ2OTAzNTZhLi4wNzhjOTdmYTFkOWYgMTAwNjQ0Cj4gPiAt
-LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpCj4gPiArKysgYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpCj4gPiBAQCAtNyw2ICs3LDcg
-QEAKPiA+ICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvYXJtLWdp
-Yy5oPgo+ID4gICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9pcnEu
-aD4KPiA+ICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszNTI4LWNydS5o
-Pgo+ID4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9yZXNldC9yb2NrY2hpcCxyazM1MjgtY3J1Lmg+
-Cj4gPiAgCj4gPiAgLyB7Cj4gPiAgCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTI4IjsKPiA+
-IEBAIC0xMjIsNiArMTIzLDE2IEBAIGdpYzogaW50ZXJydXB0LWNvbnRyb2xsZXJAZmVkMDEwMDAg
-ewo+ID4gIAkJCSNpbnRlcnJ1cHQtY2VsbHMgPSA8Mz47Cj4gPiAgCQl9Owo+ID4gIAo+ID4gKwkJ
-dnB1X2dyZjogc3lzY29uQGZmMzQwMDAwIHsKPiA+ICsJCQljb21wYXRpYmxlID0gInJvY2tjaGlw
-LHJrMzUyOC12cHUtZ3JmIiwgInN5c2NvbiI7Cj4gCj4gdnB1X2dyZiBpcyBhbHNvIHVzZWQgZm9y
-IGdtYWMxLCBzbyBzaG91bGQgcG9zc2libGUgYmUgYSAic3lzY29uIiwKPiAic2ltcGxlLW1mZCIs
-IG9yIGhhdmUgSSBtaXN1bmRlcnN0b29kIHdoZW4gdG8gdXNlIHNpbXBsZS1tZmQgPwoKc2ltcGxl
-LW1mZCBpcyBuZWVkZWQgd2hlbiB0aGUgYWRkaXRpb25hbCBkZXZpY2UgaXMgY29tcGxldGVseSBj
-b250YWluZWQKaW5zaWRlIHRoZSBwYXJ0aWN1bGFyIHN5c2Nvbi4KCkZvciBleGFtcGxlLCB0aGUg
-dXNiMnBoeTAgb24gcmszNTg4IGlzIGNvbXBsZXRlbHkgbGl2aW5nIGluc2lkZSB0aGUKdXNiMnBo
-eTAtZ3JmLgoKU2ltaWxhcmx5IHRoZSBwb3dlci1kb21haW5zIGFyZSBsaXZpbmcgaW5zaWRlIHRo
-ZSByazM1ODggcG11Z3JmLgpCdXQgdGhlIHBtdWdyZiBhbHNvIGNvbnRhaW5zIG1vcmUgc3R1ZmYs
-IHNvIHRoZSBwb3dlci1kb21haW5zIGFyZSBhCnN1YnNldCBvZiB0aGUgcG11Z3JmLgoKQm90aCBv
-ZiB0aGVzZSBhYm92ZSBhcmUgYSBjYXNlIGZvciBhIHNpbXBsZS1tZmQuCgoKU2ltaWxhcmx5LCBn
-bWFjMSBvbiByazM1ODggaXMgZXRoZXJuZXRAZmUxYzAwMDAgLCBzbyBhIGNvbXBsZXRlbHkgc2Vw
-YXJhdGUKaW8tbWVtb3J5IGFyZWEsIGJ1dCByZWZlcmVuY2VzIGJvdGggdGhlIHN5c2dyZiBhcyB3
-ZWxsIGFzIHRoZSBwaHAtZ3JmCmFzIHN5c2NvbnMgZm9yIGFkZGl0aW9uYWwgc2V0dGluZ3MuCgpT
-byBoZXJlIHRoZSBzeXNjb24gZG9lcyBub3QgbmVlZCB0byBiZSBhIHNpbXBsZS1tZmQuCgoKSG9w
-ZSB0aGF0IGhlbHBzIGEgYml0CkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+On 2025-03-01 11:48, Yao Zi wrote:
+> SD-card is available on Radxa E20C board.
+> 
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> index d2cdb63d4a9d..473065aa4228 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> @@ -12,6 +12,10 @@ / {
+>  	model = "Radxa E20C";
+>  	compatible = "radxa,e20c", "rockchip,rk3528";
+>  
+> +	aliases {
+> +		mmc0 = &sdmmc;
+
+Suggest using mmc1 for sd-card because the e20c typically have onboard
+emmc, compared to removable sd-card.
+
+> +	};
+> +
+>  	chosen {
+>  		stdout-path = "serial0:1500000n8";
+>  	};
+> @@ -20,3 +24,13 @@ chosen {
+>  &uart0 {
+>  	status = "okay";
+>  };
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	rockchip,default-sample-phase = <90>;
+> +	sd-uhs-sdr104;
+
+Are you sure uhs-sdr104 works as is should? Vendor kernel use a
+different "v2" tuning and this is also missing the vccio_sd vqmmc-supply
+to switch between 3v3 and 1v8.
+
+You could add following regulator for sdmmc:
+
+	vccio_sd: regulator-vccio-sd {
+		compatible = "regulator-gpio";
+		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
+		regulator-name = "vccio_sd";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <3300000>;
+		states = <1800000 0x0>, <3300000 0x1>;
+	};
+
+and following pinctrl:
+
+	sdmmc {
+		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+
+add then the power supplies to the sdmmc node:
+
+	vmmc-supply = <&vcc_3v3>;
+	vqmmc-supply = <&vccio_sd>;
+
+That matches the schematics for e20c, and works when testing non-uhs modes.
+
+Regards,
+Jonas
+
+> +	status = "okay";
+> +};
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
