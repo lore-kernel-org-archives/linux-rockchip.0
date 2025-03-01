@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5736CC282D1
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 13:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A0E7C021B8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 13:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oSiy6JJxz+s7evuZwZphXmhpWTqKYtAt43r3ztAk3lk=; b=fkytvaK1ss13Xj
-	0nWhSupP0OauPK58eK2yDBskM2jLueRYqd2f/nDLhnUqctVEkdppppiJfSrTOznUj3ZDZ9KlggelC
-	nXRrI3rQlV7u3rMnUNivg/c7Bw3IxSjrVy/eutxMnPH5r2mcpFleuRKYdHT+t83BOSoe84xSNakVT
-	/GGkMCqvKcKA5JSYhOt/0WDdVkmal5PVxP1UUf4bOrDY9tAe5uaza0Dl8pg1lz6gxEqgPHSlsi2wH
-	cME7gXhaBVoPxk4Rk1VZmUQ8ygmAtkvP4TUBBV2OvPVdk14Nvwtr1yQ0C8T4n1m+09V5/ra43fquB
-	sbJH+kukRd7DNixFKr6Q==;
+	List-Owner; bh=qUJRZrxvpBlCbbuWLrNlFK+O/v8qkNdIMEtTEp1Wl9w=; b=32hv/bAuZLYFiN
+	eMBRFaofinuQX2U18kfDVELSKwtluwC2ax4oJtBy7MtXK12mVZ3+IDc94WJNM4DBndSKzJ2ajlTcW
+	w+L5SCRMv7XGIZp7Q9vd+THejXpxAX22S63l2fkl1Q3KHVZAXL8AdEOJjH50kOQZLMdQJSlDbr/nO
+	DQ7+NTb9stjCwYcWPxThAZm4WnOio5adLGYhLcP7OzH9XNH5RzwO5aVN+4/T5aX29/AhDw8E9SN1l
+	TV78TAZk/e3LWGO63nE96fujrgP0iTyyCuZFEFMeG85yzFGD1jBIkW++EP4pkmzmbwl+K3SgnKZ2j
+	wlPbPQooDGEtVS5BQIYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toMuc-0000000EKPu-2lYY;
-	Sat, 01 Mar 2025 13:29:50 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1toN06-0000000EM8m-3SXq;
+	Sat, 01 Mar 2025 13:35:30 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toMSy-0000000DyG1-2k8x
-	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Mar 2025 13:01:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1740834076;
- bh=9mCWNbcP5IQDd/FsJf4daDu5xuhSLsVfWH9gMluMv00=;
- b=Ud61ydg6nwqf6IVa6xyhnNlmMmWDm1TRLi3enPAWcyWyQnJ7y3lFhgUPi6JZdVKf27V5Sc1hj
- 1BFX6gNX4aBIuD89zUw7Slfl2Y4NQJIC9+lBNkortvZgVyE3VkE3wvAludNa2uugLJxIxQ5mBPp
- lXjrAmhQEqwnaM3OlU5wnmvXFmmwTTeKPceILT6aeUK7kIrzL7x9ZQjzQ31A8B6ViBKpokLqS/N
- bfawMRk+xoeDrRWeBP5TgwUwHKZVzsPYopWCWJ/l9Vb6rDEartxyImC5JRdES2eBtJmLWw6UeEa
- 7HHjCauO+fx9YJtcDkUaUfnkz1wOQIylp9nSzrsN/MEw==
-X-Forward-Email-ID: 67c3051690cf55d47dbe9027
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <0aefd292-7980-434d-9c18-4ab9f6a0b40e@kwiboo.se>
-Date: Sat, 1 Mar 2025 14:01:05 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
- Radxa E20C
-To: Yao Zi <ziyao@disroot.org>
+	id 1toMyW-0000000EM2h-1L2R;
+	Sat, 01 Mar 2025 13:33:54 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id E788925D49;
+	Sat,  1 Mar 2025 14:33:49 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hNqLrBIrmw-s; Sat,  1 Mar 2025 14:33:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1740836025; bh=xXhNfYs+Cv3fr3hX+44GY6JZm8B/alrDUCYDIA/ILNM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QTMG5tFIqlv9LH5jixi4XxdUJKRFJpm4Rs5l2NruS3JwN2+12m0f5f1cVWZmwGD0k
+	 w84ZoPqHAOjEyFradRFbRJxjfkAsjZLtCBVDmwr3VN6EjKybTPe/w4bR7t3HwwzkIr
+	 D0FynI+BR+izgsEsEMEZUfeceFlVar3wYfI9KqgfRuLj19mx4L/CBz6ZH7hRO8Pt0T
+	 R3HllikmI8V/V7/P+NT8CuQRCfKijIQ7aaCQ/Ljjw8JR7mFPM+tqQP0SrbjULnUCY6
+	 gObIsg3FpsedbizyfKVUuhjJ5DwIAGmHP2cTlX8BKjXgD6Ko/fj0UFVYP/zOawg9gq
+	 2okGgpIGJffJQ==
+Date: Sat, 1 Mar 2025 13:33:15 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers for
+ RK3528
+Message-ID: <Z8MMm7X31p_CrStZ@pie>
 References: <20250301104250.36295-1-ziyao@disroot.org>
- <20250301104835.36439-1-ziyao@disroot.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250301104835.36439-1-ziyao@disroot.org>
+ <20250301104749.36423-1-ziyao@disroot.org>
+ <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_050116_778695_81C0344A 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20250301_053352_909930_D83C5C3A 
+X-CRM114-Status: GOOD (  22.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,86 +74,137 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 2025-03-01 11:48, Yao Zi wrote:
-> SD-card is available on Radxa E20C board.
+On Sat, Mar 01, 2025 at 01:47:47PM +0100, Jonas Karlman wrote:
+> Hi,
 > 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+> On 2025-03-01 11:47, Yao Zi wrote:
+> > RK3528 features two SDIO controllers and one SD/MMC controller, describe
+> > them in devicetree. Since their sample and drive clocks are located in
+> > the VO and VPU GRFs, corresponding syscons are added to make these
+> > clocks available.
+> > 
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 62 ++++++++++++++++++++++++
+> >  1 file changed, 62 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > index 5b334690356a..078c97fa1d9f 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > @@ -7,6 +7,7 @@
+> >  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> >  #include <dt-bindings/interrupt-controller/irq.h>
+> >  #include <dt-bindings/clock/rockchip,rk3528-cru.h>
+> > +#include <dt-bindings/reset/rockchip,rk3528-cru.h>
+> >  
+> >  / {
+> >  	compatible = "rockchip,rk3528";
+> > @@ -122,6 +123,16 @@ gic: interrupt-controller@fed01000 {
+> >  			#interrupt-cells = <3>;
+> >  		};
+> >  
+> > +		vpu_grf: syscon@ff340000 {
+> > +			compatible = "rockchip,rk3528-vpu-grf", "syscon";
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> index d2cdb63d4a9d..473065aa4228 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> @@ -12,6 +12,10 @@ / {
->  	model = "Radxa E20C";
->  	compatible = "radxa,e20c", "rockchip,rk3528";
->  
-> +	aliases {
-> +		mmc0 = &sdmmc;
+> vpu_grf is also used for gmac1, so should possible be a "syscon",
+> "simple-mfd", or have I misunderstood when to use simple-mfd ?
 
-Suggest using mmc1 for sd-card because the e20c typically have onboard
-emmc, compared to removable sd-card.
+Just as Heiko explained, "simple-mfd" is only required when the child
+nodes should be populated automatically. Here these two GRFs are only
+referenced and have no child, thus "simple-mfd" compatible isn't useful.
 
-> +	};
-> +
->  	chosen {
->  		stdout-path = "serial0:1500000n8";
->  	};
-> @@ -20,3 +24,13 @@ chosen {
->  &uart0 {
->  	status = "okay";
->  };
-> +
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	disable-wp;
-> +	rockchip,default-sample-phase = <90>;
-> +	sd-uhs-sdr104;
+> > +			reg = <0x0 0xff340000 0x0 0x8000>;
+> > +		};
+> > +
+> > +		vo_grf: syscon@ff360000 {
+> > +			compatible = "rockchip,rk3528-vo-grf", "syscon";
+> 
+> similar here, vo_grf is also used for gmac0.
+> 
+> > +			reg = <0x0 0xff360000 0x0 0x10000>;
+> > +		};
+> > +
+> >  		cru: clock-controller@ff4a0000 {
+> >  			compatible = "rockchip,rk3528-cru";
+> >  			reg = <0x0 0xff4a0000 0x0 0x30000>;
+> > @@ -251,5 +262,56 @@ uart7: serial@ffa28000 {
+> >  			reg-shift = <2>;
+> >  			status = "disabled";
+> >  		};
+> > +
+> > +		sdio0: mmc@ffc10000 {
+> > +			compatible = "rockchip,rk3528-dw-mshc",
+> > +				     "rockchip,rk3288-dw-mshc";
+> > +			reg = <0x0 0xffc10000 0x0 0x4000>;
+> > +			clocks = <&cru HCLK_SDIO0>,
+> > +				 <&cru CCLK_SRC_SDIO0>,
+> > +				 <&cru SCLK_SDIO0_DRV>,
+> > +				 <&cru SCLK_SDIO0_SAMPLE>;
+> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> > +			fifo-depth = <0x100>;
+> > +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
+> > +			max-frequency = <150000000>;
+> > +			resets = <&cru SRST_H_SDIO0>;
+> > +			reset-names = "reset";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		sdio1: mmc@ffc20000 {
+> > +			compatible = "rockchip,rk3528-dw-mshc",
+> > +				     "rockchip,rk3288-dw-mshc";
+> > +			reg = <0x0 0xffc20000 0x0 0x4000>;
+> > +			clocks = <&cru HCLK_SDIO1>,
+> > +				 <&cru CCLK_SRC_SDIO1>,
+> > +				 <&cru SCLK_SDIO1_DRV>,
+> > +				 <&cru SCLK_SDIO1_SAMPLE>;
+> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> > +			fifo-depth = <0x100>;
+> > +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+> > +			max-frequency = <150000000>;
+> > +			resets = <&cru SRST_H_SDIO1>;
+> > +			reset-names = "reset";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		sdmmc: mmc@ffc30000 {
+> > +			compatible = "rockchip,rk3528-dw-mshc",
+> > +				     "rockchip,rk3288-dw-mshc";
+> > +			reg = <0x0 0xffc30000 0x0 0x4000>;
+> > +			clocks = <&cru HCLK_SDMMC0>,
+> > +				 <&cru CCLK_SRC_SDMMC0>,
+> > +				 <&cru SCLK_SDMMC_DRV>,
+> > +				 <&cru SCLK_SDMMC_SAMPLE>;
+> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> > +			fifo-depth = <0x100>;
+> > +			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
+> > +			max-frequency = <150000000>;
+> > +			resets = <&cru SRST_H_SDMMC0>;
+> > +			reset-names = "reset";
+> 
+> Suggest adding default pinctrl props here:
+> 
+>   pinctrl-names = "default";
+>   pinctrl-0 = <&sdmmc_bus4>, <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_det>;
+> 
+> And possible also for sdio0 and sdio1.
+> 
+> Regards,
+> Jonas
 
-Are you sure uhs-sdr104 works as is should? Vendor kernel use a
-different "v2" tuning and this is also missing the vccio_sd vqmmc-supply
-to switch between 3v3 and 1v8.
+It makes sense. As mentioned in the cover letter, I depended on the
+bootloader to setup pinctrl, to minimize dependency of the series.
 
-You could add following regulator for sdmmc:
+Will complete the pinctrl properties in next version.
 
-	vccio_sd: regulator-vccio-sd {
-		compatible = "regulator-gpio";
-		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
-		regulator-name = "vccio_sd";
-		regulator-min-microvolt = <1800000>;
-		regulator-max-microvolt = <3300000>;
-		states = <1800000 0x0>, <3300000 0x1>;
-	};
+> > +			status = "disabled";
+> > +		};
+> >  	};
+> >  };
+> 
 
-and following pinctrl:
-
-	sdmmc {
-		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
-			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-		};
-	};
-
-add then the power supplies to the sdmmc node:
-
-	vmmc-supply = <&vcc_3v3>;
-	vqmmc-supply = <&vccio_sd>;
-
-That matches the schematics for e20c, and works when testing non-uhs modes.
-
-Regards,
-Jonas
-
-> +	status = "okay";
-> +};
-
+Best regards,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
