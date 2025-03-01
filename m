@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A0E7C021B8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 13:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EDAAC282D1
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 14:37:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qUJRZrxvpBlCbbuWLrNlFK+O/v8qkNdIMEtTEp1Wl9w=; b=32hv/bAuZLYFiN
-	eMBRFaofinuQX2U18kfDVELSKwtluwC2ax4oJtBy7MtXK12mVZ3+IDc94WJNM4DBndSKzJ2ajlTcW
-	w+L5SCRMv7XGIZp7Q9vd+THejXpxAX22S63l2fkl1Q3KHVZAXL8AdEOJjH50kOQZLMdQJSlDbr/nO
-	DQ7+NTb9stjCwYcWPxThAZm4WnOio5adLGYhLcP7OzH9XNH5RzwO5aVN+4/T5aX29/AhDw8E9SN1l
-	TV78TAZk/e3LWGO63nE96fujrgP0iTyyCuZFEFMeG85yzFGD1jBIkW++EP4pkmzmbwl+K3SgnKZ2j
-	wlPbPQooDGEtVS5BQIYw==;
+	List-Owner; bh=U4M4c5J7G51QEQuyQscorrnMfzHlG1mvbXyFAdNtZiQ=; b=JaXsm+lZeoLSa+
+	kmFwbIvmIMcIwS8ohU/h8M4L9U3QDDjLOfv49KMVp+O22u/k62BFUNkqVdCOzn2kMY7RcDY4IenOB
+	4gdbr8xQ0jLMsUw+zDbtgb4e+WNtjVNFhBpnfsVHiZB8ruvhpk7H8XMU0gty2+0bfv39EogAIMI69
+	rT/jEXtBDNMhXulNp2XXu6049JRtKlj60Mr2p+2Aqi4mQ1l2yQkWSBO850DbSoqq5DOFN2Hc/PV7d
+	+5l6f97kyGelnn8evCvXz4TMIXTVtD1o4w0wBo2oqDUHKiOLvd6uG6ap6WJAUH+RVv3QHTQUMoB18
+	J104tdWUcfVsPx+ZYOlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toN06-0000000EM8m-3SXq;
-	Sat, 01 Mar 2025 13:35:30 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1toNxV-0000000EVA6-2Xke;
+	Sat, 01 Mar 2025 14:36:53 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toMyW-0000000EM2h-1L2R;
-	Sat, 01 Mar 2025 13:33:54 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id E788925D49;
-	Sat,  1 Mar 2025 14:33:49 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hNqLrBIrmw-s; Sat,  1 Mar 2025 14:33:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1740836025; bh=xXhNfYs+Cv3fr3hX+44GY6JZm8B/alrDUCYDIA/ILNM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=QTMG5tFIqlv9LH5jixi4XxdUJKRFJpm4Rs5l2NruS3JwN2+12m0f5f1cVWZmwGD0k
-	 w84ZoPqHAOjEyFradRFbRJxjfkAsjZLtCBVDmwr3VN6EjKybTPe/w4bR7t3HwwzkIr
-	 D0FynI+BR+izgsEsEMEZUfeceFlVar3wYfI9KqgfRuLj19mx4L/CBz6ZH7hRO8Pt0T
-	 R3HllikmI8V/V7/P+NT8CuQRCfKijIQ7aaCQ/Ljjw8JR7mFPM+tqQP0SrbjULnUCY6
-	 gObIsg3FpsedbizyfKVUuhjJ5DwIAGmHP2cTlX8BKjXgD6Ko/fj0UFVYP/zOawg9gq
-	 2okGgpIGJffJQ==
-Date: Sat, 1 Mar 2025 13:33:15 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers for
- RK3528
-Message-ID: <Z8MMm7X31p_CrStZ@pie>
-References: <20250301104250.36295-1-ziyao@disroot.org>
- <20250301104749.36423-1-ziyao@disroot.org>
- <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
+	id 1toNvu-0000000EUta-3HNf;
+	Sat, 01 Mar 2025 14:35:16 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BD0DA66B;
+	Sat,  1 Mar 2025 15:33:41 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1740839622;
+	bh=vOx2aCR711x8XBMo5usk7el1mpTt/EExYD3ss0D/AD4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Jq/ql4+6oMrO70oDvXDSy6Ow+xYAlNbU24jR2LiPzTBdEHCyHtvtF3d/RRjH8ABr9
+	 HWdKdQljD3upBXq7gO6Ju16cNJzvWBd1ShXvVeTW7d53A5dAMQ1l/lMpecRzghS4tY
+	 PaM30k0UNsah8UYFpXRY8QBHltPiFLTKwLIU9jfo=
+Date: Sat, 1 Mar 2025 16:34:53 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Stefan Klug <stefan.klug@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] media: rkisp1: Set format defaults based on
+ requested color space
+Message-ID: <20250301143453.GJ7342@pendragon.ideasonboard.com>
+References: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
+ <20250227114558.3097101-2-stefan.klug@ideasonboard.com>
+ <20250301010252.GI7342@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <9fd51bcb-3e6a-46b6-b1f7-ff16fa562d9e@kwiboo.se>
+In-Reply-To: <20250301010252.GI7342@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_053352_909930_D83C5C3A 
-X-CRM114-Status: GOOD (  22.78  )
+X-CRM114-CacheID: sfid-20250301_063514_990769_A5A587DB 
+X-CRM114-Status: GOOD (  41.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,143 +67,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, devicetree@vger.kernel.org, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 01, 2025 at 01:47:47PM +0100, Jonas Karlman wrote:
-> Hi,
+On Sat, Mar 01, 2025 at 03:02:54AM +0200, Laurent Pinchart wrote:
+> On Thu, Feb 27, 2025 at 12:44:59PM +0100, Stefan Klug wrote:
+> > When color space JPEG is requested, the ISP sets the quantization
+> > incorrectly to limited range. To fix that, set the xfer_func, ycbcr_enc
+> > and quantization to the defaults for the requested color space if they
+> > are not specified explicitly.
 > 
-> On 2025-03-01 11:47, Yao Zi wrote:
-> > RK3528 features two SDIO controllers and one SD/MMC controller, describe
-> > them in devicetree. Since their sample and drive clocks are located in
-> > the VO and VPU GRFs, corresponding syscons are added to make these
-> > clocks available.
-> > 
-> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> The commit message fails to explain why you're addressing xfer_func and
+> ycbcr_enc to fix the quantization issue.
+> 
+> > Do this only in case we are converting
+> > from RAW to YUV.
+> 
+> And this should explain why.
+> 
+> > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
 > > ---
-> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 62 ++++++++++++++++++++++++
-> >  1 file changed, 62 insertions(+)
+> >  .../media/platform/rockchip/rkisp1/rkisp1-isp.c   | 15 ++++++++++++++-
+> >  1 file changed, 14 insertions(+), 1 deletion(-)
 > > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > index 5b334690356a..078c97fa1d9f 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > @@ -7,6 +7,7 @@
-> >  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> >  #include <dt-bindings/interrupt-controller/irq.h>
-> >  #include <dt-bindings/clock/rockchip,rk3528-cru.h>
-> > +#include <dt-bindings/reset/rockchip,rk3528-cru.h>
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > index d94917211828..468f5a7d03c7 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > @@ -680,10 +680,23 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+> 
+> Adding a bit more context:
+> 
+> 	set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
+> 
+> 	if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> 
+> If V4L2_MBUS_FRAMEFMT_SET_CSC isn't set, the colorspace fields on the
+> source pad will be copied from the sink pad, which doesn't seem right.
+
+Thinking some more about it, it's not wrong either. The colorspace and
+xfer_func fields are not used by the driver, as the related ISP
+processing blocks are configured through ISP parameters. Without
+userspace providing the value of the fields on the source pad, the
+driver can't know what colorspace and xfer_func is produced. Copying the
+values from the sink pad is as good of a guess as we can make.
+
+The ycbcr_enc and quantization fields are different, as they are taken
+into account by the driver to configure the ISP. Copying ycbcr_enc from
+the sink pad means that it will be set to V4L2_YCBCR_ENC_601 when the
+sink format is bayer and the source format is YUV. As the sink
+colorspace is most likely going to be V4L2_COLORSPACE_RAW in that case,
+that's a fine default, and is identical to what we would get from
+V4L2_MAP_YCBCR_ENC_DEFAULT(). Setting the quantization to
+V4L2_QUANTIZATION_LIM_RANGE also seems fine as a default, and it what
+V4L2_MAP_QUANTIZATION_DEFAULT() would give us.
+
+TL;DR: there's probably no need to change the current behaviour when
+V4L2_MBUS_FRAMEFMT_SET_CSC isn't set.
+
+> It's a separate issue, but fixing both together may lead to better code.
+> 
+> >  		if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+> >  			if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
+> >  				src_fmt->colorspace = format->colorspace;
+> > -			if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
+> > +
+> > +			if (format->xfer_func == V4L2_XFER_FUNC_DEFAULT)
+> 
+> Are you sure the condition should be inverted ?
+> 
+> >  				src_fmt->xfer_func = format->xfer_func;
+> > +			else
+> > +				src_fmt->xfer_func =
+> > +					V4L2_MAP_XFER_FUNC_DEFAULT(format->colorspace);
+> > +
+> >  			if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
+> >  				src_fmt->ycbcr_enc = format->ycbcr_enc;
+> > +			else
+> > +				src_fmt->ycbcr_enc =
+> > +					V4L2_MAP_YCBCR_ENC_DEFAULT(format->colorspace);
+> > +
+> > +			if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
+> > +				src_fmt->quantization =
+> > +					V4L2_MAP_QUANTIZATION_DEFAULT(false,
+> > +						format->colorspace, format->ycbcr_enc);
+> 
+> Shouldn't this use src_fmt instead of format ?
+> 
+> I think quantization handling could be moved below.
+> 
+> >  		}
 > >  
-> >  / {
-> >  	compatible = "rockchip,rk3528";
-> > @@ -122,6 +123,16 @@ gic: interrupt-controller@fed01000 {
-> >  			#interrupt-cells = <3>;
-> >  		};
-> >  
-> > +		vpu_grf: syscon@ff340000 {
-> > +			compatible = "rockchip,rk3528-vpu-grf", "syscon";
-> 
-> vpu_grf is also used for gmac1, so should possible be a "syscon",
-> "simple-mfd", or have I misunderstood when to use simple-mfd ?
+> >  		if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
 
-Just as Heiko explained, "simple-mfd" is only required when the child
-nodes should be populated automatically. Here these two GRFs are only
-referenced and have no child, thus "simple-mfd" compatible isn't useful.
+Now I'm wondering if this is right. As far as I can tell, the
+quantization isn't taken into account by the driver when the ISP is
+bypassed (capturing raw bayer data, or capturing YUV data from a YUV
+sensor).
 
-> > +			reg = <0x0 0xff340000 0x0 0x8000>;
-> > +		};
-> > +
-> > +		vo_grf: syscon@ff360000 {
-> > +			compatible = "rockchip,rk3528-vo-grf", "syscon";
-> 
-> similar here, vo_grf is also used for gmac0.
-> 
-> > +			reg = <0x0 0xff360000 0x0 0x10000>;
-> > +		};
-> > +
-> >  		cru: clock-controller@ff4a0000 {
-> >  			compatible = "rockchip,rk3528-cru";
-> >  			reg = <0x0 0xff4a0000 0x0 0x30000>;
-> > @@ -251,5 +262,56 @@ uart7: serial@ffa28000 {
-> >  			reg-shift = <2>;
-> >  			status = "disabled";
-> >  		};
-> > +
-> > +		sdio0: mmc@ffc10000 {
-> > +			compatible = "rockchip,rk3528-dw-mshc",
-> > +				     "rockchip,rk3288-dw-mshc";
-> > +			reg = <0x0 0xffc10000 0x0 0x4000>;
-> > +			clocks = <&cru HCLK_SDIO0>,
-> > +				 <&cru CCLK_SRC_SDIO0>,
-> > +				 <&cru SCLK_SDIO0_DRV>,
-> > +				 <&cru SCLK_SDIO0_SAMPLE>;
-> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > +			fifo-depth = <0x100>;
-> > +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
-> > +			max-frequency = <150000000>;
-> > +			resets = <&cru SRST_H_SDIO0>;
-> > +			reset-names = "reset";
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		sdio1: mmc@ffc20000 {
-> > +			compatible = "rockchip,rk3528-dw-mshc",
-> > +				     "rockchip,rk3288-dw-mshc";
-> > +			reg = <0x0 0xffc20000 0x0 0x4000>;
-> > +			clocks = <&cru HCLK_SDIO1>,
-> > +				 <&cru CCLK_SRC_SDIO1>,
-> > +				 <&cru SCLK_SDIO1_DRV>,
-> > +				 <&cru SCLK_SDIO1_SAMPLE>;
-> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > +			fifo-depth = <0x100>;
-> > +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-> > +			max-frequency = <150000000>;
-> > +			resets = <&cru SRST_H_SDIO1>;
-> > +			reset-names = "reset";
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		sdmmc: mmc@ffc30000 {
-> > +			compatible = "rockchip,rk3528-dw-mshc",
-> > +				     "rockchip,rk3288-dw-mshc";
-> > +			reg = <0x0 0xffc30000 0x0 0x4000>;
-> > +			clocks = <&cru HCLK_SDMMC0>,
-> > +				 <&cru CCLK_SRC_SDMMC0>,
-> > +				 <&cru SCLK_SDMMC_DRV>,
-> > +				 <&cru SCLK_SDMMC_SAMPLE>;
-> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > +			fifo-depth = <0x100>;
-> > +			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
-> > +			max-frequency = <150000000>;
-> > +			resets = <&cru SRST_H_SDMMC0>;
-> > +			reset-names = "reset";
-> 
-> Suggest adding default pinctrl props here:
-> 
->   pinctrl-names = "default";
->   pinctrl-0 = <&sdmmc_bus4>, <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_det>;
-> 
-> And possible also for sdio0 and sdio1.
-> 
-> Regards,
-> Jonas
+How about something like this ?
 
-It makes sense. As mentioned in the cover letter, I depended on the
-bootloader to setup pinctrl, to minimize dependency of the series.
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index d94917211828..9c215c9bb30f 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -659,11 +659,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 		src_fmt->quantization = sink_fmt->quantization;
 
-Will complete the pinctrl properties in next version.
+ 	/*
+-	 * Allow setting the source color space fields when the SET_CSC flag is
+-	 * set and the source format is YUV. If the sink format is YUV, don't
+-	 * set the color primaries, transfer function or YCbCr encoding as the
+-	 * ISP is bypassed in that case and passes YUV data through without
+-	 * modifications.
++	 * Allow setting the source color space fields when the SET_CSC flag.
++	 * This is restricted to the case where the sink format is raw and the
++	 * source format is YUV, as in other cases the ISP is bypassed and the
++	 * input data is passed through without modifications.
+ 	 *
+ 	 * The color primaries and transfer function are configured through the
+ 	 * cross-talk matrix and tone curve respectively. Settings for those
+@@ -676,18 +675,30 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 	 */
+ 	set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
 
-> > +			status = "disabled";
-> > +		};
-> >  	};
-> >  };
-> 
+-	if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+-		if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+-			if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
+-				src_fmt->colorspace = format->colorspace;
+-			if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
+-				src_fmt->xfer_func = format->xfer_func;
+-			if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
+-				src_fmt->ycbcr_enc = format->ycbcr_enc;
+-		}
++	if (set_csc && sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
++	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
++		if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
++			src_fmt->colorspace = format->colorspace;
++
++		if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
++			src_fmt->xfer_func = format->xfer_func;
++		else
++			src_fmt->xfer_func =
++				V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
++
++		if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
++			src_fmt->ycbcr_enc = format->ycbcr_enc;
++		else
++			src_fmt->ycbcr_enc =
++				V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
 
-Best regards,
-Yao Zi
+ 		if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
+ 			src_fmt->quantization = format->quantization;
++		else
++			src_fmt->quantization =
++				V4L2_MAP_QUANTIZATION_DEFAULT(false,
++							      src_fmt->colorspace,
++							      src_fmt->ycbcr_enc);
+ 	}
+
+ 	*format = *src_fmt;
+
+Can I let you write a commit message ? :-)
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
