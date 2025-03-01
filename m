@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB02C021B8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 10:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CDCC021B8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 10:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6wQt0fH7Yvhz08b2BzT4lUbnxF9X84M6Vtd0xia5Nh8=; b=vlxY95v3bx7HFc
-	+BkSNfXcyJNuEgVWqqBUermpEBUEu2SSrTggEXFAImq3TDgjQH1RXQ/sxYPArt9wyQoKIEJGLpv7X
-	0L5JEUO6azf9YuVwD57xIOvi7vcLMjXmEF5666baQu8FOR39FwDSIs327DuhPHaL1w3eLLMDLCFMt
-	NcWYXEf5GHG1pBMAdvj2mNfQz9RKxZb4pQcXC3/A/sv+bPdUYl7zUBwKY3zSbCPurjhsEq7pK7t5b
-	wsTX1rajP0VfI1IxhkdTC5YALaLQm4vQG2j7NkMDGJQbOTMh3Rp4fUh3HNFecjym1F5QPp1Zep5lH
-	GLy5hcJa3ssPfXuJde9g==;
+	List-Owner; bh=+1lxkXVWFaAfLjXld3GUj9kKzho0+UocOBlhilZ+usA=; b=2tOMg2Qump7p1y
+	uywVlQQMRBSWDtl/xJupTK7cTnt3d34IcXYuVhZrj8r7taNWtAF+HQcHJ2cORe86b7hI+t3TFOCE3
+	HdxRdMUKONPkBU9cTUXz2MAAUhjc/JUJ8pNFgy26ZxQZ9A0cUPqrTyJS/580oKvMIh/A/7kI7MHlT
+	XIOUeG5cy/nnZoLbAEZdLPeEvmFtZnJMv9p3h503zwjKcXuAI1kpUQvfDfcjagDrHL45r0gDc0YIK
+	uR411o8pBprqCAbIx98j75kR5nBe25YYq/ggr+ZMchc5/ZItIq2fg1OKYQt62vnTob3e6KoVjjtDK
+	oXadnq1hsB9nN4B1NdMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toKPo-0000000Dmle-39mG;
-	Sat, 01 Mar 2025 10:49:52 +0000
+	id 1toKRL-0000000DmtN-3R6R;
+	Sat, 01 Mar 2025 10:51:27 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toKJu-0000000DltN-0QKP;
-	Sat, 01 Mar 2025 10:43:47 +0000
+	id 1toKK1-0000000DluJ-1cDW;
+	Sat, 01 Mar 2025 10:43:54 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id CAC2525DBB;
-	Sat,  1 Mar 2025 11:43:44 +0100 (CET)
+	by disroot.org (Postfix) with ESMTP id 21B4825D15;
+	Sat,  1 Mar 2025 11:43:52 +0100 (CET)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1ni52fxJz4eH; Sat,  1 Mar 2025 11:43:44 +0100 (CET)
+ id ygrvAjcF8kzO; Sat,  1 Mar 2025 11:43:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1740825824; bh=b7EbBDCtbwDBTCFmgFj8wrNPICeYFLhWlDWP8XBGTec=;
+	t=1740825831; bh=zwk+LtszMoHSIYjGCAqbuOU0QSVYlP5K54ulz6VjFyA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=fbg4aZteoWIk1PerzubZjJTAQZ3pb5oTYB3WN36lEuux86x28ez/s6uBAeb1sWuXM
-	 Di4rO7n9STt6wc2/yXaSHdQsvLqu8V+B9oupqqqp33wqTquKleC/pWAn4MhCGjpcpX
-	 aPMPMMIkgJ2aSu0CWEINX+Jy8mbKYs2r0k88rqt6DqXSq9CH7wJfElqUmXjrTvDe/O
-	 Rt7EKSZn+CG0WRJhLGl/HRfbfzOlk55c5sIHF04aig4AqzSd/dDxipfCDC700lL2bW
-	 nhV4GnlH4rnAXD2m5pvRDMWSjCDh79Nd5/q0f8YoRvr7dLTh6TKL2+eY/+e3mWkWWD
-	 dZ0RtcNiL8ORg==
+	b=WpKLDJjjycL5YphH8xb4T8i/1U35DpB9hvkImbiqAVf8w4H8Y7C4N/E+csmPuEuKu
+	 KsCz0FZWc2l1JIQSCfrMHT2M03HFnDsDN4hd6SQAAi4mGe7GEBc1ic7OJ7nLHp52xn
+	 WG9+gWc48PQy60j85cE7+1fnjquWnUNp/bLiCZN8YtZ62z2fCI7ZsThU0QZtbLPYPJ
+	 DTtIAZkMnHGRu2RXnQ0wgJdHphnGZFpI4wiywJCgn7yaDiYjggOPvKvtf3XWoHBjks
+	 IeWsZ1I1gN+6kbMc98oyvCjxHepKZu1J6DDt3i6jMVgWRTAC1MbwT2OzbzMpRGAmLx
+	 ml4//om/geNWQ==
 From: Yao Zi <ziyao@disroot.org>
 To: Ulf Hansson <ulf.hansson@linaro.org>,
 	Rob Herring <robh@kernel.org>,
@@ -62,15 +62,15 @@ Cc: linux-mmc@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH 3/8] dt-bindings: mmc: rockchip-dw-mshc: Add compatible string for RK3528
-Date: Sat,  1 Mar 2025 10:42:45 +0000
-Message-ID: <20250301104250.36295-4-ziyao@disroot.org>
+Subject: [PATCH 4/8] dt-bindings: clock: Add GRF clock definition for RK3528
+Date: Sat,  1 Mar 2025 10:42:46 +0000
+Message-ID: <20250301104250.36295-5-ziyao@disroot.org>
 In-Reply-To: <20250301104250.36295-1-ziyao@disroot.org>
 References: <20250301104250.36295-1-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_024346_268446_C44489AF 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20250301_024353_553327_9302D2C6 
+X-CRM114-Status: UNSURE (   8.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,25 +88,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add RK3528 compatible string for SD/SDIO interface.
+These clocks are for SD/SDIO tuning purpose and come with registers
+in GRF syscon.
 
 Signed-off-by: Yao Zi <ziyao@disroot.org>
 ---
- Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ include/dt-bindings/clock/rockchip,rk3528-cru.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-index 06df1269f247..ea0feb733e32 100644
---- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-+++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-@@ -38,6 +38,7 @@ properties:
-               - rockchip,rk3328-dw-mshc
-               - rockchip,rk3368-dw-mshc
-               - rockchip,rk3399-dw-mshc
-+              - rockchip,rk3528-dw-mshc
-               - rockchip,rk3568-dw-mshc
-               - rockchip,rk3588-dw-mshc
-               - rockchip,rv1108-dw-mshc
+diff --git a/include/dt-bindings/clock/rockchip,rk3528-cru.h b/include/dt-bindings/clock/rockchip,rk3528-cru.h
+index 55a448f5ed6d..0245a53fc334 100644
+--- a/include/dt-bindings/clock/rockchip,rk3528-cru.h
++++ b/include/dt-bindings/clock/rockchip,rk3528-cru.h
+@@ -414,6 +414,12 @@
+ #define MCLK_I2S2_2CH_SAI_SRC_PRE	402
+ #define MCLK_I2S3_8CH_SAI_SRC_PRE	403
+ #define MCLK_SDPDIF_SRC_PRE		404
++#define SCLK_SDMMC_DRV			405
++#define SCLK_SDMMC_SAMPLE		406
++#define SCLK_SDIO0_DRV			407
++#define SCLK_SDIO0_SAMPLE		408
++#define SCLK_SDIO1_DRV			409
++#define SCLK_SDIO1_SAMPLE		410
+ 
+ /* scmi-clocks indices */
+ #define SCMI_PCLK_KEYREADER		0
 -- 
 2.48.1
 
