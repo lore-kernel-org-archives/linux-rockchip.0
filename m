@@ -4,57 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B76DC282C5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 01:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDC9C021B8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 09:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FnHJQ0fdrq6fYEUlbHZ/2nbm4lgL/0jzkxnCl5rZbno=; b=FTmi0L4+nbcc+w
-	egkBqdDoEPUUZmKt4DoJqSsz3hrB9+0Hz8iJMzLR4u8DWtyVMshEnL2ppIZPfiFZoMZB2C5WcgVrK
-	9vtBCfh4tIztnWhbIGPlNkzTEqMATbt2UG2Wv0hbWRbFTsg5pqEZjWgeM8/f96FExPOfbBfiSPXf4
-	wzmJrhZihq8oIeEwjzkPcxfXc6ZFiqtYBfoL+Wn5IG0eKMpID8jRSsiI548/Wv616epgWUzaNSG2I
-	w31HLrkYcnPEYku+Q+ZnxnkViy77b7Ubs0ccOnQlqTC9xREa3CEVzn+d2VGks4aLYC8FL7WOZbK+J
-	rlWO0/IYzNXqNU7P7+7Q==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9DzroZX0RdNICH9fpaCHa7PYkWXc2en8MKx4ZczBYiY=; b=p4mO8mLB9SiGnx
+	7UbT5f75zWdxlqpaCZjjbf86J0siDehM2RmfyZKM1mjCuK99vHo7YbLhBweq8HDk0WMSEgkhuiknf
+	S3fYsOpoAPgcpE1a62ppma+i/AairJehAjueBBroIzDufI+YIfQWE7OYow3geEmbkristz/wy3zsm
+	hdZuOygOvLj01EDDg4W2CI79z46FGY2r3JWzAvDX1D/HDbiphCT/c4YhA27vA2Mg/rSWdjUouKuPO
+	r8oJ7+BXFX5VdwP3q1hrMFHXCPUEJ8WANi8LYA6O6iRHYEdBbKSJkLgfs1PAfPSfrhopdf6x59CdQ
+	jvuzm9KoEnYIYfbXsWRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toBHc-0000000D7so-3o8n;
-	Sat, 01 Mar 2025 01:04:48 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1toItI-0000000DfbW-3ijW;
+	Sat, 01 Mar 2025 09:12:12 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toBG5-0000000D7mm-3bAO;
-	Sat, 01 Mar 2025 01:03:15 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 834BF8BE;
-	Sat,  1 Mar 2025 02:01:42 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740790902;
-	bh=E4CFDdWpLRuR6cWZBhtXLShaSWGwBIT3NTPSNKAfUWU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Uc9F/QBIBnzEY8mfv0uRYcjyLx1ko30GlR6UK9oG6Mg+09RDBQuv4YBoid0CDNW2v
-	 ClYEYPokYcreyrwHOzssSlYCW7T63hzqvhor+H0Pnlo0UBpr4jU26EL2mvEczEG8YN
-	 i1BqUzwfl53p9s+Mei8kwCD4gBCZQdigbbpa7BTc=
-Date: Sat, 1 Mar 2025 03:02:52 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] media: rkisp1: Set format defaults based on
- requested color space
-Message-ID: <20250301010252.GI7342@pendragon.ideasonboard.com>
-References: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
- <20250227114558.3097101-2-stefan.klug@ideasonboard.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250227114558.3097101-2-stefan.klug@ideasonboard.com>
+	id 1toItF-0000000DfXM-2l4v;
+	Sat, 01 Mar 2025 09:12:10 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5e4bed34bccso3969536a12.3;
+        Sat, 01 Mar 2025 01:12:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740820328; x=1741425128; darn=lists.infradead.org;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=62M00yAg51rrJZ04g8zC95EvNZ84F8x3AjdAvJoHunw=;
+        b=URkxpGTqwW+LU9Ht1F4QvwOh+pG2Rk9+WBDSU1XWTCDPnpwlOd0O5d9Su4y1TwocW0
+         R43TIAyHZGVZAod+uM+VQGcAFHJ+hOJJSn1wpzggFtI5EGV7sTJAoaxUKWU8O/QAesZs
+         10dnv18otfaV6Bk+RohWCKIRXh5U/CwT1GLjYMyYHf3bUxFdGbOk2xi4p8BcVVNWQvCx
+         YyMHGnOiZRnP4rFNinyL6mZIPWpds+pI5hLcT0FSwoNCSxc/GqncXl56cD5y87PsAv7M
+         YiQBCSLWegn/UOPdt3nl8klAw1EJU/Nlan0MG4SRLQitjFDWUVcwWSKLJeKE8a9sEu+n
+         7RBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740820328; x=1741425128;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=62M00yAg51rrJZ04g8zC95EvNZ84F8x3AjdAvJoHunw=;
+        b=CQ0tWqd+XjY7iCFG4cUHtmW6ysb6TZH33maNPmcVzOiSwUBIEbILMEZgWwMT4v43J2
+         mhRyiOFgPXD3cFihbFgi1x/971xB5cey6oAuhAOHg5Dzu4FckmnLK6ODuLXDOn+0HpoS
+         EljvFoaP2dd32O36089KXR9jgikcKzgCNEYIadQu9SsDp1hr30izTgqeUM7FVlLWYBwi
+         fG1K1wbsm72obSjzNJqipDtmUoOmpqipbtrZNdOLTMhFVAaKzgccAR8qrPT3KwTqCnEJ
+         gCbqxuKmASpw7pLbhw/Ul4rmggTvvwrBZUcnZT6fSpiugsuwOKGTx+97g5Jb0UQZiChM
+         D5Ew==
+X-Forwarded-Encrypted: i=1; AJvYcCW4rAGtwos/e/eAh61LBfgMIhkBusaj7XoO7HGrAy4dgzA2NNUdaCZhc3cAIhlBDLw4NmwjEG/g4xRMiEvllSOT@lists.infradead.org, AJvYcCX40hguxW6xarV0PxWQruvKGB6pcOv6zAz/eIQCM5JoJFRVVaN5kRFKd/tfJsip0JRIKfiowuuwCGCxev0WoBA=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyu3p8nv2Rn7WyADBK8dWVmp+XulZKGxgJgl4Hfs3a7AeSITpqT
+	oqj2m/gr6zIQ6bonhqZ6JvWxZgdR73D0hgiLQLEazsz4RF7pgPRu
+X-Gm-Gg: ASbGncucYwYiFued22frUSGGc4+cpIdiV2EeYZaHiXYQol/MY7WRGJrpYlw2lMquGf3
+	nl0CCzV0CSmlPq5ufuSgJ7a5njr5dkC6vjQsayG/mWCvN1j0ZbIsZVvGS1b870xWNKlVEf3JgO6
+	ul8s2bkdTD1rPY+PTTSq2tKzKBOTAW7p4L4WZgNofg77MkaBp8ZF+377YdUG5F58TnWkbo+1Nz1
+	8Fw5fqxbe64RGRE/I1XtAMv+sC21QQ6bSYntqqWrmgXSzO8skMYKlncOkCywj7xepILTK1M4dBV
+	XiU5wCuZ1jGCgG7N5eTtwmJQQ9nKvfuHe/EVIS988bEI4Mm8y1KXlTTV0jnh8O1wG8UOFOkqK4H
+	YJSn9fFOyQh57/8JYeLjNEoW1gA==
+X-Google-Smtp-Source: AGHT+IEV8xcpINPWUe49yXpBYPm3MtVspqPFUx6SBprxmJEllwjfLWfeeFh1xeuz1VE+t2lFH6t06w==
+X-Received: by 2002:a17:907:7288:b0:abf:5922:b7a8 with SMTP id a640c23a62f3a-abf5922dccamr135545766b.41.1740820327515;
+        Sat, 01 Mar 2025 01:12:07 -0800 (PST)
+Received: from smtpclient.apple (89-66-237-154.dynamic.chello.pl. [89.66.237.154])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-abf0c0b98b5sm436358366b.3.2025.03.01.01.12.05
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 01 Mar 2025 01:12:07 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.400.131.1.6\))
+Subject: Re: [PATCH v7 0/3] Add HDMI audio on the rk3588 SoC
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <3337030.aeNJFYEL58@trenzalore>
+Date: Sat, 1 Mar 2025 10:11:54 +0100
+Cc: linux-kernel@vger.kernel.org,
+ Algea Cao <algea.cao@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ dri-devel@lists.freedesktop.org,
+ Niklas Cassel <cassel@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ kernel@collabora.com,
+ David Airlie <airlied@gmail.com>,
+ Dragan Simic <dsimic@manjaro.org>,
+ Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>,
+ Robert Foss <rfoss@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>,
+ FUKAUMI Naoki <naoki@radxa.com>,
+ devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Johan Jonker <jbx6244@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Alexey Charkov <alchark@gmail.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>
+Message-Id: <0A30138B-183E-4816-80FF-AACDCFE3B3A6@gmail.com>
+References: <20250217215641.372723-1-detlev.casanova@collabora.com>
+ <87frk2sumw.wl-kuninori.morimoto.gx@renesas.com>
+ <8734g2sg4t.wl-kuninori.morimoto.gx@renesas.com>
+ <3337030.aeNJFYEL58@trenzalore>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+X-Mailer: Apple Mail (2.3826.400.131.1.6)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250228_170314_035829_8C022F2F 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20250301_011209_694205_C5AE290A 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,89 +127,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Stefan,
-
-Thank you for the patch.
-
-On Thu, Feb 27, 2025 at 12:44:59PM +0100, Stefan Klug wrote:
-> When color space JPEG is requested, the ISP sets the quantization
-> incorrectly to limited range. To fix that, set the xfer_func, ycbcr_enc
-> and quantization to the defaults for the requested color space if they
-> are not specified explicitly.
-
-The commit message fails to explain why you're addressing xfer_func and
-ycbcr_enc to fix the quantization issue.
-
-> Do this only in case we are converting
-> from RAW to YUV.
-
-And this should explain why.
-
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> ---
->  .../media/platform/rockchip/rkisp1/rkisp1-isp.c   | 15 ++++++++++++++-
->  1 file changed, 14 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index d94917211828..468f5a7d03c7 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -680,10 +680,23 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
-
-Adding a bit more context:
-
-	set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
-
-	if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-
-If V4L2_MBUS_FRAMEFMT_SET_CSC isn't set, the colorspace fields on the
-source pad will be copied from the sink pad, which doesn't seem right.
-It's a separate issue, but fixing both together may lead to better code.
-
->  		if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
->  			if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
->  				src_fmt->colorspace = format->colorspace;
-> -			if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
-> +
-> +			if (format->xfer_func == V4L2_XFER_FUNC_DEFAULT)
-
-Are you sure the condition should be inverted ?
-
->  				src_fmt->xfer_func = format->xfer_func;
-> +			else
-> +				src_fmt->xfer_func =
-> +					V4L2_MAP_XFER_FUNC_DEFAULT(format->colorspace);
-> +
->  			if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
->  				src_fmt->ycbcr_enc = format->ycbcr_enc;
-> +			else
-> +				src_fmt->ycbcr_enc =
-> +					V4L2_MAP_YCBCR_ENC_DEFAULT(format->colorspace);
-> +
-> +			if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
-> +				src_fmt->quantization =
-> +					V4L2_MAP_QUANTIZATION_DEFAULT(false,
-> +						format->colorspace, format->ycbcr_enc);
-
-Shouldn't this use src_fmt instead of format ?
-
-I think quantization handling could be moved below.
-
->  		}
->  
->  		if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IERldGxldiBDYXNhbm92YSA8ZGV0bGV2LmNh
+c2Fub3ZhQGNvbGxhYm9yYS5jb20+IHcgZG5pdSAyNSBsdXQgMjAyNSwgbyBnb2R6LiAxNTo1ODoK
+PiAKPiBGcm9tIHdoYXQgSSBzZWUsIHRoZSBlcnJvciBpcyBub3QgcHJlc2VudCBhbnltb3JlIG9u
+IGxpbnV4IDYuMTQtcmM0LiBJIHRyaWVkIAo+IHJldmVydGluZyB5b3VyIHBhdGNoICJBU29DOiBz
+aW1wbGUtY2FyZC11dGlscy5jOiBhZGQgbWlzc2luZyBkbGMtPm9mX25vZGUiIAo+IChkYWJiZDMy
+NWIyNWVkYjVjZGQ5OWM5NDM5MTgxNzIwMmRkNTRiNjUxKSBhbmQgdGhlIGVycm9yIHJlYXBwZWFy
+cy4KCkd1eXMsCgpKdXN0IEZZSToKCk9uIDYuMTQtcmM0IHdpdGhvdXQgMDAwMS1BU29DLXNpbXBs
+ZS1jYXJkLXV0aWxzLURvbi10LXVzZS1fX2ZyZWUtZGV2aWNlX25vZGUtLnBhdGNoIC0gaSBzdGls
+bCBoYXZlIG9vcHMgbGlrZSB0aGlzOiBodHRwczovL2dpc3QuZ2l0aHViLmNvbS93YXJwbWUvZWQ3
+NWMwNWQzYjY4Zjk5NWQ0MjlkYmQ5MDk3MDA1YmEKVGhleSBhcmUgaGFwcGVuaW5nIG5vdCBldmVy
+eSBib290IC0gYnV0IHN0aWxsIGhhcHBlbmluZy4KCkhvd2V2ZXIgYXBwbHlpbmcgMDAwMS1BU29D
+LXNpbXBsZS1jYXJkLXV0aWxzLURvbi10LXVzZS1fX2ZyZWUtZGV2aWNlX25vZGUtLnBhdGNoICh3
+aXRoIHNvbWUgYWRhcHRhdGlvbnMgYXMgaXQgbm90IGFwcGxpZXMgY2xlYW5seSBvbiA2LjE0MHJj
+NCkgLSBkbWVzZyBiZWNvbWVzIGNsZWFuICgxMCBib290czsgYWxsIG9rKQoKCgoKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
