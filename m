@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EDAAC282D1
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 14:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A69CC021B8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Mar 2025 15:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U4M4c5J7G51QEQuyQscorrnMfzHlG1mvbXyFAdNtZiQ=; b=JaXsm+lZeoLSa+
-	kmFwbIvmIMcIwS8ohU/h8M4L9U3QDDjLOfv49KMVp+O22u/k62BFUNkqVdCOzn2kMY7RcDY4IenOB
-	4gdbr8xQ0jLMsUw+zDbtgb4e+WNtjVNFhBpnfsVHiZB8ruvhpk7H8XMU0gty2+0bfv39EogAIMI69
-	rT/jEXtBDNMhXulNp2XXu6049JRtKlj60Mr2p+2Aqi4mQ1l2yQkWSBO850DbSoqq5DOFN2Hc/PV7d
-	+5l6f97kyGelnn8evCvXz4TMIXTVtD1o4w0wBo2oqDUHKiOLvd6uG6ap6WJAUH+RVv3QHTQUMoB18
-	J104tdWUcfVsPx+ZYOlg==;
+	List-Owner; bh=DrG+3woPEp37c+xbt9Am+MH5lGMLGyolfQ6ELDaT0Zg=; b=v+xoNvXC+pMcUb
+	G/WP3nWZuNruVQbvtxd7440eVw06WkeBCBC9SFQ9QSLKEnSS7TSoEgaO5ncIKKhbhzi+SNmUMGy23
+	4lDAgpyLE7GJhyqJOWoetnhslU9VDiUaZPPMm+twlGVGqYTqEIgkLjwJyST0aNQM269S1wal0mM5H
+	g4N7xHK3jb9Z3JCkuun6e3RC9O9XjWNNchGqZ8IR0+wDavkPvSMLJYK7gdMlXAeTKAzcy7OrUBHhJ
+	2e/eNhv+i6hp9wnuGkyLK8ls/hRCrwJwIamvTIwIByTk9wk2JaDMV7MDhwyfXC1uFzHuaTK0q7ouT
+	9oQGPjHXZqlQZhXAZ15A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toNxV-0000000EVA6-2Xke;
-	Sat, 01 Mar 2025 14:36:53 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1toOb1-0000000EXyq-1vPV;
+	Sat, 01 Mar 2025 15:17:43 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toNvu-0000000EUta-3HNf;
-	Sat, 01 Mar 2025 14:35:16 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BD0DA66B;
-	Sat,  1 Mar 2025 15:33:41 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1740839622;
-	bh=vOx2aCR711x8XBMo5usk7el1mpTt/EExYD3ss0D/AD4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Jq/ql4+6oMrO70oDvXDSy6Ow+xYAlNbU24jR2LiPzTBdEHCyHtvtF3d/RRjH8ABr9
-	 HWdKdQljD3upBXq7gO6Ju16cNJzvWBd1ShXvVeTW7d53A5dAMQ1l/lMpecRzghS4tY
-	 PaM30k0UNsah8UYFpXRY8QBHltPiFLTKwLIU9jfo=
-Date: Sat, 1 Mar 2025 16:34:53 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] media: rkisp1: Set format defaults based on
- requested color space
-Message-ID: <20250301143453.GJ7342@pendragon.ideasonboard.com>
-References: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
- <20250227114558.3097101-2-stefan.klug@ideasonboard.com>
- <20250301010252.GI7342@pendragon.ideasonboard.com>
+	id 1toOZQ-0000000EXsb-0l7z;
+	Sat, 01 Mar 2025 15:16:06 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 4033220523;
+	Sat,  1 Mar 2025 16:15:59 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0iebN7Isx1Km; Sat,  1 Mar 2025 16:15:57 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1740842157; bh=OmrR4xD/XRUKk2rcMTrbTAl5fxjRwq+7cvLzauhy6QI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=EBrD/O9RrVrUYRP+VtXW2Qnd/HbT6/xhYVGcT888/R1u+nZe8io1CWfIKSlqN+xVh
+	 uosX1SmQ+uG6WyBFrvoMmT17JPz6bItHX9gMyXNllu8xgSfizzV9/xYzM1LbNK//Et
+	 VcfncIB0U4fB6PdG2Wr0kCCH4CPj0lKLyBnVPppk3SVEeRppfh+BHYiHR7srIIZm6A
+	 ZuNv1C5GeFy9qJKkYwH4vp2FPQ8LHcyP+uq4wv0TAsSn/7aviqrzZh7AF4LU9X0ETQ
+	 SdYn8QlV+4DLyohYjHZH6LlYQEMSzJDnHQBh8QLhYMBEBNdU96iGwsLn5J5LXGnR6b
+	 mXqu6/2U4c1gw==
+Date: Sat, 1 Mar 2025 15:15:32 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
+ Radxa E20C
+Message-ID: <Z8MklJfFz2EA6oNS@pie.lan>
+References: <20250301104250.36295-1-ziyao@disroot.org>
+ <20250301104835.36439-1-ziyao@disroot.org>
+ <0aefd292-7980-434d-9c18-4ab9f6a0b40e@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250301010252.GI7342@pendragon.ideasonboard.com>
+In-Reply-To: <0aefd292-7980-434d-9c18-4ab9f6a0b40e@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250301_063514_990769_A5A587DB 
-X-CRM114-Status: GOOD (  41.58  )
+X-CRM114-CacheID: sfid-20250301_071604_635855_18701243 
+X-CRM114-Status: GOOD (  25.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,175 +68,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, devicetree@vger.kernel.org, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 01, 2025 at 03:02:54AM +0200, Laurent Pinchart wrote:
-> On Thu, Feb 27, 2025 at 12:44:59PM +0100, Stefan Klug wrote:
-> > When color space JPEG is requested, the ISP sets the quantization
-> > incorrectly to limited range. To fix that, set the xfer_func, ycbcr_enc
-> > and quantization to the defaults for the requested color space if they
-> > are not specified explicitly.
+On Sat, Mar 01, 2025 at 02:01:05PM +0100, Jonas Karlman wrote:
+> Hi,
 > 
-> The commit message fails to explain why you're addressing xfer_func and
-> ycbcr_enc to fix the quantization issue.
-> 
-> > Do this only in case we are converting
-> > from RAW to YUV.
-> 
-> And this should explain why.
-> 
-> > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> > ---
-> >  .../media/platform/rockchip/rkisp1/rkisp1-isp.c   | 15 ++++++++++++++-
-> >  1 file changed, 14 insertions(+), 1 deletion(-)
+> On 2025-03-01 11:48, Yao Zi wrote:
+> > SD-card is available on Radxa E20C board.
 > > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > index d94917211828..468f5a7d03c7 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > @@ -680,10 +680,23 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
-> 
-> Adding a bit more context:
-> 
-> 	set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
-> 
-> 	if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-> 
-> If V4L2_MBUS_FRAMEFMT_SET_CSC isn't set, the colorspace fields on the
-> source pad will be copied from the sink pad, which doesn't seem right.
-
-Thinking some more about it, it's not wrong either. The colorspace and
-xfer_func fields are not used by the driver, as the related ISP
-processing blocks are configured through ISP parameters. Without
-userspace providing the value of the fields on the source pad, the
-driver can't know what colorspace and xfer_func is produced. Copying the
-values from the sink pad is as good of a guess as we can make.
-
-The ycbcr_enc and quantization fields are different, as they are taken
-into account by the driver to configure the ISP. Copying ycbcr_enc from
-the sink pad means that it will be set to V4L2_YCBCR_ENC_601 when the
-sink format is bayer and the source format is YUV. As the sink
-colorspace is most likely going to be V4L2_COLORSPACE_RAW in that case,
-that's a fine default, and is identical to what we would get from
-V4L2_MAP_YCBCR_ENC_DEFAULT(). Setting the quantization to
-V4L2_QUANTIZATION_LIM_RANGE also seems fine as a default, and it what
-V4L2_MAP_QUANTIZATION_DEFAULT() would give us.
-
-TL;DR: there's probably no need to change the current behaviour when
-V4L2_MBUS_FRAMEFMT_SET_CSC isn't set.
-
-> It's a separate issue, but fixing both together may lead to better code.
-> 
-> >  		if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
-> >  			if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
-> >  				src_fmt->colorspace = format->colorspace;
-> > -			if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
-> > +
-> > +			if (format->xfer_func == V4L2_XFER_FUNC_DEFAULT)
-> 
-> Are you sure the condition should be inverted ?
-> 
-> >  				src_fmt->xfer_func = format->xfer_func;
-> > +			else
-> > +				src_fmt->xfer_func =
-> > +					V4L2_MAP_XFER_FUNC_DEFAULT(format->colorspace);
-> > +
-> >  			if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
-> >  				src_fmt->ycbcr_enc = format->ycbcr_enc;
-> > +			else
-> > +				src_fmt->ycbcr_enc =
-> > +					V4L2_MAP_YCBCR_ENC_DEFAULT(format->colorspace);
-> > +
-> > +			if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
-> > +				src_fmt->quantization =
-> > +					V4L2_MAP_QUANTIZATION_DEFAULT(false,
-> > +						format->colorspace, format->ycbcr_enc);
-> 
-> Shouldn't this use src_fmt instead of format ?
-> 
-> I think quantization handling could be moved below.
-> 
-> >  		}
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 14 ++++++++++++++
+> >  1 file changed, 14 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> > index d2cdb63d4a9d..473065aa4228 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> > @@ -12,6 +12,10 @@ / {
+> >  	model = "Radxa E20C";
+> >  	compatible = "radxa,e20c", "rockchip,rk3528";
 > >  
-> >  		if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
+> > +	aliases {
+> > +		mmc0 = &sdmmc;
+> 
+> Suggest using mmc1 for sd-card because the e20c typically have onboard
+> emmc, compared to removable sd-card.
 
-Now I'm wondering if this is right. As far as I can tell, the
-quantization isn't taken into account by the driver when the ISP is
-bypassed (capturing raw bayer data, or capturing YUV data from a YUV
-sensor).
+My board doesn't have an eMMC: it's optional as well, but all variants
+of Radxa E20C come with an SD-card interface. The vendor devicetree sets
+sdmmc as mmc0 as well[1].
 
-How about something like this ?
+I won't insist on it and am willing to take the change if you still
+consider mmc0 is better.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index d94917211828..9c215c9bb30f 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -659,11 +659,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 		src_fmt->quantization = sink_fmt->quantization;
+> > +	};
+> > +
+> >  	chosen {
+> >  		stdout-path = "serial0:1500000n8";
+> >  	};
+> > @@ -20,3 +24,13 @@ chosen {
+> >  &uart0 {
+> >  	status = "okay";
+> >  };
+> > +
+> > +&sdmmc {
+> > +	bus-width = <4>;
+> > +	cap-mmc-highspeed;
+> > +	cap-sd-highspeed;
+> > +	disable-wp;
+> > +	rockchip,default-sample-phase = <90>;
+> > +	sd-uhs-sdr104;
+> 
+> Are you sure uhs-sdr104 works as is should?
 
- 	/*
--	 * Allow setting the source color space fields when the SET_CSC flag is
--	 * set and the source format is YUV. If the sink format is YUV, don't
--	 * set the color primaries, transfer function or YCbCr encoding as the
--	 * ISP is bypassed in that case and passes YUV data through without
--	 * modifications.
-+	 * Allow setting the source color space fields when the SET_CSC flag.
-+	 * This is restricted to the case where the sink format is raw and the
-+	 * source format is YUV, as in other cases the ISP is bypassed and the
-+	 * input data is passed through without modifications.
- 	 *
- 	 * The color primaries and transfer function are configured through the
- 	 * cross-talk matrix and tone curve respectively. Settings for those
-@@ -676,18 +675,30 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 	 */
- 	set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
+In fact yes, tuning succeeds at 148.5MHz and results in 66MB/s reading
+speed.
 
--	if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
--		if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
--			if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
--				src_fmt->colorspace = format->colorspace;
--			if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
--				src_fmt->xfer_func = format->xfer_func;
--			if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
--				src_fmt->ycbcr_enc = format->ycbcr_enc;
--		}
-+	if (set_csc && sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
-+	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-+		if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
-+			src_fmt->colorspace = format->colorspace;
-+
-+		if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
-+			src_fmt->xfer_func = format->xfer_func;
-+		else
-+			src_fmt->xfer_func =
-+				V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
-+
-+		if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
-+			src_fmt->ycbcr_enc = format->ycbcr_enc;
-+		else
-+			src_fmt->ycbcr_enc =
-+				V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
+> Vendor kernel use a different "v2" tuning
 
- 		if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
- 			src_fmt->quantization = format->quantization;
-+		else
-+			src_fmt->quantization =
-+				V4L2_MAP_QUANTIZATION_DEFAULT(false,
-+							      src_fmt->colorspace,
-+							      src_fmt->ycbcr_enc);
- 	}
+This isn't a problem. IMHO V2 tuning is more like a quick path, which
+tries inheritting the phase from firmware and then re-tunes roughly.
+Fine tunning is still a fallback here in case of failure, see the commit
+message in the downstream kernel[2]. And testing proves it's okay for
+RK3528 to issue fine-tuning always.
 
- 	*format = *src_fmt;
+> and this is also missing the vccio_sd vqmmc-supply to switch between
+> 3v3 and 1v8.
 
-Can I let you write a commit message ? :-)
+But this is a problem, thanks for catching it! Somehow my card managed
+to run at 148.5MHz with 3v3 voltage level, but it's definitely a
+compatiblity issue. I'm surprised that the driver doesn't complain when
+switching to SDR modes without a regulator configured.
 
--- 
-Regards,
+> You could add following regulator for sdmmc:
+> 
+> 	vccio_sd: regulator-vccio-sd {
+> 		compatible = "regulator-gpio";
+> 		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+> 		pinctrl-names = "default";
+> 		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
+> 		regulator-name = "vccio_sd";
+> 		regulator-min-microvolt = <1800000>;
+> 		regulator-max-microvolt = <3300000>;
+> 		states = <1800000 0x0>, <3300000 0x1>;
+> 	};
+>
+> and following pinctrl:
+> 
+> 	sdmmc {
+> 		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
+> 			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> 		};
+> 	};
+> 
+> add then the power supplies to the sdmmc node:
+> 
+> 	vmmc-supply = <&vcc_3v3>;
+> 	vqmmc-supply = <&vccio_sd>;
+> 
+> That matches the schematics for e20c, and works when testing non-uhs modes.
 
-Laurent Pinchart
+Thanks for the hints. Will rebase on your pinctrl series and get
+regulators and pinctrl settings applied in the next version.
+
+> Regards,
+> Jonas
+> 
+> > +	status = "okay";
+> > +};
+> 
+
+Cheers,
+Yao Zi
+
+[1]: https://github.com/radxa/kernel/blob/2b0c8de7dc4c68947cda206dcc2e457e9677e426/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts#L22-L26
+[2]: https://github.com/rockchip-linux/kernel/commit/795e052cc8610aa59a64b104f975cc4a45493d5d
 
 _______________________________________________
 Linux-rockchip mailing list
