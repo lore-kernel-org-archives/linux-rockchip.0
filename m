@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC64C19F32
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 19:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7042BC19F32
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 20:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xAmUV2bLkZahRPm6DifUeHX0qs5biMrB0z6z78m8Xgw=; b=EtRmRa6KCzz71f
-	ikPPVsJGpz/he4/qwyGlgj+iAPtu92F2SRIylbzQmOJ/b4nbOm4UkSMglVmKax+CiEhUDF8y/zRmE
-	wV81NoCxEssZXcXcctJvJKPzgJbnkW++1ExpUfjuO4Sywa8ZCwJRmJEG5bZIoP66uIc7kmTlRkLHA
-	tyrdEbN33zbMqgliCuaHRsCt613EBUbTjSeUWRdiXLTnvAN5qqVdbrTC5OatkMs2mZFMA2kecPwXD
-	0W+3TlXvAvni0nCOzSsX3mPLPXqwhMRH/ogAhSPlp5am751xkr7tVPH8laem1yem2BxjLIDXW98FT
-	1XN9E+xyuZ/AylX8diHw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bJjynKKvtW1y5X2qULntUIoVbRfm6E9zcpgKfekgLzs=; b=h9mXw/K4JVUkp3
+	c2PGa0UusYqvkUazwGP6XYIzw4/uAQb+2ib31PrBtt62Ctcz/K7iYXKrv3XTX3SinEJghpJRqFXF0
+	LwB5/ulIJ3VY1ovPPE+S4WKzYM44tGSnaGcltW8aZME0Ol4O09/JXmEuqmhtcO5FwrhVPtVKDmI5T
+	+tsWKAPyNvA76SrPzZ7UM6vtjNLBBf0sVvkcbUNDGvR4D2m9pMa1bwsP91y9Whk2pOnuECu8EyhK/
+	1eQFSMRnP9kN7DM951+Mv3iiGDCap2RJTW4DlEc9L+5UhDBC0FtPeziRKe7/LwxcgPbXl+/GuhYh3
+	0YjZUHYmVIvigErySlZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tooiy-0000000GYl2-3lmu;
-	Sun, 02 Mar 2025 19:11:40 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1topXc-0000000GcnX-3Gto;
+	Sun, 02 Mar 2025 20:04:00 +0000
+Received: from mail-lj1-x261.google.com ([2a00:1450:4864:20::261])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1toohO-0000000GYUl-2lxT;
-	Sun, 02 Mar 2025 19:10:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=1uDnGle22h4BGQTP/aXxCDgxelViDKMg5h+i1dNf/tU=; b=vzRlOXqsyFZrCrhDIO02maxr2m
-	omB8tmfEYAsY04MiP87NnpI1TbiyyV8E1x7FLNVfzrIs2UYDSxfpr70QEEzywvjPSTkYLsreROz68
-	XLrzItSGERbXNB0qtnKy1nBVCzlBXMDZiBfjnZLT58tw05VyrCa+8BIYd9JXSTFFL456CI2L73fjq
-	Jjl5VbLCDLwxoApqRdX/I+Jtq+PT+qGhFNuqNhHYuy5znQM0HnGFPw9gihS7h6HJGdRX0O7YDhqyi
-	nfc2TBbQV7JDAIushfCoPTm+0M4oCpnA+01NMcF/KUYAtym3kGlLw0lXrtssdfm5tZExuCYRSRkXr
-	pBz1nfFg==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1toohF-0004vx-Im; Sun, 02 Mar 2025 20:09:53 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- derek.foreman@collabora.com, detlev.casanova@collabora.com,
- daniel@fooishbar.org, robh@kernel.org, sebastian.reichel@collabora.com,
- Andy Yan <andy.yan@rock-chips.com>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v15 13/13] drm/rockchip: vop2: Add support for rk3576
-Date: Sun, 02 Mar 2025 20:09:52 +0100
-Message-ID: <2764042.X9hSmTKtgW@diego>
-In-Reply-To: <20250218112901.34564-1-andyshrk@163.com>
-References: <20250218112744.34433-1-andyshrk@163.com>
- <20250218112901.34564-1-andyshrk@163.com>
+	id 1topW3-0000000Gchb-0Y7s
+	for linux-rockchip@lists.infradead.org;
+	Sun, 02 Mar 2025 20:02:24 +0000
+Received: by mail-lj1-x261.google.com with SMTP id 38308e7fff4ca-307bc125e2eso41282021fa.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Mar 2025 12:02:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=patrick-wildt-de.20230601.gappssmtp.com; s=20230601; t=1740945741; x=1741550541; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=0ktqAo906g1TKt406wyEYKOmiF5CVJ1rF2+5tYAkr74=;
+        b=St7g9HJdTw2C15tdFK85LvD9wHkUHG/Y+h7s+0EGNoGIjaHIA3ghDojqgNCQ5KmM4+
+         MXfFdK5jRLwYJFb7uhTM4xu7bu4rxsGOvdyelgfjss8ln0c9lL0Smo49WgFiVXD+rj/c
+         Ukx1colNFhZNHm72DSgW9w64rR3Hj6IALfqnjXatHHvSq2SO3mrs0QNfXjxTrAkT6K6q
+         0/srGTg7eb+1YD8r4zCh8y7naOiCJeXJRITI7PWariQuKRuLzUOzI00xvTYMd1UhqpR6
+         ojRITDhrnqTgV8A4wi4oWK58oyJ2gVFAnl+7ntoykqwMWem+LOyOZhPyPszb+ADRKRoh
+         B0Qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740945741; x=1741550541;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0ktqAo906g1TKt406wyEYKOmiF5CVJ1rF2+5tYAkr74=;
+        b=wvNmtfyiytTg51eWnWlVwmjiNcmWVyY5PGhzlqTkyvFzHZ8P+2XifN80HVDOOl79Xx
+         ao6C6tUCXapMVqudoqMbVbGePD4ESjALMhmh/8Wkw8v3lq3T+3kUMqe/60Xx5NiFriqg
+         eHhPzHOZElPsokPTtjiNY+irtkZi4vT3/bfAfH2g6MTrRlic+kdnZBwQ+mr20AVhCjFR
+         UiqN5s2YM85Y1FraoyvafYdAh3HMhk5cl2xCMC/ztoSq3Cr+XjbDG9ueNBM7Bkk2DDje
+         hIGk88emntcrMNzMgj2fqFO6jikpNRC3careoxIYGuwhgQ5bgeMiiEhjcpuiMEoPyud0
+         9kZQ==
+X-Gm-Message-State: AOJu0YwmzlcI9UMatn2QdY0TinPWCPECfj1TKth0VB4iz8NSMz4wjahh
+	npt4a5dyDNi4qVpyrMXRkZDf1scrRVWzixZA/XcbSU5X+kc1KkhFNYBZfsoChQzuvTwuneEC7fV
+	P4z0/0lrF29EIf6L/Z/9JIB5eJ0R2vOKukgKDabbW
+X-Gm-Gg: ASbGncuHA4gFQ5FEa1RcOzjtyye0cWJgOMJTrhmvai1XJ87wEH44VGgWmTMasR+UC5O
+	YQRExITyIiOXs8DC39uE7fxXvPbJPkuQ75JXj498+KCyqbqOeBGvDa22v0nj424vZ+ZxvC3sLPq
+	Zo9lP/LD69KnJk/tBtpw0+1njrkxMK5gvN8M4oeY26BrZ7wvuq/tZhd7Yi/xnoQjU3QGgPvgW3z
+	zLpIpGY2k9LXMkmm15NYKSmklDh2rh/b3NVZwDK38Ll7lHrvkC8KgJpteJdH8P64pnPmwngt7tT
+	DU1PuHviJW4Q9zd4yesf+6U4ap8fKD1GfuBC8F3vpRk=
+X-Google-Smtp-Source: AGHT+IEoW2SHIDDk1aLDFV+GZp9bKgEaP+RRL4SkeATZfvS4Scg3SkpbOr9RjR6zN8pzWGl4nlfKBtFrcL0t
+X-Received: by 2002:a05:6512:3f02:b0:545:e2e:8425 with SMTP id 2adb3069b0e04-5494c32f8dcmr4146730e87.39.1740945740250;
+        Sun, 02 Mar 2025 12:02:20 -0800 (PST)
+Received: from windev.fritz.box (pc19f8e2d.dip0.t-ipconnect.de. [193.159.142.45])
+        by smtp-relay.gmail.com with ESMTPS id 2adb3069b0e04-54961daf36csm53433e87.112.2025.03.02.12.02.19
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sun, 02 Mar 2025 12:02:20 -0800 (PST)
+X-Relaying-Domain: blueri.se
+Date: Sun, 2 Mar 2025 21:02:16 +0100
+From: Patrick Wildt <patrick@blueri.se>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH v5 1/2] dt-bindings: arm: rockchip: Add MNT Reform 2 (RCORE)
+Message-ID: <Z8S5SHqUqKYiT6Wd@windev.fritz.box>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250302_111002_705172_0EA1E8E7 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20250302_120223_423786_C212FB97 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,107 +100,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Document board compatible bindings for the MNT Reform 2 with it's RCORE
+SoM, which is based on Firefly's iCore-3588Q.
 
-Am Dienstag, 18. Februar 2025, 12:28:58 MEZ schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> VOP2 on rk3576:
-> Three video ports:
-> VP0 Max 4096x2160
-> VP1 Max 2560x1600
-> VP2 Max 1920x1080
-> 
-> 2 4K Cluster windows with AFBC/RFBC, line RGB and YUV
-> 4 Esmart windows with line RGB/YUV support:
-> Esmart0/1: 4K
-> Esmart2/3: 2k, or worked together as a single 4K plane at shared
-> line buffer mode.
-> 
-> Compared to the previous VOP, another difference is that each VP
-> has its own independent vsync interrupt number.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-> Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+Signed-off-by: Patrick Wildt <patrick@blueri.se>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+Changes for v5:
+- No changes
+Changes for v4:
+- Added acked-by
+Changes for v3:
+- Split DT as it's based on a Firefly iCore-3588Q SoM
+Changes for v2:
+- No changes
 
-some minor style things, but overall looks really good
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-
-> @@ -2665,6 +2721,32 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->  	if (ret)
->  		return ret;
->  
-> +	if (vop2->version >= VOP_VERSION_RK3576) {
-> +		struct drm_crtc *crtc;
-> +
-> +		drm_for_each_crtc(crtc, drm) {
-> +			struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +			int vp_irq;
-> +			const char *irq_name = devm_kasprintf(dev, GFP_KERNEL, "vp%d", vp->id);
-> +
-> +			if (!irq_name)
-> +				return -ENOMEM;
-> +
-> +			vp_irq = platform_get_irq_byname(pdev, irq_name);
-> +			if (vp_irq < 0) {
-> +				DRM_DEV_ERROR(dev, "cannot find irq for vop2 vp%d\n", vp->id);
-
-return dev_err_probe
-
-> +				return vp_irq;
-> +			}
-> +
-> +			ret = devm_request_irq(dev, vp_irq, rk3576_vp_isr, IRQF_SHARED, irq_name,
-> +					       vp);
-> +			if (ret) {
-> +				DRM_DEV_ERROR(dev, "request irq for vop2 vp%d failed\n", vp->id);
-
-return dev_err_probe
-
-> +				return ret;
-> +			}
-> +		}
-> +	}
-> +
->  	ret = vop2_find_rgb_encoder(vop2);
->  	if (ret >= 0) {
->  		vop2->rgb = rockchip_rgb_init(dev, &vop2->vps[ret].crtc,
-
-
-> +static void rk3576_vop2_setup_overlay(struct vop2_video_port *vp)
-> +{
-> +	struct vop2 *vop2 = vp->vop2;
-> +	struct drm_crtc *crtc = &vp->crtc;
-> +	struct drm_plane *plane;
-> +
-> +	vp->win_mask = 0;
-> +
-> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
-> +		struct vop2_win *win = to_vop2_win(plane);
-> +
-> +		win->delay = win->data->dly[VOP2_DLY_MODE_DEFAULT];
-> +
-
-nit: we probably don't need this empty line
-
-> +		vp->win_mask |= BIT(win->data->phys_id);
-> +
-> +		if (vop2_cluster_window(win))
-> +			vop2_setup_cluster_alpha(vop2, win);
-> +	}
-> +
-> +	if (!vp->win_mask)
-> +		return;
-> +
-> +	rk3576_vop2_setup_layer_mixer(vp);
-> +	vop2_setup_alpha(vp);
-> +	rk3576_vop2_setup_dly_for_windows(vp);
-> +}
-
-
-Heiko
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 522a6f0450ea..e21c5c8fc2a3 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -178,6 +178,13 @@ properties:
+           - const: engicam,px30-core
+           - const: rockchip,px30
+ 
++      - description: Firefly iCore-3588Q-based boards
++        items:
++          - enum:
++              - mntre,reform2-rcore
++          - const: firefly,icore-3588q
++          - const: rockchip,rk3588
++
+       - description: Firefly Core-3588J-based boards
+         items:
+           - enum:
+-- 
+2.48.1
 
 
 _______________________________________________
