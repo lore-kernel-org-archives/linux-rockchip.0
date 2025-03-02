@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96490C19F32
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 18:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC64C19F32
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 19:11:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I50kNq5r8T9eccRoyur2eksoEJlPZR6WQBmFEZrA2UQ=; b=VPm1kZ2AKJCWoA
-	S0qDIjCssWWEYe7h2mK2dzW9UNsJzYTi6Cl+T4PW6kGHATEiD8szgn0A2u4PIYXJKZnBrLs9fQU0V
-	7WPBFNAHyM2O8i+zoVGG2G1Vu6uI2O+cSdyi5IGeakYcNabsb3H30NaZp607c+i7j9vbfp10Mxd8I
-	GOhtEpRxeSPhX6V9fm7Lye85Pg6E3GC/Jmtm5UdNuMRTTYS+7w8ByuHOgTqBT6fnXAY8yeAYol9sJ
-	dMN3sBTKLE0dY0/F2yupWYpyl3GuDj9jIEBYIX4npUuQt8S4Mt0XQKNpiOrhGxKqGxKvlbg/3RGSd
-	s/LSVMNta43mNcXIbYTQ==;
+	List-Owner; bh=xAmUV2bLkZahRPm6DifUeHX0qs5biMrB0z6z78m8Xgw=; b=EtRmRa6KCzz71f
+	ikPPVsJGpz/he4/qwyGlgj+iAPtu92F2SRIylbzQmOJ/b4nbOm4UkSMglVmKax+CiEhUDF8y/zRmE
+	wV81NoCxEssZXcXcctJvJKPzgJbnkW++1ExpUfjuO4Sywa8ZCwJRmJEG5bZIoP66uIc7kmTlRkLHA
+	tyrdEbN33zbMqgliCuaHRsCt613EBUbTjSeUWRdiXLTnvAN5qqVdbrTC5OatkMs2mZFMA2kecPwXD
+	0W+3TlXvAvni0nCOzSsX3mPLPXqwhMRH/ogAhSPlp5am751xkr7tVPH8laem1yem2BxjLIDXW98FT
+	1XN9E+xyuZ/AylX8diHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tooXL-0000000GY1A-2qJ4;
-	Sun, 02 Mar 2025 18:59:39 +0000
+	id 1tooiy-0000000GYl2-3lmu;
+	Sun, 02 Mar 2025 19:11:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tooVl-0000000GXtA-0K9u;
-	Sun, 02 Mar 2025 18:58:02 +0000
+	id 1toohO-0000000GYUl-2lxT;
+	Sun, 02 Mar 2025 19:10:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pPjgLLKWy2wvQvaiR+uGJguXDw1skCmohUdLq/bT13M=; b=zgr8VpMs2oAvmtSCdLZNlyiimz
-	8LpNFXehoTksa2gEf3aQkohP09ro+0qaqjvYXaQu+KxZB+sIKlyUbvUikUssDkhX7/7AP7k3KfEaz
-	CAyKltObROv4gAMOa6xExAlm0l0aEKhoX+c9Pu1qTiFRRCfGJmEIJqtREfcq73tx7Ws1YbwXRGKdw
-	WnzTTKVSCtKDSdIL8G1CshPaA0/1AhvPCLPnbygN/m2VtmmRPHGF/nWchoU07/hqyZW/BJqwtS6iH
-	00V1WJLr3B0KvowzlMahZEFATeTzBlelY/WUcLfEdDewwy1pfGP6nsBKk3XlXNJTeRn5QvR3q8al7
-	Q/n2u9kw==;
+	bh=1uDnGle22h4BGQTP/aXxCDgxelViDKMg5h+i1dNf/tU=; b=vzRlOXqsyFZrCrhDIO02maxr2m
+	omB8tmfEYAsY04MiP87NnpI1TbiyyV8E1x7FLNVfzrIs2UYDSxfpr70QEEzywvjPSTkYLsreROz68
+	XLrzItSGERbXNB0qtnKy1nBVCzlBXMDZiBfjnZLT58tw05VyrCa+8BIYd9JXSTFFL456CI2L73fjq
+	Jjl5VbLCDLwxoApqRdX/I+Jtq+PT+qGhFNuqNhHYuy5znQM0HnGFPw9gihS7h6HJGdRX0O7YDhqyi
+	nfc2TBbQV7JDAIushfCoPTm+0M4oCpnA+01NMcF/KUYAtym3kGlLw0lXrtssdfm5tZExuCYRSRkXr
+	pBz1nfFg==;
 Received: from i53875b47.versanet.de ([83.135.91.71] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tooVb-0004sB-28; Sun, 02 Mar 2025 19:57:51 +0100
+	id 1toohF-0004vx-Im; Sun, 02 Mar 2025 20:09:53 +0100
 From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Andy Yan <andyshrk@163.com>
 Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
@@ -52,17 +52,16 @@ Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
  daniel@fooishbar.org, robh@kernel.org, sebastian.reichel@collabora.com,
  Andy Yan <andy.yan@rock-chips.com>,
  Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v15 07/13] drm/rockchip: vop2: Register the primary plane and
- overlay plane separately
-Date: Sun, 02 Mar 2025 19:57:50 +0100
-Message-ID: <2759797.BddDVKsqQX@diego>
-In-Reply-To: <20250218112744.34433-8-andyshrk@163.com>
+Subject: Re: [PATCH v15 13/13] drm/rockchip: vop2: Add support for rk3576
+Date: Sun, 02 Mar 2025 20:09:52 +0100
+Message-ID: <2764042.X9hSmTKtgW@diego>
+In-Reply-To: <20250218112901.34564-1-andyshrk@163.com>
 References: <20250218112744.34433-1-andyshrk@163.com>
- <20250218112744.34433-8-andyshrk@163.com>
+ <20250218112901.34564-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250302_105801_108216_A2F44B0E 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20250302_111002_705172_0EA1E8E7 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,42 +80,101 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Andy,
 
-Am Dienstag, 18. Februar 2025, 12:27:34 MEZ schrieb Andy Yan:
+Am Dienstag, 18. Februar 2025, 12:28:58 MEZ schrieb Andy Yan:
 > From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> In the upcoming VOP of rk3576, a Window cannot attach to all Video Ports,
-> so make sure all VP find it's suitable primary plane, then register the
-> remain windows as overlay plane will make code easier.
+> VOP2 on rk3576:
+> Three video ports:
+> VP0 Max 4096x2160
+> VP1 Max 2560x1600
+> VP2 Max 1920x1080
+> 
+> 2 4K Cluster windows with AFBC/RFBC, line RGB and YUV
+> 4 Esmart windows with line RGB/YUV support:
+> Esmart0/1: 4K
+> Esmart2/3: 2k, or worked together as a single 4K plane at shared
+> line buffer mode.
+> 
+> Compared to the previous VOP, another difference is that each VP
+> has its own independent vsync interrupt number.
 > 
 > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
 > Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
-> 
-> ---
 
-patches 7-9 look good to go, but ...
-
-this needs a rebase to adapt to
-"drm/rockchip: vop2: Consistently use dev_err_probe()" [0]
-
-[0] https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/b06d1ef3355571383cdb463cf0195b7a02efdfbf
+some minor style things, but overall looks really good
 
 
-> -		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
-> -			vp = find_vp_without_primary(vop2);
-> -			if (vp) {
-> +			if (vop2_is_mirror_win(win))
-> +				continue;
+> @@ -2665,6 +2721,32 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+>  	if (ret)
+>  		return ret;
+>  
+> +	if (vop2->version >= VOP_VERSION_RK3576) {
+> +		struct drm_crtc *crtc;
 > +
-> +			if (win->type == DRM_PLANE_TYPE_PRIMARY) {
->  				possible_crtcs = BIT(nvp);
->  				vp->primary_plane = win;
-> +				ret = vop2_plane_init(vop2, win, possible_crtcs);
-> +				if (ret) {
-> +					drm_err(vop2->drm, "failed to init primary plane %s: %d\n",
-> +						win->data->name, ret);
+> +		drm_for_each_crtc(crtc, drm) {
+> +			struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +			int vp_irq;
+> +			const char *irq_name = devm_kasprintf(dev, GFP_KERNEL, "vp%d", vp->id);
+> +
+> +			if (!irq_name)
+> +				return -ENOMEM;
+> +
+> +			vp_irq = platform_get_irq_byname(pdev, irq_name);
+> +			if (vp_irq < 0) {
+> +				DRM_DEV_ERROR(dev, "cannot find irq for vop2 vp%d\n", vp->id);
 
-should also use dev_err_probe
+return dev_err_probe
+
+> +				return vp_irq;
+> +			}
+> +
+> +			ret = devm_request_irq(dev, vp_irq, rk3576_vp_isr, IRQF_SHARED, irq_name,
+> +					       vp);
+> +			if (ret) {
+> +				DRM_DEV_ERROR(dev, "request irq for vop2 vp%d failed\n", vp->id);
+
+return dev_err_probe
+
+> +				return ret;
+> +			}
+> +		}
+> +	}
+> +
+>  	ret = vop2_find_rgb_encoder(vop2);
+>  	if (ret >= 0) {
+>  		vop2->rgb = rockchip_rgb_init(dev, &vop2->vps[ret].crtc,
+
+
+> +static void rk3576_vop2_setup_overlay(struct vop2_video_port *vp)
+> +{
+> +	struct vop2 *vop2 = vp->vop2;
+> +	struct drm_crtc *crtc = &vp->crtc;
+> +	struct drm_plane *plane;
+> +
+> +	vp->win_mask = 0;
+> +
+> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
+> +		struct vop2_win *win = to_vop2_win(plane);
+> +
+> +		win->delay = win->data->dly[VOP2_DLY_MODE_DEFAULT];
+> +
+
+nit: we probably don't need this empty line
+
+> +		vp->win_mask |= BIT(win->data->phys_id);
+> +
+> +		if (vop2_cluster_window(win))
+> +			vop2_setup_cluster_alpha(vop2, win);
+> +	}
+> +
+> +	if (!vp->win_mask)
+> +		return;
+> +
+> +	rk3576_vop2_setup_layer_mixer(vp);
+> +	vop2_setup_alpha(vp);
+> +	rk3576_vop2_setup_dly_for_windows(vp);
+> +}
 
 
 Heiko
