@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B6FC19F32
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 18:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9237AC19F32
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 18:51:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=66Gp6DS1wr1uNlP5+E0XUXrl/U28CYXHFYaG2MKgMDs=; b=E+ky91KRyMBbFT
-	d8jO3hhiWovD981PkzAtka2w4R2hoFXIa8YisrTR0Wk7T3zbb3yigOqfpu60JKm0045iV03mL63H0
-	0+Zq/ofxZUALJvVNErF4J3ReW+GNZB3t04/d0X8KIlfEsr+YnlaHWuqR3GoPtFRBY1b8pc7BV585r
-	52J2VnkWkgCPWuodOfxwFLOtpzFw6acgfkjCVyXu7VwJbTyYDOxdbLXB9jzCIn9xmDFUEqPTCBqmp
-	JAmiYn6koPWfxxwFIy11G5GPHtSNRWl1R5pea4tK0KlUoD+k9VHNNT7LzQ1pK0VpjsODpfzUnFfuX
-	0BBC3imhn2cDwCe/dreA==;
+	List-Owner; bh=jS1le25eH+tIIHTc9jcBUo3JGYpg8OQz9KJQUAtHa4c=; b=a9s1O51SOXDyEj
+	IKCh/Zn/wuQd+ld8dry3R94sTLrfWm3ahCrcolF658A/3Zhwna2TyulIQrN/vnojIMudCkJ8baZ7U
+	RVoGRJ7+2WhxqFfdNf4+SH9LBOy8rlhPTNsNz5xK286b9p7or/6QGLee7Wb+grsCxvKaMCF8w0q73
+	V6hoARn7KOWuAqysKjLyqrd5+drkQyuMojbxUwb5Nnh9P6W83YX+ul75++xFsrRGM7IdFZW2lJvIW
+	2YH0sFFO++u1B4qHMXENki+4/xMRi0GqDQ79x/62vIF2Y7i8SJv1gbkC5LUkMqEkMvha4saEVUUiw
+	c1IseqNTnR6e3vy6gZsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tooBI-0000000GWL1-2yEO;
-	Sun, 02 Mar 2025 18:36:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tooPT-0000000GXCr-0Yeo;
+	Sun, 02 Mar 2025 18:51:31 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1too9k-0000000GWBD-0A1a;
-	Sun, 02 Mar 2025 18:35:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=cZ/DoE1yc97NpsQpvLoLxdu9zmvqzr+lgS2ZIi9J6sU=; b=Jsm3b1oDc70U9C/3D7TLrx3JRr
-	jCsY8BfacHx/Z1nUEUfvhKDiTCSutyqnPtxicC4BQnAiQtxIJoVWZ/IY5e0ROIdPweu0njw3HNoys
-	Vh9s0LtE7LPkTGiAQMDCuHgHVkAJ219RDxkpZxqKBgwbxOtd91jIvG3Ml0DLg/IM/OnKZ7MxMSNUv
-	gXLgcZJi6DHjySSevZLkkwmLZZf5RHFTOpYtM6Wv0fsZBmgdKX+Vce/J9WdgI9GvwWumGStIqXVqm
-	3sLNR8ToSvENHcCtY7dIf01oJgsfn8JUiN/k8xJFW951ulY03VWr6yLPqBcdTT8qsSXF9dmy1Jcii
-	vbDtfIjw==;
-Received: from i53875b47.versanet.de ([83.135.91.71] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1too9a-0004l5-8Z; Sun, 02 Mar 2025 19:35:06 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	hjc@rock-chips.com,
-	krzk+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
+	id 1tooMM-0000000GWuI-3kvZ;
+	Sun, 02 Mar 2025 18:48:20 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1740941293;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5gQcmtYRJ6ZBHGuG3ItZvKIEimpluYI6lauZf8aMldM=;
+	b=HUYGW807T4tqTNe8WFbayXXrWnHqGZwm0xvJeJJ97W21KmzfpUIL8q56xt8ETuvwDXfpHa
+	HzqUDkM0TbRXfnE+WJWMrmNg/fpJT/zZxXWju8a/C7plyQhovZzAoW9mHKBqr++sQb0Lj2
+	Ig1XHeR9kwmQHIGvTuWdIVG6sCHUnzi+OvRMq7pY6BULOS3s9cHBoRVXbpRqbYMi4FJyEF
+	2tnrSlBwpFwMSevXUTzZuL+1khukgSp37yturt7o0SJSn6XtlKPd7vOTkCmUfYNf1bq0Xx
+	9FGJIYuG1C7AB8q2GkLziYQGRYnmF41ePW9KxadYWXM+83TgRW35VdYVKkhVrA==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	derek.foreman@collabora.com,
-	detlev.casanova@collabora.com,
-	daniel@fooishbar.org,
+	devicetree@vger.kernel.org,
 	robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: (subset) [PATCH v15 00/13] VOP Support for rk3576
-Date: Sun,  2 Mar 2025 19:34:56 +0100
-Message-ID: <174094048722.1377102.8343744540534603918.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250218112744.34433-1-andyshrk@163.com>
-References: <20250218112744.34433-1-andyshrk@163.com>
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	didi.debian@cknow.org,
+	chris@z9.de,
+	stable@vger.kernel.org
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: Add avdd HDMI supplies to RockPro64 board dtsi
+Date: Sun,  2 Mar 2025 19:48:03 +0100
+Message-Id: <df3d7e8fe74ed5e727e085b18c395260537bb5ac.1740941097.git.dsimic@manjaro.org>
+In-Reply-To: <cover.1740941097.git.dsimic@manjaro.org>
+References: <cover.1740941097.git.dsimic@manjaro.org>
 MIME-Version: 1.0
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250302_103516_098671_CC478BC6 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20250302_104819_083582_690D19CD 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,37 +77,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add missing "avdd-0v9-supply" and "avdd-1v8-supply" properties to the "hdmi"
+node in the Pine64 RockPro64 board dtsi file.  To achieve this, also add the
+associated "vcca_0v9" regulator that produces the 0.9 V supply, [1][2] which
+hasn't been defined previously in the board dtsi file.
 
-On Tue, 18 Feb 2025 19:27:27 +0800, Andy Yan wrote:
-> PATCH 1~9 are preparations for rk3576 support
-> PATCH 10~13 are real support for rk376
-> 
-> I test it with a 1080P/4K HDMI output with modetest and weston
-> output.
-> 
-> If there are some one want to have a try, I have a tree based on
-> Linux 6.14-rc1 here[0]
-> 
-> [...]
+This also eliminates the following warnings from the kernel log:
 
-Applied, thanks!
+  dwhdmi-rockchip ff940000.hdmi: supply avdd-0v9 not found, using dummy regulator
+  dwhdmi-rockchip ff940000.hdmi: supply avdd-1v8 not found, using dummy regulator
 
-[01/13] drm/rockchip: vop2: use devm_regmap_field_alloc for cluster-regs
-        commit: ff0b6c031ed3ed31024618340c795523a86e6688
-[02/13] drm/rockchip: vop2: Remove AFBC from TRANSFORM_OFFSET register macro
-        commit: 838a871a4d51b59fe56ac0422b97443203bfa55c
-[03/13] drm/rockchip: vop2: Add platform specific callback
-        commit: 328e6885996ca2c6eb8b07d3c9bb1439fdcb088f
-[04/13] drm/rockchip: vop2: Merge vop2_cluster/esmart_init function
-        commit: 145c9b36892a07bf5e2525b4938e1a6cc9b41b7a
-[05/13] drm/rockchip: vop2: Support for different layer select configuration between VPs
-        commit: 5439c4f3cb0ec11a3f3cb70be2b019770f6d183c
-[06/13] drm/rockchip: vop2: Introduce vop hardware version
-        commit: 301618ed1d8ab7cfaec39b107eded9f263da2299
+There are no functional changes to the way board works with these additions,
+because the "vcc1v8_dvp" and "vcca_0v9" regulators are always enabled, [1][2]
+but these additions improve the accuracy of hardware description.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+These changes apply to the both supported hardware revisions of the Pine64
+RockPro64, i.e. to the production-run revisions 2.0 and 2.1. [1][2]
+
+[1] https://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+[2] https://files.pine64.org/doc/rockpro64/rockpro64_v20-SCH.pdf
+
+Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Rockpro64")
+Cc: stable@vger.kernel.org
+Suggested-by: Diederik de Haas <didi.debian@cknow.org>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+index 69a9d6170649..47dc198706c8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+@@ -227,6 +227,16 @@ vcc5v0_usb: regulator-vcc5v0-usb {
+ 		vin-supply = <&vcc12v_dcin>;
+ 	};
+ 
++	vcca_0v9: regulator-vcca-0v9 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcca_0v9";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vdd_log: regulator-vdd-log {
+ 		compatible = "pwm-regulator";
+ 		pwms = <&pwm2 0 25000 1>;
+@@ -312,6 +322,8 @@ &gmac {
+ };
+ 
+ &hdmi {
++	avdd-0v9-supply = <&vcca_0v9>;
++	avdd-1v8-supply = <&vcc1v8_dvp>;
+ 	ddc-i2c-bus = <&i2c3>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&hdmi_cec>;
 
 _______________________________________________
 Linux-rockchip mailing list
