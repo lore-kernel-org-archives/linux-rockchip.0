@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C02C282D1
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 12:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A5AC282D1
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Mar 2025 15:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G6y4vs0YUWlDQE+YJznIrjL3T+ghSEayO8+NubVm9GA=; b=U/+ctJv6dfemAC
-	tc2HpAPE27eBdPmX25IOJ38BTXgkl4yu15H2CpgaabPdlLTSLwniZgzdmaENH2juksLG38vZXmWCN
-	rkMg4Ez4Aegz1wxlK8OOG+y7Oojq1iveqf0Vvq+noD7gV3EWkYr+KcdpMumOrleyaZ5C3p6AHDoJf
-	P0mAeQRbW4/aijNd61IAQMHiKbQ/qi8JNiORMpq/17Inh62QUlJFNXvDmkggcUsT7qLWUbppsM2fw
-	OPnxAo5KElalRyZaWYYX6uh45ZPraijcsubQSMDBUToiUwsrlKjGowffh6DIp8deWi2+kJSqlydh/
-	0xhpEfrXr1MY6xTj+8NQ==;
+	List-Owner; bh=ueiDLfwCR9osN0L7ttTXTgqqXgXTpyEqz53POcwfSgQ=; b=16IkgT5SSr2Q6U
+	H/MKdk5eTd2AVzRK5mfWr17rhOpWjSuMTJbSVsIwc2+0m2Usvt86m1rm3uvPxc6NztFXSOLhYYUlr
+	n7DRQ8znwP3Q02Bi7DTW2XKrn9q0pz+MYS8BCwqtt3+WiGuH+gSU/a3Ay9w8Q8knDsjsKQmmjALl0
+	SyHHgC3UaTQ2NCDoyzwQxEwjx5S+vTgLaecVK0Gl3y6yQex875yA19odC50x0bpw7I6Y8kSDW52zk
+	UTGZ2ym5MPbaGJ2wTEhN8leAqfQTWfaZa7YlmEt0ZwD0KhhURQBJ+tmku64oH3teMnZ38AyLJ0OKk
+	/fIrFMf5yPyywGpEDbMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toi2u-0000000FxTj-2fZK;
-	Sun, 02 Mar 2025 12:03:48 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1toi1K-0000000FxJS-3YR5;
-	Sun, 02 Mar 2025 12:02:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=CePzbd+CX3HgbOK+991LEAme74qqSiFJ32u1Wyf45pw=; b=X
-	dBo32ZBPK0ZMGVgL01iYlesmZrpK5GvQvFtqoIVqabRP7rPsT+xIqDudzsCXWcJn
-	Fs2upZjEpmKKju+HJo6H7pnTd0+AHBYZo4mTwZwngzru61PqLX4/214PK88wJmPO
-	06B5wCs8pkWEuDNy1xlh5z9XlmI1EoTG9HrpeYzi0Q=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-100 (Coremail) ; Sun, 2 Mar 2025 20:01:38 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Sun, 2 Mar 2025 20:01:38 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com, krzk+dt@kernel.org, devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, derek.foreman@collabora.com,
-	detlev.casanova@collabora.com, daniel@fooishbar.org, robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:[PATCH v15 00/13] VOP Support for rk3576
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250218112744.34433-1-andyshrk@163.com>
-References: <20250218112744.34433-1-andyshrk@163.com>
-X-NTES-SC: AL_Qu2fAvWauUAi7iaZY+kfmkcVgOw9UcO5v/Qk3oZXOJF8jCrp+T4yXHBTF1zd3fCDBzi2nQiHVRZJ0dhgcY1zcacMtdZUeGnwJHgmS/Glbgh3rg==
+	id 1tolU5-0000000GFVf-1YsJ;
+	Sun, 02 Mar 2025 15:44:05 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tolSU-0000000GFGc-2VmP;
+	Sun, 02 Mar 2025 15:42:28 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 93CC444416;
+	Sun,  2 Mar 2025 15:42:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1740930142;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pdu+llpCHIijzzSuA4AKVEUxnoDKFr7+qiRqelIM65s=;
+	b=hYNsEq4qi6NcLtZ1QvMXr9woIHKhmH+712Ae82G5dQv7greIF/ulZUWLGUmdSaW1I5afJO
+	X8H1+Jz0OthWLEBLhrMxAoRfVKbg9BV4Ow+0C8plLBsWJiqqEtflHK9vsE8/5tEFuon9Xd
+	WXB08a6I07LnV+G+QZ3LrqYTzXvZckeP4xH+EjJWNC69P2nt50zH+vwkLzHqGa9vMXKayl
+	dTRAcBk9RPhHLfApkOHjlRT8LY2wclKrXbfQf+Lgxcg4g+6mD6YRBhkxslBdSpAOPx8tWU
+	kIEM8X3I8u5UpI29sphi4BsVAvZTlEjImaACwS3fFE+l6xGR8WoNMU6KlOEUPQ==
+From: Olivier Benjamin <olivier.benjamin@bootlin.com>
+Date: Sun, 02 Mar 2025 16:41:02 +0100
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: describe I2c Bus 1 and IMX258
+ world camera on PinePhone Pro
 MIME-Version: 1.0
-Message-ID: <5302ddd1.2591.19556bbbb3d.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZCgvCgCnbV+iSMRnWqQZAA--.15048W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g0EXmfER7QEwwACsQ
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Message-Id: <20250302-camera-v2-1-312b44b4a89c@bootlin.com>
+References: <20250302-camera-v2-0-312b44b4a89c@bootlin.com>
+In-Reply-To: <20250302-camera-v2-0-312b44b4a89c@bootlin.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Olivier Benjamin <olivier.benjamin@bootlin.com>, oren@taumoda.com, 
+ Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
+X-Mailer: b4 0.14.2
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdelieeitdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpefqlhhivhhivghruceuvghnjhgrmhhinhcuoeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeeugeeivddvveevvedvudefjeevffdtuefgffekieelheehfeeihefgleefieelnecukfhppedvrgdtudemvgefgeemvggtfeekmedvgegvtdemfhehtggvmehffeegvdemieehkeejmehfieehieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtudemvgefgeemvggtfeekmedvgegvtdemfhehtggvmehffeegvdemieehkeejmehfieehiedphhgvlhhopegludelvddrudeikedruddrvddtngdpmhgrihhlfhhrohhmpeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudefpdhrtghpthhtoheplhhinhhugidqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheptghonhhorhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmvghgihesgihffhdrt
+ giipdhrtghpthhtohepughsihhmihgtsehmrghnjhgrrhhordhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepohhrvghnsehtrghumhhouggrrdgtohhmpdhrtghpthhtohepuggvvhhitggvthhrvggvsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthhhohhmrghsrdhpvghtrgiiiihonhhisegsohhothhlihhnrdgtohhm
+X-GND-Sasl: olivier.benjamin@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250302_040211_193797_2A82B611 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20250302_074227_190829_1A626ABB 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,105 +75,210 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIEhlaWtv77yMCiAgICAgQXQgeW91ciBlYXJsaWVzdCBjb252ZW5pZW5jZSwgY291bGQg
-eW91IGtpbmRseSBoYXZlIGEgbG9vayB3aGV0aGVyIHRoaXMgcGF0Y2ggc2VyaWVzIGlzIGN1cnJl
-bnRseSBlbGlnaWJsZSBmb3IgbWVyZ2UgPyAKICAgIEkgc3RpbGwgaG9wZSBpdCBjYW4gbGFuZCBM
-aW51eCA2LjE1IG1lcmdlIHdpbmRvdy4gUGxlYXNlIGxldCBtZSBrbm93IGlmIGkgbmVlZCBkbyBz
-b21lIGZpeCBvciByZWJhc2UiCiAgCkF0IDIwMjUtMDItMTggMTk6Mjc6MjcsICJBbmR5IFlhbiIg
-PGFuZHlzaHJrQDE2My5jb20+IHdyb3RlOgo+RnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2st
-Y2hpcHMuY29tPgo+Cj4KPlBBVENIIDF+OSBhcmUgcHJlcGFyYXRpb25zIGZvciByazM1NzYgc3Vw
-cG9ydAo+UEFUQ0ggMTB+MTMgYXJlIHJlYWwgc3VwcG9ydCBmb3IgcmszNzYKPgo+SSB0ZXN0IGl0
-IHdpdGggYSAxMDgwUC80SyBIRE1JIG91dHB1dCB3aXRoIG1vZGV0ZXN0IGFuZCB3ZXN0b24KPm91
-dHB1dC4KPgo+SWYgdGhlcmUgYXJlIHNvbWUgb25lIHdhbnQgdG8gaGF2ZSBhIHRyeSwgSSBoYXZl
-IGEgdHJlZSBiYXNlZCBvbgo+TGludXggNi4xNC1yYzEgaGVyZVswXQo+Cj5bMF1odHRwczovL2dp
-dGh1Yi5jb20vYW5keXNocmsvbGludXgvdHJlZS9yazM1NzYtdm9wMi11cHN0cmVhbS12MTQKPgo+
-Cj5DaGFuZ2VzIGluIHYxNToKPi0gUmVtb3ZlIEFGQkMvQUZCQ0QgcHJlZml4IG9mIFRSQU5TRk9S
-TV9PRkZTRVQgcmVnaXN0ZXIKPi0gUmVtb3ZlIHJlZHVuZGFudCBibGFuayBsaW5lIGJlZm9yZSBm
-dW5jdGlvbiB2b3AyX2xvY2sKPi0gRml4IG5yX3JlZ3MgYXJndW1lbnRzIGZvciBzbWFydCB3aW5k
-b3dzIHJlZ2lzdGVyLgo+LSBMaW5rIHRvIHYxNDogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGlu
-dXgtcm9ja2NoaXAvMjAyNTAyMTIwOTM1MzAuNTI5NjEtMS1hbmR5c2hya0AxNjMuY29tLwo+Cj5D
-aGFuZ2VzIGluIHYxNDoKPi0gUmViYXNlIG9uIGRybS1taXNjLW5leHQKPi0gU2V0IG1heEl0ZW1z
-IGNvbnN0cmFpbnQgb2YgY2xvY2tzIGZvciByazM1ODggdG8gOSBhcyBhIHJlY2VudGx5Cj4gIG1l
-cmdlZCBwYXRjaCBhZGRlZCB0d28gb3B0aW9uYWwgY2xvY2tzWzBdOgo+ICBbMF1odHRwczovL3Bh
-dGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvbXNnaWQvMjAyNTAyMDQtdm9wMi1oZG1pMC1k
-aXNwLW1vZGVzLXYzLTEtZDcxYzZhMTk2ZTU4QGNvbGxhYm9yYS5jb20KPgo+Q2hhbmdlcyBpbiB2
-MTM6Cj4tIEFkZCBtYXhJdGVtcyBjb25zdHJhaW50IGZvciBjbG9ja3MKPi0gUmVtb3ZlIGNvbnN0
-cmFpbnQgZm9yIGludGVycnVwdHMgaW4gYWxsT2YgYmxvY2ssIGFzIHRoZSBjdXJyZW50Cj4gIG1h
-eEl0ZW1zIGlzIGFscmVhZHkgMS4KPi0gdHlwbyBmaXgKPi0gRXhwbGFpbiB0aGUgZnVuY3Rpb24g
-b2YgdGhpcyBwcm9wZXJ0eS4KPi0gVXNlIG1heEl0ZW1zIGNvbnN0cmFpbnQgZm9yIGNsb2NrcyBp
-biBhbGxPZiBibG9jawo+Cj5DaGFuZ2VzIGluIHYxMjoKPi0gT25seSBjaGFuZ2UgdGhlIGRlc2Ny
-aXB0aW9uIG1ldGhvZCBmb3IgZXhpc3RpbmcgU29DLgo+LSBTcGxpdCBmcm9tIHBhdGNoIDEwLzEz
-Cj4tIFNwbGl0IGZyb20gcGF0Y2ggMTAvMTMKPgo+Q2hhbmdlcyBpbiB2MTE6Cj4tIFJlbW92ZSBy
-ZWR1bmRhbnQgbWluL21heEl0ZW1zIGNvbnN0cmFpbnQKPi0gUmVtb3ZlIHJlZHVuZGFudCBtaW4v
-bWF4SXRlbXMgY29uc3RyYWludAo+Cj5DaGFuZ2VzIGluIHYxMDoKPi0gTW92ZSBpbnRlcnJ1cHQt
-bmFtZXMgYmFjayB0byB0b3AgbGV2ZWwKPi0gQWRkIGNvbnN0cmFpbnQgb2YgaW50ZXJydXB0cyBm
-b3IgYWxsIHBsYXRmb3JtCj4tIEFkZCBjb25zdHJhaW50IGZvciBhbGwgZ3JmIHBoYW5kbGVzCj4t
-IFJlb3JkZXIgc29tZSBwcm9wZXJ0aWVzCj4tIE1vdmUgaW50ZXJydXB0LW5hbWVzIGJhY2sgdG8g
-dG9wIGxldmVsCj4tIEFkZCBjb25zdHJhaW50IG9mIGludGVycnVwdHMgZm9yIGFsbCBwbGF0Zm9y
-bQo+LSBBZGQgY29uc3RyYWludCBmb3IgYWxsIGdyZiBwaGFuZGxlcwo+LSBSZW9yZGVyIHNvbWUg
-cHJvcGVydGllcwo+Cj5DaGFuZ2VzIGluIHY5Ogo+LSBEcm9wICd2b3AtJyBwcmVmaXggb2YgaW50
-ZXJydXB0LW5hbWVzLgo+LSBBZGQgYmxhbmsgbGluZSBiZXR3ZWVuIERUIHByb3BlcnRpZXMKPi0g
-UmVtb3ZlIGxpc3QgaW50ZXJydXB0LW5hbWVzIGluIHRvcCBsZXZlbAo+LSBEcm9wICd2b3AtJyBw
-cmVmaXggb2YgaW50ZXJydXB0LW5hbWVzLgo+LSBBZGQgYmxhbmsgbGluZSBiZXR3ZWVuIERUIHBy
-b3BlcnRpZXMKPi0gUmVtb3ZlIGxpc3QgaW50ZXJydXB0LW5hbWVzIGluIHRvcCBsZXZlbAo+LSBE
-cm9wICd2b3AtJyBwcmVmaXggb2YgaW50ZXJydXB0LW5hbWVzLgo+Cj5DaGFuZ2VzIGluIHY4Ogo+
-LSBSZW1vdmUgcmVkdW5kYW50IGJsYW5rIGxpbmUgYmVmb3JlIGRybV9idXNfZm9ybWF0X2VudW1f
-bGlzdAo+LSBBZGQgYSBibGFuayBsaW5lIGJlZm9yZSBEUk1fRU5VTV9OQU1FX0ZOCj4tIEZpeCBk
-dF9iaW5kaW5nX2NoZWNrIGVycm9ycwo+LSBvcmRlcmVkIGJ5IHNvYyBuYW1lCj4tIExpbmsgdG8g
-dGhlIHByZXZpb3VzIHZlcnNpb246Cj4gIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJv
-Y2tjaGlwLzZwbjNxanhvdGR0cHp1Y3B1bDI0eXJvN3BwZGRlend1aXpuZW92cXZtZ2R3eXYyajdw
-QHp0ZzRtcXlpcW1qZi9ULyN1Cj4tIEZpeCBkdF9iaW5kaW5nX2NoZWNrIGVycm9ycwo+LSBvcmRl
-cmVkIGJ5IHNvYyBuYW1lCj4tIExpbmsgdG8gdGhlIHByZXZpb3VzIHZlcnNpb246Cj4gIGh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzZwbjNxanhvdGR0cHp1Y3B1bDI0eXJv
-N3BwZGRlend1aXpuZW92cXZtZ2R3eXYyajdwQHp0ZzRtcXlpcW1qZi9ULyN1Cj4KPkNoYW5nZXMg
-aW4gdjc6Cj4tIEZpeCByazM1ODggZHArZHNpIG1heGNsayB2ZXJpZmljYXRpb24KPgo+Q2hhbmdl
-cyBpbiB2NjoKPi0gQWRkIGEgYmxhbmsgbGluZSBhZnRlciBoYXJkd2FyZSB2ZXJzaW9uIGNoZWNr
-IGNvZGUKPi0gIE1vcmUgc3BlY2lmaWMgZXhwbGFuYXRpb24gYWJvdXQgdGhlIEFYSV9CVVNfSUQg
-cmVnaXN0ZXIgYml0IG9mCj4gICBjbHVzdGVyIHdpbmRvdy4KPgo+Q2hhbmdlcyBpbiB2NToKPi0g
-QWRkIGF4aSBpZCBjb25maWd1cmF0aW9uCj4tIFJlbW92ZSB0aGUgbm9uLWV4aXN0ZW50IENCQ1Ig
-c2NhbGUgcmVnaXN0ZXIuCj4KPkNoYW5nZXMgaW4gdjQ6Cj4tIFR5cG8gZml4OiBzZWxldC0+c2Vs
-ZWN0Cj4tIGRlc2NyaWJlIGNvbnN0cmFpbnQgU09DIGJ5IFNPQywgYXMgaW50ZXJydXB0cyBvZiBy
-azM1NzYgaXMgdmVyeQo+ICBkaWZmZXJlbnQgZnJvbSBvdGhlcnMKPi0gRHJvcCBLcnp5c3p0b2Yn
-cyBSZXZpZXdlZC1ieSwgYXMgdGhpcyB2ZXJzaW9uIGNoYW5nZWQgYSBsb3QuCj4tIGRlc2NyaWJl
-IGNvbnN0cmFpbnQgU09DIGJ5IFNPQywgYXMgaW50ZXJydXB0cyBvZiByazM1NzYgaXMgdmVyeQo+
-ICBkaWZmZXJlbnQgZnJvbSBvdGhlcnMKPi0gRHJvcCBLcnp5c3p0b2YncyBSZXZpZXdlZC1ieSwg
-YXMgdGhpcyB2ZXJzaW9uIGNoYW5nZWQgYSBsb3QuCj4KPkNoYW5nZXMgaW4gdjM6Cj4tIEFkZCBj
-b21tZW50cyBmb3Igd2h5IHdlIHNob3VsZCB0cmVhdCByazM1NjYgd2l0aCBzcGVjaWFsIGNhcmUu
-Cj4tIEFkZCBoYXJkd2FyZSB2ZXJzaW9uIGNoZWNrCj4tIEFkZCBjb21tZW50cyBmb3Igd2h5IHdl
-IHNob3VsZCB0cmVhdCByazM1NjYgd2l0aCBzcGVjaWFsIGNhcmUuCj4tIG9yZGVyZWQgYnkgc29j
-IG5hbWUKPi0gQWRkIGRlc2NyaXB0aW9uIGZvciBuZXdseSBhZGRlZCBpbnRlcnJ1cHQKPi0gb3Jk
-ZXJlZCBieSBzb2MgbmFtZQo+LSBBZGQgZGVzY3JpcHRpb24gZm9yIG5ld2x5IGFkZGVkIGludGVy
-cnVwdAo+LSBTaGFyZSB0aGUgYWxwaGEgc2V0dXAgZnVuY3Rpb24gd2l0aCByazM1NjgKPi0gcmVj
-b2RlciB0aGUgY29kZSBibG9jayBieSBzb2MKPgo+Q2hhbmdlcyBpbiB2MjoKPi0gQWRkIHBsYXRm
-b3JtIHNwZWNpZmljIGNhbGxiYWNrCj4tIEludHJvZHVjZSB2b3AgaGFyZHdhcmUgdmVyc2lvbgo+
-LSBBZGQgZHQgYmluZGluZ3MKPi0gQWRkIGR0IGJpbmRpbmdzCj4tIEFkZCBwbGF0Zm9ybSBzcGVj
-aWZpYyBjYWxsYmFjawo+Cj5BbmR5IFlhbiAoMTIpOgo+ICBkcm0vcm9ja2NoaXA6IHZvcDI6IFJl
-bW92ZSBBRkJDIGZyb20gVFJBTlNGT1JNX09GRlNFVCByZWdpc3RlciBtYWNybwo+ICBkcm0vcm9j
-a2NoaXA6IHZvcDI6IEFkZCBwbGF0Zm9ybSBzcGVjaWZpYyBjYWxsYmFjawo+ICBkcm0vcm9ja2No
-aXA6IHZvcDI6IE1lcmdlIHZvcDJfY2x1c3Rlci9lc21hcnRfaW5pdCBmdW5jdGlvbgo+ICBkcm0v
-cm9ja2NoaXA6IHZvcDI6IFN1cHBvcnQgZm9yIGRpZmZlcmVudCBsYXllciBzZWxlY3QgY29uZmln
-dXJhdGlvbgo+ICAgIGJldHdlZW4gVlBzCj4gIGRybS9yb2NrY2hpcDogdm9wMjogSW50cm9kdWNl
-IHZvcCBoYXJkd2FyZSB2ZXJzaW9uCj4gIGRybS9yb2NrY2hpcDogdm9wMjogUmVnaXN0ZXIgdGhl
-IHByaW1hcnkgcGxhbmUgYW5kIG92ZXJsYXkgcGxhbmUKPiAgICBzZXBhcmF0ZWx5Cj4gIGRybS9y
-b2NrY2hpcDogdm9wMjogU2V0IHBsYW5lIHBvc3NpYmxlIGNydGNzIGJ5IHBvc3NpYmxlIHZwIG1h
-c2sKPiAgZHJtL3JvY2tjaGlwOiB2b3AyOiBBZGQgdXYgc3dhcCBmb3IgY2x1c3RlciB3aW5kb3cK
-PiAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IHZvcDI6IGRlc2NyaWJlIGNvbnN0cmFpbnQgU29DIGJ5
-IFNvQwo+ICBkdC1iaW5kaW5nczogZGlzcGxheTogdm9wMjogQWRkIG1pc3Npbmcgcm9ja2NoaXAs
-Z3JmIHByb3BlcnR5IGZvcgo+ICAgIHJrMzU2Ni84Cj4gIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiB2
-b3AyOiBBZGQgcmszNTc2IHN1cHBvcnQKPiAgZHJtL3JvY2tjaGlwOiB2b3AyOiBBZGQgc3VwcG9y
-dCBmb3IgcmszNTc2Cj4KPkhlaWtvIFN0dWVibmVyICgxKToKPiAgZHJtL3JvY2tjaGlwOiB2b3Ay
-OiB1c2UgZGV2bV9yZWdtYXBfZmllbGRfYWxsb2MgZm9yIGNsdXN0ZXItcmVncwo+Cj4gLi4uL2Rp
-c3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wMi55YW1sICAgICAgIHwgICA5OSArLQo+IGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jICB8IDE0NzIgKysrLS0tLS0t
-LS0tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuaCAgfCAg
-Mjc3ICsrLQo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3AyX3JlZy5jICB8
-IDE3OTggKysrKysrKysrKysrKysrKy0KPiA0IGZpbGVzIGNoYW5nZWQsIDIzNzcgaW5zZXJ0aW9u
-cygrKSwgMTI2OSBkZWxldGlvbnMoLSkKPgo+LS0gCj4yLjM0LjEKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Add the description of the rear/world camera (IMX258) on the PinePhone Pro
+to the device dts file.
+It receives commands on the I2C Bus 1 at address 0x1a and transmits data
+over CSI-MIPI.
+
+The I2C address for IMX258 can be found in the IMX258-0AQH5 Software
+Reference Manual, page 24, section 2.3.1: 0b0011010 = 0x1a.
+Section 3 indicates the module has 4 pairs of data lines. While 4-lane
+mode is nominal, 2-lane mode should also be supported.
+
+The pin muxing info was extracted from the PinePhone Pro schematic v1.0
+as well as the RK3399 datasheet revision 1.8.
+
+Table 2-3 in section 2.8 of the RK3399 datasheet contains the mapping
+of IO functions for the SoC pins. Page 52 shows GPIO1_A0, page 54 shows
+GPIO2_D4.
+
+For I2C power, the PinePhone Pro schematic page 11 quadrants A4 and A5:
+RK3399_J.AA8 and RK3399_J.Y8 get power from vcaa1v8_codec, so turn it on
+
+The IMX258 also uses the following regulators, expected by its driver:
+ - vana (2.8V analog), called AVDD2V8_DVP on P.18 q.C1 and derived from
+   VCC1V8_S3 on P.13 q.B2
+ - vdig (1.2V digital core), called DVDD_DVP on P.18 q.C1 and shown on
+   P.18 q.D3 to be equivalent to VCC1V2_DVP derived from VCC3V3_SYS on
+   P.13 q.B3. Note that this regulator's voltage is inconsistently
+   labeled either 1.2V or 1.5V
+
+RK3399_J.AG1 is GPIO4_A1/I2C1_SDA, RK3399_J.Y6 is GPIO4_A2/I2C1_SCL
+This is the default pinctrl "i2c1_xfer" for i2c1 from rk3399-base.
+
+For the reset (RESET) signal:
+page 11 quadrant D2             | p.18 q.C3-4 | p.18 q.C2
+RK3399_E.R25 -> GPIO1_A0 -> Camera_RST -> MIPI_RST0 -> IMX258.12
+
+For the powerdown (PWDN) signal:
+page 11 quadrants B4-5          | p.18 q.C2
+RK3399_G.AF8 -> GPIO2_D4 -> DVP_PDN1_H -> IMX258.14
+
+Helped-by: Dragan Simic <dsimic@manjaro.org>
+Co-developed-by: Ondrej Jirman <megi@xff.cz>
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+---
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 93 ++++++++++++++++++++++
+ 1 file changed, 93 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index 04ba4c4565d0a205e2e46d7535c6a3190993621d..7f8fe7577d240f330328b6ea44ea6b06bbc8595b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -114,6 +114,16 @@ vcc3v3_sys: regulator-vcc3v3-sys {
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
++	avdd2v8_dvp: regulator-avdd2v8-dvp {
++		compatible = "regulator-fixed";
++		regulator-name = "avdd2v8_dvp";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <2800000>;
++		regulator-max-microvolt = <2800000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vcca1v8_s3: regulator-vcc1v8-s3 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcca1v8_s3";
+@@ -136,6 +146,16 @@ vcc1v8_codec: regulator-vcc1v8-codec {
+ 		vin-supply = <&vcc3v3_sys>;
+ 	};
+ 
++	vcc1v2_dvp: regulator-vcc1v2-dvp {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc1v2_dvp";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1200000>;
++		regulator-max-microvolt = <1200000>;
++		vin-supply = <&vcca1v8_s3>;
++	};
++
+ 	wifi_pwrseq: sdio-wifi-pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+ 		clocks = <&rk818 1>;
+@@ -312,6 +332,8 @@ vcc3v0_touch: LDO_REG2 {
+ 
+ 			vcca1v8_codec: LDO_REG3 {
+ 				regulator-name = "vcca1v8_codec";
++				regulator-always-on;
++				regulator-boot-on;
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+ 			};
+@@ -420,6 +442,45 @@ regulator-state-mem {
+ 	};
+ };
+ 
++&i2c1 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c1_xfer &cif_clkouta>;
++	assigned-clocks = <&cru SCLK_CIF_OUT>;
++	assigned-clock-rates = <24000000>;
++	status = "okay";
++
++	wcam: camera@1a {
++		compatible = "sony,imx258";
++		reg = <0x1a>;
++		clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK0, derived from CIF_CLKO */
++		clock-names = "xvclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wcam_rst>;
++		/* Note: both cameras also depend on vcca1v8_codec to power the I2C bus. */
++		vif-supply = <&vcc1v8_dvp>;
++		vana-supply = <&avdd2v8_dvp>;
++		vdig-supply = <&vcc1v2_dvp>; /* DVDD_DVP is the same as VCC1V2_DVP */
++		reset-gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_LOW>;
++		orientation = <1>; /* V4L2_CAMERA_ORIENTATION_BACK */
++		rotation = <270>;
++		lens-focus = <&wcam_lens>;
++
++		port {
++			wcam_out: endpoint {
++				remote-endpoint = <&mipi_in_wcam>;
++				data-lanes = <1 2 3 4>;
++			};
++		};
++	};
++
++	wcam_lens: camera-lens@c {
++		compatible = "dongwoon,dw9714";
++		reg = <0x0c>;
++		/* Same I2c bus as both cameras, depends on vcca1v8_codec for power. */
++		vcc-supply = <&vcc1v8_dvp>;
++	};
++};
++
+ &i2c3 {
+ 	i2c-scl-rising-time-ns = <450>;
+ 	i2c-scl-falling-time-ns = <15>;
+@@ -462,6 +523,28 @@ &io_domains {
+ 	status = "okay";
+ };
+ 
++&isp1 {
++	status = "okay";
++
++	ports {
++		port@0 {
++			mipi_in_wcam: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&wcam_out>;
++				data-lanes = <1 2 3 4>;
++			};
++		};
++	};
++};
++
++&mipi_dphy_rx0 {
++	status = "okay";
++};
++
++&isp1_mmu {
++	status = "okay";
++};
++
+ &mipi_dsi {
+ 	status = "okay";
+ 	clock-master;
+@@ -495,6 +578,10 @@ mipi_in_panel: endpoint {
+ 	};
+ };
+ 
++&mipi_dsi1 {
++	status = "okay";
++};
++
+ &pmu_io_domains {
+ 	pmu1830-supply = <&vcc_1v8>;
+ 	status = "okay";
+@@ -507,6 +594,12 @@ pwrbtn_pin: pwrbtn-pin {
+ 		};
+ 	};
+ 
++	camera {
++		wcam_rst: wcam-rst {
++			rockchip,pins = <1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	leds {
+ 		red_led_pin: red-led-pin {
+ 			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+
+-- 
+2.48.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
