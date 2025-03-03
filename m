@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3856C282CD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 13:17:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E2EC282D1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 14:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=SD5GfhD6RtpxYvS+k+QDH1uQXuQ4DndxDtMmQEnLIX4=; b=PS9DUTMdCNo0aKbHpnae4ZepVQ
-	5xGyPS1JA2dO41ACJD8gsZqrNa+RHu7OVMMzQ9Y3ICCJkZWSBdUPFSnq0pb1txiEQUe+ZD87fDto1
-	3xGWy/fEVynXwKELwq7/hn1N80YoTACZAvL9d90RH8tLA1qg80w40EzuW+tFFd/jWXNKuBQk2ckeF
-	ZPnZDTQqFBi2y+fPqj4Ko/mH0FrK0RJLLdcZ0VkuI3/VozU10eTylsapSerWT8iwPaqHQTLBg9KbZ
-	f/w8tiwgY0BF3/H0OsH6scsvxbbX6rWhok5ccUj3gvp2L6AXDt9ID+I9BrKk3eRjp+sr1c1MG73Em
-	YkRI6uPw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8mg3R/jbZanSyE07erdIiA6IXUpOjgLu+y0sFY/yGj4=; b=CEkLztwllj8QQ7
+	HgV0kKHDZdufsYQzYEtfIUnHsW1j2lRevJrsI8ilLA+n0kQ8zT7hmR2Xdl94PB4kanV0BbWdqOOpw
+	I0lJA1TaUXVUDEVgOyvpUo4ojPjb2kRVSGCbalet8eh8V0R4vQQ+a4EMQI3pQDA/IZeJaz0+fFRve
+	I1grrEpbs+Ij4sPxjdT4FcOnZx5x39uFct1gFVw4OtCsekWQMpIG6d2vrDKSnOWDWCwUlIDco45g6
+	JGrOL7JcHt8BymaoxJVgnrE0MewTvSxGrGhv5yQ50rmXnjBR1qIVMkbBXlhP+oqIdgY6qhnwk46PT
+	WdS2Mmxdox8XzjcjD4mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5fs-00000000sOW-13n7;
-	Mon, 03 Mar 2025 13:17:36 +0000
+	id 1tp6rv-000000017On-3bIs;
+	Mon, 03 Mar 2025 14:34:07 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp5cn-00000000rzs-2Ko0;
-	Mon, 03 Mar 2025 13:14:26 +0000
+	id 1tp6kE-000000016DB-1IxL;
+	Mon, 03 Mar 2025 14:26:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BC3465C596B;
-	Mon,  3 Mar 2025 13:12:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FA0CC4CED6;
-	Mon,  3 Mar 2025 13:14:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D65A35C59BF;
+	Mon,  3 Mar 2025 14:23:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A38DC4CED6;
+	Mon,  3 Mar 2025 14:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741007664;
-	bh=TGTA1E6JEST7UBAQ+YC8/fElACd4pLq8wkDwFN71lKM=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=l7rUk9Vqb4qD1HM4/PUliRlzDZ/RglRb255OV3YvFjgAjHtG1ynRKc4hn9dAG0naP
-	 sL/paPEL/PrO3WDsLYOz9YTbIf0WCUf3B5pSf7Wl6jeyy9fcpoutAPhik25/K6Mz9F
-	 hWy1bndkV+srqMjL/OuwAgFQmPnSTzpysi3SbiNwgPqAiCtL92RpIj5tqglqZw17t3
-	 QYzhZxTZZYN1VdqfKTW1Xpyusy2wJMxxWD5JttC0dkfqFefBf1HmmutGxPKBDnv5U4
-	 IeintIVWIVPI3cyoe8hnmnK9rwsMnWu6lmJpaEtvtTiO/NfnYeeI32RbLJh662Qy7V
-	 Is9cRXcfqv/JA==
-Date: Mon, 03 Mar 2025 07:14:22 -0600
-MIME-Version: 1.0
+	s=k20201202; t=1741011969;
+	bh=0g9fQWh0Jv15zl9OPaLLQofjM1L8RSDKnVZdipTRZCE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AXmZDD4Z9JhXaUrSlitgAjv2ProElafpbv8DEBeM8BFxzkXJaqr7hxgnvWCNxKnXg
+	 FpnnEOFIsP87R/dqG0i/j4TOH95iuIhzu3WHBJk239wRqEbMNg2y9dxsV67+PaIbvo
+	 01L4IIQpyjRChsYJbNunusnwgpusho9cFVWb77cLG4HN015/DME/JiNlr8wNWxKMU6
+	 eVsiPkCMqat8MCAj9PO8x+sKvOtRCVFnfbtwLwHKCb4UDRnoVv5+OD1cj8r3zxSjnI
+	 HE87mpYyQ3HaC2xmnZt2ZgCuAe/BijhRSQL8W6R4I2MnmVGrcJBP01yg+yEiJUM2Ca
+	 iRG1yvmq7s1qw==
+Date: Mon, 3 Mar 2025 08:26:07 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Dragan Simic <dsimic@manjaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Ondrej Jirman <megi@xff.cz>, oren@taumoda.com
-To: Olivier Benjamin <olivier.benjamin@bootlin.com>
-In-Reply-To: <20250302-camera-v2-0-312b44b4a89c@bootlin.com>
-References: <20250302-camera-v2-0-312b44b4a89c@bootlin.com>
-Message-Id: <174100756342.1496432.13525001046589650436.robh@kernel.org>
-Subject: Re: [PATCH v2 0/2] Describe the cameras in the PinePhone Pro dts
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v3 4/6] dt-bindings: thermal: rockchip: document otp
+ thermal trim
+Message-ID: <174101196712.1786336.17880487519994518563.robh@kernel.org>
+References: <20250228-rk3576-tsadc-upstream-v3-0-4bfbb3b699b9@collabora.com>
+ <20250228-rk3576-tsadc-upstream-v3-4-4bfbb3b699b9@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250228-rk3576-tsadc-upstream-v3-4-4bfbb3b699b9@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_051425_705427_CB65AE78 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20250303_062610_413784_246A03C4 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,66 +83,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 02 Mar 2025 16:41:01 +0100, Olivier Benjamin wrote:
-> This series adds support for the Pine64 PinePhone Pro's rear and front
-> cameras in Device Tree.
-> This is based on some of Ondrej Jirman's patches hosted in his tree at
-> https://codeberg.org/megi/linux, but I have also fully reviewed and
-> re-written the code from the RK3399 datasheet, the PinePhone Pro
-> schematic, and the IMX258-0AQH5 software reference manual.
+On Fri, 28 Feb 2025 21:06:54 +0100, Nicolas Frattaroli wrote:
+> Several Rockchip SoCs, such as the RK3576, can store calibration trim
+> data for thermal sensors in OTP cells. This capability should be
+> documented.
 > 
-> I have tested these changes on my PinePhone Pro and am able to take
-> photos from both cameras using libcamera's cam.
+> Such a rockchip thermal sensor may reference cell handles that store
+> both a chip-wide trim for all the sensors, as well as cell handles
+> for each individual sensor channel pointing to that specific sensor's
+> trim value.
 > 
-> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> Additionally, the thermal sensor may optionally reference cells which
+> store the base in terms of degrees celsius and decicelsius that the trim
+> is relative to.
+> 
+> Each SoC that implements this appears to have a slightly different
+> combination of chip-wide trim, base, base fractional part and
+> per-channel trim, so which ones do which is documented in the bindings.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
-> Changes in v2:
-> - Rebase on mainline
-> - Change patch subject to arm64: dts: rockchip
-> - Rename new regulators to fit preferred form for fixed regulators
-> - Link to v1: https://lore.kernel.org/r/20250228-camera-v1-0-c51869f94e97@bootlin.com
-> 
-> ---
-> Olivier Benjamin (2):
->       arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro
->       arm64: dts: rockchip: describe the OV8858 user camera on PinePhone Pro
-> 
->  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 138 +++++++++++++++++++++
->  1 file changed, 138 insertions(+)
-> ---
-> --
-> Olivier Benjamin <olivier.benjamin@bootlin.com>
-> 
-> 
+>  .../bindings/thermal/rockchip-thermal.yaml         | 61 ++++++++++++++++++++++
+>  1 file changed, 61 insertions(+)
 > 
 
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250302-camera-v2-0-312b44b4a89c@bootlin.com:
-
-arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: camera@1a: port:endpoint: 'link-frequencies' is a required property
-	from schema $id: http://devicetree.org/schemas/media/i2c/sony,imx258.yaml#
-arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: camera@1a: 'clock-names', 'lens-focus', 'orientation', 'rotation' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/media/i2c/sony,imx258.yaml#
-arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: camera@36: 'orientation', 'rotation' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/media/i2c/ovti,ov8858.yaml#
-
-
-
-
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
