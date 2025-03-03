@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79893C282C6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 12:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4B9C282C5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 12:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hkh2zln7lHaByMpJjEjxYjh9wuGx6ISE45+scmNncGg=; b=A17qQpzfWgvnEw
-	26N5wqDJiNUcNXvHnFPRWzfOnj2Bcgatf2AG+9VIkjnOcPhLWJ0qndqqUZDTe7ZFgn6pzAqY3PMfB
-	CF9+U4Wfr9+SI+9xZ73GHSsap8rTBYWvmDT4J9/duG5zZwRwYCekNJr1kFBL9ORoQrCiI95hplZU5
-	9KERKyLyN0MJ+Z6MzsHfzcJanTDNb6YhftlGE9qPIHgz9r2rPcHDleKGlS1Tf7QaM/7KGqfdC5fZQ
-	IVaNP0sepuZou4OMSxFLVfX8fnjngDIp/rFX+6CuC/MqgGvnKQOaAR5Is6gBWTAFkceuu/t1iUuoN
-	Vt49wheHZfBR3BN15EUA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Xto8HEdUz4AD8wOZtphbnzyVu6WqXGsxK7uuJQa60hk=; b=p9i3VSIzfUOubT
+	0OGiyX0Qs0ZgO0JAEdPLJ4EkFxZA/ICpWASAWHAsRXclFv3Au9SpERxld08CBui3aygqaxfgH4D5C
+	1USVeNwvDCe9G6TQVWYPYzd0AGXPV2ZJEjWdgazH5FVzz+2Af04gTgGDjiDkjqJ+Lnr4Tg15p3EHf
+	VSGPA4YGER8SZEhHVvBEeX3dv3A67erBKHQrFU3kBF6Gwyhs3Wg+46VYQS5S7l6zgAJ3Gx+teYI4f
+	WrNyFQucqUhJcHBdAhsQg7+T4PhhcZ++eLuLWqnSxmu4/7GvNjQzFR6ZhoJzjuhJspjr3itdHKuCs
+	St36nRPKkQgFr8N80r4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp4sg-00000000k2i-1wgS;
-	Mon, 03 Mar 2025 12:26:46 +0000
+	id 1tp4uD-00000000kMe-28rl;
+	Mon, 03 Mar 2025 12:28:21 +0000
 Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp49f-00000000bQk-33tD;
-	Mon, 03 Mar 2025 11:40:16 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-549490e290dso3158501e87.2;
+	id 1tp49f-00000000bQm-33oc;
+	Mon, 03 Mar 2025 11:40:18 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-54954fa61c8so2924875e87.1;
         Mon, 03 Mar 2025 03:40:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1741002013; x=1741606813; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=a3KshhKLPc3asFmOXQnuU+ysx6yVcCHiVd9RsF7krHs=;
-        b=Zyq5/aFrwcrAoRjgcrDb5k2leAPQrM8Hhx7l1r3VW7tYYVRe2nqmObZoq0D+ACDbMO
-         jhMbv+VggZ/dcISU/V92yzCOH/uRWEJQnN7dhBDawkI5Bo1RYSDfPguo2OLhtRLTCruK
-         rInLQxmGmGRjHwJrixqLomJGTVwFInaVChy/kyOw89xc7eHBlgXb3sLMtWvaBSaa+zfW
-         Ov4KjGxBKWHKwsfPOmeJi5trNm7x3ts3uOOdtZnLXp1mI6ZtYZ5cmPlPbD1uZs/caxNF
-         pXDNxoq2HILSZbi/JKp4ihfP9Ee5u/8Cupk+Q93VX1i5chUUhQJCITx3RDybb11Uggcd
-         hPVg==
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lGsNFf+UfdU9W8kSubEW5P15Pc45666u5Nv+Ism+9VE=;
+        b=iKMbC8X2ZVIR4sL+Y5fbRT1OekHZ8/ByYNlaZjk54coEkfPA261TbrqriAiC3dkP3K
+         UDHFDwd/8pN4HPIbSgFgalNXmDxtNKHId12b/xKWLJm7w5SPDxdwhhaTKdh04kEG54V/
+         889kkGN9RPR8+OMlJVucujitCPAHSMBhYc1fczVzAd55Cst+opoutm7xE5JXy1u6VX4c
+         +vD/JWTpqgGB9G5Bv/l+sPOIwQe1Pc+PhaibXw7Z6lFtrBhCrhSH/TAaMj+9QsusU7MQ
+         lI3Wb3knwJlKgXoMOPGWDt64q0RCzFTsZ7iRQljub24GiYWjMp/TILDpBoLQVJIgUgjJ
+         GWrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1741002013; x=1741606813;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=a3KshhKLPc3asFmOXQnuU+ysx6yVcCHiVd9RsF7krHs=;
-        b=SpWr8SAwkg74l+qJUJ8Gkm6uggdxrayWpIS/S9scP6p1c/lA6eQF21bNgaFkGr4Z/T
-         WbuwwEAQC0gPxZ6Vi/av4O10SVbLmZSnucve5FfyGNaBpdAESKhZoirUU+A7CzH5H+Ie
-         4j4/Gi9seZ2TJrzdqiOOrHsQZveQ+XHhyxcDzJOb/lleeDk8oX5oH15iMhGhv6L41Yva
-         9zHo4oJ4ncxkn6NBGYzIQgtpC51i76KuFbnEhaTQO5CGQFhbl3PQkZaIfyCKRaVf+pw3
-         ev+WKI4PDNlhM/mnuDaCBPKcjLwemKuHZ8sGAqJg49Zfu+G3wmTeJzVxjoYU7zdCwPZZ
-         2LqA==
-X-Forwarded-Encrypted: i=1; AJvYcCVC/sKVLQeoP6Q0kyXxUL/nVrpRAqSIaqFeuhvOMB0QF3KwWosK9BFfGl/qAhIzwws3CqETsPvZwsHXy/EMIek=@lists.infradead.org, AJvYcCXSYRpg46WgYgkZwMlWd5tiLMLhQncmX1F4Ztam/GF/+HtbNSSidehajenVrHNIuc5MFNo8wTRu54x0NCBTo9v5@lists.infradead.org
-X-Gm-Message-State: AOJu0YzqxRJrooteV2JjeRV9kja9KfrO3hho2VxwLiki8akD7/4o5vzb
-	rSb4rNPH0VjZQeEmSltshQ0RhwMfXfiDTi2vCSpRKsW16g9+yd2k
-X-Gm-Gg: ASbGnctLVI/cAqiK2FCvF/lSpiW0LfOlqS6YDJ5imspjSnw0bg2f7J6KNfaagmc0FlX
-	XIncOyYpHyuBKgfvABp96Xpr20OAGbOu9S41VA+TPqIFe257Y+sIjFO+dONRoTJZgdLxydnzkbC
-	RHupU3rvLOTybUfh6+snQxwdmNTzqiL0Q4/8bYqX/O9MY5bmC1HcerGuwLAB2RDcmsGNs+AOWu7
-	n1aq4GF5xEbeONJYn/AK1fjhCnY5cRzlrmwGxh1KOWbEdtCKyRL6iSd++y2SmPI2uTgmRkNLRoY
-	9x71NWhtN803epUeIRfyY7Z8yCD7Z0dhXrK0M4j+NP3siKaOzaCpKPWQBkvzhGIa8BdNF1bFixg
-	wHM5bewJrRG3HY6gTNXVYjBQsqu0CNNS9eFMathf3
-X-Google-Smtp-Source: AGHT+IEbZSAS8VlrLgb63qXjtHIvC4htXmc8dPx7Hmc+Hwrr8Xjf0XYoxC/WEWCfUuOyOIo58FGCyA==
-X-Received: by 2002:ac2:4a74:0:b0:549:4e80:6dc0 with SMTP id 2adb3069b0e04-5494e806dc6mr4270805e87.0.1741002012981;
-        Mon, 03 Mar 2025 03:40:12 -0800 (PST)
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lGsNFf+UfdU9W8kSubEW5P15Pc45666u5Nv+Ism+9VE=;
+        b=gDHE/C5J2Vvw7AWQTrwE1DWjptyzq482FZS+2hH7JDaVu/tZDiHKqwfPJdRahGrkIu
+         wkxmaX4cSqytaDYSQD4qzRGaWoATk0C7ZSomnr0giqF7qqp84TEqeAxMEA8yovAv+qDm
+         yYgpkJC4fCIYIRP2wVSXuqtJqZC9ALJIQuO0MrFDSKZ+Ler2bWazcGaX9lOAgFCmLLVy
+         z2h/jdubyxFPRk20PUL3cNiO96RFiTibQZmPHR+/cQtm21B+4qQXXix22FGWY+EZRqtc
+         7r17jSfqA8aJlGSYMIz61y3wsdAyJjNuPjSOS0umDPELi4DInd1GOdrhQ1W3RP9nyTy8
+         7N/A==
+X-Forwarded-Encrypted: i=1; AJvYcCUb3CIyn1vGVdSy8Gv3fNKut5CSLX1aRd99TkkWf9eH6v60fqcWLxCQF8DOmE5OBg98bMzU1DPh/6eBu1UAXyo=@lists.infradead.org, AJvYcCVjAINqRHPygDCIbC+06kpW0e0kcHsgxjpmeKldTy0PWOFDbheskPLkOA6Zp7EDa0t/fKPKl5EKKRLLEvRhIjIU@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy22EBcU3PNRentYHZKpYUtDnU4qBjBCjbQuJTQM5M4ZjZgxWlr
+	cfPg5oVUfJGBDbZSQGLcTKYnGA2+5SEwwGkOU0bj9/VL9/hs8UN5
+X-Gm-Gg: ASbGncs271b3t5ydL1YhddAqguPLxnwDYYNtasw/Ga/z2ra57Y2EZh/AmVl+6WAqx5Z
+	joNEGv4cEBWO+ksFVoKix9UmhhdTduFY+9BUYyIYEzg2+aQV1KMy7Ul+WqX2C1o0atdGqDmvUWN
+	kkXMf2JLK8Qqr0dCc0IWYrQb8bzD4KCyO+8igv/XdpJ1InIaOPAFz4iRyHa9gv+2HfpmgyY+oZG
+	fI7BGuLexbi+6h3YLKkM4zrtyEm5BZVp39sJWvXyp+7Q6CIV+7aUEnB+k/M6qS923YKLGbqvayw
+	rKHdV2puIvW29Zq2m9hEqe0YvZNmo62I8zUz27WBiPsPuaDTggJk9N93gRqb0ZElcyGMRg1PmlO
+	c+dYExZFxSman8qK3AQ2jRMwDN4Dj6S2t10eJ9W56
+X-Google-Smtp-Source: AGHT+IE6TYJc7vhbUwCxB48YuKMrTqXMOVFOkYXJN/faNQ19JttNP6FSxSJOeitCW88+hzBFm5/lpA==
+X-Received: by 2002:ac2:4f01:0:b0:549:1c87:af8e with SMTP id 2adb3069b0e04-5494c37f6d9mr5827800e87.37.1741002011703;
+        Mon, 03 Mar 2025 03:40:11 -0800 (PST)
 Received: from razdolb.local (static.248.157.217.95.clients.your-server.de. [95.217.157.248])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54949de706fsm1125399e87.23.2025.03.03.03.40.11
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54949de706fsm1125399e87.23.2025.03.03.03.40.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Mar 2025 03:40:12 -0800 (PST)
+        Mon, 03 Mar 2025 03:40:11 -0800 (PST)
 From: Mikhail Rudenko <mike.rudenko@gmail.com>
-Date: Mon, 03 Mar 2025 14:40:09 +0300
-Subject: [PATCH v4 1/2] media: videobuf2: Fix dmabuf cache sync/flush in
- dma-contig
+Subject: [PATCH v4 0/2] Allow non-coherent video capture buffers on
+ Rockchip ISP V1
+Date: Mon, 03 Mar 2025 14:40:08 +0300
+Message-Id: <20250303-b4-rkisp-noncoherent-v4-0-e32e843fb6ef@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20250303-b4-rkisp-noncoherent-v4-1-e32e843fb6ef@gmail.com>
-References: <20250303-b4-rkisp-noncoherent-v4-0-e32e843fb6ef@gmail.com>
-In-Reply-To: <20250303-b4-rkisp-noncoherent-v4-0-e32e843fb6ef@gmail.com>
+X-B4-Tracking: v=1; b=H4sIABiVxWcC/3XNTQrCMBCG4atI1kYyk/TPlfcQF9N0aoOalESKI
+ r27qasiunwH5vleInF0nMR+8xKRJ5dc8DnMdiPsQP7M0nW5BSo0gBpka2S8uDRKH7wNA0f2d0l
+ dyZWtqKxbEvl1jNy7x4c9nnIPLt1DfH5WJliuC1goUPgbnEDmqZagNH0FGu3hfCN33dlwEws44
+ QqB4g+CUklVF5qB0CjAb0SvEKz/IDojLfW6sU1TdUhrZJ7nN/E04QhCAQAA
+X-Change-ID: 20241231-b4-rkisp-noncoherent-ad6e7c7a68ba
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -89,8 +91,9 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Mikhail Rudenko <mike.rudenko@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_034015_790268_696E6963 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20250303_034015_786534_4E54F9B8 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,71 +110,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When support for V4L2_FLAG_MEMORY_NON_CONSISTENT was removed in
-commit 129134e5415d ("media: media/v4l2: remove
-V4L2_FLAG_MEMORY_NON_CONSISTENT flag"),
-vb2_dc_dmabuf_ops_{begin,end}_cpu_access() functions were made
-no-ops. Later, when support for V4L2_MEMORY_FLAG_NON_COHERENT was
-introduced in commit c0acf9cfeee0 ("media: videobuf2: handle
-V4L2_MEMORY_FLAG_NON_COHERENT flag"), the above functions remained
-no-ops, making cache maintenance for non-coherent dmabufs allocated by
-dma-contig impossible.
+This small series adds support for non-coherent video capture buffers
+on Rockchip ISP V1. Patch 1 fixes cache management for dmabuf's
+allocated by dma-contig allocator. Patch 2 allows non-coherent
+allocations on the rkisp1 capture queue. Some timing measurements are
+provided in the commit message of patch 2.
 
-Fix this by reintroducing dma_sync_sgtable_for_{cpu,device} and
-{flush,invalidate}_kernel_vmap_range calls to
-vb2_dc_dmabuf_ops_{begin,end}_cpu_access() functions for non-coherent
-buffers.
-
-Fixes: c0acf9cfeee0 ("media: videobuf2: handle V4L2_MEMORY_FLAG_NON_COHERENT flag")
-Cc: stable@vger.kernel.org
 Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
 ---
+Changes in v4:
+- rebase to media/next
+- use `direction` instead of `buf->dma_dir` in dma_sync_sgtable_*
+- Link to v3: https://lore.kernel.org/r/20250128-b4-rkisp-noncoherent-v3-0-baf39c997d2a@gmail.com
+
+Changes in v3:
+- ignore skip_cache_sync_* flags in vb2_dc_dmabuf_ops_{begin,end}_cpu_access
+- invalidate/flush kernel mappings as appropriate if they exist
+- use dma_sync_sgtable_* instead of dma_sync_sg_*
+- Link to v2: https://lore.kernel.org/r/20250115-b4-rkisp-noncoherent-v2-0-0853e1a24012@gmail.com
+
+Changes in v2:
+- Fix vb2_dc_dmabuf_ops_{begin,end}_cpu_access() for non-coherent buffers.
+- Add cache management timing information to patch 2 commit message.
+- Link to v1: https://lore.kernel.org/r/20250102-b4-rkisp-noncoherent-v1-1-bba164f7132c@gmail.com
+
+---
+Mikhail Rudenko (2):
+      media: videobuf2: Fix dmabuf cache sync/flush in dma-contig
+      media: rkisp1: Allow non-coherent video capture buffers
+
  .../media/common/videobuf2/videobuf2-dma-contig.c  | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c      |  1 +
+ 2 files changed, 23 insertions(+)
+---
+base-commit: b2c4bf0c102084e77ed1b12090d77a76469a6814
+change-id: 20241231-b4-rkisp-noncoherent-ad6e7c7a68ba
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index a13ec569c82f6da2d977222b94af32e74c6c6c82..d41095fe5bd21faf815d6b035d7bc888a84a95d5 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-@@ -427,6 +427,17 @@ static int
- vb2_dc_dmabuf_ops_begin_cpu_access(struct dma_buf *dbuf,
- 				   enum dma_data_direction direction)
- {
-+	struct vb2_dc_buf *buf = dbuf->priv;
-+	struct sg_table *sgt = buf->dma_sgt;
-+
-+	if (!buf->non_coherent_mem)
-+		return 0;
-+
-+	if (buf->vaddr)
-+		invalidate_kernel_vmap_range(buf->vaddr, buf->size);
-+
-+	dma_sync_sgtable_for_cpu(buf->dev, sgt, direction);
-+
- 	return 0;
- }
- 
-@@ -434,6 +445,17 @@ static int
- vb2_dc_dmabuf_ops_end_cpu_access(struct dma_buf *dbuf,
- 				 enum dma_data_direction direction)
- {
-+	struct vb2_dc_buf *buf = dbuf->priv;
-+	struct sg_table *sgt = buf->dma_sgt;
-+
-+	if (!buf->non_coherent_mem)
-+		return 0;
-+
-+	if (buf->vaddr)
-+		flush_kernel_vmap_range(buf->vaddr, buf->size);
-+
-+	dma_sync_sgtable_for_device(buf->dev, sgt, direction);
-+
- 	return 0;
- }
- 
-
+Best regards,
 -- 
-2.48.1
+Mikhail Rudenko <mike.rudenko@gmail.com>
 
 
 _______________________________________________
