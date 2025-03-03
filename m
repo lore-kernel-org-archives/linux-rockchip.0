@@ -4,68 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E2EC282D1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 14:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F484C282CD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 15:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8mg3R/jbZanSyE07erdIiA6IXUpOjgLu+y0sFY/yGj4=; b=CEkLztwllj8QQ7
-	HgV0kKHDZdufsYQzYEtfIUnHsW1j2lRevJrsI8ilLA+n0kQ8zT7hmR2Xdl94PB4kanV0BbWdqOOpw
-	I0lJA1TaUXVUDEVgOyvpUo4ojPjb2kRVSGCbalet8eh8V0R4vQQ+a4EMQI3pQDA/IZeJaz0+fFRve
-	I1grrEpbs+Ij4sPxjdT4FcOnZx5x39uFct1gFVw4OtCsekWQMpIG6d2vrDKSnOWDWCwUlIDco45g6
-	JGrOL7JcHt8BymaoxJVgnrE0MewTvSxGrGhv5yQ50rmXnjBR1qIVMkbBXlhP+oqIdgY6qhnwk46PT
-	WdS2Mmxdox8XzjcjD4mQ==;
+	List-Owner; bh=i41FCT3cIx9VilrUrGwHVwLfBTddCmvR2Eyrkq39Ay4=; b=d3dO/s7qsNOiZF
+	ZnsEmNn3zNK/ycGcTo2DGNJWkQLEFpZI27qyqs+BLjVADTQRsZT7hesIWtbJVYzcoelKTImKuxawg
+	6Z2Fo9K6CvfMVB1LF/Ff/aC2lA3wzVUWhNLsZqwVHcDgzn1fYytP3pIsVCPShNx/d1SZDR1jQS6gN
+	tKwNsjtm+Ak06xG21SeZoAvZDDgKeMdjCIhvuf9pnJpYnYHQv0yfZW/eHp4rzQjV1/x8PYKoxxcz3
+	jd/6TWReeI2y1HxcefDJG5+WcjeD3Nl7eqwj5NULuc73WC6g6NwRTWatp15lACL2iwIChrxxhwTeq
+	ojQ0KA8lfdznleJO1vhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp6rv-000000017On-3bIs;
-	Mon, 03 Mar 2025 14:34:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tp7Rq-00000001EmR-0uX9;
+	Mon, 03 Mar 2025 15:11:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04::f03c:95ff:fe5e:7468])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tp6kE-000000016DB-1IxL;
-	Mon, 03 Mar 2025 14:26:11 +0000
+	id 1tp7OQ-00000001E5G-1gih;
+	Mon, 03 Mar 2025 15:07:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D65A35C59BF;
-	Mon,  3 Mar 2025 14:23:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A38DC4CED6;
-	Mon,  3 Mar 2025 14:26:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D9FF0611E2;
+	Mon,  3 Mar 2025 15:07:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C42EC4CED6;
+	Mon,  3 Mar 2025 15:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741011969;
-	bh=0g9fQWh0Jv15zl9OPaLLQofjM1L8RSDKnVZdipTRZCE=;
+	s=k20201202; t=1741014461;
+	bh=HuPOnOviq8r+tHWc9h2eXFiWNQM7CuuwBrKHN13HnOM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AXmZDD4Z9JhXaUrSlitgAjv2ProElafpbv8DEBeM8BFxzkXJaqr7hxgnvWCNxKnXg
-	 FpnnEOFIsP87R/dqG0i/j4TOH95iuIhzu3WHBJk239wRqEbMNg2y9dxsV67+PaIbvo
-	 01L4IIQpyjRChsYJbNunusnwgpusho9cFVWb77cLG4HN015/DME/JiNlr8wNWxKMU6
-	 eVsiPkCMqat8MCAj9PO8x+sKvOtRCVFnfbtwLwHKCb4UDRnoVv5+OD1cj8r3zxSjnI
-	 HE87mpYyQ3HaC2xmnZt2ZgCuAe/BijhRSQL8W6R4I2MnmVGrcJBP01yg+yEiJUM2Ca
-	 iRG1yvmq7s1qw==
-Date: Mon, 3 Mar 2025 08:26:07 -0600
+	b=e8lsaej9A2HXVSBTtk7NEa22kgHyP3MX8CO9eEccqrCx2bictg+yFVDreriVq3Gvk
+	 HN1Jo4/Pu7xF/kgCJBQPGB46Z7EyG4nAYRI7ULlQMABBb3iyUgTNqdcDsGPsYqj2Dr
+	 q1FAglCF8KP7tT1/JssrxgPw8O1n9cwwlgWorHT+u7Zu5f7+2kAG6A7TrJsXocFIIr
+	 ZI+JL/h37Bqvfg/j8Ua6Jx3aOHE8uz/4Mg9OfyeFT2se1iJEXzqXE5NQ15JdGXtRxe
+	 h5JJLpwB0IVNFHpfJgyR2VitKa2EPa60FKPTfDl6govGN7YkD8aHAE/ucBNpVuJ8ze
+	 O3+dNqs3LQEdA==
+Date: Mon, 3 Mar 2025 09:07:39 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v3 4/6] dt-bindings: thermal: rockchip: document otp
- thermal trim
-Message-ID: <174101196712.1786336.17880487519994518563.robh@kernel.org>
-References: <20250228-rk3576-tsadc-upstream-v3-0-4bfbb3b699b9@collabora.com>
- <20250228-rk3576-tsadc-upstream-v3-4-4bfbb3b699b9@collabora.com>
+To: Yao Zi <ziyao@disroot.org>
+Subject: Re: [PATCH 1/8] dt-bindings: soc: rockchip: Add RK3528 VO GRF syscon
+Message-ID: <174101445900.1859153.5372866255768427473.robh@kernel.org>
+References: <20250301104250.36295-1-ziyao@disroot.org>
+ <20250301104250.36295-2-ziyao@disroot.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250228-rk3576-tsadc-upstream-v3-4-4bfbb3b699b9@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_062610_413784_246A03C4 
-X-CRM114-Status: GOOD (  12.36  )
+In-Reply-To: <20250301104250.36295-2-ziyao@disroot.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +62,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Jonas Karlman <jonas@kwiboo.se>, linux-mmc@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, Detlev Casanova <detlev.casanova@collabora.com>, Shresth Prasad <shresthprasad7@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 28 Feb 2025 21:06:54 +0100, Nicolas Frattaroli wrote:
-> Several Rockchip SoCs, such as the RK3576, can store calibration trim
-> data for thermal sensors in OTP cells. This capability should be
-> documented.
+On Sat, 01 Mar 2025 10:42:43 +0000, Yao Zi wrote:
+> Add compatible string for VO GRF found on RK3528 SoC.
 > 
-> Such a rockchip thermal sensor may reference cell handles that store
-> both a chip-wide trim for all the sensors, as well as cell handles
-> for each individual sensor channel pointing to that specific sensor's
-> trim value.
-> 
-> Additionally, the thermal sensor may optionally reference cells which
-> store the base in terms of degrees celsius and decicelsius that the trim
-> is relative to.
-> 
-> Each SoC that implements this appears to have a slightly different
-> combination of chip-wide trim, base, base fractional part and
-> per-channel trim, so which ones do which is documented in the bindings.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
 > ---
->  .../bindings/thermal/rockchip-thermal.yaml         | 61 ++++++++++++++++++++++
->  1 file changed, 61 insertions(+)
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
