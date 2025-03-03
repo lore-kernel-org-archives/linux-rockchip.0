@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A33C282CD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 18:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08DA8C282CD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Mar 2025 21:09:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S0Z2n0onmxi90nzuBcJVdspDB3GlnlgogJl8cnEZTBE=; b=TnGtkYZAN7HJ+U
-	cgLP72KGB73ZeCViz2s8t9bYg/VP/ooVt9gy9qEsDds/zCfGjwvcRYOWPvgSXmDroeDSARsLp8Vcu
-	Xv3ZnAiuhwMJdDuKY8AbOscXkrjEeFY5WglZ63inBrXNsXIYYr/8l2fB2EFSHgpwgNJyj78r7yEBy
-	7iM+rAI7Xbvj+OLew1QeXT5MeACm48NP9p102HWSW+omF7DVcllK1SjfK5oZUg39MSm9nQYkabMp1
-	+XsRElgvtBYwxrAXQv1wSqm7Jep/rhPWmXSP+62M/99iZIgu7NSYoH/hK1y0bIO5kPQwHwI0YbX+a
-	Imz0kE5gX2AC4CYKjOPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Brwzq6GEBdXRVubNvYeKe2Y7czIxXL/dJR97dogObs8=; b=HzAedsMk8yfcVR/E/EOo7kicFV
+	8R3TZyLQaiFmrRoFz8sEby3gwcrk+2FHB6Pjg1mJp4CzERAdZE3Jmoe7vpdZRhh5KVSdU5XGvVSzx
+	v2cOuBd9OgFBSAKtnxdzvbj0s25K1yP36fwlXQufJefGP44qrkUkVaH9hrn8wRzB469I5SnSxOiEA
+	2pIZtx8VNDLrZEJZ2zJmqQcB6SHpW2k7ftyx7nKJFfTBPe9Ud5qC0A/ugWNTm22a0cf0rjrpPTKOH
+	f57ZJ6n3Wo/sfPijiaW+Cv8jsTXZDHyrv9tRUN0HBd32HNgVTwwZJ/J2Q8YNOPWJn/DyMBsnyGCfr
+	3KqZhAuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpATX-00000001vrv-3IVl;
-	Mon, 03 Mar 2025 18:25:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tpD2L-00000002KdO-0uKZ;
+	Mon, 03 Mar 2025 21:09:17 +0000
+Received: from out-176.mta0.migadu.com ([91.218.175.176])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpARy-00000001vjS-2FJj;
-	Mon, 03 Mar 2025 18:23:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QvI3uoBBtrY63GFuz2BimKRrjmSrRphcFh9ZV4VWtho=; b=OqdJEGuFkISnTQKehCqXxKXvmh
-	uZ04gWRn0+rtOAGZCya4mZwIiXOlB5i4E6iwYg7+cQBO5tabqR2KE6NvctV11i8WGc9VCjLMeODIX
-	76ZvKuE0kbs4JYvmgWyvaw0JDZ+EVZ9Hri82Z1jC8XD0T7OWmJrbyMgDLrK00qd0Cw5a3puvNWm4f
-	584M3qNk7hihHXiLrS3u9vuKdWnySxKugk2dqMO9PScKBdX+0KJy6qJ2vf1YQAlwB3XgIMourmhfq
-	ESj3b/Tlcl2a/e7NhMIlA0f2RDBz2/bh9R9zRAReyAXpAj3mctqU5v74WsC+wKAygO4jgiqe1S3NM
-	L+IlP4AQ==;
-Received: from i53875a38.versanet.de ([83.135.90.56] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tpARX-0004dM-8j; Mon, 03 Mar 2025 19:23:07 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH] drm/rockchip: vop2: add missing bitfield.h include
-Date: Mon,  3 Mar 2025 19:22:56 +0100
-Message-ID: <20250303182256.1727178-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-MIME-Version: 1.0
+	id 1tpCzc-00000002KJJ-3dBD
+	for linux-rockchip@lists.infradead.org;
+	Mon, 03 Mar 2025 21:06:31 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1741035981;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KL0RgwYMwPDxX5LpzzMcHu60ayt30SuNBgN28Dcp7Hw=;
+	b=hhAMS7MQqfegpHYoQsM7IHG8RpfHLNLMhR4NpVcSml6EfVHIhEBd4qnqJaEA+NcyD5UEXv
+	/GZ+dPQlEnhRCREQPzmIhrhEwVWUhHTiHGUpktS++q2XO3w3N63tqaCybc5PSZoH6g/al5
+	VHMtOXuLLRyk8cqN94xKgPB8c32YHT8VXhDkz0e0NEf1S06OOlTY5PoN7ijS99Zsd3wfS7
+	5ntajLM2A3m523uU0iOKB9DUghxdu15t7m2J9qSWkRx+xTdtD6yfy+v4wL91Sih30/LZiM
+	Xu48SnixKJi453V9kWQfHc39ouhljwhKPql4fRyG1l6Q9ccBKYfysSlsedZjzQ==
+Date: Mon, 03 Mar 2025 22:06:04 +0100
+Message-Id: <D86XQOCG7LJH.3NI330ETDBP5Z@cknow.org>
+To: "Dragan Simic" <dsimic@manjaro.org>,
+ <linux-rockchip@lists.infradead.org>
+Cc: <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+ <chris@z9.de>, <stable@vger.kernel.org>, "Vincenzo Palazzo"
+ <vincenzopalazzodev@gmail.com>, "Peter Geis" <pgwipeout@gmail.com>, "Bjorn
+ Helgaas" <helgaas@kernel.org>, "Marek Kraus" <gamiee@pine64.org>
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add missing PCIe supplies
+ to RockPro64 board dtsi
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+References: <cover.1740941097.git.dsimic@manjaro.org>
+ <b39cfd7490d8194f053bf3971f13a43472d1769e.1740941097.git.dsimic@manjaro.org>
+In-Reply-To: <b39cfd7490d8194f053bf3971f13a43472d1769e.1740941097.git.dsimic@manjaro.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_102334_595549_A66DAA47 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20250303_130629_523918_0C6F3B14 
+X-CRM114-Status: GOOD (  29.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,41 +71,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6451285347059009821=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 328e6885996c ("drm/rockchip: vop2: Add platform specific callback")
-moved per soc configuration code to the other per-soc data into
-rockchip_vop2_reg.c, but forgot to also include bitfield.h for the used
-FIELD_PREP macro. Add this missing include.
+--===============6451285347059009821==
+Content-Type: multipart/signed;
+ boundary=3e1d67d79bc1372e9f689bf3a32389e21547715a78ffa78981b7ded1a50b;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-Fixes: 328e6885996c ("drm/rockchip: vop2: Add platform specific callback")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202503040135.fgoyWdLB-lkp@intel.com/
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 1 +
- 1 file changed, 1 insertion(+)
+--3e1d67d79bc1372e9f689bf3a32389e21547715a78ffa78981b7ded1a50b
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 0afef24db144..f86a30df94aa 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -4,6 +4,7 @@
-  * Author: Andy Yan <andy.yan@rock-chips.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/kernel.h>
- #include <linux/component.h>
- #include <linux/mod_devicetable.h>
--- 
-2.47.2
+Hi Dragan,
 
+On Sun Mar 2, 2025 at 7:48 PM CET, Dragan Simic wrote:
+> Add missing "vpcie0v9-supply" and "vpcie1v8-supply" properties to the "pc=
+ie0"
+> node in the Pine64 RockPro64 board dtsi file.  This eliminates the follow=
+ing
+> warnings from the kernel log:
+>
+>   rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy reg=
+ulator
+>   rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy reg=
+ulator
+>
+> These additions improve the accuracy of hardware description of the RockP=
+ro64
+> and, in theory, they should result in no functional changes to the way bo=
+ard
+> works after the changes, because the "vcca_0v9" and "vcca_1v8" regulators=
+ are
+> always enabled. [1][2]  However, extended reliability testing, performed =
+by
+> Chris, [3] has proven that the age-old issues with some PCI Express cards=
+,
+> when used with a Pine64 RockPro64, are also resolved.
+
+Thanks for this patch :-)
+
+I 'reported' the issue based on the logs I saw from other people, but
+now that I have a RockPro64 (version 2.1) myself, I can confirm that
+without this patch I saw those warnings myself.
+
+When booted up without a PCIe card in the slot, I also saw these errors:
+[    5.106650] rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout=
+!
+[    5.107373] rockchip-pcie f8000000.pcie: probe with driver rockchip-pcie=
+ failed with error -110
+
+You indicated that that was due to there being no PCIe card inserted.
+
+After applying this patch I booted up my RockPro64 and found that the
+above mentioned warnings are indeed gone.
+
+Then I inserted a Renesas Electronics Corp. uPD720201 USB 3.0 Host
+Controller in the PCIe slot and booted up.
+The above mentioned errors were indeed gone.
+Furthermore ``lspci`` showed that card and when I plugged in an USB 3
+drive in one of the ports, it was correctly detected and I could mount
+the partition on my system. So feel free to include:
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
+
+Cheers,
+  Diederik
+
+> Those issues were already mentioned in the commit 43853e843aa6 (arm64: dt=
+s:
+> rockchip: Remove unsupported node from the Pinebook Pro dts, 2024-04-01),
+> together with a brief description of the out-of-tree enumeration delay pa=
+tch
+> that reportedly resolves those issues.  In a nutshell, booting a RockPro6=
+4
+> with some PCI Express cards attached to it caused a kernel oops. [4]
+>
+> Symptomatically enough, to the commit author's best knowledge, only the P=
+ine64
+> RockPro64, out of all RK3399-based boards and devices supported upstream,=
+ has
+> been reported to suffer from those PCI Express issues, and only the RockP=
+ro64
+> had some of the PCI Express supplies missing in its DT.  Thus, perhaps so=
+me
+> weird timing issues exist that caused the "vcca_1v8" always-on regulator,
+> which is part of the RK808 PMIC, to actually not be enabled before the PC=
+I
+> Express is initialized and enumerated on the RockPro64, causing oopses wi=
+th
+> some PCIe cards, and the aforementioned enumeration delay patch [4] proba=
+bly
+> acted as just a workaround for the underlying timing issue.
+>
+> Admittedly, the Pine64 RockPro64 is a bit specific board by having a stan=
+dard
+> PCI Express slot, allowing use of various standard cards, but pretty much
+> standard PCI Express cards have been attached to other RK3399 boards as w=
+ell,
+> and the commit author is unaware ot such issues reported for them.
+>
+> It's quite hard to be sure that the PCI Express issues are fully resolved=
+ by
+> these additions to the DT, without some really extensive and time-consumi=
+ng
+> testing.  However, these additions to the DT can result in good things an=
+d
+> improvements anyway, making them perfectly safe from the standpoint of be=
+ing
+> unable to do any harm or cause some unforeseen regressions.
+>
+> Shuffle and reorder the "vpcie*-supply" properties a bit, so they're sort=
+ed
+> alphanumerically, which is a bit more logical and more useful than having
+> these properties listed in their strict alphabetical order.
+>
+> These changes apply to the both supported hardware revisions of the Pine6=
+4
+> RockPro64, i.e. to the production-run revisions 2.0 and 2.1. [1][2]
+>
+> [1] https://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+> [2] https://files.pine64.org/doc/rockpro64/rockpro64_v20-SCH.pdf
+> [3] https://z9.de/hedgedoc/s/nF4d5G7rg#reboot-tests-for-PCIe-improvements
+> [4] https://lore.kernel.org/lkml/20230509153912.515218-1-vincenzopalazzod=
+ev@gmail.com/T/#u
+>
+> Fixes: bba821f5479e ("arm64: dts: rockchip: add PCIe nodes on rk3399-rock=
+pro64")
+> Cc: stable@vger.kernel.org
+> Cc: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
+> Cc: Peter Geis <pgwipeout@gmail.com>
+> Cc: Bjorn Helgaas <helgaas@kernel.org>
+> Reported-by: Diederik de Haas <didi.debian@cknow.org>
+> Tested-by: Chris Vogel <chris@z9.de>
+> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/ar=
+m64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> index 47dc198706c8..41ee381ff81f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> @@ -673,8 +673,10 @@ &pcie0 {
+>  	num-lanes =3D <4>;
+>  	pinctrl-names =3D "default";
+>  	pinctrl-0 =3D <&pcie_perst>;
+> -	vpcie12v-supply =3D <&vcc12v_dcin>;
+> +	vpcie0v9-supply =3D <&vcca_0v9>;
+> +	vpcie1v8-supply =3D <&vcca_1v8>;
+>  	vpcie3v3-supply =3D <&vcc3v3_pcie>;
+> +	vpcie12v-supply =3D <&vcc12v_dcin>;
+>  	status =3D "okay";
+>  };
+> =20
+
+
+--3e1d67d79bc1372e9f689bf3a32389e21547715a78ffa78981b7ded1a50b
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ8YZxQAKCRDXblvOeH7b
+btp4AQCpxT1Wwlbg+zU1W+K7B20UFqP9NHEG0RITnzD0J3T3KQEAnWg5e7gb3kpe
+v8idNl4faXofRHNasq3iEeMwbqLWQA0=
+=fTAb
+-----END PGP SIGNATURE-----
+
+--3e1d67d79bc1372e9f689bf3a32389e21547715a78ffa78981b7ded1a50b--
+
+
+--===============6451285347059009821==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6451285347059009821==--
+
