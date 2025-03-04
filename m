@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 669BCC021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E4AC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:18:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k1ms2c5nz1E2O0jru7pJj+yLxZuuSmFsOl9KCbMgkWE=; b=VxzmsLKuSiG5vu
-	bRTMKWuUdEuwrLO3zXI33XlkdY5EjyYTCJozwvgVP5FVVxhGzcL3h3XR5Kqo8MnuqZ6eL6o3D2HT8
-	dGLRLtDppPTU/LUBAPHrL3fV3GB0/OirbPi4PNIkNBb+PqEQWJMd4flnVk3kSSmGjD7e2koEZU3Nv
-	GrCsNiwHR2DAESelh5wdUyLdw+apxA+XdyHrULseuJ+Pr7+XFr6nC7LwbFTv+sdQLiHaBCkmVvEZk
-	KQvm6BJZfOGOOpqEL+OtUGrJuJQzL3rVkAcLBXpAb81KxhmWRj7uen7EmjZhaDoe0T9oHsPbvCmsH
-	SW2+c+liU93vag0Pny9Q==;
+	List-Owner; bh=GMMlUkz9vHS55P56Rpx7SZtBwJ+SLAN4IA3v8mXsEq4=; b=N61BfvW4qHPZ6F
+	BRkT6+WoUG609pEoVLScrTpGd+DlTNU7jZX5v6h9i/RH7tEf4HtibFtQZQNKp2/ekUqQ+BkM6DvT4
+	cxF+dIalmX7LiENHrH52cJ2n7id5BqF0bCvAS62ab53Ib6MNyGimx1sXnN1cOoHB5Q93crDcbLgjs
+	3B34/yj9rMBrje1rbEMopBRSLsQ1tQsTSdtciko+4Zdoq/Wrp29htSTNaswxb4urwFqP/do91rHqq
+	mypAkblTtLIRC8XatUeslEMaX0eOJFmKcNMU/m1hQ9hy4sQcHVpg/iaDjpwbD91kZHIJgHSpwWN6K
+	vQ1KeT1p0c5irEbVcGNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYWU-000000069Ns-2mL9;
-	Tue, 04 Mar 2025 20:05:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tpYil-00000006AmQ-2mda;
+	Tue, 04 Mar 2025 20:18:31 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYTY-000000068yf-2V5h;
-	Tue, 04 Mar 2025 20:02:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=6OmRnB5M5S6dx+wb2qMyKou5/KtA9SYAkAHphHGaljI=; b=Gf6oHUZr94DYlA6dKjxhYJh6F2
-	BHB5lOa/AEu2198ueeJ4904kMSo/8BMfjPTC+/4k/pGNvRBOLBeXXIdUN9Lo6I0L/phxRJpIn2wfH
-	ab/54hjnUK1zbR+pdkVgiWvsCQZng0+o+Lh4/8oakjw9aJZ0lxiZBb0eOtJ/dUgPj/ZUaRObZT1ea
-	rKdFCXJZPmPE7P69FKuWbCpey3M8wEAONHjgQGHqqI/XR8F13Mei9SShN3r4c+HOlYzmFFWaOUZeF
-	QrvhhtC0Ud6riV3SDZhvvPQA+/iqGc3tOAMeB1AheIdCX9YAbBJYf0e48nUDSkCfU+Ct1TBuwI25q
-	T3pf1juw==;
-Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYTV-00000000Ck1-0jtk;
-	Tue, 04 Mar 2025 20:02:47 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id F022C25C7A;
-	Tue,  4 Mar 2025 21:02:38 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rsbyoN1SgCEm; Tue,  4 Mar 2025 21:02:34 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741118554; bh=UePoE7L+f7kPyHfkYoHOYaJpHOxR5rYnvPUWwiwyiDc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ax6vpksmBD+CYVeLZO+qbuQqOz2F8d/OHrJiYEXf1cqJe9I39YUqdyU6VbDhsPhg4
-	 x+9AtlWcGvxnP5kgm596OqXJ1UMLJ1pyh22g4Qw/WavCbiTwP//6MpzLSyokW3w5ie
-	 BR8mIqqeqdywjNKaS//tqsQ5hf7Qkjx2uVkn4/nheuYbd1udjK2yupqFjIRmr2h+h6
-	 8pUWyA23Kj0cX4mdTlPQmLeV9qIcAE2kD6Gd8YVKfGHZS6ULe778dkoS6HSLgB8/2P
-	 k+rhVLTu6sFAfL1CJ8ZAEYVygWCcBdoYNgFGi/1knwkFOJPIfHZht/zvet292xVYB2
-	 ichjAKH9MPMnA==
-Date: Tue, 4 Mar 2025 20:02:14 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
- Radxa E20C
-Message-ID: <Z8dcRjPcbKqEyKdT@pie.lan>
-References: <20250301104835.36439-1-ziyao@disroot.org>
- <20250304121036.1453284-1-amadeus@jmu.edu.cn>
- <Z8dZWYpABghRHHge@pie.lan>
- <5c429552-bdbb-43d9-8e07-bacda57c0fcf@kwiboo.se>
+	id 1tpYhC-00000006AWb-3TZw
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Mar 2025 20:16:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1741119414; bh=44nkz0sv0GIrmXFRGFsYFzWfaFRmrSwGCiy2zDwKAPQ=;
+ b=lR9/f9tq8JEmCBhFZtEjEnMZTKsMkL/RaoEC8jgfuiXLD7IGPiCxR1hB/MzsvSSRjUA2XtL7Z
+ lA6y+j+J9YoK0yOmpK8esDexFAz6WPk9xqkbJxA5C3YtrJV6J5WSbvNZDxCxWqj0z89CjY4o1D1
+ fFHLAnw0THaN6e+xkFH8nLJz50mYJZYma+jHCT2IeUFlLzQy5eWK4u6ilUDKqv0kezF/hoXaWWB
+ UAkod2aoc3RKjgCch/4BeoEYt23xD2FH6VNfR5p19o9ov3VwiIDQy9lGyOiQPl3iOuNAbtIJd0D
+ T7QhPNZw+vx191mSV3SAHj7y33dXfX7ZETUr6yPsf7ag==
+X-Forward-Email-ID: 67c75fb366a4509299dbdf53
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.59
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 1/4] arm64: dts: rockchip: Add leds node to Radxa E20C
+Date: Tue,  4 Mar 2025 20:16:34 +0000
+Message-ID: <20250304201642.831218-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250304201642.831218-1-jonas@kwiboo.se>
+References: <20250304201642.831218-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5c429552-bdbb-43d9-8e07-bacda57c0fcf@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_200245_827019_B0DF7DBE 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20250304_121654_957696_D047EE1C 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,68 +77,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, frank.wang@rock-chips.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 04, 2025 at 08:55:36PM +0100, Jonas Karlman wrote:
-> Hi Yao Zi,
-> 
-> On 2025-03-04 20:49, Yao Zi wrote:
-> > On Tue, Mar 04, 2025 at 08:10:36PM +0800, Chukun Pan wrote:
-> >> Hi,
-> >>
-> >>> +	aliases {
-> >>> +		mmc0 = &sdmmc;
-> >>
-> >> s/mmc0/mmc1
-> > 
-> > Will take it and add the missing pinctrl, as Jonas already pointed out.
-> > 
-> >>> +&sdmmc {
-> >>> +	bus-width = <4>;
-> >>> +	cap-mmc-highspeed;
-> >>> +	cap-sd-highspeed;
-> >>
-> >> I think for sdcard, only cap-sd-highspeed
-> >> is needed, not cap-mmc-highspeed?
-> > 
-> > This makes sense, will remove it in the next version.
-> 
-> Please do not remove the cap-mmc-highspeed prop, I tested the controller
-> with a microSD to eMMC adapter and MMC HS speed is supported:
-> 
->   mmc1: card 59b4 removed
->   mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
->   mmc_host mmc1: Bus speed (slot 0) = 49800000Hz (slot req 52000000Hz, actual 49800000HZ div = 0)
->   mmc1: new high speed MMC card at address 0001
->   mmcblk1: mmc1:0001 DG4008 7.28 GiB
->    mmcblk1: p1 p2
->   mmcblk1boot0: mmc1:0001 DG4008 4.00 MiB
->   mmcblk1boot1: mmc1:0001 DG4008 4.00 MiB
->   mmcblk1rpmb: mmc1:0001 DG4008 4.00 MiB, chardev (499:0)
-> 
->   ~ # cat /sys/kernel/debug/mmc1/ios
->   clock:          52000000 Hz
->   vdd:            21 (3.3 ~ 3.4 V)
->   bus mode:       2 (push-pull)
->   chip select:    0 (don't care)
->   power mode:     2 (on)
->   bus width:      2 (4 bits)
->   timing spec:    1 (mmc high-speed)
->   signal voltage: 0 (3.30 V)
->   driver type:    0 (driver type B)
+Radxa E20C has three gpio controlled leds (sys, wan and lan).
 
-Oops, indeed, I didn't expect the adapted usecase and thought only
-sdcards could be connected through the interface.
+Add led nodes and set default trigger to heartbeat for the sys led and
+netdev for the lan and wan leds.
 
-> Regards,
-> Jonas
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: Rename gpio-leds node to leds
+---
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-Thanks for the correction,
-Yao Zi
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+index 5161d22330ab..7f0237206405 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+@@ -6,6 +6,8 @@
+  */
+ 
+ /dts-v1/;
++
++#include <dt-bindings/leds/common.h>
+ #include "rk3528.dtsi"
+ 
+ / {
+@@ -15,6 +17,52 @@ / {
+ 	chosen {
+ 		stdout-path = "serial0:1500000n8";
+ 	};
++
++	leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&lan_led_g>, <&sys_led_g>, <&wan_led_g>;
++
++		led-lan {
++			color = <LED_COLOR_ID_GREEN>;
++			default-state = "off";
++			function = LED_FUNCTION_LAN;
++			gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "netdev";
++		};
++
++		led-sys {
++			color = <LED_COLOR_ID_GREEN>;
++			default-state = "on";
++			function = LED_FUNCTION_HEARTBEAT;
++			gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_LOW>;
++			linux,default-trigger = "heartbeat";
++		};
++
++		led-wan {
++			color = <LED_COLOR_ID_GREEN>;
++			default-state = "off";
++			function = LED_FUNCTION_WAN;
++			gpios = <&gpio4 RK_PC0 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "netdev";
++		};
++	};
++};
++
++&pinctrl {
++	leds {
++		lan_led_g: lan-led-g {
++			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		sys_led_g: sys-led-g {
++			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wan_led_g: wan-led-g {
++			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &uart0 {
+-- 
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
