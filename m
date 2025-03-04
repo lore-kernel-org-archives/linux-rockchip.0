@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5D1C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 21:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D3DC282D0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 21:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RBHofqWB/5ubRC/BIGddaAjQ+O3c3awqLwmvmMqle0A=; b=FJGwRAdukFCVy4xpRfQoDC9D2s
-	489CeCA1GebpM6pzeQIsRY4QHKEoIfUqgzGVK7ACfLsFvJWIPpdacrVc2CEaJ1hh13RycllsDjalg
-	wzHRj/3L2Z4PM0Lpjq3RjTh29WkiPbcHWVbVEW0jfxNJBfzffFKWgKBMvbvEKfKrrFaMhqIEuvulQ
-	smlELY3xTA6sXwgIVDM0JHrzDjmSsxgSjJaPAZg6LRi2ulBxXUQddgn44gnkpjwhCST2/XnA7RC3I
-	MraRvlaYfcnFLF1G7SXh3V0JjbgBCN2/R95HptJ0HHY2/uQtOOy4ofqJ+ZO2J4coH2MONrKj0JAwn
-	wDgiQ4aA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cNRJCJu+0wAwwKVJz8ACRz9Tj8FHDCPjXmEU8K+vqVI=; b=mTIShLXjcjPgfu
+	prg44hlcfSB/IL42se2qvkazbGhxLwFlQSDD5Su6UL2ZaOOBXOkJllIvniagVRhBXzEMzRkyzxmV1
+	s7hIpUEMLANXTyl30GBkO81KU8rer4RtjWo2yWae3Jh4PZe4L2hEX1XdEkLmO4dZ4f4Vu6e4CbwSC
+	CNAOFLaHKEdmk1HjXrhw0CqNkW+8LgZif7FQUWhqe5bMekStGepsQbJOLuzIGQy+ieGrc6rXifjne
+	6w1Tq72IVRmTFsFui1ZHS0hVMteCp3/m9gqI1JXqqtF0RzStBFc/8wffCRKoknbKz06GLUF9BMqsT
+	TY409DpGIuPYv3bWY47Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpa4G-00000006KFp-2Ug0;
-	Tue, 04 Mar 2025 21:44:48 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tpa8F-00000006Ki4-0Jow;
+	Tue, 04 Mar 2025 21:48:55 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYuH-00000006BwF-2hdi;
-	Tue, 04 Mar 2025 20:30:26 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741120223;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=a6WzCje76QLUKJGbmYoeUe7d9zKFda9oGc8+kEK4a04=;
-	b=jNP4ReSawiAxad9womJccr4tfSjzlhZUJA6DV3kWGJXSysytY4Z8oqIOu2KElbzgCtxThe
-	Hb6obA+e0Qo/eYo2+zpV+mtx40sUxmEqUnAw4mQxJbez7q10pXKoybJIO9Uu2fYNmla3cE
-	PDPzlUbH2X+2eWAHvki/b8nLITpLoAopv5K8ASny7u2n7w253EIR3hZZPTyz/t/zEY2hvK
-	1h4mrF8gHB7qXOgkGIyyPIFUWoBghSgDu13Y9Jz18RqL63V6sJvR3FyqOKdUZrOXV6xRnT
-	RG5VgCo8Voq1kDCl3iZs+gL4BxgzMADdzke5argxV/fGYQPeGQ58inZobpDDaQ==
-Date: Tue, 04 Mar 2025 21:30:22 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
+	id 1tpa6g-00000006KZX-1X7H;
+	Tue, 04 Mar 2025 21:47:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=67iaMe7dRzqdmdTZ5v9Y4GVdBIwy//hSn3Sql8CF+no=; b=vg0Z//jE1WGL7of1Q5aJ3A/0FU
+	Hr9f3WsWyxNDZjpXya07ncB0gXc1w968ujfeeP1knpiF1RddY+gM54MqMLIGdrqjS1uu2nB4vOlk5
+	Qj/6htp7QEHspTf8d1BKwSm5MW7HV2NWaET6JyKGaBu11oUCSVn2c7Zlkxyp12OvAu2lglHii2HCE
+	9gQgzhz5CyQnFHNh5M1Lwt417y534ClWLzqqsQOGww9A6x6ubDcoVRm+MO0XeAd458ZjOg9/oCvBb
+	9syDFHjxYXLkR/Wt9LN+ijmSCi5yj2crpi+m7KdmAgabdBNvyOc2V+MGQcEoG3q+7/pu3gdPWY62W
+	wzRLa3qA==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpa6d-000000049T3-1xHl;
+	Tue, 04 Mar 2025 21:47:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=67iaMe7dRzqdmdTZ5v9Y4GVdBIwy//hSn3Sql8CF+no=; b=LwuGfFrDvpwUU2B/5O/ULqbrDV
+	oEVLnfpfhFu69Ah2JLQbY0xkmgJLtF02XMOjjT+j6hUtQIjF1n2zEuxMw03K//2AjsxukLhZmm8/s
+	0G47epspd1m/oEAqwB74vAgVd3OX5Zx1Xalh6MS2jAD+6NsQn0v+nMPM6rEKT9YW/U+mFI6b+UIsW
+	CVqjoYsJn1RnQwgi6WfPvIX4FjYoavZEyP+Ep5Q82IpxQY6Aq2IJUCN6mypnZKaXbZ1riCOfg+3T0
+	G7qnvSdnpDszk21aAuNc4yp9TebRb9TxEl9Oo92/0IN5T4vCu8I9lOXD0j2YXWa5GuC+MhNaT0phF
+	pcsq8BkA==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tpZXr-0006Cf-7O; Tue, 04 Mar 2025 22:11:19 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Dragan Simic <dsimic@manjaro.org>
 Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
  mripard@kernel.org, tzimmermann@suse.de, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, quentin.schulz@cherry.de, Heiko Stuebner
- <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v3 1/3] drm/rockchip: lvds: move pclk preparation in with
- clk_get
-In-Reply-To: <20250304124418.111061-2-heiko@sntech.de>
+ linux-kernel@vger.kernel.org, quentin.schulz@cherry.de,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v3 1/3] drm/rockchip: lvds: move pclk preparation in with clk_get
+Date: Tue, 04 Mar 2025 22:11:18 +0100
+Message-ID: <3048640.Lt9SDvczpP@diego>
+In-Reply-To: <041c5f0e2371817a27577bd0989b9dca@manjaro.org>
 References: <20250304124418.111061-1-heiko@sntech.de>
  <20250304124418.111061-2-heiko@sntech.de>
-Message-ID: <041c5f0e2371817a27577bd0989b9dca@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+ <041c5f0e2371817a27577bd0989b9dca@manjaro.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_123025_837429_90F481FF 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250304_214715_529098_4A90EEE0 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,41 +86,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
-
-On 2025-03-04 13:44, Heiko Stuebner wrote:
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> index 385cf6881504..ecfae8d5da89 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> @@ -448,15 +448,13 @@ struct drm_encoder_helper_funcs
-> px30_lvds_encoder_helper_funcs = {
->  static int rk3288_lvds_probe(struct platform_device *pdev,
->  			     struct rockchip_lvds *lvds)
->  {
-> -	int ret;
-> -
->  	lvds->regs = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(lvds->regs))
->  		return PTR_ERR(lvds->regs);
-> 
-> -	lvds->pclk = devm_clk_get(lvds->dev, "pclk_lvds");
-> +	lvds->pclk = devm_clk_get_prepared(lvds->dev, "pclk_lvds");
->  	if (IS_ERR(lvds->pclk)) {
-> -		DRM_DEV_ERROR(lvds->dev, "could not get pclk_lvds\n");
-> +		DRM_DEV_ERROR(lvds->dev, "could not get or prepare pclk_lvds\n");
-
-I'm wondering why this patch isn't replacing deprecated DRM
-logging macros with their preferred successors in a couple of
-places, just like what the patch 2/3 from this series does?
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDQuIE3DpHJ6IDIwMjUsIDIxOjMwOjIyIE1FWiBzY2hyaWViIERyYWdhbiBT
+aW1pYzoKPiBIZWxsbyBIZWlrbywKPiAKPiBPbiAyMDI1LTAzLTA0IDEzOjQ0LCBIZWlrbyBTdHVl
+Ym5lciB3cm90ZToKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfbHZkcy5jCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRz
+LmMKPiA+IGluZGV4IDM4NWNmNjg4MTUwNC4uZWNmYWU4ZDVkYTg5IDEwMDY0NAo+ID4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+ID4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+ID4gQEAgLTQ0OCwxNSArNDQ4LDEz
+IEBAIHN0cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MKPiA+IHB4MzBfbHZkc19lbmNvZGVy
+X2hlbHBlcl9mdW5jcyA9IHsKPiA+ICBzdGF0aWMgaW50IHJrMzI4OF9sdmRzX3Byb2JlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gPiAgCQkJICAgICBzdHJ1Y3Qgcm9ja2NoaXBfbHZk
+cyAqbHZkcykKPiA+ICB7Cj4gPiAtCWludCByZXQ7Cj4gPiAtCj4gPiAgCWx2ZHMtPnJlZ3MgPSBk
+ZXZtX3BsYXRmb3JtX2lvcmVtYXBfcmVzb3VyY2UocGRldiwgMCk7Cj4gPiAgCWlmIChJU19FUlIo
+bHZkcy0+cmVncykpCj4gPiAgCQlyZXR1cm4gUFRSX0VSUihsdmRzLT5yZWdzKTsKPiA+IAo+ID4g
+LQlsdmRzLT5wY2xrID0gZGV2bV9jbGtfZ2V0KGx2ZHMtPmRldiwgInBjbGtfbHZkcyIpOwo+ID4g
+KwlsdmRzLT5wY2xrID0gZGV2bV9jbGtfZ2V0X3ByZXBhcmVkKGx2ZHMtPmRldiwgInBjbGtfbHZk
+cyIpOwo+ID4gIAlpZiAoSVNfRVJSKGx2ZHMtPnBjbGspKSB7Cj4gPiAtCQlEUk1fREVWX0VSUk9S
+KGx2ZHMtPmRldiwgImNvdWxkIG5vdCBnZXQgcGNsa19sdmRzXG4iKTsKPiA+ICsJCURSTV9ERVZf
+RVJST1IobHZkcy0+ZGV2LCAiY291bGQgbm90IGdldCBvciBwcmVwYXJlIHBjbGtfbHZkc1xuIik7
+Cj4gCj4gSSdtIHdvbmRlcmluZyB3aHkgdGhpcyBwYXRjaCBpc24ndCByZXBsYWNpbmcgZGVwcmVj
+YXRlZCBEUk0KPiBsb2dnaW5nIG1hY3JvcyB3aXRoIHRoZWlyIHByZWZlcnJlZCBzdWNjZXNzb3Jz
+IGluIGEgY291cGxlIG9mCj4gcGxhY2VzLCBqdXN0IGxpa2Ugd2hhdCB0aGUgcGF0Y2ggMi8zIGZy
+b20gdGhpcyBzZXJpZXMgZG9lcz8KCmJlY2F1c2UgdGhpcyBwYXRjaCBpcyBhYm91dCByZW9yZ2Fu
+aXppbmcgdGhlIGNsb2NrIGhhbmRsaW5nIDotKQoKQ2hhbmdpbmcgdGhlIGxvZ2dpbmcgZnVuY3Rp
+b25zIGlzIGEgZGlmZmVyZW50IHRvcGljIGFuZCBzbyBoYXMgbm8gcGxhY2UKaW4gX3RoaXNfIHBh
+dGNoLgoKQW5kIG9mIGNvdXJzZSBkcm0tbG9nZ2luZyBpcyBhIHNlcGFyYXRlIGJlYXN0IHRvIHRh
+bWUgYWx0b2dldGhlci4KZHJtX2VyciB2cy4gZGV2X2VycjsgbHZkcy0+ZGV2IHZzLiBkcm1fZGV2
+ICh0aGVyZSB3YXMgYW4gYXJndW1lbnQgb3Zlcgp3aGF0IGJlbG9uZ3Mgd2hlcmUgcmVjZW50bHkp
+IC4KCkFuZCBJIGhhZCBuZWl0aGVyIHRoZSBjYXBhY2l0eSBub3IgdGltZSB0byBkZWx2ZSBpbnRv
+IGFsbCB0aGF0LCBzbyBsaW1pdGVkCm15c2VsZiB0byBzdHVmZiBJIHVuZGVyc3Rvb2QgOi0pCgpI
+ZWlrbwoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
