@@ -4,67 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08EB7C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:15:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A3CBC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:18:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DsBwhMBV63AOdwiIFL8Hpv9Iyup3D0MmGe8ZGFXw31k=; b=18tZFK98hL390y
-	8rEQcUXmmFe+35o54xuYGftJWUcmL9+0Gu6TB8CRmgGfaL5unTokiwAbLIUdeaeZ8NUdK/1nRlfu2
-	tRwMCOTAFFyUC8ORHRJRzMh3Ws/nUy+9eNmOkihZhkGJVw+RtNfoHsw9/hg8E11EUjQiLhYzA6o0a
-	Y0QtaloYkpeYVPZmWKq2deEDiQ6N5uj79B3GagNzpFb5BytCstZxvuzQXezMZ8jkUKxgLCk880PJ+
-	TCdwzBMcKddT5b16sy8DLBKfy8TOshPgJyIR8HEf0FA0OLVV9a364To2mo5+D/uGy4Z6fG92qfFr2
-	Mx1TuJ4Qy2wxxujet83A==;
+	List-Owner; bh=2toYxGX5ZUF3F6+1dBkp+576KuL0LvqHs50xLbvwbaA=; b=Tcg7bqtZeIzgUS
+	XbMtrrJxLUbyfFz3Teb1vumctloCBmt5u6VSTY82d4b7CYDHfxGJoY1DLh6pZHYRWQuNenA6gpyFH
+	M53mwd4ccY3TQUr2EszPoESdnkz0koylAqlJbpUp1FAEQRV1RkkmgZaSsa6AkVNDOkORGsQEhAHnU
+	+A/Es7FVzFzQcYRZRjfEXZi9gYnFXSfJg7wo4/Fejp6M5o1NySELNJawedut+Qa+WE5Q76qLpSl4Z
+	R0bYixTW01UqZCn+9UZvhuykMvZ0RLx1bhNduynnUFMc4b4jQwbMRFsRwdk3CWrngxbCofnN9TENx
+	nMRcbWWfGsQ9c7W18o7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpRBC-00000004bA1-3Nm6;
-	Tue, 04 Mar 2025 12:15:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tpREJ-00000004bp1-1xDe;
+	Tue, 04 Mar 2025 12:18:35 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpR0X-00000004Vyz-1sd6;
-	Tue, 04 Mar 2025 12:04:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741089859;
-	bh=7VUHnquwE/QdFs1qoBO1l/34onrJ8q7S6w5kpFpcMcw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AjVbo8kdonHW6j6x9ddScTYnIJPHdmtbEdjH1VWVWapBKzQgU2yynW2nq7HtcWffb
-	 Td5IvOxQBuDOgt0xFmEIXEl2EknaG5wnlkB/2cFHQ7Q6ghm+qMSxBPE270+dX+DpKt
-	 UizZbUXAs9QmKoMY8S4ju5GHl4GnNhSg3IsxI6Ll/QmeFHwZ2euB128jYledwU3gTR
-	 xTNm+ghilHPByK7Jyh1bOp4NtD7TOfuLOSRrcrj5x4oz6RjTiVkUBWlK1A4V58mUGT
-	 v+1vjUTxrlU3ySKguUjwUPT4Z1BkO1Acf5xesQ2V2mtkeywwfCiN7SWvAcEP+OASpV
-	 NVFz6VQR3IWJw==
-Received: from [192.168.1.90] (unknown [188.27.58.83])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 325F217E0A4E;
-	Tue,  4 Mar 2025 13:04:19 +0100 (CET)
-Message-ID: <155f609f-994f-4140-8453-7e38a5e6deef@collabora.com>
-Date: Tue, 4 Mar 2025 14:04:18 +0200
+	id 1tpRBd-00000004bHr-01yL;
+	Tue, 04 Mar 2025 12:15:50 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c02:1dd0:e9f1:cb9a:640c:3ba3])
+	by smtp.qiye.163.com (Hmail) with ESMTP id ce62fafc;
+	Tue, 4 Mar 2025 20:15:38 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: ziyao@disroot.org
+Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on Radxa E20C
+Date: Tue,  4 Mar 2025 20:10:36 +0800
+Message-Id: <20250304121036.1453284-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250301104835.36439-1-ziyao@disroot.org>
+References: <20250301104835.36439-1-ziyao@disroot.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
- <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
- <20250304-small-mindful-mongrel-bd6f8b@houat>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250304-small-mindful-mongrel-bd6f8b@houat>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGkpJVh5CThgfT0lMTR4aSVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtJQUofH0tBHkIdSkEYGUIaQU1PSxhBSBkaSFlXWRYaDx
+	IVHRRZQVlPS0hVSktISk5MTlVKS0tVSkJLS1kG
+X-HM-Tid: 0a95611544ad03a2kunmce62fafc
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OE06KDo6SDIOI0IQAzEUDwxK
+	HEoKFCpVSlVKTE9KS0JLTkhCT05MVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0lBSh8fS0EeQh1KQRgZQhpBTU9LGEFIGRpIWVdZCAFZQUxLSjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_040421_643568_5E3B9544 
-X-CRM114-Status: GOOD (  16.86  )
+X-CRM114-CacheID: sfid-20250304_041549_204876_E4C1E1F9 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,70 +62,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, frank.wang@rock-chips.com, jonas@kwiboo.se, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Chukun Pan <amadeus@jmu.edu.cn>, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Hi,
 
-On 3/4/25 10:13 AM, Maxime Ripard wrote:
-> Hi,
-> 
-> On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
->> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
->> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
->> and not before.
->>
->> While at it, introduce a define for this rate limit constant.
->>
->> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> @@ -320,6 +320,7 @@
->>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
->>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
->>  
->> +#define HDMI14_MAX_RATE			340000000
->>  #define HDMI20_MAX_RATE			600000000
->>  
->>  enum dp_link_rate {
->> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
->>  
->>  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
->>  
->> -	if (rate >= 3400000) {
->> +	if (rate > HDMI14_MAX_RATE / 100) {
-> 
-> The rate seems to come from rk_hdptx_phy_power_on and eventually from
-> tmds_char_rate in the PHY config options, so its rate is in Hertz.
+> +	aliases {
+> +		mmc0 = &sdmmc;
 
-The rate coming from rk_hdptx_phy_power_on() is in hHz, since it passed
-via dw_hdmi_qp_rockchip_encoder_enable() as
+s/mmc0/mmc1
 
-  phy_set_bus_width(hdmi->phy, div_u64(rate, 100));
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
 
-> HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
-> It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
+I think for sdcard, only cap-sd-highspeed
+is needed, not cap-mmc-highspeed?
 
-This stems from the ropll_tmds_cfg table containing the configuration
-params for the supported rates which requires the search keys to be
-provided in hHz rather than Hz.
+> +	disable-wp;
 
-I agree this is nothing but confusing, that's why I fixed this up in
-"phy: rockchip: samsung-hdptx: Avoid Hz-hHz unit conversion overhead"
+Missing pinctrl.
 
-Thanks for reviewing!
+> +	rockchip,default-sample-phase = <90>;
 
-Regards,
-Cristian
+It seems that all rk3528 devices need to set this
+default phase, so maybe this can be placed in dtsi?
+
+> +	sd-uhs-sdr104;
+
+The rk3528 devices uses gpio to switch IO voltage, maybe
+more modes should be added here like vendor kernel?
+And these devices use 3.3V IO voltage by default.
+
+	sd-uhs-sdr12;
+	sd-uhs-sdr25;
+	sd-uhs-sdr50;
+	sd-uhs-sdr104;
+
+Thanks,
+Chukun
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
