@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F88C282C6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 06:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7CABC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 06:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bFcGBtaj6cN1UT0G3/HGdseTgpy4DBSIjgB/6P5JprU=; b=vr7zDRooU8Nqb7egQlW2yPxMHI
-	s69RmCmMUkJiWWNHYAjxi5H1NfkMbZwTL2Bcxu3UFIGeOdT4G2VYzQbD2khfaIHK6UfY4kC3HKp3S
-	+Wcl3v37RcoGBQ6B7mAGm6t/FC+Ohv1pEWIUrTr0UFPX3vvJ2E7jA9ypl6EqH5j4DShEjuBTWLck0
-	OBu0+FOLIwAzq629xOEzvw/gYEnWiKD6rOy0kVA8WBRbLKL+urx6sEsV4160y0zRrG7tvwEVNGY6b
-	F7hHnqVD5YvR0vPjfJPXfyXFXvNdTMh4R1spGGviGgH7vLdwHTjO3B5eUFYZv7Q9blnUnp51Vl7xl
-	VbhdmUiw==;
+	bh=NHXeB5oQ0xhfMciyOG9ssTf3APdtJAi4Kn6kp5XiViI=; b=t+kQYHZRAgU3okoxEpJ1MYcsPE
+	G9+pm0IfYd1qdfxy1bGC5WRvwFm/A7/4aCg/qnkpWJdkrudnaqS/MC9BS1eo4JxApjHs/FycVEfbV
+	UigbPDXezTF2Dm/12MCgrUSfb7uoR2ohf/DJjv9izPIngdjKlDkPhGzS9QAzS7Xal8KmsoeGLXvFg
+	Kr7z4x60kQREVO3B1veEmjZa+bVbC8sYX08K2XBQDm+1CbM02h2SRRyCC026OOWxTqyK1Qt8Oiz2q
+	apYZFmemjDq8frR9fv9O0ucSUdN/o3EyBNVNatRHHAcfdrFQwBL9FZX1LeJLANL49tL9AHVjGpJum
+	Gc17FCnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpM5w-00000003Lhe-1fGM;
-	Tue, 04 Mar 2025 06:49:36 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tpMFI-00000003NAT-2GB7;
+	Tue, 04 Mar 2025 06:59:16 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpM1Y-00000003KX3-3IEI;
-	Tue, 04 Mar 2025 06:45:06 +0000
+	id 1tpMDg-00000003Mxp-3PaI;
+	Tue, 04 Mar 2025 06:57:38 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741070700;
+	t=1741071454;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=FmcbSR4fpWNtNMrwgorLBn1ejOQXpMGWv3rjGuDsu/0=;
-	b=KafPlS2cao/nkE3TIuUzFLvT/erara6+Y2BEZ2H14/Uo4qNsaWXNGS1U/c0NA+apCFUMYD
-	mc/rMiELEMkWa2jYe47TPRaf5zdIK08Ge7Dl/okrH2n8ARTId8mocZOSJ2bl4855JE/LWK
-	zQ0brIW4olIAMQgBSr1nCY+18N/pF83NiANjO+VHS9qUdPBtbI/GVZrvojeuMOyS0dsPcb
-	ZA03r/0K6Lfzmn4xoZVvbTvPq3kbyE9q2sXdtNr86zrY7hNP+cEFBQk6IfIlxV1V8ix+IF
-	S6mVe4bhchQ9jFB6A4vxIvAU28cUUidKev16wn6QhBqUGe6EsyBe0jOM6Id83w==
-Date: Tue, 04 Mar 2025 07:44:59 +0100
+	bh=8nD2IpkXkau4WZUb38wSv5b3eflHb98MypZT0H60FFg=;
+	b=lDzKW4rRCXkn4A9giJuVYXk/56OSuMDeqWKuBKTKaAClAxGeLBBF9W47S230gt0MWAhk3F
+	YqPOG1FKZIVKHOoVfOYADY5IpGhwPnVT4jexj4LLepZOFzlvrciptSUL9hwsfKGDipKXoh
+	d+26AMvkJzxfsi35CgFrMIYtJULL/DpfNGDo5BK4pyp1E8g4GHyBF6N9hHoZUIqrfH5v9G
+	eWJudVjnXxT6G4KpViWTpSiegwDL+qsBXbTGHVkxmJSmclq91bsd7ULkG163sEwzO2+ob0
+	ACdr9FE+3HARZvksja5hVH+Wp73Gla89bYGUmTBOAd/pKA0UFhwvh7aOqc9eEg==
+Date: Tue, 04 Mar 2025 07:57:34 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org,
@@ -48,16 +48,17 @@ Cc: linux-rockchip@lists.infradead.org,
  conor+dt@kernel.org, didi.debian@cknow.org, chris@z9.de
 Subject: Re: [PATCH v2 0/2] Slightly improve hardware description of Pine64
  RockPro64
-In-Reply-To: <174104113599.8946.16805724674396090918.b4-ty@sntech.de>
+In-Reply-To: <757afa87255212dfa5abf4c0e31deb08@manjaro.org>
 References: <cover.1740941097.git.dsimic@manjaro.org>
  <174104113599.8946.16805724674396090918.b4-ty@sntech.de>
-Message-ID: <757afa87255212dfa5abf4c0e31deb08@manjaro.org>
+ <757afa87255212dfa5abf4c0e31deb08@manjaro.org>
+Message-ID: <dff9509bcbe9be10b2df454c2dabc289@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_224505_124171_2882E5A2 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20250303_225737_159903_F61C01B1 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,78 +75,82 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
-
-On 2025-03-03 23:36, Heiko Stuebner wrote:
-> On Sun, 02 Mar 2025 19:48:02 +0100, Dragan Simic wrote:
->> This is a small series that introduces small improvements to the way
->> Pine64 RockPro64 [1] single-board-computer is described in the DT 
->> files.
->> This applies to both production-run revisions of the RockPro64.
+On 2025-03-04 07:44, Dragan Simic wrote:
+> On 2025-03-03 23:36, Heiko Stuebner wrote:
+>> On Sun, 02 Mar 2025 19:48:02 +0100, Dragan Simic wrote:
+>>> This is a small series that introduces small improvements to the way
+>>> Pine64 RockPro64 [1] single-board-computer is described in the DT 
+>>> files.
+>>> This applies to both production-run revisions of the RockPro64.
+>>> 
+>>> The introduced improvements boil down to eliminating some warnings 
+>>> from
+>>> the kernel log, by adding a previously undefined regulator and by 
+>>> adding
+>>> some previously missing references to the regulators.
+>>> 
+>>> [...]
 >> 
->> The introduced improvements boil down to eliminating some warnings 
->> from
->> the kernel log, by adding a previously undefined regulator and by 
->> adding
->> some previously missing references to the regulators.
+>> Applied, thanks!
 >> 
->> [...]
+>> [1/2] arm64: dts: rockchip: Add avdd HDMI supplies to RockPro64 board 
+>> dtsi
+>>       commit: bd1c959f37f384b477f51572331b0dc828bd009a
+>> [2/2] arm64: dts: rockchip: Add missing PCIe supplies to RockPro64 
+>> board dtsi
+>>       commit: 64ef4a4320e7aa3f0f267e01f170f52b90bf0b1b
+>> 
+>> I've moved the pcie12v supply up one line.
+>> While in a mathematical sense it's true 12 > 3.3, we're sorting
+>> alphabetical, so it's 1?? < 3?? .
+>> 
+>> And yes I sympathize with 3.3 < 12, but also have come to appreciate 
+>> not
+>> having overly many special cases :-)
 > 
-> Applied, thanks!
+> Great, thanks! :)
 > 
-> [1/2] arm64: dts: rockchip: Add avdd HDMI supplies to RockPro64 board 
-> dtsi
->       commit: bd1c959f37f384b477f51572331b0dc828bd009a
-> [2/2] arm64: dts: rockchip: Add missing PCIe supplies to RockPro64 
-> board dtsi
->       commit: 64ef4a4320e7aa3f0f267e01f170f52b90bf0b1b
+> I'm fine with the alphabetical ordering, albeit with some caveats
+> described below, but the following part of the patch description
+> should also be removed, if possible, so the patch description fully
+> matches the introduced changes:
 > 
-> I've moved the pcie12v supply up one line.
-> While in a mathematical sense it's true 12 > 3.3, we're sorting
-> alphabetical, so it's 1?? < 3?? .
+>   Shuffle and reorder the "vpcie*-supply" properties a bit, so they're 
+> sorted
+>   alphanumerically, which is a bit more logical and more useful than 
+> having
+>   these properties listed in their strict alphabetical order.
 > 
-> And yes I sympathize with 3.3 < 12, but also have come to appreciate 
-> not
-> having overly many special cases :-)
+> Admittedly, the patch itself indeed looks nicer [1] with the
+> alphabetical ordering, :) (which is quasi-alphabetical, actually,
+> please see below) but it might be better to have the DT guidelines
+> adjusted to specify alphanumerical ordering as well.  Even ls(1)
+> can sort filenames alphanumerically, with its "-v" option that
+> performs "natural sort of (version) numbers within text". [2]
+> 
+> The real trouble is that, if we were to apply the alphabetical
+> ordering strictly, we'd end up with the following order of node
+> properties in which 12 is before 1.8 and 3.3, which IMHO doesn't
+> make much sense:
+> 
+>   vpcie0v9-supply = <&vcca_0v9>;
+>   vpcie12v-supply = <&vcc12v_dcin>;
+>   vpcie1v8-supply = <&vcca_1v8>;
+>   vpcie3v3-supply = <&vcc3v3_pcie>;
+> 
+> I'm hoping you'll agree that specifying alphanumerical ordering
+> for the properties in the DTS coding style is the way to go, just
+> like it's already specified for the ordering of the nodes.  I'll
+> go ahead and submit an appropriate patch for the DT guidelines.
+> 
+> [1] 
+> https://web.git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=64ef4a4320e7aa3f0f267e01f170f52b90bf0b1b
+> [2] https://man.archlinux.org/man/ls.1.en#v
 
-Great, thanks! :)
+For future reference and for anyone interested, here's a link to
+the above-mentioned DTS coding style patch:
 
-I'm fine with the alphabetical ordering, albeit with some caveats
-described below, but the following part of the patch description
-should also be removed, if possible, so the patch description fully
-matches the introduced changes:
-
-   Shuffle and reorder the "vpcie*-supply" properties a bit, so they're 
-sorted
-   alphanumerically, which is a bit more logical and more useful than 
-having
-   these properties listed in their strict alphabetical order.
-
-Admittedly, the patch itself indeed looks nicer [1] with the
-alphabetical ordering, :) (which is quasi-alphabetical, actually,
-please see below) but it might be better to have the DT guidelines
-adjusted to specify alphanumerical ordering as well.  Even ls(1)
-can sort filenames alphanumerically, with its "-v" option that
-performs "natural sort of (version) numbers within text". [2]
-
-The real trouble is that, if we were to apply the alphabetical
-ordering strictly, we'd end up with the following order of node
-properties in which 12 is before 1.8 and 3.3, which IMHO doesn't
-make much sense:
-
-   vpcie0v9-supply = <&vcca_0v9>;
-   vpcie12v-supply = <&vcc12v_dcin>;
-   vpcie1v8-supply = <&vcca_1v8>;
-   vpcie3v3-supply = <&vcc3v3_pcie>;
-
-I'm hoping you'll agree that specifying alphanumerical ordering
-for the properties in the DTS coding style is the way to go, just
-like it's already specified for the ordering of the nodes.  I'll
-go ahead and submit an appropriate patch for the DT guidelines.
-
-[1] 
-https://web.git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=64ef4a4320e7aa3f0f267e01f170f52b90bf0b1b
-[2] https://man.archlinux.org/man/ls.1.en#v
+https://lore.kernel.org/linux-kernel/09d6f2fc111b3d6e58987336944f93ec36b65118.1741071107.git.dsimic@manjaro.org/T/#u
 
 _______________________________________________
 Linux-rockchip mailing list
