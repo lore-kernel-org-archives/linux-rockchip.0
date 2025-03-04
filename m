@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 976A4C282D3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:40:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C395C021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:46:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eB867+B/VkmOWO3Nr+A9yjuMaAQHOrsg2CS527ec3iQ=; b=s064iXGZ28dcVq
-	URc3Fpv017vcsu/ze7H409pwZLoXaoUQQFYokuLRfIObuhkS1Yh73Rfm/KIB4V8UfEE44Io3zsrEN
-	EEXJdQT7MMJJb9MCOQlSUAKDLhipHIITLxosfZYRk7LDqeDpDG8Drbiq2uZ5nh9/uTyK3yhwwQn0a
-	kUEFshKIorpr7KfefvMhL7AD3mAnFmlWVEEscqnJj3wMsbBJkg3fuXPwDeV3QHX5MW5rTYtWmZr4B
-	wG95SYSqHkRBcvOD0LxuMIWto3kpAvkFjT7tvbMMA1XH8VAfwLX2ZGLGgqSZvHrxVap/X+4TwKHoq
-	hY9AvvB99xOSrb514usQ==;
+	List-Owner; bh=m783Pn+Eu3u8oFLoxIAKN6Djj80GaKVAGUx9C9cqljk=; b=OEfGzipd91i/0t
+	fdeMYg0bMg3ubnh3N4/8nvbGFdJbrx/p0cQG+Vh53sXpUlEhVrcXeEDj93bTVCSDRM3skbcfNWGlt
+	+v0w2DsxPIH9jDxehxPQqAHIcSja4Foj1Xw8ZaMLZig0vitWAwcCtk2uFTmNwtUzxKJWCXCIkhVfE
+	uWSCokwe3qLGqempx+YTfLpI/LDv4ovj9Aw2S2zS+WY4a0Myam55hm4KWeWLv/QfZf06QQL5qE2h5
+	ubB6ai3DA1jfCvFz5Nvdt6wr1Nu8ne0PfnO0CR20yFOOTUNpYdGjlfFk0jzigk3h1Ov0FJ6S4PTzZ
+	xUSQd9gJqY8hQtmh5VUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpRZ1-00000004fLR-3BVl;
-	Tue, 04 Mar 2025 12:39:59 +0000
+	id 1tpRfE-00000004g74-3C6M;
+	Tue, 04 Mar 2025 12:46:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpRXR-00000004f7w-0hig;
-	Tue, 04 Mar 2025 12:38:22 +0000
+	id 1tpRdd-00000004fqq-1G77;
+	Tue, 04 Mar 2025 12:44:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=uLskld3j/+jGE72aUEs0X5g8/a3WioUWDpwH6b83L3Y=; b=U7pImbBWMCBcZdY6HtiTtG9Qiv
-	hZXAmQxGGxL/wpSqvoAJwLfkxmNxFLX+PcRZEIGYFMb+ZXPB3I81woBaKSNTKEflxFq7DmnkjjfBE
-	iveMv0iQMn8SOl5LgaPTzBfaFt/dd5iewtIhxh1x+3GYQpkxHP0csVelI+awuONwDwW5ckcRx8+PW
-	MYejp09LT3p4Z4uhEow8TMa4M3rJ7Q+YldTLPjm0PgvrP/oRrf43ofpBPsilCrKc7Ik/N5ZRC5PeT
-	hMWDTE06C+kXl13B6KjhFNw/2a29T+HXHXzMOsEgIgz9jYAGg999K3n6unNhqJJ3g/qfEJuupm6Mg
-	YwAhTPZg==;
-Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
+	bh=SOimxFjP0O74i2+ZLCuEU3KuzT1QQlg4XvqoNtXpw3o=; b=bu7qt+Ve6i7GD+d3Lp7PEEAHQa
+	UmvRgCzyBPyZ0GJSgtpye0Z6fUXBQ0x+DMAWX11tAZ4BdcS1zAsHPOjsvzg02Qcuev2iz/EkG+qSI
+	sYgP8FFqYnHFZpE3UIOetrOES9qnzjC6aej7whTkqjU82KBcQ4iJW1bBi9a9zreaObl4ZHk8c9aJ5
+	2K5OeF4Vh246BNkMeAdRzNQYpRdiHZdndVccZe/x1RzDqnz92jMIwYtWWc2ClORlFglLS7llCdiE3
+	WJbTbj3y5FRWT0rgwMlsLqWtdbmMb3DZE+ZY62FOeAZ1vKmwtrScw9Dk88gjbZ9mADlAhi9U7iC6r
+	YNaQUtgg==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tpRX9-00037w-P6; Tue, 04 Mar 2025 13:38:03 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v2 2/2] drm/rockchip: lvds: Hide scary error messages on probe
- deferral
-Date: Tue, 04 Mar 2025 13:38:02 +0100
-Message-ID: <9817880.CDJkKcVGEf@diego>
-In-Reply-To: <0e54f70a-0b07-4ead-96fb-add2bbdaf787@cherry.de>
-References: <20250301173547.710245-1-heiko@sntech.de>
- <20250301173547.710245-3-heiko@sntech.de>
- <0e54f70a-0b07-4ead-96fb-add2bbdaf787@cherry.de>
+	id 1tpRdR-0003B0-MS; Tue, 04 Mar 2025 13:44:33 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	quentin.schulz@cherry.de,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v3 1/3] drm/rockchip: lvds: move pclk preparation in with clk_get
+Date: Tue,  4 Mar 2025 13:44:16 +0100
+Message-ID: <20250304124418.111061-2-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250304124418.111061-1-heiko@sntech.de>
+References: <20250304124418.111061-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_043821_203820_DC8FB0F9 
-X-CRM114-Status: GOOD (  18.69  )
+X-CRM114-CacheID: sfid-20250304_044445_389890_827682A9 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,55 +76,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDQuIE3DpHJ6IDIwMjUsIDEyOjQ2OjU5IE1FWiBzY2hyaWViIFF1ZW50aW4g
-U2NodWx6Ogo+ID4gQEAgLTQ2NSwxNCArNDY0LDE0IEBAIHN0YXRpYyBpbnQgcmszMjg4X2x2ZHNf
-cHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiA+ICAgCj4gPiAgIAlsdmRzLT5w
-aW5zLT5wID0gZGV2bV9waW5jdHJsX2dldChsdmRzLT5kZXYpOwo+ID4gICAJaWYgKElTX0VSUihs
-dmRzLT5waW5zLT5wKSkgewo+ID4gLQkJRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJubyBwaW5j
-dHJsIGhhbmRsZVxuIik7Cj4gPiArCQlkZXZfZXJyKGx2ZHMtPmRldiwgIm5vIHBpbmN0cmwgaGFu
-ZGxlXG4iKTsKPiA+ICAgCQlkZXZtX2tmcmVlKGx2ZHMtPmRldiwgbHZkcy0+cGlucyk7Cj4gPiAg
-IAkJbHZkcy0+cGlucyA9IE5VTEw7Cj4gPiAgIAl9IGVsc2Ugewo+ID4gICAJCWx2ZHMtPnBpbnMt
-PmRlZmF1bHRfc3RhdGUgPQo+ID4gICAJCQlwaW5jdHJsX2xvb2t1cF9zdGF0ZShsdmRzLT5waW5z
-LT5wLCAibGNkYyIpOwo+ID4gICAJCWlmIChJU19FUlIobHZkcy0+cGlucy0+ZGVmYXVsdF9zdGF0
-ZSkpIHsKPiA+IC0JCQlEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgIm5vIGRlZmF1bHQgcGluY3Ry
-bCBzdGF0ZVxuIik7Cj4gPiArCQkJZGV2X2VycihsdmRzLT5kZXYsICJubyBkZWZhdWx0IHBpbmN0
-cmwgc3RhdGVcbiIpOwo+ID4gICAJCQlkZXZtX2tmcmVlKGx2ZHMtPmRldiwgbHZkcy0+cGlucyk7
-Cj4gPiAgIAkJCWx2ZHMtPnBpbnMgPSBOVUxMOwo+IAo+IFNob3VsZCB0aG9zZSBiZSBkZXZfZXJy
-IGlmIHRoZXkgYXJlIG5vdCBicmVha2luZyBhbnl0aGluZz8gQWZ0ZXIgYWxsLCAKPiB0aGUgZGV2
-aWNlIHdpbGwgYWN0dWFsbHkgcHJvYmU/IE1heWJlIGRldl93YXJuIHdvdWxkIGJlIG1vcmUgYXBw
-cm9wcmlhdGU/Cj4gCj4gTWF5YmUgYSBzZXBhcmF0ZSBwYXRjaCBzaW5jZSB3ZSBoYWQgRFJNX0RF
-Vl9FUlJPUiBhbHJlYWR5LCBzbyBzd2l0Y2hpbmcgCj4gdG8gZGV2X2VyciBpbiBvbmUgYW5kIHRo
-ZW4gbG93ZXJpbmcgdGhlIGxvZyBsZXZlbCBpbiBhIHNlY29uZCB3b3VsZCBtYWtlIAo+ICJtb3Jl
-IiBzZW5zZT8KCkkgZGlkIGRlYmF0ZSBhIGJpdCB3aGV0aGVyIHRvIGlnbm9yZSBoZXJlIGFuZCBn
-byBkaXJlY3RseSB0byBkZXZfd2FybiwKYnV0IG9wdGVkIGZvciBEUk1fREVWX0VSUk9SIC0+IGRl
-dl9lcnIgLT4gZGV2X3dhcm4sIHRvIGtlZXAgdGhlIGNvbW1pdApkZXNjcmlwdGlvbiBpbnRhY3Qu
-IE90aGVyd2lzZSBwZW9wbGUgbG9va2luZyBhdCB0aGlzIHBhdGNoIGFsb25lIG1pZ2h0IGFzawpp
-ZiB0aGlzIHBhcnQgd2FzIGZvcmdvdHRlbiwgd2hlbiB0aGUgY29tbWl0IG1lc3NhZ2UgaW5kaWNh
-dGVzICJhbGwiLgoKU28gZXhwZWN0IGFuIGFkZGl0aW9uYWwgcGF0Y2ggaW4gdjMgOi0pIC4KCgo+
-ID4gQEAgLTU5Myw3ICs1ODksNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2x2ZHNfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiA+ICAgCQlsdmRzLT5mb3Jt
-YXQgPSByb2NrY2hpcF9sdmRzX25hbWVfdG9fZm9ybWF0KG5hbWUpOwo+ID4gICAKPiA+ICAgCWlm
-IChsdmRzLT5mb3JtYXQgPCAwKSB7Cj4gPiAtCQlEUk1fREVWX0VSUk9SKGRldiwgImludmFsaWQg
-ZGF0YS1tYXBwaW5nIGZvcm1hdCBbJXNdXG4iLCBuYW1lKTsKPiA+ICsJCWRldl9lcnIoZGV2LCAi
-aW52YWxpZCBkYXRhLW1hcHBpbmcgZm9ybWF0IFslc11cbiIsIG5hbWUpOwo+ID4gICAJCXJldCA9
-IGx2ZHMtPmZvcm1hdDsKPiAKPiBuaXBpdGNrOgo+IAo+IHJldCA9IGRldl9lcnJfcHJvYmUoZGV2
-LCBsdmRzLT5mb3JtYXQsICJpbnZhbGlkIGRhdGEtbWFwcGluZyBmb3JtYXQgCj4gWyVzXVxuIiwg
-bmFtZSk7Cgp5b3UncmUgcmlnaHQgb2YgY291cnNlCgouLi4KCj4gPiAgIAlyZXQgPSBjb21wb25l
-bnRfYWRkKCZwZGV2LT5kZXYsICZyb2NrY2hpcF9sdmRzX2NvbXBvbmVudF9vcHMpOwo+ID4gICAJ
-aWYgKHJldCA8IDApCj4gPiAtCQlEUk1fREVWX0VSUk9SKGRldiwgImZhaWxlZCB0byBhZGQgY29t
-cG9uZW50XG4iKTsKPiA+ICsJCXJldHVybiBkZXZfZXJyX3Byb2JlKGRldiwgcmV0LCAiZmFpbGVk
-IHRvIGFkZCBjb21wb25lbnRcbiIpOwo+ID4gICAKPiAKPiBTaG91bGQgdGhpcyByYXRoZXIgYmUg
-ZHJtX2Vycm9yPyBJIGJlbGlldmUgdGhpcyBpcyByZWxhdGVkIHRvIHRoZSAKPiBSb2NrY2hpcCBE
-Uk0gbWFpbiBkZXZpY2U/CgpJIHdvdWxkIGdyb3VwIHRoaXMgbW9yZSB0byBnZW5lcmFsIGRldmlj
-ZSBlcnJvci4KQ29tcG9uZW50X2FkZCBoYXBwZW5zIHdheSBiZWZvcmUgdGhlIGNvbXBvbmVudCBt
-YXN0ZXIgYmluZHMgYW55dGhpbmcuCgpkcm1fZXJyIGlzIHN1cHBvc2VkIHRvIGFsc28gcG9pbnQg
-dG8gdGhlIG1haW4gZHJtX2RldmljZSBhcyBpdHMgcGFyYW1ldGVyLAp3aGljaCBkb2VzIG5vdCBl
-dmVuIGV4aXN0IGF0IHRoaXMgcG9pbnQuCgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
+
+The LVDS block needs a separate pclk only on some socs, so currently
+requests and prepares it in the soc-specific probe function, but common
+code is required to unprepare it in the error path or on driver remove.
+
+While this works because clk_unprepare just does nothing if clk is NULL,
+this mismatch of who is responsible still is not very nice.
+The clock-framework already has a helper for clk-get-and-prepare even
+with devres support in devm_clk_get_prepared().
+
+This will get and prepare the clock and also unprepare it on driver
+removal, saving the driver from having to handle it "manually".
+
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 19 +++----------------
+ 1 file changed, 3 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 385cf6881504..ecfae8d5da89 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -448,15 +448,13 @@ struct drm_encoder_helper_funcs px30_lvds_encoder_helper_funcs = {
+ static int rk3288_lvds_probe(struct platform_device *pdev,
+ 			     struct rockchip_lvds *lvds)
+ {
+-	int ret;
+-
+ 	lvds->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(lvds->regs))
+ 		return PTR_ERR(lvds->regs);
+ 
+-	lvds->pclk = devm_clk_get(lvds->dev, "pclk_lvds");
++	lvds->pclk = devm_clk_get_prepared(lvds->dev, "pclk_lvds");
+ 	if (IS_ERR(lvds->pclk)) {
+-		DRM_DEV_ERROR(lvds->dev, "could not get pclk_lvds\n");
++		DRM_DEV_ERROR(lvds->dev, "could not get or prepare pclk_lvds\n");
+ 		return PTR_ERR(lvds->pclk);
+ 	}
+ 
+@@ -480,12 +478,6 @@ static int rk3288_lvds_probe(struct platform_device *pdev,
+ 		}
+ 	}
+ 
+-	ret = clk_prepare(lvds->pclk);
+-	if (ret < 0) {
+-		DRM_DEV_ERROR(lvds->dev, "failed to prepare pclk_lvds\n");
+-		return ret;
+-	}
+-
+ 	return 0;
+ }
+ 
+@@ -728,20 +720,15 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
+ 	dev_set_drvdata(dev, lvds);
+ 
+ 	ret = component_add(&pdev->dev, &rockchip_lvds_component_ops);
+-	if (ret < 0) {
++	if (ret < 0)
+ 		DRM_DEV_ERROR(dev, "failed to add component\n");
+-		clk_unprepare(lvds->pclk);
+-	}
+ 
+ 	return ret;
+ }
+ 
+ static void rockchip_lvds_remove(struct platform_device *pdev)
+ {
+-	struct rockchip_lvds *lvds = platform_get_drvdata(pdev);
+-
+ 	component_del(&pdev->dev, &rockchip_lvds_component_ops);
+-	clk_unprepare(lvds->pclk);
+ }
+ 
+ struct platform_driver rockchip_lvds_driver = {
+-- 
+2.47.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
