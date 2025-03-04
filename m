@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C531FC021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 08:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57DCC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 08:20:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TfIUQnyrvSHSjVrqOXKX2nndh0cjYuIH1hsb7uXnq6U=; b=wrC+NlPLqQKa6LQvqDZXMALm/d
-	Rh6vmuGqSZH6N4CFhOMCxmWcr/lK7SxGO2/XrJTbe0+tnC3KLr7bNJoOgo9SXMGwo0Wi4FcEp7ca5
-	GIZB7Kkz7Moz59VYYJf0MYAfmd36PbVv0z9a2hG46f+Ms+pXmrNBNg2WOZgLe8HaezJYy6hnkcciL
-	Wr2/Sz/0wxWiQYHvHhSyJhc7B0/7r7ps5f2lIn68UZQ7i/5DrB53UA1xXVPUFeIxS0pfcYQJYDwA3
-	pe8HcXIGkKSAHsJXZMRnxqkarcKLPdU0wvDmsODP9yD38o8jQwGKzsYOxKYvUPdqZxBLWM48gpMHy
-	eiUlcLbA==;
+	bh=kv8//+skXtgChWaHaxvCxeFw48xfWn7VgB8a+tRKEpw=; b=WqkWrqtCwo21vcF2kzHncOOvCF
+	aDePnn+ncxpogZTUvHSffM+B2/fKLgSOhHkcI+SRvm9f0bo0m0nptXkpUJpT94+axST7u3bW3FzFZ
+	1VxyzfV1Zq8K3ZP0kqxmhqaBoPaxAFA0zi0fjdqgfKLMEmulBKUaiZ3LNhnnk/vx8kN6bw0GwbEpT
+	XCDAEsnNFYJkp+52piYYUZAB3iDE7tdCUMJq5PT2xsI71KRSXtiHUl2B7s6Ao0KaCayI53peFKrrq
+	svWssXCdFpC6V+voKQlP4eRULTXB//xNKbpCLDa5YOceHG+7adIUEwslIJ7MS9ZyJsjnHNFmxbsrm
+	WL89Xrpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpNQp-00000003aPV-3Iyi;
-	Tue, 04 Mar 2025 08:15:15 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1tpNVs-00000003bXz-1e1g;
+	Tue, 04 Mar 2025 08:20:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpNPF-00000003aAy-3Kmc;
-	Tue, 04 Mar 2025 08:13:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=NeL+tjREbRkAn/ipZR3E2LXil7bCv8lmP1WM9ePrRf0=; b=eRw47f9YnH7mXuVz6b2FWbvK3d
-	4UnbT8pmemglteUnCUGdLQjvg0DcDsffRkumBZyRdP2UVjUVMqyedPniD7WyHBEPbir0Q4K3a3Kcy
-	cad9P85gSIswG/CCpkHhVRL2Mhuu3PdAExoBaqQW3WPgeW/5jEh5hNqcwUiuZKueMq6ir50z1jnQ7
-	EUzSu+1xhjIFc4OeDD8/LlAeSYpCfIa1UNeWmtpHecI+wjZSHsC4dxCP0yhhpwyHxpMzOF7rmh/T/
-	ekdQ79JYMCVGzXE1bImM25eO6wYvt6QP/IbzNATPg0uXGhULWQ6iSd8UzdMcXLNo6tQbgZb3EcE2S
-	uUE4a3Bw==;
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpNPC-00000000PwZ-3OZa;
-	Tue, 04 Mar 2025 08:13:36 +0000
+	id 1tpNTv-00000003b9p-1Ymz;
+	Tue, 04 Mar 2025 08:18:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1FF3AA4530B;
-	Tue,  4 Mar 2025 08:07:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CC73C4CEE5;
-	Tue,  4 Mar 2025 08:13:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D3F8B5C575E;
+	Tue,  4 Mar 2025 08:16:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01DF5C4CEE5;
+	Tue,  4 Mar 2025 08:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741076003;
-	bh=GHy5E/3mPv773kIwD9J1pCgLnjD33qEGYhJtCdEIpPo=;
+	s=k20201202; t=1741076306;
+	bh=K+EQRdXLdswE5q4qdxOmVemAWUmg9DNaKbmghLm+Syw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P7XLZFu5KdnMZWgJ4CPWxZm/klB4jrV+EVKtDi70MwYPiycz2O6teOvZstbbB5uKn
-	 4HwoUxIxuHHnuCypMFixeYlVN5fDlopFAfbhSRyw/rsIDOvcnARxv3U89fQHCLT1rT
-	 YH+0V+isLot4BXjTul7TmgUBvCuRmJW/mLMIc6bNu/Gy11mEgx/W4ucWePaZT1wAtB
-	 5UhwuaBMPU1q2xQ4PqU2BBOzTKgpz0LFcHjnjV3cktNatF7Rw/Adbd1BdbARmK/Q81
-	 EsrI3k9YzFvgdiu9I57NpQbQWc3S7kvI4IhjCmipKXE+OF5Qji9blkKlCrkHH2vf3s
-	 +TcVyR1GsGUGw==
-Date: Tue, 4 Mar 2025 09:13:20 +0100
+	b=rB9WrLFkQHDOWK9Ngi9JWbm/75eJ4vcchC1p5i4LSobT3xc0fwVkyJSs8aMzsmB87
+	 a6ht+z5nFiSmLZbTEVphEZAIYgY1w0QZp+Qc0UR/4FYRDgVoo3C/8by3nlA6hJrDse
+	 bCb3HjTpv5UvfoRVf7FjaqCFrqOfH/5TcA2WOee1u3iquYQRFuaZ8dAPRBim1NG90x
+	 V1OuOHwHmFgq1NDJcnC6jFALtFH+EiqnOJVqRo1H7YB6uTFxGmGZTNTqjupOgRtxzj
+	 SQVh3VTuajtEE4VOo4hgf1+pABdhaSmalOztKYwuyJ4Nlq2CBjoj6UZ51civohdh12
+	 jBFC4tbyor9Fw==
+Date: Tue, 4 Mar 2025 09:18:23 +0100
 From: Maxime Ripard <mripard@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Vinod Koul <vkoul@kernel.org>, 
@@ -64,16 +50,16 @@ Cc: Vinod Koul <vkoul@kernel.org>,
 	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com, linux-kernel@vger.kernel.org, 
 	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
-Message-ID: <20250304-small-mindful-mongrel-bd6f8b@houat>
+Subject: Re: [PATCH v4 08/12] phy: rockchip: samsung-hdptx: Provide config
+ params validation support
+Message-ID: <20250304-romantic-truthful-sambar-deaab1@houat>
 References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
- <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
+ <20250304-phy-sam-hdptx-bpc-v4-8-8657847c13f7@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
+In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-8-8657847c13f7@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_081335_095495_D0421D58 
-X-CRM114-Status: GOOD (  14.76  )
+X-CRM114-CacheID: sfid-20250304_001827_457711_03BCCFD6 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,86 +71,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5323746848124265025=="
+Content-Type: multipart/mixed; boundary="===============8668727624622581381=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5323746848124265025==
+--===============8668727624622581381==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="sg64fqm2xqk74cdt"
+	protocol="application/pgp-signature"; boundary="rn7v6jqgd3bpl5dn"
 Content-Disposition: inline
 
 
---sg64fqm2xqk74cdt
+--rn7v6jqgd3bpl5dn
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
+Subject: Re: [PATCH v4 08/12] phy: rockchip: samsung-hdptx: Provide config
+ params validation support
 MIME-Version: 1.0
 
-Hi,
-
-On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
-> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
-> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
-> and not before.
+On Tue, Mar 04, 2025 at 03:44:07AM +0200, Cristian Ciocaltea wrote:
+> Implement the phy_ops.validate() callback to allow checking the PHY
+> configuration parameters without actually applying them.
 >=20
-> While at it, introduce a define for this rate limit constant.
->=20
-> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY drive=
-r")
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 23 +++++++++++++++++=
+++++++
+>  1 file changed, 23 insertions(+)
 >=20
 > diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/=
 phy/rockchip/phy-rockchip-samsung-hdptx.c
-> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8=
-346904e0b62848f 100644
+> index 7e1d1c10758249aa5bbddbdaae0108bba04f30df..47db1395051f5d90019787169=
+4bab90ca4d6e38e 100644
 > --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 > +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> @@ -320,6 +320,7 @@
->  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
->  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
+> @@ -1482,6 +1482,17 @@ static int rk_hdptx_phy_verify_hdmi_config(struct =
+rk_hdptx_phy *hdptx,
+>  	if (!hdmi->tmds_char_rate || hdmi->tmds_char_rate > HDMI20_MAX_RATE)
+>  		return -EINVAL;
 > =20
-> +#define HDMI14_MAX_RATE			340000000
->  #define HDMI20_MAX_RATE			600000000
-> =20
->  enum dp_link_rate {
-> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct r=
-k_hdptx_phy *hdptx,
-> =20
->  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
-> =20
-> -	if (rate >=3D 3400000) {
-> +	if (rate > HDMI14_MAX_RATE / 100) {
+> +	u32 bit_rate =3D hdmi->tmds_char_rate / 100;
+> +	int i;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(ropll_tmds_cfg); i++)
+> +		if (bit_rate =3D=3D ropll_tmds_cfg[i].bit_rate)
+> +			break;
+> +
+> +	if (i =3D=3D ARRAY_SIZE(ropll_tmds_cfg) &&
+> +	    !rk_hdptx_phy_clk_pll_calc(bit_rate, NULL))
+> +		return -EINVAL;
 
-The rate seems to come from rk_hdptx_phy_power_on and eventually from
-tmds_char_rate in the PHY config options, so its rate is in Hertz.
-HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
-It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
+What are you calling bit_rate here? If anything, I'd expect the bit_rate
+to be a multiple of the char rate, not a divisor.
 
 Maxime
 
---sg64fqm2xqk74cdt
+--rn7v6jqgd3bpl5dn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ8a2IAAKCRAnX84Zoj2+
-dhWwAXsGrPqoPNFcfL6UhsGPHfIbxb05Q1NH5HI480bGuviWiVrea7qwGAeT8u2M
-KeEzcAsBfj2fxEy07AOeK8CNxPHb+7WdQQNZaTTvJ0v33gEjKuOtX/vTQGE2pL5b
-8uPw/l2Bkg==
-=cCWQ
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ8a3TwAKCRAnX84Zoj2+
+dvpGAX9bDdjDCQlX5ExGLNaf6qkQldDC7lWTbvEti8PUmg+VDUvIdSrkZpoAQS2+
+3dO/nzUBgNk0Ta+qCJav/lhbrS3jWgRSx4xNWdbC5Z0LX4HAFh3UxYHwRpM7ZzOI
+Pe8MOnuW4w==
+=6k8M
 -----END PGP SIGNATURE-----
 
---sg64fqm2xqk74cdt--
+--rn7v6jqgd3bpl5dn--
 
 
---===============5323746848124265025==
+--===============8668727624622581381==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -175,5 +153,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5323746848124265025==--
+--===============8668727624622581381==--
 
