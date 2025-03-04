@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D03FC021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 14:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 584E1C021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 14:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kOdwomXGDfu1+5OvpCeYvwyT17ZjCdxZQ39jSaYEMTw=; b=S1JSxpZwxQ65my
-	rW99PheOuk3rwPo61z4cqH/gaiBDF+Tnda7rxJoTiq9PnLpPhDMbeGzZDIuEOXD8BDNCl58pj2yzX
-	jcD8oQAYA39tbeV4CwZm+IVGHyE/g5XX2zpi8BEIgInBzSHTmxiu24BFjjpiNJmJxD34qNrwTdXPt
-	6v3Fz579Kdl53qcJVZMGCWm/fTGhgRVa1t/Jf7tKzlncXX7vxtkcBiIl9sjOH7Qm8SCErseJe5ErX
-	JCIyIn+PQCPAzSKUT+YBtg4w5Uoojr0hekKBELlVkulWyCWbbwgFnWRu/yAWvYgUpjyGA5QNM4FXg
-	lPTFSFovdcNH4gMD2O0w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6cxQih3zYFitSEO6fxNs/jzpySV0YC4g6jcJIVJ/iC8=; b=4b6vOph2txZyixtuLPDfTULy/f
+	B2V9rUtugB8W3ALVUdL7qUKj04s/CoJRmWTmAPOJHwNQLj2L2ndBPvNRpHN7uJk/a8v1tRWobHaL+
+	Y7o5QzNL10HhlkTNeyw4spp3371l5cSlJ1vxWbtweIxyqVkCbaA4qW8RhgOSTgyBvaFUTGeeqErRF
+	HTNaZILbhJPznZMw5Ko9RLJYw/b9nIhBHvWHnP40fzMzNAoGYBh73+M/uJbjC8QBG+xWxgaClyFX8
+	rGrAwhdQ6fmIbZ7VGO9p2TwX4JB6qKqidmdyPjS+UXvNYbp4WjODdGhS7ji+vh5NN/mcUSSJUXKpE
+	ywXZ03sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpTZZ-000000053pf-4AU5;
-	Tue, 04 Mar 2025 14:48:41 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tpTb7-000000054Ba-48xF;
+	Tue, 04 Mar 2025 14:50:17 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpTXz-000000053Ua-21hp;
-	Tue, 04 Mar 2025 14:47:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 443FDA456BA;
-	Tue,  4 Mar 2025 14:41:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CD0DC4CEE7;
-	Tue,  4 Mar 2025 14:46:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741099621;
-	bh=rI+BVkT7Y2vGYeVP6jOXfszRKe3HLug8swUeKiDdZ2A=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=H9bOT7G9DGWcpw9B82UNVqOf3fzPTab4W0+jJ11PCHXDgeuFvcudBecTiFLVBdZni
-	 rHV7ZvwklvbtY6HBm8LSSkfOLRcfQLIceMTB5paPOXFK48evlciiUrcYu6nprTwyPY
-	 +cT6mt0pPjZ+2yVUVA9dp0j1YqRk+J7pbXrDFtgWx4i+GoB450j/vGRLT1e5Cf5Fxe
-	 K5zerKk94DFg+qJmXED0I/o3HBH5JDwVz5lSanRZXZ4Svk+RGsDIU4SKzxbzyQUYO6
-	 iU7/u7PGrSj3G8Dg6UGvRHpUaGHQZYzP3WfZhI1VQyyxX7+oHpWMghaIMllEj3dJfR
-	 vUI1FW/rIRHmA==
-Date: Tue, 4 Mar 2025 14:46:48 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, Jonas Karlman <jonas@kwiboo.se>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/4] iio: adc: rockchip_saradc: Add support for RK3528
-Message-ID: <20250304144648.29f376f9@jic23-huawei>
-In-Reply-To: <11022969.nUPlyArG6x@diego>
-References: <20250227184058.2964204-1-jonas@kwiboo.se>
-	<20250227184058.2964204-3-jonas@kwiboo.se>
-	<11022969.nUPlyArG6x@diego>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
+	id 1tpTYd-000000053eG-0Hnz;
+	Tue, 04 Mar 2025 14:47:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741099653; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=adb7sgg7W9G+WDvOO09d4jcaENTOno7YdcbjC9pVT4sY7FR9Tb3zPgqP6RziVR/wG3z8nTGXZwJIZHhz9Sw0n/ksOEELfiI7DTfM0PS5ezJa6VgNQ8e6GIYjUhDTDu80uON1YeSSIU5bIIKzYrE6AaNdrJTZWXj/oOrJjvyAM78=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741099653; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=BL1aGo1UGsl1J9JI77pZ/sTrD4utOFiYs1ftC/8yyg4=; 
+	b=l8fNzl9coVm27bpuZ6LZy+V+CJ1n61t4YUftO5/3HKslVsGXE3l+RzmDhnQJskYzWWK1RB8k7K6KtjMvu115vji52yE0V8ZU55NjmDKsRgrLSjN/QJ6awpEa3kB4dACmFheTTnXhWK1VftCgI8gA8jUBIdlENBYpIJDEWshQcgk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741099653;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=BL1aGo1UGsl1J9JI77pZ/sTrD4utOFiYs1ftC/8yyg4=;
+	b=kjcW9w3I7J9pc6REZFBMM2H6k/AdSgvbzhnYxzyC+WRwKfjffElNS9xUx7qEN0IS
+	Q1lmsHg2b9FDNnbMT1lRNY9paxdLZD+zTIuSJIYIP5KS7bebdQxL19Z70Ll3QRYuens
+	pWmu6qdOEDs6ihkfNaGLlOIp7sMqUPfMZcvsj0rQ=
+Received: by mx.zohomail.com with SMTPS id 1741099652409560.2440651683567;
+	Tue, 4 Mar 2025 06:47:32 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id D3A46180C9F; Tue, 04 Mar 2025 15:47:28 +0100 (CET)
+Date: Tue, 4 Mar 2025 15:47:28 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	detlev.casanova@collabora.com, linux-rockchip@lists.infradead.org, 
+	Andy Yan <andy.yan@rock-chips.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 0/3] Add display subsystem dt node on rk3576
+Message-ID: <lfmhqurnpjmfy6pfjxd5aczxujislv2p5bsurcbl7capyt7zv3@hy2twvjj53uz>
+References: <20241231095728.253943-1-andyshrk@163.com>
+ <173564980410.21979.2947276365464229762.robh@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <173564980410.21979.2947276365464229762.robh@kernel.org>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/238.671.54
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_064703_582621_794FD0AB 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20250304_064743_164187_449C4DB6 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +77,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1888248646703608927=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAwNCBNYXIgMjAyNSAxMjo1MTo0NyArMDEwMApIZWlrbyBTdMO8Ym5lciA8aGVpa29A
-c250ZWNoLmRlPiB3cm90ZToKCj4gQW0gRG9ubmVyc3RhZywgMjcuIEZlYnJ1YXIgMjAyNSwgMTk6
-NDA6NTEgTUVaIHNjaHJpZWIgSm9uYXMgS2FybG1hbjoKPiA+IFRoZSBTdWNjZXNzaXZlIEFwcHJv
-eGltYXRpb24gQURDIChTQVJBREMpIGluIFJLMzUyOCB1c2VzIHRoZSB2Mgo+ID4gY29udHJvbGxl
-ciBhbmQgc3VwcG9ydDoKPiA+IC0gMTAtYml0IHJlc29sdXRpb24KPiA+IC0gVXAgdG8gMU1TL3Mg
-c2FtcGxpbmcgcmF0ZQo+ID4gLSA0IHNpbmdsZS1lbmRlZCBpbnB1dCBjaGFubmVscwo+ID4gLSBD
-dXJyZW50IGNvbnN1bXB0aW9uOiAwLjVtQSBAIDFNUy9zCj4gPiAKPiA+IEFkZCBzdXBwb3J0IGZv
-ciB0aGUgNCBjaGFubmVscyBvZiAxMC1iaXQgcmVzb2x1dGlvbiBzdXBwb3J0ZWQgYnkgU0FSQURD
-Cj4gPiBpbiBSSzM1MjguCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEpvbmFzIEthcmxtYW4gPGpv
-bmFzQGt3aWJvby5zZT4gIAo+IAo+IFJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29A
-c250ZWNoLmRlPgo+IAo+IApOb3Qgc3VyZSB3aHkgYnV0IEkgY2FuJ3QgcmVwbHkgdG8gY292ZXIg
-bGV0dGVyLiAgQW55aG93LCByZXBseWluZyBoZXJlCmluc3RlYWQuICBBcHBsaWVkIHBhdGNoZXMg
-MS0yIHRvIGlpby5naXQgLyB0b2dyZWcgd2hpY2ggSSdsbCBwdXNoIG91dAphIHRlc3RpbmcgZm9y
-IDAtZGF5IHRvIHBva2UgYXQgaXQuCgpUaGFua3MsCgpKb25hdGhhbgoKPiAKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============1888248646703608927==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vffz2usgeazstqu2"
+Content-Disposition: inline
+
+
+--vffz2usgeazstqu2
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 0/3] Add display subsystem dt node on rk3576
+MIME-Version: 1.0
+
+Hello,
+
+On Tue, Dec 31, 2024 at 06:57:21AM -0600, Rob Herring (Arm) wrote:
+> On Tue, 31 Dec 2024 17:57:17 +0800, Andy Yan wrote:
+> > As the VOP[0] and HDMI[1] driver have already been submitted for review.
+> > This series enable hdmi display on sige5 board.
+> >=20
+> > [0] https://lore.kernel.org/linux-rockchip/20241231090802.251787-1-andy=
+shrk@163.com/T/#t
+> > [1] https://lore.kernel.org/linux-rockchip/20241231094425.253398-1-andy=
+shrk@163.com/T/#t
+> >=20
+> > Changes in v3:
+> > - Split from https://lore.kernel.org/linux-rockchip/3330586.aeNJFYEL58@=
+diego/T/#t
+> >=20
+> > Andy Yan (3):
+> >   arm64: dts: rockchip: Add vop for rk3576
+> >   arm64: dts: rockchip: Add hdmi for rk3576
+> >   arm64: dts: rockchip: Enable hdmi display on sige5
+> >=20
+> >  .../boot/dts/rockchip/rk3576-armsom-sige5.dts |  47 +++++++
+> >  arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 126 ++++++++++++++++++
+> >  2 files changed, 173 insertions(+)
+>
+> [...] (a bunch of warnings due to dependency patch series not yet
+> being in linux-next)
+
+I think all dependencies have landed now. But it might be sensible
+to do a quick resend considering how old this is.
+
+Would be nice to have initial RK3576 HDMI support in 6.15 :)
+
+Greetings,
+
+-- Sebastian
+
+--vffz2usgeazstqu2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfHEnwACgkQ2O7X88g7
++ppiuQ//RRlo86q9NugSNDg67poxQpr1XjF9rHdkD08Ma9XBfTSHA8yiRRtS9mKn
+hc5+pEzsSrX4gGGgcaYq54YYnZ0L7JXFrkU6uNUjJeTvpibn8pUT9/yRqqDO3vcS
+oebj2VbqEN6EbHbe7MTH3qGVtS8L08xLJicxJtDLJyvD7AXMg0H6JeISDS1YAq4V
+Del4q56LSDSC1lv4IYkzh0Va8bWQ4cn5b9JR3YPbS+LU9N7saSyG6Q6ZMXhWSZ36
+LGiKPrUFtFMeJQRJL2LcmqppsR1KH3i5oGMlNYr8FYY36VI7Js1si9BUE9nAdPBJ
+EK5W9hnbO7wyv2Kx6SD5/pqAWw8Jy+XEv0tMzgIZUFnuGiBYXwjJT6yeQH+EABxA
+P7TDJBMrLiCrs9YUSx+KT48MRWT1lM0GDrEMRjC0aTbmQL7+3hQ9M0DA+g8mPBlf
+ORdraLCzcG+DCL8wX+WJhXuA2WUCx8i97Ku/Jw7SYlAsaIner+QxrApd7LBy3aUb
+FtcJhfg+A3aeyNQh+8PZmXC2Pgw2pyiBrnqll8NBzqPoCz25wM5RQT868n5gzg1q
+/sdHawvguhRlpisMpxCtvTa06xIL84klcvaOxVoOaytDMk3edhCyOh7vST7kEIb5
+9EmZCjMbpp4xFaZIDxkxmhXFzWfKvvcDefp7EFLdz/eZQQsDoq4=
+=vW2j
+-----END PGP SIGNATURE-----
+
+--vffz2usgeazstqu2--
+
+
+--===============1888248646703608927==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1888248646703608927==--
+
