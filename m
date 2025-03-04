@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91700C282D0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 669BCC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5VN3tL//ZfkaVl7Bc3Mt60dwTRu43/oeVLM+BLppsX8=; b=cetk93WhsWtaHQ
-	qqLPabsjm0WpcAaFPCBpgrSvfcSVva1v+1DQe3BbX6SMA5PSOrLvzSEoAB0a6Ut0/hHUOXO6Nne63
-	AVi0EDlYD5cyU40OCfVvtQSoKaRcrArPeBkd11G7afC1iJnabbhtfhjePDVoBTwbMIL1Mx9Kpb4FD
-	77M/CIODqYTf97V3bJsHzP5lXcm68CsdpfwLGeRgYa2q1xcQeKMbdSLBMg9CRkY73Y1plmotp8dmS
-	cEVWDCbJd5asve/GZ6SNNvnXb6rsMmrCnXFOtiiRAudvQjzOXb3fETNwjx7ZaZOu3+rWCmz0JBu6s
-	GZZkiYd5OyF3o564adHg==;
+	List-Owner; bh=k1ms2c5nz1E2O0jru7pJj+yLxZuuSmFsOl9KCbMgkWE=; b=VxzmsLKuSiG5vu
+	bRTMKWuUdEuwrLO3zXI33XlkdY5EjyYTCJozwvgVP5FVVxhGzcL3h3XR5Kqo8MnuqZ6eL6o3D2HT8
+	dGLRLtDppPTU/LUBAPHrL3fV3GB0/OirbPi4PNIkNBb+PqEQWJMd4flnVk3kSSmGjD7e2koEZU3Nv
+	GrCsNiwHR2DAESelh5wdUyLdw+apxA+XdyHrULseuJ+Pr7+XFr6nC7LwbFTv+sdQLiHaBCkmVvEZk
+	KQvm6BJZfOGOOpqEL+OtUGrJuJQzL3rVkAcLBXpAb81KxhmWRj7uen7EmjZhaDoe0T9oHsPbvCmsH
+	SW2+c+liU93vag0Pny9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYRs-000000068oK-0sye;
-	Tue, 04 Mar 2025 20:01:04 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tpYWU-000000069Ns-2mL9;
+	Tue, 04 Mar 2025 20:05:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYHO-000000066Qn-2m8p;
-	Tue, 04 Mar 2025 19:50:16 +0000
+	id 1tpYTY-000000068yf-2V5h;
+	Tue, 04 Mar 2025 20:02:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=6OmRnB5M5S6dx+wb2qMyKou5/KtA9SYAkAHphHGaljI=; b=Gf6oHUZr94DYlA6dKjxhYJh6F2
+	BHB5lOa/AEu2198ueeJ4904kMSo/8BMfjPTC+/4k/pGNvRBOLBeXXIdUN9Lo6I0L/phxRJpIn2wfH
+	ab/54hjnUK1zbR+pdkVgiWvsCQZng0+o+Lh4/8oakjw9aJZ0lxiZBb0eOtJ/dUgPj/ZUaRObZT1ea
+	rKdFCXJZPmPE7P69FKuWbCpey3M8wEAONHjgQGHqqI/XR8F13Mei9SShN3r4c+HOlYzmFFWaOUZeF
+	QrvhhtC0Ud6riV3SDZhvvPQA+/iqGc3tOAMeB1AheIdCX9YAbBJYf0e48nUDSkCfU+Ct1TBuwI25q
+	T3pf1juw==;
+Received: from layka.disroot.org ([178.21.23.139])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpYTV-00000000Ck1-0jtk;
+	Tue, 04 Mar 2025 20:02:47 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 0095C252B4;
-	Tue,  4 Mar 2025 20:50:09 +0100 (CET)
+	by disroot.org (Postfix) with ESMTP id F022C25C7A;
+	Tue,  4 Mar 2025 21:02:38 +0100 (CET)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YOe44yWLNYEa; Tue,  4 Mar 2025 20:50:04 +0100 (CET)
+ id rsbyoN1SgCEm; Tue,  4 Mar 2025 21:02:34 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741117804; bh=/vRWKQtZKb8AVks66fKFJNA8Q7HHHVpV5dIgIcKRJh8=;
+	t=1741118554; bh=UePoE7L+f7kPyHfkYoHOYaJpHOxR5rYnvPUWwiwyiDc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=EWOlvoXB2lKejxwrdke4Er6of5ABdK3jBS9BAXlXEL0XFcLS/7C0FI/oEB1pz5JpR
-	 yStJAX5kufOc7R5KTMYtpQvzZZClaZe1L05PLt1BJlCvyAp0TMiVt3jZyiEQhZKrrh
-	 DC1g3n0EnlgV3+tBx61eFGMHLWBzWJuq3kRkNOP16r7p/9ZOBZKIVKjByeqdnt8ry/
-	 pkLkd8wXvLy+ItQptFHSWKUtx0nVA9JiMlh7MObc7kiMZrzVqHDyUo+bduvDD9iybP
-	 ZvfPyhbDp0qziwtu+YrJ/xUroOCsLzWzkjRo3HlIu3EkzYRmFG0gxi1zzBElz5i8f4
-	 /EsfnkVnFBvTg==
-Date: Tue, 4 Mar 2025 19:49:45 +0000
+	b=ax6vpksmBD+CYVeLZO+qbuQqOz2F8d/OHrJiYEXf1cqJe9I39YUqdyU6VbDhsPhg4
+	 x+9AtlWcGvxnP5kgm596OqXJ1UMLJ1pyh22g4Qw/WavCbiTwP//6MpzLSyokW3w5ie
+	 BR8mIqqeqdywjNKaS//tqsQ5hf7Qkjx2uVkn4/nheuYbd1udjK2yupqFjIRmr2h+h6
+	 8pUWyA23Kj0cX4mdTlPQmLeV9qIcAE2kD6Gd8YVKfGHZS6ULe778dkoS6HSLgB8/2P
+	 k+rhVLTu6sFAfL1CJ8ZAEYVygWCcBdoYNgFGi/1knwkFOJPIfHZht/zvet292xVYB2
+	 ichjAKH9MPMnA==
+Date: Tue, 4 Mar 2025 20:02:14 +0000
 From: Yao Zi <ziyao@disroot.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
+To: Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>
 Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
  Radxa E20C
-Message-ID: <Z8dZWYpABghRHHge@pie.lan>
+Message-ID: <Z8dcRjPcbKqEyKdT@pie.lan>
 References: <20250301104835.36439-1-ziyao@disroot.org>
  <20250304121036.1453284-1-amadeus@jmu.edu.cn>
+ <Z8dZWYpABghRHHge@pie.lan>
+ <5c429552-bdbb-43d9-8e07-bacda57c0fcf@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250304121036.1453284-1-amadeus@jmu.edu.cn>
+In-Reply-To: <5c429552-bdbb-43d9-8e07-bacda57c0fcf@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_115015_116687_BFB16F0A 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20250304_200245_827019_B0DF7DBE 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,102 +83,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, frank.wang@rock-chips.com, jonas@kwiboo.se, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, frank.wang@rock-chips.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 04, 2025 at 08:10:36PM +0800, Chukun Pan wrote:
-> Hi,
+On Tue, Mar 04, 2025 at 08:55:36PM +0100, Jonas Karlman wrote:
+> Hi Yao Zi,
 > 
-> > +	aliases {
-> > +		mmc0 = &sdmmc;
+> On 2025-03-04 20:49, Yao Zi wrote:
+> > On Tue, Mar 04, 2025 at 08:10:36PM +0800, Chukun Pan wrote:
+> >> Hi,
+> >>
+> >>> +	aliases {
+> >>> +		mmc0 = &sdmmc;
+> >>
+> >> s/mmc0/mmc1
+> > 
+> > Will take it and add the missing pinctrl, as Jonas already pointed out.
+> > 
+> >>> +&sdmmc {
+> >>> +	bus-width = <4>;
+> >>> +	cap-mmc-highspeed;
+> >>> +	cap-sd-highspeed;
+> >>
+> >> I think for sdcard, only cap-sd-highspeed
+> >> is needed, not cap-mmc-highspeed?
+> > 
+> > This makes sense, will remove it in the next version.
 > 
-> s/mmc0/mmc1
-
-Will take it and add the missing pinctrl, as Jonas already pointed out.
-
-> > +&sdmmc {
-> > +	bus-width = <4>;
-> > +	cap-mmc-highspeed;
-> > +	cap-sd-highspeed;
+> Please do not remove the cap-mmc-highspeed prop, I tested the controller
+> with a microSD to eMMC adapter and MMC HS speed is supported:
 > 
-> I think for sdcard, only cap-sd-highspeed
-> is needed, not cap-mmc-highspeed?
-
-This makes sense, will remove it in the next version.
-
-> > +	disable-wp;
+>   mmc1: card 59b4 removed
+>   mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+>   mmc_host mmc1: Bus speed (slot 0) = 49800000Hz (slot req 52000000Hz, actual 49800000HZ div = 0)
+>   mmc1: new high speed MMC card at address 0001
+>   mmcblk1: mmc1:0001 DG4008 7.28 GiB
+>    mmcblk1: p1 p2
+>   mmcblk1boot0: mmc1:0001 DG4008 4.00 MiB
+>   mmcblk1boot1: mmc1:0001 DG4008 4.00 MiB
+>   mmcblk1rpmb: mmc1:0001 DG4008 4.00 MiB, chardev (499:0)
 > 
-> Missing pinctrl.
->
-> > +	rockchip,default-sample-phase = <90>;
-> 
-> It seems that all rk3528 devices need to set this
-> default phase, so maybe this can be placed in dtsi?
+>   ~ # cat /sys/kernel/debug/mmc1/ios
+>   clock:          52000000 Hz
+>   vdd:            21 (3.3 ~ 3.4 V)
+>   bus mode:       2 (push-pull)
+>   chip select:    0 (don't care)
+>   power mode:     2 (on)
+>   bus width:      2 (4 bits)
+>   timing spec:    1 (mmc high-speed)
+>   signal voltage: 0 (3.30 V)
+>   driver type:    0 (driver type B)
 
-Yes, since the tuned phase offset is a SoC-specific value, as pointed
-out by comment in the driver,
+Oops, indeed, I didn't expect the adapted usecase and thought only
+sdcards could be connected through the interface.
 
-	this is _not_ a value that is dynamically tuned and is also
-	_not_ a value that will vary from board to board.  It is a value
-	that could vary between different SoC models.
+> Regards,
+> Jonas
 
-Will take it in the next version, thanks for finding it!
-
-> > +	sd-uhs-sdr104;
-> 
-> The rk3528 devices uses gpio to switch IO voltage, maybe
-> more modes should be added here like vendor kernel?
-
-I cannot get the relationship between things you mentioned. For the
-regulator, yes, here vqmmc-supply is missing, as already pointed out by
-Jonas.
-
-> And these devices use 3.3V IO voltage by default.
-> 
-> 	sd-uhs-sdr12;
-> 	sd-uhs-sdr25;
-> 	sd-uhs-sdr50;
-> 	sd-uhs-sdr104;
-
-But I don't think it's necessary to lay out these slower modes
-explicitly, since SDR104 seems to imply them, see
-sd_update_bus_speed_mode() in drivers/mmc/core/sd.c[1],
-
-        if ((card->host->caps & MMC_CAP_UHS_SDR104) &&
-            (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_SDR104)) {
-                        card->sd_bus_speed = UHS_SDR104_BUS_SPEED;
-        } else if ((card->host->caps & MMC_CAP_UHS_DDR50) &&
-                   (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_DDR50)) {
-                        card->sd_bus_speed = UHS_DDR50_BUS_SPEED;
-        } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
-                    MMC_CAP_UHS_SDR50)) && (card->sw_caps.sd3_bus_mode &
-                    SD_MODE_UHS_SDR50)) {
-                        card->sd_bus_speed = UHS_SDR50_BUS_SPEED;
-        } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
-                    MMC_CAP_UHS_SDR50 | MMC_CAP_UHS_SDR25)) &&
-                   (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_SDR25)) {
-                        card->sd_bus_speed = UHS_SDR25_BUS_SPEED;
-        } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
-                    MMC_CAP_UHS_SDR50 | MMC_CAP_UHS_SDR25 |
-                    MMC_CAP_UHS_SDR12)) && (card->sw_caps.sd3_bus_mode &
-                    SD_MODE_UHS_SDR12)) {
-                        card->sd_bus_speed = UHS_SDR12_BUS_SPEED;
-        }
-
-> Thanks,
-> Chukun
-> 
-> -- 
-> 2.25.1
-> 
-
-Regards,
+Thanks for the correction,
 Yao Zi
-
-[1]: https://elixir.bootlin.com/linux/v6.13.5/source/drivers/mmc/core/sd.c#L448-L479
 
 _______________________________________________
 Linux-rockchip mailing list
