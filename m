@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E77EC282D0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEDFDC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 20:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sr5qr/vxdxD3LTplLZWKz5s7xjGVcZB1gnueNSEad5Q=; b=uuo5Rjw/HLec1nPCf8HFxV2oAN
-	vJLGjW+81XfjMcTp757UkR4hcOa2IBuQL7MH2zcDmOxSDtDun2MilKOMc/+pm5E7CvWGmvVu4sp33
-	xb1iytpFfvrxCoJcMIp+AOrKKGX1dMOfnLzJc7vZuTzjqwECXk3aJ/Opdiudnp0F/GnHZL4+StmXg
-	p32rUEedZ1O1KxOY2pDtNTo39d7joh3Wl8ceVGENIZgwjyhHjgPhLI+MPkwofHIc/C26k8YF7Avga
-	jNQMAD1f4nw1uh8mz+v/L7GbFssGnNPT5BBNIuP3U4JBr7N6ze8tV6k94qg9fTuIYZUoQigdISMo1
-	BNmBRDrQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kdHPbhPM2ELv3+Pfc6h1WCQEJCKPQk5t9aUnFkgBp+0=; b=KWj+THZ2M78Ma4
+	50EyCQH2MzReN2+n2AdTBn06gaxn1d+cUYe6/k0h+zuJiGEBUIpgcWDs9ePd1hU3NkyhY+g47hx6l
+	JKTilR1Hnjd40RjGUgOZIp0b0wx17wbdQRtEGJFczksKxAWUTxGEaoaWC2vDwyX/E8ytoao23CnwQ
+	YEcK0rFHTnPgiaa69sXPVdvizx2z1pDslmR4Gh4b59bmcazTjy1+gR3w0cM3Y8wXcstEUG06LxlJJ
+	PneVGTRRNh9+aVBdRGkkN7nG/2ZC7uhNs58YqlKRD129l5G5bDYbvYLmeJavgZwVAGctBv4VcGOjD
+	4/Hudnw1z6+KhyXmc5rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYp4-00000006BMA-2ZVx;
-	Tue, 04 Mar 2025 20:25:02 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1tpZCZ-00000006EEV-3Eam;
+	Tue, 04 Mar 2025 20:49:19 +0000
+Received: from smtp.forwardemail.net ([2a02:6ea0:d71e::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYnU-00000006BCU-3hw8;
-	Tue, 04 Mar 2025 20:23:26 +0000
+	id 1tpZCW-00000006ECY-3FCc
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Mar 2025 20:49:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1741121355; bh=VymoCBuQbJVOZiQ8kCmp23B7JKJ6M1aDwHI+dP/rK28=;
+ b=O8d7CDafR+7y0WLJLlc5f6lNWfpVLwq7IlC4QTP6QaThc3qKQZxL61eRrW2X93gx45v4h6k/N
+ o07rG7mTmo2OsQ/EctJUY/Z0VaGSaww6ZWu+V8+LPgY4OG+hJi/tnsjPBMuRC8JWlLFdzXAzRxH
+ 1+/ErEqRYZO9MTFLKINza3/y0ArYv7GpBS8lLY6rCrYCYkzUtJdEXaFF1Vm+txg3sKC/enOHudP
+ qBiSvJ/AEaTYnG+gb7tS5ErsOP6VYURbB9/78NKd5GK547E38MBqVUqkXHOnqQvVh/U1c0ilDZ+
+ MVttSawduKA9PM8Po0lkYifZ61ZZHSMTrG0BXEdlRvOA==
+X-Forward-Email-ID: 67c75fbd66a4509299dbdfaa
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: Add maskrom button to Radxa E20C
+Date: Tue,  4 Mar 2025 20:16:37 +0000
+Message-ID: <20250304201642.831218-5-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250304201642.831218-1-jonas@kwiboo.se>
+References: <20250304201642.831218-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741119802;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=U2sqEAxGJv2uGZqDwGrSnxcuM3qMt5QnCoz/T7iEsGY=;
-	b=WNPh3e5psK966rm8ClScI8cegZulUjpiLwARCd4gpgUwa6Zx6B1/pufdZQy6A+HJHxL2vI
-	dRT/9TzI6o24gv79nwK6r6q4uEhck3xgSAzyO15jYeukAy2cwig1FWFJfRV8Lp64xwLJF+
-	miqoRz6zokio8gKJzZFyQhlPKPyTLr9JUkWAF8goplg75vvp+q7piNvWsxCoHoSviskbVe
-	4U0fUGu2Sp3NVOpcETTE/39mSmEu3REBFj9EGJ5Qu/biUJaHkYMJoEFpgSmps3Nrf453nF
-	s1GDjeIDJbNheYF8ATNdjkCLHZDCDBc2/5XKEP4pVcR0PLiwTn/naS1h3cp0dQ==
-Date: Tue, 04 Mar 2025 21:23:21 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Arnd Bergmann
- <arnd@arndb.de>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] pmdomain: rockchip: add regulator dependency
-In-Reply-To: <20250304142803.689201-1-arnd@kernel.org>
-References: <20250304142803.689201-1-arnd@kernel.org>
-Message-ID: <57dc1e1b8a3f1134c5eed050a81de1b7@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_122325_073602_13D897C8 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20250304_124916_930528_199F8A07 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,57 +77,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Arnd,
+Radxa E20C has two buttons, one SARADC maskrom button and one GPIO user
+button.
 
-On 2025-03-04 15:27, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> When CONFIG_REGULATOR is disabled, this pmdomain driver fails to build:
-> 
-> drivers/pmdomain/rockchip/pm-domains.c:653:30: error: implicit
-> declaration of function 'devm_of_regulator_get'; did you mean
-> 'devm_regulator_get'? [-Wimplicit-function-declaration]
->   653 |                 pd->supply = devm_of_regulator_get(pmu->dev,
-> pd->node, "domain");
->       |                              ^~~~~~~~~~~~~~~~~~~~~
->       |                              devm_regulator_get
-> drivers/pmdomain/rockchip/pm-domains.c:653:28: error: assignment to
-> 'struct regulator *' from 'int' makes pointer from integer without a
-> cast [-Wint-conversion]
->   653 |                 pd->supply = devm_of_regulator_get(pmu->dev,
-> pd->node, "domain");
->       |                            ^
-> 
-> Add a Kconfig dependency.
-> 
-> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/pmdomain/rockchip/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/pmdomain/rockchip/Kconfig
-> b/drivers/pmdomain/rockchip/Kconfig
-> index 7e4f9b628f0b..218d43186e5b 100644
-> --- a/drivers/pmdomain/rockchip/Kconfig
-> +++ b/drivers/pmdomain/rockchip/Kconfig
-> @@ -5,6 +5,7 @@ config ROCKCHIP_PM_DOMAINS
->  	bool "Rockchip generic power domain"
->  	depends on PM
->  	depends on HAVE_ARM_SMCCC_DISCOVERY
-> +	depends on REGULATOR
->  	select PM_GENERIC_DOMAINS
->  	help
->  	  Say y here to enable power domain support.
+Add support for the maskrom button using a adc-keys node, also add the
+regulators used by SARADC controller.
 
-Looking good to me, thanks for this patch.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: No change
+---
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+index b378774d2a4e..5346ef457c2a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+@@ -19,6 +19,20 @@ chosen {
+ 		stdout-path = "serial0:1500000n8";
+ 	};
+ 
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 0>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-maskrom {
++			label = "MASKROM";
++			linux,code = <KEY_SETUP>;
++			press-threshold-microvolt = <0>;
++		};
++	};
++
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+ 		pinctrl-names = "default";
+@@ -61,6 +75,35 @@ led-wan {
+ 			linux,default-trigger = "netdev";
+ 		};
+ 	};
++
++	vcc_1v8: regulator-1v8-vcc {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_3v3>;
++	};
++
++	vcc_3v3: regulator-3v3-vcc {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_3v3";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_sys: regulator-5v0-vcc-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
+ };
+ 
+ &pinctrl {
+@@ -85,6 +128,11 @@ wan_led_g: wan-led-g {
+ 	};
+ };
+ 
++&saradc {
++	vref-supply = <&vcc_1v8>;
++	status = "okay";
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0m0_xfer>;
+-- 
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
