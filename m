@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B132AC282D2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5725DC282D3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F563yhI5gQO2NrjobWkqBntyTEcy3eJo/c+xSl+BIQs=; b=Pa3nDOQOE5idNf
-	yM52BtYDhwbxN5gMrK4aeWP8fT8ixoEfgWpnKjVK9wqOdus13shlqqXUH3FR/1IxURVxM/P2VRnOG
-	+rVE/dH5n03HIq5x1qxkOZZ4NI/78QDj1vkxQFE8QcRwq4L8l2j0JcIorfGULqHxZAvTqYBXuJzgl
-	HC024hr2m2laJuKyhVoOUQGjdQalu6ZZ2vBnUHxautA2kBOw/Mswr/2OwlLtE/2P8dgTifmZnR7sZ
-	9+MkjnYFMYwU2VPqE4QLO2eQN1GApohfkd1M7yInqzDtXiHd/by+8JK5xBihmBx0aw5Dkkp1TrDya
-	bW3KM5q4+q+W2L2v5/8g==;
+	List-Owner; bh=XZ55/qgBFyg7Yq5+cL+rVlGA/LqKcaq3vxMjwfDOP04=; b=ize38sDInnNHj0
+	zoNw3juCmfA+aCJZyNhSS47MGakW2bx5dcpGh+ZngaZPbYTbNYlCv0GYOxeGyUxXR7KJw6MIDjOfn
+	cE2OExvZspUIbkdyh0y4z/Qdeou2p0Vfx95J8NbIVvgiU/SdJxB5+f84TOowKn0aFZ5g+ZWPt9Jd6
+	uO4NtAauLAjlHiFO78/Ql/Ey9AH2T3aWjFDz6RfKKiLRb6ZQB+eiLL6qQoFH5s8tSqetH+V7nnT6c
+	0wl/nTSrNHFhQaMqGVnuPIZL3BBsqWhpHKi6MH/9bybSuDBpKJ862dgFeNnfA6BC3fqhvev37n3ak
+	1b64kzTcEoM/fgEVn+6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHek-00000002r3l-0Gks;
-	Tue, 04 Mar 2025 02:05:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpHel-00000002r4i-0IFu;
+	Tue, 04 Mar 2025 02:05:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHKX-00000002o1s-0RD5;
+	id 1tpHKX-00000002o1o-0FVL;
 	Tue, 04 Mar 2025 01:44:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741052659;
-	bh=SBKosOyQ+vqRRzYCaSZdG4Ns7DFVxhSrWT6ixWWkh/c=;
+	s=mail; t=1741052658;
+	bh=iDVPebVtBVKbo8sc+q34EtLBvJPNOV2/Slk4+XhkzX8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=C/insOKgXcw6ARzrlNpuhz9Fm9s56VDre1JMRsUowSRkvTFqUJiI7XLv0/eQVGX1K
-	 Xz1cW0Pn/AiugnEvp5T15VjRpP/eS4MpGsDWoEGoSQCo67xJBsbkiqqFwUza8hwD2p
-	 LLCeQk/y9AA8d1PdEoqFHhVse34HXHejm/WJawNMvEWSoh+a6B/ehSgQGUSEGMGwxA
-	 dSCI2L56Yc4xHTGGXqHoPb1lSA9SX+RdjhDpVy5tCe/05S6Zp1Ig/CcbU3iVmzxS5g
-	 EOu//NGkvRMqeK71TGl50825S5+tTmakZXggSln/5t2mBTECrwxc4itn/Gf3oLxYIX
-	 6nFjpseAMQsFA==
+	b=Dg2DSGE1mIWJMt5NqyrYikQxOSRhJbtg2lLdUOIBBbtbioR5Cws1qIsqEuBhUm7kK
+	 a46shU/FL112y3h0HqvfS/psfgPryIV1oWpUNqNbo+2pHQZTOhDo1CIbHz6wZSQB/q
+	 zaxPgTctZOgsS7VVmKz2pmjYNRP4xMDdBWZ2VA6FNjeojD6NdmOvns2Y34lBQb7UJH
+	 s6WK+u9KZvkqEVFIyQt7nLbg8XTk3hyMz7UJJVYtUqzE8LVnKckHIQg5EJ94FhGhQ8
+	 WGzS0qbCF2iDSHpH/IThdERfe4LUJ2wGaB6F/UAPECMzmB5vjPz8FfaA5c7jruCUPM
+	 y9+2urszhPIMg==
 Received: from localhost (unknown [188.27.58.83])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id E9D9817E0E8E;
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 2DBB817E0E8D;
 	Tue,  4 Mar 2025 02:44:18 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 04 Mar 2025 03:44:01 +0200
-Subject: [PATCH v4 02/12] phy: hdmi: Add color depth configuration
+Date: Tue, 04 Mar 2025 03:44:00 +0200
+Subject: [PATCH v4 01/12] phy: Add HDMI configuration options
 MIME-Version: 1.0
-Message-Id: <20250304-phy-sam-hdptx-bpc-v4-2-8657847c13f7@collabora.com>
+Message-Id: <20250304-phy-sam-hdptx-bpc-v4-1-8657847c13f7@collabora.com>
 References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -60,9 +60,8 @@ Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_174421_321917_99C6CC35 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250303_174421_250451_AFAC5F83 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +78,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend the HDMI configuration options to allow managing bits per color
-channel.  This is required by some PHY drivers such as
-rockchip-samsung-hdptx.
+From: Sandor Yu <Sandor.yu@nxp.com>
 
+Allow HDMI PHYs to be configured through the generic
+functions through a custom structure added to the generic union.
+
+The parameters added here are based on HDMI PHY
+implementation practices.  The current set of parameters
+should cover the potential users.
+
+Signed-off-by: Sandor Yu <Sandor.yu@nxp.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Acked-by: Vinod Koul <vkoul@kernel.org>
+Link: https://lore.kernel.org/r/d1cff6c03ec3732d2244022029245ab2d954d997.1734340233.git.Sandor.yu@nxp.com
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/phy/phy-hdmi.h | 2 ++
- 1 file changed, 2 insertions(+)
+ include/linux/phy/phy-hdmi.h | 19 +++++++++++++++++++
+ include/linux/phy/phy.h      |  7 ++++++-
+ 2 files changed, 25 insertions(+), 1 deletion(-)
 
 diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
-index 6a696922bc7f29af63d88646701b2c0fcee5c885..f0ec963c6e84f1b7728acafc824dff191c6b873d 100644
---- a/include/linux/phy/phy-hdmi.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..6a696922bc7f29af63d88646701b2c0fcee5c885
+--- /dev/null
 +++ b/include/linux/phy/phy-hdmi.h
-@@ -9,11 +9,13 @@
- /**
-  * struct phy_configure_opts_hdmi - HDMI configuration set
-  * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-+ * @bpc: Bits per color channel.
-  *
-  * This structure is used to represent the configuration state of a HDMI phy.
-  */
- struct phy_configure_opts_hdmi {
- 	unsigned long long tmds_char_rate;
-+	unsigned int bpc;
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright 2022,2024 NXP
++ */
++
++#ifndef __PHY_HDMI_H_
++#define __PHY_HDMI_H_
++
++/**
++ * struct phy_configure_opts_hdmi - HDMI configuration set
++ * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
++ *
++ * This structure is used to represent the configuration state of a HDMI phy.
++ */
++struct phy_configure_opts_hdmi {
++	unsigned long long tmds_char_rate;
++};
++
++#endif /* __PHY_HDMI_H_ */
+diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
+index 03cd5bae92d3f189d739c453fe4c160dd2a5063e..4ac486b101fe4023b8f2a84e907e65a0ff0a5ede 100644
+--- a/include/linux/phy/phy.h
++++ b/include/linux/phy/phy.h
+@@ -17,6 +17,7 @@
+ #include <linux/regulator/consumer.h>
+ 
+ #include <linux/phy/phy-dp.h>
++#include <linux/phy/phy-hdmi.h>
+ #include <linux/phy/phy-lvds.h>
+ #include <linux/phy/phy-mipi-dphy.h>
+ 
+@@ -42,7 +43,8 @@ enum phy_mode {
+ 	PHY_MODE_MIPI_DPHY,
+ 	PHY_MODE_SATA,
+ 	PHY_MODE_LVDS,
+-	PHY_MODE_DP
++	PHY_MODE_DP,
++	PHY_MODE_HDMI,
  };
  
- #endif /* __PHY_HDMI_H_ */
+ enum phy_media {
+@@ -60,11 +62,14 @@ enum phy_media {
+  *		the DisplayPort protocol.
+  * @lvds:	Configuration set applicable for phys supporting
+  *		the LVDS phy mode.
++ * @hdmi:	Configuration set applicable for phys supporting
++ *		the HDMI phy mode.
+  */
+ union phy_configure_opts {
+ 	struct phy_configure_opts_mipi_dphy	mipi_dphy;
+ 	struct phy_configure_opts_dp		dp;
+ 	struct phy_configure_opts_lvds		lvds;
++	struct phy_configure_opts_hdmi		hdmi;
+ };
+ 
+ /**
 
 -- 
 2.48.1
