@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88524C282C6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:08:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382BFC282D1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fYgk41lyqDGwOlzxUXl0tdcuJdkV9bvu1lLzbOW4GGY=; b=v/Nb4zZgiEfXlP
-	t9f+BxsKekKGfKAL/Xs7KuIHg4Wa4wqWwZ3hHoR9pSxWoa12nbFwffkEfxuIVWFofXpOLO3xKjc6T
-	YQgU8wOp3538UFNRsMVy6wxP1IfkvdnZOqi2EDsuNeNyBQSGxcK4itlmVNRCc4ASQtOOfpXUdbirP
-	aOmUTfYIqayCtvBuDulcpn2pW2YNxWCO12L1Of7lASnLS1oTgCdLlVkgPwP9ZR2RbJ5S6KXVW0mx6
-	M9sa4sF9Ubd+4uCSae3QpNHDPdQ15K7Kt+kaLt9YpqClrmBkydEm/Mx5c1bizuE569e5a5+rtB6tY
-	kVJY2PUT2pYJ1bk80A5g==;
+	List-Owner; bh=0nyJCD7gbgmJ0J5sYBhye3G8Q7u+9zFxIDduFgno+kw=; b=27Nq63g6TaANOo
+	8yXNp/67eFqQDk/9BcxdGBTeGAOtxRBVM3hTEikSaDvgVzUSjghv20ag3LE0FAasyA5ce+D8pUN98
+	dhoctAYPXrXT93Q6UQREef/ENnJFtmW8zcxqzjnR9ElZrtWiRDzy0nzgyQBlSUdcgerBD53Ohj80h
+	xv8q6o5FvUq02/oPiHXikltHYaxz6UNGmG9D+uzMnj5Ljf+9aHfSnu67qhmaMx4Mxcb+mSgVQdRz7
+	5bQrO0ehhgMZNw4ixngHSDWOvx2yFyreeBIibGYWdpwUdxj0YiUWTRcs8copFVJ3QabgKgFkgE7r3
+	dXGGYt6QuFhPiHg83eRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHhp-00000002rT5-03ut;
-	Tue, 04 Mar 2025 02:08:25 +0000
+	id 1tpHjO-00000002rhK-3LHE;
+	Tue, 04 Mar 2025 02:10:02 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHKY-00000002o2i-0pe2;
-	Tue, 04 Mar 2025 01:44:23 +0000
+	id 1tpHKa-00000002o4W-0E1L;
+	Tue, 04 Mar 2025 01:44:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741052660;
-	bh=XP3rwzkTa1mXnGdnUHFUWqLPHJxazgMc4cL1Dqwrxk8=;
+	s=mail; t=1741052662;
+	bh=MrgqgIZ157jsElaeg3dFAoESeyFXV9vNfZmK9cHxL2A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NLY3E68DYDkzVvAkCnu5VDpYvpn0xoEudpCXALBbfaiQT5f/rtb9Zmv3NXOqbxhGc
-	 qdFzoXkH76VoYcLBaFtPqDQYM/MnetZFz817LDvf2hwzaqHjXTxHms9vw/OqGH+6Ic
-	 T3qMqUrZ5Czeea6MobKuohAB+gvJXJQbklJEwacwomyXO+OhPpgXazTOT6ZIi5pZuz
-	 0ePEsUgElXEisUlqex5CtEqpiHJ97rUcrXXy1FqJSrdLrTNkfis/WIlwqewRaC77Z6
-	 m5T0p0JaKYpbtOrXr9mmCVMfr8MgyQaDCgVKlUFM5NrmFrOXXJ3PRXwKKMR4C3L5vf
-	 fW7VxK7rVOkXA==
+	b=gr18z2akC5QqEA8/nx/lgtd8EIXDSnfG18I2aWVHmKMAu2lyj1uFiqgYS/QDGlg0q
+	 BrIvwe6XjarK2xyHiAyEA6tDcnlEDkofwmrWASsLqDGPORaZYGxHh7fn6u201rhBdT
+	 fgBQYRPXDZDf7L49jvhX64PA2SfkhZKVl0plq7iW4VNs4Km7Zh/mwUOJ0IN4MmebOF
+	 rBw99m649HdFxnCwqrMRjzC76ugXu563LUwTz57oD3jMH1+gxSHp3ye7t8WvE+5RBv
+	 PxCLAk8BxtjCiZyxVIxW8taIz4RlLs3YrLJ4jFsIeJTs4BaUO8gMEQq6Cv4c8gYKCm
+	 6hUxT98KMsKdw==
 Received: from localhost (unknown [188.27.58.83])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id B13CF17E0FD1;
-	Tue,  4 Mar 2025 02:44:20 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 8F23717E1016;
+	Tue,  4 Mar 2025 02:44:22 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 04 Mar 2025 03:44:03 +0200
-Subject: [PATCH v4 04/12] phy: rockchip: samsung-hdptx: Drop unused struct
- lcpll_config
+Date: Tue, 04 Mar 2025 03:44:05 +0200
+Subject: [PATCH v4 06/12] phy: rockchip: samsung-hdptx: Drop superfluous
+ cfgs driver data
 MIME-Version: 1.0
-Message-Id: <20250304-phy-sam-hdptx-bpc-v4-4-8657847c13f7@collabora.com>
+Message-Id: <20250304-phy-sam-hdptx-bpc-v4-6-8657847c13f7@collabora.com>
 References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -61,9 +61,8 @@ Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_174422_385370_A971DB34 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250303_174424_241753_2C14EAD4 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,56 +79,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is just a leftover from downstream support for HDMI 2.1.
-Remove the unused struct for now.
+The ->cfgs member has been introduced via commit f08d1c085638 ("phy:
+phy-rockchip-samsung-hdptx: Don't use dt aliases to determine phy-id"),
+but it is only used during probe() in order to setup ->phy_id.
+
+Use a probe() local variable to store device match data and remove the
+now unnecessary member from struct rk_hdptx_phy.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 31 -----------------------
- 1 file changed, 31 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index cf2c3a46604cb9d8c26fe5ec8346904e0b62848f..f9b5c96d6c789e435657e224032d35b5a6950945 100644
+index 06644c3d98d3f8b697fc704704df5acdd3c85bad..2bf525514c1991a1299265d12e1e85f66333c604 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -329,37 +329,6 @@ enum dp_link_rate {
- 	DP_BW_HBR2,
- };
+@@ -392,10 +392,7 @@ struct rk_hdptx_phy {
+ 	struct regmap *regmap;
+ 	struct regmap *grf;
  
--struct lcpll_config {
--	u32 bit_rate;
--	u8 lcvco_mode_en;
--	u8 pi_en;
--	u8 clk_en_100m;
--	u8 pms_mdiv;
--	u8 pms_mdiv_afc;
--	u8 pms_pdiv;
--	u8 pms_refdiv;
--	u8 pms_sdiv;
--	u8 pi_cdiv_rstn;
--	u8 pi_cdiv_sel;
--	u8 sdm_en;
--	u8 sdm_rstn;
--	u8 sdc_frac_en;
--	u8 sdc_rstn;
--	u8 sdm_deno;
--	u8 sdm_num_sign;
--	u8 sdm_num;
--	u8 sdc_n;
--	u8 sdc_n2;
--	u8 sdc_num;
--	u8 sdc_deno;
--	u8 sdc_ndiv_rstn;
--	u8 ssc_en;
--	u8 ssc_fm_dev;
--	u8 ssc_fm_freq;
--	u8 ssc_clk_div_sel;
--	u8 cd_tx_ser_rate_sel;
--};
+-	/* PHY const config */
+-	const struct rk_hdptx_phy_cfg *cfgs;
+ 	int phy_id;
 -
- struct ropll_config {
- 	u32 bit_rate;
- 	u8 pms_mdiv;
+ 	struct phy *phy;
+ 	struct clk_bulk_data *clks;
+ 	int nr_clks;
+@@ -1892,6 +1889,7 @@ static int rk_hdptx_phy_runtime_resume(struct device *dev)
+ 
+ static int rk_hdptx_phy_probe(struct platform_device *pdev)
+ {
++	const struct rk_hdptx_phy_cfg *cfgs;
+ 	struct phy_provider *phy_provider;
+ 	struct device *dev = &pdev->dev;
+ 	struct rk_hdptx_phy *hdptx;
+@@ -1910,14 +1908,14 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(regs),
+ 				     "Failed to ioremap resource\n");
+ 
+-	hdptx->cfgs = device_get_match_data(dev);
+-	if (!hdptx->cfgs)
++	cfgs = device_get_match_data(dev);
++	if (!cfgs)
+ 		return dev_err_probe(dev, -EINVAL, "missing match data\n");
+ 
+ 	/* find the phy-id from the io address */
+ 	hdptx->phy_id = -ENODEV;
+-	for (id = 0; id < hdptx->cfgs->num_phys; id++) {
+-		if (res->start == hdptx->cfgs->phy_ids[id]) {
++	for (id = 0; id < cfgs->num_phys; id++) {
++		if (res->start == cfgs->phy_ids[id]) {
+ 			hdptx->phy_id = id;
+ 			break;
+ 		}
 
 -- 
 2.48.1
