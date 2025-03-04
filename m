@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61AF6C021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 08:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C531FC021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 08:15:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UxIHZsLW9E04xN8yk9cnXiLjTXXTjYndD4wKl778OWk=; b=J2bi4+QFjFptSD
-	obVGL6JXpFTPfhTHJbW3gkf6Y4OdThOf/Xg7hQA8gfVunEeE6qfclSa9js7el3EctWDrBD6njGpO9
-	JsP+pdHQ4r/9zMiqLJw5JcDMKsHZMXTRxq16uGIWWviQakwHkvHkpFnTZetsVFu+GPAbkX+mVhOu2
-	bnItkmpzYk0819zoUfO2ioz52r2UwFDWJ4mmx1KyDQFDmz0dvJBJ5GfCPn4m99qhEz6+wX2dAzaM7
-	8k//r3x1uGusPjTJm9PSzHsD6sJYIKTcqn4ZsGVjloXmG75TA3lPo86d3bEAbXwCbkPTHWcpYJcld
-	HjyBDoPvZvf438sgs6TQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TfIUQnyrvSHSjVrqOXKX2nndh0cjYuIH1hsb7uXnq6U=; b=wrC+NlPLqQKa6LQvqDZXMALm/d
+	Rh6vmuGqSZH6N4CFhOMCxmWcr/lK7SxGO2/XrJTbe0+tnC3KLr7bNJoOgo9SXMGwo0Wi4FcEp7ca5
+	GIZB7Kkz7Moz59VYYJf0MYAfmd36PbVv0z9a2hG46f+Ms+pXmrNBNg2WOZgLe8HaezJYy6hnkcciL
+	Wr2/Sz/0wxWiQYHvHhSyJhc7B0/7r7ps5f2lIn68UZQ7i/5DrB53UA1xXVPUFeIxS0pfcYQJYDwA3
+	pe8HcXIGkKSAHsJXZMRnxqkarcKLPdU0wvDmsODP9yD38o8jQwGKzsYOxKYvUPdqZxBLWM48gpMHy
+	eiUlcLbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpNIh-00000003ZGn-2lj5;
-	Tue, 04 Mar 2025 08:06:51 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1tpNQp-00000003aPV-3Iyi;
+	Tue, 04 Mar 2025 08:15:15 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpN45-00000003WUJ-452q
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Mar 2025 07:51:47 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-54943bb8006so5869724e87.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 03 Mar 2025 23:51:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741074704; x=1741679504; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pA6zLWQ+dYJkLtBz+wtBiNsIVYV44LsyhmBHfgcYN+Y=;
-        b=U+RwhPbAWt9MyixSW68nN5tGNQwp6r/qGWYlFOTxJvTkJTN1FiLeYz2XQlOdB+n7Y3
-         YxSXM9nkyXBkjX2c0oma87vfR+Xfi7lAPIP+jLJm5ZxSR57O7XKOhZJeaqvOA823sjCG
-         s23kCAZPEjqb9ipjQBaX+S3YQGfDP5DX61ftAuxO5gGUufjNnkVeKmV6nbf9NR/2BKg+
-         3CBsGz5Uru44L2WHBrxg1YBAC1AGCtbLFqyNp0DQ+1GucegpbY4gHrwzQDN9wKkpFJO4
-         m/wy3ehfMXVAytGEhndXcOnfPPGPHdNL+iUU/a0XKHa4uBgFBTyPkRDuNioiEsft8p5p
-         hQ7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741074704; x=1741679504;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pA6zLWQ+dYJkLtBz+wtBiNsIVYV44LsyhmBHfgcYN+Y=;
-        b=q2vy9ZIx6bNIACxSicAlUR/pDcohYj7YcViPKiVG3l6OktbIqdxey7vePL/0ivaN7N
-         rg/lwjYFiR7WxaCoZ5blynLJ4HZpEVr+WbkRV7Wg6qMpric/HSrh+3MXguaz45qBE1zO
-         rJtVbZitVF4ok1HIev4VnnunhqAlYhGJ26Atpd4y8DkLFfckNzEtOWezFJFz6/5blZFc
-         e6VSZt/Vqc/7WwejnQPvJtbSpfIs4dhNMpPlhenhTMxyWk8s2y52JIMELnmzIx8plrlv
-         nKXNbxyjF3Y8Bhvmg8us0pPoa6dCV8jw366nC+ysd9II0LyFm5pRBIHq/iq0pSxc3P+J
-         +Mgg==
-X-Forwarded-Encrypted: i=1; AJvYcCU2k2dMjMCkuc8L5kp05oy09yn6unrWIl68OFQTqvHaaQb1/Cwq5Z62+7aa6bZ82Ys9iEG4etSG1mwEFLBv8Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yziye7GbWkVyDi+ETQ5v9yWf4wmCotRAf0Yq8hiWh6AwoHPDJAL
-	QXV081VssE/3tj+uXgj0AJrSl/gCcJ29R8f34pNS4PzLx9e8LRf5rBtJGz5MQNTp0GZDDh12km/
-	+5nSIwKX3+r/nu4AHURARG4JfQ625wpMP+NVjU1vQvzPhFRG/
-X-Gm-Gg: ASbGncsrHQUwMxgAQCLQGaev569VoQrdp9Ll321C0oXvsYVQdKMATJKg4XjclYgTyTR
-	Vuw3arYxAK7VQWhUCyj9eaEX7lsq2M66m44IgjrRHgnZ6z0i3wUS5pI8anuxzflXSWBOBy5K43C
-	HpI/Yoo8/83lLoVYfFaP70fSYQVg==
-X-Google-Smtp-Source: AGHT+IF2HnTvgALEagtidtwMTknG9FoykhqBphkMLjIu+urEhq+snaAKQPbxfAEiEdOYOfpEU/z8RIcNqZf0RTZQZA0=
-X-Received: by 2002:a05:6512:1292:b0:545:c9d:ef26 with SMTP id
- 2adb3069b0e04-5494c34fcd9mr5744703e87.46.1741074704091; Mon, 03 Mar 2025
- 23:51:44 -0800 (PST)
+	id 1tpNPF-00000003aAy-3Kmc;
+	Tue, 04 Mar 2025 08:13:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=NeL+tjREbRkAn/ipZR3E2LXil7bCv8lmP1WM9ePrRf0=; b=eRw47f9YnH7mXuVz6b2FWbvK3d
+	4UnbT8pmemglteUnCUGdLQjvg0DcDsffRkumBZyRdP2UVjUVMqyedPniD7WyHBEPbir0Q4K3a3Kcy
+	cad9P85gSIswG/CCpkHhVRL2Mhuu3PdAExoBaqQW3WPgeW/5jEh5hNqcwUiuZKueMq6ir50z1jnQ7
+	EUzSu+1xhjIFc4OeDD8/LlAeSYpCfIa1UNeWmtpHecI+wjZSHsC4dxCP0yhhpwyHxpMzOF7rmh/T/
+	ekdQ79JYMCVGzXE1bImM25eO6wYvt6QP/IbzNATPg0uXGhULWQ6iSd8UzdMcXLNo6tQbgZb3EcE2S
+	uUE4a3Bw==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tpNPC-00000000PwZ-3OZa;
+	Tue, 04 Mar 2025 08:13:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1FF3AA4530B;
+	Tue,  4 Mar 2025 08:07:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CC73C4CEE5;
+	Tue,  4 Mar 2025 08:13:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741076003;
+	bh=GHy5E/3mPv773kIwD9J1pCgLnjD33qEGYhJtCdEIpPo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=P7XLZFu5KdnMZWgJ4CPWxZm/klB4jrV+EVKtDi70MwYPiycz2O6teOvZstbbB5uKn
+	 4HwoUxIxuHHnuCypMFixeYlVN5fDlopFAfbhSRyw/rsIDOvcnARxv3U89fQHCLT1rT
+	 YH+0V+isLot4BXjTul7TmgUBvCuRmJW/mLMIc6bNu/Gy11mEgx/W4ucWePaZT1wAtB
+	 5UhwuaBMPU1q2xQ4PqU2BBOzTKgpz0LFcHjnjV3cktNatF7Rw/Adbd1BdbARmK/Q81
+	 EsrI3k9YzFvgdiu9I57NpQbQWc3S7kvI4IhjCmipKXE+OF5Qji9blkKlCrkHH2vf3s
+	 +TcVyR1GsGUGw==
+Date: Tue, 4 Mar 2025 09:13:20 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com, linux-kernel@vger.kernel.org, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
+ setup
+Message-ID: <20250304-small-mindful-mongrel-bd6f8b@houat>
+References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
+ <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
 MIME-Version: 1.0
-References: <20250228064024.3200000-1-jonas@kwiboo.se>
-In-Reply-To: <20250228064024.3200000-1-jonas@kwiboo.se>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 4 Mar 2025 08:51:32 +0100
-X-Gm-Features: AQ5f1Jqk33uHsY5UV1F0bE-LoNlIC6DrZiXxoZsYoJWU763-1spk-ecprSEFCuY
-Message-ID: <CACRpkdaELuU6XDKacOLsWAF8ncbudJ9Tp0jykAyf-NXRLjoSdw@mail.gmail.com>
-Subject: Re: [PATCH 0/7] rockchip: Add support for leds and user button on
- Radxa E20C
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_235146_012846_B28EE1CD 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250304_081335_095495_D0421D58 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,18 +85,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5323746848124265025=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSm9uYXMsCgpPbiBGcmksIEZlYiAyOCwgMjAyNSBhdCA3OjQw4oCvQU0gSm9uYXMgS2FybG1h
-biA8am9uYXNAa3dpYm9vLnNlPiB3cm90ZToKCj4gICBkdC1iaW5kaW5nczogcGluY3RybDogQWRk
-IHBpbmN0cmwgc3VwcG9ydCBmb3IgUkszNTI4Cj4gICBwaW5jdHJsOiByb2NrY2hpcDogQWRkIHN1
-cHBvcnQgZm9yIFJLMzUyOAoKVGhlc2UgdHdvIHBhdGNoZXMgYXBwbGllZCB0byB0aGUgcGluY3Ry
-bCB0cmVlLgoKUGxlYXNlIGZ1bm5lbCB0aGUgcmVzdCB0aHJvdWdoIHRoZSBTb0MgdHJlZSwgaXQg
-c2VlbXMKaXQgc2hvdWxkIGFsbCBiZSBhYmxlIHRvIGdvIGluIG9ydGhvZ29uYWxseS4KCllvdXJz
-LApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+
+--===============5323746848124265025==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="sg64fqm2xqk74cdt"
+Content-Disposition: inline
+
+
+--sg64fqm2xqk74cdt
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
+ setup
+MIME-Version: 1.0
+
+Hi,
+
+On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
+> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+> and not before.
+>=20
+> While at it, introduce a define for this rate limit constant.
+>=20
+> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY drive=
+r")
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/=
+phy/rockchip/phy-rockchip-samsung-hdptx.c
+> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8=
+346904e0b62848f 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> @@ -320,6 +320,7 @@
+>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
+>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
+> =20
+> +#define HDMI14_MAX_RATE			340000000
+>  #define HDMI20_MAX_RATE			600000000
+> =20
+>  enum dp_link_rate {
+> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct r=
+k_hdptx_phy *hdptx,
+> =20
+>  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+> =20
+> -	if (rate >=3D 3400000) {
+> +	if (rate > HDMI14_MAX_RATE / 100) {
+
+The rate seems to come from rk_hdptx_phy_power_on and eventually from
+tmds_char_rate in the PHY config options, so its rate is in Hertz.
+HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
+It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
+
+Maxime
+
+--sg64fqm2xqk74cdt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZ8a2IAAKCRAnX84Zoj2+
+dhWwAXsGrPqoPNFcfL6UhsGPHfIbxb05Q1NH5HI480bGuviWiVrea7qwGAeT8u2M
+KeEzcAsBfj2fxEy07AOeK8CNxPHb+7WdQQNZaTTvJ0v33gEjKuOtX/vTQGE2pL5b
+8uPw/l2Bkg==
+=cCWQ
+-----END PGP SIGNATURE-----
+
+--sg64fqm2xqk74cdt--
+
+
+--===============5323746848124265025==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5323746848124265025==--
+
