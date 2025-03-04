@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C0E7C282D3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:10:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08EB7C021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 12:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e3vWCr32mae+NaEB2m4DrOW4+UD3KDn+9GqMlLvl9M4=; b=KJvQuwJOcHgKWO
-	bIgPq77pfB4FcO9+hC1ugkvYZ/3kfmOJHZvp0TMH4IaSlkXyJPtLZSpdhCNj9TfU+6h1bVeqAPMho
-	6pS/8WatbN2fvW/IKyVNU7Em6eg4ws52oMw9CMc9Dz4prjoVJ2MUhbgvIRtkdYIHxPkUQ5S+hCL+U
-	+UBfgLdKi/LKIw2RTz7q/9Uxd+i2FYgA0u6gwVFyoyJMKqikqAekpZVTFkXb38WVbUN+/j1IZ7tfD
-	crSjbEC9p4xUhf1WTAtILPY74pe+/PbRRnmFo0+D9qtXQvlV5Ln2JS69P4SvkcXrm4GR4bG2P+v9S
-	0Ap5MOAc3/wFkjnhXObQ==;
+	List-Owner; bh=DsBwhMBV63AOdwiIFL8Hpv9Iyup3D0MmGe8ZGFXw31k=; b=18tZFK98hL390y
+	8rEQcUXmmFe+35o54xuYGftJWUcmL9+0Gu6TB8CRmgGfaL5unTokiwAbLIUdeaeZ8NUdK/1nRlfu2
+	tRwMCOTAFFyUC8ORHRJRzMh3Ws/nUy+9eNmOkihZhkGJVw+RtNfoHsw9/hg8E11EUjQiLhYzA6o0a
+	Y0QtaloYkpeYVPZmWKq2deEDiQ6N5uj79B3GagNzpFb5BytCstZxvuzQXezMZ8jkUKxgLCk880PJ+
+	TCdwzBMcKddT5b16sy8DLBKfy8TOshPgJyIR8HEf0FA0OLVV9a364To2mo5+D/uGy4Z6fG92qfFr2
+	Mx1TuJ4Qy2wxxujet83A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpR6q-00000004Zrh-1mjT;
-	Tue, 04 Mar 2025 12:10:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tpRBC-00000004bA1-3Nm6;
+	Tue, 04 Mar 2025 12:15:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpQz7-00000004Vks-3AXh;
-	Tue, 04 Mar 2025 12:02:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=jboAJ0TDh+OlkHuwftLCsZ+FXL3CIibc36b0PSVLhec=; b=hVXnd9mjU1mx39Frs3fVXG4nsk
-	PypU+idzTuaxwZRaKhxK8UKH/Y5nNI+DFbbX39bSMPWWetpees56ae1Bd+zkuGCBai6pxlIQG17pA
-	DBD20/NGKrGHP4Jw2Zv3SDF4BO3wGju/8FmqXjxriq3UHfCkSTNFubTsYZXO/nZSBAFzxCsQ7TyQK
-	6lg2mZQgGOFsaGXUZX17nHiLcs/MhK12WArWUsOygCfjkqRou1HL214UOaZH6q064XUfByPmo9jUQ
-	bpzjtku3eyNLrlToGGxik1MPckohT9tTznEUH/tPzIX+wcrnEmDrOm8whuV06maozrQWVQvZo5fIQ
-	V96IJMpw==;
-Received: from i53875a38.versanet.de ([83.135.90.56] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tpQz1-0002ws-FJ; Tue, 04 Mar 2025 13:02:47 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Yao Zi <ziyao@disroot.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH 0/7] rockchip: Add support for leds and user button on Radxa E20C
-Date: Tue,  4 Mar 2025 13:02:45 +0100
-Message-ID: <174108970986.65436.4272591414898454986.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250228064024.3200000-1-jonas@kwiboo.se>
-References: <20250228064024.3200000-1-jonas@kwiboo.se>
+	id 1tpR0X-00000004Vyz-1sd6;
+	Tue, 04 Mar 2025 12:04:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741089859;
+	bh=7VUHnquwE/QdFs1qoBO1l/34onrJ8q7S6w5kpFpcMcw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AjVbo8kdonHW6j6x9ddScTYnIJPHdmtbEdjH1VWVWapBKzQgU2yynW2nq7HtcWffb
+	 Td5IvOxQBuDOgt0xFmEIXEl2EknaG5wnlkB/2cFHQ7Q6ghm+qMSxBPE270+dX+DpKt
+	 UizZbUXAs9QmKoMY8S4ju5GHl4GnNhSg3IsxI6Ll/QmeFHwZ2euB128jYledwU3gTR
+	 xTNm+ghilHPByK7Jyh1bOp4NtD7TOfuLOSRrcrj5x4oz6RjTiVkUBWlK1A4V58mUGT
+	 v+1vjUTxrlU3ySKguUjwUPT4Z1BkO1Acf5xesQ2V2mtkeywwfCiN7SWvAcEP+OASpV
+	 NVFz6VQR3IWJw==
+Received: from [192.168.1.90] (unknown [188.27.58.83])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 325F217E0A4E;
+	Tue,  4 Mar 2025 13:04:19 +0100 (CET)
+Message-ID: <155f609f-994f-4140-8453-7e38a5e6deef@collabora.com>
+Date: Tue, 4 Mar 2025 14:04:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
+ setup
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
+ <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
+ <20250304-small-mindful-mongrel-bd6f8b@houat>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250304-small-mindful-mongrel-bd6f8b@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_040253_819679_0B8B15ED 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20250304_040421_643568_5E3B9544 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +81,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime,
 
-On Fri, 28 Feb 2025 06:40:06 +0000, Jonas Karlman wrote:
-> The Radxa E20C has three gpio leds and one gpio button.
+On 3/4/25 10:13 AM, Maxime Ripard wrote:
+> Hi,
 > 
-> This series adds dt-binding, driver support, DT node in SoC .dtsi and
-> gpio-keys and gpio-leds nodes in board DT to support the leds and user
-> button.
+> On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
+>> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+>> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+>> and not before.
+>>
+>> While at it, introduce a define for this rate limit constant.
+>>
+>> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> @@ -320,6 +320,7 @@
+>>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
+>>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
+>>  
+>> +#define HDMI14_MAX_RATE			340000000
+>>  #define HDMI20_MAX_RATE			600000000
+>>  
+>>  enum dp_link_rate {
+>> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
+>>  
+>>  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+>>  
+>> -	if (rate >= 3400000) {
+>> +	if (rate > HDMI14_MAX_RATE / 100) {
 > 
-> This series builds on top of the "rockchip: Add support for maskrom
-> button on Radxa E20C" series [1].
-> 
-> [...]
+> The rate seems to come from rk_hdptx_phy_power_on and eventually from
+> tmds_char_rate in the PHY config options, so its rate is in Hertz.
 
-Applied, thanks!
+The rate coming from rk_hdptx_phy_power_on() is in hHz, since it passed
+via dw_hdmi_qp_rockchip_encoder_enable() as
 
-[1/7] dt-bindings: soc: rockchip: Add RK3528 ioc grf syscon
-      commit: ac32ad07a97648eb8330b2c4cb840b0ef46903ae
-[4/7] arm64: dts: rockchip: Add pinctrl and gpio nodes for RK3528
-      commit: a31fad19ae39ea27b5068e3b02bcbf30a905339b
-[5/7] arm64: dts: rockchip: Add uart0 pinctrl to Radxa E20C
-      commit: 0d2312f0d3e4ce74af0977c1519a07dfc71a82ac
+  phy_set_bus_width(hdmi->phy, div_u64(rate, 100));
 
-Patches 6+7 depend on the parallel saradc support series and thus
-do not apply - and need too much rework to safely apply.
+> HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
+> It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
 
+This stems from the ropll_tmds_cfg table containing the configuration
+params for the supported rates which requires the search keys to be
+provided in hHz rather than Hz.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+I agree this is nothing but confusing, that's why I fixed this up in
+"phy: rockchip: samsung-hdptx: Avoid Hz-hHz unit conversion overhead"
+
+Thanks for reviewing!
+
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
