@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B61C282C6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88524C282C6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 02:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HfaoHBGSkI34mL0DMKruhLMr0uWoHohsWCOUAbR9I/Q=; b=FZuMsMUHsaxo1h
-	DNdePY1n5P55UfvAitaElO9Xc79JQyLayJGnForqdPWTvDS/vb1NTqH5S5UCMGPqHq6H7puQOplQ7
-	Qad0qgaYm1biKODekp9YE+GiY9RNWcsuH9ec4tivdQZ3er3Kz24zxcR9KYqC0I8PQPPMmetHMJ2Az
-	t1/o6EayrcuI3d/9CXXfBlINgooowH6X/L49WibZv1ob3ItuH1Lft0hgpdMXnXtP6QYKAf+1knpLB
-	8KDwIM3sm+TY1+MBWE+dAf0XlFDGjA/NMbb2Dsrq+Dt4YpUru8kitvGdcHFz/Zft/jZoG6owf1eT6
-	jz1VzOjtCAVRGZQgQunQ==;
+	List-Owner; bh=fYgk41lyqDGwOlzxUXl0tdcuJdkV9bvu1lLzbOW4GGY=; b=v/Nb4zZgiEfXlP
+	t9f+BxsKekKGfKAL/Xs7KuIHg4Wa4wqWwZ3hHoR9pSxWoa12nbFwffkEfxuIVWFofXpOLO3xKjc6T
+	YQgU8wOp3538UFNRsMVy6wxP1IfkvdnZOqi2EDsuNeNyBQSGxcK4itlmVNRCc4ASQtOOfpXUdbirP
+	aOmUTfYIqayCtvBuDulcpn2pW2YNxWCO12L1Of7lASnLS1oTgCdLlVkgPwP9ZR2RbJ5S6KXVW0mx6
+	M9sa4sF9Ubd+4uCSae3QpNHDPdQ15K7Kt+kaLt9YpqClrmBkydEm/Mx5c1bizuE569e5a5+rtB6tY
+	kVJY2PUT2pYJ1bk80A5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHgH-00000002rKx-1bkE;
-	Tue, 04 Mar 2025 02:06:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tpHhp-00000002rT5-03ut;
+	Tue, 04 Mar 2025 02:08:25 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpHKY-00000002o2M-07Gy;
+	id 1tpHKY-00000002o2i-0pe2;
 	Tue, 04 Mar 2025 01:44:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1741052660;
-	bh=JVO6B5huh7eGDo+k3A1fG3SKCxGyB11XeWKMxuuZ+rw=;
+	bh=XP3rwzkTa1mXnGdnUHFUWqLPHJxazgMc4cL1Dqwrxk8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qvKZ515NVdudG5/INUpwF68Tb5cdYb37WTMmQAaQs7oDwMfuxnf292TUulUtMR6tB
-	 xr1OeuVrmBfAaJyTiIf47CFveoq9ATnHEhjexNaflUkOtpC3/cnEf0fIWJ0/GnWRQK
-	 VH6s/axpAiBD412eAjjfVCVxeCa9OED/MXWDm7fLqqvtsxdT6lHI+2BChJYnlhNqb4
-	 Lgz6ygplXtbqCDLXRIoByF7Wa7Lx0z+3YqRbXdFG+fQsfvJqSHZrdEDNHQ8uwhD5Zv
-	 USjmJBjdd7CDyL2QtGLA2fsz9W0hZABcQP6/TAk84kjnrU7z3zSOuql7q6buI83nx1
-	 ehopYz/8WkOoQ==
+	b=NLY3E68DYDkzVvAkCnu5VDpYvpn0xoEudpCXALBbfaiQT5f/rtb9Zmv3NXOqbxhGc
+	 qdFzoXkH76VoYcLBaFtPqDQYM/MnetZFz817LDvf2hwzaqHjXTxHms9vw/OqGH+6Ic
+	 T3qMqUrZ5Czeea6MobKuohAB+gvJXJQbklJEwacwomyXO+OhPpgXazTOT6ZIi5pZuz
+	 0ePEsUgElXEisUlqex5CtEqpiHJ97rUcrXXy1FqJSrdLrTNkfis/WIlwqewRaC77Z6
+	 m5T0p0JaKYpbtOrXr9mmCVMfr8MgyQaDCgVKlUFM5NrmFrOXXJ3PRXwKKMR4C3L5vf
+	 fW7VxK7rVOkXA==
 Received: from localhost (unknown [188.27.58.83])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id CEB6B17E0FA7;
-	Tue,  4 Mar 2025 02:44:19 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id B13CF17E0FD1;
+	Tue,  4 Mar 2025 02:44:20 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 04 Mar 2025 03:44:02 +0200
-Subject: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
+Date: Tue, 04 Mar 2025 03:44:03 +0200
+Subject: [PATCH v4 04/12] phy: rockchip: samsung-hdptx: Drop unused struct
+ lcpll_config
 MIME-Version: 1.0
-Message-Id: <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
+Message-Id: <20250304-phy-sam-hdptx-bpc-v4-4-8657847c13f7@collabora.com>
 References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 In-Reply-To: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -61,8 +61,8 @@ Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250303_174422_246636_0E76A354 
-X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-CacheID: sfid-20250303_174422_385370_A971DB34 
+X-CRM114-Status: UNSURE (   6.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,39 +80,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
-340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
-and not before.
+This is just a leftover from downstream support for HDMI 2.1.
+Remove the unused struct for now.
 
-While at it, introduce a define for this rate limit constant.
-
-Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 31 -----------------------
+ 1 file changed, 31 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
+index cf2c3a46604cb9d8c26fe5ec8346904e0b62848f..f9b5c96d6c789e435657e224032d35b5a6950945 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -320,6 +320,7 @@
- #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
- #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
+@@ -329,37 +329,6 @@ enum dp_link_rate {
+ 	DP_BW_HBR2,
+ };
  
-+#define HDMI14_MAX_RATE			340000000
- #define HDMI20_MAX_RATE			600000000
- 
- enum dp_link_rate {
-@@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
- 
- 	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
- 
--	if (rate >= 3400000) {
-+	if (rate > HDMI14_MAX_RATE / 100) {
- 		/* For 1/40 bitrate clk */
- 		rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lntop_highbr_seq);
- 	} else {
+-struct lcpll_config {
+-	u32 bit_rate;
+-	u8 lcvco_mode_en;
+-	u8 pi_en;
+-	u8 clk_en_100m;
+-	u8 pms_mdiv;
+-	u8 pms_mdiv_afc;
+-	u8 pms_pdiv;
+-	u8 pms_refdiv;
+-	u8 pms_sdiv;
+-	u8 pi_cdiv_rstn;
+-	u8 pi_cdiv_sel;
+-	u8 sdm_en;
+-	u8 sdm_rstn;
+-	u8 sdc_frac_en;
+-	u8 sdc_rstn;
+-	u8 sdm_deno;
+-	u8 sdm_num_sign;
+-	u8 sdm_num;
+-	u8 sdc_n;
+-	u8 sdc_n2;
+-	u8 sdc_num;
+-	u8 sdc_deno;
+-	u8 sdc_ndiv_rstn;
+-	u8 ssc_en;
+-	u8 ssc_fm_dev;
+-	u8 ssc_fm_freq;
+-	u8 ssc_clk_div_sel;
+-	u8 cd_tx_ser_rate_sel;
+-};
+-
+ struct ropll_config {
+ 	u32 bit_rate;
+ 	u8 pms_mdiv;
 
 -- 
 2.48.1
