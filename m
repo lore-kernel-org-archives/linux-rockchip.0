@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF9EC021B8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 21:15:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5D1C021B8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Mar 2025 21:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qWZ4EvkZKCbQfsNPBg4FNIbpjeaCOKiryS7G/jTSP34=; b=Z0uxem1uWF2WK1
-	BhwrRZK9OmcSRXsvFsmxWa4pEVGw1o7T/eo3dF77Pwv+IQwuHYiIxp/jgxZYxz3NqZqcIiZ7uNbpG
-	D1MPsc22/X3z7gjy7vR8hn4XLRO+sYhyoZx1oIjZN5Kvp8aPUPfEfr88i/YwtDacDvHQMKXq7iBnN
-	P0gzWQtwgB4my5HwV/dG6mmOxO1+/iBSweai4fG5EXpt1OPAl9eXanZ1D7mOe5G1NSS2OFIsRpV5E
-	yYlpj/AcVzquvrwJ7rMMB1GABPYN1kY21yYy/PL1kz8FgZ2qFM3xq8mSA4iUBLdE6l6p2kMFhaqXi
-	o59DzelM/L3ysoDnqp1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RBHofqWB/5ubRC/BIGddaAjQ+O3c3awqLwmvmMqle0A=; b=FJGwRAdukFCVy4xpRfQoDC9D2s
+	489CeCA1GebpM6pzeQIsRY4QHKEoIfUqgzGVK7ACfLsFvJWIPpdacrVc2CEaJ1hh13RycllsDjalg
+	wzHRj/3L2Z4PM0Lpjq3RjTh29WkiPbcHWVbVEW0jfxNJBfzffFKWgKBMvbvEKfKrrFaMhqIEuvulQ
+	smlELY3xTA6sXwgIVDM0JHrzDjmSsxgSjJaPAZg6LRi2ulBxXUQddgn44gnkpjwhCST2/XnA7RC3I
+	MraRvlaYfcnFLF1G7SXh3V0JjbgBCN2/R95HptJ0HHY2/uQtOOy4ofqJ+ZO2J4coH2MONrKj0JAwn
+	wDgiQ4aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpZbD-00000006HMK-3l2G;
-	Tue, 04 Mar 2025 21:14:47 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tpa4G-00000006KFp-2Ug0;
+	Tue, 04 Mar 2025 21:44:48 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpYMn-000000067Xn-0hBq
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Mar 2025 19:55:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741118148;
- bh=eJwNGtEp4XbaHSJ4DCMpAhRX6Xx7TLv6dC2ug10rAwQ=;
- b=S26Atw31kgMDd0DAJ+G37SbQDhZgCKVBDzWrzmPG5PP9YGcLThUIHd+s+Bhb762QBe9pM7Nne
- 3i/J9xoXwLEqgHD6DbhrHtdKjJbClE5QlCY4bWYu+R+6IYqZ7iS7GZq0BNRchLnjvLi+d/zh+5J
- xk6UfsbkVDnBrqZrpuh8BtJBeF33HPpQk6NPCYIFjP3c8m06mS/S4WC0b0G83PH7ncfP5sAjcC6
- vWx2L4kHXBCTOxxn+VyeUKNNGCrrTbgfVRwu/zzBWFuFenWM2QlDgUw6gVwUZ6UgNK6FKNc5Hba
- Am+f7amGfuuet1XLO0v40plZEzAwAW+GZPBBNALCUMLQ==
-X-Forward-Email-ID: 67c75abd2e5baeec949f8de0
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <5c429552-bdbb-43d9-8e07-bacda57c0fcf@kwiboo.se>
-Date: Tue, 4 Mar 2025 20:55:36 +0100
+	id 1tpYuH-00000006BwF-2hdi;
+	Tue, 04 Mar 2025 20:30:26 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/8] arm64: dts: rockchip: Enable SD-card interface on
- Radxa E20C
-To: Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>
-References: <20250301104835.36439-1-ziyao@disroot.org>
- <20250304121036.1453284-1-amadeus@jmu.edu.cn> <Z8dZWYpABghRHHge@pie.lan>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <Z8dZWYpABghRHHge@pie.lan>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1741120223;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=a6WzCje76QLUKJGbmYoeUe7d9zKFda9oGc8+kEK4a04=;
+	b=jNP4ReSawiAxad9womJccr4tfSjzlhZUJA6DV3kWGJXSysytY4Z8oqIOu2KElbzgCtxThe
+	Hb6obA+e0Qo/eYo2+zpV+mtx40sUxmEqUnAw4mQxJbez7q10pXKoybJIO9Uu2fYNmla3cE
+	PDPzlUbH2X+2eWAHvki/b8nLITpLoAopv5K8ASny7u2n7w253EIR3hZZPTyz/t/zEY2hvK
+	1h4mrF8gHB7qXOgkGIyyPIFUWoBghSgDu13Y9Jz18RqL63V6sJvR3FyqOKdUZrOXV6xRnT
+	RG5VgCo8Voq1kDCl3iZs+gL4BxgzMADdzke5argxV/fGYQPeGQ58inZobpDDaQ==
+Date: Tue, 04 Mar 2025 21:30:22 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, quentin.schulz@cherry.de, Heiko Stuebner
+ <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v3 1/3] drm/rockchip: lvds: move pclk preparation in with
+ clk_get
+In-Reply-To: <20250304124418.111061-2-heiko@sntech.de>
+References: <20250304124418.111061-1-heiko@sntech.de>
+ <20250304124418.111061-2-heiko@sntech.de>
+Message-ID: <041c5f0e2371817a27577bd0989b9dca@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250304_115549_303199_A85A003B 
-X-CRM114-Status: GOOD (  22.66  )
+X-CRM114-CacheID: sfid-20250304_123025_837429_90F481FF 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,134 +71,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, frank.wang@rock-chips.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Yao Zi,
+Hello Heiko,
 
-On 2025-03-04 20:49, Yao Zi wrote:
-> On Tue, Mar 04, 2025 at 08:10:36PM +0800, Chukun Pan wrote:
->> Hi,
->>
->>> +	aliases {
->>> +		mmc0 = &sdmmc;
->>
->> s/mmc0/mmc1
+On 2025-03-04 13:44, Heiko Stuebner wrote:
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index 385cf6881504..ecfae8d5da89 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -448,15 +448,13 @@ struct drm_encoder_helper_funcs
+> px30_lvds_encoder_helper_funcs = {
+>  static int rk3288_lvds_probe(struct platform_device *pdev,
+>  			     struct rockchip_lvds *lvds)
+>  {
+> -	int ret;
+> -
+>  	lvds->regs = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(lvds->regs))
+>  		return PTR_ERR(lvds->regs);
 > 
-> Will take it and add the missing pinctrl, as Jonas already pointed out.
-> 
->>> +&sdmmc {
->>> +	bus-width = <4>;
->>> +	cap-mmc-highspeed;
->>> +	cap-sd-highspeed;
->>
->> I think for sdcard, only cap-sd-highspeed
->> is needed, not cap-mmc-highspeed?
-> 
-> This makes sense, will remove it in the next version.
+> -	lvds->pclk = devm_clk_get(lvds->dev, "pclk_lvds");
+> +	lvds->pclk = devm_clk_get_prepared(lvds->dev, "pclk_lvds");
+>  	if (IS_ERR(lvds->pclk)) {
+> -		DRM_DEV_ERROR(lvds->dev, "could not get pclk_lvds\n");
+> +		DRM_DEV_ERROR(lvds->dev, "could not get or prepare pclk_lvds\n");
 
-Please do not remove the cap-mmc-highspeed prop, I tested the controller
-with a microSD to eMMC adapter and MMC HS speed is supported:
-
-  mmc1: card 59b4 removed
-  mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-  mmc_host mmc1: Bus speed (slot 0) = 49800000Hz (slot req 52000000Hz, actual 49800000HZ div = 0)
-  mmc1: new high speed MMC card at address 0001
-  mmcblk1: mmc1:0001 DG4008 7.28 GiB
-   mmcblk1: p1 p2
-  mmcblk1boot0: mmc1:0001 DG4008 4.00 MiB
-  mmcblk1boot1: mmc1:0001 DG4008 4.00 MiB
-  mmcblk1rpmb: mmc1:0001 DG4008 4.00 MiB, chardev (499:0)
-
-  ~ # cat /sys/kernel/debug/mmc1/ios
-  clock:          52000000 Hz
-  vdd:            21 (3.3 ~ 3.4 V)
-  bus mode:       2 (push-pull)
-  chip select:    0 (don't care)
-  power mode:     2 (on)
-  bus width:      2 (4 bits)
-  timing spec:    1 (mmc high-speed)
-  signal voltage: 0 (3.30 V)
-  driver type:    0 (driver type B)
-
-Regards,
-Jonas
-
-> 
->>> +	disable-wp;
->>
->> Missing pinctrl.
->>
->>> +	rockchip,default-sample-phase = <90>;
->>
->> It seems that all rk3528 devices need to set this
->> default phase, so maybe this can be placed in dtsi?
-> 
-> Yes, since the tuned phase offset is a SoC-specific value, as pointed
-> out by comment in the driver,
-> 
-> 	this is _not_ a value that is dynamically tuned and is also
-> 	_not_ a value that will vary from board to board.  It is a value
-> 	that could vary between different SoC models.
-> 
-> Will take it in the next version, thanks for finding it!
-> 
->>> +	sd-uhs-sdr104;
->>
->> The rk3528 devices uses gpio to switch IO voltage, maybe
->> more modes should be added here like vendor kernel?
-> 
-> I cannot get the relationship between things you mentioned. For the
-> regulator, yes, here vqmmc-supply is missing, as already pointed out by
-> Jonas.
-> 
->> And these devices use 3.3V IO voltage by default.
->>
->> 	sd-uhs-sdr12;
->> 	sd-uhs-sdr25;
->> 	sd-uhs-sdr50;
->> 	sd-uhs-sdr104;
-> 
-> But I don't think it's necessary to lay out these slower modes
-> explicitly, since SDR104 seems to imply them, see
-> sd_update_bus_speed_mode() in drivers/mmc/core/sd.c[1],
-> 
->         if ((card->host->caps & MMC_CAP_UHS_SDR104) &&
->             (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_SDR104)) {
->                         card->sd_bus_speed = UHS_SDR104_BUS_SPEED;
->         } else if ((card->host->caps & MMC_CAP_UHS_DDR50) &&
->                    (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_DDR50)) {
->                         card->sd_bus_speed = UHS_DDR50_BUS_SPEED;
->         } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
->                     MMC_CAP_UHS_SDR50)) && (card->sw_caps.sd3_bus_mode &
->                     SD_MODE_UHS_SDR50)) {
->                         card->sd_bus_speed = UHS_SDR50_BUS_SPEED;
->         } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
->                     MMC_CAP_UHS_SDR50 | MMC_CAP_UHS_SDR25)) &&
->                    (card->sw_caps.sd3_bus_mode & SD_MODE_UHS_SDR25)) {
->                         card->sd_bus_speed = UHS_SDR25_BUS_SPEED;
->         } else if ((card->host->caps & (MMC_CAP_UHS_SDR104 |
->                     MMC_CAP_UHS_SDR50 | MMC_CAP_UHS_SDR25 |
->                     MMC_CAP_UHS_SDR12)) && (card->sw_caps.sd3_bus_mode &
->                     SD_MODE_UHS_SDR12)) {
->                         card->sd_bus_speed = UHS_SDR12_BUS_SPEED;
->         }
-> 
->> Thanks,
->> Chukun
->>
->> -- 
->> 2.25.1
->>
-> 
-> Regards,
-> Yao Zi
-> 
-> [1]: https://elixir.bootlin.com/linux/v6.13.5/source/drivers/mmc/core/sd.c#L448-L479
-
+I'm wondering why this patch isn't replacing deprecated DRM
+logging macros with their preferred successors in a couple of
+places, just like what the patch 2/3 from this series does?
 
 _______________________________________________
 Linux-rockchip mailing list
