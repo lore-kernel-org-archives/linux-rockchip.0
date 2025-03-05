@@ -4,88 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E29C282EC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 21:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87FC2C282EC
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 21:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UZ7AA1RYkqnZxqI6romJyuCWvLGtIIIkidYCox8R+rw=; b=rvvhv4e47WiZm0
-	2Xj0RBe1UtDjEPS9Wgob47dRv9kcsJ751sUQ2thxLVgVFqQK52VMaeXnFdMJLXr4XwMeU25nE7eTZ
-	h9xdJRWZH3svvjaO7oWsZI0IiGHRjtReXRhpcwjJcD+iYmGQVAcPFlr/VSPfyfrSBdU08YZebZGO9
-	h4TKOHOpF60zRgldGL2bu0vwLV9UNtRrpa9uzV0H/EL4pJKZWlm0Or2O5sfveS8t+9j7O2Zgk8ZFi
-	QG7GS4wuiiCaszZunAFxh60tIaiuVpGR+ZZInIyMhOF6dL5xe0wPc9w2HYYWJDD5bXgK6Mdtjksyy
-	dy64rctEFQiTjIahtDNg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Vd9QrD2jGnZMnYahfcUvZU9Xeus416JsOs78HFYmEjk=; b=S7xh2MWMcR5RBY
+	y9G3RaMT6r4AnDcdQy0uTzj71fpCqREFbxMQ+h3E+oRhF0tZwom7tI2rGKLqynrHVSatlHMn6/75K
+	S0o9F11HSdLjLKeKjhbf3C+lkDGnpOtqG/taAyrGRaZlhmsmO+p79mfAOxuOn9nCHAWqeYWs4Hv/K
+	OzUAvfSI08I5m2wYUqD7A8z1ZxnjLPd4krLZO6pqx01cLC7P8GLWD/lLGEOXfwStJvoPqNTKbzs83
+	Ah8zgJvkQ7EU1ORAI2Dq7MXV1hOIBnpvVbdQUPbbQvIdWL36Gx+p7G4kI8cignJ28vYCteOgeztke
+	3X3b28tGJ0aBC85hxRUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpw8e-00000009KGJ-2BKV;
-	Wed, 05 Mar 2025 21:18:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tpwJd-00000009Lrg-3rUa;
+	Wed, 05 Mar 2025 21:30:09 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpudw-000000096Jc-19Ee;
-	Wed, 05 Mar 2025 19:43:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=hK3H495OY/ZEVKP1w7EMcQ93+JYbRsNI4gTg9RaSrQo=; b=SaC+IH6NVlw9e/aUPLR3GVa4BO
-	I3kmdKxNpDyRGnosakiLfxJj7plyNTQjLy4rSaGr49r8VFbosf0S+f5qC1RkP2SY+i3APeTOfyVLz
-	n4oMkB8Uboujkpuok4VzOXPBsxUABm14O20F+IRKeFMikKMrabTA7q/O9sC5pa1MTb+hhNUVUMMAr
-	KiZAQNvBNGuQJwxpPdRIgA5uJuaR0LQqYMYWmI5x1/EOo65VHzh9cZK6HhSgQ+8LbDYUV2yuSZIn6
-	pWmdGtgzTdXCF3J9Q6b/1vrXan/d3DKKU0k6BbruxfPLsXXqfPruAX4bG9ysA5XxzAGn64fDqAnUL
-	YynQ69kw==;
-Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpudt-00000000j5J-2De1;
-	Wed, 05 Mar 2025 19:42:59 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 1448C2027D;
-	Wed,  5 Mar 2025 20:42:55 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V19E6CI3sk-W; Wed,  5 Mar 2025 20:42:54 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741203774; bh=0w6AH/+Pjx6GOhW5OHJloAK6RQNG/idzAG52ka4prcw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=CCUvCB8bjEPGJ4g2iFe1OWJh9DezYCD6hGDi7qqBtroOh4r2us2NHXo/AwvxH1J0C
-	 K4UNLv8h9Y0lQfENnRpz2wEC8hrgfhORvPyjZQSJBxi7pSpM1VqHYY+sGA/l7cOVS9
-	 RHwdSVr97y3tv+y6lY3g16M5U2cLwfQDz6N+9nm4lT2lfA7vb9+nMcTgZzw4OJ0HN7
-	 +iezGH+9E3MazcetypMtqGhNpo1lP7VUZzwmO4Cacl2jMqvCrOwFXFsmyeFRkiD+Wo
-	 46UpOqMgK8sYe2IMYOBW8CDeYUC68165Wgh7PLgGtiICPRVS/oV+9vsKNZ3tHTJ/ko
-	 5EXgzxDJlWGyQ==
-From: Yao Zi <ziyao@disroot.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Shresth Prasad <shresthprasad7@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Cc: linux-mmc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH v2 1/8] dt-bindings: soc: rockchip: Add RK3528 VO GRF syscon
-Date: Wed,  5 Mar 2025 19:42:10 +0000
-Message-ID: <20250305194217.47052-2-ziyao@disroot.org>
-In-Reply-To: <20250305194217.47052-1-ziyao@disroot.org>
-References: <20250305194217.47052-1-ziyao@disroot.org>
+	id 1tpwEo-00000009L6q-0HCS;
+	Wed, 05 Mar 2025 21:25:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741209895; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bzzh4J066rrlw/ihx9SLlY9zNNloZQebThe9AanCEKNf/e+8VOgCHxIXTTW7xevUvZ4QGun97hwXW7C5PEdExoYn2zIhoAN8n4AyzNGJtJy03F4AEYXvoT3kJsXeP0qtSIq5y36Vmr+WKxNlR1OrNXsfA9y+LFIJ6EAaMKk84Cw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741209895; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=oDZwMEiKq4FsOgak5vQT4YukQizxtAjLgSODP2Tnuxo=; 
+	b=IgTCk5EeMB/shkwzD58Rro5ckfJPfaiucDqxl1CYcYnrHhVxAekcCrM77OFeHftE+YBc1g2tuf9jM/4lBwIrZeXLKfDt70lz17t4OkE7tn+tEL5AVNTbx3PNFDSDsCDnEMccwE4LQAD/aeWZq4OQE0CiaiKPhBbUn0Xc+ISx20s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741209895;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=oDZwMEiKq4FsOgak5vQT4YukQizxtAjLgSODP2Tnuxo=;
+	b=SEVI2LBS4pji0ctEHwmFV91C8epT7xQIAur9xxQztsqBzYcddjC6bVpVdeg6yv/s
+	mrlLIbYNjQTVNz/UpVwltUTLT3RFZ9kmX8XAEbherSW3ipeM/RdjspwQMgqA5OvbMXO
+	pQH1jZSGVLRc8IqwJd2BzMTy74ikczMpYg0tDQ0w=
+Received: by mx.zohomail.com with SMTPS id 1741209893493878.8606211832787;
+	Wed, 5 Mar 2025 13:24:53 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/7] Add RK3576 SAI Audio Controller Support
+Date: Wed, 05 Mar 2025 22:24:20 +0100
+Message-Id: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAATByGcC/zXMQQrCMBCF4auEWTswNsbGXkW6iHHUQZraSZRC6
+ d0NFpf/g/ctkFmFM3RmAeWPZBlTjf3OQHyEdGeUa21oqHFkyaE+rWuPmINgbD3TwZI/eYZ6eCn
+ fZP5h535r5eldzbKNcAmZMY7DIKUzieeCfxf6df0CpSjUSY0AAAA=
+X-Change-ID: 20250305-rk3576-sai-c78e0430898e
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_194257_664722_CF130F4B 
-X-CRM114-Status: UNSURE (   7.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250305_132510_181109_F8A98264 
+X-CRM114-Status: GOOD (  24.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,33 +79,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for VO GRF found on RK3528 SoC.
+This series adds support for Rockchip's Serial Audio Interface (SAI)
+controller, found on SoCs such as the RK3576. The SAI is a flexible
+controller IP that allows both transmitting and receiving digital audio
+in the I2S, TDM and PCM formats. Instances of this controller are used
+both for externally exposed audio interfaces, as well as for audio on
+video interfaces such as HDMI.
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Patch 1 and 2 do some preparatory work in the clock bindings and clock
+controller. The RK3576 has the SAI0 through SAI4 output mclks as well as
+the FSPI0 and FSPI1 clocks gated behind some GRF register writes. The
+RK3588 had this for its I2S audio clocks as well, but got away with not
+caring about it in mainline because the clocks were ungated by default.
+This is no longer the case with RK3576: the SAI mclk need to be ungated
+before they can be used.
+
+The gritty details are in patch 2, but to sum it up: we need to
+introduce a new clock branch type, and also rework the rockchip clock
+code to deal with multiple separate GRF regmaps.
+
+NB: checkpatch.pl seems to trip over patch 2 in some way that seems like
+a combination of the diff being too clever and at the same time too
+stupid.
+
+Patch 3 adds the devicetree schema for the SAI. Right now, we only have
+a RK3576 compatible, but as I understand it, the RK3528 uses this audio
+controller as well.
+
+Patch 4 is the main course and adds the driver. It's based on the
+downstream vendor driver, but substantial changes have been made in the
+hopes to make it suitable for upstream inclusion.
+
+Patch 5 and 6 are boring devicetree changes to add the nodes and use
+them in the ArmSoM Sige5 board. Patch 6 goes into some schematic-derived
+knowledge about where the audio signal can actually be tapped into in
+order to test this.
+
+Patch 7 enables the driver in the arm64 defconfig, as the RK3576 is
+supported in mainline, so its drivers should be enabled in the
+defconfig.
+
+To test this on the Sige5, I both soldered to the output 2 testpads, as
+well as fashioned a cable to plug into the headphone header. I should
+have some stuff arriving by mid-March to make more such cables, so if
+you have a Sige5 and want to test this but don't happen to sit on a pile
+of 03SUR-32S cables, then you may contact me off-list to request I send
+you such a cable from Switzerland, and I'll see what I can do.
+
+HDMI audio isn't enabled in this series yet, but I'll look into it
+either for a v2 or in a follow-up series. I really wanted to get this
+out to be reviewed now, as there's a substantial amount of code to look
+at that is ready for both review and testing.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Nicolas Frattaroli (7):
+      dt-bindings: clock: rk3576: add IOC gated clocks
+      clk: rockchip: add support for GRF gated clocks
+      ASoC: dt-bindings: add schema for rockchip SAI controllers
+      ASoC: rockchip: add Serial Audio Interface (SAI) driver
+      arm64: dts: rockchip: Add RK3576 SAI nodes
+      arm64: dts: rockchip: Add analog audio on RK3576 Sige5
+      arm64: defconfig: Enable Rockchip SAI
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index b4ed4cb555bd..98a0670359f6 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -16,6 +16,7 @@ properties:
-           - enum:
-               - rockchip,rk3288-sgrf
-               - rockchip,rk3528-ioc-grf
-+              - rockchip,rk3528-vo-grf
-               - rockchip,rk3566-pipe-grf
-               - rockchip,rk3568-pcie3-phy-grf
-               - rockchip,rk3568-pipe-grf
+ .../devicetree/bindings/sound/rockchip,sai.yaml    |  151 ++
+ MAINTAINERS                                        |    7 +
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      |   56 +
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  194 +++
+ arch/arm64/configs/defconfig                       |    1 +
+ drivers/clk/rockchip/Makefile                      |    1 +
+ drivers/clk/rockchip/clk-rk3328.c                  |    6 +-
+ drivers/clk/rockchip/clk-rk3568.c                  |    2 +-
+ drivers/clk/rockchip/clk-rk3576.c                  |   59 +-
+ drivers/clk/rockchip/clk.c                         |   24 +-
+ drivers/clk/rockchip/clk.h                         |   49 +-
+ drivers/clk/rockchip/gate-grf.c                    |  105 ++
+ include/dt-bindings/clock/rockchip,rk3576-cru.h    |   10 +
+ sound/soc/rockchip/Kconfig                         |    8 +
+ sound/soc/rockchip/Makefile                        |    2 +
+ sound/soc/rockchip/rockchip_sai.c                  | 1623 ++++++++++++++++++++
+ sound/soc/rockchip/rockchip_sai.h                  |  251 +++
+ 17 files changed, 2533 insertions(+), 16 deletions(-)
+---
+base-commit: a03be51d680391ba113e2e22b38743c276b6e2fa
+change-id: 20250305-rk3576-sai-c78e0430898e
+
+Best regards,
 -- 
-2.48.1
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
