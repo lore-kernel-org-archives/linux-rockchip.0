@@ -4,119 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3EBCC282DE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 15:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25865C19F32
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 16:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CiU1K47WqDC0p88gzoKGSyqr/tVfWE1355WVDvqDtrI=; b=A0E45psYgLyKk2
-	5CRyFGd7D6ab4jVw1Yevd1EFIZxXx94ysM2BaJyAwZFTLvP6KytsY+Z+hwfBV2kUnAEorISAxZ8yF
-	A9wtF33nhlcGe41E7q+cGs6cNTXBvlhXSUb58BlUP9hkheR1focC9AVTwK10nym2KJ8KTSs63mc3T
-	C5kRdp8QtrPyD7mApQg6mO7oM62FrXBpUtmQm/RKLWXXh39pajVviZgrvpVTI6SITGCEHYMBWo07D
-	IqoAxh230DRiu0nDPWZpF21F1PjzgIu24H6AMuQfPVax1/Nh5jwCRlnhCfs8xPhfjxOMQn5GWua8t
-	QELGLMhcwvP/IcC6cBcg==;
+	List-Owner; bh=y82No0l89tdPlVq7yG10SiBGxxccShzV2Hub9fuAWBk=; b=s4323RZxtOkAmY
+	6a75kWKwOXsO4KYZSTLr2M3MXcSKY61FpcIV63MXxJAJyBit7GujOWG+MIO+MsuTqnHYFRDp26XmJ
+	zpr3HTaZlAzGrXI5hRVO5OaN9BbKZepITOlL56J5kXAOklDcbRV9jdSws6OwXL29gdrfuaA7VoVhj
+	Ce/o2WNyMZdllegaWg4A3V2Sn/jhHIj7jzEDKavazpEIjCDatnWlFgG8YcgznUs7bxbfEzZOtK6U+
+	/WkgvXDf0AlVa6Wx3L6zSfuVUp34gRbszhML2BrnA6D2JWkXRZm7fdlCPKOl2Qm6hICNfsfuE99XU
+	AgN4VL0MywBGtPQ4YZxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpquo-00000008Y4C-43O3;
-	Wed, 05 Mar 2025 15:44:10 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1tprDl-00000008bRz-06mV;
+	Wed, 05 Mar 2025 16:03:45 +0000
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpqsL-00000008Xkl-3sU1;
-	Wed, 05 Mar 2025 15:41:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=2eH9SKFIMUIDhIoP3lsycrgBGKxStUSceMnNym4AxR4=; b=Y0lWwiVQiJVDkqm5gn592HiK5L
-	pWPl0yjfzyMQzx8wbIlTFzLOTjCOzYhJwFb0frIUQ9XXL/T2HrEr6mclWTilbJXqKQS9LhVZZhWK7
-	aSGFDE3CUsIDQQ5UbogrccJcnprsbvMeEjxYp0B4Fp0t3joUzNaJH/gYVIPlVgZflscCc+RSFDFHQ
-	ZfLz9SL2FegorntNrCku3gIGZHWWfRKnZYNssBedPK+3br0iY2pHYO5BdXol2s5YU540T5Bqb2FxU
-	kmLDSbl5ZpOHhC9xNcOe+B4ysTgcFN1/Pi/2NLJzrVh+K/AWRqFHJTS4PIzZNhM+0XsQJFNMjFHaD
-	IMGxYCDw==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpqsI-00000005mQM-3qPR;
-	Wed, 05 Mar 2025 15:41:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7BE09A45764;
-	Wed,  5 Mar 2025 15:36:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29DB7C4CED1;
-	Wed,  5 Mar 2025 15:41:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741189291;
-	bh=SnieAOwMqDNTOnx5G1qmbJnw7CsjyegepoQq+LMVw2g=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NJs3UpBNlJ/NqMw0qVJM8qYhntxeYLpGBxesbLWY2EqerQ6K24oMAjfxRTJUV59BF
-	 yuQmI8w/AkkdNp+bd7iQ4uBMBfewSc1e5S8gzS2RJp5JVYndDq378m6vSswuiHSR6I
-	 2FxCf5zY5Dzkf7rl6JuEmQgqIXAMcPVI4SwUOVDI1HN1SFZv8Jdv1MMjBJg6Z9EfLN
-	 fQaSin3a/37MCOPRgP0mFxNV7p+LbVE3R2gqOUUPJs48Q5zj4dgb8x/nnmO5IsCExg
-	 l3v0AFe74+EAuiHoZJSZOcOj4MEVOyZki26TzMwYPuF88O0HIwcJynTVRVMXO1eX/h
-	 2jMbVmgDU/6bw==
-Message-ID: <52155b03-20f3-4e64-b636-70042db03ffa@kernel.org>
-Date: Wed, 5 Mar 2025 16:41:23 +0100
+	id 1tpq8H-00000008Qjf-30Be
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Mar 2025 14:54:02 +0000
+Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-6fead317874so1193217b3.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Mar 2025 06:54:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1741186440; x=1741791240; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=/8e1NK0iHuTNXsrRQMu1Rap5op5xIoO/iE7QbD4E6K4=;
+        b=UsHyubA7w/YY4IysBxD8Yc0XQHi9DfI0aBrjOE2eJOtunWDLZ733YpaSqYBZo4pp2v
+         9as4awnbpruKn8n1Lo86VNivO8nnag/qERJwo9aOFBUpU3zRJr9jeaDUe3+XBYnhxHgb
+         kl0dAzsi6Rk/GFmNY8GuZrXkJT5raR1ejGUgrofomtOWoDBwH6OfaqQHSqiUDA+r8EgI
+         d2DW2oUt81CkP/ZMESIdFfROuak2R1q29JdydgmyI029JEU8SDMmP+UsDP06Kxpk95KK
+         34OdVYsicYBvjFPj+WRqJV00A5Oiez9kglnp/rgQDt4jeprNG4t0S0ismEneZ1v/5TzW
+         cFAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741186440; x=1741791240;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/8e1NK0iHuTNXsrRQMu1Rap5op5xIoO/iE7QbD4E6K4=;
+        b=BX2hVgwYBXG6lLNRSmYbmsEj3e73M1dDOoABn28/Q2jRsIifelU6ifZSDWXn+M0k0J
+         pZtMTE6Tk2QJac7WUrVAhs/DfL9JTTE/QN8MTC2Wx7dPGlDIfmD5wC2fViZi3GCRlOV0
+         z73W8Ex5AksnBQpZmLLzh7eNgqRv3mDozxifuMfA8RUpOpCKaewcHeg6tYPkSpZ201fJ
+         5VXP/yj/8JC8+qP6xL3FwcWI4a5rqA7TkJlrzNvkGa7Kf+0BDy+PAs43cbRkquyRRETq
+         +MaRzvvV3JeEEDw5drsoAZsh1iZEbvHqdo/U+SD40ONnsqOyPzGez6xrv58ZKGvVL8ap
+         Viqw==
+X-Forwarded-Encrypted: i=1; AJvYcCWhpS10sU9N/NuO/NF2xD5PV5rXdeNpvJwaLuGTAoAePKuRnkcslPxuHHLrogbPNq8KvuXrfJ96c6AkbCFb7g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9rnSFfh0KApp65u7Ekauuv2jNn+eaNSpQvy1bttDumAyMyFVm
+	tMSn48tC/a+y3L9sbuTc5RgLc9yoxihrOsAkjsumjKy5mEzagP651q90IBsqTLTHfdxgDmd+Nn2
+	a2NjodSuHMGI6diDccbP4Hmpvtg4ipXkv19uidA==
+X-Gm-Gg: ASbGncs+SYtjs5ifV3u/fD1Ef9gzCvHHOsOQswxx0Gwtj+n4u+kYx7U17WrL80wIR2I
+	Mf3RgwUgqvgZCpd5TxK1t5ql/E9oeaYw2YboiBu6wewb2ld+KOS9ExvHmbVj8QD61sTW6H7Kr5D
+	Qwm44pSeXRewxKzTXHFYMyEdIf/RI=
+X-Google-Smtp-Source: AGHT+IHVMDgrxpiMAMts0+d6pAHMmbs+DKlyOlsJcQRgBdUnM1Arh/L/Y1HIIcETYwiUqxFlkWz35mNO77MdJGM7YEc=
+X-Received: by 2002:a05:690c:750d:b0:6f9:e609:6a4b with SMTP id
+ 00721157ae682-6fda30be95dmr42050127b3.23.1741186440140; Wed, 05 Mar 2025
+ 06:54:00 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add rk3528 QoS register node
-To: Chukun Pan <amadeus@jmu.edu.cn>, Yao Zi <ziyao@disroot.org>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20250305140009.2485859-1-amadeus@jmu.edu.cn>
- <20250305140009.2485859-2-amadeus@jmu.edu.cn>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20250305140009.2485859-2-amadeus@jmu.edu.cn>
+References: <20250304142803.689201-1-arnd@kernel.org>
+In-Reply-To: <20250304142803.689201-1-arnd@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 5 Mar 2025 15:53:24 +0100
+X-Gm-Features: AQ5f1Jop9maVmyVlQa4pDNjDZNA9U2rexGCX4_vVPocLK9GIMh5i3XadhUynJ5Y
+Message-ID: <CAPDyKFo79xyTOKxN7A52J2Et50++fifdosUpyb2mm3NMc+EC1Q@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: rockchip: add regulator dependency
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Arnd Bergmann <arnd@arndb.de>, linux-pm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_154135_125017_3DF6F6C4 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20250305_065401_775125_86ABCC41 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,42 +95,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/03/2025 15:00, Chukun Pan wrote:
-> Copy QoS nodes and add rk3528 compatible from bsp kernel,
+On Tue, 4 Mar 2025 at 15:28, Arnd Bergmann <arnd@kernel.org> wrote:
+>
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> When CONFIG_REGULATOR is disabled, this pmdomain driver fails to build:
+>
+> drivers/pmdomain/rockchip/pm-domains.c:653:30: error: implicit declaration of function 'devm_of_regulator_get'; did you mean 'devm_regulator_get'? [-Wimplicit-function-declaration]
+>   653 |                 pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
+>       |                              ^~~~~~~~~~~~~~~~~~~~~
+>       |                              devm_regulator_get
+> drivers/pmdomain/rockchip/pm-domains.c:653:28: error: assignment to 'struct regulator *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+>   653 |                 pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
+>       |                            ^
+>
+> Add a Kconfig dependency.
+>
+> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-No, don't copy stuff from BSP kernel. It results in terrible DTS.
+Applied for next, thanks!
 
-> these can be used for power-domain.
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+Kind regards
+Uffe
+
+
 > ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 160 +++++++++++++++++++++++
->  1 file changed, 160 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 5b334690356a..794f35654975 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -122,6 +122,166 @@ gic: interrupt-controller@fed01000 {
->  			#interrupt-cells = <3>;
->  		};
->  
-> +		qos_crypto_a: qos@ff200000 {
-> +			compatible = "rockchip,rk3528-qos", "syscon";
-> +			reg = <0x0 0xff200000 0x0 0x20>;
-> +		};
-> +
-> +		qos_crypto_p: qos@ff200080 {
-> +			compatible = "rockchip,rk3528-qos", "syscon";
-> +			reg = <0x0 0xff200080 0x0 0x20>;
-> +		};
-
-
-Did you just define syscon per few registers? Third case last weeks...
-so no, define what is your device here. 8 registers is not a device usually.
-
-Best regards,
-Krzysztof
+>  drivers/pmdomain/rockchip/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/pmdomain/rockchip/Kconfig b/drivers/pmdomain/rockchip/Kconfig
+> index 7e4f9b628f0b..218d43186e5b 100644
+> --- a/drivers/pmdomain/rockchip/Kconfig
+> +++ b/drivers/pmdomain/rockchip/Kconfig
+> @@ -5,6 +5,7 @@ config ROCKCHIP_PM_DOMAINS
+>         bool "Rockchip generic power domain"
+>         depends on PM
+>         depends on HAVE_ARM_SMCCC_DISCOVERY
+> +       depends on REGULATOR
+>         select PM_GENERIC_DOMAINS
+>         help
+>           Say y here to enable power domain support.
+> --
+> 2.39.5
+>
 
 _______________________________________________
 Linux-rockchip mailing list
