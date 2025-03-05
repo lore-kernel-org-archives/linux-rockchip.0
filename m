@@ -4,88 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F8DC28B23
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 22:48:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B2EFC19F32
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 22:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+1lxkXVWFaAfLjXld3GUj9kKzho0+UocOBlhilZ+usA=; b=46+l37xQ2nCGBq
-	EHI/FNLJGkEAZuawpDJ9UV5ptIwygnEOGsf3xgYiYJvKrLQbKGnC5G+WdEoWtFqd1wCrO3gOqjvVj
-	kywdBUj56Jw1iXdbUOjCL0km8T/LP42T1JCTFQ+9Dj/mgbfxodCEUIfOgOcvM1JqMJYG0xxesK52H
-	jClrMud444m8swJ5EnEE4PjckHd/7bUNKUJ04wBa9SJuaLpMEbu+MyLzp0YbesosKMU9lx0b4jcci
-	DCT1g4UjvsCGPf4NBStm0icyGIGKjcujIPaMno62fFOdrMn3/kdjo+TAiaCI4bLh1fe+Gv3xP79gp
-	GnW4bZ/te9aSrmRPLlOA==;
+	List-Owner; bh=c5jslyZde4Jxotubob9VGOSRTO/BTCii/ajITPaXBTM=; b=ng+AUna3lZhETA
+	W1g7sfcD6a3Qnv+ij54oWeFg62hkVYELPlnYH5vfMBdSG3Bz/XiG++Ju9otZ+7OdWG495RaSuJ4VQ
+	gUouPH0ZNMSsjt9Lg+etZpl4MwnWF1RwpPj74u9rpfvNivlAd9HV1rhz03D+DEtlws8Ecib+g2CPO
+	UwXynDxze+puFwea9wp8zvqwO5B6Zhfc+pgMJSHR12rxi8wmi2pboP8WQDuUaQIz8Iq3fdCu9sXRq
+	vafutDdx86X7ogiH2dhcTtihCdbbJ9oVCDrZ94k5EpCvMsCKqi/CuAsL+EQnF74+uNCVXT+UXGBj9
+	ApejNoXb1KiDgoU2ajEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpxXl-00000009WSg-20yg;
-	Wed, 05 Mar 2025 22:48:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tpxXo-00000009WWm-2TEr;
+	Wed, 05 Mar 2025 22:48:52 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpueF-000000096MI-1QTt;
-	Wed, 05 Mar 2025 19:43:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=+2Tyzy6yh5ilGbJV236A8dmsrL/FM6gEqFOZc/caRis=; b=KpethEDZLbu6T6LizNMEa8l+gn
-	BC6vTjNj1vuv4ScqmznXYmtLQIb0Vg6kV3kRdTsXFfLiJPipUG57e+DKY3wBkCAhxW/mhbfywyM0C
-	S9PSuIB7GhNK92qtz26f4FdYJ16NSMHtuKMtvkHcAmaQXZl0+iL/IdQFVewVqCVp4fWJaByJcZQqu
-	ObEeIU7DJ5CXpCPCHizBRQaglgQbHyDGKpsnIsm1mntHPS/l7Dg2EVGo4KPUCcOqijXnQtFU+0An4
-	6QLd30EkOly4cexyOOlvB5M6hmxtZBx1LFjt5EBTqV6LBww5SNui5lLT0at50zeP57920PkICizI+
-	uBT6ftSg==;
-Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpueC-00000000j6R-2Vac;
-	Wed, 05 Mar 2025 19:43:18 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id E157A2027D;
-	Wed,  5 Mar 2025 20:43:15 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id digvX98RG3a5; Wed,  5 Mar 2025 20:43:15 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741203795; bh=zwk+LtszMoHSIYjGCAqbuOU0QSVYlP5K54ulz6VjFyA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=dMOyrpQqgPQSf1wp0pYbJprF2EN5v9yjL9wWhs8kYXE+EVTxh2kF/8EEXwp9LZlL5
-	 9JTvqmWW/8nK9FBxN/XPXaJLUOJkzM9DAobzzZGdIAuCK1Q4i93f3H4MQmtvVDLneF
-	 6VQro+WO3BjeGpP5rLXOExNnFhEohf+vCxfyTWYGDBg/sWisgkT7R6e6h2KLbMOEp/
-	 JG09CuDSUactnqyXv+S7yQcxMLSuwTT3xR7iji38yqDsNI0B7UapMRwNSJPcWh19gY
-	 FK9d+DtTS34YFuvaYGQYgzv35IYi9KaTwm4Tnj3NRMFNNmfUgPnkCkmmSv3EuF2fQo
-	 k5jQZ4B4aPBBQ==
-From: Yao Zi <ziyao@disroot.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Shresth Prasad <shresthprasad7@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Cc: linux-mmc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH v2 4/8] dt-bindings: clock: Add GRF clock definition for RK3528
-Date: Wed,  5 Mar 2025 19:42:13 +0000
-Message-ID: <20250305194217.47052-5-ziyao@disroot.org>
-In-Reply-To: <20250305194217.47052-1-ziyao@disroot.org>
-References: <20250305194217.47052-1-ziyao@disroot.org>
+	id 1tpwFJ-00000009LF4-06Nx;
+	Wed, 05 Mar 2025 21:25:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741209929; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Tb4JYTnGTWGabKE8zAPEpXSrKRjo2OSjhIM9hbn9OUt7znAGqsAR7n0mOF4Fw4YElbggfIsdkwPwrSFhKhTqeUvYuLyvUeeD7FHlBbC+/2izMeIl3qpQCwzKOeRcUjSAhSjDRZQDIw0bcfRPPHiwhAl2VHWWanqZCAHV/dor7Mc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741209929; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=zVAuxaI2woSNcR4BvXfhI+0VCh69YoH27nMHM/pehLg=; 
+	b=O/gYqZxp3mseeAu/X6E3WmaiRXvkA47oJduXIDio3JJoNPUPlUMaxejPzDqkt3uy7LPFE4i6kpYs0bHTkBd3YP0r6Wurjunz5T62SCh1fxtyyjYf4N0jQKal8Nq734DqYIGBLI18phuhZYnXCbT2p/gJD8rkzXbbXIBj+DvfN2E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741209929;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=zVAuxaI2woSNcR4BvXfhI+0VCh69YoH27nMHM/pehLg=;
+	b=G5lTezhgiTpOSXchWba+TjFCfCfHCT56WiPNkQcycbfRd+aF+l8Gw5kBubrR7fQC
+	tZndF50J/qycA9mAP4qjIQ16/9WIhZDIHMOXOTiEafSfCfwEeXjR0H8GqzFwhgMly3b
+	FHml8IciTHpSyQHy/zoA7AIBGFt7QRz4grBTSVCA=
+Received: by mx.zohomail.com with SMTPS id 1741209928167987.0554432648572;
+	Wed, 5 Mar 2025 13:25:28 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Wed, 05 Mar 2025 22:24:26 +0100
+Subject: [PATCH 6/7] arm64: dts: rockchip: Add analog audio on RK3576 Sige5
 MIME-Version: 1.0
+Message-Id: <20250305-rk3576-sai-v1-6-64e6cf863e9a@collabora.com>
+References: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
+In-Reply-To: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_194316_747674_7CF2705B 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250305_132541_147949_6523C514 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,36 +77,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These clocks are for SD/SDIO tuning purpose and come with registers
-in GRF syscon.
+The ArmSoM Sige5 board features an Everest ES8388 codec to provide
+analog stereo audio output, as well as analog audio input. The codec
+hangs off the i2c2 bus and responds to address 0x10. It is connected to
+the SAI1 audio controller of the RK3576, with one SDO (output) lane and
+one SDI (input) lane.
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
+The codec has two sets of outputs. One set, LOUT1/ROUT1, is connected
+through a set of 22uF non-polarised coupling capacitors to a 3-position
+connector that appears to be a clone of the JST BM03B-SURS-TF header,
+and is capable of mating with a JST 03SUR-32S (or JST 03SUR-36L if you
+prefer lemon-lime) or compatible clone connector. The right headphone
+output is the one closest to the Type-C DC input connector, the left
+headphone output is the one in the middle, and the third position, the
+one closest to the USB3 Type-A host connector, is puzzingly labelled as
+"HP_GND" in the schematic but is in fact connected to the codecs RIN1
+input through a 1uF non-plarised coupling capacitor.
+
+LOUT2 and ROUT2 are routed to 1mm test pads T36 and T37 respectively.
+These are located on the bottom of the board, and do not go through any
+coupling capacitor. For use as line out, the ES8388 datasheet recommends
+adding 1uF coupling capacitor if one wishes to use it as a line-level
+output.
+
+There is also a pair of inputs for a stereo microphone, going from two
+1mm testpads T34 and T35, which are decoupled with a 100pF capacitor and
+pulled to 3.3v and ground respectively. These inputs then go through 1uF
+capacitors each and end up in the LINPUT2 and RINPUT2 pins of the
+ES8388 codec.
+
+The codec's power inputs are routed to receive 3.3V for both its analog
+and digital inputs, though from different supplies.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- include/dt-bindings/clock/rockchip,rk3528-cru.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 56 ++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3528-cru.h b/include/dt-bindings/clock/rockchip,rk3528-cru.h
-index 55a448f5ed6d..0245a53fc334 100644
---- a/include/dt-bindings/clock/rockchip,rk3528-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3528-cru.h
-@@ -414,6 +414,12 @@
- #define MCLK_I2S2_2CH_SAI_SRC_PRE	402
- #define MCLK_I2S3_8CH_SAI_SRC_PRE	403
- #define MCLK_SDPDIF_SRC_PRE		404
-+#define SCLK_SDMMC_DRV			405
-+#define SCLK_SDMMC_SAMPLE		406
-+#define SCLK_SDIO0_DRV			407
-+#define SCLK_SDIO0_SAMPLE		408
-+#define SCLK_SDIO1_DRV			409
-+#define SCLK_SDIO1_SAMPLE		410
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+index 78798b0722a3f36831b1d2c9f29acb83910631cf..4970a7de70cd33040b2761122c04c7b8b20c99d5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+@@ -56,6 +56,34 @@ red_led: red-led {
+ 		};
+ 	};
  
- /* scmi-clocks indices */
- #define SCMI_PCLK_KEYREADER		0
++	es8388_sound: es8388-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,name = "On-board Analog ES8388";
++		simple-audio-card,widgets = "Microphone", "Headphone Mic",
++					    "Microphone", "Mic Pads",
++					    "Headphone", "Headphone",
++					    "Line Out", "Line Out";
++		simple-audio-card,routing = "Headphone", "LOUT1",
++					    "Headphone", "ROUT1",
++					    "Line Out", "LOUT2",
++					    "Line Out", "ROUT2",
++					    "RINPUT1", "Headphone Mic",
++					    "LINPUT2", "Mic Pads",
++					    "RINPUT2", "Mic Pads";
++		simple-audio-card,pin-switches = "Headphone", "Line Out";
++
++		simple-audio-card,cpu {
++			sound-dai = <&sai1>;
++		};
++
++		simple-audio-card,codec {
++			sound-dai = <&es8388>;
++			system-clock-frequency = <12288000>;
++		};
++	};
++
+ 	vcc_12v0_dcin: regulator-vcc-12v0-dcin {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_12v0_dcin";
+@@ -619,6 +647,25 @@ hym8563: rtc@51 {
+ 	};
+ };
+ 
++&i2c3 {
++	status = "okay";
++
++	es8388: audio-codec@10 {
++		compatible = "everest,es8388", "everest,es8328";
++		reg = <0x10>;
++		clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
++		AVDD-supply = <&vcca_3v3_s0>;
++		DVDD-supply = <&vcc_3v3_s0>;
++		HPVDD-supply = <&vcca_3v3_s0>;
++		PVDD-supply = <&vcc_3v3_s0>;
++		assigned-clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
++		assigned-clock-rates = <12288000>;
++		#sound-dai-cells = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&sai1m0_mclk>;
++	};
++};
++
+ &mdio0 {
+ 	rgmii_phy0: phy@1 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
+@@ -658,6 +705,15 @@ led_rgb_g: led-green-en {
+ 	};
+ };
+ 
++&sai1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&sai1m0_lrck
++		     &sai1m0_sclk
++		     &sai1m0_sdi0
++		     &sai1m0_sdo0>;
++	status = "okay";
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	full-pwr-cycle-in-suspend;
+
 -- 
 2.48.1
 
