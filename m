@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592F4C19F32
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 11:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0BAC19F32
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Mar 2025 11:48:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5n8kZOuuCCKLeKtT+MgBk7Yi+cfAPlFHHBEZxMd0zLg=; b=ur9V7JXjnfBBQ5
-	zWH2JwtoyZLHcrm6Gq9j9vFADfEt39IHgyJTCLeJ6+P3FVmjIzqVEOy+b4NOArgtijkn5oa6tzlaQ
-	/057WEaRHPmNrgQHm9dlLp0AysvEZlI/Puw4ofmykXWAGgpwSJU0P+dxN1imPxVx1shyp0UiresFG
-	Wd8Bt+bTihpp5MdJ3Q6NQXMRitGqeRmsSu47EGl/L5YXvvE+G/zHBlxzjnOKA3Kgt+oppyTGKP4Ui
-	ukhH2zunI0JkGAPl0+rp6+vI0sV8/C9iT7PKRyNP9T+sMAQtoAmYkvLhssXsT0F9wIOLLHWOaLL6/
-	X+WJKnZFNJm8OhqKAanQ==;
+	List-Owner; bh=p3KoUXQvv/EERwmAufBYvT/jS93ZcXjigpwVem0uwHo=; b=LspEWZqqQ+gt2D
+	CfTIzvpiTwpaWiABarDWdO0lecAQejo9EUm9ufqxJbMxBf+OAR3d54NuEsmtbAH1BzMv8YnRspSaH
+	TCm4NiLAPQeHO3TvL2/F+4pXuEF0eA8zc+ySz6j8SmC+msdu1Q6hQa8Q8t+5tqwlQGoK20w20nn3K
+	/haMc9YaG5Wnwz4J6rBhuP7L1wiK+nNw/MPOTAolj9w7ZK51SlMSKv0mpInSHYOlQkw1Plx9864x/
+	6qHa8FAXctlKMMi3V1YW4ehoZTNzBsq8R220hxvmyQeqZ0zYNxWFwo3U0HAFH5v5pSESw30w17Jo7
+	V8vMheB8PAczb1WL4Skw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpn9j-00000007tqt-1Eik;
-	Wed, 05 Mar 2025 11:43:19 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tpnER-00000007uTZ-0coU;
+	Wed, 05 Mar 2025 11:48:11 +0000
+Received: from mout-p-202.mailbox.org ([80.241.56.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpmJv-00000007k5q-48es;
-	Wed, 05 Mar 2025 10:49:49 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 09A8B2026E;
-	Wed,  5 Mar 2025 11:49:45 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AvyoDwTIs3tR; Wed,  5 Mar 2025 11:49:44 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741171784; bh=UT5t5cKf18CdLlG0v7nt8XdrJciuVrvT8/nabp56tK4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=hV3BorJwYoE13cl35C7YCol2tfRnljeZvqKhzt+XpD0CAmG+tdRxaNJ9nniIDL62w
-	 Q+qx6Z/AuWBqSKQuz8YW7ya4O+anACfd1937x6bQDqGOFNBzcSHpqdEQICG8tInvyH
-	 bIpHKcCIFIubZS2n1U5bGC9FKaUupPgoc++iIhMTCkG83hWrC0N/hRxd5LjNAbT9hM
-	 DZ9ee0boow8/b/1Ng5rWTYa3aG3mW6yqlIMLdyU4ckOU/h85w6heOv+9nEJdRGSndP
-	 zxmwNxvibzGEGcBcK33uJZbMqO9foC9JhSFgCQHXdim6ldgoRuCQswkFOtolLggMHX
-	 M/L8+zNE9m14A==
-Date: Wed, 5 Mar 2025 10:49:21 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Shresth Prasad <shresthprasad7@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org
-Subject: Re: [PATCH 6/8] clk: rockchip: rk3528: Add SD/SDIO tuning clocks in
- GRF region
-Message-ID: <Z8gsGlZ7GgNF-zoc@pie.lan>
-References: <20250301104250.36295-1-ziyao@disroot.org>
- <20250301104724.36399-1-ziyao@disroot.org>
- <2583035.OBFZWjSADL@diego>
+	id 1tpmKw-00000007kQL-00MA
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Mar 2025 10:50:51 +0000
+Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4Z78Hv66V4z9sDC;
+	Wed,  5 Mar 2025 11:42:03 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=timsurber.de;
+	s=MBO0001; t=1741171323;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9rOeGZ2uHJYNH5SGu5DmNFvlkAimADfypO0YBEqe3ok=;
+	b=WF+FIobEkjFi0U0Qq/qweJfo/S7s8oCqnDdTMXUXXIHcQYlXjvIK3EpvkFPDQe3UPFoWk0
+	ar+7B0eKWDZD7c4HBdB+kD2oyhlaZrqzQ129PQeenYzYu9Q5oNP0QE4yEyECA4ezBqYHnK
+	3271dthcCvMN6wSO85m5/7/zEgxrAzWLjCfKjX35bV8Cpf0W3h11w4KosUeKq9wD4FaPEu
+	3ShsoXrEGSprr2p9xboIz2RVYm0SRqip4p0FetKD/ahvhF/gmkUfARxWMiVhVBjXiY4Hqa
+	FT3W1tMOMwDYCl7G9A4q0jmmAYpnT9wq5/3ihfTe6R4+bVeb4pLfaDVB3dpt+w==
+Message-ID: <e0e144be-5cf9-4a79-a602-2ab2b7cd9aa1@timsurber.de>
+Date: Wed, 5 Mar 2025 11:41:56 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2583035.OBFZWjSADL@diego>
+Subject: Re: [PATCH v13 0/6] Add Synopsys DesignWare HDMI RX Controller
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>,
+ Shreeya Patel <shreeya.patel@collabora.com>, Heiko Stuebner
+ <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, jose.abreu@synopsys.com,
+ nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Diederik de Haas <didi.debian@cknow.org>
+References: <20250304085819.108067-1-dmitry.osipenko@collabora.com>
+ <78ff36f6-01a7-4df4-b653-c4509fb93af4@timsurber.de>
+ <1039aca7-89b9-44ef-9775-e7852e956362@timsurber.de>
+ <9b4b1e65-127d-422b-a359-a1d8e25652f9@xs4all.nl>
+ <88054acf-3051-414c-aef7-4c0f085d5182@collabora.com>
+ <47e022f4-1c1b-43c4-8f6c-bc1ff23ad39f@collabora.com>
+Content-Language: en-US
+From: Tim Surber <me@timsurber.de>
+In-Reply-To: <47e022f4-1c1b-43c4-8f6c-bc1ff23ad39f@collabora.com>
+X-Rspamd-Queue-Id: 4Z78Hv66V4z9sDC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_024948_442501_9DE50A8C 
-X-CRM114-Status: GOOD (  22.04  )
+X-CRM114-CacheID: sfid-20250305_025050_180670_67B26C81 
+X-CRM114-Status: GOOD (  21.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,115 +87,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 05, 2025 at 11:21:48AM +0100, Heiko St=FCbner wrote:
-> Hi,
-> =
+Hi,
 
-> Am Samstag, 1. M=E4rz 2025, 11:47:24 MEZ schrieb Yao Zi:
-> > These clocks locate in VO and VPU GRF, serving for SD/SDIO controller
-> > tuning purpose. Add their definitions and register them in driver if
-> > corresponding GRF is available.
-> =
+so the 4:4:4 issue was just a gstreamer bug and it worked when I applied 
+an experimental fix [1].
 
-> (no critique, just an observation :-) )
-> =
+So everything works for me using the default EDID now.
 
-> this puts a completely new meaning on the "general register files"
-> as dumping ground ;-) .
-> =
+Tested-by: Tim Surber <me@timsurber.de>
 
-> Whoever got the idea of making sdmm/sdio tuning controls part
-> of GRFs that are supposed display and/or video encoder parts :-D
+[1]: 
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8534
 
-Yes, the register layout is quite weird. Additionally some USB2 phy
-registers locate in VO GRF as well...
+On 3/5/25 10:09, Dmitry Osipenko wrote:
+> On 3/5/25 12:03, Dmitry Osipenko wrote:
+>> On 3/5/25 11:10, Hans Verkuil wrote:
+>>> On 05/03/2025 01:59, Tim Surber wrote:
+>>>> Hi Dmitry,
+>>>>
+>>>> I did some more testing. That the Apple TV did not work was a bit
+>>>> misleading.
+>>>>
+>>>> It was just, that the Apple TV defaulted to 4:4:4 Chroma which does not
+>>>> work at all for me. (The same happens using the vendor driver).
+>>>>
+>>>> When I changed the EDID to match the vendor driver the HDMI handshake
+>>>> happened with 4:2:0 chroma, where I could verify even 4k60fps using your
+>>>> driver, nice!
+>>>>
+>>>> So the remaining problems I see are:
+>>>> - 4:4:4 chroma not working in any resolution
+>>>> - 4:2:2 and RGB not working in 4k60fps (is this a hardware limitation?)
+>>>>
+>>>> A possible workaround could be to disable these non supported formats in
+>>>> the default EDID.
+>>> I would like to merge this driver this week, since otherwise it will likely
+>>> slip to v6.16. So if there is a working EDID, perhaps it can be used for now,
+>>> and later on it can be patched if there is a better EDID.
+>>>
+>>> Would this EDID work? Tim, can you try this?
+>>>
+>>> v4l2-ctl --set-edid type=hdmi-4k-600mhz,ycbcr444,ycbcr422
+>>>
+>>> Alternatively, if there is indeed a HW limitation that prevents 4kp60 to work,
+>>> try this:
+>>>
+>>> v4l2-ctl --set-edid type=hdmi-4k-300mhz,ycbcr444,ycbcr422
+>>>
+>>> Whichever of the two works is what we can use as default EDID.
+>>
+>> Disabling 444 and 422 is an option. Though, they work on my setup at
+>> 4k@60p.
+>>
+>> In general, it often a challenge to get 4k@60p properly with any of
+>> these small board devices. 4k@60p works only using a short HDMI cable
+>> for me. Also, not everyone aware that the micro HDMI adapter needs to be
+>> compliant with HDMI 2.0 for 4k@60, that's why 300MHz is the default.
+>>
+>> Will be nice to have the good EDID enabled by default in the defconfig.
+>> Dealing with problems like that will be a headache for majority of
+>> people, IMO.
+> 
+> BTW, I don't see it as a blocker. Driver works in general, new issues
+> can be resolved with additional patches.
+> 
 
-> =
-
-> > GRFs are looked up by compatible to simplify devicetree binding.
-> > =
-
-> > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > ---
-> =
-
-> >  static int __init clk_rk3528_probe(struct platform_device *pdev)
-> >  {
-> > +	unsigned long nr_vpu_branches =3D ARRAY_SIZE(rk3528_vpu_clk_branches);
-> > +	unsigned long nr_vo_branches =3D ARRAY_SIZE(rk3528_vo_clk_branches);
-> > +	unsigned long nr_branches =3D ARRAY_SIZE(rk3528_clk_branches);
-> >  	struct rockchip_clk_provider *ctx;
-> >  	struct device *dev =3D &pdev->dev;
-> >  	struct device_node *np =3D dev->of_node;
-> > -	unsigned long nr_branches =3D ARRAY_SIZE(rk3528_clk_branches);
-> > -	unsigned long nr_clks;
-> > +	struct regmap *vo_grf, *vpu_grf;
-> >  	void __iomem *reg_base;
-> > -
-> > -	nr_clks =3D rockchip_clk_find_max_clk_id(rk3528_clk_branches,
-> > -					       nr_branches) + 1;
-> > +	unsigned long nr_clks;
-> >  =
-
-> >  	reg_base =3D devm_platform_ioremap_resource(pdev, 0);
-> >  	if (IS_ERR(reg_base))
-> >  		return dev_err_probe(dev, PTR_ERR(reg_base),
-> >  				     "could not map cru region");
-> >  =
-
-> > +	nr_clks =3D rockchip_clk_find_max_clk_id(rk3528_clk_branches,
-> > +					       nr_branches) + 1;
-> > +
-> > +	vo_grf =3D syscon_regmap_lookup_by_compatible("rockchip,rk3528-vo-grf=
-");
-> > +	if (!IS_ERR(vo_grf))
-> =
-
-> for readability, please make this into something like
-> 	if (!IS_ERR(vo_grf)) {
-> 		nr_vo_clks =3D rockchip_clk_find_max_clk_id(rk3528_vo_clk_branches,
-> 							   nr_vo_branches) + 1;
-> 		nr_clks =3D max(nr_vo_clks, nr_clks);
-> 	}
-
-Thanks for the suggestion, will take it.
-
-> > +	else if (PTR_ERR(vo_grf) !=3D ENODEV)
-> > +		return dev_err_probe(dev, PTR_ERR(vo_grf),
-> > +				     "failed to look up VO GRF\n");
-> > +
-> > +	vpu_grf =3D syscon_regmap_lookup_by_compatible("rockchip,rk3528-vpu-g=
-rf");
-> > +	if (!IS_ERR(vpu_grf))
-> > +		nr_clks =3D MAX(rockchip_clk_find_max_clk_id(rk3528_vpu_clk_branches,
-> > +							   nr_vpu_branches) + 1,
-> > +			      nr_clks);
-> =
-
-> same here please
-> =
-
-> > +	else if (PTR_ERR(vpu_grf) !=3D ENODEV)
-> > +		return dev_err_probe(dev, PTR_ERR(vpu_grf),
-> > +				     "failed to look up VPU GRF\n");
-> > +
-> >  	ctx =3D rockchip_clk_init(np, reg_base, nr_clks);
-> >  	if (IS_ERR(ctx))
-> >  		return dev_err_probe(dev, PTR_ERR(ctx),
-> =
-
-> Thanks
-> Heiko
-> =
-
-
-Cheers,
-Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
