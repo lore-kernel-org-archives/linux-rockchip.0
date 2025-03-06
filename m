@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62BC3C282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 20:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29607C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 20:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=My1jyGs+ZeFEHEaoqRP4CsqX1lBiPeB6+yqE+t6al9c=; b=rAtq8MUmaAkec3
-	Mrqkc9rqA3JZNppn1KTawb37zTvlCj+5hz9QDkYG6o1d5j77AzK3LUQ3qrmq1lwiGgzmnaEC2Z7EO
-	5bwXSI6d+1H2eRFYyOONB4VKE+yKiovNPV0qVFG/Se5NugNFnw2SkqkoJDNb76g9B8qhWdIdRR2Y+
-	WcH+YlznerCIcgzD4fdmR87IQ87sqXO7h/bSYv0dTnjZj4Jjwwa7fcJibck9SFQ1ruI+wmI0yDI20
-	0G/DZh0h0vMnihv+rc9XNwCPhNJmCzkvAZEaJ7AjWnmOsnl9V3NmuH300W1ZaS00KTwNIhrjr/Nna
-	8zH4QFCR8m0pLOGwFdFQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ROOFcmf0xF+H90fhB40DqeCmE+HRq1Hwdme1CEYe8II=; b=LW+ZKT/EXoR3Mk
+	3cnMuL9ldYt1moFt7j+1AtdsPtc8y/67qh941c0OZIALnGmjiVv94X00rcwv0wlO4MF1rc8/tvwRX
+	D6aWFlm+lWdromx1lMBSAP8o6qo8bJnkja4t6FTu9jHL0IIOnwdw1dN5p7N41DcqTu8ZLjDanWPDp
+	X8i8/58w8Y4PUwZTBSZELOtiB+MSWN1MVDhqT+tkCrkjZfhMiCXSUfrHejOAegypQHFmHDUE/tC3/
+	Jk0SIo99/qdxR+9IeduhpFbC1XmZuu4OxZlnSwR/dmJcA5cKkhqIqttDDOBfmlpN+HnXkmkvtp8Xo
+	Ec7NqeH6pUeMlRzDYZLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqHzt-0000000C8e0-2w9O;
-	Thu, 06 Mar 2025 20:39:13 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tqI36-0000000C95A-1aY5;
+	Thu, 06 Mar 2025 20:42:32 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqHzr-0000000C8dF-0mZj
+	id 1tqHzv-0000000C8eM-2mbq
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Mar 2025 20:39:12 +0000
+	Thu, 06 Mar 2025 20:39:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1741293549; bh=7JyxP8FBRDIO7vgzFTNLCIrseIO0xPkXO1N8Yvb5Wzo=;
- b=mrzCPSYp2vBoEgERGbhVXHiYhoFEygSIzdYjgLOIMzPYQRXFKwoRprf8SHOMlcEZjL0s8y5tb
- eflUW8t1NA/E7BZsAfHmYJk3nR+eEHZ+tetP3cVSemZQSZtyd77j/JwdkKolWS2vH9sfNuHffzi
- WMI241LU8bj5eFccdMtu0uBIP8RYGJXvsqGqdxG/rfGsTANWRaXLYRFYApZpLDLqlcWRT3IuwkC
- FLiq43rIrXCLzrfJyPjmGfp+Pw7g7oK7nsShu8dAbNtXZUwIFZzZ+wbBNduemgqM8QkXsZ7ZOZF
- 8EsDCbOe8+3vYu1+ziJ15mH8dapo7i0PKhAuVaJRjfVg==
-X-Forward-Email-ID: 67ca07ecdeafcb1458af9261
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1741293553;
+ bh=+Q3pBznN8M0b0cdvrfOAVu+/YpKDnQ8zfRnmStTM8EY=;
+ b=m8JIKYP4EZ3aEFTTlfg3ww3VDujeTlzjvbkClBiIep8uZp7l8X6fRJo9dGMIfNKFQPm8iaSpj
+ 5hqCky1XCN3ZD19pr5GlMBXk62DRuwSBMAd+eVnRtGoCuP2MmoLo+d1O+sm5Ekc0ylbzRnFCp+P
+ sOWqg04IxJ779Rr+e36Ihzo1aBSbI4yd5U+PW+dggJHE2zVQ70CnqAGsILKFnn7HNrpSoHn8Rtu
+ 3v89G2EtM5kx57Tl4jZfKi+CXXacFAGE3fv//hI/bnvZBTexJSfKQbSiftr4BNohqLVRKsUcecC
+ KBgnzIL9AaaYRkUuCFMbDaOAwqCwzX7GuDdOFQm7EISA==
+X-Forward-Email-ID: 67ca07e7deafcb1458af9232
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
+ 149.28.215.223
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -50,26 +50,20 @@ To: Heiko Stuebner <heiko@sntech.de>,
 	"David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Wadim Egorov <w.egorov@phytec.de>
+	Paolo Abeni <pabeni@redhat.com>
 Cc: netdev@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH 1/3] net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for RK3328
-Date: Thu,  6 Mar 2025 20:38:52 +0000
-Message-ID: <20250306203858.1677595-2-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/3] Use DELAY_ENABLE macro for RK3328, RK3566/RK3568 and RK3588
+Date: Thu,  6 Mar 2025 20:38:51 +0000
+Message-ID: <20250306203858.1677595-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250306203858.1677595-1-jonas@kwiboo.se>
-References: <20250306203858.1677595-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_123911_616436_FA4FBBD0 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20250306_123915_732575_6C31F50C 
+X-CRM114-Status: UNSURE (   6.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,33 +81,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Support for Rockchip RK3328 GMAC and addition of the DELAY_ENABLE macro
-was merged in the same merge window. This resulted in RK3328 not being
-converted to use the new DELAY_ENABLE macro.
+Almost all Rockchip GMAC variants use the DELAY_ENABLE macro to help
+enable or disable use of MAC rx/tx delay. However, RK3328, RK3566/RK3568
+and RK3588 GMAC driver does not.
 
-Change to use the DELAY_ENABLE macro to help disable MAC delay when
+Use of the DELAY_ENABLE macro help ensure the MAC rx/tx delay is
+disabled, instead of being enabled and using a zero delay, when
 RGMII_ID/RXID/TXID is used.
 
-Fixes: eaf70ad14cbb ("net: stmmac: dwmac-rk: Add handling for RGMII_ID/RXID/TXID")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+RK3328 driver was merged around the same time as when DELAY_ENABLE was
+introduced so it is understandable why it was missed. Both RK3566/RK3568
+and RK3588 support were introduced much later yet they also missed using
+the DELAY_ENABLE macro (so did vendor kernel at that time).
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 003fa5cf42c3..297fa93e4a39 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -593,8 +593,7 @@ static void rk3328_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
- 		     RK3328_GMAC_PHY_INTF_SEL_RGMII |
- 		     RK3328_GMAC_RMII_MODE_CLR |
--		     RK3328_GMAC_RXCLK_DLY_ENABLE |
--		     RK3328_GMAC_TXCLK_DLY_ENABLE);
-+		     DELAY_ENABLE(RK3328, tx_delay, rx_delay));
- 
- 	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON0,
- 		     RK3328_GMAC_CLK_RX_DL_CFG(rx_delay) |
+This series fixes all these cases to unify how GMAC delay feature is
+enabled or disabled across the different GMAC variants.
+
+Jonas Karlman (3):
+  net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for RK3328
+  net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for RK3566/RK3568
+  net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for RK3588
+
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
 -- 
 2.48.1
 
