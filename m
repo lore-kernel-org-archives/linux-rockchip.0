@@ -4,58 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CA6C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA05C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v4TwnE9lJcbHuiDpQs2x4nxHQycYKRgpN9M/gyMVm8A=; b=RNBEgOuVqqxP6m
-	bR1GrTgnR2/i1vT5EVHyLvkA1CAAVqRaOqHE7TJt7ts7cH/VqciW9HJQlqiu8j/H4tzlvBpm882mq
-	+lYkP6w3Fa6xD8GpIHdONteCuUQ7C8C46q7R5w/RY+OS54d2NPoOVV1SBtJpHeX0I1xfA+CgYbsbo
-	aYW0whbi9R/lpAdEgEFdxfwueg5o/fDDHyDu1N+WnGc9nQJ7dTfH7JFYxbifx0GkVmLKP3OhabXsw
-	2DQZesMfYCDsfGtYzJmUYvzbdH0/CFk2wF7IxXget9bCeEBP0sX1uO8H97qSGi+89IJZV7LNytry4
-	zInOaqO8xfytrndT18xA==;
+	List-Owner; bh=C4Xbi2Xj5Gpg6a3Fl98MfWPM2FbqckMUJHHi01lHyqo=; b=FwIThTw9vb5nAH
+	4vAd9TuOwJPZZvOf1G7RyuVLrJ62bx2Y6S9+aCqmyKKEWJbLKdv7pGOqS/dcpKO32GLPe/wSTekx7
+	22CbucgziKMh9L+SLE65MeGmBR/Wuw2WB8xScro5kprJ6aaRlmaKqNgn/h5S6f6fVBp/tTGVSOJAO
+	IWnZQcPfONy55PLVnfeT1lPJ+xKLCKb6FXEoru8XDs1Wfif8YZISzUbHiBMYKXFIwfvKlJxwQTMsy
+	gWdH4qZAfQP27TYPxgXA8FQm+tuZr2DXQ9qkHKK72zwgVSgvfqYYN6IwdOAmP+jZ9CiEg7jH/cj8s
+	faYglVAt/YlQnlche/WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqEMN-0000000BYwV-2Xpg;
-	Thu, 06 Mar 2025 16:46:11 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tqEVW-0000000BaZt-2zjb;
+	Thu, 06 Mar 2025 16:55:38 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqEKi-0000000BYYC-32BO;
-	Thu, 06 Mar 2025 16:44:30 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id BD6D02024D;
-	Thu,  6 Mar 2025 17:44:23 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dSLASKqzoBGZ; Thu,  6 Mar 2025 17:44:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741279459; bh=7IP4WYiQ3uqZxjps9WZ0ItIBn+105bQ4pKd1dSZCV54=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Jf8ScI9jkEuLiR/sOtykcPvGSgXJ8+inW3qRRiIdlp/sxGRUyevCKvAsAZcbAFGQR
-	 BbU895Oxz+Lxg7MULJW1vdE+AzEoAAZPVRbw0L8biaaaWthW7Q6d0mPfl2jkqMAoPN
-	 8FT8KXjH//vrtkR4LGJWJwoR40wQ9QSmTkfgGGaHENKCm57Wua+d1ShJBLnKS/cDOz
-	 5Vg3S5nSqtEkWFKQgzirDV2umLYIP9/4kICm/iH4CxucZsn/laSVkvJ8K3MntZMC+C
-	 PZCWaAHnWlBSYJnsdfNBnjcvkkF4nd2eO+uRjVavp4dU5/auz0LwTgKT22+MYP05hp
-	 f1P9lVdmK7Zhg==
-Date: Thu, 6 Mar 2025 16:43:54 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v2 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers
- for RK3528
-Message-ID: <Z8nPjjbZvpRJ2R5B@pie.lan>
-References: <20250305194612.47171-1-ziyao@disroot.org>
- <20250306140009.384469-1-amadeus@jmu.edu.cn>
+	id 1tqEVU-0000000BaY9-0uJl
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Mar 2025 16:55:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1741280136;
+ bh=6bMGhfu3cKthCvL1T3G+dPSizYb8EcgG80qlrt/kJJ8=;
+ b=R1xXqlF90yW3Y/W62mWYiyrgqOf81SwNLt3FuCHVFrHgH68FUSSUVNLPG8oQR9ORrfiZ4Q6xI
+ HKnkbj9cVn37yimZ11dl0WV+Q2u/BOI+h7om+1riP/UNn+2S8CeddwFSTlm3TZyxr4qXeeARoKx
+ /K9HHkVop/tK7NkODy0vPcAI+G9VGAjaYyWtCTyAVfwPPz+07YKLY85dEvjVfWrel7AL1p9Bh02
+ 2fBT7FBYmhPnX/Dg+EWdBWX7n2WWuywz5cGLgyfRLQx/xqgyf9Y8Kx3Is6/1uqOfHmlSZLFPvYi
+ kE44L07Qp88UpT6Brq5CpVGWn4HVBpGwAVtq64EsbKnA==
+X-Forward-Email-ID: 67c9d3797d53aa09926043e9
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <cdbc1556-4662-4078-a4d6-33545e2e2491@kwiboo.se>
+Date: Thu, 6 Mar 2025 17:55:16 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250306140009.384469-1-amadeus@jmu.edu.cn>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add rk3528 QoS register node
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Yao Zi <ziyao@disroot.org>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20250306123809.273655-1-amadeus@jmu.edu.cn>
+ <20250306123809.273655-3-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250306123809.273655-3-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_084429_167148_55C07EFF 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20250306_085536_584323_BC5F1F50 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,89 +76,210 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, jonas@kwiboo.se, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 06, 2025 at 10:00:09PM +0800, Chukun Pan wrote:
-> Hi,
-> 
-> > +		sdio0: mmc@ffc10000 {
-> > +			compatible = "rockchip,rk3528-dw-mshc",
-> > +				     "rockchip,rk3288-dw-mshc";
-> > +			reg = <0x0 0xffc10000 0x0 0x4000>;
-> > +			clocks = <&cru HCLK_SDIO0>,
-> > +				 <&cru CCLK_SRC_SDIO0>,
-> > +				 <&cru SCLK_SDIO0_DRV>,
-> > +				 <&cru SCLK_SDIO0_SAMPLE>;
-> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > +			fifo-depth = <0x100>;
-> > +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
-> > +			max-frequency = <150000000>;
-> > +			pinctrl-names = "default";
-> > +			pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>,
-> > +				    <&sdio0_det>, <&sdio0_pwren>;
-> 
-> The sdio module is usually "non-removable", no need det,
-> and pwren may be other gpio (use mmc-pwrseq). So it should
-> be `pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;`
+Hi Chukun,
 
-This doesn't affect the fact that these two pins are assigned as
-functional pins for SDIO0, as pointed out by the datasheet[1].
-
-But with more digging, I found the reference design[2] of Rockchip
-actually uses the two pins as normal GPIOs. This is more obvious in
-downstream devicetree of an EVB[3]. Most of the existing boards (Radxa
-2A, ArmSOM Sige 1) follow the reference design.
-
-For me, it's kind of surprising that the SDIO IP functions with two
-functional pins assigned as different modes. I'm not sure whether we
-should apply pin configuration for these two pins in the SoC devicetree.
-Jonas, what do you think about it?
-
-> > +			resets = <&cru SRST_H_SDIO0>;
-> > +			reset-names = "reset";
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		sdio1: mmc@ffc20000 {
-> > +			compatible = "rockchip,rk3528-dw-mshc",
-> > +				     "rockchip,rk3288-dw-mshc";
-> > +			reg = <0x0 0xffc20000 0x0 0x4000>;
-> > +			clocks = <&cru HCLK_SDIO1>,
-> > +				 <&cru CCLK_SRC_SDIO1>,
-> > +				 <&cru SCLK_SDIO1_DRV>,
-> > +				 <&cru SCLK_SDIO1_SAMPLE>;
-> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > +			fifo-depth = <0x100>;
-> > +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-> > +			max-frequency = <150000000>;
-> > +			pinctrl-names = "default";
-> > +			pinctrl-0 = <&sdio1_bus4>, <&sdio1_clk>, <&sdio1_cmd>,
-> > +				    <&sdio1_det>, <&sdio1_pwren>;
+On 2025-03-06 13:38, Chukun Pan wrote:
+> The Quality-of-Service (QsS) node stores/restores specific
+> register contents when the power domains is turned off/on.
+> Add QoS node so that they can connect to the power domain.
 > 
-> Same here.
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 160 +++++++++++++++++++++++
+>  1 file changed, 160 insertions(+)
 > 
-> > +			resets = <&cru SRST_H_SDIO1>;
-> > +			reset-names = "reset";
-> > +			status = "disabled";
-> > +		};
-> 
-> Thanks,
-> Chukun
-> 
-> -- 
-> 2.25.1
-> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> index b1713ed4d7e2..0c0e7f151462 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> @@ -129,6 +129,166 @@ gic: interrupt-controller@fed01000 {
+>  			#interrupt-cells = <3>;
+>  		};
+>  
+> +		qos_crypto_a: qos@ff200000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200000 0x0 0x20>;
+> +		};
+> +
+> +		qos_crypto_p: qos@ff200080 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200080 0x0 0x20>;
+> +		};
+> +
+> +		qos_dcf: qos@ff200100 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200100 0x0 0x20>;
+> +		};
+> +
+> +		qos_dft2apb: qos@ff200200 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200200 0x0 0x20>;
+> +		};
+> +
+> +		qos_dma2ddr: qos@ff200280 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200280 0x0 0x20>;
+> +		};
+> +
+> +		qos_dmac: qos@ff200300 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200300 0x0 0x20>;
+> +		};
+> +
+> +		qos_keyreader: qos@ff200380 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff200380 0x0 0x20>;
+> +		};
+> +
+> +		qos_cpu: qos@ff210000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff210000 0x0 0x20>;
+> +		};
+> +
+> +		qos_debug: qos@ff210080 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff210080 0x0 0x20>;
+> +		};
+> +
+> +		qos_gpu_m0: qos@ff220000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff220000 0x0 0x20>;
+> +		};
+> +
+> +		qos_gpu_m1: qos@ff220080 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff220080 0x0 0x20>;
+> +		};
+> +
+> +		qos_pmu_mcu: qos@ff240000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff240000 0x0 0x20>;
+> +		};
+> +
+> +		qos_rkvdec: qos@ff250000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff250000 0x0 0x20>;
+> +		};
+> +
+> +		qos_rkvenc: qos@ff260000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff260000 0x0 0x20>;
+> +		};
+> +
+> +		qos_gmac0: qos@ff270000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270000 0x0 0x20>;
+> +		};
+> +
+> +		qos_hdcp: qos@ff270080 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270080 0x0 0x20>;
+> +		};
+> +
+> +		qos_jpegdec: qos@ff270100 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270100 0x0 0x20>;
+> +		};
+> +
+> +		qos_rga2_m0ro: qos@ff270200 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270200 0x0 0x20>;
+> +		};
+> +
+> +		qos_rga2_m0wo: qos@ff270280 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270280 0x0 0x20>;
+> +		};
+> +
+> +		qos_sdmmc0: qos@ff270300 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270300 0x0 0x20>;
+> +		};
+> +
+> +		qos_usb2host: qos@ff270380 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270380 0x0 0x20>;
+> +		};
+> +
+> +		qos_vdpp: qos@ff270480 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270480 0x0 0x20>;
+> +		};
+> +
+> +		qos_vop: qos@ff270500 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff270500 0x0 0x20>;
+> +		};
+> +
+> +		qos_emmc: qos@ff280000 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280000 0x0 0x20>;
+> +		};
+> +
+> +		qos_fspi: qos@ff280080 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280080 0x0 0x20>;
+> +		};
+> +
+> +		qos_gmac1: qos@ff280100 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280100 0x0 0x20>;
+> +		};
+> +
+> +		qos_pcie: qos@ff280180 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280180 0x0 0x20>;
+> +		};
+> +
+> +		qos_sdio0: qos@ff280200 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280200 0x0 0x20>;
+> +		};
+> +
+> +		qos_sdio1: qos@ff280280 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280280 0x0 0x20>;
+> +		};
+> +
+> +		qos_tsp: qos@ff280300 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280300 0x0 0x20>;
+> +		};
+> +
+> +		qos_usb3otg: qos@ff280380 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280380 0x0 0x20>;
+> +		};
+> +
+> +		qos_vpu: qos@ff280400 {
+> +			compatible = "rockchip,rk3528-qos", "syscon";
+> +			reg = <0x0 0xff280400 0x0 0x20>;
+> +		};
 
-Best regards,
-Yao Zi
+These QoS node are typically referenced from power domains so that the
+PMU driver know what QoS to save/restore when a power domain is power
+cycled.
 
-[1]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/Rockchip%C2%A0RK3528%C2%A0Datasheet%C2%A0V1.0-20230522.pdf
-[2]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/RK3528_BOX_REF_V10_20230525.pdf
-[3]: https://github.com/rockchip-linux/kernel/blob/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3528-evb1-ddr4-v10.dtsi#L128
+Vendor kernel only reference the two qos_gpu nodes in it's power domains,
+do you have any documentation or knowledge about what power domain the
+remaining QoS are related to?
+
+It would have been helpful to include PMU support to help understand the
+QoS <-> PD relationship, on their own they do not tell us that much :-)
+
+Regards,
+Jonas
+
+> +
+>  		cru: clock-controller@ff4a0000 {
+>  			compatible = "rockchip,rk3528-cru";
+>  			reg = <0x0 0xff4a0000 0x0 0x30000>;
+
 
 _______________________________________________
 Linux-rockchip mailing list
