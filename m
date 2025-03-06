@@ -4,69 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB795C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CA6C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xB/8VcjsALbVhcZ3UxOPROj72sIVqzDrd69vijZElHk=; b=ADIHR42ITQRPJg
-	XudkmTTm5D3B5WIVtTckmVbRGg/ZNfJEXG4EHqX+jEB3fjpKJs5VS7KnQouzYdZ9kBGYSszMoVJq4
-	HaPgMOJj81xrjtHQcW/icbnEvbBRQefmI5uqN0Rz4Rmrp9k6EEte7w8svCSdeCGg7WslBWRWew+iY
-	iv861LdA+Vxvr+bhW77YxXfCr/E2Nq8y+bgQ4ZrLoe1DdS1rNMSx6I9g855x4WU3i7zeyPQI9mHel
-	Pvne1L6eC6Lx1fBe6lhX6mJsKytnScRJ6GfzrF6CE4NC7HgoaVN7oSTLri0Dg4QE89VTYwCfFyuwO
-	AI0wsC0YTRQ17STYtPyQ==;
+	List-Owner; bh=v4TwnE9lJcbHuiDpQs2x4nxHQycYKRgpN9M/gyMVm8A=; b=RNBEgOuVqqxP6m
+	bR1GrTgnR2/i1vT5EVHyLvkA1CAAVqRaOqHE7TJt7ts7cH/VqciW9HJQlqiu8j/H4tzlvBpm882mq
+	+lYkP6w3Fa6xD8GpIHdONteCuUQ7C8C46q7R5w/RY+OS54d2NPoOVV1SBtJpHeX0I1xfA+CgYbsbo
+	aYW0whbi9R/lpAdEgEFdxfwueg5o/fDDHyDu1N+WnGc9nQJ7dTfH7JFYxbifx0GkVmLKP3OhabXsw
+	2DQZesMfYCDsfGtYzJmUYvzbdH0/CFk2wF7IxXget9bCeEBP0sX1uO8H97qSGi+89IJZV7LNytry4
+	zInOaqO8xfytrndT18xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqEH1-0000000BXg7-3aK6;
-	Thu, 06 Mar 2025 16:40:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tqEMN-0000000BYwV-2Xpg;
+	Thu, 06 Mar 2025 16:46:11 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqEFN-0000000BXMu-3j9w;
-	Thu, 06 Mar 2025 16:38:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741279135;
-	bh=pf36QmNJXVaZuz3s0mehd9lTyDeLXhfnvdrEPGA0Fj8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LVdJ9bO6yHENnaiGBkjkHB6ID9jroBGW+832lD2QHbp1MoPDOdOrLAFh5PK67eH3B
-	 J8hW+/HhpWumL0HgRcfXj2n1b964Dgd8IrMCFuVesFqGfwbOHN7DRsMd9U3Y9bJGLq
-	 /1SKMpO2qRhSrh5oztFLL3if988MSDBQxXrnXsaogjwuLH0UpNhEFzfHgjpU4SGLaO
-	 vFlF264y7A44/zYXFotkTS6KgYN/PsL23H8Hw7ZwxYICU3/sySmMCbfoNNICpYPIUu
-	 J087mlZc7AmqD2XPxjTg1d3O7lmHAf3H074JopdaaJYcuvc8+QEn/vrnRaaAV1bdiS
-	 WylyrhmOK71AQ==
-Received: from [192.168.1.90] (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3232D17E086B;
-	Thu,  6 Mar 2025 17:38:55 +0100 (CET)
-Message-ID: <0600430d-12c1-4af7-9082-76448943b02a@collabora.com>
-Date: Thu, 6 Mar 2025 18:38:53 +0200
+	id 1tqEKi-0000000BYYC-32BO;
+	Thu, 06 Mar 2025 16:44:30 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id BD6D02024D;
+	Thu,  6 Mar 2025 17:44:23 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dSLASKqzoBGZ; Thu,  6 Mar 2025 17:44:19 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1741279459; bh=7IP4WYiQ3uqZxjps9WZ0ItIBn+105bQ4pKd1dSZCV54=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Jf8ScI9jkEuLiR/sOtykcPvGSgXJ8+inW3qRRiIdlp/sxGRUyevCKvAsAZcbAFGQR
+	 BbU895Oxz+Lxg7MULJW1vdE+AzEoAAZPVRbw0L8biaaaWthW7Q6d0mPfl2jkqMAoPN
+	 8FT8KXjH//vrtkR4LGJWJwoR40wQ9QSmTkfgGGaHENKCm57Wua+d1ShJBLnKS/cDOz
+	 5Vg3S5nSqtEkWFKQgzirDV2umLYIP9/4kICm/iH4CxucZsn/laSVkvJ8K3MntZMC+C
+	 PZCWaAHnWlBSYJnsdfNBnjcvkkF4nd2eO+uRjVavp4dU5/auz0LwTgKT22+MYP05hp
+	 f1P9lVdmK7Zhg==
+Date: Thu, 6 Mar 2025 16:43:54 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers
+ for RK3528
+Message-ID: <Z8nPjjbZvpRJ2R5B@pie.lan>
+References: <20250305194612.47171-1-ziyao@disroot.org>
+ <20250306140009.384469-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
- <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
- <20250304-small-mindful-mongrel-bd6f8b@houat>
- <155f609f-994f-4140-8453-7e38a5e6deef@collabora.com>
- <20250306-masked-voracious-octopus-be05b8@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20250306-masked-voracious-octopus-be05b8@houat>
+Content-Disposition: inline
+In-Reply-To: <20250306140009.384469-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_083858_080374_9DD7DBDC 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20250306_084429_167148_55C07EFF 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,76 +67,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, jonas@kwiboo.se, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/6/25 3:35 PM, Maxime Ripard wrote:
-> On Tue, Mar 04, 2025 at 02:04:18PM +0200, Cristian Ciocaltea wrote:
->> Hi Maxime,
->>
->> On 3/4/25 10:13 AM, Maxime Ripard wrote:
->>> Hi,
->>>
->>> On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
->>>> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
->>>> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
->>>> and not before.
->>>>
->>>> While at it, introduce a define for this rate limit constant.
->>>>
->>>> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
->>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>> ---
->>>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
->>>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
->>>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> @@ -320,6 +320,7 @@
->>>>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
->>>>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
->>>>  
->>>> +#define HDMI14_MAX_RATE			340000000
->>>>  #define HDMI20_MAX_RATE			600000000
->>>>  
->>>>  enum dp_link_rate {
->>>> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
->>>>  
->>>>  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
->>>>  
->>>> -	if (rate >= 3400000) {
->>>> +	if (rate > HDMI14_MAX_RATE / 100) {
->>>
->>> The rate seems to come from rk_hdptx_phy_power_on and eventually from
->>> tmds_char_rate in the PHY config options, so its rate is in Hertz.
->>
->> The rate coming from rk_hdptx_phy_power_on() is in hHz, since it passed
->> via dw_hdmi_qp_rockchip_encoder_enable() as
->>
->>   phy_set_bus_width(hdmi->phy, div_u64(rate, 100));
->>
->>> HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
->>> It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
->>
->> This stems from the ropll_tmds_cfg table containing the configuration
->> params for the supported rates which requires the search keys to be
->> provided in hHz rather than Hz.
->>
->> I agree this is nothing but confusing, that's why I fixed this up in
->> "phy: rockchip: samsung-hdptx: Avoid Hz-hHz unit conversion overhead"
+On Thu, Mar 06, 2025 at 10:00:09PM +0800, Chukun Pan wrote:
+> Hi,
 > 
-> Yeah, sorry, I noticed it after sending the review. Still, I'd advise to
-> put that patch first, it's a bit weird to add more patch we're going to
-> rework later on.
+> > +		sdio0: mmc@ffc10000 {
+> > +			compatible = "rockchip,rk3528-dw-mshc",
+> > +				     "rockchip,rk3288-dw-mshc";
+> > +			reg = <0x0 0xffc10000 0x0 0x4000>;
+> > +			clocks = <&cru HCLK_SDIO0>,
+> > +				 <&cru CCLK_SRC_SDIO0>,
+> > +				 <&cru SCLK_SDIO0_DRV>,
+> > +				 <&cru SCLK_SDIO0_SAMPLE>;
+> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> > +			fifo-depth = <0x100>;
+> > +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
+> > +			max-frequency = <150000000>;
+> > +			pinctrl-names = "default";
+> > +			pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>,
+> > +				    <&sdio0_det>, <&sdio0_pwren>;
+> 
+> The sdio module is usually "non-removable", no need det,
+> and pwren may be other gpio (use mmc-pwrseq). So it should
+> be `pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;`
 
-No worries and yes, I've already planned to move the patch before all
-the others adding more stuff.  I'd still keep this patch as is, to make
-it easier for backporting, as well as the next three patches dropping
-stuff, before continuing with the unit conversion.
+This doesn't affect the fact that these two pins are assigned as
+functional pins for SDIO0, as pointed out by the datasheet[1].
+
+But with more digging, I found the reference design[2] of Rockchip
+actually uses the two pins as normal GPIOs. This is more obvious in
+downstream devicetree of an EVB[3]. Most of the existing boards (Radxa
+2A, ArmSOM Sige 1) follow the reference design.
+
+For me, it's kind of surprising that the SDIO IP functions with two
+functional pins assigned as different modes. I'm not sure whether we
+should apply pin configuration for these two pins in the SoC devicetree.
+Jonas, what do you think about it?
+
+> > +			resets = <&cru SRST_H_SDIO0>;
+> > +			reset-names = "reset";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		sdio1: mmc@ffc20000 {
+> > +			compatible = "rockchip,rk3528-dw-mshc",
+> > +				     "rockchip,rk3288-dw-mshc";
+> > +			reg = <0x0 0xffc20000 0x0 0x4000>;
+> > +			clocks = <&cru HCLK_SDIO1>,
+> > +				 <&cru CCLK_SRC_SDIO1>,
+> > +				 <&cru SCLK_SDIO1_DRV>,
+> > +				 <&cru SCLK_SDIO1_SAMPLE>;
+> > +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> > +			fifo-depth = <0x100>;
+> > +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+> > +			max-frequency = <150000000>;
+> > +			pinctrl-names = "default";
+> > +			pinctrl-0 = <&sdio1_bus4>, <&sdio1_clk>, <&sdio1_cmd>,
+> > +				    <&sdio1_det>, <&sdio1_pwren>;
+> 
+> Same here.
+> 
+> > +			resets = <&cru SRST_H_SDIO1>;
+> > +			reset-names = "reset";
+> > +			status = "disabled";
+> > +		};
+> 
+> Thanks,
+> Chukun
+> 
+> -- 
+> 2.25.1
+> 
+
+Best regards,
+Yao Zi
+
+[1]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/Rockchip%C2%A0RK3528%C2%A0Datasheet%C2%A0V1.0-20230522.pdf
+[2]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/RK3528_BOX_REF_V10_20230525.pdf
+[3]: https://github.com/rockchip-linux/kernel/blob/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3528-evb1-ddr4-v10.dtsi#L128
 
 _______________________________________________
 Linux-rockchip mailing list
