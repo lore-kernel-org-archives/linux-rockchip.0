@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F37A4C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 14:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663C9C282EC
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 14:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gZl2Seb5tjmaWao7/NOTyKMiq437RWFDgFuDLsujwMM=; b=vyF9zL0cZQhhML
-	ltlSLYLgxI5ACAUTibPnkFcFd8cuYhPjYZoIPPLns/EyJYQbTpSkaarueSi3/My772ron8jLTI63F
-	AWG5Go83Xaxdbu7Yl0QkK1ZTrSjFhLSlBR7/HjoAjxuRv77RByXac2siZI3pfMwA5lU8sG4xF1nGY
-	qOu5dx0iwglIGvdQywrFId+awN8XhKSUJFliTlGL82TryqzmUsXrFypmmQhsy1cBL8pXYLRoWvTi0
-	ENITFTyoUJEKMD6ou7wBI3dDblRL2bEabFKO5XihKmOvB65SqXdl2nsFSLN4pR31gO5sORMlnCtpI
-	JhWyGDWursSWH68Im8dg==;
+	List-Owner; bh=gfQh0ns7NQXFXguth30tTnORtyKPh3Du7t/GQQ9NsEI=; b=CeikfBqBu/mSO2
+	r/tX3zofumnC782jNgIk7qIbaK6dvbtf8xVf5c3U0eKO10ROkf6hdW+LueZiPr71b8oCKelnjDqIQ
+	aaE4hZhr5s46L6sBDvvml3J1IuH2LJipWYVyfbYTXpWkiS4TSLBuNw4HyqCH/F721Dy6cwWAbOwHZ
+	vnMjoH1WT9UbEG+oHbe8JV8WszG85khNSXXJesxwp+qz2JoCfzPWjSkNeaWKoCGSXJFaFZ+L4NBBC
+	Vl9Wo6lTc9eZ5G5D7yBjM1WsZoYrk60f9Di5oyLPZmHBFBI9SzRiyGMOOZw3i25CXRIeygt8DJlhA
+	onE2yPbCugUDmBKLaDcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqCPY-0000000BED4-44xS;
-	Thu, 06 Mar 2025 14:41:20 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tqCWx-0000000BEt9-3aEh;
+	Thu, 06 Mar 2025 14:48:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqCNc-0000000BDym-35KY;
-	Thu, 06 Mar 2025 14:39:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741271947; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=f189TiqKaVtBiJW/aJ8g/VLuBqrAnVJqp8Mg2EopEtKZc26oVpxnjy3yehtmCDoo7D4qpSuK2NmEzpCweb7fR1vqnggfZN0noKIBt+yfDGOcC1uhUZIAGA8yZYx74hhwrwaZEpjp2bGyadbSpMw4YHKVmfZ+Gi9AdEMXyu/pQIY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741271947; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=+//d8YaKM1HPYqDbAwn6xqi0NfBlNp/hPbdkEog/gtk=; 
-	b=e8b6+txvoTW3oZGE3zpaG4sgldvr/Ox9KnpAFU2TXac4jwwo/mjAZbNI+bNsUgjOd3YcBTHybdb6vyfZmkaJ1/kuSSRfTTPwO5nMKIh+iLpycP8XGJudZZ2S17xn37AE4HiodVgkij8pYRIYdnAmsIkaNN9RdO9HA63T1icpEqA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741271947;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=+//d8YaKM1HPYqDbAwn6xqi0NfBlNp/hPbdkEog/gtk=;
-	b=DlU/j4AlaxuLJoq2T4Afnf+/npcH5yCOio/5SydONGIIzFiTihflwKdetE1L4f5i
-	oU8XkhJfbAcv9FsopV7l8iiEoRqCD7Peurlo8e+86FEExWdz10aAS5tim1rjOfWdJul
-	Sln4vqPfohijJjafwzjQkBltx8lP5D19+krFhHA0=
-Received: by mx.zohomail.com with SMTPS id 174127194550959.191258083911634;
-	Thu, 6 Mar 2025 06:39:05 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sugar Zhang <sugar.zhang@rock-chips.com>,
- Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1tqBIS-0000000B3lv-1EZU;
+	Thu, 06 Mar 2025 13:29:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=y1r0XL1092fmLSaUg6P9eZbIAeeU2xay/HqiLlb+zMY=; b=HCT4K7N7sqkqQtAsKRUdwRszQ6
+	6tMe+uBoEu2Y5ySW2JYTSSj2/DmgATvb/3UHc2+tVylwRwuc/Dt07hhHz3Z3nlh+DbjAk3Q0Ll5Pv
+	hJ8kbyinD7Pf7I7rN1fS71NA89o0XH4tQe1Oe/8pIo8OOd4ZStQl+MCvEEW0t8+gZyA+mIJbG9i8G
+	WxfrfFT/86tIBYFImCKuoO/Ae6GLo8FhVMOdXbBXrOKTqc+sAFIUyXJt8+Zt6fgZxooNoI1FgAXbf
+	VEgmG3HpbT5gAFD2GItitHW832qJAnuqRSnQTPfDi8Eq1P3HW6n0TLOeevV/bdS/0mLYC6/r1m20K
+	BtSlLxUg==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tqBIP-0000000163X-0uNW;
+	Thu, 06 Mar 2025 13:29:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=y1r0XL1092fmLSaUg6P9eZbIAeeU2xay/HqiLlb+zMY=; b=Afl9wm+B0ta8/YCf8e7GaHaAlb
+	w3e+75j86lq+KQZK6gvVoTYKa9zUilVpMQx83DWou9X3zPv1zbGTRICX4BYKVzKwDR6PTLcuX9bXM
+	ec7/6WJhxRqCGCVZNjqTNbGOYiZUkCAVQd/gyRR+c9ZtXbKQbcp1uIfK/KtpI2Wm8xtltEdPFSblC
+	MrghlQaA2pKnYO6u5kV9U5iz8BXaYTQ8B3183E+yHppVu7odwKQZPUPfOg3upIrUZKbtviFnsDKSL
+	tZk4uboZ/98MB0VuFk+UmW2/J8K0DT+S5MVF4yEiTfhg4/oXod9vf2YgIjbxmFEvN97Wond06OK9W
+	QhFdvwQA==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tqBIK-0003LI-U0; Thu, 06 Mar 2025 14:29:48 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH 3/7] ASoC: dt-bindings: add schema for rockchip SAI controllers
-Date: Thu, 06 Mar 2025 15:38:58 +0100
-Message-ID: <8514337.T7Z3S40VBb@workhorse>
-In-Reply-To: <81d60550-4929-48c1-b4d3-1473b902bf12@kernel.org>
-References: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
- <2376575.ElGaqSPkdT@workhorse>
- <81d60550-4929-48c1-b4d3-1473b902bf12@kernel.org>
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
+Date: Thu, 06 Mar 2025 14:29:48 +0100
+Message-ID: <4856313.kQq0lBPeGt@diego>
+In-Reply-To: <20250306131016.281290-2-amadeus@jmu.edu.cn>
+References: <20250306131016.281290-1-amadeus@jmu.edu.cn>
+ <20250306131016.281290-2-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_063920_847457_0318DBD9 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20250306_132953_586466_1F7048FA 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +85,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 6 March 2025 14:43:21 Central European Standard Time Krzysztof 
-Kozlowski wrote:
-> On 06/03/2025 14:13, Nicolas Frattaroli wrote:
-> > On Thursday, 6 March 2025 08:42:54 Central European Standard Time
-> > Krzysztof
-> > 
-> > Kozlowski wrote:
-> >> On 05/03/2025 22:24, Nicolas Frattaroli wrote:
-> >>> Rockchip introduced a new audio controller called the "Serial Audio
-> >>> Interface", or "SAI" for short, on some of their newer SoCs. In
-> >>> particular, this controller is used several times on the RK3576 SoC.
-> >>> 
-> >>> Add a schema for it, with only an RK3576 compatible for now. Other SoCs
-> >>> may follow as mainline support for them lands.
-> >>> 
-> >>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> >>> ---
-> >>> 
-> >>>  .../devicetree/bindings/sound/rockchip,sai.yaml    | 151
-> >>>  +++++++++++++++++++++
-> >> 
-> >> Filename based on compatible.
-> > 
-> > Sure, but more compatibles will follow. Are you certain you want a file
-> > named rockchip,rk3576-sai.yaml to then contain rockchip,rk3528-sai? If so
-> > then I do
-> Yes (or the other way around if 3528 is older)
-
-They were released at about the same time from what I know. I'll pick the 
-RK3576 though since it was the first to get upstream support.
-
-> 
-> > not understand the reason behind this policy.
-> 
-> So the name will match hardware, instead of sai.yaml, sai2.yaml,
-> sai3.yaml and sai-green-frog.yaml.
-
-Downstream called the compatible "sai-v1" so you're onto something here I'm 
-afraid. :)
-
-> 
-> >>>  MAINTAINERS                                        |   6 +
-> >>>  2 files changed, 157 insertions(+)
-> >> 
-> >> ...
-> >> 
-> >>> +
-> >>> +  dma-names:
-> >>> +    minItems: 1
-> >>> +    maxItems: 2
-> >>> +    oneOf:
-> >>> +      - const: tx
-> >>> +      - const: rx
-> >>> +      - items:
-> >>> +          - const: tx
-> >>> +          - const: rx
-> >> 
-> >> Why all combinations are possible?
-> > 
-> > Because they are. sai5 in rk3576 is rx only. sai7 is tx only. Others are
-> > both
-> What is sai5 and sai7? Instances on the same chip? Does it mean some of
-> instances can only receive and some only transmit?
-
-sai5 and sai7 are instances on the same chip, yes, see rk3576.dtsi changes in 
-this series. Some instances can only receive, some can only transmit. Some can 
-do both. I think the way I wrote the binding already allows for just "tx", 
-just "rx", and "tx, rx" but not "rx, tx", which is I think what we want here.
-
-> 
-> > tx and rx. Do you want me to enforce that those with both are always tx
-> > followed by rx?
-> 
-> Best regards,
-> Krzysztof
-
-Cheers,
-Nicolas Frattaroli
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBEb25uZXJzdGFnLCA2LiBNw6RyeiAyMDI1LCAxNDoxMDoxNiBNRVogc2NocmllYiBD
+aHVrdW4gUGFuOgo+IFNhbWUgYXMgUkszNTY4LCBSSzM1MjggdXNlcyBTQ01JIGNsayBpbnN0ZWFk
+IG9mIEFSTUNMSy4KPiBBZGQgU0NNSSBjbGsgZm9yIENQVSwgR1BVIGFuZCBSTkcgd2lsbCBhbHNv
+IHVzZSBpdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBDaHVrdW4gUGFuIDxhbWFkZXVzQGptdS5lZHUu
+Y24+Cj4gLS0tCgo+IEBAIC0xMTAsNiArMTI5LDE5IEBAIGdtYWMwX2NsazogY2xvY2stZ21hYzUw
+bSB7Cj4gIAkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+ICAJfTsKPiAgCj4gKwlzcmFtQDEwZjAwMCB7
+CgpUaGF0IHNyYW0gaXMgcGFydCBvZiB0aGUgc29jIChhbmQgaGFzIGFuIG1taW8tYWRkcmVzcyks
+IHNvIEknZCB0aGluawppdCBzaG91bGQgbGl2ZSBpbnNpZGUgdGhlIHNvYyBub2RlPwoKCkhlaWtv
+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
