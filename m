@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E7FC282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 08:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0593C28B24
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 08:52:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kbb1WsGJwQUgQP84WUNVY88pyY6tfI5TEQydAeSH5dQ=; b=2ki5WZMx/j3Kf0
-	vf2XyPn7/Q8yB2EhEi2SjX1/6mDqSSrOLDulFm0Xos4zcEJSCIdH1P4/wHeJFtbc5wQ2DaSSdppGv
-	ByDu8qAbNEZAMm1Oef2a6+KvHy4SdiUHUAOahOxA4Y84vTFDC6vGtssRW0DisxImMMCAAytr+EseB
-	xeCbVR2jDq7I3scHspY7Q05iHfxVo5TiOd2UnkyRfI0LFundQ7+4nGSuCiiWkdIbn4XvIArp47G5G
-	p0xuAGHMzOhi7gMqMMAJQiJWPBLWZS+rjs0XWtR4QGyylcfJ/VoAUhiJHKhKgL7CrcVUmukylUz5T
-	J6g/7KEZBS+czyoqg0TA==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NHH3EzDxNSCSA/iYfKmS/psQO8asIQNZM39pKVMVt6Y=; b=HpXF1rNw4VPCPA
+	CzuZDrf7mgoodA4MNCXPUqPzyOpSKVZjoxOLWjGl5RGqhBoO8SzXJCC73UauWd06ZQRGCgD3wm08R
+	UbkxoQYl3vSLnaX9cCeNH4+nre2EslPr/dEcqEaaKXSffCo3yw2k+wIbb1RpJpq9L0MfEMFhhog5H
+	s5tA5cThuj1An+lw0rmF+BkS3t79/huRID6H5ngAnJVIzuvBUnH0wT7dIJivfIEWDNYnCtquS/B3n
+	KmlJclTGJDoXP//fdDxjg4bDmXIvQHbYUVCKfl2hBIWbYohkZfXre3U55MJQD9vncCYy2fIBurXSL
+	PEpu1FsHjLzoAYiZDSDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6RS-0000000AJUq-3OyC;
-	Thu, 06 Mar 2025 08:18:54 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1tq6xT-0000000AOcc-0nPX;
+	Thu, 06 Mar 2025 08:51:59 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq5Ro-0000000ABiQ-43L5;
-	Thu, 06 Mar 2025 07:15:15 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c02:1dd0:964a:aacd:16c3:d0a])
-	by smtp.qiye.163.com (Hmail) with ESMTP id d21cf5a8;
-	Thu, 6 Mar 2025 15:15:07 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: krzk@kernel.org
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	lee@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add rk3528 QoS register node
-Date: Thu,  6 Mar 2025 15:15:02 +0800
-Message-Id: <20250306071502.96949-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <52155b03-20f3-4e64-b636-70042db03ffa@kernel.org>
-References: <52155b03-20f3-4e64-b636-70042db03ffa@kernel.org>
-MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDTR0aVkJPGE4fSENNHx0fSlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtJQUofH0tBQk1PGkEaGhgfQUpNGEhBH0saWVdZFhoPEh
-	UdFFlBWU9LSFVKS0lCTUhKVUpLS1VLWQY+
-X-HM-Tid: 0a956a4edab403a2kunmd21cf5a8
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mjo6Nhw*MjJWMjwpEkhMUTpN
-	KzxPFBpVSlVKTE9KSU9OSEtDT0tLVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS0lBSh8fS0FCTU8aQRoaGB9BSk0YSEEfSxpZV1kIAVlBSk9PTjcG
+	id 1tq6vb-0000000AOEC-2hIP;
+	Thu, 06 Mar 2025 08:50:04 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5494bc4d796so474901e87.3;
+        Thu, 06 Mar 2025 00:50:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741251002; x=1741855802; darn=lists.infradead.org;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WE8HEXPDHlP3/Ze6vBhaSEBaCZ2xj3Huz/M2ft6sExY=;
+        b=F4lDzico2boWTPAiGvXPUQYm7s+t9GEj4CA41WzPOB1e4XmlQ6wKgRvXbl2Me2TSSu
+         zRBfQNezsgz2c9U7SzgKqbSWO9iDSMRlcUE7AXpsHr5zBVqK7+3A2b++e9O2W/cssMn2
+         O/gOFsSP0t24eENxz0EWHSImp3cr/1ZilFPgNd0Rb6FCM6ZB58f+zXYOMes3yx1Ki/so
+         Tg6girLmsDWQ52yZ1xnf7UREPkx4MUZWLMsSWQaO/vauLfxYlhAXFQKyUBx3sgxTlOkc
+         m/h8R1q5xokIskk7dYpp402VMmFBGvsgQvFI0mWAt2D3Giv6Dr6VoN4tG+30Ttt0m640
+         hJ5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741251002; x=1741855802;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WE8HEXPDHlP3/Ze6vBhaSEBaCZ2xj3Huz/M2ft6sExY=;
+        b=p/Olb52BR5VeQTQo4RgFkwhoJq6q4EgGtBp233gp7KBw5o3i5Gqx9qYknq5ahWUxxH
+         nOqW6V74POkF6E0Svx9zZAk9etO4MVAZgTpd8d+rlt+/2k5kGsFih1BF1Pjnt8JFD5YG
+         nlGy74Cnwcz1SqnjOcL/a6HT2FqMi0OO8MDD1dWkWs/A0F+S+Tsw5DSkQpvkhJ3Q2K+3
+         VXlwBehq5bnLBmE2ZEDyTsomrYW/iwaAVDrdXwCANx6aD1/eE50OqrWhGakiNrjeHp7N
+         FR/53KXpuRSOGNuhft4UJj6ToUJdcBGMNSVTcBCoK2y5iZp+dIsAF5fOltYWA0T6nOLL
+         iTSw==
+X-Forwarded-Encrypted: i=1; AJvYcCUm6TQZ4rIUdyv+v0fwpnNn+jvdDlHfcvSB8macrwl5rCWJxRyJZ7o8ti6wqyHc+Qiuj+72fFP9qOdQ95L74rTR@lists.infradead.org, AJvYcCXX9zFuvrQQ7qW9JQ6VyYL22W7OzMWhzIz4D+fkFtP4pv9dmMUkzUg7hT3vNDoVbeyjzGJRrJdywoNH4DxbZ5c=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz93bQt5xGGxgGUiYOGlSSA8zjcKOUZ5QxVBG6/cOuXf04K4OZT
+	uMACwxQ7809cy16UT8UFRORquXlTjSaTf4aOj9Ve+FSjspCAbIEmgp4ILw==
+X-Gm-Gg: ASbGnctLvKC6OtvmNWF118ZrjlsUO9JXRbGBUt3TBlbl+HQvSw7PWAC199RJ/xHk9gs
+	/UAMgICcAeUVsF6rW0XFzh36TuRvyv+eyGqcKZjZSAf4ewNgGbsnskj1tOHeBjpCxl75e19h1gd
+	18SmvNDZviuKhcD1cpYgVTR+zBdeFdgdFRigXtZrNsPfUT4ohWilookujxb6WG2CSgw2EjHC50N
+	BAnNq9xvqUQVjPr3eTgExRzRjCMc2647EwtnUgDlbY9emnfldEyEmtZrBbgANfGdfdp6OFmpuzQ
+	mOrPABkbX+JlCdYx9GCF4d4yS6072mqfhsJsn1CQdS8y8OHO6SY8IuyEtUN159shQ3/wYRbDSzI
+	EU0KS4IsKw5jkXrZtczlD9UohIg==
+X-Google-Smtp-Source: AGHT+IH7rJ0bI5uRIzIqrHdOqVbIP+Y1Jj/C4uRWsNFMJDfrRYE/cGnXxp+rRBuh8BWvmklTgurn9A==
+X-Received: by 2002:a05:6402:2157:b0:5e5:b9b1:8117 with SMTP id 4fb4d7f45d1cf-5e5b9b18547mr3313222a12.18.1741250533408;
+        Thu, 06 Mar 2025 00:42:13 -0800 (PST)
+Received: from smtpclient.apple (89-66-237-154.dynamic.chello.pl. [89.66.237.154])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e5c766a5f7sm587786a12.58.2025.03.06.00.42.11
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Mar 2025 00:42:13 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.400.131.1.6\))
+Subject: Re: [PATCH 0/6] Add support for RK3588 DisplayPort Controller
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+X-Priority: 3
+In-Reply-To: <28b0d3fc.bb3.19568f6b5f8.Coremail.andyshrk@163.com>
+Date: Thu, 6 Mar 2025 09:42:00 +0100
+Cc: heiko@sntech.de,
+ neil.armstrong@linaro.org,
+ sebastian.reichel@collabora.com,
+ devicetree@vger.kernel.org,
+ hjc@rock-chips.com,
+ mripard@kernel.org,
+ linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ yubing.zhang@rock-chips.com,
+ dri-devel@lists.freedesktop.org,
+ Andy Yan <andy.yan@rock-chips.com>,
+ krzk+dt@kernel.org,
+ robh@kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Message-Id: <44213B17-FE14-4FB8-8319-1E31BBF6EAA0@gmail.com>
+References: <25401bfa.291d.19564244e54.Coremail.andyshrk@163.com>
+ <75189787-28E1-4FC2-8E10-4960B3877A6F@gmail.com>
+ <28b0d3fc.bb3.19568f6b5f8.Coremail.andyshrk@163.com>
+To: Andy Yan <andyshrk@163.com>
+X-Mailer: Apple Mail (2.3826.400.131.1.6)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_231513_189303_77601874 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20250306_005003_696442_824A866B 
+X-CRM114-Status: UNSURE (   5.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,66 +109,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
->> Copy QoS nodes and add rk3528 compatible from bsp kernel,
->
-> No, don't copy stuff from BSP kernel. It results in terrible DTS.
-
-But there is no public datasheet for rk3528, it's just a minimal change.
-
-> Did you just define syscon per few registers? Third case last weeks...
-> so no, define what is your device here. 8 registers is not a device usually.
-
-As commit 3e712a03d0481f7b0c24d961a43e385dcfa78c74 says:
-
----
-ARM: dts: rockchip: add qos nodes found on rk3066 and rk3188
-
-QoS nodes keep information about priorites etc on the interconnect
-and loose state when the power-domain gets disabled. Therefore the
-power-domain driver stores the settings of available qos nodes and
-restores them when the power-domain gets enabled again.
----
-
-I add these so they can connect to the power-domains of rk3528 SoC:
-
-	pmu: power-management@ff600000 {
-		compatible = "rockchip,rk3528-pmu", "syscon", "simple-mfd";
-		reg = <0x0 0xff600000 0x0 0x2000>;
-
-		power: power-controller {
-			compatible = "rockchip,rk3528-power-controller";
-			#power-domain-cells = <1>;
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			pd_gpu@RK3528_PD_GPU {
-				reg = <RK3528_PD_GPU>;
-				clocks = <&cru ACLK_GPU_MALI>,
-					 <&cru PCLK_GPU_ROOT>;
-				pm_qos = <&qos_gpu_m0>,
-					 <&qos_gpu_m1>;
-			};
-                  ......
-		};
-	};
-
-This is also what the other rockchip SoCs do.
-
-Thanks,
-Chukun
-
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IEFuZHkgWWFuIDxhbmR5c2hya0AxNjMuY29t
+PiB3IGRuaXUgNiBtYXIgMjAyNSwgbyBnb2R6LiAwMTo1OToKPiAKPiAKPiAKPiAKPiBCb3RoIG9m
+IHRoZSB0d28gY29uZmlnIG9wdGlvbnMgc2hvdWxkIGJlIGVuYWJsZWQuCj4gYW5keUBQcm80ODA6
+fi9Xb3JrU3BhY2UvbGludXgtbmV4dCQgcmcgRFdfRFAgLmNvbmZpZwo+IDQwNDQ6Q09ORklHX1JP
+Q0tDSElQX0RXX0RQPXkKCmhlcmUgaeKAmW0gYSBiaXQgbG9zdOKApi4KZ3JlcGluZyBvbiBmdWxs
+IGtlcm5lbCBzb3VyY2VzICh3aXRoIGFwcGxpZWQgaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
+Zy9wcm9qZWN0L2xpbnV4LXJvY2tjaGlwL2xpc3QvP3Nlcmllcz05MzY3ODQpIGdpdmVzIG1lIG5v
+IHNpbmdsZSBhcHBlYXJhbmNlIG9mIFJPQ0tDSElQX0RXX0RQ4oCmCkRvIGkgbWlzcyBzb21ldGhp
+bmc/CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
