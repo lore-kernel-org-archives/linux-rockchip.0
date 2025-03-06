@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD2EC282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 21:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97664C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 21:35:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1k+yM1OvcDIUv8bCcuAmgqi8zMwdk3URidtd3W19uSI=; b=ZiqPfkOK3zXPZJ/cipEem82uyy
-	e4dTSlyf+GIXkM+7N59ViJbXVyM6jF1SVmBC0b7ozzOitgwpiywYOo6Eeeh4B7yFc1FBXM06M0acM
-	yDRx1BI2BvsouI6ubGWFJImUUalmY9tJANS8zvaRTII4LztUxw+uQ1rGwGl6yX0S1tndIhiSE8wPY
-	lLah+y5T04FMGck9UGZ49nZOuLMxZYJKZE7cDht9PXFOkCfTS+rC1GWhKw2+htGXN9BW1ErnJe9XW
-	fcoAHWpjt71Q+TIZ1OY2/rekgBltFmAqeth5IUZhEetDwrDFehF5EJt6MuPsyhB6QMa1YurBwm0q2
-	d0PfSyIw==;
+	bh=6/9P9rJphuZWNZm9PEdEgczZsXXZo2MY04dHb3QOlLo=; b=C3hQzdj1W5vtYaG8C5saAa6jT7
+	AWKGlUTFjqjyslvXXT5LSCUpneXAQ5RxjVRwxSNc2zL25m0PKP4CbwJUsb9x9JB4TjNt/J22Jqg3Y
+	eKjHHtzdnUfeOMJvpYvl4c4cqsknDcPjJ6tetKo1aKZ1Sgww8DDF+qrV4K92TIOUGZJw+X3IVwzpj
+	TaJRrxmveZnEl6yigjfKcGxpPULM+jpeqri1C6kaSrg6ytwfsikVyVK8QttGKp4CUpPzLijrm/IFU
+	29vMDXOiBB3OhYYNiEJZ3obpvFuKD/iLct2fWMxB6LIO76UZZ2VAMdefg89RZHBXjNPV6q+m1PFmS
+	frR6fjpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqInN-0000000CH2B-3SN3;
-	Thu, 06 Mar 2025 21:30:21 +0000
+	id 1tqIrz-0000000CHjp-0I4e;
+	Thu, 06 Mar 2025 21:35:07 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqIjw-0000000CGVf-3EvV;
-	Thu, 06 Mar 2025 21:26:50 +0000
+	id 1tqIqL-0000000CHSZ-295B;
+	Thu, 06 Mar 2025 21:33:26 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741296406;
+	t=1741296803;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=0cniJTIAMdIpdeQmR2BhsRWVUgh641WfBYMvCtapTXs=;
-	b=WQFx1oxYMJEnrSFTAQ0UbkBpVyh0nQAgIwQEIXxuZrxgDTGBlVo43SGsVKMZ2CuuVaFS4I
-	sKegnKlrteJk2c0RFwHqlW1CXBvObg64lnLfmmeOOavHBwgqmuknkFtzGQTLiFYomE2ul+
-	Kcj+8Rrs9qPnuIHs5Zpx0ktxl2fRwxZ4ND/TLNIkFbiYdhsX/esaaBDyBNBRiimZ0RzF3a
-	ukmnvwn1RF3g/pSw+jf8W+JrTM6BAYLrk+wjBRSdR/TmkctJHlNPwMM/TI/s4aAjRYAN6e
-	CaqyoPGmG895fskrCqOIb4CwY1YC6gbpJg1UhXAefv9dcHPQH84Ou7Tegiln8g==
-Date: Thu, 06 Mar 2025 22:26:45 +0100
+	bh=bHwsh6TluptXdzXqvVPP4F+V7q9r/42AAgM1LmiztSc=;
+	b=Es9lFAUDceJGTlL8uwJGkGhN6jng+5C9geSl/63qijoK8req07NEpWF2sjyhqA+CSA4yYb
+	tKRSDYSkeqhLLNo89bQsXKhsbFuglD25mfvkKZREmCvLYhnSqnGQ7c7oSxdSlYvR+3CVn7
+	vVbZxiegGV6EwG4RmqlNfixKp8yxuzMDb4J15DbwE0DI0v36iL57M3Deh8PSa74vmSD2m8
+	8zpaRnjvCSZaMn6A6BjmJxi5v3p7f5v38VZd9KSbvAaP7sHjxcaav5LWMZ+Vug5alcjt5n
+	XBZwvOj2sE5+SPtzfwD6BLRslXVIfKeicrSnPhP/ny2lVUQBpRxo+lAwemcGog==
+Date: Thu, 06 Mar 2025 22:33:23 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S . Miller" <davem@davemloft.net>, Eric Dumazet
  <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
  <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, David Wu <david.wu@rock-chips.com>,
- netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 2/3] net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for
- RK3566/RK3568
-In-Reply-To: <20250306203858.1677595-3-jonas@kwiboo.se>
+ Torgue <alexandre.torgue@foss.st.com>, David Wu <david.wu@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, netdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 3/3] net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for
+ RK3588
+In-Reply-To: <20250306203858.1677595-4-jonas@kwiboo.se>
 References: <20250306203858.1677595-1-jonas@kwiboo.se>
- <20250306203858.1677595-3-jonas@kwiboo.se>
-Message-ID: <73ac54350ee3e42dee2b886403f003de@manjaro.org>
+ <20250306203858.1677595-4-jonas@kwiboo.se>
+Message-ID: <8323ba9aba1155004bcd201b4fd7b2fa@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_132649_106514_4301D3DB 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20250306_133325_702525_BA7580AA 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,50 +81,50 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hello Jonas,
 
 On 2025-03-06 21:38, Jonas Karlman wrote:
-> Support for Rockchip RK3566/RK3568 GMAC was added without use of the
+> Support for Rockchip RK3588 GMAC was added without use of the
 > DELAY_ENABLE macro to assist with enable/disable use of MAC rx/tx 
 > delay.
 > 
-> Change to use the DELAY_ENABLE macro to help disable MAC delay when
-> RGMII_ID/RXID/TXID is used. This also re-order to enable/disable before
-
-s/re-order/re-orders/
-
-> the delay is written to match all other GMAC and vendor kernel.
-
-s/GMAC/GMACs/
-
-> Fixes: 3bb3d6b1c195 ("net: stmmac: Add RK3566/RK3568 SoC support")
+> Change to use a variant of the DELAY_ENABLE macro to help disable MAC
+> delay when RGMII_ID/RXID/TXID is used.
+> 
+> Fixes: 2f2b60a0ec28 ("net: ethernet: stmmac: dwmac-rk: Add gmac
+> support for rk3588")
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 > b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 297fa93e4a39..37eb86e4e325 100644
+> index 37eb86e4e325..79db81d68afd 100644
 > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -1049,14 +1049,13 @@ static void rk3568_set_to_rgmii(struct
-> rk_priv_data *bsp_priv,
->  	con1 = (bsp_priv->id == 1) ? RK3568_GRF_GMAC1_CON1 :
->  				     RK3568_GRF_GMAC0_CON1;
+> @@ -91,6 +91,10 @@ struct rk_priv_data {
+>  	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) 
+> | \
+>  	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
 > 
-> +	regmap_write(bsp_priv->grf, con1,
-> +		     RK3568_GMAC_PHY_INTF_SEL_RGMII |
-> +		     DELAY_ENABLE(RK3568, tx_delay, rx_delay));
+> +#define DELAY_ENABLE_BY_ID(soc, tx, rx, id) \
+> +	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE(id) : 
+> soc##_GMAC_TXCLK_DLY_DISABLE(id)) | \
+> +	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE(id) : 
+> soc##_GMAC_RXCLK_DLY_DISABLE(id)))
 > +
->  	regmap_write(bsp_priv->grf, con0,
->  		     RK3568_GMAC_CLK_RX_DL_CFG(rx_delay) |
->  		     RK3568_GMAC_CLK_TX_DL_CFG(tx_delay));
-> -
-> -	regmap_write(bsp_priv->grf, con1,
-> -		     RK3568_GMAC_PHY_INTF_SEL_RGMII |
-> -		     RK3568_GMAC_RXCLK_DLY_ENABLE |
-> -		     RK3568_GMAC_TXCLK_DLY_ENABLE);
->  }
+>  #define PX30_GRF_GMAC_CON1		0x0904
 > 
->  static void rk3568_set_to_rmii(struct rk_priv_data *bsp_priv)
+>  /* PX30_GRF_GMAC_CON1 */
+> @@ -1322,8 +1326,7 @@ static void rk3588_set_to_rgmii(struct
+> rk_priv_data *bsp_priv,
+>  		     RK3588_GMAC_CLK_RGMII_MODE(id));
+> 
+>  	regmap_write(bsp_priv->grf, RK3588_GRF_GMAC_CON7,
+> -		     RK3588_GMAC_RXCLK_DLY_ENABLE(id) |
+> -		     RK3588_GMAC_TXCLK_DLY_ENABLE(id));
+> +		     DELAY_ENABLE_BY_ID(RK3588, tx_delay, rx_delay, id));
+> 
+>  	regmap_write(bsp_priv->grf, offset_con,
+>  		     RK3588_GMAC_CLK_RX_DL_CFG(rx_delay) |
 
 Thanks for this patch...  It's looking good to me, and good job
 spotting this issue!  Please, free to include:
