@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CF38C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B83C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:32:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aC1Bh16ARfcUi6Y6QEJ8GeP/L/XvyceuRCQIViHT4CM=; b=R4Dqj13+F2PYtm
-	lYTNQN/1FjzRd7nhvJ6N7QRbs0G0hkXNb3sMksNBivas7Kjbbc1BIekJIu6wdKQgh1Btwafe4T+l8
-	jVEOiT32OSaFBWGi5pE+R8bTuIifqieNr7mk5pHmlYzV6Nu+jb2ty0UgjhktS0KETQ025j2LiEp8x
-	qt4LL+442gZM8HMNVSjgbWxEeeYN+1FLm8jvdxG/xkaZXzN9GZoCBltz80R/AV76aLNPV+9nidRpD
-	vux4sNagYo5m61DMJdJo3US1YErvOlmOgW2McPhWT6zxsIL9a3EO/v7yOnfMUNdN4IDzFNey0bTsT
-	Z+LgM7tUtntrbP4s2KQw==;
+	List-Owner; bh=u3LCa+ghVqdkAnWTCpXz79BmJsAy5uYpsDHBNh6+Kv8=; b=WLrsTGKL9mMfYb
+	KB7ivBf4lJvMqku8LokDIOWW3MV0OT8AwZNDWf7t5bMabPB3s+s1e/5k9Kqo6bYl+hafd+LvyYUQg
+	GWHCtEJCS4XsUdZKr3j190BeOVtF8kk43mqoBWaa2IK7JvM4YHPmR4f/ic8Jg6bboytXyEIRHF5JM
+	u/42Iwl22BUVCa2XBHGaky65VjQeOYaKH/VPJD5ClGBvzkoX2ivhzZxOH2vjQqDEZRu823omAI+fI
+	UinbSF5TtzG6KSxKpwJUozmHbCtpxhMhdvjUeYWNx+XNXgz6nJehrmcoeWkcc7wKdp/Y6YiSuKWjD
+	I2zulEooPp1/mk/q2WeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBCc-0000000B2tZ-0Gw6;
-	Thu, 06 Mar 2025 13:23:54 +0000
+	id 1tqBKx-0000000B47w-3jGE;
+	Thu, 06 Mar 2025 13:32:31 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqB2i-0000000B10o-3cj5;
-	Thu, 06 Mar 2025 13:13:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741266806; cv=none; 
+	id 1tqBCw-0000000B36X-1BDI;
+	Thu, 06 Mar 2025 13:24:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741267434; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Ln67D7B8R/emwNovVLhkaz7xbVh04EGL2fSTkLDhliu0yFF5HPOStn0Fyk7RGUSm6kz3daWv2CrhBsEXy5NJydyy2CaaXI30XHo8uo38Ng0OYX1igVJcmSzIsV3OL1w4E/4RfOr0qKK6iJs+ZrcRuTffIcpmK0FAp0SAVAEM4YQ=
+	b=QgL47SSHJ9vtvNGtw/7IJWea7s1tN3xEFI/mVIMXA069nGFhQxVEXxDnoarzp2usOk02fZxYfrRtDzPw546IrAHT4uvxVlvLBHo/iqqH8GJaINM9kO0WzwHWp8Ij7HTKG+feYQiR3kWxvS6u8y3pKB1gqq4yeQ2szhfKpbJiaKw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741266806; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=R/l3297Aly6n/qBAueWz12hEPxnEHvfm6GKPejWJ/Vw=; 
-	b=MMm0eR+LmbNeSFSuObeLJGIE34hmTdHHG+dO6tTDWE1hVzlgVjE9tnZIEqsZbRWhIdFXkx/nPiRl+PTGYUaqS22megAsU4oUjwdDdVt9zrkcXLANi2CANfUR3Gl8dxw14v2w/5zlrF3Qc5vLy8dmkkS2IHvEtTwDHQGaMpvi4Vg=
+	t=1741267434; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QdBXQyyutw1s7G52118ZdyCMkF3qYh73k0uq6nYhoUc=; 
+	b=HYOiZuRcvyOrJgtQxDu44OGJsC1eftkgEEesU241RychKAaKTVOm9h1dVIei9NofONG7wjG7IX5WUwsqgey/w/dKWtH0n9dPQuUGXwk7nUYLwcm1Vyqlv7kI2bQGqmXnxjUxgHDUtMfKo+8k7R9i6C1OGh8wVJhBELTtEd85GLU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741266806;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741267434;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=R/l3297Aly6n/qBAueWz12hEPxnEHvfm6GKPejWJ/Vw=;
-	b=jLTo6eWuwglmC71EtgyEJQ8kL0bFRLESM9jvJbnBxLKoc4vQBGYlIU3eCrW82lcq
-	VVceuFNVewMSvTKT54YH8U8WN8NraGIPvbNxZ0XrB47XCseCv3JRCN2U7fAQVMb90wI
-	M0/ZAU/gqUDRQ3YvHFtJeQdvnxMJgFKwn+UZxeV0=
-Received: by mx.zohomail.com with SMTPS id 1741266806086596.4769996246168;
-	Thu, 6 Mar 2025 05:13:26 -0800 (PST)
+	bh=QdBXQyyutw1s7G52118ZdyCMkF3qYh73k0uq6nYhoUc=;
+	b=DNrs1jIcXm+8kHxUy741Rr7Z/ADIv2zMKuTfWVFeSGwvoAe2fb0zlj8Vi2Sq1pGu
+	nKE5xklWMlmOJKwaZSDerOc7nwgBaXLW8tiTqlWnDQN7Q7hoLZvSc1E19imJitcLy4E
+	TDCKhxQDByTnF5HOPAPuklHy32ycqL7+V+gw6qBw=
+Received: by mx.zohomail.com with SMTPS id 1741267433815519.1263942154526;
+	Thu, 6 Mar 2025 05:23:53 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>,
  Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -61,17 +61,17 @@ Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
  linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH 3/7] ASoC: dt-bindings: add schema for rockchip SAI controllers
-Date: Thu, 06 Mar 2025 14:13:18 +0100
-Message-ID: <2376575.ElGaqSPkdT@workhorse>
-In-Reply-To: <ffd6287c-cbfd-4ba8-9332-45bad4e60583@kernel.org>
+Subject: Re: [PATCH 4/7] ASoC: rockchip: add Serial Audio Interface (SAI) driver
+Date: Thu, 06 Mar 2025 14:23:46 +0100
+Message-ID: <13731095.uLZWGnKmhe@workhorse>
+In-Reply-To: <20e4754b-ea9a-404d-b529-ec44a7263cbf@kernel.org>
 References: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
- <20250305-rk3576-sai-v1-3-64e6cf863e9a@collabora.com>
- <ffd6287c-cbfd-4ba8-9332-45bad4e60583@kernel.org>
+ <20250305-rk3576-sai-v1-4-64e6cf863e9a@collabora.com>
+ <20e4754b-ea9a-404d-b529-ec44a7263cbf@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_051340_976733_54DDC6C7 
-X-CRM114-Status: GOOD (  31.12  )
+X-CRM114-CacheID: sfid-20250306_052414_413324_CB78878F 
+X-CRM114-Status: GOOD (  28.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,162 +88,162 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 6 March 2025 08:42:54 Central European Standard Time Krzysztof 
+On Thursday, 6 March 2025 08:37:54 Central European Standard Time Krzysztof 
 Kozlowski wrote:
 > On 05/03/2025 22:24, Nicolas Frattaroli wrote:
-> > Rockchip introduced a new audio controller called the "Serial Audio
-> > Interface", or "SAI" for short, on some of their newer SoCs. In
-> > particular, this controller is used several times on the RK3576 SoC.
-> > 
-> > Add a schema for it, with only an RK3576 compatible for now. Other SoCs
-> > may follow as mainline support for them lands.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> > 
-> >  .../devicetree/bindings/sound/rockchip,sai.yaml    | 151
-> >  +++++++++++++++++++++
-> Filename based on compatible.
+> ...
+> 
+> > +
+> > +static int rockchip_sai_runtime_resume(struct device *dev)
+> > +{
+> > +	struct rk_sai_dev *sai = dev_get_drvdata(dev);
+> > +	unsigned long flags;
+> > +	int ret;
+> > +
+> > +	dev_dbg(dev, "Runtime resuming device!\n");
+> 
+> Drop probe entry/exit messages. Core already gives you tracing for this.
 
-Sure, but more compatibles will follow. Are you certain you want a file named 
-rockchip,rk3576-sai.yaml to then contain rockchip,rk3528-sai? If so then I do 
-not understand the reason behind this policy.
+Will do.
 
 > 
-> >  MAINTAINERS                                        |   6 +
-> >  2 files changed, 157 insertions(+)
+> > +
+> > +	ret = clk_prepare_enable(sai->hclk);
+> > +	if (ret)
+> > +		goto err_hclk;
+> > +
+> > +	ret = clk_prepare_enable(sai->mclk);
+> > +	if (ret)
+> > +		goto err_mclk;
+> > +
+> > +	regcache_cache_only(sai->regmap, false);
+> > +	regcache_mark_dirty(sai->regmap);
+> > +	ret = regcache_sync(sai->regmap);
+> > +	if (ret)
+> > +		goto err_regmap;
+> > +
+> > +	if (sai->quirks & QUIRK_ALWAYS_ON && sai->is_master_mode) {
+> > +		spin_lock_irqsave(&sai->xfer_lock, flags);
+> > +		regmap_update_bits(sai->regmap, SAI_XFER,
+> > +				   SAI_XFER_CLK_MASK |
+> > +				   SAI_XFER_FSS_MASK,
+> > +				   SAI_XFER_CLK_EN |
+> > +				   SAI_XFER_FSS_EN);
+> > +		spin_unlock_irqrestore(&sai->xfer_lock, flags);
+> > +	}
+> > +
 > 
 > ...
 > 
 > > +
-> > +  dma-names:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +    oneOf:
-> > +      - const: tx
-> > +      - const: rx
-> > +      - items:
-> > +          - const: tx
-> > +          - const: rx
+> > +	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to register PCM: %d\n", ret);
+> > +		goto err_runtime_suspend;
+> > +	}
+> > +
+> > +	ret = devm_snd_soc_register_component(&pdev->dev,
+> > +					      
+&rockchip_sai_component,
+> > +					      dai, 1);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to register component: %d\n", 
+ret);
+> > +		goto err_runtime_suspend;
+> > +	}
+> > +
+> > +	pm_runtime_use_autosuspend(&pdev->dev);
+> > +	pm_runtime_put(&pdev->dev);
+> > +
+> > +	/*
+> > +	 * runtime_resume already enabled our hclk again, so we need to also
+> > +	 * get rid of the manual enable we did earlier to balance the 
+counts.
+> > +	 */
 > 
-> Why all combinations are possible?
+> Your way of handling this is extra confusing. You rely on some other
+> methods to poke the enable/disable count. It is rather expected that
+> each function handles this fully, so it disables what it have enabled.
+> You must not rely on PM runtime to do something with clocks which you
+> now unwind.
 
-Because they are. sai5 in rk3576 is rx only. sai7 is tx only. Others are both 
-tx and rx. Do you want me to enforce that those with both are always tx 
-followed by rx?
-
-> 
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: master audio clock
-> > +      - description: AHB clock driving the interface
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: mclk
-> > +      - const: hclk
-> > +
-> > +  resets:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +    description: resets for the mclk domain and ahb domain
-> 
-> List the items instead with description and minItems: 1.
-
-Will do
-
-> 
-> > +
-> > +  reset-names:
-> > +    minItems: 1
-> > +    items:
-> > +      - const: m
-> > +      - const: h
-> > +
-> > +  port:
-> > +    $ref: audio-graph-port.yaml#
-> > +    unevaluatedProperties: false
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  "#sound-dai-cells":
-> > +    const: 0
-> > +
-> > +  rockchip,sai-rx-route:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > +    description:
-> > +      Defines the mapping of the controller's SDI ports to actual input
-> > lanes, +      as well as the number of input lanes.
-> > +      rockchip,sai-rx-route = <3> would mean sdi3 is receiving from
-> > data0, and +      that there is only one receiving lane.
-> > +      This property's absence is to be understood as only one receiving
-> > lane +      being used if the controller has capture capabilities.
-> > +    maxItems: 4
-> > +    items:
-> > +      enum: [0, 1, 2, 3]
-> > +
-> > +  rockchip,sai-tx-route:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > +    description:
-> > +      Defines the mapping of the controller's SDO ports to actual output
-> > lanes, +      as well as the number of output lanes.
-> > +      rockchip,sai-tx-route = <3> would mean sdo3 is sending to data0,
-> > and
-> 
-> I understand this is only example because = <3> would not be allowed
-> (test it).
-
-I'll have to look into that, I was fairly certain I tested it, but maybe I 
-forgot to run a CHECK_DTBS with it in.
+I believe you misunderstand. I'm not unwinding what PM is doing. I'm unwinding 
+the hclk enable the probe function does earlier on. I will make the comment 
+more clear in V2 (or rather, remove it entirely since it creates more 
+confusion than it clears up). It's unnecessary to talk about PM runtime also 
+enabling hclk; the disable is for our function's enable.
 
 > 
-> > +      that there is only one transmitting lane.
-> > +      This property's absence is to be understood as only one
-> > transmitting lane +      being used if the controller has playback
-> > capabilities.
-> > +    maxItems: 4
-> > +    items:
-> > +      enum: [0, 1, 2, 3]
+> > +	clk_disable_unprepare(sai->hclk);
 > > +
-> > +  rockchip,always-on:
-> > +    type: boolean
-> > +    description:
-> > +      The hardware requires this controller to remain turned on.
-> 
-> How hardware requires this? You rather miss proper PM domain handling or
-> some other resources.
-
-This isn't about power domains. It's about the FS/SCLK generator inside the 
-IP. I'll remove it in the next revision since downstream only uses it for a 
-different IP on the RK3588, and I'd rather not get bogged down by discussions 
-as to whether SAI should be modelled as a clock provider.
-
-> 
+> > +	return 0;
 > > +
+> > +err_runtime_suspend:
+> > +	/* If we're !CONFIG_PM, we get -ENOSYS and disable manually */
+> > +	if (pm_runtime_put(&pdev->dev))
+> > +		rockchip_sai_runtime_suspend(&pdev->dev);
+> > +err_disable_hclk:
+> > +	clk_disable_unprepare(sai->hclk);
+> > +
+> > +	return ret;
+> > +}
 > > +
 > 
-> Just one blank line.
+> _device_id tables are supposed to be around probe, not beginning of the
+> file.
 
-Will do
+Will do.
 
 > 
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - dmas
-> > +  - dma-names
-> > +  - clocks
-> > +  - clock-names
-> > +  - "#sound-dai-cells"
+> > +static void rockchip_sai_remove(struct platform_device *pdev)
+> > +{
+> > +#ifndef CONFIG_PM
+> > +	rockchip_sai_runtime_suspend(&pdev->dev);> +#endif
+> > +}
 > > +
-> > +unevaluatedProperties: false
+> > +static const struct dev_pm_ops rockchip_sai_pm_ops = {
+> > +	SET_RUNTIME_PM_OPS(rockchip_sai_runtime_suspend,
+> > rockchip_sai_runtime_resume, NULL)
+> > +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> > pm_runtime_force_resume) +};
+> > +
+> > +static struct platform_driver rockchip_sai_driver = {
+> > +	.probe = rockchip_sai_probe,
+> > +	.remove = rockchip_sai_remove,
+> > +	.driver = {
+> > +		.name = DRV_NAME,
+> > +		.of_match_table = of_match_ptr(rockchip_sai_match),
+> 
+> Drop of_match_ptr, you have warning here.
+
+Will do.
+
+> 
+> > +		.pm = &rockchip_sai_pm_ops,
+> > +	},
+> > +};
+> > +module_platform_driver(rockchip_sai_driver);
+> > +
+> > +MODULE_DESCRIPTION("Rockchip SAI ASoC Interface");
+> > +MODULE_AUTHOR("Sugar Zhang <sugar.zhang@rock-chips.com>");
+> > +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
+> > +MODULE_LICENSE("GPL");
+> > +MODULE_ALIAS("platform:" DRV_NAME);
+> 
+> You should not need MODULE_ALIAS() in normal cases. If you need it,
+> usually it means your device ID table is wrong (e.g. misses either
+> entries or MODULE_DEVICE_TABLE()). MODULE_ALIAS() is not a substitute
+> for incomplete ID table.
+
+Will do.
+
+> 
+> > +MODULE_DEVICE_TABLE(of, rockchip_sai_match);
 > 
 > Best regards,
 > Krzysztof
 
-Cheers,
+Regards,
 Nicolas Frattaroli
 
 
