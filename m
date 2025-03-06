@@ -4,48 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24427C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 07:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597E7C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 07:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/teyqBJ246o0VD3oGm96VzDCfWPvU+LpsJORtC7diY4=; b=vwteyRcFrY+hBX
-	eSfztVtUZXLb4ZIwpamOahOklMt9S+jKV6Bco/VzbvhbahCOBFSQgNB4odxGKUPijha+S9fresumu
-	ZZPKpJeLmqzk3S+hPLVPkalakD36W2tV25TG27cG6dZ4/sWetEFD8/0rV4VGNt7GGwkaNhFxSE9mL
-	X6lY4Fs8augdmt2Xpc/ILBu9ejitCHuTP+jWXM4qc3SuNXAgkTdEoxoVXbj5sLaJtdiR3u/y7Kq2i
-	ByCaias6tdFsjbHjRPfkQqiJCg3X9srwNVNykimp6cNvqx8SaMkPZVfLLnlucp6xydxzBdhYCdb1e
-	/PxZDxt8YjVjHXqjgLAw==;
+	List-Owner; bh=Mbdi1dbeU1XHTmOWQzrTs+YoXf6MKLlKkH3DVO8cjnQ=; b=au2/kSb6gEUU7O
+	31GoDgwqHWTaSBb3h7hFd/CG45rFXIu8viE9oWSHLlwW2tpWsWJrX6SHal3n+KPhHx9Sg4Awj7j4v
+	Fk/d8m6HdYkt5lYhKLeppR39oVHYyuKiHfXA0u39bAyhXJVFBIjswlGHdg8QrlEYtwN+o5ERT+zTg
+	usX/fyFdNPc0yGQhVCjUEdZ1058ZPlPBcI0XyXYvTH8eRfpH+2E+32NBmKqYQ+6EZ6yo4lijZKpYI
+	D5f6tyijHY6HJrR/up4GrDP7RDOSVGqF2yZnveaGXa4ZBMZqTEQ4Ejy2ZU0UZfcV8ltZyeFSeJRLK
+	p8P8RLmp7P+OpQe2IIKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq5rE-0000000AEZe-10M4;
-	Thu, 06 Mar 2025 07:41:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tq5w3-0000000AFNf-3C4r;
+	Thu, 06 Mar 2025 07:46:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq5p0-0000000AEJq-3FMK;
-	Thu, 06 Mar 2025 07:39:12 +0000
+	id 1tq5ss-0000000AEmA-1q0d;
+	Thu, 06 Mar 2025 07:43:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=KvfZsFY3+e3racL3il5wfUjAvVdT7FAiwVWQJJvWJHg=; b=paQfbMW+ZBLD6ukTTLbpMKSixK
+	QkQO5+NpBCnxeB4SeX9ic6nb1IxrcKQlKHl0kEwdC3g2irVhonOBg7giy0wulOqai2cDU5G5dtPmx
+	wZYvZCY/EkGaWua8hOult3JCuE9JA7nlho6T3EU20iMQKILAn361GReskTmRBqkcjArUjQ5qVuEax
+	LP0lnL67jPGOf8nfYOpVDotDofFeMESM9AparrMGtgXJfvklfVPWQ0dvprWmxXjODnXA+3w4Po5QR
+	lLdCZyNCVdrreb28nAwbP8igGMmrCJrfZZcHJQQpvdVvA+M3GROruNWKUdxNXuiNbBUo1ClEvmbKT
+	cLc9iG8g==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tq5sp-00000000x4N-0koa;
+	Thu, 06 Mar 2025 07:43:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C69BC5C20FE;
-	Thu,  6 Mar 2025 07:36:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAA41C4CEE0;
-	Thu,  6 Mar 2025 07:39:00 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B14CB5C010D;
+	Thu,  6 Mar 2025 07:40:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40CB9C4CEE0;
+	Thu,  6 Mar 2025 07:42:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741246749;
-	bh=yd3hdP6ibVhZ0o9gpyI7jYeuazV3JKJBYYbwXbdhElQ=;
+	s=k20201202; t=1741246985;
+	bh=VCgbyCzqfls1y5Bd7zorPMjDYWw8WmCCGOmt74/Sv/E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=S1uzu+FAiSnXxlTXQGpeLzsWUk7zlQbDkuzmCNlLvoPzLxL+qmXr4LdqcJIrQ8mF7
-	 pZIeq1whJE3PQHITv+La936/noeutrnSBbkLvbKZRV4XupZqV7c4IZXJlR9xkSzj1/
-	 78FZAoiC1/zUNJRq0ACuHdXOsLT9kSa1p1fwFVYtFBDCMwTIog+Rv9ODu/CfbNgQps
-	 4HjycScgYW2NtqizEyqrEw9bHW/XaF9+41I6S+p92aDm+88umt9/FpK27aFfzktG7Y
-	 ALBkCCIdTfvG9ZEfHEF4UwNHteXY9SoSYWJJV0+AJuQcEbgmO+LgkZfZdphimSqGio
-	 g/8hlpArIbDcQ==
-Message-ID: <295caed0-7db6-4b87-9991-e4b7e7621f38@kernel.org>
-Date: Thu, 6 Mar 2025 08:38:58 +0100
+	b=oIQkT5GYdjTm856f2+s4bNtGI2PyU8lQCFOICAeutx+q4rjfuoU7MCD4r9Pdsz8s+
+	 dVt1JCnCVK+zgMDpUhWoWe7HcDYea3GQL6Mx4D7QjMWXlrXNMJk3iXPnvep/g02w4c
+	 V4KooCVrAt/skqiniHAN5uee6IV+cEDMgxjWyzvXrrEkcJnrn2GFs2Fw/UlchHYmER
+	 NhGriQYQBGETg4rl3CucIYOT/SMq0ZXFz+CJlSI2zyS+NM4xEh3LGlnP/LApHwD+nd
+	 bJGNU24o7IrHodjMVfRrD3t8/SZA/2qHO9WTnQBNUKso5YGmWTQ5Q42mOUt0UcE9Bc
+	 w+WcwuBRZug0A==
+Message-ID: <ffd6287c-cbfd-4ba8-9332-45bad4e60583@kernel.org>
+Date: Thu, 6 Mar 2025 08:42:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/7] dt-bindings: clock: rk3576: add IOC gated clocks
+Subject: Re: [PATCH 3/7] ASoC: dt-bindings: add schema for rockchip SAI
+ controllers
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
  <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -62,9 +77,9 @@ Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
 References: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
- <20250305-rk3576-sai-v1-1-64e6cf863e9a@collabora.com>
-Content-Language: en-US
+ <20250305-rk3576-sai-v1-3-64e6cf863e9a@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -108,11 +123,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250305-rk3576-sai-v1-1-64e6cf863e9a@collabora.com>
+In-Reply-To: <20250305-rk3576-sai-v1-3-64e6cf863e9a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_233910_982573_B1198BF5 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250306_074307_732739_55176F65 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,13 +144,128 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 05/03/2025 22:24, Nicolas Frattaroli wrote:
-> Certain clocks on the RK3576 are additionally essentially "gated" behind
-> some bit toggles in the IOC GRF range. Downstream ungates these by
-> adding a separate clock driver that maps over the GRF range and leaks
-> their implementation of this into the DT.
+> Rockchip introduced a new audio controller called the "Serial Audio
+> Interface", or "SAI" for short, on some of their newer SoCs. In
+> particular, this controller is used several times on the RK3576 SoC.
+> 
+> Add a schema for it, with only an RK3576 compatible for now. Other SoCs
+> may follow as mainline support for them lands.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  .../devicetree/bindings/sound/rockchip,sai.yaml    | 151 +++++++++++++++++++++
+
+Filename based on compatible.
+
+>  MAINTAINERS                                        |   6 +
+>  2 files changed, 157 insertions(+)
 > 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+...
+
+> +
+> +  dma-names:
+> +    minItems: 1
+> +    maxItems: 2
+> +    oneOf:
+> +      - const: tx
+> +      - const: rx
+> +      - items:
+> +          - const: tx
+> +          - const: rx
+
+Why all combinations are possible?
+
+> +
+> +  clocks:
+> +    items:
+> +      - description: master audio clock
+> +      - description: AHB clock driving the interface
+> +
+> +  clock-names:
+> +    items:
+> +      - const: mclk
+> +      - const: hclk
+> +
+> +  resets:
+> +    minItems: 1
+> +    maxItems: 2
+> +    description: resets for the mclk domain and ahb domain
+
+List the items instead with description and minItems: 1.
+
+> +
+> +  reset-names:
+> +    minItems: 1
+> +    items:
+> +      - const: m
+> +      - const: h
+> +
+> +  port:
+> +    $ref: audio-graph-port.yaml#
+> +    unevaluatedProperties: false
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  "#sound-dai-cells":
+> +    const: 0
+> +
+> +  rockchip,sai-rx-route:
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +    description:
+> +      Defines the mapping of the controller's SDI ports to actual input lanes,
+> +      as well as the number of input lanes.
+> +      rockchip,sai-rx-route = <3> would mean sdi3 is receiving from data0, and
+> +      that there is only one receiving lane.
+> +      This property's absence is to be understood as only one receiving lane
+> +      being used if the controller has capture capabilities.
+> +    maxItems: 4
+> +    items:
+> +      enum: [0, 1, 2, 3]
+> +
+> +  rockchip,sai-tx-route:
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +    description:
+> +      Defines the mapping of the controller's SDO ports to actual output lanes,
+> +      as well as the number of output lanes.
+> +      rockchip,sai-tx-route = <3> would mean sdo3 is sending to data0, and
+
+I understand this is only example because = <3> would not be allowed
+(test it).
+
+> +      that there is only one transmitting lane.
+> +      This property's absence is to be understood as only one transmitting lane
+> +      being used if the controller has playback capabilities.
+> +    maxItems: 4
+> +    items:
+> +      enum: [0, 1, 2, 3]
+> +
+> +  rockchip,always-on:
+> +    type: boolean
+> +    description:
+> +      The hardware requires this controller to remain turned on.
+
+How hardware requires this? You rather miss proper PM domain handling or
+some other resources.
+
+> +
+> +
+
+Just one blank line.
+
+> +required:
+> +  - compatible
+> +  - reg
+> +  - dmas
+> +  - dma-names
+> +  - clocks
+> +  - clock-names
+> +  - "#sound-dai-cells"
+> +
+> +unevaluatedProperties: false
+
+
 
 Best regards,
 Krzysztof
