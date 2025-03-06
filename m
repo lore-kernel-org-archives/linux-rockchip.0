@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F67C28B25
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 14:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE33C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 14:50:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lg1+9d6g1gMvgrCPCMdRuwarZdfajb8TMg0RxCJjZTk=; b=apvKPYEKgl/tAv
-	bgjjRPXY61YEQpinuQxivJUmZ1ipN8gQhJou1HavuEMjp28JbA7j8VBfRAFJ8naN5/vF+i6pu5mWH
-	Gj8P6C5rtmIHyDgaP5KOQqZL2bJid53JJcapR3A9g638QU1UQ9hD4B57eoUfU3OmuxT6Cp9Fv+nFe
-	BFH34ChiRCeAJdinlGSeg6s9QxmuI6XfE4dfipRsCJHUXx6tMIjIHo7EZPo+UbwekHy6eI5o3R3Nc
-	1IlFFBfIUR1VevYT8Fvk9ARX1Dv5OtwVombvZpayrdADGeZl5UqieA70WLHZpReIw3+/D2fKGLjCL
-	mh1sIS1fiWisRXuUruhA==;
+	List-Owner; bh=vuFVpIdArQFXIoUNnag30Vk4vKr7rAIwloR8c3fQI9Y=; b=g4wSIuEBzLPhfM
+	3RYZyqzB+wmFp/kU6mTd8Ld3/Onhb5ABSy6+RxrXJ4J+YLSeCcKrXSh/rf1LIz8R+Tg5vzFLELWBv
+	4v4kcRV3RW5MezkKaDcML5fdOG5Gs1sj9jFy5BFIFygS1EXnSp0AXunm6T2p+yLTIH2gxBILglfQi
+	SPaMCVqzp1/33FBWvtR/C6DnlSm1Kc0SWSMArU1GSeN7pmSvJCMREHKUmR3SUSumsMKrpYan6S7cr
+	ejbZXgSbSyqgDE7AdX7LXQ5E+6UfWAxnxUtAgWiXa3Yq13iSU8yWiChGUGSNIJHcaYteo5jKFFCWf
+	gWkx1qf2GhcjwpWGeO5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqCX0-0000000BEwN-3D0v;
-	Thu, 06 Mar 2025 14:49:02 +0000
+	id 1tqCYU-0000000BFPv-0WOC;
+	Thu, 06 Mar 2025 14:50:34 +0000
 Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBSM-0000000B564-2DBu;
-	Thu, 06 Mar 2025 13:40:12 +0000
+	id 1tqCYR-0000000BFPK-16Ag;
+	Thu, 06 Mar 2025 14:50:33 +0000
 Received: from localhost.localdomain (unknown [119.122.215.89])
-	by smtp.qiye.163.com (Hmail) with ESMTP id d2ca2ec5;
-	Thu, 6 Mar 2025 21:40:07 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id d2dcd0ed;
+	Thu, 6 Mar 2025 22:50:27 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: heiko@sntech.de
 Cc: amadeus@jmu.edu.cn,
 	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	jonas@kwiboo.se,
 	krzk+dt@kernel.org,
+	krzk@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	ziyao@disroot.org
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
-Date: Thu,  6 Mar 2025 21:40:02 +0800
-Message-Id: <20250306134002.380690-1-amadeus@jmu.edu.cn>
+Date: Thu,  6 Mar 2025 22:50:20 +0800
+Message-Id: <20250306145020.485848-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <4856313.kQq0lBPeGt@diego>
-References: <4856313.kQq0lBPeGt@diego>
+In-Reply-To: <24848438.6Emhk5qWAg@diego>
+References: <24848438.6Emhk5qWAg@diego>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCThhPVkxNSklOSRhKSBhIQlYeHw5VEwETFhoSFy
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHxpIVk0aT0MfT0oZT0JIGlYeHw5VEwETFhoSFy
 	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktJQk1KSlVKS0tVS1
 	kG
-X-HM-Tid: 0a956baf532603a2kunmd2ca2ec5
+X-HM-Tid: 0a956befb78e03a2kunmd2dcd0ed
 X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MTo6HAw*SjICKjMhGUICDks9
-	FhZPCilVSlVKTE9KSU1DT0tMTE5IVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpOVUNCWVdZCAFZQUhJQjcG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OAg6Pzo5HjIDLjNOTAlJITAW
+	TBlPCj1VSlVKTE9KSUxJTUlMQ0lDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQU1CQjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_054010_731821_7800C481 
-X-CRM114-Status: UNSURE (   4.95  )
+X-CRM114-CacheID: sfid-20250306_065031_470279_E82EE7F8 
+X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,12 +78,22 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-> That sram is part of the soc (and has an mmio-address), so I'd think
-> it should live inside the soc node?
+> are you really sure about that?
+>
+> Looking at Jonas' recent rk3528 u-boot series [0]
+> 0x0 _to_ 0xfc000000 is the SDRAM memory area
+> so 0x10f000 is a carveout of the main sdram.
 
-But soc ranges starts from 0xfe000000, I don't know whether to change it.
-And all other nodes are 0xf..., except this sram.
-Any suggestions would be greatly appreciated.
+Sorry, I was misled by the dtsi of rk3568.
+Put it in reserved-memory works on rk3528:
+
+~# dmesg | grep scmi
+[    0.061452] scmi_core: SCMI protocol bus registered
+[    0.125903] scmi_protocol scmi_dev.1: Enabled polling mode TX channel - prot_id:16
+[    0.126763] arm-scmi firmware:scmi: SCMI Notifications - Core Enabled.
+[    0.127368] arm-scmi firmware:scmi: SCMI Protocol v2.0 'rockchip:' Firmware version 0x0
+
+Should we change this for rk3568 as well?
 
 Thanks,
 Chukun
