@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C7CCC282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 08:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E7FC282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 08:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gZK6lDSpzgeA4wselZdME+b1UgDaUt4NYpy6JwFJb6s=; b=s03xrtaf/Rfnv/
-	c3/ZqhoKyvRNWsHfrRFon/Fv3aL/6kCNhEOLT6NtdCb+VE4fu8F3USBj84LaMjxmimHE7IHj+VXWD
-	hkuHfzcjR+TRcXeHmrM/2zXeho5Yg5pRFvm3L9WssDu25HRTp8XO55UMgMsMc8reihnm7zcrHcfFt
-	DkgZt06T0vKPL7apg1kfCOyNyifNIwO1oUBJ3c3QHSKtS+CSwEdQ5bsWv9r1NuPDo9sVowjtj9V24
-	KVKLoeRcXOmoTOHU+viZnvwF3YNt9ZITF6DzGYVAoQBHAIm1CRvODerU0RqNPLYK/DfcDYpcu4thO
-	4CiTWxFn0ufcCZqOq4Yg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Kbb1WsGJwQUgQP84WUNVY88pyY6tfI5TEQydAeSH5dQ=; b=2ki5WZMx/j3Kf0
+	vf2XyPn7/Q8yB2EhEi2SjX1/6mDqSSrOLDulFm0Xos4zcEJSCIdH1P4/wHeJFtbc5wQ2DaSSdppGv
+	ByDu8qAbNEZAMm1Oef2a6+KvHy4SdiUHUAOahOxA4Y84vTFDC6vGtssRW0DisxImMMCAAytr+EseB
+	xeCbVR2jDq7I3scHspY7Q05iHfxVo5TiOd2UnkyRfI0LFundQ7+4nGSuCiiWkdIbn4XvIArp47G5G
+	p0xuAGHMzOhi7gMqMMAJQiJWPBLWZS+rjs0XWtR4QGyylcfJ/VoAUhiJHKhKgL7CrcVUmukylUz5T
+	J6g/7KEZBS+czyoqg0TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6Cu-0000000AHFP-3Y40;
-	Thu, 06 Mar 2025 08:03:52 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq5DS-0000000AA6V-054L;
-	Thu, 06 Mar 2025 07:00:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=r1mvt
-	tKmdlTjRafAKsHmhCEZ5T95Om0QyJBHPC6if+o=; b=FalPWDW582aligSeJEfAG
-	Oz7pbNRCnY6FUKb5mA9MLzgBXqEGm5oRtgNAMLE76osO/UiFQsVFfknfoE7jof4n
-	TQU3m/UScnP2Xo91U81YzeHosLi7Wc8CDt9B+1gVarjhYPJKbbo/QUgBom/poZOw
-	pV4twSAAkiT5FP7MiqAz5M=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wA33j_pR8lnNEKOPw--.129S2;
-	Thu, 06 Mar 2025 14:59:57 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: vkoul@kernel.org
-Cc: heiko@sntech.de,
-	kishon@kernel.org,
-	sebastian.reichel@collabora.com,
-	yubing.zhang@rock-chips.com,
-	dmitry.baryshkov@linaro.org,
-	frank.wang@rock-chips.com,
+	id 1tq6RS-0000000AJUq-3OyC;
+	Thu, 06 Mar 2025 08:18:54 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tq5Ro-0000000ABiQ-43L5;
+	Thu, 06 Mar 2025 07:15:15 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c02:1dd0:964a:aacd:16c3:d0a])
+	by smtp.qiye.163.com (Hmail) with ESMTP id d21cf5a8;
+	Thu, 6 Mar 2025 15:15:07 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: krzk@kernel.org
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	lee@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] phy: rockchip: usbdp: Check these parameters only when the corresponding set flags are set
-Date: Thu,  6 Mar 2025 14:59:51 +0800
-Message-ID: <20250306065952.485809-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	robh@kernel.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add rk3528 QoS register node
+Date: Thu,  6 Mar 2025 15:15:02 +0800
+Message-Id: <20250306071502.96949-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <52155b03-20f3-4e64-b636-70042db03ffa@kernel.org>
+References: <52155b03-20f3-4e64-b636-70042db03ffa@kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wA33j_pR8lnNEKOPw--.129S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZF1DJFyUtryfWF45ZF1fZwb_yoW5XrW3p3
-	y5JF4Dtr1UGw13Wa9xtr1kCFn8J3Z7ta17JrWakaySqw13A3yrZF929ryfAr4fGr97ZF1f
-	uFW3Ga45CF4DZ3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jFzuAUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBoIXmfJRa42mQAAsO
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDTR0aVkJPGE4fSENNHx0fSlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtJQUofH0tBQk1PGkEaGhgfQUpNGEhBH0saWVdZFhoPEh
+	UdFFlBWU9LSFVKS0lCTUhKVUpLS1VLWQY+
+X-HM-Tid: 0a956a4edab403a2kunmd21cf5a8
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mjo6Nhw*MjJWMjwpEkhMUTpN
+	KzxPFBpVSlVKTE9KSU9OSEtDT0tLVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0lBSh8fS0FCTU8aQRoaGB9BSk0YSEEfSxpZV1kIAVlBSk9PTjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_230022_498387_F7A63D73 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20250305_231513_189303_77601874 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,126 +78,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Hi,
 
-According documentation of phy_configure_opts_dp, at the configure
-stage, we should only verify/configure the link_rate when set_rate
-flag is set, the same applies to lanes and voltage.
+>> Copy QoS nodes and add rk3528 compatible from bsp kernel,
+>
+> No, don't copy stuff from BSP kernel. It results in terrible DTS.
 
-So we do it as the documentation says, also record the link rate
-and lanes in phy internal for set_voltate stage.
+But there is no public datasheet for rk3528, it's just a minimal change.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Did you just define syscon per few registers? Third case last weeks...
+> so no, define what is your device here. 8 registers is not a device usually.
+
+As commit 3e712a03d0481f7b0c24d961a43e385dcfa78c74 says:
+
+---
+ARM: dts: rockchip: add qos nodes found on rk3066 and rk3188
+
+QoS nodes keep information about priorites etc on the interconnect
+and loose state when the power-domain gets disabled. Therefore the
+power-domain driver stores the settings of available qos nodes and
+restores them when the power-domain gets enabled again.
 ---
 
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 63 +++++++++++------------
- 1 file changed, 31 insertions(+), 32 deletions(-)
+I add these so they can connect to the power-domains of rk3528 SoC:
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index c04cf64f8a35..d1bbdf382aa2 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -187,6 +187,8 @@ struct rk_udphy {
- 	u32 dp_aux_din_sel;
- 	bool dp_sink_hpd_sel;
- 	bool dp_sink_hpd_cfg;
-+	unsigned int link_rate;
-+	unsigned int lanes;
- 	u8 bw;
- 	int id;
- 
-@@ -1102,42 +1104,39 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
- 	return 0;
- }
- 
--static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
--{
--	switch (link_rate) {
--	case 1620:
--	case 2700:
--	case 5400:
--	case 8100:
--		break;
--
--	default:
--		return -EINVAL;
--	}
--
--	return 0;
--}
--
- static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
- 					 struct phy_configure_opts_dp *dp)
- {
--	int i, ret;
-+	int i;
- 
--	/* If changing link rate was required, verify it's supported. */
--	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
--	if (ret)
--		return ret;
-+	/* Verify link rate. */
-+	if (dp->set_rate) {
-+		switch (dp->link_rate) {
-+		case 1620:
-+		case 2700:
-+		case 5400:
-+		case 8100:
-+			udphy->link_rate = dp->link_rate;
-+			break;
-+
-+		default:
-+			return -EINVAL;
-+		}
-+	}
- 
- 	/* Verify lane count. */
--	switch (dp->lanes) {
--	case 1:
--	case 2:
--	case 4:
--		/* valid lane count. */
--		break;
-+	if (dp->set_lanes) {
-+		switch (dp->lanes) {
-+		case 1:
-+		case 2:
-+		case 4:
-+			/* valid lane count. */
-+			udphy->lanes = dp->lanes;
-+			break;
- 
--	default:
--		return -EINVAL;
-+		default:
-+			return -EINVAL;
-+		}
- 	}
- 
- 	/*
-@@ -1146,7 +1145,7 @@ static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
- 	 */
- 	if (dp->set_voltages) {
- 		/* Lane count verified previously. */
--		for (i = 0; i < dp->lanes; i++) {
-+		for (i = 0; i < udphy->lanes; i++) {
- 			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
- 				return -EINVAL;
- 
-@@ -1243,9 +1242,9 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
- 	}
- 
- 	if (dp->set_voltages) {
--		for (i = 0; i < dp->lanes; i++) {
-+		for (i = 0; i < udphy->lanes; i++) {
- 			lane = udphy->dp_lane_sel[i];
--			switch (dp->link_rate) {
-+			switch (udphy->link_rate) {
- 			case 1620:
- 			case 2700:
- 				regmap_update_bits(udphy->pma_regmap,
+	pmu: power-management@ff600000 {
+		compatible = "rockchip,rk3528-pmu", "syscon", "simple-mfd";
+		reg = <0x0 0xff600000 0x0 0x2000>;
+
+		power: power-controller {
+			compatible = "rockchip,rk3528-power-controller";
+			#power-domain-cells = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			pd_gpu@RK3528_PD_GPU {
+				reg = <RK3528_PD_GPU>;
+				clocks = <&cru ACLK_GPU_MALI>,
+					 <&cru PCLK_GPU_ROOT>;
+				pm_qos = <&qos_gpu_m0>,
+					 <&qos_gpu_m1>;
+			};
+                  ......
+		};
+	};
+
+This is also what the other rockchip SoCs do.
+
+Thanks,
+Chukun
+
 -- 
-2.34.1
+2.25.1
 
 
 _______________________________________________
