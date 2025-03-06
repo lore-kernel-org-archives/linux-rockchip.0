@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1211CC282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 18:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DDBC282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 18:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=t9H9M+LaxaVEnUFnmh8WST5IZRqNK1DzAocunpvkinY=; b=TKFiAyGEnEUGhv
-	N6M3NDDPmu4YY3EC9EICtCzAxyFCwoF47Ot91PXclIVh4zGhxKUsB1LMGnxDi/W87PdNMLpq/1UEX
-	ren0Xi8ml4MLcjfzVT2GQcejuQdP4qAS8lYY1zcB7pJEz3XSsVY9zOsq+/XoFyZFpREIujluVi1tv
-	wCZ7kpyt7sfl/Y50SpXQ4BXqfPMnVjcfHxBSK5WnYDE6AsS2tWuVlQplTTTZBOk43jzu3tkzd7gGw
-	KlMf6LFdKWRVih33dNxn0PBUbm+FaE7L++3y0gTv1JwyF10IMWPrRUtWmz2MHvdrs3IKq0H+1Mp5W
-	2s8zMD5adJanhxPM1xOA==;
+	List-Owner; bh=neSIuRZrYtUE1SMRyRcRYIc9WNS7ETi51NB8rigNuCw=; b=3meX6mh8In2MT3
+	hYNq849hd+J83rOpTkfoRqLFQAv5MCfsUbvLkXB3XqhxMA0n/e+fATJC0X7DLO1FZN4zIvw3E2Alt
+	cOlxfyxSksGeFnF5uq6mAX4usqIQjkkZsKEGLzDpVPsGmwk1Y3quwH/miYqIJ8dvKZB+kPW723t5a
+	Ubkk1w81GaHCKAqhcYnOUWs0BEYn0BXJleEJDvxSe1DCbDK/7w6Wry150WtdLA59n7M2SiLhz4kxo
+	DFIUKwG+H5QuJn+4qoEL6pCGiWAo9gysY3kx3AYNaveXxcf4jDnGNQZu2ULBcSFIosOQoydX4FZ4o
+	tMPHTazlEJl2xMiSAGHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqFdH-0000000Bnw4-2ZV1;
-	Thu, 06 Mar 2025 18:07:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tqFgR-0000000BohX-2EVY;
+	Thu, 06 Mar 2025 18:10:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqFZm-0000000Bn5u-3XY3;
-	Thu, 06 Mar 2025 18:04:08 +0000
+	id 1tqFdM-0000000Bnxf-2qJj;
+	Thu, 06 Mar 2025 18:07:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741284244;
-	bh=XUoZmVfvgm+iV3BJUEqJmJKTR6CIvcIOFGmj9mu2tRc=;
+	s=mail; t=1741284467;
+	bh=d6BibUDSE0mb5iLcPsRSauFGpJaMOrregbvVx9t9eLI=;
 	h=From:To:Cc:Subject:Date:From;
-	b=F5aec+rSsmt7o/TX27ZQARx2IXgaKfhSsUdxHrFi5z7c6roBtbOMaB++fpu8S2WxF
-	 HBNQZ3ZbdEQH/mSQADdULTlN/3hcsZZasD6kmGpDoib7bT7VB2G+vl5Hkl+A7OZalH
-	 i1bmmQUpAD2HJgK2JAxWd+hKXOeAvdKK32P5XYhdOriI4Na+9uTCdNWsHacSB/ajMB
-	 7qO+GUfKoMN2Rgt3T0mjoDV5j8keC5ez67dgBBpNQE3gAtRHBBGEoNXK60NaG52Gfo
-	 xleZZR/jz3emgmlrwqllUamRKOdehQPXp4pMlKM7dI3sdYbGoZhfeWm8A/qu65COKY
-	 GM68iqy//kBeQ==
+	b=qfJrvxPJBnSS3+4O9YX/cwRugyGiSpPEnXVe6T0GDC9kMgyrOMVzacjEXHRWcI7Cy
+	 QJ4e3qo4gBS0LGaylCmHDRH4IuY264npknx/poMLGcmFUNGmiFC+dpsNorkX0p7u6U
+	 n0WpBuTNcyZE67Unweiks+vFmF9N44m7zAf+aDWxBl0SYHfQI9He6wr1Y006jokVig
+	 qbvDuW7eJe0Upq6EzlxX1F7hwcsQX+arQOmbTsEwTIs7IEaFBzfFHO1a7a3dsO7Vtv
+	 M7dIAPBUI1qTquK4mYb4diuxvVjGTCQcwK2njdrmu/gObOGTrljyrrt5d1AvScIsVp
+	 i2+vfypFI4B4Q==
 Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B512E17E0673;
-	Thu,  6 Mar 2025 19:04:02 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3596617E088C;
+	Thu,  6 Mar 2025 19:07:45 +0100 (CET)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -58,14 +58,14 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH] arm64: dts: rockchip: Add HDMI support for rock-4d
-Date: Thu,  6 Mar 2025 13:03:44 -0500
-Message-ID: <20250306180344.126189-1-detlev.casanova@collabora.com>
+Subject: [PATCH v2] arm64: dts: rockchip: Add HDMI support for rock-4d
+Date: Thu,  6 Mar 2025 13:06:31 -0500
+Message-ID: <20250306180737.127726-1-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_100407_064222_629A638C 
-X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-CacheID: sfid-20250306_100748_870821_D6185550 
+X-CRM114-Status: UNSURE (   9.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,11 +87,15 @@ Enable HDMI and VOP nodes for the rock-4d board.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- .../boot/dts/rockchip/rk3576-rock-4d.dts      | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
+
+Changes since v1:
+ - Remove extra blank line
+
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      | 46 +++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 5dc1c18a3b211..f39bd441dce18 100644
+index 5dc1c18a3b211..bccd77c3a906f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
 @@ -26,6 +26,17 @@ chosen {
@@ -112,7 +116,7 @@ index 5dc1c18a3b211..f39bd441dce18 100644
  	leds: leds {
  		compatible = "gpio-leds";
  		pinctrl-names = "default";
-@@ -238,6 +249,27 @@ &gpu {
+@@ -238,6 +249,26 @@ &gpu {
  	status = "okay";
  };
  
@@ -136,11 +140,10 @@ index 5dc1c18a3b211..f39bd441dce18 100644
 +	status = "okay";
 +};
 +
-+
  &i2c1 {
  	status = "okay";
  
-@@ -687,3 +719,18 @@ &usb_drd1_dwc3 {
+@@ -687,3 +718,18 @@ &usb_drd1_dwc3 {
  	dr_mode = "host";
  	status = "okay";
  };
