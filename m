@@ -4,93 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6E1BC28B24
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 09:18:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88416C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 09:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C/7CUhEjtctW1ZAq7+YLuGGosDxnXU3aNxN5ZlyzcYs=; b=Rz9NtbDnozTEH8
-	8jO6ctMx6t2od3cKs/B3RhDJyPLE1n8gPab30+cdED2HOlS/1NWWyvFd9t/HnA3YHxi5IGkKH3B//
-	khN81KF6w30h8w6Pg8sX3uYTeKkedxVphBdh1qYLw4X3S2DxvwTNAvzi5FL6eWlEhFzcsChmknAr3
-	H0Y9TXisfN74QUKrI1lsuYjSPATtMrxsJ1hbd/hZOQxQQj35MEQa6WRvWzaLqw7FTATNLNeyTTFs3
-	L3i8dnQS4UBdWOfkkkSjFCn/fR54Mo5VsPf9Uk59ykod/+xNnDYmBdCE+k2GHPmZ6PkuKgMLq1aRx
-	YUlvsY7h4lEuoT1ZJe4w==;
+	List-Owner; bh=FlBZ5HjSH2mZBtq4dk1ZnsXi/Zu6uWwjnF43L2+21cs=; b=e7ofzdrDrepHuK
+	hIf9LM/g1+Xo9rea5NEMAfUAd0XAil1BpHrXoOgxlsX5Eov7B2Zc547yqGnRXouaATewyCnUxf/hX
+	Rs4WEFZ6725X9K0zbBJ30DH+EsNArASAU2sJfTzdjiz5qujmcesWkqUXyV/mM91rNYP7fXALbM2lt
+	IaBOGN6A718MpbsaioV3JmYBpWWPrpV77ryCcaGvB1yctjdEaJ8onTJFh6I7jwoHRkcJftYS7JwxR
+	lfJxpI+ucmRg4EZIpvBf5TF4WcAn8q05wwXgJhJXpRuwd2RRzu3wOcu4Xb55QObQ3h3zCbWhmrKBt
+	L/VBlEKq6PiVOjS7J6dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq7NW-0000000ASte-1S56;
-	Thu, 06 Mar 2025 09:18:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tq7Us-0000000AU7l-1PmL;
+	Thu, 06 Mar 2025 09:26:30 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6Fu-0000000AHZW-2OQW
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 06 Mar 2025 08:06:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=whersDX4DEkG04Z8xgeBcBNQwsmhyrxWaqfS9ESwEKg=; b=SUnie2DtjJ6xgL+HOfl2KWnfdK
-	noAZ+bEi0bDH1eVB3jIe1Kqr3CBdRhTayN3wzTkn+xKQROptt8SkI5AF/1Eek1c1artMOFNbAw094
-	K8472djqsWr4QY4wcR9go9X3rbgy3iIzpD0LwcDAt/rKjnOdQDetsyHmqmuotFo9lI0myENomFohx
-	kUSZWAbN/JD6+tci0777x/d6RTRV+AxRZCqiUcj87yzkURePMAx4Bt/wvapV7hTMYDiD8Sam6R7GY
-	LL+tFQdWM6/ZkyHN0x9dwzuoGlgJqonjKAyQmZbakaHjiyLJIZ3RRb99xdth9cAHDUUpkw9raDZOK
-	ohFIARWw==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6Fr-00000000xUW-2Smr
+	id 1tq7Uq-0000000AU7D-1G9P
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Mar 2025 08:06:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741248403; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QVijENwYyr5utMB2yus9zbeRHi3GT24Lp5nxeIe6DlV4umTWmitkjSa5LRTFwC4r9n5maRBY1SkDj3KjK1yOjtjdF/L7bmIARpP2IWreeHGmek14hbCpS7MVtQGh/EO+ZxJOKvDwRJHAX2fS7T1Dk2ryS5Pht+XGGN21rbDIWz4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741248403; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=whersDX4DEkG04Z8xgeBcBNQwsmhyrxWaqfS9ESwEKg=; 
-	b=X2HS75TtQ+mKwItAj/LkGMkPGPga42Rr20KjMoKCK9bn1dFcqtPxxLteEJxoIFDbEIjacoAX9QrbVbEWyFxIqnEkC0cUenHNQC+9CSi9jiYpmZZcJqt7mOLffPkFDeNbOe5AxIbXZeIGmNdBeb/Qux9F1R6rt5ENwDU7phV6tJ4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741248403;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=whersDX4DEkG04Z8xgeBcBNQwsmhyrxWaqfS9ESwEKg=;
-	b=AQfvAzEnmiNarr2We7sc3PQ63m5qMSFHYk3ovzhPaMFLywIrVCo3l9Do6eIl0olc
-	CnWGAv6w8wQD7lX/HVSoKuJydFI7jZqd2aUSLHRKkLClhu5BzBRpYG9tg50pRykt+as
-	hA+1taNNwusHkXU2NdRbyjnCm0GCrsClndJfUQ20=
-Received: by mx.zohomail.com with SMTPS id 1741248402849409.8127398309143;
-	Thu, 6 Mar 2025 00:06:42 -0800 (PST)
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+	Thu, 06 Mar 2025 09:26:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=i03ZXI+7609AAGbV95Aop1hWrPoWoth/Ke5U6QVdYNo=; b=t33nFIPnkd+ZsGPfSAax83vcuK
+	yRvYE8KeWFPLsLOG9s059CaYk2lNnlVKO82ARaVr7jvgD2QOiYhf72h1/UWswpkIxewsM3+LQ6DH0
+	RGEUDqsQIcGOxwHtsVVZgbu659VQTG4L7PRCWGsDhxxY2s5IloBkwDPCjRe2CW0UST+aPP9oR/tpK
+	iXECCMrImzkqkHXJQQ/UYavW5NUKD2BA+OY9EjxVc1ZypOH6P8ythIU1FLrsV6KvNMMtUGY5j2LDk
+	h6K2RmpKE19tOhyOTsZq0M41IcoWW0QspVpMW61TghH8b6HB06IGT6BYRK5vj3TrnecozDAdxdPWa
+	/nj2qnzA==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tq7Ub-0001kw-KD; Thu, 06 Mar 2025 10:26:13 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Shreeya Patel <shreeya.patel@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	jose.abreu@synopsys.com,
-	nelson.costa@synopsys.com,
-	shawn.wen@rock-chips.com,
-	nicolas.dufresne@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: kernel@collabora.com,
-	linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v1 3/3] media: platform: synopsys: hdmirx: Optimize struct snps_hdmirx_dev
-Date: Thu,  6 Mar 2025 11:05:33 +0300
-Message-ID: <20250306080533.294964-4-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250306080533.294964-1-dmitry.osipenko@collabora.com>
-References: <20250306080533.294964-1-dmitry.osipenko@collabora.com>
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ jose.abreu@synopsys.com, nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Diederik de Haas <didi.debian@cknow.org>
+Subject: Re: [PATCH v14 0/3] Enable HDMI RX controller on RK3588
+Date: Thu, 06 Mar 2025 10:26:07 +0100
+Message-ID: <2906773.tdWV9SEqCh@diego>
+In-Reply-To: <20250306072842.287142-1-dmitry.osipenko@collabora.com>
+References: <20250306072842.287142-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_080656_029459_02F7E4B2 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20250306_012628_357655_4F9D461D 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,38 +78,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move cached EDID that takes 512 bytes to the bottom of struct
-snps_hdmirx_dev to improve CPU's cache locality of the struct.
-
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
- drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-index 981ab96cda3c..4d42da7255f3 100644
---- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-+++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-@@ -154,8 +154,8 @@ struct snps_hdmirx_dev {
- 	u32 edid_blocks_written;
- 	u32 cur_fmt_fourcc;
- 	u32 color_depth;
--	u8 edid[EDID_NUM_BLOCKS_MAX * EDID_BLOCK_SIZE];
- 	spinlock_t rst_lock; /* to lock register access */
-+	u8 edid[EDID_NUM_BLOCKS_MAX * EDID_BLOCK_SIZE];
- };
- 
- static const struct v4l2_dv_timings cea640x480 = V4L2_DV_BT_CEA_640X480P59_94;
--- 
-2.48.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRG1pdHJ5LAoKQW0gRG9ubmVyc3RhZywgNi4gTcOkcnogMjAyNSwgMDg6Mjg6MzkgTUVaIHNj
+aHJpZWIgRG1pdHJ5IE9zaXBlbmtvOgo+IFRoaXMgaXMgYSBmb2xsb3cgdXAgdG8gdGhlIHYxMyBv
+ZiBIRE1JIFJYIHBhdGNoZXMgWzFdLiBIYW5zIHF1ZXVlZCB0aGUKPiBkcml2ZXIgaW50byB0aGUg
+bWVkaWEgdHJlZS4gTm93IHRoZSBEVCBwYXRjaGVzIGFyZSBsZWZ0IHRvIGFwcGx5LCBjb3VsZAo+
+IHlvdSBwbGVhc2UgdGFrZSBjYXJlIG9mIHRoaXMgc2VyaWVzIGlmIGl0J3MgZ29vZCB0byB5b3U/
+IFRoYW5rcwo+IAo+IFsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDI1
+MDMwNDA4NTgxOS4xMDgwNjctMS1kbWl0cnkub3NpcGVua29AY29sbGFib3JhLmNvbS8KCkxpbnV4
+LU1lZGlhLCBoYXMgdGhpcyBzdHJhbmdlICJhcHBsaWVkIiByZXBvcnRpbmcgdGhpbmcgZ29pbmcs
+IHNvIG5laXRoZXIKdGhlIHRocmVhZCByZXBvcnRzIHRoYXQgbm9yIGRvZXMgaHR0cHM6Ly9naXQu
+bGludXh0di5vcmcvIHNob3cgdGhlIGNvbW1pdHMKeWV0LgoKSWYgeW91IHNlZSB0aGUgZHJpdmVy
+IHBhdGNoZXMgYXBwZWFyIG9uIGh0dHBzOi8vZ2l0LmxpbnV4dHYub3JnLyBiZWZvcmUgSSBkbywK
+cGxlYXNlIHBpbmcgdGhpcyB0aHJlYWQgOi0pCgoKVGhhbmtzIGEgbG90CkhlaWtvCgoKPiAKPiBD
+aGFuZ2Vsb2c6Cj4gCj4gdjE0OiAtIFJlLWVuYWJsZWQgTE9BRF9ERUZBVUxUX0VESUQ9eSBvcHRp
+b24gaW4gdGhlIGRlZmNvbmZpZyBhbmQKPiAgICAgICAgYWRkZWQgYWNrIGZyb20gSGFucyBWZXJr
+dWlsIGZvdCB0aGF0IHBhdGNoLgo+IAo+IFNlYmFzdGlhbiBSZWljaGVsICgyKToKPiAgIGFybTY0
+OiBkdHM6IHJvY2tjaGlwOiBFbmFibGUgSERNSSByZWNlaXZlciBvbiByb2NrLTViCj4gICBhcm02
+NDogZGVmY29uZmlnOiBFbmFibGUgU3lub3BzeXMgSERNSSByZWNlaXZlcgo+IAo+IFNocmVleWEg
+UGF0ZWwgKDEpOgo+ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBkZXZpY2UgdHJlZSBzdXBw
+b3J0IGZvciBIRE1JIFJYIENvbnRyb2xsZXIKPiAKPiAgLi4uL2R0cy9yb2NrY2hpcC9yazM1ODgt
+YmFzZS1waW5jdHJsLmR0c2kgICAgIHwgMTQgKysrKysKPiAgLi4uL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzU4OC1leHRyYS5kdHNpIHwgNTcgKysrKysrKysrKysrKysrKysrKwo+ICAuLi4v
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzICAgICAgfCAxOCArKysrKysKPiAg
+YXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgIHwgIDIgKwo+ICA0
+IGZpbGVzIGNoYW5nZWQsIDkxIGluc2VydGlvbnMoKykKPiAKPiAKCgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
