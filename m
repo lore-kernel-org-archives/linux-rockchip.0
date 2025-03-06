@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93A76C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 14:54:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 229A3C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 15:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jLQ3yoTPWp5x1myjfRzF1mULn/208MnOzjlhi29EZfI=; b=m2tJWS1XnK+aMW
-	VHfMcdpCRSCDgRdVCNF/NSJ0v1Qfsit78ZcJeCEOBVKdy68NCei0Lwm2QnpBMz4ecMrHkmGvkkszz
-	N1yPLJ1p7GkjYEldNtgCvcMfVmfgv6Tr8zNI5ubA5goyvWajN5PWFJlq1D1nLiC+LAFGIhs+nqk0C
-	l/SJmDV27PpLbmWYnx3nvKwI/NKV612xpWJoqhrcNi3q09NX2tosgw9XWikbJSa+1jlOtW5tYd009
-	w2wRp+UKWwWFrMY/bUf5GgfIb05yKhdWji/uR6t9/0lQ2KQSfzKfwOY7Mq3/oEdJYttoX6349NiSb
-	F7q9ZXytAT+rjL2wNI8w==;
+	List-Owner; bh=xJlyRDeQGMCk/X5JZpzyKvlhcAy5IJkYmS3E61Vffzk=; b=FxL7FQ0BdxYjVi
+	hGxOHzTisGaMfGtBk4pMdqT5GHUOeSng5aGEOv31dIr2YoyG/7SqvHPkykVKFUdFpiHEC1Q1jtYGH
+	3zqDmVrE4tuxx2Wl7H+kB1tdBKWo9FThrZDM/bQ7fS8aLayYEvjePbdmZFh5WEvtA0HXe0oXqrhEU
+	0vwBW2UqSoQC4D0o5W/K7gzMjNuINoxDh6Vl3hwnQO4jebMYtuBmgL06fV4MacFK18y8EY8pVZbxR
+	Pino3xb0bTfA3zDsx5JS5Tz2iXm+dSgqiitPaZPXKU+ZkH2mUs1Va1ubwvItykwd++6XSlyBMWnC7
+	atOhW2Dvm4B1kSQ2JEYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqCcV-0000000BFpE-3kFX;
-	Thu, 06 Mar 2025 14:54:43 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1tqCi9-0000000BGL4-1ii9;
+	Thu, 06 Mar 2025 15:00:33 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqCcT-0000000BFnt-0PSO
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Mar 2025 14:54:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741272879;
- bh=FKaVUl5lLXUSuhCF1ZlPAyZO1YDz2MZPYUTwBAZE0yM=;
- b=NAi+7axKjQMlr6jzLc9Sfc9umGsALhz95nONBl61YGvzqvMq2ykPwMshVGDY4AySONyQqmXxs
- V2iaKeYlRLHD7sqdHs3rXTdned4r0b2kjioD5WRjPSyryCb4rvP9CJR6PfzvmPbHFqz7iU/cyji
- PWRQjgQUCejsOA3u/GE53ME17xgnT38Wz6HFexvx1Bqv1m20nvdmzhO79/aqe+7HxpkdYUXk2yN
- riBCo/sEbOasXM/aaT5O0d2MgEJ5t+LyAgQQOl8tqR7irH/JYMugS0JTf7O9mMUBIDQRvafkmN1
- eow47paShKcy3wauMeKvZUEMaqMizezWEZex2OIgMVyw==
-X-Forward-Email-ID: 67c9b7257d53aa09926020ca
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <3181e8a0-b98f-4860-a0fa-abc3130c9b35@kwiboo.se>
-Date: Thu, 6 Mar 2025 15:54:24 +0100
+	id 1tqCi6-0000000BGKK-2spd;
+	Thu, 06 Mar 2025 15:00:31 +0000
+Received: from localhost.localdomain (unknown [119.122.215.89])
+	by smtp.qiye.163.com (Hmail) with ESMTP id d2dcd17e;
+	Thu, 6 Mar 2025 23:00:27 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH v2 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
+Date: Thu,  6 Mar 2025 23:00:17 +0800
+Message-Id: <20250306150017.488975-2-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250306150017.488975-1-amadeus@jmu.edu.cn>
+References: <20250306150017.488975-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
-To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
-Cc: Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20250306131016.281290-1-amadeus@jmu.edu.cn>
- <20250306131016.281290-2-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250306131016.281290-2-amadeus@jmu.edu.cn>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSx1JVkxNHkMdTEwaTU1MSFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a956bf8e0a003a2kunmd2dcd17e
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MU06TRw*KjJOMjM#DTU5Eg4j
+	GCgwCypVSlVKTE9KSUxISUlDS0NDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQUpCQ0s3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_065441_476527_147B19E8 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20250306_070030_903295_9AC4B61F 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,110 +76,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+Same as RK3568, RK3528 uses SCMI clk instead of ARMCLK.
+Add SCMI clk for CPU, GPU and RNG will also use it.
 
-On 2025-03-06 14:10, Chukun Pan wrote:
-> Same as RK3568, RK3528 uses SCMI clk instead of ARMCLK.
-> Add SCMI clk for CPU, GPU and RNG will also use it.
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 32 ++++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 0c0e7f151462..aa68c2fef2f3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -59,6 +59,7 @@ cpu0: cpu@0 {
->  			reg = <0x0>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> +			clocks = <&scmi_clk SCMI_CLK_CPU>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -66,6 +67,7 @@ cpu1: cpu@1 {
->  			reg = <0x1>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> +			clocks = <&scmi_clk SCMI_CLK_CPU>;
->  		};
->  
->  		cpu2: cpu@2 {
-> @@ -73,6 +75,7 @@ cpu2: cpu@2 {
->  			reg = <0x2>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> +			clocks = <&scmi_clk SCMI_CLK_CPU>;
->  		};
->  
->  		cpu3: cpu@3 {
-> @@ -80,6 +83,22 @@ cpu3: cpu@3 {
->  			reg = <0x3>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> +			clocks = <&scmi_clk SCMI_CLK_CPU>;
-> +		};
-> +	};
-> +
-> +	firmware {
-> +		scmi: scmi {
-> +			compatible = "arm,scmi-smc";
-> +			arm,smc-id = <0x82000010>;
-> +			shmem = <&scmi_shmem>;
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			scmi_clk: protocol@14 {
-> +				reg = <0x14>;
-> +				#clock-cells = <1>;
-> +			};
->  		};
->  	};
->  
-> @@ -110,6 +129,19 @@ gmac0_clk: clock-gmac50m {
->  		#clock-cells = <0>;
->  	};
->  
-> +	sram@10f000 {
-> +		compatible = "mmio-sram";
-> +		reg = <0x0 0x0010f000 0x0 0x100>;
-> +		ranges = <0 0x0 0x0010f000 0x100>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +
-> +		scmi_shmem: sram@0 {
-> +			compatible = "arm,scmi-shmem";
-> +			reg = <0x0 0x100>;
-> +		};
-> +	};
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 33 ++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-This does not look correct, the shared memory is located in DRAM not in
-SRAM. I used reserved-memory in my work-in-progress commit for adding
-the GPU [1], something like, not sure if this is more correct:
-
-	reserved-memory  {
-		#address-cells = <2>;
-		#size-cells = <2>;
-		ranges;
-
-		scmi_shmem: scmi-shmem@10f000 {
-			compatible = "arm,scmi-shmem";
-			reg = <0x0 0x0010f000 0x0 0x100>;
-			no-map;
-		};
-	};
-
-[1] https://github.com/Kwiboo/linux-rockchip/commit/f1cd58b2431a01e8cf6a430922204a71fee484f3
-
-Regards,
-Jonas
-
-> +
->  	soc {
->  		compatible = "simple-bus";
->  		ranges = <0x0 0xfe000000 0x0 0xfe000000 0x0 0x2000000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index b1713ed4d7e2..476b83f98834 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -59,6 +59,9 @@ cpu0: cpu@0 {
+ 			reg = <0x0>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
++			assigned-clocks = <&scmi_clk SCMI_CLK_CPU>;
++			assigned-clock-rates = <1200000000>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -66,6 +69,7 @@ cpu1: cpu@1 {
+ 			reg = <0x1>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -73,6 +77,7 @@ cpu2: cpu@2 {
+ 			reg = <0x2>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -80,6 +85,22 @@ cpu3: cpu@3 {
+ 			reg = <0x3>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
++		};
++	};
++
++	firmware {
++		scmi: scmi {
++			compatible = "arm,scmi-smc";
++			arm,smc-id = <0x82000010>;
++			shmem = <&scmi_shmem>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			scmi_clk: protocol@14 {
++				reg = <0x14>;
++				#clock-cells = <1>;
++			};
+ 		};
+ 	};
+ 
+@@ -88,6 +109,18 @@ psci {
+ 		method = "smc";
+ 	};
+ 
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		scmi_shmem: shmem@10f000 {
++			compatible = "arm,scmi-shmem";
++			reg = <0x0 0x0010f000 0x0 0x100>;
++			no-map;
++		};
++	};
++
+ 	timer {
+ 		compatible = "arm,armv8-timer";
+ 		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+-- 
+2.25.1
 
 
 _______________________________________________
