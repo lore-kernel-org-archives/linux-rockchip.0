@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4FFEC282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 18:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B765C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 19:26:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rCA8AlfHr4Y0gIsvQExJ2ye7zZ806JvxYGg+96yeav8=; b=H81RnlPnkLY0hJ
-	dEVKWUSUaCACq1MoM4HBYO/JL6tQ7NI82z+5QVRzWIVceKSclBRULUr9+Vd9P60h8HYk5Npc4ux0s
-	t/mzVR1mEnxSN1tkNXVkDWbhPUYYl6lNDeRwUCcBQqIUzFtD7ZPT09UeN8Tcy3U3CqR1IWOg5JrQG
-	D+uTHTxY0vOb+IkuQsFbNeOeb5eJjyJqWozRy/HQZ6hkX/amWpbW5vqeQjBkzDVIYRa50DyOlN4D/
-	Eh0hxmzDfAcAsr5rtloB4hvruxLM23fu/sczCBRS8NoXVgefLlyXTObxbIzQf6ZyDwKZXW6lGu/5/
-	37VvTDX6RKEsIuyLFG2g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OUj8XLqdfNx85vOahd5+QfJMr5WSgKSE3veqOJ0XNNU=; b=icpGVRty4y2WjTGTw5jgwbWZbA
+	48JSOcITQBEmb8HUUKVGl1Ikx+A+KFTOQo0H524Uv0v3/edd/hvv8uoC2cH1kYzpUVcLWqCfRvCBA
+	XNFle1Ef5pwC5rpobxpfwcB2s+gQTRHDjc8nY34T3p1TntvF/QWrWj2PEMWDRUjxS3eQT8pKqCtpJ
+	TUVPtHVZHa7Ph6sLQ2JgSDCNDIAcbyk65q4V9ZeUtdJ2Ap3V0QkiAnU2XCuOCxnkK0pulcj1s7bSu
+	QwFu7a7Rj1Q18ZxshUVhjdNmGDXej8rYZpFUL69XZhwKQ+PJl8+HZ/RHVCe1W0dtnYrakaxKI1jYn
+	+ut05VmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqFjc-0000000BpW2-01CH;
-	Thu, 06 Mar 2025 18:14:16 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tqGri-0000000C0Ds-16g3;
+	Thu, 06 Mar 2025 19:26:42 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqFeI-0000000BoCn-2UR6;
-	Thu, 06 Mar 2025 18:08:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=qoSIZeEZItfdQePn3xpCH5SMAbZNHhyWtQWXr+rp4aI=; b=r5sEDRIGxBH5f3gyz69wvRQSgC
-	t7CIcyI+U1fP26VBt8p8YKwZFGcGW3bvpz8Z5Vvzsq+xzhjX/qmWP2+LuRDlfBkasaCAMhh84pJKs
-	6ho59zt56Lv+Wbr07v4wpaMNgLx4T505ik1wUHZS6IGOhM3mca8GbssBhJztcPkhhBIjCi+guQ9cR
-	lrBqyIUlEJwqu2ITq4EII85fjWKwmJeNgfwDmAmBapvG7dw0a/trEaxmpotVMPbqYBoqt0dfpGV2c
-	YpsnWiEEf1NKxxRknYHSq+f2quCO2svAH2xIQ/H8k4lx7CGYb0XFuCuY8sYSh5h73ZdfaXCOyvlBy
-	aX6mzrJA==;
-Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tqFeA-0005TK-H2; Thu, 06 Mar 2025 19:08:38 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>
-Cc: Yao Zi <ziyao@disroot.org>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add rk3528 QoS register node
-Date: Thu, 06 Mar 2025 19:08:37 +0100
-Message-ID: <117081043.nniJfEyVGO@diego>
-In-Reply-To: <cdbc1556-4662-4078-a4d6-33545e2e2491@kwiboo.se>
-References: <20250306123809.273655-1-amadeus@jmu.edu.cn>
- <20250306123809.273655-3-amadeus@jmu.edu.cn>
- <cdbc1556-4662-4078-a4d6-33545e2e2491@kwiboo.se>
+	id 1tqGrf-0000000C0Cu-3wsq;
+	Thu, 06 Mar 2025 19:26:41 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3912c09be7dso687464f8f.1;
+        Thu, 06 Mar 2025 11:26:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741289198; x=1741893998; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
+        b=iQjwfqplfqA2jXkTJxTgUYfbMTOJsNwoB6gg4G67GGU9yUNEtgLVY+ecmK3QOQYsPo
+         eU5hr39awP3mcgefnFcO4obbBSZ3MZdSxCcuMA3xmXu+1slUU20huhnJOlgWfZcB9AGg
+         DluA2ljJBYAukS7Zudbe2DFajBZNmP5HI0s9qLPVtfj2ePdex9fwXMXWO7v1Muco8fEi
+         AqWrGIIPP/EUmdD9V0Tr64FaEm98owu4dPTOFcdgNsunPwITIBBMF5bZv31Hf14Av9mA
+         KchmxcmS+Cd3ZUz178LkZId4/lFWv82vdGYqRFPh5zdZjc2+HvLy4zy1MF2oYjcVGemf
+         QUWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741289198; x=1741893998;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
+        b=VqESd8WXSghioPD+OdJQ3ViE1RHIU3DNNhrCK/DNcqcIVHvGvWvX3xorqstvDcbYbc
+         DZuthWseo+afL9yJTs04UvVHZJzsIE8ihrorZxPep8z+MSqZIy56fKtWqrx10nVU1Hyh
+         dmnJZKI8Nz7LncmtEAf6UZlhjAmZPigiYpuTdWb7G1bBDelBRQU16HYeRZrEGBxs18ry
+         vb2hA577y7T+m40SD8UoknOwl2+G+PF+yNi9Ujv01GOOqxGQI+dSPgE3gPc9fy7XdM+D
+         Q2PJjD0px5XFuF251trRVrngl4FvDrd1wEHsADZTbVhRQxNjqkU3gcGgPFBP+tf4MZqL
+         bFuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWIEDK0E8SwR/u1C7wZuQOTvlMH02RoR8Alc0+CJoiqvT8mr/fqgyE61MB8rzXqaAt91YX3Na/DrLzppY+5zQ==@lists.infradead.org, AJvYcCXu7brrhgSBbqh4S8/squL4ujT2srKwOs5z6o5GcPelSBZTWaOjT9WntKhj62dVk+VHTzuphQVQHV24uERV8Fs=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXh0cFKVLwxd4c0olUB+5Hl1TGirpSA3O4yQDc4SVLBcMfVQJW
+	Dr1umi3iLnOD43OH23hCuEc4mEp5wxKqStQw/MXjv+DqH6g5VEdsI+DKbA==
+X-Gm-Gg: ASbGncuWTB9jnWq4jh0jn+laooINBXhroMlvSt/SPYaCdn6XTgV7QANUV32VeuhLmVK
+	3uHyTcHwsI8xDUUSErf6iExt3/HjYP7bwk/ehtr0djGPzrY1kDyFrtwFIbYKgEP5YDsgIqRzw9x
+	s7KG/GvHTcGuhYfeHJrZknwaujIIXKo1vI4HONOHUwlQol+3I66OPqGL9zaAB/MTt+ncV7BMtc1
+	uSBdmHJlTjdmkhuV7qF3vITnrCnjINhtuh5B8BG295j3Lte4UEpMMvQh5ROcIQHATqYEspBsPXY
+	B1DYhAH1QEEGCMcMX5Ng1RO0kbYk0nTBnWcnO84Oqiw1v16IYlTXvVUpcPgcXMABaG7wGDRMLt+
+	9K4P1QmY9rgIkrUnRmHEjOG/LGsfPzX8=
+X-Google-Smtp-Source: AGHT+IGse2HrwvQit3ez+Tb+IZmcWPgul6Oz1Of3MncB8IKv5GiNEYehZwUGHa/gmdRGfttFwUyGrw==
+X-Received: by 2002:a5d:5f45:0:b0:390:eebc:6f32 with SMTP id ffacd0b85a97d-39132da8fecmr291664f8f.48.1741289198054;
+        Thu, 06 Mar 2025 11:26:38 -0800 (PST)
+Received: from orome (p200300e41f3a9f00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f3a:9f00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c0e1d67sm2905872f8f.74.2025.03.06.11.26.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Mar 2025 11:26:36 -0800 (PST)
+Date: Thu, 6 Mar 2025 20:26:33 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
+	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
+	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
+	Mikko Perttunen <mperttunen@nvidia.com>
+Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Message-ID: <mtsi7lohn4nq75y3mdzk7eomloxvswjn4blsmruutpejhppd5i@wexuiu7yfea3>
+References: <20250218142542.438557-1-tzimmermann@suse.de>
+ <20250218142542.438557-21-tzimmermann@suse.de>
 MIME-Version: 1.0
+In-Reply-To: <20250218142542.438557-21-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_100846_650865_97B30160 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20250306_112639_978643_A8221502 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,32 +99,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5921200795033599982=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRG9ubmVyc3RhZywgNi4gTcOkcnogMjAyNSwgMTc6NTU6MTYgTUVaIHNjaHJpZWIgSm9uYXMg
-S2FybG1hbjoKPiBIaSBDaHVrdW4sCj4gCj4gT24gMjAyNS0wMy0wNiAxMzozOCwgQ2h1a3VuIFBh
-biB3cm90ZToKPiA+IFRoZSBRdWFsaXR5LW9mLVNlcnZpY2UgKFFzUykgbm9kZSBzdG9yZXMvcmVz
-dG9yZXMgc3BlY2lmaWMKPiA+IHJlZ2lzdGVyIGNvbnRlbnRzIHdoZW4gdGhlIHBvd2VyIGRvbWFp
-bnMgaXMgdHVybmVkIG9mZi9vbi4KPiA+IEFkZCBRb1Mgbm9kZSBzbyB0aGF0IHRoZXkgY2FuIGNv
-bm5lY3QgdG8gdGhlIHBvd2VyIGRvbWFpbi4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQ2h1a3Vu
-IFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPgo+ID4gLS0tCj4gPiAgYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1MjguZHRzaSB8IDE2MCArKysrKysrKysrKysrKysrKysrKysrKwo+ID4g
-IDEgZmlsZSBjaGFuZ2VkLCAxNjAgaW5zZXJ0aW9ucygrKQo+ID4gCgo+IAo+IFRoZXNlIFFvUyBu
-b2RlIGFyZSB0eXBpY2FsbHkgcmVmZXJlbmNlZCBmcm9tIHBvd2VyIGRvbWFpbnMgc28gdGhhdCB0
-aGUKPiBQTVUgZHJpdmVyIGtub3cgd2hhdCBRb1MgdG8gc2F2ZS9yZXN0b3JlIHdoZW4gYSBwb3dl
-ciBkb21haW4gaXMgcG93ZXIKPiBjeWNsZWQuCj4gCj4gVmVuZG9yIGtlcm5lbCBvbmx5IHJlZmVy
-ZW5jZSB0aGUgdHdvIHFvc19ncHUgbm9kZXMgaW4gaXQncyBwb3dlciBkb21haW5zLAo+IGRvIHlv
-dSBoYXZlIGFueSBkb2N1bWVudGF0aW9uIG9yIGtub3dsZWRnZSBhYm91dCB3aGF0IHBvd2VyIGRv
-bWFpbiB0aGUKPiByZW1haW5pbmcgUW9TIGFyZSByZWxhdGVkIHRvPwoKSSB0aGluayB0aGUgR1BV
-IGFjdHVhbGx5IGlzIHRoZSBfb25seV8gZnVsbHkgc3dpdGNoYWJsZSBwb3dlci1kb21haW4gb24g
-dGhlCnJrMzUyOC4gVGhlIG90aGVyIHBvd2VyZG9tYWlucyBzZWVtIHRvIGJlIGFsd2F5cyBvbiwg
-YnV0IGNhbiBkbyB0aGlzCmlkbGUtcmVxdWVzdCB0aGluZy4KCkF0IGxlYXN0IHRoYXQgaXMgd2hh
-dCBJJ20gcmVhZGluZyBmcm9tIHRoZSBwbS1kb21haW4gZGVmaW5pdGlvbnMgaW4gdGhlCnZlbmRv
-ci1rZXJuZWwsIGNvbWJpbmVkIHdpdGggYSBsb29rIGF0IHRoZSBwbXUgc2VjdGlvbiBvZiB0aGUg
-cmszNTI4IFRSTS4KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============5921200795033599982==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="y6cp6aqkj6w24xiu"
+Content-Disposition: inline
+
+
+--y6cp6aqkj6w24xiu
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+MIME-Version: 1.0
+
+On Tue, Feb 18, 2025 at 03:23:43PM +0100, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch according to hardware requirements.
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: Mikko Perttunen <mperttunen@nvidia.com>
+> ---
+>  drivers/gpu/drm/tegra/gem.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--y6cp6aqkj6w24xiu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmfJ9ukACgkQ3SOs138+
+s6GThw/9F553EWmmWz8ONopI5pY7Fy+Pu8kzqsU5bhKSKO2aqJ8y4PFOQAzaacO8
+2HuvhLXsP6l91B+R49oebJTWnbgcl9ThzcA4njgdKRFc7yZU/EZUEUGdwDkU6qsh
+/rkDnM+a+MzIAd3Z31B0Kvb0tUsl4e0UBueDHmjfP554dbtnMr94eIHuqLVRb1/D
+LB6ddm8DbZVoDKT9Ji2gLQpW84oFuIzRZPOV8JmPe+wE8Xf6A9sLloqJndErnvHg
+B8X2K8PzxkNNJGaZtQMUpiJ+S1oDNZnnKtzt0Wb+b9itJqUgykve29vGBDBImsb5
+8JLFlkdPFdKpFsbAvGyHv8b+F2rDVu4Oelg88WWDUSMc9Ut274u5/a2DTUOwF806
+DtCADAFUOOcIyDZKfPpeQuWDPeScN3/ANW8iQMlyPaNO5fBKlisFjiF1Bh0gS+vQ
+shkKb74wChg/4jgq1+M+I4DPdCQRe0kGIqbNZ4yK71owOjoSE6WIxxEt0UUKxPwh
+XZyf8ZF2O9TCPMigN6Qw2AGUhaC3HsAG9KbhOTSeUAsOwohFtYY+3B6Hkb8SQHEM
+i05OutqXEhtdSZgBK+HuweZtYWCBfy/BcMeD99Rkg01C+aMZcNPGVLpvGqpryNaB
+Ga0hQwFdIjbnMbXxjzyfJfs7GqNyTAJtpiqBO3uDhWH2LxJHZ7M=
+=2m1E
+-----END PGP SIGNATURE-----
+
+--y6cp6aqkj6w24xiu--
+
+
+--===============5921200795033599982==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5921200795033599982==--
+
