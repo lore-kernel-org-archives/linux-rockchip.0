@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30C8C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 15:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF2BC28B24
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 15:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cdQ7P7QaOqY+RrqlGeoPUOp2afTdTOgRSgiyz1cYSZU=; b=EGEoR3iZWd9fbR
-	ufSZGn9U7/vsnJ/dlZERlbBzCQ93ujejql6Bd5ZWnU5Szmbrbjj4jkNypN5jbvMWpcKN8wSbn293A
-	kGllVQ8mHd5fKAmgqLLbzrCb5RZQ1AD2no43IgPoiSMdV1Feaznsh6dmoaIDW7btCThtmZFeboPu1
-	Q7TZU0wvzn6HgPXegSwLd5O61/tkZYlgBytLFG2xkCkt3vaETapc5ItihhUj87IVMpfAkEpkgsOme
-	VD/RqkomcqnAonpOlsTg+QX7A/RmbntSHY0U+pOw4NmHmH7vV2zVgMW0y/rJZNknCOSUy0Qi2OShG
-	yBEzyrP/63WoR77pCVhw==;
+	List-Owner; bh=y3pd10Xz6cZxIMk3iYywxIqMm4gGGT7FTgMrLazjb+s=; b=ihJTy3E5OOxRw/
+	4a6/d3L7ymfUR8TNNJ+9XLsjoxqiUw3d3xvzKKoxWllVxeSg+KmV2J8Zc19eeW39ztds5kJ+G2+Bc
+	u3rUR3QYnW/3HmYZqMVevTniJ7ZUq6w1iF7T7dzFj+9UC+JHfDMKPLTnYQYJQ66UAPdl4O4m/H7le
+	muZvEJ02O4mUwR6XNDi9Bu8Oxl8AAT1VCNEkMuESWM8lHwvbGr/VGqJEmHMUGqjOHnlMWXNQwBeiC
+	o6Mlw9PII5SxbH7NjEvzn/VgyW3JxaUq8V9La/UeDJZ7XvXaO9N2TyKD6PZdp8NcEIK6aO1XpgiJg
+	84KUyYcXCWlUX5LGDLcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqDEX-0000000BL5i-1WgJ;
-	Thu, 06 Mar 2025 15:34:01 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1tqDEY-0000000BL6Y-1Byt;
+	Thu, 06 Mar 2025 15:34:02 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqC5F-0000000BBmY-1eOB;
-	Thu, 06 Mar 2025 14:20:23 +0000
-Received: from localhost.localdomain (unknown [119.122.215.89])
-	by smtp.qiye.163.com (Hmail) with ESMTP id d2dccefb;
-	Thu, 6 Mar 2025 22:20:14 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: krzk@kernel.org
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
+	id 1tqCAS-0000000BCIX-2IRo;
+	Thu, 06 Mar 2025 14:25:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=n5aD5c3lPAMGKpNg0pZzLgDxoQS/0A88tfAf7d3Ga4w=; b=VbHNERiPVO6UZVnSVLhH/tOQiz
+	HLsRkehic5Kdr8Pkuh5l32tXLLGTr0jhQtsWV1LR8rF+68sFVabAncu0fMP4PLN9WUaCt3YLNwSMJ
+	8ni205h1cSu/7MwtOXW8pGSzGwa/E2cY+umKUZzBEgZrrm9kaHOQvmYd0NkSv1gwi61L6K60D0Ql5
+	GYNOi8ZtbUVJZzAGpFHczQQewDlR0l+5tjK2v7YgoHuwMXiDg7uhwa7VqSh0JiTcJTycvLQEYHOaF
+	GyylM3xLjEWC8L2ZNMf5X9PyGDM15ntLOcfiFxAXCm52uujTsq6dxcADQIQ1zO+4odHPrgRdWRHWv
+	dG7NbngA==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tqCAL-0003oY-Bc; Thu, 06 Mar 2025 15:25:37 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: krzk@kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
+Cc: amadeus@jmu.edu.cn, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Jonas Karlman <jonas@kwiboo.se>
 Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
-Date: Thu,  6 Mar 2025 22:20:08 +0800
-Message-Id: <20250306142008.389243-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <10115c0f-4a7f-460a-a0bd-0c86d1e7d3b6@kernel.org>
+Date: Thu, 06 Mar 2025 15:25:36 +0100
+Message-ID: <24848438.6Emhk5qWAg@diego>
+In-Reply-To: <20250306142008.389243-1-amadeus@jmu.edu.cn>
 References: <10115c0f-4a7f-460a-a0bd-0c86d1e7d3b6@kernel.org>
+ <20250306142008.389243-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDTx0dVk5IHhpJGBhDHUoYQlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktJQk1KSlVKS0tVS1
-	kG
-X-HM-Tid: 0a956bd40f2703a2kunmd2dccefb
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mk06NQw4CDJNEDMqDwkDIg0w
-	CBcwCQxVSlVKTE9KSUxLQ0pOSExOVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpOVUNCWVdZCAFZQUlDTTcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_062021_626008_EAFA2D9D 
-X-CRM114-Status: UNSURE (   5.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250306_062544_602382_F69B21BA 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,29 +70,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
->> Any suggestions would be greatly appreciated.
-> Where is the SRAM located? Inside the SoC or is it carved out external
-> ROM/RAM?
-
-It is located in the SoC.
-"Embedded Memory" Area:
-BootROM | PMU_SRAM (8KB) | SYSTEM_SRAM (64KB) | OTP
-
-Thanks,
-Chukun
-
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgNi4gTcOkcnogMjAyNSwgMTU6MjA6MDggTUVaIHNjaHJpZWIgQ2h1a3Vu
+IFBhbjoKPiBIaSwKPiAKPiA+PiBBbnkgc3VnZ2VzdGlvbnMgd291bGQgYmUgZ3JlYXRseSBhcHBy
+ZWNpYXRlZC4KPiA+IFdoZXJlIGlzIHRoZSBTUkFNIGxvY2F0ZWQ/IEluc2lkZSB0aGUgU29DIG9y
+IGlzIGl0IGNhcnZlZCBvdXQgZXh0ZXJuYWwKPiA+IFJPTS9SQU0/Cj4gCj4gSXQgaXMgbG9jYXRl
+ZCBpbiB0aGUgU29DLgo+ICJFbWJlZGRlZCBNZW1vcnkiIEFyZWE6Cj4gQm9vdFJPTSB8IFBNVV9T
+UkFNICg4S0IpIHwgU1lTVEVNX1NSQU0gKDY0S0IpIHwgT1RQCgphcmUgeW91IHJlYWxseSBzdXJl
+IGFib3V0IHRoYXQ/CgpMb29raW5nIGF0IEpvbmFzJyByZWNlbnQgcmszNTI4IHUtYm9vdCBzZXJp
+ZXMgWzBdCjB4MCBfdG9fIDB4ZmMwMDAwMDAgaXMgdGhlIFNEUkFNIG1lbW9yeSBhcmVhCnNvIDB4
+MTBmMDAwIGlzIGEgY2FydmVvdXQgb2YgdGhlIG1haW4gc2RyYW0uCgoKSGVpa28KCgpbMF0gaHR0
+cHM6Ly9saXN0cy5kZW54LmRlL3BpcGVybWFpbC91LWJvb3QvMjAyNS1KYW51YXJ5LzU3ODM5My5o
+dG1sCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
