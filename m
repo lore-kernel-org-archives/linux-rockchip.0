@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1635C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 21:11:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD866C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 21:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IiyGbaJM7mW/FPm9Y9CSi6w1vKAouA46irq9xeKiwFw=; b=QWCohpoE1p2U0Qz350Vax0eowQ
-	BhDpj/EHdj498wEexoeiHfymPdimlK/JU78sFTwFVuJ9bl491gw5T73f7xZmKNyuC1rNaLHwh4SkH
-	TOnMfT7Y9WuvltMYjZldH46lPiBzUpex8bbXT6r5J/KtiY5o0eebKrak3lyzVhO9A+SOUJ4FH8yQP
-	q+HPBJo1n6Zw2+EqlQH7UkDUxVygzRcoIxRqwlHJNyIgww7Nat8Qax6b8usyHIzOWoO1DA1G3UDlD
-	2CVuK5/hnCDeJnMrdHcuBmg7PW+uWyJT3/oLZthB3g2G/xrzRtHrawxYmn/Eh9mGbWvd+1wo00uH1
-	sCkW4YNg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KWdvOeh6JbQsqOV142LqyEo5vbLMWfBE6Sl1Qm08EUU=; b=yKiozbAVh1sNYH
+	qYBCJZW2qO+avIIzUg0+VZhcfE7lk19CVigggeBXQOSBiAlC69VyrdbBTl2STqswSLFwliYgrVvtL
+	m3lyqJOKYcCjk8RR0S8EU7cTSSTEkDimk4JsOZnOKMsRuStgW0IMeh6TFkZYaEgmUw40h42jOJ88u
+	5b2yYbA6WmmW81EuNpADYvudGKJWQlLPZG7HQS+XtP7LekFP/jOn5UClo+Crb7pNrOA2rmYA3d5Jm
+	sRflm/lllIJhI4zm9+8JZHkzKPwoKb32gJY0PUoET0wP6ExKRJap5sl9Mhnbpqe/3dqecEqUwvlZZ
+	ZR8CJvFArbsTOU8xwOQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqIUZ-0000000CE2y-0nLm;
+	id 1tqIUZ-0000000CE32-2DMX;
 	Thu, 06 Mar 2025 21:10:55 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqISu-0000000CDkQ-1zvH;
-	Thu, 06 Mar 2025 21:09:13 +0000
+	id 1tqITj-0000000CDsl-28yR
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Mar 2025 21:10:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1741295402;
+ bh=sDXS6ccmXHM7aVTn2W8PvKDj84puFXbx1PJBmmh83iE=;
+ b=p5ugOss8RGqOEIGV/X54kmjfx87TiB2fCDoZPDjw5Qec+e91CPS8dGVsiESxNXqMj7A7/k5xr
+ j5HNU+BnEMeFynL9+tInZLOmA6SNYtlR82RC//TS59KTEE/GJnL8Eqmg++QBVn7WDZqgSy7fM+R
+ qcFxjJ3gUX+4wJ6hrboOiT3V2xJUDfO9uSgoYhd3L33E5oVJhsn3yreNIrHbdbW3XVSqnO+Jom6
+ cK4E1VZrBw3ioXKJshWTNyMps4exY9nQqErn0GLQfT5vBC+SYaC/MP4+a2p6M+76RlnfAWitUmm
+ Py84Y2YuIbhSVXDa+uF3taQo7XeAvSFFWvQ9qoEer7Jg==
+X-Forward-Email-ID: 67ca0f24ad3e70e1cd99d7f2
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/2] net: stmmac: dwmac-rk: Validate rockchip,grf and php-grf during probe
+Date: Thu,  6 Mar 2025 21:09:44 +0000
+Message-ID: <20250306210950.1686713-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741295347;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=L2c81lklMsWoewbTrDLPjzFIwtetRMhEGhB4+GnHcqo=;
-	b=WiSqWs276XwmL6ya8O18OlaDotyFuFbRKOpfqddTDFGjegQF7yrFJ/fjZqymvfCuHegLIW
-	HidnrhNz9DXyySlOqdgziypXpdovMd53ofUUCHADRAqZkUQUPdGWCoT5QwgqyhForVQcaS
-	SLy+g0SDLLq6eKdiqA6beA27hQuYi3YHLH8XpvNpLeVyKuDz15NKBPDyQJ8NRaObqvesP5
-	H9nB8siyzS1lzqkqpfAsqgBKH871WqOw+loSNYZ1Nd6isC6x9WdSxTufdr7kj4JfcLX5Sy
-	0zdnbY4+vqADaC/N/SxFzkqHCoQHzOeX6cJc7+IpxSPj0pC/0zQrSGWPz25dUg==
-Date: Thu, 06 Mar 2025 22:09:06 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Wadim Egorov <w.egorov@phytec.de>,
- netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 1/3] net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for
- RK3328
-In-Reply-To: <20250306203858.1677595-2-jonas@kwiboo.se>
-References: <20250306203858.1677595-1-jonas@kwiboo.se>
- <20250306203858.1677595-2-jonas@kwiboo.se>
-Message-ID: <427cbfc8c6b71bf70804a0d535ff9d18@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_130912_678590_93662FF0 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20250306_131003_590551_37A6DD12 
+X-CRM114-Status: UNSURE (   6.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,49 +80,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jonas,
+All Rockchip GMAC variants require writing to GRF to configure e.g.
+interface mode and MAC rx/tx delay. The GRF syscon regmap is located
+with help of a rockchip,grf and rockchip,php-grf phandle.
 
-On 2025-03-06 21:38, Jonas Karlman wrote:
-> Support for Rockchip RK3328 GMAC and addition of the DELAY_ENABLE macro
-> was merged in the same merge window. This resulted in RK3328 not being
-> converted to use the new DELAY_ENABLE macro.
-> 
-> Change to use the DELAY_ENABLE macro to help disable MAC delay when
-> RGMII_ID/RXID/TXID is used.
-> 
-> Fixes: eaf70ad14cbb ("net: stmmac: dwmac-rk: Add handling for
-> RGMII_ID/RXID/TXID")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 003fa5cf42c3..297fa93e4a39 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -593,8 +593,7 @@ static void rk3328_set_to_rgmii(struct
-> rk_priv_data *bsp_priv,
->  	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
->  		     RK3328_GMAC_PHY_INTF_SEL_RGMII |
->  		     RK3328_GMAC_RMII_MODE_CLR |
-> -		     RK3328_GMAC_RXCLK_DLY_ENABLE |
-> -		     RK3328_GMAC_TXCLK_DLY_ENABLE);
-> +		     DELAY_ENABLE(RK3328, tx_delay, rx_delay));
-> 
->  	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON0,
->  		     RK3328_GMAC_CLK_RX_DL_CFG(rx_delay) |
+However, validating the rockchip,grf and rockchip,php-grf syscon regmap
+is deferred until e.g. interface mode or speed is configured.
 
-Thanks for this patch...  It's looking good to me, and good job
-spotting this issue!  Please, feel free to include:
+This series change to validate the rockchip,grf and rockchip,php-grf
+syscon regmap at probe time to help simplify the SoC specific operations.
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+I do not expect that this will introduce any regression. Prior to this,
+use of a device tree without a rockchip,grf would fail when interface
+mode or speed is configured, with this use of such device tree would
+instead result in failure at probe time.
+
+Jonas Karlman (2):
+  dt-bindings: net: rockchip-dwmac: Require rockchip,grf and
+    rockchip,php-grf
+  net: stmmac: dwmac-rk: Validate rockchip,grf and php-grf during probe
+
+ .../bindings/net/rockchip-dwmac.yaml          |  17 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 269 ++----------------
+ 2 files changed, 32 insertions(+), 254 deletions(-)
+
+-- 
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
