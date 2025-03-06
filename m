@@ -4,117 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63099C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:48:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BBBC282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sovy1GLImySzcm2IBgncXLa930ddER+UvyVbsoD1DfM=; b=PP5H6HPokhHv+C
-	rrp6WWxGZgGCMCpMdVypnbt+YShCmDbyWpddyJzEYQ4mwOx08ItfQjTIFGrM103n5lkzX5PUH5Qrw
-	oWmeohSVF1CK5aa98PsoIpAejp2fTGz2Hkoj7D4KfDvEvnlxSC7NhJWGGGm9oK3YxrhcDrH+TP3E5
-	DK107qu6V8WEv6a72xDHn4DP+1B9XMhJYqJ01GXJ9Dkhwxcpp8IV47S3L1bWdhHxjN6DdBHuzGnPF
-	+SrmqhZmoo/gaOh2G0KUdKdi+VBai0Nt40rRWZsS9NzxDbVtHhR7Xk3j7gEOVadI/9S3YJZRlDkr6
-	kGc8kfn0VmBE9Pb0FK1g==;
+	List-Owner; bh=Wz6lWvfCi7jQqVLQZKNOV9kly6qihxlD1n8Tbepl7+c=; b=BBARoUucF9bWQN
+	V4Ps4QOZCIdERop6dRu2yERJj/+uHbHkYUpZQJ1pYODJbqbpC+73yz6DkPljmxi7KXZfaRwAyUA1N
+	O+QDAvIaAAR5jmDocwGRkz0YSOXoKYpvKM1N+YcIf1YgnzxLtLslKrUCHxheqIx7tu1tZtxf1Lti2
+	7ed9a1hzJYeISBqM6jHuxolpP2oGrQCJ4XMltQU1dA9hhx3trKvUIAB3bIjEMWYqCOQZKC6TY6ns/
+	Rz5PpPRuHMrOR4gBWnz62MKxXY+d0wxVdjqyy5aIBUaUDEFQOCp/wUaC5bRXhAu+HJD3b2w1Um4n/
+	LCfM0YUChstAYCKhySxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBak-0000000B6GQ-2iEq;
-	Thu, 06 Mar 2025 13:48:50 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tqBh4-0000000B7PY-3rYY;
+	Thu, 06 Mar 2025 13:55:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBVd-0000000B5Uw-1GqV;
-	Thu, 06 Mar 2025 13:43:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 917485C5757;
-	Thu,  6 Mar 2025 13:41:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CB10C4CEE0;
-	Thu,  6 Mar 2025 13:43:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741268612;
-	bh=ZVY3XZxDh1/GgOY9Lyv5EP3ssFkAectXfXg0tT8tH5w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pp1T372QiuWTDRYvmNn3WgU3huZBPmcgcwMXUMXHy5mEuqxVWFmloLbt4gnU6IJ8D
-	 VbWQFjtcecnAPvKIQ8l30PkE6sgzEs5W0POLwTagWl21JfUJYhD2mWNjudyKeDdqe3
-	 GvRXwjIoLKJZSlWh6K6/3cSGvtAYNyHw6YuajEdGrusqkhn2Cn0JVZIA78XWWGFF7P
-	 QNJxI0loCdnSsBP7acFu+64091F2PBq2auOtAwbSQQZgexTy4UyuPyDInaVDPKxGDE
-	 nUq8AFRsPyCoXhWrpNQ3bKf0J+vBwqZqoNIB4h3Amgcf/6XerFPcKnt7q4p1iQ9z+l
-	 XS8JOiDdZZJZA==
-Message-ID: <81d60550-4929-48c1-b4d3-1473b902bf12@kernel.org>
-Date: Thu, 6 Mar 2025 14:43:21 +0100
+	id 1tqBXx-0000000B5xL-3qgM;
+	Thu, 06 Mar 2025 13:45:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=4LF7oF/vPY4sjxZRfSGkbpkJkGWRlWaUOeLFBkhithM=; b=lQ5yUJyMc5QOcQskqktmEkz34U
+	DLqaDP83oB/bbVcgUmv8cTW5aqLT27275Q8CKuHVaH8OiSnnkU3jD/2ve7p1/taV0RybrQNwu9DI+
+	DRVtkiLXVzs0JRAACGTUVbkZ6GNepE4SsZrloZMIVmpY+1tHKO2aU6Gh+19o0itQ+rGyx5FljCM7p
+	6XHD9DWn0ybc0DUzoCYdLA57DLQc0jvt/3SGx9vJL+wsb813hSa2bBHletwWl5hh41ZvaD/XnJusH
+	wTDR10FnWO5u/LZizyS/8T+ELa3TnDBgYlPpEITRylq5fE/DyPcKqvAeulZpS3XbukAm+qFyrBaIM
+	/gOdhZeg==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tqBXv-000000016YX-08Vb;
+	Thu, 06 Mar 2025 13:45:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=4LF7oF/vPY4sjxZRfSGkbpkJkGWRlWaUOeLFBkhithM=; b=Nopt0ve+Jk3Xa6M4wqTO4zsWoC
+	nLChYlD+UHvbIEYJR9lk4u1rHHxfleX5fJtkFIPtd8CDLHCDg1Byxu5o+Poit54/xtLXV9Ah7accO
+	QqguKAzwgHSs7DVGhAm5nRI+gYb3/nDCxqnvESz7vmnbdq2zBSyiTN1zNPdk+w8vNgZA+jXJLRNDg
+	n4vwAPXgZP340Pb8qDR8UrE+onQVamuopFPVXkfsJJ7oI9qFAKGEoZ5Gn0SnQAPDO8exE7EZns7jH
+	J7UaWIyWKg/UEoqYyAS25qFN11b6DP1f+ndFjVIXOcHcBDfYBT4DPQXcmGTdYKQneGaJHeGgp9kg8
+	RfyCOeow==;
+Received: from i53875a38.versanet.de ([83.135.90.56] helo=phil..)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tqBXn-0003Tn-Pu; Thu, 06 Mar 2025 14:45:47 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Patrick Wildt <patrick@blueri.se>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: Re: [PATCH v5 1/2] dt-bindings: arm: rockchip: Add MNT Reform 2 (RCORE)
+Date: Thu,  6 Mar 2025 14:45:45 +0100
+Message-ID: <174126874161.670332.12638948694058332407.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <Z8S5SHqUqKYiT6Wd@windev.fritz.box>
+References: <Z8S5SHqUqKYiT6Wd@windev.fritz.box>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] ASoC: dt-bindings: add schema for rockchip SAI
- controllers
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
-References: <20250305-rk3576-sai-v1-0-64e6cf863e9a@collabora.com>
- <20250305-rk3576-sai-v1-3-64e6cf863e9a@collabora.com>
- <ffd6287c-cbfd-4ba8-9332-45bad4e60583@kernel.org>
- <2376575.ElGaqSPkdT@workhorse>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <2376575.ElGaqSPkdT@workhorse>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_054333_464547_3CE1A089 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20250306_134555_293703_5397A45A 
+X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,64 +95,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/03/2025 14:13, Nicolas Frattaroli wrote:
-> On Thursday, 6 March 2025 08:42:54 Central European Standard Time Krzysztof 
-> Kozlowski wrote:
->> On 05/03/2025 22:24, Nicolas Frattaroli wrote:
->>> Rockchip introduced a new audio controller called the "Serial Audio
->>> Interface", or "SAI" for short, on some of their newer SoCs. In
->>> particular, this controller is used several times on the RK3576 SoC.
->>>
->>> Add a schema for it, with only an RK3576 compatible for now. Other SoCs
->>> may follow as mainline support for them lands.
->>>
->>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->>> ---
->>>
->>>  .../devicetree/bindings/sound/rockchip,sai.yaml    | 151
->>>  +++++++++++++++++++++
->> Filename based on compatible.
+
+On Sun, 02 Mar 2025 21:02:16 +0100, Patrick Wildt wrote:
+> Document board compatible bindings for the MNT Reform 2 with it's RCORE
+> SoM, which is based on Firefly's iCore-3588Q.
 > 
-> Sure, but more compatibles will follow. Are you certain you want a file named 
-> rockchip,rk3576-sai.yaml to then contain rockchip,rk3528-sai? If so then I do 
-
-Yes (or the other way around if 3528 is older)
-
-> not understand the reason behind this policy.
-
-So the name will match hardware, instead of sai.yaml, sai2.yaml,
-sai3.yaml and sai-green-frog.yaml.
-
 > 
->>
->>>  MAINTAINERS                                        |   6 +
->>>  2 files changed, 157 insertions(+)
->>
->> ...
->>
->>> +
->>> +  dma-names:
->>> +    minItems: 1
->>> +    maxItems: 2
->>> +    oneOf:
->>> +      - const: tx
->>> +      - const: rx
->>> +      - items:
->>> +          - const: tx
->>> +          - const: rx
->>
->> Why all combinations are possible?
-> 
-> Because they are. sai5 in rk3576 is rx only. sai7 is tx only. Others are both 
 
-What is sai5 and sai7? Instances on the same chip? Does it mean some of
-instances can only receive and some only transmit?
+Applied, thanks!
 
-> tx and rx. Do you want me to enforce that those with both are always tx 
-> followed by rx?
-> 
+[1/2] dt-bindings: arm: rockchip: Add MNT Reform 2 (RCORE)
+      commit: 3bf4fc44c6544f994237d8475bf56548a62011f5
+[2/2] arm64: dts: rockchip: add MNT Reform 2
+      commit: 5324af2d029d47a39ce22ae1613e2753e5e372a2
+
 Best regards,
-Krzysztof
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
