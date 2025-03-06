@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B42AC282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 19:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95261C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 20:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RXOC/trVlqJH3ZUdoTmiEg8lrRhdQByeuA9ZcRB9NXE=; b=wCSsQHX6M2GOTV
-	Xc+Y6tUj8XfG1Y2vYevrRS/lcw1mJMFEImT0k87sX6eP+e4dbcGunQ7UqRlhmfzfTNPQr14pvM8jc
-	juxyc+uKefCfIAc/T2ko/QTO+rFN4l/ej7UPiC4MDvDP0NhHxeUCbX30Ys/B+hGvZDA/zJuIhRNxI
-	MRZu+u2OgBdU7i+BVWQDjdbFMd2XWQZrc3nWE8ldlLKcvJ5XnGKVh8deKywqsJM4RzDA6XTwCs8w9
-	Qh42ViJnrXDyN3oshthZ8yb3NX3LsLQ0BHVNLMkFR9xAsRXH+mpDBDjFDhCSFbFcmT5kZBHOtk1LB
-	4PcxPO9J7XiEZWQYFgJw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0O53Ur/ltEzIT4H/w03cNrdK/wUEZwP+NStSzjzF6vo=; b=faFfLXVhKgYsrZ
+	WxU3vT+ciLk9pHGCBXgNtc+1MoAkAgSbXo+3/ky6D/RdR/JLCsfzBRiNuwuo7hfDmrstXregc4IGw
+	YxLlGq1AbYF3V5mQxxVaU3UIkJl4cUGlBnTfYfH6nS3kkN34SHTDYGyr5EG8hwWxSkPdMZlkZ8JI+
+	10IfUz/cqSHWlGsE6Tr4UcPCF6bjt9brHdh1Di3VW/AmYFPWy2DwOrWFCEBNYL1kQ08tJevOWOl89
+	CVFUgiPzITj2qYo5+Q6RP2gDdUCUwj3I8OtlAMBeU779rqjk/X5ucSG6wkFABB6pPZQsFuUMbli7r
+	b+uB8Z9VkDPaBvXixFOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGuu-0000000C0z7-20gj;
-	Thu, 06 Mar 2025 19:30:00 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tqHk1-0000000C7FF-0aSE;
+	Thu, 06 Mar 2025 20:22:49 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGus-0000000C0xv-0lKz;
-	Thu, 06 Mar 2025 19:29:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741289383; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LhMQiTrpinuACBWF/TfiUv/6m6Uc4ebC3J70WJ19u2mQa8pvSEgzxdtBKfmEfSsepufdZxQvWHnIJWiqAaJa2Y/MTRw7vLqLAwrSObGVxWvM3h642MRu8/iLmpqERyLMD8xPiL/tH38PvBosUGgU6ol4yacFd8+6AgoMMg09zKk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741289383; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=J3FMXf/kAUtNvuSZsQyWBK8cEK4f3VIEHblgAMIBzL4=; 
-	b=HWWgtKzuBpEKEh1FNUZrVY183c66clDbM0xCkHWA6lDQk8+19U56cJeKuBhTzRhIEJcEiCl3s+lbDFoHLSDVLBx2ssR+oCc6FC48Y0QhC4sHUoPTRpvtcFiGgb+YmAukG4wL6gGNFaH4Pp7YNpcb2nmRlXMIfL3pfjmDZiX4lC8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741289383;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=J3FMXf/kAUtNvuSZsQyWBK8cEK4f3VIEHblgAMIBzL4=;
-	b=dS4u8h0NFBtvoCdx0cRje9ZUFtqr9u6I+Waj98wTjoDcIF02fcnN2+87Kgu/gXMx
-	hF1i3mUJIiEmyg2OPIf9/hr8/yWauX/Jfmmh34u6wwCvvmJjsQa0sP/NOJYHWSW6nP2
-	Gg93d9qk9xHLhjs0gCHSEdjTlTPo8OJc21GIUgoo=
-Received: by mx.zohomail.com with SMTPS id 1741289381820148.17280241335516;
-	Thu, 6 Mar 2025 11:29:41 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 06 Mar 2025 20:29:23 +0100
-Subject: [PATCH] phy: phy-rockchip-samsung-hdptx: Add support for RK3576
+	id 1tqHiK-0000000C73H-3P5q;
+	Thu, 06 Mar 2025 20:21:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741292463;
+	bh=GxiDbWNKqgCU+Ke2LkaMoGFA8CQamRLz9lTuH/1CJBM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=huKYhB1cXv9cYSWddmu4w08vq6rgbNjAoZOibXwlNZGjgw1NRnpTyWqL235l0T/ct
+	 V+JIhNGe8HQs2Pzmk4ARs7Q/e93u6+eKqzbzjfBBB1WU/mne+BugeLhTbJ2TKW2DyP
+	 IPVdTzUQI2BwT0lSR9Sc0uc06qY4apBllqOnxrG4Q+n1tQpCEw3b5V+ZEYufI/QQF9
+	 Tlu+7BmdXH+N9LSp/fN6c0G+wwLssJAY7sq2+xuJy87/P8C4LPTEhkdqSeDNn8vuo8
+	 xKTUZlrOz0LVJSVW8+ulTCi8mPPUqMG4xHBAAGfBXAKfD5BHvJzuZQo500vrz5rwRY
+	 qqsos1Rw6j84Q==
+Received: from [192.168.1.90] (unknown [84.232.140.93])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B4E1817E05C1;
+	Thu,  6 Mar 2025 21:21:02 +0100 (CET)
+Message-ID: <751f18a4-900b-4644-9ae7-d28fa44888da@collabora.com>
+Date: Thu, 6 Mar 2025 22:21:01 +0200
 MIME-Version: 1.0
-Message-Id: <20250306-rk3576-hdptx-phy-v1-1-288cc4b0611a@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAJL3yWcC/y3MQQrDIBCF4avIrDtgYp1CrlKySHVSpcRYtcUSc
- vdK0+X/4H0bZE6eMwxig8Rvn/0aWnQnAcZN4c7obWvoZa+lkoTpofSF0NlYKkb3wTPPREp2RMZ
- Cu8XEs68/8joenfj5anI5RrhNmdGsy+LLIALXgn9dw7jvX+t/1NeTAAAA
-X-Change-ID: 20250306-rk3576-hdptx-phy-4ef6630166cd
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
- Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] phy: phy-rockchip-samsung-hdptx: Add support for RK3576
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
  Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>
-X-Mailer: b4 0.14.2
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250306-rk3576-hdptx-phy-v1-1-288cc4b0611a@collabora.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20250306-rk3576-hdptx-phy-v1-1-288cc4b0611a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_112958_295210_FE41500D 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20250306_122105_010412_918280C2 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,72 +73,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Despite the compatible already being listed in the bindings, the PHY
-driver never gained explicit support for it. This is especially a
-problem because the explicitly listed PHY addresses need to be specified
-for each SoC.
+Hi,
 
-To solve this, add the compatible, and a PHY config, with the address
-gleaned from rk3576.dtsi.
+On 3/6/25 9:29 PM, Nicolas Frattaroli wrote:
+> Despite the compatible already being listed in the bindings, the PHY
+> driver never gained explicit support for it. This is especially a
+> problem because the explicitly listed PHY addresses need to be specified
+> for each SoC.
+> 
+> To solve this, add the compatible, and a PHY config, with the address
+> gleaned from rk3576.dtsi.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+> I thought this must've been already submitted somewhere, but it wasn't
+> in linux-next and searching for the modified file on lore also didn't
+> yield any results. I guess this slipped through the cracks, and
+> torpedoes HDMI support for RK3576 entirely until merged, so it'd be
+> great if this could be merged in time for 6.15.
+> 
+> Let me know if I'm just very confused and this is already handled in
+> some other series that's about to be applied.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
-I thought this must've been already submitted somewhere, but it wasn't
-in linux-next and searching for the modified file on lore also didn't
-yield any results. I guess this slipped through the cracks, and
-torpedoes HDMI support for RK3576 entirely until merged, so it'd be
-great if this could be merged in time for 6.15.
+I'm not aware of this being submitted as part of another series, that's
+probably because commit f08d1c085638 ("phy: phy-rockchip-samsung-hdptx:
+Don't use dt aliases to determine phy-id"), which actually changed the
+approach of mapping the PHY IDs, has been applied fairly recently.
 
-Let me know if I'm just very confused and this is already handled in
-some other series that's about to be applied.
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index f88369864c50e4563834ccbb26f1f9f440e99271..fe7c057483563686b8076cf2ce562440cfa6fe55 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -2017,6 +2017,13 @@ static const struct dev_pm_ops rk_hdptx_phy_pm_ops = {
- 		       rk_hdptx_phy_runtime_resume, NULL)
- };
- 
-+static const struct rk_hdptx_phy_cfg rk3576_hdptx_phy_cfgs = {
-+	.num_phys = 1,
-+	.phy_ids = {
-+		0x2b000000,
-+	},
-+};
-+
- static const struct rk_hdptx_phy_cfg rk3588_hdptx_phy_cfgs = {
- 	.num_phys = 2,
- 	.phy_ids = {
-@@ -2026,6 +2033,10 @@ static const struct rk_hdptx_phy_cfg rk3588_hdptx_phy_cfgs = {
- };
- 
- static const struct of_device_id rk_hdptx_phy_of_match[] = {
-+	{
-+		.compatible = "rockchip,rk3576-hdptx-phy",
-+		.data = &rk3576_hdptx_phy_cfgs
-+	},
- 	{
- 		.compatible = "rockchip,rk3588-hdptx-phy",
- 		.data = &rk3588_hdptx_phy_cfgs
-
----
-base-commit: a03be51d680391ba113e2e22b38743c276b6e2fa
-change-id: 20250306-rk3576-hdptx-phy-4ef6630166cd
-
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
+Cheers,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
