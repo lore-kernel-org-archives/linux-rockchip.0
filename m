@@ -4,80 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E0DC28B22
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 10:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11246C28B23
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 10:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aHbuSHp7TRqnLV0w7oBG3HdKOZnOTT82/dm8ffvnphg=; b=SUuCXUGBRnVjiH
-	fPmF+85mRFSLWEWjagFxfXvoPKtumMPGN7U0Ri7PGoeqTaVAUy9OGO7QsF0sOcAoDceU4cqy1OeWP
-	Or4fkqZg7llt1MQ9MxYb+8A+Qiaw4f+16+MFwLqocUu1lIr8URxcqTWb+CqqxFU0npzZmE1TMK5yR
-	BqBA1oZn80fRx9M7v5RmMpp9aKEJMQGdA+VQP+2a+Qjt4AZ+CtwE0pBbZsrzwONYZytj/P1hVjhsV
-	XbqwClMtvhyeWfTAazUMmavVLWd4M6Fj7mAVIHwEQej45mpNKjB/JbIuhoeT7Nly/jltKWL1EaIZV
-	v4tT86GuvQ/7c27oNc7w==;
+	List-Owner; bh=qft/VXDhOO0uy9QDwZ/jiohmPDuLDerD7gvmPhTeUJ0=; b=xOFoAriI3Bco2E
+	nEFqk0/HOgk5OnTxOyCNDLq6C70+ZKQd1fAdZ+a1EE+PXTQCNe5ONVUjsYREA2Vq9grSVNhmE7b+6
+	61QHh9Hq1f6aWz+/RXlm/9scK6uiKeCF550SviDffG2oWH00FFch1djSUPan+QGcDwLXGWBh2EM5M
+	hUPeRfYqZcJizFAhSvMWWByALzdK+JX2huTsU9fnFwFCcqYj7Ff5UWREqrq7uetRWiQ/YMoEcR0Tb
+	+r0URWPCn1V6fq6TfyuVtsrACgyt5Di9TtLb39LqhusjkAKKXW2UZEh1MXgETOOgapoI2fm5GRJ3f
+	ZeoqBp7IIMd8xxUfYSqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq8CL-0000000Aacb-2fQn;
-	Thu, 06 Mar 2025 10:11:25 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tq8CS-0000000AakG-24Fl;
+	Thu, 06 Mar 2025 10:11:32 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6zc-0000000AP2a-2x3o;
-	Thu, 06 Mar 2025 08:54:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Message-ID:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=yE52WJ2vimlh/juoZ6MbwG17+CtDV9JuhivlROiXjXo=; b=HXnk6UkKsHAdvbhDuZPCe/YNo8
-	yxGkCVOPL+v72yvcGMV9lv0xkTr3E2HXqNznVS0VyMrm0aCh3T/pMKzjNwYD9Z5YheZVte/ydlJ5O
-	vSzdnYGM31udSAth+ST9o2YCT+dU7uW6vp4t6xe2hMtUKuh8P1ct4m7Z4NRllWH+naWQ3GA3281gd
-	vKgPrKEuhVzXQFfy3rltqSPlYpguLrjWlUvTr5R2sPn0c6f7kHj+c19cSL44Fcj76VAztuln37DIu
-	cSLPmLDtTM4yFz2co/G1CuGA1uXps0+RTSXJuTNVNFOB+xMNbO+Cw55fnoAl33VE2egMNRLUbognO
-	NcV1RD/w==;
-Received: from m16.mail.163.com ([220.197.31.4])
-	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tq6zZ-00000000yb0-0S95;
-	Thu, 06 Mar 2025 08:54:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=otJkz+uTPErAYIjjRZpM17wntC5OwTC49cEJBc+LIdk=; b=M
-	JmLdj8lP9dWjkBDyETZhE6ieWhs61qK8O3Vf1iAqnvG2H7x1qnM/8L5C7niwY2LJ
-	57Hs5dfY7HekbJMbCyLkHm/bbFdM2klID/CVwnxZYJF0d6K3ogTkXU8FrM4phDz0
-	ptt5YwYCCoA6Wn4pMzoeOGpWlMfp2VgEVZbvS3KHro=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-118 (Coremail) ; Thu, 6 Mar 2025 16:53:21 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 6 Mar 2025 16:53:21 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Piotr Oniszczuk" <piotr.oniszczuk@gmail.com>
-Cc: heiko@sntech.de, neil.armstrong@linaro.org,
-	sebastian.reichel@collabora.com, devicetree@vger.kernel.org,
-	hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	"Andy Yan" <andy.yan@rock-chips.com>, krzk+dt@kernel.org,
-	robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re:Re: [PATCH 0/6] Add support for RK3588 DisplayPort Controller
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <44213B17-FE14-4FB8-8319-1E31BBF6EAA0@gmail.com>
-References: <25401bfa.291d.19564244e54.Coremail.andyshrk@163.com>
- <75189787-28E1-4FC2-8E10-4960B3877A6F@gmail.com>
- <28b0d3fc.bb3.19568f6b5f8.Coremail.andyshrk@163.com>
- <44213B17-FE14-4FB8-8319-1E31BBF6EAA0@gmail.com>
-X-NTES-SC: AL_Qu2fA/6evkor5yKaYOkfmkcVgOw9UcO5v/Qk3oZXOJF8jDDp2ycwUUJSDXLaweO0FQ+OmgmGXTtC9/R7f4VTVaQNArHD3vYUsFK+gDGjSdXBUQ==
+	id 1tq7py-0000000AXEk-0JNe
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Mar 2025 09:48:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1741254496;
+ bh=U6wIo8sTMBr3RbRnbR8Rzc/ze/1O+F9622aQgZcZWCQ=;
+ b=bYiezuGYL9QUDUNDcLiXnal0zi/uoy7W+47GrZDZ1a/ewc3LPfcI0uC6Cyf90MLMH62D7p47k
+ aob89hWzUFxS728dbfdBw3WRE8ltFmplefFtP82/50LtoSOvxOwxZ5SXIRgGX3+Jo+Ft8CpDzwd
+ CV512fxbNAn18US1aCnWljZBLhG6QKu0o8KylBZu/ldFRyYwsNuHet/T/Xe1WXN5ws3EB4Oe9ml
+ 85jmk3pmlD52xMbXk+WT2vk+rWUsW1OXaZGi2Bs8Bw5wKK6V6AI45tCmxjWRhd79DBgrz46HXEK
+ 0C6IVnBgDEiuHWPlFSf37ZCwPug1C8UrHqFdsPoL3RMg==
+X-Forward-Email-ID: 67c967d67c40f20919024cb4
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.59
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <ccd8be6a-c8d4-407b-906a-e4788a365775@kwiboo.se>
+Date: Thu, 6 Mar 2025 10:16:00 +0100
 MIME-Version: 1.0
-Message-ID: <74c154b6.8c50.1956aa8c8d2.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: digvCgD3__eBYslnVcN3AA--.8557W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAsIXmfJWZrlfwABs7
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] rockchip: Add support for onboard eMMC on Radxa E20C
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20250305214108.1327208-1-jonas@kwiboo.se>
+ <20250306090001.113127-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250306090001.113127-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_085409_608164_D49AB432 
-X-CRM114-Status: UNSURE (   4.72  )
+X-CRM114-CacheID: sfid-20250306_014818_232593_BDE79143 
+X-CRM114-Status: UNSURE (   9.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,38 +75,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpLAoK5ZyoIDIwMjUtMDMtMDYgMTY6NDI6MDDvvIwiUGlvdHIgT25pc3pjenVrIiA8cGlvdHIu
-b25pc3pjenVrQGdtYWlsLmNvbT4g5YaZ6YGT77yaCj4KPgo+PiBXaWFkb21vxZvEhyBuYXBpc2Fu
-YSBwcnpleiBBbmR5IFlhbiA8YW5keXNocmtAMTYzLmNvbT4gdyBkbml1IDYgbWFyIDIwMjUsIG8g
-Z29kei4gMDE6NTk6Cj4+IAo+PiAKPj4gCj4+IAo+PiBCb3RoIG9mIHRoZSB0d28gY29uZmlnIG9w
-dGlvbnMgc2hvdWxkIGJlIGVuYWJsZWQuCj4+IGFuZHlAUHJvNDgwOn4vV29ya1NwYWNlL2xpbnV4
-LW5leHQkIHJnIERXX0RQIC5jb25maWcKPj4gNDA0NDpDT05GSUdfUk9DS0NISVBfRFdfRFA9eQo+
-Cj5oZXJlIGnigJltIGEgYml0IGxvc3TigKYuCj5ncmVwaW5nIG9uIGZ1bGwga2VybmVsIHNvdXJj
-ZXMgKHdpdGggYXBwbGllZCBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGlu
-dXgtcm9ja2NoaXAvbGlzdC8/c2VyaWVzPTkzNjc4NCkgZ2l2ZXMgbWUgbm8gc2luZ2xlIGFwcGVh
-cmFuY2Ugb2YgUk9DS0NISVBfRFdfRFDigKYKPkRvIGkgbWlzcyBzb21ldGhpbmc/CgpzZWUgUEFU
-Q0ggMy82OiAgIAoKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZp
-ZyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCmluZGV4IDI2YzQ0MTBiMjQwNy4u
-Yzg2MzhiYWY5NjQxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZp
-ZworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwpAQCAtOCw2ICs4LDcgQEAg
-Y29uZmlnIERSTV9ST0NLQ0hJUAogCXNlbGVjdCBEUk1fUEFORUwKIAlzZWxlY3QgVklERU9NT0RF
-X0hFTFBFUlMKIAlzZWxlY3QgRFJNX0FOQUxPR0lYX0RQIGlmIFJPQ0tDSElQX0FOQUxPR0lYX0RQ
-CisJc2VsZWN0IERSTV9EV19EUCBpZiBST0NLQ0hJUF9EV19EUAogCXNlbGVjdCBEUk1fRFdfSERN
-SSBpZiBST0NLQ0hJUF9EV19IRE1JCiAJc2VsZWN0IERSTV9EV19IRE1JX1FQIGlmIFJPQ0tDSElQ
-X0RXX0hETUlfUVAKIAlzZWxlY3QgRFJNX0RXX01JUElfRFNJIGlmIFJPQ0tDSElQX0RXX01JUElf
-RFNJCkBAIC01OCw2ICs1OSwxMiBAQCBjb25maWcgUk9DS0NISVBfQ0ROX0RQCiAJICBSSzMzOTkg
-YmFzZWQgU29DLCB5b3Ugc2hvdWxkIHNlbGVjdCB0aGlzCiAJICBvcHRpb24uCiAKK2NvbmZpZyBS
-T0NLQ0hJUF9EV19EUAorCWJvb2wgIlJvY2tjaGlwIHNwZWNpZmljIGV4dGVuc2lvbnMgZm9yIFN5
-bm9wc3lzIERXIERQIgorCWhlbHAKKwkgIENob29zZSB0aGlzIG9wdGlvbiBmb3IgU3lub3BzeXMg
-RGVzaWduV2FyZSBDb3JlcyBEaXNwbGF5UG9ydAorCSAgdHJhbnNtaXQgY29udHJvbGxlciBzdXBw
-b3J0IG9uIFJvY2tjaGlwIFNvQy4KCiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2Nr
-Y2hpcC8wNDdFRUNGQy03RTU1LTQ0RUMtODk2Ri0xM0ZFMDQzMzNFNERAZ21haWwuY29tL1QvI20x
-NzhhMzI1ZWEwZWJjNjQxODdhYWU0NzRkNzdjM2Y3YTllMGJjOTNkCj4KX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Chukun,
+
+On 2025-03-06 10:00, Chukun Pan wrote:
+> Hi,
+> 
+>> Driver changes to use different delay and tap num is needed to be able
+>> to support HS400 modes, something for a future series. With this HS200
+>> mode should work:
+> 
+> I have tried HS200 mode on other rk3528 boards and it works fine,
+> so can we enable HS200 mode for Radxa E20C first?
+
+The host controller already report the HS200 mode, and as shown in cover
+letter HS200 mode is being enabled/used with this series.
+
+However, the driver must use different tap/delay num for HS400(ES) modes.
+At top of [1] there is a commit that changes to use same tap/delay num
+as vendor kernel and what I have tested worked in U-Boot. That commit
+needs to be re-worked before it is ready. Also see [2] for pending work
+before I plan to complete before moving on to the dwcmshc driver.
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250227-rk3528-rk3506/
+[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20250305-rk3528/
+
+Regards,
+Jonas
+
+> 
+> Thanks,
+> Chukun
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
