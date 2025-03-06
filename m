@@ -4,90 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B765C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 19:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B42AC282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 19:30:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OUj8XLqdfNx85vOahd5+QfJMr5WSgKSE3veqOJ0XNNU=; b=icpGVRty4y2WjTGTw5jgwbWZbA
-	48JSOcITQBEmb8HUUKVGl1Ikx+A+KFTOQo0H524Uv0v3/edd/hvv8uoC2cH1kYzpUVcLWqCfRvCBA
-	XNFle1Ef5pwC5rpobxpfwcB2s+gQTRHDjc8nY34T3p1TntvF/QWrWj2PEMWDRUjxS3eQT8pKqCtpJ
-	TUVPtHVZHa7Ph6sLQ2JgSDCNDIAcbyk65q4V9ZeUtdJ2Ap3V0QkiAnU2XCuOCxnkK0pulcj1s7bSu
-	QwFu7a7Rj1Q18ZxshUVhjdNmGDXej8rYZpFUL69XZhwKQ+PJl8+HZ/RHVCe1W0dtnYrakaxKI1jYn
-	+ut05VmQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RXOC/trVlqJH3ZUdoTmiEg8lrRhdQByeuA9ZcRB9NXE=; b=wCSsQHX6M2GOTV
+	Xc+Y6tUj8XfG1Y2vYevrRS/lcw1mJMFEImT0k87sX6eP+e4dbcGunQ7UqRlhmfzfTNPQr14pvM8jc
+	juxyc+uKefCfIAc/T2ko/QTO+rFN4l/ej7UPiC4MDvDP0NhHxeUCbX30Ys/B+hGvZDA/zJuIhRNxI
+	MRZu+u2OgBdU7i+BVWQDjdbFMd2XWQZrc3nWE8ldlLKcvJ5XnGKVh8deKywqsJM4RzDA6XTwCs8w9
+	Qh42ViJnrXDyN3oshthZ8yb3NX3LsLQ0BHVNLMkFR9xAsRXH+mpDBDjFDhCSFbFcmT5kZBHOtk1LB
+	4PcxPO9J7XiEZWQYFgJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGri-0000000C0Ds-16g3;
-	Thu, 06 Mar 2025 19:26:42 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1tqGuu-0000000C0z7-20gj;
+	Thu, 06 Mar 2025 19:30:00 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqGrf-0000000C0Cu-3wsq;
-	Thu, 06 Mar 2025 19:26:41 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3912c09be7dso687464f8f.1;
-        Thu, 06 Mar 2025 11:26:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741289198; x=1741893998; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
-        b=iQjwfqplfqA2jXkTJxTgUYfbMTOJsNwoB6gg4G67GGU9yUNEtgLVY+ecmK3QOQYsPo
-         eU5hr39awP3mcgefnFcO4obbBSZ3MZdSxCcuMA3xmXu+1slUU20huhnJOlgWfZcB9AGg
-         DluA2ljJBYAukS7Zudbe2DFajBZNmP5HI0s9qLPVtfj2ePdex9fwXMXWO7v1Muco8fEi
-         AqWrGIIPP/EUmdD9V0Tr64FaEm98owu4dPTOFcdgNsunPwITIBBMF5bZv31Hf14Av9mA
-         KchmxcmS+Cd3ZUz178LkZId4/lFWv82vdGYqRFPh5zdZjc2+HvLy4zy1MF2oYjcVGemf
-         QUWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741289198; x=1741893998;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yNcfgkruRbdQ2LTcDlb82l2rtv263h9UvbuoZgmPSdM=;
-        b=VqESd8WXSghioPD+OdJQ3ViE1RHIU3DNNhrCK/DNcqcIVHvGvWvX3xorqstvDcbYbc
-         DZuthWseo+afL9yJTs04UvVHZJzsIE8ihrorZxPep8z+MSqZIy56fKtWqrx10nVU1Hyh
-         dmnJZKI8Nz7LncmtEAf6UZlhjAmZPigiYpuTdWb7G1bBDelBRQU16HYeRZrEGBxs18ry
-         vb2hA577y7T+m40SD8UoknOwl2+G+PF+yNi9Ujv01GOOqxGQI+dSPgE3gPc9fy7XdM+D
-         Q2PJjD0px5XFuF251trRVrngl4FvDrd1wEHsADZTbVhRQxNjqkU3gcGgPFBP+tf4MZqL
-         bFuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWIEDK0E8SwR/u1C7wZuQOTvlMH02RoR8Alc0+CJoiqvT8mr/fqgyE61MB8rzXqaAt91YX3Na/DrLzppY+5zQ==@lists.infradead.org, AJvYcCXu7brrhgSBbqh4S8/squL4ujT2srKwOs5z6o5GcPelSBZTWaOjT9WntKhj62dVk+VHTzuphQVQHV24uERV8Fs=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXh0cFKVLwxd4c0olUB+5Hl1TGirpSA3O4yQDc4SVLBcMfVQJW
-	Dr1umi3iLnOD43OH23hCuEc4mEp5wxKqStQw/MXjv+DqH6g5VEdsI+DKbA==
-X-Gm-Gg: ASbGncuWTB9jnWq4jh0jn+laooINBXhroMlvSt/SPYaCdn6XTgV7QANUV32VeuhLmVK
-	3uHyTcHwsI8xDUUSErf6iExt3/HjYP7bwk/ehtr0djGPzrY1kDyFrtwFIbYKgEP5YDsgIqRzw9x
-	s7KG/GvHTcGuhYfeHJrZknwaujIIXKo1vI4HONOHUwlQol+3I66OPqGL9zaAB/MTt+ncV7BMtc1
-	uSBdmHJlTjdmkhuV7qF3vITnrCnjINhtuh5B8BG295j3Lte4UEpMMvQh5ROcIQHATqYEspBsPXY
-	B1DYhAH1QEEGCMcMX5Ng1RO0kbYk0nTBnWcnO84Oqiw1v16IYlTXvVUpcPgcXMABaG7wGDRMLt+
-	9K4P1QmY9rgIkrUnRmHEjOG/LGsfPzX8=
-X-Google-Smtp-Source: AGHT+IGse2HrwvQit3ez+Tb+IZmcWPgul6Oz1Of3MncB8IKv5GiNEYehZwUGHa/gmdRGfttFwUyGrw==
-X-Received: by 2002:a5d:5f45:0:b0:390:eebc:6f32 with SMTP id ffacd0b85a97d-39132da8fecmr291664f8f.48.1741289198054;
-        Thu, 06 Mar 2025 11:26:38 -0800 (PST)
-Received: from orome (p200300e41f3a9f00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f3a:9f00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c0e1d67sm2905872f8f.74.2025.03.06.11.26.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Mar 2025 11:26:36 -0800 (PST)
-Date: Thu, 6 Mar 2025 20:26:33 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, 
-	Mikko Perttunen <mperttunen@nvidia.com>
-Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <mtsi7lohn4nq75y3mdzk7eomloxvswjn4blsmruutpejhppd5i@wexuiu7yfea3>
-References: <20250218142542.438557-1-tzimmermann@suse.de>
- <20250218142542.438557-21-tzimmermann@suse.de>
+	id 1tqGus-0000000C0xv-0lKz;
+	Thu, 06 Mar 2025 19:29:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741289383; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LhMQiTrpinuACBWF/TfiUv/6m6Uc4ebC3J70WJ19u2mQa8pvSEgzxdtBKfmEfSsepufdZxQvWHnIJWiqAaJa2Y/MTRw7vLqLAwrSObGVxWvM3h642MRu8/iLmpqERyLMD8xPiL/tH38PvBosUGgU6ol4yacFd8+6AgoMMg09zKk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741289383; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=J3FMXf/kAUtNvuSZsQyWBK8cEK4f3VIEHblgAMIBzL4=; 
+	b=HWWgtKzuBpEKEh1FNUZrVY183c66clDbM0xCkHWA6lDQk8+19U56cJeKuBhTzRhIEJcEiCl3s+lbDFoHLSDVLBx2ssR+oCc6FC48Y0QhC4sHUoPTRpvtcFiGgb+YmAukG4wL6gGNFaH4Pp7YNpcb2nmRlXMIfL3pfjmDZiX4lC8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741289383;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=J3FMXf/kAUtNvuSZsQyWBK8cEK4f3VIEHblgAMIBzL4=;
+	b=dS4u8h0NFBtvoCdx0cRje9ZUFtqr9u6I+Waj98wTjoDcIF02fcnN2+87Kgu/gXMx
+	hF1i3mUJIiEmyg2OPIf9/hr8/yWauX/Jfmmh34u6wwCvvmJjsQa0sP/NOJYHWSW6nP2
+	Gg93d9qk9xHLhjs0gCHSEdjTlTPo8OJc21GIUgoo=
+Received: by mx.zohomail.com with SMTPS id 1741289381820148.17280241335516;
+	Thu, 6 Mar 2025 11:29:41 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Thu, 06 Mar 2025 20:29:23 +0100
+Subject: [PATCH] phy: phy-rockchip-samsung-hdptx: Add support for RK3576
 MIME-Version: 1.0
-In-Reply-To: <20250218142542.438557-21-tzimmermann@suse.de>
+Message-Id: <20250306-rk3576-hdptx-phy-v1-1-288cc4b0611a@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAJL3yWcC/y3MQQrDIBCF4avIrDtgYp1CrlKySHVSpcRYtcUSc
+ vdK0+X/4H0bZE6eMwxig8Rvn/0aWnQnAcZN4c7obWvoZa+lkoTpofSF0NlYKkb3wTPPREp2RMZ
+ Cu8XEs68/8joenfj5anI5RrhNmdGsy+LLIALXgn9dw7jvX+t/1NeTAAAA
+X-Change-ID: 20250306-rk3576-hdptx-phy-4ef6630166cd
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_112639_978643_A8221502 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20250306_112958_295210_FE41500D 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,71 +73,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5921200795033599982=="
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Despite the compatible already being listed in the bindings, the PHY
+driver never gained explicit support for it. This is especially a
+problem because the explicitly listed PHY addresses need to be specified
+for each SoC.
 
---===============5921200795033599982==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="y6cp6aqkj6w24xiu"
-Content-Disposition: inline
+To solve this, add the compatible, and a PHY config, with the address
+gleaned from rk3576.dtsi.
 
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+I thought this must've been already submitted somewhere, but it wasn't
+in linux-next and searching for the modified file on lore also didn't
+yield any results. I guess this slipped through the cracks, and
+torpedoes HDMI support for RK3576 entirely until merged, so it'd be
+great if this could be merged in time for 6.15.
 
---y6cp6aqkj6w24xiu
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 20/25] drm/tegra: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-MIME-Version: 1.0
+Let me know if I'm just very confused and this is already handled in
+some other series that's about to be applied.
+---
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-On Tue, Feb 18, 2025 at 03:23:43PM +0100, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch according to hardware requirements.
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: Mikko Perttunen <mperttunen@nvidia.com>
-> ---
->  drivers/gpu/drm/tegra/gem.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index f88369864c50e4563834ccbb26f1f9f440e99271..fe7c057483563686b8076cf2ce562440cfa6fe55 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -2017,6 +2017,13 @@ static const struct dev_pm_ops rk_hdptx_phy_pm_ops = {
+ 		       rk_hdptx_phy_runtime_resume, NULL)
+ };
+ 
++static const struct rk_hdptx_phy_cfg rk3576_hdptx_phy_cfgs = {
++	.num_phys = 1,
++	.phy_ids = {
++		0x2b000000,
++	},
++};
++
+ static const struct rk_hdptx_phy_cfg rk3588_hdptx_phy_cfgs = {
+ 	.num_phys = 2,
+ 	.phy_ids = {
+@@ -2026,6 +2033,10 @@ static const struct rk_hdptx_phy_cfg rk3588_hdptx_phy_cfgs = {
+ };
+ 
+ static const struct of_device_id rk_hdptx_phy_of_match[] = {
++	{
++		.compatible = "rockchip,rk3576-hdptx-phy",
++		.data = &rk3576_hdptx_phy_cfgs
++	},
+ 	{
+ 		.compatible = "rockchip,rk3588-hdptx-phy",
+ 		.data = &rk3588_hdptx_phy_cfgs
 
-Acked-by: Thierry Reding <treding@nvidia.com>
+---
+base-commit: a03be51d680391ba113e2e22b38743c276b6e2fa
+change-id: 20250306-rk3576-hdptx-phy-4ef6630166cd
 
---y6cp6aqkj6w24xiu
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmfJ9ukACgkQ3SOs138+
-s6GThw/9F553EWmmWz8ONopI5pY7Fy+Pu8kzqsU5bhKSKO2aqJ8y4PFOQAzaacO8
-2HuvhLXsP6l91B+R49oebJTWnbgcl9ThzcA4njgdKRFc7yZU/EZUEUGdwDkU6qsh
-/rkDnM+a+MzIAd3Z31B0Kvb0tUsl4e0UBueDHmjfP554dbtnMr94eIHuqLVRb1/D
-LB6ddm8DbZVoDKT9Ji2gLQpW84oFuIzRZPOV8JmPe+wE8Xf6A9sLloqJndErnvHg
-B8X2K8PzxkNNJGaZtQMUpiJ+S1oDNZnnKtzt0Wb+b9itJqUgykve29vGBDBImsb5
-8JLFlkdPFdKpFsbAvGyHv8b+F2rDVu4Oelg88WWDUSMc9Ut274u5/a2DTUOwF806
-DtCADAFUOOcIyDZKfPpeQuWDPeScN3/ANW8iQMlyPaNO5fBKlisFjiF1Bh0gS+vQ
-shkKb74wChg/4jgq1+M+I4DPdCQRe0kGIqbNZ4yK71owOjoSE6WIxxEt0UUKxPwh
-XZyf8ZF2O9TCPMigN6Qw2AGUhaC3HsAG9KbhOTSeUAsOwohFtYY+3B6Hkb8SQHEM
-i05OutqXEhtdSZgBK+HuweZtYWCBfy/BcMeD99Rkg01C+aMZcNPGVLpvGqpryNaB
-Ga0hQwFdIjbnMbXxjzyfJfs7GqNyTAJtpiqBO3uDhWH2LxJHZ7M=
-=2m1E
------END PGP SIGNATURE-----
-
---y6cp6aqkj6w24xiu--
-
-
---===============5921200795033599982==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5921200795033599982==--
-
