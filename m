@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 604E5C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:34:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB795C282D1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 16:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5VKk4x8hNx965hdGc6vol0+ynY4dAaEmW4nL3BTvF+Q=; b=Unywu4AsgRA4g8Prlq+nV9XW2V
-	VRz1KR9rJVaKLOZ038U40RIcYJNkWyKmLc1/13erblOAvNqv3OwkdvihpzkBabZ/qhKSCMbdNN/Kq
-	Lpp2Pd+IqwoYu8FmkX+s2QXe3iX0ozM3+GBuGb7YJKDkxI1YyAjWJ7aYz5go4WHhOpj9KTy/CPxgh
-	0CZ4mGqLTRN/PdHBAr6tJtXZ8qRQgqfNVBlfJraXwkr3YLRz3CqAiuTEYs6CTNbB2HIMbLHw5qfr8
-	gLf/oq6Lsguxn5C2rQ/POfPKXq+xh5tPTfUbsiLpq/Nf1BSe8lXCfH7Jtrdky50Eyt1ayiVVTUsZI
-	8Jtrs8Bg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xB/8VcjsALbVhcZ3UxOPROj72sIVqzDrd69vijZElHk=; b=ADIHR42ITQRPJg
+	XudkmTTm5D3B5WIVtTckmVbRGg/ZNfJEXG4EHqX+jEB3fjpKJs5VS7KnQouzYdZ9kBGYSszMoVJq4
+	HaPgMOJj81xrjtHQcW/icbnEvbBRQefmI5uqN0Rz4Rmrp9k6EEte7w8svCSdeCGg7WslBWRWew+iY
+	iv861LdA+Vxvr+bhW77YxXfCr/E2Nq8y+bgQ4ZrLoe1DdS1rNMSx6I9g855x4WU3i7zeyPQI9mHel
+	Pvne1L6eC6Lx1fBe6lhX6mJsKytnScRJ6GfzrF6CE4NC7HgoaVN7oSTLri0Dg4QE89VTYwCfFyuwO
+	AI0wsC0YTRQ17STYtPyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqEAv-0000000BWJN-3sz9;
-	Thu, 06 Mar 2025 16:34:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tqEH1-0000000BXg7-3aK6;
+	Thu, 06 Mar 2025 16:40:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqE9K-0000000BW3E-1plX;
-	Thu, 06 Mar 2025 16:32:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=/WG7ZsiuS475dtVXBJwK6soufvuYa8fqLgAZG4Rz7z8=; b=dHOOc/7jK4eB3cklr13NezhKkw
-	EnhbDwxEB2Sxq6iDclTgFnLUrPqiTPHQ98KBFZ3RAyKKrkFV75H6Zzop8P4ocMT0XzPEvWaj2gZ4T
-	XpdsMIsbyYRGxmcT4EWaMhs3CuFOvj5qWFixMSTAV2eZj86G02VzlWt9zOhIu/c1ecYcDieZrrIBz
-	vFAFgrfW3AHX8c8sPwtvtnf++Got1CX3qIW0/1dp8jEqeMa88Ay2SO1HANhM2eHawN8GsbRghp2o/
-	I+JXgwhCMpIhm9KmFT2SVkJkz0Tf7X5anvCG18XVULWVjxrp8zzz7qF8MRkd+/Gss0x7U0IEMvVGv
-	HGjKSdjw==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqE9H-000000019mj-1pPe;
-	Thu, 06 Mar 2025 16:32:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D70865C407C;
-	Thu,  6 Mar 2025 16:30:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 340D1C4CEE0;
-	Thu,  6 Mar 2025 16:32:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741278755;
-	bh=UB0xFIJMHFS7w8vLqZBaThCfyKvFD2YXZNnM8gHeM3I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PTq7xNxbkKXiQTNVJfOX1rq1emDqjSz9L2s4N54Cl7FgwwXOoGMBxFisho4fvwxi/
-	 alNZk86gzwiZgNCcNsNyXZoxDGTwmFPhC0+ADXipakcORRacWImbjeG7jSCNyIVDk5
-	 c74qrExtGJs6TjZovMBeGaPhAU1IJhgorHri+LMi0q06Jd6pVsX2bgVZVBjMMyKXM8
-	 YJLHXwIFbUQnuUtVTejPr2hZDcXiR+USQAzfsbi5OW5GWRBVGPq+TLbrChHvuI2LiK
-	 aN5L3+IjqBSeSSLvkHA9vgfH2+G5bSGSL6nmcJMFItHbeiLkrkLXJKuHJAWAnLNqwm
-	 9ZZhmp2Gm4mxA==
-Date: Thu, 6 Mar 2025 16:32:31 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Yao Zi <ziyao@disroot.org>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: mfd: syscon: Add rk3528 QoS register
- compatible
-Message-ID: <20250306-powdery-jarring-bc74e2d12faa@spud>
-References: <20250306123809.273655-1-amadeus@jmu.edu.cn>
- <20250306123809.273655-2-amadeus@jmu.edu.cn>
+	id 1tqEFN-0000000BXMu-3j9w;
+	Thu, 06 Mar 2025 16:38:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741279135;
+	bh=pf36QmNJXVaZuz3s0mehd9lTyDeLXhfnvdrEPGA0Fj8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LVdJ9bO6yHENnaiGBkjkHB6ID9jroBGW+832lD2QHbp1MoPDOdOrLAFh5PK67eH3B
+	 J8hW+/HhpWumL0HgRcfXj2n1b964Dgd8IrMCFuVesFqGfwbOHN7DRsMd9U3Y9bJGLq
+	 /1SKMpO2qRhSrh5oztFLL3if988MSDBQxXrnXsaogjwuLH0UpNhEFzfHgjpU4SGLaO
+	 vFlF264y7A44/zYXFotkTS6KgYN/PsL23H8Hw7ZwxYICU3/sySmMCbfoNNICpYPIUu
+	 J087mlZc7AmqD2XPxjTg1d3O7lmHAf3H074JopdaaJYcuvc8+QEn/vrnRaaAV1bdiS
+	 WylyrhmOK71AQ==
+Received: from [192.168.1.90] (unknown [84.232.140.93])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3232D17E086B;
+	Thu,  6 Mar 2025 17:38:55 +0100 (CET)
+Message-ID: <0600430d-12c1-4af7-9082-76448943b02a@collabora.com>
+Date: Thu, 6 Mar 2025 18:38:53 +0200
 MIME-Version: 1.0
-In-Reply-To: <20250306123809.273655-2-amadeus@jmu.edu.cn>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
+ setup
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com>
+ <20250304-phy-sam-hdptx-bpc-v4-3-8657847c13f7@collabora.com>
+ <20250304-small-mindful-mongrel-bd6f8b@houat>
+ <155f609f-994f-4140-8453-7e38a5e6deef@collabora.com>
+ <20250306-masked-voracious-octopus-be05b8@houat>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20250306-masked-voracious-octopus-be05b8@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_163239_810911_669F075D 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20250306_083858_080374_9DD7DBDC 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,82 +78,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0431856629163721906=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 3/6/25 3:35 PM, Maxime Ripard wrote:
+> On Tue, Mar 04, 2025 at 02:04:18PM +0200, Cristian Ciocaltea wrote:
+>> Hi Maxime,
+>>
+>> On 3/4/25 10:13 AM, Maxime Ripard wrote:
+>>> Hi,
+>>>
+>>> On Tue, Mar 04, 2025 at 03:44:02AM +0200, Cristian Ciocaltea wrote:
+>>>> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+>>>> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+>>>> and not before.
+>>>>
+>>>> While at it, introduce a define for this rate limit constant.
+>>>>
+>>>> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
+>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>> ---
+>>>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
+>>>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>>> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
+>>>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>>> @@ -320,6 +320,7 @@
+>>>>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK	BIT(3)
+>>>>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK	BIT(2)
+>>>>  
+>>>> +#define HDMI14_MAX_RATE			340000000
+>>>>  #define HDMI20_MAX_RATE			600000000
+>>>>  
+>>>>  enum dp_link_rate {
+>>>> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
+>>>>  
+>>>>  	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+>>>>  
+>>>> -	if (rate >= 3400000) {
+>>>> +	if (rate > HDMI14_MAX_RATE / 100) {
+>>>
+>>> The rate seems to come from rk_hdptx_phy_power_on and eventually from
+>>> tmds_char_rate in the PHY config options, so its rate is in Hertz.
+>>
+>> The rate coming from rk_hdptx_phy_power_on() is in hHz, since it passed
+>> via dw_hdmi_qp_rockchip_encoder_enable() as
+>>
+>>   phy_set_bus_width(hdmi->phy, div_u64(rate, 100));
+>>
+>>> HDMI14_MAX_RATE and HDMI20_MAX_RATE are both defined in Hertz as well.
+>>> It seems super odd to mee that you then convert HDMI14_MAX_RATE to hHz?
+>>
+>> This stems from the ropll_tmds_cfg table containing the configuration
+>> params for the supported rates which requires the search keys to be
+>> provided in hHz rather than Hz.
+>>
+>> I agree this is nothing but confusing, that's why I fixed this up in
+>> "phy: rockchip: samsung-hdptx: Avoid Hz-hHz unit conversion overhead"
+> 
+> Yeah, sorry, I noticed it after sending the review. Still, I'd advise to
+> put that patch first, it's a bit weird to add more patch we're going to
+> rework later on.
 
---===============0431856629163721906==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="tV83nSAA1v8eSfQE"
-Content-Disposition: inline
-
-
---tV83nSAA1v8eSfQE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Mar 06, 2025 at 08:38:08PM +0800, Chukun Pan wrote:
-> Document rk3528 compatible for QoS registers.
->=20
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-> ---
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Document=
-ation/devicetree/bindings/mfd/syscon.yaml
-> index 4d67ff26d445..2836e4793afc 100644
-> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> @@ -103,6 +103,7 @@ select:
->            - rockchip,rk3288-qos
->            - rockchip,rk3368-qos
->            - rockchip,rk3399-qos
-> +          - rockchip,rk3528-qos
->            - rockchip,rk3562-qos
->            - rockchip,rk3568-qos
->            - rockchip,rk3576-qos
-> @@ -202,6 +203,7 @@ properties:
->            - rockchip,rk3288-qos
->            - rockchip,rk3368-qos
->            - rockchip,rk3399-qos
-> +          - rockchip,rk3528-qos
->            - rockchip,rk3562-qos
->            - rockchip,rk3568-qos
->            - rockchip,rk3576-qos
-> --=20
-> 2.25.1
->=20
-
---tV83nSAA1v8eSfQE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8nOHwAKCRB4tDGHoIJi
-0sc9AP9yj1OCVpL2uHdOkGvCA+utM3+L9+RbDh0HCB994yQUygD+LjiZHyV7Zn50
-AUwu5WTkwt1+hfDGv2sa+rqHsZ76OA4=
-=/RxY
------END PGP SIGNATURE-----
-
---tV83nSAA1v8eSfQE--
-
-
---===============0431856629163721906==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+No worries and yes, I've already planned to move the patch before all
+the others adding more stuff.  I'd still keep this patch as is, to make
+it easier for backporting, as well as the next three patches dropping
+stuff, before continuing with the unit conversion.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0431856629163721906==--
-
