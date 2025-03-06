@@ -4,85 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADDBDC28B27
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 763EFC28B23
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 13:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/z9wXjlMtK2TTe9abZT3XQ2KxNP00sD+cDES68kXY2g=; b=N/Y70FBtg9hVvG
-	DaqQQ3VsYMkFn/POsXcT+ZK0VdFzNGtMpZ85ehMuV4eVaIgwkxOHJ3UR4CTPZtAWigtn7gt0Pu2Hg
-	kVhxOzpS9C7tz2j4/hIfb1gGFFeNMuYnnOPSnWApdSv/NOD4Z88S9ZbcfcJZnPExJD0ukR+4o+y2G
-	xFZ7NmUEMsZ5KsXFO5UCsh5Pwhb1/Cs3WIQc5VAP3kL0crpZz5NIpjBLRHWtsdyReks41yKX2o4UW
-	ApmEXZx/cmi8gcJ8d7B1XB3XxKScVBM72VI4riGgpujGo/Znc6x0Qpmznyp9xYiePbokgatSTjzXQ
-	cM1n7kCoGpM222IlUnqA==;
+	List-Owner; bh=KYibHdw7+7gG6iJI3ZDw8Erue/XXO3G+XXPoN/7EmWI=; b=eOVwzoeSQtAhjb
+	4qLlLpQ861lfae77wc9BbxG/zj2iUu9STIBLZHPVsQeIXKMBUDlb+gWwN9o2C/GEsHKnALPJPtYju
+	Oa6jITgt0IMj7CnggsyNasoitmXtLIiJOmsoqSNAolnZgSpFcPjOrBCq+rNquqfThQW6Tn/jSdiHK
+	IzWuPv16SWnYqvg/VmmZuMjd/hiDlcOVHoKXAYKdJbrqZZi6PDdE5EZ503Wk3BpIrMfyNy1I5XegJ
+	ah+zSU1AtZ1lOxuSXYDMA4zoafD51NUqSsGXcD3u0srmxJeG2+f+FQ4RTXz+T7tgdgXaOomNZYs4P
+	Sgla1jl4Miz2w0zYcG5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqBC5-0000000B2eh-13Xn;
-	Thu, 06 Mar 2025 13:23:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1tqBCF-0000000B2mg-0KQL;
+	Thu, 06 Mar 2025 13:23:31 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqAww-0000000B0C2-3GgU
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 06 Mar 2025 13:07:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=tub56u27slUSeM33CgyympJU415Xqw1zM4nVTXKlmqo=; b=hlgHKUadg2Vhmnm5vYKmolKyX4
-	Sw6Ff3VC+mVi3vyFTw/1OT0t1ZG9memXl/xurFDGQCmoeNts3U1kA6StEu8ZMDJv7PZKNVmwTxlZh
-	aztJVdB5yMu++V2hj8IyeVHlQ7dVsqQ8eMBLRJAV6pHEkL49zTMs9kLSI810QColyLHVOPkwAe1b3
-	HZ3PEITQDfH4Yvxxow7OFu+MSMrNL5W9uiDx1FBWEFxoWUaRL7t8ANKSTVxNV2RyaElMcTX5+9D2U
-	t2BEkgj9L988M/yZxHd5x2D30RPl94lxbZPQdaVeQmahJHSWUc9VvIkaT0c8Re6KzZieVfZSU4b44
-	AC9FPCdw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqAwt-000000015Q8-47jZ
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Mar 2025 13:07:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tub56u27slUSeM33CgyympJU415Xqw1zM4nVTXKlmqo=; b=QACnV8s8mXopm0366ZNMKsK0Ds
-	SSd3bl5oezuocetjxvmxDz343LS8M2ltZqKuvHwHbESuUjAdEHnpZrRNdzNkbtTCqlEo+0Lt0Dpc/
-	HpiLcjKOohB320DGLLe42kvh/R5qvinAYbPhgnnUWlDRLJ9ryX+RLuJR4tAL1ATsmztiI+TXSs7Qp
-	RMqg/SgXfYAkXgCB1gfNjOHAz1yay82w7UF9JiV7CIKmX09/eUPT8kciaVBe6YKKVsfIbQoxgkZK1
-	oHnt2BcntnqtO6eNCuSX53xLT7X29iqLYbzgkIwA1vvYYXd36RVKMb3i/u1sDzwkVcicXjI3c9HZF
-	sHvWThJQ==;
-Received: from i53875a38.versanet.de ([83.135.90.56] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tqAwj-0003Aj-FF; Thu, 06 Mar 2025 14:07:29 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Shreeya Patel <shreeya.patel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- jose.abreu@synopsys.com, nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
- nicolas.dufresne@collabora.com,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: kernel@collabora.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Tim Surber <me@timsurber.de>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Diederik de Haas <didi.debian@cknow.org>
-Subject: Re: [PATCH v14 2/3] arm64: dts: rockchip: Enable HDMI receiver on rock-5b
-Date: Thu, 06 Mar 2025 14:07:28 +0100
-Message-ID: <3292594.iZASKD2KPV@diego>
-In-Reply-To: <20250306072842.287142-3-dmitry.osipenko@collabora.com>
-References: <20250306072842.287142-1-dmitry.osipenko@collabora.com>
- <20250306072842.287142-3-dmitry.osipenko@collabora.com>
+	id 1tqAzc-0000000B0c5-3D7S;
+	Thu, 06 Mar 2025 13:10:30 +0000
+Received: from localhost.localdomain (unknown [119.122.215.89])
+	by smtp.qiye.163.com (Hmail) with ESMTP id d2ca2cf2;
+	Thu, 6 Mar 2025 21:10:26 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
+Date: Thu,  6 Mar 2025 21:10:16 +0800
+Message-Id: <20250306131016.281290-2-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250306131016.281290-1-amadeus@jmu.edu.cn>
+References: <20250306131016.281290-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHkIaVh1LGB5CTB4eTx4ZTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a956b94261403a2kunmd2ca2cf2
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kwg6UQw4FzIDTTMZTk1PDhgT
+	NzoKFD9VSlVKTE9KSU1NTUlNTU1DVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQUpCT0w3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_130740_093692_C7D43074 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20250306_051028_993444_CC5F3621 
+X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,34 +71,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRG9ubmVyc3RhZywgNi4gTcOkcnogMjAyNSwgMDg6Mjg6NDEgTUVaIHNjaHJpZWIgRG1pdHJ5
-IE9zaXBlbmtvOgo+IEZyb206IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBj
-b2xsYWJvcmEuY29tPgo+IAo+IFRoZSBSb2NrIDVCIGhhcyBhIE1pY3JvIEhETUkgcG9ydCwgd2hp
-Y2ggY2FuIGJlIHVzZWQgZm9yIHJlY2VpdmluZwo+IEhETUkgZGF0YS4gVGhpcyBlbmFibGVzIHN1
-cHBvcnQgZm9yIGl0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJh
-c3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFNocmVleWEgUGF0
-ZWwgPHNocmVleWEucGF0ZWxAY29sbGFib3JhLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEbWl0cnkg
-T3NpcGVua28gPGRtaXRyeS5vc2lwZW5rb0Bjb2xsYWJvcmEuY29tPgo+IC0tLQo+ICAuLi4vYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzIHwgMTggKysrKysrKysrKysr
-KysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMKPiBpbmRleCBkNTk3
-MTEyZjFkNWIuLjM3NzgyNGU2OWUyMCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU4OC1yb2NrLTViLmR0cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzCj4gQEAgLTIyMCw2ICsyMjAsMTggQEAgaGRtaTBf
-b3V0X2NvbjogZW5kcG9pbnQgewo+ICAJfTsKPiAgfTsKPiAgCj4gKyZoZG1pX3JlY2VpdmVyX2Nt
-YSB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmaGRtaV9yZWNlaXZlciB7Cj4g
-KwlzdGF0dXMgPSAib2theSI7Cj4gKwlocGQtZ3Bpb3MgPSA8JmdwaW8xIFJLX1BDNiBHUElPX0FD
-VElWRV9MT1c+Owo+ICsJcGluY3RybC0wID0gPCZoZG1pbTFfcnhfY2VjICZoZG1pbTFfcnhfaHBk
-aW4gJmhkbWltMV9yeF9zY2wgJmhkbWltMV9yeF9zZGEgJmhkbWlyeF9ocGQ+Owo+ICsJcGluY3Ry
-bC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCW1lbW9yeS1yZWdpb24gPSA8JmhkbWlfcmVjZWl2ZXJf
-Y21hPjsKCm5pdDogcHJvcGVydHkgc29ydGluZywgYWxwaGFiZXRpY2FsIC4uLiBidXQgd2l0aCBz
-dGF0dXMgYXQgdGhlIGVuZAoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Same as RK3568, RK3528 uses SCMI clk instead of ARMCLK.
+Add SCMI clk for CPU, GPU and RNG will also use it.
+
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 32 ++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index 0c0e7f151462..aa68c2fef2f3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -59,6 +59,7 @@ cpu0: cpu@0 {
+ 			reg = <0x0>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -66,6 +67,7 @@ cpu1: cpu@1 {
+ 			reg = <0x1>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -73,6 +75,7 @@ cpu2: cpu@2 {
+ 			reg = <0x2>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -80,6 +83,22 @@ cpu3: cpu@3 {
+ 			reg = <0x3>;
+ 			device_type = "cpu";
+ 			enable-method = "psci";
++			clocks = <&scmi_clk SCMI_CLK_CPU>;
++		};
++	};
++
++	firmware {
++		scmi: scmi {
++			compatible = "arm,scmi-smc";
++			arm,smc-id = <0x82000010>;
++			shmem = <&scmi_shmem>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			scmi_clk: protocol@14 {
++				reg = <0x14>;
++				#clock-cells = <1>;
++			};
+ 		};
+ 	};
+ 
+@@ -110,6 +129,19 @@ gmac0_clk: clock-gmac50m {
+ 		#clock-cells = <0>;
+ 	};
+ 
++	sram@10f000 {
++		compatible = "mmio-sram";
++		reg = <0x0 0x0010f000 0x0 0x100>;
++		ranges = <0 0x0 0x0010f000 0x100>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		scmi_shmem: sram@0 {
++			compatible = "arm,scmi-shmem";
++			reg = <0x0 0x100>;
++		};
++	};
++
+ 	soc {
+ 		compatible = "simple-bus";
+ 		ranges = <0x0 0xfe000000 0x0 0xfe000000 0x0 0x2000000>;
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
