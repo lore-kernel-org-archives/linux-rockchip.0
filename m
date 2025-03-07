@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B7D7C19F32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 14:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7F55C19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 15:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lskUXuU0lR7L0bPpAN9tCgMdyYTowH0nWizaVa0jYvQ=; b=AiSx22/bVzXpNd
-	xoFFjumQ9vxmM/kAuI/6uVWpU0+quOTHQQlW8NIijHEt8WCj50m9xABb5vGOHVEhZ49Vj7wesq3JY
-	nutalyd1U+hdDZL9teL+nC3WUX73n/Pd7N5iFcpgSKkz9b3HnBvcUWjStgnJNt8wR1ijmOoGJH2cm
-	azlzjntOuqEsqdqFLGilr8ySogdQrwfo/j5i0CszXRKipQUzyjIB0Roorie9+FdTrBf0UgGj6YvyL
-	whra0qNjJXwrzUynouTt4S/SpDY4GU0Cf4Kxr+qNBL8z+HK+JwWeLEWoDSsrBVMwGV9Pwr77XmoLg
-	eunBv01AMXd4JPeGybbQ==;
+	List-Owner; bh=BaGgBlW6sQ+qefgarnnkbZM62nzS5NtVV8nkkNn31LA=; b=YuEVs/q5SePrbC
+	UGMjAhlMjkxSbULBUMuOoLvU3vUvXSq0T42s3RXdTMHHgvOr7SARAE3HFKdT7Tp7YNAzTjD6ivKWs
+	xp83ptwKXlLby3hVvWB0Kr6jOeMStkezv9g3BH3C8/q38cffv6O+jFYLi3exFVvN7tPlkVeDJMsaG
+	PIigNDpI8zHWMfwreGlPZpZ4CCWeKuLz+Scz5qE7CfZVvMUV+kAdRrYTniVCYc1FJw5bOTZzwZ0a2
+	98qWeuApmrLfeEIxtf9g8C5U2o1ITTC4SoPrLTswX1IpwbFkGsnixT6xsU/elhFFnYCfPVljtGC8t
+	hs2jnfb0ISqwqM8IVs2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqYMx-0000000EPwn-2QW5;
-	Fri, 07 Mar 2025 14:08:07 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tqZF9-0000000EXYK-3V5P;
+	Fri, 07 Mar 2025 15:04:07 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqYLK-0000000EPdb-0Lmy;
-	Fri, 07 Mar 2025 14:06:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741356358; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RUSqeTjX0/f+vSCIJFG7Ivi/H9ExZZOTIGsH8b/7NgnDNY+UPVZ7ECjWzwOuDI3RzpTfQqmbZSAsfna/nJrzgxqNHi9CItEF9nS40fA67K5OyjyabwmfpK9um35EBQjHtXoOmHIdnjUaDBCCDMC8yAzHg++9XIkIh6wtiClIxik=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741356358; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=FP+ifasHniIC8neSq6VwSq5ZsIenCwU36aCvQ3EbV9k=; 
-	b=M4EErEyApvaCAnFL5c92n1M0wMYZ4/LNdYQL/JjFfVIWr1+oWZ7LWHG91M7LH/wdakw0O6B/Z6DdW1CFhUYSU8YrcdcDdi/S/B33oM+ZFqVbEURJgvl8Ve4JwYi+DVhf5OMbdwCpJiS1Sj2d8rpDnz9ZN6y3eCQFi/Cx2aen930=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741356358;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=FP+ifasHniIC8neSq6VwSq5ZsIenCwU36aCvQ3EbV9k=;
-	b=k4LLpH1xLhH5D3H7h2upAramGsfkMWDuPKZ9FZ0XGVS9QKMQsdQP0bKN4azcuUGk
-	pMfBCbFEZtyQaxyMl/XEFyBtH0id4McTIUQZz/KeSYcNbJQotbnjO7wP5JrTi+oGXgB
-	95fO8bj46v0ezvai2ZHpniitwdl6VAtoA17B70u4=
-Received: by mx.zohomail.com with SMTPS id 1741356356876241.9419093370691;
-	Fri, 7 Mar 2025 06:05:56 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Daniel Golle <daniel@makrotopia.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-crypto@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v2] dt-bindings: rng: rockchip,rk3588-rng: Drop unnecessary status
- from example
-Date: Fri, 07 Mar 2025 15:05:50 +0100
-Message-ID: <5417098.31r3eYUQgx@workhorse>
-In-Reply-To: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
-References: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
+	id 1tqY7l-0000000ENX5-3Lzx;
+	Fri, 07 Mar 2025 13:52:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Jkx3f0giLdjTBdslQHfz5NRis+vzSJwwRoYIVdv9lsw=; b=e8cnS3UN7dYibdwZ10jktHczPl
+	15tNwuQTBmqZxPOFXUGY3q8Duy5ddpk38Qib02oSsht9MK2oX5AptZAgwEA9B1jg+uY+ba3jmmfRV
+	Iwy2s/rrSlUreWt0RCJ3OIDtvrPV2LbkSoO8BkpiBBk6Qx5P8pFRE/JF7Ku1h9vodFnI=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tqY7Z-0039Yt-LO; Fri, 07 Mar 2025 14:52:13 +0100
+Date: Fri, 7 Mar 2025 14:52:13 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Wadim Egorov <w.egorov@phytec.de>, netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 1/3] net: stmmac: dwmac-rk: Use DELAY_ENABLE macro for
+ RK3328
+Message-ID: <f5f397bb-476a-429a-9d1e-1c1a9beb8f89@lunn.ch>
+References: <20250306203858.1677595-1-jonas@kwiboo.se>
+ <20250306203858.1677595-2-jonas@kwiboo.se>
+ <d6b15dc2-f6b2-4703-a4da-07618eaed4db@lunn.ch>
+ <624f2474-9a39-46a3-a6e5-f9966471bf3d@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <624f2474-9a39-46a3-a6e5-f9966471bf3d@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_060626_184686_2D9C8ACC 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20250307_055225_834734_4355F42F 
+X-CRM114-Status: GOOD (  25.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +79,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 7 March 2025 10:33:09 Central European Standard Time Krzysztof 
-Kozlowski wrote:
-> Device nodes are enabled by default, so no need for 'status = "okay"' in
-> the DTS example.
+On Fri, Mar 07, 2025 at 12:28:42AM +0100, Jonas Karlman wrote:
+> Hi Andrew,
 > 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> On 2025-03-06 23:25, Andrew Lunn wrote:
+> > On Thu, Mar 06, 2025 at 08:38:52PM +0000, Jonas Karlman wrote:
+> >> Support for Rockchip RK3328 GMAC and addition of the DELAY_ENABLE macro
+> >> was merged in the same merge window. This resulted in RK3328 not being
+> >> converted to use the new DELAY_ENABLE macro.
+> >>
+> >> Change to use the DELAY_ENABLE macro to help disable MAC delay when
+> >> RGMII_ID/RXID/TXID is used.
+> >>
+> >> Fixes: eaf70ad14cbb ("net: stmmac: dwmac-rk: Add handling for RGMII_ID/RXID/TXID")
+> > 
+> > Please add a description of the broken behaviour. How would i know i
+> > need this fix? What would i see?
 > 
-> ---
+> Based on my layman testing I have not seen any real broken behaviour
+> with current enablement of a zero rx/tx MAC delay for RGMII_ID/RXID/TXID.
 > 
-> Changes in v2:
-> 1. Drop unnecessary full stop in subject prefix after ':'.
-> 2. Add Rb tag.
-> ---
->  Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml | 1 -
->  1 file changed, 1 deletion(-)
+> The driver ops is called with a rx/tx_delay=0 for RGMII_ID/RXID/TXID
+> modes, what the MAC does with enable=true and rx/tx_delay=0 is unclear
+> to me.
 > 
-> diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> b/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml index
-> 757967212f55..ca71b400bcae 100644
-> --- a/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> +++ b/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> @@ -53,7 +53,6 @@ examples:
->          interrupts = <GIC_SPI 400 IRQ_TYPE_LEVEL_HIGH 0>;
->          clocks = <&scmi_clk SCMI_HCLK_SECURE_NS>;
->          resets = <&scmi_reset SCMI_SRST_H_TRNG_NS>;
-> -        status = "okay";
->        };
->      };
+> > 
+> > We also need to be careful with backwards compatibility. Is there the
+> > potential for double bugs cancelling each other out? A board which has
+> > the wrong phy-mode in DT, but because of this bug, the wrong register
+> > is written and it actually works because of reset defaults?
+> 
+> To my knowledge this should have very limited effect, however I am no
+> network expert and after doing very basic testing on several different
+> rk3328/rk3566/rk3568/rk3588 I could not see any real affect with/without
+> this change.
+> 
+> The use of Fixes-tag was more to have a reference to the commit that
+> first should have used the DELAY_ENABLE macro.
 
-Hi,
+https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
 
-is there the possibility we could make dtschema as invoked by `make 
-dt_binding_check W=1` (or W=2) add a warning for examples that have disabled 
-or explicitly listed status properties when not needed? Or is this something 
-better handled in, say, checkpatch.pl?
+  It must either fix a real bug that bothers people or just add a device ID.
 
-The question arises because dumb mistakes by me like this should ideally be 
-caught before they waste precious maintainer time.
+It does not sound like this meets the stable requirements. Plus there
+is the potential for breakage. So i suggest you drop the Fixes: tag
+and we merge this via net-next.
 
-If it's best handled in dtschema, I can look into working on that so you guys 
-don't have to do even more work due to me.
+Please take a look at:
 
-Cheers,
-Nicolas Frattaroli
+https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
 
+    Andrew
 
+---
+pw-bot: cr
 
 _______________________________________________
 Linux-rockchip mailing list
