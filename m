@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58946C282DE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 06:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7BFC19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 06:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/2xvnDOXP3996DCC6wh8P8zRUUiPCMl+djcqtb/GY2c=; b=SKpYv+aVCgtKjP
-	59OWipuNoIc7SMrJuX6yaP8qteNBTmzIRlDCeWXzKgmeL+Yb/3lACIz2QyNp65EoXgmUrxmOy4tI7
-	XpA7z+5bGgGU86InBClGP3orIZdq1EEpl9vQHwThtw/x5q+pBwTjtZoiGpgl0W2Ocpd9OF1kdG6kB
-	r2NZR3CP9vR9sRuoJKItLwg6mSpK76nqyxwwVHhh0KMpgYUzt7vyY32XHDWESzwYqCfkTUOoAeMvJ
-	+yfMFvyP9NNNtZlH24GTpCXOQiJSWJKcnCIqeTvd11yoLs6eBuatsL+p+gg54l0nVcOA2dcIdPJHA
-	0wEn/M8Q8EbaVHEQiRVA==;
+	List-Owner; bh=mGTrWR7XnC/D2/ZfgdOj1NTGOx3YXzly7v/t9ploZko=; b=Srvf5pT3nhgb3+
+	YoatgcSObQIQKMhhb9D7eOQZTpf3dRlZq4KW+64clpOOt6hy3ZClQHxt/+S6uT6F5/lf1T0RB1iLe
+	S3QyRDw8wU4ujVLr4fJRDNuZ7PfIEkSQd9fh2F0pgBuBqqjVK3eMV2zC5DUFUv3LSHqX79es9BLp+
+	1xG3t6pW+o/w8SLiNnhOZH9PB+YWJTFZaUYte/lWlTUmI7jisdudBJL0Yzy3kJqIzi2Rt8RCKMrp0
+	HQ5CgK069RyEe9Aul6RYMDJYNsimOHYJbLITcO7Rl4ALcgFInem0wiSZo1YSEbXelfW4nvepzKaNA
+	3nFWSOJ3IH+872/EdVWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqRU6-0000000DLxs-10kX;
-	Fri, 07 Mar 2025 06:47:02 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1tqRXO-0000000DMPW-1RLC;
+	Fri, 07 Mar 2025 06:50:26 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqRST-0000000DLo9-1xw8
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Mar 2025 06:45:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741329918;
- bh=xrrqReRVP8vJeyg5PfphNvWCkrOXLcDZ4zm3kNo2Lt8=;
- b=pjCtJkv+RzD8x8GutHptv9KqtpwNf2xNFQ8LgYZDQ/EEmnHsE3yPLpYf5NCldec3TsZPDbdsA
- Fy8GJfabof5Pq01XxztOXLmpX/elNqxmKs81rC8gvjOMD1+h2uLFdoqo9EFx4m7/IlqJXfFxGNI
- NPUs4Jr7lMCqA8DHbs1zisw5WUXfsziN6hd5WzMiikM5TvBixzB4H0DZX6XSyvkZqdAwbnp3ckI
- VPsl1b0iR8gVYvgfj9OtTd+5a+dSfbPCB00B/6l037XypNVTvoQweC2gaIPjv5bqV7S1XdyZjwu
- 6cTBwl1MvVqFvPRl/pb4WwInc3YjMAu5LYC0re3awKeA==
-X-Forward-Email-ID: 67ca95f1d992817a57e34193
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <5a0a7ce1-1dfb-4d19-8a1e-0d89d177f5b8@kwiboo.se>
-Date: Fri, 7 Mar 2025 07:45:00 +0100
+	id 1tqRXL-0000000DMOz-08tk;
+	Fri, 07 Mar 2025 06:50:24 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:3300:bb12:a0a3:40d:e82f])
+	by smtp.qiye.163.com (Hmail) with ESMTP id d4e0a9b3;
+	Fri, 7 Mar 2025 14:50:17 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: enable SCMI clk for RK3528 SoC
+Date: Fri,  7 Mar 2025 14:50:15 +0800
+Message-Id: <20250307065015.697377-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <281b8025-8288-4274-b863-f091c05cbabe@kwiboo.se>
+References: <281b8025-8288-4274-b863-f091c05cbabe@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 8/8] arm64: dts: rockchip: Enable SD-card interface on
- Radxa E20C
-To: Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>
-References: <20250305194638.47187-1-ziyao@disroot.org>
- <20250307033508.656479-1-amadeus@jmu.edu.cn> <Z8qJqpUwi7VV8tJk@pie>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <Z8qJqpUwi7VV8tJk@pie>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHh1OVhpMTk9CSklCHk1PS1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQUhIS0tBGRlKSUEaSxpIQU9LH0EeQ0kdWVdZFhoPEh
+	UdFFlBWU9LSFVKS0lIQktDVUpLS1VKQlkG
+X-HM-Tid: 0a956f5e7a9803a2kunmd4e0a9b3
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MyI6Vhw4NDJWNjdCVh4tT0IO
+	GDxPCRFVSlVKTE9KSEhLSUpDTkhNVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0tBSEhLS0EZGUpJQRpLGkhBT0sfQR5DSR1ZV1kIAVlBT01PNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_224521_860879_F54266E5 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20250306_225023_247615_A65F0492 
+X-CRM114-Status: UNSURE (   4.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,84 +72,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+Hi,
 
-On 2025-03-07 06:52, Yao Zi wrote:
-> On Fri, Mar 07, 2025 at 11:35:08AM +0800, Chukun Pan wrote:
->> Hi,
->>
->>> +&sdmmc {
->>> +	bus-width = <4>;
->>> +	cap-mmc-highspeed;
->>> +	cap-sd-highspeed;
->>> +	disable-wp;
->>> +	no-sdio;
->>
->> With 'no-sdio' property:
->> [  129.608986] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
->> [  130.711168] mmc1: Card stuck being busy! __mmc_poll_for_busy
->> [  130.725536] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
->> [  131.751240] mmc1: Card stuck being busy! __mmc_poll_for_busy
->> [  131.765608] mmc_host mmc1: Bus speed (slot 0) = 200000Hz (slot req 200000Hz, actual 200000HZ div = 0)
->> [  132.825083] mmc1: Card stuck being busy! __mmc_poll_for_busy
->> [  132.839413] mmc_host mmc1: Bus speed (slot 0) = 187500Hz (slot req 187500Hz, actual 187500HZ div = 0)
->> [  133.960141] mmc1: Card stuck being busy! __mmc_poll_for_busy
->>
->> Without 'no-sdio' property:
->> [  105.224019] mmc1: error -22 whilst initialising SDIO card
->> [  106.290838] mmc1: Card stuck being busy! __mmc_poll_for_busy
->> [  106.801931] dwmmc_rockchip ffc30000.mmc: Busy; trying anyway
->> [  107.385835] mmc_host mmc1: Timeou sending command (cmd 0x202000 arg 0x0 status 0x80202000)
->> [  107.400425] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
->> [  107.431561] mmc_host mmc1: Bus speed (slot 0) = 49800000Hz (slot req 50000000Hz, actual 49800000HZ div = 0)
->> [  107.433107] mmc1: new high speed SDIO card at address 0001
+> This is new compared to v1, please add operating-points instead.
+> cpu_pvtpll is already initialized to 1.2 GHz by firmware, see e.g. [1].
 > 
-> So it seems the sdmmc controller actually works with SDIO commands as
-> well? I don't expect that since the datasheet says RK3528 has only two
-> SDIO 3.0 controllers.
-> 
-> We could remove the "no-sdio" property if SDIO actually works. Will
-> apply it in the next version if there's no objection against this.
+> [1] https://lore.kernel.org/u-boot/20250123224844.3104592-5-jonas@kwiboo.se/
 
-On the E20C the sdmmc controller is routed to a microSD card slot mainly
-intended for use with microSD-cards and should normally not need SDIO.
+Thanks for this information, I will remove assigned-clocks.
+However, due to unknown reasons, the cpu opp-table does not
+match the actual frequency at all.
+e.g. set 2016MHz, actual 1610MHz
 
-What card/adapter do you have inserted in the microSD card slot that
-requires use of SDIO instead of just SD or MMC? What is the use case you
-have that requires removal of no-sdio on E20C?
+Thanks,
+Chukun
 
-Regards,
-Jonas
-
-> 
-> Further tests about the capabilities of the controller are welcome.
-> 
->> # cat /sys/kernel/debug/mmc1/ios
->> clock:          50000000 Hz
->> vdd:            21 (3.3 ~ 3.4 V)
->> bus mode:       2 (push-pull)
->> chip select:    0 (don't care)
->> power mode:     2 (on)
->> bus width:      2 (4 bits)
->> timing spec:    2 (sd high-speed)
->> signal voltage: 0 (3.30 V)
->> driver type:    0 (driver type B)
->>
->> Thanks,
->> Chukun
->>
->> -- 
->> 2.25.1
->>
-> 
-> Best regards,
-> Yao Zi
+-- 
+2.25.1
 
 
 _______________________________________________
