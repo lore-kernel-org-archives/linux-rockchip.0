@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8984FC282DE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 05:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665ECC282D0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 05:56:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BR8XM3fprmNL2lR32ZemMlr6EM0liAv5PPBFSOi+PhU=; b=TrtG/5QbdIGwnz
-	e54e//+Bd9JUeF61sXh8JivakrmysSYuQfZSEMsSpahawh8WRmSiuhpWzgOxlFfjjxdPhJVHFhJuk
-	LAV/980DJY6WhuKZ8dl5dpnOzoxnTuyoifw06p1oyQ2Jf5H4ZI6ORpc6ENuOeqWjuHA2kLA8+XGYL
-	2dPrS7Jeyrk/1WY4HT44OPj3gaGze8UCbuhQFT+uezjzjLoO2Cw8g/RJ2yd+hTsdXgyBNGoGyrOG7
-	v8V0GeR9TIm0hiwA4dxd0VLn5uWiOHlsKGQq7pYo8tx+wzSVfuwFr1haRxG371whbsl40yz02gwdD
-	UTh1zNOyjnO85KEPHzwQ==;
+	List-Owner; bh=qV5qxxc5DdYG2lMHKjpHjXtdiaQ7YSawj6cgGZ9k138=; b=EnMpVoYfnbfHZ0
+	RAmcJnTSY3KNCkf9ZDEQG2n8M1tqTVYeOwGm5fD2JfeodU/2cI72L4xASKBp5IA8kQjUESd6HC58m
+	LxGtMHopwWj6oHwCT4f+l0KHVKkTa2Kp5buQmp1qPirFIbFYC8xvgjGWM7ENHIevkOeSJVzv+U0zq
+	TwdGzNjiv3MpVt+w01EIjZ/u3UQ3GW9MSszLJ0gsuqntET56G14rI3cN60rKGpCu1VDVKERDMaAsf
+	2+EK6RA40tQC+KCmmOJaRLghqmMeY4/gwOv5mehjE6jmZeueschIHKaG+DZ0FFYEbTqj75y9QPFp6
+	QWnCG/QY5JAvmEMtR+XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqQfa-0000000DG0g-24VH;
-	Fri, 07 Mar 2025 05:54:50 +0000
+	id 1tqQhJ-0000000DGMq-24tP;
+	Fri, 07 Mar 2025 05:56:37 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqQdx-0000000DFu9-1EFl;
-	Fri, 07 Mar 2025 05:53:10 +0000
+	id 1tqQfg-0000000DG1g-0KjX;
+	Fri, 07 Mar 2025 05:54:57 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 1E15425D53;
-	Fri,  7 Mar 2025 06:52:59 +0100 (CET)
+	by disroot.org (Postfix) with ESMTP id 790E223CA6;
+	Fri,  7 Mar 2025 06:54:52 +0100 (CET)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tckWDYJ3Tzh5; Fri,  7 Mar 2025 06:52:58 +0100 (CET)
+ id GEDfSjYbRJfd; Fri,  7 Mar 2025 06:54:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741326778; bh=8pUgSgop8ysTVfRFBXPiQaRHFFGbXmooM4lxtk87R90=;
+	t=1741326882; bh=OhobIH36SElrBRrR9xlBtbM4ljdbiJGVn6a0IJ6ZmIk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=AOZJ9o5FvW8yfwecTcbsNRyFRpzyskfWAfP8kCR0cykMVfEp3cnzJUryHx1DxeEYh
-	 p3MsEvNrV3rvJencFZY1bQERwvUPvH1zgd5RsKXwdnEXuoYDKaRcW4XbiEUtunLxRw
-	 b0yHFE/cOsdfgQ1y9kotL5mg0VVt1Qc2Rq/DobUuFkohMiutlIqopJXbDFG4+TsMiY
-	 PzDkpIT6teC+LBBIGipyajKr45tBW+C9FarX8+euI6lkalw+53DIYdiArukvfPAyeG
-	 2HoUaEG1audW1E9M2y525bHuexgCGddvX+I5Qe/AP271yw9lj2reCV/tjvtvIoY2d4
-	 YpIzFCRidQNtg==
-Date: Fri, 7 Mar 2025 05:52:42 +0000
+	b=aQ1AS8QJQnkqsjN6cCDhEslz1d7op9C+MUyuNcjmdwVvv9aj/jf046pMvlSwTDFLe
+	 JdjylhVLOBu5OhPar3AT7/wLW/k+O2v2ezX4Doy9ucxYQBmKe6oCf2rnARVh5pszmC
+	 KwlRCPeupk9T7U6pren2Kc7QXQ1hrvzpRe/RejNap3+4k7EcpS4FAeoOE33YSKRLjg
+	 Frh7rHwFAuCkH4m56VZYphHMJgocffkPKppGe9TDWxWEZkd17G+lwUDzOgUzsyavHp
+	 7LeOKmEqw9Cl9yWRRWDyooo9qpSVouUh0mLS9VMCebr+YQ3TLxsQa1pODij+tF7YRf
+	 EHiDkQboMaEcw==
+Date: Fri, 7 Mar 2025 05:54:27 +0000
 From: Yao Zi <ziyao@disroot.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v2 8/8] arm64: dts: rockchip: Enable SD-card interface on
- Radxa E20C
-Message-ID: <Z8qJqpUwi7VV8tJk@pie>
-References: <20250305194638.47187-1-ziyao@disroot.org>
- <20250307033508.656479-1-amadeus@jmu.edu.cn>
+To: Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers
+ for RK3528
+Message-ID: <Z8qKEzmTFxhHKApG@pie>
+References: <20250305194612.47171-1-ziyao@disroot.org>
+ <20250306140009.384469-1-amadeus@jmu.edu.cn>
+ <Z8nPjjbZvpRJ2R5B@pie.lan>
+ <3d3db030-26e6-4fe1-9158-85f8cebef89c@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250307033508.656479-1-amadeus@jmu.edu.cn>
+In-Reply-To: <3d3db030-26e6-4fe1-9158-85f8cebef89c@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_215309_749152_DE2EE555 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20250306_215456_255846_D78519A4 
+X-CRM114-Status: GOOD (  25.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,66 +69,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, jonas@kwiboo.se, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: detlev.casanova@collabora.com, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 07, 2025 at 11:35:08AM +0800, Chukun Pan wrote:
-> Hi,
+On Fri, Mar 07, 2025 at 12:05:16AM +0100, Jonas Karlman wrote:
+> On 2025-03-06 17:43, Yao Zi wrote:
+> > On Thu, Mar 06, 2025 at 10:00:09PM +0800, Chukun Pan wrote:
+> >> Hi,
+> >>
+> >>> +		sdio0: mmc@ffc10000 {
+> >>> +			compatible = "rockchip,rk3528-dw-mshc",
+> >>> +				     "rockchip,rk3288-dw-mshc";
+> >>> +			reg = <0x0 0xffc10000 0x0 0x4000>;
+> >>> +			clocks = <&cru HCLK_SDIO0>,
+> >>> +				 <&cru CCLK_SRC_SDIO0>,
+> >>> +				 <&cru SCLK_SDIO0_DRV>,
+> >>> +				 <&cru SCLK_SDIO0_SAMPLE>;
+> >>> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> >>> +			fifo-depth = <0x100>;
+> >>> +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
+> >>> +			max-frequency = <150000000>;
+> >>> +			pinctrl-names = "default";
+> >>> +			pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>,
+> >>> +				    <&sdio0_det>, <&sdio0_pwren>;
+> >>
+> >> The sdio module is usually "non-removable", no need det,
+> >> and pwren may be other gpio (use mmc-pwrseq). So it should
+> >> be `pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;`
+> > 
+> > This doesn't affect the fact that these two pins are assigned as
+> > functional pins for SDIO0, as pointed out by the datasheet[1].
+> > 
+> > But with more digging, I found the reference design[2] of Rockchip
+> > actually uses the two pins as normal GPIOs. This is more obvious in
+> > downstream devicetree of an EVB[3]. Most of the existing boards (Radxa
+> > 2A, ArmSOM Sige 1) follow the reference design.
+> > 
+> > For me, it's kind of surprising that the SDIO IP functions with two
+> > functional pins assigned as different modes. I'm not sure whether we
+> > should apply pin configuration for these two pins in the SoC devicetree.
+> > Jonas, what do you think about it?
 > 
-> > +&sdmmc {
-> > +	bus-width = <4>;
-> > +	cap-mmc-highspeed;
-> > +	cap-sd-highspeed;
-> > +	disable-wp;
-> > +	no-sdio;
-> 
-> With 'no-sdio' property:
-> [  129.608986] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> [  130.711168] mmc1: Card stuck being busy! __mmc_poll_for_busy
-> [  130.725536] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
-> [  131.751240] mmc1: Card stuck being busy! __mmc_poll_for_busy
-> [  131.765608] mmc_host mmc1: Bus speed (slot 0) = 200000Hz (slot req 200000Hz, actual 200000HZ div = 0)
-> [  132.825083] mmc1: Card stuck being busy! __mmc_poll_for_busy
-> [  132.839413] mmc_host mmc1: Bus speed (slot 0) = 187500Hz (slot req 187500Hz, actual 187500HZ div = 0)
-> [  133.960141] mmc1: Card stuck being busy! __mmc_poll_for_busy
-> 
-> Without 'no-sdio' property:
-> [  105.224019] mmc1: error -22 whilst initialising SDIO card
-> [  106.290838] mmc1: Card stuck being busy! __mmc_poll_for_busy
-> [  106.801931] dwmmc_rockchip ffc30000.mmc: Busy; trying anyway
-> [  107.385835] mmc_host mmc1: Timeou sending command (cmd 0x202000 arg 0x0 status 0x80202000)
-> [  107.400425] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
-> [  107.431561] mmc_host mmc1: Bus speed (slot 0) = 49800000Hz (slot req 50000000Hz, actual 49800000HZ div = 0)
-> [  107.433107] mmc1: new high speed SDIO card at address 0001
+> I think it make sense to match the pins used by reference boards, i.e.
+> the pinconf most likely to be used by majority of boards that will use
+> the sdio interface.
 
-So it seems the sdmmc controller actually works with SDIO commands as
-well? I don't expect that since the datasheet says RK3528 has only two
-SDIO 3.0 controllers.
+Thanks, will take it.
 
-We could remove the "no-sdio" property if SDIO actually works. Will
-apply it in the next version if there's no objection against this.
-
-Further tests about the capabilities of the controller are welcome.
-
-> # cat /sys/kernel/debug/mmc1/ios
-> clock:          50000000 Hz
-> vdd:            21 (3.3 ~ 3.4 V)
-> bus mode:       2 (push-pull)
-> chip select:    0 (don't care)
-> power mode:     2 (on)
-> bus width:      2 (4 bits)
-> timing spec:    2 (sd high-speed)
-> signal voltage: 0 (3.30 V)
-> driver type:    0 (driver type B)
+> Of my RK3528 boards, only ArmSoM Sige1 use sdio for onboard wifi and
+> there I currently have following in my work-in-progress board DT [4]:
 > 
-> Thanks,
-> Chukun
+>   pinctrl-names = "default";
+>   pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>, <&clkm1_32k_out>;
 > 
-> -- 
-> 2.25.1
+> The Radxa ROCK 2A/2F seem to use USB for wifi/bt.
+> 
+> [4] https://github.com/Kwiboo/linux-rockchip/blob/next-20250305-rk3528/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+> 
+> Regards,
+> Jonas
+> 
+> > 
+> >>> +			resets = <&cru SRST_H_SDIO0>;
+> >>> +			reset-names = "reset";
+> >>> +			status = "disabled";
+> >>> +		};
+> >>> +
+> >>> +		sdio1: mmc@ffc20000 {
+> >>> +			compatible = "rockchip,rk3528-dw-mshc",
+> >>> +				     "rockchip,rk3288-dw-mshc";
+> >>> +			reg = <0x0 0xffc20000 0x0 0x4000>;
+> >>> +			clocks = <&cru HCLK_SDIO1>,
+> >>> +				 <&cru CCLK_SRC_SDIO1>,
+> >>> +				 <&cru SCLK_SDIO1_DRV>,
+> >>> +				 <&cru SCLK_SDIO1_SAMPLE>;
+> >>> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> >>> +			fifo-depth = <0x100>;
+> >>> +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+> >>> +			max-frequency = <150000000>;
+> >>> +			pinctrl-names = "default";
+> >>> +			pinctrl-0 = <&sdio1_bus4>, <&sdio1_clk>, <&sdio1_cmd>,
+> >>> +				    <&sdio1_det>, <&sdio1_pwren>;
+> >>
+> >> Same here.
+> >>
+> >>> +			resets = <&cru SRST_H_SDIO1>;
+> >>> +			reset-names = "reset";
+> >>> +			status = "disabled";
+> >>> +		};
+> >>
+> >> Thanks,
+> >> Chukun
+> >>
+> >> -- 
+> >> 2.25.1
+> >>
+> > 
+> > Best regards,
+> > Yao Zi
+> > 
+> > [1]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/Rockchip%C2%A0RK3528%C2%A0Datasheet%C2%A0V1.0-20230522.pdf
+> > [2]: https://github.com/DeciHD/rockchip_docs/blob/main/rk3528/RK3528_BOX_REF_V10_20230525.pdf
+> > [3]: https://github.com/rockchip-linux/kernel/blob/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3528-evb1-ddr4-v10.dtsi#L128
 > 
 
 Best regards,
