@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E5DC282DE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E62C19F32
 	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 09:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=367xqZENfUTlQezelexlJG2Wcsg9kjyLWL/hUDR5P4k=; b=XyugkWbVGqTujW
-	5npKF4a9n4Tx3xtwQRvcDJ6p15qb/y0++QwmD51Ge/pZsVop952ob2Ra98Tg4dzaVj0wFZZ86nng0
-	s2rxa9XW92nbSioJl0bKCPvHbVLGr3ADZN8C3EhnhOx/y1egU1CbRT/5IAL5sb+lK/mxHSupHUKiC
-	NzatE9nZOCsyNc111kG/UnN7/6vYCbxbUE+fOxLduUsZJFYv3LHcMmIq7dCu6u4cdxSvhQ0D6nZ0c
-	KGtDizknOginjiY/FoPj+4TzTROT/AP7cKu5giM9em2w44neGoNlDn5nkJQ8jR8CQZ4lii0CfNEvK
-	Dc78xksilfDhs9HiPtjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Plham+sJxYGSJHFyYwhXDgycOevBPKE+N3A0QutP5jI=; b=GjjM3uiDw97t88
+	Y6FQUL9BtEhTD38OpQgZiZhMdNDRo2neS6a3tM1TVyrsy5n8XAoY6u9nOV37YQx0eLXl8kg1Ce6hR
+	EKfm25G5ftM+wkt80c66ljyXF6+JcZYY8ItRTeAzxpYKParuWaPgj8tJqJXeUVctK6snjnFLFMOlP
+	glbadB+zFQRNjomigteMfY0oAhJOt2o48j0vt8CcU8mw1bQaWJpW/QnShBa5jGDWVskmksxeR14tO
+	AIhcNLaRQtjCPBgBOvI7UB8zQz3u6TknX6ESwy90PVLOX5OeCsZM34A3Ldli7ZzLUI4nJv7GPNs4a
+	bRMetWiCrPIHLQ3OJpgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqTtY-0000000Dgq3-23TG;
+	id 1tqTtY-0000000DgqN-3g9C;
 	Fri, 07 Mar 2025 09:21:28 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqTro-0000000DgLw-0Y5R
+	id 1tqTrt-0000000DgP4-2IbL
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Mar 2025 09:19:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741339167; cv=none; 
+	Fri, 07 Mar 2025 09:19:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741339171; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YzLv5mfAH80vIklSoxtki1XE1xukzSoJx+DZFYGrUjlaVCrBfVlbW1LSzEePYdft/6fBZd4kqZFM3uQXzdoTfv3O576rVIOPFW32z73WmtC2lBrPR+USd3UiE+UEAKDoMDb/T2G02K0Xciee43/frfADLlm43F0hB0li32TlNQA=
+	b=iUW3/EWAQ74pV1vuawJREJ8QOpIrvnRIOsvVDcrnldvwdD4+UQM+dgJhNI631knUkJrE2pJiXcv8vboKlBKryjwsEtOELSfarhDJxv9wJ9POm7q82Ky6uGf6GIIVud2A64gV6pAFpkaXz9EnIG4PhMRWeQ6ku1jpY2O/95ub99I=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741339167; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=LUZNNrGCHEYUgjWOR9Ax5bht229rw4nWFBraJsxlaPE=; 
-	b=TGFwdRkdJonr6CPSFc/ZpIsek5gia7OVcotq8HEyp9Pz+4GX0Lfip3f/dju2tapNV8dXY26tu28YapNmgnxYU6Oa7A9qPZyjQSrqgma14h9xW+eJVGpNrS5oGzP+/c/BtFuC+byOhl1nKv+cyljb5R2RSfe27ecAGiIO5B5TZ9U=
+	t=1741339171; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=jMsqnCZwk+9rRlGRVtpB7byehgQbLDfm0actQbMgEdc=; 
+	b=lWYby/8QddJpS0Z3HlsCDjhRBjtM52YXAzfUFWMnoifKvDiLQSQ2WPPiGAhHtVfJHaC9vbSrlKpB7HMxOA6l3I76o9J0YuJPGlXSmcBQzQMrC25V/Q+j4FON9JmXVTPmNmd89Mg/1TfTpEG6Tg3h+gow1zf/90WdkmzTt+o17BI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741339167;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741339171;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=LUZNNrGCHEYUgjWOR9Ax5bht229rw4nWFBraJsxlaPE=;
-	b=Fp5PVAF4+1rEg26jqDlcAEt3Zg3RdUBbx44X+2gxEMzPzLggtHooz69rmZG0ijcB
-	s5F1de6IYaLzTPvSlQn325Kwm4osUuB0Y5IW5RbpjH+U7Gq3b3XdlFEsl5IVelH6JD+
-	jQrqXxgElspsPxrR1aVKzc0ePRCRzigtqqNalJo4=
-Received: by mx.zohomail.com with SMTPS id 1741339164930302.9248701537149;
-	Fri, 7 Mar 2025 01:19:24 -0800 (PST)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=jMsqnCZwk+9rRlGRVtpB7byehgQbLDfm0actQbMgEdc=;
+	b=TR34M9IEPY5YHVCfOwY5L9cDx1/YPEhWGI0PQyTgvHAzvwBBtqdFkGzS8e0i+jM5
+	Wqu4fsR7qrNeMFSZEmCS7wE52hD5vFYxPDvku8ciBV0OY+YAyL66ErtVRUcJoltAEKI
+	WAQtimg9eygbVW4+CWumyhXdyrUO+UI9s7j5Ktnk=
+Received: by mx.zohomail.com with SMTPS id 1741339169951285.09211468103194;
+	Fri, 7 Mar 2025 01:19:29 -0800 (PST)
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 To: Shreeya Patel <shreeya.patel@collabora.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -66,16 +66,17 @@ Cc: kernel@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Tim Surber <me@timsurber.de>
-Subject: [PATCH v15 0/2] Enable HDMI RX controller on RK3588
-Date: Fri,  7 Mar 2025 12:18:55 +0300
-Message-ID: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
+Subject: [PATCH v15 1/2] arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+Date: Fri,  7 Mar 2025 12:18:56 +0300
+Message-ID: <20250307091857.646581-2-dmitry.osipenko@collabora.com>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
+References: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_011940_236267_4313334C 
-X-CRM114-Status: UNSURE (   7.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250307_011945_645830_652303AD 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,33 +93,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+From: Shreeya Patel <shreeya.patel@collabora.com>
 
-This patchset adds HDMIRX controller node to RK3588 DTSI and enables
-it on Rock 5b board.
+Add device tree support for Synopsys DesignWare HDMI RX
+Controller.
 
-Changelog:
-
-v15: - Removed duplicated HDMIRX pinctrl definitions
-
-     - Removed default M1 HDMIRX pinctrl assignment from the DTSI as
-       technically HDMIRX can use M0 depending on a board configuration.
-
-     - Changed ordering of the status DT property
-
-v14: - Re-enabled LOAD_DEFAULT_EDID=y option in the defconfig and
-       added ack from Hans Verkuil fot that patch.
-
-Sebastian Reichel (1):
-  arm64: dts: rockchip: Enable HDMI receiver on rock-5b
-
-Shreeya Patel (1):
-  arm64: dts: rockchip: Add device tree support for HDMI RX Controller
-
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
+Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
+Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+---
  .../arm64/boot/dts/rockchip/rk3588-extra.dtsi | 55 +++++++++++++++++++
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 17 ++++++
- 2 files changed, 72 insertions(+)
+ 1 file changed, 55 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+index 4a950907ea6f..e18410c68530 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+@@ -7,6 +7,30 @@
+ #include "rk3588-extra-pinctrl.dtsi"
+ 
+ / {
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		/*
++		 * The 4k HDMI capture controller works only with 32bit
++		 * phys addresses and doesn't support IOMMU. HDMI RX CMA
++		 * must be reserved below 4GB.
++		 * The size of 160MB was determined as follows:
++		 * (3840 * 2160 pixels) * (4 bytes/pixel) * (2 frames/buffer) / 10^6 = 66MB
++		 * To ensure sufficient support for practical use-cases,
++		 * we doubled the 66MB value.
++		 */
++		hdmi_receiver_cma: hdmi-receiver-cma {
++			compatible = "shared-dma-pool";
++			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
++			size = <0x0 (160 * 0x100000)>; /* 160MiB */
++			alignment = <0x0 0x40000>; /* 64K */
++			no-map;
++			status = "disabled";
++		};
++	};
++
+ 	usb_host1_xhci: usb@fc400000 {
+ 		compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
+ 		reg = <0x0 0xfc400000 0x0 0x400000>;
+@@ -135,6 +159,37 @@ i2s10_8ch: i2s@fde00000 {
+ 		status = "disabled";
+ 	};
+ 
++	hdmi_receiver: hdmi_receiver@fdee0000 {
++		compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
++		reg = <0x0 0xfdee0000 0x0 0x6000>;
++		power-domains = <&power RK3588_PD_VO1>;
++		rockchip,grf = <&sys_grf>;
++		rockchip,vo1-grf = <&vo1_grf>;
++		interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "cec", "hdmi", "dma";
++		clocks = <&cru ACLK_HDMIRX>,
++			 <&cru CLK_HDMIRX_AUD>,
++			 <&cru CLK_CR_PARA>,
++			 <&cru PCLK_HDMIRX>,
++			 <&cru CLK_HDMIRX_REF>,
++			 <&cru PCLK_S_HDMIRX>,
++			 <&cru HCLK_VO1>;
++		clock-names = "aclk",
++			      "audio",
++			      "cr_para",
++			      "pclk",
++			      "ref",
++			      "hclk_s_hdmirx",
++			      "hclk_vo1";
++		resets = <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
++			 <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
++		reset-names = "axi", "apb", "ref", "biu";
++		memory-region = <&hdmi_receiver_cma>;
++		status = "disabled";
++	};
++
+ 	pcie3x4: pcie@fe150000 {
+ 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+ 		#address-cells = <3>;
 -- 
 2.48.1
 
