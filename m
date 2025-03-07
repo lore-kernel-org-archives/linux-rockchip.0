@@ -4,41 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AEEFC282D0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 09:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60F6C19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 09:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DeSkT46w0AZ38ZhgfEFKt3Qx/lrWrEzoNgfTefm2zSk=; b=l/KvRmB2OBlcAp
-	mR5vNQHoFfvky25AS3ad+2AUCdX5QG6RE8ZvutCad7X2p5vd5v/BLxE3RSAYDjw0UJcviiQG8NHze
-	MgifFJxoR+elp+DVbBAV4VpQBEIUBrA9lrOA7PQnkfe82eEpAyEDH+JXQLm3h44SoEsV3hBuVzENr
-	6wdJQ0+MTtZThoWb1cD4MuvbMGMpojb2Pj2019iakJpFz2lssYFzhUc9Dkx64qO8uW6WsmMMJcY7t
-	4rg8zgfx7pZ2PMG/HObHnTclAH1r6mUZ0gSFBMa3IlpBlVJWFbykSfXpa/zT3QCPByhi6WUlw6ITk
-	MzZ9Cfz34RHKsnNEz2jg==;
+	List-Owner; bh=AezUtThNDFovkWtNvKTWMNweGjDbO7iVWfEm8zE8GsE=; b=VZ4s5iU25AY7P7
+	yoUPNzTaZweP2XuO7XvTZtyFV5QGruvqcVDH168d7DavvyyNIewrt9KiUW4YpIevIPFVQjVLy5Twi
+	nnlPS3V0upC9YsYAS4OpHw5LXd5h0CNJ+UxorvhviadpVmiUfJfPKCH18sZgvqsKJxpEbZO6V2L8L
+	w25xaMEEwXa746bbBZ/02vWWdBChsBMcBzOj0YGB6Wc0O8neC+d/fHpsLnfu4Dh349b0Zz6cVtQWy
+	MjNigJp5IeEfsu80jicLvE7HB8LMYHZYBt42YWRhH+NEgnaLUyY5WWEQuo2Nz7spdAehCpzzj09oM
+	ZwbtxFRjBpOejPyppACg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqUQ7-0000000DlyY-02Gp;
-	Fri, 07 Mar 2025 09:55:07 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tqUTT-0000000DmBe-37Hi;
+	Fri, 07 Mar 2025 09:58:35 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqUQ4-0000000Dlxx-2ASB
+	id 1tqUTR-0000000DmAz-0FRJ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Mar 2025 09:55:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 01B0CA455EC;
-	Fri,  7 Mar 2025 09:49:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3250C4CED1;
-	Fri,  7 Mar 2025 09:54:59 +0000 (UTC)
-Message-ID: <8cb4af0d-935a-4305-a204-9c2f187e0593@xs4all.nl>
-Date: Fri, 7 Mar 2025 10:54:58 +0100
+	Fri, 07 Mar 2025 09:58:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741341500; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Z/PR+U4MA9bcDqOgjLzb9aFLSqOfjQCNLN9CWXAeqCSaQ2wexkyxP1Bg/xD0fmk8RquwWyFiArD1B3UiqE6iMXVnW0hOKgSKOfNSoAQ7i813gQ0JRMIYg6WGxknxMtOD7rLnAWQBM9LWalrtEwE1AUWt1bi4+pu17mNed8EyYb4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741341500; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Sd6Z99EJ8ZfYhr95vBuuNjDtXLH/fo9bgS3ZF5FRe+A=; 
+	b=Qpm3aURsAO+MlocU75G0A8cgylgrCbRoof3nsZVioW00rCGtdvFtOkxb0Zo7WVk0HduFlADq+lK3HqVMdKEetK1JNFes7+ErPFf+Sqf6gI+FLG1s/IqdhmyB7APaBA43BVR8JxIBG/nza1zVBNPQUJS9G8STIDAD2GZ0s5+5UL0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741341500;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Sd6Z99EJ8ZfYhr95vBuuNjDtXLH/fo9bgS3ZF5FRe+A=;
+	b=YHysda3AUKg7FgH3xrjjMNnd/QXtAkN7B6bo8cAoMMwJY15V3jJuq1aiK+6+6CiF
+	s8++XPd6/7Q7/zbieDWC6pTp8jK8u/U1Mj3yAnCBOQDOD8lpjR58007bAdKrqLz9k3t
+	j/M2fjCiBh4+PgCjsVqhunTNhuwUajm8YR3Fyry4=
+Received: by mx.zohomail.com with SMTPS id 174134149797959.40961357397384;
+	Fri, 7 Mar 2025 01:58:17 -0800 (PST)
+Message-ID: <64f8d179-9d0a-47ca-872c-aa92e44e7772@collabora.com>
+Date: Fri, 7 Mar 2025 12:58:13 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v1] media: platform: synopsys: hdmirx: Fix compilation on
  32bit arches
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+To: Hans Verkuil <hverkuil@xs4all.nl>,
  Shreeya Patel <shreeya.patel@collabora.com>, Heiko Stuebner
  <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
  jose.abreu@synopsys.com, nelson.costa@synopsys.com,
@@ -48,55 +63,14 @@ Cc: kernel@collabora.com, linux-media@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Tim Surber <me@timsurber.de>
 References: <20250307092113.646831-1-dmitry.osipenko@collabora.com>
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Autocrypt: addr=hverkuil@xs4all.nl; keydata=
- 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
-In-Reply-To: <20250307092113.646831-1-dmitry.osipenko@collabora.com>
+ <8cb4af0d-935a-4305-a204-9c2f187e0593@xs4all.nl>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <8cb4af0d-935a-4305-a204-9c2f187e0593@xs4all.nl>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_015504_721556_172C46BD 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20250307_015833_181335_26BF8CF2 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,45 +87,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 07/03/2025 10:21, Dmitry Osipenko wrote:
-> The pixelclock is specified as 64bit integer and for this driver it
-> won't be above 600MHz. Fix the 64bit division of the pixclock for 32bit
-> kernel builds.
+On 3/7/25 12:54, Hans Verkuil wrote:
+> Hi Dmitry,
 > 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202503070743.WnRxStlk-lkp@intel.com/
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> ---
->  drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On 07/03/2025 10:21, Dmitry Osipenko wrote:
+>> The pixelclock is specified as 64bit integer and for this driver it
+>> won't be above 600MHz. Fix the 64bit division of the pixclock for 32bit
+>> kernel builds.
+>>
+>> Reported-by: kernel test robot <lkp@intel.com>
+>> Closes: https://lore.kernel.org/oe-kbuild-all/202503070743.WnRxStlk-lkp@intel.com/
+>> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>> ---
+>>  drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>> index 4d42da7255f3..7e342bbde967 100644
+>> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>> @@ -291,7 +291,7 @@ static void hdmirx_get_timings(struct snps_hdmirx_dev *hdmirx_dev,
+>>  	hfp = htotal - hact - hs - hbp;
+>>  	vfp = vtotal - vact - vs - vbp;
+>>  
+>> -	fps = (bt->pixelclock + (htotal * vtotal) / 2) / (htotal * vtotal);
+>> +	fps = ((u32)bt->pixelclock + (htotal * vtotal) / 2) / (htotal * vtotal);
 > 
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> index 4d42da7255f3..7e342bbde967 100644
-> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> @@ -291,7 +291,7 @@ static void hdmirx_get_timings(struct snps_hdmirx_dev *hdmirx_dev,
->  	hfp = htotal - hact - hs - hbp;
->  	vfp = vtotal - vact - vs - vbp;
->  
-> -	fps = (bt->pixelclock + (htotal * vtotal) / 2) / (htotal * vtotal);
-> +	fps = ((u32)bt->pixelclock + (htotal * vtotal) / 2) / (htotal * vtotal);
+> I just merged:
+> 
+> https://patchwork.linuxtv.org/project/linux-media/patch/20250306-synopsys-hdmirx-fix-64-div-v1-1-dd5ff38bba5e@kernel.org/
+> 
+> So you can either leave that patch in, or provide a patch on top.
 
-I just merged:
+Missed that patch you merged. No need to do anything then, thanks!
 
-https://patchwork.linuxtv.org/project/linux-media/patch/20250306-synopsys-hdmirx-fix-64-div-v1-1-dd5ff38bba5e@kernel.org/
-
-So you can either leave that patch in, or provide a patch on top.
-
-Regards,
-
-	Hans
-
->  	bt->width = hact;
->  	bt->height = vact;
->  	bt->hfrontporch = hfp;
-
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
