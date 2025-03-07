@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4503C19F32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 15:48:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D30F2C19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 16:05:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qX3eqra9CF6bisgontijE9yusxcEdoEWZ9gBtG2vaBo=; b=URUNnalx9hJkfgWhxuxuTRQJja
-	1+KTTuBHS3GJ9WEkbd1vEb1FoUMcuNdfe6hP0TFr6Ryd/1CbWXT3yJ+eW3vtUZWBPzZLbqGQgzao9
-	L9xIgprP4PMTniVznkYx/u7GxCV4Bx/Uj9boUcwyOlh6DIN98V7Ia3vFsWc2b2HEgF17X0JLOaESP
-	WCNup+6RhDl1ppAFQtAm6D4r12TIaO0FPUyVX5CjpGGHat8L9hxNaEJ5fRTVTw/LHsQEHMxfBy38X
-	drNQdw+ho0Uvf610FfBH6I3fnd6IvY2ppaX67446HerWXhPoUtCvIXWq400I9mpyTStAcbWutnUGw
-	Oj0dPxDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B6YINCJTZs1Rp9O2PofIQJYoLrNe8W6jf45p9w5UCvw=; b=X19S/ymO7oiTCg
+	sfAkMoyrXqAuK15rn4wIAwjcLZx4oenff+i7xw241fEd5fh8B/ITYI4FNXWxmMCACA8B82qntazp3
+	k+b2V1t4lYk5zjosXceSTbwo0qposcv/AfEPx3c0Yk9ls2pTp/0ELy0J5vvvyQOsyANHoJQeYdMFU
+	8hJOKk+Na6joiYJt6SzzXF21efPOiBt6PgG9tusTljC4QpSlgYNPlyg1r/UuZm+xtjQC9pxs7S5jN
+	yrqvNelM9Q3IwFXlskHD02Pb5KjzYNsH2PwMmun1XECgcOGbxo5AfVJP1vZtyIuGA0JbcUHzkgjBP
+	4Meo2qN7jN6rOZGrNnPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZvo-0000000Ekyi-1XQR;
-	Fri, 07 Mar 2025 15:48:12 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tqaCh-0000000EoeN-1lQn;
+	Fri, 07 Mar 2025 16:05:39 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqZqV-0000000EjfI-3VZq;
-	Fri, 07 Mar 2025 15:42:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 609E7A4588B;
-	Fri,  7 Mar 2025 15:37:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19D3FC4CED1;
-	Fri,  7 Mar 2025 15:42:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741362162;
-	bh=/6SO0EcADvKbiU2IUbCpmVnHTLreXfwak6PliDc6LIM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KpRVUrtEQlJ/hOslRpwQkyvvb8x0q7U4z7yGhb4IqPrOi132Pl5AhyBUKor82AU88
-	 YuCBNG8P0re5CI4t6N4R/Jo8X6lEAiujVN5BVJ8fxSZosNSrsQPnj4ulUvG3dL8h0N
-	 WM1nK1DFWuePX1WRRJOp+OopOssB8j59RDKFTUqpLaF7au3H6Oq6CnK+4eSJIF6Wxi
-	 ero7/47yLDfxcyeJs1cHxDLrqL75KcnaKl6w8nIpiAiRFDGnIBxdE1w1I3lF+BGLUn
-	 J3CCCiR5JyvBvMv5TmGnXQKg4xH9rlHMPQBZxLFi/AAj3+U8/1NHLjewvghgaLYhdw
-	 aviKA5meeNWug==
-Date: Fri, 7 Mar 2025 15:42:36 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	David Wu <david.wu@rock-chips.com>, Yao Zi <ziyao@disroot.org>,
-	linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
+	id 1tqa9U-0000000Eo4R-1WNp
+	for linux-rockchip@lists.infradead.org;
+	Fri, 07 Mar 2025 16:02:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1741363338;
+ bh=aCrPvOluCec+vwfJ2dRCW1m+hFa1hc7eEdH3qmC/0uk=;
+ b=nz3s4TS/YyiLlyFw7HTOI6xOUNvRxLTEEf2XiihY3MnekLHkGhLWoJBi81Cx2fWkB5mPFsomg
+ kEzkBPaxhU3kKxQypxcI+s6Rgtfy1MFGWJ7kIlKzmhwNAk24optMF7wF5jCvvzx+fuCU5kMgVmI
+ AA4QC5Y+TfQpwNbtRdQMm9GsvoOxInZL3UXEeGYDI5CKpKZAp/+s/sjbqVHAjr9FcQOzrYkQwn3
+ t2LRwnUCccyKh8MERX4SoPEh5nMcgdRowctmuRgz0CJWLSgK72NjKkszEuT5/Kdo5zuhNJnkJuO
+ IM5Rj2VzxMV+BzT6xZo/Po9a9WwZQoyqcK86TUh1KtOg==
+X-Forward-Email-ID: 67cb18782ea74034f8b964f0
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <de2fb6c6-b053-4be9-8c44-2476c5eb26a6@kwiboo.se>
+Date: Fri, 7 Mar 2025 17:01:54 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/4] dt-bindings: net: rockchip-dwmac: Add compatible
  string for RK3528
-Message-ID: <20250307-tipping-womanlike-a1ce2370d8d3@spud>
+To: Conor Dooley <conor@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, David Wu <david.wu@rock-chips.com>,
+ Yao Zi <ziyao@disroot.org>, linux-rockchip@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20250306221402.1704196-1-jonas@kwiboo.se>
  <20250306221402.1704196-2-jonas@kwiboo.se>
-MIME-Version: 1.0
-In-Reply-To: <20250306221402.1704196-2-jonas@kwiboo.se>
+ <20250307-tipping-womanlike-a1ce2370d8d3@spud>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250307-tipping-womanlike-a1ce2370d8d3@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_074244_044813_C0F4B0FC 
-X-CRM114-Status: GOOD (  20.36  )
+X-CRM114-CacheID: sfid-20250307_080220_431617_9F4803B8 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,111 +81,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5193276961715470405=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Conor,
 
---===============5193276961715470405==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nXvMqSCu4bHBti4w"
-Content-Disposition: inline
+On 2025-03-07 16:42, Conor Dooley wrote:
+> On Thu, Mar 06, 2025 at 10:13:54PM +0000, Jonas Karlman wrote:
+>> Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
+>> Ethernet QoS IP.
+>>
+>> Add compatible string for the RK3528 variant.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> I was not able to restrict the minItems change to only apply to the new
+>> compatible, please advise on how to properly restrict the minItems
+>> change if needed.
+> 
+> What do you mean by that? As in, what did you try and did not work?
+> Usually you do something like
+> if:
+>   not:
+>     compatible:
+>       contains:
+>         rockchip,rk3528-gmac
+> then:
+>   properties:
+>     clocks:
+>       minItems: 5
+> 
 
+Thanks, this seem to work, will use in a v2.
 
---nXvMqSCu4bHBti4w
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I tried to do something opposite and instead set minItems: 4 when
+compatible contains rockchip,rk3528-gmac:
 
-On Thu, Mar 06, 2025 at 10:13:54PM +0000, Jonas Karlman wrote:
-> Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
-> Ethernet QoS IP.
->=20
-> Add compatible string for the RK3528 variant.
->=20
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> I was not able to restrict the minItems change to only apply to the new
-> compatible, please advise on how to properly restrict the minItems
-> change if needed.
-
-What do you mean by that? As in, what did you try and did not work?
-Usually you do something like
 if:
-  not:
-    compatible:
-      contains:
-        rockchip,rk3528-gmac
+  compatible:
+    contains:
+      rockchip,rk3528-gmac
 then:
   properties:
     clocks:
-      minItems: 5
+      minItems: 4
 
->=20
-> Also, because snps,dwmac-4.20a is already listed in snps,dwmac.yaml
-> adding the rockchip,rk3528-gmac compatible did not seem necessary.
-> ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/=
-Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> index 05a5605f1b51..3c25b49bd78e 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> @@ -24,6 +24,7 @@ select:
->            - rockchip,rk3366-gmac
->            - rockchip,rk3368-gmac
->            - rockchip,rk3399-gmac
-> +          - rockchip,rk3528-gmac
->            - rockchip,rk3568-gmac
->            - rockchip,rk3576-gmac
->            - rockchip,rk3588-gmac
-> @@ -49,6 +50,7 @@ properties:
->                - rockchip,rv1108-gmac
->        - items:
->            - enum:
-> +              - rockchip,rk3528-gmac
->                - rockchip,rk3568-gmac
->                - rockchip,rk3576-gmac
->                - rockchip,rk3588-gmac
-> @@ -56,7 +58,7 @@ properties:
->            - const: snps,dwmac-4.20a
-> =20
->    clocks:
-> -    minItems: 5
-> +    minItems: 4
->      maxItems: 8
-> =20
->    clock-names:
-> --=20
-> 2.48.1
->=20
+but that resulted in something like:
 
---nXvMqSCu4bHBti4w
-Content-Type: application/pgp-signature; name="signature.asc"
+  rockchip/rk3528-radxa-e20c.dtb: ethernet@ffbe0000: clocks: [[7, 173], [7, 172], [7, 171], [7, 170]] is too short
 
------BEGIN PGP SIGNATURE-----
+Regards,
+Jonas
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ8sT7AAKCRB4tDGHoIJi
-0udWAQDKedml54kYUJVxrtEqR1NZzEn4apvbK6/9yyqKPmhoTgEAm7XXd7+22bQ4
-e+hQ7xUKSRFfeiw9diT+3VJ3kwyPBQY=
-=97ov
------END PGP SIGNATURE-----
+>>
+>> Also, because snps,dwmac-4.20a is already listed in snps,dwmac.yaml
+>> adding the rockchip,rk3528-gmac compatible did not seem necessary.
+>> ---
+>>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 4 +++-
+>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+>> index 05a5605f1b51..3c25b49bd78e 100644
+>> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+>> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+>> @@ -24,6 +24,7 @@ select:
+>>            - rockchip,rk3366-gmac
+>>            - rockchip,rk3368-gmac
+>>            - rockchip,rk3399-gmac
+>> +          - rockchip,rk3528-gmac
+>>            - rockchip,rk3568-gmac
+>>            - rockchip,rk3576-gmac
+>>            - rockchip,rk3588-gmac
+>> @@ -49,6 +50,7 @@ properties:
+>>                - rockchip,rv1108-gmac
+>>        - items:
+>>            - enum:
+>> +              - rockchip,rk3528-gmac
+>>                - rockchip,rk3568-gmac
+>>                - rockchip,rk3576-gmac
+>>                - rockchip,rk3588-gmac
+>> @@ -56,7 +58,7 @@ properties:
+>>            - const: snps,dwmac-4.20a
+>>  
+>>    clocks:
+>> -    minItems: 5
+>> +    minItems: 4
+>>      maxItems: 8
+>>  
+>>    clock-names:
+>> -- 
+>> 2.48.1
+>>
 
---nXvMqSCu4bHBti4w--
-
-
---===============5193276961715470405==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5193276961715470405==--
-
