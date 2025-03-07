@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83273C28B24
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 17:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCBCC19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 17:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bxg73RmLqrsNGBf8jRGi623DE27wBz3CekXI2J+KRs8=; b=dmjV8oZdMNL+sR
-	tKSlKYIYylgGcgNOEI4MC+uZbgnctr4AdgSiefPRYbWuWOLUPdcnsRCyN+b02A8mOqvvCqlkmMuXE
-	vKwP3ev82+UGYt2svz6HiSTPLi9qBt8L88OwVOZk7LKD/xbPi+aIPbZCyijXCD5Bxj3ds0uPMMTJP
-	3yDGWeGXNvi86x5D56qXa4/26a1JNpiGrE9C0nF0tdNc8rzTLkxD/6HRCGr6YutOddHTQdH04UCOu
-	T1zEmBfV9qKDp30PPJxRYbTO89Ql2ul4fDoXSU82GTeZcXs4ZxcT2sa1msfjNZdlzwEbUnBvHafMX
-	Q6xabTLmKBW0shZrC26A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BBOCEQEtnZyRvGjPPb8MMsO54llKEXY1vLhDXkrif8c=; b=w90r1tZcg5Mgyhd1zQmTmfCieW
+	26P2oZp9AXM5epq8h3Z9WJuoLhLQJhbM9e/1ouny0V7F4kuwH4sM60cmoopEsfdkBA86ZD9rgIiL6
+	m3zUAYMg1yd9z6Q9RNaLLP9szoNL/JsT7kx3dSI5AElhakTniktro6mf9pCNv9xxXFNrCBd0xW8gi
+	M1ckawERxI8J9jKlhWNU/zKbHevuk9n+wkIHV2yzAJuJvoI/YyipRxz4M3fmDuXBRYvic0sQ3BTmZ
+	8IO3zKAjpk27L+uTe/FCSWB0hcdQy/OkfznneRnoSXuxcXeLdSpFuzTlmL6SqmGx+e2/CXae1ApvU
+	JrqksXOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqb3F-0000000Ez8M-3O38;
-	Fri, 07 Mar 2025 16:59:57 +0000
+	id 1tqbCo-0000000F0k5-0Jhv;
+	Fri, 07 Mar 2025 17:09:50 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqazR-0000000Eya0-0uuL;
-	Fri, 07 Mar 2025 16:56:02 +0000
+	id 1tqbBA-0000000F0Uk-1i0V;
+	Fri, 07 Mar 2025 17:08:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AF56EA43ED0;
-	Fri,  7 Mar 2025 16:50:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FB91C4CED1;
-	Fri,  7 Mar 2025 16:55:59 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5AE61A44B1B;
+	Fri,  7 Mar 2025 17:02:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C231C4CEE2;
+	Fri,  7 Mar 2025 17:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741366559;
-	bh=zm4IUNRU5F9Q7F6IslhySw9XY0LvJZqmHl7UPH2oVUQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=AVpLkgsm+rJ1/+ojcbOf8+M3KoFzyiiESQHwjozKAPjF8B36+xTNHrBJm+OV0IzoP
-	 9DIl30BifTky83nb+ef9gFAfamPXZoSgWIfmpA9euJYTrs3wu9ivgapJI6JR3gFCA1
-	 CmjG6ORlNPfFLBEhuTr35fy8VNDn2/WcqANJ0KGlI4nwtFgIJwW2aIS2H4i8v4MZV/
-	 5ubKCGk/uJxRELly6gsEXqtT/B4vlKspg7bln92m2n9XTmZwRFUEnruBztw+BLShQq
-	 APwS0a6x/LJuzZQ7QklhKw3O/u2zP8pBoWkBqbqNfww/A8IKi8k251LDbdwJQX11IJ
-	 v5MuibhQrFa/g==
-Date: Fri, 7 Mar 2025 08:55:58 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Andrew Lunn <andrew@lunn.ch>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 2/2] net: stmmac: dwmac-rk: Validate rockchip,grf and
- php-grf during probe
-Message-ID: <20250307085558.5f8fcb90@kernel.org>
-In-Reply-To: <1dd9e663-561e-4d6c-b9d9-6ded22b9f81b@kwiboo.se>
-References: <20250306210950.1686713-1-jonas@kwiboo.se>
-	<20250306210950.1686713-3-jonas@kwiboo.se>
-	<bab793bb-1cbe-4df6-ba6b-7ac8bfef989d@lunn.ch>
-	<1dd9e663-561e-4d6c-b9d9-6ded22b9f81b@kwiboo.se>
+	s=k20201202; t=1741367286;
+	bh=EAinxqSqYdnbbnkb1uHxYXPyfcX7MUeugdwP+4COtn4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=h0K1jrRmxiAUJWS03xTcfLzFu2VVktzzAj9NYVtmVTFXOAx5R78Q5ipUEkNKGAOJ3
+	 Mi5z8WBddzSpRXrQMw9JXzLPBt3Rrq7gXS0zkcn4iHMD5Q/pvKxdPb+1dc5yAdXVZS
+	 ZoxZcgg4EABtlcq+N6NhcQYsIZshHZ8I7hlEJ7UgkUSYonGY1libiBHLJ7ItMZErpd
+	 1gDQfsl9uZeNC/qPIFlot9LCDH37RKNYhTzG2vMCWVXuDni4CvWK0zuhaEawyZ+lqN
+	 cFHmgWTJGYlXeT6G4F+hqtSwKsCOB9+Kt2XzWrGcXGrnKA2QEPw49M9to2iOn0mgnm
+	 y70NMXdpwmeJw==
+Date: Fri, 7 Mar 2025 18:07:47 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Jonas Karlman <jonas@kwiboo.se>, Yao Zi <ziyao@disroot.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: pwm: rockchip: Add rockchip,rk3528-pwm
+Message-ID: <pnlkcc2rl7fegltovgtvp4xdxhonw72rclvhn7qmvb7xyuullm@xf5x6lcigji3>
+References: <20250307120004.959980-1-amadeus@jmu.edu.cn>
+ <20250307120004.959980-2-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
+In-Reply-To: <20250307120004.959980-2-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_085601_347452_84BC712E 
-X-CRM114-Status: UNSURE (   6.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250307_090808_534144_E01A4DF0 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,20 +69,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0115352461955202050=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 7 Mar 2025 00:49:38 +0100 Jonas Karlman wrote:
-> Subject: Re: [PATCH 2/2] net: stmmac: dwmac-rk: Validate rockchip,grf and php-grf during probe
-> 
-> [encrypted.asc  application/octet-stream (3384 bytes)] 
 
-Is it just me or does anyone else get blobs from Jonas?
-The list gets text, according to lore.
+--===============0115352461955202050==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4uzxop7jt47pbx4n"
+Content-Disposition: inline
+
+
+--4uzxop7jt47pbx4n
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/2] dt-bindings: pwm: rockchip: Add rockchip,rk3528-pwm
+MIME-Version: 1.0
+
+Hello,
+
+On Fri, Mar 07, 2025 at 08:00:03PM +0800, Chukun Pan wrote:
+> Document pwm compatible for rk3528 which is fallback compatible
+> of rk3328-pwm group.
+>=20
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+
+to prevent binding warnings it's probably sensible to let both patches
+go in via the same tree at the same time. Feel free to take the binding
+patch via rockchip/arm-soc.
+
+Acked-by: Uwe Kleine-K=F6nig <ukleinek@kernel.org>
+
+Thanks
+Uwe
+
+--4uzxop7jt47pbx4n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmfLJ9kACgkQj4D7WH0S
+/k5higf+OtJXTgkdDcHKWNOd31O7K9VCUQJDc9jVPE6elaMvtBo5dwg6YPmSENkq
+ytj0JsR4nNH7OBlOWgTMI9uiAzueeTr7kqAngX/xQknxRsHHljJJYmlWlDz5RJj1
+T5uEfryN3ghnCz4YZhcSCA8VAk1AYpyipEdsVsGAAZ5GaNTUwOQ6RYuzPZTh377G
+WMROK/e9xoWg5g+WZAdCV9TMstu6EDVzzWke7HfR3D3ToxiTGuB2tsM+LQHw90xg
+R/wVXYjbb7sgvIdyV3d/cF6/0m/o+yXnBEubhcNEUSUXsFkVRS2X5b2vJxIuvj3P
+LwEhsNNCCJ0w4nC/Xs/LVJfHstbt+g==
+=W8Nn
+-----END PGP SIGNATURE-----
+
+--4uzxop7jt47pbx4n--
+
+
+--===============0115352461955202050==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0115352461955202050==--
+
