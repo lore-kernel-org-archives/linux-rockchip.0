@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14BA5C19F32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 12:00:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE8E9C19F32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 12:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nJYcgfzhYqFxU/c3qwFwUeEAnPDXRL5YmvJODuq03mU=; b=m/j4E8j3Swtkzx
-	0LvbvlzhBX4vRT+gCXIyV0iqnW6HXtM3TYM1NNVOg0/5q3Y0FlVagrB3af/PRFtMfBJFj0zBbM+1N
-	5wrQ/vWdsr484+nm1+VYQ4Vq1HaNqpF3noJJCa0QrqDC3xMwgJuiFHNmkaSgHycjQor9QYr29hvXQ
-	CX8LIIwPG8LfEwzZZOnHi+9aWmK7P6uGxp/5x0z3EGH6NFoCNtw9ghYYHPf0CY+YD/hdYO8mKUtoa
-	hlpxAjB2/Obpg6jpziMg8bwAHKKFIfDgwTxhmv7RbnkzSvxmMTMRtOAzBEz3QyMHBxmkKC0/+9xYr
-	qhp6tEatzAglnJoZsNPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TRBy/3ioyIJwGh+Gk8GZjEz/gzjyGYUmZfltr1dzoy4=; b=cZ/G11roXh1XP0
+	Ow4METOBnvJQhJrcsbP2rE4cTAgVDDLHmeE5WrDyMKQdGcRDj0VQ8ZCpVfzzm2K5Se4OIXRgRDizD
+	cU3sXk90mLCb0Ej6m1IhXHhFBcnZA2jkcsoQVufwM+NZrW6/Fz40ya8BM4k/uMpcMlRAkpIXiuuOU
+	Ag+HpPCC5wyYGq5rhc+wwLfnTk/w3R0jpIwJT71EE1klrgziHguEZ/vygmXgGIMtaDMLu3H3OA/6p
+	WoF7QjCutXY/hH6hDQyTkA3pQNN7zzVavqrw+41eoBzwRrSSEPYnKRvJfp4D0OLFAQTk6xjhs44ch
+	wAvWVS12pB5fEqhZwvsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqWNE-0000000E7XR-2RKI;
-	Fri, 07 Mar 2025 12:00:16 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1tqWQP-0000000E8D9-3ld3;
+	Fri, 07 Mar 2025 12:03:33 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqWNB-0000000E7WK-0GKe;
-	Fri, 07 Mar 2025 12:00:14 +0000
+	id 1tqWND-0000000E7Wf-13lj;
+	Fri, 07 Mar 2025 12:00:16 +0000
 Received: from amadeus-Vostro-3710.lan (unknown [119.122.215.89])
-	by smtp.qiye.163.com (Hmail) with ESMTP id d5c9f2d0;
-	Fri, 7 Mar 2025 20:00:08 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id d5c9f2d7;
+	Fri, 7 Mar 2025 20:00:12 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -43,23 +43,25 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-pwm@vger.kernel.org,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-Date: Fri,  7 Mar 2025 20:00:02 +0800
-Message-Id: <20250307120004.959980-1-amadeus@jmu.edu.cn>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+Date: Fri,  7 Mar 2025 20:00:04 +0800
+Message-Id: <20250307120004.959980-3-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250307120004.959980-1-amadeus@jmu.edu.cn>
+References: <20250307120004.959980-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHh4ZVh5CGUkYGB8eQk0YHlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
-	JLS1kG
-X-HM-Tid: 0a95707a26a903a2kunmd5c9f2d0
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTR4ZVklLH05NSUxNGENPGFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktJSEJLQ1VKS0tVSk
+	JZBg++
+X-HM-Tid: 0a95707a369203a2kunmd5c9f2d7
 X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NS46Qxw4QjJJNjU*SjNICEsh
-	ISEaC0NVSlVKTE9KSE9DQ0tCSkxDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpOVUNCWVdZCAFZQUpLTUo3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NAw6TAw4KzJKMjUKMzMpCEkp
+	EBUKCSJVSlVKTE9KSE9DQ0pISk1IVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQUhIQ083Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_040013_269391_199DD478 
-X-CRM114-Status: UNSURE (   7.80  )
+X-CRM114-CacheID: sfid-20250307_040015_454479_1C053CFA 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,44 +79,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add pwm nodes for RK3528. Most rk3528 boards use pwm-regulator to
-supply to CPU, add node to enable them. The PWM core on RK3528 is
-the same as RK3328, but the driver doesn't support interrupts yet.
+Add pwm nodes for RK3528. The PWM core on RK3528 is the same as
+RK3328, but the driver does not support interrupts yet.
 
-Unlike other SoCs, pinctrl-names need to be in "active" state,
-I'm not sure about this, but otherwise the pwm-regulator will
-not work properly.
-
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 ---
-vdd_arm: regulator-vdd-arm {
-	compatible = "pwm-regulator";
-	pwms = <&pwm1 0 5000 1>;
-	pwm-supply = <&vcc5v0_sys>;
-	regulator-name = "vdd_arm";
-	regulator-min-microvolt = <746000>;
-	regulator-max-microvolt = <1201000>;
-	regulator-always-on;
-	regulator-boot-on;
-	regulator-settling-time-up-us = <250>;
-};
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 88 ++++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
 
-&cpu0 {
-	cpu-supply = <&vdd_arm>;
-};
-
-&pwm1 {
-	status = "okay";
-};
----
-
-Chukun Pan (2):
-  dt-bindings: pwm: rockchip: Add rockchip,rk3528-pwm
-  arm64: dts: rockchip: Add pwm nodes for RK3528
-
- .../devicetree/bindings/pwm/pwm-rockchip.yaml |  1 +
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 88 +++++++++++++++++++
- 2 files changed, 89 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index b1713ed4d7e2..ab1ac3273611 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -264,6 +264,94 @@ uart7: serial@ffa28000 {
+ 			status = "disabled";
+ 		};
+ 
++		pwm0: pwm@ffa90000 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa90000 0x0 0x10>;
++			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm0m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm1: pwm@ffa90010 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa90010 0x0 0x10>;
++			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm1m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm2: pwm@ffa90020 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa90020 0x0 0x10>;
++			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm2m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm3: pwm@ffa90030 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa90030 0x0 0x10>;
++			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm3m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm4: pwm@ffa98000 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa98000 0x0 0x10>;
++			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm4m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm5: pwm@ffa98010 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa98010 0x0 0x10>;
++			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm5m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm6: pwm@ffa98020 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa98020 0x0 0x10>;
++			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm6m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
++		pwm7: pwm@ffa98030 {
++			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
++			reg = <0x0 0xffa98030 0x0 0x10>;
++			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
++			clock-names = "pwm", "pclk";
++			pinctrl-0 = <&pwm7m0_pins>;
++			pinctrl-names = "active";
++			#pwm-cells = <3>;
++			status = "disabled";
++		};
++
+ 		pinctrl: pinctrl {
+ 			compatible = "rockchip,rk3528-pinctrl";
+ 			rockchip,grf = <&ioc_grf>;
 -- 
 2.25.1
 
