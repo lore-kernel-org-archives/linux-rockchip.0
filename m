@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABB4C282D1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Mar 2025 23:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 347D5C282D1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 00:15:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4mRbaTbHdQgWpBcT9MHCyu2lJHi0/QI17mxJSX8XL9k=; b=2AUeweazTAqAus
-	6QFUd1yVVoVd3VL2WTuiAUyH0eAdtpVhawlVqK4Zs4Mie9bltHoc6AtD+2CRNQAkiD5FfnJRqD8YS
-	MTs0PXTbq5tPNF+6j+8xlq3inG3XF4Fdvy195eaJO+sv4WjpC3efBQpvLgHw/b+bvJpklqqm4rrqC
-	gm7AB4v7oKBRRgccj1ay9UQKPttwum4qWqGM7h6uZ5WDZWfAhhETpNWKnAYQUjbHbrkBYdTb0s8zv
-	EmEP3ROrlJfj+Z7l1EGlB4Kw1uO2kUMcwJPy60QEWay0oILHeLm5+32K20DrVp9Usc/LRPjUcSqrM
-	s2PE1dJKdG5/fJDZiQ0w==;
+	List-Owner; bh=X99WJWA2PjlCvomQ+vGqotTtV/YfwEGAOCbqiKjQhO8=; b=U8281RBaZ6zwnu
+	Q1lT3EW+qyYo/lD5UCpAKJNrryIp+mp09LAR5hIMxHmmzWO8r4fmG8H4/xt+dMNBsotczbv5auo4V
+	cOkuMIB9LosgoZhhPAvDgTTFtZ2mnU3i86YLSHPvlfnlhOsE6N1tmYlsfNa0tvAmVAzve9dlmAjQE
+	V2AoCSM6o3DNpuCoftNfwq1AitH4DxsZf8aOQ6/feVkI4AId0k7x4Jw0t0QTfxlntHbzQlESXjM0w
+	vmAtgVzdjhdZ20WYZPJ5hAJBBaGmOpBnXocH58DIcwliycewnlVASBg57+nG3nA92Fi+o1OUnwO5a
+	0XtdXCrPHRuTWYORN4rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqL00-0000000CXcn-0Qu0;
-	Thu, 06 Mar 2025 23:51:32 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1tqLMw-0000000CbV5-3VHJ;
+	Fri, 07 Mar 2025 00:15:14 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqKyN-0000000CXGV-0cWo
+	id 1tqLDk-0000000CZok-1mEz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Mar 2025 23:49:52 +0000
+	Fri, 07 Mar 2025 00:05:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741304988;
- bh=oDJmvAX7nAqa4Vhl4U1zjfFrd0jhOQ7wzffB0eGRfkE=;
- b=GpgPu2AUbNHWX+mccsHZrxMS9C0kNVY/jogO8MGd7AU16uNQp1F2ta7r2T0DUxb7T+PeDDll2
- ZhFMpb7A8SJgrQAfzUIlYRzT7O7vqWAvJmEDEE8BvZdFRmwJgxtkaw8JghJESJam7daGsqJzb7B
- itd8zx5mo/o1lupzrdlLlbdUNNp0DCBEM82XvhTmd6v2n11R27aTnLQ3rsSf3m8S/Qw38SFaRHf
- mmylCyhyGnqqWXXwDP+ppOZ4bR06jiWHE13mBRAEhKPpVGdEJx4ec3350Kt4dj1oe5NsHFnPMy5
- TxuWYmGucI9HRylCH870G9CPRGm3R0DIPJUxFzEKeZSQ==
-X-Forward-Email-ID: 67ca3498c1763851c065d4e9
+ s=fe-e1b5cab7be; t=1741305943;
+ bh=q8v6FqGBLcIgD0IKorolr/eW5VRYMlf3vVnAR1Zl+FQ=;
+ b=UIXNNlDr/mT65psursCOdbFsHrvLAywXu6ouW4nHakMH2jOwETkilVIzd9f1lNRKRONnS+/wx
+ eqmPbJdnv2rinVbHk+Djxue7Hu0l9vYyD9lL8IQnVbjAMUC6DdIPjkgfkGDDoc+Vue3jRIDNDOa
+ xiuUbB6ukJiW9sBvR7L5VY+1pvVUf8yjrLgxT6zGmafdtcbpQhPTscgglQh//N50JFJ8gNa/5gJ
+ u+4f1V3P9XqPBOaLFsELXQ5mSgmOxXVJ6qlBhfQEggqPFNfduNHHlQk3d7MpmufVmCRESiuSUUV
+ rVVA1TeQSx6MtSrHJIs/T1n7IvZjO9Dp54x4/OeLp5ZQ==
+X-Forward-Email-ID: 67ca3854d01a7bf632cb828f
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 121.127.44.59
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <1dd9e663-561e-4d6c-b9d9-6ded22b9f81b@kwiboo.se>
-Date: Fri, 7 Mar 2025 00:49:38 +0100
+Message-ID: <003d3726-680a-4e91-89cd-d127bc3b5609@kwiboo.se>
+Date: Fri, 7 Mar 2025 01:05:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] net: stmmac: dwmac-rk: Validate rockchip,grf and
- php-grf during probe
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add GMAC nodes for RK3528
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S . Miller" <davem@davemloft.net>, Eric Dumazet
  <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-References: <20250306210950.1686713-1-jonas@kwiboo.se>
- <20250306210950.1686713-3-jonas@kwiboo.se>
- <bab793bb-1cbe-4df6-ba6b-7ac8bfef989d@lunn.ch>
+ <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
+ linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250306221402.1704196-1-jonas@kwiboo.se>
+ <20250306221402.1704196-4-jonas@kwiboo.se>
+ <a827e7e9-882a-40c6-9f2c-03d8181dff88@lunn.ch>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <bab793bb-1cbe-4df6-ba6b-7ac8bfef989d@lunn.ch>
+In-Reply-To: <a827e7e9-882a-40c6-9f2c-03d8181dff88@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250306_154951_273233_FD146CCC 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20250306_160544_561835_95E82E93 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +87,71 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Andrew,
 
-On 2025-03-06 23:37, Andrew Lunn wrote:
-> On Thu, Mar 06, 2025 at 09:09:46PM +0000, Jonas Karlman wrote:
->> All Rockchip GMAC variants require writing to GRF to configure e.g.
->> interface mode and MAC rx/tx delay. The GRF syscon regmap is located
->> with help of a rockchip,grf and rockchip,php-grf phandle.
+On 2025-03-06 23:46, Andrew Lunn wrote:
+> On Thu, Mar 06, 2025 at 10:13:56PM +0000, Jonas Karlman wrote:
+>> Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
+>> Ethernet QoS IP.
+>>
+>> Add device tree nodes for the two Ethernet controllers in RK3528.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> gmac0 is missing the integrated-phy and has not been tested bacause I do
+>> not have any board that use this Ethernet controller.
 > 
->> @@ -1813,8 +1564,24 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
->>  
->>  	bsp_priv->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
->>  							"rockchip,grf");
->> -	bsp_priv->php_grf = syscon_regmap_lookup_by_phandle(dev->of_node,
->> -							    "rockchip,php-grf");
->> +	if (IS_ERR(bsp_priv->grf)) {
->> +		ret = PTR_ERR(bsp_priv->grf);
->> +		dev_err_probe(dev, ret, "failed to lookup rockchip,grf\n");
->> +		return ERR_PTR(ret);
->> +	}
->> +
->> +	bsp_priv->php_grf =
->> +		syscon_regmap_lookup_by_phandle_optional(dev->of_node,
->> +							 "rockchip,php-grf");
->> +	if ((of_device_is_compatible(dev->of_node, "rockchip,rk3588-gmac") ||
->> +	     of_device_is_compatible(dev->of_node, "rockchip,rk3576-gmac")) &&
->> +	    !bsp_priv->php_grf)
->> +		bsp_priv->php_grf = ERR_PTR(-ENODEV);
-> 
-> It seems odd you say all variants need this property, and then you
-> look for two specific variants here and do something different? Why
-> are these two special?
+> What do you know about the integrated PHY? Does it use one of the
+> standard phy-modes? RMII? Does the datasheet indicate what address it
+> uses on the MDIO bus? If you know these two bits of information, you
+> can probably add it.
 
-rockchip,grf is required for all GMACs, rockchip,php-grf is also needed
-on rk3576 and rk3588 (+rk3562 that has been posted on ML) :-S
+The SoC datasheet lists following:
 
-Above use of of_device_is_compatible() was my attempt at requiring the
-syscon regmap for those variants that make use of php_grf. And still not
-break rk3562 depending on the order these would land.
+  MAC 10/100/1000 Ethernet Controller (gmac1)
+  - Support 10/100/1000 Mbps data transfer rates with the RGMII interfaces
+  - Support 10/100 Mbps data transfer rates with the RMII interfaces
+  - Support both full-duplex and half-duplex operation
+  - Supports IEEE 802.1Q VLAN tag detection for reception frames
+  - Support detection of LAN wake-up frames and AMD Magic Packet frames
+  - Support checking IPv4 header checksum and TCP, UDP, or ICMP checksum
+    encapsulated in IPv4 or IPv6 datagram
+  - Support for TCP Segmentation Offload (TSO) and UDP Fragmentation
+    Offload (UFO)
 
-Should probably clarify a little bit with a code comment in a v2.
+  MAC 10/100M Ethernet controller and MAC PHY (gmac0)
+  - Support one Ethernet controllers
+  - Support 10/100-Mbps data transfer rates with the RMII interfaces
+  - Support both full-duplex and half-duplex operation
+
+and vendor kernel use following DT node:
+
+	phy-mode = "rmii";
+	clock_in_out = "input";
+	phy-handle = <&rmii0_phy>;
+
+	mdio0: mdio {
+		compatible = "snps,dwmac-mdio";
+		#address-cells = <0x1>;
+		#size-cells = <0x0>;
+
+		rmii0_phy: ethernet-phy@2 {
+			compatible = "ethernet-phy-id0044.1400", "ethernet-phy-ieee802.3-c22";
+			reg = <2>;
+			clocks = <&cru CLK_MACPHY>;
+			resets = <&cru SRST_MACPHY>;
+			phy-is-integrated;
+			pinctrl-names = "default";
+			pinctrl-0 = <&fephym0_led_link &fephym0_led_spd>;
+		};
+	};
+
+I could possible add something like that to the device tree, or I could
+drop the entire gmac0 node and instead have it added in a future series.
 
 Regards,
 Jonas
 
 > 
-> 	Andrew
+>     Andrew
 
 
 _______________________________________________
