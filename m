@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE078C19F32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 09:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E5DC282DE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Mar 2025 09:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eoX8NejmmDhFmCM7Aqi6x/6tAOuxnxYCbj9rcIdV4w8=; b=YdxD6PWAkBgi+5
-	I1b519qv6xnQZxZm7Xf52ITH8euXLy6V6lv3AW6/qQfftBXr/4/hVUbET7Pz36eEwUn8K46suCgB5
-	kpZhlRswyKUsPuSHEXG7i8ypU1+P5qPmklQQhAwrOLgPXlj2ZWkKp9LWQr+ivYT/uVp9dR0q0UZB9
-	hmJ7wqOLOuPga48lE2OoQV7GFSRstkqhpgyNBoavYt7rikFj1U4mgIrAWFyx4vlK75dj2/LAKaEVc
-	/LofX/4Kf2nBFnWnmGsftgOgdWo9ViUZVcnK/xfh8WuqTzRBJaR6g3SRcNl+lHFBK7dAZncYvvW3g
-	5I4xbP88TRDdG4smAcqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=367xqZENfUTlQezelexlJG2Wcsg9kjyLWL/hUDR5P4k=; b=XyugkWbVGqTujW
+	5npKF4a9n4Tx3xtwQRvcDJ6p15qb/y0++QwmD51Ge/pZsVop952ob2Ra98Tg4dzaVj0wFZZ86nng0
+	s2rxa9XW92nbSioJl0bKCPvHbVLGr3ADZN8C3EhnhOx/y1egU1CbRT/5IAL5sb+lK/mxHSupHUKiC
+	NzatE9nZOCsyNc111kG/UnN7/6vYCbxbUE+fOxLduUsZJFYv3LHcMmIq7dCu6u4cdxSvhQ0D6nZ0c
+	KGtDizknOginjiY/FoPj+4TzTROT/AP7cKu5giM9em2w44neGoNlDn5nkJQ8jR8CQZ4lii0CfNEvK
+	Dc78xksilfDhs9HiPtjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqTqN-0000000Dg2U-1cYu;
-	Fri, 07 Mar 2025 09:18:11 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1tqTtY-0000000Dgq3-23TG;
+	Fri, 07 Mar 2025 09:21:28 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqTok-0000000Dfmc-1SOH
+	id 1tqTro-0000000DgLw-0Y5R
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Mar 2025 09:16:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741338988;
- bh=l7Bmpx1B1OFaUSgPQarXLFPl0uH+PohveX2hywvmfnE=;
- b=NuN8O/aKCjuiak1glw5Guag/LlfvJUfKJ6GwmNpyNzswwRCOoVYeH/DTC1OuK9FR5GPOGDA+g
- ub0XYFcAQmcP+d8Ti1HKijMcsKMRuHTdu/6lCvPCR/cclIW55QNrq6piORcGSbNMtzU9zG6B3hz
- a+zke7o2okqzUlgYOevfoArrgre+FyRx+9o9jO19rO/+ftl+FqXeEvhzx/P7ohpZ1fN/Nth0u3r
- lzTSAcJ0+dV7HLXF0dR4bLRoWrIwUfpLjdgIA2I3+RG08eZK3bVc9wBGtwXzsf9l6FOHVx8KTE0
- jCmhuot2x6y7A3E1wwnwK67S9HNgn3towMTwyep7hkCQ==
-X-Forward-Email-ID: 67cab95fd992817a57e35d57
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <cbd6d3ee-8ad1-443f-9506-e28240ffb09e@kwiboo.se>
-Date: Fri, 7 Mar 2025 10:16:08 +0100
+	Fri, 07 Mar 2025 09:19:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741339167; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YzLv5mfAH80vIklSoxtki1XE1xukzSoJx+DZFYGrUjlaVCrBfVlbW1LSzEePYdft/6fBZd4kqZFM3uQXzdoTfv3O576rVIOPFW32z73WmtC2lBrPR+USd3UiE+UEAKDoMDb/T2G02K0Xciee43/frfADLlm43F0hB0li32TlNQA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1741339167; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=LUZNNrGCHEYUgjWOR9Ax5bht229rw4nWFBraJsxlaPE=; 
+	b=TGFwdRkdJonr6CPSFc/ZpIsek5gia7OVcotq8HEyp9Pz+4GX0Lfip3f/dju2tapNV8dXY26tu28YapNmgnxYU6Oa7A9qPZyjQSrqgma14h9xW+eJVGpNrS5oGzP+/c/BtFuC+byOhl1nKv+cyljb5R2RSfe27ecAGiIO5B5TZ9U=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741339167;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=LUZNNrGCHEYUgjWOR9Ax5bht229rw4nWFBraJsxlaPE=;
+	b=Fp5PVAF4+1rEg26jqDlcAEt3Zg3RdUBbx44X+2gxEMzPzLggtHooz69rmZG0ijcB
+	s5F1de6IYaLzTPvSlQn325Kwm4osUuB0Y5IW5RbpjH+U7Gq3b3XdlFEsl5IVelH6JD+
+	jQrqXxgElspsPxrR1aVKzc0ePRCRzigtqqNalJo4=
+Received: by mx.zohomail.com with SMTPS id 1741339164930302.9248701537149;
+	Fri, 7 Mar 2025 01:19:24 -0800 (PST)
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+To: Shreeya Patel <shreeya.patel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Tim Surber <me@timsurber.de>
+Subject: [PATCH v15 0/2] Enable HDMI RX controller on RK3588
+Date: Fri,  7 Mar 2025 12:18:55 +0300
+Message-ID: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: Enable Ethernet controller on
- Radxa E20C
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
- linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250306221402.1704196-1-jonas@kwiboo.se>
- <20250306221402.1704196-5-jonas@kwiboo.se>
- <e0e8fa5e-07a2-4f4f-80b9-ddb2332c27ea@lunn.ch>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <e0e8fa5e-07a2-4f4f-80b9-ddb2332c27ea@lunn.ch>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250307_011630_721943_122DEFA0 
-X-CRM114-Status: UNSURE (   6.90  )
+X-CRM114-CacheID: sfid-20250307_011940_236267_4313334C 
+X-CRM114-Status: UNSURE (   7.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,23 +92,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+Hi Heiko,
 
-On 2025-03-06 23:49, Andrew Lunn wrote:
->> +&mdio1 {
->> +	rgmii_phy: ethernet-phy@1 {
->> +		compatible = "ethernet-phy-ieee802.3-c22";
-> 
-> The compatible is not needed. That is the default.
+This patchset adds HDMIRX controller node to RK3588 DTSI and enables
+it on Rock 5b board.
 
-Interesting, however I rather be explicit to not cause any issue for
-U-Boot or any other user of the device trees beside Linux kernel.
+Changelog:
 
-Regards,
-Jonas
+v15: - Removed duplicated HDMIRX pinctrl definitions
 
-> 
-> 	Andrew
+     - Removed default M1 HDMIRX pinctrl assignment from the DTSI as
+       technically HDMIRX can use M0 depending on a board configuration.
+
+     - Changed ordering of the status DT property
+
+v14: - Re-enabled LOAD_DEFAULT_EDID=y option in the defconfig and
+       added ack from Hans Verkuil fot that patch.
+
+Sebastian Reichel (1):
+  arm64: dts: rockchip: Enable HDMI receiver on rock-5b
+
+Shreeya Patel (1):
+  arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi | 55 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      | 17 ++++++
+ 2 files changed, 72 insertions(+)
+
+-- 
+2.48.1
 
 
 _______________________________________________
