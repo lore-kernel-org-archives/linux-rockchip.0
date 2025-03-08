@@ -4,59 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44917C282EC
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 14:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD630C282EC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 14:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lbmTkcpyyY4IkMrZXNuNIdfN2xxEMbSGBhXJgifSowM=; b=imhmc59LHUBIhP
-	SGWPRfpolF++zRqFuWFuiVUne3Z3a/7IqvLNYmdI1CHqBmODJCrqxWD4TW5jD/s4kNhxOg+vgaRL1
-	AxzR60m9KZ7gBJKxqOj9cdPeUJat/GwxR2Vic4/OFrtrjtLQ8ak86yo+qM0hpz/SRKBIQ1JTvmBHr
-	ECe1d6M3stZ3bHXZyfgR6tb08rNZuKwZudge9p1vFNpUA8RyH6WR+gd5esfqdLVkZP4siZTwEcBhW
-	b3RwCY9BORJ38j9+Pi1AxZVGJKAZz2irjtgqIvpurkU5wNPMTgYZ5VxjEOIpZogBKbNMm+kzouM96
-	DY+GdGyPwTSEaKHFmTgQ==;
+	List-Owner; bh=NMsgB6/0zWW6DSJSlpnfWutmDwOwObkzutyj3fv46oY=; b=Tw2QJhTI7L6fJv
+	psSmrRLpeZG3O+aMf2aICEzDjrR5MCiaE/MzGCXsL6Lr1wZUdYlyJCQIuVMM1EC5uviKht4L+uBmq
+	yTLHRFoPjCRWU2Jigbq8WIEQmnYS3tJ6feD9D+37jxZgfiuPtaRMf1FRyxhZ/FRCahMtkTYjCBHp8
+	R1Mhd7I5shC6/Yg2rgUB68puGYIGUwJwWodDmh98wbxvUmjpjDvz9sECO0F3UIj2uz5R1PB+1kt1L
+	MES6M+APjjirrCxw7hCQ9yewbIo56Tc97KsgecmwIHih8cQi9+h+xqepZYhoAwbcTLqVwJXjSFc2O
+	SBag/NiJPeQn/j8l73Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tquqa-0000000GhhV-35WE;
-	Sat, 08 Mar 2025 14:08:12 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tqvaa-0000000Gl2D-2GbH;
+	Sat, 08 Mar 2025 14:55:44 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tquow-0000000GhaG-0t1R;
-	Sat, 08 Mar 2025 14:06:31 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 211B825D93;
-	Sat,  8 Mar 2025 15:06:22 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id preILQABPQVZ; Sat,  8 Mar 2025 15:06:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1741442777; bh=kGemAZ9EVDuCpSfW33snc8SJJJ1dseQQAUsecXVAtcY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ng0E9bDJucpkyJhzo+6yIzH66iSp0oNsv9ZSg44P/KyxctIGSs9wnhL2rp+IwWsRZ
-	 WjkB0pK7LqQxgnt7AgzYku0wiM3bXJIs40NPXJvOyvQd9+0WoeM3Y9FZM7T/foMIJ1
-	 RnQGVuXdJpeu5jQULN0gIixh9PFqdOkgC8Nm1Jdd4DTEZ4kPaJZlubQLcSnmRatsXp
-	 ZIrM+UHeucNDRvoEqTN27oS7sSEfpJzO6S2j5somCX80RMpci0UnF1vU7StNghauPr
-	 4qE7T4/kcmEA2adZg5y0BeH+MtD9exyyXQrYwI3yVigIBd5vToyuAce+4a4WxVmie8
-	 LqmTuoIAN7Yvg==
-Date: Sat, 8 Mar 2025 14:05:53 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers
- for RK3528
-Message-ID: <Z8xOwbfNqBfkRAi6@pie>
-References: <20250305194217.47052-1-ziyao@disroot.org>
- <20250305194612.47171-1-ziyao@disroot.org>
- <56181131-3e48-4c76-87c7-2388a9964727@kwiboo.se>
+	id 1tqvYw-0000000GkvN-3LW0;
+	Sat, 08 Mar 2025 14:54:03 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-543d8badc30so3185043e87.0;
+        Sat, 08 Mar 2025 06:54:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741445641; x=1742050441; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Keyp5UqooSuCZNdvM6L5386ygoD++VE/io10zX0U4b4=;
+        b=TUI7uOiadRYfS2OyIOo1cwx+WKaCJqunqDAsBDNXAouUDd86fEQQGrftMIiuBTnNju
+         /WiaSCLYOpZEt5H8h00Cuipu/EJPajVOlQrnkRxdzH/yzC9WOMeXO931IfcshA2fov8Q
+         nKhJTbxTlPGbL7VO6uukveVS9kd/ULOmNiZW+cuHxRiDrHs2WmZn9W22nP9BNNkel4RA
+         +BwTfZtUbNgfqe6JV4XoMYG+nb6ZuCqGqAv9gC+VW0/8yGVTXHCM86TYmU2z1zSq95Dw
+         yZ4DbyLbhOd7qEkDAUsaOm69m9fVujz7meK4tMw0bH85y1fhnNveAYHyOogdl7BGRycT
+         nQXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741445641; x=1742050441;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Keyp5UqooSuCZNdvM6L5386ygoD++VE/io10zX0U4b4=;
+        b=FAIbnpJkAVjGRdlSd/gUeJvPFhrrYXuoxdUI/s4iqxoJmI8sEoBkNfsPPuDuTYVK15
+         9zh0z3RnfY8DzPV5gmRfANq98XMz/HOo4DpYlZEsN53usqz6WBEJUvjccjAG7OScP5bS
+         ytRJF4PnKZQixXjamLWJosqVwVw0x0Z902ieRnxt1WUU9pNmYAmVcHRiN+cA0VgE41fT
+         EG7TAlXPFzFvH0WpAbHx4NnUdQnEpXVYi1BVwXh1n5X4NJdaWGkpkgrE4ZM9lQdD0Vz/
+         z7yRbpQlCO4701GTC17ZHVn9I+/W6srKwTYEczq+rs1RBONh+Qe/MTpz94DDuzVq1iQv
+         XcbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU+Nm/Qoer61y3btd+GBvG++yLP0eJdki4CjTlLuE5Ic6Lu9QSculMf8CJSJJ2M3pQxZagyERYOOzy3hCIjuF8=@lists.infradead.org, AJvYcCXrjWveJzLiUXeRyh8WFECJS3/ia7VSKvYH79mbZpvgKDvg8Q7+05KEZ/5Imr8Rx05quEvHiFtDhHAfdiGyFPp1@lists.infradead.org
+X-Gm-Message-State: AOJu0YyP8xzQ+FqY9p6kaiX16lWdcnNMoXX9VzFp6YFtv9Gymz06PHh7
+	mZ9HJ4lWgpCKOX+PeHX0D/X2CA/KuDrVKjJNGXU2E7Tm6drGXb+i
+X-Gm-Gg: ASbGncsCpl3YFQOiiaWdCeyg/Pmz8bFuT1pHZTiksJmgHx3m1R3h3KOjxA0CRh1zM2S
+	tI3+u4aM2/ZJW4khjIoj6i+4GyUccWhEmNENFloTQUvYpFiZUdLd3X5dSn4uIWzoiNTnAMZ+0rK
+	sETDFhGpE2Tfxvi4lC3KtErjbWVJ58csEkgLrPw4POFERcpZcHAJAh+YlJ/n36movmQCdJeuJHy
+	rkEwgmjTMe1lrr2b6lJhQIhIZtjdCJLqvlHgs9PBFM0jcUQ7ap9KXP8gXMRuWP5u0/U9mylb/ac
+	ToyBYoEJDaByvDeuLwHFGD0/bvInK0cQwpJWpwf+6cCED2ECCjQunnXv8Ive8hYAgQ3xmw==
+X-Google-Smtp-Source: AGHT+IFdMQ6igpHYoU+OFcqiUCRXxji/FOXpGlAvF0Doh5wY4O8NygnwUp3CThZfRGttQjNw6hi+jQ==
+X-Received: by 2002:a05:6512:3d27:b0:549:8fc0:bc30 with SMTP id 2adb3069b0e04-54990e2bbcdmr2520218e87.2.1741445640251;
+        Sat, 08 Mar 2025 06:54:00 -0800 (PST)
+Received: from [192.168.3.116] ([78.56.129.233])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5498b0bd128sm831788e87.152.2025.03.08.06.53.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 08 Mar 2025 06:53:59 -0800 (PST)
+Message-ID: <d1c600f1-a874-4bb8-8b9f-22a3414edfcc@gmail.com>
+Date: Sat, 8 Mar 2025 16:53:56 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <56181131-3e48-4c76-87c7-2388a9964727@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Xunlong Orange Pi 3B
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240626230319.1425316-1-jonas@kwiboo.se>
+ <20240626230319.1425316-3-jonas@kwiboo.se>
+Content-Language: en-US
+From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+In-Reply-To: <20240626230319.1425316-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_060630_664877_AD6BFFD6 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20250308_065402_841896_5DDCB0B6 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,63 +97,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 08, 2025 at 12:22:48AM +0100, Jonas Karlman wrote:
-> Hi Yao Zi,
-> 
-> On 2025-03-05 20:46, Yao Zi wrote:
-> > RK3528 features two SDIO controllers and one SD/MMC controller, describe
-> > them in devicetree. Since their sample and drive clocks are located in
-> > the VO and VPU GRFs, corresponding syscons are added to make these
-> > clocks available.
-> > 
-> > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 70 ++++++++++++++++++++++++
-> >  1 file changed, 70 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > index d3e2a64ff2d5..363023314e9c 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> > @@ -130,6 +130,16 @@ gic: interrupt-controller@fed01000 {
-> >  			#interrupt-cells = <3>;
-> >  		};
-> >  
-> > +		vpu_grf: syscon@ff340000 {
-> > +			compatible = "rockchip,rk3528-vpu-grf", "syscon";
-> > +			reg = <0x0 0xff340000 0x0 0x8000>;
-> > +		};
-> > +
-> > +		vo_grf: syscon@ff360000 {
-> > +			compatible = "rockchip,rk3528-vo-grf", "syscon";
-> > +			reg = <0x0 0xff360000 0x0 0x10000>;
-> > +		};
-> > +
-> >  		cru: clock-controller@ff4a0000 {
-> >  			compatible = "rockchip,rk3528-cru";
-> >  			reg = <0x0 0xff4a0000 0x0 0x30000>;
-> > @@ -274,6 +284,66 @@ saradc: adc@ffae0000 {
-> >  			resets = <&cru SRST_P_SARADC>;
-> >  			reset-names = "saradc-apb";
-> >  			#io-channel-cells = <1>;
-> > +		};
-> 
-> Look like this patch accidentally drops status = "disabled" from the
-> adc@ffae0000 node.
+On 6/27/24 2:03 AM, Jonas Karlman wrote:
 
-It's a mistake during rebasing, I'll fix it in v3.
+> The Xunlong Orange Pi 3B is a single-board computer based on the
+> Rockchip RK3566 SoC.
+...> +
+> +&gmac1 {
+> +	phy-handle = <&rgmii_phy1>;
+> +	status = "okay";
+> +};
+> +
+> +&mdio1 {
+> +	rgmii_phy1: ethernet-phy@1 {
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <1>;
 
-> Regards,
-> Jonas
+Jonas, were you able to test V1.1 board's Ethernet?
 
-Thanks,
-Yao Zi
+Whenever I start the board - Ethernet initialization fails with:
+```
+[   21.140055] rk_gmac-dwmac fe010000.ethernet eth0: __stmmac_open: 
+Cannot attach to PHY (error: -19)
+```
+
+But if reset is performed inside gmac - initialization succeeds.
+
+Eg. patch:
+```
+--- 
+linux-6.12.17.orig/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b-v1.1.dts
++++ linux-6.12.17/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b-v1.1.dts
+@@ -16,14 +16,14 @@
+  &gmac1 {
+  	phy-handle = <&rgmii_phy1>;
+  	status = "okay";
++	snps,reset-gpio = <&gpio3 RK_PC2 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 50000 200000>;
+  };
+
+  &mdio1 {
+  	rgmii_phy1: ethernet-phy@1 {
+  		compatible = "ethernet-phy-ieee802.3-c22";
+  		reg = <1>;
+-		reset-assert-us = <20000>;
+-		reset-deassert-us = <50000>;
+-		reset-gpios = <&gpio3 RK_PC2 GPIO_ACTIVE_LOW>;
+  	};
+  };
+```
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <50000>;
+> +		reset-gpios = <&gpio3 RK_PC2 GPIO_ACTIVE_LOW>;
+> +	};
+> +};
+
+
+Arturas Moskvinas
 
 _______________________________________________
 Linux-rockchip mailing list
