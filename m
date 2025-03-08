@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87CC9C28B28
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 17:38:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 575F2C282EC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 17:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7TswdnDltJTz9ptm8mcRm9OpFJf++rjAoUcC6ByMz2c=; b=Uy92Wr+zhlvMRg
-	Jy57pmX5ZjqXBaJbs6r8sdQxXNa/BhZDhO/BF10lttlstO8by7LgQKRdpl1D9j5LCk32MsTDgWDOn
-	t/3T433C8q5KR0YPKxXIG4T19KYU3CRTNtE6m9W53rNrLYqpRRYqkX124wWBUiiF6+QkDCt3phqHm
-	GbEdyVQdMO+3+gx/gDRwWsTx8pq1P8XPbsqhksLqU7pVA35tcOu+BekWdaG7rtUJMEKSxesW8lt6i
-	PFm214P38jMVBfGLTWIDTk9nhLlKS0kUhX+24eZoF3f5rjRVv3pZbF+yz4eMAU/a/xL6VBA86G1NW
-	faQ2iLttLESAUY/sw5eg==;
+	List-Owner; bh=4UwUEb5ZZN549+0VcUMZo1c9PMHhoC5o9fzgoT8gPzY=; b=DCKNpR6xsi27Yx
+	XToHQruRY9VJ6UWD5CKWgYDuSTdil8vcM6f1WzHTqXh6cFTQo54+Ou//vA6/apv0Tp4noN1NCaMLc
+	mp+QUv1JpawqM6Bz2ckXJ3qe2zUj3Pqm95vJKvQ8tA4/PIMVe+DSkishHWdvZmvxdhUrt5VQdXknL
+	dnvykO/EHCjnwKhDL9l1Chg/v/pwfomcSvWJwBjJGS+2NBTr1WlLjRypAyDN93DqwQfdE0oJw4oEb
+	Q/9Lh/Ode4TmnvIJGKXhbydE73SwzLwW7/OvZ98wgCycyxNHKQ48SubRB89z8o1JccS6Vp88NmevO
+	db05zapjv+OcVHGbHOOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqy8U-0000000GwMn-25R9;
-	Sat, 08 Mar 2025 17:38:54 +0000
+	id 1tqyA5-0000000Gwg7-2T9Q;
+	Sat, 08 Mar 2025 17:40:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqy2A-0000000GvYx-0VfD;
-	Sat, 08 Mar 2025 17:32:23 +0000
+	id 1tqy2A-0000000GvZQ-4C3p
+	for linux-rockchip@lists.infradead.org;
+	Sat, 08 Mar 2025 17:32:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Le3hYMAYg2a39hHnv9MXC3X/fcJZT6of4UTCrB3LqeQ=; b=xvTAMJJ2wKtjHzrOKxWewBTJJR
-	peeqDCycSz8HiAn5rP9LOsc/6XXeNrCLNj0p0riJg3bqyl42B2FpVOyllKuEJNtUxRzIJnFRSBD2f
-	Gem/rZ9fkpgjw1xmw72IHnFY+e4eGvEcpNS4h2zbOY/m9sTVLKSl6bt5y/b9nYxkEHPM/nHTiB3Fr
-	+j6xD3/GHr+9DvqXPI0jNty1/9H6tjUIvDvJjourq9yPMhfV+gDldN0Er2h5QEPuoz181D+V8YZzt
-	iPsQomT8w5+K8C6oDAZ6hmAOgppVF6u0IEHGVSZCh6OMQltX4VAYHE1MfDiiizMk9jgWgNdtCSJ4C
-	kVhduGWQ==;
+	bh=PEknRCWMpHK0UW+iEMqVJYA9kV64BctTgAx66EMrNC8=; b=C3VJXB6PZRX1H7lLljsk5lziF/
+	Sr1VL77NZwPNyBR9V20meLb98J7MSJ/Oxe2HljbpsCNRY4oYqDJmi2nTc2zPAGgJlhusqAQlENPW9
+	W4inf8XnsX1A1U7MAubyfkbtTqrP+Fy+E4yGGCl2+faZh6B5fKA5rlj7AgTK3K4top8qahcw9WzWd
+	hRO6DjexK/QTBtl4zKBpRAdALAuV60e0NyQJ/37ty5J91PhRXhjm3rQ+CSw5tP/vqsnqRoZ2NrrOq
+	AFFIFTbZ4fmh2qQ5/uEyFEFNGaIQqQt4au85xs/OGb7dJxzczl0DKouVznuw7HSQXVIM3DtucORdT
+	NNNriVoA==;
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tqy20-0004Tx-GC; Sat, 08 Mar 2025 18:32:12 +0100
+	id 1tqy1z-0004Tx-Ty; Sat, 08 Mar 2025 18:32:11 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+To: Shreeya Patel <shreeya.patel@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
 	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	kernel@collabora.com,
+	linux-media@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: slow down emmc freq for rock 5 itx
-Date: Sat,  8 Mar 2025 18:32:06 +0100
-Message-ID: <174145503579.101861.2973510887051189420.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Tim Surber <me@timsurber.de>
+Subject: Re: [PATCH v15 0/2] Enable HDMI RX controller on RK3588
+Date: Sat,  8 Mar 2025 18:32:04 +0100
+Message-ID: <174145503573.101861.17692576758577260840.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250228143341.70244-1-liujianfeng1994@gmail.com>
-References: <20250228143341.70244-1-liujianfeng1994@gmail.com>
+In-Reply-To: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
+References: <20250307091857.646581-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_093222_156112_313AEBBB 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20250308_093223_030975_AFF4A6CB 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +92,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 28 Feb 2025 22:33:08 +0800, Jianfeng Liu wrote:
-> The current max-frequency 200000000 of emmc is not stable. When doing
-> heavy write there will be I/O Error. After setting max-frequency to
-> 150000000 the emmc is stable under write.
+On Fri, 07 Mar 2025 12:18:55 +0300, Dmitry Osipenko wrote:
+> This patchset adds HDMIRX controller node to RK3588 DTSI and enables
+> it on Rock 5b board.
 > 
-> Also remove property mmc-hs200-1_8v because we are already running at
-> HS400 mode.
+> Changelog:
+> 
+> v15: - Removed duplicated HDMIRX pinctrl definitions
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: slow down emmc freq for rock 5 itx
-      commit: b36402e4a0772d1b3da06a4f5fbd1cfe4d6f1cc0
+[1/2] arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+      commit: 0327238991ba2d1de25e1116b1c064f433e45b8d
+[2/2] arm64: dts: rockchip: Enable HDMI receiver on rock-5b
+      commit: c62d8fdb27391ee72bfdf53328463813997844f1
 
 Best regards,
 -- 
