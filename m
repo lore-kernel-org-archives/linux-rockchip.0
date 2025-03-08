@@ -4,66 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B202C282EC
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 12:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44917C282EC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 14:08:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iFci9FoiUguTrhI9PT4F+GoXUzCs2IPknxdTOXsIf2E=; b=cvZ/m+AYHBUWVm
-	tsT5PexU4V1Qk8AIEUIO9XMFizzKqY0gURxJPHIzAx735IsahXWEnkxxpCaCcyJYOJYnQHYZJbHGx
-	SoS7Q9Zokux1yNpzp7f4Ygtv9bK5Gqgjxg8ece2QehTJWzNlY3dMdRGXFiihZ65oL1pv0NxlUxkKk
-	TKTcnKKdkwwa2bWspY6p7AZzAy1TDqSz0RoKdeBwPem6ny7uNxVYy5xO2vvuj/IF3F67adiMwZ5XZ
-	vdnTUTG+2uEp88fwZQeniSEMzjduZcUWMy+pCpEq5ON1PM2IlUM2o1xcPZWqGmQFKodB8GLTwpxfD
-	YcKOsJdCTTXmA7GMKPMA==;
+	List-Owner; bh=lbmTkcpyyY4IkMrZXNuNIdfN2xxEMbSGBhXJgifSowM=; b=imhmc59LHUBIhP
+	SGWPRfpolF++zRqFuWFuiVUne3Z3a/7IqvLNYmdI1CHqBmODJCrqxWD4TW5jD/s4kNhxOg+vgaRL1
+	AxzR60m9KZ7gBJKxqOj9cdPeUJat/GwxR2Vic4/OFrtrjtLQ8ak86yo+qM0hpz/SRKBIQ1JTvmBHr
+	ECe1d6M3stZ3bHXZyfgR6tb08rNZuKwZudge9p1vFNpUA8RyH6WR+gd5esfqdLVkZP4siZTwEcBhW
+	b3RwCY9BORJ38j9+Pi1AxZVGJKAZz2irjtgqIvpurkU5wNPMTgYZ5VxjEOIpZogBKbNMm+kzouM96
+	DY+GdGyPwTSEaKHFmTgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqtUo-0000000GcPq-1tYU;
-	Sat, 08 Mar 2025 12:41:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tquqa-0000000GhhV-35WE;
+	Sat, 08 Mar 2025 14:08:12 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqtBZ-0000000GZgJ-2b4t;
-	Sat, 08 Mar 2025 12:21:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741436504;
-	bh=lml/dpWS51d1l7pxeFA3I8arwVEqHo/afRbukZAkt8Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VjDqM1TUvLUofFOdAwLKcwBLB4fwP3QQZK/Cs4OwXvIu2y5aYh1RO70YdLxw6VHP/
-	 60TlK+bKztDXcMQaWjpvMKLXrHf4jsTVt3Lk2F4JLEMiiEdazyKdOfGPi3OXpjLcNX
-	 IeqiKlVjEkfgr6B3TK584ovM9EBOXeJMEu7s9RxSXqSUwr5wwvyBvxUIT3HOTqXznQ
-	 CBjrBqMjXDlS99CzVPGlUQxcoP7oozfQQNgltejyuaYe9K+Nt/hu1p1ZoWCRY+JJAg
-	 xmRWacuxifkb4GU+woToupytLsuKFjPcypHT3dXd7vz8ZFoFxo59nDM2m6OP4rA4Pp
-	 oGbiMOUb0weVg==
-Received: from localhost (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 2829917E0F75;
-	Sat,  8 Mar 2025 13:21:44 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 08 Mar 2025 14:21:21 +0200
-Subject: [PATCH v5 12/12] phy: rockchip: samsung-hdptx: Add high color
- depth management
+	id 1tquow-0000000GhaG-0t1R;
+	Sat, 08 Mar 2025 14:06:31 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 211B825D93;
+	Sat,  8 Mar 2025 15:06:22 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id preILQABPQVZ; Sat,  8 Mar 2025 15:06:17 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1741442777; bh=kGemAZ9EVDuCpSfW33snc8SJJJ1dseQQAUsecXVAtcY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Ng0E9bDJucpkyJhzo+6yIzH66iSp0oNsv9ZSg44P/KyxctIGSs9wnhL2rp+IwWsRZ
+	 WjkB0pK7LqQxgnt7AgzYku0wiM3bXJIs40NPXJvOyvQd9+0WoeM3Y9FZM7T/foMIJ1
+	 RnQGVuXdJpeu5jQULN0gIixh9PFqdOkgC8Nm1Jdd4DTEZ4kPaJZlubQLcSnmRatsXp
+	 ZIrM+UHeucNDRvoEqTN27oS7sSEfpJzO6S2j5somCX80RMpci0UnF1vU7StNghauPr
+	 4qE7T4/kcmEA2adZg5y0BeH+MtD9exyyXQrYwI3yVigIBd5vToyuAce+4a4WxVmie8
+	 LqmTuoIAN7Yvg==
+Date: Sat, 8 Mar 2025 14:05:53 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v2 7/8] arm64: dts: rockchip: Add SDMMC/SDIO controllers
+ for RK3528
+Message-ID: <Z8xOwbfNqBfkRAi6@pie>
+References: <20250305194217.47052-1-ziyao@disroot.org>
+ <20250305194612.47171-1-ziyao@disroot.org>
+ <56181131-3e48-4c76-87c7-2388a9964727@kwiboo.se>
 MIME-Version: 1.0
-Message-Id: <20250308-phy-sam-hdptx-bpc-v5-12-35087287f9d1@collabora.com>
-References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
-In-Reply-To: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
- Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <56181131-3e48-4c76-87c7-2388a9964727@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_042145_819433_8ACF1409 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250308_060630_664877_AD6BFFD6 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,84 +68,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>, Shresth Prasad <shresthprasad7@gmail.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
+On Sat, Mar 08, 2025 at 12:22:48AM +0100, Jonas Karlman wrote:
+> Hi Yao Zi,
+> 
+> On 2025-03-05 20:46, Yao Zi wrote:
+> > RK3528 features two SDIO controllers and one SD/MMC controller, describe
+> > them in devicetree. Since their sample and drive clocks are located in
+> > the VO and VPU GRFs, corresponding syscons are added to make these
+> > clocks available.
+> > 
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 70 ++++++++++++++++++++++++
+> >  1 file changed, 70 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > index d3e2a64ff2d5..363023314e9c 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > @@ -130,6 +130,16 @@ gic: interrupt-controller@fed01000 {
+> >  			#interrupt-cells = <3>;
+> >  		};
+> >  
+> > +		vpu_grf: syscon@ff340000 {
+> > +			compatible = "rockchip,rk3528-vpu-grf", "syscon";
+> > +			reg = <0x0 0xff340000 0x0 0x8000>;
+> > +		};
+> > +
+> > +		vo_grf: syscon@ff360000 {
+> > +			compatible = "rockchip,rk3528-vo-grf", "syscon";
+> > +			reg = <0x0 0xff360000 0x0 0x10000>;
+> > +		};
+> > +
+> >  		cru: clock-controller@ff4a0000 {
+> >  			compatible = "rockchip,rk3528-cru";
+> >  			reg = <0x0 0xff4a0000 0x0 0x30000>;
+> > @@ -274,6 +284,66 @@ saradc: adc@ffae0000 {
+> >  			resets = <&cru SRST_P_SARADC>;
+> >  			reset-names = "saradc-apb";
+> >  			#io-channel-cells = <1>;
+> > +		};
+> 
+> Look like this patch accidentally drops status = "disabled" from the
+> adc@ffae0000 node.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 23 ++++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+It's a mistake during rebasing, I'll fix it in v3.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 98f831c3704f5cd65dcf29a4f0a12862a4aa0482..d115a026f013fdbcd025626bccaa30639856fad7 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -1028,6 +1028,9 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_POSTDIV_SEL_MASK,
- 			   FIELD_PREP(PLL_PCG_POSTDIV_SEL_MASK, cfg->pms_sdiv));
- 
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_SEL_MASK,
-+			   FIELD_PREP(PLL_PCG_CLK_SEL_MASK, (hdptx->hdmi_cfg.bpc - 8) >> 1));
-+
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_EN_MASK,
- 			   FIELD_PREP(PLL_PCG_CLK_EN_MASK, 0x1));
- 
-@@ -1427,7 +1430,8 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 			hdptx->hdmi_cfg.tmds_char_rate *= 100;
- 		}
- 
--		dev_dbg(hdptx->dev, "%s rate=%llu\n", __func__, hdptx->hdmi_cfg.tmds_char_rate);
-+		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
-+			hdptx->hdmi_cfg.tmds_char_rate, hdptx->hdmi_cfg.bpc);
- 	}
- 
- 	ret = rk_hdptx_phy_consumer_get(hdptx);
-@@ -1492,6 +1496,19 @@ static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
- 	    !rk_hdptx_phy_clk_pll_calc(hdmi->tmds_char_rate, NULL))
- 		return -EINVAL;
- 
-+	if (!hdmi->bpc)
-+		hdmi->bpc = 8;
-+
-+	switch (hdmi->bpc) {
-+	case 8:
-+	case 10:
-+	case 12:
-+	case 16:
-+		break;
-+	default:
-+		return -EINVAL;
-+	};
-+
- 	return 0;
- }
- 
-@@ -1764,6 +1781,9 @@ static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opt
- 			hdptx->hdmi_cfg = opts->hdmi;
- 			hdptx->restrict_rate_change = true;
- 		}
-+
-+		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
-+			hdptx->hdmi_cfg.tmds_char_rate, hdptx->hdmi_cfg.bpc);
- 		return ret;
- 	}
- 
-@@ -1972,6 +1992,7 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	hdptx->dev = dev;
-+	hdptx->hdmi_cfg.bpc = 8;
- 
- 	regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
- 	if (IS_ERR(regs))
+> Regards,
+> Jonas
 
--- 
-2.48.1
-
+Thanks,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
