@@ -4,71 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851CBC282EC
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 17:42:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BE1C282EC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Mar 2025 17:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SQNycs4jsjXXf1FqNL+dXqMUlWONyWmc/P1GSbl5fNg=; b=ILgwFdI7TX3aCE
-	ZcWDu/mr0H+Vn73mVPApEgiWuFA2rin7rPooFqcKFiNFoYbQgr6mdSGGsFBXtfh08BGTaDunmJ/t2
-	8T5ZkbXH/SWZ96QuBzW1xbKq4RmtZ5kuqxKUQRv6VV/JVAY1F3H21+2y4833Ha8yKUQYkGZR7sb5u
-	DSFywth73VK/a3rCrOyex9zJrguZLpGEBQoIYYCyDyzeJxe83ZyaEVo7oF2Nr2yQ+Z9W2N+J5Fq60
-	/1SMFXUoDoFneuLDx/5DOj9fHD7E55ZE0QPI8IFEbEIWJaOBz3G03KvnOAFcow6NXUZgjQGS8ipJA
-	1T0j6dUxF3JCilj98VYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bG5wqOGaGYbBnGuNMbn2Xn3erAJmMVc1Y1zJ1JJeSQc=; b=4o1c/RaY5AeLNV
+	r5HCRp1fC5EMGDJHP1MUjSp5pekyeOeJejEcEcJLOiUflV5e2A5xeWNbs6KCktm9PtArvzO3pOrn4
+	SiNlfcOYt5HqZXpLw3KVe/dB55ycEAgVIYsKDL8B979+7xXmSxiDKX7Yxhdy1xEYCmWJHYOjGDu5K
+	UMSMoLqPtflQUi3yK7ihMVZ4YaQy7mjLLMxpVrbzcHHlDPZedC7E6gMhKEgBmEFE4RPSb0R+lgDmr
+	cM5QoKaHK7OjFAHHOi5LOZuLqstwWGIjbGyyFy0v+V9WWJg49za+vlzRX868KcJiGUNF9Wi71mkbm
+	vjQ1uFIfQBMUaXQme1FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqyBg-0000000Gwqg-2Q3d;
-	Sat, 08 Mar 2025 17:42:12 +0000
+	id 1tqyDH-0000000Gx0I-0wry;
+	Sat, 08 Mar 2025 17:43:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tqy2C-0000000GvZq-3BB1;
-	Sat, 08 Mar 2025 17:32:25 +0000
+	id 1tqy9L-0000000GwYX-3c9b;
+	Sat, 08 Mar 2025 17:39:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Mlmp/JejejU48CyLjywWdPMnJaDEMrjKUd4moOR86Fw=; b=XCzQerHE6bawYn8QgC7/JaKHJN
-	AHtJnVYHI97Vc/WcgJyglq3M944TP+KLqNdyNAWDfaLvuo5WiFbBL68z4MZex2Zv0TOjnlrWbRruK
-	n1tCDzUPMYlHhxQZroZprJvbF/L82LzHa2nkQb+wkM51HI2kq+8pUVKyBisk2VsZmiykn0E5BG94d
-	AnBAzJAW10aB+yLO+UIi9f/iKD6XQ4yg4WI+oKpBDjgS9Tk2hCRwzok0WUo/S+LxqhdqzDBCbgoZM
-	17rlB6oQsdo0bKVxyrJrCtapS7sJy1P4TJ0Wned2eKtrFABcG7cY6ZSRjoWmpJH5YPLX0oBJzJKZP
-	Fb9hgLKA==;
-Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
+	bh=nvOCa8TUyygxpNletdqlPdP/z6YHwnTBk1630GsnLOE=; b=glu/xNwZRkdSMG24w3s68Hzdcp
+	/v/OW1lmXWMMD3XiDE2yGV15hWunopjVarggcOlr7Mylb1gHfCoDBB9ys4p3RELwzIHA4dg/ajj1H
+	Gza2Y/YxnZyHPmig0ILUsRg9irZJQxfCtzSs6Gzpj8m2X+LMWUPLzu+a+2LPD1Lb7Us5MvlFP+15m
+	G4Ly8wXqwuBDzHCHHp9Uga9vKWK6hl/cAM9qy5qSn9TVGnrM7xeha5eVCO8ZRp0DJ7Ha+dp48zcV3
+	cv9jUDziFmqqLAXvhayxporqMqr/j/vlXI5J+hwEpf9Y/I4jfHdmRy59MClhkPa5T7paq9KBRh4hu
+	0LKwnKJA==;
+Received: from [194.95.143.137] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tqy1z-0004Tx-Fc; Sat, 08 Mar 2025 18:32:11 +0100
+	id 1tqy9K-0004cY-FI; Sat, 08 Mar 2025 18:39:46 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Stephen Chen <stephen@radxa.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add HDMI support for rock-4d
-Date: Sat,  8 Mar 2025 18:32:03 +0100
-Message-ID: <174145503575.101861.8670068937049575401.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250306180737.127726-1-detlev.casanova@collabora.com>
-References: <20250306180737.127726-1-detlev.casanova@collabora.com>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.14 #2
+Date: Sat, 08 Mar 2025 18:39:45 +0100
+Message-ID: <1990830.tdWV9SEqCh@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_093224_792599_AD25F3BD 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250308_093947_906463_4F7DFBC5 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,20 +70,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Arnd, Kevin, Olof,
 
-On Thu, 06 Mar 2025 13:06:31 -0500, Detlev Casanova wrote:
-> Enable HDMI and VOP nodes for the rock-4d board.
-> 
-> 
+please find a below some additional fixes for the current
+release 6.14 cycle.
 
-Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add HDMI support for rock-4d
-      commit: 4e4f54aaec204a27d51386a9dd0d3a805fea57f4
+Please pull
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Thanks
+Heiko
+
+
+The following changes since commit 8546cfd08aa4b982acd2357403a1f15495d622ec:
+
+  arm64: dts: rockchip: adjust SMMU interrupt type on rk3588 (2025-02-11 21:28:13 +0100)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.14-rockchip-dtsfixes2
+
+for you to fetch changes up to b36402e4a0772d1b3da06a4f5fbd1cfe4d6f1cc0:
+
+  arm64: dts: rockchip: slow down emmc freq for rock 5 itx (2025-03-08 18:21:11 +0100)
+
+----------------------------------------------------------------
+A number of emmc fixes (removing CQE from Theobroma boards and slower
+freq on Rock-5-ITX) as well as some pinmux fixes and missing supplies.
+
+----------------------------------------------------------------
+Dragan Simic (2):
+      arm64: dts: rockchip: Add avdd HDMI supplies to RockPro64 board dtsi
+      arm64: dts: rockchip: Add missing PCIe supplies to RockPro64 board dtsi
+
+Heiko Stuebner (2):
+      arm64: dts: rockchip: remove supports-cqe from rk3588 jaguar
+      arm64: dts: rockchip: remove supports-cqe from rk3588 tiger
+
+Jianfeng Liu (1):
+      arm64: dts: rockchip: slow down emmc freq for rock 5 itx
+
+Justin Klaassen (1):
+      arm64: dts: rockchip: fix u2phy1_host status for NanoPi R4S
+
+Quentin Schulz (2):
+      arm64: dts: rockchip: fix pinmux of UART0 for PX30 Ringneck on Haikou
+      arm64: dts: rockchip: fix pinmux of UART5 for PX30 Ringneck on Haikou
+
+Yao Zi (1):
+      arm64: dts: rockchip: Remove undocumented sdmmc property from lubancat-1
+
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts | 12 ++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi   |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi    | 14 ++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts    |  1 -
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts        |  1 -
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts    |  3 +--
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi        |  1 -
+ 7 files changed, 28 insertions(+), 6 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
