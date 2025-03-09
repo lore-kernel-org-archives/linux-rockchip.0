@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EF5FC28B2E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 22:02:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29FB2C28B28
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 23:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jgg+QMC0By5QYIg9IDnYlwZ0cCDGVNuDg0iu50npeaQ=; b=VpIPUsdwbvQ3eq
-	XchMj/XlyMZc4DzkAE+gLwZtYsAKpvETgKZ8LgGeAb2JzOiKtVHu2EG3LWOj6T8O8kNJtdmyV4x+T
-	8IB/FzUZduyt9j9JLdt28bqzxQ0ZpwxQ3rXv919F3femkDEvPLaczLXu+ajnd8jmX9TJ44nViQZkX
-	Efuw9EZi0vLew4twXd5S9qp8OfDif6kNu0zxE/cJbWcruNzd+Z+/OeTaIOUDhdbdsrDq5BFPX93ch
-	WhgeDQ3zE3wsxbxOS/T5qsWk4tEoJvQ1bCKgdnF3zYxIuKcHtSFW2Gi36+2yAoxTdb0U9RC9+Dc5U
-	ydNVvg7jgsrb4TA1BKKQ==;
+	List-Owner; bh=DLjK+uDyh3b0sYPNh77qP8HKTyW1fJmjpHxG5AeSLgw=; b=MhhXt59yF0hPOz
+	hQ9GdCwGc+FphGDYSMhLYtoCBcyp33PARoM0qx5aFZHh4qlMi+nPAP51lpfKH5UIWy0ADG5vxzbIq
+	UySuSCDoHQ7e5Q6gN5x6nyxT0SjRakU6iRWFyP6NcsZMpxdAgtgrWpc2Gsy1pz7Rx0SJ2JWvRGpJf
+	wNEb7GxmLTJZJmYY42jn9UyZn/p721mLBzuF7QL0z2Pqa/7yo33CxzzVkoEPx9ELvxFlltJq+0sev
+	UyY/27ZTKN+J0JFfkM6fZHH3wsqYZzvk9ivxhx3WxR7fhzB4tT7MVPE/nw5VmwixZN7EEcrKfA3NZ
+	6dV/HCajFAtjjaGYVUEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trOjJ-00000001CUq-01i5;
-	Sun, 09 Mar 2025 22:02:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1trQ6R-00000001GvW-2w0k;
+	Sun, 09 Mar 2025 23:30:39 +0000
+Received: from [2a02:6ea0:d71e::9] (helo=smtp.forwardemail.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trOhe-00000001CLk-3GOA;
-	Sun, 09 Mar 2025 22:01:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741557655;
-	bh=2AwOlmOEhu3yB/ZFUZMUxaC69CB5cnd8T/Ge3O14dyY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J++TDpzVlCkjoNZ2ae2abmOJtcdsXHrqE2QTJgUz5l9o4nR/SbvysGdaNiDyN/8TY
-	 EpfBVAmh+9DE9/NiPAYPaeBW4NWTf374ueN7TXjwgCWBP6WTnpB6fCs1KZVs4bDjlZ
-	 WgNvAUg3r63CQ2MGSUl+Y0phl4m2VxXFq1VakrxbB+CJDN5C4aAtI2wsGXdHEcVAkq
-	 CLyHA+Khi0TZMwImsEncDdpzfbF+aZwyholl36Sbh3C5i5wSknyydYtfehk7/mOJaO
-	 DgBUAiOyYRz7vovByktlgODsOvnVB9Sveaal3tgRva21B0sECn6rG4VeKoDsS+xmdI
-	 Gdtj7Ri4/ZLIg==
-Received: from [192.168.1.90] (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DABAC17E09FB;
-	Sun,  9 Mar 2025 23:00:54 +0100 (CET)
-Message-ID: <0fe4388f-3374-409b-8383-ee5200961583@collabora.com>
-Date: Mon, 10 Mar 2025 00:00:52 +0200
+	id 1trQ3A-00000001GI5-1VpB
+	for linux-rockchip@lists.infradead.org;
+	Sun, 09 Mar 2025 23:27:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1741562799; bh=Fvsg997oISgjqp0W2TJFAP7RLXkppIq9T5s0bg5qC1I=;
+ b=ZP3k8g5CnkvMERwpex+A6htbkz3Q/a6RHjeGo5KljlciPmmXwvNNZJTtSdWM1JxmOFkoPvsJQ
+ 3o2mZxPUyb80ItQUEAxvVHr1LRt2gKAB/bp/14naELRuI+c8yGDccikDq3/45Yr9qgDQpgLZ7c2
+ fOoiGs/gCyszNJZO08CeqUu/Msbtbf1gux75A0Jq5nE3tvtl+3Optu71gahHe2ofYO1aY1ZXG49
+ UbJZC4ywQyVqREiaGZJOe0TLuwpSQMaDdbqlz/TECmYyNakjQaLame+Pj85IR6hSXNEAEPCij1B
+ 0aOqTXbse6SAAJM2Z0U9nUrjqST8aVtdQKa40f/Ua1Mw==
+X-Forward-Email-ID: 67ce23a95209992d7c670e6e
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>
+Cc: Yao Zi <ziyao@disroot.org>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 1/5] dt-bindings: net: rockchip-dwmac: Add compatible string for RK3528
+Date: Sun,  9 Mar 2025 23:26:11 +0000
+Message-ID: <20250309232622.1498084-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250309232622.1498084-1-jonas@kwiboo.se>
+References: <20250309232622.1498084-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 07/12] phy: rockchip: samsung-hdptx: Avoid Hz<->hHz
- unit conversion overhead
-To: David Laight <david.laight.linux@gmail.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>,
- Sandor Yu <Sandor.yu@nxp.com>, Maxime Ripard <mripard@kernel.org>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
- <20250308-phy-sam-hdptx-bpc-v5-7-35087287f9d1@collabora.com>
- <CAA8EJpoQbvFbNXQ2RB1qY2gHnwZaU-PT-DMLnZkrxkqs2wkXqQ@mail.gmail.com>
- <a1a3e86a-1906-4797-932d-8e1aadafedde@collabora.com>
- <20250309144747.744e5197@pumpkin>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250309144747.744e5197@pumpkin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_150058_986965_A385054D 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250309_162716_849644_A96B7688 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,54 +89,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/9/25 4:47 PM, David Laight wrote:
-> On Sun, 9 Mar 2025 12:13:32 +0200
-> Cristian Ciocaltea <cristian.ciocaltea@collabora.com> wrote:
-> 
->> On 3/9/25 11:22 AM, Dmitry Baryshkov wrote:
->>> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
->>> <cristian.ciocaltea@collabora.com> wrote:  
->>>>
->>>> The ropll_tmds_cfg table used to identify the configuration params for
->>>> the supported rates expects the search key, i.e. bit_rate member of
->>>> struct ropll_config, to be provided in hHz rather than Hz (1 hHz = 100
->>>> Hz).  This requires multiple conversions between these units being
->>>> performed at runtime.
->>>>
->>>> Improve implementation clarity and efficiency by consistently using the
->>>> Hz unit throughout driver's internal data structures and functions.
->>>> Also rename the rather misleading struct member.
->>>>
->>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>> ---
->>>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 79 +++++++++++------------
->>>>  1 file changed, 39 insertions(+), 40 deletions(-)
->>>>
->>>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> index 2bf525514c1991a1299265d12e1e85f66333c604..e58a01bdb3ce82d66acdcb02c06de2816288b574 100644
->>>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>>> @@ -330,7 +330,7 @@ enum dp_link_rate {
->>>>  };
->>>>
->>>>  struct ropll_config {
->>>> -       u32 bit_rate;
->>>> +       u32 rate;  
->>>
->>> unsigned long long, please, to match the tmds_char_rate type.
-> 
-> Isn't 'bit_rate' more descriptive?
-> But maybe rate_hz to make the units more obvious.
-> 
-> If the max frequency might get near 4Gz then the you need something
+Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
+Ethernet QoS IP.
 
-The max freq. intended to be handled by the related config table is 600
-MHz, that is for supporting HDMI 2.0 (TMDS).  Anything above that
-requires HDMI 2.1 (FRL), which is currently not provided and would
-anyway not rely on this data structure.
+Add compatible string for the RK3528 variant.
 
-Regards,
-Cristian
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+Changes in v2:
+- Restrict the minItems: 4 change to rockchip,rk3528-gmac
+
+The enum will be extended in a future patch, Pending RK3562 and a future
+RK3506 variant also only have 4 clocks.
+
+Because snps,dwmac-4.20a is already listed in snps,dwmac.yaml adding the
+rockchip,rk3528-gmac compatible did not seem necessary.
+---
+ .../devicetree/bindings/net/rockchip-dwmac.yaml  | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 8dd870f0214d..fe417c19b597 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -24,6 +24,7 @@ select:
+           - rockchip,rk3366-gmac
+           - rockchip,rk3368-gmac
+           - rockchip,rk3399-gmac
++          - rockchip,rk3528-gmac
+           - rockchip,rk3568-gmac
+           - rockchip,rk3576-gmac
+           - rockchip,rk3588-gmac
+@@ -49,6 +50,7 @@ properties:
+               - rockchip,rv1108-gmac
+       - items:
+           - enum:
++              - rockchip,rk3528-gmac
+               - rockchip,rk3568-gmac
+               - rockchip,rk3576-gmac
+               - rockchip,rk3588-gmac
+@@ -56,7 +58,7 @@ properties:
+           - const: snps,dwmac-4.20a
+ 
+   clocks:
+-    minItems: 5
++    minItems: 4
+     maxItems: 8
+ 
+   clock-names:
+@@ -130,6 +132,18 @@ allOf:
+       properties:
+         rockchip,php-grf: false
+ 
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - rockchip,rk3528-gmac
++    then:
++      properties:
++        clocks:
++          minItems: 5
++
+ unevaluatedProperties: false
+ 
+ examples:
+-- 
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
