@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE1B0C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C40C282D1
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 09:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QPldIb4msA7pkL9hVq58Ll8NBIZE+yUBPD+VUw1z4vE=; b=ec0nBixUgxAnGB
-	LLwMiBoRhbTttz/B1lHGb+XCL3wyfvhndcXRaCwa26eeCx21Zcq7yPJkSr0udMhVlmViCrSXIPllx
-	r4IlDVaidD5TiLP5UWqofr6yIVEI2zZkK1PnyHd2XWlJ3xzxPMakhRVUVBU8aDixRRHgcqgV7sn2h
-	kxOH2PSgJd5bVYnkbhWCWBXlDi83sLK8w36wNh+jfY06MZw/m+jmJ47OLWxpecUjarU7VBdswiNh1
-	iuz18Ts7oOQx708k7RrCpdI3+jolhEzchrt4zVeJmySLm7XgXEU0bBF9GnReScpJSbIcf1kx8cwn9
-	h0dAK3OypjFIxmNRcfew==;
+	List-Owner; bh=N//3FJwq+tou5oWlvhmy5nBmiX2+e5Hh8GxnjoxD5uw=; b=qXoIZexNJgNgSd
+	lXaIy3sT3VormvAXRW8jlR2uDJ6pGpnjeLK6h7j458KPAh5txvoBHJ/vykz9f+dk4pOyFXlni6+rZ
+	UMYHy+S/5YsJaLpRov0fy4XxGi58jFwKonJ91r9InfoiUs9Feb89D0/+Avz75lXeCcy0ob238TDh1
+	TSz4o8d8Rq8v+sT0TpMq5Il55rZEFeXbiKa3PSQ1lYj9dd14ak1fWHxmRMrpqB3oGcIzCnXFSSfZr
+	actYRB0gIRiOdc9zZ5JLKpfp+3mctbQQSOLpGRYqvrBj0yVOe6PlZKYXhg7tN+94EOHRqkNjmRpAV
+	rDllr1fs+RIP4OIj9wmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trCpC-00000000Gh1-0JN8;
-	Sun, 09 Mar 2025 09:19:58 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1trCsN-00000000H3o-47Pj;
+	Sun, 09 Mar 2025 09:23:15 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trCni-00000000GNn-3Aiy
+	id 1trCoY-00000000GaX-1FKS
 	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 09:18:27 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-e639040ec74so211922276.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 01:18:26 -0800 (PST)
+	Sun, 09 Mar 2025 09:19:19 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-e46ebe19489so2459105276.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 01:19:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741511905; x=1742116705; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1741511957; x=1742116757; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=wS4IhIBI1yx2mGgdeLumrUYH4CZGsZF+Y3g2R+4QCNM=;
-        b=RAH2jFgkVu62N8oTRlyx05CTRknJ2ENS5SSRa3MLnXWYvYOoW6iyPJj2HLKJ1IcR+U
-         PRPUwxkbPXDtIGoeA/Ou3rk0M/nS3mKAcErE0RdLY97ZOjyoy1YAiC/x+Sn4nz0YOMlK
-         4vz5uvM8+qZmqlQKn/vlc1mPg3hspk7QIod/2GjKXSW2ORyxMYMvuaWqKUeKRan+bdlv
-         tz8NXBum+839/amWka+NAkeLzWk+RsEXGkvHHPScTqovSTB7NZDUf9i4s4KuVgbntHRE
-         OTrxF/N7j/7Jqe8RMsjavdt8t5QJOoUPPZdPSKYSmL20kGv75efifIc5gaR8p5xzdG6a
-         j00w==
+        bh=Jv9BJK8h1smkPFin/eoitVvyZGcBn6mtj+ZWUnOyrrM=;
+        b=WbYd5gzVVoetdsqJJ3dCurh8diz7M75W2N6zrYP9i40rLrwvFwMFJuQrSCGQxfti1M
+         AGNrpp71gXdfrofJzW6BkUbWooC+x22nAlce+XAhnLaTk6fq2yrCY5TCuvU/cPbKWfR5
+         Mv/q05iON0fgH0WwTeRenhFZDxwnrQEZF8hXeby4HK1a7XRcSgw6Cuv/TP28s30BirXi
+         sbwabBhe1DRrF7GkUXw93FGXDgNKeF/JiWrdC0fWUmWjcWIJL0Yg2oqxGO9IRCWo/aoT
+         Vv6LPekB6JgyXSpm4ig4wS5/NBuD74MPrG42RD1yRR+tnNpbJe+wc2cUSdl0wZ414YTt
+         Zliw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741511905; x=1742116705;
+        d=1e100.net; s=20230601; t=1741511957; x=1742116757;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=wS4IhIBI1yx2mGgdeLumrUYH4CZGsZF+Y3g2R+4QCNM=;
-        b=NjPBw2rQ57p0jKZPU+zmuFTbKoIyGUUq046YBbDWCclpL/QXoOkkFxyDpJDCYdss/0
-         eb/+Jm0QGO2mQTCQnQY0qz0pWiJvgb75qpka1aYSCQeRej8tieCklpFEmjd2rUYuQWuE
-         zPeniVeyP/AW9Ws+Ahwb2pxrigggstFcGXnTSxoAlIONLhn2NxRuVYLFpBneHP/MXsOr
-         KK09nkNPYuUY5hbemLPt+nSOovw3cNRliRdT1+DGTK/q7hSuv8DLQzMUf/DbqLXTN1oW
-         tbCwBc/ZJD0ECG2GdnkGJEVV95VZXnDEJ32at5GncxjCpbWfDb/9eK77t5QZ4fF1rMRr
-         GXYw==
-X-Forwarded-Encrypted: i=1; AJvYcCWYjZXzBgEQnH8VECcdfprGJnekol25TF/ZrZwLR5rvCu09n+xMBDtsXOD1mKAaz+QfSwC3QmDykVltFygDIg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzzpQ00StHHVjAQwL0CJ/JTJWf5prdjflHpQ9Dpqe1uH+/lq2QD
-	7XDkKfTXwXdrMF+9+3DpuccH1Tp3126iX0Z1KMHTUtLU58hrcmCeIFlMrDsEw/Gi1bA45+Ftdi1
-	eXCSFCgVoeDgv7CEirT0c2oS3raUpkXOBTv2W/w==
-X-Gm-Gg: ASbGncv1rWLEarxnDu2KHr3DIi0ohseuBmAewVhGRhq6n9fWKqfO3ICF6AixRMv5GSX
-	RTP3wAbc/kLvw0LfLIkMZ0cn8yOGdiMSfYK+OkVoB1/Xh7FeLAqjmqOPV7vl0jEivt/gLOp6qbB
-	Vfa8m/Dmw+YbTEPwdbeNnzj3sKPgQuSPAlyDRDaR9y9B94UoCXj3k=
-X-Google-Smtp-Source: AGHT+IHmsF91K1D6VLx4YvpkoZQQE1k1xzhlV0FUEYyz+Ynn23igUj9beuV6WExyljR4D+jdGEc0UrQaoLqBGQ5Y8I4=
-X-Received: by 2002:a5b:f4f:0:b0:e63:7084:fc01 with SMTP id
- 3f1490d57ef6-e637084fc04mr5253669276.0.1741511905671; Sun, 09 Mar 2025
- 01:18:25 -0800 (PST)
+        bh=Jv9BJK8h1smkPFin/eoitVvyZGcBn6mtj+ZWUnOyrrM=;
+        b=fgD90pGT46Ys7yCYP2mdAl4Alu1FmFtqP2qAzaIFXhxQyNsDmpm3x0oEr4F+i2g+/X
+         jGDurdIF/Vp0Fl+CiNjlWyJvhUZc+RnL9kTye6Ph9pWhq48aGnWXM7+ZPb3714KclgpC
+         wJrj0ttAbCnp3D6WZwpxEChySE9i7NVqugHZCNOusFZwOCWJjO5Nhk40XnQE3+4tQJ76
+         tnuEukMCuO7hos+nEQybwdkiqVpXqLeH1DWQsbZg08RjIGCoXCvAbAaIwZSwXpe0MESS
+         Cfwh9MKHHZcRkr8b+qelPeFsLHsrjiek5MiboQnfF+IbT51pwOPbakx0In4uuNDaqRlB
+         zNwg==
+X-Forwarded-Encrypted: i=1; AJvYcCW0P7b/U2Be55gD8j+rQsmrv8SUt4v0p0/71tK5dUgNBaep5RAx0BJznorL39POwFKW0ySkfICulr3D9VXL+w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzL8WYCRgHhpI6HwiS1iNeQ18N5TQVfGHTHLuN6WkYFk0Ix0hfi
+	gz8WXVHnYgz7mrUoD7knkOsF3WyLMDmTMVowdqu149V4E8Z3GGqDp1wEPvQRygDKZXvRdDdiN57
+	1uG+gFsh17L4cPmYMFQ/lrcswNwFE7toPDNwERg==
+X-Gm-Gg: ASbGncsAmxRY/YZD3mX1ovVd3BEk3dnxmhOMkHIQ/5majkntzyluaspuUkHiOwzRpsu
+	rzJ+WEkCawwzi7wOkwx65F1T+TS0Mn6NGxAsiYXB2fik6ISg2X6KSb0ROjjA0t7YXnaVrFPyCQx
+	clUk9jPR/Is30sjY8/SyLdOJMqvG/tXNjRZ40ztEP+
+X-Google-Smtp-Source: AGHT+IEu/PQ12bVNZYXCd34qYJvUqyHf2vmlZ85Q5AvR10mVaF6BlXxpWuNpl9htbiSsYttCY66TAN4aoeQg9Ypsf2c=
+X-Received: by 2002:a05:6902:320c:b0:e5e:2428:fa56 with SMTP id
+ 3f1490d57ef6-e635c1ed376mr10933687276.41.1741511957257; Sun, 09 Mar 2025
+ 01:19:17 -0800 (PST)
 MIME-Version: 1.0
-References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com> <20250308-phy-sam-hdptx-bpc-v5-4-35087287f9d1@collabora.com>
-In-Reply-To: <20250308-phy-sam-hdptx-bpc-v5-4-35087287f9d1@collabora.com>
+References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com> <20250308-phy-sam-hdptx-bpc-v5-6-35087287f9d1@collabora.com>
+In-Reply-To: <20250308-phy-sam-hdptx-bpc-v5-6-35087287f9d1@collabora.com>
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sun, 9 Mar 2025 11:18:14 +0200
-X-Gm-Features: AQ5f1JqwlpVv48DTqejukDRuK53dcVgbu-cHC1EtLzGRaEU0x0TorpoDNNMztSM
-Message-ID: <CAA8EJpo0073Ub-WNdQoAq0=Zvet8M9aan3e6v9cnKORCTkqMKw@mail.gmail.com>
-Subject: Re: [PATCH v5 04/12] phy: rockchip: samsung-hdptx: Drop unused struct lcpll_config
+Date: Sun, 9 Mar 2025 11:19:06 +0200
+X-Gm-Features: AQ5f1Jo6fNACL-x0ajpVmroongj8VydVA56TBkhnTi7aC2zOMYCGM315yQKl7gQ
+Message-ID: <CAA8EJpo_AF6BHCDThNncuH36VHZy1ZJX-=Qj8mj7-UZY41rCuA@mail.gmail.com>
+Subject: Re: [PATCH v5 06/12] phy: rockchip: samsung-hdptx: Drop superfluous
+ cfgs driver data
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
 	Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
@@ -78,9 +79,8 @@ Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_011826_796029_B92850D4 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250309_011918_340176_0ECE6697 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,14 +100,18 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
 >
-> This is just a leftover from downstream support for HDMI 2.1.
-> Remove the unused struct for now.
+> The ->cfgs member has been introduced via commit f08d1c085638 ("phy:
+> phy-rockchip-samsung-hdptx: Don't use dt aliases to determine phy-id"),
+> but it is only used during probe() in order to setup ->phy_id.
+>
+> Use a probe() local variable to store device match data and remove the
+> now unnecessary member from struct rk_hdptx_phy.
 >
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 31 -----------------------
->  1 file changed, 31 deletions(-)
->
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
