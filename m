@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97ED5C282D1
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 09:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C392C282D1
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 09:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ns1QKMFajk8AcScC2blH/wLHER5FiPVIboUEgoAIGGU=; b=c6a2q0NS+N0VqI
-	rzbEMMBdeHcrDjLc49a0Dzof6jD0GFImsCqj0Lx8ybIsGEW1BYj6nX23DVhwZCFYZDHjd1L7fNwy+
-	loMpI+OWJk44G2BvCqh5Ep2Yjhq+tUIXa9CmWPiRcFQOy37RTbIaT9a3klnGHjQmPbD+DQpreLtSd
-	UBnxgoQhMnCyFtIcCn77X0k8wFIeN+bgiRU0C3jCOhNdHw+ZsK4Tc7h2+v/iwUcpFr3W5UnsWEmgf
-	u/nk0AlfwnCYB/uiY6NKlAA9E1dZ3F9vYAFK1BQ+SjjL+v7K2c1mvv6xP30LPYrWHZVDkVhom1KO1
-	vN4Yb9wauSY9CtUy5Vkg==;
+	List-Owner; bh=e8dP5vFYJeLCixxjW27WrQCFlLPNKEMd3w23t7BCNSQ=; b=qNxUn9zynQPsoq
+	MUJv2DCOTv1huEfICSFBleyxtiCx84r8QhnfVUgBX2epi96CaD8C67zfCisBHe8vtflPPeWHPhWJK
+	Fmvi4/RT/xpvoLSxRW1YB71dWX6VSWDjQUDwOrhYIrBGF+WCjdeUmxW8zTmBhPOpaSjeSKOvn0n/w
+	x/emSOdd8Nn6I3m6HD/VU0kkdi2a2UGeD6dYH1oBAu+HDhbt/QHNrx3jjEJdYV/zp3osLnTNcHJh2
+	m/efHapIZY6EghE1WwWpGJcG+fbmyywLxqrSWxAw8+ssJd1i1FfzZ1r/HL9RA8EuqDVcQeEO/HhLg
+	7P4oo8fPfKFF/Fvst3bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trClz-00000000FyH-23Nw;
-	Sun, 09 Mar 2025 09:16:39 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1trCpB-00000000Ggw-30kA;
+	Sun, 09 Mar 2025 09:19:57 +0000
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trClZ-00000000Ftk-43CW
+	id 1trCnG-00000000GEV-0ADP
 	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 09:16:15 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6f7031ea11cso32787337b3.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 01:16:13 -0800 (PST)
+	Sun, 09 Mar 2025 09:17:59 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-6f74b78df93so30672027b3.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 01:17:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741511772; x=1742116572; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1741511877; x=1742116677; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=y0eUpkni4OJ6N5I2ip/hczJtRuPECve9UUx0lHvZiWc=;
-        b=DgXLowt/nBMQ9cRIV+fxyUW5H+MiAQa7CK6q6upI9YfZuYt+yRO4YrrOSZbHq64jY6
-         eRVtLSJxAEYH+VUiq3r3c+h2e0ZTEAsmUD/GiKtq4MNxv7OzDWebm/Lc1H9sKzgp7J4y
-         Rgs+Z/sH8xzsF/Ct27zHxyMhfTy1T9k3z3LXZ7OLsEV87WheP+19o/pUBTfwzHVTbpl0
-         YbDkeHOVVQqFSmeWgiY9AmPhK3M5HtDf96cY9a5G75EwC8ycmA9NBQeFP1/+4lawU1Pl
-         rIInfSTkz8EYptyooesgWcpfEbQz4bu8bVn+UVkSTKWfYPULyGIYmD1DbQIfA2zIj+Hn
-         O9cQ==
+        bh=ZIwW4mMqcjhikStJ4LuoRwMzffSHbBGrUJN18yF51J4=;
+        b=ENKmOF5VPd+F21u8pbzG6uW7ohAM1Ut3NaVgid+jfz6skY/4jgFoz3b9AQtkr+wcdv
+         nOABKE3ZzmNF6d2lVE88aT2/1GYQv8kb+VbmO8rHnVEBuFCqGqn5X5TNMu+fS49UNFml
+         r0fvra1cd1bzSCDbvoNVLfFkotObU/BM/hYaWZzPcWpctRTf1wpgpb0RtsaDdUEZxTEu
+         dHO9E4g5m6TrcIMfnRdYtsm1VPhArW1UYBMCSefr6nG5u4ZS1wvlLGCEbQo04gVA85Xg
+         JgjhxKj8JoXMULLjygaHbW8pU4zPC8Xi673mfZTfLoqx3+8krPatmZ1VZ8EeisNzRAft
+         mZJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741511772; x=1742116572;
+        d=1e100.net; s=20230601; t=1741511877; x=1742116677;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=y0eUpkni4OJ6N5I2ip/hczJtRuPECve9UUx0lHvZiWc=;
-        b=WDb3TNr0KaDCTlFf8pwhuG/NRiLiYt4vkPx81XLBG3beB5wq1wIZ7j+/IfU7h2w0qg
-         fhLlK78j0BfaAy400v2/4UmgtRtUyrQ6XJ8q3cDaAA/fxz7rYWXZ/u+mL2kE/gGtHzXv
-         PNAjmDCnoJFCFuqNVcko5d2+jb+uZpfe0Lsu5aSxv5dDnyM2o7zl1n2Y9uBfIea+vOLQ
-         cdSaJSLw47/34hTN8zAhYpu00pj0Rov/qPOFdYmiqk73WOvRCW1Fp6YnRCnxY++JnjlI
-         pgchq/5q0M8kwX+zFD5OhuWrVvqYOVesOh1evGoRnBeDkelgT9SeThmYwCP9v7zUek1P
-         0SfA==
-X-Forwarded-Encrypted: i=1; AJvYcCUDbXn50OQkCRNNHMh043YMSVAcPaVZ++wIZtn448HujTy6oiCZS1zcXRLhV9Kgqk0WNzbsXKj+CUTjQWVcpQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7mIgnPGdmO3s6GFbn76DbD55R1ZvSiHYipRdn17edRd1DGNPH
-	YH7M2Q5q2IKNZ2MSetU1O+0Pfy+Ish7GwSK8foxxAwCpRWqE05vEgPM6dJOblvkCwDqsuDcdBgA
-	flwKSAVZGCt2qf83Zw7aoocfylnQLxytW3h05cw==
-X-Gm-Gg: ASbGnctFWtbf5Yso0Zbx+/B0BAzYE6D6KkKIX0nbf9eJrX29jScBDZmhyNmcLNQmlAA
-	MQrl7TMZzNFwSNGETxQ4wsUaHG3oKImtuDNKyCr3gX/0GCTgsMTZX+uFmzb1hNymDTqwDaQKsHT
-	g4Els7GZRHWiDDd3jKki7r4RZarRPNOmNMwHSsQYHRGW0I0cuMrq0=
-X-Google-Smtp-Source: AGHT+IFPECWoQ2SLQxFVAn6AAfos114PtgmwIoKQ+zMM+yCAQaFRw3Tq8C5wAZ3CID7rhAZlrgL2zlDgjqBdRN6ki9A=
-X-Received: by 2002:a05:690c:6382:b0:6fd:3fd0:6f2c with SMTP id
- 00721157ae682-6febf38323amr131915417b3.29.1741511771952; Sun, 09 Mar 2025
- 01:16:11 -0800 (PST)
+        bh=ZIwW4mMqcjhikStJ4LuoRwMzffSHbBGrUJN18yF51J4=;
+        b=blmev34QoEIpH9mm5rSIwJqvIldh3/naX5RY2KLiqVHkBqcLOhAclQnwKjWpcdXX8Q
+         E16yIa62G5t4kIZMVKCyyuSbTd3kEU8baZ4u7jVzlmcJ6VdPRrvw9hAG9gxF34HfC1rB
+         o8X7hKTziAUsGkJnTXYxLKKg4DV5MorKIJ8DiUXJnLsxAsyx4AY8jIWMgoo918cbDvfa
+         5OaeFiEEv7i/NHDV2eh/+0311kVbtzg1D5xdtH9BkD8xGE+vIA8+dSGHnGmgO2oDIwVq
+         0PufoFQufrg8HrFzBai15Bd2XnuR8xIg04CLGJUlfGGr2vyc9TxScLJC4LZ/58zGCsbW
+         mspw==
+X-Forwarded-Encrypted: i=1; AJvYcCUjjwNXB2Z1zud+sJFbScmF7WssA1zJUX0vEqFLipAX5ZxatyFykejKaMzjZFpQOmtFxcjFFFkBP9LqZgUXEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx64FzaoYWTNEJC6yzd2vbq7OsTIPdbXa+5i/GRPjq+VUro9ofe
+	m8O4u9iV8PWMhwjeP06KYcXRHwXbLG2rl67lfECkXzl/98Ow+EQJI6lyVlg8gDPmUogTeJxcv2U
+	Am7p6riISvYBU/6PTA2aYrEtAZCPlAvJuZ5OfSQ==
+X-Gm-Gg: ASbGncvlm/w/7FMedVsgShbuSKxhTI+BOJjRRYho/O4JsXnOBHopnlYaASo3s26QMog
+	2FfCFpT5zRARirsjoPZXVXPY8ZdIpEO5HKAHSuMlfGfHSNyddhz9RYGzRE77nzHkeDXuHdrVFhY
+	14GHUk9xo9K4MHBGzwaJr1siXUap2WJPWZ+aBSVY7n
+X-Google-Smtp-Source: AGHT+IF5EPBAwX/vFFn1MyOCNXGFDeVtGYDbOKvZ8oN+itZnMpk7nJvsL5ZhfsKbFo9VQ/c2bu3NL+W9hdt3Gt+ff7Q=
+X-Received: by 2002:a05:690c:3612:b0:6fd:2192:cf3c with SMTP id
+ 00721157ae682-6febf3b7663mr133674427b3.34.1741511876931; Sun, 09 Mar 2025
+ 01:17:56 -0800 (PST)
 MIME-Version: 1.0
-References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com> <20250308-phy-sam-hdptx-bpc-v5-2-35087287f9d1@collabora.com>
-In-Reply-To: <20250308-phy-sam-hdptx-bpc-v5-2-35087287f9d1@collabora.com>
+References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com> <20250308-phy-sam-hdptx-bpc-v5-3-35087287f9d1@collabora.com>
+In-Reply-To: <20250308-phy-sam-hdptx-bpc-v5-3-35087287f9d1@collabora.com>
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sun, 9 Mar 2025 11:16:00 +0200
-X-Gm-Features: AQ5f1Jp3ty9yF8Gy946JtVIhFnSayq957H6H-29ZcG2uPAfgmPlCXdifLdlKe4c
-Message-ID: <CAA8EJpqYE1drM6=C0AwPZ-e5RkWqjMTpWQiwhA64qby1mmVL1Q@mail.gmail.com>
-Subject: Re: [PATCH v5 02/12] phy: hdmi: Add color depth configuration
+Date: Sun, 9 Mar 2025 11:17:46 +0200
+X-Gm-Features: AQ5f1Jo12FGGsHm8kzdQ4xf0NIPejEccC7plOVJMbEqHfZYKsXU52PdjyJ4Y43Q
+Message-ID: <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com>
+Subject: Re: [PATCH v5 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio setup
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
 	Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
@@ -78,9 +78,8 @@ Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_011614_019776_9F41CF03 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250309_011758_080911_D7A6A9E6 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,20 +99,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
 >
-> Extend the HDMI configuration options to allow managing bits per color
-> channel.  This is required by some PHY drivers such as
-> rockchip-samsung-hdptx.
+> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+> and not before.
+
+Am I correct that the only functional change is a switch from
+greater-or-equal to simple greater?
+
 >
+> While at it, introduce a define for this rate limit constant.
+>
+> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  include/linux/phy/phy-hdmi.h | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
-Just to confirm, are you passing TMDS char rate or pixel clock for
-DeepColor (bpc > 8) modes?
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> index f88369864c50e4563834ccbb26f1f9f440e99271..cf2c3a46604cb9d8c26fe5ec8346904e0b62848f 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> @@ -320,6 +320,7 @@
+>  #define LN3_TX_SER_RATE_SEL_HBR2_MASK  BIT(3)
+>  #define LN3_TX_SER_RATE_SEL_HBR3_MASK  BIT(2)
+>
+> +#define HDMI14_MAX_RATE                        340000000
+>  #define HDMI20_MAX_RATE                        600000000
+>
+>  enum dp_link_rate {
+> @@ -1072,7 +1073,7 @@ static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx,
+>
+>         regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+>
+> -       if (rate >= 3400000) {
+> +       if (rate > HDMI14_MAX_RATE / 100) {
+>                 /* For 1/40 bitrate clk */
+>                 rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lntop_highbr_seq);
+>         } else {
+>
+> --
+> 2.48.1
+>
 
 
 -- 
