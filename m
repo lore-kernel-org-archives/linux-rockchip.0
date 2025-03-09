@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF944C28B28
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 10:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC7DC282D1
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 10:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8tBvsR1U16q5ZKf/RU+s9Q1lxYj6vXi8nBZzX8Smc4M=; b=xtz9M9HfO38Pp9
-	IQhampXJb4xiFoaeCEcP1pvyrYKLxvEUYAaQC1RopfcSi7EFwTQv1gSUCByfqQiWvt4unfm00lfhx
-	3rvOidiRh0WB6++oGrZ79J7waj10QD2Juh6xeODlc24amLZNYKeGFE973z9Qh6BiW3Qb3kXbeVsHR
-	GoUXxg6dBJ4Nia2qfEZDExjALIgypn8BS6BJ84xs4oDn3oNOkJnZZ+ObB8cHiK1OlSJim5SfI36QL
-	hp4VGBqYMXyvP5SdOxOxcnecwoh3oBhyKnvM5/7UCZGE5y70x42YRiwmL5pbyAsoPDUBUE2dkjO97
-	HZaWjJLUOTXwUUWBfpfg==;
+	List-Owner; bh=r9HKHVIc0oeD4vAtD2JXMbM5OS+CdXUNR6Amjk8gxic=; b=Gy5HN83Q/jlTHc
+	LULU2baQpXx0FRpru4BZwIDcL4miDfoz7jVw0xeefYg6Lr2OjCuoX9e99UlnXQ6+ltbRF8ZIkAnC3
+	HVoOyQ23hvzL1sjjtn4UVkTgQ8BXfCEfXE7482zDoMJ+Ck4k2f2sO/jnlAH1thdK9Ef7+ad4r8NPl
+	RU9Nk1TeFgJ4EPmZoiewwOC0eEtvGl39t5+hZAwO6bIYwDj/GT/Z2xSNBWA+rOTMIzXfK7vQOe7IE
+	wCz0uGa34Yf8rzTOFFj+hXxfjjlqDdUK2eH3Pap/cEXSrgOmr9RayukSxeHhCIEwNIHtwICI7dQSg
+	QErJZFhAD11HxTMWWqpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trDge-00000000L3G-2Wk4;
-	Sun, 09 Mar 2025 10:15:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1trDiF-00000000LCr-3imO;
+	Sun, 09 Mar 2025 10:16:51 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trDcq-00000000KbU-3gqE;
-	Sun, 09 Mar 2025 10:11:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741515075;
-	bh=sQra10c30MYmky155tTp0EkDPmDnARSe2sYZR6ySckU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RHKbmtlj+KMHs2L793B6DvggLvnoRIlmnAfp8wcnileSwLHbHLAI9+B/HeGN/0uLw
-	 2M1R4e8y6tG9LwnZ1ya6kVOzmldLzlMZMnogOXmmW+ZJCSz+liqVd5JwYCUZ2eZGep
-	 ZnZ7h6PUuVENMBtL0BfC5kskKjRLi70qfJ9eIe1aSQbU0hCl8yDWI0nXIiTiSecc1B
-	 yl2z5bKSQDgwaleDLirXARJN9ljEsofhUdc8AnZPMuuG8LnMBBVAT4wfOSbcDxsDfx
-	 X9QlgTtZFZ8TI4ta0rhpna3gn7bFZlGGd48U0ZMO874Wt/MlibrKI3seqszUz9MM80
-	 3hmDBhbizPr5Q==
-Received: from [192.168.1.90] (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C052317E05C1;
-	Sun,  9 Mar 2025 11:11:14 +0100 (CET)
-Message-ID: <f1e33b02-5646-4219-98ac-c09e31d8215b@collabora.com>
-Date: Sun, 9 Mar 2025 12:11:13 +0200
+	id 1trDe5-00000000Knu-2M04
+	for linux-rockchip@lists.infradead.org;
+	Sun, 09 Mar 2025 10:12:35 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6fb2a0e4125so22567737b3.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 03:12:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1741515152; x=1742119952; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=a3pmPX9mi3l6MtSftgTcp61DrI1vlvr8C0D0WUCrKDw=;
+        b=vXJP7MLUQgJ/8H8FqdQkZGtbM70l8YABW2KywrL/8z/kILiVe3yflBKckD4hKz8CL2
+         vUxL2Pd/5hoeIwB7TJPrS4uwEET3WFx9ylx1Nce/TJlJZBt+lS5wWZ6pnvYX/Z2vIpXU
+         9YZ1e1VMcANYoMfvsXOFRQbFS89IejmrpqzHaTLLKwcMVkiKFaXYMNM3lLC9ooeDlxku
+         apl/JZrp33xro2VmlGLlCAnJGZDqJLUXOTIbx2NGDaxgWtBOJCFcer4zV2HbUD8uc+1S
+         7JXNbuWmSqugbjjXLqrFL3+qC5IxM1P/7QqHT5IXkOXFmvvP/KvOyXIbqTGaK7hgeZGk
+         v4XA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741515152; x=1742119952;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=a3pmPX9mi3l6MtSftgTcp61DrI1vlvr8C0D0WUCrKDw=;
+        b=c9GJBWMT7ZXyUzdvPUuTWb0ZW3rE3xg6IqXAHM9ZsCepBE4i1nw11SxKWw/Qxm56GU
+         9/RXZbf69/kNdnTStif9giXRdRJEcjbfV371HJ3CzaC2eFZOZwY+Kt6dM+ceUHq/5ljU
+         tYu7nJPVs2g0MUkY8HWjYRRNopwncLxsDP0JqouP5C22tzuzEJU2n4dlIxERMhTkituh
+         uinC6ddOw8NeRWmalS9ZdV+IGTqubGSlS9NQ8hGKenLMm8SyBplhDPj8HSLCABPBGnlz
+         oOop3VxwSyksBIh4osGyzk1xjXULSCoizfiFba/szxR352XPUUt/LHQ+ry5CnytsFTpQ
+         Es0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUP/51HDqEYgCKnxr+rSQEXEWGHgEkXmWZM7swEN5zjjW9yXtvsXEXLlCMI2BEw95KNwEy1b5JlQxnroLPd1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyw+pM/bqHKYFXb9Fa6XdGKYrq0t6hbgobCubSZs7FLllMeEigc
+	WIph2yi19M4gTzrzz+biokWq7vs6EgMDPl++5Gx2sji6skLIWVohr+YnG0dopXIb0NAZJ7U8XIg
+	9FU5edwBui4BRu4w/TRsC3vkpgcwpTfLnP0hGyQ==
+X-Gm-Gg: ASbGncvYtAHYiYrPg4DiOPUFMVPPrExcY07VB4y6avpSRHJxLa1PdHsjMrmwxhKS+h6
+	7XCfSjQmAjRB/oGpL3MxWttgc2oFh5Km1i0e9O5ND3kEX33nHE35bAh00wJUTVFN5dFGcumpx3x
+	uH5Xd9t651X9evn8LUVEBTIGjeydDGzyiZgIVTldI/
+X-Google-Smtp-Source: AGHT+IEZFS8P/SqBnB+WkQtnz50kE/KLVe8z1PUmhj0XLEUm9sUtkaGVMLjPe61piys4lVxnrSqV5nhPuLtN0bbXmko=
+X-Received: by 2002:a05:690c:3386:b0:6fd:6589:7957 with SMTP id
+ 00721157ae682-6febf3e141amr139728327b3.32.1741515152574; Sun, 09 Mar 2025
+ 03:12:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
- setup
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
- Maxime Ripard <mripard@kernel.org>, kernel@collabora.com,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
  <20250308-phy-sam-hdptx-bpc-v5-3-35087287f9d1@collabora.com>
- <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com>
+ <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com> <f1e33b02-5646-4219-98ac-c09e31d8215b@collabora.com>
+In-Reply-To: <f1e33b02-5646-4219-98ac-c09e31d8215b@collabora.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Sun, 9 Mar 2025 12:12:21 +0200
+X-Gm-Features: AQ5f1JrmwkN2RQ2GrRt72vVxlzBhDHQIaChvycTVxwU7KB8WVuxJ3KFj7BXSb9I
+Message-ID: <CAA8EJprNTUuOwu__GcRhYmNi5rT0+3r16fs+n7Gdy3sjgTp+nw@mail.gmail.com>
+Subject: Re: [PATCH v5 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio setup
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+	Sandor Yu <Sandor.yu@nxp.com>, Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
+	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_031117_070527_B0A27440 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250309_031233_612411_50D6A37F 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,18 +98,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/9/25 11:17 AM, Dmitry Baryshkov wrote:
-> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
-> <cristian.ciocaltea@collabora.com> wrote:
->>
->> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
->> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
->> and not before.
-> 
-> Am I correct that the only functional change is a switch from
-> greater-or-equal to simple greater?
+On Sun, 9 Mar 2025 at 12:11, Cristian Ciocaltea
+<cristian.ciocaltea@collabora.com> wrote:
+>
+> On 3/9/25 11:17 AM, Dmitry Baryshkov wrote:
+> > On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
+> > <cristian.ciocaltea@collabora.com> wrote:
+> >>
+> >> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+> >> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+> >> and not before.
+> >
+> > Am I correct that the only functional change is a switch from
+> > greater-or-equal to simple greater?
+>
+> Yes.
 
-Yes.
+If you were to repost the series for any reason, could you please
+spell that explicitly in the commit message. If not, it's fine.
+
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
