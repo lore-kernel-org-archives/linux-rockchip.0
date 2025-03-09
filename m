@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3067DC282D1
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 10:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF944C28B28
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 10:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kzJil1R+kM1cbpQQcz0lCPX0K3qL6nJCyNT1A2q0NMk=; b=A66qLrFxhGP0Zb
-	xiw/6MSvgAzx4SEfwrohpS5QxgmY4IYThvgKgLQaBvMsBzwvDVwmuMuAsLtkP2Is4RzydIjwLZ03t
-	L2wa/IrmXnpKU2blmee3hYTwIS+gVeN0gaHaovvz4F8iqupUmD4OgxZgljrpYbZbqExpf1fe5ols0
-	KbaTJlbpASpHzb6MhWs89mYODmza7bfufiVXANSNh2VCG4masqcZ6L/kkaGMcwQ8npKIExZsvkQud
-	FCsyuLNLREMqKUu30gZGKMW5rqb/lfgS3YX2ZZ2swiK8ZEPzz/YneLskXMhf+DPFmQJeWwLBpLPQt
-	NF968d2bXjlVDu3IYHPQ==;
+	List-Owner; bh=8tBvsR1U16q5ZKf/RU+s9Q1lxYj6vXi8nBZzX8Smc4M=; b=xtz9M9HfO38Pp9
+	IQhampXJb4xiFoaeCEcP1pvyrYKLxvEUYAaQC1RopfcSi7EFwTQv1gSUCByfqQiWvt4unfm00lfhx
+	3rvOidiRh0WB6++oGrZ79J7waj10QD2Juh6xeODlc24amLZNYKeGFE973z9Qh6BiW3Qb3kXbeVsHR
+	GoUXxg6dBJ4Nia2qfEZDExjALIgypn8BS6BJ84xs4oDn3oNOkJnZZ+ObB8cHiK1OlSJim5SfI36QL
+	hp4VGBqYMXyvP5SdOxOxcnecwoh3oBhyKnvM5/7UCZGE5y70x42YRiwmL5pbyAsoPDUBUE2dkjO97
+	HZaWjJLUOTXwUUWBfpfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trDf2-00000000KtQ-1Gve;
-	Sun, 09 Mar 2025 10:13:32 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1trDge-00000000L3G-2Wk4;
+	Sun, 09 Mar 2025 10:15:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trDcV-00000000KY9-35uL
-	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 10:10:57 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-e60ad903382so2054648276.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 09 Mar 2025 03:10:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741515054; x=1742119854; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4BClW3AD5pwAP7HlEQggy/3PgguRjaaiqTnG6w3UH/Q=;
-        b=r5kVOj5nS1WtVD30efoWSherxLG3Lgtt6QZQWAE5On9dNFSycyVA94TJYFUG97FETm
-         pp0BnQb9L/P270kG8s+LkYSaS2eotC8ffiVeAHR2uSVZH7GxxBndIH2S5nsEAwXUp71W
-         b474CEQbfIo8Vecml19gKDX/LlADFgv8Q2Q1CApHGUoECiQLEPVYjih/08K3r5LJFm9M
-         4tErYCV6AmlP7z9WVdg7NVS7PB9i0w2QnRVPcKwLwEc7Dv5kXhPvG7YIny2nuj19p5hG
-         ZlX7bN7RYY8ESVZmjdp+wmt2Be7aMMrSceif06OTd4xEA2W57zeY+C/tTxYH3QoVcVXF
-         f0Cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741515054; x=1742119854;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4BClW3AD5pwAP7HlEQggy/3PgguRjaaiqTnG6w3UH/Q=;
-        b=m7h+YbCwzaUmBL70ilxR6A8PfjbhVNhJZaKNVlqyuyz7puGVbyy1Pqi7j7HbT4zCJr
-         rpApPcHoGwok371hh/oVKA3eoGCkhu5e7K2Y2T2T2x1A+fPwK/8OhoD0CRXPDKYe/fBm
-         5NWIwWCHvv3YtMNrKGXiJbUR+lM7Cn/MCgZNCwCoNl8yJ1rMfY6xDPUYM7SkIuJW52ip
-         bHaLdntQXIiBrXlID7jrdZA4Z9y8xn7s/rJIW7wN8dWD86CUVoxYhM6ddEjXaUYaf5CK
-         5SsfTy5Etj4scHssmKNiROApB85ybb58Zg4wSjB1VmWFc0jQ1LnWwSdI92rNi7lLMBJf
-         QA5g==
-X-Forwarded-Encrypted: i=1; AJvYcCX4Ggn6sEUGsZtIaC5NFgG1CHNrlFUIkT2itpwV//iIq/+D29Q/OOHEUGOZ6YGtd3OFY1+6IfS9rcr5jU8E7g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMCaoBt9UIMGUZoIY/SRMvs+i1Qf5QeNRo4Ztg+y3K7Y5ts7q3
-	6AOD7w8f4Cr3OtOr2Gu3907zr6f8gL4lIp1+J2Zsc0GTbtowBtAjGPp11Sr79LOHoQ97PLD8j6W
-	ms8/0aeVjejcNRi59UXpZf/psOWpE1JsggxKORw==
-X-Gm-Gg: ASbGncudQIikn9zohMf07Am3p5Q6lgTqUX7wN7rhcji6J2+dEp+yEAbcfB/4HJ+WF+K
-	t5AbLuN/8PWd/hXVanVjwUeuA2PIA3HjmM0KCuEgvoqnDlQpIMzODGW2+blRErjpjxGJhHuNc8j
-	OI4qkXxVE1/wM5B2ZSqJZBS7c4dHvOkNNZLuT58h5mCB46qofhjSU=
-X-Google-Smtp-Source: AGHT+IELHQ0fTEF6TQsCVADH9+2FjqIz2dd2lZgnP8p9HlYkvFgSHseJRTK4oPdwl0BlLmUYZqUu+3ES+J82wsobBT0=
-X-Received: by 2002:a05:6902:1081:b0:e63:5be5:81a3 with SMTP id
- 3f1490d57ef6-e635c121fe2mr12595424276.1.1741515054548; Sun, 09 Mar 2025
- 03:10:54 -0700 (PDT)
+	id 1trDcq-00000000KbU-3gqE;
+	Sun, 09 Mar 2025 10:11:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741515075;
+	bh=sQra10c30MYmky155tTp0EkDPmDnARSe2sYZR6ySckU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RHKbmtlj+KMHs2L793B6DvggLvnoRIlmnAfp8wcnileSwLHbHLAI9+B/HeGN/0uLw
+	 2M1R4e8y6tG9LwnZ1ya6kVOzmldLzlMZMnogOXmmW+ZJCSz+liqVd5JwYCUZ2eZGep
+	 ZnZ7h6PUuVENMBtL0BfC5kskKjRLi70qfJ9eIe1aSQbU0hCl8yDWI0nXIiTiSecc1B
+	 yl2z5bKSQDgwaleDLirXARJN9ljEsofhUdc8AnZPMuuG8LnMBBVAT4wfOSbcDxsDfx
+	 X9QlgTtZFZ8TI4ta0rhpna3gn7bFZlGGd48U0ZMO874Wt/MlibrKI3seqszUz9MM80
+	 3hmDBhbizPr5Q==
+Received: from [192.168.1.90] (unknown [84.232.140.93])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C052317E05C1;
+	Sun,  9 Mar 2025 11:11:14 +0100 (CET)
+Message-ID: <f1e33b02-5646-4219-98ac-c09e31d8215b@collabora.com>
+Date: Sun, 9 Mar 2025 12:11:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 03/12] phy: rockchip: samsung-hdptx: Fix clock ratio
+ setup
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
+ Maxime Ripard <mripard@kernel.org>, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
- <20250308-phy-sam-hdptx-bpc-v5-2-35087287f9d1@collabora.com>
- <CAA8EJpqYE1drM6=C0AwPZ-e5RkWqjMTpWQiwhA64qby1mmVL1Q@mail.gmail.com> <22142c86-c8b5-4427-9764-a7daa4a005b1@collabora.com>
-In-Reply-To: <22142c86-c8b5-4427-9764-a7daa4a005b1@collabora.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Sun, 9 Mar 2025 12:10:43 +0200
-X-Gm-Features: AQ5f1JraoRZHEAAKtM_6fInxqSPprmQzLJINm38dwVXdhnnYMeLTS5kKKnY-1Ok
-Message-ID: <CAA8EJpqCUWH95Ew57K_HKmPGhf40G_2n09SWKTonvyUn2vE4oQ@mail.gmail.com>
-Subject: Re: [PATCH v5 02/12] phy: hdmi: Add color depth configuration
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
-	Sandor Yu <Sandor.yu@nxp.com>, Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
-	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+ <20250308-phy-sam-hdptx-bpc-v5-3-35087287f9d1@collabora.com>
+ <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAA8EJprBcGz0tZ5SDVC_WK2bzjXZAtOj+LfGnSxmwktvaQw=VQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_031055_767639_1FF2B8D9 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20250309_031117_070527_B0A27440 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,38 +82,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 9 Mar 2025 at 12:10, Cristian Ciocaltea
-<cristian.ciocaltea@collabora.com> wrote:
->
-> Hi Dmitry,
->
-> On 3/9/25 11:16 AM, Dmitry Baryshkov wrote:
-> > On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
-> > <cristian.ciocaltea@collabora.com> wrote:
-> >>
-> >> Extend the HDMI configuration options to allow managing bits per color
-> >> channel.  This is required by some PHY drivers such as
-> >> rockchip-samsung-hdptx.
-> >>
-> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >> ---
-> >>  include/linux/phy/phy-hdmi.h | 2 ++
-> >>  1 file changed, 2 insertions(+)
-> >>
-> >
-> > Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> >
-> > Just to confirm, are you passing TMDS char rate or pixel clock for
-> > DeepColor (bpc > 8) modes?
->
-> It's the TMDS char rate, but we still need the bpc info to program
-> CMN_REG(0086) in PATCH 12.
+On 3/9/25 11:17 AM, Dmitry Baryshkov wrote:
+> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
+> <cristian.ciocaltea@collabora.com> wrote:
+>>
+>> The switch from 1/10 to 1/40 clock ratio must happen when exceeding the
+>> 340 MHz rate limit of HDMI 1.4, i.e. when entering the HDMI 2.0 domain,
+>> and not before.
+> 
+> Am I correct that the only functional change is a switch from
+> greater-or-equal to simple greater?
 
-Thanks for the confirmation.
-
--- 
-With best wishes
-Dmitry
+Yes.
 
 _______________________________________________
 Linux-rockchip mailing list
