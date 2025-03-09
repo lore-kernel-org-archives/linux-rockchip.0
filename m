@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1339C28B2F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 23:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDE9C28B28
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 23:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VZVSd1+i2X4WxTPSU5FZ+PW2sT/DeeuA/B6GNbaJWL4=; b=NFYxR5ZrKIx/5z
-	/ysYGdh5RlbOZBsQVffMljyydrGn9Y4nbPkylz5v8g7j9g1536gZsM8hsge0dngvCp6uMNCONmNhJ
-	xzVX803DKnf9v9UOmf9iGDkVndYW+aq5fZHdHXj7DZut1Yinmr4YxJXZ89jMd+tlC/PGEJ8HdbX4f
-	ntbLMnzPP5L7BPeGe92Pwn5zodbbCsgDB2gcX0bct9eAfk7WiNYEt24UnoBYUKNNt5SUorIsUYlG1
-	22Bn/YXdrsbD6fdSi6VgiuBautPSJorHN4P5GXD5U0P/XWENa+h5UCXASDT2wSEJfr6pQ7coGXrPP
-	cNtYtVPq9G4d2deuOIQw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ywq6EokW4O3NF+CyNRjgcTXU5//Sq8xicwjd7M55Af8=; b=3BDdD7B4QHToN8
+	mRCb9xs4mClSm0f5fj7UrI5cro08fSzhHNRYL7JsJceaizh9+TdnzKL5YyXGPcDD7jxiAiqfCanjE
+	MLCBJ+TDjXJt59T4nZimgtS/mJqu+/CUfH/ChyfqHx79srU5Di/ZRDJ7AuG7t1c58gOqMpG5BxF0R
+	pQhawPKYJCzq137AxhIzIZvWZ3AENTKFlk0FUkDUtP67/qSXt+Z7tsULr8sGu5M634YIhU6nn1eBw
+	s4bYYYu4EOWNQCsjKvrwg1458Z2d8NQf6av40TaGTjp0OcOJLx+glGMNCUYnjLngFx2j83kiqxALO
+	6/J6BzzDxpdiYDw2fPIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trQ83-00000001H8l-0q60;
-	Sun, 09 Mar 2025 23:32:19 +0000
-Received: from [2a02:6ea0:d71e::9] (helo=smtp.forwardemail.net)
+	id 1trQBG-00000001HSS-2rNO;
+	Sun, 09 Mar 2025 23:35:38 +0000
+Received: from smtp.forwardemail.net ([2001:19f0:ac01:372:5400:5ff:fe53:764a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trQ3A-00000001GI2-1WEV
+	id 1trQ3E-00000001GML-44Vn
 	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 23:27:19 +0000
+	Sun, 09 Mar 2025 23:27:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1741562797;
- bh=uhqn9V7B8sVTHcezMkHZ/uQLEm9iylzgvIMWhThJmFw=;
- b=jdVdj+0I94VzS37KQUhM67IJy2C0aYC4RKcbdZ1BFnftTqutcDGwoVcri5lpaSTu7CNQidLat
- e9GyAslK6xpe31d/uoD8G8FUq4P0EXEqRhmWrPLiautRxuDrC83BwJhkAistfUr4xkY2tFiSrDN
- pT7C3gOXPp1Wu/RCmYYDTPDRgUVCWpgJNs2VCjhzH15qh7SGG/KtJNQ9ZvaCVOkUx9XwLZWgrxk
- ntLyvo2dCpfO/g4ftq1n5qNT0BnN3XPb1ykC6T3HOZBRYPhWdAhTlTihH49msH5cpJNSxG4gvCY
- unJgMx38+vDJDRJZPSIFPZ+Jsle3A6DztabzrvhMr/Dg==
-X-Forward-Email-ID: 67ce23a55209992d7c670e59
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1741562822; bh=KanAfDw+UyOaqtRYsPqpRbqdHPNczgiApRuHgmm7F4E=;
+ b=tipZntGFD9MYFT7ubTQU+CqIETlHU+t4nZIALIHQBE1u7W4n/S6sVTXQzuI1nBtYZyfPx+014
+ rrYq3YVfvOK0umq5CiWloSNjHh0fi3jbs4RqUUANYQmPr4SK5Xiy4HXZfn5pJSZ3N+q7BegtbUq
+ QCdmOWr6+oMr+3T5bVhEdP8TjW6z+ZagOpRrzI09qAz9wwmr+XRnIkfuyXN6l0Gasvqdvnw3HfY
+ /nErv9Lu9K3aVek+JgVHG03hNnm7Gh5kfHEfqItqlR3fP47ZIOR8cGFUoWIfbfnq67twwsTJUzG
+ iFBlEgQNXTvMslqSRM2HCurw4EvTMjSOxfjQ1YqZS4Ig==
+X-Forward-Email-ID: 67ce23bc5209992d7c670edc
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -50,7 +50,10 @@ To: Heiko Stuebner <heiko@sntech.de>,
 	"David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
 Cc: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -61,16 +64,18 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
-Date: Sun,  9 Mar 2025 23:26:10 +0000
-Message-ID: <20250309232622.1498084-1-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH v2 5/5] net: stmmac: dwmac-rk: Add initial support for RK3528 integrated PHY
+Date: Sun,  9 Mar 2025 23:26:15 +0000
+Message-ID: <20250309232622.1498084-6-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250309232622.1498084-1-jonas@kwiboo.se>
+References: <20250309232622.1498084-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_162716_802935_45DCEF77 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250309_162721_052929_504472F1 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +92,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
-used with the integrated PHY and a second 1000/100/10 MAC to be used
-with an external Ethernet PHY.
+Rockchip RK3528 (and RV1106) has a different integrated PHY compared to
+the integrated PHY on RK3228/RK3328. Current powerup/down operation is
+not compatible with the integrated PHY found in these newer SoCs.
 
-This series add initial support for the Ethernet controllers found in
-RK3528 and initial support to power up/down the integrated PHY.
+Add operations to powerup/down the integrated PHY found in RK3528.
+Use helpers that can be used by other GMAC variants in the future.
 
-This series depends on v2 of the "net: stmmac: dwmac-rk: Validate GRF
-and peripheral GRF during probe" [1] cleanup series.
-
-
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
 Changes in v2:
-- Restrict the minItems: 4 change to rockchip,rk3528-gmac
-- Add initial support to power up/down the integrated PHY in RK3528
-- Split device tree changes into a separate series
+- New patch
 
-[1] https://lore.kernel.org/r/20250308213720.2517944-1-jonas@kwiboo.se/
+This is enough to power up the integrated PHY on RK3528 for MDIO/MII.
+However, a PHY driver is still missing and I do not have any RK3528
+board that make use of this MAC and PHY, so something that can be
+improved upon in the future.
+---
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-David Wu (1):
-  net: stmmac: dwmac-rk: Add GMAC support for RK3528
-
-Jonas Karlman (4):
-  dt-bindings: net: rockchip-dwmac: Add compatible string for RK3528
-  net: stmmac: dwmac-rk: Move integrated_phy_powerup/down functions
-  net: stmmac: dwmac-rk: Add integrated_phy_powerdown operation
-  net: stmmac: dwmac-rk: Add initial support for RK3528 integrated PHY
-
- .../bindings/net/rockchip-dwmac.yaml          |  16 +-
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 277 ++++++++++++++----
- 2 files changed, 242 insertions(+), 51 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 3f096b3ccee8..ab2c872d33e0 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -134,6 +134,35 @@ static void rk_gmac_integrated_ephy_powerdown(struct rk_priv_data *priv)
+ 		reset_control_assert(priv->phy_reset);
+ }
+ 
++#define RK_FEPHY_SHUTDOWN		GRF_BIT(1)
++#define RK_FEPHY_POWERUP		GRF_CLR_BIT(1)
++#define RK_FEPHY_INTERNAL_RMII_SEL	GRF_BIT(6)
++#define RK_FEPHY_24M_CLK_SEL		(GRF_BIT(8) | GRF_BIT(9))
++#define RK_FEPHY_PHY_ID			GRF_BIT(11)
++
++static void rk_gmac_integrated_fephy_powerup(struct rk_priv_data *priv,
++					     unsigned int reg)
++{
++	reset_control_assert(priv->phy_reset);
++	usleep_range(20, 30);
++
++	regmap_write(priv->grf, reg,
++		     RK_FEPHY_POWERUP |
++		     RK_FEPHY_INTERNAL_RMII_SEL |
++		     RK_FEPHY_24M_CLK_SEL |
++		     RK_FEPHY_PHY_ID);
++	usleep_range(10000, 12000);
++
++	reset_control_deassert(priv->phy_reset);
++	usleep_range(50000, 60000);
++}
++
++static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
++					       unsigned int reg)
++{
++	regmap_write(priv->grf, reg, RK_FEPHY_SHUTDOWN);
++}
++
+ #define PX30_GRF_GMAC_CON1		0x0904
+ 
+ /* PX30_GRF_GMAC_CON1 */
+@@ -993,12 +1022,24 @@ static void rk3528_set_clock_selection(struct rk_priv_data *bsp_priv,
+ 	}
+ }
+ 
++static void rk3528_integrated_phy_powerup(struct rk_priv_data *bsp_priv)
++{
++	rk_gmac_integrated_fephy_powerup(bsp_priv, RK3528_VO_GRF_MACPHY_CON0);
++}
++
++static void rk3528_integrated_phy_powerdown(struct rk_priv_data *bsp_priv)
++{
++	rk_gmac_integrated_fephy_powerdown(bsp_priv, RK3528_VO_GRF_MACPHY_CON0);
++}
++
+ static const struct rk_gmac_ops rk3528_ops = {
+ 	.set_to_rgmii = rk3528_set_to_rgmii,
+ 	.set_to_rmii = rk3528_set_to_rmii,
+ 	.set_rgmii_speed = rk3528_set_rgmii_speed,
+ 	.set_rmii_speed = rk3528_set_rmii_speed,
+ 	.set_clock_selection = rk3528_set_clock_selection,
++	.integrated_phy_powerup = rk3528_integrated_phy_powerup,
++	.integrated_phy_powerdown = rk3528_integrated_phy_powerdown,
+ 	.regs_valid = true,
+ 	.regs = {
+ 		0xffbd0000, /* gmac0 */
 -- 
 2.48.1
 
