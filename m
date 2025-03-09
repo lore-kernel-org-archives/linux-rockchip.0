@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A94C28B28
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 18:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAF1C28B28
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 19:00:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gPBiPBqayLmmlzgBYma9EASewv1fMEK9HGBNprbsJjo=; b=i3dOdLIiV9UT2R
-	UbAS/hEo8HpmVZkurT2DzdE1k7/WZXbVvlP1AVLQXrZ0PZfUziY/fqQnXZMFbMV+Jpc8g3WBw7oDf
-	XFLtBb0GrvXiM0j2x6NLwMs3TTMp8Ma5H3QPOgc/xY/0T3bZtjXs6M6hJ/oFWIhDszNmFg/lFaiO3
-	Bs4/cAgKl2ZOAPkKA9CldTqbYfVJpN2uLLrGJr0F8JBsRpdfcxPYJaYNRiUB/aVpBMRWdlZSmOZYH
-	1ZpAQV3XYDb1H9vj9Op2s77Ntlh+pgM0ptm+HjcfODBe5smeFNDv8HYUzU+ZNNePD7b/XOiym0Zew
-	YUlNNMNOraUxJAsiUabA==;
+	List-Owner; bh=QWhr4gwfcCaOlJTIYMWsfr+nrkwAfvHW4LDkPUhIlu8=; b=EPMXluVlDhseHe
+	JUPQ1UjsEbJMU6cCPAnyCyU0Y3UDWsPQkR8WVJ6nyVwkGMsajYBsEsuxnBcKB59N0GY+MjxgF2Ftw
+	wxACtixouaSe/qwqYPM4AIpV+hu7wqS9kFyi/DTmTPqYeZlopdjAb3Fgh9OvYdxGWTUskT8gjhHL5
+	4yzm3Jc7GVHLj3TFPO4XNwezdz1eot2mHkDJTzK4bpa8JUmAUx6EfaGIUHP9ROQZyfT80G5wSAQN0
+	8jUmeO/W63emoosmrgjGZBoWoWR5nfz9/IJ1TIIulPMa/ZzE0YHRFSWZZv9aDmiZldzO74DGKBOv9
+	M4Qkgv0gSnuLcg2r+P2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trLqz-000000011K7-29y8;
-	Sun, 09 Mar 2025 18:58:25 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1trLsa-000000011WI-28Ii;
+	Sun, 09 Mar 2025 19:00:04 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trLJL-00000000xuw-3ucR
+	id 1trLOZ-00000000yNv-0i0O
 	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 18:23:41 +0000
+	Sun, 09 Mar 2025 18:29:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741544616;
- bh=QvnfGlC40UQmnKcl5OF0pRINHPgf7NC49WGBsWl3pAM=;
- b=mUjSMxiqPdCTwLtfP9Tq059DBC1ERQ2WdVsAe+EbV5rkAesqFr5wpZtr7MbBeHCENyWQ2yGJ5
- xG1U5li8eeDHRVxeDrFd0uYV5lreP+vZiScM38oLulvXlD4/XxOGnVSk0xicfsc1Ut2allNl1zN
- S5x0dKeT1SsRE+YZVeJPbNAJtUcxf5uauha/rapyT2PvklyziKPlMEVXnLw1/NwTuI5FBMuF51g
- b2ajs2uzlpD8nn9hRqJVnwGYgDAqelpiH++X6LO6vlyNlJXJaF3jW+Aiq5fe0bEqCTy/oaxESNH
- s6rVjFkqHn9drmHaXjTmnihwWssoQrsAiHRV/P5dDngg==
-X-Forward-Email-ID: 67cddc968d04fc44bbac47b6
+ s=fe-e1b5cab7be; t=1741544939;
+ bh=ZQ1QJVIjdnw4XDWOL1lHnoPAQJsZWuneqxKAGVSgKA0=;
+ b=mr+uXN/NRZEHKLoJMbrPxlkXUIAflAWn3vT7u6/qoPQuVGwRgBUTgsrZNkA6NtPIYGfyaUcGb
+ 6nZ8jyqxrLFkPfc1NkK1vFVZUcKY2aEDJaYVs9fiEKuk9cQqlHJ5ZuWfLiZ5xWWQJ/NO36tb/yo
+ pEn23YFAZmW0p5LVZ38IkKhejuf52nYxyTdXzpQ6abaOAIxKYjDUZruO6JLqETUNqDEAPC/fPp3
+ 6yNzQKHCyOseuxtCxg6E1B2Neox7mryEMyfPyvsmzp5O4cZJ8jojP6fTHT9cZrbrw9ANIMrPEZ/
+ oOLNSjSC5Kau/X1TpG6XkLk/B1WRjjI15kbpwACY2wTQ==
+X-Forward-Email-ID: 67cddde98d04fc44bbac493b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.59
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <0b679284-d427-4229-b008-e3e466f66a0f@kwiboo.se>
-Date: Sun, 9 Mar 2025 19:23:12 +0100
+Message-ID: <8172efa9-2f67-4b98-9988-88b533028431@kwiboo.se>
+Date: Sun, 9 Mar 2025 19:28:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add I2C controllers for RK3528
-To: Yao Zi <ziyao@disroot.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <ukleinek@kernel.org>, Yao Zi <ziyao@disroot.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20250309070603.35254-1-ziyao@disroot.org>
- <20250309070603.35254-3-ziyao@disroot.org>
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-pwm@vger.kernel.org
+References: <20250307120004.959980-1-amadeus@jmu.edu.cn>
+ <20250307120004.959980-3-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250309070603.35254-3-ziyao@disroot.org>
+In-Reply-To: <20250307120004.959980-3-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_112340_098483_DCD6EF19 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20250309_112903_317517_04DCE2BF 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +82,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Yao Zi,
+Hi Chukun,
 
-On 2025-03-09 08:06, Yao Zi wrote:
-> Describe I2C controllers shipped by RK3528 in devicetree.
+On 2025-03-07 13:00, Chukun Pan wrote:
+> Add pwm nodes for RK3528. The PWM core on RK3528 is the same as
+> RK3328, but the driver does not support interrupts yet.
 > 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 104 +++++++++++++++++++++++
->  1 file changed, 104 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 88 ++++++++++++++++++++++++
+>  1 file changed, 88 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 04ca2e2b3e9b..860b6057e5c2 100644
+> index b1713ed4d7e2..ab1ac3273611 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
 > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -19,6 +19,14 @@ / {
->  	#size-cells = <2>;
+> @@ -264,6 +264,94 @@ uart7: serial@ffa28000 {
+>  			status = "disabled";
+>  		};
 >  
->  	aliases {
-> +		i2c0 = &i2c0;
-> +		i2c1 = &i2c1;
-> +		i2c2 = &i2c2;
-> +		i2c3 = &i2c3;
-> +		i2c4 = &i2c4;
-> +		i2c5 = &i2c5;
-> +		i2c6 = &i2c6;
-> +		i2c7 = &i2c7;
+> +		pwm0: pwm@ffa90000 {
+> +			compatible = "rockchip,rk3528-pwm", "rockchip,rk3328-pwm";
 
-nitpick: These should be ordered after the gpioX aliases.
+nitpick: This could be split in two lines to match similar >80 chars
+long lines in this file:
+
+			compatible = "rockchip,rk3528-pwm",
+				     "rockchip,rk3328-pwm";
+
+And similar for the remaining pwmX.
 
 Regards,
 Jonas
 
->  		gpio0 = &gpio0;
->  		gpio1 = &gpio1;
->  		gpio2 = &gpio2;
+> +			reg = <0x0 0xffa90000 0x0 0x10>;
+> +			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
+> +			clock-names = "pwm", "pclk";
+> +			pinctrl-0 = <&pwm0m0_pins>;
+> +			pinctrl-names = "active";
+> +			#pwm-cells = <3>;
+> +			status = "disabled";
+> +		};
+> +
 
 [snip]
 
