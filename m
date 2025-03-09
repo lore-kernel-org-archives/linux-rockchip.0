@@ -4,62 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F9B8C282EC
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 00:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE0D0C282EC
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 00:33:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hCUeL5m8gPffrpjrEM4vlptj2H5iMUHllnV0oZMB1/Q=; b=d7ZRaDpnUlrhqd+v0sdorlcw3e
-	uiIOkl3l+kqNmo2FOmcM1388+RO2VbXp27HNnuWmU+sBYTYm2AbB1yUv63Om4/Sb19f6sqwxKnGmX
-	0J6Iqx8tlD6g7qwDWiut7g6WMBrA/RWLDwFLpW3S8relmq74HnYU8UXo8VfFafHIIIaUINMamxKrn
-	wJuYAp/8InwQ1hu6umiJ9zGHW/Cx3bA2GkNauToFR18UVHqDsmKQBvjrD1g4PBnGNIwyLPk5HEYYU
-	4IWQhC+E3oxOz0LBI2L4YXwdPH9inaIavM7MvA1b2IbenudCDJ1mJofwKjcGXCEd1utkogK3/9Mgq
-	7SezzwJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VOPMvkkzbt8Ald4bKQkxZVGUG2mhpE4fpIbSaJjeOD8=; b=a0+NTjluQh0zWt
+	dfCAn4bU9SVR4YYYHbt9SOeO4qJve/xgvNlbGGUlqj8gLixyxJCc4kSKPIV2dL4baSp4wC9F2t9fQ
+	Z7u5gpNceWFr+uDQRFJrGKl5uuwclrzcpTJtyFDCKhL8M9/Uy6CEWH7+QbUjyK7cWAO6mvMMKGf9L
+	bnTbF08H6IHdx4/yokbapCs6L2tu81sUP17FCzRywB2rGP599BkNdZfmEnIOKn5BXTFmOdA4yC6Si
+	r/ybZBJjiPcJc+QkNmZAOXgHjXLwBjk+00ms9eVRsfUThh6SjrNszBpEbTRM8F7LfRy7ubu3IA1pO
+	ujA0HBWQv2OfQT10YH1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tr4Uz-0000000HMNw-3xKI;
-	Sun, 09 Mar 2025 00:26:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tr4bX-0000000HMlf-20wT;
+	Sun, 09 Mar 2025 00:33:19 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tr4TL-0000000HMJD-3AB3;
-	Sun, 09 Mar 2025 00:24:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 514DE5C4336;
-	Sun,  9 Mar 2025 00:22:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B35A5C4CEE0;
-	Sun,  9 Mar 2025 00:24:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741479889;
-	bh=szqCjg4d8QsrF+kYbNSWgnbNPQ3W+ripzXsLT+GOp7c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Be4m0mGThOYM6JcXqk8+uCCQv6Ltc1Zpke8d5hMkVHlxB0l6HdKQxVCG3IpCuqbky
-	 adQIKvBUBLCy/Pa17Ab8DG8QoudztNygRbTGYjoqpEQh8liSD0ml0x7rV5M6XfSOH4
-	 8XY7TSIOXqi3N8Xn7PzN349nXzXJFf1i+ewclW1N88Bn9cbrRYHdyXZlE2U3FcycIy
-	 r8PyRPZjyicCKZIS9w2ZhsE0jXfr3zmzMHxILXUtLyUsRWgfCff5nilcKeC3qiWO/o
-	 3HRHrZ7vZU5HFDEttyxmSuLbSkEeGamw9/lhLB+Wweam0CWtFKxkXITEeRMOFGwKTI
-	 UQO0pbMTpRjhg==
-Date: Sun, 9 Mar 2025 01:24:46 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, Rob Herring <robh@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Jonas Karlman <jonas@kwiboo.se>, Yao Zi <ziyao@disroot.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: rockchip: Add rockchip,rk3528-pwm
-Message-ID: <dit7oqsrs2g5rxor6aakprqw22yyovvcel5tnd2cteydtpt7zg@ndf4cmiamoit>
-References: <20250307120004.959980-1-amadeus@jmu.edu.cn>
- <20250307120004.959980-2-amadeus@jmu.edu.cn>
- <pnlkcc2rl7fegltovgtvp4xdxhonw72rclvhn7qmvb7xyuullm@xf5x6lcigji3>
- <5942715.DvuYhMxLoT@phil>
+	id 1tr4bU-0000000HMl1-3f7a;
+	Sun, 09 Mar 2025 00:33:18 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-43cf257158fso422745e9.2;
+        Sat, 08 Mar 2025 16:33:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741480394; x=1742085194; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qPD5zeaLyTv7Qy4hdBTQxNRUyG0FnO7mcXkBMLrnQgo=;
+        b=btm9VqW5pR7VG/ybkhVY6ZNA5VS7US9B3v3MCe4tZbxV52VQzLYwTu4hsz/6T71V3f
+         38MkwbME7ePXOHAlycGYOFxHGZ35mpduPSyHGGwn5BxA9alfGwbrxoF+iZfxIHSo/brQ
+         kRFXx5E6Lb1melqgWiC/n8wgdkCxj1JZzDe4wqt+wLwfYFl+IPsXb6c3f3CN6iIH/SGP
+         0/WkGafdjKmXNzVfjDVnMkapGR4NvCOwzQh0pbAxxJN+akRTrJ1jGda2vl5/h0HcakhZ
+         a6d3WNVURofPaTZ/gC9fYWtZahjwDiiIluEI6u7KLgoJYkUA6x8IiHzzc4v7dsdgdRyi
+         wlQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741480394; x=1742085194;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qPD5zeaLyTv7Qy4hdBTQxNRUyG0FnO7mcXkBMLrnQgo=;
+        b=uzUDVxLY4NUZq2INzyIzKgv87E0hV4/BxJuA2l28iyk1a7mWDNaLEaVzSgvkh4fR0X
+         EaC2ciqrVAQ+3/0wedbDhwQdthVs4Of9nuZhd4EtMQaDuQTpb4gEzL9kQwthrvISgrGs
+         HW73irBuTnGMQ1B2/9mjzCjGSmzM48QAZ1YS1A9DzEFj+Xq6dRxvTH3MZI6v1ujWj9Ku
+         /ezlGkRnkjlkIf0nxT2tCBm7qROtQsevzC3tQlos6+ed96Vp5gLS3hsEcPUYoZQ6laSJ
+         YuxsWJAuUY0cVMQQvj5gdmAeSjVfFBlu9kz3ZxPs2lmMr1jeV+SshOXOO34NCie8YBrX
+         AY3g==
+X-Forwarded-Encrypted: i=1; AJvYcCV/Z11ufo8LsCz5ep+H0DqsAUre8cvhHwDVc43Gf0+zKfIoEyfV7Q5yM1U3CMzkO4j40uCTaEXOS+t3RqNnTh0=@lists.infradead.org, AJvYcCW360lsxM7n1JIw28ndOsOzKxdbghiKmNXlzP8ZyITdwxP1babDl0nPW2WYyjNrNiPUMYeEtTTpy0h1iM6H@lists.infradead.org, AJvYcCWjyltNsh3ApTNw+e5JXToxe3T0tGA2ibUNyYH0LVLy7Itu0zhdvVWCKuRvS/yWVhxoUQF/8jlpEGCJtDgtums=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxU9vrbNcpRH2UcRaFhiS7h4c2tIQxOZTKfAhSE9K2k1SrrG2Rh
+	2BFrsELgYEw9D8IKVyjVYE0N+SO9fepAGW/Mh/vkPyVtM3G93/m9
+X-Gm-Gg: ASbGnctK9bbWi37RhxLF5UVZHlVIonvlfwZcJjwe6Q9aE7DlXqNVF6CRSceo9kUEMoL
+	LjfvCA5a0X7PXH9ryHpoqeICsj7RR8evaLx+ITtk5ZHDnIJZpwBdVTKdQAt7ALepj2zxwvBRH6T
+	7DXQc7osMoCJvNv+4VUqGCmCRIvyAcdGHR4mSB4UA2L6PvHyIdQq0G649kr2Qk7qfQJVctV12gi
+	sLixNcm0Gr3OgscNg3q+CpH7Xr0zAJrosHxstQwpEXU0bK2ohvpefW6H5/BtOki/G58MlJR2rhV
+	4d/KWoO6bDIqRVfeEzIzQifvFfgUNh56uXET/qa4shBJ+CQkzfeKkw8yTqn/0tq5HSjmwZNK1w=
+	=
+X-Google-Smtp-Source: AGHT+IH28MQPA+zgYnEC4J5mfzAYw/utosENTHqe/I9TDxz+92mmLwx5LY/MLbLi26Rzp9G7AsQlAA==
+X-Received: by 2002:a5d:584f:0:b0:391:ffc:2413 with SMTP id ffacd0b85a97d-39132da08b4mr5384923f8f.40.1741480393495;
+        Sat, 08 Mar 2025 16:33:13 -0800 (PST)
+Received: from prasmi.Home ([2a06:5906:61b:2d00:238d:d8a2:7f2b:419e])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3912c1031fdsm9976382f8f.89.2025.03.08.16.33.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 08 Mar 2025 16:33:11 -0800 (PST)
+From: Prabhakar <prabhakar.csengg@gmail.com>
+X-Google-Original-From: Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>,
+	Biao Huang <biao.huang@mediatek.com>,
+	Clark Wang <xiaoning.wang@nxp.com>,
+	Linux Team <linux-imx@nxp.com>,
+	David Wu <david.wu@rock-chips.com>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	netdev@vger.kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-mediatek@lists.infradead.org,
+	Prabhakar <prabhakar.csengg@gmail.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: [PATCH net-next] dt-bindings: net: Define interrupt constraints for DWMAC vendor bindings
+Date: Sun,  9 Mar 2025 00:33:01 +0000
+Message-ID: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <5942715.DvuYhMxLoT@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250308_162451_841146_519CC5AA 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20250308_163316_945889_0AB27183 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,91 +127,179 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1076938021290034969=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 
---===============1076938021290034969==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="z34uotnwfhj7flql"
-Content-Disposition: inline
+The `snps,dwmac.yaml` binding currently sets `maxItems: 3` for the
+`interrupts` and `interrupt-names` properties, but vendor bindings
+selecting `snps,dwmac.yaml` do not impose these limits.
 
+Define constraints for `interrupts` and `interrupt-names` properties in
+various DWMAC vendor bindings to ensure proper validation and consistency.
 
---z34uotnwfhj7flql
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: rockchip: Add rockchip,rk3528-pwm
-MIME-Version: 1.0
+Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+---
+Hi All,
 
-Hey Heiko,
+Based on recent patch [0] which increases the interrupts to 11
+and adds `additionalItems: true` its good to have constraints
+to validate the schema. Ive made the changes based on the DT
+binding doc and the users. Ive ran dt binding checks to ensure
+the constraints are valid. Please let me know if you'd like me
+to split this patch or if any of the constraints are incorrect,
+as I don't have documentation for all of these platforms.
 
-On Sat, Mar 08, 2025 at 05:25:09PM +0100, Heiko Stuebner wrote:
-> Am Freitag, 7. M=E4rz 2025, 18:07:47 MEZ schrieb Uwe Kleine-K=F6nig:
-> > On Fri, Mar 07, 2025 at 08:00:03PM +0800, Chukun Pan wrote:
-> > > Document pwm compatible for rk3528 which is fallback compatible
-> > > of rk3328-pwm group.
-> > >=20
-> > > Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> >=20
-> > to prevent binding warnings it's probably sensible to let both patches
-> > go in via the same tree at the same time. Feel free to take the binding
-> > patch via rockchip/arm-soc.
-> >=20
-> > Acked-by: Uwe Kleine-K=F6nig <ukleinek@kernel.org>
->=20
-> You already have the rk3562 binding in your for-next branch [0], which
-> could create merge-conflicts later on.
+https://lore.kernel.org/all/20250308200921.1089980-2-prabhakar.mahadev-lad.rj@bp.renesas.com/
 
-Oh indeed.
+Cheers, Prabhakar
+---
+ .../devicetree/bindings/net/amlogic,meson-dwmac.yaml   |  6 ++++++
+ .../devicetree/bindings/net/intel,dwmac-plat.yaml      |  6 ++++++
+ .../devicetree/bindings/net/mediatek-dwmac.yaml        |  6 ++++++
+ .../devicetree/bindings/net/nxp,dwmac-imx.yaml         |  8 ++++++++
+ .../devicetree/bindings/net/rockchip-dwmac.yaml        | 10 ++++++++++
+ Documentation/devicetree/bindings/net/stm32-dwmac.yaml | 10 ++++++++++
+ .../bindings/net/toshiba,visconti-dwmac.yaml           |  6 ++++++
+ 7 files changed, 52 insertions(+)
 
-> This patch already contains it, so should fit neatly onto your branch.
->=20
-> And binding warnings only come from linux-next, so won't trigger as the
-> pwm will feed the binding there too :-)
->=20
-> So I guess it might be better to take the binding through the pwm tree
-> and me then picking up the dts patch.
+diff --git a/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml b/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
+index 798a4c19f18c..0cd78d71768c 100644
+--- a/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/amlogic,meson-dwmac.yaml
+@@ -152,6 +152,12 @@ properties:
+           The second range is is for the Amlogic specific configuration
+           (for example the PRG_ETHERNET register range on Meson8b and newer)
+ 
++  interrupts:
++    maxItems: 1
++
++  interrupt-names:
++    const: macirq
++
+ required:
+   - compatible
+   - reg
+diff --git a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
+index 42a0bc94312c..62c1da36a2b5 100644
+--- a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
++++ b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
+@@ -41,6 +41,12 @@ properties:
+       - const: ptp_ref
+       - const: tx_clk
+ 
++  interrupts:
++    maxItems: 1
++
++  interrupt-names:
++    const: macirq
++
+ required:
+   - compatible
+   - clocks
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+index ed9d845f6008..3aab21b8e8de 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -64,6 +64,12 @@ properties:
+       - const: rmii_internal
+       - const: mac_cg
+ 
++  interrupts:
++    maxItems: 1
++
++  interrupt-names:
++    const: macirq
++
+   power-domains:
+     maxItems: 1
+ 
+diff --git a/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml b/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
+index 87bc4416eadf..e5db346beca9 100644
+--- a/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
++++ b/Documentation/devicetree/bindings/net/nxp,dwmac-imx.yaml
+@@ -56,6 +56,14 @@ properties:
+         - tx
+         - mem
+ 
++  interrupts:
++    maxItems: 2
++
++  interrupt-names:
++    items:
++      - const: macirq
++      - const: eth_wake_irq
++
+   intf_mode:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index f8a576611d6c..891396140a7f 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -58,6 +58,16 @@ properties:
+               - rockchip,rv1126-gmac
+           - const: snps,dwmac-4.20a
+ 
++  interrupts:
++    minItems: 1
++    maxItems: 2
++
++  interrupt-names:
++    minItems: 1
++    items:
++      - const: macirq
++      - const: eth_wake_irq
++
+   clocks:
+     minItems: 5
+     maxItems: 8
+diff --git a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
+index 85cea9966a27..987254900d0d 100644
+--- a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
+@@ -54,6 +54,16 @@ properties:
+     items:
+       - const: stmmaceth
+ 
++  interrupts:
++    minItems: 1
++    maxItems: 2
++
++  interrupt-names:
++    minItems: 1
++    items:
++      - const: macirq
++      - const: eth_wake_irq
++
+   clocks:
+     minItems: 3
+     items:
+diff --git a/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml b/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
+index 052f636158b3..f0f32e18fc85 100644
+--- a/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml
+@@ -42,6 +42,12 @@ properties:
+       - const: stmmaceth
+       - const: phy_ref_clk
+ 
++  interrupts:
++    maxItems: 1
++
++  interrupt-names:
++    const: macirq
++
+ required:
+   - compatible
+   - reg
+-- 
+2.43.0
 
-Fine for me, so I applied the first patch to
-
-https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
-next
-
-=2E
-
-Best regards
-Uwe
-
---z34uotnwfhj7flql
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmfM37oACgkQj4D7WH0S
-/k75Swf7Bf2agH4VhhrJhceAjdIf6UQBP4yoTIlhuCQDNgORf85O2aCq9ThJxGAc
-CY2k7Hkupfg6o2VHtsaIpRv9hBxyvKUIejmE1bS575NuAUAsyTya32Wsjyjyxho0
-0Hee8EhcDdcsZ9cZW6pYnoJkPlFrPTT39WRG3VRW8m3nS4Qb77HKbu/6YRjZoKVQ
-Hw/yk0FI2YP9rvIpT6qf5e1TdWKzB25Mqt9A0n2C9ureAOso8ufB+P1vHX5lb4I4
-bI6Iemr0pvmAwC3qAzDJ/oKldaOKlD5pUFofTyPy3YWXpTKknHL9XnNEPOBQ5P9S
-RLq9fYax8rVmmepGRTC6XluJOCDk+w==
-=iOg2
------END PGP SIGNATURE-----
-
---z34uotnwfhj7flql--
-
-
---===============1076938021290034969==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1076938021290034969==--
-
