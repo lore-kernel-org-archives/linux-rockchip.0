@@ -4,56 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51751C282DE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 13:51:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EAD8C282DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 15:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iO5Aak4HKp9tvwpihsn6G5Ftuqtk8pZEi0mJixMKlCo=; b=TYjZc69K6JjfVM
-	LvwSLySW2H1qQD9oKm+3czkOEe1n3m05lIooYnWonxUtQqF43XuxUDrfXnUK4rg4ae3jPnanZ1MXe
-	DwvtZ6xCZqpynplD0DJIj//wMgDchkjWU06ba2tXX7VfBk9t0YjdIygZS/V0Sz2mkud0/8QOQ9wo3
-	ixXJMeR/KMmR091/q4PEPgDWXHY4yW/r4/L0bZcD1N0pMa6eX5ckdgS5xbM4wQ/YrgZGLxkUqgAPF
-	v7BhpEKzoD9OiUvQcdx82sbjiFMw1aqawlL6DFV+Lmoro3RJPgwYskLNkFEojxlznm+26dFc952Px
-	VbXf+GBSF7YsNJkblnsg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3T8lp3kBZz+M9ZNQ9PlnjGhdnEob4YxaVRToK2AEiRs=; b=YJjuYcHaFXnSie
+	FeAHn4mnKIWCaIf2AYJYEfos/UVOOFx+9G8FIQoBcXXzoUTXS0jsXYfolrE8anZVeCv7KDXKIpyOS
+	PytH00/SYBSrtiruISoJ6zsKHtL93IpVG0N9qMWMwp4bm75el5Xu/2h5HFmwh9eyNArT1Wp934Gs7
+	UAaO1aDCpR26IQX5SZctHpu4fkfRUG4yqIQySLCJQ11C/GUplJKCn0JaY9rcYMAp5lIWXOj+C3cVu
+	EorbvhAeVhJuwZRC2xa12YgGg5/OQlfuKHt1pL5CWz65YsDZvylOJSkYZubP8/Kd1NMIM9pWbDwPS
+	Z7YaLSeiHTwN+JdEXGBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trdXm-00000002qna-1rci;
-	Mon, 10 Mar 2025 13:51:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tresA-000000038pV-2W0J;
+	Mon, 10 Mar 2025 15:16:54 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trca5-00000002gPB-46RQ;
-	Mon, 10 Mar 2025 12:50:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A41345C5DCF;
-	Mon, 10 Mar 2025 12:47:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6D6AC4CEE5;
-	Mon, 10 Mar 2025 12:50:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741611005;
-	bh=zhBiB0dgB7O3TDhkJEPyv1ZI/bHtlP6eiqaFOv0cAL0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t6R/ivm8J+eajKPlPheXHg3NJ+nHknblHvYwOY5VD+jluqi92qYai/5AEb7hvZpVM
-	 6qRIzNbhzi+elDLS/ZWoc+wQzzco3VQkWAe2a83oG5ZYTh3VL/Ou1YXu5uJzFO0P6A
-	 5salt+CCaB4l+qjAw/EY2StH239j6ZVGRBkq1Hl+aC10U1aTUlyDyedtmNIKugW+qB
-	 LxKKP4IdOL0I0kAlvCh6oWdSzdQWLSFmeu0Dx5qxqOC1iOeNSpFM/OzbMNoh8mK5TR
-	 gCdpbABDCFmCh3ozvjVKbxmONawMXNU1jT7PnwFHdpm+r25w6XjcNKxxPNWEsuE7y5
-	 gEglbx/bG1i1Q==
-Date: Mon, 10 Mar 2025 07:50:03 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v2] dt-bindings: rng: rockchip,rk3588-rng: Drop
- unnecessary status from example
-Message-ID: <174161100282.3880379.16414852796970978869.robh@kernel.org>
-References: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
+	id 1trdqd-00000002tTR-4ADk;
+	Mon, 10 Mar 2025 14:11:17 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 55FF820E07;
+	Mon, 10 Mar 2025 15:11:11 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sNrT02Q0KMYU; Mon, 10 Mar 2025 15:11:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1741615870; bh=h7IG7Iw5c8FBRHktz05awjGUOLRAhFTuYTO3Fk3rjPg=;
+	h=From:To:Cc:Subject:Date;
+	b=LrCLI2fmEFFUjqJfD6ojRGOv5jvEJu08U1Mycn2bhc1P+G0yAf0j+SEqO3LDGQbTQ
+	 T9ejM1B9XkwiWNjm2+h9NHjdzLEFwVM6MyEjkStLJzHX81iTKMfQlerSkboX0A1q+8
+	 aO0oDX1Vo/Q7F9v+SacOUcZWeKLTVqCNq/LmVWVuEbZ9M7EJ5PRVIXjw/gQIykemc3
+	 JgspNxqf8lJVuzWYYN1fPlXHbqsBRwGdGcvHjN0aoPuTl7sbFxx1JgVDLhrNRVl+J9
+	 iuoIqcs21uSNXl1k9aoIMnx62lKmQTaS9f9JJIczdDuGtLgZeN2szmEf8VAT59f4gF
+	 Q6bBtONyrrSFQ==
+From: Yao Zi <ziyao@disroot.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Yao Zi <ziyao@disroot.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Andy Yan <andyshrk@163.com>,
+	Damon Ding <damon.ding@rock-chips.com>,
+	Jing Luo <jing@jing.rocks>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix PWM pinctrl names
+Date: Mon, 10 Mar 2025 14:09:17 +0000
+Message-ID: <20250310140916.14384-2-ziyao@disroot.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_055006_056636_21DEA303 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20250310_071116_439969_F0C18DF0 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,31 +79,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-crypto@vger.kernel.org, Herbert Xu <herbert@gondor.apana.org.au>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+These Rockchip boards assign "active" as the pinctrl name for PWM
+controllers, which has never been supported in mainline Rockchip PWM
+driver. It seems the name used by downstream kernel is accidentally
+brought into maineline. Let's fix them.
 
-On Fri, 07 Mar 2025 10:33:09 +0100, Krzysztof Kozlowski wrote:
-> Device nodes are enabled by default, so no need for 'status = "okay"' in
-> the DTS example.
-> 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Changes in v2:
-> 1. Drop unnecessary full stop in subject prefix after ':'.
-> 2. Add Rb tag.
-> ---
->  Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml | 1 -
->  1 file changed, 1 deletion(-)
-> 
+Fixes: 4403e1237be3 ("arm64: dts: rockchip: Add devicetree for board roc-rk3308-cc")
+Fixes: 964ed0807b5f ("arm64: dts: rockchip: add rk3318 A95X Z2 board")
+Fixes: e7a095908227 ("arm64: dts: rockchip: Add devicetree for NanoPC-T4")
+Fixes: 3f5d336d64d6 ("arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B")
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+It's uncommon to have a commit carrying so many fix tags, but otherwise
+four seperate small commits will be created with the same topic. I'm
+willing to change this if it's inappropriate.
+
+I don't have these boards for a real test, but the change should be the
+right way.
+
+Thanks for your time and review.
+
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts     | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+index 629121de5a13..5e7181948992 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+@@ -147,7 +147,7 @@ rtc: rtc@51 {
+ 
+ &pwm5 {
+ 	status = "okay";
+-	pinctrl-names = "active";
++	pinctrl-names = "default";
+ 	pinctrl-0 = <&pwm5_pin_pull_down>;
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+index a94114fb7cc1..96c27fc5005d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+@@ -274,13 +274,13 @@ otg_vbus_drv: otg-vbus-drv {
+ 
+ &pwm0 {
+ 	pinctrl-0 = <&pwm0_pin_pull_up>;
+-	pinctrl-names = "active";
++	pinctrl-names = "default";
+ 	status = "okay";
+ };
+ 
+ &pwm1 {
+ 	pinctrl-0 = <&pwm1_pin_pull_up>;
+-	pinctrl-names = "active";
++	pinctrl-names = "default";
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+index b169be06d4d1..c8eb5481f43d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+@@ -603,7 +603,7 @@ &pwm1 {
+ };
+ 
+ &pwm2 {
+-	pinctrl-names = "active";
++	pinctrl-names = "default";
+ 	pinctrl-0 = <&pwm2_pin_pull_down>;
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+index 8f00e0444c00..8b717c4017a4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+@@ -433,7 +433,7 @@ &pwm2 {
+ };
+ 
+ &pwm13 {
+-	pinctrl-names = "active";
++	pinctrl-names = "default";
+ 	pinctrl-0 = <&pwm13m2_pins>;
+ 	status = "okay";
+ };
+-- 
+2.48.1
 
 
 _______________________________________________
