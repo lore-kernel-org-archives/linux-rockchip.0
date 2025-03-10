@@ -4,48 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CEA0C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 09:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66372C282DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 10:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HsuPrg9B0EpymE3Qkcpn3KhR43pWa4TErGIB5R29Eec=; b=K5+1HcxdjqgCk4
-	f59ZoT1h3HERbI/XB8zySSyY0k+4u0rSVetBkMnsR5+DtRgtUs3IhKwWS3WMiWt7vsGYTa8DBYjG4
-	wbQUxN4VlnOttAvQ2YS63pd6/JQkEqLfsro5BPlrCwvGnEMlcg+GHB+ytJp3kx4WgFqVdJK5Ov+IW
-	iMYlKUTqDQUa8083DiCuj8TOSzvkxfTiyIlPZtVvXQ/X+agx5rh0mCJnAVmhsDrI1ohmrIwFrSoJl
-	WhhDKDf/h2VRs6M9owiGJYovcqLTzfy5BWe7fEUM3Rkb9xvT3KJIXqjL66bDMOLSph4ont82HKSYv
-	0P5Fo45NJJRNIdLRqP+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tsORc1160PNiPXYquF6/LcRNEaStSP73jzZrYXXKBjs=; b=v+zBIvooEZ+upE
+	N91LdxufRLZLIGIGhlGjbUKK5cin7hAp3azqnNhaWaY7g8DHAbL5S5xh1eh8Q61cekC7kYyKkt5Nm
+	UTl/X2DGJ1qEdl69q8fceGOJTxv4gewfU4Hjeoft1TT5rUOV0XOyXHmyYd+1n4gfAF+HZkWOnIbbd
+	0bUV1bfWvAa0CmoBvi98don50MQTm5rQRtdE+2KGq5aY74OrpUF3KnmnWa7AcYLIdxVDsp+pH6Zdg
+	PsEgzKWQkMikEpY6+4+0Xj3og9sQuAgWH+yapk0M6E9FjAUs4l2W9317z25u1dKIf+0F/nMzf7djI
+	9e5eBcniVZGDZvsFWnow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trZuT-00000002Ay7-35fU;
-	Mon, 10 Mar 2025 09:58:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1trZw5-00000002BOl-1B75;
+	Mon, 10 Mar 2025 10:00:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trZkx-0000000290Y-1qfc;
-	Mon, 10 Mar 2025 09:49:08 +0000
+	id 1trZl3-0000000292Y-0fBp;
+	Mon, 10 Mar 2025 09:49:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CFC355C5B98;
-	Mon, 10 Mar 2025 09:46:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A5F2C4CEEE;
-	Mon, 10 Mar 2025 09:49:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B83035C5BB7;
+	Mon, 10 Mar 2025 09:46:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD25BC4CEE5;
+	Mon, 10 Mar 2025 09:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741600146;
-	bh=8mizgwqRIlps/wmW9ZM0NYMHVTcUp4zqPKkWqvWVlHY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=W0j8zJyQnTnLhtRRmPnPFvthCiQvnRGus0WMEpK4ugXr+VLHzjChy3idi5KDBrJJl
-	 jk5zvLHvo3pFsU1/QOvj0TVFYYXESs+UEr7ukQuAOfjXkFxTAPuO5PrN8Ug2/WgCxb
-	 Ozrr696XGiWCAkh9pYk5BAMJyYfIR0jFiP4Cq//17QuWL7Xz4+EVx/FAO2Ljv8e69p
-	 9RB3zWhsmdRWaji4L6mV1eOsiFHZzo4vEE4AP8fyNzPZXp7NlVHbvuDg8z4/kJ2lfm
-	 AORYmcfNmYLR3BlvXkVxK96qYm0loYK6DQqgQMil33DPAiK4lQVcSYfejpQwzrpTg2
-	 woibjJLH7nzyA==
+	s=k20201202; t=1741600152;
+	bh=yMoYyGKM6FbagclOTpM00d2Qgsis276wrIoNJyyP4ys=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=eIfzMIhKDL7LfJT3bKcGj2WL0jUzprjjHhKjEwU2xOEMcAigwlaGpKOFeUNPGdvuD
+	 9ZiBSfhUSDKywYn9NuOPBHSe6dvRBoIl5Z1KWgAnYMbV6zmyN/e1SJaAT1/Wv9SBuF
+	 JyCSulHZAMRJedhmtO7/tSSAt3p7w45ao9gsuJfJL8SmtlASsKlJld371Nia/gfSnv
+	 ZDzPHW/f/4P7d8t380scWsRJTrM22d++II1UYMGZgnfNZ+WTFMIuVzMhSWNc3clSWJ
+	 KzIzAYaOYRxcxVzc4Y8WfsZS0W1S6A/vFCBP2aQjmk+7BLVo68anX1r1Ld50Bq64jw
+	 XpRg0bOf9GvtQ==
 From: Niklas Cassel <cassel@kernel.org>
-To: Jingoo Han <jingoohan1@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Rob Herring <robh@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>
@@ -55,17 +54,18 @@ Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 0/2] PCI: dw-rockchip: hide broken ATS cap in EP-mode
-Date: Mon, 10 Mar 2025 10:48:26 +0100
-Message-ID: <20250310094826.842681-4-cassel@kernel.org>
+Subject: [PATCH v3 2/2] PCI: dw-rockchip: Hide broken ATS capability
+Date: Mon, 10 Mar 2025 10:48:28 +0100
+Message-ID: <20250310094826.842681-6-cassel@kernel.org>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250310094826.842681-4-cassel@kernel.org>
+References: <20250310094826.842681-4-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=864; i=cassel@kernel.org; h=from:subject; bh=8mizgwqRIlps/wmW9ZM0NYMHVTcUp4zqPKkWqvWVlHY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLPbc3yPjXTveR4We+FcuaiI2fYLj/1P7NH6zf3DhmFy MrF7wu7OkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjARPldGhnVmrCoB/zZ6rOFP Mp11+O5rXq7AV4brz5jvjElYKj6hWZbhr0D0nNfaORk2R5ZmufW5PUrjFWDi5roizybWbt/iy1T ODwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3114; i=cassel@kernel.org; h=from:subject; bh=yMoYyGKM6FbagclOTpM00d2Qgsis276wrIoNJyyP4ys=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLPbS3YwnG/vL2pw7m5dq2mv3Fez26Re1071GUVb2muZ xFYv+1hRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACbSk8nwP84vaFcDb8O6DvuX 6oUFeTZza05pnb5qZhaglGc76+pSb4b/+dZbS5c+8Des59rp2aX77OOWn8tvuXFta+Fdv9Jj0y8 HZgA=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_024907_522560_CA7B84C7 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250310_024913_301233_3DB69264 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +82,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello there,
+When running the rk3588 in endpoint mode, with an Intel host with IOMMU
+enabled, the host side prints:
 
-Address Translation Services (ATS) is broken on rk3588 when running the
-PCIe controller in Endpoint Mode.
+  DMAR: VT-d detected Invalidation Time-out Error: SID 0
 
-This causes IOTLB invalidation timeout errors on the host side when using
-and rk3588 in Endpoint Mode, and you are unable to run pci_endpoint_test.
+When running the rk3588 in endpoint mode, with an AMD host with IOMMU
+enabled, the host side prints:
 
-Solve this by hiding the ATS capability.
-With this, we do not get any IOTLB invalidation timeouts, and we can run
-pci_endpoint_test successfully.
+  iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
 
+Rockchip has confirmed that the ATS support for rk3588 only works when
+running the PCIe controller in RC mode [0].
 
-Changes since v2:
--Added missing EXPORT_SYMBOL_GPL().
+Usually, to handle these issues, we add a quirk for the PCI vendor and
+device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
+we cannot usually modify the capabilities on the EP side.
 
+In this case, we can modify the capabilities on the EP side. Thus, hide the
+broken ATS capability on rk3588 when running in EP mode. That way,
+we don't need any quirk on the host side, and we see no errors on the host
+side, and we can run pci_endpoint_test successfully, with the IOMMU
+enabled on the host side.
 
-Niklas Cassel (2):
-  PCI: dwc: ep: Add dw_pcie_ep_hide_ext_capability()
-  PCI: dw-rockchip: Hide broken ATS capability
+[0] https://lore.kernel.org/linux-pci/93cdce39-1ae6-4939-a3fc-db10be7564e5@rock-chips.com/
 
- .../pci/controller/dwc/pcie-designware-ep.c   | 39 +++++++++++++++++++
- drivers/pci/controller/dwc/pcie-designware.h  |  7 ++++
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++
- 3 files changed, 73 insertions(+)
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 836ea10eafbb..bc4339252a03 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -242,6 +242,32 @@ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
+ 	.init = rockchip_pcie_host_init,
+ };
+ 
++/*
++ * ATS does not work on rk3588 when running in EP mode.
++ * After a host has enabled ATS on the EP side, it will send an IOTLB
++ * invalidation request to the EP side. The rk3588 will never send a completion
++ * back and eventually the host will print an IOTLB_INV_TIMEOUT error, and the
++ * EP will not be operational. If we hide the ATS cap, things work as expected.
++ */
++static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
++	struct device *dev = pci->dev;
++
++	/* Only hide the ATS cap for rk3588 running in EP mode */
++	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
++		return;
++
++	if (dw_pcie_ep_hide_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI,
++					   PCI_EXT_CAP_ID_ATS))
++		dev_err(dev, "failed to hide ATS cap\n");
++}
++
++static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
++{
++	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
++}
++
+ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+@@ -314,6 +340,7 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
+ 
+ static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
+ 	.init = rockchip_pcie_ep_init,
++	.pre_init = rockchip_pcie_ep_pre_init,
+ 	.raise_irq = rockchip_pcie_raise_irq,
+ 	.get_features = rockchip_pcie_get_features,
+ };
 -- 
 2.48.1
 
