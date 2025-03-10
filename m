@@ -4,87 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99BE2C28B28
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 02:28:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00ABFC282DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 07:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lS1GcM5S0FpiYvRs1LrncbpqpqbJaAqz6JXL8VVL0vM=; b=FTmgLgjKnTrmay
-	RLKJnfX4CBhsMkAYiYByUbKZW0JIUDKMserjQc6SdS2nfeXbr4dymKwEzmmqww50ODhqI1PGJkdLr
-	j79spIlCQBuxbhgSQMsczC6fd0t6u2srBTn4WG+LQbFcFTd8Mv3LyUAkGB5FncZO7djMwLiGdePMT
-	Y+BQ9avLI9bNQYtAkFSGi9xVRgLtmoJk9PCb6HI3+PT6rbnSaKmwl6Nk4LCrpoUifRoQm2PD7OrHi
-	h/BV1SD4ATCWAyrsXzo0kUT45JqZY7IFxIf1vusH9Pca9HF2Od/cs9zjvYTScsNG0wuMMBTGDY8nP
-	9SjaoK4NJtub9rxlu80A==;
+	List-Owner; bh=czKChebQNs5PCnJqyRbVEnlhMLv9FF3CpDiyKTCf15M=; b=x2yj8AYzfS4wbH
+	CavfNoJAwjHm/1TNo08axjpWYb3nF0Eg4HJdXEzXO492wKyZXku62Eik43KvnZ4rd7K51oIq/vgyi
+	37ugnX6vhJ62sfC/Z3SExJFHJehHEqBP5TDiRGvCR8JRVbgiSYYtyIDUgPqNc4LR+wEzehzEs98vG
+	4rk0H0yXEnQyw7xASi9hsOXs6CZnBl6OUZzleZDoAmk3mAum9FXbKe0rQsPYDoFLVYWX1DARefuR7
+	W0+BwAREtubiOueSIbJeYQ0tXZEu/9fJs4XGibwK/FAW7UCUeMYGZQ1Uqe3HIdKZDHzNHLBKCGsq/
+	7Idlg/mcv0OmVn/OB8yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trSso-00000001Rla-2En8;
-	Mon, 10 Mar 2025 02:28:46 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1trX7w-00000001hO2-2Bat;
+	Mon, 10 Mar 2025 07:00:40 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trSoa-00000001ROF-1vx6;
-	Mon, 10 Mar 2025 02:24:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1741573464; x=1773109464;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=WKFaRGNbm41ygiDOYwuZyQiHlC64X9yBshoJhOG//8I=;
-  b=hOkspDBQi/8XI70YKg49egj8AndBAUzLV/U2obyuoOdTc8ty9kQiX9XL
-   ZZBoteDZN+x84R1dnq+Tt5uHN/1VBjFvVqGtkqYKbTM2Ob7KzfiXcNwMi
-   sW60bYj9yj6mUS42QKNydaPZ8OmXWK721UxYxpJzTcFSxpY6POCtVObNF
-   l+jjXPdiD77XbuLIshHrAQa9bKfMbJ3xIu4Ppx0Brf9c9pzK68nMuMqVE
-   KZT5Vz61rHBNqg9RRdtgZnl8cXRvBIJFxxp7qTceO8F2vYVTYPNp0KH3c
-   e43rs5tzNGDfP/wL0iKU83JMdUhNVLkY4lzj3C0vb2LvQJXZYY89lzDWG
-   g==;
-X-CSE-ConnectionGUID: Yu/f5faVSdaHo7V6oAwsyA==
-X-CSE-MsgGUID: NTJxOy/wTwq6tRNYNyHC1g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11368"; a="65000966"
-X-IronPort-AV: E=Sophos;i="6.14,235,1736841600"; 
-   d="scan'208";a="65000966"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2025 19:24:22 -0700
-X-CSE-ConnectionGUID: EBcI4p/gQFCFWXYHUd2zOQ==
-X-CSE-MsgGUID: kuyCE67oS6CBdcD22w3xyA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,235,1736841600"; 
-   d="scan'208";a="124459380"
-Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2025 19:24:15 -0700
-Message-ID: <2db8d0c9-f6df-48f3-8bbb-4592e86d92fa@linux.intel.com>
-Date: Mon, 10 Mar 2025 10:21:03 +0800
+	id 1trX7t-00000001hMx-3kYp;
+	Mon, 10 Mar 2025 07:00:39 +0000
+Received: from localhost.localdomain (unknown [119.122.215.89])
+	by smtp.qiye.163.com (Hmail) with ESMTP id db8a14d9;
+	Mon, 10 Mar 2025 15:00:28 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: ziyao@disroot.org
+Cc: amadeus@jmu.edu.cn,
+	andi.shyti@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add onboard EEPROM for Radxa E20C
+Date: Mon, 10 Mar 2025 15:00:23 +0800
+Message-Id: <20250310070023.52290-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250309070603.35254-4-ziyao@disroot.org>
+References: <20250309070603.35254-4-ziyao@disroot.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/23] iommu/vtd: Use virt_to_phys()
-To: Jason Gunthorpe <jgg@nvidia.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
- asahi@lists.linux.dev, David Woodhouse <dwmw2@infradead.org>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
- Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Robin Murphy
- <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
- Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
- Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
- David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <8-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
-Content-Language: en-US
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <8-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGk1MVh5JGBpMHU8fSh5MGVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a957edae03603a2kunmdb8a14d9
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pww6CRw4TzJCGCwCEwM5MREr
+	OkswCk5VSlVKTE9KTkJLS0lCSk1CVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQU9PTDcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_192424_588705_C27405DA 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20250310_000038_101295_D7E6B68D 
+X-CRM114-Status: UNSURE (   6.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +73,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/26/25 03:39, Jason Gunthorpe wrote:
-> If all the inlines are unwound virt_to_dma_pfn() is simply:
->     return page_to_pfn(virt_to_page(p)) << (PAGE_SHIFT - VTD_PAGE_SHIFT);
-> 
-> Which can be re-arranged to:
->     (page_to_pfn(virt_to_page(p)) << PAGE_SHIFT) >> VTD_PAGE_SHIFT
-> 
-> The only caller is:
->     ((uint64_t)virt_to_dma_pfn(tmp_page) << VTD_PAGE_SHIFT)
-> 
-> re-arranged to:
->     ((page_to_pfn(virt_to_page(tmp_page)) << PAGE_SHIFT) >> VTD_PAGE_SHIFT) << VTD_PAGE_SHIFT
-> 
-> Which simplifies to:
->     page_to_pfn(virt_to_page(tmp_page)) << PAGE_SHIFT
-> 
-> That is the same as virt_to_phys(tmp_page), so just remove all of this.
-> 
-> Reviewed-by: Lu Baolu<baolu.lu@linux.intel.com>
-> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-> ---
->   drivers/iommu/intel/iommu.c |  3 ++-
->   drivers/iommu/intel/iommu.h | 19 -------------------
->   2 files changed, 2 insertions(+), 20 deletions(-)
+Hi,
 
-Queued this cleanup patch for iommu/vt-d.
+> +&i2c1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c1m0_xfer>;
+> +	status = "okay";
+> +
+> +	eeprom@50 {
+> +		compatible = "belling,bl24c16a", "atmel,24c16";
+> +		reg = <0x50>;
+> +		pagesize = <16>;
+> +		vcc-supply = <&vcc_3v3>;
+> +	};
+> +};
+
+This eeprom stores the device information written by the manufacturer,
+such as mac address and sn. So it should be marked as read-only.
 
 Thanks,
-baolu
+Chukun
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
