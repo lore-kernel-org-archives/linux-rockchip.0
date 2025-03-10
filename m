@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66372C282DE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 10:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9174CC28B30
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 10:05:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tsORc1160PNiPXYquF6/LcRNEaStSP73jzZrYXXKBjs=; b=v+zBIvooEZ+upE
-	N91LdxufRLZLIGIGhlGjbUKK5cin7hAp3azqnNhaWaY7g8DHAbL5S5xh1eh8Q61cekC7kYyKkt5Nm
-	UTl/X2DGJ1qEdl69q8fceGOJTxv4gewfU4Hjeoft1TT5rUOV0XOyXHmyYd+1n4gfAF+HZkWOnIbbd
-	0bUV1bfWvAa0CmoBvi98don50MQTm5rQRtdE+2KGq5aY74OrpUF3KnmnWa7AcYLIdxVDsp+pH6Zdg
-	PsEgzKWQkMikEpY6+4+0Xj3og9sQuAgWH+yapk0M6E9FjAUs4l2W9317z25u1dKIf+0F/nMzf7djI
-	9e5eBcniVZGDZvsFWnow==;
+	List-Owner; bh=ONyKyTm23MEKywAStWM4xM6AL1PbrQ/uZoRs221ZyWw=; b=g9eCI7JhNXAkjb
+	dk5hIAvKzg5LW7axcO/ZmlC3oWgyYtBbcLf/EpClXra2K72NY3DJJzOTeA4Y6jrsGWh6zFA1udp0L
+	hg8Amd6fxBgwjvILIGxRunvMzX4t3huVC05iBR9aerQYRKoopj4zyXPcMPB8EEtoGkzBOZ8PN8YpY
+	KolfollY/DXCm8ImgOsWB9v9iefKut5eLBxoL2HwydUR/BHwN7hL2rRmZ6PzSjaFbIKUIUUs8ILgU
+	1tdTZk3ChG/7nMcwmRZLrflBWOwj7jYpkw094AZhjQTEVJgXZ41GcaiF2d5vC23fa8wzD6tHfAKG9
+	bhhsXMFMmBhC9wu6/0jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trZw5-00000002BOl-1B75;
-	Mon, 10 Mar 2025 10:00:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tra0t-00000002CMR-2Ite;
+	Mon, 10 Mar 2025 10:05:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trZl3-0000000292Y-0fBp;
-	Mon, 10 Mar 2025 09:49:14 +0000
+	id 1trZss-00000002AcJ-2Ba2;
+	Mon, 10 Mar 2025 09:57:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B83035C5BB7;
-	Mon, 10 Mar 2025 09:46:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD25BC4CEE5;
-	Mon, 10 Mar 2025 09:49:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 30D615C5BE8;
+	Mon, 10 Mar 2025 09:55:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 129E6C4CEE5;
+	Mon, 10 Mar 2025 09:57:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741600152;
-	bh=yMoYyGKM6FbagclOTpM00d2Qgsis276wrIoNJyyP4ys=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eIfzMIhKDL7LfJT3bKcGj2WL0jUzprjjHhKjEwU2xOEMcAigwlaGpKOFeUNPGdvuD
-	 9ZiBSfhUSDKywYn9NuOPBHSe6dvRBoIl5Z1KWgAnYMbV6zmyN/e1SJaAT1/Wv9SBuF
-	 JyCSulHZAMRJedhmtO7/tSSAt3p7w45ao9gsuJfJL8SmtlASsKlJld371Nia/gfSnv
-	 ZDzPHW/f/4P7d8t380scWsRJTrM22d++II1UYMGZgnfNZ+WTFMIuVzMhSWNc3clSWJ
-	 KzIzAYaOYRxcxVzc4Y8WfsZS0W1S6A/vFCBP2aQjmk+7BLVo68anX1r1Ld50Bq64jw
-	 XpRg0bOf9GvtQ==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 2/2] PCI: dw-rockchip: Hide broken ATS capability
-Date: Mon, 10 Mar 2025 10:48:28 +0100
-Message-ID: <20250310094826.842681-6-cassel@kernel.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250310094826.842681-4-cassel@kernel.org>
-References: <20250310094826.842681-4-cassel@kernel.org>
+	s=k20201202; t=1741600637;
+	bh=XM35sEGq9rPsxDvrLDp2hhBJWfUNe2voFFy34EJh/FY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=owiKa/n9XL5IGC0X+K77PmWU9Iy3QL46VKZQNfTyuKKjVkYTh4V67hkN0CGG/ufq3
+	 l+hj4A9QQ1oiivy3+ugmqsoZOsDZJXtSS98fzgW/7z5pbPrSzaBesxfLa6K7AtQLrr
+	 Zi6BqymX4ILWFQt5MQKhT/NDAfWCwlqspOxOAtRNle8SyLRZcyHI0ptjQcJJkJanji
+	 opsHtDAc4APfc5zMnshG46lasStgvLFz61O/jJkBR9UkOHCndcPajaJ4HWMNcNWepH
+	 r44S8UqmpxOVY6cEKaw2FnsiDfE6kzoJJmHvoMdougllrjrpmxKDSMKN0NDPHH36Oj
+	 d+Z33dXyG+9Rg==
+Date: Mon, 10 Mar 2025 10:57:13 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: net: rockchip-dwmac: Require
+ rockchip,grf and rockchip,php-grf
+Message-ID: <20250310-striped-perfect-sambar-bdcb3e@krzk-bin>
+References: <20250308213720.2517944-1-jonas@kwiboo.se>
+ <20250308213720.2517944-2-jonas@kwiboo.se>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3114; i=cassel@kernel.org; h=from:subject; bh=yMoYyGKM6FbagclOTpM00d2Qgsis276wrIoNJyyP4ys=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLPbS3YwnG/vL2pw7m5dq2mv3Fez26Re1071GUVb2muZ xFYv+1hRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACbSk8nwP84vaFcDb8O6DvuX 6oUFeTZza05pnb5qZhaglGc76+pSb4b/+dZbS5c+8Des59rp2aX77OOWn8tvuXFta+Fdv9Jj0y8 HZgA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <20250308213720.2517944-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_024913_301233_3DB69264 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20250310_025718_602266_7657FF0E 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +78,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When running the rk3588 in endpoint mode, with an Intel host with IOMMU
-enabled, the host side prints:
+On Sat, Mar 08, 2025 at 09:37:13PM +0000, Jonas Karlman wrote:
+> All Rockchip GMAC variants typically write to GRF regs to control e.g.
+> interface mode, speed and MAC rx/tx delay. Newer SoCs such as RK3562,
+> RK3576 and RK3588 use a mix of GRF and peripheral GRF regs.
+> 
+> Prior to the commit b331b8ef86f0 ("dt-bindings: net: convert
+> rockchip-dwmac to json-schema") the property rockchip,grf was listed
+> under "Required properties". During the conversion this was lost and
+> rockchip,grf has since then incorrectly been treated as optional and
+> not as required.
+> 
+> Similarly, when rockchip,php-grf was added to the schema in the
+> commit a2b77831427c ("dt-bindings: net: rockchip-dwmac: add rk3588 gmac
+> compatible") it also incorrectly has been treated as optional for all
+> GMAC variants, when it should have been required for RK3588, and later
+> also for RK3576.
+> 
+> Update this binding to require rockchip,grf and rockchip,php-grf to
+> properly reflect that GRF (and peripheral GRF for RK3576/RK3588) is
+> required to control part of GMAC.
+> 
+> This should not introduce any breakage as all Rockchip GMAC nodes have
+> been added together with a rockchip,grf phandle (and rockchip,php-grf
+> where required) in their initial commit.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-  DMAR: VT-d detected Invalidation Time-out Error: SID 0
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-When running the rk3588 in endpoint mode, with an AMD host with IOMMU
-enabled, the host side prints:
-
-  iommu ivhd0: AMD-Vi: Event logged [IOTLB_INV_TIMEOUT device=63:00.0 address=0x42b5b01a0]
-
-Rockchip has confirmed that the ATS support for rk3588 only works when
-running the PCIe controller in RC mode [0].
-
-Usually, to handle these issues, we add a quirk for the PCI vendor and
-device ID in drivers/pci/quirks.c with quirk_no_ats(). That is because
-we cannot usually modify the capabilities on the EP side.
-
-In this case, we can modify the capabilities on the EP side. Thus, hide the
-broken ATS capability on rk3588 when running in EP mode. That way,
-we don't need any quirk on the host side, and we see no errors on the host
-side, and we can run pci_endpoint_test successfully, with the IOMMU
-enabled on the host side.
-
-[0] https://lore.kernel.org/linux-pci/93cdce39-1ae6-4939-a3fc-db10be7564e5@rock-chips.com/
-
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 836ea10eafbb..bc4339252a03 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -242,6 +242,32 @@ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
- 	.init = rockchip_pcie_host_init,
- };
- 
-+/*
-+ * ATS does not work on rk3588 when running in EP mode.
-+ * After a host has enabled ATS on the EP side, it will send an IOTLB
-+ * invalidation request to the EP side. The rk3588 will never send a completion
-+ * back and eventually the host will print an IOTLB_INV_TIMEOUT error, and the
-+ * EP will not be operational. If we hide the ATS cap, things work as expected.
-+ */
-+static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
-+{
-+	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-+	struct device *dev = pci->dev;
-+
-+	/* Only hide the ATS cap for rk3588 running in EP mode */
-+	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
-+		return;
-+
-+	if (dw_pcie_ep_hide_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI,
-+					   PCI_EXT_CAP_ID_ATS))
-+		dev_err(dev, "failed to hide ATS cap\n");
-+}
-+
-+static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
-+{
-+	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
-+}
-+
- static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-@@ -314,6 +340,7 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
- 
- static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
- 	.init = rockchip_pcie_ep_init,
-+	.pre_init = rockchip_pcie_ep_pre_init,
- 	.raise_irq = rockchip_pcie_raise_irq,
- 	.get_features = rockchip_pcie_get_features,
- };
--- 
-2.48.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
