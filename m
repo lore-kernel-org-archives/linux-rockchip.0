@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A93C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 10:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D77C282DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 10:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gLpBNWzqrpXK2e4iqGRmoyINRBDwyySvZ7fp7QMK4mU=; b=FldsJ2w2a7QM3t
-	LPD65qrM32KMPcNoZjNeA53t1JcHC/0p8lHozsFr0qUxhN64zZWIujt7m+vIud7GlTNs57SXpGJHs
-	IZvjy9esktOCZcYn91lMav8JNLMPPj8cB6pvYNNAXGSnhCwU8owiiYz1r2KqDe4Z+QnN8qL6f9inB
-	7chTogXSlYsW+8She8Y7fUjl1ue/FWjGEUhInUvlm9fA8lwTyVJGuP/dI8GugWvsammcSVZPh1T3U
-	tgyNWaiX2ucwcwg/SQZ6ruqr/+8Poi6gaZdRh3JoQ9gr3200jQ/1eFSrlhHNa7+lYWI65q95+c2GH
-	FxcoGdnqTJHff0bZwgRw==;
+	List-Owner; bh=TPQ87M3rZw5Jc8tfnDcaftUgL2bRkj0JiFTGXYsC9Zs=; b=O0uoP2zSoBH3pj
+	We+t64w1c2kEnWdzTyHNiBKgSYwDgohjVLACklQH1S8dGem/pupOZPfj/zKtMrMNf8rwrhJRawP+2
+	bb00fYasauEq+As3lrODO3u2nXKrjn5OMCdyD7njiyhbEnq8iczJPOFbqI9VhUO/Sr+YNZFCKViY1
+	gOubsqURAVxzhVpMhHoGMWIizkaNLcLYGVqPo4Nlw3tuJXmZMKieoPryne/mXGZw+3GRGIBigS242
+	Lw3+XNtqYXNa30bEbNffCkImdVFfauAxS856wWqhvAPPRa8xXQOIn84jOmbRGwLGNl07qksSYMefl
+	aVO4WmiDgiPm4rEfxbzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tra92-00000002DYh-1mxo;
-	Mon, 10 Mar 2025 10:14:00 +0000
+	id 1traAd-00000002Dp0-2BVq;
+	Mon, 10 Mar 2025 10:15:39 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trZwK-00000002BVB-2Y8C;
-	Mon, 10 Mar 2025 10:00:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741600838; cv=none; 
+	id 1trZwO-00000002BWB-3KOF;
+	Mon, 10 Mar 2025 10:00:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741600844; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=X5Ku3qEwrPdTwHAs8CrQxzz2J3LO50Dck05HJNsqiSXQMoKhtAqznZE+V0P6YikN9ZZ277HTM+mzbvazOm0VOmiiNkWaMXt9uwn82hGV305SLJrsGvV+z8dqAEKR87i7zKXpZZSO3QQMLZL8huG6pRnlKF53/XDtsgyXPOQy7AM=
+	b=LUAZ4AB574FF/KkzPzySh74VUqaKk7Up4geZssi+tUWNoVBPmbOXaAB0X2kT4+3Wbwj1fV/MKAEB7dANewJ33AqC8P4Oss8Iipj6Y97OwfM4KJ/c+VSRs1O1gLlaE9xuzeOnE90bxczUP5GDESSsbObyinaN12NBVrqijYEffFQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741600838; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZwrgReuxeLe3BlfVPHAP9VVYbVwRHECtchfxWVqLJ5Y=; 
-	b=cnQQnbBEmSBNlT159xZEkiUBzCZF2A72tJCc0ngGWPQ5QSiQgLS05RjkssshA315YjAQxycIN6vSI6e8AVAEjQc5F8Mw2gdiVA35GmPASJ/JNHeGPocFEqeHNnHEmAotyHbNw0VfxJk4E6YnFYgLU7bFoWySIm3yzHnWBdcg4yY=
+	t=1741600844; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=sG0ZptlmWh6usz+6gYzu3av5prS4D953FeG+EZTRlmE=; 
+	b=Fyv59Hi6jM+QmMMz4EVYjOWDyqSx9Tdyog8JkvORFtntRG92twzxE0N61oF1iAv7x8o4qbhLsFLqKux87Hwt7QYYOlnQ4LFMYVFMLuXhhrCucZR8+ZZWZZWFS2WthKQfmqwC4VzPjrC/HclcCnESvi9XePFtgQ1mv5zh+rcgpYQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741600838;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741600844;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=ZwrgReuxeLe3BlfVPHAP9VVYbVwRHECtchfxWVqLJ5Y=;
-	b=FEXAgxF4nC6Mz0MdzNKCqEIZv3V8zKnbJSpXnnHH9MkA5JID4lrpIXUeQr5dDrvl
-	u/8yhefBhas4jgrjELJ5R9yjvjA4YtQ+k49yqWmRQ3xc6RJf6lMACwK7kI7HbkoaHzh
-	oytOKInKXZSHdT5vISnl61U4WFbs+RdEqK7+N06E=
-Received: by mx.zohomail.com with SMTPS id 1741600837144360.63308913443063;
-	Mon, 10 Mar 2025 03:00:37 -0700 (PDT)
+	bh=sG0ZptlmWh6usz+6gYzu3av5prS4D953FeG+EZTRlmE=;
+	b=IQxgjB9lLAHcZuF00S0hPyH4P/moK4+Fc+IszQagDcah2y50VQSL1g435V4GGsjF
+	V2PW5GMQwJNtc/Xrg2fZ9rdxCtoJVRjFBeGPmQu2AdYVtZuO+U6SD0ms2XPVGWgkpwZ
+	6YCFoC8OeRm6qM5vLsMZvOGvmwcK+dGLvtsEqN6E=
+Received: by mx.zohomail.com with SMTPS id 174160084194050.598305390263135;
+	Mon, 10 Mar 2025 03:00:41 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 10 Mar 2025 10:59:56 +0100
-Subject: [PATCH 1/2] dt-bindings: clock: rk3576: add SCMI clocks
+Date: Mon, 10 Mar 2025 10:59:57 +0100
+Subject: [PATCH 2/2] arm64: dts: rockchip: fix RK3576 SCMI clock IDs
 MIME-Version: 1.0
-Message-Id: <20250310-rk3576-scmi-clocks-v1-1-e165deb034e8@collabora.com>
+Message-Id: <20250310-rk3576-scmi-clocks-v1-2-e165deb034e8@collabora.com>
 References: <20250310-rk3576-scmi-clocks-v1-0-e165deb034e8@collabora.com>
 In-Reply-To: <20250310-rk3576-scmi-clocks-v1-0-e165deb034e8@collabora.com>
 To: Jonas Karlman <jonas@kwiboo.se>, 
@@ -66,9 +66,8 @@ To: Jonas Karlman <jonas@kwiboo.se>,
  Yifeng Zhao <yifeng.zhao@rock-chips.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_030052_712427_E544E1C7 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250310_030056_907017_9006E6D9 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,31 +85,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Mainline Linux uses different clock IDs from both downstream and
-mainline TF-A, which both got them from downstream Linux. If we want to
-control clocks through SCMI, we'll need to know about these IDs.
+Downstream Linux, and consequently both downstream and mainline TF-A,
+all use a different set of clock IDs from mainline Linux. If we want to
+fiddle with these clocks through SCMI, we'll need to use the right IDs.
+If we don't do this we'll end up changing unrelated clocks all over the
+place.
 
-Add the relevant ones prefixed with SCMI_ to the header.
+Change the clock IDs to the newly added SCMI clock IDs for the CPU and
+GPU nodes, which are currently the only ones using SCMI clocks. This
+fixes the terrible GPU performance, as we weren't reclocking it
+properly.
 
+Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
+Reported-by: Jonas Karlman <jonas@kwiboo.se>
+Closes: https://libera.irclog.whitequark.org/linux-rockchip/2025-03-09#1741542223-1741542875;
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- include/dt-bindings/clock/rockchip,rk3576-cru.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h b/include/dt-bindings/clock/rockchip,rk3576-cru.h
-index 25aed298ac2c2e2d37e2b441c9d92ac68801be6e..f576e61bec7041455e10ac18c92f3b33ec0760e3 100644
---- a/include/dt-bindings/clock/rockchip,rk3576-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
-@@ -589,4 +589,9 @@
- #define PCLK_EDP_S			569
- #define ACLK_KLAD			570
- 
-+/* SCMI clocks, use these when changing clocks through SCMI */
-+#define SCMI_ARMCLK_L			10
-+#define SCMI_ARMCLK_B			11
-+#define SCMI_CLK_GPU			456
-+
- #endif
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 8591065b575223a5eb2da70f723f16969aa2ecf7..1fddf298795e5c914a76d9779b6f8563ee15c8e3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -111,7 +111,7 @@ cpu_l0: cpu@0 {
+ 			reg = <0x0>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <485>;
+-			clocks = <&scmi_clk ARMCLK_L>;
++			clocks = <&scmi_clk SCMI_ARMCLK_L>;
+ 			operating-points-v2 = <&cluster0_opp_table>;
+ 			#cooling-cells = <2>;
+ 			dynamic-power-coefficient = <120>;
+@@ -124,7 +124,7 @@ cpu_l1: cpu@1 {
+ 			reg = <0x1>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <485>;
+-			clocks = <&scmi_clk ARMCLK_L>;
++			clocks = <&scmi_clk SCMI_ARMCLK_L>;
+ 			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -135,7 +135,7 @@ cpu_l2: cpu@2 {
+ 			reg = <0x2>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <485>;
+-			clocks = <&scmi_clk ARMCLK_L>;
++			clocks = <&scmi_clk SCMI_ARMCLK_L>;
+ 			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -146,7 +146,7 @@ cpu_l3: cpu@3 {
+ 			reg = <0x3>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <485>;
+-			clocks = <&scmi_clk ARMCLK_L>;
++			clocks = <&scmi_clk SCMI_ARMCLK_L>;
+ 			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -157,7 +157,7 @@ cpu_b0: cpu@100 {
+ 			reg = <0x100>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+-			clocks = <&scmi_clk ARMCLK_B>;
++			clocks = <&scmi_clk SCMI_ARMCLK_B>;
+ 			operating-points-v2 = <&cluster1_opp_table>;
+ 			#cooling-cells = <2>;
+ 			dynamic-power-coefficient = <320>;
+@@ -170,7 +170,7 @@ cpu_b1: cpu@101 {
+ 			reg = <0x101>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+-			clocks = <&scmi_clk ARMCLK_B>;
++			clocks = <&scmi_clk SCMI_ARMCLK_B>;
+ 			operating-points-v2 = <&cluster1_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -181,7 +181,7 @@ cpu_b2: cpu@102 {
+ 			reg = <0x102>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+-			clocks = <&scmi_clk ARMCLK_B>;
++			clocks = <&scmi_clk SCMI_ARMCLK_B>;
+ 			operating-points-v2 = <&cluster1_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -192,7 +192,7 @@ cpu_b3: cpu@103 {
+ 			reg = <0x103>;
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+-			clocks = <&scmi_clk ARMCLK_B>;
++			clocks = <&scmi_clk SCMI_ARMCLK_B>;
+ 			operating-points-v2 = <&cluster1_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 		};
+@@ -932,7 +932,7 @@ power-domain@RK3576_PD_VO1 {
+ 		gpu: gpu@27800000 {
+ 			compatible = "rockchip,rk3576-mali", "arm,mali-bifrost";
+ 			reg = <0x0 0x27800000 0x0 0x200000>;
+-			assigned-clocks = <&scmi_clk CLK_GPU>;
++			assigned-clocks = <&scmi_clk SCMI_CLK_GPU>;
+ 			assigned-clock-rates = <198000000>;
+ 			clocks = <&cru CLK_GPU>;
+ 			clock-names = "core";
 
 -- 
 2.48.1
