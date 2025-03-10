@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDE9C28B28
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Mar 2025 23:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E70CC28B28
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 00:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ywq6EokW4O3NF+CyNRjgcTXU5//Sq8xicwjd7M55Af8=; b=3BDdD7B4QHToN8
-	mRCb9xs4mClSm0f5fj7UrI5cro08fSzhHNRYL7JsJceaizh9+TdnzKL5YyXGPcDD7jxiAiqfCanjE
-	MLCBJ+TDjXJt59T4nZimgtS/mJqu+/CUfH/ChyfqHx79srU5Di/ZRDJ7AuG7t1c58gOqMpG5BxF0R
-	pQhawPKYJCzq137AxhIzIZvWZ3AENTKFlk0FUkDUtP67/qSXt+Z7tsULr8sGu5M634YIhU6nn1eBw
-	s4bYYYu4EOWNQCsjKvrwg1458Z2d8NQf6av40TaGTjp0OcOJLx+glGMNCUYnjLngFx2j83kiqxALO
-	6/J6BzzDxpdiYDw2fPIQ==;
+	List-Owner; bh=lcxdBWBDlrIza1E2kWcHCqECtFiBVcFXfCvl2xtP+VA=; b=xQiHxaOdqZssE1
+	70xdxn7rHy1CmHoEAD3PNfrUdcS2whWIvVbzCLA3qPn/RfRivqz0EK8vNvAXfdYTNj13VTIo7TjSO
+	6TDjEOsf0fCi2pn85M9sg2/7ZSNa2ASW5pmLQJsNUVhQztyhr5zJvn3uCOq+S3/rNQs31H4p6xaj3
+	SGO9Xfo34CDGV0yzqwhWQ24LjE8nB5PC5/ug2fIw5tfsNAF5qroD7zJeS3Lv9AYDwyWUr3OiG1phH
+	nlGFJ2Hpay4ENeuxQxihXs2gEDEsIc3UDMaPoMxijxbho5d14I+bUio5HFWDyfp4dSttB1uwdHvBG
+	igHSAJZHX3s/71AIqq/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trQBG-00000001HSS-2rNO;
-	Sun, 09 Mar 2025 23:35:38 +0000
-Received: from smtp.forwardemail.net ([2001:19f0:ac01:372:5400:5ff:fe53:764a])
+	id 1trQnD-00000001JtR-0V85;
+	Mon, 10 Mar 2025 00:14:51 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trQ3E-00000001GML-44Vn
+	id 1trQlb-00000001JhN-2s0v
 	for linux-rockchip@lists.infradead.org;
-	Sun, 09 Mar 2025 23:27:22 +0000
+	Mon, 10 Mar 2025 00:13:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1741562822; bh=KanAfDw+UyOaqtRYsPqpRbqdHPNczgiApRuHgmm7F4E=;
- b=tipZntGFD9MYFT7ubTQU+CqIETlHU+t4nZIALIHQBE1u7W4n/S6sVTXQzuI1nBtYZyfPx+014
- rrYq3YVfvOK0umq5CiWloSNjHh0fi3jbs4RqUUANYQmPr4SK5Xiy4HXZfn5pJSZ3N+q7BegtbUq
- QCdmOWr6+oMr+3T5bVhEdP8TjW6z+ZagOpRrzI09qAz9wwmr+XRnIkfuyXN6l0Gasvqdvnw3HfY
- /nErv9Lu9K3aVek+JgVHG03hNnm7Gh5kfHEfqItqlR3fP47ZIOR8cGFUoWIfbfnq67twwsTJUzG
- iFBlEgQNXTvMslqSRM2HCurw4EvTMjSOxfjQ1YqZS4Ig==
-X-Forward-Email-ID: 67ce23bc5209992d7c670edc
+ t=1741565591; bh=2XkeNvTS3SSQVo18wjKfb+aIkG+6ibmdSyCn5Cfxy74=;
+ b=eHPZ7SgzqJWSSks5y/pZ/30iLzqiK5+5J39s7ZUNFK3UlymJ93cluoqAIPdVT54EwpXB0W+qY
+ 6udTARxazpxiC0wfbSg33Hb1Z9Bmsp6c9bNQKC1nERqH67jRcSqD7Z653dNu0UIBcJUMwJbsgWl
+ Je9yB8LO0bTLUqp4VC4OQr5PtG9JVUDVAPZdmd5GEqz3Ue9T3ADwzR+2x0jkz9rVU1aKJxSA/fL
+ GaPYXS4L8N5rxd//rC8Li7xumrAuAbwkOwH2+JFma54XrGh7zniamPfp73Ji7YvxkV/nbCoijtZ
+ LgZg5rurKj1JOTospufnkBGwTJeLCRpJKt7lRerXbmoA==
+X-Forward-Email-ID: 67ce2e93f812de2512d1f55a
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.59
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -46,36 +46,26 @@ X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Rob Herring <robh@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	David Wu <david.wu@rock-chips.com>,
-	Yao Zi <ziyao@disroot.org>,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
 	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH v2 5/5] net: stmmac: dwmac-rk: Add initial support for RK3528 integrated PHY
-Date: Sun,  9 Mar 2025 23:26:15 +0000
-Message-ID: <20250309232622.1498084-6-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: Add GMAC nodes for RK3528
+Date: Mon, 10 Mar 2025 00:12:50 +0000
+Message-ID: <20250310001254.1516138-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250309232622.1498084-1-jonas@kwiboo.se>
-References: <20250309232622.1498084-1-jonas@kwiboo.se>
+In-Reply-To: <20250310001254.1516138-1-jonas@kwiboo.se>
+References: <20250310001254.1516138-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250309_162721_052929_504472F1 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20250309_171311_887918_0DAD8D3B 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,91 +82,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3528 (and RV1106) has a different integrated PHY compared to
-the integrated PHY on RK3228/RK3328. Current powerup/down operation is
-not compatible with the integrated PHY found in these newer SoCs.
+Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
+Ethernet QoS IP.
 
-Add operations to powerup/down the integrated PHY found in RK3528.
-Use helpers that can be used by other GMAC variants in the future.
+Add device tree nodes for the two Ethernet controllers in RK3528.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 Changes in v2:
-- New patch
+- Add ethernet-phy@2 for the integrated PHY
 
-This is enough to power up the integrated PHY on RK3528 for MDIO/MII.
-However, a PHY driver is still missing and I do not have any RK3528
-board that make use of this MAC and PHY, so something that can be
-improved upon in the future.
+I have no board that expose an Ethernet port for the gmac0 and the
+integrated PHY. However, the PHY can be identified on addr 0x2 as
+0044.1400 and in vendor kernel this relate to the Rockchip RK630 PHY.
+A proper PHY driver will be needed to support real use of gmac0.
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 105 +++++++++++++++++++++++
+ 1 file changed, 105 insertions(+)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 3f096b3ccee8..ab2c872d33e0 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -134,6 +134,35 @@ static void rk_gmac_integrated_ephy_powerdown(struct rk_priv_data *priv)
- 		reset_control_assert(priv->phy_reset);
- }
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index 4c0a25cc089c..56ced7c640f1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -678,6 +678,111 @@ saradc: adc@ffae0000 {
+ 			status = "disabled";
+ 		};
  
-+#define RK_FEPHY_SHUTDOWN		GRF_BIT(1)
-+#define RK_FEPHY_POWERUP		GRF_CLR_BIT(1)
-+#define RK_FEPHY_INTERNAL_RMII_SEL	GRF_BIT(6)
-+#define RK_FEPHY_24M_CLK_SEL		(GRF_BIT(8) | GRF_BIT(9))
-+#define RK_FEPHY_PHY_ID			GRF_BIT(11)
++		gmac0: ethernet@ffbd0000 {
++			compatible = "rockchip,rk3528-gmac", "snps,dwmac-4.20a";
++			reg = <0x0 0xffbd0000 0x0 0x10000>;
++			clocks = <&cru CLK_GMAC0_SRC>, <&cru CLK_GMAC0_RMII_50M>,
++				 <&cru CLK_GMAC0_RX>, <&cru CLK_GMAC0_TX>,
++				 <&cru PCLK_MAC_VO>, <&cru ACLK_MAC_VO>;
++			clock-names = "stmmaceth", "clk_mac_ref",
++				      "mac_clk_rx", "mac_clk_tx",
++				      "pclk_mac", "aclk_mac";
++			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "macirq", "eth_wake_irq";
++			phy-handle = <&rmii0_phy>;
++			phy-mode = "rmii";
++			resets = <&cru SRST_A_MAC_VO>;
++			reset-names = "stmmaceth";
++			rockchip,grf = <&vo_grf>;
++			snps,axi-config = <&gmac0_stmmac_axi_setup>;
++			snps,mixed-burst;
++			snps,mtl-rx-config = <&gmac0_mtl_rx_setup>;
++			snps,mtl-tx-config = <&gmac0_mtl_tx_setup>;
++			snps,tso;
++			status = "disabled";
 +
-+static void rk_gmac_integrated_fephy_powerup(struct rk_priv_data *priv,
-+					     unsigned int reg)
-+{
-+	reset_control_assert(priv->phy_reset);
-+	usleep_range(20, 30);
++			mdio0: mdio {
++				compatible = "snps,dwmac-mdio";
++				#address-cells = <0x1>;
++				#size-cells = <0x0>;
 +
-+	regmap_write(priv->grf, reg,
-+		     RK_FEPHY_POWERUP |
-+		     RK_FEPHY_INTERNAL_RMII_SEL |
-+		     RK_FEPHY_24M_CLK_SEL |
-+		     RK_FEPHY_PHY_ID);
-+	usleep_range(10000, 12000);
++				rmii0_phy: ethernet-phy@2 {
++					compatible = "ethernet-phy-ieee802.3-c22";
++					reg = <0x2>;
++					clocks = <&cru CLK_MACPHY>;
++					phy-is-integrated;
++					pinctrl-names = "default";
++					pinctrl-0 = <&fephym0_led_link>,
++						    <&fephym0_led_spd>;
++					resets = <&cru SRST_MACPHY>;
++				};
++			};
 +
-+	reset_control_deassert(priv->phy_reset);
-+	usleep_range(50000, 60000);
-+}
++			gmac0_stmmac_axi_setup: stmmac-axi-config {
++				snps,blen = <0 0 0 0 16 8 4>;
++				snps,rd_osr_lmt = <8>;
++				snps,wr_osr_lmt = <4>;
++			};
 +
-+static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
-+					       unsigned int reg)
-+{
-+	regmap_write(priv->grf, reg, RK_FEPHY_SHUTDOWN);
-+}
++			gmac0_mtl_rx_setup: rx-queues-config {
++				snps,rx-queues-to-use = <1>;
++				queue0 {};
++			};
 +
- #define PX30_GRF_GMAC_CON1		0x0904
- 
- /* PX30_GRF_GMAC_CON1 */
-@@ -993,12 +1022,24 @@ static void rk3528_set_clock_selection(struct rk_priv_data *bsp_priv,
- 	}
- }
- 
-+static void rk3528_integrated_phy_powerup(struct rk_priv_data *bsp_priv)
-+{
-+	rk_gmac_integrated_fephy_powerup(bsp_priv, RK3528_VO_GRF_MACPHY_CON0);
-+}
++			gmac0_mtl_tx_setup: tx-queues-config {
++				snps,tx-queues-to-use = <1>;
++				queue0 {};
++			};
++		};
 +
-+static void rk3528_integrated_phy_powerdown(struct rk_priv_data *bsp_priv)
-+{
-+	rk_gmac_integrated_fephy_powerdown(bsp_priv, RK3528_VO_GRF_MACPHY_CON0);
-+}
++		gmac1: ethernet@ffbe0000 {
++			compatible = "rockchip,rk3528-gmac", "snps,dwmac-4.20a";
++			reg = <0x0 0xffbe0000 0x0 0x10000>;
++			clocks = <&cru CLK_GMAC1_SRC_VPU>,
++				 <&cru CLK_GMAC1_RMII_VPU>,
++				 <&cru PCLK_MAC_VPU>,
++				 <&cru ACLK_MAC_VPU>;
++			clock-names = "stmmaceth",
++				      "clk_mac_ref",
++				      "pclk_mac",
++				      "aclk_mac";
++			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "macirq", "eth_wake_irq";
++			resets = <&cru SRST_A_MAC>;
++			reset-names = "stmmaceth";
++			rockchip,grf = <&vpu_grf>;
++			snps,axi-config = <&gmac1_stmmac_axi_setup>;
++			snps,mixed-burst;
++			snps,mtl-rx-config = <&gmac1_mtl_rx_setup>;
++			snps,mtl-tx-config = <&gmac1_mtl_tx_setup>;
++			snps,tso;
++			status = "disabled";
 +
- static const struct rk_gmac_ops rk3528_ops = {
- 	.set_to_rgmii = rk3528_set_to_rgmii,
- 	.set_to_rmii = rk3528_set_to_rmii,
- 	.set_rgmii_speed = rk3528_set_rgmii_speed,
- 	.set_rmii_speed = rk3528_set_rmii_speed,
- 	.set_clock_selection = rk3528_set_clock_selection,
-+	.integrated_phy_powerup = rk3528_integrated_phy_powerup,
-+	.integrated_phy_powerdown = rk3528_integrated_phy_powerdown,
- 	.regs_valid = true,
- 	.regs = {
- 		0xffbd0000, /* gmac0 */
++			mdio1: mdio {
++				compatible = "snps,dwmac-mdio";
++				#address-cells = <0x1>;
++				#size-cells = <0x0>;
++			};
++
++			gmac1_stmmac_axi_setup: stmmac-axi-config {
++				snps,blen = <0 0 0 0 16 8 4>;
++				snps,rd_osr_lmt = <8>;
++				snps,wr_osr_lmt = <4>;
++			};
++
++			gmac1_mtl_rx_setup: rx-queues-config {
++				snps,rx-queues-to-use = <1>;
++				queue0 {};
++			};
++
++			gmac1_mtl_tx_setup: tx-queues-config {
++				snps,tx-queues-to-use = <1>;
++				queue0 {};
++			};
++		};
++
+ 		sdhci: mmc@ffbf0000 {
+ 			compatible = "rockchip,rk3528-dwcmshc",
+ 				     "rockchip,rk3588-dwcmshc";
 -- 
 2.48.1
 
