@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8297C282DE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 13:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51751C282DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Mar 2025 13:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8I7ewYUVTcjEpCpgNKuRl/GDagw+idVwkVKcYog20Fg=; b=JCafrdjiktI+E0
-	rTWcQFeKrHD2G4cTOvqbxiQs09XoM6ldnt4Khf7BSBXKRnEkjFGbNbbu7hNqiqeYQjuGHjGT7cXIf
-	/bjeGVGxQe5ykbq3e/w5GbP5EgmQKl1WLAFTuL02hqeHUEhgNOsJGO81z4KdpJgI5ED9SBFkcrRnl
-	FVg/zCa8zfauqiqUXJIuG27cNR6R0iDKkAmhxv3GUzWeDqPFDsR3mZ2XGxnMWdr38efKmI0R0I4zm
-	kPWXXJIt8ejse4+EkisrpLf1IgdjLUR2ISrXPghz+9P1JN3Gni5TkiJb7jKTM8wrjtNOGuTP8SG7c
-	O6WkQ4lt0iTtyYS4ksnQ==;
+	List-Owner; bh=iO5Aak4HKp9tvwpihsn6G5Ftuqtk8pZEi0mJixMKlCo=; b=TYjZc69K6JjfVM
+	LvwSLySW2H1qQD9oKm+3czkOEe1n3m05lIooYnWonxUtQqF43XuxUDrfXnUK4rg4ae3jPnanZ1MXe
+	DwvtZ6xCZqpynplD0DJIj//wMgDchkjWU06ba2tXX7VfBk9t0YjdIygZS/V0Sz2mkud0/8QOQ9wo3
+	ixXJMeR/KMmR091/q4PEPgDWXHY4yW/r4/L0bZcD1N0pMa6eX5ckdgS5xbM4wQ/YrgZGLxkUqgAPF
+	v7BhpEKzoD9OiUvQcdx82sbjiFMw1aqawlL6DFV+Lmoro3RJPgwYskLNkFEojxlznm+26dFc952Px
+	VbXf+GBSF7YsNJkblnsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trdXc-00000002qk2-3SeA;
-	Mon, 10 Mar 2025 13:51:36 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1trdXm-00000002qna-1rci;
+	Mon, 10 Mar 2025 13:51:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trcZz-00000002gMf-2Ij1;
-	Mon, 10 Mar 2025 12:50:00 +0000
+	id 1trca5-00000002gPB-46RQ;
+	Mon, 10 Mar 2025 12:50:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 76B02A45BB0;
-	Mon, 10 Mar 2025 12:44:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2358FC4CEEA;
-	Mon, 10 Mar 2025 12:49:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A41345C5DCF;
+	Mon, 10 Mar 2025 12:47:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6D6AC4CEE5;
+	Mon, 10 Mar 2025 12:50:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741610998;
-	bh=DOEHd6cnQseKz/MeHFswCo+xv14h0VbP6CgZAcOI3JE=;
+	s=k20201202; t=1741611005;
+	bh=zhBiB0dgB7O3TDhkJEPyv1ZI/bHtlP6eiqaFOv0cAL0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t0HcoMdXQYndg5RPlZ/Dwc7eluZqRPTg52J1enTxQ+Gaf8XTr2u1yWhmevb/1HfCb
-	 NM0JP2gBaWhFobT/aTQwj3PUh7+2yZr0+oj4mKeTM61OmPeeKRjprbHtuGn3yJCZsA
-	 Ny94+jR2DkKRL9pvcPEhM9Ap0KAmO0HGH5oI4RMoOgMi+k7SKGqvMRw+r1QS3o3p/o
-	 WXS+KHf4HmXv1tupmZQ4PfFjkVlDYf+uXOvGBxQzfJhumJLtJeCluwcu378AdQYihg
-	 Hqsehhwtuc63VG27IvqJxAANYVaweTZJO9WQ5tDsUCYxI92p+fUhsxIFaB2y/bmb67
-	 o1YH5kOR/RY6w==
-Date: Mon, 10 Mar 2025 07:49:56 -0500
-From: Rob Herring <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+	b=t6R/ivm8J+eajKPlPheXHg3NJ+nHknblHvYwOY5VD+jluqi92qYai/5AEb7hvZpVM
+	 6qRIzNbhzi+elDLS/ZWoc+wQzzco3VQkWAe2a83oG5ZYTh3VL/Ou1YXu5uJzFO0P6A
+	 5salt+CCaB4l+qjAw/EY2StH239j6ZVGRBkq1Hl+aC10U1aTUlyDyedtmNIKugW+qB
+	 LxKKP4IdOL0I0kAlvCh6oWdSzdQWLSFmeu0Dx5qxqOC1iOeNSpFM/OzbMNoh8mK5TR
+	 gCdpbABDCFmCh3ozvjVKbxmONawMXNU1jT7PnwFHdpm+r25w6XjcNKxxPNWEsuE7y5
+	 gEglbx/bG1i1Q==
+Date: Mon, 10 Mar 2025 07:50:03 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Subject: Re: [PATCH v2] dt-bindings: rng: rockchip,rk3588-rng: Drop
  unnecessary status from example
-Message-ID: <20250310124956.GA3875809-robh@kernel.org>
+Message-ID: <174161100282.3880379.16414852796970978869.robh@kernel.org>
 References: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
- <5417098.31r3eYUQgx@workhorse>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <5417098.31r3eYUQgx@workhorse>
+In-Reply-To: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_054959_649772_D6048AE8 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20250310_055006_056636_21DEA303 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,61 +65,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-crypto@vger.kernel.org, Herbert Xu <herbert@gondor.apana.org.au>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 07, 2025 at 03:05:50PM +0100, Nicolas Frattaroli wrote:
-> On Friday, 7 March 2025 10:33:09 Central European Standard Time Krzysztof 
-> Kozlowski wrote:
-> > Device nodes are enabled by default, so no need for 'status = "okay"' in
-> > the DTS example.
-> > 
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > 
-> > ---
-> > 
-> > Changes in v2:
-> > 1. Drop unnecessary full stop in subject prefix after ':'.
-> > 2. Add Rb tag.
-> > ---
-> >  Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml | 1 -
-> >  1 file changed, 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> > b/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml index
-> > 757967212f55..ca71b400bcae 100644
-> > --- a/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> > +++ b/Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml
-> > @@ -53,7 +53,6 @@ examples:
-> >          interrupts = <GIC_SPI 400 IRQ_TYPE_LEVEL_HIGH 0>;
-> >          clocks = <&scmi_clk SCMI_HCLK_SECURE_NS>;
-> >          resets = <&scmi_reset SCMI_SRST_H_TRNG_NS>;
-> > -        status = "okay";
-> >        };
-> >      };
-> 
-> Hi,
-> 
-> is there the possibility we could make dtschema as invoked by `make 
-> dt_binding_check W=1` (or W=2) add a warning for examples that have disabled 
-> or explicitly listed status properties when not needed? Or is this something 
-> better handled in, say, checkpatch.pl?
-> 
-> The question arises because dumb mistakes by me like this should ideally be 
-> caught before they waste precious maintainer time.
-> 
-> If it's best handled in dtschema, I can look into working on that so you guys 
-> don't have to do even more work due to me.
 
-Trust me, I'm always looking for things to check automatically. :)
+On Fri, 07 Mar 2025 10:33:09 +0100, Krzysztof Kozlowski wrote:
+> Device nodes are enabled by default, so no need for 'status = "okay"' in
+> the DTS example.
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> ---
+> 
+> Changes in v2:
+> 1. Drop unnecessary full stop in subject prefix after ':'.
+> 2. Add Rb tag.
+> ---
+>  Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml | 1 -
+>  1 file changed, 1 deletion(-)
+> 
 
-I have something like that which adds a schema for examples only. I 
-think there were some corner cases. I'll take a fresh look at it.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Rob
 
 _______________________________________________
 Linux-rockchip mailing list
