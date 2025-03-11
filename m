@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9FCDC282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 11:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A23BC28B2E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 11:24:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P4oyvdg276+5te7DYz5Xv1NxRzbblHvAPfwHk6ns59w=; b=EpbtJCWGO4FwJU
-	ZVU8GXSMvEQAkKWeY3EkCdZM8QI5PzBIHsjuAMv/iqSH72dus9MlgaMdQW4AmHODwiebs+19MeTol
-	Wp0RFxi/4u8IHkk1LTCdohOc26WciSXxQvWSnzfbk0nZ0+QP5ZjOxccfSeszO9BxiUljBZHvVeq+8
-	nlQ/fFIL+03f9sfj0jw9dd40smUonyuKbJ7iyKkMSAEHf1hC4ed5d1QsLeIzXDQtZ0byGJ5xy/gR8
-	tzMqKIdvTR80eNJf2Nds/GvXPNzJumjCrnlSdsKH/McsY5yCfVmC7Y/1ixiEvHULmnj5ZMGrcw+59
-	/76AEeCQYXvSZISQhIOg==;
+	List-Owner; bh=UhLHeCOgEcrhzzcJumjKFvW/WaA3DaB4i/zmYkx8tu4=; b=dyxp0/0PwLy7mr
+	vy8o+q30sD2UWgNyc61EvoffFqMszeJyOIKJdUUpDejjB6ioea5tKtv4rrVCuiPLJNDWYpMUEC7Dw
+	XxU/uEmZA7Kg5O2w2FJ5Y54Kaun75SHkOb9BFZkv6b4PzAJOiwnVybustWiDj8rody/A3sKHgslgq
+	S1vptywKUKxGnXK1qboiBqIYTxUTXStDSdS/5QPzrbUIsf/IO6cWBvzs2b+bIgNGpZPXJzseQinCp
+	xKSnkcpAhjIjWg4Wv3irkgliXtgwoIcbsScNbDWxjmn3IhGWb9YYPuIgcGezfAG/zt5jpMGYBh4HA
+	dIMH0NHPjwQ5X4l9ip9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trxaq-00000005RFn-12O9;
-	Tue, 11 Mar 2025 11:16:16 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1trxiT-00000005SWa-3esK;
+	Tue, 11 Mar 2025 11:24:09 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1trxYY-00000005Qlk-0s9u;
-	Tue, 11 Mar 2025 11:13:55 +0000
+	id 1trxgp-00000005SGS-1tQa;
+	Tue, 11 Mar 2025 11:22:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AD8C3A4692F;
-	Tue, 11 Mar 2025 11:08:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF06CC4CEEB;
-	Tue, 11 Mar 2025 11:13:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E97745C5BD3;
+	Tue, 11 Mar 2025 11:20:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6944C4CEE9;
+	Tue, 11 Mar 2025 11:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741691632;
-	bh=qbtvWIP1+nIeEYbvoZdR0xecYHAOBTcof1Joj/nAUfY=;
+	s=k20201202; t=1741692146;
+	bh=lMU6ponq0xF7hfMuNjfylz3m1p39UzPIIE6c6X297+M=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Hx7W61u36GJWwC4o/LYS+nsWiIqB+uVKZflDZ/STvcQba1rMkyR0sMb/WTvCvXG0k
-	 PV/ssav8qlAYZPM21ROnyngQYSaNUJ7H5Enm94EUDQObkEgpD1QmFt0uCXgQaYt2w9
-	 cybLrZX1cJ+FWa8pRrmSZ0gJwAtiDSpNAH34LLtrG6Rcn//BZEwUsbUe2A2joCpFiV
-	 sBwWyQZzyAM2m3sTppC6u8swt6Ga9oCcCd8Hy97X0K1xm8TmjjwMOb+UWQ3DdC3JZ/
-	 sLPzU2R0grhsh812qwGJgnLLMEYK/afQ9ARJUamqfV88xNc9f6aOruBxCldJJM/J39
-	 wKXmeeuquRz4Q==
-Date: Tue, 11 Mar 2025 12:13:46 +0100
+	b=gmOlMRpAXXcA7HM4xu9omX8AqdedevKRIxId0WOqOTno+zeda+2h8sy95HaIMCk+G
+	 bUBrnjhfGBQGo06Bw9JqGY18N+soUJB+Q+oWBECAJcFlPJv8OiS7A0Ny6NXt0/wBzq
+	 0YNWW3Ij51kn6LRNut5b9Ju5pcdI6doRnu+n1s/fHiL9NYqiXaYNhE0aLQH1r21Cg3
+	 j8J4qHgQKVfEJVVARzlszEMPUZp2uQ7fxy8GCcW+LD5EUO+Pn14Yu/eEREWfZybWgI
+	 lz4aNnFusUI5DLXQ29K1rVKM63ZON90uW6pR5HTjAMFFGPILh9fYyIrbB1hwGcpnvX
+	 EeDnn5iHRQHWg==
+Date: Tue, 11 Mar 2025 12:22:22 +0100
 From: Vinod Koul <vkoul@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, kishon@kernel.org, sebastian.reichel@collabora.com,
-	yubing.zhang@rock-chips.com, dmitry.baryshkov@linaro.org,
-	frank.wang@rock-chips.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: Re: [PATCH] phy: rockchip: usbdp: Check these parameters only
- when the corresponding set flags are set
-Message-ID: <Z9Aa6v1/1KRdZDKE@vaman>
-References: <20250306065952.485809-1-andyshrk@163.com>
- <Z86UOmPg/UDSBajZ@vaman>
- <1379400c.90c.19582b05f74.Coremail.andyshrk@163.com>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-phy@lists.infradead.org,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
+Message-ID: <Z9Ac7hhQj9J7sFwJ@vaman>
+References: <20241224094240.3817261-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1379400c.90c.19582b05f74.Coremail.andyshrk@163.com>
+In-Reply-To: <20241224094240.3817261-1-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_041354_312314_F11FAFF6 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250311_042227_543872_195D060A 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +76,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11-03-25, 08:52, Andy Yan wrote:
+On 24-12-24, 17:42, Kever Yang wrote:
+> Add compatible for the USB2 phy in the Rockchip RK3562 SoC.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+>  .../devicetree/bindings/phy/rockchip,inno-usb2phy.yaml         | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> index 6a7ef556414c..367297f6f8b5 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> @@ -19,6 +19,7 @@ properties:
+>        - rockchip,rk3328-usb2phy
+>        - rockchip,rk3366-usb2phy
+>        - rockchip,rk3399-usb2phy
+> +      - rockchip,rk3562-usb2phy
+>        - rockchip,rk3568-usb2phy
+>        - rockchip,rk3576-usb2phy
+>        - rockchip,rk3588-usb2phy
+> @@ -150,7 +151,6 @@ allOf:
+>              enum:
+>                - rockchip,rk3568-usb2phy
+>                - rockchip,rk3588-usb2phy
+> -
 
-> Do you mean we should do it like this:
-> 
-> static int rk_udphy_dp_phy_configure(struct phy *phy,
->                                      union phy_configure_opts *opts)
-> {
->         struct rk_udphy *udphy = phy_get_drvdata(phy);
->         struct phy_configure_opts_dp *dp = &opts->dp;
->         u32 i, val, lane;
->         int ret;
-> 
->        .............
->       if (dp->set_rate)
->            	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
->      if (dp->set_lanes)
->                 ret = rk_udphy_dp_phy_verify_link_lanes(dp->lanes);
->      if (dp->set_voltates)
->                ret = rk_udphy_dp_phy_verify_link_voltate(dp->voltate);
-> 
-> 
-> Add helper for each of them ?
+Unrelated change?
 
-That would look better for sure
+>      then:
+>        properties:
+>          host-port:
+> @@ -190,6 +190,7 @@ allOf:
+>                - rockchip,rk3328-usb2phy
+>                - rockchip,rk3366-usb2phy
+>                - rockchip,rk3399-usb2phy
+> +              - rockchip,rk3562-usb2phy
+>                - rockchip,rk3568-usb2phy
+>                - rockchip,rk3588-usb2phy
+>                - rockchip,rv1108-usb2phy
+> -- 
+> 2.25.1
+> 
+> 
+> -- 
+> linux-phy mailing list
+> linux-phy@lists.infradead.org
+> https://lists.infradead.org/mailman/listinfo/linux-phy
 
 -- 
 ~Vinod
