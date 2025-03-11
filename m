@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 563A0C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 14:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4291FC282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 14:28:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Jz3oLhuaxpafFcj9GfQYim1ve90J3ajSLrwUs9nggt0=; b=vtKTL2JASKk5EO
-	5v3QoVE39cKh8+am6f4VQfgDUqXzbLWZ/pskNnLHZ3Ag6oaZBGp7Efj/5AzjNpidd9tDe6+Up4VWk
-	Megx4KBuGnrNe3gkUID1w1/IwSZwD6idRV4WBqmc46PmImTYcX17WqGtut+hAdL07MFeHfruyp9qU
-	ZVAMH7JKb/L25r3kJUdAmv7jseD823eL98ugppHOaE9E/7I6457lfrztxYcXrslk3IQGEnWkCwm5S
-	2xiJe1V3VoCCXkKKy55Qf7Ir1YYa6wIydAI5SF3pnPThlIXHNZYO05R58fKpoLDnWXLbb6F5sW0Hk
-	PB94oKIPblRhy/SfvDeQ==;
+	List-Owner; bh=QkQeN3gE7C6OvH63NlSVQ1z5cKqZUaL5SpetUtTqs3M=; b=U65tqgiz6EgGBE
+	7whIcbhB0czDai4KVXRAMPFwabrBYIe/c1Kp98IsaSWVAIP5Mij3OaAI0FHrOyPs67Z3mqgdtEsa6
+	DSbmp3+fQgoquaWatF9gzQpFFtejEnDLMcF+sDjb6QsxOWvxm2Cl4QY6u7vKm1BE6V8MAJM+PMxOF
+	XhCZQPNTB0SZmWLcwBsJrS54hWvkC3X0EiIgfc4DLEDgLNOUeEHwBEHw51y55h08PxWSK3+HGkD7y
+	IxPnvkpA4+I2zb4t4K96hUndFoTiY/J2xzkWdWdTznA3Hn9xsO4vsTS86Waza27XQI95gUBsfLsoI
+	VdALYA5lPwV669QB2C1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts0Ng-00000005wWp-04IB;
-	Tue, 11 Mar 2025 14:14:52 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1ts0ay-00000005yc0-2Lzd;
+	Tue, 11 Mar 2025 14:28:36 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts0MH-00000005w8b-47pi;
-	Tue, 11 Mar 2025 14:13:27 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2ff611f2ed1so1450973a91.0;
-        Tue, 11 Mar 2025 07:13:24 -0700 (PDT)
+	id 1ts0aw-00000005ybT-2vqf;
+	Tue, 11 Mar 2025 14:28:35 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-22400301e40so12931785ad.1;
+        Tue, 11 Mar 2025 07:28:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741702404; x=1742307204; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1741703313; x=1742308113; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=sfx/0w7tHML6j3jIZPou4W5Z11/9NxaRP60Pu8EnFQo=;
-        b=LtykrI9UmScBIogdpqGwtZUMi1OC+oIeg8UkhujePbkyRfnu1B5aj4fGN7HXyALEMs
-         Tjy0uacf3Hx73For/HzPryLCMpsvOxEvk37xVzlN2tkLjMcu0wYeSdpEwquvTS1P4yx6
-         idgMZM1uOzs45C4l4cuKE43hHEYcRvraahxAeeaTEU2f9+PyasB5dgdEBBWkYIT/ox/T
-         fUpGiGLzE9NLQE8De3Y2WjHwkX5iyMsoMdoot7e5uftdWUk8CyYoviAi8PixoBpuAiBp
-         RN8y69WySu54n04/pUFcg3ccpPV/8jgkmGWcBNYHloDk9DpzZ4cc5zoUnPAkr+aXyf5K
-         +3dQ==
+        bh=4BU+SZ02d2XzQItB7vSu0vr+Y6teTSqGnj3Dul5zaOg=;
+        b=MOFnJW2g3JaUVNS1+9C6xcpzQgpouujX2BnNAy17weftr6bxU+0PgF1z/hfDqzZZfT
+         94NYeSb5WFz9lSI7Wes9wPpJ2cv97/wLRwe1Zz9FvTdO28/ArkyGHqLCxwEQ90hpSPRL
+         zv3PGXcUoE/1qR+xVuCaR0xvZLhWVyUK8Ihhs5gfsFBLz4gylaUGG67P6CQRnWFzUWN4
+         iSMZHmvDAYFE8+qTxL2LoUwj4PbrMezHxRXXKQuXMGK5ll6B4nT9nS+EkTtvu6QzKRpD
+         gbb27IIqjcud0YjVPLD8mM6Bp7obAe9rGtUJkoNXnqtSIXmBmM9LbKSqJhyLAx2XT3BZ
+         hgtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741702404; x=1742307204;
+        d=1e100.net; s=20230601; t=1741703313; x=1742308113;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=sfx/0w7tHML6j3jIZPou4W5Z11/9NxaRP60Pu8EnFQo=;
-        b=wT3fXu7fnHprGcswI3+AfYmJwHvljF8kYtH0XTJiKESPGAOkdtMDZOjiHbYs4ggrJJ
-         /jqaldWvPBy2wB7TW7PMCCrW2HIsEbxPrFYzKdz8qGmzVki1BNfT5YnCm+JGXm+5uOLx
-         vud6bH9ThvuikoAbPWGOgslTMiayRw3hex7U99+sjr2aKXP6ggEwSdKn8gvOTXt1/JeQ
-         F+yBoydvX6uVk3YA7L9Hsu7rApcUCF3MQVh6O+j4QKoVjc08I4zqPbrIHH9zVaQYhS3+
-         2DsQCao8IL3HbTqt9myvE/2oeIDLf9+BE+xhZRAtve9nEN67mTWq4JW75xauKOS4/TiC
-         RRIg==
-X-Forwarded-Encrypted: i=1; AJvYcCX46hsOWV5cWFuq6Ea/uTkvFpqmiIbRB4qbQLGzU2CyknFCBHulzbpMhZ54EIB6hzBsl66TT5cPXgJiZXVziEaM@lists.infradead.org
-X-Gm-Message-State: AOJu0YyiuZQDRMzdyb6Hxh7C/O5YyhpxkX/8SswnhpFLixkh0b2kzYmd
-	qeLLRDVj5B7bxnSuPBJgx11SXjLbyLK/yZ2sO0+xR6bHK9Vk9mYprzbmWCVu
-X-Gm-Gg: ASbGncshEER2OCnG3D4K2m0hgHrQO6WU+I35w85Nw+1y1AKOfFfKWLgN0GJsGIJOVtZ
-	FUBS0X0PvW/Q3He5ho+J76oCIggFIudeqLPrG16FQj1OpmLMIYdBP3rj5g9PbbkZEftJijeCc3W
-	5cgh514gAk0JkNXWRV3OOPr0isbh13tQvmru2Ai53ALWlOdoyT1Kli5Yjm40RHpsth2Qw9oG5tv
-	9ywL5BZbHE+gwhgm0rziu3GvvMqdy/Mzyn5T+Ol17VlEWSd9MiWLfMh3r736G3Be/cuJUS8Qhcj
-	ep3neijxVYBt+pqb5Xs4TBWdN9PJ9Cg3c3FFAz73ZI6cLg==
-X-Google-Smtp-Source: AGHT+IE7O4OIqI5Hjq/tsry6aj7lx93QdJ7EXMkPekETaZ95tGM87nsuJvUD/hTrx6nTT6gvYxlT2g==
-X-Received: by 2002:a17:90b:1808:b0:2ff:6941:9b6a with SMTP id 98e67ed59e1d1-300a575a5camr7228931a91.3.1741702403671;
-        Tue, 11 Mar 2025 07:13:23 -0700 (PDT)
-Received: from rock-5b.. ([45.32.55.39])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ff4e7ff96esm11875300a91.35.2025.03.11.07.13.06
+        bh=4BU+SZ02d2XzQItB7vSu0vr+Y6teTSqGnj3Dul5zaOg=;
+        b=V45UoXK7h02EN0E2JVe0kTcKUcWE63HO+NnZ6mbYW8rC9RLpiVECOOxO7U04s07hAH
+         A97LhrI0l79UFCAxhxKO1hrfP8/wI/AnJ4R7chFa7uvKOOhlhfOkNru8iF8dIzduPoTD
+         rAmOMTVIxmmrBoau9EFp0+FV6aHa31V4bewYxHAkuL/VJZkAYjv5idj3MmkgnUBIECvN
+         cifosAzX6JOlsYHx850JplFu32oV7XEqe0ngKqRBKKPJSbjxG1ownwBKsPWI6G4t8psv
+         +EgyT4hZps9nQN1ttnEqKUganQjtptw5fBqdOMgsQsLO9XFn5iRwkjOs2qwbIWZ+gswn
+         WXJA==
+X-Forwarded-Encrypted: i=1; AJvYcCXjwby6teWA8zfNqnBIVc91ckHil0su4zpwxpGloS3q08O9BXtcPuJo54htMYXmQmv19pItSYcUE+3sXox76mqy@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywu8nha+Cly0pbXeWoehCHj//WTywLbyXPQv7mDPXHi7UW0uUS1
+	E8iakLF9z0YoK6fhZYj1lOJaOfRP9NmscnxCYLTmUwcGn9/GRXxs/uB2CHoZ
+X-Gm-Gg: ASbGnct4mcJwd7Z7tI5ouiCL94COeQkGmSIYyZLJnq8jvPOlyD21zUvh9fhSmmZ4ary
+	VODdJu0KOpgNwX7rR8rGtal7jLHkvl5xAy4F9WDeerHtGjh0e+oEOhOl8ohfSDgu9EihHOcfW+j
+	fmYMuSZcFZo/sP6eYgtlai0PNIUH9JaT5iRTQsDpaAkjEQ3/ZyXRd9GwfwZqrMo9s+ZZlr28ZfD
+	x/+4k66GiGFHW9bAhS971RyheBPzWEJeLOtN6v9fSKhgvCCPTtzJp7jjrLegNBx9+pot0ZXXlXT
+	KIzyXjc7ptNZjD0vWu0nVjZOZQcrl9CJKQA258O+xEE7yPcNDQ==
+X-Google-Smtp-Source: AGHT+IHYBCivxsu2aj6qSakK9DONJVcdwxBohBs2hi/qC896QdVSsypN75o/kpHRKEb2BaeV0jQP3w==
+X-Received: by 2002:a17:902:e802:b0:215:8d29:af0b with SMTP id d9443c01a7336-225932f6a0cmr20288795ad.14.1741703313413;
+        Tue, 11 Mar 2025 07:28:33 -0700 (PDT)
+Received: from rock-5b.. ([221.220.131.19])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22410a7f773sm98493875ad.117.2025.03.11.07.28.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Mar 2025 07:13:22 -0700 (PDT)
+        Tue, 11 Mar 2025 07:28:32 -0700 (PDT)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
 To: linux-rockchip@lists.infradead.org
-Cc: Jimmy Hon <honyuenkwun@gmail.com>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -78,14 +77,14 @@ Cc: Jimmy Hon <honyuenkwun@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix pcie reset gpio on Orange Pi 5 Max
-Date: Tue, 11 Mar 2025 22:12:39 +0800
-Message-ID: <20250311141245.2719796-1-liujianfeng1994@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add AP6275P wireless support to ArmSoM Sige7
+Date: Tue, 11 Mar 2025 22:27:50 +0800
+Message-ID: <20250311142825.2727171-1-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_071326_018745_57B4C664 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20250311_072834_734677_2008944B 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,29 +101,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the schematic, pcie reset gpio is GPIO3_D4,
-not GPIO4_D4.
+ArmSoM Sige7 uses the PCI-e AP6275P Wi-Fi 6 module. The pcie@0 node can
+be used as Bridge1, so the wifi@0 node is used as a device under the
+Bridege 1 similar with Khadas Edge 2.
 
-Fixes: c600d252dc52 ("arm64: dts: rockchip: Add Orange Pi 5 Max board")
 Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 ---
 
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../boot/dts/rockchip/rk3588-armsom-sige7.dts    | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-index 6e4dcd8fff26..f748c6f760d8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
-@@ -64,7 +64,7 @@ &led_blue_pwm {
- 
- /* phy2 */
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
+index 6a0fffaa26ee..face42bb0d7d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
+@@ -300,6 +300,22 @@ &pcie2x1l0 {
  &pcie2x1l1 {
--	reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
-+	reset-gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie_eth>;
+ 	reset-gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
  	status = "okay";
++
++	pcie@0,0 {
++		reg = <0x300000 0 0 0 0>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++		device_type = "pci";
++		bus-range = <0x30 0x3f>;
++
++		wifi: wifi@0,0 {
++			compatible = "pci14e4,449d";
++			reg = <0x310000 0 0 0 0>;
++			clocks = <&hym8563>;
++			clock-names = "lpo";
++		};
++	};
  };
+ 
+ /* phy0 - left ethernet port */
 -- 
 2.43.0
 
