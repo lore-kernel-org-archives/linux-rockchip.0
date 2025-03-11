@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD852C282DE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 00:54:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DF6C282DE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 01:19:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x2xS9GamZwuwzJhHHVRvC5dMZhOhzEgHAXYTQrQsp8Q=; b=RnnFin9LjKU/W0
-	qIYT/md6pF2any242ML2ni0Qvl0H3W/diandqANv2yPhqrYmoGBDCZC4daWtci0gLuq5aXv84Ms1o
-	qLj6b5O2bbKuQLgyVANxqRGy+OjCBQx9lTN7xBDIkfEMFHIOiUBbLBVmeUQt65Mp/tse9uzpSK563
-	5YStpFTVzRlsPkAxkef42vJg8OTzO9PhLGUdsCo+SB92xazj+QgC/81pvHDT6BEkCWPT4Oo7PdFfL
-	Wy4Z80wgrnAaehtKlDm+zqt+4nqLjWrtj7FCl3oLEIkHjsJqG1xFwLmFOT6ZAeYobgAJpdSE96Egv
-	uAktKJ5VPVzJXnw1Pm7A==;
+	List-Owner; bh=ojMK8PsJzojHFY8jWFl8HTjiepyToquSzOgNbmIwXIw=; b=q5Qao26DX+UvQb
+	k+bxEIQDQaIUbTEA9DTzaNrJitAFeZNrhkfAfKBlsE35bqvDTJcJPDNSCVfpxeULrbQi6vuqt8hIb
+	5fRvZDiigbWGTyzhPLZydIBq084GZfPJYcHOIxyLBDmjgxZtN/PLA5DDi2joXdWmfIcD/TKuj0apC
+	FDIGpuomjnj9WOhYgAhGQAhrVa+a3BIHIH0Hzz2VQ3KvTtsLZD1EX9WcVGqZFTyk5BazON1o6lDhM
+	8Gur+CKUuxY3HUou+ukpUGf9pIwu9fnM1RnlasUpeZQkfvF2S/NnpEeLT9Sh6t4nPOstRQEyP9yFg
+	l74bXbLC6zjvCqtGyQzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trntL-00000004IS2-3o1M;
-	Tue, 11 Mar 2025 00:54:43 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1trnrg-00000004IJ3-3tmC;
-	Tue, 11 Mar 2025 00:53:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=s9iY3SgRKB6srQmwKyQpR70K8gxHWLVabwner/iiHc4=; b=l
-	Y4Lb9ns6UjkinEg7ybomWiDQZzqDRaXLmyAIxi88UXcMhDLs7FCIWnM0z7IetRSq
-	p0OlbwAsdvLoNf6pltec2XtQYY6jF+SnNdKc6s1uMOs7VME4rJn6lNz2IgMlt2Vt
-	Gzd4++czLR1evt7VgmyFF6aw6VGn26hRb/4lrsG7ko=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-123 (Coremail) ; Tue, 11 Mar 2025 08:52:31 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 11 Mar 2025 08:52:31 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Vinod Koul" <vkoul@kernel.org>
-Cc: heiko@sntech.de, kishon@kernel.org, sebastian.reichel@collabora.com,
-	yubing.zhang@rock-chips.com, dmitry.baryshkov@linaro.org,
-	frank.wang@rock-chips.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH] phy: rockchip: usbdp: Check these parameters only
- when the corresponding set flags are set
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <Z86UOmPg/UDSBajZ@vaman>
-References: <20250306065952.485809-1-andyshrk@163.com>
- <Z86UOmPg/UDSBajZ@vaman>
-X-NTES-SC: AL_Qu2fA/qeu0su5yeabelSyjNW+7xfHKv6+qRChMQvQtsqqTHr9T0KcVtuP1XR3//Ga5IHjaerK57zwsKY57HR
+	id 1troHd-00000004KKF-2fdd;
+	Tue, 11 Mar 2025 01:19:49 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1troHb-00000004KJ4-0EyB;
+	Tue, 11 Mar 2025 01:19:48 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52ALfsYx014719;
+	Tue, 11 Mar 2025 01:19:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=8/RuX3GwU88Td658DflKrFkdi94VCyG7/q6o+rS03Vo=; b=
+	nmSpbTLxnRxd+EafKN6/L/AxiRQ2yWRRwEFrCSsP2Yr03G4O1qdq0AbJMRhU0+80
+	/19D628J3mAAoVGJ5TxfZ7UgLqjlQV0WPmDZEAza35x0zSXpmQwyncLc9EBvrWDU
+	ubZcK+GQZASi33aIlsElbHpCfn68gAyTOnuwH3YIsBVFZgnzfZ6GW5bgRf1QF0UO
+	eWPt5trusLZdVTqZ6j3YMP9bk/kjtSIOOPedWzfaWOxagOpdxUo/l9dw+nDUZEfX
+	Gjx2b4yjrAtW3ErqMwTBOMP3+HJfbSJ7jCQ7pwvBRbdLLBiG6TM9th/TwjqtFjAb
+	KR1DrJ0plAUZU/QKgXvThw==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 458cacbvd7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 11 Mar 2025 01:19:43 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 52B0UFCK014999;
+	Tue, 11 Mar 2025 01:19:42 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 458cbencmj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 11 Mar 2025 01:19:42 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 52B1Jfr8014960;
+	Tue, 11 Mar 2025 01:19:42 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 458cbencm8-2;
+	Tue, 11 Mar 2025 01:19:42 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+        Heiko Stuebner <heiko@sntech.de>, linux-scsi@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org,
+        Colin Ian King <colin.i.king@gmail.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH][next] scsi: ufs: rockchip: Fix spelling mistake "susped" -> "suspend"
+Date: Mon, 10 Mar 2025 21:19:01 -0400
+Message-ID: <174165504936.528513.7895453741464348013.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250225101142.161474-1-colin.i.king@gmail.com>
+References: <20250225101142.161474-1-colin.i.king@gmail.com>
 MIME-Version: 1.0
-Message-ID: <1379400c.90c.19582b05f74.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: eygvCgCnbINPic9n4zl7AA--.15549W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gwNXmfPgTNCjQAGse
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-11_01,2025-03-07_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 adultscore=0 spamscore=0
+ mlxlogscore=892 malwarescore=0 suspectscore=0 mlxscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2502100000
+ definitions=main-2503110007
+X-Proofpoint-ORIG-GUID: ZUjgEaKxxcf7JcaIfoORJdytE4gc3wBU
+X-Proofpoint-GUID: ZUjgEaKxxcf7JcaIfoORJdytE4gc3wBU
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250310_175301_347027_D1DF6D0B 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20250310_181947_211443_49F0CE17 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,189 +100,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, 25 Feb 2025 10:11:42 +0000, Colin Ian King wrote:
 
-Hi Vinod,
+> There is a spelling mistake in a dev_err message. Fix it.
+> 
+> 
 
-At 2025-03-10 15:26:50, "Vinod Koul" <vkoul@kernel.org> wrote:
->On 06-03-25, 14:59, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->> 
->> According documentation of phy_configure_opts_dp, at the configure
->> stage, we should only verify/configure the link_rate when set_rate
->> flag is set, the same applies to lanes and voltage.
->> 
->> So we do it as the documentation says, also record the link rate
->> and lanes in phy internal for set_voltate stage.
->
->Whenever you say also, that is a sign that it should be another patch!
+Applied to 6.15/scsi-queue, thanks!
 
-This patch is inspired by Dmitry's suggestion for DP/eDP driver which calls phy_configure[0][1]:
-the phy driver should skip the values for which the .set_foo isn't set. So we should not set rates and
-lanes when we set_voltate, but the rates and lanes are needed for voltage set, this is why I  record 
-rates and lanes in this patch.
-I can split the record to another patch,  but then this patch will not work correctly itself, 
-I'm not sure if this is suitable.
+[1/1] scsi: ufs: rockchip: Fix spelling mistake "susped" -> "suspend"
+      https://git.kernel.org/mkp/scsi/c/24e81b821724
 
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
-[0]https://patchwork.freedesktop.org/patch/629780/?series=141829&rev=3
-[1]https://patchwork.freedesktop.org/patch/638961/?series=145286&rev=1
-
->
->> 
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> ---
->> 
->>  drivers/phy/rockchip/phy-rockchip-usbdp.c | 63 +++++++++++------------
->>  1 file changed, 31 insertions(+), 32 deletions(-)
->> 
->> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
->> index c04cf64f8a35..d1bbdf382aa2 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
->> @@ -187,6 +187,8 @@ struct rk_udphy {
->>  	u32 dp_aux_din_sel;
->>  	bool dp_sink_hpd_sel;
->>  	bool dp_sink_hpd_cfg;
->> +	unsigned int link_rate;
->> +	unsigned int lanes;
->>  	u8 bw;
->>  	int id;
->>  
->> @@ -1102,42 +1104,39 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
->>  	return 0;
->>  }
->>  
->> -static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
->> -{
->> -	switch (link_rate) {
->> -	case 1620:
->> -	case 2700:
->> -	case 5400:
->> -	case 8100:
->> -		break;
->> -
->> -	default:
->> -		return -EINVAL;
->> -	}
->> -
->> -	return 0;
->> -}
->> -
->>  static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
->>  					 struct phy_configure_opts_dp *dp)
->>  {
->> -	int i, ret;
->> +	int i;
->>  
->> -	/* If changing link rate was required, verify it's supported. */
->> -	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
->> -	if (ret)
->> -		return ret;
->> +	/* Verify link rate. */
->> +	if (dp->set_rate) {
->> +		switch (dp->link_rate) {
->> +		case 1620:
->> +		case 2700:
->> +		case 5400:
->> +		case 8100:
->> +			udphy->link_rate = dp->link_rate;
->> +			break;
->> +
->> +		default:
->> +			return -EINVAL;
->> +		}
->
->why drop helper? Why not set the rate on success?
-
-I drop helper just because the flowing check for lanes and votages don't 
-have helper.
-The rate is set in rk_udphy_dp_phy_configure.
->
->> +	}
->>  
->>  	/* Verify lane count. */
->> -	switch (dp->lanes) {
->> -	case 1:
->> -	case 2:
->> -	case 4:
->> -		/* valid lane count. */
->> -		break;
->> +	if (dp->set_lanes) {
->> +		switch (dp->lanes) {
->> +		case 1:
->> +		case 2:
->> +		case 4:
->> +			/* valid lane count. */
->> +			udphy->lanes = dp->lanes;
->> +			break;
->>  
->> -	default:
->> -		return -EINVAL;
->> +		default:
->> +			return -EINVAL;
->> +		}
->
->another change where helper would have made this look better
-
-
-Do you mean we should do it like this:
-
-static int rk_udphy_dp_phy_configure(struct phy *phy,
-                                     union phy_configure_opts *opts)
-{
-        struct rk_udphy *udphy = phy_get_drvdata(phy);
-        struct phy_configure_opts_dp *dp = &opts->dp;
-        u32 i, val, lane;
-        int ret;
-
-       .............
-      if (dp->set_rate)
-           	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
-     if (dp->set_lanes)
-                ret = rk_udphy_dp_phy_verify_link_lanes(dp->lanes);
-     if (dp->set_voltates)
-               ret = rk_udphy_dp_phy_verify_link_voltate(dp->voltate);
-
-
-Add helper for each of them ?
-      
-
-
->
->>  	}
->>  
->>  	/*
->> @@ -1146,7 +1145,7 @@ static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
->>  	 */
->>  	if (dp->set_voltages) {
->>  		/* Lane count verified previously. */
->> -		for (i = 0; i < dp->lanes; i++) {
->> +		for (i = 0; i < udphy->lanes; i++) {
->>  			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
->>  				return -EINVAL;
->>  
->> @@ -1243,9 +1242,9 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
->>  	}
->>  
->>  	if (dp->set_voltages) {
->> -		for (i = 0; i < dp->lanes; i++) {
->> +		for (i = 0; i < udphy->lanes; i++) {
->>  			lane = udphy->dp_lane_sel[i];
->> -			switch (dp->link_rate) {
->> +			switch (udphy->link_rate) {
->>  			case 1620:
->>  			case 2700:
->>  				regmap_update_bits(udphy->pma_regmap,
->> -- 
->> 2.34.1
->
->-- 
->~Vinod
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
