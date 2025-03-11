@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DB6C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 12:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 563A0C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 14:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vLpFoNE36OzAfgTMnvfarzew797oZS+v8gXDJBm9mMk=; b=dDxWTL3AfV13Vo
-	aLDqowvayhHcsHwgpbdF9brY5miHvsVEpbjDDyf8U5a+fy64LX2d/ktxs6rIvgzcHhEeUNd5jwWQe
-	m27+0WwTN5UqdnS7KDMqNlsJPeu1hmmeXK30zQMmb/tcCYb/w+V13O7HrkThqWzRn80U9V1N/gCMq
-	mludgQEtZmRGXZxbRcIOriy/VBos7wzj6AcMe4ZSdV8cG8aG3tS+Fbwg7AzYDf5TdpndkoVOMZrGY
-	2TsDHflvWMeRc3RtylayMecj13YY63DU6NNN1tjXtW79WslXJHBJ+wHz7Wx/oe1uLEAy9WRjTM15e
-	cEm8nB1Gqwq/IxluvgSg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Jz3oLhuaxpafFcj9GfQYim1ve90J3ajSLrwUs9nggt0=; b=vtKTL2JASKk5EO
+	5v3QoVE39cKh8+am6f4VQfgDUqXzbLWZ/pskNnLHZ3Ag6oaZBGp7Efj/5AzjNpidd9tDe6+Up4VWk
+	Megx4KBuGnrNe3gkUID1w1/IwSZwD6idRV4WBqmc46PmImTYcX17WqGtut+hAdL07MFeHfruyp9qU
+	ZVAMH7JKb/L25r3kJUdAmv7jseD823eL98ugppHOaE9E/7I6457lfrztxYcXrslk3IQGEnWkCwm5S
+	2xiJe1V3VoCCXkKKy55Qf7Ir1YYa6wIydAI5SF3pnPThlIXHNZYO05R58fKpoLDnWXLbb6F5sW0Hk
+	PB94oKIPblRhy/SfvDeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tryoz-00000005fUn-2lSA;
-	Tue, 11 Mar 2025 12:34:57 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tryd4-00000005cPo-1UGB;
-	Tue, 11 Mar 2025 12:22:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=Jir35b0HgpV0FY6FTSTtKnirvFZaxaNLyjhlogfMqV4=; b=b
-	72iuzjLPM9Hpdt1LvzCk0VUtgFtaH+PnzDNS29xW4zkZSribKzLwWSRMqWch/9PG
-	AA36bzTdLuMmC7/JYiCJ+VlGE8L73KlPhOjuZ+QLxwgM1Jg3b7Wl7Bie4YBoEWl5
-	D/F8zS8MeQ66Rt+EmWMEXDMITg2CUfBylMVTCWI6ZM=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-123 (Coremail) ; Tue, 11 Mar 2025 20:22:10 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 11 Mar 2025 20:22:10 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Vinod Koul" <vkoul@kernel.org>
-Cc: heiko@sntech.de, kishon@kernel.org, sebastian.reichel@collabora.com,
-	yubing.zhang@rock-chips.com, dmitry.baryshkov@linaro.org,
-	frank.wang@rock-chips.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: Re: [PATCH] phy: rockchip: usbdp: Check these parameters
- only when the corresponding set flags are set
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <Z9Aa6v1/1KRdZDKE@vaman>
-References: <20250306065952.485809-1-andyshrk@163.com>
- <Z86UOmPg/UDSBajZ@vaman>
- <1379400c.90c.19582b05f74.Coremail.andyshrk@163.com>
- <Z9Aa6v1/1KRdZDKE@vaman>
-X-NTES-SC: AL_Qu2fA/qSuk8o5imYYOlSyjNW+7xfHKv6+qRChMQvQtsqqTHr9T0KcVtuP1XR3/++sAgV6BesM+3kGdDrWG6d
+	id 1ts0Ng-00000005wWp-04IB;
+	Tue, 11 Mar 2025 14:14:52 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1ts0MH-00000005w8b-47pi;
+	Tue, 11 Mar 2025 14:13:27 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2ff611f2ed1so1450973a91.0;
+        Tue, 11 Mar 2025 07:13:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741702404; x=1742307204; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=sfx/0w7tHML6j3jIZPou4W5Z11/9NxaRP60Pu8EnFQo=;
+        b=LtykrI9UmScBIogdpqGwtZUMi1OC+oIeg8UkhujePbkyRfnu1B5aj4fGN7HXyALEMs
+         Tjy0uacf3Hx73For/HzPryLCMpsvOxEvk37xVzlN2tkLjMcu0wYeSdpEwquvTS1P4yx6
+         idgMZM1uOzs45C4l4cuKE43hHEYcRvraahxAeeaTEU2f9+PyasB5dgdEBBWkYIT/ox/T
+         fUpGiGLzE9NLQE8De3Y2WjHwkX5iyMsoMdoot7e5uftdWUk8CyYoviAi8PixoBpuAiBp
+         RN8y69WySu54n04/pUFcg3ccpPV/8jgkmGWcBNYHloDk9DpzZ4cc5zoUnPAkr+aXyf5K
+         +3dQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741702404; x=1742307204;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sfx/0w7tHML6j3jIZPou4W5Z11/9NxaRP60Pu8EnFQo=;
+        b=wT3fXu7fnHprGcswI3+AfYmJwHvljF8kYtH0XTJiKESPGAOkdtMDZOjiHbYs4ggrJJ
+         /jqaldWvPBy2wB7TW7PMCCrW2HIsEbxPrFYzKdz8qGmzVki1BNfT5YnCm+JGXm+5uOLx
+         vud6bH9ThvuikoAbPWGOgslTMiayRw3hex7U99+sjr2aKXP6ggEwSdKn8gvOTXt1/JeQ
+         F+yBoydvX6uVk3YA7L9Hsu7rApcUCF3MQVh6O+j4QKoVjc08I4zqPbrIHH9zVaQYhS3+
+         2DsQCao8IL3HbTqt9myvE/2oeIDLf9+BE+xhZRAtve9nEN67mTWq4JW75xauKOS4/TiC
+         RRIg==
+X-Forwarded-Encrypted: i=1; AJvYcCX46hsOWV5cWFuq6Ea/uTkvFpqmiIbRB4qbQLGzU2CyknFCBHulzbpMhZ54EIB6hzBsl66TT5cPXgJiZXVziEaM@lists.infradead.org
+X-Gm-Message-State: AOJu0YyiuZQDRMzdyb6Hxh7C/O5YyhpxkX/8SswnhpFLixkh0b2kzYmd
+	qeLLRDVj5B7bxnSuPBJgx11SXjLbyLK/yZ2sO0+xR6bHK9Vk9mYprzbmWCVu
+X-Gm-Gg: ASbGncshEER2OCnG3D4K2m0hgHrQO6WU+I35w85Nw+1y1AKOfFfKWLgN0GJsGIJOVtZ
+	FUBS0X0PvW/Q3He5ho+J76oCIggFIudeqLPrG16FQj1OpmLMIYdBP3rj5g9PbbkZEftJijeCc3W
+	5cgh514gAk0JkNXWRV3OOPr0isbh13tQvmru2Ai53ALWlOdoyT1Kli5Yjm40RHpsth2Qw9oG5tv
+	9ywL5BZbHE+gwhgm0rziu3GvvMqdy/Mzyn5T+Ol17VlEWSd9MiWLfMh3r736G3Be/cuJUS8Qhcj
+	ep3neijxVYBt+pqb5Xs4TBWdN9PJ9Cg3c3FFAz73ZI6cLg==
+X-Google-Smtp-Source: AGHT+IE7O4OIqI5Hjq/tsry6aj7lx93QdJ7EXMkPekETaZ95tGM87nsuJvUD/hTrx6nTT6gvYxlT2g==
+X-Received: by 2002:a17:90b:1808:b0:2ff:6941:9b6a with SMTP id 98e67ed59e1d1-300a575a5camr7228931a91.3.1741702403671;
+        Tue, 11 Mar 2025 07:13:23 -0700 (PDT)
+Received: from rock-5b.. ([45.32.55.39])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ff4e7ff96esm11875300a91.35.2025.03.11.07.13.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Mar 2025 07:13:22 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Jimmy Hon <honyuenkwun@gmail.com>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix pcie reset gpio on Orange Pi 5 Max
+Date: Tue, 11 Mar 2025 22:12:39 +0800
+Message-ID: <20250311141245.2719796-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-ID: <5382b861.a48b.1958527c4dd.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: eygvCgCXPn_yKtBnExV8AA--.18497W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hwNXmfQINjbaQACsi
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_052238_752345_AE6597B7 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250311_071326_018745_57B4C664 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +102,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+According to the schematic, pcie reset gpio is GPIO3_D4,
+not GPIO4_D4.
+
+Fixes: c600d252dc52 ("arm64: dts: rockchip: Add Orange Pi 5 Max board")
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
+index 6e4dcd8fff26..f748c6f760d8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-compact.dtsi
+@@ -64,7 +64,7 @@ &led_blue_pwm {
+ 
+ /* phy2 */
+ &pcie2x1l1 {
+-	reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
++	reset-gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie_eth>;
+ 	status = "okay";
+ };
+-- 
+2.43.0
 
 
-Hi Vinod,
-At 2025-03-11 19:13:46, "Vinod Koul" <vkoul@kernel.org> wrote:
->On 11-03-25, 08:52, Andy Yan wrote:
->
->> Do you mean we should do it like this:
->> 
->> static int rk_udphy_dp_phy_configure(struct phy *phy,
->>                                      union phy_configure_opts *opts)
->> {
->>         struct rk_udphy *udphy = phy_get_drvdata(phy);
->>         struct phy_configure_opts_dp *dp = &opts->dp;
->>         u32 i, val, lane;
->>         int ret;
->> 
->>        .............
->>       if (dp->set_rate)
->>            	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
->>      if (dp->set_lanes)
->>                 ret = rk_udphy_dp_phy_verify_link_lanes(dp->lanes);
->>      if (dp->set_voltates)
->>                ret = rk_udphy_dp_phy_verify_link_voltate(dp->voltate);
->> 
->> 
->> Add helper for each of them ?
->
->That would look better for sure
-
-I will do as that in V2.
-
-Thanks
-
->
->-- 
->~Vinod
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
