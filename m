@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 133E9C2BA1B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDDEC35FF7
 	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Mar 2025 15:56:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,76 +12,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FTJfJQQvjSEZ2aUH6j6lzkEYAczSOlKYffRSnp2v24g=; b=isbIID0UNrQ+eC
-	fxZ7BFnfVv/JBO+m6eZNLw+sLe21JtHhZCRHiy27dS6CUiHczR+FzuK9h+enKUmzyGUnfS9HOZRIn
-	KaE0hdE64uu2r24H2Gz3mjWcGuLMUHYIQ9fr1ALb5IhXYtcE959pg7ILpvU8p8fWUPI77RxcHpnki
-	IukYuP3c4FfnxWepBFW/qipSLZOLPLvefiwW0Cj1H/wvf4a8+zMsXwNXqkhtb8VyWJl76vBDmgz5C
-	PCEtAgz+Bf1c2uHv8fmL2xvxldYK6lgBeQeG3CGi3XohzxGpPD2xqeU3XFeTOtzlvUqxtXkaPlvnh
-	i7iUsaN4wDJoJmkH/csA==;
+	List-Owner; bh=qKcea3Hp55FS+wTZjfoEg037dE+JDklaicCIDDCUKnY=; b=p5IgyqlXjt/FL+
+	BfKNGqEkuNvezyjli0iENJKK0gss5pOGDF8+8bKMQABWHaQMCenpbl3f6ZT/IKvs35q9cSoKyjinz
+	y81MfV0cShweoCcHqO/oSaIuHRzFdU+5x5cgRefDNYZ8pMiKOTr+APSbsdnFvxt9FGAUIHUTsW9OJ
+	3sxZuoy7ko+ehDBtUCja22K6bc3FrGNZWvwkvz9WwK9YEnKsz7ts9UbdQyVqHcsdJ4sVezJGyNbBJ
+	ci0F6fyqvsA1ZfmVWGFPhfk38+COnx1SAkxs+o5YXmHEGv5IlAf7bb5qqUHHJ8qMnt0oUtGxgiSiS
+	Md6fMyXxqFDRJtDkBJjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1yN-00000006ExF-0HxJ;
-	Tue, 11 Mar 2025 15:56:51 +0000
-Received: from smtp-out2.suse.de ([195.135.223.131])
+	id 1ts1yP-00000006F0n-0Mki;
+	Tue, 11 Mar 2025 15:56:53 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ts1wv-00000006Dyi-1kFj
+	id 1ts1wy-00000006E19-3iUh
 	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Mar 2025 15:55:22 +0000
+	Tue, 11 Mar 2025 15:55:26 +0000
 Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id AB64A1F444;
-	Tue, 11 Mar 2025 15:54:55 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 58CF821185;
+	Tue, 11 Mar 2025 15:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708495; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1741708494; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=H87ez1S6KJcEkfmzimTOXbDAX95sonbmvpFLLDicFno=;
-	b=LUrkOcB+tUCC1xUvAywZvTzM0q2qpN6egwI2RmHE2FCgCHKumiX5HQtShdUJgW/UqrpAsA
-	EG4UuKvJHKj7XXL/QVYOFqdDdi8CwLUc0iXvxKmJqKqrwrtMkXKmcFcoxRUxYeABVy4QkZ
-	xZsSq2txhlaTmzjkRZ6/b31oVlaMzfE=
+	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
+	b=DhXUTb/iC5eyGYFM8watz4DW/hkJMGd9JcPa/tgnIVFDiJJFtf91i0fvQR26f00aTWCsuN
+	nfVuuL2WLHeSLOvizdMva2lWIWCwQUgtA71pFCDb9fZdCokrS3fRutFzmq86rzmv9RHJ+0
+	iuhao6zVOS2L93zgyi1raYHbQB+Rh1Q=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708495;
+	s=susede2_ed25519; t=1741708494;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=H87ez1S6KJcEkfmzimTOXbDAX95sonbmvpFLLDicFno=;
-	b=xNFbW7bovIOmWpq4sOtQHOIKrbCAFvD2reGr7Tfvpo5MgR7IZYVozRo/i0kqemiKw6sqNf
-	1dpi69KqKfMkODCQ==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=LUrkOcB+;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=xNFbW7bo
+	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
+	b=Q2ThJqFOQhpqBYA2FOTtUmRLXrBmkYP0VqLqBAj39dB5c4tKcRXXVPA8rmZn5ygc7Iyk6B
+	0o9H4CtRMORYuvDQ==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b="DhXUTb/i";
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Q2ThJqFO
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1741708495; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1741708494; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=H87ez1S6KJcEkfmzimTOXbDAX95sonbmvpFLLDicFno=;
-	b=LUrkOcB+tUCC1xUvAywZvTzM0q2qpN6egwI2RmHE2FCgCHKumiX5HQtShdUJgW/UqrpAsA
-	EG4UuKvJHKj7XXL/QVYOFqdDdi8CwLUc0iXvxKmJqKqrwrtMkXKmcFcoxRUxYeABVy4QkZ
-	xZsSq2txhlaTmzjkRZ6/b31oVlaMzfE=
+	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
+	b=DhXUTb/iC5eyGYFM8watz4DW/hkJMGd9JcPa/tgnIVFDiJJFtf91i0fvQR26f00aTWCsuN
+	nfVuuL2WLHeSLOvizdMva2lWIWCwQUgtA71pFCDb9fZdCokrS3fRutFzmq86rzmv9RHJ+0
+	iuhao6zVOS2L93zgyi1raYHbQB+Rh1Q=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1741708495;
+	s=susede2_ed25519; t=1741708494;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=H87ez1S6KJcEkfmzimTOXbDAX95sonbmvpFLLDicFno=;
-	b=xNFbW7bovIOmWpq4sOtQHOIKrbCAFvD2reGr7Tfvpo5MgR7IZYVozRo/i0kqemiKw6sqNf
-	1dpi69KqKfMkODCQ==
+	bh=MlMXXFdQxI/n+TKAq4PasfKR7Xggh6ISrSBylzxHnYo=;
+	b=Q2ThJqFOQhpqBYA2FOTtUmRLXrBmkYP0VqLqBAj39dB5c4tKcRXXVPA8rmZn5ygc7Iyk6B
+	0o9H4CtRMORYuvDQ==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 0AF7813AB8;
-	Tue, 11 Mar 2025 15:54:55 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id C291413AFE;
+	Tue, 11 Mar 2025 15:54:53 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id uOo9Ac9c0GdUdQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:54:55 +0000
+	id CIsbLs1c0GdUdQAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Tue, 11 Mar 2025 15:54:53 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: simona@ffwll.ch,
 	airlied@gmail.com,
@@ -104,20 +104,15 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>
-Subject: [PATCH v4 13/25] drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Tue, 11 Mar 2025 16:47:17 +0100
-Message-ID: <20250311155120.442633-14-tzimmermann@suse.de>
+	Sui Jingfeng <sui.jingfeng@linux.dev>
+Subject: [PATCH v4 11/25] drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Tue, 11 Mar 2025 16:47:15 +0100
+Message-ID: <20250311155120.442633-12-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
 References: <20250311155120.442633-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-X-Rspamd-Queue-Id: AB64A1F444
-X-Rspamd-Action: no action
+X-Rspamd-Queue-Id: 58CF821185
 X-Spamd-Result: default: False [-1.51 / 50.00];
 	BAYES_HAM(-3.00)[100.00%];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -135,8 +130,8 @@ X-Spamd-Result: default: False [-1.51 / 50.00];
 	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_TWELVE(0.00)[26];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid,suse.de:email,quicinc.com:email,linaro.org:email];
+	RCPT_COUNT_TWELVE(0.00)[22];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:dkim,suse.de:mid,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,linux.dev:email];
 	TO_MATCH_ENVRCPT_ALL(0.00)[];
 	FROM_HAS_DN(0.00)[];
 	R_RATELIMIT(0.00)[to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
@@ -144,15 +139,15 @@ X-Spamd-Result: default: False [-1.51 / 50.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_TWO(0.00)[2];
 	DKIM_TRACE(0.00)[suse.de:+];
-	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,suse.de,linaro.org,gmail.com,quicinc.com,poorly.run,somainline.org];
-	RCVD_TLS_ALL(0.00)[];
 	FROM_EQ_ENVFROM(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FREEMAIL_ENVRCPT(0.00)[gmail.com]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Action: no action
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_085521_737047_D8845B0C 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20250311_085525_084290_D67007EF 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,74 +164,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch
-and buffer size. Alignment is specified in bytes, but the hardware
-requires the scanline pitch to be a multiple of 32 pixels. Therefore
-compute the byte size of 32 pixels in the given color mode and align
-the pitch accordingly. This replaces the existing code in the driver's
-align_pitch() helper.
-
-v3:
-- clarify pitch alignment in commit message (Dmitry)
+Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+buffer size. Align the pitch according to hardware requirements.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Rob Clark <robdclark@gmail.com>
-Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Sean Paul <sean@poorly.run>
-Cc: Marijn Suijten <marijn.suijten@somainline.org>
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
 ---
- drivers/gpu/drm/msm/msm_gem.c | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/loongson/lsdc_gem.c | 29 ++++++++---------------------
+ 1 file changed, 8 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
-index ebc9ba66efb8..a956905f1ef2 100644
---- a/drivers/gpu/drm/msm/msm_gem.c
-+++ b/drivers/gpu/drm/msm/msm_gem.c
-@@ -11,8 +11,10 @@
+diff --git a/drivers/gpu/drm/loongson/lsdc_gem.c b/drivers/gpu/drm/loongson/lsdc_gem.c
+index a720d8f53209..9f982b85301f 100644
+--- a/drivers/gpu/drm/loongson/lsdc_gem.c
++++ b/drivers/gpu/drm/loongson/lsdc_gem.c
+@@ -6,6 +6,7 @@
  #include <linux/dma-buf.h>
- #include <linux/pfn_t.h>
  
+ #include <drm/drm_debugfs.h>
 +#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_prime.h>
  #include <drm/drm_file.h>
-+#include <drm/drm_fourcc.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_prime.h>
+@@ -204,45 +205,31 @@ int lsdc_dumb_create(struct drm_file *file, struct drm_device *ddev,
+ 	const struct lsdc_desc *descp = ldev->descp;
+ 	u32 domain = LSDC_GEM_DOMAIN_VRAM;
+ 	struct drm_gem_object *gobj;
+-	size_t size;
+-	u32 pitch;
+-	u32 handle;
+ 	int ret;
  
- #include <trace/events/gpu_mem.h>
- 
-@@ -700,8 +702,29 @@ void msm_gem_unpin_iova(struct drm_gem_object *obj,
- int msm_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
- 		struct drm_mode_create_dumb *args)
- {
--	args->pitch = align_pitch(args->width, args->bpp);
--	args->size  = PAGE_ALIGN(args->pitch * args->height);
-+	u32 fourcc;
-+	const struct drm_format_info *info;
-+	u64 pitch_align;
-+	int ret;
-+
-+	/*
-+	 * Adreno needs pitch aligned to 32 pixels. Compute the number
-+	 * of bytes for a block of 32 pixels at the given color format.
-+	 * Use the result as pitch alignment.
-+	 */
-+	fourcc = drm_driver_color_mode_format(dev, args->bpp);
-+	if (fourcc == DRM_FORMAT_INVALID)
-+		return -EINVAL;
-+	info = drm_format_info(fourcc);
-+	if (!info)
-+		return -EINVAL;
-+	pitch_align = drm_format_info_min_pitch(info, 0, SZ_32);
-+	if (!pitch_align || pitch_align > U32_MAX)
-+		return -EINVAL;
-+	ret = drm_mode_size_dumb(dev, args, pitch_align, 0);
+-	if (!args->width || !args->height)
+-		return -EINVAL;
+-
+-	if (args->bpp != 32 && args->bpp != 16)
+-		return -EINVAL;
+-
+-	pitch = args->width * args->bpp / 8;
+-	pitch = ALIGN(pitch, descp->pitch_align);
+-	size = pitch * args->height;
+-	size = ALIGN(size, PAGE_SIZE);
++	ret = drm_mode_size_dumb(ddev, args, descp->pitch_align, 0);
 +	if (ret)
 +		return ret;
-+
- 	return msm_gem_new_handle(dev, file, args->size,
- 			MSM_BO_SCANOUT | MSM_BO_WC, &args->handle, "dumb");
+ 
+ 	/* Maximum single bo size allowed is the half vram size available */
+-	if (size > ldev->vram_size / 2) {
+-		drm_err(ddev, "Requesting(%zuMiB) failed\n", size >> 20);
++	if (args->size > ldev->vram_size / 2) {
++		drm_err(ddev, "Requesting(%zuMiB) failed\n", (size_t)(args->size >> PAGE_SHIFT));
+ 		return -ENOMEM;
+ 	}
+ 
+-	gobj = lsdc_gem_object_create(ddev, domain, size, false, NULL, NULL);
++	gobj = lsdc_gem_object_create(ddev, domain, args->size, false, NULL, NULL);
+ 	if (IS_ERR(gobj)) {
+ 		drm_err(ddev, "Failed to create gem object\n");
+ 		return PTR_ERR(gobj);
+ 	}
+ 
+-	ret = drm_gem_handle_create(file, gobj, &handle);
++	ret = drm_gem_handle_create(file, gobj, &args->handle);
+ 
+ 	/* drop reference from allocate, handle holds it now */
+ 	drm_gem_object_put(gobj);
+ 	if (ret)
+ 		return ret;
+ 
+-	args->pitch = pitch;
+-	args->size = size;
+-	args->handle = handle;
+-
+ 	return 0;
  }
+ 
 -- 
 2.48.1
 
