@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B26CCC28B2F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 10:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CB5C28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 10:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GlyW4Nn8lYIh+elh5jtAds6N2Cpxutow8SVT+IDQ4Oo=; b=UkGQQVY8Y7goL3V1qfPmi+QBMQ
-	XU85d2JXbZPluW7sUyLlsp5WhwvV4NJHWFvPl0kkSvgXZTf1yLTRid/tRsKC/1g073ZdBAB9a56+4
-	6jAz+WiLqPPIgKYXEsV6F22BpOBrBqVLpwOp7gi48SWGbMJlDsEvbq8OLYOXAl7ChV0nXqyHjXgrM
-	LQcHT48jgX2S0mSiZs7rXpgJWkvGv87m3SJgEiLxJPcwcnUJO/rZ9Ok+J0pmNIxfVw9aysB3+Tq6y
-	UJlzPIUbq8NuVQ28tq4izLyw6yg/kSByp3BuMnkJ3auPCxLxTHWxOXOCfbJsy03BMHzPDrMn4MJjE
-	+PAfjRaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JnWMt7PN8PzhhDrperml/puqnJmihSxaTG/r9olWrJ8=; b=BfwLtS72E3L5Y9
+	bjFsOGXEpJ/pxWg1cvuWlNOeKgcEO1+5Qzc8lNzTYqN4gdcy/4yaxq0eCmBEYWZA0w86JANvl4Bfj
+	es/wMUwzffhrcL/qgdYZzqQy7qV2itkHo/3HXS4nc4amJKWkBnvwgsgcdMrns7i7Vqz8LDZOU0PSk
+	g3U4ph2mKxX8A3ldy84FEWrrNE6R5ay5HtNw/dVDqVu5+w+SwvALpG5PdP7ooo8VsOcybCWfDM8N7
+	DhmzHJcR2sSqIp/p7yw58w/4j/czEtb7A2yaElq8rdZc8jb2HceUq6B1Y/xl3qUT9JDTth92QZDdt
+	fq1U24D8+5s/rQY23BbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJRe-000000087hn-1JKg;
-	Wed, 12 Mar 2025 10:36:14 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJPx-000000087Ov-3l2x;
-	Wed, 12 Mar 2025 10:34:31 +0000
+	id 1tsJZf-000000088s2-2hS6;
+	Wed, 12 Mar 2025 10:44:31 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tsJXz-000000088P8-3RjK;
+	Wed, 12 Mar 2025 10:42:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=GQ4IV
+	qd5vthdWR02fI9OyUNtDn4aPkc2JVI2vLesiR0=; b=ANNYtaSf1E+HNkgWNmblD
+	sN/JzKkrCvR/x+aj6ww/i3Es/DN7RQ33c/W02J+Feh1WVcAPveoFwZUAm9yrTL/3
+	ai9/3afvJwHLTKTVckkyRQetOicmV61u3k3/CBsfMw6xaBaF4sXEhvuVf/dO/tGP
+	ewJ/up5SIgy+cZyWz2jwto=
+Received: from ProDesk.. (unknown [])
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgAHUvcHZdFnEN_+Kg--.14177S2;
+	Wed, 12 Mar 2025 18:42:19 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Subject: [PATCH v2 0/7] Add support for RK3588 DisplayPort Controller
+Date: Wed, 12 Mar 2025 18:42:01 +0800
+Message-ID: <20250312104214.525242-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1741775664;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RCx5YAH/sAsaL16jy2DXOMRm0Fr1aAKlpBDGrdma5Zw=;
-	b=WNMOmc6vboNRAgv8JLDAr228Cs7eNkjbwkz0CNj6JfukEymA5BgjrT1MlN9++KpY3Lyo4F
-	PpA1H5ibX3N6R1qU0aU+JVGJesw70AXKUC2rurEwEsMedGq4zpaTxPmTsgT26JhSpP+rj2
-	c8VRPMruMYnyJdPceQhktYHaYO98OP2UxTtbsnsTbAhzzFUVJgrQPW4UVxqzWwrpf/GuHU
-	KQiriIKlpSJcjTFbkM5yblTCRpxPTKod5q4zUV4bHk0ujc5I4Ryrv25y9MBe4KFar+LxXH
-	VW9hn4uNwUf3GHlzdLON+fT9DIwEL4DsI1GSkn/T28XeywhBQlvsokD/GDUWeQ==
-Date: Wed, 12 Mar 2025 11:34:21 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Alexey Charkov <alchark@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar
- <viresh.kumar@linaro.org>, Chen-Yu Tsai <wens@kernel.org>, Diederik de Haas
- <didi.debian@cknow.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 7/8] arm64: dts: rockchip: Add OPP data for CPU cores
- on RK3588j
-In-Reply-To: <e55125ed-64fb-455e-b1e4-cebe2cf006e4@cherry.de>
-References: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
- <d8ce8db2-1717-40f8-b53e-24cc71a758c9@cherry.de>
- <CABjd4Yw-r-ogfwcrph4K1wbkybS25gk6LFg8wpqLG27uWdybNA@mail.gmail.com>
- <2914631.KiezcSG77Q@diego>
- <CABjd4YxF4N1tAgGUZk-oKkMUO+Q9rWHZsas9gMQdJ+TF4A1=NA@mail.gmail.com>
- <e55125ed-64fb-455e-b1e4-cebe2cf006e4@cherry.de>
-Message-ID: <a56b59a21dc3c21192fe45197eee4865@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-CM-TRANSID: PSgvCgAHUvcHZdFnEN_+Kg--.14177S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxZrWUZrWfWry5CFW7Gr1rJFb_yoWrGryDpa
+	1jyry5try8uFW2qFs2k3WDCrZ3Z3ZFyrWrGwn7Ja42vFy2kFyUArna9FsxXr9rJFnrAFy2
+	krsxXryxGrW2qF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UWrWwUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gsOXmfRXiailwABsz
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_033430_246446_8174689D 
-X-CRM114-Status: GOOD (  36.17  )
+X-CRM114-CacheID: sfid-20250312_034248_274125_57ADB60C 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,115 +63,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, lumag@kernel.org, devicetree@vger.kernel.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gUXVlbnRpbiwKCk9uIDIwMjUtMDMtMTIgMTE6MTUsIFF1ZW50aW4gU2NodWx6IHdyb3Rl
-Ogo+IE9uIDIvMTYvMjUgMTozMiBQTSwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4+IE9uIFNhdCwg
-RmViIDE1LCAyMDI1IGF0IDExOjMw4oCvUE0gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4gCj4+IHdyb3RlOgo+Pj4gQW0gU2Ftc3RhZywgMTUuIEZlYnJ1YXIgMjAyNSwgMTk6NTk6NDQg
-TUVaIHNjaHJpZWIgQWxleGV5IENoYXJrb3Y6Cj4+Pj4gT24gVHVlLCBGZWIgMTEsIDIwMjUgYXQg
-NzozMuKAr1BNIFF1ZW50aW4gU2NodWx6IAo+Pj4+IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+
-IHdyb3RlOgo+Pj4+PiBPbiA2LzE3LzI0IDg6MjggUE0sIEFsZXhleSBDaGFya292IHdyb3RlOgo+
-IFsuLi5dCj4+Pj4+PiArICAgICB9Owo+Pj4+Pj4gKwo+Pj4+Pj4gKyAgICAgY2x1c3RlcjJfb3Bw
-X3RhYmxlOiBvcHAtdGFibGUtY2x1c3RlcjIgewo+Pj4+Pj4gKyAgICAgICAgICAgICBjb21wYXRp
-YmxlID0gIm9wZXJhdGluZy1wb2ludHMtdjIiOwo+Pj4+Pj4gKyAgICAgICAgICAgICBvcHAtc2hh
-cmVkOwo+Pj4+Pj4gKwo+Pj4+Pj4gKyAgICAgICAgICAgICBvcHAtMTQxNjAwMDAwMCB7Cj4+Pj4+
-PiArICAgICAgICAgICAgICAgICAgICAgb3BwLWh6ID0gL2JpdHMvIDY0IDwxNDE2MDAwMDAwPjsK
-Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBvcHAtbWljcm92b2x0ID0gPDc1MDAwMCA3NTAw
-MDAgOTUwMDAwPjsKPj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBjbG9jay1sYXRlbmN5LW5z
-ID0gPDQwMDAwPjsKPj4+Pj4+ICsgICAgICAgICAgICAgfTsKPj4+Pj4+ICsgICAgICAgICAgICAg
-b3BwLTE2MDgwMDAwMDAgewo+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9IC9i
-aXRzLyA2NCA8MTYwODAwMDAwMD47Cj4+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgb3BwLW1p
-Y3Jvdm9sdCA9IDw3ODc1MDAgNzg3NTAwIDk1MDAwMD47Cj4+Pj4+PiArICAgICAgICAgICAgICAg
-ICAgICAgY2xvY2stbGF0ZW5jeS1ucyA9IDw0MDAwMD47Cj4+Pj4+PiArICAgICAgICAgICAgIH07
-Cj4+Pj4+PiArICAgICAgICAgICAgIG9wcC0xODAwMDAwMDAwIHsKPj4+Pj4+ICsgICAgICAgICAg
-ICAgICAgICAgICBvcHAtaHogPSAvYml0cy8gNjQgPDE4MDAwMDAwMDA+Owo+Pj4+Pj4gKyAgICAg
-ICAgICAgICAgICAgICAgIG9wcC1taWNyb3ZvbHQgPSA8ODc1MDAwIDg3NTAwMCA5NTAwMDA+Owo+
-Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIGNsb2NrLWxhdGVuY3ktbnMgPSA8NDAwMDA+Owo+
-Pj4+Pj4gKyAgICAgICAgICAgICB9Owo+Pj4+Pj4gKyAgICAgICAgICAgICBvcHAtMjAxNjAwMDAw
-MCB7Cj4+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgb3BwLWh6ID0gL2JpdHMvIDY0IDwyMDE2
-MDAwMDAwPjsKPj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBvcHAtbWljcm92b2x0ID0gPDk1
-MDAwMCA5NTAwMDAgOTUwMDAwPjsKPj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBjbG9jay1s
-YXRlbmN5LW5zID0gPDQwMDAwPjsKPj4+Pj4+ICsgICAgICAgICAgICAgfTsKPj4+Pj4gCj4+Pj4+
-IG9wcC0xODAwMDAwMDAwIGFuZCBvcHAtMjAxNjAwMDAwMCBzaG91bGQgYmUgcmVtb3ZlZCBhcyB3
-ZWxsLgo+Pj4+PiAKPj4+Pj4gRGlkIEkgbWlzdW5kZXJzdGFuZCB3aGF0IFJvY2tjaGlwIGRpZCBo
-ZXJlPyBBZGRpbmcgS2V2ZXIgaW4gQ2MgYXQgCj4+Pj4+IGxlYXN0Cj4+Pj4+IGZvciBhd2FyZW5l
-c3Mgb24gUm9ja2NoaXAgc2lkZSA6KQo+Pj4+PiAKPj4+Pj4gSSBndWVzcyBhbm90aGVyIG9wdGlv
-biBjb3VsZCBiZSB0byBtYXJrIHRob3NlIGFib3ZlIGFzCj4+Pj4+IAo+Pj4+PiB0dXJiby1tb2Rl
-Owo+Pj4+PiAKPj4+Pj4gdGhvdWdoIG5vIGNsdWUgd2hhdCB0aGlzIHdvdWxkIGVudGFpbC4gRnJv
-bSBhIGdsYW5jZSBhdCBjcHVmcmVxLCBpdAo+Pj4+PiBzZWVtcyB0aGF0IGZvciBSb2NrY2hpcCBz
-aW5jZSB3ZSB1c2UgdGhlIGRlZmF1bHQgY3B1ZnJlcS1kdCwgaXQgCj4+Pj4+IHdvdWxkCj4+Pj4+
-IG1hcmsgdGhvc2UgYXMgdW51c2FibGUsIHNvIGVzc2VudGlhbGx5IGEgbm8tb3AsIHNvIGJldHRl
-ciByZW1vdmUgCj4+Pj4+IHRoZW0KPj4+Pj4gZW50aXJlbHk/Cj4+Pj4gCj4+Pj4gSSBiZWxpZXZl
-IHRoZSBvcHAgY29yZSBqdXN0IG1hcmtzICd0dXJiby1tb2RlJyBvcHBzIGFzCj4+Pj4gQ1BVRlJF
-UV9CT09TVF9GUkVRLCBhbmQgY3B1ZnJlcS1kdCBvbmx5IHBhc3NlcyB0aGF0IGZsYWcgYWxvbmcg
-dG8gCj4+Pj4gdGhlCj4+Pj4gY3B1ZnJlcSBjb3JlLiBCdXQgdGhlbiB0byBhY3R1YWxseSB1c2Ug
-dGhvc2UgYm9vc3QgZnJlcXVlbmNpZXMgSSAKPj4+PiB3b3VsZAo+Pj4+IGd1ZXNzIHRoZSBnb3Zl
-cm5vciBuZWVkcyB0byBzb21laG93IGtub3cgdGhlIHBvd2VyL3RoZXJtYWwgCj4+Pj4gY29uc3Ry
-YWludHMKPj4+PiBvZiB0aGUgY2hpcD8uLiBEb24ndCBrbm93IHdoZXJlIHRoYXQgaXMgZGVmaW5l
-ZC4KPj4+IAo+Pj4gcGVyc29uYWxseSBJIGRvbid0IGJlbGlldmUgaW4gImJvb3N0IiBmcmVxdWVu
-Y2llcyAtIGV4Y2VwdCB3aGVuIHRoZXkgCj4+PiBhcmUKPj4+IGRlY2xhcmVkIG9mZmljaWFsbHku
-Cj4+PiAKPj4+IFJvY2tjaGlwIGZvciB0aGUgbG9uZ2VzdCB0aW1lIG1haW50YWlucyB0aGF0IHJ1
-bm5pbmcgdGhlIGNoaXAgb3V0c2lkZQo+Pj4gdGhlIGRlY2xhcmVkIHBvd2VyL3JhdGUgZW52ZWxv
-cGUgY2FuIHJlZHVjZSBpdHMgb3ZlcmFsbCBsaWZldGltZS4KPj4+IAo+Pj4gU28gZm9yIFJvY2tj
-aGlwIGluIG1haW5saW5lIGEgIml0IHJ1bnMgc3RhYmxlIGZvciBtZSIgaGFzIG5ldmVyIGJlZW4g
-Cj4+PiBhCj4+PiBzdWl0YWJsZSByZWFzb25pbmcgOy0pIC4KPj4gCj4+IE15IGtleSBjb25jZXJu
-IGhlcmUgd2FzIHBlcmhhcHMgdGhhdCB3ZSBhcmUgbG9va2luZyBhdCBhIGZpbGUgaW5zaWRlCj4+
-IHRoZSBSb2NrY2hpcCBzb3VyY2UgdHJlZSB3aGljaCBsb29rcyByZWxldmFudCBieSB0aGUgbmFt
-ZSBvZiBpdCwgYnV0Cj4+IGRvZXNuJ3QgYWN0dWFsbHkgZ2V0IGluY2x1ZGVkIGFueXdoZXJlIGZv
-ciBhbnkgb2YgdGhlIGJvYXJkcy4gVGhpcyBtYXkKPj4gb3IgbWF5IG5vdCBjb25zdGl0dXRlIGFu
-IGVuZG9yc2VtZW50IGJ5IFJvY2tjaGlwIG9mIGFueSBPUFBzIGxpc3RlZAo+PiB0aGVyZSA6LUQK
-PiAKPiBSb2NrY2hpcCBzdXBwb3J0IHN0YXRlZDoKPiAKPiAiIiIKPiBJZiB5b3UgcnVuIG92ZXJk
-cml2ZSBtb2RlLCB5b3UgZG8gbm90IG5lZWQgdG8gaW5jbHVkZSByazM1ODhqLmR0c2ksCj4gYW5k
-IHlvdSBjYW4gY2hhbmdlIGl0IHRvICNpbmNsZHVlIHJrMzU4OC5kdHNpIHRvIGVuc3VyZSB0aGF0
-IHRoZQo+IG1heGltdW0gZnJlcXVlbmN5IGNhbiByZWFjaCAyR0h6Cj4gCj4gYmVsb3cgcGljdHVy
-ZSBmcm9tIGRhdGFzaGVldC4KPiAiIiIKPiAKPiBUaGUgcGljdHVyZSBpcyB0aGUgdGFibGUgMy0y
-IFJlY29tbWVuZGVkIG9wZXJhdGluZyBjb25kaXRpb25zLCBwYWdlIDMwCj4gZnJvbSB0aGUgUksz
-NTg4SiBkYXRhc2hlZXQsIGUuZy4KPiBodHRwczovL3d3dy5sY3NjLmNvbS9kYXRhc2hlZXQvbGNz
-Y19kYXRhc2hlZXRfMjQwMzIwMTA1NF9Sb2NrY2hpcC1SSzM1ODhKX0MyMjM2NDE4OS5wZGYKPiAK
-PiBXaGF0IGlzIG92ZXJkcml2ZT8KPiAKPiAiIiIKPiBPdmVyZHJpdmUgbW9kZSBicmluZ3MgaGln
-aGVyIGZyZXF1ZW5jeSwgYW5kIHRoZSB2b2x0YWdlIHdpbGwgaW5jcmVhc2UKPiBhY2NvcmRpbmds
-eS4gVW5kZXIKPiB0aGUgb3ZlcmRyaXZlIG1vZGUgZm9yIGEgbG9uZyB0aW1lLCB0aGUgY2hpcHNl
-dCBtYXkgc2hvcnRlbiB0aGUKPiBsaWZldGltZSwgZXNwZWNpYWxseSBpbiBoaWdoIHRlbXBlcmF0
-dXJlIGNvbmRpdGlvbgo+ICIiIgo+IAo+IGFjY29yZGluZyB0byB0aGUgc2FtZSBkYXRhc2hlZXQs
-IGVuZCBvZiB0aGUgc2FtZSB0YWJsZSwgcGFnZSAzMS4KPiAKPiBzbyB0aGlzIHNlZW1zIGxpa2Ug
-YSB0dXJiby1tb2RlIGZyZXF1ZW5jeSB0byBtZS4KPiAKPiBBZGRpdGlvbmFsbHksIHRoZSBub3Rl
-IGZvciB0aGUgIm5vcm1hbCBtb2RlIiAodGhlIG9uZSB3aXRoIHRoZSBsb3dlcgo+IGZyZXFzKSBz
-dGF0ZXM6Cj4gCj4gIiIiCj4gTm9ybWFsIG1vZGUgbWVhbnMgdGhlIGNoaXBzZXQgd29ya3MgdW5k
-ZXIgc2FmZXR5IHZvbHRhZ2UgYW5kIGZyZXF1ZW5jeS4gCj4gRm9yIHRoZQo+IGluZHVzdHJpYWwg
-ZW52aXJvbm1lbnQsIGhpZ2hseSByZWNvbW1lbmQgdG8ga2VlcCBpbiBub3JtYWwgbW9kZSwgdGhl
-IAo+IGxpZmV0aW1lIGlzCj4gcmVhc29uYWJseSBndWFyYW50ZWVkLgo+ICIiIgo+IAo+IEkgYmVs
-aWV2ZSAiaW5kdXN0cmlhbCBlbnZpcm9ubWVudCIgbWVhbnMgUkszNTg4SiB1c2VkIGluIHRoZQo+
-IHRlbXBlcmF0dXJlcyB0aGF0IGFyZW4ndCBPSyBmb3IgdGhlIHN0YW5kYXJkIFJLMzU4OCB2YXJp
-YW50PwoKVGhhbmtzIGEgbG90IGZvciBvYnRhaW5pbmcgdGhlc2UgY2xhcmlmaWNhdGlvbnMhCgpZ
-ZXMsIEknZCBzYXkgdGhhdCBpbiB0aGlzIGNhc2UgImluZHVzdHJpYWwgZW52aXJvbm1lbnQiIGJv
-aWxzIGRvd24KdG8gdGhlIGV4dGVuZGVkIHRlbXBlcmF0dXJlIHJhbmdlIGZvciB0aGUgUkszNTg4
-SiB2YXJpYW50LgoKPj4gSSBoYXZlbid0IHNlZW4gYSBUUk0gZm9yIHRoZSBKIHZhcmlhbnQsIG5v
-ciBkbyBJIGhhdmUgYSBib2FyZCB3aXRoCj4+IFJLMzU4OEogdG8gcnVuIHRlc3RzLCBzbyBpdCB3
-b3VsZCBiZSBncmVhdCBpZiBLZXZlciBjb3VsZCBjaGltZSBpbgo+PiB3aXRoIGhvdyB0aGVzZSBP
-UFBzIGFyZSBkaWZmZXJlbnQgZnJvbSB0aGUgb3RoZXJzIChvciBub3QpLgo+PiAKPj4+IFNvIHdo
-aWxlIHRoZSBzaXR1YXRpb24gbWlnaHQgYmUgc3RyYW5nZSBmb3IgdGhlIHJrMzU4OGosIEkgcmVh
-bGx5IAo+Pj4gb25seSB3YW50Cj4+PiBjb3JyZWN0IGZyZXF1ZW5jaWVzIGhlcmUgcGxlYXNlIC0g
-bm90IGFueSBwc2V1ZG8gInR1cmJvIGZyZXFzIi4KPj4+IAo+Pj4gSSBkb24ndCBjYXJlIHRoYXQg
-bXVjaCB3aGF0IHBlb3BsZSBkbyBvbiB0aGVpciBvd24gZGV2aWNle3MvdHJlZXN9LCAKPj4+IGJ1
-dAo+Pj4gdGhlIGRldmljZXRyZWVzIHdlIHN1cHBseSBjZW50cmFsbHkgKGFuZCB0byB1LWJvb3Qs
-IGV0Yykgc2hvdWxkIG9ubHkKPj4+IGNvbnRhaW4gZnJlcXVlbmNpZXMgdmV0dGVkIGJ5IHRoZSBt
-YW51ZmFjdHVyZXIuCj4+IAo+PiBGYWlyIGVub3VnaC4gTGV0J3MganVzdCB0cnkgYW5kIGdldCBh
-bm90aGVyIGRhdGEgcG9pbnQgb24gd2hldGhlcgo+PiB0aGVzZSBmcmVxdWVuY2llcyBhcmUgdmV0
-dGVkIG9yIG5vdC4KPiAKPiBTbyB0aGUgaGlnaGVyIGZyZXFzIHNlZW1zIHRvIGJlIHZldHRlZCAo
-YW5kIHVzZWQgYnkgZGVmYXVsdCBvbgo+IFJvY2tjaGlwJ3MgQlNQIGtlcm5lbCksIGl0IGp1c3Qg
-ZmVlbHMgbGlrZSB5b3UgYXJlbid0IHJlYWxseSBzdXBwb3NlZAo+IHRvIHJ1biB0aG9zZSBoaWdo
-ZXIgZnJlcXVlbmNpZXMgYWxsIHRoZSB0aW1lPyBBbmQgZXNwZWNpYWxseSBub3QgaW4KPiAiaW5k
-dXN0cmlhbCBlbnZpcm9ubWVudCI/Cj4gCj4gSSB3b3VsZCBhc3N1bWUgd2Ugd2FudCB0byBzdGF5
-IG9uIHRoZSBzYWZlciBzaWRlIGFuZCByZW1vdmUgdGhvc2UKPiBoaWdoZXIgZnJlcXVlbmNpZXM/
-IEhlaWtvPwoKSSBhZ3JlZSwgd2Ugc2hvdWxkIHJlbW92ZSB0aGUgaGlnaGVyLWZyZXF1ZW5jeSBP
-UFBzLiAgSSdkIGxpa2UKdG8gZ28gdGhyb3VnaCBldmVyeXRoaW5nIG9uY2UgYWdhaW4gaW4gZGV0
-YWlsIGFuZCBwcmVwYXJlIGEgcGF0Y2gKdGhhdCByZW1vdmVzIHRoZSB1bnNhZmUgT1BQcywgYW5k
-IHlvdSBjb3VsZCByZXZpZXcgaXQgb25jZSBpdCdzCm9uIHRoZSBNTCwgdG8gbWFrZSBzdXJlIGl0
-J3MgZmluZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+From: Andy Yan <andy.yan@rock-chips.com>
+
+
+There are two DW DPTX based DisplayPort Controller on rk3588 which
+are compliant with the DisplayPort Specification Version 1.4 with
+the following features:
+
+* DisplayPort 1.4a
+* Main Link: 1/2/4 lanes
+* Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+* AUX channel 1Mbps
+* Single Stream Transport(SST)
+* Multistream Transport (MST)
+* Type-C support (alternate mode)
+* HDCP 2.2, HDCP 1.3
+* Supports up to 8/10 bits per color component
+* Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+* Pixel clock up to 594MHz
+* I2S, SPDIF audio interface
+
+The current version of this patch series only supports basic display outputs.
+I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
+mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
+HDCP and audio features remain unimplemented.
+For RK3588, it's only support SST, while in the upcoming RK3576, it can support
+MST output.
+
+This version still has unresolved issues highlighted by Dmitry during
+the last code review(I add TODO for them), specifically those depending
+on PHY/drm bridge framework changes. My plan is to tackle them sequentially.
+Let's make the driver itself to a usable and good shape first.
+
+Currently, there are three dependencies PATCH pending review, take care
+if there are someone want to here a try with this series[0][1][2]:
+
+[0]https://lore.kernel.org/linux-rockchip/20250302115257.188774-1-andyshrk@163.com/
+[1]https://lore.kernel.org/linux-rockchip/20250312064218.524143-1-andyshrk@163.com/T/#u
+[2]https://lore.kernel.org/linux-rockchip/20250312080041.524546-1-andyshrk@163.com/T/#u
+
+
+Changes in v2:
+- Link to V1: https://lore.kernel.org/linux-rockchip/20250223113036.74252-1-andyshrk@163.com/
+- Fix a character encoding issue
+- Fix compile error when build as module
+- Add phy init
+- Only use one dw_dp_link_train_set
+- inline dw_dp_phy_update_vs_emph
+- Use dp_sdp
+- Check return value of drm_modeset_lock
+- Merge code in atomic_pre_enable/mode_fixup to atomic_check
+- Return NULL if can't find a supported output format
+- Fix max_link_rate from plat_data
+- no include uapi path
+- switch to drmm_encoder_init
+- Sort in alphabetical order
+
+Andy Yan (7):
+  dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
+  drm/bridge: synopsys: Add DW DPTX Controller support library
+  drm/rockchip: Add RK3588 DPTX output support
+  arm64: dts: rockchip: Add DP0 for rk3588
+  arm64: dts: rockchip: Add DP1 for rk3588
+  arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+
+ .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   37 +
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
+ drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
+ drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2106 +++++++++++++++++
+ drivers/gpu/drm/rockchip/Kconfig              |    7 +
+ drivers/gpu/drm/rockchip/Makefile             |    1 +
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  154 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
+ include/drm/bridge/dw_dp.h                    |   19 +
+ 14 files changed, 2581 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+ create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+ create mode 100644 include/drm/bridge/dw_dp.h
+
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
