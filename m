@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ED38C28B28
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 08:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF4CC28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 08:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VmnGizgq5ISL45XvvFGLuhT8n4ppJ012cnvzqAocUwE=; b=RyUVdMdy3TybFX
-	wuOc376VYpyNO1FotxjoEOzvkJX4xo2wFNnAiPWlWhBIklFKIZ7asHOPxmBFnN87dKz3FbyU9RzxD
-	oZX8kZVdqUaPtlm+9ZVGviqwp1/d77lvNxDZYmLC6TstHNXV/B16MnSzXMO5qjMk+vnqO17Q6C+zM
-	OqzoanBi8oVgziYpRkvgzbkJN49RGgiLXQTlCI6k9yOyXruYJawLjq1k/K/nFb4GZJnUBW8cA2yMv
-	1plhjyX+s2lvdKNufSo6qRlM/fSdJ8Kz44OnJB1BvUv+qeyM9jXMrCXCeFU4FjR8JEioLOUR6qHsg
-	j5VnWWVXXxUXz3Qr5URA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0c3WKkLNZjQwF/z6n2/xHfY8aFmUg6rwlvxUq32FZvM=; b=DFrXoZGhId2ug+
+	2HGAz0GFXzfG09usPOfkhCaLkjr4pjNmdzOvJs3A8wxbNnheb0feEj/o4ITeQm7felDG8D88f/b1+
+	5eQAZzQkhlBGFGQeMz1jo+meIxUbXM3oJ1x2GmwfwX62vtEoF0p1s0ZV/dJk85Yf5CHPAWM7onfWS
+	ipxDSSChj89FHreW4BxG+b1DN7a3DVAywx55Sy+Wh4dci3tpCE+4zkVZVnbJBUXiOobuuDNeR3vTj
+	mzRcNBgN1nmWqzlaVC2L6ITK4JkLy6TahAGK8o6zDLTVLOUGXrlYN2hJAtaPtK7EuAzfhKh1QLLz/
+	GlxrGtxba6vuayTJ3eOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsH59-00000007mXN-0qNF;
-	Wed, 12 Mar 2025 08:04:51 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsGnx-00000007jz6-1fLS;
-	Wed, 12 Mar 2025 07:47:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=4iuFv9NTEdWlywEFlXwkd3bL0Y09KiRC4OxelSCqZ9o=; b=IVTsrl6dBifOv06yiv0vyYfOX0
-	R3kd/64HVhP9boypV2Wd80GVzOdP+IdKWse+rDLX90SfXRK6h34Byt/L25sruXGE/XNwq/rRUB4Rg
-	iSrOfh44wjAGey8w9r0dU+WMp1PV9Dm9RC3gQoiDSyQRPFB3hv70XW6TvoKZ8nT4wG1RP/tYoN0n3
-	BYRTbZoLPJQ2Hn715GwlXsH1QUdEzVSnMCe/QtpJYztH8n5OmszS03h9WyxpBzoskZLuFt8/j3VLz
-	z4t/7E3FnzzoPU7pirQhdiNpjhrEXsM6jeglcwQcZnEF9I+FPuzFsHnbTzQSbZQT3a4x5iqMvFyiW
-	1dC/IXEA==;
-Received: from ip-185-104-138-79.ptr.icomera.net ([185.104.138.79] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tsGna-0005zY-MH; Wed, 12 Mar 2025 08:46:42 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Andy Yan <andyshrk@163.com>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	Jing Luo <jing@jing.rocks>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Yao Zi <ziyao@disroot.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
+	id 1tsHBe-00000007ncX-45Vd;
+	Wed, 12 Mar 2025 08:11:34 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tsH1y-00000007m7s-2tkr;
+	Wed, 12 Mar 2025 08:01:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=4QvIQ
+	XwRafvQ580MV0Rsrv/OXQwP41zDVRl4xERsjyo=; b=HPbzTlQgCtphrtXf8ZtoJ
+	xVfmywixzn63XAIArXBq8H31CcgyJHueheoDC/3zC4mleJXlgT+6eXoVxr3ZiIGd
+	BQsjsPIc5HGMOt5lpgB9jL+vGxuDT7Dc3ueHRqfwZ7wzo7u8HWKxLkpHvjLdW6pj
+	PmFpSkKVcKWPzITq8y7NUI=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wB3RA0rP9FnyOpJSA--.4036S2;
+	Wed, 12 Mar 2025 16:00:47 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: vkoul@kernel.org
+Cc: heiko@sntech.de,
+	kishon@kernel.org,
+	sebastian.reichel@collabora.com,
+	yubing.zhang@rock-chips.com,
+	dmitry.baryshkov@linaro.org,
+	lumag@kernel.org,
+	frank.wang@rock-chips.com,
 	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix PWM pinctrl names
-Date: Wed, 12 Mar 2025 08:46:03 +0100
-Message-ID: <174176555635.249409.12410081245956028439.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250310140916.14384-2-ziyao@disroot.org>
-References: <20250310140916.14384-2-ziyao@disroot.org>
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v2] phy: rockchip: usbdp: Only verify link rates/lanes/voltage when the corresponding set flags are set
+Date: Wed, 12 Mar 2025 16:00:07 +0800
+Message-ID: <20250312080041.524546-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+X-CM-TRANSID: _____wB3RA0rP9FnyOpJSA--.4036S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxZF1DJFyUtr4fXFWrCr1ftFb_yoWrAr48pa
+	y5KFs8Gr15KFnxWay5tr1kCFn8Gan2qa1xJrWakayrX3W5A3yrZF97ury3Ar4rGr97AFWS
+	yFWftFy5CF4DA3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jwTmfUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBEOXmfRN93ULAAAsN
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_004705_430697_30DE6227 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20250312_010135_146905_183271F0 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,23 +80,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Andy Yan <andy.yan@rock-chips.com>
 
-On Mon, 10 Mar 2025 14:09:17 +0000, Yao Zi wrote:
-> These Rockchip boards assign "active" as the pinctrl name for PWM
-> controllers, which has never been supported in mainline Rockchip PWM
-> driver. It seems the name used by downstream kernel is accidentally
-> brought into maineline. Let's fix them.
-> 
-> 
+According documentation of phy_configure_opts_dp, at the configure
+stage, link rates should only be verify/configure when set_rate
+flag is set, the same applies to lanes and voltage.
 
-Applied, thanks!
+So do it as the documentation says.
+Because voltage setting depends on the lanes, link rates set
+previously, so record the link rates and lanes at it's verify stage.
 
-[1/1] arm64: dts: rockchip: Fix PWM pinctrl names
-      commit: 96d8d325324639f03fcca12e4ea92265ebb24837
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-Best regards,
+---
+
+Changes in v2:
+- Make each check of link_rates/lanes/voltages helper functions
+- Refactor commit message
+
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 87 ++++++++++++++---------
+ 1 file changed, 53 insertions(+), 34 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index c04cf64f8a35..fff04e0fbd80 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -187,6 +187,8 @@ struct rk_udphy {
+ 	u32 dp_aux_din_sel;
+ 	bool dp_sink_hpd_sel;
+ 	bool dp_sink_hpd_cfg;
++	unsigned int link_rate;
++	unsigned int lanes;
+ 	u8 bw;
+ 	int id;
+ 
+@@ -1102,15 +1104,19 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
+ 	return 0;
+ }
+ 
+-static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
++/*
++ * Verify link rate
++ */
++static int rk_udphy_dp_phy_verify_link_rate(struct rk_udphy *udphy,
++					    struct phy_configure_opts_dp *dp)
+ {
+-	switch (link_rate) {
++	switch (dp->link_rate) {
+ 	case 1620:
+ 	case 2700:
+ 	case 5400:
+ 	case 8100:
++		udphy->link_rate = dp->link_rate;
+ 		break;
+-
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -1118,45 +1124,44 @@ static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
+ 	return 0;
+ }
+ 
+-static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
+-					 struct phy_configure_opts_dp *dp)
++static int rk_udphy_dp_phy_verify_lanes(struct rk_udphy *udphy,
++					struct phy_configure_opts_dp *dp)
+ {
+-	int i, ret;
+-
+-	/* If changing link rate was required, verify it's supported. */
+-	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
+-	if (ret)
+-		return ret;
+-
+-	/* Verify lane count. */
+ 	switch (dp->lanes) {
+ 	case 1:
+ 	case 2:
+ 	case 4:
+ 		/* valid lane count. */
++		udphy->lanes = dp->lanes;
+ 		break;
+ 
+ 	default:
+ 		return -EINVAL;
+ 	}
+ 
+-	/*
+-	 * If changing voltages is required, check swing and pre-emphasis
+-	 * levels, per-lane.
+-	 */
+-	if (dp->set_voltages) {
+-		/* Lane count verified previously. */
+-		for (i = 0; i < dp->lanes; i++) {
+-			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
+-				return -EINVAL;
++	return 0;
++}
+ 
+-			/*
+-			 * Sum of voltage swing and pre-emphasis levels cannot
+-			 * exceed 3.
+-			 */
+-			if (dp->voltage[i] + dp->pre[i] > 3)
+-				return -EINVAL;
+-		}
++/*
++ * If changing voltages is required, check swing and pre-emphasis
++ * levels, per-lane.
++ */
++static int rk_udphy_dp_phy_verify_voltages(struct rk_udphy *udphy,
++					   struct phy_configure_opts_dp *dp)
++{
++	int i;
++
++	/* Lane count verified previously. */
++	for (i = 0; i < udphy->lanes; i++) {
++		if (dp->voltage[i] > 3 || dp->pre[i] > 3)
++			return -EINVAL;
++
++		/*
++		 * Sum of voltage swing and pre-emphasis levels cannot
++		 * exceed 3.
++		 */
++		if (dp->voltage[i] + dp->pre[i] > 3)
++			return -EINVAL;
+ 	}
+ 
+ 	return 0;
+@@ -1196,9 +1201,23 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
+ 	u32 i, val, lane;
+ 	int ret;
+ 
+-	ret = rk_udphy_dp_phy_verify_config(udphy, dp);
+-	if (ret)
+-		return ret;
++	if (dp->set_rate) {
++		ret = rk_udphy_dp_phy_verify_link_rate(udphy, dp);
++		if (ret)
++			return ret;
++	}
++
++	if (dp->set_lanes) {
++		ret = rk_udphy_dp_phy_verify_lanes(udphy, dp);
++		if (ret)
++			return ret;
++	}
++
++	if (dp->set_voltages) {
++		ret = rk_udphy_dp_phy_verify_voltages(udphy, dp);
++		if (ret)
++			return ret;
++	}
+ 
+ 	if (dp->set_rate) {
+ 		regmap_update_bits(udphy->pma_regmap, CMN_DP_RSTN_OFFSET,
+@@ -1243,9 +1262,9 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
+ 	}
+ 
+ 	if (dp->set_voltages) {
+-		for (i = 0; i < dp->lanes; i++) {
++		for (i = 0; i < udphy->lanes; i++) {
+ 			lane = udphy->dp_lane_sel[i];
+-			switch (dp->link_rate) {
++			switch (udphy->link_rate) {
+ 			case 1620:
+ 			case 2700:
+ 				regmap_update_bits(udphy->pma_regmap,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
