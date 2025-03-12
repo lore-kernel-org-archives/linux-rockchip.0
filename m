@@ -4,63 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4295C28B28
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 08:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E4C7C2BA1B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 08:03:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C1Ax3Cp2C6PJXUARn97yYAj2n/qiu0hP3CnVmOhUEuI=; b=1/a08kAXqa26vU
-	KlUVrrScbkwbpeUZR1Nk6PfRzk+VcQw6ygUcJbI7cI1SICfNQehcJTiWv9CS0fMbR3dzp911SOtqb
-	asrEuoCXrukfrzzcnvweECbgn8InOZyxLywNKZtLuF3NFSr1r+8S/TGoNGkFOK/KTinGNc8xP42Up
-	bYwh3Ri9B1tUfmo3hc5yxVacy+pRYxwpmosm9k0fTNcBfLhp+8/AmKAXC1o/DajI6IZYSiXiVOvuR
-	RUfPgt22plahy8177aPM52l0mtVQy7Z7cSfom8Pe+vC1E912zosewZlyI2ZIADkNB+00w/JsP54I+
-	q9JlLzqigCcGd78E85yg==;
+	List-Owner; bh=rTDspQ28iSqP/FcOn0q2832ydk6BuJf++Qm4/v4uTOw=; b=IY2hqHWQiA0kdN
+	v32btnH6TA12Bmp+yMAO0SGd3IL7cvZGRUBytW0AvxUjTpP5p6eVb29/3d3Q3kpQFRq+GNp7w+zS2
+	yU7RvDnaZim4c5wPgZ6H5iqgvFElhJPBI3sQM6fhcZwpO8RtDlJ2YyrJftsd5vVp0DCIpYdEt98Ts
+	vPW3zWSR5ABZmFCIiVIcfrp10XzLOGgXXuFQHsjfMc4/xYzEa1ZTzFZ0R3AvnzL/vGnYFgDrXk3Ae
+	5C9IMiXbkhtoXi/K5VtzH0PiwInW5901aA4kaEfEfOPBkaG8xRXsE6FaeHE67lIyvlf9aRIRG70tW
+	5zYxHDtWrFsoEGpJ3a5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsH1u-00000007m6q-0Ejh;
-	Wed, 12 Mar 2025 08:01:30 +0000
+	id 1tsH3W-00000007mIQ-0ct2;
+	Wed, 12 Mar 2025 08:03:10 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsGnc-00000007jtR-2eJs;
-	Wed, 12 Mar 2025 07:46:45 +0000
+	id 1tsGni-00000007jvS-0rPK;
+	Wed, 12 Mar 2025 07:46:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=uOaYlMR16ocTVhMNRL7whz12otBB12k1wVD5/NLoge8=; b=R+0iOhrkVzLMeMS4WK5rrjMT1j
-	xCzYlbkluSbN+92rrwqkiedltm7RTJoT4ShJHDMUAw5pUrZzqRVBKbXO2KnTeTF1ZGB4iXYOI4Q8T
-	rEWn9pa9zBbqsbVJtixVEveeO6l69pOQEfSqpjMfSo1OTMz4SHPM12Nbc8fivMcNud3Uy+DplQcEj
-	qvV/2kHhbJIjRdQ/MfGoAhpT0rzkTtpxmih18sMbjGGjWHFd6fikVEcgUdk0son5E34rzpwSQl/TV
-	2ezAlW2CAG8vcilkizrqUfcUfD2Eu95EMZc5Tuo3HdeXYrF2AfeMoo/8ojB1X3oCP4ny3W0589kEt
-	t+sum3/w==;
+	bh=i5XPMcckjmDVkHGDw8w21+ux0A2sZ5HJ62F/iHvIQ+E=; b=kpFBKee75VSxjlRgtAgD1lkUuR
+	dYMVNKJQY/VTwFqstKyHjwOIM/AICZIX+vNG8twShJ9imJOk4/hs1yp/IEPMVOMl6amC/2GiEr1Ye
+	2sfTgboFTOF89X+krJN/pUPpw8dlEkL5GGnA3aQbf3admlFKKEk6dNraDp1VSAy/bK052EQhnCKRL
+	nIx7MO/YZGwHbBkU/B/Ve/1lq1fljszLVvECU9QU1/7J7NXAZCxmN9FXOX5qnatycMWhuo8V+9YZ2
+	v53XU4KinGhFX7exrtU7xh3ofBVo1uI8aR9+cFx2EjqIiAkagzZL/NCEs8RuT4V/JUcuoBSMB31Kf
+	exN84kGA==;
 Received: from ip-185-104-138-79.ptr.icomera.net ([185.104.138.79] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tsGnZ-0005zY-BT; Wed, 12 Mar 2025 08:46:41 +0100
+	id 1tsGnY-0005zY-HN; Wed, 12 Mar 2025 08:46:40 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chen-Yu Tsai <wens@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Chen-Yu Tsai <wens@csie.org>,
+	kernel@collabora.com,
+	linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Shengyu Qu <wiagn233@outlook.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: rock-3a: Remove bluetooth node
-Date: Wed, 12 Mar 2025 08:46:02 +0100
-Message-ID: <174176555639.249409.16980967669607961093.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/2] Fix CPU and GPU clocks on RK3576
+Date: Wed, 12 Mar 2025 08:46:01 +0100
+Message-ID: <174176555624.249409.2523115865031259262.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250220165051.1889055-1-wens@kernel.org>
-References: <20250220165051.1889055-1-wens@kernel.org>
+In-Reply-To: <20250310-rk3576-scmi-clocks-v1-0-e165deb034e8@collabora.com>
+References: <20250310-rk3576-scmi-clocks-v1-0-e165deb034e8@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_004644_670502_27F8A4DD 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20250312_004650_245233_E9794158 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +90,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 21 Feb 2025 00:50:51 +0800, Chen-Yu Tsai wrote:
-> The Bluetooth node described in the device tree is actually on an M.2
-> slot. What module is present depends on what the end user installed,
-> and should be left to an overlay.
-> 
-> Remove the existing bluetooth node. This gets rid of bogus timeout
-> errors.
+On Mon, 10 Mar 2025 10:59:55 +0100, Nicolas Frattaroli wrote:
+> As Jonas Karlman pointed out on the #linux-rockchip IRC channel on
+> Libera yesterday, mainline has once again chosen a different set of
+> clock IDs compared to downstream, with hugely detrimental effects to
+> mainline's ability to use SCMI for clock operations. This is because
+> TF-A will use the downstream IDs, and when we reclock things through
+> SCMI, TF-A will get the wrong clock ID from us.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rock-3a: Remove bluetooth node
-      commit: 9602f47fe6dcca9318f35f7b72b4e98b91c5a5cf
+[1/2] dt-bindings: clock: rk3576: add SCMI clocks
+      commit: 33a409dd1fc8be5ef8f33ebed76856c4cbc5bc15
+[2/2] arm64: dts: rockchip: fix RK3576 SCMI clock IDs
+      commit: 825f48a12e597e7556768088b74f3384840df5e6
 
 Best regards,
 -- 
