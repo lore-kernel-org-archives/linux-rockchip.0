@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0284C28B2F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 16:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F74C28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 16:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=APKLXd3kks6VGd1nai9V+rCl5jbbISgnltcVqFH6hdI=; b=BnkFK+kDCYo7me
-	dKP0FQun404o09shFYDV5PRJvfudDnQrVj/bCkuHa9wmd/FCEieeehftidrhVhSe+3x6ITZ2zret9
-	s2acQ/Z+yXlcSXL3wddWxYJKi3P9CnjEkobZ2wehXGQfjGRhchnTkzYXe/XGAWhJB2SEH0f/MsFQN
-	PH7OEv//1HyuvoBw5g5/SaFY6soq25SiI87lzCpAxqIgFZy/KNas1Jc9mKBnMC0xKA5zGTEN0vP10
-	mDFcXclHvg3OwNLr4u9Kwlrwn5oemzVYBGgwKYlHd1P7UUQ/tRnDLhTT8NfIlPh2w5hN1lbBjK+tQ
-	04zh+/Y19D/CUzagGpzQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Tb830sHe9Wz7nEt6OSaurozj8LQ08vsfPMet/nkZELg=; b=Iwur+4op0nHTMP
+	vH09lmlssa+0Cm+30A+YwgUZWV1gcJEnAp0RWf5AZqa+vJpFW8HyNKv+PlLhkQiCyYVFuJRFlr1Zc
+	nrYkoXl9bsJv1yqRZm7lJufwzh5yI1y88346a9bn5Ba4AsKAw0zBM+49iH7LVwhn11wK5kZC4e/J2
+	UFciH85j3doLUdm4l0PbrQYXEBbBZ0eaKQyw/sbJKR99qFXabEptVOyVVCcyh+SZA9EE5mq2Fdd+z
+	9ji3pByohInx640kNgA4MdgWjSDqzU5vEaCpF8JvKt7aHx0HIVlcVtUHO1P8CrK3BiwY3UbYWhLXn
+	xafe/7Kj9xqa29h3ONcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsOcw-00000008zE3-3ns0;
-	Wed, 12 Mar 2025 16:08:14 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tsP46-000000092zI-0gwl;
+	Wed, 12 Mar 2025 16:36:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsOTV-00000008xOw-3Y0r;
-	Wed, 12 Mar 2025 15:58:30 +0000
+	id 1tsP2Q-000000092gp-0wxv;
+	Wed, 12 Mar 2025 16:34:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2D86EA44B8D;
-	Wed, 12 Mar 2025 15:52:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70897C4CEEA;
-	Wed, 12 Mar 2025 15:58:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E604B5C5965;
+	Wed, 12 Mar 2025 16:32:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FB91C4CEDD;
+	Wed, 12 Mar 2025 16:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741795108;
-	bh=osTh0kTm77SuvoIDJCJRCKF2vYvN9ddq8UlIlig7aSI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Ba5AEwEMuiXy9lzz2AAXDXchDbnaxUC2VLXFluNn0DxBoH1aCLg62OX9bDhcPmp/i
-	 R9dc3YS0PbeUX0XukfoSvDhnDKs0FIHzURFFH5If5UpOr+jQWIOH/e5NKl4WkgTETT
-	 sdSzsktIAOgCt6pjlw1Faejmb1rwC7kkUddchkH7o9aTNLe1A1xjdQ8697OFh86ZFJ
-	 cG/T5E//gGp2X3gbT13dd+pYx0ud9IC3GepR0Rm+mgWLbfiL+88kGgp7F/pgUSERXQ
-	 MjRbsTiXVKK6vmYRoex6m6QM4oQBH/9OPnc+SuF4NjhcJoDpsBvHPuo0+VYWE7JaSN
-	 H8tEBz9cO7Bgg==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Thorsten Blum <thorsten.blum@linux.dev>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250224220339.199180-2-thorsten.blum@linux.dev>
-References: <20250224220339.199180-2-thorsten.blum@linux.dev>
-Subject: Re: [PATCH] phy: rockchip: usbdp: Remove unnecessary bool
- conversion
-Message-Id: <174179510715.536552.15016405189922821330.b4-ty@kernel.org>
-Date: Wed, 12 Mar 2025 16:58:27 +0100
+	s=k20201202; t=1741797273;
+	bh=TrqwpzyHwOhx55DeV4/s86mTsh9lYCPM7W7wIRkTwn4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=d7XI3XO7Io7+7Mm0zhchHjlSOqTm3nhhUoH04TKNMo8T1HCNfrJUZ5cCJYN4HzEYE
+	 HWx5NnqhLcrwYnm2sDQGH+EiipCf32aZxyvKjDaG24V1uq5dULMG8+O+5j5UCvtobT
+	 0D5vxcFKvZQ2JpQGcDsWliX7YjpSftCqY7uTw/EA4ofYPj8hggDsJjtleuYb7UTQA6
+	 ZAWkshyeLFWBvpt7HbTlhikUDcIH/rhWD6U9jKQfi41OURjTx9xcCZwEFc6pXkApW0
+	 V/Wdpv5gngnM4MIot8Eyk+89MqTNkPs8MsloLQ0qiSQUMNq5MHiKlq07AfbrWrx/Nx
+	 sVoXYLx/7135g==
+Received: by wens.tw (Postfix, from userid 1000)
+	id 2512F5FC08; Thu, 13 Mar 2025 00:34:30 +0800 (CST)
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@csie.org>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH RESEND net-next v2] net: stmmac: dwmac-rk: Provide FIFO sizes for DWMAC 1000
+Date: Thu, 13 Mar 2025 00:34:26 +0800
+Message-Id: <20250312163426.2178314-1-wens@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_085829_954095_03AE3F7C 
-X-CRM114-Status: UNSURE (   4.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250312_093434_310657_FF3F8331 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,21 +80,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Chen-Yu Tsai <wens@csie.org>
 
-On Mon, 24 Feb 2025 23:03:39 +0100, Thorsten Blum wrote:
-> Remove the unnecessary bool conversion and simplify the code.
-> 
-> 
+The DWMAC 1000 DMA capabilities register does not provide actual
+FIFO sizes, nor does the driver really care. If they are not
+provided via some other means, the driver will work fine, only
+disallowing changing the MTU setting.
 
-Applied, thanks!
+Provide the FIFO sizes through the driver's platform data to enable
+MTU changes. The FIFO sizes are confirmed to be the same across RK3288,
+RK3328, RK3399 and PX30, based on their respective manuals. It is
+likely that Rockchip synthesized their DWMAC 1000 with the same
+parameters on all their chips that have it.
 
-[1/1] phy: rockchip: usbdp: Remove unnecessary bool conversion
-      commit: b52b330046d16f6e4ce94ae6fa349cc30af027b3
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+---
+Resent with correct subject tag.
 
-Best regards,
+Changes since v1:
+- Removed references to breakage from commit message as it is already fixed
+- Removed Cc stable and Fixes tags
+- Rebased onto latest -next
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 003fa5cf42c3..e57181ce5f84 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1969,8 +1969,11 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ 	/* If the stmmac is not already selected as gmac4,
+ 	 * then make sure we fallback to gmac.
+ 	 */
+-	if (!plat_dat->has_gmac4)
++	if (!plat_dat->has_gmac4) {
+ 		plat_dat->has_gmac = true;
++		plat_dat->rx_fifo_size = 4096;
++		plat_dat->tx_fifo_size = 2048;
++	}
+ 
+ 	plat_dat->set_clk_tx_rate = rk_set_clk_tx_rate;
+ 
 -- 
-~Vinod
-
+2.39.5
 
 
 _______________________________________________
