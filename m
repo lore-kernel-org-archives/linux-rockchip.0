@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D79F1C28B28
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 10:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D018DC28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 10:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Kg9nE/bbHfx6/ZjOUtCPQQgd6JYbEgYArFmJOgFY6g=; b=e1RYk+HK88Biv/
-	wfhqSjb+IY6wCZ0KH/FaZ2Hhx9GyTuplM26bRBjGF7Sixro8sU4A6OVFTW7hcU4CgMujXw09YP8Vy
-	uvTT8EGyFWP49otZ4oSsYUONt9nOMduEalOVvoa8hmBbLGXVc5c0eL0LnrKhQDTYxQU5U54Kx+9hB
-	rHlfj4z0MxTB10fJbMW24EY7g3Z8O7hhYx/g3pngIzOx15OYQX4a1gyU9L3yB4ZoYpfXEzJVW4RKj
-	98JIqUh0xBhOnAHG3o34FOgJsPTqlmE35/KdEvbdZKWISEjpqO5AHWwXiU+OFLweBJkG6mBUmMydz
-	rT0L4qiSDKqIgZPBcoyA==;
+	List-Owner; bh=7pFdwKmfTO6iY3H9Yw6XhN2aQDasjEkkyThI6YH/rSU=; b=MdQNltFvsUom0X
+	BTs3vdZ8YmAxOgG3kTusi8NcDXbgKCDAVbMoBDYbUa7tFQYg2FMP5TyxL6iyoDRuXh4vlo3hkLDnV
+	5ufIHNzTgU3oL837Ux3zj2J523MyLCqRNxzMdLTSjJcvDmJ0bkcKM8NGtEfc/RF5VcWaUTWK6eiB+
+	pyU9j7EVhaKYRGKimX2AUo1Tidg+gqK+gnqRpneRb5MspLWTZnZX58KGG4vaVuMu3tUoPn/9V+Vl3
+	VEEeq2Asxu4sts8IYNKSQ0pdOMW7gSp2Gp8Hi8j/ReX4J9uohH3THSffml5SA2z+DPOEsyseBTEtB
+	uUkRMu+9ZUpArHMcIaQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJgD-00000008AJJ-0mbB;
-	Wed, 12 Mar 2025 10:51:17 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1tsJhq-00000008B0Z-143m;
+	Wed, 12 Mar 2025 10:52:58 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsJY4-000000088R7-0np8;
-	Wed, 12 Mar 2025 10:42:53 +0000
+	id 1tsJY5-000000088R3-1r0R;
+	Wed, 12 Mar 2025 10:42:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=R3PEx
-	pSAgYFU633sginPVCP7ej78ofIXD9jecy4Y1r0=; b=PlrYWyD+WuSgp9buUMnxE
-	y/i9/ncmWxY5yLKey7KJPrLcyrKfszTkeGAmrqc7ZaGSmPvH9C0UhG0itxLGiqcC
-	7Y6LK1j8Nbwd5ns5FCSA5OOgC5yzeb4iUmWjgqYuoiqfJzfZYujOwDT9n0tiEHBv
-	JACdSdOrjykW4KxtQjesqM=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=U9Xi6
+	6zx3lYTMVUWU01S1uAKBY80ABWl/7wgerhiF4k=; b=me4ni2wmQEo6+W5IXUihN
+	Me5D62b0Lzh3kTMAVLJjLYhFy1x5f2E27/va3siWu6kMnCODyuu3UinZshUbddAT
+	EIe8sdv3Fm+dzApADqkB3OAHncUpyFNbTqq8rD30YN0yTnKC4bcz6lW7d+9g3YHU
+	pMN56q5oOOv/q7EGm6Pazk=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp2 (Coremail) with SMTP id PSgvCgAHUvcHZdFnEN_+Kg--.14177S9;
-	Wed, 12 Mar 2025 18:42:28 +0800 (CST)
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgAHUvcHZdFnEN_+Kg--.14177S8;
+	Wed, 12 Mar 2025 18:42:27 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
-Subject: [PATCH v2 7/7] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
-Date: Wed, 12 Mar 2025 18:42:08 +0800
-Message-ID: <20250312104214.525242-8-andyshrk@163.com>
+Subject: [PATCH v2 6/7] arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+Date: Wed, 12 Mar 2025 18:42:07 +0800
+Message-ID: <20250312104214.525242-7-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250312104214.525242-1-andyshrk@163.com>
 References: <20250312104214.525242-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PSgvCgAHUvcHZdFnEN_+Kg--.14177S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW7KFW7WFyfCryfCFy7Gw4rXwb_yoW8Cr1xp3
-	ZFyrs3Krn7CryYqwnavF18ZFn8Krs5ua97Ary2qry8tFW7uas3K3WrWr9Ygw1jvF1xZws0
-	qrWkXa9F93WDWaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j15l8UUUUU=
+X-CM-TRANSID: PSgvCgAHUvcHZdFnEN_+Kg--.14177S8
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ur48WF43Gr4rGryxCw4Durg_yoW8AF13p3
+	ZxArsYgrZ7urWUt3sYyr18JrsxCrs5ua97Jr13u34ftFW7Wr93trn3GrnYyry5ZF4fX3yr
+	tr1kXasF9F1UXaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07URyIbUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqB4OXmfRYalQtgAAs+
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAoOXmfRZFIQtwAAst
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_034252_557067_461982C0 
-X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-CacheID: sfid-20250312_034253_810340_E1B3CF7D 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,65 +74,63 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The HDMI Port next to Headphone Jack is drived by
-DP1 on rk3588 via a dp2hdmi converter.
-
-Add related dt nodes to enable it.
-
-Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
-but it will trigger a dtc warning like "graph node unit address
-error, expected "b"" if we use it directly after endpoint, so we
-use "b" instead here.
+Enable the Mini DisplayPort on this board.
+Note that ROCKCHIP_VOP2_EP_DP0 is defined as 10 in dt-binding header,
+but it will trigger a dtc warning like "graph node unit address error,
+expected "a"" if we use it directly after endpoint, so we use "a"
+instead here.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
 ---
 
-(no changes since v1)
+Changes in v2:
+- Sort in alphabetical order
 
- .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 37 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 37 +++++++++++++++++++
  1 file changed, 37 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index 67b886329248..29f10ec9f0c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -57,6 +57,18 @@ analog-sound {
- 			  "Headphone", "Headphones";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+index e892dd7c91aa..4f471da1d866 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+@@ -39,6 +39,18 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
  	};
  
 +	dp-con {
 +		compatible = "dp-connector";
 +		label = "DP OUT";
-+		type = "full-size";
++		type = "mini";
 +
 +		port {
 +			dp_con_in: endpoint {
-+				remote-endpoint = <&dp1_out_con>;
++				remote-endpoint = <&dp0_out_con>;
 +			};
 +		};
 +	};
 +
- 	gpio-leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -268,6 +280,24 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
+ 	hdmi-con {
+ 		compatible = "hdmi-connector";
+ 		type = "d";
+@@ -215,6 +227,24 @@ &cpu_b2 {
+ 	cpu-supply = <&vdd_cpu_big1_s0>;
  };
  
-+&dp1 {
++&dp0 {
 +	status = "okay";
++	pinctrl-0 = <&dp0m0_pins>;
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&dp1m0_pins>;
 +};
 +
-+&dp1_in {
-+	dp1_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_dp1>;
++&dp0_in {
++	dp0_in_vp2: endpoint {
++		remote-endpoint = <&vp2_out_dp0>;
 +	};
 +};
 +
-+&dp1_out {
-+	dp1_out_con: endpoint {
++&dp0_out {
++	dp0_out_con: endpoint {
 +		remote-endpoint = <&dp_con_in>;
 +	};
 +};
@@ -140,15 +138,15 @@ index 67b886329248..29f10ec9f0c1 100644
  &gpu {
  	mali-supply = <&vdd_gpu_s0>;
  	status = "okay";
-@@ -1262,3 +1292,10 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
- 		remote-endpoint = <&hdmi1_in_vp1>;
+@@ -889,3 +919,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
  	};
  };
 +
 +&vp2 {
-+	vp2_out_dp1: endpoint@b {
-+		reg = <ROCKCHIP_VOP2_EP_DP1>;
-+		remote-endpoint = <&dp1_in_vp2>;
++	vp2_out_dp0: endpoint@a {
++		reg = <ROCKCHIP_VOP2_EP_DP0>;
++		remote-endpoint = <&dp0_in_vp2>;
 +	};
 +};
 -- 
