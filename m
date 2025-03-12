@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 544E1C28B28
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 17:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C46C28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 17:09:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xCnOJR7ewvNBIDVk7mi3zfSUd6sXO7WXfHMHGuTs/G0=; b=H7oz05IrvZycoP
-	eubd6AVYmcSzlkP4tV1i7jB2S5J6KQM0gYMNCv4wOcIa8fJ03R6lrzemlKkc3CQANmUwMjoS8Twbf
-	MGPhTSBiMMUc62yr64TKZkneRjsA0+xM0TtVrhm1v9JiPtvNbn4TEaaiC6KSWm88DUeRCraQQncQP
-	zeDytNhwGBZsDDZlheL9wYUFLIkVp0xIEm1Hzg7hyDO6XOq36gc3F1orzb/1JQKxGtDNg+7y08h9M
-	/ZW+0O4v3k6lz+iasKwufBMVvhvAYOw/d5Xse1UhO5U3xEek/vf12VoAdbW8AQUaj3VKKWDQm46Qh
-	rtefM46aNKmzyXAg4nhg==;
+	List-Owner; bh=JYygSw5/UgSGxH2UEKu6Q5ty2kiGELQ3DquLt8zcgdQ=; b=mBba7B96Pd6dUc
+	8O0ZWSYFVyMJAW2obQU5fsY8nM4bhzM8rWSod9BxHVeMjH5F6hC4mpcYaV967O7VUpKfLCic5Euud
+	hiMNHD9hGV/j0/O30CjFffo3hE4gNxD0eOvbnUP6o0JcrqH4mwI15vambBf8vhd8Gk0USF/ofPZcP
+	5IOVPyJ5UiuNWhSYolGRzXheU9aGImmEnSKgPXmCyMgvtr7dOGQR4Y9pq244y+hVSD8qRPhW1GzsQ
+	9nnJf28kNZ8MIpKcjz/RA7Ep/oc59jmcKFLCZDR58Nb0vVmUDcDTjyE86tjIMuyl4ZdBjGH/w9b66
+	bb6naCngqb+G+mqlE8rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsPYV-000000095ev-3WeM;
-	Wed, 12 Mar 2025 17:07:43 +0000
+	id 1tsPa8-000000095yC-3PQx;
+	Wed, 12 Mar 2025 17:09:24 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsPWp-000000095Lx-21D6;
-	Wed, 12 Mar 2025 17:06:00 +0000
+	id 1tsPXM-000000095Tp-28SH;
+	Wed, 12 Mar 2025 17:06:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AD2C35C5D14;
-	Wed, 12 Mar 2025 17:03:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78F06C4CEEA;
-	Wed, 12 Mar 2025 17:05:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C1D815C5CD7;
+	Wed, 12 Mar 2025 17:04:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3862FC4CEEA;
+	Wed, 12 Mar 2025 17:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741799157;
-	bh=LXPq0F1Kt1oAn1lVx3bxrsOmLi3993rgPxkGU16ki0w=;
+	s=k20201202; t=1741799191;
+	bh=Ku0zOGsgy8nW6TnGyeloxNuOmdzoa1Y4XqlQKPQdjPc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OYkX+FtI4zXx9OYvx6/6TXS1gT+jC3X9UMrjTPd9qnkI3uCojU/8bMqoFrzg3meR2
-	 u2FDelRmenI4gOTbTw6KZRZTNt2DRPdMgH+Tent7RobTby5y9gQBuw2pxMtJXZTYYL
-	 61p8o7+MxZEnzKhkV3BNLEe7Zkehwlnt6v98mYsaE5P1AwJarBvHtvvm9Xbkv5kXs2
-	 6RNjrreGEv43FbpW6c3N9QvYTZ6esFpQirMa1ZN+GVOkwRtX2cYneROT3mezs7wlbM
-	 Xh5H3mCIf7s5FwnkpEUe6iQUb+NLIC1FgDF7ftqnF+PX1uKH/VeuthWVFlHLir8biP
-	 nvw/1E05hVTEA==
-Date: Wed, 12 Mar 2025 18:05:45 +0100
+	b=BUkNneDdy4EQ1GGzUpIewE4E4iTQmS0e9bVbzsMi3PHjvkj/O783BQSn5VTPFDGxt
+	 vuoTI0RaaY5t6ILNVue9uAIPvOq0kMnkTgl7nCMOhXZlkF++JB7ZrZPOOPiRqrJdSk
+	 +65SdIAYPreQ+sHathgQZz6hLTU6KOeAM/unXaVoXTrqu8VILDKEJqH5dmcueyfsfh
+	 niXA2hvWzDVU/nG1EBbBiJ1bkU0LlMYugSqNxEEAGc8ohDaEnOlQAPw3Nmifoy6EmK
+	 CwUPkmPAPJOnKVFkDCVOLiB3XBrEvLS4tzRW+29IxIToXuU+s4pcECGhuYLO0UzvRY
+	 prTE+ERTfIQ3g==
+Date: Wed, 12 Mar 2025 18:06:21 +0100
 From: Simon Horman <horms@kernel.org>
 To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -56,17 +56,18 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 2/3] net: stmmac: dwmac-rk: Validate GRF and
- peripheral GRF during probe
-Message-ID: <20250312170545.GV4159220@kernel.org>
+Subject: Re: [PATCH v2 3/3] net: stmmac: dwmac-rk: Remove unneeded GRF and
+ peripheral GRF checks
+Message-ID: <20250312170621.GW4159220@kernel.org>
 References: <20250308213720.2517944-1-jonas@kwiboo.se>
- <20250308213720.2517944-3-jonas@kwiboo.se>
+ <20250308213720.2517944-4-jonas@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250308213720.2517944-3-jonas@kwiboo.se>
+In-Reply-To: <20250308213720.2517944-4-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_100559_559648_5577FE79 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20250312_100632_588952_6106465F 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,22 +84,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 08, 2025 at 09:37:14PM +0000, Jonas Karlman wrote:
-> All Rockchip GMAC variants typically write to GRF regs to control e.g.
-> interface mode, speed and MAC rx/tx delay. Newer SoCs such as RK3576 and
-> RK3588 use a mix of GRF and peripheral GRF regs. These syscon regmaps is
-> located with help of a rockchip,grf and rockchip,php-grf phandle.
+On Sat, Mar 08, 2025 at 09:37:15PM +0000, Jonas Karlman wrote:
+> Now that GRF, and peripheral GRF where needed, is validated at probe
+> time there is no longer any need to check and log an error in each SoC
+> specific operation.
 > 
-> However, validating the rockchip,grf and rockchip,php-grf syscon regmap
-> is deferred until e.g. interface mode or speed is configured, inside the
-> individual SoC specific operations.
-> 
-> Change to validate the rockchip,grf and rockchip,php-grf syscon regmap
-> at probe time to simplify all SoC specific operations.
-> 
-> This should not introduce any backward compatibility issues as all
-> GMAC nodes have been added together with a rockchip,grf phandle (and
-> rockchip,php-grf where required) in their initial commit.
+> Remove unneeded IS_ERR() checks and early bail out from each SoC
+> specific operation.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
