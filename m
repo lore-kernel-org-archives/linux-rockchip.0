@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488A9C28B28
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 06:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F82C28B28
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 06:44:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mCpt9RJQaq4X5hPfaw50vyBBwb6d2dxKm18+osTkMHQ=; b=ohDEQZ8fDi13GA
-	kLfcE1c0/KOqGEODLeEZVMilVONqIETr2bywWjo2ABVDzXY0RSfOfFhRKPU9Dhlcaw0NP1YGwyjpO
-	mKrp2ySndTlS3eltAEAXgEwYzNov19V250XX3ILLeeH5f4Pr88LzDfikvTk+EGEKuKNsI5r/3meFe
-	+uGZ0km7l/YXaXh672z25TQuE4tsYkOy69EHADipHkXPIcOjR0u6J2cdtqHFIIRg/z4ccJCB4ytc4
-	umU6ugGvc7dBZGAvVTtt3qszaX2EW/aRUGGq53G2DAHRSSWB2twLd2kcf55zCo4kOEzwAJu+vJjvp
-	9ZAoIb295rBFw8HXd/lA==;
+	List-Owner; bh=Li3GLizHDlbPvMGFAutbfvFs36fou7+Ahme06XPxKeI=; b=wXqR2AsQFEmcLl
+	y2PlasFOYe5Ku9e1vvZyJH7C9i7t3RVG/2VWyto5yp3E5BbhTBJGiahNsXDHiaLOk3mE6oGK46zze
+	KBVj/rxA7ZJ3F0VO0zitOkE7x5Q6E+YP9Zsg3e1lGnzJ3pHAK3h/uV+Cu3qp8pVNRqJ0XIx0lkbHz
+	qFJEo0SdXaILCxyvGOQ8KbU7fqRuoBd0k7qzNahj3MB5ef5NIwGOTk+9vBmGkHOu2hh4RanF0LiN1
+	5O8kyO6T7MPb0mibSKmV3PmadfDMcQScHoH77iLNbb98wHmP/tikbUox2JU8RJ/Jc+DAHTIWVyRfx
+	b2XcowFXzStEd7q5CXRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsFSV-00000007Zvk-349L;
-	Wed, 12 Mar 2025 06:20:51 +0000
-Received: from mail-m3285.qiye.163.com ([220.197.32.85])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsFSS-00000007Zv9-2bET;
-	Wed, 12 Mar 2025 06:20:50 +0000
-Received: from xxm-vm.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id dfe6f8d0;
-	Wed, 12 Mar 2025 14:20:38 +0800 (GMT+08:00)
-From: Simon Xue <xxm@rock-chips.com>
-To: Jonathan Cameron <jic23@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	Shreeya Patel <shreeya.patel@collabora.com>,
-	linux-iio@vger.kernel.org,
+	id 1tsFpD-00000007cbm-3GL7;
+	Wed, 12 Mar 2025 06:44:19 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tsFnY-00000007c63-35t5;
+	Wed, 12 Mar 2025 06:42:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=Y9A+G
+	MGKN+/gUY1pm2Jf9qbSfuZPHc1NStiINtfiC4E=; b=otuhekoTwyJx+JqzGhknl
+	/Iv7vVn5kEHxqjM52cwGzgtak+d431j79xyTzrismLDKslKWhSqlTn2MS2U1hNdE
+	qYnxFLnpq1cDQLlFlXm4MJdqJO0UwhXd99Z+zVxZQ1jYNzw8O+d2KEc0SbRiX7Qc
+	nMcy8ciC2LTSJWZfaSDNak=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wAnro3MLNFnNsQBSQ--.34149S2;
+	Wed, 12 Mar 2025 14:42:23 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Simon Xue <xxm@rock-chips.com>
-Subject: [PATCH] iio: adc: rockchip: Fix clock initialization sequence
-Date: Wed, 12 Mar 2025 14:20:16 +0800
-Message-Id: <20250312062016.137821-1-xxm@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	linux-rockchip@lists.infradead.org,
+	piotr.oniszczuk@gmail.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: vop2: Fix interface enable/mux setting of DP1 on rk3588
+Date: Wed, 12 Mar 2025 14:42:10 +0800
+Message-ID: <20250312064218.524143-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkeT1ZNS0xPTx8ZTR9PQkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9589031fa403ackunmdfe6f8d0
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OT46HSo4MTJLTR4tHRMaFxkL
-	Ai0wCytVSlVKTE9KTE1LT0hCSUpOVTMWGhIXVQMDFjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lBWU5D
-	VUlJVUxVSkpPWVdZCAFZQUpNS043Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=MKjocUGQwhTcya7uy6KiltggFcjzV3Phkl397oA9r3ld7SCj3DgZJUuK7XTS5OQCkfNAa472trd9GRbCX4g+Kda82/uMUT2FPz5UWNMCOpQCCB9HZGu5ExIvmYdCH/NVrm+gaIbXHAims7r/TyU4Ji/kpo3QOBlLJ3GYw+uSlpc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=vy+9eAm5AK9uncKvL50rH3d9NuCi+vykIYrh7yJCQns=;
-	h=date:mime-version:subject:message-id:from;
+X-CM-TRANSID: _____wAnro3MLNFnNsQBSQ--.34149S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Cw1rKFyDJrWUWr1DGFWfKrg_yoW8JFW7pr
+	s0yryYqrWkKrWjvF1fGF4Fyr4SkanFkayIka1fKa9xGa48tr1kGr98Ja1kAry7Xr17ZFyj
+	krZIyrW3uFW2yFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jbwIDUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hYOXmfRJTn62wAAsf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250311_232049_171796_3627368F 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20250311_234237_161516_BF497942 
+X-CRM114-Status: UNSURE (   8.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,49 +76,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-clock_set_rate should be executed after devm_clk_get_enabled.
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Fixes: 97ad10bb2901 ("iio: adc: rockchip_saradc: Make use of devm_clk_get_enabled")
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
+This is a copy-paste error, which affects DP1 usage.
+
+Fixes: 328e6885996c ("drm/rockchip: vop2: Add platform specific callback")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
- drivers/iio/adc/rockchip_saradc.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index a29e54754c8f..ab4de67fb135 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -480,15 +480,6 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	if (info->reset)
- 		rockchip_saradc_reset_controller(info->reset);
- 
--	/*
--	 * Use a default value for the converter clock.
--	 * This may become user-configurable in the future.
--	 */
--	ret = clk_set_rate(info->clk, info->data->clk_rate);
--	if (ret < 0)
--		return dev_err_probe(&pdev->dev, ret,
--				     "failed to set adc clk rate\n");
--
- 	ret = regulator_enable(info->vref);
- 	if (ret < 0)
- 		return dev_err_probe(&pdev->dev, ret,
-@@ -515,6 +506,14 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	if (IS_ERR(info->clk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(info->clk),
- 				     "failed to get adc clock\n");
-+	/*
-+	 * Use a default value for the converter clock.
-+	 * This may become user-configurable in the future.
-+	 */
-+	ret = clk_set_rate(info->clk, info->data->clk_rate);
-+	if (ret < 0)
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "failed to set adc clk rate\n");
- 
- 	platform_set_drvdata(pdev, indio_dev);
- 
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index a8b1ebfc5af5..de2da4f4e434 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1753,9 +1753,9 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		dip |= FIELD_PREP(RK3588_DSP_IF_POL__DP0_PIN_POL, polflags);
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_DP1:
+-		die &= ~RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX;
+-		die |= RK3588_SYS_DSP_INFACE_EN_MIPI1 |
+-			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX, vp->id);
++		die &= ~RK3588_SYS_DSP_INFACE_EN_DP1_MUX;
++		die |= RK3588_SYS_DSP_INFACE_EN_DP1 |
++			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_DP1_MUX, vp->id);
+ 		dip &= ~RK3588_DSP_IF_POL__DP1_PIN_POL;
+ 		dip |= FIELD_PREP(RK3588_DSP_IF_POL__DP1_PIN_POL, polflags);
+ 		break;
 -- 
 2.34.1
 
