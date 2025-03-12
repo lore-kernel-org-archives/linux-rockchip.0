@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC6BC28B2F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 13:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC7AFC28B2F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Mar 2025 13:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F+t1yFfo906jBTgI7iHmB8k9IdJFmEMze3pcGP3rsAQ=; b=uxilJ/SEXpavVw
-	xswfnBvh4oZme/anJOD2Ht2jS9ucpvDpa2+BlcuJTRMg1eJ933omW+p1edCbGeDGmr5FxO20hAkgF
-	JticH85g4kX3VQHw7y4qlj1Ao4bB3JxFYGNLTbIzNp6A/yel6PboCQZLWAj6NwUolEGTticr7dWZG
-	nNeZY+BpT7IRtXwCaeUvxrEEfEYb7lFSH6F405bvodH20YXFrYIJYlAiSpGV94ZTDGsxifjFePFP2
-	JJ2D1tv+I3FXQNrZxchSF0ZqESDbFyd0OIbrpelrDiCUC8UzgQRkag9WGDVcFt9T7zXCg3HFz88CR
-	55ape0Kvo8iWT2giLO1Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/lM/u2eh3+8KKKpnGvbgrrBKLcYZM4L5ZsyL/eMyS14=; b=tN6f8dTLBtUYyD
+	s23uZ1QUIiSA7Hd8R0Jbz6JiVT2sM/TvigRVaTZiGN8f5n8GcBYDVVi7z0mMMPTZLid5togzBX5Vd
+	6UC3+/10ik+aMK0wvY5iWQSCQbRsUQY48zJikeKa7v0OmzDjaAuPYMfMjQYbhsMWGA1n1Ticjutkb
+	5vYResFAfNYaavDMRj94a2R2q9oMXWEz485xc3CIvtJ4N94TeOXqouFNqRjM/p0/z09nHl98Y7Tl0
+	uT4yrM8JV8L1hMJE0S7+f4x7Xx809HTUy1UyAXZXzKrnnVDvtO1MTMGDlN+3Ntcy/4wU6Gu5nG1t3
+	7JOt/56Qd+TR0dlJbipQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsLnI-00000008VTK-1PPJ;
-	Wed, 12 Mar 2025 13:06:44 +0000
+	id 1tsLnT-00000008Veq-3pvJ;
+	Wed, 12 Mar 2025 13:06:55 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsLMr-00000008QWF-0iaP;
-	Wed, 12 Mar 2025 12:39:26 +0000
+	id 1tsLPY-00000008R9n-053F;
+	Wed, 12 Mar 2025 12:42:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CFDB65C4645;
-	Wed, 12 Mar 2025 12:37:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 498D8C4CEEC;
-	Wed, 12 Mar 2025 12:39:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9D5075C59C2;
+	Wed, 12 Mar 2025 12:39:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E537FC4CEE3;
+	Wed, 12 Mar 2025 12:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741783164;
-	bh=qXP7e9cKm6PJkk8q6/yjyEe53myvFFMcXHURqJ4AGdU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Df38IDxapPmYq0zj8nu7ZQSbnwY8pnZmSMx0hk57NPggET6m5SxqoxMxvXfCLiYbE
-	 7hSCkbEnTKrJYxlafMpI/CqdqAJG0QsoOrfR7kyQa6ClWUpNPrklWixAZ2P5LAYAO2
-	 f3O2VROq161I6dyFkTroLnTQIs5f2/G+PP6aH1JQ1WXw/b2t1QRqBT7pqoJtsAGakz
-	 VQxCAqC6tamSVx7P7/huVu/RjNohRfFOjijFn/TbbO8L9X2DikiCEGls1om9xW8zP3
-	 O2W7Y0MPNVHSxavqmiXHrAPqY9GFXEtQ8D/7/8bEpCjMkWaUEY0jDcBw0pwAl7Ixua
-	 6j18oVK5zQZiw==
-Date: Wed, 12 Mar 2025 14:39:17 +0200
-From: Dmitry Baryshkov <lumag@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v2 7/7] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5
- ITX
-Message-ID: <q3y36jgswj4xa2g3hnptc6kgzphbqfg675r5paa2lwvdseytio@jysj4f2i6osu>
-References: <20250312104214.525242-1-andyshrk@163.com>
- <20250312104214.525242-8-andyshrk@163.com>
+	s=k20201202; t=1741783331;
+	bh=okfRAyhj/OuF18kxT3pwOtemMTI22dYU0tMF9Ccp3Ew=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BqBg9NgvEYowDAXhggHexPbakfdHGBqC9wV2b0Rl3ZCRXVOYhZK8zNCqd2dVsCmg0
+	 nsgU8+m2ARQk966pA+cSTqO3DO7eNW1iLEYCnfTd/xpcsbaY5IisSQ/GpCoFpFjMDX
+	 wFtpLjg0M3QrZ8RWNW78ZJ5ElAKMGLWdjWP0oueIvKB8sO6GpIzd8P+OSoEnKWNzKj
+	 1PjndwBzMgbsJ/WMtO1iRNUVJc42HTE0weQFBuY2EciUIs2YQ4zgLtGkzVqRcZP4hw
+	 7MYmOUt2jfkLBR2j1OClwVzzEqytddTW/hKAAhuxpn76BLX5WRXc4NmhTtu6IahG6M
+	 YWgtg1BDqcu1w==
+Received: by wens.tw (Postfix, from userid 1000)
+	id D50745FC08; Wed, 12 Mar 2025 20:42:07 +0800 (CST)
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@csie.org>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH netdev v2] net: stmmac: dwmac-rk: Provide FIFO sizes for DWMAC 1000
+Date: Wed, 12 Mar 2025 20:42:06 +0800
+Message-Id: <20250312124206.2108476-1-wens@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250312104214.525242-8-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250312_053925_295758_5A5CCEA8 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20250312_054212_099042_91612F4E 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,104 +75,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, devicetree@vger.kernel.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 12, 2025 at 06:42:08PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> The HDMI Port next to Headphone Jack is drived by
-> DP1 on rk3588 via a dp2hdmi converter.
-> 
-> Add related dt nodes to enable it.
-> 
-> Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
-> but it will trigger a dtc warning like "graph node unit address
-> error, expected "b"" if we use it directly after endpoint, so we
-> use "b" instead here.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-> 
-> (no changes since v1)
-> 
->  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 37 +++++++++++++++++++
->  1 file changed, 37 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-> index 67b886329248..29f10ec9f0c1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-> @@ -57,6 +57,18 @@ analog-sound {
->  			  "Headphone", "Headphones";
->  	};
->  
-> +	dp-con {
-> +		compatible = "dp-connector";
+From: Chen-Yu Tsai <wens@csie.org>
 
-You've written that it is an HDMI connector. Could you possibly clarify,
-why is it being registered as a DP connector? Is there any kind of
-a bridge between the DP controller and the HDMI connector?
+The DWMAC 1000 DMA capabilities register does not provide actual
+FIFO sizes, nor does the driver really care. If they are not
+provided via some other means, the driver will work fine, only
+disallowing changing the MTU setting.
 
-> +		label = "DP OUT";
-> +		type = "full-size";
-> +
-> +		port {
-> +			dp_con_in: endpoint {
-> +				remote-endpoint = <&dp1_out_con>;
-> +			};
-> +		};
-> +	};
-> +
->  	gpio-leds {
->  		compatible = "gpio-leds";
->  		pinctrl-names = "default";
-> @@ -268,6 +280,24 @@ &cpu_l3 {
->  	cpu-supply = <&vdd_cpu_lit_s0>;
->  };
->  
-> +&dp1 {
-> +	status = "okay";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&dp1m0_pins>;
-> +};
-> +
-> +&dp1_in {
-> +	dp1_in_vp2: endpoint {
-> +		remote-endpoint = <&vp2_out_dp1>;
-> +	};
-> +};
-> +
-> +&dp1_out {
-> +	dp1_out_con: endpoint {
-> +		remote-endpoint = <&dp_con_in>;
-> +	};
-> +};
-> +
->  &gpu {
->  	mali-supply = <&vdd_gpu_s0>;
->  	status = "okay";
-> @@ -1262,3 +1292,10 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
->  		remote-endpoint = <&hdmi1_in_vp1>;
->  	};
->  };
-> +
-> +&vp2 {
-> +	vp2_out_dp1: endpoint@b {
-> +		reg = <ROCKCHIP_VOP2_EP_DP1>;
-> +		remote-endpoint = <&dp1_in_vp2>;
-> +	};
-> +};
-> -- 
-> 2.34.1
-> 
+Provide the FIFO sizes through the driver's platform data to enable
+MTU changes. The FIFO sizes are confirmed to be the same across RK3288,
+RK3328, RK3399 and PX30, based on their respective manuals. It is
+likely that Rockchip synthesized their DWMAC 1000 with the same
+parameters on all their chips that have it.
 
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+---
+Changes since v1:
+- Removed references to breakage from commit message as it is already fixed
+- Removed Cc stable and Fixes tags
+- Rebased onto latest -next
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 003fa5cf42c3..e57181ce5f84 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1969,8 +1969,11 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ 	/* If the stmmac is not already selected as gmac4,
+ 	 * then make sure we fallback to gmac.
+ 	 */
+-	if (!plat_dat->has_gmac4)
++	if (!plat_dat->has_gmac4) {
+ 		plat_dat->has_gmac = true;
++		plat_dat->rx_fifo_size = 4096;
++		plat_dat->tx_fifo_size = 2048;
++	}
+ 
+ 	plat_dat->set_clk_tx_rate = rk_set_clk_tx_rate;
+ 
 -- 
-With best wishes
-Dmitry
+2.39.5
+
 
 _______________________________________________
 Linux-rockchip mailing list
