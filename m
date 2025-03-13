@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC7D4C28B28
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 10:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDBDC28B28
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 10:46:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Lxd+c1uiVELswgDmPhAgeJksp4qLrVUgl34qfz16Sns=; b=UkHJ9bD7d9NqWZEzK70PR6YQfC
-	ajbRsGfHDYyFWyWk5eq5PV6RQo8IXZ+l+gA9R7I80y2PtyU7Rw1KWiB15hmC7g4D9m0YiESOnnlTv
-	PKMqY5LMxjUGaY6LCIzXn0sx4hCNR+SPazBU4FhvYYxkoB2e4Zfvngx9TjV8iselBlKi4usEEJMjF
-	GeMQ4ISXK9YX75jnLRAetAFMLO65YlxCip3z9YugvFNWTTg7a9gN2H7nmKzcYYoBRompKhXcljIlO
-	qdC+Deus7Ksyenbjl4Bko9DOFhhmmzU+HvM9VAFvb0oXPTHHZD41C5VPUALH+SN8MAbyJwguQA+EL
-	K1adn+fw==;
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Aq68Ueaftt6ZY01MKfVz9qKz40fNWG5+h+5AKLAUs54=; b=AGsB+jEn4O1NWuhClVQMCwjJjM
+	uBEyn0qM7COJ4v+OfnWboPBfT4TwL/XxTCawOf0+/VAKwQf8RILYCNu9HfHIH2I98UK/jcKCATJzN
+	gtooHe/0v3eF6zLKcBsraoGk7R80ZPgHE9bzey94QxzwvuwWn+7IBxQR+Z375XbVTKnx1cjIgqpaZ
+	QbKPb7n2qZ3u6lIjYPBEAHp9mZ/OsfPu5rSXLGaGQ+LeR/X7Ak7YFNIqPtna66baBAx90pylLsD/o
+	Tihed7wL+cItwWUxUo3kqPyRpqnt5gAy4wrF9OY4DQqT4Zp6txOUwhYQJzh456I4aRlodvJ139f/P
+	V53I+wPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsfsY-0000000At9b-3mKD;
-	Thu, 13 Mar 2025 10:33:30 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tsg4e-0000000AvNK-2BUe;
+	Thu, 13 Mar 2025 10:46:00 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsfqq-0000000AspW-2PRY;
-	Thu, 13 Mar 2025 10:31:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741861902;
-	bh=APrzpYMg+KdEjqb0cZBnXIO6Frgv6XgZNdVuk7y2qgs=;
-	h=Date:To:Cc:From:Subject:From;
-	b=CUirAxjOH46kwtDn4BQSG+l9klchYnOdr1ojKEikgXWs03pvQxEIbCm6H32AfIpmh
-	 P8N3QaW7pivna1OEO3XSVTZAzbw8EQqAG60S9qj/QTHaanwsXMqcwFvbAPMJ590rCN
-	 HvNxGxZ3JC7T9VDJP9FwXSDuQVuTX+1XVheAMllbbz0FAwxwOTvX7LohJQmfqPDRRb
-	 eqOM31pN/xeMgyzRAkqjNK6N8v9V/8alSRsSPUe4dZvztzXuFh6seWAlyySmijzLEt
-	 +FhUuoXJG7zzyHkX4Ip117GgFBSfFh3WlH4lsDUvuumG2sGu2LrhWsx4p7usfqsn1w
-	 d3hpu67J2RUHg==
-Received: from [192.168.50.250] (unknown [171.76.87.92])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5417717E017D;
-	Thu, 13 Mar 2025 11:31:39 +0100 (CET)
-Message-ID: <63dfd5b7-8a54-44a3-9530-f8dcd77a21d1@collabora.com>
-Date: Thu, 13 Mar 2025 16:01:36 +0530
+	id 1tsg1A-0000000AuId-1i2W;
+	Thu, 13 Mar 2025 10:42:26 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: linux-rockchip@lists.infradead.org,
- dri-devel <dri-devel@lists.freedesktop.org>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
- tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
- Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
- Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>,
- Helen Mae Koike Fornazier <helen.fornazier@gmail.com>,
- sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
-From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: rockchip: kms_bw@linear-tiling-1-displays-3840x2160p flake
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1741862539;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LFm3KsmAW7VDcqDfFUvV8TrvWBGDHYSxcO8XpMmIi+o=;
+	b=ecwBlwCKU6P8di9N2w737dS2NNAKJ9CyOCuMtbfDwzW9u69CT/TRIeJEFxjk/182gVtIzR
+	se7/9NEMVL1oLKstEyNFEECefTHeCNqkAlqHz/SdZeUWGGOxeUbE0/baIX/9Sm0z8Qg7qo
+	2AY+7InpS1r2CjHAFmc2VKC/1nqlM8hW73X3y1o9iFWOZuFH9B2OZO/gcoKP/ls7Xu2zld
+	LLZ+LfRFH/Hv4Y66qW1WfAgQ0x7tjTCF80CxqqHvrFJWmk7pkInWXwBXR5ZG7PpOyR1cxE
+	S3CXyNn85silJPhR6hoGeO0jIwQCF3PnTaI2VqP2iEzbFQdlTBEsuJUtMT15/A==
+Date: Thu, 13 Mar 2025 11:42:17 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Alexey Charkov <alchark@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar
+ <viresh.kumar@linaro.org>, Chen-Yu Tsai <wens@kernel.org>, Diederik de Haas
+ <didi.debian@cknow.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v5 7/8] arm64: dts: rockchip: Add OPP data for CPU cores
+ on RK3588j
+In-Reply-To: <a56b59a21dc3c21192fe45197eee4865@manjaro.org>
+References: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
+ <d8ce8db2-1717-40f8-b53e-24cc71a758c9@cherry.de>
+ <CABjd4Yw-r-ogfwcrph4K1wbkybS25gk6LFg8wpqLG27uWdybNA@mail.gmail.com>
+ <2914631.KiezcSG77Q@diego>
+ <CABjd4YxF4N1tAgGUZk-oKkMUO+Q9rWHZsas9gMQdJ+TF4A1=NA@mail.gmail.com>
+ <e55125ed-64fb-455e-b1e4-cebe2cf006e4@cherry.de>
+ <a56b59a21dc3c21192fe45197eee4865@manjaro.org>
+Message-ID: <2cf3889741f84584d8f23a4407fed08e@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_033144_918375_54BD1299 
-X-CRM114-Status: UNSURE (   3.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250313_034224_782567_89A3E9AB 
+X-CRM114-Status: GOOD (  30.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,442 +78,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
-
-There are some flake test reported for rockchip driver testing in drm-ci.
-
-# Board Name: rk3399-gru-kevin
-# Failure Rate: 20
-# IGT Version: 1.30-g04bedb923
-# Linux Version: 6.14.0-rc4
-kms_bw@linear-tiling-1-displays-3840x2160p
-
-11:38:08.782: DEBUG - Begin test kms_bw@linear-tiling-1-displays-3840x2160p
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Test assertion failure function igt_pipe_crc_start, file 
-../lib/igt_pipe_crc.c:387:
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Failed assertion: pipe_crc->crc_fd != -1
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Last errno: 5, Input/output error
-11:38:08.782: ERROR - Igt error: Subtest 
-linear-tiling-1-displays-3840x2160p failed.
-11:38:08.782: ERROR - Igt error: **** DEBUG ****
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
-passed: !(pipe >= num_pipes)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Test 
-requirement passed: plane_idx >= 0 && plane_idx < pipe->n_planes
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Test 
-requirement passed: plane_idx >= 0 && plane_idx < pipe->n_planes
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
-passed: data->output[0]
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
-passed: !(physical && pipe >= data->connected_outputs)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(width=3840, height=2160, 
-format=XR24(0x34325258), modifier=0x0, size=0)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(handle=1, pitch=15360)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) ioctl_wrappers-DEBUG: 
-Test requirement passed: igt_has_fb_modifiers(fd)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: Test 
-requirement passed: cairo_surface_status(fb->cairo_surface) == 
-CAIRO_STATUS_SUCCESS
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-eDP-1: set_pipe(A)
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-eDP-1: Selecting pipe A
-11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-A.0: plane_set_fb(55)
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-A.0: plane_set_size (3840x2160)
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-A.0: fb_set_position(0,0)
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-A.0: fb_set_size(3840x2160)
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) INFO: Assigning pipe A to 
-output eDP-1 with mode 3840x2160p
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-commit {
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "GAMMA_LUT" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "MODE_ID" to 0x39/57
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "ACTIVE" to 0x1/1
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "VRR_ENABLED" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.0, fb 55
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_W" to 0xf000000/251658240
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_H" to 0x8700000/141557760
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_W" to 0xf00/3840
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_H" to 0x870/2160
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "FB_ID" to 0x37/55
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_ID" to 0x26/38
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "rotation" to 0x1/1
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.1, fb 0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "rotation" to 0x1/1
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.2, fb 0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "rotation" to 0x1/1
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.3, fb 0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "rotation" to 0x1/1
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "GAMMA_LUT" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "MODE_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "ACTIVE" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "VRR_ENABLED" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: B.0, fb 0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "rotation" to 0x1/1
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: B.1, fb 0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "rotation" to 0x1/1
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   eDP-1: preparing atomic, pipe: A
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: eDP-1: 
-Setting property "CRTC_ID" to 0x26/38
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: }
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
-passed: !(ret != 0)
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-commit {
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "GAMMA_LUT" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "MODE_ID" to 0x39/57
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "ACTIVE" to 0x1/1
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
-Setting property "VRR_ENABLED" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.0, fb 55
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_W" to 0xf000000/251658240
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_H" to 0x8700000/141557760
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_W" to 0xf00/3840
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_H" to 0x870/2160
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "FB_ID" to 0x37/55
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_ID" to 0x26/38
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
-Setting property "rotation" to 0x1/1
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.1, fb 0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
-Setting property "rotation" to 0x1/1
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.2, fb 0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
-Setting property "rotation" to 0x1/1
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: A.3, fb 0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
-Setting property "rotation" to 0x1/1
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "GAMMA_LUT" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "MODE_ID" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "ACTIVE" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
-Setting property "VRR_ENABLED" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: B.0, fb 0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
-Setting property "rotation" to 0x1/1
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   populating plane data: B.1, fb 0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_X" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_Y" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_W" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "SRC_H" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_X" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_Y" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_W" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_H" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "FB_ID" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "CRTC_ID" to 0x0/0
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
-Setting property "rotation" to 0x1/1
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
-   eDP-1: preparing atomic, pipe: A
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: eDP-1: 
-Setting property "CRTC_ID" to 0x26/38
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: }
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Test assertion failure function igt_pipe_crc_start, file 
-../lib/igt_pipe_crc.c:387:
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Failed assertion: pipe_crc->crc_fd != -1
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
-Last errno: 5, Input/output error
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO: Stack trace:
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #0 
-../lib/igt_core.c:2055 __igt_fail_assert()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #1 
-../lib/igt_pipe_crc.c:433 igt_pipe_crc_get_crcs()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #2 
-../lib/igt_pipe_crc.c:592 igt_pipe_crc_collect_crc()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #3 
-../tests/kms_bw.c:249 run_test_linear_tiling()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #4 
-../tests/kms_bw.c:287 __igt_unique____real_main264()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #5 
-../tests/kms_bw.c:264 main()
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #6 
-[__libc_init_first+0x80]
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #7 
-[__libc_start_main+0x98]
-11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #8 
-[_start+0x30]
-11:38:08.786: ERROR - Igt error: ****  END  ****
-11:38:08.786: ERROR - Test kms_bw@linear-tiling-1-displays-3840x2160p: 
-Fail: See "/results/igt.kms_bw@linear-tiling-1-displays-3840x2160p.log"
-11:38:08.786: DEBUG - End test kms_bw@linear-tiling-1-displays-3840x2160p
-
-Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/72651219
-
-Please could you have a look at these test results and let us know if 
-you need more information. Thank you.
-
-Regards,
-Vignesh
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gYWxsLAoKT24gMjAyNS0wMy0xMiAxMTozNCwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IE9u
+IDIwMjUtMDMtMTIgMTE6MTUsIFF1ZW50aW4gU2NodWx6IHdyb3RlOgo+PiBPbiAyLzE2LzI1IDE6
+MzIgUE0sIEFsZXhleSBDaGFya292IHdyb3RlOgo+Pj4gT24gU2F0LCBGZWIgMTUsIDIwMjUgYXQg
+MTE6MzDigK9QTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiAKPj4+IHdyb3RlOgo+
+Pj4+IEFtIFNhbXN0YWcsIDE1LiBGZWJydWFyIDIwMjUsIDE5OjU5OjQ0IE1FWiBzY2hyaWViIEFs
+ZXhleSBDaGFya292Ogo+Pj4+PiBPbiBUdWUsIEZlYiAxMSwgMjAyNSBhdCA3OjMy4oCvUE0gUXVl
+bnRpbiBTY2h1bHogCj4+Pj4+IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+IHdyb3RlOgo+Pj4+
+Pj4gT24gNi8xNy8yNCA4OjI4IFBNLCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPj4gWy4uLl0KPj4+
+Pj4+PiArICAgICB9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArICAgICBjbHVzdGVyMl9vcHBfdGFibGU6
+IG9wcC10YWJsZS1jbHVzdGVyMiB7Cj4+Pj4+Pj4gKyAgICAgICAgICAgICBjb21wYXRpYmxlID0g
+Im9wZXJhdGluZy1wb2ludHMtdjIiOwo+Pj4+Pj4+ICsgICAgICAgICAgICAgb3BwLXNoYXJlZDsK
+Pj4+Pj4+PiArCj4+Pj4+Pj4gKyAgICAgICAgICAgICBvcHAtMTQxNjAwMDAwMCB7Cj4+Pj4+Pj4g
+KyAgICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9IC9iaXRzLyA2NCA8MTQxNjAwMDAwMD47Cj4+
+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1taWNyb3ZvbHQgPSA8NzUwMDAwIDc1MDAw
+MCA5NTAwMDA+Owo+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBjbG9jay1sYXRlbmN5LW5z
+ID0gPDQwMDAwPjsKPj4+Pj4+PiArICAgICAgICAgICAgIH07Cj4+Pj4+Pj4gKyAgICAgICAgICAg
+ICBvcHAtMTYwODAwMDAwMCB7Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9
+IC9iaXRzLyA2NCA8MTYwODAwMDAwMD47Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9w
+cC1taWNyb3ZvbHQgPSA8Nzg3NTAwIDc4NzUwMCA5NTAwMDA+Owo+Pj4+Pj4+ICsgICAgICAgICAg
+ICAgICAgICAgICBjbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsKPj4+Pj4+PiArICAgICAgICAg
+ICAgIH07Cj4+Pj4+Pj4gKyAgICAgICAgICAgICBvcHAtMTgwMDAwMDAwMCB7Cj4+Pj4+Pj4gKyAg
+ICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9IC9iaXRzLyA2NCA8MTgwMDAwMDAwMD47Cj4+Pj4+
+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1taWNyb3ZvbHQgPSA8ODc1MDAwIDg3NTAwMCA5
+NTAwMDA+Owo+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBjbG9jay1sYXRlbmN5LW5zID0g
+PDQwMDAwPjsKPj4+Pj4+PiArICAgICAgICAgICAgIH07Cj4+Pj4+Pj4gKyAgICAgICAgICAgICBv
+cHAtMjAxNjAwMDAwMCB7Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9IC9i
+aXRzLyA2NCA8MjAxNjAwMDAwMD47Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIG9wcC1t
+aWNyb3ZvbHQgPSA8OTUwMDAwIDk1MDAwMCA5NTAwMDA+Owo+Pj4+Pj4+ICsgICAgICAgICAgICAg
+ICAgICAgICBjbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsKPj4+Pj4+PiArICAgICAgICAgICAg
+IH07Cj4+Pj4+PiAKPj4+Pj4+IG9wcC0xODAwMDAwMDAwIGFuZCBvcHAtMjAxNjAwMDAwMCBzaG91
+bGQgYmUgcmVtb3ZlZCBhcyB3ZWxsLgo+Pj4+Pj4gCj4+Pj4+PiBEaWQgSSBtaXN1bmRlcnN0YW5k
+IHdoYXQgUm9ja2NoaXAgZGlkIGhlcmU/IEFkZGluZyBLZXZlciBpbiBDYyBhdCAKPj4+Pj4+IGxl
+YXN0Cj4+Pj4+PiBmb3IgYXdhcmVuZXNzIG9uIFJvY2tjaGlwIHNpZGUgOikKPj4+Pj4+IAo+Pj4+
+Pj4gSSBndWVzcyBhbm90aGVyIG9wdGlvbiBjb3VsZCBiZSB0byBtYXJrIHRob3NlIGFib3ZlIGFz
+Cj4+Pj4+PiAKPj4+Pj4+IHR1cmJvLW1vZGU7Cj4+Pj4+PiAKPj4+Pj4+IHRob3VnaCBubyBjbHVl
+IHdoYXQgdGhpcyB3b3VsZCBlbnRhaWwuIEZyb20gYSBnbGFuY2UgYXQgY3B1ZnJlcSwgCj4+Pj4+
+PiBpdAo+Pj4+Pj4gc2VlbXMgdGhhdCBmb3IgUm9ja2NoaXAgc2luY2Ugd2UgdXNlIHRoZSBkZWZh
+dWx0IGNwdWZyZXEtZHQsIGl0IAo+Pj4+Pj4gd291bGQKPj4+Pj4+IG1hcmsgdGhvc2UgYXMgdW51
+c2FibGUsIHNvIGVzc2VudGlhbGx5IGEgbm8tb3AsIHNvIGJldHRlciByZW1vdmUgCj4+Pj4+PiB0
+aGVtCj4+Pj4+PiBlbnRpcmVseT8KPj4+Pj4gCj4+Pj4+IEkgYmVsaWV2ZSB0aGUgb3BwIGNvcmUg
+anVzdCBtYXJrcyAndHVyYm8tbW9kZScgb3BwcyBhcwo+Pj4+PiBDUFVGUkVRX0JPT1NUX0ZSRVEs
+IGFuZCBjcHVmcmVxLWR0IG9ubHkgcGFzc2VzIHRoYXQgZmxhZyBhbG9uZyB0byAKPj4+Pj4gdGhl
+Cj4+Pj4+IGNwdWZyZXEgY29yZS4gQnV0IHRoZW4gdG8gYWN0dWFsbHkgdXNlIHRob3NlIGJvb3N0
+IGZyZXF1ZW5jaWVzIEkgCj4+Pj4+IHdvdWxkCj4+Pj4+IGd1ZXNzIHRoZSBnb3Zlcm5vciBuZWVk
+cyB0byBzb21laG93IGtub3cgdGhlIHBvd2VyL3RoZXJtYWwgCj4+Pj4+IGNvbnN0cmFpbnRzCj4+
+Pj4+IG9mIHRoZSBjaGlwPy4uIERvbid0IGtub3cgd2hlcmUgdGhhdCBpcyBkZWZpbmVkLgo+Pj4+
+IAo+Pj4+IHBlcnNvbmFsbHkgSSBkb24ndCBiZWxpZXZlIGluICJib29zdCIgZnJlcXVlbmNpZXMg
+LSBleGNlcHQgd2hlbiB0aGV5IAo+Pj4+IGFyZQo+Pj4+IGRlY2xhcmVkIG9mZmljaWFsbHkuCj4+
+Pj4gCj4+Pj4gUm9ja2NoaXAgZm9yIHRoZSBsb25nZXN0IHRpbWUgbWFpbnRhaW5zIHRoYXQgcnVu
+bmluZyB0aGUgY2hpcCAKPj4+PiBvdXRzaWRlCj4+Pj4gdGhlIGRlY2xhcmVkIHBvd2VyL3JhdGUg
+ZW52ZWxvcGUgY2FuIHJlZHVjZSBpdHMgb3ZlcmFsbCBsaWZldGltZS4KPj4+PiAKPj4+PiBTbyBm
+b3IgUm9ja2NoaXAgaW4gbWFpbmxpbmUgYSAiaXQgcnVucyBzdGFibGUgZm9yIG1lIiBoYXMgbmV2
+ZXIgYmVlbiAKPj4+PiBhCj4+Pj4gc3VpdGFibGUgcmVhc29uaW5nIDstKSAuCj4+PiAKPj4+IE15
+IGtleSBjb25jZXJuIGhlcmUgd2FzIHBlcmhhcHMgdGhhdCB3ZSBhcmUgbG9va2luZyBhdCBhIGZp
+bGUgaW5zaWRlCj4+PiB0aGUgUm9ja2NoaXAgc291cmNlIHRyZWUgd2hpY2ggbG9va3MgcmVsZXZh
+bnQgYnkgdGhlIG5hbWUgb2YgaXQsIGJ1dAo+Pj4gZG9lc24ndCBhY3R1YWxseSBnZXQgaW5jbHVk
+ZWQgYW55d2hlcmUgZm9yIGFueSBvZiB0aGUgYm9hcmRzLiBUaGlzIAo+Pj4gbWF5Cj4+PiBvciBt
+YXkgbm90IGNvbnN0aXR1dGUgYW4gZW5kb3JzZW1lbnQgYnkgUm9ja2NoaXAgb2YgYW55IE9QUHMg
+bGlzdGVkCj4+PiB0aGVyZSA6LUQKPj4gCj4+IFJvY2tjaGlwIHN1cHBvcnQgc3RhdGVkOgo+PiAK
+Pj4gIiIiCj4+IElmIHlvdSBydW4gb3ZlcmRyaXZlIG1vZGUsIHlvdSBkbyBub3QgbmVlZCB0byBp
+bmNsdWRlIHJrMzU4OGouZHRzaSwKPj4gYW5kIHlvdSBjYW4gY2hhbmdlIGl0IHRvICNpbmNsZHVl
+IHJrMzU4OC5kdHNpIHRvIGVuc3VyZSB0aGF0IHRoZQo+PiBtYXhpbXVtIGZyZXF1ZW5jeSBjYW4g
+cmVhY2ggMkdIego+PiAKPj4gYmVsb3cgcGljdHVyZSBmcm9tIGRhdGFzaGVldC4KPj4gIiIiCj4+
+IAo+PiBUaGUgcGljdHVyZSBpcyB0aGUgdGFibGUgMy0yIFJlY29tbWVuZGVkIG9wZXJhdGluZyBj
+b25kaXRpb25zLCBwYWdlIDMwCj4+IGZyb20gdGhlIFJLMzU4OEogZGF0YXNoZWV0LCBlLmcuCj4+
+IGh0dHBzOi8vd3d3Lmxjc2MuY29tL2RhdGFzaGVldC9sY3NjX2RhdGFzaGVldF8yNDAzMjAxMDU0
+X1JvY2tjaGlwLVJLMzU4OEpfQzIyMzY0MTg5LnBkZgo+PiAKPj4gV2hhdCBpcyBvdmVyZHJpdmU/
+Cj4+IAo+PiAiIiIKPj4gT3ZlcmRyaXZlIG1vZGUgYnJpbmdzIGhpZ2hlciBmcmVxdWVuY3ksIGFu
+ZCB0aGUgdm9sdGFnZSB3aWxsIGluY3JlYXNlCj4+IGFjY29yZGluZ2x5LiBVbmRlcgo+PiB0aGUg
+b3ZlcmRyaXZlIG1vZGUgZm9yIGEgbG9uZyB0aW1lLCB0aGUgY2hpcHNldCBtYXkgc2hvcnRlbiB0
+aGUKPj4gbGlmZXRpbWUsIGVzcGVjaWFsbHkgaW4gaGlnaCB0ZW1wZXJhdHVyZSBjb25kaXRpb24K
+Pj4gIiIiCj4+IAo+PiBhY2NvcmRpbmcgdG8gdGhlIHNhbWUgZGF0YXNoZWV0LCBlbmQgb2YgdGhl
+IHNhbWUgdGFibGUsIHBhZ2UgMzEuCj4+IAo+PiBzbyB0aGlzIHNlZW1zIGxpa2UgYSB0dXJiby1t
+b2RlIGZyZXF1ZW5jeSB0byBtZS4KPj4gCj4+IEFkZGl0aW9uYWxseSwgdGhlIG5vdGUgZm9yIHRo
+ZSAibm9ybWFsIG1vZGUiICh0aGUgb25lIHdpdGggdGhlIGxvd2VyCj4+IGZyZXFzKSBzdGF0ZXM6
+Cj4+IAo+PiAiIiIKPj4gTm9ybWFsIG1vZGUgbWVhbnMgdGhlIGNoaXBzZXQgd29ya3MgdW5kZXIg
+c2FmZXR5IHZvbHRhZ2UgYW5kIAo+PiBmcmVxdWVuY3kuIEZvciB0aGUKPj4gaW5kdXN0cmlhbCBl
+bnZpcm9ubWVudCwgaGlnaGx5IHJlY29tbWVuZCB0byBrZWVwIGluIG5vcm1hbCBtb2RlLCB0aGUg
+Cj4+IGxpZmV0aW1lIGlzCj4+IHJlYXNvbmFibHkgZ3VhcmFudGVlZC4KPj4gIiIiCj4+IAo+PiBJ
+IGJlbGlldmUgImluZHVzdHJpYWwgZW52aXJvbm1lbnQiIG1lYW5zIFJLMzU4OEogdXNlZCBpbiB0
+aGUKPj4gdGVtcGVyYXR1cmVzIHRoYXQgYXJlbid0IE9LIGZvciB0aGUgc3RhbmRhcmQgUkszNTg4
+IHZhcmlhbnQ/Cj4gCj4gVGhhbmtzIGEgbG90IGZvciBvYnRhaW5pbmcgdGhlc2UgY2xhcmlmaWNh
+dGlvbnMhCj4gCj4gWWVzLCBJJ2Qgc2F5IHRoYXQgaW4gdGhpcyBjYXNlICJpbmR1c3RyaWFsIGVu
+dmlyb25tZW50IiBib2lscyBkb3duCj4gdG8gdGhlIGV4dGVuZGVkIHRlbXBlcmF0dXJlIHJhbmdl
+IGZvciB0aGUgUkszNTg4SiB2YXJpYW50Lgo+IAo+Pj4gSSBoYXZlbid0IHNlZW4gYSBUUk0gZm9y
+IHRoZSBKIHZhcmlhbnQsIG5vciBkbyBJIGhhdmUgYSBib2FyZCB3aXRoCj4+PiBSSzM1ODhKIHRv
+IHJ1biB0ZXN0cywgc28gaXQgd291bGQgYmUgZ3JlYXQgaWYgS2V2ZXIgY291bGQgY2hpbWUgaW4K
+Pj4+IHdpdGggaG93IHRoZXNlIE9QUHMgYXJlIGRpZmZlcmVudCBmcm9tIHRoZSBvdGhlcnMgKG9y
+IG5vdCkuCj4+PiAKPj4+PiBTbyB3aGlsZSB0aGUgc2l0dWF0aW9uIG1pZ2h0IGJlIHN0cmFuZ2Ug
+Zm9yIHRoZSByazM1ODhqLCBJIHJlYWxseSAKPj4+PiBvbmx5IHdhbnQKPj4+PiBjb3JyZWN0IGZy
+ZXF1ZW5jaWVzIGhlcmUgcGxlYXNlIC0gbm90IGFueSBwc2V1ZG8gInR1cmJvIGZyZXFzIi4KPj4+
+PiAKPj4+PiBJIGRvbid0IGNhcmUgdGhhdCBtdWNoIHdoYXQgcGVvcGxlIGRvIG9uIHRoZWlyIG93
+biBkZXZpY2V7cy90cmVlc30sIAo+Pj4+IGJ1dAo+Pj4+IHRoZSBkZXZpY2V0cmVlcyB3ZSBzdXBw
+bHkgY2VudHJhbGx5IChhbmQgdG8gdS1ib290LCBldGMpIHNob3VsZCBvbmx5Cj4+Pj4gY29udGFp
+biBmcmVxdWVuY2llcyB2ZXR0ZWQgYnkgdGhlIG1hbnVmYWN0dXJlci4KPj4+IAo+Pj4gRmFpciBl
+bm91Z2guIExldCdzIGp1c3QgdHJ5IGFuZCBnZXQgYW5vdGhlciBkYXRhIHBvaW50IG9uIHdoZXRo
+ZXIKPj4+IHRoZXNlIGZyZXF1ZW5jaWVzIGFyZSB2ZXR0ZWQgb3Igbm90Lgo+PiAKPj4gU28gdGhl
+IGhpZ2hlciBmcmVxcyBzZWVtcyB0byBiZSB2ZXR0ZWQgKGFuZCB1c2VkIGJ5IGRlZmF1bHQgb24K
+Pj4gUm9ja2NoaXAncyBCU1Aga2VybmVsKSwgaXQganVzdCBmZWVscyBsaWtlIHlvdSBhcmVuJ3Qg
+cmVhbGx5IHN1cHBvc2VkCj4+IHRvIHJ1biB0aG9zZSBoaWdoZXIgZnJlcXVlbmNpZXMgYWxsIHRo
+ZSB0aW1lPyBBbmQgZXNwZWNpYWxseSBub3QgaW4KPj4gImluZHVzdHJpYWwgZW52aXJvbm1lbnQi
+Pwo+PiAKPj4gSSB3b3VsZCBhc3N1bWUgd2Ugd2FudCB0byBzdGF5IG9uIHRoZSBzYWZlciBzaWRl
+IGFuZCByZW1vdmUgdGhvc2UKPj4gaGlnaGVyIGZyZXF1ZW5jaWVzPyBIZWlrbz8KPiAKPiBJIGFn
+cmVlLCB3ZSBzaG91bGQgcmVtb3ZlIHRoZSBoaWdoZXItZnJlcXVlbmN5IE9QUHMuICBJJ2QgbGlr
+ZQo+IHRvIGdvIHRocm91Z2ggZXZlcnl0aGluZyBvbmNlIGFnYWluIGluIGRldGFpbCBhbmQgcHJl
+cGFyZSBhIHBhdGNoCj4gdGhhdCByZW1vdmVzIHRoZSB1bnNhZmUgT1BQcywgYW5kIHlvdSBjb3Vs
+ZCByZXZpZXcgaXQgb25jZSBpdCdzCj4gb24gdGhlIE1MLCB0byBtYWtlIHN1cmUgaXQncyBmaW5l
+LgoKSnVzdCBhcyBhIG5vdGUsIGV2ZXJ5dGhpbmcgYWJvdmUgKGFuZCBldmVuIGEgYml0IG1vcmUp
+IGlzIGNvbmZpcm1lZAphbmQgY2xlYXJseSBkZXNjcmliZWQgaW4gdGhlIHB1YmxpY2x5IGF2YWls
+YWJsZSBSSzM1ODhKIGRhdGFzaGVldCwKd2hpY2ggSSdsbCBwcm92aWRlIGFzIGEgcmVmZXJlbmNl
+IGluIG15IHVwY29taW5nIHBhdGNoLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
