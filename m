@@ -4,64 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5370C282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 08:22:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BCBC282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 08:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PTwH+hS3RLdLbf9IuQyDW8gIPNHo66sxPW8o0Hge9yE=; b=N6om0FpmCdmb5n
-	Bf9ohNu8ALAQne9QTb0y/L525cU6rGuNo5hvuLJGHTQMp6cXG+ez+GsicBYI5VjwQCPR5gcY8dGzy
-	cyb9jdWBT7QTQUByK+hxBEnKnqWsED7xD4hLS+8pgGKAkfrd9UmaIYdSkVGdZ1oJridG7L3hRUTd6
-	KC0Il9gNzpN50wcwwRIKLNg+y6GEIHuV6uLHWCcxVBu7PFPJjBzW7sik4atnYaQQOVP6HZbnjp04w
-	S9odOnxq+eS8lHeT8wLIr2/7CCCvrxEKae8qyMr0XcRAT+pwFlUXSWsuqAWII8v/ZxC9KKjiYKNDN
-	VX7h8aqpL2A3nrJiQ8dw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=I5IzwicVjxdH30QzXHSe8JInqAD9NJHHcaL5IQsIm10=; b=4o2Xt/4dcIV/tO
+	OdaaBHf5wQ8+faIlb1cESS64xh4KWxfGsffirH5VeNoPVPeXWjtlJnSvxlpUBykKGRppfEAGADDtB
+	h5JA/KcDXfqfVLFJCKF5mw74H0CsI1ORXFx6lwX96xWJxI0rwYwwfHF2VjoUfCtTfObJNpN4o1Kpl
+	CaPp2WU0OArq/y++BIU11mN9z7KJMR3FzI2I7fTEBj9Anx04cqD3MUYPH2xG3kJGI+FwfOy3CusXF
+	nOnHNsUg0yRS+kEsK+gw2AvELfYwT1ci5CwDBo8L5mpZ89omSHz+kzbmkm64PdtsQwR12098C3mkx
+	mkiMWOl/9exnVh+zE1yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsdpd-0000000AX6y-45RC;
-	Thu, 13 Mar 2025 08:22:21 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tse0M-0000000AYgs-3rAJ;
+	Thu, 13 Mar 2025 08:33:26 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsdpb-0000000AX5o-2SMN
+	id 1tse0J-0000000AYft-2ito
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Mar 2025 08:22:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741854136;
- bh=+6TtqnWRHap1+zGPihePGn3UrV1PoskvkH+xAMooAk4=;
- b=jHKclm54nareliKFW22AKZ8TtNtKH39oimuTwJR+P+hmrkIEFKrlbGH2O9MjiKb8L+FSJse1Z
- H+ho1w0Y94adLjcZ+oie8BRn7sXYgMKQ6OXw/P7BMpA0cINNSja7oDkVplgZe3vJg6Of8B/IirG
- GEfe7cHPuPEJU3H7dvDBFbxD5SG+2GoaJ4kkCq4I8en0BDZLims8A6fpZlO48lYgrkAgVDmvUbl
- vHMpZWQBwicUoHi6pJ+aIBp6lnvSgJ3OeouPYWpa+x7EPAJC1OwTvLCabPnLSIJGYpD2CvtjEYC
- BFzbnFOJlTSkU0Xi27AfTztYkvDOhUAZz+D1gViZK8rA==
-X-Forward-Email-ID: 67d295b469c9ba463efbea93
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <60065c0b-4597-4976-b74b-172556c4e156@kwiboo.se>
-Date: Thu, 13 Mar 2025 09:22:08 +0100
+	Thu, 13 Mar 2025 08:33:25 +0000
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
+	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+	(envelope-from <a.fatoum@pengutronix.de>)
+	id 1tse0B-00077f-6N; Thu, 13 Mar 2025 09:33:15 +0100
+Message-ID: <7ba2e429-113d-4e1c-968b-ffbe65bcf9f4@pengutronix.de>
+Date: Thu, 13 Mar 2025 09:33:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-To: heiko@sntech.de, Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <7779050.EvYhyI6sBW@phil>
- <20250313071031.1840032-1-amadeus@jmu.edu.cn>
 Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250313071031.1840032-1-amadeus@jmu.edu.cn>
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "barebox@lists.infradead.org" <barebox@lists.infradead.org>
+From: Ahmad Fatoum <a.fatoum@pengutronix.de>
+Subject: [BUG] drm/rockchip: vop2: uninitialized variables passed to ilog2 and
+ writel
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
+X-SA-Exim-Mail-From: a.fatoum@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_012220_080222_09037045 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20250313_013323_694934_A095B3AB 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,50 +72,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On 2025-03-13 08:10, Chukun Pan wrote:
-> Hi,
-> 
->> so yes of course the pinctrl needs to be default - simply because
->> that's the only pinctrl state mainline supports.
-> 
->> But judging by the fact that you're discussing working vs. non-working
->> below, can you please check if we should drop the patch for 6.15 till
->> that is solved?
-> 
-> I suggest dropping this patch first, I will send v2
-> when this issue is solved.
+Running clang-analyzer[1] on the VOP2 driver in barebox[2], which was ported
+from Linux reports that following variables:
 
-I noticed that the pwm nodes and saradc node ended up in wrong mmio
-address order, so yes please drop the patch (or reorder nodes) ;-)
+  dclk_out_div, if_pixclk_div, if_dclk_div
 
-Chukun, please get back with more details about the issue you are having.
-E.g. a stack trace, what board, DT and U-Boot you are using etc.
+defined in rk3588_set_intf_mux() and passed to rk3588_calc_cru_cfg()
+are given as uninitialized arguments to ilog2() and in some cases even
+used afterwards unconditionally (outside of error cases):
 
-I have not seen any issue with PWM using the merged patch having
-pinctrl-names=default.
+  - dclk_out_div: is not initialized in the HDMI, eDP and DPI cases,
+    but is passed to ilog2 unconditionally and the result is written
+    into the RK3588_VP_CLK_CTRL register
 
-Please see my Linux tree [1] and U-Boot tree [2], those are little ahead
-of what has been posted on ML, e.g. it has working USB2.0 host, CPU opp,
-Hantro VPU, GPU + opp, arm and logic pwm regulators for E20C, ROCK 2A/2F
-and Sige1.
+  - if_pixclk_div: is not initialized in the DP and DPI cases,
+    but is passed to ilog2 unconditionally.
+    However, the result seems unused.
 
-Will try to post USB2.0 host and Hantro VPU patches later today.
-CPU opp and GPU + opp depend on PWM and I was planning to post that
-together with initial thermal support.
+  - if_clk_div: is not initialized in the DP, MIPI and DPI cases,
+    but is passed to ilog2 unconditionally.
+    However, the result seems unused.
 
-[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250311-rk3528/
-[2] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
+I checked against Linux v6.14-rc6.
 
-Regards,
-Jonas
+I am not fully sure what a suitable default value would be for the first
+case, which is why I report this without a patch.
 
-> 
-> Thanks,
-> Chukun
-> 
-> --
-> 2.25.1
-> 
+[1]: https://lore.kernel.org/barebox/20250313080950.3222757-1-a.fatoum@pengutronix.de/T/#m78ca98c01b73ef7fe3316e73ce62cfe4b2c111d0
+[2]: https://github.com/barebox/barebox/blob/v2025.02.0/drivers/video/rockchip/rockchip_drm_vop2.c
+
+Thanks,
+Ahmad
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 
 _______________________________________________
