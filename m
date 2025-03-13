@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30657C2BA1B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 11:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572A3C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 12:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PMman9OCVLPGR4RBLReebTvdMvlNu26uZM1PachTe4Y=; b=czPCau9DS9f/j1
-	uCervoueetCKKWx9F3HCHcGAZC7Y35N2yP7Aj8KBKLL7VyFDKSsaNVlmXyUi7zMKFPNCvNXT/vxKt
-	dU7CV8EIxtxqgwjqXtqL80jRGcLpFQvvDEQ4WG43PtfTUNhC34n+L8rNmDHy8pnVbV+Xkto8XDBXE
-	uUvhPJKWfXK8Ki3HZPOlgOHNN0Zmv1JG/wDL8wFl6M36g1lH1FpoD2nrp1YxntkkU/2NmPfUIJ3uY
-	CvmgaDt/Fp0+4ATtSXSXlNhZ4ifQ1c+8NuX4c4jjz0PiMImQPAOoW+bJZ++otWUMVmZs6V7d4pqAr
-	pmG2SpF9teNTkW7qBMKg==;
+	List-Owner; bh=12Vb63Htrzc+wRqCLvmYrUH56yXTAXaxItWaJYIdaa4=; b=qA6Mjd98nSBPgQ
+	7bcBrZfPRkvO0oxg32Y9a4xaZvi4yksAPZ+w9YTDmgZ5Wr9E2LQ1V/4bpPNmmT2gfV23gA43iC6v4
+	JNIlUB5NRw9seFcTcn8ZnnBP7e81sWV9Lp67hdycOKr8b3cRHLmnapKkx7HXoL8p5BQdDG6zQ7+o/
+	3shGWZT/Cl0OWqtCB4uaFF6G/bjSAXZxU7GRBh6As43FHJzz3zTIxJ0pvpkZk2rbW01bnbW5KrssF
+	Tka9n0qY+Q/3B8FBeV5x2WzYfVlBcitT4c+rdUHXDAt0/emKs1HJxf1H6CD82sllhvMRltadENF++
+	dMnQjZAG1u+xxxbd2eIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsgZe-0000000B0xA-0gJ8;
-	Thu, 13 Mar 2025 11:18:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tshVo-0000000BDVx-3IrJ;
+	Thu, 13 Mar 2025 12:18:08 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsgRp-0000000Azo6-1DxN;
-	Thu, 13 Mar 2025 11:09:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C48D35C5BBB;
-	Thu, 13 Mar 2025 11:07:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38B53C4CEDD;
-	Thu, 13 Mar 2025 11:09:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1741864196;
-	bh=y5Rt/A3I0puk2tWJqwdD+VS9AYs8xTcIZQZ75uLi/aQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=OFpakx8qWuEP5hs9WCekvz25n4fnw63dd3zf1Hsha7Gk7+1cmshaz6E6oE8d6Ieh+
-	 tBzkhdDKSaYH1OgAoNK+7jfD0fdJN4xQ1W2eZZQZ9HelvNaxoDzMiG4MttBJXWwp8t
-	 OYQ48FdLg1Aw9IqOqJEj0BBUa8qX6V/9YjFqw9jvVKWW22JNwRMHhG8JnhrlhbaW6S
-	 29uLDOm+zyzCye6P/FtsnHmuM8tJKNGUgYdVxO1sAeEi7yoQhyS/YRufPMcwDeeXtg
-	 ax/RpzUJ7Toj8NLazkxeVIel3BUqwjK+RCDn16ltaxBF+hnLwAAfRjkh+iPS9k7Pz+
-	 SWDFtToOpr/aQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB6693806651;
-	Thu, 13 Mar 2025 11:10:31 +0000 (UTC)
+	id 1tshHR-0000000BAn5-1hXl
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Mar 2025 12:03:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1741867394;
+ bh=bZAbj6+NmXSfWd9Y3ZYRj3CY/kM/CunfChIIkSXsoRg=;
+ b=wb0yLUzfEZxD7b6oGTb/tGtafaPwY/dJum6vY+Gclm6euIx83y1267foHv+b2Da3Hv9HtZbdz
+ i54GsnOf9Di696xMrY/7BRApU8UimZqZ9hrpKOa68zuml/0887antpZnNBpnA6AEeniYDwioJ2W
+ MYgaq4I3pkmXckkIXcFkuYYQOFZtzRh/qnm+tO9LjZkVCq2aOOylZm/sOQfSKiubUuCL4gQ2UTg
+ Ty82EX0WjELMOiLRtwPne9GyOOH81BlQV+CDASQUGA0G4BLY61shvp7smIj49Q2nXTzg3riaHoC
+ DOGBmr5YTUy3veJM2qWeuGjCjNFSKdjNGzbnCvRzxDlw==
+X-Forward-Email-ID: 67d2c97dc524b8270342b1d9
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
+Date: Thu, 13 Mar 2025 13:03:04 +0100
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] dt-bindings: net: Define interrupt constraints for
- DWMAC vendor bindings
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174186423076.1466791.15724461347771862891.git-patchwork-notify@kernel.org>
-Date: Thu, 13 Mar 2025 11:10:30 +0000
-References: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-In-Reply-To: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-To: Prabhakar <prabhakar.csengg@gmail.com>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, nobuhiro1.iwamatsu@toshiba.co.jp,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- vineetha.g.jaya.kumaran@intel.com, biao.huang@mediatek.com,
- xiaoning.wang@nxp.com, linux-imx@nxp.com, david.wu@rock-chips.com,
- christophe.roullier@foss.st.com, rmk+kernel@armlinux.org.uk,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org,
- prabhakar.mahadev-lad.rj@bp.renesas.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <60065c0b-4597-4976-b74b-172556c4e156@kwiboo.se>
+ <20250313090109.1910997-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250313090109.1910997-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_040957_382898_BD60E5EE 
-X-CRM114-Status: UNSURE (   7.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250313_050317_621944_97793690 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,32 +79,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Sun,  9 Mar 2025 00:33:01 +0000 you wrote:
-> From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+On 2025-03-13 10:01, Chukun Pan wrote:
+> Hi,
 > 
-> The `snps,dwmac.yaml` binding currently sets `maxItems: 3` for the
-> `interrupts` and `interrupt-names` properties, but vendor bindings
-> selecting `snps,dwmac.yaml` do not impose these limits.
+>> I have not seen any issue with PWM using the merged patch having
+>> pinctrl-names=default.
+>>
+>> Please see my Linux tree [1] and U-Boot tree [2], those are little ahead
+>> of what has been posted on ML, e.g. it has working USB2.0 host, CPU opp,
+>> Hantro VPU, GPU + opp, arm and logic pwm regulators for E20C, ROCK 2A/2F
+>> and Sige1.
+>>
+>> Please see my Linux tree [1] and U-Boot tree [2], those are little ahead
+>> of what has been posted on ML, e.g. it has working USB2.0 host, CPU opp,
+>> Hantro VPU, GPU + opp, arm and logic pwm regulators for E20C, ROCK 2A/2F
+>> and Sige1.
+>> ...
+>> [1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250311-rk3528/
+>> [2] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
 > 
-> Define constraints for `interrupts` and `interrupt-names` properties in
-> various DWMAC vendor bindings to ensure proper validation and consistency.
+> I tested your kernel device tree on E20C earlier today and still have
+> the same issue. But if I replace u-boot with the link [2] you provided,
+> it will work fine. For reference, I was using v2025.01 plus this series
+> of patches [3]. So it looks like u-boot does something and kernel doesn't?
+
+Interesting, good that it works with the updated U-Boot. Main change
+compared to v1 is that it now use clock/reset id and DT closer to what
+has been merged in mainline Linux. It also has DT params to help
+initialize the two pwm regulators used by these boards.
+
+I will try with the old v1 U-Boot series and see if I can replicated
+your issue.
+
+Regards,
+Jonas
+
 > 
-> [...]
-
-Here is the summary with links:
-  - [net-next] dt-bindings: net: Define interrupt constraints for DWMAC vendor bindings
-    https://git.kernel.org/netdev/net-next/c/5a1dddd29444
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> [3] https://lore.kernel.org/u-boot/20250123224844.3104592-1-jonas@kwiboo.se/
+> 
+> Thanks,
+> Chukun
+> 
+> --
+> 2.25.1
+> 
 
 
 _______________________________________________
