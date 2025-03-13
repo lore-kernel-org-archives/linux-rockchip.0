@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C05EC282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 10:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC7D4C28B28
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 10:33:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uk3uYqIhfKf+1mVYsvuAPsbPT6Y9dHP7bmvCZRtb8A8=; b=GTKc0tNpMbPsDYY0YCCbJiG/5V
-	mVPHSW5upLjZrwprqYMeVadFoUBkiCUDShUnYazvqxldtoSiOPndyx0CJFXUJ6nr3g3cC/F0AdxOD
-	2HYMvlkqRLsbrlwGdkp2dkWsoUP7xUMl1wNzlOul4TbxgEiMvD3gsqyDd0GhxBHFo6TZIBKLHtHvt
-	SJ2GPfG2OQ6tmXIjgde+80kuH4daGbOecN1QAbX6PZnxMVwd7aJc2QElR0h5+24uAiTeQC7UVEXQw
-	4UFAg/bKeAG12A5/3TVP5sZ+Y2yOj8h/86AdlkR8eyBMJYuaTLHIj44dAorflTafoYiXWj/uwLvSh
-	1eqOcsVg==;
+	bh=Lxd+c1uiVELswgDmPhAgeJksp4qLrVUgl34qfz16Sns=; b=UkHJ9bD7d9NqWZEzK70PR6YQfC
+	ajbRsGfHDYyFWyWk5eq5PV6RQo8IXZ+l+gA9R7I80y2PtyU7Rw1KWiB15hmC7g4D9m0YiESOnnlTv
+	PKMqY5LMxjUGaY6LCIzXn0sx4hCNR+SPazBU4FhvYYxkoB2e4Zfvngx9TjV8iselBlKi4usEEJMjF
+	GeMQ4ISXK9YX75jnLRAetAFMLO65YlxCip3z9YugvFNWTTg7a9gN2H7nmKzcYYoBRompKhXcljIlO
+	qdC+Deus7Ksyenbjl4Bko9DOFhhmmzU+HvM9VAFvb0oXPTHHZD41C5VPUALH+SN8MAbyJwguQA+EL
+	K1adn+fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsflm-0000000Arxs-2mkP;
-	Thu, 13 Mar 2025 10:26:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tsfsY-0000000At9b-3mKD;
+	Thu, 13 Mar 2025 10:33:30 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsfk4-0000000ArWZ-2cLc;
-	Thu, 13 Mar 2025 10:24:47 +0000
+	id 1tsfqq-0000000AspW-2PRY;
+	Thu, 13 Mar 2025 10:31:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1741861482;
-	bh=OMG5p9c82Fy88EBZQ+5+Q+IWbNxzgwDKnhNWi5zvF8c=;
+	s=mail; t=1741861902;
+	bh=APrzpYMg+KdEjqb0cZBnXIO6Frgv6XgZNdVuk7y2qgs=;
 	h=Date:To:Cc:From:Subject:From;
-	b=VHRbxG4v4NT3MoyLCgq0dGvtApSMj4+sKXpMQjo0cD3MOJ1VkFj1v1KTp7xR8xRpI
-	 O0qFo3WyRbhYZVmQ1e79X+ZBUCh3tHkrSLiGdZ3h1qyOAVwedGbs8W7val7fYZt8uu
-	 bVolbmKEmDGE/mQoicF2q/jK+3w3tAuMnfdc4edWmgElpmGxP2Nelu2lk8bH7uoewF
-	 cnmiUBJYQkxqSf1DoUw2XfFeCCLtqtv23rkncdMW2LJXD7ohsmMF5/QphjWOYqs70s
-	 lQsFZ61G7jmlz60GXZVajDawzS6Dg5LRY6ARXrwyXHbhqETsPU0zOdWwXvlCnNWdmD
-	 jtDz0o+uASunA==
+	b=CUirAxjOH46kwtDn4BQSG+l9klchYnOdr1ojKEikgXWs03pvQxEIbCm6H32AfIpmh
+	 P8N3QaW7pivna1OEO3XSVTZAzbw8EQqAG60S9qj/QTHaanwsXMqcwFvbAPMJ590rCN
+	 HvNxGxZ3JC7T9VDJP9FwXSDuQVuTX+1XVheAMllbbz0FAwxwOTvX7LohJQmfqPDRRb
+	 eqOM31pN/xeMgyzRAkqjNK6N8v9V/8alSRsSPUe4dZvztzXuFh6seWAlyySmijzLEt
+	 +FhUuoXJG7zzyHkX4Ip117GgFBSfFh3WlH4lsDUvuumG2sGu2LrhWsx4p7usfqsn1w
+	 d3hpu67J2RUHg==
 Received: from [192.168.50.250] (unknown [171.76.87.92])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 10BF517E0F86;
-	Thu, 13 Mar 2025 11:24:38 +0100 (CET)
-Message-ID: <eece9a80-42f3-41f4-86cc-69d8a51b976a@collabora.com>
-Date: Thu, 13 Mar 2025 15:54:37 +0530
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5417717E017D;
+	Thu, 13 Mar 2025 11:31:39 +0100 (CET)
+Message-ID: <63dfd5b7-8a54-44a3-9530-f8dcd77a21d1@collabora.com>
+Date: Thu, 13 Mar 2025 16:01:36 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
@@ -59,11 +59,10 @@ Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
  Helen Mae Koike Fornazier <helen.fornazier@gmail.com>,
  sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
 From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: rockchip:
- kms_bw@connected-linear-tiling-1-displays-2160x1440p flake
+Subject: drm-ci: rockchip: kms_bw@linear-tiling-1-displays-3840x2160p flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_032445_039573_C751D96D 
-X-CRM114-Status: UNSURE (   4.10  )
+X-CRM114-CacheID: sfid-20250313_033144_918375_54BD1299 
+X-CRM114-Status: UNSURE (   3.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,516 +88,421 @@ There are some flake test reported for rockchip driver testing in drm-ci.
 # Failure Rate: 20
 # IGT Version: 1.30-g04bedb923
 # Linux Version: 6.14.0-rc4
-kms_bw@connected-linear-tiling-1-displays-2160x1440p
+kms_bw@linear-tiling-1-displays-3840x2160p
 
-11:33:40.013: DEBUG - Begin test 
-kms_bw@connected-linear-tiling-1-displays-2160x1440p
-11:33:40.013: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.782: DEBUG - Begin test kms_bw@linear-tiling-1-displays-3840x2160p
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Test assertion failure function igt_pipe_crc_start, file 
 ../lib/igt_pipe_crc.c:387:
-11:33:45.115: [   69.768463] lr : drm_wait_one_vblank+0x1a0/0x204
-11:33:45.115: [   69.768480] sp : ffff80008476bc80
-11:33:45.116: [   69.768489] x29: ffff80008476bc80 x28: 0000000000000000 
-x27: 0000000000000000
-11:33:45.116: [   69.768524] x26: ffff800082cf0e80 x25: ffff00000012a005 
-x24: ffff0000054e5080
-11:33:45.116: [   69.768559] x23: 0000000000000000 x22: ffff0000f74ebf40 
-x21: 00000000ffffffea
-11:33:45.116: [   69.768594] x20: 0000000000000001 x19: ffff000005ce4000 
-x18: 00000000fffffffe
-11:33:45.116: [   69.768628] x17: 000000040044ffff x16: 00500072b5503510 
-x15: ffff80008476b870
-11:33:45.116: [   69.768664] x14: 00000000000c0000 x13: ffff800082d19460 
-x12: 0000000000000000
-11:33:45.116: [   69.768698] x11: 0000000000000050 x10: 0000000000000000 
-x9 : ffff800083a57530
-11:33:45.116: [   69.768733] x8 : ffff80008476ba28 x7 : ffff80008476baf0 
-x6 : ffff80008476ba80
-11:33:45.116: [   69.768767] x5 : ffff80008476ba68 x4 : 0000000000000002 
-x3 : 0000000000000000
-11:33:45.116: [   69.768800] x2 : 0000000000000000 x1 : 0000000000000000 
-x0 : ffff000006f59bc0
-11:33:45.116: [   69.768834] Call trace:
-11:33:45.116: [   69.768843]  drm_wait_one_vblank+0x1a0/0x204 (P)
-11:33:45.116: [   69.768863]  drm_crtc_wait_one_vblank+0x1c/0x28
-11:33:45.116: [   69.768883]  drm_dp_aux_crc_work+0x58/0x15c
-11:33:45.116: [   69.768903]  process_one_work+0x208/0x5e8
-11:33:45.116: [   69.768925]  worker_thread+0x1ac/0x34c
-11:33:45.116: [   69.768947]  kthread+0x12c/0x208
-11:33:45.116: [   69.768966]  ret_from_fork+0x10/0x20
-11:33:45.116: [   69.768987] irq event stamp: 666314
-11:33:45.116: [   69.768996] hardirqs last  enabled at (666313): 
-[<ffff80008014fca8>] vprintk_emit+0x3b0/0x3d0
-11:33:45.116: [   69.769020] hardirqs last disabled at (666314): 
-[<ffff800081479a38>] el1_dbg+0x24/0x8c
-11:33:45.116: [   69.769039] softirqs last  enabled at (666010): 
-[<ffff8000800bc290>] handle_softirqs+0x4a0/0x4b8
-11:33:45.116: [   69.769064] softirqs last disabled at (666005): 
-[<ffff8000800105b0>] __do_softirq+0x14/0x20
-11:33:45.116: [   69.769083] ---[ end trace 0000000000000000 ]---
-11:33:45.116: [   69.769794] ------------[ cut here ]------------
-11:33:45.116: [   69.769806] WARNING: CPU: 0 PID: 102 at 
-drivers/gpu/drm/display/drm_dp_helper.c:2179 drm_dp_aux_get_crc+0xbc/0xd0
-11:33:45.116: [   69.769832] Modules linked in:
-11:33:45.116: [   69.769850] CPU: 0 UID: 0 PID: 102 Comm: kworker/0:2 
-Tainted: G        W          6.14.0-rc4-g5dbf0298b72f #1
-11:33:45.116: [   69.769872] Tainted: [W]=WARN
-11:33:45.116: [   69.769881] Hardware name: Google Kevin (DT)
-11:33:45.116: [   69.769892] Workqueue: events drm_dp_aux_crc_work
-11:33:45.116: [   69.769914] pstate: 60000005 (nZCv daif -PAN -UAO -TCO 
--DIT -SSBS BTYPE=--)
-11:33:45.116: [   69.769931] pc : drm_dp_aux_get_crc+0xbc/0xd0
-11:33:45.116: [   69.769947] lr : drm_dp_aux_get_crc+0x3c/0xd0
-11:33:45.116: [   69.769963] sp : ffff80008476bcd0
-11:33:45.116: [   69.769972] x29: ffff80008476bcd0 x28: 0000000000000000 
-x27: 0000000000000000
-11:33:45.116: [   69.770007] x26: ffff800082cf0e80 x25: ffff00000012a005 
-x24: ffff800082cf3000
-11:33:45.116: [   69.770042] x23: 0000000000000000 x22: ffff0000f74ebf40 
-x21: ffff800082036df8
-11:33:45.116: [   69.770077] x20: ffff80008476bd42 x19: ffff0000054dcb88 
-x18: 000000000000024d
-11:33:45.116: [   69.770112] x17: 000000040044ffff x16: 00500072b5503510 
-x15: 0000000000000001
-11:33:45.116: [   69.770147] x14: 00000000000e0000 x13: 0000000000000000 
-x12: 0000000000000000
-11:33:45.116: [   69.770180] x11: 0000000000000078 x10: 0000000000000000 
-x9 : ffff800083a57530
-11:33:45.116: [   69.770215] x8 : ffff800083e6f000 x7 : 0000000000000001 
-x6 : ffff800082036ca8
-11:33:45.116: [   69.770249] x5 : 0000000000000000 x4 : ffff000006f5a098 
-x3 : ffff800082036c20
-11:33:45.116: [   69.770282] x2 : 0000000000000000 x1 : 0000000000000000 
-x0 : 0000000000000000
-11:33:45.116: [   69.770315] Call trace:
-11:33:45.116: [   69.770324]  drm_dp_aux_get_crc+0xbc/0xd0 (P)
-11:33:45.116: [   69.770344]  drm_dp_aux_crc_work+0x6c/0x15c
-11:33:45.116: [   69.770363]  process_one_work+0x208/0x5e8
-11:33:45.116: [   69.770385]  worker_thread+0x1ac/0x34c
-11:33:45.116: [   69.770407]  kthread+0x12c/0x208
-11:33:45.116: [   69.770427]  ret_from_fork+0x10/0x20
-11:33:45.116: [   69.770448] irq event stamp: 666368
-11:33:45.116: [   69.770457] hardirqs last  enabled at (666367): 
-[<ffff8000801a496c>] ktime_get+0x130/0x174
-11:33:45.116: [   69.770477] hardirqs last disabled at (666368): 
-[<ffff800081479a38>] el1_dbg+0x24/0x8c
-11:33:45.116: [   69.770496] softirqs last  enabled at (666010): 
-[<ffff8000800bc290>] handle_softirqs+0x4a0/0x4b8
-11:33:45.116: [   69.770521] softirqs last disabled at (666005): 
-[<ffff8000800105b0>] __do_softirq+0x14/0x20
-11:33:45.116: [   69.770540] ---[ end trace 0000000000000000 ]---
-11:33:45.116: [   69.773999] ------------[ cut here ]------------
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Failed assertion: pipe_crc->crc_fd != -1
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Last errno: 5, Input/output error
-11:33:45.119: ERROR - Igt error: Subtest 
-connected-linear-tiling-1-displays-2160x1440p failed.
-11:33:45.119: ERROR - Igt error: **** DEBUG ****
-11:33:45.119: ERROR - Igt error: (kms_bw:273) DEBUG: Test requirement 
+11:38:08.782: ERROR - Igt error: Subtest 
+linear-tiling-1-displays-3840x2160p failed.
+11:38:08.782: ERROR - Igt error: **** DEBUG ****
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
 passed: !(pipe >= num_pipes)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Test 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Test 
 requirement passed: plane_idx >= 0 && plane_idx < pipe->n_planes
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Test 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Test 
 requirement passed: plane_idx >= 0 && plane_idx < pipe->n_planes
-11:33:45.119: ERROR - Igt error: (kms_bw:273) DEBUG: Test requirement 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
 passed: data->output[0]
-11:33:45.119: ERROR - Igt error: (kms_bw:273) DEBUG: Test requirement 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
 passed: !(physical && pipe >= data->connected_outputs)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(width=2160, height=1440, 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(width=3840, height=2160, 
 format=XR24(0x34325258), modifier=0x0, size=0)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_fb-DEBUG: 
-igt_create_fb_with_bo_size(handle=1, pitch=8640)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) ioctl_wrappers-DEBUG: Test 
-requirement passed: igt_has_fb_modifiers(fd)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_fb-DEBUG: Test 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(handle=1, pitch=15360)
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) ioctl_wrappers-DEBUG: 
+Test requirement passed: igt_has_fb_modifiers(fd)
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_fb-DEBUG: Test 
 requirement passed: cairo_surface_status(fb->cairo_surface) == 
 CAIRO_STATUS_SUCCESS
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 eDP-1: set_pipe(A)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 eDP-1: Selecting pipe A
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.782: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 A.0: plane_set_fb(55)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-A.0: plane_set_size (2160x1440)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+A.0: plane_set_size (3840x2160)
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 A.0: fb_set_position(0,0)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-A.0: fb_set_size(2160x1440)
-11:33:45.119: ERROR - Igt error: (kms_bw:273) INFO: Assigning pipe A to 
-output eDP-1 with mode 2160x1440p
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+A.0: fb_set_size(3840x2160)
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) INFO: Assigning pipe A to 
+output eDP-1 with mode 3840x2160p
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 commit {
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "GAMMA_LUT" to 0x0/0
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "MODE_ID" to 0x39/57
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "ACTIVE" to 0x1/1
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "VRR_ENABLED" to 0x0/0
-11:33:45.119: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.0, fb 55
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.0, fb 55
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_W" to 0x8700000/141557760
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_H" to 0x5a00000/94371840
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "SRC_W" to 0xf000000/251658240
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "SRC_H" to 0x8700000/141557760
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_W" to 0x870/2160
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_H" to 0x5a0/1440
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "CRTC_W" to 0xf00/3840
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "CRTC_H" to 0x870/2160
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "FB_ID" to 0x37/55
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_ID" to 0x26/38
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.1, fb 0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.1, fb 0
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.2, fb 0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.2, fb 0
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.3, fb 0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.3, fb 0
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.783: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "GAMMA_LUT" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "MODE_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "ACTIVE" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "VRR_ENABLED" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: B.0, fb 0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: B.0, fb 0
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: B.1, fb 0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: B.1, fb 0
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "rotation" to 0x1/1
-11:33:45.120: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  eDP-1: preparing atomic, pipe: A
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: eDP-1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   eDP-1: preparing atomic, pipe: A
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: eDP-1: 
 Setting property "CRTC_ID" to 0x26/38
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: }
-11:33:45.121: ERROR - Igt error: (kms_bw:273) DEBUG: Test requirement 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: }
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) DEBUG: Test requirement 
 passed: !(ret != 0)
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
 commit {
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "GAMMA_LUT" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "MODE_ID" to 0x39/57
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "ACTIVE" to 0x1/1
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe A: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe A: 
 Setting property "VRR_ENABLED" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.0, fb 55
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.0, fb 55
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_W" to 0x8700000/141557760
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "SRC_H" to 0x5a00000/94371840
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "SRC_W" to 0xf000000/251658240
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "SRC_H" to 0x8700000/141557760
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_W" to 0x870/2160
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
-Setting property "CRTC_H" to 0x5a0/1440
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "CRTC_W" to 0xf00/3840
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
+Setting property "CRTC_H" to 0x870/2160
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "FB_ID" to 0x37/55
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "CRTC_ID" to 0x26/38
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.0: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.0: 
 Setting property "rotation" to 0x1/1
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.1, fb 0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.1, fb 0
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.784: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.1: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.1: 
 Setting property "rotation" to 0x1/1
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.2, fb 0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.2, fb 0
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.2: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.2: 
 Setting property "rotation" to 0x1/1
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: A.3, fb 0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: A.3, fb 0
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane A.3: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane A.3: 
 Setting property "rotation" to 0x1/1
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "GAMMA_LUT" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "MODE_ID" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "ACTIVE" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: Pipe B: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: Pipe B: 
 Setting property "VRR_ENABLED" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: B.0, fb 0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: B.0, fb 0
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.121: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.785: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.0: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.0: 
 Setting property "rotation" to 0x1/1
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  populating plane data: B.1, fb 0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   populating plane data: B.1, fb 0
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_X" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_Y" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_W" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "SRC_H" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_X" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_Y" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_W" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_H" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "FB_ID" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "CRTC_ID" to 0x0/0
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: plane B.1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: plane B.1: 
 Setting property "rotation" to 0x1/1
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: 
-  eDP-1: preparing atomic, pipe: A
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: eDP-1: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: 
+   eDP-1: preparing atomic, pipe: A
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: eDP-1: 
 Setting property "CRTC_ID" to 0x26/38
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_kms-DEBUG: display: }
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_kms-DEBUG: display: }
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Test assertion failure function igt_pipe_crc_start, file 
 ../lib/igt_pipe_crc.c:387:
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Failed assertion: pipe_crc->crc_fd != -1
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_pipe_crc-CRITICAL: 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_pipe_crc-CRITICAL: 
 Last errno: 5, Input/output error
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO: Stack trace:
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #0 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO: Stack trace:
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #0 
 ../lib/igt_core.c:2055 __igt_fail_assert()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #1 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #1 
 ../lib/igt_pipe_crc.c:433 igt_pipe_crc_get_crcs()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #2 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #2 
 ../lib/igt_pipe_crc.c:592 igt_pipe_crc_collect_crc()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #3 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #3 
 ../tests/kms_bw.c:249 run_test_linear_tiling()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #4 
-../tests/kms_bw.c:295 __igt_unique____real_main264()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #5 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #4 
+../tests/kms_bw.c:287 __igt_unique____real_main264()
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #5 
 ../tests/kms_bw.c:264 main()
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #6 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #6 
 [__libc_init_first+0x80]
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #7 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #7 
 [__libc_start_main+0x98]
-11:33:45.122: ERROR - Igt error: (kms_bw:273) igt_core-INFO:   #8 
+11:38:08.786: ERROR - Igt error: (kms_bw:1520) igt_core-INFO:   #8 
 [_start+0x30]
-11:33:45.122: ERROR - Igt error: ****  END  ****
-11:33:45.122: ERROR - Test 
-kms_bw@connected-linear-tiling-1-displays-2160x1440p: Fail: See 
-"/results/igt.kms_bw@connected-linear-tiling-1-displays-2160x1440p.log"
-11:33:45.122: DEBUG - End test 
-kms_bw@connected-linear-tiling-1-displays-2160x1440p
+11:38:08.786: ERROR - Igt error: ****  END  ****
+11:38:08.786: ERROR - Test kms_bw@linear-tiling-1-displays-3840x2160p: 
+Fail: See "/results/igt.kms_bw@linear-tiling-1-displays-3840x2160p.log"
+11:38:08.786: DEBUG - End test kms_bw@linear-tiling-1-displays-3840x2160p
 
-Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/72651218
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/72651219
 
 Please could you have a look at these test results and let us know if 
 you need more information. Thank you.
