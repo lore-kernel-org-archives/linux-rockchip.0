@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2A6C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 13:44:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB10C28B2E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 13:45:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Jt7uExy6HQh8+fzKYUjb9ZG0IsWXPujcktEhfoPMWZU=; b=sNBRV/wmeXMj+F
-	jCH7rGQckz8pIHrjunlPHnwiDSo4dQYG50G9t/IXFunERyYaSNL1L0DMxc+aFZZJreMFTRjkOScBd
-	KJauuhoU+douywsHU4y83UfPDmTKvK4RFmvF72XJyBZQ5wzKqHDTeOAGyw4tRTq6fM7HUKEqI9DW+
-	X8gNgnOoFQrEjQOKIbpyBN2wZAWUm391aitfae9i2HiuXNitJaUSQ/qnZ14P4tNJJ3kGkQyThy4bM
-	4C+V3OQMIantSduLhrViJNtVW+dEqLqyNbyfC333wdNX3ufdF2wOmY3nNKXR5gx5TOREY0xnlv7fa
-	Ck0G9jY/XS8N8qunek/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r4gUmZPvhsk1BCFO7U2dboObZcznJ8uSkoH7+iucTbQ=; b=Z3UjfJMWllnMXS
+	sIbLLjlXdcK6OqfIInV5XjcryKRJ9qwVIUD49l1gkXOsPygkR1QCw9zK+nzp3ciyhIykPXk5oY38/
+	cFNqLvRrnUyFM152BMxB5oYbpfdWpOjYw5bpo7I48+StEnYSNP3sckmwFDONpNywNAAolgoTnxr6/
+	kMtEozfLN1EhxsOMzg/VGoy9LTKG4/gL5MtSCwsjeytodNuW1aE9nVYu7mIyv7iMe/+wxp2Nn6/Kj
+	c3NQ8MkBVKJfSeHDhCLqCz5WQPPKcA2IHIIIU6U33QkSWhldTgon4sDN7scqcTi/MW91StZudr5pv
+	EU4XCENjCWI76RX4b/ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsir5-0000000BPtN-1Ne3;
-	Thu, 13 Mar 2025 13:44:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsinp-0000000BPHP-03AN;
-	Thu, 13 Mar 2025 13:40:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=4CWs8MteW/WaidbFLCARB0U29Fg/zJsP3Gsrar0C4Ew=; b=TQKU+5u7/k6ia1MBUu6HdfZYRU
-	kxkXEdZb6U33Qrg9WRe4L2pBqIdUfUwXL5D/g6zPBAnG8S3NYZTx/QI9xN16smgqfVb8dCealSktR
-	8fH6ZHrTLAbNMS/ZvRtQhNLB8yIL+9V17jC7dquHHbuPuKcF6S4RMuW2ZOMm9eXWbX5adeSiCR4+w
-	NqQiJi5648GNmXd14sl1LEAImTJWxM4X8K3C8Euv6YfK0hlfDl021lBMV3YTha7BoSTYotN8Q801Q
-	1gfAjXT83nA1zsJtZnsI9787I5JBtyV30D9peSIEDvN/db7guSmjlqAbA1PAjbs9hIhU4yhX+14Wk
-	1bqxGzew==;
+	id 1tsisi-0000000BQ8l-2nkO;
+	Thu, 13 Mar 2025 13:45:52 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsinl-00000002dyU-3cWJ;
-	Thu, 13 Mar 2025 13:40:47 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tsinp-0000000BPGG-00iG;
+	Thu, 13 Mar 2025 13:40:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References;
-	bh=4CWs8MteW/WaidbFLCARB0U29Fg/zJsP3Gsrar0C4Ew=; b=gyJyVrD1SJUsXkw6uxZS3GyW3g
-	yN5gt3IJJom2RAdV08DWMh0KkFwfK18ljaOcqm4qZWt1izix6OXX2Auikxa04YcUR6+zDUNjglmYE
-	VyOyTWb74IUejLowq3DWuBg8J4yF3Iu7EnWN+HGsPGnGEs6RkPFdzXj1ywrAuRwF+vuqlXPKwPckJ
-	VBGZmJMpsIutJjLqs9/Hajm7p8B4mCeJsI/tZ562ePWcQKI9BuQg7GOnAPmGTC2vcj18QIkJMHBtl
-	ubbZMr45dsNr4lewH6/APGmfJ8/G8A3TmiASAJWn+Pzdy/iNaFtiD6URQDxbv8hL3CjX1Xkhsszis
-	iVHssZHQ==;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=fuMgAJ1TQNNEGebrmKbN3q99gG91+UBsAYkEU1XoKSs=; b=BOhmXE027Px7ukYx2xai6+DsGe
+	K4G8q00PxwOLiaA8cFjKhj9g4mz4rdRZSxZY2i9Jjd+x4ORoeHngeaAqmRAO7yqzBPXwAwPMTtnW0
+	msitmgkZ2oG6JJisv20t6hfan7u7gjxdJqQYKvHLopCSyd5tFmMws6Axc50qn3GgrC/+mYdM1G14R
+	j3gXWFMt6pbvGasJUuV3V5+gzyxxjFkCHnkT9XHdzDs3IZ+O1lC0R9BjLFU5b58Yx7QYPK8hB4Ecl
+	ZVAGxslYmUt+fzIKdiwgF+2dJZZEojfEK1SO43wF0MXqt8U80dahKqe1Lf7RFceeTz+UqNW8se1GI
+	iKNSpNzA==;
 Received: from [62.91.42.92] (helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tsine-0008Rg-Vf; Thu, 13 Mar 2025 14:40:39 +0100
+	id 1tsinf-0008Rg-8H; Thu, 13 Mar 2025 14:40:39 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: vkoul@kernel.org,
 	kishon@kernel.org
@@ -70,15 +56,20 @@ Cc: robh@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	dse@thaumatec.com,
-	heiko@sntech.de
-Subject: [PATCH v8 0/2] MIPI DSI phy for rk3588
-Date: Thu, 13 Mar 2025 14:40:30 +0100
-Message-ID: <20250313134035.278133-1-heiko@sntech.de>
+	heiko@sntech.de,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v8 1/2] dt-bindings: phy: Add Rockchip MIPI C-/D-PHY schema
+Date: Thu, 13 Mar 2025 14:40:31 +0100
+Message-ID: <20250313134035.278133-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250313134035.278133-1-heiko@sntech.de>
+References: <20250313134035.278133-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_134045_966757_0CF8E487 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20250313_064049_045449_6D7B7017 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,77 +86,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the phy driver need for DSI output on rk3588.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The phy itself is used for both DSI output and CSI input, though the
-CSI part for the whole chain needs a lot more work, so is left out for
-now and only the DSI part implemented.
+Add dt-binding schema for the MIPI C-/D-PHY found on
+Rockchip RK3588 SoCs.
 
-This allows the rk3588 with its current VOP support to drive a DSI display
-using the DSI2 controller driver I'll submit in a next step.
-
-Only generic phy interfaces are used, so the DSI part is pretty straight
-forward.
-
-changes in v8:
-- add comment that the timing values comes from the vendor kernel (Vinod)
-
-changes in v7:
-- missing pclk-disable in resume error path
-- replace remaining magic values with actual constants
-- lower-case hex values
-- made lane_disable behave similar to lane_enable wrt. lane count
-
-changes in v6:
-- rebase onto 6.14-rc1
-- add Krzysztof binding review
-- v5 was sent at the beginning of december '24, so probably has been lost
-
-changes in v5:
-- add bitfield.h for the FIELD_PROP definition
-  (reported by kernel-test-robot)
-- add Sebastian's Reviewed-by
-- add Conor's Ack to the dt-binding
-
-changes in v4:
-- moved to #phy-cells = 1 as suggested by Sebastian, with the argument
-  denoting the requested phy-type (C-PHY, D-PHY). This works similarly
-  how the Mediatek C/D-PHY already implements this, see mails around:
-  https://lore.kernel.org/all/20230608200552.GA3303349-robh@kernel.org/
-- dropped Krzysztof's review tag from the binding because of this
-- dropped custom UPDATE macro and use FIELD_PREP instead
-- build a FIELD_PREP_HIWORD macro for the GRF settings
-- add received Tested-by tags
-
-changes in v3:
-- add Krzysztof review tag to the binding
-- address Sebastian's review comments
-  - better error handling
-  - dropping empty function
-  - headers
-  - not using of_match_ptr - this should also make the
-    test-robot happier
-
-changes in v2:
-- fix error in dt-binding example
-- drop unused frequency table
-- pull in some more recent improvements from the vendor-kernel
-  which includes a lot less magic values
-- already include the support for rk3576
-- use dev_err_probe
-
-Heiko Stuebner (2):
-  dt-bindings: phy: Add Rockchip MIPI C-/D-PHY schema
-  phy: rockchip: Add Samsung MIPI D-/C-PHY driver
-
- .../phy/rockchip,rk3588-mipi-dcphy.yaml       |   87 +
- drivers/phy/rockchip/Kconfig                  |   12 +
- drivers/phy/rockchip/Makefile                 |    1 +
- .../phy/rockchip/phy-rockchip-samsung-dcphy.c | 1719 +++++++++++++++++
- 4 files changed, 1819 insertions(+)
+Tested-by: Daniel Semkowicz <dse@thaumatec.com>
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ .../phy/rockchip,rk3588-mipi-dcphy.yaml       | 87 +++++++++++++++++++
+ 1 file changed, 87 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
- create mode 100644 drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
 
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+new file mode 100644
+index 0000000000000..c8ff5ba22a86b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+@@ -0,0 +1,87 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/rockchip,rk3588-mipi-dcphy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip MIPI D-/C-PHY with Samsung IP block
++
++maintainers:
++  - Guochun Huang <hero.huang@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3576-mipi-dcphy
++      - rockchip,rk3588-mipi-dcphy
++
++  reg:
++    maxItems: 1
++
++  "#phy-cells":
++    const: 1
++    description: |
++      Argument is mode to operate in. Supported modes are:
++        - PHY_TYPE_DPHY
++        - PHY_TYPE_CPHY
++      See include/dt-bindings/phy/phy.h for constants.
++
++  clocks:
++    maxItems: 2
++
++  clock-names:
++    items:
++      - const: pclk
++      - const: ref
++
++  resets:
++    maxItems: 4
++
++  reset-names:
++    items:
++      - const: m_phy
++      - const: apb
++      - const: grf
++      - const: s_phy
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the 'mipi dcphy general register files'.
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      phy@feda0000 {
++        compatible = "rockchip,rk3588-mipi-dcphy";
++        reg = <0x0 0xfeda0000 0x0 0x10000>;
++        clocks = <&cru PCLK_MIPI_DCPHY0>,
++                 <&cru CLK_USBDPPHY_MIPIDCPPHY_REF>;
++        clock-names = "pclk", "ref";
++        resets = <&cru SRST_M_MIPI_DCPHY0>,
++                 <&cru SRST_P_MIPI_DCPHY0>,
++                 <&cru SRST_P_MIPI_DCPHY0_GRF>,
++                 <&cru SRST_S_MIPI_DCPHY0>;
++        reset-names = "m_phy", "apb", "grf", "s_phy";
++        rockchip,grf = <&mipidcphy0_grf>;
++        #phy-cells = <1>;
++      };
++    };
 -- 
 2.47.2
 
