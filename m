@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB10C28B2E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 13:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5769C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 14:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r4gUmZPvhsk1BCFO7U2dboObZcznJ8uSkoH7+iucTbQ=; b=Z3UjfJMWllnMXS
-	sIbLLjlXdcK6OqfIInV5XjcryKRJ9qwVIUD49l1gkXOsPygkR1QCw9zK+nzp3ciyhIykPXk5oY38/
-	cFNqLvRrnUyFM152BMxB5oYbpfdWpOjYw5bpo7I48+StEnYSNP3sckmwFDONpNywNAAolgoTnxr6/
-	kMtEozfLN1EhxsOMzg/VGoy9LTKG4/gL5MtSCwsjeytodNuW1aE9nVYu7mIyv7iMe/+wxp2Nn6/Kj
-	c3NQ8MkBVKJfSeHDhCLqCz5WQPPKcA2IHIIIU6U33QkSWhldTgon4sDN7scqcTi/MW91StZudr5pv
-	EU4XCENjCWI76RX4b/ag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:To:MIME-Version:Date:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DH/saWwM2/7+RaauTt5mRQmasMX88BbmPMiuY/dpcZo=; b=n8UuxvG095fARy
+	5s/dLcoIAi7s0Q6xMTT/5r68BPnaqBGQZtx0XY6YaVtVKadZx63A0/KeaTeMW6rIlYpNa2uTgjSpv
+	9j77Rmp5LwteEp7wYC05PY8NLW7+Qd+C3gLgvZMhuXUxt7DNzwV/B0qHbeVm79ruqgZMf0jccrbpy
+	1qG2y5qs+AYTufqjxj5j7s9IHhRaIbYxcw0qEMVVZMrMpnnhKqC+E8H7+uzP7ZS5n+08WZ2eLuBO1
+	EvLrRe1vXd5oaGV5rTFxuwHAwQTBHMDF2TU5fdJCSxPXZLwH0kllkPmZTC+2EEDLfUepROxrEvhCH
+	hYdQkNNBdvcN33EDxB4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsisi-0000000BQ8l-2nkO;
-	Thu, 13 Mar 2025 13:45:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1tsjJw-0000000BUsY-0N0I;
+	Thu, 13 Mar 2025 14:14:00 +0000
+Received: from haruka.juszkiewicz.com.pl ([185.243.53.191])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsinp-0000000BPGG-00iG;
-	Thu, 13 Mar 2025 13:40:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=fuMgAJ1TQNNEGebrmKbN3q99gG91+UBsAYkEU1XoKSs=; b=BOhmXE027Px7ukYx2xai6+DsGe
-	K4G8q00PxwOLiaA8cFjKhj9g4mz4rdRZSxZY2i9Jjd+x4ORoeHngeaAqmRAO7yqzBPXwAwPMTtnW0
-	msitmgkZ2oG6JJisv20t6hfan7u7gjxdJqQYKvHLopCSyd5tFmMws6Axc50qn3GgrC/+mYdM1G14R
-	j3gXWFMt6pbvGasJUuV3V5+gzyxxjFkCHnkT9XHdzDs3IZ+O1lC0R9BjLFU5b58Yx7QYPK8hB4Ecl
-	ZVAGxslYmUt+fzIKdiwgF+2dJZZEojfEK1SO43wF0MXqt8U80dahKqe1Lf7RFceeTz+UqNW8se1GI
-	iKNSpNzA==;
-Received: from [62.91.42.92] (helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1tsinf-0008Rg-8H; Thu, 13 Mar 2025 14:40:39 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: vkoul@kernel.org,
-	kishon@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	quentin.schulz@cherry.de,
-	sebastian.reichel@collabora.com,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dse@thaumatec.com,
-	heiko@sntech.de,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v8 1/2] dt-bindings: phy: Add Rockchip MIPI C-/D-PHY schema
-Date: Thu, 13 Mar 2025 14:40:31 +0100
-Message-ID: <20250313134035.278133-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250313134035.278133-1-heiko@sntech.de>
-References: <20250313134035.278133-1-heiko@sntech.de>
+	id 1tsjJn-0000000BUrm-0puQ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Mar 2025 14:13:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=juszkiewicz.com.pl;
+	s=mail; t=1741875226;
+	bh=WVIkGMMTE+yjuk9WuyuE2jdEj9KMWNM3ktIylZ77YRc=;
+	h=Date:To:From:Subject:From;
+	b=2gurJOimlRKeFmZqmBNlR8IvP5a2w/293FG5k85aLZxNJdlk4q/M5zKA/sGL1lTHB
+	 rMi4LguB5rt5PSBW8Sr3xOXDgFH3OXQrgoNCZoSb25zT6PjrsIeCweGoAShBH4lfcD
+	 9/CITfAGd7TmRSf2xLtB9iZdHdN/VfGf9HhtLeuGfBGnBQy8I/nI1ktUuL1xWyMSgq
+	 QvR6tz13dOej2FWWybip7cQRbLHZwNt2YIl7JPkj++VzTfjylRaj7D1LlnSMQZJKlB
+	 ot8U/TtImfh3f8AINaIwAR7yFkwXzGGH2Hf8mzZe9hICFsk/5n6xtT0P/U2ejj22Q8
+	 05z8i9dwODAPw==
+Received: from utena.juszkiewicz.com.pl (utena.juszkiewicz.com.pl [158.101.208.177])
+	by haruka.juszkiewicz.com.pl (Postfix) with ESMTPSA id DBAFD1FA20;
+	Thu, 13 Mar 2025 15:13:46 +0100 (CET)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4998C41471;
+	Thu, 13 Mar 2025 15:13:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juszkiewicz.com.pl;
+	s=mail; t=1741875225; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:content-language;
+	bh=4yjAx+rW+7trFbsPYa9MmImclfe7bQsZLf7dTmKiJcM=;
+	b=kmDzXI9GA7jh0dch8uiu4GO0ayGwJK+658IgG/cDjUrUddAByoRwNVAgHeUBpQCa7z/QYw
+	xEgITZhj55AbT1KcbF6LJh6WunFXMK9S3jlI/2vvxoHfXp84d0WnZLE1AozqBKDnBptsAP
+	jY5fP0hXOT693v2O+8a4vXtqrwVtte3XxkCJ8PEOuMItdM2hCuOEvx4p1NZc29s1GNWN3D
+	tzvs6B+eZXufiam3oSMoNJ2aQyeH7Q65pBDUcvbsmxl9lqqXh5a2GsLNq6/TH5AUhwtBaB
+	oKvVtcbj5+xcle5/wZ9CkUZS7/4ugiCYeQrn6/hDsfoKYBcTDlXQwqgRloaalw==
+Message-ID: <e7c6bdd7-47ed-484e-af26-83b9cc531561@juszkiewicz.com.pl>
+Date: Thu, 13 Mar 2025 15:13:40 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: linux-rockchip@lists.infradead.org,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+From: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
+Content-Language: pl-PL, en-GB
+Subject: rockchip-drm display-subsystem: [drm] *ERROR* POST_BUF_EMPTY irq err
+ at vp0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_064049_045449_6D7B7017 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20250313_071351_408840_EE8C2994 
+X-CRM114-Status: UNSURE (   3.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,124 +77,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+I took my FriendlyELEC NanoPC-T6 LTS back to operation. Installed Fedora 
+rawhide on it and trying to get screen working.
 
-Add dt-binding schema for the MIPI C-/D-PHY found on
-Rockchip RK3588 SoCs.
+Running 6.14-rc6 on it. Kernel log is full of this message:
 
-Tested-by: Daniel Semkowicz <dse@thaumatec.com>
-Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- .../phy/rockchip,rk3588-mipi-dcphy.yaml       | 87 +++++++++++++++++++
- 1 file changed, 87 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+rockchip-drm display-subsystem: [drm] *ERROR* POST_BUF_EMPTY irq err at vp0
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
-new file mode 100644
-index 0000000000000..c8ff5ba22a86b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
-@@ -0,0 +1,87 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/rockchip,rk3588-mipi-dcphy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip MIPI D-/C-PHY with Samsung IP block
-+
-+maintainers:
-+  - Guochun Huang <hero.huang@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3576-mipi-dcphy
-+      - rockchip,rk3588-mipi-dcphy
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#phy-cells":
-+    const: 1
-+    description: |
-+      Argument is mode to operate in. Supported modes are:
-+        - PHY_TYPE_DPHY
-+        - PHY_TYPE_CPHY
-+      See include/dt-bindings/phy/phy.h for constants.
-+
-+  clocks:
-+    maxItems: 2
-+
-+  clock-names:
-+    items:
-+      - const: pclk
-+      - const: ref
-+
-+  resets:
-+    maxItems: 4
-+
-+  reset-names:
-+    items:
-+      - const: m_phy
-+      - const: apb
-+      - const: grf
-+      - const: s_phy
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the 'mipi dcphy general register files'.
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - resets
-+  - reset-names
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      phy@feda0000 {
-+        compatible = "rockchip,rk3588-mipi-dcphy";
-+        reg = <0x0 0xfeda0000 0x0 0x10000>;
-+        clocks = <&cru PCLK_MIPI_DCPHY0>,
-+                 <&cru CLK_USBDPPHY_MIPIDCPPHY_REF>;
-+        clock-names = "pclk", "ref";
-+        resets = <&cru SRST_M_MIPI_DCPHY0>,
-+                 <&cru SRST_P_MIPI_DCPHY0>,
-+                 <&cru SRST_P_MIPI_DCPHY0_GRF>,
-+                 <&cru SRST_S_MIPI_DCPHY0>;
-+        reset-names = "m_phy", "apb", "grf", "s_phy";
-+        rockchip,grf = <&mipidcphy0_grf>;
-+        #phy-cells = <1>;
-+      };
-+    };
--- 
-2.47.2
+/sys/devices/platform/display-subsystem/drm/card0/card0-HDMI-A-1/modes 
+shows list of resolutions available on my 10" screen. Monitor says 
+"HDMI: no signal".
 
+I remember having screen running once with some set of out-of-tree 
+patches but iirc it was before HDMI0 support was present in mainline.
+
+Where I should look?
 
 _______________________________________________
 Linux-rockchip mailing list
