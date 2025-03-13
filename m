@@ -4,56 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BCBC282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 08:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C95C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 08:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I5IzwicVjxdH30QzXHSe8JInqAD9NJHHcaL5IQsIm10=; b=4o2Xt/4dcIV/tO
-	OdaaBHf5wQ8+faIlb1cESS64xh4KWxfGsffirH5VeNoPVPeXWjtlJnSvxlpUBykKGRppfEAGADDtB
-	h5JA/KcDXfqfVLFJCKF5mw74H0CsI1ORXFx6lwX96xWJxI0rwYwwfHF2VjoUfCtTfObJNpN4o1Kpl
-	CaPp2WU0OArq/y++BIU11mN9z7KJMR3FzI2I7fTEBj9Anx04cqD3MUYPH2xG3kJGI+FwfOy3CusXF
-	nOnHNsUg0yRS+kEsK+gw2AvELfYwT1ci5CwDBo8L5mpZ89omSHz+kzbmkm64PdtsQwR12098C3mkx
-	mkiMWOl/9exnVh+zE1yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wI5TkaiNwqTU+FkOj83c8GacGgD0Fo2XV5eD+UR0IkU=; b=rbLUt87AMj5xH9
+	lkr4rsKZV9QqHoPetqs1bKwj7M6JaoO0ecXW6NdZOHWpyTA/yp0qKxmXqtOzOkWLAKKA0dr57Lq0Q
+	kixsR3e8ilzI21PDC68JA0zwBKKsRbnK7VWX74EJzHbL7BBv6QjvWaCjc7UQZ3dAyfzUMnwGT+t+u
+	GNyVxfieBO6EYOAdUam1O8ykjqFRrxRL9JV7LDgqdZn8hn2Cj0T10SaEOPpC3vQkVMi+DDAoeTqve
+	zjxavb3Ssod2hy5S3xG9SRLRwKSYDld65kiDmv5xNutBuNeIK0Ve5ZfxPh0Opup6XIrq0F2AXXKvC
+	ep3WTezweu4bK83kRW2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tse0M-0000000AYgs-3rAJ;
-	Thu, 13 Mar 2025 08:33:26 +0000
+	id 1tseDT-0000000AawK-3LQx;
+	Thu, 13 Mar 2025 08:46:59 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tse0J-0000000AYft-2ito
+	id 1tseAb-0000000AaVn-1O30
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Mar 2025 08:33:25 +0000
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <a.fatoum@pengutronix.de>)
-	id 1tse0B-00077f-6N; Thu, 13 Mar 2025 09:33:15 +0100
-Message-ID: <7ba2e429-113d-4e1c-968b-ffbe65bcf9f4@pengutronix.de>
-Date: Thu, 13 Mar 2025 09:33:12 +0100
+	Thu, 13 Mar 2025 08:44:02 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tseAQ-0000KT-Qn; Thu, 13 Mar 2025 09:43:50 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tseAP-005VQo-17;
+	Thu, 13 Mar 2025 09:43:49 +0100
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1tseAP-0003az-0x;
+	Thu, 13 Mar 2025 09:43:49 +0100
+Message-ID: <5824eaa53054cfd9886c6ba745bd5cd8914c26c0.camel@pengutronix.de>
+Subject: Re: [PATCH] dt-bindings: reset: fix double id on rk3562-cru reset
+ ids
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Heiko Stuebner <heiko@sntech.de>, sboyd@kernel.org,
+ mturquette@baylibre.com
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	kever.yang@rock-chips.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, kernel test robot
+	 <lkp@intel.com>
+Date: Thu, 13 Mar 2025 09:43:49 +0100
+In-Reply-To: <20250312215923.275625-1-heiko@sntech.de>
+References: <20250312215923.275625-1-heiko@sntech.de>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- "barebox@lists.infradead.org" <barebox@lists.infradead.org>
-From: Ahmad Fatoum <a.fatoum@pengutronix.de>
-Subject: [BUG] drm/rockchip: vop2: uninitialized variables passed to ilog2 and
- writel
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: a.fatoum@pengutronix.de
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_013323_694934_A095B3AB 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20250313_014401_363584_6AE35127 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,45 +82,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mi, 2025-03-12 at 22:59 +0100, Heiko Stuebner wrote:
+> Id 173 was accidentially used two times for SRST_P_DDR_HWLP and
+> SRST_P_DDR_PHY. This makes both resets ambiguous and also causes build
+> warnings like:
+> 
+> drivers/clk/rockchip/rst-rk3562.c:21:57: error: initialized field overwritten [-Werror=override-init]
+>    21 | #define RK3562_DDRCRU_RESET_OFFSET(id, reg, bit) [id] = (0x20000*4 + reg * 16 + bit)
+>       |                                                         ^
+> drivers/clk/rockchip/rst-rk3562.c:266:9: note: in expansion of macro 'RK3562_DDRCRU_RESET_OFFSET'
+>   266 |         RK3562_DDRCRU_RESET_OFFSET(SRST_P_DDR_PHY, 0, 8),
+>       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/clk/rockchip/rst-rk3562.c:21:57: note: (near initialization for 'rk3562_register_offset[173]')
+>    21 | #define RK3562_DDRCRU_RESET_OFFSET(id, reg, bit) [id] = (0x20000*4 + reg * 16 + bit)
+>       |                                                         ^
+> drivers/clk/rockchip/rst-rk3562.c:266:9: note: in expansion of macro 'RK3562_DDRCRU_RESET_OFFSET'
+>   266 |         RK3562_DDRCRU_RESET_OFFSET(SRST_P_DDR_PHY, 0, 8),
+>       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> To fix that issue give SRST_P_DDR_PHY a new and now unique id.
+> 
+> Reported-by: Stephen Boyd <sboyd@kernel.org>
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202503121743.0zcDf6nE-lkp@intel.com/
+> Fixes: dd113c4fefc8 ("dt-bindings: clock: Add RK3562 cru")
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> The original patch did go with the reset of the clock controller code
+> into the clock tree, so this patch should of course also go that way.
 
-Running clang-analyzer[1] on the VOP2 driver in barebox[2], which was ported
-from Linux reports that following variables:
+Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-  dclk_out_div, if_pixclk_div, if_dclk_div
-
-defined in rk3588_set_intf_mux() and passed to rk3588_calc_cru_cfg()
-are given as uninitialized arguments to ilog2() and in some cases even
-used afterwards unconditionally (outside of error cases):
-
-  - dclk_out_div: is not initialized in the HDMI, eDP and DPI cases,
-    but is passed to ilog2 unconditionally and the result is written
-    into the RK3588_VP_CLK_CTRL register
-
-  - if_pixclk_div: is not initialized in the DP and DPI cases,
-    but is passed to ilog2 unconditionally.
-    However, the result seems unused.
-
-  - if_clk_div: is not initialized in the DP, MIPI and DPI cases,
-    but is passed to ilog2 unconditionally.
-    However, the result seems unused.
-
-I checked against Linux v6.14-rc6.
-
-I am not fully sure what a suitable default value would be for the first
-case, which is why I report this without a patch.
-
-[1]: https://lore.kernel.org/barebox/20250313080950.3222757-1-a.fatoum@pengutronix.de/T/#m78ca98c01b73ef7fe3316e73ce62cfe4b2c111d0
-[2]: https://github.com/barebox/barebox/blob/v2025.02.0/drivers/video/rockchip/rockchip_drm_vop2.c
-
-Thanks,
-Ahmad
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
