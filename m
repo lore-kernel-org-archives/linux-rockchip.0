@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8EE5C282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 07:30:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8663C28B2E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 08:12:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oSlUDDy43gu2t5dvHK3H0ARI4hIcl7Oc7Wy+64U5A3I=; b=fMI85KQCrdgftj
-	g8aVGZ02XZuSqaGTQ3O4EBPs+bzEb+obO2WPzoNm2cp+O/LCrzQPH+MtK+0/Jfnel85kZpnEFdZWe
-	wNt1tXIgt/Yz1xMWwhJDsUifMYrtx7P4RTdvbKQZnyiL/YyXA6eIU+LKAUmGVKshxoF1JkQFSHcga
-	de88vhrf1B+QihC+VR3+3Wr0xtpJVapKhWJ9b13AkZk+NiGXDMrmEPxcdDxgbAn1LGGjTnD6v3ltU
-	KPW1F5R0k+8fHxpPKLCIii6u9QenT7JNe0cqKIzazuiEEGtt2UnHTbq1XXOSFLg9TivIiX232FI6y
-	4p+FB9kaQe/Fcwt5Fr2A==;
+	List-Owner; bh=NSNFHVzruL86Wy+G3gmNwxgSSMz/lb8W14PH25IawAY=; b=Jt2BrVxoOUnFX4
+	stlpU/AXLFblkmWYNqZdSpTlY7IDa1NmJxS5pxqZ2jjx3n1l666d5gtM0Rxz9H3NOnubADDQLaEdS
+	5Wc+CHawcaSKNwxODb8XQfm+As+Vz095IB59OH814QRlRJdPBAu8+Fma3E7m1gyZtwfk2iGwzNgKS
+	EwWDjjk0/xeLO+dwSQbKw4bU0KI7p5h4bH3TqF6VurJnu6mthqw8CdMh6GJffIBCSCCeQjOcsItiF
+	G06hs0B7yKrxJxC0+2W+No1yBBUa0Vc1/gpBLLkAstGA2iLDzJqS4YWL1SfedJc9u5OisNySkVkAB
+	lW3eH2hf/6in8/kY/SIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsd0z-0000000ANjj-1mr1;
-	Thu, 13 Mar 2025 07:30:01 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1tsdg7-0000000AVoq-1PXI;
+	Thu, 13 Mar 2025 08:12:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsciK-0000000AJul-0tlR;
-	Thu, 13 Mar 2025 07:10:46 +0000
-Received: from localhost.localdomain (unknown [119.122.215.89])
-	by smtp.qiye.163.com (Hmail) with ESMTP id e22876d9;
-	Thu, 13 Mar 2025 15:10:36 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: heiko@sntech.de
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	jonas@kwiboo.se,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pwm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-Date: Thu, 13 Mar 2025 15:10:31 +0800
-Message-Id: <20250313071031.1840032-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <7779050.EvYhyI6sBW@phil>
-References: <7779050.EvYhyI6sBW@phil>
+	id 1tsdeR-0000000AVYw-23BQ;
+	Thu, 13 Mar 2025 08:10:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 32C925C58ED;
+	Thu, 13 Mar 2025 08:08:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 192C1C4CEE9;
+	Thu, 13 Mar 2025 08:10:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741853446;
+	bh=Zp1VrZoXU/0dSvEI86TANfaHnZV5iTRbrfgotlEDFRI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BpXfG2HhBD0lvTWWhRZA+1T8htRe+xTYjak3WeCBc7WDn9XNvGVXbCye4eQHWGXQx
+	 tDbB1ms2wNbC4aEE3MROlHrWhcxKkySOS7TESW0MK8akdtqAYX8xdfbUGc0S7l3Ieo
+	 bvMrAGxYbhEv0F405l+dTAhBKbRrUI5WgeKlc1OYbxkQoD2AiuvrnBtsFFh7yHmSjg
+	 VSIflVkoxTCLnojftgiyh96Dk22WoaGJ0B6JXAGJACTduRHPzr1c6Fqh0CS2dE28N2
+	 iWOZfLVkFcRXWfUISQzeA+efY0As4cm82VNBDuhZi5FmIm7v2hrA1Qesz3PKfbSrrp
+	 jw/RBgrYdOfVA==
+Date: Thu, 13 Mar 2025 10:10:40 +0200
+From: Dmitry Baryshkov <lumag@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2 7/7] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5
+ ITX
+Message-ID: <y7ouhmfbls3vcumrgudcvhlahxx7iqliimeq4cljko4xfwgzcb@45iozv6spswb>
+References: <20250312104214.525242-1-andyshrk@163.com>
+ <20250312104214.525242-8-andyshrk@163.com>
+ <q3y36jgswj4xa2g3hnptc6kgzphbqfg675r5paa2lwvdseytio@jysj4f2i6osu>
+ <5858d492.44b.1958ceb23dd.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCHk4dVk1ISUhOTx9PSx0fH1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
-	JLS1kG
-X-HM-Tid: 0a958e573b6203a2kunme22876d9
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MBw6Cio*IjJDOhABOiIPMxw3
-	QhFPCgFVSlVKTE9KQ09CQ0hMSUNJVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpOVUNCWVdZCAFZQU9KTzcG
+Content-Disposition: inline
+In-Reply-To: <5858d492.44b.1958ceb23dd.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_001044_439872_8B018856 
-X-CRM114-Status: UNSURE (   6.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250313_011047_607675_F5E5EA19 
+X-CRM114-Status: GOOD (  27.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,29 +68,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, devicetree@vger.kernel.org, "stephen@radxa.com" <stephen@radxa.com>, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Thu, Mar 13, 2025 at 08:32:55AM +0800, Andy Yan wrote:
+> 
+> Hi Dmitry,
+> 
+> At 2025-03-12 20:39:17, "Dmitry Baryshkov" <lumag@kernel.org> wrote:
+> >On Wed, Mar 12, 2025 at 06:42:08PM +0800, Andy Yan wrote:
+> >> From: Andy Yan <andy.yan@rock-chips.com>
+> >> 
+> >> The HDMI Port next to Headphone Jack is drived by
+> >> DP1 on rk3588 via a dp2hdmi converter.
+> >> 
+> >> Add related dt nodes to enable it.
+> >> 
+> >> Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
+> >> but it will trigger a dtc warning like "graph node unit address
+> >> error, expected "b"" if we use it directly after endpoint, so we
+> >> use "b" instead here.
+> >> 
+> >> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> >> ---
+> >> 
+> >> (no changes since v1)
+> >> 
+> >>  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 37 +++++++++++++++++++
+> >>  1 file changed, 37 insertions(+)
+> >> 
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> >> index 67b886329248..29f10ec9f0c1 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> >> @@ -57,6 +57,18 @@ analog-sound {
+> >>  			  "Headphone", "Headphones";
+> >>  	};
+> >>  
+> >> +	dp-con {
+> >> +		compatible = "dp-connector";
+> >
+> >You've written that it is an HDMI connector. Could you possibly clarify,
+> >why is it being registered as a DP connector? Is there any kind of
+> >a bridge between the DP controller and the HDMI connector?
+> 
+> When I was preparing this patch at that time, I also had some doubts. 
+> Whether it should be registered as a DP connector or an HDMI connector. 
+> There is a DP2HDMI conversion chip between the DP of RK3588 and this hdmi 
+> interface, but this conversion chip does not require a software driver. 
+> If the current writing is incorrect, I will change it to hdmi-connector in the next version.
 
-> so yes of course the pinctrl needs to be default - simply because
-> that's the only pinctrl state mainline supports.
+Yes. Please add the RA620 chip to simple-bridge.c and simple-bridge.yaml
+and use HDMI connector here.
 
-> But judging by the fact that you're discussing working vs. non-working
-> below, can you please check if we should drop the patch for 6.15 till
-> that is solved?
+> 
+> Thanks
+> >
+> >> +		label = "DP OUT";
+> >> +		type = "full-size";
+> >> +
+> >> +		port {
+> >> +			dp_con_in: endpoint {
+> >> +				remote-endpoint = <&dp1_out_con>;
+> >> +			};
+> >> +		};
+> >> +	};
+> >> +
+> >>  	gpio-leds {
+> >>  		compatible = "gpio-leds";
+> >>  		pinctrl-names = "default";
+> >> @@ -268,6 +280,24 @@ &cpu_l3 {
+> >>  	cpu-supply = <&vdd_cpu_lit_s0>;
+> >>  };
+> >>  
+> >> +&dp1 {
+> >> +	status = "okay";
+> >> +	pinctrl-names = "default";
+> >> +	pinctrl-0 = <&dp1m0_pins>;
+> >> +};
+> >> +
+> >> +&dp1_in {
+> >> +	dp1_in_vp2: endpoint {
+> >> +		remote-endpoint = <&vp2_out_dp1>;
+> >> +	};
+> >> +};
+> >> +
+> >> +&dp1_out {
+> >> +	dp1_out_con: endpoint {
+> >> +		remote-endpoint = <&dp_con_in>;
+> >> +	};
+> >> +};
+> >> +
+> >>  &gpu {
+> >>  	mali-supply = <&vdd_gpu_s0>;
+> >>  	status = "okay";
+> >> @@ -1262,3 +1292,10 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
+> >>  		remote-endpoint = <&hdmi1_in_vp1>;
+> >>  	};
+> >>  };
+> >> +
+> >> +&vp2 {
+> >> +	vp2_out_dp1: endpoint@b {
+> >> +		reg = <ROCKCHIP_VOP2_EP_DP1>;
+> >> +		remote-endpoint = <&dp1_in_vp2>;
+> >> +	};
+> >> +};
+> >> -- 
+> >> 2.34.1
+> >> 
+> >
+> >-- 
+> >With best wishes
+> >Dmitry
 
-I suggest dropping this patch first, I will send v2
-when this issue is solved.
-
-Thanks,
-Chukun
-
---
-2.25.1
-
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
