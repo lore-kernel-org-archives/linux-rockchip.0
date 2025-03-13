@@ -4,102 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D58CC28B2E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 10:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30657C2BA1B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 11:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rn11l2bRt9yszkIWnOp2Pb9EZ9rkFLq3L9hfpI4eDxw=; b=WTA/baWL9ZUKYH
-	Zi9SaBGi54DMiJQy9DKfga6nMtzP9fUafoE8del3Q7VvXzDpDs62qhJwbDjvbmiaOCx9ka92E7lc7
-	cVhmNMlGnk5R0gESHfti8XpYqCaLlnkdyLhwI16dELBUs5XdWJaUvb8OZ0FkFClRa3kfqc7pKHowY
-	sruQ4pgc3kiyWZaK/rLpuWy+uj3XdjrNlRLWQ2wdngV92hzzO69KmKBGRZfxuyqR4dyUVQsMbeeyk
-	fI6M9l1PtWmz2fJ0jqpvv2OPr+dRcJungY14M3qB7FoQfYijoBjeo48R2D8dMoruCyj/x+sRkM1QU
-	9A3MLmDhV593yR4VkOtA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PMman9OCVLPGR4RBLReebTvdMvlNu26uZM1PachTe4Y=; b=czPCau9DS9f/j1
+	uCervoueetCKKWx9F3HCHcGAZC7Y35N2yP7Aj8KBKLL7VyFDKSsaNVlmXyUi7zMKFPNCvNXT/vxKt
+	dU7CV8EIxtxqgwjqXtqL80jRGcLpFQvvDEQ4WG43PtfTUNhC34n+L8rNmDHy8pnVbV+Xkto8XDBXE
+	uUvhPJKWfXK8Ki3HZPOlgOHNN0Zmv1JG/wDL8wFl6M36g1lH1FpoD2nrp1YxntkkU/2NmPfUIJ3uY
+	CvmgaDt/Fp0+4ATtSXSXlNhZ4ifQ1c+8NuX4c4jjz0PiMImQPAOoW+bJZ++otWUMVmZs6V7d4pqAr
+	pmG2SpF9teNTkW7qBMKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsg4e-0000000AvNP-3eti;
-	Thu, 13 Mar 2025 10:46:00 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1tsgZe-0000000B0xA-0gJ8;
+	Thu, 13 Mar 2025 11:18:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsg1w-0000000AuiJ-2252;
-	Thu, 13 Mar 2025 10:43:13 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-5e66407963fso1366175a12.2;
-        Thu, 13 Mar 2025 03:43:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1741862588; x=1742467388; darn=lists.infradead.org;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p/wMjl7Q/J6WQRlQUTRmWAqcrf0d7pU34h1ehg31lfI=;
-        b=mhjM5PJPhFAgh09Mo+l/jLU1WmCIYu1yea6+LGs69IAZ0uOLczraIbtAp4H2Eqpxpb
-         N2zFSOc/Xg/RLtFfSXDJ2GqIBwTvYkqG+pbJwu7tAx1NhAVS0qSJF0hS5tYxbXtm89cW
-         dF3qCClhOqaKbAEWd1oYvcnlXE/6iMJtk6YRqqTmDcNX1zaqm9ojIlDzl+LPxb/VPXz+
-         Hnmc1p68gctmwJnAgMMMHRVzKq8TusBHiYH82oLQ08Uss2N39gWWnhvQiSP2jtZkXUfH
-         Vyb9eZ0EowzfWGufMp3Q89uEw9i+grOCD5IxS31r48anLRkMPmsvaryO2BbJI9ORsbeb
-         9n5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741862588; x=1742467388;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p/wMjl7Q/J6WQRlQUTRmWAqcrf0d7pU34h1ehg31lfI=;
-        b=ACOKZXgCwLI1mTyzFeBcvFCPWHw/Lit81FugNpFhWA/D6255M7f4qRwDQAccbVftar
-         ym7S0TNmWV4dnrZW3iFSG4OQ4FWlHGD6alFAA5en203mgNxAltTqpsWKwnht7l6tzUTE
-         4Z9m3P7kuD7XGID01PISo2KXbQXJXagdP15KJYyF/btPkWEgLW4rdeFPdlXaf1ErVCOw
-         dqRarn315MS0RkUbm3fGGA8DV6hbwPVshbmH3S8AO4v7N4TMHmXLd3P4o9y6BRQw16DM
-         EsccCgRy7U4I3MJjKAbAMtiqbFM5egZAmfnPApi8SSrD36CSdoZI4qgJj32I5X/Hc0+o
-         Oyqg==
-X-Forwarded-Encrypted: i=1; AJvYcCVfhVE0r8oM0LGJjmtDMkM/Ci0iNsDwbPzlKsKffTgZBDUkxCFzn0obdKZk40ktRukAmp5CTrQsiqPf/5go26U=@lists.infradead.org, AJvYcCX7vuZ79UumCNEncTgQNJ1YpB2T70zgFEk0lvX/wegYcvOIhMGn9vmRVO0Fr4V8028DS7/Fe4Dt4yxkEiNRKBAo@lists.infradead.org
-X-Gm-Message-State: AOJu0YzW4DwxhQaPJGJ/XZj2qTgZ8zneRl8ddbewqZggmFHUCTRLrafN
-	CCQ3hEYymzilAn9hkWwR6tiWA6bNnCfGPWMkusaIjKDa6s1ALp9c
-X-Gm-Gg: ASbGncudJ5J8D0HLHhaB+1gvpkVc3hXx8br9qmaPWJf/DXWyRKeFyABe25VkzryueAZ
-	0vePz/nDfvhvtwGbuybXSdMvKe1N5P2geST9h0bqQwtI4qz9DN0wYuZSEV+5HDh9l5vRVemT24e
-	070ZgiX37UGoOu1ntfeESAovwfRSmUGgVYZsXaf1nEljzSmAmM6AwSllY3POJQcdL1k3tDrK/v/
-	/JGjSEs8QEEHHN/nBjPla/UE3oxWBR9+2iWuEez9jv5Y1smYMJ2unDTYP1L3ZONea/RcNx6k0QL
-	QQboy/jHAvMATJTdr0V9bmy+ltaMyMPugpP5O8gmiwh7SoVmu25kBTY1HN63dGLOb8/93ojN0ie
-	40kQbnrLGzY/Y+T4bv7aSz616OA==
-X-Google-Smtp-Source: AGHT+IHlgJ/0Zq8LGAbC0JM1shbR97v6kXIu61cyy2+LFvXoplbiFx6QsyXJl8Y+G3l47+Ic+J7RIw==
-X-Received: by 2002:a05:6402:2347:b0:5e7:c42e:3cc0 with SMTP id 4fb4d7f45d1cf-5e7c42e3d2fmr6212085a12.9.1741862588162;
-        Thu, 13 Mar 2025 03:43:08 -0700 (PDT)
-Received: from smtpclient.apple (89-66-237-154.dynamic.chello.pl. [89.66.237.154])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5e816afdfd0sm598994a12.75.2025.03.13.03.43.05
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Mar 2025 03:43:07 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.400.131.1.6\))
-Subject: Re: [PATCH v2 2/7] drm/bridge: synopsys: Add DW DPTX Controller
- support library
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-X-Priority: 3
-In-Reply-To: <381bbdeb.342.1958ce2b7f8.Coremail.andyshrk@163.com>
-Date: Thu, 13 Mar 2025 11:42:54 +0100
-Cc: heiko@sntech.de,
- neil.armstrong@linaro.org,
- sebastian.reichel@collabora.com,
- lumag@kernel.org,
- devicetree@vger.kernel.org,
- hjc@rock-chips.com,
- mripard@kernel.org,
- linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- yubing.zhang@rock-chips.com,
- dri-devel@lists.freedesktop.org,
- Andy Yan <andy.yan@rock-chips.com>,
- krzk+dt@kernel.org,
- robh@kernel.org,
- linux-arm-kernel@lists.infradead.org
-Message-Id: <FE66F347-431A-45E1-8764-06767B7FC74E@gmail.com>
-References: <20250312104214.525242-1-andyshrk@163.com>
- <20250312104214.525242-3-andyshrk@163.com>
- <61E9B36C-8568-4C0E-A9A7-07FF612912AA@gmail.com>
- <381bbdeb.342.1958ce2b7f8.Coremail.andyshrk@163.com>
-To: Andy Yan <andyshrk@163.com>
-X-Mailer: Apple Mail (2.3826.400.131.1.6)
+	id 1tsgRp-0000000Azo6-1DxN;
+	Thu, 13 Mar 2025 11:09:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C48D35C5BBB;
+	Thu, 13 Mar 2025 11:07:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38B53C4CEDD;
+	Thu, 13 Mar 2025 11:09:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1741864196;
+	bh=y5Rt/A3I0puk2tWJqwdD+VS9AYs8xTcIZQZ75uLi/aQ=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=OFpakx8qWuEP5hs9WCekvz25n4fnw63dd3zf1Hsha7Gk7+1cmshaz6E6oE8d6Ieh+
+	 tBzkhdDKSaYH1OgAoNK+7jfD0fdJN4xQ1W2eZZQZ9HelvNaxoDzMiG4MttBJXWwp8t
+	 OYQ48FdLg1Aw9IqOqJEj0BBUa8qX6V/9YjFqw9jvVKWW22JNwRMHhG8JnhrlhbaW6S
+	 29uLDOm+zyzCye6P/FtsnHmuM8tJKNGUgYdVxO1sAeEi7yoQhyS/YRufPMcwDeeXtg
+	 ax/RpzUJ7Toj8NLazkxeVIel3BUqwjK+RCDn16ltaxBF+hnLwAAfRjkh+iPS9k7Pz+
+	 SWDFtToOpr/aQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB6693806651;
+	Thu, 13 Mar 2025 11:10:31 +0000 (UTC)
+MIME-Version: 1.0
+Subject: Re: [PATCH net-next] dt-bindings: net: Define interrupt constraints for
+ DWMAC vendor bindings
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174186423076.1466791.15724461347771862891.git-patchwork-notify@kernel.org>
+Date: Thu, 13 Mar 2025 11:10:30 +0000
+References: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+In-Reply-To: <20250309003301.1152228-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+To: Prabhakar <prabhakar.csengg@gmail.com>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, neil.armstrong@linaro.org, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, nobuhiro1.iwamatsu@toshiba.co.jp,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ vineetha.g.jaya.kumaran@intel.com, biao.huang@mediatek.com,
+ xiaoning.wang@nxp.com, linux-imx@nxp.com, david.wu@rock-chips.com,
+ christophe.roullier@foss.st.com, rmk+kernel@armlinux.org.uk,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org,
+ prabhakar.mahadev-lad.rj@bp.renesas.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_034312_513446_35061BD9 
-X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-CacheID: sfid-20250313_040957_382898_BD60E5EE 
+X-CRM114-Status: UNSURE (   7.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,20 +84,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IEFuZHkgWWFuIDxhbmR5c2hya0AxNjMuY29t
-PiB3IGRuaXUgMTMgbWFyIDIwMjUsIG8gZ29kei4gMDE6MjM6Cj4gCj4gCj4gSGkgUGlvdHIsCj4g
-5ZyoIDIwMjUtMDMtMTIgMjI6MjM6MTXvvIwiUGlvdHIgT25pc3pjenVrIiA8cGlvdHIub25pc3pj
-enVrQGdtYWlsLmNvbT4g5YaZ6YGT77yaCj4gCj4gVGhpcyBzZXJpZXMgc3RpbGwgIGJhc2VkIG9u
-IExpbnV4IDYuMTQgcmM0Lgo+IAo+IERpZCB5b3UgYXBwbHkgdGhlIHRocmVlIGRlcGVuZGVuY3kg
-cGF0Y2ggbWVudGlvbmVkIGluIG15IGNvdmVyIGxldHRlcj8KClRoeCEKSSBub3RpY2VkIGh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjUwMzAyMTE1MjU3LjE4ODc3NC0x
-LWFuZHlzaHJrQDE2My5jb20vIHdhcyBtaXNzaW5nClNvcnJ5IGZvciBmYWxzZSBhbGFybS4KTm93
-IHYyIHdvcmtzIG9rIGZvciBtZSBvbiByb2NrNWEgYW5kIHJvY2s1aXR4CiAKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello:
+
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
+
+On Sun,  9 Mar 2025 00:33:01 +0000 you wrote:
+> From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> 
+> The `snps,dwmac.yaml` binding currently sets `maxItems: 3` for the
+> `interrupts` and `interrupt-names` properties, but vendor bindings
+> selecting `snps,dwmac.yaml` do not impose these limits.
+> 
+> Define constraints for `interrupts` and `interrupt-names` properties in
+> various DWMAC vendor bindings to ensure proper validation and consistency.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] dt-bindings: net: Define interrupt constraints for DWMAC vendor bindings
+    https://git.kernel.org/netdev/net-next/c/5a1dddd29444
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
