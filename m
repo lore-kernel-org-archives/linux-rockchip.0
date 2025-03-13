@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572A3C282DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 12:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7EE7C282DE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Mar 2025 13:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=12Vb63Htrzc+wRqCLvmYrUH56yXTAXaxItWaJYIdaa4=; b=qA6Mjd98nSBPgQ
-	7bcBrZfPRkvO0oxg32Y9a4xaZvi4yksAPZ+w9YTDmgZ5Wr9E2LQ1V/4bpPNmmT2gfV23gA43iC6v4
-	JNIlUB5NRw9seFcTcn8ZnnBP7e81sWV9Lp67hdycOKr8b3cRHLmnapKkx7HXoL8p5BQdDG6zQ7+o/
-	3shGWZT/Cl0OWqtCB4uaFF6G/bjSAXZxU7GRBh6As43FHJzz3zTIxJ0pvpkZk2rbW01bnbW5KrssF
-	Tka9n0qY+Q/3B8FBeV5x2WzYfVlBcitT4c+rdUHXDAt0/emKs1HJxf1H6CD82sllhvMRltadENF++
-	dMnQjZAG1u+xxxbd2eIA==;
+	List-Owner; bh=6bYGFUPQkVdm5HAHMmyrlipxlPuZiAZj50RXymqtYTk=; b=1vJdvzqWlkJ0yv
+	1aMUu93lEJ1GIZcu1pcKByVKG4KXkegdtXCPVtjzoY4Yk8GNiweSA3kkyNf+J8kTi/vhGMeNZ03Ap
+	TBW8Ifl0rI/uDtIb8eiPxmXvWvcpFbgv2qc1mgxHLZfUzbDzaDdIP3ecMYQluMgLbGh52LU4SN6ym
+	3poV6QYIglI/XoSB/EXFRm2li1GMHFN1XQoSsGxx1M7v7Z3W+p6MFi5ethh05p8vCfsg+exBAvMA/
+	WYM599oLc6gajY9mGdPJvJT/kCzts5h6spFU55U2YlcqG5VdpeOZQM+VbGS5np+V1D7jkGRJ4Ccka
+	tRq3RcOtJEd5177TXV7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tshVo-0000000BDVx-3IrJ;
-	Thu, 13 Mar 2025 12:18:08 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1tsiBn-0000000BJW2-1HTr;
+	Thu, 13 Mar 2025 13:01:31 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tshHR-0000000BAn5-1hXl
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Mar 2025 12:03:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1741867394;
- bh=bZAbj6+NmXSfWd9Y3ZYRj3CY/kM/CunfChIIkSXsoRg=;
- b=wb0yLUzfEZxD7b6oGTb/tGtafaPwY/dJum6vY+Gclm6euIx83y1267foHv+b2Da3Hv9HtZbdz
- i54GsnOf9Di696xMrY/7BRApU8UimZqZ9hrpKOa68zuml/0887antpZnNBpnA6AEeniYDwioJ2W
- MYgaq4I3pkmXckkIXcFkuYYQOFZtzRh/qnm+tO9LjZkVCq2aOOylZm/sOQfSKiubUuCL4gQ2UTg
- Ty82EX0WjELMOiLRtwPne9GyOOH81BlQV+CDASQUGA0G4BLY61shvp7smIj49Q2nXTzg3riaHoC
- DOGBmr5YTUy3veJM2qWeuGjCjNFSKdjNGzbnCvRzxDlw==
-X-Forward-Email-ID: 67d2c97dc524b8270342b1d9
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
-Date: Thu, 13 Mar 2025 13:03:04 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1tsiBj-0000000BJVN-23fF;
+	Thu, 13 Mar 2025 13:01:29 +0000
+Received: from localhost.localdomain (unknown [119.122.215.89])
+	by smtp.qiye.163.com (Hmail) with ESMTP id e2d5d956;
+	Thu, 13 Mar 2025 21:01:22 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <60065c0b-4597-4976-b74b-172556c4e156@kwiboo.se>
- <20250313090109.1910997-1-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250313090109.1910997-1-amadeus@jmu.edu.cn>
+Date: Thu, 13 Mar 2025 21:01:18 +0800
+Message-Id: <20250313130118.2772992-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
+References: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
+MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSU9PVk8ZTUtCSE5KGh5DTVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a958f985e7603a2kunme2d5d956
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PT46Mzo6MzJWCBc*SBFKCz4W
+	HyFPCjdVSlVKTE9KQ0xLQ0NISkxKVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQUlIS0M3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_050317_621944_97793690 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20250313_060127_702160_6B4D07E4 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,50 +77,73 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On 2025-03-13 10:01, Chukun Pan wrote:
-> Hi,
-> 
->> I have not seen any issue with PWM using the merged patch having
->> pinctrl-names=default.
->>
->> Please see my Linux tree [1] and U-Boot tree [2], those are little ahead
->> of what has been posted on ML, e.g. it has working USB2.0 host, CPU opp,
->> Hantro VPU, GPU + opp, arm and logic pwm regulators for E20C, ROCK 2A/2F
->> and Sige1.
->>
->> Please see my Linux tree [1] and U-Boot tree [2], those are little ahead
->> of what has been posted on ML, e.g. it has working USB2.0 host, CPU opp,
->> Hantro VPU, GPU + opp, arm and logic pwm regulators for E20C, ROCK 2A/2F
->> and Sige1.
->> ...
->> [1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250311-rk3528/
->> [2] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
-> 
-> I tested your kernel device tree on E20C earlier today and still have
-> the same issue. But if I replace u-boot with the link [2] you provided,
-> it will work fine. For reference, I was using v2025.01 plus this series
-> of patches [3]. So it looks like u-boot does something and kernel doesn't?
+> Interesting, good that it works with the updated U-Boot. Main change
+> compared to v1 is that it now use clock/reset id and DT closer to what
+> has been merged in mainline Linux. It also has DT params to help
+> initialize the two pwm regulators used by these boards.
+>
+> I will try with the old v1 U-Boot series and see if I can replicated
+> your issue.
 
-Interesting, good that it works with the updated U-Boot. Main change
-compared to v1 is that it now use clock/reset id and DT closer to what
-has been merged in mainline Linux. It also has DT params to help
-initialize the two pwm regulators used by these boards.
+It is easy to reproduce this issue.
+Make the following changes in the new series of u-boot:
 
-I will try with the old v1 U-Boot series and see if I can replicated
-your issue.
+```
+--- a/configs/radxa-e20c-rk3528_defconfig
++++ b/configs/radxa-e20c-rk3528_defconfig
+@@ -47,9 +47,7 @@ CONFIG_DM_MDIO=y
+ CONFIG_DWC_ETH_QOS=y
+ CONFIG_DWC_ETH_QOS_ROCKCHIP=y
+ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+-CONFIG_REGULATOR_PWM=y
+ CONFIG_DM_REGULATOR_GPIO=y
+-CONFIG_PWM_ROCKCHIP=y
+ CONFIG_BAUDRATE=1500000
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_SYS_NS16550_MEM32=y
+```
 
-Regards,
-Jonas
+Or change dts:
+```
+--- a/arch/arm/dts/rk3528-radxa-e20c-u-boot.dtsi
++++ b/arch/arm/dts/rk3528-radxa-e20c-u-boot.dtsi
+@@ -8,9 +8,9 @@
+ };
+ 
+ &vdd_arm {
+-	regulator-init-microvolt = <953000>;
++	status = "disabled";
+ };
+ 
+ &vdd_logic {
+-	regulator-init-microvolt = <900000>;
++	status = "disabled";
+ };
+```
 
-> 
-> [3] https://lore.kernel.org/u-boot/20250123224844.3104592-1-jonas@kwiboo.se/
-> 
-> Thanks,
-> Chukun
-> 
-> --
-> 2.25.1
-> 
+Then the kernel will hang when loading the gpio driver:
+
+[    0.162618] gpio gpiochip2: Static allocation of GPIO bae is deprecated, use dynamic allocation.
+[    0.163558] rockchip-gpio ffb00000.gpio: probed /soc/pinctrl/gpio@ffb00000
+[    0.164322] gpio gpiochip3: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.165231] rockchip-gpio ffb10000.gpio: probed /soc/pinctrl/gpio@ffb10000
+[    0.165977] gpio gpiochip4: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.166886] rockhip-gpio ffb20000.gpio: probed /soc/pinctrl/gpio@ffb20000
+[    0.170342] Internal error: Oos - Undefined instruction: 0000000002000000 [#1] SMP
+
+Changing the debug level:
+[    0.175260] rockchip-pinctrl soc:pinctrl: setting mux of GPIO4-14 to 0
+[    0.175356] rockchip-pinctrl soc:pinctrl: setting mux of GPIO4-20 to 1
+[    0.175968] rockchip-pinctrl soc:pinctrl: setting mux of GPIO4-14 to 0
+[    0.176849] rockchip-pinctrl soc:pinctrl: setting mux of GPIO4-21 to 1
+[    0.178453] rockchip-pinctrl soc:pinctrl: setting mux of GPIO4-13 to 0
+(hang)
+
+Thanks,
+Chukun
+
+--
+2.25.1
 
 
 _______________________________________________
