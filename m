@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4829C35FF1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 15:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D14C35FF3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 15:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ho8UmY6HxkUjJrRJTY2CtqKAynqNllDpAKlps0zTVTo=; b=ByVnt2fTu74WsA
-	j4Y9rn6G+rT9z+X6qejwVFEPc3HiJ0G1lrtnnqnXy0zAp/PgmpU3EAQkDY57ZL5kacp/q1ERHae+Q
-	gThNi4m427Vp/3IZBt7RhsBMsFSSoVHLk4MhMD+p/8TFIKEiTNAUCuArAsXVsqO/K+YGx+8roW7Zg
-	FcLXDlatDgJr96NRbWbKRJ/D1sa/sZyXc/48v4gafou/QKWb+tXA4CtkagufwO0s98+5xwZwAzzY5
-	5gktWaBlGq0OBO87c/+pZccPmrWGc+Lt/jOsvoFp0u0D1kmz30I+gvUu0jxEyozkCc6th3k+8W2mT
-	0UALCNxK9fiwBm08z5FQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9Exw1Ysp0tMp2hooKy0GrOTVf68WqL49qBAdMncd1zs=; b=nuY9L/VjJrRFhV
+	nto3xxfJuq6N5Zm92yWNBPSabe97uvx8HVa9HnqNU8JSAusAWyptxs5GExlt01DuXV7j6kglA2h+C
+	GdzFqSIEIYueHfeUZYteaKGnKeJowf8rw4mRQnJxQsm06zXvvi+41djFnkhIulotJzHZ1olUmLmNd
+	2buMaX2HJg/aGPxoCjoCQ1y0vi/bNnocmpWg+jS42rwhBnoXvK3428ih0ELeNnu2xBkKn8ueI4Eh3
+	OMr1Ix2QVQDFy7cXpBrdAdqg64j/zIMhBfBs12t0AvX1Z405cks7fROfseE1xKP8NGwtI2NjEPbwa
+	wz+eGk0FNNLPSm6MEZlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt76N-0000000EaoE-20tF;
-	Fri, 14 Mar 2025 15:37:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tt7Cx-0000000EbsA-3wiM;
+	Fri, 14 Mar 2025 15:44:23 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt758-0000000EacN-413N;
-	Fri, 14 Mar 2025 15:36:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741966565; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PH0peLsQ4tiFcVGS74DvmopCRtbGLfiedDR3mEUFVsIwmAl6NFJb/3GXqmc+LPcdInqS9Ry/Oahq1EkdK0asI1sn7uSIlTCSL6DLypuT+H5bWUrAOK60djkTEWDJL9CD1AiQV3u3LBLF+08Gf3j+mOTn17ZAa89fzFTJKUv5kCY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741966565; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=eNFlSyQCkPuL0ajw/pLDK4UmjuztRI2TDMkUK/3j3oY=; 
-	b=SryHhGeBYSOe849kXQn2PFWJIyrWBQYBD0hx958FvuHVr0Nii7ECR8b2SEiKokwa6jN9QgUegg+4xlvuEUOQRw/7W8ioz48DQmjOl8OZmsLgDfO7OQvXaolrPKD6Wi5q2pue/7c9PGizzbt1rFn+x3gF/5ZWGG4x3eVLehDQ1nM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741966565;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=eNFlSyQCkPuL0ajw/pLDK4UmjuztRI2TDMkUK/3j3oY=;
-	b=eQVWLrCZK2/8GkddSXPLqkBegW219WZnCOtTiV+S/RP9YbH1OqpotbmdNqZoPBPX
-	ilzcXGSiCCdwUfZAE9SCCWRXbvsLqqgQl7QUNr8es8CKLd/8fi7/F3VRJl66/3trg8K
-	GEEDLPwJeQaVhVTITxwiyiTq+HUYORYNvzBvk8ks=
-Received: by mx.zohomail.com with SMTPS id 1741966563898497.5207724506298;
-	Fri, 14 Mar 2025 08:36:03 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 14 Mar 2025 16:35:50 +0100
-Subject: [PATCH] arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5
- gmac0
+	id 1tt793-0000000EbJZ-0hAU;
+	Fri, 14 Mar 2025 15:40:23 +0000
+Received: from localhost.localdomain (unknown [119.122.215.89])
+	by smtp.qiye.163.com (Hmail) with ESMTP id e524c720;
+	Fri, 14 Mar 2025 23:40:07 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	ziyao@disroot.org,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+Date: Fri, 14 Mar 2025 23:40:02 +0800
+Message-Id: <20250314154002.1844394-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
+References: <22d849c3-8a0d-4704-b69c-8019c7f70ca7@kwiboo.se>
 MIME-Version: 1.0
-Message-Id: <20250314-rk3576-sige5-eth-clk-begone-v1-1-2858338fc555@collabora.com>
-X-B4-Tracking: v=1; b=H4sIANVM1GcC/zWNQQ6CMBQFr0L+2p9QsKBcxbCA8iw/SNG2GhLC3
- W0kLmcWMxsFeEGgJtvI4yNBFpdAnTIyY+csWIbEVOSFzkt1Zj+Vuq44iIVmxJHNY+IednHgUg3
- q2tVGobpQKjw97rL+6rf2YI/XO03iIanvAtgs8yyxyRzWyP8Rtfv+BbfMeRKeAAAA
-X-Change-ID: 20250314-rk3576-sige5-eth-clk-begone-31d19a7c1e68
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.2
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaQk5IVh5OHksZSkJOHx0YHVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVDQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a959550128103a2kunme524c720
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PxA6Pgw6CDJRDAo9NwgIUQw1
+	Nw0KFE5VSlVKTE9KQk1NQ0tDT0hIVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUNCWVdZCAFZQUpPQ0M3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_083619_075365_849CCC1D 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20250314_084021_408066_4697F3FA 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,59 +71,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The GPIO3 A4 pin on the ArmSoM Sige5 is routed to the 40-pin GPIO
-header. This pin can serve a variety of functions, including ones of
-questionable use to us on a GPIO header such as the 25MHz clock of the
-ethernet controller.
+Hi,
 
-Unfortunately, this is the precise function that it is being claimed for
-by the gmac0 node in the Sige5 board dts, meaning it can't be used for
-anything else despite serving no useful function in this role. Since it
-goes through a RS0108 bidirectional voltage level translator with a
-maximum data rate of 24Mbit/s in push-pull mode and 2Mbit/s data rate in
-open-drain mode, it's doubtful as to whether the 25MHz clock signal
-would even survive to the actual user-accessible pin it terminates in.
+> Interesting, good that it works with the updated U-Boot. Main change
+> compared to v1 is that it now use clock/reset id and DT closer to what
+> has been merged in mainline Linux. It also has DT params to help
+> initialize the two pwm regulators used by these boards.
+>
+> I will try with the old v1 U-Boot series and see if I can replicated
+> your issue.
 
-Remove it to leave the pin for users to play with. It's infinitely more
-useful as a GPIO or even as a PWM.
+Hi, I found the reason. I did some experiments today:
 
-Fixes: 40f742b07ab2 ("arm64: dts: rockchip: Add rk3576-armsom-sige5 board")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
-While working on a PWM driver for RK3576 and needing a PWM pin to test
-with, I noticed this questionable pinctrl assignment.
----
- arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+pwm-regulator  pwm1 | pwm2 | pwm3
+-----------------------------------
+ArmSoM Sige1 |      | work | work |
+Radxa E20C   | work | hang |      |
+other 3528   | work | hang |      |
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index 78798b0722a3f36831b1d2c9f29acb83910631cf..828bde7fab68dc6bcbd13d75c8a72540b3666071 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -194,8 +194,7 @@ &gmac0 {
- 		     &eth0m0_tx_bus2
- 		     &eth0m0_rx_bus2
- 		     &eth0m0_rgmii_clk
--		     &eth0m0_rgmii_bus
--		     &ethm0_clk0_25m_out>;
-+		     &eth0m0_rgmii_bus>;
+This looks weird, so I tested it further:
+
+In the new series of u-boot:
+```
+--- a/arch/arm/dts/rk3528-radxa-e20c-u-boot.dtsi
++++ b/arch/arm/dts/rk3528-radxa-e20c-u-boot.dtsi
+@@ -8,9 +8,9 @@
+ };
  
- 	phy-handle = <&rgmii_phy0>;
- 	status = "okay";
+ &vdd_arm {
+-	regulator-init-microvolt = <953000>;
++	status = "disabled"; # Cancel changes, pwm works
+ };
+ 
+ &vdd_logic {
+-	regulator-init-microvolt = <900000>;
++	status = "disabled"; # Cancel changes, kernel hang
+ };
+```
 
----
-base-commit: 40a111d0a777f60b71369d835cfe46308a212235
-change-id: 20250314-rk3576-sige5-eth-clk-begone-31d19a7c1e68
+I looked at schematic and found an interesting thing:
+1. ArmSoM Sige1 schematic: VDD_LOGIC Default 0.901V
+2. Radxa E20C schematic: VDD_LOGIC No default voltage
 
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Therefore, the default voltage of VDD_LOGIC (supply to
+GPU and LOGIC) needs to be set to 0.9V when initializing.
+
+This can be done by hardware or software (such as u-boot)
+Should we support this in the kernel driver of regulator?
+
+Thanks,
+Chukun
+
+--
+2.25.1
 
 
 _______________________________________________
