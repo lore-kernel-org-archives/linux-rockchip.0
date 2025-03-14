@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CD81C282EC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 15:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4829C35FF1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 15:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rGglSPCyGFThXDrgu59086X+vLxDiGW3RxgDy16iVag=; b=OTXm2MoZUCLu+N
-	3D9SEWrCeDX2UH77vLVZhDMnk1Y6yPw53XxN60RQ/8aFAR92BZZvfeAmx/iTiffvx94cMn2Dp6ZJQ
-	Tbma0ad1pdDLWFq5CVNfEJkKfqVjSSsFTz1OMD/yrN6NJYrvpmF/ALQ90smDtqpQcWQfGnVY1JsCM
-	9xj9mfgMuf2xwiwkWxmSsHzqryF4qco4QxBSx8P56vzyLXFAWvq029WQz9LTftPH8x84e1YwcUNYV
-	ub7Tu/2/I0Ru2SFSgSCKX1+jggf9LR9/RVo787skTZNORlvniKnMLKEwdXzRgbYw/AEEsZ8TWfzk2
-	pqx23JOnNrgCE84WSl6A==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ho8UmY6HxkUjJrRJTY2CtqKAynqNllDpAKlps0zTVTo=; b=ByVnt2fTu74WsA
+	j4Y9rn6G+rT9z+X6qejwVFEPc3HiJ0G1lrtnnqnXy0zAp/PgmpU3EAQkDY57ZL5kacp/q1ERHae+Q
+	gThNi4m427Vp/3IZBt7RhsBMsFSSoVHLk4MhMD+p/8TFIKEiTNAUCuArAsXVsqO/K+YGx+8roW7Zg
+	FcLXDlatDgJr96NRbWbKRJ/D1sa/sZyXc/48v4gafou/QKWb+tXA4CtkagufwO0s98+5xwZwAzzY5
+	5gktWaBlGq0OBO87c/+pZccPmrWGc+Lt/jOsvoFp0u0D1kmz30I+gvUu0jxEyozkCc6th3k+8W2mT
+	0UALCNxK9fiwBm08z5FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt6tb-0000000EYG4-1lP0;
-	Fri, 14 Mar 2025 15:24:23 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1tt76N-0000000EaoE-20tF;
+	Fri, 14 Mar 2025 15:37:35 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tt6tY-0000000EYF1-412a;
-	Fri, 14 Mar 2025 15:24:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1741965855; cv=none; 
+	id 1tt758-0000000EacN-413N;
+	Fri, 14 Mar 2025 15:36:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1741966565; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=PBE2WetXVXfy4uVLZSjdr0eFNtrxtlpdjHnGeSg3aogrmtfdXWpFAujCTGARAjPJUw5xRIP8VlFar80FxGLH7TRRimD+FCTkuRiFfOwR3r88KO+MjuLbY5CJKNzUEN/H9CvCyUt6Pp4ULo3CosWJ6D8vPjT/oLvPHDJac0MjJtQ=
+	b=PH0peLsQ4tiFcVGS74DvmopCRtbGLfiedDR3mEUFVsIwmAl6NFJb/3GXqmc+LPcdInqS9Ry/Oahq1EkdK0asI1sn7uSIlTCSL6DLypuT+H5bWUrAOK60djkTEWDJL9CD1AiQV3u3LBLF+08Gf3j+mOTn17ZAa89fzFTJKUv5kCY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1741965855; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=OUJ5ojOh2DQGZl4efmMHMaBqmtEVmQ/TmLAsz3AkV2Y=; 
-	b=Mnn0MvNjXKZWo4n07bY4Fin+L6y0I+rPeF9EkCL3TbG+GpVb7xPgQs78dam1dTfChg49QINYwrMFmgYQ7CDEu6fhFdLGeliaeSaa0kJFP3LQafvgJp6D/06jmePAq+d8BcThHlWPIcGvfLM1n82q181eQh8k4er8RwGOxiRGh8w=
+	t=1741966565; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=eNFlSyQCkPuL0ajw/pLDK4UmjuztRI2TDMkUK/3j3oY=; 
+	b=SryHhGeBYSOe849kXQn2PFWJIyrWBQYBD0hx958FvuHVr0Nii7ECR8b2SEiKokwa6jN9QgUegg+4xlvuEUOQRw/7W8ioz48DQmjOl8OZmsLgDfO7OQvXaolrPKD6Wi5q2pue/7c9PGizzbt1rFn+x3gF/5ZWGG4x3eVLehDQ1nM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741965854;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1741966565;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=OUJ5ojOh2DQGZl4efmMHMaBqmtEVmQ/TmLAsz3AkV2Y=;
-	b=ZLkJGJCl43jXzQl9mtozrGOXCEtuICvdrhvG6NDLUMPz/yoa74a5k/6AXfxUDQYB
-	yZueeCPWYtY+1u1WboxlhTXBn+PrPvYnzbFNULLQfzkWDkDNQckeN7EEr9XyEGgpOES
-	Y9NsgBE0dyFjlsgz56BgV0/1vIcZyTbZdqb57gJE=
-Received: by mx.zohomail.com with SMTPS id 1741965853063954.058894236911;
-	Fri, 14 Mar 2025 08:24:13 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=eNFlSyQCkPuL0ajw/pLDK4UmjuztRI2TDMkUK/3j3oY=;
+	b=eQVWLrCZK2/8GkddSXPLqkBegW219WZnCOtTiV+S/RP9YbH1OqpotbmdNqZoPBPX
+	ilzcXGSiCCdwUfZAE9SCCWRXbvsLqqgQl7QUNr8es8CKLd/8fi7/F3VRJl66/3trg8K
+	GEEDLPwJeQaVhVTITxwiyiTq+HUYORYNvzBvk8ks=
+Received: by mx.zohomail.com with SMTPS id 1741966563898497.5207724506298;
+	Fri, 14 Mar 2025 08:36:03 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: joro@8bytes.org, will@kernel.org, linux-rockchip@lists.infradead.org
-Cc: iommu@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de,
- Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 0/3] Rockchip IOMMU fixes
-Date: Fri, 14 Mar 2025 16:24:08 +0100
-Message-ID: <13295142.O9o76ZdvQC@workhorse>
-In-Reply-To: <cover.1741886382.git.robin.murphy@arm.com>
-References: <cover.1741886382.git.robin.murphy@arm.com>
+Date: Fri, 14 Mar 2025 16:35:50 +0100
+Subject: [PATCH] arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5
+ gmac0
 MIME-Version: 1.0
+Message-Id: <20250314-rk3576-sige5-eth-clk-begone-v1-1-2858338fc555@collabora.com>
+X-B4-Tracking: v=1; b=H4sIANVM1GcC/zWNQQ6CMBQFr0L+2p9QsKBcxbCA8iw/SNG2GhLC3
+ W0kLmcWMxsFeEGgJtvI4yNBFpdAnTIyY+csWIbEVOSFzkt1Zj+Vuq44iIVmxJHNY+IednHgUg3
+ q2tVGobpQKjw97rL+6rf2YI/XO03iIanvAtgs8yyxyRzWyP8Rtfv+BbfMeRKeAAAA
+X-Change-ID: 20250314-rk3576-sige5-eth-clk-begone-31d19a7c1e68
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250314_082421_063015_5F0B7CBE 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20250314_083619_075365_849CCC1D 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,44 +75,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 13 March 2025 18:31:03 Central European Standard Time Robin 
-Murphy wrote:
-> Hi all,
-> 
-> I was expecting my DT probing change to flush out issues, and it seems
-> some weaknesses in rockchip-iommu were the first to show. The first two
-> patches here get things working again for me on my RK3399 NanoPC-T4
-> (with a console on HDMI exercising the VOP MMU), the 3rd patch just
-> finishes the cleanup since I was there and could test it.
-> 
-> Thanks,
-> Robin.
-> 
-> Robin Murphy (3):
->   iommu/rockchip: Allocate per-device data sensibly
->   iommu/rockchip: Register in a sensible order
->   iommu/rockchip: Retire global dma_dev workaround
-> 
->  drivers/iommu/rockchip-iommu.c | 61 +++++++++++++++-------------------
->  1 file changed, 26 insertions(+), 35 deletions(-)
+The GPIO3 A4 pin on the ArmSoM Sige5 is routed to the 40-pin GPIO
+header. This pin can serve a variety of functions, including ones of
+questionable use to us on a GPIO header such as the 25MHz clock of the
+ethernet controller.
 
-Tested this series on an RK3576, which indeed fixes the boot panic I get with 
-next-20250314. After looking at the patches with the full function context, I 
-can't see any obvious issues.
+Unfortunately, this is the precise function that it is being claimed for
+by the gmac0 node in the Sige5 board dts, meaning it can't be used for
+anything else despite serving no useful function in this role. Since it
+goes through a RS0108 bidirectional voltage level translator with a
+maximum data rate of 24Mbit/s in push-pull mode and 2Mbit/s data rate in
+open-drain mode, it's doubtful as to whether the 25MHz clock signal
+would even survive to the actual user-accessible pin it terminates in.
 
-For the whole series:
+Remove it to leave the pin for users to play with. It's infinitely more
+useful as a GPIO or even as a PWM.
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Fixes: 40f742b07ab2 ("arm64: dts: rockchip: Add rk3576-armsom-sige5 board")
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+While working on a PWM driver for RK3576 and needing a PWM pin to test
+with, I noticed this questionable pinctrl assignment.
+---
+ arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Kind regards,
-Nicolas Frattaroli
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+index 78798b0722a3f36831b1d2c9f29acb83910631cf..828bde7fab68dc6bcbd13d75c8a72540b3666071 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+@@ -194,8 +194,7 @@ &gmac0 {
+ 		     &eth0m0_tx_bus2
+ 		     &eth0m0_rx_bus2
+ 		     &eth0m0_rgmii_clk
+-		     &eth0m0_rgmii_bus
+-		     &ethm0_clk0_25m_out>;
++		     &eth0m0_rgmii_bus>;
+ 
+ 	phy-handle = <&rgmii_phy0>;
+ 	status = "okay";
 
+---
+base-commit: 40a111d0a777f60b71369d835cfe46308a212235
+change-id: 20250314-rk3576-sige5-eth-clk-begone-31d19a7c1e68
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
