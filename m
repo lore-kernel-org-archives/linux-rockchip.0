@@ -4,110 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03D0EC28B2F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 05:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA85FC282EC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Mar 2025 08:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H+3ckqOgZlKWi53TjZbxmqZfkbq1p5CSqBNnL5Uzutw=; b=qQSz98L4LZ0pq4
-	ep5FiqKbSDKuuzzry8PTS55VMjV7hG3T7K79do9Sx7XO6GwlLUXwV9bS6xJTkEsct3Q+rbxrMlLTR
-	oiH+LBNNrLFh/dv5u1wG5OaGo1pwPMXK2Yp54upok0Ruh8A+qEJxeu7R82WxGGZFpIkDuvi9S5NlG
-	dZq/6LUzTbTlC/dg+KVBPnuCKcb3aVvck+BhyajEj9T0qrg2PDm5D7jnef61SsU78wckevEwXajsY
-	jgvlz7XgCfTTeCs/hfExsEcOOOI5q0E81lHw4X8sE+mgdW6AFkMMgdPQxUTqejyb34Aw7DQWWs3/U
-	Prl0Ka3RGH7FqMC9zxEQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4tJ375SLiqNL+IU+ehZjNYnj9SY4BBTWZlUrkZtxDbM=; b=qe9oAcS4v2X7BJ
+	iSnee/+a0DeVuUQToS9k5aqwLOP1Piv51aU6gYQoq0qWuDb1Cre3CVm0khdlOCgiSMp51Vl/JoHvt
+	PE8EmdZjQOBA+Q0ltqJwRZm3Lz31KkRsU35/CrcFsE8Y1aDDMDNU4B5EhQQj18XPC8WiBmx7dierl
+	j9hhcc1y7KMQpt9Z6N/tCkIeFwp72Oa4bVAq7tISZ6MSr4PougvgaQuJ6LYml34hMkQg3aFyBFYfe
+	vOGyIbiCoJZ3/Hp0lWl3722uoytNG9zVfXAt76mIV2mSdC4fes/sSVGOY8GxyaHGwMx5G2b8SLjVa
+	lZyhMwnPU5cDiL+i39JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsxx5-0000000D8Oz-00Fm;
-	Fri, 14 Mar 2025 05:51:23 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1tt0su-0000000DaUx-3fcZ;
+	Fri, 14 Mar 2025 08:59:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tsxx2-0000000D8OL-1m3A
-	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Mar 2025 05:51:21 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52DMR1sO009124
-	for <linux-rockchip@lists.infradead.org>; Fri, 14 Mar 2025 05:51:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=i7ECqdjToXAfktDwl6HxzCMk
-	AGDOJLghBSlD2hSuCwo=; b=VaWprMZOG84smP2mJlJGrHWoCNu0uEii2CxUVUxS
-	iLLhIODb4aU17fOWAKO37CetGyxlZbon4ddj/tl35EwgWAdagkZGpHoLf8omskuV
-	0mDzjQJNcJpe7bKGr1s7ophYGr1bg3/5y5r5DfgmaVEkuZvJ56DCev7iTOGhmeIS
-	HIxUDHcL1K1uvs8vxD5HGNftkhQquNnbSfclhNJje4x3nVfNk1qX9rSrbXPF6mZi
-	vbs89pMAxb00EdmvJg5qo8dv0FxrVVHHLLXupHlvSIzLpFgRfvFo3h41sCPWy7zy
-	E3VYFdZwjvUAb3ludhA2pr6kq/VwdijWQKYRcUgCa/xfdw==
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com [209.85.219.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45au2rg52n-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Fri, 14 Mar 2025 05:51:19 +0000 (GMT)
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-6e2378169a4so35722796d6.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Mar 2025 22:51:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741931478; x=1742536278;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=i7ECqdjToXAfktDwl6HxzCMkAGDOJLghBSlD2hSuCwo=;
-        b=I1ShamXqgv9KOfRxRvmfQYFcxH0HevkhllcdNjQMUXCHl7ElYJNex+rf6YHmgKcRc1
-         ZGYGu4hhsAJk1zhtxLAsTwiij+KuT3g4wcryIF/W3x3yv4R97ZsF+ksr2+TwfIq48rod
-         hm7MExHkYY1Rkq1BEjeieSztEo8vYGxEGKPKoi+MXdFWsRPoLiEFvcHSsXht1SUx6rdg
-         30+GSIwU7vmWqqFte3Wc2c+xlEv3dRMfRRGmMCVE8XXwKTNzF2wb++i4eYS+PuWvCicf
-         3Pkh5kGTkMDwGuDvSAGW3JJTgo52I5mRCJYi3djUOkNUGbahr2i91qjrZARTMk8IMeV+
-         I8pg==
-X-Forwarded-Encrypted: i=1; AJvYcCU2Y6qJB8muGq0rJ6YPvhUk4Qsf6dxLlB5cxx4wiURlaXmJdHN1jTSIRYGVTUOQ8D71t/tWkHVYIBWNSeXDfA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuwaExyFbBmvmcVHoHbncG8Gc3KsmWrtEcMWVBQL2v9KXrX6Zz
-	n12sLoqgRBv0JFIXVFmOLBSwDmzsaj0oKrPIiBc75naF8hn8iOcU6nAOBJ0080jSkzPiYulIP9l
-	viNj6jLuSlMvoAPoGQPtB9oBT7iZPxTpcEK6E4x0Hhh+ZDDTrBgu/U3STZ0xXxg5q6CkEd7A=
-X-Gm-Gg: ASbGnctHejgKPl/nsPOUbCLmWRpEH9Vx7SH/r6dH6LMBb3sQOISPCok7J6jYrlgaJ5c
-	X3oxTRrm1TTOD9VtCqPRUH5dum8sPHbcRaeWhEVP25uOwoiaLYt3tfe6e1FO+RBiumYILELjrN4
-	SytQw/4vp2FKyLInTCZpmfAQ6QDIc8kH5bG9p2cG9kRyJ3dZs12YBt0z7+9+2TzhJ2S9Sz1XWq4
-	62li0DmfNFCf6AlGj/yElE3AY7nSGHplhLRo3g/qiFvi5bE4OyCnOxKNuDNTu3khwFtEXzc1ff6
-	pUxwc2V+vkpi+13PJsi+ZtZNvf2b3RyWYHg1y/eHFV+8kcuVwHuTspLFh11xe0wiSlPBjcadbYx
-	rVmE=
-X-Received: by 2002:ad4:5ae3:0:b0:6e8:93f9:302 with SMTP id 6a1803df08f44-6eaeaa07ac5mr16664436d6.15.1741931478670;
-        Thu, 13 Mar 2025 22:51:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHpVbpOxeiloNBX3cLmvnlo0EP97lsdecQPHWfUunwY16xcqP5mMTKI+A3eAU/B9zOC8zu3sg==
-X-Received: by 2002:ad4:5ae3:0:b0:6e8:93f9:302 with SMTP id 6a1803df08f44-6eaeaa07ac5mr16664136d6.15.1741931478415;
-        Thu, 13 Mar 2025 22:51:18 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-549ba8a8ebesm411808e87.240.2025.03.13.22.51.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Mar 2025 22:51:16 -0700 (PDT)
-Date: Fri, 14 Mar 2025 07:51:13 +0200
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: lumag@kernel.org, mripard@kernel.org, neil.armstrong@linaro.org,
-        dri-devel@lists.freedesktop.org, dianders@chromium.org,
-        jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
-        thierry.reding@gmail.com, victor.liu@nxp.com, rfoss@kernel.org,
-        linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH 5/5] drm/bridge: it6505: Switch to common helpers to
- power up/down dp link
-Message-ID: <2bsuisl4ljsdbxxxejgkevtpwaz3jazcxh4b7otv4s7vhloiop@4ujjobsrafg5>
-References: <20250314033856.538352-1-andyshrk@163.com>
- <20250314033856.538352-5-andyshrk@163.com>
+	id 1tt0sr-0000000DaTt-2Ugx;
+	Fri, 14 Mar 2025 08:59:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1741942750;
+	bh=im+7eMeBUvMZK5Oih1Sdrmafx3HxHI3s8rS8+2FrRsI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=V2efJ7/faLqbjg4QqJB+KxtSF80rtVeo7I3qwnD/gRrAcMeBvYqHzthod4M5IvwKi
+	 c8UEDD0X+IzuWuYhX5e6htMeNNg/lXYbLSUKLNiGIdY/4727guhdFOztosU8HDI0Of
+	 He1rWyV+zDNBK8JawM0IKOJG67Vg1lfxEMfr0uIVlQAHg+5b8MKGaesbIpitgOGc6O
+	 k5BpZXzJowIOX36jse+HRJGOlmUyQMT2+C1GyRYO54P5p5NNiHR52NQaWXGLVJR/Pr
+	 r8NmnbgiGno2pWtxK5Kz3Vrbg15C2thVqHTjyHdfVKgEDY5S2T5E4iFt4PrBXIj06w
+	 s2ZMyJfz2WAAQ==
+Received: from debian.. (unknown [103.163.65.90])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5CB117E0ABD;
+	Fri, 14 Mar 2025 09:59:06 +0100 (CET)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.fornazier@gmail.com,
+	airlied@gmail.com,
+	simona.vetter@ffwll.ch,
+	robdclark@gmail.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	valentine.burley@collabora.com,
+	lumag@kernel.org,
+	quic_abhinavk@quicinc.com,
+	mripard@kernel.org,
+	jani.nikula@linux.intel.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 0/3] drm/ci: uprev mesa, IGT
+Date: Fri, 14 Mar 2025 14:28:49 +0530
+Message-ID: <20250314085858.39328-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250314033856.538352-5-andyshrk@163.com>
-X-Authority-Analysis: v=2.4 cv=D6NHKuRj c=1 sm=1 tr=0 ts=67d3c3d7 cx=c_pps a=wEM5vcRIz55oU/E2lInRtA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10 a=Vs1iUdzkB0EA:10 a=s8YR1HE3AAAA:8 a=EUspDBNiAAAA:8 a=Umc180e8Ijspp4NO460A:9 a=CjuIK1q_8ugA:10 a=zZCYzV9kfG8A:10
- a=OIgjcC2v60KrkQgK7BGD:22 a=jGH_LyMDp9YhSvY-UuyI:22
-X-Proofpoint-GUID: 8QCNJWmAJnPdRXKC_87ylPan8vI3TexB
-X-Proofpoint-ORIG-GUID: 8QCNJWmAJnPdRXKC_87ylPan8vI3TexB
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-03-14_02,2025-03-13_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 suspectscore=0
- priorityscore=1501 mlxscore=0 spamscore=0 lowpriorityscore=0 phishscore=0
- adultscore=0 malwarescore=0 mlxlogscore=755 clxscore=1015 impostorscore=0
- classifier=spam authscore=0 authtc=n/a authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2503140044
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250313_225120_580549_F200ABA8 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20250314_015913_778361_E7F4180A 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,22 +90,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 14, 2025 at 11:38:44AM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Use the common dp link power up/down helpers to avoid duplicating code.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-> 
->  drivers/gpu/drm/bridge/ite-it6505.c | 46 +++--------------------------
->  1 file changed, 4 insertions(+), 42 deletions(-)
-> 
+Uprev mesa to fix lava-test-case argument parsing. LAVA recently fixed
+parameter parsing in `lava-test-case` [1], eliminating the need for
+repeated quotes in arguments.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Uprev IGT to the latest version. Also update expectation files.
+
+The mediatek display driver fails to probe on mt8173-elm-hana and
+mt8183-kukui-jacuzzi-juniper-sku16 in v6.14-rc4 due to missing PHY
+configurations. Enable PHY drivers for MediaTek platforms:
+
+[1] https://gitlab.com/lava/lava/-/commit/18c9cf79  
+
+Testing:
+MR pipeline for drm/ci changes: https://gitlab.freedesktop.org/vigneshraman/linux/-/merge_requests/13
+MR pipeline for kernel changes: https://gitlab.freedesktop.org/vigneshraman/linux/-/merge_requests/14
+Scheduled pipeline: https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1384221
+Branch pipeline:
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1384158 (with lockdep patches after rebase with latest drm-misc-next)
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1383492 (without lockdep patches)
+
+Vignesh Raman (3):
+  drm/ci: uprev mesa
+  drm/ci: uprev IGT
+  drm/ci: arm64.config: mediatek: enable PHY drivers
+
+ drivers/gpu/drm/ci/arm64.config               |   2 +
+ drivers/gpu/drm/ci/build.sh                   |  16 +-
+ drivers/gpu/drm/ci/build.yml                  |   8 +
+ drivers/gpu/drm/ci/container.yml              |  24 ++
+ drivers/gpu/drm/ci/gitlab-ci.yml              |  34 +-
+ drivers/gpu/drm/ci/image-tags.yml             |   4 +-
+ drivers/gpu/drm/ci/lava-submit.sh             |   3 +-
+ drivers/gpu/drm/ci/test.yml                   |   2 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   8 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   1 +
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  23 +-
+ drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   1 +
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   8 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   1 +
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  20 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   2 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |  32 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   1 +
+ drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  13 +-
+ drivers/gpu/drm/ci/xfails/i915-jsl-skips.txt  |   1 +
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   5 -
+ drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   1 +
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   9 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   1 +
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |  22 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   1 +
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |  20 ++
+ .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   7 +
+ .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   1 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  28 +-
+ .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |  21 ++
+ .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   1 +
+ .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   1 +
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   4 -
+ .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   1 +
+ .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   1 +
+ .../msm-sc7180-trogdor-kingoftown-flakes.txt  |   7 +
+ .../msm-sc7180-trogdor-kingoftown-skips.txt   |   4 +
+ ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |   7 +
+ ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   1 +
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   7 +
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    | 313 ++++++++++++++++++
+ .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |   1 +
+ .../gpu/drm/ci/xfails/panfrost-g12b-skips.txt |   1 +
+ .../drm/ci/xfails/panfrost-mt8183-skips.txt   |   1 +
+ .../drm/ci/xfails/panfrost-rk3288-skips.txt   |   1 +
+ .../drm/ci/xfails/panfrost-rk3399-skips.txt   |   1 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   1 -
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   1 +
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   2 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  30 +-
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   1 +
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   1 +
+ .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   1 +
+ .../gpu/drm/ci/xfails/vkms-none-flakes.txt    |  28 ++
+ drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   2 +
+ 56 files changed, 633 insertions(+), 106 deletions(-)
+
 -- 
-With best wishes
-Dmitry
+2.47.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
