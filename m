@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC493C28B28
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Mar 2025 09:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05AC2C28B28
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Mar 2025 16:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S5UKuRAmdggId02JLpf/542Ixcvy+6O6/y1VPBPp/oI=; b=Ko4kdemNTZm7j/
-	RoJOtf7pp0QZIBnmUTvLSKjl77XWutBAC6j3z93AJxEfsOZgh/JlVHTamfYRhROQciCJIYWtVk6y/
-	N1xUvep4rZGiR/cZpOLaibdkEmNuKrVlBeAL3+B7yqTPUbhR3BQIDsRxlzP5QlM7lyhu6JGJn0+L/
-	+xjdfKz+6Kc/hXLvLXuDUGtnFjUC4Mmkke1BN6gDVvxMaJfBgdZq8O4vVh+4UdSRZKKwRvmJtHnWJ
-	9qYUy5a+emoZhG9r8t2lrCc6EVfSpuidfiFa/Iy127ELS8NIKtwhuyq4zhwD9CY6yxd8/eVvOKP0v
-	l3NbpOEQC+PyddJ6E1Hg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TvMdJRgz58+klO67YHIJZBVRrSOnBBbTFdcmp0RI9SI=; b=Vb0d5Km+eDfQqP
+	OOz4cWHtyVDRkp9kmy8LjoX8Ez4qDMA8yV7gt+WfVw2oXVk2OLNn0o0AwSfdtvb2kgpgnpYrMZLLy
+	yDRbJtLGnjF3L77bCpjcarLEnibjZLJAJk+Nmwghqa56uh6tt/zmbFHNi9HBqLSJUIXpregkinel3
+	qAurJcAgqa6JomnN79+2pMnzHzmsuR+jYjqGrrlr04KStRrSjE8nhbG26rYwtq1X1own/s8x6lNJq
+	no7PiB02yzbDwqEOM9e4J9H1C0+gCIVyWpoGgLZaLsk9jUVb6Us+ATFUCxsgSJtjZMCnt4jZHuT5f
+	Re7PY7J9PoNdV2V5xU7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttNmh-0000000G8MM-3dYS;
-	Sat, 15 Mar 2025 09:26:23 +0000
-Received: from abb.hmeau.com ([144.6.53.87])
+	id 1ttU4T-0000000GZuC-45IT;
+	Sat, 15 Mar 2025 16:09:09 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ttNdr-0000000G6q7-0bSq;
-	Sat, 15 Mar 2025 09:17:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
-	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	id 1ttTj3-0000000GXXh-0vBd;
+	Sat, 15 Mar 2025 15:47:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=mWS2HM3iT66S6iZKQryif4NS3GIsSrxKH5Pfjk6WkR0=; b=UTvDL7Wk0X/nkaOGoAgI5Eg3AG
-	fWjdixU73vMSlXTE+FvzIDePaJRm5/12K0hgMfoCQC/R1CmPdR8QCqMGlhJ1MuP0hhm3hOj1XCR5J
-	cu4aAIC7267vX1dCrtfEM4IKgnXS9JgbmBsJA86Nyc+B/kl9aZxJtV58KR2E8DgF/ASoOGaEnPM2a
-	EOTrpkWpvMAPHAK9byZBnxusvbXJJmG2ryPNZmmU1KL0OYi+TLUFHPf+8cH2+Dfk0qY3qL7GOOkqr
-	Lk7Ol8/BKU6ICLNoRhed3GG4VoRvfXFcNTAiVUS/8mrgcDRmQaYEo03NZ2qd2celX7zOsCVDK3zfO
-	pEQcLlOQ==;
-Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
-	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
-	id 1ttNdY-006o8i-0N;
-	Sat, 15 Mar 2025 17:16:57 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Sat, 15 Mar 2025 17:16:56 +0800
-Date: Sat, 15 Mar 2025 17:16:56 +0800
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v2] dt-bindings: rng: rockchip,rk3588-rng: Drop
- unnecessary status from example
-Message-ID: <Z9VFiLMFtzBMIAtQ@gondor.apana.org.au>
-References: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
+	:Resent-Message-ID:In-Reply-To:References;
+	bh=1VeO5hr1KTtCeq/vjZzvAaFvuU/CjtDmvpB7mrE5/C4=; b=bvFFYx/+tc7xY5119MNFQ24BzH
+	p5GW/e2RPUGfl6YbHvUc3gEWbnzaqzRFeHVtnACjnxRKvnLyhWNeAwPM2SxHcLFRM9GhNUXdpW5+/
+	zs37wl9m4gD9tAPdcqyfQSdxkVoK17w7J/7+CQ5WSqnbkIIdInBy7wB6rNsHJRG+LScgrirpKVKoI
+	hsBhK+s+/3jdgmGd4fmMfAFPXEF55g+01xjFLjo4Qr+uY4JOlm0rtImyR09CJ8CAASE4dpH+bTud0
+	kItcxsoQ0a/kgn5kMfvmFwcP8aWylJZDveXAOz9f9yxQuUO7bPRmM95uzGBjq/v9g+iTco8ccvlaE
+	ekRAHjbQ==;
+Received: from [194.95.143.137] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ttTiz-0008Tk-UU; Sat, 15 Mar 2025 16:46:57 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.15 #2
+Date: Sat, 15 Mar 2025 16:46:57 +0100
+Message-ID: <23866869.6Emhk5qWAg@phil>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250307093309.44950-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250315_021715_179203_D356D3C1 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20250315_084701_289624_F92BAE53 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,35 +64,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, Olivia Mackall <olivia@selenic.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 07, 2025 at 10:33:09AM +0100, Krzysztof Kozlowski wrote:
-> Device nodes are enabled by default, so no need for 'status = "okay"' in
-> the DTS example.
-> 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Changes in v2:
-> 1. Drop unnecessary full stop in subject prefix after ':'.
-> 2. Add Rb tag.
-> ---
->  Documentation/devicetree/bindings/rng/rockchip,rk3588-rng.yaml | 1 -
->  1 file changed, 1 deletion(-)
+Hi soc maintainers,
 
-Patch applied.  Thanks.
+please find below some additional Rockchip changes for for 6.15 .
+And I think with that I'll call it done, and have everything else
+wait for after the merge-window.
 
-Please disregard the previous reply incorrectly sent for v1.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+
+Please pull.
+Thanks
+Heiko
+
+
+The following changes since commit ba82f56bbf20e4166c988621cd0507509872848e:
+
+  arm64: dts: rockchip: Add SPI NOR device on the ROCK 4D (2025-03-08 18:19:59 +0100)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.15-rockchip-dts64-2
+
+for you to fetch changes up to 73d246b4402c3356f6b3d13665de3a51eea7b555:
+
+  arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5 gmac0 (2025-03-15 15:49:00 +0100)
+
+----------------------------------------------------------------
+New peripheral the sdhci controller on rk3528. Enablement of hdmi and hdmi
+audio on a number of additional boards. Better handling for scmi shared
+memory on rk3568 and a fix for the used SCMI clock ids on rk3576.
+As well as some fixes that were a bit late for trying to stuff them into
+6.14 at this late stage of the cycle.
+
+----------------------------------------------------------------
+Chen-Yu Tsai (1):
+      arm64: dts: rockchip: Remove bluetooth node from rock-3a
+
+Chukun Pan (1):
+      arm64: dts: rockchip: Move rk356x scmi SHMEM to reserved memory
+
+Jianfeng Liu (3):
+      arm64: dts: rockchip: Add AP6275P wireless support to ArmSoM Sige7
+      arm64: dts: rockchip: Enable HDMI audio output for ArmSoM Sige7
+      arm64: dts: rockchip: Fix pcie reset gpio on Orange Pi 5 Max
+
+Jimmy Hon (4):
+      arm64: dts: rockchip: Enable HDMI0 audio output for Orange Pi 5/5B
+      arm64: dts: rockchip: Enable HDMI audio outputs for Orange Pi 5 Max
+      arm64: dts: rockchip: Enable HDMI1 on Orange Pi 5 Plus
+      arm64: dts: rockchip: Enable HDMI audio outputs for Orange Pi 5 Plus
+
+Jonas Karlman (2):
+      arm64: dts: rockchip: Add SDHCI controller for RK3528
+      arm64: dts: rockchip: Enable onboard eMMC on Radxa E20C
+
+Nicolas Frattaroli (3):
+      dt-bindings: clock: rk3576: add SCMI clocks
+      arm64: dts: rockchip: fix RK3576 SCMI clock IDs
+      arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5 gmac0
+
+Yao Zi (1):
+      arm64: dts: rockchip: Fix PWM pinctrl names
+
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts     |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    |  4 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 15 ++++++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi           | 24 ++++++++++
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts    | 14 ------
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi      | 25 +++++-----
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      |  3 +-
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 18 ++++----
+ .../boot/dts/rockchip/rk3588-armsom-sige7.dts      | 24 ++++++++++
+ .../dts/rockchip/rk3588-orangepi-5-compact.dtsi    |  2 +-
+ .../boot/dts/rockchip/rk3588-orangepi-5-max.dts    | 16 +++++++
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   | 54 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts |  2 +-
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  8 ++++
+ include/dt-bindings/clock/rockchip,rk3576-cru.h    |  5 ++
+ 16 files changed, 174 insertions(+), 44 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
