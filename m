@@ -4,71 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88C7C282EC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 08:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B564C282EC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 10:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JUijBvld+egXGM5+fdTZVrL/ztHtA1xL7hC1gswWOOA=; b=vrZkBRGDNsTJZ4
-	qEbJYaGsNz6H3gDCNvch5zDSFRNjbjjSNGdGxioFRw0HKAg1AMhIHD9BKZduh+QmM8waXBjozOdgD
-	Ro4MmkvJ1r+v9/2lxFKUFvOhfKuXkFFeaMs9f5jSK4Og4bR9dmTwId0tjGyAwB03/s78YXIG7k+TM
-	SqKvHFY5SxTo3KU4MzxFcTOYPvBlBHi4EakwKYJllDGjJlL11JWw8tZwLdDQFZYeQqX115aW6AoFg
-	SBK4mOsJ54+N9/WC+Nmok6lI75w/OzCWS8cjTLIVA1/TbulFz4J3A9ucOq6rd7W/ajaK5R4yS2dGL
-	qQDymFND5LUqr5lMPUvw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lE2YP6vo8vx0SqvNOjzbgKmh/LMsjXIM0Y4VdYgArZg=; b=Fmsd/YDIiaCnAzuoyjLvhbTWt7
+	Yw+pGrQI6KzGrAUk1nIHZYRFMfYGuJILtJ67yIUq37MiUqozv3hdqwhP+vViL9Up/rezlITuwnaSP
+	QXFIaiJA+QAcPEOG+sXwjrc2g4C0ZJ0tGjNbCy0QU1di76zub6um8IVnn9yyKU22VtRc+0hD+2ncB
+	K9niof0F07HCfpCEb3Mst/TQbXqyYk1xEKDQHdmzIhaupLP7qA4z9popWOpLp9QoO32Z+rIlWIUCP
+	EuyXhjsBsu4NMkq8DQI6t76wpCEqhDRdE0+8ztBqpwIPAedpca4HWV1uL5anpDjy3e/XLz/2Q3YQt
+	UhOUPWjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu5qZ-00000001k9X-3q99;
-	Mon, 17 Mar 2025 08:29:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tu7eX-000000028OE-3bk0;
+	Mon, 17 Mar 2025 10:25:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu5qX-00000001k96-2J5s;
-	Mon, 17 Mar 2025 08:29:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742200143; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MPDA5DZeNkMr9rXs6kPXA0kyKfA3zFfmllIuxWqruuD2wYlhBnAUVAhIWdsgn0V5fVWmqDXCPwDpCdU89wXd1DuXrYRLeiW5SkvSE0GfZwNIyjqF+tOa7cTrg1+q1WUK6Rbd3peDTmZ1ygGmc2EfqlkjdxU+7MlYCammRuwMvcE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742200143; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=umuvK91DZgNUVvUrd/naQBA7f7ASrvoD/6ljA2wUXb0=; 
-	b=muW4EKoqaUzjoOkFOGYoy7iBogtgRbYu/H95/L89kSh6fH4eyUbg94LXK0qmTmINYLVIgskYARjT6KX0SpJ6JJDxhYFqAqpVC2S/4YLWAmfHx3BdsxXfWOZ6nLaqI+PtffZNGVysLVRYG36UvdSdsvzG2fPTsIeCSGErCCMsFSY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742200143;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=umuvK91DZgNUVvUrd/naQBA7f7ASrvoD/6ljA2wUXb0=;
-	b=SfnqWs2ylGqsqOU2b0RitTxMEVjKYpCIaFFF+tZNh/FiAGGcLn2QYDT1/U6KEU3v
-	661KUzgcStvEt2+xhC/z6ZclltMc3urBBG+an/enoLsPa5zajUDDozoLu32LiWUCoHA
-	vtY6RzL6jrfEjWBJrJs3tXJbi6rpTwowpnUXqJ9I=
-Received: by mx.zohomail.com with SMTPS id 1742200141185867.5196911777422;
-	Mon, 17 Mar 2025 01:29:01 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Ye Zhang <ye.zhang@rock-chips.com>,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] thermal: rockchip: Support RK3576 SoC in the thermal
- driver
-Date: Mon, 17 Mar 2025 09:28:55 +0100
-Message-ID: <4994384.31r3eYUQgx@workhorse>
-In-Reply-To: <6c355664-50dd-4efd-94b7-9d93c02d3e80@kwiboo.se>
-References: <20250228-rk3576-tsadc-upstream-v3-0-4bfbb3b699b9@collabora.com>
- <20250228-rk3576-tsadc-upstream-v3-3-4bfbb3b699b9@collabora.com>
- <6c355664-50dd-4efd-94b7-9d93c02d3e80@kwiboo.se>
+	id 1tu7WN-000000025wR-3HSq;
+	Mon, 17 Mar 2025 10:16:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BF74B5C2759;
+	Mon, 17 Mar 2025 10:14:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 305E7C4CEE3;
+	Mon, 17 Mar 2025 10:16:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742206594;
+	bh=sP4X9ex47Eoc3cg4rQs7gDQnP2lwOT6Ng96xEHp5bpc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XKssg8TUZ5+m1VIovlpPgOH6cGDAjiCgJFKBg3GDqN0btvpR3dHJ6TyY+skOWvbtd
+	 KnGPYnXyGykeNE29+ZWjQ09jMghib1rb/SVMTb9hMwzUR9LV1IKDzQvHyBd6JU5I/v
+	 KO43YlLYEqMkP06G0M51sAHs/3wSuBZrb9oGAs0UkBZzS2+0ZUJ50//XqBD+Zoc9zF
+	 cDuUfU9VrSuaoSGQCpl28iPpYEcsABMur2XKSq53tzn3GmdOH5a7MqaDZx5NueROex
+	 AaOdj7CQypr0dewZ5r0T3o06v29t4MErGk4z48cjhGfP6XElp5Kf2LBPFPI6PF4F7Z
+	 Zsc/MHyh70nYQ==
+Received: by venus (Postfix, from userid 1000)
+	id 00B9F18079B; Mon, 17 Mar 2025 11:16:31 +0100 (CET)
+Date: Mon, 17 Mar 2025 11:16:31 +0100
+From: Sebastian Reichel <sre@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH] drm/rockchip: dw_hdmi_qp: Fix io init for
+ dw_hdmi_qp_rockchip_resume
+Message-ID: <p53hbl4vt7vy6srctswjpmlj2rsvnyop4zcszlwrwdd4nogsj3@utqc25oaccfb>
+References: <20250317082047.564404-1-andyshrk@163.com>
 MIME-Version: 1.0
+In-Reply-To: <20250317082047.564404-1-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_012917_648877_5F4FEC31 
-X-CRM114-Status: GOOD (  28.08  )
+X-CRM114-CacheID: sfid-20250317_031635_930026_A157D2A4 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,160 +66,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============5536241201864390287=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Saturday, 15 March 2025 09:20:07 Central European Standard Time Jonas 
-Karlman wrote:
-> Hi Nicolas,
 
-Hi Jonas,
-
-> 
-> On 2025-02-28 21:06, Nicolas Frattaroli wrote:
-> > From: Ye Zhang <ye.zhang@rock-chips.com>
-> > 
-> > The RK3576 SoC has six TS-ADC channels: TOP, BIG_CORE, LITTLE_CORE,
-> > DDR, NPU and GPU.
-> > 
-> > Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
-> > [ported to mainline, reworded commit message]
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> > 
-> >  drivers/thermal/rockchip_thermal.c | 42
-> >  ++++++++++++++++++++++++++++++++++++++ 1 file changed, 42 insertions(+)
-> > 
-> > diff --git a/drivers/thermal/rockchip_thermal.c
-> > b/drivers/thermal/rockchip_thermal.c index
-> > a8ad85feb68fbb7ec8d79602b16c47838ecb3c00..bec1930bebd87859a7e519cfc9f05e1
-> > 0b1c31e87 100644 --- a/drivers/thermal/rockchip_thermal.c
-> > +++ b/drivers/thermal/rockchip_thermal.c
-> > @@ -1061,6 +1061,22 @@ static void rk_tsadcv3_tshut_mode(int chn, void
-> > __iomem *regs,> 
-> >  	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
-> >  
-> >  }
-> > 
-> > +static void rk_tsadcv4_tshut_mode(int chn, void __iomem *regs,
-> > +				  enum tshut_mode mode)
-> > +{
-> > +	u32 val_gpio, val_cru;
-> > +
-> > +	if (mode == TSHUT_MODE_GPIO) {
-> > +		val_gpio = TSADCV2_INT_SRC_EN(chn) | 
-TSADCV2_INT_SRC_EN_MASK(chn);
-> > +		val_cru = TSADCV2_INT_SRC_EN_MASK(chn);
-> > +	} else {
-> > +		val_cru = TSADCV2_INT_SRC_EN(chn) | 
-TSADCV2_INT_SRC_EN_MASK(chn);
-> > +		val_gpio = TSADCV2_INT_SRC_EN_MASK(chn);
-> > +	}
-> > +	writel_relaxed(val_gpio, regs + TSADCV3_HSHUT_GPIO_INT_EN);
-> > +	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
-> > +}
-> 
-> This function is identical to rk_tsadcv3_tshut_mode() in mainline.
-> 
-> Should the v3 function be renamed to v4 in mainline to match vendor
-> kernel to avoid confusion?
-
-Good catch. Yes, I'll add a patch to rename the function before introducing 
-new changes in v4, and get rid of the duplicate function.
-
-> 
-> > +
-> > 
-> >  static const struct rockchip_tsadc_chip px30_tsadc_data = {
-> >  
-> >  	/* cpu, gpu */
-> >  	.chn_offset = 0,
-> > 
-> > @@ -1284,6 +1300,28 @@ static const struct rockchip_tsadc_chip
-> > rk3568_tsadc_data = {> 
-> >  	},
-> >  
-> >  };
-> > 
-> > +static const struct rockchip_tsadc_chip rk3576_tsadc_data = {
-> > +	/* top, big_core, little_core, ddr, npu, gpu */
-> > +	.chn_offset = 0,
-> > +	.chn_num = 6, /* six channels for tsadc */
-> > +	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC 
-*/
-> > +	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-> > +	.tshut_temp = 95000,
-> 
-> Here the default is GPIO and 95 deg, in DT node the default is override
-> to CRU and 120 deg.
-> 
-> Any reason that is not the default here?
-
-No reason, other than that this is what most Rockchip SoCs seem to do. RK3588 
-does the same thing. The hardware power-on-reset state is to not have any 
-tshut, so whatever the "default" should be is entirely made up by the driver 
-in either case.
-
-For the sake of being consistent, I'll keep it the same in v4, as RK3588 does. 
-Otherwise, we'll have RK3576 and RK3588 do different things. If someone wants 
-to change the default, then ideally this would be done in a follow-up series 
-to make it consistent for all SoCs.
-
-If that's alright with you, then I'll send out a v4.
-
-> 
-> Regards,
-> Jonas
-> 
-
-Regards,
-Nicolas Frattaroli
-
-> > +	.initialize = rk_tsadcv8_initialize,
-> > +	.irq_ack = rk_tsadcv4_irq_ack,
-> > +	.control = rk_tsadcv4_control,
-> > +	.get_temp = rk_tsadcv4_get_temp,
-> > +	.set_alarm_temp = rk_tsadcv3_alarm_temp,
-> > +	.set_tshut_temp = rk_tsadcv3_tshut_temp,
-> > +	.set_tshut_mode = rk_tsadcv4_tshut_mode,
-> > +	.table = {
-> > +		.id = rk3588_code_table,
-> > +		.length = ARRAY_SIZE(rk3588_code_table),
-> > +		.data_mask = TSADCV4_DATA_MASK,
-> > +		.mode = ADC_INCREMENT,
-> > +	},
-> > +};
-> > +
-> > 
-> >  static const struct rockchip_tsadc_chip rk3588_tsadc_data = {
-> >  
-> >  	/* top, big_core0, big_core1, little_core, center, gpu, npu */
-> >  	.chn_offset = 0,
-> > 
-> > @@ -1342,6 +1380,10 @@ static const struct of_device_id
-> > of_rockchip_thermal_match[] = {> 
-> >  		.compatible = "rockchip,rk3568-tsadc",
-> >  		.data = (void *)&rk3568_tsadc_data,
-> >  	
-> >  	},
-> > 
-> > +	{
-> > +		.compatible = "rockchip,rk3576-tsadc",
-> > +		.data = (void *)&rk3576_tsadc_data,
-> > +	},
-> > 
-> >  	{
-> >  	
-> >  		.compatible = "rockchip,rk3588-tsadc",
-> >  		.data = (void *)&rk3588_tsadc_data,
+--===============5536241201864390287==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hbprtcna6txu5faw"
+Content-Disposition: inline
 
 
+--hbprtcna6txu5faw
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] drm/rockchip: dw_hdmi_qp: Fix io init for
+ dw_hdmi_qp_rockchip_resume
+MIME-Version: 1.0
+
+Hi,
+
+On Mon, Mar 17, 2025 at 04:20:39PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+>=20
+> Use cfg->ctrl_ops->io_init callback make it work for all platform.
+>=20
+> Fixes: 3f60dbd40d3f ("drm/rockchip: dw_hdmi_qp: Add platform ctrl callbac=
+k")
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+
+It also gets rid of code duplication :)
+
+>=20
+>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 23 +++----------------
+>  1 file changed, 3 insertions(+), 20 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu=
+/drm/rockchip/dw_hdmi_qp-rockchip.c
+> index 3d1dddb34603..631a7080862b 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> @@ -600,27 +600,10 @@ static void dw_hdmi_qp_rockchip_remove(struct platf=
+orm_device *pdev)
+>  static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
+>  {
+>  	struct rockchip_hdmi_qp *hdmi =3D dev_get_drvdata(dev);
+> -	u32 val;
+> -
+> -	val =3D HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
+> -	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
+> -	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
+> -	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
+> -	regmap_write(hdmi->vo_regmap,
+> -		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
+> -		     val);
+> -
+> -	val =3D HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
+> -			    RK3588_SET_HPD_PATH_MASK);
+> -	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
+> +	const struct rockchip_hdmi_qp_cfg *cfg;
+> =20
+> -	if (hdmi->port_id)
+> -		val =3D HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
+> -				    RK3588_HDMI1_GRANT_SEL);
+> -	else
+> -		val =3D HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
+> -				    RK3588_HDMI0_GRANT_SEL);
+> -	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
+> +	cfg =3D of_device_get_match_data(dev);
+> +	cfg->ctrl_ops->io_init(hdmi);
+
+I think it would be better to store the ctrl_ops (or io_init)
+callback in struct rockchip_hdmi_qp during driver probe and avoid
+another lookup of the match_data, which involves string comparisons.
+
+Otherwise:
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+--hbprtcna6txu5faw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfX9ngACgkQ2O7X88g7
++pqM3A/9EYnXD5oDYwTqakdXJIlFb5r0EhLAlJJCWtEYxOxa340HJlmcPAei3QlR
+kV1q1zemGSOd+3SS5fwmb6kARERRKRZKz59f8uRXO9PEuVT9xm+3sR9UqwmTB8iH
+TTaUHR08eYemlbhPVWgPf5AVstz77PN+WmJdAgqORI0URlqBnhIAN1hbYWk1HzMt
+H+8WNlCfESWoVYSGzHsi4gLoL55K5RTkUSxEgpszQBQ4Cs5Tl/GPhNbmVDA29kxi
+QDNMqksGoZ3A4lz9k0dOhO3Qe19FmCFHUjkCOLD/7Eq6TcbMpYVG2xE3Yzz+R11f
+zPUfYxXe+QzM9nuFLUEQ/aV0MuT+gU1VltGg+VtinmoEw6incZI51QNmB24rHpS0
+Wr1v9lsOmIhlB3Kn5N7/eZGhLboe1ukmiRS2kHMCOze/vYg9m4EUG+ZaBP4gt/L9
+3c8ajXV0l+CGyc0SQeo2JDu5CtURVlt1X9LcUJSoM8urpw8lp6R68FJJDEgPgHRR
+p+ruw3C+qrvWGOXeLV3e6xCYGcGCdToZ/r2T9Whq8HRY8RtAdskqFRTg6mqOnmVg
+YSmAv8jbSlVuYfFoLoM4USx7BimM5PxzpqoOoQOFiBghtsquezBs0gscL56mAuqo
+BC+WYm6BkFjM434NHE9x51tIA8UgUKbi01jjHXlHExcXpbtICys=
+=mbY1
+-----END PGP SIGNATURE-----
+
+--hbprtcna6txu5faw--
 
 
+--===============5536241201864390287==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5536241201864390287==--
+
