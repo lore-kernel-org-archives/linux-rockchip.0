@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B619C35FFC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 14:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9644AC28B30
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 14:48:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xeSIypcfwAHEKmeFjX4oeAsLuxlnvY2SvhHAKXPZ36U=; b=c4oQGfB9OqfLB1
-	6CK8idHafLrX8ZkLwvZJ6ajLhc0UV3PsIdLd3dlMkAooFnMJJnQTOeAoWyg+S7LHKiabey3Hoh4tr
-	CnJ4N+8NSKQsBPLV8tQXqJaHy3bc53phfHuBNyAC+fcqGVFR8/z2arjsif8h2Vkjvk1flOKtYrCct
-	U7N9v6YwUPOYf3bLUgE+cHG3ienkJvJLQdDcJmmgypzpgpHNeVOVkXkMLX997f8vKNK5X/MyP9V+y
-	YMbj8JV4A9/J9SGHGOeNOtvMobg+FNSDdnzoyzt/YzCkcZQ4ax51kkGsV8/DJft7S1/uKT1mCZsY/
-	e4nQAOwxLyw4Xzn2aSyg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=B956l7tkYvyOyi+KbJ8SEHpSFZwQPJapY/IkXYSSG2o=; b=rPArBlVjO5yVVG
+	ep+IHVWqxA2WQ95pGezpNlb6EdWiZakUpogj7CNLiPpp5X3BnN/6xo+EKj46CokypR13pdbXomi9g
+	DbIlWSxVDXjSz3Tbm/d3X/xTaL3pQDzinGvHNZA55xOcZH7KDV8nOPmzpKldHJC2iRZ3IhxyUpseL
+	t+egplHFh+fe5rsgVOG6f1dZ4uWojl1n7ehUR525W2Efs64M1x6varw40kceo/LDndq0BPJQMI+/R
+	qMX8SHdg2+PCjPcZqc3l+vcu1cS5zov0+wGr08PljUQcxwhSJhVSBCodSjbpp5NAvHxMTrbyvSfZX
+	2DgFyFkhwZ3DF2bpOXYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuB8l-00000002r5m-2oOY;
-	Mon, 17 Mar 2025 14:08:27 +0000
+	id 1tuBks-000000031gV-3kyE;
+	Mon, 17 Mar 2025 14:47:50 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuAra-00000002nzo-1hzx;
-	Mon, 17 Mar 2025 13:50:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742219431; cv=none; 
+	id 1tuBaj-00000002zHn-1w8B;
+	Mon, 17 Mar 2025 14:37:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742222230; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=UVJJE+tjbnUIxulZvY/E/BhJjw044803BSUKld+Og+NmKsEAqLYM7tOZhT7ROcDJg3b+/Oan7P3X98/ASwSwZdRNoanPeXyuM/8txWlvEwglJ4SeLBoAbD+4eRI3Hga+WeEqu7Qu+9Xiq76K5iJJpz1KB1Tag2RZwHNbOKWdxb0=
+	b=BGK6o+A0UH1uPQhigF3rRZwEuvfzAwMm5QTJAKpc90Q6XutKlw9mssWCStE9gPM9duA55FFAcn+5YngdO45SQsV9v89MWNqFhaBDrnfX9ZO2jHstgJFf/tcTy3q85yGP4W1zfdRl70VWSq9ZIYJWd07sMXmEexI2o1f4BZCAZ7Y=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742219431; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Qbn6B1G51bXuWasuo6BCw/mvgzgKowiOn9v8cpY6bEA=; 
-	b=eVbZK80yUWB2Oq+6WI1Yf3uWoBOxLEBeJZy0exHxHXFQppzdwmzANEU7kDcXuOYcUvOlM7Ys6MtjctVjdFu8Zf3OXIgeqWkYi/ghEVFltnIegRZ4YBDXZah4sq0tqTUjoA3Vk/nbc9XYyj+PzDHVoMKWwn0Iq2g8Wy2IqUhO+BM=
+	t=1742222230; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=+dQUWZyWoZn4seq6F9kOnDzOd0SnHDlSeBlmpDH31i4=; 
+	b=PvsU5VvzDbskpLd6Fz4r/go/Xk2rztX0xsKuT1r3eNKSVWuDRt6eWbp8PLHACLdzpnQjWxZpZ+vG10IvTv+fPQ1bBl4mclOcxlcjiYYNK/+ZqT/f5d0+nqKfNOALSso+Me3HJvfGMAAO05Z3QCBHtQIXxOmS03R3nruvYeSM6/w=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742219431;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742222229;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=Qbn6B1G51bXuWasuo6BCw/mvgzgKowiOn9v8cpY6bEA=;
-	b=F+7wthBX91PTSEOHQAO5wAtjNu/Q6OulgY2cstSToMO/e81pVbh3x9Pk8aPStcnH
-	YeCokNb+6zvE6G3GM8EayePT9ea6uIWTisEu8Nr4j1pzHLvKObcDFVtJromqXFmL7u4
-	5Sjl3SWpXksUkPwKwrAjGdpU0NDiVbjA//x5qH4U=
-Received: by mx.zohomail.com with SMTPS id 1742219429659280.0216892043486;
-	Mon, 17 Mar 2025 06:50:29 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=+dQUWZyWoZn4seq6F9kOnDzOd0SnHDlSeBlmpDH31i4=;
+	b=WJtCvwpfkzxlq0aZehEnBA0/GtiPp+QMSU40uHeMhYG8lRp+VUr8JbhtJosx8v0r
+	KeF4ASi4WJGdJd5i39JSs7yiD3pvQ7I3C8JQnNlghtWRwOUNF7jqVqlRamsroC0NcpF
+	csxU9+9d8D1js6xtPgZYPMtu6X4nX0qSMBKEQFag=
+Received: by mx.zohomail.com with SMTPS id 1742222228862446.3877242817008;
+	Mon, 17 Mar 2025 07:37:08 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 17 Mar 2025 14:49:28 +0100
-Subject: [PATCH v4 3/7] arm64: dts: rockchip: Add thermal nodes to RK3576
+Date: Mon, 17 Mar 2025 15:36:56 +0100
+Subject: [PATCH] pmdomain: rockchip: keep PD_NVM on RK3576 always on
 MIME-Version: 1.0
-Message-Id: <20250317-rk3576-tsadc-upstream-v4-3-c5029ce55d74@collabora.com>
-References: <20250317-rk3576-tsadc-upstream-v4-0-c5029ce55d74@collabora.com>
-In-Reply-To: <20250317-rk3576-tsadc-upstream-v4-0-c5029ce55d74@collabora.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Jonas Karlman <jonas@kwiboo.se>
+Message-Id: <20250317-rk3576-emmc-fix-v1-1-d534d49a41f5@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAIcz2GcC/zWMQQrCMBAAvxL27EKztY30K9JDTFddJKluohRK/
+ 26weJyBmRUyq3CGwayg/JEsc6pgDwbC3acbo0yVgRrqmtY61EfbuR45xoBXWdBN4WR9T+5IBLV
+ 6Klf9O57HnZVf7zouu4SLz4xhjlHKYBIvBf9zGLftCzh52DqSAAAA
+X-Change-ID: 20250317-rk3576-emmc-fix-7dc81a627422
+To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_065042_500172_A125F6A3 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20250317_073721_555189_01548D83 
+X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,276 +73,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: Detlev Casanova <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the TSADC node to the RK3576. Additionally, add everything the TSADC
-needs to function, i.e. thermal zones, their trip points and maps, as
-well as adjust the CPU cooling-cells property.
+Due to what seemingly is a hardware bug, PD_NVM never comes up quite the
+same after being turned off once. The result is that the sdhci
+controller will lock up the entire SoC when it's accessing its CQHCI
+registers.
 
-The polling-delay properties are set to 0 as we do have interrupts for
-this TSADC on this particular SoC.
+The downstream kernel hacks around this by setting
+GENPD_FLAG_RPM_ALWAYS_ON in the mmc host driver, which does not seem
+like the right place for this.
 
+Set GENPD_FLAG_ALWAYS_ON in the pmdomain driver for PD_NVM. I'm using
+the non-RPM version of the flag here because I have my doubts a
+suspend-resume cycle will fix it. Suspend-resume currently seems busted,
+so I couldn't test this.
+
+Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 164 ++++++++++++++++++++++++++++++-
- 1 file changed, 162 insertions(+), 2 deletions(-)
+ drivers/pmdomain/rockchip/pm-domains.c | 48 ++++++++++++++++++----------------
+ 1 file changed, 26 insertions(+), 22 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index ebb5fc8bb8b1363127b9d3782801c4a79b678a92..250dca23ff4fc1ab3bd47366829c5dd1738057fe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -11,6 +11,7 @@
- #include <dt-bindings/power/rockchip,rk3576-power.h>
- #include <dt-bindings/reset/rockchip,rk3576-cru.h>
- #include <dt-bindings/soc/rockchip,boot-mode.h>
-+#include <dt-bindings/thermal/thermal.h>
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 03bcf79a461f5db14173b35c0d110541e6d3f760..2b220b7c77b3d292f49cbc60338d3925146fb211 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -48,6 +48,7 @@ struct rockchip_domain_info {
+ 	int ack_mask;
+ 	bool active_wakeup;
+ 	bool need_regulator;
++	bool always_on;
+ 	int pwr_w_mask;
+ 	int req_w_mask;
+ 	int clk_ungate_mask;
+@@ -154,7 +155,7 @@ struct rockchip_pmu {
+ 	.need_regulator = regulator,			\
+ }
  
- / {
- 	compatible = "rockchip,rk3576";
-@@ -113,9 +114,9 @@ cpu_l0: cpu@0 {
- 			capacity-dmips-mhz = <485>;
- 			clocks = <&scmi_clk SCMI_ARMCLK_L>;
- 			operating-points-v2 = <&cluster0_opp_table>;
--			#cooling-cells = <2>;
- 			dynamic-power-coefficient = <120>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
+-#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup)	\
++#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup, _always_on)	\
+ {							\
+ 	.name = _name,					\
+ 	.pwr_offset = p_offset,				\
+@@ -171,6 +172,7 @@ struct rockchip_pmu {
+ 	.clk_ungate_mask = (g_mask),			\
+ 	.ack_mask = (ack),				\
+ 	.active_wakeup = wakeup,			\
++	.always_on = _always_on,			\
+ }
  
- 		cpu_l1: cpu@1 {
-@@ -127,6 +128,7 @@ cpu_l1: cpu@1 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_L>;
- 			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
+ #define DOMAIN_RK3036(_name, req, ack, idle, wakeup)		\
+@@ -204,8 +206,8 @@ struct rockchip_pmu {
+ #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
+ 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
  
- 		cpu_l2: cpu@2 {
-@@ -138,6 +140,7 @@ cpu_l2: cpu@2 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_L>;
- 			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
+-#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup)	\
+-	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup)
++#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup, always_on)	\
++	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup, always_on)
  
- 		cpu_l3: cpu@3 {
-@@ -149,6 +152,7 @@ cpu_l3: cpu@3 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_L>;
- 			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
+ /*
+  * Dynamic Memory Controller may need to coordinate with us -- see
+@@ -846,6 +848,8 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
+ 	if (pd_info->active_wakeup)
+ 		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
++	if (pd_info->always_on)
++		pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
+ 	pm_genpd_init(&pd->genpd, NULL,
+ 		      !rockchip_pmu_domain_is_on(pd) ||
+ 		      (pd->info->mem_status_mask && !rockchip_pmu_domain_is_mem_on(pd)));
+@@ -1210,25 +1214,25 @@ static const struct rockchip_domain_info rk3568_pm_domains[] = {
+ };
  
- 		cpu_b0: cpu@100 {
-@@ -159,9 +163,9 @@ cpu_b0: cpu@100 {
- 			capacity-dmips-mhz = <1024>;
- 			clocks = <&scmi_clk SCMI_ARMCLK_B>;
- 			operating-points-v2 = <&cluster1_opp_table>;
--			#cooling-cells = <2>;
- 			dynamic-power-coefficient = <320>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
+ static const struct rockchip_domain_info rk3576_pm_domains[] = {
+-	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false),
+-	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false),
+-	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false),
+-	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false),
+-	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false),
+-	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false),
+-	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false),
+-	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false),
+-	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false),
+-	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true),
+-	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false),
+-	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false),
+-	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false),
+-	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false),
+-	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false),
+-	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false),
+-	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false),
+-	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false),
+-	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false),
++	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false, false),
++	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false, true),
++	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false, false),
++	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false, false),
++	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false, false),
++	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false, false),
++	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false, false),
++	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false, false),
++	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false, false),
++	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true,  false),
++	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false, false),
++	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false, false),
++	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false, false),
++	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false, false),
++	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false, false),
++	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false, false),
++	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false, false),
++	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false, false),
++	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false, false),
+ };
  
- 		cpu_b1: cpu@101 {
-@@ -173,6 +177,7 @@ cpu_b1: cpu@101 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_B>;
- 			operating-points-v2 = <&cluster1_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu_b2: cpu@102 {
-@@ -184,6 +189,7 @@ cpu_b2: cpu@102 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_B>;
- 			operating-points-v2 = <&cluster1_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu_b3: cpu@103 {
-@@ -195,6 +201,7 @@ cpu_b3: cpu@103 {
- 			clocks = <&scmi_clk SCMI_ARMCLK_B>;
- 			operating-points-v2 = <&cluster1_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		idle-states {
-@@ -436,6 +443,143 @@ psci {
- 		method = "smc";
- 	};
- 
-+	thermal_zones: thermal-zones {
-+		/* sensor near the center of the SoC */
-+		package_thermal: package-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 0>;
-+
-+			trips {
-+				package_crit: package-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		/* sensor for cluster1 (big Cortex-A72 cores) */
-+		bigcore_thermal: bigcore-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 1>;
-+
-+			trips {
-+				bigcore_alert: bigcore-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				bigcore_crit: bigcore-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&bigcore_alert>;
-+					cooling-device =
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		/* sensor for cluster0 (little Cortex-A53 cores) */
-+		littlecore_thermal: littlecore-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 2>;
-+
-+			trips {
-+				littlecore_alert: littlecore-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				littlecore_crit: littlecore-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&littlecore_alert>;
-+					cooling-device =
-+						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		gpu_thermal: gpu-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 3>;
-+
-+			trips {
-+				gpu_alert: gpu-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				gpu_crit: gpu-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&gpu_alert>;
-+					cooling-device =
-+						<&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		npu_thermal: npu-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 4>;
-+
-+			trips {
-+				npu_crit: npu-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		ddr_thermal: ddr-thermal {
-+			polling-delay-passive = <0>;
-+			polling-delay = <0>;
-+			thermal-sensors = <&tsadc 5>;
-+
-+			trips {
-+				ddr_crit: ddr-crit {
-+					temperature = <115000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-@@ -1853,6 +1997,22 @@ saradc: adc@2ae00000 {
- 			status = "disabled";
- 		};
- 
-+		tsadc: tsadc@2ae70000 {
-+			compatible = "rockchip,rk3576-tsadc";
-+			reg = <0x0 0x2ae70000 0x0 0x400>;
-+			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru CLK_TSADC>, <&cru PCLK_TSADC>;
-+			clock-names = "tsadc", "apb_pclk";
-+			assigned-clocks = <&cru CLK_TSADC>;
-+			assigned-clock-rates = <2000000>;
-+			resets = <&cru SRST_P_TSADC>, <&cru SRST_TSADC>;
-+			reset-names = "tsadc-apb", "tsadc";
-+			#thermal-sensor-cells = <1>;
-+			rockchip,hw-tshut-temp = <120000>;
-+			rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
-+			rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-+		};
-+
- 		i2c9: i2c@2ae80000 {
- 			compatible = "rockchip,rk3576-i2c", "rockchip,rk3399-i2c";
- 			reg = <0x0 0x2ae80000 0x0 0x1000>;
+ static const struct rockchip_domain_info rk3588_pm_domains[] = {
 
+---
+base-commit: b52e55576652f29ab7387e2da222123f624a7767
+change-id: 20250317-rk3576-emmc-fix-7dc81a627422
+
+Best regards,
 -- 
-2.48.1
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
