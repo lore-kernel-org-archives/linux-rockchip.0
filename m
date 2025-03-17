@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9644AC28B30
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 14:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC8F8C35FF8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 16:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=B956l7tkYvyOyi+KbJ8SEHpSFZwQPJapY/IkXYSSG2o=; b=rPArBlVjO5yVVG
-	ep+IHVWqxA2WQ95pGezpNlb6EdWiZakUpogj7CNLiPpp5X3BnN/6xo+EKj46CokypR13pdbXomi9g
-	DbIlWSxVDXjSz3Tbm/d3X/xTaL3pQDzinGvHNZA55xOcZH7KDV8nOPmzpKldHJC2iRZ3IhxyUpseL
-	t+egplHFh+fe5rsgVOG6f1dZ4uWojl1n7ehUR525W2Efs64M1x6varw40kceo/LDndq0BPJQMI+/R
-	qMX8SHdg2+PCjPcZqc3l+vcu1cS5zov0+wGr08PljUQcxwhSJhVSBCodSjbpp5NAvHxMTrbyvSfZX
-	2DgFyFkhwZ3DF2bpOXYg==;
+	List-Owner; bh=2SP+ZM2hpLBO7eswIqBCkmyPnOpVz/dut9bmLgoLBwk=; b=04/C7xrPPqzSxp
+	JGiJNEsc70XTsXyxbOGO9AZy6QBsqxssI7ZZUam12iK0YAEiqrA+m5cXafz5EIddsa6j0Nvyxh0gj
+	HeLQhkR/y/96b4lrZiUJ8xx4BeVsN+XRKmuM+0478bnc9ZKd1t0/N8k+Z0HvVrCP8B1c+6VdsEOGf
+	rmmFlVqyMF44wePJVa7cFKVOaoLASzOvoGlEQ+hCJMdm2maXkAZJ9vbTDNcIOvYNUliDTaar4zIYg
+	Tg84uGEvoGUhKUSTaJWazl6DkKsPKw3sRirpgDXMq6QKZopL9fZIEEXlvvBq4W+HGrVZOIFPoUBRb
+	qUEF7FUDYl+Bg55MdbxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuBks-000000031gV-3kyE;
-	Mon, 17 Mar 2025 14:47:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tuDQi-00000003LUi-3EYz;
+	Mon, 17 Mar 2025 16:35:08 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuBaj-00000002zHn-1w8B;
-	Mon, 17 Mar 2025 14:37:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742222230; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BGK6o+A0UH1uPQhigF3rRZwEuvfzAwMm5QTJAKpc90Q6XutKlw9mssWCStE9gPM9duA55FFAcn+5YngdO45SQsV9v89MWNqFhaBDrnfX9ZO2jHstgJFf/tcTy3q85yGP4W1zfdRl70VWSq9ZIYJWd07sMXmEexI2o1f4BZCAZ7Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742222230; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=+dQUWZyWoZn4seq6F9kOnDzOd0SnHDlSeBlmpDH31i4=; 
-	b=PvsU5VvzDbskpLd6Fz4r/go/Xk2rztX0xsKuT1r3eNKSVWuDRt6eWbp8PLHACLdzpnQjWxZpZ+vG10IvTv+fPQ1bBl4mclOcxlcjiYYNK/+ZqT/f5d0+nqKfNOALSso+Me3HJvfGMAAO05Z3QCBHtQIXxOmS03R3nruvYeSM6/w=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742222229;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=+dQUWZyWoZn4seq6F9kOnDzOd0SnHDlSeBlmpDH31i4=;
-	b=WJtCvwpfkzxlq0aZehEnBA0/GtiPp+QMSU40uHeMhYG8lRp+VUr8JbhtJosx8v0r
-	KeF4ASi4WJGdJd5i39JSs7yiD3pvQ7I3C8JQnNlghtWRwOUNF7jqVqlRamsroC0NcpF
-	csxU9+9d8D1js6xtPgZYPMtu6X4nX0qSMBKEQFag=
-Received: by mx.zohomail.com with SMTPS id 1742222228862446.3877242817008;
-	Mon, 17 Mar 2025 07:37:08 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 17 Mar 2025 15:36:56 +0100
-Subject: [PATCH] pmdomain: rockchip: keep PD_NVM on RK3576 always on
+	id 1tuDOU-00000003L6j-2VaG;
+	Mon, 17 Mar 2025 16:32:51 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2232aead21aso12960595ad.0;
+        Mon, 17 Mar 2025 09:32:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742229169; x=1742833969; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YWWEyuRSXEh4jYuipM2cPauSQC9QSyQVuvZY6z5PEnM=;
+        b=FuYxDsTbyhiQPoBPHSdTWo7ek560TwTPEvs/vmtYzcuRZMa+vyiuwMInIFT6OZSOtt
+         mVxbRF3Mu3VsMa9qUZBJEdmDrLvgzscdf8dLVcxlzzRYo8JDcWx2jfsHMrfiX8Z+ZjkH
+         JWxxMKGiilcD5wHo9HDORzBWKAhNBihiFXK78TRytMiXSrRWByX/RzevFV8y5XBTUSzw
+         pBFX0p/KvG9DYWq+8BApnbtomF9zaDydsz0HLp5VymteOAkIA3LFRoPRlddHLdWyxndz
+         +9Bz/KVcups59TKH/XQ3xxGCOkilTOT0VAcHsmb03xll5gtoTPoJlBsEQfzwTuJW2lsb
+         kH7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742229169; x=1742833969;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YWWEyuRSXEh4jYuipM2cPauSQC9QSyQVuvZY6z5PEnM=;
+        b=Z5EZcYtl7Q0Apnn046cYSYjWtJ9UD0HMsilomjKPSbkBHa//a1nQyBlac/LV+Bdp9s
+         MkiyW6Rn0070Bpua89KhzJhCZt68dxMHsn/VUzJvMxDEpivWqI7iq+AKM/kC+OsHpNdg
+         l+YiBHdGh4+hbYojY38oqG2STTosn8N8Y/piUtBSaCpbIUb3gbRYyEM9+mdzGZrsXqHb
+         gViIC6Fg+FAYizRWGpUjn8QRISyzIS7Xit1pX/j2oxoxizCQK/HzgvznGP2CX/f5WeKd
+         RshDuRU9VynKOuYwx7h0hM6MZdwSBbtve4XF3qerqPOdu4njQYzjcRLZUmpCDTIwptcF
+         X+eA==
+X-Forwarded-Encrypted: i=1; AJvYcCWWiZV0qeClWUyQuzPSvJrb0nQj8HZjAogq9sjbX5mHVDq/0gBJAnb0LQsAWn3d5A9kdIT8e5BlP//HIJMifr5I@lists.infradead.org
+X-Gm-Message-State: AOJu0YwRERAUNtLT2cQNEj5OZoUC6UuLFwfr/lsPteyueQOMUmxs/c4y
+	zm1GUwlBxbaRh3jbAwsxfYnp4DDgSpcyXDmRMju/aP29mp0l1iWGeow6TOGt
+X-Gm-Gg: ASbGncuIPpde1GJJL4XQCwF80F/a/q3R3Rzrrya1llIuy72MPy0nizm1xUfRVOpWgsX
+	nU/KywzqCO+VrYILes2dOWyPxLDSzJoNVCNRJD44MhjyqnoftsUyVEM7w84NN4LTKvoYsWF9Te+
+	qEi6ewuGTix9TSsdUkxucV/cRX3fgY+gmFp6TeX2R44IjLG6IDqkZY0pbYGSPI4oFCwCbE2tCws
+	KTrAKWV0XWZVDKi1TdbZHHnNZ7P3FcyDQqweS3N/junh9GiNRAIxRYE93E4N9zX+zNI/m33D+/k
+	oK8wZxR5548GaUryAuzx6oeZ9eOmzZwVhuPt2sK9hPM40yQdAw==
+X-Google-Smtp-Source: AGHT+IHcoui3nf6KS5wNjwxWgXPGU2WvUeQ+KSV0Bq5p427ioSnqGupQXz+IQZm/xDJmnCLpIAFiyw==
+X-Received: by 2002:a17:903:1207:b0:224:252c:eae1 with SMTP id d9443c01a7336-225e0a666d3mr63113675ad.6.1742229169062;
+        Mon, 17 Mar 2025 09:32:49 -0700 (PDT)
+Received: from rock-5b.. ([221.220.131.19])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a4876sm77282825ad.70.2025.03.17.09.32.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 09:32:48 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Enable HDMI ports on ArmSoM W3
+Date: Tue, 18 Mar 2025 00:32:21 +0800
+Message-ID: <20250317163240.3083908-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-Id: <20250317-rk3576-emmc-fix-v1-1-d534d49a41f5@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAIcz2GcC/zWMQQrCMBAAvxL27EKztY30K9JDTFddJKluohRK/
- 26weJyBmRUyq3CGwayg/JEsc6pgDwbC3acbo0yVgRrqmtY61EfbuR45xoBXWdBN4WR9T+5IBLV
- 6Klf9O57HnZVf7zouu4SLz4xhjlHKYBIvBf9zGLftCzh52DqSAAAA
-X-Change-ID: 20250317-rk3576-emmc-fix-7dc81a627422
-To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_073721_555189_01548D83 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20250317_093250_637524_69B9A535 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,134 +96,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Due to what seemingly is a hardware bug, PD_NVM never comes up quite the
-same after being turned off once. The result is that the sdhci
-controller will lock up the entire SoC when it's accessing its CQHCI
-registers.
+Enable the two HDMI ports on ArmSoM W3. And audio output of these two
+ports are also enabled.
 
-The downstream kernel hacks around this by setting
-GENPD_FLAG_RPM_ALWAYS_ON in the mmc host driver, which does not seem
-like the right place for this.
-
-Set GENPD_FLAG_ALWAYS_ON in the pmdomain driver for PD_NVM. I'm using
-the non-RPM version of the flag here because I have my doubts a
-suspend-resume cycle will fix it. Suspend-resume currently seems busted,
-so I couldn't test this.
-
-Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 ---
- drivers/pmdomain/rockchip/pm-domains.c | 48 ++++++++++++++++++----------------
- 1 file changed, 26 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 03bcf79a461f5db14173b35c0d110541e6d3f760..2b220b7c77b3d292f49cbc60338d3925146fb211 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -48,6 +48,7 @@ struct rockchip_domain_info {
- 	int ack_mask;
- 	bool active_wakeup;
- 	bool need_regulator;
-+	bool always_on;
- 	int pwr_w_mask;
- 	int req_w_mask;
- 	int clk_ungate_mask;
-@@ -154,7 +155,7 @@ struct rockchip_pmu {
- 	.need_regulator = regulator,			\
- }
+ .../boot/dts/rockchip/rk3588-armsom-w3.dts    | 101 ++++++++++++++++++
+ 1 file changed, 101 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
+index 779cd1b1798c..6ad2759ddcca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
+@@ -4,6 +4,7 @@
  
--#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup)	\
-+#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup, _always_on)	\
- {							\
- 	.name = _name,					\
- 	.pwr_offset = p_offset,				\
-@@ -171,6 +172,7 @@ struct rockchip_pmu {
- 	.clk_ungate_mask = (g_mask),			\
- 	.ack_mask = (ack),				\
- 	.active_wakeup = wakeup,			\
-+	.always_on = _always_on,			\
- }
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3588-armsom-lm7.dtsi"
  
- #define DOMAIN_RK3036(_name, req, ack, idle, wakeup)		\
-@@ -204,8 +206,8 @@ struct rockchip_pmu {
- #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
- 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
+ / {
+@@ -32,6 +33,28 @@ analog-sound {
+ 		pinctrl-0 = <&hp_detect>;
+ 	};
  
--#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup)	\
--	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup)
-+#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup, always_on)	\
-+	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup, always_on)
- 
- /*
-  * Dynamic Memory Controller may need to coordinate with us -- see
-@@ -846,6 +848,8 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
- 	if (pd_info->active_wakeup)
- 		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
-+	if (pd_info->always_on)
-+		pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
- 	pm_genpd_init(&pd->genpd, NULL,
- 		      !rockchip_pmu_domain_is_on(pd) ||
- 		      (pd->info->mem_status_mask && !rockchip_pmu_domain_is_mem_on(pd)));
-@@ -1210,25 +1214,25 @@ static const struct rockchip_domain_info rk3568_pm_domains[] = {
++	hdmi0-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi0_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
++	hdmi1-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi1_con_in: endpoint {
++				remote-endpoint = <&hdmi1_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -138,6 +161,54 @@ &combphy2_psu {
+ 	status = "okay";
  };
  
- static const struct rockchip_domain_info rk3576_pm_domains[] = {
--	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false),
--	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false),
--	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false),
--	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false),
--	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false),
--	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false),
--	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false),
--	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false),
--	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false),
--	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true),
--	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false),
--	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false),
--	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false),
--	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false),
--	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false),
--	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false),
--	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false),
--	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false),
--	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false),
-+	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false, false),
-+	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false, true),
-+	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false, false),
-+	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false, false),
-+	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false, false),
-+	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false, false),
-+	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false, false),
-+	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false, false),
-+	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false, false),
-+	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true,  false),
-+	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false, false),
-+	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false, false),
-+	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false, false),
-+	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false, false),
-+	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false, false),
-+	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false, false),
-+	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false, false),
-+	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false, false),
-+	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false, false),
++&hdmi0 {
++	status = "okay";
++};
++
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
++	};
++};
++
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi0_con_in>;
++	};
++};
++
++&hdmi0_sound {
++	status = "okay";
++};
++
++&hdmi1 {
++	status = "okay";
++};
++
++&hdmi1_in {
++	hdmi1_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_hdmi1>;
++	};
++};
++
++&hdmi1_out {
++	hdmi1_out_con: endpoint {
++		remote-endpoint = <&hdmi1_con_in>;
++	};
++};
++
++&hdmi1_sound {
++	status = "okay";
++};
++
++&hdptxphy0 {
++	status = "okay";
++};
++
++&hdptxphy1 {
++	status = "okay";
++};
++
+ &i2c6 {
+ 	status = "okay";
+ 
+@@ -192,6 +263,14 @@ i2s0_8ch_p0_0: endpoint {
+ 	};
  };
  
- static const struct rockchip_domain_info rk3588_pm_domains[] = {
-
----
-base-commit: b52e55576652f29ab7387e2da222123f624a7767
-change-id: 20250317-rk3576-emmc-fix-7dc81a627422
-
-Best regards,
++&i2s5_8ch {
++	status = "okay";
++};
++
++&i2s6_8ch {
++	status = "okay";
++};
++
+ &package_thermal {
+ 	polling-delay = <1000>;
+ 
+@@ -406,3 +485,25 @@ &usb_host1_xhci {
+ &usb_host2_xhci {
+ 	status = "okay";
+ };
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
++
++&vp1 {
++	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
++		remote-endpoint = <&hdmi1_in_vp1>;
++	};
++};
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.43.0
 
 
 _______________________________________________
