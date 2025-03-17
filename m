@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E5CC282EC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 19:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19318C282EC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 23:09:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P0tBigCtmIkbc6Ssh5sWNUsoFlRl5TdS0kCkHRIShNY=; b=w8MU9v1glceUYd
-	st6TsZnIZ/URdVYZLHrG3I8YGoqmAjh45evJKUlQiHQ9FpQyJEODsmqa4f6oPDC32XIOQ1EY7Ty11
-	EwJfwPtkJqDqwNVOenHmO30zVZ+pLvs6SU86hoHK9rxGShbJsEVki2zGoCcfj/seGijW0CkdfQILx
-	rUnsezGmU1nEMg2xkIYH8Mwh07QWrk0q5w5ltDg9VaaeFetvKeIl7DfCezOeDNoyjcJUxLd5j9NoZ
-	LrJ9hv3kdy2CtqYoSjjcQ8W3trRJZZbXjlpv0LlqDCBtnY5QJYN/e5PncMYXkJOu7I6udhrxZQ8vG
-	7Bc+aW6XCIcJjkApIq7A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZisdmDHRi6hVFr+t/rTsx5kVjvGUNSpeY31Mk5LMNMw=; b=DEHRaKgt4M7yBO
+	oKpylIf9A81UAeq7CoTLd9z6SwywlwaGT0emNhZh42AgpDGpbjToHFEzZZoX0aAM5pCdI1uOjMmqK
+	Tyw5dHWec0DVCczrXpTEtbsJUJRCS350EimjZ86Lu4jwimlO4Etwthd+9SrKWuTvx5wQyVDAwmzMY
+	B5+BPt8SXwCFLo2Nev0j9A2du7iQf5VaV06aQbOCwdCvonkE2tE5Mn6x4lBlcjwmpiaqNWqeXHolO
+	kQHK8iJVKvxu0MLVPUM1R33ZBb00sBpTaKKEGHS55POBCrFQw5vfkeCwScOvJlV8I1j30btCffGJ4
+	MLsa/TyOgghhndV6DG2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuGUG-00000003rHt-1VIu;
-	Mon, 17 Mar 2025 19:51:00 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1tuJa4-00000004Ak2-3YUT;
+	Mon, 17 Mar 2025 23:09:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuGUE-00000003rH1-0BNP
-	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Mar 2025 19:50:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1742241056;
- bh=x7uD5anQxB6XbAyXnokdg7fGkN/BWmwgVtIghm68D1E=;
- b=w21pZnkj/QKL1gNyW5j8lH6RQFOubEh+tQ2+1NYkUH7zJjtqxIqfxB1xRaELIHkuCeNfQuyyd
- XoVqP36WEWLKJ0/mnFSCK6n6n5W2KgQT8yuIhBZZtrvmetAm8MMwRVq8KnPp9ZY7kZsERp0wud0
- 4r16w1ePFpsLtODqwZ3GaOb2GmDIFASmuXQo0KhRg07V4EFY3asru23CzjHw98r2uREJQv/u3pM
- svNrmn5lVln11j4hjxBb3x7EyPLaHtqQPEAbQGxps8Wb3YiWWFYVnEMQ2KYrZUR3gGiis057Q+K
- bw19+8SJoOb2nhOdWw00mXIdaA3ddaTGD83b7iIfb3PA==
-X-Forward-Email-ID: 67d87d10eee8cc91c8429fed
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <db3bf1cb-3385-4676-8ba4-41fea0212bf2@kwiboo.se>
-Date: Mon, 17 Mar 2025 20:50:34 +0100
+	id 1tuJYN-00000004Ab9-2kZt;
+	Mon, 17 Mar 2025 23:07:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References;
+	bh=nmukJGEcFv9r/hN8K3jj6fx3Zft2B1RO5TKA4ICgHAU=; b=bIQ9ynzE2K9UrrP3fcqe2KqcGh
+	91/ngfyX2g+k9cxa5GOcQPrppAalXXZE9huISMNPCVnFwu/WuwtOkwC+iKiF7mJWb+MXhOYOpWVOf
+	GIXgy0izXRNlxtC1y4HZhMV52mnCw9HTtVh3PtQbEQIfdeuiPyCBSa5QsZhYtnF56ssVWiiu2hU+P
+	0xRseFW9Su+t+cluilyZ/VyQxgnaqAxmJC1GKErRCcqR3Kl8IKH0SmVU15urwK826V8NmuDEEnbS2
+	4CL/n3DSXeLm/gKiIaasL2PeY8uS3SRut4XayPS1K/L34MelxgcbjTGlP4gMD/ZILbysE3Cf24taG
+	Kwlo/i2Q==;
+Received: from i53875bc6.versanet.de ([83.135.91.198] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tuJYG-0001ae-JL; Tue, 18 Mar 2025 00:07:20 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: lee@kernel.org,
+	sfr@canb.auug.org.au,
+	linux-next@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] Revert "dt-bindings: mfd: syscon: Add rk3528 QoS register compatible"
+Date: Tue, 18 Mar 2025 00:07:05 +0100
+Message-ID: <20250317230705.932808-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
-To: Simon Horman <horms@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, David Wu <david.wu@rock-chips.com>,
- Yao Zi <ziyao@disroot.org>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250309232622.1498084-1-jonas@kwiboo.se>
- <20250317194309.GL688833@kernel.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250317194309.GL688833@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_125058_425076_0091A9CB 
-X-CRM114-Status: GOOD (  19.85  )
+X-CRM114-CacheID: sfid-20250317_160727_694746_95BEBB0B 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,58 +75,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+This reverts commit 19a634195c1abe498798b564cd6b81e6dd4533f7.
 
-On 2025-03-17 20:43, Simon Horman wrote:
-> On Sun, Mar 09, 2025 at 11:26:10PM +0000, Jonas Karlman wrote:
->> The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
->> used with the integrated PHY and a second 1000/100/10 MAC to be used
->> with an external Ethernet PHY.
->>
->> This series add initial support for the Ethernet controllers found in
->> RK3528 and initial support to power up/down the integrated PHY.
->>
->> This series depends on v2 of the "net: stmmac: dwmac-rk: Validate GRF
->> and peripheral GRF during probe" [1] cleanup series.
->>
->>
->> Changes in v2:
->> - Restrict the minItems: 4 change to rockchip,rk3528-gmac
->> - Add initial support to power up/down the integrated PHY in RK3528
->> - Split device tree changes into a separate series
->>
->> [1] https://lore.kernel.org/r/20250308213720.2517944-1-jonas@kwiboo.se/
-> 
-> Hi Jonas,
-> 
-> This patchset looks reasonable to me. However it will need
-> to be reposted once it's dependencies ([1]) are present in net-next.
+The dt-binding addition adds the compatible to a syscon (a mfd) and should
+go through the mfd tree. And it did, and is part of the mfd tree for 6.15
+as commit 7f3e3e7228bb ("dt-bindings: mfd: syscon: Add rk3528 QoS register
+compatible"), with all the correct Signed-off-by lines.
 
-The dependent series ([1]) has already been merged into net-next [2].
+But of course having a commit present in two trees creates new problems.
 
-Do I still need to repost this series?
+So to prevent issues during the merge-window, revert the variant I
+accidentially applied.
 
-[2] https://lore.kernel.org/r/174186063226.1446759.12026198009173732573.git-patchwork-notify@kernel.org/
+Fixes: 19a634195c1a ("dt-bindings: mfd: syscon: Add rk3528 QoS register compatible")
+Closes: https://lore.kernel.org/lkml/20250317144507.0938757b@canb.auug.org.au/
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+This removes the change from the Rockchip tree, so that only the one in the
+mfd tree remains.
 
-> 
-> And on the topic of process:
-> 
-> * As this is a patch-set for net-next it would be best to
->   target it accordingly:
-> 
->   Subject: [PATCH net-next] ...
-> 
-> * Please post patches for net/net-next which have dependencies as RFCs.
-> 
-> For more information on Netdev processes please take a look at
-> https://docs.kernel.org/process/maintainer-netdev.html
-> 
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 2 --
+ 1 file changed, 2 deletions(-)
 
-Thanks, I see, netdev seem to use a slight different process than what
-I am familiar with compared to other Linux subsystems and U-Boot :-)
-
-Regards,
-Jonas
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 2836e4793afc9..4d67ff26d4450 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -103,7 +103,6 @@ select:
+           - rockchip,rk3288-qos
+           - rockchip,rk3368-qos
+           - rockchip,rk3399-qos
+-          - rockchip,rk3528-qos
+           - rockchip,rk3562-qos
+           - rockchip,rk3568-qos
+           - rockchip,rk3576-qos
+@@ -203,7 +202,6 @@ properties:
+           - rockchip,rk3288-qos
+           - rockchip,rk3368-qos
+           - rockchip,rk3399-qos
+-          - rockchip,rk3528-qos
+           - rockchip,rk3562-qos
+           - rockchip,rk3568-qos
+           - rockchip,rk3576-qos
+-- 
+2.47.2
 
 
 _______________________________________________
