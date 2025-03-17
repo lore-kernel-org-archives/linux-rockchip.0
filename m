@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC8F8C35FF8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 16:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 001F8C282EC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 19:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2SP+ZM2hpLBO7eswIqBCkmyPnOpVz/dut9bmLgoLBwk=; b=04/C7xrPPqzSxp
-	JGiJNEsc70XTsXyxbOGO9AZy6QBsqxssI7ZZUam12iK0YAEiqrA+m5cXafz5EIddsa6j0Nvyxh0gj
-	HeLQhkR/y/96b4lrZiUJ8xx4BeVsN+XRKmuM+0478bnc9ZKd1t0/N8k+Z0HvVrCP8B1c+6VdsEOGf
-	rmmFlVqyMF44wePJVa7cFKVOaoLASzOvoGlEQ+hCJMdm2maXkAZJ9vbTDNcIOvYNUliDTaar4zIYg
-	Tg84uGEvoGUhKUSTaJWazl6DkKsPKw3sRirpgDXMq6QKZopL9fZIEEXlvvBq4W+HGrVZOIFPoUBRb
-	qUEF7FUDYl+Bg55MdbxA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0QJBS1eBArSYTdoqnlm6pR0psWdUuX2S6bFzW5V734o=; b=xoQDlOwP4XktiX
+	f2DjOIkuAoCyR/Z9G+1gHLxGkur0owodp45WVwl0IzEKSqm7rEjCYfSpdQYyeb4NtLt9a0yfIjyxi
+	Gp413CB2L2MY79d+U1yE0Wx1yHF97beqCMTSu7scnefF598F+IsEwjhppu6K5UwtrKHrcowdqd63w
+	TYJSSQPSjOEbTgkTILJJzj3IcNpq0RQEMr4dPCqYC1pPTqdvfdDc41HJxhirsaiwFxoVLujU5J9+W
+	UpJXicKceP5aDIqwW70awBB/pOnKmmYo1jddboVPYjBkrtef81HI5NpOZrlx2MqpXxs7Ky/cbtZXF
+	x6Iyd+5pJmBd9CV7Mwgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuDQi-00000003LUi-3EYz;
-	Mon, 17 Mar 2025 16:35:08 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1tuGOT-00000003qYy-3kKc;
+	Mon, 17 Mar 2025 19:45:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuDOU-00000003L6j-2VaG;
-	Mon, 17 Mar 2025 16:32:51 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2232aead21aso12960595ad.0;
-        Mon, 17 Mar 2025 09:32:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742229169; x=1742833969; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YWWEyuRSXEh4jYuipM2cPauSQC9QSyQVuvZY6z5PEnM=;
-        b=FuYxDsTbyhiQPoBPHSdTWo7ek560TwTPEvs/vmtYzcuRZMa+vyiuwMInIFT6OZSOtt
-         mVxbRF3Mu3VsMa9qUZBJEdmDrLvgzscdf8dLVcxlzzRYo8JDcWx2jfsHMrfiX8Z+ZjkH
-         JWxxMKGiilcD5wHo9HDORzBWKAhNBihiFXK78TRytMiXSrRWByX/RzevFV8y5XBTUSzw
-         pBFX0p/KvG9DYWq+8BApnbtomF9zaDydsz0HLp5VymteOAkIA3LFRoPRlddHLdWyxndz
-         +9Bz/KVcups59TKH/XQ3xxGCOkilTOT0VAcHsmb03xll5gtoTPoJlBsEQfzwTuJW2lsb
-         kH7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742229169; x=1742833969;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YWWEyuRSXEh4jYuipM2cPauSQC9QSyQVuvZY6z5PEnM=;
-        b=Z5EZcYtl7Q0Apnn046cYSYjWtJ9UD0HMsilomjKPSbkBHa//a1nQyBlac/LV+Bdp9s
-         MkiyW6Rn0070Bpua89KhzJhCZt68dxMHsn/VUzJvMxDEpivWqI7iq+AKM/kC+OsHpNdg
-         l+YiBHdGh4+hbYojY38oqG2STTosn8N8Y/piUtBSaCpbIUb3gbRYyEM9+mdzGZrsXqHb
-         gViIC6Fg+FAYizRWGpUjn8QRISyzIS7Xit1pX/j2oxoxizCQK/HzgvznGP2CX/f5WeKd
-         RshDuRU9VynKOuYwx7h0hM6MZdwSBbtve4XF3qerqPOdu4njQYzjcRLZUmpCDTIwptcF
-         X+eA==
-X-Forwarded-Encrypted: i=1; AJvYcCWWiZV0qeClWUyQuzPSvJrb0nQj8HZjAogq9sjbX5mHVDq/0gBJAnb0LQsAWn3d5A9kdIT8e5BlP//HIJMifr5I@lists.infradead.org
-X-Gm-Message-State: AOJu0YwRERAUNtLT2cQNEj5OZoUC6UuLFwfr/lsPteyueQOMUmxs/c4y
-	zm1GUwlBxbaRh3jbAwsxfYnp4DDgSpcyXDmRMju/aP29mp0l1iWGeow6TOGt
-X-Gm-Gg: ASbGncuIPpde1GJJL4XQCwF80F/a/q3R3Rzrrya1llIuy72MPy0nizm1xUfRVOpWgsX
-	nU/KywzqCO+VrYILes2dOWyPxLDSzJoNVCNRJD44MhjyqnoftsUyVEM7w84NN4LTKvoYsWF9Te+
-	qEi6ewuGTix9TSsdUkxucV/cRX3fgY+gmFp6TeX2R44IjLG6IDqkZY0pbYGSPI4oFCwCbE2tCws
-	KTrAKWV0XWZVDKi1TdbZHHnNZ7P3FcyDQqweS3N/junh9GiNRAIxRYE93E4N9zX+zNI/m33D+/k
-	oK8wZxR5548GaUryAuzx6oeZ9eOmzZwVhuPt2sK9hPM40yQdAw==
-X-Google-Smtp-Source: AGHT+IHcoui3nf6KS5wNjwxWgXPGU2WvUeQ+KSV0Bq5p427ioSnqGupQXz+IQZm/xDJmnCLpIAFiyw==
-X-Received: by 2002:a17:903:1207:b0:224:252c:eae1 with SMTP id d9443c01a7336-225e0a666d3mr63113675ad.6.1742229169062;
-        Mon, 17 Mar 2025 09:32:49 -0700 (PDT)
-Received: from rock-5b.. ([221.220.131.19])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a4876sm77282825ad.70.2025.03.17.09.32.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Mar 2025 09:32:48 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1tuGMm-00000003qIK-08Q2;
+	Mon, 17 Mar 2025 19:43:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6CCE35C05A4;
+	Mon, 17 Mar 2025 19:40:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6D6DC4CEE3;
+	Mon, 17 Mar 2025 19:43:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742240595;
+	bh=t//6P/q0t8jIMHBT9W/8mr8iVb+RwiE/dM2UG+3+3rs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bJY6pWHAHjA8xrZ/5+VUjB1jqkwWQCAceb0D2Kx7WuOa/IeJcN7gAg8gWrxfY0F1U
+	 SQZR5hMLDYoUm3n3eaILBNSY9qtWVg0N9pX7wa3so9kHRslCGuR3KWEY0Pk9v6L4/R
+	 Pk6sPCllY/LZHOwZiQshkmDf7C6W+czCc5B5pWBzEyKE66h+B/12eIcXSNG7gQ02OX
+	 m2Mkk7MVV+5O3/at5i9/MO48RkGLWyWcXIActOkWOt1ZX2GuZnQTGMx4OaiF4GThWu
+	 Mt3ks+Uhjwnvj62d3ra1dt7drBybKMgcoW1xBqFO77B66t/jFOTmo0LhKw1uDI72XB
+	 HUCK9E2oZZBOQ==
+Date: Mon, 17 Mar 2025 19:43:09 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Enable HDMI ports on ArmSoM W3
-Date: Tue, 18 Mar 2025 00:32:21 +0800
-Message-ID: <20250317163240.3083908-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>, Yao Zi <ziyao@disroot.org>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
+Message-ID: <20250317194309.GL688833@kernel.org>
+References: <20250309232622.1498084-1-jonas@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250309232622.1498084-1-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_093250_637524_69B9A535 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20250317_124316_123032_E0F00D73 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,155 +80,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the two HDMI ports on ArmSoM W3. And audio output of these two
-ports are also enabled.
+On Sun, Mar 09, 2025 at 11:26:10PM +0000, Jonas Karlman wrote:
+> The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
+> used with the integrated PHY and a second 1000/100/10 MAC to be used
+> with an external Ethernet PHY.
+> 
+> This series add initial support for the Ethernet controllers found in
+> RK3528 and initial support to power up/down the integrated PHY.
+> 
+> This series depends on v2 of the "net: stmmac: dwmac-rk: Validate GRF
+> and peripheral GRF during probe" [1] cleanup series.
+> 
+> 
+> Changes in v2:
+> - Restrict the minItems: 4 change to rockchip,rk3528-gmac
+> - Add initial support to power up/down the integrated PHY in RK3528
+> - Split device tree changes into a separate series
+> 
+> [1] https://lore.kernel.org/r/20250308213720.2517944-1-jonas@kwiboo.se/
 
-Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
----
+Hi Jonas,
 
- .../boot/dts/rockchip/rk3588-armsom-w3.dts    | 101 ++++++++++++++++++
- 1 file changed, 101 insertions(+)
+This patchset looks reasonable to me. However it will need
+to be reposted once it's dependencies ([1]) are present in net-next.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-index 779cd1b1798c..6ad2759ddcca 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
-@@ -4,6 +4,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3588-armsom-lm7.dtsi"
- 
- / {
-@@ -32,6 +33,28 @@ analog-sound {
- 		pinctrl-0 = <&hp_detect>;
- 	};
- 
-+	hdmi0-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi0_con_in: endpoint {
-+				remote-endpoint = <&hdmi0_out_con>;
-+			};
-+		};
-+	};
-+
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -138,6 +161,54 @@ &combphy2_psu {
- 	status = "okay";
- };
- 
-+&hdmi0 {
-+	status = "okay";
-+};
-+
-+&hdmi0_in {
-+	hdmi0_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi0>;
-+	};
-+};
-+
-+&hdmi0_out {
-+	hdmi0_out_con: endpoint {
-+		remote-endpoint = <&hdmi0_con_in>;
-+	};
-+};
-+
-+&hdmi0_sound {
-+	status = "okay";
-+};
-+
-+&hdmi1 {
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
-+&hdmi1_sound {
-+	status = "okay";
-+};
-+
-+&hdptxphy0 {
-+	status = "okay";
-+};
-+
-+&hdptxphy1 {
-+	status = "okay";
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -192,6 +263,14 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
- 
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
-+&i2s6_8ch {
-+	status = "okay";
-+};
-+
- &package_thermal {
- 	polling-delay = <1000>;
- 
-@@ -406,3 +485,25 @@ &usb_host1_xhci {
- &usb_host2_xhci {
- 	status = "okay";
- };
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi0_in_vp0>;
-+	};
-+};
-+
-+&vp1 {
-+	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp1>;
-+	};
-+};
+And on the topic of process:
+
+* As this is a patch-set for net-next it would be best to
+  target it accordingly:
+
+  Subject: [PATCH net-next] ...
+
+* Please post patches for net/net-next which have dependencies as RFCs.
+
+For more information on Netdev processes please take a look at
+https://docs.kernel.org/process/maintainer-netdev.html
+
 -- 
-2.43.0
-
+pw-bot: deferred
 
 _______________________________________________
 Linux-rockchip mailing list
