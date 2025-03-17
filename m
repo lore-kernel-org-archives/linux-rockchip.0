@@ -4,55 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2AA2C282EC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 08:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88C7C282EC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 08:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KDR13UU31A0VvtU/PUNogcU67KUAbaC9Y7L7xPLqZ/E=; b=MWPUilvic04SYx
-	JSnZmWRWSiEJQRJBB8hmpdKApfShLZxGzJHxgAa47PsM4W2uUDADtDOvnx+ekcjQRQRGMcRJNburs
-	abm12C3Mn9rmnZdzfCb/3UAHTDzvuEhbculmaQyjPEaIYkcnHqchz4S4SBGUU7HhHTW6fVxGDg6E7
-	HwY6FGNPxnSk6FFnjXkM79izoRDHDj8axIYlg/2QhrqiJtOrxo6ZsoECrFQKMw8Fw7nysVr6uJKCx
-	aWQXcrLtYiYHKZtHE3fJTIHe+ZbxFgPI+OcGiolPFXBAAG+eYWeOvRAUVYmRRGmMvR4TbRNC/POzX
-	tJOEJgRcmkTuix7RJXqw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JUijBvld+egXGM5+fdTZVrL/ztHtA1xL7hC1gswWOOA=; b=vrZkBRGDNsTJZ4
+	qEbJYaGsNz6H3gDCNvch5zDSFRNjbjjSNGdGxioFRw0HKAg1AMhIHD9BKZduh+QmM8waXBjozOdgD
+	Ro4MmkvJ1r+v9/2lxFKUFvOhfKuXkFFeaMs9f5jSK4Og4bR9dmTwId0tjGyAwB03/s78YXIG7k+TM
+	SqKvHFY5SxTo3KU4MzxFcTOYPvBlBHi4EakwKYJllDGjJlL11JWw8tZwLdDQFZYeQqX115aW6AoFg
+	SBK4mOsJ54+N9/WC+Nmok6lI75w/OzCWS8cjTLIVA1/TbulFz4J3A9ucOq6rd7W/ajaK5R4yS2dGL
+	qQDymFND5LUqr5lMPUvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu5kK-00000001iU0-2ynw;
-	Mon, 17 Mar 2025 08:22:52 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu5ic-00000001iB3-3AyY;
-	Mon, 17 Mar 2025 08:21:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=xuKzq
-	xXQuuudyoZS1yA8FZNGTyjI0RvfS078un9hEUk=; b=Mb9gDgLPOWJMzRTOAwR60
-	6lhkA+PBspsGBAcme3DUKgjd5IL5CkuckuTsLw68dzW1tDa0hcT1psbYLCpWPdRp
-	Nvv6SEV7YJvoWudVX9sAM8GqU3y4LonngTRtbVrb2L0VVgDHlrhsvGIlr4HhXhkU
-	tMbIxgXOciDXAsBPcUElQo=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wCXg9tg29dn5rCCTQ--.26560S2;
-	Mon, 17 Mar 2025 16:20:51 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Subject: [PATCH] drm/rockchip: dw_hdmi_qp: Fix io init for dw_hdmi_qp_rockchip_resume
-Date: Mon, 17 Mar 2025 16:20:39 +0800
-Message-ID: <20250317082047.564404-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1tu5qZ-00000001k9X-3q99;
+	Mon, 17 Mar 2025 08:29:19 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tu5qX-00000001k96-2J5s;
+	Mon, 17 Mar 2025 08:29:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742200143; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MPDA5DZeNkMr9rXs6kPXA0kyKfA3zFfmllIuxWqruuD2wYlhBnAUVAhIWdsgn0V5fVWmqDXCPwDpCdU89wXd1DuXrYRLeiW5SkvSE0GfZwNIyjqF+tOa7cTrg1+q1WUK6Rbd3peDTmZ1ygGmc2EfqlkjdxU+7MlYCammRuwMvcE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742200143; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=umuvK91DZgNUVvUrd/naQBA7f7ASrvoD/6ljA2wUXb0=; 
+	b=muW4EKoqaUzjoOkFOGYoy7iBogtgRbYu/H95/L89kSh6fH4eyUbg94LXK0qmTmINYLVIgskYARjT6KX0SpJ6JJDxhYFqAqpVC2S/4YLWAmfHx3BdsxXfWOZ6nLaqI+PtffZNGVysLVRYG36UvdSdsvzG2fPTsIeCSGErCCMsFSY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742200143;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=umuvK91DZgNUVvUrd/naQBA7f7ASrvoD/6ljA2wUXb0=;
+	b=SfnqWs2ylGqsqOU2b0RitTxMEVjKYpCIaFFF+tZNh/FiAGGcLn2QYDT1/U6KEU3v
+	661KUzgcStvEt2+xhC/z6ZclltMc3urBBG+an/enoLsPa5zajUDDozoLu32LiWUCoHA
+	vtY6RzL6jrfEjWBJrJs3tXJbi6rpTwowpnUXqJ9I=
+Received: by mx.zohomail.com with SMTPS id 1742200141185867.5196911777422;
+	Mon, 17 Mar 2025 01:29:01 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Ye Zhang <ye.zhang@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 3/6] thermal: rockchip: Support RK3576 SoC in the thermal
+ driver
+Date: Mon, 17 Mar 2025 09:28:55 +0100
+Message-ID: <4994384.31r3eYUQgx@workhorse>
+In-Reply-To: <6c355664-50dd-4efd-94b7-9d93c02d3e80@kwiboo.se>
+References: <20250228-rk3576-tsadc-upstream-v3-0-4bfbb3b699b9@collabora.com>
+ <20250228-rk3576-tsadc-upstream-v3-3-4bfbb3b699b9@collabora.com>
+ <6c355664-50dd-4efd-94b7-9d93c02d3e80@kwiboo.se>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wCXg9tg29dn5rCCTQ--.26560S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw48Kw17JF48CFy3Xr1UWrg_yoW8CF43p3
-	y3AryjkrWkGr4UXwn5A3Z2yFW2y3ZrJw4SqFWxKas2y3W09r1fGr93ua1rXrZxXF9rZF4a
-	krZ3t34fJa1UXaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jIyxiUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hkTXmfX1jmrPQAAsP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_012107_119876_8340A5C1 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250317_012917_648877_5F4FEC31 
+X-CRM114-Status: GOOD (  28.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,60 +80,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+On Saturday, 15 March 2025 09:20:07 Central European Standard Time Jonas 
+Karlman wrote:
+> Hi Nicolas,
 
-Use cfg->ctrl_ops->io_init callback make it work for all platform.
+Hi Jonas,
 
-Fixes: 3f60dbd40d3f ("drm/rockchip: dw_hdmi_qp: Add platform ctrl callback")
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+> 
+> On 2025-02-28 21:06, Nicolas Frattaroli wrote:
+> > From: Ye Zhang <ye.zhang@rock-chips.com>
+> > 
+> > The RK3576 SoC has six TS-ADC channels: TOP, BIG_CORE, LITTLE_CORE,
+> > DDR, NPU and GPU.
+> > 
+> > Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
+> > [ported to mainline, reworded commit message]
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> > 
+> >  drivers/thermal/rockchip_thermal.c | 42
+> >  ++++++++++++++++++++++++++++++++++++++ 1 file changed, 42 insertions(+)
+> > 
+> > diff --git a/drivers/thermal/rockchip_thermal.c
+> > b/drivers/thermal/rockchip_thermal.c index
+> > a8ad85feb68fbb7ec8d79602b16c47838ecb3c00..bec1930bebd87859a7e519cfc9f05e1
+> > 0b1c31e87 100644 --- a/drivers/thermal/rockchip_thermal.c
+> > +++ b/drivers/thermal/rockchip_thermal.c
+> > @@ -1061,6 +1061,22 @@ static void rk_tsadcv3_tshut_mode(int chn, void
+> > __iomem *regs,> 
+> >  	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
+> >  
+> >  }
+> > 
+> > +static void rk_tsadcv4_tshut_mode(int chn, void __iomem *regs,
+> > +				  enum tshut_mode mode)
+> > +{
+> > +	u32 val_gpio, val_cru;
+> > +
+> > +	if (mode == TSHUT_MODE_GPIO) {
+> > +		val_gpio = TSADCV2_INT_SRC_EN(chn) | 
+TSADCV2_INT_SRC_EN_MASK(chn);
+> > +		val_cru = TSADCV2_INT_SRC_EN_MASK(chn);
+> > +	} else {
+> > +		val_cru = TSADCV2_INT_SRC_EN(chn) | 
+TSADCV2_INT_SRC_EN_MASK(chn);
+> > +		val_gpio = TSADCV2_INT_SRC_EN_MASK(chn);
+> > +	}
+> > +	writel_relaxed(val_gpio, regs + TSADCV3_HSHUT_GPIO_INT_EN);
+> > +	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
+> > +}
+> 
+> This function is identical to rk_tsadcv3_tshut_mode() in mainline.
+> 
+> Should the v3 function be renamed to v4 in mainline to match vendor
+> kernel to avoid confusion?
 
- .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 23 +++----------------
- 1 file changed, 3 insertions(+), 20 deletions(-)
+Good catch. Yes, I'll add a patch to rename the function before introducing 
+new changes in v4, and get rid of the duplicate function.
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 3d1dddb34603..631a7080862b 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -600,27 +600,10 @@ static void dw_hdmi_qp_rockchip_remove(struct platform_device *pdev)
- static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
- {
- 	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
--	u32 val;
--
--	val = HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
--	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
--	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
--	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
--	regmap_write(hdmi->vo_regmap,
--		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
--		     val);
--
--	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
--			    RK3588_SET_HPD_PATH_MASK);
--	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
-+	const struct rockchip_hdmi_qp_cfg *cfg;
- 
--	if (hdmi->port_id)
--		val = HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
--				    RK3588_HDMI1_GRANT_SEL);
--	else
--		val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
--				    RK3588_HDMI0_GRANT_SEL);
--	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
-+	cfg = of_device_get_match_data(dev);
-+	cfg->ctrl_ops->io_init(hdmi);
- 
- 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
- 
--- 
-2.43.0
+> 
+> > +
+> > 
+> >  static const struct rockchip_tsadc_chip px30_tsadc_data = {
+> >  
+> >  	/* cpu, gpu */
+> >  	.chn_offset = 0,
+> > 
+> > @@ -1284,6 +1300,28 @@ static const struct rockchip_tsadc_chip
+> > rk3568_tsadc_data = {> 
+> >  	},
+> >  
+> >  };
+> > 
+> > +static const struct rockchip_tsadc_chip rk3576_tsadc_data = {
+> > +	/* top, big_core, little_core, ddr, npu, gpu */
+> > +	.chn_offset = 0,
+> > +	.chn_num = 6, /* six channels for tsadc */
+> > +	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC 
+*/
+> > +	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+> > +	.tshut_temp = 95000,
+> 
+> Here the default is GPIO and 95 deg, in DT node the default is override
+> to CRU and 120 deg.
+> 
+> Any reason that is not the default here?
+
+No reason, other than that this is what most Rockchip SoCs seem to do. RK3588 
+does the same thing. The hardware power-on-reset state is to not have any 
+tshut, so whatever the "default" should be is entirely made up by the driver 
+in either case.
+
+For the sake of being consistent, I'll keep it the same in v4, as RK3588 does. 
+Otherwise, we'll have RK3576 and RK3588 do different things. If someone wants 
+to change the default, then ideally this would be done in a follow-up series 
+to make it consistent for all SoCs.
+
+If that's alright with you, then I'll send out a v4.
+
+> 
+> Regards,
+> Jonas
+> 
+
+Regards,
+Nicolas Frattaroli
+
+> > +	.initialize = rk_tsadcv8_initialize,
+> > +	.irq_ack = rk_tsadcv4_irq_ack,
+> > +	.control = rk_tsadcv4_control,
+> > +	.get_temp = rk_tsadcv4_get_temp,
+> > +	.set_alarm_temp = rk_tsadcv3_alarm_temp,
+> > +	.set_tshut_temp = rk_tsadcv3_tshut_temp,
+> > +	.set_tshut_mode = rk_tsadcv4_tshut_mode,
+> > +	.table = {
+> > +		.id = rk3588_code_table,
+> > +		.length = ARRAY_SIZE(rk3588_code_table),
+> > +		.data_mask = TSADCV4_DATA_MASK,
+> > +		.mode = ADC_INCREMENT,
+> > +	},
+> > +};
+> > +
+> > 
+> >  static const struct rockchip_tsadc_chip rk3588_tsadc_data = {
+> >  
+> >  	/* top, big_core0, big_core1, little_core, center, gpu, npu */
+> >  	.chn_offset = 0,
+> > 
+> > @@ -1342,6 +1380,10 @@ static const struct of_device_id
+> > of_rockchip_thermal_match[] = {> 
+> >  		.compatible = "rockchip,rk3568-tsadc",
+> >  		.data = (void *)&rk3568_tsadc_data,
+> >  	
+> >  	},
+> > 
+> > +	{
+> > +		.compatible = "rockchip,rk3576-tsadc",
+> > +		.data = (void *)&rk3576_tsadc_data,
+> > +	},
+> > 
+> >  	{
+> >  	
+> >  		.compatible = "rockchip,rk3588-tsadc",
+> >  		.data = (void *)&rk3588_tsadc_data,
+
+
+
 
 
 _______________________________________________
