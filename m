@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B564C282EC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 10:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D72EC282EC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Mar 2025 10:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lE2YP6vo8vx0SqvNOjzbgKmh/LMsjXIM0Y4VdYgArZg=; b=Fmsd/YDIiaCnAzuoyjLvhbTWt7
-	Yw+pGrQI6KzGrAUk1nIHZYRFMfYGuJILtJ67yIUq37MiUqozv3hdqwhP+vViL9Up/rezlITuwnaSP
-	QXFIaiJA+QAcPEOG+sXwjrc2g4C0ZJ0tGjNbCy0QU1di76zub6um8IVnn9yyKU22VtRc+0hD+2ncB
-	K9niof0F07HCfpCEb3Mst/TQbXqyYk1xEKDQHdmzIhaupLP7qA4z9popWOpLp9QoO32Z+rIlWIUCP
-	EuyXhjsBsu4NMkq8DQI6t76wpCEqhDRdE0+8ztBqpwIPAedpca4HWV1uL5anpDjy3e/XLz/2Q3YQt
-	UhOUPWjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AsxgOfQCQ6u941PWbQWths47tovJmwFSVoei61m1hDg=; b=oggNTzMGUP3EWK
+	iyEtUfkvb1FkX1/BGLKRkjUMGYp+RdztHknpVC7lzzcIoo5lSxxmBrtJVSiCFDS8h0puvTIhJAauw
+	D7YV2O1ujFcjt1A/XF5j+M2TrvetnLbUSk1MKInCcmQRNS6vnfVMqPDaE5IOMhBMimGMAr0hzj8Fh
+	beJytqcFUjn6FqJhaNtP43jHnPPPk55iA+Dw77BxsmMfZ4lerzb7ye8R5EdpyyvoauEL+GWq365LX
+	6Iex3V7u4JERK4yIObmHuCYi9zg61j6SdwsNGLZ9JH2SBhf9H+e5Nv0jY0YDpcGM2k3jUu58glBtL
+	foHz//bTVKlb8vMkrG4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu7eX-000000028OE-3bk0;
-	Mon, 17 Mar 2025 10:25:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tu7WN-000000025wR-3HSq;
-	Mon, 17 Mar 2025 10:16:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BF74B5C2759;
-	Mon, 17 Mar 2025 10:14:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 305E7C4CEE3;
-	Mon, 17 Mar 2025 10:16:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742206594;
-	bh=sP4X9ex47Eoc3cg4rQs7gDQnP2lwOT6Ng96xEHp5bpc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XKssg8TUZ5+m1VIovlpPgOH6cGDAjiCgJFKBg3GDqN0btvpR3dHJ6TyY+skOWvbtd
-	 KnGPYnXyGykeNE29+ZWjQ09jMghib1rb/SVMTb9hMwzUR9LV1IKDzQvHyBd6JU5I/v
-	 KO43YlLYEqMkP06G0M51sAHs/3wSuBZrb9oGAs0UkBZzS2+0ZUJ50//XqBD+Zoc9zF
-	 cDuUfU9VrSuaoSGQCpl28iPpYEcsABMur2XKSq53tzn3GmdOH5a7MqaDZx5NueROex
-	 AaOdj7CQypr0dewZ5r0T3o06v29t4MErGk4z48cjhGfP6XElp5Kf2LBPFPI6PF4F7Z
-	 Zsc/MHyh70nYQ==
-Received: by venus (Postfix, from userid 1000)
-	id 00B9F18079B; Mon, 17 Mar 2025 11:16:31 +0100 (CET)
-Date: Mon, 17 Mar 2025 11:16:31 +0100
-From: Sebastian Reichel <sre@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH] drm/rockchip: dw_hdmi_qp: Fix io init for
- dw_hdmi_qp_rockchip_resume
-Message-ID: <p53hbl4vt7vy6srctswjpmlj2rsvnyop4zcszlwrwdd4nogsj3@utqc25oaccfb>
-References: <20250317082047.564404-1-andyshrk@163.com>
+	id 1tu7lD-00000002ATE-1YaV;
+	Mon, 17 Mar 2025 10:31:55 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tu7hp-000000029Xm-0D8D;
+	Mon, 17 Mar 2025 10:28:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=fmWIS
+	0wLHvOfDdrgbj8ORSE1eJQwOVhMX/zX7anGKW4=; b=SqekagC72tCKT25KHSmS4
+	/+b/w+C575D1N98h4BDUoxjOxnTCMxhJz4/JPOgO//WZqLyL2LezzhFK4lhH9+ng
+	XzK09N4vXHxDZpHOogN3tAa/TN2/mpv3caiedJldEyp/q8pNoY4wuUXTccxfdjKu
+	Ci4hDKUATluwrmqbDmq0dk=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wBnuTwy+ddnhLtwTQ--.47861S2;
+	Mon, 17 Mar 2025 18:28:06 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Subject: [PATCH v2] drm/rockchip: dw_hdmi_qp: Fix io init for dw_hdmi_qp_rockchip_resume
+Date: Mon, 17 Mar 2025 18:27:53 +0800
+Message-ID: <20250317102757.565679-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20250317082047.564404-1-andyshrk@163.com>
+X-CM-TRANSID: _____wBnuTwy+ddnhLtwTQ--.47861S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFWfXFWrGr45XFWxGrWUtwb_yoW8Kw45pw
+	4UAa4jkrWkGr47Xrn8ZFnrArW2k3W7Jw4SqFWxKa4vv3W0qrn3KF93Wa1rXr43ZF9xuF4a
+	krWvy34fJF4UXFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j7uc_UUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0h4TXmfX95EooAAAsf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_031635_930026_A157D2A4 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20250317_032825_502541_8464344A 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,124 +63,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5536241201864390287=="
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Andy Yan <andy.yan@rock-chips.com>
 
---===============5536241201864390287==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hbprtcna6txu5faw"
-Content-Disposition: inline
+Use cfg->ctrl_ops->io_init callback make it work for all platform.
+And it's also gets rid of code duplication
 
-
---hbprtcna6txu5faw
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] drm/rockchip: dw_hdmi_qp: Fix io init for
- dw_hdmi_qp_rockchip_resume
-MIME-Version: 1.0
-
-Hi,
-
-On Mon, Mar 17, 2025 at 04:20:39PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
->=20
-> Use cfg->ctrl_ops->io_init callback make it work for all platform.
->=20
-> Fixes: 3f60dbd40d3f ("drm/rockchip: dw_hdmi_qp: Add platform ctrl callbac=
-k")
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-
-It also gets rid of code duplication :)
-
->=20
->  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 23 +++----------------
->  1 file changed, 3 insertions(+), 20 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu=
-/drm/rockchip/dw_hdmi_qp-rockchip.c
-> index 3d1dddb34603..631a7080862b 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> @@ -600,27 +600,10 @@ static void dw_hdmi_qp_rockchip_remove(struct platf=
-orm_device *pdev)
->  static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
->  {
->  	struct rockchip_hdmi_qp *hdmi =3D dev_get_drvdata(dev);
-> -	u32 val;
-> -
-> -	val =3D HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
-> -	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
-> -	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
-> -	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
-> -	regmap_write(hdmi->vo_regmap,
-> -		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
-> -		     val);
-> -
-> -	val =3D HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
-> -			    RK3588_SET_HPD_PATH_MASK);
-> -	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
-> +	const struct rockchip_hdmi_qp_cfg *cfg;
-> =20
-> -	if (hdmi->port_id)
-> -		val =3D HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
-> -				    RK3588_HDMI1_GRANT_SEL);
-> -	else
-> -		val =3D HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
-> -				    RK3588_HDMI0_GRANT_SEL);
-> -	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
-> +	cfg =3D of_device_get_match_data(dev);
-> +	cfg->ctrl_ops->io_init(hdmi);
-
-I think it would be better to store the ctrl_ops (or io_init)
-callback in struct rockchip_hdmi_qp during driver probe and avoid
-another lookup of the match_data, which involves string comparisons.
-
-Otherwise:
-
+Fixes: 3f60dbd40d3f ("drm/rockchip: dw_hdmi_qp: Add platform ctrl callback")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Greetings,
+---
 
--- Sebastian
+Changes in v2:
+- Store the ctrl_ops in struct rockchip_hdmi_qp
 
---hbprtcna6txu5faw
-Content-Type: application/pgp-signature; name="signature.asc"
+ .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 23 +++----------------
+ 1 file changed, 3 insertions(+), 20 deletions(-)
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index 3d1dddb34603..7d531b6f4c09 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -94,6 +94,7 @@ struct rockchip_hdmi_qp {
+ 	struct gpio_desc *enable_gpio;
+ 	struct delayed_work hpd_work;
+ 	int port_id;
++	const struct rockchip_hdmi_qp_ctrl_ops *ctrl_ops;
+ };
+ 
+ struct rockchip_hdmi_qp_ctrl_ops {
+@@ -461,6 +462,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 		return -ENODEV;
+ 	}
+ 
++	hdmi->ctrl_ops = cfg->ctrl_ops;
+ 	hdmi->dev = &pdev->dev;
+ 	hdmi->port_id = -ENODEV;
+ 
+@@ -600,27 +602,8 @@ static void dw_hdmi_qp_rockchip_remove(struct platform_device *pdev)
+ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
+-	u32 val;
+ 
+-	val = HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
+-	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
+-	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
+-	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
+-	regmap_write(hdmi->vo_regmap,
+-		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
+-		     val);
+-
+-	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
+-			    RK3588_SET_HPD_PATH_MASK);
+-	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
+-
+-	if (hdmi->port_id)
+-		val = HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL,
+-				    RK3588_HDMI1_GRANT_SEL);
+-	else
+-		val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
+-				    RK3588_HDMI0_GRANT_SEL);
+-	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
++	hdmi->ctrl_ops->io_init(hdmi);
+ 
+ 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
+ 
+-- 
+2.43.0
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfX9ngACgkQ2O7X88g7
-+pqM3A/9EYnXD5oDYwTqakdXJIlFb5r0EhLAlJJCWtEYxOxa340HJlmcPAei3QlR
-kV1q1zemGSOd+3SS5fwmb6kARERRKRZKz59f8uRXO9PEuVT9xm+3sR9UqwmTB8iH
-TTaUHR08eYemlbhPVWgPf5AVstz77PN+WmJdAgqORI0URlqBnhIAN1hbYWk1HzMt
-H+8WNlCfESWoVYSGzHsi4gLoL55K5RTkUSxEgpszQBQ4Cs5Tl/GPhNbmVDA29kxi
-QDNMqksGoZ3A4lz9k0dOhO3Qe19FmCFHUjkCOLD/7Eq6TcbMpYVG2xE3Yzz+R11f
-zPUfYxXe+QzM9nuFLUEQ/aV0MuT+gU1VltGg+VtinmoEw6incZI51QNmB24rHpS0
-Wr1v9lsOmIhlB3Kn5N7/eZGhLboe1ukmiRS2kHMCOze/vYg9m4EUG+ZaBP4gt/L9
-3c8ajXV0l+CGyc0SQeo2JDu5CtURVlt1X9LcUJSoM8urpw8lp6R68FJJDEgPgHRR
-p+ruw3C+qrvWGOXeLV3e6xCYGcGCdToZ/r2T9Whq8HRY8RtAdskqFRTg6mqOnmVg
-YSmAv8jbSlVuYfFoLoM4USx7BimM5PxzpqoOoQOFiBghtsquezBs0gscL56mAuqo
-BC+WYm6BkFjM434NHE9x51tIA8UgUKbi01jjHXlHExcXpbtICys=
-=mbY1
------END PGP SIGNATURE-----
-
---hbprtcna6txu5faw--
-
-
---===============5536241201864390287==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5536241201864390287==--
-
