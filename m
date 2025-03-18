@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A31CC282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 13:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788A3C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 13:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o8ir1ZQmwpXpSh8Vb7qSnF9BdwZssDfFw3mJ2Wc63BQ=; b=ZdD6jaZY8sSB4x
-	BK7f36W0KTpCufDi/nR0zmH4OY+ralxvFXgokWxhCDDEgT3Nqi8wZ7wI6W4V3+32pzxFkiJzIaLgR
-	qk2QJ/89wfXUYyWXuR0ygRD+2c7c5pjTwwFsNbAuJS06t2cPT+ZKrVfj3fv0oVJ5MGSfYu1ep7Xp6
-	4JOeSBe5XoTPY50Z0Ew6DvSbvYT/ucRIKrCtt6HMnvOLU47Eg4TbUyKsrgVm6FBmsN0hL47/CFHo9
-	WpuSKHf4OAKlj72Ao/jDCF7kVZssmjFQuKy3VGFMaPyvT+h2+9ZwARwZSGQrPwrxgCk1tsbkW8+SL
-	uteCoVMevmXXNdmO4qyA==;
+	List-Owner; bh=fSx6tg7NI4SzKZ3u3VbTWQrUv0CL4swEYfmrgl43euM=; b=A+69GIPIkMKrtX
+	cvx/I+JwKVu9Lp7CoJuJ3TI4nC+qpjmSbtaZ4vpOTuxuEXYsDCyQriTKIQVVCrheDpxB8xm1M+dg/
+	C3OVNFMQyp4GpBAmFyHLaB1bGPIShRdfRABbHH5sM2bOIrRG0C/8wfEXGMkrKyUDUL6+wT5QJDDXS
+	J0Wr0KKZ3meeQ6s/bFKSjOj1QgHiLaHX+PGCLHTPt4TdKZuODA0uGkRyRreQtcjaViNvh7eU1/e7W
+	iLanDzUgqgTQFaz1K+WbpD6r9OAQVZJPB7fygrk7Wp9vtrIK4RyCCdmUWC8YY+E/n/vEPniYLMjGR
+	eQ7wH5xhIplV755v+cmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWa6-00000005xcJ-1D0K;
-	Tue, 18 Mar 2025 13:02:06 +0000
+	id 1tuWdP-00000005y91-3w6o;
+	Tue, 18 Mar 2025 13:05:31 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWC2-00000005tkC-11tE;
-	Tue, 18 Mar 2025 12:37:15 +0000
+	id 1tuWMf-00000005vkG-0I7Z;
+	Tue, 18 Mar 2025 12:48:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742301433;
-	bh=McNeaXrm4EsMnZWOXEDFXBNpHgJWMUFQS+VAPDQUEm0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Quh4J8MpdzTsZAEdZd9cxG3/78tUDy5C5nGvMqa2FIplkJfeE1wGhHLZttZhtqNpY
-	 TeOZZjme5F6GFSkAnnNEmbMZa6erIC0lsH2sxH+GpAQdYDxIwVKa2cC0icJOtPT06f
-	 7qsO2w0n0o1/jJMCtR70rlly42OolBGiNiqsSXjC+mmq57DLIp/AOQz4QsoyTJac+o
-	 5uNyvEuZv/TE9ly9089ZWjlfRJ2P/wPjSJ6v3RUyF/tLINoL36c13Up4HYuIDUUKJa
-	 rjycxvqa9nqEReA1Tcjc5rug22p6NWCghwre6nU0N9CVnfRpJtNdZkQf0hS2A2Yt2g
-	 OiD+cdasZ9oMw==
-Received: from localhost (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1742302091;
+	bh=1brdAVEecCGu0q3JZDffnzT7ixMtvQ/GFCymcYGLKrY=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=jux5qC1PNeu/TbmQK+KES3ko+a5iDs1NIgc0uj5XFRcAUYKALK8FH/Ksr7nOFzguE
+	 eW4VCpV57aKc4kEpvNk4uWOTzNdu164IAw+3y3+/j4QP++ImoOiWUd+R/1YkEh7RJk
+	 ql65VX28rqB0M1vOVrjhjNV3mfUIefw2P/9fLEV5VdiuiJr27haDRJlHNARtknjEBv
+	 FYS6z8qqwy7MQUE0gnSE7KSiQ8yLmIq/TTSj1eiIIBMV7DNNSJ0aAZqZp+wvKu6/UB
+	 hXU35iJyJORsLixZcrAbqLlawwgYbVQ07Cq3lN7chVrS5byN9hgG8o4d5+0hoslCur
+	 OSnLY9XarvzVQ==
+Received: from [192.168.1.90] (unknown [84.232.140.93])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id CB80617E1581;
-	Tue, 18 Mar 2025 13:37:12 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 18 Mar 2025 14:35:48 +0200
-Subject: [PATCH v6 14/14] phy: rockchip: samsung-hdptx: Add high color
- depth management
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E490817E0385;
+	Tue, 18 Mar 2025 13:48:10 +0100 (CET)
+Message-ID: <5e9516bc-66ac-4583-b949-5714e89d73ee@collabora.com>
+Date: Tue, 18 Mar 2025 14:48:08 +0200
 MIME-Version: 1.0
-Message-Id: <20250318-phy-sam-hdptx-bpc-v6-14-8cb1678e7663@collabora.com>
-References: <20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com>
-In-Reply-To: <20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <lumag@kernel.org>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 08/12] phy: rockchip: samsung-hdptx: Setup TMDS char
+ rate via phy_configure_opts_hdmi
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
+ Maxime Ripard <mripard@kernel.org>, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
+ <20250308-phy-sam-hdptx-bpc-v5-8-35087287f9d1@collabora.com>
+ <CAA8EJpoGu4Tq-wt09Jj+b+=eJ3dNXhPWVOg4DyCQxrJbFNFfYw@mail.gmail.com>
+ <6caefe9f-1b15-41c1-94f2-9a2a92aeec67@collabora.com>
+Content-Language: en-US
+In-Reply-To: <6caefe9f-1b15-41c1-94f2-9a2a92aeec67@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_053714_433452_E9B9D676 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250318_054813_285790_A39D6D55 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +82,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
+On 3/9/25 12:15 PM, Cristian Ciocaltea wrote:
+> On 3/9/25 11:26 AM, Dmitry Baryshkov wrote:
+>> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
+>> <cristian.ciocaltea@collabora.com> wrote:
+>>>
+>>> The current workaround to setup the TMDS character rate relies on the
+>>> unconventional usage of phy_set_bus_width().
+>>>
+>>> Make use of the recently introduced HDMI PHY configuration API to
+>>> properly handle the setup.  The workaround will be dropped as soon as
+>>> the switch has been completed on both ends.
+>>>
+>>> Rename rk_hdptx_phy_verify_config() to rk_hdptx_phy_verify_dp_config()
+>>> and introduce the rk_hdptx_phy_verify_hdmi_config() helper to check the
+>>> HDMI parameters during phy_configure().
+>>>
+>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>> ---
+>>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 64 +++++++++++++++++------
+>>>  1 file changed, 47 insertions(+), 17 deletions(-)
+>>>
+>>
+>>> @@ -1469,8 +1474,27 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
+>>>         return rk_hdptx_phy_consumer_put(hdptx, false);
+>>>  }
+>>>
+>>> -static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
+>>> -                                     struct phy_configure_opts_dp *dp)
+>>> +static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
+>>> +                                          struct phy_configure_opts_hdmi *hdmi)
+>>> +{
+>>> +       int i;
+>>> +
+>>> +       if (!hdmi->tmds_char_rate || hdmi->tmds_char_rate > HDMI20_MAX_RATE)
+>>> +               return -EINVAL;
+>>> +
+>>> +       for (i = 0; i < ARRAY_SIZE(ropll_tmds_cfg); i++)
+>>> +               if (hdmi->tmds_char_rate == ropll_tmds_cfg[i].rate)
+>>> +                       break;
+>>
+>> return 0;
+>>
+>>> +
+>>> +       if (i == ARRAY_SIZE(ropll_tmds_cfg) &&
+>>
+>> Then you can drop the first clause in the if
+> 
+> Sure, will do!
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 23 ++++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+I actually ended up submitting v6 [1] without these changes, since the last
+patch "phy: rockchip: samsung-hdptx: Add high color depth management" would
+need to revert them, i.e. it extends the verification and cannot really do
+"return 0;" early.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index d09e1f7b25ec131d3c40fb52564cad27dce3b2d4..fc289ed8d915d84916870329101655cd956898e3 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -1028,6 +1028,9 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_POSTDIV_SEL_MASK,
- 			   FIELD_PREP(PLL_PCG_POSTDIV_SEL_MASK, cfg->pms_sdiv));
- 
-+	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_SEL_MASK,
-+			   FIELD_PREP(PLL_PCG_CLK_SEL_MASK, (hdptx->hdmi_cfg.bpc - 8) >> 1));
-+
- 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_EN_MASK,
- 			   FIELD_PREP(PLL_PCG_CLK_EN_MASK, 0x1));
- 
-@@ -1427,7 +1430,8 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 			hdptx->hdmi_cfg.tmds_char_rate *= 100;
- 		}
- 
--		dev_dbg(hdptx->dev, "%s rate=%llu\n", __func__, hdptx->hdmi_cfg.tmds_char_rate);
-+		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
-+			hdptx->hdmi_cfg.tmds_char_rate, hdptx->hdmi_cfg.bpc);
- 	}
- 
- 	ret = rk_hdptx_phy_consumer_get(hdptx);
-@@ -1492,6 +1496,19 @@ static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
- 	    !rk_hdptx_phy_clk_pll_calc(hdmi->tmds_char_rate, NULL))
- 		return -EINVAL;
- 
-+	if (!hdmi->bpc)
-+		hdmi->bpc = 8;
-+
-+	switch (hdmi->bpc) {
-+	case 8:
-+	case 10:
-+	case 12:
-+	case 16:
-+		break;
-+	default:
-+		return -EINVAL;
-+	};
-+
- 	return 0;
- }
- 
-@@ -1764,6 +1781,9 @@ static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opt
- 			hdptx->hdmi_cfg = opts->hdmi;
- 			hdptx->restrict_rate_change = true;
- 		}
-+
-+		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
-+			hdptx->hdmi_cfg.tmds_char_rate, hdptx->hdmi_cfg.bpc);
- 		return ret;
- 	}
- 
-@@ -1972,6 +1992,7 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	hdptx->dev = dev;
-+	hdptx->hdmi_cfg.bpc = 8;
- 
- 	regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
- 	if (IS_ERR(regs))
-
--- 
-2.48.1
-
+[1] https://lore.kernel.org/lkml/20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com/
 
 _______________________________________________
 Linux-rockchip mailing list
