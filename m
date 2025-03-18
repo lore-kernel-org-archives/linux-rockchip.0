@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A87C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 23:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F21C4C28B28
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 23:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YAeXFYHJPUFS83Dpg3Wlsm1MH4rhYoXpCPxx5ndrYHc=; b=uV3aVb6kXF2/CJ
-	ME6bqU1zUhji+c4+sKmk/weGddnloscCJE6VTI3OlNEv6xcyPPvW2pkfXxhmqt/Enwee8o5R3iGpB
-	pNMmb133W2bX2LOxmz2zPxt7bLdgshg21MDrRlUPFh21+HT6dCun/S6C12bhqo3ym/JyhOncSIsPm
-	XeNqCSAWXf4MYgIC95KRYF5eYbGM5rilZIZWaX73pRksKkEPaH9hYtMm5qkP7CTxrNYcGP1q22YV0
-	vn/6pIrQQfFTQkBX6WD7gODGx5sQ4sZEJuPIHhoAeJqkcK139qpOTNsuc7njlBGQqK/usCQhRiFeV
-	shEHdKY3MdqWDZAU4Slg==;
+	List-Owner; bh=bv7B09O44WH5QZy6yVPujqqi4pHtfjtp1vyx/2JysRA=; b=FDJ/yLTC/8acvE
+	W6KPnOqES4W3OIVFw3kPWPXNzaBlXbIDhr6qMJxD4n/8FuveO2CKqQerbKZWdT5qstQV/Vali16BT
+	aLoxoXDk2/2NRJOIQk6KCnDfWktPh8WxznyQzKrEIeDo54IXHRvmyqaFfxY1+LGrHEkLcTTQio5xs
+	daBkHUjqWYlCElznNeTdfRIP1+sxw68jvzEBKFMuIOi9vLo2ASGfjBq+g/1XpeGICP8NU0ku0t8hT
+	mdmwmuzuytWF9mYGXXminJWOgjKh+SG+Z8l0gNhlZDlmSlRdhtRQZTpfj9sQTuGhSK2WPthOmk6eX
+	twxm4u7BFCZJ0KdSErmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tugKW-00000007Nuy-38Aq;
-	Tue, 18 Mar 2025 23:26:40 +0000
+	id 1tugMC-00000007OHW-4C5R;
+	Tue, 18 Mar 2025 23:28:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tugIo-00000007Nc1-3CxI;
-	Tue, 18 Mar 2025 23:24:55 +0000
+	id 1tugIu-00000007NdX-48No;
+	Tue, 18 Mar 2025 23:25:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=1hJklCrqpGSVlV2NvA/25kazNO3qOwA+/saPAYFTsoE=; b=wLAnBgKqHED21WT6XjMrhnXKBX
-	uCL/df03qRP30+8Sh81jR2I6nyiuwAJmAKsOxer+twO52bMh+x4a/HJmG7AlziZjTSHRjEztiy6Wp
-	mHhAgE8rtWwuIjAA5fds296cbyArHgQLRRhVAv9CWqOs23gQACutQb64nEhXIXNbFdvZVibHBvryP
-	MSx8qIFSnSaM+Vh8W/1z7njom4+m4o8lIU/cgdVm/xRqi9kBSx3rt2+Z+95nNKXMGTeBmSLfxbQly
-	e2K+tBtStJObxHuDaaN49peT4hiKTuhLI0mLUlW8sLNYV1FT8auRM/6V0lDf9uI/Af8Cb1igzFYq2
-	685H4FKw==;
+	bh=uHyHzilSWbC+UBLudukfiL/DOAeWEd7pFysVQd2Jiqk=; b=VTShvNqVa77P/1cqSlIODlnTHr
+	Bx4G39CZ8ignG9l+7vyEaKdOLpAeQ8BmHg5Mwm4cvky5/8NNamJ7mcANtct3kA9RLqeNe1kt/ZZ2c
+	WYCU+EldRwhbYQNQpmbbWFm8ncPK3SC4zFBREzjueTTHrzhugjNHyglEAJlGy90wnpGbEG35lV3aq
+	XmTel4MfmTOYMHxBN1XNfBq2RR34EvsSpNOo7hsfWNs3GGiAhzoe9V9jXMmLmhTjySYUJAdK+Ps9i
+	f9ch8EiJE3iFL/0Tl6mp6q7iJrI6SLn7LbHwZkMuCj2KTqI6CmPWJYNZI/h2rWJHYhqYd1D+V4aIr
+	TlDMhK6Q==;
 Received: from i53875bc6.versanet.de ([83.135.91.198] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1tugIg-0004Fw-3Q; Wed, 19 Mar 2025 00:24:46 +0100
+	id 1tugIf-0004Fw-HS; Wed, 19 Mar 2025 00:24:45 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	devicetree@vger.kernel.org,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lee@kernel.org,
+	sfr@canb.auug.org.au,
+	linux-next@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5 gmac0
-Date: Wed, 19 Mar 2025 00:24:42 +0100
-Message-ID: <174234022086.1144821.10038416716073358190.b4-ty@sntech.de>
+Subject: Re: [PATCH] Revert "dt-bindings: mfd: syscon: Add rk3528 QoS register compatible"
+Date: Wed, 19 Mar 2025 00:24:41 +0100
+Message-ID: <174234022088.1144821.1552001262318084726.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250314-rk3576-sige5-eth-clk-begone-v1-1-2858338fc555@collabora.com>
-References: <20250314-rk3576-sige5-eth-clk-begone-v1-1-2858338fc555@collabora.com>
+In-Reply-To: <20250317230705.932808-1-heiko@sntech.de>
+References: <20250317230705.932808-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_162454_817964_825179F1 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20250318_162501_025365_5DF68D52 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +78,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 14 Mar 2025 16:35:50 +0100, Nicolas Frattaroli wrote:
-> The GPIO3 A4 pin on the ArmSoM Sige5 is routed to the 40-pin GPIO
-> header. This pin can serve a variety of functions, including ones of
-> questionable use to us on a GPIO header such as the 25MHz clock of the
-> ethernet controller.
+On Tue, 18 Mar 2025 00:07:05 +0100, Heiko Stuebner wrote:
+> This reverts commit 19a634195c1abe498798b564cd6b81e6dd4533f7.
 > 
-> Unfortunately, this is the precise function that it is being claimed for
-> by the gmac0 node in the Sige5 board dts, meaning it can't be used for
-> anything else despite serving no useful function in this role. Since it
-> goes through a RS0108 bidirectional voltage level translator with a
-> maximum data rate of 24Mbit/s in push-pull mode and 2Mbit/s data rate in
-> open-drain mode, it's doubtful as to whether the 25MHz clock signal
-> would even survive to the actual user-accessible pin it terminates in.
+> The dt-binding addition adds the compatible to a syscon (a mfd) and should
+> go through the mfd tree. And it did, and is part of the mfd tree for 6.15
+> as commit 7f3e3e7228bb ("dt-bindings: mfd: syscon: Add rk3528 QoS register
+> compatible"), with all the correct Signed-off-by lines.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: remove ethm0_clk0_25m_out from Sige5 gmac0
-      commit: 73d246b4402c3356f6b3d13665de3a51eea7b555
-
-Actually applied this some days ago, but b4 is of the opinion,
-I didn't sent out an applied-message yet, so doing that now :-) .
-
+[1/1] Revert "dt-bindings: mfd: syscon: Add rk3528 QoS register compatible"
+      commit: cee24bc73d4f3f47344a1a54100a69c72f1db061
 
 Best regards,
 -- 
