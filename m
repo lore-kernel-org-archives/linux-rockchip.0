@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE0C7C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 15:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE174C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 17:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KTmUWkalZmp7K1FzQvZYhLRNbsT9iepI4x7d2/NDbzQ=; b=lmDakyCnErzWgY
-	DGO4cZRojzbiySK+OPnq23pDKMKC66LZrdgw2IpfP0PZnNskU23vP+9sLGd6VK8KmIiA2w9pGSEZH
-	VBeClrZ/tFmJE/Jd+hxrpRftCyN3TMjqQUkBjmZACHTS8oqGNrnfbnt2+AZkKYlNsWhbMoyFFyQo1
-	p2UEi3GB9Kw5JsA9anNunh0xRT4y3jRnOv1aZPGHRaLWDhJoAVTLi/o4lyl/l1I3d04uPcBTvOn4J
-	eITF83tQLEwVpw3qyft6/m7Iu0TZ7lC1NtkwW0Q1xgACAniGw2mJO6/CHjSr/AzDkOVl+M6eSItyS
-	y+/QlXxz+yvzaT+FHG1A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
+	In-Reply-To:Message-ID:Cc:To:From:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=lt8wd8LfhGwKSE/Zcy1W9D2J4M1nl8r9Jmt/Z3lP0/g=; b=endF3Qf1Rmfoy852/vwnBevDTm
+	h3twohsg8OaC2umig66ioftUSKQuzFNfplAQTkjrTbiYxa2Lm+YqIOhT3kkZkaPlXiqrxQvtfCZ7g
+	BtJhgMTRZLLVcpdpLK60J+UixrKmbYo7259GEkNZUqdzfYfuWevNmj2tCODUp/5pqWZZi2sNLWO9n
+	i5us6uiLfgUGGS9MVdSI/HhC9FNieK2C1vuqbNqeVFBS5Tr8vxzGMkKRwQ/L9jtMqZb2VZ6uXDYNl
+	g6R5gqFt9E7o3lZLrUZ4+jI6JS7G3GKViQ7Tshc2JRD99cH6r2AwIki2m1JmGICSHR02vxZbOpbVx
+	dZ+UJCvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuYvi-00000006MVl-3u4y;
-	Tue, 18 Mar 2025 15:32:34 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tub3R-00000006jBW-1Bme;
+	Tue, 18 Mar 2025 17:48:41 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuYu1-00000006M87-0j5Q;
-	Tue, 18 Mar 2025 15:30:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E34D6A48947;
-	Tue, 18 Mar 2025 15:25:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0244DC4CEDD;
-	Tue, 18 Mar 2025 15:30:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742311848;
-	bh=HVBz2aT+/RHcd9VZQ6XrEog43pPGxZQceGs8IeJP6oc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XUoW4tgeJI1qkqHA8wzUVgYQSoY+aOz8Q2mvlmnDsT5jlUIWvVvsDrwcAh+mvdJcm
-	 FchVJjLo9kTuxGacsk79c7OAUx7NJO7BGusb58YMjDYBAaFqR3a5jariprgb4DkfTH
-	 Y4Abf0av5IvwjG3TkwPUayTU/4+zYb3JUSs5x20FqUwAe5P9ifDprpWqiqeJZING8T
-	 NT1bfAo3ZBnaTXUfdUFYE/P3Q4koEGvV4PrKANZ4bk+PMB93RQTfbHOAf5evdgKIqy
-	 t/cBbkemhscPWWaViv47JUZikUvLqPE6HgfRL4/G5oymAbGbo3Hlvc93ImhCmfDcKF
-	 iWkA4ztEDM2fA==
-Date: Tue, 18 Mar 2025 15:30:43 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	David Wu <david.wu@rock-chips.com>, Yao Zi <ziyao@disroot.org>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
-Message-ID: <20250318153043.GE688833@kernel.org>
-References: <20250309232622.1498084-1-jonas@kwiboo.se>
- <20250317194309.GL688833@kernel.org>
- <db3bf1cb-3385-4676-8ba4-41fea0212bf2@kwiboo.se>
+	id 1tub2L-00000006izX-145h
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Mar 2025 17:47:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742320040; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ZUI7VTvWrHV1ge5QxUKg7jLA24lS3xKQLLsTR+cszhPNkADjf50CEOp6mcpnBngORgib39Ch3jWYF5izBmniMK6Zx2CsTvwisEyrmBPVFBttDjpcWHUF7pEDlhi8TMFWqNUXrdIFVmIGjsp2yQ6fkDXdsbBuN87nc83GhKnGuZY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742320040; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=8PT3IpB2/LOiozh6p1ULOoH2S1XclfQa8VO/KYFkLiI=; 
+	b=DOOBfLxLLeZOAsJRVOZxecRieMHe/+gqiRUPJ0OW9jVAd9lAQrU0oPELLPOq7bLolvADGzrsaVvKJg/YILTeiAyi03/PFHvVTbITfdsURHKxVRQ0rtxBHD1FM3lzSnRmZW0fo8U9gDG10E7OvWSk13i2q+88NPpz5sht1JO8stI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=shreeya.patel@collabora.com;
+	dmarc=pass header.from=<shreeya.patel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742320040;
+	s=zohomail; d=collabora.com; i=shreeya.patel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=8PT3IpB2/LOiozh6p1ULOoH2S1XclfQa8VO/KYFkLiI=;
+	b=GK9xVhLrmZ+RlMVzef2rEy8Us2nxLiODb3V9R6P4kc7lbaxnT18WYMoWsaKZzVBS
+	WVPjlaWqtq6g06qBsQPxlCXtF4gEBhdB7ul4YgzF4dC38wPX19JTtbg9QDQkdjdySvE
+	qkMfjf0KkhYv5CdoRGA0zCVgzmM8sPolg4yn+bKk=
+Received: from mail.zoho.com by mx.zohomail.com
+	with SMTP id 1742320038090674.9001947899728; Tue, 18 Mar 2025 10:47:18 -0700 (PDT)
+Date: Tue, 18 Mar 2025 23:17:18 +0530
+From: Shreeya Patel <shreeya.patel@collabora.com>
+To: "Geert Uytterhoeven" <geert+renesas@glider.be>
+Cc: "Dingxian Wen" <shawn.wen@rock-chips.com>,
+	"Dmitry Osipenko" <dmitry.osipenko@collabora.com>,
+	"Hans Verkuil" <hverkuil@xs4all.nl>,
+	"Mauro Carvalho Chehab" <mchehab@kernel.org>,
+	"Heiko Stuebner" <heiko@sntech.de>,
+	"linux-media" <linux-media@vger.kernel.org>,
+	"kernel" <kernel@collabora.com>,
+	"linux-rockchip" <linux-rockchip@lists.infradead.org>,
+	"linux-kernel" <linux-kernel@vger.kernel.org>
+Message-ID: <195aa5df0ad.1177aac592665581.1522789073273936352@collabora.com>
+In-Reply-To: <fa5622428f071a20ca5df96218aedc84fb7edc1a.1742306464.git.geert+renesas@glider.be>
+References: <fa5622428f071a20ca5df96218aedc84fb7edc1a.1742306464.git.geert+renesas@glider.be>
+Subject: Re: [PATCH] media: platform: synopsys: VIDEO_SYNOPSYS_HDMIRX should
+ depend on ARCH_ROCKCHIP
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <db3bf1cb-3385-4676-8ba4-41fea0212bf2@kwiboo.se>
+Importance: Medium
+User-Agent: Zoho Mail
+X-Mailer: Zoho Mail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_083049_343740_E3E1DA09 
-X-CRM114-Status: GOOD (  31.14  )
+X-CRM114-CacheID: sfid-20250318_104733_365865_9E35EEA4 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,65 +88,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 17, 2025 at 08:50:34PM +0100, Jonas Karlman wrote:
-> Hi Simon,
-> 
-> On 2025-03-17 20:43, Simon Horman wrote:
-> > On Sun, Mar 09, 2025 at 11:26:10PM +0000, Jonas Karlman wrote:
-> >> The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
-> >> used with the integrated PHY and a second 1000/100/10 MAC to be used
-> >> with an external Ethernet PHY.
-> >>
-> >> This series add initial support for the Ethernet controllers found in
-> >> RK3528 and initial support to power up/down the integrated PHY.
-> >>
-> >> This series depends on v2 of the "net: stmmac: dwmac-rk: Validate GRF
-> >> and peripheral GRF during probe" [1] cleanup series.
-> >>
-> >>
-> >> Changes in v2:
-> >> - Restrict the minItems: 4 change to rockchip,rk3528-gmac
-> >> - Add initial support to power up/down the integrated PHY in RK3528
-> >> - Split device tree changes into a separate series
-> >>
-> >> [1] https://lore.kernel.org/r/20250308213720.2517944-1-jonas@kwiboo.se/
-> > 
-> > Hi Jonas,
-> > 
-> > This patchset looks reasonable to me. However it will need
-> > to be reposted once it's dependencies ([1]) are present in net-next.
-> 
-> The dependent series ([1]) has already been merged into net-next [2].
+ ---- On Tue, 18 Mar 2025 19:33:27 +0530  Geert Uytterhoeven <geert+renesas@glider.be> wrote --- 
+ > For now, the Synopsys HDMI HDMI RX Controller is only supported on
+ > Rockchip RK3588 SoCs.  Hence add a dependency on ARCH_ROCKCHIP, to
+ > prevent asking the user about this driver when configuring a kernel
+ > without Rockchip SoC support.
+ > 
+ > Fixes: 7b59b132ad4398f9 ("media: platform: synopsys: Add support for HDMI input driver")
+ > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+ > ---
 
-Thanks, and sorry for not noticing that.
+Thanks for the patch Geert
 
-> Do I still need to repost this series?
+Reviewed-by: Shreeya Patel <shreeya.patel@collabora.com>
 
-Yes, I think that would be best so there is a CI run over the series
-(the CI doesn't understand dependencies).
 
-> [2] https://lore.kernel.org/r/174186063226.1446759.12026198009173732573.git-patchwork-notify@kernel.org/
-> 
-> > 
-> > And on the topic of process:
-> > 
-> > * As this is a patch-set for net-next it would be best to
-> >   target it accordingly:
-> > 
-> >   Subject: [PATCH net-next] ...
-> > 
-> > * Please post patches for net/net-next which have dependencies as RFCs.
-> > 
-> > For more information on Netdev processes please take a look at
-> > https://docs.kernel.org/process/maintainer-netdev.html
-> > 
-> 
-> Thanks, I see, netdev seem to use a slight different process than what
-> I am familiar with compared to other Linux subsystems and U-Boot :-)
-> 
-> Regards,
-> Jonas
-> 
+ >  drivers/media/platform/synopsys/hdmirx/Kconfig | 1 +
+ >  1 file changed, 1 insertion(+)
+ > 
+ > diff --git a/drivers/media/platform/synopsys/hdmirx/Kconfig b/drivers/media/platform/synopsys/hdmirx/Kconfig
+ > index 27e6706f84a37375..4321f985f6320611 100644
+ > --- a/drivers/media/platform/synopsys/hdmirx/Kconfig
+ > +++ b/drivers/media/platform/synopsys/hdmirx/Kconfig
+ > @@ -2,6 +2,7 @@
+ >  
+ >  config VIDEO_SYNOPSYS_HDMIRX
+ >      tristate "Synopsys DesignWare HDMI Receiver driver"
+ > +    depends on ARCH_ROCKCHIP || COMPILE_TEST
+ >      depends on VIDEO_DEV
+ >      select MEDIA_CONTROLLER
+ >      select VIDEO_V4L2_SUBDEV_API
+ > -- 
+ > 2.43.0
+ > 
+ > 
+
 
 _______________________________________________
 Linux-rockchip mailing list
