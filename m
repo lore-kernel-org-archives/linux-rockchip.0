@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB320C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 10:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 277B9C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 10:02:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/+0aLBKBSVei79NGCKyVACPoEoFwY9Uc+3ox2yPRASA=; b=K/KcORXXfm8iED
-	IR+PwtBd/WvDNr8UJFtVuQym9snrglLKlF4qee+jyz/+M1k44IRXcj90kqD/0Y8pQBohIll/U2Fa6
-	Oia43I/TYOMYLidz8u3x/GzM2Q21bsMllysD0mi7HCaZTAjAe/wSiqYCImJN6hMtYBn7EPNqg6GHs
-	cN4cdMR7kIw2TToiw03M1f8VxOw6Lbq2C0+M6zBBKQl2IvsqBxFuwdX7tMeRDZupJQx9vUADfyv/z
-	zAA25Pw52ALXpf1nuBxK1sldZSo4MySHxwJ/8E2WqwOa9J47ksVWhCnNch5kklkuQ/dz0zItaYbua
-	a2XTvR4C2xKUQgAj8kLA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O5mWW5ZDYZ1G793mTuQpjhaBYyVu35NW7RgkP3srndw=; b=fWaxU3ooBO0FoR
+	jB5cKzSK+aLvUwV5PmM/2F92d4vOPdkYbk3Z6MUyIQQ3kpLz1CW9CbGzaaHoktOWCaGwW1ob6LB3l
+	FjBq+Aj0VUI+o2kFRisLzlcKzXEZI25Yw7GS4kHqYTQtQatdAmUeUwNvE94BT187SbrxKLgdcZ4Vs
+	eks4uMAuCM5OCBLhr8FbNhznsdA+DRgvh5I63/uNtxBBwChGxxSOie4z7eJkgYeSk6T8vr5+uGkXb
+	EERHcwxBEbTvqbadwLzu6lTzXBTzW4rldHdp5x2aCVLygrJi688X5YpBJnOF8soDGDcgmegzzy6Ck
+	mV6YL4N4pDED3GUgrUeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuTkL-00000005PiJ-0omJ;
-	Tue, 18 Mar 2025 10:00:29 +0000
+	id 1tuTm1-00000005Q5z-1urO;
+	Tue, 18 Mar 2025 10:02:13 +0000
 Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuTkI-00000005PeB-2WV4;
+	id 1tuTkI-00000005Pdi-1SwH;
 	Tue, 18 Mar 2025 10:00:28 +0000
 Received: from amadeus-Vostro-3710.lan (unknown [116.25.94.202])
-	by smtp.qiye.163.com (Hmail) with ESMTP id eac37606;
-	Tue, 18 Mar 2025 18:00:19 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id eac37604;
+	Tue, 18 Mar 2025 18:00:15 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Yao Zi <ziyao@disroot.org>
 Cc: Rob Herring <robh@kernel.org>,
@@ -41,25 +41,23 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 2/3] arm64: dts: rockchip: Add DMA controller for RK3528
-Date: Tue, 18 Mar 2025 18:00:09 +0800
-Message-Id: <20250318100010.2253408-3-amadeus@jmu.edu.cn>
+Subject: [PATCH 0/3] arm64: dts: rockchip: Add DMA controller for RK3528
+Date: Tue, 18 Mar 2025 18:00:07 +0800
+Message-Id: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
-References: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTUNPVkpCGhhDH0tCSxoYS1YeHw5VEwETFhoSFy
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGBgeVhhLTBpMSUlNT0saSlYeHw5VEwETFhoSFy
 	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk9VSUtJWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
 	tLWQY+
-X-HM-Tid: 0a95a8b2690503a2kunmeac37606
+X-HM-Tid: 0a95a8b257fa03a2kunmeac37604
 X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mio6Hyo4FTJJGEstAg8CGBIU
-	PTZPFEtVSlVKTE9JSUJJS0lLSUtKVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	TVVJTlVCT1VJS0lZV1kIAVlBSklDTTcG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6N0k6Mxw4TTJDHEsPAg4XGBEc
+	OQgwC05VSlVKTE9JSUJJS0pNSk1LVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	TVVJTlVCT1VJS0lZV1kIAVlBTEhONwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_030026_798235_AAC475B6 
-X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-CacheID: sfid-20250318_030026_574429_DF22B119 
+X-CRM114-Status: UNSURE (   7.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,42 +75,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DMA controller dt node for RK3528 SoC.
+First commit adds missing uart3 interrupt for uart3 node.
+The next commit adds the DMA controller that can be used
+for spi and uart. And add DMA description for uart nodes.
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+~# dmesg | grep dma
+[    0.103466] dma-pl330 ffd60000.dma-controller: Loaded driver for PL330 DMAC-241330
+[    0.104212] dma-pl330 ffd60000.dma-controller:       DBUFF-128x8bytes Num_Chans-8 Num_Peri-32 Num_Events-16
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 7f1ffd6003f5..ad77e0ef70f2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -493,6 +493,24 @@ sdhci: mmc@ffbf0000 {
- 			status = "disabled";
- 		};
- 
-+		dmac: dma-controller@ffd60000 {
-+			compatible = "arm,pl330", "arm,primecell";
-+			reg = <0x0 0xffd60000 0x0 0x4000>;
-+			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
-+			arm,pl330-periph-burst;
-+			clocks = <&cru ACLK_DMAC>;
-+			clock-names = "apb_pclk";
-+			#dma-cells = <1>;
-+		};
-+
- 		pinctrl: pinctrl {
- 			compatible = "rockchip,rk3528-pinctrl";
- 			rockchip,grf = <&ioc_grf>;
+Chukun Pan (3):
+  arm64: dts: rockchip: Add missing uart3 interrupt for RK3528
+  arm64: dts: rockchip: Add DMA controller for RK3528
+  arm64: dts: rockchip: Add UART DMA support for RK3528
+
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 29 +++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
 -- 
 2.25.1
 
