@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 976C5C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 15:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE0C7C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 15:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dj7Kjju7WulAxBZst0RYFyQfNadn3TwhbkRPy2cAqmI=; b=J5mP/TKQ6RMFcX
-	O7xLFZMk8bFREFoXfKlIJSEroMQde8oN/pM4FNzfFWi7qX5dWtTbCojSllOZoOr6VaDo9fdM3DWNk
-	1vJR/FpTwc1ImpDdt/b1Zp8TMej+ADtRbfzkUSDeruNDTHiDlmmNLk7HAzraLGCtCqf9prE9VSHSd
-	6CUu0i2gO89EoeqK/9GO8ZTd63bWsG8LnKDZcIlV9UUd8nrhBbWraPAxZ3RlmLv3afuv6JnWGEte4
-	49jv35ghLtn523MZ9Wj1OAW0tjqYfZOx3K1zXyL2wtVnM+oSM43Lsg7fEypmt9lRY70E73k0na0gY
-	4n5mOJ6TUvpnic/M3dEQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KTmUWkalZmp7K1FzQvZYhLRNbsT9iepI4x7d2/NDbzQ=; b=lmDakyCnErzWgY
+	DGO4cZRojzbiySK+OPnq23pDKMKC66LZrdgw2IpfP0PZnNskU23vP+9sLGd6VK8KmIiA2w9pGSEZH
+	VBeClrZ/tFmJE/Jd+hxrpRftCyN3TMjqQUkBjmZACHTS8oqGNrnfbnt2+AZkKYlNsWhbMoyFFyQo1
+	p2UEi3GB9Kw5JsA9anNunh0xRT4y3jRnOv1aZPGHRaLWDhJoAVTLi/o4lyl/l1I3d04uPcBTvOn4J
+	eITF83tQLEwVpw3qyft6/m7Iu0TZ7lC1NtkwW0Q1xgACAniGw2mJO6/CHjSr/AzDkOVl+M6eSItyS
+	y+/QlXxz+yvzaT+FHG1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuYmb-00000006KvR-31mH;
-	Tue, 18 Mar 2025 15:23:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tuYvi-00000006MVl-3u4y;
+	Tue, 18 Mar 2025 15:32:34 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuYkt-00000006Kff-1qlF;
-	Tue, 18 Mar 2025 15:21:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742311281;
-	bh=ikl3rkeQnLiGTEwhtDsuQZ0Era+RRUfSI1GQRsd5rKk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=KQh2Uzj1upplFHfwz9hQ9ANnArlYejbPYiBBTXjp95CU3QcRfhQ7UOVPI+NyYIGwb
-	 DZVhoYSMC7aYHKs03qhCjF3RTaJME3UWdWy/jNPUalGTlyuXDsA0YgMS4RKTJPHapv
-	 pY3raIGtiua01SNHB8ME9PjAYwjRcx8Tnj99dShYuekQJgwTCde22Mx4vMOJCGH5F2
-	 3AWykmi5mHEcBj/mWBB/hoiRJbLFEFgyZM5ulCAYs3ToqEjQrZmkLCdV7lY7VfJFD0
-	 3uixhy/3/2OZ7r18GPZdrz3LUQztRlSTNkpVkaNvzp7o3hbhdKNUkNpO3BMUIwMGxj
-	 xci45pvz6E/ow==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8DD9517E0E8D;
-	Tue, 18 Mar 2025 16:21:19 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
+	id 1tuYu1-00000006M87-0j5Q;
+	Tue, 18 Mar 2025 15:30:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E34D6A48947;
+	Tue, 18 Mar 2025 15:25:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0244DC4CEDD;
+	Tue, 18 Mar 2025 15:30:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742311848;
+	bh=HVBz2aT+/RHcd9VZQ6XrEog43pPGxZQceGs8IeJP6oc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XUoW4tgeJI1qkqHA8wzUVgYQSoY+aOz8Q2mvlmnDsT5jlUIWvVvsDrwcAh+mvdJcm
+	 FchVJjLo9kTuxGacsk79c7OAUx7NJO7BGusb58YMjDYBAaFqR3a5jariprgb4DkfTH
+	 Y4Abf0av5IvwjG3TkwPUayTU/4+zYb3JUSs5x20FqUwAe5P9ifDprpWqiqeJZING8T
+	 NT1bfAo3ZBnaTXUfdUFYE/P3Q4koEGvV4PrKANZ4bk+PMB93RQTfbHOAf5evdgKIqy
+	 t/cBbkemhscPWWaViv47JUZikUvLqPE6HgfRL4/G5oymAbGbo3Hlvc93ImhCmfDcKF
+	 iWkA4ztEDM2fA==
+Date: Tue, 18 Mar 2025 15:30:43 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>, Yao Zi <ziyao@disroot.org>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH] iommu/rockchip: Add flush_iotlb_all ops
-Date: Tue, 18 Mar 2025 11:20:49 -0400
-Message-ID: <20250318152049.14781-1-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.49.0
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
+Message-ID: <20250318153043.GE688833@kernel.org>
+References: <20250309232622.1498084-1-jonas@kwiboo.se>
+ <20250317194309.GL688833@kernel.org>
+ <db3bf1cb-3385-4676-8ba4-41fea0212bf2@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <db3bf1cb-3385-4676-8ba4-41fea0212bf2@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_082123_629901_327E2A1C 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20250318_083049_343740_E3E1DA09 
+X-CRM114-Status: GOOD (  31.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,93 +82,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+On Mon, Mar 17, 2025 at 08:50:34PM +0100, Jonas Karlman wrote:
+> Hi Simon,
+> 
+> On 2025-03-17 20:43, Simon Horman wrote:
+> > On Sun, Mar 09, 2025 at 11:26:10PM +0000, Jonas Karlman wrote:
+> >> The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
+> >> used with the integrated PHY and a second 1000/100/10 MAC to be used
+> >> with an external Ethernet PHY.
+> >>
+> >> This series add initial support for the Ethernet controllers found in
+> >> RK3528 and initial support to power up/down the integrated PHY.
+> >>
+> >> This series depends on v2 of the "net: stmmac: dwmac-rk: Validate GRF
+> >> and peripheral GRF during probe" [1] cleanup series.
+> >>
+> >>
+> >> Changes in v2:
+> >> - Restrict the minItems: 4 change to rockchip,rk3528-gmac
+> >> - Add initial support to power up/down the integrated PHY in RK3528
+> >> - Split device tree changes into a separate series
+> >>
+> >> [1] https://lore.kernel.org/r/20250308213720.2517944-1-jonas@kwiboo.se/
+> > 
+> > Hi Jonas,
+> > 
+> > This patchset looks reasonable to me. However it will need
+> > to be reposted once it's dependencies ([1]) are present in net-next.
+> 
+> The dependent series ([1]) has already been merged into net-next [2].
 
-On some Rockchip cores (like the vdpu34x video decoder), the IOMMU device
-is inside the the device that uses it.
+Thanks, and sorry for not noticing that.
 
-The IOMMU device can still be driven by the iommu driver, but when an
-error occurs in the main device (e.g. a decoding error that resets the
-decoder), the IOMMU device will also be reseted.
-In such situation, the IOMMU driver and the hardware are out of sync and
-IOMMU errors will start popping up.
+> Do I still need to repost this series?
 
-To avoid that, add a flush_iotlb_all function that will let the main drivers
-(e.g. rkvdec) tell the IOMMU driver to write all its cached mappings into
-the IOMMU hardware when such an error occured.
+Yes, I think that would be best so there is a CI run over the series
+(the CI doesn't understand dependencies).
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- drivers/iommu/rockchip-iommu.c | 45 ++++++++++++++++++++++++++++++----
- 1 file changed, 40 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 323cc665c357..7086716cb8fc 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -899,6 +899,40 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
- 	return unmap_size;
- }
- 
-+static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
-+{
-+	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-+	struct list_head *pos;
-+	unsigned long flags;
-+	int i, ret;
-+
-+	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
-+	list_for_each(pos, &rk_domain->iommus) {
-+		struct rk_iommu *iommu = list_entry(pos, struct rk_iommu, node);
-+
-+		ret = pm_runtime_get_if_in_use(iommu->dev);
-+		if (!ret || WARN_ON_ONCE(ret < 0))
-+			continue;
-+
-+		if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
-+			continue;
-+
-+		rk_iommu_enable_stall(iommu);
-+		for (i = 0; i < iommu->num_mmu; i++) {
-+			rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
-+				rk_ops->mk_dtentries(rk_domain->dt_dma));
-+			rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
-+			rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
-+		}
-+		rk_iommu_enable_paging(iommu);
-+		rk_iommu_disable_stall(iommu);
-+
-+		clk_bulk_disable(iommu->num_clocks, iommu->clocks);
-+		pm_runtime_put(iommu->dev);
-+	}
-+	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
-+}
-+
- static struct rk_iommu *rk_iommu_from_dev(struct device *dev)
- {
- 	struct rk_iommudata *data = dev_iommu_priv_get(dev);
-@@ -1172,11 +1206,12 @@ static const struct iommu_ops rk_iommu_ops = {
- 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
- 	.of_xlate = rk_iommu_of_xlate,
- 	.default_domain_ops = &(const struct iommu_domain_ops) {
--		.attach_dev	= rk_iommu_attach_device,
--		.map_pages	= rk_iommu_map,
--		.unmap_pages	= rk_iommu_unmap,
--		.iova_to_phys	= rk_iommu_iova_to_phys,
--		.free		= rk_iommu_domain_free,
-+		.attach_dev		= rk_iommu_attach_device,
-+		.map_pages		= rk_iommu_map,
-+		.unmap_pages		= rk_iommu_unmap,
-+		.flush_iotlb_all	= rk_iommu_flush_iotlb_all,
-+		.iova_to_phys		= rk_iommu_iova_to_phys,
-+		.free			= rk_iommu_domain_free,
- 	}
- };
- 
--- 
-2.49.0
-
+> [2] https://lore.kernel.org/r/174186063226.1446759.12026198009173732573.git-patchwork-notify@kernel.org/
+> 
+> > 
+> > And on the topic of process:
+> > 
+> > * As this is a patch-set for net-next it would be best to
+> >   target it accordingly:
+> > 
+> >   Subject: [PATCH net-next] ...
+> > 
+> > * Please post patches for net/net-next which have dependencies as RFCs.
+> > 
+> > For more information on Netdev processes please take a look at
+> > https://docs.kernel.org/process/maintainer-netdev.html
+> > 
+> 
+> Thanks, I see, netdev seem to use a slight different process than what
+> I am familiar with compared to other Linux subsystems and U-Boot :-)
+> 
+> Regards,
+> Jonas
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
