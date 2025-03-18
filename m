@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C07AC28B28
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 06:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E52C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 07:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g6JMuxFKuVeiCE0QsIy8uvcuIVgIuAYhRSRwf9Rvod0=; b=EqCh5bp40LOP6r
-	QbChxo6OlKMlaTVtgpWBERF6rmUfq/ybWeBj15And7e+yDfLRO6QY5Y7uTOqqXMLAz9u1AiDFAx80
-	fWlovGGeng6XNNyyZ/J0GpIF6M7SjabrKiD4ah2j7eB+5u3hGaRPph+PgiRAo8hwoCpWxIS80M0eL
-	G0/XnYHNErL3y6lWE89DmazDhIBtSkXtJeR1Hpic7AIv+vaTT3xDf3+OSWgIWyGeRipx7iSpm75Xp
-	6ch0rbGimd9EikIsQ0oF+YOaKBvoeakitsN1DYqemC7yGO9Q0P34Xvn8F3vMaQd+Z6Kc5gcSzFPbB
-	YDKBAg2/AnT4VxNwyygA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dK0DtzAX11/WT8NGobOm+XRSdgE6AZpQ7EEdk5v+DfM=; b=tD+bmTP1LCyXQz
+	+Sj+C+yUpbN6L6RJ0cwu7TIFEE8HqDgNuwE90wAnMkmO25yuHMgouMqSJdN12KvfRF70JqKMwDzuo
+	vcl4woveacGqJwnY1Y+2Tc/9Ro5wg9t7KgRHJtrmFtzvkKcD3B2Z4zxtakOzeQVlzj500iSrlwmD+
+	I5w4JRolLBO2axbeVJpdoqHRNhyS+0K4aLLgDGAea4o6D8+j1Cf8TaPVdwofmofRhSEIuCBSm+MJM
+	Cb+BE5Y1gQqxA6AEQ1+TpX5CNCBjwEpJ/v/eEfVXRvGSyTn4nJEB75UXkfqpTCJpCTYdJ2JEvucg9
+	GC5Vze6+5Cp+ogQiGTJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuQY4-00000004qB5-2KaR;
-	Tue, 18 Mar 2025 06:35:36 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1tuRh8-000000051xi-0ROU;
+	Tue, 18 Mar 2025 07:49:02 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuQY1-00000004q7z-43EM
+	id 1tuQXy-00000004q6R-35zw
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Mar 2025 06:35:35 +0000
+	Tue, 18 Mar 2025 06:35:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=i6T2F
-	0eCFThv3okYLkbuNB4j1ShIXzAcksGCUbz1o6U=; b=jrVtI4odp1oVxAZOXMstF
-	n7ndha7qW9yoELihPWOo/V5QqJ0x1wmq+J5sz4AMsVoNPHxsFp4S2JxFBOtVmPNK
-	cQ6Q3IwcWlodhLAta6MatmeAf/SBGhNQeHp6Hudm8emUAVS4Z3ySz0yaQJyUyQ2d
-	nAhwxUIlthgDnLVasPQSwM=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=3cFpy
+	O0zoxCvQA2gLIyeQFepMdzph3mRX5brkB3Irso=; b=VfeZ/WcM4BZ5HyhCKqBZk
+	SfrJqKobeznK5eSpa21uT1bByL1IwmmiYjHFVqGwi3GiIY0D9sFgAueHKI6nK25t
+	LHVJ9M1aWIlRWq2gVSoNoFSPxtjKasybo8HI9ncL2Y7VuYgIOzYqDC/HUlha7+RR
+	e9liCH4a2MYy58FdwJiT4I=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDnnuYSFNlnP+WyAA--.9231S6;
-	Tue, 18 Mar 2025 14:35:05 +0800 (CST)
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDnnuYSFNlnP+WyAA--.9231S2;
+	Tue, 18 Mar 2025 14:35:02 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: lumag@kernel.org
 Cc: mripard@kernel.org,
@@ -52,24 +52,21 @@ Cc: mripard@kernel.org,
 	linux-tegra@vger.kernel.org,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Subject: [PATCH v2 5/5] drm/bridge: it6505: Switch to common helpers to power up/down dp link
-Date: Tue, 18 Mar 2025 14:34:39 +0800
-Message-ID: <20250318063452.4983-5-andyshrk@163.com>
+Subject: [PATCH v2 1/5] drm/dp: Pull drm_dp_link_power_up/down from Tegra to common drm_dp_helper
+Date: Tue, 18 Mar 2025 14:34:35 +0800
+Message-ID: <20250318063452.4983-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250318063452.4983-1-andyshrk@163.com>
-References: <20250318063452.4983-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnnuYSFNlnP+WyAA--.9231S6
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZw18JF47GFy3AFyDWFWxJFb_yoW5urWfpr
-	43X345JwsYqrW7Xw1vyr1xZFsxA3ZrJrZ5JrW7Gw40v3WUX398CayjvwnxGFyUAFyUGr1Y
-	vrnF9F1xGF1Ikr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j4ksDUUUUU=
+X-CM-TRANSID: _____wDnnuYSFNlnP+WyAA--.9231S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3XFyfAFW5Ar1xKFyxAry5Jwb_yoW3XrWDpF
+	ZxWry8tw4vvw4UXF47tF129rZxua17CFWkKrWxG3s3A3Wjyr98Xa45tr15GFy3JryDCay7
+	tFnxCFW7GFWIkw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jFxRDUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAQUXmfZDcXVzgAAsL
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAIUXmfZEzUB-gABs+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250317_233534_338159_A374A956 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250317_233531_767176_DAA6F4BD 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +85,128 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-Use the common dp link power up/down helpers to avoid duplicating code.
+The helper functions drm_dp_link_power_up/down were moved to Tegra
+DRM in commit 9a42c7c647a9 ("drm/tegra: Move drm_dp_link helpers to Tegra DRM")".
+
+Now since more and more users are duplicating the same code in their
+own drivers, it's time to make them as DRM DP common helpers again.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
 
-(no changes since v1)
+Changes in v2:
+- Fix commit message as suggested by Dmitry
 
- drivers/gpu/drm/bridge/ite-it6505.c | 46 +++--------------------------
- 1 file changed, 4 insertions(+), 42 deletions(-)
+ drivers/gpu/drm/display/drm_dp_helper.c | 69 +++++++++++++++++++++++++
+ drivers/gpu/drm/tegra/dp.c              | 67 ------------------------
+ drivers/gpu/drm/tegra/dp.h              |  2 -
+ drivers/gpu/drm/tegra/sor.c             |  4 +-
+ include/drm/display/drm_dp_helper.h     |  2 +
+ 5 files changed, 73 insertions(+), 71 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 8a607558ac89..b05fc82bb667 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -771,40 +771,6 @@ static void it6505_calc_video_info(struct it6505 *it6505)
- 			     DRM_MODE_ARG(&it6505->video_info));
+diff --git a/drivers/gpu/drm/display/drm_dp_helper.c b/drivers/gpu/drm/display/drm_dp_helper.c
+index dbce1c3f4969..e5dec67e5fca 100644
+--- a/drivers/gpu/drm/display/drm_dp_helper.c
++++ b/drivers/gpu/drm/display/drm_dp_helper.c
+@@ -838,6 +838,75 @@ int drm_dp_dpcd_read_phy_link_status(struct drm_dp_aux *aux,
+ }
+ EXPORT_SYMBOL(drm_dp_dpcd_read_phy_link_status);
+ 
++/**
++ * drm_dp_link_power_up() - power up a DisplayPort link
++ * @aux: DisplayPort AUX channel
++ * @revision: DPCD revision supported on the link
++ *
++ * Returns 0 on success or a negative error code on failure.
++ */
++int drm_dp_link_power_up(struct drm_dp_aux *aux, unsigned char revision)
++{
++	u8 value;
++	int err;
++
++	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
++	if (revision < DP_DPCD_REV_11)
++		return 0;
++
++	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
++	if (err < 0)
++		return err;
++
++	value &= ~DP_SET_POWER_MASK;
++	value |= DP_SET_POWER_D0;
++
++	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
++	if (err < 0)
++		return err;
++
++	/*
++	 * According to the DP 1.1 specification, a "Sink Device must exit the
++	 * power saving state within 1 ms" (Section 2.5.3.1, Table 5-52, "Sink
++	 * Control Field" (register 0x600).
++	 */
++	usleep_range(1000, 2000);
++
++	return 0;
++}
++EXPORT_SYMBOL(drm_dp_link_power_up);
++
++/**
++ * drm_dp_link_power_down() - power down a DisplayPort link
++ * @aux: DisplayPort AUX channel
++ * @revision: DPCD revision supported on the link
++ *
++ * Returns 0 on success or a negative error code on failure.
++ */
++int drm_dp_link_power_down(struct drm_dp_aux *aux, unsigned char revision)
++{
++	u8 value;
++	int err;
++
++	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
++	if (revision < DP_DPCD_REV_11)
++		return 0;
++
++	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
++	if (err < 0)
++		return err;
++
++	value &= ~DP_SET_POWER_MASK;
++	value |= DP_SET_POWER_D3;
++
++	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
++	if (err < 0)
++		return err;
++
++	return 0;
++}
++EXPORT_SYMBOL(drm_dp_link_power_down);
++
+ static int read_payload_update_status(struct drm_dp_aux *aux)
+ {
+ 	int ret;
+diff --git a/drivers/gpu/drm/tegra/dp.c b/drivers/gpu/drm/tegra/dp.c
+index 08fbd8f151a1..990e744b0923 100644
+--- a/drivers/gpu/drm/tegra/dp.c
++++ b/drivers/gpu/drm/tegra/dp.c
+@@ -255,73 +255,6 @@ int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link)
+ 	return 0;
  }
  
--static int it6505_drm_dp_link_set_power(struct drm_dp_aux *aux,
--					struct it6505_drm_dp_link *link,
--					u8 mode)
+-/**
+- * drm_dp_link_power_up() - power up a DisplayPort link
+- * @aux: DisplayPort AUX channel
+- * @link: pointer to a structure containing the link configuration
+- *
+- * Returns 0 on success or a negative error code on failure.
+- */
+-int drm_dp_link_power_up(struct drm_dp_aux *aux, struct drm_dp_link *link)
 -{
 -	u8 value;
 -	int err;
 -
 -	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
--	if (link->revision < DPCD_V_1_1)
+-	if (link->revision < 0x11)
 -		return 0;
 -
 -	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
@@ -123,67 +214,103 @@ index 8a607558ac89..b05fc82bb667 100644
 -		return err;
 -
 -	value &= ~DP_SET_POWER_MASK;
--	value |= mode;
+-	value |= DP_SET_POWER_D0;
 -
 -	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
 -	if (err < 0)
 -		return err;
 -
--	if (mode == DP_SET_POWER_D0) {
--		/*
--		 * According to the DP 1.1 specification, a "Sink Device must
--		 * exit the power saving state within 1 ms" (Section 2.5.3.1,
--		 * Table 5-52, "Sink Control Field" (register 0x600).
--		 */
--		usleep_range(1000, 2000);
--	}
+-	/*
+-	 * According to the DP 1.1 specification, a "Sink Device must exit the
+-	 * power saving state within 1 ms" (Section 2.5.3.1, Table 5-52, "Sink
+-	 * Control Field" (register 0x600).
+-	 */
+-	usleep_range(1000, 2000);
 -
 -	return 0;
 -}
 -
- static void it6505_clear_int(struct it6505 *it6505)
- {
- 	it6505_write(it6505, INT_STATUS_01, 0xFF);
-@@ -2578,8 +2544,7 @@ static void it6505_irq_hpd(struct it6505 *it6505)
- 		}
- 		it6505->auto_train_retry = AUTO_TRAIN_RETRY;
+-/**
+- * drm_dp_link_power_down() - power down a DisplayPort link
+- * @aux: DisplayPort AUX channel
+- * @link: pointer to a structure containing the link configuration
+- *
+- * Returns 0 on success or a negative error code on failure.
+- */
+-int drm_dp_link_power_down(struct drm_dp_aux *aux, struct drm_dp_link *link)
+-{
+-	u8 value;
+-	int err;
+-
+-	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
+-	if (link->revision < 0x11)
+-		return 0;
+-
+-	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
+-	if (err < 0)
+-		return err;
+-
+-	value &= ~DP_SET_POWER_MASK;
+-	value |= DP_SET_POWER_D3;
+-
+-	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
+-	if (err < 0)
+-		return err;
+-
+-	return 0;
+-}
+-
+ /**
+  * drm_dp_link_configure() - configure a DisplayPort link
+  * @aux: DisplayPort AUX channel
+diff --git a/drivers/gpu/drm/tegra/dp.h b/drivers/gpu/drm/tegra/dp.h
+index cb12ed0c54e7..695060cafac0 100644
+--- a/drivers/gpu/drm/tegra/dp.h
++++ b/drivers/gpu/drm/tegra/dp.h
+@@ -164,8 +164,6 @@ int drm_dp_link_remove_rate(struct drm_dp_link *link, unsigned long rate);
+ void drm_dp_link_update_rates(struct drm_dp_link *link);
  
--		it6505_drm_dp_link_set_power(&it6505->aux, &it6505->link,
--					     DP_SET_POWER_D0);
-+		drm_dp_link_power_up(&it6505->aux, it6505->link.revision);
- 		dp_sink_count = it6505_dpcd_read(it6505, DP_SINK_COUNT);
- 		it6505->sink_count = DP_GET_SINK_COUNT(dp_sink_count);
+ int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link);
+-int drm_dp_link_power_up(struct drm_dp_aux *aux, struct drm_dp_link *link);
+-int drm_dp_link_power_down(struct drm_dp_aux *aux, struct drm_dp_link *link);
+ int drm_dp_link_configure(struct drm_dp_aux *aux, struct drm_dp_link *link);
+ int drm_dp_link_choose(struct drm_dp_link *link,
+ 		       const struct drm_display_mode *mode,
+diff --git a/drivers/gpu/drm/tegra/sor.c b/drivers/gpu/drm/tegra/sor.c
+index f98f70eda906..21f3dfdcc5c9 100644
+--- a/drivers/gpu/drm/tegra/sor.c
++++ b/drivers/gpu/drm/tegra/sor.c
+@@ -2666,7 +2666,7 @@ static void tegra_sor_dp_disable(struct drm_encoder *encoder)
+ 	 * the AUX transactions would just be timing out.
+ 	 */
+ 	if (output->connector.status != connector_status_disconnected) {
+-		err = drm_dp_link_power_down(sor->aux, &sor->link);
++		err = drm_dp_link_power_down(sor->aux, sor->link.revision);
+ 		if (err < 0)
+ 			dev_err(sor->dev, "failed to power down link: %d\n",
+ 				err);
+@@ -2882,7 +2882,7 @@ static void tegra_sor_dp_enable(struct drm_encoder *encoder)
+ 	else
+ 		dev_dbg(sor->dev, "link training succeeded\n");
  
-@@ -2910,8 +2875,7 @@ static enum drm_connector_status it6505_detect(struct it6505 *it6505)
- 	}
+-	err = drm_dp_link_power_up(sor->aux, &sor->link);
++	err = drm_dp_link_power_up(sor->aux, sor->link.revision);
+ 	if (err < 0)
+ 		dev_err(sor->dev, "failed to power up DP link: %d\n", err);
  
- 	if (it6505->hpd_state) {
--		it6505_drm_dp_link_set_power(&it6505->aux, &it6505->link,
--					     DP_SET_POWER_D0);
-+		drm_dp_link_power_up(&it6505->aux, it6505->link.revision);
- 		dp_sink_count = it6505_dpcd_read(it6505, DP_SINK_COUNT);
- 		it6505->sink_count = DP_GET_SINK_COUNT(dp_sink_count);
- 		DRM_DEV_DEBUG_DRIVER(dev, "it6505->sink_count:%d branch:%d",
-@@ -3233,8 +3197,7 @@ static void it6505_bridge_atomic_enable(struct drm_bridge *bridge,
- 	it6505_int_mask_enable(it6505);
- 	it6505_video_reset(it6505);
+diff --git a/include/drm/display/drm_dp_helper.h b/include/drm/display/drm_dp_helper.h
+index 5ae4241959f2..f9dabce484a7 100644
+--- a/include/drm/display/drm_dp_helper.h
++++ b/include/drm/display/drm_dp_helper.h
+@@ -566,6 +566,8 @@ int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux,
+ int drm_dp_dpcd_read_phy_link_status(struct drm_dp_aux *aux,
+ 				     enum drm_dp_phy dp_phy,
+ 				     u8 link_status[DP_LINK_STATUS_SIZE]);
++int drm_dp_link_power_up(struct drm_dp_aux *aux, unsigned char revision);
++int drm_dp_link_power_down(struct drm_dp_aux *aux, unsigned char revision);
  
--	it6505_drm_dp_link_set_power(&it6505->aux, &it6505->link,
--				     DP_SET_POWER_D0);
-+	drm_dp_link_power_up(&it6505->aux, it6505->link.revision);
- }
- 
- static void it6505_bridge_atomic_disable(struct drm_bridge *bridge,
-@@ -3246,8 +3209,7 @@ static void it6505_bridge_atomic_disable(struct drm_bridge *bridge,
- 	DRM_DEV_DEBUG_DRIVER(dev, "start");
- 
- 	if (it6505->powered) {
--		it6505_drm_dp_link_set_power(&it6505->aux, &it6505->link,
--					     DP_SET_POWER_D3);
-+		drm_dp_link_power_down(&it6505->aux, it6505->link.revision);
- 		it6505_video_disable(it6505);
- 	}
- }
+ int drm_dp_dpcd_write_payload(struct drm_dp_aux *aux,
+ 			      int vcpid, u8 start_time_slot, u8 time_slot_count);
 -- 
 2.43.0
 
