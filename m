@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48509C35FF3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 10:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C72C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 12:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ClRhoNXGPLF8hVLhhp1uGDZXdZglbsBsyVlSEPJSU48=; b=rG6RNTo6wwx6/T
-	foJEedvJahh5pGO8GZhruatnm4X7urO1Pw9bBLUeZD9D7pcIAuFPubYrAf8fGcMVOpda3FMja1Puv
-	dVPvPhPV0vE2SXmsCX5LdK4X9aDurpkPnCryKSRInRHGpu8hG/Gha24NFWdam9TKL2dK0A6MXBTJE
-	hBoFr12i6ENW0IxXBqtJ7E3EXOwv2KRkOu4nDxE+CUiLaHGeYGTxF5eSl5HdULPZy/JYZiTUsxvKE
-	8AdnwrsKaW8ldLzfXkn4/V3GKcbtciyiJDh0sWubV8DV2RkJXNRwysJ2TwbNB+QNMRYtzshrnsAM8
-	KoaTVb/A9usElV9uyxAA==;
+	List-Owner; bh=6Kydb9svFaxRuNBp9l5Z37BXKqe8zaqm1GCNOtZldBc=; b=UY0Up9Ktl+asl1
+	HGuLPmbdLe73SufNimZnBmd7zamJ01RxARSwspTh/YUZSQKV+jfWnUVqKM8s8nCZPzf1HbTsbNCGU
+	00YYUrGD3QbOT0AgeWFOBfjFyg9McwH+VdmdiV0ACe4cl3VopfspCEp7S/pWaEtK1aeoY2AR4WiAe
+	YjpUaw1GeDSD868n/JGUM5O0qV86I8xqVonujle7aorlwg/Hgzs6keWfuVX5nqh3KUZkgaTOw8pHz
+	EaIGQWA84Wre4wZ/Mf02qOyxqbB9YvelFQyQPONHR+g+IKVD4TSp2HYTK4++5yl50FN+o1TjeB3h7
+	KTAGoPDqTqqkaDbv2YFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuUfc-00000005cbI-1sTk;
-	Tue, 18 Mar 2025 10:59:40 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuUdv-00000005cSs-1Iey;
-	Tue, 18 Mar 2025 10:57:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4ADA713D5;
-	Tue, 18 Mar 2025 03:58:03 -0700 (PDT)
-Received: from [10.57.40.187] (unknown [10.57.40.187])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DC01D3F63F;
-	Tue, 18 Mar 2025 03:57:48 -0700 (PDT)
-Message-ID: <b956d9d0-d169-4deb-9b7e-cbec95363214@arm.com>
-Date: Tue, 18 Mar 2025 10:57:47 +0000
+	id 1tuVfx-00000005p5u-0Nvx;
+	Tue, 18 Mar 2025 12:04:05 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tuVcD-00000005o9V-1GO1;
+	Tue, 18 Mar 2025 12:00:15 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [116.25.94.202])
+	by smtp.qiye.163.com (Hmail) with ESMTP id eaf1c5d3;
+	Tue, 18 Mar 2025 20:00:09 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: Enable regulators for Radxa E20C
+Date: Tue, 18 Mar 2025 20:00:03 +0800
+Message-Id: <20250318120003.2340652-3-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250318120003.2340652-1-amadeus@jmu.edu.cn>
+References: <20250318120003.2340652-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 20/23] iommu: Update various drivers to pass in lg2sz
- instead of order to iommu pages
-To: Mostafa Saleh <smostafa@google.com>, Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
- asahi@lists.linux.dev, Lu Baolu <baolu.lu@linux.intel.com>,
- David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>,
- Hector Martin <marcan@marcan.st>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>,
- Tomasz Jeznach <tjeznach@rivosinc.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
- Bagas Sanjaya <bagasdotme@gmail.com>, Joerg Roedel <jroedel@suse.de>,
- Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
- David Rientjes <rientjes@google.com>, Matthew Wilcox <willy@infradead.org>
-References: <0-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
- <20-v3-e797f4dc6918+93057-iommu_pages_jgg@nvidia.com>
- <Z9GFFBvUFg7a9WEg@google.com> <20250317133500.GC9311@nvidia.com>
- <Z9lO-viudk9YGakl@google.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <Z9lO-viudk9YGakl@google.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGB9JVktKHkkdS0gZTE5MTVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk9VSUtJWVdZFhoPEhUdFFlBWU9LSFVKS0lIQktDVUpLS1VKQl
+	kG
+X-HM-Tid: 0a95a920204f03a2kunmeaf1c5d3
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NAw6Lyo*PzIDUUtKIVYKKx00
+	HxYaFDJVSlVKTE9JSUJCSUpLTk9OVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	TVVJTlVCT1VJS0lZV1kIAVlBSU1CSTcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_035755_443776_4547967D 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20250318_050013_510733_39C8BA41 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,64 +72,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-03-18 10:46 am, Mostafa Saleh wrote:
-> On Mon, Mar 17, 2025 at 10:35:00AM -0300, Jason Gunthorpe wrote:
->> On Wed, Mar 12, 2025 at 12:59:00PM +0000, Mostafa Saleh wrote:
->>>> --- a/drivers/iommu/io-pgtable-arm.c
->>>> +++ b/drivers/iommu/io-pgtable-arm.c
->>>> @@ -263,14 +263,13 @@ static void *__arm_lpae_alloc_pages(size_t size, gfp_t gfp,
->>>>   				    void *cookie)
->>>>   {
->>>>   	struct device *dev = cfg->iommu_dev;
->>>> -	int order = get_order(size);
->>>>   	dma_addr_t dma;
->>>>   	void *pages;
->>>>   
->>>>   	if (cfg->alloc)
->>>>   		pages = cfg->alloc(cookie, size, gfp);
->>>>   	else
->>>> -		pages = iommu_alloc_pages_node(dev_to_node(dev), gfp, order);
->>>> +		pages = iommu_alloc_pages_node_sz(dev_to_node(dev), gfp, size);
->>>
->>> Although, the current implementation of iommu_alloc_pages_node_sz() would round
->>> the size to order, but this is not correct according to the API definition
->>> "The returned allocation is round_up_pow_two(size) big, and is physically aligned
->>> to its size."
->>
->> Yes.. The current implementation is limited to full PAGE_SIZE only,
->> the documentation imagines a future where it is not. Drivers should
->> ideally not assume the PAGE_SIZE limit during this conversion.
->>
->>> I'd say we can align the size or use min with 64 bytes before calling the
->>> function would be enough (or change the API to state that allocations
->>> are rounded to order)
->>
->> OK, like this:
->>
->> 	if (cfg->alloc) {
->> 		pages = cfg->alloc(cookie, size, gfp);
->> 	} else {
->> 		/*
->> 		 * For very small starting-level translation tables the HW
->> 		 * requires a minimum alignment of at least 64 to cover all
->> 		 * cases.
->> 		 */
->> 		pages = iommu_alloc_pages_node_sz(dev_to_node(dev), gfp,
->> 						  max(size, 64));
->> 	}
-> 
-> Yes, that looks good.
+Enable pwm and fixed regulators for Radxa E20C. The pwm regulator is
+used to power the CPU and GPU. Note that the LPDDR4 voltage is 1.1V.
 
-Although for completeness it really wants to cover both paths, so an 
-unconditional "size = max(size, 64);" further up would be even better.
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 72 +++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
-Thanks,
-Robin.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+index 57a446b5cbd6..159b55aa970d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+@@ -100,6 +100,16 @@ vcc_3v3: regulator-3v3-vcc {
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
+ 
++	vcc_ddr: regulator-vcc-ddr {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_ddr";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1100000>;
++		regulator-max-microvolt = <1100000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	vcc5v0_sys: regulator-5v0-vcc-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_sys";
+@@ -108,6 +118,56 @@ vcc5v0_sys: regulator-5v0-vcc-sys {
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+ 	};
++
++	vdd_0v9: regulator-0v9-vdd {
++		compatible = "regulator-fixed";
++		regulator-name = "vdd_0v9";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vdd_arm: regulator-vdd-arm {
++		compatible = "pwm-regulator";
++		pwms = <&pwm1 0 5000 1>;
++		pwm-supply = <&vcc5v0_sys>;
++		regulator-name = "vdd_arm";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <746000>;
++		regulator-max-microvolt = <1201000>;
++		regulator-settling-time-up-us = <250>;
++	};
++
++	vdd_logic: regulator-vdd-logic {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 5000 1>;
++		pwm-supply = <&vcc5v0_sys>;
++		regulator-name = "vdd_logic";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <705000>;
++		regulator-max-microvolt = <1006000>;
++		regulator-settling-time-up-us = <250>;
++	};
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
+ };
+ 
+ &pinctrl {
+@@ -132,6 +192,18 @@ wan_led_g: wan-led-g {
+ 	};
+ };
+ 
++&pwm1 {
++	pinctrl-0 = <&pwm1m0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&pwm2 {
++	pinctrl-0 = <&pwm2m0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcc_1v8>;
+ 	status = "okay";
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
