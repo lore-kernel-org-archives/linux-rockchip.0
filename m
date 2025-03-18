@@ -4,86 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E973C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 18:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93384C28B2F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 18:42:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=f3T20PAs+Vn+itT6GkqNG69GESdZ6WmudqmF82TqvDo=; b=BHkiuRJlvTSI6g
-	sm5tWk7Rin4etku2r0e3OXMZD40sSsUvKarKCzjWJoKc4vPl3CyknmrhLurOitVW1pD1Bt7akchxD
-	HDzXJYDoorygEy/0rOHxfUVfS+MEyKT1v85D5EeLKwyB1i/FPlUkU2Fw+mx8Dk/UfqkWz/1zOSRK7
-	6I3jxXHYtKDKDl/z5H3A9FB7zdjAoO4ku2Py+sBH17m7YHkWTVM6lXAU3OjRvbqrBBsm3o2cqrmdj
-	dNopdI+kRPmL0Np9ON2ReEfm2sjQerC7uCXgvbUbIp1tEJ4mcTymkIf1WwUKMxVWBOg9AP1WfjqAA
-	iJUin5bWLfs6YG6kwsyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=67loMfD7ysRd+3oFFWg+Ff1CpHCO4gtv6HPYdrfyaeo=; b=xZEZUHIPWHDtVr
+	8EqWelkSatMk6hMqFYnZTXcneLcFjMIMmoExL8zs3wsno3dU3SGRIFTpiCcw8feXQCrlxOkWv35+J
+	QdWQGbVVVzQ75qaerF6Fes0oXGRJv64j0mGHhRmv1dOp4khj8gcfkMR1hc3TSSmwb5Zaq9lVOHsJ5
+	+rMycN9yIBNy0EoGmmRW2esGCeH5Dsk3348x17r9/IWv5C4Xp6JXR3S7mhYHfhHG7LZc77XMTT0EG
+	3RaxGqT1BLT+bRoBh/sQe5n7kEsLINx51v6gBUz/jy8E8pAYpO7VJF63A3aLod+CROyig2iL7J413
+	bUDsIbKA7qr0jQK22S0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tubZD-00000006nLs-2fmw;
-	Tue, 18 Mar 2025 18:21:31 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tubXW-00000006n69-2pwe;
-	Tue, 18 Mar 2025 18:19:47 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-223a7065ff8so21694515ad.0;
-        Tue, 18 Mar 2025 11:19:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742321985; x=1742926785; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=IWXXj2vpA8WsbFi0qPRvWIGgICG/QaRDC6OXeQOYQS8=;
-        b=FRQ1XQxPT5rsUvPWpT7UHvHbCFQsBxdDBYArknPKWzgmMUhf74XKND3kRm8rK0v+7T
-         +TeUnS3iq2S4pg40giR8JYuk0hZerRZEJH0QmeYC6DcwKB4GBBrMpbCyFGxQfVxp+1g0
-         y6LR/LD6/9uw5SEseFgM1lpTRojVUnyH1AwsManvoQq5G/l2VBtOIjf5hI/o2jbOzd5d
-         7G9GeVZKx04jLKU9XcSYBI+jS/gGY+PCQszUlMJMJ4wHcbk924jbtsO+GX4Hb0mhmANd
-         9Z/DeRrQpOQrVT1ayATMs5cj0FBW1Mcgzfjo/VKUwYfvTM2myFLYfBz5Mk1NkLtqI8Fv
-         tLGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742321985; x=1742926785;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=IWXXj2vpA8WsbFi0qPRvWIGgICG/QaRDC6OXeQOYQS8=;
-        b=FJq690+6dS79yqonqOiTIsc7Q6AFNAqSKPJiHmFnDdCLSi4jNTy7sDUISR+Hxq7QBX
-         Xuo0cK0ZHPTmjwzSXsWKr8x5ZtSnN3E2AyNBla+EiL0gcTbX6xtcGo7EIxLtB0XaLOL7
-         t+tZwQbFHOyRcMB28NFLKIXAvQrbePYHhEOnAmy2tSzJji+Wp4JGoUUh60h3fTTNSPtC
-         iy6uwOogro2Et0+FaZjbZ/bxRj2Lvd7xPIjnmFxNLj32rna2/TKDDCGmzxustR3AVaGH
-         DTcUpvtlkZQNrtaaOqut+SVNq+BUxjFqCzCkjG8FPtVFWSn4kSPh3SccD55qhwMaYXni
-         1CSw==
-X-Forwarded-Encrypted: i=1; AJvYcCVlutpqztKIKus6+7OISPSDxzdznamhytcHzSFbYPHWWHwMOgdRp2l8R+Trc/dJKYMB4PqRUCYSFiSv6bI/hTQ=@lists.infradead.org, AJvYcCXxuUcTg+erKwXdbs+vfT8hl5kTyvWsG8Iu31K2oYCNJMZV5Y+TWy2N9bnS1WZTaotx4KdiqdB8MAzTOtBUS0K9@lists.infradead.org
-X-Gm-Message-State: AOJu0YyCETPuljPlwPspn4LoapEnQQwns8ofnk18sNRMb31QyTp6/Off
-	2nBd+ZnErGfgBD+b0K7XkCnjX2J9l2k0TchIISw1KqVnGk815lgT
-X-Gm-Gg: ASbGncukHH6lxbtyyVpxpXkLZJAgC5A0k4RkbJ3JUE5aQbbW7MP7QIQpl+CXiaiX+tb
-	qbxRoRR+chpBjJzRj0NVl8fyuQA0t6Gul5nxxBiplAld5pNBEPWUXXvXOyMQqhezdRF+biYBS6O
-	IrhuhP4n1HLcg8Bm6JYrWQM9YxenA1712IxdiCx/2fPcryA8Za5qmbz8+WLBmFeCmnekyBxHJrp
-	TauIU9Jo8GawiWSlMPhBQFS4UZl3Y/Vr66sifN+t0biX6nQepDe2nmnDXxUOpcCrqpYz9pnqTys
-	2xtuMZpPiGNa2dXpZCn0mVS9mVQdQ2yhxPgaFO5ZXVY04Co=
-X-Google-Smtp-Source: AGHT+IGy8HRi8t/4P7W6clWm8ulwpmfSGVobi9wvP1Uuzt6DNIeDr3OKASvL0ZL77QVKb0SOfKk4vg==
-X-Received: by 2002:a05:6a00:b42:b0:737:e73:f64b with SMTP id d2e1a72fcca58-7376c10cb80mr179692b3a.1.1742321985193;
-        Tue, 18 Mar 2025 11:19:45 -0700 (PDT)
-Received: from anarsoul-xps15.lan ([2001:569:7d4f:2900::398])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371167dee2sm9887838b3a.111.2025.03.18.11.19.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Mar 2025 11:19:44 -0700 (PDT)
-From: Vasily Khoruzhick <anarsoul@gmail.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Vasily Khoruzhick <anarsoul@gmail.com>
-Subject: [PATCH] clk: rockchip: rk3568: Add PLL rate for 33.3MHz
-Date: Tue, 18 Mar 2025 11:18:51 -0700
-Message-ID: <20250318181930.1178256-1-anarsoul@gmail.com>
-X-Mailer: git-send-email 2.49.0
+	id 1tubtH-00000006pP0-28QK;
+	Tue, 18 Mar 2025 18:42:15 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tubrZ-00000006pHz-2UCL;
+	Tue, 18 Mar 2025 18:40:30 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2726F13D5;
+	Tue, 18 Mar 2025 11:40:37 -0700 (PDT)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 27BD03F694;
+	Tue, 18 Mar 2025 11:40:22 -0700 (PDT)
+Message-ID: <9bd56bd6-ce7d-495f-9bb3-ce7f07975f62@arm.com>
+Date: Tue, 18 Mar 2025 18:40:20 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] iommu/rockchip: Add flush_iotlb_all ops
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>
+References: <20250318152049.14781-1-detlev.casanova@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250318152049.14781-1-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_111946_714446_2598DBE2 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250318_114029_722088_B1218D46 
+X-CRM114-Status: GOOD (  27.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,34 +61,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add PLL rate for 33.3 MHz to allow BTT HDMI5 screen to run at its native
-mode of 800x480
+On 18/03/2025 3:20 pm, Detlev Casanova wrote:
+> From: Jonas Karlman <jonas@kwiboo.se>
+> 
+> On some Rockchip cores (like the vdpu34x video decoder), the IOMMU device
+> is inside the the device that uses it.
+> 
+> The IOMMU device can still be driven by the iommu driver, but when an
+> error occurs in the main device (e.g. a decoding error that resets the
+> decoder), the IOMMU device will also be reseted.
+> In such situation, the IOMMU driver and the hardware are out of sync and
+> IOMMU errors will start popping up.
+> 
+> To avoid that, add a flush_iotlb_all function that will let the main drivers
+> (e.g. rkvdec) tell the IOMMU driver to write all its cached mappings into
+> the IOMMU hardware when such an error occured.
 
-Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
----
- drivers/clk/rockchip/clk-rk3568.c | 1 +
- 1 file changed, 1 insertion(+)
+Eww, this is the exact opposite of what flush_iotlb_all represents, and 
+I really don't like the idea of the public IOMMU API being abused for 
+inter-driver communication. Please have some kind of proper reset 
+notifier mechanism - in fact with runtime PM could you not already 
+invoke a suspend/resume cycle via the device links? AFAICS it would also 
+work to attach to a different domain then switch back again. Or at worst 
+just export a public interface for the other driver to invoke 
+rk_iommu_resume() directly. Just don't hide it in something completely 
+inappropriate - I mean, consider if someone wants to implement 
+IOMMU_CAP_DEFERRED_FLUSH support here in future...
 
-diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-index 53d10b1c627b..1c73e18a9862 100644
---- a/drivers/clk/rockchip/clk-rk3568.c
-+++ b/drivers/clk/rockchip/clk-rk3568.c
-@@ -89,6 +89,7 @@ static struct rockchip_pll_rate_table rk3568_pll_rates[] = {
- 	RK3036_PLL_RATE(96000000, 1, 96, 6, 4, 1, 0),
- 	RK3036_PLL_RATE(78750000, 4, 315, 6, 4, 1, 0),
- 	RK3036_PLL_RATE(74250000, 2, 99, 4, 4, 1, 0),
-+	RK3036_PLL_RATE(33300000, 4, 111, 5, 4, 1, 0),
- 	{ /* sentinel */ },
- };
- 
--- 
-2.49.0
+Thanks,
+Robin.
 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>   drivers/iommu/rockchip-iommu.c | 45 ++++++++++++++++++++++++++++++----
+>   1 file changed, 40 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 323cc665c357..7086716cb8fc 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -899,6 +899,40 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
+>   	return unmap_size;
+>   }
+>   
+> +static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+> +{
+> +	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
+> +	struct list_head *pos;
+> +	unsigned long flags;
+> +	int i, ret;
+> +
+> +	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
+> +	list_for_each(pos, &rk_domain->iommus) {
+> +		struct rk_iommu *iommu = list_entry(pos, struct rk_iommu, node);
+> +
+> +		ret = pm_runtime_get_if_in_use(iommu->dev);
+> +		if (!ret || WARN_ON_ONCE(ret < 0))
+> +			continue;
+> +
+> +		if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
+> +			continue;
+> +
+> +		rk_iommu_enable_stall(iommu);
+> +		for (i = 0; i < iommu->num_mmu; i++) {
+> +			rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+> +				rk_ops->mk_dtentries(rk_domain->dt_dma));
+> +			rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
+> +			rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
+> +		}
+> +		rk_iommu_enable_paging(iommu);
+> +		rk_iommu_disable_stall(iommu);
+> +
+> +		clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+> +		pm_runtime_put(iommu->dev);
+> +	}
+> +	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+> +}
+> +
+>   static struct rk_iommu *rk_iommu_from_dev(struct device *dev)
+>   {
+>   	struct rk_iommudata *data = dev_iommu_priv_get(dev);
+> @@ -1172,11 +1206,12 @@ static const struct iommu_ops rk_iommu_ops = {
+>   	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
+>   	.of_xlate = rk_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+> -		.attach_dev	= rk_iommu_attach_device,
+> -		.map_pages	= rk_iommu_map,
+> -		.unmap_pages	= rk_iommu_unmap,
+> -		.iova_to_phys	= rk_iommu_iova_to_phys,
+> -		.free		= rk_iommu_domain_free,
+> +		.attach_dev		= rk_iommu_attach_device,
+> +		.map_pages		= rk_iommu_map,
+> +		.unmap_pages		= rk_iommu_unmap,
+> +		.flush_iotlb_all	= rk_iommu_flush_iotlb_all,
+> +		.iova_to_phys		= rk_iommu_iova_to_phys,
+> +		.free			= rk_iommu_domain_free,
+>   	}
+>   };
+>   
 
 _______________________________________________
 Linux-rockchip mailing list
