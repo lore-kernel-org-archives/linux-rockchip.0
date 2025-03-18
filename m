@@ -4,87 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2AFAC282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 14:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 976C5C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 15:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vd8Ewl8C2iCW8zHRZC85Sk7DagQRHpkT8ZjXBhXPAc4=; b=BvI5hUZhSUTVfI
-	YSfFuGQjWk4C+NRxiN2v8ZIUFDsX1z1dxtvuKXfFtgSSSmI1bPt03cR0396j+rSGvn/BVu7Byh4qe
-	m0cKZnQmXFUBQURDSGODRyKPU2+UY0OvXH8swGnPnQJmV8kGyODABlnESJ/854lRm7jOWceQ8yDdw
-	cnHAGDt4pYW+prwXrHWBvp+bIpeb6PfFCmnFzfnV5uS3VRi7CYfR8YaRF0bLy9Aww6Ci9DyXpAkhY
-	vMYGybxgFqVExaUsFyc5gYaJgw2hy5Wp0h8DMMQE/NCa1oHBbz7HeabN31AtGxAC8z2z06RxC12la
-	gKCB0C0TbbmVz3kExeaw==;
+	List-Owner; bh=dj7Kjju7WulAxBZst0RYFyQfNadn3TwhbkRPy2cAqmI=; b=J5mP/TKQ6RMFcX
+	O7xLFZMk8bFREFoXfKlIJSEroMQde8oN/pM4FNzfFWi7qX5dWtTbCojSllOZoOr6VaDo9fdM3DWNk
+	1vJR/FpTwc1ImpDdt/b1Zp8TMej+ADtRbfzkUSDeruNDTHiDlmmNLk7HAzraLGCtCqf9prE9VSHSd
+	6CUu0i2gO89EoeqK/9GO8ZTd63bWsG8LnKDZcIlV9UUd8nrhBbWraPAxZ3RlmLv3afuv6JnWGEte4
+	49jv35ghLtn523MZ9Wj1OAW0tjqYfZOx3K1zXyL2wtVnM+oSM43Lsg7fEypmt9lRY70E73k0na0gY
+	4n5mOJ6TUvpnic/M3dEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuY2o-00000006CIV-3DyV;
-	Tue, 18 Mar 2025 14:35:50 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1tuYmb-00000006KvR-31mH;
+	Tue, 18 Mar 2025 15:23:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuY0v-00000006C0z-1FaE;
-	Tue, 18 Mar 2025 14:33:54 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-2260c915749so34128795ad.3;
-        Tue, 18 Mar 2025 07:33:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742308432; x=1742913232; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=gADg9VNDLpQbKOL7DJWNEdDj/Dd07ziMut44yk6PmRU=;
-        b=RWA+5n3mgN5UPGkp0RAx3xk3fKQ9Cet/oUTNJNdyDE/ryndB2ZpsyzPemIC9bfWV/R
-         tfdXlh5Xu5uVFEoZ3zRMCclSQzjDXKn2vZJfW5dyCm+7Gznt6NXiDXdrWu9KS9wx0Ych
-         GZsuL7Uo2b/gVrPdUfgsq6S64TZvcnBGQFCd84iJ1l35cu24idvfsZUjL0oe5Kuk1eQ0
-         HyammYSYqKpndYpt0YVMSOR8VMx7JWbLmPKXrmlf1cpNdATLQmj3vEzhX8CI6Y35+xdb
-         X7Q9iYPq/jPFNjG79IHtGA9rgQD6FbGBRUXgsB8QGgJSoIb0gYVDUC408wE9AT4W4YAk
-         5Tsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742308432; x=1742913232;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gADg9VNDLpQbKOL7DJWNEdDj/Dd07ziMut44yk6PmRU=;
-        b=wFYZhjNFMVoMhWVZqPWJCzWmyHnaD6No+cpMxAIGMgeJaqd3vuWctvJBm5f2+OBeb7
-         e4NZ52omdgru7s1nL3HEOLUJwL7gqY8N1lynSjBCiIp5a/tvRV5VCz952EbK6n4IW+F9
-         fe/GEaOet31LRvqEDhOtj3ZqAehZAZaz1uxZR6E1TQUWuuPn8ClbQCg6OmtgX68QunhC
-         mWuGzGs9mYxObUukpxe0xILwlMxE2Yd1+wWi5DJPTg6Xt6XM1ZwiOC6U49sfK82tXJ4v
-         O/o64fhz7B3JsetrI/kepE87TPpUANIObXCpxxYl8nK0jcRkiwncSNLmnbmRKFVhiaKu
-         SBtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUdrQebOjOE1iM8N4+k6PkbkCtfIAQvzUEBMMxgC1WBAvd44ojQnppjLQm6FPlL/8bhwrRJIgFMg2QyfXvpwzM=@lists.infradead.org, AJvYcCViewDWpzb4GIheFLpmhLOMsQyOpAGjn7ZlP3pJhBSwKbQVfuuJiFhyzlP/iaocSGri8pdBN22z/YJh@lists.infradead.org, AJvYcCX9CCpLv8OVwtJSR+Zut2qkZUOsMUHU/KSuF3vDSN9INHF73T3hCkP2fyJfmv5hd27CdFhI9ehr41CorMWvmD1l@lists.infradead.org
-X-Gm-Message-State: AOJu0YyRU7RpilQ20qxg3utueoVzCnmyV+9RmSJTPcLVuE7rtEF7oNtQ
-	3+8HYkR2Azo2gexlxGeoNAVgoZCn9UK5Ps/A4crKDZh7nwvk1y0P
-X-Gm-Gg: ASbGncvXZ5dX3Ws5h0C9TUef5GPtGbBx52l4JvEJO/P2u1cGZfvb9TYGV8z1me6+YB3
-	Evt2PdaVViZFzelBM20w3lastxYaayhes9HL853UoAI7B5cyTYfokhmOJnS8hMuut3WiP/ajYzf
-	vgmHubjss8HwJqwt1vdD+eV8qryweUyw0nueeVA7Wj4i4QqvAZ4eiR44yvzq5DhKAx9ebAq+Tos
-	rB+spaa0XzzH5rIRgTgEcV7VAWr6uSOIgTCLnIfW8LBihoK/l3QoDaSB259Eta57AVbq1PBj+kp
-	o5XEGE3xDWnC9cYjcPYQ75R42BG04iDySfdXm/ODiDYqbgkw+lWZNWOJxjBKrqOZQu2qYmIeTJQ
-	njAg=
-X-Google-Smtp-Source: AGHT+IEfgmfK1crsVRUWCYlfsqwt+/1m0mmrpIocbRk2MJOVO/tv4/clXEIchP4T/Mf/Fhw6MElziQ==
-X-Received: by 2002:a17:902:da8c:b0:21f:507b:9ad7 with SMTP id d9443c01a7336-225e0a8fac1mr177828705ad.25.1742308431908;
-        Tue, 18 Mar 2025 07:33:51 -0700 (PDT)
-Received: from localhost.localdomain ([183.242.254.176])
-        by smtp.googlemail.com with ESMTPSA id d9443c01a7336-225c6bbca06sm94446355ad.161.2025.03.18.07.33.48
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 18 Mar 2025 07:33:51 -0700 (PDT)
-From: Miaoqian Lin <linmq006@gmail.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+	id 1tuYkt-00000006Kff-1qlF;
+	Tue, 18 Mar 2025 15:21:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742311281;
+	bh=ikl3rkeQnLiGTEwhtDsuQZ0Era+RRUfSI1GQRsd5rKk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KQh2Uzj1upplFHfwz9hQ9ANnArlYejbPYiBBTXjp95CU3QcRfhQ7UOVPI+NyYIGwb
+	 DZVhoYSMC7aYHKs03qhCjF3RTaJME3UWdWy/jNPUalGTlyuXDsA0YgMS4RKTJPHapv
+	 pY3raIGtiua01SNHB8ME9PjAYwjRcx8Tnj99dShYuekQJgwTCde22Mx4vMOJCGH5F2
+	 3AWykmi5mHEcBj/mWBB/hoiRJbLFEFgyZM5ulCAYs3ToqEjQrZmkLCdV7lY7VfJFD0
+	 3uixhy/3/2OZ7r18GPZdrz3LUQztRlSTNkpVkaNvzp7o3hbhdKNUkNpO3BMUIwMGxj
+	 xci45pvz6E/ow==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8DD9517E0E8D;
+	Tue, 18 Mar 2025 16:21:19 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	linux-phy@lists.infradead.org,
+	iommu@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: linmq006@gmail.com
-Subject: [PATCH] phy: rockchip-usb: Fix refcount leak in rockchip_init_usb_uart
-Date: Tue, 18 Mar 2025 22:33:40 +0800
-Message-Id: <20250318143340.25162-1-linmq006@gmail.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+	kernel@collabora.com,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH] iommu/rockchip: Add flush_iotlb_all ops
+Date: Tue, 18 Mar 2025 11:20:49 -0400
+Message-ID: <20250318152049.14781-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_073353_335451_F9AB5A01 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250318_082123_629901_327E2A1C 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +79,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix a reference counter leak in rockchip_init_usb_uart() where
-of_node_put(np) was missing after of_find_matching_node_and_match().
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Fixes: 605df8af33a7 ("phy: rockchip-usb: add handler for usb-uart functionality")
-Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+On some Rockchip cores (like the vdpu34x video decoder), the IOMMU device
+is inside the the device that uses it.
+
+The IOMMU device can still be driven by the iommu driver, but when an
+error occurs in the main device (e.g. a decoding error that resets the
+decoder), the IOMMU device will also be reseted.
+In such situation, the IOMMU driver and the hardware are out of sync and
+IOMMU errors will start popping up.
+
+To avoid that, add a flush_iotlb_all function that will let the main drivers
+(e.g. rkvdec) tell the IOMMU driver to write all its cached mappings into
+the IOMMU hardware when such an error occured.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usb.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/iommu/rockchip-iommu.c | 45 ++++++++++++++++++++++++++++++----
+ 1 file changed, 40 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-index 666a896c8f0a..de7d879bb460 100644
---- a/drivers/phy/rockchip/phy-rockchip-usb.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-@@ -539,6 +539,7 @@ static int __init rockchip_init_usb_uart(void)
- 	if (!data->init_usb_uart) {
- 		pr_err("%s: usb-uart not available on %s\n",
- 		       __func__, match->compatible);
-+		of_node_put(np);
- 		return -ENOTSUPP;
- 	}
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 323cc665c357..7086716cb8fc 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -899,6 +899,40 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
+ 	return unmap_size;
+ }
  
-@@ -547,6 +548,7 @@ static int __init rockchip_init_usb_uart(void)
- 		grf = syscon_node_to_regmap(np->parent);
- 	if (IS_ERR(grf))
- 		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	of_node_put(np);
- 	if (IS_ERR(grf)) {
- 		pr_err("%s: Missing rockchip,grf property, %lu\n",
- 		       __func__, PTR_ERR(grf));
++static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
++{
++	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
++	struct list_head *pos;
++	unsigned long flags;
++	int i, ret;
++
++	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
++	list_for_each(pos, &rk_domain->iommus) {
++		struct rk_iommu *iommu = list_entry(pos, struct rk_iommu, node);
++
++		ret = pm_runtime_get_if_in_use(iommu->dev);
++		if (!ret || WARN_ON_ONCE(ret < 0))
++			continue;
++
++		if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
++			continue;
++
++		rk_iommu_enable_stall(iommu);
++		for (i = 0; i < iommu->num_mmu; i++) {
++			rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
++				rk_ops->mk_dtentries(rk_domain->dt_dma));
++			rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
++			rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
++		}
++		rk_iommu_enable_paging(iommu);
++		rk_iommu_disable_stall(iommu);
++
++		clk_bulk_disable(iommu->num_clocks, iommu->clocks);
++		pm_runtime_put(iommu->dev);
++	}
++	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
++}
++
+ static struct rk_iommu *rk_iommu_from_dev(struct device *dev)
+ {
+ 	struct rk_iommudata *data = dev_iommu_priv_get(dev);
+@@ -1172,11 +1206,12 @@ static const struct iommu_ops rk_iommu_ops = {
+ 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
+ 	.of_xlate = rk_iommu_of_xlate,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+-		.attach_dev	= rk_iommu_attach_device,
+-		.map_pages	= rk_iommu_map,
+-		.unmap_pages	= rk_iommu_unmap,
+-		.iova_to_phys	= rk_iommu_iova_to_phys,
+-		.free		= rk_iommu_domain_free,
++		.attach_dev		= rk_iommu_attach_device,
++		.map_pages		= rk_iommu_map,
++		.unmap_pages		= rk_iommu_unmap,
++		.flush_iotlb_all	= rk_iommu_flush_iotlb_all,
++		.iova_to_phys		= rk_iommu_iova_to_phys,
++		.free			= rk_iommu_domain_free,
+ 	}
+ };
+ 
 -- 
-2.39.5 (Apple Git-154)
+2.49.0
 
 
 _______________________________________________
