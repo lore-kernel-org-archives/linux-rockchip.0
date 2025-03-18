@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE174C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 17:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E973C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 18:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:Cc:To:From:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=lt8wd8LfhGwKSE/Zcy1W9D2J4M1nl8r9Jmt/Z3lP0/g=; b=endF3Qf1Rmfoy852/vwnBevDTm
-	h3twohsg8OaC2umig66ioftUSKQuzFNfplAQTkjrTbiYxa2Lm+YqIOhT3kkZkaPlXiqrxQvtfCZ7g
-	BtJhgMTRZLLVcpdpLK60J+UixrKmbYo7259GEkNZUqdzfYfuWevNmj2tCODUp/5pqWZZi2sNLWO9n
-	i5us6uiLfgUGGS9MVdSI/HhC9FNieK2C1vuqbNqeVFBS5Tr8vxzGMkKRwQ/L9jtMqZb2VZ6uXDYNl
-	g6R5gqFt9E7o3lZLrUZ4+jI6JS7G3GKViQ7Tshc2JRD99cH6r2AwIki2m1JmGICSHR02vxZbOpbVx
-	dZ+UJCvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=f3T20PAs+Vn+itT6GkqNG69GESdZ6WmudqmF82TqvDo=; b=BHkiuRJlvTSI6g
+	sm5tWk7Rin4etku2r0e3OXMZD40sSsUvKarKCzjWJoKc4vPl3CyknmrhLurOitVW1pD1Bt7akchxD
+	HDzXJYDoorygEy/0rOHxfUVfS+MEyKT1v85D5EeLKwyB1i/FPlUkU2Fw+mx8Dk/UfqkWz/1zOSRK7
+	6I3jxXHYtKDKDl/z5H3A9FB7zdjAoO4ku2Py+sBH17m7YHkWTVM6lXAU3OjRvbqrBBsm3o2cqrmdj
+	dNopdI+kRPmL0Np9ON2ReEfm2sjQerC7uCXgvbUbIp1tEJ4mcTymkIf1WwUKMxVWBOg9AP1WfjqAA
+	iJUin5bWLfs6YG6kwsyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tub3R-00000006jBW-1Bme;
-	Tue, 18 Mar 2025 17:48:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tubZD-00000006nLs-2fmw;
+	Tue, 18 Mar 2025 18:21:31 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tub2L-00000006izX-145h
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Mar 2025 17:47:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742320040; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZUI7VTvWrHV1ge5QxUKg7jLA24lS3xKQLLsTR+cszhPNkADjf50CEOp6mcpnBngORgib39Ch3jWYF5izBmniMK6Zx2CsTvwisEyrmBPVFBttDjpcWHUF7pEDlhi8TMFWqNUXrdIFVmIGjsp2yQ6fkDXdsbBuN87nc83GhKnGuZY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742320040; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8PT3IpB2/LOiozh6p1ULOoH2S1XclfQa8VO/KYFkLiI=; 
-	b=DOOBfLxLLeZOAsJRVOZxecRieMHe/+gqiRUPJ0OW9jVAd9lAQrU0oPELLPOq7bLolvADGzrsaVvKJg/YILTeiAyi03/PFHvVTbITfdsURHKxVRQ0rtxBHD1FM3lzSnRmZW0fo8U9gDG10E7OvWSk13i2q+88NPpz5sht1JO8stI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=shreeya.patel@collabora.com;
-	dmarc=pass header.from=<shreeya.patel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742320040;
-	s=zohomail; d=collabora.com; i=shreeya.patel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=8PT3IpB2/LOiozh6p1ULOoH2S1XclfQa8VO/KYFkLiI=;
-	b=GK9xVhLrmZ+RlMVzef2rEy8Us2nxLiODb3V9R6P4kc7lbaxnT18WYMoWsaKZzVBS
-	WVPjlaWqtq6g06qBsQPxlCXtF4gEBhdB7ul4YgzF4dC38wPX19JTtbg9QDQkdjdySvE
-	qkMfjf0KkhYv5CdoRGA0zCVgzmM8sPolg4yn+bKk=
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1742320038090674.9001947899728; Tue, 18 Mar 2025 10:47:18 -0700 (PDT)
-Date: Tue, 18 Mar 2025 23:17:18 +0530
-From: Shreeya Patel <shreeya.patel@collabora.com>
-To: "Geert Uytterhoeven" <geert+renesas@glider.be>
-Cc: "Dingxian Wen" <shawn.wen@rock-chips.com>,
-	"Dmitry Osipenko" <dmitry.osipenko@collabora.com>,
-	"Hans Verkuil" <hverkuil@xs4all.nl>,
-	"Mauro Carvalho Chehab" <mchehab@kernel.org>,
-	"Heiko Stuebner" <heiko@sntech.de>,
-	"linux-media" <linux-media@vger.kernel.org>,
-	"kernel" <kernel@collabora.com>,
-	"linux-rockchip" <linux-rockchip@lists.infradead.org>,
-	"linux-kernel" <linux-kernel@vger.kernel.org>
-Message-ID: <195aa5df0ad.1177aac592665581.1522789073273936352@collabora.com>
-In-Reply-To: <fa5622428f071a20ca5df96218aedc84fb7edc1a.1742306464.git.geert+renesas@glider.be>
-References: <fa5622428f071a20ca5df96218aedc84fb7edc1a.1742306464.git.geert+renesas@glider.be>
-Subject: Re: [PATCH] media: platform: synopsys: VIDEO_SYNOPSYS_HDMIRX should
- depend on ARCH_ROCKCHIP
+	id 1tubXW-00000006n69-2pwe;
+	Tue, 18 Mar 2025 18:19:47 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-223a7065ff8so21694515ad.0;
+        Tue, 18 Mar 2025 11:19:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742321985; x=1742926785; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=IWXXj2vpA8WsbFi0qPRvWIGgICG/QaRDC6OXeQOYQS8=;
+        b=FRQ1XQxPT5rsUvPWpT7UHvHbCFQsBxdDBYArknPKWzgmMUhf74XKND3kRm8rK0v+7T
+         +TeUnS3iq2S4pg40giR8JYuk0hZerRZEJH0QmeYC6DcwKB4GBBrMpbCyFGxQfVxp+1g0
+         y6LR/LD6/9uw5SEseFgM1lpTRojVUnyH1AwsManvoQq5G/l2VBtOIjf5hI/o2jbOzd5d
+         7G9GeVZKx04jLKU9XcSYBI+jS/gGY+PCQszUlMJMJ4wHcbk924jbtsO+GX4Hb0mhmANd
+         9Z/DeRrQpOQrVT1ayATMs5cj0FBW1Mcgzfjo/VKUwYfvTM2myFLYfBz5Mk1NkLtqI8Fv
+         tLGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742321985; x=1742926785;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=IWXXj2vpA8WsbFi0qPRvWIGgICG/QaRDC6OXeQOYQS8=;
+        b=FJq690+6dS79yqonqOiTIsc7Q6AFNAqSKPJiHmFnDdCLSi4jNTy7sDUISR+Hxq7QBX
+         Xuo0cK0ZHPTmjwzSXsWKr8x5ZtSnN3E2AyNBla+EiL0gcTbX6xtcGo7EIxLtB0XaLOL7
+         t+tZwQbFHOyRcMB28NFLKIXAvQrbePYHhEOnAmy2tSzJji+Wp4JGoUUh60h3fTTNSPtC
+         iy6uwOogro2Et0+FaZjbZ/bxRj2Lvd7xPIjnmFxNLj32rna2/TKDDCGmzxustR3AVaGH
+         DTcUpvtlkZQNrtaaOqut+SVNq+BUxjFqCzCkjG8FPtVFWSn4kSPh3SccD55qhwMaYXni
+         1CSw==
+X-Forwarded-Encrypted: i=1; AJvYcCVlutpqztKIKus6+7OISPSDxzdznamhytcHzSFbYPHWWHwMOgdRp2l8R+Trc/dJKYMB4PqRUCYSFiSv6bI/hTQ=@lists.infradead.org, AJvYcCXxuUcTg+erKwXdbs+vfT8hl5kTyvWsG8Iu31K2oYCNJMZV5Y+TWy2N9bnS1WZTaotx4KdiqdB8MAzTOtBUS0K9@lists.infradead.org
+X-Gm-Message-State: AOJu0YyCETPuljPlwPspn4LoapEnQQwns8ofnk18sNRMb31QyTp6/Off
+	2nBd+ZnErGfgBD+b0K7XkCnjX2J9l2k0TchIISw1KqVnGk815lgT
+X-Gm-Gg: ASbGncukHH6lxbtyyVpxpXkLZJAgC5A0k4RkbJ3JUE5aQbbW7MP7QIQpl+CXiaiX+tb
+	qbxRoRR+chpBjJzRj0NVl8fyuQA0t6Gul5nxxBiplAld5pNBEPWUXXvXOyMQqhezdRF+biYBS6O
+	IrhuhP4n1HLcg8Bm6JYrWQM9YxenA1712IxdiCx/2fPcryA8Za5qmbz8+WLBmFeCmnekyBxHJrp
+	TauIU9Jo8GawiWSlMPhBQFS4UZl3Y/Vr66sifN+t0biX6nQepDe2nmnDXxUOpcCrqpYz9pnqTys
+	2xtuMZpPiGNa2dXpZCn0mVS9mVQdQ2yhxPgaFO5ZXVY04Co=
+X-Google-Smtp-Source: AGHT+IGy8HRi8t/4P7W6clWm8ulwpmfSGVobi9wvP1Uuzt6DNIeDr3OKASvL0ZL77QVKb0SOfKk4vg==
+X-Received: by 2002:a05:6a00:b42:b0:737:e73:f64b with SMTP id d2e1a72fcca58-7376c10cb80mr179692b3a.1.1742321985193;
+        Tue, 18 Mar 2025 11:19:45 -0700 (PDT)
+Received: from anarsoul-xps15.lan ([2001:569:7d4f:2900::398])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371167dee2sm9887838b3a.111.2025.03.18.11.19.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Mar 2025 11:19:44 -0700 (PDT)
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Vasily Khoruzhick <anarsoul@gmail.com>
+Subject: [PATCH] clk: rockchip: rk3568: Add PLL rate for 33.3MHz
+Date: Tue, 18 Mar 2025 11:18:51 -0700
+Message-ID: <20250318181930.1178256-1-anarsoul@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_104733_365865_9E35EEA4 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20250318_111946_714446_2598DBE2 
+X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +100,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
- ---- On Tue, 18 Mar 2025 19:33:27 +0530  Geert Uytterhoeven <geert+renesas@glider.be> wrote --- 
- > For now, the Synopsys HDMI HDMI RX Controller is only supported on
- > Rockchip RK3588 SoCs.  Hence add a dependency on ARCH_ROCKCHIP, to
- > prevent asking the user about this driver when configuring a kernel
- > without Rockchip SoC support.
- > 
- > Fixes: 7b59b132ad4398f9 ("media: platform: synopsys: Add support for HDMI input driver")
- > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
- > ---
+Add PLL rate for 33.3 MHz to allow BTT HDMI5 screen to run at its native
+mode of 800x480
 
-Thanks for the patch Geert
+Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
+---
+ drivers/clk/rockchip/clk-rk3568.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: Shreeya Patel <shreeya.patel@collabora.com>
-
-
- >  drivers/media/platform/synopsys/hdmirx/Kconfig | 1 +
- >  1 file changed, 1 insertion(+)
- > 
- > diff --git a/drivers/media/platform/synopsys/hdmirx/Kconfig b/drivers/media/platform/synopsys/hdmirx/Kconfig
- > index 27e6706f84a37375..4321f985f6320611 100644
- > --- a/drivers/media/platform/synopsys/hdmirx/Kconfig
- > +++ b/drivers/media/platform/synopsys/hdmirx/Kconfig
- > @@ -2,6 +2,7 @@
- >  
- >  config VIDEO_SYNOPSYS_HDMIRX
- >      tristate "Synopsys DesignWare HDMI Receiver driver"
- > +    depends on ARCH_ROCKCHIP || COMPILE_TEST
- >      depends on VIDEO_DEV
- >      select MEDIA_CONTROLLER
- >      select VIDEO_V4L2_SUBDEV_API
- > -- 
- > 2.43.0
- > 
- > 
+diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+index 53d10b1c627b..1c73e18a9862 100644
+--- a/drivers/clk/rockchip/clk-rk3568.c
++++ b/drivers/clk/rockchip/clk-rk3568.c
+@@ -89,6 +89,7 @@ static struct rockchip_pll_rate_table rk3568_pll_rates[] = {
+ 	RK3036_PLL_RATE(96000000, 1, 96, 6, 4, 1, 0),
+ 	RK3036_PLL_RATE(78750000, 4, 315, 6, 4, 1, 0),
+ 	RK3036_PLL_RATE(74250000, 2, 99, 4, 4, 1, 0),
++	RK3036_PLL_RATE(33300000, 4, 111, 5, 4, 1, 0),
+ 	{ /* sentinel */ },
+ };
+ 
+-- 
+2.49.0
 
 
 _______________________________________________
