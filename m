@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788A3C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 13:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DA8C28B28
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 13:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fSx6tg7NI4SzKZ3u3VbTWQrUv0CL4swEYfmrgl43euM=; b=A+69GIPIkMKrtX
-	cvx/I+JwKVu9Lp7CoJuJ3TI4nC+qpjmSbtaZ4vpOTuxuEXYsDCyQriTKIQVVCrheDpxB8xm1M+dg/
-	C3OVNFMQyp4GpBAmFyHLaB1bGPIShRdfRABbHH5sM2bOIrRG0C/8wfEXGMkrKyUDUL6+wT5QJDDXS
-	J0Wr0KKZ3meeQ6s/bFKSjOj1QgHiLaHX+PGCLHTPt4TdKZuODA0uGkRyRreQtcjaViNvh7eU1/e7W
-	iLanDzUgqgTQFaz1K+WbpD6r9OAQVZJPB7fygrk7Wp9vtrIK4RyCCdmUWC8YY+E/n/vEPniYLMjGR
-	eQ7wH5xhIplV755v+cmQ==;
+	List-Owner; bh=/hAxOIym9D3Ix1cUjGr2h4cwIjWkkd8yXCkGvGUJ0v8=; b=b/yBGr17e1YdIw
+	NMd/aDxeGQrK5jmtRQDhS9j4icvHsJUc+5XqiBSCWRkODeG9qzmGVj1PEjTswJ1uDUzeV27lntNY+
+	avxilpaSLoiekcSCHlUWdjj+YiZHz9QuPuZYeRw5v+iMCfxvNj1x3gqdIEAZoPfXEmzOyxmsBCa9W
+	LrVgPiM/8DjvfBZ5cLTRkrk10ZthB5IMIZwoQw3/kUxcKkhUFhooHarzickim60ibgOEtVCFh6ZCL
+	9cUOd1W/f3+05Dp74jpCgtzICJUcNQSzJUi1cP0QnUYrtUgT4kA5Jn7FLX9OhY9vhdnSv8yzdaiUw
+	Xz+Yfmtklye0lMpjQXbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWdP-00000005y91-3w6o;
-	Tue, 18 Mar 2025 13:05:31 +0000
+	id 1tuWgl-00000005yiE-1RCF;
+	Tue, 18 Mar 2025 13:08:59 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWMf-00000005vkG-0I7Z;
-	Tue, 18 Mar 2025 12:48:14 +0000
+	id 1tuWUI-00000005woM-2VWt;
+	Tue, 18 Mar 2025 12:56:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742302091;
-	bh=1brdAVEecCGu0q3JZDffnzT7ixMtvQ/GFCymcYGLKrY=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=jux5qC1PNeu/TbmQK+KES3ko+a5iDs1NIgc0uj5XFRcAUYKALK8FH/Ksr7nOFzguE
-	 eW4VCpV57aKc4kEpvNk4uWOTzNdu164IAw+3y3+/j4QP++ImoOiWUd+R/1YkEh7RJk
-	 ql65VX28rqB0M1vOVrjhjNV3mfUIefw2P/9fLEV5VdiuiJr27haDRJlHNARtknjEBv
-	 FYS6z8qqwy7MQUE0gnSE7KSiQ8yLmIq/TTSj1eiIIBMV7DNNSJ0aAZqZp+wvKu6/UB
-	 hXU35iJyJORsLixZcrAbqLlawwgYbVQ07Cq3lN7chVrS5byN9hgG8o4d5+0hoslCur
-	 OSnLY9XarvzVQ==
+	s=mail; t=1742302564;
+	bh=k1Jp1mQaKJe4wzy29NeaR9bYOOUp/GPWqEzK0Vc9Hyo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bcBn6h3xCRIi5pCJkDWemJFu65FyuQJwyIh+MC77sWCpsO/D+OzzBM/oB72QFylVw
+	 VMwmVFegCRy7z60JeRjtbBjwGHucX2qEYOHPeon2cIQXDwdw25mJOaR45jjMV3CkcB
+	 NYDbhvazd64GN6tpV2A54et5pXRQ7fcMu38gWz21/8KvSIorZN5VoQEXHIIehoEAr6
+	 2sKMrsDCfkmpjUDFk+eTqTvMzTWaKFegeaQcRETqu74pnOxhDKmT09kKl/iTAZFhgN
+	 0FaOOhdJOZZknMIne1OKgxYXEKhrDtgQ1vJe9vZo9zneE8SxY6pWLofJsRkaoeq3yR
+	 b30d/0a0klw3A==
 Received: from [192.168.1.90] (unknown [84.232.140.93])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E490817E0385;
-	Tue, 18 Mar 2025 13:48:10 +0100 (CET)
-Message-ID: <5e9516bc-66ac-4583-b949-5714e89d73ee@collabora.com>
-Date: Tue, 18 Mar 2025 14:48:08 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A07617E0385;
+	Tue, 18 Mar 2025 13:56:04 +0100 (CET)
+Message-ID: <eafe83e6-c18a-4d1d-841d-8d2472a670e7@collabora.com>
+Date: Tue, 18 Mar 2025 14:56:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 08/12] phy: rockchip: samsung-hdptx: Setup TMDS char
- rate via phy_configure_opts_hdmi
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: Re: [PATCH v5 12/12] phy: rockchip: samsung-hdptx: Add high color
+ depth management
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
  <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -58,14 +57,15 @@ Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
  linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
- <20250308-phy-sam-hdptx-bpc-v5-8-35087287f9d1@collabora.com>
- <CAA8EJpoGu4Tq-wt09Jj+b+=eJ3dNXhPWVOg4DyCQxrJbFNFfYw@mail.gmail.com>
- <6caefe9f-1b15-41c1-94f2-9a2a92aeec67@collabora.com>
+ <20250308-phy-sam-hdptx-bpc-v5-12-35087287f9d1@collabora.com>
+ <CAA8EJppo29p+8a5VUbr6dwaE9ywgS+-VcuUH_sF+NdA0xGU1Zw@mail.gmail.com>
 Content-Language: en-US
-In-Reply-To: <6caefe9f-1b15-41c1-94f2-9a2a92aeec67@collabora.com>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <CAA8EJppo29p+8a5VUbr6dwaE9ywgS+-VcuUH_sF+NdA0xGU1Zw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_054813_285790_A39D6D55 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20250318_055606_809360_F0F7FFA2 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,61 +82,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/9/25 12:15 PM, Cristian Ciocaltea wrote:
-> On 3/9/25 11:26 AM, Dmitry Baryshkov wrote:
->> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
->> <cristian.ciocaltea@collabora.com> wrote:
->>>
->>> The current workaround to setup the TMDS character rate relies on the
->>> unconventional usage of phy_set_bus_width().
->>>
->>> Make use of the recently introduced HDMI PHY configuration API to
->>> properly handle the setup.  The workaround will be dropped as soon as
->>> the switch has been completed on both ends.
->>>
->>> Rename rk_hdptx_phy_verify_config() to rk_hdptx_phy_verify_dp_config()
->>> and introduce the rk_hdptx_phy_verify_hdmi_config() helper to check the
->>> HDMI parameters during phy_configure().
->>>
->>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>> ---
->>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 64 +++++++++++++++++------
->>>  1 file changed, 47 insertions(+), 17 deletions(-)
->>>
+On 3/9/25 12:18 PM, Dmitry Baryshkov wrote:
+> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
+> <cristian.ciocaltea@collabora.com> wrote:
 >>
->>> @@ -1469,8 +1474,27 @@ static int rk_hdptx_phy_power_off(struct phy *phy)
->>>         return rk_hdptx_phy_consumer_put(hdptx, false);
->>>  }
->>>
->>> -static int rk_hdptx_phy_verify_config(struct rk_hdptx_phy *hdptx,
->>> -                                     struct phy_configure_opts_dp *dp)
->>> +static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
->>> +                                          struct phy_configure_opts_hdmi *hdmi)
->>> +{
->>> +       int i;
->>> +
->>> +       if (!hdmi->tmds_char_rate || hdmi->tmds_char_rate > HDMI20_MAX_RATE)
->>> +               return -EINVAL;
->>> +
->>> +       for (i = 0; i < ARRAY_SIZE(ropll_tmds_cfg); i++)
->>> +               if (hdmi->tmds_char_rate == ropll_tmds_cfg[i].rate)
->>> +                       break;
+>> Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
 >>
->> return 0;
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 23 ++++++++++++++++++++++-
+>>  1 file changed, 22 insertions(+), 1 deletion(-)
 >>
->>> +
->>> +       if (i == ARRAY_SIZE(ropll_tmds_cfg) &&
->>
->> Then you can drop the first clause in the if
 > 
-> Sure, will do!
+> Reviewed-by: Dmitry Baryshkov <dmtiry.baryshkov@linaro.org>
 
-I actually ended up submitting v6 [1] without these changes, since the last
-patch "phy: rockchip: samsung-hdptx: Add high color depth management" would
-need to revert them, i.e. it extends the verification and cannot really do
-"return 0;" early.
+There's a typo in the email address, I've corrected it in v6.
+ 
 
-[1] https://lore.kernel.org/lkml/20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com/
 
 _______________________________________________
 Linux-rockchip mailing list
