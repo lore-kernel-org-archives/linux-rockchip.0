@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20402C282EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 10:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7593C282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 10:05:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UFXG78ZLszgj8HcUvDqghi910v/QkiqueXyCrop9L1s=; b=exN1bMqWcHxd/E
-	FLqEzrGLBeyyiH6lUwK2fVZj+NWuyQGZGwv/nEf5n2EmYGpORHlfz/FtvU7heFBuSONyCLjjXYwia
-	m0iXsHpOsXq50yXEJCElnlQfit8rBgBlgeh3RbpW1+1jf6Ea9W5CfFBFvsOyEJzYuaH3VwmvIoAXI
-	sq5XjjVWR14US7z1XEYHy9eGnnGE31jaovL3S3bSXMAbWl8El59DW1im/r65e2aVyyZf/n1M5BnRk
-	XMOmyZDGh80IWjqCgFhv1WSxjj1cxJzreRTPRTBNIXRGPPSAReJEqY/U5Krig/SzLoHVyf/rY73Fz
-	sIPwT1rx68XdQoNEx8Xw==;
+	List-Owner; bh=3j1kwGyTXSVTF1wjlCmqcMcaV4ELWUmqzDWQbCgUD70=; b=LqMlLAPxoS79dG
+	UrJ1JkrInK8w7LNBUQzePm7MtrCFkemew5IHNcF8SI3n0owr4PtjaxXrzWdGH3ayyWK0XhgzjsRdn
+	l+eQv5gDc5LibRTowqyx53sRYnVmlYLqZdAjo0dnx78KP1gfjEotrQDwy2P2uLf1UxYLdESlhuKeH
+	2StOB+inlD7M7f8BeFlu7lqTAYdQ4vo/AujpFl9nIMVv9mXATlFLw9aO0ErBG4cSCevOrCBuCgN0A
+	uuz1aAvCqNOTA8zQn+EVTl0nV9RxLsF9a2Y8/Vxk87e1OoxQvI/JelYIfOZQno83yrl3+k2Th3tVr
+	ntX5Ir5U5T/L38ek7Edw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuTng-00000005QM1-2B1z;
-	Tue, 18 Mar 2025 10:03:56 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1tuTpL-00000005QdY-2cZ3;
+	Tue, 18 Mar 2025 10:05:39 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuTkI-00000005Pdg-2lgp;
+	id 1tuTkI-00000005Peb-2uHB;
 	Tue, 18 Mar 2025 10:00:29 +0000
 Received: from amadeus-Vostro-3710.lan (unknown [116.25.94.202])
-	by smtp.qiye.163.com (Hmail) with ESMTP id eac37605;
-	Tue, 18 Mar 2025 18:00:17 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id eac37608;
+	Tue, 18 Mar 2025 18:00:21 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Yao Zi <ziyao@disroot.org>
 Cc: Rob Herring <robh@kernel.org>,
@@ -41,25 +41,25 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 1/3] arm64: dts: rockchip: Add missing uart3 interrupt for RK3528
-Date: Tue, 18 Mar 2025 18:00:08 +0800
-Message-Id: <20250318100010.2253408-2-amadeus@jmu.edu.cn>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add UART DMA support for RK3528
+Date: Tue, 18 Mar 2025 18:00:10 +0800
+Message-Id: <20250318100010.2253408-4-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
 References: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHhhDVhlNH0pOT0ofHh9DHVYeHw5VEwETFhoSFy
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSU5KVkkeT0sdQ09PTh8fT1YeHw5VEwETFhoSFy
 	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk9VSUtJWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
 	tLWQY+
-X-HM-Tid: 0a95a8b260a503a2kunmeac37605
+X-HM-Tid: 0a95a8b26f5f03a2kunmeac37608
 X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6ECo*VjJOOkseAggaGBAu
-	PzEaCg1VSlVKTE9JSUJJS0pDSU5JVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	TVVJTlVCT1VJS0lZV1kIAVlBQkxDNwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MAg6HRw5TTJILksVKA4rGAgq
+	MjEKFB5VSlVKTE9JSUJJS0lKQklIVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	TVVJTlVCT1VJS0lZV1kIAVlBSUJKQzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_030026_882486_64DC1C3B 
-X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-CacheID: sfid-20250318_030026_924287_011164AF 
+X-CRM114-Status: UNSURE (   8.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,27 +77,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The interrupt of uart3 node on rk3528 is missing, fix it.
+The UART ports on RK3528 have DMA capability, describe it.
+Flow control is optional, so dma-names are not added.
 
-Fixes: 7983e6c379a9 ("arm64: dts: rockchip: Add base DT for rk3528 SoC")
 Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 ---
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 26c3559d6a6d..7f1ffd6003f5 100644
+index ad77e0ef70f2..1af0d036cf32 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -404,9 +404,10 @@ uart2: serial@ffa00000 {
- 
- 		uart3: serial@ffa08000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
-+			reg = <0x0 0xffa08000 0x0 0x100>;
+@@ -375,6 +375,7 @@ uart0: serial@ff9f0000 {
+ 			clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 8>, <&dmac 9>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -386,6 +387,7 @@ uart1: serial@ff9f8000 {
+ 			clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 10>, <&dmac 11>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -397,6 +399,7 @@ uart2: serial@ffa00000 {
+ 			clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 12>, <&dmac 13>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -408,6 +411,7 @@ uart3: serial@ffa08000 {
  			clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
  			clock-names = "baudclk", "apb_pclk";
--			reg = <0x0 0xffa08000 0x0 0x100>;
-+			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+ 			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 14>, <&dmac 15>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -419,6 +423,7 @@ uart4: serial@ffa10000 {
+ 			clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 16>, <&dmac 17>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -430,6 +435,7 @@ uart5: serial@ffa18000 {
+ 			clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 18>, <&dmac 19>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -441,6 +447,7 @@ uart6: serial@ffa20000 {
+ 			clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 20>, <&dmac 21>;
+ 			reg-io-width = <4>;
+ 			reg-shift = <2>;
+ 			status = "disabled";
+@@ -452,6 +459,7 @@ uart7: serial@ffa28000 {
+ 			clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
+ 			clock-names = "baudclk", "apb_pclk";
+ 			interrupts = <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>;
++			dmas = <&dmac 22>, <&dmac 23>;
  			reg-io-width = <4>;
  			reg-shift = <2>;
  			status = "disabled";
