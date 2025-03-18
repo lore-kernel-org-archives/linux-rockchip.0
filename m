@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B35C28B28
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 12:14:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB527C28B2F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 12:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsV+83xNY3JdaEN2SHbHPgOdKkdeRpyrCgEfdCYE2g8=; b=dt4s6tr1zVj/4g
-	BCXxx6pmZ+Mujlh//PEPmfgcv/3Hytf5ow6ISv4mlt0D/PoZUTXa7oF1b2c0fOdXWIa13WX/njKwn
-	RSp6BSnDFrQzmNXZByWHD9Fq1JKl5WqIEVi3ivRZjDGIgH0Q2Kz+ptYDofatvVlUCaGAdJz5hH4j1
-	n8EEjK9qjp4ohohfkEQa+Ea6hp/PausCfDiMYxhaoFX4bG/A2SMMVyfhXV2y/3lCJWJ6UJnpaHi4G
-	/LlyI9pU5YiYcTRUp+KFwikRbbATk+3TtegTKfTWsV+4IIs8mjszu0vds/M7dFCduipTb/tmQ7ZnS
-	MyBTMVTpSNae4Hrf2Cpg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pEAHczKG/xJrXOCR4OC0IyrKRfAkW6NAzgopZYvU+go=; b=wuVKrdCfM0O5ka
+	E+qvjV+GcIiuFNqal9FErBJ/PI/djENr1bRzCpH0Z/TW1F3dSC918TC2Cljmy8PUycAm1irNGD5pT
+	xv0+rvw8oopjtxJTItPVLOYIIdsynVb+MIKKxl5BoZqTAYX3QN0aGcbD21BDNOAUnlx0x7gwO80T6
+	gkTwaJoiEYOAcMcwQovEMb3TIfdW2ihDATIsur6YmvyWAvM8TS0noGa+MBsg9tLTQKiY0038OEAiS
+	/870vYaPA4uxjCUqs3FPTB5XzCipxo8RXdG+/0t+fwPb+4I42plc6NN+7G3A5Rth/mD2VQLyG7+B4
+	ZvfI6sM6OWTsvjUn9KMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVqL-00000005qnp-1Cms;
-	Tue, 18 Mar 2025 12:14:49 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1tuWED-00000005uDl-18zu;
+	Tue, 18 Mar 2025 12:39:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuVod-00000005qZp-0KN2;
-	Tue, 18 Mar 2025 12:13:04 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 2756025B9B;
-	Tue, 18 Mar 2025 13:12:58 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mODv3-V5KX9r; Tue, 18 Mar 2025 13:12:57 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1742299965; bh=X7IPSY0ipoBbhtXtRwGSvqy5uwDoi8Tgu1K6QKtrhvA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=SFsPLfOmeIxPs7LyMzZAEch62HIUaKUL8ttPrcN5ekM4MygMKLqJgO3B3QgxcWL50
-	 CgM1nhfma+XOKNZ/c/foG3pcz1IkfrxsbQOGDuFE1M9VoK4tTlzszl+Hn6/MqmoKjX
-	 zILe/jfV9gjVbpFsDeoHkFlqP7FUh1HgsA+Wr08CjLK1BNaXwkDG+yu5Npkiq7xBRM
-	 ITDd6v8qvWZ5oxwLs0SKm72OYZ1vq3BRVx/ePO3xjqrP/7I08/zRo0OahwZwSb4l7N
-	 FcEAKIOBhIsRz1fZFUlsHECwM05utQdXwdpPaR6altO8ObWjl9BhiQYs0aVTU7RlLb
-	 ySKERRKUfGJQg==
-Date: Tue, 18 Mar 2025 12:12:33 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Rob Herring <robh@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add missing uart3 interrupt
- for RK3528
-Message-ID: <Z9ljMc96QoCNzzq3@pie>
-References: <20250318100010.2253408-1-amadeus@jmu.edu.cn>
- <20250318100010.2253408-2-amadeus@jmu.edu.cn>
+	id 1tuWBm-00000005tdT-48D7;
+	Tue, 18 Mar 2025 12:37:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742301416;
+	bh=1EPLFHDewAN8/i4J9+X/KTzzwHH36Tm6ALls+862c64=;
+	h=From:Subject:Date:To:Cc:From;
+	b=JSY35S6CrgfDm8T6OIWNI8SqPLbGQslb2/CiagAlH3SfZtGgcLlQLsyfqfrMYpHYS
+	 NyZSJsB1JXaDD1zKxfHOAEE163b8FTSkewAUrOyU7ybxGOYJa0aPFUq5E/GpsoIum9
+	 HpGDEtCPspOhkkSzsQU2dFSaQ53sOaSZ+12kHBkfZzuWlGrF6rH3nWALdZrR7g25eC
+	 rddwaZpD/tk9jpFIHlvPKZ6tfmb+zNGwpbGhpdNG7ERVPlNIMi7M417jcsOW6z6TpO
+	 43AR56/50lXq9DigW3Cn6Tl/PXoMQJh+6j9XnTLG85+co8YYNjAFjujJADFI714qei
+	 qdN9bYkduteWA==
+Received: from localhost (unknown [84.232.140.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 83E9317E0673;
+	Tue, 18 Mar 2025 13:36:56 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v6 00/14] phy: rockchip: samsung-hdptx: Support high color
+ depth management
+Date: Tue, 18 Mar 2025 14:35:34 +0200
+Message-Id: <20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250318100010.2253408-2-amadeus@jmu.edu.cn>
+X-B4-Tracking: v=1; b=H4sIAJZo2WcC/23OwYoDIQwG4FcpnmvRqInd077HsgdHnY7Q1kHL0
+ FLm3dcWypYiOf2B/0vurMaSYmVfmzsrcUk15XMLuN0wP7nzIfIUWmYgQEsQyOfpxqs78SnMlys
+ fZs/VIIxHIBwDsdabSxzT9Wn+/LY8pXrJ5fY8scjH9qVRR1skF1woD1EHDLSnb5+PRzfk4nY+n
+ 9hDXOBNkdBToCmGIhJ4aqN7inopRgConqKaguiMtxGtgu4v+l9RQvcU3RSLhqwmL9XYVcy7Ynu
+ KaYoywhJYGvdBfirruv4BxfK80s4BAAA=
+X-Change-ID: 20241206-phy-sam-hdptx-bpc-3b05c6276fd7
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <lumag@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_051303_534674_4486963D 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20250318_053659_212177_3E52EFC8 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,40 +85,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 18, 2025 at 06:00:08PM +0800, Chukun Pan wrote:
-> The interrupt of uart3 node on rk3528 is missing, fix it.
-> 
-> Fixes: 7983e6c379a9 ("arm64: dts: rockchip: Add base DT for rk3528 SoC")
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+This series relies on the new HDMI PHY configuration options [1] (patch
+included here for convenience) to provide high color depth management
+for rockchip-samsung-hdptx, and to introduce a proper solution to setup
+the TMDS character rate on this PHY.
 
-Reviewed-by: Yao Zi <ziyao@disroot.org>
+[1] https://lore.kernel.org/lkml/d1cff6c03ec3732d2244022029245ab2d954d997.1734340233.git.Sandor.yu@nxp.com/
 
-Thanks for catching this, seems I messed uart3 up when cleaning the
-devicetree.
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v6:
+- Collected R-b tags from Dmitry
+- Updated commit description for "phy: rockchip: samsung-hdptx: Fix
+  clock ratio setup"
+- Added new patch "phy: rockchip: samsung-hdptx: Do no set
+  rk_hdptx_phy->rate in case of errors"
+- Replaced some "unsigned long" and "u32" types with "unsigned long
+  long" in "phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit conversion
+  overhead" to match the tmds_char_rate type (Dmitry)
+- Added new patch "phy: rockchip: samsung-hdptx: Rename ambiguous
+  rk_hdptx_phy->rate", originally part of "phy: rockchip: samsung-hdptx:
+  Optimize internal rate handling" (Dmitry)
+- Rebased series onto next-20250317
+- Link to v5: https://lore.kernel.org/r/20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com
 
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 26c3559d6a6d..7f1ffd6003f5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -404,9 +404,10 @@ uart2: serial@ffa00000 {
->  
->  		uart3: serial@ffa08000 {
->  			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
-> +			reg = <0x0 0xffa08000 0x0 0x100>;
->  			clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
->  			clock-names = "baudclk", "apb_pclk";
-> -			reg = <0x0 0xffa08000 0x0 0x100>;
-> +			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
->  			reg-io-width = <4>;
->  			reg-shift = <2>;
->  			status = "disabled";
-> -- 
-> 2.25.1
-> 
+Changes in v5:
+- Moved the patch eliminating the unnecessary and rather confusing
+  Hz<->hHz unit conversion before all the others adding new content
+- Moved the patch adding high color depth management to the last
+  position, so that it follows the internal rate handling optimization
+- Amended description for a few patches to improve clarity
+- Performed some trivial refactoring in some cases while dealing with
+  rebase conflicts
+- Link to v4: https://lore.kernel.org/r/20250304-phy-sam-hdptx-bpc-v4-0-8657847c13f7@collabora.com
+
+Changes in v4:
+- Added patches to drop unnecessary phy_cfg & cfgs driver data
+- Embedded struct phy_configure_opts_hdmi in driver data (Dmitry)
+- Added new patch to provide config params validation support
+- Provided a patch to restrict altering TMDS char rate via CCF (Dmitry)
+- Made a bunch of small tweaks here and there
+- Link to v3: https://lore.kernel.org/r/20250223-phy-sam-hdptx-bpc-v3-0-66a5c8e68327@collabora.com
+
+Changes in v3:
+- Rebased series onto next-20250221 and fixed several conflicts due to
+  the recently introduced eDP support
+- Link to v2: https://lore.kernel.org/r/20241212-phy-sam-hdptx-bpc-v2-0-57e672c7c7c4@collabora.com
+
+Changes in v2:
+- Added new patches providing a bug fix and several driver cleanups and
+  improvements
+- Link to v1: https://lore.kernel.org/r/20241207-phy-sam-hdptx-bpc-v1-0-03c2e4d6d797@collabora.com
+
+---
+Cristian Ciocaltea (13):
+      phy: hdmi: Add color depth configuration
+      phy: rockchip: samsung-hdptx: Fix clock ratio setup
+      phy: rockchip: samsung-hdptx: Do no set rk_hdptx_phy->rate in case of errors
+      phy: rockchip: samsung-hdptx: Drop unused struct lcpll_config
+      phy: rockchip: samsung-hdptx: Drop unused phy_cfg driver data
+      phy: rockchip: samsung-hdptx: Drop superfluous cfgs driver data
+      phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit conversion overhead
+      phy: rockchip: samsung-hdptx: Setup TMDS char rate via phy_configure_opts_hdmi
+      phy: rockchip: samsung-hdptx: Provide config params validation support
+      phy: rockchip: samsung-hdptx: Restrict altering TMDS char rate via CCF
+      phy: rockchip: samsung-hdptx: Rename ambiguous rk_hdptx_phy->rate
+      phy: rockchip: samsung-hdptx: Optimize internal rate handling
+      phy: rockchip: samsung-hdptx: Add high color depth management
+
+Sandor Yu (1):
+      phy: Add HDMI configuration options
+
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 292 +++++++++++++---------
+ include/linux/phy/phy-hdmi.h                      |  21 ++
+ include/linux/phy/phy.h                           |   7 +-
+ 3 files changed, 202 insertions(+), 118 deletions(-)
+---
+base-commit: e94bd4ec45ac156616da285a0bf03056cd7430fc
+change-id: 20241206-phy-sam-hdptx-bpc-3b05c6276fd7
+
 
 _______________________________________________
 Linux-rockchip mailing list
