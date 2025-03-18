@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DA8C28B28
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 13:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE3CC282EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Mar 2025 14:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/hAxOIym9D3Ix1cUjGr2h4cwIjWkkd8yXCkGvGUJ0v8=; b=b/yBGr17e1YdIw
-	NMd/aDxeGQrK5jmtRQDhS9j4icvHsJUc+5XqiBSCWRkODeG9qzmGVj1PEjTswJ1uDUzeV27lntNY+
-	avxilpaSLoiekcSCHlUWdjj+YiZHz9QuPuZYeRw5v+iMCfxvNj1x3gqdIEAZoPfXEmzOyxmsBCa9W
-	LrVgPiM/8DjvfBZ5cLTRkrk10ZthB5IMIZwoQw3/kUxcKkhUFhooHarzickim60ibgOEtVCFh6ZCL
-	9cUOd1W/f3+05Dp74jpCgtzICJUcNQSzJUi1cP0QnUYrtUgT4kA5Jn7FLX9OhY9vhdnSv8yzdaiUw
-	Xz+Yfmtklye0lMpjQXbw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZSZ13sRVAIZx7ujMnBVWtQv3X4szefIM1QmHNnFEbDM=; b=kUm9LNbZvj8Ej/
+	0SlCBGZdOzl1YeAuW0AqwzVhb+y1Gikqq9uG7qrIC0jwy5Yk+gwrr4ofpK1jXVSMRWo1KWjYt3Hmb
+	xbmyjFjl2A3WSUi//WiJ8U1ksP3dOdfr7p1/qw2lnnNrDge8tRYFOe+8AiF7Cz9ZsSkiN2MmyVG8e
+	lY4CvhpU/e9gBUqbCerT2rYZtW3yKNTIEzNMXwtzfgrQI1Papp7DA8Olh9HC0QS/NZsd2tnvWBW9i
+	H24QEQfNriVDFwfBVqcfAJBmimoSgNfJ5fov6k8Ldj8H1RFoQgpk+1RPg6LBPomE9EVBUO2wRM7SR
+	SmTsHsPsDaAODNJF+qzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWgl-00000005yiE-1RCF;
-	Tue, 18 Mar 2025 13:08:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tuXbO-000000068Bq-2KSb;
+	Tue, 18 Mar 2025 14:07:30 +0000
+Received: from xavier.telenet-ops.be ([2a02:1800:120:4::f00:14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuWUI-00000005woM-2VWt;
-	Tue, 18 Mar 2025 12:56:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742302564;
-	bh=k1Jp1mQaKJe4wzy29NeaR9bYOOUp/GPWqEzK0Vc9Hyo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bcBn6h3xCRIi5pCJkDWemJFu65FyuQJwyIh+MC77sWCpsO/D+OzzBM/oB72QFylVw
-	 VMwmVFegCRy7z60JeRjtbBjwGHucX2qEYOHPeon2cIQXDwdw25mJOaR45jjMV3CkcB
-	 NYDbhvazd64GN6tpV2A54et5pXRQ7fcMu38gWz21/8KvSIorZN5VoQEXHIIehoEAr6
-	 2sKMrsDCfkmpjUDFk+eTqTvMzTWaKFegeaQcRETqu74pnOxhDKmT09kKl/iTAZFhgN
-	 0FaOOhdJOZZknMIne1OKgxYXEKhrDtgQ1vJe9vZo9zneE8SxY6pWLofJsRkaoeq3yR
-	 b30d/0a0klw3A==
-Received: from [192.168.1.90] (unknown [84.232.140.93])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A07617E0385;
-	Tue, 18 Mar 2025 13:56:04 +0100 (CET)
-Message-ID: <eafe83e6-c18a-4d1d-841d-8d2472a670e7@collabora.com>
-Date: Tue, 18 Mar 2025 14:56:02 +0200
+	id 1tuXXi-000000067OW-3XYj
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Mar 2025 14:03:44 +0000
+Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:2568:e3d1:1e11:17f3])
+	by xavier.telenet-ops.be with cmsmtp
+	id SE3b2E0011Mz0fJ01E3bzP; Tue, 18 Mar 2025 15:03:36 +0100
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.97)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1tuXX4-0000000Eeni-1Zsa;
+	Tue, 18 Mar 2025 15:03:29 +0100
+Received: from geert by rox.of.borg with local (Exim 4.97)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1tuXXV-0000000AOnB-1Nhv;
+	Tue, 18 Mar 2025 15:03:29 +0100
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Shreeya Patel <shreeya.patel@collabora.com>,
+	Dingxian Wen <shawn.wen@rock-chips.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org,
+	kernel@collabora.com,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH] media: platform: synopsys: VIDEO_SYNOPSYS_HDMIRX should depend on ARCH_ROCKCHIP
+Date: Tue, 18 Mar 2025 15:03:27 +0100
+Message-ID: <fa5622428f071a20ca5df96218aedc84fb7edc1a.1742306464.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 12/12] phy: rockchip: samsung-hdptx: Add high color
- depth management
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>,
- Maxime Ripard <mripard@kernel.org>, kernel@collabora.com,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20250308-phy-sam-hdptx-bpc-v5-0-35087287f9d1@collabora.com>
- <20250308-phy-sam-hdptx-bpc-v5-12-35087287f9d1@collabora.com>
- <CAA8EJppo29p+8a5VUbr6dwaE9ywgS+-VcuUH_sF+NdA0xGU1Zw@mail.gmail.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <CAA8EJppo29p+8a5VUbr6dwaE9ywgS+-VcuUH_sF+NdA0xGU1Zw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250318_055606_809360_F0F7FFA2 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20250318_070343_023238_FA2DDB40 
+X-CRM114-Status: UNSURE (   9.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,22 +76,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/9/25 12:18 PM, Dmitry Baryshkov wrote:
-> On Sat, 8 Mar 2025 at 14:21, Cristian Ciocaltea
-> <cristian.ciocaltea@collabora.com> wrote:
->>
->> Add support for 8-bit, 10-bit, 12-bit and 16-bit color depth setup.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 23 ++++++++++++++++++++++-
->>  1 file changed, 22 insertions(+), 1 deletion(-)
->>
-> 
-> Reviewed-by: Dmitry Baryshkov <dmtiry.baryshkov@linaro.org>
+For now, the Synopsys HDMI HDMI RX Controller is only supported on
+Rockchip RK3588 SoCs.  Hence add a dependency on ARCH_ROCKCHIP, to
+prevent asking the user about this driver when configuring a kernel
+without Rockchip SoC support.
 
-There's a typo in the email address, I've corrected it in v6.
+Fixes: 7b59b132ad4398f9 ("media: platform: synopsys: Add support for HDMI input driver")
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+ drivers/media/platform/synopsys/hdmirx/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/media/platform/synopsys/hdmirx/Kconfig b/drivers/media/platform/synopsys/hdmirx/Kconfig
+index 27e6706f84a37375..4321f985f6320611 100644
+--- a/drivers/media/platform/synopsys/hdmirx/Kconfig
++++ b/drivers/media/platform/synopsys/hdmirx/Kconfig
+@@ -2,6 +2,7 @@
  
+ config VIDEO_SYNOPSYS_HDMIRX
+ 	tristate "Synopsys DesignWare HDMI Receiver driver"
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
+ 	depends on VIDEO_DEV
+ 	select MEDIA_CONTROLLER
+ 	select VIDEO_V4L2_SUBDEV_API
+-- 
+2.43.0
 
 
 _______________________________________________
