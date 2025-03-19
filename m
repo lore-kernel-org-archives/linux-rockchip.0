@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F8A9C35FFA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 21:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EED5C35FFA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 21:49:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xLIs+eA8Tru/rdvd7N/LcQxB+/bxgn/OC595IfQ4VQ4=; b=QE8N7q3Ub2SKJ5
-	mIX3bWAjFN0gv86lWzsu7eySJsNHj91ioG5+/pe3nLib8lM/1X8oFzlI2En033kyGReCQXgX0D9xO
-	kwhDTm7llVaNF8gcpSp9+P/yVJGGmh/Nwny8c6X8WEY8YN87A4nvwgX9E/tbcKDkAvY4CstL5onCr
-	+oCQjQ5WnbaIA3aCSVmW10AFa9pVtvScOTJZtLhPwci8T8DwrZxg2LDKLnhvryXoaCgWNfjqQPpby
-	U932YuF0afFn11aMBi2UHGe87WnwGCYSvx+ClViKnf7gntk2GdgVWIIgrPEQ8FJk7XZPi2/2rCJ5P
-	KPHJ9ENVUg0eAmqDgF6A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vnH074vgETBSgVMrvTtRScqdvtSAhhu7AN661tERuyw=; b=jeE2PFpV8t73FR
+	WxxOLmCLoT7pzGpECET2pLKDW+42mw+TgBxUb3jrvEorK3kE2nhnjm2K4nVa6uA7IYeJinyIHe8YZ
+	ojFFeuhjfgZHXO3Dy1LL383RdalecRQWPJpWSn53AnocGELPoPMMZ4SMPxZJW7mMH/4rqPYryR6jm
+	iTHXZaPj05Vju5rcL7imy+istVVPmct4OTLwaqovwZf1uJJ9YFkOkM8Jb6Fdo67h6h1kL6AjLgPEi
+	03gNrp7mFMJfT9BYG4wie+hcEICGGgCpTZqBsSKHgJ7uOaTsJH0adAtZGzwMz1u1qcxPck/5fmkoq
+	XAM6uxPNm67jzGptwCsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv1Gd-0000000ABtP-23Xu;
-	Wed, 19 Mar 2025 21:48:03 +0000
-Received: from smtp.forwardemail.net ([121.127.44.59])
+	id 1tv1II-0000000AC6V-3g44;
+	Wed, 19 Mar 2025 21:49:46 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv1DH-0000000ABHx-0P6i
+	id 1tv1DN-0000000ABKd-33gk
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Mar 2025 21:44:36 +0000
+	Wed, 19 Mar 2025 21:44:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1742420672;
- bh=hs6Pwio3uOKO/Rs8ESj0aY1nLaXKMEYE6oUslcHF8n0=;
- b=azGONhyCIQRyMaJNXc0nNSECG7O35dUQ9lBNvFtYXWQ5I1ahDj6+5CFavcKVYp91Q9Y11o4Ss
- Yeo+eoaKQ455pKlA0tKMoM9GunpBwKQGYOZ+LtaDBKP4cQZBEVU+pH87hNKc05XGLKlMtl6jxma
- 0KSgf/9Scx9kMlHP66UHQP22eMdXl4MR4S8nl4mqzkaVTzohJ6Mo7eaHlzn5vjn6E/yEa6WohpO
- 0wbHdUI0AxBVUGa9ksDt2YNmmFvIKjfwiTmk9M7sJX8lgXJ1JJhqDpN2MEpFSnJzpzjgB/MDdZ3
- AJ2EGciOsrvo1EFmH46ot4K2vy5ekC1x0CUlDZbujPAQ==
-X-Forward-Email-ID: 67db3ab6cf4d592372b993d9
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1742420681; bh=q4UCKRVSyCJCBN+wBNBmcB6bnhnKAJdDekZIqRUmYkM=;
+ b=CAz6Pfmj4zqkRZN/+usrw4TBOp+myHuEVG4SSDPJR2WAVwoCxHZN5AC6RAZB7nyUu+z53tXJu
+ DrY8eHqJzfrptLi9Y9GFcQtYZRBD36kRndmliMqAcwFdhLxuB8D/bbN7BRcVL/zTfd1XShj4Q7a
+ EIyHtJ9RkglEMmkRstvWs1Nn59n5+i5VInRu1YiXPxfs2LgEjya8TTbn4JhEdATMTUwmzEDw2aj
+ 9hs6gfQplHTdc/LWwNs2NodQuIkwu1JdfjRtBeFnk9mmfQtebrAKAeLUqie0jwDd5PzHkmhorZ6
+ tIKZclCgEM8gdxP4koW68Vmsfrh2bX6g3r6FsVOsD9mA==
+X-Forward-Email-ID: 67db3ac4cf4d592372b99418
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.59
+ 121.127.44.73
 X-Forward-Email-Version: 0.4.40
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -50,7 +50,10 @@ To: Heiko Stuebner <heiko@sntech.de>,
 	"David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
 Cc: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -61,16 +64,18 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH net-next v3 0/5] net: stmmac: dwmac-rk: Add GMAC support for RK3528
-Date: Wed, 19 Mar 2025 21:44:04 +0000
-Message-ID: <20250319214415.3086027-1-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH net-next v3 3/5] net: stmmac: dwmac-rk: Move integrated_phy_powerup/down functions
+Date: Wed, 19 Mar 2025 21:44:07 +0000
+Message-ID: <20250319214415.3086027-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250319214415.3086027-1-jonas@kwiboo.se>
+References: <20250319214415.3086027-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_144435_219472_EE9AEDF0 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250319_144441_864907_C28A5F67 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +92,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
-used with the integrated PHY and a second 1000/100/10 MAC to be used
-with an external Ethernet PHY.
+Rockchip RK3528 (and RV1106) has a different integrated PHY compared to
+the integrated PHY on RK3228/RK3328. Current powerup/down operation is
+not compatible with the integrated PHY found in these SoCs.
 
-This series add initial support for the Ethernet controllers found in
-RK3528 and initial support to power up/down the integrated PHY.
+Move the rk_gmac_integrated_phy_powerup/down functions to top of the
+file to prepare for them to be called directly by a GMAC variant
+specific powerup/down operation.
 
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
 Changes in v3:
-- Rebase on latest net-next/main
-- Collect r-b tag on dt-bindings patch
-Link to v2: https://lore.kernel.org/r/20250309232622.1498084-1-jonas@kwiboo.se
-
+- No change
 Changes in v2:
-- Restrict the minItems: 4 change to rockchip,rk3528-gmac
-- Add initial support to power up/down the integrated PHY in RK3528
-- Split device tree changes into a separate series
-Link to v1: https://lore.kernel.org/r/20250306221402.1704196-1-jonas@kwiboo.se
+- New patch
+---
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 88 +++++++++----------
+ 1 file changed, 44 insertions(+), 44 deletions(-)
 
-David Wu (1):
-  net: stmmac: dwmac-rk: Add GMAC support for RK3528
-
-Jonas Karlman (4):
-  dt-bindings: net: rockchip-dwmac: Add compatible string for RK3528
-  net: stmmac: dwmac-rk: Move integrated_phy_powerup/down functions
-  net: stmmac: dwmac-rk: Add integrated_phy_powerdown operation
-  net: stmmac: dwmac-rk: Add initial support for RK3528 integrated PHY
-
- .../bindings/net/rockchip-dwmac.yaml          |  16 +-
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 277 ++++++++++++++----
- 2 files changed, 242 insertions(+), 51 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index dfb4668db4ee..0321befed0d3 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -92,6 +92,50 @@ struct rk_priv_data {
+ 	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
+ 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
+ 
++#define RK_GRF_MACPHY_CON0		0xb00
++#define RK_GRF_MACPHY_CON1		0xb04
++#define RK_GRF_MACPHY_CON2		0xb08
++#define RK_GRF_MACPHY_CON3		0xb0c
++
++#define RK_MACPHY_ENABLE		GRF_BIT(0)
++#define RK_MACPHY_DISABLE		GRF_CLR_BIT(0)
++#define RK_MACPHY_CFG_CLK_50M		GRF_BIT(14)
++#define RK_GMAC2PHY_RMII_MODE		(GRF_BIT(6) | GRF_CLR_BIT(7))
++#define RK_GRF_CON2_MACPHY_ID		HIWORD_UPDATE(0x1234, 0xffff, 0)
++#define RK_GRF_CON3_MACPHY_ID		HIWORD_UPDATE(0x35, 0x3f, 0)
++
++static void rk_gmac_integrated_phy_powerup(struct rk_priv_data *priv)
++{
++	if (priv->ops->integrated_phy_powerup)
++		priv->ops->integrated_phy_powerup(priv);
++
++	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_CFG_CLK_50M);
++	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_GMAC2PHY_RMII_MODE);
++
++	regmap_write(priv->grf, RK_GRF_MACPHY_CON2, RK_GRF_CON2_MACPHY_ID);
++	regmap_write(priv->grf, RK_GRF_MACPHY_CON3, RK_GRF_CON3_MACPHY_ID);
++
++	if (priv->phy_reset) {
++		/* PHY needs to be disabled before trying to reset it */
++		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
++		if (priv->phy_reset)
++			reset_control_assert(priv->phy_reset);
++		usleep_range(10, 20);
++		if (priv->phy_reset)
++			reset_control_deassert(priv->phy_reset);
++		usleep_range(10, 20);
++		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_ENABLE);
++		msleep(30);
++	}
++}
++
++static void rk_gmac_integrated_phy_powerdown(struct rk_priv_data *priv)
++{
++	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
++	if (priv->phy_reset)
++		reset_control_assert(priv->phy_reset);
++}
++
+ #define PX30_GRF_GMAC_CON1		0x0904
+ 
+ /* PX30_GRF_GMAC_CON1 */
+@@ -1463,50 +1507,6 @@ static const struct rk_gmac_ops rv1126_ops = {
+ 	.set_rmii_speed = rv1126_set_rmii_speed,
+ };
+ 
+-#define RK_GRF_MACPHY_CON0		0xb00
+-#define RK_GRF_MACPHY_CON1		0xb04
+-#define RK_GRF_MACPHY_CON2		0xb08
+-#define RK_GRF_MACPHY_CON3		0xb0c
+-
+-#define RK_MACPHY_ENABLE		GRF_BIT(0)
+-#define RK_MACPHY_DISABLE		GRF_CLR_BIT(0)
+-#define RK_MACPHY_CFG_CLK_50M		GRF_BIT(14)
+-#define RK_GMAC2PHY_RMII_MODE		(GRF_BIT(6) | GRF_CLR_BIT(7))
+-#define RK_GRF_CON2_MACPHY_ID		HIWORD_UPDATE(0x1234, 0xffff, 0)
+-#define RK_GRF_CON3_MACPHY_ID		HIWORD_UPDATE(0x35, 0x3f, 0)
+-
+-static void rk_gmac_integrated_phy_powerup(struct rk_priv_data *priv)
+-{
+-	if (priv->ops->integrated_phy_powerup)
+-		priv->ops->integrated_phy_powerup(priv);
+-
+-	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_CFG_CLK_50M);
+-	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_GMAC2PHY_RMII_MODE);
+-
+-	regmap_write(priv->grf, RK_GRF_MACPHY_CON2, RK_GRF_CON2_MACPHY_ID);
+-	regmap_write(priv->grf, RK_GRF_MACPHY_CON3, RK_GRF_CON3_MACPHY_ID);
+-
+-	if (priv->phy_reset) {
+-		/* PHY needs to be disabled before trying to reset it */
+-		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
+-		if (priv->phy_reset)
+-			reset_control_assert(priv->phy_reset);
+-		usleep_range(10, 20);
+-		if (priv->phy_reset)
+-			reset_control_deassert(priv->phy_reset);
+-		usleep_range(10, 20);
+-		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_ENABLE);
+-		msleep(30);
+-	}
+-}
+-
+-static void rk_gmac_integrated_phy_powerdown(struct rk_priv_data *priv)
+-{
+-	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
+-	if (priv->phy_reset)
+-		reset_control_assert(priv->phy_reset);
+-}
+-
+ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+ {
+ 	struct rk_priv_data *bsp_priv = plat->bsp_priv;
 -- 
 2.49.0
 
