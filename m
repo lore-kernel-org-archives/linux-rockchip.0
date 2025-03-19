@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF7F7C36001
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 23:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9134C36000
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 23:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AdkR3K8obvkoP8n7xVDZlkCb4nYVnAuNA9woJ46f/Tw=; b=ZRAvYSQGi0DKEd
-	ISyPom44P9ffp7JKdbkHmGfBe9hHWjr6kRIlZXJG5hGR0nrwNTwjXBI8NlMzCIPuXu0nJBQtyAKyR
-	I2qp072Q/uubKHv+1QmkRFCqgiDM0GShhVPEnodHqp/UEtIDUzzSnPGcLXOmMQPUGQySCvMCG0woX
-	zSSxX5Hmqld0GKsRbHgoiQcFmU3FWBtle2nOKlHkd19HR3DyqDWsXINUtBhkpEsFg7SF8RYZdwpM9
-	8alvWqK0bg4b1IgT2rNtIzGmEAE/3c3GgXBMI3gl9CWA8Jk4lpqcvsCYAhsDjPfAvbNpRcg65+WfJ
-	41nkTxAxslgEws+9ksog==;
+	List-Owner; bh=FLD0cGL17njLNTy3rIbfI4+vCQWDYso9cK6HHrHwCYw=; b=0cpAo2Z/T+MWJM
+	MF68hXW9dvNPhZbZGv9/Uy8pYeOJIbIeaQPnGHQ//INifEes480VR29S3SX59E6c/o74m2OZ/Bzdy
+	qHCV5dLSIBUVTCGP36vCwzngICoMrkIx8FrRNgnKenEfNMrPuhG5DqPA4Xzt38+2/0E3V3l7PEOdt
+	amhPhLuEfxBn3Xd9cwK+SKeRUdRqUq+5oBnOkpqIHSeXbedToQAD8KDvGMgdT8C7q+bErscySwJ6e
+	pU9wPmAPdUZ4aEO+ufgLftQ+b0UnAf5kBhIpwPQTTh1MzRfPXadWhK4WUUm+yHpWODf5Ktw8Oepes
+	Ms1oqmIuj4SeEDjEKtog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv2pU-0000000ASMI-2OGV;
-	Wed, 19 Mar 2025 23:28:08 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1tv3AU-0000000AYch-3FlW;
+	Wed, 19 Mar 2025 23:49:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv2nm-0000000ARur-3gCV
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Mar 2025 23:26:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1742426781;
- bh=YrgmGOqT4SYp6oYqC9q8SeHubNvt4veSSI8b49RyuaU=;
- b=Htlfh8ndxv72DrbXARpyX/+zi/yA9S7LZSJ16/rEFpr5aRG+7PBo+Uz63JFhdm+uJFOM42hzI
- qbHNwIktllZzFsGUFCDCoqW4canshAJzqxTHl/HrouBjNWXfOeJ+kqvgrejdf/+igSig34lpJZC
- DY28/iSmQaxOw6AMvA9ZBH/7kh6aZ1Sv88w1EnRrd4WMx1aoZMXbt1/FGNwoUhzJxsrzjX5cApo
- 81DczL2nR3VaSIGooiNeEZR3/xs3DVxVwMJtNjhpFF1e8oeDKq2CwNZOidCoI0vdEFkNZxjD4a3
- KQlZoRUQObHBBCI8wYWSyFFhrnaBcZ/BOCffzt7Y1/rg==
-X-Forward-Email-ID: 67db529a27ee59b783a86f48
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <0d638134-0c0d-4918-af47-e23d2ead3bf3@kwiboo.se>
-Date: Thu, 20 Mar 2025 00:26:14 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
+	id 1tv38l-0000000AXfg-30UR;
+	Wed, 19 Mar 2025 23:48:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=Rw+f9/0oWfJPL5BafdAk8H8AdIxBBtfNNmHXGxv1VA4=; b=EGRGJb6HMeCSbau9OQWDTncAhJ
+	+O9UgyhkLxHvEy0KVDW/TZ/D/E+dfg5Ob3QYk3Qg/LqL2SWkdKV/VUja+GYPrCn/geobH/wM9kmqS
+	3d0yUMw3dK9rEihAFBKaSni2xJZYvUkC1l+rBNMk/+YcOyyb8Y+DjAtOqSF9ktdgbIOZ1/HujUhX0
+	u3KJmC8dxsNAQIk04ONAsCT87Jh/yfhUJY+QDqez/buP1Z0WF8w5OqD3L9fdt8Y4ymU7pTeR6jKSs
+	cC0mJtq+zeyrHykhlgwpGdsGWMmmrIk94WXWcUNnzxm09jYtPHJAP5XbDEClru/9TH58yIPdlMmpc
+	sodb0RoQ==;
+Received: from i53875bc6.versanet.de ([83.135.91.198] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1tv38b-0001z5-GP; Thu, 20 Mar 2025 00:47:53 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>
 Cc: Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+Date: Thu, 20 Mar 2025 00:47:52 +0100
+Message-ID: <2499436.jE0xQCEvom@phil>
+In-Reply-To: <0d638134-0c0d-4918-af47-e23d2ead3bf3@kwiboo.se>
 References: <20250318120003.2340652-1-amadeus@jmu.edu.cn>
  <20250318120003.2340652-2-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250318120003.2340652-2-amadeus@jmu.edu.cn>
+ <0d638134-0c0d-4918-af47-e23d2ead3bf3@kwiboo.se>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_162623_020610_101E9A7C 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20250319_164803_774968_2DCB8F89 
+X-CRM114-Status: GOOD (  25.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,150 +70,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
-
-On 2025-03-18 13:00, Chukun Pan wrote:
-> Add pwm nodes for RK3528. The PWM core on RK3528 is the same as
-> RK3328, but the driver does not support interrupts yet.
-
-The device tree should describe the hardware, not what the driver
-support, so interrupts should probably be included.
-
-However, looking closer at TRM for i.e. RK3328, RK3568 and RK3588 it
-look like the following description is not a true description of the
-hardware.
-
-Each PWM controller seem to support 4 channels, here (and for older RK
-SoCs) we instead describe each channel and not the controller.
-
-Maybe something like following would better represent the hardware:
-
-	pwm0: pwm@ffa90000 {
-		compatible = "rockchip,rk3528-pwm";
-		reg = <0x0 0xffa90000 0x0 0x10000>;
-		clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
-		clock-names = "pwm", "pclk";
-		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
-	};
-
-	pwm1: pwm@ffa98000 {
-		compatible = "rockchip,rk3528-pwm";
-		reg = <0x0 0xffa98000 0x0 0x10000>;
-		clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-		clock-names = "pwm", "pclk";
-		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
-	};
-
-Regards,
-Jonas
-
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 80 ++++++++++++++++++++++++
->  1 file changed, 80 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 1af0d036cf32..621fc19ac0b3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -465,6 +465,86 @@ uart7: serial@ffa28000 {
->  			status = "disabled";
->  		};
->  
-> +		pwm0: pwm@ffa90000 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa90000 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm1: pwm@ffa90010 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa90010 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm2: pwm@ffa90020 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa90020 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm3: pwm@ffa90030 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa90030 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM0>, <&cru PCLK_PWM0>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm4: pwm@ffa98000 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa98000 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm5: pwm@ffa98010 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa98010 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm6: pwm@ffa98020 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa98020 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
-> +		pwm7: pwm@ffa98030 {
-> +			compatible = "rockchip,rk3528-pwm",
-> +				     "rockchip,rk3328-pwm";
-> +			reg = <0x0 0xffa98030 0x0 0x10>;
-> +			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-> +			clock-names = "pwm", "pclk";
-> +			#pwm-cells = <3>;
-> +			status = "disabled";
-> +		};
-> +
->  		saradc: adc@ffae0000 {
->  			compatible = "rockchip,rk3528-saradc";
->  			reg = <0x0 0xffae0000 0x0 0x10000>;
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMjAuIE3DpHJ6IDIwMjUsIDAwOjI2OjE0IE1FWiBzY2hyaWViIEpvbmFz
+IEthcmxtYW46Cj4gSGkgQ2h1a3VuLAo+IAo+IE9uIDIwMjUtMDMtMTggMTM6MDAsIENodWt1biBQ
+YW4gd3JvdGU6Cj4gPiBBZGQgcHdtIG5vZGVzIGZvciBSSzM1MjguIFRoZSBQV00gY29yZSBvbiBS
+SzM1MjggaXMgdGhlIHNhbWUgYXMKPiA+IFJLMzMyOCwgYnV0IHRoZSBkcml2ZXIgZG9lcyBub3Qg
+c3VwcG9ydCBpbnRlcnJ1cHRzIHlldC4KPiAKPiBUaGUgZGV2aWNlIHRyZWUgc2hvdWxkIGRlc2Ny
+aWJlIHRoZSBoYXJkd2FyZSwgbm90IHdoYXQgdGhlIGRyaXZlcgo+IHN1cHBvcnQsIHNvIGludGVy
+cnVwdHMgc2hvdWxkIHByb2JhYmx5IGJlIGluY2x1ZGVkLgo+IAo+IEhvd2V2ZXIsIGxvb2tpbmcg
+Y2xvc2VyIGF0IFRSTSBmb3IgaS5lLiBSSzMzMjgsIFJLMzU2OCBhbmQgUkszNTg4IGl0Cj4gbG9v
+ayBsaWtlIHRoZSBmb2xsb3dpbmcgZGVzY3JpcHRpb24gaXMgbm90IGEgdHJ1ZSBkZXNjcmlwdGlv
+biBvZiB0aGUKPiBoYXJkd2FyZS4KPiAKPiBFYWNoIFBXTSBjb250cm9sbGVyIHNlZW0gdG8gc3Vw
+cG9ydCA0IGNoYW5uZWxzLCBoZXJlIChhbmQgZm9yIG9sZGVyIFJLCj4gU29Dcykgd2UgaW5zdGVh
+ZCBkZXNjcmliZSBlYWNoIGNoYW5uZWwgYW5kIG5vdCB0aGUgY29udHJvbGxlci4KClllcCwgdGhh
+dCBpcyBzb21ldGhpbmcgdGhhdCBkaWQgZ28gd3JvbmcgaW4gdGhlIHZlcnkgZWFybHkgZGF5cy4K
+QW5kIGFsbCBvdGhlciBSb2NrY2hpcCBzb2NzIGFsc28gaGF2ZSB0aGUgc2FtZSBpc3N1ZSAtIGV2
+ZW4gYmFjawp0byB0aGUgcmszMDY2LgoKU28geWVzLCBhdCBzb21lIHBvaW50IHdlIHNob3VsZCBv
+dmVyaGF1bCB0aGUgdGhpbmcuCgpCdXQgSSB0aGluayB0aGlzIGlzIG1vcmUgaW52b2x2ZWQsIGFz
+IHJpZ2h0IG5vdyBldmVyeXRoaW5nIGlzIGFpbWVkCmF0IHRoZSBjdXJyZW50IHNpbmdsZS1jaGFu
+bmVsIHN0YXR1cyBxdW8uCgoKSGVpa28KCgo+IE1heWJlIHNvbWV0aGluZyBsaWtlIGZvbGxvd2lu
+ZyB3b3VsZCBiZXR0ZXIgcmVwcmVzZW50IHRoZSBoYXJkd2FyZToKPiAKPiAJcHdtMDogcHdtQGZm
+YTkwMDAwIHsKPiAJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTI4LXB3bSI7Cj4gCQlyZWcg
+PSA8MHgwIDB4ZmZhOTAwMDAgMHgwIDB4MTAwMDA+Owo+IAkJY2xvY2tzID0gPCZjcnUgQ0xLX1BX
+TTA+LCA8JmNydSBQQ0xLX1BXTTA+Owo+IAkJY2xvY2stbmFtZXMgPSAicHdtIiwgInBjbGsiOwo+
+IAkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDUzIElSUV9UWVBFX0xFVkVMX0hJR0g+LAo+IAkJCSAg
+ICAgPEdJQ19TUEkgNTQgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gCX07Cj4gCj4gCXB3bTE6IHB3
+bUBmZmE5ODAwMCB7Cj4gCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzUyOC1wd20iOwo+IAkJ
+cmVnID0gPDB4MCAweGZmYTk4MDAwIDB4MCAweDEwMDAwPjsKPiAJCWNsb2NrcyA9IDwmY3J1IENM
+S19QV00xPiwgPCZjcnUgUENMS19QV00xPjsKPiAJCWNsb2NrLW5hbWVzID0gInB3bSIsICJwY2xr
+IjsKPiAJCWludGVycnVwdHMgPSA8R0lDX1NQSSA1NSBJUlFfVFlQRV9MRVZFTF9ISUdIPiwKPiAJ
+CQkgICAgIDxHSUNfU1BJIDU2IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+IAl9Owo+IAo+IFJlZ2Fy
+ZHMsCj4gSm9uYXMKPiAKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQ2h1a3VuIFBhbiA8YW1hZGV1
+c0BqbXUuZWR1LmNuPgo+ID4gLS0tCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azM1MjguZHRzaSB8IDgwICsrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gIDEgZmlsZSBjaGFu
+Z2VkLCA4MCBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazM1MjguZHRzaQo+ID4gaW5kZXggMWFmMGQwMzZjZjMyLi42MjFmYzE5YWMwYjMgMTAwNjQ0
+Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpCj4gPiAr
+KysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpCj4gPiBAQCAtNDY1
+LDYgKzQ2NSw4NiBAQCB1YXJ0Nzogc2VyaWFsQGZmYTI4MDAwIHsKPiA+ICAJCQlzdGF0dXMgPSAi
+ZGlzYWJsZWQiOwo+ID4gIAkJfTsKPiA+ICAKPiA+ICsJCXB3bTA6IHB3bUBmZmE5MDAwMCB7Cj4g
+PiArCQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1MjgtcHdtIiwKPiA+ICsJCQkJICAgICAi
+cm9ja2NoaXAscmszMzI4LXB3bSI7Cj4gPiArCQkJcmVnID0gPDB4MCAweGZmYTkwMDAwIDB4MCAw
+eDEwPjsKPiA+ICsJCQljbG9ja3MgPSA8JmNydSBDTEtfUFdNMD4sIDwmY3J1IFBDTEtfUFdNMD47
+Cj4gPiArCQkJY2xvY2stbmFtZXMgPSAicHdtIiwgInBjbGsiOwo+ID4gKwkJCSNwd20tY2VsbHMg
+PSA8Mz47Cj4gPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiA+ICsJCX07Cj4gPiArCj4gPiAr
+CQlwd20xOiBwd21AZmZhOTAwMTAgewo+ID4gKwkJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmsz
+NTI4LXB3bSIsCj4gPiArCQkJCSAgICAgInJvY2tjaGlwLHJrMzMyOC1wd20iOwo+ID4gKwkJCXJl
+ZyA9IDwweDAgMHhmZmE5MDAxMCAweDAgMHgxMD47Cj4gPiArCQkJY2xvY2tzID0gPCZjcnUgQ0xL
+X1BXTTA+LCA8JmNydSBQQ0xLX1BXTTA+Owo+ID4gKwkJCWNsb2NrLW5hbWVzID0gInB3bSIsICJw
+Y2xrIjsKPiA+ICsJCQkjcHdtLWNlbGxzID0gPDM+Owo+ID4gKwkJCXN0YXR1cyA9ICJkaXNhYmxl
+ZCI7Cj4gPiArCQl9Owo+ID4gKwo+ID4gKwkJcHdtMjogcHdtQGZmYTkwMDIwIHsKPiA+ICsJCQlj
+b21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzUyOC1wd20iLAo+ID4gKwkJCQkgICAgICJyb2NrY2hp
+cCxyazMzMjgtcHdtIjsKPiA+ICsJCQlyZWcgPSA8MHgwIDB4ZmZhOTAwMjAgMHgwIDB4MTA+Owo+
+ID4gKwkJCWNsb2NrcyA9IDwmY3J1IENMS19QV00wPiwgPCZjcnUgUENMS19QV00wPjsKPiA+ICsJ
+CQljbG9jay1uYW1lcyA9ICJwd20iLCAicGNsayI7Cj4gPiArCQkJI3B3bS1jZWxscyA9IDwzPjsK
+PiA+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gKwkJfTsKPiA+ICsKPiA+ICsJCXB3bTM6
+IHB3bUBmZmE5MDAzMCB7Cj4gPiArCQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1MjgtcHdt
+IiwKPiA+ICsJCQkJICAgICAicm9ja2NoaXAscmszMzI4LXB3bSI7Cj4gPiArCQkJcmVnID0gPDB4
+MCAweGZmYTkwMDMwIDB4MCAweDEwPjsKPiA+ICsJCQljbG9ja3MgPSA8JmNydSBDTEtfUFdNMD4s
+IDwmY3J1IFBDTEtfUFdNMD47Cj4gPiArCQkJY2xvY2stbmFtZXMgPSAicHdtIiwgInBjbGsiOwo+
+ID4gKwkJCSNwd20tY2VsbHMgPSA8Mz47Cj4gPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiA+
+ICsJCX07Cj4gPiArCj4gPiArCQlwd200OiBwd21AZmZhOTgwMDAgewo+ID4gKwkJCWNvbXBhdGli
+bGUgPSAicm9ja2NoaXAscmszNTI4LXB3bSIsCj4gPiArCQkJCSAgICAgInJvY2tjaGlwLHJrMzMy
+OC1wd20iOwo+ID4gKwkJCXJlZyA9IDwweDAgMHhmZmE5ODAwMCAweDAgMHgxMD47Cj4gPiArCQkJ
+Y2xvY2tzID0gPCZjcnUgQ0xLX1BXTTE+LCA8JmNydSBQQ0xLX1BXTTE+Owo+ID4gKwkJCWNsb2Nr
+LW5hbWVzID0gInB3bSIsICJwY2xrIjsKPiA+ICsJCQkjcHdtLWNlbGxzID0gPDM+Owo+ID4gKwkJ
+CXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gPiArCQl9Owo+ID4gKwo+ID4gKwkJcHdtNTogcHdtQGZm
+YTk4MDEwIHsKPiA+ICsJCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzUyOC1wd20iLAo+ID4g
+KwkJCQkgICAgICJyb2NrY2hpcCxyazMzMjgtcHdtIjsKPiA+ICsJCQlyZWcgPSA8MHgwIDB4ZmZh
+OTgwMTAgMHgwIDB4MTA+Owo+ID4gKwkJCWNsb2NrcyA9IDwmY3J1IENMS19QV00xPiwgPCZjcnUg
+UENMS19QV00xPjsKPiA+ICsJCQljbG9jay1uYW1lcyA9ICJwd20iLCAicGNsayI7Cj4gPiArCQkJ
+I3B3bS1jZWxscyA9IDwzPjsKPiA+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gKwkJfTsK
+PiA+ICsKPiA+ICsJCXB3bTY6IHB3bUBmZmE5ODAyMCB7Cj4gPiArCQkJY29tcGF0aWJsZSA9ICJy
+b2NrY2hpcCxyazM1MjgtcHdtIiwKPiA+ICsJCQkJICAgICAicm9ja2NoaXAscmszMzI4LXB3bSI7
+Cj4gPiArCQkJcmVnID0gPDB4MCAweGZmYTk4MDIwIDB4MCAweDEwPjsKPiA+ICsJCQljbG9ja3Mg
+PSA8JmNydSBDTEtfUFdNMT4sIDwmY3J1IFBDTEtfUFdNMT47Cj4gPiArCQkJY2xvY2stbmFtZXMg
+PSAicHdtIiwgInBjbGsiOwo+ID4gKwkJCSNwd20tY2VsbHMgPSA8Mz47Cj4gPiArCQkJc3RhdHVz
+ID0gImRpc2FibGVkIjsKPiA+ICsJCX07Cj4gPiArCj4gPiArCQlwd203OiBwd21AZmZhOTgwMzAg
+ewo+ID4gKwkJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTI4LXB3bSIsCj4gPiArCQkJCSAg
+ICAgInJvY2tjaGlwLHJrMzMyOC1wd20iOwo+ID4gKwkJCXJlZyA9IDwweDAgMHhmZmE5ODAzMCAw
+eDAgMHgxMD47Cj4gPiArCQkJY2xvY2tzID0gPCZjcnUgQ0xLX1BXTTE+LCA8JmNydSBQQ0xLX1BX
+TTE+Owo+ID4gKwkJCWNsb2NrLW5hbWVzID0gInB3bSIsICJwY2xrIjsKPiA+ICsJCQkjcHdtLWNl
+bGxzID0gPDM+Owo+ID4gKwkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gPiArCQl9Owo+ID4gKwo+
+ID4gIAkJc2FyYWRjOiBhZGNAZmZhZTAwMDAgewo+ID4gIAkJCWNvbXBhdGlibGUgPSAicm9ja2No
+aXAscmszNTI4LXNhcmFkYyI7Cj4gPiAgCQkJcmVnID0gPDB4MCAweGZmYWUwMDAwIDB4MCAweDEw
+MDAwPjsKPiAKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
