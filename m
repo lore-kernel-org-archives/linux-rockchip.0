@@ -4,63 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51333C35FFA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 17:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8231C35FFA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 21:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dDMT9QxHBFZoheTg91sHfUO2b0CszuKXZb5sHfln+08=; b=d6hRsC/pGemnqd
-	Ytw+UOUvWZ80UVOnYE7zRv4clv054Y6Zbt800DtEfmj8vhh5OJr8tROv+5Wo5LH3NvY0qS1g0boyh
-	NAJ0rS9eGB/BiXOqWkwf8W+7kXyeygi83LYgj3Sz666iMOvDvyr33IMSEsfrB3/YAf15W45fiGsDY
-	W7yiHwNoj+89dYg9P3ZM52/u6dzmOczNmdS319otYNATKty+/NCO+uYWynjiFjRQii7RmA61X9xjG
-	1T/KbvWVJgYgfDgv2R3HcCA4uWWPAKYF3R7pF932nTeagV8KHtgeDkC0cGdV214TiuP1AzKVNH0Gm
-	fv8qcZZ27O4tjTJxLK3g==;
+	List-Owner; bh=8lLFgK9xgMYF+V67v+unUGF4/qgM3hRcHxxgS2OJmgM=; b=h69wIdWf4tVQuB
+	m46J2ZvYSzOItHXdz5+7Y+QFV1U4aHI6J3+LqyfCICgs++pTwifa2CUDFg8d1gJr88RBFXGfgH6Yr
+	FPArKufREWyhqaDrw+IVaVqpfn2KHAEOjiC4vN/L6AktIYAJY+V27Ip2PrfNLYXVHLjVUeeDFSM76
+	/Me0ldoae+kIqG4dzgiQncbSPXHVd9XdsaTqSSe/SoMXgbR9SsOKxNamidPW2wot1yzyU9X4/NHMu
+	vVUvNxPn3E4qb6Dnrhc2ULmTGqsRFSg8yw6WPrRw8MP+22+9QaqhT+1p/CA4Z2cC75OrQpnfKdLQr
+	DZ9RhgSKEdFT0pTKm8Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuxRl-00000009k9E-13C1;
-	Wed, 19 Mar 2025 17:43:17 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tv1DI-0000000ABJ7-0s3r;
+	Wed, 19 Mar 2025 21:44:36 +0000
+Received: from smtp.forwardemail.net ([121.127.44.59])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tuxOa-00000009jcU-2xlL;
-	Wed, 19 Mar 2025 17:40:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6CE9DA4927B;
-	Wed, 19 Mar 2025 17:34:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A646C4CEE4;
-	Wed, 19 Mar 2025 17:39:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742405999;
-	bh=3iS1Nid3hVupIVK8yX+AtPOSA9VbgHfzJ6vsdb/SE9w=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=mipelKeXek0u7WEJJhh/0KMAGYRgGSyMkdw/pPEzcT4WMmww+U6Wd7D983rVPLsep
-	 VsN1304unfrt/5jh+/bS6tMK2hi23RzOGZQCIknhXjLCr3zJOwB0hnr4yulMqd+4pt
-	 bXochih0TaBQ5FF/W/J8Y9Z445F601/Qgn8hIdjUNAqlYQ4W2iW7HsT5NfubHt0JC5
-	 8ipu96Wknmc0c+SFNNZqnkts6s5GgdKo3JEwgBwkcx3fd8keXDFdH+c7+JMQQOx60i
-	 ckoJ9zze9a1wwZIv2gOLfDoOUXgtceqmrcEiAcUyijBICO23/HCl0HMOmSOgJlPmYg
-	 6DUu/9WHFXyKQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 71042380CFFE;
-	Wed, 19 Mar 2025 17:40:36 +0000 (UTC)
+	id 1tv1DG-0000000ABHu-0h9p
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Mar 2025 21:44:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1742420672; bh=go+CvYPHwP2MHqmTP00wWpMhDlSmzW68Q7BuPATSTYo=;
+ b=fegciJ3mHDdQPlzECEn7fGv+py4Rz75P9NQOD+k8AZLlEkTquMmsdjh4UYGPMQNPdoezhK14A
+ rqZA50IDRtw1by7YmvygyarmV+zdHGNrcl3L1kv3W6pF9euDja7oXIh9+jjsqn1Ws+SMnGx3F4C
+ Z9HWVywIMTDplqXUQZETw267JcY1vGaE+8UB1bUQKLAIEn+/Co+orYarcO+s8CqqH6utydDksHb
+ tuFzd9LArUXGNoe55MC8TnkAfH/k6K7tmUHWMknJCVNURPu8652BccmSYFw0OAN4YlAMi1FbZXY
+ GsXQ/2lEaUgeSaazstt/tPXq7WVctjDrvlXMAVuGxQfA==
+X-Forward-Email-ID: 67db3abacf4d592372b993ee
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.59
+X-Forward-Email-Version: 0.4.40
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>
+Cc: Yao Zi <ziyao@disroot.org>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH net-next v3 1/5] dt-bindings: net: rockchip-dwmac: Add compatible string for RK3528
+Date: Wed, 19 Mar 2025 21:44:05 +0000
+Message-ID: <20250319214415.3086027-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250319214415.3086027-1-jonas@kwiboo.se>
+References: <20250319214415.3086027-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-Subject: Re: [PATCH RESEND net-next v2] net: stmmac: dwmac-rk: Provide FIFO sizes
- for DWMAC 1000
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174240603529.1129938.15321664004147428078.git-patchwork-notify@kernel.org>
-Date: Wed, 19 Mar 2025 17:40:35 +0000
-References: <20250312163426.2178314-1-wens@kernel.org>
-In-Reply-To: <20250312163426.2178314-1-wens@kernel.org>
-To: Chen-Yu Tsai <wens@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, heiko@sntech.de, wens@csie.org,
- hayashi.kunihiko@socionext.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_104000_807340_0DF541BA 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20250319_144434_407702_0A574DCC 
+X-CRM114-Status: UNSURE (   9.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,30 +89,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
+Ethernet QoS IP.
 
-This patch was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+Add compatible string for the RK3528 variant.
 
-On Thu, 13 Mar 2025 00:34:26 +0800 you wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
-> 
-> The DWMAC 1000 DMA capabilities register does not provide actual
-> FIFO sizes, nor does the driver really care. If they are not
-> provided via some other means, the driver will work fine, only
-> disallowing changing the MTU setting.
-> 
-> [...]
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+---
+Changes in v3:
+- Rebase on latest net-next/main
+- Collect r-b tag
 
-Here is the summary with links:
-  - [RESEND,net-next,v2] net: stmmac: dwmac-rk: Provide FIFO sizes for DWMAC 1000
-    https://git.kernel.org/netdev/net-next/c/d3c58b656c97
+Changes in v2:
+- Restrict the minItems: 4 change to rockchip,rk3528-gmac
 
-You are awesome, thank you!
+The enum will be extended in a future patch, Pending RK3562 and a future
+RK3506 variant also only have 4 clocks.
+
+Because snps,dwmac-4.20a is already listed in snps,dwmac.yaml adding the
+rockchip,rk3528-gmac compatible did not seem necessary.
+---
+ .../devicetree/bindings/net/rockchip-dwmac.yaml  | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 63ee0cc7a8f8..0ac7c4b47d6b 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -24,6 +24,7 @@ select:
+           - rockchip,rk3366-gmac
+           - rockchip,rk3368-gmac
+           - rockchip,rk3399-gmac
++          - rockchip,rk3528-gmac
+           - rockchip,rk3568-gmac
+           - rockchip,rk3576-gmac
+           - rockchip,rk3588-gmac
+@@ -49,6 +50,7 @@ properties:
+               - rockchip,rv1108-gmac
+       - items:
+           - enum:
++              - rockchip,rk3528-gmac
+               - rockchip,rk3568-gmac
+               - rockchip,rk3576-gmac
+               - rockchip,rk3588-gmac
+@@ -66,7 +68,7 @@ properties:
+       - const: eth_wake_irq
+ 
+   clocks:
+-    minItems: 5
++    minItems: 4
+     maxItems: 8
+ 
+   clock-names:
+@@ -140,6 +142,18 @@ allOf:
+       properties:
+         rockchip,php-grf: false
+ 
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - rockchip,rk3528-gmac
++    then:
++      properties:
++        clocks:
++          minItems: 5
++
+ unevaluatedProperties: false
+ 
+ examples:
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.49.0
 
 
 _______________________________________________
