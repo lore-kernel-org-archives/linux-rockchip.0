@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AD4C36001
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Mar 2025 23:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92549C36000
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Mar 2025 00:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lLRq1HenHCypap5rgtQEzNHZdM+tUNQiD/ON5vH3p08=; b=FqNEyu3c53whQQ
-	7VzwWS7Sq0+VLS3nFHA/3ajWViBSkxaG1c4OMDjpA4glwrKWteIbhx30QYtM946N/WE0rAk/rx7n/
-	jV9SioNHQc/Y2QozzaqN1oXaYCEvNr4ZnmypEMsKOyZI5/4HKgIfAggfmIYcX33TmGgbr3yzIdpMX
-	7/wvs9BNLiQ5muRedQ6Jnj7yH6hCLhtfDnIHX0qgnMzyiibxi1Oa5aKHxNMU1DK1hFLL4WwyWZvUe
-	R6csl91uO6YNm5ulmBdkEQTspt9TNfJetT/77UqKMInOlJ4Dlt2mCgqq6AQbgPFcnSLxCXrQeNBld
-	QE1QHvVEK2qQDpjrcPgQ==;
+	List-Owner; bh=ppF45QSH62ioVb5D7ViSRcif+bfRVLyZwXFuf/AlC5U=; b=ca9ii9Zlbc54qy
+	0FXK9+PBe8lCVueRb8XY31JWNpL9KjJH/+V09aNeWhiyvGp64JkZkkpkGPApeIGcXqGvrmlngi9hA
+	EUl/FAOT5WBcbfyWS8OpAl1Gqw4Jp6Jk2anvAZ/5xd+leIZf39wwz6MOeUCPzfVgUvhLUZ6cgH3b3
+	SlBNAHyA1bcCxAn4cELpKlA5qsTy3I49xuKOrAqEyc/jEXwizSeCK76a/LQaHt1EiI7ppaDDp3o8p
+	vQJ3kVMgwHTxuF/vt6n++c1+ol/VbTlJyPROzCzAgxH/MS12ZSl8AGkpTsG9C+731yIuyhxO0m1GA
+	eFPgPHfJYCynAvWxmXSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv3F5-0000000AZT9-0yEN;
-	Wed, 19 Mar 2025 23:54:35 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1tv3lU-0000000AcCR-0V0L;
+	Thu, 20 Mar 2025 00:28:04 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tv3DL-0000000AYuH-38Fg
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Mar 2025 23:52:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1742428366;
- bh=v2ctdz7uayF07UCPNi//R/x3v+JmE0rED8OH/LNmzM8=;
- b=o+ujyX3ZkBJjZrwxuK2D3/jnytXNKlSfKPQkKP6535IT4WPtLyKUbFsbiHcRppWlqii2O5k0u
- XPQDbkaX5gUH4BpCyfJ0Ov9nVYA42cKeXKPL0VYaTWoKdxy26Dv0vK8EIsKMUsXdhf4U7lhS2CZ
- 2C2yohko+t9ao9Y+iv3L4LCD17mwOdN1q5h+nt/hko6HpTd85iy/+jswZvSV2+uZHRrOErpnS2E
- M7nCvaSPT5dBUDyJY4BIizv4sDZM7iEgM00N5lWJsSzijjP//jvX1SDYKR436Si68ycVNZvQv1K
- RoQFgbYfKQ7gBQhcIg7v1UAFzGes6GIy351X3/58jhbg==
-X-Forward-Email-ID: 67db58c827ee59b783a8734c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 0.4.40
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <eabc0fb8-10cc-465c-9434-b0804418dcb6@kwiboo.se>
-Date: Thu, 20 Mar 2025 00:52:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1tv3lR-0000000AcBn-2eq4;
+	Thu, 20 Mar 2025 00:28:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=QZ8+kxRgHxsg9Lq20FwRg26DNXtx0z83Ab3cGQEjgIQ=; b=I+zwFf7lk9fa4q2LzhSi0cKayA
+	6thWCCbUK6nO0b9AVz/GbEbotAhUMSOaXR23IemJpeyeF4BIMaKNq2bl7ycE5P/lgrlpSD8zWC+jJ
+	7dZQ4y80OOdRKTUc67fOO3pt+DI43qSdai/4uTj8Eli3g0AT7O+XpI8Cnix3ghC19Tsw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1tv3lA-006Qcw-CG; Thu, 20 Mar 2025 01:27:44 +0100
+Date: Thu, 20 Mar 2025 01:27:44 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>, Yao Zi <ziyao@disroot.org>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com
 Subject: Re: [PATCH net-next v3 5/5] net: stmmac: dwmac-rk: Add initial
  support for RK3528 integrated PHY
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, David Wu <david.wu@rock-chips.com>,
- Yao Zi <ziyao@disroot.org>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
+Message-ID: <ab58c128-f598-4586-a912-0d6128934fcc@lunn.ch>
 References: <20250319214415.3086027-1-jonas@kwiboo.se>
  <20250319214415.3086027-6-jonas@kwiboo.se>
  <d53a2119-2650-4a87-af94-1b9c2297cf72@lunn.ch>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <d53a2119-2650-4a87-af94-1b9c2297cf72@lunn.ch>
+ <eabc0fb8-10cc-465c-9434-b0804418dcb6@kwiboo.se>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <eabc0fb8-10cc-465c-9434-b0804418dcb6@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250319_165248_194746_B930C328 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20250319_172801_668264_0FD2661E 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +85,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+>   #define RK630_PHY_ID				0x00441400
 
-On 2025-03-20 00:27, Andrew Lunn wrote:
-> On Wed, Mar 19, 2025 at 09:44:09PM +0000, Jonas Karlman wrote:
->> Rockchip RK3528 (and RV1106) has a different integrated PHY compared to
->> the integrated PHY on RK3228/RK3328.
+O.K. different which is good.
+
+>   /*
+>    * Fixed address:
+>    * Addr: 1 --- RK630@S40
+>    *       2 --- RV1106@T22
+>    */
+>   #define PHY_ADDR_S40				1
+>   #define PHY_ADDR_T22				2
 > 
-> What ID does this PHY have? Is it just the reset which is different,
-> or is it actually a different PHY, and the rockchip PHY driver needs
-> additions?
+> [1] https://lore.kernel.org/all/20250310001254.1516138-2-jonas@kwiboo.se/
+> [2] https://github.com/armbian/linux-rockchip/blob/rk-6.1-rkr5/drivers/net/phy/rk630phy.c
 
-Sorry, look like I missed to include the phy-id reported in this patch
-and only included that detail in the related device tree patch [1].
+The vendor driver is going to need some cleanup before you post it....
 
-This PHY seem to be different compared to the PHY used in older SoCs.
-
-The PHY identified on addr 0x2 as 0044.1400 and in vendor kernel this
-relate to the Rockchip RK630 PHY [2].
-
-  #define RK630_PHY_ID				0x00441400
-
-  /*
-   * Fixed address:
-   * Addr: 1 --- RK630@S40
-   *       2 --- RV1106@T22
-   */
-  #define PHY_ADDR_S40				1
-  #define PHY_ADDR_T22				2
-
-[1] https://lore.kernel.org/all/20250310001254.1516138-2-jonas@kwiboo.se/
-[2] https://github.com/armbian/linux-rockchip/blob/rk-6.1-rkr5/drivers/net/phy/rk630phy.c
-
-Regards,
-Jonas
-
-> 
-> 	Andrew
-
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
