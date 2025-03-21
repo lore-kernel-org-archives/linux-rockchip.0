@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C5D1C28B30
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Mar 2025 03:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 330F1C28B30
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Mar 2025 03:39:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uhvDfChMG6YgIrqt3+lTPVfl04ElPMaxs+0+JZumGO0=; b=Ne4eEcxw4/5g+H
-	PuqHOwmy3SLbEvAkkWjJZN1gntgHJPg+UOBFk2fNTu1FAdPeoZDqY3tvYUmPCeWMgovQQcxaj6KvP
-	Kdh7EEXecJ5oDegnz2STpKGytzk1QfEMRacDW365UyM3PnxEhl4MRisT+Cu2nMTDD2tauuwqcMhGm
-	27cpGiyUJfAjocJTAW15A/YVpLnGqRFbIQwk7ysqekzHLt+KncPrq4hoqmDUxeEJFk1L1ibIv0KCy
-	Nc//Ta8dvQ4x/PEZ3q27CRNjryXNMHVrlD6dw8Uo+M3mVyqEgwVhOgE5G59Xj2nel49tcjSIWsrit
-	3Ec+x+xYBgXLZa8ID33A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=05otT53RD/aAyP+T0NC42EuVK+jIcJUTHvHw/a8Dthw=; b=GGzLAmnVGbr47SXbozX726wxy0
+	0Xx0SIkFrSa7ou7uA3A0gMlR0nAeCdjjx6QO/yIzSs/nHy9WJ6fowqTtBcuYCyYcnjs/fXI6ta9Kt
+	7xklKcHxUz7JEr5w5W7BD696Xq+/Tfp+6RvPGpP9lrnlJ1wpFVjavzJH39j8ONNQx5k8xIdj5NFro
+	xQXpOFyXp/bzDZGqwBm/XA0X6+tVqi4+8Av96wQa7ExxrNFwxP88QxSPreRy5tIZ6Rh5KAzp9CYa2
+	+mZ0wuiusr/RPuYzQxMuR53dsdORF+ZHc9vRmQgyKvb8cOUnmeRa9WYciQ5jtKyEVrnwrjke9pGgo
+	CT3I5iNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvT5v-0000000Dl47-0Xjb;
-	Fri, 21 Mar 2025 03:30:51 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1tvTDt-0000000DlVi-3vMO;
+	Fri, 21 Mar 2025 03:39:05 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvT48-0000000Dkuk-1nSt;
-	Fri, 21 Mar 2025 03:29:05 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1742527737;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=TvimR6SKo0jtW7eTJ4niI635OpzUmByoQ1ePS3vCVMo=;
-	b=efsqqC+In51YqG17swWvtDJmtXPw/VfdVPNwfuCEPtWye0J0e3juf/qxyhpq6e38T9cmjx
-	psIlggfq4gYjKmDY12xsnKMfzBUyPvcDgPbzZboB5JpXzv6VValNa6hnK/5DCCsVU2Boag
-	+h3tq7LhyDyoFJSwTul01XrJ0ObfKkm1Nr4PP2YotgGcwntmOZdfNzN3J6aOX3vW0w0aEI
-	i0ONlST1c908yXV9jfKeBqHf/YKasM6poA8P3cSmzKLFzXB88OY2M6uVKETwFQCdTM6zx8
-	Yf3ZOuWUiCj4TujmlOBAdtgCmBsH4i6Sgojwu2rCOe5EOa239fQvs6/KIaSi9w==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	stable@vger.kernel.org,
-	Alexey Charkov <alchark@gmail.com>,
-	Quentin Schulz <quentin.schulz@cherry.de>
-Subject: [PATCH] arm64: dts: rockchip: Remove overdrive-mode OPPs from RK3588J SoC dtsi
-Date: Fri, 21 Mar 2025 04:28:49 +0100
-Message-Id: <f929da061de35925ea591c969f985430e23c4a7e.1742526811.git.dsimic@manjaro.org>
+	id 1tvTCA-0000000DlKc-3ZYG;
+	Fri, 21 Mar 2025 03:37:20 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1742528236;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r0RO79xWz5uplYpgJ0aagZslkAQuZeU7KWZBSxdHL84=;
+	b=uwFpPbx4k0pVxvvfDCpYP9Lzo0PEsFw0hCtQgOZaLCL2HzQkhNv8Dl5BtayT85WnavzCDg
+	oYm392g5GozjLeSKyGuv+x+YJ1O2bRm+jffBPguQDC1GNYy/JeHAlS4tqYQIVyoo8xQ473
+	nszaAOusS6l6X+z8GmM/Thqd0f2owCeK3h/zCW0WiM4W1KFeGBMB6LzrhR/NYAXX6AbgpY
+	cFpjpnxUwAdHGQlMBQx1DCwV8Nk6Bd2hwSB6RaKGHNH70zGc5kvdqJsGh/2QfKfJ/wNxu4
+	K+Ult3oMOtD/ysjULEgMXyYAWf3QHRDVrPPQOyEe9DrhbMCzOHnOoUN8h30B+Q==
+Date: Fri, 21 Mar 2025 04:37:16 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Quentin Schulz <quentin.schulz@cherry.de>, Alexey Charkov
+ <alchark@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar
+ <viresh.kumar@linaro.org>, Chen-Yu Tsai <wens@kernel.org>, Diederik de Haas
+ <didi.debian@cknow.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v5 7/8] arm64: dts: rockchip: Add OPP data for CPU cores
+ on RK3588j
+In-Reply-To: <80c7d9fcdd270df2c61fbd61eec44d70@manjaro.org>
+References: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
+ <a56b59a21dc3c21192fe45197eee4865@manjaro.org>
+ <2cf3889741f84584d8f23a4407fed08e@manjaro.org> <3271211.5fSG56mABF@phil>
+ <80c7d9fcdd270df2c61fbd61eec44d70@manjaro.org>
+Message-ID: <4432e7f5dd9cb75584fb36e1f52497aa@manjaro.org>
+X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250320_202900_853555_09A7C827 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20250320_203719_178753_3E18076C 
+X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,207 +75,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The differences in the vendor-approved CPU and GPU OPPs for the standard
-Rockchip RK3588 variant [1] and the industrial Rockchip RK3588J variant [2]
-come from the latter, presumably, supporting an extended temperature range
-that's usually associated with industrial applications, despite the two SoC
-variant datasheets specifying the same upper limit for the allowed ambient
-temperature for both variants.  However, the lower temperature limit is
-specified much lower for the RK3588J variant. [1][2]
-
-To be on the safe side and to ensure maximum longevity of the RK3588J SoCs,
-only the CPU and GPU OPPs that are declared by the vendor to be always safe
-for this SoC variant may be provided.  As explained by the vendor [3] and
-according to its datasheet, [2] the RK3588J variant can actually run safely
-at higher CPU and GPU OPPs as well, but only when not enjoying the assumed
-extended temperature range that the RK3588J, as an SoC variant targeted
-specifically at industrial applications, is made (or binned) for.
-
-Thus, only the CPU and GPU OPPs that are specified by the vendor to be safe
-throughout the entire RK3588J's extended temperature range may be provided,
-while anyone who actually can ensure that their RK3588J-based board is
-never going to run within the extended temperature range, may probably
-safely apply a DT overlay that adds the higher CPU and GPU OPPs.  As we
-obviously can't know what will be the runtime temperature conditions for
-a particular board, we may provide only the always-safe OPPs.
-
-With all this and the downstream RK3588(J) DT definitions [4][5] in mind,
-let's delete the RK3588J CPU and GPU OPPs that are not considered belonging
-to the normal operation mode for this SoC variant.  To quote the RK3588J
-datasheet [2], "normal mode means the chipset works under safety voltage
-and frequency;  for the industrial environment, highly recommend to keep in
-normal mode, the lifetime is reasonably guaranteed", while "overdrive mode
-brings higher frequency, and the voltage will increase accordingly;  under
-the overdrive mode for a long time, the chipset may shorten the lifetime,
-especially in high temperature condition".
-
-To sum up the RK3588J datasheet [2] and the vendor-provided DTs, [4][5]
-the maximum allowed CPU core and GPU frequencies are as follows:
-
-   IP core    | Normal mode | Overdrive mode
-  ------------+-------------+----------------
-   Cortex-A55 |   1,296 MHz |      1,704 MHz
-   Cortex-A76 |   1,608 MHz |      2,016 MHz
-   GPU        |     700 MHz |        850 MHz
-
-Unfortunately, when it comes to the actual voltages for the RK3588J CPU and
-GPU OPPs, there's a discrepancy between the RK3588J datasheet [2] and the
-downstream kernel code. [4][5]  The RK3588J datasheet states that "the max.
-working voltage of CPU/GPU/NPU is 0.75 V under the normal mode", while the
-downstream kernel code actually allows voltage ranges that go up to 0.95 V,
-which is still within the voltage range allowed by the datasheet.  However,
-the RK3588J datasheet also tells us to "strictly refer to the software
-configuration of SDK and the hardware reference design", so let's embrace
-the voltage ranges provided by the downstream kernel code, which also
-prevents the undesirable theoretical outcome of ending up with no usable
-OPPs on a particular board, as a result of the board's voltage regulator(s)
-being unable to deliver the exact voltages, for whatever reason.
-
-The above-described voltage ranges for the RK3588J CPU OPPs remain taken
-from the downstream kernel code [4][5] by picking the highest, worst-bin
-values, which ensure that all RK3588J bins will work reliably.  Yes, with
-some power inevitably wasted as unnecessarily generated heat, but the
-reliability is paramount, together with the longevity.  This deficiency
-may be revisited separately at some point in the future.
-
-The provided RK3588J CPU OPPs follow the slightly debatable "provide only
-the highest-frequency OPP from the same-voltage group" approach that's been
-established earlier, [6] as a result of the "same-voltage, lower-frequency"
-OPPs being considered inefficient from the IPA governor's standpoint, which
-may also be revisited separately at some point in the future.
-
-[1] https://wiki.friendlyelec.com/wiki/images/e/ee/Rockchip_RK3588_Datasheet_V1.6-20231016.pdf
-[2] https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2403201054_Rockchip-RK3588J_C22364189.pdf
-[3] https://lore.kernel.org/linux-rockchip/e55125ed-64fb-455e-b1e4-cebe2cf006e4@cherry.de/T/#u
-[4] https://raw.githubusercontent.com/rockchip-linux/kernel/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-[5] https://raw.githubusercontent.com/rockchip-linux/kernel/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-[6] https://lore.kernel.org/all/20240229-rk-dts-additions-v3-5-6afe8473a631@gmail.com/
-
-Fixes: 667885a68658 ("arm64: dts: rockchip: Add OPP data for CPU cores on RK3588j")
-Fixes: a7b2070505a2 ("arm64: dts: rockchip: Split GPU OPPs of RK3588 and RK3588j")
-Cc: stable@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Alexey Charkov <alchark@gmail.com>
-Helped-by: Quentin Schulz <quentin.schulz@cherry.de>
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3588j.dtsi | 53 ++++++++---------------
- 1 file changed, 17 insertions(+), 36 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-index bce72bac4503..3045cb3bd68c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-@@ -11,74 +11,59 @@ cluster0_opp_table: opp-table-cluster0 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
--		opp-1416000000 {
--			opp-hz = /bits/ 64 <1416000000>;
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
- 			opp-microvolt = <750000 750000 950000>;
- 			clock-latency-ns = <40000>;
- 			opp-suspend;
- 		};
--		opp-1608000000 {
--			opp-hz = /bits/ 64 <1608000000>;
--			opp-microvolt = <887500 887500 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-1704000000 {
--			opp-hz = /bits/ 64 <1704000000>;
--			opp-microvolt = <937500 937500 950000>;
-+		opp-1296000000 {
-+			opp-hz = /bits/ 64 <1296000000>;
-+			opp-microvolt = <775000 775000 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 	};
- 
- 	cluster1_opp_table: opp-table-cluster1 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
-+		opp-1200000000{
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
- 		opp-1416000000 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <750000 750000 950000>;
-+			opp-microvolt = <762500 762500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 		opp-1608000000 {
- 			opp-hz = /bits/ 64 <1608000000>;
- 			opp-microvolt = <787500 787500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
--		opp-1800000000 {
--			opp-hz = /bits/ 64 <1800000000>;
--			opp-microvolt = <875000 875000 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-2016000000 {
--			opp-hz = /bits/ 64 <2016000000>;
--			opp-microvolt = <950000 950000 950000>;
--			clock-latency-ns = <40000>;
--		};
- 	};
- 
- 	cluster2_opp_table: opp-table-cluster2 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
-+		opp-1200000000{
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
- 		opp-1416000000 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <750000 750000 950000>;
-+			opp-microvolt = <762500 762500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 		opp-1608000000 {
- 			opp-hz = /bits/ 64 <1608000000>;
- 			opp-microvolt = <787500 787500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
--		opp-1800000000 {
--			opp-hz = /bits/ 64 <1800000000>;
--			opp-microvolt = <875000 875000 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-2016000000 {
--			opp-hz = /bits/ 64 <2016000000>;
--			opp-microvolt = <950000 950000 950000>;
--			clock-latency-ns = <40000>;
--		};
- 	};
- 
- 	gpu_opp_table: opp-table {
-@@ -104,10 +89,6 @@ opp-700000000 {
- 			opp-hz = /bits/ 64 <700000000>;
- 			opp-microvolt = <750000 750000 850000>;
- 		};
--		opp-850000000 {
--			opp-hz = /bits/ 64 <800000000>;
--			opp-microvolt = <787500 787500 850000>;
--		};
- 	};
- };
- 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gYWxsLAoKT24gMjAyNS0wMy0xMyAyMDo0MywgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IE9u
+IDIwMjUtMDMtMTMgMjA6MDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+PiBBbSBEb25uZXJzdGFn
+LCAxMy4gTcOkcnogMjAyNSwgMTE6NDI6MTcgTUVaIHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+Pj4g
+T24gMjAyNS0wMy0xMiAxMTozNCwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+Pj4gSnVzdCBhcyBhIG5v
+dGUsIGV2ZXJ5dGhpbmcgYWJvdmUgKGFuZCBldmVuIGEgYml0IG1vcmUpIGlzIGNvbmZpcm1lZAo+
+Pj4gYW5kIGNsZWFybHkgZGVzY3JpYmVkIGluIHRoZSBwdWJsaWNseSBhdmFpbGFibGUgUkszNTg4
+SiBkYXRhc2hlZXQsCj4+PiB3aGljaCBJJ2xsIHByb3ZpZGUgYXMgYSByZWZlcmVuY2UgaW4gbXkg
+dXBjb21pbmcgcGF0Y2guCj4+IAo+PiBzbyBqdXN0IHRvIHJlaXRlcmF0ZSBteSBzdGFuY2UsIGlu
+IG1haW5saW5lIEkgcmVhbGx5IG9ubHkgd2FudCAKPj4gZnJlcXVlbmNpZXMKPj4gdGhhdCBhcmUg
+bm90IHBvc3NpYmx5IGluZmx1ZW5jaW5nIHRoZSBsaWZldGltZSBvZiB0aGUgY2hpcC4KPj4gCj4+
+IEl0IGRvZXNuJ3QgZXZlbiBtYXR0ZXIgYWJvdXQgdGhlIHZhcmlhbnQgd2UncmUgdGFsa2luZyBh
+Ym91dCBiZWluZwo+PiBpbmR1c3RyaWFsIDotKSAuIFdoZW4gc29tZW9uZSBpcyB1c2luZyBtYWlu
+bGluZSBJIHdhbnQgdGhlbSB0byBiZQo+PiByZWFzb25hYmxlIGFzc3VyZWQgdGhhdCB3ZSBkb24n
+dCBoYXZlIHN0dWZmIGluIGhlcmUgdGhhdCBtYXkgYWZmZWN0Cj4+IHRoZSBsaWZldGltZSBvZiB0
+aGVpciBib2FyZC4KPj4gCj4+IEFsbCBnYW1ibGluZyBvbiBwZXJmb3JtYW5jZSBmb3IgcG9zc2li
+bGUgbGlmZXRpbWUgcmVkdWN0aW9uIHBlb3BsZQo+PiBjYW4gZG8gb24gdGhlaXIgb3duIC4uLiBm
+b3IgZXhhbXBsZSB3aXRoIGEgZHQtb3ZlcmxheSA7LSkgLgo+PiAKPj4gU28gVEw7RFIsIEkgYWdy
+ZWUgdG8gYm90aCBRdWVudGluIGFuZCBEcmFnYW4KPiAKPiBUaGFua3MhICBJbmRlZWQsIHdlIG11
+c3QgcHJvdmlkZSBvbmx5IHRoZSBPUFBzIHRoYXQgYXJlIGRlY2xhcmVkCj4gYnkgdGhlIG1hbnVm
+YWN0dXJlciB0byBiZSBhbHdheXMgc2FmZSBmb3IgdGhlIHBhcnRpY3VsYXIgU29DCj4gdmFyaWFu
+dC4gIFRoZSBSSzM1ODhKIGlzIGFjdHVhbGx5IGEgZ29vZCBleGFtcGxlLCBiZWNhdXNlIGl0LCBp
+bgo+IHRoZW9yeSwgY2FuIHJ1biBzYWZlbHkgYXQgaGlnaGVyIE9QUHMgYXMgd2VsbCwgYnV0IG9u
+bHkgd2hlbiBub3QKPiBlbmpveWluZyB0aGUgZXh0ZW5kZWQgdGVtcGVyYXR1cmUgcmFuZ2UgdGhh
+dCB0aGUgUkszNTg4SiwgYXMgYW4KPiBTb0MgdmFyaWFudCB0YXJnZXRlZCBhdCBpbmR1c3RyaWFs
+IGFwcGxpY2F0aW9ucywgaXMgc3BlY2lmaWNhbGx5Cj4gbWFkZSAob3IgYmlubmVkKSBmb3IuCj4g
+Cj4gVGh1cywgd2UgbXVzdCBzdXBwb3J0IG9ubHkgdGhlIFJLMzU4OEogT1BQcyB0aGF0IGFyZSBk
+ZWNsYXJlZCB0bwo+IGJlIHNhZmUgdGhyb3VnaG91dCB0aGUgZW50aXJlIGV4dGVuZGVkIHRlbXBl
+cmF0dXJlIHJhbmdlLCB3aGlsZQo+IGFueW9uZSB3aG8gYWN0dWFsbHkgY2FuIGFzc3VyZSB0aGF0
+IHRoZWlyIFJLMzU4OEotYmFzZWQgYm9hcmQgaXMKPiBuZXZlciBnb2luZyB0byBydW4gd2l0aGlu
+IHRoZSBleHRlbmRlZCB0ZW1wZXJhdHVyZSByYW5nZSwgcHJvYmFibHkKPiBtYXkgc2FmZWx5IGFw
+cGx5IGFuIG92ZXJsYXkgdGhhdCBhZGRzIHRoZSBoaWdoZXIgT1BQcy4gIEFzIHdlCj4gb2J2aW91
+c2x5IGNhbid0IGtub3cgd2hhdCB3aWxsIGJlIHRoZSB0ZW1wZXJhdHVyZSBjb25kaXRpb25zLCB3
+ZQo+IG1heSBwcm92aWRlIG9ubHkgdGhlIGxvd2VyIE9QUHMgdGhhdCBhcmUgYWx3YXlzIHNhZmUu
+Cj4gCj4gSSdsbCBmaW5pc2ggdGhlIHBhdGNoIGFuZCBzZW5kIGl0IG92ZXIgdG9tb3Jyb3cgb3Ig
+c28uLi4gIEkgc3RpbGwKPiBuZWVkIHRvIGdvIHRocm91Z2ggdGhlIGNoYW5nZXMgb25jZSBhZ2Fp
+biwgdG8gbWFrZSAxMDAlIHN1cmUgSSd2ZQo+IG1pc3NlZCBub3RoaW5nLCBhbmQgdGhhdCBJIGhh
+dmVuJ3QgaW5jbHVkZWQgYW55dGhpbmcgZXh0cmFuZW91cy4gOikKCkZvciBmdXR1cmUgcmVmZXJl
+bmNlIGFuZCBmb3IgYW55b25lIGludGVyZXN0ZWQsIGJlbG93IGlzIHRoZSBsaW5rCnRvIHRoZSBh
+Ym92ZS1tZW50aW9uZWQgcGF0Y2guCgpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2Nr
+Y2hpcC9mOTI5ZGEwNjFkZTM1OTI1ZWE1OTFjOTY5Zjk4NTQzMGUyM2M0YTdlLjE3NDI1MjY4MTEu
+Z2l0LmRzaW1pY0BtYW5qYXJvLm9yZy9ULyN1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
