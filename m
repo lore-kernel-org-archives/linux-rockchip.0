@@ -4,82 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B4CC36001
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Mar 2025 12:59:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0960C36001
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Mar 2025 14:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9AVPjoBcatR+C2EtCvbILolTKtzWWUwl6ULZmBANTYM=; b=vVKplJr6kz38sV
-	WH1ZM38V0Ca0kJpHOYn0UDtb/yCkncjrdEpM6KCxZSvpnG+T12kd2W8fE8fIY1zKrH7VXzBRuAzVB
-	jXE79SZOY3W/TeXTPzwY61EPNiXqwXJm9FGSqcE4CGrLK0BAnjUxvsgw4tTRWj0bvhVv0TUBNjKyA
-	L+ZQN8ACrcmAcH0xHI/KUSPkiPpb2lzJ/MtjGNz1X31vjo8LVvw7RlZQueIr649uUu2aExEIphuNd
-	mFmr/jGTXIk0zcZ1V389ILfOYY2GRy+D60V6y4HYrX1ZdhCzP1befl7ErzMC7aK0icuFcFE+5ccrT
-	/JwVpu5yvVPmYoHV6Qqg==;
+	List-Owner; bh=E224W0w+3WANbRyycOU+pIjIk2t2kmqL6/vfPn6LT54=; b=TTC9RuQKjXsaAD
+	s4sx0H5KnGoQP6HNzFE+x+2nFzl60YX9bJfJ7GUoU4pgGD/3D+znXfkp6NKGl8Tfkzl55yPQUtuf7
+	M7zW3uE+avdzkPOdia3UV/TOMhfTccgq+ox86bvTJyQjCiQ3c0mDbFF4HlGaeS14Q7sJ96R2neSFz
+	Jc6TpjNeIIhvwI8WxDEcMncys+5XWqwPSPAfhbD5RtSMGku2TzotOh86B5zhAeeeCzEHh02wzeotV
+	6cCHHkjjucwNvWMEEdrxcpeq3xUimbpwhwBiWZVU4pwraUv8akpvTE9OLk9JJAFlnnxv81R3yON6T
+	PjUCmBLS8c7XL/oyQA8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvbyC-0000000Epyr-2q2g;
-	Fri, 21 Mar 2025 12:59:28 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1tvdas-0000000FATR-35of;
+	Fri, 21 Mar 2025 14:43:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvbwj-0000000Epml-1SuT;
-	Fri, 21 Mar 2025 12:57:58 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4393dc02b78so13071015e9.3;
-        Fri, 21 Mar 2025 05:57:56 -0700 (PDT)
+	id 1tvdTy-0000000F8aL-3ZGl
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 21 Mar 2025 14:36:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Ra/8DYijPPPXyKfJwTLkvfoC8/C3kF5QcCpYx+TRQN4=; b=oVzpjopst71Lgs+5D37sF4Gzx6
+	O1cggH+c0piW5+U/MgWjrs6HcamSAB1cSY395YJcdXQ2jXw+NiPwAyPDpkvoH84JWnsVZQb/BHA54
+	q/nAH8N8g7bMMnYf9sZHhat8FovQx7KWu13KD/ZmxNDp/O3urMfqLQ4ZJmvDdgZs4EyNzleNrKr4D
+	6Q4mhi/kys5kWx6QB00qVaeRgyZx0dSl4WI0WipJn6gbI3FAVlMYEHLYXZpKaXK5548DSIC04Wdb2
+	ykNbu4e6Y9YFLiqvedthjlbRMzWUf+cTI34ifaDoqoV15P30XU/vMrPLxkWoGBzzU54OVpUg7i00K
+	MfqsVkGA==;
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tvdTv-00000004OH0-39M2
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Mar 2025 14:36:21 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-43d07ca6a80so10189165e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Mar 2025 07:36:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742561875; x=1743166675; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=tMXqvTBhDsmIU46dwieyVJOz1wRi4N2crzClzNAU/UQ=;
-        b=VVFqGHsJu2q7bPHNHVjeSH5M0ct8zqNGAH2JNEwcBhmXWQHPQnilqkhGbVfqZpQ0ec
-         gOb9kMiD51+76YAnLdeKlf4iItToYaEFNhreflQXn8tgnJxWYyLLR84+MS/jWnw4mmjr
-         n66AAWU2K59VgfKb5WFIMpSiyzSaruJRRu9iE3G/kqPBf20jl6MEfYGGAWrcnj8cJCK7
-         w8TM/fBwAJabpIWwQhtvnRBEQugwjywh72/ipB30BIBGy3EnXiUMGGeut+NhpuflUilh
-         eM2LxOuYz3bmCipFiZyc/98eC+uWITipo4yLypRNiKU+0RDZpuRzF6rWm0H157sAGNRA
-         mStA==
+        d=linaro.org; s=google; t=1742567777; x=1743172577; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ra/8DYijPPPXyKfJwTLkvfoC8/C3kF5QcCpYx+TRQN4=;
+        b=Z0NMazvr0nzcqJW/VWvxSR6atAaNkXYoKsr2eLGq3gUI5qBHXovmECwh7mQMUV7dxA
+         MPBwWmvTSG2mbpQBSCmIrRjytB7n/FGi+TGkKihjpt/BGLXEM+ljk5Nz1etMNomudnfg
+         zPcxaIuvLJrLJAtgq6xKe9ukmnUMEqNHk5aW+CuH6OfBQAlJqISdMtxZgvq7F3CQRAum
+         6nsMt5swMY9sUxLieWNTHGegekFUlpQdm+b6ALrNeb5IBZ3V4aa7JuRfYjTA7rkVfMuw
+         uFh6VAfqNIyH7Jxf/ChP6gysE3nsaNdSq1xuRnIXKwNnTAUzSWU4knvIBI+nR/VhKKUu
+         uHjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742561875; x=1743166675;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tMXqvTBhDsmIU46dwieyVJOz1wRi4N2crzClzNAU/UQ=;
-        b=wwdm07dvw+i1Z4hSFk2YMcgnhVXCzx+oobfICox3nsClFZfM1ToAYuyZOplMsIMfNF
-         4KlVwLgAG8wPNQFsFTmyIsCsN+S78eh52DibLXQKhcUSK5F/hXBYIlxmNGWBWbW8XI8K
-         fzt1EPxjXLEqKlcOsn/FS4qhQscBYf4Cz8LoQb9hNTkqOlJ9vXw9s9DAsytC2vHAwfBw
-         5y8aXNq/AhpMhHJsMgPcBh7ThAJmpV6lXRzp4HnOUWk34PRPC0PfXCmYVdIhhCuFriWn
-         rAbdit7XdtMBQ1xAWW5EtSDoxemRo9k6+Ozh8F5+l8B4GLgDMjNvrphc6MDClDeP18Xq
-         dzqA==
-X-Forwarded-Encrypted: i=1; AJvYcCUQXa6OiMaon5ZcxWCmrVkNGqHC3VlGG4GjNQuuAj76e2llR/vMXRJr3TvaPGtNo2ym3uBHJOllmdmX5KFh3ZuB@lists.infradead.org, AJvYcCVyK2nMXANRWAHW8V5KdGph2nc21L4rLvs8lsjGAEDvN5nvBMT2bBFY8/WzZ6ngqMKnjwcqi1WYNsx31ueSjso=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxAvZWt0txSVuLk3SKqOPedR61cIBHN8x8JUXw3hsoe7THABKxq
-	nr+pB62aYHEDSqKYN5NtifhYeT64SS8/R6zOBIsT5i6kOL8tpOi3
-X-Gm-Gg: ASbGncu40aEuGVqIGFHjeMIPpAPk/6u7hiIaSmB3Ivyn4yQ5rK0mdphou04+UKbEsWV
-	3p7gWdrMwZ59L1lTAU3kZUYM3Sq7J0vk/F7UgMrGmJ0jSUFHRws0qq2D/0m6zQ88YAiS2aSluJ6
-	yr96ctYFj5eXSHXxPNXPcOGv9q6fOT78sWcQqcw7qsklVwm+2U8lvtlyrqVY6vGhVXHkF+IAQD/
-	02gkoiTlqjG/jY840z7OrReU8yumspVxJZ8ClCTg39Yn1cb6hGLGTQfTyw4HfeQ+zt28BcMEHV1
-	niLbwoY7RADJEdlLSsubmtli6PcpjjX9HOth27dNofIuXg2WGyGfuL5QDvYFv+TvSSA9VPgqX9u
-	dTqMHKIEvm8KoqQ==
-X-Google-Smtp-Source: AGHT+IGWi+Gt4v13gDghCGe+Jbu5Q3l2IMxPm/TVT4lgzDqW9EW/9FUF0r63MdffknW3eQkELufzyQ==
-X-Received: by 2002:a05:600c:5488:b0:43c:fe5e:f040 with SMTP id 5b1f17b1804b1-43d50a219a4mr31708785e9.23.1742561874835;
-        Fri, 21 Mar 2025 05:57:54 -0700 (PDT)
-Received: from uefi-arm64.Home (236.red-88-30-84.staticip.rima-tde.net. [88.30.84.236])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d43f331dasm78492825e9.8.2025.03.21.05.57.53
+        d=1e100.net; s=20230601; t=1742567777; x=1743172577;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ra/8DYijPPPXyKfJwTLkvfoC8/C3kF5QcCpYx+TRQN4=;
+        b=RYgaf3FldjfDWYKbiDoON6O+9+HNwJ/NuZ4dbMx/ArFoku5wU2uInVfxFtIIKthBZL
+         85+8TSiTmFPNGOPH7YZ4ukCT3tlahrWVy5kKDfmmlL1DSDh/Z32bFCnnhCSLbSK3yj4z
+         QFnsyJGtkf6TkNZTsdEtACtTDOi/1plTBYvQjpC2z+iig/du9l5gKM3F8wqm14d27ZV1
+         lo+efjtPv56/s9mHACDhv3tO6A1j/qRhV55fj1bvG/6VhHLSA9j41VXqMsF7wjz1tAA8
+         11hFbh0Szj/ZhBDrBrkM3g83rGVlN9VdHJM8ft2gD4YO9ajnWkpLkCQ9u0nb3qXgY2yE
+         VXJg==
+X-Forwarded-Encrypted: i=1; AJvYcCUtbnDtW4jX40rNwiA3V1B8RW4qnHhgyzqpBl22i23KDl7HUHroyb/yBdN1ImAMgaf/HRaiN8Ur2fWPpG0ZoA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YweZa/IdEjjorl99zbSl6G/+FozHB5nT7UOt/o+Dh5VtcS3Xfvj
+	4ZnaT9/CtKZX8B/QFXFs6YbAZhwCrqMIbw3YlsWNjv8dwWed4LCKD8p6PyQogoU=
+X-Gm-Gg: ASbGncsqoG7B4hJ8gOUEutUhjg3tch1VGuK1NScNEuSULMZv4Jm+THALRAfBHvfaKwq
+	2VxymyJ6Il/N/jWhNhTRRums8eJSJO0Z5E8zRLduL4Wl5WCkJvaP/He0SEW4bd9on9/BsSHCpfC
+	oyoIEq6km4aeVqQVaf/Fg/iRMhyQ01XPT3gn8eDak9iITALg+nmpJZ7gRu7DvI3G1JDpzCyjy6I
+	HM/bGF/latixkOnh5T6A9Rnf1T48mT6acjjCcaXTyI/6jGTKGhbGsm8Sb4DWCQQSpzwjgY46Oba
+	lwxpA5YZRMq5NZ4p6mO4d+XX9pP/JHORcNralZTq+fqi6BKklQ==
+X-Google-Smtp-Source: AGHT+IEBLRuGXXY3Hg/ewdBvYCF4zvDlD21Rbhn+1Z3hKO681e8YV9SPfJqpV9SZgDhIe4keKF4QkQ==
+X-Received: by 2002:a05:600c:8719:b0:43d:53c:1ad6 with SMTP id 5b1f17b1804b1-43d50a4ae7dmr28254255e9.26.1742567776837;
+        Fri, 21 Mar 2025 07:36:16 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43d4fceafacsm29121045e9.6.2025.03.21.07.36.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Mar 2025 05:57:54 -0700 (PDT)
-Message-ID: <365ccddfba110549202b3520f4401a6a936e82a8.camel@gmail.com>
-Subject: [PATCH] spi-rockchip: Fix register out of bounds access
-From: Luis de Arquer <ldearquer@gmail.com>
-To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: broonie@kernel.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org,  Robin Murphy <robin.murphy@arm.com>,
- luis.dearquer@inertim.com
-Date: Fri, 21 Mar 2025 13:57:53 +0100
-User-Agent: Evolution 3.52.3-0ubuntu1 
+        Fri, 21 Mar 2025 07:36:16 -0700 (PDT)
+Date: Fri, 21 Mar 2025 17:36:14 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Heiko Stuebner <heiko.stuebner@cherry.de>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org
+Subject: [PATCH next] phy: rockchip-samsung-dcphy: Add missing assignment
+Message-ID: <e64265a4-9543-4728-a49f-ea910fccef7c@stanley.mountain>
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250321_055757_404511_DD4F8422 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20250321_143619_807400_C9405B08 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,33 +116,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Luis de Arquer <luis.dearquer@inertim.com>
+The "ret = " was accidentally dropped so the error handling doesn't work.
 
-Do not write native chip select stuff for GPIO chip selects.
-GPIOs can be numbered much higher than native CS.
-Also, it makes no sense.
-
-Signed-off-by: Luis de Arquer <luis.dearquer@inertim.com>
+Fixes: b2a1a2ae7818 ("phy: rockchip: Add Samsung MIPI D-/C-PHY driver")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
 ---
- drivers/spi/spi-rockchip.c | 2 +-
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 1bc012fce..1a6381de6 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -547,7 +547,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	cr0 |= (spi->mode & 0x3U) << CR0_SCPH_OFFSET;
- 	if (spi->mode & SPI_LSB_FIRST)
- 		cr0 |= CR0_FBM_LSB << CR0_FBM_OFFSET;
--	if (spi->mode & SPI_CS_HIGH)
-+	if ((spi->mode & SPI_CS_HIGH) && !(spi_get_csgpiod(spi, 0)))
- 		cr0 |= BIT(spi_get_chipselect(spi, 0)) << CR0_SOI_OFFSET;
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+index 08c78c1bafc9..28a052e17366 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+@@ -1653,7 +1653,7 @@ static __maybe_unused int samsung_mipi_dcphy_runtime_resume(struct device *dev)
+ 		return ret;
+ 	}
  
- 	if (xfer->rx_buf && xfer->tx_buf)
+-	clk_prepare_enable(samsung->ref_clk);
++	ret = clk_prepare_enable(samsung->ref_clk);
+ 	if (ret) {
+ 		dev_err(samsung->dev, "Failed to enable reference clock, %d\n", ret);
+ 		clk_disable_unprepare(samsung->pclk);
 -- 
-2.43.0
-
+2.47.2
 
 
 _______________________________________________
