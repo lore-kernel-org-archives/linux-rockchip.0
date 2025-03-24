@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351B6C36002
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 11:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1EBDC36002
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 13:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GmpHOtEIb6xq3nKOUj7oYaIyA2BpC57xE//jTrsn9+4=; b=hcqiL5m8jDvY3V
-	kVbMFMCfb84UdUex+ymxk9zju0Hih6PbuhVtOYxY9xXAR7vRPmNyaFXbHa71RHoFSnlnco7VJQ1Gh
-	UgQmid7oRs1+tFNm1jhar7zYstxRBByz9xyyBvZ2uPrmOIm6/90xCgHEnGD8xzYi49IAoc9bkvNTX
-	agskML53127ufgJstm0Anq3gcntOcbqdqRxO+CvVrhpeoNvvZZguT9MVjCYUQOPmqv9LRkyhNVpfd
-	SmKgehMFixeR8WL3/mYR1ZxeH5BcBW4RqzGST+21BcgFtgvjgEbqw2xW7TkQ+pUKH+MXgqNsKISuN
-	zKhl6w/NiW4eO6ijRs6w==;
+	List-Owner; bh=LGyzic+jlbu4Va6Iju+U3f615KTfaIBUf/qbWHeR6+g=; b=dmr3ABLSf1HPUG
+	BYGDO4IuYCJtveIVtei3CIZR5qtCIgSfC1mIe0kFZ2H6vuTcb3Rp3zjeSL/xcZwl0rpS7AHhpeLJ1
+	YeZnSVQ1JLv2EDNdHeCZSsv/KkIAf1u8TBQMFKi6KgpkoHqbhysoXRuEZsVsd9DC/zg0pLpSxqkR+
+	CKNhqQf2vGkiflgwzhUMSyglRmK9AAWA85q8ChOdlmtPFzAs0lVaaTJSg4XeFwVYrP4Uj0tMsvJiq
+	1r4uK9WJpAlSovbb1oxJ+eJO4BCefD7br0L8QMNWKJBHSRVmREIKEss30bPpLjwOKEakhRDPU7sTZ
+	xdoOKU7iSFp/g5nMF/bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twgGD-00000002yCf-2aKy;
-	Mon, 24 Mar 2025 11:46:29 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1twhR6-00000003B7C-3X1P;
+	Mon, 24 Mar 2025 13:01:48 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twgEV-00000002y72-3If4;
-	Mon, 24 Mar 2025 11:44:44 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2264aefc45dso64078465ad.0;
-        Mon, 24 Mar 2025 04:44:43 -0700 (PDT)
+	id 1twhHv-00000003618-40fA
+	for linux-rockchip@lists.infradead.org;
+	Mon, 24 Mar 2025 12:52:21 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-43cee550af2so1753915e9.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 24 Mar 2025 05:52:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742816683; x=1743421483; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1742820738; x=1743425538; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FclWDOpQYZIOEMCx+3mDgK8c9fGIMqHvQ2gE2LcXKrg=;
-        b=O+cC9b8LyoA8kalqPA21hCwnkle0b/u2bLzb6S/DA/BAzcJ4LrcIjERlX3RSOqUYn/
-         JO78gBg6G9uOvrV4RQJm8SRSVbA9dVpOYc1pjTiJioqEQAEV4VM9FyxS8oCEE7iXfjx/
-         p0/mX1lAZRokovrsppNmu1LoQKo/obJYSGSF0yQIOxxVtJ63V39VNaZk7LEJOSKxR4Vw
-         bbKIc0//5hmFUcW8Ii+tjNU+iR3+DYvla0/Bx1K8O1aIK6F5OxMRddO4Y/0kNVfQx67S
-         /StwPoULCMiLat+go4d98r4iAZrckc38kJ0wd33FwTI1V4H33fkPiPN+3gOVs+mps9ZG
-         NpoA==
+        bh=YmgPaODJNGvBgG/4ktzRCLfPHcR/ClhvCHwJ0srwcr0=;
+        b=Th00YnAeRWuZm/bP8XX3YXAr9Iz3S5FHy3iCsoxuGzQvVEYu88g9sQPl0nfNZ1NWdZ
+         sEIGbVH6wdLkiLVZ4IXIgb1omnLvz8AyEHR5KtCMXWmkihGoh3dIGR2vh+Sr9gbbJYtT
+         CHDytOl4pDHjDlTW57KxUB/lXPctuj85Pdjhp52h6YGs/AYnCVZ3WQRGRygRO2sSddiM
+         NvYTA6tnHMJOC2d4TP3kNAGWYTLs6ueKtxuaSwdUpzUIcvk4xTywhZ+0W0m0FLyS8MCq
+         nmcfuihhALrIwcwKe9t3P1OpTolxadOZbRtcuk1L6xDO0mu22iSK3JSQYTFR/IfFsk71
+         DeDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742816683; x=1743421483;
+        d=1e100.net; s=20230601; t=1742820738; x=1743425538;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=FclWDOpQYZIOEMCx+3mDgK8c9fGIMqHvQ2gE2LcXKrg=;
-        b=TScStRRAbKYEx9kRnPuc+GPccpS3dNvu+RKtQzSEhZVaPGatwIEmRfUoTL/zF8fTXo
-         uj6t6hVlOvcUkzIzqci0MOhoyoV7pf3c3YWSiLHCyf3/lzCBOOhz2izxLASkG6MPytry
-         Orvvr6J7GAOzyF7p7sz/DTM7BgfpL44jVnpPrVMJRkPX5TGfSyWBT/6vQmzIxRTQCu80
-         EL+7pa6nGMS764zqLhP7lGolD9qaldCIref6tpqedcd5MrNACefTrxOvR1E4krjph9Kk
-         GZd+1P/6GkedPWnDD0rAeEM+wx2QzjuaQGt7OwJjHQiyNpddrAsVeGHXbhM59FgP9oWq
-         a+Zw==
-X-Forwarded-Encrypted: i=1; AJvYcCUQD0sXyGijCMOYR5CXQIiGLIaTeC9Rl+7VI3oL0zKbelxNTvkPPCxazbPbBWjITnYvfPRsXk1vWf40bLL6CnQ=@lists.infradead.org, AJvYcCVaLyBpRK/gH2OCcBH34YFPVOc1tpZZz+PSGB0olMRq8rA579xLd1jUX8If3O54YuF5wkA0BPzBmTtBV8IjEj0e@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz++dA+F5aqS4I5ozYCK8m2cC6+IGp3MYMtbWKslLJD4kVXOYfc
-	9V69No9FZuY2e/hkg5gUMeo73CXAVLpxC9FN7DTZu+fh307d33kW
-X-Gm-Gg: ASbGncu8iNk99KVw+xDvK8TNFCb3iKoErLcsysN7o1vxQaAfk6qtAWJI6bkHzELCU6X
-	nXiBBEWDlXvG7cUZGC1B6CTdhTZ0GTJLnvMDITUy2Vr1aVU5Py7g1+JJNX1p0Qa/MggOPOpaYrs
-	tMWikEP42tNKWhNDE+tHY9G6JhSIYoTO4GaiCScey/R45SxsM7H7kJw7woS1/PIWQQnXH1CBflJ
-	5DeD9QK5QqzBI/fth0XrWONzz8TkP/1m53qfBO2du8QpKz1utJvnaKwVg5K6vfdgLFz7JX1i2hc
-	94QJa65mU6XRokXgguTppACfCjE2+B0aV6GKDhQwnHs1hKItM3GSN4gS
-X-Google-Smtp-Source: AGHT+IG0hePrJhwSgn3rCtEA92WDnZVJ/VYMDjPzw/eThcvEnlBPxwvaFn6CraVYwHOXq4RoU8sdHw==
-X-Received: by 2002:a17:903:292:b0:220:c813:dfcc with SMTP id d9443c01a7336-22780e08cf6mr223591475ad.40.1742816682459;
-        Mon, 24 Mar 2025 04:44:42 -0700 (PDT)
-Received: from ownia.localdomain ([156.226.172.226])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22780f3b242sm68618715ad.41.2025.03.24.04.44.40
+        bh=YmgPaODJNGvBgG/4ktzRCLfPHcR/ClhvCHwJ0srwcr0=;
+        b=Pc58RPs7hvnZumgE5b258qJ1MbrbYolZADZh6E2Tf1aRrfRnClW9P9j6Di4wzxdz2G
+         O+kv4HgLQXB+cv5pN29szELKKtZ8KZqQYYvXi504G5LEtlY5UxrsSDBmKu/3WK3Y3234
+         hQluTWqNtMB6fFveDFxDbAS/MlPuZtiguH/ZcviaOwSktRlYS6V7/1cNDslFzbA7kiPg
+         Rj2Nx9l7CZavI5fIYecetL/J8VYc4fxN+0onQ/AwLgjksV1etxbSQ2xOeKqsfp1Xb6Fq
+         eQF5xRe6It4Hy4CwVGWlWejKIsg1Nbr2cfcqJbZYA94U6rafx7CmQD0L4mEqOUWMo0Mz
+         9kuw==
+X-Forwarded-Encrypted: i=1; AJvYcCVwaYvXNFofkLQWyLcnwT36+WrkTcadPsmaW0s6q21HBCLkL8GuS6ow2p15QdTHV139LqXKEOfJ6HjEYxhIVw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyNgpl1qPSckrWVJbHwHx6u3Lgx5qlID4EzyJq9QKwO7r3b8heK
+	OS628Dbig6OOi7vffUUQUSiRCQVYibZQdqsXNFZ3zBc8n9cFkQA06EvBdExQBpE=
+X-Gm-Gg: ASbGncuMBmaFm9z8wjln7dSwf4bbI0h0f80aglb1ZTVDPF9BAWMmqMn3wMISKCd3YyG
+	5zoigwHu6+hFPmEebCq2yJigWkvevossaRO+GSbZmI1ogYuyXiQzIeQj7/tlq8cNm7QTVtCJCbo
+	/39XqqDF7WEkpu6l/wJ/HHjGtCW7/tgDWVclb9dPW3HngtXZhnZ1F6WM0yYeCUP2m3z4bYsohV5
+	IthKZX9vfJfgjOo1jNejAOdP7bDEJxi20QgXFdtHb0uyjpdtZyfkrMUF3+ujNQvodYx+SC661rl
+	ns7vLJt0qdLmJlewxO9d86BpSIOo6j/F2wtPTaVaFM+QBnr+92Hsy9ltMg==
+X-Google-Smtp-Source: AGHT+IEdhY6sjyudCupWSNHVoMtEE08tS+Gsw4HB1HrNezGJ7bnExp/+sj0jdITIMdTxs+m/86N54A==
+X-Received: by 2002:a05:600c:3ba2:b0:439:930a:58a6 with SMTP id 5b1f17b1804b1-43d50a4f961mr35834435e9.8.1742820738094;
+        Mon, 24 Mar 2025 05:52:18 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.198.86])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3997f9b5939sm11135148f8f.60.2025.03.24.05.52.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Mar 2025 04:44:42 -0700 (PDT)
-From: Weizhao Ouyang <o451686892@gmail.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>,
-	Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@pengutronix.de,
-	linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
+        Mon, 24 Mar 2025 05:52:17 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Weizhao Ouyang <o451686892@gmail.com>
-Subject: [PATCH] can: rockchip_canfd: fix broken quirks checks
-Date: Mon, 24 Mar 2025 19:44:16 +0800
-Message-ID: <20250324114416.10160-1-o451686892@gmail.com>
-X-Mailer: git-send-email 2.45.2
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] dt-bindings: nvmem: Correct indentation and style in DTS example
+Date: Mon, 24 Mar 2025 13:52:14 +0100
+Message-ID: <20250324125214.82028-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_044443_823811_D0CFC2B1 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20250324_055219_987605_8EA1D8EE 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,40 +103,164 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-First get the devtype_data then check quirks.
+DTS example in the bindings should be indented with 2- or 4-spaces and
+aligned with opening '- |', so correct any differences like 3-spaces or
+mixtures 2- and 4-spaces in one binding.  While re-indenting, drop
+unused labels.
 
-Fixes: bbdffb341498 ("can: rockchip_canfd: add quirk for broken CAN-FD support")
-Signed-off-by: Weizhao Ouyang <o451686892@gmail.com>
+No functional changes here, but saves some comments during reviews of
+new patches built on existing code.
+
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/net/can/rockchip/rockchip_canfd-core.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ .../devicetree/bindings/nvmem/nvmem.yaml      | 60 +++++++++----------
+ .../devicetree/bindings/nvmem/rmem.yaml       | 20 +++----
+ .../bindings/nvmem/rockchip-efuse.yaml        | 20 +++----
+ 3 files changed, 50 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index d9a937ba126c..ac514766d431 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -907,15 +907,16 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.data_bittiming_const = &rkcanfd_data_bittiming_const;
- 	priv->can.ctrlmode_supported = CAN_CTRLMODE_LOOPBACK |
- 		CAN_CTRLMODE_BERR_REPORTING;
--	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_CANFD_BROKEN))
--		priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
- 	priv->can.do_set_mode = rkcanfd_set_mode;
- 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
- 	priv->ndev = ndev;
+diff --git a/Documentation/devicetree/bindings/nvmem/nvmem.yaml b/Documentation/devicetree/bindings/nvmem/nvmem.yaml
+index 4fd015d402ce..c24e3667accd 100644
+--- a/Documentation/devicetree/bindings/nvmem/nvmem.yaml
++++ b/Documentation/devicetree/bindings/nvmem/nvmem.yaml
+@@ -50,43 +50,43 @@ additionalProperties: true
  
- 	match = device_get_match_data(&pdev->dev);
--	if (match)
-+	if (match) {
- 		priv->devtype_data = *(struct rkcanfd_devtype_data *)match;
-+		if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_CANFD_BROKEN))
-+			priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
-+	}
+ examples:
+   - |
+-      #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/gpio/gpio.h>
  
- 	err = can_rx_offload_add_manual(ndev, &priv->offload,
- 					RKCANFD_NAPI_WEIGHT);
+-      qfprom: eeprom@700000 {
+-          compatible = "qcom,msm8974-qfprom", "qcom,qfprom";
+-          #address-cells = <1>;
+-          #size-cells = <1>;
+-          reg = <0x00700000 0x100000>;
++    qfprom: eeprom@700000 {
++        compatible = "qcom,msm8974-qfprom", "qcom,qfprom";
++        #address-cells = <1>;
++        #size-cells = <1>;
++        reg = <0x00700000 0x100000>;
+ 
+-          wp-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
++        wp-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+ 
+-          /* ... */
++        /* ... */
+ 
+-          nvmem-layout {
+-              compatible = "fixed-layout";
+-              #address-cells = <1>;
+-              #size-cells = <1>;
++        nvmem-layout {
++            compatible = "fixed-layout";
++            #address-cells = <1>;
++            #size-cells = <1>;
+ 
+-              /* Data cells */
+-              tsens_calibration: calib@404 {
+-                  reg = <0x404 0x10>;
+-              };
++            /* Data cells */
++            tsens_calibration: calib@404 {
++                reg = <0x404 0x10>;
++            };
+ 
+-              tsens_calibration_bckp: calib_bckp@504 {
+-                  reg = <0x504 0x11>;
+-                  bits = <6 128>;
+-              };
++            tsens_calibration_bckp: calib_bckp@504 {
++                reg = <0x504 0x11>;
++                bits = <6 128>;
++            };
+ 
+-              pvs_version: pvs-version@6 {
+-                  reg = <0x6 0x2>;
+-                  bits = <7 2>;
+-              };
++            pvs_version: pvs-version@6 {
++                reg = <0x6 0x2>;
++                bits = <7 2>;
++            };
+ 
+-              speed_bin: speed-bin@c{
+-                  reg = <0xc 0x1>;
+-                  bits = <2 3>;
+-              };
+-          };
+-      };
++            speed_bin: speed-bin@c{
++                reg = <0xc 0x1>;
++                bits = <2 3>;
++            };
++        };
++    };
+ 
+ ...
+diff --git a/Documentation/devicetree/bindings/nvmem/rmem.yaml b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+index 85f9f5de3906..dc714309e7b9 100644
+--- a/Documentation/devicetree/bindings/nvmem/rmem.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+@@ -38,17 +38,17 @@ unevaluatedProperties: false
+ 
+ examples:
+   - |
+-        reserved-memory {
+-                #address-cells = <1>;
+-                #size-cells = <1>;
++    reserved-memory {
++        #address-cells = <1>;
++        #size-cells = <1>;
+ 
+-                blconfig: nvram@10000000 {
+-                        compatible = "raspberrypi,bootloader-config", "nvmem-rmem";
+-                        #address-cells = <1>;
+-                        #size-cells = <1>;
+-                        reg = <0x10000000 0x1000>;
+-                        no-map;
+-                };
++        nvram@10000000 {
++            compatible = "raspberrypi,bootloader-config", "nvmem-rmem";
++            #address-cells = <1>;
++            #size-cells = <1>;
++            reg = <0x10000000 0x1000>;
++            no-map;
+         };
++    };
+ 
+ ...
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+index b80fd8d1ae5b..aa93ebc41a8e 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+@@ -58,16 +58,16 @@ examples:
+   - |
+     #include <dt-bindings/clock/rk3288-cru.h>
+     efuse: efuse@ffb40000 {
+-            compatible = "rockchip,rk3288-efuse";
+-            reg = <0xffb40000 0x20>;
+-            #address-cells = <1>;
+-            #size-cells = <1>;
+-            clocks = <&cru PCLK_EFUSE256>;
+-            clock-names = "pclk_efuse";
++        compatible = "rockchip,rk3288-efuse";
++        reg = <0xffb40000 0x20>;
++        #address-cells = <1>;
++        #size-cells = <1>;
++        clocks = <&cru PCLK_EFUSE256>;
++        clock-names = "pclk_efuse";
+ 
+-            /* Data cells */
+-            cpu_leakage: cpu_leakage@17 {
+-                    reg = <0x17 0x1>;
+-            };
++        /* Data cells */
++        cpu_leakage@17 {
++            reg = <0x17 0x1>;
++        };
+     };
+ ...
 -- 
-2.45.2
+2.43.0
 
 
 _______________________________________________
