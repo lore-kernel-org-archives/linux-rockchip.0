@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061B0C3600C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 11:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351B6C36002
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 11:46:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Z2TMS2z8dWiyJf5LPJcTYoiEhPUdkaM9Q2/qaZVA+Qc=; b=0zd6urlSjoXo5o
-	t/GjOZ3d8jBl/TClASKvR4j00oi6u5v1QuXQx4QicgnOu4+dAcW86bYmM1xArSyeDI4E8sFMZPlBZ
-	NYOaGGui0DcjB8q9LyoGFrKy1Knb4mUZuXKOn9qJDOF4Qd5Nnd0l6g38VAVFAlfk3s7hsyD0J3R2/
-	O+d3lno/F5jFOmq5WJ/lMFr2429H7aWxuNldKrIBM1bKc+EY+l+degrQeOUFxLNz2YjU/c72I80Xu
-	FoTQh8cG/abGrE6YyN5xmnjXLA9egZ4aAph3tTopfRsSXr+2cyzurmhpMno94hOkv4rkrbaesKLKv
-	58guNA8m7h0URcMdhSJw==;
+	List-Owner; bh=GmpHOtEIb6xq3nKOUj7oYaIyA2BpC57xE//jTrsn9+4=; b=hcqiL5m8jDvY3V
+	kVbMFMCfb84UdUex+ymxk9zju0Hih6PbuhVtOYxY9xXAR7vRPmNyaFXbHa71RHoFSnlnco7VJQ1Gh
+	UgQmid7oRs1+tFNm1jhar7zYstxRBByz9xyyBvZ2uPrmOIm6/90xCgHEnGD8xzYi49IAoc9bkvNTX
+	agskML53127ufgJstm0Anq3gcntOcbqdqRxO+CvVrhpeoNvvZZguT9MVjCYUQOPmqv9LRkyhNVpfd
+	SmKgehMFixeR8WL3/mYR1ZxeH5BcBW4RqzGST+21BcgFtgvjgEbqw2xW7TkQ+pUKH+MXgqNsKISuN
+	zKhl6w/NiW4eO6ijRs6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twfZo-00000002uAG-2nJM;
-	Mon, 24 Mar 2025 11:02:40 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1twgGD-00000002yCf-2aKy;
+	Mon, 24 Mar 2025 11:46:29 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twfY1-00000002tuw-2gGX;
-	Mon, 24 Mar 2025 11:00:53 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1742814047;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=rHuROZnnYS52NtcI84OVTo9RCXp2wpkeXDDVlfPt4bY=;
-	b=mninbDkJMZh1hKxGonj2VDg1jotY3Rbe7BbbAYgxm1amZz1zas26XyE1/2CfsgLVgqT2YT
-	xII3MVh+AD0CxKqlSUNoiYIwONjWjt4vZqwLvReT+8HsgowpWv/9bhwpPvu+n4Lw/ZbeNL
-	fqMyeLrS0Ypyem7rfeFKgf+c3MS5QzaWZBWO0k1uUk6dRr6DGL5Vy2e2H10ykRCCvj/J01
-	mZWYgCNw+g+BNGNuMeDI5RflRISP7u6tfjSbaIEUor+H4Ofz2R6TfSClkJDfYQh3JeCC+z
-	Gbz6+S9XzLdKSdcv+htFZt4+D41SW/SUJfIJUxPoP0UQjgUBPf0P6lOxbIVIjg==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
+	id 1twgEV-00000002y72-3If4;
+	Mon, 24 Mar 2025 11:44:44 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2264aefc45dso64078465ad.0;
+        Mon, 24 Mar 2025 04:44:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742816683; x=1743421483; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FclWDOpQYZIOEMCx+3mDgK8c9fGIMqHvQ2gE2LcXKrg=;
+        b=O+cC9b8LyoA8kalqPA21hCwnkle0b/u2bLzb6S/DA/BAzcJ4LrcIjERlX3RSOqUYn/
+         JO78gBg6G9uOvrV4RQJm8SRSVbA9dVpOYc1pjTiJioqEQAEV4VM9FyxS8oCEE7iXfjx/
+         p0/mX1lAZRokovrsppNmu1LoQKo/obJYSGSF0yQIOxxVtJ63V39VNaZk7LEJOSKxR4Vw
+         bbKIc0//5hmFUcW8Ii+tjNU+iR3+DYvla0/Bx1K8O1aIK6F5OxMRddO4Y/0kNVfQx67S
+         /StwPoULCMiLat+go4d98r4iAZrckc38kJ0wd33FwTI1V4H33fkPiPN+3gOVs+mps9ZG
+         NpoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742816683; x=1743421483;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FclWDOpQYZIOEMCx+3mDgK8c9fGIMqHvQ2gE2LcXKrg=;
+        b=TScStRRAbKYEx9kRnPuc+GPccpS3dNvu+RKtQzSEhZVaPGatwIEmRfUoTL/zF8fTXo
+         uj6t6hVlOvcUkzIzqci0MOhoyoV7pf3c3YWSiLHCyf3/lzCBOOhz2izxLASkG6MPytry
+         Orvvr6J7GAOzyF7p7sz/DTM7BgfpL44jVnpPrVMJRkPX5TGfSyWBT/6vQmzIxRTQCu80
+         EL+7pa6nGMS764zqLhP7lGolD9qaldCIref6tpqedcd5MrNACefTrxOvR1E4krjph9Kk
+         GZd+1P/6GkedPWnDD0rAeEM+wx2QzjuaQGt7OwJjHQiyNpddrAsVeGHXbhM59FgP9oWq
+         a+Zw==
+X-Forwarded-Encrypted: i=1; AJvYcCUQD0sXyGijCMOYR5CXQIiGLIaTeC9Rl+7VI3oL0zKbelxNTvkPPCxazbPbBWjITnYvfPRsXk1vWf40bLL6CnQ=@lists.infradead.org, AJvYcCVaLyBpRK/gH2OCcBH34YFPVOc1tpZZz+PSGB0olMRq8rA579xLd1jUX8If3O54YuF5wkA0BPzBmTtBV8IjEj0e@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz++dA+F5aqS4I5ozYCK8m2cC6+IGp3MYMtbWKslLJD4kVXOYfc
+	9V69No9FZuY2e/hkg5gUMeo73CXAVLpxC9FN7DTZu+fh307d33kW
+X-Gm-Gg: ASbGncu8iNk99KVw+xDvK8TNFCb3iKoErLcsysN7o1vxQaAfk6qtAWJI6bkHzELCU6X
+	nXiBBEWDlXvG7cUZGC1B6CTdhTZ0GTJLnvMDITUy2Vr1aVU5Py7g1+JJNX1p0Qa/MggOPOpaYrs
+	tMWikEP42tNKWhNDE+tHY9G6JhSIYoTO4GaiCScey/R45SxsM7H7kJw7woS1/PIWQQnXH1CBflJ
+	5DeD9QK5QqzBI/fth0XrWONzz8TkP/1m53qfBO2du8QpKz1utJvnaKwVg5K6vfdgLFz7JX1i2hc
+	94QJa65mU6XRokXgguTppACfCjE2+B0aV6GKDhQwnHs1hKItM3GSN4gS
+X-Google-Smtp-Source: AGHT+IG0hePrJhwSgn3rCtEA92WDnZVJ/VYMDjPzw/eThcvEnlBPxwvaFn6CraVYwHOXq4RoU8sdHw==
+X-Received: by 2002:a17:903:292:b0:220:c813:dfcc with SMTP id d9443c01a7336-22780e08cf6mr223591475ad.40.1742816682459;
+        Mon, 24 Mar 2025 04:44:42 -0700 (PDT)
+Received: from ownia.localdomain ([156.226.172.226])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22780f3b242sm68618715ad.41.2025.03.24.04.44.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Mar 2025 04:44:42 -0700 (PDT)
+From: Weizhao Ouyang <o451686892@gmail.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>,
+	Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@pengutronix.de,
+	linux-can@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	stable@vger.kernel.org,
-	Alexey Charkov <alchark@gmail.com>,
-	Quentin Schulz <quentin.schulz@cherry.de>
-Subject: [PATCH v2] arm64: dts: rockchip: Remove overdrive-mode OPPs from RK3588J SoC dtsi
-Date: Mon, 24 Mar 2025 12:00:43 +0100
-Message-Id: <eeec0d30d79b019d111b3f0aa2456e69896b2caa.1742813866.git.dsimic@manjaro.org>
+	Weizhao Ouyang <o451686892@gmail.com>
+Subject: [PATCH] can: rockchip_canfd: fix broken quirks checks
+Date: Mon, 24 Mar 2025 19:44:16 +0800
+Message-ID: <20250324114416.10160-1-o451686892@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_040050_056930_F0CEB320 
-X-CRM114-Status: GOOD (  18.40  )
+X-CRM114-CacheID: sfid-20250324_044443_823811_D0CFC2B1 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,214 +100,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The differences in the vendor-approved CPU and GPU OPPs for the standard
-Rockchip RK3588 variant [1] and the industrial Rockchip RK3588J variant [2]
-come from the latter, presumably, supporting an extended temperature range
-that's usually associated with industrial applications, despite the two SoC
-variant datasheets specifying the same upper limit for the allowed ambient
-temperature for both variants.  However, the lower temperature limit is
-specified much lower for the RK3588J variant. [1][2]
+First get the devtype_data then check quirks.
 
-To be on the safe side and to ensure maximum longevity of the RK3588J SoCs,
-only the CPU and GPU OPPs that are declared by the vendor to be always safe
-for this SoC variant may be provided.  As explained by the vendor [3] and
-according to the RK3588J datasheet, [2] higher-frequency/higher-voltage
-CPU and GPU OPPs can be used as well, but at the risk of reducing the SoC
-lifetime expectancy.  Presumably, using the higher OPPs may be safe only
-when not enjoying the assumed extended temperature range that the RK3588J,
-as an SoC variant targeted specifically at higher-temperature, industrial
-applications, is made (or binned) for.
-
-Anyone able to keep their RK3588J-based board outside the above-presumed
-extended temperature range at all times, and willing to take the associated
-risk of possibly reducing the SoC lifetime expectancy, is free to apply
-a DT overlay that adds the higher CPU and GPU OPPs.
-
-With all this and the downstream RK3588(J) DT definitions [4][5] in mind,
-let's delete the RK3588J CPU and GPU OPPs that are not considered belonging
-to the normal operation mode for this SoC variant.  To quote the RK3588J
-datasheet [2], "normal mode means the chipset works under safety voltage
-and frequency;  for the industrial environment, highly recommend to keep in
-normal mode, the lifetime is reasonably guaranteed", while "overdrive mode
-brings higher frequency, and the voltage will increase accordingly;  under
-the overdrive mode for a long time, the chipset may shorten the lifetime,
-especially in high-temperature condition".
-
-To sum the RK3588J datasheet [2] and the vendor-provided DTs up, [4][5]
-the maximum allowed CPU core, GPU and NPU frequencies are as follows:
-
-   IP core    | Normal mode | Overdrive mode
-  ------------+-------------+----------------
-   Cortex-A55 |   1,296 MHz |      1,704 MHz
-   Cortex-A76 |   1,608 MHz |      2,016 MHz
-   GPU        |     700 MHz |        850 MHz
-   NPU        |     800 MHz |        950 MHz
-
-Unfortunately, when it comes to the actual voltages for the RK3588J CPU and
-GPU OPPs, there's a discrepancy between the RK3588J datasheet [2] and the
-downstream kernel code. [4][5]  The RK3588J datasheet states that "the max.
-working voltage of CPU/GPU/NPU is 0.75 V under the normal mode", while the
-downstream kernel code actually allows voltage ranges that go up to 0.95 V,
-which is still within the voltage range allowed by the datasheet.  However,
-the RK3588J datasheet also tells us to "strictly refer to the software
-configuration of SDK and the hardware reference design", so let's embrace
-the voltage ranges provided by the downstream kernel code, which also
-prevents the undesirable theoretical outcome of ending up with no usable
-OPPs on a particular board, as a result of the board's voltage regulator(s)
-being unable to deliver the exact voltages, for whatever reason.
-
-The above-described voltage ranges for the RK3588J CPU OPPs remain taken
-from the downstream kernel code [4][5] by picking the highest, worst-bin
-values, which ensure that all RK3588J bins will work reliably.  Yes, with
-some power inevitably wasted as unnecessarily generated heat, but the
-reliability is paramount, together with the longevity.  This deficiency
-may be revisited separately at some point in the future.
-
-The provided RK3588J CPU OPPs follow the slightly debatable "provide only
-the highest-frequency OPP from the same-voltage group" approach that's been
-established earlier, [6] as a result of the "same-voltage, lower-frequency"
-OPPs being considered inefficient from the IPA governor's standpoint, which
-may also be revisited separately at some point in the future.
-
-[1] https://wiki.friendlyelec.com/wiki/images/e/ee/Rockchip_RK3588_Datasheet_V1.6-20231016.pdf
-[2] https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2403201054_Rockchip-RK3588J_C22364189.pdf
-[3] https://lore.kernel.org/linux-rockchip/e55125ed-64fb-455e-b1e4-cebe2cf006e4@cherry.de/T/#u
-[4] https://raw.githubusercontent.com/rockchip-linux/kernel/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-[5] https://raw.githubusercontent.com/rockchip-linux/kernel/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-[6] https://lore.kernel.org/all/20240229-rk-dts-additions-v3-5-6afe8473a631@gmail.com/
-
-Fixes: 667885a68658 ("arm64: dts: rockchip: Add OPP data for CPU cores on RK3588j")
-Fixes: a7b2070505a2 ("arm64: dts: rockchip: Split GPU OPPs of RK3588 and RK3588j")
-Cc: stable@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Alexey Charkov <alchark@gmail.com>
-Helped-by: Quentin Schulz <quentin.schulz@cherry.de>
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+Fixes: bbdffb341498 ("can: rockchip_canfd: add quirk for broken CAN-FD support")
+Signed-off-by: Weizhao Ouyang <o451686892@gmail.com>
 ---
+ drivers/net/can/rockchip/rockchip_canfd-core.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Notes:
-    Changes in v2:
-      - Reworded and expanded the patch description a bit, to include some
-        more information and to make it more clear what are the implied
-        speculations and assumptions, and what are the available official
-        statements from Rockchip, as suggested by Quentin [7]
-      - Collected Reviewed-by tag from Quentin [7]
-    
-    Link to v1: https://lore.kernel.org/linux-rockchip/f929da061de35925ea591c969f985430e23c4a7e.1742526811.git.dsimic@manjaro.org/T/#u
-    
-    [7] https://lore.kernel.org/linux-rockchip/71b7c81b-6a4e-442b-a661-04d63639962a@cherry.de/
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index d9a937ba126c..ac514766d431 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -907,15 +907,16 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 	priv->can.data_bittiming_const = &rkcanfd_data_bittiming_const;
+ 	priv->can.ctrlmode_supported = CAN_CTRLMODE_LOOPBACK |
+ 		CAN_CTRLMODE_BERR_REPORTING;
+-	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_CANFD_BROKEN))
+-		priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
+ 	priv->can.do_set_mode = rkcanfd_set_mode;
+ 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
+ 	priv->ndev = ndev;
+ 
+ 	match = device_get_match_data(&pdev->dev);
+-	if (match)
++	if (match) {
+ 		priv->devtype_data = *(struct rkcanfd_devtype_data *)match;
++		if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_CANFD_BROKEN))
++			priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
++	}
+ 
+ 	err = can_rx_offload_add_manual(ndev, &priv->offload,
+ 					RKCANFD_NAPI_WEIGHT);
+-- 
+2.45.2
 
- arch/arm64/boot/dts/rockchip/rk3588j.dtsi | 53 ++++++++---------------
- 1 file changed, 17 insertions(+), 36 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-index bce72bac4503..3045cb3bd68c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-@@ -11,74 +11,59 @@ cluster0_opp_table: opp-table-cluster0 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
--		opp-1416000000 {
--			opp-hz = /bits/ 64 <1416000000>;
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
- 			opp-microvolt = <750000 750000 950000>;
- 			clock-latency-ns = <40000>;
- 			opp-suspend;
- 		};
--		opp-1608000000 {
--			opp-hz = /bits/ 64 <1608000000>;
--			opp-microvolt = <887500 887500 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-1704000000 {
--			opp-hz = /bits/ 64 <1704000000>;
--			opp-microvolt = <937500 937500 950000>;
-+		opp-1296000000 {
-+			opp-hz = /bits/ 64 <1296000000>;
-+			opp-microvolt = <775000 775000 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 	};
- 
- 	cluster1_opp_table: opp-table-cluster1 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
-+		opp-1200000000{
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
- 		opp-1416000000 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <750000 750000 950000>;
-+			opp-microvolt = <762500 762500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 		opp-1608000000 {
- 			opp-hz = /bits/ 64 <1608000000>;
- 			opp-microvolt = <787500 787500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
--		opp-1800000000 {
--			opp-hz = /bits/ 64 <1800000000>;
--			opp-microvolt = <875000 875000 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-2016000000 {
--			opp-hz = /bits/ 64 <2016000000>;
--			opp-microvolt = <950000 950000 950000>;
--			clock-latency-ns = <40000>;
--		};
- 	};
- 
- 	cluster2_opp_table: opp-table-cluster2 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
-+		opp-1200000000{
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
- 		opp-1416000000 {
- 			opp-hz = /bits/ 64 <1416000000>;
--			opp-microvolt = <750000 750000 950000>;
-+			opp-microvolt = <762500 762500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
- 		opp-1608000000 {
- 			opp-hz = /bits/ 64 <1608000000>;
- 			opp-microvolt = <787500 787500 950000>;
- 			clock-latency-ns = <40000>;
- 		};
--		opp-1800000000 {
--			opp-hz = /bits/ 64 <1800000000>;
--			opp-microvolt = <875000 875000 950000>;
--			clock-latency-ns = <40000>;
--		};
--		opp-2016000000 {
--			opp-hz = /bits/ 64 <2016000000>;
--			opp-microvolt = <950000 950000 950000>;
--			clock-latency-ns = <40000>;
--		};
- 	};
- 
- 	gpu_opp_table: opp-table {
-@@ -104,10 +89,6 @@ opp-700000000 {
- 			opp-hz = /bits/ 64 <700000000>;
- 			opp-microvolt = <750000 750000 850000>;
- 		};
--		opp-850000000 {
--			opp-hz = /bits/ 64 <800000000>;
--			opp-microvolt = <787500 787500 850000>;
--		};
- 	};
- };
- 
 
 _______________________________________________
 Linux-rockchip mailing list
