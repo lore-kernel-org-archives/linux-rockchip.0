@@ -4,65 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837F2C36002
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 14:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B9A2C36002
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Mar 2025 17:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t8JOtVP0tqcZyu0K+rSneQR5sDLnV3h5p9s87qNArGM=; b=Z+XRwRyCb4PTN1
-	VnrbBNqIb9MoM1NlNhIy5P/iVilaj6x1lrymtahWF2Hw5HxXyUz93cIWmWxDoY5KWh1PJe+hQxcMA
-	mlzSPCVSwnPNpFHzSPojBqdaBEPqkXK2FFEWmiM091NDaD0d0rHEdle0nchxTGDSbAkyX5bLaoDS4
-	HAnaQar8c41mqkiwDNkNq7uV+91G/fkEdDoM7/oIsO1a72+hy70gvDMO7n46CocyMM5lDEIoMqTbp
-	ujag/CDg/ZGWEVWwzc5R0+zErbqaDbJZnZDXOvMAClyJoAJ8yU9431eACRQKzYX7j0p0Zg1K9SUdi
-	jA+OFhyx1jM2V1t3yJ4w==;
+	List-Owner; bh=ueaSBnXRGpHi36NYa+Na/U9WAoeUuRMNVzyvDpe/cMs=; b=w0BlUkHKZ1EIqg
+	iI6QszB2dRWb7j/jMAiONkmY+hbHzT4ki0S14DPoUxTfqsQWheWCBELsFJCvqpTX5dkl+E6r+L/gT
+	ZKNoAmlfRi5TH1Ujhnbzmqk5dQA0/50EaIHiVyI8kD4h+TwZm1g7mQi8ccOZp5e6aeXDa+IbXBXaa
+	YJyYplv4HPZU4u3GccccC+3Ggcs14i25y+M5hxJqLz7EwxglHcBRJ/yL2nXyPp18CHaI5FgHb8Tar
+	GV3ZG4icJKc9ukOelYUuTC3CmBjVzsW+V6e42q+4tUN6nMZEddvr7GA8j+iTIiUAxP3mHqHy18/Si
+	Un6oWD9ZQ6GZkD5UcEaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twisZ-00000003PDK-3NmF;
-	Mon, 24 Mar 2025 14:34:15 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1twlFd-00000003kOC-1pMX;
+	Mon, 24 Mar 2025 17:06:13 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twiqr-00000003Ow5-1g5j;
-	Mon, 24 Mar 2025 14:32:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742826729; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=UJb3QO0wV1A9dmMtS84pAwAZqrpokweiVYDHHn07fPiTRvYM3g+LA8+RzY+iyS9BhyQCAD8NOnLGn5d90LvyCdsNfVJLSY8WN7cXP5pPHysf5d0GkaukCJCCGXKVvTM3LCruh1HdfMzJqWSTn4bqdNT6e+yhaQ2tJQ5M0P9vz7k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742826729; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SNLgmjKkF9HdKsSTg4UhoAV7KOdbPAwtKyrL4TyYQNU=; 
-	b=I5dKCBthi0uH1GkTYNNdR0Kz1fkio5/RR5VHyZrOobM/fBay0vxFi+DLmqRhPsWluI3ttfk2I+Nda5lLwqALM+z4x/JuO/3G/GgLminwylSDlGyALSw24KjlFAadWlh3CoBhQG/tzFaR4P+XmVLKNdAitZUAke9CPQJvAwxW8GM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742826728;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=SNLgmjKkF9HdKsSTg4UhoAV7KOdbPAwtKyrL4TyYQNU=;
-	b=YsxM+OXMxuHWGZRdECmjH4xKssGqHdS9tc5IQ4KDk73mgQgDPXAfY2zX9Va7TORR
-	UPZNoH1Wqd5DcP27VZNRbBXCrdBAolZpzZ3l/1GKi2KwiKaLbdnLk7Z3jNrO3yG6XaV
-	y103yCcBlFgJJumfr+wsgBVQ/MtX+wI5c+Rgk5eQ=
-Received: by mx.zohomail.com with SMTPS id 1742826726754801.1556988716859;
-	Mon, 24 Mar 2025 07:32:06 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] iommu/rockchip: Add flush_iotlb_all ops
-Date: Mon, 24 Mar 2025 10:32:04 -0400
-Message-ID: <5003710.31r3eYUQgx@trenzalore>
-In-Reply-To: <9bd56bd6-ce7d-495f-9bb3-ce7f07975f62@arm.com>
-References: <20250318152049.14781-1-detlev.casanova@collabora.com>
- <9bd56bd6-ce7d-495f-9bb3-ce7f07975f62@arm.com>
+	id 1twlDs-00000003k2M-4AF5;
+	Mon, 24 Mar 2025 17:04:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742835863;
+	bh=KRP0aB0pusR6DQBo1puDDmnz/hEZTuxKlnUQvRPL9e4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=qhcWTwB7Lw72A+2me8o8c+bw2ezh2TtX0zW8WGnP9szUu5+aLPcX9tYZxld1GLQFs
+	 BjzN/BHtK61M1mmOQOxR5TO0UmjaZFLR1Nww5xDHv2tWuG1/a6MXqsSfn7MXBznc1v
+	 GrCI2AIptqKFlw5ZZGtzN3JVEBfyuheZ+kRZwQq+1Hihm3EUq/4klWGwPKxgLOfhGy
+	 qpTAG5oaTRNXEJsIdcGLRW/9aY76TShdiLJAIOH52q5iKoFyIgD209XDOGAPcplAqb
+	 RoAeTqq2p+KLV5UfK2moqcLLu41THZrQnyoGKF5z59wvVjFtdgKZf2tB0ysSdiKWWG
+	 ioYwN8i+VCdyg==
+Received: from jupiter.universe (dyndsl-091-248-188-184.ewe-ip-backbone.de [91.248.188.184])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1DA8F17E0C37;
+	Mon, 24 Mar 2025 18:04:23 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id D89FE480038; Mon, 24 Mar 2025 18:04:22 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Mon, 24 Mar 2025 18:04:24 +0100
+Subject: [PATCH 3/5] dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Message-Id: <20250324-rock5bp-for-upstream-v1-3-6217edf15b19@kernel.org>
+References: <20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org>
+In-Reply-To: <20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=917; i=sre@kernel.org;
+ h=from:subject:message-id; bh=KRP0aB0pusR6DQBo1puDDmnz/hEZTuxKlnUQvRPL9e4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGfhkJa5ha6/bzlUoT/H5amcvXsgWlJstfOTA
+ B+/e6TTdOYmjokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJn4ZCWAAoJENju1/PI
+ O/qar/wQAKYdC1NWfYRLSF+z7pSP/dBf3sqEwevqmFHlNLJkmXJeFa5NTxxfvuwcX4vGn+sozlj
+ VvYxkIk1VRb7evsbngaO8LYLdGqt3EGfgcHZFAGvA3X+pldhP5zWragTrkYA1Br2DGC0s/8I+xd
+ 8dc++0XPVS6XvCucWxGdslvFehTSx/rjPP64DcZ/5lSJHzlIg3s2Jx8CXE7q+EOUBPkAAikUAKz
+ jX+QWwrgF9IkP0VEcsy8pEyjMMs2aXi9tbnJW0Ci41tz9usgDuL9DbzHgMvrtToPQ4d0kyOKz7A
+ iAL/GEZfkoilnzWAsAJ0spIiA9hP3lPoPerxu9nacOOgX75iD/wAZ8Iz17gtpJM1oKaR53m2MYN
+ OQaN7U44NjwImIENC92Ncq4NELtMCvd5UwKv/G8FATswloGw4t1ynWxM87ZWh4QOPmcIDjK8JWh
+ synW/ILzuBKif1a0PljfrgMuWqmrZJa6brU/bJmBxnD9sPYp6jslK4FbAgYJiygxkGaerb8tWdd
+ BQjQYXUdU4qwU0TW4zjXFt8Jwhq9fIFsvIB5Ei6GGPWPDDubDO7hseeiGGyK6ivqhXBIyOVyeau
+ cLwWqkMLQqZTbKoZh+AfMvRyzefmxpoUPG1tv2hzywI2ScSNpa8xbOkVsIEpXSPsoU/VlTpAEDo
+ YRbUI/YM0GswTPeSGsfsv+w==
+X-Developer-Key: i=sre@kernel.org; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_073229_515788_518D43EC 
-X-CRM114-Status: GOOD (  35.90  )
+X-CRM114-CacheID: sfid-20250324_100425_193119_983C36B4 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,145 +95,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Robin,
-On Tuesday, 18 March 2025 14:40:20 EDT Robin Murphy wrote:
-> On 18/03/2025 3:20 pm, Detlev Casanova wrote:
-> > From: Jonas Karlman <jonas@kwiboo.se>
-> > 
-> > On some Rockchip cores (like the vdpu34x video decoder), the IOMMU device
-> > is inside the the device that uses it.
-> > 
-> > The IOMMU device can still be driven by the iommu driver, but when an
-> > error occurs in the main device (e.g. a decoding error that resets the
-> > decoder), the IOMMU device will also be reseted.
-> > In such situation, the IOMMU driver and the hardware are out of sync and
-> > IOMMU errors will start popping up.
-> > 
-> > To avoid that, add a flush_iotlb_all function that will let the main
-> > drivers (e.g. rkvdec) tell the IOMMU driver to write all its cached
-> > mappings into the IOMMU hardware when such an error occured.
-> 
-> Eww, this is the exact opposite of what flush_iotlb_all represents, and
-> I really don't like the idea of the public IOMMU API being abused for
-> inter-driver communication.
+The Radxa ROCK 5B+ is an improved version of the ROCK 5B.
 
-I see, so "Synchronously flush all hardware TLBs for this domain" means that it 
-is supposed to clear everything that is set in hardware then, right ?
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-> Please have some kind of proper reset
-> notifier mechanism - in fact with runtime PM could you not already
-> invoke a suspend/resume cycle via the device links? AFAICS it would also
-> work to attach to a different domain then switch back again. Or at worst
-> just export a public interface for the other driver to invoke
-> rk_iommu_resume() directly.
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 650fb833d96ef67ea1bba33c0767777378a38fa7..fe1fe8fe52fa3594a0da8e0263cb46949436a021 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -946,6 +946,11 @@ properties:
+           - const: radxa,rock-5b
+           - const: rockchip,rk3588
+ 
++      - description: Radxa ROCK 5B+
++        items:
++          - const: radxa,rock-5b-plus
++          - const: rockchip,rk3588
++
+       - description: Radxa ROCK 5C
+         items:
+           - const: radxa,rock-5c
 
-Thank you for the suggestions. PM runtime is a bit overkill as it can also 
-manage power and clocks related to the iommu but also other devices in the 
-tree.
-
-I went with an "empty domain" and switching between them works as expected.
-
-> Just don't hide it in something completely
-> inappropriate - I mean, consider if someone wants to implement
-> IOMMU_CAP_DEFERRED_FLUSH support here in future...
-
-I don't know what that does exactly. As I don't have enough of the picture on 
-IOMMU drivers, I'm glad we could find a solution that doesn't change anything 
-in the IOMMU tree :)
-
-Regards,
-Detlev
-
-> 
-> > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > 
-> >   drivers/iommu/rockchip-iommu.c | 45 ++++++++++++++++++++++++++++++----
-> >   1 file changed, 40 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/rockchip-iommu.c
-> > b/drivers/iommu/rockchip-iommu.c index 323cc665c357..7086716cb8fc 100644
-> > --- a/drivers/iommu/rockchip-iommu.c
-> > +++ b/drivers/iommu/rockchip-iommu.c
-> > @@ -899,6 +899,40 @@ static size_t rk_iommu_unmap(struct iommu_domain
-> > *domain, unsigned long _iova,> 
-> >   	return unmap_size;
-> >   
-> >   }
-> > 
-> > +static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
-> > +{
-> > +	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-> > +	struct list_head *pos;
-> > +	unsigned long flags;
-> > +	int i, ret;
-> > +
-> > +	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
-> > +	list_for_each(pos, &rk_domain->iommus) {
-> > +		struct rk_iommu *iommu = list_entry(pos, struct 
-rk_iommu, node);
-> > +
-> > +		ret = pm_runtime_get_if_in_use(iommu->dev);
-> > +		if (!ret || WARN_ON_ONCE(ret < 0))
-> > +			continue;
-> > +
-> > +		if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu-
->clocks)))
-> > +			continue;
-> > +
-> > +		rk_iommu_enable_stall(iommu);
-> > +		for (i = 0; i < iommu->num_mmu; i++) {
-> > +			rk_iommu_write(iommu->bases[i], 
-RK_MMU_DTE_ADDR,
-> > +				rk_ops->mk_dtentries(rk_domain-
->dt_dma));
-> > +			rk_iommu_base_command(iommu->bases[i], 
-RK_MMU_CMD_ZAP_CACHE);
-> > +			rk_iommu_write(iommu->bases[i], 
-RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
-> > +		}
-> > +		rk_iommu_enable_paging(iommu);
-> > +		rk_iommu_disable_stall(iommu);
-> > +
-> > +		clk_bulk_disable(iommu->num_clocks, iommu->clocks);
-> > +		pm_runtime_put(iommu->dev);
-> > +	}
-> > +	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
-> > +}
-> > +
-> > 
-> >   static struct rk_iommu *rk_iommu_from_dev(struct device *dev)
-> >   {
-> >   
-> >   	struct rk_iommudata *data = dev_iommu_priv_get(dev);
-> > 
-> > @@ -1172,11 +1206,12 @@ static const struct iommu_ops rk_iommu_ops = {
-> > 
-> >   	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
-> >   	.of_xlate = rk_iommu_of_xlate,
-> >   	.default_domain_ops = &(const struct iommu_domain_ops) {
-> > 
-> > -		.attach_dev	= rk_iommu_attach_device,
-> > -		.map_pages	= rk_iommu_map,
-> > -		.unmap_pages	= rk_iommu_unmap,
-> > -		.iova_to_phys	= rk_iommu_iova_to_phys,
-> > -		.free		= rk_iommu_domain_free,
-> > +		.attach_dev		= rk_iommu_attach_device,
-> > +		.map_pages		= rk_iommu_map,
-> > +		.unmap_pages		= rk_iommu_unmap,
-> > +		.flush_iotlb_all	= rk_iommu_flush_iotlb_all,
-> > +		.iova_to_phys		= 
-rk_iommu_iova_to_phys,
-> > +		.free			= 
-rk_iommu_domain_free,
-> > 
-> >   	}
-> >   
-> >   };
-
-
-
+-- 
+2.47.2
 
 
 _______________________________________________
