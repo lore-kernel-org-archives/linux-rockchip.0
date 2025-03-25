@@ -4,60 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC743C36008
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 03:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72862C36005
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 11:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=zCNICcZWURIozS49eJE/5j39j/H6KjTITMYSHefk0IA=; b=dWrrE3+0OMuGnVgfQPSF+rZH3E
-	EdIVjvkWxcQm9zT1MpJz4Ta0EXjUFxVTrVumh+7/+Y+gIZG81kuI0tEUhmYUu2XTvYX7lHA8nEVFy
-	Rj4T6uVZfso0qmyidrhNClOspIS67B/xRPPEvfxLMovvrzyRS6YBtTbA9YccrDQhEVPV0RJyGO3Gd
-	INK6f9S/V0Akl69LlwqvwA5BmquB8YlunEDpOSnOc8zYTEq45h2cMYX8JoD/t5LjnvD+YO8ympS4t
-	mNDAhYR3/0QNls3nGejzLpP9nIomq4+DqJNGgcVLVoSK4AlsOQnVdK+LvxAceJWYRJymgjjW27Gsa
-	TNZm0Y7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ErqWCwN238HyJC8R81uzttrIbeZWBfS/up/F1Dkzjj4=; b=aOH+13cIhfWmzw
+	GvBBwa1KjkD8t8utZoal+HjAuwwVL+XT0wa/ORRpTpSJO4rGx4zNZLVgZ4QZibWIjmhVvZuTgG3Z1
+	KbPWZ1ISbmE1oQmIhQ3VVvUFAtgrzT81MBS0awugouM+8jparTaCHzsP3GEtYOHn28yC2Uw9xPyuZ
+	HKEeu3CazNBtSS9D0evE8wC4nDc5F9PSTLqSUZcVv4fcZOkQHxW+CH1qTbJgWwWd9Pnh3Gwl+QsXe
+	mH6EmMZ+DcBKHlaaB7q7SOnciSl6S/iP4WFGNLhwfKpzl2lUq1CETVGKCyfttCRjDbV5k6/VokNP4
+	MSCFroRI/RkYnwwWg0OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twumc-00000004kNe-2ckG;
-	Tue, 25 Mar 2025 03:16:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twujC-00000004jsY-3p5j;
-	Tue, 25 Mar 2025 03:13:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 24CB744BB2;
-	Tue, 25 Mar 2025 03:13:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30809C4CEDD;
-	Tue, 25 Mar 2025 03:13:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742872402;
-	bh=E7hVehIeYXHEFzo2cwihH0hixCMqgRhmdfHFRgEeypc=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=ZJ/8rdmgejL5ITSuOME+enjRg5eUU+Nk4/jaCfVmLOZdqVbUIHzu3UUpdIiIh0wFV
-	 crk+JWcbsM9tidy0Rj0wpAiKiQwCoTV6jLxecNH2LqUt4ph2Im88XI601JjfyoXOjg
-	 CNay8ntkC/3jAEtnWf+sB2edz89pd7FVSqHzSO/r5UYyHLfSc9zHOCQO5B+Hqx34jd
-	 nZTrg4igkAFmj0fxQbn2kLQpbFvhsSig3T1RDFmmfayXF46Ul1FjUlitv5Kdd+VogW
-	 x3VSfKpNA5ObqmwFJiPLkh/uvMxI9iz2RQwAtD8sQXsrEiPOwFinmVjDSO2vACyw7g
-	 iauhapHA3WZEg==
-Date: Mon, 24 Mar 2025 22:13:21 -0500
+	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tx2A7-00000005aye-0gVE;
+	Tue, 25 Mar 2025 11:09:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tx27B-00000005aMn-2u1D;
+	Tue, 25 Mar 2025 11:06:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742900795;
+	bh=D0N/mgLzCXi4oZJoUT9/lMZngBeCJnMRqCEe8RPVzCw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BDM6SVMILwPq70pCVbl5bItk8GC0tcw9Yf/34rYFw6mCnsN+0yUhfJ/hjiEeDmn72
+	 U/rtTB5SmTcJGgmK3BZgMDjTc0hOnJaukjn/UNzwgBnVk7brn9q0PkuiUIBfUuZDFV
+	 /zv/Zxa8KTIPQG2taIBBWZ5p/GXotmZq93q8rvpyMR3QhlH9TaqL4UWMJLUDFeiJav
+	 oaWEJjL7EdSh00MXLBQG9R/fO5qaK1ES5NL0feETn5ewOfDXhGrOCpSZC+OTwfLJOL
+	 KAzWvgqVBrQpvPHyVOUJI/5otjdYifxjbuAroFyqWGttAulvH7kZxZ+7Cd/mLVZAPr
+	 QrTihiq9olnjw==
+Received: from [192.168.50.250] (unknown [171.76.87.92])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8ED1117E09D6;
+	Tue, 25 Mar 2025 12:06:30 +0100 (CET)
+Message-ID: <c71855d0-2638-4f06-9b75-cdbd137837bb@collabora.com>
+Date: Tue, 25 Mar 2025 16:36:00 +0530
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-In-Reply-To: <20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org>
-References: <20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org>
-Message-Id: <174287236051.1618248.4100886448951731382.robh@kernel.org>
-Subject: Re: [PATCH 0/5] arm64: dts: rockchip: add ROCK 5B+ support
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/3] drm/ci: uprev mesa
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+ robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
+ lumag@kernel.org, quic_abhinavk@quicinc.com, mripard@kernel.org,
+ jani.nikula@linux.intel.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20250314085858.39328-1-vignesh.raman@collabora.com>
+ <20250314085858.39328-2-vignesh.raman@collabora.com>
+ <CAPj87rMjF84yyPqBshuGu=8qx6Xhq9Z-HgEnQe=tRtbu3E8OtQ@mail.gmail.com>
+Content-Language: en-US
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <CAPj87rMjF84yyPqBshuGu=8qx6Xhq9Z-HgEnQe=tRtbu3E8OtQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_201322_993003_7390E748 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20250325_040637_890483_3B806657 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,147 +80,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 24 Mar 2025 18:04:21 +0100, Sebastian Reichel wrote:
-> This series adds support for the ROCK 5B+, which (as the name suggests)
-> is an improved version of the ROCK 5B. It also adds initial USB-C
-> support for both the ROCK 5B and the 5B+.
+On 21/03/25 15:56, Daniel Stone wrote:
+> Hi Vignesh,
 > 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
-> Sebastian Reichel (5):
->       arm64: dts: rockchip: move rock 5b to include file
->       arm64: dts: rockchip: move rock 5b to include file
->       dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
->       arm64: dts: rockchip: add Rock 5B+
->       arm64: dts: rockchip: add USB-C support for ROCK 5B and 5B+
+> On Fri, 14 Mar 2025 at 08:59, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+>> LAVA was recently patched [1] with a fix on how parameters are parsed in
+>> `lava-test-case`, so we don't need to repeat quotes to send the
+>> arguments properly to it. Uprev mesa to fix this issue.
 > 
->  .../devicetree/bindings/arm/rockchip.yaml          |    5 +
->  arch/arm64/boot/dts/rockchip/Makefile              |    1 +
->  .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  117 +++
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  952 +----------------
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   | 1087 ++++++++++++++++++++
->  5 files changed, 1220 insertions(+), 942 deletions(-)
-> ---
-> base-commit: 76728fe54f547950f73c9dc446beb2e31604abd7
-> change-id: 20250324-rock5bp-for-upstream-fd85b00b593b
+> Thanks a lot; the series is:
+> Acked-by: Daniel Stone <daniels@collabora.com>
+
+Applied to drm-misc-next.
+
+Regards,
+Vignesh
+
 > 
-> Best regards,
-> --
-> Sebastian Reichel <sre@kernel.org>
+> Cheers,
+> Daniel
 > 
-> 
-> 
-
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org:
-
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: power-controller: power-domain@12: Unevaluated properties are not allowed ('domain-supply' was unexpected)
-	from schema $id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: vop@fdd90000: clocks: [[33, 605], [33, 604], [33, 609], [33, 610], [33, 611], [33, 612], [33, 603], [107], [108]] is too long
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: vop@fdd90000: clock-names: ['aclk', 'hclk', 'dclk_vp0', 'dclk_vp1', 'dclk_vp2', 'dclk_vp3', 'pclk_vop', 'pll_hdmiphy0', 'pll_hdmiphy1'] is too long
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fddb0000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fddb0000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fdde0000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fdde0000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /rng@fe378000: failed to match any schema with compatible: ['rockchip,rk3588-rng']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fe4e0000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fe4e0000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fe4f0000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fe4f0000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fddb8000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fddb8000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: spdif-tx@fdde8000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif'] is too long
-	'rockchip,rk3066-spdif' was expected
-	'rockchip,rk3228-spdif' was expected
-	'rockchip,rk3328-spdif' was expected
-	'rockchip,rk3366-spdif' was expected
-	'rockchip,rk3368-spdif' was expected
-	'rockchip,rk3399-spdif' was expected
-	'rockchip,rk3568-spdif' was expected
-	'rockchip,rk3588-spdif' is not one of ['rockchip,rk3128-spdif', 'rockchip,rk3188-spdif', 'rockchip,rk3288-spdif', 'rockchip,rk3308-spdif']
-	from schema $id: http://devicetree.org/schemas/sound/rockchip-spdif.yaml#
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /spdif-tx@fdde8000: failed to match any schema with compatible: ['rockchip,rk3588-spdif', 'rockchip,rk3568-spdif']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /hdmi_receiver@fdee0000: failed to match any schema with compatible: ['rockchip,rk3588-hdmirx-ctrler', 'snps,dw-hdmi-rx']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /hdmi_receiver@fdee0000: failed to match any schema with compatible: ['rockchip,rk3588-hdmirx-ctrler', 'snps,dw-hdmi-rx']
-arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb: vop@fdd90000: clocks: [[33, 605], [33, 604], [33, 609], [33, 610], [33, 611], [33, 612], [33, 603], [107], [108]] is too long
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-
-
-
-
 
 
 _______________________________________________
