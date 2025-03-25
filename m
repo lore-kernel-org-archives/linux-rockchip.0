@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE4DC35FFC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 13:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA0A9C3600D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 13:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p9fcybryKuUsefnmsSOiJ331iSvDfwJosAJ608SZa28=; b=25MQoyV0V7Bjcq
-	3/4QYM6Slz+57pG3El7N1R+JJA0d4NVe5xlp5tArbTgTk+fz7pMfV81aKcjReFV2EY5cHT6+oaWgW
-	0g2t0nYCPgnQ5h2Lzub6y6u4EN1istzTWajgMQfDBbxnInhtJ8EVRorIBYWTWpw7KGoo2P8sweWGK
-	/AU2R0RgJGCc1PTAzKOxMTFCn9D9KqS5hkGsfNb05nfoNpjP1FaeKQR2b87EanIeJVifYgfB3I+hS
-	6PZ/+3PY+wVQCzsMeBgZENcq/rujjJNzV/zqPqxvcFmY6uah/lplzWPHJg+m9c0pZEzGcjz8jMaun
-	+xGR8lNv5fM0ypWz0X3A==;
+	List-Owner; bh=GOba0/TyPGsunbuMbDD5Ap3L5rGiqun807XJY/fVqd4=; b=2ctOAmjG+sYnK7
+	2ndsVoHSmKldXTACgm+spTf4x3fn3XgsE/zE6j0mEClJjkN5vACcHKMCNX+oGCq+Fkch7hGc9oSz1
+	X3+0yU51ZEXN/0TrmHQ8gTAaNrxnn+P7H245T//CtqxCYi/xliJsXUBWmLi2243yjabvTFX36vPUU
+	+Kkqcs871xuJAU03yN04/RdaFjgqV4oLPLNNA9gga6EbyeQTXlbHFIAsMDMigGGWilqt0qaGPeTFP
+	EE2K4bLJDPmf1qXRrNs47t62GaNBIm5xsiUd8wGRQIxycsnXGHOdnMJe3uiqz8fR3gslWbT0TF780
+	tSzIWSziGP8SxkoWk9OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx4TT-000000063OW-1jgI;
+	id 1tx4TT-000000063OQ-0Gxg;
 	Tue, 25 Mar 2025 13:37:47 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx4MK-000000062GX-1Drc;
+	id 1tx4MK-000000062GW-1BNp;
 	Tue, 25 Mar 2025 13:30:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=ImgTLdqMQ1HWln0/pjTdJ4Wv5Wf+bnJovoBh7j+FUq8=; b=Y4JEIfCXe3dl3QLHrKHt96tFUo
-	+GIa/+A48iu/gaMs06qgtMByCroT43z++Hka8IUT5TA2mj034vOZdJafIK7t0+JYaPbNPjC82JngE
-	QP153oWgzWRqk9l+mixxU+SFN091WiexZXnDbF/G3F8Ve9TQZx8haYqyat67y5vyDosCPdBkUDH1c
-	+7lnPnq88eW9QAtWz5Prkl2+PV/FjR8H7mtT/ZiYc/Xiz6dA9y7JUZwlmNLTHqWdCpjSWC/N8P/gU
-	MetgWere2G8qqTlu9yAh9BVc7pbN1QUU6N8BRKHp1xnq+KC+6R5ABDYKixeCerfWA/E0F6Qjuvd0d
-	61lgsH8w==;
-Received: from m16.mail.163.com ([117.135.210.2])
+	bh=R6TTX6i0XQxaEnW4x1mI+/13/Nh8Vd+xGWNS930sgHw=; b=L3uCnQ0+HgXaFriDB/7nyvgPb5
+	JJOwd2T+WvSshahFPeySrCCHWqyLgRIHnpZEK3mx+NHicz65BtNX5dTaNZH0NdN8iA6P/R85SA2Ov
+	XwHRvPdDR/CdDf+kmE67OIq1Q1/xxloAYSNtr7UHTXg1PXC0XIMHjk3VqXydms6JhaFVCMriTQR+B
+	SPdcCBVaOeeofkpj4SwBTssJgAozW+iePWM7zHNREbU+4vZiuXapmy7yFePdmRmIvqWGNWR9Z/j50
+	vGxZr17LuD/WATLW+JDddenVPHMqbE62puZaWMMELqlQ8afdnMohUVY9NcA/kutHuUL/i+x1Rlnxa
+	dcZN54Tw==;
+Received: from m16.mail.163.com ([117.135.210.4])
 	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tx4MH-00000005Snm-0HAo;
+	id 1tx4MG-00000005Snh-2ssl;
 	Tue, 25 Mar 2025 13:30:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=ImgTL
-	dqMQ1HWln0/pjTdJ4Wv5Wf+bnJovoBh7j+FUq8=; b=kIhzMVOCLBFylit8p4PG3
-	RQuG14+3qmmuGUjVkkouivWS3loXJ5QTbei0vILd9ta98s4X5nmKmPK6TYcAJovC
-	A+q2frQ7jwaTDy5ovPPy8pINeVKq7Ip8PihXnUas8AX/kB296qxcIOZJbpRMwKAs
-	6l8VMdbtxS3GHEMNV5RtFM=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=R6TTX
+	6i0XQxaEnW4x1mI+/13/Nh8Vd+xGWNS930sgHw=; b=arhNAZxvxgBjReAXbNFDD
+	Fva9rgXgRJbS+4y7+UonVJo1dXpo8/tcFOu1XQuyevmlbRRcV9YdZOyXBZiOmssk
+	tvY2S9+0BlpiqPO5M3UfmfTbqqaZjwSH5LGVJ5ljK6k93eSe88Mld+jaXoJomGeW
+	4wQeZhQrnDh2XQ/6W9CtmA=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgAnc2bLr+JnWNnrAA--.35530S5;
-	Tue, 25 Mar 2025 21:29:53 +0800 (CST)
+	by gzsmtp4 (Coremail) with SMTP id PygvCgAnc2bLr+JnWNnrAA--.35530S4;
+	Tue, 25 Mar 2025 21:29:52 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: conor+dt@kernel.org,
@@ -61,23 +61,23 @@ Cc: conor+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 3/6] drm/rockchip: inno-hdmi: Simplify error handler with dev_err_probe
-Date: Tue, 25 Mar 2025 21:29:37 +0800
-Message-ID: <20250325132944.171111-4-andyshrk@163.com>
+Subject: [PATCH v2 2/6] dt-bindings: display: rockchip,inno-hdmi: Document GRF for RK3036 HDMI
+Date: Tue, 25 Mar 2025 21:29:36 +0800
+Message-ID: <20250325132944.171111-3-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250325132944.171111-1-andyshrk@163.com>
 References: <20250325132944.171111-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PygvCgAnc2bLr+JnWNnrAA--.35530S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7uryfXr47XFy5uw1kCr17Jrb_yoW8AFWUpr
-	ZxJFyjva48XF18W347ua15Ar1Sya1Uta18CrZrGwn5Zw17Zr4Dtry3ZFWFqrWFyF95Za1a
-	y393Xa4UZ3W7WaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jZfHUUUUUU=
+X-CM-TRANSID: PygvCgAnc2bLr+JnWNnrAA--.35530S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZryxJFW8ZF1kCrW8WFW8Crg_yoW8GF45pa
+	s3C3srWFyxGF17X34ktF1kCrWYqF97Aa15GFW2qr17tF12gan5Ka1agwn8ZF4UAFs7ZFyS
+	9F47GF98Aw1Ivr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j2ZXrUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hMbXmfirF9ioAAAsw
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAobXmfipyL8oQAAs6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_133021_686713_0C7FE1D9 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20250325_133021_236237_442E65B8 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,58 +97,53 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-Use dev_err_probe simplify the error handle.
+HDMI on RK3036 use GRF control the HSYNC/VSYNC polarity, but this part
+is missing when it first landing upstream.
+
+Document that it is mandatory for RK3036 HDMI.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
 ---
 
-Changes in v2:
-- First included in this series
+(no changes since v1)
 
- drivers/gpu/drm/rockchip/inno_hdmi.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ .../bindings/display/rockchip/rockchip,inno-hdmi.yaml    | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 483ecfeaebb08..e891d42dd08a4 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -885,29 +885,22 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 		return PTR_ERR(hdmi->regs);
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+index 9d1e7f894ea54..290376bec079a 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+@@ -56,6 +56,12 @@ properties:
+       - port@0
+       - port@1
  
- 	hdmi->pclk = devm_clk_get(hdmi->dev, "pclk");
--	if (IS_ERR(hdmi->pclk)) {
--		DRM_DEV_ERROR(hdmi->dev, "Unable to get HDMI pclk clk\n");
--		return PTR_ERR(hdmi->pclk);
--	}
-+	if (IS_ERR(hdmi->pclk))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->pclk), "Unable to get HDMI pclk\n");
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to GRF used for control the polarity of hsync/vsync of rk3036
++      HDMI.
++
+ required:
+   - compatible
+   - reg
+@@ -75,6 +81,8 @@ allOf:
+             const: rockchip,rk3036-inno-hdmi
  
- 	ret = clk_prepare_enable(hdmi->pclk);
--	if (ret) {
--		DRM_DEV_ERROR(hdmi->dev,
--			      "Cannot enable HDMI pclk clock: %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Cannot enable HDMI pclk: %d\n", ret);
+     then:
++      required:
++        - rockchip,grf
+       properties:
+         power-domains: false
  
- 	hdmi->refclk = devm_clk_get_optional(hdmi->dev, "ref");
- 	if (IS_ERR(hdmi->refclk)) {
--		DRM_DEV_ERROR(hdmi->dev, "Unable to get HDMI reference clock\n");
--		ret = PTR_ERR(hdmi->refclk);
-+		ret = dev_err_probe(dev, PTR_ERR(hdmi->refclk), "Unable to get HDMI refclk\n");
- 		goto err_disable_pclk;
- 	}
+@@ -103,6 +111,7 @@ examples:
+       clock-names = "pclk", "ref";
+       pinctrl-names = "default";
+       pinctrl-0 = <&hdmi_ctl>;
++      rockchip,grf = <&grf>;
+       #sound-dai-cells = <0>;
  
- 	ret = clk_prepare_enable(hdmi->refclk);
- 	if (ret) {
--		DRM_DEV_ERROR(hdmi->dev,
--			      "Cannot enable HDMI reference clock: %d\n", ret);
-+		ret = dev_err_probe(dev, ret, "Cannot enable HDMI refclk: %d\n", ret);
- 		goto err_disable_pclk;
- 	}
- 
+       ports {
 -- 
 2.43.0
 
