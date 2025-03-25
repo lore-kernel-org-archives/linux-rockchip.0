@@ -4,37 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 997B2C3600B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 14:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74CC2C3600B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 14:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6NelkmNJu3cIeGYbbJlnosbY2b6az2wMcHab/ZQMPuE=; b=yJ5cfN8I05s7AQ
-	HEWciGaTx5YVhjlX9XvsWml4FQ3q09eESenZu0y8lVGJN3QJv6NVgWgjWi0CgST9camQMv4+Pmqv/
-	WLV/glAuqJt+Od3xOa2aev94pLbi2S9BHgKdB+ttyfC1I+4veqlfVcJW2n0zWiZto622sNSMUxaK2
-	J1MmXl9CzYkRWx/KYSFCesBbOXOFsu6APK032kfRMWn7oJ6JwoyQD5uad17ghwfWJCEJbtJiy+SUa
-	vm7d1osQhzjY5uU941ZBs/3/p1GRd3OatK916Wa1q0aFAJIyGmnIxnspo8sXJl31ZKkSvZG4SD1gG
-	pB0KrC1f1mP0b/e7qL9A==;
+	List-Owner; bh=R+Al8bz0J91EPxmtJ6No8wzDbKZVG7VDlxunQus2+aw=; b=F8iWkF7moiJuLz
+	CJK7A7sXpkaN8avZNOgVnP54cW+R+Arq7AHnCaAXZ/xre5psphn1LPm9DOkqqtjAn8mehYfyBNqGl
+	wmIcBn/NZjK5PErKj5sHp2jRCIKOv2TjMp+s0A43JrnFUEvAUAC7J3qNjHTR23BQMgQA9Xy2Ahp8x
+	N8canTxRVWOVBshEC9tKI2hKxwtKSYVMzmfaQRw+WuBUCU71vwPBlNXVzg4P6AaKETKn9GM9hAIJk
+	ulsXQpXmALZhRcKoRpQfyA5J0VA2kIt7uumYM3tfJ7dF6pttG0HtLvIqAB2E9QROqeXrjzBGlk3RY
+	wCmHAVXvuVM8b2MyMhyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx5QP-00000006DSE-2rYo;
-	Tue, 25 Mar 2025 14:38:41 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx4MB-000000062Cy-39cs;
-	Tue, 25 Mar 2025 13:30:17 +0000
+	id 1tx5es-00000006FdW-3sS9;
+	Tue, 25 Mar 2025 14:53:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tx4ML-000000062H9-3YN7;
+	Tue, 25 Mar 2025 13:30:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=SNu0F4yGXjEea7fLM5tg1tfl9TwC9mxjxgn2oB/nJL4=; b=k9UwywIXtVrTWOkwVQBcPYKBiM
+	Gk4K4bFm6GMMv5nP10SZh2EFIG9QLzp5dRuv9FKqsnMZLmLc8G9YUkuR1qdtkdDNPEJHDm0Fja+ab
+	BU41R6R/ZEuNt/A4vf14PbBDndBfjtlR0XQOKrQ6zvdzkSTucq5mFDR1pW+ExehOXrcGoJZtIdhq4
+	gCqzkaz2pJentmndSOCmacwxCGe26izRABMMYs/5ZFKJ+wC1CFI/2HXUmFIVtIx8BNmomI3VUSGn3
+	VN4NgceO8GBdUq5LiLUL+C7uHB98IQACtxtUtZ7oF/JLhp3vaOUXfel03HPYLcOzR1VLil7PfTlKY
+	z4ELaaAQ==;
+Received: from m16.mail.163.com ([220.197.31.3])
+	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tx4MI-00000005Sni-1ImF;
+	Tue, 25 Mar 2025 13:30:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=b4xUr
-	2g8P2Yxfewyx9tncEy5+j9/6LhB8iszS/EBG4A=; b=K79ks/LLuSMZu35FzSAPn
-	FUTPmIjAhC6jRxmEHuSHfrsf1OS/CBsVJKZUTidAB3cZKq8PazjI+RmXXcG4zLbO
-	V5+8Zs/jiX54UmyHs0pXbxxTRL7VnbfYHbpJQ0TpOVwGV5oyPplK5HwolREy8ODX
-	vASdnUq9VjMuUXvyqzQnp4=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=SNu0F
+	4yGXjEea7fLM5tg1tfl9TwC9mxjxgn2oB/nJL4=; b=GVqfaRHJ8f4Dbd49Yoefd
+	PGivXKGqhOuFpE7Laf6x4CVnBDBDYl9cFSGTj8Z37rNN+gWIkgnm2dMIHSZbktMU
+	cNnhDgLWKj1zkB6o/9nI0e/afnYt+U6RHeKkKv2qFwX88v1cLD/kMiG5cEEvx90M
+	p2tui/QSvq5CzAkzC6+LMM=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgAnc2bLr+JnWNnrAA--.35530S8;
-	Tue, 25 Mar 2025 21:29:56 +0800 (CST)
+	by gzsmtp4 (Coremail) with SMTP id PygvCgAnc2bLr+JnWNnrAA--.35530S3;
+	Tue, 25 Mar 2025 21:29:51 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: conor+dt@kernel.org,
@@ -47,23 +61,23 @@ Cc: conor+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 6/6] Revert "ARM: dts: rockchip: drop grf reference from rk3036 hdmi"
-Date: Tue, 25 Mar 2025 21:29:40 +0800
-Message-ID: <20250325132944.171111-7-andyshrk@163.com>
+Subject: [PATCH v2 1/6] dt-bindings: display: rockchip,inno-hdmi: Fix Document of RK3036 compatible
+Date: Tue, 25 Mar 2025 21:29:35 +0800
+Message-ID: <20250325132944.171111-2-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250325132944.171111-1-andyshrk@163.com>
 References: <20250325132944.171111-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PygvCgAnc2bLr+JnWNnrAA--.35530S8
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Gry5Kr43uFW8Ary3Kw15Arb_yoWkGwcEya
-	4Ig3W5Ka1FkrWYqry8tw4UCwsFvws5GFZ3Jw1rJr4UGwnYqF4DuFs5GayIyr15Gay2grZ3
-	WFZ5Xa1Yyw1agjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0JDG5UUUUU==
+X-CM-TRANSID: PygvCgAnc2bLr+JnWNnrAA--.35530S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tw45GrW5ur4xJFyrWF45Wrg_yoW8Ar4Dpa
+	93C3WkXr1xur1UX34Dtr18CrWkta4kAa1YkFy2q3W8Gr1j9a1DKa1agr4DZay3ArsrAa9F
+	vFsFgry8A34SvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j773kUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBQbXmfipyL9GAAAsc
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g0bXmfirF9iZQABsq
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_063016_166555_A3518A80 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20250325_133023_211808_E5E0549C 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,35 +97,62 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This reverts commit 1580ccb6ed9dc76b8ff3e2d8912e8215c8b0fa6d.
+The RK3036 HDMI DDC bus requires it's PHY's reference clock to be enabled
+first before normal DDC communication can be carried out.
 
-The HSYNC/VSYNC polarity of rk3036 HDMI are controlled by GRF.
-Without the polarity configuration in GRF, it can be observed from
-the HDMI protocol analyzer that the H/V front/back timing output
-by RK3036 HDMI are currently not in line with the specifications.
+Therefore, both RK3036 and RK3128 HDMI require two identical clocks.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 ---
 
-Changes in v2:
-- First included in this series
+(no changes since v1)
 
- arch/arm/boot/dts/rockchip/rk3036.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ .../bindings/display/rockchip/rockchip,inno-hdmi.yaml | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-index 22685cd23a708..95ae815ba56d3 100644
---- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-@@ -405,6 +405,7 @@ hdmi: hdmi@20034000 {
- 		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru PCLK_HDMI>, <&cru SCLK_LCDC>;
- 		clock-names = "pclk", "ref";
-+		rockchip,grf = <&grf>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hdmi_ctl>;
- 		#sound-dai-cells = <0>;
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+index 5b87b0f1963e1..9d1e7f894ea54 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+@@ -23,13 +23,11 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    minItems: 1
+     items:
+       - description: The HDMI controller main clock
+       - description: The HDMI PHY reference clock
+ 
+   clock-names:
+-    minItems: 1
+     items:
+       - const: pclk
+       - const: ref
+@@ -87,11 +85,6 @@ allOf:
+             const: rockchip,rk3128-inno-hdmi
+ 
+     then:
+-      properties:
+-        clocks:
+-          minItems: 2
+-        clock-names:
+-          minItems: 2
+       required:
+         - power-domains
+ 
+@@ -106,8 +99,8 @@ examples:
+       compatible = "rockchip,rk3036-inno-hdmi";
+       reg = <0x20034000 0x4000>;
+       interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+-      clocks = <&cru  PCLK_HDMI>;
+-      clock-names = "pclk";
++      clocks = <&cru PCLK_HDMI>, <&cru SCLK_LCDC>;
++      clock-names = "pclk", "ref";
+       pinctrl-names = "default";
+       pinctrl-0 = <&hdmi_ctl>;
+       #sound-dai-cells = <0>;
 -- 
 2.43.0
 
