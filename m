@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D8CC36008
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 19:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DABDC36005
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 21:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dBrWEg2/sgODANzMPFsSAzcqxl8qN9d3Y3lvXYT18f8=; b=IZZavX/T998Us0
-	obMW/8hC+KTO3367y8o0sxJL/BOzhMwnu2v0WHnnNB1cNo4K39alm0+zwBNtYNU9UcK1RiRlhSSQl
-	MrdvYffSSaabkBE2kGNtjWzD4DucI7hXaxEFmxgqScM8O2dDosz7eWJzgNDZsicgeMyRGDbG4ej9s
-	HOVf5IMYvJpAZdfwRh5g7Jo+08YTiEugAs80DFG2lHNxcRI4Sc2ElfHo5c65W3RB6EODQssgD9XnB
-	dRVsH0FPg1U/eIvqc7fS/7cP2CCff2FvTwH6ZcubVy5ntQvsfKWM5XIjXMY+PFLMV1pSzjyv70slW
-	P733+9irfhFX3SGwfiHg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OHKlHMj5khLsozeTeVmFVWK+nbFGatwo3ob/fqJM90E=; b=sqhRC5pzXGxW79
+	2f71giYUoQf9NfLllCGGJji4H1MozTXv0rfbPj1O62eWcF2Cg1Ws93S/5SywWzdAA1HLpS/OfNtv2
+	2Rwa4m3laJrhx9LvUMQ8N4h4jU2ktFZKjTNEyJoa4aJ0bcxmTmbmtgTTLyAMeeDnQDgGkxBghdvI+
+	OXfSDtRXHj2cEj1mIdO1Jt6horQnRR3/moaRBiuYGllfKpJLgW/0CQvMfH9pbZ9p2TcsrCByyfFql
+	ZiWdMwW7lCeXvP8XdXzvt7qbzmF7z5VPisCdz8fmCF6pLYx5Qj+TR+j6IJRGtrTIEwBoBsOqs+cWj
+	pqwkbNqz6z/fH5yoAqbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txAQ9-00000006v6R-2dfT;
-	Tue, 25 Mar 2025 19:58:45 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1txBvM-00000007476-3iyg;
+	Tue, 25 Mar 2025 21:35:04 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txAPi-00000006v46-1klH
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Mar 2025 19:58:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1742932697;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=U9r8VTyF0pq8OtaSKqOmz9cveKZRgNXDILarZ2uNThw=;
-	b=QDoItFW7QMjgOupbHGJ67OmRJmszsJhCphB+KtN2Zfa8yDdBKvKCnwyQdLX62aDsNhsv9n
-	4JHbOUB7PPuNnsLhAp4AgGqZf6sFDeZjhkgZaPPnxV3BQ1/7nuOV+9fkh6jHK8dj2AtdWB
-	9ZRpSXrvSObKHVGMwT1qBwXouZAaHKY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-685-Ogs_x_JTMc6fkChFwzNR-w-1; Tue,
- 25 Mar 2025 15:52:03 -0400
-X-MC-Unique: Ogs_x_JTMc6fkChFwzNR-w-1
-X-Mimecast-MFC-AGG-ID: Ogs_x_JTMc6fkChFwzNR-w_1742932322
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	id 1txBtc-000000073oN-189Z;
+	Tue, 25 Mar 2025 21:33:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742938393;
+	bh=8NRPCHR6JNw369gLermxb0yx+vv0DC6gM487kHYtqlk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=lRKqKZyBfdIpiAdYDEHHRp99ohsi2LRzkt86NuZc3zI6pKFL/7d5jJFyBeUQJGVvf
+	 vSIdiSoa7padRTxzqbWVAq40AH5CuytZiAFMSUlJhnxx0laua3hMDRVfCMkkDO7Jwl
+	 N7J+fIPW0owpoK2FZom6WjCOjNJql3KW/EmDPnEkwwrrXlcN5AEwPQp+dPS8i723Pf
+	 IiGp0zeU/C32jZip+0sBTF2q6BYgsbLke0SdmRsXKJ+VG+TZRRgv6TdPLlZWB1HG07
+	 wl+jS1xy6i5MFjdco64pOgUQOrghKtujFgnqRaqf+AdqrXq5OTDibvG0j+6WKuQ5Vt
+	 fUaYp8UYroQOg==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5A08F1956067;
-	Tue, 25 Mar 2025 19:52:01 +0000 (UTC)
-Received: from puchatek.local (unknown [10.44.33.225])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id A2CCD19560AB;
-	Tue, 25 Mar 2025 19:51:56 +0000 (UTC)
-From: Marcin Juszkiewicz <mjuszkiewicz@redhat.com>
-Date: Tue, 25 Mar 2025 20:51:46 +0100
-Subject: [PATCH 1/2] arm64: dts: rockchip: enable HDMI1 on FriendlyElec
- NanoPC-T6
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 87C2D17E0865;
+	Tue, 25 Mar 2025 22:33:09 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Umang Jain <umang.jain@ideasonboard.com>,
+	Naushir Patuck <naush@raspberrypi.com>,
+	Jean-Michel Hautbois <jeanmichel.hautbois@ideasonboard.com>,
+	Dmitry Perchanov <dmitry.perchanov@intel.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: [PATCH v4 0/6] media: rockchip: Add rkvdec2 driver
+Date: Tue, 25 Mar 2025 17:22:16 -0400
+Message-ID: <20250325213303.826925-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Message-Id: <20250325-nanopc-t6-hdmi-v1-1-299a2ed45878@redhat.com>
-References: <20250325-nanopc-t6-hdmi-v1-0-299a2ed45878@redhat.com>
-In-Reply-To: <20250325-nanopc-t6-hdmi-v1-0-299a2ed45878@redhat.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Johan Jonker <jbx6244@gmail.com>, 
- Rick Wertenbroek <rick.wertenbroek@gmail.com>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Marcin Juszkiewicz <mjuszkiewicz@redhat.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_125818_580393_DA80B98C 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20250325_143316_461878_F7458080 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,79 +101,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Time to get second video output working.
+Add a rkvdec2 driver for newer video decoder found on rk3588 based SoC.
 
-Signed-off-by: Marcin Juszkiewicz <mjuszkiewicz@redhat.com>
-Message-ID: <d5a822856513bcb42cc02045d41e40e9dd79b7b8.1742931830.git.mjuszkiewicz@redhat.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 39 ++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+It is also found on other hardware like the RK356x, but not tested yet,
+so it will be added later.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index bbe500cc924b4c4c1ddd833c32c39cf6c20b60e3..8542d9ebb6c0ddcf90cbe6ac8c231e7fdc5b4bcd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -52,6 +52,17 @@ hdmi0_con_in: endpoint {
- 		};
- 	};
- 
-+	hdmi1-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi1_con_in: endpoint {
-+				remote-endpoint = <&hdmi1_out_con>;
-+			};
-+		};
-+	};
-+
- 	ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_LOW>;
-@@ -360,10 +371,31 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+
-+&hdmi1 {
-+	status = "okay";
-+};
-+
-+&hdmi1_in {
-+	hdmi1_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_hdmi1>;
-+	};
-+};
-+
-+&hdmi1_out {
-+	hdmi1_out_con: endpoint {
-+		remote-endpoint = <&hdmi1_con_in>;
-+	};
-+};
-+
- &hdptxphy0 {
- 	status = "okay";
- };
- 
-+&hdptxphy1 {
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
-@@ -1126,3 +1158,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi0_in_vp0>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
-+		remote-endpoint = <&hdmi1_in_vp1>;
-+	};
-+};
+It only supports h264 format only for now, hevc will come later.
+Yuv420 and yuv422 are both supported. 8 and 10 bits format are also
+supported.
+The NV15 and NV20 pixel formats are supported in v4l2 with the first
+patch of this series. It has been picked up from [1].
+
+The driver supports using the IOMMU through the rockchip IOMMU driver.
+Because the IOMMU HW will be resetted in case of a decoding error, the
+IOMMU mappings are rewritten on the HW by switching to an empty IOMMU
+domain, then switching back to the default one.
+This is one of the ways that has been recommended in [2].
+
+[1]: https://lore.kernel.org/linux-media/20250225-rkvdec_h264_high10_and_422_support-v7-2-7992a68a4910@collabora.com/
+[2]: https://lore.kernel.org/all/9bd56bd6-ce7d-495f-9bb3-ce7f07975f62@arm.com/
+
+Changes since v3:
+- Add IOMMU support
+- Add 4:2:2 and 10 bits support
+- Move cabac to v4l2 header
+- Imported improvements from [1]
+- Improve timeout value computation
+- Improve clocks handling
+- Always write scanlist buffer address in register
+- Rebased on latest master
+
+Changes since v2:
+- doc: Disable resets and sram for other platforms, add maxItems for
+  clocks
+- Fix h264 spec equation number in comment
+- Remove superfluous status field in dtsi
+- Add TODO item for IOMMU
+
+Changes since v1:
+- Add support for RCB in SRAM
+- Move bindings to rockchip,vdec.yaml
+- Add resets bindings
+- Add second core and enable them from dtsi file
+- Only expose one video device to userspace (but don't support multicore yet)
+- Share CABAC table with rkvdec
+- Fix iowrite32 call and add preliminary support for arm
+- Remove unused code
+- Improve registers naming and code style
+- Remove DMA_ATTR_ALLOC_SINGLE_PAGES flag
+
+
+Detlev Casanova (5):
+  media: v4l2-ctrls-core: Set frame_mbs_only_flag by default in h264 SPS
+  media: rockchip: Move H264 CABAC table to header file
+  media: rockchip: Introduce the rkvdec2 driver
+  media: dt-bindings: rockchip: Document RK3588 Video Decoder bindings
+  arm64: dts: rockchip: Add rkvdec2 Video Decoder on rk3588(s)
+
+Jonas Karlman (1):
+  media: v4l2: Add NV15 and NV20 pixel formats
+
+ .../bindings/media/rockchip,vdec.yaml         |   73 +-
+ .../media/v4l/pixfmt-yuv-planar.rst           |  128 ++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   74 +
+ drivers/media/platform/rockchip/Kconfig       |    1 +
+ drivers/media/platform/rockchip/Makefile      |    1 +
+ .../media/platform/rockchip/rkvdec2/Kconfig   |   15 +
+ .../media/platform/rockchip/rkvdec2/Makefile  |    3 +
+ .../platform/rockchip/rkvdec2/rkvdec2-h264.c  |  778 +++++++++
+ .../platform/rockchip/rkvdec2/rkvdec2-regs.h  |  347 ++++
+ .../media/platform/rockchip/rkvdec2/rkvdec2.c | 1424 +++++++++++++++++
+ .../media/platform/rockchip/rkvdec2/rkvdec2.h |  150 ++
+ drivers/media/v4l2-core/v4l2-common.c         |    2 +
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |   13 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |    2 +
+ drivers/staging/media/rkvdec/rkvdec-h264.c    |  500 +-----
+ include/media/v4l2-cabac/rkvdec-cabac.h       |  509 ++++++
+ include/uapi/linux/videodev2.h                |    2 +
+ 17 files changed, 3522 insertions(+), 500 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/Kconfig
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/Makefile
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/rkvdec2-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/rkvdec2-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/rkvdec2.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec2/rkvdec2.h
+ create mode 100644 include/media/v4l2-cabac/rkvdec-cabac.h
 
 -- 
 2.49.0
