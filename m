@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869B1C36008
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 18:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BBB7C36008
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 19:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2OpTU4Eis8jaCJanuUIL3IxbaX5Z/3CFViBNieChZ2M=; b=IPR8ejuqIstTXfNvp0aLoBtw5m
-	U8iMOsq+I5pYBsbGE06rxfNUASrHlxZgHCmZ78Ii6THLrWQLHRIRbNE3x3OwGTbLs430gKn8cmbkn
-	pVy4CKxZbk+7iknLzn6YHzkAYSFd7kKqg3YCHuKx2MtLi19jJXhOBqk+Lsk0IblcjYNKB7PbgckNc
-	BjDUNcVVh4NaG5S5CU9ya2m/OTl/KBmE+Q9zD+T+6FJQwHl28ZAA/IMNPyWKXccYr9D4fKQX0eQQw
-	dDEK0T+d7c83fuMcXQHWberuwKKBVkxmY4zhPHp8obIanER7q0igjrNIuD/NgNi5XBN7RFu2uEqWe
-	qVidZ8jA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=A9MUSHLRmXLAAmfVmP1qAD6iD0fRqMnwt/EqH4vd1Cc=; b=QbKEKCx+fF9wYZ8ur+K5MC5OIF
+	JMaMimrbOWTiGEsaPex3ctZl0aseEwIVbza0y4GvR+p0fH6pkfvoKTg92UT7d/X3jsOXYwBwX7BHg
+	JU+qnIc3sN+/uC4MtbEWAhyPzi1LaMbZUlOndBrCXo1AVuyOvVXAtExBs1M1F2gthpBe1Hoy/w7ay
+	kyGK8Cty/J6xVTJWAFasWuO4znJ8n75vXIHxH017/UIjT3PUweOIhe1PFy6EhwQ5Rsy7hr+hjU7XB
+	NDafnbzRAkBAFcZuuYFvllwKCAxMR0YruwhYoE0Qtav39Igrsp0rZe7E2601vXSzdbECIAW+xDO0b
+	Q/kvW9qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txV3E-00000009IKH-0nb4;
-	Wed, 26 Mar 2025 18:00:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1txWGw-00000009QlS-1ti0;
+	Wed, 26 Mar 2025 19:18:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txV17-00000009Hq0-46Ec;
-	Wed, 26 Mar 2025 17:58:19 +0000
+	id 1txWAB-00000009PzY-1J5o;
+	Wed, 26 Mar 2025 19:11:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DD0E95C6899;
-	Wed, 26 Mar 2025 17:55:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95A90C4CEE2;
-	Wed, 26 Mar 2025 17:58:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9FD2D44138;
+	Wed, 26 Mar 2025 19:11:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FB9BC4AF09;
+	Wed, 26 Mar 2025 19:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743011896;
-	bh=qD/cQ41RTo+8BDYdoRt9s5SKovqsdZGdDznd1NSpQ6s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CnS2FyLz/sd/a9zJ6hmgsKESQg/fH8iDeWVq2tPaA4JXR14WInCiekYIY9X8GYBxv
-	 v+2S2s5YrK+EMlc62REZ7YCao5x9cUjTH6z6a0dLif7BvHSQvYq4JMHSxwwTM1aXuS
-	 1EtwJmvhlHKjnereQixhR2d5dcJOhjBr3Jn4xpGWAjM3BqKD0FbvbiAQThaoGFlkDd
-	 DLZKN7T0R+XMRSD1ZwgxVHqlc54xkVBIdunljgm39zqs7ZJwjDS7xZcGmOITVYfLee
-	 zEI19BS2enPqpLIrDi+7FNL2jSpOalh01klMNugAgsXT0+cE407KhXs1hZwu0pUaNS
-	 D2VDFkTjl2AGg==
-Date: Wed, 26 Mar 2025 17:58:11 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
-Cc: Matthias Kaehlcke <mka@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Benjamin Bara <benjamin.bara@skidata.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Klaus Goger <klaus.goger@theobroma-systems.com>,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de,
-	stable@vger.kernel.org
-Subject: Re: [PATCH 2/5] dt-bindings: usb: cypress,hx3: Add support for all
- variants
-Message-ID: <20250326-fanatic-onion-5f6bf8ec97e3@spud>
-References: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
- <20250326-onboard_usb_dev-v1-2-a4b0a5d1b32c@thaumatec.com>
+	s=k20201202; t=1743016302;
+	bh=FjoBf5oIKnt+BxBL5ikSxff8xK7Z5Im1gcOrV8814C0=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=X8VJHKQoKx8TN6Nrrw4iVI4qoPraLVsFZAWJKgnItF1dK/53F9EYLQB5pYJXgibly
+	 xiyu5iNkZYozvEXYu2kxBf/yCi3qNE7VeRLZh+Zr8/Icir0WpkkciAGz7BM/oPuODG
+	 IeAjHVVGKEHMlh7XxXHwTk4UK/Bgpu2lXiTWZCtVJmaOrxOEcmCYgWELL9BTadg6+2
+	 gC9KMPu1s7yo0EQ5CFyxfQjDEa9j3SMZvAMh+xsgoK9S2ZFDTN3ym5Fn7x5vcMBb0L
+	 kghNDPFmQLQwX46UOq63Q10fyvnULTyKmrj1ZCSpHiFYppVXLGEcqp3wT6IjZ9+o+B
+	 sOa2/athzo7lQ==
+Date: Wed, 26 Mar 2025 14:11:41 -0500
 MIME-Version: 1.0
-In-Reply-To: <20250326-onboard_usb_dev-v1-2-a4b0a5d1b32c@thaumatec.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Benjamin Bara <benjamin.bara@skidata.com>, 
+ Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Klaus Goger <klaus.goger@theobroma-systems.com>, 
+ linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org, 
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
+In-Reply-To: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
+References: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
+Message-Id: <174301524097.2716484.8735882534615031646.robh@kernel.org>
+Subject: Re: [PATCH 0/5] Fix onboard USB hub instability on RK3399 Puma SoM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_105818_057198_A75C6A1C 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20250326_121143_390907_CA6092CD 
+X-CRM114-Status: GOOD (  23.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,90 +73,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6315004133876372824=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6315004133876372824==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="9k9ZnTZP7lApPE38"
-Content-Disposition: inline
-
-
---9k9ZnTZP7lApPE38
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Mar 26, 2025 at 05:22:57PM +0100, Lukasz Czechowski wrote:
-> The Cypress HX3 hubs use different default PID value depending
-> on the variant. Update compatibles list.
->=20
-> Fixes: 1eca51f58a10 ("dt-bindings: usb: Add binding for Cypress HX3 USB 3=
-=2E0 family")
-> Cc: stable@vger.kernel.org # 6.6
-> Cc: stable@vger.kernel.org # Backport of the patch in this series fixing =
-product ID in onboard_dev_id_table and onboard_dev_match in drivers/usb/mis=
-c/onboard_usb_dev.{c,h} driver
+On Wed, 26 Mar 2025 17:22:55 +0100, Lukasz Czechowski wrote:
+> The RK3399 Puma SoM contains the internal Cypress CYUSB3304 USB
+> hub, that shows instability due to improper reset pin configuration.
+> Currently reset pin is modeled as a vcc5v0_host regulator, that
+> might result in too short reset pulse duration.
+> Starting with the v6.6, the Onboard USB hub driver (later renamed
+> to Onboard USB dev) contains support for Cypress HX3 hub family.
+> It can be now used to correctly model the RK3399 Puma SoM hardware.
+> 
+> The first commits in this series fix the onboard USB dev driver to
+> support all HX3 hub variants, including the CYUSB3304 found in
+> the RK3399 Puma SoM.
+> This allows to introduce fix for internal USB hub instability on
+> RK3399 Puma, by replacing the vcc5v0_host regulator with
+> cy3304_reset, used inside the hub node.
+> Please be aware that the patch that fixes USB hub instability in
+> arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi can me merged only
+> after updating the Onboard USB dev driver, otherwise the hub
+> will not work.
+> 
+> Two last commits in the series disable unrouted USB controllers
+> and PHYs on RK3399 Puma SOM and Haikou carrier board, with no
+> intended functional changes.
+> 
 > Signed-off-by: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
 > ---
->  Documentation/devicetree/bindings/usb/cypress,hx3.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/usb/cypress,hx3.yaml b/Doc=
-umentation/devicetree/bindings/usb/cypress,hx3.yaml
-> index 1033b7a4b8f9..f0b93002bd02 100644
-> --- a/Documentation/devicetree/bindings/usb/cypress,hx3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/cypress,hx3.yaml
-> @@ -15,8 +15,14 @@ allOf:
->  properties:
->    compatible:
->      enum:
-> +      - usb4b4,6500
-> +      - usb4b4,6502
-> +      - usb4b4,6503
->        - usb4b4,6504
->        - usb4b4,6506
-> +      - usb4b4,6507
-> +      - usb4b4,6508
-> +      - usb4b4,650a
-
-All these devices seem to have the same match data, why is a fallback
-not suitable?
-
-> =20
->    reg: true
-> =20
->=20
-> --=20
-> 2.43.0
->=20
-
---9k9ZnTZP7lApPE38
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ+RAMwAKCRB4tDGHoIJi
-0tRpAQDNS6dW2CGP9zLlr+W7yJhcE2bWiGiO3BKrgWFrmthJsAEAs22eY1Eg/Hrt
-9vPFW4oviBxxip0Da3nn9lOjzkpFSQM=
-=9XYv
------END PGP SIGNATURE-----
-
---9k9ZnTZP7lApPE38--
+> Lukasz Czechowski (3):
+>       usb: misc: onboard_usb_dev: fix support for Cypress HX3 hubs
+>       dt-bindings: usb: cypress,hx3: Add support for all variants
+>       arm64: dts: rockchip: fix internal USB hub instability on RK3399 Puma
+> 
+> Quentin Schulz (2):
+>       arm64: dts: rockchip: disable unrouted USB controllers and PHY on RK3399 Puma
+>       arm64: dts: rockchip: disable unrouted USB controllers and PHY on RK3399 Puma with Haikou
+> 
+>  .../devicetree/bindings/usb/cypress,hx3.yaml       |  6 +++
+>  .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  8 ----
+>  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 43 ++++++++++------------
+>  drivers/usb/misc/onboard_usb_dev.c                 | 10 ++++-
+>  drivers/usb/misc/onboard_usb_dev.h                 |  6 +++
+>  5 files changed, 39 insertions(+), 34 deletions(-)
+> ---
+> base-commit: 1e26c5e28ca5821a824e90dd359556f5e9e7b89f
+> change-id: 20250326-onboard_usb_dev-a7c063a8a515
+> 
+> Best regards,
+> --
+> Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
+> 
+> 
+> 
 
 
---===============6315004133876372824==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: base-commit 1e26c5e28ca5821a824e90dd359556f5e9e7b89f not known, ignoring
+ Base: attempting to guess base-commit...
+ Base: tags/next-20250326 (best guess, 2/5 blobs matched)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com:
+
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: hub@1: 'vdd-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/cypress,hx3.yaml#
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: hub@1: 'vdd2-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/cypress,hx3.yaml#
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: hub@2: 'vdd-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/cypress,hx3.yaml#
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: hub@2: 'vdd2-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/cypress,hx3.yaml#
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: pinctrl: gpios: {'bios-disable-override-hog-pin': {'rockchip,pins': [[3, 29, 0, 190]], 'phandle': 185}, 'q7-thermal-pin': {'rockchip,pins': [[0, 3, 0, 189]], 'phandle': 184}} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6315004133876372824==--
-
