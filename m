@@ -4,90 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BA2C36005
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Mar 2025 21:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCBBC3600C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 02:30:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=crFJDPQl2NS2O5CqkSG3VJK4zIfsEUvABLE0J7OXzvQ=; b=rb/kxSE42EXm+U
-	6SiUtfye5u94cFJ884nTuZNVWgh89Wp6xkRbTC7WH3vr/NAEP6yPj4nqYBEw2u4x040shyJdzQxRe
-	YLLh8/NtJC1jvb6yD7FB1mGGSl4bn5rRPANVe+bzXruLwiL+PCXQdY6UyQJSoZq17u6GTEJMlmSKx
-	I39lZYoKQ0d/DBJJ9kUJC+Ll3RVGI6qax0boqMMI4Y+n6Om8inkylG06YwM8FaMFLOGe9H5Iq8z6o
-	tiPK2pGmslg2kG+UAeEr70cJR/lHf5vy5twcHc/xapWoQI29DGcW2Apjd9DH+40GVD6chpRaUR2kK
-	jPL6DN5YP6dd1WeJmd9A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2/OOayk+2nSxfcjJliW0zLQ6k9GJFiWLIya02jOSeyk=; b=CJX6+fs9dEZ3eO1hGr29Dx4Gsb
+	ebKWsUU48BvWmPyirMfYuxy707RzMVqUoHM+VWqusamDqdd+bPAOrudDxfU6Z6u5jubjViT2eT+Eh
+	YPPKj718EXqND0rjOHZsAmeHzcK1tqdrKaxzGt99sEGNvlCQtrPvQlogVIbyy5hiwAjbLbvzYqNdI
+	+s9UVGKqGqdSBpk7e4dTljpMTmwLoEdFaupe/lXKR+LEWkQG9f1sR95CbqjvGqfbq4LcCbV56f4Zz
+	uQZ3k1JprNqGB5hVRj0PxkUAroC1B7VO2Jc7h6luFzHWPAwXGaHo8OfQdvq5WhIK1xLX13MT2UPRn
+	3K+zN21A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txC5X-000000075nk-3Uph;
-	Tue, 25 Mar 2025 21:45:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1txGWq-00000007Q3O-1HNY;
+	Wed, 26 Mar 2025 02:30:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txBu1-000000073vq-26Ph;
-	Tue, 25 Mar 2025 21:33:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742938420;
-	bh=RIwz438r/s63gFgZUecLnaG9eUlgOCD/aBHrHYdi1fU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fE6qmdVoLeoyvxhGvbETHLH1YV26mbH3mMvegjz3h2UZnSa9rlRpRneZd4uoNIHgR
-	 4/xdGSCsf6N/hE3857KIJzgSs9hER/pAqmTJt2iXH9+seX8WODDqpA82/V9EhP9PIv
-	 u1Oe+gP/RfyJT+bb4QdliV2LpM8JriVnZofm3be9dafb3gCRUbky6hzJhnWDOxfq0h
-	 fFHG2nXsLnlksJ1wWGj03mfOyE0bMCF1T6mopAxa+gz5UOf05zGmjqbx8aQfjkOpUZ
-	 7RWENWT8rykqGJqMpkV5Pc6ANpUr3zlg0ao8g2P8Ucdq5MWlLYwfpwT5hkbj7CYm9H
-	 aL1toeb1yZs7g==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2067517E0865;
-	Tue, 25 Mar 2025 22:33:36 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Umang Jain <umang.jain@ideasonboard.com>,
-	Naushir Patuck <naush@raspberrypi.com>,
-	Jean-Michel Hautbois <jeanmichel.hautbois@ideasonboard.com>,
-	Dmitry Perchanov <dmitry.perchanov@intel.com>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: [PATCH v4 6/6] arm64: dts: rockchip: Add rkvdec2 Video Decoder on rk3588(s)
-Date: Tue, 25 Mar 2025 17:22:22 -0400
-Message-ID: <20250325213303.826925-7-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250325213303.826925-1-detlev.casanova@collabora.com>
-References: <20250325213303.826925-1-detlev.casanova@collabora.com>
+	id 1txGV6-00000007Pta-2Nrr;
+	Wed, 26 Mar 2025 02:28:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742956088; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=c2qWMYu/bl46WfHteQAeOd/fYIoIViStB67wJdkgm52GsXDEiGvGOzOXQJ9F5b1TMJGPNWRRkqLYBvsAFG41N74gg0bS2zV810ofbA9Hulls0xF3wuiVInCSKp38r9MH+PIe7cGerglaFhRKPI6cSylC0Ehh5Q5QviujT+/D0dQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742956088; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=5gmQ+tJhOEQ6J3LvTEGDk1RfsDiQRB37WVqm6a/dV8c=; 
+	b=PT9UWjn+jSZrlV13Y0iYWkBhZVngAz0F235zWcMlXdZGQkw59LJ5V0aUUoVmhNDgJKOoP58JtK5otuUvMR+XkIaZJl6IAN+RDBnIJgRccg7AvvNOhi+6Ckatt01r/ZM7bTYsVWyV22QDauvOE6pSeUIeGEn/WHa28zK5Mw5N1Dk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742956088;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=5gmQ+tJhOEQ6J3LvTEGDk1RfsDiQRB37WVqm6a/dV8c=;
+	b=TBbOSYjIZrFmcaHjmvWUsbLV8+JeqzuMqMwyH7vAdyV16nsHh/xI1Rg7sjfEcJFM
+	ATskVII0vJglhMjxuuHyKe9VAd3rK4qjrCb7apKRZU4M1CMLj6MCwbR3wkhKvjzQo5Q
+	T53/JQL1pxGp9vqvYWwT6L7Uth5cfxN8thcG2Yf0=
+Received: by mx.zohomail.com with SMTPS id 1742956085688129.13714269607817;
+	Tue, 25 Mar 2025 19:28:05 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id F0ACB180811; Wed, 26 Mar 2025 03:28:00 +0100 (CET)
+Date: Wed, 26 Mar 2025 03:28:00 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Marcin Juszkiewicz <mjuszkiewicz@redhat.com>
+Subject: Re: [PATCH 0/2] Enable HDMI features on NanoPC-T6
+Message-ID: <jzoyhh73c5dmvvkfkvnnig3bzcgpr3fvrfrosvkeft26ovimze@i5akqrmk524i>
+References: <20250325-nanopc-t6-hdmi-v1-0-299a2ed45878@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <20250325-nanopc-t6-hdmi-v1-0-299a2ed45878@redhat.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/242.878.74
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_143341_681672_F18F81A9 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250325_192816_671769_E9D9A1C2 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,115 +73,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Rick Wertenbroek <rick.wertenbroek@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============7424338919099997348=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the rkvdec2 Video Decoder to the RK3588s devicetree.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 74 +++++++++++++++++++
- 1 file changed, 74 insertions(+)
+--===============7424338919099997348==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yz72wtjkngnhfly3"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index c3abdfb04f8f4..636c287b94e0a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1237,6 +1237,70 @@ vepu121_3_mmu: iommu@fdbac800 {
- 		#iommu-cells = <0>;
- 	};
- 
-+	vdec0: video-decoder@fdc38000 {
-+		compatible = "rockchip,rk3588-vdec";
-+		reg = <0x0 0xfdc38000 0x0 0x100>,
-+		      <0x0 0xfdc38100 0x0 0x500>,
-+		      <0x0 0xfdc38600 0x0 0x100>;
-+		reg-names = "link", "function", "cache";
-+		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA>,
-+			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
-+		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
-+		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
-+				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
-+		assigned-clock-rates = <800000000>, <600000000>,
-+				       <600000000>, <1000000000>;
-+		iommus = <&vdec0_mmu>;
-+		power-domains = <&power RK3588_PD_RKVDEC0>;
-+		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDEC0_CA>,
-+			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
-+		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
-+		sram = <&vdec0_sram>;
-+	};
-+
-+	vdec0_mmu: iommu@fdc38700 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdc38700 0x0 0x40>, <0x0 0xfdc38740 0x0 0x40>;
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>;
-+		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_RKVDEC0>;
-+		#iommu-cells = <0>;
-+	};
-+
-+	vdec1: video-decoder@fdc40000 {
-+		compatible = "rockchip,rk3588-vdec";
-+		reg = <0x0 0xfdc40000 0x0 0x100>,
-+		      <0x0 0xfdc40100 0x0 0x500>,
-+		      <0x0 0xfdc40600 0x0 0x100>;
-+		reg-names = "link", "function", "cache";
-+		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>, <&cru CLK_RKVDEC1_CA>,
-+			 <&cru CLK_RKVDEC1_CORE>, <&cru CLK_RKVDEC1_HEVC_CA>;
-+		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
-+		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru CLK_RKVDEC1_CORE>,
-+				  <&cru CLK_RKVDEC1_CA>, <&cru CLK_RKVDEC1_HEVC_CA>;
-+		assigned-clock-rates = <800000000>, <600000000>,
-+				       <600000000>, <1000000000>;
-+		iommus = <&vdec1_mmu>;
-+		power-domains = <&power RK3588_PD_RKVDEC1>;
-+		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>, <&cru SRST_RKVDEC1_CA>,
-+			 <&cru SRST_RKVDEC1_CORE>, <&cru SRST_RKVDEC1_HEVC_CA>;
-+		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
-+		sram = <&vdec1_sram>;
-+	};
-+
-+	vdec1_mmu: iommu@fdc40700 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdc40700 0x0 0x40>, <0x0 0xfdc40740 0x0 0x40>;
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>;
-+		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_RKVDEC0>;
-+		#iommu-cells = <0>;
-+	};
-+
- 	av1d: video-codec@fdc70000 {
- 		compatible = "rockchip,rk3588-av1-vpu";
- 		reg = <0x0 0xfdc70000 0x0 0x800>;
-@@ -2883,6 +2947,16 @@ system_sram2: sram@ff001000 {
- 		ranges = <0x0 0x0 0xff001000 0xef000>;
- 		#address-cells = <1>;
- 		#size-cells = <1>;
-+
-+		vdec0_sram: codec-sram@0 {
-+			reg = <0x0 0x78000>;
-+			pool;
-+		};
-+
-+		vdec1_sram: codec-sram@78000 {
-+			reg = <0x78000 0x77000>;
-+			pool;
-+		};
- 	};
- 
- 	pinctrl: pinctrl {
--- 
-2.49.0
 
+--yz72wtjkngnhfly3
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 0/2] Enable HDMI features on NanoPC-T6
+MIME-Version: 1.0
+
+Hi,
+
+On Tue, Mar 25, 2025 at 08:51:45PM +0100, Marcin Juszkiewicz wrote:
+> This patchset follows other SBCs and enables second HDMI output and then
+> enables HDMI audio on both ports.
+>=20
+> Tested with 1920x1080@60 and 3440x1440@60 displays. Worked nice, audio
+> played on both monitors.
+>=20
+> Would be nice to have an option for more than 60Hz (larger screen can do
+> 75Hz) but I assume that this will come one day.
+
+3440x1440 can be used up to 90Hz with 600 MHz TMDS signalling [0].
+So it does not require FRL and as far as I know should work once
+the scrambling support patches from Cristian (added to Cc) land.
+
+[0] https://en.wikipedia.org/wiki/HDMI
+
+Greetings,
+
+-- Sebastian
+
+--yz72wtjkngnhfly3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfjZiwACgkQ2O7X88g7
++pqFsQ//cylOZLEs6DQqi+V2MbkcIvWd7W05qyBM0k1HPdzrCIcgw+STplA3Ps5x
+HIqFp4zx8f61K+000Xhr1ATCNsmWid5Sy8ghAGvd8VH+0a0vq0R850UorlAnsQMa
+Er9uZuE/cMbFfybvSWM6WghEh5XAv67W1i1P6Mh55M3ozAJTCVK3GtRRnnDKwqPz
+GeERslbWhjknLH7zBKEUjQMLGKakTrYSqbSfUdARmje5Xvmf8urmuE8wgbrhSyP2
+XLFv0VfU6C5qkPvHoluMYl9HEliprwascRYQfXok+m6ADUVLjvsU7plwlv61TM7V
+v2NN+GoeWnRLq2oigDW2dq7SCPMcgkDGVB516q29CyL2OcbOfsRVXuHCtk14zaUo
+vgdaiWMoADwc4obfLpw63947DVpO/W8Kf8qnSCWdSmS7TJmF8MdJUtxRK1g06Htq
+/tq3KY86cu/zLdw4APrhhgagI0KOPVhWdfeiKNvG0+jtfY2ua1fVBfIUA8N3hCQI
+G0tNtkfjq5Xc7bowXVSCAlAe76V2PiRE85K2I/y69yAFmh6qIeahyP0pYKe13G9o
+JYT5FwLNS3oX73D/jzLoxO0/V0XFJHACd/d1X9DEetPnRp4CLKFlKpzZ/X5fQnr6
+uWnAaP5o0qnfVTBPtBU+Wpsj7qSYUeqmc0bCxO0JTKYtie3Wbvs=
+=Xj4D
+-----END PGP SIGNATURE-----
+
+--yz72wtjkngnhfly3--
+
+
+--===============7424338919099997348==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7424338919099997348==--
+
