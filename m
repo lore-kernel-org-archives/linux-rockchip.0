@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFE2C3600E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 16:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C1E7C36008
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 16:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sfDyqmpQMSfWCVHuHrfNs9mBjW2VilpDJCyTBwFV3zo=; b=nYv5AlRBSUMDgW
-	VzfOwAX5r3/JfExta+z//gU1a1YJ7+ex2T1KUxHVcIi+/FnPF0g0fjHEPu+0TZn0aG8htG57OUMFJ
-	dwDthbk2UR2I5KkycWLiaVhPxXWgSWXWyIrFZ8E3Lno6weKJwQQ3bX9AWOth0dVGOHY6V8MtF+1W2
-	RyFwylxsskeEIjsKnUk2V0CzmxZ4puakUx0ejDjn0M/aUf0kM/EBaGz7K/BCh91+yDBIiZncmi03C
-	/S7hnffqL0rw7i3sZsMGhltgj0Vvt087nYJCtE03e+RgySZbISFybYuZWS0js5jJrrfgNEQgtkpdE
-	3Y+oEbb+MtelwA0jYWeA==;
+	List-Owner; bh=BAp4t+3ohAi9QjHKRNxhWA24TB4wl3x7SkZ5sUcSwYY=; b=zST8gwAFVDMsUf
+	EcU/kOw17FMdM7V2tMgDn8/X4eMB1aP3v8PlHkUam9yM5Tu78IDQhLEb3Z05MF+Zm/TiyOiG+bxUR
+	pgDPaN/9SNCOYzWWYD+uSrC0omEckNADDduafZs76ajuMrjSYPhvV13U2P8lX3+/HrmXXNG/SQ/rj
+	BW9IPy6qZGu951OeJWjYFWPyBCNrcxpB3pjw+8wubexBC+7m7zZFW3bBnJlENd2F4u+89h/HwlUOd
+	i2vVHc4rY/P6s8cCzZMpi4Rsgg3FNLGHjf2uwCs0k0+IJrgziHk5Hgz4jebzHw2Ctf3r1mfoa8JNX
+	Y5Wx5A8cMHxAPJHp7mEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txTbD-000000091A1-1Rpq;
-	Wed, 26 Mar 2025 16:27:27 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1txTcu-000000091VJ-1XJR;
+	Wed, 26 Mar 2025 16:29:12 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txTXk-000000090Kl-06Om
+	id 1txTXl-000000090Lr-2llf
 	for linux-rockchip@lists.infradead.org;
-	Wed, 26 Mar 2025 16:23:54 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5e673822f76so11370627a12.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 26 Mar 2025 09:23:51 -0700 (PDT)
+	Wed, 26 Mar 2025 16:23:55 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-ac25d2b2354so1172347266b.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 26 Mar 2025 09:23:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1743006230; x=1743611030; darn=lists.infradead.org;
+        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1743006232; x=1743611032; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=G9tCKOxWlZzVo+LW0OfZaKnD5ARH/KKbqzp36dlNLJM=;
-        b=eS9D9kxjo4hHCY3SBangGByZ/jQTeu0wXkMDgPgUwFdRi7rNJiZKZiMbYjwk+Ya1fx
-         xgexYI1tXDflknq3NhE4t9lNbWdDTqaUqsTNzuiX0dYKBawX5Wfmx2K9eCrzzVdn59gM
-         ir4q/xaR8Y7+gfiJDKj+29/7WXteFLvOc4GzlzCeclsYvACNL5NFPs1EgRd+6W8d09s8
-         bwpmeZSXG8wA5XilnsI+uXZpXZRGclUm4rk7KuHW3iOK2zG3Djv50xx1s/P5dULeYLVL
-         Qu+Hy51VlLLlKl6ocEIToMN0JHYBnhuQkgUgTtSFLKteGaYNWgZkKz/IfNZy/SsC4qDg
-         R9eA==
+        bh=gDeO2nIfMOICmbdN4iB492bLj9a77KMSQWKqvg2E0aY=;
+        b=sButZP//yVhaU93N/FM2Q7yOZltx9tFWZ/rnt1q1VhUBzvISFweID8PbbglB/OgJhX
+         dvjzXSku0WGD76rNaaXnDbLyujkhtsjRlFdewxFOGKpquBJT2C0bHGsQOCtCMEYGKmNi
+         is/31tTiC2psJsM+nnC0Q/DVah+advDDhKFnzS5/LNYWrtibSIIuCHXbf+vBV6fptDyu
+         9VkMopHkZlVA+y1ia1Bl8TlRrwbb3JyswRLkxzqh9vRf/1iYbs3ZIs4MuM1tdHgqTe2+
+         q/4E8n7VltsXgaIfArGawJx1l+WJl5+XYtc78bCZgBZSLxrPnVAw3jYX2E3duf3nmiCI
+         J8bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743006230; x=1743611030;
+        d=1e100.net; s=20230601; t=1743006232; x=1743611032;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=G9tCKOxWlZzVo+LW0OfZaKnD5ARH/KKbqzp36dlNLJM=;
-        b=BbHHAlL8uQnqN1oTjx48gRi1JxulG877EQPSPU0Uh7mg/OrLDXTosyPtXkL4I15SgN
-         muP7cd1myXqc2VSl+UBaWcjb7wgOefu7n88/JHKEkNUek9g+2T9znrFmct4vd1buDemn
-         vN7rneyf4hQvrFnrzmJPtpZSEKFmNpA4883JcE7RTI+Trg3Ok7N7KWgAr5W/y8Edq3uR
-         PZMHJev1OwHfs+pwR1slIrsE/WvbO+d1NPavwiHuVvTp16PTLnaqvDhcK2Ih2uv5hA9w
-         +IOCO3zAeN6LneFkCNeZV6NEEedF93H6B5n69iLYZEJ+k9CdYcNkBSvyFtjmkTV2DO+z
-         SISQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXAsVyOJismikKwgHsWpD+NSrQ/kvlm5WzNy2JVU6mQipfQ6wlKLmSVkK5zHMxM3LUw/hKQ9RnpyG2rVt7u4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7m7TF2yDBDSVUabPLUeot8mVe8vHLHTX1lw7rDMUMsTxKp2dh
-	GIi3ns4RfKOL3gMAzL4qjrcrNJCmLEmPY/3zMbr4vhVOJWkIPEJcEoh97aZ5V+Q=
-X-Gm-Gg: ASbGncsM764sGJ4ep+GHvCOQNIykR/gJCHRAholuyfBpWIqgLnLBzyLUg+snqUPBBQ7
-	aVK92jJBAUzNVcmdll0g1UZVONQu05wJFb1XY9TUakiSxmLvJetwv4Vgd7Va9kE9qBPS3Sd0wme
-	98E+qAwsWmtdm9CYikqAolPGPjsy2W1n0NhIiolnUY4a2nDjoAHVkqKBEwnUf0T5QYQlMHnQ5Q9
-	ml2L6sUuMHrSRmAAQGlQraI2bndFZrEwN1G035+hI4H6dCfMPZ3B1rIZrRJNRO5Aywx/yT0TWU0
-	Zuv+ss4law/cuAIbkzt5GmycZCc9y3EH74t3shqsTNB6FvGVI7s1dVeerA==
-X-Google-Smtp-Source: AGHT+IFR7MKgek1aYBM8pLPyUk2XklCCGA9XeiQoGfN17QwCt+mtrdcAqb3TA1eUWqsMBXRD9Qv/5A==
-X-Received: by 2002:a17:906:794a:b0:ac2:dfcf:3e09 with SMTP id a640c23a62f3a-ac6fb100848mr1832966b.43.1743006230250;
-        Wed, 26 Mar 2025 09:23:50 -0700 (PDT)
+        bh=gDeO2nIfMOICmbdN4iB492bLj9a77KMSQWKqvg2E0aY=;
+        b=VGUJBVLXzqq8BymzV/Odg7MiIg90JHIB7UFhUQq6mm1dRfKWaQUzjKoInVjAoOkxVE
+         1g8B4oPqrIqKY3yqSHLmFXlmKx0KYP9w7tjyWnOnlzU5pDtA7Gk0++CKrtMUIqHhjhcr
+         2LHM9IlWMr88xSbNWT5Labtfv+/UJlOM20v3dYqTMWGBLwp/5M4FijgXa0gfIw8+ZZu/
+         LexWripurV0yvQ7p7v0s17qa+3Bcb+nKR74UjCZl2YMBrY1ASHnDhLFDxrEdkCwxV8Rd
+         58c2mE5uAd8iYygBhxDkj4FPvqQaLlxKIxzjoMHhLRrkSBPzd87fhO2VQDL1TBVL3SVG
+         zuiw==
+X-Forwarded-Encrypted: i=1; AJvYcCUwv730d6rZs9NMOI4qWyTIITdBqBIxPSHHj8cZ7DSc+3ZMBb0zZvIEP9Ph5zM+HjCQiGJbBbW2lbjNGCr5nQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/FM1HkLk5S3Q1MEbzl/1J8jTO1RRfMAh+B6pr0rKMZUdUMoOq
+	BuZbzyn+sibF+3Jz9XLjqybhh077vXOJijB+K21C+jA/Tn7ulVuTGRIrYQuEFoc=
+X-Gm-Gg: ASbGncuIZH7jVH7+9L9YWS7ot3OTRXgRnNWQ5qiye3GQKb+P46QNdvQKu2FT9EJ4nw3
+	r57k5KmxDF9+0exR6Ma1RGOnsdFlMejc56TvZk57hcUTZvLqmotLwfjh3l9sYXXShOugwlxUXqX
+	K6DV2RHQZ3nPWF74lLFqV8JFkFS9XsfWom889TJuWWxGbNhXHsWcTn5MlhdDpeS5GFhKA8rYwpJ
+	logiVmgyiL+o440JN1v4OAjSjW9PiAhSpxDJXE8DcOdtrp+cdH4l5jGeLQFPDKaYB9flpW9akSV
+	h01fE/L3CBCHgZBPu2UuvCHK+iHzqFiN6AO4gl9F+y6VLEnF3LDpULgkIw==
+X-Google-Smtp-Source: AGHT+IEc7BN+I9AuEBYkJp/jaWFUpD0J6wfKpFX9npNAzocR2TXh01hPKMJxC/w2Hwxq2f61h0F3IQ==
+X-Received: by 2002:a17:906:6a04:b0:ac0:6e7d:cd0b with SMTP id a640c23a62f3a-ac6faf0b809mr4040966b.34.1743006232177;
+        Wed, 26 Mar 2025 09:23:52 -0700 (PDT)
 Received: from [127.0.1.1] ([91.90.172.13])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac6f0f498ecsm76678866b.135.2025.03.26.09.23.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac6f0f498ecsm76678866b.135.2025.03.26.09.23.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Mar 2025 09:23:50 -0700 (PDT)
+        Wed, 26 Mar 2025 09:23:51 -0700 (PDT)
 From: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
-Date: Wed, 26 Mar 2025 17:22:56 +0100
-Subject: [PATCH 1/5] usb: misc: onboard_usb_dev: fix support for Cypress
- HX3 hubs
+Date: Wed, 26 Mar 2025 17:22:58 +0100
+Subject: [PATCH 3/5] arm64: dts: rockchip: fix internal USB hub instability
+ on RK3399 Puma
 MIME-Version: 1.0
-Message-Id: <20250326-onboard_usb_dev-v1-1-a4b0a5d1b32c@thaumatec.com>
+Message-Id: <20250326-onboard_usb_dev-v1-3-a4b0a5d1b32c@thaumatec.com>
 References: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
 In-Reply-To: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
 To: Matthias Kaehlcke <mka@chromium.org>, 
@@ -89,8 +89,8 @@ Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
  quentin.schulz@cherry.de, stable@vger.kernel.org
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_092352_132645_E44D5421 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20250326_092353_703362_13D83F41 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,82 +102,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Cypress HX3 USB3.0 hubs use different PID values depending
-on the product variant. The comment in compatibles table is
-misleading, as the currently used PIDs (0x6504 and 0x6506 for
-USB 3.0 and USB 2.0, respectively) are defaults for the CYUSB331x,
-while CYUSB330x and CYUSB332x variants use different values.
-Based on the datasheet [1], update the compatible usb devices table
-to handle different types of the hub.
-The change also includes vendor mode PIDs, which are used by the
-hub in I2C Master boot mode, if connected EEPROM contains invalid
-signature or is blank. This allows to correctly boot the hub even
-if the EEPROM will have broken content.
-Number of vcc supplies and timing requirements are the same for all
-HX variants, so reuse existing onboard_hub_pdata.
-
-[1] https://www.infineon.com/dgdl/Infineon-HX3_USB_3_0_Hub_Consumer_Industrial-DataSheet-v22_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ecb53f644b8
-    Table 9. PID Values
-
-Fixes: b43cd82a1a40 ("usb: misc: onboard-hub: add support for Cypress HX3 USB 3.0 family")
-Cc: stable@vger.kernel.org
-Signed-off-by: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
----
- drivers/usb/misc/onboard_usb_dev.c | 10 ++++++++--
- drivers/usb/misc/onboard_usb_dev.h |  6 ++++++
- 2 files changed, 14 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/misc/onboard_usb_dev.c b/drivers/usb/misc/onboard_usb_dev.c
-index 75ac3c6aa92d..f5372dfa241a 100644
---- a/drivers/usb/misc/onboard_usb_dev.c
-+++ b/drivers/usb/misc/onboard_usb_dev.c
-@@ -569,8 +569,14 @@ static void onboard_dev_usbdev_disconnect(struct usb_device *udev)
- }
- 
- static const struct usb_device_id onboard_dev_id_table[] = {
--	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6504) }, /* CYUSB33{0,1,2}x/CYUSB230x 3.0 HUB */
--	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6506) }, /* CYUSB33{0,1,2}x/CYUSB230x 2.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6500) }, /* CYUSB330x 3.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6502) }, /* CYUSB330x 2.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6503) }, /* CYUSB33{0,1}x 2.0 HUB, Vendor Mode */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6504) }, /* CYUSB331x 3.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6506) }, /* CYUSB331x 2.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6507) }, /* CYUSB332x 2.0 HUB, Vendor Mode */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6508) }, /* CYUSB332x 3.0 HUB */
-+	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x650a) }, /* CYUSB332x 2.0 HUB */
- 	{ USB_DEVICE(VENDOR_ID_CYPRESS, 0x6570) }, /* CY7C6563x 2.0 HUB */
- 	{ USB_DEVICE(VENDOR_ID_GENESYS, 0x0608) }, /* Genesys Logic GL850G USB 2.0 HUB */
- 	{ USB_DEVICE(VENDOR_ID_GENESYS, 0x0610) }, /* Genesys Logic GL852G USB 2.0 HUB */
-diff --git a/drivers/usb/misc/onboard_usb_dev.h b/drivers/usb/misc/onboard_usb_dev.h
-index 317b3eb99c02..17696f7c5e43 100644
---- a/drivers/usb/misc/onboard_usb_dev.h
-+++ b/drivers/usb/misc/onboard_usb_dev.h
-@@ -104,8 +104,14 @@ static const struct of_device_id onboard_dev_match[] = {
- 	{ .compatible = "usb451,8027", .data = &ti_tusb8020b_data, },
- 	{ .compatible = "usb451,8140", .data = &ti_tusb8041_data, },
- 	{ .compatible = "usb451,8142", .data = &ti_tusb8041_data, },
-+	{ .compatible = "usb4b4,6500", .data = &cypress_hx3_data, },
-+	{ .compatible = "usb4b4,6502", .data = &cypress_hx3_data, },
-+	{ .compatible = "usb4b4,6503", .data = &cypress_hx3_data, },
- 	{ .compatible = "usb4b4,6504", .data = &cypress_hx3_data, },
- 	{ .compatible = "usb4b4,6506", .data = &cypress_hx3_data, },
-+	{ .compatible = "usb4b4,6507", .data = &cypress_hx3_data, },
-+	{ .compatible = "usb4b4,6508", .data = &cypress_hx3_data, },
-+	{ .compatible = "usb4b4,650a", .data = &cypress_hx3_data, },
- 	{ .compatible = "usb4b4,6570", .data = &cypress_hx2vl_data, },
- 	{ .compatible = "usb5e3,608", .data = &genesys_gl850g_data, },
- 	{ .compatible = "usb5e3,610", .data = &genesys_gl852g_data, },
-
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q3VycmVudGx5LCB0aGUgb25ib2FyZCBDeXByZXNzIENZVVNCMzMwNCBVU0IgaHViIGlzIG5vdCBk
+ZWZpbmVkIGluCnRoZSBkZXZpY2UgdHJlZSwgYW5kIGh1YiByZXNldCBwaW4gaXMgcHJvdmlkZWQg
+YXMgdmNjNXYwX2hvc3QKcmVndWxhdG9yIHRvIHVzYiBwaHkuIFRoaXMgY2F1c2VzIGluc3RhYmls
+aXR5IGlzc3VlcywgYXMgYSByZXN1bHQKb2YgaW1wcm9wZXIgcmVzZXQgZHVyYXRpb24uCgpUaGUg
+Zml4ZWQgcmVndWxhdG9yIGRldmljZSByZXF1ZXN0cyB0aGUgR1BJTyBkdXJpbmcgcHJvYmUgaW4g
+aXRzCmluYWN0aXZlIHN0YXRlIChleGNlcHQgaWYgcmVndWxhdG9yLWJvb3Qtb24gcHJvcGVydHkg
+aXMgc2V0LCBpbgp3aGljaCBjYXNlIGl0IGlzIHJlcXVlc3RlZCBpbiB0aGUgYWN0aXZlIHN0YXRl
+KS4gQ29uc2lkZXJpbmcgZ3BpbwppcyBHUElPX0FDVElWRV9MT1cgZm9yIFB1bWEsIGl0IG1lYW5z
+IGl04oCZcyBkcml2aW5nIGl0IGhpZ2guIFRoZW4KdGhlIHJlZ3VsYXRvciBnZXRzIGVuYWJsZWQg
+KGJlY2F1c2UgcmVndWxhdG9yLWFsd2F5cy1vbiBwcm9wZXJ0eSksCndoaWNoIGRyaXZlcyBpdCB0
+byBpdHMgYWN0aXZlIHN0YXRlLCBtZWFuaW5nIGRyaXZpbmcgaXQgbG93LgoKVGhlIEN5cHJlc3Mg
+Q1lVU0IzMzA0IFVTQiBodWIgYWN0dWFsbHkgcmVxdWlyZXMgdGhlIHJlc2V0IHRvIGJlCmFzc2Vy
+dGVkIGZvciBhdCBsZWFzdCA1IG1zLCB3aGljaCB3ZSBjYW5ub3QgZ3VhcmFudGVlIHJpZ2h0IG5v
+dwpzaW5jZSB0aGVyZSdzIG5vIGRlbGF5IGluIHRoZSBjdXJyZW50IGNvbmZpZywgbWVhbmluZyB0
+aGUgaHViIG1heQpzb21ldGltZXMgd29yayBvciBub3QuIFdlIGNvdWxkIGFkZCBkZWxheSBhcyBv
+ZmZlcmVkIGJ5CmZpeGVkLXJlZ3VsYXRvciBidXQgbGV0J3MgcmF0aGVyIGZpeCB0aGlzIGJ5IHVz
+aW5nIHRoZSBwcm9wZXIgd2F5CnRvIG1vZGVsIG9uYm9hcmQgVVNCIGh1YnMuCgpEZWZpbmUgaHVi
+XzJfMCBhbmQgaHViXzNfMCBub2RlcywgYXMgdGhlIG9uYm9hcmQgQ3lwcmVzcyBodWIKY29uc2lz
+dCBvZiB0d28gJ2xvZ2ljYWwnIGh1YnMsIGZvciBVU0IyLjAgYW5kIFVTQjMuMC4KVXNlIHRoZSAn
+cmVzZXQtZ3Bpb3MnIHByb3BlcnR5IG9mIGh1YiB0byBhc3NpZ24gcmVzZXQgcGluIGluc3RlYWQK
+b2YgdXNpbmcgcmVndWxhdG9yLiBSZW5hbWUgdGhlIHZjYzV2MF9ob3N0IHJlZ3VsYXRvciB0bwpj
+eTMzMDRfcmVzZXQgdG8gYmUgbW9yZSBtZWFuaW5nZnVsLgpUaGUgdmRkLXN1cHBseSBhbmQgdmRk
+Mi1zdXBwbHkgcHJvcGVydGllcyBpbiBodWIgbm9kZXMgd2VyZQpza2lwcGVkLCBiZWNhdXNlIGh1
+YiBwb3dlciBzdXBwbGllcyBhcmUgYWx3YXlzIGVuYWJsZWQgYmFzZWQKb24gSFcgZGVzaWduLgoK
+Rml4ZXM6IDJjNjZmYzM0ZTk0NSAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgUkszMzk5LVE3
+IChQdW1hKSBTb00iKQpDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZyAjIDYuNgpDYzogc3RhYmxl
+QHZnZXIua2VybmVsLm9yZyAjIEJhY2twb3J0IG9mIHRoZSBwYXRjaCBpbiB0aGlzIHNlcmllcyBm
+aXhpbmcgcHJvZHVjdCBJRCBpbiBvbmJvYXJkX2Rldl9pZF90YWJsZSBhbmQgb25ib2FyZF9kZXZf
+bWF0Y2ggaW4gZHJpdmVycy91c2IvbWlzYy9vbmJvYXJkX3VzYl9kZXYue2MsaH0gZHJpdmVyClNp
+Z25lZC1vZmYtYnk6IEx1a2FzeiBDemVjaG93c2tpIDxsdWthc3ouY3plY2hvd3NraUB0aGF1bWF0
+ZWMuY29tPgotLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEuZHRz
+aSB8IDMzICsrKysrKysrKysrKysrKystLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDIwIGlu
+c2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LXB1bWEuZHRzaQppbmRleCA5OTViMzBhN2FhZTAuLjNhOTA0OTM3MmUxMiAx
+MDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVtYS5kdHNp
+CisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEuZHRzaQpAQCAt
+NjAsMTYgKzYwLDYgQEAgdmNjM3YzX3N5czogcmVndWxhdG9yLXZjYzN2My1zeXMgewogCQl2aW4t
+c3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKIAl9OwogCi0JdmNjNXYwX2hvc3Q6IHJlZ3VsYXRvci12
+Y2M1djAtaG9zdCB7Ci0JCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKLQkJZ3BpbyA9
+IDwmZ3BpbzQgUktfUEEzIEdQSU9fQUNUSVZFX0xPVz47Ci0JCXBpbmN0cmwtbmFtZXMgPSAiZGVm
+YXVsdCI7Ci0JCXBpbmN0cmwtMCA9IDwmdmNjNXYwX2hvc3RfZW4+OwotCQlyZWd1bGF0b3ItbmFt
+ZSA9ICJ2Y2M1djBfaG9zdCI7Ci0JCXJlZ3VsYXRvci1hbHdheXMtb247Ci0JCXZpbi1zdXBwbHkg
+PSA8JnZjYzV2MF9zeXM+OwotCX07Ci0KIAl2Y2M1djBfc3lzOiByZWd1bGF0b3ItdmNjNXYwLXN5
+cyB7CiAJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKIAkJcmVndWxhdG9yLW5hbWUg
+PSAidmNjNXYwX3N5cyI7CkBAIC01MjEsOCArNTExLDggQEAgcG1pY19pbnRfbDogcG1pYy1pbnQt
+bCB7CiAJCX07CiAJfTsKIAotCXVzYjIgewotCQl2Y2M1djBfaG9zdF9lbjogdmNjNXYwLWhvc3Qt
+ZW4geworCXVzYiB7CisJCWN5MzMwNF9yZXNldDogY3kzMzA0LXJlc2V0IHsKIAkJCXJvY2tjaGlw
+LHBpbnMgPQogCQkJICA8NCBSS19QQTMgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47CiAJ
+CX07CkBAIC01OTEsNyArNTgxLDYgQEAgdTJwaHkxX290Zzogb3RnLXBvcnQgewogCX07CiAKIAl1
+MnBoeTFfaG9zdDogaG9zdC1wb3J0IHsKLQkJcGh5LXN1cHBseSA9IDwmdmNjNXYwX2hvc3Q+Owog
+CQlzdGF0dXMgPSAib2theSI7CiAJfTsKIH07CkBAIC02MDMsNiArNTkyLDI0IEBAICZ1c2JkcmQz
+XzEgewogJnVzYmRyZF9kd2MzXzEgewogCXN0YXR1cyA9ICJva2F5IjsKIAlkcl9tb2RlID0gImhv
+c3QiOworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJcGluY3RybC0wID0gPCZjeTMzMDRf
+cmVzZXQ+OworCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCSNzaXplLWNlbGxzID0gPDA+OworCisJ
+aHViXzJfMDogaHViQDEgeworCQljb21wYXRpYmxlID0gInVzYjRiNCw2NTAyIjsKKwkJcmVnID0g
+PDE+OworCQlwZWVyLWh1YiA9IDwmaHViXzNfMD47CisJCXJlc2V0LWdwaW9zID0gPCZncGlvNCBS
+S19QQTMgR1BJT19BQ1RJVkVfSElHSD47CisJfTsKKworCWh1Yl8zXzA6IGh1YkAyIHsKKwkJY29t
+cGF0aWJsZSA9ICJ1c2I0YjQsNjUwMCI7CisJCXJlZyA9IDwyPjsKKwkJcGVlci1odWIgPSA8Jmh1
+Yl8yXzA+OworCQlyZXNldC1ncGlvcyA9IDwmZ3BpbzQgUktfUEEzIEdQSU9fQUNUSVZFX0hJR0g+
+OworCX07CiB9OwogCiAmdXNiX2hvc3QxX2VoY2kgewoKLS0gCjIuNDMuMAoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
