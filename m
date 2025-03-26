@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DB7DC36008
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 11:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2047BC3600E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 16:23:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zvLlZFk4ElvWib2/m+UPI+qx+wlyDNdFhvFICnG4+Sk=; b=WtJgxw4unMndQ1
-	9PyfYVytY8qot0N3+raEDNcMzsL5FXVq0h52SQ6SdWdFyn0XLe4nYymbef5yGUOCNaJXjQ06rqcIn
-	A6uaKl1sGb/F6hlPwk6LgQMvx795JeISDs7kGjudnDtZtIKk9p4xVFmMArryIcLRBpwCN9xMBGMU+
-	GJF0g0LLz8yfMYH/KgvswX+X4dSrvC3hD4Cn8ByopKpLa9YCprbNCvRwcODw3eR3YQEkAJ/L6q8pS
-	wXYRWjF1H+wWd8gzAWzqs8k+d0OlxH0E6jl6vdIb79gbzTJCUvpzwHO32/Y78fWPDBFFQWFk4mLNw
-	1zgV3HGXfml7Qcleke6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m3P44rRC9ai8g+fM0ZSSlTUNWULoqbTUZ3yAofFQhmU=; b=VDgpJuo9AWiiIJ
+	7rrgINDMwYbPfMUwpZU3hObhHOgz2Bsn55i88S5KgPh6OTJhAjEcLz1cVe21n90osu2R49BWV/ql3
+	spqtiUF7OzkQUmnNVgI2WdXI5yrt7JZUuGJVS1PFs0oOhQODCq/8B639CgeeuufpnKlnS3wz/HWVV
+	53r7D7Lyvr+jrbJkQbaL5cALfLQOIEX9K6v2IYY3n6EQJ/JAYaUjuMbFBOhUKr/kZscX2xlRdeRlM
+	y+80GgwyK1hjNzHj2oi5qA1xCPEL5yWrWXXDYo5ij5+e0MzVXp+FkIaDKX1yQmTwn3b24xeknATYr
+	Jj1KyRsfEGbn+gXVzIAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txP5K-00000008NZL-2ztC;
-	Wed, 26 Mar 2025 11:38:14 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1txTX9-000000090EN-1tZm;
+	Wed, 26 Mar 2025 16:23:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txP3a-00000008NNz-2Cgz;
-	Wed, 26 Mar 2025 11:36:28 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 71A1525D79;
-	Wed, 26 Mar 2025 12:36:15 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id L35YDY5GWVHS; Wed, 26 Mar 2025 12:36:14 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1742988974; bh=i+1SA1AXJQX4Q9Crpe7MCE2kgK7BHEod+Flw4MdzIdE=;
-	h=From:To:Cc:Subject:Date;
-	b=JEusnVnxCcLq5kc8e3+v66/68lTz7j7OUh6mkbl8CT8T6tvtQr6jw62C5VsbJJMMd
-	 I/9VWOZurlvmrOOz89NfCPM0m9w0/wjtP82BQEmIhmj2QanHt5Dsmrrrhkepagpot7
-	 /n65OZMjdQTl5zs1iigHL9VbA4kN4ArY4Dg5BcuQyKOoXaBMS6qMf57MA10GnpjY4S
-	 e5PnPIwdRNE7UMT0lAmKQ0JoQYpIvVvdJalwgHFF54CrfM4y8XERNLfkQuDCJoqyfP
-	 WYYfXvHrDFOR+K5pXM27DwyDTTKlzypWZs52SPIDMHYnaadwHO6yWlIs0Q0Ee6e6Ot
-	 qZw7plq3SOHhQ==
-From: Yao Zi <ziyao@disroot.org>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH] clk: rockchip: Drop empty init callback for rk3588 PLL type
-Date: Wed, 26 Mar 2025 11:35:56 +0000
-Message-ID: <20250326113556.21039-1-ziyao@disroot.org>
+	id 1txTVO-00000009031-2bcW;
+	Wed, 26 Mar 2025 16:21:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 61499439F1;
+	Wed, 26 Mar 2025 16:21:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84220C4CEE2;
+	Wed, 26 Mar 2025 16:21:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743006085;
+	bh=sPx3Y91Z7tpwBuskM40VRn2kEtPE/y6Xzm7p+NjzGa8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=htEos10urfSV+X8uX5tWSc4HUqZgPAK8FzVoZ3PmYCKoDW1YLttGbPWRlBl+a6eRT
+	 L+AXESZ5QjgUFAwqR408S8811iedaRK1q5NKu8bSPhcGEXk5su6gDmVsMwWFCjP1Su
+	 pvZFnUnVp+zadg9NLIrMneAoq6Agxxgu6hOV5RP7EFuxP82H6rnVGs0lhnudLgEHSQ
+	 8FLs/U6/VltSWsVuQ5PJiPew7e6F2AXDd8Sos+t9LFbdlLcFXUeVTLiq3R1SDCVU7J
+	 o7bYqXG2+wq+pXfEdkbSXqv1jZrdw5cc5ArL/lVPHZrSXjliqX1JvZTTEGAJEWqB8c
+	 +sLtAVbORcNSA==
+From: Mark Brown <broonie@kernel.org>
+To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Luis de Arquer <ldearquer@gmail.com>
+Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+ Robin Murphy <robin.murphy@arm.com>, luis.dearquer@inertim.com
+In-Reply-To: <365ccddfba110549202b3520f4401a6a936e82a8.camel@gmail.com>
+References: <365ccddfba110549202b3520f4401a6a936e82a8.camel@gmail.com>
+Subject: Re: [PATCH] spi-rockchip: Fix register out of bounds access
+Message-Id: <174300608311.118781.4443874956794238056.b4-ty@kernel.org>
+Date: Wed, 26 Mar 2025 16:21:23 +0000
 MIME-Version: 1.0
+X-Mailer: b4 0.15-dev-1b0d6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_043626_968440_FF8B08D9 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20250326_092126_689414_BCFB8574 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,47 +73,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Unlike PLLs in previous geneation of SoCs, PLLs in RK3588 type don't
-require any platform-specific initialization. Drop callback
-rockchip_rk3588_pll_init() that does nothing in fact to clean the
-driver up.
+On Fri, 21 Mar 2025 13:57:53 +0100, Luis de Arquer wrote:
+> Do not write native chip select stuff for GPIO chip selects.
+> GPIOs can be numbered much higher than native CS.
+> Also, it makes no sense.
+> 
+> 
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
----
- drivers/clk/rockchip/clk-pll.c | 11 -----------
- 1 file changed, 11 deletions(-)
+Applied to
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index fe76756e592e..a2a57d47bbf8 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -1025,16 +1025,6 @@ static int rockchip_rk3588_pll_is_enabled(struct clk_hw *hw)
- 	return !(pllcon & RK3588_PLLCON1_PWRDOWN);
- }
- 
--static int rockchip_rk3588_pll_init(struct clk_hw *hw)
--{
--	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--
--	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
--		return 0;
--
--	return 0;
--}
--
- static const struct clk_ops rockchip_rk3588_pll_clk_norate_ops = {
- 	.recalc_rate = rockchip_rk3588_pll_recalc_rate,
- 	.enable = rockchip_rk3588_pll_enable,
-@@ -1049,7 +1039,6 @@ static const struct clk_ops rockchip_rk3588_pll_clk_ops = {
- 	.enable = rockchip_rk3588_pll_enable,
- 	.disable = rockchip_rk3588_pll_disable,
- 	.is_enabled = rockchip_rk3588_pll_is_enabled,
--	.init = rockchip_rk3588_pll_init,
- };
- 
- /*
--- 
-2.49.0
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[1/1] spi-rockchip: Fix register out of bounds access
+      commit: 7a874e8b54ea21094f7fd2d428b164394c6cb316
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
