@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8833CC36008
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Mar 2025 20:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B187C3600E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Mar 2025 08:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uKNq4X0MJDVuD4Z3klo1xspAWQPfF9kmxYs2ptavrPg=; b=pJEveEtNr0jJqw
-	/dnVki91fWUhEkK6g8ZGWBhGyOVm2lJUAZsvpcyWy4rryGTrjd5ClPbrBJgK4igadnh3h5nN+038i
-	utzFKeWcTOicU2RxHFq98ZyNe1HIsHqyasifTCHFjKSf+vdw6iQIWaRFlxh+DSmPPTQxt8hAUPfUu
-	nW181Drwxt3dhb0YEykp5cJZxVLJd6dRTA4aDO/1tsWj7cjUuAucowsRVREXH1mihv+D83buLGhUW
-	H0kiurVsTPZWuGr+8+PU/M9XH5C7pSgmNHR/saCidDlQbifiKM/87cxKkZ0IQ72vXsvnTy/cto7Re
-	PQsuVIBsz0SeIXM3rvJA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HugoNA/eWdy7D9u3mwHyQgOUyCq/ooxsdz4SncyOJzo=; b=XEMPyMbHlF0FZ2
+	LxseOz0911mT7ZoO2Mj3ejO3pL+bMrRENhLqlwM0PIFZWOGlZN47hqEyqgBU1qYdyLntDUbvELoZX
+	NNKUDCf8z46GpY6gDbSV45LLpJCGnT7UJhrIfmuNNOBQBBWgRH6uy1HoTmQa4Ss79yahl5FZSV/o5
+	fDBarCdGnouxN44afzY6SWgXYw/9KVQUlxDLwQNyJKRuwX0Tk6fJYAMOUa5HVxrTyHiXPDRU/NCsJ
+	ClJyM0PRB1NoTxSAelnRCyQBxv3aQYngoDs/MX4grSOP+Thc0g/1UK3bJ4yttndDo7L6OG6BujKeV
+	P/faigqgmhGG1VdEUVYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txWxz-00000009W8N-1zWo;
-	Wed, 26 Mar 2025 20:03:11 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1txiG3-0000000APEZ-0OMQ;
+	Thu, 27 Mar 2025 08:06:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txWwE-00000009VxW-3uYc;
-	Wed, 26 Mar 2025 20:01:24 +0000
+	id 1txiEJ-0000000AOxK-0QAX;
+	Thu, 27 Mar 2025 08:04:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C039EA41733;
-	Wed, 26 Mar 2025 19:55:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2658FC4CEE2;
-	Wed, 26 Mar 2025 20:01:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 747666115F;
+	Thu, 27 Mar 2025 08:04:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 607A1C4CEDD;
+	Thu, 27 Mar 2025 08:04:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743019281;
-	bh=i8re7YWTitL9f6q0yBgZpLjWpQ/yfsSdCER2Kwhwp3Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=aqKmWNpLmO16WQsdMwJSY2lJZHc9hgCr5lmOJC7VF6ghV2dZq/slLku6u9l9Pctz4
-	 HhYbD1DDomjdBAnGz162DxaA7dELeGdu8tMRSOiKYRgD3A4VIrMZoQBswxvsjjGgM5
-	 wE9Syl+PFcyK7/6nTBB/lr1a8ZDgYnE9qwnuFPgDAa9SGSjkaniRP/OLLNi1HDVn7E
-	 o+ySK2drIsqXg9ahtBp7Dm+nglbE0GYn8WxZljbCamJlzS9TjP04ukIubOfEC3LIu8
-	 +8s8BdjGFYN5oi9kGWLanyLBvWrBvORPQefgr48Z5m3SxJgvaJ6gcdWYxFt2SR7dEx
-	 saImDQiMKtWZQ==
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] PCI: rockchip-ep: Mark RK3399 as intx_capable
-Date: Wed, 26 Mar 2025 21:01:16 +0100
-Message-ID: <20250326200115.3804380-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.49.0
+	s=k20201202; t=1743062686;
+	bh=Nd3JhLAW8m9vlheZ9He/JNyCremw9y50OzQYsF+gcEc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ShlgxuNB7w03gaJnOCSfGwVY/pbn3j9fi5fXZiHVV7GSeFMjDJw6jHqQQYtpOYSvl
+	 d/SuzLSuxXkobozm9isdTklVGNNVyXPETBy8eobow3gPGPtYkv17POKIEMmIEpoqGO
+	 lMJzOyWQTGcMeSo/cCT/cNeaBnmkGPhmFWBroEbXxJWPUDtYclQnciXbq0q8wFWd5u
+	 GYNotwh+a2cBtTo1LjxzgjEWMU/TOY8GSXg3H3uCXz78KfCjEnFRrGCRBWwAqc8OCy
+	 iKV5YlybLyxlUF2AnXQVj1AsXjXfWupy0LvbDmrA4MkQKHKcUmSPinj3O5aP9kfC1S
+	 wS/qbHQ5zLuqg==
+Date: Thu, 27 Mar 2025 09:04:42 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, 
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Niklas Cassel <cassel@kernel.org>, Alexey Charkov <alchark@gmail.com>, 
+	Dragan Simic <dsimic@manjaro.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, 
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	Kieran Bingham <kieran.bingham@ideasonboard.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Umang Jain <umang.jain@ideasonboard.com>, Naushir Patuck <naush@raspberrypi.com>, 
+	Jean-Michel Hautbois <jeanmichel.hautbois@ideasonboard.com>, Dmitry Perchanov <dmitry.perchanov@intel.com>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-staging@lists.linux.dev, kernel@collabora.com
+Subject: Re: [PATCH v4 5/6] media: dt-bindings: rockchip: Document RK3588
+ Video Decoder bindings
+Message-ID: <20250327-kickass-pumpkin-bear-1dacbd@krzk-bin>
+References: <20250325213303.826925-1-detlev.casanova@collabora.com>
+ <20250325213303.826925-6-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=927; i=cassel@kernel.org; h=from:subject; bh=i8re7YWTitL9f6q0yBgZpLjWpQ/yfsSdCER2Kwhwp3Q=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNKfxHIrp4pYKfNN70t76aU+Y/rjkqmODU5FKW+23is/3 XkodPL6jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEzEv5vhN3tF7mqpO/PnvO1x 9p6ffWmKp8r994qKp2fv6BDgv638/gQjw55MqyUBBRM7laOK9u+Z5HFWKGJO/tINlnyL7km+VNV 6zQoA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_130123_034166_A71BBE8B 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20250325213303.826925-6-detlev.casanova@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +84,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3399 can raise INTx interrupts, as can be seen by
-rockchip_pcie_ep_send_intx_irq().
+On Tue, Mar 25, 2025 at 05:22:21PM -0400, Detlev Casanova wrote:
+> Document the Rockchip RK3588 Video Decoder bindings.
+> 
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../bindings/media/rockchip,vdec.yaml         | 73 ++++++++++++++++++-
+>  1 file changed, 72 insertions(+), 1 deletion(-)
+>
 
-This is also in line with the register description of
-PCIE_CLIENT_LEGACY_INT_CTRL, section "17.6.3 PCIe Client Detail Register
-Description" of the RK3399 TRM.
+<form letter>
+This is a friendly reminder during the review process.
 
-Thus, mark RK3399 as intx_capable.
+It looks like you received a tag and forgot to add it.
 
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/pcie-rockchip-ep.c | 1 +
- 1 file changed, 1 insertion(+)
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions of patchset, under or above your Signed-off-by tag, unless
+patch changed significantly (e.g. new properties added to the DT
+bindings). Tag is "received", when provided in a message replied to you
+on the mailing list. Tools like b4 can help here. However, there's no
+need to repost patches *only* to add the tags. The upstream maintainer
+will do that for tags received on the version they apply.
 
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 85ea36df2f59a..626f6b31b0f66 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -694,6 +694,7 @@ static const struct pci_epc_features rockchip_pcie_epc_features = {
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- 	.msix_capable = false,
-+	.intx_capable = true,
- 	.align = ROCKCHIP_PCIE_AT_SIZE_ALIGN,
- };
- 
--- 
-2.49.0
+Please read:
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
