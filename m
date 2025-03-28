@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FDCDC3600C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Mar 2025 12:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37B6DC28B20
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Mar 2025 23:12:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X3JTMT/laU1hI/B2UkMOAcKup/+O1sUkjzjQluCTaL0=; b=aSHQWqemH9DGUe
-	x+3QD27Q3INFVn3t6gDeD7V+s3E+M8TfmGr7049n1yoWip1xwO/rCTV/XYUvDisOWln7TZxiTQX+j
-	aijwsZIHPtUb/GPRH8S2jytqXrISYNBHrnjlfOBny5P1APeA0QPhEY+dCQB1WTaeGBBH+NLdNEM7K
-	ZK2hr1Xkyosf7ugqpa0+vV99cWfkA8hYARQ7hVS5g23WC7oOMTeaFfpC5pdoo7YTgEvI/nHVWkRKN
-	b61gsuGBoidafSZ1jpOwl22t6YR095A+cTXrusGD8ofc+orFDYtuPgxumR5zTRXyg2AiJ5pmfN5H2
-	xT3vIdtVD9TCxZ8oy9qg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1t5B+NZurG+MFV64XWEZwgv/wvEB893JT8h8p04VVgA=; b=4NmaBNFxRPLXBcMKLB+JnD9CHk
+	H/OcS6XSm8gOnBzsqeH0xh0OK1W7F3Fghmu/soQsK2hDG8xZXHrJyUEhrvo5EaKBYw+pJsRleW3Wn
+	BO3DwwSOjyfo6NY4eGeG5eMequ2JLw20eugG9p0C5s4XJYbc1SExdnJBT8byE1ZaHeZHJFtNh0nrL
+	N+LyJ/b6dTflzg4o/h0r5tmxy3AUUqS/DdO8tjnAmInWw9HJ5dq8KoWA/Y8f7byUTrAav9jCrYgsC
+	SufsapWrtMA+lXS/Pipor/4O8vdIpRtXukjI4Q+V5FAJBqlzx5Td3x58fgm4mVG99/dl/4bQu4Z7M
+	sI64t7Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty8wf-0000000DK94-0WmT;
-	Fri, 28 Mar 2025 12:36:21 +0000
-Received: from mail-pj1-f44.google.com ([209.85.216.44])
+	id 1tyIrx-0000000ES4d-3mfZ;
+	Fri, 28 Mar 2025 23:12:09 +0000
+Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty8wc-0000000DK7P-0751;
-	Fri, 28 Mar 2025 12:36:19 +0000
-Received: by mail-pj1-f44.google.com with SMTP id 98e67ed59e1d1-30362ee1312so3668187a91.0;
-        Fri, 28 Mar 2025 05:36:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743165377; x=1743770177;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=s91gS3ZTf8YeYYH5MnclAC4ck1ph3hH5lBLldv1VsOA=;
-        b=LIl1YPUwyE8L+eJiu6rI9sXW0Zrx/Yax2Cw2uLYPpv/bnNimVvbfJpGuDs2TmYJEE+
-         9yv7UhScOMpZFJQ3I5q4XJz9Tn7eDCpCeQ200ZoZNbzw4nUs1hYEm9NsIYgL+pnf/8nS
-         Z8xmRnqTVLjrtPz81pydU4SwB78R8HLhzug1Mk2cCzBaViF6+7cVNM9VIQoPT29KHBc7
-         fjIncHM+riCeIyLEfwMjrcBUY6BFNjOPe7iT2F+SzjJwSOsbWp4AOoifzs0zk+gkfvHm
-         maR2BgOxxDsh9HcScje7vqFM7q09FQ1LvM3YhRRGyWKvifX3+LvdTBB/Dg3ggiypb5BF
-         hVlQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVaU/O1SWhAr9GUfcxq+j5+urTne4VuGXNFUgrTLBtpAlEjFMza1x51r4qj/se4w2ME1UsWx8wsLd8HwAT4t7Q=@lists.infradead.org, AJvYcCX90gM4wj3ZnQNA1qf0PloFH1SaxUo95mwrO3PDhFxFu0Sm9ZdrgvHbN9aUy0OLs5NKSyFN8NsN2E9d4EdlIas+@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywshqqte7YL5xyStjVLbk7GS8CWNVBM9iD9XdBOAiLnuNns624u
-	h0bm5x9YQUbqjA2JDuGZmyctJRFN20w/mr4MgkwLCHF28vZQJj+j
-X-Gm-Gg: ASbGnctzihOy+xIulMrv4fF3gL56ILTC84r3R3XKkVgQD6ZB0aKzXyFOx8Mpk4h0ZVT
-	pH94qFClnF4PDmd52qVx5+K5msD7znsP3WLNXPSSU1maElPLLae+NhDKVRhFbO1kK5IE1+o6EJE
-	r6kC/bqPovAWC8cIZK0Bgv0mqiL+NEIJYIHtzj3m+HGPjlLZqMYmMI4lF8dJ2e0BwvJX8RUSpW3
-	xCGvsKolLGGx96emo7Agk3492OZm5limrnnPGD1KcQkLVsip4uNrxHlCIQ8UZuw0R0tXVVIJBVx
-	2nhmyBAri686ip/Z8vcQoAQlI8JAmGnNw05lTZkWQ9c8LjUVa8ZulMbyhf8m4jqXCQ3uRJlQDu5
-	m6A0SF5r9C4+3OA==
-X-Google-Smtp-Source: AGHT+IGlAd66FNmavdbS7CR1qNFbwkljXHkJb48mCAC2R7hMVIyBsmG47UAORbPRGzD6ZvlyCmfhIQ==
-X-Received: by 2002:a17:90a:c2cb:b0:2ee:d024:e4fc with SMTP id 98e67ed59e1d1-303a8e78b3emr12478191a91.33.1743165376962;
-        Fri, 28 Mar 2025 05:36:16 -0700 (PDT)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with UTF8SMTPSA id 98e67ed59e1d1-30516d61686sm1690708a91.22.2025.03.28.05.36.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Mar 2025 05:36:16 -0700 (PDT)
-Date: Fri, 28 Mar 2025 21:36:14 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] PCI: rockchip-ep: Mark RK3399 as intx_capable
-Message-ID: <20250328123614.GA1188225@rocinante>
-References: <20250326200115.3804380-2-cassel@kernel.org>
- <20250328122123.GA1187318@rocinante>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250328122123.GA1187318@rocinante>
+	id 1tyIqJ-0000000ERs5-0ZAL
+	for linux-rockchip@lists.infradead.org;
+	Fri, 28 Mar 2025 23:10:28 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1743203414;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=STZ5FqUicffkrJ/L4Iet8L5svtmsV0SOVrQ2kmJ0+Bs=;
+	b=peZbvp+uX7RO7KoL4c5LkiMV9GUERmSid94u0cMFjbQaGFwSN2DSW1OpH1skNxvhkURo1A
+	jkRtr5yBcOCnJmSgWrw9Co3B0VdJ6u8y2RHP1+vpYoxZFStx1ZFVVelXjAe3Ngy7GVdL8c
+	sU5xd+qeBvnfJUH68MmOS8Qlx/oHez74A2izAtEDSVJfTD4Jj3VsTM3KLmrdP59ofcc/ig
+	MvkIz9QP/dgniHvjNifvgwaikCR1ZLkpxMPaQxn/bFsSgSO1BW6cvNDU7bDm3zPyTS5rcq
+	2m7l6bOb01EHQ4Jr7Bk80AsAO/1IfMSt2m9MUCzpb1As6R477TQ1Rsiq21gCmA==
+Date: Sat, 29 Mar 2025 00:09:37 +0100
+Message-Id: <D8SA0W2ZEAQ3.3BO4NMONFJCRC@cknow.org>
+Cc: "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>, "Mauro Carvalho
+ Chehab" <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
+ "Heiko Stuebner" <heiko@sntech.de>, "Greg Kroah-Hartman"
+ <gregkh@linuxfoundation.org>, "Hans Verkuil" <hverkuil@xs4all.nl>, "Nicolas
+ Dufresne" <nicolas.dufresne@collabora.com>, "Andrzej Pietrasiewicz"
+ <andrzej.p@collabora.com>, "Jonas Karlman" <jonas@kwiboo.se>, "Sebastian
+ Reichel" <sebastian.reichel@collabora.com>, "Niklas Cassel"
+ <cassel@kernel.org>, "Alexey Charkov" <alchark@gmail.com>, "Dragan Simic"
+ <dsimic@manjaro.org>, "Jianfeng Liu" <liujianfeng1994@gmail.com>, "Jacopo
+ Mondi" <jacopo.mondi@ideasonboard.com>, "Sakari Ailus"
+ <sakari.ailus@linux.intel.com>, "Kieran Bingham"
+ <kieran.bingham@ideasonboard.com>, "Laurent Pinchart"
+ <laurent.pinchart@ideasonboard.com>, "Umang Jain"
+ <umang.jain@ideasonboard.com>, "Naushir Patuck" <naush@raspberrypi.com>,
+ "Jean-Michel Hautbois" <jeanmichel.hautbois@ideasonboard.com>, "Dmitry
+ Perchanov" <dmitry.perchanov@intel.com>, "Tomi Valkeinen"
+ <tomi.valkeinen@ideasonboard.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-staging@lists.linux.dev>,
+ <kernel@collabora.com>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v4 1/6] media: v4l2: Add NV15 and NV20 pixel formats
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>,
+ <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+References: <20250325213303.826925-1-detlev.casanova@collabora.com>
+ <20250325213303.826925-2-detlev.casanova@collabora.com>
+In-Reply-To: <20250325213303.826925-2-detlev.casanova@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250328_053618_062956_FC271154 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20250328_161027_472726_9CF12E7D 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,39 +84,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3411221256027358437=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+--===============3411221256027358437==
+Content-Type: multipart/signed;
+ boundary=7c928e379149c708ec657bfbf13635c86dc30623af4f2b5a98f0c352d1dd;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-> > RK3399 can raise INTx interrupts, as can be seen by
-> > rockchip_pcie_ep_send_intx_irq().
-> > 
-> > This is also in line with the register description of
-> > PCIE_CLIENT_LEGACY_INT_CTRL, section "17.6.3 PCIe Client Detail Register
-> > Description" of the RK3399 TRM.
-> > 
-> > Thus, mark RK3399 as intx_capable.
-> 
-> Replaced the following commit:
-> 
->   e55c67837a8c ("PCI: dw-rockchip: Endpoint mode cannot raise INTx interrupts")
-> 
-> With this one directly on the "endpoint-test" branch.  This is per the
-> conversation at:
-> 
->   https://lore.kernel.org/linux-pci/20250318103330.1840678-6-cassel@kernel.org
-> 
-> Thank you!
+--7c928e379149c708ec657bfbf13635c86dc30623af4f2b5a98f0c352d1dd
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-That said, Bjorn is preparing this Pull Request, this might not make the
-cut at this time.
+Hi Detlev,
 
-	Krzysztof
+On Tue Mar 25, 2025 at 10:22 PM CET, Detlev Casanova wrote:
+> From: Jonas Karlman <jonas@kwiboo.se>
+>
+> Add NV15 and NV20 pixel formats used by the Rockchip Video Decoder for
+> 10-bit buffers.
+>
+> NV15 and NV20 is 10-bit 4:2:0/4:2:2 semi-planar YUV formats similar to
+> NV12 and NV16, using 10-bit components with no padding between each
+> component. Instead, a group of 4 luminance/chrominance samples are
+> stored over 5 bytes in little endian order:
+>
+> YYYY =3D UVUV =3D 4 * 10 bits =3D 40 bits =3D 5 bytes
+>
+> The '15' and '20' suffix refers to the optimum effective bits per pixel
+> which is achieved when the total number of luminance samples is a
+> multiple of 8 for NV15 and 4 for NV20.
+>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+> ---
+>  .../media/v4l/pixfmt-yuv-planar.rst           | 128 ++++++++++++++++++
+>  drivers/media/v4l2-core/v4l2-common.c         |   2 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
+>  include/uapi/linux/videodev2.h                |   2 +
+>  4 files changed, 134 insertions(+)
+>
+> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst =
+b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> index b788f69338554..22cad8c9726bf 100644
+> --- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> +++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> @@ -79,6 +79,13 @@ All components are stored with the same number of bits=
+ per component.
+>        - Cr, Cb
+>        - Yes
+>        - Linear
+> +    * - V4L2_PIX_FMT_NV15
+> +      - 'NV15'
+> +      - 10
+> +      - 4:2:0
+> +      - Cb, Cr
+> +      - Yes
+> +      - Linear
+
+In your cover letter you mentioned:
+Imported improvements from [1]
+[1]: https://lore.kernel.org/linux-media/20250225-rkvdec_h264_high10_and_42=
+2_support-v7-2-7992a68a4910@collabora.com/
+
+The changelog of "media: rkvdec: Add H.264 High 10 and 4:2:2 profile
+support" v7 had this:
+- Move V4L2_PIX_FMT_NV15/V4L2_PIX_FMT_NV20 documentation as suggested
+
+Following a comment on v6 of that series.
+
+But it seems these blocks are now placed at the location as it was in
+the v6 series, thus NOT importing its improvements?
+
+>      * - V4L2_PIX_FMT_NV12M
+>        - 'NM12'
+>        - 8
+> @@ -172,6 +179,13 @@ All components are stored with the same number of bi=
+ts per component.
+>        - Cr, Cb
+>        - Yes
+>        - Linear
+> +    * - V4L2_PIX_FMT_NV20
+> +      - 'NV20'
+> +      - 10
+> +      - 4:2:2
+> +      - Cb, Cr
+> +      - Yes
+> +      - Linear
+>      * - V4L2_PIX_FMT_NV16M
+>        - 'NM16'
+>        - 8
+
+The same thing seemed to have happened here?
+
+Cheers,
+  Diederik
+
+> @@ -302,6 +316,57 @@ of the luma plane.
+>        - Cr\ :sub:`11`
+> =20
+> =20
+> +.. _V4L2-PIX-FMT-NV15:
+> +
+> +NV15
+> +----
+> +
+> +Semi-planar 10-bit YUV 4:2:0 format similar to NV12, using 10-bit compon=
+ents
+> +with no padding between each component. A group of 4 components are stor=
+ed over
+> +5 bytes in little endian order.
+> +
+> +.. flat-table:: Sample 4x4 NV15 Image (1 byte per cell)
+> +    :header-rows:  0
+> +    :stub-columns: 0
+
+--7c928e379149c708ec657bfbf13635c86dc30623af4f2b5a98f0c352d1dd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZ+csSwAKCRDXblvOeH7b
+bnEaAQDRs0XJAsCh5SV9NORF9yiBN4xK9/ksqMZ7dptPRBqK+wEA6MAvdIFDX8KV
+IsH2OmXqqcmhBEjMEtZRNbYrv/vtFQM=
+=JnIi
+-----END PGP SIGNATURE-----
+
+--7c928e379149c708ec657bfbf13635c86dc30623af4f2b5a98f0c352d1dd--
+
+
+--===============3411221256027358437==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3411221256027358437==--
+
