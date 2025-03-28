@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7D5CC28B20
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Mar 2025 11:04:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A576C28B20
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Mar 2025 12:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rq0D4VnyK3vG9eGkwSY5SUPYBGfBO8tAaIBkpTb49Os=; b=YSic9J6lv1SFgi
-	rMI/ca3uozvwex5mkr+gEGnPu5dALROrxbIMQS9omTXS1L0T60p0PoW7lhT7TpU4cyx7WiW4Q7+Xf
-	7WP6zVXxiGc3nU0S5ZcbIzJmfIvi6Jdj6kSzYke6asH19Jvbu908eIfcc4rft44hS8UwiSR+o40mQ
-	Il2uZespAforhwLdQbhuOXkwUU6qbAxeCu4RecasyCOWtDiKl++YdPMMXw0u0az23zFS8uLndiubo
-	8Ehp2/FFGYLVxXUQLlvolMyHNIXPLHyRfITJYIXI1lguM9on7wI6eHaY3xyEg8Z/IURtaX0LDBq3O
-	tlyD+NFsbEdYU14r6BeA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Nnf1NXNoiEPIhmPg7/hqQTMc6I8Ml2I+5k9BPpaH8wg=; b=TXwGJCKTzE4n1z
+	lOgelHPz8/scCWcYnRWm+pCCQfDN66RgZLYWDeMoC+1N8IfvZ6MNVOIiDqfIsLX3dJ+A4k3gWrTcS
+	O89BoK3sp3KvKKjdfZmRoLuQElGPXSLNRsMu1g4VFrewVv6dI/oi9t4l4fi36HMAhHoBzcdtpOuB/
+	9GSkAewQhJWL3hBufRU8T8HDDM03Qil4/i2OI2DH43gEf7Qhtb1w8hEBItKwc+rSADHqsBzyFeS1u
+	T38EvwN1xQ44yPOhSPMuB9cbDAXz+QB6btFOhxkoJ72r4EsImZSrcRAHGS0RphLdBqU8quZHt3CK3
+	8yEC8333Pz5PrR42JOMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty7Vc-0000000DCW6-1TBw;
-	Fri, 28 Mar 2025 11:04:20 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1ty8iI-0000000DIq4-0GyV;
+	Fri, 28 Mar 2025 12:21:30 +0000
+Received: from mail-pl1-f169.google.com ([209.85.214.169])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty7R1-0000000DBjm-1Huu
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Mar 2025 10:59:37 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-2ff64550991so2465571a91.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 28 Mar 2025 03:59:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=friendlyarm-com.20230601.gappssmtp.com; s=20230601; t=1743159574; x=1743764374; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vHj6gQ1zeVt3QGQTw+FIAxu8YW4dxt5y3xOPYH0BIdw=;
-        b=GmSYKabAXIsN/5hdaqnLHTaRSod7hZrpGEOV85x7OrXgW3sfwGGWxzzYtEdeYd7DfA
-         kipcSK4ila/Upg03uPZaX1biuii6t08CDZEGrn+3EdsUK2PKiAXb2+6NFx3ljGHRoN+7
-         fKwSU9XYLZYwBQ7eUg34AzFZRfnt5PDKyV7uw4wR7cstwzLWkqIYpRpf7MK3ZzqGV2qM
-         r4zr2uWeCNHVgfVyZ039/sWlnNdbdnP+TYs5drU5vSlF/gshXT/ZbP8hFZ6qGHpF9OBu
-         bygTiNhF+UN+ZDc5LE9pLU/ibbvX/h3G0F95uj/5c2iTWnBtJjFYkwc0aYr724efNGXx
-         fY3Q==
+	id 1ty8iF-0000000DIos-0VXs;
+	Fri, 28 Mar 2025 12:21:29 +0000
+Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-227914acd20so48953645ad.1;
+        Fri, 28 Mar 2025 05:21:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743159574; x=1743764374;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vHj6gQ1zeVt3QGQTw+FIAxu8YW4dxt5y3xOPYH0BIdw=;
-        b=FPXEBbzTwe7wp36ug+Q7q5vcw5dtoa/vY/WOXsZobBxEvJXKV0q+uQaqw0/if0lJrK
-         z0MIHfksJxPmJoCUlMltz7Lac46MIuz28xfH0HxetRckonCKy/FaeaNtnSsXUr1tXzYL
-         2rgI78QT62VL5h8Gf0CfztnaXF5ZqT802kGLbKKN1ovU2SFH4Qrw5HJM2lT7oSc/CJ9n
-         f42HXGV8qogFXW/8XTMUdFjWz2Nm1/OuxIl/s5pWcdR11VArfmfJKP3TViEEDtn2pccp
-         ZZdZ/6ctuOPXSjTvCVyBEscGPZDnSgQsQcYFIzBUHhy7ZRffaYCerEeJbC2aj9+4owbE
-         2HsA==
-X-Forwarded-Encrypted: i=1; AJvYcCWU2sIy92nZuYTeBIad9W1Aqs6TRgB1QOiLtMTFtz1KYZtTPyNZrZY7VDGmjqjefSESTgRJ9rnaBr7GWzPh5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxyi3ZxDaAs7SDmP3wy3B1MOcaX/TKxMaaBEQw4CVBfjMqAYAty
-	Z2kxX8845Co0YMRRZ0bh84IKRzKoANZWUeyK0d0//SOeVv15sPslN3FURjm5a4c=
-X-Gm-Gg: ASbGnctWo1cFWG6NOd8wJPZjot1mcR0F/yW4B01LOm5lRXTaLLVN9FIztnIROpvRG/S
-	jdDRAtIKp0bYvKULNUEXbzNjEKJKzuSLXcDgFe4rkRsmRWvLV4znEDNl04mO8vGLV/Q7YyaOcBu
-	yJ1KtbJOiJ/xpIrG1B6mzRadZyg/8wZHXm/A3o4Uu0lE9fQvAVR9Gl0fxZADRaiaxMaw5djYEcZ
-	bZf1f5rTMkutpo+eDgC8qaYsH/tds27HPTqB+RpizjPwl6m9FiHp287CSoynrqlofZuD4Z9LCEp
-	cy7j9gZSNUW/VxO2sUWh6E8wUBEbjjpUHdiRCj9XLBFyfprm2TnXcB0XCvlB/yTjLm2b
-X-Google-Smtp-Source: AGHT+IHCY/P45TjdQpykRBnac2GduXlszHbzvBxCFlitCRhl0UAFu8AkE4JL9IObg2JicXApsmQMBg==
-X-Received: by 2002:a17:90b:2645:b0:2ff:4bac:6fba with SMTP id 98e67ed59e1d1-303a85c1c47mr11926254a91.24.1743159573765;
-        Fri, 28 Mar 2025 03:59:33 -0700 (PDT)
-Received: from localhost.localdomain ([113.119.38.251])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3039f1d4efdsm3844649a91.34.2025.03.28.03.59.29
+        d=1e100.net; s=20230601; t=1743164485; x=1743769285;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r/9N6IGO2b06XLqPK9RBGgEbBk8wQn9vBDguitaJu18=;
+        b=BaFX3yd+5A6KnlRI8/WaW+a8xWokBe7xJoOQR/65/XC3/cqavw2Vc17sRmjWRObbE6
+         FnWNWhPhoGJhsZ2S4dFbPYQWOKhnRswoj9L1rUMU2ntcZooTSn6T2nx40ZRBXXBuTE3P
+         T0TotpV47EH3sKnMK1SyJxzXokfcI1w9z8oo/Yt+4p/TZFdaxfHsR1tXAF67ka7FgEOb
+         ciHzuDza1As6mPoinzmeTM/8HqWRunHkV3LK9zskCScZq/fQwuFvYGsdWLQE4qO6fA1x
+         jCWLvM8osgn9VGl1Wd/rC5m23zAHzHzGj7R17YMyWbNJCnOnSyqc1+xFPZNcA+sa6Fpg
+         r9zQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUvE1m84F/wuQF+jTgaeoZyQoc2TAmpAji2K0b0QyqCXXXHJ2ptOaZkuNcs4BPJj9+lB321rQ8l0ZeDEMT1OpZ5@lists.infradead.org, AJvYcCVSbApcewGM3oW//SaDOk+kJOAio1fw+cIX677dxwMuqB2Os+9ch9r6rEYELk7ZHC7mJFRsqqHN8GQ3zLaFmGA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwNcFJXd/e8Db9fAJqYP6xkx263ljKnOIchTt3oKFeP8md3lQF2
+	yIYGnYDb76e10X4AC+HXfkql0hCXwZbo70zTEeGbK77op4Koes8q
+X-Gm-Gg: ASbGncvqyUH4Y+gI7sCe5ZgL5KWb7YC0ZhIIZyoKwm6d583TG5OmlvdLbuI90BGBuJV
+	M+Fp6THWtu/8qRCraWAYw6mYapSqtf+52kD/tvjxAUXsOcqsiTstpfaK1nnM/e2UZ3Rzg7k41HO
+	Mmhv4NZ1ek6M3reY8Twfao3n8G60e0ESH5DXHeRytb9vS7DC8y+2vtZ8L5xuvNmcpBxqN3MnuY/
+	1EEzl2wxKk7dlD/DV1zCT8uBJil0+nXvzpfxVjofcflOxXm/t+6V1T0AtlMjh/8n01hCGO/4+v9
+	nSXRW9NwuLR98Kd4ZZyN7aCaEXJrKUUAHVlnFj+ItvJ83O6VVCwgq6lD7VDEXq9TLORIq7nMgM1
+	8NGo=
+X-Google-Smtp-Source: AGHT+IEiqFnwgAfpimqiawKJtkxu/+UqZskGggMC1JBWEQJ69Smb/Nhm2zy+DwpXPUHdJzcDz3gJlg==
+X-Received: by 2002:a05:6a20:9f03:b0:1fe:61a4:7210 with SMTP id adf61e73a8af0-1feb5b80d62mr4306855637.2.1743164485217;
+        Fri, 28 Mar 2025 05:21:25 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with UTF8SMTPSA id 41be03b00d2f7-af93b52ea6bsm1271537a12.0.2025.03.28.05.21.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Mar 2025 03:59:33 -0700 (PDT)
-From: Jensen Huang <jensenhuang@friendlyarm.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
+        Fri, 28 Mar 2025 05:21:24 -0700 (PDT)
+Date: Fri, 28 Mar 2025 21:21:23 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Anand Moon <linux.amoon@gmail.com>
-Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] PCI: rockchip: Fix order of rockchip_pci_core_rsts
-Date: Fri, 28 Mar 2025 18:58:22 +0800
-Message-ID: <20250328105822.3946767-1-jensenhuang@friendlyarm.com>
-X-Mailer: git-send-email 2.49.0-1
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: rockchip-ep: Mark RK3399 as intx_capable
+Message-ID: <20250328122123.GA1187318@rocinante>
+References: <20250326200115.3804380-2-cassel@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250326200115.3804380-2-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250328_035935_474468_14ED92F8 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20250328_052127_156726_16903E54 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,47 +92,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The order of rockchip_pci_core_rsts follows the previous comments suggesting
-to avoid reordering. However, reset_control_bulk_deassert() applies resets in
-reverse, which may lead to the link downgrading to 2.5 GT/s.
+Hello,
 
-This patch restores the deassert order and comments for core_rsts, introduced in
-commit 58c6990c5ee7 ("PCI: rockchip: Improve the deassert sequence of four reset pins").
+> RK3399 can raise INTx interrupts, as can be seen by
+> rockchip_pcie_ep_send_intx_irq().
+> 
+> This is also in line with the register description of
+> PCIE_CLIENT_LEGACY_INT_CTRL, section "17.6.3 PCIe Client Detail Register
+> Description" of the RK3399 TRM.
+> 
+> Thus, mark RK3399 as intx_capable.
 
-Tested on NanoPC-T4 with Samsung 970 Pro.
+Replaced the following commit:
 
-Fixes: 18715931a5c0 ("PCI: rockchip: Simplify reset control handling by using reset_control_bulk*() function")
-Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
----
- drivers/pci/controller/pcie-rockchip.h | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+  e55c67837a8c ("PCI: dw-rockchip: Endpoint mode cannot raise INTx interrupts")
 
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 11def598534b..4f63a03d535c 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -320,11 +320,15 @@ static const char * const rockchip_pci_pm_rsts[] = {
- 	"aclk",
- };
- 
-+/*
-+ * Please don't reorder the deassert sequence of the following
-+ * four reset pins.
-+ */
- static const char * const rockchip_pci_core_rsts[] = {
--	"mgmt-sticky",
--	"core",
--	"mgmt",
- 	"pipe",
-+	"mgmt",
-+	"core",
-+	"mgmt-sticky",
- };
- 
- struct rockchip_pcie {
--- 
-2.49.0-1
+With this one directly on the "endpoint-test" branch.  This is per the
+conversation at:
 
+  https://lore.kernel.org/linux-pci/20250318103330.1840678-6-cassel@kernel.org
+
+Thank you!
+
+	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
