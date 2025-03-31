@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE7FC36008
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Mar 2025 16:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C65C6C36011
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Mar 2025 19:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dj0wF0cmsQ5AMPl0RJ+g+89jO/dwU/lJjxX6LWv2OuI=; b=mWeLXkKvxZgc0g
-	54Ulh4jaaTsVlOUN4VDKHQt+oC0bkBlOdlXPL0k1KyLdhGWR22WYyVTaYTzt+DzU3aP9AKRGuMzU2
-	u6UT0dzPusBPXn+Tkf/ATyI2UoqOAOAXU7q1hsiCa9cE50UbOXO8uf7LNmSFUxnuMF9CJ4dtVECx5
-	hc6u0R3tk+bHDuqEsMbUnnU+MkbOvOJfBX44X6KxI54MP4CQm1BSZFzcsl+tVRDR6R6bRyfatIocR
-	ax4CzYvRioq49jjuthmKsEIYlf2oAUYrZhf95gVf8zlJsCUrpYZGOEnjruavkw2wBvDUm0/6pdnEs
-	WJSZwVcTrSv+DJFXcBLg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UAmDBlEvK5T/ntZTjksulVTG6IQ2pjgaOyDippdFnA8=; b=DeoHTrQrqE11iAADxrh5At99m5
+	DGw6G2KSoeRR7qBMszAKtDGmHIkistYY/yk8h1tHLiKjL8B39p6MA1x6nGdGLb7pMJw7hTPCPs1x6
+	vPqRPbDOov0cd2BrEU5VqCRY2Oc31Qw+Uvht4E02hR2aJprS5qEwuU0q4r398f9iipehIEyCoPSMX
+	ohewTMHS2Fz1HbMa9gHcdb2PY6N4CWkD2UUcuK+zLjYUL5MiUEfJy+DBMDDPgFeXyTNLJfRG30XEm
+	DzDRRVepPaa+WU5ch4iudBFurXl6i117bUg2kv82fdqoRkv0icIoF8zDgNnfS7H//F5pfaWQeINJe
+	OmIxOyJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyZOf-0000000FKkA-1neE;
-	Sat, 29 Mar 2025 16:51:01 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1tzKQA-00000001B9g-0DbJ;
+	Mon, 31 Mar 2025 19:03:42 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyZOd-0000000FKjm-0L8v;
-	Sat, 29 Mar 2025 16:51:00 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-300fefb8e06so5102459a91.0;
-        Sat, 29 Mar 2025 09:50:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743267058; x=1743871858; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=EIKH4WUlJ2hDzsxspQuDetTzvwGz5UlzO/Wk79NuNXY=;
-        b=l5Ii/uG5Fky7AK1SwTmpNDtsrlQ3vc2Ift4YFpnzapEpgSBZzehJGR1J8p841YdbJ3
-         tp3kGNBcM30qbtt0FrrvJhfN2DSc4NiYmiH07b8D3cbd66tS45eE4gsrJDknlTzlOsyJ
-         JJtnP2iu5eZKg3Y7RgTuwj5g6KFPPoKvGxplImnBv9mDuRJcBQ/A5aNUo5RFh2VBsGJk
-         VHFfYgTGSVhuyWYhvUJjChJ61FJoaCkygHq3Wrrookzc1QQHzwh6uPnOvgO7EUk09Kx7
-         1usZOksX9NMPD7xEzITRTtKSqWBmZiS8eiuF3iBSonjglsrH2kIsQZW3r0Sf63cN+Jsn
-         6sQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743267058; x=1743871858;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EIKH4WUlJ2hDzsxspQuDetTzvwGz5UlzO/Wk79NuNXY=;
-        b=amhZXTxxjREk3ztt/SDqo/PBKPeAXT/kcJCY3f1MMWQc2v/CUEkEpgtu+TOEbB2fFH
-         EAq3Scj1sFjgwXdMAVOfhES7mBmsbb4X+RVwrXjEulg4qp2HjG+4mowN8Upj5Etj6JTE
-         j6nc4EocPVGjzB3lDqRmoch9F6Jn1aP5Dze4o5V7MlX+vOex8cjV0IsKSZpXTImsud2Y
-         hNVzTd06yoo3Ufk19I5f2Fm/QJQ42Q49lgvSMQgLJVx49hVAosNEdyN32xXW1rNA0DXv
-         u5IPwF25Q59sEmlhFcbgbCncNY0T+aePvnDzScfCg0cPZB/sxceaydcuZFF65rWFHqNd
-         lG5A==
-X-Forwarded-Encrypted: i=1; AJvYcCXcD3uQTqHvoAibc2Y5WVTdGLMsK5AFzHVW7ZuEyIUUOJqI9pbq08VJXznIsLlR1mt0gH+q3kAJ3Q8cCgLQCbAE@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUvrcmjPN15LjCzRePJznS8Wv06LVpkDcGr6YqFSc4D9664Bbj
-	U4zcTX1EniyzcUPoXBj+Q1+KFyqNqU3I2czNr3dO2B/DfQ9OsF5K
-X-Gm-Gg: ASbGncuZlZAmoqS/CjACbDElTBROj8GzlZTKmKYTjIDlq7tMr2yrGDtfGd716jrrFQ/
-	fKyYyTBctXLLBDhBCYhGZTlR+Q5G+e+zCqrIBZSSatqHeDzpFhEliHBNMohtQuGe6P0sNpz9z5r
-	dRb1YasyA0dp5pRQyooZaSsIXC76ZSswBg9Tk2x7h1tFjPAq6XL3PAzkx4lQCniclWepKP4kqdS
-	AN9mFwI9/mURs63QVrAxxCL/GGO6onaW/mJLGgx1wd5juNqHR+1F/9hOHe6fgjuUMcU2CPd6igU
-	v+83iiAUSGAn9RKqDKI+IR2zzz8znpBhz+xNyjt3UsOVOBvYv+IdZ61+
-X-Google-Smtp-Source: AGHT+IFFncrZVAh/sPx6EADZxp/0OsWeFLdIoZEQns7C8v1PTlZYjizAdIK9G3wvfVyLXBmSrFN/sg==
-X-Received: by 2002:a17:90b:2e8d:b0:2fe:99cf:f579 with SMTP id 98e67ed59e1d1-30531f7c03bmr6172874a91.4.1743267057709;
-        Sat, 29 Mar 2025 09:50:57 -0700 (PDT)
-Received: from celestia.turtle.lan ([2601:1c2:c184:dc00:fbd7:4326:6b6c:8c8d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2291eedf98fsm38545535ad.57.2025.03.29.09.50.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 29 Mar 2025 09:50:57 -0700 (PDT)
-From: Sam Edwards <cfsworks@gmail.com>
-X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
+	id 1tzKOE-00000001AoS-43Hg;
+	Mon, 31 Mar 2025 19:01:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CB828A439A9;
+	Mon, 31 Mar 2025 18:56:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74FF7C4CEE3;
+	Mon, 31 Mar 2025 19:01:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743447701;
+	bh=y6YMr3baPj0fmKAXg+1TRjlsnvp6i7akFQbajbrsnAI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WNY/7mMcf4YEoeD5x5Yf4QpbX2DiZhW2OObckB8SEDRc+6hFMVjLaZOoZrOm4chvo
+	 96E6l0Pkn8vkAox5o5KDSgw9h8QhGKjjktMr0KvtzBIi711FRf2JkwD/+qLhyFqAEM
+	 POmf+wBYaiB4hw3XJofMxtCAHQhr2ZJLuEY2Nk0v042hePQ0lqYVIAN1x6957T+xSl
+	 FqKzFLhwsCFVJ6JPZozDprMsGm47Hov5828L900sfFT2pV5sBXiIjs/YjGfdIB5Qbu
+	 fsnwtrisvQvN+yfHl86XPkc+ka73NIdIACxfAieHA+bcHvs9nuxyFsoM+mOsFXIrPB
+	 bXIt3v9Dna5qg==
+Date: Mon, 31 Mar 2025 20:01:34 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexandre ARNOUD <aarnoud@me.com>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
-	Sven Rademakers <sven.rademakers@gmail.com>,
-	Joshua Riek <jjriek@verizon.net>,
-	Sam Edwards <CFSworks@gmail.com>,
-	stable@kernel.org,
-	Dragan Simic <dsimic@manjaro.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Allow Turing RK1 cooling fan to spin down
-Date: Sat, 29 Mar 2025 09:50:17 -0700
-Message-ID: <20250329165017.3885-1-CFSworks@gmail.com>
-X-Mailer: git-send-email 2.48.1
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, Aishwarya.TCV@arm.com
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Enable HDMI1 on rock-5b
+Message-ID: <6d168284-01c7-4da4-8fc9-1b12e38b554f@sirena.org.uk>
+References: <20241211-rk3588-hdmi1-v2-0-02cdca22ff68@collabora.com>
+ <20241211-rk3588-hdmi1-v2-4-02cdca22ff68@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <20241211-rk3588-hdmi1-v2-4-02cdca22ff68@collabora.com>
+X-Cookie: You will have a long and boring life.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250329_095059_118900_EB65A5E0 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20250331_120143_136629_9FFD8EDD 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,58 +80,195 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3786671207815836152=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 thermal sensor driver only receives interrupts when a
-higher-temperature threshold is crossed; it cannot notify when the
-sensor cools back off. As a result, the driver must poll for temperature
-changes to detect when the conditions for a thermal trip are no longer
-met. However, it only does so if the DT enables polling.
 
-Before this patch, the RK1 DT did not enable polling, causing the fan to
-continue running at the speed corresponding to the highest temperature
-reached.
+--===============3786671207815836152==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="+3CwgnGsvSSr2pL1"
+Content-Disposition: inline
 
-Follow suit with similar RK3588 boards by setting a polling-delay of
-1000ms, enabling the driver to detect when the sensor cools back off,
-allowing the fan speed to decrease as appropriate.
 
-Fixes: 7c8ec5e6b9d6 ("arm64: dts: rockchip: Enable automatic fan control on Turing RK1")
-Cc: <stable@kernel.org> # v6.13+
-Signed-off-by: Sam Edwards <CFSworks@gmail.com>
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
----
+--+3CwgnGsvSSr2pL1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes v1->v2:
-- Added `Cc: stable` per Dragan's suggestion
-- Applied Dragan's Reviewed-by tag
-- No changes to patch content or main body of commit message
+On Wed, Dec 11, 2024 at 01:06:17AM +0200, Cristian Ciocaltea wrote:
+> Add the necessary DT changes to enable the second HDMI output port on
+> Radxa ROCK 5B.
+>=20
+> While at it, switch the position of &vop_mmu and @vop to maintain the
+> alphabetical order.
 
----
- arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+We're seeing failures in the Arm lab the IGT tests on this board in
+Linus' tree which bisect to 77cea7ca1368 which is this patch.
+core_getversion fails:
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 6bc46734cc14..0270bffce195 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -214,6 +214,8 @@ rgmii_phy: ethernet-phy@1 {
- };
- 
- &package_thermal {
-+	polling-delay = <1000>;
-+
- 	trips {
- 		package_active1: trip-active1 {
- 			temperature = <45000>;
--- 
-2.45.3
+<14>[   21.933549] [IGT] core_getversion: executing
+IGT-Version: 2.0-g8b20280 (aarch64) (Linux: 6.14.0 aarch64)
+Using IGT_SRANDOM=3D1741272980 for randomisation
+(core_getversion:284) CRITICAL: Test assertion failure function __igt_uniqu=
+e____real_main84, file ../tests/core_getversion.c:91:
+(core_getversion:284) CRITICAL: Failed assertion: fd >=3D 0
+(core_getversion:284) CRITICAL: Last errno: 2, No such file or directory
+(core_getversion:284) CRITICAL: file descriptor fd failed
+Stack trace:
+  #0 ../lib/igt_core.c:2055 __igt_fail_assert()
+  #1 [<unknown>+0xe31a129c]
+  #2 [<unknown>+0xe31a0dac]
+  #3 [__libc_init_first+0x80]
+  #4 [__libc_start_main+0x98]
+  #5 [<unknown>+0xe31a0df0]
+Test core_getversion failed.
+**** DEBUG ****
+(core_getversion:284) igt_core-INFO: IGT-Version: 2.0-g8b20280 (aarch64) (L=
+inux: 6.14.0 aarch64)
+(core_getversion:284) igt_core-INFO: Using IGT_SRANDOM=3D1741272980 for ran=
+domisation
+(core_getversion:284) drmtest-DEBUG: Force option used: Using driver rockch=
+ip
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
 
+(core_getversion:284) drmtest-DEBUG: Condition stat(path, &new) !=3D 0 occu=
+rred in function _is_already_opened, file ../lib/drmtest.c:407
+(core_getversion:284) CRITICAL: Test assertion failure function __igt_uniqu=
+e____real_main84, file ../tests/core_getversion.c:91:
+(core_getversion:284) CRITICAL: Failed assertion: fd >=3D 0
+
+(core_getversion:284) CRITICAL: Last errno: 2, No such file or directory
+(core_getversion:284) CRITICAL: file descriptor fd failed
+(core_getversion:284) igt_core-INFO: Stack trace:
+(core_getversion:284) igt_core-INFO:   #0 ../lib/igt_core.c:2055 __igt_fail=
+_assert()
+(core_getversion:284) igt_core-INFO:   #1 [<unknown>+0xe31a129c]
+(core_getversion:284) igt_core-INFO:   #2 [<unknown>+0xe31a0dac]
+(core_getversion:284) igt_core-INFO:   #3 [__libc_init_first+0x80]
+(core_getversion:284) igt_core-INFO:   #4 [__libc_start_main+0x98]
+(core_getversion:284) igt_core-INFO:   #5 [<unknown>+0xe31a0df0]
+****  END  ****
+[1mSubtest basic: FAIL (0.000s)[0m
+
+and all the other tests refuse to run.  Previously the test passed:
+
+<14>[   22.491231] [IGT] core_getversion: executing
+IGT-Version: 2.0-g8b20280 (aarch64) (Linux: 6.14.0 aarch64)
+<14>[   22.492030] [IGT] core_getversion: starting subtest basic
+Using IGT_SRANDOM=3D1741272980 for randomisation
+Opened device: /<14>[   22.492835] [IGT] core_getversion: finished subtest =
+basic, SUCCESS
+dev/dri/card0
+Starting subtest: basic
+0: rockchip v1.0 0 RockC<14>[   22.494233] [IGT] core_getversion: exiting, =
+ret=3D0
+hip Soc DRM
+[1mSubtest basic: SUCCESS (0.000s)[0m
+
+The board is running fine in -next so hopefully there's a fix already
+there which will make it's way to Linus' tree during the merge window.
+We're also seeing something broken with the HDMI audio devices, but I
+didn't look into that.
+
+Bisection log:
+
+git bisect start
+# status: waiting for both good and bad commits
+# good: [1a9239bb4253f9076b5b4b2a1a4e8d7defd77a95] Merge tag 'net-next-6.15=
+' of git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next
+git bisect good 1a9239bb4253f9076b5b4b2a1a4e8d7defd77a95
+# status: waiting for bad commit, 1 good commit known
+# bad: [01d5b167dc230cf3b6eb9dd7205f6a705026d1ce] Merge tag 'modules-6.15-r=
+c1' of git://git.kernel.org/pub/scm/linux/kernel/git/modules/linux
+git bisect bad 01d5b167dc230cf3b6eb9dd7205f6a705026d1ce
+# good: [cf05922d63e2ae6a9b1b52ff5236a44c3b29f78c] Merge tag 'drm-intel-gt-=
+next-2025-03-12' of https://gitlab.freedesktop.org/drm/i915/kernel into drm=
+-next
+git bisect good cf05922d63e2ae6a9b1b52ff5236a44c3b29f78c
+# bad: [72885116069abdd05c245707c3989fc605632970] Merge tag 'landlock-6.15-=
+rc1' of git://git.kernel.org/pub/scm/linux/kernel/git/mic/linux
+git bisect bad 72885116069abdd05c245707c3989fc605632970
+# bad: [b2e7b0ffa56185d04871c6fe317b36d30ce2861d] Merge tag 'erofs-for-6.15=
+-rc1' of git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs
+git bisect bad b2e7b0ffa56185d04871c6fe317b36d30ce2861d
+# bad: [c9869f9073bacfa9b6030fd7670f737793277a85] Merge tag 'imx-dt64-6.15'=
+ of https://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux into soc=
+/dt
+git bisect bad c9869f9073bacfa9b6030fd7670f737793277a85
+# bad: [d1221aeb5a44f1bbfe16a6efd8bc8b0bc3f565a6] Merge tag 'v6.15-rockchip=
+-dts64-1' of https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-ro=
+ckchip into soc/dt
+git bisect bad d1221aeb5a44f1bbfe16a6efd8bc8b0bc3f565a6
+# good: [c4991aabc1f90359970c17db38342adf2678a181] Merge tag 'mtk-dts64-for=
+-v6.15' of https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux i=
+nto soc/dt
+git bisect good c4991aabc1f90359970c17db38342adf2678a181
+# bad: [b2e668a60ed866ba960acb5310d1fb6bf81d154f] arm64: dts: rockchip: Add=
+ HDMI1 PHY PLL clock source to VOP2 on RK3588
+git bisect bad b2e668a60ed866ba960acb5310d1fb6bf81d154f
+# bad: [91abdc6b36e12a2c3a477bde90e9f1dd8c2413bf] arm64: dts: rockchip: add=
+ overlay test for Edgeble NCM6A/NCM6B
+git bisect bad 91abdc6b36e12a2c3a477bde90e9f1dd8c2413bf
+# good: [f62f325a586682b7fff643c9fd8edc348bff6abc] dt-bindings: vendor-pref=
+ixes: Add prefix for Ariaboard
+git bisect good f62f325a586682b7fff643c9fd8edc348bff6abc
+# good: [bed6964e779b5853de042da14320edf9f79506fe] arm64: dts: rockchip: Ad=
+d HDMI1 node on RK3588
+git bisect good bed6964e779b5853de042da14320edf9f79506fe
+# bad: [b3dc2a9315c4046b330a784c0527c671fd236414] arm64: dts: rockchip: rem=
+ove rk3588 optee node
+git bisect bad b3dc2a9315c4046b330a784c0527c671fd236414
+# bad: [4a2fdf91e1239d9659d0317f3e8e37681ac555a4] arm64: dts: rockchip: Ena=
+ble HDMI1 out for Edgeble-6TOPS Modules
+git bisect bad 4a2fdf91e1239d9659d0317f3e8e37681ac555a4
+# bad: [77cea7ca13680e14119a3b9635c7ef16cd7ee44e] arm64: dts: rockchip: Ena=
+ble HDMI1 on rock-5b
+git bisect bad 77cea7ca13680e14119a3b9635c7ef16cd7ee44e
+# first bad commit: [77cea7ca13680e14119a3b9635c7ef16cd7ee44e] arm64: dts: =
+rockchip: Enable HDMI1 on rock-5b
+
+--+3CwgnGsvSSr2pL1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmfq5o4ACgkQJNaLcl1U
+h9DZsAf+ODL7cizdRuXEfFw2qwrf5hrYVGHEHbKxng/eNUh4pn9+XNX+5i0H+teX
+ydwp0gUmxzuiklLEplQ8FLLVb/jPpR4tr9vzM+6tcioezoLo9RhqiUJu/on03i2Q
+tzr2RR46BPej44hNho5kJBY4pwmD8D6KS/WuTlKnaDxl/J2dLHDyWzxI2BN0+5Mo
+br7T0PvDuSCAyYxuDeXfIs4dETkIeB1qdnzZHPBTf4rXKJPZ+RSEju/ucPdizBoq
+yhOkj3pLgvtW92ZnUz0Vyk4J5GFEFtk0yq0Wt/n/L5ga6hzRTaIYlGBC0yHYUUC9
+uW1p7ztFpuxYll+Olgv8PSnKNRktJA==
+=ry+H
+-----END PGP SIGNATURE-----
+
+--+3CwgnGsvSSr2pL1--
+
+
+--===============3786671207815836152==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3786671207815836152==--
+
