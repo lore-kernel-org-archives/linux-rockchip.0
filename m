@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50242C36010
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Apr 2025 12:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B328EC36017
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Apr 2025 17:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9P4rdAmpWRubSP9hH8Bc3hu0321M1mQzZQmRsawsflM=; b=jToItV50pDKZF0
-	HLzoitvF9EwaHmGvgNgXTjFPxq/ifrLfe/OC7wbZ6aHVyPNutPr8HZ6Lq6C/jrGqDzP56WNDJWdQL
-	91pGkRkr8MktcgMWWNg0DrZBt59/b/zt/EwD0mWcEh0U/ycY50LlRRkAF9t9afpBG8AcshFAsv4KF
-	Y3exiluSVo9p4Zp3PAxbyGUj7X65BraCOFpq1Pu9jy3/EXv7RNXeleY/X8/HvBl0HE5XOtr1hOEtl
-	y4qgu531GPjcos744N943BQSaQO3E+nO5u0eAvJegLwZNaDCxiUi/7NxzdQwmKz4RfNLdphWYU9UX
-	hewSnp4PxGoVKsXoijcg==;
+	List-Owner; bh=igABtAV1nOITn5lsxOgt/z3LK2GoYs3Hl7pBTnZzRjI=; b=GuHnHx2zIH7Zqs
+	o+GM4eEUE6SgWBgKPwqKtnbiW3YzXjUhvP4P+PXJSVMJ42Ib1Pa1jZelQl2yelaMJzu+ezFrSBFbl
+	BdL/doI61f5/9aresp0V4KrIJc+ChBoHItwcR/3xVEWqQYt35NyUuGR3gfTL6SG+rTKYbx0JHlZlZ
+	3qLIJPdv1LlRA7htzr7EPEFMOyLO68FkdfCEZgCf5H9KapjstNkIapsQB9BZm8TcFFGnqIFNKoagV
+	FZN6VH0zW9ZXMrMMXrvxmTT19gnhBcbLcNaHG134BjdeW4s31n5DvtF5laaYP/DOcxVJ4RBlx0nbl
+	r37NsMyBZolwsjsC3/lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzaOx-00000002vqq-2GHE;
-	Tue, 01 Apr 2025 12:07:31 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1tzfZ4-000000041vo-3nys;
+	Tue, 01 Apr 2025 17:38:18 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzaIA-00000002sS2-4AAm;
-	Tue, 01 Apr 2025 12:00:32 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:430:ae31:3177:4f09:da96])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1053fa3f3;
-	Tue, 1 Apr 2025 20:00:28 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Yao Zi <ziyao@disroot.org>,
-	Rob Herring <robh@kernel.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Jonas Karlman <jonas@kwiboo.se>,
+	id 1tzfXH-000000041mI-1mzw;
+	Tue, 01 Apr 2025 17:36:29 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id D079F25C5F;
+	Tue,  1 Apr 2025 19:36:18 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 85kTxoqsDQpS; Tue,  1 Apr 2025 19:36:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1743528978; bh=fzp725Jl1448wIARjxbrq/kaOVZ0/ZOHyXPogF42rQI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QpY78WWREkPzmaMORR2X6BiBkCKQuye4HPfTvVRwUrtJhRs4tqPWlwgxKFrCn9U7o
+	 lPWhnePhuVl6Xqqgat624FuEjs5yDqvygTGz7/Sw2Ayw+0Pp6D8iP3yhJkjYzmvCOW
+	 zX6pw2x0m+QSkF03FIySiLfSvjLHdLOhlUETjbeDzZ481j0ou4R1XR07S5DRvPic5U
+	 Kz2EeHVkmpLz5V8Cjsig5wO2vP4WXz/+6b1EDMy1/AAdkaL/yOxxu8rIy0PvXA2UCX
+	 cmdYhClZfafwGoSw+v8hO9Dh4ReYSu0wSGPm2RGebnr6UJehd5dA5pXsc4Zd09J0Am
+	 V93pf7RabQ7LA==
+Date: Tue, 1 Apr 2025 17:35:57 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Rob Herring <robh@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: Enable regulators for Radxa E20C
-Date: Tue,  1 Apr 2025 20:00:20 +0800
-Message-Id: <20250401120020.976343-3-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250401120020.976343-1-amadeus@jmu.edu.cn>
-References: <20250401120020.976343-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add DMA controller for
+ RK3528
+Message-ID: <Z-wj_eO6FGcwsEh6@pie.lan>
+References: <20250401100020.944658-1-amadeus@jmu.edu.cn>
+ <20250401100020.944658-3-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDS01KVkpMShpNS0xKHUNOSFYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQU9IS0EaHkhKQUhKTExBTx1LQkEfGkJNWVdZFhoPEh
-	UdFFlBWU9LSFVKS0lPT09LVUpLS1VLWQY+
-X-HM-Tid: 0a95f1396fa003a2kunm1053fa3f3
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MlE6Ohw4QzJNCwoITD0*MBQy
-	A08wCiNVSlVKTE9ITktDQ0lDQ0lDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS0tBT0hLQRoeSEpBSEpMTEFPHUtCQR8aQk1ZV1kIAVlBSExKTDcG
+Content-Disposition: inline
+In-Reply-To: <20250401100020.944658-3-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_050031_332979_12B6409F 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250401_103627_873893_B733BAFC 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,122 +79,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable pwm and fixed regulators for Radxa E20C. The pwm regulator is
-used to power the CPU and GPU. Note that the LPDDR4 voltage is 1.1V.
+On Tue, Apr 01, 2025 at 06:00:19PM +0800, Chukun Pan wrote:
+> Add DMA controller dt node for RK3528 SoC.
+> 
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> index 7f1ffd6003f5..c366766ee3f5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> @@ -493,6 +493,24 @@ sdhci: mmc@ffbf0000 {
+>  			status = "disabled";
+>  		};
+>  
+> +		dmac: dma-controller@ffd60000 {
+> +			compatible = "arm,pl330", "arm,primecell";
+> +			reg = <0x0 0xffd60000 0x0 0x4000>;
+> +			clocks = <&cru ACLK_DMAC>;
+> +			clock-names = "apb_pclk";
+> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+> +			arm,pl330-periph-burst;
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 73 +++++++++++++++++++
- 1 file changed, 73 insertions(+)
+Should this be moved above "clocks" line to sort the properties?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-index 57a446b5cbd6..14770bd63ae7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-@@ -9,6 +9,7 @@
- 
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pwm/pwm.h>
- #include "rk3528.dtsi"
- 
- / {
-@@ -80,6 +81,26 @@ led-wan {
- 		};
- 	};
- 
-+	vdd_0v9: regulator-0v9-vdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_ddr: regulator-1v1-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1100000>;
-+		regulator-max-microvolt = <1100000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc_1v8: regulator-1v8-vcc {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_1v8";
-@@ -108,6 +129,46 @@ vcc5v0_sys: regulator-5v0-vcc-sys {
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 	};
-+
-+	vdd_arm: regulator-vdd-arm {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_arm";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <746000>;
-+		regulator-max-microvolt = <1201000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+
-+	vdd_logic: regulator-vdd-logic {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm2 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_logic";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <705000>;
-+		regulator-max-microvolt = <1006000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
- };
- 
- &pinctrl {
-@@ -132,6 +193,18 @@ wan_led_g: wan-led-g {
- 	};
- };
- 
-+&pwm1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm1m0_pins>;
-+	status = "okay";
-+};
-+
-+&pwm2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm2m0_pins>;
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcc_1v8>;
- 	status = "okay";
--- 
-2.25.1
+Thanks,
+Yao Zi
 
+> +			#dma-cells = <1>;
+> +		};
+> +
+>  		pinctrl: pinctrl {
+>  			compatible = "rockchip,rk3528-pinctrl";
+>  			rockchip,grf = <&ioc_grf>;
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
