@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A842CC3601B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 11:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D268C28B20
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 12:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=P3o8BQoKckTje6PfRWY9exg87i3uSjtriL4jh+LqsRU=; b=R1K
-	8L3RKZ9+82QUdLN1kv436bYfG/qTHpKyoGpU+FZ03IwbxEOw25XW86L4Qt6/AB9dxGFVVkOCe7W8s
-	Gy+bCMCo/pWVrp5KUEXhw/aPYLjZUxkMCF/dFN20jD2PwpwMsGwPi7QlbV4uoUVhIIL8iwpsvS7C+
-	yhmisFkF+ydeuYDn2wgxnZTMGyoDyznkp8UUrN1ZM42/SbvoAG7y4AyaHsesMPG/M48o/BXoth209
-	5zgZvufgIY8C3rg9aqnk/K137S8GGz/DOGaGyrCw/wIDtN/U1uhIhXFuyUPcllJsYeUWvtZKyOpGh
-	hUVAD1KuAMBAL+MeCdnHMXUfcQ+9kzA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=n/X4cK4sLQWt6R2BNmrDnQdSV5ycCvCleWL0DeJ6Thk=; b=4x64CqWJFrsDHx
+	zjL9Qom62wAcQ1oN9XUDHk/GweadPEKyWL5xa1C5nhaGrGC5eVcfnYsq7X2MbUKWCoXn0m+M+2W56
+	ZWobW5aGScPLJ3w+MifTYd6lncwKTiPAqTP7ETW6lK19Q4xu971ppuatoycA6/0g/ZGAlnMfnrvCS
+	sTJh11Lnil5PQe6vpv3xCCTwIUpAnykcZleF3gAa+kbK/ZrhVNG76yVoNX5BdXmWqVjWHULf9xcBS
+	tgIMPD8Av/yRHKIKEd4lMhN/kgfqbAAXaOJfLebyxrUt6+sgv9gjp9Wo2mpHfJx29zKxSJGNluYVO
+	t9d180wBgbaRCfpr5HNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzwdU-00000005yVo-3BUd;
-	Wed, 02 Apr 2025 11:52:00 +0000
-Received: from mxhk.zte.com.cn ([63.216.63.35])
-	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzwT1-00000005wQv-2FoI;
-	Wed, 02 Apr 2025 11:41:12 +0000
-Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4ZSNH75fKSz5B1J6;
-	Wed,  2 Apr 2025 19:41:07 +0800 (CST)
-Received: from xaxapp04.zte.com.cn ([10.99.98.157])
-	by mse-fl1.zte.com.cn with SMTP id 532Beuck066915;
-	Wed, 2 Apr 2025 19:40:57 +0800 (+08)
-	(envelope-from shao.mingyin@zte.com.cn)
-Received: from mapi (xaxapp01[null])
-	by mapi (Zmail) with MAPI id mid32;
-	Wed, 2 Apr 2025 19:41:00 +0800 (CST)
-Date: Wed, 2 Apr 2025 19:41:00 +0800 (CST)
-X-Zmail-TransId: 2af967ed224c2c8-28bb5
-X-Mailer: Zmail v1.0
-Message-ID: <20250402194100610qY6KQ4JPISk-4v214Qs36@zte.com.cn>
-Mime-Version: 1.0
-From: <shao.mingyin@zte.com.cn>
-To: <vkoul@kernel.org>, <robert.marko@sartura.hr>
-Cc: <kishon@kernel.org>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-        <samuel@sholland.org>, <zhang.enpei@zte.com.cn>,
-        <linux-phy@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-sunxi@lists.linux.dev>,
-        <linux-kernel@vger.kernel.org>, <luka.perkov@sartura.hr>,
-        <vkoul@kernel.org>, <linux-arm-msm@vger.kernel.org>, <heiko@sntech.de>,
-        <linux-rockchip@lists.infradead.org>, <yang.yang29@zte.com.cn>,
-        <xu.xin16@zte.com.cn>, <ye.xingchen@zte.com.cn>
-Subject: =?UTF-8?B?W1BBVENIIGxpbnV4LW5leHQgMC81XSBVc2UgZGV2X2Vycl9wcm9iZSgpIGluIHBoeQ==?=
-X-MAIL: mse-fl1.zte.com.cn 532Beuck066915
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 67ED2253.002/4ZSNH75fKSz5B1J6
+	id 1tzxJf-000000065wx-31tk;
+	Wed, 02 Apr 2025 12:35:35 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tzxGY-000000065Jn-2VCf;
+	Wed, 02 Apr 2025 12:32:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=jvJrC
+	JlXKu0zyBhFzDwypCRXXkJB5PHy1URiAxDBM28=; b=jz30fZ3v9aBAfxkd5mqMl
+	jkHWm5hKKsL+mYZErNFNeJjOJ6oSukaEG2MpzVhhWIKpfAKDC/Cudfjd1bAKvxZn
+	PdfRkYOd93NPhfUyzRIWUKyJYHb+IemVxCndB7vnGWlTII2TNkZX0HsStTg/3MA9
+	TB+PKwuMm3mk2Uc1xOPz+w=
+Received: from ProDesk.. (unknown [])
+	by gzsmtp4 (Coremail) with SMTP id PygvCgDnd405Lu1nJwOJBA--.36321S4;
+	Wed, 02 Apr 2025 20:31:59 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	hjc@rock-chips.com,
+	mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	dmitry.baryshkov@oss.qualcomm.com,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v3 2/7] dt-bindings: display: rockchip,inno-hdmi: Document GRF for RK3036 HDMI
+Date: Wed,  2 Apr 2025 20:31:36 +0800
+Message-ID: <20250402123150.238234-3-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250402123150.238234-1-andyshrk@163.com>
+References: <20250402123150.238234-1-andyshrk@163.com>
+MIME-Version: 1.0
+X-CM-TRANSID: PygvCgDnd405Lu1nJwOJBA--.36321S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZryxWw47XF1UAFyxtFyrZwb_yoW8Gw15pa
+	sxC3srWFyxGFy7X34ktr1kCrWYgF97Aa15GFW2qr17tr12gan5Ka1agwn8ZF4UAFs7ZFyS
+	9ay7GFy5Aw1Ivr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jrjjgUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkA0jXmftKOaFiAABso
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_044111_730050_7BF94776 
-X-CRM114-Status: UNSURE (   5.60  )
+X-CRM114-CacheID: sfid-20250402_053222_942124_DB809341 
+X-CRM114-Status: UNSURE (   8.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,32 +84,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Zhang Enpei <zhang.enpei@zte.com.cn>
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Use dev_err_probe() to simplify the following code
-sequence:
-  if (err != -EPROBE_DEFER)
-      dev_err(dev, ...);
-  else
-      dev_dbg(dev, ...);
-  return err;
+HDMI on RK3036 use GRF control the HSYNC/VSYNC polarity, but this part
+is missing when it first landing upstream.
 
-Zhang Enpei (5):
-  phy: allwinner: phy-sun50i-usb3: Use dev_err_probe()
-  phy: broadcom: phy-bcm63xx-usbh: Use dev_err_probe()
-  phy: qualcomm: phy-qcom-ipq4019-usb: Use dev_err_probe()
-  phy: lantiq: phy-lantiq-rcu-usb2: Use dev_err_probe()
-  phy: rockchip: phy-rockchip-typec: Use dev_err_probe()
+Document that it is mandatory for RK3036 HDMI.
 
- drivers/phy/allwinner/phy-sun50i-usb3.c     | 8 +++-----
- drivers/phy/broadcom/phy-bcm63xx-usbh.c     | 8 +++-----
- drivers/phy/lantiq/phy-lantiq-rcu-usb2.c    | 8 +++-----
- drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c | 8 +++-----
- drivers/phy/rockchip/phy-rockchip-typec.c   | 8 +++-----
- 5 files changed, 15 insertions(+), 25 deletions(-)
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
+---
+
+(no changes since v2)
+
+Changes in v2:
+- First included in v2
+
+ .../bindings/display/rockchip/rockchip,inno-hdmi.yaml    | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+index 9d1e7f894ea54..290376bec079a 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+@@ -56,6 +56,12 @@ properties:
+       - port@0
+       - port@1
+ 
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to GRF used for control the polarity of hsync/vsync of rk3036
++      HDMI.
++
+ required:
+   - compatible
+   - reg
+@@ -75,6 +81,8 @@ allOf:
+             const: rockchip,rk3036-inno-hdmi
+ 
+     then:
++      required:
++        - rockchip,grf
+       properties:
+         power-domains: false
+ 
+@@ -103,6 +111,7 @@ examples:
+       clock-names = "pclk", "ref";
+       pinctrl-names = "default";
+       pinctrl-0 = <&hdmi_ctl>;
++      rockchip,grf = <&grf>;
+       #sound-dai-cells = <0>;
+ 
+       ports {
 -- 
-2.25.1
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
