@@ -4,90 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23905C3601A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 17:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84EA0C36018
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 19:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3wgryeZ+iyz62ddbRKMGtv4KQ6lyoWW1xOO+TxYhpqM=; b=dyRvJYhAoCw/bH
-	QroR4FiD7fH7j8D/tkB2Lgr9MQFX6WUQQvd3+sSl4TS+2jFSGLHCJ6NYgjA1vKj0zmcTk5wD4mFoz
-	5c8CnWVFOuxsZlWHJli8lCoWFYFJH1ZVxHY2MEi7v1+ryIOP/oTCtBQLGgB1NIEgRXc3teO7vyvSB
-	6WAq2Ag8YxEQutyx2Lw4xfnyyc4UGMTKWiP+wLvitb5HWTFjjM3xTq1GPPVbRbWZ33A6Y1M6Z/D2E
-	EDcH72a719xbqtyedMPRallEjmBl2xIsPi4w+U5uVz36UcMVhXUb/2qRPPj0rF0vRs3sc8TWi6Akc
-	gSYLXD7UbCmPbq3dltaA==;
+	List-Owner; bh=SEnluuRwj5+hLuS5RZ82pit6nlsphjxPx3XFx++IGS0=; b=D6KCDvXQnYKVP/
+	uqexz47vE5f8noqs2YP95ysHOJWB6iRt1usqqCEsQdHgkQebwtlRnBWuK4qbaT01UjfZ32LwZcr3+
+	eR9ACBdKj9V3wc4ekEEOK2WZMIpUETXgAiOTaF8vXzM9aSTaL53ffk+lj+DTWD7lnhcqPnN+eKEh9
+	sJgLTk5iiSKLlYYBciAzMh9vfc4WjpH8sF2LIeSOaOOlZEIvbdSLs/rEKtSYEcGVodQAXtW8WS5+e
+	giZSvfLY5CJY7BhBmMYOCZ+mY3tBP96xYZA7I3PhbLJe/HD487+V5SuO7uo3TshRBApchOhbKAITi
+	3VLJLghTiVYexw38HhUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u01r1-00000006kuj-070b;
-	Wed, 02 Apr 2025 17:26:19 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1u03OA-000000070KY-28Db;
+	Wed, 02 Apr 2025 19:04:38 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u01pE-00000006kZr-1ItS;
-	Wed, 02 Apr 2025 17:24:30 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6ecfbf8fa76so293846d6.0;
-        Wed, 02 Apr 2025 10:24:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743614667; x=1744219467; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=2YmZh6k4S4A2gKPdCb+Hixcu2ZSXle/HXIt3s9AusCA=;
-        b=SzXlIz0epKWeRxuKl0qoD98/PWJ17GGgyG9hsr2+qHoMjylcQI3M7CRrVAEpX31nb7
-         cFxTW+/ncMq+YGf8vPMMNOFjEcy0gvjIZzyf1P59RZwAFvDFT+Cf9+onpGmSjGvkfeU7
-         S5aFxM6PiS7ehW5KbOGKekT3FqJ5kY4bzeJMhgsgzhlDGarjlfVajGhfXlsPNaPdb1eQ
-         Ojo3K+tQUJ+cqYdLnv6MqW9xLS8Rt2rAe5rgIagpU7v1rWiAt9V+X101R9wqyBIiH9+3
-         aDRnlzouy+qnhSBoaOXVFUnW11NqQpzvtbZWUKdzkGP58S1wHvEx3FnQH0eOWbfZzv8E
-         xuqg==
+	id 1u03O8-000000070K1-1uTQ
+	for linux-rockchip@lists.infradead.org;
+	Wed, 02 Apr 2025 19:04:37 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 532DR79J024628
+	for <linux-rockchip@lists.infradead.org>; Wed, 2 Apr 2025 19:04:36 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	gWBJkjjCygBm9fx50is0sIfTFnXUE+TQIDtlji3JDMM=; b=VWKsLfo4MC6PKo8q
+	pz1Aw06MkdrWfhQSvrFnoRtooOhdVHe5D0uKDLMDDvcPd/Q934YVewQ4TO6YoIe4
+	Vv0Sd841lWIQo8ayg7kDvADRq4bOWCKeXabuQYFDxEMQcmvjiSq2BajVlDIwjEAO
+	p/0Fe4efK4RMD5fLAbOSAQXimMyBszuIeFNIj+qWaLMI7OzNTF88ZY11l7Zp7vZw
+	EaETPZ/ymAcwMHGmjeDggea3FpN4l3wHgEeC1zFawFIl2t6iG4uyfGJB3Lmfum96
+	kS91FpuBu0DVEAGfCzsMj84d4CGleOzIWYwHtI7/wdV7aFQd2Y8WQ5v5XDf3iOGZ
+	WJ5jiA==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45rbpywhk7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 02 Apr 2025 19:04:35 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7c54e7922a1so16680485a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 02 Apr 2025 12:04:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743614667; x=1744219467;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2YmZh6k4S4A2gKPdCb+Hixcu2ZSXle/HXIt3s9AusCA=;
-        b=okN5SAdTT7xEvuA521lpNfyPQcscgSsazgvBQbTxAqeX4L3qExE0qNDRVj7bTdqP3R
-         SnLLgUyrUhOPWi3mIVvFc3LoSPn90X8zbA/5GVFdYq12zRTvLAt1bc2ojxck20NTceqQ
-         GwQ47hiCU39oWiBxhXN8Btbifmxi4NrIGf2Hk+1XIpiiOU5LjdglxwX/QzDOfXJVVUuQ
-         5/+UgvSbhXhII/J1lJvuJLzNmk9n/Z2KfNyMvXc7QbwZY9FqLAomR0x+QYJFKt3Fp1PI
-         3nIZGdcOY6ZT2w1DV64e5auyqdsa4660Qp9EJ6DVWE0ZMhHg+WrFfyYYouT5xbt2nBH9
-         Zx7w==
-X-Forwarded-Encrypted: i=1; AJvYcCX+1sTTVYxS/uMRE3HI/uGQSP0yycPb0UiVFJpC6dqlGkn2vNsxQ4hWRXl8EIZ3M4KKUM6xwo4KbpyX2bbZL6i6@lists.infradead.org, AJvYcCX8ubzfDKt5rAMt7Ik1q2yQBpMZzsgbhEdQknPPXVSuRqg74FvoouYZYqIKuODuiOVnBFVBy67HPdUNGIEg/Q0=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3rMtSUMrN2SiAz6Ncfzyq1a9PFAAT1lKShMCcLW9uTv0xTnpC
-	1yJHv+kbf/eqt/zufgDHAHiMoZ1kcYYcZfG7co75wMq4+x5/QUE=
-X-Gm-Gg: ASbGncsqk6x+dw1pikKenu0k+cfngaJF/+j8V35RCDNvVYqGC9D3jVH6tafEm99SmU3
-	A4960NexOsoZHIDXAlbEoN4kWTGJziv/pzIxuWYpdHS6nY6GDgkNXUjksl39av9s5WL7sK5LXmr
-	TAzIAJU9UJxqtewpYH+xFRKREq8kl/weJCTOiLC0qJ0s+L986HhkoZ0a/mgtchTfGORY/5rZS+d
-	ekYtDan74W6TSCLzEY/ZKFfUfYM8pMTZgskN8c/9ct3F8kuCdzOGdXmDQVoF35zwfSqP3Y76pZ6
-	IV5pcUf93/nL4m6I/CGIXTv/qZrxsyhv602pSQ9BXVZWMLeGQNIYvA2JxrO6k9ziuiy+WEY+Dwx
-	An0ot1I9DpXPh
-X-Google-Smtp-Source: AGHT+IFMVDYLTn3P+AqF4w5EM6NFHR4DM/rUbBAs9Vcoe+DJhPsyf1ed5wxi6pxvZTB9jpF+/uNqvQ==
-X-Received: by 2002:a05:6214:258f:b0:6e8:f770:5045 with SMTP id 6a1803df08f44-6eed6271744mr284133846d6.28.1743614666448;
-        Wed, 02 Apr 2025 10:24:26 -0700 (PDT)
-Received: from ?IPV6:2a02:810b:f13:8500:edfc:c609:ae5:4b2c? ([2a02:810b:f13:8500:edfc:c609:ae5:4b2c])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6eec9643d6asm77042556d6.28.2025.04.02.10.24.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Apr 2025 10:24:26 -0700 (PDT)
-Message-ID: <680a40a8-07c1-4dde-93b2-337ab15f7afe@gmail.com>
-Date: Wed, 2 Apr 2025 19:24:22 +0200
+        d=1e100.net; s=20230601; t=1743620674; x=1744225474;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gWBJkjjCygBm9fx50is0sIfTFnXUE+TQIDtlji3JDMM=;
+        b=SyZ3g5PFSETD9K8RN4cNtVN5ySQNozsrzSD6dVURyAdcKlKk9NJHPT+9d6s3652Evg
+         FfLulJf0/1V4RS6HNIpTJUj6zwbx/Q5Bsjv05+SyjPLnSt//d3nYxkY0kUZodkgMS752
+         DV6HGOS19mjykKni1Q7QQJqUD6npb+Vf7oneUNdwO34NiqPwlPo1UxHovwHHxCQJUF5X
+         rBeQ8GM02d8Q4gDCd3tTabGOfU7MPlEm3zt1wW6ftRRHYiMOdm4yU7x+7fsQA+yGcnL/
+         OGxE6PxXZyAHu63IDBc449jc1MopYHetu/fMR+tjUBqSxb9YxCbZcuUwa9y3Se5WQY/S
+         N/mw==
+X-Forwarded-Encrypted: i=1; AJvYcCVbx2h7Yb9M1Rr5ToO24ObsB2jbnyHUHyhPeYk1ao62/tqshLAAlvpfZMTPsa8s106yRlrhdvTKEASzMYao9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw1uxlckcklRXwWraYVwoHwdg4I8G01D2m7qRxo4jd+ptg2p2QZ
+	dHfDAZ5VW5WtVtjpvnPxy2iv62UajqGiiNS54QqgXt4pt8Wicby7oBl9TIRXuPaT2QnfP03XdOz
+	lQUiBFPV98CYvlSgwJyi0NQYw3cj5w6jwqmu52XWvF5Vf/XIyaM9rsimXnLw22Y+i+moKV+w=
+X-Gm-Gg: ASbGncvRcXosZoUhUXFRbKTvJASDyOh6qNhgKJjar0U1F/h9WXBVgYRK2SmK7wIyH1j
+	LbNqAI8Ere2LKDx2ZiRaT54lwXMg15YWZuq940AtOVP1uO4FtNe4gGPUENKT3Gy335xYHn48tQ9
+	UO/VVnjOJXsquCrYfwfkQfSi33rB4MhuJ7Uf3ndQ0m1QWNe8wr9H9AJV1He41vypvhYS1pR+pWQ
+	8+WGVelVfE4qxmrCytjmhuro3bJYJ6nS45PvTA/tZEvgqz9ocNtoO6oUs5/xeFN37OOHS1egesa
+	6pLRM1SvBaFaQQf1NqDvX75hhMIs1oqKcv9PpqD1knh3iccRFn19ky63WyPftJOOSp0Z8B3Ai3c
+	kxW4=
+X-Received: by 2002:a05:620a:2a0b:b0:7c5:a2f8:e6e4 with SMTP id af79cd13be357-7c69072add2mr2438611085a.29.1743620674521;
+        Wed, 02 Apr 2025 12:04:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBur0fWjo7yOQcPuAucUs2xiLxZrEWFnw5KrVRkA8NKQ4OAfYtC7kDB0iXCG6T1nj+zDzWKw==
+X-Received: by 2002:a05:620a:2a0b:b0:7c5:a2f8:e6e4 with SMTP id af79cd13be357-7c69072add2mr2438607585a.29.1743620674066;
+        Wed, 02 Apr 2025 12:04:34 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54b0957f9b7sm1730436e87.139.2025.04.02.12.04.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Apr 2025 12:04:33 -0700 (PDT)
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: lumag@kernel.org, Andy Yan <andyshrk@163.com>
+Cc: mripard@kernel.org, neil.armstrong@linaro.org,
+        dri-devel@lists.freedesktop.org, dianders@chromium.org,
+        jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
+        thierry.reding@gmail.com, victor.liu@nxp.com, rfoss@kernel.org,
+        linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+        Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20250318063452.4983-1-andyshrk@163.com>
+References: <20250318063452.4983-1-andyshrk@163.com>
+Subject: Re: [PATCH v2 1/5] drm/dp: Pull drm_dp_link_power_up/down from
+ Tegra to common drm_dp_helper
+Message-Id: <174362067146.2885153.4786307891834552899.b4-ty@oss.qualcomm.com>
+Date: Wed, 02 Apr 2025 22:04:31 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 7/7] drm/rockchip: inno-hdmi: Convert to drm bridge
-To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
-Cc: conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
- hjc@rock-chips.com, mripard@kernel.org, neil.armstrong@linaro.org,
- dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Andy Yan <andy.yan@rock-chips.com>
-References: <20250402123150.238234-1-andyshrk@163.com>
- <20250402123150.238234-8-andyshrk@163.com>
-Content-Language: en-US
-From: Alex Bee <knaerzche@gmail.com>
-In-Reply-To: <20250402123150.238234-8-andyshrk@163.com>
+X-Mailer: b4 0.14.2
+X-Proofpoint-GUID: yYY61IDB-gkbcS4JQvxhSLAwzltQ63yr
+X-Proofpoint-ORIG-GUID: yYY61IDB-gkbcS4JQvxhSLAwzltQ63yr
+X-Authority-Analysis: v=2.4 cv=ZNLXmW7b c=1 sm=1 tr=0 ts=67ed8a43 cx=c_pps a=qKBjSQ1v91RyAK45QCPf5w==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=3lv0NsTm8rjeSSnkhIQA:9 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-02_08,2025-04-02_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ lowpriorityscore=0 clxscore=1015 mlxscore=0 adultscore=0 mlxlogscore=966
+ priorityscore=1501 bulkscore=0 suspectscore=0 malwarescore=0 phishscore=0
+ impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2504020121
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_102428_355965_844D599D 
-X-CRM114-Status: GOOD (  20.12  )
+X-CRM114-CacheID: sfid-20250402_120436_506873_9CC31577 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,108 +119,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Andy,
-
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Tue, 18 Mar 2025 14:34:35 +0800, Andy Yan wrote:
+> The helper functions drm_dp_link_power_up/down were moved to Tegra
+> DRM in commit 9a42c7c647a9 ("drm/tegra: Move drm_dp_link helpers to Tegra DRM")".
 > 
-> Convert it to drm bridge driver, it will be convenient for us to
-> migrate the connector part to the display driver later.
+> Now since more and more users are duplicating the same code in their
+> own drivers, it's time to make them as DRM DP common helpers again.
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > 
-> ---
-> 
-> Changes in v3:
-> - First included in v3
-> - Link to V2: https://lore.kernel.org/dri-devel/20250325132944.171111-1-andyshrk@163.com/
-> 
->   drivers/gpu/drm/bridge/Kconfig                |   7 +
->   drivers/gpu/drm/bridge/Makefile               |   1 +
->   .../inno_hdmi.c => bridge/inno-hdmi.c}        | 924 ++++++++++--------
->   drivers/gpu/drm/rockchip/Kconfig              |   1 +
->   drivers/gpu/drm/rockchip/Makefile             |   2 +-
->   drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c | 187 ++++
->   drivers/gpu/drm/rockchip/inno_hdmi.h          | 349 -------
->   include/drm/bridge/inno_hdmi.h                |  33 +
->   8 files changed, 741 insertions(+), 763 deletions(-)
->   rename drivers/gpu/drm/{rockchip/inno_hdmi.c => bridge/inno-hdmi.c} (52%)
->   create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
->   delete mode 100644 drivers/gpu/drm/rockchip/inno_hdmi.h
->   create mode 100644 include/drm/bridge/inno_hdmi.h
->
+> [...]
 
-...
+Applied to drm-misc-next, thanks!
 
-> +#define m_RX_DONE			(1 << 0)
-> +
-> +#define HDMI_CEC_TX_INT			0xda
-> +#define HDMI_CEC_RX_INT			0xdb
-> +#define HDMI_CEC_BUSFREETIME_L		0xdc
-> +#define HDMI_CEC_BUSFREETIME_H		0xdd
-> +#define HDMI_CEC_LOGICADDR		0xde
-> +
->   struct inno_hdmi_i2c {
->   	struct i2c_adapter adap;
->   
-> @@ -68,41 +395,18 @@ struct inno_hdmi_i2c {
->   
->   struct inno_hdmi {
->   	struct device *dev;
-> -
-> +	struct drm_bridge bridge;
->   	struct clk *pclk;
->   	struct clk *refclk;
->   	void __iomem *regs;
->   	struct regmap *grf;
->   
-> -	struct drm_connector	connector;
-> -	struct rockchip_encoder	encoder;
-> -
->   	struct inno_hdmi_i2c *i2c;
->   	struct i2c_adapter *ddc;
-> -
-> -	const struct inno_hdmi_variant *variant;
-> +	const struct inno_hdmi_plat_data *plat_data;
-> +	unsigned int colorimetry;
+[1/5] drm/dp: Pull drm_dp_link_power_up/down from Tegra to common drm_dp_helper
+      commit: 09cdda7a60f45784cebddf1fa2109d6279f9890b
+[2/5] drm/bridge: cdns-mhdp8546: Switch to common helpers to power up/down dp link
+      commit: 23ee8c6b34fdfed970e2fae2b2ac5635303d77b8
+[3/5] drm/bridge: anx6345: Switch to common helpers to power up/down dp link
+      commit: 4adde49ba497ebd376a164c517152670e4f8eedd
+[4/5] drm/bridge: anx78xx: Switch to common helpers to power up/down dp link
+      commit: 39f14a01994b5102bdc4632a339a59a03a2f89f3
+[5/5] drm/bridge: it6505: Switch to common helpers to power up/down dp link
+      commit: f09d9f921f2b7b78e73e9f192a9c08b534b8e5e5
 
-thanks a lot for doing the bridge conversion for this driver.
-Please keep the custom connector state which was introduced after Maxim's
-review during the last rework of this [0] driver. The colorimetry is not
-part of the device, but of the connector and thus should not be part of the
-device struct.
-It's, however, likely that the common (hdmi-)connector framework will once
-hold its own colorimetry property and then the custom connector state in
-this driver can go away, but until than we have to keep it here.
-
-Thanks,
-Alex
-
-[0]
-https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ceeb0f0104a62c867656c2730a51df47e7350b8f
+Best regards,
+-- 
+With best wishes
+Dmitry
 
 
->   };
->   
-> -struct inno_hdmi_connector_state {
-> -	struct drm_connector_state	base;
-> -	unsigned int			colorimetry;
-> -};
-> -
-> -static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
-> -{
-> -	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
-> -
-> -	return container_of(rkencoder, struct inno_hdmi, encoder);
-> -}
-> -
-> -static struct inno_hdmi *connector_to_inno_hdmi(struct drm_connector *connector)
-...
 
 _______________________________________________
 Linux-rockchip mailing list
