@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAD3C28B20
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 08:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F2CC3601A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Apr 2025 09:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e3FBjiMpU3DG6oxA4/pdfmfSdpc2PbxGdDxwAKnyo9g=; b=nchoLd6e1b11zW
-	n2tA9mtEe9aeQ4vQ8LlGJBjZvwFX8jgbQAW3knnCyxroDBgkK0mZrcuBGgBb95BLqFu2RilPK8XTJ
-	OtB6Gb510Lnpzp2PKpH+Kd5y9Hb3PoA7bDwLMMB8tc7s8BVXSxCgaGZf2c0IOSKXDBKdU15eenRin
-	3HDO0j9PU56V7a2tVtlU070LDipDMsiDCd+TznV0lD7B9g3778bBV9cIS4A0VRhHxCPzqAcI+3+98
-	JeVin5bU1XWh2170cUu1mi7ovW7Pb2vBmbo9eCGuIif/ytwnXOZz6p0UIkE3ZgmTv9iQKPvQQb1ze
-	EPmjmkWv3+DfRBqq8kBg==;
+	List-Owner; bh=QbKSwIWyVuhuuPoVloqw/HJaT4yBHA6Gui0T6JmVr8w=; b=g9XYousoTag2QW
+	GJGbfhM1mWzsiwBLK2P0DIPofvNuYtUW8FmqaHAVbsAH94kO8P/ziZvyfggaPy2jJ2UKoV12lFtDP
+	EH0m1f08EIMg/+zFsVMJcykV4aZeJPc+mJx/3KcgpMeRwkeLNUcbDQ2VnTarYtxGqTSXS7100z5a8
+	w4xB5kgA2tWoMTH8J4DaaRDy0rKDHZRf9qDYVw+9DNCy2d4bMm4zmuL/NSXc5qrv+MlDkJQgqUMiB
+	NZainE0k2TdBD0w66ENZz5ppgTZt7fGPZ3HPFHPWLL+Gx4IaBQVmvddMvELi7XR4oksV5z85pNNYE
+	MnorV5SmwHq7X085/heg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzt83-00000005U8w-43K5;
-	Wed, 02 Apr 2025 08:07:19 +0000
-Received: from mail-m32116.qiye.163.com ([220.197.32.116])
-	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzt80-00000005U78-38VN;
-	Wed, 02 Apr 2025 08:07:18 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 10721275b;
-	Wed, 2 Apr 2025 16:06:59 +0800 (GMT+08:00)
-Message-ID: <e340a408-2e21-1bca-7267-46b84690f66f@rock-chips.com>
-Date: Wed, 2 Apr 2025 16:06:55 +0800
+	id 1tzuDb-00000005f9s-2jxv;
+	Wed, 02 Apr 2025 09:17:07 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tzu7i-00000005drL-3dDH
+	for linux-rockchip@lists.infradead.org;
+	Wed, 02 Apr 2025 09:11:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=bNRCmZrHbl9qDe2w51s3ZpBql0GJNc2z9tWUQK3FY2A=; b=A
+	fFsMQhfYqGGVwCyf6dZ6uXGDbOr4hqf56n6lDr/2VdkXY9/ugSn8OjRBUzsUsbXw
+	LWW9MW7JeKQBwLOLH8ESbqDP/x3R3y84nY21VNzWlHsqNchNxfCYEj1AYDfJFg6W
+	DSmqcBd39U+l0AQOjDA9QlLijNqXBVi9V+nidxz9e0=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-114 (Coremail) ; Wed, 2 Apr 2025 17:10:16 +0800 (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Wed, 2 Apr 2025 17:10:16 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
+Cc: lumag@kernel.org, thierry.reding@gmail.com, mperttunen@nvidia.com,
+	mripard@kernel.org, neil.armstrong@linaro.org,
+	dri-devel@lists.freedesktop.org, dianders@chromium.org,
+	jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
+	victor.liu@nxp.com, rfoss@kernel.org,
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+	"Andy Yan" <andy.yan@rock-chips.com>
+Subject: Re:Re: [PATCH v2 1/5] drm/dp: Pull drm_dp_link_power_up/down from
+ Tegra to common drm_dp_helper
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <0d44fd9e-ab84-4db4-955a-22670d2990ef@oss.qualcomm.com>
+References: <20250318063452.4983-1-andyshrk@163.com>
+ <76a55b32.acc9.195d79cf378.Coremail.andyshrk@163.com>
+ <0d44fd9e-ab84-4db4-955a-22670d2990ef@oss.qualcomm.com>
+X-NTES-SC: AL_Qu2fAfmTukgq4CWcZOkfmkcVgOw9UcO5v/Qk3oZXOJF8jDvp6CEgd21jJ0DK6eeEOiqAjTi3YBx39upQfaBdUrMAL7jsi0lxna/QwTocMlotHg==
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.1
-Cc: shawn.lin@rock-chips.com, =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?=
- <kwilczynski@kernel.org>, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] PCI: rockchip: Fix order of rockchip_pci_core_rsts
-To: Jensen Huang <jensenhuang@friendlyarm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- Anand Moon <linux.amoon@gmail.com>
-References: <20250328105822.3946767-1-jensenhuang@friendlyarm.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20250328105822.3946767-1-jensenhuang@friendlyarm.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh0aQ1YdTE4aSB1IGhhPQkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a95f58a0bdb09cckunm10721275b
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NT46SDo*HTIBCw49PC8JDjEi
-	PQsaFE1VSlVKTE9ITkNKSUlKTkxKVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlMSkk3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=ezHqbO70EDBQxmzrLCl8NxYSVUIU6/oSSOrrNjkXlFPkG0MhWO2zqfrPwMD+crfahb9VQ1m3kShzgfpQbI8wgdNEnAHGAtsDOuLtpEIdG+1QMvlGT+S5LhC/FOXk1qrMY7NsgRhBCxRrvsvg0BnAuJl1ih/3WP2Qg3lLjEQY2yE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=tNpsgBqjJ9UNRLTVKNe5wOYMfZoRUBD/vq55ueB1bPY=;
-	h=date:mime-version:subject:message-id:from;
+Message-ID: <4be9ef99.9728.195f5c3fae0.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: cigvCgDHD+X4_uxnEUuNAA--.7928W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAEjXmfs9k-9CwADsr
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_010717_262575_9099B82B 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20250402_021103_232279_30088E1C 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +76,268 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMDMvMjgg5pif5pyf5LqUIDE4OjU4LCBKZW5zZW4gSHVhbmcg5YaZ6YGTOgo+IFRo
-ZSBvcmRlciBvZiByb2NrY2hpcF9wY2lfY29yZV9yc3RzIGZvbGxvd3MgdGhlIHByZXZpb3VzIGNv
-bW1lbnRzIHN1Z2dlc3RpbmcKPiB0byBhdm9pZCByZW9yZGVyaW5nLiBIb3dldmVyLCByZXNldF9j
-b250cm9sX2J1bGtfZGVhc3NlcnQoKSBhcHBsaWVzIHJlc2V0cyBpbgo+IHJldmVyc2UsIHdoaWNo
-IG1heSBsZWFkIHRvIHRoZSBsaW5rIGRvd25ncmFkaW5nIHRvIDIuNSBHVC9zLgo+IAo+IFRoaXMg
-cGF0Y2ggcmVzdG9yZXMgdGhlIGRlYXNzZXJ0IG9yZGVyIGFuZCBjb21tZW50cyBmb3IgY29yZV9y
-c3RzLCBpbnRyb2R1Y2VkIGluCj4gY29tbWl0IDU4YzY5OTBjNWVlNyAoIlBDSTogcm9ja2NoaXA6
-IEltcHJvdmUgdGhlIGRlYXNzZXJ0IHNlcXVlbmNlIG9mIGZvdXIgcmVzZXQgcGlucyIpLgo+IAo+
-IFRlc3RlZCBvbiBOYW5vUEMtVDQgd2l0aCBTYW1zdW5nIDk3MCBQcm8uCgpBY2tlZC1ieTogIFNo
-YXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgoKPiAKPiBGaXhlczogMTg3MTU5MzFh
-NWMwICgiUENJOiByb2NrY2hpcDogU2ltcGxpZnkgcmVzZXQgY29udHJvbCBoYW5kbGluZyBieSB1
-c2luZyByZXNldF9jb250cm9sX2J1bGsqKCkgZnVuY3Rpb24iKQo+IFNpZ25lZC1vZmYtYnk6IEpl
-bnNlbiBIdWFuZyA8amVuc2VuaHVhbmdAZnJpZW5kbHlhcm0uY29tPgo+IC0tLQo+ICAgZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmggfCAxMCArKysrKysrLS0tCj4gICAxIGZp
-bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaCBiL2RyaXZlcnMvcGNp
-L2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCj4gaW5kZXggMTFkZWY1OTg1MzRiLi40ZjYzYTAz
-ZDUzNWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlw
-LmgKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+IEBAIC0z
-MjAsMTEgKzMyMCwxNSBAQCBzdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IHJvY2tjaGlwX3BjaV9w
-bV9yc3RzW10gPSB7Cj4gICAJImFjbGsiLAo+ICAgfTsKPiAgIAo+ICsvKgo+ICsgKiBQbGVhc2Ug
-ZG9uJ3QgcmVvcmRlciB0aGUgZGVhc3NlcnQgc2VxdWVuY2Ugb2YgdGhlIGZvbGxvd2luZwo+ICsg
-KiBmb3VyIHJlc2V0IHBpbnMuCj4gKyAqLwo+ICAgc3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBy
-b2NrY2hpcF9wY2lfY29yZV9yc3RzW10gPSB7Cj4gLQkibWdtdC1zdGlja3kiLAo+IC0JImNvcmUi
-LAo+IC0JIm1nbXQiLAo+ICAgCSJwaXBlIiwKPiArCSJtZ210IiwKPiArCSJjb3JlIiwKPiArCSJt
-Z210LXN0aWNreSIsCj4gICB9Owo+ICAgCj4gICBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSB7CgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+ Gentle ping......
+
+At 2025-03-27 20:54:37, "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com> wrote:
+>On 27/03/2025 14:39, Andy Yan wrote:
+>> 
+>> Hello Dmitry,
+>>       Could you take this series? If so, merging it earlier can avoid future conflicts from other patches.
+>> Besides, I can update my DP driver based on drm-misc-next.
+>
+>I'd really like an ack from Thiery or Mikko.
+>
+>If tere is none (and no objections), I'll push it on Monday.
+>
+>> 
+>> At 2025-03-18 14:34:35, "Andy Yan" <andyshrk@163.com> wrote:
+>>> From: Andy Yan <andy.yan@rock-chips.com>
+>>>
+>>> The helper functions drm_dp_link_power_up/down were moved to Tegra
+>>> DRM in commit 9a42c7c647a9 ("drm/tegra: Move drm_dp_link helpers to Tegra DRM")".
+>>>
+>>> Now since more and more users are duplicating the same code in their
+>>> own drivers, it's time to make them as DRM DP common helpers again.
+>>>
+>>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>>> Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>>> ---
+>>>
+>>> Changes in v2:
+>>> - Fix commit message as suggested by Dmitry
+>>>
+>>> drivers/gpu/drm/display/drm_dp_helper.c | 69 +++++++++++++++++++++++++
+>>> drivers/gpu/drm/tegra/dp.c              | 67 ------------------------
+>>> drivers/gpu/drm/tegra/dp.h              |  2 -
+>>> drivers/gpu/drm/tegra/sor.c             |  4 +-
+>>> include/drm/display/drm_dp_helper.h     |  2 +
+>>> 5 files changed, 73 insertions(+), 71 deletions(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/display/drm_dp_helper.c b/drivers/gpu/drm/display/drm_dp_helper.c
+>>> index dbce1c3f4969..e5dec67e5fca 100644
+>>> --- a/drivers/gpu/drm/display/drm_dp_helper.c
+>>> +++ b/drivers/gpu/drm/display/drm_dp_helper.c
+>>> @@ -838,6 +838,75 @@ int drm_dp_dpcd_read_phy_link_status(struct drm_dp_aux *aux,
+>>> }
+>>> EXPORT_SYMBOL(drm_dp_dpcd_read_phy_link_status);
+>>>
+>>> +/**
+>>> + * drm_dp_link_power_up() - power up a DisplayPort link
+>>> + * @aux: DisplayPort AUX channel
+>>> + * @revision: DPCD revision supported on the link
+>>> + *
+>>> + * Returns 0 on success or a negative error code on failure.
+>>> + */
+>>> +int drm_dp_link_power_up(struct drm_dp_aux *aux, unsigned char revision)
+>>> +{
+>>> +	u8 value;
+>>> +	int err;
+>>> +
+>>> +	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
+>>> +	if (revision < DP_DPCD_REV_11)
+>>> +		return 0;
+>>> +
+>>> +	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
+>>> +	if (err < 0)
+>>> +		return err;
+>>> +
+>>> +	value &= ~DP_SET_POWER_MASK;
+>>> +	value |= DP_SET_POWER_D0;
+>>> +
+>>> +	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
+>>> +	if (err < 0)
+>>> +		return err;
+>>> +
+>>> +	/*
+>>> +	 * According to the DP 1.1 specification, a "Sink Device must exit the
+>>> +	 * power saving state within 1 ms" (Section 2.5.3.1, Table 5-52, "Sink
+>>> +	 * Control Field" (register 0x600).
+>>> +	 */
+>>> +	usleep_range(1000, 2000);
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +EXPORT_SYMBOL(drm_dp_link_power_up);
+>>> +
+>>> +/**
+>>> + * drm_dp_link_power_down() - power down a DisplayPort link
+>>> + * @aux: DisplayPort AUX channel
+>>> + * @revision: DPCD revision supported on the link
+>>> + *
+>>> + * Returns 0 on success or a negative error code on failure.
+>>> + */
+>>> +int drm_dp_link_power_down(struct drm_dp_aux *aux, unsigned char revision)
+>>> +{
+>>> +	u8 value;
+>>> +	int err;
+>>> +
+>>> +	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
+>>> +	if (revision < DP_DPCD_REV_11)
+>>> +		return 0;
+>>> +
+>>> +	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
+>>> +	if (err < 0)
+>>> +		return err;
+>>> +
+>>> +	value &= ~DP_SET_POWER_MASK;
+>>> +	value |= DP_SET_POWER_D3;
+>>> +
+>>> +	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
+>>> +	if (err < 0)
+>>> +		return err;
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +EXPORT_SYMBOL(drm_dp_link_power_down);
+>>> +
+>>> static int read_payload_update_status(struct drm_dp_aux *aux)
+>>> {
+>>> 	int ret;
+>>> diff --git a/drivers/gpu/drm/tegra/dp.c b/drivers/gpu/drm/tegra/dp.c
+>>> index 08fbd8f151a1..990e744b0923 100644
+>>> --- a/drivers/gpu/drm/tegra/dp.c
+>>> +++ b/drivers/gpu/drm/tegra/dp.c
+>>> @@ -255,73 +255,6 @@ int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link)
+>>> 	return 0;
+>>> }
+>>>
+>>> -/**
+>>> - * drm_dp_link_power_up() - power up a DisplayPort link
+>>> - * @aux: DisplayPort AUX channel
+>>> - * @link: pointer to a structure containing the link configuration
+>>> - *
+>>> - * Returns 0 on success or a negative error code on failure.
+>>> - */
+>>> -int drm_dp_link_power_up(struct drm_dp_aux *aux, struct drm_dp_link *link)
+>>> -{
+>>> -	u8 value;
+>>> -	int err;
+>>> -
+>>> -	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
+>>> -	if (link->revision < 0x11)
+>>> -		return 0;
+>>> -
+>>> -	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
+>>> -	if (err < 0)
+>>> -		return err;
+>>> -
+>>> -	value &= ~DP_SET_POWER_MASK;
+>>> -	value |= DP_SET_POWER_D0;
+>>> -
+>>> -	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
+>>> -	if (err < 0)
+>>> -		return err;
+>>> -
+>>> -	/*
+>>> -	 * According to the DP 1.1 specification, a "Sink Device must exit the
+>>> -	 * power saving state within 1 ms" (Section 2.5.3.1, Table 5-52, "Sink
+>>> -	 * Control Field" (register 0x600).
+>>> -	 */
+>>> -	usleep_range(1000, 2000);
+>>> -
+>>> -	return 0;
+>>> -}
+>>> -
+>>> -/**
+>>> - * drm_dp_link_power_down() - power down a DisplayPort link
+>>> - * @aux: DisplayPort AUX channel
+>>> - * @link: pointer to a structure containing the link configuration
+>>> - *
+>>> - * Returns 0 on success or a negative error code on failure.
+>>> - */
+>>> -int drm_dp_link_power_down(struct drm_dp_aux *aux, struct drm_dp_link *link)
+>>> -{
+>>> -	u8 value;
+>>> -	int err;
+>>> -
+>>> -	/* DP_SET_POWER register is only available on DPCD v1.1 and later */
+>>> -	if (link->revision < 0x11)
+>>> -		return 0;
+>>> -
+>>> -	err = drm_dp_dpcd_readb(aux, DP_SET_POWER, &value);
+>>> -	if (err < 0)
+>>> -		return err;
+>>> -
+>>> -	value &= ~DP_SET_POWER_MASK;
+>>> -	value |= DP_SET_POWER_D3;
+>>> -
+>>> -	err = drm_dp_dpcd_writeb(aux, DP_SET_POWER, value);
+>>> -	if (err < 0)
+>>> -		return err;
+>>> -
+>>> -	return 0;
+>>> -}
+>>> -
+>>> /**
+>>>   * drm_dp_link_configure() - configure a DisplayPort link
+>>>   * @aux: DisplayPort AUX channel
+>>> diff --git a/drivers/gpu/drm/tegra/dp.h b/drivers/gpu/drm/tegra/dp.h
+>>> index cb12ed0c54e7..695060cafac0 100644
+>>> --- a/drivers/gpu/drm/tegra/dp.h
+>>> +++ b/drivers/gpu/drm/tegra/dp.h
+>>> @@ -164,8 +164,6 @@ int drm_dp_link_remove_rate(struct drm_dp_link *link, unsigned long rate);
+>>> void drm_dp_link_update_rates(struct drm_dp_link *link);
+>>>
+>>> int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link);
+>>> -int drm_dp_link_power_up(struct drm_dp_aux *aux, struct drm_dp_link *link);
+>>> -int drm_dp_link_power_down(struct drm_dp_aux *aux, struct drm_dp_link *link);
+>>> int drm_dp_link_configure(struct drm_dp_aux *aux, struct drm_dp_link *link);
+>>> int drm_dp_link_choose(struct drm_dp_link *link,
+>>> 		       const struct drm_display_mode *mode,
+>>> diff --git a/drivers/gpu/drm/tegra/sor.c b/drivers/gpu/drm/tegra/sor.c
+>>> index f98f70eda906..21f3dfdcc5c9 100644
+>>> --- a/drivers/gpu/drm/tegra/sor.c
+>>> +++ b/drivers/gpu/drm/tegra/sor.c
+>>> @@ -2666,7 +2666,7 @@ static void tegra_sor_dp_disable(struct drm_encoder *encoder)
+>>> 	 * the AUX transactions would just be timing out.
+>>> 	 */
+>>> 	if (output->connector.status != connector_status_disconnected) {
+>>> -		err = drm_dp_link_power_down(sor->aux, &sor->link);
+>>> +		err = drm_dp_link_power_down(sor->aux, sor->link.revision);
+>>> 		if (err < 0)
+>>> 			dev_err(sor->dev, "failed to power down link: %d\n",
+>>> 				err);
+>>> @@ -2882,7 +2882,7 @@ static void tegra_sor_dp_enable(struct drm_encoder *encoder)
+>>> 	else
+>>> 		dev_dbg(sor->dev, "link training succeeded\n");
+>>>
+>>> -	err = drm_dp_link_power_up(sor->aux, &sor->link);
+>>> +	err = drm_dp_link_power_up(sor->aux, sor->link.revision);
+>>> 	if (err < 0)
+>>> 		dev_err(sor->dev, "failed to power up DP link: %d\n", err);
+>>>
+>>> diff --git a/include/drm/display/drm_dp_helper.h b/include/drm/display/drm_dp_helper.h
+>>> index 5ae4241959f2..f9dabce484a7 100644
+>>> --- a/include/drm/display/drm_dp_helper.h
+>>> +++ b/include/drm/display/drm_dp_helper.h
+>>> @@ -566,6 +566,8 @@ int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux,
+>>> int drm_dp_dpcd_read_phy_link_status(struct drm_dp_aux *aux,
+>>> 				     enum drm_dp_phy dp_phy,
+>>> 				     u8 link_status[DP_LINK_STATUS_SIZE]);
+>>> +int drm_dp_link_power_up(struct drm_dp_aux *aux, unsigned char revision);
+>>> +int drm_dp_link_power_down(struct drm_dp_aux *aux, unsigned char revision);
+>>>
+>>> int drm_dp_dpcd_write_payload(struct drm_dp_aux *aux,
+>>> 			      int vcpid, u8 start_time_slot, u8 time_slot_count);
+>>> -- 
+>>> 2.43.0
+>
+>
+>-- 
+>With best wishes
+>Dmitry
+>
+>_______________________________________________
+>Linux-rockchip mailing list
+>Linux-rockchip@lists.infradead.org
+>http://lists.infradead.org/mailman/listinfo/linux-rockchip
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
