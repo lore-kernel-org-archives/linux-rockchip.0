@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EDADC3600C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 17:41:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEA07C3600C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 19:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vmAojJYMitF8ltjAS/nKHuqnTm9tZOxL3XnMOwCKz9k=; b=pn+0px73Vpml+1
-	pKAZfryO8Z85jpIEnnKbR+9mI9yriWht1aooc32CMRcnjop52a7OANWg3afSK17nmpKVFI/9CBnoc
-	UKEJ3EQsIvFDKjQ1X7dv1FSK1jHCNbE+ZNxD47c6S8Wahd3LjdbFRT3jYqjNCvjoci1dTT27QfL7E
-	BuCoe2fuPAAZSMVEBrqulMDH1YnN/jwZFegpZ63FCxjrSB3u2D1HRtDsY/5ufOG9Ekdi+LNknGj8t
-	NoSHE3rxIeKiEujRn9BCAWHKuvDHmWPX5CSAePvId1LhwQaOo244EASgb1k+DvhMeXUt9rbBmQhSj
-	Nflt7LTELVWnikn/qvfA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9P9IXVOs1suFGH/YtrjsbVJiXdifZ2tLhqXcTKQ5CIY=; b=i5KcD8hDyHIWPr
+	8Ah9yUFlGwQ71LeHl/vu3Ny5RhojoTn99dKVBmOolktraDWzgtNt3QfvXyqX5FHNBOsSADuJ+NKtT
+	mfSkpWItPxXxnef1eF1Cqm56Jee6N4bpvCKt1+DhPT5aiE+ySuRX1+F4iGapZpakBNEnA8LlPA+D/
+	OZSLL9NcrjssXKcNk6Yz/OXURXV+Frdz1OZxRjU8tK3pK5VSW+MnsMNkfdqPCDkRIPm6vK3EodnCR
+	N1m9X4P6SFocY6twAGPNFwW4LUYRUh/swKABYOgj3jwpbi8+aU4fdUaOsT5FI9OfIHnZRW5wCXND5
+	ih1cP5IcHo90/b9feYow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0OZ8-00000009U5L-203a;
-	Thu, 03 Apr 2025 17:41:22 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1u0Q3R-00000009hJb-3pgm;
+	Thu, 03 Apr 2025 19:16:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0OXJ-00000009Tof-0Iaa;
-	Thu, 03 Apr 2025 17:39:30 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-39c1ef4acf2so825644f8f.0;
-        Thu, 03 Apr 2025 10:39:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743701967; x=1744306767; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xNO/JA0foT2DpdUYBUk7pcZAoPgEl1mlc8h7/c2UazE=;
-        b=F1fWeSTviQkF7rJDQ4KCJOBlqPnvopkEi7awWGOhAmDDR+fh8Xj+Y6tu/qbHvQLZg7
-         OAB6/8BYMSuTEJwtCzLwDVLorx+U6EgODwGR4r3w/DuwBwZ4Wd8eswLVJ1ZdsBBJ2qXA
-         TYZD8k09WsrkN8Li4Wj1i9ehVlHqHuQicxGJ0d0gMNQvxSzgjN/tiArDFathWPQDyjmS
-         QXj+mwV2hJpGHwF/5wlsfpT64md2JmzXXwpb2whNroadyj80+iq2tkvuiOmgPr+lBET6
-         roJYsYP6go9GRyHwu98BaJA7mMoyjIM5q+YlEsTzFy3lg115B6Pl6PiOtn1MjXfiAH/O
-         1NTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743701967; x=1744306767;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xNO/JA0foT2DpdUYBUk7pcZAoPgEl1mlc8h7/c2UazE=;
-        b=nzH9f6AepwTzHMbbFava//Wi2Esa0gX9sfbEs+NeHJwhBY/oIURImY6In5HbdAj6kh
-         q1CFOXI9kRga1WhVbFJaq+AtCyvuXJ73MIQ134xo9/9Ty5gtxbA1JNGkqbqpmSom6y7T
-         4Wwj8A15yEwzGpT38cl5dmt5UVK0C9IWS0u4POxiabQ2L3GL5eEQuf7otBH1lce1/F0J
-         B11UtxJjBM6YtlZCG+0bUmdvLwC4FisScOaSbTiIppT3hbT7Pod7NyiZ5ZSGYktp1N/F
-         BS6wbZPeVyNRe10GxQP/rlzKwaVRC/opvM8fkRW5z+u1CXmANRYGAFEPTtjOMqxVaLOQ
-         qF7Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXkKH4sDDZ3NwuOoUTM29VoRPJRWyQo+CjZ4GPS6YuazsDySj/lTo2bdkY/FX+H3o+yvhs/y/9X/xQwP6JjKqcT@lists.infradead.org, AJvYcCXlYAqKYiyBXAn1eMOlWjK0euq37unbL4cOPpxlmi8XHVM6CBmvBMjJnkN7GcTgMJ+emO2W4IGgeOO9QfQnmyo=@lists.infradead.org, AJvYcCXu9pbp5bYgv5p2neuE6hpVyjMCoCLxSEcyG5nUdlq5Nt00aGi0KhgQmmcDsEIgyJK/Xhf19uUQl3TM@lists.infradead.org
-X-Gm-Message-State: AOJu0YyoY55SdushSZIzPO34pJE3OQXBsFrogHswSQ+D1gkgsXxPkvSl
-	S6Cxr/lW9RrK66rTa7fKp5/Bw9HflPT2EXkLlYFTlfn5SLlUgqcLroHtNQ==
-X-Gm-Gg: ASbGncvotnmKuY42F26PQM+Tg45rLUp8C+6dP5pQPSMhVLLKhRQp6MHhfITzcmeFAWd
-	NTHQWBJKkSG6pxZii1RjSZ7X67iSQHZ0G4iYTNnwDVBYVAZHfcjgrh/C9h/rrWHb/U77tpkdNnD
-	4N71sDjPzAkZylNZWifGV95Kq6QuzOp3jKqL9QbCZ1KlSBUDc8JLgXav7F/7p7SYG/x4AH43G66
-	rQCVGhAkGrqtK5FmwHj3jJbS6MTt85+XFww95pmQKN+n6GUPK5WtsMujdoA4IDhD1TQnenJyfiY
-	kb0r5FFJuvbdTY5Ulw5OtweEhbzfHAnHGpSTZGnunFaf958xqZaXwuroHtRUqyMt3CJ934dMGIY
-	jjmFqpgSyOKEBN/GW5FH1
-X-Google-Smtp-Source: AGHT+IFMIi4hovLxofIkRnajXomszFrujt7/tyePth8kw2e++hEC+Kp0OE+ILwmXrxf3oLN23kvKDw==
-X-Received: by 2002:a05:6000:2907:b0:391:4999:778b with SMTP id ffacd0b85a97d-39cb35bda01mr174975f8f.28.1743701966921;
-        Thu, 03 Apr 2025 10:39:26 -0700 (PDT)
-Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c30096923sm2385018f8f.17.2025.04.03.10.39.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Apr 2025 10:39:26 -0700 (PDT)
-From: Jernej =?UTF-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: vkoul@kernel.org, robert.marko@sartura.hr, shao.mingyin@zte.com.cn
-Cc: kishon@kernel.org, wens@csie.org, samuel@sholland.org,
- zhang.enpei@zte.com.cn, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, luka.perkov@sartura.hr,
- linux-arm-msm@vger.kernel.org, heiko@sntech.de,
- linux-rockchip@lists.infradead.org, yang.yang29@zte.com.cn,
- xu.xin16@zte.com.cn, ye.xingchen@zte.com.cn
-Subject: Re: [PATCH linux-next 1/5] phy: allwinner: phy-sun50i-usb3: Use
- dev_err_probe()
-Date: Thu, 03 Apr 2025 19:39:24 +0200
-Message-ID: <2773791.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <20250402194203426goMMzm9R9_yQBb7SMNGj1@zte.com.cn>
-References: <20250402194203426goMMzm9R9_yQBb7SMNGj1@zte.com.cn>
+	id 1u0Puu-00000009ejR-0Cwg;
+	Thu, 03 Apr 2025 19:07:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1743707273;
+	bh=VTL6kwicHLjBdwQujCV+DK1vWwhdgxmpdH1NQF6da1E=;
+	h=From:Date:Subject:To:Cc:From;
+	b=gZu8bJG15cTU399eLCzOpANebfp7k9ztWQups7U5IhmjYheShf76XMC8sHDE67VPM
+	 TD8HEa4KNldWr9R/wUlifxmA5BiItb73thWPoLs+0ShcugHohou5vKcYnRTTr8RgnE
+	 JCeJVJ0ol+2g7IQjR/ZoTOqUGC6QBtoCUeM+FsY9xuIPdYlrhmn+KEEIum8b3bq2Hz
+	 8puGRaNDKz4J7NuJPUlZyxrZYnkWz1fVgXMpFj/ueYPkjepOM4w9mMohpaVySyW67e
+	 PEVe6HtkLlBu7DekNVpmH71NgREqFw3Y3IFOEQ2NpMbUHD+0L/j2uPAu8/IUNlWnz3
+	 qUuzRgZ4vyTAw==
+Received: from [192.168.13.180] (unknown [IPv6:2606:6d00:11:e976::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9888417E0865;
+	Thu,  3 Apr 2025 21:07:52 +0200 (CEST)
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Date: Thu, 03 Apr 2025 15:07:41 -0400
+Subject: [PATCH] media: verisilicon: Enable wide 4K in AV1 decoder
 MIME-Version: 1.0
+Message-Id: <20250403-hantro-av1-wuhd-v1-1-334629cb7f63@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHzc7mcC/x2MQQqAIBAAvxJ7bsG1vPSV6GC55V40tCyI/p50n
+ IGZBzIn4QxD80DiIlliqEBtA4u3YWMUVxm00kb1qsMqjxTRFsLr9A6JWC+rmZlsD7XaE69y/8d
+ xet8PtfnTcmEAAAA=
+X-Change-ID: 20250403-hantro-av1-wuhd-11e2cf5be1a4
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_103929_109717_D6E0A162 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20250403_120756_259662_C0B0C754 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,34 +75,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RG5lIHNyZWRhLCAyLiBhcHJpbCAyMDI1IG9iIDEzOjQyOjAzIFNyZWRuamVldnJvcHNraSBwb2xl
-dG5pIMSNYXMgamUgc2hhby5taW5neWluQHp0ZS5jb20uY24gbmFwaXNhbChhKToKPiBGcm9tOiBa
-aGFuZyBFbnBlaSA8emhhbmcuZW5wZWlAenRlLmNvbS5jbj4KPiAKPiBSZXBsYWNlIHRoZSBvcGVu
-LWNvZGUgd2l0aCBkZXZfZXJyX3Byb2JlKCkgdG8gc2ltcGxpZnkgdGhlIGNvZGUuCj4gCj4gU2ln
-bmVkLW9mZi1ieTogWmhhbmcgRW5wZWkgPHpoYW5nLmVucGVpQHp0ZS5jb20uY24+Cj4gU2lnbmVk
-LW9mZi1ieTogU2hhbyBNaW5neWluIDxzaGFvLm1pbmd5aW5AenRlLmNvbS5jbj4KCkFja2VkLWJ5
-OiBKZXJuZWogU2tyYWJlYyA8amVybmVqLnNrcmFiZWNAZ21haWwuY29tPgoKQmVzdCByZWdhcmRz
-LApKZXJuZWoKCj4gLS0tCj4gIGRyaXZlcnMvcGh5L2FsbHdpbm5lci9waHktc3VuNTBpLXVzYjMu
-YyB8IDggKysrLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgNSBkZWxl
-dGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvYWxsd2lubmVyL3BoeS1zdW41
-MGktdXNiMy5jIGIvZHJpdmVycy9waHkvYWxsd2lubmVyL3BoeS1zdW41MGktdXNiMy5jCj4gaW5k
-ZXggMzYzZjlhMGRmNTAzLi5iMDNmYWZmYzE2MGQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9waHkv
-YWxsd2lubmVyL3BoeS1zdW41MGktdXNiMy5jCj4gKysrIGIvZHJpdmVycy9waHkvYWxsd2lubmVy
-L3BoeS1zdW41MGktdXNiMy5jCj4gQEAgLTE0MSwxMSArMTQxLDkgQEAgc3RhdGljIGludCBzdW41
-MGlfdXNiM19waHlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCQlyZXR1
-cm4gLUVOT01FTTsKPiAKPiAgCXBoeS0+Y2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgTlVMTCk7Cj4g
-LQlpZiAoSVNfRVJSKHBoeS0+Y2xrKSkgewo+IC0JCWlmIChQVFJfRVJSKHBoeS0+Y2xrKSAhPSAt
-RVBST0JFX0RFRkVSKQo+IC0JCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBnZXQgcGh5IGNsb2Nr
-XG4iKTsKPiAtCQlyZXR1cm4gUFRSX0VSUihwaHktPmNsayk7Cj4gLQl9Cj4gKwlpZiAoSVNfRVJS
-KHBoeS0+Y2xrKSkKPiArCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIFBUUl9FUlIocGh5LT5j
-bGspLAo+ICsJCQkJICAgICAiZmFpbGVkIHRvIGdldCBwaHkgY2xvY2tcbiIpOwo+IAo+ICAJcGh5
-LT5yZXNldCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQoZGV2LCBOVUxMKTsKPiAgCWlmIChJU19F
-UlIocGh5LT5yZXNldCkpIHsKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Tested on RK3588, this decoder is capable of handling WUHD, so bump the
+maximum width and height accordingly.
+
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 964122e7c355934cd80eb442219f6ba51bba8b71..b64f0658f7f1e77b3efd960b35cd54dec4edf4ef 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -85,10 +85,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_width = FMT_UHD_WIDTH,
++			.max_width = FMT_4K_WIDTH,
+ 			.step_width = MB_DIM,
+ 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_height = FMT_UHD_HEIGHT,
++			.max_height = FMT_4K_HEIGHT,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
+@@ -99,10 +99,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_width = FMT_UHD_WIDTH,
++			.max_width = FMT_4K_WIDTH,
+ 			.step_width = MB_DIM,
+ 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_height = FMT_UHD_HEIGHT,
++			.max_height = FMT_4K_HEIGHT,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
+@@ -318,10 +318,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+ 		.match_depth = true,
+ 		.frmsize = {
+ 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_width = FMT_UHD_WIDTH,
++			.max_width = FMT_4K_WIDTH,
+ 			.step_width = MB_DIM,
+ 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_height = FMT_UHD_HEIGHT,
++			.max_height = FMT_4K_HEIGHT,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
+@@ -331,10 +331,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+ 		.match_depth = true,
+ 		.frmsize = {
+ 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_width = FMT_UHD_WIDTH,
++			.max_width = FMT_4K_WIDTH,
+ 			.step_width = MB_DIM,
+ 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_height = FMT_UHD_HEIGHT,
++			.max_height = FMT_4K_HEIGHT,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
+@@ -344,10 +344,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+ 		.max_depth = 2,
+ 		.frmsize = {
+ 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_width = FMT_UHD_WIDTH,
++			.max_width = FMT_4K_WIDTH,
+ 			.step_width = MB_DIM,
+ 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
+-			.max_height = FMT_UHD_HEIGHT,
++			.max_height = FMT_4K_HEIGHT,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
+
+---
+base-commit: f2151613e040973c868d28c8b00885dfab69eb75
+change-id: 20250403-hantro-av1-wuhd-11e2cf5be1a4
+
+Best regards,
+-- 
+Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
