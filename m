@@ -4,63 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8766C3601B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 06:37:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AB63C3601B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 06:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pmw+q4o4WX2DKPhVbNARL7CP72rkN1x1lPWZJvjs97g=; b=lEjrySDe7vTaYq
-	D0TDNI/IWHl+JGoF7x1UQcxHSFmFcaDUfYe2h/Mpi8lCVVTmhNA/hClEIUqoEiRTJtJrROCzgs8Ld
-	8W1b4nfg6itHgM/HImikx5r3MGXGbblRTZ/EQ9E/LeNauw2ouTurfv5tW82RKCI9UczEvcst6+sYR
-	CGgoO9gWUFM479YoWOWf2lPHkLatU/hXHgwBH4+f4VdVaO4vmETVb3ahUcCyKmILSnPSDwvHkiAvv
-	SVqpGCRF+7D2DbpvLCNSQ1rNvnote5yPWnmQt2gmXnBqMf2uQA6BjtJXTmfR+JoD188y7H+ToM9pq
-	PuDU6TXiHTYZO29W9qkA==;
+	List-Owner; bh=rgOKiOY0hEZPSXAER4pHWl54x27nRk828JbP8XvEXSI=; b=HSK9ZnPxFU7gQC
+	TcBA7O271hx61xAEHzBGdyMMjzkIBc0nU7V30wUkF84NOd93IXsYowjYMyRl/RpVshk1zaO4xqsSX
+	78Ap9MTafoLYiJSEhWkkauGxkBlDtHk36vMWoPtxTrjiwpO8zxOQappMwKTr2Z0mhEcQ0kiKV+Urc
+	acySbD0uU+jKswMwmD4RV6Cx1zstw0cZwqD6RZBR6WxkoHhqlHOEomZQNE3MRfbBB8PIpZuwPbAKW
+	0FsTqlnIMIaNXmIjtMwxskMl9jlB16UDZ09SaxgUPskiq46Y/AI3AMqX/g4aaSxqnHhxQmhToKVMV
+	iE0EgqEK+CROd6zM1aUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0ECB-00000007wl2-0ejk;
-	Thu, 03 Apr 2025 06:36:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u0EJC-00000007xtG-2DA2;
+	Thu, 03 Apr 2025 06:44:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EAF-00000007wBy-1z63;
-	Thu, 03 Apr 2025 06:35:00 +0000
+	id 1u0EHR-00000007xbC-3GEv;
+	Thu, 03 Apr 2025 06:42:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C0EB75C64E5;
-	Thu,  3 Apr 2025 06:32:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 776B1C4CEE3;
-	Thu,  3 Apr 2025 06:34:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E31F768424;
+	Thu,  3 Apr 2025 06:42:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC26CC4CEE3;
+	Thu,  3 Apr 2025 06:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743662096;
-	bh=qRM3eG6gqLVGutDjiR2oQQ4su3EUaT75uA7KTA4luMA=;
+	s=k20201202; t=1743662544;
+	bh=Mm5UvShqJfS6Bo3gBY57Tk/+isrXqZzI84v5T2TgGyI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ic7VPpVbqDl+foe4m6vFPehXrEaNTdi6Fn3uQKFgASy7+TZXiOAWo9cHZLLtV2uQ4
-	 U6A0a4ir7DbesULikeqlrXDugQQXaPnY9xf+mtJfIIlKZsI9HY1+lKnj9jTnKNup3h
-	 VISQvK+3JPQzvfUtXTZsZSKlHwOndyyQSxNpUU12qFn891JZOisLp5HkLUalRF4JP7
-	 L/9EeEkAB9SApAhYYQpaHOlHCTZfpHs1LUgUqfJXAXcSjQGn0mts8WiQoEmnJwoQ7x
-	 NJA9ZmIbnTiFWBfGN2ujLCTXwg4pufVuK1BAWXNz8sD8vSkSf6v2BE7ZKJa6gxkeK1
-	 /oN04mr+AN4CQ==
-Date: Thu, 3 Apr 2025 08:34:52 +0200
+	b=Qgce0Ewgkd+Cumb5f6U4T1HhR7WHTnXMeJrlK6+7f+dxtNnJnHGzn4rG1Mh0jfzKG
+	 GYtkJizV2zO7Q72uwCvGV+9tZ7MjW203gozPMAbCeIkZnsgByXUV8z2r4qJ1sEcryJ
+	 0RX3uL8ze5r0AjY4Ymw5pMLgaJum8G4C9JgeHAZwZMjMg60yGnZf9DZiVvrnA2uncK
+	 TTDMv92scWRTufXVLVNFCgXkbUkZZHANAES+VwsOK7DGMrgpmPDjadzPqVXME1DnVt
+	 96T/3vhXiBiJsHJydOyNmnrUJcYxXPYniJ1sxotmez8xtYriIU6Ck4lRHhZfRByenT
+	 hz65jzoVWTjgg==
+Date: Thu, 3 Apr 2025 08:42:20 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, 
-	robh@kernel.org, hjc@rock-chips.com, mripard@kernel.org, 
-	neil.armstrong@linaro.org, dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v3 2/7] dt-bindings: display: rockchip,inno-hdmi:
- Document GRF for RK3036 HDMI
-Message-ID: <20250403-first-dandelion-orca-ed9bbe@krzk-bin>
-References: <20250402123150.238234-1-andyshrk@163.com>
- <20250402123150.238234-3-andyshrk@163.com>
+Subject: Re: [PATCH v3 4/9] dt-bindings: display: simple-bridge: Add ra620
+ compatible
+Message-ID: <20250403-big-hog-from-ganymede-6aa617@krzk-bin>
+References: <20250403033748.245007-1-andyshrk@163.com>
+ <20250403033748.245007-5-andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250402123150.238234-3-andyshrk@163.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_233459_579548_D0371492 
-X-CRM114-Status: GOOD (  10.40  )
+In-Reply-To: <20250403033748.245007-5-andyshrk@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,29 +63,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 02, 2025 at 08:31:36PM +0800, Andy Yan wrote:
+On Thu, Apr 03, 2025 at 11:37:32AM +0800, Andy Yan wrote:
 > From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> HDMI on RK3036 use GRF control the HSYNC/VSYNC polarity, but this part
-> is missing when it first landing upstream.
+> RA620 is a DP to HDMI bridge converter from RADXA, which first
+> found be used on ROCK 5 ITX.
 > 
-> Document that it is mandatory for RK3036 HDMI.
+> This chip can be used without involving software.
 > 
 > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > 
 > ---
 > 
-> (no changes since v2)
-> 
-> Changes in v2:
-> - First included in v2
+> Changes in v3:
+> - First introduced in this version.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
