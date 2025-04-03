@@ -4,54 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AB63C3601B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 06:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C7AC3601B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 06:50:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rgOKiOY0hEZPSXAER4pHWl54x27nRk828JbP8XvEXSI=; b=HSK9ZnPxFU7gQC
-	TcBA7O271hx61xAEHzBGdyMMjzkIBc0nU7V30wUkF84NOd93IXsYowjYMyRl/RpVshk1zaO4xqsSX
-	78Ap9MTafoLYiJSEhWkkauGxkBlDtHk36vMWoPtxTrjiwpO8zxOQappMwKTr2Z0mhEcQ0kiKV+Urc
-	acySbD0uU+jKswMwmD4RV6Cx1zstw0cZwqD6RZBR6WxkoHhqlHOEomZQNE3MRfbBB8PIpZuwPbAKW
-	0FsTqlnIMIaNXmIjtMwxskMl9jlB16UDZ09SaxgUPskiq46Y/AI3AMqX/g4aaSxqnHhxQmhToKVMV
-	iE0EgqEK+CROd6zM1aUg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=swA2g3mdRwaGUERd7X96RmO/fn4bFeq98gdNPZqG8sE=; b=RGSuZM66K6X0RK
+	AfvJrR7fnZUWSNfuTp7qcIjGZn5OoP+PORTv2WpLc/HuZMAeb5j2l1s5J5H+8WhEk+HTyG4kgzkyM
+	GAfVyyp+M/7GoHF8Imd8IU5Zo/BT4Kx1tE0TbSn9k1idwxR0JbGl1zSx12VTpLztmyQt6Eub0LWan
+	JILgDBBeZUj/WGhIGDEq7o01UOJJYyLo0wxdUHJdyThHJR+akIBWXseXJZbbFIXyyfEKj+Ai4lzVO
+	IpOY1drAu44rHXR8LDUVarbpJH7PZBZCUfEzBRS+kuRI0CZ3IN+hgRHt5qo0p5Vu0dcLfapF3zxrW
+	iXyShG+F/rmdkpIpMDkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EJC-00000007xtG-2DA2;
-	Thu, 03 Apr 2025 06:44:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u0EPZ-00000007yqA-21gx;
+	Thu, 03 Apr 2025 06:50:49 +0000
+Received: from qs51p00im-qukt01071901.me.com ([17.57.155.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EHR-00000007xbC-3GEv;
-	Thu, 03 Apr 2025 06:42:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E31F768424;
-	Thu,  3 Apr 2025 06:42:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC26CC4CEE3;
-	Thu,  3 Apr 2025 06:42:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743662544;
-	bh=Mm5UvShqJfS6Bo3gBY57Tk/+isrXqZzI84v5T2TgGyI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qgce0Ewgkd+Cumb5f6U4T1HhR7WHTnXMeJrlK6+7f+dxtNnJnHGzn4rG1Mh0jfzKG
-	 GYtkJizV2zO7Q72uwCvGV+9tZ7MjW203gozPMAbCeIkZnsgByXUV8z2r4qJ1sEcryJ
-	 0RX3uL8ze5r0AjY4Ymw5pMLgaJum8G4C9JgeHAZwZMjMg60yGnZf9DZiVvrnA2uncK
-	 TTDMv92scWRTufXVLVNFCgXkbUkZZHANAES+VwsOK7DGMrgpmPDjadzPqVXME1DnVt
-	 96T/3vhXiBiJsHJydOyNmnrUJcYxXPYniJ1sxotmez8xtYriIU6Ck4lRHhZfRByenT
-	 hz65jzoVWTjgg==
-Date: Thu, 3 Apr 2025 08:42:20 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v3 4/9] dt-bindings: display: simple-bridge: Add ra620
- compatible
-Message-ID: <20250403-big-hog-from-ganymede-6aa617@krzk-bin>
-References: <20250403033748.245007-1-andyshrk@163.com>
- <20250403033748.245007-5-andyshrk@163.com>
+	id 1u0ENn-00000007yTk-1VAW
+	for linux-rockchip@lists.infradead.org;
+	Thu, 03 Apr 2025 06:49:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
+	bh=vX1nStTTyA2W3EtaX3VYwa1Dfg3sYgIY5n0SdMP1A9E=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+	b=WNBc/xzqW6hc1w1xvZmvNkALMThcoORtpqWzc7S6k7HpLwRWJ7z0ZwCosnW2DI84q
+	 WNlBe//viYmPWvRelVykEW34qz7BL8uEXH8iwMXxGT8xWjXc3biR0LqjTI0S7Tr46+
+	 qmsAYrIEQkBImg0HFe2zGG18uVPPPwAMstTBZGP30uABvJC+33/NoP6jAjcAcBeHCZ
+	 cZccEECTodC9jTwSognP9wksu5sSbQFh1KaeEJgof1JDJkSWNGPbJjaoFti9h55x61
+	 GIGpDRkit07NAIRTsNEOZQnjiSoWE+e0ovF+v+6mg4GtnHehGwRyPzDHPs8H19eFk+
+	 JVrHi/7I9YRwg==
+Received: from localhost (qs51p00im-dlb-asmtp-mailmevip.me.com [17.57.155.28])
+	by qs51p00im-qukt01071901.me.com (Postfix) with ESMTPSA id DC75962801F9;
+	Thu,  3 Apr 2025 06:48:50 +0000 (UTC)
+From: Konstantin Shabanov <mail@etehtsea.me>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Konstantin Shabanov <mail@etehtsea.me>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH RESEND] (drm/rockchip): Consistently use rk3399 registers consts
+Date: Thu,  3 Apr 2025 06:47:39 +0000
+Message-ID: <20250403064740.4016-1-mail@etehtsea.me>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250403033748.245007-5-andyshrk@163.com>
+X-Proofpoint-GUID: F5HyCAe8Rgl6mAQE-0KnVlkmIu4GVdCO
+X-Proofpoint-ORIG-GUID: F5HyCAe8Rgl6mAQE-0KnVlkmIu4GVdCO
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-03_02,2025-04-02_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=386
+ phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0 mlxscore=0
+ adultscore=0 spamscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2503100000 definitions=main-2504030033
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250402_234859_464173_D08FC43C 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,32 +82,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 03, 2025 at 11:37:32AM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> RA620 is a DP to HDMI bridge converter from RADXA, which first
-> found be used on ROCK 5 ITX.
-> 
-> This chip can be used without involving software.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v3:
-> - First introduced in this version.
+As rk3399 has its own registers definitions, update related structs to
+use them.
+There are no changes in behaviour as updated constants values are the
+ for rk3288/rk3368/rk3399 chips.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+---
+Apologies for resend. The first email hadn't reached the mailing list for some reason.
 
-Best regards,
-Krzysztof
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 94 ++++++++++-----------
+ 1 file changed, 47 insertions(+), 47 deletions(-)
 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 4e2099d86517..d1f788763318 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -906,21 +906,21 @@ static const struct vop_data rk3366_vop = {
+
+ static const struct vop_output rk3399_output = {
+ 	.dp_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 19),
+-	.rgb_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 19),
+-	.hdmi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 23),
+-	.edp_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 27),
+-	.mipi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 31),
++	.rgb_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 19),
++	.hdmi_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 23),
++	.edp_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 27),
++	.mipi_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 31),
+ 	.dp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 16),
+-	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 16),
+-	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 20),
+-	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 24),
+-	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 28),
++	.rgb_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 16),
++	.hdmi_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 20),
++	.edp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 24),
++	.mipi_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 28),
+ 	.dp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 11),
+-	.rgb_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 12),
+-	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
+-	.edp_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 14),
+-	.mipi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 15),
+-	.mipi_dual_channel_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 3),
++	.rgb_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 12),
++	.hdmi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 13),
++	.edp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 14),
++	.mipi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 15),
++	.mipi_dual_channel_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 3),
+ };
+
+ static const struct vop_common rk3399_common = {
+@@ -975,23 +975,23 @@ static const struct vop_win_phy rk3399_win0_data = {
+ 	.data_formats = formats_win_full_10,
+ 	.nformats = ARRAY_SIZE(formats_win_full_10),
+ 	.format_modifiers = format_modifiers_win_full_afbc,
+-	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+-	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+-	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
+-	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
+-	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
+-	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
+-	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
+-	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+-	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+-	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
+-	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
+-	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
+-	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
+-	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
+-	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
+-	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
+-	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
++	.enable = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 0),
++	.format = VOP_REG(RK3399_WIN0_CTRL0, 0x7, 1),
++	.fmt_10 = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 4),
++	.rb_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 15),
++	.x_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 21),
++	.y_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 22),
++	.act_info = VOP_REG(RK3399_WIN0_ACT_INFO, 0x1fff1fff, 0),
++	.dsp_info = VOP_REG(RK3399_WIN0_DSP_INFO, 0x0fff0fff, 0),
++	.dsp_st = VOP_REG(RK3399_WIN0_DSP_ST, 0x1fff1fff, 0),
++	.yrgb_mst = VOP_REG(RK3399_WIN0_YRGB_MST, 0xffffffff, 0),
++	.uv_mst = VOP_REG(RK3399_WIN0_CBR_MST, 0xffffffff, 0),
++	.yrgb_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 0),
++	.uv_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 16),
++	.src_alpha_ctl = VOP_REG(RK3399_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
++	.dst_alpha_ctl = VOP_REG(RK3399_WIN0_DST_ALPHA_CTRL, 0xff, 0),
++	.channel = VOP_REG(RK3399_WIN0_CTRL2, 0xff, 0),
+ };
+
+ static const struct vop_win_phy rk3399_win1_data = {
+@@ -999,23 +999,23 @@ static const struct vop_win_phy rk3399_win1_data = {
+ 	.data_formats = formats_win_full_10,
+ 	.nformats = ARRAY_SIZE(formats_win_full_10),
+ 	.format_modifiers = format_modifiers_win_full,
+-	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+-	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+-	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
+-	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
+-	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
+-	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
+-	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
+-	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+-	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+-	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
+-	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
+-	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
+-	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
+-	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
+-	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
+-	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
+-	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
++	.enable = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 0),
++	.format = VOP_REG(RK3399_WIN0_CTRL0, 0x7, 1),
++	.fmt_10 = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 4),
++	.rb_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 15),
++	.x_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 21),
++	.y_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 22),
++	.act_info = VOP_REG(RK3399_WIN0_ACT_INFO, 0x1fff1fff, 0),
++	.dsp_info = VOP_REG(RK3399_WIN0_DSP_INFO, 0x0fff0fff, 0),
++	.dsp_st = VOP_REG(RK3399_WIN0_DSP_ST, 0x1fff1fff, 0),
++	.yrgb_mst = VOP_REG(RK3399_WIN0_YRGB_MST, 0xffffffff, 0),
++	.uv_mst = VOP_REG(RK3399_WIN0_CBR_MST, 0xffffffff, 0),
++	.yrgb_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 0),
++	.uv_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 16),
++	.src_alpha_ctl = VOP_REG(RK3399_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
++	.dst_alpha_ctl = VOP_REG(RK3399_WIN0_DST_ALPHA_CTRL, 0xff, 0),
++	.channel = VOP_REG(RK3399_WIN0_CTRL2, 0xff, 0),
+ };
+
+ /*
+
+base-commit: 6b60c282330c46954be9ae1d33cd5c7e5acb315c
+--
+2.48.1
 
 _______________________________________________
 Linux-rockchip mailing list
