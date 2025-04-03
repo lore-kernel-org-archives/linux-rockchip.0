@@ -4,49 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6DF1C36014
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 19:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D374C36014
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 19:35:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bheqKQ97bFNNGBhvq49gpUQnRnXa9oX7omMc+17/e4g=; b=JUlRenmNEeQdKj
-	3+/GEFw0ARuH8ozucZUqrzOSt72aAC/j+mh+aXmu2qxyBcmS2UJAPWNwLl/0O1Xn97Yt0FWhKWvc+
-	4/lfHmt6fBjvZWZt5bicsVxQlJOk91NY3j3RKpqJyYkMqS1P2gYU01KMVXs9RTjeUKCTKury9SkSr
-	6loM0VgFBhfjSWWmtaboVGQMNNVdlaS8qfFU+gupwT0n5V8uGrhOXmBy5DGqhgkSAtZUhw6Ei7+2Q
-	lS/L58u6NvwShaczkcBaR0t/haK1Bi8KGmxastcl8dHqv3//qEpvvvpRKzcnMNlYdIMFOV9kSAKI8
-	FV1TZBzYjLTEuGxsx9YQ==;
+	List-Owner; bh=3l2UVKIaMRj3Tnh93YihUhvt5h6LXpWmbhVzY84Hao4=; b=2Ft9S4m64GCnYo
+	/2MPJCVIpWOaq08tc5S3+GOqYE6IwwYShLJPs28jLMzkFR8Bi/Ow2hedpk/Eiqyr5SJfsT21IKsGK
+	W0Ik1HlTIfNLdW1LMbyYAnkphkabtk6QNQwmCTnYDKKifZ23gX85W1EkFwG3dh245r3Qz1t832o5t
+	HDVOVcmpTE1ZLlCH3P7zgE954YKEqy2Dy52WarKQWZ/kn3YZsMtY4XPNhgAzxOjO38Eg2SgOP1Sl2
+	fdhVOan6q6WBR0hXb1nuNytI28xIWG7HyD1u9kngel6nM9lLdZvcLWR8+afTnR1Xd6zKdxINRYGm9
+	pz8TnhLaL1cL8OjLkHHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0QFv-00000009kpX-1snj;
-	Thu, 03 Apr 2025 19:29:39 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u0QLG-00000009m9o-3wiE;
+	Thu, 03 Apr 2025 19:35:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Q0B-00000009fzE-30QF;
-	Thu, 03 Apr 2025 19:13:25 +0000
+	id 1u0Q1M-00000009gU1-1OM7;
+	Thu, 03 Apr 2025 19:14:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1BAF35C6C0F;
-	Thu,  3 Apr 2025 19:11:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DB47C4CEE3;
-	Thu,  3 Apr 2025 19:13:21 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8C6A343832;
+	Thu,  3 Apr 2025 19:14:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42BDCC4CEEA;
+	Thu,  3 Apr 2025 19:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743707602;
-	bh=Od6xNWqg5f1TGcVxQW6t87mVJrpqg1QBQau9rDrcCbc=;
+	s=k20201202; t=1743707676;
+	bh=bYDF03y7wMr/7fpD3lfeArDZi4hx1ONU08HD9qmFx7o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NzLLLEDiM5pVl7mLHWB9RQwLwsGvU5uec/xEjZB7VNpF4ryZtFDltRwHUgBDOGApz
-	 TvaPrPpsz8cE5nbI6uh4tMDDEF+bThtB56GYsWikosTIpyrRTi912hHnzo/gBH/vww
-	 8rIDSQzQajsaNgyIBAWFjYv7CWS1SAS+se5J2Lhc7+SfwbcxlotvC7pV0HAaknMyFE
-	 3SG2RGL9GZiYpTqssqOfEOsdYXijLxvUXJtt5nZpNu00guSIbuqMgPAunj2nzOtehG
-	 t9snVEKE0piex2UiSX8jfEa2Qta2TJhS3myX4sH0Np8K+aoFwu/5ytwjBvHRE16lIz
-	 5pyR6L3/YipJQ==
+	b=R6dYHZ8baKwt9agcsfPdxoS0PlwkqzkhwDqKdrMjwLofJrw0gFKrf2o3JFy8esuDc
+	 qT4/D9lONS6Sj8vmFnoDnJ2EYFfXOIFZjVwSNBO7+o1D1/1MaCCMFaELaPal+eand+
+	 0TflB2O8czW2ZPxKSr8CsnnWp447abL1PJjDPvEm5VWq5vlyChSSL0JFPTguSZ/zVp
+	 10GBX9qKKC0V7aHwDCyZgizgAncPKbv0UbLsr/ljhjdmKhgPsOHqk+xqyZsJLKdzty
+	 +Z2jSxpAovNYqWcdujVsSlenp4QaCKzw95OjY61mD33IQtH6G0irRWcboi7RHqE25V
+	 hkUz/tQ6qnuuw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.14 03/44] drm/rockchip: Don't change hdmi reference clock rate
-Date: Thu,  3 Apr 2025 15:12:32 -0400
-Message-Id: <20250403191313.2679091-3-sashal@kernel.org>
+Cc: Jani Nikula <jani.nikula@intel.com>,
+	Simona Vetter <simona.vetter@ffwll.ch>,
+	Louis Chauvet <louis.chauvet@bootlin.com>,
+	Sasha Levin <sashal@kernel.org>,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.14 29/44] drm/rockchip: stop passing non struct drm_device to drm_err() and friends
+Date: Thu,  3 Apr 2025 15:12:58 -0400
+Message-Id: <20250403191313.2679091-29-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250403191313.2679091-1-sashal@kernel.org>
 References: <20250403191313.2679091-1-sashal@kernel.org>
@@ -55,8 +70,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_121323_841313_836DCC00 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20250403_121436_411597_B5C9E735 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,74 +83,174 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, simona@ffwll.ch, Heiko Stuebner <heiko@sntech.de>, tzimmermann@suse.de, maarten.lankhorst@linux.intel.com, hjc@rock-chips.com, mripard@kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Derek Foreman <derek.foreman@collabora.com>, andy.yan@rock-chips.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Derek Foreman <derek.foreman@collabora.com>
+From: Jani Nikula <jani.nikula@intel.com>
 
-[ Upstream commit 1854df7087be70ad54e24b2e308d7558ebea9f27 ]
+[ Upstream commit abeef1f9eaf9301cc98a6841dab5f72de5c95360 ]
 
-The code that changes hdmi->ref_clk was accidentally copied from
-downstream code that sets a different clock. We don't actually
-want to set any clock here at all.
+The expectation is that the struct drm_device based logging helpers get
+passed an actual struct drm_device pointer rather than some random
+struct pointer where you can dereference the ->dev member.
 
-Setting this clock incorrectly leads to incorrect timings for
-DDC, CEC, and HDCP signal generation.
+Convert drm_err(hdmi, ...) to dev_err(hdmi->dev, ...). This matches
+current usage, but drops "[drm] *ERROR*" prefix from logging.
 
-No Fixes listed, as the theoretical timing error in DDC appears to
-still be within tolerances and harmless - and HDCP and CEC are not
-yet supported.
-
-Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://patchwork.freedesktop.org/patch/msgid/20241217201708.3320673-1-derek.foreman@collabora.com
+Reviewed-by: Simona Vetter <simona.vetter@ffwll.ch>
+Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/f42da4c9943a2f2a9de4272b7849e72236d4c3f9.1737644530.git.jani.nikula@intel.com
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c    | 16 ++++++++--------
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index e498767a0a667..cebd72bf1ef25 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -54,7 +54,6 @@ struct rockchip_hdmi_qp {
- 	struct regmap *regmap;
- 	struct regmap *vo_regmap;
- 	struct rockchip_encoder encoder;
--	struct clk *ref_clk;
- 	struct dw_hdmi_qp *hdmi;
- 	struct phy *phy;
- 	struct gpio_desc *enable_gpio;
-@@ -81,7 +80,6 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- 	if (crtc && crtc->state) {
- 		rate = drm_hdmi_compute_mode_clock(&crtc->state->adjusted_mode,
- 						   8, HDMI_COLORSPACE_RGB);
--		clk_set_rate(hdmi->ref_clk, rate);
- 		/*
- 		 * FIXME: Temporary workaround to pass pixel clock rate
- 		 * to the PHY driver until phy_configure_opts_hdmi
-@@ -330,17 +328,6 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index e7a6669c46b07..f737e7d46e667 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -203,7 +203,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 
+ 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+ 	if (IS_ERR(hdmi->regmap)) {
+-		drm_err(hdmi, "Unable to get rockchip,grf\n");
++		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
+ 		return PTR_ERR(hdmi->regmap);
+ 	}
+ 
+@@ -214,7 +214,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 	if (IS_ERR(hdmi->ref_clk)) {
+ 		ret = PTR_ERR(hdmi->ref_clk);
+ 		if (ret != -EPROBE_DEFER)
+-			drm_err(hdmi, "failed to get reference clock\n");
++			dev_err(hdmi->dev, "failed to get reference clock\n");
  		return ret;
  	}
  
--	for (i = 0; i < ret; i++) {
--		if (!strcmp(clks[i].id, "ref")) {
--			hdmi->ref_clk = clks[1].clk;
--			break;
--		}
--	}
--	if (!hdmi->ref_clk) {
--		drm_err(hdmi, "Missing ref clock\n");
--		return -EINVAL;
--	}
--
- 	hdmi->enable_gpio = devm_gpiod_get_optional(hdmi->dev, "enable",
+@@ -222,7 +222,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 	if (IS_ERR(hdmi->grf_clk)) {
+ 		ret = PTR_ERR(hdmi->grf_clk);
+ 		if (ret != -EPROBE_DEFER)
+-			drm_err(hdmi, "failed to get grf clock\n");
++			dev_err(hdmi->dev, "failed to get grf clock\n");
+ 		return ret;
+ 	}
+ 
+@@ -302,16 +302,16 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+ 
+ 	ret = clk_prepare_enable(hdmi->grf_clk);
+ 	if (ret < 0) {
+-		drm_err(hdmi, "failed to enable grfclk %d\n", ret);
++		dev_err(hdmi->dev, "failed to enable grfclk %d\n", ret);
+ 		return;
+ 	}
+ 
+ 	ret = regmap_write(hdmi->regmap, hdmi->chip_data->lcdsel_grf_reg, val);
+ 	if (ret != 0)
+-		drm_err(hdmi, "Could not write to GRF: %d\n", ret);
++		dev_err(hdmi->dev, "Could not write to GRF: %d\n", ret);
+ 
+ 	clk_disable_unprepare(hdmi->grf_clk);
+-	drm_dbg(hdmi, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
++	dev_dbg(hdmi->dev, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
+ }
+ 
+ static int
+@@ -574,7 +574,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	ret = rockchip_hdmi_parse_dt(hdmi);
+ 	if (ret) {
+ 		if (ret != -EPROBE_DEFER)
+-			drm_err(hdmi, "Unable to parse OF data\n");
++			dev_err(hdmi->dev, "Unable to parse OF data\n");
+ 		return ret;
+ 	}
+ 
+@@ -582,7 +582,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(hdmi->phy)) {
+ 		ret = PTR_ERR(hdmi->phy);
+ 		if (ret != -EPROBE_DEFER)
+-			drm_err(hdmi, "failed to get phy\n");
++			dev_err(hdmi->dev, "failed to get phy\n");
+ 		return ret;
+ 	}
+ 
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index cebd72bf1ef25..6bbc84c5d716d 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -170,7 +170,7 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
+ 	if (drm) {
+ 		changed = drm_helper_hpd_irq_event(drm);
+ 		if (changed)
+-			drm_dbg(hdmi, "connector status changed\n");
++			dev_dbg(hdmi->dev, "connector status changed\n");
+ 	}
+ }
+ 
+@@ -287,7 +287,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 		}
+ 	}
+ 	if (hdmi->port_id < 0) {
+-		drm_err(hdmi, "Failed to match HDMI port ID\n");
++		dev_err(hdmi->dev, "Failed to match HDMI port ID\n");
+ 		return hdmi->port_id;
+ 	}
+ 
+@@ -311,20 +311,20 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	hdmi->regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
+ 						       "rockchip,grf");
+ 	if (IS_ERR(hdmi->regmap)) {
+-		drm_err(hdmi, "Unable to get rockchip,grf\n");
++		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
+ 		return PTR_ERR(hdmi->regmap);
+ 	}
+ 
+ 	hdmi->vo_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
+ 							  "rockchip,vo-grf");
+ 	if (IS_ERR(hdmi->vo_regmap)) {
+-		drm_err(hdmi, "Unable to get rockchip,vo-grf\n");
++		dev_err(hdmi->dev, "Unable to get rockchip,vo-grf\n");
+ 		return PTR_ERR(hdmi->vo_regmap);
+ 	}
+ 
+ 	ret = devm_clk_bulk_get_all_enabled(hdmi->dev, &clks);
+ 	if (ret < 0) {
+-		drm_err(hdmi, "Failed to get clocks: %d\n", ret);
++		dev_err(hdmi->dev, "Failed to get clocks: %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -332,7 +332,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
  						    GPIOD_OUT_HIGH);
  	if (IS_ERR(hdmi->enable_gpio)) {
+ 		ret = PTR_ERR(hdmi->enable_gpio);
+-		drm_err(hdmi, "Failed to request enable GPIO: %d\n", ret);
++		dev_err(hdmi->dev, "Failed to request enable GPIO: %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -340,7 +340,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(hdmi->phy)) {
+ 		ret = PTR_ERR(hdmi->phy);
+ 		if (ret != -EPROBE_DEFER)
+-			drm_err(hdmi, "failed to get phy: %d\n", ret);
++			dev_err(hdmi->dev, "failed to get phy: %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -403,7 +403,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	connector = drm_bridge_connector_init(drm, encoder);
+ 	if (IS_ERR(connector)) {
+ 		ret = PTR_ERR(connector);
+-		drm_err(hdmi, "failed to init bridge connector: %d\n", ret);
++		dev_err(hdmi->dev, "failed to init bridge connector: %d\n", ret);
+ 		return ret;
+ 	}
+ 
 -- 
 2.39.5
 
