@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D374C36014
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 19:35:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B3BC3600C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 19:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3l2UVKIaMRj3Tnh93YihUhvt5h6LXpWmbhVzY84Hao4=; b=2Ft9S4m64GCnYo
-	/2MPJCVIpWOaq08tc5S3+GOqYE6IwwYShLJPs28jLMzkFR8Bi/Ow2hedpk/Eiqyr5SJfsT21IKsGK
-	W0Ik1HlTIfNLdW1LMbyYAnkphkabtk6QNQwmCTnYDKKifZ23gX85W1EkFwG3dh245r3Qz1t832o5t
-	HDVOVcmpTE1ZLlCH3P7zgE954YKEqy2Dy52WarKQWZ/kn3YZsMtY4XPNhgAzxOjO38Eg2SgOP1Sl2
-	fdhVOan6q6WBR0hXb1nuNytI28xIWG7HyD1u9kngel6nM9lLdZvcLWR8+afTnR1Xd6zKdxINRYGm9
-	pz8TnhLaL1cL8OjLkHHw==;
+	List-Owner; bh=0DHp5BW8D0Ceamnvl2dNU4KHgCP1ZePuAw9uZ64NhFY=; b=qLqGzARAK2S/Aj
+	f36TxeVQrKJKO571jxg6ccZTd4Sct/KE8TPt4l+TAaA2HkEaI8g5ibBRtHLB7+atXPWgAEJoYb60C
+	nspl1m/yY9meHC241W6QkrCbDYFeH+chQulyjum3BkCA/VfGoq30891fdVOxJpP9hTB0JJrMYuWD0
+	PxVPsVyGLk+LNtQwnCjXzQ/AcX2B6Qb4fgUzuywlWPT6ZpCI8/6fYPVJ6yW77Nz1dZ6zRcNHaJByr
+	WlvBuYKhHbdF50FqIvvijpQmMIUoJ0WTan9aQkx6EA8Qq1ttX2Fqa/wfZqTvSbrFcX1sPhrh/scJ0
+	OINR3pbsZgKqmVjJuWSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0QLG-00000009m9o-3wiE;
-	Thu, 03 Apr 2025 19:35:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u0QN2-00000009mbi-4Avt;
+	Thu, 03 Apr 2025 19:37:00 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Q1M-00000009gU1-1OM7;
-	Thu, 03 Apr 2025 19:14:37 +0000
+	id 1u0Q1P-00000009gVq-150k;
+	Thu, 03 Apr 2025 19:14:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8C6A343832;
-	Thu,  3 Apr 2025 19:14:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42BDCC4CEEA;
-	Thu,  3 Apr 2025 19:14:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B1806614BA;
+	Thu,  3 Apr 2025 19:14:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97257C4CEE3;
+	Thu,  3 Apr 2025 19:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743707676;
-	bh=bYDF03y7wMr/7fpD3lfeArDZi4hx1ONU08HD9qmFx7o=;
+	s=k20201202; t=1743707678;
+	bh=71wBi/cNBET7g7tuz2d1oBbbk5rq2cJkkfj8t+08GTU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=R6dYHZ8baKwt9agcsfPdxoS0PlwkqzkhwDqKdrMjwLofJrw0gFKrf2o3JFy8esuDc
-	 qT4/D9lONS6Sj8vmFnoDnJ2EYFfXOIFZjVwSNBO7+o1D1/1MaCCMFaELaPal+eand+
-	 0TflB2O8czW2ZPxKSr8CsnnWp447abL1PJjDPvEm5VWq5vlyChSSL0JFPTguSZ/zVp
-	 10GBX9qKKC0V7aHwDCyZgizgAncPKbv0UbLsr/ljhjdmKhgPsOHqk+xqyZsJLKdzty
-	 +Z2jSxpAovNYqWcdujVsSlenp4QaCKzw95OjY61mD33IQtH6G0irRWcboi7RHqE25V
-	 hkUz/tQ6qnuuw==
+	b=WBuH+QjAvTrLe3JdD6N32A7iweSTs54Ez/o4QXpclFpUKcDAs/nJNBvIUeyxixi2r
+	 grEE2CGDYyHm5r5JAt3xDGVFqewhlATYyfdbM/YmuLZHEPsU+xoQnjjRuWXLu/Ouan
+	 GYCgPGHAUIKi0gYSCMOP17+r11OtrJ5d3MydbnzX3TUfKoFJEvCXMV5p+alTQlRjZi
+	 mFPJ4+gaLUVLYk2+6HyZj3E382c8THPUXsJikvb34WaO9NHMroJWXmM5p03yM6BLXn
+	 d6dJTXChd1GumN5dCJ3MxQ2+z2YyaIx4Lw1sCMh8/EF6CCgQ/nT4c0c3IWpi/8VXCf
+	 bGaU7LgBsqr5g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Jani Nikula <jani.nikula@intel.com>,
-	Simona Vetter <simona.vetter@ffwll.ch>,
-	Louis Chauvet <louis.chauvet@bootlin.com>,
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	hjc@rock-chips.com,
+	manivannan.sadhasivam@linaro.org,
+	kw@linux.com,
+	gregkh@linuxfoundation.org,
+	lpieralisi@kernel.org,
 	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 29/44] drm/rockchip: stop passing non struct drm_device to drm_err() and friends
-Date: Thu,  3 Apr 2025 15:12:58 -0400
-Message-Id: <20250403191313.2679091-29-sashal@kernel.org>
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.14 30/44] PCI: Add Rockchip Vendor ID
+Date: Thu,  3 Apr 2025 15:12:59 -0400
+Message-Id: <20250403191313.2679091-30-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250403191313.2679091-1-sashal@kernel.org>
 References: <20250403191313.2679091-1-sashal@kernel.org>
@@ -69,9 +67,6 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_121436_411597_B5C9E735 
-X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,179 +78,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jani Nikula <jani.nikula@intel.com>
-
-[ Upstream commit abeef1f9eaf9301cc98a6841dab5f72de5c95360 ]
-
-The expectation is that the struct drm_device based logging helpers get
-passed an actual struct drm_device pointer rather than some random
-struct pointer where you can dereference the ->dev member.
-
-Convert drm_err(hdmi, ...) to dev_err(hdmi->dev, ...). This matches
-current usage, but drops "[drm] *ERROR*" prefix from logging.
-
-Reviewed-by: Simona Vetter <simona.vetter@ffwll.ch>
-Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-Signed-off-by: Jani Nikula <jani.nikula@intel.com>
-Link: https://patchwork.freedesktop.org/patch/msgid/f42da4c9943a2f2a9de4272b7849e72236d4c3f9.1737644530.git.jani.nikula@intel.com
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c    | 16 ++++++++--------
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 16 ++++++++--------
- 2 files changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index e7a6669c46b07..f737e7d46e667 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -203,7 +203,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 
- 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(hdmi->regmap)) {
--		drm_err(hdmi, "Unable to get rockchip,grf\n");
-+		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
- 		return PTR_ERR(hdmi->regmap);
- 	}
- 
-@@ -214,7 +214,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 	if (IS_ERR(hdmi->ref_clk)) {
- 		ret = PTR_ERR(hdmi->ref_clk);
- 		if (ret != -EPROBE_DEFER)
--			drm_err(hdmi, "failed to get reference clock\n");
-+			dev_err(hdmi->dev, "failed to get reference clock\n");
- 		return ret;
- 	}
- 
-@@ -222,7 +222,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 	if (IS_ERR(hdmi->grf_clk)) {
- 		ret = PTR_ERR(hdmi->grf_clk);
- 		if (ret != -EPROBE_DEFER)
--			drm_err(hdmi, "failed to get grf clock\n");
-+			dev_err(hdmi->dev, "failed to get grf clock\n");
- 		return ret;
- 	}
- 
-@@ -302,16 +302,16 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
- 
- 	ret = clk_prepare_enable(hdmi->grf_clk);
- 	if (ret < 0) {
--		drm_err(hdmi, "failed to enable grfclk %d\n", ret);
-+		dev_err(hdmi->dev, "failed to enable grfclk %d\n", ret);
- 		return;
- 	}
- 
- 	ret = regmap_write(hdmi->regmap, hdmi->chip_data->lcdsel_grf_reg, val);
- 	if (ret != 0)
--		drm_err(hdmi, "Could not write to GRF: %d\n", ret);
-+		dev_err(hdmi->dev, "Could not write to GRF: %d\n", ret);
- 
- 	clk_disable_unprepare(hdmi->grf_clk);
--	drm_dbg(hdmi, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
-+	dev_dbg(hdmi->dev, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
- }
- 
- static int
-@@ -574,7 +574,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	ret = rockchip_hdmi_parse_dt(hdmi);
- 	if (ret) {
- 		if (ret != -EPROBE_DEFER)
--			drm_err(hdmi, "Unable to parse OF data\n");
-+			dev_err(hdmi->dev, "Unable to parse OF data\n");
- 		return ret;
- 	}
- 
-@@ -582,7 +582,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(hdmi->phy)) {
- 		ret = PTR_ERR(hdmi->phy);
- 		if (ret != -EPROBE_DEFER)
--			drm_err(hdmi, "failed to get phy\n");
-+			dev_err(hdmi->dev, "failed to get phy\n");
- 		return ret;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index cebd72bf1ef25..6bbc84c5d716d 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -170,7 +170,7 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
- 	if (drm) {
- 		changed = drm_helper_hpd_irq_event(drm);
- 		if (changed)
--			drm_dbg(hdmi, "connector status changed\n");
-+			dev_dbg(hdmi->dev, "connector status changed\n");
- 	}
- }
- 
-@@ -287,7 +287,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		}
- 	}
- 	if (hdmi->port_id < 0) {
--		drm_err(hdmi, "Failed to match HDMI port ID\n");
-+		dev_err(hdmi->dev, "Failed to match HDMI port ID\n");
- 		return hdmi->port_id;
- 	}
- 
-@@ -311,20 +311,20 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	hdmi->regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
- 						       "rockchip,grf");
- 	if (IS_ERR(hdmi->regmap)) {
--		drm_err(hdmi, "Unable to get rockchip,grf\n");
-+		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
- 		return PTR_ERR(hdmi->regmap);
- 	}
- 
- 	hdmi->vo_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
- 							  "rockchip,vo-grf");
- 	if (IS_ERR(hdmi->vo_regmap)) {
--		drm_err(hdmi, "Unable to get rockchip,vo-grf\n");
-+		dev_err(hdmi->dev, "Unable to get rockchip,vo-grf\n");
- 		return PTR_ERR(hdmi->vo_regmap);
- 	}
- 
- 	ret = devm_clk_bulk_get_all_enabled(hdmi->dev, &clks);
- 	if (ret < 0) {
--		drm_err(hdmi, "Failed to get clocks: %d\n", ret);
-+		dev_err(hdmi->dev, "Failed to get clocks: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -332,7 +332,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 						    GPIOD_OUT_HIGH);
- 	if (IS_ERR(hdmi->enable_gpio)) {
- 		ret = PTR_ERR(hdmi->enable_gpio);
--		drm_err(hdmi, "Failed to request enable GPIO: %d\n", ret);
-+		dev_err(hdmi->dev, "Failed to request enable GPIO: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -340,7 +340,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(hdmi->phy)) {
- 		ret = PTR_ERR(hdmi->phy);
- 		if (ret != -EPROBE_DEFER)
--			drm_err(hdmi, "failed to get phy: %d\n", ret);
-+			dev_err(hdmi->dev, "failed to get phy: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -403,7 +403,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	connector = drm_bridge_connector_init(drm, encoder);
- 	if (IS_ERR(connector)) {
- 		ret = PTR_ERR(connector);
--		drm_err(hdmi, "failed to init bridge connector: %d\n", ret);
-+		dev_err(hdmi->dev, "failed to init bridge connector: %d\n", ret);
- 		return ret;
- 	}
- 
--- 
-2.39.5
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+CgpbIFVwc3RyZWFtIGNv
+bW1pdCAyMGJiYjA4M2JiYzlkM2Y4ZGIzOTBmMmUzNWUxNjhmMWIyM2RhZThhIF0KCk1vdmUgUENJ
+X1ZFTkRPUl9JRF9ST0NLQ0hJUCBmcm9tIHBjaV9lbmRwb2ludF90ZXN0LmMgdG8gcGNpX2lkcy5o
+IGFuZApyZXVzZSBpdCBpbiBwY2llLXJvY2tjaGlwLWhvc3QuYy4KCkxpbms6IGh0dHBzOi8vbG9y
+ZS5rZXJuZWwub3JnL3IvMjAyNTAyMTgwOTIxMjAuMjMyMjc4NC0yLWNhc3NlbEBrZXJuZWwub3Jn
+ClNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgpTaWdu
+ZWQtb2ZmLWJ5OiBOaWtsYXMgQ2Fzc2VsIDxjYXNzZWxAa2VybmVsLm9yZz4KU2lnbmVkLW9mZi1i
+eTogQmpvcm4gSGVsZ2FhcyA8YmhlbGdhYXNAZ29vZ2xlLmNvbT4KU2lnbmVkLW9mZi1ieTogS3J6
+eXN6dG9mIFdpbGN6ecWEc2tpIDxrd2lsY3p5bnNraUBrZXJuZWwub3JnPgpTaWduZWQtb2ZmLWJ5
+OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9taXNjL3BjaV9l
+bmRwb2ludF90ZXN0LmMgICAgICAgICAgICB8IDEgLQogZHJpdmVycy9wY2kvY29udHJvbGxlci9w
+Y2llLXJvY2tjaGlwLWhvc3QuYyB8IDIgKy0KIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1y
+b2NrY2hpcC5oICAgICAgfCAxIC0KIGluY2x1ZGUvbGludXgvcGNpX2lkcy5oICAgICAgICAgICAg
+ICAgICAgICAgfCAyICsrCiA0IGZpbGVzIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxl
+dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL21pc2MvcGNpX2VuZHBvaW50X3Rlc3QuYyBi
+L2RyaXZlcnMvbWlzYy9wY2lfZW5kcG9pbnRfdGVzdC5jCmluZGV4IGQ1YWM3MWE0OTM4NjUuLmIw
+MDI3NDBhY2Y4ZDUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbWlzYy9wY2lfZW5kcG9pbnRfdGVzdC5j
+CisrKyBiL2RyaXZlcnMvbWlzYy9wY2lfZW5kcG9pbnRfdGVzdC5jCkBAIC04OCw3ICs4OCw2IEBA
+CiAjZGVmaW5lIFBDSV9ERVZJQ0VfSURfUkVORVNBU19SOEE3NzRFMQkJMHgwMDI1CiAjZGVmaW5l
+IFBDSV9ERVZJQ0VfSURfUkVORVNBU19SOEE3NzlGMAkJMHgwMDMxCiAKLSNkZWZpbmUgUENJX1ZF
+TkRPUl9JRF9ST0NLQ0hJUAkJCTB4MWQ4NwogI2RlZmluZSBQQ0lfREVWSUNFX0lEX1JPQ0tDSElQ
+X1JLMzU4OAkJMHgzNTg4CiAKIHN0YXRpYyBERUZJTkVfSURBKHBjaV9lbmRwb2ludF90ZXN0X2lk
+YSk7CmRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9z
+dC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwppbmRleCA1
+YWRhYzZhZGMwNDZmLi42YTQ2YmUxN2FhOTFiIDEwMDY0NAotLS0gYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
+cGNpZS1yb2NrY2hpcC1ob3N0LmMKQEAgLTM2Nyw3ICszNjcsNyBAQCBzdGF0aWMgaW50IHJvY2tj
+aGlwX3BjaWVfaG9zdF9pbml0X3BvcnQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQog
+CQl9CiAJfQogCi0Jcm9ja2NoaXBfcGNpZV93cml0ZShyb2NrY2hpcCwgUk9DS0NISVBfVkVORE9S
+X0lELAorCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIFBDSV9WRU5ET1JfSURfUk9DS0NI
+SVAsCiAJCQkgICAgUENJRV9DT1JFX0NPTkZJR19WRU5ET1IpOwogCXJvY2tjaGlwX3BjaWVfd3Jp
+dGUocm9ja2NoaXAsCiAJCQkgICAgUENJX0NMQVNTX0JSSURHRV9QQ0lfTk9STUFMIDw8IDgsCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaCBiL2RyaXZl
+cnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCmluZGV4IDExZGVmNTk4NTM0YjIuLjE0
+OTU0ZjQzZTVlOWEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2Nr
+Y2hpcC5oCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCkBAIC0y
+MDAsNyArMjAwLDYgQEAKICNkZWZpbmUgQVhJX1dSQVBQRVJfTk9SX01TRwkJCTB4YwogCiAjZGVm
+aW5lIFBDSUVfUkNfU0VORF9QTUVfT0ZGCQkJMHgxMTk2MAotI2RlZmluZSBST0NLQ0hJUF9WRU5E
+T1JfSUQJCQkweDFkODcKICNkZWZpbmUgUENJRV9MSU5LX0lTX0wyKHgpIFwKIAkoKCh4KSAmIFBD
+SUVfQ0xJRU5UX0RFQlVHX0xUU1NNX01BU0spID09IFBDSUVfQ0xJRU5UX0RFQlVHX0xUU1NNX0wy
+KQogI2RlZmluZSBQQ0lFX0xJTktfVFJBSU5JTkdfRE9ORSh4KSBcCmRpZmYgLS1naXQgYS9pbmNs
+dWRlL2xpbnV4L3BjaV9pZHMuaCBiL2luY2x1ZGUvbGludXgvcGNpX2lkcy5oCmluZGV4IDFhMjU5
+NGEzODE5OWYuLjJhOWNhM2RiYWEwZTkgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvbGludXgvcGNpX2lk
+cy5oCisrKyBiL2luY2x1ZGUvbGludXgvcGNpX2lkcy5oCkBAIC0yNjA5LDYgKzI2MDksOCBAQAog
+CiAjZGVmaW5lIFBDSV9WRU5ET1JfSURfWkhBT1hJTgkJMHgxZDE3CiAKKyNkZWZpbmUgUENJX1ZF
+TkRPUl9JRF9ST0NLQ0hJUAkJMHgxZDg3CisKICNkZWZpbmUgUENJX1ZFTkRPUl9JRF9IWUdPTgkJ
+MHgxZDk0CiAKICNkZWZpbmUgUENJX1ZFTkRPUl9JRF9NRVRBCQkweDFkOWIKLS0gCjIuMzkuNQoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
