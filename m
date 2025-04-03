@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C7AC3601B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 06:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941BAC3601B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Apr 2025 07:53:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=swA2g3mdRwaGUERd7X96RmO/fn4bFeq98gdNPZqG8sE=; b=RGSuZM66K6X0RK
-	AfvJrR7fnZUWSNfuTp7qcIjGZn5OoP+PORTv2WpLc/HuZMAeb5j2l1s5J5H+8WhEk+HTyG4kgzkyM
-	GAfVyyp+M/7GoHF8Imd8IU5Zo/BT4Kx1tE0TbSn9k1idwxR0JbGl1zSx12VTpLztmyQt6Eub0LWan
-	JILgDBBeZUj/WGhIGDEq7o01UOJJYyLo0wxdUHJdyThHJR+akIBWXseXJZbbFIXyyfEKj+Ai4lzVO
-	IpOY1drAu44rHXR8LDUVarbpJH7PZBZCUfEzBRS+kuRI0CZ3IN+hgRHt5qo0p5Vu0dcLfapF3zxrW
-	iXyShG+F/rmdkpIpMDkA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=kOziRhpi4engIxgTf5AkfImBuwImwZaI8Rg1vFeCUvE=; b=TNq
+	Wp5ctaFoWtEb9kwiWFqKiJTdCsleL5FY5wEFUtZyr/KBc1I+ywz19yZGQF0rGfLa/eZ0gxSaFPkjm
+	aLfrw/Cpx7omF26bRYHY4QCSJjFmoeXe3mUTgTYL+4Weushe71e808RqjycZhO8rWhconfc5Rb494
+	yXFDndgBNAWNM4zGMt2xNObTwbvTfcIPorGLTPlPXa87Ye8ptp57dNWF5D06I7VAB5rwzwokZ6fH+
+	Uv/JkMr9jYd8tpyC9uNcdvvJr/iI5G3UE+CebsU7uWunyeVgkg82jCPyu5prcX1Eyv+PHQlXvLyCb
+	d8ILR5xQViolvPHlZCYhKDZuRo6ejzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EPZ-00000007yqA-21gx;
-	Thu, 03 Apr 2025 06:50:49 +0000
-Received: from qs51p00im-qukt01071901.me.com ([17.57.155.8])
+	id 1u0FO3-00000008BND-3C94;
+	Thu, 03 Apr 2025 07:53:19 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0ENn-00000007yTk-1VAW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Apr 2025 06:49:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
-	bh=vX1nStTTyA2W3EtaX3VYwa1Dfg3sYgIY5n0SdMP1A9E=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
-	b=WNBc/xzqW6hc1w1xvZmvNkALMThcoORtpqWzc7S6k7HpLwRWJ7z0ZwCosnW2DI84q
-	 WNlBe//viYmPWvRelVykEW34qz7BL8uEXH8iwMXxGT8xWjXc3biR0LqjTI0S7Tr46+
-	 qmsAYrIEQkBImg0HFe2zGG18uVPPPwAMstTBZGP30uABvJC+33/NoP6jAjcAcBeHCZ
-	 cZccEECTodC9jTwSognP9wksu5sSbQFh1KaeEJgof1JDJkSWNGPbJjaoFti9h55x61
-	 GIGpDRkit07NAIRTsNEOZQnjiSoWE+e0ovF+v+6mg4GtnHehGwRyPzDHPs8H19eFk+
-	 JVrHi/7I9YRwg==
-Received: from localhost (qs51p00im-dlb-asmtp-mailmevip.me.com [17.57.155.28])
-	by qs51p00im-qukt01071901.me.com (Postfix) with ESMTPSA id DC75962801F9;
-	Thu,  3 Apr 2025 06:48:50 +0000 (UTC)
-From: Konstantin Shabanov <mail@etehtsea.me>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Konstantin Shabanov <mail@etehtsea.me>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND] (drm/rockchip): Consistently use rk3399 registers consts
-Date: Thu,  3 Apr 2025 06:47:39 +0000
-Message-ID: <20250403064740.4016-1-mail@etehtsea.me>
-X-Mailer: git-send-email 2.48.1
-MIME-Version: 1.0
-X-Proofpoint-GUID: F5HyCAe8Rgl6mAQE-0KnVlkmIu4GVdCO
-X-Proofpoint-ORIG-GUID: F5HyCAe8Rgl6mAQE-0KnVlkmIu4GVdCO
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-03_02,2025-04-02_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=386
- phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0 mlxscore=0
- adultscore=0 spamscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2503100000 definitions=main-2504030033
+	id 1u0FFO-000000089r5-2TQ4;
+	Thu, 03 Apr 2025 07:44:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Subject:Cc:To:From:
+	Mime-Version:Message-ID:Date:Sender:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=HDoeLyg9cxetT/ANF18FwnKd9gmABYoCDtgf1Dd6X2c=; b=OwajlCva9oJGM7WDftc0IfvVbt
+	JOKF2aVW6IA9koi+TVi9DsDgsWiO9B2YV/JuVT0+4WWgWUwdx21kgIK/Dxg15W81jILiSTa57SsC5
+	iqTDSqE09soEq+JNVazkYa1OPLZhek+evew/Jc56e0QAr/TM6OSfH/NylqTl9phL9Fq4thJYOBv3h
+	mn4aslJKFmtKe79kd1i/dakdW2eUHP85lp0WGJJ8fJVmXv+ceD5b8p78ClFI3kMgk/INikEIRW7iA
+	l+F3/OEkPsXaYwWnWpic4Uxv5CdLgmvu6m6mbBvpDWLKz0Xm8oTL3hPtd8I84dHW5QdTpSHpW1KE7
+	e3KpOrBw==;
+Received: from mxct.zte.com.cn ([183.62.165.209])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u0FFK-000000079NC-2VmX;
+	Thu, 03 Apr 2025 07:44:21 +0000
+Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mxct.zte.com.cn (FangMail) with ESMTPS id 4ZStyY3n7Wz4xfxL;
+	Thu,  3 Apr 2025 15:43:33 +0800 (CST)
+Received: from xaxapp02.zte.com.cn ([10.88.97.241])
+	by mse-fl1.zte.com.cn with SMTP id 5337hNMG078468;
+	Thu, 3 Apr 2025 15:43:23 +0800 (+08)
+	(envelope-from shao.mingyin@zte.com.cn)
+Received: from mapi (xaxapp04[null])
+	by mapi (Zmail) with MAPI id mid32;
+	Thu, 3 Apr 2025 15:43:26 +0800 (CST)
+Date: Thu, 3 Apr 2025 15:43:26 +0800 (CST)
+X-Zmail-TransId: 2afb67ee3c1effffffffc6e-36053
+X-Mailer: Zmail v1.0
+Message-ID: <20250403154326411S4luMrK8A5RXovincATzF@zte.com.cn>
+Mime-Version: 1.0
+From: <shao.mingyin@zte.com.cn>
+To: <shawn.lin@rock-chips.com>
+Cc: <yang.yang29@zte.com.cn>, <xu.xin16@zte.com.cn>, <ye.xingchen@zte.com.cn>,
+        <lpieralisi@kernel.org>, <kw@linux.com>,
+        <manivannan.sadhasivam@linaro.org>, <robh@kernel.org>,
+        <bhelgaas@google.com>, <heiko@sntech.de>, <linux-pci@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <zhang.enpei@zte.com.cn>
+Subject: =?UTF-8?B?W1BBVENIXSBkcml2ZXJzOiBwY2k6IGNvbnRyb2xsZXI6IHBjaWUtcm9ja2NoaXA6IFVzZSBkZXZfZXJyX3Byb2JlKCk=?=
+X-MAIL: mse-fl1.zte.com.cn 5337hNMG078468
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 67EE3C25.001/4ZStyY3n7Wz4xfxL
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_234859_464173_D08FC43C 
-X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-CacheID: sfid-20250403_084419_358126_ACFB9A46 
+X-CRM114-Status: UNSURE (   9.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,143 +90,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As rk3399 has its own registers definitions, update related structs to
-use them.
-There are no changes in behaviour as updated constants values are the
- for rk3288/rk3368/rk3399 chips.
+From: Zhang Enpei <zhang.enpei@zte.com.cn>
 
-Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+Replace the open-code with dev_err_probe() to simplify the code.
+
+Signed-off-by: Zhang Enpei <zhang.enpei@zte.com.cn>
+Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
 ---
-Apologies for resend. The first email hadn't reached the mailing list for some reason.
+ drivers/pci/controller/pcie-rockchip.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 94 ++++++++++-----------
- 1 file changed, 47 insertions(+), 47 deletions(-)
+diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+index 0f88da378805..9897824a81f8 100644
+--- a/drivers/pci/controller/pcie-rockchip.c
++++ b/drivers/pci/controller/pcie-rockchip.c
+@@ -230,12 +230,9 @@ int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
+ 		phy = devm_of_phy_get(dev, dev->of_node, name);
+ 		kfree(name);
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 4e2099d86517..d1f788763318 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -906,21 +906,21 @@ static const struct vop_data rk3366_vop = {
+-		if (IS_ERR(phy)) {
+-			if (PTR_ERR(phy) != -EPROBE_DEFER)
+-				dev_err(dev, "missing phy for lane %d: %ld\n",
+-					i, PTR_ERR(phy));
+-			return PTR_ERR(phy);
+-		}
++		if (IS_ERR(phy))
++			return dev_err_probe(dev, PTR_ERR(phy),
++					     "missing phy for lane %d\n", i);
 
- static const struct vop_output rk3399_output = {
- 	.dp_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 19),
--	.rgb_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 19),
--	.hdmi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 23),
--	.edp_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 27),
--	.mipi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 31),
-+	.rgb_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 19),
-+	.hdmi_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 23),
-+	.edp_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 27),
-+	.mipi_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 31),
- 	.dp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 16),
--	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 16),
--	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 20),
--	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 24),
--	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 28),
-+	.rgb_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 16),
-+	.hdmi_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 20),
-+	.edp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 24),
-+	.mipi_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 28),
- 	.dp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 11),
--	.rgb_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 12),
--	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
--	.edp_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 14),
--	.mipi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 15),
--	.mipi_dual_channel_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 3),
-+	.rgb_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 12),
-+	.hdmi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 13),
-+	.edp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 14),
-+	.mipi_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 15),
-+	.mipi_dual_channel_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 3),
- };
-
- static const struct vop_common rk3399_common = {
-@@ -975,23 +975,23 @@ static const struct vop_win_phy rk3399_win0_data = {
- 	.data_formats = formats_win_full_10,
- 	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full_afbc,
--	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
--	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
--	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
--	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
--	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
--	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
--	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
--	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
--	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
--	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
--	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
--	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
--	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
--	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
--	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
--	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
--	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
-+	.enable = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 0),
-+	.format = VOP_REG(RK3399_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 4),
-+	.rb_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 12),
-+	.uv_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 15),
-+	.x_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 21),
-+	.y_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 22),
-+	.act_info = VOP_REG(RK3399_WIN0_ACT_INFO, 0x1fff1fff, 0),
-+	.dsp_info = VOP_REG(RK3399_WIN0_DSP_INFO, 0x0fff0fff, 0),
-+	.dsp_st = VOP_REG(RK3399_WIN0_DSP_ST, 0x1fff1fff, 0),
-+	.yrgb_mst = VOP_REG(RK3399_WIN0_YRGB_MST, 0xffffffff, 0),
-+	.uv_mst = VOP_REG(RK3399_WIN0_CBR_MST, 0xffffffff, 0),
-+	.yrgb_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 0),
-+	.uv_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 16),
-+	.src_alpha_ctl = VOP_REG(RK3399_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
-+	.dst_alpha_ctl = VOP_REG(RK3399_WIN0_DST_ALPHA_CTRL, 0xff, 0),
-+	.channel = VOP_REG(RK3399_WIN0_CTRL2, 0xff, 0),
- };
-
- static const struct vop_win_phy rk3399_win1_data = {
-@@ -999,23 +999,23 @@ static const struct vop_win_phy rk3399_win1_data = {
- 	.data_formats = formats_win_full_10,
- 	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full,
--	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
--	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
--	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
--	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
--	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
--	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
--	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
--	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
--	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
--	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
--	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
--	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
--	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
--	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
--	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
--	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
--	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
-+	.enable = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 0),
-+	.format = VOP_REG(RK3399_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 4),
-+	.rb_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 12),
-+	.uv_swap = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 15),
-+	.x_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 21),
-+	.y_mir_en = VOP_REG(RK3399_WIN0_CTRL0, 0x1, 22),
-+	.act_info = VOP_REG(RK3399_WIN0_ACT_INFO, 0x1fff1fff, 0),
-+	.dsp_info = VOP_REG(RK3399_WIN0_DSP_INFO, 0x0fff0fff, 0),
-+	.dsp_st = VOP_REG(RK3399_WIN0_DSP_ST, 0x1fff1fff, 0),
-+	.yrgb_mst = VOP_REG(RK3399_WIN0_YRGB_MST, 0xffffffff, 0),
-+	.uv_mst = VOP_REG(RK3399_WIN0_CBR_MST, 0xffffffff, 0),
-+	.yrgb_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 0),
-+	.uv_vir = VOP_REG(RK3399_WIN0_VIR, 0x3fff, 16),
-+	.src_alpha_ctl = VOP_REG(RK3399_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
-+	.dst_alpha_ctl = VOP_REG(RK3399_WIN0_DST_ALPHA_CTRL, 0xff, 0),
-+	.channel = VOP_REG(RK3399_WIN0_CTRL2, 0xff, 0),
- };
-
- /*
-
-base-commit: 6b60c282330c46954be9ae1d33cd5c7e5acb315c
---
-2.48.1
+ 		rockchip->phys[i] = phy;
+ 	}
+-- 
+2.25.1
 
 _______________________________________________
 Linux-rockchip mailing list
