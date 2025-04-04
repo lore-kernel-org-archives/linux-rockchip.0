@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA80C3601A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5D64C3600C
 	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 03:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,40 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+t/RLpG0LtRUs+hSXKz84vCRpd4WlOq/woBMtGDhSoU=; b=U3WomY1i2Zbaku
-	+AwKI1ZFvCqDL399dFUNQncvUEV2jtSKjJv/xlQ5YqNGMOkbRYWgnq3jjg7S1kLpk9vnuBoNrJwl7
-	256YeZo12LcLI4XuNOoSvH2OA/ZvUOMopH0JbAbRNrzGpazmG5Ao70Yr2cNHXhBd6L2eXgrM7shhz
-	xr3KRQtb/224zyrttv6TSfGb9B5c6PrraRPWmx/ThR5fL+0I1bq7+PWN2PjGRW++9NqNCMItNyY3e
-	/CqEJVkXFhwVKbhm0u5moDfI/pIF4WaNDY5q4Jj4ce8gtY5D1212g65nJLhXlP0HyAab+rtwD64pE
-	/wWq66L9IN0G/hySmj+Q==;
+	List-Owner; bh=q2d6XjQjb2S4X8uhgvJ6u8ZpF9tuEUoUYzSH6VSlBak=; b=5BTcP8XqQkVPGb
+	G/Y9Kbht/MEKVOZqr/diiN54Q5zcYOOiImz05LZ4fUq3pFT2k7RgXA77WXHbqCl7jRR72pdQWWpSB
+	PXtdcWkLqbG6szs/BlXoVbqLCgan/b70RSkLzqhbciTWehxGEE2vkfbQa9OjSzfnsw6r008v44Z3J
+	k/wNJWOD030e975GPIFKE8Gvz9NnEqcYhZVmcgCYhtXpWH7IcVtJD1Fl/II9NtJjV4Xmk0H1Pr4Wj
+	XNyqJoLoX6fyKu+gXu34loV8SPcB1+sPBV5V8+GugDKR5y/7j67YSvkopIAy40T0uSmMfpobj0ap4
+	qagpxF650pnL5GlFcfww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0XnX-0000000AhWG-2ess;
-	Fri, 04 Apr 2025 03:32:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u0XnY-0000000AhWi-1EC8;
+	Fri, 04 Apr 2025 03:32:52 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0XHq-0000000Ad4Q-06uP;
+	id 1u0XHo-0000000Ad3y-3ygk;
 	Fri, 04 Apr 2025 03:00:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B95426113B;
-	Fri,  4 Apr 2025 02:59:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1A8EC4CEE7;
-	Fri,  4 Apr 2025 03:00:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6B362A42648;
+	Fri,  4 Apr 2025 02:54:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D06E7C4CEE3;
+	Fri,  4 Apr 2025 03:00:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743735602;
-	bh=oVGi9LwOUr1+hNrJwoDMMLjyDofanD4Qd7/JOe/aRMw=;
+	s=k20201202; t=1743735604;
+	bh=qt04cpMtce1Dpx+XQO1X0rXON/Jr6p5yPdGytRb8Eas=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=uK9nKufjP+IzSykFxQTjmnYd2dqL7STkiN6hiK8+ji7QTyS6gWUiu1u9C2OsGHn4A
-	 UUVKxicewOK3olz4cK7R8+rvVygmEeyOjYJ/XybvE2hSdAaUShwA26AC3kdkFRm0Ke
-	 PnwjgfqxaA+k1p/yF9dzhXAO38jVYb7c1vGDsm5R6/bWI22AYdeZdV8SwVwUo/uph6
-	 8njaUuSZePjfDVosNksNGLsMU5CGBgO2SMVw3zxckT0uAcfgSYU7Gf4VdpmsDExi8O
-	 i8AjKEoK9kCcyO2xwncvhJekKB/D/3D6qqXPOB/9b35CSHw88934H5EB3tERPiGyrB
-	 plN55+SUAVCew==
+	b=Q/n2/+qAbQ4lqGimi3B39jw61JwhYStJxbhIKpQByr6sATNhR0pByuj78+ofl0w3b
+	 mDYpwWD136Zeead5FiF3meTxotK0fSVSKY+pLIMCy6nHHT2XntZ2hIuZGE0CofixOf
+	 66GxYVVp8SPCEKljznidvtg8tyHPaWU3lqYPRODKskhUIdq8wmiyjOHnbX1UV5O/Hd
+	 1zXJDjHiwOeHhIiGKBrIEfSSy+5HgAQSIgjQkV+JNHxsvQiURpsgi3Auk/qhrqM7bU
+	 xft6O+le2YtCNm5Wk4E3pmvSVZajHPPBt2o9L5ObkWzDIY4YhQ+RA9wpGjeEYy7Lxk
+	 JSnSa3SGRCJlA==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 03 Apr 2025 21:59:37 -0500
-Subject: [PATCH 16/19] dt-bindings: Reference opp-v1 schema in CPU schemas
+Date: Thu, 03 Apr 2025 21:59:38 -0500
+Subject: [PATCH 17/19] dt-bindings: arm/cpus: Add missing properties
 MIME-Version: 1.0
-Message-Id: <20250403-dt-cpu-schema-v1-16-076be7171a85@kernel.org>
+Message-Id: <20250403-dt-cpu-schema-v1-17-076be7171a85@kernel.org>
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
 In-Reply-To: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -84,6 +84,9 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
  linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 X-Mailer: b4 0.15-dev
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250403_200005_126650_F88AA43B 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,64 +103,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The opp-v1 binding is only used in MIPS and arm32 CPU nodes, so add a
-$ref to it in the CPU schemas and drop the "select".
+The Arm CPU schema is missing a number of properties already in use.
+This has gone unnoticed as extra properties have not been restricted.
+Add a missing reference to cpu.yaml, and add all the missing properties.
 
-As opp-v1 has long been deprecated, mark it as such.
+As "clock-latency" and "voltage-tolerance" are related to opp-v1, add
+those properties to the opp-v1.yaml schema.
+
+With this, other properties can be prevented from creeping in with
+'unevaluatedProperties: false'.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/arm/cpus.yaml   | 1 +
- Documentation/devicetree/bindings/mips/cpus.yaml  | 3 ++-
- Documentation/devicetree/bindings/opp/opp-v1.yaml | 2 +-
- 3 files changed, 4 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/arm/cpus.yaml   | 46 ++++++++++++++++++++++-
+ Documentation/devicetree/bindings/opp/opp-v1.yaml | 16 ++++++++
+ 2 files changed, 61 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index 3e76de3e950d..3d2b6286efb8 100644
+index 3d2b6286efb8..6f74ebfd38df 100644
 --- a/Documentation/devicetree/bindings/arm/cpus.yaml
 +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -353,6 +353,7 @@ properties:
+@@ -299,6 +299,16 @@ properties:
+ 
+       where voltage is in V, frequency is in MHz.
+ 
++  interconnects:
++    minItems: 1
++    maxItems: 2
++
++  nvmem-cells:
++    maxItems: 1
++
++  nvmem-cell-names:
++    const: speed_grade
++
+   performance-domains:
+     maxItems: 1
+ 
+@@ -317,6 +327,31 @@ properties:
+       corresponding to the index of an SCMI performance domain provider, must be
+       "perf".
+ 
++  resets:
++    maxItems: 1
++
++  arm-supply:
++    deprecated: true
++    description: Use 'cpu-supply' instead
++
++  cpu0-supply:
++    deprecated: true
++    description: Use 'cpu-supply' instead
++
++  mem-supply: true
++
++  proc-supply:
++    deprecated: true
++    description: Use 'cpu-supply' instead
++
++  sram-supply:
++    deprecated: true
++    description: Use 'mem-supply' instead
++
++  mediatek,cci:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Link to Mediatek Cache Coherent Interconnect
++
+   qcom,saw:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -327,6 +362,11 @@ properties:
+     description:
+       Specifies the ACC node associated with this CPU.
+ 
++  qcom,freq-domain:
++    description: Specifies the QCom CPUFREQ HW associated with the CPU.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
+   rockchip,pmu:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description: >
+@@ -352,7 +392,11 @@ properties:
+       formed by encoding the target CPU id into the low bits of the
        physical start address it should jump to.
  
++  thermal-idle:
++    type: object
++
  allOf:
-+  - $ref: /schemas/opp/opp-v1.yaml#
++  - $ref: /schemas/cpu.yaml#
+   - $ref: /schemas/opp/opp-v1.yaml#
    - if:
        # If the enable-method property contains one of those values
-       properties:
-diff --git a/Documentation/devicetree/bindings/mips/cpus.yaml b/Documentation/devicetree/bindings/mips/cpus.yaml
-index a85137add668..471373ad0cfb 100644
---- a/Documentation/devicetree/bindings/mips/cpus.yaml
-+++ b/Documentation/devicetree/bindings/mips/cpus.yaml
-@@ -50,6 +50,7 @@ properties:
-   device_type: true
+@@ -407,7 +451,7 @@ required:
+ dependencies:
+   rockchip,pmu: [enable-method]
  
- allOf:
-+  - $ref: /schemas/opp/opp-v1.yaml#
-   - if:
-       properties:
-         compatible:
-@@ -68,7 +69,7 @@ required:
-   - compatible
-   - reg
- 
--additionalProperties: false
+-additionalProperties: true
 +unevaluatedProperties: false
  
  examples:
    - |
 diff --git a/Documentation/devicetree/bindings/opp/opp-v1.yaml b/Documentation/devicetree/bindings/opp/opp-v1.yaml
-index 07e26c267815..1b59b103dab6 100644
+index 1b59b103dab6..61c080e50859 100644
 --- a/Documentation/devicetree/bindings/opp/opp-v1.yaml
 +++ b/Documentation/devicetree/bindings/opp/opp-v1.yaml
-@@ -18,7 +18,7 @@ description: |+
- 
-   This binding only supports voltage-frequency pairs.
- 
--select: true
-+deprecated: true
+@@ -21,6 +21,18 @@ description: |+
+ deprecated: true
  
  properties:
++  clock-latency:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      The latency in nanoseconds for clock changes. Use OPP tables for new
++      designs instead.
++
++  voltage-tolerance:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    maximum: 10
++    description:
++      The voltage tolerance in percent. Use OPP tables for new designs instead.
++
    operating-points:
+     $ref: /schemas/types.yaml#/definitions/uint32-matrix
+     items:
+@@ -28,8 +40,12 @@ properties:
+         - description: Frequency in kHz
+         - description: Voltage for OPP in uV
+ 
++dependencies:
++  clock-latency: [ operating-points ]
++  voltage-tolerance: [ operating-points ]
+ 
+ additionalProperties: true
++
+ examples:
+   - |
+     cpus {
 
 -- 
 2.47.2
