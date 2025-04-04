@@ -4,102 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42946C36010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 10:37:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48B9C3601E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 11:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vB95XJQcwxvs3zRhFsFe3LIfiQmArpcQFc4OK41BbSo=; b=dw8ueFOyYZu8VJ
-	5vbxfF8az45pW3aj7Wwco8P0FfUyLzHXxmTfRMWYB7vASCFVV1jIcEvpJZrZO+nzoC+4VPl7iuLFi
-	sD8uOwJfifocr6JVv0Qf3iXYpdYS9UN2kZqD7ql9ziLzPv1+/UFf47ZcYXdsGCJPGelWUpcIHOUeG
-	g2X6hZQuqLuBQMXd85BikDng6sx3D97dPf/4D8GTJ5N5z/1SawX87joE+h9WxrrgCUBiDHGAnRTcU
-	J++2mgmP/buAbg/28gvnnKZ2Q0ErCfRR3TSAEo6earM0P43BJcPIwJXMoCbIIb9wd/HypzDwIOQfa
-	iqVOde7loy+325T2JofA==;
+	List-Owner; bh=Ouq4WKB9OCMSe0VJBXC4Niqf+mctK6XQXS/97MUBZYg=; b=CuhTO/r5j+KdsI
+	NaH4qlu4s5DW8E1idEUhI7meKk6ji17MmPigTNFx/3z7JNkhwJamDSsgHNgZVCOQXZX5mjuMvWFEE
+	RE1GeA+LBcf5g2sZ0eJG0GRHI41pSTY4jbg32zJpttL3jjlri6IfBEZRBgUf1RPmgL3duepByEpQ9
+	oWFn7O4/mocpbTPORPWMufRk6x3PTFeTemi3ftW4oQT/q59Eu1ZIb/xHJZUN0VyJyYNmTbM8bEN6k
+	KHMu79lh1eTxlrBESt7rimb063vtN+laQKBuxBHJ7aZ1SStaIBSMnGWmkCFzvjwXhadw9kwS4XJl8
+	ne3E667KNanqAOSzK4jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0eQE-0000000BRi4-3kpa;
-	Fri, 04 Apr 2025 10:37:14 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1u0fMh-0000000BZC7-2aZ9;
+	Fri, 04 Apr 2025 11:37:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0eQA-0000000BRek-40Uq
-	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Apr 2025 10:37:13 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-6fedefb1c9cso17172307b3.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Apr 2025 03:37:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743763030; x=1744367830; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=s85N6LbGyDvlbfm+7fjpbjUdhdaXcYheIAW+0EJPQoQ=;
-        b=u6ULu3r5c4dCrT6PKJZD6OD/9MFLTlYRCvdoMImBqicSYktmGGjJMr0ltQUZXm0vJx
-         rfZXMMXkfI/mSsgjccviUM8DARthQWS2hdCHre/0xsF2718kReaR7lLflUInPl2LRbra
-         88Sl1mQON1GBUOIN6Eucl3yROxanrMR3ja/phqzke+nKSgE9lzkEPoEyX1Wwhqpn3hfA
-         GzyCWUxhVS06ZDziHSBqV2HzWtmQrycqL1pgA43JIRBMTltrxp3InB3ejnNvO5F7yLU0
-         DFedxWALbk6nY4CTBM9FKMYhjdFsOC2YlYc5JcYTaWGSoMv08fBhf6k2Ulsl5Mm4LKJY
-         J7Jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743763030; x=1744367830;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=s85N6LbGyDvlbfm+7fjpbjUdhdaXcYheIAW+0EJPQoQ=;
-        b=cLmm6NJuWQqmvjT0HsQF9+rhg0IRk/7wPr7v2yxPY9zUsCHTQFrvh0UeLwvQqkfN0e
-         3j6wcrxT8lDV/jNspWt7/gVmyfuLbFbE/CWGDYbPe/WfN6rmsPoiAUUUNAobY5cvMw4R
-         FjH+uHFJXmsaMPus/T6cvXLKT774GIvaMhbMUIqD2M1Vx8plCZWE/w7wrodw/C+Adxe5
-         kOOUCDQsZRApm/3q5uDqGvT6pN9X6p9VTa9ZDcCwiVHnCOphdzIM8AidsQoPG9aL0G3P
-         v3RhhJEhvkqqadHsP4+Ioq5cALuY9tqSmNO8DrVu3W16FXZyCihG6tlpVH/yVN5w5GBT
-         P7CQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV3nPYb/zr5KqKFn/ch1FMaenaQoad9sdcS0t3cUCdGkRZdKotxfNGO+udv0dmIFCgqkO2mXCJYRYsxqCNGwQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzv3ChFYNVckaZGgtuUYbC9tPj8WOfQSVEVYv4twlv2+tUAS1/D
-	Z9og8WFLVfAb4wRj87Z78V8zDxZ4tDezg+Qf9j7lOHP2oYPzwpgZPPI2mZN3UAUVMr+tDGudSdF
-	zMmjYsLIoCpfsaKNtM0Hqt9LlplzLmnzyXYQmCg==
-X-Gm-Gg: ASbGnctLbNzcJN1oB06HDvGGAmix2uqsakgJI9WfUdSnPvrYU7i/r6zlZPPx1OWKbe6
-	Rz8M8MtOWCj/TmXkrHfjszYbsvrcMvbU2HoHfFVOWEKFz87Ncm59dSOjOHpPT+Nsf9sKKQzNDpT
-	qyoASyteNXoK8PA74SBArTuf+wCiE=
-X-Google-Smtp-Source: AGHT+IGuuSb2kyra+w2zQGcM5KZ+95CLnIjAJJ+ZAGPbM9ApbFO7sbm4a8zwJjSrMRu7/2gU0ViAtYbSOKTRdRXJ4YY=
-X-Received: by 2002:a05:690c:4c11:b0:702:5689:356e with SMTP id
- 00721157ae682-703e1546003mr46207307b3.12.1743763029893; Fri, 04 Apr 2025
- 03:37:09 -0700 (PDT)
+	id 1u0fHQ-0000000BYOH-0RyL;
+	Fri, 04 Apr 2025 11:32:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1743766330;
+	bh=mKsqKGG/7YSKHNxFBBuOvn0Q62p5t5UmUS+Llf4Xv+o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nJwsmtKfCOFaRLtdheNLsrNXHau0c/Rn80fSu9DFp9dqh0mpVplJjf/RJDWsDppZj
+	 K1nRgU79IM9C/BB+INNLF9qPLoZM7FIfqo2dV2MHBZUrapbHXtTlVoq7Ee9D1ZuTvA
+	 8qMfMD5BzgJZ3gmloXl2Iny0cRXUy6qQFCGB+CGeaUn3O6T65csyfoVewC2Of83ZOo
+	 DuOsYQX6Qzp1rE1hL6kbztBjhtqz9ZmJEip0zPfqu9MltVplyd30pOV4KbwFUoQRBU
+	 iTCF9mpsJt0L86KQv1XekkmXzJkOvzzXy+fkz+jnQl6cJXvttX+etNTWbve4UriaIw
+	 PY8YN9NjjTqAA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 17A6A17E0865;
+	Fri,  4 Apr 2025 13:32:08 +0200 (CEST)
+Message-ID: <2a12c4e7-7df7-49c7-8abe-1c5ee769cfcc@collabora.com>
+Date: Fri, 4 Apr 2025 13:32:07 +0200
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org> <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
-In-Reply-To: <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 4 Apr 2025 12:36:33 +0200
-X-Gm-Features: AQ5f1JqCiMQtdQdQn1tCIXwltI0szojsJGdKxwputYjFQK19pJwwJrC7p_ihypo
-Message-ID: <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 17/19] dt-bindings: arm/cpus: Add missing properties
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
+ Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+ Conor Dooley <conor@kernel.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-17-076be7171a85@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250403-dt-cpu-schema-v1-17-076be7171a85@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_033711_014291_162B04EF 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20250404_043212_302558_7F49CE28 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,62 +100,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wrote:
->
-> The "power-domains" and "power-domains-names" properties are missing any
-> constraints. Add the constraints and drop the generic descriptions.
->
+Il 04/04/25 04:59, Rob Herring (Arm) ha scritto:
+> The Arm CPU schema is missing a number of properties already in use.
+> This has gone unnoticed as extra properties have not been restricted.
+> Add a missing reference to cpu.yaml, and add all the missing properties.
+> 
+> As "clock-latency" and "voltage-tolerance" are related to opp-v1, add
+> those properties to the opp-v1.yaml schema.
+> 
+> With this, other properties can be prevented from creeping in with
+> 'unevaluatedProperties: false'.
+> 
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
->  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
->
+>   Documentation/devicetree/bindings/arm/cpus.yaml   | 46 ++++++++++++++++++++++-
+>   Documentation/devicetree/bindings/opp/opp-v1.yaml | 16 ++++++++
+>   2 files changed, 61 insertions(+), 1 deletion(-)
+> 
 > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> index 6f74ebfd38df..5bd5822db8af 100644
+> index 3d2b6286efb8..6f74ebfd38df 100644
 > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
 > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> @@ -313,19 +313,15 @@ properties:
->      maxItems: 1
->
->    power-domains:
-> -    description:
-> -      List of phandles and PM domain specifiers, as defined by bindings of the
-> -      PM domain provider (see also ../power_domain.txt).
+> @@ -299,6 +299,16 @@ properties:
+>   
+>         where voltage is in V, frequency is in MHz.
+>   
+> +  interconnects:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  nvmem-cells:
 > +    maxItems: 1
+> +
+> +  nvmem-cell-names:
+> +    const: speed_grade
+> +
+>     performance-domains:
+>       maxItems: 1
+>   
+> @@ -317,6 +327,31 @@ properties:
+>         corresponding to the index of an SCMI performance domain provider, must be
+>         "perf".
+>   
+> +  resets:
+> +    maxItems: 1
+> +
+> +  arm-supply:
+> +    deprecated: true
+> +    description: Use 'cpu-supply' instead
+> +
+> +  cpu0-supply:
+> +    deprecated: true
+> +    description: Use 'cpu-supply' instead
+> +
+> +  mem-supply: true
+> +
+> +  proc-supply:
+> +    deprecated: true
+> +    description: Use 'cpu-supply' instead
+> +
+> +  sram-supply:
+> +    deprecated: true
+> +    description: Use 'mem-supply' instead
+> +
+> +  mediatek,cci:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: Link to Mediatek Cache Coherent Interconnect
 
-There are more than one in some cases. The most is probably three, I think.
+s/Mediatek/MediaTek/g please :-)
 
->
->    power-domain-names:
->      description:
-> -      A list of power domain name strings sorted in the same order as the
-> -      power-domains property.
-> -
->        For PSCI based platforms, the name corresponding to the index of the PSCI
->        PM domain provider, must be "psci". For SCMI based platforms, the name
->        corresponding to the index of an SCMI performance domain provider, must be
->        "perf".
-> +    enum: [ psci, perf, cpr ]
->
->    resets:
->      maxItems: 1
->
-> --
-> 2.47.2
->
->
+Anyway:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Other than above, feel free to add:
 
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
-
-Kind regards
-Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
