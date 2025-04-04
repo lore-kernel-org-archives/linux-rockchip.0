@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34319C3600C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 03:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D15D7C3601A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 03:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HgpUFo+ILkumM2xV4D+CnKehT0kUsSjd1LWHuhrWEOA=; b=EYLsAZxXEOlOsM
-	ZuOLusLtMzZMi6f2/k5GWfNWS998ZyMIcmt9NauSzo5zMoBH5EkeNGPaHRRYn1NdQQHsSKaI16JHM
-	HykUjYiSg2JPETnEhteJrZ4E5djAyRubGgTz91CdoqPH8gZFa1x8h/xLb9156RPxXaDi27vO9kBgc
-	5OcYD7wmYKw51sfB9DVHNYgeXx97Cb4MdVorkSexuiQ/i17xc/CXQkPzvUpowmrJr4xiBr5bs1MuK
-	hmzGnqokXynqzhl4JuUi4TafzYlUSW4UaeGgORk3OrKNOgkk+79iyzlIZD9gjkKzPa1/lqnGF2QKR
-	fQVsjku3MAA/wOtuqUKw==;
+	List-Owner; bh=ppaQojRPQFCGxlKjictt0/buQb/RJ7DfQe0G8UScBlU=; b=OkudsVltmpeFh0
+	JaINpmqhc+K5YsJqyGrHKRberjv+18uY3/uJ5DZ05j90FoDxBT+9Tt3fZYVvYQWAvYRi41edKwcht
+	OR2MYW6ZFW5SauPPIXsjOTC5i/wm42M1kGh2h/95ZXsO6lTzhRVUIG8elkPKWFJXN1GHAcJjq+V4Z
+	IWF+9QdWUoh00RaMb6YDcV7XvJ44sF/9LeEdziU2vdgSKXEMLlCUxvaaa9mRa6LWM1jsAVqHpNVcM
+	MqTE/tuH4xw5lvbgXMjzlLpTXnLkHoW5MqYzP2+XX/kkgwY1noe+EvZ7xv2Bh791lNaGHKcqDRiS8
+	rCxfWifNri4BXoE3ePEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0XVl-0000000AfZU-2srT;
-	Fri, 04 Apr 2025 03:14:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u0XXX-0000000Afjb-2E5d;
+	Fri, 04 Apr 2025 03:16:19 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0XHc-0000000AcxX-0KFj;
-	Fri, 04 Apr 2025 02:59:53 +0000
+	id 1u0XHd-0000000Acxt-3EYA;
+	Fri, 04 Apr 2025 02:59:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 55BFE5C6508;
-	Fri,  4 Apr 2025 02:57:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFD73C4CEE7;
-	Fri,  4 Apr 2025 02:59:50 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1017FA42648;
+	Fri,  4 Apr 2025 02:54:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DE6DC4CEE7;
+	Fri,  4 Apr 2025 02:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743735591;
-	bh=nVo5X/MosXjoMIZOdVn7ETl8AN7NiwovxfdEw8OmSOs=;
+	s=k20201202; t=1743735592;
+	bh=NXfOJoK0Dz0mef/BAq7y8KxDDG3duFbiuiL1Z6QJ9BI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MpXVnVMrGj9jX534Z3QILWihteFROOZpFGF7cY4LpdJ/vHXhydB+UXGlWiL4yWQB4
-	 MkCR3gilGWmLGChDVWTTcfkMDs63dzW3J8NpL+I63xv6gf44HszHnPF5aNKa0h4T7c
-	 caRfFdYnPhzgZc1JocQT3/Q6LiL9G+DMwtJtDjgwmmquwSNBTS2H8djS9qC2sphBN2
-	 P1Cgp4AVOzpzTpPm8SpIsWdV0ESebX0hsTqoMjdNevs2pD82PnipJyPInDkUM2QXYA
-	 Z7Lg/Tk+1JcZyy9fVa7gbntS/8pmlDuzwioeuqSQW0x75dypqHfY+J4/VPsE36jmr2
-	 bm5Z7w4iLaFaQ==
+	b=sGzlfMKi1upb46KlxcbmpIatBcJlDA+lJRioYblOpv5TuMcIgUURlrFv/QVkqvcTU
+	 cqjZ3jite7u9/lrkFPtYLaZQU+UPcpDjuKKwQKVdaz05Zt2Wg2bX8aD21CBMmgztP/
+	 597TFjZnnA5cS1HbMOvLF6ZZO6RT4hAa1J+fA2rlUycXmgZf53mYjv6qE+Elqb9F7E
+	 V6LVIXszs4tasfp/HFFOFuNBTRwJoQvjb168YTZBNWldrVQST227wqM+8fQaQlV3RP
+	 O1V2tZKhlzmE6O5RVW6E9/CixcMg8/3k12lNJLB9F/Ieoqt9oPG0IvqU/qqu+JWsS6
+	 zwQKoFaWCIVXQ==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 03 Apr 2025 21:59:28 -0500
-Subject: [PATCH 07/19] arm64: dts: qcom: msm8992-lg-h815: Fix CPU node
- "enable-method" property dependencies
+Date: Thu, 03 Apr 2025 21:59:29 -0500
+Subject: [PATCH 08/19] arm: dts: qcom: msm8916: Move "qcom,acc" and
+ "qcom,saw" to 32-bit .dtsi
 MIME-Version: 1.0
-Message-Id: <20250403-dt-cpu-schema-v1-7-076be7171a85@kernel.org>
+Message-Id: <20250403-dt-cpu-schema-v1-8-076be7171a85@kernel.org>
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
 In-Reply-To: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -86,9 +86,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_195952_235626_D70AFDC9 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250403_195953_955588_8A67D189 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,52 +104,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The "spin-table" enable-method requires "cpu-release-addr" property,
-so add a dummy entry. It is assumed the bootloader will fill in the
-correct values.
+The "qcom,acc" and "qcom,saw" properties are only used with 32-bit
+kernels. Of course, booting a 64-bit or 32-bit kernel shouldn't matter
+to the DTS, but the "enable-method" is already different for 32-bit.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm/boot/dts/qcom/qcom-msm8916-smp.dtsi | 8 ++++++++
+ arch/arm64/boot/dts/qcom/msm8916.dtsi        | 8 --------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts b/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
-index 4520d5d51a29..6a231afad85d 100644
---- a/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
-@@ -93,26 +93,32 @@ key-vol-up {
+diff --git a/arch/arm/boot/dts/qcom/qcom-msm8916-smp.dtsi b/arch/arm/boot/dts/qcom/qcom-msm8916-smp.dtsi
+index 94b7694eeeff..594cc4a3a78b 100644
+--- a/arch/arm/boot/dts/qcom/qcom-msm8916-smp.dtsi
++++ b/arch/arm/boot/dts/qcom/qcom-msm8916-smp.dtsi
+@@ -4,15 +4,23 @@ / {
+ 	cpus {
+ 		cpu@0 {
+ 			enable-method = "qcom,msm8916-smp";
++			qcom,acc = <&cpu0_acc>;
++			qcom,saw = <&cpu0_saw>;
+ 		};
+ 		cpu@1 {
+ 			enable-method = "qcom,msm8916-smp";
++			qcom,acc = <&cpu1_acc>;
++			qcom,saw = <&cpu1_saw>;
+ 		};
+ 		cpu@2 {
+ 			enable-method = "qcom,msm8916-smp";
++			qcom,acc = <&cpu2_acc>;
++			qcom,saw = <&cpu2_saw>;
+ 		};
+ 		cpu@3 {
+ 			enable-method = "qcom,msm8916-smp";
++			qcom,acc = <&cpu3_acc>;
++			qcom,saw = <&cpu3_saw>;
+ 		};
  
- &cpu0 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
+ 		idle-states {
+diff --git a/arch/arm64/boot/dts/qcom/msm8916.dtsi b/arch/arm64/boot/dts/qcom/msm8916.dtsi
+index 8f35c9af1878..88e452752de6 100644
+--- a/arch/arm64/boot/dts/qcom/msm8916.dtsi
++++ b/arch/arm64/boot/dts/qcom/msm8916.dtsi
+@@ -144,8 +144,6 @@ cpu0: cpu@0 {
+ 			#cooling-cells = <2>;
+ 			power-domains = <&cpu_pd0>;
+ 			power-domain-names = "psci";
+-			qcom,acc = <&cpu0_acc>;
+-			qcom,saw = <&cpu0_saw>;
+ 		};
  
- &cpu1 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
+ 		cpu1: cpu@1 {
+@@ -159,8 +157,6 @@ cpu1: cpu@1 {
+ 			#cooling-cells = <2>;
+ 			power-domains = <&cpu_pd1>;
+ 			power-domain-names = "psci";
+-			qcom,acc = <&cpu1_acc>;
+-			qcom,saw = <&cpu1_saw>;
+ 		};
  
- &cpu2 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
+ 		cpu2: cpu@2 {
+@@ -174,8 +170,6 @@ cpu2: cpu@2 {
+ 			#cooling-cells = <2>;
+ 			power-domains = <&cpu_pd2>;
+ 			power-domain-names = "psci";
+-			qcom,acc = <&cpu2_acc>;
+-			qcom,saw = <&cpu2_saw>;
+ 		};
  
- &cpu3 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
+ 		cpu3: cpu@3 {
+@@ -189,8 +183,6 @@ cpu3: cpu@3 {
+ 			#cooling-cells = <2>;
+ 			power-domains = <&cpu_pd3>;
+ 			power-domain-names = "psci";
+-			qcom,acc = <&cpu3_acc>;
+-			qcom,saw = <&cpu3_saw>;
+ 		};
  
- &cpu4 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
- 
- &cpu5 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
- 
- &pm8994_resin {
+ 		l2_0: l2-cache {
 
 -- 
 2.47.2
