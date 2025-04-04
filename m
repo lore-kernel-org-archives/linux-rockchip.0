@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F053C369A2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 20:41:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBEA1C369A2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 20:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z44ijJTiOeKbOZGAPClvvDv4zPVfdS9Saq+iLsZGA1s=; b=PMRC+WmFet4fff
-	nSG5DlJIUoji5Kc+S5VWHSZRmWYb5iuL7objIKmft+zS6mT5lU15fkraZXzAdjRiy6JKeq55uddqX
-	Ilj85VAyhaRtYEnmKHGvaFiFfafFjw35qTn+RrCOmCv6mlCMWjEd1zNVqtl+UUzo0Ou3F8/A22HV9
-	OPss5QPuPwjcPFUaZFCDoq7rqNJ7Ys0fleMrbF9wZE0oaOQ8Vbsfl48CdNPJiUtLIXjPIZ4RnqqKD
-	wo8pygQmulpjge2qTx/mwtpWc9A16HeMHRnJLpJxpKP+qIHz2+ay/W/r3Tor+MRNbkcoNQ6oNRSkV
-	nRIg9qW9XeRmElo31iiQ==;
+	List-Owner; bh=wru/ZKRC/+NL+5Bgb+vYoBi+1mweKhmeAv5qZHtsGKI=; b=KPjuLELjVQZ7/Q
+	NO/eV6ztgrYkeORifLPl8AAzsgnAkMZQRc4JIVvrrSmH+hiekWlStvYpOpkqyMBnLc9pixkwIUzNQ
+	kguw6d8dyOdnRlQVLm7sn6u2uL5dH5eWcYQjSeLVHbWnh5h8g3f6S4mp12bJjsP/6Qey/ywpjasuP
+	Dr2ua16zm1xPpwPpv6RopTKCC1t0x9LcDaU5lTcCIj+38S/0rG1oIfK0FUFEmID3sOX4/JuLtCtbn
+	dJfQiGvCAgJgWEeYCTX1tzbdFK0dzslmrryu7v6Fc1mqIqDxjd3KLQbT9pAIg5hbtqyu6P/GZg51P
+	Blxr61RhnzZSVGvEtDcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0nrH-0000000Coew-0Fad;
-	Fri, 04 Apr 2025 20:41:47 +0000
+	id 1u0nrv-0000000Covk-2lmX;
+	Fri, 04 Apr 2025 20:42:27 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0nrD-0000000Coci-276G
+	id 1u0nrr-0000000Cotw-3aBp
 	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Apr 2025 20:41:45 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 534JEwNn000502
-	for <linux-rockchip@lists.infradead.org>; Fri, 4 Apr 2025 20:41:43 GMT
+	Fri, 04 Apr 2025 20:42:25 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 534JEhBT005833
+	for <linux-rockchip@lists.infradead.org>; Fri, 4 Apr 2025 20:42:23 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	yhwB7sBtbDgAESOIuK+j/VpMVm+i7ozwb/nf6hzXHSI=; b=e006pJL3OxxAh8DY
-	yw6pzBhVXjXPMKiJbem1EZ2wzfylcu7MoE8jlhD+yLNH/8wEqqVTrpIicznQ9JAj
-	6L8OAq4Hv+XXOe0wHTxagPkOi4TuKwBLxCKJIUM8F13wbKZrGGEw1a7ewpS7h9Ol
-	LlWJqc17vtQxsUc1Hd9cS1Irr7ooYRrNnfTwVm28GRqrJusgJ85frwJFvBdOGD8u
-	d9yCx0PeWg02ITaLXRLspQw8ZoEwfmAr3aKscRUzaiPCkam6uTntdVgYNWJodDhY
-	9AmbuNyq3qqO6CUw5UrwUR8ILDDbH6MAvfR6kg2EJscGkLCxou5n0Gk1kHGxaRKW
-	82u7lQ==
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45t2d8tvgu-1
+	Dvhmq4YEot5WzH3QxroXInz9L/fpcl+l6rHMMX3PtHk=; b=UsllvDr7X0dVrVbg
+	KZrNk15XTlIpsHlSLRUHo1Rjd3mfVeLUdGKHjVPPT5oOtoD+m/7gYsxr82zV892q
+	b7DDA2z8RHrrKZPaefDEmcOzeLnzA/lFvL5E+X69QLvc+QhNryoD3SpGeyVat7A0
+	l7g8KWHIdbS8b8uQKBh4BbQqAUDVJHYqq5HvXdC6gjCVWJ9VCosCJBQDi43vBsmH
+	GoBGnTtv+L6v4/5iXkHEKdSOpElOzwzfnUz/k8AoMoGiD4+1akr5kALv4pZKHFDM
+	PDQPTTo607hZqu+RzrP4NeG19lbnkHE5lUaymOg4HAIwKg/Z1ceaJG4sp9s4dZoX
+	29V1lQ==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45t2d52wph-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Fri, 04 Apr 2025 20:41:42 +0000 (GMT)
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-6e8fd4ef023so4144356d6.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Apr 2025 13:41:42 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 04 Apr 2025 20:42:23 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7c545ac340aso51245485a.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 04 Apr 2025 13:42:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743799301; x=1744404101;
+        d=1e100.net; s=20230601; t=1743799342; x=1744404142;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yhwB7sBtbDgAESOIuK+j/VpMVm+i7ozwb/nf6hzXHSI=;
-        b=TfqMP6Lnlio0UzA9KkXhXWpF3OnKjhGyzYIREVgo40FSMmbX1UDZgFzTp9HUwas5WN
-         7Mh0xKd/GTkt0quAk5zxM87SOEpl0xULpGf5VqN0UOfDh4uLBwRWjz4QUeXDHRp+tEwW
-         BxmIhjCrk3dKBWzWHY+PHcXKmseRdMZtbWdPmGNihIsUetnKjBXfk8n+jpI2OulX8bxf
-         m5r1E6OShRoTFnGO4kyyxk10WhIYdfqpCA7OO4GE0cZmLMHyNNUAfcGC3t11Wb8+rcbr
-         zsprpdH9RYaxBazwTs+f7qbs2xoxlzw7ijwbnM9hRc1TPOMy++V2kuiY2LHI7B1nMB5k
-         HPJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXPr1F1Ev7PFQS2rX/zCWmYX7JAgjNUQ5Cxhn9YUWISm6/Tvf04Pame9YCynHrn2Fjuitjo15PXrqS+TMtTRQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcMoZCnxmm8p1ZvZ1oFdVqjfEEQ7bZpfYbtwNhWXVGrVGSXViz
-	074HSt3ySmyBVmawu+xQ8nHeVuFAK8lyoo6flb95RFhUCuMzQfzLPa5MeVdFDDrZcvpKQszCPve
-	iL97NrXXMJIsoeNt57toe1bx38SF10t8K9B9txlJnswbjNQcFP8krjyID9QOCzmIwyP9yuiI=
-X-Gm-Gg: ASbGnctJl7gZiqXODJUZq3dfYWKfyUopyI7tT9xCMOvpkbMVEhQrzjC6drvE0U60kYM
-	cmzSUSxcxMuy56TBFEY8/yukrKEOgbK5ICtp3gcQINp4Fhb2HjXOLFdzkFltyAINgGhtl1z5pLs
-	2dBOU66aY8deGW0wWLQIdNutPTEBXgnPmCA82hzJynvoiWon2FnK31IgLUviUgBNGlYe4bVY4OB
-	E1Y/d5SKivxl5IouSB+W9JXcHYy/LoPotmtJ37TncDkRChip/S6tPPDzASLlLgR+lcBQhB8c+5i
-	ACB8BG6KSrNny7o+24nMobcZbXiPhl9p1wAIeja6ic5Aod2/fZWGfgW0Ys52Rx8nNLdzcw==
-X-Received: by 2002:ac8:4644:0:b0:475:820:9f6f with SMTP id d75a77b69052e-47924943de8mr21784161cf.9.1743799301649;
-        Fri, 04 Apr 2025 13:41:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG1R4hoCTSAc5GEHefyuqv2Og+2N0LdZwy28eI6DAzYwdiZd4PyFBY4gfZbXP5sqGwuyOlLqQ==
-X-Received: by 2002:ac8:4644:0:b0:475:820:9f6f with SMTP id d75a77b69052e-47924943de8mr21783741cf.9.1743799301314;
-        Fri, 04 Apr 2025 13:41:41 -0700 (PDT)
+        bh=Dvhmq4YEot5WzH3QxroXInz9L/fpcl+l6rHMMX3PtHk=;
+        b=Pa4AaJSPHlajqOTTg2cmG9F9YzTAuUiFzbsTS+NAOX1oCBZDgPFDMO6jEwAprNwZPE
+         kN2AH/LhaBSndLfMcLwfg3ymbqyzWNN6W5JuwnBYFVuO60KF02+MflfC6IhVKF3JM15h
+         Bw6T3IBVjES0SySWjydsh5XT1TnCexAI0Vn+pz7/OrP2Kq6oMuNI7TA0JK1sZFKEsX3p
+         UD3gvRCea1FE0xbj64nBpI5n+alnPn3jRJiflqfawtIqmhHZhv3GcBdmjz+t6+g5oLS7
+         +xeW3kpD4A5Nv0k3PEH7MewSD0MNVmqzLxpPdKU4dLgFzU2gYWJ3VxtEp6wTo5h82aIZ
+         nXDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVbFIknxP+0PtSrmO4DIe6S2YYLgvEfAJEG2RbJaHCKlQbPSINVnODf9nOaIF/6yA6CbYMqWl9aWvyQP556Wg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywsv2eoZym+VLfKcKxAESvmHITKwwugPKbD/h6RenEREh7LWbqU
+	oW7kbSvQHqYlAhqK3R1BvSyyibKBpLwixFiBZH0z6rZqR81MApIHP0iS09ZNu9VGJU4BVNkqmzC
+	srE07ddw+L//Etw96yfQz5zMoHKnzDaJwmcxVpcFgh7ebKfReAruHMXYRmRcX96BMS9AEfOE=
+X-Gm-Gg: ASbGncuUml4tkZecfpU5WmgMmAHASv/jD9PZ47rlNle5kqgaolsarkxVdCiae/vhHee
+	PyWyEavJp3OWJEllALL6ufRB++fBi30rQbqBHb9Mu/U4DAd4Co5KTJFLvS/YbjpDHozUvxgZUsF
+	Onj8Mqv6DrjY2DjiIdvPQuzgyagGHUzHghMynOcE/jCd/DTq60uKwTIwryTmOLq56wYw76glupZ
+	kT1XSyIinyaEDaSleuYS9Rh5pmX0OHcOAmc8PQNYzbDss+NEve3+3jExRTJTfArTCxITnrMwYcU
+	o/8BSmI7NSXgR2YmyW38JefctJWN+9xhCDjSC9L8sHjpbIO3Avl5qmLzh9Bz4uyrQ8XNsw==
+X-Received: by 2002:a05:620a:2890:b0:7c5:c5cd:7599 with SMTP id af79cd13be357-7c774d0f248mr242297685a.3.1743799341864;
+        Fri, 04 Apr 2025 13:42:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE+SWzK4xJTznItCy4yyRIatUgCtVJCf8ZO8c+GM8oZYtvMasi6TSfEl5lIgHq+ml10q5QRWA==
+X-Received: by 2002:a05:620a:2890:b0:7c5:c5cd:7599 with SMTP id af79cd13be357-7c774d0f248mr242292385a.3.1743799341449;
+        Fri, 04 Apr 2025 13:42:21 -0700 (PDT)
 Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f087ed19e7sm2857643a12.20.2025.04.04.13.41.35
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac7bfe5d442sm310126866b.26.2025.04.04.13.42.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Apr 2025 13:41:40 -0700 (PDT)
-Message-ID: <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
-Date: Fri, 4 Apr 2025 22:41:34 +0200
+        Fri, 04 Apr 2025 13:42:20 -0700 (PDT)
+Message-ID: <beb1e6a1-8fdf-451c-9c48-bb3abff89226@oss.qualcomm.com>
+Date: Fri, 4 Apr 2025 22:42:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU
- power-domain-names
+Subject: Re: [PATCH 11/19] arm: dts: qcom: ipq4019: Drop redundant CPU
+ "clock-latency"
 To: "Rob Herring (Arm)" <robh@kernel.org>,
         Krzysztof Kozlowski <krzk+dt@kernel.org>,
         Conor Dooley
@@ -124,26 +124,26 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
         imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
         linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-11-076be7171a85@kernel.org>
 Content-Language: en-US
 From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
-X-Authority-Analysis: v=2.4 cv=KcPSsRYD c=1 sm=1 tr=0 ts=67f04406 cx=c_pps a=UgVkIMxJMSkC9lv97toC5g==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=xglDh1PETwH3DoLBRHwA:9 a=QEXdDO2ut3YA:10
- a=1HOtulTD9v-eNWfpl4qZ:22
-X-Proofpoint-GUID: 7OWFmZybp2-ZmU3ClUNfrG25g3UTzd-d
-X-Proofpoint-ORIG-GUID: 7OWFmZybp2-ZmU3ClUNfrG25g3UTzd-d
+In-Reply-To: <20250403-dt-cpu-schema-v1-11-076be7171a85@kernel.org>
+X-Proofpoint-GUID: lfMBMIaImas_vra26mY2qc-uij9tscdP
+X-Proofpoint-ORIG-GUID: lfMBMIaImas_vra26mY2qc-uij9tscdP
+X-Authority-Analysis: v=2.4 cv=bZtrUPPB c=1 sm=1 tr=0 ts=67f0442f cx=c_pps a=50t2pK5VMbmlHzFWWp8p/g==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=EKXQiu_l0foPX_vtw34A:9 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
  definitions=2025-04-04_09,2025-04-03_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 spamscore=0
- malwarescore=0 priorityscore=1501 mlxlogscore=927 mlxscore=0
- suspectscore=0 clxscore=1015 impostorscore=0 adultscore=0
- lowpriorityscore=0 phishscore=0 classifier=spam authscore=0 authtc=n/a
- authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2502280000 definitions=main-2504040141
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 malwarescore=0
+ lowpriorityscore=0 impostorscore=0 suspectscore=0 mlxlogscore=803
+ mlxscore=0 bulkscore=0 priorityscore=1501 spamscore=0 adultscore=0
+ clxscore=1015 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2504040141
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_134143_551527_FEB7322C 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20250404_134223_894323_A21C5685 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,19 +161,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
-> "rpmhpd" is not documented nor used anywhere. As the enable-method is
-> "psci" use "psci" for the power-domain name.
+> The "clock-latency" property is part of the deprecated opp-v1 binding
+> and is redundant if the opp-v2 table has equal or larger values in any
+> "clock-latency-ns". The OPP table has values of 256000, so it can be
+> removed.
 > 
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
 
-"psci" is what we want here, but these platforms require some more
-massaging..
-
-These SoCs don't seem to have any PSCI idle states (deeper than WFI)
-described, which is no bueno, as they support some..
-
-I'll try to improve this.
+Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 
 Konrad
 
