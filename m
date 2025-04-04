@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48B9C3601E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 11:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33C68C36010
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 11:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ouq4WKB9OCMSe0VJBXC4Niqf+mctK6XQXS/97MUBZYg=; b=CuhTO/r5j+KdsI
-	NaH4qlu4s5DW8E1idEUhI7meKk6ji17MmPigTNFx/3z7JNkhwJamDSsgHNgZVCOQXZX5mjuMvWFEE
-	RE1GeA+LBcf5g2sZ0eJG0GRHI41pSTY4jbg32zJpttL3jjlri6IfBEZRBgUf1RPmgL3duepByEpQ9
-	oWFn7O4/mocpbTPORPWMufRk6x3PTFeTemi3ftW4oQT/q59Eu1ZIb/xHJZUN0VyJyYNmTbM8bEN6k
-	KHMu79lh1eTxlrBESt7rimb063vtN+laQKBuxBHJ7aZ1SStaIBSMnGWmkCFzvjwXhadw9kwS4XJl8
-	ne3E667KNanqAOSzK4jQ==;
+	List-Owner; bh=d9BgYUnAwTsrORj8JMblH2pDAKSY2B2wy9KbKtSjESg=; b=vsTfg6sO/jndOg
+	UmCMfojLTPBW9PBrbqlEwPlAmB7sovirvKkpz7fbVMieo4sKmYq7KTilvppl4+i95joeWcm4WeAT4
+	RxxiCENs2nTPKOCiFwq4GcsbNVribDQ6yk0GCl8an4pK0rR73Sin+IzLLkvjBLbpQ9pz1cDtWGhir
+	kzDdLnjFTWWV43eB6zrUacYn24hRdFeJAUCujlqpvy37kaj5Z62oexXQYNl3fd1ttvMGR4B392RX+
+	8hG5qrYiEq4ssfolAALL1VyECRBqXe0biqbalNg5B/0sCrbxDvJachEeCkf7hBTarvEuyX3iD9JxH
+	foqd7noKKOdVHheHC1qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0fMh-0000000BZC7-2aZ9;
-	Fri, 04 Apr 2025 11:37:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u0fOT-0000000BZUL-2qLO;
+	Fri, 04 Apr 2025 11:39:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0fHQ-0000000BYOH-0RyL;
-	Fri, 04 Apr 2025 11:32:13 +0000
+	id 1u0fHS-0000000BYOk-3oaZ;
+	Fri, 04 Apr 2025 11:32:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743766330;
-	bh=mKsqKGG/7YSKHNxFBBuOvn0Q62p5t5UmUS+Llf4Xv+o=;
+	s=mail; t=1743766333;
+	bh=Jw1FPz6DF2WaJMktgqsDpD5UOieABbNHs5cz1OQV7+Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nJwsmtKfCOFaRLtdheNLsrNXHau0c/Rn80fSu9DFp9dqh0mpVplJjf/RJDWsDppZj
-	 K1nRgU79IM9C/BB+INNLF9qPLoZM7FIfqo2dV2MHBZUrapbHXtTlVoq7Ee9D1ZuTvA
-	 8qMfMD5BzgJZ3gmloXl2Iny0cRXUy6qQFCGB+CGeaUn3O6T65csyfoVewC2Of83ZOo
-	 DuOsYQX6Qzp1rE1hL6kbztBjhtqz9ZmJEip0zPfqu9MltVplyd30pOV4KbwFUoQRBU
-	 iTCF9mpsJt0L86KQv1XekkmXzJkOvzzXy+fkz+jnQl6cJXvttX+etNTWbve4UriaIw
-	 PY8YN9NjjTqAA==
+	b=LJPXaVbq60/Cb5k5MJ7zBEKHhcJ/RJ2XOeSUfeGVa9B6t5StSeJpF5Rh8VSpyV4OG
+	 6qvbZA+DJiPKvA8oZmtxELP2AOQ0sZld5CamuOMDVdPFj6a78TccHaPK4Tvrr486vK
+	 jdSaxZDfwi0ncvAB9XwcoOY+tv9gv16LHwc9o8cmvTeXa2UskaGu4S1VKAfK8nGrZE
+	 vct7UyFGwVmWVCvZDCSClpfCMUyShZvHciYs3+sipjVjXeruKaQXsGVaHfymqTd+Og
+	 mPFSiSQmlYOjLNoHLs/SMTb/qZ/5zrPp+oAQM2P0hEj8RVXesY8cFd5/XQBtMb6elN
+	 Yrr95JBG7PAJg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 17A6A17E0865;
-	Fri,  4 Apr 2025 13:32:08 +0200 (CEST)
-Message-ID: <2a12c4e7-7df7-49c7-8abe-1c5ee769cfcc@collabora.com>
-Date: Fri, 4 Apr 2025 13:32:07 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A836E17E0C50;
+	Fri,  4 Apr 2025 13:32:10 +0200 (CEST)
+Message-ID: <547daa6c-0ca9-44c0-9317-02e006926dc3@collabora.com>
+Date: Fri, 4 Apr 2025 13:32:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/19] dt-bindings: arm/cpus: Add missing properties
+Subject: Re: [PATCH 16/19] dt-bindings: Reference opp-v1 schema in CPU schemas
 To: "Rob Herring (Arm)" <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
@@ -82,13 +82,14 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
  linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-17-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-16-076be7171a85@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250403-dt-cpu-schema-v1-17-076be7171a85@kernel.org>
+In-Reply-To: <20250403-dt-cpu-schema-v1-16-076be7171a85@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_043212_302558_7F49CE28 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20250404_043215_095734_44375424 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,75 +107,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Il 04/04/25 04:59, Rob Herring (Arm) ha scritto:
-> The Arm CPU schema is missing a number of properties already in use.
-> This has gone unnoticed as extra properties have not been restricted.
-> Add a missing reference to cpu.yaml, and add all the missing properties.
+> The opp-v1 binding is only used in MIPS and arm32 CPU nodes, so add a
+> $ref to it in the CPU schemas and drop the "select".
 > 
-> As "clock-latency" and "voltage-tolerance" are related to opp-v1, add
-> those properties to the opp-v1.yaml schema.
-> 
-> With this, other properties can be prevented from creeping in with
-> 'unevaluatedProperties: false'.
+> As opp-v1 has long been deprecated, mark it as such.
 > 
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->   Documentation/devicetree/bindings/arm/cpus.yaml   | 46 ++++++++++++++++++++++-
->   Documentation/devicetree/bindings/opp/opp-v1.yaml | 16 ++++++++
->   2 files changed, 61 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> index 3d2b6286efb8..6f74ebfd38df 100644
-> --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> @@ -299,6 +299,16 @@ properties:
->   
->         where voltage is in V, frequency is in MHz.
->   
-> +  interconnects:
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  nvmem-cells:
-> +    maxItems: 1
-> +
-> +  nvmem-cell-names:
-> +    const: speed_grade
-> +
->     performance-domains:
->       maxItems: 1
->   
-> @@ -317,6 +327,31 @@ properties:
->         corresponding to the index of an SCMI performance domain provider, must be
->         "perf".
->   
-> +  resets:
-> +    maxItems: 1
-> +
-> +  arm-supply:
-> +    deprecated: true
-> +    description: Use 'cpu-supply' instead
-> +
-> +  cpu0-supply:
-> +    deprecated: true
-> +    description: Use 'cpu-supply' instead
-> +
-> +  mem-supply: true
-> +
-> +  proc-supply:
-> +    deprecated: true
-> +    description: Use 'cpu-supply' instead
-> +
-> +  sram-supply:
-> +    deprecated: true
-> +    description: Use 'mem-supply' instead
-> +
-> +  mediatek,cci:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: Link to Mediatek Cache Coherent Interconnect
 
-s/Mediatek/MediaTek/g please :-)
-
-Anyway:
+ARM//MediaTek:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
