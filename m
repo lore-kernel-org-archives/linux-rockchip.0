@@ -4,104 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A7BC3601A
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Apr 2025 14:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 876C2C36010
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Apr 2025 23:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eXFMSpdM9JdjDusOlWz0zc18Js5zKpcv4cRFmS+F1yI=; b=GVUAtE5HWEnGsR
-	5OOjoE2ei9gbJ229N2/JxlRvyjUmm85lclPS1ED091h8z5oCf6yS5RY+EG0vEl/Tu3M8bL/DjydE+
-	FOCSAjlpGAWbvknMfUAR/W7ChmBJn14UojKlR7yDUY1cX7+GVI4xH60voVwBUBRirmaJ1k0anlTfq
-	RuaRIrxR9/Ph/0U4IJcxAd1GgO+WV/1GzeYWgqPf/g5N/bPkVUYVT3lcTU4IhgK0xxwWXWVT85nxT
-	mkdYEiXzVs4Ks2GnglN5bCfP+60hAfEzJZowxlh9GHOy/7Cy07G+IFgWov2hYT823URhBdQ25QPOF
-	pcw/KrkNvYodQq0tYH/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pknOxu/iLc5m8hwHbnXJ3cI7QQp8efOKlfzXYq+yEho=; b=ZSjDPz8WJ9P8GARcCxtL9aXMhx
+	29SFpwFy/9RTEwB0FIwVWCHt2KcygVRArvhdXMjvN9iaZ137nfTx6P1k+vT/zDlxxm5cpIGgi73at
+	kv/6poyqyH5QKRdR32HZYqT1BBMnBFRdPZRpo9mLYMESmmKf4n0cBYG58IQOSa8wOgkQxViwC+E4b
+	Ep3CBqXdbuJSXl82kCxKuYGAzSrpyMQQaXiNsscd6ZxHXSKLhtXCutEDq1CiUdzSaiOpa/X1PGREd
+	4JcohdLWMEJGSp+8Fu0U8fSNnXUilKmQVU4yOg+GuTd8nkxczNAp9/Je54UveIBvFCyV5QKAj2f77
+	am49Heyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u14jE-0000000E4zd-0V4D;
-	Sat, 05 Apr 2025 14:42:36 +0000
-Received: from mout02.posteo.de ([185.67.36.66])
+	id 1u1CaS-0000000Eaaw-02t9;
+	Sat, 05 Apr 2025 23:06:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u14jB-0000000E4xM-1OBq
-	for linux-rockchip@lists.infradead.org;
-	Sat, 05 Apr 2025 14:42:34 +0000
-Received: from submission (posteo.de [185.67.36.169]) 
-	by mout02.posteo.de (Postfix) with ESMTPS id 7971C240101
-	for <linux-rockchip@lists.infradead.org>; Sat,  5 Apr 2025 16:42:28 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.de; s=2017;
-	t=1743864149; bh=XfnEVi3ovC/zw6g3a+nScy1RtngEkEo5Aoq+dlPJPpk=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:
-	 Content-Transfer-Encoding:Content-Type:Autocrypt:OpenPGP:From;
-	b=bRlW4EuBgLbc/jsNHZ5F3N0Sbs0CvK78rZhhhEhFCKqaJm4AXeCP1eWWCbQ0oJaiR
-	 Hfy47+nBka6NZihRmk2UKn9kw3G/8E1j/cnVv7l9kwGKm92znKHUyDr2Hw0j7qEorl
-	 Dz7MJz0RG/jxDlhuPw+zV+461Tv+dycYeseZRxC5cqHaZDrShmLu3Kf11cbLmBRQKi
-	 bpoQfor80eyOVU2QAjUUMU+jgscSpWhu27ywfurWH3I1fDe8xmzcEbbJgjz5jFd3dF
-	 UUnOvqHt+boU80ZU9zcqgpKNry75+8vCXg+f3NWPNRDJtqlGdEGuZJMT79WHXVuXN4
-	 Q/wErnC708HhA==
-Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4ZVJ8s527hz9rxK;
-	Sat,  5 Apr 2025 16:42:21 +0200 (CEST)
-From: Alexander Reimelt <alexander.reimelt@posteo.de>
-To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
- "Rob Herring (Arm)" <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
- Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
- Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 07/19] arm64: dts: qcom: msm8992-lg-h815: Fix CPU node
- "enable-method" property dependencies
-Date: Sat, 05 Apr 2025 14:42:21 +0000
-Message-ID: <4999945.OV4Wx5bFTl@stinkpad>
-In-Reply-To: <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <470e2155-7145-44ab-9d6d-117a2d98d7f8@oss.qualcomm.com>
- <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
+	id 1u1CYg-0000000EaRN-1kTD;
+	Sat, 05 Apr 2025 23:04:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1743894244; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=T/1l6nSYmkjzcrrhFTI74xTmOePIaUVo+9aMZXhvp/em86ekNMSnEkys1Dl04Wg5HpPuiyIwtdazr8Fw3Hz4JSHyUW57kCyQXxjeBApggdXJ0kZocMpnyhA5sgpyRMr9P0x6gwNwJXsfusU89KADlFNJbOYchdG/z0iQFTGMaNs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1743894244; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=lyZGSnBMeeneCIwyMr0oHComy6X8X/19w17qqFQ5cVw=; 
+	b=EsJ/SJaaQoh4W0h9Ylztc8Ckr0Mw865B682my/yuLQQgCQMzax9Xqr99zKPknOPQfUIjdXa1scRJrVBtwe/jFFSYyZ72ZgASIwYFjDNi79wGcKwe4iO2htknhrJbNjM/x31G/4LOVq0mtFLTVev+uxXWNsBLwNGNUuHopCK0b6g=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1743894244;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=lyZGSnBMeeneCIwyMr0oHComy6X8X/19w17qqFQ5cVw=;
+	b=eiM7hbKr8YeqnfvfxZ0qJNFvbXiGEeDrKwbc3vU9mBZF128PH6o/eFsl2M8f2hO5
+	pVfxkjZuRXNH8vEsjXh9p/50oGDezN+4eiKZ7pwIvWm4dDAxbFkEdflA+xprElEzwtn
+	SnX9Ziw7QqG6PvyLWOV0DljjF0HzTsOvw8Cu7JmY=
+Received: by mx.zohomail.com with SMTPS id 1743894241072346.3815949955907;
+	Sat, 5 Apr 2025 16:04:01 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id D2E43182317; Sun, 06 Apr 2025 01:03:54 +0200 (CEST)
+Date: Sun, 6 Apr 2025 01:03:54 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: shao.mingyin@zte.com.cn
+Cc: vkoul@kernel.org, robert.marko@sartura.hr, kishon@kernel.org, 
+	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org, 
+	zhang.enpei@zte.com.cn, linux-phy@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	luka.perkov@sartura.hr, linux-arm-msm@vger.kernel.org, heiko@sntech.de, 
+	linux-rockchip@lists.infradead.org, yang.yang29@zte.com.cn, xu.xin16@zte.com.cn, 
+	ye.xingchen@zte.com.cn
+Subject: Re: [PATCH linux-next 5/5] phy: rockchip: =?utf-8?Q?phy-rockchip-?=
+ =?utf-8?B?dHlwZWM6IFVzZcKgZGV2X2Vycl9wcm9iZSgp?=
+Message-ID: <gkq5rxrawtcqsnru7jsfkrxfzubbqq3rbd6fdulmqtdjmitbwk@5jj6l5aafh7x>
+References: <20250402194100610qY6KQ4JPISk-4v214Qs36@zte.com.cn>
+ <20250402194542026OH8jAzuv0uq-J-D9AVPqJ@zte.com.cn>
 MIME-Version: 1.0
-Autocrypt: addr=alexander.reimelt@posteo.de;
-  keydata=xjMEZg0fSRYJKwYBBAHaRw8BAQdAIcaNTdj3NWDe5HQPCUs6oYyQygAJWP9LCzhr+C7RwMrNG2Fs
-  ZXhhbmRlci5yZWltZWx0QHBvc3Rlby5kZcKZBBMWCgBBFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIF
-  AmYNH0kCGwMFCQWjo9cFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQHqi3OKk8uRJ8ogD9
-  EVg4zgfmC2SqXCgms6LETAzVX4CrAS8yMhyd7Md921cA/R8lhm9B96RYgA7MvFPFJb1T6JFY75Jg
-  QLXrtIE5llwHzjgEZg0fSRIKKwYBBAGXVQEFAQEHQBGDuxZLOTvppxyM4G18fSR6xzT0xkkPOia7
-  Bh6L1vAAAwEIB8J+BBgWCgAmFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIFAmYNH0kCGwwFCQWjo9cA
-  CgkQHqi3OKk8uRIa1wD8CZDdCAKXstgXY96eeSSP7MecEF5TBdmWOiVgjlEIpoEA/RnGuDaj06B1
-  F51wyGAjYXSmn5qFoNHu3yXyLUkFz1ME
-OpenPGP: url=https://posteo.de/keys/alexander.reimelt@posteo.de.asc
+In-Reply-To: <20250402194542026OH8jAzuv0uq-J-D9AVPqJ@zte.com.cn>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/243.872.34
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250405_074233_648418_B52113FD 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20250405_160414_496594_AA32B745 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,33 +82,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5365244573633490918=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> On 4/4/25 10:30 PM, Konrad Dybcio wrote:
-> > On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
-> >> The "spin-table" enable-method requires "cpu-release-addr" property,
-> >> so add a dummy entry. It is assumed the bootloader will fill in the
-> >> correct values.
-> >> 
-> >> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> >> ---
-> > 
-> > This looks good to me without knowing any better about the specifics
-> > of this device..
-> > 
-> > +Alexander - does the bootloader you use take care of this? Otherwise
-> > we can just do what Sony devices do and stop on removing the psci node
 
-I currently can't test this, but the bootloader (lk2nd) will set it.
-
-Alexander
+--===============5365244573633490918==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bfw6qh3c36p7wbnt"
+Content-Disposition: inline
 
 
+--bfw6qh3c36p7wbnt
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH linux-next 5/5] phy: rockchip: =?utf-8?Q?phy-rockchip-?=
+ =?utf-8?B?dHlwZWM6IFVzZcKgZGV2X2Vycl9wcm9iZSgp?=
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Apr 02, 2025 at 07:45:42PM +0800, shao.mingyin@zte.com.cn wrote:
+> From: Zhang Enpei <zhang.enpei@zte.com.cn>
+>=20
+> Replace the open-code with dev_err_probe() to simplify the code.
+>=20
+> Signed-off-by: Zhang Enpei <zhang.enpei@zte.com.cn>
+> Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-typec.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rock=
+chip/phy-rockchip-typec.c
+> index d9701b6106d5..94d1e6ead1a7 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> @@ -1151,11 +1151,9 @@ static int rockchip_typec_phy_probe(struct platfor=
+m_device *pdev)
+>  	if (IS_ERR(tcphy->extcon)) {
+>  		if (PTR_ERR(tcphy->extcon) =3D=3D -ENODEV) {
+>  			tcphy->extcon =3D NULL;
+> -		} else {
+> -			if (PTR_ERR(tcphy->extcon) !=3D -EPROBE_DEFER)
+> -				dev_err(dev, "Invalid or missing extcon\n");
+> -			return PTR_ERR(tcphy->extcon);
+> -		}
+> +		} else
+> +			return dev_err_probe(dev, PTR_ERR(tcphy->extcon),
+> +					     "Invalid or missing extcon\n");
+
+You should also remove the { } for the normal if clause. Otherwise
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+But you might want to throw in an extra patch updating the error
+message. -ENODEV is covered explicitly, so it's not "missing". I
+suggest "Failed to get extcon".
+
+Greetings,
+
+-- Sebastian
+
+>  	}
+>=20
+>  	pm_runtime_enable(dev);
+> --=20
+> 2.25.1
+>=20
+
+--bfw6qh3c36p7wbnt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmfxttMACgkQ2O7X88g7
++ppy+A//fWq3tj+yzqjkHN+x3+fx/l6vrY7SMi3s0Y5iNWc8KoQih+KHs5rVt5gv
++/ubWJhmdA0ArduoDnuG8Q6iqWHqKQdDmqATJG7GvMUXLGWk4WewVGT7fFgWJ8ri
+0+lLkp2w4XFP2ODJYoAL0u7JXRtlBrK9hGoPAVn9qb5hlEBeFWsKKA1ymZcUJMzr
+Uo9dL69VDBghYPDHfTtF0ssyNncVWkcU6NXgOVmBv89hzhVKY/5k19h0tj97QTyK
+XxLwZTYGur3VACuGvu5fNj29bGq74enxRknPiGROryprdTklU5kojss0+SYQXbWU
+UIrLDj/FcOceikn6N+lmntsC7Xev2yXnoIdG8g4t0ft2MMNTzyyaTiUzpXrn6P9b
+3ywDYRigFeWi/ep5Mr6iMm0g8imQ398SOEn357I2Mj+XwkGZo3v3fo0G8LhfDBu9
+ea9y/z04gKVr1yVvqg5blz/G7U9XugwX2K8STj7xJjZkIadq7T7Ncq8xiYji30eU
+TAsXSbtxkzapGVJ6UZfnxSb+UE/lj1h21rGaQewt/jCUJz3XhrKaApKcNSb7fWcJ
+9AAGcKlCjiMhak8zOTGxJwO1P80Dq8oJ6oQrqciQRdYcOMUGjb3kp1/F6TdW2pji
+ifw2gZWm7FAFSVVH/jiSq9FYaoGhUrza6HITG0GEx7y1kK+yB+s=
+=4gXu
+-----END PGP SIGNATURE-----
+
+--bfw6qh3c36p7wbnt--
+
+
+--===============5365244573633490918==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5365244573633490918==--
+
