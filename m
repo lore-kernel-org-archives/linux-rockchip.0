@@ -4,65 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F040C3601E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Apr 2025 22:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A7BC3601A
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Apr 2025 14:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=8iJHlA7Cu1C8CTxTKpMRx3DLl0eOyS40ZT9TumM3+lw=; b=lkamrRVl9/ssQihyF4YiV1s7N8
-	89INaFtnRQoMfjARM/AgCSBt6e/6sj5K9hBglIbcOM1M/BMpgTMRHgSPRjdU0YgH7KNHihEg6YMF5
-	DOe3LzCtKbAXFuVhvXJ8VUJjXm7gOCcZ+ppcg08DEilQFChW08JAe/6m9K7RecR/hwh3/1TYUBV5A
-	ZOUWCau8hEADREUZbeZWJhJ4q0tczADPHeybln/dEunCKDSw2vY0wpXDagxFhG5kVh7ESlMlGI9uh
-	dmb0s6qzl7ZT1X5w0IjCLtMOW+lXJfu+FYByT22mK3MJBNxRvj/8BfJL+uqzHG8T4vnCYaQjTTwtl
-	pvz79vUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eXFMSpdM9JdjDusOlWz0zc18Js5zKpcv4cRFmS+F1yI=; b=GVUAtE5HWEnGsR
+	5OOjoE2ei9gbJ229N2/JxlRvyjUmm85lclPS1ED091h8z5oCf6yS5RY+EG0vEl/Tu3M8bL/DjydE+
+	FOCSAjlpGAWbvknMfUAR/W7ChmBJn14UojKlR7yDUY1cX7+GVI4xH60voVwBUBRirmaJ1k0anlTfq
+	RuaRIrxR9/Ph/0U4IJcxAd1GgO+WV/1GzeYWgqPf/g5N/bPkVUYVT3lcTU4IhgK0xxwWXWVT85nxT
+	mkdYEiXzVs4Ks2GnglN5bCfP+60hAfEzJZowxlh9GHOy/7Cy07G+IFgWov2hYT823URhBdQ25QPOF
+	pcw/KrkNvYodQq0tYH/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0pRQ-0000000Cyjr-35hN;
-	Fri, 04 Apr 2025 22:23:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u14jE-0000000E4zd-0V4D;
+	Sat, 05 Apr 2025 14:42:36 +0000
+Received: from mout02.posteo.de ([185.67.36.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0pPf-0000000CyVN-3PnV;
-	Fri, 04 Apr 2025 22:21:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DD69844304;
-	Fri,  4 Apr 2025 22:21:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0186BC4CEDD;
-	Fri,  4 Apr 2025 22:21:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743805283;
-	bh=7eTq/+/tHSezJmCcxzOUrQ0fGNRkpQ2yL3p6VtTrj6c=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=XxmXfRxInqmGGSMNGeAHqvZZOI/7yWE4UCk8el82OuOx+QVhlTipB7wXF3A3TRuXl
-	 TA0fMRRLqDdQCSSK9IoYn/7BEk8ta4ECParWhZNOeIRjMwj6XJYGHULi5sWTDwnPfL
-	 4cHhOaXNG9gz6UAb6D/9sJXhw4Xg2QYnxEpTBX3d7h9FAlCCVpM55uHWoHWn03dU9I
-	 7R5eqLYOZwsQ6h1EsZvYcD0EXN2E7CW3eBXiHgXN8MWNVthHcbZquuZKOnipdSp/Qy
-	 pAu5rSbpNjQtgA9OoQCkkyhDbLyQsWPk0OQ6XmT1dKlMnqjb4/l2HuoOShAfRULQyR
-	 dMmPdAVVi32cA==
-Date: Fri, 04 Apr 2025 17:21:21 -0500
+	id 1u14jB-0000000E4xM-1OBq
+	for linux-rockchip@lists.infradead.org;
+	Sat, 05 Apr 2025 14:42:34 +0000
+Received: from submission (posteo.de [185.67.36.169]) 
+	by mout02.posteo.de (Postfix) with ESMTPS id 7971C240101
+	for <linux-rockchip@lists.infradead.org>; Sat,  5 Apr 2025 16:42:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.de; s=2017;
+	t=1743864149; bh=XfnEVi3ovC/zw6g3a+nScy1RtngEkEo5Aoq+dlPJPpk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:
+	 Content-Transfer-Encoding:Content-Type:Autocrypt:OpenPGP:From;
+	b=bRlW4EuBgLbc/jsNHZ5F3N0Sbs0CvK78rZhhhEhFCKqaJm4AXeCP1eWWCbQ0oJaiR
+	 Hfy47+nBka6NZihRmk2UKn9kw3G/8E1j/cnVv7l9kwGKm92znKHUyDr2Hw0j7qEorl
+	 Dz7MJz0RG/jxDlhuPw+zV+461Tv+dycYeseZRxC5cqHaZDrShmLu3Kf11cbLmBRQKi
+	 bpoQfor80eyOVU2QAjUUMU+jgscSpWhu27ywfurWH3I1fDe8xmzcEbbJgjz5jFd3dF
+	 UUnOvqHt+boU80ZU9zcqgpKNry75+8vCXg+f3NWPNRDJtqlGdEGuZJMT79WHXVuXN4
+	 Q/wErnC708HhA==
+Received: from customer (localhost [127.0.0.1])
+	by submission (posteo.de) with ESMTPSA id 4ZVJ8s527hz9rxK;
+	Sat,  5 Apr 2025 16:42:21 +0200 (CEST)
+From: Alexander Reimelt <alexander.reimelt@posteo.de>
+To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+ "Rob Herring (Arm)" <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
+ Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+ Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 07/19] arm64: dts: qcom: msm8992-lg-h815: Fix CPU node
+ "enable-method" property dependencies
+Date: Sat, 05 Apr 2025 14:42:21 +0000
+Message-ID: <4999945.OV4Wx5bFTl@stinkpad>
+In-Reply-To: <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
+ <470e2155-7145-44ab-9d6d-117a2d98d7f8@oss.qualcomm.com>
+ <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Frank Wang <frank.wang@rock-chips.com>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Zhang Yubing <yubing.zhang@rock-chips.com>, 
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
- linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
- devicetree@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@kernel.org>, 
- linux-rockchip@lists.infradead.org
-To: "Rob Herring (Arm)" <robh@kernel.org>
-In-Reply-To: <20250404213958.400852-1-robh@kernel.org>
-References: <20250404213958.400852-1-robh@kernel.org>
-Message-Id: <174380528188.571034.1832542310029442555.robh@kernel.org>
-Subject: Re: [PATCH] dt-bindings: phy: rockchip: Add missing "phy-supply"
- property
+Autocrypt: addr=alexander.reimelt@posteo.de;
+  keydata=xjMEZg0fSRYJKwYBBAHaRw8BAQdAIcaNTdj3NWDe5HQPCUs6oYyQygAJWP9LCzhr+C7RwMrNG2Fs
+  ZXhhbmRlci5yZWltZWx0QHBvc3Rlby5kZcKZBBMWCgBBFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIF
+  AmYNH0kCGwMFCQWjo9cFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQHqi3OKk8uRJ8ogD9
+  EVg4zgfmC2SqXCgms6LETAzVX4CrAS8yMhyd7Md921cA/R8lhm9B96RYgA7MvFPFJb1T6JFY75Jg
+  QLXrtIE5llwHzjgEZg0fSRIKKwYBBAGXVQEFAQEHQBGDuxZLOTvppxyM4G18fSR6xzT0xkkPOia7
+  Bh6L1vAAAwEIB8J+BBgWCgAmFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIFAmYNH0kCGwwFCQWjo9cA
+  CgkQHqi3OKk8uRIa1wD8CZDdCAKXstgXY96eeSSP7MecEF5TBdmWOiVgjlEIpoEA/RnGuDaj06B1
+  F51wyGAjYXSmn5qFoNHu3yXyLUkFz1ME
+OpenPGP: url=https://posteo.de/keys/alexander.reimelt@posteo.de.asc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_152123_868752_CB3DE49C 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250405_074233_648418_B52113FD 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +118,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> On 4/4/25 10:30 PM, Konrad Dybcio wrote:
+> > On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
+> >> The "spin-table" enable-method requires "cpu-release-addr" property,
+> >> so add a dummy entry. It is assumed the bootloader will fill in the
+> >> correct values.
+> >> 
+> >> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> >> ---
+> > 
+> > This looks good to me without knowing any better about the specifics
+> > of this device..
+> > 
+> > +Alexander - does the bootloader you use take care of this? Otherwise
+> > we can just do what Sony devices do and stop on removing the psci node
 
-On Fri, 04 Apr 2025 16:39:57 -0500, Rob Herring (Arm) wrote:
-> Several Rockchip PHYs use the "phy-supply" property, but don't
-> document it. Add it to the current known users.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml   | 3 +++
->  Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml  | 3 +++
->  Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml  | 3 +++
->  3 files changed, 9 insertions(+)
-> 
+I currently can't test this, but the bootloader (lk2nd) will set it.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Alexander
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml: properties:phy-supply: 'maxItems' is not one of ['description', 'deprecated']
-	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml: properties:phy-supply: 'maxItems' is not one of ['description', 'deprecated']
-	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml: properties:phy-supply: 'maxItems' is not one of ['description', 'deprecated']
-	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250404213958.400852-1-robh@kernel.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
