@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEB81C369A3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 12:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BE4C3601E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 12:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q8K+A0RfV2GHg/EWXS+EIOuxWyx4fF4GPdF9VXO6N0A=; b=pEJgSJNaoCUCqG
-	gSH09PPywBulCB0EMUfbRCRLG7jWvw7E5CfXIxlwc4h/a8Fb9mqU+tj1S/nZolNtUsI+LF+oaEYwk
-	jqQFHk8HvaqfM2OnBAdSxyXE/7Q5kR+EY6AXThdBi/K2l3GfYpnJyb7Pzqi6EaUtRuQj4wjERWvvJ
-	S4JgtuYoKw08JEKjB62rpVvFLm8dfEyCMCRmXkoXd7Bhlfl2dWAILKZVXh2GoUUJB32gnKOfRq1Ap
-	u5w5m7VGFOQboQzLzGF9wVOJoaQf59iKxl7fhBqcmOOMbKv//mPu5UAo5IPMQHNCXXVrdVnTZVKUX
-	wdnX+RJhDftA1qPiyfUw==;
+	List-Owner; bh=9wUy8jQyM+E73bMFWWjOxhG2crCToXyEfqxXEpACHR4=; b=F/wdULNTPbqTHR
+	tco0TNqK9bvf35T1ih3GG2mc2Yeok2afMCzRkIjsRRN2O1sb8IglLdgxllQFo24hRMy9M+8dUEPnN
+	aasZpFuvCKChurMlxAb3OsoHRJuu7KtctvUWrI1x/LlfwFm7Wzu3KeO8kv5MxstDbs+6/nVVZSpQe
+	ZX9fC5XpMRrYjV++Pv2O/HWYceK6OpigCc2+5wIBci5QDwxZtluaPFtI7LmQPh+o5VqRGLnv7SZtm
+	HcicXNRZwqR7BORa90dU9bIj8pGa+01fvRZEAQHzByKgzvff9AHe7n7zApd5wtqQA89iYHlvKz3aA
+	YIKT9oTfcoFc2LpfB5Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lqN-00000000Kj9-1Kx9;
-	Mon, 07 Apr 2025 12:44:51 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lcF-00000000FRm-196B;
-	Mon, 07 Apr 2025 12:30:16 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1516F106F;
-	Mon,  7 Apr 2025 05:30:16 -0700 (PDT)
-Received: from bogus (unknown [10.57.41.33])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 100F53F694;
-	Mon,  7 Apr 2025 05:30:05 -0700 (PDT)
-Date: Mon, 7 Apr 2025 13:30:03 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vincenzo Frascino <vincenzo.frascino@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
-	Conor Dooley <conor@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
+	id 1u1ltp-00000000Lo9-2paL;
+	Mon, 07 Apr 2025 12:48:25 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u1lj5-00000000IY2-1TXo;
+	Mon, 07 Apr 2025 12:37:20 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-39c2688619bso2558890f8f.1;
+        Mon, 07 Apr 2025 05:37:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744029438; x=1744634238; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nJwN15SFuWFw+J8LbQ3OEgp3ncmtC3qYGCS05leh5Dk=;
+        b=fEZH28Gva0EbtyBFrj1SENkUordVNPB2wa7mIeJiT0tvHOUeOyBtb5lfBZfBpPgRG1
+         jmzpQkCK6pjm/QdidQzQptuQ8zzxOvojZNRPdxDDZddodByKndGSd/Gf5Ibxj1/OzF5Y
+         +AUdrWs3BjvK4xbsQjdLYDq7KkWtInbSI6QFKIj0f06/CPhr59u/XNghv1t7JWhxzl65
+         703/wN0LN5hQpcUIeRD6mdT3llXqq6/DcHdEnIMS1+QnMyqinc/YtZ9nbK/JtR+WmWyt
+         jar9s5dU5B4Yj/0GpSg5+SgSVXrl+5JtLzlErMZD/hK9QEwbEn0u5gibyNGSXvLubi3m
+         G4Zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744029438; x=1744634238;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=nJwN15SFuWFw+J8LbQ3OEgp3ncmtC3qYGCS05leh5Dk=;
+        b=RkBT+gxPIQqEMdHMQmcj4q6Ji2YUUz+7tYP4MXrdNEuSD5g62LM4Pmv+0f9MvUJwMc
+         IbMK8guDU58xQOwUF4sBgdYTu55vNBg51nnkCQJGNir7Xmyw6sSfe0T3bP0sZU0yUD6r
+         Fv7x7XB0boUVURGZ13JBCJ5FZOVawaW5DTHa0WnVd7EPNWazyMi0tr0GeuUEdKK5x/Js
+         rNqfoQvoACyTPpP5XzkT8qYdX+7CiovPAl7Yhhdp8rOtFsVVXGf6WgWmN1XQ4z9lqFQk
+         iVeS5WZx73/sBUvxJ6elNNTPX1epPovJvr2y7Vje4p7LBBoBAIIB2FjmNIMKoTA/bX0H
+         lvnA==
+X-Forwarded-Encrypted: i=1; AJvYcCUVZzh9pHYLkzJ8TLACIVc5jWvW1yQ+cQkgh44xzK/DUlR+t+Hx/wGnFLzWnH2Z8TQQimnthC/mhvVNNhJXLQ0=@lists.infradead.org, AJvYcCX/x6fazst9ZNo/bb7OBXZYXSto0jlHAspG8mkbwYr/wxWd+r7HpNjt8Jjw+bvQrXvpzQ2gNAbXVMef+uWcrZ7C@lists.infradead.org
+X-Gm-Message-State: AOJu0YxSN24129svsEOoa7pWobHEn8fhC0Vp70ZBGaD80Bn2zIy/mN1x
+	bxUYWK1d2+BiJ28x/vkdkbSOMxqmAhUNa/CyOcz0QZccXXWUz4Xo
+X-Gm-Gg: ASbGncv4CuqgOxyEF78SkNu191DKEemBytMBLpP4b8a71XRlaHtXnA5cfIV071/RABl
+	bwSCOdse1n1fBbQfSQy5kbCrN/phc2qPcuRBRVdjiBtK9fRFlFi5t/hV37lKMvGmRdfwgRF4zr+
+	nL8qDdpS8mvGIcP53XW33t07QMRBT56H7C3Q3o6TapcoqgitzPYrb9hrwhMya1JNKm1tLGesd5M
+	En5qNEip/zw8H76iAcPdCpNhetj0/OvHN0gStEOhY49gfwxZQCur9wtpFgy+4+HqFXSVuoeMs1Y
+	NviJj2jJDfeHGDH2elTdMrtfx4O0DsbfkWeSdmx/d6SjUjPhqYmsNxLp8u5o7pY8lt2TC9mu
+X-Google-Smtp-Source: AGHT+IGOiYeoMEwHC9hRn8culHx4Ww1nJheukDZ53zBULfafTN1LFvaJ8yuDLqKUZnP9wmJYz7FCzQ==
+X-Received: by 2002:a05:6000:2405:b0:391:4999:776c with SMTP id ffacd0b85a97d-39cba975d5dmr10077751f8f.40.1744029437773;
+        Mon, 07 Apr 2025 05:37:17 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:2f0e:c50a:8800:cf9e:ee0b:4a01:37f6])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301b76f2sm12065198f8f.53.2025.04.07.05.37.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 07 Apr 2025 05:37:17 -0700 (PDT)
+From: Ovidiu Panait <ovidiu.panait.oss@gmail.com>
+To: linux-crypto@vger.kernel.org,
+	herbert@gondor.apana.org.au
+Cc: davem@davemloft.net,
+	linux-kernel@vger.kernel.org,
+	Ovidiu Panait <ovidiu.panait.oss@gmail.com>,
+	Corentin Labbe <clabbe@baylibre.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mips@vger.kernel.org, imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains
- constraints
-Message-ID: <20250407-aloof-fox-of-relaxation-62963a@sudeepholla>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
- <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 2/4] crypto: rk3288 - use API helpers to setup fallback request
+Date: Mon,  7 Apr 2025 15:36:02 +0300
+Message-ID: <20250407123604.2109561-2-ovidiu.panait.oss@gmail.com>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250407123604.2109561-1-ovidiu.panait.oss@gmail.com>
+References: <20250407123604.2109561-1-ovidiu.panait.oss@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_053015_399846_0D5B2DCA 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20250407_053719_392216_D25209F5 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,38 +103,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 04, 2025 at 12:36:33PM +0200, Ulf Hansson wrote:
-> On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wrote:
-> >
-> > The "power-domains" and "power-domains-names" properties are missing any
-> > constraints. Add the constraints and drop the generic descriptions.
-> >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > ---
-> >  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
-> >  1 file changed, 2 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > index 6f74ebfd38df..5bd5822db8af 100644
-> > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > @@ -313,19 +313,15 @@ properties:
-> >      maxItems: 1
-> >
-> >    power-domains:
-> > -    description:
-> > -      List of phandles and PM domain specifiers, as defined by bindings of the
-> > -      PM domain provider (see also ../power_domain.txt).
-> > +    maxItems: 1
-> 
-> There are more than one in some cases. The most is probably three, I think.
->
+Rather than setting up the fallback request by hand, use
+ahash_request_set_callback() and ahash_request_set_crypt() API helpers
+to properly setup the new request.
 
-+1, there are users using "perf" and "psci" together now.
+This also ensures that the completion callback is properly passed down
+to the fallback algorithm, which avoids a crash with async fallbacks.
 
+Signed-off-by: Ovidiu Panait <ovidiu.panait.oss@gmail.com>
+---
+Cc: Corentin Labbe <clabbe@baylibre.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c | 52 ++++++++++---------
+ 1 file changed, 27 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+index 69d6019d8abc..d6928ebe9526 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+@@ -52,12 +52,11 @@ static int rk_ahash_digest_fb(struct ahash_request *areq)
+ 	algt->stat_fb++;
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, tfmctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = areq->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
+-
+-	rctx->fallback_req.nbytes = areq->nbytes;
+-	rctx->fallback_req.src = areq->src;
+-	rctx->fallback_req.result = areq->result;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   areq->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   areq->base.complete, areq->base.data);
++	ahash_request_set_crypt(&rctx->fallback_req, areq->src, areq->result,
++				areq->nbytes);
+ 
+ 	return crypto_ahash_digest(&rctx->fallback_req);
+ }
+@@ -124,8 +123,9 @@ static int rk_ahash_init(struct ahash_request *req)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
+ 
+ 	return crypto_ahash_init(&rctx->fallback_req);
+ }
+@@ -137,10 +137,10 @@ static int rk_ahash_update(struct ahash_request *req)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
+-	rctx->fallback_req.nbytes = req->nbytes;
+-	rctx->fallback_req.src = req->src;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
++	ahash_request_set_crypt(&rctx->fallback_req, req->src, NULL, req->nbytes);
+ 
+ 	return crypto_ahash_update(&rctx->fallback_req);
+ }
+@@ -152,9 +152,10 @@ static int rk_ahash_final(struct ahash_request *req)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
+-	rctx->fallback_req.result = req->result;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
++	ahash_request_set_crypt(&rctx->fallback_req, NULL, req->result, 0);
+ 
+ 	return crypto_ahash_final(&rctx->fallback_req);
+ }
+@@ -166,12 +167,11 @@ static int rk_ahash_finup(struct ahash_request *req)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
+-
+-	rctx->fallback_req.nbytes = req->nbytes;
+-	rctx->fallback_req.src = req->src;
+-	rctx->fallback_req.result = req->result;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
++	ahash_request_set_crypt(&rctx->fallback_req, req->src, req->result,
++				req->nbytes);
+ 
+ 	return crypto_ahash_finup(&rctx->fallback_req);
+ }
+@@ -183,8 +183,9 @@ static int rk_ahash_import(struct ahash_request *req, const void *in)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
+ 
+ 	return crypto_ahash_import(&rctx->fallback_req, in);
+ }
+@@ -196,8 +197,9 @@ static int rk_ahash_export(struct ahash_request *req, void *out)
+ 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
+ 
+ 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
+-	rctx->fallback_req.base.flags = req->base.flags &
+-					CRYPTO_TFM_REQ_MAY_SLEEP;
++	ahash_request_set_callback(&rctx->fallback_req,
++				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
++				   req->base.complete, req->base.data);
+ 
+ 	return crypto_ahash_export(&rctx->fallback_req, out);
+ }
 -- 
-Regards,
-Sudeep
+2.48.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
