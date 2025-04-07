@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93AD6C36010
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 07:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF72CC36010
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 07:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uL9ILuKk9rbSIoEPeg3R0BIGvdc/Mr+jni8k41p7ouU=; b=ISbvimpokcoYaT
-	IcnGV1OWmFfn8lbc/iZSVTg5cNhzzGK32/SclwKu9MuFPvPNt9pbiRDzNdBwZ2baEqNAC1YJosvxZ
-	6MAfF7bt16LypBtokwWFiyQjETsm/ksU5WvSrQVUe5DAyD7FNOBRIWe6Jjj4OZUR/woXqDbNYKDpr
-	OZHIgksrnvkc7VZk9op7G6JUbz+s6/JzdVk2hPrE97CBQmdtnJe4DzCrXUbvGhjt+d9kpM7d4fFXn
-	AzfeCvX4soXA2jSr+hCWKnnXRSJtU/oMBXPQZg1hGuMstd0hLHZM0Yu07kzNSiMHkG2HqnmZfk1Ob
-	5tlJ+nxCX1NOl9NCOoTA==;
+	List-Owner; bh=PSiEeXfQGAzhoC53Hdk2HOeiIuAOuS1dK+S7O8gBoCk=; b=CK5Uew2WXpcopc
+	keWZmQpVgHFs9MP3IZ6TJmBLSDxIVweSKuVvS/V990pLOOQrcbw2zqn+EYmuPfF8RbyjndfduBySl
+	6XMAW2tGfZTc8t7/X/NnJ4N+xBL889dIFjoG2yr75CEWr89Z8nXlAA9BLTixEKuUV1ByvR6vYOzh8
+	4OpZ/xsH+saOrnlycjut7YZ4G7qVNBTUZwbgFzsz/0fANCpZrO8QrrfgGeccv4sEcnSKAYSB4fX4+
+	Ye3v+CJkiMntfYn3ScfpYFMb1EWibXCFRTVBess/i+48ehYoiNmauWd5D4r9vdpVT0VQPCDtSKQ86
+	w01JF2SitYS8uWl4/Y/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1gv2-0000000GmCz-3KFw;
-	Mon, 07 Apr 2025 07:29:20 +0000
+	id 1u1gyV-0000000Gn75-3xnw;
+	Mon, 07 Apr 2025 07:32:55 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1gjz-0000000GiQl-2Wap;
-	Mon, 07 Apr 2025 07:17:57 +0000
+	id 1u1gk5-0000000GiSX-10xr;
+	Mon, 07 Apr 2025 07:18:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=CD5pkChFnmWgrszF5d2TZFlBk0vyaVCC45Ph73rxnSg=; b=uEPwYIy5GXqjN4brgbrRj+p1ct
-	URMzK34Yqnbi99ZeTq6NdHSwvBZbaNh4Q+3KIcfDSZbwmqeEXHvc/9JG5ANAusPVWKgkUTnz3ibzw
-	K52w/opAnmJb9rJk0pmH/OeNbddbo99JJdk5M2EmNRuAIVs0nWVUpKBuQuw0exmxW7zppZMKhg659
-	kqF63IZ7DNDPxkRj5gjbSYZqLhbIIZElAjU3yOmIRGQt9ABqciG8hvYbsCebo6jcYzhX/ApD2tqjb
-	5j2Wap+CpklXuFw9VwzLbKO7VTK1wRrdvMOXdVFBONkvhZV2J/ysQnKBrSNkQHW0aAGz6Jyp1xWCx
-	OREEDvpA==;
+	bh=XrhZLC/gWu44yM/JXNBUfkny0yyqCUz+uaOnp1SH628=; b=CCWFB7TyuHv14vo2yVNtr3NiM3
+	l98FtBjdbLBhuyZw1d3gP1gS8Zj7wCAjJrtvIIkjbT+007HCeyhN0EOkX/syQwlDcNqRODgJDlupN
+	HiNWcySXh0JgaNhIMyUVMaITuZ7IWDcd1HYI7M9qunRlr2P+uZ/Y+HUL9kGx4gsgL/SA4RqJLyc91
+	K5GpqnBDBqXPyvVrKJDnzG3uIUNZTw9t4Kwg64Doj3w7bZ4etbeQAgnpONfh3938Ef2PaVdzSCB33
+	r0+UB7bStGsG5EY+ZIpiYfA4c/klYaP3lPHfZiHJR3L8LL9x+1X47PYGjv5al8YEPi45tI9vmLhAf
+	KDXi6FkA==;
 Received: from i53875b95.versanet.de ([83.135.91.149] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1u1gjw-0000tP-I4; Mon, 07 Apr 2025 09:17:52 +0200
+	id 1u1gju-0000tP-Jw; Mon, 07 Apr 2025 09:17:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Quentin Schulz <foss+kernel@0leil.net>
+To: Andy Yan <andyshrk@163.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	dsimic@manjaro.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: enable HDMI audio on RK3588 Jaguar and RK3588 Tiger Haikou
-Date: Mon,  7 Apr 2025 09:17:42 +0200
-Message-ID: <174401024399.372530.2324362238627427658.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org,
+	krzk+dt@kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: aliase sdhci as mmc0 for rk3566 box demo
+Date: Mon,  7 Apr 2025 09:17:38 +0200
+Message-ID: <174401024398.372530.4282077768159194558.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250317-tsd-rk3588-hdmi-audio-v1-0-0b8ceb9597a6@cherry.de>
-References: <20250317-tsd-rk3588-hdmi-audio-v1-0-0b8ceb9597a6@cherry.de>
+In-Reply-To: <20241221104920.4193034-1-andyshrk@163.com>
+References: <20241221104920.4193034-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_001755_638269_571F6FAB 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20250407_001801_274480_F6284BA1 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,22 +80,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 17 Mar 2025 13:07:25 +0100, Quentin Schulz wrote:
-> Both have an HDMI TX port and can carry audio, therefore let's simply
-> enable the nodes required to get HDMI audio on that port.
+On Sat, 21 Dec 2024 18:49:07 +0800, Andy Yan wrote:
+> Follow most others rk356x based boards, and u-boot only use mmc0/1
+> as mmc boot targets, so aliase sdhci as mmc0.
 > 
-> This is based on next-20250314 and the following series needs to be
-> applied in order to reach userspace:
-> https://lore.kernel.org/linux-rockchip/cover.1741886382.git.robin.murphy@arm.com/
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Enable HDMI audio output for RK3588 Jaguar
-      commit: f46705afd1aafd843e28e981447c92469e846673
-[2/2] arm64: dts: rockchip: Enable HDMI audio output for RK3588 Tiger Haikou
-      commit: 200b3fa574c9377ff0b4e69a6ca4668939bf0cad
+[1/1] arm64: dts: rockchip: aliase sdhci as mmc0 for rk3566 box demo
+      commit: b6490faab67c4436abeddb5c9e1fb0e8791d58ad
 
 Best regards,
 -- 
