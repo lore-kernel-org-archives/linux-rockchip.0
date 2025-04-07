@@ -4,89 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BE4C3601E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 12:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D76C369A4
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 15:12:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9wUy8jQyM+E73bMFWWjOxhG2crCToXyEfqxXEpACHR4=; b=F/wdULNTPbqTHR
-	tco0TNqK9bvf35T1ih3GG2mc2Yeok2afMCzRkIjsRRN2O1sb8IglLdgxllQFo24hRMy9M+8dUEPnN
-	aasZpFuvCKChurMlxAb3OsoHRJuu7KtctvUWrI1x/LlfwFm7Wzu3KeO8kv5MxstDbs+6/nVVZSpQe
-	ZX9fC5XpMRrYjV++Pv2O/HWYceK6OpigCc2+5wIBci5QDwxZtluaPFtI7LmQPh+o5VqRGLnv7SZtm
-	HcicXNRZwqR7BORa90dU9bIj8pGa+01fvRZEAQHzByKgzvff9AHe7n7zApd5wtqQA89iYHlvKz3aA
-	YIKT9oTfcoFc2LpfB5Og==;
+	List-Owner; bh=MuD7h+Q5uZ1q1/T7Fq07Po8rNkzCgi8cIeAZcTGiUz0=; b=FzFdnoTt/tt2J6
+	tP+u4cSUe/hxr6vbO9ILBbBtwMMOwcrnCJE3FIK5C/0gmV0phF/WrrQEtL1myAxKGTarMpSQYwZ+J
+	KcLdK2c1D6CJvWxA2TDcbcHDLIuYG7C5ThekFfmXcv5c2wyEjzXa4HBFMCY7ak1n21O8DeyNNL40G
+	3LX4EbaeKtn+GvJ/6TkTV9dshHCzND7vJskKSFbVMY89qNIFymcnuIbEaMpOGxoi/NNhepAuqbsu0
+	MQ6bL0ZJ+dNdZD16bIcc0RCfyTiZn+4aVVdVRIditE+GtfY59K5SFQbf8nVGtTpaw8hrWzwoFWjM1
+	lxfjOJIiQxIQRo1X3ITw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1ltp-00000000Lo9-2paL;
-	Mon, 07 Apr 2025 12:48:25 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1u1o9R-00000000to6-36dj;
+	Mon, 07 Apr 2025 15:12:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lj5-00000000IY2-1TXo;
-	Mon, 07 Apr 2025 12:37:20 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-39c2688619bso2558890f8f.1;
-        Mon, 07 Apr 2025 05:37:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744029438; x=1744634238; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nJwN15SFuWFw+J8LbQ3OEgp3ncmtC3qYGCS05leh5Dk=;
-        b=fEZH28Gva0EbtyBFrj1SENkUordVNPB2wa7mIeJiT0tvHOUeOyBtb5lfBZfBpPgRG1
-         jmzpQkCK6pjm/QdidQzQptuQ8zzxOvojZNRPdxDDZddodByKndGSd/Gf5Ibxj1/OzF5Y
-         +AUdrWs3BjvK4xbsQjdLYDq7KkWtInbSI6QFKIj0f06/CPhr59u/XNghv1t7JWhxzl65
-         703/wN0LN5hQpcUIeRD6mdT3llXqq6/DcHdEnIMS1+QnMyqinc/YtZ9nbK/JtR+WmWyt
-         jar9s5dU5B4Yj/0GpSg5+SgSVXrl+5JtLzlErMZD/hK9QEwbEn0u5gibyNGSXvLubi3m
-         G4Zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744029438; x=1744634238;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nJwN15SFuWFw+J8LbQ3OEgp3ncmtC3qYGCS05leh5Dk=;
-        b=RkBT+gxPIQqEMdHMQmcj4q6Ji2YUUz+7tYP4MXrdNEuSD5g62LM4Pmv+0f9MvUJwMc
-         IbMK8guDU58xQOwUF4sBgdYTu55vNBg51nnkCQJGNir7Xmyw6sSfe0T3bP0sZU0yUD6r
-         Fv7x7XB0boUVURGZ13JBCJ5FZOVawaW5DTHa0WnVd7EPNWazyMi0tr0GeuUEdKK5x/Js
-         rNqfoQvoACyTPpP5XzkT8qYdX+7CiovPAl7Yhhdp8rOtFsVVXGf6WgWmN1XQ4z9lqFQk
-         iVeS5WZx73/sBUvxJ6elNNTPX1epPovJvr2y7Vje4p7LBBoBAIIB2FjmNIMKoTA/bX0H
-         lvnA==
-X-Forwarded-Encrypted: i=1; AJvYcCUVZzh9pHYLkzJ8TLACIVc5jWvW1yQ+cQkgh44xzK/DUlR+t+Hx/wGnFLzWnH2Z8TQQimnthC/mhvVNNhJXLQ0=@lists.infradead.org, AJvYcCX/x6fazst9ZNo/bb7OBXZYXSto0jlHAspG8mkbwYr/wxWd+r7HpNjt8Jjw+bvQrXvpzQ2gNAbXVMef+uWcrZ7C@lists.infradead.org
-X-Gm-Message-State: AOJu0YxSN24129svsEOoa7pWobHEn8fhC0Vp70ZBGaD80Bn2zIy/mN1x
-	bxUYWK1d2+BiJ28x/vkdkbSOMxqmAhUNa/CyOcz0QZccXXWUz4Xo
-X-Gm-Gg: ASbGncv4CuqgOxyEF78SkNu191DKEemBytMBLpP4b8a71XRlaHtXnA5cfIV071/RABl
-	bwSCOdse1n1fBbQfSQy5kbCrN/phc2qPcuRBRVdjiBtK9fRFlFi5t/hV37lKMvGmRdfwgRF4zr+
-	nL8qDdpS8mvGIcP53XW33t07QMRBT56H7C3Q3o6TapcoqgitzPYrb9hrwhMya1JNKm1tLGesd5M
-	En5qNEip/zw8H76iAcPdCpNhetj0/OvHN0gStEOhY49gfwxZQCur9wtpFgy+4+HqFXSVuoeMs1Y
-	NviJj2jJDfeHGDH2elTdMrtfx4O0DsbfkWeSdmx/d6SjUjPhqYmsNxLp8u5o7pY8lt2TC9mu
-X-Google-Smtp-Source: AGHT+IGOiYeoMEwHC9hRn8culHx4Ww1nJheukDZ53zBULfafTN1LFvaJ8yuDLqKUZnP9wmJYz7FCzQ==
-X-Received: by 2002:a05:6000:2405:b0:391:4999:776c with SMTP id ffacd0b85a97d-39cba975d5dmr10077751f8f.40.1744029437773;
-        Mon, 07 Apr 2025 05:37:17 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:2f0e:c50a:8800:cf9e:ee0b:4a01:37f6])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301b76f2sm12065198f8f.53.2025.04.07.05.37.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 05:37:17 -0700 (PDT)
-From: Ovidiu Panait <ovidiu.panait.oss@gmail.com>
-To: linux-crypto@vger.kernel.org,
-	herbert@gondor.apana.org.au
-Cc: davem@davemloft.net,
-	linux-kernel@vger.kernel.org,
-	Ovidiu Panait <ovidiu.panait.oss@gmail.com>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 2/4] crypto: rk3288 - use API helpers to setup fallback request
-Date: Mon,  7 Apr 2025 15:36:02 +0300
-Message-ID: <20250407123604.2109561-2-ovidiu.panait.oss@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250407123604.2109561-1-ovidiu.panait.oss@gmail.com>
-References: <20250407123604.2109561-1-ovidiu.panait.oss@gmail.com>
+	id 1u1mtt-00000000bgG-1eVx
+	for linux-rockchip@lists.infradead.org;
+	Mon, 07 Apr 2025 13:52:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744033951;
+	bh=AvmCGkM8u6k1w56iBZRvCudCuwVtYQRZVcLroU7KZWw=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=iTvIuzxUPKAPP0exP2+Vin+Q8GrD/goiJouenHZx4PQ72VOhHaAYcp+7mXoFiVKTE
+	 I40vD9/8CmdI9cRH9IDHjbla0Ru1Yzx/16jWdK47/i+kM1E28cfnllsFAbMKFuOQJU
+	 sJguV5U9zeZ0ptHTJ6Hos9UZOVKZ+6Ag8qYy0a+nPup5O28kd/hMDDUREReFcMVodW
+	 NFXtx90Ma8TR7jqIYvZt0Hx5PwB69YyyZnjSamJ8qB4jfTnZ8UCrNAORIYKYxYsi2S
+	 AJzmeciI0F6RjIdb4z/Rhkwcz0pANIpkM3+vGQmGnpEnfgD7YW7Wl2qTt6+BfaRG5q
+	 h4dwKfhJY9ByA==
+Received: from [IPv6:2606:6d00:11:e976::c41] (unknown [IPv6:2606:6d00:11:e976::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B2AC17E02BE;
+	Mon,  7 Apr 2025 15:52:28 +0200 (CEST)
+Message-ID: <77bdada5dce991842e377759c8e173ada115694f.camel@collabora.com>
+Subject: Re: [PATCH v7 09/12] media: rkvdec: Add get_image_fmt ops
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Fricke	
+ <sebastian.fricke@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Boris Brezillon	
+ <boris.brezillon@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, Mauro
+ Carvalho Chehab <mchehab+huawei@kernel.org>, Alex Bee
+ <knaerzche@gmail.com>, Benjamin Gaignard	
+ <benjamin.gaignard@collabora.com>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Dan Carpenter <dan.carpenter@linaro.org>, 
+ Jonas Karlman <jonas@kwiboo.se>, Christopher Obbard
+ <christopher.obbard@linaro.org>
+Date: Mon, 07 Apr 2025 09:52:27 -0400
+In-Reply-To: <e6b99109-bd35-46ff-a4e2-eb69b549dcbc@xs4all.nl>
+References: <20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com>
+	 <20250225-rkvdec_h264_high10_and_422_support-v7-9-7992a68a4910@collabora.com>
+	 <e6b99109-bd35-46ff-a4e2-eb69b549dcbc@xs4all.nl>
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_053719_392216_D25209F5 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20250407_065233_584233_FE3A1C5B 
+X-CRM114-Status: GOOD (  33.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,138 +82,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rather than setting up the fallback request by hand, use
-ahash_request_set_callback() and ahash_request_set_crypt() API helpers
-to properly setup the new request.
-
-This also ensures that the completion callback is properly passed down
-to the fallback algorithm, which avoids a crash with async fallbacks.
-
-Signed-off-by: Ovidiu Panait <ovidiu.panait.oss@gmail.com>
----
-Cc: Corentin Labbe <clabbe@baylibre.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 52 ++++++++++---------
- 1 file changed, 27 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index 69d6019d8abc..d6928ebe9526 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -52,12 +52,11 @@ static int rk_ahash_digest_fb(struct ahash_request *areq)
- 	algt->stat_fb++;
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, tfmctx->fallback_tfm);
--	rctx->fallback_req.base.flags = areq->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
--
--	rctx->fallback_req.nbytes = areq->nbytes;
--	rctx->fallback_req.src = areq->src;
--	rctx->fallback_req.result = areq->result;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   areq->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   areq->base.complete, areq->base.data);
-+	ahash_request_set_crypt(&rctx->fallback_req, areq->src, areq->result,
-+				areq->nbytes);
- 
- 	return crypto_ahash_digest(&rctx->fallback_req);
- }
-@@ -124,8 +123,9 @@ static int rk_ahash_init(struct ahash_request *req)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
- 
- 	return crypto_ahash_init(&rctx->fallback_req);
- }
-@@ -137,10 +137,10 @@ static int rk_ahash_update(struct ahash_request *req)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
--	rctx->fallback_req.nbytes = req->nbytes;
--	rctx->fallback_req.src = req->src;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
-+	ahash_request_set_crypt(&rctx->fallback_req, req->src, NULL, req->nbytes);
- 
- 	return crypto_ahash_update(&rctx->fallback_req);
- }
-@@ -152,9 +152,10 @@ static int rk_ahash_final(struct ahash_request *req)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
--	rctx->fallback_req.result = req->result;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
-+	ahash_request_set_crypt(&rctx->fallback_req, NULL, req->result, 0);
- 
- 	return crypto_ahash_final(&rctx->fallback_req);
- }
-@@ -166,12 +167,11 @@ static int rk_ahash_finup(struct ahash_request *req)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
--
--	rctx->fallback_req.nbytes = req->nbytes;
--	rctx->fallback_req.src = req->src;
--	rctx->fallback_req.result = req->result;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
-+	ahash_request_set_crypt(&rctx->fallback_req, req->src, req->result,
-+				req->nbytes);
- 
- 	return crypto_ahash_finup(&rctx->fallback_req);
- }
-@@ -183,8 +183,9 @@ static int rk_ahash_import(struct ahash_request *req, const void *in)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
- 
- 	return crypto_ahash_import(&rctx->fallback_req, in);
- }
-@@ -196,8 +197,9 @@ static int rk_ahash_export(struct ahash_request *req, void *out)
- 	struct rk_ahash_ctx *ctx = crypto_ahash_ctx(tfm);
- 
- 	ahash_request_set_tfm(&rctx->fallback_req, ctx->fallback_tfm);
--	rctx->fallback_req.base.flags = req->base.flags &
--					CRYPTO_TFM_REQ_MAY_SLEEP;
-+	ahash_request_set_callback(&rctx->fallback_req,
-+				   req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP,
-+				   req->base.complete, req->base.data);
- 
- 	return crypto_ahash_export(&rctx->fallback_req, out);
- }
--- 
-2.48.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgbHVuZGkgMDcgYXZyaWwgMjAyNSDDoCAxMzowOSArMDIwMCwgSGFucyBWZXJrdWlsIGEgw6lj
+cml0wqA6Cj4gT24gMjUvMDIvMjAyNSAxMDo0MCwgU2ViYXN0aWFuIEZyaWNrZSB3cm90ZToKPiA+
+IEZyb206IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPiA+IAo+ID4gQWRkIHN1cHBv
+cnQgZm9yIGEgZ2V0X2ltYWdlX2ZtdCgpIG9wcyB0aGF0IHJldHVybnMgdGhlIHJlcXVpcmVkIGlt
+YWdlCj4gPiBmb3JtYXQuCj4gPiAKPiA+IFRoZSBDQVBUVVJFIGZvcm1hdCBpcyByZXNldCB3aGVu
+IHRoZSByZXF1aXJlZCBpbWFnZSBmb3JtYXQgY2hhbmdlcyBhbmQKPiA+IHRoZSBidWZmZXIgcXVl
+dWUgaXMgbm90IGJ1c3kuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEpvbmFzIEthcmxtYW4gPGpv
+bmFzQGt3aWJvby5zZT4KPiA+IFJldmlld2VkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFz
+LmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cj4gPiBUZXN0ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUg
+PG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiA+IFRlc3RlZC1ieTogQ2hyaXN0b3Bo
+ZXIgT2JiYXJkIDxjaHJpcy5vYmJhcmRAY29sbGFib3JhLmNvbT4KPiA+IC0tLQo+ID4gwqBkcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIHwgNDkgKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrLS0KPiA+IMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3Zk
+ZWMuaCB8wqAgMiArKwo+ID4gwqAyIGZpbGVzIGNoYW5nZWQsIDQ5IGluc2VydGlvbnMoKyksIDIg
+ZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+cmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+
+ID4gaW5kZXggNzAxNTQ5NDhiNGUzMmUyYzQzOWYyNTliMGYxZTFiYmM4YjUyYjA2My4uNTM5NDA3
+OTUwOTMwNWM2MTlmMWQwYzFmNTQyYmZjNDA5MzE3YzNiNyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiA+IEBAIC0xMTEsMTUgKzExMSw2MCBAQCBzdGF0aWMg
+aW50IHJrdmRlY190cnlfY3RybChzdHJ1Y3QgdjRsMl9jdHJsICpjdHJsKQo+ID4gwqB7Cj4gPiDC
+oAlzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4ID0gY29udGFpbmVyX29mKGN0cmwtPmhhbmRsZXIsIHN0
+cnVjdCBya3ZkZWNfY3R4LCBjdHJsX2hkbCk7Cj4gPiDCoAljb25zdCBzdHJ1Y3Qgcmt2ZGVjX2Nv
+ZGVkX2ZtdF9kZXNjICpkZXNjID0gY3R4LT5jb2RlZF9mbXRfZGVzYzsKPiA+ICsJc3RydWN0IHY0
+bDJfcGl4X2Zvcm1hdF9tcGxhbmUgKnBpeF9tcCA9ICZjdHgtPmRlY29kZWRfZm10LmZtdC5waXhf
+bXA7Cj4gPiArCWVudW0gcmt2ZGVjX2ltYWdlX2ZtdCBpbWFnZV9mbXQ7Cj4gPiArCXN0cnVjdCB2
+YjJfcXVldWUgKnZxOwo+ID4gKwlpbnQgcmV0Owo+ID4gKwo+ID4gKwlpZiAoZGVzYy0+b3BzLT50
+cnlfY3RybCkgewo+ID4gKwkJcmV0ID0gZGVzYy0+b3BzLT50cnlfY3RybChjdHgsIGN0cmwpOwo+
+ID4gKwkJaWYgKHJldCkKPiA+ICsJCQlyZXR1cm4gcmV0Owo+ID4gKwl9Cj4gPiArCj4gPiArCWlm
+ICghZGVzYy0+b3BzLT5nZXRfaW1hZ2VfZm10KQo+ID4gKwkJcmV0dXJuIDA7Cj4gPiDCoAo+ID4g
+LQlpZiAoZGVzYy0+b3BzLT50cnlfY3RybCkKPiA+IC0JCXJldHVybiBkZXNjLT5vcHMtPnRyeV9j
+dHJsKGN0eCwgY3RybCk7Cj4gPiArCWltYWdlX2ZtdCA9IGRlc2MtPm9wcy0+Z2V0X2ltYWdlX2Zt
+dChjdHgsIGN0cmwpOwo+ID4gKwlpZiAoY3R4LT5pbWFnZV9mbXQgPT0gaW1hZ2VfZm10KQo+ID4g
+KwkJcmV0dXJuIDA7Cj4gPiArCj4gPiArCWlmIChya3ZkZWNfaXNfdmFsaWRfZm10KGN0eCwgcGl4
+X21wLT5waXhlbGZvcm1hdCwgaW1hZ2VfZm10KSkKPiA+ICsJCXJldHVybiAwOwo+ID4gKwo+ID4g
+KwkvKiBmb3JtYXQgY2hhbmdlIG5vdCBhbGxvd2VkIHdoZW4gcXVldWUgaXMgYnVzeSAqLwo+ID4g
+Kwl2cSA9IHY0bDJfbTJtX2dldF92cShjdHgtPmZoLm0ybV9jdHgsCj4gPiArCQkJwqDCoMKgwqAg
+VjRMMl9CVUZfVFlQRV9WSURFT19DQVBUVVJFX01QTEFORSk7Cj4gPiArCWlmICh2YjJfaXNfYnVz
+eSh2cSkpCj4gPiArCQlyZXR1cm4gLUVJTlZBTDsKPiAKPiBUaGlzIG1ha2VzIG5vIHNlbnNlIHRv
+IG1lLiBUaGlzIGp1c3QgdHJpZXMgYSBjb250cm9sLCBhbmQgdGhhdCBzaG91bGQganVzdAo+IHdv
+cmssIHJlZ2FyZGxlc3Mgb2YgdmIyX2lzX2J1c3koKS4gSXQncyBhICd0cnknLCBzbyB5b3UgYXJl
+IG5vdCBhY3R1YWxseQo+IGNoYW5naW5nIGFueXRoaW5nLgoKU2VlIGNvbW1lbnQgYmVsb3csIG5v
+dGljZSB0aGF0IHRoaXMgY29kZSBpcyBvbmx5IHJlYWNoZWQgaWYgdGhlIGNvbnRyb2wKaW50cm9k
+dWNlIHBhcmFtZXRlcnMgdGhhdCBhcmUgbm90IGNvbXBhdGlibGUgd2l0aCB0aGUgY3VycmVudCBj
+YXB0dXJlCnF1ZXVlIGZtdC4gVGhlIGVudGlyZSBmdW5jdGlvbiB1c2VzICJzdWNjZXNzIiBlYXJs
+eSBleGl0LCBzbyB0aGUKZnVydGhlciBkb3duIHlvdSBnZXQgaW4gdGhlIGZ1bmN0aW9uLCB0aGUg
+bGVzcyBsaWtlbHkgeW91ciBjb250cm9sIGlzCnZhbGlkLgoKPiAKPiA+ICsKPiA+ICsJcmV0dXJu
+IDA7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgcmt2ZGVjX3NfY3RybChzdHJ1Y3QgdjRs
+Ml9jdHJsICpjdHJsKQo+ID4gK3sKPiA+ICsJc3RydWN0IHJrdmRlY19jdHggKmN0eCA9IGNvbnRh
+aW5lcl9vZihjdHJsLT5oYW5kbGVyLCBzdHJ1Y3Qgcmt2ZGVjX2N0eCwgY3RybF9oZGwpOwo+ID4g
+Kwljb25zdCBzdHJ1Y3Qgcmt2ZGVjX2NvZGVkX2ZtdF9kZXNjICpkZXNjID0gY3R4LT5jb2RlZF9m
+bXRfZGVzYzsKPiA+ICsJc3RydWN0IHY0bDJfcGl4X2Zvcm1hdF9tcGxhbmUgKnBpeF9tcCA9ICZj
+dHgtPmRlY29kZWRfZm10LmZtdC5waXhfbXA7Cj4gPiArCWVudW0gcmt2ZGVjX2ltYWdlX2ZtdCBp
+bWFnZV9mbXQ7Cj4gPiArCj4gPiArCWlmICghZGVzYy0+b3BzLT5nZXRfaW1hZ2VfZm10KQo+ID4g
+KwkJcmV0dXJuIDA7Cj4gPiArCj4gPiArCWltYWdlX2ZtdCA9IGRlc2MtPm9wcy0+Z2V0X2ltYWdl
+X2ZtdChjdHgsIGN0cmwpOwo+ID4gKwlpZiAoY3R4LT5pbWFnZV9mbXQgPT0gaW1hZ2VfZm10KQo+
+ID4gKwkJcmV0dXJuIDA7Cj4gCj4gSWYgeW91IHJlYWxseSBjYW4ndCBzZXQgYSBjb250cm9sIHdo
+ZW4gdGhlIHF1ZXVlIGlzIGJ1c3ksIHRoZW4gdGhhdCBzaG91bGQKPiBiZSB0ZXN0ZWQgaGVyZSwg
+bm90IGluIHRyeV9jdHJsLiBBbmQgdGhlbiB5b3UgcmV0dXJuIC1FQlVTWS4KPiAKPiBBbSBJIG1p
+c3Npbmcgc29tZXRoaW5nIGhlcmU/CgpXaGVuIEkgcmV2aWV3ZWQsIEkgaGFkIGltYWdpbmUgdGhh
+dCBzX2N0cmwgb24gYSByZXF1ZXN0IHdvdWxkIGp1c3QgcnVuCmEgdHJ5LiBOb3cgdGhhdCBJIHJl
+YWQgdGhhdCBtb3JlIGNhcmVmdWwsIEkgc2VlIHRoYXQgaXQgZG9lcyBhIHRydWUgc2V0Cm9uIHNl
+cGFyYXRlIGNvcHkuIFNvIHllcywgdGhpcyBjYW4gc2FmZWx5IGJlIG1vdmVkIGhlcmUuCgpTaW5j
+ZSB5b3Ugc2VlbSB3b25kZXJpbmcgIklmIHlvdSByZWFsbHkgY2FuJ3Qgc2V0IGEgY29udHJvbCIs
+IGxldCBtZQpleHBsYWluIHdoYXQgSm9uYXMgd2FudHMgdG8gcHJvdGVjdCBhZ2FpbnN0LiBSS1Zk
+ZWMgZG9lcyBub3QgaGF2ZSBhbnkKY29sb3IgY29udmVyc2lvbiBjb2RlLCB0aGUgaGVhZGVyIGNv
+bXBvdW5kIGNvbnRyb2wgKHdoaWNoIGhlYWRlcgpkZXBlbmRzIG9uIHRoZSBjb2RlYyksIGNvbnRh
+aW5zIGRldGFpbHMgc3VjaCBhcyBzdWItc2FtcGxpbmcgYW5kIGNvbG9yCmRlcHRoLiBXaXRob3V0
+IGNvbG9yIGNvbnZlcnNpb24sIHdoZW4gdGhlIGltYWdlIGZvcm1hdCBpcyBsb2NrZWQgKHRoZQpi
+dXN5IHF1ZXVlKSwgeW91IGNhbid0IHJlcXVlc3QgdGhlIEhXIHRvIGRlY29kZSBhIGZyYW1lIHdp
+dGNoIGRvZXMgbm90CmZpdC4gVGhpcyBjb3VsZCBvdGhlcndpc2UgbGVhZCB0byBidWZmZXIgb3Zl
+cmZsb3cgaW4gdGhlIEhXLApmb3J0dW5hdGVseSBwcm90ZWN0ZWQgYnkgdGhlIGlvbW11LCBidXQg
+eW91IGRvbid0IHJlYWxseSB3YW50IHRvIGRlcGVuZApvbiB0aGUgbW11LgoKSSd2ZSBuZXZlciB1
+c2VkIHRyeV9jdHJsIGluIG15IGRlY2FkZSBvZiB2NGwyLCBzbyBvYnZpb3VzbHksIG5vdyB0aGF0
+IEkKa25vdyB0aGF0IHNfY3RybCBvbiByZXF1ZXN0IGlzIG5vdCBhIHRyeSwgSSdtIGZpbmUgd2l0
+aCByZWplY3RpbmcgdGhpcwpQUiwgc2VuZGluZyBhIG5ldyB2ZXJzaW9uIGFuZCBtYWtpbmcgYSBQ
+UiBhZ2Fpbi4gQnV0IGlmIEkgd2FzIHRvIHVzZQp0aGlzIEFQSSBpbiB1c2Vyc3BhY2UsIG15IGlu
+dHVpdGl2ZSBleHBlY3RhdGlvbiB3b3VsZCBiZSB0aGF0IHRoaXMKc2hvdWxkIGZhaWwgdHJ5KCks
+IGV2ZW4gaWYgaXRzIHZlcnkgcmFyZWx5IHZhbGlkIHRvIGNoZWNrIHRoZSBxdWV1ZQpzdGF0ZSBp
+biB0cnkgY29udHJvbC4KCk5pY29sYXMKCj4gCj4gUmVnYXJkcywKPiAKPiAJSGFucwo+IAo+ID4g
+Kwo+ID4gKwljdHgtPmltYWdlX2ZtdCA9IGltYWdlX2ZtdDsKPiA+ICsJaWYgKCFya3ZkZWNfaXNf
+dmFsaWRfZm10KGN0eCwgcGl4X21wLT5waXhlbGZvcm1hdCwgY3R4LT5pbWFnZV9mbXQpKQo+ID4g
+KwkJcmt2ZGVjX3Jlc2V0X2RlY29kZWRfZm10KGN0eCk7Cj4gPiDCoAo+ID4gwqAJcmV0dXJuIDA7
+Cj4gPiDCoH0KPiA+IMKgCj4gPiDCoHN0YXRpYyBjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX29wcyBy
+a3ZkZWNfY3RybF9vcHMgPSB7Cj4gPiDCoAkudHJ5X2N0cmwgPSBya3ZkZWNfdHJ5X2N0cmwsCj4g
+PiArCS5zX2N0cmwgPSBya3ZkZWNfc19jdHJsLAo+ID4gwqB9Owo+ID4gwqAKPiA+IMKgc3RhdGlj
+IGNvbnN0IHN0cnVjdCBya3ZkZWNfY3RybF9kZXNjIHJrdmRlY19oMjY0X2N0cmxfZGVzY3NbXSA9
+IHsKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5o
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaAo+ID4gaW5kZXggNmY4Y2Y1
+MGM1ZDk5YWFkMmY1MmUzMjFmNTRmM2NhMTcxNjZkZGY5OC4uZTQ2NmEyNzUzY2NmYzEzNzM4ZTBh
+NjcyYmM1NzhlNTIxYWYyYzNmMiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9ya3ZkZWMvcmt2ZGVjLmgKPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMv
+cmt2ZGVjLmgKPiA+IEBAIC03Myw2ICs3Myw4IEBAIHN0cnVjdCBya3ZkZWNfY29kZWRfZm10X29w
+cyB7Cj4gPiDCoAkJwqDCoMKgwqAgc3RydWN0IHZiMl92NGwyX2J1ZmZlciAqZHN0X2J1ZiwKPiA+
+IMKgCQnCoMKgwqDCoCBlbnVtIHZiMl9idWZmZXJfc3RhdGUgcmVzdWx0KTsKPiA+IMKgCWludCAo
+KnRyeV9jdHJsKShzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LCBzdHJ1Y3QgdjRsMl9jdHJsICpjdHJs
+KTsKPiA+ICsJZW51bSBya3ZkZWNfaW1hZ2VfZm10ICgqZ2V0X2ltYWdlX2ZtdCkoc3RydWN0IHJr
+dmRlY19jdHggKmN0eCwKPiA+ICsJCQkJCcKgwqDCoMKgwqDCoCBzdHJ1Y3QgdjRsMl9jdHJsICpj
+dHJsKTsKPiA+IMKgfTsKPiA+IMKgCj4gPiDCoGVudW0gcmt2ZGVjX2ltYWdlX2ZtdCB7Cj4gPiAK
+Ci0tIApOaWNvbGFzIER1ZnJlc25lClByaW5jaXBhbCBFbmdpbmVlciBhdCBDb2xsYWJvcmEKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
