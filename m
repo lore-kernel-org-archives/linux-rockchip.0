@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837F4C369A4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEB81C369A3
 	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 12:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,31 +12,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UX9QvVX01hJ/D26BX9h/KtVPJDQ7qVEUCeP/HMtFhXw=; b=jAdR+aK+9AVpBW
-	Q6sbGV7RY9Keq5rBzSRZOaWYNXtcT35NKY6tRmKfxK5fxZn93MRaWSKr2c4MawtxmpvLvHehJUuA/
-	MKVtD4PPDNe/+AUv2Lz1BXtUzDXeAs34giYY3JhUi3WgN3Y0d/VUX57loSltrbxKRyfJv4bpi8Q6i
-	pKAK4YUKSY7k+RofIe2b+CMIokbobXHwxNjAsxLgBKgpcWhbPtt38Xp6IDfaKK6dQKiW6VadYKj7M
-	42JRnm439fw7MYnM5CazSHSA8lyxNbVBmoyKwdy2nHSxH7vQ6MMURYqsXo6RleeojBYLlVP7N0+oE
-	VzQHwQJsYoVsxkZjt/4g==;
+	List-Owner; bh=Q8K+A0RfV2GHg/EWXS+EIOuxWyx4fF4GPdF9VXO6N0A=; b=pEJgSJNaoCUCqG
+	gSH09PPywBulCB0EMUfbRCRLG7jWvw7E5CfXIxlwc4h/a8Fb9mqU+tj1S/nZolNtUsI+LF+oaEYwk
+	jqQFHk8HvaqfM2OnBAdSxyXE/7Q5kR+EY6AXThdBi/K2l3GfYpnJyb7Pzqi6EaUtRuQj4wjERWvvJ
+	S4JgtuYoKw08JEKjB62rpVvFLm8dfEyCMCRmXkoXd7Bhlfl2dWAILKZVXh2GoUUJB32gnKOfRq1Ap
+	u5w5m7VGFOQboQzLzGF9wVOJoaQf59iKxl7fhBqcmOOMbKv//mPu5UAo5IPMQHNCXXVrdVnTZVKUX
+	wdnX+RJhDftA1qPiyfUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lqM-00000000Ki3-11eU;
-	Mon, 07 Apr 2025 12:44:50 +0000
+	id 1u1lqN-00000000Kj9-1Kx9;
+	Mon, 07 Apr 2025 12:44:51 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lak-00000000F9M-1ZSZ;
-	Mon, 07 Apr 2025 12:28:43 +0000
+	id 1u1lcF-00000000FRm-196B;
+	Mon, 07 Apr 2025 12:30:16 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 602A7106F;
-	Mon,  7 Apr 2025 05:28:42 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1516F106F;
+	Mon,  7 Apr 2025 05:30:16 -0700 (PDT)
 Received: from bogus (unknown [10.57.41.33])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8566B3F694;
-	Mon,  7 Apr 2025 05:28:31 -0700 (PDT)
-Date: Mon, 7 Apr 2025 13:28:28 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 100F53F694;
+	Mon,  7 Apr 2025 05:30:05 -0700 (PDT)
+Date: Mon, 7 Apr 2025 13:30:03 +0100
 From: Sudeep Holla <sudeep.holla@arm.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: "Rob Herring (Arm)" <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
 	Samuel Holland <samuel@sholland.org>,
@@ -75,17 +75,18 @@ Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 14/19] dt-bindings: arm/cpus: Add schemas for
- "enable-method" dependencies
-Message-ID: <20250407-shapeless-cordial-gazelle-db23ac@sudeepholla>
+Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains
+ constraints
+Message-ID: <20250407-aloof-fox-of-relaxation-62963a@sudeepholla>
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-14-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
+ <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250403-dt-cpu-schema-v1-14-076be7171a85@kernel.org>
+In-Reply-To: <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_052842_454476_C009E5B6 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20250407_053015_399846_0D5B2DCA 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +103,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 03, 2025 at 09:59:35PM -0500, Rob Herring (Arm) wrote:
-> Replace the prose for properties dependent on specific "enable-method"
-> values with schemas defining the same requirements.
+On Fri, Apr 04, 2025 at 12:36:33PM +0200, Ulf Hansson wrote:
+> On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wrote:
+> >
+> > The "power-domains" and "power-domains-names" properties are missing any
+> > constraints. Add the constraints and drop the generic descriptions.
+> >
+> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> > ---
+> >  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
+> >  1 file changed, 2 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
+> > index 6f74ebfd38df..5bd5822db8af 100644
+> > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
+> > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
+> > @@ -313,19 +313,15 @@ properties:
+> >      maxItems: 1
+> >
+> >    power-domains:
+> > -    description:
+> > -      List of phandles and PM domain specifiers, as defined by bindings of the
+> > -      PM domain provider (see also ../power_domain.txt).
+> > +    maxItems: 1
 > 
-> Both "qcom,acc" and "qcom,saw" properties appear to be required for any
-> of the Qualcomm enable-method values, so the schema is a bit simpler
-> than what the text said. The references to arm/msm/qcom,saw2.txt and
-> arm/msm/qcom,kpss-acc.txt are out of date, so just drop them.
-> 
+> There are more than one in some cases. The most is probably three, I think.
+>
 
-For all the bindings changes(14-19/19,)
-
-Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
++1, there are users using "perf" and "psci" together now.
 
 -- 
 Regards,
