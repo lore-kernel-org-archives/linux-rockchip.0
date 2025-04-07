@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D17C369A6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 18:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16CE5C36018
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 18:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bxbx8opMEs/LZUcveZ5Lhk/47HSqNm6iwGCCS8JYMJw=; b=Pqv5jIAtKMsVwj
-	UN+XTTRVVtEFEHHGHpPHuzwTcRo/Cwq2QjW6AviQ3Zh8mTG+paME9r9kz7XSXNK94T5PnKd5jvSF/
-	d5fBVpK9LQdBpiLfK849+LtH+zSBZlF/2J13lOxN0YvEPHejSKpAO1bMNPt7JtRwsreOlnyG5dcq4
-	lKHERXkBzjG1Dc9baqKz75oyABw4I2KA9vMpOrt0s3nOCxvbu++CQD2Qz3q2xiWnS4tfpYVXT2tRW
-	IJjRhP9Pb/Df9FEyD3lopj/4AhPzyeEBLmhbTuVPiwYOJeMVTB41JHEe877NhfRcm6o6nzWDFk0dg
-	pf5+Ig5Z2xGgrNtsTPGA==;
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=a7DVvCE4OgUWpXFJ2P+/IJQBBjkQcGVx+l2d9WN8zYo=; b=wJoqIuFqMhpVEV
+	Q8MyMLdQPKtR1EJvWxeyh8i9/KazJHJS/3gT6E8oBfvm6JObxbnxBan9g24p1iXDYx/ldia4C4w4S
+	Nbtr4X361U8z/f74pRV5YJsXfjDy87NF9PD0I7cpVb2NaaAvsyZLhO9fhJg/HlGoec5LPBuvXYml6
+	z/DvhjUQe0yI1c0UHN8ukbSKvxk9Uy53YAM57tDzXo2VGznGs7zzvnE/SjDbRxmrc1dyEbTNGfzXw
+	SiX+L3YdN7bANfh/V2IyOsv77UXx1g1HPAfqxceUyGo32jnVsMpIIi0E0q9Dl853W9rAzQsvapSM+
+	UbhSiT55hSYzTQDJTJEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1raT-00000001glk-2PjM;
-	Mon, 07 Apr 2025 18:52:49 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u1rdu-00000001iEc-1T1B;
+	Mon, 07 Apr 2025 18:56:22 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1quz-00000001TfX-2LFg;
-	Mon, 07 Apr 2025 18:09:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1744049382; cv=none; 
+	id 1u1qv9-00000001Tjh-3aRq;
+	Mon, 07 Apr 2025 18:10:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1744049390; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=MA29WiSaM/qGw8Ez5IWEq+k0N2YAnfiNfAhPgQHriNRPs3EL3yjtKFFtGwEbVGsyo3QmNx0TTr8siu2V121Ox4gfxO8Lnz60I6ZI+pK7jPSNwtlEgfVtFnXaWFk+dJilbETEQ2Ob1jpwG7IHHKL2QDQlRQoXjvn6yDoyRnv6ZJg=
+	b=Necu4VPR/VUul1b+RBujP89FTiCPjqO/Si5Jh01ACaOTbHqylyWqyQ7e2hBq3Qd/kSGArFXMfuiisrC/MF/Sm/qy1JaMMdt2bg4xTeXSvyISgS1WIL1wxGqLDJRQtd9wCIMgxjKpYghvZ1RQA7HrcMf5jEASc9LQkYlQQQzCwbg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1744049382; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=i7yUmtcPXYs5jDz4UO9uvLqV1/UD2ocMo6ScIwBAIPA=; 
-	b=MzysafK93/6rHCj0cYFISDahwz2lsGydQU5sYBwQBuLQo1Vo5UbN0PHoTIAojVuGMDnLH4JwQGsJTHWxImSERg5GqWGlb92nJBrpiq2dBZAgGYrsnzbx4O9KySgYEqT2zhzGULJUEEnDicmtAfNE0Bz/atsW4cR9xR91i+0DD1o=
+	t=1744049390; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Kk+sJ5uIUChiU10ulvk3xbtqOOJOIxtcCt00TnkAFo4=; 
+	b=mDDmyjXxgsyT6LQl1niZKJEuYW6a4ZgAiM+PbKd3RgMSuIr+0ueD9zC7e0L/ytg4Sj1XpWg2mr9NA67NsCLrtkKvThQtknnDw9Da4ldxVyZq0Cvu7fw95EOQ3r/9kPX+9aw90oHmSE9Ba3lF0rDD65noUcJHMr/uwgURi+ncu+c=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744049382;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744049390;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=i7yUmtcPXYs5jDz4UO9uvLqV1/UD2ocMo6ScIwBAIPA=;
-	b=aMYIGLxLmuS8LHedJmkzvIWJCZ21bwD1Ms9cqEuChNGK7MNfmvOdJdPQv40ImOev
-	8fmXjtvGPgf649q2yQnwB1xLrMnC7pBaYu2E1ujWsCSSP/jWjJvjs2LJQihe4UEsQy5
-	FJ0aXsuuj/ukpo4MjOIU6/YUezwv01Ach2y1GsSo=
-Received: by mx.zohomail.com with SMTPS id 1744049380397611.0260384445199;
-	Mon, 7 Apr 2025 11:09:40 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=Kk+sJ5uIUChiU10ulvk3xbtqOOJOIxtcCt00TnkAFo4=;
+	b=CTSUKXVCsZIacwoTbuUCDyLQX8AgWIkRchue8FyNix1y1bqePf2q7ojKJwPEz9m0
+	NR0tlGrOz2dHOFUyoqIZhFYUhX8m1USdh0WOtnXJZ2SWVIgUIfe2czjQnTWWpQ0HFyo
+	bkSmjqaVadC2gUSf/QSWfoDNCdR793HPtX9mtgg8=
+Received: by mx.zohomail.com with SMTPS id 174404938859027.759672499582507;
+	Mon, 7 Apr 2025 11:09:48 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: [PATCH 0/4] RK3576 USB Enablement
-Date: Mon, 07 Apr 2025 20:09:13 +0200
-Message-Id: <20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com>
+Date: Mon, 07 Apr 2025 20:09:15 +0200
+Subject: [PATCH 2/4] phy: rockchip: inno-usb2: add soft vbusvalid control
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAMkU9GcC/yXMywqDQAyF4VcZsm7KXBhbfJXiYpxGG4raJioF8
- d076PI7cP4NlIRJoTYbCK2sPI0F7mIgv9LYE/KzGLz10QZ/R3mHeKtQuaeIi7bog3XWJ6KUE5T
- bR6jj35F8NKeFvkspz+cIbVLCPA0Dz7VZq6uLKNlBs+9/rj/QuI8AAAA=
-X-Change-ID: 20250328-rk3576-sige5-usb-230102aeeaca
+Message-Id: <20250407-rk3576-sige5-usb-v1-2-67eec166f82f@collabora.com>
+References: <20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com>
+In-Reply-To: <20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
  Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -63,8 +61,8 @@ To: Vinod Koul <vkoul@kernel.org>,
  Frank Wang <frank.wang@rock-chips.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_110957_643582_36D55DDD 
-X-CRM114-Status: GOOD (  18.78  )
+X-CRM114-CacheID: sfid-20250407_111008_004748_18A61BB8 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,64 +80,201 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series is the result of what I thought would be a quick 10 minute
-job, but turned out to be more like 3 days of pain, suffering, and
-confusion. This should be expected with USB Type C though.
+With USB type C connectors, the vbus detect pin of the OTG controller
+attached to it is pulled high by a USB Type C controller chip such as
+the fusb302. This means USB enumeration on Type-C ports never works, as
+the vbus is always seen as high.
 
-The first patch in the series extends the inno usb2 PHY binding in order
-for us to be able to do what the second patch in the series does, which
-is fiddle with some GRF flags in that driver when the PHY is connected
-to a USB Type C port. Without this change, devices on USB-C simply don't
-enumerate at all, as the state machine gets stuck waiting for vbus to go
-low or something along those lines.
+Rockchip added some GRF register flags to deal with this situation. The
+RK3576 TRM calls these "soft_vbusvalid_bvalid" (con0 bit index 15) and
+"soft_vbusvalid_bvalid_sel" (con0 bit index 14).
 
-An alternate way to implement this would've been a vendor property in
-the PHY binding which is then checked for in the driver and needs to be
-present in all rockchip inno u2phy instances that happen to be connected
-to a USB Type C connector. This is what downstream does, for example.
+Downstream introduces a new vendor property which tells the USB 2 PHY
+that it's connected to a type C port, but we can do better. Since in
+such an arrangement, we'll have an OF graph connection to the USB
+connector anyway, we can walk said OF graph and check the connector's
+compatible to determine this without adding any further vendor
+properties.
 
-Patch 3 was really lovely to run into and needed a good amount of
-sleuthing. I'm still certain this is "the wrong" fix, as it simply keeps
-the PHY on, but it's a fix nonetheless, and one which has precedent,
-namely in the RK3399. If someone is on a hunt to save milliamps in the
-future, they might want to invest the time to come up with a less
-sledgehammer sized solution for this problem, e.g. by disabling power
-management until the controller is fully initialised.
-
-Patch 4 adds the USB related nodes, including associated regulators and
-Type C controllers, to the Sige5 tree.
-
-As it stands, superspeed on the Sige 5's Type C port is still finnicky;
-after a full day of debugging I still can't figure out why superspeed
-only works in one cable orientation. I did a thorough pick through the
-usbdp PHY driver, comparing it with what downstream has, etc. etc.
-Because everything to do with testing Type-C ultimately comes down to
-narrowing down the search space of non-compliant devices and
-non-compliant cables to where you can sort of guess at the bug, it's a
-huge time investment to debug this, and I'd rather submit the series
-as-is right now for review and maybe some additional insight and testing
-from someone with a wider variety of USB Type C cables and devices.
+Do keep in mind that the usbdp PHY driver seemingly fiddles with these
+register fields as well, but what it does doesn't appear to be enough
+for us to get working USB enumeration, presumably because the whole
+vbus_attach logic needs to be adjusted as well either way.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-Nicolas Frattaroli (4):
-      dt-bindings: phy: rockchip,inno-usb2phy: add port property
-      phy: rockchip: inno-usb2: add soft vbusvalid control
-      arm64: dts: rockchip: add phy suspend quirk to usb on rk3576
-      arm64: dts: rockchip: enable USB on Sige5
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 78 +++++++++++++++++++++++++--
+ 1 file changed, 74 insertions(+), 4 deletions(-)
 
- .../bindings/phy/rockchip,inno-usb2phy.yaml        |   5 +
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 153 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   2 +
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c      |  78 ++++++++++-
- 4 files changed, 234 insertions(+), 4 deletions(-)
----
-base-commit: 64e9fdfc89a76fed38d8ddeed72d42ec71957ed9
-change-id: 20250328-rk3576-sige5-usb-230102aeeaca
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index b5e6a864deebbcb33375001fc6ed67b2dfee6954..7dc4f53e18fcf0c9d010dd78e5fcd089b6bae43f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -17,6 +17,7 @@
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/of.h>
++#include <linux/of_graph.h>
+ #include <linux/of_irq.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+@@ -114,6 +115,8 @@ struct rockchip_chg_det_reg {
+ /**
+  * struct rockchip_usb2phy_port_cfg - usb-phy port configuration.
+  * @phy_sus: phy suspend register.
++ * @svbus_en: soft vbus bvalid enable register.
++ * @svbus_sel: soft vbus bvalid selection register.
+  * @bvalid_det_en: vbus valid rise detection enable register.
+  * @bvalid_det_st: vbus valid rise detection status register.
+  * @bvalid_det_clr: vbus valid rise detection clear register.
+@@ -140,6 +143,8 @@ struct rockchip_chg_det_reg {
+  */
+ struct rockchip_usb2phy_port_cfg {
+ 	struct usb2phy_reg	phy_sus;
++	struct usb2phy_reg	svbus_en;
++	struct usb2phy_reg	svbus_sel;
+ 	struct usb2phy_reg	bvalid_det_en;
+ 	struct usb2phy_reg	bvalid_det_st;
+ 	struct usb2phy_reg	bvalid_det_clr;
+@@ -203,6 +208,7 @@ struct rockchip_usb2phy_cfg {
+  * @event_nb: hold event notification callback.
+  * @state: define OTG enumeration states before device reset.
+  * @mode: the dr_mode of the controller.
++ * @typec_vbus_det: whether to apply Type C logic to OTG vbus detection.
+  */
+ struct rockchip_usb2phy_port {
+ 	struct phy	*phy;
+@@ -222,6 +228,7 @@ struct rockchip_usb2phy_port {
+ 	struct notifier_block	event_nb;
+ 	enum usb_otg_state	state;
+ 	enum usb_dr_mode	mode;
++	bool typec_vbus_det;
+ };
+ 
+ /**
+@@ -495,6 +502,13 @@ static int rockchip_usb2phy_init(struct phy *phy)
+ 	mutex_lock(&rport->mutex);
+ 
+ 	if (rport->port_id == USB2PHY_PORT_OTG) {
++		if (rport->typec_vbus_det) {
++			if (rport->port_cfg->svbus_en.enable &&
++					rport->port_cfg->svbus_sel.enable) {
++				property_enable(rphy->grf, &rport->port_cfg->svbus_en, true);
++				property_enable(rphy->grf, &rport->port_cfg->svbus_sel, true);
++			}
++		}
+ 		if (rport->mode != USB_DR_MODE_HOST &&
+ 		    rport->mode != USB_DR_MODE_UNKNOWN) {
+ 			/* clear bvalid status and enable bvalid detect irq */
+@@ -535,8 +549,7 @@ static int rockchip_usb2phy_init(struct phy *phy)
+ 			if (ret)
+ 				goto out;
+ 
+-			schedule_delayed_work(&rport->otg_sm_work,
+-					      OTG_SCHEDULE_DELAY * 3);
++			schedule_delayed_work(&rport->otg_sm_work, 0);
+ 		} else {
+ 			/* If OTG works in host only mode, do nothing. */
+ 			dev_dbg(&rport->phy->dev, "mode %d\n", rport->mode);
+@@ -666,8 +679,17 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 	unsigned long delay;
+ 	bool vbus_attach, sch_work, notify_charger;
+ 
+-	vbus_attach = property_enabled(rphy->grf,
+-				       &rport->port_cfg->utmi_bvalid);
++	if (rport->port_cfg->svbus_en.enable && rport->typec_vbus_det) {
++		if (property_enabled(rphy->grf, &rport->port_cfg->svbus_en) &&
++		    property_enabled(rphy->grf, &rport->port_cfg->svbus_sel)) {
++			vbus_attach = true;
++		} else {
++			vbus_attach = false;
++		}
++	} else {
++		vbus_attach = property_enabled(rphy->grf,
++					       &rport->port_cfg->utmi_bvalid);
++	}
+ 
+ 	sch_work = false;
+ 	notify_charger = false;
+@@ -1276,6 +1298,48 @@ static int rockchip_otg_event(struct notifier_block *nb,
+ 	return NOTIFY_DONE;
+ }
+ 
++static const char *const rockchip_usb2phy_typec_cons[] = {
++	"usb-c-connector",
++	NULL,
++};
++
++static bool rockchip_usb2phy_otg_is_type_c(struct rockchip_usb2phy *rphy)
++{
++	struct device_node *node = rphy->dev->of_node;
++	struct device_node *ports;
++	struct device_node *ep = NULL;
++	struct device_node *parent;
++
++	ports = of_get_child_by_name(node, "ports");
++	if (ports)
++		node = ports;
++
++	for_each_of_graph_port(node, port) {
++		ep = of_get_child_by_name(port, "endpoint");
++		if (!ep)
++			continue;
++
++		parent = of_graph_get_remote_port_parent(ep);
++		of_node_put(ep);
++		if (!parent)
++			continue;
++
++		if (of_device_compatible_match(parent, rockchip_usb2phy_typec_cons)) {
++			of_node_put(parent);
++			if (ports)
++				of_node_put(ports);
++			return true;
++		}
++
++		of_node_put(parent);
++	}
++
++	if (ports)
++		of_node_put(ports);
++
++	return false;
++}
++
+ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 					  struct rockchip_usb2phy_port *rport,
+ 					  struct device_node *child_np)
+@@ -1297,6 +1361,8 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 
+ 	mutex_init(&rport->mutex);
+ 
++	rport->typec_vbus_det = rockchip_usb2phy_otg_is_type_c(rphy);
++
+ 	rport->mode = of_usb_get_dr_mode_by_phy(child_np, -1);
+ 	if (rport->mode == USB_DR_MODE_HOST ||
+ 	    rport->mode == USB_DR_MODE_UNKNOWN) {
+@@ -1971,6 +2037,8 @@ static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
+ 		.port_cfgs	= {
+ 			[USB2PHY_PORT_OTG] = {
+ 				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
++				.svbus_en	= { 0x0000, 15, 15, 0, 1 },
++				.svbus_sel	= { 0x0000, 14, 14, 0, 1 },
+ 				.bvalid_det_en	= { 0x00c0, 1, 1, 0, 1 },
+ 				.bvalid_det_st	= { 0x00c4, 1, 1, 0, 1 },
+ 				.bvalid_det_clr = { 0x00c8, 1, 1, 0, 1 },
+@@ -2008,6 +2076,8 @@ static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
+ 		.port_cfgs	= {
+ 			[USB2PHY_PORT_OTG] = {
+ 				.phy_sus	= { 0x2000, 8, 0, 0, 0x1d1 },
++				.svbus_en	= { 0x2000, 15, 15, 0, 1 },
++				.svbus_sel	= { 0x2000, 14, 14, 0, 1 },
+ 				.bvalid_det_en	= { 0x20c0, 1, 1, 0, 1 },
+ 				.bvalid_det_st	= { 0x20c4, 1, 1, 0, 1 },
+ 				.bvalid_det_clr = { 0x20c8, 1, 1, 0, 1 },
 
-Best regards,
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.49.0
 
 
 _______________________________________________
