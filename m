@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CCEC36010
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 19:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 716BDC369A1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Apr 2025 21:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YSmmIoNeeQY1/Gkca6aMyudstR13Ry+OZZF7hqK8jbE=; b=uTLxUyEdINNIFS
-	vO0AY3mpeNjuj5qBCBSIi+cysNoehFNyMCGh3u7QKZn9DazMYdK7pCXRmSstyPHN5GzWJsmHcdWSs
-	NBIyjpik3KfkxzneUZQZ87uC2hppSTvZtvCwXwY+HA4vExBkh6TIPYj7axWBleAmJg6erpcR+Ahj3
-	XWHoqgXqAFF2U0JojdkN/Hyd3y1u7/623icDRx8KFXqqTcKVbmzEmmbyiUiZp9pwvbtYFX2xhpOQ/
-	WDVVERVnOBdCHmivzLSP56Cct++Fs4gNShPgsJu+31MzO6n21RVsNLgzon/S4/n+h8lguhuB0zPPr
-	PIziQZ0jbAnGZw+2HRoQ==;
+	List-Owner; bh=YSmmIoNeeQY1/Gkca6aMyudstR13Ry+OZZF7hqK8jbE=; b=OIp2XIC1g4OJFW
+	v6D8xg/M902IGKzlNAfK4+nh60ww9XI8jc6mTI4XqDOwusI5qhQs9z2bihPrj4YHxC9/DpgqJ6dIv
+	hzWfC72/0VkSnJzrimwyEc+pVLaoXR+IgFeFTWYj2o3htwOctoUibvXREJZfkjEPaqtezQZxf+JCU
+	GVHA7+2IfTfDmCuYPi1w3qBAmINhhu0gN75cjVNXglLMTX8WhCRImL1DtYtHta2RQv1SDNYC8Qiwr
+	2Tn8/O1Dgwth62do3ppGqQiPUFZ9AJ1Kz2GAXnIhOJ/hbCBpZQXzAnnW9J9UVePiNt66Z0njGYxg6
+	VZoxnteAWrsayOAXbx5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1rj7-00000001jat-2UU2;
-	Mon, 07 Apr 2025 19:01:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u1uIl-0000000241C-2Cv7;
+	Mon, 07 Apr 2025 21:46:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1qwe-00000001U1z-0AAg;
-	Mon, 07 Apr 2025 18:11:41 +0000
+	id 1u1qxr-00000001UJN-2rVM;
+	Mon, 07 Apr 2025 18:12:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1F08649CF3;
-	Mon,  7 Apr 2025 18:11:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F522C4CEE7;
-	Mon,  7 Apr 2025 18:11:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 14C9D5C0211;
+	Mon,  7 Apr 2025 18:10:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6EA8C4CEDD;
+	Mon,  7 Apr 2025 18:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744049499;
+	s=k20201202; t=1744049574;
 	bh=lUqZd0rd4XtM1OpzBOVReCueFe1OJ6zFjC6Bpun+2DE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=V9WXpPuh0rvIGgmWpoF+Zv+blrrrBv5PFJQsH1wZOAtudP/GulL8/Az4H6J7GutWj
-	 CZjexWQCTW3ZMVbI3bzcPgNP9Ni7pUlOPguUuST1qX4gjp/4CWRCHilfirQlFf1EjQ
-	 RkSLnfAzJC6ugzqafG+nqPUTGhAwHMfbqUliw5kESkcF/pojsi0PxvMCasEwPwPXE7
-	 uvWCpW+IoVrKgWKEM/4OOusHxgpqyZioYr03qs2CqSvvinANjsP0egZyEDhXz7uSXo
-	 GU12hArDgvbI7PwIPd/KHmSA1YOTmW2TUtYiOrv4xJeUKw6/jPOcmSL1nZ7rqnD+vw
-	 kbvcA9ZjdDYIw==
+	b=hfiMP2KKyIMh5yUUClNaeOm6Da1uO6ZKVmo6hxohYK/Mk4fiOdBDKkgslrtoIZu7x
+	 3iHT0QRsVkABeI2Izfnto2s21EAQsXeZ0fZJ9C6F9kL62oJtfdqhRJ+neF1dkC9SkA
+	 0ToUeG19t0AYtsd8xUHLRBlJV6zUBwJ5jTqfjUeytr18ZMe4wNu8jdkzZJO2kDPpyz
+	 SwnuQHnODiNlQVtAR7uZWih7zZDTiJHw0LBKVJEzS2OtJJ6Hj8xLZbkCgIU8ogPYEC
+	 9M46pAMhTuJCxrpm3epAZtUaYT2seYxhr1lvIQMhIbV4PfJLxwmF1eBJn/3/Df7L31
+	 NgVLShKzctGOA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,18 +52,18 @@ Cc: Andy Yan <andy.yan@rock-chips.com>,
 	linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 19/31] phy: rockchip: usbdp: Avoid call hpd_event_trigger in dp_phy_init
-Date: Mon,  7 Apr 2025 14:10:35 -0400
-Message-Id: <20250407181054.3177479-19-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.13 16/28] phy: rockchip: usbdp: Avoid call hpd_event_trigger in dp_phy_init
+Date: Mon,  7 Apr 2025 14:12:06 -0400
+Message-Id: <20250407181224.3180941-16-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250407181054.3177479-1-sashal@kernel.org>
-References: <20250407181054.3177479-1-sashal@kernel.org>
+In-Reply-To: <20250407181224.3180941-1-sashal@kernel.org>
+References: <20250407181224.3180941-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.14.1
+X-stable-base: Linux 6.13.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_111140_095464_FE4510C3 
+X-CRM114-CacheID: sfid-20250407_111255_754595_7DA084D0 
 X-CRM114-Status: UNSURE (   8.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
