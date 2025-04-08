@@ -4,194 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123B6C369A5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 18:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59826C36010
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 20:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8vnApYJILPz+P+jigpVNQIpY+gaOhLtLOaA5OelPxcs=; b=XLleCWiNy0K9LF
-	EoZsD1+QGwna87nUhumh0oZLoUprv9WjB7LFEeXUJXfB2ZWOadKnaSVkVlpdHVuzwREhu8uUFg3RG
-	oQ8YmNJgYtYxUEfyh6iJi0ALf9wiY+hrSkPTKm51Zf2vmYbXUYiw/k/G17Bs7+CaGBRkd3HbdfT/y
-	s+if+AQk9gm5JXRg90B1NYDp6ox8NKn41/4Tzbgb6TlxB7bdlTIEXFY6IFL6KjCtVej+Byu2HD6M+
-	y9CvGa1bB7lwCFfDm/j28jfHaO+x/ePEanjzELVXWIS4PbEifheeR3R2cPmP2fkyc1YWeP6XwrrO8
-	fr7JOBopupZGhHATq0jA==;
+	List-Owner; bh=3zlLel3I5kY0IFb4S2QfGWazPb6xjBxkk7LSywd1QRI=; b=dF/MQNvXInHorm
+	ui76AT+cFpI09D60BXTbSkH6M72bTUpFCNK8nYDYXpjwCpEQuVlk1ab7KeV3JRoiJEo3+bXZlTPKt
+	NI/LlXjUUXqYt30+SSFdqFcl/npo6mCjbRxpy8vkYJCW0l2gBxKXzgnizl++carYyjs7GeV94DDP7
+	BjjBhbDmy4b9XPhKV/Q0KWJfjVTtJyoiy36uQJ3+u2W1qNZAcDeptgg4hnZc8U8MgWCB0o9dxNZ/6
+	XR9jP4bTTTsedE5yn0VrTz8x3mROPsrige4FuXw86e2N7Qdl99F2chNRK1BifO/2o0K6g3aampftn
+	oT61AuASq3JpUNKEbrhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2E8s-00000005AnX-2Vor;
-	Tue, 08 Apr 2025 18:57:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u2FGU-00000005J6c-0Slm;
+	Tue, 08 Apr 2025 20:09:46 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2CgS-00000004y6B-04GS;
-	Tue, 08 Apr 2025 17:24:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=+khpEJOPXtsV9nyj1OYsnGNYTGbZDVg/JxrXC/Gdxno=; b=iEdFMxCgNINkXLKoDq+xSlI5wN
-	31hJsQslpNpCGMH8v5RsLFG6sdnVI6N0mf5tAlsTOaoH+tbPNFF+qqHiG6M/2egzqRsmhqPkoTSYm
-	7/6KQL9GvxWmXBC4fPlavTJiU1D6jqJ4k8/uHuNwwKotcoKPqW83kZixMw9HthOzLHcKJJMziQZK2
-	6583ZVW54v014Kj36XHDH/eLDefyfnfmvrpILw8N0NewdopxMteVEhqYEWqZbOEIMg6I2j3nCtWNc
-	RF02vm2nppNVkjzxChunI2vVCs8goKGAJg0K3w0UOaHhtW4qDcIc6lYC2V3aTgPN0KdQM84aibzhq
-	RqiYfsKw==;
-Received: from mail-bn8nam04on2060f.outbound.protection.outlook.com ([2a01:111:f403:2408::60f] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u2CgP-00000008M6z-0y7r;
-	Tue, 08 Apr 2025 17:24:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=o8q6NzVeBqOoa6ba5bDETo2/mZl0Y5l4jb7Is2rYCL6NXbMdeiDRfy9aT7eVMJ0edGR4JP5UrxciI51U+sCxZdfJ/3wPwN/M5VSzG8kDsP1L8ZRzpfh0CFFJiYJHVWGBrsd3WMGdfy4i9VzK7r7jZAE3FuXrM2vEumWMgsdrM/NWvSJx8iZcgRmGmh78m68UuXNH8P2KktDSGQ6bGwQvCB9mgNFZPPHc0gQ/a9ZBaFS672fUraEOsI+xc5e7n63wxs1zT+YZU55hpPcJaDqwDH61b13THwzDB1mN1QiafsXHGXjQ/+lR5NyfuZidhdCsyZ+6QK+XwMT1Zup8M0dqhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+khpEJOPXtsV9nyj1OYsnGNYTGbZDVg/JxrXC/Gdxno=;
- b=o/KbMvSC44A/3YfpgoutT+RngOeDI2KCEDPhoqujIRS0TMxw6cG/gylGBpJo3V3wFuN08cheqBZ1By8nqjeiYQCfRU2dws1nozXOPqxtMMUuWJOWceKD4ANR1uIdLTusni/nPBVWlMEisigEkRy0qPV91B8RdcnvnaqostLjDaQgKwxZwkehN3BjWGVYIO8obMCyFsqVUAQNJJ3LE+o7XMwV0xLWDWvAX3yP+vpcEHUM5xF9kdUt49896eWzahGyjJo2yKPD4zqZTyoSn/pkswCXeRS7mgdz/K0ZhTRROPoZ8D5EN81vSbTm4IOtSbzoHYFtd6Wt5oWDq+ye1DK2EA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+khpEJOPXtsV9nyj1OYsnGNYTGbZDVg/JxrXC/Gdxno=;
- b=MOewCa5l4IHoi75/yp/GJf+nDdPP2GKaZaxiqw1DKPl0mmhFiGWitjsnORfw31z7smdbXRY1FTxVr8By0S8wqJiOHtffb+1cZw61y3QBb7+nTuaPEWYY6W5QQYd7uRQ4/zz9R9RsPqMFBiN7OGDvBoOGoKmHDIozR9UyOotqdm0Lf/rsrwqWPJk6hkemUJZJksoV7nyvxXK76GGCurN5zbwsufyk8tdsUkL4sXMBJFqsWtCurygkBE9dQA1ddgMXSCUlHv2jEg6tgvCI37sDreTcVIs6rst3kHgXvVlBEIYrxImwfo0YsAZYt6OzC4itCPTUWv3Mgu0fxKS8ZpwnCg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by CY3PR12MB9579.namprd12.prod.outlook.com (2603:10b6:930:10a::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
- 2025 17:24:12 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8606.028; Tue, 8 Apr 2025
- 17:24:12 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alexandre Ghiti <alex@ghiti.fr>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	asahi@lists.linux.dev,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Neal Gompa <neal@gompa.dev>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>
-Cc: Alejandro Jimenez <alejandro.j.jimenez@oracle.com>,
-	Bagas Sanjaya <bagasdotme@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Joerg Roedel <jroedel@suse.de>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Pasha Tatashin <pasha.tatashin@soleen.com>,
-	patches@lists.linux.dev,
-	David Rientjes <rientjes@google.com>,
-	Mostafa Saleh <smostafa@google.com>,
-	Matthew Wilcox <willy@infradead.org>
-Subject: [PATCH v4 18/23] iommu/riscv: Update to use iommu_alloc_pages_node_lg2()
-Date: Tue,  8 Apr 2025 13:54:06 -0300
-Message-ID: <18-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
-In-Reply-To: <0-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
-References: 
-X-ClientProxiedBy: BN8PR03CA0029.namprd03.prod.outlook.com
- (2603:10b6:408:94::42) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1u2FA8-00000005IaR-280h;
+	Tue, 08 Apr 2025 20:03:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=FxiVMMavbeVJat0Fg13/bdPyEQi5kd3dq3ZqRtNTT1k=; b=QOnjGrf7X9PrCbh55TklsvWBSV
+	RpDtdVx3YJhCSYVlvWD8r5SitRALVtYyrVe4AjNSmP0rf0XqJROu31YDlFYA/9R9Oequlznuxc+Ka
+	hASbdH7877Vj9UPZ8la+BO50aButo8PYEaf6wpSUiFylT01JejCZbV+4F3tim+4ss9RnrlBURjL+5
+	hd2oQW0TN9pAP9/KHhvVTA87RPnAX37KJRkgV8bH3Y9BVRjAEU7GUkFHp/GgIJfrOB+II2JQ2GApD
+	u5V6Xu8Nj4TXSsvNybh4kDPTmhuxsgUd5uVb8JzO+AuZ5UE10Dcvbkl4NFm4jRRXfBZc1suO3l8J4
+	mWFi6LWg==;
+Received: from i53875b95.versanet.de ([83.135.91.149] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u2F9z-00023n-2e; Tue, 08 Apr 2025 22:03:03 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
+ William Breathitt Gray <wbg@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: Re: [PATCH 4/7] soc: rockchip: add mfpwm driver
+Date: Tue, 08 Apr 2025 22:03:01 +0200
+Message-ID: <5559308.Sb9uPGUboI@diego>
+In-Reply-To: <20250408-rk3576-pwm-v1-4-a49286c2ca8e@collabora.com>
+References: <20250408-rk3576-pwm-v1-0-a49286c2ca8e@collabora.com>
+ <20250408-rk3576-pwm-v1-4-a49286c2ca8e@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|CY3PR12MB9579:EE_
-X-MS-Office365-Filtering-Correlation-Id: fc0e6c3f-f85f-4912-f83d-08dd76c22dab
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?2q6SK4xofIu4APGqyirFzl/c8jxq0ZjQ3bY88ng6Rn7AuTnInsz+hbJVnMVY?=
- =?us-ascii?Q?OxC2M77bUyoyW1YTSpsWp/1jSJES+yXerdZQlrB4qtkV4SOX5r6vNXGsgm3R?=
- =?us-ascii?Q?ns9ZG44kIBdGIikeUL5BdkXRzvmWvutmIXMAumYHyq/RNF7BpsyCAw1ysRTw?=
- =?us-ascii?Q?900UMemplkRLv8haj1BzZ+ren8MOQvHOQ2U76ZeVrFC5cAz+BzQc0Fj8D0nQ?=
- =?us-ascii?Q?2sWlXeWEd0Ji0lDAZhBJhS4j8Qfz0Tkc8rU23ZFjme+8KIBgfHKEb+i1CU6C?=
- =?us-ascii?Q?jGgx91bqU0aoswKv17qFbXCFZmX8pdl4D2pNN0u/FiRBDAKJzT8HS5QlRM8r?=
- =?us-ascii?Q?U1yfr1nCc2JSjb5xXArMO1zSJQ4+2WhAxSRW2dtXI2oahbRWz5F1euKnKg2y?=
- =?us-ascii?Q?hYx+WYeSyqOGanzFPRy7e41M3pLiqBNdIl1clMhgIBdxZDDD+R2cgnB2aZo8?=
- =?us-ascii?Q?YHqir6mLPzmN3826fC++EMk2hcGv1ajo2VRn3DtW9pEdGe9WmZw3FOrUQyjW?=
- =?us-ascii?Q?EuX+BV7555nDcTxMO6BneiIGxktpDrozifMpCQ8UrYWrJXX177ApS6fyo+a7?=
- =?us-ascii?Q?JIh6kzmcbXdI84+M0UHvQHots5YMbZI0M8KHfeTlJmhKzmcuqrsqkqBK6ey5?=
- =?us-ascii?Q?BUgPlCruH3bDT1onnpJ4hE0P3GWja6DfxPw7rQi5aIZpORRVfKeM8XdXkdQ/?=
- =?us-ascii?Q?SAgGG3sKNy0/EU5ZviugYR1ZhUgIeXMqSaibKv/KngP4yvdfGoTFSvxs8eov?=
- =?us-ascii?Q?b8/rtIBKr/OohryCiDQhwzIgS31ODHzGjSLd3HFH90ypFsSZcrYQzfX0QynM?=
- =?us-ascii?Q?aHO4G1TEM166GpqqIXr31tOwAYKPcJUcKj7O1w4mT146/OJ3/SPKxLujWTts?=
- =?us-ascii?Q?AwCWI5vhmjVrNL5Mylb7hRKieT03RAPdrRJpRKTvuJ9wjYv4o4YM8Fu09gvP?=
- =?us-ascii?Q?u1zUjtFa4V91GcIsndq6WSIQRoJHJuiFfzhmDMLhXtb7elWQIDAlp++RpSoT?=
- =?us-ascii?Q?SBXjPUuj6mG2DE2qxtUcYX1sKj2+/Nhha8jmTjSlAP6jrQ5KDeYv/IzNT3gN?=
- =?us-ascii?Q?OPh1Sj2wPeOweKLtBVnGuAVOcwFfa1t6cbXxkM+kUyNaXkJzhSYQ6dVSA2ez?=
- =?us-ascii?Q?DM/Yy9z20FjdYj+Pz3vSGvBgCE9s8mYW3NYdotxuR4NWd+MYmse8DGzev+v/?=
- =?us-ascii?Q?MriXxLOpGDNKT93rIRpwiGn6iQyihK4e27r/sKqtO2jPnCoZ5//7Ex0cofb4?=
- =?us-ascii?Q?HbeXsZo7GsFDkcy0Y0ZqwvyxFse+0rS9sdD5xpiHI/ndVjN+073ACLRhOIDJ?=
- =?us-ascii?Q?lFPutwkY3957pfEHdqF2M0+iaGbhqBeE2izJX0iIlnqCBSWU82L3C1pqo9is?=
- =?us-ascii?Q?dOLl+kNVG9XHOnt3vMcm0bpSPQFdCJI6jEomnWFM+hkpZoH0V9dmPKq58YB9?=
- =?us-ascii?Q?alyVxnwg6cSpDXJYOo3zQyUkYNSNNkVtL1xERQpRgZ+UI0HzJSb8yA=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1BobYXvJn70Qh5Cjl6MJ3VaDon0GbhrmpJKr51iabk26t8yvYJ33d/9F34qI?=
- =?us-ascii?Q?6eqozIQGdYv/H9SRi58IsOjLv3doRHJpm+apPrgTfr3WvUZf7RMFIF8M0lVd?=
- =?us-ascii?Q?d3lu5EMFq4GBrwEx3h1DKss9RRQrMg3Y90ZJqSemftRuG3k92hwd6zYIXQ9G?=
- =?us-ascii?Q?B2qic1s8gRyOEa8mZggf136G5BwHDRPAOq+Sa7UPHxyutuqd357cyzeHUJAa?=
- =?us-ascii?Q?MhA4TUy8c5OP5cFzqVBLm3SUt5VnvtYZ2WaFCmg8yE64CY0OZCInKjqFqi+U?=
- =?us-ascii?Q?KasAZ3vmTbG4ZyJzj8JVmOgXaUlKT18KYD0qW9I6msdB41S+JiCCmgPAjhEO?=
- =?us-ascii?Q?75uAN5GL89ABljUbQ+Uqie854qOU1q4CMpUpcnNjHUJ5+p5ruj+0yxYsfVHz?=
- =?us-ascii?Q?GvQBG0fs00xw9NNH9CP4gwsFy0J9KBYtMaY8eZAsma6+QtenuSKoXgtttjLb?=
- =?us-ascii?Q?24ndSYrBrBgzIklKRPvqzIj5AXBaY7uY1v9Rd5ibhH9/NXQSj7qENqIiDw8O?=
- =?us-ascii?Q?ESwHABnjS7ePsHskD5meNgna67HXymYCZgF1stEd94ZpvQFoVypsvUHF4RJo?=
- =?us-ascii?Q?QY5gO+9QWRzHbRVr1ttqpJXtG1vzlnt1CY7bKJJufJzop4m9c6PJrqQJXZ0y?=
- =?us-ascii?Q?V7MzkbgySnwfg7loArBCjBkTUXwJt+0xF2DT+GjIp9P/dqTW3wXzMAKs+5Zn?=
- =?us-ascii?Q?VEnoJdCi2ZRAeim4H7n5GRY4sjihkvIEftfMMKDGhw8K1KommgJNJyMBAjQU?=
- =?us-ascii?Q?c1XNGfwOP3V9ISZFQGBpvwM3ImW3zTmeC4jaedMplwNPv3hxWgbtTqDsnhKJ?=
- =?us-ascii?Q?SExqOaA+bxTitZvHqBCipG2HeeauzmlL7LQdjXSSeI0CbEPZ/jJU0hmVj+iQ?=
- =?us-ascii?Q?3/OZpwP8Nb96Hyqr9vc6LyNafF9igsVp/6VV9DBqz+AXvxg1l10vPcWL4mHM?=
- =?us-ascii?Q?0Fs6XW8XLGhN4P7T8+GYZBB8CFyHQCQ4qoXrmnknBOh4ADDvFCljFI6asqew?=
- =?us-ascii?Q?MHvIA1+nltZMyOPHwsB8kDJ9vWtjqn/MukV/uKUagRB99KbKyL+LbhHL/sZS?=
- =?us-ascii?Q?3RIVgI1vwn7pj1Z5KDgQprrujTKXK7QrFlRMlJHOOdQvVuKF7RtCWsGipHOT?=
- =?us-ascii?Q?362c4X6WCR04E1kxKF427WwTKVJLKuUlSu22kuvsTlHsH7nKxwztuFhfoaax?=
- =?us-ascii?Q?pIw6/69Zq8sTtymFe1xDIzITsTxq1pdzfvEaRvrVzzzJdbW2MMdVnPt//rK4?=
- =?us-ascii?Q?o+5WgRvlCTk22NX+yMs8l7t8LSeNnZQ1POr1/YCv1OrK/YKTEIA+TEtsvUGW?=
- =?us-ascii?Q?iXy4yqtp1rsX8BKhyJnaQqRvsJm949VnLxAVdU+CrLz+SEKKUWNidMyCK03m?=
- =?us-ascii?Q?8mQ0RTkul4mexs2j9VJ2fG8gt+LftkHgepwj3eJ2tdJ7fyGl9QsfHqaqiglW?=
- =?us-ascii?Q?8bsAg7ES1DCASgeqd27zEKj5RfE1ztj/+AwfVA1PuwvmWYzj7bjrFDxv2TKS?=
- =?us-ascii?Q?7fuxrSoowxaiNKbeqUCaVXr/sbJxtZMw0qOMXRf81R2B3iAqJGxM94ubY7Mg?=
- =?us-ascii?Q?j7sgz7z+0C0YYltMI/Lbr2gRj0vAUzT6Yne1EFCI?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fc0e6c3f-f85f-4912-f83d-08dd76c22dab
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 17:24:11.9985
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: at3CBa+6N/U+GFweHWK5+Uo/I3Pt+9lYoB8IEV1ZzY03luPxiMStdVos+evIylNy
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY3PR12MB9579
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_182421_352349_FF3607F1 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20250408_130312_710284_21C05F0A 
+X-CRM114-Status: GOOD (  34.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -203,74 +71,268 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-One part of RISCV already has a computed size, however the queue
-allocation must be aligned to 4k. The other objects are 4k by spec.
+Hi,
 
-Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com>
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/iommu/riscv/iommu.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+not a full review, just me making a first pass.
 
-diff --git a/drivers/iommu/riscv/iommu.c b/drivers/iommu/riscv/iommu.c
-index 2750f2e6e01a2b..8835c82f118db4 100644
---- a/drivers/iommu/riscv/iommu.c
-+++ b/drivers/iommu/riscv/iommu.c
-@@ -65,13 +65,14 @@ static int riscv_iommu_devres_pages_match(struct device *dev, void *res, void *p
- 	return devres->addr == target->addr;
- }
- 
--static void *riscv_iommu_get_pages(struct riscv_iommu_device *iommu, int order)
-+static void *riscv_iommu_get_pages(struct riscv_iommu_device *iommu,
-+				   unsigned int size)
- {
- 	struct riscv_iommu_devres *devres;
- 	void *addr;
- 
--	addr = iommu_alloc_pages_node(dev_to_node(iommu->dev),
--				      GFP_KERNEL_ACCOUNT, order);
-+	addr = iommu_alloc_pages_node_sz(dev_to_node(iommu->dev),
-+					 GFP_KERNEL_ACCOUNT, size);
- 	if (unlikely(!addr))
- 		return NULL;
- 
-@@ -161,9 +162,9 @@ static int riscv_iommu_queue_alloc(struct riscv_iommu_device *iommu,
- 	} else {
- 		do {
- 			const size_t queue_size = entry_size << (logsz + 1);
--			const int order = get_order(queue_size);
- 
--			queue->base = riscv_iommu_get_pages(iommu, order);
-+			queue->base = riscv_iommu_get_pages(
-+				iommu, max(queue_size, SZ_4K));
- 			queue->phys = __pa(queue->base);
- 		} while (!queue->base && logsz-- > 0);
- 	}
-@@ -618,7 +619,7 @@ static struct riscv_iommu_dc *riscv_iommu_get_dc(struct riscv_iommu_device *iomm
- 				break;
- 			}
- 
--			ptr = riscv_iommu_get_pages(iommu, 0);
-+			ptr = riscv_iommu_get_pages(iommu, SZ_4K);
- 			if (!ptr)
- 				return NULL;
- 
-@@ -698,7 +699,7 @@ static int riscv_iommu_iodir_alloc(struct riscv_iommu_device *iommu)
- 	}
- 
- 	if (!iommu->ddt_root) {
--		iommu->ddt_root = riscv_iommu_get_pages(iommu, 0);
-+		iommu->ddt_root = riscv_iommu_get_pages(iommu, SZ_4K);
- 		iommu->ddt_phys = __pa(iommu->ddt_root);
- 	}
- 
--- 
-2.43.0
+> +unsigned long mfpwm_clk_get_rate(struct rockchip_mfpwm *mfpwm)
+> +{
+> +	if (!mfpwm || !mfpwm->chosen_clk)
+> +		return 0;
+> +
+> +	return clk_get_rate(mfpwm->chosen_clk);
+> +}
+> +EXPORT_SYMBOL_NS_GPL(mfpwm_clk_get_rate, "ROCKCHIP_MFPWM");
+
+aren't you just re-implemeting a clk-mux with the whole chosen-clk
+mechanism? See drivers/clk/clk-mux.c, so in theory you should be
+able to just do a clk_register_mux(...) similar to for example
+sound/soc/samsung/i2s.c .
+
+
+> +
+> +__attribute__((nonnull))
+> +static int mfpwm_do_acquire(struct rockchip_mfpwm_func *pwmf)
+> +{
+> +	struct rockchip_mfpwm *mfpwm = pwmf->parent;
+> +	unsigned int cnt;
+> +
+> +	if (mfpwm->active_func && pwmf->id != mfpwm->active_func->id)
+> +		return -EBUSY;
+> +
+> +	if (!mfpwm->active_func)
+> +		mfpwm->active_func = pwmf;
+> +
+> +	if (!check_add_overflow(mfpwm->acquire_cnt, 1, &cnt)) {
+> +		mfpwm->acquire_cnt = cnt;
+> +	} else {
+> +		WARN(1, "prevented acquire counter overflow in %s\n", __func__);
+
+dev_warn, as you have the mfpwm pointing to a pdev?
+
+> +		return -EOVERFLOW;
+> +	}
+> +
+> +	dev_dbg(&mfpwm->pdev->dev, "%d acquired mfpwm, acquires now at %u\n",
+> +		pwmf->id, mfpwm->acquire_cnt);
+> +
+> +	return clk_enable(mfpwm->pclk);
+> +}
+
+> +/**
+> + * mfpwm_get_clk_src - read the currently selected clock source
+> + * @mfpwm: pointer to the driver's private &struct rockchip_mfpwm instance
+> + *
+> + * Read the device register to extract the currently selected clock source,
+> + * and return it.
+> + *
+> + * Returns:
+> + * * the numeric clock source ID on success, 0 <= id <= 2
+> + * * negative errno on error
+> + */
+> +static int mfpwm_get_clk_src(struct rockchip_mfpwm *mfpwm)
+> +{
+> +	u32 val;
+> +
+> +	clk_enable(mfpwm->pclk);
+> +	val = mfpwm_reg_read(mfpwm->base, PWMV4_REG_CLK_CTRL);
+> +	clk_disable(mfpwm->pclk);
+> +
+> +	return (val & PWMV4_CLK_SRC_MASK) >> PWMV4_CLK_SRC_SHIFT;
+> +}
+> +
+> +static int mfpwm_choose_clk(struct rockchip_mfpwm *mfpwm)
+> +{
+> +	int ret;
+> +
+> +	ret = mfpwm_get_clk_src(mfpwm);
+> +	if (ret < 0) {
+> +		dev_err(&mfpwm->pdev->dev, "couldn't get current clock source: %pe\n",
+> +			ERR_PTR(ret));
+> +		return ret;
+> +	}
+> +	if (ret == PWMV4_CLK_SRC_CRYSTAL) {
+> +		if (mfpwm->osc_clk) {
+> +			mfpwm->chosen_clk = mfpwm->osc_clk;
+> +		} else {
+> +			dev_warn(&mfpwm->pdev->dev, "initial state wanted 'osc' as clock source, but it's unavailable. Defaulting to 'pwm'.\n");
+> +			mfpwm->chosen_clk = mfpwm->pwm_clk;
+> +		}
+> +	} else {
+> +		mfpwm->chosen_clk = mfpwm->pwm_clk;
+> +	}
+> +
+> +	return clk_rate_exclusive_get(mfpwm->chosen_clk);
+> +}
+>
+> +/**
+> + * mfpwm_switch_clk_src - switch between PWM clock sources
+> + * @mfpwm: pointer to &struct rockchip_mfpwm driver data
+> + * @clk_src: one of either %PWMV4_CLK_SRC_CRYSTAL or %PWMV4_CLK_SRC_PLL
+> + *
+> + * Switch between clock sources, ``_exclusive_put``ing the old rate,
+> + * ``clk_rate_exclusive_get``ing the new one, writing the registers and
+> + * swapping out the &struct_rockchip_mfpwm->chosen_clk.
+> + *
+> + * Returns:
+> + * * %0        - Success
+> + * * %-EINVAL  - A wrong @clk_src was given or it is unavailable
+> + * * %-EBUSY   - Device is currently in use, try again later
+> + */
+> +__attribute__((nonnull))
+> +static int mfpwm_switch_clk_src(struct rockchip_mfpwm *mfpwm,
+> +					  unsigned int clk_src)
+> +{
+> +	struct clk *prev;
+> +	int ret = 0;
+> +
+> +	scoped_cond_guard(spinlock_try, return -EBUSY, &mfpwm->state_lock) {
+> +		/* Don't fiddle with any of this stuff if the PWM is on */
+> +		if (mfpwm->active_func)
+> +			return -EBUSY;
+> +
+> +		prev = mfpwm->chosen_clk;
+> +		ret = mfpwm_get_clk_src(mfpwm);
+> +		if (ret < 0)
+> +			return ret;
+> +		if (ret == clk_src)
+> +			return 0;
+> +
+> +		switch (clk_src) {
+> +		case PWMV4_CLK_SRC_PLL:
+> +			mfpwm->chosen_clk = mfpwm->pwm_clk;
+> +			break;
+> +		case PWMV4_CLK_SRC_CRYSTAL:
+> +			if (!mfpwm->osc_clk)
+> +				return -EINVAL;
+> +			mfpwm->chosen_clk = mfpwm->osc_clk;
+> +			break;
+> +		default:
+> +			return -EINVAL;
+> +		}
+> +
+> +		clk_enable(mfpwm->pclk);
+> +
+> +		mfpwm_reg_write(mfpwm->base, PWMV4_REG_CLK_CTRL,
+> +				PWMV4_CLK_SRC(clk_src));
+> +		clk_rate_exclusive_get(mfpwm->chosen_clk);
+> +		if (prev)
+> +			clk_rate_exclusive_put(prev);
+> +
+> +		clk_disable(mfpwm->pclk);
+> +	}
+> +
+> +	return ret;
+> +}
+
+ok, the relevant part might be the 
+	/* Don't fiddle with any of this stuff if the PWM is on */
+thing, which will require special set_rate operation, but in general I
+think, if it ticks like a clock, it probably should be a real clock ;-) .
+
+
+> +static ssize_t chosen_clock_show(struct device *dev,
+> +				 struct device_attribute *attr, char *buf)
+> +{
+> +	struct rockchip_mfpwm *mfpwm = dev_get_drvdata(dev);
+> +	unsigned long clk_src = 0;
+> +
+> +	/*
+> +	 * Why the weird indirection here? I have the suspicion that if we
+> +	 * emitted to sysfs with the lock still held, then a nefarious program
+> +	 * could hog the lock by somehow forcing a full buffer condition and
+> +	 * then refusing to read from it. Don't know whether that's feasible
+> +	 * to achieve in reality, but I don't want to find out the hard way
+> +	 * either.
+> +	 */
+> +	scoped_guard(spinlock, &mfpwm->state_lock) {
+> +		if (mfpwm->chosen_clk == mfpwm->pwm_clk)
+> +			clk_src = PWMV4_CLK_SRC_PLL;
+> +		else if (mfpwm->osc_clk && mfpwm->chosen_clk == mfpwm->osc_clk)
+> +			clk_src = PWMV4_CLK_SRC_CRYSTAL;
+> +		else
+> +			return -ENODEV;
+> +	}
+> +
+> +	if (clk_src == PWMV4_CLK_SRC_PLL)
+> +		return sysfs_emit(buf, "pll\n");
+> +	else if (clk_src == PWMV4_CLK_SRC_CRYSTAL)
+> +		return sysfs_emit(buf, "crystal\n");
+> +
+> +	return -ENODEV;
+> +}
+
+which brings me to my main point of contention. Why does userspace
+need to select a clock source for the driver via sysfs.
+
+Neither the commit message nor the code does seem to explain that,
+or I'm just blind - which is also a real possibility.
+
+In general I really think, userspace should not need to care about if
+a PLL or directly the oscillator is used a clock input.
+I assume which is needed results from some runtime factor, so the
+driver should be able to select the correct one?
+
+A mux-clock could ust use clk_mux_determine_rate_flags() to select
+the best parent depending on a requested rate instead.
+
+
+> +static ssize_t chosen_clock_store(struct device *dev,
+> +				  struct device_attribute *attr,
+> +				  const char *buf, size_t count)
+> +{
+> +	struct rockchip_mfpwm *mfpwm = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	if (sysfs_streq(buf, "pll")) {
+> +		ret = mfpwm_switch_clk_src(mfpwm, PWMV4_CLK_SRC_PLL);
+> +		if (ret)
+> +			return ret;
+> +		return count;
+> +	} else if (sysfs_streq(buf, "crystal")) {
+> +		ret = mfpwm_switch_clk_src(mfpwm, PWMV4_CLK_SRC_CRYSTAL);
+> +		if (ret)
+> +			return ret;
+> +		return count;
+> +	} else {
+> +		return -EINVAL;
+> +	}
+> +}
+> +
+> +static DEVICE_ATTR_RW(chosen_clock);
+> +
+> +static ssize_t available_clocks_show(struct device *dev,
+> +				     struct device_attribute *attr, char *buf)
+> +{
+> +	struct rockchip_mfpwm *mfpwm = dev_get_drvdata(dev);
+> +	ssize_t size = 0;
+> +
+> +	size += sysfs_emit_at(buf, size, "pll\n");
+> +	if (mfpwm->osc_clk)
+> +		size += sysfs_emit_at(buf, size, "crystal\n");
+> +
+> +	return size;
+> +}
+> +
+> +static DEVICE_ATTR_RO(available_clocks);
+> +
+> +static struct attribute *mfpwm_attrs[] = {
+> +	&dev_attr_available_clocks.attr,
+> +	&dev_attr_chosen_clock.attr,
+> +	NULL,
+> +};
+
+Not understanding the need for the sysfs stuff was my main point this
+evening :-)
+
+Heiko
+
 
 
 _______________________________________________
