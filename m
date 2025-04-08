@@ -4,84 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47861C3600C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 06:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC6DC3600C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 07:37:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NSMh/52ZaQw/WCfx8cQJ2grmbAbSmhiouIMt5DN3t70=; b=ThkQ1HkEO3kx+j
-	Y/2OsjdB70C2UahNMFBtiUdm48/w7x8buZgNjOElpsn9IYuFWPHRbttAHoeuf9Bk5Ba4gvxokdYUb
-	gbVGYNRLTUeK38tAT0dD0250Q2SQThq4a5GXzb5Y/PLWZLD+LDJ4cf0TYAH1QnElQUTSflFT2g4wF
-	SaMwD5mbD1vxnQ52Yv04gmWVxHeiEOzLoIrhjKf8ku5sUwIJd8cotabbVjUhGLCTPTbOsuzEKJ8Dk
-	+b9QnXJfSLT20/FhAsSIQ959PNoZ0dFPBN5ByE/CynD9AGlgGv0DXvXwUpZ5dDvFpeIo0PI6hP9y0
-	Yrzoa8ao8XBftZ29w9dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KSLIxkdLxw5a3E+qUoAdKftQgr00lJ0MxqdK4uRfvTU=; b=DEw/ouHw38KEwG
+	GZ2KgRJVbK521Hvw25ZiialR/nL6EqAtuBMs59C6HLM8Ey+/MrXENNdVwJhawFdvuvVIKPZQ1Zs1r
+	eToO1aYdG8ADGiikCdG4KWw+WmEm9h9c4hLuUW45BFZSD5WTco7Lw6OSLoiXkr1PwsF/YMu1IJSKD
+	sM/ii7SDFN2EoGMV3FsGSq6g0oSLDisgUqvZp15CuZL6QzXGsrpsA+qVe/6y4DtUaF4ZE0OilEAr1
+	U3QfwC2xg+TXGn/ihk8ViWcYCjChPPXLW8yghz4YNzzVwlnxk35zfvaB46hVELMPB5AZt2f96Jb8z
+	FzkdQiBQQM/YmGMYNxPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u22je-00000002x06-3mW0;
-	Tue, 08 Apr 2025 06:47:02 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1u23Wc-000000036O2-3s0t;
+	Tue, 08 Apr 2025 07:37:38 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u22j6-00000002wz4-1AJW;
-	Tue, 08 Apr 2025 06:46:29 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-54acc04516fso4861507e87.0;
-        Mon, 07 Apr 2025 23:46:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744094786; x=1744699586; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=P1ZXUlXFpxCk76Zskk3n3ZWQ72WfXAgt8H3OlOtqE54=;
-        b=jKolJHIEsnGcHNsCxWQOptt85WidIW7k1NGD2rsfAalmmpDatQZg9Mz40F/q5L+K0g
-         sryObjRNncqR9auxoF0bCx6MgFwTqolBbSZxFubKo/VSiHBTbMWqWiDssGRnN2a2gFyO
-         lF/q822BBP1cQnyfMSiffzJovu9XwLqv/bDFz90xiSnIVxfwMnyqHgHmy7UpHHm8pY/+
-         i8u2IhPQdKcW4ToGBKW1ZoTbgSc03scPO3c3giFpIHcyVy03h1VYG3gpU5KzsQx+XuqZ
-         Zewgcxl9sDPMCuaiTzZ4z/2Crf00U+bTImHBpvZ12yuWo1a+jQqbvOnkSRqid+OSYOZD
-         ouhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744094786; x=1744699586;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=P1ZXUlXFpxCk76Zskk3n3ZWQ72WfXAgt8H3OlOtqE54=;
-        b=pJzHGdTNCfO+UBDhTG6TbCim/p95CVddzdijF1BPZSswmGDMuwAuTSDHqMUxLATa50
-         rAvFLTALczRKkkKYzgG5yAAPPGv2tOFt+yRQPNbIyC1lXf/Q4UQamsp5oITD+5Et7XVA
-         LvyIkgZ/I1Hdj0DWD9MYwDrzVzju7legQJaUdDEAeLaRJYUg5162c83kUD9I2H2Pddhq
-         XI5KwUTtWrix62k0vyeMZ4tre7nP6vRN+2QrmEztmrhnMZnpzcn4h1BJxzxH13obEwDL
-         JWpWPj09h0BIYgG3kG/XTakXs1GUmFcZ1jFEaKfoMYBksbG8fOp3B5jn+6xYH1sYF+I2
-         fcAw==
-X-Forwarded-Encrypted: i=1; AJvYcCVhTicpZCk2Al5YPMza03KVmI5NzA8qp0B7hdqpqR5sZQo2m7CbFEhRpdnaZVax4Dw7fEZ5B7X0txOUg/sSRQg4@lists.infradead.org
-X-Gm-Message-State: AOJu0YwnaLseUQL+r8TQ2uMqZJSW2SDq1v6p21nxQ8f8byT+QlfPKJOD
-	p9k9w5uBR7sII/gBdSp2UOfhtaZNp/hrxHUUsoR5Zw1fd2J/i4lgO67xFZhU
-X-Gm-Gg: ASbGncvzUsrpg7mkX406WPQLZizjn/x7N1v0id6HMYlbOrJf/kREeV5nOkVF20/3W6I
-	g0uOTX75O2uOyb04zbDY/WLKRLADowZf0/yIWhmYeBqlqyRTDj4+17XxCdXwIqyNjFlUrKP1eFU
-	BU5PsJ2QCEIhqObY5d2u3F0yQZo8hvZeNMCK+0AunmBCJ7J3AuoMC6dtnK+KxjjCFI930Kq2Ud+
-	5CuBI6lBaRBNEkQeAPUn640c6rUALgtABfmndNQ66K+c3n+ZBD9j0M11EGHNBoPt4xRMRdW7jED
-	f4DYAkW3Iy48/0t83nyFv+kKTyizJSrzXO9HIVbns+laQ3EeqnzVxWHWBVgJ71wJUm4=
-X-Google-Smtp-Source: AGHT+IHgHWsakrfLfhmmiWC4HHmMMPaI4hd/D/q0s+PSgcAGf6f/l/AVumjrJcERbVfKlMMm58iWIg==
-X-Received: by 2002:a05:6512:110e:b0:54a:fa47:b2a5 with SMTP id 2adb3069b0e04-54c232ddfbcmr4204887e87.23.1744094785709;
-        Mon, 07 Apr 2025 23:46:25 -0700 (PDT)
-Received: from localhost.localdomain ([188.243.23.53])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54c1e63709asm1440800e87.145.2025.04.07.23.46.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 23:46:24 -0700 (PDT)
-From: Alexander Shiyan <eagle.alexander923@gmail.com>
-To: linux-rockchip@lists.infradead.org
+	id 1u23R2-000000034dK-1qel;
+	Tue, 08 Apr 2025 07:31:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=y2C+uRo2fVHUKx/+iSBSrq317XScpLFo+rXN012kNqs=; b=0t+ePt6z+QxWnu8TYx2heg9Wol
+	NRgQcKJR9WRPerFtM6YFYBDdWjiek8EV+Tg2n647qjfHDFVetKcnnXvW4V37ZifW/m9+4/EWHIYJw
+	8iycksI2i8YAx73B29Z/lTXwTo8lv5MRxSEQfRu8YDGdgUb8dlBiFOMPhOuPGZtv+X3F/hSLDS05Z
+	yXrPln7nDPLG4E809r++H5+p4Vs4qZF3XOWMpCRGMQcQ5eFgehaTO3JhyloeXkcPKtc3jhGiqzWPk
+	15mKTOjJBdaN4Jh9dMHoN9N2bB7g6Ptjg3a0cffvNPhn5+8Vvxeq5NwWsnwJ2v3ot9PcTqArGDLLx
+	CTbOrqVw==;
+Received: from i53875b95.versanet.de ([83.135.91.149] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u23Qn-0005H9-MJ; Tue, 08 Apr 2025 09:31:37 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+ Alexander Shiyan <eagle.alexander923@gmail.com>
 Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Alexander Shiyan <eagle.alexander923@gmail.com>
-Subject: [PATCH] clk: rockchip: rk3588: Add PLL rate for 1500 MHz
-Date: Tue,  8 Apr 2025 09:46:12 +0300
-Message-Id: <20250408064612.41359-1-eagle.alexander923@gmail.com>
-X-Mailer: git-send-email 2.39.1
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 1/2] clk: rockchip: clk-pll: Fix CRU_xx_CON2 register usage
+Date: Tue, 08 Apr 2025 09:31:36 +0200
+Message-ID: <3871892.kQq0lBPeGt@diego>
+In-Reply-To: <20250408063126.38904-1-eagle.alexander923@gmail.com>
+References: <20250408063126.38904-1-eagle.alexander923@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_234628_312837_FF29EBDF 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250408_003152_494780_058B8755 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +70,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-At least one RK3588 clock (CPLL) uses 1.5 GHz, so let's add
-that frequency to the PLL table.
-
-Signed-off-by: Alexander Shiyan <eagle.alexander923@gmail.com>
----
- drivers/clk/rockchip/clk-rk3588.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 4031733def4e..1694223f4f84 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -64,6 +64,7 @@ static struct rockchip_pll_rate_table rk3588_pll_rates[] = {
- 	RK3588_PLL_RATE(1560000000, 2, 260, 1, 0),
- 	RK3588_PLL_RATE(1536000000, 2, 256, 1, 0),
- 	RK3588_PLL_RATE(1512000000, 2, 252, 1, 0),
-+	RK3588_PLL_RATE(1500000000, 2, 250, 1, 0),
- 	RK3588_PLL_RATE(1488000000, 2, 248, 1, 0),
- 	RK3588_PLL_RATE(1464000000, 2, 244, 1, 0),
- 	RK3588_PLL_RATE(1440000000, 2, 240, 1, 0),
--- 
-2.39.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQWxleGFuZGVyLAoKQW0gRGllbnN0YWcsIDguIEFwcmlsIDIwMjUsIDA4OjMxOjI1IE1pdHRl
+bGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgQWxleGFuZGVyIFNoaXlhbjoKPiBBY2Nv
+cmRpbmcgdG8gUkszNTg4IFRSTSwgQ1JVXyhDUExML0dQTEwvZXRjKV9DT04yIHJlZ2lzdGVyCj4g
+KHJhdGUtayB2YWx1ZSkgZG9lcyBub3QgdXNlIGhpZ2h3b3JkIHdyaXRlIGVuYWJsZSBtYXNrLgo+
+IExldHMgZml4IHRoaXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQWxleGFuZGVyIFNoaXlhbiA8ZWFn
+bGUuYWxleGFuZGVyOTIzQGdtYWlsLmNvbT4KClRoZSBjb21taXQgbWVzc2FnZSBkb2Vzbid0IHNh
+eSwgYnV0IGRpZCB5b3UgY2hlY2sgdGhpcyBvbiBhY3R1YWwKaGFyZHdhcmUgdG9vPwoKU29tZXRp
+bWVzIHRoZXJlIGlzIGEgZGlzY29ubmVjdCBiZXR3ZWVuIHRoZSBUUk0gYW5kIGFjdHVhbCBoYXJk
+d2FyZSwKc28gdGhlIGFjdHVhbCByZWFsLWxpZmUgc2l0dWF0aW9uIHNob3VsZCBiZSBjaGVja2Vk
+LgoKCkFzIGZvciBhIHRlc3QtY2FzZSwgYW55IHdyaXRlIHdpdGhvdXQgd3JpdGUtbWFzayB0byBh
+IHJlZ2lzdGVyIHRoYXQKd291bGQgcmVxdWlyZSBhIHdyaXRlLW1hc2sgd291bGQgbm90IGNvbWUg
+dGhyb3VnaC4KU28gd2l0aCB5b3VyIHBhdGNoIGFwcGxpZWQsIGRvZXMgdGhlIHJlZ2lzdGVyIHZh
+bHVlIGNoYW5nZSBhZnRlcgp0aGUgd3JpdGUgYmVsb3cgd2hlbiByZWFkaW5nIGl0IGJhY2sgYWdh
+aW4/CgoKVGhhbmtzCkhlaWtvCgoKPiAtLS0KPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBs
+bC5jIHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
+LSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jIGIvZHJp
+dmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jCj4gaW5kZXggMmMyYWJiM2I0MjEwLi43N2JhNGQ2
+ZTdiNWYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jCj4gKysr
+IGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jCj4gQEAgLTk1OSw3ICs5NTksNyBAQCBz
+dGF0aWMgaW50IHJvY2tjaGlwX3JrMzU4OF9wbGxfc2V0X3BhcmFtcyhzdHJ1Y3Qgcm9ja2NoaXBf
+Y2xrX3BsbCAqcGxsLAo+ICAJCSAgICAgICBISVdPUkRfVVBEQVRFKHJhdGUtPnMsIFJLMzU4OF9Q
+TExDT04xX1NfTUFTSywgUkszNTg4X1BMTENPTjFfU19TSElGVCksCj4gIAkJICAgICAgIHBsbC0+
+cmVnX2Jhc2UgKyBSSzMzOTlfUExMQ09OKDEpKTsKPiAgCj4gLQl3cml0ZWxfcmVsYXhlZChISVdP
+UkRfVVBEQVRFKHJhdGUtPmssIFJLMzU4OF9QTExDT04yX0tfTUFTSywgUkszNTg4X1BMTENPTjJf
+S19TSElGVCksCj4gKwl3cml0ZWxfcmVsYXhlZCgocmF0ZS0+ayAmIFJLMzU4OF9QTExDT04yX0tf
+TUFTSykgPDwgUkszNTg4X1BMTENPTjJfS19TSElGVCwKPiAgCQkgICAgICAgcGxsLT5yZWdfYmFz
+ZSArIFJLMzM5OV9QTExDT04oMikpOwo+ICAKPiAgCS8qIHNldCBwbGwgcG93ZXIgdXAgKi8KPiAK
+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
