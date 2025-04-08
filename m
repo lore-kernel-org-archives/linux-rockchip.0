@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825F4C369A5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 15:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2B2CC369A2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 16:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tsxMDM/D6Ufo5JzmQNQi5z/LFwWGVskb040HmF4ot5o=; b=0PQEXRl4zqnDU0
-	vtKnckaXVs195DH23Bk6MNb/QQpJ9esrcI+8tN6Rp0Nsa+/1UEUtlr3JYpp7PPV4qiPX1rMJ1GFTh
-	NWjONJGj2U/puSbXQryOGkWxiA6FVDSbeEmQt1UrXSPpAB58S9wwFs9Ah0qf3YTeeOnqgvOobEKXT
-	CtzW0C+KQ9dGI6bdqS752rR9eEPviD8t40fBqSwumejGH8RuE+k2a2zF/PwmT05/tP8jM9hfcxwXB
-	s1WRvMsINqaeoX1oEFqvinKhTUuimoYnzXLz0ZkHhfKgq9KWXaZkdKv76W3ibgHHpiyPPUkadwhj9
-	vumjmZI6/z5TfgYNiYTg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lctxGX0c8cbXQsgcPO4kyRBMNFog7CS136uhthdntC4=; b=4wLmQ9bGrtX4+QgC6CQM3KIF4z
+	5MqrNDtqHPVisXdluejol58JUMuxQ41A5OOPSYxlITmqYdHtgF62SW1AoxWyDMXVEKk67laShsw1J
+	nDqpgbUSJXr0kxIHk7tc/Fk5YdW5X+lzOzydEEODm95fP7i5wJkzjWGhHQ8qOyAJc+I7fV6ibT74Q
+	mVL8R4PhP7/isAYeJciA1svWkcMPsljvECKaILJF6RUop43e0qEKbZqYdJoOZddjsolxm/4m75N3Q
+	nBTiIjqiXuj+4ESDknLLVzsm3jsvTxpjWEFiPWmOzNHByK2dSmFPH4kZHi7Fx2rHjBXjj3js1G9UP
+	wgGKNPjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2Atf-00000004cOf-1fXd;
-	Tue, 08 Apr 2025 15:29:55 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u2BWU-00000004l59-3yBc;
+	Tue, 08 Apr 2025 16:10:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2Ars-00000004c6b-0jr1;
-	Tue, 08 Apr 2025 15:28:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1744126071; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Clq1p2ElUtXuJl0mcuE/6qBe736x7qHLqEUOi+K2KDAMXFOzO/N8/Pv5gfgTqcSXZrVrAk77la8+eAx7JSnWdJnAaVQaNN+pmi7xqidaYEV5FbW3Lq4eZCKAkeDjORWj8AEVdr0CNTrH257bY1oDyhuXeLFz6PK3VJq1A5gn5tU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1744126071; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mR1vtbmwt5QaC5nynO+8PlhkL6P8DxSsCm16ycxu7/E=; 
-	b=TexdogQOJne1PjO/V9ACajg3CwQUX6tRTy53BzRK3AHjuPS8TgFgi0BO4xSajCiiwv14ICFlbX2E+Idle06VKw4xqorlLR59IzBMZH/n/uUPiZfNGx4JpVLfx0P6ctVoslZqXJ0qxjgkTHv5zuiYEyGcXvwQF0UYRM/RuxZ/F4Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744126071;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=mR1vtbmwt5QaC5nynO+8PlhkL6P8DxSsCm16ycxu7/E=;
-	b=RxpER7NLYCcUf00ifcNz5XOXD7MWBS3srvR/3Ig2/Go4XkHz3jIuYsM2mq0kzOkp
-	Lk7FygTNMrE8kVVWPP7Yq3e1ddGgFhHsH0PlSVBBSfhpnqMkw1Vpuc9lGJc1JVA7c+3
-	s/HsezfV8tRE8tVMDKYOa2Hc2qPA10UvKwIBsJpw=
-Received: by mx.zohomail.com with SMTPS id 1744126070257421.07626011841296;
-	Tue, 8 Apr 2025 08:27:50 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 08 Apr 2025 17:27:01 +0200
-Subject: [PATCH RESEND] pmdomain: rockchip: keep PD_NVM on RK3576 always on
+	id 1u2BUW-00000004keY-0vVs;
+	Tue, 08 Apr 2025 16:08:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 12C445C05E2;
+	Tue,  8 Apr 2025 16:05:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B628C4CEE5;
+	Tue,  8 Apr 2025 16:07:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744128478;
+	bh=lzpeBjhQqjKTv5LhjTuLZBeC/RINwYUMzDyi+e++4VE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OyLqtvNt3uo49sXmzsO/X6m+Zm0NwzwtMrSOp3iDAplnzf1boXsd6IaggyeX8dnsQ
+	 +MCD0To/C9JGz07JeAoSJlwidfegqkkqiUcfv+/RaZW6XXPyismKIvOl9t3Ug0yLpt
+	 1UBzkv5S5FQ8cUQps3M7tDN+xDN/BxUUo2Z6yXP47XX3qZ3S1ST6C0r1FLzlUdX6SL
+	 BDjEEtGqjefpz4rTwexrt/ipf13elsC2SaFHxC2kjVkZZOZ1QEQMwX/9EgHkO17fuy
+	 QyK3sRQK+YGvaW4/eCV5B+i53tQHvoXHVTLt5I4ZJOZCJ9gIxL1FZ+nVzUeC1fEA1K
+	 8wM/enLNTWrsg==
+Date: Tue, 8 Apr 2025 17:07:52 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	William Breathitt Gray <wbg@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Kever Yang <kever.yang@rock-chips.com>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org,
+	kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH 2/7] dt-bindings: pwm: Add a new binding for
+ rockchip,rk3576-pwm
+Message-ID: <20250408-drivable-hypnotize-062fd7cec903@spud>
+References: <20250408-rk3576-pwm-v1-0-a49286c2ca8e@collabora.com>
+ <20250408-rk3576-pwm-v1-2-a49286c2ca8e@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250408-rk3576-emmc-fix-v1-1-3009828b1b31@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAERA9WcC/3VOuw6CMBT9FXJnL+EWCsrkIKuDjoahlCKNQLVFo
- iH8uw26Op73mcEpq5WDPJjBqkk7bQYPaBOAbMVwVahrj4FFjEcxZWhvMc9SVH0vsdEvzGq5JZG
- yLGEMfOpulafXxgucinNxPED55a16PP3A+BMr4RRK0/d6zIMpDYmjlbSaW+1GY9/rq4lW998DE
- yFhzeOkTnYioYbvpek6URkrQt8O5bIsH8X091jnAAAA
-X-Change-ID: 20250317-rk3576-emmc-fix-7dc81a627422
-To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>
-X-Mailer: b4 0.14.2
+In-Reply-To: <20250408-rk3576-pwm-v1-2-a49286c2ca8e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_082804_311953_04C4BE6F 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20250408_090800_301618_9EF08D0D 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,137 +78,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3880478976534782123=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Due to what seemingly is a hardware bug, PD_NVM never comes up quite the
-same after being turned off once. The result is that the sdhci
-controller will lock up the entire SoC when it's accessing its CQHCI
-registers.
 
-The downstream kernel hacks around this by setting
-GENPD_FLAG_RPM_ALWAYS_ON in the mmc host driver, which does not seem
-like the right place for this.
+--===============3880478976534782123==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="P4Hq9KC+O/IONcbS"
+Content-Disposition: inline
 
-Set GENPD_FLAG_ALWAYS_ON in the pmdomain driver for PD_NVM. I'm using
-the non-RPM version of the flag here because I have my doubts a
-suspend-resume cycle will fix it. Suspend-resume currently seems busted,
-so I couldn't test this.
 
-Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/pmdomain/rockchip/pm-domains.c | 48 ++++++++++++++++++----------------
- 1 file changed, 26 insertions(+), 22 deletions(-)
+--P4Hq9KC+O/IONcbS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 03bcf79a461f5db14173b35c0d110541e6d3f760..2b220b7c77b3d292f49cbc60338d3925146fb211 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -48,6 +48,7 @@ struct rockchip_domain_info {
- 	int ack_mask;
- 	bool active_wakeup;
- 	bool need_regulator;
-+	bool always_on;
- 	int pwr_w_mask;
- 	int req_w_mask;
- 	int clk_ungate_mask;
-@@ -154,7 +155,7 @@ struct rockchip_pmu {
- 	.need_regulator = regulator,			\
- }
- 
--#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup)	\
-+#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, g_mask, wakeup, _always_on)	\
- {							\
- 	.name = _name,					\
- 	.pwr_offset = p_offset,				\
-@@ -171,6 +172,7 @@ struct rockchip_pmu {
- 	.clk_ungate_mask = (g_mask),			\
- 	.ack_mask = (ack),				\
- 	.active_wakeup = wakeup,			\
-+	.always_on = _always_on,			\
- }
- 
- #define DOMAIN_RK3036(_name, req, ack, idle, wakeup)		\
-@@ -204,8 +206,8 @@ struct rockchip_pmu {
- #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
- 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
- 
--#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup)	\
--	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup)
-+#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, wakeup, always_on)	\
-+	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, g_mask, wakeup, always_on)
- 
- /*
-  * Dynamic Memory Controller may need to coordinate with us -- see
-@@ -846,6 +848,8 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
- 	if (pd_info->active_wakeup)
- 		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
-+	if (pd_info->always_on)
-+		pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
- 	pm_genpd_init(&pd->genpd, NULL,
- 		      !rockchip_pmu_domain_is_on(pd) ||
- 		      (pd->info->mem_status_mask && !rockchip_pmu_domain_is_mem_on(pd)));
-@@ -1210,25 +1214,25 @@ static const struct rockchip_domain_info rk3568_pm_domains[] = {
- };
- 
- static const struct rockchip_domain_info rk3576_pm_domains[] = {
--	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false),
--	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false),
--	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false),
--	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false),
--	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false),
--	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false),
--	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false),
--	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false),
--	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false),
--	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true),
--	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false),
--	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false),
--	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false),
--	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false),
--	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false),
--	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false),
--	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false),
--	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false),
--	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false),
-+	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       false, false),
-+	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), BIT(2),  false, true),
-+	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), 0x6,     false, false),
-+	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), BIT(0),  false, false),
-+	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), BIT(15), false, false),
-+	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       0,       false, false),
-+	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  0x6000,  false, false),
-+	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), 0x7000,  false, false),
-+	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), 0x6800,  false, false),
-+	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), 0x6400,  true,  false),
-+	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  BIT(9),  false, false),
-+	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  0x280,   false, false),
-+	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false, false),
-+	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  BIT(6),  false, false),
-+	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  BIT(5),  false, false),
-+	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    0x18,    false, false),
-+	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  0x1a,    false, false),
-+	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  0x1c,    false, false),
-+	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  BIT(0),  false, false),
- };
- 
- static const struct rockchip_domain_info rk3588_pm_domains[] = {
+On Tue, Apr 08, 2025 at 02:32:14PM +0200, Nicolas Frattaroli wrote:
+> The Rockchip RK3576 SoC has a newer PWM controller IP revision than
+> previous Rockchip SoCs. This IP, called "PWMv4" by Rockchip, introduces
+> several new features, and consequently differs in its bindings.
+>=20
+> Instead of expanding the ever-growing rockchip-pwm binding that already
+> has an if-condition, add an entirely new binding to handle this.
+>=20
+> The "osc" clock is an optional clock available on some instances of the
+> PWM controller. If present, it allows the controller to switch between
+> either the "pwm" clock or the "osc" clock for deriving its PWM signal
+> on a per-channel basis, through a hardware register write.
+>=20
+> However, not all instances have this feature, and the hardware copes
+> just fine without this additional clock, so it's optional.
+>=20
+> The PWM controller also comes with an interrupt now. This interrupt is
+> used to signal various conditions.
+>=20
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
----
-base-commit: 64e9fdfc89a76fed38d8ddeed72d42ec71957ed9
-change-id: 20250317-rk3576-emmc-fix-7dc81a627422
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+--P4Hq9KC+O/IONcbS
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ/VJ2AAKCRB4tDGHoIJi
+0jZqAPwOQu41aopdoBSSIQdKHqz2RJ+dwLSozN2+YDI1wW8y7AEAjS2GhaRyfF96
+3GHeudBuxceUrbBxoPB8hzmTAP7etQQ=
+=yLZr
+-----END PGP SIGNATURE-----
+
+--P4Hq9KC+O/IONcbS--
+
+
+--===============3880478976534782123==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3880478976534782123==--
+
