@@ -4,86 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB0DDC369A5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 16:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1E5C369A5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 16:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+XVhHwLW/pU7NQ+pkEQHg0Eix8Zcgr85seAWY+Cs3U0=; b=aiisG4X37UhUmH
-	TiwEqLc4rOXJlmhMizjd4n5UoEuWYMFWvjHuABF6Pp4+YXFXqg4GAukMM1MSpUY0eHZ36hqol9k2L
-	pIpvEVh21MMAzYw0SGtKn3DTZWldO8E0MbSshXynG1/8+nXKp0NaNtY5waYKMPt3tWDLDgc4yE8/2
-	NaLju9nVTyRtHOCs1WuCfIxZxbYHusnF/sj7gI0izdK2ObijRrKYmSEMfuYdHGgzc3ZhLAdSE1KBA
-	+SLIZ5p5g/4I7bnakfyAiSJjWPI/kuKqxrj9oXL5K4dZE04qXfAoQ9Eo2S6/+dhK7+Ga3RNkkYJZw
-	ykJqD3XS9n+3pXiAxvaQ==;
+	List-Owner; bh=U7YxYrtII7LgNK4HEsD2cQmWvSTJUsB3aV4bepbVj24=; b=vUAFPu5N9AkD+6
+	Pq+YCQfiEXz7W7fU50kYKZ8hEfaDQOiHbtSoHlGNpd1/QR5nIP8toPMTbdGtskY3XV2UiUiVhmVhJ
+	3B6ANxhzRbcNsf5v0HXCfq3n5cWxaZmn+dzHcTBAbjbfTQ+eX6wESRD3zr0UiMoA4i869iJ4Tco0X
+	Fg3gICgGKKwt44rf8OFOQbW4+pOaMdqjJ7qS0uvvHyEOhhh1G4KNDoV+IaO2Ku5tw7DZkLfqBlF4f
+	Uz9lxYhsd9MXV9nsYOIP46UJqNzaZsJ79BCVuP+qoJqc29kazC/y21RhwbdJebgLdNXrunR13K+bG
+	yV5M+RKwLhywbZuEvXgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2Bxi-00000004pnm-2PH3;
-	Tue, 08 Apr 2025 16:38:10 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1u2CF8-00000004skW-2RDh;
+	Tue, 08 Apr 2025 16:56:10 +0000
+Received: from mail-bn7nam10on2062c.outbound.protection.outlook.com ([2a01:111:f403:2009::62c] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2Bvv-00000004pc1-1psi
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Apr 2025 16:36:21 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-ac3fcf5ab0dso995925666b.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 08 Apr 2025 09:36:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1744130177; x=1744734977; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=i3wrvWVbOnRUQVWpOBEubP7kMDCUCq12GpzisA/3qfg=;
-        b=p1gD4DJTy8UPEdDMCIWWE8QoC/iSAzCr1/JpuApyleLil0BdLA0lZXNRKzIEWAZYAG
-         dLdTTG9j5lt1+JRxXoTQsel9V2gJHOibMmxjind7hHtHR6CP3jz8Oi22pMHUU5nJ2xV2
-         scCju2+qpgJ3ZYagIf03L1UdsLy5jgOJx1DiH2cQCYHTNqmKRz730zMO+jI+eDV/eZEB
-         blAGyjWYbSfAGFli7gefhe/JGp/CbRmdOGHuQCaTvZs1P36K//BrbsAcuKXgPUOU2Pil
-         E4Gir1PUm1VUxh5R7a1uh/vQgG1LWqH8Tcpx32m66UMIk4ikG6DXTQufvj9QFS52jw/c
-         J+vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744130177; x=1744734977;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=i3wrvWVbOnRUQVWpOBEubP7kMDCUCq12GpzisA/3qfg=;
-        b=vE0eXOEEdtJ6u/gzlHb8X1UQ0h5lFLn8tGTXT1hh8yUutzH7PVkIXnyFektWKaNc0d
-         cwAGdm/5SUlw1/QYNz6AcpiPetRl0OrqngjQ4ecvzmJKwVRfwS46VcWlgl2f9U591iO7
-         OBZ0ME7EAZi/80LzgPBIZ5dqZ5eqdci7eYnZ8T9wi1HREWHdh5hL99SBzmSEB/mIz2cI
-         oAQUx7v6QG/HHNxSPHtPjut5W9a4Yo9bwGVp3vtkl38kUOhvs4OJgMbtGXL4t4a99pJy
-         fOrkVSxSZdaHfIpTfhj+An5TcygE5ULM+JkqdTcZh7SDYnjdHTUpiT3fI6gtfU7j0jjO
-         nPZg==
-X-Forwarded-Encrypted: i=1; AJvYcCXMdn5++SC/5vCgFq/iEc2y0JcTW0c/cmoX7Gp61jo+BDdQNbhMqrtJFbDX2ivIbxjPUmK6NAKni8nC1Eh7Aw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVPhCsLLlPgWsl3FhlZVfcNpiMu8MV+RzZn8sUz8fV0LB3I19y
-	Pwk1BQVkf42oqk8MOLVDkpR8/2VPp2DArE3mrVcxpYJmPdTjxwTDbAyEGmRF4c2aHVWJpGqtm33
-	KLfV9fIPMPj+wxeOn8vMQZRf3THL+/slXl7/o8Q==
-X-Gm-Gg: ASbGncshd6iTBo6yFqr1sqO2aME9ZzukaEkokkd4Wx5v2CpYeE9L4jPZ+RO51zN/aMv
-	O7E0xOGfHMYJ/+qtB2JpGCnZUKFYZL6mlcAiatdxREWZhfqp9NcCo5iDMz9RXD5cWPoZszk6ocT
-	LDk2FRz9dX4xw83ZY1SA+pTeqq2aXJ
-X-Google-Smtp-Source: AGHT+IEKFLhzxNA8nE4j3QQLXx2xIaLoG80ZEqlxvEiciuURe4ovIM9jxkUyiDuLYEFOGCRYHlOLSuzofncZr+mD4JY=
-X-Received: by 2002:a17:907:7da3:b0:ac2:55f2:f939 with SMTP id
- a640c23a62f3a-ac7e7170328mr1083292466b.6.1744130176982; Tue, 08 Apr 2025
- 09:36:16 -0700 (PDT)
+	id 1u2CDK-00000004sBS-3OCz;
+	Tue, 08 Apr 2025 16:54:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UrktIlsmMKGESOEhGRG/smSH7s/OD558IBHp4GNAC1/Lpd0+KJbCgVysFiqIsCcd3Ka+lRGW0AOi2tUf479sy+mpRuxVNDpx/Wik5YKhoK5e03ttpoBPhc0eZpBYPzuK4vFz6q9DHmVXoYXHe84FPXRTkEzYCT2VhzSDPXWYA55DSUkeLsn5PjeQcHIe4bhqN0UWvex++/VEaz+DZDA4Zn3gyjesI35GkaHgx+iO0CZKV5p33jp9lzx7DyLUDgBdR5nrz1IsR2nvBqJbrSR/sgDEonTNjageQCBbNbkx3pwEYk7Dh+4tbB8uvHz9gAMzYFRaxK2VqJ9YLQU7wxGsKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EzAXJ+TxXeBkUyWUDTLph241TjLT85iu5i9BTjUh1sA=;
+ b=wU/eM5QmGqO/7+POcrH1jNt2sDAWNxwdosiUje4OVWAm5OFXLkfNEqilI30W4K6gDb7J7nnCs3sYzeAyuAS4Ti97kQEBLISmJOh2uDMao8QDnhDvQa6+ne+/KNo10krMkA/bfml0/o1YM81Y9oj4ubpVKTNpoRNkrZubFN6Nuccz96rWyxmW73LSMhjbnhOdpSppSDY/xErN6cdkdhLaO5vnxHKk4JS9516SysdFiZB+Q20NyF/KEyh+XiIJbqvMUOFniXmrkeQmvo5zRskU+Qusx1AvnZuk6Oq2I2Y0rwPkndth8WI0ollhNe1TgudJRqy93btYdbB6g8ICxj9iIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EzAXJ+TxXeBkUyWUDTLph241TjLT85iu5i9BTjUh1sA=;
+ b=YbFY2Z8OWNJhfIcN2nbPlftg4orvX8d2Av9eF/ts1F4PnOMiSSeMjmZti2kEpL+wmvm/010DSdAIHlAlnZhk7ja0URUT4UGSisKDA62N9i0aOjOsvFmKZnO5xuTXx7IaevXfAQaowRnmlLdcViBD1JfMx6ujOkGqwOyI8Ihflx3S1kKoCw9E/K/jyza/xyPCwRdWLOJ1NdrnscVuRlPGWP9J5yPDYl9lNwVNMR1PArEiUfe/jZvvZt/cjWPhXEmeH9uvSfD8mId8qZGNdn5z94muhXVAKn1r7ptPq0NyNTftZDPtU9+Feelk8/a9qTP0GEQCle61TEUVRe7l4fiC9g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
+ by BL1PR12MB5971.namprd12.prod.outlook.com (2603:10b6:208:39a::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
+ 2025 16:54:13 +0000
+Received: from CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
+ ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8606.028; Tue, 8 Apr 2025
+ 16:54:13 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alexandre Ghiti <alex@ghiti.fr>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	asahi@lists.linux.dev,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Janne Grunau <j@jannau.net>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Neal Gompa <neal@gompa.dev>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tomasz Jeznach <tjeznach@rivosinc.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>
+Cc: Alejandro Jimenez <alejandro.j.jimenez@oracle.com>,
+	Bagas Sanjaya <bagasdotme@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Joerg Roedel <jroedel@suse.de>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Pasha Tatashin <pasha.tatashin@soleen.com>,
+	patches@lists.linux.dev,
+	David Rientjes <rientjes@google.com>,
+	Mostafa Saleh <smostafa@google.com>,
+	Matthew Wilcox <willy@infradead.org>
+Subject: [PATCH v4 02/23] iommu/tegra: Do not use struct page as the handle for pts
+Date: Tue,  8 Apr 2025 13:53:50 -0300
+Message-ID: <2-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
+In-Reply-To: <0-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: BN8PR12CA0025.namprd12.prod.outlook.com
+ (2603:10b6:408:60::38) To CH3PR12MB8659.namprd12.prod.outlook.com
+ (2603:10b6:610:17c::13)
 MIME-Version: 1.0
-References: <20250326-onboard_usb_dev-v1-0-a4b0a5d1b32c@thaumatec.com>
- <20250326-onboard_usb_dev-v1-2-a4b0a5d1b32c@thaumatec.com> <20250326-fanatic-onion-5f6bf8ec97e3@spud>
-In-Reply-To: <20250326-fanatic-onion-5f6bf8ec97e3@spud>
-From: =?UTF-8?Q?=C5=81ukasz_Czechowski?= <lukasz.czechowski@thaumatec.com>
-Date: Tue, 8 Apr 2025 18:36:04 +0200
-X-Gm-Features: ATxdqUGKDxJYzUIvQOK05tjpTcLCd2GeOTcg3K4KoR3MFRQVI_hcKPX99fihLeY
-Message-ID: <CABd623tEGh=qtpF0h7PkRBBrR7V9EaxUv9HregqbPcLU_2Exbg@mail.gmail.com>
-Subject: Re: [PATCH 2/5] dt-bindings: usb: cypress,hx3: Add support for all variants
-To: Conor Dooley <conor@kernel.org>
-Cc: Matthias Kaehlcke <mka@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Benjamin Bara <benjamin.bara@skidata.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Klaus Goger <klaus.goger@theobroma-systems.com>, 
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|BL1PR12MB5971:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8c6dcf2c-f5d2-4eab-c165-08dd76bdfd80
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CErKKMWjSfx9caXkn8ZydET5FLGyHib++1p5di2PQl5dY6Pdd6wVFhCLC2ki?=
+ =?us-ascii?Q?KXA0dfzJ302fYi0qu7FNFNtpFmHvQZEYfuR+3q7eFej/4d9zBsUZmG4pR5QA?=
+ =?us-ascii?Q?VMaCA8Q16bzPKXt7otJf6VywwUltemVPK9NugIt3NrUlugW+H3sdkiQ5aR0m?=
+ =?us-ascii?Q?fglg2KyHlh3lAcaXTDWurLOsPznNX20lwAOZJratoKjB0keqcRAVPCXClT5z?=
+ =?us-ascii?Q?igb3qzQluxEt6ztMfLrkIeJzmqXey8zVDmev+A1DlBxbZyA9VqqU8OaFQFMq?=
+ =?us-ascii?Q?IiQiinYBARMHI7PQF5/A9IcTuxKijjC/HuA63K4g1ua9sDZE2jev1wNTh76Z?=
+ =?us-ascii?Q?7bz2bkiaW7UqpYuAOXeFMh45W8ILRucIAGgIM6oqDh7tJ28qSUMYLcM0h7kJ?=
+ =?us-ascii?Q?rXvIBV76UBprmIVat3Z0Pm5fwVlDtgfps53FK3r8X8mqZb1BGvN3Fa2MR2kY?=
+ =?us-ascii?Q?duHRnx0jdXS2CvMxhv8gvAvsyKq2vk0AieMvUg7b64lsJgH6KsgPABtESS9P?=
+ =?us-ascii?Q?aHcEKsxOd17/UAKSLKcIfa3oDcfleUhk6lM5UqCSNJHeWA/DY+AiACdjwc3B?=
+ =?us-ascii?Q?Gol1yEhzG1xH/5sP/dmU2Nb+6Res6whiwV+e2Ip/3bm58hYJPs6NffMRsLBH?=
+ =?us-ascii?Q?eCU+RirFpxWpA7G0CEPiusMm0Ho7J3OMeog2fOveXcJj8NqWRxJHLlDpZYS5?=
+ =?us-ascii?Q?zWi0RtyBoXvDdEbdoxCJOLrNDytdVsXzq7Cyn6sgwvX6/sN75QHGJ3PhWVZ6?=
+ =?us-ascii?Q?3KicUwnbJQSprC/uki6QmUexaxwfRqkOMERHpO6239AdgzSQRS8fm2PJka85?=
+ =?us-ascii?Q?HlcxfGwEE1NTF2+Z3wAnATR24FC47oqA/LqV4ILviRYb/52md76nCkTaOu/M?=
+ =?us-ascii?Q?9mWbcO/o7yIWpy+sTjpeUK6mZdcBbshiLXc7SNvWDjWr5M0nMcIdAYlh6uRu?=
+ =?us-ascii?Q?w41ndiDT+t53pEO0OpzE4Gg1KDkXuNhoO+QgWCbbVZBCriomamZWRpquQW09?=
+ =?us-ascii?Q?mk3axya9OyP6BQfa/+YZT8IV31t48W4D3yajESaAszzhOybHJKj7RAluJl69?=
+ =?us-ascii?Q?pnCuJIg08JwWjqa/ilwOXz/9LyTgD78FJP4FXAHyoovsuasMzaCfX4S2BZ5G?=
+ =?us-ascii?Q?aReqSoQxn3xBWdLv8KM5RyGsjKQzz35ZFPJklY1ftKBRaQJtZgCiiPgM4+y1?=
+ =?us-ascii?Q?MSc/OoUSZU/M1NyzsO5cp+lO0JV2+dGhZ4oEwigBjmGIWeAFKRAoBKFJr4v8?=
+ =?us-ascii?Q?sEbXqvrZx79JdTMyM1qN0AiuTWH5TzUG+BAlKwCWNNPO0MHJfPDO4B645oC3?=
+ =?us-ascii?Q?XBB6czp7gafO4JOSNhA8mNrIfJqlB7aQsZCepKO08TvNuivHYgWneXm6/QJg?=
+ =?us-ascii?Q?nTggr9dmnj3r6LWHTgv7WDlmgxCvgmyYVKI7wWTVoHx5hBJxdawepYC1mBFL?=
+ =?us-ascii?Q?rYEoEe09EMzIJBWqxA3xbgttYRP0nvS+NicjlfLTf6i1t+kBu8+6vA=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7kHGTI004qhHSMuvkJZdAAYUC4MRfJC87JsmV8z+OAPfKSgrjBztqVi3U1D8?=
+ =?us-ascii?Q?AI0NaUgtzygj7kL/9orWrUY382BsdNY2C0Ufvah3tuh8DuiiVKH9cJW5/9HL?=
+ =?us-ascii?Q?0c2/ByM/37Zw713DPmJasyXeRcFzWaxmFFZcxn95+BLGyR+70sBbPmPnQj32?=
+ =?us-ascii?Q?2+ASRLUArvK08h4pr/ao1W9IaZAv+Zl2OvQOK7m6in+WBlG0wntCBgj5bCAG?=
+ =?us-ascii?Q?+Tocg3O+CLUURhPtYU/EA6akm2BaSHSFdJSvBxGaY+63ZlSFGTvRbpOwcPXn?=
+ =?us-ascii?Q?ObmYrSb3TixbB1kkD2+/2VZCAnr3i7wLihCj/0mV7DWC1VTXkikdRDH3Y7L3?=
+ =?us-ascii?Q?KgtivIT+bUT17q8B7nUvuE6oD/RtEg4wqNaSy/+5Oteg9r7L+dj7GlPERX4i?=
+ =?us-ascii?Q?6Ju55EwDDXDSztqDNptz0vCqvnDiDvpwfwzQP3nyiw7lNLlpSlaO2GOhaDXF?=
+ =?us-ascii?Q?OZ7+4FSBq38163vLqtxunlthGToyL3Tmu1c8ySJTawnIK8/yXuZ/dCbR7t+V?=
+ =?us-ascii?Q?7qsJ1ykdl/erEPzqTbBR0ejOTrqCqgoxRMNSwrSA2mKx5MRcQgv191FUHLF5?=
+ =?us-ascii?Q?mcDpjV1L51hG3+Z9rbeRkPOTBpAgL4R/dh+XlvjVR6Nup210kGiGCko922fR?=
+ =?us-ascii?Q?j3Cyt92V9i7ahnGhFI6SwGs8KlmPZjg1dC2KT3GdCJ9xJ6VuL+YZXLXpI4P4?=
+ =?us-ascii?Q?NwQQW8AfHJdzpZfydmeGMSArzMJLvNPFRZVx65CPmJMstu6XH8hwiF/mGChR?=
+ =?us-ascii?Q?QS4dCgsq10rZaF7gIDKVclcdMM3V+sgVWt2XMWUdsyeyCu246yURi47sgv1J?=
+ =?us-ascii?Q?PaKuhRJqVZ5oT2VrEkYEwupEU1CNqYdHfwX/uBtZ6Mo9Xf57cBTOD0bB87JI?=
+ =?us-ascii?Q?YPH+iFYuBp4r4FAszxEOh12DGXbc8hRG13Lq0aIbqx6X86pRlE+jvO4r2w/o?=
+ =?us-ascii?Q?nM8SlF1t1c6h1tWMVon3FcRn89sIFisoOBihL35zBuDBQWbJ4RxiOyWsduan?=
+ =?us-ascii?Q?QCVEiA5Lv4dnFtHNwTbQyvFg5YChevzN1ZFdlH6PB3lbr2bcE32x6hoy/GcI?=
+ =?us-ascii?Q?EjXgOIRRgA+xjXCiDcs3htgiMDhF8GOknP7RKqKA+EdVpNberW2ELJjwhwNF?=
+ =?us-ascii?Q?q2ykQsQTswCZiQ+dvEv6KPOZVrH3nUud6QuqGAAweB2jK6FC8cMnjGUxA7mo?=
+ =?us-ascii?Q?o909LMZ0T4XRgz/c8B0EY+nfGmklPwnPjEfeIUt7PvVqX5QaAhhTlWdVfjjP?=
+ =?us-ascii?Q?y3tisjK0sMOocyahYPvEKFDoXMEHjO4yiiCrEhgFr6krc2siZxyPQ8mGVVA7?=
+ =?us-ascii?Q?L3flaqDNE1I4nB2NCIa0ZOVfacbjB4474pqX20OFrrFsNQvJglhKHP2aEvtG?=
+ =?us-ascii?Q?vramkEXJL1fNJe+ydjMleBskhXwoHKT6GoQQ8YmDHYgJAwpcjOuy91Rx1Y/j?=
+ =?us-ascii?Q?CmUL1xtxFOlzqgVcaEaBludyRlexBMHbIQB816rodGJKC9aN1UCPUCeVi7i8?=
+ =?us-ascii?Q?lPGS8W/PtM0k8QWG2KSMsp5aI/zuL8s58dZHpIR6e7htQ8owXwYJdiGCzbgl?=
+ =?us-ascii?Q?GppEss1CyKsNWE2huLqKQgVt6apgGqNSyzlqYeyF?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8c6dcf2c-f5d2-4eab-c165-08dd76bdfd80
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 16:54:13.3137
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Tgl49oq7UhLcoQO2jlcuIF9nmvrEFZh4H1wjebVPLVizHh+9HWNJCDgQUnUW+6NJ
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5971
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_093619_714099_7B88DC5C 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20250408_095418_917987_87BEF4B7 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,85 +189,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgrFm3IuLCAyNiBtYXIgMjAyNSBvIDE4OjU4IENvbm9yIERvb2xleSA8Y29ub3JAa2Vy
-bmVsLm9yZz4gbmFwaXNhxYIoYSk6Cj4KPiBPbiBXZWQsIE1hciAyNiwgMjAyNSBhdCAwNToyMjo1
-N1BNICswMTAwLCBMdWthc3ogQ3plY2hvd3NraSB3cm90ZToKPiA+IFRoZSBDeXByZXNzIEhYMyBo
-dWJzIHVzZSBkaWZmZXJlbnQgZGVmYXVsdCBQSUQgdmFsdWUgZGVwZW5kaW5nCj4gPiBvbiB0aGUg
-dmFyaWFudC4gVXBkYXRlIGNvbXBhdGlibGVzIGxpc3QuCj4gPgo+ID4gRml4ZXM6IDFlY2E1MWY1
-OGExMCAoImR0LWJpbmRpbmdzOiB1c2I6IEFkZCBiaW5kaW5nIGZvciBDeXByZXNzIEhYMyBVU0Ig
-My4wIGZhbWlseSIpCj4gPiBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZyAjIDYuNgo+ID4gQ2M6
-IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcgIyBCYWNrcG9ydCBvZiB0aGUgcGF0Y2ggaW4gdGhpcyBz
-ZXJpZXMgZml4aW5nIHByb2R1Y3QgSUQgaW4gb25ib2FyZF9kZXZfaWRfdGFibGUgYW5kIG9uYm9h
-cmRfZGV2X21hdGNoIGluIGRyaXZlcnMvdXNiL21pc2Mvb25ib2FyZF91c2JfZGV2LntjLGh9IGRy
-aXZlcgo+ID4gU2lnbmVkLW9mZi1ieTogTHVrYXN6IEN6ZWNob3dza2kgPGx1a2Fzei5jemVjaG93
-c2tpQHRoYXVtYXRlYy5jb20+Cj4gPiAtLS0KPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvdXNiL2N5cHJlc3MsaHgzLnlhbWwgfCA2ICsrKysrKwo+ID4gIDEgZmlsZSBjaGFu
-Z2VkLCA2IGluc2VydGlvbnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9jeXByZXNzLGh4My55YW1sIGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9jeXByZXNzLGh4My55YW1sCj4gPiBpbmRleCAxMDMzYjdh
-NGI4ZjkuLmYwYjkzMDAyYmQwMiAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy91c2IvY3lwcmVzcyxoeDMueWFtbAo+ID4gKysrIGIvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9jeXByZXNzLGh4My55YW1sCj4gPiBAQCAtMTUsOCAr
-MTUsMTQgQEAgYWxsT2Y6Cj4gPiAgcHJvcGVydGllczoKPiA+ICAgIGNvbXBhdGlibGU6Cj4gPiAg
-ICAgIGVudW06Cj4gPiArICAgICAgLSB1c2I0YjQsNjUwMAo+ID4gKyAgICAgIC0gdXNiNGI0LDY1
-MDIKPiA+ICsgICAgICAtIHVzYjRiNCw2NTAzCj4gPiAgICAgICAgLSB1c2I0YjQsNjUwNAo+ID4g
-ICAgICAgIC0gdXNiNGI0LDY1MDYKPiA+ICsgICAgICAtIHVzYjRiNCw2NTA3Cj4gPiArICAgICAg
-LSB1c2I0YjQsNjUwOAo+ID4gKyAgICAgIC0gdXNiNGI0LDY1MGEKPgo+IEFsbCB0aGVzZSBkZXZp
-Y2VzIHNlZW0gdG8gaGF2ZSB0aGUgc2FtZSBtYXRjaCBkYXRhLCB3aHkgaXMgYSBmYWxsYmFjawo+
-IG5vdCBzdWl0YWJsZT8KPgoKVGhhbmsgeW91IGZvciB0aGUgc3VnZ2VzdGlvbi4gSW5kZWVkIHRo
-ZSBmYWxsYmFjayBjb21wYXRpYmxlIGFwcGVhcnMKdG8gd29yayBmaW5lIGluIHRoaXMgY2FzZSwK
-YW5kIEkgYW0gYWJsZSB0byBhdm9pZCBhZGRpdGlvbmFsIGVudHJpZXMgaW4gb25ib2FyZF9kZXZf
-bWF0Y2ggdGFibGUKYXMgYWRkZWQgaW4gdGhlIGZpcnN0IHBhdGNoIGluIHRoaXMgc2VyaWVzLgoK
-SG93ZXZlciwgYWZ0ZXIgSSd2ZSB1cGRhdGVkIHRoZSBjeXByZXNzLGh4My55YW1sIHNjaGVtYSBm
-aWxlIGFuZApyazMzOTktcHVtYS5kdHNpIGZpbGUsCkkgZ2V0IHRoZSBmb2xsb3dpbmcgd2Fybmlu
-Z3MsIHdoZW4gcnVubmluZyAibWFrZSBkdGJzX2NoZWNrIjoKCmxpbnV4L2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEtaGFpa291LmR0YjogaHViQDE6CmNvbXBhdGlibGU6
-IFsndXNiNGI0LDY1MDInLCAndXNiNGI0LDY1MDYnXSBpcyB0b28gbG9uZwrigIPigINmcm9tIHNj
-aGVtYSAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL3VzYi9jeXByZXNzLGh4My55
-YW1sIwpsaW51eC9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLWhhaWtv
-dS5kdGI6IGh1YkAyOgpjb21wYXRpYmxlOiBbJ3VzYjRiNCw2NTAwJywgJ3VzYjRiNCw2NTA0J10g
-aXMgdG9vIGxvbmcK4oCD4oCDZnJvbSBzY2hlbWEgJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcv
-c2NoZW1hcy91c2IvY3lwcmVzcyxoeDMueWFtbCMKCkJlbG93IGlzIHRoZSBkaWZmIG9mIG15IGNo
-YW5nZXM6CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Vz
-Yi9jeXByZXNzLGh4My55YW1sCmIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Vz
-Yi9jeXByZXNzLGh4My55YW1sCmluZGV4IGYwYjkzMDAyYmQwMi4uZDZlYWMxMjEzMjI4IDEwMDY0
-NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL2N5cHJlc3MsaHgz
-LnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9jeXByZXNz
-LGh4My55YW1sCkBAIC0xNCwxNSArMTQsMjIgQEAgYWxsT2Y6CgogcHJvcGVydGllczoKICAgY29t
-cGF0aWJsZToKLSAgICBlbnVtOgotICAgICAgLSB1c2I0YjQsNjUwMAotICAgICAgLSB1c2I0YjQs
-NjUwMgotICAgICAgLSB1c2I0YjQsNjUwMwotICAgICAgLSB1c2I0YjQsNjUwNAotICAgICAgLSB1
-c2I0YjQsNjUwNgotICAgICAgLSB1c2I0YjQsNjUwNwotICAgICAgLSB1c2I0YjQsNjUwOAotICAg
-ICAgLSB1c2I0YjQsNjUwYQorICAgIG9uZU9mOgorICAgICAgLSBlbnVtOgorICAgICAgICAgIC0g
-dXNiNGI0LDY1MDQKKyAgICAgICAgICAtIHVzYjRiNCw2NTA2CisgICAgICAtIGl0ZW1zOgorICAg
-ICAgICAgIC0gZW51bToKKyAgICAgICAgICAgICAgLSB1c2I0YjQsNjUwMAorICAgICAgICAgICAg
-ICAtIHVzYjRiNCw2NTA4CisgICAgICAgICAgLSBjb25zdDogdXNiNGI0LDY1MDQKKyAgICAgIC0g
-aXRlbXM6CisgICAgICAgICAgLSBlbnVtOgorICAgICAgICAgICAgICAtIHVzYjRiNCw2NTAyCisg
-ICAgICAgICAgICAgIC0gdXNiNGI0LDY1MDMKKyAgICAgICAgICAgICAgLSB1c2I0YjQsNjUwNwor
-ICAgICAgICAgICAgICAtIHVzYjRiNCw2NTBhCisgICAgICAgICAgLSBjb25zdDogdXNiNGI0LDY1
-MDYKCiAgIHJlZzogdHJ1ZQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXB1bWEuZHRzaQpiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LXB1bWEuZHRzaQppbmRleCBkMGQ4NjczNzRiM2YuLjdmYWM2MWY5NWZjNiAxMDA2NDQKLS0tIGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVtYS5kdHNpCisrKyBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEuZHRzaQpAQCAtNTk0LDE0ICs1OTQs
-MTQgQEAgJnVzYmRyZF9kd2MzXzEgewogICAgICAgICNzaXplLWNlbGxzID0gPDA+OwoKICAgICAg
-ICBodWJfMl8wOiBodWJAMSB7Ci0gICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInVzYjRiNCw2
-NTAyIjsKKyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAidXNiNGI0LDY1MDIiLCAidXNiNGI0
-LDY1MDYiOwogICAgICAgICAgICAgICAgcmVnID0gPDE+OwogICAgICAgICAgICAgICAgcGVlci1o
-dWIgPSA8Jmh1Yl8zXzA+OwogICAgICAgICAgICAgICAgcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJL
-X1BBMyBHUElPX0FDVElWRV9ISUdIPjsKICAgICAgICB9OwoKICAgICAgICBodWJfM18wOiBodWJA
-MiB7Ci0gICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInVzYjRiNCw2NTAwIjsKKyAgICAgICAg
-ICAgICAgIGNvbXBhdGlibGUgPSAidXNiNGI0LDY1MDAiLCAidXNiNGI0LDY1MDQiOwogICAgICAg
-ICAgICAgICAgcmVnID0gPDI+OwogICAgICAgICAgICAgICAgcGVlci1odWIgPSA8Jmh1Yl8yXzA+
-OwogICAgICAgICAgICAgICAgcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BBMyBHUElPX0FDVElW
-RV9ISUdIPjsKCgpEbyB5b3UgaGF2ZSBhbnkgc3VnZ2VzdGlvbnMgb24gaG93IEkgY2FuIHByb3Bl
-cmx5IHVwZGF0ZSB0aGUgc2NoZW1hCmZpbGVzIHRvIGF2b2lkIHRoZSBhYm92ZSB3YXJuaW5ncz8K
-Cj4gPgo+ID4gICAgcmVnOiB0cnVlCj4gPgo+ID4KPiA+IC0tCj4gPiAyLjQzLjAKPiA+CgpCZXN0
-IHJlZ2FyZHMsCkx1a2FzegoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Instead use the virtual address and dma_map_single() like as->pd
+uses. Introduce a small struct tegra_pt instead of void * to have some
+clarity what is using this API and add compile safety during the
+conversion.
+
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/tegra-smmu.c | 74 ++++++++++++++++++++------------------
+ 1 file changed, 39 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+index d040400ee34ac7..95e97d1e400468 100644
+--- a/drivers/iommu/tegra-smmu.c
++++ b/drivers/iommu/tegra-smmu.c
+@@ -52,6 +52,7 @@ struct tegra_smmu {
+ };
+ 
+ struct tegra_pd;
++struct tegra_pt;
+ 
+ struct tegra_smmu_as {
+ 	struct iommu_domain domain;
+@@ -59,7 +60,7 @@ struct tegra_smmu_as {
+ 	unsigned int use_count;
+ 	spinlock_t lock;
+ 	u32 *count;
+-	struct page **pts;
++	struct tegra_pt **pts;
+ 	struct tegra_pd *pd;
+ 	dma_addr_t pd_dma;
+ 	unsigned id;
+@@ -161,6 +162,10 @@ struct tegra_pd {
+ 	u32 val[SMMU_NUM_PDE];
+ };
+ 
++struct tegra_pt {
++	u32 val[SMMU_NUM_PTE];
++};
++
+ static unsigned int iova_pd_index(unsigned long iova)
+ {
+ 	return (iova >> SMMU_PDE_SHIFT) & (SMMU_NUM_PDE - 1);
+@@ -570,11 +575,9 @@ static void tegra_smmu_set_pde(struct tegra_smmu_as *as, unsigned long iova,
+ 	smmu_flush(smmu);
+ }
+ 
+-static u32 *tegra_smmu_pte_offset(struct page *pt_page, unsigned long iova)
++static u32 *tegra_smmu_pte_offset(struct tegra_pt *pt, unsigned long iova)
+ {
+-	u32 *pt = page_address(pt_page);
+-
+-	return pt + iova_pt_index(iova);
++	return &pt->val[iova_pt_index(iova)];
+ }
+ 
+ static u32 *tegra_smmu_pte_lookup(struct tegra_smmu_as *as, unsigned long iova,
+@@ -582,19 +585,19 @@ static u32 *tegra_smmu_pte_lookup(struct tegra_smmu_as *as, unsigned long iova,
+ {
+ 	unsigned int pd_index = iova_pd_index(iova);
+ 	struct tegra_smmu *smmu = as->smmu;
+-	struct page *pt_page;
++	struct tegra_pt *pt;
+ 
+-	pt_page = as->pts[pd_index];
+-	if (!pt_page)
++	pt = as->pts[pd_index];
++	if (!pt)
+ 		return NULL;
+ 
+ 	*dmap = smmu_pde_to_dma(smmu, as->pd->val[pd_index]);
+ 
+-	return tegra_smmu_pte_offset(pt_page, iova);
++	return tegra_smmu_pte_offset(pt, iova);
+ }
+ 
+ static u32 *as_get_pte(struct tegra_smmu_as *as, dma_addr_t iova,
+-		       dma_addr_t *dmap, struct page *page)
++		       dma_addr_t *dmap, struct tegra_pt *pt)
+ {
+ 	unsigned int pde = iova_pd_index(iova);
+ 	struct tegra_smmu *smmu = as->smmu;
+@@ -602,21 +605,21 @@ static u32 *as_get_pte(struct tegra_smmu_as *as, dma_addr_t iova,
+ 	if (!as->pts[pde]) {
+ 		dma_addr_t dma;
+ 
+-		dma = dma_map_page(smmu->dev, page, 0, SMMU_SIZE_PT,
+-				   DMA_TO_DEVICE);
++		dma = dma_map_single(smmu->dev, pt, SMMU_SIZE_PT,
++				     DMA_TO_DEVICE);
+ 		if (dma_mapping_error(smmu->dev, dma)) {
+-			__iommu_free_pages(page, 0);
++			iommu_free_page(pt);
+ 			return NULL;
+ 		}
+ 
+ 		if (!smmu_dma_addr_valid(smmu, dma)) {
+-			dma_unmap_page(smmu->dev, dma, SMMU_SIZE_PT,
+-				       DMA_TO_DEVICE);
+-			__iommu_free_pages(page, 0);
++			dma_unmap_single(smmu->dev, dma, SMMU_SIZE_PT,
++					 DMA_TO_DEVICE);
++			iommu_free_page(pt);
+ 			return NULL;
+ 		}
+ 
+-		as->pts[pde] = page;
++		as->pts[pde] = pt;
+ 
+ 		tegra_smmu_set_pde(as, iova, SMMU_MK_PDE(dma, SMMU_PDE_ATTR |
+ 							      SMMU_PDE_NEXT));
+@@ -639,7 +642,7 @@ static void tegra_smmu_pte_get_use(struct tegra_smmu_as *as, unsigned long iova)
+ static void tegra_smmu_pte_put_use(struct tegra_smmu_as *as, unsigned long iova)
+ {
+ 	unsigned int pde = iova_pd_index(iova);
+-	struct page *page = as->pts[pde];
++	struct tegra_pt *pt = as->pts[pde];
+ 
+ 	/*
+ 	 * When no entries in this page table are used anymore, return the
+@@ -651,8 +654,9 @@ static void tegra_smmu_pte_put_use(struct tegra_smmu_as *as, unsigned long iova)
+ 
+ 		tegra_smmu_set_pde(as, iova, 0);
+ 
+-		dma_unmap_page(smmu->dev, pte_dma, SMMU_SIZE_PT, DMA_TO_DEVICE);
+-		__iommu_free_pages(page, 0);
++		dma_unmap_single(smmu->dev, pte_dma, SMMU_SIZE_PT,
++				 DMA_TO_DEVICE);
++		iommu_free_page(pt);
+ 		as->pts[pde] = NULL;
+ 	}
+ }
+@@ -672,16 +676,16 @@ static void tegra_smmu_set_pte(struct tegra_smmu_as *as, unsigned long iova,
+ 	smmu_flush(smmu);
+ }
+ 
+-static struct page *as_get_pde_page(struct tegra_smmu_as *as,
+-				    unsigned long iova, gfp_t gfp,
+-				    unsigned long *flags)
++static struct tegra_pt *as_get_pde_page(struct tegra_smmu_as *as,
++					unsigned long iova, gfp_t gfp,
++					unsigned long *flags)
+ {
+ 	unsigned int pde = iova_pd_index(iova);
+-	struct page *page = as->pts[pde];
++	struct tegra_pt *pt = as->pts[pde];
+ 
+ 	/* at first check whether allocation needs to be done at all */
+-	if (page)
+-		return page;
++	if (pt)
++		return pt;
+ 
+ 	/*
+ 	 * In order to prevent exhaustion of the atomic memory pool, we
+@@ -691,7 +695,7 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
+ 	if (gfpflags_allow_blocking(gfp))
+ 		spin_unlock_irqrestore(&as->lock, *flags);
+ 
+-	page = __iommu_alloc_pages(gfp | __GFP_DMA, 0);
++	pt = iommu_alloc_page(gfp | __GFP_DMA);
+ 
+ 	if (gfpflags_allow_blocking(gfp))
+ 		spin_lock_irqsave(&as->lock, *flags);
+@@ -702,13 +706,13 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
+ 	 * if allocation succeeded and the allocation failure isn't fatal.
+ 	 */
+ 	if (as->pts[pde]) {
+-		if (page)
+-			__iommu_free_pages(page, 0);
++		if (pt)
++			iommu_free_page(pt);
+ 
+-		page = as->pts[pde];
++		pt = as->pts[pde];
+ 	}
+ 
+-	return page;
++	return pt;
+ }
+ 
+ static int
+@@ -718,15 +722,15 @@ __tegra_smmu_map(struct iommu_domain *domain, unsigned long iova,
+ {
+ 	struct tegra_smmu_as *as = to_smmu_as(domain);
+ 	dma_addr_t pte_dma;
+-	struct page *page;
++	struct tegra_pt *pt;
+ 	u32 pte_attrs;
+ 	u32 *pte;
+ 
+-	page = as_get_pde_page(as, iova, gfp, flags);
+-	if (!page)
++	pt = as_get_pde_page(as, iova, gfp, flags);
++	if (!pt)
+ 		return -ENOMEM;
+ 
+-	pte = as_get_pte(as, iova, &pte_dma, page);
++	pte = as_get_pte(as, iova, &pte_dma, pt);
+ 	if (!pte)
+ 		return -ENOMEM;
+ 
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
