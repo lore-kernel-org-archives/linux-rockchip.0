@@ -4,107 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73DF6C369A5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 13:15:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF149C3600C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Apr 2025 13:15:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vBIyUZuYz9lW2y/ok/edqBf1cSTHiqTYXMdX1RGPEyY=; b=NjooktsIxSCo/T
-	7ozI+h0fozy+JHPhOtxv6cOWBzsnNOss4nlXIntgqx0C9yGQdRbZmgF0HZIlBNWfxGSrBhh+RU00t
-	ft1XsW8yIBdmPGrydSg+AQiUQnvb9CigSG7dX1cEfHh/0kBqAx4gCI/sjS3w9Uk63+AQs0PbjLQC4
-	Ov1TDvt/TulGR9JOvbJPJmL4g+vnMqKo3+F0gJ8XCdWwODNcZd4D8aCdK7Srz6Wcnsi/vnGCYdIfF
-	Y4LDMPBYNBU/ByjNBkJ5FBVsnEbqhaS0nMj5vmjHu0sDq5z1yhtd+M1cdemTXq33cZhL4l62ohJTs
-	3V90e4DB15gyfAGisRnQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1j1N/7AO5lbtcaedagW745o1KqJLBQyp0HwCx9I0EaA=; b=TD02ZubcL+XLeW
+	HE5/n2scinZ3ZLhkAOAu1FTzWmDGqdI9d6Ntsrdf/4dzyEX4BHVRS/0YbQKdCMD+EV94aCRsAfgt7
+	9PRI8CgM+GSmKnB9te2MZsi0bW1mHYYyDVyTtjRFhBCqQbwaS+lonfuV5DbLiWpb+t+joR0B4WOX3
+	EQ0xX/8+LYrGaF3FQyZAZxuxxwijmch0oeYjymdFNhLLu9NV4hDS3I6sgu8o37/4XOaBMwmylvLvo
+	eUJ1k84C27x9NFZMJagB5R+RJoMU5QEKKIozXT/LMtKgwy9QBwO3R8h6SeIDUe9RYT5x4oyO4Zseb
+	jYSHMF5JxV32GpePGVlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u28nU-000000048tl-2d8v;
-	Tue, 08 Apr 2025 13:15:24 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1u28no-000000049NK-3vDd;
+	Tue, 08 Apr 2025 13:15:44 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u27tg-00000003xmI-49yz
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Apr 2025 12:17:46 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-6feab7c5f96so52625307b3.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 08 Apr 2025 05:17:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744114663; x=1744719463; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
-        b=aL3WhV6qI4pDtIFufwSuHLMYAwqdBBammaQbOZXuC1bVcmSE7b4+7GK7Saa3IcmRrl
-         BCTnPcpbOOo6i18MeJci06xc5JzOxGq/8AVBGv6zOqZBmwC4De6Tp0N5wNgpnTA5uqRt
-         eygzOT/YVX0wJy+xR9bH+YEUr2jSbn82uqSR/fZ7ZO5+bWA1YO9vyly2gB4n9hneTMNf
-         Ynczyrs97ixYvFlsxuXj0XbTTCLjtqzflJgcAcj6D+rdSfHSsUKyNKKcxNFDLFU/0UZS
-         5PWCwQZALVZgP8Kp9Kh/liHa8rNj2QndhP0JeESv6m60hCE173Gzl53eYHnvK7zvM8DB
-         3k1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744114663; x=1744719463;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
-        b=RO+MW1ArpPug+JPPviSQSwKX4bVeXLsznUShqzqkA8Xv9MVAHFy0/vS9KELsUAXt0X
-         HySKxLfSrdP1C5XxTocRVz8FY3LKZezoMry4e0fbYoQh5R9CJnsXU2nmAselpzqwSQz9
-         QMIZv1wUz7tElGY+OoqyAdgRinwEech0eiDO+cJBWAdeu/SlBdc/kxTUQg9iWO20rUWr
-         TWIiQsXslNP0u5oIYLDyzIqiaQQU7oLHO3GLedIo04f3jKccrp4MVi/Ne8UdKamzRo/z
-         PVJsWQSx82uDA/bAEGaQVtI28Tasv8I+dnY490lzusAb2LuoDkE/ynWNfKs3yJw2j0Wr
-         OsCA==
-X-Forwarded-Encrypted: i=1; AJvYcCVX+nKQ8L19aJHQtsAvXqTW98fsfXy7/pUUV8hyk0S2Ru7DIouJ9i/RPKmR+DdU+e4w2EzHoDiVfiU3aRnkfw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWFAN/JrHt0vE4AISM74OmaxInk7BE0LqCxSYbFYuq+KmcJCyO
-	njl/I8OKjdszpVJbriNKlt1QH9kRyyvJU0Z7XNOSfr4Rg/pbDHf3OxHy0MXKDcw+G3PjGuvLg2e
-	CwrihNRKJSNrMrvK20TkCTj/ymIDUoft7LUa0CQ==
-X-Gm-Gg: ASbGncuBV5vaF96IeRpbrDj90s8MSHhEGlvJkuryuCeMwmvBUEb/O1PIdFZ6Lb12nSs
-	xobwJPwpMxtMzy6QmsE+NUJSEkb9O1s7IFGXr+gpv5uG3gj3ODj8DDTKz7YzzGc6G7/gFjXiF0e
-	1a25kUzCeqY+CGJAKbnk4XQo/DtWc=
-X-Google-Smtp-Source: AGHT+IE9ys53OzSUdrwDVzPrCpJ3j0rVw9UiRXdXpPHOiJneCGTZtJTMxzg8Xq2rdR9GYtx0ZTNP05CFJHjGpzcayc8=
-X-Received: by 2002:a05:690c:67c4:b0:6ff:28b2:50e1 with SMTP id
- 00721157ae682-703e14ffd3dmr297170407b3.2.1744114663553; Tue, 08 Apr 2025
- 05:17:43 -0700 (PDT)
+	id 1u289G-00000003zrL-1t3b;
+	Tue, 08 Apr 2025 12:33:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1744115617; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ZYdZHsQWauVJFkK7qg6+RgBlLgyiABGPxVdHm555/dNCpsiQuHDmtJS0PGlBfLMVG+Z1toIMKsLzcFE0QVKSLOIYxN8MHEPen9GG0Wojzdv9zphwkNLliR9xBIDpZ3CU2EbnsBSYTKHeY08Fvj5O8LuFAT9KHIxnUf2ACNlOrVI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1744115617; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=GyJGnAiLJATURszHLyZHKp4AdvagGFsBzE31iQawxg8=; 
+	b=BrCl2g2+yDARhyVbUAkXOeI01yjdLv6BCvyjgfIfqbhsS75bWwWcpQPxaT6aUYZxQUssYUxlKqkmeEDtDSmAuchh45jKNOWJNmZa8KU7+6fv5h7sADigfkthL57ulQtaGUvV/dpEWli/efk9cp5jKeOjaCDrYcMZ+srpQo73pNY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744115617;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=GyJGnAiLJATURszHLyZHKp4AdvagGFsBzE31iQawxg8=;
+	b=WTSx/mxDxaSj28VfD1S4FZM5AAxWO0sKE81fXFn1RNC6YLlZaLLFPXVtbdesZtRP
+	NAveoxtpcFCGgRZTx9y8oqhIIUYFNJqxhVr9YmMpvsZ33voaskcUlGD8voaOPT5NJc3
+	EQwQcevK4jKtqSYd1prTmBkRkntDScUWemxipBfY=
+Received: by mx.zohomail.com with SMTPS id 17441156160471018.3332658311127;
+	Tue, 8 Apr 2025 05:33:36 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/7] Add Rockchip RK3576 PWM Support Through MFPWM
+Date: Tue, 08 Apr 2025 14:32:12 +0200
+Message-Id: <20250408-rk3576-pwm-v1-0-a49286c2ca8e@collabora.com>
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org> <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
- <CAL_JsqKygxhcQ=PZW84sfiW7BVXKF839vfNyxS9GwAXuqmN=8g@mail.gmail.com>
- <CAPDyKFoHQdHED0hHUR7VKin0XG6SVnYXuvPjB=Xe+1o2hpiPJA@mail.gmail.com> <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-In-Reply-To: <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 8 Apr 2025 14:17:07 +0200
-X-Gm-Features: ATxdqUE7frfhfuxoKUlf3DinAq4W783EiniruawsYcgTKF9-ms73Ag05S_dZWTY
-Message-ID: <CAPDyKFoKdj-Y4-dCwYRG7TLdS1HcSH=i9EN-b9Cpyo50kMmC5Q@mail.gmail.com>
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
-To: Rob Herring <robh@kernel.org>
-Cc: Stephan Gerhold <stephan.gerhold@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+X-B4-Tracking: v=1; b=H4sIAEwX9WcC/yXMQQrCMBCF4auEWTuS1CaBXkW6SJNRB0lbJ7UKp
+ Xc32OX34P0bFBKmAp3aQGjlwtNYYU4K4iOMd0JO1dDoxupWe5TnxXqH8ydj67wzQ9KJQoB6mIV
+ u/P3Hrv1hode7NpdjhCEUwjjlzEunVnc2FiUa6Pf9BzpTEBeJAAAA
+X-Change-ID: 20250407-rk3576-pwm-46761bd0deaa
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
+ William Breathitt Gray <wbg@kernel.org>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Kever Yang <kever.yang@rock-chips.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_051745_042051_8B42FBAA 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20250408_053350_562184_327B5D1A 
+X-CRM114-Status: GOOD (  34.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,64 +77,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-KyBTdGVwaGFuIEdlcmhvbGQKCk9uIE1vbiwgNyBBcHIgMjAyNSBhdCAxODo1MCwgUm9iIEhlcnJp
-bmcgPHJvYmhAa2VybmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBNb24sIEFwciA3LCAyMDI1IGF0IDEx
-OjIz4oCvQU0gVWxmIEhhbnNzb24gPHVsZi5oYW5zc29uQGxpbmFyby5vcmc+IHdyb3RlOgo+ID4K
-PiA+IE9uIEZyaSwgNCBBcHIgMjAyNSBhdCAxNTowOSwgUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVs
-Lm9yZz4gd3JvdGU6Cj4gPiA+Cj4gPiA+IE9uIEZyaSwgQXByIDQsIDIwMjUgYXQgNTozN+KAr0FN
-IFVsZiBIYW5zc29uIDx1bGYuaGFuc3NvbkBsaW5hcm8ub3JnPiB3cm90ZToKPiA+ID4gPgo+ID4g
-PiA+IE9uIEZyaSwgNCBBcHIgMjAyNSBhdCAwNTowNiwgUm9iIEhlcnJpbmcgKEFybSkgPHJvYmhA
-a2VybmVsLm9yZz4gd3JvdGU6Cj4gPiA+ID4gPgo+ID4gPiA+ID4gVGhlICJwb3dlci1kb21haW5z
-IiBhbmQgInBvd2VyLWRvbWFpbnMtbmFtZXMiIHByb3BlcnRpZXMgYXJlIG1pc3NpbmcgYW55Cj4g
-PiA+ID4gPiBjb25zdHJhaW50cy4gQWRkIHRoZSBjb25zdHJhaW50cyBhbmQgZHJvcCB0aGUgZ2Vu
-ZXJpYyBkZXNjcmlwdGlvbnMuCj4gPiA+ID4gPgo+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogUm9i
-IEhlcnJpbmcgKEFybSkgPHJvYmhAa2VybmVsLm9yZz4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4g
-IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vY3B1cy55YW1sIHwgOCArKy0t
-LS0tLQo+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDYgZGVsZXRp
-b25zKC0pCj4gPiA+ID4gPgo+ID4gPiA+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9hcm0vY3B1cy55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2FybS9jcHVzLnlhbWwKPiA+ID4gPiA+IGluZGV4IDZmNzRlYmZkMzhkZi4uNWJk
-NTgyMmRiOGFmIDEwMDY0NAo+ID4gPiA+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2FybS9jcHVzLnlhbWwKPiA+ID4gPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9hcm0vY3B1cy55YW1sCj4gPiA+ID4gPiBAQCAtMzEzLDE5ICszMTMs
-MTUgQEAgcHJvcGVydGllczoKPiA+ID4gPiA+ICAgICAgbWF4SXRlbXM6IDEKPiA+ID4gPiA+Cj4g
-PiA+ID4gPiAgICBwb3dlci1kb21haW5zOgo+ID4gPiA+ID4gLSAgICBkZXNjcmlwdGlvbjoKPiA+
-ID4gPiA+IC0gICAgICBMaXN0IG9mIHBoYW5kbGVzIGFuZCBQTSBkb21haW4gc3BlY2lmaWVycywg
-YXMgZGVmaW5lZCBieSBiaW5kaW5ncyBvZiB0aGUKPiA+ID4gPiA+IC0gICAgICBQTSBkb21haW4g
-cHJvdmlkZXIgKHNlZSBhbHNvIC4uL3Bvd2VyX2RvbWFpbi50eHQpLgo+ID4gPiA+ID4gKyAgICBt
-YXhJdGVtczogMQo+ID4gPiA+Cj4gPiA+ID4gVGhlcmUgYXJlIG1vcmUgdGhhbiBvbmUgaW4gc29t
-ZSBjYXNlcy4gVGhlIG1vc3QgaXMgcHJvYmFibHkgdGhyZWUsIEkgdGhpbmsuCj4gPiA+Cj4gPiA+
-IFVubGVzcyBJIG1pc3NlZCBpdCwgdGVzdGluZyBzYXlzIG90aGVyd2lzZS4gV2hhdCB3b3VsZCB0
-aGUgbmFtZXMgYmUgaWYKPiA+ID4gbW9yZSB0aGFuIDEgZW50cnk/Cj4gPgo+ID4gInBzY2kiLCAi
-cGVyZiIsICJjcHIiLCBldGMKPiA+Cj4gPiBUaGUgInBzY2kiIGlzIGFsd2F5cyBmb3IgQ1BVIHBv
-d2VyIG1hbmFnZW1lbnQsIHRoZSBvdGhlciBpcyBmb3IgQ1BVCj4gPiBwZXJmb3JtYW5jZSBzY2Fs
-aW5nICh3aGljaCBtYXkgYmUgbW9yZSB0aGFuIG9uZSBwb3dlci1kb21haW4gaW4gc29tZQo+ID4g
-Y2FzZXMpLgo+ID4KPiA+IEkgd291bGQgc3VnZ2VzdCBjaGFuZ2luZyB0aGlzIHRvICJtYXhJdGVt
-czogMyIuIFRoYXQgc2hvdWxkIGJlCj4gPiBzdWZmaWNpZW50IEkgdGhpbmsuCj4KPiBBZ2Fpbiwg
-bXkgdGVzdGluZyBzYXlzIDEgaXMgZW5vdWdoLiBTbyB3aGVyZSBpcyBhIC5kdHMgZmlsZSB3aXRo
-IDMgb3IgMj8KClJpZ2h0ISBJIGFzc3VtZSB0aG9zZSB3aXRoIDMgb3IgMiBqdXN0IGhhdmVuJ3Qg
-bWFkZSBpdCB1cHN0cmVhbSB5ZXQsCmJ1dCBzdXJlIHRoZXkgYXJlIGNhc2VzLiBJZiB5b3UgcHJl
-ZmVyIHRvIHVwZGF0ZSB0aGUgYmluZGluZyBsYXRlciwKdGhhdCdzIGZpbmUgYnkgbWUsIGJ1dCBJ
-IGp1c3Qgd2FudGVkIHRvIGF2b2lkIHVubmVjZXNzYXJ5IGNodXJucyBmb3IKeW91LgoKRm9yIGV4
-YW1wbGUsIG1zbTg5MTYgc2VlbXMgdG8gYmUgb25lIGNhc2UgdGhhdCBhbHJlYWR5IHVzZXMgInBz
-Y2kiLApidXQgcmVxdWlyZXMgYW4gYWRkaXRpb25hbCB0d28gcG93ZXItZG9tYWlucyBmb3IgcGVy
-Zm9ybWFuY2Utc2NhbGluZy4KQXQgbGVhc3QgYWNjb3JkaW5nIHRvIGVhcmxpZXIgZGlzY3Vzc2lv
-bnMgWzFdIHdpdGggU3RlcGhhbiBHZXJob2xkLgoKTW9yZW92ZXIsIGl0J3MgcGVyZmVjdGx5IGZp
-bmUgdG8gYWxzbyBkZXNjcmliZSBDUFUncyBpZGxlLXN0YXRlcyBieQp1c2luZyB0aGUgcG93ZXIt
-ZG9tYWlucy9kb21haW4taWRsZS1zdGF0ZXMgRFQgYmluZGluZ3MsIGFjY29yZGluZyB0bwp0aGUg
-YmluZGluZ3MgZm9yIFBTQ0kgWzJdIChubyBtYXR0ZXIgb2YgUFNDSSBPU0kvUEMgbW9kZSkuIElu
-IG90aGVyCndvcmRzLCBmb3IgYWxsIHRob3NlIHRoYXQgb25seSBoYXZlIGEgInBlcmYiIG9yICJj
-cHIiIHBvd2VyLWRvbWFpbgp0b2RheSAob3Igd2hhdGV2ZXIgbmFtZSBpcyB1c2VkIGZvciB0aGUg
-cGVyZm9ybWFuY2Utc2NhbGluZyBkb21haW4pLAp0aG9zZSBjb3VsZCBlYXNpbHkgYWRkIGEgInBz
-Y2kiIHBvd2VyLWRvbWFpbiB0b28sIGRlcGVuZGluZyBvbiBob3cKdGhleSBjaG9vc2UgdG8gZGVz
-Y3JpYmUgdGhpbmdzIGluIERULgoKS2luZCByZWdhcmRzClVmZmUKClsxXQpodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9hbGwvWlJjQzJJUlJ2NmR0S1k2NUBnZXJob2xkLm5ldC8KWzJdCkRvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcHNjaS55YW1sCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series introduces support for some of the functions of the new PWM
+silicon found on Rockchip's RK3576 SoC. Due to the wide range of
+functionalities offered by it, including many parts which this series'
+first iteration does not attempt to implement for now, it uses multiple
+drivers hanging on a platform bus on which the parent "mfpwm" driver
+registers them.
+
+Here's some of the features of the hardware:
+- Continuous PWM output (implemented in this series)
+- One-shot/Finite repetition PWM output
+- PWM capture by counting high/low cycles (implemented in this series)
+- Sending IR transmissions in several TV remote protocols
+- Generating an interrupt based on the input being one of 16
+  user-specified values ("Power key capture")
+- Biphasic counter support
+- Using the hardware to measure a clock signal's frequency
+- Using the hardware to count a clock signal's pulses
+- Generating PWM output waveforms through a user-specified lookup table
+
+As you can tell, there's a lot. I've focused on continuous PWM output
+for now as the most important one for things like controlling fans. The
+PWM capture driver is an added bonus, because I needed at least two
+drivers to test things. Anyone doing consumer electronic devices like
+tablets based on the RK3576 may need to do the power key stuff at some
+stage, but I'm still not entirely clear on what that'd look like in a
+schematic. The IR transmission stuff may be a funny weekend project for
+someone at some point; I assume it's there so TV boxes can turn on and
+off TVs without needing the HDMI control stuff.
+
+At first, I considered simply integrating support for this new IP into
+the old pwm-rockchip driver, as the downstream vendor kernel did.
+However, the IP is significantly different from previous iterations.
+Especially if the goal is to support some of the additional
+functionality that the new silicon brings, doing it all in a single pwm
+driver would be untenable. Especially one that already supports other
+hardware with a way different set of registers.
+
+Hence, the mfpwm pattern: each device functionality is its own driver,
+and they all get registered as platform drivers by the parent mfpwm
+driver, which is the one that binds to the DT compatible. Each device
+function driver then has to _acquire and _release the hardware when it
+needs control of it. If some other device function is using the device
+already, -EBUSY is returned, which the device function driver can then
+forward to the user and everyone is happy.
+
+The PWM output driver, pwm-rockchip-v4, uses the new waveform APIs. I
+thought while writing a new driver that I might as well use the new
+APIs.
+
+The PWM capture driver, implemented as a counter driver, is somewhat
+primitive, in that it doesn't make use of things like the biphasic
+counter support or clock measuring, but it serves as a good way to
+showcase and test the mutual exclusion that the mfpwm framework tries to
+achieve. It also goes one step beyond just exposing the raw LPC/HPC
+counts and actually makes them usable in a non-theoretically-racey way
+by turning them into nanosecond period/duty cycle values based on the
+clock's rate. Shoutouts to the counter subsystem's documentation by the
+way, it is some of the best subsystem documentation I've come across so
+far, and was a great help.
+
+Some instances of the PWM silicon allow switching between a fixed
+crystal oscillator as the PWM clock, and the default PLL clock, which is
+just a mux between that very same crystal oscillator and two other fixed
+oscillators on RK3576. The downstream vendor driver does not implement
+this feature, but I did because it seemed funny, so now there's a sysfs
+interface to switch between them and it makes sure you don't
+accidentally ruin any PWM user's day while switching. The potential
+benefit is that this switching is per-PWM-channel, but aside from that
+it doesn't seem super useful and should've probably just been some
+per-channel clock muxes in the hardware's CRU instead.
+
+Along the way, I also finally took the time to give us The One True
+HIWORD_UPDATE macro, which aims to replace all other copies of the
+HIWORD_UPDATE macro, except it's not called HIWORD_UPDATE because all of
+them have slightly different semantics and I don't want to introduce
+even more confusion. It does, however, do some compile-time checking of
+the function-like macro parameters.
+
+This series went through two substantial rewrites, because after I
+realised it needed to be multiple drivers (first rewrite) I then first
+wrote it as a couple of auxiliary bus drivers, until I became unsure
+about whether this should be auxiliary bus drivers at all, so it became
+a bunch of platform bus drivers instead. If anything looks like a weird
+vestigial leftover in the code, then that's probably why, but I made
+sure to get rid of all the ones I could find before submitting this.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Nicolas Frattaroli (7):
+      dt-bindings: pinctrl: rockchip: increase max amount of device functions
+      dt-bindings: pwm: Add a new binding for rockchip,rk3576-pwm
+      soc: rockchip: add utils header for things shared across drivers
+      soc: rockchip: add mfpwm driver
+      pwm: Add rockchip PWMv4 driver
+      counter: Add rockchip-pwm-capture driver
+      arm64: dts: rockchip: add PWM nodes to RK3576 SoC dtsi
+
+ .../bindings/pinctrl/rockchip,pinctrl.yaml         |   2 +-
+ .../bindings/pwm/rockchip,rk3576-pwm.yaml          |  94 ++++
+ MAINTAINERS                                        |  11 +
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 192 +++++++
+ drivers/counter/Kconfig                            |  13 +
+ drivers/counter/Makefile                           |   1 +
+ drivers/counter/rockchip-pwm-capture.c             | 341 ++++++++++++
+ drivers/pwm/Kconfig                                |  13 +
+ drivers/pwm/Makefile                               |   1 +
+ drivers/pwm/pwm-rockchip-v4.c                      | 336 ++++++++++++
+ drivers/soc/rockchip/Kconfig                       |  13 +
+ drivers/soc/rockchip/Makefile                      |   1 +
+ drivers/soc/rockchip/mfpwm.c                       | 608 +++++++++++++++++++++
+ include/soc/rockchip/mfpwm.h                       | 505 +++++++++++++++++
+ include/soc/rockchip/utils.h                       |  76 +++
+ 15 files changed, 2206 insertions(+), 1 deletion(-)
+---
+base-commit: 64e9fdfc89a76fed38d8ddeed72d42ec71957ed9
+change-id: 20250407-rk3576-pwm-46761bd0deaa
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
