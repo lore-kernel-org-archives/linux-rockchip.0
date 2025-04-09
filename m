@@ -4,150 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B29C369A1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Apr 2025 18:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE77C36002
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Apr 2025 19:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gkt/nhyiOwrHGHnNukBBUeZynCnr/dTCIiEeKQe1qbE=; b=fpyKRXr/JAO5Hd
-	7rlCbY1eGRZFl/qsuk41ecl+5HQMby0/THN7R6L3SOB8L0GxJGce/ee/9fteA24dN8eroLdvDTYle
-	PbWk12EHDoVWqqwg4sqQBRft27h/MlKHzVgnJW8eMvMq4BtHq4sV8eDjeU0Po8z6HpIWtxTOVtZpU
-	BUSvbEd8UukdLpCOoko5TAKQnZfi7zupkFKxsuG6LFjYjLmNZb/rxeF/u/qcA7lwvO6gVtATsfczf
-	9HZaQ5COdf+FAQXoiNzh45thTDW+s0HDhrvbNml0MKnmakW3SVhBhJiLjOLXgy+1KbqVjtmozuA6x
-	GZMlSEXs6eIUwdPqUhcg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OREkhdk4nxg3Ic8MG8BVFi4QA5KnFewretaq6+3JGxs=; b=Kv/WhoZft2a8uz
+	UvFfubH3aRlGGBHI94DUjQHl5Np4iUO56oeD0e0ERrYMfdadpw+Oh3fbxoSL7F2jk2FxDz1nQ6lwA
+	++R7ePoUySDq6l4ab634+h7eqGNKxHm6hohwY/5hoipqwM4FhY+QFNmq9JWpFvTDvn7qMjnuraXqZ
+	k4alMHRYGuYlbah8migvufpwXA+1fWHKoZGexehRO+0IGLaTRSFUKmMdgW72c2qimbuN8nqXGuBkJ
+	3Ytgi78wNjTlDEQcAEHLZ64XAngCgYoIrX91SqaXItyGER+o+viJKxK5lsuZ0wNUJ/vpktv0fgLPG
+	TCeYpOUCTKl8xJI/5qOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2aGz-00000008Bx7-1NJW;
-	Wed, 09 Apr 2025 18:35:41 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1u2b9h-00000008KM6-2av3;
+	Wed, 09 Apr 2025 19:32:13 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2aGv-00000008Bud-2ai9
-	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Apr 2025 18:35:39 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 539HGnoo029082
-	for <linux-rockchip@lists.infradead.org>; Wed, 9 Apr 2025 18:35:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	h3tN8Xg2pRwFhKBUhJyoFYaiPiYIFv7y7hpbU+APvsA=; b=BEcxr57EUiJY5Zym
-	kVNSxVwdl1/G+WnKZuK+rrrBokydGO/Oh3UpLZWk4kL3VGv2SmZR3i/K6wuf2YOI
-	MpodShpD7Ukn+eqF+kTxaEAW5tLuv0RTNDEG9lR31fCxF4wwsbIh54Tb+rDBzvkY
-	R02dOpwLQyR09UacSpshxRb/Aa1t9Sa0cqYNVnm+UUMJN9lkCsaHQecEQDnqKyfr
-	M9Tj2Ei9EZY3qDpuDSHjXEdH5VGK/kupDdwYPBVBtsL4/Cr+/793ixrAqiOXu9ea
-	C2RawlFXomCZxJWIpKE0WahyzSIVh5Ehs76kZRSWUp/xi6CvdT3uLQ6bdG2ibQCP
-	I2IDfQ==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45twpmcbpx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 09 Apr 2025 18:35:35 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7c552802e9fso491485a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 09 Apr 2025 11:35:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744223734; x=1744828534;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h3tN8Xg2pRwFhKBUhJyoFYaiPiYIFv7y7hpbU+APvsA=;
-        b=NBR5M+Uj98zgqFN8yv/6gnjTUegI5+rJ8HFuxHS7b7JBFyoI6AHEtXHJ8NK/N7gWO5
-         +q0rZZPQmAFHKi8WRGyVPQ4oPkAWPNfCfiFFOfXJEL+icNSXpPferA72pwHukdzUDGuf
-         rRGfrKyH4axVDWWf587Ej5OQmCZzuFT0Zzr1MoqqXifyIokyk63mGu0tj/knJ5oj6QG4
-         bcdsyZCiFhHwTxewm0yvVZ71ANCH709vkFg0kG03ligeq63JYBKZiWGxtN3joKP+nRvF
-         lcFuo/ZvBfcxQ+WpV7pepkNBxLw9zuTUkX08hiH4LZX0pNcpYo8SmweIXp9tLQROFYnB
-         a/jA==
-X-Forwarded-Encrypted: i=1; AJvYcCXpmaCM1cdWuPjX1UpaqZ8v4Ot8GhoDRO4tSEdJu5qhT0SIHLYj9Kd5v9gtIMpnqeqNLvLpuuDo1plHz3LPqg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywz3SGBes1q5jmIO+lrMBHlWimZVLVJFvsBpCfLnWYUN9oKtpon
-	lj/1m/QCuonpvI1j4T7Tojus+LzckehZhHIuDKIaoiy20m7GHYn0f6Gg4E0a0pxYyRLxk2kpenb
-	aWGJ7ZJ/bbBQIxoFbg8XkFF+Ym0Uf0qrVCTVbhhlIXhbPNmtTmwUt0HiAtL2432ELGz+tH0E=
-X-Gm-Gg: ASbGncsRxcRwz2cuU7IiCpryvaB1oBUE9A4Sr8F+QPIqkJ/hTK3eRc2CatAY44h2XgD
-	/FjPeivCgYpok+TP54ZMmyjFYBa2GH9HdnoD3UXx23e+85kVumEU7rdDJXM0eNUGjZWK/Cw2eAk
-	+E0xtyARWttU4UACtymEZ9IsnhzjNULu8jRBPk84TBUxh0CPtVLjpy3FFTwCwqI2BjVD84CeigH
-	rGgD0qXCqzIx3O3b8eS9Hu2nkTfNt0XJk2z/Z+44Burgy8Aru2Vf7Y35FVF4imf22TeIt/Rkdtj
-	OObP4pDP45DvGV9gmwa2xhqgHAeRGS++qYkgFIS79U3g4KWHRHOPmVq7srXTlhSMAw==
-X-Received: by 2002:a05:620a:319f:b0:7c3:c4ba:d8a6 with SMTP id af79cd13be357-7c79cc4fb3amr237223685a.14.1744223734665;
-        Wed, 09 Apr 2025 11:35:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFP4Nhv309/CRScfglwzxDlYjCREIsnQLZ9iN6mVMw3ZcNyjL93Zpdnb8GcZSJKHfk6DuunWg==
-X-Received: by 2002:a05:620a:319f:b0:7c3:c4ba:d8a6 with SMTP id af79cd13be357-7c79cc4fb3amr237218585a.14.1744223734222;
-        Wed, 09 Apr 2025 11:35:34 -0700 (PDT)
-Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acaa1bb3167sm134011966b.21.2025.04.09.11.35.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Apr 2025 11:35:33 -0700 (PDT)
-Message-ID: <66f8d957-f7a5-4aec-b8e7-5bcc7ff7f569@oss.qualcomm.com>
-Date: Wed, 9 Apr 2025 20:35:29 +0200
+	id 1u2b7t-00000008K19-3LBe;
+	Wed, 09 Apr 2025 19:30:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744227019;
+	bh=t4u/q6sRSEWyUERde3llNPL9IiDRHYERj2C5djskamU=;
+	h=From:Date:Subject:To:Cc:From;
+	b=JS6FVVeUIqgnOONv0XQvXmw23VuDLc0E+7Lvwj5TkaBPfw+pUJHu9qbA4mEX6PxO9
+	 JMJgAi/Rbky3lZHs8fI4/ZRrzUSzqB6sYmoPjPd7yPJ+hfGD2P139zBbIufjfAZw0o
+	 WT59HFDZgjW+uySU1J3fhYJHfmLsg+W+q++5+TIa57oK9RE6vO7mCPF96Ar9ra/R5E
+	 IuoS2wTFpjjrxRtzkapjpCcT7IjT3e5BCkZ94hpok3QtRanuTDKCYF+Maci7gZq8Wi
+	 yTtxNOPVZivIPGzHHQdbu/PIh2CBoZM1NCBvlb3LA8f8o4DafdDmpbSZo3iJG/YRE0
+	 OecnRd0sDQ9yQ==
+Received: from [192.168.13.180] (unknown [IPv6:2606:6d00:11:e976::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19FBE17E0125;
+	Wed,  9 Apr 2025 21:30:17 +0200 (CEST)
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Date: Wed, 09 Apr 2025 15:30:09 -0400
+Subject: [PATCH] media: verisilicono: Enable NV15 support for Rockchip
+ VDPU981
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU
- power-domain-names
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-        Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley
- <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        "Rafael J. Wysocki"
- <rafael@kernel.org>,
-        Viresh Kumar <viresh.kumar@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Vincenzo Frascino <vincenzo.frascino@arm.com>,
-        Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-        Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-        Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
-        Conor Dooley <conor@kernel.org>,
-        Nicolas Ferre
- <nicolas.ferre@microchip.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Steen Hegelund <Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        UNGLinuxDriver@microchip.com, Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mips@vger.kernel.org, imx@lists.linux.dev,
-        linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
- <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
- <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
-X-Proofpoint-GUID: EYiN1WOLnQcmgFkpwRhf69MXn6UPtyOL
-X-Proofpoint-ORIG-GUID: EYiN1WOLnQcmgFkpwRhf69MXn6UPtyOL
-X-Authority-Analysis: v=2.4 cv=MpRS63ae c=1 sm=1 tr=0 ts=67f6bdf8 cx=c_pps a=50t2pK5VMbmlHzFWWp8p/g==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=OWbFrMhi_jq_UiG4ISsA:9 a=QEXdDO2ut3YA:10
- a=IoWCM6iH3mJn3m4BftBB:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-09_06,2025-04-08_04,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- mlxlogscore=832 clxscore=1015 priorityscore=1501 impostorscore=0
- spamscore=0 bulkscore=0 suspectscore=0 malwarescore=0 adultscore=0
- phishscore=0 mlxscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2504090122
+Message-Id: <20250409-b4-hantro-nv15-support-v1-1-7e11e47fd0c9@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAMDK9mcC/x2MywqAIBAAfyX23IKZIvQr0aHHVntRWUsC6d+Tj
+ jMwUyCRMCUYmgJCmRMHX6FrG1jP2R+EvFUGrbRVRvW4GKz+koA+dxbTHWOQC5XbaDfkZts7qHE
+ U2vn5x+P0vh8u04MLaAAAAA==
+X-Change-ID: 20250403-b4-hantro-nv15-support-07def4e7a537
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_113537_654735_8D740DE1 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20250409_123021_988780_D04DF88B 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,37 +80,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/7/25 6:27 PM, Ulf Hansson wrote:
-> On Fri, 4 Apr 2025 at 22:41, Konrad Dybcio
-> <konrad.dybcio@oss.qualcomm.com> wrote:
->>
->> On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
->>> "rpmhpd" is not documented nor used anywhere. As the enable-method is
->>> "psci" use "psci" for the power-domain name.
->>>
->>> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
->>> ---
->>
->> "psci" is what we want here, but these platforms require some more
->> massaging..
-> 
-> So this isn't for CPU performance scaling?
+This is a "customer" format, though on Rockchip RK3588 it has been
+verified to be NV15 format, which matches what the GPU and display
+handles has 10bit pixel formats.
 
-Nope!
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/platform/verisilicon/hantro_v4l2.c           |  1 +
+ .../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c      |  4 ++++
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c       | 14 ++++++++++++++
+ 3 files changed, 19 insertions(+)
 
-> 
->>
->> These SoCs don't seem to have any PSCI idle states (deeper than WFI)
->> described, which is no bueno, as they support some..
-> 
-> If PSCI PC mode is the only supported CPU suspend mode, we don't need
-> the power-domain topology to be described in DT as it's optional to
-> use.
-> 
-> Is this a PC or OSI based platform?
-Unfortunately it seems like only PC mode is implemented.
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 2bce940a58227c2bfef2bc3343992e4588ab36a4..7c3515cf7d64a090adfb8d8aff368f9a617f8c8a 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -77,6 +77,7 @@ int hantro_get_format_depth(u32 fourcc)
+ 	switch (fourcc) {
+ 	case V4L2_PIX_FMT_P010:
+ 	case V4L2_PIX_FMT_P010_4L4:
++	case V4L2_PIX_FMT_NV15:
+ 	case V4L2_PIX_FMT_NV15_4L4:
+ 		return 10;
+ 	default:
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index 69b5d9e12926fb408c08f8ba2139d05ba44389b7..e4703bb6be7c175a89c0b8868cf2eafb84a872ed 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -2202,6 +2202,10 @@ static void rockchip_vpu981_postproc_enable(struct hantro_ctx *ctx)
+ 	case V4L2_PIX_FMT_NV12:
+ 		hantro_reg_write(vpu, &av1_pp_out_format, 3);
+ 		break;
++	case V4L2_PIX_FMT_NV15:
++		/* this mapping is RK specific */
++		hantro_reg_write(vpu, &av1_pp_out_format, 10);
++		break;
+ 	default:
+ 		hantro_reg_write(vpu, &av1_pp_out_format, 0);
+ 	}
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 964122e7c355934cd80eb442219f6ba51bba8b71..f7c4a176167b40fe79ec5a6759dff8a77e849ae3 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -92,6 +92,20 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV15,
++		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
++		.postprocessed = true,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_4K_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_4K_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_P010,
+ 		.codec_mode = HANTRO_MODE_NONE,
 
-Konrad
+---
+base-commit: 9ddc3d6c16ea2587898a315f20f7b8fbd791dc1b
+change-id: 20250403-b4-hantro-nv15-support-07def4e7a537
+
+Best regards,
+-- 
+Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
