@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9200C369A1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Apr 2025 08:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4690DC369A1
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Apr 2025 08:20:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFS5WY3yeg3HsWoj9Ihk4mZSKB6hRt/eu2RQjM6gGpg=; b=On7wcDr7PM3ZMd
-	aUr5X3Fv/Ycpmzd3KynVu2eHq86ZS4FNYEIDEXyzqZt3siPop4yJ9EmOUXnyBe03OPn+oDEeZJTA4
-	LcOgQuCsPiT4zYyCgTl7GvKkxBaFdN87O/lHC3mPTwqHTAu0hFiK7KBGI4EUeigmEWF0lYlagMCnE
-	6jBC72RfD9vlIUJwREBwXd2VCDbYnZA/7tRIcmFTwioElyWrpmtqrwsmK8c4MhWrg2f7k6SN2r6Zm
-	dM019371b5RT/CR3APLtiiLRTsY14TFE1ADDNtaGHGzQAUb1xALeFryXC1eDHUz+EUK3exGBkQq4u
-	i3xtSegO7K0/k+OO/0Ng==;
+	List-Owner; bh=YsO0X/LTWSwR2bj3uOUhWvVJMn28Avbo/wh5/IU/vu0=; b=C+b1qg1ljSgR0X
+	5UXJ1qEY5rfw7kjAaUhkvdXbe8N8+/rPdUR7nV9bskvk6ajtsT/gVyR8K1vGaGe8tytt7OhSQYaKB
+	JZO+T+2VFF2Td4d7F6Ujmr8K14jqGW1pYXTZNPXoqBkwnW9wN6u7+7BO1TFJn5XbW9kN43Movh3We
+	bRKr1lYCBHKx6XB7nMr8hakrrB6m7hVe8dSVdF5DfEjFAkRDZupt6/sUDbp25ex8JMVERnArwqpm/
+	/jGa1C/V8jVIkYqepH4ZaHUCiI3BPdy7aUFL0p7dpJmZTSd5Tsw6Vix2YLOy7DUcDQJPIAge3fyvz
+	NK5/+09BLWO+bt8yhB5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2QWc-00000006XC4-256R;
-	Wed, 09 Apr 2025 08:11:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u2Qfc-00000006YdW-0XWN;
+	Wed, 09 Apr 2025 08:20:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2QIL-00000006UGQ-25yQ;
-	Wed, 09 Apr 2025 07:56:25 +0000
+	id 1u2QT3-00000006WTR-32Pu;
+	Wed, 09 Apr 2025 08:07:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 608E668438;
-	Wed,  9 Apr 2025 07:56:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11E59C4CEE3;
-	Wed,  9 Apr 2025 07:56:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2AEE65C54E7;
+	Wed,  9 Apr 2025 08:05:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C50C5C4CEE3;
+	Wed,  9 Apr 2025 08:07:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744185384;
-	bh=fRl/2fJxhLh5pxmQTXfimVdKHqwMdfvWC15mYy1K/zA=;
+	s=k20201202; t=1744186048;
+	bh=tNluW/24rMyIOMJea3X50pjI8OCgeby0BZTQU82vJ6Q=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TM438mU+mHRflGQqwTTahRAHpXKkGwkrdYen5nCjr0gBDC1BbLQoOxi/XLpeEU3uS
-	 zcSF7rV4CJoShkNjPIiGrPOsUmn6erPVUPsaI4roWH/E2vKX8n4EHMFXImdkbe8OhM
-	 iyk9xnFwFTxxFxOEpySepA39twljtSjOFImZ1OJ57w2+EqGBTs86mrD4TdCGkN2sh8
-	 wIiTYliaoUpwuhwBKVvAgXfMmxEsNbsxQ4juItxhJFl5Ei7t8imP9x1aDe+KYtLtBK
-	 BumaHD9KrXChC7LHadVfu+4ZiGfm671eesJRp6kU6DxL9/dH394C7dAryY2gcWQoXv
-	 zzwL8VTVomCZQ==
-Date: Wed, 9 Apr 2025 09:56:21 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: display: rockchip,vop: Drop assigned-clocks
-Message-ID: <20250409-ludicrous-blazing-chimpanzee-e5dba5@shite>
-References: <20250404214030.401629-1-robh@kernel.org>
+	b=fGFDyZu7YseIGrQ53Az9pAzLGJPuaIdJwrezIAZP5Z9wBzSFDJOs7+SbLGXGCZaIu
+	 AYR1O0yryExF++M8usY8FwBv7yowUMl0VLx7NA4japM40ZJw8rsOT7rNz35MgWMGoP
+	 hEp+xBBViqq2ygD7/e4Mb9meqdtGCKHM7SkrusB1nA6VNGGgqp/EesazTAg6KMi1BA
+	 l1I42dCpFg1OEQqqkHtectPSNUVjKE2iZ5HIco9txeMw/p+I6LMKi27H1Pbc3phCme
+	 YlrTEanoEKExCPLsmBc76UhisYK/4X3udbQkh0nmcgR6P04MjQC+JWL74ZGk4WJ9NL
+	 aVj3+f1M0qq/Q==
+Date: Wed, 9 Apr 2025 10:07:23 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: rockchip-ep: Mark RK3399 as intx_capable
+Message-ID: <Z_Yqu83HCb_bYKIL@ryzen>
+References: <20250326200115.3804380-2-cassel@kernel.org>
+ <20250328122123.GA1187318@rocinante>
+ <20250328123614.GA1188225@rocinante>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250404214030.401629-1-robh@kernel.org>
+In-Reply-To: <20250328123614.GA1188225@rocinante>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250409_010729_804521_99F1B0DB 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,28 +74,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 04, 2025 at 04:40:29PM GMT, Rob Herring (Arm) wrote:
-> assigned-clock properties are implicitly allowed in any node with
-> 'clocks' and don't have to be specified. The max here also appears to be
-> wrong as there's a case with 4 entries.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../devicetree/bindings/display/rockchip/rockchip-vop.yaml  | 6 ------
->  1 file changed, 6 deletions(-)
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gS3J6eXN6dG9mLAoKT24gRnJpLCBNYXIgMjgsIDIwMjUgYXQgMDk6MzY6MTRQTSArMDkw
+MCwgS3J6eXN6dG9mIFdpbGN6ecWEc2tpIHdyb3RlOgo+IAo+IFRoYXQgc2FpZCwgQmpvcm4gaXMg
+cHJlcGFyaW5nIHRoaXMgUHVsbCBSZXF1ZXN0LCB0aGlzIG1pZ2h0IG5vdCBtYWtlIHRoZQo+IGN1
+dCBhdCB0aGlzIHRpbWUuCgotcmMxIGlzIG91dC4KCkFueSBjaGFuY2UgdG8gZ2V0IHRoaXMgcXVl
+dWVkIHVwIG5vdz8gKFNvIHRoYXQgaXQgZG9lc24ndCBnZXQgbG9zdC4pCgoKS2luZCByZWdhcmRz
+LApOaWtsYXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
