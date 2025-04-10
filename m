@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81675C369A2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445ADC369A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:56:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p/9BlMh8oRn/dJolopbDX3HfiHtZrem1P3i93lPumXc=; b=fW2o8iuBHw46ix
-	ddhHCnpzXz2/P1NihMmwJxmup4kYsEYB14JyxXrTaMP5ZHI7HXPvc5HsDwack4KbOdQxz7WiiX7lX
-	69BseAv2AD/o6ecD7TUJBrt144kuKkc5TLfDCp5Mq3N8AM194OIMN+dVu6N7SqIyF55EfyEBprrvy
-	hs+PI4qB7S1iuXe7jOQ3DfAlCxMAGUBPI63/g52zCLHmBZK840dcyC/ltjwcJSreLbwxLhwcFEvzJ
-	/Q4mWav1ioBmpSLoNoAobvSQg5T2PxEkcj9A1pNtKYSCM5ZadWzwzI03tEm4DZsgvygt12hW56LIR
-	IFeh7GJnV7o/Ssf30riQ==;
+	List-Owner; bh=phwohytpBZCGYP8ec3UGsibJusXrT+0u2WYzczRu4BY=; b=WuuEWX55uLAJrk
+	semhQ0KiqESSt3VJGmUksQNi9NqXoVcadDnXYp430RI9s9xieFAMOBqn1h9bjKG+G6TCVwZ2FTU2j
+	sNoQsSIlQmFZFHfnh9sgYr03yxiGrBv3jPma6h1D6DGVjOdEkNbhGoDxjfVMx3UBV6XNdBv/VREn8
+	IB6JLQmlENn8Am8B6mo1lpSjnaP06K88p0aSEJE206L5sLpB0JBEDBzQW0qPBkcncinClEUXzbwZC
+	by/2S+zDjnkKmUFDcuY14qnXLr0hIkv2cfPhls+w4Jqr/lhgnXqdLEWlLQXZV5poHq8DEosCG8o8N
+	MfyqoGiKKO7viFFq0DbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2v9H-0000000BGzr-0Ov6;
-	Thu, 10 Apr 2025 16:53:07 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2vCo-0000000BHga-25eV;
+	Thu, 10 Apr 2025 16:56:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u87-0000000B4yq-1o52;
-	Thu, 10 Apr 2025 15:47:52 +0000
+	id 1u2u89-0000000B50D-37Mt;
+	Thu, 10 Apr 2025 15:47:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1942FA4A928;
-	Thu, 10 Apr 2025 15:42:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16781C4CEDD;
-	Thu, 10 Apr 2025 15:47:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 78E3F44362;
+	Thu, 10 Apr 2025 15:47:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5B12C4CEDD;
+	Thu, 10 Apr 2025 15:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300070;
-	bh=iDeiMpH2/KxFQOc/7AuYydAb8NCVCSm+fEB6mcijRro=;
+	s=k20201202; t=1744300073;
+	bh=ra1+/x5tvvdws+NLgU93cbl0GnrL59uh7spZ77Nu2f0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=N3WR9nvbHwdU8OqfFIc/mAfEz0Nmc09RDoFYeBK7Cd1q4dU8AiGidDCnyDh2Yd6Ff
-	 khtIEZeAm5b3jsSSJCwlepHT5Cjj7NPKSZRHCw+YnxgdCh+KREBBp8Lv14VEFi4Dwi
-	 RlYARWcnQS1qsk7DPNfsjiBO0DHdhlse12UYxFM9X2jY8w8vYAu8NxrNxkiG4smfD2
-	 K+u7CqTDULdw+eay4gEuHbdO4mN6JROOW/+cMc8jwjY3mdH4cOIFRIqM2LD4ggstNg
-	 XT+EhJsutbL2iP7y0ydVIsOgAupR55qA+AUnocPW19n1khPPot918ofQg6cvjhRrCs
-	 aMHf0ORhxZLHg==
+	b=osXSzsJizztnuyucaAb6gJ3UnBpmWkaUistvD0lZeqHTGwkjWKi3KEbYTQc9vnNd8
+	 sYwJPDNuPwtCN3FbYhNJzKOH8iR0FyZoK9WBBgXFt3JR+GViSj93+J7IKND0x4Nqx3
+	 mteKEAyhxOqLlMAH+Bld4AJLE7kyo0qJreNViUmg0SphBF/SUah93W5gpNiwKwgnJZ
+	 h8VkECzVm/u3cjOq1pgdbjQHY2CAAKM63iZNYoXv2C4afiK7sga5pqTFTt4hVSadce
+	 Hn9ZuGY+KfW+EEWq/+17zPu4G+BWN7J8jRcwOdp4injNxLwJPJaVG76MQRoToHmJKa
+	 BhezofOyJOZaQ==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:24 -0500
-Subject: [PATCH v2 03/17] arm64: dts: microchip: sparx5: Fix CPU node
+Date: Thu, 10 Apr 2025 10:47:26 -0500
+Subject: [PATCH v2 05/17] arm64: dts: qcom: msm8939: Fix CPU node
  "enable-method" property dependencies
 MIME-Version: 1.0
-Message-Id: <20250410-dt-cpu-schema-v2-3-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-5-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -84,8 +84,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084751_608385_C8B1DB96 
-X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-CacheID: sfid-20250410_084753_839628_BDAA1AC2 
+X-CRM114-Status: UNSURE (   8.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,29 +108,81 @@ so add a dummy entry. It is assumed the bootloader will fill in the
 correct values.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-Tested-by: Daniel Machon <daniel.machon@microchip.com>
 ---
- arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+v2:
+ - Keep qcom,saw and qcom,acc properties
+---
+ arch/arm64/boot/dts/qcom/msm8939.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi b/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-index 32bb76b3202a..83bf5c81b5f7 100644
---- a/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-+++ b/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-@@ -12,10 +12,12 @@ &psci {
- 
- &cpu0 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
- 
- &cpu1 {
- 	enable-method = "spin-table";
-+	cpu-release-addr = /bits/ 64 <0>;
- };
- 
- &uart0 {
+diff --git a/arch/arm64/boot/dts/qcom/msm8939.dtsi b/arch/arm64/boot/dts/qcom/msm8939.dtsi
+index 7cd5660de1b3..72f01953e65c 100644
+--- a/arch/arm64/boot/dts/qcom/msm8939.dtsi
++++ b/arch/arm64/boot/dts/qcom/msm8939.dtsi
+@@ -46,6 +46,7 @@ cpu0: cpu@100 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x100>;
+ 			next-level-cache = <&l2_1>;
+ 			qcom,acc = <&acc0>;
+@@ -64,6 +65,7 @@ cpu1: cpu@101 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x101>;
+ 			next-level-cache = <&l2_1>;
+ 			qcom,acc = <&acc1>;
+@@ -77,6 +79,7 @@ cpu2: cpu@102 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x102>;
+ 			next-level-cache = <&l2_1>;
+ 			qcom,acc = <&acc2>;
+@@ -90,6 +93,7 @@ cpu3: cpu@103 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x103>;
+ 			next-level-cache = <&l2_1>;
+ 			qcom,acc = <&acc3>;
+@@ -103,6 +107,7 @@ cpu4: cpu@0 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x0>;
+ 			qcom,acc = <&acc4>;
+ 			qcom,saw = <&saw4>;
+@@ -121,6 +126,7 @@ cpu5: cpu@1 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x1>;
+ 			next-level-cache = <&l2_0>;
+ 			qcom,acc = <&acc5>;
+@@ -134,6 +140,7 @@ cpu6: cpu@2 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x2>;
+ 			next-level-cache = <&l2_0>;
+ 			qcom,acc = <&acc6>;
+@@ -147,6 +154,7 @@ cpu7: cpu@3 {
+ 			compatible = "arm,cortex-a53";
+ 			device_type = "cpu";
+ 			enable-method = "spin-table";
++			cpu-release-addr = /bits/ 64 <0>;
+ 			reg = <0x3>;
+ 			next-level-cache = <&l2_0>;
+ 			qcom,acc = <&acc7>;
 
 -- 
 2.47.2
