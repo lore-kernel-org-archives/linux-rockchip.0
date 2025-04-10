@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1974EC369A4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 09:03:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57A1C3601E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 09:05:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oetmHM3DFTqsk9baZPfzH7ub2CEthKJ7oYByyDJU3bQ=; b=nG5D2MCsJXbKWj
-	q7V/+8YaC4ulcI1Ye5tUeOwc6WJa+/QSHAJVMaOXYeTde+qH2NqFYtGDOJsYgAYfWBBCrM4fQWOIP
-	1AQqbMMAptMl8B/bHnpYMY/oDkTnSYBR5A22B3cMaoKDv7+bgDKsXY7dmAu6VqDpBnuAmfJQlsmVE
-	FrgUBIXfIyRNDQpoWRcZKXwsyt4Da/GydzR5/CSrQUuY9l1qMfjnXx7x52pma3NKiMRermS0R8Oz2
-	wfpqpVW4hy0yRrXgp4I5odb3bEv24UhRsmIjuElC5lKUmhv3PZ8IlXnVmN5ZGRQxNZaROEa1lm1Va
-	3PS82Ym7klMaVypCGvhg==;
+	List-Owner; bh=+NbE5KRD1blv/JTwl7kg420sVut9DSy0R5cKhwKerpg=; b=2UHQ6c3+dhokZu
+	sSn2H9hFXBTtnwyPPwC83iZQFbm17yeC2SzJB7e/eLvEi/8i+R0MOJt15DSMlmOF404xAu7lSBp4E
+	mObc3+kptej1EQIHWA6vS/TYqYlBZrDqvZp0UJRedpmYONleWMsHEUWsB82lPO6lce4OWhE9y/OYe
+	v9Fsx8yn+x7qy0sgh3c/Wc10X40W5jlpnSCSqH8yJKt2msrAC0VFzDL07j7KxgnaDdMCNSYax80rG
+	W/wVlX6K3yJfbZ710dc4yjrE16E6gVvS3FmWR15RCcswtD8SKuNcLoat5/eoamqMWGjJC8I0X8d+y
+	CWHdBHejsDk8KUWBZ+7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2nou-00000009rPI-2oOh;
-	Thu, 10 Apr 2025 09:03:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u2nr2-00000009s6h-2ovf;
+	Thu, 10 Apr 2025 09:05:48 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2nVo-00000009nL7-2ZKq
-	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Apr 2025 08:43:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0945F5C26ED;
-	Thu, 10 Apr 2025 08:41:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43759C4CEDD;
-	Thu, 10 Apr 2025 08:43:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744274631;
-	bh=fS1P8QNmkZJhIWxyz4aVqeR3Vhp5Mv+hh6arbQyM+zw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SZoAZGzUN76NnWts/wDa2IuAFRp1jgkkMR2fsJnO+5sRUYTr2QacXdICJcbFq3PJy
-	 FpZ1GEobDEF8uDaQvOrM9GKX30XCXJ9wxG5kbtM1tRpYt0GGJ8uwXyYzHmEdpW/V5q
-	 TFgAeu25hRxeg8fxGxgZMgLDsYQDPhOA26Si0so24zXfvsW1abULCII/q2mkx9tqZT
-	 rL6EWuOiyd6MMuJImR9XqCXY9lBZZu+wlueJTD0+8NrBi9coMOwQY8lX8TUsil8WjM
-	 FhTgaejYEwZ154B39kgJ4gQA+5tXOlKOjtBVV6CHEAP6iNaYcUuFcMJILYyxqI+hlz
-	 pDHqB6Af6ENnA==
-Date: Thu, 10 Apr 2025 10:43:47 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Enable L0S capability
-Message-ID: <Z_eEw-l6SG-lF_7R@ryzen>
-References: <1744248981-43371-1-git-send-email-shawn.lin@rock-chips.com>
+	id 1u2nfO-00000009pAN-1hLa;
+	Thu, 10 Apr 2025 08:53:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=ZXCoP5L2J4BtwaEH2n2GCfyW7YWDh/4SAhqwGfBIa/Q=; b=LMOo6+ICnSo9wd/0x+KdGHWkKq
+	UgRoQTSd6ftNQ2A3885oQ20jGkdFObG4rxEVQtA2/ql8+vxJsCjYsuq5C7VsleaICi/CHRrTgvz0o
+	F/J8eT0tGLFZa/REVQbL/ko/0ScVNyQi7eCydsEc29zJBUGjBuFu/Ou5NN8A2OxEY8/7iwe7oTCP1
+	PwLUH/PUkw/EcOskWbW83yCVv4iGmroK9jbUrFJwquqoY0WXHbWxrNyhDewufFLhy2kuI3C9WXO3a
+	minoMr0ucy2l9tO62kueLB8Yvq82UiDojWW+zajgua6aqtDGaGwPjPCrOX+lqK9+aYc1uCbJBuL0r
+	4YmpVI5A==;
+Received: from i53875b95.versanet.de ([83.135.91.149] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u2nfH-00036h-1n; Thu, 10 Apr 2025 10:53:39 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2] drm/rockchip: dw_hdmi_qp: Fix io init for dw_hdmi_qp_rockchip_resume
+Date: Thu, 10 Apr 2025 10:53:28 +0200
+Message-ID: <174427520238.842175.9547277934386341429.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250317102757.565679-1-andyshrk@163.com>
+References: <20250317102757.565679-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1744248981-43371-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_014352_694418_99A3A025 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20250410_015346_440864_66757B13 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,86 +66,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Shawn,
 
-On Thu, Apr 10, 2025 at 09:36:21AM +0800, Shawn Lin wrote:
-> L0S capability isn't enabled on all SoCs by default, so enabling it
-> in order to make ASPM L0S work on Rockchip platforms. We have been
-> testing it for quite a long time and the default FTS number provided
-> by DWC core is broken since it fits only for DWC PHY IP but not for
-> other types of PHY IP from other vendors.
-
-If we take the rk3588 SoC for example,
-some PCIe controllers use PHY:
-drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-some PCIe controllers use PHY:
-drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-
-This second PHY is obviously a Synopsys PHY.
-
-So, I think the commit message is a bit confusing/misleading,
-since IMO the second PHY driver is for a DWC PHY IP.
-
-Is this N_FTS value correct for both of these PHYs?
-
-
-Having this code in ->start_link() looks incorrect.
-
-rockchip_pcie_configure_rc(), calls dw_pcie_host_init().
-
-dw_pcie_host_init() first calls dw_pcie_setup_rc(), which calls dw_pcie_setup().
-dw_pcie_setup() will write pci->n_fts[0] / pci->n_fts[1].
-
-dw_pcie_host_init() then calls dw_pcie_start_link()
-(which calls ->start_link()).
-
-So, setting pci->n_fts[0] / pci->n_fts[1] in ->start_link() is thus too late.
-
-
-Kind regards,
-Niklas
-
-
+On Mon, 17 Mar 2025 18:27:53 +0800, Andy Yan wrote:
+> Use cfg->ctrl_ops->io_init callback make it work for all platform.
+> And it's also gets rid of code duplication
 > 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
 > 
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 21dc99c..56acfea 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -185,6 +185,20 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
->  static int rockchip_pcie_start_link(struct dw_pcie *pci)
->  {
->  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	u32 cap, lnkcap;
-> +
-> +	/* Enable L0S capability for all SoCs */
-> +	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> +	if (cap) {
-> +		/* Default fts number(210) is broken, override it */
-> +		pci->n_fts[0] = 255; /* Gen1 */
-> +		pci->n_fts[1] = 255; /* Gen2+ */
-> +		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
-> +		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
-> +		dw_pcie_dbi_ro_wr_en(pci);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_EXP_LNKCAP, lnkcap);
-> +		dw_pcie_dbi_ro_wr_dis(pci);
-> +	}
->  
->  	/* Reset device */
->  	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-> -- 
-> 2.7.4
-> 
+
+Applied, thanks!
+
+[1/1] drm/rockchip: dw_hdmi_qp: Fix io init for dw_hdmi_qp_rockchip_resume
+      commit: 1d34597a1e23004c7dd0ab5f58ba1ef95fd9ded5
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
