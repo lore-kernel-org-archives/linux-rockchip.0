@@ -4,91 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39971C369A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 14:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37743C369A2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 15:36:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AW2HFIxoT/+70yWRrCG69e1NwJxxspdTE8Sx2mS/+vU=; b=NzZIy8ZoRpXwxh
-	lhDmLSbg9K2CPS56MpDQjAA+0CF2tNVfais1BmnZlmod1Tv1qwisOz0GoLWfcJpF/vptovT2MpyZ7
-	Sdyny3GtD0XxRAb+dm4uLin7okIIqdMtUJgnAyfdqvfMMc8SFzPuoBBL3n/C4ufGqWW3NuWdOBpnO
-	Un4zPZuEsbIqUPt2SkVZnwiY/iXMvJRtYgEOpaiJgLdljh6HAiP6GVnVRIMUUDuaF2VHIMH7622cv
-	N7YdK1s4TE1vBngR+zZLbXzl8pVQrzH3taffCxFHeQFSZDRdd7L6rAUd5JCQcDkCbOyo0TpSeUzih
-	3WzPSDi/vYDINzYF6roQ==;
+	List-Owner; bh=kXwXP4kdGf6XbtZuW6u1rIo7fLP9vQPkYNglYee7to4=; b=Oou8tuOE/8U2bG
+	qND6Jz4eCSSKwqkhvnuoBd32Q3RXwkotE92Dr3g++bmr2RmmSDtWYHvmXPZ1ew0IcW/rmMLA6cH61
+	5296/QOPM4+d8oAx8lNDr5SKrcaZTRlF9STZ8m6LMBmHJapNdjb/8NJshPcIv2UqEEhCo8b/2xX8b
+	i+yXY11AW+t90KaoODWJsdahaQ0t+S8Z+aV3xAF2cKVCL59zIIaE8cN6WlfyyVFgCEHKcSD12FyTn
+	IThD7t0RGhq8UjKwDe/3DGNsRqbp3mFOGz8jQOy7vshb66dp6ibZAPtnT2DgNodSvPGm+Me01qmmJ
+	NrEzrBzcKbL4926dtP7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2siL-0000000AoZY-3UWu;
-	Thu, 10 Apr 2025 14:17:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u2txR-0000000B2lT-1yNI;
+	Thu, 10 Apr 2025 15:36:49 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2sgM-0000000AoB4-0GiE;
-	Thu, 10 Apr 2025 14:15:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 96EF649F58;
-	Thu, 10 Apr 2025 14:15:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A28EC4CEE9;
-	Thu, 10 Apr 2025 14:15:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744294505;
-	bh=dEJNfddFbQgqgZyZJMMbg8KFOtcsawhyLbrR4L0XzlI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=jxii+48qL50pjdA7yqa78xcRpLVZKm5MG303M4J57PrxoYaKv2uhKXslZyLpRdn2D
-	 s9Sv0b7pjKAomdPHquiYzoYa70yZ0/Ebgu6XrENWvfOhrkxdZvdApSz0IOXALevVdE
-	 zvIfIEuQLhPC/wboYB4n1LGvsTJ7jEVwvnmoxQ0JZH/anv5czFd2INi0HmmbYzo5oJ
-	 lPC5IcjIWbucKZmZ6YZW2MXP+d+JYFdnJqM6rRCnvCU7ECeNQOnzgEZ/zTXSusl5ag
-	 /YNqtCkozcdHsvO+gZIRaAOzgBX/kI0M4nL2HLbV8vX4KsK1YaHDXhFpwI7IAjxHwE
-	 29supMGICfJgg==
-Received: by mail-ed1-f44.google.com with SMTP id 4fb4d7f45d1cf-5e5e22e6ed2so1490711a12.3;
-        Thu, 10 Apr 2025 07:15:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCU2jNM1KYqVbVKnGDEZEyCfI1TyLERGedrUbjDRVIQf+S06rdebIH1Dnld7SEqETIGw2qQZkpdsoRMV/hQ2@lists.infradead.org, AJvYcCU79f9Z5vn+qHer33hHOIHrIRiTN+YN7YIltpRoLcQ8+mSnEqvbrUWCXtZsey4K5G/slHyxRW3qSIeyQsOFPfE=@lists.infradead.org, AJvYcCU7jyWMdUU5TW7QVAuVEdwsVLcTLEg4+ieCqA3bT0oCbISXru7ywrqIE0Fd+JXL93g+AjMfAgajBZgCPm8E2Dw=@lists.infradead.org, AJvYcCUgiec/GzVME45utR1EVQxUzNnvU/B2QHSugNduxXnwzBgWy1oNu0r8AlmILovXF2AuMwpiw1tftqDf6loYri44Cw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz2xuS6z9IjckVK9Potx7Hxhv9EQGrDTURCVvuYuoNhuOyp8fXP
-	S/l55vTxZMSkL93OFXExp0IMR6lLjkNI9uaFg+pUuD7Dd5Y3i862jr+V5H1m7pPmAY/xolLLnBs
-	1S/vbg1rveGPViDa99TO18RLu5w==
-X-Google-Smtp-Source: AGHT+IGl0fJE2v0I/oCPQTdxQfr3609BfC3sI9b3/3//9E+h8w2umLSUMiDkAMTe1571fUmkVBDDE3jtTLXPBwQHP+4=
-X-Received: by 2002:a05:6402:13ce:b0:5e5:dea5:3eb2 with SMTP id
- 4fb4d7f45d1cf-5f32c45032bmr2461434a12.11.1744294503824; Thu, 10 Apr 2025
- 07:15:03 -0700 (PDT)
+	id 1u2tGj-0000000Aue3-495Y;
+	Thu, 10 Apr 2025 14:52:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=LP2MrA4kyJJF7nqkw6ZY/203xCtdrQPU/4NP3oP3G/g=; b=EZSOnlkoyN3gXhuJQQNV8cyHEy
+	ze/dE37vB3N+UPsQbU3lU1IeGJIy/3BFKh8/iHrsbFsIjmyP/xQulcanGcKqo4TWj/rASERCmC/4C
+	apQWRspn2hQQiDTlifjCYBpgVY0IGzXyask7/4vy/TdnYu1C75gqBPVbmuLY1ZMVi0vkoPG4alBkd
+	AOgK3uZOoCEqgGKscMKVvs3VU6yEKbMlQbWU4uhxyowttMwlO657VYbL1eRtAiWRQ2NBYTl/k0RUz
+	anpCdsZuEbqjGEjV7Uh5miGmvrnZibSu9plpEaWA5H4KVDHdMLMeTvFTBxFIRPat/dyi5C/8lB88G
+	Od0vRQhA==;
+Received: from i53875b95.versanet.de ([83.135.91.149] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u2tGi-00012N-ES; Thu, 10 Apr 2025 16:52:40 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"Rob Herring (Arm)" <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rock-pi-4: Fix mmc-pwrseq clock name
+Date: Thu, 10 Apr 2025 16:52:27 +0200
+Message-ID: <174429674408.910874.12009966723443982772.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250409205040.1522754-1-robh@kernel.org>
+References: <20250409205040.1522754-1-robh@kernel.org>
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org> <20250408055718.4azlqljvo4qxhnu5@vireshk-i7>
-In-Reply-To: <20250408055718.4azlqljvo4qxhnu5@vireshk-i7>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 10 Apr 2025 09:14:52 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJyi=sR9jtEy9_U+RLVorvZRfby8vsWP6sXV+_4NP+Gug@mail.gmail.com>
-X-Gm-Features: ATxdqUHPmJEIuVKadhgZM7F7MHPh64iWIlM7zDUhgEaB8t8IKqn3FRU8YxuohGc
-Message-ID: <CAL_JsqJyi=sR9jtEy9_U+RLVorvZRfby8vsWP6sXV+_4NP+Gug@mail.gmail.com>
-Subject: Re: [PATCH 00/19] Arm cpu schema clean-ups
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_071506_142726_828B2B75 
-X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-CacheID: sfid-20250410_075242_045563_FA082E33 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,20 +73,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBcHIgOCwgMjAyNSBhdCAxMjo1N+KAr0FNIFZpcmVzaCBLdW1hciA8dmlyZXNoLmt1
-bWFyQGxpbmFyby5vcmc+IHdyb3RlOgo+Cj4gT24gMDMtMDQtMjUsIDIxOjU5LCBSb2IgSGVycmlu
-ZyAoQXJtKSB3cm90ZToKPiA+ICAuLi4vYmluZGluZ3MvY3B1ZnJlcS9jcHVmcmVxLW1lZGlhdGVr
-LnR4dCAgICAgICAgICB8IDI1MCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+ICBEb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvb3BwL29wcC12MS55YW1sICB8ICAxOCArLQo+Cj4gQWNr
-ZWQtYnk6IFZpcmVzaCBLdW1hciA8dmlyZXNoLmt1bWFyQGxpbmFyby5vcmc+CgpJbiB0aGUgZnV0
-dXJlLCBwbGVhc2UgY29uc2lkZXIgYWNraW5nIHRoZSAyIHBhdGNoZXMgcmF0aGVyIHRoYW4gdGhl
-CmNvdmVyIGxldHRlciBiZWNhdXNlICdiNCB0cmFpbGVycycgdGhpbmtzIHlvdSBhY2tlZCBldmVy
-eXRoaW5nLgoKUm9iCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+
+On Wed, 09 Apr 2025 15:50:39 -0500, Rob Herring (Arm) wrote:
+> The defined name for "mmc-pwrseq-simple" clock is "ext_clock".
+> 
+> 
+
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: rock-pi-4: Fix mmc-pwrseq clock name
+      commit: 6833cbdc733c9e1088fe9936b2dad95cc7d4c580
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
