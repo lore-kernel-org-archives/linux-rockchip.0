@@ -4,116 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8941BC369A5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 07:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6433C3601E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 07:25:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SEv1TvvQEHCzGIRZvAeXQxkToqDp/nfB2DTihtl+zpk=; b=E1qlC8QW+C8BgS
-	aZlYxojo/e1elFs2hI5qyft44Bvt9oV4orUPtnkHy0JMGDWCs6N8WKJr1rR5D78a/QWabpq3VvRjw
-	BYRICHZ5peIYQ2OVo9Nuu5JFRhvODc4VND93+1GVMZS+l+DFv+qMw9/umsVRpzzcZMsLX6L7TRyx4
-	u4cW1a7gxNzlDkMhlCMrO9S9NAIuSXTXbrmHj7l1Pdb0fOc0g+cTY2ax0yw92kqoqpzJW7t8b1395
-	okLkGiNbNayvWRP8JjH7gtvVZiIrgi6ZhtI0/Nh0gK60zKhT1kO8tKATXkfQlzClM1EuRbXXu9vq6
-	Qn68HzMwCYk6rwxlyo3w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bZQi/nxW8qCwjUI0CF8sD1gZwErwYHzuNWn+kZDJ3kw=; b=SDz4hsWTghEuRk
+	vvbZgHXjMSrvIPP/KKPTrarpTiGhiEFO3UuB8nrv7LnUH98tmOMNaJF3ouwQJCO2bGWLuHBVkQ27k
+	Gazi9eazJc0ddWffKbupWVoctb2kVxj+N0dJZ4y5078Dgw+7NRZKIxpeB0FHRPwkL2bueKKDSgyFY
+	TqD5TUWBQInHSKVeG+fP7kzvNYKCpZSDAONP8g9DW+Zr3uceFp5dxA8Lx7aowVsbohKclI5A1+opR
+	ImglaF8uv5bZcm72NlZ1SwBM6GfAlaTVVcPW6Xq3/Nf7JYwcMD/3AzCbr379REWH6s5iyLVAxh8e9
+	ADFsat3Et7UHUo62FZ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2m4v-00000009UQr-3ofI;
-	Thu, 10 Apr 2025 07:12:02 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1u2mHd-00000009XTe-3CRS;
+	Thu, 10 Apr 2025 07:25:09 +0000
+Received: from mail-m1973186.qiye.163.com ([220.197.31.86])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2ldm-00000009PVU-0PpU;
-	Thu, 10 Apr 2025 06:43:59 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-43d04ea9d9aso1895475e9.3;
-        Wed, 09 Apr 2025 23:43:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744267437; x=1744872237; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YV128qhGuAyvX2XLDTOXX2NTQVmvho5pgSBUUl0uM3I=;
-        b=WAjDAjoY26qldf6iW0wQQkbkU4K8v6tO1nei1I3ylypxoedCNKxR0jh8eFvtcbrKMZ
-         2mQbIMo5um9iYJmhSiJMT6jNmzJ92b43rBJAn2y8tGPkr0Maext+1X7/UhT4Nst7bR/+
-         Avg4y9J/60DR+U/gosC5Sc0SadXARHMMlpsmlcLdGxuPhSdzmDiTGedXsdjX6RBVCIE0
-         3ruxe7BlbG3oB7d0YqglfAI3vcxDcheb+M0cwIyRxCdj91YDBt2p1W/Mf3Dvl3FkqkqN
-         2XMPEBEpPUID35q7IYzYKTG2+gsa+4TbaPCUw5awiXVXnAWvbihtDq928fPBrUy+U1SZ
-         LEwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744267437; x=1744872237;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YV128qhGuAyvX2XLDTOXX2NTQVmvho5pgSBUUl0uM3I=;
-        b=WoANAZGbidbqk7XpQPoOFv6Hzkph9pvsTlTSyaPwc518agVmOAHBOO7vVaBIquV5yC
-         ZmM5EKWMgHxB0Z7wzCbTRXKNNm0QQDJvwupKroRt4SAcHzO6/WAW5IRyZavS1gBjwAQ9
-         GTdlVqeMbLt+3k+vMqvAXSCT0nVh4mZxGFADWTw4VVREMPuHbDgFhGSR6iJ2WD8XakHo
-         J3UYmdDeOzcG2wdgkm9yFrsw4ACgtq+W/OyoCMVi8bCnxVE43PPCyX4BwgLC5snaB6BR
-         aAxU6U40pImNq1jDYB4Usk8l5ReN41h+E62KsGKLf6J/88R7zc1Ao7avVAMfZYgxZ2pn
-         0B5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUwb0cHGnE2zhBimh2xVfS5U4ZuWsyPrCbcDAJJ41MOh4ge8Q3bOZh9cotIt1HLEzM+o+auT7BqCvkLz31dlvRVpw==@lists.infradead.org, AJvYcCVcsv89ozJTjZhJBlVIjxvaz9jBsYw1T9vZo7quD1Q8HuSehGCtYQ5gSo8dM3DVsyTtALJxTBMNPOq/zUDJVrQ=@lists.infradead.org, AJvYcCVuJfbFJq2PbT98aoj3xyL/3gpHUmOdwOdRjWUle9CXdL1dNUHnhb+p84qJ/twi1OGgLP/FSNYzvjp+mC67@lists.infradead.org, AJvYcCWPRupjcCOca7L7OEZycUTaALTRyePtJqVDLsCZg7FoShUA86bohDYj5PfnFQxfQMT2pInD8EcY3Jsjv54MVZo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzF1X7t8tBkRKqSur5jx2KDSuieBartv+uzwaDbXu/6EJajQMRx
-	JYaYBhEQaEzFOKcIyw7mtOiz5B8Wm6j2Ew90Drx269aVMxFCoT2X
-X-Gm-Gg: ASbGnct3TknRp0Qmzxz7FuOwyvy9Q1Mj6RYXrdA2w7zA2qShM58/MiY2ZXA027KAFGn
-	F9VoU6tieMUh24NXaqstrLzuh0kUdb90DEIwQ3nx/g1JsaCwPFpGFn8YCkCTDzlrGUT9bJ+zBv0
-	t9k+c5bvHdc9IHtyD21pdD90AXiVQ6w9Z5rf0AxGAmHNZ1tSa3g2UB4W72a1eQJYsdheG4cUufF
-	itqb1kbKNFHUtH+38uflUn+lL/nJCt9tJQMg19NT1lwp3YHSzlvTlk15acMESHFbYUCS+aKpbF5
-	m+QUlDmCoFT4q0c3+woCk5ZRzMbDqOiIEnig8nLdEMoFs6/WFgZmngAg1Pk4dF4ou7XfKIm/kBa
-	fTjatvZYbhNSVPX9m
-X-Google-Smtp-Source: AGHT+IEL1gPJzOAzRp7flPkyN4Ef+Ndtjxrjlvobznu4GMFiYPht20jH1k+dVvg8c3EBb+I0DiJViw==
-X-Received: by 2002:a05:600c:3512:b0:43c:f689:dd with SMTP id 5b1f17b1804b1-43f2d7e9229mr11997625e9.19.1744267436516;
-        Wed, 09 Apr 2025 23:43:56 -0700 (PDT)
-Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f207cb692sm46662105e9.40.2025.04.09.23.43.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Apr 2025 23:43:56 -0700 (PDT)
-From: Jernej =?UTF-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
- Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
- Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 01/19] arm64: dts: allwinner: h5/h6: Drop spurious
- 'clock-latency-ns' properties
-Date: Thu, 10 Apr 2025 08:43:52 +0200
-Message-ID: <4999502.31r3eYUQgx@jernej-laptop>
-In-Reply-To: <20250403-dt-cpu-schema-v1-1-076be7171a85@kernel.org>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-1-076be7171a85@kernel.org>
-MIME-Version: 1.0
+	id 1u2lk7-00000009QWB-0W1A
+	for linux-rockchip@lists.infradead.org;
+	Thu, 10 Apr 2025 06:50:32 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 115afa760;
+	Thu, 10 Apr 2025 14:50:14 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
+Cc: linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: dw-rockchip: Add system PM support
+Date: Thu, 10 Apr 2025 14:50:05 +0800
+Message-Id: <1744267805-119602-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5CGVYaGE9NT0seHhodSU1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a961e76a54d09cckunm115afa760
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MBw6Qww5KzJIFjEZTCMDLz4K
+	Ni4KCUxVSlVKTE9PSU1MQ0pOSEhJVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpKSU1DNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=C949W5hWw2LbzwDHkkMUeGShDYArmS44sC9iIJxiP1Qu10647bc/tX5mqceri+VDbR1OHRYpxuDGlzrz9zq+vqtmpiPlbekPEDVIArNuQnfU/QNbvB2D4ePnULRMJ/hlAWvzMZmU1/pGLuY9jE5598jPS+XGYD4s/5MrjgdCnXo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Yc3A+dByX5bDtUu2IQSsby6ZW1CRfRpVQ0TgmMXi/7A=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_234358_139252_B30C5FCD 
-X-CRM114-Status: UNSURE (   6.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250409_235031_685114_94F56F9A 
+X-CRM114-Status: GOOD (  21.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,18 +68,342 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RG5lIHBldGVrLCA0LiBhcHJpbCAyMDI1IG9iIDA0OjU5OjIyIFNyZWRuamVldnJvcHNraSBwb2xl
-dG5pIMSNYXMgamUgUm9iIEhlcnJpbmcgKEFybSkgbmFwaXNhbChhKToKPiAnY2xvY2stbGF0ZW5j
-eS1ucycgaXMgbm90IGEgdmFsaWQgcHJvcGVydHkgZm9yIENQVSBub2Rlcy4gSXQgYmVsb25ncyBp
-bgo+IE9QUCB0YWJsZSAod2hpY2ggaGFzIGl0KS4gRHJvcCB0aGVtIGZyb20gdGhlIENQVSBub2Rl
-cy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyAoQXJtKSA8cm9iaEBrZXJuZWwub3Jn
-PgoKQWNrZWQtYnk6IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+CgpC
-ZXN0IHJlZ2FyZHMsCkplcm5lagoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This patch adds system PM support for Rockchip platforms by adding .pme_turn_off
+and .get_ltssm hook and tries to reuse possible exist code.
+
+It's tested on RK3576 EVB1 board with Some NVMes and PCIe-2-SATA/XHCI devices.
+And check the PCIe protocol analyzer to make sure the L2 process fits the spec.
+
+[    1.541394] nvme nvme0: missing or invalid SUBNQN field.
+[    1.548755] nvme nvme0: allocated 64 MiB host memory buffer (16 segments).
+[    1.562235] nvme nvme0: 8/0/0 default/read/poll queues
+[    1.563930] nvme nvme0: Ignoring bogus Namespace Identifiers
+
+[   58.443602] PM: suspend entry (deep)
+[   58.444005] Filesystems sync: 0.000 seconds
+[   58.445542] Freezing user space processes
+[   58.447096] Freezing user space processes completed (elapsed 0.001 seconds)
+[   58.447718] OOM killer disabled.
+[   58.448008] Freezing remaining freezable tasks
+[   58.449080] Freezing remaining freezable tasks completed (elapsed 0.000 seconds)
+
+...
+
+[   58.797070] rockchip-dw-pcie 22400000.pcie: PCIe Gen.2 x1 link up
+[   58.835953] OOM killer enabled.
+[   58.836262] Restarting tasks ... done.
+[   58.839241] random: crng reseeded on system resumption
+[   58.840679] PM: suspend exit
+[   59.500036] nvme nvme0: 8/0/0 default/read/poll queues
+[   59.500909] nvme nvme0: Ignoring bogus Namespace Identifiers
+
+1000+0 records in
+1000+0 records out
+real    0m 5.51s
+user    0m 0.00s
+sys     0m 0.71s
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 181 +++++++++++++++++++++++---
+ 1 file changed, 165 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 56acfea..229c606 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -21,6 +21,7 @@
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ 
++#include "../../pci.h"
+ #include "pcie-designware.h"
+ 
+ /*
+@@ -37,8 +38,14 @@
+ #define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+ #define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+ #define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
++#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
+ #define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+ #define PCIE_CLIENT_INTR_MASK_MISC	0x24
++#define PCIE_CLIENT_POWER		0x2c
++#define PCIE_CLIENT_MSG_GEN		0x34
++#define PME_READY_ENTER_L23		BIT(3)
++#define PME_TURN_OFF			(BIT(4) | BIT(20))
++#define PME_TO_ACK			(BIT(9) | BIT(25))
+ #define PCIE_SMLH_LINKUP		BIT(16)
+ #define PCIE_RDLH_LINKUP		BIT(17)
+ #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+@@ -63,6 +70,7 @@ struct rockchip_pcie {
+ 	struct gpio_desc *rst_gpio;
+ 	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
++	u32 intx;
+ 	const struct rockchip_pcie_of_data *data;
+ };
+ 
+@@ -159,6 +167,13 @@ static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
+ 	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
+ }
+ 
++static u32 rockchip_pcie_get_pure_ltssm(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++
++	return rockchip_pcie_get_ltssm(rockchip) & PCIE_LTSSM_STATUS_MASK;
++}
++
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ {
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -248,8 +263,42 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
++static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	struct device *dev = rockchip->pci.dev;
++	int ret;
++	u32 status;
++
++	/* 1. Broadcast PME_Turn_Off Message, bit 4 self-clear once done */
++	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN);
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN,
++				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret)
++		dev_warn(dev, "Failed to send PME_Turn_Off\n");
++
++	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
++				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret)
++		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
++
++	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
++	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER,
++				 status, status & PME_READY_ENTER_L23,
++				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret)
++		dev_err(dev, "Failed to get ready to enter L23 message\n");
++}
++
+ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
+ 	.init = rockchip_pcie_host_init,
++	.pme_turn_off = rockchip_pcie_pme_turn_off,
+ };
+ 
+ /*
+@@ -430,6 +479,7 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.link_up = rockchip_pcie_link_up,
+ 	.start_link = rockchip_pcie_start_link,
+ 	.stop_link = rockchip_pcie_stop_link,
++	.get_ltssm = rockchip_pcie_get_pure_ltssm,
+ };
+ 
+ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+@@ -489,13 +539,32 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void rockchip_pcie_ltssm_enable_control_mode(struct rockchip_pcie *rockchip, u32 mode)
++{
++	u32 val;
++
++	/* LTSSM enable control mode */
++	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++
++	rockchip_pcie_writel_apb(rockchip, mode, PCIE_CLIENT_GENERAL_CONTROL);
++}
++
++static void rockchip_pcie_unmask_dll_indicator(struct rockchip_pcie *rockchip)
++{
++	u32 val;
++
++	/* unmask DLL up/down indicator */
++	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++}
++
+ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 				      struct rockchip_pcie *rockchip)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct dw_pcie_rp *pp;
+ 	int irq, ret;
+-	u32 val;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
+ 		return -ENODEV;
+@@ -512,12 +581,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+-
+-	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
+-				 PCIE_CLIENT_GENERAL_CONTROL);
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
+ 
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+@@ -529,9 +593,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* unmask DLL up/down indicator */
+-	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++	rockchip_pcie_unmask_dll_indicator(rockchip);
+ 
+ 	return ret;
+ }
+@@ -558,12 +620,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+-
+-	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
+-				 PCIE_CLIENT_GENERAL_CONTROL);
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_EP_MODE);
+ 
+ 	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
+ 	rockchip->pci.ep.page_size = SZ_64K;
+@@ -677,6 +734,92 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static int rockchip_pcie_suspend(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	struct dw_pcie *pci = &rockchip->pci;
++	int ret;
++
++	rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
++
++	ret = dw_pcie_suspend_noirq(pci);
++	if (ret) {
++		dev_err(dev, "failed to suspend\n");
++		return ret;
++	}
++
++	rockchip_pcie_phy_deinit(rockchip);
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	reset_control_assert(rockchip->rst);
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
++
++	return 0;
++}
++
++static int rockchip_pcie_resume(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	struct dw_pcie *pci = &rockchip->pci;
++	int ret;
++
++	reset_control_assert(rockchip->rst);
++
++	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
++	if (ret) {
++		dev_err(dev, "clock init failed\n");
++		goto err_clk;
++	}
++
++	if (rockchip->vpcie3v3) {
++		ret = regulator_enable(rockchip->vpcie3v3);
++		if (ret)
++			goto err_power;
++	}
++
++	ret = phy_init(rockchip->phy);
++	if (ret) {
++		dev_err(dev, "fail to init phy\n");
++		goto err_phy_init;
++	}
++
++	ret = phy_power_on(rockchip->phy);
++	if (ret) {
++		dev_err(dev, "fail to power on phy\n");
++		goto err_phy_on;
++	}
++
++	reset_control_deassert(rockchip->rst);
++
++	rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx),
++				 PCIE_CLIENT_INTR_MASK_LEGACY);
++
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
++	rockchip_pcie_unmask_dll_indicator(rockchip);
++
++	ret = dw_pcie_resume_noirq(pci);
++	if (ret) {
++		dev_err(dev, "fail to resume\n");
++		goto err_resume;
++	}
++
++	return 0;
++
++err_resume:
++	phy_power_off(rockchip->phy);
++err_phy_on:
++	phy_exit(rockchip->phy);
++err_phy_init:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++err_power:
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++err_clk:
++	reset_control_deassert(rockchip->rst);
++	return ret;
++}
++
+ static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
+ 	.mode = DW_PCIE_RC_TYPE,
+ };
+@@ -707,11 +850,17 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 	{},
+ };
+ 
++static const struct dev_pm_ops rockchip_pcie_pm_ops = {
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend,
++				      rockchip_pcie_resume)
++};
++
+ static struct platform_driver rockchip_pcie_driver = {
+ 	.driver = {
+ 		.name	= "rockchip-dw-pcie",
+ 		.of_match_table = rockchip_pcie_of_match,
+ 		.suppress_bind_attrs = true,
++		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+ };
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
