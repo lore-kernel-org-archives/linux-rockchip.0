@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81830C3601E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AE8C369A2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:58:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mImuoVGpPTg2P4qqRA9NH8XGTNzC9FeHb0EVgU1rCNg=; b=OfD73KnzjeRBrI
-	/MTDytjExyt7F8hi/j6y7HXL5LxMYZwGGrxTRPQMQtXe28MFy0bPMFHsXQsD8y9Y4CSCYvkt4GXvm
-	H752dVxxZFEroYtLaAhXrTOwKV3o7NjcTnmK/WIpJG7QRt7zRWlWmGQ91vKcJxrQYUSAYzFiY3q2s
-	u6t3scM84soJ4GZ9rTJMEy9oCS8HgQwX7WT39cUyiw54x3Hisk6urJK3ob9S3+ArM7xR5fu2959L0
-	lYB40n0J0omz3kaJj+8TZzhnoI2kpUufhNM4hPgmPF6WwOGq7q/V3TvbKeePiseWZnkYHIPfDNMmY
-	x2MSfMy9gt/BE3MPqChA==;
+	List-Owner; bh=HgpUFo+ILkumM2xV4D+CnKehT0kUsSjd1LWHuhrWEOA=; b=26+uDvRCO/dhLA
+	tbh1oEIjKHYA5L8tWVtzevVwQ8vVjj0tvFyj2cVJ9dTzhXDWYxT7TpzjHZlLIwErnUf/UKsOBfHvy
+	0j0T6Kn9/Sfu1hunT9E/Ut2fWMprdYLOYV7sNZ8O+cYG6BKfK6xyRJ7EiXmpT1K1abRHg29l59Hay
+	ZODUk4qLiyZjiei5RHIAe14MHn7rbzm4zJDDLSTTCu/XiYkrhAh8bGgljRjSFImREJp4AdD5cmoZu
+	vjb5tm5fhKWFc4jWNFSCnCVjrFSVVp4yyGsISmZjtCQAupEV4qDuzoRqzODEhUZnEQghMBIoe94WI
+	Na76P+3Mt/MmRB0schvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vCo-0000000BHg3-0W5B;
-	Thu, 10 Apr 2025 16:56:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u2vEZ-0000000BI5m-1RZR;
+	Thu, 10 Apr 2025 16:58:35 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u89-0000000B50E-3G7g;
-	Thu, 10 Apr 2025 15:47:54 +0000
+	id 1u2u8B-0000000B50x-2sBO;
+	Thu, 10 Apr 2025 15:47:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 114C844527;
-	Thu, 10 Apr 2025 15:47:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80D35C4CEEB;
-	Thu, 10 Apr 2025 15:47:51 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 58162A4A90F;
+	Thu, 10 Apr 2025 15:42:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55A8CC4CEE9;
+	Thu, 10 Apr 2025 15:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300071;
-	bh=zdpdwCUxt4/JGxD9zT4n5tnKqmSCQRjKtGwRibbyTKY=;
+	s=k20201202; t=1744300074;
+	bh=nVo5X/MosXjoMIZOdVn7ETl8AN7NiwovxfdEw8OmSOs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Tp2pgYbwXQf4eNwmKaH2Y9ewJRXbwjukqmEfd7gasC1BhxcwjreBEF/j1FACoOJ3n
-	 fKdwiHbTde/95llhHDX8LEPLU4Q4kNtch6X4Gtag9EjN2DFSU8oWDvoTpT/y2sS1Pn
-	 YmTtSWsXG0o9T5Sg1Jk0GmoLLj5liyC4MKb2I4in0MtWDSMgjb7jQH7P54PdHi0Fge
-	 /tyeSwBW8Wh77LfjdWWAOh6WEV2iDOQG5FKK3zDdiLTqnwsmbzSybdW8BOIUXAcbdX
-	 0UJ7W6RDn1M45MgKlVI+3jHU6otRqGgsNJieEZO0dRqPBzL4/hTBj9ujca+//zyDCU
-	 vOQslelhGs3xw==
+	b=uGYzjYYnTyApltpYtEA9/9oZnG7/797Cn8q6jqLk/EiRZu5XNF9EqiZug9/5/DkhX
+	 FRosU37qIN5bQ1dUS0YVTjxFaqmabQ38JtCNt1L0lFwpmaWS5mnlYPBXQY6s0rIHQc
+	 Nsu2qcZnsHflTkFFwv8LjQyI1/3LA0m8kUxUChx9BT0j/UhiUPJCikDLhEclCZHBIC
+	 si6a0LUoUuapa5Y9l8wAc5gqlVpgGczwcdrrgDhN4YbSPiV+50DSgLPVlpyH2bpcbC
+	 2MRLG1p4C84SGSxRS3OFcHEyOHInbBplC/dIIFurvHHjPYY9PShPHMVmWUO9mmFbmq
+	 8QArAGCBXYMSQ==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:25 -0500
-Subject: [PATCH v2 04/17] arm64: dts: qcom: qdu1000: Fix qcom,freq-domain
+Date: Thu, 10 Apr 2025 10:47:27 -0500
+Subject: [PATCH v2 06/17] arm64: dts: qcom: msm8992-lg-h815: Fix CPU node
+ "enable-method" property dependencies
 MIME-Version: 1.0
-Message-Id: <20250410-dt-cpu-schema-v2-4-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-6-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -80,12 +81,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
  linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084753_877942_D08A705B 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20250410_084755_856480_6BAB58FD 
+X-CRM114-Status: UNSURE (   7.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,55 +103,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The correct property name is 'qcom,freq-domain', not
-'qcom,freq-domains'.
+The "spin-table" enable-method requires "cpu-release-addr" property,
+so add a dummy entry. It is assumed the bootloader will fill in the
+correct values.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 ---
- arch/arm64/boot/dts/qcom/qdu1000.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/qcom/qdu1000.dtsi b/arch/arm64/boot/dts/qcom/qdu1000.dtsi
-index f973aa8f7477..7c8d78fd7ebf 100644
---- a/arch/arm64/boot/dts/qcom/qdu1000.dtsi
-+++ b/arch/arm64/boot/dts/qcom/qdu1000.dtsi
-@@ -47,7 +47,7 @@ cpu0: cpu@0 {
- 			enable-method = "psci";
- 			power-domains = <&cpu_pd0>;
- 			power-domain-names = "psci";
--			qcom,freq-domains = <&cpufreq_hw 0>;
-+			qcom,freq-domain = <&cpufreq_hw 0>;
- 			next-level-cache = <&l2_0>;
- 			l2_0: l2-cache {
- 				compatible = "cache";
-@@ -70,7 +70,7 @@ cpu1: cpu@100 {
- 			enable-method = "psci";
- 			power-domains = <&cpu_pd1>;
- 			power-domain-names = "psci";
--			qcom,freq-domains = <&cpufreq_hw 0>;
-+			qcom,freq-domain = <&cpufreq_hw 0>;
- 			next-level-cache = <&l2_100>;
- 			l2_100: l2-cache {
- 				compatible = "cache";
-@@ -88,7 +88,7 @@ cpu2: cpu@200 {
- 			enable-method = "psci";
- 			power-domains = <&cpu_pd2>;
- 			power-domain-names = "psci";
--			qcom,freq-domains = <&cpufreq_hw 0>;
-+			qcom,freq-domain = <&cpufreq_hw 0>;
- 			next-level-cache = <&l2_200>;
- 			l2_200: l2-cache {
- 				compatible = "cache";
-@@ -106,7 +106,7 @@ cpu3: cpu@300 {
- 			enable-method = "psci";
- 			power-domains = <&cpu_pd3>;
- 			power-domain-names = "psci";
--			qcom,freq-domains = <&cpufreq_hw 0>;
-+			qcom,freq-domain = <&cpufreq_hw 0>;
- 			next-level-cache = <&l2_300>;
- 			l2_300: l2-cache {
- 				compatible = "cache";
+diff --git a/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts b/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
+index 4520d5d51a29..6a231afad85d 100644
+--- a/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
++++ b/arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts
+@@ -93,26 +93,32 @@ key-vol-up {
+ 
+ &cpu0 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &cpu1 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &cpu2 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &cpu3 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &cpu4 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &cpu5 {
+ 	enable-method = "spin-table";
++	cpu-release-addr = /bits/ 64 <0>;
+ };
+ 
+ &pm8994_resin {
 
 -- 
 2.47.2
