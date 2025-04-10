@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7884C369A9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 15:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B412FC3601E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 15:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zzWl3xFOkc6tcQZSuP6ps1qJtYpUono+iwvrmvhD14E=; b=2w66S8RJDcgcSH
-	Xw7ecLDAzsM9L5ofAjiXecRGMRuIlIPlY/9mSXoCELPprQwBDbFDmYF+jLMtVgywzaiaptk4uFSjG
-	thSot8F1N30c512rpjvjHqjeya1V/SHqVTmWabRzGj62UAys3kIj2KpINeDIrGKVhnvJ+6On/OikW
-	zHr7pUauJxz4w/HoTrdItjsOhS40cUKW+IDOrApJYuwA2kLB0yD0dmkXrGyjUn3MzjTugcP3A0gYx
-	OZhrrk6t/aaHdPliiE+U1knV0eU+TcQ37OC3Th34PPfEbDeZXqUDFi76EWJbG0HfPA7o14W+UQi/W
-	u8z5hbXKT2sUvgs1Sb+Q==;
+	List-Owner; bh=bMc0wSSLZytz9Gp4iBaipABNOX7C/+SFkZa1DYM4CMU=; b=EwILPy337VUVIQ
+	yGObuDwKsKgmHxdKfgNQ3tk7LJmtQOiMTcmgc0yhjVSCJDhzuJ6xhqvCRw4EaBDHIRrdqTDj651aN
+	zfbpmwCTr67F2g+NVbmtP+nlGWJvt0/zELgai2px7qZfj+XchVXwtjnFYgoZwVJgudCOlvMSBoRP+
+	ETgjxD7tFHazMqjHPItV/VtCN1yBw9962qXMFzoZCEcRZb6q9dlVGeo58CjlQNf5qskwHtJKaFQnE
+	2QTGhTgynaoDdCt9poIcn3gmuVGQrGM3iBbHUYDXun8pL/mXOXHikXVVHGUW5EOwjghqDnFPWd2JU
+	GBf7Bqi5dLrOE0Raw8ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2tzL-0000000B3C2-3wTT;
-	Thu, 10 Apr 2025 15:38:47 +0000
+	id 1u2u1E-0000000B3bO-0NE6;
+	Thu, 10 Apr 2025 15:40:44 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2tGk-0000000Aue8-2tbx
-	for linux-rockchip@lists.infradead.org;
+	id 1u2tGl-0000000Auep-31OS;
 	Thu, 10 Apr 2025 14:52:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=dveFduEAR4wcUxntQQKa+u55nEh007JPx8uugieZS9s=; b=mS+kGmyfQU950a6RkZkU03uziY
-	ejMomVXWT48ZAI+mOhdQcexZaR7YFG+inYXvayYGqT6OhFRrMaGefJpuO5MFfWgfFdkzSGTfX6d9Y
-	O61H3JcXrUK8/FRVXnj3/bYRsXUMlKPKgMYRAdhgkeU6MdtReKPoKGlrMmNuv4TbZhD+/bmHKHMiJ
-	Uhxr1sv/afTKRNprZvd4t7JBeZaqfB6IhZf12mmdt8gZ2nLVTTM5m5ZMpnQv9RnWo1yKeBe9If9uE
-	ypTkMTHkkUdVU+0675SzHPFi2oXhBjCYYs+BHsscqOWxinfJbQcRiXnXVWDEOLIWLYsxzPE6wMOti
-	LdTbznOw==;
+	bh=oPR5GZSRvxu16rwEBjKkd9y5335azxvaE/olKP0Je3U=; b=G77x/r+tt7d+nYmpy5n/BrYFGY
+	TgGYU29oQC1E1hWaWmA+t2MxVNwINUe4ii4xPrwV7p2K27aLClNlJeMqKrErTB4POSvjA3ye5hEIC
+	U1UQlKX0Zm1Az4xGoYRkiEyo++bf55XkrLpDu9CZWHoSTvPDyRwTMWFwWno6amILGuvjqXPLqlWP7
+	oSlOOJ/gabRLa7qFX92fX1AFEUEk67fmiQA18aZakQC94K4WJYDH5nOHoCxA2u3blrwZ9KQTCYiV0
+	nwONvT9uEJSN1jYJY+GX6KT6szb9C3VyaLxPQWvIdfhyevmsUJxPTc+8Q8r8S7VVDd/Z7MD1yHFx0
+	EJnIBQag==;
 Received: from i53875b95.versanet.de ([83.135.91.149] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1u2tGi-00012N-Me; Thu, 10 Apr 2025 16:52:40 +0200
+	id 1u2tGj-00012N-2a; Thu, 10 Apr 2025 16:52:41 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Shawn Lin <shawn.lin@rock-chips.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Yao Zi <ziyao@disroot.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Rename vcc3v3_pcie0 to vcc3v3_pcie1 for rk3576-evb1-v10
-Date: Thu, 10 Apr 2025 16:52:28 +0200
-Message-ID: <174429674410.910874.1345384910546779704.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] clk: rockchip: Drop empty init callback for rk3588 PLL type
+Date: Thu, 10 Apr 2025 16:52:29 +0200
+Message-ID: <174429674412.910874.4819823369489889838.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <1744079475-211962-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1744079475-211962-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20250326113556.21039-1-ziyao@disroot.org>
+References: <20250326113556.21039-1-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_075242_731571_4FDCA2C7 
-X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-CacheID: sfid-20250410_075243_768398_B9B32171 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,15 +79,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 08 Apr 2025 10:31:15 +0800, Shawn Lin wrote:
-> It's for pcie1, correct the name.
+On Wed, 26 Mar 2025 11:35:56 +0000, Yao Zi wrote:
+> Unlike PLLs in previous geneation of SoCs, PLLs in RK3588 type don't
+> require any platform-specific initialization. Drop callback
+> rockchip_rk3588_pll_init() that does nothing in fact to clean the
+> driver up.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Rename vcc3v3_pcie0 to vcc3v3_pcie1 for rk3576-evb1-v10
-      commit: cdba8e71599a1a1cf9ca6e9573c243c9a21f899c
+[1/1] clk: rockchip: Drop empty init callback for rk3588 PLL type
+      commit: 646bfc52bbe184c0579060c3919e5d70885b0dcc
 
 Best regards,
 -- 
