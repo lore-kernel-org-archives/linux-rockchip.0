@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAE2CC369A9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:47:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D47C369A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=q38dVMeQDgbK+eGbeaq/HSNiiMgwx5MEBuOsWfcdraY=; b=VEdjrjuCSk/6q6
-	Kav/zg1gQFk6zuelJLbKyzM4qCYD9je0/KjvcRpUK0Ko0xz0iQXWRk/Lw+bHYUowUpRYFNF51ENj0
-	+5UngYT9Fhf3pqy/ePuXSLVdWvZZz/ssOVIejG/S53j8pFaZUMTiFXMFjrg242alTv6eO8YsJ6N+H
-	UWdQP2hUhPwok1O0ilSQChJvo4X1Qvvm3ksjS6YxfYcANCbxT2RfUuwfSyRHu4FXREbuANB0ocDpN
-	0oTZvZKXmy6r0FuT+lRyXgGyCCgZiwk+Fuewyx5LG0h6AtyrNjNXLFBVFxvpaXgq2IEw6QGahGooo
-	NKt0/k/Hf28aGUPMjb2w==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xWbUI0WxYCWigYvv6ckkRJHrbN5i9zHGStVJuKUMpSA=; b=DIa2H/424JXVY/
+	RD/YZ0Zt1Af1a0aRFbXHUV5uLgoJpEkB9vnruNyXbvYLHax2BVl8t4lgrCqWoYQ237Syf8O5fNXgY
+	LWojtLd+az++di2A2jM0bfs3GypyRSF3qdUZ0LtUobu5hbcjvZCDyy1s6HnE25lPn8YAUZmYyllWa
+	7oS6SrABg5wj6JwoAXbsLc2d0g7//Df4dDyYJKozHkRSCzVVt/SfjqIb7s4eyAIctulMIFARGzYs1
+	vJPLneICesQ3mhtK02wWRHmeCXTWO0SekitqfEHbVfcb4Efq2tE+TUkWXAq38GvAextrD2MRU+jQ1
+	4wzHdskGTFe8yZZ1KIyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2v3y-0000000BG4V-3nms;
-	Thu, 10 Apr 2025 16:47:38 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2v5k-0000000BGRC-3Cvy;
+	Thu, 10 Apr 2025 16:49:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u83-0000000B4xE-0znX;
-	Thu, 10 Apr 2025 15:47:48 +0000
+	id 1u2u85-0000000B4y1-2iXr;
+	Thu, 10 Apr 2025 15:47:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ABAF8A4A8D9;
-	Thu, 10 Apr 2025 15:42:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB0FEC4CEDD;
-	Thu, 10 Apr 2025 15:47:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 25C2E44EA3;
+	Thu, 10 Apr 2025 15:47:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95E14C4CEEA;
+	Thu, 10 Apr 2025 15:47:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300065;
-	bh=2mdsfkUrMw7toePmD1v5/yrWX5YIRl5Nl5Vw/xMU/bw=;
-	h=From:Subject:Date:To:Cc:From;
-	b=L5+nLP7pd0oYgpafFrGoh0LoKCQ7lZ4hWRGZn8JABxcQWp3JDeYtvBix05xdM46Zh
-	 XpnLYthUadlqId0gsGWKaxqhLe/29kANzcoWa+rQrClokZLIPB3QGnmMNjmDMO2iql
-	 ltjul4+3LYS+YE+T6+FAIEe6+CmxqlNXD/zCQ1ZarWRoln8g/OplEPGkzty5mR23AK
-	 u/l1eF6ElFcEFQf1jOnx73ArjmRIf/wmr/xqbAtIF/9m7RfrBF+Y4Z6RPxU9Ml3e4Q
-	 B2frUcAk9HQfXVGsc1xqTnTMcK3l7Re3GEafraAraVMynKyonxEgKoKm0+R+VwL4jE
-	 f5+7zRNE93dhg==
+	s=k20201202; t=1744300068;
+	bh=MJ4WoqvhgC/aZjAy/ZTQhYcG1cI4RNuRYa6MzsWqQtk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=hKfnqZneC+abzLvYTV6plSnmp6les52XSC3Xz9C7Rcp6J4l9nCVNuTwwlTUqDwC2q
+	 +72ANtmUuZvc/VC9/xocD3jWreOuzykzBrMs4XMQ+5mfaCArgkpCjWOGupDZjoz5Ow
+	 8UosB8hJqyiNrk+9DA7VvUzhvQIATUk+C0zQVQFDi+LPw+XTwEqa/nzR/JLtX1szDN
+	 PBgCNHvQouW1ck4kouSglDLfZtlrrW/w97heJkhLLQgWU5bkcf8/K4TkAhklO7XJAd
+	 vNyAf87yOvTzcn67GZHe95oSdT4xtwNHwsePQSTvc2Glij/FQIgwfTDE2C7PXQwh/o
+	 +h/3lbYv+BgBQ==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Subject: [PATCH v2 00/17] Arm cpu schema clean-ups
-Date: Thu, 10 Apr 2025 10:47:21 -0500
-Message-Id: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+Date: Thu, 10 Apr 2025 10:47:23 -0500
+Subject: [PATCH v2 02/17] arm64: dts: broadcom: bcm2712: Use "l2-cache" for
+ L2 cache node names
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAro92cC/3XMQQ7CIBCF4as0s3YMYAu1K+9hukA6LUSFBmqja
- bi72L3L/yXv2yBRdJSgqzaItLrkgi8hDhUYq/1E6IbSIJhoWM1OOCxo5hcmY+mpsW5JSqNGqc8
- MymeONLr37l370talJcTPzq/8t/6TVo4MmZI3Ulxx3TaXO0VPj2OIE/Q55y8lONpOqwAAAA==
-X-Change-ID: 20250403-dt-cpu-schema-48e66c7f6a90
+Message-Id: <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org>
+References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
  Jernej Skrabec <jernej.skrabec@gmail.com>, 
@@ -83,15 +82,12 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Andre Przywara <andre.przywara@arm.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
- Sudeep Holla <sudeep.holla@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084747_411740_4C0EEF3E 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20250410_084749_728676_CCC25C7D 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,163 +99,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu' 
-nodes. The result, not surprisely, is a number of additional properties 
-and errors in .dts files. This series resolves those issues.
-
-There's still more properties in arm32 DTS files which I have not 
-documented. Mostly yet more supply names and "fsl,soc-operating-points". 
-What's a few more warnings on the 10000s of warnings...
-
-The .dts files can be taken by the respective SoC maintainers. I will 
-take the binding changes.
-
----
-v2:
- - Drop applied "arm64: dts: morello: Fix-up cache nodes"
- - Rework enable-method schema
- - Drop "arm: dts: qcom: msm8916: Move "qcom,acc" and "qcom,saw" to 32-bit .dtsi"
- - Keep qcom,saw and qcom,acc properties on msm8939
- - Fix qcom,saw2.yaml example
- - Fix power-domain-names to be "perf" on qcom sdx55/65
-
-Link to v1: 
-https://lore.kernel.org/all/20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org/
-
-Signed-off-by: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Chen-Yu Tsai <wens@csie.org>
-To: Jernej Skrabec <jernej.skrabec@gmail.com>
-To: Samuel Holland <samuel@sholland.org>
-To: Conor Dooley <conor@kernel.org>
-To: Nicolas Ferre <nicolas.ferre@microchip.com>
-To: Claudiu Beznea <claudiu.beznea@tuxon.dev>
-To: Steen Hegelund <Steen.Hegelund@microchip.com>
-To: Daniel Machon <daniel.machon@microchip.com>
-To: UNGLinuxDriver@microchip.com
-To: Bjorn Andersson <andersson@kernel.org>
-To: Konrad Dybcio <konradybcio@kernel.org>
-To: Shawn Guo <shawnguo@kernel.org>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-To: Pengutronix Kernel Team <kernel@pengutronix.de>
-To: Fabio Estevam <festevam@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-To: Neil Armstrong <neil.armstrong@linaro.org>
-To: Kevin Hilman <khilman@baylibre.com>
-To: Jerome Brunet <jbrunet@baylibre.com>
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Magnus Damm <magnus.damm@gmail.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Andy Gross <agross@kernel.org>
-To: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Viresh Kumar <vireshk@kernel.org>
-To: Nishanth Menon <nm@ti.com>
-To: Stephen Boyd <sboyd@kernel.org>
-To: zhouyanjie@wanyeetech.com
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> 
-To: Stephan Gerhold <stephan.gerhold@linaro.org> 
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-sunxi@lists.linux.dev
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org
-Cc: imx@lists.linux.dev
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-amlogic@lists.infradead.org
-Cc: linux-renesas-soc@vger.kernel.org
-Cc: linux-mips@vger.kernel.org
-Cc: linux-pm@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-
----
-Rob Herring (Arm) (17):
-      arm64: dts: allwinner: h5/h6: Drop spurious 'clock-latency-ns' properties
-      arm64: dts: broadcom: bcm2712: Use "l2-cache" for L2 cache node names
-      arm64: dts: microchip: sparx5: Fix CPU node "enable-method" property dependencies
-      arm64: dts: qcom: qdu1000: Fix qcom,freq-domain
-      arm64: dts: qcom: msm8939: Fix CPU node "enable-method" property dependencies
-      arm64: dts: qcom: msm8992-lg-h815: Fix CPU node "enable-method" property dependencies
-      arm: dts: qcom: sdx55/sdx65: Fix CPU power-domain-names
-      arm/arm64: dts: imx: Drop redundant CPU "clock-latency"
-      arm: dts: qcom: ipq4019: Drop redundant CPU "clock-latency"
-      arm: dts: rockchip: Drop redundant CPU "clock-latency"
-      arm64: dts: amlogic: Drop redundant CPU "clock-latency"
-      dt-bindings: arm/cpus: Add schemas for "enable-method" dependencies
-      dt-bindings: arm/cpus: Re-wrap 'description' entries
-      dt-bindings: Reference opp-v1 schema in CPU schemas
-      dt-bindings: arm/cpus: Add missing properties
-      dt-bindings: arm/cpus: Add power-domains constraints
-      dt-bindings: cpufreq: Drop redundant Mediatek binding
-
- Documentation/devicetree/bindings/arm/cpus.yaml    | 229 +++++++++++--------
- .../bindings/cpufreq/cpufreq-mediatek.txt          | 250 ---------------------
- Documentation/devicetree/bindings/mips/cpus.yaml   |   3 +-
- Documentation/devicetree/bindings/opp/opp-v1.yaml  |  18 +-
- .../devicetree/bindings/soc/qcom/qcom,saw2.yaml    |   3 +-
- arch/arm/boot/dts/nxp/imx/imx7s.dtsi               |   1 -
- arch/arm/boot/dts/qcom/qcom-ipq4019.dtsi           |   4 -
- arch/arm/boot/dts/qcom/qcom-sdx55.dtsi             |   2 +-
- arch/arm/boot/dts/qcom/qcom-sdx65.dtsi             |   2 +-
- arch/arm/boot/dts/rockchip/rk3128.dtsi             |   8 +-
- arch/arm/boot/dts/rockchip/rk3188.dtsi             |   1 -
- arch/arm/boot/dts/rockchip/rk322x.dtsi             |   1 -
- arch/arm/boot/dts/rockchip/rk3288.dtsi             |   5 +-
- arch/arm/boot/dts/rockchip/rv1108.dtsi             |   1 -
- arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi       |   4 -
- arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi       |   4 -
- arch/arm64/boot/dts/amlogic/meson-g12a-fbx8am.dts  |   4 -
- .../boot/dts/amlogic/meson-g12a-radxa-zero.dts     |   4 -
- arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts  |   4 -
- arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts    |   4 -
- arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts |   4 -
- arch/arm64/boot/dts/amlogic/meson-g12a.dtsi        |   1 +
- .../dts/amlogic/meson-g12b-a311d-libretech-cc.dts  |   6 -
- arch/arm64/boot/dts/amlogic/meson-g12b-a311d.dtsi  |   2 +
- .../boot/dts/amlogic/meson-g12b-bananapi-cm4.dtsi  |   6 -
- .../boot/dts/amlogic/meson-g12b-bananapi.dtsi      |   6 -
- .../boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi   |   6 -
- .../dts/amlogic/meson-g12b-odroid-go-ultra.dts     |   6 -
- arch/arm64/boot/dts/amlogic/meson-g12b-odroid.dtsi |   6 -
- .../boot/dts/amlogic/meson-g12b-radxa-zero2.dts    |   6 -
- arch/arm64/boot/dts/amlogic/meson-g12b-s922x.dtsi  |   2 +
- arch/arm64/boot/dts/amlogic/meson-g12b-w400.dtsi   |   6 -
- arch/arm64/boot/dts/amlogic/meson-sm1-ac2xx.dtsi   |   4 -
- .../arm64/boot/dts/amlogic/meson-sm1-bananapi.dtsi |   4 -
- .../boot/dts/amlogic/meson-sm1-khadas-vim3l.dts    |   4 -
- arch/arm64/boot/dts/amlogic/meson-sm1-odroid.dtsi  |   4 -
- .../dts/amlogic/meson-sm1-s905d3-libretech-cc.dts  |   4 -
- arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts   |   4 -
- arch/arm64/boot/dts/amlogic/meson-sm1.dtsi         |   1 +
- arch/arm64/boot/dts/broadcom/bcm2712.dtsi          |   8 +-
- arch/arm64/boot/dts/freescale/imx8mm.dtsi          |   4 -
- arch/arm64/boot/dts/freescale/imx8mn.dtsi          |   4 -
- arch/arm64/boot/dts/freescale/imx8mp.dtsi          |   4 -
- arch/arm64/boot/dts/freescale/imx8mq.dtsi          |   4 -
- .../boot/dts/microchip/sparx5_pcb_common.dtsi      |   2 +
- arch/arm64/boot/dts/qcom/msm8939.dtsi              |   8 +
- arch/arm64/boot/dts/qcom/msm8992-lg-h815.dts       |   6 +
- arch/arm64/boot/dts/qcom/qdu1000.dtsi              |   8 +-
- 48 files changed, 202 insertions(+), 480 deletions(-)
----
-base-commit: 0af2f6be1b4281385b618cb86ad946eded089ac8
-change-id: 20250403-dt-cpu-schema-48e66c7f6a90
-
-Best regards,
--- 
-Rob Herring (Arm) <robh@kernel.org>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlcmUncyBubyBuZWVkIGluY2x1ZGUgdGhlIENQVSBudW1iZXIgaW4gdGhlIEwyIGNhY2hlIG5v
+ZGUgbmFtZXMgYXMKdGhlIG5hbWVzIGFyZSBsb2NhbCB0byB0aGUgQ1BVIG5vZGVzLiBUaGUgZG9j
+dW1lbnRlZCBub2RlIG5hbWUgaXMKYWxzbyBqdXN0ICJsMi1jYWNoZSIuCgpTaWduZWQtb2ZmLWJ5
+OiBSb2IgSGVycmluZyAoQXJtKSA8cm9iaEBrZXJuZWwub3JnPgpSZXZpZXdlZC1ieTogUGhpbGlw
+cGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPgotLS0KIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvYnJvYWRjb20vYmNtMjcxMi5kdHNpIHwgOCArKysrLS0tLQogMSBmaWxlIGNoYW5nZWQs
+IDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0
+L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvYnJv
+YWRjb20vYmNtMjcxMi5kdHNpCmluZGV4IDllNjEwYTg5YTMzNy4uYWQwY2FjOGU0NDQ0IDEwMDY0
+NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaQorKysgYi9h
+cmNoL2FybTY0L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaQpAQCAtNjQsNyArNjQsNyBA
+QCBjcHUwOiBjcHVAMCB7CiAJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsgLy8gNjRLaUIoc2l6ZSkv
+NjQobGluZS1zaXplKT0xMDI0d2F5cy80LXdheSBzZXQKIAkJCW5leHQtbGV2ZWwtY2FjaGUgPSA8
+JmwyX2NhY2hlX2wwPjsKIAotCQkJbDJfY2FjaGVfbDA6IGwyLWNhY2hlLWwwIHsKKwkJCWwyX2Nh
+Y2hlX2wwOiBsMi1jYWNoZSB7CiAJCQkJY29tcGF0aWJsZSA9ICJjYWNoZSI7CiAJCQkJY2FjaGUt
+c2l6ZSA9IDwweDgwMDAwPjsKIAkJCQljYWNoZS1saW5lLXNpemUgPSA8NjQ+OwpAQCAtODgsNyAr
+ODgsNyBAQCBjcHUxOiBjcHVAMSB7CiAJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsgLy8gNjRLaUIo
+c2l6ZSkvNjQobGluZS1zaXplKT0xMDI0d2F5cy80LXdheSBzZXQKIAkJCW5leHQtbGV2ZWwtY2Fj
+aGUgPSA8JmwyX2NhY2hlX2wxPjsKIAotCQkJbDJfY2FjaGVfbDE6IGwyLWNhY2hlLWwxIHsKKwkJ
+CWwyX2NhY2hlX2wxOiBsMi1jYWNoZSB7CiAJCQkJY29tcGF0aWJsZSA9ICJjYWNoZSI7CiAJCQkJ
+Y2FjaGUtc2l6ZSA9IDwweDgwMDAwPjsKIAkJCQljYWNoZS1saW5lLXNpemUgPSA8NjQ+OwpAQCAt
+MTEyLDcgKzExMiw3IEBAIGNwdTI6IGNwdUAyIHsKIAkJCWktY2FjaGUtc2V0cyA9IDwyNTY+OyAv
+LyA2NEtpQihzaXplKS82NChsaW5lLXNpemUpPTEwMjR3YXlzLzQtd2F5IHNldAogCQkJbmV4dC1s
+ZXZlbC1jYWNoZSA9IDwmbDJfY2FjaGVfbDI+OwogCi0JCQlsMl9jYWNoZV9sMjogbDItY2FjaGUt
+bDIgeworCQkJbDJfY2FjaGVfbDI6IGwyLWNhY2hlIHsKIAkJCQljb21wYXRpYmxlID0gImNhY2hl
+IjsKIAkJCQljYWNoZS1zaXplID0gPDB4ODAwMDA+OwogCQkJCWNhY2hlLWxpbmUtc2l6ZSA9IDw2
+ND47CkBAIC0xMzYsNyArMTM2LDcgQEAgY3B1MzogY3B1QDMgewogCQkJaS1jYWNoZS1zZXRzID0g
+PDI1Nj47IC8vIDY0S2lCKHNpemUpLzY0KGxpbmUtc2l6ZSk9MTAyNHdheXMvNC13YXkgc2V0CiAJ
+CQluZXh0LWxldmVsLWNhY2hlID0gPCZsMl9jYWNoZV9sMz47CiAKLQkJCWwyX2NhY2hlX2wzOiBs
+Mi1jYWNoZS1sMyB7CisJCQlsMl9jYWNoZV9sMzogbDItY2FjaGUgewogCQkJCWNvbXBhdGlibGUg
+PSAiY2FjaGUiOwogCQkJCWNhY2hlLXNpemUgPSA8MHg4MDAwMD47CiAJCQkJY2FjaGUtbGluZS1z
+aXplID0gPDY0PjsKCi0tIAoyLjQ3LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
