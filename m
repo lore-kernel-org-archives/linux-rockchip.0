@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDC18C369AA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 17:07:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F28C369AC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 17:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QLsa6g9NOuo0OULOn2K37rwx3TjIUSeBkWs1nw1EDME=; b=KEPJ6vVnmJL+Py
-	gfKQBnVThHziehD/iIlBqaEjYiDECffq+V31QkWzLwv8OFXe3JfMn4AUi919OzBu42m3iRnfJee0M
-	Q3Na6Bllrb3YRk4JTSBdfTh/TGrhfjKllghnhJd31FqBFvfpn1m/c3zhRI/tLdXhSSBHOj0U4DooI
-	Hz/dI2QzuSMxviXjiRaB4jRK/FYnWAR6EZbGaWXiwWleai4xKV/MGFbrGssSa2gOZbLnl+LE67MUy
-	OCy8LzebANtSdfeQ/2YetGFL3OR+lzgObkSB067RTlzwRYZgoifvyzKM2gmDzyQScLFY0KeP0EN9g
-	9qRE7HqDzU4kGr1YxpzA==;
+	List-Owner; bh=eqx/lZPYryh00+Y0MXHT1DjFKnvMqTJUB0/aDyk/1Ec=; b=sQWZZhq/oL1Uwm
+	/XVa/OuT4WAndYN45WbLM+aOZgS552PjnWGuj7EhJAa1CU/LjRMqo9gkezRKLX/1u+Bf3PcEkkTTN
+	+3cWfFxLr682T5Y5qOUj9FnUFXCVIQ5GNR+4h+xi1NweDNlUOuqlbQlP1nuiBYzYltjidV8hSB0L4
+	LKMy/Ki7mPa7MeRLstoR6WAVoq6BlsO6YaGtF5wFIvEbk96l0Ni212JkGSowVlAHxAsw9MSmxm0CU
+	wVJ5W+kcN0AtuFu1MVZfgGq/uNpaZ4/y0I5snLrSj50pOdthJvCkVxl19gyNY6CBkwZDQKWbAJ4rK
+	/eSAOFB9IFa28kvxtNPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vNY-0000000BJk8-3Q6R;
-	Thu, 10 Apr 2025 17:07:52 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2vPR-0000000BK8z-2Zsi;
+	Thu, 10 Apr 2025 17:09:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u8K-0000000B54A-1RWp;
-	Thu, 10 Apr 2025 15:48:05 +0000
+	id 1u2u8N-0000000B55S-3kNG;
+	Thu, 10 Apr 2025 15:48:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0839CA4A925;
-	Thu, 10 Apr 2025 15:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 007AAC4CEDD;
-	Thu, 10 Apr 2025 15:48:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 20AC568449;
+	Thu, 10 Apr 2025 15:47:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4C31C4CEDD;
+	Thu, 10 Apr 2025 15:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300083;
-	bh=08ZHSMoqcp6muzXlw3I6sj8QXRZ+fQyHgNMZj1SSrdY=;
+	s=k20201202; t=1744300086;
+	bh=d2xEle5JR0P+8ywA0siIkzQPF9OlhK/me+6AtXOc0AY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hvr+MRXWz6zZDqbGyKtarK07qSeX1tVPFXSoarGPEnD0U89TtphwqxdOSRLJUGR8s
-	 ijse85CijxUfmz4anXLpHxCZKbQPb/AX1QQ1dN4FedmWWau4+rvqXhgNFDAbFrPvhw
-	 YJWwW+1vted2FUTHOwDNhA8UGfbMx+nKhAZ19SWkUTR1SsMURjrv54YmGB6PV9SS9Z
-	 1khj6/sx3iSVKSHhelpuYN7tfbIQtVcdGpfcBIKLpQ/MjxraUlaGtpNhleFxFwq1Ku
-	 QimonuVOeh0Zwbj5EUUOk5DYIoJ/qmzM2cUcj12IC6hrggz5lNM2kXaBE3kWR3MwXo
-	 cL4uCcB7HchBA==
+	b=qg97LQXxGV9ue31R3MdJVO2YsWgEzGw16N4u8DA8cSMGiQre4zl71TcotrYsR03/s
+	 qxPvL6r0xo8sAMHg/GmU2Ydh7pqHl4uCL4KwtnVRK4bZcRVsku0EjD5jyo920SnEgM
+	 3YPNYEJKauEYI/YTN2EPPH9Sgs2M98xRB4VCeDSvhZ0XTwsK3MYnJyr5+oehnPZQPR
+	 x7DBrqvDUukbGMNLfanV1kuogiP7OWadByi5f7drA7qqyQOQ/TrgE8YzeedwdpTED9
+	 TzmFsWHaGHmHPqL4Wkm1pjhIUHDaaOUuQh+21Lzzb9zRW9meTqoHS7x7RiG56MLbUg
+	 XAsxucDqzahhA==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:33 -0500
-Subject: [PATCH v2 12/17] dt-bindings: arm/cpus: Add schemas for
- "enable-method" dependencies
+Date: Thu, 10 Apr 2025 10:47:35 -0500
+Subject: [PATCH v2 14/17] dt-bindings: Reference opp-v1 schema in CPU
+ schemas
 MIME-Version: 1.0
-Message-Id: <20250410-dt-cpu-schema-v2-12-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-14-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -82,11 +82,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Sudeep Holla <sudeep.holla@arm.com>
+ Viresh Kumar <viresh.kumar@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>
 X-Mailer: b4 0.15-dev
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084804_520098_BEB8269B 
-X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,163 +100,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the prose for properties dependent on specific "enable-method"
-values with schemas defining the same requirements.
+The opp-v1 binding is only used in MIPS and arm32 CPU nodes, so add a
+$ref to it in the CPU schemas and drop the "select".
 
-Both "qcom,acc" and "qcom,saw" properties appear to be required for any
-of the Qualcomm enable-method values, so the schema is a bit simpler
-than what the text said. The properties are also needed on some Qualcomm
-platforms with other enable-method values. It's limited to Cortex A53
-based platforms so use that to disable the properties. The references
-to arm/msm/qcom,saw2.txt and arm/msm/qcom,kpss-acc.txt are out of date,
-so just drop them.
+As opp-v1 has long been deprecated, mark it as such.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
 ---
-v2:
- - Only disallow qcom,acc and qcom,saw on !cortex-a53
- - Fix example in qcom,saw2.yaml
----
- Documentation/devicetree/bindings/arm/cpus.yaml    | 91 ++++++++++++++--------
- .../devicetree/bindings/soc/qcom/qcom,saw2.yaml    |  3 +-
- 2 files changed, 60 insertions(+), 34 deletions(-)
+ Documentation/devicetree/bindings/arm/cpus.yaml   | 1 +
+ Documentation/devicetree/bindings/mips/cpus.yaml  | 3 ++-
+ Documentation/devicetree/bindings/opp/opp-v1.yaml | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index 2e666b2a4dcd..351be2f77581 100644
+index acf38b3518dd..5af1396d631f 100644
 --- a/Documentation/devicetree/bindings/arm/cpus.yaml
 +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -273,8 +273,6 @@ properties:
-     description:
-       The DT specification defines this as 64-bit always, but some 32-bit Arm
-       systems have used a 32-bit value which must be supported.
--      Required for systems that have an "enable-method"
--        property value of "spin-table".
- 
-   cpu-idle-states:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-@@ -333,24 +331,13 @@ properties:
- 
-   qcom,saw:
-     $ref: /schemas/types.yaml#/definitions/phandle
--    description: |
--      Specifies the SAW* node associated with this CPU.
--
--      Required for systems that have an "enable-method" property
--      value of "qcom,kpss-acc-v1" or "qcom,kpss-acc-v2"
--
--      * arm/msm/qcom,saw2.txt
-+    description:
-+      Specifies the SAW node associated with this CPU.
- 
-   qcom,acc:
-     $ref: /schemas/types.yaml#/definitions/phandle
--    description: |
--      Specifies the ACC* node associated with this CPU.
--
--      Required for systems that have an "enable-method" property
--      value of "qcom,kpss-acc-v1", "qcom,kpss-acc-v2", "qcom,msm8226-smp" or
--      "qcom,msm8916-smp".
--
--      * arm/msm/qcom,kpss-acc.txt
-+    description:
-+      Specifies the ACC node associated with this CPU.
- 
-   rockchip,pmu:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -378,22 +365,60 @@ properties:
-       formed by encoding the target CPU id into the low bits of the
+@@ -353,6 +353,7 @@ properties:
        physical start address it should jump to.
  
--if:
--  # If the enable-method property contains one of those values
--  properties:
--    enable-method:
--      contains:
--        enum:
--          - brcm,bcm11351-cpu-method
--          - brcm,bcm23550
--          - brcm,bcm-nsp-smp
--  # and if enable-method is present
--  required:
--    - enable-method
--
--then:
--  required:
--    - secondary-boot-reg
-+allOf:
-+  - if:
-+      # If the enable-method property contains one of those values
-+      properties:
-+        enable-method:
-+          contains:
-+            enum:
-+              - brcm,bcm11351-cpu-method
-+              - brcm,bcm23550
-+              - brcm,bcm-nsp-smp
-+      # and if enable-method is present
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - secondary-boot-reg
-+  - if:
-+      properties:
-+        enable-method:
-+          enum:
-+            - spin-table
-+            - renesas,r9a06g032-smp
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - cpu-release-addr
-+  - if:
-+      properties:
-+        enable-method:
-+          enum:
-+            - qcom,kpss-acc-v1
-+            - qcom,kpss-acc-v2
-+            - qcom,msm8226-smp
-+            - qcom,msm8916-smp
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - qcom,acc
-+        - qcom,saw
-+  - if:
-+      # 2 Qualcomm platforms bootloaders need qcom,acc and qcom,saw yet use
-+      # "spin-table" or "psci" enable-methods. Disallowing the properties for
-+      # all other CPUs is the best we can do as there's not any way to
-+      # distinguish these Qualcomm platforms.
-+      not:
-+        properties:
-+          compatible:
-+            const: arm,cortex-a53
-+    then:
-+      properties:
-+        qcom,acc: false
-+        qcom,saw: false
+ allOf:
++  - $ref: /schemas/opp/opp-v1.yaml#
+   - if:
+       # If the enable-method property contains one of those values
+       properties:
+diff --git a/Documentation/devicetree/bindings/mips/cpus.yaml b/Documentation/devicetree/bindings/mips/cpus.yaml
+index a85137add668..471373ad0cfb 100644
+--- a/Documentation/devicetree/bindings/mips/cpus.yaml
++++ b/Documentation/devicetree/bindings/mips/cpus.yaml
+@@ -50,6 +50,7 @@ properties:
+   device_type: true
  
- required:
-   - device_type
-diff --git a/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml b/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-index ca4bce817273..c2f1f5946cfa 100644
---- a/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-+++ b/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-@@ -73,9 +73,10 @@ examples:
-         #size-cells = <0>;
+ allOf:
++  - $ref: /schemas/opp/opp-v1.yaml#
+   - if:
+       properties:
+         compatible:
+@@ -68,7 +69,7 @@ required:
+   - compatible
+   - reg
  
-         cpu@0 {
--            compatible = "qcom,kryo";
-+            compatible = "arm,cortex-a53";
-             device_type = "cpu";
-             enable-method = "qcom,kpss-acc-v2";
-+            qcom,acc = <&acc0>;
-             qcom,saw = <&saw0>;
-             reg = <0x0>;
-             operating-points-v2 = <&cpu_opp_table>;
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/opp/opp-v1.yaml b/Documentation/devicetree/bindings/opp/opp-v1.yaml
+index 07e26c267815..1b59b103dab6 100644
+--- a/Documentation/devicetree/bindings/opp/opp-v1.yaml
++++ b/Documentation/devicetree/bindings/opp/opp-v1.yaml
+@@ -18,7 +18,7 @@ description: |+
+ 
+   This binding only supports voltage-frequency pairs.
+ 
+-select: true
++deprecated: true
+ 
+ properties:
+   operating-points:
 
 -- 
 2.47.2
