@@ -4,88 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23ABC3601E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 12:46:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4973DC369A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 12:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qst9jZ4v31Bo+gjxWcMGlXV2PL+odaygUbUzwvDMUrg=; b=17QQ6HSk+AnkND
-	2koGi4JyJcEzyrDMhbE09AVpmbNRpXm69uYxTEu435SIQmK9UlGiOZXqBMOBVKby/B3i0/Nb+mb0B
-	R8KQk575H4FpkmCIf9o94efKeLrjC+IL0PgPkz3SCPjaEVCsatO7uh5qFA4I9GPudCHbDPmAuf9MO
-	+rx/kUEsTzppzg6KFwFA7OIG9MOaz6+f7XSYr78y9lHbN55N/eEABd4rzwnuGJ9sca317LBhE+IUc
-	SVYcb0qoBqy8/g6b+gMV4LQBsDNJrHYxYXG2rrvU/8dCTIfo3OlJlZkFyGIWYOgOariq1E9J8ER4Q
-	628G1s4R2LrTIU4MnVeg==;
+	List-Owner; bh=21ChMhu1bjEJ+szXh2CD5OTQecdBjGRESg4kH9y8gjQ=; b=fpc5J3ZWVKmTkp
+	YT9qu+dJQovOXXSRs3PDcnHnNkMnOc/vJGl74bsRTgBuAkt7rGjvibWOdqqA4vKQpNrSStkWf6Hp2
+	X99dBOM0xwVTOY3MdWdX1EAIAJMCVyNB7ivZ09Z0qMd8tjWH8WgoRngQ0uT4rByTcwIMhMaCM8pfF
+	kX9Nj/GN+/Cvsp+fUTH6e4B9C+wDUbc4uzMva20Kp7FHO2Nf6vEJlL0GdMzq/OXcgyBqNqMXg3nIm
+	6siwrzk6TJPeSEtnAw+cuY3OT0iiXBE4GFzlp7a4waiupVtf0BPMyb6t40rPzI89pA+VL+QMWQsrG
+	KAB/wztdnYdN2Tt3rvPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2rIp-0000000AYUe-3gVN;
-	Thu, 10 Apr 2025 12:46:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2r8w-0000000AWRS-3U6c;
-	Thu, 10 Apr 2025 12:36:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744288588;
-	bh=iOvQI6EwbSdrSHz2v4SF2Sz7AgGUQWBFbOMGYLPwJD4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=pBYxLsAXqIXGPUL8Tu5XYtlI0ztS9+E+rorYyx6kk2oBGd2pfY7TX18Zm+P6bFY0O
-	 5SupPcr8QzIChkXO0HAnJ6bBvwVCwa9CTcAO2cQjm6fAH/qRtQflPMxBy/RWy3JurX
-	 Pzk00jGBvplmTR1yR9xAkw439iAQynvMwWhi48j0Vq/eYTdpeUQ3NTGtJOIppBMeHL
-	 yBYvgLSprVDhTyUekJEQt5D1LAYsaZ0Igu2KW4kVLq5XriN0h16kLbjUwg22nDNWEO
-	 gx9zBegrB4Oq7EvqWtB5lyJAkTlaCMhh2Mlxqp1LjBYYdW5Brax18kodCSpnb+dyYG
-	 n7D0T12Xk/DYA==
-Received: from [IPv6:2606:6d00:11:e976::5ac] (unknown [IPv6:2606:6d00:11:e976::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A13B617E0C8D;
-	Thu, 10 Apr 2025 14:36:27 +0200 (CEST)
-Message-ID: <bf9a744df3aa34ea02237b10900431c18f87d7cc.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicono: Enable NV15 support for Rockchip
- VDPU981
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel	
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	kernel@collabora.com
-Date: Thu, 10 Apr 2025 08:36:26 -0400
-In-Reply-To: <7b70a71a.448.1961d1808e5.Coremail.andyshrk@163.com>
-References: <20250409-b4-hantro-nv15-support-v1-1-7e11e47fd0c9@collabora.com>
-	 <7b70a71a.448.1961d1808e5.Coremail.andyshrk@163.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
- oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
- zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
- TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
- 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
- 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
- cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
- tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
- bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
- qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
- BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
- tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
- zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
- 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
- s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
- An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
- ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
- AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
- CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
- 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
- BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
- +E7ItOqZEHAs+xabBgknYZIFPU=
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+	id 1u2rKb-0000000AYsQ-0Saz;
+	Thu, 10 Apr 2025 12:48:33 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u2r9U-0000000AWWq-0X3I;
+	Thu, 10 Apr 2025 12:37:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=rFnq27x4coNBtZepsly9PbTQ7APl0Mfwznlf1HossBM=; b=J
+	zcDa9w2v/7924RpIAuaZDDthRZokXLPF3GAbgzFxH/hFXltPmDjL9xclwJavLX1u
+	f7M7PZYDDeCM7Yu9pbFjHfchNb75+KhBgZh4CqJyzxUlt8v0FIFIF+cj51lYFVwG
+	2g2zOVJnf7r0t6KgVc3GHDmCPqnFMPWbuBNFIDSemE=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-107 (Coremail) ; Thu, 10 Apr 2025 20:36:07 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Thu, 10 Apr 2025 20:36:07 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Heiko Stuebner" <heiko.stuebner@cherry.de>
+Subject: Re:[PATCH v8 00/13] Add eDP support for RK3588
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20250310104114.2608063-1-damon.ding@rock-chips.com>
+References: <20250310104114.2608063-1-damon.ding@rock-chips.com>
+X-NTES-SC: AL_Qu2fBv6Tt00t4SafbOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCHpwA4HTVlTAlzay/CDBgq2nQiHXjJ+zeFCZZJFRqM7aHKxRR/qKmeJ6RSE2yJXmA==
 MIME-Version: 1.0
+Message-ID: <f83f9e3.ae33.1961fb35185.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: aygvCgA3f6A3u_dnnVOTAA--.29407W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hErXmf3t3Jj+QAEs9
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_053631_020014_A2ECE7F8 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20250410_053704_549206_48F3E4DF 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,74 +66,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, dmitry.baryshkov@linaro.org, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, boris.brezillon@collabora.com, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGV5LAoKTGUgamV1ZGkgMTAgYXZyaWwgMjAyNSDDoCAwODoyNyArMDgwMCwgQW5keSBZYW4gYSDD
-qWNyaXTCoDoKPiAKPiBIaSBOaWNvbGFz77yMCj4gwqDCoMKgwqDCoCBUeXBvIGluIHN1YmplY3Tv
-vJ8gcy92ZXJpc2lsaWNvbm8vdmVyaXNpbGljb24vwqDCoMKgwqDCoCAKCkkgbm90aWNlZCBmZXcg
-c2Vjb25kcyBhZnRlciB0aGF0IGVtYWlsIHdlbnQsIGZpeGVkIGxvY2FsbHkuCgp0aGFua3MsCk5p
-Y29sYXMKCj4gCj4gQXQgMjAyNS0wNC0xMCAwMzozMDowOSwgIk5pY29sYXMgRHVmcmVzbmUiCj4g
-PG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4gPiBUaGlzIGlzIGEgImN1
-c3RvbWVyIiBmb3JtYXQsIHRob3VnaCBvbiBSb2NrY2hpcCBSSzM1ODggaXQgaGFzIGJlZW4KPiA+
-IHZlcmlmaWVkIHRvIGJlIE5WMTUgZm9ybWF0LCB3aGljaCBtYXRjaGVzIHdoYXQgdGhlIEdQVSBh
-bmQgZGlzcGxheQo+ID4gaGFuZGxlcyBoYXMgMTBiaXQgcGl4ZWwgZm9ybWF0cy4KPiA+IAo+ID4g
-U2lnbmVkLW9mZi1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJv
-cmEuY29tPgo+ID4gLS0tCj4gPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hh
-bnRyb192NGwyLmPCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMSArCj4gPiAuLi4vcGxhdGZvcm0v
-dmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuY8KgwqDCoMKgwqAgfMKgIDQK
-PiA+ICsrKysKPiA+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBf
-dnB1X2h3LmPCoMKgwqDCoMKgwqAgfCAxNAo+ID4gKysrKysrKysrKysrKysKPiA+IDMgZmlsZXMg
-Y2hhbmdlZCwgMTkgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jCj4gPiBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYwo+ID4gaW5kZXgKPiA+IDJiY2U5
-NDBhNTgyMjdjMmJmZWYyYmMzMzQzOTkyZTQ1ODhhYjM2YTQuLjdjMzUxNWNmN2Q2NGEwOTBhZGZi
-OGQ4YWYKPiA+IGYzNjhmOWE2MTdmOGM4YSAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYwo+ID4gKysrIGIvZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jCj4gPiBAQCAtNzcsNiArNzcsNyBA
-QCBpbnQgaGFudHJvX2dldF9mb3JtYXRfZGVwdGgodTMyIGZvdXJjYykKPiA+IAlzd2l0Y2ggKGZv
-dXJjYykgewo+ID4gCWNhc2UgVjRMMl9QSVhfRk1UX1AwMTA6Cj4gPiAJY2FzZSBWNEwyX1BJWF9G
-TVRfUDAxMF80TDQ6Cj4gPiArCWNhc2UgVjRMMl9QSVhfRk1UX05WMTU6Cj4gPiAJY2FzZSBWNEwy
-X1BJWF9GTVRfTlYxNV80TDQ6Cj4gPiAJCXJldHVybiAxMDsKPiA+IAlkZWZhdWx0Ogo+ID4gZGlm
-ZiAtLWdpdAo+ID4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3JvY2tjaGlw
-X3ZwdTk4MV9od19hdjFfZGVjLmMKPiA+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2ls
-aWNvbi9yb2NrY2hpcF92cHU5ODFfaHdfYXYxX2RlYy5jCj4gPiBpbmRleAo+ID4gNjliNWQ5ZTEy
-OTI2ZmI0MDhjMDhmOGJhMjEzOWQwNWJhNDQzODliNy4uZTQ3MDNiYjZiZTdjMTc1YTg5YzBiODg2
-OAo+ID4gY2YyZWFmYjg0YTg3MmVkIDEwMDY0NAo+ID4gLS0tCj4gPiBhL2RyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYwo+ID4gKysr
-Cj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgx
-X2h3X2F2MV9kZWMuYwo+ID4gQEAgLTIyMDIsNiArMjIwMiwxMCBAQCBzdGF0aWMgdm9pZAo+ID4g
-cm9ja2NoaXBfdnB1OTgxX3Bvc3Rwcm9jX2VuYWJsZShzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+
-ID4gCWNhc2UgVjRMMl9QSVhfRk1UX05WMTI6Cj4gPiAJCWhhbnRyb19yZWdfd3JpdGUodnB1LCAm
-YXYxX3BwX291dF9mb3JtYXQsIDMpOwo+ID4gCQlicmVhazsKPiA+ICsJY2FzZSBWNEwyX1BJWF9G
-TVRfTlYxNToKPiA+ICsJCS8qIHRoaXMgbWFwcGluZyBpcyBSSyBzcGVjaWZpYyAqLwo+ID4gKwkJ
-aGFudHJvX3JlZ193cml0ZSh2cHUsICZhdjFfcHBfb3V0X2Zvcm1hdCwgMTApOwo+ID4gKwkJYnJl
-YWs7Cj4gPiAJZGVmYXVsdDoKPiA+IAkJaGFudHJvX3JlZ193cml0ZSh2cHUsICZhdjFfcHBfb3V0
-X2Zvcm1hdCwgMCk7Cj4gPiAJfQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1X2h3LmMKPiA+IGIvZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS92ZXJpc2lsaWNvbi9yb2NrY2hpcF92cHVfaHcuYwo+ID4gaW5kZXgKPiA+IDk2NDEyMmU3
-YzM1NTkzNGNkODBlYjQ0MjIxOWY2YmE1MWJiYThiNzEuLmY3YzRhMTc2MTY3YjQwZmU3OWVjNWE2
-NzUKPiA+IDlkZmY4YTc3ZTg0OWFlMyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1X2h3LmMKPiA+ICsrKyBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1X2h3LmMKPiA+IEBAIC05Miw2ICs5
-MiwyMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19mbXQKPiA+IHJvY2tjaGlwX3ZwdTk4
-MV9wb3N0cHJvY19mbXRzW10gPSB7Cj4gPiAJCQkuc3RlcF9oZWlnaHQgPSBNQl9ESU0sCj4gPiAJ
-CX0sCj4gPiAJfSwKPiA+ICsJewo+ID4gKwkJLmZvdXJjYyA9IFY0TDJfUElYX0ZNVF9OVjE1LAo+
-ID4gKwkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9OT05FLAo+ID4gKwkJLm1hdGNoX2RlcHRo
-ID0gdHJ1ZSwKPiA+ICsJCS5wb3N0cHJvY2Vzc2VkID0gdHJ1ZSwKPiA+ICsJCS5mcm1zaXplID0g
-ewo+ID4gKwkJCS5taW5fd2lkdGggPSBST0NLQ0hJUF9WUFU5ODFfTUlOX1NJWkUsCj4gPiArCQkJ
-Lm1heF93aWR0aCA9IEZNVF80S19XSURUSCwKPiA+ICsJCQkuc3RlcF93aWR0aCA9IE1CX0RJTSwK
-PiA+ICsJCQkubWluX2hlaWdodCA9IFJPQ0tDSElQX1ZQVTk4MV9NSU5fU0laRSwKPiA+ICsJCQku
-bWF4X2hlaWdodCA9IEZNVF80S19IRUlHSFQsCj4gPiArCQkJLnN0ZXBfaGVpZ2h0ID0gTUJfRElN
-LAo+ID4gKwkJfSwKPiA+ICsJfSwKPiA+IAl7Cj4gPiAJCS5mb3VyY2MgPSBWNEwyX1BJWF9GTVRf
-UDAxMCwKPiA+IAkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9OT05FLAo+ID4gCj4gPiAtLS0K
-PiA+IGJhc2UtY29tbWl0OiA5ZGRjM2Q2YzE2ZWEyNTg3ODk4YTMxNWYyMGY3YjhmYmQ3OTFkYzFi
-Cj4gPiBjaGFuZ2UtaWQ6IDIwMjUwNDAzLWI0LWhhbnRyby1udjE1LXN1cHBvcnQtMDdkZWY0ZTdh
-NTM3Cj4gPiAKPiA+IEJlc3QgcmVnYXJkcywKPiA+IC0tIAo+ID4gTmljb2xhcyBEdWZyZXNuZSA8
-bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+ID4gCgotLSAKTmljb2xhcyBEdWZyZXNu
-ZQpQcmluY2lwYWwgRW5naW5lZXIgYXQgQ29sbGFib3JhCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+Hello Heiko,
+   Could you take this series ? They have already got the necessary R-B and Ack. 
+I think Damon still has some patches for connector decoupling. With this series have been merged earlier. 
+His new patches can have fewer dependencies.
+    
+
+At 2025-03-10 18:41:01, "Damon Ding" <damon.ding@rock-chips.com> wrote:
+>Picked from:
+>https://patchwork.kernel.org/project/linux-rockchip/list/?series=936932
+>
+>These patchs have been tested with a 1536x2048p60 eDP panel on
+>RK3588S EVB1 board, and HDMI 1080P/4K display also has been verified
+>on RK3588 EVB1 board. Furthermore, the eDP display has been rechecked
+>on RK3399 sapphire excavator board.
+>
+>Patch 1~3   are preparations for the RK3588 eDP support on both Analogix
+>            side.
+>Patch 4~8   are to support to get panel from the DP AUX bus.
+>Patch 9~11  are the RK3588 Analogix DP driver support.
+>Patch 12    is the addition of RK3588 eDP0 node.
+>Patch 13    is to enable the eDP0 display on RK3588S EVB1 board.
+>
+>Damon Ding (13):
+>  drm/bridge: analogix_dp: Add irq flag IRQF_NO_AUTOEN instead of
+>    calling disable_irq()
+>  drm/bridge: analogix_dp: Remove CONFIG_PM related check in
+>    analogix_dp_bind()/analogix_dp_unbind()
+>  drm/bridge: analogix_dp: Add support for phy configuration.
+>  dt-bindings: display: rockchip: analogix-dp: Add support to get panel
+>    from the DP AUX bus
+>  drm/bridge: analogix_dp: Support to get &analogix_dp_device.plat_data
+>    and &analogix_dp_device.aux
+>  drm/bridge: analogix_dp: Add support to get panel from the DP AUX bus
+>  drm/bridge: analogix_dp: Add support for
+>    &drm_dp_aux.wait_hpd_asserted()
+>  drm/rockchip: analogix_dp: Add support to get panel from the DP AUX
+>    bus
+>  dt-bindings: display: rockchip: analogix-dp: Add support for RK3588
+>  drm/bridge: analogix_dp: Add support for RK3588
+>  drm/rockchip: analogix_dp: Add support for RK3588
+>  arm64: dts: rockchip: Add eDP0 node for RK3588
+>  arm64: dts: rockchip: Enable eDP0 display on RK3588S EVB1 board
+>
+> .../rockchip/rockchip,analogix-dp.yaml        |  25 ++++-
+> arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  28 +++++
+> .../boot/dts/rockchip/rk3588s-evb1-v10.dts    |  55 ++++++++++
+> .../drm/bridge/analogix/analogix_dp_core.c    |  85 +++++++++------
+> .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  52 +++++++++
+> drivers/gpu/drm/rockchip/Kconfig              |   1 +
+> .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 103 ++++++++++++++++--
+> include/drm/bridge/analogix_dp.h              |   7 +-
+> 8 files changed, 310 insertions(+), 46 deletions(-)
+>
+>-- 
+>2.34.1
+>
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
