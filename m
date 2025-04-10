@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D47C369A9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7FFC3601E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Apr 2025 16:51:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xWbUI0WxYCWigYvv6ckkRJHrbN5i9zHGStVJuKUMpSA=; b=DIa2H/424JXVY/
-	RD/YZ0Zt1Af1a0aRFbXHUV5uLgoJpEkB9vnruNyXbvYLHax2BVl8t4lgrCqWoYQ237Syf8O5fNXgY
-	LWojtLd+az++di2A2jM0bfs3GypyRSF3qdUZ0LtUobu5hbcjvZCDyy1s6HnE25lPn8YAUZmYyllWa
-	7oS6SrABg5wj6JwoAXbsLc2d0g7//Df4dDyYJKozHkRSCzVVt/SfjqIb7s4eyAIctulMIFARGzYs1
-	vJPLneICesQ3mhtK02wWRHmeCXTWO0SekitqfEHbVfcb4Efq2tE+TUkWXAq38GvAextrD2MRU+jQ1
-	4wzHdskGTFe8yZZ1KIyQ==;
+	List-Owner; bh=2d2J1NDUyBeNQoijEHzPzJlSM+SGIYc/m9wsHzVKLtM=; b=IsQFpz1d0yoYHz
+	1xdRGipIPLM7W3oLXq5Tc8SjT0nzrwn9GQTaIeGXwiHdEtDGzquB5E/klPdaJrPmfEvTRTo5RikkR
+	rwlKhLQLBZsV6rb98EFqdPJTob5aSswL4q9YQCAhc1IYET0C8tZf2mwpxJmsCpRqp7nYgmVOyHvKg
+	109YF72hxKOJVk7hqKf3EbV5YLoJvWz8QiuWiIB/gpP3hBYPtNQuRK96wC8jj3Vf08duWSYsH/+67
+	NLJVIXY2EHeaokNE23MxpRC/oTxAarN4gwJ4Mg6UFyBnx9haOlKb7dr/IS9lJ8TmSP9tV2tXMicI1
+	i+Fejg7dX+ClsLbEfgdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2v5k-0000000BGRC-3Cvy;
-	Thu, 10 Apr 2025 16:49:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u2v7V-0000000BGhi-0SyZ;
+	Thu, 10 Apr 2025 16:51:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u85-0000000B4y1-2iXr;
-	Thu, 10 Apr 2025 15:47:50 +0000
+	id 1u2u85-0000000B4y2-35Ns;
+	Thu, 10 Apr 2025 15:47:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 25C2E44EA3;
-	Thu, 10 Apr 2025 15:47:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95E14C4CEEA;
-	Thu, 10 Apr 2025 15:47:48 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B54AA4A44B;
+	Thu, 10 Apr 2025 15:47:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33747C4CEE9;
+	Thu, 10 Apr 2025 15:47:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300068;
-	bh=MJ4WoqvhgC/aZjAy/ZTQhYcG1cI4RNuRYa6MzsWqQtk=;
+	s=k20201202; t=1744300067;
+	bh=17E6AqFYyreXuXiCUMrel7kiiXcdT5b24ICEL4rFA+A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hKfnqZneC+abzLvYTV6plSnmp6les52XSC3Xz9C7Rcp6J4l9nCVNuTwwlTUqDwC2q
-	 +72ANtmUuZvc/VC9/xocD3jWreOuzykzBrMs4XMQ+5mfaCArgkpCjWOGupDZjoz5Ow
-	 8UosB8hJqyiNrk+9DA7VvUzhvQIATUk+C0zQVQFDi+LPw+XTwEqa/nzR/JLtX1szDN
-	 PBgCNHvQouW1ck4kouSglDLfZtlrrW/w97heJkhLLQgWU5bkcf8/K4TkAhklO7XJAd
-	 vNyAf87yOvTzcn67GZHe95oSdT4xtwNHwsePQSTvc2Glij/FQIgwfTDE2C7PXQwh/o
-	 +h/3lbYv+BgBQ==
+	b=EO3eS51Ey9S8GJDcQAD6Rr1t3w6p6SAFWhoWkQ3W2bG6/AQW4FOhZwWpfKl+Wa2CX
+	 rjHhnrPIfNDzvsNPhaHlwKdZoeWSmw4nX1LiK+OVHzZwvwGzoEcL5T6BrmVVYaChhw
+	 P89evcQIT5K7fAHjnq9wbIjJ7jWx+ciBKRTcDqM2aZmRBv/n3LnYH+n9JuvVJQap9w
+	 3F9BCpDxC9gZjNGhRtDyqme2YIWauF1tC7B4P4JU0v2WqsTaDPyhu83pmJz++H32z/
+	 4GL746Vd9s/tc+V5Y4TK6nVcNQK/xh15HP+fsn0Oks0zVeOoxrV/b/vl3RxLG+kHyZ
+	 8GAJNzuFYqX6A==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:23 -0500
-Subject: [PATCH v2 02/17] arm64: dts: broadcom: bcm2712: Use "l2-cache" for
- L2 cache node names
+Date: Thu, 10 Apr 2025 10:47:22 -0500
+Subject: [PATCH v2 01/17] arm64: dts: allwinner: h5/h6: Drop spurious
+ 'clock-latency-ns' properties
 MIME-Version: 1.0
-Message-Id: <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-1-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -82,11 +82,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ Andre Przywara <andre.przywara@arm.com>
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084749_728676_CCC25C7D 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20250410_084749_828395_AF5B3BC5 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,43 +99,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlcmUncyBubyBuZWVkIGluY2x1ZGUgdGhlIENQVSBudW1iZXIgaW4gdGhlIEwyIGNhY2hlIG5v
-ZGUgbmFtZXMgYXMKdGhlIG5hbWVzIGFyZSBsb2NhbCB0byB0aGUgQ1BVIG5vZGVzLiBUaGUgZG9j
-dW1lbnRlZCBub2RlIG5hbWUgaXMKYWxzbyBqdXN0ICJsMi1jYWNoZSIuCgpTaWduZWQtb2ZmLWJ5
-OiBSb2IgSGVycmluZyAoQXJtKSA8cm9iaEBrZXJuZWwub3JnPgpSZXZpZXdlZC1ieTogUGhpbGlw
-cGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPgotLS0KIGFyY2gvYXJtNjQvYm9v
-dC9kdHMvYnJvYWRjb20vYmNtMjcxMi5kdHNpIHwgOCArKysrLS0tLQogMSBmaWxlIGNoYW5nZWQs
-IDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0
-L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvYnJv
-YWRjb20vYmNtMjcxMi5kdHNpCmluZGV4IDllNjEwYTg5YTMzNy4uYWQwY2FjOGU0NDQ0IDEwMDY0
-NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaQorKysgYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL2Jyb2FkY29tL2JjbTI3MTIuZHRzaQpAQCAtNjQsNyArNjQsNyBA
-QCBjcHUwOiBjcHVAMCB7CiAJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsgLy8gNjRLaUIoc2l6ZSkv
-NjQobGluZS1zaXplKT0xMDI0d2F5cy80LXdheSBzZXQKIAkJCW5leHQtbGV2ZWwtY2FjaGUgPSA8
-JmwyX2NhY2hlX2wwPjsKIAotCQkJbDJfY2FjaGVfbDA6IGwyLWNhY2hlLWwwIHsKKwkJCWwyX2Nh
-Y2hlX2wwOiBsMi1jYWNoZSB7CiAJCQkJY29tcGF0aWJsZSA9ICJjYWNoZSI7CiAJCQkJY2FjaGUt
-c2l6ZSA9IDwweDgwMDAwPjsKIAkJCQljYWNoZS1saW5lLXNpemUgPSA8NjQ+OwpAQCAtODgsNyAr
-ODgsNyBAQCBjcHUxOiBjcHVAMSB7CiAJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsgLy8gNjRLaUIo
-c2l6ZSkvNjQobGluZS1zaXplKT0xMDI0d2F5cy80LXdheSBzZXQKIAkJCW5leHQtbGV2ZWwtY2Fj
-aGUgPSA8JmwyX2NhY2hlX2wxPjsKIAotCQkJbDJfY2FjaGVfbDE6IGwyLWNhY2hlLWwxIHsKKwkJ
-CWwyX2NhY2hlX2wxOiBsMi1jYWNoZSB7CiAJCQkJY29tcGF0aWJsZSA9ICJjYWNoZSI7CiAJCQkJ
-Y2FjaGUtc2l6ZSA9IDwweDgwMDAwPjsKIAkJCQljYWNoZS1saW5lLXNpemUgPSA8NjQ+OwpAQCAt
-MTEyLDcgKzExMiw3IEBAIGNwdTI6IGNwdUAyIHsKIAkJCWktY2FjaGUtc2V0cyA9IDwyNTY+OyAv
-LyA2NEtpQihzaXplKS82NChsaW5lLXNpemUpPTEwMjR3YXlzLzQtd2F5IHNldAogCQkJbmV4dC1s
-ZXZlbC1jYWNoZSA9IDwmbDJfY2FjaGVfbDI+OwogCi0JCQlsMl9jYWNoZV9sMjogbDItY2FjaGUt
-bDIgeworCQkJbDJfY2FjaGVfbDI6IGwyLWNhY2hlIHsKIAkJCQljb21wYXRpYmxlID0gImNhY2hl
-IjsKIAkJCQljYWNoZS1zaXplID0gPDB4ODAwMDA+OwogCQkJCWNhY2hlLWxpbmUtc2l6ZSA9IDw2
-ND47CkBAIC0xMzYsNyArMTM2LDcgQEAgY3B1MzogY3B1QDMgewogCQkJaS1jYWNoZS1zZXRzID0g
-PDI1Nj47IC8vIDY0S2lCKHNpemUpLzY0KGxpbmUtc2l6ZSk9MTAyNHdheXMvNC13YXkgc2V0CiAJ
-CQluZXh0LWxldmVsLWNhY2hlID0gPCZsMl9jYWNoZV9sMz47CiAKLQkJCWwyX2NhY2hlX2wzOiBs
-Mi1jYWNoZS1sMyB7CisJCQlsMl9jYWNoZV9sMzogbDItY2FjaGUgewogCQkJCWNvbXBhdGlibGUg
-PSAiY2FjaGUiOwogCQkJCWNhY2hlLXNpemUgPSA8MHg4MDAwMD47CiAJCQkJY2FjaGUtbGluZS1z
-aXplID0gPDY0PjsKCi0tIAoyLjQ3LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+'clock-latency-ns' is not a valid property for CPU nodes. It belongs in
+OPP table (which has it). Drop them from the CPU nodes.
+
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+---
+ arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi | 4 ----
+ arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi | 4 ----
+ 2 files changed, 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi
+index d3caf27b6a55..48802bf02f3b 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi
+@@ -16,7 +16,6 @@ cpu0: cpu@0 {
+ 			reg = <0>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -26,7 +25,6 @@ cpu1: cpu@1 {
+ 			reg = <1>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -36,7 +34,6 @@ cpu2: cpu@2 {
+ 			reg = <2>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -46,7 +43,6 @@ cpu3: cpu@3 {
+ 			reg = <3>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
+index 2301c59b41b1..73e8604315c5 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
+@@ -27,7 +27,6 @@ cpu0: cpu@0 {
+ 			reg = <0>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+@@ -44,7 +43,6 @@ cpu1: cpu@1 {
+ 			reg = <1>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+@@ -61,7 +59,6 @@ cpu2: cpu@2 {
+ 			reg = <2>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+@@ -78,7 +75,6 @@ cpu3: cpu@3 {
+ 			reg = <3>;
+ 			enable-method = "psci";
+ 			clocks = <&ccu CLK_CPUX>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			#cooling-cells = <2>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+
+-- 
+2.47.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
