@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85EFEC36010
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 14:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0BDC36010
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 14:46:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NG72dF6pkj/xIeym11PHDqn29DLTMpO10cLL1sudq64=; b=NgIlrbnr2Q4OGS
-	LsO2MDJmrUnE68NHpFksEmgIFpVjOVyM/YFFMdHvUu/aLYe9D6JI5HGIx7Z2kYncxNn7w7GvXMGMV
-	AiLHLUg7anKX9pE5Y5BSQu2pw4brE3jl/VyDTnEgiHCJ2CrNQP8dpeRzH6BoJMa59tfb14z/Cr8IS
-	gIkOxv5sYXSZREgRlLsiktI3BQVcZ9RmjUO1ebwPiU7uXWRqNd9moSSUNf0neun9MBTHS77Dez5ln
-	/ppWaOBn6iHGYPkD8TTV1wsNwfwHBKy26tPVm0YllmNRCvnxi8GzBnvcKaeZejIydfllW+4Je0yvN
-	weWbAUyBH7ooBPtF0ofg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mpZHwDsKRfsKyR//5EUqIjefLzMte9/iqzvmXXnZxZs=; b=iaVA7TycaRNWIg
+	DVsNHu7GELQZfeA81Qos8iSsET8Am1eB52u4GdMZW90fOHJolmLkuJ7Wl5jnUhVDf8F2i5JCWFZaS
+	7xfxG7JDTAhgCsUusyoYFDY6a7F/2y09/LMMGWMM8Zj0OWakfCV96oyzFK74mzo9Fe7jS54LXSTEg
+	1XM+5HZiPg7as75pZuyRmeOI1lomwF/kKCww9syENCfGlCeAw8mVIccQ4qJ7VXGRslBxa/YW971dU
+	drS0ICM1iA913YHGPI6L0p/sDxl55mcTYTMXxcmlCjY9t8w8ZxdIJ5Emty9YYpGsD+bL+b87gAbg7
+	uO3dnjGlZ+i3weZVR7fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3FRo-0000000E6hI-38AZ;
-	Fri, 11 Apr 2025 14:33:36 +0000
-Received: from wp725.webpack.hosteurope.de ([80.237.130.247])
+	id 1u3FeL-0000000E8zV-1Vzt;
+	Fri, 11 Apr 2025 14:46:33 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3FF7-0000000E4Gs-3i7H;
-	Fri, 11 Apr 2025 14:20:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=fivetechno.de; s=he121032; h=Content-Transfer-Encoding:MIME-Version:
-	Message-Id:Date:Subject:Cc:To:From:From:Sender:Reply-To:Subject:Date:
-	Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=3EN09kEXG7OMqR0uy2B4D2/5Ob0p4yVnh/cBhdXyJbw=; t=1744381229; x=1744813229; 
-	b=Mst8MDbHXGiFtTHAjJDo47Cf+/lxrD4o/MnhNxgMUCSaZ25hoPDFO0t8XHVDPA/Fxlohn9nM9bi
-	/40W9OKV7axi766N/QnCVlqmRCeKRjdKO6j++0/qT0mkX/koq5/ybnes72dSBZ/6Lt4l8npOhNJnR
-	ko8KAQukLIhuZW6bGegNgpa/XMASRuAT9ST9VSR2uQCqJTsCAQqYCsR7MQnGklDfKLNm78THRSAMk
-	aq07QCxgRYOLZjhO6YO3mEY5CQBlzA2lqtCeujPhSlHNajnJC/LCKxPcftoOHCtSPIEBPkVwEKA8h
-	WcEoUSwwoejzijilNyK2UsN0krKmAALYktuw==;
-Received: from p5098d998.dip0.t-ipconnect.de ([80.152.217.152] helo=hermes.fivetechno.de); authenticated
-	by wp725.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	id 1u3Exs-001YA2-25;
-	Fri, 11 Apr 2025 16:02:40 +0200
-X-Virus-Scanned: by amavisd-new 2.12.1 using newest ClamAV at
-	linuxbbg.five-lan.de
-Received: from roc-pc (p5b125997.dip0.t-ipconnect.de [91.18.89.151])
-	(authenticated bits=0)
-	by hermes.fivetechno.de (8.15.2/8.15.2/SUSE Linux 0.8) with ESMTPSA id 53BE2dPh013976
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
-	Fri, 11 Apr 2025 16:02:39 +0200
-From: Markus Reichl <m.reichl@fivetechno.de>
-To: linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add vcc supply to spi flash on rk3399-roc-pc.
-Date: Fri, 11 Apr 2025 16:02:21 +0200
-Message-Id: <20250411140223.1069-1-m.reichl@fivetechno.de>
-X-Mailer: git-send-email 2.39.5
+	id 1u3FQG-0000000E6Ik-318Q;
+	Fri, 11 Apr 2025 14:32:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1744381906; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=iU5GPHPv3JH4Kee/QfUFQyYLt1uqLC8Q0t06jEaI2NsONtG5B0atnr73AReTWF4+HFBHfx0O8/H75ou47AgIY1prFa3AfsknQZYvnQnS/CU6bey+t993VtK0UsXP5Xvje6L4F0MlvwPy7af3RdC2SIIQi8MRVOOs6Tm28/SEiZo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1744381906; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4bEVzwa077L98xmrJC/K3SEciVJ1LxE/oPvC3WGlF80=; 
+	b=eOQJP8AH4Vh2RF4ho2CUqImbYpn42paEp/GzjiKA+WSVwAQ73W0UEnsN/gxc2F0yF9WdBT4khYQL7dz9U0GoSgUiv3yZ0Z38csnqpQil0SmDLL7PCQ6fYw6QJlPm8ZgBCtfM309fkPt1gPj5qJNrTI+R0pYWq6Yhexs9K9fmiqk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744381906;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=4bEVzwa077L98xmrJC/K3SEciVJ1LxE/oPvC3WGlF80=;
+	b=LhZ8G4aHexSUcndCBZQ6W00cpw7UCzuAeXgHRc2ktcxKSl/EeRGVxIrJIzJ1aqlA
+	GLi8sQt8/rmczMh26qGi5DLvgcu3M0dsb5V3hv98Jr1rXclsmr4KeO+IH5dnF2KG2JE
+	oZW/p5/f9ObjOVNUD1FOyJjbBGWYWjFH2XjqNpws=
+Received: by mx.zohomail.com with SMTPS id 1744381904334406.2356180581727;
+	Fri, 11 Apr 2025 07:31:44 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/4] dt-bindings: phy: rockchip,inno-usb2phy: add port property
+Date: Fri, 11 Apr 2025 16:31:38 +0200
+Message-ID: <6743970.MhkbZ0Pkbq@workhorse>
+In-Reply-To: <20250410211123.GA1071510-robh@kernel.org>
+References: <20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com>
+ <20250407-rk3576-sige5-usb-v1-1-67eec166f82f@collabora.com>
+ <20250410211123.GA1071510-robh@kernel.org>
 MIME-Version: 1.0
-X-bounce-key: webpack.hosteurope.de;m.reichl@fivetechno.de;1744381229;8b4e775c;
-X-HE-SMSGID: 1u3Exs-001YA2-25
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_072030_068797_07AB4A7B 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250411_073200_810496_87CBDE37 
+X-CRM114-Status: GOOD (  34.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +83,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add vcc supply to the spi-nor flash chip on rk3399-roc-pc boards
-according to the board schematics ROC-3399-PC-V10-A-20180804 to avoid
-warnings in dmesg output.
+On Thursday, 10 April 2025 23:11:23 Central European Summer Time Rob Herring wrote:
+> On Mon, Apr 07, 2025 at 08:09:14PM +0200, Nicolas Frattaroli wrote:
+> > USB connectors like to have OF graph connections to high-speed related
+> > nodes to do various things. In the case of the RK3576, we can make use
+> > of a port in the usb2 PHY to detect whether the OTG controller is
+> > connected to a type C port and apply some special behaviour accordingly.
+> > 
+> > The usefulness of having different bits of a fully functioning USB stack
+> > point to each other is more general though, and not constrained to
+> > RK3576 at all, even for this use-case.
+> > 
+> > Add a port property to the binding.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > index 6a7ef556414cebad63c10de754778f84fd4486ee..3a662bfc353250a8ad9386ebb5575d1e84c1b5ba 100644
+> > --- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > +++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > @@ -78,6 +78,11 @@ properties:
+> >        When set the driver will request its phandle as one companion-grf
+> >        for some special SoCs (e.g rv1108).
+> >  
+> > +  port:
+> > +    $ref: /schemas/graph.yaml#/properties/port
+> > +    description:
+> > +      A port node to link the PHY to a USB connector's "high-speed" port.
+> 
+> I don't think this is correct. The HS port of the connector goes to the 
+> controller. The controller has the link to the phy.
+> 
+> If the PHY is also what handles USB-C muxing or orientation switching, 
+> then it might have ports, but then it needs input and output ports.
+> 
+> Rob
+> 
 
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
----
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Hi Rob,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 0393da25cdfb..fc9279627ef6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -736,6 +736,7 @@ flash@0 {
- 		compatible = "jedec,spi-nor";
- 		reg = <0>;
- 		spi-max-frequency = <30000000>;
-+		vcc-supply = <&vcc3v3_sys>;
- 	};
- };
- 
--- 
-2.39.5
+thank you for the quick response.
+
+I've feared this would be the case, but chose to go ahead with this solution
+anyway because I'm not super stoked about the alternatives I can think of. The
+problem is that I need to go from the USB PHY node to the USB connector somehow,
+but there's no way I can see to get from the PHY node to the USB2 controller
+it's connected to, unless I'm missing something obvious.
+
+So I see two alternatives:
+1. Extend the usb connector binding to add additional ports for PHYs that handle
+   vbus detection or something, then extend either the inno2 binding or a more
+   general usb PHY binding to add that port definition.
+2. Revert to what the downstream vendor kernel does and simply add a boolean
+   flag property to the inno usb2phy binding that tells it whether it's
+   connected to a USB-C port and should therefore expect vbusdet to remain high.
+
+Let me know if there's any better alternatives I missed. If there's some OF
+driver function to enumerate all controllers a PHY is referenced by, then that
+would probably work as well, allowing me to just point the HS port to the
+controller instead as intended.
+
+If no better solutions exist then I'm partial to 2. While it makes writing
+device trees a little more error prone and I don't like vendor properties, it
+means we don't set the "all USB-C ports will always have vbusdet pulled high" in
+stone, a claim that I am not 100% confident in.
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
 _______________________________________________
