@@ -4,78 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC04C369AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 08:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48ABCC369A9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 08:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WIN9dUH/x6L2k67Z7UBG3wJFUU6W+21xP2IM02WULHI=; b=Ztk8A/cDIuItVo
-	1UuJjHG3Ihk6dobkYqmHmUN1bgBqDoyzzqvwFz5U/7bFO5fQ/Sl0n5CuWE0tGRGDVaLlKd4GwdkI6
-	Uk+YuPPMknnBzBqzz6lCgaAJngxtFpyDl0hHun1XeUF/pPI2HaY2TX4WMC4PcHNJXiUa751WHNkgL
-	JslgJ/oYlDbbs+JSZ7u2t9N/e0MseD+WUsicSsVSBEXpqRcN8m/lw/nqopaOA6HSeHHDbolvq7gJv
-	lzcgdtuNT09buiFe8pfgRig0RFeJO4QhHIDOPnqduMWk5fmw/RJ+4IwyI9aVlHxxLDkwn2VWGQwf5
-	Er+i0f+knWteNiskNDhQ==;
+	List-Owner; bh=RkYYDf6lwWqi8iTophSwcO9JfDeDP249GBG+J0I/TuE=; b=pqUhml+M5e1U5B
+	GxGBZReDIsnn3oHXmNe4dcC7ubwtWEC5S9VTuYbQngQdcYq0A+b5VZnat3p0wS6BIdcShPhr7bFGD
+	xHm+yGLd5Q0s1nS+ePkPX/tdq6hOvXWcMzqAk/X+nBb3tqBJZoQ/f/b2dlFjD9EQbgaCnGHL+pnMt
+	LaLd3VY9KvxOeVTenI3fXENPWNoinEJJcJpMTMqqZnscQeT4b3bJK7TkDj6lEE/RYT1mSJSWILIjr
+	WIWzRz3cC43Bnv6vXW7NpwDpud6ksXmaxJ2T4jvsyJ26BEVTyooHM8kF9yMzVrjFBdaqagkYx3dHF
+	TDTjLOsN25kqEbNi7HnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3A0w-0000000D4rT-21Yz;
-	Fri, 11 Apr 2025 08:45:30 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1u3ADR-0000000D6i7-3HVr;
+	Fri, 11 Apr 2025 08:58:25 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u39ra-0000000D2R0-3VcQ
+	id 1u3A77-0000000D5lJ-3M0B
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Apr 2025 08:35:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744360551; x=1775896551;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=UB+gYPbNoFH/gTLnDV+gkaB+80nVg6rXio4SmeE5bMg=;
-  b=GTyj97SoOS1BFUJnzM505bRwPrzOJ7T9KSmCyHn9w26j1jp6umo/QZIN
-   niMJwIahZmFXxpiVMNqETRlJKM8biX9MuH6W3W/jCuZCIFRiBUF93in4a
-   byN9yAPQDmYPsERTqJzk6NdOpY+ch7iXecMAaQyder8WXOiNifM10IYFm
-   M+kGD2LpV0L2ZRQNUo+Lxj//KcG16DD/NiANA9W7TA3kQB25bAIkh5Y4P
-   lXezuNVZ2hLnzxx81vUpdLri1oH9pauQIkR0/FzZlT/nLJF01PtJrTL5W
-   XfEwdKQ9eKD2TRTmx4n03Zf3HG2/rLa/otnt8VczxHDvF++YTKKsl7S0q
-   w==;
-X-CSE-ConnectionGUID: HSFlKkDcS+ijvGmwUjJQAw==
-X-CSE-MsgGUID: BJKz04hvSlK/nIteFTY95w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11400"; a="45996187"
-X-IronPort-AV: E=Sophos;i="6.15,203,1739865600"; 
-   d="scan'208";a="45996187"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Apr 2025 01:35:49 -0700
-X-CSE-ConnectionGUID: 4OxZi7pqQgW7c4kwv/5WSQ==
-X-CSE-MsgGUID: H+x/QhFWSjKkr8lJDf21Og==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,203,1739865600"; 
-   d="scan'208";a="129980391"
-Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 11 Apr 2025 01:35:46 -0700
-Received: from kbuild by b207828170a5 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1u39rU-000AyY-2c;
-	Fri, 11 Apr 2025 08:35:44 +0000
-Date: Fri, 11 Apr 2025 16:35:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Bjorn Helgaas <helgaas@kernel.org>,
+	Fri, 11 Apr 2025 08:51:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 90BCB61135;
+	Fri, 11 Apr 2025 08:51:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D113DC4CEE2;
+	Fri, 11 Apr 2025 08:51:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744361512;
+	bh=qHj51DT4gaDYfC3Nzo5S6OJxmFzJOSStKKxG0u5ZzLw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xn+xnlktmHWVRACGKgFBHDDhK8HOW1gkoU+BTTARXvf0DJPW0CPeP/U6HlQ4VzLj8
+	 P+aK6zcgjwR6MBjk1mY8G8+SAZq85oho3JcsbpxphErE32v5lN1l5oNwpVgQwCjgPo
+	 U9E5h0e7hZlecnSxTvdpjaxLzDZLWkznxFQDfTWeNvmctmtoktlrMBiev651dxLIPx
+	 3wT7ev4Vx5tKaW3K7HtSnnAsVCzdd1lC1ZtWEa/IyQLifp2wbAEeZ9BZa99yIG+Vgl
+	 dlIDGAeKJbOCD1KDi4Peut3CEN7IQL1NBlXyl0nUst72/dkyCyuAtlnzIqCngcvWWP
+	 6qrvMPuX9PrJg==
+Date: Fri, 11 Apr 2025 10:51:48 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: dw-rockchip: Add system PM support
-Message-ID: <202504111625.Eds7X9BC-lkp@intel.com>
-References: <1744267805-119602-1-git-send-email-shawn.lin@rock-chips.com>
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable L0S capability
+Message-ID: <Z_jYJKL9rOGMR0xg@ryzen>
+References: <1744332481-143011-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1744267805-119602-1-git-send-email-shawn.lin@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_013550_944310_55060BFF 
-X-CRM114-Status: GOOD (  11.79  )
+In-Reply-To: <1744332481-143011-1-git-send-email-shawn.lin@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,132 +71,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+Hello Shawn,
 
-kernel test robot noticed the following build warnings:
+On Fri, Apr 11, 2025 at 08:48:01AM +0800, Shawn Lin wrote:
+> L0S capability isn't enabled on all SoCs by default, so enabling it
+> in order to make ASPM L0S work on Rockchip platforms. We have been
+> testing it for quite a long time and found the default FTS number
+> provided by DWC core doesn't work stable and make LTSSM switch between
+> L0S and Recovery, leading to long exit latency, even fail to link sometimes.
+> So override it to the max 255 which seems work fine under test for both PHYs
+> used by Rockchip platforms.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - Move n_fts to probe function
+> - rewrite the commit message
+> 
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 21dc99c..c397f3a 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -185,6 +185,17 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
+>  static int rockchip_pcie_start_link(struct dw_pcie *pci)
+>  {
+>  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> +	u32 cap, lnkcap;
+> +
+> +	/* Enable L0S capability for all SoCs */
+> +	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
+> +	if (cap) {
+> +		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
+> +		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
+> +		dw_pcie_dbi_ro_wr_en(pci);
+> +		dw_pcie_writel_dbi(pci, cap + PCI_EXP_LNKCAP, lnkcap);
+> +		dw_pcie_dbi_ro_wr_dis(pci);
+> +	}
 
-[auto build test WARNING on pci/next]
-[also build test WARNING on pci/for-linus linus/master v6.15-rc1 next-20250410]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+I think it looks wrong to have this in _start_link().
+Why not put this code in a new "_enable_l0s() function, and call it from:
+rockchip_pcie_ep_init() and rockchip_pcie_host_init().
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-dw-rockchip-Add-system-PM-support/20250410-145426
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/1744267805-119602-1-git-send-email-shawn.lin%40rock-chips.com
-patch subject: [PATCH] PCI: dw-rockchip: Add system PM support
-config: x86_64-buildonly-randconfig-001-20250411 (https://download.01.org/0day-ci/archive/20250411/202504111625.Eds7X9BC-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250411/202504111625.Eds7X9BC-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202504111625.Eds7X9BC-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:749:12: warning: 'rockchip_pcie_resume' defined but not used [-Wunused-function]
-     749 | static int rockchip_pcie_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:725:12: warning: 'rockchip_pcie_suspend' defined but not used [-Wunused-function]
-     725 | static int rockchip_pcie_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~~
+When looking at this, we probably should also move the
+rockchip_pcie_ep_hide_broken_ats_cap_rk3588() call from _pre_init() to _init(),
+because if there is a core reset, _init() is called again, but _pre_init() is
+not.
 
 
-vim +/rockchip_pcie_resume +749 drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>  
+>  	/* Reset device */
+>  	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
+> @@ -598,6 +609,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	rockchip->pci.dev = dev;
+>  	rockchip->pci.ops = &dw_pcie_ops;
+>  	rockchip->data = data;
 
-   724	
- > 725	static int rockchip_pcie_suspend(struct device *dev)
-   726	{
-   727		struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-   728		struct dw_pcie *pci = &rockchip->pci;
-   729		int ret;
-   730	
-   731		rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
-   732	
-   733		ret = dw_pcie_suspend_noirq(pci);
-   734		if (ret) {
-   735			dev_err(dev, "failed to suspend\n");
-   736			return ret;
-   737		}
-   738	
-   739		rockchip_pcie_phy_deinit(rockchip);
-   740		clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-   741		reset_control_assert(rockchip->rst);
-   742		if (rockchip->vpcie3v3)
-   743			regulator_disable(rockchip->vpcie3v3);
-   744		gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-   745	
-   746		return 0;
-   747	}
-   748	
- > 749	static int rockchip_pcie_resume(struct device *dev)
-   750	{
-   751		struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-   752		struct dw_pcie *pci = &rockchip->pci;
-   753		int ret;
-   754	
-   755		reset_control_assert(rockchip->rst);
-   756	
-   757		ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-   758		if (ret) {
-   759			dev_err(dev, "clock init failed\n");
-   760			goto err_clk;
-   761		}
-   762	
-   763		if (rockchip->vpcie3v3) {
-   764			ret = regulator_enable(rockchip->vpcie3v3);
-   765			if (ret)
-   766				goto err_power;
-   767		}
-   768	
-   769		ret = phy_init(rockchip->phy);
-   770		if (ret) {
-   771			dev_err(dev, "fail to init phy\n");
-   772			goto err_phy_init;
-   773		}
-   774	
-   775		ret = phy_power_on(rockchip->phy);
-   776		if (ret) {
-   777			dev_err(dev, "fail to power on phy\n");
-   778			goto err_phy_on;
-   779		}
-   780	
-   781		reset_control_deassert(rockchip->rst);
-   782	
-   783		rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx),
-   784					 PCIE_CLIENT_INTR_MASK_LEGACY);
-   785	
-   786		rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
-   787		rockchip_pcie_unmask_dll_indicator(rockchip);
-   788	
-   789		ret = dw_pcie_resume_noirq(pci);
-   790		if (ret) {
-   791			dev_err(dev, "fail to resume\n");
-   792			goto err_resume;
-   793		}
-   794	
-   795		return 0;
-   796	
-   797	err_resume:
-   798		phy_power_off(rockchip->phy);
-   799	err_phy_on:
-   800		phy_exit(rockchip->phy);
-   801	err_phy_init:
-   802		if (rockchip->vpcie3v3)
-   803			regulator_disable(rockchip->vpcie3v3);
-   804	err_power:
-   805		clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-   806	err_clk:
-   807		reset_control_deassert(rockchip->rst);
-   808		return ret;
-   809	}
-   810	
+Perhaps add a newline here.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> +	/* Default fts number(210) is broken, override it to 255 */
+
+Perhaps add a space between "number" and "(".
+Perhaps write it as N_FTS instead of fts.
+Perhaps use "value" instead of "number".
+
+ie.
+
+/* Default N_FTS value (210) is broken, ... */
+
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
