@@ -4,57 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48ABCC369A9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 08:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC5D1C369A2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 09:16:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RkYYDf6lwWqi8iTophSwcO9JfDeDP249GBG+J0I/TuE=; b=pqUhml+M5e1U5B
-	GxGBZReDIsnn3oHXmNe4dcC7ubwtWEC5S9VTuYbQngQdcYq0A+b5VZnat3p0wS6BIdcShPhr7bFGD
-	xHm+yGLd5Q0s1nS+ePkPX/tdq6hOvXWcMzqAk/X+nBb3tqBJZoQ/f/b2dlFjD9EQbgaCnGHL+pnMt
-	LaLd3VY9KvxOeVTenI3fXENPWNoinEJJcJpMTMqqZnscQeT4b3bJK7TkDj6lEE/RYT1mSJSWILIjr
-	WIWzRz3cC43Bnv6vXW7NpwDpud6ksXmaxJ2T4jvsyJ26BEVTyooHM8kF9yMzVrjFBdaqagkYx3dHF
-	TDTjLOsN25kqEbNi7HnQ==;
+	List-Owner; bh=ZgKLTgaXosbaoSyLHquU+jHO3WaW/bOVTTNJPh0YGt8=; b=gJgTIuiN52GHPT
+	cLh6yUO75gLmiflSpernI3ETBv034QaPaWhRtq+bQt5JaXB9y159yRPyrXczdN05ijecboSv5kRY4
+	XCd2QF7DfECSEFU893o/pkfq4Fc64c8M64Vyk32YXulJG74pR6ffzsvSZTIuaoURZa/Z6yK7gQr7P
+	7a4q6kNNeL22BRJYxPV0SMl61jueVob4RW34x+dnP8RXpQHrBjfDiibAlWPayEHCl68yYbRKu+kbB
+	VkRHiyYOvIV7XHMqDCoWSpSGuwWJ1NkeCBLSNnL75kboptq48GofNlhLIcVNje9ti2KORnuSXrR4F
+	70Kc0wgEe16cK39KcxnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3ADR-0000000D6i7-3HVr;
-	Fri, 11 Apr 2025 08:58:25 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u3AUa-0000000DA8B-1BsG;
+	Fri, 11 Apr 2025 09:16:08 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3A77-0000000D5lJ-3M0B
+	id 1u3AUX-0000000DA5v-2FEM
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Apr 2025 08:51:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 90BCB61135;
-	Fri, 11 Apr 2025 08:51:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D113DC4CEE2;
-	Fri, 11 Apr 2025 08:51:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744361512;
-	bh=qHj51DT4gaDYfC3Nzo5S6OJxmFzJOSStKKxG0u5ZzLw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xn+xnlktmHWVRACGKgFBHDDhK8HOW1gkoU+BTTARXvf0DJPW0CPeP/U6HlQ4VzLj8
-	 P+aK6zcgjwR6MBjk1mY8G8+SAZq85oho3JcsbpxphErE32v5lN1l5oNwpVgQwCjgPo
-	 U9E5h0e7hZlecnSxTvdpjaxLzDZLWkznxFQDfTWeNvmctmtoktlrMBiev651dxLIPx
-	 3wT7ev4Vx5tKaW3K7HtSnnAsVCzdd1lC1ZtWEa/IyQLifp2wbAEeZ9BZa99yIG+Vgl
-	 dlIDGAeKJbOCD1KDi4Peut3CEN7IQL1NBlXyl0nUst72/dkyCyuAtlnzIqCngcvWWP
-	 6qrvMPuX9PrJg==
-Date: Fri, 11 Apr 2025 10:51:48 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable L0S capability
-Message-ID: <Z_jYJKL9rOGMR0xg@ryzen>
-References: <1744332481-143011-1-git-send-email-shawn.lin@rock-chips.com>
+	Fri, 11 Apr 2025 09:16:06 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53B4llgQ019725
+	for <linux-rockchip@lists.infradead.org>; Fri, 11 Apr 2025 09:16:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	SdbE/DxPDX7mmNIDt0tfMeaCACq/2F5Z7OVDEZCEKFI=; b=CaBRntvbdhZ+mLK+
+	32w3o9t6//xksqnuukljgPuRd7Hq+WALFw/v5QZG5GddIFAhyBhORz3cozSk7+H/
+	Mk7Z+K4RMDSnWXxpPUbMnYjPNsYUSJpPTQctEPWdd8Pk5ph2c2j6Du4s/VBxtavM
+	veEDpkd2Zx5eNPaDorHFNXTWfJsdkrfGIxOj7FsErkptHEPU0y0/wGjPf23WuxPL
+	mHCM5CPWie6RqW9Y9j6ZYzI9+IL0NBjEJvCJLVRZzKCBoULFNZIEbxLHzR06SWlr
+	rv1LM9yqps4Z1nPCWdYbu0LlFB7366avWO8WAyMph4z2uOmWQRlM0LXz3zBj5h5N
+	HG5GQQ==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45twcrt1qx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 11 Apr 2025 09:16:03 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6ead1d6fd54so2184436d6.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 11 Apr 2025 02:16:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744362962; x=1744967762;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=SdbE/DxPDX7mmNIDt0tfMeaCACq/2F5Z7OVDEZCEKFI=;
+        b=rxxsxQlWCFLkEpYlvIxTBQm0VdgRp/7H7BD4I3c/sMGKkED737R0rtlZN5HHgNKKtt
+         spHG3z9FqShjz6NiT66bER+j1bRnn6WPMHSR3XM4bqGJor+c9OT/T7hMnsr/iLa18p3B
+         FBXxvQXYsou22htfcohCscj4OOoUHDa/NoWGAmHa8dlnPEV5h3pnG1gWwiZvXGvKUnyz
+         SC16/zIZpzgXjTTA+IySUfIz/l9MJR5DoKj9o2BSRLJGkpiG2E+KrB/0Bx+8F0KextDK
+         BfbQVT/GOrvbngF683ZdY9DJAvK1DASeV7uOeJo42a8NJnJY3d/r9J2LOM+pKUk85Hwi
+         +sWw==
+X-Forwarded-Encrypted: i=1; AJvYcCX4j0suv3lCQI8wmAHzmhe9C3aF7TT+pFuBo3J0lwpJko2vVleBOOKioqx0HJVxTjVdeyO11BWDLZBmV+VUXg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4BGIUG2dZ1KTuj6qQYvYMh4LJBiFHOlcOJSHz0q8JbXcJsfpe
+	hV5VO92dny9QDJ2LVJHxnaauDA4KyaXGNcgbGQV8MJdbaqsygLEcoBuDZFSrtg+WvtztiBRmO+Z
+	ss8TKvKDpdj+cmcbR7unm2bHo221ognVn4VEFcyRMrsSN9ZsYggjqleYbExa9yzeQRkYv6r8=
+X-Gm-Gg: ASbGncstHxKeSPz3IPsmmavJ0N1jfzFqz3DzPwPSq4mSb/G0BZ0Tcom3D1z62g1H4R/
+	tBkuW66VL3AaRVTDA7zSW6BWijM0CabuXSV6izBqKcseYHbPGI7tR9V+ZiIyS8h8oVynHS+25wa
+	J6u9XjFDgnrynjL1z7AhC/QA+pgLB6+JDTB/L8/aFefqBkfR/feC4FaHQUOc7lK3+XQ4AWDojL5
+	GnoBhDteH/CNmc24iB0AjOxOuFFCESgwsWqwylBbpWmZ+Sxi1YG0MMMSB3Ku9TG6m8PhoXTWtuk
+	pohtgIv1QJNG7Sqiw4d0+cBqHgYr1yopF4kKn/MlF8y3VHdRmm4dhjbdKQNdyFXDZQ==
+X-Received: by 2002:a05:6214:21a7:b0:6e8:fa58:85fc with SMTP id 6a1803df08f44-6f283b06981mr4226116d6.3.1744362962486;
+        Fri, 11 Apr 2025 02:16:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE1S3Lj2+VP6zkrr/KAvVwoc07b2Dhiowu/+1L4K8SRDlWx9F5wmlXB5hv0kwshKe1D92mPDw==
+X-Received: by 2002:a05:6214:21a7:b0:6e8:fa58:85fc with SMTP id 6a1803df08f44-6f283b06981mr4225926d6.3.1744362962091;
+        Fri, 11 Apr 2025 02:16:02 -0700 (PDT)
+Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acaa1ccd2c4sm406829166b.129.2025.04.11.02.15.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Apr 2025 02:16:01 -0700 (PDT)
+Message-ID: <088891de-cff9-4cbe-81d4-f94bf09df61d@oss.qualcomm.com>
+Date: Fri, 11 Apr 2025 11:15:56 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1744332481-143011-1-git-send-email-shawn.lin@rock-chips.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 05/17] arm64: dts: qcom: msm8939: Fix CPU node
+ "enable-method" property dependencies
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley
+ <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Steen Hegelund <Steen.Hegelund@microchip.com>,
+        Daniel Machon <daniel.machon@microchip.com>,
+        UNGLinuxDriver@microchip.com, Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konradybcio@kernel.org>,
+        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Kevin Hilman <khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        Andy Gross <agross@kernel.org>,
+        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+        Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
+        Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        "Rafael J. Wysocki" <rafael@kernel.org>,
+        Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+        Stephan Gerhold <stephan.gerhold@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+        linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
+        linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
+        linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org,
+        linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+ <20250410-dt-cpu-schema-v2-5-63d7dc9ddd0a@kernel.org>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20250410-dt-cpu-schema-v2-5-63d7dc9ddd0a@kernel.org>
+X-Proofpoint-ORIG-GUID: WBB1ifg8_hfuhV6Z9mLdKDt4riPelvXf
+X-Authority-Analysis: v=2.4 cv=QuVe3Uyd c=1 sm=1 tr=0 ts=67f8ddd3 cx=c_pps a=oc9J++0uMp73DTRD5QyR2A==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=Rt0Z8iD2R8SC1h9hphoA:9 a=QEXdDO2ut3YA:10
+ a=iYH6xdkBrDN1Jqds4HTS:22
+X-Proofpoint-GUID: WBB1ifg8_hfuhV6Z9mLdKDt4riPelvXf
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-11_03,2025-04-10_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 adultscore=0
+ spamscore=0 malwarescore=0 mlxlogscore=769 bulkscore=0 priorityscore=1501
+ clxscore=1015 phishscore=0 impostorscore=0 suspectscore=0
+ lowpriorityscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2504110057
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250411_021605_693292_2E056C6D 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,81 +157,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Shawn,
-
-On Fri, Apr 11, 2025 at 08:48:01AM +0800, Shawn Lin wrote:
-> L0S capability isn't enabled on all SoCs by default, so enabling it
-> in order to make ASPM L0S work on Rockchip platforms. We have been
-> testing it for quite a long time and found the default FTS number
-> provided by DWC core doesn't work stable and make LTSSM switch between
-> L0S and Recovery, leading to long exit latency, even fail to link sometimes.
-> So override it to the max 255 which seems work fine under test for both PHYs
-> used by Rockchip platforms.
+On 4/10/25 5:47 PM, Rob Herring (Arm) wrote:
+> The "spin-table" enable-method requires "cpu-release-addr" property,
+> so add a dummy entry. It is assumed the bootloader will fill in the
+> correct values.
 > 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
-> 
-> Changes in v2:
-> - Move n_fts to probe function
-> - rewrite the commit message
-> 
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 21dc99c..c397f3a 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -185,6 +185,17 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
->  static int rockchip_pcie_start_link(struct dw_pcie *pci)
->  {
->  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	u32 cap, lnkcap;
-> +
-> +	/* Enable L0S capability for all SoCs */
-> +	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> +	if (cap) {
-> +		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
-> +		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
-> +		dw_pcie_dbi_ro_wr_en(pci);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_EXP_LNKCAP, lnkcap);
-> +		dw_pcie_dbi_ro_wr_dis(pci);
-> +	}
 
-I think it looks wrong to have this in _start_link().
-Why not put this code in a new "_enable_l0s() function, and call it from:
-rockchip_pcie_ep_init() and rockchip_pcie_host_init().
+Acked-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 
-When looking at this, we probably should also move the
-rockchip_pcie_ep_hide_broken_ats_cap_rk3588() call from _pre_init() to _init(),
-because if there is a core reset, _init() is called again, but _pre_init() is
-not.
-
-
->  
->  	/* Reset device */
->  	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-> @@ -598,6 +609,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	rockchip->pci.dev = dev;
->  	rockchip->pci.ops = &dw_pcie_ops;
->  	rockchip->data = data;
-
-Perhaps add a newline here.
-
-> +	/* Default fts number(210) is broken, override it to 255 */
-
-Perhaps add a space between "number" and "(".
-Perhaps write it as N_FTS instead of fts.
-Perhaps use "value" instead of "number".
-
-ie.
-
-/* Default N_FTS value (210) is broken, ... */
-
-
-
-Kind regards,
-Niklas
+Konrad
 
 _______________________________________________
 Linux-rockchip mailing list
