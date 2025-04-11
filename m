@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390D0C36010
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 12:14:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5C1C36010
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 12:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VpzvRnZWb3gIRyOgjqg1Elp+A1ltD+xP9HnpCOdUVCM=; b=F68SsN/W8Invex
-	9nrVSTu0P8wohFPrgLQ4N03GffVVSlMeIhzFxUuU7Dik0ls+FtSK44WVQa1WRSxzZZYsq86uxfUIM
-	aZJgHcMDbnz65kj4ROX3la2CTTVnZ+JE3NqtUBFikl7lnFOOAsA/i5caR8A3mdRn0kVY/OpgVnh4n
-	uEevMNXdN6bL40wFL1j3aqmDngvT+Prvra5RAJo5kJnIQsjm6Q8/Znmoa9yYGfYPT2lNCis2gANII
-	RoIG0dDhmFJ9CuJuDkO8zg3AEjTLw+5y5Pt/K9+XW3xNdryGvukNZW4Ddud6glyhNmqt36JA/anEq
-	gMWOCoKc1h+8Gq+TbaLg==;
+	List-Owner; bh=4gYit14RcqnSOwDINfnr+9/9ZXwUi3jRrjvaGLE24T8=; b=EmIAWokqd0fPEG
+	6A4U7rPS6ze/BOsX4mh7aXOIkWGToos/dEPOvM5bjfFnQ5MUe3P8ttP6esrOOyGn9P1KZWyCwuuYJ
+	A2gZ5P25kZcpdCs4Nhzm/HQbkTnMb/TvMwtwx2VocYZOyVomJwkC5fVSWn3XZf9T+oFRvx1fPH8+M
+	8lYVJYLzk8yDnGsOhN7GXnWrXc4R29O4MAoHeSal0eCyeqOUrd4WY5nl5Wl0wtja7IEsTjMeWGFX6
+	AZzCCCU/Y+DjAESSCE0+La4pBPyhO3xIF12Yoz3kcWfgmXD+T9wH37Px+gsni85Ug4ro9kpZ5BSYa
+	jAWpdW8ZPPfBEh/vdDAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3DGw-0000000DhJq-25qz;
-	Fri, 11 Apr 2025 12:14:14 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u3DRf-0000000DjQQ-2eof;
+	Fri, 11 Apr 2025 12:25:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3DDZ-0000000DgYS-3nle;
-	Fri, 11 Apr 2025 12:10:47 +0000
+	id 1u3DE8-0000000DgiG-1HuH;
+	Fri, 11 Apr 2025 12:11:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9D26BA4AAE4;
-	Fri, 11 Apr 2025 12:05:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6EEFC4CEE2;
-	Fri, 11 Apr 2025 12:10:41 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8B36068459;
+	Fri, 11 Apr 2025 12:11:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12A5DC4CEEC;
+	Fri, 11 Apr 2025 12:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744373444;
-	bh=bef+HJXcEo2hORvZPJWuTpm+dOfyv21lTNoivV+wiLQ=;
+	s=k20201202; t=1744373479;
+	bh=12U8A9tqFraTkbX8UucQrHYVXY0lsm8Dl+Z4zRDU7+M=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=EUQNS3TgW4ma5b+9diC1JS/QSa3on9tCBUIieI+S3+FKCYTQCBxu0Q5Lm7WxP0C9G
-	 jmTtYq1R2foBthUicTIZLURqxEUVKiAm1xi3yS1nmBl0giAgsKYf3D+23ztucU5UWe
-	 LfZex2TS41FS6nMNCTgL5MU45QNz2DbQ6cQ1luO3Ng7CtltHZcrSrYAGUHI2yWmXBL
-	 5tn53k04JKavpMLGyI5DHaV8ENyl3w83Emww0DZUmSdtOjLYYwrDXnVQMdh3uqo+6/
-	 z+frZgXCsR87+JR+3s8a3vlNgC8B+o0I6DBOjudAKXwhO0G+taW5VybSWG3oJV5sdq
-	 JhBLze5q0F96Q==
+	b=K3dSX4tRj7rJ9O1JP0isV71y1pRkYOkWhdxA4/IoSEK64MYcwp+4fRUgs4XuosURC
+	 FJ+eVvLwRBH/Xmz4HsgLa4bMNianpOCI+1O66a+ekF5/AkNzXrzzt5h1nxS0ASDF54
+	 X6pa08EMqcgJvIZJQp0EJZPkQLX8YvbtdvAKHlUQ2ZE2VBdtUCCDew4Bk6M+g5HXbX
+	 X9+QYoUY94VJuma7WoS7l7Vv3fOsbLjPmaLHgkE3M71MsTcvmAsm8z6duGH46ePTIh
+	 ukJZUFxvECbyl6MxIm/kK0tV1+SKSPH5KhZQRoxIj4Ey+hkEoxQtPq2VkBQD9c3dW6
+	 yJUZQmyGxClgw==
 From: Vinod Koul <vkoul@kernel.org>
 To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Frank Wang <frank.wang@rock-chips.com>, 
- Zhang Yubing <yubing.zhang@rock-chips.com>, 
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Algea Cao <algea.cao@rock-chips.com>, Sandor Yu <Sandor.yu@nxp.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Maxime Ripard <mripard@kernel.org>, kernel@collabora.com, 
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20250407165607.2937088-1-robh@kernel.org>
-References: <20250407165607.2937088-1-robh@kernel.org>
-Subject: Re: [PATCH v2] dt-bindings: phy: rockchip: Add missing
- "phy-supply" property
-Message-Id: <174437344138.673939.9714886269957011717.b4-ty@kernel.org>
-Date: Fri, 11 Apr 2025 17:40:41 +0530
+ Dmitry Baryshkov <lumag@kernel.org>
+In-Reply-To: <20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com>
+References: <20250318-phy-sam-hdptx-bpc-v6-0-8cb1678e7663@collabora.com>
+Subject: Re: [PATCH v6 00/14] phy: rockchip: samsung-hdptx: Support high
+ color depth management
+Message-Id: <174437347571.673939.550787962753296084.b4-ty@kernel.org>
+Date: Fri, 11 Apr 2025 17:41:15 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_051046_016906_A7020C27 
-X-CRM114-Status: UNSURE (   4.97  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,16 +76,46 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 07 Apr 2025 11:56:06 -0500, Rob Herring (Arm) wrote:
-> Several Rockchip PHYs use the "phy-supply" property, but don't
-> document it. Add it to the current known users.
+On Tue, 18 Mar 2025 14:35:34 +0200, Cristian Ciocaltea wrote:
+> This series relies on the new HDMI PHY configuration options [1] (patch
+> included here for convenience) to provide high color depth management
+> for rockchip-samsung-hdptx, and to introduce a proper solution to setup
+> the TMDS character rate on this PHY.
 > 
+> [1] https://lore.kernel.org/lkml/d1cff6c03ec3732d2244022029245ab2d954d997.1734340233.git.Sandor.yu@nxp.com/
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] dt-bindings: phy: rockchip: Add missing "phy-supply" property
-      commit: 070d546258257c75c65a2f15da558eb96bce550c
+[01/14] phy: Add HDMI configuration options
+        commit: 10ed34d6eaaf86e301a8f2dd190d26dfbc9799bd
+[02/14] phy: hdmi: Add color depth configuration
+        commit: 3bb9286f4ece6acbc1fbaa9f192a82645d30efbf
+[03/14] phy: rockchip: samsung-hdptx: Fix clock ratio setup
+        commit: 0422253ac1919fea8292381c85f11a9decff1bb1
+[04/14] phy: rockchip: samsung-hdptx: Do no set rk_hdptx_phy->rate in case of errors
+        commit: 1f4d382769e3b38dfc498c806811dae856e40f31
+[05/14] phy: rockchip: samsung-hdptx: Drop unused struct lcpll_config
+        commit: 6218c3fd6702a5bc4ab323fed25714cde127684c
+[06/14] phy: rockchip: samsung-hdptx: Drop unused phy_cfg driver data
+        commit: bcd61d182618c6a77d0841fcdc3333e125725360
+[07/14] phy: rockchip: samsung-hdptx: Drop superfluous cfgs driver data
+        commit: bacf2fe750dab6bc7ed50556aaadd3ab107fc643
+[08/14] phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit conversion overhead
+        commit: 0edf9d2bb9b4ba7566dfdc7605883e04575129d9
+[09/14] phy: rockchip: samsung-hdptx: Setup TMDS char rate via phy_configure_opts_hdmi
+        commit: c871a311edf0ebb1b934946a84a6c532cac0c035
+[10/14] phy: rockchip: samsung-hdptx: Provide config params validation support
+        commit: 2392050a2cb94ff3397949e109e4b9f0285ee085
+[11/14] phy: rockchip: samsung-hdptx: Restrict altering TMDS char rate via CCF
+        commit: 6efbd0f46dd8ae1d2b91b41d98c2800c60ab1f5e
+[12/14] phy: rockchip: samsung-hdptx: Rename ambiguous rk_hdptx_phy->rate
+        commit: 37f335dbfd028c008d0a7940ca5a270d1e2f6b81
+[13/14] phy: rockchip: samsung-hdptx: Optimize internal rate handling
+        commit: 45b14bdcf4acfd483d9890396197c35c23821124
+[14/14] phy: rockchip: samsung-hdptx: Add high color depth management
+        commit: 9d0ec51d7c227c3ae837e22832eaed219e25f126
 
 Best regards,
 -- 
