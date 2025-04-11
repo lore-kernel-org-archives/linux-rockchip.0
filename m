@@ -4,119 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52826C369A2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 08:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC04C369AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 08:45:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xk6UvA06IgUiEtm4edrptagfXic/Zi4OCaZ2cfx7+Wc=; b=x1KsYTyD3uzNR3
-	VIIMeLFjozoFwX9yjUYJOX/znu3OGd/CGgMOjivjVj05bpzq63OFqS53YC+/BmpA0Ez9xgsxA5D3E
-	2r0kMh3Y2luwOGpUWTn6zinBxRU2SsZHZ6Wy7AB8i8LCzqbqXd/1w8HHuckbc/nkNNHF8BNZYmUl/
-	ntURzajvJPkslw9ucjLyxMhQy8NmiIzWjf1Yu3WsLUdS1VSUVOgKeyNK+G9OQm2sp3CUCvsFjfSZK
-	R5QvyJz6tX1x3XZpEt5RVh+dDZzqKzlYRm5ne/XZMpuiDhhKw7/dgeVuOJa99ylwSVRgvoUwItkLP
-	ujONqZsiqDcwEfKVeWLA==;
+	List-Owner; bh=WIN9dUH/x6L2k67Z7UBG3wJFUU6W+21xP2IM02WULHI=; b=Ztk8A/cDIuItVo
+	1UuJjHG3Ihk6dobkYqmHmUN1bgBqDoyzzqvwFz5U/7bFO5fQ/Sl0n5CuWE0tGRGDVaLlKd4GwdkI6
+	Uk+YuPPMknnBzBqzz6lCgaAJngxtFpyDl0hHun1XeUF/pPI2HaY2TX4WMC4PcHNJXiUa751WHNkgL
+	JslgJ/oYlDbbs+JSZ7u2t9N/e0MseD+WUsicSsVSBEXpqRcN8m/lw/nqopaOA6HSeHHDbolvq7gJv
+	lzcgdtuNT09buiFe8pfgRig0RFeJO4QhHIDOPnqduMWk5fmw/RJ+4IwyI9aVlHxxLDkwn2VWGQwf5
+	Er+i0f+knWteNiskNDhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3A0x-0000000D4ru-0n58;
-	Fri, 11 Apr 2025 08:45:31 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1u3A0w-0000000D4rT-21Yz;
+	Fri, 11 Apr 2025 08:45:30 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u39tb-0000000D2wX-2G1k
+	id 1u39ra-0000000D2R0-3VcQ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Apr 2025 08:37:57 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-43cebe06e9eso12723075e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 11 Apr 2025 01:37:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744360674; x=1744965474; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wH2ZPuzfR/sU9gtELQf1xx9ouW+DErODBwUT5LwG1mM=;
-        b=BQWlgrFSgWRUBRGUslckluPHmvlJVh3JY5tyfIJbKv1/BK2T0YEWMRV67A7Fs4X3ab
-         xrFkLQHz6sytNnTHT5e627Ej2z2nw1HzgGHuft+Ln80d9/G1Tz9faUe5xY1kJFBrdR4J
-         tbIpTkffOt1Kf3y304aOMVIUhsH37wg/SzBzGQx8/tDh0IfsfgUTMmXJ1PBZbiX+Fm7E
-         CF5Oz3PLOuBZ7I7oS2OqnnOqMpP5zVSah5tNvS7pPcUJe5Oyu3XZ641jJNuC5cqPFYQ8
-         RjqefK5BO61lFAhtvVUvKYmtZlV+fUx9Xb/DVm2FNbLPkA+h9tFOj+2p78h/8+JDmtTW
-         2oGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744360674; x=1744965474;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wH2ZPuzfR/sU9gtELQf1xx9ouW+DErODBwUT5LwG1mM=;
-        b=KVbi4Hpb74nfeR8sOP9/aByLXFOY0oCiBNiwxYPfymnc1Fiz7hsuMzFnRUHgiofaQ4
-         BRmffzdP1sca7QFryoj1hU/BNC8Qz8/DAaZFmWCRZu7+PHQV7xtYBfY54OJULaC3lQPH
-         QJSN2UtiSUBkZIFarOof70rhSAuG3aRwJu9B+dI7G1bBgNmy6arVuu81oXBu6S1XJRHD
-         J/7BXOUFcXrdafTXaShk2N+IBl5TvKpV2QzEl0/V7IjUhvi9geosI4mGURHDmHjV8cQu
-         UmJt4zcnEQDAOyhFTZGCOui2mTircN9VRlX/xKlNM9hexXTvRXnD0H78CUFKd4ky0Qzm
-         A9SA==
-X-Forwarded-Encrypted: i=1; AJvYcCUQryWlxK6GnPo4P4voUnAo0svCEvRKy4SOlq0bwL3ubWyMJAK62U7cb0yJvb0809G7tdPN0ItswlBCwxGtmQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzggzljHWKkR3smm4BPfyJz5v6+k+EE7qZKWftT8FLTeOPS3FiA
-	yQd0WlQfppUlaWF6jdXcXJLrpr5vSNsDBmciaCIi0Svb9orC328jhjQfW7pCV4o=
-X-Gm-Gg: ASbGncsZKgdzDdpz44pGXGOr9jPkcXlCKDLPc6ZUJ6XwwOuPc8lvPY9DZgoWS+JKxTj
-	icknj8AKciMUzSat2RaMwciZClPS7f1F6ShtglEd+Her1A2/mnyaHxH1GeDTdPf844CGdaMNkYl
-	lksahFJQr2ugLObjgRiaytkQGbaYW2wB529/zpNqHy7bLIEN3RCuWVbMFruzD1QOcY0XHyrbmkV
-	57u/vk27J751zWQVoKWz8mm1beZPrz2mC6nnAKSx2JN82XvN5wquHqR1MhEWVwIUyCRTiaXpyTh
-	hujIoqLR8BlABjq3qs6xwWAdnbzWSMo9cp5bMUEolD1UAPrkBke8qyV83GAd7A==
-X-Google-Smtp-Source: AGHT+IESQEmfqjjVD+jC6dd63FDfAGrpItTMGFb0BJ+4OP4VGIDucBWUqxZDD69YlSOe5qeibdfp9g==
-X-Received: by 2002:a05:6000:2c5:b0:38f:3224:65ff with SMTP id ffacd0b85a97d-39ea51ecb8bmr1357243f8f.5.1744360673907;
-        Fri, 11 Apr 2025 01:37:53 -0700 (PDT)
-Received: from arrakeen.starnux.net ([2a01:e0a:3d9:2080:52eb:f6ff:feb3:451a])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae9777a0sm1326282f8f.43.2025.04.11.01.37.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Apr 2025 01:37:53 -0700 (PDT)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
- Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, 
- Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Stephan Gerhold <stephan.gerhold@linaro.org>, 
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
- linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
- linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Andre Przywara <andre.przywara@arm.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
- Sudeep Holla <sudeep.holla@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>
-In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
-Subject: Re: (subset) [PATCH v2 00/17] Arm cpu schema clean-ups
-Message-Id: <174436067236.3436338.6767561918297500530.b4-ty@linaro.org>
-Date: Fri, 11 Apr 2025 10:37:52 +0200
+	Fri, 11 Apr 2025 08:35:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744360551; x=1775896551;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UB+gYPbNoFH/gTLnDV+gkaB+80nVg6rXio4SmeE5bMg=;
+  b=GTyj97SoOS1BFUJnzM505bRwPrzOJ7T9KSmCyHn9w26j1jp6umo/QZIN
+   niMJwIahZmFXxpiVMNqETRlJKM8biX9MuH6W3W/jCuZCIFRiBUF93in4a
+   byN9yAPQDmYPsERTqJzk6NdOpY+ch7iXecMAaQyder8WXOiNifM10IYFm
+   M+kGD2LpV0L2ZRQNUo+Lxj//KcG16DD/NiANA9W7TA3kQB25bAIkh5Y4P
+   lXezuNVZ2hLnzxx81vUpdLri1oH9pauQIkR0/FzZlT/nLJF01PtJrTL5W
+   XfEwdKQ9eKD2TRTmx4n03Zf3HG2/rLa/otnt8VczxHDvF++YTKKsl7S0q
+   w==;
+X-CSE-ConnectionGUID: HSFlKkDcS+ijvGmwUjJQAw==
+X-CSE-MsgGUID: BJKz04hvSlK/nIteFTY95w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11400"; a="45996187"
+X-IronPort-AV: E=Sophos;i="6.15,203,1739865600"; 
+   d="scan'208";a="45996187"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Apr 2025 01:35:49 -0700
+X-CSE-ConnectionGUID: 4OxZi7pqQgW7c4kwv/5WSQ==
+X-CSE-MsgGUID: H+x/QhFWSjKkr8lJDf21Og==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,203,1739865600"; 
+   d="scan'208";a="129980391"
+Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
+  by fmviesa009.fm.intel.com with ESMTP; 11 Apr 2025 01:35:46 -0700
+Received: from kbuild by b207828170a5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1u39rU-000AyY-2c;
+	Fri, 11 Apr 2025 08:35:44 +0000
+Date: Fri, 11 Apr 2025 16:35:43 +0800
+From: kernel test robot <lkp@intel.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Bjorn Helgaas <helgaas@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: dw-rockchip: Add system PM support
+Message-ID: <202504111625.Eds7X9BC-lkp@intel.com>
+References: <1744267805-119602-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <1744267805-119602-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_013755_585345_0246D737 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20250411_013550_944310_55060BFF 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,48 +92,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Shawn,
 
-On Thu, 10 Apr 2025 10:47:21 -0500, Rob Herring (Arm) wrote:
-> The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu'
-> nodes. The result, not surprisely, is a number of additional properties
-> and errors in .dts files. This series resolves those issues.
-> 
-> There's still more properties in arm32 DTS files which I have not
-> documented. Mostly yet more supply names and "fsl,soc-operating-points".
-> What's a few more warnings on the 10000s of warnings...
-> 
-> [...]
+kernel test robot noticed the following build warnings:
 
-Thanks, Applied to https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git (v6.16/arm64-dt)
+[auto build test WARNING on pci/next]
+[also build test WARNING on pci/for-linus linus/master v6.15-rc1 next-20250410]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-[11/17] arm64: dts: amlogic: Drop redundant CPU "clock-latency"
-        https://git.kernel.org/amlogic/c/4bc28af2da876531e5183d25ae807e608c816d18
+url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-dw-rockchip-Add-system-PM-support/20250410-145426
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/1744267805-119602-1-git-send-email-shawn.lin%40rock-chips.com
+patch subject: [PATCH] PCI: dw-rockchip: Add system PM support
+config: x86_64-buildonly-randconfig-001-20250411 (https://download.01.org/0day-ci/archive/20250411/202504111625.Eds7X9BC-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250411/202504111625.Eds7X9BC-lkp@intel.com/reproduce)
 
-These changes has been applied on the intermediate git tree [1].
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202504111625.Eds7X9BC-lkp@intel.com/
 
-The v6.16/arm64-dt branch will then be sent via a formal Pull Request to the Linux SoC maintainers
-for inclusion in their intermediate git branches in order to be sent to Linus during
-the next merge window, or sooner if it's a set of fixes.
+All warnings (new ones prefixed by >>):
 
-In the cases of fixes, those will be merged in the current release candidate
-kernel and as soon they appear on the Linux master branch they will be
-backported to the previous Stable and Long-Stable kernels [2].
+>> drivers/pci/controller/dwc/pcie-dw-rockchip.c:749:12: warning: 'rockchip_pcie_resume' defined but not used [-Wunused-function]
+     749 | static int rockchip_pcie_resume(struct device *dev)
+         |            ^~~~~~~~~~~~~~~~~~~~
+>> drivers/pci/controller/dwc/pcie-dw-rockchip.c:725:12: warning: 'rockchip_pcie_suspend' defined but not used [-Wunused-function]
+     725 | static int rockchip_pcie_suspend(struct device *dev)
+         |            ^~~~~~~~~~~~~~~~~~~~~
 
-The intermediate git branches are merged daily in the linux-next tree [3],
-people are encouraged testing these pre-release kernels and report issues on the
-relevant mailing-lists.
 
-If problems are discovered on those changes, please submit a signed-off-by revert
-patch followed by a corrective changeset.
+vim +/rockchip_pcie_resume +749 drivers/pci/controller/dwc/pcie-dw-rockchip.c
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+   724	
+ > 725	static int rockchip_pcie_suspend(struct device *dev)
+   726	{
+   727		struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+   728		struct dw_pcie *pci = &rockchip->pci;
+   729		int ret;
+   730	
+   731		rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
+   732	
+   733		ret = dw_pcie_suspend_noirq(pci);
+   734		if (ret) {
+   735			dev_err(dev, "failed to suspend\n");
+   736			return ret;
+   737		}
+   738	
+   739		rockchip_pcie_phy_deinit(rockchip);
+   740		clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+   741		reset_control_assert(rockchip->rst);
+   742		if (rockchip->vpcie3v3)
+   743			regulator_disable(rockchip->vpcie3v3);
+   744		gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
+   745	
+   746		return 0;
+   747	}
+   748	
+ > 749	static int rockchip_pcie_resume(struct device *dev)
+   750	{
+   751		struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+   752		struct dw_pcie *pci = &rockchip->pci;
+   753		int ret;
+   754	
+   755		reset_control_assert(rockchip->rst);
+   756	
+   757		ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
+   758		if (ret) {
+   759			dev_err(dev, "clock init failed\n");
+   760			goto err_clk;
+   761		}
+   762	
+   763		if (rockchip->vpcie3v3) {
+   764			ret = regulator_enable(rockchip->vpcie3v3);
+   765			if (ret)
+   766				goto err_power;
+   767		}
+   768	
+   769		ret = phy_init(rockchip->phy);
+   770		if (ret) {
+   771			dev_err(dev, "fail to init phy\n");
+   772			goto err_phy_init;
+   773		}
+   774	
+   775		ret = phy_power_on(rockchip->phy);
+   776		if (ret) {
+   777			dev_err(dev, "fail to power on phy\n");
+   778			goto err_phy_on;
+   779		}
+   780	
+   781		reset_control_deassert(rockchip->rst);
+   782	
+   783		rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx),
+   784					 PCIE_CLIENT_INTR_MASK_LEGACY);
+   785	
+   786		rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
+   787		rockchip_pcie_unmask_dll_indicator(rockchip);
+   788	
+   789		ret = dw_pcie_resume_noirq(pci);
+   790		if (ret) {
+   791			dev_err(dev, "fail to resume\n");
+   792			goto err_resume;
+   793		}
+   794	
+   795		return 0;
+   796	
+   797	err_resume:
+   798		phy_power_off(rockchip->phy);
+   799	err_phy_on:
+   800		phy_exit(rockchip->phy);
+   801	err_phy_init:
+   802		if (rockchip->vpcie3v3)
+   803			regulator_disable(rockchip->vpcie3v3);
+   804	err_power:
+   805		clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+   806	err_clk:
+   807		reset_control_deassert(rockchip->rst);
+   808		return ret;
+   809	}
+   810	
 
 -- 
-Neil
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
