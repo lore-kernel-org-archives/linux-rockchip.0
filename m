@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C152BC36010
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 12:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390D0C36010
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 12:14:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZCd79uhFclqQ0CeauQvpUSNXWofs5t7xP9v1Iidb4fw=; b=409lq/Ja+H3pWC
-	sGdENyMFWLgMhq3wLiPUCUXJJVBiMQhYcTI0fDTWRGRWb14ejDX4kq9lKH/GEwmjxZ7nzctSBy9f3
-	bpE8TZR7qSJy+/uq6Hc/lf1D9zhnEp/2PWss+25CTNSGzPNXXyFycHmJmVHsVb+bhD4eILPbz5dp7
-	0QQi+VxEfz9WZ/1nJSJZ2VhcroqFNFaZvGuV/g6tsfALMqWAw5nyW12BlLPhqs/T8YVt9Bx57vgTp
-	12KoXQmacwp0+9gf8BB7qS7tBl6GyIAdpsLOsptTRnUNkNKXOT/s8te/ikQWcdW2onCJOgMa8t+97
-	W4+sHLH6oKMXbS5bNnug==;
+	List-Owner; bh=VpzvRnZWb3gIRyOgjqg1Elp+A1ltD+xP9HnpCOdUVCM=; b=F68SsN/W8Invex
+	9nrVSTu0P8wohFPrgLQ4N03GffVVSlMeIhzFxUuU7Dik0ls+FtSK44WVQa1WRSxzZZYsq86uxfUIM
+	aZJgHcMDbnz65kj4ROX3la2CTTVnZ+JE3NqtUBFikl7lnFOOAsA/i5caR8A3mdRn0kVY/OpgVnh4n
+	uEevMNXdN6bL40wFL1j3aqmDngvT+Prvra5RAJo5kJnIQsjm6Q8/Znmoa9yYGfYPT2lNCis2gANII
+	RoIG0dDhmFJ9CuJuDkO8zg3AEjTLw+5y5Pt/K9+XW3xNdryGvukNZW4Ddud6glyhNmqt36JA/anEq
+	gMWOCoKc1h+8Gq+TbaLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3DF9-0000000DgvV-0dwK;
-	Fri, 11 Apr 2025 12:12:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u3DGw-0000000DhJq-25qz;
+	Fri, 11 Apr 2025 12:14:14 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3DDI-0000000DgUi-2cM8;
-	Fri, 11 Apr 2025 12:10:29 +0000
+	id 1u3DDZ-0000000DgYS-3nle;
+	Fri, 11 Apr 2025 12:10:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 225645C691E;
-	Fri, 11 Apr 2025 12:08:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44787C4CEE7;
-	Fri, 11 Apr 2025 12:10:25 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9D26BA4AAE4;
+	Fri, 11 Apr 2025 12:05:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6EEFC4CEE2;
+	Fri, 11 Apr 2025 12:10:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744373428;
-	bh=ma8HZgD9JZlh64w2TGnecb0nKKh08kqyZOYZMMtYpZc=;
+	s=k20201202; t=1744373444;
+	bh=bef+HJXcEo2hORvZPJWuTpm+dOfyv21lTNoivV+wiLQ=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ae+o/cyx/enaKuzdD4bQBh/9s+5M5131Dr+2RiZwwfY5LAiT3IEoCPvAOXERoleSi
-	 sRq8Y2YFvVkDjW34zP9dk++8HSs4Rw+ZXUCXkvYr9/PMc2XX6gJNGDx4vW0Q0TBTlq
-	 7YSIJK7i2sY7X3tv5aZUeHzJSRSxOnoGIaMBfoQZrCEaMcyYdEv0r+xpOqSvQg2yTg
-	 tDJUYRJIFVbAySqmhQouOka/cTTn5x4ufHEdAw5xQ+B4L0rQ06qEcr/uMJS7nUc620
-	 a4q1SZgvu/oVfyFaMygtVr2g6dR1MzQ8IWDtv6V7LB2eNRMEKB3lbrRfQ2Hi9f5enF
-	 6l7yMKHi8ZQxw==
+	b=EUQNS3TgW4ma5b+9diC1JS/QSa3on9tCBUIieI+S3+FKCYTQCBxu0Q5Lm7WxP0C9G
+	 jmTtYq1R2foBthUicTIZLURqxEUVKiAm1xi3yS1nmBl0giAgsKYf3D+23ztucU5UWe
+	 LfZex2TS41FS6nMNCTgL5MU45QNz2DbQ6cQ1luO3Ng7CtltHZcrSrYAGUHI2yWmXBL
+	 5tn53k04JKavpMLGyI5DHaV8ENyl3w83Emww0DZUmSdtOjLYYwrDXnVQMdh3uqo+6/
+	 z+frZgXCsR87+JR+3s8a3vlNgC8B+o0I6DBOjudAKXwhO0G+taW5VybSWG3oJV5sdq
+	 JhBLze5q0F96Q==
 From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko.stuebner@cherry.de>, 
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel-janitors@vger.kernel.org
-In-Reply-To: <e64265a4-9543-4728-a49f-ea910fccef7c@stanley.mountain>
-References: <e64265a4-9543-4728-a49f-ea910fccef7c@stanley.mountain>
-Subject: Re: [PATCH next] phy: rockchip-samsung-dcphy: Add missing
- assignment
-Message-Id: <174437342490.673813.7534992392289400859.b4-ty@kernel.org>
-Date: Fri, 11 Apr 2025 17:40:24 +0530
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Frank Wang <frank.wang@rock-chips.com>, 
+ Zhang Yubing <yubing.zhang@rock-chips.com>, 
+ "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20250407165607.2937088-1-robh@kernel.org>
+References: <20250407165607.2937088-1-robh@kernel.org>
+Subject: Re: [PATCH v2] dt-bindings: phy: rockchip: Add missing
+ "phy-supply" property
+Message-Id: <174437344138.673939.9714886269957011717.b4-ty@kernel.org>
+Date: Fri, 11 Apr 2025 17:40:41 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_051028_709585_5329CF7E 
-X-CRM114-Status: UNSURE (   4.01  )
+X-CRM114-CacheID: sfid-20250411_051046_016906_A7020C27 
+X-CRM114-Status: UNSURE (   4.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,15 +80,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 21 Mar 2025 17:36:14 +0300, Dan Carpenter wrote:
-> The "ret = " was accidentally dropped so the error handling doesn't work.
+On Mon, 07 Apr 2025 11:56:06 -0500, Rob Herring (Arm) wrote:
+> Several Rockchip PHYs use the "phy-supply" property, but don't
+> document it. Add it to the current known users.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] phy: rockchip-samsung-dcphy: Add missing assignment
-      commit: 9cf118aafd6682793c40dde31b5f24d271da3996
+[1/1] dt-bindings: phy: rockchip: Add missing "phy-supply" property
+      commit: 070d546258257c75c65a2f15da558eb96bce550c
 
 Best regards,
 -- 
