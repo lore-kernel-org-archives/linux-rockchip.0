@@ -4,153 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79890C369AE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Apr 2025 23:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF545C369AB
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Apr 2025 17:53:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rEcHQQVwu/qYy2OhSk69AffyU9vtSX6O8s3GLIhPGHA=; b=safXTBiuU5P6SC
-	jYyWU/G2bov1JHejpIUkGOReUeh5x0NQ0/zNeMWsJ9AJ+ConA/2zvIEMF55LMIVVdcKMG9GxxPsjt
-	r6CVpeU+a8so0nfBq5LxzZeX6v1ffCkAQsybXnB7CmuF4QcyVIfL7WfekGRzdlQEV2aAThSMcMk5v
-	blWDfukqbjkTLXxzDsiy+ZvykHwJjaWWbAwIwW3zsi3woHGeGBA/gUH+GBfU8qP86l2NI0uTzsu/2
-	yiWu0ACnGHGFvad0TTpgJFPELUbENU/Jm4yiYwVg9YxwLs1BtS/YCD6ufoWLvMM4PiOJeZvnYh/cK
-	KvIwRqfWGvz0cTv+a0MA==;
+	List-Owner; bh=9nVc5Fdh9CNK3IsdBa//fiflnNzz9wz4Ua6U3zTh1DY=; b=BR+BsbGkKycRWf
+	7yX3Dv4L8iVffSyNbUlYtgGkgj7E6UMHYwoZPrmIJiNgV6eb4poeZrdStvGASFqMWArAJpHEX31YG
+	XEu+Rw20CAu2Yye5VWYE/5vH8EokW6RPWKjHEdISuE9brc2euSeAZgic5dl3/qrKC8JPo3okhR49t
+	4MyAx1771DkdHzygpxtydCbg5ijEZDtDPqKnrk+O3tKqWf9EHEIooY8hE8nCfbx3joAIA7BAiXZM/
+	S0i3IWzgNMnnjvGV6pvwSEM2TTWgNzYtw68utSLI3rnsfjML7q5S3MTP3ZwqB/bYQhS2KMVrEoHlN
+	wMJyWGKXDfPXOmg90mSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3Nvu-0000000F6JX-2SpP;
-	Fri, 11 Apr 2025 23:37:14 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1u3f2L-0000000GE7K-24cq;
+	Sat, 12 Apr 2025 17:53:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3Nvr-0000000F6Hr-2JdJ;
-	Fri, 11 Apr 2025 23:37:12 +0000
-Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-72c1425fbfcso1540629a34.3;
-        Fri, 11 Apr 2025 16:37:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744414630; x=1745019430; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=TKjBnAI0llRD88HQinqqWPzae0oerPBARTmSqosHWIk=;
-        b=mLf9wWEY+dPczezsH13A5AmoaX2Q9hZsRurPaUF49QqNlihi9xKKTmvGUmmf2H65Ze
-         OXXi8Wm4ykI/xUrCecOMnKOIVZQ+QHR3v6L8E4tq9PfaQfNLUup4jYKncitDALRHydLs
-         h2HgjjYB4FLptgTQ8OaaDglT7OLcwIOMYPHeamW2eVSbBbzNvbof5RptYFZIU8kpT25h
-         mW87EvZxoJSccCryDa4ZOhzZUXyBFe2DTf0vT3XxEH/HgTZEFnm2kzxBEjzehLbd+Jnz
-         OUPIaBzuGLvepKX3/mK3mf9GsTHQbw862cg3ybVVp171YuUG3xRTMYeLcXdfMuLzPIy+
-         JRKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744414630; x=1745019430;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TKjBnAI0llRD88HQinqqWPzae0oerPBARTmSqosHWIk=;
-        b=O7bTj+Z1WWQNnyTaMvTWPU1GExb32H9b7IMdF9VwWVVDqokE1QNyDePqeYk5n1e3w7
-         HuVJGBImJYloh9pdZEnvJSnCpnF7P2dPcXfaiUQQQwggz7Sikn0yd0DyEDHHg1SJ75LA
-         ajLn3a0KHrg1XV+2wAEAeMcYafLCfalmvhF0P4zuQx8NcW8x26gsDki0nL0PdQ0J1zhR
-         bYZByK2zWzplnD8mz8d5T4F/uFtWpAxBTaglhp+qSINHSsmkMmWCJbXplNKjgzP3rK5B
-         6dfHwRinTWRGSZqY6gWOBQDcnf8jzOhWQZhXVC4W42aI+AklZ6AKq+HshbOIVa0cdRpm
-         iE2Q==
-X-Forwarded-Encrypted: i=1; AJvYcCV/iUVo/tbWdQzfJbbf6FZu418vt6v7ePgGspJqBO7In6zp4gfS/P7lab8EhIOwsebtkUEVerremC6JnTyTLx4=@lists.infradead.org, AJvYcCXAgua2whjxoxE5Gf4G01lRFyGo0E76Yh7EpeqzBcEgOPITF39+/FXEfn058onI9zkFi0UuOG935jNrgk77a0g=@lists.infradead.org, AJvYcCXcr7YSCW7j/TGb6+0ZIjPqnYQVddiSUVsgJ7vxQqZTT786Pce3iwja43eL7h57D+CAUBFAlUd15E4yaW2Q@lists.infradead.org, AJvYcCXxhU2N+JNiAZuA/ubDZVesb8hSHRgeVkeaI/TbmXWR3m/SbFgOAso8A+Ac52PPnZMezeqqIhqg7WG7uX+zTBw3Vg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxK38BDEWnXgOV81gRm/Yl2Qe3oskpSbMAXL4KfEF2FBwp40qBU
-	RsSBAk71vU5wjJ6Nr9srzdi5YUsg7lOY4rjUHNSWyP2BkoNFFsDP
-X-Gm-Gg: ASbGncsKgoOBRgvI+6daPyMWKdBqmThSNRinZ3sZbRXwbqzw5ZUsDeDQ70/LKYdtG92
-	4u6kCQISmih4WY7MzT8iA3t+QOthohlwlhD7BUb3rPY86hWTPtjHZ267xTgFgrUnh9He03dIzlU
-	IFYk1QOf1uRLELh4Jmx/2a70S+U+dSYl8f9WSwfwMe3Nej+zKwigO4zqYpQK8kUQinIuQFdCi4X
-	s5txEsg87GU9MM7DUFNTgfCNj30J82RQ4mQe3ekzuHvrhQwxNrPouHcz21fvAENZz5ENJX82ziT
-	hFm4xrQtxY6rHAfvCsiLXg5om1MSDSWmSj/qeKhvOsH/1ztm9b9nBq8PdAzMVM1/8fzi
-X-Google-Smtp-Source: AGHT+IFJfzFy8MikJxGoTFLuN6tcrmJtPOA/qBHSB3opFc0xc5RXfyX0+z3ecAr5bH4Qt7gKQzRQRg==
-X-Received: by 2002:a05:6830:d1a:b0:72c:4032:76f with SMTP id 46e09a7af769-72e86304edfmr3726235a34.12.1744414630055;
-        Fri, 11 Apr 2025 16:37:10 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-72e73d7140esm1131783a34.22.2025.04.11.16.37.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Apr 2025 16:37:08 -0700 (PDT)
-Message-ID: <0ce8559d-5c7d-43a0-8177-7704969fd334@gmail.com>
-Date: Fri, 11 Apr 2025 16:37:03 -0700
+	id 1u3f0U-0000000GDx6-3RWy;
+	Sat, 12 Apr 2025 17:51:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0701E5C3E56;
+	Sat, 12 Apr 2025 17:48:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E8CEC4CEE3;
+	Sat, 12 Apr 2025 17:51:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744480264;
+	bh=TagZ0zYvwJ13raGmBK79thcRSiS9AqEKrO4KwU9hXwI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iTqhljt3uPGXOeeokGvoiePR+ULT/F/3X/m+FFA8bnGCvHHgn1lA86i5BCPVlTue9
+	 Lg8uCC4kUbFvrXYIyu+4OVIeTLuR58HAIuTLiLcr39nOf8n8/SmfLUi2y6ZowcVpUI
+	 MC45dp6RnmgWOe36zHHuNMUhhpftX+9ShMiOJKEYOirhtwQm3i8AJ/0c8UuG9zVRPQ
+	 +Gxz6jQka4/gc4k+c17o2pILuWGPlyIvlqFvUVO61/wbGE4Dr8bqMGk42DVUr/Txe3
+	 CnFR5sXe+eG9zSNkjbun7sQ2JGWSbNSJ51i9Sb13getv+rIldGbjcJQBklc5Nfq+Vg
+	 mRsKOkC/lr8BQ==
+Date: Sat, 12 Apr 2025 12:51:03 -0500
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/4] dt-bindings: phy: rockchip,inno-usb2phy: add port
+ property
+Message-ID: <20250412175103.GA1366427-robh@kernel.org>
+References: <20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com>
+ <20250407-rk3576-sige5-usb-v1-1-67eec166f82f@collabora.com>
+ <20250410211123.GA1071510-robh@kernel.org>
+ <6743970.MhkbZ0Pkbq@workhorse>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/17] arm64: dts: broadcom: bcm2712: Use "l2-cache"
- for L2 cache node names
-To: "Rob Herring (Arm)" <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
- Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Stephan Gerhold <stephan.gerhold@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
- linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
- <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org>
-Content-Language: en-US
-From: Florian Fainelli <f.fainelli@gmail.com>
-Autocrypt: addr=f.fainelli@gmail.com; keydata=
- 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
- WlfRzlpjIPmdjgoicA==
-In-Reply-To: <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <6743970.MhkbZ0Pkbq@workhorse>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_163711_589925_3C58EB02 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250412_105106_977754_2AD17ACB 
+X-CRM114-Status: GOOD (  40.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,20 +79,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNC8xMC8yNSAwODo0NywgUm9iIEhlcnJpbmcgKEFybSkgd3JvdGU6Cj4gVGhlcmUncyBubyBu
-ZWVkIGluY2x1ZGUgdGhlIENQVSBudW1iZXIgaW4gdGhlIEwyIGNhY2hlIG5vZGUgbmFtZXMgYXMK
-PiB0aGUgbmFtZXMgYXJlIGxvY2FsIHRvIHRoZSBDUFUgbm9kZXMuIFRoZSBkb2N1bWVudGVkIG5v
-ZGUgbmFtZSBpcwo+IGFsc28ganVzdCAibDItY2FjaGUiLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJv
-YiBIZXJyaW5nIChBcm0pIDxyb2JoQGtlcm5lbC5vcmc+Cj4gUmV2aWV3ZWQtYnk6IFBoaWxpcHBl
-IE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAbGluYXJvLm9yZz4KCk5vdCBzdXJlIGhvdyB5b3UgaGFk
-IGludGVuZGVkIGZvciBtZSB0byBwaWNrIHVwIHRoYXQgcGF0Y2ggd2l0aG91dCAKY29weWluZyB0
-aGUgbWFpbnRhaW5lcnMuCgpBcHBsaWVkIG5vbmV0aGVsZXNzLCB0aGFua3MhCi0tIApGbG9yaWFu
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+On Fri, Apr 11, 2025 at 04:31:38PM +0200, Nicolas Frattaroli wrote:
+> On Thursday, 10 April 2025 23:11:23 Central European Summer Time Rob Herring wrote:
+> > On Mon, Apr 07, 2025 at 08:09:14PM +0200, Nicolas Frattaroli wrote:
+> > > USB connectors like to have OF graph connections to high-speed related
+> > > nodes to do various things. In the case of the RK3576, we can make use
+> > > of a port in the usb2 PHY to detect whether the OTG controller is
+> > > connected to a type C port and apply some special behaviour accordingly.
+> > > 
+> > > The usefulness of having different bits of a fully functioning USB stack
+> > > point to each other is more general though, and not constrained to
+> > > RK3576 at all, even for this use-case.
+> > > 
+> > > Add a port property to the binding.
+> > > 
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > ---
+> > >  Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml | 5 +++++
+> > >  1 file changed, 5 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > > index 6a7ef556414cebad63c10de754778f84fd4486ee..3a662bfc353250a8ad9386ebb5575d1e84c1b5ba 100644
+> > > --- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > > +++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+> > > @@ -78,6 +78,11 @@ properties:
+> > >        When set the driver will request its phandle as one companion-grf
+> > >        for some special SoCs (e.g rv1108).
+> > >  
+> > > +  port:
+> > > +    $ref: /schemas/graph.yaml#/properties/port
+> > > +    description:
+> > > +      A port node to link the PHY to a USB connector's "high-speed" port.
+> > 
+> > I don't think this is correct. The HS port of the connector goes to the 
+> > controller. The controller has the link to the phy.
+> > 
+> > If the PHY is also what handles USB-C muxing or orientation switching, 
+> > then it might have ports, but then it needs input and output ports.
+> > 
+> > Rob
+> > 
+> 
+> Hi Rob,
+> 
+> thank you for the quick response.
+> 
+> I've feared this would be the case, but chose to go ahead with this solution
+> anyway because I'm not super stoked about the alternatives I can think of. The
+> problem is that I need to go from the USB PHY node to the USB connector somehow,
+> but there's no way I can see to get from the PHY node to the USB2 controller
+> it's connected to, unless I'm missing something obvious.
+> 
+> So I see two alternatives:
+> 1. Extend the usb connector binding to add additional ports for PHYs that handle
+>    vbus detection or something, then extend either the inno2 binding or a more
+>    general usb PHY binding to add that port definition.
+> 2. Revert to what the downstream vendor kernel does and simply add a boolean
+>    flag property to the inno usb2phy binding that tells it whether it's
+>    connected to a USB-C port and should therefore expect vbusdet to remain high.
+> 
+> Let me know if there's any better alternatives I missed. If there's some OF
+> driver function to enumerate all controllers a PHY is referenced by, then that
+> would probably work as well, allowing me to just point the HS port to the
+> controller instead as intended.
+
+The building blocks are there. You can iterate over nodes with 'phys' 
+with for_each_node_with_property(), then on each entry in 'phys' check 
+if it matches your node. Then you need to iterate over the ports to 
+check for connection to usb-c-connector. 
+of_graph_get_remote_port_parent() will help you there. Not terribly 
+efficient, but you're only doing it once.
+
+Another option is extend phy modes to distinguish USB-C or not. Then you 
+can set the mode either with the 'phy-mode' property or in phy cells. 
+Though if you have to add a cell, that's an ABI change (not sure if the 
+existing kernel would accept another cell).
+
+I rather see the kernel use the information that's already there rather 
+than have 2 sources of information.
+
+Rob
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
