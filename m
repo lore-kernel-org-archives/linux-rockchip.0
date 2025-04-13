@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948E7C369AB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Apr 2025 20:56:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECCAC3601E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Apr 2025 14:24:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3yMg9q7S7pFYXP27+X7VfJ8XlhX0dR7LxWKgJ9apncg=; b=U3gVk++HF5wJZz
-	KXG1JCkYITcuDtOdeBDEYEDV3RI/vfXodwWkuyhsmbLfDnvGCBEll3ESp6XW7KazL7fvdGOTqXEoT
-	V+0q5sctmBUTIk8MlSJgfheAskO823dlPA4zdyUQYFVebt+qvZIFb9mKVwvQwhJQz6xY/WovQEO77
-	MYxqU8ljmrUUDK0CEEmoqXZ51VBuGiKzrbCUDOGTb6uoISeTrKnxG6wrrnHSL7/LS/IyOF+5lkVRc
-	U3f/X1jijeya874crg9GHEpx2ttLJQXwt6XPmQO9hJ2CRb61ixxjZmXJ1rVxJJZIapasScqjMQZT5
-	PP2tKbzwGFzpEBGcJy6w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DrcYXxWnCeBroQte6KV5/0Yn9tc1uiH0aTEXHgxna0g=; b=JlccdFZUJGfUoV
+	zFnW7CVL2uQnHf7jHTibaQ1ThX0xwebeAPSnps5QiVrFt73vTmdm0vp55wKD2cKUhygpW9hSIKFX+
+	LRoaRH12PiuDS9k66Ugh+ruGFZAOBKpAwaF0gJqiNcDi4e/qd7xg2KHnYUpV90wkeBaoRe+db0l34
+	nuakeIAOQQWvjx3Rc6Soj61ouTtFJBXMFJZ0DJjtZHSFGdbJOhpUNXbRIq+ayLgWwA18G43EFwKae
+	c4PqfQJgJi1OxvvLEDjr0QGqA7/D60KLY3qXDzMCHYJjDz5InldaD+BwyYrhbqON1JoxFfRTGCxPI
+	U41J8OnLCouIfQI9Ac4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3hu1-0000000GS4q-23yD;
-	Sat, 12 Apr 2025 20:56:37 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u3yGD-0000000HGMG-3ZFp;
+	Sun, 13 Apr 2025 14:24:37 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3hjT-0000000GRAz-49ix;
-	Sat, 12 Apr 2025 20:45:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1744490727; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LkB4JmyPpInWvLyByLSXnrVwUoHwkko0u0pgw7pRQuJ8cnCjbEUOJ0QByfp1DVNc87WcDJdTrMjvwo8H5qW2VpVBpJSWsVzj6R8om4Q30l/xCX+SBth+ukcVpfgfLtb8nc4UDysXMqumpybjoBdxeRZGQZxCobR+eaW0vXtS3KU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1744490727; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Ck4o/n3lpkxAXlPzedzjCk/JD+YtxzckBUpPpLxJb6o=; 
-	b=Fzo2zKJFej2Ingwr3PPjnkPU4k2Tx7JeYwULVE9T7dUQInM5NcUNgiiYYNchX5aEEP6QRjH5WAr+2NFI+YpjblMo9DFui1YVEBcp+0sJkYh36Ew8f4qO92ZsCuoIJyzelTt8XS6bhYnUHDb7odjMJQGE/jII9Wblk1Nl1Nwd0M4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744490727;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=Ck4o/n3lpkxAXlPzedzjCk/JD+YtxzckBUpPpLxJb6o=;
-	b=PPx1dBZwrk2/pChhtqkioqIHh5RKqd9VDJ4kk/HvIClo890Q6K1dNuh56IWPb7gc
-	kiUJs3fF6Kw2hc9BMcgj1UeuW0RqTiv3p5yuVarNCaePg7fDCPrXxjid8mD7W4TBTVd
-	eSCsikskvXbgOKRioptue4ke9eea40NL27KpXMJE=
-Received: by mx.zohomail.com with SMTPS id 1744490726578169.77104371916073;
-	Sat, 12 Apr 2025 13:45:26 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Sat, 12 Apr 2025 22:45:08 +0200
-Subject: [PATCH v2] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
+	id 1u3yGB-0000000HGLT-1aYc
+	for linux-rockchip@lists.infradead.org;
+	Sun, 13 Apr 2025 14:24:36 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-22622ddcc35so46225805ad.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 13 Apr 2025 07:24:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744554274; x=1745159074; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=1HrAk684WJxvGVi+ClfydabBEME3gjs95+HZox1kC4Q=;
+        b=aZ5QxduKzZUNp0bBvOvR0MaeCIulMA9o9qQbNOAL2yZGoUkHAryqyRgb99Zj5lZKjx
+         QimJeufXPjqIQjbSz5kvnCeGweCZFyyrBEtTN9ALkdq+ID4ecRs80I0iaDnxoblhUbj6
+         RBBg6V/eXURMM5sqjG/dof5n9JLmJcDevI35pTi3SwxTSI+ofGziT/QzabnnqYMrfUEg
+         dz2a80sTM4utw/XwdF/uDueAQCafWx3NphPVNFxCClfm6+TpYDIiQk+OOOxwSoW8PtB1
+         aEyR+5EHeFM2knYryeXFPl8PVq/Sp/TyOuPBS8Kx3CzW1SspW3CYIPE5im+vlQc3X+BT
+         j9vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744554274; x=1745159074;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1HrAk684WJxvGVi+ClfydabBEME3gjs95+HZox1kC4Q=;
+        b=bsuNKxikdzFJxwdcsubqH9Cer/Zpvm8YVXckqy2a60pIwy4/zxO0wSPRdkK8aH2LOe
+         GuHRVCR3MqdVOdIL190wlpfCDb9y/2hA0M3NEQywkCH0x3eZw8/MCpYpN7P3Y/r46Q4E
+         KP9o83q1A841f+jqovPePbYPIal7u+Ha/5x9NSLJgO8VUJ+Dk8KIMbFNBx2fvqBvzVkE
+         hmTcU/yfmib7um67JAx9571EtIpIA159DH8jMVt6PZsn/myBpMwCUhUVYbYKz+k4d7Mx
+         fpiqWSHtNCfLskFLIAoZfb6BJtBBmxCixRjRkR8Kb0qRJvlBTqUmif/3AwAnteqbgu0I
+         mLeg==
+X-Forwarded-Encrypted: i=1; AJvYcCUYau+CnV7mXNDudk+5dMr0CME5hWD0yCNRqnSN6Ynx1O83mCzGM6TLTGhBDj5JEDWVvJl9koApILr8sANCIQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy0JUOQeOyElFlLwZlOA/eXsPuu1sNrLsSd5+1mR+VINMNGyL9j
+	0w0f1eMkREcsDE6G/Q6MwQl+6sMmTQDFXZGPuPiRYNWtPeshfT6iGj4rT51uPg==
+X-Gm-Gg: ASbGnctjqQsBgVafoWM3affSocjk1FMERexSx/sNHzISsZWid+lGvFhc6OrfxDqIRP3
+	PvgvKr/1/54PsymOIQMShy4sdY049lb3rsCuz8z9BkC4vP3JnOq81q6wIAgLpgzkLAjddVJoJZh
+	/eQg/I9R6TYnuC0dUxSG9XFzNfzAz5bsWhMyNP7HtyWzbZ3prM82B6wXxPzt1KpN2bnO9xSshy7
+	lC8dCd7R35NNaMUVnOdptCAK32rMeRZdp+vf9oCOCiQhTCtL9jiVMM9zDzucYfbxpt/SEiBvDad
+	BDF0eejGVtHQ3AfR4COSMgh/vJlCetr20iTb3F/Xr5pM3SRkSSPX
+X-Google-Smtp-Source: AGHT+IHz8KFcMndBsaWjeHAnKge9iDzq51I0lR4nXYH5jlXhc1fMIqB8kkjeuXzLM3IOTths9xwogQ==
+X-Received: by 2002:a17:902:d4cd:b0:224:1609:a747 with SMTP id d9443c01a7336-22bea4bd2c0mr120185085ad.31.1744554274314;
+        Sun, 13 Apr 2025 07:24:34 -0700 (PDT)
+Received: from thinkpad ([120.60.137.231])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22ac7cb4fa9sm82852175ad.179.2025.04.13.07.24.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 13 Apr 2025 07:24:33 -0700 (PDT)
+Date: Sun, 13 Apr 2025 19:54:28 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] PCI: dw-rockchip: Remove PCIE_L0S_ENTRY check from
+ rockchip_pcie_link_up()
+Message-ID: <gogw24yg4lfq77ime7qyurvkef5yvmkkwjxo6xch52fbszibax@diaxredvtcrh>
+References: <1744180833-68472-1-git-send-email-shawn.lin@rock-chips.com>
+ <Z_YwNt6WUuijKTjt@ryzen>
+ <38e69551-cc40-11a9-191f-de9a193c5e51@rock-chips.com>
+ <Z_Y7h1vzVCCEiXK6@ryzen>
 MIME-Version: 1.0
-Message-Id: <20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com>
-X-B4-Tracking: v=1; b=H4sIANPQ+mcC/3WOyw6CMBREf4V07TW9ffBa+R+GRSlFGoFqi0Rj+
- Hdr3RldzmTOzDxJMN6aQOrsSbxZbbBujoLtMqIHNZ8M2C5qwiiTlGMB/sxlkYOZJg29vUPR6RJ
- VzgrBGInUxZtop8Zj89HeXG+xePmYpFXBgHbTZJc6W/M9SvAayTs82LA4/0hvVkzpv8MrAkInu
- ehEpQT28qDdOKrWebWP7e8viRW0/M1ySquSlS22HL/YZtu2F2uNYI0bAQAA
-X-Change-ID: 20250317-rk3576-emmc-fix-7dc81a627422
-To: Shawn Lin <shawn.lin@rock-chips.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>, 
- Adrian Hunter <adrian.hunter@intel.com>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <Z_Y7h1vzVCCEiXK6@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250412_134544_079797_E968AC96 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20250413_072435_424082_685202F4 
+X-CRM114-Status: GOOD (  29.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,126 +98,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org, linux-mmc@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3576's power domains have a peculiar problem where the PD_NVM
-power domain, of which the sdhci controller is a part, seemingly does
-not have idempotent disable/enable. The end effect is that if PD_NVM
-gets turned off by the generic power domain logic because all the
-devices depending on it are suspended, then the next time the sdhci
-device is unsuspended, it'll hang the SoC as soon as it tries accessing
-the CQHCI registers.
-
-RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
-added to the generic power domains API to handle what appears to be a
-similar hardware issue.
-
-Use this new function to ask for the same treatment in the sdhci
-controller by giving rk3576 its own platform data with its own postinit
-function. The benefit of doing this instead of marking the power domains
-always on in the power domain core is that we only do this if we know
-the platform we're running on actually uses the sdhci controller. For
-others, keeping PD_NVM always on would be a waste, as they won't run
-into this specific issue. The only other IP in PD_NVM that could be
-affected is FSPI0. If it gets a mainline driver, it will probably want
-to do the same thing.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
-Changes in v2:
-- Rewrite patch to use dev_pm_genpd_rpm_always_on in sdhci driver
-  instead, after Ulf Hansson made me aware of its existence
-- Link to v1: https://lore.kernel.org/r/20250408-rk3576-emmc-fix-v1-1-3009828b1b31@collabora.com
----
- drivers/mmc/host/sdhci-of-dwcmshc.c | 39 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
-
-diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index 09b9ab15e4995f0bddf57dd309c010c849be40d9..a00aec05eff2da8197cc64690ba9665be756e54a 100644
---- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-+++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -17,6 +17,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
- #include <linux/sizes.h>
-@@ -745,6 +746,28 @@ static void dwcmshc_rk35xx_postinit(struct sdhci_host *host, struct dwcmshc_priv
- 	}
- }
- 
-+static void dwcmshc_rk3576_postinit(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
-+{
-+	struct device *dev = mmc_dev(host->mmc);
-+	int ret;
-+
-+	/*
-+	 * This works around what appears to be a silicon bug, which makes the
-+	 * PD_NVM power domain, which the sdhci controller on the RK3576 is in,
-+	 * never come back the same way once it's turned off once. This can
-+	 * happen during early kernel boot if no driver is using either PD_NVM
-+	 * or its child power domain PD_SDGMAC for a short moment, leading to it
-+	 * being turned off to save power. By keeping it on, sdhci suspending
-+	 * won't lead to PD_NVM becoming a candidate for getting turned off.
-+	 */
-+	ret = dev_pm_genpd_rpm_always_on(dev, true);
-+	if (ret && ret != -EOPNOTSUPP)
-+		dev_warn(dev, "failed to set PD rpm always on, SoC may hang later: %pe\n",
-+			 ERR_PTR(ret));
-+
-+	dwcmshc_rk35xx_postinit(host, dwc_priv);
-+}
-+
- static int th1520_execute_tuning(struct sdhci_host *host, u32 opcode)
- {
- 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-@@ -1176,6 +1199,18 @@ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
- 	.postinit = dwcmshc_rk35xx_postinit,
- };
- 
-+static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
-+	.pdata = {
-+		.ops = &sdhci_dwcmshc_rk35xx_ops,
-+		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+	},
-+	.init = dwcmshc_rk35xx_init,
-+	.postinit = dwcmshc_rk3576_postinit,
-+};
-+
- static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
- 	.pdata = {
- 		.ops = &sdhci_dwcmshc_th1520_ops,
-@@ -1274,6 +1309,10 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
- 		.compatible = "rockchip,rk3588-dwcmshc",
- 		.data = &sdhci_dwcmshc_rk35xx_pdata,
- 	},
-+	{
-+		.compatible = "rockchip,rk3576-dwcmshc",
-+		.data = &sdhci_dwcmshc_rk3576_pdata,
-+	},
- 	{
- 		.compatible = "rockchip,rk3568-dwcmshc",
- 		.data = &sdhci_dwcmshc_rk35xx_pdata,
-
----
-base-commit: 64e9fdfc89a76fed38d8ddeed72d42ec71957ed9
-change-id: 20250317-rk3576-emmc-fix-7dc81a627422
-
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBBcHIgMDksIDIwMjUgYXQgMTE6MTk6MDNBTSArMDIwMCwgTmlrbGFzIENhc3NlbCB3
+cm90ZToKPiBIZWxsbyBTaGF3biwKPiAKPiBPbiBXZWQsIEFwciAwOSwgMjAyNSBhdCAwNTowOToz
+OFBNICswODAwLCBTaGF3biBMaW4gd3JvdGU6Cj4gPiDlnKggMjAyNS8wNC8wOSDmmJ/mnJ/kuIkg
+MTY6MzAsIE5pa2xhcyBDYXNzZWwg5YaZ6YGTOgo+ID4gPiBPbiBXZWQsIEFwciAwOSwgMjAyNSBh
+dCAwMjo0MDozM1BNICswODAwLCBTaGF3biBMaW4gd3JvdGU6Cj4gPiA+IAo+ID4gPiBJcyB0aGVy
+ZSBhbnkgYWR2YW50YWdlIG9mIHVzaW5nIGEgcm9ja2NoaXAgc3BlY2lmaWMgd2F5IHRvIHJlYWQg
+bGluayB1cCwKPiA+ID4gcmF0aGVyIHRoYW4ganVzdCByZWFkaW5nIGxpbmsgdXAgdmlhIHRoZSBE
+V0MgUENJRV9QT1JUX0RFQlVHMSByZWdpc3Rlcj8KPiA+IAo+ID4gVGhpcyBpcyBhIHZlcnkgZ29v
+ZCBxdWVzdGlvbiB3aGljaCB3ZSB0cmllZCBidXQgbWFkZSByZWFsIHByb2R1Y3RzCj4gPiBzdWZm
+ZXIgZnJvbSBpdCBmb3IgYSBsb25nIHRpbWUsIGFuZCBmaW5hbGx5IHdlIGZvdW5kIHRoZSByZWFz
+b24gYW5kCj4gPiBkaXNjYXJkZWQgaXQuCj4gPiAKPiA+IFF1b3RlZCBmcm9tIERXQyBkYXRhYm9v
+aywgc2VjdGlvbiA4LjIuMyBBWEkgQnJpZGdlIEluaXRpYWxpemF0aW9uLAo+ID4gQ2xvY2tpbmcg
+YW5kIFJlc2V0Ogo+ID4gCj4gPiAiSW4gUkMgTW9kZSwgeW91ciBBWEkgYXBwbGljYXRpb24gbXVz
+dCBub3QgZ2VuZXJhdGUgYW55IE1FTSBvciBJL08KPiA+IHJlcXVlc3RzLCB1bnRpbCB0aGUgaG9z
+dCBzb2Z0d2FyZSBoYXMgZW5hYmxlZCB0aGUgTWVtb3J5IFNwYWNlIEVuYWJsZQo+ID4gKE1TRSks
+IGFuZCBJTyBTcGFjZSBFbmFibGUgKElTRSkgYml0cyByZXNwZWN0aXZlbHkuIFlvdXIgUkMgYXBw
+bGljYXRpb24KPiA+IHNob3VsZCBub3QgZ2VuZXJhdGUgQ0ZHIHJlcXVlc3RzIHVudGlsIGl0IGhh
+cyBjb25maXJtZWQgdGhhdCB0aGUgbGluayBpcwo+ID4gdXAgYnkgc2FtcGxpbmcgdGhlIHNtbGhf
+bGlua191cCBhbmQgcmRsaF9saW5rX3VwIG91dHB1dHMuIgo+ID4gCj4gPiBRdW90ZWQgZnJvbSBE
+V0MgZGF0YWJvb2ssIHNlY3Rpb24gNS41MCBTSUk6IERlYnVnIFNpZ25hbHMKPiA+ICJbMzZdOiBz
+bWxoX2xpbmtfdXA6IExUU1NNIHJlcG9ydHMgUEhZIGxpbmsgdXAgb3IgTFRTU00gaXMgaW4KPiA+
+IExvb3BiYWNrLkFjdGl2ZSBmb3IgTG9vcGJhY2sgTWFzdGVyIiB3aGljaCByZWZlcnMgdG8KPiA+
+IFBDSUVfUE9SVF9ERUJVRzFfTElOS19VUCBwZXIgY29kZS4KPiA+IAo+ID4gVGhlIHRpbWluZyBp
+biBkd2MgY29yZSBpcyBkcnZpbmcgc21saF9saW5rX3VwLT5MMC0+cmRsaF9saW5rX3VwLT5GQwo+
+ID4gaW5pdChhIGZpeGVkIGRlbGF5KSBmcm9tIElDIHNpbXVsYXRpb24gd2hlbiBsaW5raW5nIHVw
+Lgo+ID4gCj4gPiBUaGUgZHdfcGNpZV9saW5rX3VwKCkgd2Fzbid0IHJlbGlhYmx5IHdvcmsgYXMg
+ZXhwZWN0ZWQgYnkgbWFzc2l2ZSB0ZXN0Lgo+ID4gVGhlIHByb2JsZW0gaXMgY2xlYXIgZnJvbSBv
+dXIgQVNJQyB2aWV3LCB0aGF0IGN4cGxfZGVidWdfaW5mbyBmcm9tIERXQwo+ID4gY29yZSBpcyBt
+aXNzaW5nIHJkbGhfbGlua191cC4gY3hwbF9kZWJ1Z19pbmZvWzMyOjYzXSBpcyBpbmRlbnRpY2Fs
+IHRvCj4gPiBQQ0lFX1BPUlRfREVCVUcxLCBTbyByZWFkaW5nIFBDSUVfUE9SVF9ERUJVRzEgYW5k
+IGNoZWNrCj4gPiBzbWxoX2xpbmtfdXAgaXNuJ3QgZW5vdWdoLgo+ID4gCj4gPiBUaGUgcHJvYmxl
+bSB3YXMgaW50cm9kdWNlZCBieSBjb21taXQgMSBhbmQgZml4ZWQgYnkgY29tbWl0IDIgYnV0IG5v
+dCB0bwo+ID4gdGhlIGVuZC4gQW5kIGZpbmFsbHkgY29tbWl0IDMgcmVuYW1lIHRoZSByZWdpc3Rl
+ciBidXQgbm90IGZpeCBhbnl0aGluZy4KPiA+IAo+ID4gSXQgd2FzIGJyb2tlbiBmcm9tIHRoZSBm
+aXJzdCB0aW1lLiBBbnkgZHdjIGNvbnRyb2xsZXJzIHNob3VsZCBub3QgYmUgdXNlCj4gPiB0aGUg
+YnVnZ3kgZGVmYXVsdCBtZXRob2QgdG8gY2hlY2sgbGluayB1cCBzdGF0ZSBmcm9tIG91ciB2aWV3
+Lgo+ID4gU28gdGhpcydzIHRoZSB3aG9sZSBzdG9yeSBmb3IgaXQsIHdoaWNoIG1heSBoZWxwIHlv
+dSB1bmRlcnN0YW5kIHRoZQo+ID4gaW5kZWVkIHByb2JsZW0gYW5kIHdoeSB3ZSByZWludmVudCBy
+b2NrY2hpcF9wY2llX2xpbmtfdXAoKSBoZXJlLgo+ID4gCj4gPiBbMV0uIGNvbW1pdCBkYWMyOWU2
+YzU0NjAgKCJQQ0k6IGRlc2lnbndhcmU6IEFkZCBkZWZhdWx0IGxpbmsgdXAgY2hlY2sgaWYKPiA+
+ICAgICBzdWItZHJpdmVyIGRvZXNuJ3Qgb3ZlcnJpZGUiKQo+ID4gCj4gPiBbMl0uIGNvbW1pdCAw
+MWMwNzY3MzJlODIgKCJQQ0k6IGRlc2lnbndhcmU6IENoZWNrIExUU1NNIHRyYWluaW5nIGJpdAo+
+ID4gICAgIGJlZm9yZSBkZWNpZGluZyBsaW5rIGlzIHVwIikKPiA+IAo+ID4gWzNdLiBjb21taXQg
+NjBlZjRiMDcyYmEwICgiUENJOiBkd2M6IGlteDY6IFNoYXJlIFBIWSBkZWJ1ZyByZWdpc3Rlcgo+
+ID4gICAgIGRlZmluaXRpb25zIikKPiAKPiBUaGFuayB5b3UgZm9yIHRoZSBkZXRhaWxlZCBhbnN3
+ZXIuCj4gCj4gSXQgc2VlbXMgbGlrZSB3ZSBzaG91bGQgcmVhbGx5IGFkZCBhIHdhcm5pbmcgYW5k
+IGEgY29tbWVudCBpbgo+IGR3X3BjaWVfbGlua191cCgpLCBzbyB0aGF0IG90aGVycyBkb24ndCBn
+ZXQgaGl0IGJ5IHRoaXMgaGFyZCB0byBkZWJ1ZyBpc3N1ZSEKPiAKClJpZ2h0LiBCdXQgSSdtIGFs
+c28gd29uZGVyaW5nIGlmIHdlIHNob3VsZCB1c2UgdGhlICdEYXRhIExpbmsgTGF5ZXIgTGluayBB
+Y3RpdmUnCmJpdCBpbiBQQ0kgRXhwcmVzcyBDYXBhYmlsaXR5IGZvciBjaGVja2luZyBsaW5rIHVw
+LiBRY29tIGRyaXZlciBoYXMgYmVlbiB1c2luZwppdCBmcm9tIHRoZSBzdGFydCBhbmQgdGhlcmUg
+YXJlIG5vIHJlcG9ydGVkIGlzc3Vlcy4gV2UgY291bGQgYWRkIHRoaXMgYXMgdGhlCmZpcnN0IGZh
+bGxiYWNrIGlmIHRoZSBsaW5rX3VwIGNhbGxiYWNrIGlzIG5vdCBwcm92aWRlZC4KCi0gTWFuaQoK
+LS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
