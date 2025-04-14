@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423A2C369A2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 18:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B74C369A2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 19:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1M3/n1HU5zlVMWM3Wdgbaq0podg9pajMMCpUSsedvIU=; b=fIZ/X9Y7dwLWer
-	ENVgIEos4JN9hjwL/je69mRfAYgoib0SMnsDnZemVEv1soeS+ljhXY60XCkSTHRlTHPz2XJ6e9/tt
-	qBR+UVCqHazhjCWsSV3wpX0alaap/07IiqtmLIFgH7JNmh+0F89c2ctxRM7aSA07GFrWXLKb4+3yT
-	rVCrachfh8oOHYSsW4e7cGuESUsUV9928Yproaj2HkTJ9IwDb5X58JGSMyGd6w+qbLZN4osYppfFa
-	65kq01NThRWBXxN5FiLAyeJYBnyyIX6qlJze0Ohe2EKQohKJ1DzzT3m+vnnpbHtPbpkgAyhR0dlx5
-	PAF61k2ofuaynBwmX7ag==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nNkQVAS+Jf0mdxICnj59223FPoF3BD4qqkfcX40sy5E=; b=r8v+ppiz38ZSVR
+	QaIVQ35+1M1jWGRyNO0G6Pmw6Kil5hYRFFHaGzcAjvXiqKYlt/BXGcZ0eL9/3OSXbIToRsO+Xen06
+	6GHXWGpT2ieKNbIHKwStfD7gqSHbUxnubsPVGHucfrdCUSDEqC6W5NcWsSD4C9IzM1PwHBUoK2usi
+	xE+C2koMFys5jJVzg9gh+Zzpvasxkn2GysgzuhqPJssHbD/r0dqdcdiosaUhL93PY88tC5y0B8rkR
+	zkClRzAd8FAp2XPyIcV0t2cliu8TbFZWC+cCBLb05vziVbWXX/aGKkfITaXzkyIVsNati/xwyBVo8
+	y8ZToEkK+b4eY0dlQzQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Odf-000000037ea-0LXO;
-	Mon, 14 Apr 2025 18:34:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u4PCw-00000003Ee6-0mQF;
+	Mon, 14 Apr 2025 19:11:02 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Oa4-000000036aX-1mG5;
-	Mon, 14 Apr 2025 18:30:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1744655447; cv=none; 
+	id 1u4Oh3-000000038WK-2Tig;
+	Mon, 14 Apr 2025 18:38:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1744655871; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=aK9QbFLPjjNWwlAHM+7jqXXYkZSyotrm4OpqYBZ6Z+7vjhqlvez1f+PL379uk9xzqoSF6iITw0vcbLi/5d56FqTSxfckQ8bVg5OlU5oCF3kg4cd/t22MRnH8JVTkmi91wGUqj/PNsc2dHlDKILWgCHoGv596aKqZGHKYDCjqwiA=
+	b=PMNc3gniZ/Pfki5mPuG8RzRFAmY7eATJN3KXe1HuhW6GpMclCzn8ARfnmWoMu80vwAN7GgaGOhiTVW0hz3sdxQRa5exakFFV3N9Ml3YMddjfjCauV1htP64kJfxD3TCSenMXNba1j0MSpgWLq5r+AQsn+mnOVLKdIEnoKyqhqd8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1744655447; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=0W68kifwClbmxOD9uB2cLoC+ZOmDFfEOuSDxczncg7A=; 
-	b=NnanDKGIw2jbi6e5Xc8Wy7BWebenhI2JPjGlWQZaOSjFO/+adLpumbi87vt34Pw9mygqSwkmkjWTIbSQKpBMHvR5Ce9B0Wlk/LiqOkwmLtFuKdfMt3clvw1c54CtQ49kEH49mBfTBBzoFLO/2aVawi+VBEAGE7vkb6hem77sVRI=
+	t=1744655871; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=UxeCCZVYevtkCT7thlYmN0LpZT3ruwqqeJ/LiyIL2bw=; 
+	b=BE6RPZxgkZZcnJhTcbdktx8LcMXP9uk4zGq+0E2a9mrs6yJsu0RvPlF2VARNhuNL16o7VIqPT0Oa4ZZkFKv4sqyn4f1vPesZU4yaa+IAd7mBIVSaghX6RnCR55Whk+GONBE3jFynIzEROf+PicYNxdq9aYBPOkRV/VJrlUL8/zE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744655447;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744655871;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=0W68kifwClbmxOD9uB2cLoC+ZOmDFfEOuSDxczncg7A=;
-	b=A9M8M+KDKMG7ngJrCcR8EyH1YFAWoOsBiMjvc5f7DXQ9x4mceV+16Cb+JYnRFbp5
-	eMN9g8GulITK60NJnEJuO3cH3+5U6KzGHHzzub8twfHPEIJQdWiKFIJ5hp1zIgDdA2t
-	lqyBWjpaLaPs6cnIcPL++Vy6dfuJ4pV/lyRvktOI=
-Received: by mx.zohomail.com with SMTPS id 1744655444841430.53710170104966;
-	Mon, 14 Apr 2025 11:30:44 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=UxeCCZVYevtkCT7thlYmN0LpZT3ruwqqeJ/LiyIL2bw=;
+	b=jdaE5j00+cdNEVv65UQnUCk5r3jjPfEfaUNlCYvpyNBETlXxFvWRgvVKdNxlEO0r
+	ByOK1aqtlNCeYW8I820ntemBCpT/p7e1Khs59ZBW19C1D/Ogfuilb3mTRp3x7Ibm2vM
+	iT+ZHUDXZPDdpJX+kmeXtWu1pbL4nHQ2TulLXzoU=
+Received: by mx.zohomail.com with SMTPS id 1744655869457172.63001317682392;
+	Mon, 14 Apr 2025 11:37:49 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
-Cc: andersson@kernel.org, Kever Yang <kever.yang@rock-chips.com>,
- Shawn Lin <Shawn.lin@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v9 2/2] arm64: dts: rockchip: Add rk3576 pcie nodes
-Date: Mon, 14 Apr 2025 20:30:38 +0200
-Message-ID: <5019259.31r3eYUQgx@workhorse>
-In-Reply-To: <20250414145110.11275-3-kever.yang@rock-chips.com>
-References: <20250414145110.11275-1-kever.yang@rock-chips.com>
- <20250414145110.11275-3-kever.yang@rock-chips.com>
+Date: Mon, 14 Apr 2025 20:37:38 +0200
+Subject: [PATCH] arm64: dts: rockchip: enable pcie on Sige5
 MIME-Version: 1.0
+Message-Id: <20250414-rk3576-sige5-pcie-v1-1-0e950a96f392@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAPFV/WcC/zWOwQqDMBBEf0Vy7gY3TRSklP5H8aDJqotYbWKlR
+ fz3pkqPb2DezCoCeaYgimQVnhYOPD4i4CkRtqseLQG7yEKlyqQaNfj+bPIMArdkYLJMYEytnU3
+ RucaJ2Js8NfzenffyYE/PV1TPRyjqKhDYcRh4LpIlk2jAW/XrDhRCtY8WyeW/idogphJR5QYQe
+ lrIy088d/Oj7cF2PAUZdVdRbtsXyK4zK9IAAAA=
+X-Change-ID: 20250414-rk3576-sige5-pcie-55b4dc01ddfd
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_113052_538572_6E74B2BF 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20250414_113805_714018_D7ACDD13 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +74,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 14 April 2025 16:51:10 Central European Summer Time Kever Yang wrote:
-> rk3576 has two pcie controllers, both are pcie2x1 work with
-> naneng-combphy.
-> 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Tested-by: Shawn Lin <Shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v9:
-> - rebase on 6.15-rc1
-> - Add test tag
-> 
-> Changes in v8: None
-> Changes in v7:
-> - re-order the properties.
-> 
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3:
-> - Update the subject
-> 
-> Changes in v2:
-> - Update clock and reset names and sequence to pass DTB check
-> 
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 108 +++++++++++++++++++++++
->  1 file changed, 108 insertions(+)
-> 
+The ArmSoM Sige5 board exposes PCIe controller 0 on its M.2 slot on the
+bottom of the board. Enable the necessary nodes for it, and also add the
+correct pins for both the power enable GPIO and the PCIe reset GPIO.
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+This depends on Kever's PCIe series[1], which is included as part of the
+b4 dependencies.
 
-Successfully used this on an ArmSoM Sige5 RK3576 board. PCIe works.
-Properties look correct, though the `ranges = ` doesn't separate out the
-different ranges into individual `<cells>` but this doesn't seem to make
-any difference and doesn't cause any warnings either. The only added
-warning is "simple-bus unit address format error" which seems like a
-bug in the thing generating the warning and not the device-tree itself,
-as it doesn't seem to notice that the address of the node is within the
-regs array, just not as the first cell.
+[1]: https://lore.kernel.org/linux-rockchip/20250414145110.11275-1-kever.yang@rock-chips.com/
+---
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 23 ++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-I think this looks good for merging, I'll also send out a Sige5 enablement
-patch shortly.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+index 828bde7fab68dc6bcbd13d75c8a72540b3666071..964ee351d3b63fcb4ede70f4b6c06541715cfe19 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+@@ -117,6 +117,8 @@ vcc_2v0_pldo_s3: regulator-vcc-2v0-pldo-s3 {
+ 
+ 	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
+ 		compatible = "regulator-fixed";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pcie_pwr_en>;
+ 		regulator-name = "vcc_3v3_pcie";
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+@@ -177,6 +179,10 @@ vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
+ 	};
+ };
+ 
++&combphy0_ps {
++	status = "okay";
++};
++
+ &cpu_l0 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+@@ -634,6 +640,14 @@ rgmii_phy1: phy@1 {
+ 	};
+ };
+ 
++&pcie0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_reset>;
++	reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc_3v3_pcie>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	headphone {
+ 		hp_det: hp-det {
+@@ -655,6 +669,15 @@ led_rgb_g: led-green-en {
+ 			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	pcie {
++		pcie_pwr_en: pcie-pwr-en {
++			rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++		pcie_reset: pcie-reset {
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
+ };
+ 
+ &sdhci {
 
-Thank you!
+---
+base-commit: 8a834b0ac9ceb354a6e0b8cf5b363edca8221bdd
+change-id: 20250414-rk3576-sige5-pcie-55b4dc01ddfd
+prerequisite-message-id: <20250414145110.11275-1-kever.yang@rock-chips.com>
+prerequisite-patch-id: deb68e2b51dbf1fb35a16464d2be570ed4418f8b
+prerequisite-patch-id: 0a48a30fa57c8c11524167f4b753f58f918bb26d
 
-Regards,
-Nicolas Frattaroli
-
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
