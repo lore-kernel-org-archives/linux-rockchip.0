@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDD8C3601E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 01:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D251DC3601E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 07:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2auDfA0A9BDeKbu+/ox1bQfoP2nzkjjloyPBaaDwdns=; b=VHXY3t7W6Bwy43
-	PmolclFYrWV4QRAX79KA7hTnd1HRHumnYcc/+3YGhdLEzFmlMXCN4lPZrDhq0oLCX+7T3OnoVznB8
-	xDXjlxRlRe/fDrwhDmrYo1tVECPNMKhNL5u0Xe1k3pvAu5blyeBfPk3AGHAPEtwoSm13WEh2NtpJ4
-	JbkNNR5M/U9eH+PPk03ghzuproEgi1kttS/++3fszrJruVugtR3UCHVUka+lD+GVsw/dw3iQ+j2FY
-	hivsojTWmLhpMh2QJQRkkKlFyrNNOtg+aSteg2ihjsGguRD2YhWYNtd77QsNalB3bAt8tKqkcoXWR
-	mNNNXT6/W09ZauJLgPKw==;
+	List-Owner; bh=lxpA45uP+OnFaOJgJR2s3RL+Bcwh8hluo/9MRe3Yyw0=; b=VVajFpEubIeXxV
+	Uen67XeJ9OPef8bVjpakCte4hCXnpaUg8a19aK03oGf/Eu44A1s+gX7rKizkDXcHkmwndG2Xsykai
+	SDe4d2qiHD5Vdc87g6kekt3jcVXK8iDbZwXTI+5LBhYKaGcWtOWg1hFnhUysoeC6bjydl9s4flpCu
+	DbXPwfb8oyLuCoieJE8Gh6+BWkRqjJGiqBV8Ns7A4jqwhODJojv1XQbMydgslI9PBk1AIJu2LHLeu
+	/UlGZ+F7WyBiUBb3zwkXx/eAJlOj1Vt/G7JfqP6YlFLJCfPubhWmbMLXCCvuVCJmo0k6XICCNe5TP
+	MRWof4GH7lNZI2isI7fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u495u-00000000Smd-1CrB;
-	Mon, 14 Apr 2025 01:58:42 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u495r-00000000Slu-3GNP
-	for linux-rockchip@lists.infradead.org;
-	Mon, 14 Apr 2025 01:58:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=IknIofkYAPPnaT4jxsRbA6Ab4/BzxkAm5YE9R71Rekc=;
-	b=E+vyk1DcodOe6+vPnkSVb5ufFok5sHQbXz6RS5q5DibIlaaJewl0mcwGVZ3xe3
-	Ht+eO5lm9opMLoIJhifew5L0iL1UX84Om7NhUMJ7THH47ccr88Mkr6b5s1cc4Hfj
-	+o2Y/M6IDxUJE3ubW0qH+kpEBUCqIbkmIhHXuBUo/Dolg=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAH4xmqa_xnYhZIGA--.539S2;
-	Mon, 14 Apr 2025 09:58:04 +0800 (CST)
-Message-ID: <d5ab2b1e-576a-43c0-b3be-b3fb9753498b@163.com>
-Date: Mon, 14 Apr 2025 09:58:01 +0800
+	id 1u4EFG-00000000vbZ-3X78;
+	Mon, 14 Apr 2025 07:28:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u4EDP-00000000vMl-2g73;
+	Mon, 14 Apr 2025 07:26:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A08365C2756;
+	Mon, 14 Apr 2025 07:24:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0DB1C4CEE2;
+	Mon, 14 Apr 2025 07:26:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744615606;
+	bh=B5aWKWH2FORQFNpAWOtD5r+9LPdCnzGQZHEkjywxDVw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XvkA14ufc5R0yibMxePJMAuvTCUdkfjLaz+u1o1kazGDjsXZVnin8IklNLq6t9t6Q
+	 j4629ZES7tetWbWjxK4CtZnr/79RrZQIKyYIH6OvFM6Og+9IWGSizuRQN99jzIf4s+
+	 hI5FOaCQ+TxFm5nfYsm39ZfXLxw4DBaFMbWaTRQtqZmVPeiab2pN1dSPHgBcCg2iIe
+	 YrT88ukt5bElpzx9Uybz69OTYlQVroXxLU0KkdwTBpIImf792PELU/0fg8/ibG/Dkh
+	 aC947MFroRYdqEDVsDbHKJV1JA0CQkqBvJGAT5C8aFS2hvoh4tEcObmf0EvwqjW1NN
+	 Sbx/eoo2HIOng==
+Date: Mon, 14 Apr 2025 09:26:42 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Catalin Marinas <catalin.marinas@arm.com>, 
+	Will Deacon <will@kernel.org>, Sugar Zhang <sugar.zhang@rock-chips.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	kernel@collabora.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-sound@vger.kernel.org
+Subject: Re: [PATCH v2 05/11] ASoC: dt-bindings: add schema for rockchip SAI
+ controllers
+Message-ID: <20250414-xanthic-tortoise-of-experiment-dcbfda@shite>
+References: <20250410-rk3576-sai-v2-0-c64608346be3@collabora.com>
+ <20250410-rk3576-sai-v2-5-c64608346be3@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] PCI: dw-rockchip: Move
- rockchip_pcie_ep_hide_broken_ats_cap_rk3588() to .init()
-To: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>
-Cc: Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
- <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
-X-CM-TRANSID: _____wAH4xmqa_xnYhZIGA--.539S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Kw1Dtr1fXw1DJr4xXFW5KFg_yoW8Ar17p3
-	yUZryjyF4rWr4SganrAFZxZryqyFn0kFWUJ3s7Ka4IvFnF9w15t3WUKr93try7trWjvFy5
-	Cw1Ut348WF43CFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRWmh7UUUUU=
-X-Originating-IP: [101.90.139.160]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgUuo2f70gbT4AABsI
+Content-Disposition: inline
+In-Reply-To: <20250410-rk3576-sai-v2-5-c64608346be3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250413_185840_265100_3F329321 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20250414_002647_719326_075A41DB 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,66 +77,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2025/4/14 09:28, Shawn Lin wrote:
-> Iif there is a core reset, _init() is called again, but _pre_init() is
-> not.
+On Thu, Apr 10, 2025 at 09:39:57PM GMT, Nicolas Frattaroli wrote:
+> Rockchip introduced a new audio controller called the "Serial Audio
+> Interface", or "SAI" for short, on some of their newer SoCs. In
+> particular, this controller is used several times on the RK3576 SoC.
 > 
+> Add a schema for it, with only an RK3576 compatible for now. Other SoCs
+> may follow as mainline support for them lands.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  .../bindings/sound/rockchip,rk3576-sai.yaml        | 144 +++++++++++++++++++++
+>  MAINTAINERS                                        |   6 +
+>  2 files changed, 150 insertions(+)
 
-Hi Shawn,
-
-Iif ---> If  ?  The spelling is wrong.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
-Hans
-
-> Suggested-by: Niklas Cassel <cassel@kernel.org>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v3: None
-> Changes in v2: None
-> 
->   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +------
->   1 file changed, 1 insertion(+), 6 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 922aff0..b45af18 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -278,17 +278,13 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
->   		dev_err(dev, "failed to hide ATS capability\n");
->   }
->   
-> -static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
-> -{
-> -	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
-> -}
-> -
->   static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
->   {
->   	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->   	enum pci_barno bar;
->   
->   	rockchip_pcie_enable_l0s(pci);
-> +	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
->   
->   	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
->   		dw_pcie_ep_reset_bar(pci, bar);
-> @@ -359,7 +355,6 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
->   
->   static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
->   	.init = rockchip_pcie_ep_init,
-> -	.pre_init = rockchip_pcie_ep_pre_init,
->   	.raise_irq = rockchip_pcie_raise_irq,
->   	.get_features = rockchip_pcie_get_features,
->   };
+Krzysztof
 
 
 _______________________________________________
