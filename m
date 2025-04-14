@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F418AC3601E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 01:28:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDD8C3601E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 01:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gDCyoJHj62jbGf/jVX7a/TUQKI4+06uMeokwhRwhiQ0=; b=1h6+uJQMkwofQv
-	ZlEcwye0kV6Eltl0LE95tbHDkmJO6Lv4qVLJ6RrN/WNYUI4NQsQIgOkFVOnuVM5ZVpzcNjLwXSvIO
-	F03/YHuon/AAIhllWTcBeZm9yAVT44rTl5YybdLHNk3fapTrwcxY+JXVkEqinmVIE5rVEGzatfVe7
-	vc43gUQfoiJGWGyty0iIuDZj5Gj/2DZAK+fkhT8+mhjQi2dAxRDkoe1ionGb1QSUQ+3/mvVUAjaQw
-	VuT10aYtvuit5tYq9yorV5dk8YpKQAAZadrgnbD5AimJi1afJ567hSlG6MKLQwoiZ1JnOuFDqrVql
-	wPBFAs/1nBLlyM4JceHQ==;
+	List-Owner; bh=2auDfA0A9BDeKbu+/ox1bQfoP2nzkjjloyPBaaDwdns=; b=VHXY3t7W6Bwy43
+	PmolclFYrWV4QRAX79KA7hTnd1HRHumnYcc/+3YGhdLEzFmlMXCN4lPZrDhq0oLCX+7T3OnoVznB8
+	xDXjlxRlRe/fDrwhDmrYo1tVECPNMKhNL5u0Xe1k3pvAu5blyeBfPk3AGHAPEtwoSm13WEh2NtpJ4
+	JbkNNR5M/U9eH+PPk03ghzuproEgi1kttS/++3fszrJruVugtR3UCHVUka+lD+GVsw/dw3iQ+j2FY
+	hivsojTWmLhpMh2QJQRkkKlFyrNNOtg+aSteg2ihjsGguRD2YhWYNtd77QsNalB3bAt8tKqkcoXWR
+	mNNNXT6/W09ZauJLgPKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u48cu-00000000QYh-31Wm;
-	Mon, 14 Apr 2025 01:28:44 +0000
-Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u48cr-00000000QXv-2uYJ
+	id 1u495u-00000000Smd-1CrB;
+	Mon, 14 Apr 2025 01:58:42 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u495r-00000000Slu-3GNP
 	for linux-rockchip@lists.infradead.org;
-	Mon, 14 Apr 2025 01:28:43 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 11ba080e5;
-	Mon, 14 Apr 2025 09:28:38 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 2/2] PCI: dw-rockchip: Move rockchip_pcie_ep_hide_broken_ats_cap_rk3588() to .init()
-Date: Mon, 14 Apr 2025 09:28:29 +0800
-Message-Id: <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
+	Mon, 14 Apr 2025 01:58:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=IknIofkYAPPnaT4jxsRbA6Ab4/BzxkAm5YE9R71Rekc=;
+	b=E+vyk1DcodOe6+vPnkSVb5ufFok5sHQbXz6RS5q5DibIlaaJewl0mcwGVZ3xe3
+	Ht+eO5lm9opMLoIJhifew5L0iL1UX84Om7NhUMJ7THH47ccr88Mkr6b5s1cc4Hfj
+	+o2Y/M6IDxUJE3ubW0qH+kpEBUCqIbkmIhHXuBUo/Dolg=
+Received: from [192.168.142.52] (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAH4xmqa_xnYhZIGA--.539S2;
+	Mon, 14 Apr 2025 09:58:04 +0800 (CST)
+Message-ID: <d5ab2b1e-576a-43c0-b3be-b3fb9753498b@163.com>
+Date: Mon, 14 Apr 2025 09:58:01 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/2] PCI: dw-rockchip: Move
+ rockchip_pcie_ep_hide_broken_ats_cap_rk3588() to .init()
+To: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>
+Cc: Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
 References: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkgZQ1YdQ0lPQkxLGB8ZTh1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9631e9a7a509cckunm11ba080e5
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6Njo*CjJNAi4VThlMFDxI
-	ED8aClFVSlVKTE9PTkJPSkpCT01IVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlISko3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=b7SYh4S7XlMIKDKrrUG0lH9skDFqDH2VaFj0s4zgM3uINWgK6ESM6//jDRu2YTC/KcjecZW0BVPhLwCmP5U9g8n56yw6G6MPh9hz8HiaAPY8OjcZ5ZEFyb5nOQ1kXEq8e/f+t5vC7LbbrjUTE3lq5Yxv/MpGTI5+DjRWbv0URrw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=5A4TBHvuXi69hu9oUHOU20qjziwkwnj8HnqCaEmrLaY=;
-	h=date:mime-version:subject:message-id:from;
+ <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
+X-CM-TRANSID: _____wAH4xmqa_xnYhZIGA--.539S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Kw1Dtr1fXw1DJr4xXFW5KFg_yoW8Ar17p3
+	yUZryjyF4rWr4SganrAFZxZryqyFn0kFWUJ3s7Ka4IvFnF9w15t3WUKr93try7trWjvFy5
+	Cw1Ut348WF43CFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRWmh7UUUUU=
+X-Originating-IP: [101.90.139.160]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgUuo2f70gbT4AABsI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250413_182842_089957_FEFED0E0 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250413_185840_265100_3F329321 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,58 +73,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Iif there is a core reset, _init() is called again, but _pre_init() is
-not.
 
-Suggested-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
 
-Changes in v3: None
-Changes in v2: None
+On 2025/4/14 09:28, Shawn Lin wrote:
+> Iif there is a core reset, _init() is called again, but _pre_init() is
+> not.
+> 
 
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+Hi Shawn,
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 922aff0..b45af18 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -278,17 +278,13 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
- 		dev_err(dev, "failed to hide ATS capability\n");
- }
- 
--static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
--{
--	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
--}
--
- static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
- 	rockchip_pcie_enable_l0s(pci);
-+	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
- 	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
- 		dw_pcie_ep_reset_bar(pci, bar);
-@@ -359,7 +355,6 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
- 
- static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
- 	.init = rockchip_pcie_ep_init,
--	.pre_init = rockchip_pcie_ep_pre_init,
- 	.raise_irq = rockchip_pcie_raise_irq,
- 	.get_features = rockchip_pcie_get_features,
- };
--- 
-2.7.4
+Iif ---> If  ?  The spelling is wrong.
+
+Best regards,
+Hans
+
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v3: None
+> Changes in v2: None
+> 
+>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +------
+>   1 file changed, 1 insertion(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 922aff0..b45af18 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -278,17 +278,13 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
+>   		dev_err(dev, "failed to hide ATS capability\n");
+>   }
+>   
+> -static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
+> -{
+> -	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+> -}
+> -
+>   static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+>   {
+>   	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+>   	enum pci_barno bar;
+>   
+>   	rockchip_pcie_enable_l0s(pci);
+> +	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+>   
+>   	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
+>   		dw_pcie_ep_reset_bar(pci, bar);
+> @@ -359,7 +355,6 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
+>   
+>   static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
+>   	.init = rockchip_pcie_ep_init,
+> -	.pre_init = rockchip_pcie_ep_pre_init,
+>   	.raise_irq = rockchip_pcie_raise_irq,
+>   	.get_features = rockchip_pcie_get_features,
+>   };
 
 
 _______________________________________________
