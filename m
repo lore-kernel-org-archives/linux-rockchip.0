@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBC7AC369B1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 01:28:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F418AC3601E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 01:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lO6zOCoISidGgTIpSpuTg2WmtqXi9K/GaFM+O0Xqlbk=; b=aeCFvbRZ0RA0Fu
-	eCyEnAgbCgCSyJ07UNZWcWwtQapMRmB53lbIfDFXsAZpxjnixj7g5O74yQFnbr20Pi/SytqCiDeYl
-	QT/8TjDWfcRjAs0ZzAF/dmT71T9OkPpRcrYMXn/e7usZ1iL3/Sq5l6s22KmjsLrAQrrU+5HgxzWD2
-	pAaRzPW7v68Af6SQPdR0P4sZJlhnMZcZZzFmtBOGqH8EWufUxS5kJi6JytZbzlIuIYtDkVcCebk2k
-	tFYY3N8yRdyv7RGS82EJ9nWBWLiS4By9s8L2KHPruNIiYB3hPNS1X6nd//UwKhsiuZY3TkKJlg11Y
-	G+1dEp52W2Lk3MazvfzA==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gDCyoJHj62jbGf/jVX7a/TUQKI4+06uMeokwhRwhiQ0=; b=1h6+uJQMkwofQv
+	ZlEcwye0kV6Eltl0LE95tbHDkmJO6Lv4qVLJ6RrN/WNYUI4NQsQIgOkFVOnuVM5ZVpzcNjLwXSvIO
+	F03/YHuon/AAIhllWTcBeZm9yAVT44rTl5YybdLHNk3fapTrwcxY+JXVkEqinmVIE5rVEGzatfVe7
+	vc43gUQfoiJGWGyty0iIuDZj5Gj/2DZAK+fkhT8+mhjQi2dAxRDkoe1ionGb1QSUQ+3/mvVUAjaQw
+	VuT10aYtvuit5tYq9yorV5dk8YpKQAAZadrgnbD5AimJi1afJ567hSlG6MKLQwoiZ1JnOuFDqrVql
+	wPBFAs/1nBLlyM4JceHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u48cH-00000000QVh-0Nk9;
-	Mon, 14 Apr 2025 01:28:05 +0000
-Received: from mail-m3276.qiye.163.com ([220.197.32.76])
+	id 1u48cu-00000000QYh-31Wm;
+	Mon, 14 Apr 2025 01:28:44 +0000
+Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u48cE-00000000QTg-0LOC
+	id 1u48cr-00000000QXv-2uYJ
 	for linux-rockchip@lists.infradead.org;
-	Mon, 14 Apr 2025 01:28:04 +0000
+	Mon, 14 Apr 2025 01:28:43 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 11ba07f80;
-	Mon, 14 Apr 2025 09:27:41 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 11ba080e5;
+	Mon, 14 Apr 2025 09:28:38 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -38,26 +38,29 @@ Cc: Niklas Cassel <cassel@kernel.org>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 1/2] PCI: dw-rockchip: Enable L0S capability
-Date: Mon, 14 Apr 2025 09:27:31 +0800
-Message-Id: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v3 2/2] PCI: dw-rockchip: Move rockchip_pcie_ep_hide_broken_ats_cap_rk3588() to .init()
+Date: Mon, 14 Apr 2025 09:28:29 +0800
+Message-Id: <1744594109-209312-1-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU4YSFYfS0lDGEweGhgYGU1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkgZQ1YdQ0lPQkxLGB8ZTh1WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9631e8c83109cckunm11ba07f80
+X-HM-Tid: 0a9631e9a7a509cckunm11ba080e5
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mkk6ERw6FjJWMC4vTigNQw8J
-	FkxPCx5VSlVKTE9PTkJPS01JT0pIVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhJSEM3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6Njo*CjJNAi4VThlMFDxI
+	ED8aClFVSlVKTE9PTkJPSkpCT01IVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlISko3Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=JjQO4ABunhJdKRnzLJ4GefumjA2BsuJwEd/MgJdR08IcrhX0iGiQXDWtKnF8yRBczCq6oAUFdcRHzWbAglTGLZ70wJdUjhJvflquK/ulQ2y5E2tMRr1v2XjAv/LoJr+kSBACfQcJxAjVtNAOxAtXt26jgQnR7df7xEUpSFIHjJ0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=OxdNaXCyAeYXEowqe4VRE8Max3v8FCj6DS4Psx2YHb4=;
+	b=b7SYh4S7XlMIKDKrrUG0lH9skDFqDH2VaFj0s4zgM3uINWgK6ESM6//jDRu2YTC/KcjecZW0BVPhLwCmP5U9g8n56yw6G6MPh9hz8HiaAPY8OjcZ5ZEFyb5nOQ1kXEq8e/f+t5vC7LbbrjUTE3lq5Yxv/MpGTI5+DjRWbv0URrw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=5A4TBHvuXi69hu9oUHOU20qjziwkwnj8HnqCaEmrLaY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250413_182802_267091_083D98F1 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20250413_182842_089957_FEFED0E0 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,80 +78,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-L0S capability isn't enabled on all SoCs by default, so enabling it
-in order to make ASPM L0S work on Rockchip platforms. We have been
-testing it for quite a long time and found the default FTS number
-provided by DWC core doesn't work stable and make LTSSM switch between
-L0S and Recovery, leading to long exit latency, even fail to link sometimes.
-So override it to the max 255 which seems work fine under test for both PHYs
-used by Rockchip platforms.
+Iif there is a core reset, _init() is called again, but _pre_init() is
+not.
 
+Suggested-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
-Changes in v3:
-- Add rockchip_pcie_enable_l0s() and called from .init()
 
-Changes in v2:
-- Move n_fts to probe function
-- rewrite the commit message
+Changes in v3: None
+Changes in v2: None
 
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 21dc99c..922aff0 100644
+index 922aff0..b45af18 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -182,6 +182,21 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return 0;
+@@ -278,17 +278,13 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
+ 		dev_err(dev, "failed to hide ATS capability\n");
  }
  
-+static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
-+{
-+	u32 cap, lnkcap;
-+
-+	/* Enable L0S capability for all SoCs */
-+	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-+	if (cap) {
-+		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
-+		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
-+		dw_pcie_dbi_ro_wr_en(pci);
-+		dw_pcie_writel_dbi(pci, cap + PCI_EXP_LNKCAP, lnkcap);
-+		dw_pcie_dbi_ro_wr_dis(pci);
-+	}
-+}
-+
- static int rockchip_pcie_start_link(struct dw_pcie *pci)
+-static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
+-{
+-	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+-}
+-
+ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
  {
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-@@ -231,6 +246,8 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
-+	rockchip_pcie_enable_l0s(pci);
-+
- 	return 0;
- }
- 
-@@ -271,6 +288,8 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
  	enum pci_barno bar;
  
-+	rockchip_pcie_enable_l0s(pci);
-+
+ 	rockchip_pcie_enable_l0s(pci);
++	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+ 
  	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
  		dw_pcie_ep_reset_bar(pci, bar);
- };
-@@ -598,6 +617,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	rockchip->pci.dev = dev;
- 	rockchip->pci.ops = &dw_pcie_ops;
- 	rockchip->data = data;
-+	/* Default fts number(210) is broken, override it to 255 */
-+	rockchip->pci.n_fts[0] = 255; /* Gen1 */
-+	rockchip->pci.n_fts[1] = 255; /* Gen2+ */
+@@ -359,7 +355,6 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
  
- 	ret = rockchip_pcie_resource_get(pdev, rockchip);
- 	if (ret)
+ static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
+ 	.init = rockchip_pcie_ep_init,
+-	.pre_init = rockchip_pcie_ep_pre_init,
+ 	.raise_irq = rockchip_pcie_raise_irq,
+ 	.get_features = rockchip_pcie_get_features,
+ };
 -- 
 2.7.4
 
