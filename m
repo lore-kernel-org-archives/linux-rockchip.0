@@ -4,92 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DF88C369B8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 13:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA98BC369A2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 14:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/vq8MoltzNKPyqgI5LpD2Iix3SOlbtVNbNJwfsPZmiM=; b=N0QwNDS8mT1fT8
-	waABBYv3yvJ8ZI0sMYJb9bl5UQU2FBr3uH4vs66DIhJOs/Cm9b6wWSFj6mECuuPI6idApMNoHzcFh
-	37JtPdmxXWFpocXH8bXHjHkPz+V30ArBpMaG0b5np3z6lX1BAJdK+JFwCpE9SNJUi3xGOuuVAnWSH
-	ZWz/V3TOBKRAJIt2DIknmUMkFyUfv4IHdNamOlKYo/h226Uwt5sAebWXAIQiCX5eD6gDqYkzodgKb
-	i+DywNS+jIWbV+2KwcwljEOfoUblegc4/iRMxWZyMR0usENiTcZTXtIOeJH3rhNjnVMNoADh5FoPu
-	fJzpzOUGCSCdK49BfW1Q==;
+	List-Owner; bh=mVQittKGhI2r1Gng3f3wdWMiLiIYwmslc/+vgQa7Izo=; b=MpumyYphSvdSw7
+	aO1aCzUVsLeZH/56Z7sB/Z4S0Bdp6dHpPcGFPgHvYdhH8D2DpVMALE34HZTcDpgC/RmoDsNEDl3cn
+	N29OiPzCxJpc4rcIT2OypZY9Q3R6GBV/3t7jaanWFezvqupOBoKVEjyO7TKX2ZVVmVE/rxYp+s2kO
+	3wLJT09QGp0mAM/ykVOFuSZRjjplvvYfnjVClFPWA8RGUne23YKTxAtkCZlruh3KKSOd1X6LFP/7f
+	SNG9Xzh2HDm0FGi7mM6Um3t6mnevZAEJWQ2iu/7Ob/6BE/q7D72jBGiI7MOfhfdhaMfXS644dvHiQ
+	W7FBkOHaeV6jmU9ZKF8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Jfi-000000025H1-2SDm;
-	Mon, 14 Apr 2025 13:16:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u4Kno-00000002NcK-1Awi;
+	Mon, 14 Apr 2025 14:28:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4JcU-000000024Tt-2rsk;
-	Mon, 14 Apr 2025 13:13:02 +0000
+	id 1u4KaZ-00000002KBK-1kbL
+	for linux-rockchip@lists.infradead.org;
+	Mon, 14 Apr 2025 14:15:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7C9126116E;
-	Mon, 14 Apr 2025 13:12:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7FB0C4AF0B;
-	Mon, 14 Apr 2025 13:13:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id DE8485C55BD;
+	Mon, 14 Apr 2025 14:12:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3455FC4CEE2;
+	Mon, 14 Apr 2025 14:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744636381;
-	bh=PYtZof1JpAgYgjbf7Rfsjlu1zvZsWl5iqqO93SvjAxA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JlWkqhAkffqQUy7ti9hPGnnhvDvKTOIcBCWG5k12bTxqHOWceJcjpt5DeZaOX9rw5
-	 k+O9UNs2yN2I6WSh2xKCbB4XVsecud69yS8bjL5Y8UU9gIARpwj73EyxX7g4ig3qCt
-	 ZGkzxEHlqjBXBzdCQD9Ko6UrhuiLbOKl81GrD/x2+OSzK+V/nuktrJv/jg741qEMwZ
-	 RD8RKyrLwy5p2AlJdFVY40Ijv1jkSEbec9JTX0ytX9dFaVkfdTswxHvU+BOvgm0E6A
-	 GeKI7tyrJs2Gvgp+z44jolI6wm3kaWUT/y4B8GJgV5v4h4KlH9bVHS+6MCDetWtoeu
-	 /Vf69sMXYQO+w==
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-5ed43460d6bso6836945a12.0;
-        Mon, 14 Apr 2025 06:13:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVBJ08JFUXI6NauIAWQEg4uJWR/gv9A3K+loxOHE9OTc0aZuqA63pyDQwdeQRdYTtAaBJQVihoXf5sNFAsLompXVw==@lists.infradead.org, AJvYcCVeo6Ys2yvnvIxfAklyBHmLfGTcC8h3VW8GlfoHg0+7SD+vurlpFwbpfCsoFwGvVChT30hevNBQlpKkFmcmQ90=@lists.infradead.org, AJvYcCVr39aJaVYd/e5ijsQrbXvBRwk0/BNhLRhtoOEQKf2Ib0K41ju1cgxRR+K2yGMrONb1BBQSuGOjpsHPTysa@lists.infradead.org, AJvYcCWUXUOoQtAI6JMmonieKlj0vW0Nq+CiJ7N+XWUlLygx73x4MSJH0gsVANKn86GVaenyEq8DYRf831SFqZRXvhk=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2PFjPIwrHe1jrMeSElEPdfu6WJYe5hJaY2LbLnyH1oNS/vBWX
-	qgrYt1qyb+zzNSf2ths+0WOCo0epFjjhIrz9EWBzBIHBkvWxZDJcgO5bSHTJV33sdYEtMPggVTf
-	upnWjMQrU+JVdcHbrgva34BwhYQ==
-X-Google-Smtp-Source: AGHT+IGD1RjwJGslsl4TZQ3wfuNijXDBc01yF9Y4gnZ5DJt+B5EtvoBjX+ECQxWRz+SZvCEqXEVdeGMo7Gts//oS3Co=
-X-Received: by 2002:a05:6402:1d4d:b0:5ee:497:67d6 with SMTP id
- 4fb4d7f45d1cf-5f36ff1c023mr10307363a12.33.1744636380328; Mon, 14 Apr 2025
- 06:13:00 -0700 (PDT)
+	s=k20201202; t=1744640106;
+	bh=N59mWOOmWYHFDa9wgd8r2eaYDiBQILRhojph9hULj9c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EQlh+xJkLK8zR2EKzmrKEhYIjgvdIUwlT7vbz19lC+HCBa3zRIOisBtf7SPvAHeCh
+	 8+t45kJAbu3enKP1KBM/giIp6BWaJyQemD99BGFoZCyh6wNieD8UY+akHZIz+UOASt
+	 jQrqDu2Ul3VO2djOxYKUBCIc666Jk7x1inTG0XH7Fg/qeerBnlANQXj7quV1rB6yq3
+	 qVGD66K5IEHaNI0yjnGyv/AMlkXRSCGzBTpMmrcBWe67zeZE9+ctL9yKQyxvcqxLcw
+	 Ta3gTCxbmo7xz6/EylwdeolbOQJvRbLr8RER2YRk1HsUvNzSVkQt30r2Q5LLi+rvbq
+	 AQOMsSepFwC6A==
+Date: Mon, 14 Apr 2025 16:15:02 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] PCI: dw-rockchip: Enable L0S capability
+Message-ID: <Z_0YZnJUiJdffqtA@ryzen>
+References: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
- <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org> <0ce8559d-5c7d-43a0-8177-7704969fd334@gmail.com>
-In-Reply-To: <0ce8559d-5c7d-43a0-8177-7704969fd334@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 14 Apr 2025 08:12:47 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJi+8-WdYEyrGjb=cQXPEb07Lkcj90a32d38ChvYJAA-Q@mail.gmail.com>
-X-Gm-Features: ATxdqUHJKQLq2A74uSC_bdg-o7xbFw7BNZs9YlgJy-cREnL8L5s0aEVjMNnl6WA
-Message-ID: <CAL_JsqJi+8-WdYEyrGjb=cQXPEb07Lkcj90a32d38ChvYJAA-Q@mail.gmail.com>
-Subject: Re: [PATCH v2 02/17] arm64: dts: broadcom: bcm2712: Use "l2-cache"
- for L2 cache node names
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
-	UNGLinuxDriver@microchip.com, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Stephan Gerhold <stephan.gerhold@linaro.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-mips@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <1744594051-209255-1-git-send-email-shawn.lin@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250414_071507_505379_85AC057C 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +69,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBBcHIgMTEsIDIwMjUgYXQgNjozN+KAr1BNIEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFp
-bmVsbGlAZ21haWwuY29tPiB3cm90ZToKPgo+IE9uIDQvMTAvMjUgMDg6NDcsIFJvYiBIZXJyaW5n
-IChBcm0pIHdyb3RlOgo+ID4gVGhlcmUncyBubyBuZWVkIGluY2x1ZGUgdGhlIENQVSBudW1iZXIg
-aW4gdGhlIEwyIGNhY2hlIG5vZGUgbmFtZXMgYXMKPiA+IHRoZSBuYW1lcyBhcmUgbG9jYWwgdG8g
-dGhlIENQVSBub2Rlcy4gVGhlIGRvY3VtZW50ZWQgbm9kZSBuYW1lIGlzCj4gPiBhbHNvIGp1c3Qg
-ImwyLWNhY2hlIi4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyAoQXJtKSA8cm9i
-aEBrZXJuZWwub3JnPgo+ID4gUmV2aWV3ZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxw
-aGlsbWRAbGluYXJvLm9yZz4KPgo+IE5vdCBzdXJlIGhvdyB5b3UgaGFkIGludGVuZGVkIGZvciBt
-ZSB0byBwaWNrIHVwIHRoYXQgcGF0Y2ggd2l0aG91dAo+IGNvcHlpbmcgdGhlIG1haW50YWluZXJz
-LgoKTG9va3MgbGlrZSB0aGVyZSBpcyBhIHByb2JsZW0gaW4gTUFJTlRBSU5FUlMuIFRoaXMgbWF0
-Y2hlcyB3aGF0IGI0IHJ1bnM6CgokIGdpdCBzaG93IGNjYTkxYzk5ZmUxNCB8IHNjcmlwdHMvZ2V0
-X21haW50YWluZXIucGwgLS1ub2dpdAotLW5vZ2l0LWZhbGxiYWNrIC0tbm9naXQtY2hpZWYtcGVu
-Z3VpbnMgLS1ub3JvbGVzdGF0cwpSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgpLcnp5c3p0
-b2YgS296bG93c2tpIDxrcnprK2R0QGtlcm5lbC5vcmc+CkNvbm9yIERvb2xleSA8Y29ub3IrZHRA
-a2VybmVsLm9yZz4KZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKbGludXgta2VybmVsQHZnZXIu
-a2VybmVsLm9yZwoKCj4gQXBwbGllZCBub25ldGhlbGVzcywgdGhhbmtzIQoKVGhhbmtzLgoKUm9i
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+On Mon, Apr 14, 2025 at 09:27:31AM +0800, Shawn Lin wrote:
+> L0S capability isn't enabled on all SoCs by default, so enabling it
+> in order to make ASPM L0S work on Rockchip platforms. We have been
+> testing it for quite a long time and found the default FTS number
+> provided by DWC core doesn't work stable and make LTSSM switch between
+> L0S and Recovery, leading to long exit latency, even fail to link sometimes.
+> So override it to the max 255 which seems work fine under test for both PHYs
+> used by Rockchip platforms.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
