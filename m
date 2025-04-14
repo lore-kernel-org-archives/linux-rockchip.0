@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D251DC3601E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 07:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2E91C369B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 10:04:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lxpA45uP+OnFaOJgJR2s3RL+Bcwh8hluo/9MRe3Yyw0=; b=VVajFpEubIeXxV
-	Uen67XeJ9OPef8bVjpakCte4hCXnpaUg8a19aK03oGf/Eu44A1s+gX7rKizkDXcHkmwndG2Xsykai
-	SDe4d2qiHD5Vdc87g6kekt3jcVXK8iDbZwXTI+5LBhYKaGcWtOWg1hFnhUysoeC6bjydl9s4flpCu
-	DbXPwfb8oyLuCoieJE8Gh6+BWkRqjJGiqBV8Ns7A4jqwhODJojv1XQbMydgslI9PBk1AIJu2LHLeu
-	/UlGZ+F7WyBiUBb3zwkXx/eAJlOj1Vt/G7JfqP6YlFLJCfPubhWmbMLXCCvuVCJmo0k6XICCNe5TP
-	MRWof4GH7lNZI2isI7fA==;
+	List-Owner; bh=w7mwLOityb+E3THHZ1gamMyAlfsltcCbtJ4BsDhzAPY=; b=MD5O8VeqxPcZvv
+	G9tmtS0cYfaga13E3kHBcu2LCZpH685hrcDFtYphV3YZ08xgQjff1hcafCuhGjh2i9RP4x9yuw7L9
+	yG7eXY74rX5dn7V3nlNlD6mRD6w9shaLJMFaFosphUZDW2ttiS2i8IfuQ1ZcK0BMajomOlTkju2RL
+	5NLaeUyEhwszdkk3WWiMuceq9RkHGMzRDAreQNA8c3H3OIoDzxUzP6D1qHJcTtiJEdz4vZHllONvS
+	XYmQZV0ilfhm/k+YImAJZjD9JJJ0IpjLWvcMI3He6w3Z6Hzhpo53u8CyAnSg8vF5RTUb3rtLduAnr
+	DY8ZVCTLHnY6Mhmxui6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4EFG-00000000vbZ-3X78;
-	Mon, 14 Apr 2025 07:28:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u4Gfp-00000001OYh-45gg;
+	Mon, 14 Apr 2025 10:04:17 +0000
+Received: from pv50p00im-hyfv10011601.me.com ([17.58.6.43])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4EDP-00000000vMl-2g73;
-	Mon, 14 Apr 2025 07:26:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A08365C2756;
-	Mon, 14 Apr 2025 07:24:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0DB1C4CEE2;
-	Mon, 14 Apr 2025 07:26:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744615606;
-	bh=B5aWKWH2FORQFNpAWOtD5r+9LPdCnzGQZHEkjywxDVw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XvkA14ufc5R0yibMxePJMAuvTCUdkfjLaz+u1o1kazGDjsXZVnin8IklNLq6t9t6Q
-	 j4629ZES7tetWbWjxK4CtZnr/79RrZQIKyYIH6OvFM6Og+9IWGSizuRQN99jzIf4s+
-	 hI5FOaCQ+TxFm5nfYsm39ZfXLxw4DBaFMbWaTRQtqZmVPeiab2pN1dSPHgBcCg2iIe
-	 YrT88ukt5bElpzx9Uybz69OTYlQVroXxLU0KkdwTBpIImf792PELU/0fg8/ibG/Dkh
-	 aC947MFroRYdqEDVsDbHKJV1JA0CQkqBvJGAT5C8aFS2hvoh4tEcObmf0EvwqjW1NN
-	 Sbx/eoo2HIOng==
-Date: Mon, 14 Apr 2025 09:26:42 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Will Deacon <will@kernel.org>, Sugar Zhang <sugar.zhang@rock-chips.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	kernel@collabora.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-sound@vger.kernel.org
-Subject: Re: [PATCH v2 05/11] ASoC: dt-bindings: add schema for rockchip SAI
- controllers
-Message-ID: <20250414-xanthic-tortoise-of-experiment-dcbfda@shite>
-References: <20250410-rk3576-sai-v2-0-c64608346be3@collabora.com>
- <20250410-rk3576-sai-v2-5-c64608346be3@collabora.com>
+	id 1u4GVw-00000001MJ7-0Ana
+	for linux-rockchip@lists.infradead.org;
+	Mon, 14 Apr 2025 09:54:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
+	bh=Ybx8WjOqXxdOPt7jZILI3TQyxAH2lerFDHqdPBDPGyI=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+	b=b9fJRN/G8UE2xxLqmqQXE2YrxmbrCFA27S4njRGjhbbnIKSIpIydlaS8WBnimOrTZ
+	 7tq+yP5FZHB73dZYuqpBlDtkCPbvnp/vds+rcsVitrrdRuif2zTe9woenvAnYwSbcU
+	 LluGsewjMrU0TXxWv0pl0m5URMdYmwQe9CeP8ifgT0uTxdacdZh20pYo6mYHfY4U2N
+	 ycugs9vPnMc7yNtD9eKzliTD3eGMEFgBc7ssd2gE2FRtx6zVgzg6sASlFjWhyeyiS1
+	 i0JXC477vFsl9K6wN/5SUpQAS9URR3GEeHb0huaaYQH5RNUHaZqWm3C+zFRv20SqdS
+	 QHU/SN7VWOB1A==
+Received: from pv50p00im-hyfv10011601.me.com (pv50p00im-hyfv10011601.me.com [17.58.6.43])
+	by pv50p00im-hyfv10011601.me.com (Postfix) with ESMTPS id 30A2DC80118;
+	Mon, 14 Apr 2025 09:53:52 +0000 (UTC)
+Received: from localhost (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
+	by pv50p00im-hyfv10011601.me.com (Postfix) with ESMTPSA id 27735C8009F;
+	Mon, 14 Apr 2025 09:53:51 +0000 (UTC)
+From: Konstantin Shabanov <mail@etehtsea.me>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Konstantin Shabanov <mail@etehtsea.me>,
+	Daniel Stone <daniel@fooishbar.org>,
+	Dan Callaghan <djc@djc.id.au>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] (drm/rockchip) Reject AFBC for resolutions >2560x1600
+Date: Mon, 14 Apr 2025 09:53:31 +0000
+Message-ID: <20250414095332.9674-1-mail@etehtsea.me>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250402125320.21836-1-mail@etehtsea.me>
+References: <20250402125320.21836-1-mail@etehtsea.me>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250410-rk3576-sai-v2-5-c64608346be3@collabora.com>
+X-Proofpoint-GUID: 4idf3hj8_sYT2UrNeBvaZFeG976A8GMg
+X-Proofpoint-ORIG-GUID: 4idf3hj8_sYT2UrNeBvaZFeG976A8GMg
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-14_03,2025-04-10_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 clxscore=1030 bulkscore=0
+ mlxscore=0 adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2504140071
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_002647_719326_075A41DB 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20250414_025404_103317_BE680BDE 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +93,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 09:39:57PM GMT, Nicolas Frattaroli wrote:
-> Rockchip introduced a new audio controller called the "Serial Audio
-> Interface", or "SAI" for short, on some of their newer SoCs. In
-> particular, this controller is used several times on the RK3576 SoC.
-> 
-> Add a schema for it, with only an RK3576 compatible for now. Other SoCs
-> may follow as mainline support for them lands.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  .../bindings/sound/rockchip,rk3576-sai.yaml        | 144 +++++++++++++++++++++
->  MAINTAINERS                                        |   6 +
->  2 files changed, 150 insertions(+)
+As it isn't supported by hardware. At least, RK3399 doesn't support
+it. From the datasheet[1]
+("1.2.10 Video IN/OUT", "Display Interface", p. 17):
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+  Support AFBC function co-operation with GPU
+    * support 2560x1600 UI
 
-Best regards,
-Krzysztof
+Manually tested on RockPro64 (rk3399):
+- ARM_AFBC modifier is used for 1920x1080
+- DRM_FORMAT_MOD_LINEAR modifier us used for 3840x2160
+- No noise on the screen when sway is running in 4k
+- Dynamic resolution switching works correctly in sway
 
+Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+Cc: Daniel Stone <daniel@fooishbar.org>
+Reported-by: Dan Callaghan <djc@djc.id.au>
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
+
+[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index dcc1f07632c3..1379bc3cd937 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -18,6 +18,8 @@
+ #include "rockchip_drm_fb.h"
+ #include "rockchip_drm_gem.h"
+
++#define ROCKCHIP_AFBC_MAX_WIDTH		2560
++
+ static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+ 	.destroy       = drm_gem_fb_destroy,
+ 	.create_handle = drm_gem_fb_create_handle,
+@@ -52,6 +54,13 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
+ 	}
+
+ 	if (drm_is_afbc(mode_cmd->modifier[0])) {
++		if (mode_cmd->width > ROCKCHIP_AFBC_MAX_WIDTH) {
++			DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
++				      mode_cmd->width,
++				      ROCKCHIP_AFBC_MAX_WIDTH);
++			return ERR_PTR(-EINVAL);
++		};
++
+ 		int ret, i;
+
+ 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
+
+base-commit: e7bb7d44c3b97aea1f0e354c6499900154ac67f2
+--
+2.48.1
 
 _______________________________________________
 Linux-rockchip mailing list
