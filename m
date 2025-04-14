@@ -4,97 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D75EC369B2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 17:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423A2C369A2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 18:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mkCHzy0KfvzTReMDVcumeLDngBE+ZSpAzHysDofdx+A=; b=BfM8Adt+bMoFUYbPdFNsMVKsfE
-	lGoA9T2/6VcmfBWKeIfofHC/Fy6djN/L/jzpKih86/2ILwFPX8ETmTpVRqBWx6mYdrTVa45NaWPTn
-	P8+0W+Zn5vIM+mTaRivIGIzQY4RFhkdsfvtQDMh5pqKIzUPTehGzGuwj5NKeI29FiHbe2C8egpb/2
-	0GlvIYSwZhEiMZ4gg4T2oyMG4Ibj5WWeJvvgtUzDfSuTKvr3u7+95n9ga9fU1qgQ84M31C7+ZoMAS
-	tP59KljjcviuVE/8nmaRrM4hxQbLFnQGerMiJ769SbzKW3qEFNIt/UAthgIYxPZb9sKdJUBFCVaVS
-	IYTet0+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1M3/n1HU5zlVMWM3Wdgbaq0podg9pajMMCpUSsedvIU=; b=fIZ/X9Y7dwLWer
+	ENVgIEos4JN9hjwL/je69mRfAYgoib0SMnsDnZemVEv1soeS+ljhXY60XCkSTHRlTHPz2XJ6e9/tt
+	qBR+UVCqHazhjCWsSV3wpX0alaap/07IiqtmLIFgH7JNmh+0F89c2ctxRM7aSA07GFrWXLKb4+3yT
+	rVCrachfh8oOHYSsW4e7cGuESUsUV9928Yproaj2HkTJ9IwDb5X58JGSMyGd6w+qbLZN4osYppfFa
+	65kq01NThRWBXxN5FiLAyeJYBnyyIX6qlJze0Ohe2EKQohKJ1DzzT3m+vnnpbHtPbpkgAyhR0dlx5
+	PAF61k2ofuaynBwmX7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4NEg-00000002saM-3vTX;
-	Mon, 14 Apr 2025 17:04:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u4Odf-000000037ea-0LXO;
+	Mon, 14 Apr 2025 18:34:35 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4NCn-00000002sL1-46LI;
-	Mon, 14 Apr 2025 17:02:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 461C4A4A0C4;
-	Mon, 14 Apr 2025 16:57:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BD4FC4CEEB;
-	Mon, 14 Apr 2025 17:02:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744650164;
-	bh=KqFT3PKAxBM7aneYNA4QM0R7Gd1DemUhbyEfOOJZdwc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=haXXUUQ5j7/xdMK6YjwHt6lr9C50Nl/g7bFmEYMZvNiz+gF0wIYn0k0JlsN7AgIIr
-	 4iu+74zlC0pGVbnny4GpZcvFCtRv7UbXiLj/Jktoz55Xw4OI0gFEF9IMr5JRkbS89a
-	 FWUp+fMSf5UkmLfyLJ4Oh8mMhzRX4zRBtIyxizLmg1yK8LXnD6fzQ4a/5VdOID9XcX
-	 dE75rVIJSiBbQRqIjkmlXD+Sz1tODj0aRj329Hqs8wN3tRMUOekPmkiQJuBXhlIRBs
-	 zzEUQdKKdZxKbNiIRzd4lVHI7DTVE6ie+lpUtXY7UaT3cQKWd5+rfYxv5sIPEdod6N
-	 ZZHwk4psw8ppw==
-Date: Mon, 14 Apr 2025 18:02:33 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Stephan Gerhold <stephan.gerhold@linaro.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 03/17] arm64: dts: microchip: sparx5: Fix CPU node
- "enable-method" property dependencies
-Message-ID: <20250414-fragile-same-9cd06114cd85@spud>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
- <20250410-dt-cpu-schema-v2-3-63d7dc9ddd0a@kernel.org>
- <20250411-ebay-exerciser-392c42daf5ba@spud>
- <CAL_JsqJza-bufzjZ415THyDDQaOfk8F+JRFvFxzNwObG=NKVJQ@mail.gmail.com>
+	id 1u4Oa4-000000036aX-1mG5;
+	Mon, 14 Apr 2025 18:30:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1744655447; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=aK9QbFLPjjNWwlAHM+7jqXXYkZSyotrm4OpqYBZ6Z+7vjhqlvez1f+PL379uk9xzqoSF6iITw0vcbLi/5d56FqTSxfckQ8bVg5OlU5oCF3kg4cd/t22MRnH8JVTkmi91wGUqj/PNsc2dHlDKILWgCHoGv596aKqZGHKYDCjqwiA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1744655447; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=0W68kifwClbmxOD9uB2cLoC+ZOmDFfEOuSDxczncg7A=; 
+	b=NnanDKGIw2jbi6e5Xc8Wy7BWebenhI2JPjGlWQZaOSjFO/+adLpumbi87vt34Pw9mygqSwkmkjWTIbSQKpBMHvR5Ce9B0Wlk/LiqOkwmLtFuKdfMt3clvw1c54CtQ49kEH49mBfTBBzoFLO/2aVawi+VBEAGE7vkb6hem77sVRI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1744655447;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=0W68kifwClbmxOD9uB2cLoC+ZOmDFfEOuSDxczncg7A=;
+	b=A9M8M+KDKMG7ngJrCcR8EyH1YFAWoOsBiMjvc5f7DXQ9x4mceV+16Cb+JYnRFbp5
+	eMN9g8GulITK60NJnEJuO3cH3+5U6KzGHHzzub8twfHPEIJQdWiKFIJ5hp1zIgDdA2t
+	lqyBWjpaLaPs6cnIcPL++Vy6dfuJ4pV/lyRvktOI=
+Received: by mx.zohomail.com with SMTPS id 1744655444841430.53710170104966;
+	Mon, 14 Apr 2025 11:30:44 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
+Cc: andersson@kernel.org, Kever Yang <kever.yang@rock-chips.com>,
+ Shawn Lin <Shawn.lin@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
+ Finley Xiao <finley.xiao@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v9 2/2] arm64: dts: rockchip: Add rk3576 pcie nodes
+Date: Mon, 14 Apr 2025 20:30:38 +0200
+Message-ID: <5019259.31r3eYUQgx@workhorse>
+In-Reply-To: <20250414145110.11275-3-kever.yang@rock-chips.com>
+References: <20250414145110.11275-1-kever.yang@rock-chips.com>
+ <20250414145110.11275-3-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <CAL_JsqJza-bufzjZ415THyDDQaOfk8F+JRFvFxzNwObG=NKVJQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_100246_147340_ED1ACF19 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20250414_113052_538572_6E74B2BF 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,71 +77,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3002098113066625667=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Monday, 14 April 2025 16:51:10 Central European Summer Time Kever Yang wrote:
+> rk3576 has two pcie controllers, both are pcie2x1 work with
+> naneng-combphy.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Tested-by: Shawn Lin <Shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v9:
+> - rebase on 6.15-rc1
+> - Add test tag
+> 
+> Changes in v8: None
+> Changes in v7:
+> - re-order the properties.
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3:
+> - Update the subject
+> 
+> Changes in v2:
+> - Update clock and reset names and sequence to pass DTB check
+> 
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 108 +++++++++++++++++++++++
+>  1 file changed, 108 insertions(+)
+> 
 
---===============3002098113066625667==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="pt+1yttKuNYLWgzQ"
-Content-Disposition: inline
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+Successfully used this on an ArmSoM Sige5 RK3576 board. PCIe works.
+Properties look correct, though the `ranges = ` doesn't separate out the
+different ranges into individual `<cells>` but this doesn't seem to make
+any difference and doesn't cause any warnings either. The only added
+warning is "simple-bus unit address format error" which seems like a
+bug in the thing generating the warning and not the device-tree itself,
+as it doesn't seem to notice that the address of the node is within the
+regs array, just not as the first cell.
+
+I think this looks good for merging, I'll also send out a Sige5 enablement
+patch shortly.
+
+Thank you!
+
+Regards,
+Nicolas Frattaroli
 
 
---pt+1yttKuNYLWgzQ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Apr 11, 2025 at 03:26:50PM -0500, Rob Herring wrote:
-> On Fri, Apr 11, 2025 at 11:22=E2=80=AFAM Conor Dooley <conor@kernel.org> =
-wrote:
-> >
-> > On Thu, Apr 10, 2025 at 10:47:24AM -0500, Rob Herring (Arm) wrote:
-> > > The "spin-table" enable-method requires "cpu-release-addr" property,
-> > > so add a dummy entry. It is assumed the bootloader will fill in the
-> > > correct values.
-> > >
-> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-> > > Tested-by: Daniel Machon <daniel.machon@microchip.com>
-> >
-> > This is already applied, guess I forgot to merge it into the branch that
-> > appears in linux next. I'll do that now..
->=20
-> Sometimes I check next, but in this case I just looked at replies for
-> which there were none. I dislike submitting dts changes because it's a
-> range of AWOL maintainers, only applying around some rcN (so up to 2
-> months later), silently applying, and applied but never in linux-next
-> (until in soc tree).
-
-Let's add "send the b4 ty email" to the list of things that I did not
-do, but thought that I had done.
-
---pt+1yttKuNYLWgzQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ/0/qQAKCRB4tDGHoIJi
-0llIAQCfeSIfGZefusGStXxy21uaJUGlki/H/XzQ1dq4t278oAD9GMv/CXNEj8CG
-oPoSllLdscFoA/5qVRjJh0erPiNF8gA=
-=q+yA
------END PGP SIGNATURE-----
-
---pt+1yttKuNYLWgzQ--
-
-
---===============3002098113066625667==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3002098113066625667==--
-
