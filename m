@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70B53C369AB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 05:36:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C7AC369B9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 05:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BzmsWLRjIz9hRfuCZkyG+EBV4Lz445TaJaO8jUchc3I=; b=wwPNVurlAcbWW0
-	au2sd0zjVIvi/SUltKAo5zCbsNGFuDJXyEb1vmPqz5/ZfhvR2CYR3EEto049Qvvhxi10DJGrraMDv
-	cXvi5WZd5fewAe3kQSTvRnHKaXbyNM6yLA4EDpQApGC9r6orpLeQA9iq+qeRVEDS7rJSzefBFCtK9
-	znYdgffFwiyHGDtyUzXawd7PR1QMmiPBwWvr6rr+kmpH9kxxjiFZoudaIpxxYDd5jg29ip4smb5L6
-	X1inYHrKHYHpunK7h7oiiogC88nKoHXAqaKfU+aanYUnn4Qlikffcc5e0XqUsyRa1b+jINdLT4eoE
-	PnuftNYtHLuIHY2+yjLg==;
+	List-Owner; bh=73edYY5KGIqDUug1B/QFEOiPaV6Z7Zjy3ovbB/xYVhg=; b=vDHhkTwrH8JPON
+	NtB99DjZpV/votqL3DnOgDJd6pHZEhS5AWE8u50Rpn8aOS9HskMMNDVqOQMauOVtP0oWDHxvgUZgU
+	1+/nsWM5NjTOeBa7Ct53qoQyHfh4qT2qymRhdYpTv2SGbilhJTNEm3AV+HBynUmxouoJTcbaJRNFe
+	yYJ6oDkaKy8UZWXdxXQ+thQWErajdvmspWGlULTF8xDmLx9c9i0sxQFoRralHmPOqjS/Gd5zSH5Dq
+	U79kmZrF7Q5WW8rfbmUlzmDxWNCVY+k2wsarOLBvZPQKcVTyE+fD7Ua1MLr6BbvJDe0hJSvOVMkJ6
+	LUTt26Jf2G4sR08sR69w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Yxj-00000004ZS5-2x2u;
+	id 1u4Yxj-00000004ZRl-1ZEY;
 	Tue, 15 Apr 2025 05:35:59 +0000
-Received: from mail-m1973173.qiye.163.com ([220.197.31.73])
+Received: from mail-m3268.qiye.163.com ([220.197.32.68])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4YhS-00000004XKu-2aYB;
+	id 1u4YhS-00000004XKM-1vIN
+	for linux-rockchip@lists.infradead.org;
 	Tue, 15 Apr 2025 05:19:11 +0000
 Received: from localhost.localdomain (unknown [103.29.142.67])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 11e6d966d;
-	Tue, 15 Apr 2025 13:19:06 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 11e6d9666;
+	Tue, 15 Apr 2025 13:19:04 +0800 (GMT+08:00)
 From: Kever Yang <kever.yang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	Kever Yang <kever.yang@rock-chips.com>,
 	Rob Herring <robh@kernel.org>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
+	Jamie Iles <jamie@jamieiles.com>,
+	Guenter Roeck <linux@roeck-us.net>,
+	linux-watchdog@vger.kernel.org,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
 	linux-kernel@vger.kernel.org,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4 3/7] dt-bindings: rockchip: pmu: Add rk3562 compatible
-Date: Tue, 15 Apr 2025 13:18:51 +0800
-Message-Id: <20250415051855.59740-4-kever.yang@rock-chips.com>
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH v4 2/7] dt-bindings: watchdog: Add rk3562 compatible
+Date: Tue, 15 Apr 2025 13:18:50 +0800
+Message-Id: <20250415051855.59740-3-kever.yang@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250415051855.59740-1-kever.yang@rock-chips.com>
 References: <20250415051855.59740-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTEIdVkIeTh9CSEpDQ0hMTFYVFAkWGhdVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGElPVk1OTB5KSE1LTRpIHlYVFAkWGhdVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09IVUpLS1
 	VKQktLWQY+
-X-HM-Tid: 0a9637e304a703afkunm11e6d966d
+X-HM-Tid: 0a9637e2fc9103afkunm11e6d9666
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PCo6Cww6SjJKNBo0TwIRCi4U
-	IT4aCSxVSlVKTE9PTUJPSE9DTkxOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQUlLTUg3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MVE6Dyo6EjIDMBpNMAI1CiwU
+	MUMaCglVSlVKTE9PTUJPSE9NTUtNVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQUpCSk83Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=jtGENCM+ktq9G0tOxqmN118wdD1TdJcDd0UqC0149qCp5Pg/KTYsnAV/b5MpAP8qH+63VwauZaQuaTthR5Alf3NbWFg+gaYj6L1NgjSnjFQgkiiK3zrw56P3yzCdYIHSAbzUfHakNFaWLzC2DLCJJDOUKFsntLDA3HrxBH7y2g4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=8S7bpP8L+83uDnLeLHDjhzH/u+pvrl1W2ywecgY5JP4=;
+	b=DeKfQe4abJYf/699x0pibc25o0A+rCvVmakoIFs2jIM3Lo6KubZg84KUwTd287CGyb8BUARqI50BhExwO/ZQz0u7LTwQCBXXNTyvfzO2IF/QcfABhNKREB/nPky5JUHOWcp+85NcKrVBxnXa78S4seuodXvv5sJP1TyRFc67Qkc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=7zvcR52nxAfj89Os2WEfFymiMRRilSIUxY8AcMkjvVI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_221910_805349_EFEC31A1 
-X-CRM114-Status: UNSURE (   6.62  )
+X-CRM114-CacheID: sfid-20250414_221910_648569_8DA707C5 
+X-CRM114-Status: UNSURE (   6.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,41 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the compatible for the pmu mfd on rk3562.
+Add rockchip,rk3562-wdt for rk3562.
 
 Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
 
 Changes in v4:
 - Collect ack tag
 
-Changes in v3: None
+Changes in v3:
+- Collect reveiw tag
+
 Changes in v2: None
 
- Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-index 52016a141227..46c1af851be7 100644
---- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-@@ -25,6 +25,7 @@ select:
-           - rockchip,rk3288-pmu
-           - rockchip,rk3368-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3562-pmu
-           - rockchip,rk3568-pmu
-           - rockchip,rk3576-pmu
-           - rockchip,rk3588-pmu
-@@ -43,6 +44,7 @@ properties:
-           - rockchip,rk3288-pmu
-           - rockchip,rk3368-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3562-pmu
-           - rockchip,rk3568-pmu
-           - rockchip,rk3576-pmu
-           - rockchip,rk3588-pmu
+diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+index 1efefd741c06..ef088e0f6917 100644
+--- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+@@ -28,6 +28,7 @@ properties:
+               - rockchip,rk3328-wdt
+               - rockchip,rk3368-wdt
+               - rockchip,rk3399-wdt
++              - rockchip,rk3562-wdt
+               - rockchip,rk3568-wdt
+               - rockchip,rk3576-wdt
+               - rockchip,rk3588-wdt
 -- 
 2.25.1
 
