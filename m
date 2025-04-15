@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1339DC369B8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 08:25:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98754C369AB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 09:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jgFzQOGgMbE3bZ5/Fp81nn7fZtDMNJl/W8yZiK5c93c=; b=bn2HxvgEZONy4Z
-	NP9Fk/ENK9ervg15uKD9HhO4aAsT59TzEIS5I7Uj/aHCSbvcCq/u6iM5zlU6tB7WVBAf8qTYMfnTL
-	/l4KzxWeVAWjTwforDMuJXcAKdgQdRM3fcCYZRPx3P6qiBK4jKeyOG082cfGH3IhcIyO0u6qSuyS2
-	eftRzxE4V0rfbXhKBHURChMQcxc633z9gorsMAhzfos/gE/0+rioVOcD4bWkPlj3HR/H/+WTIoKEE
-	ANSDSX5eCeWvbf9mbCdTc+7YR167aLXi1ZObAzXlskZGXjNAB/tIl1fFXfCtmioMoy/mWfvNclkSJ
-	xO9J2Nz++cW8CZCDtvzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5eySDM2uilI2SZ9UvBLulZ25nPdAWDGT9iFxb5IIUr8=; b=02mMOuXO+7HhZo
+	IkZd7EKcynz6WaW1sCKzvjbTKfOF3YfCR7SjjTUaJ4kQygCPrz/iq6+lFnJUSlOOtFWCJXDiipUM9
+	bP/TcAMFrhN2CHzqrM4oHONSVb7ArhAqB/FetoX+W7+pCfwVFjwD60MrtOJm+aOaa+/aJCtsjUA8/
+	BKT+7fpLiADmrs/LbgW5tzT1oQiMiUvVZCVbNT3/1CWS20V26116dHd7Xt0gMAM2YaJ4UD0CqIRKq
+	yVmCrVBEqBiUbgMjtHn/SeKU3z0+ZYaGPx6desw69zcrvAwgAPQqquSDzgUkj2ROj62jjnDDvEyqm
+	UCxRKCydxeJ+2ToP3Hag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4bbh-00000004z3H-03Hl;
-	Tue, 15 Apr 2025 08:25:25 +0000
-Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
+	id 1u4cTo-000000058da-3q9l;
+	Tue, 15 Apr 2025 09:21:20 +0000
+Received: from mail-m1973181.qiye.163.com ([220.197.31.81])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4bPR-00000004wei-3571;
-	Tue, 15 Apr 2025 08:12:47 +0000
-Received: from localhost (unknown [124.16.138.129])
-	by APP-05 (Coremail) with SMTP id zQCowAAnYgr1FP5nL84SCQ--.28067S2;
-	Tue, 15 Apr 2025 16:12:37 +0800 (CST)
-From: Chen Ni <nichen@iscas.ac.cn>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
-	heiko@sntech.de
-Cc: linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chen Ni <nichen@iscas.ac.cn>
-Subject: [PATCH] phy: rockchip: samsung-hdptx: Remove unneeded semicolon
-Date: Tue, 15 Apr 2025 16:12:00 +0800
-Message-Id: <20250415081200.349939-1-nichen@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1u4cTl-000000058cx-1f2J;
+	Tue, 15 Apr 2025 09:21:19 +0000
+Received: from [192.168.60.65] (unknown [103.29.142.67])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 11f0ba4a1;
+	Tue, 15 Apr 2025 17:21:09 +0800 (GMT+08:00)
+Message-ID: <9e2b5033-b09b-4264-a9d6-f5354292be64@rock-chips.com>
+Date: Tue, 15 Apr 2025 17:21:08 +0800
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowAAnYgr1FP5nL84SCQ--.28067S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrZFWDuF4rXw4DWw1xKF1UAwb_yoW3AFb_C3
-	4xWw47Xw1kJF95Kw1DJ3yxu34qyw1UWw1ruaySvFy5Aa1DXw1Fqa4fZr43Ja4UZrsruFWx
-	G34qvFyfCry3tjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbsAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
-	Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
-	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_
-	Jw0_GFylc2xSY4AK67AK6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r
-	4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF
-	67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2I
-	x0cI8IcVCY1x0267AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2
-	z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnU
-	UI43ZEXa7VUjWSotUUUUU==
-X-Originating-IP: [124.16.138.129]
-X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] nvmem: rockchip-otp: Add support for rk3568-otp
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+ Finley Xiao <finley.xiao@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+References: <20250227110804.2342976-1-kever.yang@rock-chips.com>
+ <20250227110804.2342976-2-kever.yang@rock-chips.com>
+ <8c697031-9978-40cd-a1e0-f40552db9107@kwiboo.se>
+Content-Language: en-US
+From: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <8c697031-9978-40cd-a1e0-f40552db9107@kwiboo.se>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQktMVk4aTE1CTBkaGkhMTlYVFAkWGhdVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09IVUpLS1
+	VKQktLWQY+
+X-HM-Tid: 0a9638c09dc003afkunm11f0ba4a1
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6Lhw4TzJLLBgXOEoPTwML
+	MU4aChBVSlVKTE9PTEtDQ0xKS01JVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQUJNSEo3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=aN7IwJwSJ62qLkfuHxNsKpcehfAkHojBLvWL5iItJ9OXLJDA54xozFm6USSxFPM4ZGtRh/gXUksV0Ui2Qk42PvRGqpA8W6ST8kqqWW2bTIh1Lq0o92dg2MC5JphlVAFpkuMM0n1UHvJVbmhN7dZRNhfWGZSvgPJSzmSnstY78mc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=dIHeTD8Kwvo6z8MEqZL3742x9P8G+OUFPUsU1G6dCK8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_011246_150510_EE113A94 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250415_022117_913390_4B7E26BC 
+X-CRM114-Status: GOOD (  32.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +72,296 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove unnecessary semicolons reported by Coccinelle/coccicheck and the
-semantic patch at scripts/coccinelle/misc/semicolon.cocci.
+Hi Jonas,
 
-Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 2025/3/17 05:52, Jonas Karlman wrote:
+> Hi Kever,
+>
+> On 2025-02-27 12:08, Kever Yang wrote:
+>> From: Finley Xiao <finley.xiao@rock-chips.com>
+>>
+>> This adds the necessary data for handling efuse on the rk3568.
+>>
+>> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+>> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>   drivers/nvmem/rockchip-otp.c | 82 ++++++++++++++++++++++++++++++++++++
+>>   1 file changed, 82 insertions(+)
+>>
+>> diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
+>> index ebc3f0b24166..a04bce89ecc8 100644
+>> --- a/drivers/nvmem/rockchip-otp.c
+>> +++ b/drivers/nvmem/rockchip-otp.c
+>> @@ -27,6 +27,7 @@
+>>   #define OTPC_USER_CTRL			0x0100
+>>   #define OTPC_USER_ADDR			0x0104
+>>   #define OTPC_USER_ENABLE		0x0108
+>> +#define OTPC_USER_QP			0x0120
+>>   #define OTPC_USER_Q			0x0124
+>>   #define OTPC_INT_STATUS			0x0304
+>>   #define OTPC_SBPI_CMD0_OFFSET		0x1000
+>> @@ -53,6 +54,8 @@
+>>   #define SBPI_ENABLE_MASK		GENMASK(16, 16)
+>>   
+>>   #define OTPC_TIMEOUT			10000
+>> +#define OTPC_TIMEOUT_PROG		100000
+> This is not used anywhere in this patch, please drop it.
+>
+>> +#define RK3568_NBYTES			2
+>>   
+>>   /* RK3588 Register */
+>>   #define RK3588_OTPC_AUTO_CTRL		0x04
+>> @@ -184,6 +187,70 @@ static int px30_otp_read(void *context, unsigned int offset,
+>>   	return ret;
+>>   }
+>>   
+>> +static int rk3568_otp_read(void *context, unsigned int offset, void *val,
+>> +			   size_t bytes)
+>> +{
+>> +	struct rockchip_otp *otp = context;
+>> +	unsigned int addr_start, addr_end, addr_offset, addr_len;
+>> +	unsigned int otp_qp;
+>> +	u32 out_value;
+>> +	u8 *buf;
+>> +	int ret = 0, i = 0;
+>> +
+>> +	addr_start = rounddown(offset, RK3568_NBYTES) / RK3568_NBYTES;
+>> +	addr_end = roundup(offset + bytes, RK3568_NBYTES) / RK3568_NBYTES;
+>> +	addr_offset = offset % RK3568_NBYTES;
+>> +	addr_len = addr_end - addr_start;
+>> +
+>> +	buf = kzalloc(array3_size(addr_len, RK3568_NBYTES, sizeof(*buf)),
+>> +		      GFP_KERNEL);
+>> +	if (!buf)
+>> +		return -ENOMEM;
+>> +
+>> +	ret = rockchip_otp_reset(otp);
+>> +	if (ret) {
+>> +		dev_err(otp->dev, "failed to reset otp phy\n");
+>> +		return ret;
+> This is leaking the kzalloc memory above.
+>
+>> +	}
+>> +
+>> +	ret = rockchip_otp_ecc_enable(otp, true);
+>> +	if (ret < 0) {
+>> +		dev_err(otp->dev, "rockchip_otp_ecc_enable err\n");
+>> +		return ret;
+> Same here.
+>
+>> +	}
+>> +
+>> +	writel(OTPC_USE_USER | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
+>> +	udelay(5);
+>> +	while (addr_len--) {
+>> +		writel(addr_start++ | OTPC_USER_ADDR_MASK,
+>> +		       otp->base + OTPC_USER_ADDR);
+>> +		writel(OTPC_USER_FSM_ENABLE | OTPC_USER_FSM_ENABLE_MASK,
+>> +		       otp->base + OTPC_USER_ENABLE);
+>> +		ret = rockchip_otp_wait_status(otp, OTPC_INT_STATUS, OTPC_USER_DONE);
+>> +		if (ret < 0) {
+>> +			dev_err(otp->dev, "timeout during read setup\n");
+>> +			goto read_end;
+>> +		}
+>> +		otp_qp = readl(otp->base + OTPC_USER_QP);
+>> +		if (((otp_qp & 0xc0) == 0xc0) || (otp_qp & 0x20)) {
+>> +			ret = -EIO;
+>> +			dev_err(otp->dev, "ecc check error during read setup\n");
+>> +			goto read_end;
+>> +		}
+>> +		out_value = readl(otp->base + OTPC_USER_Q);
+>> +		memcpy(&buf[i], &out_value, RK3568_NBYTES);
+>> +		i += RK3568_NBYTES;
+>> +	}
+>> +
+>> +	memcpy(val, buf + addr_offset, bytes);
+>> +
+>> +read_end:
+>> +	writel(0x0 | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
+>> +	kfree(buf);
+>> +
+>> +	return ret;
+>> +}
+> This can be simplified if this is rebased on top of "nvmem: rockchip-otp:
+> Handle internal word_size in main reg_read op" [1].
+>
+> [1] https://lore.kernel.org/r/20250316191900.1858944-1-jonas@kwiboo.se
+This look good to me, I will do it.
+>
+> Something like following could be squashed in with this:
+>
+> diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
+> index ea48d51bc2ff..0991a4047bec 100644
+> --- a/drivers/nvmem/rockchip-otp.c
+> +++ b/drivers/nvmem/rockchip-otp.c
+> @@ -54,8 +54,6 @@
+>   #define SBPI_ENABLE_MASK		GENMASK(16, 16)
+>   
+>   #define OTPC_TIMEOUT			10000
+> -#define OTPC_TIMEOUT_PROG		100000
+> -#define RK3568_NBYTES			2
+>   
+>   /* RK3588 Register */
+>   #define RK3588_OTPC_AUTO_CTRL		0x04
+> @@ -188,24 +186,12 @@ static int px30_otp_read(void *context, unsigned int offset,
+>   }
+>   
+>   static int rk3568_otp_read(void *context, unsigned int offset, void *val,
+> -			   size_t bytes)
+> +			   size_t count)
+>   {
+>   	struct rockchip_otp *otp = context;
+> -	unsigned int addr_start, addr_end, addr_offset, addr_len;
+> -	unsigned int otp_qp;
+> -	u32 out_value;
+> -	u8 *buf;
+> -	int ret = 0, i = 0;
+> -
+> -	addr_start = rounddown(offset, RK3568_NBYTES) / RK3568_NBYTES;
+> -	addr_end = roundup(offset + bytes, RK3568_NBYTES) / RK3568_NBYTES;
+> -	addr_offset = offset % RK3568_NBYTES;
+> -	addr_len = addr_end - addr_start;
+> -
+> -	buf = kzalloc(array3_size(addr_len, RK3568_NBYTES, sizeof(*buf)),
+> -		      GFP_KERNEL);
+> -	if (!buf)
+> -		return -ENOMEM;
+> +	u16 *buf = val;
+> +	u32 otp_qp;
+> +	int ret;
+>   
+>   	ret = rockchip_otp_reset(otp);
+>   	if (ret) {
+> @@ -214,39 +200,39 @@ static int rk3568_otp_read(void *context, unsigned int offset, void *val,
+>   	}
+>   
+>   	ret = rockchip_otp_ecc_enable(otp, true);
+> -	if (ret < 0) {
+> +	if (ret) {
+>   		dev_err(otp->dev, "rockchip_otp_ecc_enable err\n");
+>   		return ret;
+>   	}
+>   
+>   	writel(OTPC_USE_USER | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
+>   	udelay(5);
+> -	while (addr_len--) {
+> -		writel(addr_start++ | OTPC_USER_ADDR_MASK,
+> +
+> +	while (count--) {
+> +		writel(offset++ | OTPC_USER_ADDR_MASK,
+>   		       otp->base + OTPC_USER_ADDR);
+>   		writel(OTPC_USER_FSM_ENABLE | OTPC_USER_FSM_ENABLE_MASK,
+>   		       otp->base + OTPC_USER_ENABLE);
+> -		ret = rockchip_otp_wait_status(otp, OTPC_INT_STATUS, OTPC_USER_DONE);
+> -		if (ret < 0) {
+> +
+> +		ret = rockchip_otp_wait_status(otp, OTPC_INT_STATUS,
+> +					       OTPC_USER_DONE);
+> +		if (ret) {
+>   			dev_err(otp->dev, "timeout during read setup\n");
+>   			goto read_end;
+>   		}
+> +
+>   		otp_qp = readl(otp->base + OTPC_USER_QP);
+>   		if (((otp_qp & 0xc0) == 0xc0) || (otp_qp & 0x20)) {
+>   			ret = -EIO;
+>   			dev_err(otp->dev, "ecc check error during read setup\n");
+>   			goto read_end;
+>   		}
+> -		out_value = readl(otp->base + OTPC_USER_Q);
+> -		memcpy(&buf[i], &out_value, RK3568_NBYTES);
+> -		i += RK3568_NBYTES;
+> -	}
+>   
+> -	memcpy(val, buf + addr_offset, bytes);
+> +		*buf++ = readl(otp->base + OTPC_USER_Q);
+> +	}
+>   
+>   read_end:
+>   	writel(0x0 | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
+> -	kfree(buf);
+>   
+>   	return ret;
+>   }
+>
+>> +
+>>   static int rk3588_otp_read(void *context, unsigned int offset,
+>>   			   void *val, size_t bytes)
+>>   {
+>> @@ -274,6 +341,17 @@ static const struct rockchip_data px30_data = {
+>>   	.reg_read = px30_otp_read,
+>>   };
+>>   
+>> +static const char * const rk3568_otp_clocks[] = {
+>> +	"usr", "sbpi", "apb_pclk", "phy",
+> Why do we change from using the "otp"-name for the main clock?
+>
+> I suggest we keep the main clock named "otp" instead of "usr" for
+> consistency.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index fc289ed8d915..bb49d69a6f17 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -1507,7 +1507,7 @@ static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
- 		break;
- 	default:
- 		return -EINVAL;
--	};
-+	}
- 
- 	return 0;
- }
--- 
-2.25.1
+The name is from the hardware design, it follows the hardware naming by 
+default.
 
+To be honest the driver does not care the clock/reset naming and the 
+sequence at all,
+
+and the clock/reset name and number are keep changing due to the 
+controller IP
+
+may come from different vendor or process change.
+
+I can rename the "usr" to "otp" to make it looks better, and also 
+reorder it so like it
+
+look like rk3588.
+
+
+Thanks,
+- Kever
+>> +};
+>> +
+>> +static const struct rockchip_data rk3568_data = {
+>> +	.size = 0x80,
+> If this is rebased on top of [1] you should also add:
+>
+> 	.word_size = sizeof(u16),
+>
+> Above suggested changes can also be found in a FIXUP commit at my
+> linux-rockchip tree of pending RK3528 patches [2].
+>
+> [2] https://github.com/Kwiboo/linux-rockchip/commits/next-20250314-rk3528/
+>
+> Regards,
+> Jonas
+>
+>> +	.clks = rk3568_otp_clocks,
+>> +	.num_clks = ARRAY_SIZE(rk3568_otp_clocks),
+>> +	.reg_read = rk3568_otp_read,
+>> +};
+>> +
+>>   static const char * const rk3588_otp_clocks[] = {
+>>   	"otp", "apb_pclk", "phy", "arb",
+>>   };
+>> @@ -294,6 +372,10 @@ static const struct of_device_id rockchip_otp_match[] = {
+>>   		.compatible = "rockchip,rk3308-otp",
+>>   		.data = &px30_data,
+>>   	},
+>> +	{
+>> +		.compatible = "rockchip,rk3568-otp",
+>> +		.data = &rk3568_data,
+>> +	},
+>>   	{
+>>   		.compatible = "rockchip,rk3588-otp",
+>>   		.data = &rk3588_data,
+>
 
 _______________________________________________
 Linux-rockchip mailing list
