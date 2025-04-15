@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD890C369AB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 18:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FC99C369AB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 21:17:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pb+fJ8BI+wYpauW2McJhpM6G8QKqr8ztWPjYmjcd8Mw=; b=4dNoZ6FS1zBQwZ
-	Y0IBIouHa8bvdaOTS0HwMrifgCRlBlcdb01zHaa+M2NyXKG1jM+6oYNts404NLbPVelyb+Ge6hOjg
-	YDxIEOLy87RhN4Q2YHzmDR/0YDkJzsnGPQukglgvfzQBJKTROCEiU27yRUtp2+FlzqT+KLqjaTb0I
-	ss9RfCT3nRkppVGdhkHecpqEuXcqCmj6MiZ7wBJDOY5Qdacb+tm400I83tkwVg1PlcHV+cSogF6ws
-	OpnJTi6LPMls69KyVek0ftn7d+M6ef75deHT68RePlsWpA+PKJldEWIpV9TnkTK+Uj+UTT21sS2F3
-	Xl8nrwecU3tMtstlvqJw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VNuO1EESBLWnkXyJnQiwVr8FgO3YblBbaK64/2VIOm4=; b=mHvViAPB2yRX0u
+	cRJGFc7pgfHycfPkPtU47x2m58ZaIMmNtZKiSzV8Y9Xfz25lvXl30XWVR2SekXkPMjVjU0qEjVeDw
+	GJLfbrjQoz0hhtHPw4xMFdYWFl9UaZ/AxcqorOGIayzAHyY0MOYryZw1yyWF3Ji0iSY9LI+s85Cms
+	/yABHF0CzVXVwjcrYPjgtEHppaScyXQvrsX/o+fNRBPo77jhrESWz7Y3yStgk8o4GBV6VLnIuLryq
+	mzRDZ64skujphSaVDzlBSu6mfl0n3x2GdWLGRkqeE6MGQegLJyz/YbSf1dlFEr/M689XdD8yHGam3
+	H5xhEEhsHjvKSKl7sENw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4khe-00000006frZ-0eJR;
-	Tue, 15 Apr 2025 18:08:10 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1u4neT-000000079uD-310o;
+	Tue, 15 Apr 2025 21:17:05 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4kPc-00000006czc-3o0O
+	id 1u4ncd-000000079d2-2TWJ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 15 Apr 2025 17:49:34 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-72bb97260ceso1959776a34.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 15 Apr 2025 10:49:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744739371; x=1745344171; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=3w6rQSZC3l5rs0Ns24yIJioGfVvvMAWgXXfps6IKpOA=;
-        b=Z+SPNnOXon1hj8+CX385XgKM5/fhX2VFxQjV3fOsHJHV3Mt5ptevl15GkOw2m04JWw
-         f/26MQ3BtROLlk+iwtPlrmmfQfUX3nPSbAHqNv96y+5AB8PXi1pNF7O4mgVZx8SjtUQa
-         mhQVFo4D3rfXg/Ov44Stc0/TSCiizoyMEev0pSwAYSKQ67Js0Z+yQT3ZAMiqowpnHQdv
-         tnzeLaCFwZbjmAi/OiOOlIPmS4+sve8vQ0H2FZ92PbtXAH6HNNoUFZVoXrjzBfCI1dbE
-         p7c/zgCLzc+6AWmy0IOHEAU1M3KHv1PUV4hKHED9FCiVnVBpKZveebB++GdAz9nO1nJE
-         hjvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744739371; x=1745344171;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3w6rQSZC3l5rs0Ns24yIJioGfVvvMAWgXXfps6IKpOA=;
-        b=RnFgTRyUo2neXBJzmnihox28s/2rxo0OyputPJwwcNMBHVsH/VfwLSRSrTFT8Ckeaz
-         Yldhz5fxnWk8t/HUs7gaXQPFxq+a9C4HtJXRxkAC6YCG1VwnnPB42/X2yCBTII1m7P3m
-         qJXvn4bJSIC8lepEIwhDGdLBK5LNP5HgdMKNBTiOjoVv3bbmLcQhV0VyttSp44LPws1g
-         N8nQ0ef+INSlUL5O1hKCKMd5RP95Jpvd7CyZ75epdFBrGraa1QS4DEzly9gBkXP5rxZd
-         oi21GNVWOS0pnQVkZXSrA/oEjIvphtcU56LtjigMhWSkA+oqFQwp0Uuk0cPA4SvfJ6z9
-         Q5RA==
-X-Gm-Message-State: AOJu0YxnWW1+vj06vc0evyOjJYwVTfwHAAYuMjqT4zige51gEmnEb8I/
-	abEy5mo2/PzZB7KQjdA4E7CViHZN5KsUH6ah238qutpR3bGFi+OPYSGnDw==
-X-Gm-Gg: ASbGncux6bLi3lG7Vms9+ua7R2C1m0MlV9FmJ3dqLUJdEeX3wXLx8HhLQKTFIrH8c/H
-	P6fG/ICM1RPxnDKeP930qooUf8ge+Cyy7L9Ujk7ZbdkMGssr/zC9U5CJ98j2sskFM4bEGZPXsyq
-	WlF/Iap9esPOPUyQ3P+m8OZj0EIr6FHxV2xT31h1rlXuKZavUkUQZ0J5SpPj6ZQ++46poGSd4PK
-	fZIMLGkHe+xRPdmORqMR3GdVPwb6OLNUQbnqZqRi1lzU0Mwb4JNv4J6pkDRc6mn4kmLSKyYA3lR
-	nCGSVm9JvYbRKkDeQpVjod1/PHStpe4CT2/nFsjoTS9UWZ6coGiqkHEwWzGv
-X-Google-Smtp-Source: AGHT+IH8peAt1Th7gjeH9a0HnMN3WjHBZOGSj4STsAHR7kH2CKtN2X5R0pgEdwoUcgaVexU2a6iXTA==
-X-Received: by 2002:a05:6830:610b:b0:72c:3235:3b99 with SMTP id 46e09a7af769-72ec1c3c76amr158132a34.19.1744739371238;
-        Tue, 15 Apr 2025 10:49:31 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bcf:f16b:606f:7984:6d0e])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2d096d49c8esm2971892fac.49.2025.04.15.10.49.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Apr 2025 10:49:30 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	sebastian.reichel@collabora.com,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Enable HDMI0 audio output for Indiedroid Nova
-Date: Tue, 15 Apr 2025 12:47:11 -0500
-Message-ID: <20250415174711.72891-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Tue, 15 Apr 2025 21:15:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1744751708;
+ bh=IAeshu1rPRVwkbSbcg36lO4ijxbO9PeaGLWgVnDeV5c=;
+ b=qfua7XpAoSLyaFl35Mwdgu9rqmyfjsKbMNfOlH5ljWmTmdITOiAqKgEPNCbdjaG6IUNOcrcdS
+ f2Y4r7Mshjz+4jycpYBTVKnKKoadadRPq1uDwQa1ldlk9V740AggDWR884+fVVtEZ/Zgj7I6Ut7
+ qvLahu/Qi4xmQ7p5IE9kPlxMO0N1ghsFbOjTeG7cM8031qECB/vYXXlHnTDrn2akctSWSb+J99e
+ pdPpMhtSCdxujSPAOwj1EB21+kHJ7Mn2PWT344zgIj5yT1NVYeVNYyo9TPj7ghGwbgLoK3X9/G9
+ iRukdyd8TjiifaRXRmxRGm5LPb58GZJtATVWKqb/ntcQ==
+X-Forward-Email-ID: 67fecc56f405d8e4e0433b24
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.0.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <7e5ac4a8-6188-447b-8041-89ea00ca1576@kwiboo.se>
+Date: Tue, 15 Apr 2025 23:14:58 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] thermal: rockchip: Add support for rk3562 SoC
+To: Kever Yang <kever.yang@rock-chips.com>
+References: <20250415033940.47914-1-kever.yang@rock-chips.com>
+ <20250415033940.47914-2-kever.yang@rock-chips.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250415033940.47914-2-kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_104932_944960_DD18BE3E 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250415_141511_721968_F711F502 
+X-CRM114-Status: GOOD (  30.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +70,246 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, heiko@sntech.de, linux-pm@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, Shaohan Yao <shaohan.yao@rock-chips.com>, Lukasz Luba <lukasz.luba@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi Kever,
 
-Make available HDMI audio for the HDMI0 port.
+On 2025-04-15 05:39, Kever Yang wrote:
+> From: Shaohan Yao <shaohan.yao@rock-chips.com>
+> 
+> There is one Temperature Sensor with channel 0 on rk3562 SoC.
+> This driver adds the mapping table as-is from the TRM so that we can
+> always sync to the TRM once there have any change in the future.
+> 
+> Signed-off-by: Shaohan Yao <shaohan.yao@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - Update the commit message
+> 
+>  drivers/thermal/rockchip_thermal.c | 112 ++++++++++++++++++++++++++++-
+>  1 file changed, 111 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index a8ad85feb68f..3278472b06f9 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -1,6 +1,7 @@
+>  // SPDX-License-Identifier: GPL-2.0-only
+>  /*
+> - * Copyright (c) 2014-2016, Fuzhou Rockchip Electronics Co., Ltd
+> + * Copyright (c) 2014-2021, Fuzhou Rockchip Electronics Co., Ltd.
+> + * Copyright (c) 2021-2024, Rockchip Electronics Co., Ltd.
+>   * Caesar Wang <wxt@rock-chips.com>
+>   */
+>  
+> @@ -185,6 +186,8 @@ struct rockchip_thermal_data {
+>  #define TSADCV2_AUTO_PERIOD_HT			0x6c
+>  #define TSADCV3_AUTO_PERIOD			0x154
+>  #define TSADCV3_AUTO_PERIOD_HT			0x158
+> +#define TSADCV9_Q_MAX				0x210
+> +#define TSADCV9_FLOW_CON			0x218
+>  
+>  #define TSADCV2_AUTO_EN				BIT(0)
+>  #define TSADCV2_AUTO_EN_MASK			BIT(16)
+> @@ -195,6 +198,7 @@ struct rockchip_thermal_data {
+>  #define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
+>  
+>  #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
+> +#define TSADCV3_AUTO_Q_SEL_EN_MASK		BIT(17)
+>  
+>  #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
+>  #define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
+> @@ -220,6 +224,12 @@ struct rockchip_thermal_data {
+>  #define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
+>  #define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
+>  #define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
+> +#define TSADCV7_AUTO_PERIOD_TIME		3000 /* 2.5ms */
+> +#define TSADCV7_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
+> +#define TSADCV12_AUTO_PERIOD_TIME		3000 /* 2.5ms */
+> +#define TSADCV12_AUTO_PERIOD_HT_TIME		3000 /* 2.5ms */
+> +#define TSADCV3_Q_MAX_VAL			0x7ff /* 11bit 2047 */
+> +#define TSADCV12_Q_MAX_VAL			0xfff /* 12bit 4095 */
+>  
+>  #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
+>  #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
+> @@ -230,6 +240,8 @@ struct rockchip_thermal_data {
+>  
+>  #define PX30_GRF_SOC_CON2			0x0408
+>  
+> +#define RK3562_GRF_TSADC_CON			0x0580
+> +
+>  #define RK3568_GRF_TSADC_CON			0x0600
+>  #define RK3568_GRF_TSADC_ANA_REG0		(0x10001 << 0)
+>  #define RK3568_GRF_TSADC_ANA_REG1		(0x10001 << 1)
+> @@ -498,6 +510,45 @@ static const struct tsadc_table rk3399_code_table[] = {
+>  	{TSADCV3_DATA_MASK, 125000},
+>  };
+>  
+> +static const struct tsadc_table rk3562_code_table[] = {
+> +	{0, -40000},
+> +	{1419, -40000},
+> +	{1428, -35000},
+> +	{1436, -30000},
+> +	{1445, -25000},
+> +	{1453, -20000},
+> +	{1462, -15000},
+> +	{1470, -10000},
+> +	{1479, -5000},
+> +	{1487, 0},
+> +	{1496, 5000},
+> +	{1504, 10000},
+> +	{1512, 15000},
+> +	{1521, 20000},
+> +	{1529, 25000},
+> +	{1538, 30000},
+> +	{1546, 35000},
+> +	{1555, 40000},
+> +	{1563, 45000},
+> +	{1572, 50000},
+> +	{1580, 55000},
+> +	{1589, 60000},
+> +	{1598, 65000},
+> +	{1606, 70000},
+> +	{1615, 75000},
+> +	{1623, 80000},
+> +	{1632, 85000},
+> +	{1640, 90000},
+> +	{1648, 95000},
+> +	{1657, 100000},
+> +	{1666, 105000},
+> +	{1674, 110000},
+> +	{1682, 115000},
+> +	{1691, 120000},
+> +	{1699, 125000},
+> +	{TSADCV2_DATA_MASK, 125000},
+> +};
+> +
+>  static const struct tsadc_table rk3568_code_table[] = {
+>  	{0, -40000},
+>  	{1584, -40000},
+> @@ -835,6 +886,37 @@ static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
+>  			       regs + TSADCV2_AUTO_CON);
+>  }
+>  
+> +static void rk_tsadcv12_initialize(struct regmap *grf, void __iomem *regs,
+> +				   enum tshut_polarity tshut_polarity)
+> +{
+> +	writel_relaxed(TSADCV12_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
+> +	writel_relaxed(TSADCV12_AUTO_PERIOD_HT_TIME,
+> +		       regs + TSADCV3_AUTO_PERIOD_HT);
+> +	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
+> +		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
+> +	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
+> +		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
+> +	writel_relaxed(TSADCV12_Q_MAX_VAL, regs + TSADCV9_Q_MAX);
+> +	writel_relaxed(TSADCV3_AUTO_Q_SEL_EN | TSADCV3_AUTO_Q_SEL_EN_MASK,
+> +		       regs + TSADCV2_AUTO_CON);
+> +	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
+> +		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
+> +			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
+> +			       regs + TSADCV2_AUTO_CON);
+> +	else
+> +		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
+> +			       regs + TSADCV2_AUTO_CON);
+> +
+> +	if (!IS_ERR(grf)) {
+> +		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_TSEN);
+> +		udelay(15);
+> +		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG0);
+> +		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG1);
+> +		regmap_write(grf, RK3562_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG2);
+> +		usleep_range(100, 200);
+> +	}
+> +}
+> +
+>  static void rk_tsadcv2_irq_ack(void __iomem *regs)
+>  {
+>  	u32 val;
+> @@ -1259,6 +1341,30 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
+>  	},
+>  };
+>  
+> +static const struct rockchip_tsadc_chip rk3562_tsadc_data = {
+> +	.chn_offset = 0,
+> +	.chn_num = 1, /* one channels for tsadc */
+> +
+> +	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Vendor kernel seem to set following in DT for RK3562:
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 4189a88ecf40..4ec7bc4a9e96 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -278,6 +278,10 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+&hdmi0_sound {
-+	status = "okay";
-+};
-+
- &hdptxphy0 {
- 	status = "okay";
- };
-@@ -449,6 +453,10 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
- 
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
- &pcie2x1l2 {
- 	pinctrl-0 = <&rtl8111_perstb>;
- 	pinctrl-names = "default";
--- 
-2.43.0
+  rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
+  rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
+
+Why not adjust the default tshut_mode to match what is default used in
+DT for this SoC i.e. TSHUT_MODE_CRU?
+
+> +	.tshut_temp = 95000,
+
+Similar here, for all/most SoCs the default in the driver is 95 deg and
+then SoC DTs override and set a higher default, e.g.:
+
+  rockchip,hw-tshut-temp = <120000>;
+
+Is there any specific reason for this? Or just how it has ended up for
+all SoCs?
+
+I have a few pending patches for adding tsadc support for RK3528 [1]
+that was waiting on the updated RK3562 OTP series, and for RK3528 I
+changed to use CRU as default tshut_mode but kept the 95 deg default in
+driver.
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250319-rk3528/
+
+> +
+> +	.initialize = rk_tsadcv12_initialize,
+> +	.irq_ack = rk_tsadcv4_irq_ack,
+> +	.control = rk_tsadcv4_control,
+> +	.get_temp = rk_tsadcv4_get_temp,
+> +	.set_alarm_temp = rk_tsadcv3_alarm_temp,
+> +	.set_tshut_temp = rk_tsadcv3_tshut_temp,
+> +	.set_tshut_mode = rk_tsadcv3_tshut_mode,
+
+I suggest you rebase this on top of Nicolas Frattaroli's RK3576 tsadc
+series [2] and add support for RK3562 trim values in next version.
+
+This rk_tsadcv3_tshut_mode is e.g. renamed to match the v4 name used by
+the vendor kernel.
+
+[2] https://lore.kernel.org/all/20250317-rk3576-tsadc-upstream-v4-0-c5029ce55d74@collabora.com/
+
+Regards,
+Jonas
+
+> +
+> +	.table = {
+> +		.id = rk3562_code_table,
+> +		.length = ARRAY_SIZE(rk3562_code_table),
+> +		.data_mask = TSADCV2_DATA_MASK,
+> +		.mode = ADC_INCREMENT,
+> +	},
+> +};
+> +
+>  static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
+>  	/* cpu, gpu */
+>  	.chn_offset = 0,
+> @@ -1338,6 +1444,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
+>  		.compatible = "rockchip,rk3399-tsadc",
+>  		.data = (void *)&rk3399_tsadc_data,
+>  	},
+> +	{
+> +		.compatible = "rockchip,rk3562-tsadc",
+> +		.data = (void *)&rk3562_tsadc_data,
+> +	},
+>  	{
+>  		.compatible = "rockchip,rk3568-tsadc",
+>  		.data = (void *)&rk3568_tsadc_data,
 
 
 _______________________________________________
