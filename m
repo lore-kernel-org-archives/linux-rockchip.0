@@ -4,57 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09910C369B8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 13:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD890C369AB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 18:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gi+j7L6YPyRQrRjgx7HPuYNAHOn9hqekQFhBCTHbzRU=; b=KsBGhYoizv4Clr
-	gSc+0OEH1KprtGmAph+IabS7hxkqPabA49JRvva3VACg69rZWz/1o9OIjfUsViPHLY+QeX+wT24Zo
-	4ui837Rzg7sVlrNX0EuiXcEFb8RjXXXu59dMR1m6gLOHgGftOTrPfINV64LD+Lr7D9s0bh8y2SHE9
-	vYDvhbn3gY7zRnfLTvHw/RqpOgbAKQNDXd4DpmZQz9aQEHhf4RVd190TPJodaqC4rKkZ+z73RHMSD
-	ItXxNwB5mVT2F/BDVDIaGy5dpum9JNNPXpcCsHTXFJltYuQzCwUzbm7ljB1ZastgfSoyKzf8dxtja
-	vhwhXHjcD2y0vOLxoNyA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pb+fJ8BI+wYpauW2McJhpM6G8QKqr8ztWPjYmjcd8Mw=; b=4dNoZ6FS1zBQwZ
+	Y0IBIouHa8bvdaOTS0HwMrifgCRlBlcdb01zHaa+M2NyXKG1jM+6oYNts404NLbPVelyb+Ge6hOjg
+	YDxIEOLy87RhN4Q2YHzmDR/0YDkJzsnGPQukglgvfzQBJKTROCEiU27yRUtp2+FlzqT+KLqjaTb0I
+	ss9RfCT3nRkppVGdhkHecpqEuXcqCmj6MiZ7wBJDOY5Qdacb+tm400I83tkwVg1PlcHV+cSogF6ws
+	OpnJTi6LPMls69KyVek0ftn7d+M6ef75deHT68RePlsWpA+PKJldEWIpV9TnkTK+Uj+UTT21sS2F3
+	Xl8nrwecU3tMtstlvqJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4gJ4-00000005u4s-2YXS;
-	Tue, 15 Apr 2025 13:26:30 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u4khe-00000006frZ-0eJR;
+	Tue, 15 Apr 2025 18:08:10 +0000
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4g2g-00000005rNd-27Al
+	id 1u4kPc-00000006czc-3o0O
 	for linux-rockchip@lists.infradead.org;
-	Tue, 15 Apr 2025 13:09:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D391261568;
-	Tue, 15 Apr 2025 13:09:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFC43C4CEDD;
-	Tue, 15 Apr 2025 13:09:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744722573;
-	bh=YSi755J7PiWgkfw4SkqXLJ4BA/122IdosGJRyTjkRzM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p7D3iiNH/rcqSexgGBQftBmw5fscld3c12sIdYn1t3WfDRR7iqaQDVRgEtJWyrZcl
-	 DWpXpyRtP8RQi/4uqn+duXoBpTUMIgoF3wfefdADRi3SgZGZXS6rEK1KhUnba44xrB
-	 fs4ZSY/csDLBBp278f8N+QffUvY1DuQHVyjQqzp0ulvY+BfCA5e1kBuhwztGjzzhOd
-	 0eU0wYn2XaWwQOZdApIwM71ULeI6tC0SSq7rzsYTWeadPRCuxF+N53EB5YPTZ+jacC
-	 cAoRZOLmJfDc7XhpQrCz9E0IFB/BdRe8CcrzhviZ0osonRw1QXOK5Oxjjv5qIWAPkm
-	 9UvEjeBMmy5hg==
-Date: Tue, 15 Apr 2025 15:09:29 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Add system PM support
-Message-ID: <Z_5aib0WGKfIANj_@ryzen>
-References: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
+	Tue, 15 Apr 2025 17:49:34 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-72bb97260ceso1959776a34.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 15 Apr 2025 10:49:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744739371; x=1745344171; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3w6rQSZC3l5rs0Ns24yIJioGfVvvMAWgXXfps6IKpOA=;
+        b=Z+SPNnOXon1hj8+CX385XgKM5/fhX2VFxQjV3fOsHJHV3Mt5ptevl15GkOw2m04JWw
+         f/26MQ3BtROLlk+iwtPlrmmfQfUX3nPSbAHqNv96y+5AB8PXi1pNF7O4mgVZx8SjtUQa
+         mhQVFo4D3rfXg/Ov44Stc0/TSCiizoyMEev0pSwAYSKQ67Js0Z+yQT3ZAMiqowpnHQdv
+         tnzeLaCFwZbjmAi/OiOOlIPmS4+sve8vQ0H2FZ92PbtXAH6HNNoUFZVoXrjzBfCI1dbE
+         p7c/zgCLzc+6AWmy0IOHEAU1M3KHv1PUV4hKHED9FCiVnVBpKZveebB++GdAz9nO1nJE
+         hjvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744739371; x=1745344171;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3w6rQSZC3l5rs0Ns24yIJioGfVvvMAWgXXfps6IKpOA=;
+        b=RnFgTRyUo2neXBJzmnihox28s/2rxo0OyputPJwwcNMBHVsH/VfwLSRSrTFT8Ckeaz
+         Yldhz5fxnWk8t/HUs7gaXQPFxq+a9C4HtJXRxkAC6YCG1VwnnPB42/X2yCBTII1m7P3m
+         qJXvn4bJSIC8lepEIwhDGdLBK5LNP5HgdMKNBTiOjoVv3bbmLcQhV0VyttSp44LPws1g
+         N8nQ0ef+INSlUL5O1hKCKMd5RP95Jpvd7CyZ75epdFBrGraa1QS4DEzly9gBkXP5rxZd
+         oi21GNVWOS0pnQVkZXSrA/oEjIvphtcU56LtjigMhWSkA+oqFQwp0Uuk0cPA4SvfJ6z9
+         Q5RA==
+X-Gm-Message-State: AOJu0YxnWW1+vj06vc0evyOjJYwVTfwHAAYuMjqT4zige51gEmnEb8I/
+	abEy5mo2/PzZB7KQjdA4E7CViHZN5KsUH6ah238qutpR3bGFi+OPYSGnDw==
+X-Gm-Gg: ASbGncux6bLi3lG7Vms9+ua7R2C1m0MlV9FmJ3dqLUJdEeX3wXLx8HhLQKTFIrH8c/H
+	P6fG/ICM1RPxnDKeP930qooUf8ge+Cyy7L9Ujk7ZbdkMGssr/zC9U5CJ98j2sskFM4bEGZPXsyq
+	WlF/Iap9esPOPUyQ3P+m8OZj0EIr6FHxV2xT31h1rlXuKZavUkUQZ0J5SpPj6ZQ++46poGSd4PK
+	fZIMLGkHe+xRPdmORqMR3GdVPwb6OLNUQbnqZqRi1lzU0Mwb4JNv4J6pkDRc6mn4kmLSKyYA3lR
+	nCGSVm9JvYbRKkDeQpVjod1/PHStpe4CT2/nFsjoTS9UWZ6coGiqkHEwWzGv
+X-Google-Smtp-Source: AGHT+IH8peAt1Th7gjeH9a0HnMN3WjHBZOGSj4STsAHR7kH2CKtN2X5R0pgEdwoUcgaVexU2a6iXTA==
+X-Received: by 2002:a05:6830:610b:b0:72c:3235:3b99 with SMTP id 46e09a7af769-72ec1c3c76amr158132a34.19.1744739371238;
+        Tue, 15 Apr 2025 10:49:31 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bcf:f16b:606f:7984:6d0e])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2d096d49c8esm2971892fac.49.2025.04.15.10.49.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Apr 2025 10:49:30 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Enable HDMI0 audio output for Indiedroid Nova
+Date: Tue, 15 Apr 2025 12:47:11 -0500
+Message-ID: <20250415174711.72891-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250415_104932_944960_DD18BE3E 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,359 +100,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 11, 2025 at 02:14:08PM +0800, Shawn Lin wrote:
-> This patch adds system PM support for Rockchip platforms by adding .pme_turn_off
-> and .get_ltssm hook and tries to reuse possible exist code.
-> 
-> It's tested on RK3576 EVB1 board with Some NVMes and PCIe-2-SATA/XHCI devices.
-> And check the PCIe protocol analyzer to make sure the L2 process fits the spec.
-> 
-> [    1.541394] nvme nvme0: missing or invalid SUBNQN field.
-> [    1.548755] nvme nvme0: allocated 64 MiB host memory buffer (16 segments).
-> [    1.562235] nvme nvme0: 8/0/0 default/read/poll queues
-> [    1.563930] nvme nvme0: Ignoring bogus Namespace Identifiers
-> 
-> echo N > /sys/module/printk/parameters/console_suspend
-> echo core > /sys/power/pm_test
-> echo mem > /sys/power/state
-> 
-> [   58.443602] PM: suspend entry (deep)
-> [   58.444005] Filesystems sync: 0.000 seconds
-> [   58.445542] Freezing user space processes
-> [   58.447096] Freezing user space processes completed (elapsed 0.001 seconds)
-> [   58.447718] OOM killer disabled.
-> [   58.448008] Freezing remaining freezable tasks
-> [   58.449080] Freezing remaining freezable tasks completed (elapsed 0.000 seconds)
-> 
-> ...
-> 
-> [   58.797070] rockchip-dw-pcie 22400000.pcie: PCIe Gen.2 x1 link up
-> [   58.835953] OOM killer enabled.
-> [   58.836262] Restarting tasks ... done.
-> [   58.839241] random: crng reseeded on system resumption
-> [   58.840679] PM: suspend exit
-> [   59.500036] nvme nvme0: 8/0/0 default/read/poll queues
-> [   59.500909] nvme nvme0: Ignoring bogus Namespace Identifiers
-> 
-> time dd if=/dev/nvme0n1 of=/dev/null bs=1M count=1000
-> 1000+0 records in
-> 1000+0 records out
-> real    0m 5.51s
-> user    0m 0.00s
-> sys     0m 0.71s
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v2:
-> - Use NOIRQ_SYSTEM_SLEEP_PM_OPS
-> 
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 185 +++++++++++++++++++++++---
->  1 file changed, 169 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 56acfea..7246a49 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -21,6 +21,7 @@
->  #include <linux/regmap.h>
->  #include <linux/reset.h>
->  
-> +#include "../../pci.h"
->  #include "pcie-designware.h"
->  
->  /*
-> @@ -37,8 +38,14 @@
->  #define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
->  #define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
->  #define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
-> +#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
->  #define PCIE_CLIENT_INTR_STATUS_MISC	0x10
->  #define PCIE_CLIENT_INTR_MASK_MISC	0x24
-> +#define PCIE_CLIENT_POWER		0x2c
-> +#define PCIE_CLIENT_MSG_GEN		0x34
-> +#define PME_READY_ENTER_L23		BIT(3)
-> +#define PME_TURN_OFF			(BIT(4) | BIT(20))
-> +#define PME_TO_ACK			(BIT(9) | BIT(25))
->  #define PCIE_SMLH_LINKUP		BIT(16)
->  #define PCIE_RDLH_LINKUP		BIT(17)
->  #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
-> @@ -63,6 +70,7 @@ struct rockchip_pcie {
->  	struct gpio_desc *rst_gpio;
->  	struct regulator *vpcie3v3;
->  	struct irq_domain *irq_domain;
-> +	u32 intx;
->  	const struct rockchip_pcie_of_data *data;
->  };
->  
-> @@ -159,6 +167,13 @@ static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
->  	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
->  }
->  
-> +static u32 rockchip_pcie_get_pure_ltssm(struct dw_pcie *pci)
-> +{
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +
-> +	return rockchip_pcie_get_ltssm(rockchip) & PCIE_LTSSM_STATUS_MASK;
-> +}
-> +
->  static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
->  {
->  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-> @@ -248,8 +263,46 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
->  	return 0;
->  }
->  
-> +static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-> +{
-> +	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	struct device *dev = rockchip->pci.dev;
-> +	int ret;
-> +	u32 status;
-> +
-> +	/* 1. Broadcast PME_Turn_Off Message, bit 4 self-clear once done */
-> +	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN);
-> +	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN,
-> +				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
-> +				 PCIE_PME_TO_L2_TIMEOUT_US);
-> +	if (ret) {
-> +		dev_warn(dev, "Failed to send PME_Turn_Off\n");
-> +		return;
-> +	}
-> +
-> +	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
-> +	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
-> +				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
-> +				 PCIE_PME_TO_L2_TIMEOUT_US);
-> +	if (ret) {
-> +		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
-> +		return;
-> +	}
-> +
-> +	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
-> +	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
-> +	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER,
-> +				 status, status & PME_READY_ENTER_L23,
-> +				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
-> +				 PCIE_PME_TO_L2_TIMEOUT_US);
-> +	if (ret)
-> +		dev_err(dev, "Failed to get ready to enter L23 message\n");
-> +}
-> +
->  static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
->  	.init = rockchip_pcie_host_init,
-> +	.pme_turn_off = rockchip_pcie_pme_turn_off,
->  };
->  
->  /*
-> @@ -430,6 +483,7 @@ static const struct dw_pcie_ops dw_pcie_ops = {
->  	.link_up = rockchip_pcie_link_up,
->  	.start_link = rockchip_pcie_start_link,
->  	.stop_link = rockchip_pcie_stop_link,
-> +	.get_ltssm = rockchip_pcie_get_pure_ltssm,
->  };
->  
->  static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
-> @@ -489,13 +543,32 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	return IRQ_HANDLED;
->  }
->  
-> +static void rockchip_pcie_ltssm_enable_control_mode(struct rockchip_pcie *rockchip, u32 mode)
-> +{
-> +	u32 val;
-> +
-> +	/* LTSSM enable control mode */
-> +	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-> +
-> +	rockchip_pcie_writel_apb(rockchip, mode, PCIE_CLIENT_GENERAL_CONTROL);
-> +}
-> +
-> +static void rockchip_pcie_unmask_dll_indicator(struct rockchip_pcie *rockchip)
-> +{
-> +	u32 val;
-> +
-> +	/* unmask DLL up/down indicator */
-> +	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
-> +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
-> +}
-> +
->  static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  				      struct rockchip_pcie *rockchip)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct dw_pcie_rp *pp;
->  	int irq, ret;
-> -	u32 val;
->  
->  	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
->  		return -ENODEV;
-> @@ -512,12 +585,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  		return ret;
->  	}
->  
-> -	/* LTSSM enable control mode */
-> -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> -	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-> -
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
-> -				 PCIE_CLIENT_GENERAL_CONTROL);
-> +	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
->  
->  	pp = &rockchip->pci.pp;
->  	pp->ops = &rockchip_pcie_host_ops;
-> @@ -529,9 +597,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  		return ret;
->  	}
->  
-> -	/* unmask DLL up/down indicator */
-> -	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
-> -	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
-> +	rockchip_pcie_unmask_dll_indicator(rockchip);
->  
->  	return ret;
->  }
-> @@ -558,12 +624,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
->  		return ret;
->  	}
->  
-> -	/* LTSSM enable control mode */
-> -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> -	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-> -
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
-> -				 PCIE_CLIENT_GENERAL_CONTROL);
-> +	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_EP_MODE);
->  
->  	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
->  	rockchip->pci.ep.page_size = SZ_64K;
-> @@ -677,6 +738,92 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	return ret;
->  }
->  
-> +static int rockchip_pcie_suspend(struct device *dev)
-> +{
-> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> +	struct dw_pcie *pci = &rockchip->pci;
-> +	int ret;
-> +
-> +	rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
-> +
-> +	ret = dw_pcie_suspend_noirq(pci);
-> +	if (ret) {
-> +		dev_err(dev, "failed to suspend\n");
-> +		return ret;
-> +	}
-> +
-> +	rockchip_pcie_phy_deinit(rockchip);
-> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-> +	reset_control_assert(rockchip->rst);
-> +	if (rockchip->vpcie3v3)
-> +		regulator_disable(rockchip->vpcie3v3);
-> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pcie_resume(struct device *dev)
-> +{
-> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> +	struct dw_pcie *pci = &rockchip->pci;
-> +	int ret;
-> +
-> +	reset_control_assert(rockchip->rst);
-> +
-> +	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-> +	if (ret) {
-> +		dev_err(dev, "clock init failed\n");
-> +		goto err_clk;
-> +	}
-> +
-> +	if (rockchip->vpcie3v3) {
-> +		ret = regulator_enable(rockchip->vpcie3v3);
-> +		if (ret)
-> +			goto err_power;
-> +	}
-> +
-> +	ret = phy_init(rockchip->phy);
-> +	if (ret) {
-> +		dev_err(dev, "fail to init phy\n");
-> +		goto err_phy_init;
-> +	}
-> +
-> +	ret = phy_power_on(rockchip->phy);
-> +	if (ret) {
-> +		dev_err(dev, "fail to power on phy\n");
-> +		goto err_phy_on;
-> +	}
-> +
-> +	reset_control_deassert(rockchip->rst);
-> +
-> +	rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx),
-> +				 PCIE_CLIENT_INTR_MASK_LEGACY);
-> +
-> +	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Here you are setting PCIE_CLIENT_RC_MODE unconditionally.
+Make available HDMI audio for the HDMI0 port.
 
-I really don't think that you have tested these callbacks with EP mode.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-If we look at pcie-qcom.c and pcie-qcom-ep.c, dev_pm_ops is defined in
-pcie-qcom.c, but not in pcie-qcom-ep.c.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index 4189a88ecf40..4ec7bc4a9e96 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -278,6 +278,10 @@ hdmi0_out_con: endpoint {
+ 	};
+ };
+ 
++&hdmi0_sound {
++	status = "okay";
++};
++
+ &hdptxphy0 {
+ 	status = "okay";
+ };
+@@ -449,6 +453,10 @@ i2s0_8ch_p0_0: endpoint {
+ 	};
+ };
+ 
++&i2s5_8ch {
++	status = "okay";
++};
++
+ &pcie2x1l2 {
+ 	pinctrl-0 = <&rtl8111_perstb>;
+ 	pinctrl-names = "default";
+-- 
+2.43.0
 
-Perhaps it is starting to be time to have two separate drivers also for
-rockchip?
-
-
-> +	rockchip_pcie_unmask_dll_indicator(rockchip);
-> +
-> +	ret = dw_pcie_resume_noirq(pci);
-> +	if (ret) {
-> +		dev_err(dev, "fail to resume\n");
-> +		goto err_resume;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_resume:
-> +	phy_power_off(rockchip->phy);
-> +err_phy_on:
-> +	phy_exit(rockchip->phy);
-> +err_phy_init:
-> +	if (rockchip->vpcie3v3)
-> +		regulator_disable(rockchip->vpcie3v3);
-> +err_power:
-> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-> +err_clk:
-> +	reset_control_deassert(rockchip->rst);
-> +	return ret;
-> +}
-> +
->  static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
->  	.mode = DW_PCIE_RC_TYPE,
->  };
-> @@ -707,11 +854,17 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
->  	{},
->  };
->  
-> +static const struct dev_pm_ops rockchip_pcie_pm_ops = {
-> +	NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend,
-> +				  rockchip_pcie_resume)
-> +};
-> +
->  static struct platform_driver rockchip_pcie_driver = {
->  	.driver = {
->  		.name	= "rockchip-dw-pcie",
->  		.of_match_table = rockchip_pcie_of_match,
->  		.suppress_bind_attrs = true,
-> +		.pm = &rockchip_pcie_pm_ops,
->  	},
->  	.probe = rockchip_pcie_probe,
->  };
-> -- 
-> 2.7.4
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
