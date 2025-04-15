@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2033AC369B5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Apr 2025 23:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 258E6C369B5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Apr 2025 00:32:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C3HP9mg2MPnXlXjwOYK26OOHpSAFCdV2uHNggoYziEU=; b=qd/CLXFQKbvUd7
-	Q6WdpiBuxc3o0K1F7RijNWZ0UK5GZTVYirkIVjc3Ld1qhT+d1eVXNft6SWR8GEKw8XjD0QQ3zrwc/
-	2ah4znexAWtys/53FdR6VhNu+tHoTJpgbkHMJVMx/6hgT8wsjcwpB2rgwcHq8kOs7kQSxV0XixF6Q
-	hx1rOd2KhrIanVn3UioNElSOtww1ufg1HRUxWzsqUGzTFZeNyqLGvAMobDEkvCl21C6fIU1LhdKR5
-	eHExu7p48OWJJeJT1xBRihck7t/HMyu3sHKKkorVAx9D01OvLVFFJSvDnrlHxdNQhaMoQbo+tGVoc
-	qBP+5YFQLv2pUJiPZa6A==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=dfbiECXcH9wJEu8KIdPVCYOTBCfgVkfYiC1CwhfnPK4=; b=qsVyRA9LEi2gy8fAzL8UTmB+WM
+	XdH6yEjYSzo0RtjkaAMQ30rlv1t38Z96FOx7iwJGIWlSuWbJjdr19Ol2SRBePHSVrMYVcsvtDL1mC
+	Srmlhv1IouWvmJ0AopTq5wCNrR4SrpS+jdc2fLT5VI/IJFj2a++vXeb7BiRbz9rp108AdmOx+DBsg
+	CY5/gCIPVY9eVfyPjFY3V2CiqC2zWOA0GcKEOYDeOXtKeyqxaz4FbuiJzNBRkoAeDsLdW06fejkg7
+	BKHcVDczgUVCqRNxOkkw2D9Lj0msp7vLPWFbb/Wu2Kz7lwl2skxQzNZAFrM9IbW0lq5uvAUq8sDV3
+	9yBMt8Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Syb-00000003rXp-2ds3;
-	Mon, 14 Apr 2025 23:12:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u4UDm-0000000419J-17mC;
+	Tue, 15 Apr 2025 00:32:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Sh5-00000003mep-2fuN;
-	Mon, 14 Apr 2025 22:54:23 +0000
+	id 1u4UBh-000000040Wv-1HcK;
+	Tue, 15 Apr 2025 00:30:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E2656114C;
-	Mon, 14 Apr 2025 22:54:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7CA22C4CEE2;
-	Mon, 14 Apr 2025 22:54:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D93F64A5C2;
+	Tue, 15 Apr 2025 00:30:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 941DEC4CEED;
+	Tue, 15 Apr 2025 00:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744671262;
-	bh=ghPGn+DUPYc+Jh9QH/Xyzy1W+UjOc9wYqcXMeDG62fc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=oM1Vx58jytipBJXdWNnXqHQgB+IyN8/IWkn7e7XxhtZ0cNBmkyRL0kqlCL0Oa0Rxf
-	 YuZbA1sr3oYTR2Njig+Y6mXtjpbgz+u0WquK/pkdrsfpQpPdIPf29r7YPwtcEZnqos
-	 cV9eD+XIlu/O/TeTmh/H1jndfWnQnyw2JyMB2TeEbhytmCKauDeHprNhWuMCY+dsql
-	 FtAPHXhLhA0ISG3XN2sf1eidEp+rcvW4QxirSCllqDgDCDI/xPHKT8kk0i8xGWTHtS
-	 1KyMqMBJ0K0Y6wMM9BlwxA2qp04E7j5outt1hz9cA1NqRlLySWCwe1r27stHG3gdYF
-	 yi12Pu8rU9ZbA==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: phy: rockchip: Convert RK3399 PCIe PHY to schema
-Date: Mon, 14 Apr 2025 17:53:09 -0500
-Message-ID: <20250414225311.1913480-1-robh@kernel.org>
-X-Mailer: git-send-email 2.47.2
+	s=k20201202; t=1744677003;
+	bh=I813wV1g/WIA6BY+EHdHQRWe4RgiC2zmO2F7GmKy+nE=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=LMKbyZl7mEsiaIPEtIdqbWP4H1Ipny5a/CZFjuYKI7RI1ix3URXs43Bu0GZIvXiLW
+	 ZhI6WPM+sjPJQrWYke2oGagT3ChhzR5KaGiPVCLa8QxQsIx9lvb5I5LTywPAAjQY/l
+	 lZTLq2bB5Xhw1Ju+MPLs216vXWhIi+JgGjuR/5JlRsKTnNf6V1ppSshQY4tzuQOp3O
+	 CyOGIAMRSuG9pnw3Ktade0T1nR2t08CAPcajYvp515BxHHUQqXY58AxxLVee6XTqcU
+	 kNzOPiyADnnpCGYqPhBvmhMImfG9HEQvf4C1/rD72XOR+J4EWWR6iXTYVZ72Y6r2W7
+	 Qj69ckNJtBt/Q==
+Date: Mon, 14 Apr 2025 19:30:01 -0500
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, linux-phy@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+In-Reply-To: <20250414225311.1913480-1-robh@kernel.org>
+References: <20250414225311.1913480-1-robh@kernel.org>
+Message-Id: <174467700194.2177524.2394978588221841695.robh@kernel.org>
+Subject: Re: [PATCH] dt-bindings: phy: rockchip: Convert RK3399 PCIe PHY to
+ schema
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250414_173005_364071_62E8826B 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,91 +75,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the Rockchip RK3399 PCIe PHY to DT schema format. Move the
-example to the GRF binding as that has the complete block.
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../bindings/phy/rockchip-pcie-phy.txt        | 36 -------------------
- .../devicetree/bindings/soc/rockchip/grf.yaml | 13 +++++--
- 2 files changed, 11 insertions(+), 38 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+On Mon, 14 Apr 2025 17:53:09 -0500, Rob Herring (Arm) wrote:
+> Convert the Rockchip RK3399 PCIe PHY to DT schema format. Move the
+> example to the GRF binding as that has the complete block.
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>  .../bindings/phy/rockchip-pcie-phy.txt        | 36 -------------------
+>  .../devicetree/bindings/soc/rockchip/grf.yaml | 13 +++++--
+>  2 files changed, 11 insertions(+), 38 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+> 
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-deleted file mode 100644
-index b496042f1f44..000000000000
---- a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-+++ /dev/null
-@@ -1,36 +0,0 @@
--Rockchip PCIE PHY
-------------------------
--
--Required properties:
-- - compatible: rockchip,rk3399-pcie-phy
-- - clocks: Must contain an entry in clock-names.
--	See ../clocks/clock-bindings.txt for details.
-- - clock-names: Must be "refclk"
-- - resets: Must contain an entry in reset-names.
--	See ../reset/reset.txt for details.
-- - reset-names: Must be "phy"
--
--Required properties for legacy PHY mode (deprecated):
-- - #phy-cells: must be 0
--
--Required properties for per-lane PHY mode (preferred):
-- - #phy-cells: must be 1
--
--Example:
--
--grf: syscon@ff770000 {
--	compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
--	#address-cells = <1>;
--	#size-cells = <1>;
--
--	...
--
--	pcie_phy: pcie-phy {
--		compatible = "rockchip,rk3399-pcie-phy";
--		#phy-cells = <0>;
--		clocks = <&cru SCLK_PCIEPHY_REF>;
--		clock-names = "refclk";
--		resets = <&cru SRST_PCIEPHY>;
--		reset-names = "phy";
--	};
--};
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 2f61c1b95fea..fc328c4a35e4 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -201,8 +201,8 @@ allOf:
- 
-         pcie-phy:
-           type: object
--          description:
--            Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-+          $ref: /schemas/phy/rockchip,rk3399-pcie-phy.yaml#
-+          unevaluatedProperties: false
- 
-       patternProperties:
-         "^phy@[0-9a-f]+$":
-@@ -326,6 +326,15 @@ examples:
-         #phy-cells = <0>;
-       };
- 
-+      pcie-phy {
-+        compatible = "rockchip,rk3399-pcie-phy";
-+        #phy-cells = <1>;
-+        clocks = <&cru SCLK_PCIEPHY_REF>;
-+        clock-names = "refclk";
-+        resets = <&cru SRST_PCIEPHY>;
-+        reset-names = "phy";
-+      };
-+
-       phy@f780 {
-         compatible = "rockchip,rk3399-emmc-phy";
-         reg = <0xf780 0x20>;
--- 
-2.47.2
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/soc/rockchip/grf.example.dtb: syscon@ff770000 (rockchip,rk3399-grf): pcie-phy: False schema does not allow {'compatible': ['rockchip,rk3399-pcie-phy'], '#phy-cells': 1, 'clocks': [[4294967295, 138]], 'clock-names': ['refclk'], 'resets': [[4294967295, 135]], 'reset-names': ['phy']}
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/soc/rockchip/grf.example.dtb: syscon@ff770000 (rockchip,rk3399-grf): pcie-phy: Unevaluated properties are not allowed ('#phy-cells', 'clock-names', 'clocks', 'compatible', 'reset-names', 'resets' were unexpected)
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+Documentation/devicetree/bindings/soc/rockchip/grf.example.dtb: /example-0/syscon@ff770000/pcie-phy: failed to match any schema with compatible: ['rockchip,rk3399-pcie-phy']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250414225311.1913480-1-robh@kernel.org
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
