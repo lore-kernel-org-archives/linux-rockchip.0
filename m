@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A6AC369BA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Apr 2025 15:44:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F9B1C369C7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Apr 2025 20:26:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WxLWiELfPbXTlT3sWEwEnqjYqGLOi5WLENP9w386FFo=; b=4YQmx36stcRsC7
-	L0hjvU8TAjVMprq7kKV/T9tdQ/sFSZaeRtpficdQZ8wCUYaFVEg4+26ldxHvz9MDNh0b0LqfOIxOh
-	2Xec6UhfSCXC6GDfqIPcuckqqk+udE3OCLbiDJpkzaX8Q0Om8QyaepxwgPXzz7RZ9nkq051qixj8/
-	XuJTRwnDTL+WuYIuE3c4SlrYx855a5c1oIO4d2Dn/7iKvEDMQP4UKpx9ogOo6zRQrQD/vlffBADlD
-	mDG5NiCRo1gwbgLK4TMzKdu0CUZ/k5H9Ho4XJL3sPEd9nA//Dc+9zygkX8qqwr8RH/PefkZH8KJTg
-	B9uzl5vXh2IBAu/RG5LA==;
+	List-Owner; bh=Dxo+7Ts+uA/6tpjwhyRtseAQsgOdaPaDaJwLT7LZBd4=; b=UPYokY1AzPC3YC
+	Obilw8Rrogbr6aa81yb4BLH81UNGHR2dGujUxAf4leN2lZ4kH4h7uncntUmYtNI8tvBobYYhCxElZ
+	Lda5etyV6GUcNAUvOdSRLaVqRiWRCiSr0b6ETHd8N85eBFLMXudQAzJ7gosFgD9wfB1Xrpl8RttDH
+	LdBuWGyAbSeCu0S9f7+flas3xQQRDX3QumYQw4xsu2fvxChjYH+PuKe5iI20o4qI5oMM+PNLg1AS/
+	SnMwPUyXzkvw6Bgb7C7AS5VuMhYUZpL66MUGEMVFD28db+fky+9EqKUuk8n+i3pv35aV7UqxZRrdN
+	8iidvhVaZQ19+8SKogOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u54vy-0000000A7YT-2Q2x;
-	Wed, 16 Apr 2025 15:44:18 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u54Yg-0000000A3Dh-1VY4;
-	Wed, 16 Apr 2025 15:20:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=n/CrH
-	Wu7/N0JbLzLhfGyYLZ28eCk9w7x/JfjK48Yd84=; b=VNOTY+dyHQg0QwO0e8psO
-	1EQh2MMGJQGnp3gE7RZOKgtSb5zfsTKfHHKKCNbUzvitXSSl3J0y5cC8cALMA47X
-	7rtM7Qw4JcH2MELzQEd1xPDKl+z/3X3mmD9+ZB+q/60izYZ7rlG28v4v628nHscN
-	aiAFBgX+VVteVApJxz5dW8=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wDHrr6Ayv9nGGzuAQ--.32225S2;
-	Wed, 16 Apr 2025 23:19:29 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	heiko@sntech.de
-Cc: manivannan.sadhasivam@linaro.org,
-	robh@kernel.org,
-	jingoohan1@gmail.com,
-	thomas.richard@bootlin.com,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1u59L0-0000000AoYp-2zEf;
+	Wed, 16 Apr 2025 20:26:26 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u59J6-0000000Ao40-1Iiz;
+	Wed, 16 Apr 2025 20:24:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 013D6A4896B;
+	Wed, 16 Apr 2025 20:18:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6DD6C4CEE2;
+	Wed, 16 Apr 2025 20:24:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744835067;
+	bh=WfUFnz3XQTI9rQiMVaDEIMykc9/pCuEV+oouum9Aruw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fus07UYxBpb6RauZcuhpJUcoUAcoOkj1CKhhdPf9Tnx40vE9AaTWrOKp0/0iiRNDb
+	 6EnmLxkyS9qEZtI1sGOSie29mEmD/BeglKRiK4GQBxIplbam6U4hayLkXmc2r455hp
+	 nNAZytskGxUX+AqAZ6Z+3qr5W2vnx2b94HiP05BmdrS5d1Wuhtg5InI2GesflU7tcb
+	 0S/Ro4gkncRKTSVmAqeKV+I51JohxVqpI2NwBfVVAbOT5Q4214KKma0GeVcC8kald7
+	 IbntXwb2z5JkBjnuw++LRvy8YFosEVb7ApJOS8BTFXmMoQ7STaNkCIEKXMCpWIO0nI
+	 7daRXh8veDorw==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-Date: Wed, 16 Apr 2025 23:19:26 +0800
-Message-Id: <20250416151926.140202-1-18255117159@163.com>
-X-Mailer: git-send-email 2.25.1
+	linux-kernel@vger.kernel.org,
+	linux-usb@vger.kernel.org
+Subject: [PATCH v2] dt-bindings: phy: rockchip: Convert RK3399 Type-C PHY to schema
+Date: Wed, 16 Apr 2025 15:24:17 -0500
+Message-ID: <20250416202419.3836688-1-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDHrr6Ayv9nGGzuAQ--.32225S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WFWrZFWfWFy7CrWxtryDAwb_yoW8Cr4xpa
-	yDAFW5Ary5GF4agFnrC3Zxur4rt3Zayay7Jws3Kw1I9Fy2yryDtFy3urnxta1fJF40kFy5
-	Cr45ta40kr43Xr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pELvKUUUUUU=
-X-Originating-IP: [124.79.128.52]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhAxo2f-yS0qIAAAsO
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_082015_170888_665BCC02 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250416_132428_474567_6CE8BE4E 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,55 +78,254 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588's PCIe controller defaults to a 128-byte max payload size,
-but its hardware capability actually supports 256 bytes. This results
-in suboptimal performance with devices that support larger payloads.
+Convert the Rockchip RK3399 Type-C PHY to DT schema format. Add the
+missing "power-domains" property and "port" and "orientation-switch"
+properties in the child nodes.
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
+Omit the previously deprecated properties as they aren't used anywhere.
+
+Drop the 2nd example which was pretty much identical to the 1st example.
+
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+v2:
+ - Update reference in rockchip,dwc3.yaml
+---
+ .../bindings/phy/phy-rockchip-typec.txt       |  84 -------------
+ .../phy/rockchip,rk3399-typec-phy.yaml        | 116 ++++++++++++++++++
+ .../bindings/usb/rockchip,dwc3.yaml           |   2 +-
+ 3 files changed, 117 insertions(+), 85 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index c624b7ebd118..5bbb536a2576 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+deleted file mode 100644
+index 960da7fcaa9e..000000000000
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
++++ /dev/null
+@@ -1,84 +0,0 @@
+-* ROCKCHIP type-c PHY
+----------------------
+-
+-Required properties:
+- - compatible : must be "rockchip,rk3399-typec-phy"
+- - reg: Address and length of the usb phy control register set
+- - rockchip,grf : phandle to the syscon managing the "general
+-   register files"
+- - clocks : phandle + clock specifier for the phy clocks
+- - clock-names : string, clock name, must be "tcpdcore", "tcpdphy-ref";
+- - assigned-clocks: main clock, should be <&cru SCLK_UPHY0_TCPDCORE> or
+-		    <&cru SCLK_UPHY1_TCPDCORE>;
+- - assigned-clock-rates : the phy core clk frequency, shall be: 50000000
+- - resets : a list of phandle + reset specifier pairs
+- - reset-names : string reset name, must be:
+-		 "uphy", "uphy-pipe", "uphy-tcphy"
+-
+-Optional properties:
+- - extcon : extcon specifier for the Power Delivery
+-
+-Required nodes : a sub-node is required for each port the phy provides.
+-		 The sub-node name is used to identify dp or usb3 port,
+-		 and shall be the following entries:
+-	* "dp-port" : the name of DP port.
+-	* "usb3-port" : the name of USB3 port.
+-
+-Required properties (port (child) node):
+-- #phy-cells : must be 0, See ./phy-bindings.txt for details.
+-
+-Deprecated properties, do not use in new device tree sources, these
+-properties are determined by the compatible value:
+- - rockchip,typec-conn-dir
+- - rockchip,usb3tousb2-en
+- - rockchip,external-psm
+- - rockchip,pipe-status
+-
+-Example:
+-	tcphy0: phy@ff7c0000 {
+-		compatible = "rockchip,rk3399-typec-phy";
+-		reg = <0x0 0xff7c0000 0x0 0x40000>;
+-		rockchip,grf = <&grf>;
+-		extcon = <&fusb0>;
+-		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
+-			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
+-		clock-names = "tcpdcore", "tcpdphy-ref";
+-		assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
+-		assigned-clock-rates = <50000000>;
+-		resets = <&cru SRST_UPHY0>,
+-			 <&cru SRST_UPHY0_PIPE_L00>,
+-			 <&cru SRST_P_UPHY0_TCPHY>;
+-		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
+-
+-		tcphy0_dp: dp-port {
+-			#phy-cells = <0>;
+-		};
+-
+-		tcphy0_usb3: usb3-port {
+-			#phy-cells = <0>;
+-		};
+-	};
+-
+-	tcphy1: phy@ff800000 {
+-		compatible = "rockchip,rk3399-typec-phy";
+-		reg = <0x0 0xff800000 0x0 0x40000>;
+-		rockchip,grf = <&grf>;
+-		extcon = <&fusb1>;
+-		clocks = <&cru SCLK_UPHY1_TCPDCORE>,
+-			 <&cru SCLK_UPHY1_TCPDPHY_REF>;
+-		clock-names = "tcpdcore", "tcpdphy-ref";
+-		assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
+-		assigned-clock-rates = <50000000>;
+-		resets = <&cru SRST_UPHY1>,
+-			 <&cru SRST_UPHY1_PIPE_L00>,
+-			 <&cru SRST_P_UPHY1_TCPHY>;
+-		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
+-
+-		tcphy1_dp: dp-port {
+-			#phy-cells = <0>;
+-		};
+-
+-		tcphy1_usb3: usb3-port {
+-			#phy-cells = <0>;
+-		};
+-	};
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
+new file mode 100644
+index 000000000000..91c011f68cd0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
+@@ -0,0 +1,116 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/rockchip,rk3399-typec-phy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Type-C PHY
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    const: rockchip,rk3399-typec-phy
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 2
++
++  clock-names:
++    items:
++      - const: tcpdcore
++      - const: tcpdphy-ref
++
++  extcon: true
++
++  power-domains:
++    maxItems: 1
++
++  resets:
++    maxItems: 3
++
++  reset-names:
++    items:
++      - const: uphy
++      - const: uphy-pipe
++      - const: uphy-tcphy
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the "general register files" (GRF).
++
++  dp-port:
++    type: object
++    additionalProperties: false
++
++    properties:
++      '#phy-cells':
++        const: 0
++
++      port:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Connection to USB Type-C connector
++
++    required:
++      - '#phy-cells'
++
++  usb3-port:
++    type: object
++    additionalProperties: false
++
++    properties:
++      '#phy-cells':
++        const: 0
++
++      orientation-switch: true
++
++      port:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Connection to USB Type-C connector SS port
++
++    required:
++      - '#phy-cells'
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - dp-port
++  - usb3-port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3399-cru.h>
++
++    phy@ff7c0000 {
++        compatible = "rockchip,rk3399-typec-phy";
++        reg = <0xff7c0000 0x40000>;
++        rockchip,grf = <&grf>;
++        extcon = <&fusb0>;
++        clocks = <&cru SCLK_UPHY0_TCPDCORE>,
++           <&cru SCLK_UPHY0_TCPDPHY_REF>;
++        clock-names = "tcpdcore", "tcpdphy-ref";
++        resets = <&cru SRST_UPHY0>,
++                 <&cru SRST_UPHY0_PIPE_L00>,
++                 <&cru SRST_P_UPHY0_TCPHY>;
++        reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
++
++        dp-port {
++            #phy-cells = <0>;
++        };
++
++        usb3-port {
++            #phy-cells = <0>;
++        };
++    };
++
++...
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+index fba2cb05ecba..fd1b13c0ed6b 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+@@ -18,7 +18,7 @@ description:
+   Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
  
-+static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
-+{
-+	struct dw_pcie *pci = &rockchip->pci;
-+	u32 dev_cap, dev_ctrl;
-+	u16 offset;
-+
-+	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-+	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
-+	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
-+
-+	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
-+	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
-+	dev_ctrl |= dev_cap << 5;
-+	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
-+}
-+
- static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 				      struct rockchip_pcie *rockchip)
- {
-@@ -511,6 +527,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 	pp->ops = &rockchip_pcie_host_ops;
- 	pp->use_linkup_irq = true;
+   Type-C PHY
+-  Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
++  Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
  
-+	rockchip_pcie_set_max_payload(rockchip);
-+
- 	ret = dw_pcie_host_init(pp);
- 	if (ret) {
- 		dev_err(dev, "failed to initialize host\n");
-
-base-commit: a24588245776dafc227243a01bfbeb8a59bafba9
+ select:
+   properties:
 -- 
-2.25.1
+2.47.2
 
 
 _______________________________________________
