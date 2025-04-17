@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A9DC369C9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 20:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31A91C369C9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 21:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tqpCJ40rYYGhbQZMXoL/nlgSdEi3DJQHEv4q5etyTNw=; b=h9eDEubzdww2wK
-	HAwQuodSXPocFqI2soCvETab84KQkJ9Dz/riRFy2vYkl4+g62T0i9+rtTtCBeY+Qb7/Wuk5AnKhT9
-	6x60u1M1fi6QlQZeSBN9gsvIxS4MfYpTwqrnHsO1nRd4+OymFpU/KU1G2oi8Hj1oMhCZzhAVUOHf2
-	FVddGDFlWACcUEchULoq7aDBTKREeybSNEbQCVVlGjcbIee3kyVqkUS85ahWqrXSFvrTbq2+jxbo9
-	a8glnu4CCPpwWx0wfwEyAlOFawjKbFVV1a3MvmG4RYG/ZU/+8OvN6CQgWWhKymlHiN87PZV4jkM2U
-	ELm+HGH6iUZMy0P0Lm5Q==;
+	List-Owner; bh=7At98YP5ihHjCAe4cq6wfy0+/9lVEv1oohcuJyTFT5k=; b=l9hMENvU7rjKiv
+	nirO5+7DgvOhrRbgstc59vQAY46bVOIPtoGwb1Wa4kzTVkaFg5B+GtI6U3QG7UOPjFJKZsxC+Q64D
+	sfi8+LNgEbxwDo6qxeYer36ZFv0utYi2Pr4oQmPksbQu0k8SA+M2EX7RRPjIiOkWj6+Mfsv5+L6Is
+	zUq0ArWwM5i8OCI16XwxqTDcvt31MEuPbFx1uxkCp1x5tMbujZpMLgV0d4H3x9jsft314lU496QuL
+	E9KaM3H3S68/dw6C3MCc1LeqUICDFJcMeJz5ffVrcDJkEeFwCzYOGoYh5NwuwCas8sEt9j8eVgq+s
+	yl62u0P8zSfaf16GAdJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5VSO-0000000EEzO-0uVJ;
-	Thu, 17 Apr 2025 20:03:32 +0000
+	id 1u5XFX-0000000EQ8u-3p4g;
+	Thu, 17 Apr 2025 21:58:23 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5VSL-0000000EEz0-30as
+	id 1u5XFU-0000000EQ6c-0jRA
 	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 20:03:31 +0000
+	Thu, 17 Apr 2025 21:58:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744920207;
-	bh=3kGzz5RbO01lQZiY9SyztMocLOyi16RrJFbXQtreFCY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Y+9sIy38KYZRD7PKBv0ajM9D7KuIN3qfrFhyFzsJ76HPNWW04DFo8gxQuMF45fA+W
-	 GG5IFhUFBbYnBYreHdWyAuLFCx/tighfCSO2G5Ss1uj1b39oLSgec/Tp/Pjl4XS1E+
-	 lAQUNLoE6O/dcVZ5YQf8OL0KUx66BKhMlVlYFq8oih+D3NtBbWsCWLxCKWOk0B/A+0
-	 l55meOi8wI9mUXOzmjqe3qgj0kpEh+FeRFqt+wPRXDvdauhVIFB8vgjlfu4U7p9rgq
-	 nCELDRdt0KSKS+e/vHCZPS7sOz/DB/0BXOzUM9y7yWZYB+5MtbEgVBY+6BZQmqVqT4
-	 Xamz5GwK6aZBA==
-Received: from [IPv6:2606:6d00:15:9913::c41] (unknown [IPv6:2606:6d00:15:9913::c41])
+	s=mail; t=1744927098;
+	bh=mznnJHuLbKpYgm+SG5uyUsVWXj7gHH37CxevZHUxBVI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=c6uASypSYxZwTlVkWgFrq09bK5l2wonvRONdRYiABXANdRFuPQo3nE+t2Dg9O/86f
+	 OC/UZTO/Zm6pvu+pIx3bBMmhRNNCz0ZGuO8nKXUUhdDpcUpm/4Sr9ovm4ZQ9aErtq7
+	 79nplOIfwe6wuPGymnIzZ1boaWiO+PcLyDMDAq2gJZAjNc9jDUzLtVqD2a8dSxVzHx
+	 DAroQu/qa50rppWH0u0DDyKtJA1HBg5ETdOppe3TLq+yy38t/M5EVxS/3AZ0ltq3J4
+	 dQTxvR6+ZqcjSO0RGQelrhjE9JJ8YzSqSubET5qBilEYtyr/0tgoEGwXRa32SlWYO4
+	 5iHxsw96o1kag==
+Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:15:9913::c73])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 23F2B17E0F85;
-	Thu, 17 Apr 2025 22:03:26 +0200 (CEST)
-Message-ID: <dd9ec68a0a36366b85c65060da050e794ed6948c.camel@collabora.com>
-Subject: Re: [PATCH v8 2/3] media: rkvdec: Add get_image_fmt ops
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E914817E0FA5;
+	Thu, 17 Apr 2025 23:58:16 +0200 (CEST)
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Christopher Obbard
-	 <christopher.obbard@linaro.org>
-Date: Thu, 17 Apr 2025 16:03:24 -0400
-In-Reply-To: <20250417-b4-rkvdec_h264_high10_and_422_support-v8-2-423fe0a2ee7e@collabora.com>
-References: <20250417-b4-rkvdec_h264_high10_and_422_support-v8-0-423fe0a2ee7e@collabora.com>
-	 <20250417-b4-rkvdec_h264_high10_and_422_support-v8-2-423fe0a2ee7e@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
- oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
- zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
- TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
- 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
- 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
- cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
- tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
- bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
- qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
- BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
- tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
- zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
- 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
- s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
- An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
- ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
- AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
- CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
- 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
- BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
- +E7ItOqZEHAs+xabBgknYZIFPU=
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+Date: Thu, 17 Apr 2025 17:57:58 -0400
+Subject: [PATCH v9 1/4] media: rkvdec: h264: Limit minimum profile to
+ constrained baseline
 MIME-Version: 1.0
+Message-Id: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-1-0e8738ccb46b@collabora.com>
+References: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-0-0e8738ccb46b@collabora.com>
+In-Reply-To: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-0-0e8738ccb46b@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_130330_132031_5836D5FD 
-X-CRM114-Status: GOOD (  24.57  )
+X-CRM114-CacheID: sfid-20250417_145820_379659_DA03FCF1 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,87 +74,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpMZSBqZXVkaSAxNyBhdnJpbCAyMDI1IMOgIDEzOjE0IC0wNDAwLCBOaWNvbGFzIER1ZnJl
-c25lIGEgw6ljcml0wqA6Cj4gRnJvbTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgo+
-IAo+IEFkZCBzdXBwb3J0IGZvciBhIGdldF9pbWFnZV9mbXQoKSBvcHMgdGhhdCByZXR1cm5zIHRo
-ZSByZXF1aXJlZCBpbWFnZQo+IGZvcm1hdC4KPiAKPiBUaGUgQ0FQVFVSRSBmb3JtYXQgaXMgcmVz
-ZXQgd2hlbiB0aGUgcmVxdWlyZWQgaW1hZ2UgZm9ybWF0IGNoYW5nZXMgYW5kCj4gdGhlIGJ1ZmZl
-ciBxdWV1ZSBpcyBub3QgYnVzeS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxq
-b25hc0Brd2lib28uc2U+Cj4gUmV2aWV3ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMu
-ZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiBUZXN0ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5p
-Y29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiBUZXN0ZWQtYnk6IENocmlzdG9waGVyIE9i
-YmFyZCA8Y2hyaXMub2JiYXJkQGNvbGxhYm9yYS5jb20+Cj4gQ28tZGV2ZWxvcGVkLWJ5OiBOaWNv
-bGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cj4gU2lnbmVkLW9m
-Zi1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+
-IC0tLQo+IMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYyB8IDQ0ICsrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tCj4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-cmt2ZGVjL3JrdmRlYy5oIHzCoCAyICsrCj4gwqAyIGZpbGVzIGNoYW5nZWQsIDQ0IGluc2VydGlv
-bnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRl
-Yy5jCj4gaW5kZXggNjVjNmYxZDA3YTQ5M2UwMTdhZTk0MTc4MGI4MjNkNDEzMTRhNDliOC4uZGIw
-MWNjNjRmMWJhMmRjZDU5MTQ1MzdkYjQxZTJmNTFmNDU0YjE4NiAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4gKysrIGIvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+IEBAIC03Miw2ICs3MiwxNSBAQCBzdGF0aWMgYm9vbCBy
-a3ZkZWNfaXNfdmFsaWRfZm10KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsIHUzMiBmb3VyY2MsCj4g
-wqAJcmV0dXJuIGZhbHNlOwo+IMKgfQo+IMKgCj4gK3N0YXRpYyBib29sIHJrdmRlY19mbXRfY2hh
-bmdlZChzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LAo+ICsJCQnCoMKgwqDCoMKgwqAgZW51bSBya3Zk
-ZWNfaW1hZ2VfZm10IGltYWdlX2ZtdCkKPiArewo+ICsJaWYgKGltYWdlX2ZtdCA9PSBSS1ZERUNf
-SU1HX0ZNVF9BTlkpCj4gKwkJcmV0dXJuIGZhbHNlOwo+ICsKPiArCXJldHVybiBjdHgtPmltYWdl
-X2ZtdCAhPSBpbWFnZV9mbXQ7Cj4gK30KPiArCj4gwqBzdGF0aWMgdm9pZCBya3ZkZWNfZmlsbF9k
-ZWNvZGVkX3BpeGZtdChzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LAo+IMKgCQkJCcKgwqDCoMKgwqDC
-oCBzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0X21wbGFuZSAqcGl4X21wKQo+IMKgewo+IEBAIC0xMTEs
-MTUgKzEyMCw0NiBAQCBzdGF0aWMgaW50IHJrdmRlY190cnlfY3RybChzdHJ1Y3QgdjRsMl9jdHJs
-ICpjdHJsKQo+IMKgewo+IMKgCXN0cnVjdCBya3ZkZWNfY3R4ICpjdHggPSBjb250YWluZXJfb2Yo
-Y3RybC0+aGFuZGxlciwgc3RydWN0IHJrdmRlY19jdHgsIGN0cmxfaGRsKTsKPiDCoAljb25zdCBz
-dHJ1Y3Qgcmt2ZGVjX2NvZGVkX2ZtdF9kZXNjICpkZXNjID0gY3R4LT5jb2RlZF9mbXRfZGVzYzsK
-PiArCWludCByZXQ7Cj4gKwo+ICsJaWYgKGRlc2MtPm9wcy0+dHJ5X2N0cmwpIHsKPiArCQlyZXQg
-PSBkZXNjLT5vcHMtPnRyeV9jdHJsKGN0eCwgY3RybCk7Cj4gKwkJaWYgKHJldCkKPiArCQkJcmV0
-dXJuIHJldDsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGludCBy
-a3ZkZWNfc19jdHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4gK3sKPiArCXN0cnVjdCBya3Zk
-ZWNfY3R4ICpjdHggPSBjb250YWluZXJfb2YoY3RybC0+aGFuZGxlciwgc3RydWN0IHJrdmRlY19j
-dHgsIGN0cmxfaGRsKTsKPiArCWNvbnN0IHN0cnVjdCBya3ZkZWNfY29kZWRfZm10X2Rlc2MgKmRl
-c2MgPSBjdHgtPmNvZGVkX2ZtdF9kZXNjOwo+ICsJZW51bSBya3ZkZWNfaW1hZ2VfZm10IGltYWdl
-X2ZtdDsKPiArCXN0cnVjdCB2YjJfcXVldWUgKnZxOwo+IMKgCj4gLQlpZiAoZGVzYy0+b3BzLT50
-cnlfY3RybCkKPiAtCQlyZXR1cm4gZGVzYy0+b3BzLT50cnlfY3RybChjdHgsIGN0cmwpOwo+ICsJ
-LyogQ2hlY2sgaWYgdGhpcyBjaGFuZ2UgcmVxdWlyZXMgYSBjYXB0dXJlIGZvcm1hdCByZXNldCAq
-Lwo+ICsJaWYgKCFkZXNjLT5vcHMtPmdldF9pbWFnZV9mbXQpCj4gKwkJcmV0dXJuIDA7Cj4gKwo+
-ICsJaW1hZ2VfZm10ID0gZGVzYy0+b3BzLT5nZXRfaW1hZ2VfZm10KGN0eCwgY3RybCk7Cj4gKwlp
-ZiAocmt2ZGVjX2ZtdF9jaGFuZ2VkKGN0eCwgaW1hZ2VfZm10KSkgewo+ICsJCS8qIEZvcm1hdCBj
-aGFuZ2VzIGFyZSBub3QgYWxsb3dlZCB3aGVuIGNhcHR1cmUgcXVldWUgaXMgYnVzeSAqLwo+ICsJ
-CXZxID0gdjRsMl9tMm1fZ2V0X3ZxKGN0eC0+ZmgubTJtX2N0eCwKPiArCQkJCcKgwqDCoMKgIFY0
-TDJfQlVGX1RZUEVfVklERU9fQ0FQVFVSRV9NUExBTkUpOwo+ICsJCWlmICh2YjJfaXNfYnVzeSh2
-cSkpCj4gKwkJCXJldHVybiAtRUlOVkFMOwoKU2FkIHRvIHNheSwgYnV0IHRoaXMgcGF0Y2ggaXMg
-YmFkLCBJJ3ZlIGJlZW4gdGVzdGluZyB0aGUgd3Jvbmcga2VybmVsCmFsbCBhbG9uZy4gVGhpcyBj
-b25kaXRpb24gaXMgcmVhY2hlZCBiZWZvcmUgdGhlIHF1ZXVlIGlzIHNldCAod2hpbGUgdGhlCmRl
-ZmF1bHQgY29udHJvbCB2YWx1ZSBpcyBzZXQpLiBBdCB0aGUgcG9pbnQsIHZxIGlzIG51bGwuIEkg
-YWxzbyBjYW1lIHRvCnJlYWxpemUgdGhlIHJrdmRlY19mbXRfY2hhbmdlZCgpIGlzIHF1aXRlIHNp
-bWlsYXIgdG8gdGhlIGZvcm1hdCBtYXRjaC4KSSBhbHNvIGFzc3VtZWQgdGhhdCBpZiBjdHgtPmlt
-YWdlX2ZtdCBpcyBBTlksIHdlIHNob3VsZCBhbHdheXMgcmVzZXQsCnRoYXQncyB3aHkgdGhlIG9s
-ZCBjb2RlIGRpZG4ndCBub3Qgc3R1bWJsZSBvbiB0aGlzIGlzc3VlLgoKUGxlYXNlIGRpc3JlZ2Fy
-ZCB0aGlzIHNlcmllcywgSSdsbCBtYWtlIGEgdjkuCgpOaWNvbGFzCgo+ICsKPiArCQljdHgtPmlt
-YWdlX2ZtdCA9IGltYWdlX2ZtdDsKPiArCQlya3ZkZWNfcmVzZXRfZGVjb2RlZF9mbXQoY3R4KTsK
-PiArCX0KPiDCoAo+IMKgCXJldHVybiAwOwo+IMKgfQo+IMKgCj4gwqBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IHY0bDJfY3RybF9vcHMgcmt2ZGVjX2N0cmxfb3BzID0gewo+IMKgCS50cnlfY3RybCA9IHJr
-dmRlY190cnlfY3RybCwKPiArCS5zX2N0cmwgPSBya3ZkZWNfc19jdHJsLAo+IMKgfTsKPiDCoAo+
-IMKgc3RhdGljIGNvbnN0IHN0cnVjdCBya3ZkZWNfY3RybF9kZXNjIHJrdmRlY19oMjY0X2N0cmxf
-ZGVzY3NbXSA9IHsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9y
-a3ZkZWMuaCBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmgKPiBpbmRleCA2
-ZjhjZjUwYzVkOTlhYWQyZjUyZTMyMWY1NGYzY2ExNzE2NmRkZjk4Li5lNDY2YTI3NTNjY2ZjMTM3
-MzhlMGE2NzJiYzU3OGU1MjFhZjJjM2YyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9ya3ZkZWMvcmt2ZGVjLmgKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVj
-L3JrdmRlYy5oCj4gQEAgLTczLDYgKzczLDggQEAgc3RydWN0IHJrdmRlY19jb2RlZF9mbXRfb3Bz
-IHsKPiDCoAkJwqDCoMKgwqAgc3RydWN0IHZiMl92NGwyX2J1ZmZlciAqZHN0X2J1ZiwKPiDCoAkJ
-wqDCoMKgwqAgZW51bSB2YjJfYnVmZmVyX3N0YXRlIHJlc3VsdCk7Cj4gwqAJaW50ICgqdHJ5X2N0
-cmwpKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsIHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpOwo+ICsJ
-ZW51bSBya3ZkZWNfaW1hZ2VfZm10ICgqZ2V0X2ltYWdlX2ZtdCkoc3RydWN0IHJrdmRlY19jdHgg
-KmN0eCwKPiArCQkJCQnCoMKgwqDCoMKgwqAgc3RydWN0IHY0bDJfY3RybCAqY3RybCk7Cj4gwqB9
-Owo+IMKgCj4gwqBlbnVtIHJrdmRlY19pbWFnZV9mbXQgewoKLS0gCk5pY29sYXMgRHVmcmVzbmUK
-UHJpbmNpcGFsIEVuZ2luZWVyIGF0IENvbGxhYm9yYQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+
+Neither the hardware nor the kernel API support FMO/ASO features
+required by the full baseline profile. Therefore limit the minimum
+profile to the constrained baseline profile explicitly.
+
+Suggested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index dd7e57a902640d363d26be887cb535c2668d5b15..65c6f1d07a493e017ae941780b823d41314a49b8 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -150,7 +150,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 	},
+ 	{
+ 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+-		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
++		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE,
+ 		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
+ 		.cfg.menu_skip_mask =
+ 			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
+
+-- 
+2.49.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
