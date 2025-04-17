@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B98C369C7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 06:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C37C369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 06:11:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vaZvy7aDrC70QhQpA2dyppV0Ulf7HxbfO2ZTd8hegI4=; b=4CA4cgVmu6hlit
-	2eWy1V+Tev6MkKTRPrWkhFEIiswJaw+noGSyR+RHMK1aiYS9kuVt6jbmbwyqftMgT0FUgAXK8WkvG
-	8D5LDepzNjEPwPDGlmMpqLdvyE83eAeJ5l5FZz8dkhYWS2i155aL1px+OhOWokLdFXv6+vUbxqbIW
-	AZa+tFUnXLluc+tSJvpe6iJnqCheJ5XrdZVRwQniqdY6EtVzoF+7kSuwmPVKoMxNAJ4VbcjT9YyC3
-	GRohXDHEqIGPIQYi/thI3OGLu3z4Ced8lbF7KMscisctn4f6xSrZWAr1o9Kf70qbiUjW+lLb0KMZz
-	uhMTKHkHAjseu+pR1Qdw==;
+	List-Owner; bh=eaVGc6kXCA8v0o16ApRGOS6gN80ja9XznSlko6IZj8c=; b=lap46n3BY2zvRe
+	AG0LfpQSCDwS82ppCH+1DN1bcUGdawz4xtL45o0Vs5qI9xk+o3o2XsT2O902xZVZMrU2WelpeS731
+	OxwSq/zebNDyD77IqCrRHvSN/9OZAg855CdgMi1rYuZ4A9oP6BypcB5nnp1VDGOl2zF4SLMcLi2jn
+	rxcZiCcAiVvvVqY+r3iHCWZy39aPLlrSt7irETYUsTMSMiM5v+7Lw8N2hEhD5jfSX9q6yAN7E0hbM
+	UNOuoBtadzBvBoERyNNzT1Fj6pSn83+0V5rrRPZKgzFX5hNzjqPl07Bl+Hy5V8hjEXe9fLVwwDdYv
+	a7CMnjR593XeBF6C/Bag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5ILa-0000000BqQb-0OGy;
-	Thu, 17 Apr 2025 06:03:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u5ISp-0000000Brpx-1CGL;
+	Thu, 17 Apr 2025 06:11:07 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5IJi-0000000BqCH-1eUm;
-	Thu, 17 Apr 2025 06:01:43 +0000
+	id 1u5IPn-0000000BrEA-3MIj
+	for linux-rockchip@lists.infradead.org;
+	Thu, 17 Apr 2025 06:08:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 96D8E43876;
-	Thu, 17 Apr 2025 06:01:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E89EC4CEE4;
-	Thu, 17 Apr 2025 06:01:38 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id BDC74A4B13D;
+	Thu, 17 Apr 2025 06:02:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EF15C4CEE4;
+	Thu, 17 Apr 2025 06:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744869701;
-	bh=4kH/J9yRA5h+U0NTvsYz1RB3H5NWTJgszXCPS/hlPCc=;
+	s=k20201202; t=1744870078;
+	bh=OMu7tO35fvSf9J8kxaenGb0sj4L8jwiOy3D1lWxPt40=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CmUP/QO880tjH/2Zpb+If0g44/vQswWmgepdZDjP9akYzXQH0uE/T/Ls2vO58rOCv
-	 3ROSjGzNouL2IG1jujMqYJpqOv7DuzbwepOsAgkNfGgMPTNTqOk0+IauwPYWpa4Zuf
-	 s3XTSdarSX+bihYVDgB0E0iEULdrXRak1nYXWFhpMYJmo6FD1IhF7j00RT4d7N8Afz
-	 1hNoaxaeQjAgJ3vykt0TqbEcFyifUUIDqLpuimu+wF+8wp5yqcPDHOClOuqDmwlZ0r
-	 NZZ+3dUueK0OD8QCYpsYJdMtzraAE62ZnwpWi8+U3j6FHRYqSxPzmxNHHF1zPAdlvW
-	 8wySxFxE/rn9Q==
-Date: Thu, 17 Apr 2025 08:01:35 +0200
+	b=BZ8CNBrGHNcho+tHZRAgQp07hL/utTImmqSoqG39q9fl/9EA2KRBmVAZHjsNR2v0m
+	 NlgFZn0kHBD9IvP6cEuuloCUOZSpoZv8g2FJHF+ASGKUOhBFXDhMyu9oepD7NOGN2/
+	 LZzx1AcFFTC8YrPjmMd+aZRUzZpuNj0REarTypEG+gz6ikZfQpJ8xigRYXnpmNLSRl
+	 1rj9pZL07euG4eTFfas672ZXM83TmDFVCalxNsFrq7wTFoSqSWXamtQ0Yjl6Rn2tTw
+	 beMdZU+IA52m6QyzTP2QhAua9RQcpmdEs9+4jgujQTEfxxjrPCYW5Eb2fbf1QiISMr
+	 s1vP7vK5RIL2Q==
+Date: Thu, 17 Apr 2025 08:07:54 +0200
 From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, lpieralisi@kernel.org, kw@linux.com,
-	bhelgaas@google.com, heiko@sntech.de,
-	manivannan.sadhasivam@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, thomas.richard@bootlin.com,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-Message-ID: <aACZP48pWk5Y62dK@ryzen>
-References: <20250416204051.GA78956@bhelgaas>
- <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 1/3] PCI: dw-rockchip: Remove PCIE_L0S_ENTRY check
+ from rockchip_pcie_link_up()
+Message-ID: <aACaupQvmiiBE29l@ryzen>
+References: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
+In-Reply-To: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_230142_469644_CE05E297 
-X-CRM114-Status: GOOD (  26.94  )
+X-CRM114-CacheID: sfid-20250416_230759_898853_E1D81E63 
+X-CRM114-Status: UNSURE (   4.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +76,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 17, 2025 at 10:19:10AM +0800, Hans Zhang wrote:
-> On 2025/4/17 04:40, Bjorn Helgaas wrote:
-> > On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
-> > > The RK3588's PCIe controller defaults to a 128-byte max payload size,
-> > > but its hardware capability actually supports 256 bytes. This results
-> > > in suboptimal performance with devices that support larger payloads.
-> > > 
-> > > Signed-off-by: Hans Zhang <18255117159@163.com>
-> > > ---
-> > >   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
-> > >   1 file changed, 18 insertions(+)
-> > > 
-> > > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > index c624b7ebd118..5bbb536a2576 100644
-> > > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
-> > >   	return IRQ_HANDLED;
-> > >   }
-> > > +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
-> > > +{
-> > > +	struct dw_pcie *pci = &rockchip->pci;
-> > > +	u32 dev_cap, dev_ctrl;
-> > > +	u16 offset;
-> > > +
-> > > +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> > > +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
-> > > +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
-> > > +
-> > > +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
-> > > +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
-> > > +	dev_ctrl |= dev_cap << 5;
-> > > +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
-> > > +}
-> > 
-> > I can't really complain too much about this since meson does basically
-> > the same thing, but there are some things I don't like about this:
-> > 
-> >    - I don't think it's safe to set MPS higher in all cases.  If we set
-> >      the Root Port MPS=256, and an Endpoint only supports MPS=128, the
-> >      Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
-> >      that case the RP may respond with a 256-byte payload the Endpoint
-> >      can't handle.  The generic code in pci_configure_mps() might be
-> >      smart enough to avoid that situation, but I'm not confident about
-> >      it.  Maybe I could be convinced.
-> > 
-> 
-> Dear Bjorn,
-> 
-> Thank you very much for your reply. If we set the Root Port MPS=256, and an
-> Endpoint only supports MPS=128. Finally, Root Port is also set to MPS=128 in
-> pci_configure_mps.
+Hello Shawn,
 
-In you example below, the Endpoint has:
- DevCap: MaxPayload 512 bytes
-
-So at least your example can't be used to prove this specific point.
-But perhaps you just wanted to show that your Max Payload Size increase
-actually works?
+I just see patch 1/2 and 2/3.
 
 
 Kind regards,
