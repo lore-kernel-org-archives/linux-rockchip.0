@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC279C369C2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 01:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2E7C369BD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 02:21:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EYWT1i8Zaoi6TCSi+ELw6pq2ue/zP+zYDGIde/cwgYk=; b=ybCEWsGyOF07ee
-	o8TD9XWtT2L0T/ptvayvpoZ5ueL/f9ksXazJC9MHTDaa6HepSC5vi3AjGjbFVEshOV2Gi5rR8/cfM
-	Aog7yUQeBES9GkdxAIJblDl03wWJhqSLR23yRHHJGnnen2SdEdSSKBw+chTaz/1x+iMkcYeE4hnNI
-	BRPhan3ZMqsSVt4337Sq7YS+FzG97hpRfE7+yfMwVQxz9mIU2UIt1T6mFZyjkQksl0P71AnegR05M
-	ZH7yhXBIoojN9ZAlomZ3/uvYqZi/bP4GT28UUydB+ZjMg0QaraOk89ySMldGPeKQfhVEtjJzxFZdW
-	vLCgUgUX3/hemQTczJog==;
+	List-Owner; bh=q0jUJEXO5VaikiucZSn6UbnQPjQJe/VUOC54EgqBbA4=; b=1Vppxv28WseTzE
+	I89GvE8/c2/4YFKlmdin4rw9O/yXX0RANL72na4V+F+VHPGbTcUmIxAdGPydVpYynkY/nsDuI+dIl
+	zbNF1uAYW/OADdYbIfByOUJhEafuabGvmoSIboTl/2/jOc9KBbR0Kwsva/2O+GLW0FoUjGSHL8lCV
+	lDfCImT57X5zrtj7jMxGzDGXbniWbV5UO4x7dM+4UEZfYx0iULM3dKfGte6126i4xm+b5fVid8NK5
+	t/G7YF8o7V2Qa/o3ut99eOVey67NIpPRe2fdqanB/Ykai682ykJrdfEl55iGJ5wr90MU/xWVzGapw
+	9BgorCmZNmYRz/R+NiLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Dwx-0000000BQCm-3sp6;
-	Thu, 17 Apr 2025 01:21:55 +0000
-Received: from mail-m93237.xmail.ntesmail.com ([103.126.93.237])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5DE6-0000000BJtF-0BkI
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 00:35:36 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1224c9fd2;
-	Thu, 17 Apr 2025 08:35:24 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v4 3/3] PCI: dw-rockchip: Move rockchip_pcie_ep_hide_broken_ats_cap_rk3588() to .init()
-Date: Thu, 17 Apr 2025 08:35:11 +0800
-Message-Id: <1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5OQlZCTRpKSE9NSUkfSRhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a96412bfef009cckunm1224c9fd2
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nio6MBw6NzJNEhILCUoNSRI6
-	Gg8aCQ5VSlVKTE9PQ05LSklOT0tIVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhLS003Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=OXDAedLjWKEbZeQ+UyBkCJ8RP4tRq83/0lDfSrt756kpoj+DYKaaLzY9hYWyjFz8YhbG+Uz+I5tvVCqUPB7Yt4YQie8vvX9PcjHG3ePj+Avo+FmL7QI8U+37H9OkxBibyzEZI3bE0pVRNWlZQkQnE9syOMQCSd+K/hrBkWIuTGA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=5zSHlWHLiEmdxc+sCW6tUdXwMlspj2a4pKO9Z8NdMAk=;
-	h=date:mime-version:subject:message-id:from;
+	id 1u5Esr-0000000BWSJ-1osq;
+	Thu, 17 Apr 2025 02:21:45 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5Eqx-0000000BWGl-31wA;
+	Thu, 17 Apr 2025 02:19:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=wrKLwquI8zlHwCmcvYouUws+LNMJVPBRxnJSH3TqZEo=;
+	b=TxHfXf0JNkDJq28oDhfkuSjz3NcQoj1Jh1u0c3idb0dCKsdxpeC39NTfPjeCqX
+	rXyyizFUt+M5nFntEaPeVIdpJcnk5IM7tGum9evxpnx4yb986HMrIjKbhrcpQkMQ
+	oHBPqNC0HJT2V+MjJsmkpLov3bZqG5ToAl4l1r6Ld2vUg=
+Received: from [192.168.142.52] (unknown [])
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3Xw0eZQBoZg1+AQ--.60903S2;
+	Thu, 17 Apr 2025 10:19:13 +0800 (CST)
+Message-ID: <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
+Date: Thu, 17 Apr 2025 10:19:10 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, thomas.richard@bootlin.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20250416204051.GA78956@bhelgaas>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20250416204051.GA78956@bhelgaas>
+X-CM-TRANSID: _____wD3Xw0eZQBoZg1+AQ--.60903S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3uFyrXF4DZrWkKF1rXFW5KFg_yoWDuw4kpF
+	WqqFsrKrW8JayagFs2yF48CF4Utrn2yay3Kr9xW34Uta12grWDt3sI9rn8Z3WxAr1F93W2
+	yrWDt3yIqrn8JaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uq0PhUUUUU=
+X-Originating-IP: [222.71.101.198]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWwUyo2gAY2hPoAAAsD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_173534_319018_86D005BD 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250416_191948_201656_C5631F55 
+X-CRM114-Status: GOOD (  36.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,72 +71,297 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is no reason to call rockchip_pcie_ep_hide_broken_ats_cap_rk3588()
-from the pre_init() callback, instead of the normal init() callback.
+On 2025/4/17 04:40, Bjorn Helgaas wrote:
+> On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
+>> The RK3588's PCIe controller defaults to a 128-byte max payload size,
+>> but its hardware capability actually supports 256 bytes. This results
+>> in suboptimal performance with devices that support larger payloads.
+>>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> ---
+>>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
+>>   1 file changed, 18 insertions(+)
+>>
+>> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> index c624b7ebd118..5bbb536a2576 100644
+>> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+>>   	return IRQ_HANDLED;
+>>   }
+>>   
+>> +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
+>> +{
+>> +	struct dw_pcie *pci = &rockchip->pci;
+>> +	u32 dev_cap, dev_ctrl;
+>> +	u16 offset;
+>> +
+>> +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
+>> +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
+>> +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
+>> +
+>> +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
+>> +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
+>> +	dev_ctrl |= dev_cap << 5;
+>> +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
+>> +}
+> 
+> I can't really complain too much about this since meson does basically
+> the same thing, but there are some things I don't like about this:
+> 
+>    - I don't think it's safe to set MPS higher in all cases.  If we set
+>      the Root Port MPS=256, and an Endpoint only supports MPS=128, the
+>      Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
+>      that case the RP may respond with a 256-byte payload the Endpoint
+>      can't handle.  The generic code in pci_configure_mps() might be
+>      smart enough to avoid that situation, but I'm not confident about
+>      it.  Maybe I could be convinced.
+> 
 
-Thus, move the rockchip_pcie_ep_hide_broken_ats_cap_rk3588() call from
-the pre_init() callback to the init() callback, as:
-1) init() will still be called before link training is enabled, so the
-   quirk will still be applied before the host has can see our device.
-2) This allows us to remove the pre_init() callback, as it is now unused.
-3) It is a more robust design, as the init() callback is called by
-   dw_pcie_ep_init_registers(), which will always be called after a core
-   reset. The pre_init() callback is only called once, at probe time.
+Dear Bjorn,
 
-No functional changes.
+Thank you very much for your reply. If we set the Root Port MPS=256, and 
+an Endpoint only supports MPS=128. Finally, Root Port is also set to 
+MPS=128 in pci_configure_mps.
 
-Suggested-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
 
-Changes in v4:
-- rewrite commit message
+lspci information before the patch was submitted:
 
-Changes in v3: None
-Changes in v2: None
+root@firefly:~# lspci -vvv
+00:00.0 PCI bridge: Fuzhou Rockchip Electronics Co., Ltd Device 3588 
+(rev 01) (prog-if 00 [Normal decode])
+         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
+ParErr- Stepping- SERR+ FastB2B- DisINTx+
+         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+         Latency: 0
+         Interrupt: pin A routed to IRQ 73
+         Bus: primary=00, secondary=01, subordinate=ff, sec-latency=0
+         I/O behind bridge: 0000f000-00000fff [disabled]
+         Memory behind bridge: f0200000-f02fffff [size=1M]
+         Prefetchable memory behind bridge: 
+00000000fff00000-00000000000fffff [disabled]
+         Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- <SERR- <PERR-
+         Expansion ROM at f0300000 [virtual] [disabled] [size=64K]
+         BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- 
+FastB2B-
+                 PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
+         Capabilities: [40] Power Management version 3
+                 Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA 
+PME(D0+,D1+,D2-,D3hot+,D3cold-)
+                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+         Capabilities: [50] MSI: Enable+ Count=16/32 Maskable+ 64bit+
+                 Address: 00000000fe670040  Data: 0000
+                 Masking: fffffeff  Pending: 00000000
+         Capabilities: [70] Express (v2) Root Port (Slot-), MSI 08
+                 DevCap: MaxPayload 256 bytes, PhantFunc 0
+                         ExtTag+ RBE+
+                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop-
+                         MaxPayload 128 bytes, MaxReadReq 512 bytes
 
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index e4519c0..7790a9f 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -278,17 +278,13 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
- 		dev_err(dev, "failed to hide ATS capability\n");
- }
- 
--static void rockchip_pcie_ep_pre_init(struct dw_pcie_ep *ep)
--{
--	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
--}
--
- static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
- 	rockchip_pcie_enable_l0s(pci);
-+	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
- 	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
- 		dw_pcie_ep_reset_bar(pci, bar);
-@@ -359,7 +355,6 @@ rockchip_pcie_get_features(struct dw_pcie_ep *ep)
- 
- static const struct dw_pcie_ep_ops rockchip_pcie_ep_ops = {
- 	.init = rockchip_pcie_ep_init,
--	.pre_init = rockchip_pcie_ep_pre_init,
- 	.raise_irq = rockchip_pcie_raise_irq,
- 	.get_features = rockchip_pcie_get_features,
- };
--- 
-2.7.4
+01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
+Device a80c (prog-if 02 [NVM Express])
+         Subsystem: Samsung Electronics Co Ltd Device a801
+         Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+         Latency: 0
+         Interrupt: pin A routed to IRQ 72
+         Region 0: Memory at f0200000 (64-bit, non-prefetchable) [size=16K]
+         Capabilities: [40] Power Management version 3
+                 Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA 
+PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+         Capabilities: [50] MSI: Enable- Count=1/32 Maskable- 64bit+
+                 Address: 0000000000000000  Data: 0000
+         Capabilities: [70] Express (v2) Endpoint, MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s 
+unlimited, L1 unlimited
+                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
+SlotPowerLimit 0.000W
+                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
+FLReset-
+                         MaxPayload 128 bytes, MaxReadReq 512 bytes
+
+
+
+lspci information after the patch was submitted:
+root@firefly:~# lspci -vvv
+00:00.0 PCI bridge: Fuzhou Rockchip Electronics Co., Ltd Device 3588 
+(rev 01) (prog-if 00 [Normal decode])
+         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
+ParErr- Stepping- SERR+ FastB2B- DisINTx+
+         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+         Latency: 0
+         Interrupt: pin A routed to IRQ 73
+         Bus: primary=00, secondary=01, subordinate=ff, sec-latency=0
+         I/O behind bridge: 0000f000-00000fff [disabled]
+         Memory behind bridge: f0200000-f02fffff [size=1M]
+         Prefetchable memory behind bridge: 
+00000000fff00000-00000000000fffff [disabled]
+         Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- <SERR- <PERR-
+         Expansion ROM at f0300000 [virtual] [disabled] [size=64K]
+         BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- 
+FastB2B-
+                 PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
+         Capabilities: [40] Power Management version 3
+                 Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA 
+PME(D0+,D1+,D2-,D3hot+,D3cold-)
+                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+         Capabilities: [50] MSI: Enable+ Count=16/32 Maskable+ 64bit+
+                 Address: 00000000fe670040  Data: 0000
+                 Masking: fffffeff  Pending: 00000000
+         Capabilities: [70] Express (v2) Root Port (Slot-), MSI 08
+                 DevCap: MaxPayload 256 bytes, PhantFunc 0
+                         ExtTag+ RBE+
+                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop-
+                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+
+01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
+Device a80c (prog-if 02 [NVM Express])
+         Subsystem: Samsung Electronics Co Ltd Device a801
+         Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+         Latency: 0
+         Interrupt: pin A routed to IRQ 72
+         Region 0: Memory at f0200000 (64-bit, non-prefetchable) [size=16K]
+         Capabilities: [40] Power Management version 3
+                 Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA 
+PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+         Capabilities: [50] MSI: Enable- Count=1/32 Maskable- 64bit+
+                 Address: 0000000000000000  Data: 0000
+         Capabilities: [70] Express (v2) Endpoint, MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s 
+unlimited, L1 unlimited
+                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
+SlotPowerLimit 0.000W
+                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
+FLReset-
+                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+
+
+
+Here are my tests and the NVMe SSD worked fine.
+
+root@firefly:~# df -h
+Filesystem           Size  Used Avail Use% Mounted on
+......
+/dev/nvme0n1         916G   28K  870G   1% /root/nvme
+......
+root@firefly:~#
+root@firefly:~# ls -l nvme/
+total 16
+drwx------ 2 root root 16384 Dec 24 06:34 lost+found
+root@firefly:~#
+root@firefly:~# cd nvme/
+root@firefly:~/nvme# time dd if=/dev/zero of=test bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 0.875072 s, 1.2 GB/s
+
+real    0m0.881s
+user    0m0.001s
+sys     0m0.874s
+root@firefly:~/nvme# ls -l
+total 1048596
+drwx------ 2 root root      16384 Dec 24 06:34 lost+found
+-rw-r--r-- 1 root root 1073741824 Apr 17 02:11 test
+root@firefly:~/nvme# time cp -rf test test1
+
+real    0m0.901s
+user    0m0.005s
+sys     0m0.889s
+root@firefly:~/nvme# ls -lh
+total 2.1G
+drwx------ 2 root root  16K Dec 24 06:34 lost+found
+-rw-r--r-- 1 root root 1.0G Apr 17 02:11 test
+-rw-r--r-- 1 root root 1.0G Apr 17 02:12 test1
+
+
+
+>    - There's nothing rockchip-specific about this.
+> 
+>    - It's very similar to meson_set_max_payload(), so it'd be nice to
+>      share that code somehow.
+
+The next version will be added to DWC.
+
+> 
+>    - The commit log is specific about Max_Payload_Size Supported being
+>      256 bytes, but the patch actually reads the value from Device
+>      Capabilities.
+The commit log will be modified.
+
+> 
+>    - I'd like to see FIELD_PREP()/FIELD_GET() used when possible.
+>      PCIE_LTSSM_STATUS_MASK is probably the only other place.
+> 
+
+Will change.
+
+> These would be material for a separate patch:
+> 
+
+Thank you very much for your reminding and advice. I will submit another 
+patch separately for modification.
+
+>    - The #defines for register offsets and bits are kind of a mess,
+>      e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
+>      PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
+>      PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
+>      names, and they're not even defined together.
+> 
+>    - Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
+>      PCIE_RDLH_LINK_UP_CHGED, which are in
+>      PCIE_CLIENT_INTR_STATUS_MISC.
+> 
+>    - PCIE_LTSSM_ENABLE_ENHANCE is apparently in
+>      PCIE_CLIENT_HOT_RESET_CTRL?  Sure wouldn't guess that from the
+>      names or the order of #defines.
+> 
+>    - PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
+
+Will delete.
+
+
+Best regard,
+Hans
+
+> 
+>>   static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>>   				      struct rockchip_pcie *rockchip)
+>>   {
+>> @@ -511,6 +527,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>>   	pp->ops = &rockchip_pcie_host_ops;
+>>   	pp->use_linkup_irq = true;
+>>   
+>> +	rockchip_pcie_set_max_payload(rockchip);
+>> +
+>>   	ret = dw_pcie_host_init(pp);
+>>   	if (ret) {
+>>   		dev_err(dev, "failed to initialize host\n");
+>>
+>> base-commit: a24588245776dafc227243a01bfbeb8a59bafba9
+>> -- 
+>> 2.25.1
+>>
 
 
 _______________________________________________
