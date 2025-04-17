@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68519C369C7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Apr 2025 20:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E50DC369C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 01:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=TAB1LF5gUAalBx0WjncJx+MlqHmFmFRiizGd7NvevdA=; b=jyXbgk8gI5IpwO
-	F56trL3BurOquIyv3x84orv9Msm+R2Z1ptC7JTOXkONnLgTA0zAAngxn10T85CViCPplHRQHB80Gd
-	YtYkYgIML3IV3ums0V625WeEUDdjTgrnMLLxrV5dWhIUTbnPa8RwEQiI+lfd5uApcd3CmFUFy1PxB
-	/Cyr3YpA6/IHSY81TKMO/0Crzd137/mASdaM405NSovWUeALvYCAERmnB9Pq2EnD00BexaHq+MYtv
-	9Fn6wD8+/h7NXNDq599DsXVMAd40J373up6Ty1ZtGvb0NZRefm9qbmhhINOEZx/C3vUMpAprxCtyY
-	7c3RYTIH8z0GmbwT7pfw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BhJNETvQYvOlhw8VbpndCkGbcZr5qk5sNEiYumMzRsM=; b=KUhcykLkeuIMUt
+	SEOJCgRLsV0p0pDAohxLlNyGdjGxlgoo5EK3xWoVng7YvTedL4egT/ZoXOsmPfJEOG3mxgf6+F+/0
+	WTaPoTiNswaQUZgEEcxMjtBBVcYH8HxjLlxWGZgR7Mk4F5W5W1bQsLolDuTRnvoZijJaoWIvCb17k
+	OquvwsLwQmxUALa6AhFxADu8iFkTjYHuYnmJxVKJBfRZ2klmon0f8lFBAs2rwhTaqJqqa9d3nj39Q
+	bexViQQcbouFH222mJTIY08/4h43sPWAjhaUzQ9Ho4igXhT7f/vzagT001F4M9YMrin5vlHSvaii6
+	OpzWbeU4SYKIVdQaU4DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u59as-0000000Aqad-0icG;
-	Wed, 16 Apr 2025 20:42:50 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u5Dwx-0000000BQCO-0y4W;
+	Thu, 17 Apr 2025 01:21:55 +0000
+Received: from mail-m93237.xmail.ntesmail.com ([103.126.93.237])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u59Z0-0000000AqAy-3JuV;
-	Wed, 16 Apr 2025 20:40:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 76C815C0550;
-	Wed, 16 Apr 2025 20:38:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB5B9C4CEE4;
-	Wed, 16 Apr 2025 20:40:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744836053;
-	bh=EvvTI2dVum18RivfEtnLiFFNULxxc8d7/TvWnBJ57e0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=eKd7z5T9E+knRBpQ3jKb/8ftx91rIF0bQBduS15ZAE2ht6hl19zLfGIL9jHC8vshl
-	 ykdizw73AakIuy3I1ly2//T08eeyRE3ODKNdIFqgSHtB8hcBfBJ4LJzlAXzQu/t7Zm
-	 SxWbJqE5V3eH2DBbGvY8tdy1KPA+cXGIi7fCUQ0pQrR4Qsloroe1ehc3TYdmQyzw9q
-	 N9vYSg1SXVhHXpRvwzpeWwPWveWbjNh0kAPClbvhKFeY/KZ3j7OEnAqbmNQSYWp/AH
-	 pkrq53hr0Xo0jqC6lng23FIZb2jtzv4zasaBJGtDpm9etx3bJvK3BIgUA6SyMXkGwn
-	 T9sqLP0GT211Q==
-Date: Wed, 16 Apr 2025 15:40:51 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
-	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, thomas.richard@bootlin.com,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-Message-ID: <20250416204051.GA78956@bhelgaas>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250416151926.140202-1-18255117159@163.com>
+	id 1u5DE4-0000000BJtE-3YCJ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 17 Apr 2025 00:35:35 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1224c9fcc;
+	Thu, 17 Apr 2025 08:35:22 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v4 2/3] PCI: dw-rockchip: Enable L0S capability
+Date: Thu, 17 Apr 2025 08:35:10 +0800
+Message-Id: <1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUoYH1YdGkJNT0NDSUJDHU9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a96412bf76d09cckunm1224c9fcc
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mjo6Fjo6IjJPQxIsN1EaSRwU
+	Mk4wFDNVSlVKTE9PQ05LSklITUtLVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhPTkk3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=Ll+f3hVibvz98qjZUuX4AqAybXXMLdFBMW0bQ6td5t6TEeCzB1o7vSTxcekXYN16M1aC8Q8z28jWsZrQdNFVmyURC817M6PULpJk9MRrPOX9YNC1J4LkIwRBOTyFxtj2UMelxxP7B4tpVZwvXuIbNsACp9BvRQoMOFBfeH/wL/E=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=3zV4zLHBFMBDkTaI0ymuEzaxulPPeYl/7men0nXYlkA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_134054_940151_D05AB6E2 
-X-CRM114-Status: GOOD (  26.13  )
+X-CRM114-CacheID: sfid-20250416_173533_443551_A42C4DBA 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,103 +71,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
-> The RK3588's PCIe controller defaults to a 128-byte max payload size,
-> but its hardware capability actually supports 256 bytes. This results
-> in suboptimal performance with devices that support larger payloads.
-> 
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index c624b7ebd118..5bbb536a2576 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	return IRQ_HANDLED;
->  }
->  
-> +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
-> +{
-> +	struct dw_pcie *pci = &rockchip->pci;
-> +	u32 dev_cap, dev_ctrl;
-> +	u16 offset;
-> +
-> +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
-> +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
-> +
-> +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
-> +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
-> +	dev_ctrl |= dev_cap << 5;
-> +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
-> +}
+L0S capability isn't enabled on all SoCs by default, so enabling it
+in order to make ASPM L0S work on Rockchip platforms. We have been
+testing it for quite a long time and found the default FTS number
+provided by DWC core doesn't work stable and make LTSSM switch between
+L0S and Recovery, leading to long exit latency, even fail to link
+sometimes. So override it to the max 255 which seems work fine under test
+for both PHYs used by Rockchip platforms.
 
-I can't really complain too much about this since meson does basically
-the same thing, but there are some things I don't like about this:
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
+---
 
-  - I don't think it's safe to set MPS higher in all cases.  If we set
-    the Root Port MPS=256, and an Endpoint only supports MPS=128, the
-    Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
-    that case the RP may respond with a 256-byte payload the Endpoint
-    can't handle.  The generic code in pci_configure_mps() might be
-    smart enough to avoid that situation, but I'm not confident about
-    it.  Maybe I could be convinced.
+Changes in v4:
+- Add Niklas's review tag
 
-  - There's nothing rockchip-specific about this.
+Changes in v3:
+- Add rockchip_pcie_enable_l0s() and called from .init()
 
-  - It's very similar to meson_set_max_payload(), so it'd be nice to
-    share that code somehow.
+Changes in v2:
+- Move n_fts to probe function
+- rewrite the commit message
 
-  - The commit log is specific about Max_Payload_Size Supported being
-    256 bytes, but the patch actually reads the value from Device
-    Capabilities.
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-  - I'd like to see FIELD_PREP()/FIELD_GET() used when possible.
-    PCIE_LTSSM_STATUS_MASK is probably the only other place.
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 21dc99c..e4519c0 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -182,6 +182,21 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
+ 	return 0;
+ }
+ 
++static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
++{
++	u32 cap, lnkcap;
++
++	/* Enable L0S capability for all SoCs */
++	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	if (cap) {
++		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
++		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
++		dw_pcie_dbi_ro_wr_en(pci);
++		dw_pcie_writel_dbi(pci, cap + PCI_EXP_LNKCAP, lnkcap);
++		dw_pcie_dbi_ro_wr_dis(pci);
++	}
++}
++
+ static int rockchip_pcie_start_link(struct dw_pcie *pci)
+ {
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+@@ -231,6 +246,8 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+ 					 rockchip);
+ 
++	rockchip_pcie_enable_l0s(pci);
++
+ 	return 0;
+ }
+ 
+@@ -271,6 +288,8 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+ 	enum pci_barno bar;
+ 
++	rockchip_pcie_enable_l0s(pci);
++
+ 	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
+ 		dw_pcie_ep_reset_bar(pci, bar);
+ };
+@@ -599,6 +618,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	rockchip->pci.ops = &dw_pcie_ops;
+ 	rockchip->data = data;
+ 
++	/* Default N_FTS value (210) is broken, override it to 255 */
++	rockchip->pci.n_fts[0] = 255; /* Gen1 */
++	rockchip->pci.n_fts[1] = 255; /* Gen2+ */
++
+ 	ret = rockchip_pcie_resource_get(pdev, rockchip);
+ 	if (ret)
+ 		return ret;
+-- 
+2.7.4
 
-These would be material for a separate patch:
-
-  - The #defines for register offsets and bits are kind of a mess,
-    e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
-    PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
-    PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
-    names, and they're not even defined together.
-
-  - Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
-    PCIE_RDLH_LINK_UP_CHGED, which are in
-    PCIE_CLIENT_INTR_STATUS_MISC.
-
-  - PCIE_LTSSM_ENABLE_ENHANCE is apparently in
-    PCIE_CLIENT_HOT_RESET_CTRL?  Sure wouldn't guess that from the
-    names or the order of #defines.
-
-  - PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
-
->  static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  				      struct rockchip_pcie *rockchip)
->  {
-> @@ -511,6 +527,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  	pp->ops = &rockchip_pcie_host_ops;
->  	pp->use_linkup_irq = true;
->  
-> +	rockchip_pcie_set_max_payload(rockchip);
-> +
->  	ret = dw_pcie_host_init(pp);
->  	if (ret) {
->  		dev_err(dev, "failed to initialize host\n");
-> 
-> base-commit: a24588245776dafc227243a01bfbeb8a59bafba9
-> -- 
-> 2.25.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
