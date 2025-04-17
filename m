@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C10C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 07:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2097CC369C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 07:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DsUL/nodjo4BPpPGoblPaistfPMdyMFuYBGllu0p07w=; b=nABSDX6XPtj82r
-	zLN0N+6YgCvMKPAen1NalG1N568oL5fIudskjhxKDch9TsV+TWFEWRo5mXvGtoB7ch9vD8mEAYEmX
-	Qy8UepYWRFHE7OVVyMIYjBnU8VuxgOuv11vhqLm108RHVGAT6T8x4uWt/d9P5bIBr6WUpyx0rmz8z
-	fGJv1Hcb5kSf9fqwjJL3WCYqbCz4vdGMOF2Cdi+4Ft+fnJCkuzFPQ7VrvRP5nsIaxXExFydxfxcMI
-	9LCeHM+LdKVx1vsnif+nXhhp25nA9lW273RW26V8cSIWgZNbH4JmRtamPmtEyk9btrR9V0WGf0xp9
-	Zkn5kYBcNPW24L1ob7hg==;
+	List-Owner; bh=Q+nB9Tnh5KoziamLB9TQrAHVj6dQzac30n48gA662PI=; b=Z/KB1tE1z1Sr2e
+	Ws50mLs5BnlTOxIfN2qpM4bIfndMaUMs4F6oiuvO3DrcfUVkuQSmKB4KePB6ZvOJZ5pic3ndWCQ0p
+	cjbu7g0R1OBCFh4vJfKQgMMPxRcAvlaXF2DXNXFd+NpT7YlfJMMme80Nc3VieiXcMRsGmRidp4uIu
+	3tXEzcaDHjyw99IB/jAeyXDKZFOHkFFfI7VX41Yfbm12YPNd8kEdZLL3ocJqcIhFbs4aAbakZeGFk
+	S0hPCHhOEpkvsidaMXZm4vZ77VmBhUUvNpY1ZGvcDhCllKgUsYctNcW4HZOwgle29t6O/5ttrv3YZ
+	snNy1WoXN95FZOUmyNRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5JFz-0000000C0dr-1X6X;
-	Thu, 17 Apr 2025 07:01:55 +0000
-Received: from p-west1-cluster3-host1-snip4-10.eps.apple.com ([57.103.66.123] helo=outbound.pv.icloud.com)
+	id 1u5JLQ-0000000C1yX-2UWG;
+	Thu, 17 Apr 2025 07:07:32 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5JCV-0000000BzVF-2ev5
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 06:58:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
-	bh=2Ww4hpp+z6fgi+nJK6FyaJfCKTs87q137A6aiYcfvEc=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
-	b=kRJLB/2rV6qKWhiRvYq1W/QRIhp8ThfVUSEGHb4sbhgLpFogsuV79f38wqoxC3nl+
-	 N1ajnwRaBAa8fh546L8DmgWtTsTGrQvav5+FqGlUnCujhi1jYOgDmun5QphkvnjztC
-	 NiIBQ0rdP5Q5l9FRQran2dkkW8Z7YOHPwtWh2j3J2N+WNA712vSB5bfaUwGCBgdG9z
-	 OOS8xi97GDWJRP3bfQLWv/GjIb1BIZMwSR1mutQiLaS6B6TRl5dyxjJQUT9wt19qWl
-	 Y5O2TLQLMf1dzqaxU8OpY39+3oEiYf15dpplEtI+VOvB5q0/iKCz+Q/YyMjHeDVdam
-	 Op7XbW3b9j9aA==
-Received: from localhost (pv-asmtp-me-k8s.p00.prod.me.com [17.56.9.36])
-	by outbound.pv.icloud.com (Postfix) with ESMTPSA id 9762B18001FD;
-	Thu, 17 Apr 2025 06:58:08 +0000 (UTC)
-From: Konstantin Shabanov <mail@etehtsea.me>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Konstantin Shabanov <mail@etehtsea.me>,
-	Daniel Stone <daniel@fooishbar.org>,
-	Andy Yan <andyshrk@163.com>,
-	Dan Callaghan <djc@djc.id.au>,
-	dri-devel@lists.freedesktop.org,
+	id 1u5JIu-0000000C1K8-2cSH;
+	Thu, 17 Apr 2025 07:04:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4EECCA4B19E;
+	Thu, 17 Apr 2025 06:59:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FE57C4CEE4;
+	Thu, 17 Apr 2025 07:04:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744873495;
+	bh=A1UXWE3ilQY9BEMls0KvjFVXoarU66FDUevVVhE2dx4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XIwTodbBMR171TZ4AX8MxpAiVF4LBuFV++eunfuyLDo2jIZl1zpE5f4KhmHssGfLC
+	 OQcWFRyNDLhjyrvxLCrUbTGEW1ae4TIKGUIkdZHEH1NoTrjwGrtue3XXw2feCYrEPI
+	 LfulYwe5IAACEvI2AMz6m1mwVHEACaQgKRbvPWUVI6nuluOU3JuRSKEftCtGpNqQcp
+	 nnPIZslkezsAeBIYHpTjhNklZpwxRwuaHjQkftxs+VKglhBHChG7m8SfxxYRO3aOK8
+	 2KzqtRqP1C9aIPeKXiT08gJunojmUrEiCg1S9pg8zGTa7YBou++qIYu1YbmAt1xDo/
+	 +HcDrKaJ0Ga1w==
+Date: Thu, 17 Apr 2025 09:04:50 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, thomas.richard@bootlin.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4] drm/rockchip: Disable AFBC for res >2560 on rk3399
-Date: Thu, 17 Apr 2025 06:57:58 +0000
-Message-ID: <20250417065759.5948-1-mail@etehtsea.me>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250414095332.9674-1-mail@etehtsea.me>
-References: <20250414095332.9674-1-mail@etehtsea.me>
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
+Message-ID: <aACoEpueUHBLjgbb@ryzen>
+References: <20250416151926.140202-1-18255117159@163.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: rwAzO9rQriuU_yzyVXMfa2RlWH8B6Ckm
-X-Proofpoint-ORIG-GUID: rwAzO9rQriuU_yzyVXMfa2RlWH8B6Ckm
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-17_01,2025-04-15_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 spamscore=0 bulkscore=0
- malwarescore=0 adultscore=0 suspectscore=0 phishscore=0 mlxlogscore=999
- clxscore=1030 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2504170053
+Content-Disposition: inline
+In-Reply-To: <20250416151926.140202-1-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_235819_706397_4A101E23 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20250417_000456_730225_BDC9E558 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,75 +77,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As it isn't supported by hardware. At least, RK3399 doesn't support
-it. From the datasheet[1]
-("1.2.10 Video IN/OUT", "Display Interface", p. 17):
+Hello Hans,
 
-  Support AFBC function co-operation with GPU
-    * support 2560x1600 UI
+On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
+> The RK3588's PCIe controller defaults to a 128-byte max payload size,
+> but its hardware capability actually supports 256 bytes. This results
+> in suboptimal performance with devices that support larger payloads.
 
-Manually tested on RockPro64 (rk3399):
-- ARM_AFBC modifier is used for 1920x1080
-- DRM_FORMAT_MOD_LINEAR modifier us used for 3840x2160
-- No noise on the screen when sway is running in 4k
-- Dynamic resolution switching works correctly in sway
+Patch looks good to me, but please always reference the TRM when you can.
 
-Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
-Cc: Daniel Stone <daniel@fooishbar.org>
-Cc: Andy Yan <andyshrk@163.com>
-Reported-by: Dan Callaghan <djc@djc.id.au>
-Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
+Before this patch:
+		DevCap: MaxPayload 256 bytes
+		DevCtl: MaxPayload 128 bytes
 
-[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
----
-V3 -> V4: Correct redundant header inclusion
-V2 -> V3: Run check only on rk3399
-V1 -> V2: Move the check to the fb_create callback
 
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+As per rk3588 TRM, section "11.4.3.8 DSP_PCIE_CAP Detail Registers Description"
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index dcc1f07632c3..45e1619b5c97 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -5,6 +5,7 @@
-  */
+DevCap is per the register description of DSP_PCIE_CAP_DEVICE_CAPABILITIES_REG,
+field PCIE_CAP_MAX_PAYLOAD_SIZE.
+Which claims that the value after reset is 0x1 (256B).
 
- #include <linux/kernel.h>
-+#include <linux/of.h>
+DevCtl is per the register description of
+DSP_PCIE_CAP_DEVICE_CONTROL_DEVICE_STATUS, field PCIE_CAP_MAX_PAYLOAD_SIZE_CS.
+Which claims that the reset value is 0x0 (128B).
 
- #include <drm/drm.h>
- #include <drm/drm_atomic.h>
-@@ -18,6 +19,8 @@
- #include "rockchip_drm_fb.h"
- #include "rockchip_drm_gem.h"
+Both of these match the values above.
 
-+#define RK3399_AFBC_MAX_WIDTH		2560
-+
- static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
- 	.destroy       = drm_gem_fb_destroy,
- 	.create_handle = drm_gem_fb_create_handle,
-@@ -52,6 +55,15 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
- 	}
+As per the description of PCIE_CAP_MAX_PAYLOAD_SIZE_CS:
+"Permissible values that
+can be programmed are indicated by the Max_Payload_Size
+Supported field (PCIE_CAP_MAX_PAYLOAD_SIZE) in the Device
+Capabilities (DEVICE_CAPABILITIES_REG) register (for more
+details, see section 7.5.3.3 of PCI Express Base Specification)."
 
- 	if (drm_is_afbc(mode_cmd->modifier[0])) {
-+		if (of_machine_is_compatible("rockchip,rk3399")) {
-+			if (mode_cmd->width > RK3399_AFBC_MAX_WIDTH) {
-+				DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
-+					      mode_cmd->width,
-+					      RK3399_AFBC_MAX_WIDTH);
-+				return ERR_PTR(-EINVAL);
-+			};
-+		}
-+
- 		int ret, i;
+So your patch looks good.
 
- 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
+I guess I'm mostly surprised that the e.g. pci_configure_mps() does not
+already set DevCtl to the max(DevCap.MPS of the host, DevCap.MPS of the
+endpoint).
 
-base-commit: 4890d68db651562ea80250f2c93205a5c0327a6a
---
-2.48.1
+Apparently pci_configure_mps() only decreases MPS from the reset values?
+It never increases it?
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
