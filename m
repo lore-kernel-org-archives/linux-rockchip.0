@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFE43C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 08:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 725EAC369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 08:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ieMoY0UHDyWnAjjFuCk1pSc5zvWOsFLQ8p0vLK1QfBM=; b=AvUy4s7bqd5Nqj
-	08ggZPsP+HYibyHIgz19/Oc16ltkREfTgVmj1Ey2iKFnRNHOVgDbZppAbQNRzBHz1/IgHsbFd6uaQ
-	MPrPXtKLyIps/1oFprSJ8CIdTLiR2IcZ7YeAflGe/NWO4qxRGoPex/rhBb8MfKDlsQ49oKTC3V2Va
-	EdhMXeRsJteKmXOg+f1nKX6oMvvcFKWeNtE3WlyZdt+vdsLnLTsSscOXXhohoji8lpeJYHkkeM9NT
-	tI8U3o53GdnKlAHwx13jp3XxWvwnNom+CJc5tzRtZooH9ZHfqYprNbBAG6m4cJCSIxcfBVwARSU5q
-	HMmAi9JqbQIuSAi0/fFA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jUhFYa9dEt3w8J07Dn79L4hz6BjL670j5NAJxTExu2A=; b=QDMWWZ5RRiHBEwBHlJR07g8pvM
+	RlwqyCEaH0l4CNSFFYnDpI6AEOqX5t1flFyThr+2huxpvxg6HQAEYNbeWA1/k/xrOEBCFS4qTAity
+	qVcjaDrdM0eqRrRIKQJgd2ERnKtXcgGEJYqdltCvPiPrl+WJ3wieJpKSjeMJcAll/91ONUI17ZYuC
+	p1LsAxW8YLBxQb0hDbL+M19jf/byd0CIdSn378yeBQf86Hc3UQBOoNJkZEpfR3HAaSek/9awuizM/
+	nacLJmCKIAWgtpkyfW5NlhKy91d7MAYJJsgjqKlCV9tjIuUdm37QzbDG/mECjANo+pPtsULp/hXj2
+	AksMP1xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5KKA-0000000CENZ-1TpK;
-	Thu, 17 Apr 2025 08:10:18 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5KIH-0000000CDwV-1urP;
-	Thu, 17 Apr 2025 08:08:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=HlgWpR09t/bSRSkE9n5lqQqIokkyYXuy0tioT6D2/gU=;
-	b=RYGvreS4Se2WbeLN10BDpFsbNJdMWqT3wCNTLrz8G2chlNdbl9oubsIcSiZp09
-	zKFwqAeB1t2wfiAGmwsN8s6b+irHTW/vvx8X+7ra05p6uoOxwLQpeVAzHA8VGUcq
-	sVA8EuQdLYybGjyc3Tk1jt/NssiajnDWEm1DjQg7z+GUk=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wAX613XtgBo09yjAg--.7973S2;
-	Thu, 17 Apr 2025 16:07:53 +0800 (CST)
-Message-ID: <52a2f6dc-1e13-4473-80f2-989379df4e95@163.com>
-Date: Thu, 17 Apr 2025 16:07:51 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-To: Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
- jingoohan1@gmail.com, thomas.richard@bootlin.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20250416151926.140202-1-18255117159@163.com>
- <aACoEpueUHBLjgbb@ryzen>
- <85643fe4-c7df-4d64-e852-60b66892470a@rock-chips.com>
- <aACsJPkSDOHbRAJM@ryzen>
- <ca283065-a48c-3b39-e70d-03d4c6c8a956@rock-chips.com>
- <aACyRp8S9c8azlw9@ryzen>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <aACyRp8S9c8azlw9@ryzen>
-X-CM-TRANSID: _____wAX613XtgBo09yjAg--.7973S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCr4kCr47Jw4rArWrXryrZwb_yoWrGF18p3
-	y5Xa1Ykrs8tw45Jrs7t3Wv9rWYyFsxXFy5Wwn8JryUJwn0kr13tr4vkr4UKF17Xr4rGF4j
-	qFyUJryfX3WDAFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UHrWwUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxcyo2gAsnuqcwAAsl
+	id 1u5KUT-0000000CG2g-2qFf;
+	Thu, 17 Apr 2025 08:20:57 +0000
+Received: from out-182.mta0.migadu.com ([91.218.175.182])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5KRF-0000000CFY8-1vK6
+	for linux-rockchip@lists.infradead.org;
+	Thu, 17 Apr 2025 08:17:39 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1744877853;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wHCWyLOw/2Wsq89rjMWyjH4MzPbVSwCwU1jjVX3VbRQ=;
+	b=ypmOsvMaUafpvd5eWmKEvJwYHiXQIdLqQiv0+Ev6Xgn8RI9JEbZbvJkWXxeASxnZrSSQxK
+	dux5TjY+RkeTON4aZq7OaBTeIQ8Loz65VK2Cno/krrcZhxdbseFT+SBVAxyCTJSERth3Wd
+	Qunqcwan7mdBOkLvEvNbx8K0w6eI6E+w+wMLO2077rRgzKEZ0NiJ12B41T91yf92hQmsQb
+	810Rtr2Ta1RGQdD/e+M7zT0woBXUgemXOomE7XK9RW68vYEbzOZpleaPDAilPVnUVfUmh6
+	8RXikR19BV3AOHwkGTvkt65GtWBZAFv6nR5DGTXh+miORbBa2szilO60yKh4Pw==
+Date: Thu, 17 Apr 2025 10:17:25 +0200
+Message-Id: <D98RKO927TBG.8ZRWD3GCLSXH@cknow.org>
+Cc: <linux-pci@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Add system PM support
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Bjorn Helgaas"
+ <bhelgaas@google.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>
+References: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_010821_878373_C5CFEC3A 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20250417_011738_199622_C5A4E163 
+X-CRM114-Status: GOOD (  22.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,76 +65,200 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6546598703232242292=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyMDI1LzQvMTcgMTU6NDgsIE5pa2xhcyBDYXNzZWwgd3JvdGU6Cj4gT24gVGh1LCBBcHIg
-MTcsIDIwMjUgYXQgMDM6MjU6MDZQTSArMDgwMCwgU2hhd24gTGluIHdyb3RlOgo+PiDlnKggMjAy
-NS8wNC8xNyDmmJ/mnJ/lm5sgMTU6MjIsIE5pa2xhcyBDYXNzZWwg5YaZ6YGTOgo+Pj4gT24gVGh1
-LCBBcHIgMTcsIDIwMjUgYXQgMDM6MDg6MzRQTSArMDgwMCwgU2hhd24gTGluIHdyb3RlOgo+Pj4+
-IOWcqCAyMDI1LzA0LzE3IOaYn+acn+WbmyAxNTowNCwgTmlrbGFzIENhc3NlbCDlhpnpgZM6Cj4+
-Pj4+IEhlbGxvIEhhbnMsCj4+Pj4+Cj4+Pj4+IE9uIFdlZCwgQXByIDE2LCAyMDI1IGF0IDExOjE5
-OjI2UE0gKzA4MDAsIEhhbnMgWmhhbmcgd3JvdGU6Cj4+Pj4+PiBUaGUgUkszNTg4J3MgUENJZSBj
-b250cm9sbGVyIGRlZmF1bHRzIHRvIGEgMTI4LWJ5dGUgbWF4IHBheWxvYWQgc2l6ZSwKPj4+Pj4+
-IGJ1dCBpdHMgaGFyZHdhcmUgY2FwYWJpbGl0eSBhY3R1YWxseSBzdXBwb3J0cyAyNTYgYnl0ZXMu
-IFRoaXMgcmVzdWx0cwo+Pj4+Pj4gaW4gc3Vib3B0aW1hbCBwZXJmb3JtYW5jZSB3aXRoIGRldmlj
-ZXMgdGhhdCBzdXBwb3J0IGxhcmdlciBwYXlsb2Fkcy4KPj4+Pj4KPj4+Pj4gUGF0Y2ggbG9va3Mg
-Z29vZCB0byBtZSwgYnV0IHBsZWFzZSBhbHdheXMgcmVmZXJlbmNlIHRoZSBUUk0gd2hlbiB5b3Ug
-Y2FuLgo+Pj4+Pgo+Pj4+PiBCZWZvcmUgdGhpcyBwYXRjaDoKPj4+Pj4gCQlEZXZDYXA6IE1heFBh
-eWxvYWQgMjU2IGJ5dGVzCj4+Pj4+IAkJRGV2Q3RsOiBNYXhQYXlsb2FkIDEyOCBieXRlcwo+Pj4+
-Pgo+Pj4+Pgo+Pj4+PiBBcyBwZXIgcmszNTg4IFRSTSwgc2VjdGlvbiAiMTEuNC4zLjggRFNQX1BD
-SUVfQ0FQIERldGFpbCBSZWdpc3RlcnMgRGVzY3JpcHRpb24iCj4+Pj4+Cj4+Pj4+IERldkNhcCBp
-cyBwZXIgdGhlIHJlZ2lzdGVyIGRlc2NyaXB0aW9uIG9mIERTUF9QQ0lFX0NBUF9ERVZJQ0VfQ0FQ
-QUJJTElUSUVTX1JFRywKPj4+Pj4gZmllbGQgUENJRV9DQVBfTUFYX1BBWUxPQURfU0laRS4KPj4+
-Pj4gV2hpY2ggY2xhaW1zIHRoYXQgdGhlIHZhbHVlIGFmdGVyIHJlc2V0IGlzIDB4MSAoMjU2Qiku
-Cj4+Pj4+Cj4+Pj4+IERldkN0bCBpcyBwZXIgdGhlIHJlZ2lzdGVyIGRlc2NyaXB0aW9uIG9mCj4+
-Pj4+IERTUF9QQ0lFX0NBUF9ERVZJQ0VfQ09OVFJPTF9ERVZJQ0VfU1RBVFVTLCBmaWVsZCBQQ0lF
-X0NBUF9NQVhfUEFZTE9BRF9TSVpFX0NTLgo+Pj4+PiBXaGljaCBjbGFpbXMgdGhhdCB0aGUgcmVz
-ZXQgdmFsdWUgaXMgMHgwICgxMjhCKS4KPj4+Pj4KPj4+Pj4gQm90aCBvZiB0aGVzZSBtYXRjaCB0
-aGUgdmFsdWVzIGFib3ZlLgo+Pj4+Pgo+Pj4+PiBBcyBwZXIgdGhlIGRlc2NyaXB0aW9uIG9mIFBD
-SUVfQ0FQX01BWF9QQVlMT0FEX1NJWkVfQ1M6Cj4+Pj4+ICJQZXJtaXNzaWJsZSB2YWx1ZXMgdGhh
-dAo+Pj4+PiBjYW4gYmUgcHJvZ3JhbW1lZCBhcmUgaW5kaWNhdGVkIGJ5IHRoZSBNYXhfUGF5bG9h
-ZF9TaXplCj4+Pj4+IFN1cHBvcnRlZCBmaWVsZCAoUENJRV9DQVBfTUFYX1BBWUxPQURfU0laRSkg
-aW4gdGhlIERldmljZQo+Pj4+PiBDYXBhYmlsaXRpZXMgKERFVklDRV9DQVBBQklMSVRJRVNfUkVH
-KSByZWdpc3RlciAoZm9yIG1vcmUKPj4+Pj4gZGV0YWlscywgc2VlIHNlY3Rpb24gNy41LjMuMyBv
-ZiBQQ0kgRXhwcmVzcyBCYXNlIFNwZWNpZmljYXRpb24pLiIKPj4+Pj4KPj4+Pj4gU28geW91ciBw
-YXRjaCBsb29rcyBnb29kLgo+Pj4+Pgo+Pj4+PiBJIGd1ZXNzIEknbSBtb3N0bHkgc3VycHJpc2Vk
-IHRoYXQgdGhlIGUuZy4gcGNpX2NvbmZpZ3VyZV9tcHMoKSBkb2VzIG5vdAo+Pj4+PiBhbHJlYWR5
-IHNldCBEZXZDdGwgdG8gdGhlIG1heChEZXZDYXAuTVBTIG9mIHRoZSBob3N0LCBEZXZDYXAuTVBT
-IG9mIHRoZQo+Pj4+PiBlbmRwb2ludCkuCj4+Pj4+Cj4+Pj4+IEFwcGFyZW50bHkgcGNpX2NvbmZp
-Z3VyZV9tcHMoKSBvbmx5IGRlY3JlYXNlcyBNUFMgZnJvbSB0aGUgcmVzZXQgdmFsdWVzPwo+Pj4+
-PiBJdCBuZXZlciBpbmNyZWFzZXMgaXQ/Cj4+Pj4+Cj4+Pj4KPj4+PiBBY3R1YWxseSBpdCBkb2Vz
-Ogo+Pj4+Cj4+Pj4gaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2Jsb2IvbWFzdGVy
-L0RvY3VtZW50YXRpb24vYWRtaW4tZ3VpZGUva2VybmVsLXBhcmFtZXRlcnMudHh0I0w0NzU3Cj4+
-Pgo+Pj4gSWYgdGhhdCBpcyB0aGUgY2FzZSwgdGhlbiBleHBsYWluIHRoZSBiZWZvcmUvYWZ0ZXIg
-d2l0aCBIYW5zIGxzcGNpIG91dHB1dCBoZXJlOgo+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
-bGludXgtcGNpL2JiNDAzODVjLTY4MzktNDg0Yy05MGIyLWQ2YzdlY2I5NWJhOUAxNjMuY29tLwo+
-Pj4KPj4+IEhpcyBwYXRjaCBjaGFuZ2VzIHRoZSBkZWZhdWx0IHZhbHVlIG9mIERldkN0bC5NUFMg
-KGZyb20gMTI4QiB0byAyNTZCKSwgYnV0IGlmCj4+PiBwY2lfY29uZmlndXJlX21wcygpIGNhbiBi
-dW1wIERldkN0bC5NUFMgdG8gYSBoaWdoZXIgdmFsdWUsIGhpcyBwYXRjaCBzaG91bGQgbm90Cj4+
-PiBiZSBuZWVkZWQsIHNpbmNlIHRoZSBFUCAoYW4gTlZNZSBTU0QgaW4gaGlzIGNhc2UpIGhhcyBE
-ZXZDYXAuTVBTIDUxMkIsIGFuZCB0aGUKPj4+IFJDIGl0c2VsZiBoYXMgRGV2Q2FwLk1QUyAyNTZC
-Lgo+Pj4KPj4+IFNlZW1zIGxpa2Ugd2UgYXJlIG1pc3Npbmcgc29tZXRoaW5nIGhlcmUuCj4+Cj4+
-IFNvIEhhbnMsIGNvdWxkIHlvdSBwbGVhc2UgaGVscCBzZXQgcGNpPXBjaWVfYnVzX3NhZmUgb3IK
-Pj4gcGNpPXBjaWVfYnVzX3BlcmYgaW4geW91ciBjbWRsaW5lLCBhbmQgc2VlIGhvdyBsc3BjaSBk
-dW1wIGRpZmZlcmVudAo+PiB3aXRob3V0IHlvdXIgcGF0Y2g/Cj4gCj4gSXQgc2VlbXMgdGhhdCB0
-aGUgZGVmYXVsdCBNUFMgc3RyYXRlZ3kgY2FuIGJlIHNldCB1c2luZyBLY29uZmlnczoKPiBodHRw
-czovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi92Ni4xNS1yYzIvZHJpdmVycy9wY2kv
-cGNpLmMjTDEyNi1MMTM2Cj4gaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2Jsb2Iv
-djYuMTUtcmMyL2luY2x1ZGUvbGludXgvcGNpLmgjTDExMTAtTDExMTYKPiAKPiBOb3RlIHRoYXQg
-dGhlIHRoZXNlIEtjb25maWdzIGFyZSBoaWRkZW4gYmVoaW5kIENPTkZJR19FWFBFUlQuCj4gU28g
-dW5sZXNzIHlvdSBoYXZlIGV4cGxpY2l0bHkgc2V0IG9uZSBvZiB0aGVzZSBLY29uZmlncywgdGhl
-IGRlZmF1bHQgc2hvdWxkIGJlOgo+IFBDSUVfQlVTX0RFRkFVTFQsCS8qIEVuc3VyZSBNUFMgbWF0
-Y2hlcyB1cHN0cmVhbSBicmlkZ2UgKi8KCgpIaSBOaWtsYXMgYW5kIFNoYXduLAoKVGhhbmsgeW91
-IHZlcnkgbXVjaCBmb3IgeW91ciBkaXNjdXNzaW9uIGFuZCByZXBseS4KCkkgdGVzdGVkIGl0IG9u
-IFJLMzU4OCBhbmQgb3VyIHBsYXRmb3JtLiBCeSBzZXR0aW5nIHBjaT1wY2llX2J1c19zYWZlLCAK
-dGhlIG1heGltdW0gTVBTIHdpbGwgYmUgYXV0b21hdGljYWxseSBtYXRjaGVkIGluIHRoZSBlbmQu
-CgpTbyBpcyBteSBwYXRjaCBubyBsb25nZXIgbmVlZGVkPyBGb3IgUkszNTg4LCBkb2VzIHRoZSBj
-dXN0b21lciBoYXZlIHRvIApjb25maWd1cmUgQ09ORklHX1BDSUVfQlVTX1NBRkUgb3IgcGNpPXBj
-aWVfYnVzX3NhZmU/CgpBbHNvLCBmb3IgcGNpLW1lc29uLmMsIGNhbiB0aGUgbWVzb25fc2V0X21h
-eF9wYXlsb2FkIGJlIGRlbGV0ZWQ/CgoKQmVzdCByZWdhcmRzLApIYW5zCgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============6546598703232242292==
+Content-Type: multipart/signed;
+ boundary=77376431c399ca9f2570bed1ad7af9fd48ef8140982d7c520b5c570e21a3;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--77376431c399ca9f2570bed1ad7af9fd48ef8140982d7c520b5c570e21a3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+On Fri Apr 11, 2025 at 8:14 AM CEST, Shawn Lin wrote:
+> This patch adds system PM support for Rockchip platforms by adding .pme_t=
+urn_off
+> and .get_ltssm hook and tries to reuse possible exist code.
+
+s/exist/existing/ ?
+
+> ...
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>
+> Changes in v2:
+> - Use NOIRQ_SYSTEM_SLEEP_PM_OPS
+>
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 185 ++++++++++++++++++++=
++++---
+>  1 file changed, 169 insertions(+), 16 deletions(-)
+>
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/=
+controller/dwc/pcie-dw-rockchip.c
+> index 56acfea..7246a49 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -21,6 +21,7 @@
+>  #include <linux/regmap.h>
+>  #include <linux/reset.h>
+> =20
+> +#include "../../pci.h"
+>  #include "pcie-designware.h"
+>  ...
+> =20
+> +static int rockchip_pcie_suspend(struct device *dev)
+> +{
+> +	struct rockchip_pcie *rockchip =3D dev_get_drvdata(dev);
+> +	struct dw_pcie *pci =3D &rockchip->pci;
+> +	int ret;
+> +
+> +	rockchip->intx =3D rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_M=
+ASK_LEGACY);
+> +
+> +	ret =3D dw_pcie_suspend_noirq(pci);
+> +	if (ret) {
+> +		dev_err(dev, "failed to suspend\n");
+> +		return ret;
+> +	}
+> +
+> +	rockchip_pcie_phy_deinit(rockchip);
+
+You're using ``rockchip_pcie_phy_deinit(rockchip)`` here ...
+
+> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+> +	reset_control_assert(rockchip->rst);
+> +	if (rockchip->vpcie3v3)
+> +		regulator_disable(rockchip->vpcie3v3);
+> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rockchip_pcie_resume(struct device *dev)
+> +{
+> +	struct rockchip_pcie *rockchip =3D dev_get_drvdata(dev);
+> +	struct dw_pcie *pci =3D &rockchip->pci;
+> +	int ret;
+> +
+> +	reset_control_assert(rockchip->rst);
+> +
+> +	ret =3D clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
+> +	if (ret) {
+> +		dev_err(dev, "clock init failed\n");
+> +		goto err_clk;
+> +	}
+> +
+> +	if (rockchip->vpcie3v3) {
+> +		ret =3D regulator_enable(rockchip->vpcie3v3);
+> +		if (ret)
+> +			goto err_power;
+> +	}
+> +
+> +	ret =3D phy_init(rockchip->phy);
+> +	if (ret) {
+> +		dev_err(dev, "fail to init phy\n");
+> +		goto err_phy_init;
+> +	}
+> +
+> +	ret =3D phy_power_on(rockchip->phy);
+> +	if (ret) {
+> +		dev_err(dev, "fail to power on phy\n");
+> +		goto err_phy_on;
+> +	}
+
+... would it be possible to reuse ``rockchip_pcie_phy_init(rockchip)``
+here ?
+
+otherwise, ``s/fail/failed/`` in the error messages
+
+> +
+> +	reset_control_deassert(rockchip->rst);
+> +
+> +	rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx=
+),
+> +				 PCIE_CLIENT_INTR_MASK_LEGACY);
+> +
+> +	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
+> +	rockchip_pcie_unmask_dll_indicator(rockchip);
+> +
+> +	ret =3D dw_pcie_resume_noirq(pci);
+> +	if (ret) {
+> +		dev_err(dev, "fail to resume\n");
+> +		goto err_resume;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_resume:
+> +	phy_power_off(rockchip->phy);
+> +err_phy_on:
+> +	phy_exit(rockchip->phy);
+
+I initially thought this sequence was incorrect as I looked at the
+``rockchip_pcie_phy_deinit`` function:
+
+	phy_exit(rockchip->phy);
+	phy_power_off(rockchip->phy);
+
+https://elixir.bootlin.com/linux/v6.15-rc1/source/drivers/pci/controller/dw=
+c/pcie-dw-rockchip.c#L411
+
+But the ``phy_exit`` function docs says "Must be called after phy_power_off=
+()."
+https://elixir.bootlin.com/linux/v6.15-rc1/source/drivers/phy/phy-core.c#L2=
+64
+
+So it seems the code/sequence in this patch is correct, but
+``rockchip_pcie_phy_deinit`` has it wrong?
+
+> +err_phy_init:
+> +	if (rockchip->vpcie3v3)
+> +		regulator_disable(rockchip->vpcie3v3);
+> +err_power:
+> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+> +err_clk:
+> +	reset_control_deassert(rockchip->rst);
+> +	return ret;
+> +}
+> +
+>  static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk356=
+8 =3D {
+>  	.mode =3D DW_PCIE_RC_TYPE,
+>  };
+
+Cheers,
+  Diederik
+
+--77376431c399ca9f2570bed1ad7af9fd48ef8140982d7c520b5c570e21a3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaAC5FwAKCRDXblvOeH7b
+bgxeAQD5QYNSvXPr1J7diAdHDzgCAtqrKYmuRaEnPEeHtNvanAD6AxEEsfdK21iJ
+I1+nNmwB0KLtQD8AyjsjZt5yoMGprwQ=
+=bwym
+-----END PGP SIGNATURE-----
+
+--77376431c399ca9f2570bed1ad7af9fd48ef8140982d7c520b5c570e21a3--
+
+
+--===============6546598703232242292==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6546598703232242292==--
+
