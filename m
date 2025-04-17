@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11577C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 04:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B98C369C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 06:03:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pkb5BE2VRDnupld2/wIiGQxrpKXP/6CJKZlXdaQb1Gg=; b=WhFhabWMaroDHB
-	+apbQeFDfIhNn508/wrI7tb7D3ej7IX+FsDp3uK6IRR17iCbAVBgnme9TMf0MiWcL4rpFKN4gRRIU
-	2fehg6lh0KhatHaxmOSxCLE24TMvybpZNDE9o/kkNnIqLp09U+LJeBeI6PWNNIoW+7I2VDVQM+CRp
-	xthVNSXsiLegHc26OwAqHROkcWaVAapeol34BD0q/U58vb98ekghJGENJg1qcDos4JeC2huf0/6to
-	VvIzmE9jlR2CdS0MLIpewn6AFhYo/FiX7M1bBKmb0dEVZGdpzVJyqd8jDlmfFU/RSIoxr2WsGLcAu
-	uqpc5XCFeY+K/XEpqThw==;
+	List-Owner; bh=vaZvy7aDrC70QhQpA2dyppV0Ulf7HxbfO2ZTd8hegI4=; b=4CA4cgVmu6hlit
+	2eWy1V+Tev6MkKTRPrWkhFEIiswJaw+noGSyR+RHMK1aiYS9kuVt6jbmbwyqftMgT0FUgAXK8WkvG
+	8D5LDepzNjEPwPDGlmMpqLdvyE83eAeJ5l5FZz8dkhYWS2i155aL1px+OhOWokLdFXv6+vUbxqbIW
+	AZa+tFUnXLluc+tSJvpe6iJnqCheJ5XrdZVRwQniqdY6EtVzoF+7kSuwmPVKoMxNAJ4VbcjT9YyC3
+	GRohXDHEqIGPIQYi/thI3OGLu3z4Ced8lbF7KMscisctn4f6xSrZWAr1o9Kf70qbiUjW+lLb0KMZz
+	uhMTKHkHAjseu+pR1Qdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Gme-0000000BfqK-2ADw;
-	Thu, 17 Apr 2025 04:23:28 +0000
-Received: from p-west1-cluster1-host3-snip6-10.eps.apple.com ([2a01:b747:3003:200::21] helo=outbound.pv.icloud.com)
+	id 1u5ILa-0000000BqQb-0OGy;
+	Thu, 17 Apr 2025 06:03:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Gko-0000000BfiZ-0q3r
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 04:21:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
-	bh=s8Ze0YrAsRvM56Guf/YtrV37Q0EOqSVlsBXfjoOyn44=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
-	b=vhp8GUSLBS9mDgmUKnWpMptHb4zydL8N8Q+yPOxVFS09PTXCud15z3gPBzO3dX0tR
-	 D4wVQlPUv8ekGnXXgWTPArmYE6P2Y6kszaQHor1oci2Z/C9hnySBVEzGfLk3hBNe8q
-	 AC/QsW4+2F4JhMYw+Eu6KJIeJMpHTfz0x62ti+hy4zjPqqwxNXEXVpiReEFhK15o4j
-	 FkDWrllt0iUyfxzUfxKthOgXrLhnmgvdJb0pxbfuuzh5af/kGWDmqem406WC+lW6rJ
-	 GNjjuiW/KPBzFldVR55+nCT0DHzALxy5khBU+U60TmdYsBtoB0PkifETVNBABr2GmB
-	 EmaixC3zjIU5Q==
-Received: from localhost (pv-asmtp-me-k8s.p00.prod.me.com [17.56.9.36])
-	by outbound.pv.icloud.com (Postfix) with ESMTPSA id CF1A418000AF;
-	Thu, 17 Apr 2025 04:21:18 +0000 (UTC)
-From: Konstantin Shabanov <mail@etehtsea.me>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Konstantin Shabanov <mail@etehtsea.me>,
-	Daniel Stone <daniel@fooishbar.org>,
-	Andy Yan <andyshrk@163.com>,
-	Dan Callaghan <djc@djc.id.au>,
-	dri-devel@lists.freedesktop.org,
+	id 1u5IJi-0000000BqCH-1eUm;
+	Thu, 17 Apr 2025 06:01:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 96D8E43876;
+	Thu, 17 Apr 2025 06:01:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E89EC4CEE4;
+	Thu, 17 Apr 2025 06:01:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744869701;
+	bh=4kH/J9yRA5h+U0NTvsYz1RB3H5NWTJgszXCPS/hlPCc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CmUP/QO880tjH/2Zpb+If0g44/vQswWmgepdZDjP9akYzXQH0uE/T/Ls2vO58rOCv
+	 3ROSjGzNouL2IG1jujMqYJpqOv7DuzbwepOsAgkNfGgMPTNTqOk0+IauwPYWpa4Zuf
+	 s3XTSdarSX+bihYVDgB0E0iEULdrXRak1nYXWFhpMYJmo6FD1IhF7j00RT4d7N8Afz
+	 1hNoaxaeQjAgJ3vykt0TqbEcFyifUUIDqLpuimu+wF+8wp5yqcPDHOClOuqDmwlZ0r
+	 NZZ+3dUueK0OD8QCYpsYJdMtzraAE62ZnwpWi8+U3j6FHRYqSxPzmxNHHF1zPAdlvW
+	 8wySxFxE/rn9Q==
+Date: Thu, 17 Apr 2025 08:01:35 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, lpieralisi@kernel.org, kw@linux.com,
+	bhelgaas@google.com, heiko@sntech.de,
+	manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, thomas.richard@bootlin.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3] drm/rockchip: Disable AFBC for res >2560 on rk3399
-Date: Thu, 17 Apr 2025 04:20:08 +0000
-Message-ID: <20250417042008.28536-1-mail@etehtsea.me>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250414095332.9674-1-mail@etehtsea.me>
-References: <20250414095332.9674-1-mail@etehtsea.me>
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
+Message-ID: <aACZP48pWk5Y62dK@ryzen>
+References: <20250416204051.GA78956@bhelgaas>
+ <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: MXRK0RV78ZYYop4SgACsYfnc7XchLLpL
-X-Proofpoint-ORIG-GUID: MXRK0RV78ZYYop4SgACsYfnc7XchLLpL
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-17_01,2025-04-15_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 suspectscore=0
- mlxlogscore=999 clxscore=1030 spamscore=0 malwarescore=0 mlxscore=0
- bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2504170032
+Content-Disposition: inline
+In-Reply-To: <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_212134_250950_36B2002C 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20250416_230142_469644_CE05E297 
+X-CRM114-Status: GOOD (  26.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,81 +78,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As it isn't supported by hardware. At least, RK3399 doesn't support
-it. From the datasheet[1]
-("1.2.10 Video IN/OUT", "Display Interface", p. 17):
+On Thu, Apr 17, 2025 at 10:19:10AM +0800, Hans Zhang wrote:
+> On 2025/4/17 04:40, Bjorn Helgaas wrote:
+> > On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
+> > > The RK3588's PCIe controller defaults to a 128-byte max payload size,
+> > > but its hardware capability actually supports 256 bytes. This results
+> > > in suboptimal performance with devices that support larger payloads.
+> > > 
+> > > Signed-off-by: Hans Zhang <18255117159@163.com>
+> > > ---
+> > >   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
+> > >   1 file changed, 18 insertions(+)
+> > > 
+> > > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > index c624b7ebd118..5bbb536a2576 100644
+> > > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+> > >   	return IRQ_HANDLED;
+> > >   }
+> > > +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
+> > > +{
+> > > +	struct dw_pcie *pci = &rockchip->pci;
+> > > +	u32 dev_cap, dev_ctrl;
+> > > +	u16 offset;
+> > > +
+> > > +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
+> > > +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
+> > > +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
+> > > +
+> > > +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
+> > > +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
+> > > +	dev_ctrl |= dev_cap << 5;
+> > > +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
+> > > +}
+> > 
+> > I can't really complain too much about this since meson does basically
+> > the same thing, but there are some things I don't like about this:
+> > 
+> >    - I don't think it's safe to set MPS higher in all cases.  If we set
+> >      the Root Port MPS=256, and an Endpoint only supports MPS=128, the
+> >      Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
+> >      that case the RP may respond with a 256-byte payload the Endpoint
+> >      can't handle.  The generic code in pci_configure_mps() might be
+> >      smart enough to avoid that situation, but I'm not confident about
+> >      it.  Maybe I could be convinced.
+> > 
+> 
+> Dear Bjorn,
+> 
+> Thank you very much for your reply. If we set the Root Port MPS=256, and an
+> Endpoint only supports MPS=128. Finally, Root Port is also set to MPS=128 in
+> pci_configure_mps.
 
-  Support AFBC function co-operation with GPU
-    * support 2560x1600 UI
+In you example below, the Endpoint has:
+ DevCap: MaxPayload 512 bytes
 
-Manually tested on RockPro64 (rk3399):
-- ARM_AFBC modifier is used for 1920x1080
-- DRM_FORMAT_MOD_LINEAR modifier us used for 3840x2160
-- No noise on the screen when sway is running in 4k
-- Dynamic resolution switching works correctly in sway
+So at least your example can't be used to prove this specific point.
+But perhaps you just wanted to show that your Max Payload Size increase
+actually works?
 
-Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
-Cc: Daniel Stone <daniel@fooishbar.org>
-Cc: Andy Yan <andyshrk@163.com>
-Reported-by: Dan Callaghan <djc@djc.id.au>
-Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
 
-[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
----
-V2 -> V3: Run check only on rk3399
-V1 -> V2: Move the check to the fb_create callback
-
-Hi Andy and Daniel!
-Thank you for the review!
-
-Best wishes,
-Konstantin
-
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index dcc1f07632c3..6ca757f80a30 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -5,6 +5,7 @@
-  */
-
- #include <linux/kernel.h>
-+#include <linux/of.h>
-
- #include <drm/drm.h>
- #include <drm/drm_atomic.h>
-@@ -17,6 +18,9 @@
- #include "rockchip_drm_drv.h"
- #include "rockchip_drm_fb.h"
- #include "rockchip_drm_gem.h"
-+#include "rockchip_drm_vop.h"
-+
-+#define RK3399_AFBC_MAX_WIDTH		2560
-
- static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
- 	.destroy       = drm_gem_fb_destroy,
-@@ -52,6 +56,15 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
- 	}
-
- 	if (drm_is_afbc(mode_cmd->modifier[0])) {
-+		if (of_machine_is_compatible("rockchip,rk3399")) {
-+			if (mode_cmd->width > RK3399_AFBC_MAX_WIDTH) {
-+				DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
-+					      mode_cmd->width,
-+					      RK3399_AFBC_MAX_WIDTH);
-+				return ERR_PTR(-EINVAL);
-+			};
-+		}
-+
- 		int ret, i;
-
- 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
-
-base-commit: 4890d68db651562ea80250f2c93205a5c0327a6a
---
-2.48.1
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
